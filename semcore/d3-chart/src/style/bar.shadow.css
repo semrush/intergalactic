@@ -1,0 +1,8 @@
+@import '@semcore/utils/style/var.css';
+
+SBar {
+}
+
+SBar[hide] {
+  display: none;
+}

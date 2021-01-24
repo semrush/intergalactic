@@ -1,0 +1,16 @@
+{
+  "name": "postcss-theme-replacer",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "test": "jest ."
+  },
+  "dependencies": {
+    "jest": "^25.1.0",
+    "postcss": "^7.0.0"
+  },
+  "jest": {
+    "testEnvironment": "node"
+  }
+}

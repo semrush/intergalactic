@@ -1,0 +1,62 @@
+@import '@semcore/utils/style/var.css';
+
+SAxis {
+  stroke: var(--stone);
+}
+
+SAxis[hide] {
+  display: none;
+}
+
+STick {
+  font-size: 12px;
+  fill: var(--gray60);
+}
+
+STick[hide] {
+  display: none;
+}
+
+SGrid {
+  fill: transparent;
+  stroke: var(--mercury);
+}
+
+SGrid[hide] {
+  display: none;
+}
+
+STick[position='top'] {
+  transform: translateY(-12px);
+  text-anchor: middle;
+}
+
+STick[position='bottom'] {
+  transform: translateY(12px);
+  text-anchor: middle;
+  alignment-baseline: hanging;
+}
+
+STick[position='right'] {
+  transform: translateX(16px);
+  text-anchor: start;
+  alignment-baseline: middle;
+}
+
+STick[position='left'] {
+  transform: translateX(-16px);
+  text-anchor: end;
+  alignment-baseline: middle;
+}
+
+STick[position='custom_0'] {
+  transform: translateY(12px);
+  text-anchor: middle;
+  alignment-baseline: hanging;
+}
+
+STick[position='custom_1'] {
+  transform: translateX(-16px);
+  text-anchor: end;
+  alignment-baseline: middle;
+}

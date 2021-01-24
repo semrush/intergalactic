@@ -1,0 +1,29 @@
+@import '@semcore/utils/style/var.css';
+
+SList {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+
+SContent {
+  overflow: inherit;
+  text-overflow: inherit;
+}
+
+SList SList {
+  margin-top: media(8px);
+}
+
+SItem {
+  display: flex;
+}
+
+SItem + SItem {
+  margin-top: media(8px);
+}
+
+SMarker {
+  margin-right: media(10px);
+  color: var(--gray60);
+}

@@ -1,0 +1,129 @@
+@import '@semcore/utils/style/var.css';
+
+SSwitch {
+  display: inline-flex;
+  vertical-align: middle;
+  align-items: center;
+  position: relative;
+  user-select: none;
+}
+
+SSwitch[size='m'] {
+  font-size: var(--fs-100);
+  line-height: var(--lh-100);
+
+  & SToggle {
+    border-radius: media(6px);
+    width: media(20px);
+    height: media(12px);
+  }
+
+  & SSlider {
+    width: media(8px);
+    height: media(8px);
+  }
+}
+
+SSwitch[size='l'] {
+  font-size: var(--fs-200);
+  line-height: var(--lh-200);
+
+  & SToggle {
+    border-radius: media(9px);
+    width: media(32px);
+    height: media(18px);
+  }
+
+  & SSlider {
+    width: media(14px);
+    height: media(14px);
+  }
+}
+
+SSwitch[size='xl'] {
+  font-size: var(--fs-300);
+  line-height: var(--lh-300);
+
+  & SToggle {
+    border-radius: media(12px);
+    width: media(44px);
+    height: media(24px);
+  }
+
+  & SSlider {
+    width: media(20px);
+    height: media(20px);
+  }
+}
+
+SSwitch[disabled] {
+  opacity: var(--disabled-opacity);
+
+  & SToggle {
+    cursor: default;
+  }
+}
+
+SSwitch[checked] {
+  & SAddon[neighborLocation='right'] {
+    color: var(--gray60);
+  }
+
+  & SAddon[neighborLocation='left'] {
+    color: var(--gray20);
+  }
+
+  & SSlider {
+    transform: translateX(100%) translateY(-50%);
+  }
+}
+
+SToggle {
+  background: rgba(0, 0, 0, 0.4);
+  position: relative;
+  color: rgba(0, 0, 0, 0.4);
+  cursor: pointer;
+}
+
+SToggle[keyboardFocused] {
+  box-shadow: var(--keyborad-focus);
+}
+
+SToggle[neighborLocation='left'] {
+  margin-left: media(8px);
+}
+
+SToggle[neighborLocation='both'] {
+  margin-right: media(8px);
+  margin-left: media(8px);
+}
+
+SToggle[neighborLocation='right'] {
+  margin-right: media(8px);
+}
+
+SSlider {
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  margin: 0 media(2px);
+  background: #fff;
+  transform: translateX(0) translateY(-50%);
+  transition: transform 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+SInput {
+  position: absolute;
+  clip: rect(1px, 1px, 1px, 1px);
+}
+
+SAddon[neighborLocation='right'] {
+  color: var(--gray20);
+}
+
+SAddon[neighborLocation='left'] {
+  color: var(--gray60);
+}

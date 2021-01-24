@@ -1,0 +1,32 @@
+@import '@semcore/utils/style/var.css';
+
+SSkeleton {
+  animation-name: pulse;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  will-change: opacity;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+SSkeleton[theme='invert'] {
+  fill: #edeff0;
+}
+
+SSkeleton[theme='dark'] {
+  fill: rgba(255, 255, 255, 0.5);
+}
+
+SText {
+  box-sizing: border-box;
+}

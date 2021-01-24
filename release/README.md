@@ -1,0 +1,3 @@
+- Удалить все папки
+- Удалить node_modules
+- Очистить dependencies

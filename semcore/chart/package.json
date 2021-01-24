@@ -1,0 +1,44 @@
+{
+  "name": "@semcore/chart",
+  "description": "SEMRush Chart Component",
+  "version": "4.1.1",
+  "main": "lib/cjs/index.js",
+  "module": "lib/es6/index.js",
+  "typings": "lib/types/index.d.ts",
+  "sideEffects": [
+    "lib/*/Axis/XAxis.js",
+    "lib/*/Axis/YAxis.js",
+    "lib/*/Chart/Area/Area.js",
+    "lib/*/Chart/Bar/index.js",
+    "lib/*/Chart/Histogram/index.js",
+    "lib/*/Chart/Line/Line.js",
+    "lib/*/Chart/Venn/VennChart.js",
+    "lib/*/Legend/Legend.js",
+    "lib/*/Reference/CartesianGrid.js",
+    "lib/*/Reference/ReferenceArea.js",
+    "lib/*/Reference/ReferenceLine.js",
+    "lib/*/Tooltip/index.js",
+    "lib/*/copyChart.js"
+  ],
+  "author": "Roman Lysov <r.lysov@semrush.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "build",
+    "test": "jest"
+  },
+  "dependencies": {
+    "@semcore/checkbox": "^5",
+    "@semcore/utils": "^3.17",
+    "@types/recharts": "1.8.14",
+    "hoist-non-react-statics": "^3.3",
+    "recharts": "1.8.5",
+    "venn.js": "^0.2"
+  },
+  "peerDependencies": {
+    "@semcore/core": "^1",
+    "react": "^16.8.0"
+  },
+  "jest": {
+    "preset": "jest-preset-ui"
+  }
+}

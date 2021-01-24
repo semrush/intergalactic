@@ -1,0 +1,16 @@
+{
+  "name": "@semcore/shadow-loader",
+  "version": "1.0.4",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "test": "echo 'no test('"
+  },
+  "dependencies": {
+    "find-cache-dir": "^3.3.1",
+    "loader-utils": "^2.0.0",
+    "mkdirp": "^1.0.4",
+    "@reshadow/utils": "0.0.1-alpha.75",
+    "webpack-virtual-modules": "^0.3.2"
+  }
+}

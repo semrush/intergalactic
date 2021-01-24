@@ -1,0 +1,29 @@
+{
+  "name": "@semcore/flex-box",
+  "description": "SEMRush FlexBox Component",
+  "version": "4.3.0",
+  "main": "lib/cjs/index.js",
+  "module": "lib/es6/index.js",
+  "typings": "lib/types/index.d.ts",
+  "sideEffects": [
+    "lib/*/Box/useBox.js",
+    "lib/*/Flex/useFlex.js"
+  ],
+  "author": "Roman Lysov <r.lysov@semrush.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "build",
+    "test": "jest"
+  },
+  "dependencies": {
+    "@semcore/utils": "^3.15",
+    "csstype": "^2.6"
+  },
+  "peerDependencies": {
+    "@semcore/core": "^1",
+    "react": "16.8 - 17"
+  },
+  "jest": {
+    "preset": "jest-preset-ui"
+  }
+}

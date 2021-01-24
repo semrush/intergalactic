@@ -1,0 +1,113 @@
+@import '@semcore/utils/style/var.css';
+
+SDropdownMenuList {
+  max-height: 240px;
+  margin: media(4px) 0;
+  padding: 0;
+  position: relative;
+  min-height: media(26px);
+  min-width: media(32px);
+}
+
+SDropdownMenuItem {
+  display: flex;
+  align-items: center;
+  position: relative;
+  text-decoration: none;
+  box-sizing: border-box;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+  line-height: normal;
+
+  &:hover {
+    background-color: color-mod(black a(10%));
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+
+SDropdownMenuItem[use|highlighted] {
+  z-index: 1;
+  box-shadow: var(--keyborad-focus) inset;
+}
+
+SDropdownMenuItem[use|selected] {
+  background-color: color-mod(var(--light-blue) a(20%));
+
+  &:hover {
+    background-color: color-mod(var(--light-blue) a(20%));
+  }
+}
+
+SDropdownMenuItem[use|disabled] {
+  opacity: var(--disabled-opacity);
+  cursor: default;
+  pointer-events: none;
+}
+
+SDropdownMenuItem[use|size='xl'] {
+  font-size: var(--fs-300);
+  line-height: var(--lh-300);
+
+  padding: media(8px) media(12px);
+  min-height: media(42px);
+}
+
+SDropdownMenuItem[use|size='l'] {
+  font-size: var(--fs-200);
+  line-height: var(--lh-200);
+
+  padding: media(6px) media(8px);
+  min-height: media(32px);
+}
+
+SDropdownMenuItem[use|size='m'] {
+  font-size: var(--fs-100);
+  line-height: var(--lh-100);
+
+  padding: media(4px) media(8px);
+  min-height: media(26px);
+}
+
+SDropdownMenuItem[use|notInteractive] {
+  cursor: default;
+
+  &:hover {
+    background: none;
+  }
+}
+
+SDropdownMenuItem[use|variant='hint'] {
+  color: var(--gray60);
+  cursor: default;
+
+  &:hover {
+    background: none;
+  }
+}
+
+SDropdownMenuItem[use|variant='title'] {
+  font-weight: bold;
+  cursor: default;
+
+  &:hover {
+    background: none;
+  }
+}
+
+SDropdownMenuItemAddon {
+  display: inline-flex;
+  margin-left: media(8px);
+  margin-right: media(8px);
+
+  &:first-child {
+    margin-left: 0;
+  }
+
+  &:last-child {
+    margin-right: 0;
+  }
+}

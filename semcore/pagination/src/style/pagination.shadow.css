@@ -1,0 +1,43 @@
+SPagination {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+SNextPage,
+SPrevPage {
+  align-self: center;
+  margin-left: 8px;
+}
+
+SLabel {
+  margin-left: 16px;
+}
+
+STotalPages {
+  align-self: center;
+  line-height: normal;
+}
+
+STotalPagesLabel {
+  margin-left: 8px;
+  margin-right: 4px;
+}
+
+SPageInput {
+  max-width: 64px;
+  margin-left: 4px;
+}
+
+SPageInputValue {
+  & + * {
+    visibility: hidden;
+    clip: rect(1px, 1px, 1px, 1px);
+    position: absolute;
+  }
+  &:focus + * {
+    visibility: visible;
+    clip: initial;
+    position: static;
+  }
+}

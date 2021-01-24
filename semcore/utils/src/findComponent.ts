@@ -1,0 +1,19 @@
+import React from 'react';
+import { CHILDREN_COMPONENT, INHERITED_NAME } from '@semcore/core';
+import getOriginChildren from './getOriginChildren';
+
+function findComponent(Children, names) {
+  const children = Children[CHILDREN_COMPONENT] ? getOriginChildren(Children) : Children;
+  return React.Children.toArray(children).find((child) => {
+    if (React.isValidElement(child)) {
+      if (child.type === React.Fragment) {
+        return findComponent(child.props.children, names);
+      }
+      // @ts-ignore
+      const inheritedNames = child.type[INHERITED_NAME] || [child.type.displayName];
+      return !!inheritedNames.find((name) => names.includes(name));
+    }
+  });
+}
+
+export default findComponent;

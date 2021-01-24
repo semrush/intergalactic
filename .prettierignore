@@ -1,0 +1,10 @@
+**/node_modules/**
+**/__fixtures__/**
+**/__testfixtures__/**
+**/lib/**
+website/public/**
+website/dist/**
+website/tmp/**
+vue-semcore/**
+crowdin.yml
+tools/generator-component/**

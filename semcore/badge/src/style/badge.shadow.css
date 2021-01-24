@@ -1,0 +1,24 @@
+@import '@semcore/utils/style/var.css';
+
+SBadge {
+  display: inline-block;
+  box-sizing: border-box;
+  height: 14px;
+  line-height: 14px;
+  padding: 0 4px;
+  border-radius: 4px;
+
+  white-space: nowrap;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@-moz-document url-prefix() {
+  SBadge {
+    /* потому что в ff Ubuntu какая-то странная */
+    line-height: 12.5px;
+  }
+}

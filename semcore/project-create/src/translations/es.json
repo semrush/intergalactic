@@ -1,0 +1,14 @@
+{
+  "title": "Añadir un proyecto nuevo",
+  "inputDomainLabel": "Dominio de proyecto",
+  "inputDomainError": "Introduce un dominio válido",
+  "inputDomainPlaceholder": "Introduce el dominio del proyecto",
+  "inputNameLabel": "Nombre del proyecto",
+  "inputNameErrorLength": "Debe incluir menos de 256 caracteres.",
+  "inputNameErrorCharacters": "Solo se permiten letras, números y puntos.",
+  "inputNamePlaceholder": "Introduce el nombre del proyecto",
+  "description": "Cuando hayas creado el proyecto ya no podrás cambiar este dominio. Únicamente se pueden cambiar los subdominios.",
+  "buttonCreate": "Crear proyecto",
+  "buttonCancel": "Cancelar",
+  "sharingCheckboxLegend": "Comparte el proyecto cuando lo hayas configurado"
+}

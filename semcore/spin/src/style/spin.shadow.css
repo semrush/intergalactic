@@ -1,0 +1,75 @@
+@import '@semcore/utils/style/var.css';
+
+@keyframes spin-rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+SSpin {
+  display: block;
+  flex-shrink: 0;
+  box-sizing: border-box;
+  animation: spin-rotate 0.75s infinite linear;
+  border-radius: 50%;
+  border-style: solid;
+  border-bottom-color: transparent;
+  border-left-color: transparent;
+}
+
+SSpin[theme='dark'] {
+  color: rgba(0, 0, 0, 0.3);
+}
+
+SSpin[theme='invert'] {
+  color: #fff;
+}
+
+SSpin[centered] {
+  margin: auto;
+}
+
+SSpin[size='xxs'] {
+  width: media(10px);
+  height: media(10px);
+  border-width: media(1px);
+}
+
+SSpin[size='xs'] {
+  width: media(16px);
+  height: media(16px);
+  border-width: media(2px);
+}
+
+SSpin[size='s'] {
+  width: media(20px);
+  height: media(20px);
+  border-width: media(3px);
+}
+
+SSpin[size='m'] {
+  width: media(24px);
+  height: media(24px);
+  border-width: media(4px);
+}
+
+SSpin[size='l'] {
+  width: media(32px);
+  height: media(32px);
+  border-width: media(6px);
+}
+
+SSpin[size='xl'] {
+  width: media(48px);
+  height: media(48px);
+  border-width: media(8px);
+}
+
+SSpin[size='xxl'] {
+  width: media(72px);
+  height: media(72px);
+  border-width: media(10px);
+}

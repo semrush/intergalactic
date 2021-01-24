@@ -1,0 +1,14 @@
+{
+  "title": "Добавить новый проект",
+  "inputDomainLabel": "Домен проекта",
+  "inputDomainError": "Укажите действительное имя домена",
+  "inputDomainPlaceholder": "Введите домен проекта",
+  "inputNameLabel": "Имя проекта",
+  "inputNameErrorLength": "Длина не может превышать 256 символов.",
+  "inputNameErrorCharacters": "Можно использовать только буквы, цифры и точки.",
+  "inputNamePlaceholder": "Введите имя проекта",
+  "description": "После создания проекта вы не сможете изменить этот домен. Изменять можно только поддомены.",
+  "buttonCreate": "Создать проект",
+  "buttonCancel": "Отмена",
+  "sharingCheckboxLegend": "Предоставить доступ к проекту после настройки"
+}

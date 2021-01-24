@@ -1,0 +1,775 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`babel postcss should inline styles from file but ignore them 1`] = `
+"import React from 'react';
+import { styled, css, __css__, set, create, use, map } from '@semcore/core';
+
+/*__reshadow-styles__:\\"./styles.css\\"*/
+const { ...styles
+} = (
+/*__reshadow_css_start__*/
+__css__(
+/*__inner_css_start__*/
+\`button {
+  color: red;
+}
+\`
+/*__inner_css_end__*/
+, \\"13e4rxs\\")
+/*__reshadow_css_end__*/
+, {});
+const styled_c8 = create([styles]);
+
+const App = ({
+  disabled,
+  type
+}) => styled((set([styled_c8]), /*#__PURE__*/React.createElement(\\"button\\", map(\\"button\\", {
+  type: type,
+  disabled: disabled
+}, use({
+  theme: \\"normal\\"
+})), \\"content\\")));
+
+export default App;"
+`;
+
+exports[`babel postcss should process styles and add them runtime 1`] = `
+"import React from 'react';
+import { styled, set, create, css, use, map, __css__ } from '@semcore/core';
+const styled_c8 = create([(
+/*__reshadow_css_start__*/
+__css__(
+/*__inner_css_start__*/
+\`.___button_d2nb2_1 {
+    color: red;
+}\`
+/*__inner_css_end__*/
+, \\"kzz4i\\")
+/*__reshadow_css_end__*/
+, {
+  \\"__button\\": \`___button_d2nb2_1\`
+})]);
+
+const App = ({
+  disabled,
+  type
+}) => styled((set([styled_c8]), /*#__PURE__*/React.createElement(\\"button\\", map(\\"button\\", {
+  type: type,
+  disabled: disabled
+}, use({
+  theme: \\"normal\\"
+})), \\"content\\")));
+
+export default App;"
+`;
+
+exports[`babel postcss should process styles from file 1`] = `
+"import React from 'react';
+import { styled, css, __css__, set, create, use, map } from '@semcore/core';
+
+/*__reshadow-styles__:\\"./styles.css\\"*/
+const { ...styles
+} = (
+/*__reshadow_css_start__*/
+__css__(
+/*__inner_css_start__*/
+\`.___button_13e4r_1 {
+  color: red;
+}
+\`
+/*__inner_css_end__*/
+, \\"p2ap2p\\")
+/*__reshadow_css_end__*/
+, {
+  \\"__button\\": \`___button_13e4r_1\`
+});
+const styled_c8 = create([styles]);
+
+const App = ({
+  disabled,
+  type
+}) => styled((set([styled_c8]), /*#__PURE__*/React.createElement(\\"button\\", map(\\"button\\", {
+  type: type,
+  disabled: disabled
+}, use({
+  theme: \\"normal\\"
+})), \\"content\\")));
+
+export default App;"
+`;
+
+exports[`babel postcss should process styles with css 1`] = `
+"import React from 'react';
+import { styled, css, __css__, set, create, use, map } from '@semcore/core';
+const styles = (
+/*__reshadow_css_start__*/
+__css__(
+/*__inner_css_start__*/
+\`
+    .___button_1cx4s_1 {
+        color: red;
+    }
+\`
+/*__inner_css_end__*/
+, \\"opgh5j\\")
+/*__reshadow_css_end__*/
+, {
+  \\"__button\\": \`___button_1cx4s_1\`
+});
+const styled_c8 = create([styles]);
+
+const App = ({
+  disabled,
+  type
+}) => styled((set([styled_c8]), /*#__PURE__*/React.createElement(\\"button\\", map(\\"button\\", {
+  type: type,
+  disabled: disabled
+}, use({
+  theme: \\"normal\\"
+})), \\"content\\")));
+
+export default App;"
+`;
+
+exports[`babel postcss should process styles with css local name 1`] = `
+"import React from 'react';
+import { styled, css as localCss, __css__, set, create, use, map } from '@semcore/core';
+const styles = (
+/*__reshadow_css_start__*/
+__css__(
+/*__inner_css_start__*/
+\`
+    .___button_1cx4s_1 {
+        color: red;
+    }
+\`
+/*__inner_css_end__*/
+, \\"opgh5j\\")
+/*__reshadow_css_end__*/
+, {
+  \\"__button\\": \`___button_1cx4s_1\`
+});
+const styled_c8 = create([styles]);
+
+const App = ({
+  disabled,
+  type
+}) => styled((set([styled_c8]), /*#__PURE__*/React.createElement(\\"button\\", map(\\"button\\", {
+  type: type,
+  disabled: disabled
+}, use({
+  theme: \\"normal\\"
+})), \\"content\\")));
+
+export default App;"
+`;
+
+exports[`babel postcss should use cssnano 1`] = `
+"import React from 'react';
+import { styled, set, create, css, map, __css__ } from '@semcore/core';
+const styled_c8 = create([(
+/*__reshadow_css_start__*/
+__css__(
+/*__inner_css_start__*/
+\`.___button_1n8fw_1{display:grid}\`
+/*__inner_css_end__*/
+, \\"e4ti1n\\")
+/*__reshadow_css_end__*/
+, {
+  \\"__button\\": \`___button_1n8fw_1\`
+})]);
+
+const App = ({
+  disabled,
+  type
+}) => styled((set([styled_c8]), /*#__PURE__*/React.createElement(\\"button\\", map(\\"button\\", {
+  type: type,
+  disabled: disabled
+}), \\"content\\")));
+
+export default App;"
+`;
+
+exports[`babel postcss should use postcss-env 1`] = `
+"import React from 'react';
+import { styled, set, create, css, map, __css__ } from '@semcore/core';
+const styled_c8 = create([(
+/*__reshadow_css_start__*/
+__css__(
+/*__inner_css_start__*/
+\`.___button_ltzzv_1 {
+    -webkit-transition: 1s;
+    transition: 1s;
+}\`
+/*__inner_css_end__*/
+, \\"1d59gvr\\")
+/*__reshadow_css_end__*/
+, {
+  \\"__button\\": \`___button_ltzzv_1\`
+})]);
+
+const App = ({
+  disabled,
+  type
+}) => styled((set([styled_c8]), /*#__PURE__*/React.createElement(\\"button\\", map(\\"button\\", {
+  type: type,
+  disabled: disabled
+}), \\"content\\")));
+
+export default App;"
+`;
+
+exports[`babel postcss should work with css-modules imports 1`] = `
+"import React from 'react';
+import { styled, set, create, css, use, map, __css__ } from '@semcore/core';
+const styled_c8 = create([(
+/*__reshadow_css_start__*/
+__css__(
+/*__inner_css_start__*/
+\`.___button_1vljt_1 {
+
+    color: red;
+}\`
+/*__inner_css_end__*/
+, \\"1s3e96t\\")
+/*__reshadow_css_end__*/
+, {
+  \\"title\\": \`_title_oivlx_1\`,
+  \\"__button\\": \`___button_1vljt_1 _title_oivlx_1\`
+})]);
+
+const App = ({
+  disabled,
+  type
+}) => styled((set([styled_c8]), /*#__PURE__*/React.createElement(\\"button\\", map(\\"button\\", {
+  type: type,
+  disabled: disabled
+}, use({
+  theme: \\"normal\\"
+})), \\"content\\")));
+
+export default App;"
+`;
+
+exports[`babel should keep the links to styles if they cant hoist 1`] = `
+"import React from 'react';
+import { styled, set, create, css, use, map, __css__ } from '@semcore/core';
+import baseStyles from './styles';
+const styled_c8 = create([baseStyles,
+/*__reshadow_css_start__*/
+__css__(
+/*__inner_css_start__*/
+\`button {
+    color: red;
+}\`
+/*__inner_css_end__*/
+, \\"d2nb2y\\")
+/*__reshadow_css_end__*/
+]);
+
+const App = ({
+  disabled,
+  styles,
+  type,
+  color,
+  bgcolor
+}) => styled((set([styled_c8, styles]), /*#__PURE__*/React.createElement(\\"button\\", map(\\"button\\", {
+  type: type,
+  disabled: disabled
+}, use({
+  theme: \\"normal\\"
+})), \\"content\\")));
+
+export default App;"
+`;
+
+exports[`babel should merge attributes well 1`] = `
+"import React from 'react';
+import { styled, use, set, create, map } from '@semcore/core';
+import styles from './styles';
+const styled_c8 = create([styles]);
+
+const App = ({
+  disabled,
+  type,
+  ...props
+}) => styled((set([styled_c8]), /*#__PURE__*/React.createElement(\\"button\\", map(\\"button\\", {
+  disabled: true,
+  name: \\"button\\"
+}, props, {
+  type: \\"submit\\",
+  autofocus: true,
+  \\"aria-hidden\\": true
+}, use({
+  size: 's',
+  theme: \\"normal\\"
+})), \\"content\\")));
+
+export default App;"
+`;
+
+exports[`babel should not transform tag with dot element that is not under \`use\` namespace 1`] = `
+"import React from 'react';
+import { styled, set, create, map } from '@semcore/core';
+import styles from './styles';
+const styled_c8 = create([styles]);
+
+const App = ({
+  disabled,
+  type
+}) => styled((set([styled_c8]), /*#__PURE__*/React.createElement(components.button, map(\\"components.button\\", {
+  type: type,
+  disabled: disabled
+}), /*#__PURE__*/React.createElement(\\"span\\", {
+  className: styled.styles[\\"__content\\"]
+}, \\"content\\"))));
+
+export default App;"
+`;
+
+exports[`babel should transform tag with dot element 1`] = `
+"import React from 'react';
+import { styled, use, set, create, map } from '@semcore/core';
+import styles from './styles';
+const styled_c8 = create([styles]);
+
+const App = ({
+  disabled,
+  type
+}) => styled((set([styled_c8]), /*#__PURE__*/React.createElement(\\"div\\", map(\\"use--button\\", {
+  type: type,
+  disabled: disabled
+}), /*#__PURE__*/React.createElement(\\"span\\", {
+  className: styled.styles[\\"__use--content\\"]
+}, \\"content\\"))));
+
+export default App;"
+`;
+
+exports[`babel should transform tag with just "as" attribute 1`] = `
+"import React from 'react';
+import { styled, use, set, create, map } from '@semcore/core';
+import styles from './styles';
+const styled_c8 = create([styles]);
+
+const App = ({
+  disabled,
+  type
+}) => styled((set([styled_c8]), /*#__PURE__*/React.createElement(\\"button\\", map(\\"button\\", {
+  type: type,
+  disabled: disabled
+}), /*#__PURE__*/React.createElement(\\"span\\", {
+  className: styled.styles[\\"__content\\"]
+}, \\"content\\"))));
+
+export default App;"
+`;
+
+exports[`babel should transform tag with namespace 1`] = `
+"import React from 'react';
+import { styled, use, set, create, map } from '@semcore/core';
+import styles from './styles';
+const styled_c8 = create([styles]);
+
+const App = ({
+  disabled,
+  type
+}) => styled((set([styled_c8]), /*#__PURE__*/React.createElement(\\"div\\", map(\\"use--button\\", {
+  type: type,
+  disabled: disabled
+}), /*#__PURE__*/React.createElement(\\"span\\", {
+  className: styled.styles[\\"__use--content\\"]
+}, \\"content\\"))));
+
+export default App;"
+`;
+
+exports[`babel should transform the code 1`] = `
+"import React from 'react';
+import { styled, set, create, use, map } from '@semcore/core';
+import styles from './styles';
+const styled_c8 = create([styles]);
+
+const App = ({
+  disabled,
+  type
+}) => styled((set([styled_c8]), /*#__PURE__*/React.createElement(\\"button\\", map(\\"button\\", {
+  type: type,
+  disabled: disabled
+}, use({
+  theme: \\"normal\\"
+})), \\"content\\")));
+
+export default App;"
+`;
+
+exports[`babel should transform the nested code 1`] = `
+"import React from 'react';
+import { styled, set, create, use, map } from '@semcore/core';
+import styles from './styles';
+import styles2 from './styles2';
+const styled_c8 = create([styles]);
+const styled_12c = create([styles2]);
+
+const App = ({
+  disabled,
+  type
+}) => styled((set([styled_c8]), /*#__PURE__*/React.createElement(\\"button\\", map(\\"button\\", {
+  type: type,
+  disabled: disabled
+}, use({
+  theme: \\"normal\\"
+})), styled((set([styled_12c]), /*#__PURE__*/React.createElement(\\"div\\", {
+  className: styled.styles[\\"__content\\"]
+}, \\"content\\"))), /*#__PURE__*/React.createElement(\\"button\\", {
+  className: styled.styles[\\"__button\\"]
+}, \\"click\\"))));
+
+export default App;"
+`;
+
+exports[`babel should transform with css-in-js code 1`] = `
+"import React from 'react';
+import { styled, set, create, css, use, map, __css__ } from '@semcore/core';
+const styled_c8 = create([
+/*__reshadow_css_start__*/
+__css__(
+/*__inner_css_start__*/
+\`button[disabled] {
+    color: red;
+}\`
+/*__inner_css_end__*/
+, \\"r6bn3g\\")
+/*__reshadow_css_end__*/
+]);
+
+const App = ({
+  disabled,
+  type
+}) => styled((set([styled_c8]), /*#__PURE__*/React.createElement(\\"button\\", map(\\"button\\", {
+  type: type,
+  disabled: disabled
+}, use({
+  theme: \\"normal\\"
+})), \\"content\\")));
+
+export default App;"
+`;
+
+exports[`babel should transform with css-in-js code with styles 1`] = `
+"import React from 'react';
+import { styled, set, create, css, use, map, __css__ } from '@semcore/core';
+import styles from './styles';
+const styled_c8 = create([styles,
+/*__reshadow_css_start__*/
+__css__(
+/*__inner_css_start__*/
+\`button[disabled] {
+    color: red;
+}\`
+/*__inner_css_end__*/
+, \\"r6bn3g\\")
+/*__reshadow_css_end__*/
+]);
+
+const App = ({
+  disabled,
+  type
+}) => styled((set([styled_c8]), /*#__PURE__*/React.createElement(\\"button\\", map(\\"button\\", {
+  type: type,
+  disabled: disabled
+}, use({
+  theme: \\"normal\\"
+})), \\"content\\")));
+
+export default App;"
+`;
+
+exports[`babel should transform with css-in-js code with variables 1`] = `
+"import React from 'react';
+import { styled, set, create, css, use, map, __css__ } from '@semcore/core';
+import styles from './styles';
+const styled_c8 = create([styles,
+/*__reshadow_css_start__*/
+__css__(
+/*__inner_css_start__*/
+\`button[disabled] {
+    color: var(--7osiam_0);
+    background-color: var(--7osiam_1);
+}\`
+/*__inner_css_end__*/
+, \\"k2sgiz\\")
+/*__reshadow_css_end__*/
+]);
+
+const App = ({
+  disabled,
+  type,
+  color,
+  bgcolor
+}) => styled((set([styled_c8], {
+  \\"--7osiam_0\\": color,
+  \\"--7osiam_1\\": bgcolor
+}), /*#__PURE__*/React.createElement(\\"button\\", map(\\"button\\", {
+  type: type,
+  disabled: disabled,
+  $$style: styled.$$style
+}, use({
+  theme: \\"normal\\"
+})), \\"content\\")));
+
+export default App;"
+`;
+
+exports[`babel should transform with css-in-js code with variables and avoid duplication 1`] = `
+"import React from 'react';
+import { styled, set, create, css, __css__ } from '@semcore/core';
+import styles from './styles';
+const styled_c8 = create([styles,
+/*__reshadow_css_start__*/
+__css__(
+/*__inner_css_start__*/
+\`button {
+    color: var(--7osiam_0);
+    background-color: var(--7osiam_0);
+}\`
+/*__inner_css_end__*/
+, \\"1egzrx8\\")
+/*__reshadow_css_end__*/
+]);
+
+const App = ({
+  color
+}) => styled((set([styled_c8], {
+  \\"--7osiam_0\\": color
+}), /*#__PURE__*/React.createElement(\\"button\\", {
+  className: styled.styles[\\"__button\\"],
+  style: styled.$$style
+}, \\"content\\")));
+
+export default App;"
+`;
+
+exports[`babel should transform with css-in-js code with variables in nested elemnts 1`] = `
+"import React from 'react';
+import { styled, set, create, css, map, __css__ } from '@semcore/core';
+import styles from './styles';
+const styled_c8 = create([
+/*__reshadow_css_start__*/
+__css__(
+/*__inner_css_start__*/
+\`div {
+    padding: 10px;
+}\`
+/*__inner_css_end__*/
+, \\"54eajl\\")
+/*__reshadow_css_end__*/
+]);
+const styled_12c = create([
+/*__reshadow_css_start__*/
+__css__(
+/*__inner_css_start__*/
+\`button[disabled] {
+    color: var(--7osiam_0);
+    background-color: var(--7osiam_1);
+}\`
+/*__inner_css_end__*/
+, \\"k2sgiz\\")
+/*__reshadow_css_end__*/
+]);
+
+const App = ({
+  disabled,
+  type,
+  color,
+  bgcolor
+}) => styled((set([styled_c8]), /*#__PURE__*/React.createElement(\\"div\\", {
+  className: styled.styles[\\"__div\\"]
+}, styled((set([styled_12c], {
+  \\"--7osiam_0\\": color,
+  \\"--7osiam_1\\": bgcolor
+}), /*#__PURE__*/React.createElement(\\"button\\", map(\\"button\\", {
+  type: type,
+  disabled: disabled,
+  $$style: styled.$$style
+}), \\"content\\"))))));
+
+export default App;"
+`;
+
+exports[`babel should transform with css-in-js code with variables in sibling nodes 1`] = `
+"import React from 'react';
+import { styled, set, create, css, use, map, __css__ } from '@semcore/core';
+import styles from './styles';
+const styled_c8 = create([styles,
+/*__reshadow_css_start__*/
+__css__(
+/*__inner_css_start__*/
+\`button[disabled] {
+    color: var(--7osiam_0);
+    background-color: var(--7osiam_1);
+}\`
+/*__inner_css_end__*/
+, \\"k2sgiz\\")
+/*__reshadow_css_end__*/
+]);
+
+const App = ({
+  disabled,
+  type,
+  color,
+  bgcolor
+}) => styled((set([styled_c8], {
+  \\"--7osiam_0\\": color,
+  \\"--7osiam_1\\": bgcolor
+}), /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(\\"button\\", map(\\"button\\", {
+  type: type,
+  disabled: disabled,
+  $$style: styled.$$style
+}, use({
+  theme: \\"normal\\"
+})), \\"content\\"), /*#__PURE__*/React.createElement(\\"button\\", map(\\"button\\", {
+  type: type,
+  disabled: disabled,
+  $$style: styled.$$style
+}, use({
+  theme: \\"action\\"
+})), \\"content 2\\"))));
+
+export default App;"
+`;
+
+exports[`babel should transform with css-in-js code with variables with string inline style 1`] = `
+"import React from 'react';
+import { styled, set, create, css, use, map, __css__ } from '@semcore/core';
+import styles from './styles';
+const styled_c8 = create([styles,
+/*__reshadow_css_start__*/
+__css__(
+/*__inner_css_start__*/
+\`button[disabled] {
+    color: var(--7osiam_0);
+    background-color: var(--7osiam_1);
+}\`
+/*__inner_css_end__*/
+, \\"k2sgiz\\")
+/*__reshadow_css_end__*/
+]);
+
+const App = ({
+  disabled,
+  type,
+  color,
+  bgcolor
+}) => styled((set([styled_c8], \`--7osiam_0:\${color};--7osiam_1:\${bgcolor};\`), /*#__PURE__*/React.createElement(\\"button\\", map(\\"button\\", {
+  type: type,
+  disabled: disabled,
+  $$style: styled.$$style
+}, use({
+  theme: \\"normal\\"
+})), \\"content\\")));
+
+export default App;"
+`;
+
+exports[`babel should transform with css-in-js code with variables with string inline style and avoid duplication 1`] = `
+"import React from 'react';
+import { styled, set, create, css, use, map, __css__ } from '@semcore/core';
+import styles from './styles';
+const styled_c8 = create([styles,
+/*__reshadow_css_start__*/
+__css__(
+/*__inner_css_start__*/
+\`button[disabled] {
+    color: var(--7osiam_0);
+    background-color: var(--7osiam_0);
+}\`
+/*__inner_css_end__*/
+, \\"113202y\\")
+/*__reshadow_css_end__*/
+]);
+
+const App = ({
+  disabled,
+  type,
+  color
+}) => styled((set([styled_c8], \`--7osiam_0:\${color};\`), /*#__PURE__*/React.createElement(\\"button\\", map(\\"button\\", {
+  type: type,
+  disabled: disabled,
+  $$style: styled.$$style
+}, use({
+  theme: \\"normal\\"
+})), \\"content\\")));
+
+export default App;"
+`;
+
+exports[`babel should transform with css-in-js code with variables without overhead 1`] = `
+"import React from 'react';
+import { styled, set, create, css, __css__ } from '@semcore/core';
+import styles from './styles';
+const styled_c8 = create([styles,
+/*__reshadow_css_start__*/
+__css__(
+/*__inner_css_start__*/
+\`button {
+    color: var(--7osiam_0);
+    background-color: var(--7osiam_1);
+}\`
+/*__inner_css_end__*/
+, \\"1xq3zrx\\")
+/*__reshadow_css_end__*/
+]);
+
+const App = ({
+  color,
+  bgcolor
+}) => styled((set([styled_c8], {
+  \\"--7osiam_0\\": color,
+  \\"--7osiam_1\\": bgcolor
+}), /*#__PURE__*/React.createElement(\\"button\\", {
+  className: styled.styles[\\"__button\\"],
+  style: styled.$$style
+}, \\"content\\")));
+
+export default App;"
+`;
+
+exports[`babel should use custom elementFallback 1`] = `
+"import React from 'react';
+import { styled, use, set, create, map } from '@semcore/core';
+import styles from './styles';
+const styled_c8 = create([styles]);
+
+const App = ({
+  disabled,
+  type
+}) => styled((set([styled_c8]), /*#__PURE__*/React.createElement(\\"button\\", map(\\"button\\", {
+  type: type,
+  disabled: disabled
+}), /*#__PURE__*/React.createElement(\\"span\\", {
+  className: styled.styles[\\"__content\\"]
+}, \\"content\\"))));
+
+export default App;"
+`;
+
+exports[`babel should work with just spread 1`] = `
+"import React from 'react';
+import { styled, set, create, css, map, __css__ } from '@semcore/core';
+const styled_c8 = create([
+/*__reshadow_css_start__*/
+__css__(
+/*__inner_css_start__*/
+\`button {
+    padding: 5px 10px;
+}\`
+/*__inner_css_end__*/
+, \\"hfcxht\\")
+/*__reshadow_css_end__*/
+]);
+
+const Button = props => styled((set([styled_c8]), /*#__PURE__*/React.createElement(\\"button\\", map(\\"button\\", props))));
+
+export default Button;"
+`;

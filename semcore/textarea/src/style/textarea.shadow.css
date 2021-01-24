@@ -1,0 +1,65 @@
+@import '@semcore/utils/style/var.css';
+
+STextarea {
+  height: auto;
+  color: var(--gray20);
+  border: 1px solid var(--stone);
+  outline: none;
+  width: 100%;
+  box-sizing: border-box;
+  font-family: inherit;
+
+  &:read-only {
+    background-color: var(--gray96);
+  }
+
+  &:disabled {
+    opacity: var(--disabled-opacity);
+  }
+
+  &::placeholder {
+    color: var(--gray70);
+  }
+}
+
+STextarea[size='m'] {
+  padding: media(3px) media(8px);
+  font-size: var(--fs-100);
+  line-height: var(--lh-100);
+  border-radius: 3px;
+}
+
+STextarea[size='l'] {
+  padding: media(5px) media(8px) media(6px);
+  font-size: var(--fs-200);
+  line-height: var(--lh-200);
+  border-radius: 4px;
+}
+
+STextarea[size='xl'] {
+  padding: media(8px) media(12px);
+  font-size: var(--fs-300);
+  line-height: var(--lh-300);
+  border-radius: 5px;
+}
+
+STextarea[state='normal'] {
+  &:focus {
+    box-shadow: var(--keyborad-focus);
+    border-color: var(--light-blue);
+  }
+}
+
+STextarea[state='valid'] {
+  border-color: var(--green);
+  &:focus {
+    box-shadow: 0 0 0 3px color-mod(var(--green) a(30%));
+  }
+}
+
+STextarea[state='invalid'] {
+  border-color: var(--orange);
+  &:focus {
+    box-shadow: 0 0 0 3px color-mod(var(--orange) a(30%));
+  }
+}

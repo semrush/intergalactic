@@ -1,0 +1,35 @@
+@import '@semcore/utils/style/var.css';
+
+SLine {
+  fill: transparent;
+  stroke-width: 3;
+  /*stroke-linecap: round;*/
+}
+
+SLine[hide] {
+  display: none;
+}
+
+SDot {
+  stroke-width: 2px;
+  stroke: #fff;
+  r: 6px;
+}
+
+SDot[hide] {
+  display: none;
+}
+
+SDot[active] {
+  r: 8px;
+}
+
+SNull {
+  fill: transparent;
+  stroke: var(--mist);
+  stroke-dasharray: 4;
+}
+
+SNull[hide] {
+  display: none;
+}

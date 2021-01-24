@@ -1,0 +1,25 @@
+@import '@semcore/utils/style/var.css';
+
+SItemToggle {
+  cursor: pointer;
+  outline: 0;
+}
+
+SItemToggle[keyboardFocused] {
+  box-shadow: var(--keyborad-focus);
+}
+
+SItemToggle[disabled] {
+  opacity: var(--disabled-opacity);
+  cursor: default;
+  pointer-events: none;
+}
+
+SItemChevron {
+  transform: rotate(0deg);
+  transition: transform 250ms ease-out;
+
+  &[selected] {
+    transform: rotate(90deg);
+  }
+}

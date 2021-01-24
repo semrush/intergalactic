@@ -1,0 +1,14 @@
+{
+  "name": "analyzer",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "webpack": "^4.35.2",
+    "webpack-bundle-analyzer": "^3.3.2",
+    "webpack-cli": "^3.3.5"
+  }
+}

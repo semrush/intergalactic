@@ -1,0 +1,26 @@
+{
+  "name": "@semcore/drag-and-drop",
+  "description": "SEMRush DragAndDrop Component",
+  "version": "1.0.0-3",
+  "main": "lib/cjs/index.js",
+  "module": "lib/es6/index.js",
+  "typings": "lib/types/index.d.ts",
+  "author": "Roman Lysov <r.lysov@semrush.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "build",
+    "test": "jest"
+  },
+  "dependencies": {
+    "@semcore/flex-box": "^4",
+    "@semcore/utils": "^3.21"
+  },
+  "peerDependencies": {
+    "@semcore/core": "^1",
+    "react": "16.8 - 17",
+    "react-dom": "^16.8"
+  },
+  "jest": {
+    "preset": "jest-preset-ui"
+  }
+}

@@ -1,0 +1,57 @@
+@import '@semcore/utils/style/var.css';
+
+SHint {
+  display: inline-block;
+  outline: none;
+  transition: all 0.15s ease-in-out;
+  text-decoration: none;
+  cursor: pointer;
+  color: var(--gray60);
+
+  &[active],
+  &:active,
+  &:hover,
+  &:focus {
+    outline: 0;
+    text-decoration: none;
+  }
+}
+
+SHint {
+  &[active],
+  &:hover {
+    color: color-mod(var(--gray60) shade(12%));
+    text-decoration: none;
+  }
+}
+
+SHint[keyboardFocused] {
+  box-shadow: var(--keyborad-focus);
+}
+
+SHint[disabled] {
+  opacity: var(--disabled-opacity);
+  cursor: default;
+  pointer-events: none; /* Disable hint interactions */
+}
+
+SAddon {
+  vertical-align: middle;
+  margin-top: -4px;
+}
+
+SHint SAddon {
+  &:not(:only-child):first-child {
+    margin-right: 4px;
+  }
+
+  &:not(:only-child):last-child {
+    margin-left: 8px;
+  }
+}
+
+SText {
+  border-bottom-width: 1px;
+  border-bottom-style: dotted;
+  border-color: currentColor;
+}

@@ -1,0 +1,110 @@
+@import '@semcore/utils/style/var.css';
+
+SScrollArea {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+SShadowHorizontal,
+SShadowVertical {
+  &:before,
+  &:after {
+    content: '';
+    position: absolute;
+    display: none;
+    pointer-events: none;
+    z-index: 1;
+  }
+}
+
+SShadowHorizontal {
+  &:before,
+  &:after {
+    top: 0;
+    display: block;
+    width: 5px;
+    height: 100%;
+  }
+}
+
+SShadowHorizontal[position='median'] {
+  &:before {
+    left: 0;
+    background: linear-gradient(to left, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.1) 100%);
+  }
+
+  &:after {
+    right: 0;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.1) 100%);
+  }
+}
+
+SShadowHorizontal[position='start'] {
+  &:before {
+    left: 0;
+    background: linear-gradient(to left, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.1) 100%);
+  }
+}
+
+SShadowHorizontal[position='end'] {
+  &:after {
+    right: 0;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.1) 100%);
+  }
+}
+
+SShadowVertical {
+  &:before,
+  &:after {
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 5px;
+  }
+}
+
+SShadowVertical[position='median'] {
+  &:before {
+    top: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.1) 100%);
+  }
+
+  &:after {
+    bottom: 0;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.1) 100%);
+  }
+}
+
+SShadowVertical[position='start'] {
+  &:before {
+    top: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.1) 100%);
+  }
+}
+
+SShadowVertical[position='end'] {
+  &:after {
+    bottom: 0;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.1) 100%);
+  }
+}
+
+SContainer {
+  display: block;
+  width: 100%;
+  height: 100%;
+  box-sizing: content-box;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+
+  /* FF */
+  scrollbar-width: none;
+  /* IE */
+  -ms-overflow-style: none;
+  /* Webkit */
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}

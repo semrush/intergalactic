@@ -1,0 +1,30 @@
+@import '@semcore/utils/style/var.css';
+
+STitle {
+  align-items: center;
+  display: flex;
+  font-size: var(--fs-600);
+  line-height: 1.2;
+  font-weight: 500;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+STool {
+  margin-right: media(8px);
+}
+
+SName {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+  STitle {
+    flex-wrap: wrap;
+    white-space: normal;
+  }
+}

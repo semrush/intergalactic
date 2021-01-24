@@ -1,0 +1,111 @@
+@import '@semcore/utils/style/var.css';
+
+STimePicker {
+  position: relative;
+  width: auto;
+}
+
+STimePicker[disabled] {
+  color: color-mod(var(--gray20) a(30%));
+  cursor: default;
+}
+
+SPickerInput {
+  box-sizing: content-box;
+  text-align: center;
+  z-index: 1;
+
+  &[placeholder] {
+    text-overflow: initial;
+  }
+}
+
+SPickerInput[size='m'] {
+  width: media(17px);
+}
+
+SPickerInput[size='l'] {
+  width: media(18px);
+}
+
+SPickerInput[size='xl'] {
+  width: media(22px);
+}
+
+SPickerFormat {
+  flex-shrink: 0;
+  position: relative;
+  display: inline-flex;
+  padding: 0;
+  margin: 0 -1px 0 0;
+  white-space: nowrap;
+  font-family: inherit;
+  font-weight: normal;
+  line-height: normal;
+  text-decoration: none;
+  align-items: center;
+  border: 1px solid transparent;
+  outline: 0;
+  box-shadow: none;
+  cursor: pointer;
+  box-sizing: border-box;
+  overflow: visible;
+  user-select: none;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  color: var(--gray40);
+  border-color: var(--stone);
+  background-color: color-mod(var(--stone) a(10%));
+
+  &:hover {
+    background-color: color-mod(var(--stone) a(20%));
+  }
+
+  &:active,
+  &[active] {
+    background-color: color-mod(var(--stone) a(30%));
+  }
+}
+
+SPickerFormat[size='m'] {
+  height: media(26px);
+  width: media(56px);
+  font-size: media(12px);
+  border-radius: 0 3px 3px 0;
+}
+
+SPickerFormat[size='l'] {
+  height: media(32px);
+  width: media(64px);
+  font-size: media(14px);
+  border-radius: 0 4px 4px 0;
+}
+
+SPickerFormat[size='m'],
+SPickerFormat[size='l'] {
+  & SPickerFormatText {
+    margin: 0 8px;
+  }
+}
+
+SPickerFormat[size='xl'] {
+  height: media(42px);
+  width: media(84px);
+  font-size: media(16px);
+  border-radius: 0 5px 5px 0;
+
+  & SPickerFormatText {
+    margin: 0 12px;
+  }
+}
+
+SPickerFormat[disabled] {
+  opacity: var(--disabled-opacity);
+  cursor: default;
+  pointer-events: none;
+  border-color: transparent transparent transparent var(--stone);
+}
+
+SPickerFormat[keyboardFocused] {
+  box-shadow: var(--keyborad-focus);
+}

@@ -1,0 +1,234 @@
+@import '@semcore/utils/style/var.css';
+
+SInput {
+  display: inline-flex;
+  width: 100%;
+  align-items: center;
+  position: relative;
+  z-index: 0;
+  vertical-align: middle;
+  padding: 0 1px;
+  box-sizing: border-box;
+
+  & input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 30px rgb(250, 255, 189) inset;
+
+    & ~ SOutline {
+      background-color: rgb(250, 255, 189);
+    }
+  }
+}
+
+SValue {
+  /* hack for firefox */
+  min-width: 0;
+  width: 100%;
+  height: calc(100% - 2px);
+  padding: 0;
+  border: none;
+  box-sizing: border-box;
+  color: var(--gray20);
+  font-size: inherit;
+  line-height: 1;
+  text-overflow: ellipsis;
+  font-family: inherit;
+  background: transparent;
+
+  &:focus {
+    outline: none;
+  }
+
+  &::placeholder {
+    color: var(--gray70);
+  }
+
+  &:read-only ~ SOutline {
+    background: var(--gray96);
+  }
+
+  &:disabled {
+    user-select: none;
+    opacity: var(--disabled-opacity);
+
+    & ~ SOutline {
+      opacity: var(--disabled-opacity);
+      cursor: default;
+      pointer-events: none;
+    }
+  }
+}
+
+SOutline {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  border: 1px solid;
+  z-index: -1;
+  background: #fff;
+}
+
+SAddon {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  flex: 0 0 auto;
+  height: 100%;
+  color: var(--gray40);
+}
+
+SAddon[interactive] {
+  color: var(--stone);
+  cursor: pointer;
+
+  &:hover {
+    color: color-mod(var(--stone) shade(12%));
+  }
+}
+
+SAddon[disabled] {
+  opacity: var(--disabled-opacity);
+  cursor: default;
+  pointer-events: none;
+}
+
+SInput[size='s'] {
+  font-size: media(10px);
+  height: media(18px);
+
+  & SOutline {
+    border-radius: 2px;
+  }
+
+  & input:-webkit-autofill {
+    border-radius: 1px;
+  }
+}
+
+SValue[size='s'],
+SAddon[size='s'] {
+  padding: 0 media(4px);
+}
+
+SInput[size='m'] {
+  font-size: media(12px);
+  height: media(26px);
+
+  & SOutline {
+    border-radius: 3px;
+  }
+
+  & input:-webkit-autofill {
+    border-radius: 2px;
+  }
+}
+
+SValue[size='m'],
+SAddon[size='m'] {
+  padding: 0 media(8px);
+}
+
+SInput[size='l'] {
+  font-size: media(14px);
+  height: media(32px);
+
+  & SOutline {
+    border-radius: 4px;
+  }
+
+  & input:-webkit-autofill {
+    border-radius: 3px;
+  }
+}
+
+SValue[size='l'],
+SAddon[size='l'] {
+  padding: 0 media(8px);
+}
+
+SInput[size='xl'] {
+  font-size: media(16px);
+  height: media(42px);
+
+  & SOutline {
+    border-radius: 5px;
+  }
+
+  & input:-webkit-autofill {
+    border-radius: 4px;
+  }
+}
+
+SValue[size='xl'],
+SAddon[size='xl'] {
+  padding: 0 media(12px);
+}
+
+SInput[focused] {
+  z-index: 1;
+}
+
+SInput[state='normal'] {
+  & SOutline {
+    border-color: var(--stone);
+  }
+
+  & SValue:focus ~ SOutline {
+    border-color: var(--light-blue);
+    box-shadow: var(--keyborad-focus);
+  }
+}
+SInput[state='valid'] {
+  & SOutline {
+    border-color: var(--green);
+  }
+
+  & SValue:focus ~ SOutline {
+    border-color: var(--green);
+    box-shadow: 0 0 0 3px color-mod(var(--green) a(30%));
+  }
+}
+SInput[state='invalid'] {
+  & SOutline {
+    border-color: var(--orange);
+  }
+
+  & SValue:focus ~ SOutline {
+    border-color: var(--orange);
+    box-shadow: 0 0 0 3px color-mod(var(--orange) a(30%));
+  }
+}
+
+SInput[neighborLocation='right'] {
+  & SOutline {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+}
+SInput[neighborLocation='both'] {
+  & SOutline {
+    border-radius: 0;
+    border-left: none;
+  }
+}
+SInput[neighborLocation='left'] {
+  & SOutline {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-left: none;
+  }
+}
+
+SValue[neighborLocation='right'] {
+  padding-right: 0;
+}
+
+SValue[neighborLocation='both'] {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+SValue[neighborLocation='left'] {
+  padding-left: 0;
+}

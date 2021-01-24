@@ -1,0 +1,83 @@
+@import '@semcore/utils/style/var.css';
+
+SProgressBar {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+SValue {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-image: linear-gradient(
+    -45deg,
+    color-mod(var(--green) shade(10%)) 25%,
+    var(--green) 0,
+    var(--green) 50%,
+    color-mod(var(--green) shade(10%)) 0,
+    color-mod(var(--green) shade(10%)) 76%,
+    var(--green) 0
+  );
+  overflow: hidden;
+
+  animation-name: loading;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  transition-property: width;
+  transition-timing-function: linear;
+  transition-duration: 1000ms;
+}
+
+SProgressBar[size='s'],
+SValue[size='s'] {
+  height: media(4px);
+  border-radius: 2px;
+  background-size: media(8px) media(8px);
+}
+
+SProgressBar[size='m'],
+SValue[size='m'] {
+  height: media(8px);
+  border-radius: 4px;
+  background-size: media(12px) media(12px);
+}
+
+SProgressBar[size='l'],
+SValue[size='l'] {
+  height: media(12px);
+  border-radius: 6px;
+  background-size: media(16px) media(16px);
+}
+
+SProgressBar[theme='dark'] {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+SProgressBar[theme='invert'] {
+  background-color: var(--mercury);
+}
+
+@keyframes loading {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 60px 0;
+  }
+}
+
+SProgressBar[animation] {
+  background-image: linear-gradient(
+    -45deg,
+    color-mod(var(--mercury) shade(10%)) 25%,
+    var(--mercury) 0,
+    var(--mercury) 50%,
+    color-mod(var(--mercury) shade(10%)) 0,
+    color-mod(var(--mercury) shade(10%)) 76%,
+    var(--mercury) 0
+  );
+  animation-name: loading;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}

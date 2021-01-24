@@ -1,0 +1,6 @@
+{
+  "title": "Projekt nicht gefunden",
+  "text": "<p>Das Projekt, auf das Sie zugreifen möchten, wurde nicht gefunden.</p><p>Überprüfen Sie, ob eines der folgenden Probleme vorliegt:</p><ul><li>Das Projekt wurde gelöscht, oder die eingegebene URL ist fehlerhaft.</li><li>Sie sind nicht berechtigt, das Projekt anzuzeigen. Bitten Sie den Projektverantwortlichen um Zugriffsrechte.</li></ul><p>Sie finden alle Ihre Projekte auf der Seite „Projekte“.</p><p>Wenn Sie andere Probleme mit dem Zugriff auf das Projekt haben, kontaktieren Sie unser <a href=\"{{url}}\">Support-Team.</a></p>",
+  "btnProjects": "Zu den Projekten",
+  "btnContacts": "Kontakt"
+}

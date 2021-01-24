@@ -1,0 +1,28 @@
+{
+  "name": "@semcore/skeleton",
+  "description": "SEMRush Skeleton Component",
+  "version": "2.2.0",
+  "main": "lib/cjs/index.js",
+  "module": "lib/es6/index.js",
+  "types": "lib/types/index.d.ts",
+  "sideEffects": [
+    "lib/*/Skeleton.js"
+  ],
+  "author": "Roman Lysov <r.lysov@semrush.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "build",
+    "test": "jest"
+  },
+  "dependencies": {
+    "@semcore/utils": "^3.24",
+    "@semcore/flex-box": "^4"
+  },
+  "peerDependencies": {
+    "@semcore/core": "^1",
+    "react": "16.8 - 17"
+  },
+  "jest": {
+    "preset": "jest-preset-ui"
+  }
+}

@@ -1,0 +1,156 @@
+@import '@semcore/utils/style/var.css';
+
+SLabel {
+  display: inline-flex;
+  align-items: flex-start;
+  cursor: pointer;
+}
+
+SText {
+  margin-left: media(8px);
+
+  &[disabled] {
+    opacity: var(--disabled-opacity);
+  }
+}
+
+SControl {
+  position: absolute;
+  overflow: hidden;
+  width: 1px;
+  height: 1px;
+  clip: rect(0, 0, 0, 0);
+}
+
+SCheckbox {
+  position: relative;
+  flex-shrink: 0;
+  margin: 0;
+  padding: 0;
+  outline: none;
+  z-index: 0;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #fff;
+    border: 1px solid;
+    border-radius: 2px;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: 0 2px;
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4IDYiIGZpbGw9IiNmZmYiPgogICAgPHBhdGggZD0iTTc3Ny44ODQsNTkzLjc4MmwtMC42NzktLjY3NWEwLjQsMC40LDAsMCwwLS41NTksMGwtMy41NzMsMy41NTYtMS43Mi0xLjcxM2EwLjQsMC40LDAsMCwwLS41NTgsMGwtMC42NzkuNjc1YTAuMzg0LDAuMzg0LDAsMCwwLS4xMTYuMjcyLDAuNCwwLjQsMCwwLDAsLjExNS4yODRsMi42NzksMi42NjVhMC40LDAuNCwwLDAsMCwuNTU5LDBsNC41MzEtNC41MDhhMC40LDAuNCwwLDAsMCwuMTE2LTAuMjg1QTAuMzgyLDAuMzgyLDAsMCwwLDc3Ny44ODQsNTkzLjc4MloiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC03NzAgLTU5MykiLz4KPC9zdmc+Cgo=');
+    background-repeat: no-repeat;
+    background-position: center center;
+  }
+}
+
+SCheckbox[size='xl'] {
+  margin-top: media(2px);
+  width: media(20px);
+  height: media(20px);
+}
+
+SCheckbox[size='l'] {
+  margin-top: media(1px);
+  width: media(16px);
+  height: media(16px);
+}
+
+SCheckbox[size='m'] {
+  margin-top: media(2px);
+  width: media(12px);
+  height: media(12px);
+}
+
+SCheckbox {
+  &[state='normal']:before {
+    border-color: var(--stone);
+  }
+
+  &[state='normal'][keyboardFocused]:before {
+    border-color: var(--light-blue);
+  }
+}
+
+SControl:checked {
+  & ~ SCheckbox[state='normal']:before,
+  & ~ SCheckbox[state='invalid']:before {
+    background-color: var(--light-blue);
+    border-color: var(--light-blue);
+  }
+}
+
+SControl:indeterminate {
+  & ~ SCheckbox[state='normal']:before {
+    background-color: var(--light-blue);
+    border-color: var(--light-blue);
+  }
+}
+
+SCheckbox[state='invalid'] {
+  &:before {
+    border-color: var(--orange);
+  }
+
+  &[keyboardFocused]:before {
+    box-shadow: 0 0 0 3px color-mod(var(--orange) a(30%));
+  }
+}
+
+SCheckbox[state='normal'],
+SControl:checked ~ SCheckbox[state='invalid'] {
+  &[keyboardFocused]:before {
+    box-shadow: var(--keyborad-focus);
+  }
+}
+
+SControl:disabled ~ SCheckbox:before {
+  opacity: var(--disabled-opacity);
+  cursor: default;
+}
+
+SControl:checked ~ SCheckbox {
+  &[state='invalid']:before {
+    background-color: var(--orange);
+    border-color: var(--orange);
+  }
+}
+
+SControl:indeterminate ~ SCheckbox {
+  &:after {
+    background-color: #fff;
+    margin: auto;
+  }
+
+  &[size='xl']:after {
+    width: media(14px);
+    height: media(3px);
+  }
+
+  &[size='l']:after {
+    width: media(10px);
+    height: media(2px);
+  }
+
+  &[size='m']:after {
+    width: media(8px);
+    height: media(2px);
+  }
+
+  &[state='invalid']:before {
+    background-color: var(--orange);
+    border-color: var(--orange);
+  }
+}

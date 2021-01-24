@@ -1,0 +1,67 @@
+@import '@semcore/utils/style/var.css';
+
+SChart {
+  & :global(.recharts-label) {
+    text-anchor: middle;
+    fill: var(--gray60);
+  }
+
+  & :global(.recharts-cartesian-axis-tick-value) {
+    fill: var(--gray60);
+    font-size: media(12px);
+    line-height: 1;
+  }
+
+  & :global(.recharts-default-tooltip) {
+    border: 1px solid var(--stone-light);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25);
+    border-radius: 3px;
+    padding: media(12px);
+    margin: 0;
+    background-color: #fff;
+    white-space: nowrap;
+  }
+
+  & :global(.recharts-tooltip-item) {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: media(12px);
+    color: var(--gray20);
+    padding: media(4px) 0;
+  }
+
+  & :global(.recharts-tooltip-label) {
+    font-size: media(12px);
+    color: var(--gray60);
+    margin-top: 0;
+    margin-bottom: media(8px);
+
+    &:empty {
+      margin-bottom: 0;
+    }
+  }
+
+  & :global(.recharts-tooltip-item-name-wrapper) {
+  }
+
+  & :global(.recharts-tooltip-item-value-wrapper) {
+    margin-left: media(12px);
+  }
+
+  & :global(.recharts-tooltip-item-value) {
+    font-weight: bold;
+  }
+
+  & :global(.recharts-tooltip-item-color) {
+    display: inline-block;
+    margin-right: media(8px);
+    width: media(8px);
+    height: media(8px);
+    border-radius: 50%;
+  }
+
+  & :global(.recharts-area-dot) {
+    fill-opacity: 1;
+  }
+}

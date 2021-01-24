@@ -1,0 +1,34 @@
+@import '@semcore/utils/style/var.css';
+
+SPopper {
+  padding: 16px;
+}
+
+SHeader {
+  display: flex;
+}
+
+STitle {
+  font-size: var(--fs-100);
+  height: 32px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+SToday {
+  display: flex;
+  margin-top: 12px;
+  justify-content: center;
+}
+
+SInner {
+  justify-content: flex-start;
+}
+
+SPeriod {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 8px;
+}

@@ -1,0 +1,211 @@
+@import '@semcore/utils/style/var.css';
+
+SPills {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+SPill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: normal;
+  position: relative;
+  touch-action: manipulation;
+  white-space: nowrap;
+  user-select: none;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  box-shadow: none;
+  outline: none;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+  overflow: visible;
+  outline: 0;
+  text-align: center;
+  vertical-align: middle;
+  font-family: inherit;
+  cursor: pointer;
+  color: var(--gray40);
+  background: #fff;
+  border: 1px solid var(--stone);
+
+  &::-moz-focus-inner {
+    border: none;
+    padding: 0;
+  }
+
+  &:active,
+  &:hover,
+  &:focus {
+    outline: 0;
+    text-decoration: none;
+  }
+
+  &:hover {
+    background: color-mod(var(--stone) a(20%));
+  }
+}
+
+SPill[active] {
+  background: color-mod(var(--light-blue) a(20%));
+  border-color: var(--light-blue);
+  z-index: 1;
+
+  &:enabled:hover {
+    background: color-mod(var(--light-blue) a(20%));
+  }
+}
+
+SPill[disabled] {
+  cursor: default;
+  pointer-events: none; /* Disable link interactions */
+
+  & > * {
+    opacity: var(--disabled-opacity);
+  }
+}
+
+SPill[keyboardFocused] {
+  box-shadow: var(--keyborad-focus);
+}
+
+SText {
+  color: var(--gray20);
+  display: inline-flex;
+  line-height: 1;
+}
+
+SAddon {
+  color: var(--gray60);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+SPill[size='s'] {
+  height: media(18px);
+  min-width: media(18px);
+  border-radius: 2px;
+  font-size: media(10px);
+
+  & SText {
+    margin-left: media(4px);
+    margin-right: media(4px);
+  }
+
+  & SAddon {
+    &:not(:only-child):first-child {
+      margin-left: media(4px);
+    }
+
+    &:not(:only-child):last-child {
+      margin-right: media(4px);
+    }
+
+    &:only-child {
+      margin-left: media(-2px);
+      margin-right: media(-2px);
+    }
+  }
+}
+
+SPill[size='m'] {
+  height: media(26px);
+  min-width: media(26px);
+  border-radius: 3px;
+  font-size: media(12px);
+
+  & SText {
+    margin-left: media(8px);
+    margin-right: media(8px);
+  }
+
+  & SAddon {
+    &:not(:only-child):first-child {
+      margin-left: media(8px);
+    }
+
+    &:not(:only-child):last-child {
+      margin-right: media(8px);
+    }
+
+    &:only-child {
+      margin-left: media(-4px);
+      margin-right: media(-4px);
+    }
+  }
+}
+
+SPill[size='l'] {
+  height: media(32px);
+  min-width: media(32px);
+  border-radius: 4px;
+  font-size: media(14px);
+
+  & SText {
+    margin-left: media(8px);
+    margin-right: media(8px);
+  }
+
+  & SAddon {
+    &:not(:only-child):first-child {
+      margin-left: media(8px);
+    }
+
+    &:not(:only-child):last-child {
+      margin-right: media(8px);
+    }
+
+    &:only-child {
+      margin-left: media(-4px);
+      margin-right: media(-4px);
+    }
+  }
+}
+
+SPill[size='xl'] {
+  height: media(42px);
+  min-width: media(42px);
+  border-radius: 5px;
+  font-size: media(16px);
+
+  & SText {
+    margin-left: media(12px);
+    margin-right: media(12px);
+  }
+
+  & SAddon {
+    &:not(:only-child):first-child {
+      margin-left: media(12px);
+    }
+
+    &:not(:only-child):last-child {
+      margin-right: media(12px);
+    }
+
+    &:only-child {
+      margin-left: media(-6px);
+      margin-right: media(-6px);
+    }
+  }
+}
+
+SPill[neighborLocation='right'] {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+SPill[neighborLocation='both'] {
+  border-radius: 0;
+  margin-left: -1px;
+}
+
+SPill[neighborLocation='left'] {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  margin-left: -1px;
+}

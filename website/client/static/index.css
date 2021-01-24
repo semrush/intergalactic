@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css?family=Inter:400,500,700&subset=cyrillic');
+@import '~normalize.css/normalize.css';
+@import '~prismjs/themes/prism.css';
+
+@font-face {
+  font-family: 'FactorA-Bold';
+  src: url('./fonts/FactorA-Bold.woff2');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'FactorA-Regular';
+  src: url('./fonts/FactorA-Regular.woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+html {
+  font-family: Inter, sans-serif;
+  color: #171a22;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+.docs-section {
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.docs-prop-name {
+  vertical-align: top;
+}
+
+.docs-modifiers-table table {
+  width: 100%;
+  margin-bottom: 0;
+}
+
+.docs-modifiers-table table tr {
+  text-align: left;
+}

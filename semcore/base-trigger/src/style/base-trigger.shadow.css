@@ -1,0 +1,229 @@
+@import '@semcore/utils/style/var.css';
+
+SBaseTrigger {
+  display: inline-block;
+  align-items: center;
+  justify-content: center;
+  line-height: normal;
+  position: relative;
+  touch-action: manipulation;
+  white-space: nowrap;
+  user-select: none;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  box-shadow: none;
+  outline: none;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+  overflow: visible;
+  outline: 0;
+  text-align: center;
+  vertical-align: middle;
+  font-family: inherit;
+  cursor: pointer;
+
+  border: 1px solid var(--stone);
+  background: #ffffff;
+  color: var(--gray20);
+
+  &::-moz-focus-inner {
+    border: none;
+    padding: 0;
+  }
+
+  &:active,
+  &:hover,
+  &:focus {
+    outline: 0;
+    text-decoration: none;
+  }
+
+  &:active,
+  &:hover,
+  &[active] {
+    background-color: color-mod(var(--stone) a(20%));
+  }
+}
+
+SBaseTrigger[disabled] {
+  opacity: var(--disabled-opacity);
+  cursor: default;
+  pointer-events: none; /* Disable link interactions */
+}
+
+SBaseTrigger[keyboardFocused] {
+  box-shadow: var(--keyborad-focus);
+  z-index: 1;
+}
+
+SInner {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+}
+
+SText {
+  display: inline;
+  padding: 1px 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  line-height: 1;
+  flex-grow: 1;
+  text-align: left;
+}
+
+SAddon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+SBaseAddon {
+  width: media(12px);
+  height: media(12px);
+}
+
+SBaseTrigger[size='s'] {
+  height: media(18px);
+  min-width: media(18px);
+  border-radius: media(2px);
+  font-size: media(10px);
+
+  & SText {
+    margin-left: media(4px);
+    margin-right: media(4px);
+  }
+
+  & SAddon {
+    &:not(:only-child):first-child {
+      margin-left: media(4px);
+    }
+
+    &:not(:only-child):last-child {
+      margin-right: media(4px);
+    }
+
+    &:only-child {
+      margin-left: media(-2px);
+      margin-right: media(-2px);
+    }
+  }
+}
+
+SBaseTrigger[size='m'] {
+  height: media(26px);
+  min-width: media(26px);
+  border-radius: media(3px);
+  font-size: media(12px);
+
+  & SText {
+    margin-left: media(8px);
+    margin-right: media(8px);
+  }
+
+  & SAddon {
+    &:not(:only-child):first-child {
+      margin-left: media(8px);
+    }
+
+    &:not(:only-child):last-child {
+      margin-right: media(8px);
+    }
+
+    &:only-child {
+      margin-left: media(-4px);
+      margin-right: media(-4px);
+    }
+  }
+}
+
+SBaseTrigger[size='l'] {
+  height: media(32px);
+  min-width: media(32px);
+  border-radius: media(4px);
+  font-size: media(14px);
+
+  & SText {
+    margin-left: media(8px);
+    margin-right: media(8px);
+  }
+
+  & SAddon {
+    &:not(:only-child):first-child {
+      margin-left: media(8px);
+    }
+
+    &:not(:only-child):last-child {
+      margin-right: media(8px);
+    }
+
+    &:only-child {
+      margin-left: media(-4px);
+      margin-right: media(-4px);
+    }
+  }
+}
+
+SBaseTrigger[size='xl'] {
+  height: media(42px);
+  min-width: media(42px);
+  border-radius: media(5px);
+  font-size: media(16px);
+
+  & SText {
+    margin-left: media(12px);
+    margin-right: media(12px);
+  }
+
+  & SAddon {
+    &:not(:only-child):first-child {
+      margin-left: media(12px);
+    }
+
+    &:not(:only-child):last-child {
+      margin-right: media(12px);
+    }
+
+    &:only-child {
+      margin-left: media(-6px);
+      margin-right: media(-6px);
+    }
+  }
+}
+
+SBaseTrigger[neighborLocation='right'] {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+SBaseTrigger[neighborLocation='both'] {
+  border-radius: 0;
+  margin-left: -1px;
+}
+
+SBaseTrigger[neighborLocation='left'] {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  margin-left: -1px;
+}
+
+SText[placeholder] {
+  color: var(--gray70);
+}
+
+SBaseTrigger[state='normal'] {
+  border-color: var(--stone);
+}
+
+SBaseTrigger[state='valid'] {
+  border-color: var(--green);
+}
+
+SBaseTrigger[state='invalid'] {
+  border-color: var(--orange);
+}

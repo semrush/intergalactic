@@ -1,0 +1,62 @@
+@import '@semcore/utils/style/var.css';
+
+SCarousel {
+  overflow: hidden;
+  outline: none;
+}
+
+SContainer {
+  display: flex;
+}
+
+SItem {
+  flex: 0 0 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+SIndicators {
+  display: flex;
+  justify-content: center;
+  margin-top: 16px;
+}
+
+SIndicator {
+  margin: 0 5px;
+  padding: 0 5px;
+  cursor: pointer;
+
+  &::before {
+    content: '';
+    display: block;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: color-mod(var(--stone) a(30%));
+  }
+
+  &:hover::before {
+    background-color: color-mod(var(--stone) a(60%));
+  }
+}
+
+SIndicator[active] {
+  &::before {
+    background-color: var(--stone);
+  }
+}
+
+SPrev,
+SNext {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+SPrev[disabled],
+SNext[disabled] {
+  opacity: var(--disabled-opacity);
+  cursor: default;
+  pointer-events: none;
+}

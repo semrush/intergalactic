@@ -1,0 +1,45 @@
+@import '@semcore/utils/style/var.css';
+
+SInfo {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  font-size: var(--fs-100);
+  line-height: 1.5;
+
+  & > SItem:not(:last-child) {
+    margin-right: media(24px);
+    position: relative;
+
+    &:after {
+      background-color: var(--gray80);
+      content: '';
+      display: block;
+      height: media(16px);
+      position: absolute;
+      right: media(-12px);
+      top: 50%;
+      transform: translate(0, -50%);
+      width: 1px;
+    }
+  }
+}
+
+SItem {
+  align-items: center;
+  display: flex;
+  white-space: nowrap;
+}
+
+SLabel {
+  margin-right: media(4px);
+}
+
+@media (max-width: 768px) {
+  SInfo {
+    margin-bottom: media(-4px);
+  }
+  SItem {
+    margin-bottom: media(4px);
+  }
+}

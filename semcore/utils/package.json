@@ -1,0 +1,30 @@
+{
+  "name": "@semcore/utils",
+  "description": "SEMRush Utils Component",
+  "version": "3.25.0",
+  "main": "lib/index.js",
+  "author": "Roman Lysov <r.lysov@semrush.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "build --modules=cjs",
+    "test": "jest"
+  },
+  "devDependencies": {
+    "@semcore/core": "^1"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.10",
+    "@types/react": "16.8 - 17",
+    "classnames": "^2.2",
+    "hoist-non-react-statics": "^3.3",
+    "nano-css": "^5.3"
+  },
+  "peerDependencies": {
+    "react": "16.8 - 17",
+    "react-dom": "16.8 - 17",
+    "@semcore/core": "^1"
+  },
+  "jest": {
+    "preset": "jest-preset-ui"
+  }
+}

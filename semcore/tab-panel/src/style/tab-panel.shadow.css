@@ -1,0 +1,98 @@
+@import '@semcore/utils/style/var.css';
+
+STabPanel {
+  display: flex;
+  width: 100%;
+  max-width: 100%;
+  border-bottom: 1px solid var(--gray80);
+}
+
+STabPanelItem {
+  position: relative;
+  bottom: -1px;
+  display: inline-flex;
+  min-width: 0;
+  height: media(32px);
+  font-size: var(--fs-200);
+  line-height: 1;
+  color: var(--gray40);
+  border: 1px solid transparent;
+  border-radius: 4px 4px 0 0;
+  background: transparent;
+  align-items: center;
+  justify-content: center;
+  touch-action: manipulation;
+  user-select: none;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  box-shadow: none;
+  outline: none;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+  outline: 0;
+  text-align: center;
+  vertical-align: middle;
+  font-family: inherit;
+  cursor: pointer;
+
+  &::-moz-focus-inner {
+    border: none;
+    padding: 0;
+  }
+
+  &:active,
+  &:hover,
+  &:focus {
+    outline: 0;
+    text-decoration: none;
+  }
+
+  &:hover {
+    color: var(--gray20);
+  }
+}
+
+STabPanelItem[disabled] {
+  opacity: var(--disabled-opacity);
+  cursor: default;
+  pointer-events: none; /* Disable link interactions */
+}
+
+STabPanelItem[keyboardFocused] {
+  box-shadow: var(--keyborad-focus);
+}
+
+STabPanelItem[active] {
+  color: var(--denim-blue);
+  border-color: var(--gray80);
+  border-bottom-color: white;
+  flex-shrink: 0;
+
+  &:hover {
+    color: var(--denim-blue);
+  }
+}
+
+SText {
+  display: inline-block;
+  margin: auto media(8px);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.2em;
+}
+
+SAddon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+SAddon:not(:only-child):first-child {
+  margin-left: media(8px);
+}
+
+SAddon:not(:only-child):last-child {
+  margin-right: media(8px);
+}

@@ -1,0 +1,25 @@
+{
+  "name": "@semcore/animation",
+  "description": "SEMRush Animation Component",
+  "version": "1.2.1",
+  "main": "lib/cjs/index.js",
+  "module": "lib/es6/index.js",
+  "typings": "lib/types/index.d.ts",
+  "author": "Roman Lysov <r.lysov@semrush.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "build",
+    "test": "jest"
+  },
+  "dependencies": {
+    "@semcore/utils": "^3.15",
+    "@semcore/flex-box": "^4"
+  },
+  "peerDependencies": {
+    "@semcore/core": "^1",
+    "react": "16.8 - 17"
+  },
+  "jest": {
+    "preset": "jest-preset-ui"
+  }
+}

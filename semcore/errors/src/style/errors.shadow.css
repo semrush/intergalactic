@@ -1,0 +1,57 @@
+@import '@semcore/utils/style/var.css';
+
+SError {
+  padding: 96px 0;
+  margin: 0 auto;
+  max-width: 960px;
+}
+
+SInner {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  box-sizing: border-box;
+
+  @media (max-width: 920px) {
+    padding: 0 10px;
+  }
+}
+
+SImageWrapper {
+  width: 240px;
+  height: 240px;
+  margin-right: 80px;
+}
+
+SWrapper {
+  flex: 1 0 320px;
+  margin-top: 32px;
+  @media (max-width: 920px) {
+    flex: 1 0 300px;
+    max-width: 100%;
+  }
+}
+
+STitle {
+  font-size: var(--fs-700);
+  line-height: var(--lh-700);
+  font-weight: 700;
+  margin: 0 0 16px 0;
+}
+
+SDescription {
+  font-size: var(--fs-300);
+  line-height: var(--lh-300);
+  margin: 0 0 24px 0;
+}
+
+SControls {
+  display: flex;
+  align-items: center;
+
+  & > *:not(:last-child) {
+    margin-right: 12px;
+  }
+}

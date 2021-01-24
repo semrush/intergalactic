@@ -1,0 +1,14 @@
+{
+  "title": "新しいプロジェクトを追加",
+  "inputDomainLabel": "プロジェクトドメイン",
+  "inputDomainError": "有効なドメインを入力してください",
+  "inputDomainPlaceholder": "プロジェクトのドメインを入力",
+  "inputNameLabel": "プロジェクト名",
+  "inputNameErrorLength": "長さは256文字未満にしてください。",
+  "inputNameErrorCharacters": "文字、数字、ピリオドのみ入力できます。",
+  "inputNamePlaceholder": "プロジェクト名を入力",
+  "description": "プロジェクトが作成されると、ドメインを変更することができません。サブドメインのみ変更可能です。",
+  "buttonCreate": "プロジェクトを作成",
+  "buttonCancel": "取り消す",
+  "sharingCheckboxLegend": "設定後、プロジェクトを共有"
+}

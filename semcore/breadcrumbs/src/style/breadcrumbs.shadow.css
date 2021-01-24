@@ -1,0 +1,49 @@
+@import '@semcore/utils/style/var.css';
+
+SBreadcrumbs {
+  display: flex;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+SSeparator {
+  margin: 0 media(8px);
+  color: var(--gray60);
+
+  &:last-child {
+    display: none;
+  }
+}
+
+SBreadcrumbsItem {
+  position: relative;
+  font-size: var(--fs-100);
+  line-height: var(--lh-100);
+  color: var(--gray60);
+  text-decoration: none;
+  box-sizing: border-box;
+  outline: none;
+  cursor: pointer;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+
+  &:hover {
+    text-decoration: underline;
+    color: var(--gray20);
+  }
+}
+
+SBreadcrumbsItem[keyboardFocused] {
+  box-shadow: var(--keyborad-focus);
+}
+
+SBreadcrumbsItem[active] {
+  color: var(--gray20);
+  cursor: default;
+  &:hover {
+    text-decoration: none;
+  }
+}

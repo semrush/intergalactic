@@ -1,0 +1,19 @@
+{
+  "name": "jest-preset-ui",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./index.js",
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@testing-library/react": "^11.2.2",
+    "babel-jest": "^24.8.0",
+    "babel-preset-ui": "*",
+    "dotenv": "^8.2.0",
+    "identity-obj-proxy": "^3.0.0",
+    "jest-image-snapshot": "^2.9.0"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^5.11.3"
+  }
+}

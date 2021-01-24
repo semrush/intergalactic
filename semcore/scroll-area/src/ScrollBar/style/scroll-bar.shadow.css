@@ -1,0 +1,31 @@
+@import '@semcore/utils/style/var.css';
+
+SScrollBar {
+  position: absolute;
+  display: flex;
+}
+
+SScrollBar[orientation='vertical'] {
+  top: 4px;
+  right: 0;
+  width: 8px;
+  height: calc(100% - 8px);
+  justify-content: center;
+}
+
+SScrollBar[orientation='horizontal'] {
+  bottom: 0;
+  left: 4px;
+  height: 12px;
+  width: calc(100% - 8px);
+  align-items: center;
+}
+
+SSlider {
+  cursor: pointer;
+  width: 6px;
+  height: 6px;
+
+  border-radius: 2px;
+  background-color: rgba(0, 0, 0, 0.2);
+}

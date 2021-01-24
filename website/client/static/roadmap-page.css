@@ -1,0 +1,108 @@
+.gantt {
+  display: grid;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.gantt__row {
+  display: grid;
+  background-color: #fff;
+}
+
+.gantt__row--lines {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: transparent;
+}
+
+.gantt__row--lines_6,
+.gantt__row--months_6 {
+  grid-template-columns: repeat(6, 1fr);
+}
+
+.gantt__row--lines_7,
+.gantt__row--months_7 {
+  grid-template-columns: repeat(7, calc(100% / 7));
+}
+
+.gantt__row--lines span {
+  display: block;
+  text-align: center;
+  color: #3e424b;
+}
+
+.gantt__row--lines span + span {
+  border-left: 1px solid rgba(204, 204, 204, 0.5);
+}
+
+.gantt__row--lines span.marker {
+  background-color: #e9ebef;
+  z-index: 0;
+  border-left-color: transparent;
+}
+
+.gantt__row--lines span.marker + span {
+  border-left-color: transparent;
+}
+
+.gantt__row--lines span.marker:after {
+  content: 'Current sprint 🕺';
+  white-space: nowrap;
+}
+
+.gantt__row--lines:after {
+  grid-row: 1;
+  grid-column: 0;
+  background-color: #1688b345;
+  z-index: 2;
+  height: 100%;
+}
+
+.gantt__row--months span {
+  text-align: center;
+  font-size: 14px;
+  align-self: center;
+  padding: 20px 0;
+  color: #3e424b;
+  z-index: 1;
+}
+
+.gantt__row-bars {
+  list-style: none;
+  display: grid;
+  padding: 9px 0;
+  margin: 0;
+  grid-gap: 8px 0;
+}
+
+.gantt__row-bars_12 {
+  grid-template-columns: repeat(12, 1fr);
+}
+
+.gantt__row-bars_14 {
+  grid-template-columns: repeat(14, 1fr);
+}
+
+.gantt__row-bars li {
+  text-align: center;
+  font-size: 14px;
+  min-height: 15px;
+  padding: 5px 12px;
+  overflow: hidden;
+  position: relative;
+  border-radius: 20px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  z-index: 1;
+}
+
+.gantt__row-bars__ui {
+  background-color: rgba(184, 128, 255, 0.4);
+  color: #421983;
+}
+
+.gantt__row-bars__kit {
+  background-color: #b880ff;
+  color: #fff;
+}

@@ -1,0 +1,59 @@
+# https://crowdin.com/project/ui-kit-semcore/settings#api
+"project_id_env": "CROWDIN_PROJECT_ID"
+# https://crowdin.com/settings#api-key
+"api_token_env": "CROWDIN_PERSONAL_TOKEN"
+"preserve_hierarchy" : "true"
+"files": [
+  {
+    "source": "/semcore/project-create/src/translations/en.json",
+    "translation": "/%original_path%/%two_letters_code%.json",
+  },
+  {
+    "source": "/semcore/errors/src/AccessDenied/translations/en.json",
+    "translation": "/%original_path%/%two_letters_code%.json",
+  },
+  {
+    "source": "/semcore/errors/src/ConnectionLost/translations/en.json",
+    "translation": "/%original_path%/%two_letters_code%.json",
+  },
+  {
+    "source": "/semcore/errors/src/Maintenance/translations/en.json",
+    "translation": "/%original_path%/%two_letters_code%.json",
+  },
+  {
+    "source": "/semcore/errors/src/PageNotFound/translations/en.json",
+    "translation": "/%original_path%/%two_letters_code%.json",
+  },
+  {
+    "source": "/semcore/errors/src/ProjectNotFound/translations/en.json",
+    "translation": "/%original_path%/%two_letters_code%.json",
+  },
+  {
+    "source": "/semcore/errors/src/PageError/translations/en.json",
+    "translation": "/%original_path%/%two_letters_code%.json",
+  },
+  {
+    "source": "/semcore/widget-empty/src/DontKnowError/translations/en.json",
+    "translation": "/%original_path%/%two_letters_code%.json",
+  },
+  {
+    "source": "/semcore/widget-empty/src/KnowError/translations/en.json",
+    "translation": "/%original_path%/%two_letters_code%.json",
+  },
+  {
+    "source": "/semcore/widget-empty/src/NoData/translations/en.json",
+    "translation": "/%original_path%/%two_letters_code%.json",
+  },
+  {
+    "source": "/semcore/widget-empty/src/SetupTool/translations/en.json",
+    "translation": "/%original_path%/%two_letters_code%.json",
+  },
+  {
+      "source": "/semcore/date-picker/src/translations/en.json",
+      "translation": "/%original_path%/%two_letters_code%.json",
+  },
+  {
+      "source": "/semcore/pagination/src/translations/en.json",
+      "translation": "/%original_path%/%two_letters_code%.json",
+  },
+]

@@ -1,0 +1,14 @@
+{
+  "name": "generator-component",
+  "version": "1.0.0",
+  "description": "",
+  "main": "plopfile.js",
+  "scripts": {
+    "start": "plop"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "plop": "^2.4.0"
+  }
+}

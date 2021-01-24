@@ -1,0 +1,93 @@
+@import '@semcore/utils/style/var.css';
+
+SLink {
+  display: inline-block;
+  font-family: inherit;
+  color: var(--denim-blue);
+  line-height: normal;
+  position: relative;
+  cursor: pointer;
+  outline: none;
+  text-decoration: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  box-shadow: none;
+  -webkit-tap-highlight-color: transparent;
+  outline: 0;
+  background: none;
+  transition: color 0.15s ease-in-out;
+
+  &:active,
+  &:hover,
+  &:focus {
+    outline: 0;
+    text-decoration: none;
+  }
+
+  &::-moz-focus-inner {
+    border: none;
+    padding: 0;
+  }
+}
+
+SLink {
+  &[active],
+  &:hover,
+  &:active {
+    color: color-mod(var(--denim-blue) shade(12%));
+
+    & SText {
+      border-color: currentColor;
+    }
+  }
+}
+
+SLink[keyboardFocused] {
+  box-shadow: var(--keyborad-focus);
+}
+
+SLink[disabled] {
+  opacity: var(--disabled-opacity);
+  cursor: default;
+  pointer-events: none; /* Disable link interactions */
+}
+
+SLink[noWrapText] {
+  white-space: nowrap;
+}
+
+SLink {
+  &[enableVisited]:visited,
+  &[enableVisited]:visited:hover {
+    color: var(--violet);
+  }
+}
+
+SLink[inline] {
+  display: inline;
+}
+
+SAddon {
+  vertical-align: middle;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+SLink SAddon {
+  &:not(:only-child):first-child {
+    margin-right: media(4px);
+  }
+
+  &:not(:only-child):last-child {
+    margin-left: media(4px);
+  }
+}
+
+SText {
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-color: transparent;
+  transition: border-bottom-color 0.15s ease-in-out;
+}

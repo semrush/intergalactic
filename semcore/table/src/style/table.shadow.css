@@ -1,0 +1,209 @@
+@import '@semcore/utils/style/var.css';
+
+STable {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  box-sizing: border-box;
+  border-style: hidden hidden none;
+}
+
+SBody {
+  border-bottom: 1px solid var(--mercury);
+}
+
+SCell {
+  background: inherit;
+  box-sizing: border-box;
+}
+
+SCell[align='center'] {
+  text-align: center;
+}
+
+SCell[align='left'] {
+  text-align: left;
+}
+
+SCell[align='right'] {
+  text-align: right;
+}
+
+SCell[valign='middle'] {
+  vertical-align: middle;
+}
+
+SCell[valign='top'] {
+  vertical-align: top;
+}
+
+SCell[valign='bottom'] {
+  vertical-align: bottom;
+}
+
+SCell[use='primary'] {
+  padding: 12px;
+}
+
+SCell[use='secondary'] {
+  padding: 8px;
+}
+
+SCellHead {
+  font-size: 12px;
+  font-weight: normal;
+  line-height: 18px;
+  color: var(--gray20);
+  cursor: default;
+  box-sizing: border-box;
+  /* for fixed header */
+  z-index: 1;
+  border: 1px solid;
+}
+
+SCellHeadContent {
+  display: inline-flex;
+  max-width: 100%;
+  min-width: 0;
+}
+
+SCellHead[use='primary'] {
+  background-color: #f2f3f4;
+  border-color: var(--mercury);
+}
+
+SCellHead[use='secondary'] {
+  border-width: 1px 0;
+  border-color: var(--stone);
+}
+
+SCellHead[sorting] {
+  cursor: pointer;
+  &[use='primary']:hover {
+    background-color: #e4e7e8;
+  }
+}
+
+SCellHead[use='primary'][active] {
+  background-color: #e4e7e8;
+}
+
+SCellHeadIconAsc,
+SCellHeadIconDesc {
+  margin-left: 4px;
+  align-self: center;
+  fill: var(--stone-light);
+  flex-shrink: 0;
+}
+
+SCellHeadIconAsc[active],
+SCellHeadIconDesc[active] {
+  fill: var(--wall);
+}
+
+SRow {
+  transition: background-color 0.1s ease;
+
+  &:last-child {
+    & SCellRow {
+      box-shadow: none;
+    }
+  }
+}
+
+SRow[theme='default'] {
+  background-color: #fff;
+
+  &:hover SCellRow {
+    background-color: color-mod(var(--stone) blend(#fff 90%));
+  }
+}
+
+SRow[theme='info'],
+SCellRow[theme='info'] {
+  background-color: color-mod(var(--light-blue) blend(#fff 80%));
+}
+
+SRow[theme='info']:hover,
+SRow[theme]:hover SCellRow[theme='info'],
+SCellRow[highlighted][theme='info'],
+SCellRow[interactive][theme='info']:hover {
+  background-color: color-mod(var(--light-blue) blend(#fff 75%));
+}
+
+SRow[theme='success'],
+SCellRow[theme='success'] {
+  background-color: color-mod(var(--green) blend(#fff 85%));
+}
+
+SRow[theme='success']:hover,
+SRow[theme]:hover SCellRow[theme='success'],
+SCellRow[highlighted][theme='success'],
+SCellRow[interactive][theme='success']:hover {
+  background-color: color-mod(var(--green) blend(#fff 80%));
+}
+
+SRow[theme='warning'],
+SCellRow[theme='warning'] {
+  background-color: color-mod(var(--light-orange) blend(#fff 85%));
+}
+
+SRow[theme='warning']:hover,
+SRow[theme]:hover SCellRow[theme='warning'],
+SCellRow[highlighted][theme='warning'],
+SCellRow[interactive][theme='warning']:hover {
+  background-color: color-mod(var(--light-orange) blend(#fff 80%));
+}
+
+SRow[theme='danger'],
+SCellRow[theme='danger'] {
+  background-color: color-mod(var(--red) blend(#fff 90%));
+}
+
+SRow[theme='danger']:hover,
+SRow[theme]:hover SCellRow[theme='danger'],
+SCellRow[highlighted][theme='danger'],
+SCellRow[interactive][theme='danger']:hover {
+  background-color: color-mod(var(--red) blend(#fff 85%));
+}
+
+SRow[interactive],
+SCellRow[interactive] {
+  cursor: pointer;
+}
+
+SCellRow {
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--gray20);
+  box-shadow: inset 0 -1px 0 0 var(--mercury);
+}
+
+SStickyHead {
+  position: absolute;
+  height: auto;
+  width: auto;
+}
+
+SStickyHeadTable,
+.tabel-parent {
+  table-layout: fixed;
+}
+
+SStickyHeadTable {
+  border-bottom: none;
+}
+
+SStickyHead[position='fixed'] {
+  position: fixed;
+  z-index: 1;
+}
+
+SStickyHead[position='top'] {
+  top: 0;
+}
+
+.header-hidden {
+  visibility: hidden;
+  z-index: -1;
+}

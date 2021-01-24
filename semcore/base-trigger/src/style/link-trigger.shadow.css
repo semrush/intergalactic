@@ -1,0 +1,93 @@
+@import '@semcore/utils/style/var.css';
+
+SLinkTrigger {
+  display: inline-flex;
+  align-items: center;
+  line-height: normal;
+  position: relative;
+  touch-action: manipulation;
+  white-space: nowrap;
+  user-select: none;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  outline: none;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+  overflow: visible;
+  outline: 0;
+  vertical-align: middle;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+SLinkTrigger {
+  color: var(--denim-blue);
+  background: none;
+  transition: color 0.15s ease-in-out;
+
+  &[active],
+  &:hover,
+  &:active {
+    color: color-mod(var(--denim-blue) shade(12%));
+
+    & SText {
+      border-color: currentColor;
+    }
+  }
+
+  & SText {
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-color: transparent;
+    transition: border-bottom-color 0.15s ease-in-out;
+  }
+}
+
+SLinkTrigger[disabled] {
+  opacity: var(--disabled-opacity);
+  cursor: default;
+  pointer-events: none;
+}
+
+SLinkTrigger[keyboardFocused] {
+  box-shadow: var(--keyborad-focus);
+  z-index: 1;
+}
+
+SAddon,
+SLinkAddon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+
+  &:not(:only-child):first-child {
+    margin-right: media(4px);
+  }
+
+  &:not(:only-child):last-child {
+    margin-left: media(4px);
+  }
+}
+
+SLinkAddon {
+  width: media(12px);
+  height: media(12px);
+}
+
+SLinkTrigger[size='s'] {
+  font-size: media(10px);
+}
+
+SLinkTrigger[size='m'] {
+  font-size: media(12px);
+}
+
+SLinkTrigger[size='l'] {
+  font-size: media(14px);
+}
+
+SLinkTrigger[size='xl'] {
+  font-size: media(16px);
+}

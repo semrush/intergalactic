@@ -1,0 +1,33 @@
+{
+  "name": "@semcore/feedback-form",
+  "description": "SEMRush Feedback Form Component",
+  "version": "3.1.0",
+  "main": "lib/cjs/index.js",
+  "module": "lib/es6/index.js",
+  "typings": "lib/types/index.d.ts",
+  "author": "Roman Lysov <r.lysov@semrush.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "build",
+    "test": "jest"
+  },
+  "dependencies": {
+    "@semcore/utils": "^3.15",
+    "@semcore/flex-box": "^4",
+    "@semcore/tooltip": "^4",
+    "@semcore/spin-container": "^3",
+    "@semcore/icon": "^2",
+    "@semcore/button": "^3",
+    "@semcore/notice": "^2",
+    "final-form": "^4.19",
+    "final-form-focus": "^1.1",
+    "react-final-form": "^6.4"
+  },
+  "peerDependencies": {
+    "@semcore/core": "^1",
+    "react": "16.8 - 17"
+  },
+  "jest": {
+    "preset": "jest-preset-ui"
+  }
+}

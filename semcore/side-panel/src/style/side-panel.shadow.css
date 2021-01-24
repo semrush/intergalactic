@@ -1,0 +1,107 @@
+@import '@semcore/utils/style/var.css';
+
+SOverlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: 0;
+  display: flex;
+  overflow: hidden;
+  z-index: 10005;
+  background: rgba(0, 0, 0, 0.8);
+  -webkit-overflow-scrolling: touch;
+}
+
+SPanel {
+  padding: 24px;
+  width: 256px;
+  outline: none;
+  position: fixed;
+  box-sizing: border-box;
+  will-change: transform;
+  background: white;
+  z-index: 1;
+}
+
+SPanel[placement='top'] {
+  box-shadow: 3px 0 8px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  margin-bottom: auto;
+  top: 0;
+  left: 0;
+}
+
+SPanel[placement='right'] {
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+  height: 100vh;
+  margin-left: auto;
+  top: 0;
+  right: 0;
+}
+
+SPanel[placement='bottom'] {
+  box-shadow: 3px 0 8px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  margin-top: auto;
+  bottom: 0;
+  left: 0;
+}
+
+SPanel[placement='left'] {
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+  height: 100vh;
+  margin-right: auto;
+  top: 0;
+  left: 0;
+}
+
+.panel-right--enter {
+  transform: translate(100%, 0);
+}
+.panel-left--enter {
+  transform: translate(-100%, 0);
+}
+.panel-bottom--enter {
+  transform: translate(0, 100%);
+}
+.panel-right--enter-active,
+.panel-left--enter-active,
+.panel-bottom--enter-active,
+.panel-right--exit,
+.panel-left--exit,
+.panel-bottom--exit {
+  transform: translate(0, 0);
+}
+.panel-right--exit-active {
+  transform: translate(100%, 0);
+}
+.panel-left--exit-active {
+  transform: translate(-100%, 0);
+}
+.panel-bottom--exit-active {
+  transform: translate(0, 100%);
+}
+
+SClose {
+  display: inline-flex;
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: media(12px);
+  color: var(--stone);
+  cursor: pointer;
+  z-index: 1;
+  border: none;
+  background: none;
+  outline: none;
+
+  &:hover {
+    color: color-mod(var(--stone) shade(12%));
+  }
+}
+
+SClose[keyboardFocused] {
+  box-shadow: var(--keyborad-focus);
+}

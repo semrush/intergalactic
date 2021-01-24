@@ -1,0 +1,41 @@
+@import '@semcore/utils/style/var.css';
+
+SWidgetEmpty {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: media(16px);
+}
+
+SImage {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  margin-bottom: media(12px);
+}
+
+STitle {
+  color: var(--gray60);
+}
+
+STitle {
+  font-size: var(--fs-300);
+  line-height: var(--lh-300);
+  font-weight: bold;
+}
+
+SDescription {
+  text-align: center;
+  font-size: var(--fs-200);
+  line-height: var(--lh-200);
+  color: var(--gray60);
+  max-width: media(400px);
+}
+
+STitle + SDescription {
+  margin-top: media(4px);
+}
+
+SDescription + SDescription {
+  margin-top: media(8px);
+}

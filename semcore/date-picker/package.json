@@ -1,0 +1,38 @@
+{
+  "name": "@semcore/date-picker",
+  "description": "SEMRush DatePicker Component",
+  "version": "2.1.0",
+  "main": "lib/cjs/index.js",
+  "module": "lib/es6/index.js",
+  "typings": "lib/types/index.d.ts",
+  "sideEffects": [
+    "lib/*/DateRangePicker.js",
+    "lib/*/components/Calendar.js",
+    "lib/*/components/PickerAbstract.js",
+    "lib/*/components/RangePickerAbstract.js"
+  ],
+  "author": "Roman Lysov <r.lysov@semrush.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "build",
+    "test": "jest"
+  },
+  "dependencies": {
+    "@semcore/utils": "^3.17",
+    "@semcore/base-trigger": "^2",
+    "@semcore/flex-box": "^4",
+    "@semcore/button": "^3",
+    "@semcore/divider": "^2",
+    "@semcore/icon": "^2",
+    "@semcore/dropdown": "^2",
+    "@semcore/typography": "^3",
+    "dayjs": "^1.8"
+  },
+  "peerDependencies": {
+    "@semcore/core": "^1.4",
+    "react": "^16.0"
+  },
+  "jest": {
+    "preset": "jest-preset-ui"
+  }
+}

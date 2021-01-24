@@ -1,0 +1,31 @@
+{
+  "name": "@semcore/notice-bubble",
+  "description": "SEMRush NoticeBubble Component",
+  "version": "2.1.0",
+  "main": "lib/cjs/index.js",
+  "module": "lib/es6/index.js",
+  "typings": "lib/types/index.d.ts",
+  "author": "Roman Lysov <r.lysov@semrush.com>",
+  "sideEffects": [
+    "lib/*/NoticeBubble.js"
+  ],
+  "license": "MIT",
+  "scripts": {
+    "build": "build",
+    "test": "jest"
+  },
+  "dependencies": {
+    "@semcore/utils": "^3.24",
+    "@semcore/icon": "^2",
+    "@semcore/portal": "^2",
+    "@semcore/flex-box": "^4",
+    "react-transition-group": "^4.3"
+  },
+  "peerDependencies": {
+    "@semcore/core": "^1",
+    "react": "16.8 - 17"
+  },
+  "jest": {
+    "preset": "jest-preset-ui"
+  }
+}

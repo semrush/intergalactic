@@ -1,0 +1,17 @@
+@import '@semcore/utils/style/var.css';
+
+:root {
+  --brand-color: #ff006b;
+  --light-orange: #ffbb00;
+  --orange: #f97134;
+  --dark-red: #c50108;
+  --red: #f5141c;
+  --dark-orange: #f97134;
+  --ultramarine: #4338a2;
+  --light-ultramarine: #5c4cdc;
+  --dark-rose: #d30059;
+  --rose: #e60563;
+  --ghost-white: #f2f0fc;
+  --ghost-white50: #f7f6fd;
+  --keyborad-focus: 0 0 0 3px color-mod(var(--light-ultramarine) a(30%));
+}

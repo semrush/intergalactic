@@ -1,0 +1,57 @@
+@import '@semcore/utils/style/var.css';
+
+SOptionCheckbox {
+  margin-right: 8px;
+  margin-bottom: auto;
+  position: relative;
+  flex-shrink: 0;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #fff;
+    border: 1px solid;
+    border-radius: 2px;
+    border-color: var(--stone);
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: 0 2px;
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4IDYiIGZpbGw9IiNmZmYiPgogICAgPHBhdGggZD0iTTc3Ny44ODQsNTkzLjc4MmwtMC42NzktLjY3NWEwLjQsMC40LDAsMCwwLS41NTksMGwtMy41NzMsMy41NTYtMS43Mi0xLjcxM2EwLjQsMC40LDAsMCwwLS41NTgsMGwtMC42NzkuNjc1YTAuMzg0LDAuMzg0LDAsMCwwLS4xMTYuMjcyLDAuNCwwLjQsMCwwLDAsLjExNS4yODRsMi42NzksMi42NjVhMC40LDAuNCwwLDAsMCwuNTU5LDBsNC41MzEtNC41MDhhMC40LDAuNCwwLDAsMCwuMTE2LTAuMjg1QTAuMzgyLDAuMzgyLDAsMCwwLDc3Ny44ODQsNTkzLjc4MloiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC03NzAgLTU5MykiLz4KPC9zdmc+Cgo=');
+    background-repeat: no-repeat;
+    background-position: center center;
+  }
+}
+
+SOptionCheckbox[size='xl'] {
+  margin-top: media(2px);
+  width: media(20px);
+  height: media(20px);
+}
+
+SOptionCheckbox[size='l'] {
+  margin-top: media(1px);
+  width: media(16px);
+  height: media(16px);
+}
+
+SOptionCheckbox[size='m'] {
+  margin-top: media(2px);
+  width: media(12px);
+  height: media(12px);
+}
+
+SOptionCheckbox[checked]:before {
+  background-color: var(--light-blue);
+  border-color: var(--light-blue);
+}

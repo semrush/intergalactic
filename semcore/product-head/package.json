@@ -1,0 +1,30 @@
+{
+  "name": "@semcore/product-head",
+  "description": "SEMRush ProductHead Component",
+  "version": "2.1.0",
+  "main": "lib/cjs/index.js",
+  "module": "lib/es6/index.js",
+  "typings": "lib/types/index.d.ts",
+  "sideEffects": [
+    "lib/*/Info.js",
+    "lib/*/ProductHead.js",
+    "lib/*/Title.js"
+  ],
+  "author": "Roman Lysov <r.lysov@semrush.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "build",
+    "test": "jest"
+  },
+  "dependencies": {
+    "@semcore/utils": "^3.15",
+    "@semcore/flex-box": "^4"
+  },
+  "peerDependencies": {
+    "@semcore/core": "^1",
+    "react": "16.8 - 17"
+  },
+  "jest": {
+    "preset": "jest-preset-ui"
+  }
+}

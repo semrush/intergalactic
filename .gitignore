@@ -1,0 +1,42 @@
+# General
+.DS_Store
+
+# IDE
+.idea/
+.vscode/
+
+# Dependency directories
+node_modules/
+
+# Tmp directories
+.cache/
+.tmp/
+
+# Build directories
+public/
+lib/
+
+# Logs files
+*.log
+
+# Coverage reports
+coverage/
+
+# Not use npm
+package-lock.json
+
+# Jest snapshots
+__diff_output__
+
+# My test directory
+test/
+
+# Mac index file
+Icon[
+]
+
+# Env variable
+.env
+
+# Npm config
+.npmrc

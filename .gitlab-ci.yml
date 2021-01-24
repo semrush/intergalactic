@@ -1,0 +1,171 @@
+stages:
+  - setup components
+  - tests
+  - setup website
+  - lint markdown
+  - deploy
+  - notify
+
+variables:
+  NODE_VERSION: '15'
+  IMAGE_RESULT: 'ui-kit-team/intergalactic'
+  GIT_DEPTH: 10
+
+image: 'node:$NODE_VERSION'
+
+.job_components:
+  before_script:
+    - yarn --non-interactive --frozen-lockfile --cache-folder .yarn
+  cache:
+    key: components
+    paths:
+      - .yarn/
+      - node_modules/
+      - images/
+
+.job_website:
+  before_script:
+    - cd website
+    - yarn --non-interactive --frozen-lockfile --cache-folder .yarn
+  cache:
+    key: components
+    paths:
+      - website/.yarn/
+      - website/node_modules/
+
+setup:semcore:
+  stage: setup components
+  tags:
+    - docker
+  artifacts:
+    expire_in: 2 hours
+    paths:
+      - 'semcore/*/lib'
+  script:
+    - yarn --non-interactive --frozen-lockfile
+    - yarn build
+  except:
+    - tags
+  extends: .job_components
+
+lint:components:
+  stage: tests
+  tags:
+    - docker
+  script:
+    - yarn lint
+  except:
+    - tags
+    - schedules
+  extends: .job_components
+
+tests:
+  stage: tests
+  tags:
+    - docker
+  script:
+    - yarn test
+  except:
+    - tags
+    - schedules
+  extends: .job_components
+
+setup:website:
+  stage: setup website
+  tags:
+    - docker
+  artifacts:
+    expire_in: 2 hours
+    paths:
+      - 'website/dist'
+      - 'website/client/dist'
+      - 'website/ts.json'
+  script:
+    # WTH??
+    - yarn build:client
+    - yarn build:server & yarn build:interface
+  only:
+    - master
+  except:
+    - tags
+    - schedules
+  extends: .job_website
+
+lint:markdown:
+  stage: lint markdown
+  script:
+    - yarn lint:md
+  only:
+    - master
+  except:
+    - schedules
+  extends: .job_website
+  allow_failure: false
+
+deploy:algolia:
+  stage: deploy
+  tags:
+    - docker
+  script:
+    - node algoliaPublish.js
+  interruptible: true
+  only:
+    - master
+  except:
+    - tags
+    - schedules
+  extends: .job_website
+
+deploy:docker:
+  stage: deploy
+  tags:
+    - k8s
+  image: $BUILDER_IMAGE
+  script:
+    - mkdir -p ${CI_PROJECT_DIR}/images/
+    - cd website
+    - docker load -i ${CI_PROJECT_DIR}/images/latest.tar || docker pull ${DOCKER_REGISTRY}/${IMAGE_RESULT}:latest || true
+    - docker build --progress=plain --cache-from ${DOCKER_REGISTRY}/${IMAGE_RESULT}:latest -f ./docker/intergalactic/Dockerfile -t ${IMAGE_RESULT}:${CI_COMMIT_SHA} .
+    - docker tag ${IMAGE_RESULT}:${CI_COMMIT_SHA} ${DOCKER_REGISTRY}/${IMAGE_RESULT}:${CI_COMMIT_SHA}
+    - docker tag ${IMAGE_RESULT}:${CI_COMMIT_SHA} ${DOCKER_REGISTRY}/${IMAGE_RESULT}:latest
+    - docker push ${DOCKER_REGISTRY}/${IMAGE_RESULT}:${CI_COMMIT_SHA}
+    - docker push ${DOCKER_REGISTRY}/${IMAGE_RESULT}:latest
+    - docker save -o ${CI_PROJECT_DIR}/images/latest.tar ${DOCKER_REGISTRY}/${IMAGE_RESULT}:latest
+  interruptible: true
+  only:
+    - master
+  except:
+    - tags
+    - schedules
+  cache:
+    key: components
+    paths:
+      - images/
+
+deploy:k8s:
+  stage: deploy
+  cache: {}
+  tags:
+    - k8s
+  image: $BUILDER_IMAGE
+  script:
+    - gcloud auth activate-service-account --key-file $GCLOUD_GITLAB_CI_KUBE_ADMIN_AUTH
+    - gcloud container clusters get-credentials $CLUSTER_NAME --zone $GCLOUD_ZONE --project $GCLOUD_PROJECT
+    - sed "s/:latest/:${CI_COMMIT_SHA}/g" $K8S_DEPLOY > /tmp/intergalactic-deploy.yaml
+    - kubectl apply -f /tmp/intergalactic-deploy.yaml
+  interruptible: true
+  only:
+    - master
+  except:
+    - tags
+    - schedules
+
+slack:notify:
+  stage: notify
+  tags:
+    - docker
+  script:
+    - node_modules/.bin/slack-updates-bot --url $SLACK_WEBHOOK_URL
+  only:
+    - schedules
+  extends: .job_components

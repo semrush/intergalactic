@@ -1,0 +1,13 @@
+{
+  "default": true,
+  "line-length": false,
+  "no-duplicate-heading": false,
+  "single-title": false,
+  "no-trailing-punctuation": false,
+  "no-emphasis-as-heading": false,
+  "no-alt-text": false,
+  "header-increment": false,
+  "no-duplicate-heading/no-duplicate-header": false,
+  "ol-prefix": false,
+  "no-emphasis-as-heading/no-emphasis-as-header": false
+}

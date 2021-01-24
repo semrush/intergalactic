@@ -1,0 +1,25 @@
+@import '@semcore/utils/style/var.css';
+
+STooltipLabel {
+  display: inline-flex;
+  justify-content: space-between;
+  width: 100%;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--gray80);
+  color: var(--gray20);
+  font-size: var(--fs-100);
+  line-height: var(--lh-100);
+}
+
+STooltipLabelTitle {
+  margin-right: 16px;
+}
+
+STooltipLabelPercentage {
+  margin-right: 12px;
+  color: var(--gray60);
+}
+
+STooltipLabelValue {
+  font-weight: bold;
+}

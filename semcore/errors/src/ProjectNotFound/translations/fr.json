@@ -1,0 +1,6 @@
+{
+  "title": "Projet introuvable",
+  "text": "<p>Nous ne trouvons pas le projet auquel vous essayez d'accéder.</p><p>Vérifiez s'il n'y pas l'un des problèmes suivants :</p><ul><li>Le projet a peut-être été supprimé ou il y a une erreur dans l'URL saisie.</li><li>Vous n'avez peut-être pas l'autorisation de voir le projet. Veuillez demander l'accès au propriétaire du projet.</li></ul><p>Vous pouvez trouver tous vos projets sur la page Projets.</p><p>Si vous rencontrez d'autres problèmes pour accéder au projet, veuillez contacter notre <a href=\"{{url}}}\">équipe d'assistance.</a></p>",
+  "btnProjects": "Aller vers Projets",
+  "btnContacts": "Nous contacter"
+}

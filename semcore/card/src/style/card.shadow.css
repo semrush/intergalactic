@@ -1,0 +1,23 @@
+@import '@semcore/utils/style/var.css';
+
+SCard {
+  border: 1px solid var(--gray80);
+  border-radius: 2px;
+}
+
+STitle {
+  font-size: var(--fs-400);
+  font-weight: 500;
+}
+
+SIcon {
+  margin-left: 4px;
+  color: var(--stone);
+  cursor: help;
+}
+
+SDescription {
+  margin-bottom: 12px;
+  font-size: var(--fs-200);
+  color: var(--gray60);
+}

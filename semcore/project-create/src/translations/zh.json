@@ -1,0 +1,14 @@
+{
+  "title": "新增项目",
+  "inputDomainLabel": "项目域名",
+  "inputDomainError": "请输入有效域名",
+  "inputDomainPlaceholder": "输入项目域名",
+  "inputNameLabel": "项目名称",
+  "inputNameErrorLength": "长度应小于 256 个字符。",
+  "inputNameErrorCharacters": "仅允许使用字母、数字和英文句号。",
+  "inputNamePlaceholder": "输入项目名称",
+  "description": "创建项目之后，您无法再更改此域名。只能更改子域名。",
+  "buttonCreate": "创建项目",
+  "buttonCancel": "取消",
+  "sharingCheckboxLegend": "在设置完毕后分享项目"
+}

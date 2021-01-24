@@ -1,0 +1,67 @@
+@import '@semcore/utils/style/var.css';
+
+SWindow {
+  position: relative;
+  border-radius: 6px;
+  background: var(--white);
+  box-sizing: border-box;
+  margin: auto;
+  padding: 24px 32px 32px 32px;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+SOverlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: media(40px);
+  background: rgba(0, 0, 0, 0.8);
+  overflow: auto;
+  z-index: 10005;
+  -webkit-overflow-scrolling: touch;
+
+  & SOverlay {
+    background: rgba(0, 0, 0, 0.2);
+  }
+}
+
+SClose {
+  display: inline-flex;
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: media(12px);
+  color: var(--stone);
+  cursor: pointer;
+  z-index: 1;
+  border: none;
+  background: none;
+  outline: none;
+
+  &:hover {
+    color: color-mod(var(--stone) shade(12%));
+  }
+}
+
+SClose[keyboardFocused] {
+  box-shadow: var(--keyborad-focus);
+}
+
+@media (max-width: 768px) {
+  SWindow {
+    min-width: 60%;
+  }
+
+  SOverlay {
+    padding: media(10px);
+  }
+}

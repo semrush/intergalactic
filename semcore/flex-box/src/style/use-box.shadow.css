@@ -1,0 +1,7 @@
+.box-sizing {
+  box-sizing: border-box;
+}
+
+.box-inline {
+  display: inline-block;
+}

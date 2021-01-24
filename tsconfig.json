@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "module": "es2015",
+    "target": "esnext",
+    "lib": ["dom", "es6", "es7"],
+    "jsx": "react",
+    "declaration": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "strict": false,
+    "noEmit": false,
+    "sourceMap": true,
+    "importHelpers": false,
+    "noEmitHelpers": true,
+    "moduleResolution": "node",
+    "experimentalDecorators": true,
+    "resolveJsonModule": true,
+    "baseUrl": "./semcore",
+    "typeRoots": ["node_modules/@types", "tools/@types"],
+    "plugins": [{ "name": "typescript-workspace-plugin" }]
+  },
+  "exclude": ["node_modules", "website", "tools", "**/__tests__/**"]
+}

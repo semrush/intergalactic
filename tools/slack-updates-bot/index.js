@@ -1,0 +1,79 @@
+const axios = require('axios');
+const dayjs = require('dayjs');
+const en = require('dayjs/locale/en');
+const changelogByDate = require('changelogs-by-date');
+const messageTemplate = require('./messageTemplate');
+
+dayjs.locale('en', en);
+
+module.exports = async function sendUiKitUpdates(start, end, url) {
+  const componentsChangelogs = await changelogByDate(start, end);
+  const toolsChangelogs = await changelogByDate(start, end, '../../tools');
+  const changelog = [...componentsChangelogs, ...toolsChangelogs];
+  const flatChangelog = mergeChangeLog(changelog);
+  const message = messageTemplate(flatChangelog);
+  const messageData = createMessage(start, end, message);
+  return postMessage(url, messageData);
+};
+
+function mergeChangeLog(changelog) {
+  const flatChangelog = [];
+  for (const changelogItem of changelog) {
+    const { components } = changelogItem;
+    components.forEach(({ name, version, changes }) => {
+      const existingComponentIndex = flatChangelog.findIndex((comp) => comp.component === name);
+      if (existingComponentIndex === -1) {
+        flatChangelog.push({ component: name, version, changes });
+      } else {
+        const existingComponent = flatChangelog[existingComponentIndex];
+        existingComponent.changes = [...existingComponent.changes, ...changes];
+      }
+    });
+  }
+  return flatChangelog.map((comp) => ({ ...comp, changes: groupChangesByType(comp.changes) }));
+}
+
+function groupChangesByType(changes) {
+  const res = [];
+  for (const changesItem of changes) {
+    const { type, data } = changesItem;
+    const existingTypeIndex = res.findIndex((item) => item.type === type);
+    if (existingTypeIndex === -1) {
+      res.push({ type, data: [data] });
+    } else {
+      const existingType = res[existingTypeIndex];
+      existingType.data = [...existingType.data, data];
+    }
+  }
+  return res;
+}
+
+function getFormattedDatePeriod(start, end) {
+  const startDate = dayjs(start);
+  const endDate = dayjs(end);
+  const startDateFormat = startDate.get('month') === endDate.get('month') ? 'DD' : 'DD MMMM';
+  const endDateFormat = 'DD MMMM YYYY';
+  return [startDate.format(startDateFormat), endDate.format(endDateFormat)];
+}
+
+function createMessage(start, end, text) {
+  const [startDate, endDate] = getFormattedDatePeriod(start, end);
+  return JSON.stringify({
+    attachments: [
+      {
+        mrkdwn: true,
+        title: `:whale: Semcore updates from ${startDate} to ${endDate}`,
+        text,
+      },
+    ],
+  });
+}
+
+async function postMessage(url, data) {
+  return axios({
+    method: 'post',
+    headers: { 'Content-type': 'application/json' },
+    data,
+    url,
+  });
+}

@@ -1,0 +1,8 @@
+SButton {
+  padding: 0 20px;
+  background: purple;
+}
+
+SButton[theme='default'] {
+  background: red;
+}

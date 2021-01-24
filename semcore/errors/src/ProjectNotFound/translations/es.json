@@ -1,0 +1,6 @@
+{
+  "title": "Proyecto no encontrado",
+  "text": "<p>No encontramos el proyecto al que quieres acceder.</p><p>Comprueba que no existan los siguientes problemas:</p><ul><li>El proyecto se ha borrado o la URL proporcionada es errónea.</li><li>No cuentas con los permisos para ver el proyecto. Solicita acceso al propietario del proyecto.</li></ul><p>Todos tus proyectos están disponibles en la sección de proyectos.</p><p>Para cualquier problema relacionado con el acceso a tus proyectos, contacta con nuestro <a href=\"{{url}}\">Equipo de asistencia técnica.</a></p>",
+  "btnProjects": "Ir a proyectos",
+  "btnContacts": "Contáctanos"
+}

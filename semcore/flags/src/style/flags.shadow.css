@@ -1,0 +1,24 @@
+@import '@semcore/utils/style/var.css';
+
+SFlags {
+  display: inline-block;
+  width: 14px;
+  height: 11px;
+  background-color: var(--gray80);
+}
+
+SFlags[data-capital-letters] {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--mercury);
+
+  &::before {
+    content: attr(data-capital-letters);
+    font-family: sans-serif;
+    font-size: 8px;
+    line-height: normal;
+    font-weight: bold;
+    color: var(--gray60);
+  }
+}

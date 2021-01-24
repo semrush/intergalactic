@@ -1,0 +1,95 @@
+@import '@semcore/utils/style/var.css';
+
+SButtonTrigger {
+  border: 1px solid var(--stone);
+  background: #ffffff;
+  color: var(--gray20);
+
+  &::-moz-focus-inner {
+    border: none;
+    padding: 0;
+  }
+
+  &:active,
+  &:hover,
+  &:focus {
+    outline: 0;
+    text-decoration: none;
+  }
+
+  &:active,
+  &:hover,
+  &[active] {
+    background-color: color-mod(var(--stone) a(20%));
+  }
+}
+
+SButtonTrigger[size='s'] {
+  height: media(18px);
+  min-width: media(18px);
+  border-radius: media(2px);
+  font-size: media(10px);
+}
+
+SButtonTrigger[size='m'] {
+  height: media(26px);
+  min-width: media(26px);
+  border-radius: media(3px);
+  font-size: media(12px);
+}
+
+SButtonTrigger[size='l'] {
+  height: media(32px);
+  min-width: media(32px);
+  border-radius: media(4px);
+  font-size: media(14px);
+}
+
+SButtonTrigger[size='xl'] {
+  height: media(42px);
+  min-width: media(42px);
+  border-radius: media(5px);
+  font-size: media(16px);
+}
+
+SText[placeholder] {
+  color: var(--gray70);
+}
+
+SButtonTrigger[state='normal'] {
+  border-color: var(--stone);
+}
+
+SButtonTrigger[state='valid'] {
+  border-color: var(--green);
+}
+
+SButtonTrigger[state='invalid'] {
+  border-color: var(--orange);
+}
+
+SFilterTrigger[selected] {
+  border-color: var(--light-blue);
+  background-color: color-mod(var(--light-blue) a(20%));
+
+  &[active],
+  &:hover {
+    background: color-mod(var(--light-blue) a(30%));
+  }
+}
+
+SWrapper {
+  display: inline-flex;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+SWrapper[keyboardFocused] {
+  box-shadow: var(--keyborad-focus);
+}
+
+SCounter {
+  background-color: var(--light-blue);
+}

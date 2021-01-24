@@ -1,0 +1,14 @@
+{
+  "title": "Add new project",
+  "inputDomainLabel": "Project domain",
+  "inputDomainError": "Please enter a valid domain",
+  "inputDomainPlaceholder": "Enter project domain",
+  "inputNameLabel": "Project name",
+  "inputNameErrorLength": "Length should be less than 256 characters.",
+  "inputNameErrorCharacters": "Only letters, numbers and periods are allowed.",
+  "inputNamePlaceholder": "Enter project name",
+  "description": "Once a project is created, you can no longer change this domain. Only subdomains can be changed.",
+  "buttonCreate": "Create project",
+  "buttonCancel": "Cancel",
+  "sharingCheckboxLegend": "Share the project once it’s set up"
+}

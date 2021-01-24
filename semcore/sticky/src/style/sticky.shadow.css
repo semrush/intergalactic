@@ -1,0 +1,5 @@
+@import '@semcore/utils/style/var.css';
+
+SSticky {
+  position: sticky;
+}

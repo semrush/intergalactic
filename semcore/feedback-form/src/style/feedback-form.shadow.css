@@ -1,0 +1,33 @@
+@import '@semcore/utils/style/var.css';
+
+SFeedbackForm {
+  max-width: media(300px);
+}
+
+SSubmit,
+SCancel {
+  display: inline-flex;
+  margin-right: media(8px);
+}
+
+SNotice {
+  border: none;
+
+  &[theme='custom'] {
+    background: var(--gray94);
+  }
+}
+
+SSuccess {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 300px;
+  padding: 32px;
+  box-sizing: border-box;
+}
+
+SEmail {
+  margin-bottom: 8px;
+  color: var(--green);
+}

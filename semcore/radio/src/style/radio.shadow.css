@@ -1,0 +1,113 @@
+@import '@semcore/utils/style/var.css';
+
+SRadio {
+  display: inline-flex;
+  align-items: flex-start;
+  cursor: pointer;
+}
+
+SRadio[disabled] {
+  opacity: var(--disabled-opacity);
+  cursor: default;
+  pointer-events: none;
+  user-select: none;
+}
+
+SText {
+  margin-left: media(8px);
+}
+
+SValue {
+  position: relative;
+  flex-shrink: 0;
+  margin: 0;
+  padding: 0;
+  outline: none;
+  z-index: 0;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #fff;
+    border: 1px solid;
+    border-radius: 50%;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: #fff;
+  }
+}
+
+SValue[size='xl'] {
+  margin-top: media(2px);
+  width: media(20px);
+  height: media(20px);
+}
+
+SValue[size='l'] {
+  margin-top: media(1px);
+  width: media(16px);
+  height: media(16px);
+}
+
+SValue[size='m'] {
+  margin-top: media(2px);
+  width: media(12px);
+  height: media(12px);
+}
+
+SValue[state='normal']::before {
+  border-color: var(--stone);
+}
+
+SValue[state='invalid']::before {
+  border-color: var(--orange);
+}
+
+SControl {
+  position: absolute;
+  clip: rect(1px, 1px, 1px, 1px);
+}
+
+SControl:checked ~ SValue::before {
+  border-color: var(--light-blue);
+  background-color: var(--light-blue);
+}
+
+SControl:checked ~ SValue[size='xl']::after {
+  width: media(8px);
+  height: media(8px);
+}
+
+SControl:checked ~ SValue[size='l']::after {
+  width: media(6px);
+  height: media(6px);
+}
+
+SControl:checked ~ SValue[size='m']::after {
+  width: media(4px);
+  height: media(4px);
+}
+
+SValue[state='normal'][keyboardFocused]::before {
+  box-shadow: var(--keyborad-focus);
+  border-color: var(--light-blue);
+}
+
+SValue[state='invalid'][keyboardFocused]::before {
+  box-shadow: 0 0 0 3px color-mod(var(--orange) a(30%));
+}

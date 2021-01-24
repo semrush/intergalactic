@@ -1,0 +1,34 @@
+@import '@semcore/utils/style/var.css';
+
+SValue {
+  letter-spacing: 0.1em;
+  text-overflow: inherit;
+
+  & ~ SPlaceholder {
+    letter-spacing: 0.15em;
+  }
+}
+
+SPlaceholder {
+  position: absolute;
+  font-size: inherit;
+  white-space: pre;
+  color: var(--gray70);
+  box-sizing: border-box;
+  cursor: text;
+}
+
+SSpacer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  visibility: hidden;
+  overflow-x: scroll;
+  white-space: pre;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  font-style: inherit;
+  letter-spacing: 0.1em;
+  text-transform: inherit;
+}

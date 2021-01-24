@@ -1,0 +1,70 @@
+@import '@semcore/utils/style/var.css';
+
+SInputTags {
+  box-sizing: border-box;
+  cursor: text;
+  /* reset for ScrollArea because cut box-shadow */
+  overflow: initial;
+}
+
+SInputTags > :global(div) > :global(div) {
+  display: flex;
+  align-items: center;
+  flex-flow: row wrap;
+}
+
+SInputTags > :global(div[data-ui-name='ScrollArea.Bar'][orientation='vertical']) {
+  right: 1px !important;
+}
+
+SInputTags[size='m'] {
+  min-height: media(26px);
+  height: auto;
+  padding: 1px media(4px);
+}
+
+SInputTags[size='l'] {
+  min-height: media(32px);
+  height: auto;
+  padding: 1px media(6px);
+}
+
+SInputTags[size='xl'] {
+  min-height: media(42px);
+  height: auto;
+  padding: 1px media(10px);
+}
+
+STag[size='s'],
+STag[size='m'] {
+  margin: media(2px);
+}
+
+STag[size='l'] {
+  margin: media(4px) media(2px);
+}
+
+STag[editable] {
+  cursor: pointer;
+}
+
+SValue {
+  padding: 0 !important;
+  margin: 2px;
+}
+
+SSpacer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  visibility: hidden;
+  height: 0;
+  overflow: scroll;
+  white-space: pre;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  font-style: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+}

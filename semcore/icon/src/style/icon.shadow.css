@@ -1,0 +1,8 @@
+SIcon {
+  display: inline-block;
+  user-select: none;
+  shape-rendering: geometricPrecision;
+  box-sizing: content-box;
+  fill: currentColor;
+  flex-shrink: 0;
+}

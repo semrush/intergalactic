@@ -1,0 +1,7 @@
+.flex {
+  display: flex;
+}
+
+.flex-inline {
+  display: inline-flex;
+}

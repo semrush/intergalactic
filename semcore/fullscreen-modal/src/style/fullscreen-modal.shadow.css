@@ -1,0 +1,119 @@
+@import '@semcore/utils/style/var.css';
+
+SFullscreenOverlay {
+  padding: 0;
+}
+
+SFullscreenModal {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background: var(--white);
+  border-radius: 0;
+  padding: 0;
+}
+
+SClose,
+SBack {
+  cursor: pointer;
+  position: absolute;
+  z-index: 1;
+}
+
+SClose {
+  top: media(12px);
+  right: media(20px);
+  padding: media(12px);
+  color: var(--stone);
+
+  &:hover {
+    color: color-mod(var(--stone) shade(12%));
+  }
+}
+
+SBack {
+  top: media(10px);
+  left: media(32px);
+  display: flex;
+  align-items: center;
+  padding: media(2px);
+  color: var(--gray60);
+  font-size: var(--fs100);
+  line-height: var(--lh100);
+
+  &:hover {
+    color: color-mod(var(--gray60) shade(12%));
+
+    & SBackText {
+      border-bottom-color: currentColor;
+    }
+  }
+}
+
+SBackText {
+  margin-left: media(4px);
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: transparent;
+  transition: border-bottom-color 0.15s ease-in-out;
+}
+STitle,
+SDescription {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+STitle {
+  font-size: var(--fs-500);
+  line-height: var(--lh-500);
+  font-weight: 500;
+  color: var(--gray20);
+}
+
+SDescription {
+  font-size: var(--fs-100);
+  line-height: var(--lh-100);
+  color: var(--gray60);
+}
+
+SHeader {
+  display: flex;
+  align-items: baseline;
+  padding-left: media(32px);
+  padding-bottom: media(12px);
+  padding-right: media(77px);
+  padding-top: media(30px);
+  min-height: 72px;
+  box-shadow: inset 0 -1px 1px 0 var(--gray80);
+  box-sizing: border-box;
+}
+
+SFooter {
+  min-height: 56px;
+  box-shadow: inset 0 1px 1px 0 var(--gray80);
+  box-sizing: border-box;
+}
+
+SBody {
+  display: flex;
+  height: 100%;
+  overflow: auto;
+}
+
+SSection {
+  padding-top: media(24px);
+  padding-bottom: media(24px);
+  padding-left: media(32px);
+  padding-right: media(32px);
+  flex: 1 1 auto;
+}
+
+SHeaderDivider {
+  margin-left: media(12px);
+  margin-right: media(12px);
+  height: media(16px);
+  width: 1px;
+  background-color: var(--gray80);
+}

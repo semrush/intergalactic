@@ -1,0 +1,60 @@
+@import '@semcore/utils/style/var.css';
+
+SProductHead {
+  margin-bottom: media(16px);
+  margin-top: media(16px);
+  padding-left: media(30px);
+  padding-right: media(30px);
+}
+
+SRow {
+  display: flex;
+  justify-content: space-between;
+  margin-top: media(8px);
+  margin-bottom: media(8px);
+}
+
+SButtons {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-left: media(8px);
+
+  & > *:not(:last-child) {
+    margin-right: media(8px);
+  }
+}
+
+SLinks {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-left: media(8px);
+
+  & > *:not(:first-child) {
+    margin-left: media(20px);
+  }
+}
+
+@media (max-width: 768px) {
+  SRow {
+    flex-wrap: wrap;
+  }
+
+  .SButtons {
+    width: 100%;
+    margin-left: 0;
+    margin-top: media(8px);
+    margin-bottom: media(-8px);
+    justify-content: flex-start;
+    flex-wrap: wrap;
+
+    & > * {
+      margin-bottom: media(8px);
+    }
+  }
+
+  SLinks {
+    display: none;
+  }
+}

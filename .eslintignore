@@ -1,0 +1,6 @@
+lib
+**/code_mod/**
+**/__tests__/**
+**/node_modules/**
+tools
+website

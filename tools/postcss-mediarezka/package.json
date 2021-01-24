@@ -1,0 +1,9 @@
+{
+  "name": "@semcore/postcss-mediarezka",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "postcss": "^7.0.0"
+  }
+}

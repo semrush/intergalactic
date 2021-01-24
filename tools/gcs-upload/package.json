@@ -1,0 +1,15 @@
+{
+  "name": "gcs-upload",
+  "version": "1.0.0",
+  "description": "package for uploading files to semrush.static",
+  "main": "index.js",
+  "author": "Mikhail Karachev",
+  "bin": {
+    "gcs-upload": "./bin/index.js"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "@google-cloud/storage": "^3.1.0",
+    "minimist": "^1.2.0"
+  }
+}

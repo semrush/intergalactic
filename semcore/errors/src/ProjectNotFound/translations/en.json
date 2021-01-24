@@ -1,0 +1,6 @@
+{
+  "title": "Project not found",
+  "text": "<p>We cannot find the project you’re trying to access.</p><p>Check one of the following issues:</p><ul><li>The project may have been deleted or there is an error in the URL entered.</li><li>Maybe you don’t have permission to view the project.Please request access from the project owner.</li></ul><p>You can find all your projects on the Projects page.</p><p>If you have any other problems with access to the project, please contact our <a href=\"{{url}}\">Support Team.</a></p>",
+  "btnProjects": "Go to Projects",
+  "btnContacts": "Contact us"
+}

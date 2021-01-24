@@ -1,0 +1,84 @@
+# Changelog
+
+CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
+
+## [2.1.0] - 2020-12-17
+
+### Added
+
+- Added supported react@17.
+
+## [2.0.4] - 2020-10-29
+
+### Fixed
+
+- Added the placeholder for ID style tag to improve collision protection.
+
+## [2.0.3] - 2020-09-11
+
+### Fixed
+
+- Change background color with opacity(rgba) to static color.
+
+## [2.0.2] - 2020-09-08
+
+### Fixed
+
+- Fixed possible styles collisions between components with different versions, but same styles
+
+## [2.0.1] - 2020-06-26
+
+### Fixed
+
+- Исправлены описания типов для `Bar` и `Progress`
+
+## [2.0.0] - 2020-06-01
+
+### BREAK
+
+- Изменения описаны в [migration guide](/internal/migration-guide)
+
+### Added
+
+- Добавили свойство `duration` для управления скоростью анимации для `ProgressBar` и `ProgressBar.Value`.
+- Добавили свойство `theme` для кастомизации отображения для `ProgressBar` и `ProgressBar.Value`.
+
+## [1.2.1] - 2019-12-17
+
+### Fixed
+
+- Исправлен транспайл цветовых переменных для стилей без префиксов (build.css)
+
+## [1.2.0] - 2019-12-12
+
+### Added
+
+- Появилась возможность добавления различных стилистических тем через css переменные
+- Появилась возможность оптицонально подключать адаптивноссть
+- Появилась возможность изолировать стили даже в пределах одной страницы
+
+### Changed
+
+- Изменен алгоритм вставки стилей в head
+
+### Removed
+
+- Убраны относительные единицы измерения(rem), которые использовались для адаптивности
+
+## [1.1.0] - 2019-11-14
+
+### Added
+
+- Добавлена адаптивность на маленьких экранах(<768px)
+
+## [1.0.1] - 2019-09-30
+
+### Changed
+
+- Нужные зависимости перенесены в `utils`, размер должен стать меньше
+
+## [1.0.0] - 2019-02-05
+
+### Added
+
+- Initial release

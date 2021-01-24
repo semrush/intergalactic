@@ -1,0 +1,268 @@
+@import '@semcore/utils/style/var.css';
+
+SDataTable {
+  position: relative;
+}
+
+SHeadWrapper {
+  position: relative;
+}
+
+SHeadWrapper[sticky] {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+
+SHead {
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  width: 100%;
+  z-index: 0;
+}
+
+SColumn {
+  display: flex;
+  flex-grow: 1;
+  /* Надо подумать можно ли уменьшать */
+  /*flex-shrink: 0;*/
+  font-size: 12px;
+  line-height: 18px;
+  color: var(--gray20);
+  box-sizing: border-box;
+  position: relative;
+}
+
+SColumn[hidden] {
+  height: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  border: none !important;
+}
+
+SColumn[use='primary'] {
+  padding: 12px;
+  border-right: 1px solid var(--mercury);
+  border-bottom: 1px solid var(--mercury);
+  background-color: #f2f3f4;
+}
+
+SColumn[use='secondary'] {
+  padding: 8px;
+  border-bottom: 1px solid var(--stone);
+  background-color: transparent;
+}
+
+SColumn[use]:last-child {
+  border-right: none;
+}
+
+SColumn[group][use] {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  border-bottom: none;
+  padding: 0;
+}
+
+SColumn[groupHead][use] {
+  justify-content: center;
+  border-right: none;
+  /* for resizable */
+  z-index: 1;
+}
+
+SColumn[groupHead][use='primary'] {
+  border-bottom: 1px solid var(--mercury);
+}
+
+SColumn[groupHead][use='secondary'] {
+  border-bottom: 1px solid var(--stone);
+}
+
+SColumn[sortable] {
+  cursor: pointer;
+
+  &[use='primary']:hover {
+    background-color: #e4e7e8;
+  }
+}
+
+SColumn[active][use='primary'] {
+  background-color: #e4e7e8;
+}
+
+SColumn[resizable] {
+  &:hover:after {
+    background: #a6b0b3;
+  }
+
+  &:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: -1px;
+    height: 100vh;
+    width: 1px;
+    background: transparent;
+    cursor: col-resize;
+  }
+}
+
+SColumn[fixed] {
+  position: sticky;
+  /* because up resizable */
+  z-index: 2;
+}
+
+SSortIcon {
+  margin-top: 2px;
+  margin-left: 4px;
+  color: var(--stone-light);
+}
+
+SSortIcon[active] {
+  fill: var(--wall);
+}
+
+SBodyWrapper {
+  position: relative;
+}
+
+SBody {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+SRow {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+}
+
+/* DEFAULT THEME */
+SRow[active] SCell:not([theme]),
+SRow:hover SCell:not([theme]) {
+  background-color: #f6f7f7;
+}
+
+/* MUTED THEME */
+SRow[theme='muted'] SCell:not([theme]) {
+  background-color: #f2f3f4;
+}
+
+SRow:hover SCell[theme='muted'],
+SRow[theme='muted'][active] SCell:not([theme]),
+SRow[theme='muted']:hover SCell:not([theme]) {
+  background-color: #f6f7f7;
+}
+
+/* INFO THEME */
+SRow[theme='info'] SCell:not([theme]) {
+  background-color: color-mod(var(--light-blue) blend(#fff 80%));
+}
+
+SRow:hover SCell[theme='info'],
+SRow[theme='info'][active] SCell:not([theme]),
+SRow[theme='info']:hover SCell:not([theme]) {
+  background-color: color-mod(var(--light-blue) blend(#fff 75%));
+}
+
+/* SUCCESS THEME */
+SRow[theme='success'] SCell:not([theme]) {
+  background-color: color-mod(var(--green) blend(#fff 85%));
+}
+
+SRow:hover SCell[theme='success'],
+SRow[theme='success'][active] SCell:not([theme]),
+SRow[theme='success']:hover SCell:not([theme]) {
+  background-color: color-mod(var(--green) blend(#fff 80%));
+}
+
+/* WARNING THEME */
+SRow[theme='warning'] SCell:not([theme]) {
+  background-color: color-mod(var(--light-orange) blend(#fff 85%));
+}
+
+SRow:hover SCell[theme='warning'],
+SRow[theme='warning'][active] SCell:not([theme]),
+SRow[theme='warning']:hover SCell:not([theme]) {
+  background-color: color-mod(var(--light-orange) blend(#fff 80%));
+}
+
+/* DANGER THEME */
+SRow[theme='danger'] SCell:not([theme]) {
+  background-color: color-mod(var(--red) blend(#fff 90%));
+}
+
+SRow:hover SCell[theme='danger'],
+SRow[theme='danger'][active] SCell:not([theme]),
+SRow[theme='danger']:hover SCell:not([theme]) {
+  background-color: color-mod(var(--red) blend(#fff 85%));
+}
+
+SCell {
+  display: flex;
+  flex: 0 0 auto;
+  font-size: 14px;
+  color: var(--gray20);
+  line-height: 20px;
+  box-sizing: border-box;
+  border-bottom: 1px solid var(--mercury);
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+SCell[use='primary'] {
+  padding: 12px;
+  min-height: 45px;
+  background-color: #fff;
+}
+
+SCell[use='secondary'] {
+  padding: 8px;
+  min-height: 37px;
+  background-color: transparent;
+}
+
+SCell[fixed] {
+  position: sticky;
+  z-index: 1;
+}
+
+SCell[theme='muted'] {
+  background-color: #f2f3f4;
+}
+
+SCell[theme='info'] {
+  background-color: color-mod(var(--light-blue) blend(#fff 80%));
+}
+
+SCell[theme='success'] {
+  background-color: color-mod(var(--green) blend(#fff 85%));
+}
+
+SCell[theme='warning'] {
+  background-color: color-mod(var(--light-orange) blend(#fff 85%));
+}
+
+SCell[theme='danger'] {
+  background-color: color-mod(var(--red) blend(#fff 90%));
+}
+
+SScrollAreaBar[orientation='horizontal'] {
+  position: sticky;
+  bottom: 0;
+  left: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+  box-sizing: border-box;
+  margin-top: -12px;
+  z-index: 2;
+}
+
+SScrollAreaBar[orientation='vertical'] {
+  width: 12px;
+}

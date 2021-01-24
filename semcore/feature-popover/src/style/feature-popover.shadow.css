@@ -1,0 +1,100 @@
+@import '@semcore/utils/style/var.css';
+
+SFeaturePopover {
+  padding: media(16px);
+  background-color: #ffe984;
+  box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.1);
+  border-radius: 3px;
+  box-sizing: border-box;
+}
+
+SFeaturePopover[animate='entered'] {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+SFeaturePopover[animate='entering'] {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+SFeaturePopover[animate='exited'] {
+  opacity: 0;
+  transform: translateX(-10px);
+}
+
+SFeaturePopover[animate='exiting'] {
+  opacity: 0;
+  transform: translateX(-10px);
+}
+
+SClose {
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: media(8px);
+  cursor: pointer;
+  color: var(--gray60);
+  font-size: 0;
+
+  &:hover {
+    color: color-mod(var(--gray40) shade(12%));
+  }
+}
+
+@keyframes showTrigger {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scaleSizeAndHide {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(2);
+  }
+}
+
+SSpot {
+  position: absolute;
+  bottom: media(-4px);
+  right: media(-4px);
+  animation: showTrigger 0.2s ease-in;
+  animation-delay: 0.4s;
+  animation-fill-mode: forwards;
+  width: media(12px);
+  height: media(12px);
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform-origin: 50%;
+    animation: scaleSizeAndHide 1s infinite;
+    animation-fill-mode: forwards;
+    animation-delay: 0.5s;
+    background-color: #ffd54f;
+    border-radius: 50%;
+    width: media(12px);
+    height: media(12px);
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 50%;
+    width: media(12px);
+    height: media(12px);
+    background-color: #ffd54f;
+  }
+}

@@ -1,0 +1,84 @@
+@import '@semcore/utils/style/var.css';
+
+SNotice {
+  display: flex;
+  padding: media(15px);
+  font-size: var(--fs-100);
+  line-height: var(--lh-100);
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 2px;
+}
+
+SNotice[theme='info'] {
+  background-color: color-mod(var(--light-blue) alpha(15%));
+  border-color: color-mod(var(--light-blue) alpha(25%));
+}
+
+SNotice[theme='danger'] {
+  background-color: color-mod(var(--red) alpha(10%));
+  border-color: color-mod(var(--red) alpha(20%));
+}
+
+SNotice[theme='warning'] {
+  background-color: color-mod(var(--light-orange) alpha(15%));
+  border-color: color-mod(var(--light-orange) alpha(40%));
+}
+
+SNotice[theme='success'] {
+  background-color: color-mod(var(--green) alpha(15%));
+  border-color: color-mod(var(--green) alpha(30%));
+}
+
+SContent {
+  flex: 1 1 auto;
+  width: 100%;
+}
+
+SActions {
+  flex-shrink: 0;
+  margin-top: media(12px);
+
+  & > * + * {
+    margin-left: media(8px);
+  }
+}
+
+SLabel {
+  margin-right: media(8px);
+  display: inline-flex;
+}
+
+SLabel[theme='info'] {
+  color: var(--stone);
+}
+
+SLabel[theme='success'] {
+  color: var(--green);
+}
+
+SLabel[theme='warning'] {
+  color: var(--orange);
+}
+
+SLabel[theme='danger'] {
+  color: var(--red);
+}
+
+SCloseIcon {
+  flex-shrink: 0;
+  margin-left: media(16px);
+}
+
+.animate--enter {
+  opacity: 0.01;
+}
+
+.animate--enter-active,
+.animate--exit {
+  opacity: 1;
+}
+
+.animate--exit-active {
+  opacity: 0.01;
+}

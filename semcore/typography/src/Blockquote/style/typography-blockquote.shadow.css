@@ -1,0 +1,25 @@
+@import '@semcore/utils/style/var.css';
+
+SBlockquote {
+  position: relative;
+  display: flex;
+  font-style: italic;
+  color: var(--gray20);
+}
+
+SDoubleQuotation {
+  position: relative;
+  left: -5px;
+  margin-right: 20px;
+  font-size: 68px;
+  line-height: 70px;
+  color: var(--gray80);
+  font-family: Georgia, Times, 'Times New Roman', serif;
+}
+
+SAuthor {
+  display: block;
+  margin-top: media(16px);
+  font-style: normal;
+  color: var(--gray60);
+}

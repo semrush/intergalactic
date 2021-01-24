@@ -1,0 +1,99 @@
+@import '@semcore/utils/style/var.css';
+
+SDraggable[draggable] {
+  position: relative;
+  cursor: grab;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+
+  &::after {
+    content: '';
+    position: absolute;
+    display: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23CCC' fill-rule='evenodd' d='M7,6 C7.55228475,6 8,6.44771525 8,7 C8,7.55228475 7.55228475,8 7,8 C6.44771525,8 6,7.55228475 6,7 C6,6.44771525 6.44771525,6 7,6 Z M1,6 C1.55228475,6 2,6.44771525 2,7 C2,7.55228475 1.55228475,8 1,8 C0.44771525,8 4.54747351e-13,7.55228475 4.54747351e-13,7 C4.54747351e-13,6.44771525 0.44771525,6 1,6 Z M7,0 C7.55228475,0 8,0.44771525 8,1 C8,1.55228475 7.55228475,2 7,2 C6.44771525,2 6,1.55228475 6,1 C6,0.44771525 6.44771525,0 7,0 Z M1,0 C1.55228475,0 2,0.44771525 2,1 C2,1.55228475 1.55228475,2 1,2 C0.44771525,2 0,1.55228475 0,1 C0,0.44771525 0.44771525,0 1,0 Z'/%3E%3C/svg%3E");
+  }
+
+  &:active {
+    cursor: grabbing;
+  }
+
+  &:hover::after {
+    display: block;
+  }
+}
+
+SDraggable[placement='top']::after {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 20px;
+}
+
+SDraggable[placement='top'] {
+  padding-top: 16px;
+}
+
+SDraggable[placement='right'] {
+  padding-right: 16px;
+  &::after {
+    right: 0;
+  }
+}
+
+SDraggable[placement='top'] {
+  padding-top: 16px;
+}
+
+SDraggable[placement='bottom'] {
+  padding-bottom: 16px;
+
+  &::after {
+    bottom: 0;
+    background-position: calc(100% - 2px) 7px;
+  }
+}
+
+SDraggable[placement='left'] {
+  padding-left: 16px;
+
+  &::after {
+    left: 0;
+  }
+}
+
+SDraggable[placement='top']::after,
+SDraggable[placement='right']::after,
+SDraggable[placement='left']::after {
+  top: 0;
+  background-position: calc(100% - 2px) 3px;
+}
+
+SDraggable[placement='top']::after,
+SDraggable[placement='bottom']::after {
+  left: 0;
+  width: 100%;
+  height: 16px;
+  background-repeat: repeat-x;
+}
+
+SDraggable[placement='right']::after,
+SDraggable[placement='left']::after {
+  top: 0;
+  width: 16px;
+  height: 100%;
+  background-repeat: repeat-y;
+}
+
+SDroppable {
+  border: 2px dashed var(--gray80);
+}
+
+:global(.dnd-placeholder-default.dnd-placeholder-default) {
+  background-color: var(--mercury);
+}
+
+:global(.dnd-placeholder-dark.dnd-placeholder-dark) {
+  background-color: rgba(255, 255, 255, 0.15);
+}
