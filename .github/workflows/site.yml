@@ -138,6 +138,13 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
+      - name: Restore cache node modules
+        uses: actions/cache@v2
+        with:
+          path: |
+            node_modules
+            */*/node_modules
+          key: modules-${{ runner.os }}-${{ hashFiles('yarn.lock') }}
       - name: Restore cache node modules site
         uses: actions/cache@v2
         with:
