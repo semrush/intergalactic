@@ -1,10 +1,19 @@
 name: setup components
 on: [push]
 jobs:
-  setup-semcore:
+  setup:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
+      - uses: actions/setup-node@v2
       - run: yarn --non-interactive --frozen-lockfile
+  build:
+    needs: setup
+    runs-on: ubuntu-latest
+    steps:
       - run: yarn build
+  lint:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - run: yarn lint
