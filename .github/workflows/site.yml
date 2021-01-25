@@ -145,6 +145,12 @@ jobs:
             node_modules
             */*/node_modules
           key: modules-${{ runner.os }}-${{ hashFiles('yarn.lock') }}
+      - name: Restore cache build
+        uses: actions/cache@v2
+        with:
+          path: |
+            **/lib
+          key: build-${{ hashFiles('semcore/**', 'tools/**', 'tsconfig.json', 'yarn.lock') }}
       - name: Restore cache node modules site
         uses: actions/cache@v2
         with:
