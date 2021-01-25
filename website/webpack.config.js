@@ -55,17 +55,13 @@ module.exports = (env, argv) => {
       },
     },
     plugins: [
-      new CopyPlugin({
-        patterns: [
-          {
-            from: path.join(__dirname, './docs'),
-            to: path.join(__dirname, 'client/dist'),
-            globOptions: {
-              ignore: ['*.js', '*.md'],
-            },
-          },
-        ],
-      }),
+      new CopyPlugin([
+        {
+          from: path.join(__dirname, './docs'),
+          to: path.join(__dirname, 'client/dist'),
+          ignore: ['*.js', '*.md'],
+        },
+      ]),
     ],
   };
 
