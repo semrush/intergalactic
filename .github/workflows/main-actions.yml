@@ -36,7 +36,7 @@ jobs:
         with:
           path: |
             **/lib
-          key: build-${{ hashFiles('semcore/**') }}-${{ hashFiles('tools/**') }}-${{ hashFiles('yarn.lock') }}-${{ hashFiles('tsconfig.json') }}
+          key: build-${{ hashFiles('semcore/**', 'tools/**', 'tsconfig.json', 'yarn.lock') }}
       - name: Build
         if: steps.cache-build.outputs.cache-hit != 'true'
         run: yarn build
@@ -52,13 +52,13 @@ jobs:
           path: |
             node_modules
             */*/node_modules
-          key: build-${{ hashFiles('semcore/**') }}-${{ hashFiles('tools/**') }}-${{ hashFiles('yarn.lock') }}-${{ hashFiles('tsconfig.json') }}
+          key: modules-${{ runner.os }}-${{ hashFiles('yarn.lock') }}
       - name: Restore cache build
         uses: actions/cache@v2
         with:
           path: |
             **/lib
-          key: build-${{ github.sha }}
+          key: build-${{ hashFiles('semcore/**', 'tools/**', 'tsconfig.json', 'yarn.lock') }}
       - name: Lint
         run: yarn lint
   test:
