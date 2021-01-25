@@ -1,0 +1,186 @@
+name: site
+on:
+  push:
+    branches: [$default-branch]
+jobs:
+  # 1 lvl
+  setup:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+      - name: Cache node modules
+        uses: actions/cache@v2
+        id: cache-modules
+        with:
+          path: |
+            node_modules
+            */*/node_modules
+          key: modules-${{ runner.os }}-${{ hashFiles('yarn.lock') }}
+      - name: Install dependencies
+        if: steps.cache-modules.outputs.cache-hit != 'true'
+        run: yarn --non-interactive --frozen-lockfile
+
+  setup-site:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+      - name: Cache node modules
+        uses: actions/cache@v2
+        id: cache-modules-site
+        with:
+          path: website/node_modules
+          key: modules-site-${{ runner.os }}-${{ hashFiles('website/yarn.lock') }}
+      - name: Install dependencies
+        if: steps.cache-modules-site.outputs.cache-hit != 'true'
+        working-directory: website
+        run: yarn --non-interactive --frozen-lockfile
+
+  # 2 lvl
+  build:
+    runs-on: ubuntu-latest
+    needs: setup
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+      - name: Restore cache node modules
+        uses: actions/cache@v2
+        with:
+          path: |
+            node_modules
+            */*/node_modules
+          key: modules-${{ runner.os }}-${{ hashFiles('yarn.lock') }}
+      - name: Сache build
+        uses: actions/cache@v2
+        id: cache-build
+        with:
+          path: |
+            **/lib
+          key: build-${{ hashFiles('semcore/**', 'tools/**', 'tsconfig.json', 'yarn.lock') }}
+      - name: Build
+        if: steps.cache-build.outputs.cache-hit != 'true'
+        run: yarn build
+
+  test:
+    runs-on: ubuntu-latest
+    needs: setup
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+      - name: Restore cache node modules
+        uses: actions/cache@v2
+        with:
+          path: |
+            node_modules
+            */*/node_modules
+          key: modules-${{ runner.os }}-${{ hashFiles('yarn.lock') }}
+      - name: Test
+        run: yarn test
+
+  build-site:
+    runs-on: ubuntu-latest
+    needs: setup-site
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+      - name: Restore cache node modules site
+        uses: actions/cache@v2
+        with:
+          path: website/node_modules
+          key: modules-site-${{ runner.os }}-${{ hashFiles('website/yarn.lock') }}
+      - name: Build
+        working-directory: website
+        run: yarn build:server
+
+  lint-site:
+    runs-on: ubuntu-latest
+    needs: setup-site
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+      - name: Restore cache node modules site
+        uses: actions/cache@v2
+        with:
+          path: website/node_modules
+          key: modules-site-${{ runner.os }}-${{ hashFiles('website/yarn.lock') }}
+      - name: Lint
+        working-directory: website
+        run: yarn lint:md
+
+  # 3 lvl
+  lint:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+      - name: Restore cache node modules
+        uses: actions/cache@v2
+        with:
+          path: |
+            node_modules
+            */*/node_modules
+          key: modules-${{ runner.os }}-${{ hashFiles('yarn.lock') }}
+      - name: Restore cache build
+        uses: actions/cache@v2
+        with:
+          path: |
+            **/lib
+          key: build-${{ hashFiles('semcore/**', 'tools/**', 'tsconfig.json', 'yarn.lock') }}
+      - name: Lint
+        run: yarn lint
+
+  build-static-site:
+    runs-on: ubuntu-latest
+    needs: [setup-site, build]
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+      - name: Restore cache node modules site
+        uses: actions/cache@v2
+        with:
+          path: website/node_modules
+          key: modules-site-${{ runner.os }}-${{ hashFiles('website/yarn.lock') }}
+      - name: Build
+        working-directory: website
+        run: yarn build:client
+
+  build-interface-site:
+    runs-on: ubuntu-latest
+    needs: [setup-site, build]
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+      - name: Restore cache node modules site
+        uses: actions/cache@v2
+        with:
+          path: website/node_modules
+          key: modules-site-${{ runner.os }}-${{ hashFiles('website/yarn.lock') }}
+      - name: Restore cache build
+        uses: actions/cache@v2
+        with:
+          path: |
+            **/lib
+          key: build-${{ hashFiles('semcore/**', 'tools/**', 'tsconfig.json', 'yarn.lock') }}
+      - name: Build
+        working-directory: website
+        run: yarn build:interface
+
+  # 4 lvl
+  algolia:
+    runs-on: ubuntu-latest
+    needs: [build-site, build-static-site, build-interface-site]
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+      - name: Restore cache node modules site
+        uses: actions/cache@v2
+        with:
+          path: website/node_modules
+          key: modules-site-${{ runner.os }}-${{ hashFiles('website/yarn.lock') }}
+      - name: Algolia
+        env:
+          ALGOLIA_SECRET_KEY: ${{ secrets.ALGOLIA_SECRET_KEY }}
+        working-directory: website
+        run: node algoliaPublish.js
