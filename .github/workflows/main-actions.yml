@@ -6,14 +6,20 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
-      - run: yarn --non-interactive --frozen-lockfile
-  build:
-    needs: setup
-    runs-on: ubuntu-latest
-    steps:
-      - run: yarn build
-  lint:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - run: yarn lint
+      - name: Cache node modules
+        uses: actions/cache@v2
+        env:
+          cache-name: cache-node-modules
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ env.cache-name }}-
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
+      - name: Install dependencies
+        run: yarn --non-interactive --frozen-lockfile
+      - name: Build
+        run: yarn build
+      - name: Lint
+        run: yarn lint
