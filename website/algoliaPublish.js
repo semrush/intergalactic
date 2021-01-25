@@ -44,11 +44,15 @@ async function main() {
 
   const objectIcons = dataIcons.icons.map((o, i) => ({ objectID: i, ...o }));
 
-  await index.clearIndex();
-  await index.partialUpdateObjects(objects);
+  await index.clearObjects();
+  await index.partialUpdateObjects(objects, {
+    createIfNotExists: true,
+  });
 
-  await indexIcons.clearIndex();
-  await indexIcons.partialUpdateObjects(objectIcons);
+  await indexIcons.clearObjects();
+  await indexIcons.partialUpdateObjects(objectIcons, {
+    createIfNotExists: true,
+  });
 }
 
 main();
