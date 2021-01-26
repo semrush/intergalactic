@@ -65,3 +65,5 @@ function convert(str) {
   }
   return str;
 }
+
+export default convert;

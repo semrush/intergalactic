@@ -51,9 +51,11 @@ const Input = styled.input`
   border: 1px solid #d1d4db;
   outline: none;
   text-overflow: ellipsis;
+
   &:focus {
     border: 1px solid #171a22;
   }
+
   &::placeholder {
     color: #898d9a;
     text-overflow: ellipsis;
@@ -138,6 +140,7 @@ const MenuAction = styled.div`
   color: #898d9a;
   display: flex;
   align-items: center;
+
   svg {
     margin-right: 4px;
   }
@@ -160,7 +163,6 @@ const SuggestSearch = withRouter(
                 <Input
                   autoFocus
                   isOpen={!!currentRefinement && visible}
-                  value={currentRefinement}
                   onChange={(e) => {
                     refine(convertKeyboard(e.currentTarget.value));
                     action.visible(true);
