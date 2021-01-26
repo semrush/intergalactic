@@ -3,9 +3,7 @@ import * as chokidar from 'chokidar';
 import { Documentalist, MarkdownPlugin } from 'documentalist';
 import { Heading, Navigation, Page } from './page.interface';
 import { hashCode, normalizeDocumentalistContents } from '../utils';
-const clc = require('cli-color');
 
-const warn = clc.yellow;
 const DOCS_DIR = './docs/**/**.md';
 const LIST_HASH_TITLE = [];
 
@@ -54,7 +52,7 @@ function checkValidUrl(pages, validUrls) {
               return false;
             }
 
-            console.log(warn(`I not valid url "${url}" in "${page.route}"`));
+            console.log(`I not valid url "${url}" in "${page.route}"`);
           }
         });
       }
