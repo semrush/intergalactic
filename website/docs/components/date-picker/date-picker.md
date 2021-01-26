@@ -23,8 +23,6 @@ The component exists in 4 types:
 
 Trigger, as a rule, is in the form of select trigger, only without the chevron icon.
 
-The text coincides with the selected date/range. Read more about the rules of dates writing in the [Style Guide for User Interface Text](/text/write-text/).
-
 | Description                        | Appearance example                    |
 | ---------------------------------- | ------------------------------------- |
 | Placeholder                        | ![trigger](static/placeholder.png)    |

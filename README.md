@@ -1,7 +1,7 @@
 # Intergalactic 🐳
 
 Intergalactic is a [React](https://reactjs.org/) component library for developing interfaces.
-You can see them in action in in our [documentation](https://i.semrush.com).
+You can see components in action in our [documentation website](https://i.semrush.com).
 
 ---
 
