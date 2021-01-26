@@ -102,19 +102,19 @@ lint:markdown:
   extends: .job_website
   allow_failure: false
 
-deploy:algolia:
-  stage: deploy
-  tags:
-    - docker
-  script:
-    - node algoliaPublish.js
-  interruptible: true
-  only:
-    - master
-  except:
-    - tags
-    - schedules
-  extends: .job_website
+#deploy:algolia:
+#  stage: deploy
+#  tags:
+#    - docker
+#  script:
+#    - node algoliaPublish.js
+#  interruptible: true
+#  only:
+#    - master
+#  except:
+#    - tags
+#    - schedules
+#  extends: .job_website
 
 deploy:docker:
   stage: deploy
@@ -149,8 +149,7 @@ deploy:k8s:
     - k8s
   image: $BUILDER_IMAGE
   script:
-    - echo ${GCLOUD_GITLAB_CI_KUBE_ADMIN_AUTH} > "$GOOGLE_APPLICATION_CREDENTIALS"
-    - gcloud auth activate-service-account --key-file="$GOOGLE_APPLICATION_CREDENTIALS"
+    - gcloud auth activate-service-account --key-file $GCLOUD_GITLAB_CI_KUBE_ADMIN_AUTH
     - gcloud container clusters get-credentials $CLUSTER_NAME --zone $GCLOUD_ZONE --project $GCLOUD_PROJECT
     - sed "s/:latest/:${CI_COMMIT_SHA}/g" $K8S_DEPLOY > /tmp/intergalactic-deploy.yaml
     - kubectl apply -f /tmp/intergalactic-deploy.yaml
