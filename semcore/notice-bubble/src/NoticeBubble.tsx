@@ -331,7 +331,7 @@ export default NoticeBubbleContainer;
 export const NoticeBubbleRepresentation = React.forwardRef(function (props, ref) {
   logger.warn(
     true,
-    "Компонент '<NoticeBubbleRepresentation/>' является устаревшим, используйте '<NoticeBubble/>'",
+    "The component '<NoticeBubbleRepresentation/>' is deprecated, please use '<NoticeBubble/>'",
     props['data-ui-name'] || NoticeBubble.displayName,
   );
   //@ts-ignore

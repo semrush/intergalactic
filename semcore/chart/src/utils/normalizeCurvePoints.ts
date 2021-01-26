@@ -9,9 +9,9 @@ function replaceNullValue(targetPoint: Point, sourcePoint: Point) {
 }
 
 /**
- * Нормализует массив точек для графика.
- * Заполняет точки без данных точками с соседних,
- * нужно для продолжения пунктирной линии в тех местах, где данных по краям нет
+ * Normalizes the array of points for the plot.
+ * Fills points without data with points from neighboring ones.
+ * It is necessary to continue the dotted line in those places where there is no data on the edges.
  * @param points
  * @param dataKey
  */

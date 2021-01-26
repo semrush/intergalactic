@@ -47,13 +47,13 @@ const getText = (dictionary: Dictionary, locale: LocaleKeys) => {
 };
 
 export interface IWithI18nEnhanceProps {
-  /* Функция для получения нужного поля из словаря переводов */
+  /* Function for getting the required field from the translation dictionary */
   getI18nText?: (key?: string, variables?: {}) => any;
-  /* Объект с переводами */
+  /* Object with translations */
   i18n?: {
     [key: string]: string;
   };
-  /* Локаль для переводов */
+  /* Locale for translations */
   locale?: LocaleKeys;
 }
 

@@ -46,63 +46,63 @@ export type Placement = Options['placement'];
 
 export interface IPopperProps extends IOutsideClickProps, IPortalProps, IUniqueIDProps {
   /**
-   * Popper может иметь разные варианты позиционирования
+   * Popper can have different positioning options
    * @default absolute
    */
   strategy?: Strategy;
   /**
-   * Модификаторы для popper.js
+   * Modifiers for popper.js
    */
   modifiers?: Modifiers;
   /**
-   * Положение всплывающего окна относительно тригера его вызвавшего.
+   * The position of the popper relative to the trigger that called it.
    * 'auto-start' | 'auto' | 'auto-end' | 'top-start' | 'top' | 'top-end' | 'right-start' | 'right' | 'right-end' | 'bottom-end' | 'bottom' | 'bottom-start' | 'left-end' | 'left' | 'left-start'
    * @default auto
    */
   placement?: Placement;
   /**
-   * Взаимодействие с триггером для отображения и скрытия всплывающего окна
+   * Interaction with a trigger to show and hide the popper
    * @default click
    */
   interaction?: 'click' | 'hover' | 'focus' | 'none' | eventInteraction;
-  /** Таймер для отображения и скрытия всплывающего окна */
+  /** Timer to show and hide the popper */
   timeout?: number | [number, number];
-  /** Значение видимости всплывающего окна */
+  /** Popper visibility value */
   visible?: boolean;
-  /** Значение видимости всплывающего окна по умолчанию
+  /** Default popper visibility
    * @default false */
   defaultVisible?: boolean;
-  /** Функция вызывающаяся при изменении видимости */
+  /** Function called when visibility changes */
   onVisibleChange?: (visible: boolean, e?: Event) => boolean | void;
-  /** Настройки PopperJS модикифкатора, отвечающие за отступ пеппера */
+  /** PopperJS modifier settings for popper indent */
   offset?: Partial<OptionsOffset> | number | [number, number];
-  /** Настройки PopperJS модикифкатора, отвечающие нахождение границ */
+  /** PopperJS modifier settings for finding borders */
   preventOverflow?: Partial<OptionsPreventOverflow>;
-  /** Настройки PopperJS модикифкатора, отвечающие за стрелочку */
+  /** PopperJS modifier settings responsible for the arrow */
   arrow?: Partial<OptionsArrow>;
-  /** Настройки PopperJS модикифкатора, отвечающие за разворот поппера при недостатке места */
+  /** PopperJS modifier settings responsible for turning the popper when there is not enough space */
   flip?: Partial<OptionsFlip>;
-  /** Настройки PopperJS модикифкатора, отвечающие за применение стилей */
+  /** PopperJS modifier settings for applying styles */
   computeStyles?: Partial<OptionsComputeStyles>;
-  /** Настройки PopperJS модикифкатора, отвечающие за подписку на глобальные события */
+  /** PopperJS modifier settings responsible for subscribing to global events */
   eventListeners?: Partial<OptionsEventListeners>;
   /** @ignore */
   onFirstUpdate?: Options['onFirstUpdate'];
 
   /**
-   * По дефолту Popper стилизован как position: absolute. Позволяет переключить на fixed
+   * By default, Popper is styled as position: absolute. Allows to switch to fixed
    * @deprecated v4.0.0 {@link IPopperProps.strategy}
    */
   positionFixed?: boolean;
 
   /**
-   * Выключает подписку на глобальные события `resize/scroll`
+   * Turns off subscription to global `resize/scroll` events
    * @deprecated v4.0.0 {@link IPopperProps.eventListeners}
    */
   eventsDisabled?: boolean;
 
   /**
-   * События на тригер для отображения и скрытия всплывающего окна
+   * Trigger events to show and hide the popper
    * @deprecated v4.0.0 {@link IPopperProps.interaction}
    */
   displayEvents?: {
@@ -111,7 +111,7 @@ export interface IPopperProps extends IOutsideClickProps, IPortalProps, IUniqueI
   };
 
   /**
-   * Таймер на тригер для отображения и скрытия всплывающего окна
+   * Trigger timer to show and hide the popper
    * @deprecated v4.0.0 {@link IPopperProps.timeout}
    */
   displayTimeout?: {
@@ -126,7 +126,7 @@ export interface IPopperProps extends IOutsideClickProps, IPortalProps, IUniqueI
   popperZIndex?: string | number;
 
   /**
-   * Определяет граничный элемент, используемый Popper для его flip и preventOverflow модификаторов. Поддерживаются три сокращенных ключевых слова; Popper найдет правильный элемент DOM.
+   * Defines the border element used by Popper for its flip and preventOverflow modifiers. Three abbreviated keywords are supported; Popper will find the correct DOM element.
    * `'scrollParent' | 'viewport' | 'window' | HTMLElement`
    * @deprecated v4.0.0 {@link IPopperProps.preventOverflow}
    */
@@ -192,7 +192,7 @@ class Popper extends Component<IPopperProps> {
     },
     focus: {
       trigger: [['onFocus'], ['onBlur']],
-      // что бы быстрее перехватывать чем onBlur на триггере
+      // to intercept faster than onBlur on the trigger
       popper: [['onFocusCapture'], ['onBlur']],
     },
     none: {
@@ -253,7 +253,7 @@ class Popper extends Component<IPopperProps> {
     /* START positionFixed */
     logger.warn(
       positionFixed !== undefined,
-      "Свойство 'positionFixed' является устаревшим, используйте 'strategy=\"fixed\"'",
+      "The 'positionFixed' property is deprecated, use 'strategy=\"fixed\"'",
       other['data-ui-name'] || Popper.displayName,
     );
     if (positionFixed) {
@@ -263,7 +263,7 @@ class Popper extends Component<IPopperProps> {
     /* START eventsDisabled */
     logger.warn(
       eventsDisabled !== undefined,
-      "Свойство 'eventsDisabled' является устаревшим, используйте 'eventListeners={{scroll: false, resize: false}}'",
+      "The 'eventsDisabled' property is deprecated, use 'eventListeners={{scroll: false, resize: false}}'",
       other['data-ui-name'] || Popper.displayName,
     );
     if (eventsDisabled !== undefined) {
@@ -279,7 +279,7 @@ class Popper extends Component<IPopperProps> {
     /* START boundary */
     logger.warn(
       boundary !== undefined,
-      "Свойство 'boundary' является устаревшим, используйте 'preventOverflow={{rootBoundary: \"document\", boundary: HTMLElement}}'",
+      "The 'boundary' property is deprecated, use 'preventOverflow={{rootBoundary: \"document\", boundary: HTMLElement}}'",
       other['data-ui-name'] || Popper.displayName,
     );
     if (boundary !== undefined) {
@@ -344,7 +344,7 @@ class Popper extends Component<IPopperProps> {
     const { displayEvents, ...other } = this.asProps;
     logger.warn(
       displayEvents !== undefined,
-      "Свойство 'displayEvents' является устаревшим, используйте 'interaction'",
+      "The 'displayEvents' property is deprecated, use 'interaction'",
       other['data-ui-name'] || Popper.displayName,
     );
     if (displayEvents !== undefined) {
@@ -411,7 +411,7 @@ class Popper extends Component<IPopperProps> {
     /* START displayTimeout */
     logger.warn(
       displayTimeout !== undefined,
-      "Свойство 'displayTimeout' является устаревшим, используйте 'timeout'",
+      "'DisplayTimeout' property is deprecated, use 'timeout'",
       other['data-ui-name'] || Popper.displayName,
     );
     if (displayTimeout !== undefined) {
@@ -459,7 +459,7 @@ class Popper extends Component<IPopperProps> {
     /* START popperZIndex */
     logger.warn(
       popperZIndex !== undefined,
-      "Свойство 'popperZIndex' является устаревшим, используйте стили напрямую в '<Popper.Popper/>'",
+      "The 'popperZIndex' property is deprecated, use styles directly in '<Popper.Popper/>'",
       other['data-ui-name'] || Popper.displayName,
     );
     /* END popperZIndex */
@@ -512,7 +512,7 @@ function Trigger(props) {
     <STrigger
       render={Box}
       inline
-      // Потому что появляются бордеры
+      // Because the boarders appear
       // tabIndex={interaction === 'focus' ? undefined : 0}
     />
   );

@@ -80,7 +80,7 @@ export interface IProjectCreateModalProps extends IWithI18nEnhanceProps {
    */
   hasSharingCheckbox?: boolean;
   /** The function is called in while data validation
-   * @default (values, _: Object с нужной локализацией) => errors
+   * @default (values, _: Object with needed localization) => errors
    */
   validate?: <T extends Partial<IProjectCreateValues>>(
     values: T,

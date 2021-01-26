@@ -67,7 +67,7 @@ class Dropdown extends Component<IDropdownProps> {
 
     logger.warn(
       popperStretch !== undefined,
-      "Свойство 'popperStretch' является устаревшим, используйте 'stretch'",
+      "The 'popperStretch' property is deprecated, use 'stretch'",
       other['data-ui-name'] || Dropdown.displayName,
     );
 

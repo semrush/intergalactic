@@ -73,7 +73,7 @@ class RootTooltip extends Component<ITooltipProps> {
 
     logger.warn(
       title && advanceMode,
-      "Нельзя одновременно использовать 'title' и '<Tooltip.Trigger/>/<Tooltip.Popper/>'",
+      "You can't use 'title' and '<Tooltip.Trigger/>/<Tooltip.Popper/>' at the same time",
       other['data-ui-name'] || TooltipBase.displayName,
     );
 
@@ -143,7 +143,7 @@ export default TooltipBase;
 const Tooltip = React.forwardRef(function (props, ref) {
   logger.warn(
     true,
-    "Именованный импорт 'import { Tooltip }' является устаревшим, используйте дефолтный 'import Tooltip'",
+    "The named import 'import { Tooltip }' is deprecated, use the default 'import Tooltip'",
     props['data-ui-name'] || Tooltip.displayName,
   );
   return <TooltipBase ref={ref} interaction="click" {...props} />;

@@ -4,9 +4,9 @@ const t = recast.types.namedTypes;
 
 // ¯\_(ツ)_/¯
 /**
- * Заменяет jsx-атрибут
- * @param {String} propName - имя нового атрибута
- * @param {Object} map - мапа сайзов на значение нового атрибута
+ * Replaces jsx attribute
+ * @param {String} propName - the name of the new attribute
+ * @param {Object} map - map of the sizes to the value of the new attribute
  * @returns {Function}
  */
 function sizeDependentReplacer(propName, map) {

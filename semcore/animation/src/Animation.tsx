@@ -3,17 +3,17 @@ import createComponent, { Component, styled } from '@semcore/core';
 import { Box, IBoxProps } from '@semcore/flex-box';
 
 export interface IAnimationProps extends IBoxProps {
-  /** Свойство отвечает за видимость элемента */
+  /** The property is responsible for the visibility of the element */
   visible?: boolean;
-  /** Длительность отображения анимации в ms
+  /** Animation duration in ms
    * @default 0
    */
   duration?: number | [number, number];
-  /** Задержка отображения анимации в ms
+  /** Animation delay in ms
    * @default 0
    */
   delay?: number | [number, number];
-  /** Названия анимацией */
+  /** Animation titles */
   keyframes?: [string, string];
 }
 

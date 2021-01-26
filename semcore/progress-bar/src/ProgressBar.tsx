@@ -68,7 +68,7 @@ class ProgressBarRoot extends Component<IProgressBarProps> {
 
     logger.warn(
       animation !== undefined,
-      "Свойство 'animation' является устаревшим, используйте 'value'",
+      "The 'animation' property is deprecated, use 'value'",
       other['data-ui-name'] || ProgressBarRoot.displayName,
     );
 
@@ -130,7 +130,7 @@ const Progress = React.forwardRef<
 >(function (props, ref) {
   logger.warn(
     true,
-    "Компонент '<Progress/>' является устаревшим, используйте '<ProgressBar.Value/>'",
+    "Component '<Progress/>' is deprecated, use '<ProgressBar.Value/>'",
     props['data-ui-name'] || ProgressBar.displayName,
   );
   return <ProgressBar.Value ref={ref} {...props} />;
@@ -142,7 +142,7 @@ const Bar = React.forwardRef<
 >(function (props, ref) {
   logger.warn(
     true,
-    "Компонент '<Bar/>' является устаревшим, используйте '<ProgressBar/>'",
+    "Component '<Bar/>' is deprecated, please use '<ProgressBar/>'",
     props['data-ui-name'] || ProgressBar.displayName,
   );
   return <ProgressBar ref={ref} {...props} />;

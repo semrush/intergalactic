@@ -3,10 +3,10 @@ const b = recast.types.builders;
 const t = recast.types.namedTypes;
 
 /**
- * Ф-ция для создания нового JSXElement-a вида <Link.Text>
- * @param {String} name - имя JSXElement-a
- * @param {Array} children - список дочерних элементов
- * @param {Array} attributes - список атрибутов
+ * Function for creating a new JSXElement of the type <Link.Text>
+ * @param {String} name - JSXElement name
+ * @param {Array} children - list of children elements
+ * @param {Array} attributes - attribute list
  * @returns {*}
  */
 function createNestedJSXElement(name, children, attributes = []) {
@@ -24,7 +24,7 @@ function createNestedJSXElement(name, children, attributes = []) {
 }
 
 /**
- * Ф-ция для "разворачивания" атрибутов before & after
+ * Function for "expanding" the before & after attributes
  * @param path - NodePath
  * @returns {*}
  */
@@ -63,8 +63,8 @@ function beforeAfterReplacer(path, createWrapChildren = true) {
 }
 
 /**
- * Ф-ция замены размеров компонента
- * @param {Object} map - map текущих размеров на новые
+ * Function of replacing component dimensions
+ * @param {Object} map - map of current sizes to new ones
  * @returns {function(*): *}
  */
 function sizeReplacer(map) {
@@ -81,10 +81,10 @@ function sizeReplacer(map) {
 }
 
 /**
- * Ф-ция добавляющая к JSX-element'у JSX-аргумент при его отсутствии
- * @param {String} name - имя атрибута
- * @param {String} newName - имя добавляемого атрибута
- * @param {function} value - ф-ция генератор ast-node'ы jsxAttribute.value
+ * Function that adds a JSX argument to a JSX-element if it is absent
+ * @param {String} name - attribute name
+ * @param {String} newName - the name of the added attribute
+ * @param {function} value - function generator ast-nodes jsxAttribute.value
  * @returns {function(*): *}
  */
 function addAttributeIfNotProvided(name, newName, value) {
@@ -116,8 +116,8 @@ function addAttributeIfNotProvided(name, newName, value) {
 }
 
 /**
- * Ф-ция рекурсивного переименования JSX-элемента
- * @param {String} name - новое имя JSX-элемента
+ * Function of recursive renaming of a JSX element
+ * @param {String} name - new name of the JSX element
  * @returns {function(*): *}
  */
 function renameJSXElement(name) {
@@ -150,8 +150,8 @@ function renameJSXElement(name) {
 }
 
 /**
- * Ф-ция удаления JSX-атрибутов
- * @param {String[]} names - имена удаляемых атрибутов
+ * JSX Attribute Removal Function
+ * @param {String[]} names - the names of the removed attributes
  * @returns {function(*): *}
  */
 function removeJsxAttributes(names) {
@@ -170,8 +170,8 @@ function removeJsxAttributes(names) {
 }
 
 /**
- * Ф-ция разворачивания св-в из labelProps
- * @param {JSXExpressionContainer} labelProps - значение атрибута
+ * Function to expand properties from labelProps
+ * @param {JSXExpressionContainer} labelProps - attribute value
  * @returns {[attributes]}
  */
 function spredLabelProps(labelProps) {
@@ -194,11 +194,11 @@ function spredLabelProps(labelProps) {
 }
 
 /**
- * Функция для создания новых атрибутов из имеющихся в JSXElement-e
- * @param {Object[]} attributes - атрибуты из ast
- * @param {String[]} propsName - список атрибутов, которые нужно убрать
- * @returns {value: Object[], attributes:Object[]} value - Object вида {[name attribute]: attribute.value},
- *                                       attributes - атрибуты из ast
+ * A function for creating new attributes from those in the JSXElement
+ * @param {Object[]} attributes - attributes from ast
+ * @param {String[]} propsName - list of attributes to remove
+ * @returns {value: Object[], attributes:Object[]} value - Object of the form {[name attribute]: attribute.value},
+ *                                       attributes - attributes from ast
  */
 function getNewAttributes(attributes, propsName = []) {
   let value = {};

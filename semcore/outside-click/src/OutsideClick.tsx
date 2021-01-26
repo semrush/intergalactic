@@ -7,18 +7,18 @@ import getOriginChildren from '@semcore/utils/lib/getOriginChildren';
 
 export interface IOutsideClickProps {
   /**
-   * Функция вызывающаяся при клике за пределами компонента из excludeRefs
+   * Function called on click outside the component from excludeRefs
    * @default () => {}
    */
   onOutsideClick?: (e?: React.SyntheticEvent) => void;
 
   /**
-   * Список refs, клики на которые не будут вызывать `onOutsideClick`
+   * List of refs that will not trigger `onOutsideClick` when clicked
    * @default []
    */
   excludeRefs?: Array<NodeByRef>;
 
-  /** Рутовый элемент
+  /** Root element
    * @default document
    *  */
   root?: NodeByRef;
@@ -47,7 +47,7 @@ function OutsideClick(props: IFunctionProps<IOutsideClickProps>) {
   useEffect(() => {
     const outsideRoot = root ? getNodeByRef(root) : ownerDocument(nodeRef.current);
 
-    // true стоит что бы перехватить событие быстрее всех, так как если таргет по которому кликнули будет удален из дома то сработает OutsideClick даже если елемент был в exclude
+    // true стоит, чтобы перехватить событие быстрее всех, так как, если таргет, по которому кликнули, будет удален из дома, то сработает OutsideClick, даже если елемент был в exclude
     outsideRoot.addEventListener('mouseup', handleOutsideClick, true);
     outsideRoot.addEventListener('mousedown', handleMouseDown, true);
 

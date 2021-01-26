@@ -8,8 +8,8 @@ import CSSinJS from '../CSSinJS';
 const getStylesheet = () => CSSinJS().raw;
 
 /**
- * Ф-ция очистки обьекта стилей nanoCSS от ключей со значнение undefined
- * @param {Object} obj - обьект стилей nanoCSS
+ * Function to clear the nano CSS styles object from keys with undefined value
+ * @param {Object} obj - nano CSS styles object
  * @returns {Object}
  */
 function normaliseCss(obj: CssLikeObject) {

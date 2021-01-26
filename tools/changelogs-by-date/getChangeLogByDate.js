@@ -2,7 +2,7 @@ const { promisify } = require('util');
 const parseChangelog = promisify(require('changelog-parser'));
 
 /**
- * Считывает ченджлоги перобразуя данные в след. формат:
+ * Reads changelogs by converting the data to the format:
  * @return {{
  *    date: string,
  *    component: string,
@@ -39,7 +39,7 @@ async function getChangelogByDate(componentName, componentVersion, changelogPath
 }
 
 /**
- * Формирует список изменений компонентов по датам
+ * Generates a list of component changes by dates
  * @param changelogMeta - ReturnType<getChangelogByDate>
  * @return {{date: string, components: { name: string, changes: { type: string, data: string }[] }[] }[]}
  */

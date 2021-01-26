@@ -6,7 +6,7 @@ import useEventCallback from '../use/useEventCallback';
 const KEY_REGISTER = 'keyboard-focus-enhance-using';
 
 export interface IKeyboardFocusProps {
-  /* Свойство отвечающие за отображение "клавиатурного" фокуса */
+  /* Property responsible for displaying "keyboard" focus */
   keyboardFocused?: boolean;
 }
 

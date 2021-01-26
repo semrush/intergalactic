@@ -160,12 +160,12 @@ class PaginationRoot extends Component<IPaginationProps, IPaginationState> {
     super(props);
     logger.warn(
       !!props.onPageChange,
-      'Свойство "onPageChange" устарело, используйте "onCurrentPageChange"',
+      'The property "onPageChange" is deprecated, use "onCurrentPageChange"',
       props['data-ui-name'],
     );
     logger.warn(
       !!props.totalPagesFormatter,
-      'Свойство "totalPagesFormatter" устарело, используйте компонент "<Pagination.TotalPages/>"',
+      'The "totalPagesFormatter" property is deprecated, use the "<Pagination.TotalPages/>" component',
       props['data-ui-name'],
     );
   }
@@ -347,7 +347,7 @@ class TotalPages extends Component<ITotalPagesProps> {
 
     logger.warn(
       !!label,
-      'Свойство "label" устарело, используйте i118n, что бы переопределить текст',
+      '"Label" property is deprecated, use i118n to override text',
       this.asProps['data-ui-name'],
     );
 
@@ -386,7 +386,7 @@ class PageInput extends Component<IPageInputProps> {
 
     logger.warn(
       !!label,
-      'Свойство "label" устарело, используйте i118n, что бы переопределить текст',
+      '"Label" property is deprecated, use i118n to override text',
       this.asProps['data-ui-name'],
     );
 

@@ -276,17 +276,17 @@ class DropdownMenuRoot extends Component<IDropdownMenuProps> {
 
     logger.warn(
       onSelect !== undefined,
-      "Свойство 'onSelect' является устаревшим, подпишитесь на 'onClick' нужного 'Item'",
+      "Property 'onSelect' is deprecated, subscribe to the 'onClick' of the desired 'Item'",
       other['data-ui-name'] || DropdownMenu.displayName,
     );
     logger.warn(
       optionCount !== undefined,
-      "Свойство 'optionCount' является устаревшим и теперь определяется автоматически от количества Item",
+      "The 'optionCount' property is deprecated and is now automatically determined from the number of Item",
       other['data-ui-name'] || DropdownMenu.displayName,
     );
     logger.warn(
       triggerType !== undefined,
-      "Свойство 'triggerType' является устаревшим, используйте 'interaction=\"focus\"'",
+      "The 'triggerType' property is deprecated, use 'interaction=\"focus\"'",
       other['data-ui-name'] || DropdownMenu.displayName,
     );
     if (triggerType === 'input') {

@@ -59,7 +59,7 @@ class FullscreenModalRoot extends Component<IFullscreenModalProps> {
 
     logger.warn(
       hidden !== undefined,
-      "Свойство 'hidden' является устаревшим, используйте 'visible'",
+      "The 'hidden' property is deprecated, use 'visible'",
       this.asProps['data-ui-name'] || FullscreenModalRoot.displayName,
     );
 

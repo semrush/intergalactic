@@ -7,7 +7,7 @@ function notUsingNativeAutoFocus(autoFocus) {
 }
 
 export interface IWithAutoFocusEnhanceProps {
-  /** Нативный автофокус, но с поддержкой внутри модальных окон, так же можно передать количество ms до срабатывания фокуса */
+  /** Native autofocus, but with support for working inside modals, you can also transmit the number of ms before focus is triggered */
   autoFocus?: Boolean | Number;
 }
 

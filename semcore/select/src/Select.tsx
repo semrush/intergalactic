@@ -390,7 +390,7 @@ const InputSearchWrapper = function (props) {
   const { Root } = props;
   logger.warn(
     true,
-    `\'<${props['data-ui-name']}/>\' является устаревшим, используйте именованный импорт \'import { InputSearch }\'`,
+    `\'<${props['data-ui-name']}/>\' is deprecated, use the named import \'import { InputSearch }\'`,
     props['data-ui-name'] || Select.InputSearch.displayName,
   );
   return <Root render={InputSearch} />;

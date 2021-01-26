@@ -266,7 +266,7 @@ export default ScrollAreaComponent;
 const ScrollContainer = React.forwardRef(function (props, ref) {
   logger.warn(
     true,
-    "Именованный импорт 'import { ScrollContainer }' является устаревшим, используйте статичный метод из дефолтного 'import ScrollArea', '<ScrollArea.Container/>'",
+    "The named import 'import { ScrollContainer }' is deprecated, use the static method from the default 'import ScrollArea', '<ScrollArea.Container/>'",
     props['data-ui-name'] || ScrollAreaComponent.Container.displayName,
   );
   return <ScrollAreaComponent.Container ref={ref} {...props} />;
@@ -276,7 +276,7 @@ ScrollContainer.displayName = ScrollAreaComponent.Container.displayName;
 const ScrollBar = React.forwardRef(function (props, ref) {
   logger.warn(
     true,
-    "Именованный импорт 'import { ScrollBar }' является устаревшим, используйте статичный метод из дефолтного 'import ScrollArea', '<ScrollArea.Bar/>'",
+    "The named import 'import { ScrollBar }' is deprecated, use the static method from the default 'import ScrollArea', '<ScrollArea.Bar/>'",
     props['data-ui-name'] || ScrollAreaComponent.Bar.displayName,
   );
   return <ScrollAreaComponent.Bar ref={ref} {...props} />;
@@ -286,7 +286,7 @@ ScrollBar.displayName = ScrollAreaComponent.Bar.displayName;
 const ScrollArea = React.forwardRef(function (props, ref) {
   logger.warn(
     true,
-    "Именованный импорт 'import { ScrollArea }' является устаревшим, используйте дефолтный 'import ScrollArea'",
+    "The named import 'import { ScrollArea }' is deprecated, use the default 'import ScrollArea'",
     props['data-ui-name'] || ScrollAreaComponent.displayName,
   );
   return <ScrollAreaComponent ref={ref} {...props} />;

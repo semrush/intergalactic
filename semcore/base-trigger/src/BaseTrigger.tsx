@@ -87,7 +87,7 @@ class RootBaseTrigger extends Component<IBaseTriggerProps> {
 
     logger.warn(
       theme !== undefined,
-      "Свойство 'theme' является устаревшим, используйте 'state'",
+      "The 'theme' property is deprecated, use 'state'",
       other['data-ui-name'] || BaseTrigger.displayName,
     );
 

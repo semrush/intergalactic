@@ -285,7 +285,7 @@ export default function useBox<T extends IBoxProps>(
 
   logger.warn(
     css !== undefined,
-    "Свойство 'css' является устаревшим, используйте 'style'",
+    "The 'css' property is deprecated, use 'style'",
     other['data-ui-name'] || 'Box',
   );
 

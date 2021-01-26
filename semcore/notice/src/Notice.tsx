@@ -64,7 +64,7 @@ class RootNotice extends Component<INoticeProps> {
 
     logger.warn(
       invisible !== undefined,
-      "Свойство 'invisible' является устаревшим, используйте 'hidden'",
+      "The 'invisible' property is deprecated, use 'hidden'",
       other['data-ui-name'] || RootNotice.displayName,
     );
 

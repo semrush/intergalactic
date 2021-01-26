@@ -103,7 +103,7 @@ function wrapClass(OriginComponent, enhancements, Context) {
     get asProps() {
       // TODO if not production
       if (!this[CORE_INIT]) {
-        throw new Error('Нельзя вызывать asProps в конструкторе');
+        throw new Error('Can not call asProps in constructor');
       }
       if (!this[CORE_AS_PROPS]) {
         // PROPS
@@ -217,14 +217,14 @@ function createComposeComponent(OriginComponent, Context, enhancements): any {
     if (OriginComponent.prototype instanceof Component) {
       return wrapClass(OriginComponent, enhancements, Context);
     } else {
-      throw new Error('Должен наследоваться от нашего компонента');
+      throw new Error('Must inherit from our component');
     }
   } else if (typeof OriginComponent === 'function') {
     return wrapFunction(OriginComponent, enhancements, Context);
   } else if (OriginComponent[CORE_COMPONENT]) {
     return wrapCore(OriginComponent, enhancements, Context);
   } else {
-    throw new Error('Должен быть React компонентом');
+    throw new Error('Must be a React component');
   }
 }
 
@@ -307,7 +307,7 @@ function createComponent<ComponentProps, ChildComponentProps = {}, ContextType =
     ...enhancements.map((f) => f(context, parents, createComponent, childComponents)),
     bindHandlerEnhancement(),
     childrenEnhancement(context, parents),
-    // root должен быть ниже children
+    // root must be under the children
     rootEnhancement(),
     uncontrolledPropsEnhancement(),
     staticChildrenEnhancement(childComponents, createComponent, {
@@ -315,16 +315,16 @@ function createComponent<ComponentProps, ChildComponentProps = {}, ContextType =
       parent,
       enhancements,
     }),
-    // functionDefaultProps должен быть ниже staticChild
+    // functionDefaultProps must be under the staticChild
     functionDefaultPropsEnhancement(),
-    // inheritedName должен быть ниже staticChild
+    // inheritedName must be under the staticChild
     inheritedNameEnhancement(),
-    // dataName должен быть ниже staticChild
+    // dataName must be under the staticChild
     dataNameEnhancement(),
-    // enhanceEnhancement должен быть ниже functionDefaultPropsEnhancement
+    // enhanceEnhancement must be under the functionDefaultPropsEnhancement
     enhanceEnhancement(),
     styleEnhancement(childComponents, context),
-    // должен быть последним, что бы можно было поднимать любые свойства
+    // must be the last one so any properties can be raised
     hoistPropsEnhancement(childComponents, context),
   ]);
   Component[CONTEXT_COMPONENT] = context;
@@ -354,7 +354,7 @@ function createBaseComponent<ComponentProps>(OriginComponent): ComponentType<Com
     };
     Component[CORE_COMPONENT] = true;
   } else {
-    throw new Error('createBaseComponent принимает только функциональный компонент');
+    throw new Error('createBaseComponent accepts only functional component');
   }
   return Component;
 }

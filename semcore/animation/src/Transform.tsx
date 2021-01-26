@@ -3,7 +3,7 @@ import { createBaseComponent, styled } from '@semcore/core';
 import Animation, { IAnimationProps } from './Animation';
 
 export interface ITransformProps extends IAnimationProps {
-  /** Эффекты анимации
+  /** Animation effects
    * @default []
    */
   transform?: [string, string];
