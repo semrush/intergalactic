@@ -177,6 +177,7 @@ const Mobile = styled.span`
     grid-column: 1;
   }
   img {
+    width: 20px;
     &:hover {
       cursor: pointer;
     }
