@@ -149,7 +149,8 @@ deploy:k8s:
     - k8s
   image: $BUILDER_IMAGE
   script:
-    - gcloud auth activate-service-account --key-file $GCLOUD_GITLAB_CI_KUBE_ADMIN_AUTH
+    - echo ${GCLOUD_GITLAB_CI_KUBE_ADMIN_AUTH} > "$GOOGLE_APPLICATION_CREDENTIALS"
+    - gcloud auth activate-service-account --key-file="$GOOGLE_APPLICATION_CREDENTIALS"
     - gcloud container clusters get-credentials $CLUSTER_NAME --zone $GCLOUD_ZONE --project $GCLOUD_PROJECT
     - sed "s/:latest/:${CI_COMMIT_SHA}/g" $K8S_DEPLOY > /tmp/intergalactic-deploy.yaml
     - kubectl apply -f /tmp/intergalactic-deploy.yaml
