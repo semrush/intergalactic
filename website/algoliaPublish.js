@@ -1,9 +1,14 @@
+require('dotenv').config();
 const algoliasearch = require('algoliasearch');
 const { Documentalist, MarkdownPlugin } = require('documentalist');
 const CONFIG = require('./client/algolia');
 const dataIcons = require('./docs/style/icon/components/icons.json');
 
 const DOCS_DIR = './docs/**/*';
+
+if (!process.env.ALGOLIA_SECRET_KEY) {
+  throw new Error('Create .env file and insert ALGOLIA_SECRET_KEY variable');
+}
 
 const client = algoliasearch(CONFIG.ALGOLIA_APP, process.env.ALGOLIA_SECRET_KEY);
 const index = client.initIndex(CONFIG.ALGOLIA_INDEX);

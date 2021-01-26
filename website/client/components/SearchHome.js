@@ -12,6 +12,8 @@ import ArrowUpXS from '@semcore/icon/lib/ArrowUp/xs';
 import ArrowDownXS from '@semcore/icon/lib/ArrowDown/xs';
 import ActionReturnXS from '@semcore/icon/lib/ActionReturn/xs';
 
+import convertKeyboard from '../utils/convert-keyboard';
+
 import observatory from '../static/search/observatory.svg';
 import CONFIG from '../algolia';
 
@@ -160,7 +162,7 @@ const SuggestSearch = withRouter(
                   isOpen={!!currentRefinement && visible}
                   value={currentRefinement}
                   onChange={(e) => {
-                    refine(e.currentTarget.value);
+                    refine(convertKeyboard(e.currentTarget.value));
                     action.visible(true);
                     action.highlightedIndex(0);
                   }}
