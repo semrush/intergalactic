@@ -10,7 +10,7 @@ The information on the GDPR should be obligatorily shown to the users from Europ
 
 @example feedback
 
-@## Пример формы с контролами `@semcore`
+@## Form example with `@semcore` controls
 
 See more details about different forms in [Form](/components/form/).
 

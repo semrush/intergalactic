@@ -36,7 +36,7 @@ export const tags = {
   link: ({ value }) => {
     return () => (
       <p>
-        Копия свойства{' '}
+        Property copy{' '}
         <Link to={value} smooth={true} duration={100} tag={ScrollLink}>
           {value}
         </Link>

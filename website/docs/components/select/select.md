@@ -56,7 +56,7 @@ The select may contain an icon, flag or user picture in front of the text. [Badg
 
 A [dot ("mandarinka")](/components/dot/) may be in the upper right corner of the trigger.
 
-|        | Button                             | Link as Button                                 | Link as Button цвета текста                  |
+|        | Button                             | Link as Button                                 | Link with the color of text                  |
 | ------ | ---------------------------------- | ---------------------------------------------- | -------------------------------------------- |
 | Flag   | ![flag](static/flag-primary.png)   | ![flag-secondary](static/flag-secondary.png)   | ![flag-tertiary](static/flag-tertiary.png)   |
 | Icon   | ![icon](static/icon-primary.png)   | ![icon-secondary](static/icon-secondary.png)   | ![icon-tertiary](static/icon-tertiary.png)   |

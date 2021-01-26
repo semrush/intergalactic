@@ -24,7 +24,7 @@ Text: `Add new {Tool name}`.
 
 > 💡 Note that if this button should have a lower priority in the visual hierarchy in your tool, you can use the secondary button.
 
-### Модальное окно
+### Modal window
 
 Use L-sized inputs in the form. The text in the tooltip next to the button is 12px (`--fs-100`).
 

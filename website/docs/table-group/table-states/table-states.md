@@ -80,7 +80,7 @@ The table is empty and has no data in it, because the data was either deleted or
 
 ![empty table](static/empty-2.png)
 
-> 💡 Иллюстрации для таких состояний обычно уникальные. Их прорабатывает дизайнер для каждого конкретного случая/инструмента.
+> 💡 The illustrations for these cases are usually unique. Designers create them for each specific case or tool if needed.
 
 @## No data
 
@@ -111,7 +111,7 @@ In this state, we recommend adding a control that will help the user correct the
 
 @## Service error
 
-There was an error in the tool on the backend, so we can't show the data. For more information about such errors, see [Errors, n/a, nothing found в виджетах](/components/widget-empty/).
+There was an error in the tool on the backend, so we can't show the data. For more information about such errors, see [Errors, n/a, nothing found in the widgets](/components/widget-empty/).
 
 **When showing:**
 

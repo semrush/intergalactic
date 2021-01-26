@@ -12,9 +12,9 @@ const Demo = () => {
   return (
     <Flex justifyContent="space-around" alignItems="center" p={5}>
       <Button onClick={toggleVisibleChange} mr={2}>
-        Я управляю видимостью тултипа
+        I control the visibility of the tooltip
       </Button>
-      <Tooltip title="Работаю в обычном режиме 👨‍🔧" visible={visible}>
+      <Tooltip title="РI work as usual 👨‍🔧" visible={visible}>
         <Link>Trigger</Link>
       </Tooltip>
     </Flex>

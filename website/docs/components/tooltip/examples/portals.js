@@ -12,7 +12,7 @@ class Demo extends Component {
             <Tooltip.Trigger>
               <Button>Click me</Button>
             </Tooltip.Trigger>
-            <Tooltip.Popper>Я разрендерился 😎</Tooltip.Popper>
+            <Tooltip.Popper> I got rendered 😎</Tooltip.Popper>
           </Tooltip>
         </Box>
       </Flex>

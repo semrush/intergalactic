@@ -53,7 +53,7 @@ If the user entered the exact match for one of the items and pressed `Enter`, th
 
 ### Validation
 
-[Валидация](/patterns/validation-form/) works similarly to inputs.
+[validation](/patterns/validation-form/) works similarly to inputs.
 
 ### Long loading
 

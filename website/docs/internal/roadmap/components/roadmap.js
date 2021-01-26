@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import Tabs from '@semcore/tab-panel';
 
 import dayjs from 'dayjs';
-import 'dayjs/locale/ru';
+import 'dayjs/locale/en';
 import { css } from '@semcore/core';
 
 const styles = css`
@@ -59,8 +59,8 @@ const Legenda = styled.ul`
 `;
 
 dayjs.locale('ru');
-// 1месяц = 2спринта
-// 1q = 3месяца
+// 1month = 2sprints
+// 1q = 3months
 function generateSprint(startDay, finishDay) {
   const dateSprint = [startDay];
   let lastDay = startDay;

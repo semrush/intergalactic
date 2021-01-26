@@ -33,8 +33,8 @@ Example of using a mask in the [input field to enter a phone number](/components
 
 |             | Appearance examples                                | Styles                      |
 | ----------- | -------------------------------------------------- | --------------------------- |
-| Placeholder | ![input with mask](static/placeholder-default.png) | Цвет плейсхолдера `$gray70` |
-| Mask        | ![input with mask](static/mask-default.png)        | Цвет маски `$gray20`        |
+| Placeholder | ![input with mask](static/placeholder-default.png) | Placeholder color `$gray70` |
+| Mask        | ![input with mask](static/mask-default.png)        | Mask color `$gray20`        |
 
 @## Interaction
 

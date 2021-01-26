@@ -76,8 +76,8 @@ Pills are used for:
 Where do we use pills:
 
 - lists;
-- [таблицы](/table-group/table/);
-- [графики](/data-display/chart-controls/);
+- [tables](/table-group/table/);
+- [charts](/data-display/chart-controls/);
 - local filters in widgets, etc.
 
 ### Number of pills

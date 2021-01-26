@@ -22,7 +22,7 @@ class Demo extends React.PureComponent {
     return (
       <React.Fragment>
         <Button use="primary" onClick={this.openModal}>
-          Открыть окно
+          Open modal
         </Button>
         <Modal visible={visible} onClose={this.closeModal} w={500}>
           <div style={{ fontSize: '16px' }}>

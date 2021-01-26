@@ -12,24 +12,24 @@ const Demo = () => (
       {(props, handlers) => (
         <div>
           <Text size={300} tag="h6" mb={1} mt={0}>
-            Помогите тултипу!
+            Help the tooltip!
           </Text>
           <Text tag="p" mb={4}>
-            Я выгляжу как popover? 🤔
+            Do I look like a tooltip? 🤔
           </Text>
           <Button
             use="primary"
             theme="success"
             mr={2}
             onClick={() => {
-              alert('В яблочко!');
+              alert('Bingo!');
               handlers.visible(false);
             }}
           >
-            Да
+            Yes
           </Button>
-          <Button use="secondary" theme="muted" onClick={() => alert('Не угадал!')}>
-            Нет
+          <Button use="secondary" theme="muted" onClick={() => alert('You did not guess :(')}>
+            No
           </Button>
         </div>
       )}

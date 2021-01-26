@@ -30,7 +30,7 @@ import { Accordion } from '@semcore/accordion';
 <Accordion.Item.Toggle />;
 ```
 
-Принимают все свойства, что и [IBoxProps](/layout/box-system/box-api/).
+Has all properties as [IBoxProps](/layout/box-system/box-api/) prop does.
 
 @## Accordion.Item.Collapse
 
@@ -40,7 +40,7 @@ import { Accordion } from '@semcore/accordion';
 <Accordion.Item.Collapse />;
 ```
 
-Принимают все свойства, что и [IBoxProps](/layout/box-system/box-api/).
+Has all properties as [IBoxProps](/layout/box-system/box-api/) prop does.
 
 @## Accordion.Item.Chevron
 
@@ -50,4 +50,4 @@ import { Accordion } from '@semcore/accordion';
 <Accordion.Item.Chevron />;
 ```
 
-Принимают все свойства, что и [IBoxProps](/layout/box-system/box-api/).
+Has all properties as [IBoxProps](/layout/box-system/box-api/) prop does.

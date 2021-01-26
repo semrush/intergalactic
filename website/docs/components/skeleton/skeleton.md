@@ -189,7 +189,7 @@ In addition, the following components should never use the skeleton, as they sho
 
 ### Table
 
-#### Primary таблицы
+#### Primary tables
 
 - Only three lines are shown.
 - It is not recommended to make many different lengths of "bones", use 1-2 sizes.
@@ -203,7 +203,7 @@ In addition, the following components should never use the skeleton, as they sho
 
 ![skeleton-table](static/table-table.png)
 
-#### Secondary таблицы
+#### Secondary tables
 
 - Standard “bones” replace the text; they are centered vertically at the text line-height.
 - Try to use two or three sizes of “bones”.

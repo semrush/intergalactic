@@ -8,7 +8,7 @@ const Demo = () => (
       <Select disablePortal placeholder={'Select something'}>
         <Select.Trigger />
         <Select.Menu>
-          <Select.Option value="😎">Я разрендерился 😎</Select.Option>
+          <Select.Option value="😎">I got rendered 😎</Select.Option>
         </Select.Menu>
       </Select>
     </Box>

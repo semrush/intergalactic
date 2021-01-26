@@ -72,10 +72,10 @@ This section describes all the variable parameters that we use in our component 
 
 These are rules for the rounding radius of controls, fields, dropdowns, etc.
 
-| Размер    | Стили                 | Где используется                                         |
+| Size      | Styles                | Usage                                                    |
 | --------- | --------------------- | -------------------------------------------------------- |
 | S         | `border-radius: 2px;` | Border-radius for widgets and [Card](/components/card/). |
 | M         | `border-radius: 3px;` | Main border-radius. Used in M components.                |
 | L         | `border-radius: 4px;` | Additional border-radius. Used in L components.          |
-| XL (42px) | `border-radius: 5px;` | Additional rborder-radius. Used in XL (42px) components. |
+| XL (42px) | `border-radius: 5px;` | Additional border-radius. Used in XL (42px) components.  |
 | XXL       | `border-radius: 6px;` | The border-radius is only for modal dialogues.           |

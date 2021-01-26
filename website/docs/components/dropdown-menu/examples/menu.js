@@ -6,7 +6,7 @@ export default function() {
   return (
     <DropdownMenu>
       <DropdownMenu.Trigger tag={ButtonTrigger}>Click me</DropdownMenu.Trigger>
-      {/* Ограничиваем высоту списка */}
+      {/* Adding max-height to the dropdown menu */}
       <DropdownMenu.Menu hMax={'180px'}>
         <DropdownMenu.ItemTitle>List heading</DropdownMenu.ItemTitle>
         <DropdownMenu.Item>Item 1</DropdownMenu.Item>

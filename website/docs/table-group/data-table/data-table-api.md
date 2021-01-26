@@ -36,7 +36,7 @@ import DataTable from '@semcore/data-table';
 <DataTable.Body />;
 ```
 
-Является оберткой над компонентом [Box](/layout/box-system/box-api/#a3cfce)
+It's a wrapper over a [Box](/layout/box-system/box-api/#a3cfce) component.
 
 @## DataTable.Row
 

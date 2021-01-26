@@ -55,9 +55,7 @@ If the links in the breadcrumbs don't fit (the screen is too small or the text i
 | hover  | `color: $gray20;` + underline                                                  |
 | active | `color: $gray20; cursor: default;`                                             |
 
-@## Использование в UX/UI
-
-### Use in UX/UI
+@## Use in UX/UI
 
 The recommended order of the levels in the breadcrumbs:
 

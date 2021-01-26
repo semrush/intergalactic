@@ -61,7 +61,7 @@ export default function FullScreenComponent({ children, location, backHome, ...o
           <Col>
             <ButtonBackHome>
               <ChevronLeftM />
-              <span>Вернуться к гайду</span>
+              <span>Back to the guide</span>
             </ButtonBackHome>
           </Col>
           <Col>

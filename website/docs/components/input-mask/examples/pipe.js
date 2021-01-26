@@ -9,7 +9,7 @@ export default () => {
   return (
     <Box wMax={240} p={8} m={'0 auto'} style={{ borderRadius: '12px', background: '#dee3e5' }}>
       <Text tag={'p'} size={300} medium mb={2}>
-        Номер карты
+        Card number
       </Text>
       <InputMask size="l" mb={4}>
         <InputMask.Value
@@ -35,7 +35,7 @@ function datePipe(value) {
   const indexesOfPipedChars = [];
   const month = parseInt(valueArr[0], 10);
 
-  // Добавляем 0 для месяца если значение больше 1
+  // Add 0 for the month if the value is greater than 1
   if (month < 10 && month !== 1) {
     valueArr[0] = `0${month}`;
     indexesOfPipedChars.push(0);

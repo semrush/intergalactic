@@ -41,9 +41,7 @@ In addition, vertical and horizontal rhythms help maintain visual hierarchy on t
 
 > 💡 **According to our [variables](/style/variables/), the multiplier of all default indents is 4**. This is our main denominator (API `scaleIndent` property).
 
-The following is a table with a scale of spacings, which are used in our interface.
-
-Далее собрана таблица со шкалой отступов, которые используются у нас в интерфейсе.
+Here is a table with a scale of spacings we use in our interface.
 
 | Spacing in px | Spacing in rem | Color coding                                     |
 | ------------- | -------------- | ------------------------------------------------ |

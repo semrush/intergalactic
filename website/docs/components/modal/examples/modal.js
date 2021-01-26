@@ -26,7 +26,7 @@ const Demo = () => {
   return (
     <React.Fragment>
       <Button use="primary" onClick={handleOpen}>
-        Открыть окно
+        Open modal
       </Button>
       <Modal visible={visible} onClose={handleClose}>
         <Text tag="h2" size={400} mb={4}>

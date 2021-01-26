@@ -22,9 +22,9 @@ SSO from the design point of view consists of:
 > 💡 All variables are taken from a common file with variables in `semcore` 😏
 
 - `XL` size inputs (pills, input fields, checkboxes, buttons, links).
-- Modal window header H4 (25px, `--fs-500`), страницы с формой — H2 (36px, `--fs-700`).
-- Additional text under the size header — 14px (`--fs-200`).
-- Text for size hints — 12px (`--fs-100`).
+- Modal window has H4 heading (25px, `--fs-500`). Page with a form has H2 heading (36px, `--fs-700`).
+- Additional text under the heading — 14px (`--fs-200`).
+- Size of the hint text — 12px (`--fs-100`).
 - The color of the main text (both the title and the text below it) is always #333333 (`--gray20`).
 - The color of the tooltips at the bottom of the form - #757575 (`--gray60`).
 

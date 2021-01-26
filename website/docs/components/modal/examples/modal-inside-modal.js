@@ -16,14 +16,14 @@ const Demo = () => {
   return (
     <>
       <Button use="primary" onClick={handleOpen}>
-        Открыть окно
+        Open modal
       </Button>
       <Modal visible={visible} onClose={handleClose}>
         <Text size={200} mb={3} tag="p">
           Open one more window
         </Text>
         <Button use="primary" onClick={handleSecondOpen}>
-          Открыть окно
+          Open modal
         </Button>
         <Modal visible={visibleSecond} onClose={handleSecondClose}>
           <Text size={200} mb={3} tag="p">

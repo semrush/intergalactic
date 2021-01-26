@@ -20,15 +20,15 @@ export default function() {
     <DropdownMenu>
       {(props, handlers) => {
         const {
-          getTriggerProps, // инкапсулирует логику Trigger'a
-          getPopperProps, // инкапсулирует логику Popper'a
-          getListProps, // инкапсулирует логику List'a
-          getItemProps, // // инкапсулирует логику Item'a
+          getTriggerProps, // encapsulates Trigger logic
+          getPopperProps, // encapsulates Popper logic
+          getListProps, // encapsulates List logic
+          getItemProps, // // encapsulates Item logic
         } = props;
 
         const {
-          visible, // управляет внутренним состоянием видимости
-          highlightedIndex, // управляет внутренним состоянием выбора эл-тов списка с клавиатуры
+          visible, // manages internal visibility state
+          highlightedIndex, // controls the internal state of selecting list items from the keyboard
         } = handlers;
 
         return (

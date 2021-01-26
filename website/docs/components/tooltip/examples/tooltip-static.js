@@ -7,7 +7,7 @@ const Demo = () => (
     <Tooltip.Trigger>
       <Button>Hover me</Button>
     </Tooltip.Trigger>
-    <Tooltip.Popper>Здравствуйте, я тултип, очень приятно!</Tooltip.Popper>
+    <Tooltip.Popper>Hello, I am a tooltip! Very nice to meet you!</Tooltip.Popper>
   </Tooltip>
 );
 

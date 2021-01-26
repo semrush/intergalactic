@@ -32,7 +32,7 @@ export default class Demo extends React.Component {
                 officia porro provident quas quia sed sint voluptatum. Nesciunt!
               </p>
               <Button use="primary" theme="danger" onClick={this.handleClose}>
-                Закройте меня!
+                Close me!
               </Button>
             </Modal.Window>
           </Modal.Overlay>

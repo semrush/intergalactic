@@ -46,7 +46,7 @@ class Demo extends React.PureComponent {
           options = [
             {
               value: null,
-              title: `Ничего не найдено`,
+              title: `Nothing found`,
             },
           ];
         }

@@ -8,7 +8,7 @@ tabName: Guide
 
 > ⚠️ This component has a major version, changes are described in the [migration guide](/internal/migration-guide).
 
-@## Описание
+@## Description
 
 **Badge** is a visual marker indicating the product or feature status.
 

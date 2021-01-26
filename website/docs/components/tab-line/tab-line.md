@@ -16,8 +16,6 @@ tabName: Guide
 
 @## Appearance
 
-### Состав
-
 Component consists of:
 
 - container;

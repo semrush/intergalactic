@@ -35,4 +35,4 @@ import InputNumber from '@semcore/input-number';
 <InputNumber.Addon />;
 ```
 
-API такой же, как у [Input.Addon](/components/input/input-api).
+API is the same as [Input.Addon](/components/input/input-api) has.

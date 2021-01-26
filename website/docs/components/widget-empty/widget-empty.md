@@ -70,10 +70,10 @@ The state when for some reason we do not have data at the user request or cannot
 
 We have a certain image for each type of data. The button is an optional element in this case. It is recommended to use an additional button in order it did not intercept the main buttons of the report/tool by priority.
 
-| Wide widget                                       | Medium widget                                           | Text                                                 |
-| ------------------------------------------------- | ------------------------------------------------------- | ---------------------------------------------------- |
-| ![big widget empty](static/big-empty.png)         | ![medium widget empty](static/medium-empty.png)         | h6 — We have no data to show; p — {Поясняющий текст} |
-| ![big widget empty](static/big-empty-filters.png) | ![medium widget empty](static/medium-empty-filters.png) | h6 — We have no data to show; p — {Поясняющий текст} |
+| Wide widget                                       | Medium widget                                           | Text                                             |
+| ------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------ |
+| ![big widget empty](static/big-empty.png)         | ![medium widget empty](static/medium-empty.png)         | h6 — We have no data to show; p — {Hint message} |
+| ![big widget empty](static/big-empty-filters.png) | ![medium widget empty](static/medium-empty-filters.png) | h6 — We have no data to show; p — {Hint message} |
 
 > 💡 **Be brief**. Do not write too much text in such states. Two-three short sentences are enough.
 
@@ -104,9 +104,9 @@ We show the following instead of the data in this state:
 - a text message specifying what you should set up or do in order to obtain the data;
 - the main button.
 
-| Wide widget                                 | Medium widget                                     | Text                                                 |
-| ------------------------------------------- | ------------------------------------------------- | ---------------------------------------------------- |
-| ![big widget set up](static/big-set-up.png) | ![medium widget set up](static/medium-set-up.png) | h6 — Set up your {Name Tool}; p — {Поясняющий текст} |
+| Wide widget                                 | Medium widget                                     | Text                                             |
+| ------------------------------------------- | ------------------------------------------------- | ------------------------------------------------ |
+| ![big widget set up](static/big-set-up.png) | ![medium widget set up](static/medium-set-up.png) | h6 — Set up your {Name Tool}; p — {Hint message} |
 
 If your widget has width of less than 300px, you may just insert the heading of the error as the text of `--fs-100` size into such “empty” state: 12px; `--lh-100: 1.5;` (12px). And you may hide the explanatory information into the icon `Info` of S size.
 
