@@ -4,11 +4,6 @@ import { NextFunction, Request, Response } from 'express';
 
 @Controller()
 export class AppController {
-  @Get('/robots.txt')
-  robots(@Res() res: Response, @Next() next: NextFunction, @Req() req: Request) {
-    return res.sendFile(join(process.cwd(), './server/views/robots.txt'));
-  }
-
   @Post('/callback')
   callbackMonitoring(@Req() req: Request) {
     console.log(req.body);
