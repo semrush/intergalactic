@@ -1,83 +1,55 @@
 #!/usr/bin/env node
 
-const execSync = require('child_process').execSync;
-const exec = require('child_process').exec;
-const argv = require('minimist')(process.argv.slice(2));
+const execa = require('execa');
 
-function runSync(name, ...args) {
-  const command = BUILD[name](...args);
-  execSync(command, { stdio: [0, 1, 2] });
+const argv = require('minimist')(process.argv.slice(2), {
+  default: {
+    source: 'ts',
+  },
+});
+
+async function run(name, ...args) {
+  await execa.command(BUILD[name](...args));
 }
 
-function run(name, cb, ...args) {
-  const command = BUILD[name](...args);
-  exec(command, { stdio: [0, 1, 2] }, (err, stdout, stderr) => {
-    cb && cb();
-    if (stdout) {
-      console.log(name, '---', stdout);
-    }
-    if (stderr) {
-      console.error(name, '---', stderr);
-    }
-  });
-}
+const babelArgs = [
+  '--extensions .ts,.tsx,.js',
+  '--ignore **/*.d.ts',
+  '--presets babel-preset-ui',
+  '--no-babelrc',
+  '--source-maps',
+  '--copy-files',
+  '--no-copy-ignored',
+].join(' ');
 
-function removeTrash(output) {
-  const command = `find lib/${output}/ -type f -name "*.d.ts" -delete`;
-  return () => {
-    exec(command, { stdio: [0, 1, 2] });
-  };
-}
-
-const MAP_CONFIG = {
-  js: ['--extensions ".js"', '--ignore "**/*.d.ts"'],
-  ts: ['--extensions ".ts,.tsx"'],
+const MAP_BABEL_ENV = {
+  cjs: 'commonjs',
+  es6: 'es6',
 };
-
-let babelArgs = ['--presets=babel-preset-ui', '--no-babelrc', '--source-maps', '--copy-files'];
-
-if (argv.source === 'js') {
-  babelArgs = [...babelArgs, ...MAP_CONFIG.js];
-} else {
-  babelArgs = [...babelArgs, ...MAP_CONFIG.ts];
-}
 
 const BUILD = {
   CLEANUP: () => 'rm -rf ./lib',
-  TYPES: (output = 'types') => `tsc --emitDeclarationOnly --baseUrl ./src --outDir ./lib/${output}`,
-  CJS: (output = 'cjs') =>
-    [`BABEL_ENV=commonjs babel ./src --out-dir ./lib/${output}`, ...babelArgs].join(' '),
-  ES6: (output = 'es6') =>
-    [`BABEL_ENV=es6 babel ./src --out-dir ./lib/${output}`, ...babelArgs].join(' '),
-  COPY_TYPES: (output = 'types') =>
-    `mkdir -p ./lib/${output} && find ./src -name *.d.ts -exec cp {} ./lib/${output} ";"`,
-  // PURECSS: [
-  //   'postcss ./src/style/*.shadow.css --dir ./lib/style',
-  //   '--no-map',
-  //   `--config ${path.resolve(__dirname, '..')}`,
-  // ].join(' '),
+  TYPES: (output) => `tsc --emitDeclarationOnly --baseUrl ./src --outDir ./lib/${output}`,
+  COPY_TYPES: (output) =>
+    `mkdir -p ./lib/${output} && find ./src -name *.d.ts -exec cp {} ./lib/${output}`,
+  BABEL: (output, env) => `babel ./src --out-dir ./lib/${output} --env-name=${env} ${babelArgs}`,
 };
 
-console.log('RUN', process.cwd(), '\n');
+async function main() {
+  const tasks = [];
+  await run('CLEANUP');
 
-runSync('CLEANUP');
-
-if (argv.modules) {
-  run('TYPES', '');
-  if (argv.modules === 'cjs') {
-    run('CJS', removeTrash(''), '');
-  }
-  if (argv.modules === 'es6') {
-    run('ES6', removeTrash(''), '');
-  }
-} else {
-  run('CJS', removeTrash('cjs'));
-  run('ES6', removeTrash('es6'));
-
-  if (argv.source === 'js') {
-    run('COPY_TYPES');
+  if (argv.modules) {
+    tasks.push(run('BABEL', '', MAP_BABEL_ENV[argv.modules]));
+    tasks.push(run(argv.source === 'js' ? 'COPY_TYPES' : 'TYPES', ''));
   } else {
-    run('TYPES');
+    tasks.push(run('BABEL', 'cjs', 'commonjs'));
+    tasks.push(run('BABEL', 'es6', 'es6'));
+    tasks.push(run(argv.source === 'js' ? 'COPY_TYPES' : 'TYPES', 'types'));
   }
+
+  await Promise.all(tasks);
 }
-// run(BUILD, 'PURECSS');
+
+console.log('RUN', process.cwd(), '\n');
+main();
