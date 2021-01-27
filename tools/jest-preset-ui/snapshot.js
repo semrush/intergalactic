@@ -8,7 +8,7 @@ const post = util.promisify(request.post);
 const config = {};
 
 if (process.cwd().includes('semcore')) {
-  config.path = path.resolve(process.cwd(), '../..');
+  config.path = path.resolve(process.cwd(), '../../.env');
 }
 
 require('dotenv').config(config);
