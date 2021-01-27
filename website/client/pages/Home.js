@@ -9,12 +9,16 @@ import Tag from '@semcore/tag';
 import AllComponents from '../components/AllComponents';
 import Error from '../components/Error';
 import LoadingPage from '../components/LoadingPage';
+import UpdateBlock from '../components/UpdateBlock';
 import whale from '../static/whale/whale.svg';
 import layout from '../static/space/layout.svg';
 import principles from '../static/space/principles.svg';
 import style from '../static/space/style.svg';
 import ArrowXS from '@semcore/icon/lib/ArrowRight/xs';
+import { Link as LinkScroll, animateScroll } from 'react-scroll';
+import ArrowUpM from '@semcore/icon/lib/ArrowUp/m';
 import { Box } from '@semcore/flex-box';
+import updatesButton from '../static/space/search-for-updates.svg';
 import { css } from '@semcore/core';
 
 const stylesTabLine = css`
@@ -300,6 +304,17 @@ const TableOverlay = styled.div`
   }
 `;
 
+const UpdatesButton = styled(LinkScroll)`
+  position: fixed;
+  top: 439px;
+  right: -21px;
+  width: 136px;
+  z-index: 999;
+  @media (max-width: 320px) {
+    display: none;
+  }
+`;
+
 const NAVIGATE_QUERY = gql`
   {
     navigation {
@@ -505,7 +520,15 @@ function Home() {
                 <Border>{renderSwitch(value, data)}</Border>
               </Tab>
             </MainWrapper>
+            <UpdateBlock />
           </Overlay>
+          <UpdatesButton activeClass="active" to="updBlock" spy={true} smooth={true}>
+            Updates?
+            <img src={updatesButton} alt="Updates button" />
+          </UpdatesButton>
+          <ButtonUp onClick={() => animateScroll.scrollToTop({ smooth: true })}>
+            <ArrowUpM interactive />
+          </ButtonUp>
         </>
       )}
     </>
