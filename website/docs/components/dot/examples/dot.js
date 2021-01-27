@@ -1,27 +1,30 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import TrashS from '@semcore/icon/lib/Trash/s';
 import Button from '@semcore/button';
 import Dot from '@semcore/dot';
 
-class Demo extends React.PureComponent {
-  state = { hidden: false };
+const Demo = () => {
+  const [hidden, updateHidden] = useState(true);
+  let timer = null;
 
-  componentDidMount() {
-    this.timer = setInterval(() => this.setState({ hidden: !this.state.hidden }), 2000);
-  }
+  useEffect(() => {
+    updateHidden(false);
+    return () => {
+      clearTimeout(timer);
+    };
+  }, []);
 
-  componentWillUnmount() {
-    clearInterval(this.timer);
-  }
+  const handleClick = () => {
+    updateHidden(true);
+    timer = setTimeout(() => updateHidden(false), 5000);
+  };
 
-  render() {
-    return (
-      <Button>
-        <TrashS />
-        <Dot up hidden={this.state.hidden} size="l" />
-      </Button>
-    );
-  }
-}
+  return (
+    <Button onClick={handleClick}>
+      <TrashS />
+      <Dot up hidden={hidden} size="l" />
+    </Button>
+  );
+};
 
 export default Demo;

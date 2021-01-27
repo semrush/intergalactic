@@ -171,6 +171,7 @@ class PanelChangeIcon extends PureComponent {
             <AreaLink
               rel="noopener noreferrer"
               download={url}
+              target="_blank"
               href={`https://github.com/semrush/intergalactic/raw/master/${url}?inline=false`}
               data-container="body"
               data-original-title="Download"
