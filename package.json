@@ -44,8 +44,6 @@
     "lint-staged": "^10.2.9",
     "prettier": "^2.0.5",
     "pretty-quick": "^1.11.1",
-    "react-hook-form": "^6.10.1",
-    "rollup": "^1.27.0",
     "tslint-config-prettier": "^1.18.0",
     "tslint-plugin-prettier": "^2.0.1",
     "tslint-react": "^4.1.0",
