@@ -1,4 +1,5 @@
 import { useState } from 'react';
+// @ts-ignore
 import { register } from '@semcore/core';
 import useEnhancedEffect from './use/useEnhancedEffect';
 

@@ -1,4 +1,5 @@
 import React from 'react';
+// @ts-ignore
 import { CHILDREN_COMPONENT } from '@semcore/core';
 
 function getOriginChildren(Children) {

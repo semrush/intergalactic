@@ -1,6 +1,9 @@
 import { useContext } from 'react';
+// @ts-ignore
 import assignProps from '@semcore/utils/lib/assignProps';
+// @ts-ignore
 import pick from '@semcore/utils/lib/pick';
+// @ts-ignore
 import logger from '@semcore/utils/lib/logger';
 
 function assign(target, source) {

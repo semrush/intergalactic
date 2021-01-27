@@ -1,4 +1,5 @@
 import React from 'react';
+// @ts-ignore
 import { CHILDREN_COMPONENT, INHERITED_NAME } from '@semcore/core';
 import getOriginChildren from './getOriginChildren';
 

@@ -1,4 +1,6 @@
+// @ts-ignore
 import { callAllEventHandlers } from '@semcore/utils/lib/assignProps';
+// @ts-ignore
 import capitalizeFirstLetter from '@semcore/utils/lib/capitalizeFirstLetter';
 
 function assign(target, source) {

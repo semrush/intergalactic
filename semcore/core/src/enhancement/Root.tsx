@@ -1,5 +1,7 @@
 import React from 'react';
+// @ts-ignore
 import assignProps from '@semcore/utils/lib/assignProps';
+// @ts-ignore
 import { useForkRef } from '@semcore/utils/lib/ref';
 
 function createRootRender() {

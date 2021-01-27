@@ -1,4 +1,5 @@
 import { useState } from 'react';
+// @ts-ignore
 import { register } from '@semcore/core';
 import assignProps from '../assignProps';
 import useEventCallback from '../use/useEventCallback';

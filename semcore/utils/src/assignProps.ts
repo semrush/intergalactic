@@ -47,6 +47,7 @@ export default function assignProps<P extends AssignableProps, S extends Assigna
   props: P = {} as P,
   source: S = {} as S,
 ) {
+  // @ts-ignore
   if (props === source) return props;
   const newProps = {
     ...source,
