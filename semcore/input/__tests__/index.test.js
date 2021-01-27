@@ -1,5 +1,5 @@
 import React from 'react';
-import { cleanup, fireEvent, render, waitFor } from 'jest-preset-ui/testing';
+import { cleanup, fireEvent, render } from 'jest-preset-ui/testing';
 import { shouldSupportClassName, shouldSupportRef } from 'jest-preset-ui/shared';
 import snapshot from 'jest-preset-ui/snapshot';
 import Input from '../src';
@@ -112,7 +112,7 @@ describe('Input', () => {
       </Input>,
     );
 
-    expect((getByTestId('value') as HTMLInputElement).value).toBe('');
+    expect(getByTestId('value').value).toBe('');
 
     rerender(
       <Input>
@@ -120,7 +120,7 @@ describe('Input', () => {
       </Input>,
     );
 
-    expect((getByTestId('value') as HTMLInputElement).value).toBe('test');
+    expect(getByTestId('value').value).toBe('test');
   });
 
   test('Should support controlled mod', () => {
