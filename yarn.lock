@@ -2664,11 +2664,6 @@
   resolved "https://registry.yarnpkg.com/@types/eslint-visitor-keys/-/eslint-visitor-keys-1.0.0.tgz#1ee30d79544ca84d68d4b3cdb0af4f205663dd2d"
   integrity sha512-OCutwjDZ4aFS6PB1UZ988C4YgwlBHJd6wCeQqaLdmadZ/7e+w79+hbMUFC1QXDNCmdyoRfAFdm0RypzwR+Qpag==
 
-"@types/estree@*":
-  version "0.0.46"
-  resolved "https://registry.yarnpkg.com/@types/estree/-/estree-0.0.46.tgz#0fb6bfbbeabd7a30880504993369c4bf1deab1fe"
-  integrity sha512-laIjwTQaD+5DukBZaygQ79K1Z0jb1bPEMRrkXSLjtCcZm+abyp5YbrqpSLzD42FwWW6gK/aS4NYpJ804nG2brg==
-
 "@types/fined@*":
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/@types/fined/-/fined-1.1.2.tgz#05d2b9f93d144855c97c18c9675f424ed01400c4"
@@ -14732,11 +14727,6 @@ react-focus-lock@^2.3:
     use-callback-ref "^1.2.1"
     use-sidecar "^1.0.1"
 
-react-hook-form@^6.10.1:
-  version "6.14.2"
-  resolved "https://registry.yarnpkg.com/react-hook-form/-/react-hook-form-6.14.2.tgz#60ab0b5367b220a3d96aa0b17bd0f13f9d8c326a"
-  integrity sha512-GgDUuT3Yfhl1BOcMl862uAFbCixSomtm3CVlQQ1qVu9Tq5BN2uUIRUIXP8l2Gy99eLUrBqU9x4E7N+si9cnvaw==
-
 react-is@^16.12.0, react-is@^16.6.0, react-is@^16.7.0, react-is@^16.8.1:
   version "16.13.1"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
@@ -15500,15 +15490,6 @@ rollup@^0.25.8:
     chalk "^1.1.1"
     minimist "^1.2.0"
     source-map-support "^0.3.2"
-
-rollup@^1.27.0:
-  version "1.32.1"
-  resolved "https://registry.yarnpkg.com/rollup/-/rollup-1.32.1.tgz#4480e52d9d9e2ae4b46ba0d9ddeaf3163940f9c4"
-  integrity sha512-/2HA0Ec70TvQnXdzynFffkjA6XN+1e2pEv/uKS5Ulca40g2L7KuOE3riasHoNVHOsFD5KKZgDsMk1CP3Tw9s+A==
-  dependencies:
-    "@types/estree" "*"
-    "@types/node" "*"
-    acorn "^7.1.0"
 
 rsvp@^4.8.4:
   version "4.8.5"
