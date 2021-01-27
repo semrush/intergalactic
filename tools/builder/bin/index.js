@@ -9,7 +9,7 @@ const argv = require('minimist')(process.argv.slice(2), {
 });
 
 async function run(name, ...args) {
-  await execa.command(BUILD[name](...args));
+  await execa.command(BUILD[name](...args), { shell: true });
 }
 
 const babelArgs = [
@@ -31,7 +31,7 @@ const BUILD = {
   CLEANUP: () => 'rm -rf ./lib',
   TYPES: (output) => `tsc --emitDeclarationOnly --baseUrl ./src --outDir ./lib/${output}`,
   COPY_TYPES: (output) =>
-    `mkdir -p ./lib/${output} && find ./src -name *.d.ts -exec cp {} ./lib/${output}`,
+    `mkdir -p ./lib/${output} && find ./src -type f -name "*.d.ts" -exec cp {} ./lib/${output} ";"`,
   BABEL: (output, env) => `babel ./src --out-dir ./lib/${output} --env-name=${env} ${babelArgs}`,
 };
 
