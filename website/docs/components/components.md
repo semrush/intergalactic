@@ -3,6 +3,7 @@ title: Components
 ---
 
 @page accordion
+@page auto-tips
 @page badge
 @page breadcrumbs
 @page button
@@ -10,7 +11,6 @@ title: Components
 @page carousel
 @page checkbox
 @page color-picker
-@page auto-tips
 @page counter
 @page date-picker
 @page divider

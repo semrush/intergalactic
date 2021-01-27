@@ -13,7 +13,7 @@ It is required when there is no space or possibility to put, for example, [hint 
 
 The informer consists of:
 
-- ] icon of the desired size (left padding 4px);
+- an icon of the desired size (left padding 4px);
 - a [tooltip](/components/tooltip/) with information (appears when you hover over the icon).
 
 > 💡 The Info icon shouldn't be used with the h1 title. This is generally the header of hero blocks, etc. Hiding them in an info icon is strange, isn't it? 😎

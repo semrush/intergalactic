@@ -512,7 +512,7 @@ function Trigger(props) {
     <STrigger
       render={Box}
       inline
-      // Because the boarders appear
+      // Because the borders appear
       // tabIndex={interaction === 'focus' ? undefined : 0}
     />
   );

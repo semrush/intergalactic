@@ -276,7 +276,7 @@ class DropdownMenuRoot extends Component<IDropdownMenuProps> {
 
     logger.warn(
       onSelect !== undefined,
-      "Property 'onSelect' is deprecated, subscribe to the 'onClick' of the desired 'Item'",
+      "Property 'onSelect' is deprecated, subscribe to the 'onClick' of the needed 'Item'",
       other['data-ui-name'] || DropdownMenu.displayName,
     );
     logger.warn(
