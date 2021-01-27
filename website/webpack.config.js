@@ -58,8 +58,12 @@ module.exports = (env, argv) => {
       new CopyPlugin([
         {
           from: path.join(__dirname, './docs'),
-          to: path.join(__dirname, 'client/dist'),
+          to: path.join(__dirname, './client/dist'),
           ignore: ['*.js', '*.md'],
+        },
+        {
+          from: path.join(__dirname, './client/web'),
+          to: path.join(__dirname, './client/dist'),
         },
       ]),
     ],
