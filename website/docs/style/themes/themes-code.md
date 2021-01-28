@@ -11,12 +11,12 @@ All our components are already styled for Semrush tools, but if your tool uses a
 
 ### Step one
 
-You have installed our `component` and our plugin `@semcore/babel-plugin-semcore` to properly transpile the code.
+You have installed our `component` and our plugin `@semcore/babel-plugin-react-semcore` to properly transpile the code.
 
 > ⚠️ **Attention**. Make sure that you don't process our files with `babel`-plugins in your code, otherwise the result is unpredictable 🤕
 
 ```bash
-npm i @semcore/buttonsemcore/babel-plugin-semcore
+npm i @semcore/buttonsemcore/babel-plugin-react-semcore
 ```
 
 ### Step two
@@ -55,7 +55,7 @@ Add a new rule to your `webpack-config`:
           loader: 'babel-loader',
           options: {
             plugins: [
-              ['@semcore/babel-plugin-semcore', { theme: path.resolve(process.cwd(), 'directory-with-theme') }],
+              ['@semcore/babel-plugin-react-semcore', { theme: path.resolve(process.cwd(), 'directory-with-theme') }],
             ],
           },
         },

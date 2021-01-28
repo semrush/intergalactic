@@ -23,7 +23,7 @@ Most of the core components are adaptive. They increase their size for ease of u
 **Component adaptability is enabled for screens smaller than 768px**.
 
 Use also [Grid](/layout/grid-system/) to build the page grid. The component has an adaptive API.
-The adaptivity (css with media-queries) of components can be enabled by adding our [babel-plugin-semcore plugin](https://github.com/semrush/intergalactic/blob/master/tools/babel-plugin-semcore/README.md) for babel.
+The adaptivity (css with media-queries) of components can be enabled by adding our [babel-plugin-react-semcore plugin](https://github.com/semrush/intergalactic/blob/master/tools/babel-plugin-react-semcore/README.md) for babel.
 
 This is how your **webpack.config.js** might look like:
 
@@ -41,7 +41,7 @@ module.exports = {
             options: {
               babelrc: false, // is u use .babelrc
               configFile: false, // if u use babel.config.js, doesnt affect babelrc option https://babeljs.io/docs/en/options#configfile
-              plugins: [['@semcore/babel-plugin-semcore', { media: true }]],
+              plugins: [['@semcore/babel-plugin-react-semcore', { media: true }]],
             },
           },
         ],

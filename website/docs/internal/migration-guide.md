@@ -21,7 +21,7 @@ title: Migration guide
 
 @## CSS-extract
 
-Ранее для отделения `css` от `js` было необходимо добавить в ваш сборщик наш плагин [@semcore/babel-plugin-semcore](https://github.com/semrush/intergalactic/blob/master/tools/babel-plugin-semcore/README.md).
+Ранее для отделения `css` от `js` было необходимо добавить в ваш сборщик наш плагин [@semcore/babel-plugin-react-semcore](https://github.com/semrush/intergalactic/blob/master/tools/babel-plugin-react-semcore/README.md).
 В новых версиях мы отказались от babel плагина в пользу `webpack-loader`'a, т.к. это позволяет существенно оптимизировать процесс сборки.
 
 Подробнее о реализации разделения css от js можно узнать в разделе [For production](/internal/production/#a14383).

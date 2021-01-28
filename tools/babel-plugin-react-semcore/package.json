@@ -1,5 +1,5 @@
 {
-  "name": "@semcore/babel-plugin-semcore",
+  "name": "@semcore/babel-plugin-react-semcore",
   "version": "2.2.1",
   "main": "index.js",
   "license": "MIT",
