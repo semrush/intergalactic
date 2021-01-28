@@ -10,7 +10,7 @@ title: Project select
 - create new projects;
 - see projects shared with you and customize them.
 
-> Layouts can be viewed in the [Figma project](https://www.figma.com/file/FCMvgfyKLwIdYLFD5L7vWe/Project-select).
+> Layouts can be viewed in the inner [Figma project](https://www.figma.com/file/FCMvgfyKLwIdYLFD5L7vWe/Project-select).
 
 @## Placement and styles
 

@@ -5,7 +5,7 @@ tabName: Guide
 
 @## General
 
-> 💡 Diagrams with a detailed loading process are also available in Figma and [Miro](https://miro.com/app/board/o9J_kp1mGGg=/). From Figma, the schema can be exported to `pdf` or `png` format — [non-SPA upload schema](https://www.figma.com/file/eqmm39DfX895qOSM0KnQGb/Web-performance-schemes?node-id=21%3A559) and the [SPA upload schema](https://www.figma.com/file/eqmm39DfX895qOSM0KnQGb/Web-performance-schemes?node-id=21%3A560). **All these are available only for corporate Semrush developers.**
+> 💡 Diagrams with a detailed loading process are also available in inner Figma file and [Miro](https://miro.com/app/board/o9J_kp1mGGg=/). From Figma, the schema can be exported to `pdf` or `png` format — [non-SPA upload schema](https://www.figma.com/file/eqmm39DfX895qOSM0KnQGb/Web-performance-schemes?node-id=21%3A559) and the [SPA upload schema](https://www.figma.com/file/eqmm39DfX895qOSM0KnQGb/Web-performance-schemes?node-id=21%3A560). **All these are available only for corporate Semrush developers.**
 
 After adding new features in the product, check whether the loading time fits into the recommendations and rules described here. Download speed can be checked with [Speedcurve](https://speedcurve.com/) or tool from [Google](https://developers.google.com/speed/pagespeed/insights/) ✨
 

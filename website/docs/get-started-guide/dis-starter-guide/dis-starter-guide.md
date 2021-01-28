@@ -107,10 +107,4 @@ Because of the large number of use cases and edge states we have separate guidel
 
 @## Resources
 
-> **TL;DR or main thoughts**: you can just duplicate our libraries from Figma Community and start exploring. There are a lot of helpful tips and hints right inside the libraries.
-
-If you're building an interface inside the Semrush suite, feel free to use our Figma libraries with core components, icons, and charts:
-
-- **Core components library** (soon there will be a link)
-- **Interface icons library** (soon there will be a link)
-- **Charts library** (soon there will be a link)
+All resources you need to create an interface for the Semrush suite you can find on the [Figma libraries page](/get-started-guide/work-figma/).
