@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.1.2] - 2021-01-28
+
+### Fixed
+
+- Fixed type of second argument(event) for `onChange` prop
+
 ## [2.1.1] - 2020-12-17
 
 ### Added
