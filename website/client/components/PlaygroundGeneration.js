@@ -136,6 +136,9 @@ const WrapperPlayground = styled.div`
   & p {
     margin: 0;
   }
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
 
 const ResultView = styled.div`
@@ -430,11 +433,6 @@ class PlaygroundView extends React.Component {
                 <CopyS />
               </Copy>
             </IconCopy>
-            {/*<IconCopyLink>*/}
-            {/*  <Copy text={url} textTooltip="Click to copy link">*/}
-            {/*    <CopyLinkS />*/}
-            {/*  </Copy>*/}
-            {/*</IconCopyLink>*/}
           </ResultCode>
         </WorkArea>
         {hasWidget ? (
