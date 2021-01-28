@@ -505,9 +505,6 @@ function Home() {
               </Tab>
             </MainWrapper>
           </Overlay>
-          <ButtonUp onClick={() => animateScroll.scrollToTop({ smooth: true })}>
-            <ArrowUpM interactive />
-          </ButtonUp>
         </>
       )}
     </>

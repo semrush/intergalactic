@@ -49,8 +49,12 @@ const ButtonUp = styled.span`
   top: calc(100vh - 11px - 72px);
   margin-bottom: 8px;
   margin-left: calc(100% - 72px);
-  padding: 25px;
-  display: inline-flex;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 72px;
+  width: 72px;
+  box-sizing: border-box;
   background: #d1d4db;
   border-radius: 20px 0 0 20px;
   svg {
