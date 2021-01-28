@@ -78,15 +78,15 @@ A heading can contain additional information, such as a counter of results found
 
 There are three text sizes in our interface. The main font face is `Regular (400)`.
 
-### 16px текст
+### 16px text
 
 ![](static/p_16.png)
 
-### 14px текст
+### 14px text
 
 ![](static/p_14.png)
 
-### 12px текст
+### 12px text
 
 ![](static/p_12.png)
 
