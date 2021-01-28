@@ -1,7 +1,6 @@
 import React, { useLayoutEffect, useState } from 'react';
 import styled from 'styled-components';
-import { Link } from 'react-scroll';
-import { animateScroll } from 'react-scroll';
+import { Link, animateScroll } from 'react-scroll';
 import ArrowUpM from '@semcore/icon/lib/ArrowUp/m';
 import trottle from '@semcore/utils/lib/rafTrottle';
 
