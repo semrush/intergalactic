@@ -3,7 +3,9 @@ import styled from 'styled-components';
 import { useQuery, gql } from '@apollo/client';
 import { useParams } from 'react-router-dom';
 import Helmet from 'react-helmet';
+import { scroller } from 'react-scroll';
 import { Col, Row } from '@semcore/grid';
+import { Text } from '@semcore/typography';
 import LoadingPage from '../components/LoadingPage';
 import SideBarNavigation from '../components/SideBarNavigation';
 import Docs from '../components/Docs';
@@ -27,9 +29,11 @@ const NextGuide = styled.div`
   display: flex;
   justify-content: space-between;
   margin: 0 32px 96px;
+
   a {
     color: #171a22;
     text-decoration: none;
+
     &:hover {
       text-decoration: underline;
     }
@@ -60,21 +64,10 @@ const MobileSelect = styled(Select)`
     div div {
       margin: 0 32px !important;
     }
+
     &:hover {
       border: 1px solid #3e424b;
     }
-  }
-`;
-
-const SelectItem = styled(({ ...other }) => {
-  return <a {...other} />;
-})`
-  color: #171a22;
-  text-decoration: none;
-  margin: 0 5px;
-  width: 100%;
-  &:hover {
-    text-decoration: underline;
   }
 `;
 
@@ -162,6 +155,18 @@ const getPrevPage = (title, allPages) => {
     : allPages[getCurrentIndex(title, allPages) - 1];
 };
 
+const getHeadingOptions = (data) => {
+  return data.headings.map((option) => ({
+    value: option.route,
+    label: option.title,
+    children: (
+      <Text mx={5} color={'#171a22'}>
+        {option.title}
+      </Text>
+    ),
+  }));
+};
+
 function Page() {
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -182,14 +187,6 @@ function Page() {
 
   const tabs = [];
 
-  const getSelectOption = (data) => {
-    return data.headings.map((option) => ({
-      value: option.title,
-      label: option.title,
-      children: <SelectItem href={'#' + option.route}>{option.title}</SelectItem>,
-    }));
-  };
-
   let navigationPage = getNavigationPage(data.navigation, data.page);
 
   if (tab && navigationPage.parent) {
@@ -202,6 +199,8 @@ function Page() {
   }
   const allPages = getChildren(data);
 
+  const headingOptions = getHeadingOptions(data);
+
   return (
     <>
       <Helmet>
@@ -209,12 +208,21 @@ function Page() {
           {navigationPage.title} | {data.category.title}
         </title>
       </Helmet>
-      <MobileSelect
-        options={getSelectOption(data)}
-        placeholder="Select section"
-        size="xl"
-        id="select"
-      />
+      {!!headingOptions.length && (
+        <MobileSelect
+          options={headingOptions}
+          onChange={(value) => {
+            scroller.scrollTo(value, {
+              smooth: true,
+              offset: -150,
+              duration: 200,
+            });
+          }}
+          placeholder="Select section"
+          size="xl"
+          id="select"
+        />
+      )}
       <div>
         <Row pt={20}>
           <Col sm={12} md={4} span={3}>
