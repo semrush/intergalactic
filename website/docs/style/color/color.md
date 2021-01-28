@@ -43,7 +43,7 @@ Brand colors of services (the data can be found in Semrush interface).
 
 @## Colors for charts
 
-> Palettes for charts can be viewed in [Figma](https://www.figma.com/file/g2aAIv3jlvrgp26ZRGljkxpP/02-CHARTS?node-id=0%3A1).
+> Palettes for charts can be viewed in Figma library (soon there will be a link).
 
 Colors of the main palette are recommended to be taken in their due order, skipping one shade.
 
@@ -79,6 +79,6 @@ The recommended maximum number of colors on a chart is 30.
 
 30 and more colors are for the complex cases where you need a large number of colors that will be substituted into the chart by the system.
 
-> You can also see an additional color palette in [Figma](https://www.figma.com/file/g2aAIv3jlvrgp26ZRGljkxpP/02-CHARTS?node-id=0%3A1).
+> You can also see an additional color palette in the Figma library (soon there will be a link).
 
 @page color-code

@@ -39,12 +39,7 @@ export default function(props) {
       </Text>
       <Overlay mb={3}>
         <Box mr={5}>
-          <Link
-            size={300}
-            color="#171A22"
-            target="_blank"
-            href="https://www.figma.com/files/826881787188133920/project/7254473/Library"
-          >
+          <Link size={300} color="#171A22" target="_blank" href="https://www.figma.com/@semrush">
             <Link.Addon>
               <FigmaS />
             </Link.Addon>

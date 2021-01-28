@@ -4,17 +4,19 @@ title: Figma libraries
 
 @## Core libraries
 
-We have some Figma libraries with core components, icons and charts.
+If you're building an interface inside the Semrush suite, feel free to use our Figma libraries with core components, icons, and charts:
 
-- Library with all core components — **[Core components](https://www.figma.com/file/0947BMukARv0QgQ263JNnx/00-CORE-COMPONENTS)**
-- Library with all interface icons – **[Icons](https://www.figma.com/file/4Hk7v6uIQ19ZpgCG5z1kOk/01-ICONS)**
-- Library with charts — **[Charts](https://www.figma.com/file/g2aAIv3jlvrgp26ZRGljkxpP/02-CHARTS)**
+> You can just duplicate our libraries from Figma Community and start exploring. There are a lot of helpful tips and hints right inside the libraries.
+
+- **[Library with all core components](https://www.figma.com/community/file/936212718295795001/Semrush-library-%E2%80%A2-Core-components-library)**
+- **[Library with all interface icons](https://www.figma.com/community/file/936235318408664380/Semrush-%E2%80%A2-Core-icons-library)**
+- Library with charts (soon there will be a link)
 
 ![all libraries](static/figma-libraries.png)
 
-@## Additional libraries for inner usage
+@## Additional libraries
 
-We also have special libraries for:
+We also have special libraries for inner usage (they are available only for Semrush designers):
 
 - UX/UI patterns — **[Patterns](https://www.figma.com/file/pK5cFpKXVzBzSW1mJyNu4t/03-PATTERNS)**;
 - UI illustrations — **[UI illustrations](https://www.figma.com/file/RqNKwz285OsvD48zlMMOHN/04-UI-ILLUSTRATIONS)**;

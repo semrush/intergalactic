@@ -12,7 +12,7 @@ This section describes all the variable parameters that we use in our component 
 
 > 💡 Paddings inside some atomic components (icons, labels, etc.) may differ from multiples of 4, as they depend on other variable values. It is important for a visual side of these "bricks".
 >
-> You don't have to think about padding inside buttons, icons, etc. — our libraries in Figma and code are designed to do it for you.
+> You don't have to think about padding inside buttons, icons, etc. — our [libraries in Figma](https://www.figma.com/@semrush) and code are designed to do it for you.
 
 @## Basic colors
 
