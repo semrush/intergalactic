@@ -233,17 +233,17 @@ const Border = styled.div`
   line-height: 150%;
 `;
 
-const Category = styled.ul`
-  display: flex;
-  flex-flow: wrap column;
+const Category = styled.div`
+  display: grid;
+  grid-template-rows: repeat(auto-fill, 36px);
+  grid-auto-flow: column;
+  width: 100%;
   max-height: 405px;
-  list-style: none;
   margin: 0;
   padding: 0;
 `;
 
 const LinkStyled = styled(Link)`
-  padding-bottom: 5px;
   line-height: 1.25;
   color: #3e424b;
   cursor: pointer;
@@ -254,8 +254,7 @@ const LinkStyled = styled(Link)`
   }
 `;
 
-const LinkDisabled = styled.span`
-  padding-bottom: 5px;
+const LinkDisabled = styled.div`
   line-height: 1.25;
   color: #ccc;
   text-decoration: none;
@@ -265,7 +264,6 @@ const LinkDisabled = styled.span`
 
 const TableOverlay = styled.div`
   display: flex;
-  flex-direction: row;
   h3 {
     margin: 0;
     margin-bottom: 8px;
@@ -274,6 +272,7 @@ const TableOverlay = styled.div`
   }
   a {
     margin: 0 38px 8px 0;
+    white-space: nowrap;
   }
 `;
 
@@ -349,9 +348,9 @@ function getCustomPage(table, data) {
 const renderSwitch = (value, data) => {
   switch (value) {
     case 'components':
-      return getComponents(['Components'], data);
+      return getTabByTitle(['Components'], data);
     case 'charts':
-      return getTwoComponents(['Data display', 'Table'], data);
+      return getTabByTitle(['Data display', 'Table'], data);
     case 'ux':
       return getTabByTitle(['UX patterns'], data);
     case 'filters':
@@ -363,23 +362,21 @@ const renderSwitch = (value, data) => {
   }
 };
 
-const getTabByTitle = (titles, data) => (
-  <AllComponents
-    navigation={data.navigation.filter((nav) => !nav.metadata.hide && titles.includes(nav.title))}
-  />
-);
-
-const getTwoComponents = (titles, data) => {
+const getTabByTitle = (titles, data) => {
   return (
     <TableOverlay>
-      <Box mr={50}>
-        <h3>{titles[0]}</h3>
-        {getComponents(titles[0], data)}
-      </Box>
-      <Box>
-        <h3>{titles[1]}</h3>
-        {getComponents(titles[1], data)}
-      </Box>
+      {titles.length === 1
+        ? getComponents(titles[0], data)
+        : titles.map((title) => {
+            const tabWidth = 80 / titles.length;
+            console.log(tabWidth);
+            return (
+              <Box mr={3}>
+                <h3>{title}</h3>
+                {getComponents(title, data)}
+              </Box>
+            );
+          })}
     </TableOverlay>
   );
 };
@@ -407,7 +404,7 @@ const getComponents = (titles, data) => {
       const pic = getTooltip(child.elem.title);
       if (pic) {
         return (
-          <Tooltip placement="left" pb={2} w={'fit-content'} key={child.elem.title} title={pic}>
+          <Tooltip placement="left" w={'fit-content'} key={child.elem.title} title={pic}>
             <LinkStyled to={`/${child.elem.route}/`}>{child.elem.title}</LinkStyled>
           </Tooltip>
         );

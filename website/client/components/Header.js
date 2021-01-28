@@ -148,8 +148,8 @@ const DesktopLogo = styled.div`
 const Side = styled.div`
   position: absolute;
   width: 324px;
-  height: max-content;
-  max-height: 600px;
+  height: calc(100vh - 80px);
+  overflow: auto;
   left: 0;
   top: 80px;
   bottom: 0;

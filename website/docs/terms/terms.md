@@ -1,5 +1,6 @@
 ---
 title: Terms
+hide: true
 ---
 
 @page privacy
