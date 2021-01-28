@@ -24,7 +24,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Added
 
-- Добавлена возможность темизации св-ва `theme` со значениями `default` и `invert` с помощью `babel-plugin-semcore`
+- Добавлена возможность темизации св-ва `theme` со значениями `default` и `invert` с помощью `babel-plugin-react-semcore`
 
 ## [3.0.0] - 2020-05-28
 

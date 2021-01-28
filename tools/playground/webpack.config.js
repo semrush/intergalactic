@@ -52,7 +52,7 @@ module.exports = function() {
             loader: 'babel-loader',
             options: {
               babelrc: false,
-              plugins: [['@semcore/babel-plugin-semcore', { media: true }]],
+              plugins: [['@semcore/babel-plugin-react-semcore', { media: true }]],
             },
           },
         },

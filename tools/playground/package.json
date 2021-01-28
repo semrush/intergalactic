@@ -9,7 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@semcore/babel-plugin-semcore": "*",
+    "@semcore/babel-plugin-react-semcore": "*",
     "@semcore/shadow-loader": "*",
     "babel-loader": "^8.0.6",
     "babel-preset-ui": "*",

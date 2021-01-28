@@ -1,4 +1,4 @@
-# babel-plugin-semcore
+# babel-plugin-react-semcore
 
 Utility for `@semcore` component's styles manipulations.
 
@@ -7,7 +7,7 @@ Utility for `@semcore` component's styles manipulations.
 yarn:
 
 ```shell
-$ yarn add babel-plugin-semcore -D
+$ yarn add babel-plugin-react-semcore -D
 ```
 
 ## Usage
@@ -24,7 +24,7 @@ Webpack:
         options: {
             babelrc: false, // optional, include if u use .babelrc
             configFile: false, // optional, include if u use babel.config.js, doesnt affect babelrc option https://babeljs.io/docs/en/options#configfile
-            plugins: [['babel-plugin-semcore', {
+            plugins: [['babel-plugin-react-semcore', {
               ...pluginOptions
             }]]
         },

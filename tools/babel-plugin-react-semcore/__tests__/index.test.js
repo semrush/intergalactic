@@ -1,10 +1,10 @@
 const pluginTester = require('babel-plugin-tester').default;
 const formatter = require('./setupFormatter');
-const media = require('@semcore/babel-plugin-semcore');
+const media = require('@semcore/babel-plugin-react-semcore');
 
 pluginTester({
   plugin: media,
-  pluginName: '@semcore/babel-plugin-semcore',
+  pluginName: '@semcore/babel-plugin-react-semcore',
   filename: __filename,
   formatResult: formatter,
   tests: [

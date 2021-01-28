@@ -84,7 +84,7 @@ function getThemeCssPathsList(baseStyles, theme) {
 module.exports = function({ types: t }, pluginOptions) {
   function log(msg, level = 'info') {
     if (pluginOptions.verbose) {
-      console[level]('[@semcore/babel-plugin-semcore] ' + msg);
+      console[level]('[@semcore/babel-plugin-react-semcore] ' + msg);
     }
   }
 
