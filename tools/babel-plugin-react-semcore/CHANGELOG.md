@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.0.0] - 2021-01-28
+
+### BREAK
+
+- Change default scope to `@semcore`.
+
 ## [2.2.1] - 2020-12-02
 
 ### Fixed
