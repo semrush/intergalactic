@@ -38,6 +38,7 @@ const NextGuide = styled.div`
 
 const SideBar = styled.div`
   height: 100%;
+  background: #f5f5f5;
   @media (max-width: 768px) {
     display: none;
   }

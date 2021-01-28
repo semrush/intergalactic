@@ -9,13 +9,8 @@ const NavigationView = styled.div`
   padding: 32px;
   box-sizing: border-box;
   max-width: 350px;
-  height: 100%;
-  background: #f5f5f5;
   @media (max-width: 768px) {
     margin-right: 0;
-    max-width: 100%;
-    height: 100vh;
-    overflow: scroll;
   }
 `;
 
