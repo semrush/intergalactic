@@ -23,7 +23,7 @@ const Title = styled.h2`
 `;
 
 const Overlay = styled(Flex)`
-  @media (max-width: 320px) {
+  @media (max-width: 768px) {
     display: none;
   }
 `;
