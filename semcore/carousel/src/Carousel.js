@@ -55,9 +55,13 @@ class Carousel extends Component {
   positionLeftItem = 0;
   indexIndicator = 0;
 
-  state = {
-    items: [],
-  };
+  constructor(props) {
+    super(props);
+    this.isControlled = props.index !== undefined;
+    this.state = {
+      items: [],
+    };
+  }
 
   uncontrolledProps() {
     return {
@@ -65,12 +69,19 @@ class Carousel extends Component {
     };
   }
 
-  handleKeyDown = (e) => {
+  componentDidUpdate(prevProps) {
+    const { index } = this.asProps;
+    if (prevProps.index !== index && this.isControlled) {
+      this.slideToValue(prevProps.index, index);
+    }
+  }
+
+  handlerKeyDown = (e) => {
     switch (e.key) {
       case 'ArrowLeft':
       case 'ArrowRight':
         e.preventDefault();
-        const { activeItemIndex } = this.transformItem(MAP_TRANSFORM[e.key]);
+        const { activeItemIndex } = this.controlTransformItem(MAP_TRANSFORM[e.key]);
         this.handlers.index(activeItemIndex);
     }
   };
@@ -93,8 +104,7 @@ class Carousel extends Component {
         },
         () => {
           if (index !== 0) {
-            this.slideToValue(index);
-            this.handlers.index(index);
+            this.slideToValue(this.indexIndicator, index);
           }
         },
       );
@@ -111,17 +121,68 @@ class Carousel extends Component {
     }
   };
 
-  slideToValue = (value) => {
-    const { items } = this.state;
-    const maxIndexItem = items.length - 1;
-    const nextIndexItem = value;
-
-    let i = 0;
-    const direction = nextIndexItem > this.indexIndicator ? 'right' : 'left';
-    while (nextIndexItem !== this.indexIndicator && i <= maxIndexItem) {
-      this.transformItem(direction);
-      i += 1;
+  getDirection = (currentIndex, nextIndex, bounded) => {
+    if (bounded) {
+      return currentIndex < nextIndex ? 'right' : 'left';
     }
+    const { items } = this.state;
+    const listIndex = items.map((_, ind) => ind);
+    const tmpArr = [...listIndex];
+    const minTmpArr = tmpArr[0];
+    const maxTmpArr = tmpArr[tmpArr.length - 1];
+
+    if (tmpArr.length === 2) {
+      return currentIndex < nextIndex ? 'right' : 'left';
+    }
+    if (currentIndex === minTmpArr) {
+      tmpArr.unshift(maxTmpArr);
+      tmpArr.pop();
+    }
+    if (currentIndex === maxTmpArr) {
+      tmpArr.shift();
+      tmpArr.push(minTmpArr);
+    }
+
+    const tmpCurrentIndex = tmpArr.indexOf(currentIndex);
+    const left = tmpArr.indexOf(nextIndex);
+
+    return left - tmpCurrentIndex < 0 ? 'left' : 'right';
+  };
+
+  slideToValue = (currentIndex, nextIndexItem, bounded) => {
+    if (currentIndex === nextIndexItem) return false;
+    const direction = this.getDirection(
+      currentIndex,
+      nextIndexItem,
+      bounded || this.asProps.bounded,
+    );
+    let i = currentIndex;
+    while (nextIndexItem !== i) {
+      const { activeItemIndex } = this.transformItem(direction);
+      i = activeItemIndex;
+    }
+  };
+
+  controlTransformItem = (direction) => {
+    const { bounded, index } = this.asProps;
+    const { items } = this.state;
+    const maxIndexIndicator = items.length - 1;
+
+    if (this.isControlled) {
+      if (direction === 'right') {
+        if (bounded && index === maxIndexIndicator) {
+          return { activeItemIndex: maxIndexIndicator };
+        }
+        return { activeItemIndex: index === maxIndexIndicator ? 0 : index + 1 };
+      }
+      if (direction === 'left') {
+        if (bounded && index === 0) {
+          return { activeItemIndex: 0 };
+        }
+        return { activeItemIndex: index === 0 ? maxIndexIndicator : index - 1 };
+      }
+    }
+    return this.transformItem(direction);
   };
 
   transformItem = (direction) => {
@@ -166,7 +227,7 @@ class Carousel extends Component {
 
       this.indexIndicator -= 1;
       if (this.indexIndicator < 0) {
-        this.indexIndicator = 0;
+        this.indexIndicator = maxIndexIndicator;
       }
       this.transform += step;
     }
@@ -183,16 +244,32 @@ class Carousel extends Component {
 
   bindHandlerClick = (direction) => {
     return () => {
-      const { activeItemIndex } = this.transformItem(direction);
+      const { activeItemIndex } = this.controlTransformItem(direction);
       this.handlers.index(activeItemIndex);
     };
   };
 
   bindHandlerClickIndicator = (value) => {
     return () => {
-      this.slideToValue(value);
+      !this.isControlled && this.slideToValue(this.indexIndicator, value, true);
       this.handlers.index(value);
     };
+  };
+
+  handlerTouchStart = (e) => {
+    this._touchStartCoord = e.changedTouches[0].clientX;
+  };
+
+  handlerTouchEnd = (e) => {
+    const touchEndCoord = e.changedTouches[0].clientX;
+    const delta = touchEndCoord - this._touchStartCoord;
+    if (delta > 50) {
+      const { activeItemIndex } = this.controlTransformItem('left');
+      this.handlers.index(activeItemIndex);
+    } else if (delta < -50) {
+      const { activeItemIndex } = this.controlTransformItem('right');
+      this.handlers.index(activeItemIndex);
+    }
   };
 
   getContainerProps() {
@@ -247,7 +324,13 @@ class Carousel extends Component {
     const { Children, styles } = this.asProps;
 
     return styled(styles)(
-      <SCarousel render={Box} onKeyDown={this.handleKeyDown} tabIndex={0}>
+      <SCarousel
+        render={Box}
+        onKeyDown={this.handlerKeyDown}
+        tabIndex={0}
+        onTouchStart={this.handlerTouchStart}
+        onTouchEnd={this.handlerTouchEnd}
+      >
         <Children />
       </SCarousel>,
     );

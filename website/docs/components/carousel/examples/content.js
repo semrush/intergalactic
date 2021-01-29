@@ -11,7 +11,7 @@ const Demo = () => {
     <>
       <Button onClick={() => updateVisible(!visible)}>Open Carousel</Button>
       <Modal visible={visible} onClose={() => updateVisible(false)} w={664}>
-        <Carousel>
+        <Carousel autoFocus tabIndex={1}>
           <Carousel.Container>
             {[...new Array(2)].map((_, ind) => (
               <Carousel.Item key={ind}>
