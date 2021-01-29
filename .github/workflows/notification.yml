@@ -2,7 +2,7 @@ name: notification
 
 on:
   schedule:
-    - cron: '00 08 * * 5'
+    - cron: '0 8 * * 1'
 
 jobs:
   # 1 lvl
