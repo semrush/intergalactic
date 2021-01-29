@@ -24,7 +24,7 @@ const Popper = styled.div`
   color: #171a22;
   z-index: 999;
   box-shadow: 0 10px 25px 0 rgba(0, 0, 0, 0.2);
-  border-radius: 0 0 10px 10px;
+  border-radius: 0 0 6px 6px;
   overflow: hidden;
   border: none;
 `;
@@ -76,6 +76,9 @@ const IconSearchWrapper = styled.div`
 const SearchIcon = styled(SearchM)`
   &:hover {
     cursor: default;
+  }
+  @media (max-width: 320px) {
+    display: none;
   }
 `;
 
@@ -150,7 +153,6 @@ const SuggestSearch = withRouter(
   connectAutoComplete(({ currentRefinement, refine, hits, history, ...other }) => {
     return (
       <Select
-        placement="bottom-end"
         interaction="focus"
         offset={0}
         stretch="fixed"

@@ -9,9 +9,18 @@ import FigmaS from '@semcore/icon/lib/color/Figma/s';
 import GitHubS from '@semcore/icon/lib/color/GitHub/s';
 import EditS from '@semcore/icon/lib/Edit/s';
 import styled from 'styled-components';
+import { css } from '@semcore/core';
 
+const styles = css`
+  STooltip[theme] {
+    padding: 12px;
+    border: 1px solid #d1d4db;
+    box-shadow: 5px 8px 25px rgba(137, 141, 154, 0.2);
+    border-radius: 6px;
+  }
+`;
 const Title = styled.h2`
-  font-family: FactorA-Regular;
+  font-family: FactorA-Regular, sans-serif;
   font-size: 50px;
   line-height: 110%;
   margin: 0;
@@ -71,7 +80,7 @@ export default function(props) {
           <Divider h="20px" orientation="vertical" style={{ backgroundColor: '#D1D4DB' }} />
         </Box>
         <Box mr={4}>
-          <Tooltip>
+          <Tooltip styles={styles}>
             <Tooltip.Trigger>
               <Link
                 size={300}

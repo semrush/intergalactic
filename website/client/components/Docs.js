@@ -18,7 +18,7 @@ import { PAGE_QUERY } from '../pages/Page';
 const Tab = styled.div`
   position: relative;
   & > div:first-child {
-    font-family: FactorA-Bold;
+    font-family: FactorA-Bold, sans-serif;
   }
   & > div:first-child > div {
     background-color: #ff622d;

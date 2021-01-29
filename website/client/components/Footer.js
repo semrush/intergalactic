@@ -7,7 +7,7 @@ const FooterWrapper = styled.footer`
   display: grid;
   position: relative;
   grid-template-rows: 15fr 6fr 5fr;
-  grid-template-columns: 3fr 5fr 4fr;
+  grid-template-columns: 3fr repeat(2, 4fr);
   margin-top: auto;
   height: 163px;
   border-top: 1px solid #d1d4db;
@@ -16,9 +16,8 @@ const FooterWrapper = styled.footer`
   align-items: start;
   line-height: 150%;
   font-weight: 400;
-  letter-spacing: 0em;
+  letter-spacing: 0;
   text-align: left;
-  overflow: none;
   @media (max-width: 768px) {
     padding: 31px 55px;
     height: 366px;
@@ -127,7 +126,6 @@ function Footer() {
 
       <Contacts>
         If you want to ask something, drop us a line at
-        <br />
         <a href="mailto:ui-kit-team@semrush.com" target="_blank">
           ui-kit-team@semrush.com
         </a>

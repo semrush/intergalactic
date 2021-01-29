@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Button from '@semcore/button';
 import styled from 'styled-components';
@@ -6,6 +6,8 @@ import NavLink from './NavLink';
 import logo from '../static/logo/semrush-logo-title.svg';
 import mobileLogo from '../static/logo/semrush-logo.svg';
 import hamburger from '../static/mobile/hamburger.svg';
+import Close from '@semcore/icon/lib/Close/s';
+import SearchM from '@semcore/icon/lib/Search/m';
 import close from '../static/mobile/close.svg';
 import SearchHome from './SearchHome';
 import SideBarNavigation from './SideBarNavigation';
@@ -68,7 +70,7 @@ const Logo = styled.div`
   display: flex;
   align-items: center;
   text-align: center;
-  font-family: FactorA-Bold;
+  font-family: FactorA-Bold, sans-serif;
   img {
     margin-right: 8px;
   }
@@ -98,7 +100,7 @@ const Search = styled.div`
   margin-left: 40px;
   @media (max-width: 768px) {
     grid-column: 3;
-    margin-left: 50px;
+    margin-left: 5px;
   }
   @media (max-width: 320px) {
     display: none;
@@ -111,26 +113,62 @@ const SearchMobile = styled.div`
     grid-row: 1;
     grid-column: 3;
     display: flex;
-    margin-left: 50px;
+    position: relative;
+    margin-left: 80px;
   }
+`;
+
+const CloseIcon = styled(Close)`
+  display: none;
+  @media (max-width: 320px) {
+    fill: #171a22;
+    display: flex;
+    &:hover {
+      cursor: default;
+    }
+  }
+`;
+
+const SearchIcon = styled(SearchM)`
+  display: none;
+  @media (max-width: 320px) {
+    fill: #171a22;
+    display: flex;
+    &:hover {
+      cursor: default;
+    }
+  }
+`;
+
+const MobileClose = styled.div`
+  position: absolute;
+  background-color: #fff;
+  width: 22px;
+  height: 22px;
+  top: 12px;
+  right: 67px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+const MobileSearch = styled.div`
+  position: absolute;
+  background-color: #fff;
+  width: 22px;
+  height: 22px;
+  top: -11px;
+  right: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 const MobileLogo = styled.img`
   display: none;
-  @media (max-width: 320px) {
-    display: flex;
-    align-items: center;
-  }
-`;
-
-const TabletLogo = styled.div`
-  display: none;
   @media (max-width: 768px) {
     display: flex;
     align-items: center;
-  }
-  @media (max-width: 320px) {
-    display: none;
   }
 `;
 
@@ -304,13 +342,6 @@ function Header(props) {
       <Link to="/" style={{ textDecoration: 'none' }}>
         <Logo>
           <MobileLogo src={mobileLogo} alt="Logo" />
-          <TabletLogo>
-            <img src={mobileLogo} alt="Logo" />
-            <svg width="2" height="16">
-              <rect width="1" height="16" style={{ fill: '#171A22', strokeWidth: '1' }} />
-            </svg>
-            <Flex mt={1}>INTERGALACTIC</Flex>
-          </TabletLogo>
           <DesktopLogo>
             <img src={logo} alt="Logo" />
             <svg width="2" height="16">
@@ -320,7 +351,14 @@ function Header(props) {
           </DesktopLogo>
         </Logo>
       </Link>
-      <SearchMobile tag={Button} onClick={() => setVisible(true)}>
+      <SearchMobile>
+        <MobileSearch
+          tag={Button}
+          onClick={() => setVisible(true)}
+          style={visible ? { display: 'none' } : { display: 'flex' }}
+        >
+          <SearchIcon />
+        </MobileSearch>
         <SearchHome
           placeholder="What brings you here, Sole Survivor?"
           style={
@@ -329,6 +367,13 @@ function Header(props) {
               : { display: 'none' }
           }
         />
+        <MobileClose
+          tag={Button}
+          onClick={() => setVisible(false)}
+          style={visible ? { display: 'flex' } : { display: 'none' }}
+        >
+          <CloseIcon />
+        </MobileClose>
       </SearchMobile>
       <Search>
         <SearchHome placeholder="What brings you here, Sole Survivor?" />

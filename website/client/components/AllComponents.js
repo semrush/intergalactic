@@ -23,7 +23,7 @@ const CategoryItem = styled.li`
 const Category = styled.div``;
 
 const Title = styled.div`
-  font-family: FactorA-Bold;
+  font-family: FactorA-Bold, sans-serif;
   font-size: 24px;
   margin-bottom: 8px;
 `;
