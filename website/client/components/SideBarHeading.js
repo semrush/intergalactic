@@ -37,11 +37,6 @@ const NavLink = styled(({ active, ...other }) => {
   }
 `;
 
-const HideButton = styled.div`
-  width: 100%;
-  height: calc(100vh - 260px);
-`;
-
 const ButtonUp = styled.span`
   cursor: pointer;
   position: sticky;
@@ -89,7 +84,7 @@ function SideBarHeading({ headings }) {
             active={heading.route === activeID}
             to={heading.route}
             smooth={true}
-            offset={-30}
+            offset={-90}
             duration={200}
             delay={0}
           >
@@ -97,7 +92,6 @@ function SideBarHeading({ headings }) {
           </NavLink>
         ))}
       </SideBarWrapper>
-      <HideButton />
       <ButtonUp onClick={() => animateScroll.scrollToTop({ smooth: true })}>
         <ArrowUpM interactive />
       </ButtonUp>

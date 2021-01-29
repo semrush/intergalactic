@@ -6,6 +6,7 @@ const FormatText = styled.div`
   color: #171a22;
   font-weight: normal;
   word-wrap: break-word;
+  overflow: auto;
   text-rendering: optimizeLegibility;
   a {
     color: #0070cc;

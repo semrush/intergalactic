@@ -13,9 +13,22 @@ import layout from '../static/space/layout.svg';
 import principles from '../static/space/principles.svg';
 import style from '../static/space/style.svg';
 import ArrowXS from '@semcore/icon/lib/ArrowRight/xs';
-import { animateScroll } from 'react-scroll';
-import ArrowUpM from '@semcore/icon/lib/ArrowUp/m';
 import { Box } from '@semcore/flex-box';
+import { css } from '@semcore/core';
+
+const styles = css`
+  STabLine {
+    margin: auto;
+    width: 805px;
+  }
+
+  STooltip[theme] {
+    padding: 12px;
+    border: 1px solid #d1d4db;
+    box-shadow: 5px 8px 25px rgba(137, 141, 154, 0.2);
+    border-radius: 6px;
+  }
+`;
 
 const PromoWrapper = styled.div`
   display: grid;
@@ -30,12 +43,12 @@ const PromoWrapper = styled.div`
   }
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
-    grid-template-rows: repeat(2, 1fr) 1.5fr repeat(3, 3fr);
+    grid-template-rows: repeat(2, 0.5fr) 1fr repeat(3, 1.5fr);
     padding: 0 35px 56px;
   }
   @media (max-width: 320px) {
     grid-template-columns: 1fr;
-    grid-template-rows: 1fr 1.5fr 1fr repeat(3, 1.8fr);
+    grid-template-rows: 0.8fr repeat(2, 1fr) repeat(3, 1.8fr);
     padding: 0 0 56px;
     margin-top: 0;
   }
@@ -51,7 +64,7 @@ const Overlay = styled.div`
 const Title = styled.h1`
   grid-row: 1;
   grid-column: 1/3;
-  font-family: FactorA-Bold;
+  font-family: FactorA-Bold, sans-serif;
   font-size: 60px;
   line-height: 105%;
   margin-bottom: 16px;
@@ -71,6 +84,7 @@ const Desc = styled.div`
   align-items: flex-start;
   @media (max-width: 1140px) {
     align-items: baseline;
+    margin-bottom: 24px;
   }
 `;
 
@@ -81,7 +95,7 @@ const Started = styled.div`
   padding: 40px 0;
   display: flex;
   flex-direction: column;
-  font-family: FactorA-Bold;
+  font-family: FactorA-Bold, sans-serif;
   font-size: 24px;
   a {
     margin-top: 16px;
@@ -216,7 +230,7 @@ const MainWrapper = styled.div`
 `;
 
 const Tab = styled.div`
-  font-family: FactorA-Bold;
+  font-family: FactorA-Bold, sans-serif;
   & > div:first-child > div {
     background-color: #ff622d;
     height: 2px;
@@ -268,29 +282,11 @@ const TableOverlay = styled.div`
     margin: 0;
     margin-bottom: 8px;
     font-size: 24px;
-    font-family: FactorA-Bold;
+    font-family: FactorA-Bold, sans-serif;
   }
   a {
     margin: 0 38px 8px 0;
     white-space: nowrap;
-  }
-`;
-
-const ButtonUp = styled.span`
-  cursor: pointer;
-  position: sticky;
-  top: calc(100vh - 11px - 72px);
-  margin-bottom: 8px;
-  margin-left: calc(100% - 72px);
-  padding: 25px;
-  display: inline-flex;
-  background: #d1d4db;
-  border-radius: 20px 0 0 20px;
-  svg {
-    fill: #fff;
-  }
-  &:hover {
-    background-color: #898d9a;
   }
 `;
 
@@ -404,7 +400,13 @@ const getComponents = (titles, data) => {
       const pic = getTooltip(child.elem.title);
       if (pic) {
         return (
-          <Tooltip placement="left" w={'fit-content'} key={child.elem.title} title={pic}>
+          <Tooltip
+            styles={styles}
+            placement="left"
+            w={'fit-content'}
+            key={child.elem.title}
+            title={pic}
+          >
             <LinkStyled to={`/${child.elem.route}/`}>{child.elem.title}</LinkStyled>
           </Tooltip>
         );
@@ -481,7 +483,7 @@ function Home() {
                 <TabLine
                   underlined={false}
                   onChange={updateValue}
-                  ml={'8%'}
+                  styles={styles}
                   value={value}
                   size="xl"
                 >
