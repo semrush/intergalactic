@@ -18,7 +18,7 @@ SHead {
   display: flex;
   position: relative;
   flex-direction: row;
-  width: 100%;
+  min-width: fit-content;
   z-index: 0;
 }
 
@@ -134,6 +134,7 @@ SBody {
   display: flex;
   flex-direction: column;
   position: relative;
+  min-width: fit-content;
 }
 
 SRow {
@@ -256,9 +257,6 @@ SScrollAreaBar[orientation='horizontal'] {
   position: sticky;
   bottom: 0;
   left: 0;
-  padding-left: 4px;
-  padding-right: 4px;
-  box-sizing: border-box;
   margin-top: -12px;
   z-index: 2;
 }

@@ -80,7 +80,6 @@ class Head extends Component {
     this.columns = flattenColumns(columnsChildren);
 
     const [offsetLeftSum, offsetRightSum] = getScrollOffsetValue(this.columns);
-    const widthHead = Math.round(this.columns.reduce((acc, c) => acc + c.width, 0));
 
     const leftVar = offsetLeftSum + 'px';
     const rightVar = offsetRightSum + 'px';
@@ -102,7 +101,7 @@ class Head extends Component {
       <SHeadWrapper sticky={sticky}>
         <ScrollArea shadow onResize={onResize} styles={styled.styles}>
           <ScrollArea.Container ref={$scrollRef}>
-            <SHead render={Box} wMin={widthHead}>
+            <SHead render={Box}>
               {this.renderColumns(columnsChildren, 100 / this.columns.length)}
             </SHead>
           </ScrollArea.Container>
