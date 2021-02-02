@@ -5,7 +5,7 @@ import Sticky from '@semcore/sticky';
 export default () => {
   return (
     <DataTable data={data}>
-      <Sticky zIndex={2}>
+      <Sticky zIndex={2} top={80}>
         <DataTable.Head>
           <DataTable.Column name="keyword" children="Keyword" />
           <DataTable.Column name="kd" children="KD,%" />
