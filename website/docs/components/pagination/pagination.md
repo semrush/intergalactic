@@ -6,8 +6,6 @@ tabName: Guide
 
 @import playground
 
-> ⚠️ The component has a major version, changes are in the [Changelog](components/pagination/pagination-changelog).
-
 @## Description
 
 **Pagination** is a group of controls for navigation through the long list of paginated data.

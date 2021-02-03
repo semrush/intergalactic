@@ -4,8 +4,6 @@ fileSource: dropdown-menu
 tabName: Guide
 ---
 
-> ⚠️ The component has a major version, changes are in [migration guide](/internal/migration-guide).
-
 @## Description
 
 > 💡 See description of trigger and examples in [Select/Multiselect](/components/select/).

@@ -3,8 +3,6 @@ title: Typography
 tabName: Guide
 ---
 
-> ⚠️ The component has a major version, changes in the [migration guide](/internal/migration-guide).
-
 @## Font
 
 The main font for Semrush interface is [Ubuntu](https://design.ubuntu.com/font/).

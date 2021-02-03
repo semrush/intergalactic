@@ -110,7 +110,7 @@ const FormatText = styled.div`
 
   p {
     padding: 0;
-    margin: 0 0 1.5rem;
+    margin: 0 0 1rem;
     img:last-child:first-child {
       margin-bottom: 0;
     }
@@ -138,6 +138,7 @@ const FormatText = styled.div`
     padding: 0;
     margin: 0 0 1.5rem;
     border-collapse: collapse;
+    width: 100%;
   }
 
   fieldset {
@@ -147,7 +148,7 @@ const FormatText = styled.div`
 
   blockquote {
     padding: 2rem;
-    margin: 32px 0;
+    margin: 0;
     font-size: 16px;
     line-height: 1.5em;
     background-color: rgba(184, 128, 255, 0.15);

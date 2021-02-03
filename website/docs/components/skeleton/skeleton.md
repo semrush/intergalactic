@@ -4,8 +4,6 @@ fileSource: skeleton
 tabName: Guide
 ---
 
-> ⚠️ The component has a major version, changes are in the [migration guide](/internal/migration-guide).
-
 @## Description
 
 > 💡 This component is one of the components that displays the download and reaction to user actions in the interface. For general rules on such components, see the [Loading patterns](/patterns/loading-states/).
