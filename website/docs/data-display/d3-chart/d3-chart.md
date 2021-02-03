@@ -99,5 +99,15 @@ tabName: Concept
 
 @example axis-grid
 
+@## Aдаптивный график
+
+Для адаптивного дизайна нам нужен `svg` график с поддержкой адаптивности.
+
+Поэтому мы создали компонент `ResponsiveContainer`.
+
+> Свойство [hMax](/layout/box-system/box-api/#IBoxProps.hMax) для ResponsiveContainer является обязательным.
+
+@example responsive
+
 @page line
 @page bar
