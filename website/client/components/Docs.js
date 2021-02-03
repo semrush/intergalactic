@@ -67,6 +67,7 @@ function useScrollHash(options = {}) {
       if (window.location.hash) {
         scroller.scrollTo(window.location.hash.replace('#', ''), {
           smooth: 'easeInOutQuint',
+          offset: -150,
           ...options,
         });
       }
