@@ -16,7 +16,7 @@ You have installed our `component` and our plugin `@semcore/babel-plugin-react-s
 > ⚠️ **Attention**. Make sure that you don't process our files with `babel`-plugins in your code, otherwise the result is unpredictable 🤕
 
 ```bash
-npm i @semcore/buttonsemcore/babel-plugin-react-semcore
+npm i @semcore/button @semcore/babel-plugin-react-semcore
 ```
 
 ### Step two
@@ -36,7 +36,7 @@ An example of a correct file structure:
     |── button
     |   └-- button.shadow.css
     |── product-head
-    |   └-- procuct-head.shadow.css
+    |   └-- product-head.shadow.css
     └── link
         └-- link.shadow.css
 ```
