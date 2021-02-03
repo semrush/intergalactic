@@ -16,6 +16,8 @@ class XYPlotRoot extends Component {
     eventEmitter: new EventEmitter(),
     data: [],
     scale: [],
+    width: 0,
+    height: 0,
   });
 
   rootRef = React.createRef();
@@ -76,7 +78,9 @@ class XYPlotRoot extends Component {
 
   render() {
     const SXYPlot = this.Root;
-    const { styles, scale } = this.asProps;
+    const { styles, width, height } = this.asProps;
+
+    if (!width || !height) return null;
 
     return styled(styles)(
       <SXYPlot
