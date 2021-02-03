@@ -4,8 +4,6 @@ fileSource: widget-empty
 tabName: Guide
 ---
 
-> ⚠️ The component has a major version, changes are in the changelog.
-
 Widgets of our tools have “empty” states, which should properly inform the user, why he/she does not see the data. And give a clue, how he/she can remedy the situation.
 
 @## Composition and styles

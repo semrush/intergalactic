@@ -6,7 +6,7 @@ tabName: Guide
 
 @import playground
 
-> ⚠️ The component has a major version, changes are in the [migration guide](/internal/migration-guide).
+@## Description
 
 **Tag** is a word or phrase for thematic grouping of information in the interface (in tables, filters, cards, etc.).
 

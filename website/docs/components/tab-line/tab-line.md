@@ -6,8 +6,6 @@ tabName: Guide
 
 @import playground
 
-> ⚠️ The component has a major version, changes are in the [migration guide](/internal/migration-guide).
-
 @## Description
 
 **TabLine** is a component for grouping homogeneous content on a page and secondary navigation.
