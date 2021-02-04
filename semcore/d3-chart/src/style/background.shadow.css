@@ -1,0 +1,5 @@
+@import '@semcore/utils/style/var.css';
+
+SBarBackground {
+  fill: color-mod(var(--mystic));
+}
