@@ -8,6 +8,7 @@ export { default as Bar } from './Bar';
 export { default as HorizontalBar } from './HorizontalBar';
 export { default as GroupBar } from './GroupBar';
 export { default as StackBar } from './StackBar';
+export { default as BarBackground } from './BarBackground';
 
 export { default as Tooltip } from './Tooltip';
 
