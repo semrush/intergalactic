@@ -1,6 +1,6 @@
 import React from 'react';
 import { bisector } from 'd3-array';
-import createComponent, { Component, CONTEXT_COMPONENT, styled } from '@semcore/core';
+import { Component, styled } from '@semcore/core';
 import createXYElement from './XYElement';
 
 import style from './style/hover.shadow.css';

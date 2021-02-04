@@ -2,13 +2,11 @@ import React, { useCallback } from 'react';
 import { bisector } from 'd3-array';
 import { Component, styled } from '@semcore/core';
 import Popper from '@semcore/popper';
-import { Box, Flex } from '@semcore/flex-box';
-import { eventToPoint, invert } from './utils';
+import { Box } from '@semcore/flex-box';
 
 import style from './style/tooltip.shadow.css';
 import createXYElement from './XYElement';
 import findComponent from '@semcore/utils/lib/findComponent';
-import { Text } from '@semcore/typography';
 
 class TooltipRoot extends Component {
   static displayName = 'Tooltip';
@@ -68,7 +66,7 @@ class TooltipRoot extends Component {
       Tooltip.Popper.displayName,
     ]);
     return (
-      <Root render={Popper} visible={visible} offset={8} placement="right">
+      <Root render={Popper} visible={visible} interaction="hover" offset={8} placement="right">
         {({ popper }) => {
           popper.current?.update();
           return advanceMode ? (

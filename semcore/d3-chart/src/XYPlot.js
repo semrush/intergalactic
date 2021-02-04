@@ -12,8 +12,12 @@ class XYPlotRoot extends Component {
 
   static style = style;
 
+  constructor(props) {
+    super(props);
+    this.eventEmitter = props.eventEmitter || new EventEmitter();
+  }
+
   static defaultProps = () => ({
-    eventEmitter: new EventEmitter(),
     data: [],
     scale: [],
     width: 0,
@@ -52,7 +56,7 @@ class XYPlotRoot extends Component {
   emitNearestXY = trottle((e) => {
     const [xScale, yScale] = this.asProps.scale;
     const [x, y] = eventToPoint(e, this.rootRef.current);
-    this.asProps.eventEmitter.emit(`onNearestXY`, [invert(xScale, x), invert(yScale, y)]);
+    this.eventEmitter.emit(`onNearestXY`, [invert(xScale, x), invert(yScale, y)]);
   });
 
   handlerMouseMove = (e) => {
@@ -61,16 +65,16 @@ class XYPlotRoot extends Component {
   };
 
   handlerMouseLeave = trottle(() => {
-    this.asProps.eventEmitter.emit(`onNearestXY`, []);
+    this.eventEmitter.emit(`onNearestXY`, []);
   });
 
   setContext() {
-    const { scale, data, eventEmitter } = this.asProps;
+    const { scale, data } = this.asProps;
     return {
       $rootProps: {
         data: data,
         scale: scale,
-        eventEmitter: eventEmitter,
+        eventEmitter: this.eventEmitter,
         rootRef: this.rootRef,
       },
     };
