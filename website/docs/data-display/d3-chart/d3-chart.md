@@ -101,13 +101,17 @@ tabName: Concept
 
 @## Aдаптивный график
 
-Для адаптивного дизайна нам нужен `svg` график с поддержкой адаптивности.
+Для нормального отображения `svg` графиков на адаптивных макетах нужно динамически расчитывать ширину и высоту блока,
+поэтому мы создали компонент `ResponsiveContainer`, который поддерживает все свойства [Box](/layout/box-system/box-api) c помощью которых можно гибко настраивать размеры блока.
 
-Поэтому мы создали компонент `ResponsiveContainer`.
+> ResponsiveContainer поддерживает свойство `aspect` - это отношение размеров между шириной и высотой блока.
 
-> Свойство [hMax](/layout/box-system/box-api/#IBoxProps.hMax) для ResponsiveContainer является обязательным.
+```jsx
+<ResponsiveContainer aspect={1}> // width = height ...</ResponsiveContainer>
+```
 
 @example responsive
 
 @page line
 @page bar
+@page d3-chart-api

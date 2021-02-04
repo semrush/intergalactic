@@ -10,7 +10,7 @@ const data = Array(20)
   }));
 
 const Demo = () => {
-  const [{ width, height }, updateSize] = useState({ width: 500, height: 300 });
+  const [[width, height], updateSize] = useState([]);
   const MARGIN = 40;
   const xScale = scaleLinear()
     .range([MARGIN, width - MARGIN])
@@ -20,7 +20,7 @@ const Demo = () => {
     .domain([0, 10]);
 
   return (
-    <ResponsiveContainer hMax={300} onResize={updateSize}>
+    <ResponsiveContainer h={300} onResize={updateSize}>
       <XYPlot data={data} scale={[xScale, yScale]} width={width} height={height}>
         <YAxis ticks={yScale.ticks()}>
           <YAxis.Ticks />
