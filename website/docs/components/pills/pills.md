@@ -6,8 +6,6 @@ tabName: Guide
 
 @import playground
 
-> ⚠️ This component has a major version, changes in the [migration guide](/internal/migration-guide).
-
 @## Description
 
 **Pills** is a component used for:

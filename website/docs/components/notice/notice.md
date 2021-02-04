@@ -6,8 +6,6 @@ tabName: Guide
 
 @import playground
 
-> ⚠️ This component has a major version, changes in the [migration guide](/internal/migration-guide).
-
 @## Description
 
 **Notice** is a global notification of the user about events related to their work in the services.

@@ -6,8 +6,6 @@ tabName: Guide
 
 @import playground
 
-> ⚠️ This component has a major version, changes in the [migration guide](/internal/migration-guide).
-
 @## Description
 
 > 💡 Please note that we simplified the [Link](/components/link/link-changelog) component and moved Hint link and its description to [Typography](/style/typography/#afbfef/).

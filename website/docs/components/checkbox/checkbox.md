@@ -6,8 +6,6 @@ tabName: Guide
 
 @import playground
 
-> ⚠️ This component has a major version, changes are described in the [migration guide](/internal/migration-guide).
-
 @## Description
 
 **Checkbox** is a control for selecting one or more values.
@@ -72,15 +70,15 @@ The checkbox label may contain a [link](/components/link).
 
 ### States
 
-| State                 | Appearance                                             |
-| --------------------- | ------------------------------------------------------ |
-| unchecked             | ![unchecked](static/state-unchecked.png)               |
-| checked               | ![checked](static/state-checked.png)                   |
-| indeterminate         | ![indeterminate](static/state-indetermenate.png)       |
-| indeterminate invalid | ![indeterminate](static/state-indetermenate-invalid.png)       |
-| checked disabled      | ![disabled-checked](static/state-checked-disabled.png) |
-| disabled              | ![disabled](static/state-disabled.png)                 |
-| invalid               | ![invalid](static/state-invalid.png)                   |
+| State                 | Appearance                                               |
+| --------------------- | -------------------------------------------------------- |
+| unchecked             | ![unchecked](static/state-unchecked.png)                 |
+| checked               | ![checked](static/state-checked.png)                     |
+| indeterminate         | ![indeterminate](static/state-indetermenate.png)         |
+| indeterminate invalid | ![indeterminate](static/state-indetermenate-invalid.png) |
+| checked disabled      | ![disabled-checked](static/state-checked-disabled.png)   |
+| disabled              | ![disabled](static/state-disabled.png)                   |
+| invalid               | ![invalid](static/state-invalid.png)                     |
 
 ### Behavior
 
