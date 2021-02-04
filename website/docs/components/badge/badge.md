@@ -6,8 +6,6 @@ tabName: Guide
 
 @import playground
 
-> ⚠️ This component has a major version, changes are described in the [migration guide](/internal/migration-guide).
-
 @## Description
 
 **Badge** is a visual marker indicating the product or feature status.

@@ -6,8 +6,6 @@ tabName: Guide
 
 @import playground
 
-> ⚠️ This component has a major version, changes are described in the [migration guide](/internal/migration-guide).
-
 @## Description
 
 **Breadcrumbs** is a component used to display the "user's path" on the site. It's used as an auxiliary navigation tool.

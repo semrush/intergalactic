@@ -6,8 +6,6 @@ tabName: Guide
 
 @import playground
 
-> ⚠️ This component has a major version, changes in the [migration guide](/internal/migration-guide).
-
 @## Description
 
 **Input** is a single-line text input field. Basic component of search fields, also used for the selection of values, ranges and fields for password, email, etc.
