@@ -3625,6 +3625,12 @@
       "tags": ["video", "alt", "видео", "play", "воспроизвести", "preview"]
     },
     {
+      "name": "VideoStop",
+      "size": ["m", "s", "xs"],
+      "group": "Status",
+      "tags": ["video", "видео", "stop", "остановить", "preview"]
+    },
+    {
       "name": "Vk",
       "size": ["m", "s", "xs"],
       "group": "Social",
