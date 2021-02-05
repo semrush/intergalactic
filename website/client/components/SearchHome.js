@@ -89,7 +89,7 @@ const NotFound = styled.div`
   flex-flow: row wrap;
   align-items: center;
   justify-content: center;
-  color: #3e424b;
+  color: #575c66;
 `;
 
 const NotFoundImg = styled.img`

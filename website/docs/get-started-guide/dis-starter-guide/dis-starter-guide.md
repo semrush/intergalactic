@@ -2,9 +2,9 @@
 title: For designers
 ---
 
-> **Welcome to the Intergalactic Design System, awesome galaxy traveller!**
->
-> Here you will find a series of quick and handy guides for prototyping and building product designs for the Semrush suite.
+@## Intergalactic Design System
+
+Here you will find a series of quick and handy guides for prototyping and building product designs for the Semrush suite.
 
 @## Principles
 
@@ -71,7 +71,7 @@ Some products use a flexible grid, while others use a fixed one depending on the
 
 Go to [Grid system](/layout/grid-system) for a detailed description of this component with code examples.
 
-@## Breakpoints
+@## Breakpoints (soon will be updated)
 
 > **TL;DR or main thoughts**: we build our interface as desktop-first, since there is a lot of data visualization and explaining text.
 
@@ -82,8 +82,8 @@ The main breakpoints that we recommend to use in our interfaces are:
 
 So you need to make designs for:
 
-- 320–768 — the smallest devices. Don't forget them
-- 768–992 — phones and tablets
+- 320 — the smallest devices. Don't forget them
+- 768 — phones and tablets
 - more than 992 — big tablets and desktop devices
 
 See [Breakpoints](/layout/breakpoints/) for more information.

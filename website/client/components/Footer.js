@@ -122,14 +122,14 @@ function Footer() {
       <Logo>
         Powered by <img src={logo} alt="Logo" />
       </Logo>
-      <Description>© 2008–{new Date().getFullYear()} SEMrush. All rights reserved.</Description>
+      <Description>© 2008–{new Date().getFullYear()} Semrush. All rights reserved.</Description>
 
       <Contacts>
         If you want to ask something, drop us a line at
         <a href="mailto:ui-kit-team@semrush.com" target="_blank">
           ui-kit-team@semrush.com
         </a>
-        open an
+        or open an
         <a
           href="https://github.com/semrush/intergalactic"
           target="_blank"
