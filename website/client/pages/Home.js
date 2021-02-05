@@ -79,7 +79,7 @@ const Desc = styled.div`
   font-size: 18px;
   line-height: 150%;
   margin: 0;
-  color: #3e424b;
+  color: #575c66;
   display: flex;
   align-items: flex-start;
   @media (max-width: 1140px) {
@@ -259,7 +259,7 @@ const Category = styled.div`
 
 const LinkStyled = styled(Link)`
   line-height: 1.25;
-  color: #3e424b;
+  color: #171a22;
   cursor: pointer;
   text-decoration: none;
   max-width: 235px;
