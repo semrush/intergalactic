@@ -10,6 +10,10 @@ title: Code
 
 @example content
 
+@## Galleries on the responsive page
+
+@example responsive
+
 @## Hidden controlls for move focus in hidden block
 
 You have this code

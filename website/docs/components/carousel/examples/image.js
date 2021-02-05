@@ -20,13 +20,14 @@ const Indicator = (props) => styled(css`
 
 const Demo = () => (
   <Flex justifyContent="center">
-    <Box position="relative" w={600}>
+    <Box position="relative">
       <Carousel>
         <Carousel.Container>
           {[...new Array(3)].map((_, ind) => (
             <Carousel.Item key={ind}>
               <Box
                 tag="img"
+                w="100%"
                 src={`https://picsum.photos/id/${1023 + ind}/600/400`}
                 style={{ borderRadius: '6px' }}
               />
@@ -41,6 +42,7 @@ const Demo = () => (
                   tag="img"
                   src={`https://picsum.photos/id/${1023 + ind}/100/100`}
                   {...item}
+                  wMax="100%"
                   w={100}
                   h={100}
                   mx={3}
