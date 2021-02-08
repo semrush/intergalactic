@@ -16,7 +16,7 @@ module.exports = function(plop) {
         globOptions: {
           dot: true,
           ignore: [
-            'template-react/src/Component.tsx',
+            'template-react/src/Component.js',
             'template-react/src/style/style.css',
             'template-react/_package.json',
           ],
@@ -24,8 +24,8 @@ module.exports = function(plop) {
       },
       {
         type: 'add',
-        path: '../../semcore/{{ dashCase name}}/src/{{ properCase name }}.tsx',
-        templateFile: 'template-react/src/Component.tsx',
+        path: '../../semcore/{{ dashCase name}}/src/{{ properCase name }}.js',
+        templateFile: 'template-react/src/Component.js',
       },
       {
         type: 'add',
