@@ -301,7 +301,7 @@ const FormatText = styled.div`
   }
 
   small {
-    color: #3e424b;
+    color: #575c66;
   }
 `;
 

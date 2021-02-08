@@ -66,7 +66,7 @@ const MobileSelect = styled(Select)`
     }
 
     &:hover {
-      border: 1px solid #3e424b;
+      border: 1px solid #171a22;
     }
   }
 `;
