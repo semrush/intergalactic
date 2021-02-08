@@ -295,8 +295,8 @@ const components = {
     { text: 'Mobile first guides', size: { ui: '3/9' } },
     { text: 'Mobile first components', size: { kit: '3/11' } },
     { text: 'Charts: Line, Bar', size: { kit: '3/7' } },
-    { text: 'Slider', size: { ui: '7/11', kit: '9/13' } },
-    { text: 'GlobalNotice', size: { ui: '9/13', kit: '11/13' } },
+    { text: 'GlobalNotice', size: { ui: '7/11', kit: '9/13' } },
+    { text: 'Slider', size: { ui: '9/13', kit: '11/13' } },
     { text: 'Themes enchancement', size: { kit: '7/13' } },
     { text: 'Charts: Donut', size: { kit: '9/13' } },
     { text: 'Charts: Area', size: { kit: '11/13' } },
@@ -402,11 +402,11 @@ function Roadmap() {
       <Legenda>
         <li>
           <Oval />
-          Developing component in UX/UI
+          UX/UI
         </li>
         <li>
           <Oval />
-          Developing, adding or have already added component to the UI Kit
+          Development
         </li>
       </Legenda>
       {TabContent}
