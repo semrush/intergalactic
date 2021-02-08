@@ -1,31 +1,8 @@
-import React from 'react';
+import React, { ComponentProps } from 'react';
 import { Stack, Line } from 'd3-shape';
-import { PropGetterFn, CProps, ReturnEl, ComponentType, Component } from '@semcore/core';
+import { PropGetterFn, CProps, ReturnEl } from '@semcore/core';
 import { IBoxProps } from '@semcore/flex-box';
-import Popper, { IPopperProps } from '@semcore/popper';
-
-export declare function createXYElement<
-  ComponentProps,
-  ChildComponentProps = {},
-  ContextType = {},
-  FNType = null
->(
-  OriginComponent,
-  childComponents = {},
-  options: {
-    context?: React.Context<ContextType>;
-    parent?: ComponentType<unknown> | ComponentType<unknown>[];
-    enhancements?: [any];
-  } = {},
-): ComponentType<
-  ComponentProps extends Component<infer Props> ? Props : ComponentProps,
-  ChildComponentProps,
-  ContextType,
-  ComponentProps extends ClassWithUncontrolledProps<any>
-    ? ReturnType<ComponentProps['uncontrolledProps']>
-    : { [key: string]: (arg: unknown) => void },
-  FNType
->;
+import Popper, { IPopperProps, IPopperTriggerProps } from '@semcore/popper';
 
 interface ContextRoot {
   /** Data for graphic */
@@ -62,8 +39,8 @@ export interface IAxisContext extends IAxisProps {
 }
 
 export declare const XAxis: (<T>(props: CProps<IXAxisProps & T, IAxisContext>) => ReturnEl) & {
-  Ticks: <T>(props: T) => ReturnEl;
-  Grid: <T>(props: T) => ReturnEl;
+  Ticks: <T>(props: IXAxisProps & T) => ReturnEl;
+  Grid: <T>(props: IXAxisProps & T) => ReturnEl;
 };
 
 export interface IYAxisProps extends IAxisProps {
@@ -79,8 +56,8 @@ export interface IYAxisProps extends IAxisProps {
 }
 
 export declare const YAxis: (<T>(props: CProps<IYAxisProps & T, IAxisContext>) => ReturnEl) & {
-  Ticks: <T>(props: T) => ReturnEl;
-  Grid: <T>(props: T) => ReturnEl;
+  Ticks: <T>(props: IYAxisProps & T) => ReturnEl;
+  Grid: <T>(props: IYAxisProps & T) => ReturnEl;
 };
 
 export interface IResponsiveContainerProps extends IBoxProps {
@@ -92,19 +69,12 @@ export interface IResponsiveContainerProps extends IBoxProps {
 
 //ResponsiveContainer
 export interface IResponsiveContainerContext {
-  width: number;
-  height: number;
+  width?: number;
+  height?: number;
 }
 
-type ChildRenderFn<Props> = Props & {
-  children?: ({ width, height }: { width: number; height: number }) => React.ReactElement;
-};
-
 export declare const ResponsiveContainer: <T>(
-  props: CProps<
-    IResponsiveContainerProps & T,
-    IResponsiveContainerContext & ChildRenderFn<IResponsiveContainerProps & T>
-  >,
+  props: CProps<IResponsiveContainerProps & T, IResponsiveContainerContext>,
 ) => ReturnEl;
 
 //XYPlot
@@ -144,16 +114,16 @@ export declare function scaleOfBandwidth(scale: any[], value: number): any;
 export declare function minMax(data: any, key: string | number): any;
 
 //Tooltip
-export interface ITooltipProps extends IPopperProps, ContextRoot {
+export interface ITooltipProps extends IPopperProps, IPopperTriggerProps, ContextRoot {
   /** Field from data for Axis x */
-  x?: 'x' | 'y';
+  x?: string;
   /** Field from data for Axis y */
-  y?: 'x' | 'y';
+  y?: string;
 }
 
 export interface ITooltipState {
-  xIndex: number | null;
-  yIndex: number | null;
+  xIndex?: number | null;
+  yIndex?: number | null;
 }
 
 export interface ITooltipContext extends ITooltipProps {
@@ -161,21 +131,13 @@ export interface ITooltipContext extends ITooltipProps {
   getPopperProps: PropGetterFn;
 }
 
-type TooltipChildRenderFn<Props> = Props & {
-  children?: ({ xIndex }: { xIndex: number }) => React.ReactElement;
-};
-
 export declare const Tooltip: (<T>(
-  props: CProps<
-    ITooltipProps & T,
-    ITooltipContext & TooltipChildRenderFn<ITooltipProps & T>,
-    ITooltipState
-  >,
+  props: CProps<ITooltipProps & ITooltipState & T, ITooltipContext, ITooltipState>,
 ) => ReturnEl) & {
-  Trigger: ComponentProps<typeof Popper.Trigger>;
-  Popper: ComponentProps<typeof Popper.Popper>;
-  Title: ComponentProps<typeof Box>;
-  Dot: ComponentProps<typeof Box>;
+  Trigger: <T>(props: IPopperTriggerProps & T) => null;
+  Popper: <T>(props: ComponentProps<typeof Popper.Popper> & T) => null;
+  Title: <T>(props: IBoxProps & T) => null;
+  Dot: <T>(props: IBoxProps & T) => null;
   Footer: <T>(props: T) => null;
 };
 
@@ -201,8 +163,8 @@ export interface ILineContext extends ILineProps {
 }
 
 export declare const Line: (<T>(props: CProps<ILineProps & T, ILineContext>) => ReturnEl) & {
-  Dots: <T>(props: T) => ReturnEl;
-  Null: <T>(props: T) => ReturnEl;
+  Dots: <T>(props: ILineProps & T) => ReturnEl;
+  Null: <T>(props: ILineProps & T) => ReturnEl;
 };
 
 //Bar
@@ -228,14 +190,14 @@ export declare const Bar: <T>(props: CProps<IBarProps & T, {}>) => ReturnEl;
 //Hover
 export interface IHoverProps {
   /** Field from data for Axis x */
-  x?: 'x' | 'y';
+  x?: string;
   /** Field from data for Axis y */
-  y?: 'x' | 'y';
+  y?: string;
 }
 
 export interface IHoverState {
-  xIndex: number | null;
-  yIndex: number | null;
+  xIndex?: number | null;
+  yIndex?: number | null;
 }
 
 export declare const HoverLine: <T>(
@@ -249,9 +211,9 @@ export declare const HoverRect: <T>(
 //HorizontalBar
 export interface IHorizontalBarProps extends ContextRoot {
   /** Field from data for Axis x */
-  x?: 'x' | 'y';
+  x?: string;
   /** Field from data for Axis y */
-  y?: 'x' | 'y';
+  y?: string;
   /** Color line
    * @default '#50aef4'*/
   color?: string;
@@ -291,8 +253,8 @@ export interface IStackBarContext extends IStackBarProps {
 export declare const StackBar: (<T>(
   props: CProps<IStackBarProps & T, IStackBarContext>,
 ) => ReturnEl) & {
-  Bar: ComponentProps<typeof Bar>;
-  HorizontalBar: ComponentProps<typeof HorizontalBar>;
+  Bar: <T>(props: IBoxProps & T) => null;
+  HorizontalBar: <T>(props: IHorizontalBarProps & T) => null;
 };
 
 //GroupBar
@@ -310,13 +272,9 @@ export interface IGroupBarContext extends IGroupBarProps {
   getHorizontalBarProps: PropGetterFn;
 }
 
-type GroupBarChildRenderFn<Props> = Props & {
-  children?: ({ scaleGroup }: { scaleGroup: any }) => React.ReactElement;
-};
-
 export declare const GroupBar: (<T>(
-  props: CProps<IGroupBarProps & T, IGroupBarContext & GroupBarChildRenderFn<IGroupBarProps & T>>,
+  props: CProps<IGroupBarProps & T, IGroupBarContext>,
 ) => ReturnEl) & {
-  Bar: ComponentProps<typeof Bar>;
-  HorizontalBar: ComponentProps<typeof HorizontalBar>;
+  Bar: <T>(props: IBarProps & T) => null;
+  HorizontalBar: <T>(props: IHorizontalBarProps & T) => null;
 };

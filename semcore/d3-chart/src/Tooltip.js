@@ -66,7 +66,7 @@ class TooltipRoot extends Component {
       Tooltip.Popper.displayName,
     ]);
     return (
-      <Root render={Popper} visible={visible} interaction="hover" offset={8} placement="right">
+      <Root render={Popper} visible={visible} offset={8}>
         {({ popper }) => {
           popper.current?.update();
           return advanceMode ? (
