@@ -13,22 +13,20 @@ class BarBackgroundRoot extends Component {
     yIndex: [],
   };
 
+  static getFilledArray = (axis, length) => {
+    return axis === undefined
+      ? null
+      : Array(length)
+          .fill(0)
+          .map((el, index) => index);
+  };
+
   componentDidMount() {
     const { data, x, y } = this.asProps;
 
     this.setState({
-      xIndex:
-        x === undefined
-          ? null
-          : Array(data.length)
-              .fill(0)
-              .map((el, ind) => ind),
-      yIndex:
-        y === undefined
-          ? null
-          : Array(data.length)
-              .fill(0)
-              .map((el, ind) => ind),
+      xIndex: BarBackgroundRoot.getFilledArray(x, data.length),
+      yIndex: BarBackgroundRoot.getFilledArray(y, data.length),
     });
   }
 
