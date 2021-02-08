@@ -95,7 +95,8 @@ class LineRoot extends Component {
 }
 
 function Dots(props) {
-  const { Element: SDot, styles, data, d3, x, y, eventEmitter, visible, hide } = props;
+  const { Element: SDot, styles, data, d3, x, y, eventEmitter, hide } = props;
+  console.log(123, 'Dots', props);
   const bisect = bisector((d) => d[x]).center;
   const [activeIndex, setActiveIndex] = useState(props.activeIndex || null);
 
@@ -118,7 +119,7 @@ function Dots(props) {
     const isNext = d3.defined()(data[i + 1] || {});
     const active = i === activeIndex;
     if (!d3.defined()(d)) return acc;
-    if (visible || i === activeIndex || (!isPrev && !isNext)) {
+    if (!hide || i === activeIndex || (!isPrev && !isNext)) {
       acc.push(
         styled(styles)(
           <SDot
