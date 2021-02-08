@@ -29,7 +29,7 @@
 .gantt__row--lines span {
   display: block;
   text-align: center;
-  color: #3e424b;
+  color: #575c66;
 }
 
 .gantt__row--lines span + span {
@@ -64,7 +64,7 @@
   font-size: 14px;
   align-self: center;
   padding: 20px 0;
-  color: #3e424b;
+  color: #575c66;
   z-index: 1;
 }
 
