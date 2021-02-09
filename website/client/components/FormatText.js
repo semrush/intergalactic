@@ -148,7 +148,7 @@ const FormatText = styled.div`
 
   blockquote {
     padding: 2rem;
-    margin: 0;
+    margin: 1.5rem 0;
     font-size: 16px;
     line-height: 1.5em;
     background-color: rgba(184, 128, 255, 0.15);
