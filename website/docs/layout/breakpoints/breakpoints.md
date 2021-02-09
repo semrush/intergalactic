@@ -55,3 +55,5 @@ A list of the main breakpoints that we recommend to use in our interface:
 |                  | ![768 breakpoint](static/breakpoints-768-landscape.png) | **Mobile devices (landscape mode)**. The content is arranged as a two-column structure. The left menu is hidden in the burger menu icon. |
 | greater than 992 | ![992 breakpoint](static/breakpoints-992.png)           | **Tablet & desktop devices**. The left menu is open. You can rearrange the content as a three-column structure.                          |
 |                  | ![992 breakpoint](static/breakpoints-992-landscape.png) | **Tablet (landscape mode)**. The left menu is open. You can rearrange the content as a three-column structure.                           |
+
+@page breakpoints-code

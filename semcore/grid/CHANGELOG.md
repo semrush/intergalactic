@@ -2,6 +2,13 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.2.0] - unreleased
+
+### Added
+
+- Added alternative API for `span` and `offset`.
+- Added breakpoint `xs`.
+
 ## [3.1.0] - 2020-12-17
 
 ### Added
