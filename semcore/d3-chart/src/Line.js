@@ -121,8 +121,8 @@ function Dots(props) {
       acc.push(
         styled(styles)(
           <SDot
-            __excludeProps={['data', 'scale', 'value', 'display']}
             key={i}
+            __excludeProps={['data', 'scale', 'value', 'display']}
             value={d}
             index={i}
             render="circle"

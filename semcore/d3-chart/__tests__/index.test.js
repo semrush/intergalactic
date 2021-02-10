@@ -72,4 +72,16 @@ describe('YAxis', () => {
       </XYPlot>,
     );
   });
+
+  test('should support set data-ui-name for Line.Ticks', () => {
+    const { queryByTestId } = render(
+      <XYPlot data={data} scale={[xScale, yScale]} width={100} height={100}>
+        <YAxis ticks={[0]}>
+          <YAxis.Ticks data-testid="test" />
+        </YAxis>
+      </XYPlot>,
+    );
+    expect(queryByTestId('test').attributes['data-ui-name']).toBeTruthy();
+    expect(queryByTestId('test').attributes['data-ui-name'].value).toBe('Axis.Ticks');
+  });
 });
