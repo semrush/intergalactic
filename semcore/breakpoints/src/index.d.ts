@@ -3,17 +3,21 @@ import React from 'react';
 type listenerType = (index: number) => void;
 type mediaType = string[];
 
-interface IMediaList {
+export interface IMediaList {
+  /** Destroy the subscription to the window.matchMedia */
   destructor(): void;
 
+  /** Get the index from the media list. */
   matches(): number;
 
+  /** Subscribe to index changes in the media list. */
   addListener(listener: listenerType): () => void;
 
+  /** Unsubscribe from changing the index in the media list. */
   removeListener(listener: listenerType): void;
 }
 
-interface IBreakpointsProps {
+export interface IBreakpointsProps {
   children: React.ReactNode;
 }
 
