@@ -40,5 +40,11 @@ The grid has functionality for responsive layouts. You can change width and offs
 
 @example responsive
 
+@## Responsive alternative API
+
+We have added an alternative api for responsive. It seems to us that it is more laconic.
+
+@example alternative
+
 @page grid-api
 @page grid-changelog
