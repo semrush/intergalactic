@@ -73,12 +73,9 @@ class ResponsiveContainerRoot extends Component {
   }
 
   render() {
-    const { Root: SResponsiveContainer } = this;
+    const SResponsiveContainer = this.Root;
     const { styles } = this.asProps;
-    return styled(styles)`
-      SResponsiveContainer {
-      }
-    `(<SResponsiveContainer render={Box} ref={this.containerRef} />);
+    return styled(styles)(<SResponsiveContainer render={Box} ref={this.containerRef} />);
   }
 }
 
