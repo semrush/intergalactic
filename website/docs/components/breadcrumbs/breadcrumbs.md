@@ -59,7 +59,8 @@ The recommended order of the levels in the breadcrumbs:
 
 - The first link is **Dashboard**, it leads to a shared screen with widgets for various tools.
 - The second link is the **tool's Projects and/or the tool's home page**.
-- The third link is the **Name of the tool**.
+- The third link is the **Name of the project**.
+- The fourth link is the **Name of the tool**.
 
 @page breadcrumbs-api
 @page breadcrumbs-code
