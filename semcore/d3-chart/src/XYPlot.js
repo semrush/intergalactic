@@ -26,33 +26,6 @@ class XYPlotRoot extends Component {
 
   rootRef = React.createRef();
 
-  // distributeEvents = ['onMouseEnter', 'onMouseMove', 'onMouseLeave', 'onClick', 'onDoubleClick'];
-
-  // renderChildrenByOrder(children) {
-  //   return React.Children.toArray(children).sort((a, b) => {
-  //     if (React.isValidElement(a) && React.isValidElement(b)) {
-  //       return (a.props.order || 0) - (b.props.order || 0);
-  //     }
-  //     return 0;
-  //   });
-  // }
-
-  // emitEvent = trottle((name, e) => {
-  //   this.asProps.eventEmitter.emit(`${name}Root`, e, this.rootRef.current);
-  // });
-  //
-  // bindHandlerDistributeEvent = (name) => (e) => {
-  //   e.persist();
-  //   this.emitEvent(name, e);
-  // };
-  //
-  // addEventHandlers() {
-  //   return this.distributeEvents.reduce((events, name) => {
-  //     events[name] = this.bindHandlerDistributeEvent(name);
-  //     return events;
-  //   }, {});
-  // }
-
   emitNearestXY = trottle((e) => {
     const [xScale, yScale] = this.asProps.scale;
     const [x, y] = eventToPoint(e, this.rootRef.current);
