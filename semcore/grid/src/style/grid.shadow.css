@@ -133,7 +133,7 @@ SCol[offset='12'] {
   margin-left: 100%;
 }
 
-@media (width <= 992px) {
+@media (width <= 1184px) {
   SCol[md] {
     flex: 1 0 0;
   }

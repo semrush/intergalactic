@@ -2,7 +2,11 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [3.2.0] - unreleased
+## [4.0.0] - unreleased
+
+### BREAK
+
+- Change the responsive breakpoint from 992px to 1184px.
 
 ### Added
 

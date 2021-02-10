@@ -72,7 +72,7 @@
 
   --xs-screen: 375px;
   --sm-screen: 768px;
-  --md-screen: 992px;
+  --md-screen: 1184px;
 
   --font-size_-1: 11px;
   --font-size_-2: 10px;
@@ -90,4 +90,4 @@
 
 @custom-media --xs-media (width <= 375px);
 @custom-media --sm-media (width > 375px) and (width <= 768px);
-@custom-media --md-media (width > 768px) and (width <= 992px);
+@custom-media --md-media (width > 768px) and (width <= 1184px);
