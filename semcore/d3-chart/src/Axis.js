@@ -194,7 +194,7 @@ function Ticks(props) {
     return styled(styles)(
       <STick
         key={i}
-        __excludeProps={['data', 'scale', 'format']}
+        __excludeProps={['data', 'scale', 'format', 'value']}
         value={value}
         index={i}
         childrenPosition="inside"
