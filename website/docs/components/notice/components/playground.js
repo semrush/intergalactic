@@ -73,7 +73,9 @@ const Preview = (preview) => {
         </Notice.Label>
       )}
       <Notice.Content>
-        <Text tag="h4">Look at this cool notice!</Text>
+        <Text size={300} bold tag="p" mb={2}>
+          Look at this cool notice!
+        </Text>
         {msg}
         {actions && (
           <Notice.Actions>
