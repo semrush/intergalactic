@@ -36,7 +36,7 @@ export default () => {
         color={resolveColor('wall')}
         style={{ strokeWidth: 3, strokeDasharray: 5 }}
       >
-        <Line.Dots visible />
+        <Line.Dots display />
       </Line>
     </XYPlot>
   );

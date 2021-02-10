@@ -52,7 +52,6 @@ function getNullData(data, defined, name) {
 
 class LineRoot extends Component {
   static displayName = 'Line';
-  // TODO: добавить гетторы для акцессоров x/y
   static defaultProps = ({ x, y, $rootProps }) => {
     const [xScale, yScale] = $rootProps.scale;
     return {
@@ -95,8 +94,7 @@ class LineRoot extends Component {
 }
 
 function Dots(props) {
-  const { Element: SDot, styles, data, d3, x, y, eventEmitter, hide } = props;
-  console.log(123, 'Dots', props);
+  const { Element: SDot, styles, data, d3, x, y, eventEmitter, display, hide } = props;
   const bisect = bisector((d) => d[x]).center;
   const [activeIndex, setActiveIndex] = useState(props.activeIndex || null);
 
@@ -119,10 +117,11 @@ function Dots(props) {
     const isNext = d3.defined()(data[i + 1] || {});
     const active = i === activeIndex;
     if (!d3.defined()(d)) return acc;
-    if (!hide || i === activeIndex || (!isPrev && !isNext)) {
+    if (display || i === activeIndex || (!isPrev && !isNext)) {
       acc.push(
         styled(styles)(
           <SDot
+            __excludeProps={['data', 'scale', 'value', 'display']}
             key={i}
             value={d}
             index={i}

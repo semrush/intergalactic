@@ -48,17 +48,7 @@ import { Tooltip } from '@semcore/d3-chart';
 <Tooltip>
   <Tooltip.Title />
   <Tooltip.Dot />
-</Tooltip>
-
-// or configuration Trigger, Popper
-
-<Tooltip>
-  <Tooltip.Trigger />
-  <Tooltip.Popper>
-    <Tooltip.Title />
-    <Tooltip.Dot />
-  </Tooltip.Popper>
-</Tooltip>
+</Tooltip>;
 ```
 
 @interface ITooltipProps
