@@ -61,7 +61,7 @@ Component for show line after hover on chart.
 import { HoverLine } from '@semcore/d3-chart';
 ```
 
-@interface IHoverLineProps
+@interface IHoverProps
 
 @## HoverRect
 
@@ -71,7 +71,7 @@ Component for show sector after hover on chart.
 import { HoverRect } from '@semcore/d3-chart';
 ```
 
-@interface IHoverRectProps
+@interface IHoverProps
 
 @## Line
 

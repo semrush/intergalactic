@@ -1,7 +1,7 @@
 import { CProps, ReturnEl } from '@semcore/core';
 import IContext from './context';
 
-export interface ILineProps {
+export interface ILineProps extends IContext {
   /** Field from data for Axis x */
   x?: string;
   /** Field from data for Axis y */
@@ -16,7 +16,7 @@ export interface ILineProps {
   hide?: boolean;
 }
 
-export interface ILineDotsProps {
+export interface ILineDotsProps extends IContext {
   /** Show all Dot */
   display?: boolean;
   /** Hide property */
@@ -25,30 +25,21 @@ export interface ILineDotsProps {
   activeIndex?: number;
 }
 
-export interface ILineDotsContext extends IContext {
+export interface ILineDotsContext {
   /** Value element of data */
   value?: any;
   /** Index element of data */
   index?: number;
-  /** Active property */
-  active?: boolean;
+}
+
+export interface ILineNullProps extends IContext {
   /** Hide property */
   hide?: boolean;
 }
 
-export interface ILineNullProps {
-  /** Hide property */
-  hide?: boolean;
-}
-
-export interface ILineNullContext extends IContext {
-  /** Hide property */
-  hide?: boolean;
-}
-
-declare const Line: (<T>(props: CProps<ILineProps & T, IContext>) => ReturnEl) & {
+declare const Line: (<T>(props: CProps<ILineProps & T>) => ReturnEl) & {
   Dots: <T>(props: CProps<ILineDotsProps & T, ILineDotsContext>) => ReturnEl;
-  Null: <T>(props: CProps<ILineNullProps & T, ILineNullContext>) => ReturnEl;
+  Null: <T>(props: CProps<ILineNullProps & T>) => ReturnEl;
 };
 
 export default Line;
