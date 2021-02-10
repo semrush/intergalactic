@@ -15,10 +15,10 @@ And then you can get the value of the media query in any part of your applicatio
 
 You can use an instance of the `MediaList` class, it has methods` matches` / `addListener` /` removeListener` and `destructor`.
 
-@manual
+@example manual
 
 @## Custom media
 
 If you want to create a custom breakpoint component you need to call the `createBreakpoints()` function and pass an array of media queries.
 
-@custom
+@example custom
