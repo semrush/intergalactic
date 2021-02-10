@@ -387,7 +387,7 @@ SCol[offset='12'] {
   }
 }
 
-@media (width <= 375px) {
+@media (width <= 414px) {
   SCol[xs] {
     flex: 1 0 0;
   }

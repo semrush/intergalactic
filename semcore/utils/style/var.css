@@ -70,7 +70,7 @@
   --keyborad-focus: 0 0 0 3px color-mod(var(--light-blue) a(30%));
   --disabled-opacity: 0.3;
 
-  --xs-screen: 375px;
+  --xs-screen: 414px;
   --sm-screen: 768px;
   --md-screen: 1184px;
 
@@ -88,6 +88,6 @@
   --font-size_8: 25px;
 }
 
-@custom-media --xs-media (width <= 375px);
-@custom-media --sm-media (width > 375px) and (width <= 768px);
+@custom-media --xs-media (width <= 414px);
+@custom-media --sm-media (width > 414px) and (width <= 768px);
 @custom-media --md-media (width > 768px) and (width <= 1184px);
