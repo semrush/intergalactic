@@ -1,11 +1,8 @@
 import { IBoxProps } from '@semcore/flex-box';
 import { CProps, ReturnEl } from '@semcore/core';
+import IContext from './context';
 
-export interface IXYPlotProps extends IBoxProps {
-  /** Data for graphic */
-  data?: any[];
-  /** Scale for svg element */
-  scale?: any[];
+export interface IXYPlotProps extends IContext, IBoxProps {
   /** Width svg element
    * @default 0*/
   width?: number;
