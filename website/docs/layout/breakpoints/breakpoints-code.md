@@ -21,4 +21,6 @@ You can use an instance of the `MediaList` class, it has methods` matches` / `ad
 
 If you want to create a custom breakpoint component you need to call the `createBreakpoints()` function and pass an array of media queries.
 
+> The 'Breakpoints.mediaList.matches()' will return the intex of the first matching media query. From left to right.
+
 @example custom
