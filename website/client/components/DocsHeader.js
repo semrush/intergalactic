@@ -10,6 +10,7 @@ import GitHubS from '@semcore/icon/lib/color/GitHub/s';
 import EditS from '@semcore/icon/lib/Edit/s';
 import styled from 'styled-components';
 import { css } from '@semcore/core';
+import Tag from '@semcore/tag';
 
 const styles = css`
   STooltip[theme] {
@@ -38,11 +39,13 @@ const Overlay = styled(Flex)`
 `;
 
 export default function(props) {
-  const { title, category, fileSource, sourcePath } = props;
+  const { title, category, fileSource, sourcePath, beta } = props;
 
   return (
     <Box tag="header" mb={6}>
-      <Title>{title}</Title>
+      <Title>
+        {title} {beta && <Tag size="l" theme="warning" use="primary" children="beta" />}
+      </Title>
       <Text tag="p" color="#898D9A" mb={3} size={300}>
         {category}
       </Text>

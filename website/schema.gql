@@ -9,6 +9,7 @@ type Meta {
   tabName: String
   disabled: Boolean
   hide: Boolean
+  beta: Boolean
 }
 
 type Tag {

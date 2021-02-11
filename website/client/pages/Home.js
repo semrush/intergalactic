@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import Helmet from 'react-helmet';
 import { Link } from 'react-router-dom';
 import Tooltip from '@semcore/tooltip';
+import Tag from '@semcore/tag';
 import AllComponents from '../components/AllComponents';
 import Error from '../components/Error';
 import LoadingPage from '../components/LoadingPage';
@@ -278,6 +279,9 @@ const LinkDisabled = styled.div`
 
 const TableOverlay = styled.div`
   display: flex;
+  & .component {
+    margin-right: 38px;
+  }
   h3 {
     margin: 0;
     margin-bottom: 8px;
@@ -285,9 +289,13 @@ const TableOverlay = styled.div`
     font-family: FactorA-Bold, sans-serif;
   }
   a {
-    margin: 0 38px 8px 0;
+    margin-bottom: 8px;
     white-space: nowrap;
   }
+`;
+
+const TabLineItem = styled(TabLine.Item)`
+  font-size: 24px;
 `;
 
 const NAVIGATE_QUERY = gql`
@@ -300,6 +308,7 @@ const NAVIGATE_QUERY = gql`
         title
         metadata {
           disabled
+          beta
         }
       }
       metadata {
@@ -395,29 +404,27 @@ const getComponents = (titles, data) => {
   const items = data.navigation.filter((nav) => !nav.metadata.hide && titles.includes(nav.title));
   const getList = (child) => {
     if (child.elem.metadata.disabled) {
-      return <LinkDisabled key={child.elem.title}>{child.elem.title}</LinkDisabled>;
-    } else {
-      const pic = getTooltip(child.elem.title);
-      if (pic) {
-        return (
-          <Tooltip
-            styles={styles}
-            placement="left"
-            w={'fit-content'}
-            key={child.elem.title}
-            title={pic}
-          >
-            <LinkStyled to={`/${child.elem.route}/`}>{child.elem.title}</LinkStyled>
-          </Tooltip>
-        );
-      } else {
-        return (
-          <LinkStyled to={`/${child.elem.route}/`} key={child.elem.title}>
-            {child.elem.title}
-          </LinkStyled>
-        );
-      }
+      return (
+        <LinkDisabled key={child.elem.title} className="component">
+          {child.elem.title}
+        </LinkDisabled>
+      );
     }
+    const pic = getTooltip(child.elem.title);
+    return (
+      <Tooltip styles={styles} placement="left" w={'fit-content'} key={child.elem.title}>
+        <Tooltip.Trigger className="component">
+          <LinkStyled to={`/${child.elem.route}/`}>{child.elem.title}</LinkStyled>
+          {child.elem.metadata.beta && (
+            <>
+              {' '}
+              <Tag size="s" theme="warning" use="primary" children="beta" />
+            </>
+          )}
+        </Tooltip.Trigger>
+        {pic && <Tooltip.Popper children={pic} />}
+      </Tooltip>
+    );
   };
 
   const listItems = items
@@ -487,21 +494,11 @@ function Home() {
                   value={value}
                   size="xl"
                 >
-                  <TabLine.Item style={{ fontSize: '24px' }} value={'components'}>
-                    Components
-                  </TabLine.Item>
-                  <TabLine.Item style={{ fontSize: '24px' }} value={'charts'}>
-                    Charts & Table
-                  </TabLine.Item>
-                  <TabLine.Item style={{ fontSize: '24px' }} value={'ux'}>
-                    UX Patterns
-                  </TabLine.Item>
-                  <TabLine.Item style={{ fontSize: '24px' }} value={'filters'}>
-                    Filters
-                  </TabLine.Item>
-                  <TabLine.Item style={{ fontSize: '24px' }} value={'documentation'}>
-                    Developer Docs
-                  </TabLine.Item>
+                  <TabLineItem value={'components'}>Components</TabLineItem>
+                  <TabLineItem value={'charts'}>Charts & Table</TabLineItem>
+                  <TabLineItem value={'ux'}>UX Patterns</TabLineItem>
+                  <TabLineItem value={'filters'}>Filters</TabLineItem>
+                  <TabLineItem value={'documentation'}>Developer Docs</TabLineItem>
                 </TabLine>
                 <Border>{renderSwitch(value, data)}</Border>
               </Tab>

@@ -110,16 +110,6 @@ import { HorizontalBar } from '@semcore/d3-chart';
 
 @## StackBar
 
-Horizontal chart Bar.
-
-```js
-import { HorizontalBar } from '@semcore/d3-chart';
-```
-
-@interface IHorizontalBarProps
-
-@## StackBar
-
 It have children components `Bar, HorizontalBar`.
 
 ```js
