@@ -73,3 +73,9 @@ title: Bar chart
 Графики можно совмещать друг с другом. Например, для отображения трендовой линии на столбчатом графике.
 
 @example bar-trend
+
+@## Background
+
+Графикам можно задавать задний фон при необходимости. Для этого используются компоненты `<Bar.Background/>` и `<HorizontalBar.Background/>`
+
+@example bar-background

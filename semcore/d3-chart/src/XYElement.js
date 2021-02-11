@@ -9,7 +9,7 @@ import hoistNonReactStatics from 'hoist-non-react-statics';
 
 function createElementRender() {
   const Element = React.forwardRef(function(
-    { render: Tag, childrenPosition = 'nearby', x: xS, y: yS, ...source },
+    { render: Tag, childrenPosition = 'below', x: xS, y: yS, ...source },
     ref,
   ) {
     const {
@@ -51,6 +51,9 @@ function createElementRender() {
       throw new Error('В Element нужно передать render');
     }
     return [
+      <React.Fragment key="child-above">
+        {childrenPosition === 'above' ? children : null}
+      </React.Fragment>,
       <Tag
         {...propsForElement(
           {
@@ -61,8 +64,8 @@ function createElementRender() {
         )}
         key="element"
       />,
-      <React.Fragment key="child">
-        {childrenPosition === 'nearby' ? children : null}
+      <React.Fragment key="child-below">
+        {childrenPosition === 'below' ? children : null}
       </React.Fragment>,
     ];
   });
