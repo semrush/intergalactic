@@ -59,7 +59,7 @@ export default () => {
         }}
       </Tooltip>
       <Line x="time" y="line">
-        <Line.Dots visible />
+        <Line.Dots display />
       </Line>
     </XYPlot>
   );

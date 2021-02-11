@@ -16,8 +16,8 @@
     "@semcore/popper": "^4.7",
     "@semcore/utils": "^3.15",
     "d3-array": "^2.8",
-    "d3-scale": "^3.2",
-    "d3-shape": "^2.0"
+    "d3-shape": "^2.0",
+    "resize-observer-polyfill": "^1.5"
   },
   "peerDependencies": {
     "@semcore/core": "^1.10",

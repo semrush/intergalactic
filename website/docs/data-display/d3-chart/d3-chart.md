@@ -99,5 +99,19 @@ tabName: Concept
 
 @example axis-grid
 
+@## Aдаптивный график
+
+Для нормального отображения `svg` графиков на адаптивных макетах нужно динамически расчитывать ширину и высоту блока,
+поэтому мы создали компонент `ResponsiveContainer`, который так же поддерживает все свойства [Box](/layout/box-system/box-api), c помощью которых можно гибко настраивать размеры блока.
+
+> ResponsiveContainer поддерживает свойство `aspect` - это отношение размеров между шириной и высотой блока.
+
+```jsx
+<ResponsiveContainer aspect={1}> // width = height ...</ResponsiveContainer>
+```
+
+@example responsive
+
 @page line
 @page bar
+@page d3-chart-api
