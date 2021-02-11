@@ -99,7 +99,7 @@ export default function(props) {
             </Tooltip.Trigger>
             <Tooltip.Popper>
               <Text tag="p" mb={1}>
-                If you saw an error, typo, do not pass by 🙏
+                If you find an error, typo, do not pass by 🙏
               </Text>
               <Text tag="p" mb={1}>
                 Fork the project and send us changes.
