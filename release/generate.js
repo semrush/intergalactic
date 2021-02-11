@@ -1,3 +1,7 @@
+// - Удалить все папки
+// - Удалить node_modules
+// - Очистить dependencies
+
 const { execSync } = require('child_process');
 const path = require('path');
 const fse = require('fs-extra');
