@@ -13,7 +13,7 @@ And then you can get the value of the media query in any part of your applicatio
 
 @## Manual control
 
-You can use an instance of the `MediaList` class, it has methods` matches` / `addListener` /` removeListener` and `destructor`.
+You can use an instance of the `MediaList` class, it has methods `matches` / `addListener` / `removeListener` and `destructor`.
 
 @example manual
 
