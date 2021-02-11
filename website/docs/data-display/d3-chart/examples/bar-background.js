@@ -1,13 +1,5 @@
 import React from 'react';
-import {
-  XYPlot,
-  HorizontalBar,
-  YAxis,
-  XAxis,
-  HoverRect,
-  Tooltip,
-  BarBackground,
-} from '@semcore/d3-chart';
+import { XYPlot, HorizontalBar, YAxis, XAxis, HoverRect, Tooltip } from '@semcore/d3-chart';
 import { scaleLinear, scaleBand } from 'd3-scale';
 import { Flex } from '@semcore/flex-box';
 import { Text } from '@semcore/typography';
@@ -47,8 +39,9 @@ export default () => {
           };
         }}
       </Tooltip>
-      <BarBackground y="category" />
-      <HorizontalBar x="bar" y="category" />
+      <HorizontalBar x="bar" y="category">
+        <HorizontalBar.Background />
+      </HorizontalBar>
     </XYPlot>
   );
 };
