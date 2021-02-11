@@ -54,19 +54,19 @@ In our interface, we use headings of 6 sizes and 2 styles: `Medium (500)` and `B
 
 **The first 4 heading sizes are usually used in hero blocks, large ad screens and banners, landing pages, report headers, and tools**.
 
-|     | Appearance           | Styles                                                     | Variables             |
-| --- | -------------------- | ---------------------------------------------------------- | --------------------- |
-| h1  | ![h1](static/h1.png) | `font-size: 48px; line-height: 1.17; font-weight: bold;`   | `--fs800`, `--lh-800` |
-| h2  | ![h2](static/h2.png) | `font-size: 36px; line-height: 1.17; font-weight: bold;`   | `--fs700`, `--lh-700` |
-| h3  | ![h3](static/h3.png) | `font-size: 33px; line-height: 1.2; font-weight: medium;`  | `--fs600`, `--lh-600` |
-| h4  | ![h4](static/h4.png) | `font-size: 25px; line-height: 1.12; font-weight: medium;` | `--fs500`, `--lh-500` |
+|     | Appearance           | Styles                                                     | Variables              |
+| --- | -------------------- | ---------------------------------------------------------- | ---------------------- |
+| h1  | ![h1](static/h1.png) | `font-size: 48px; line-height: 1.17; font-weight: bold;`   | `--fs-800`, `--lh-800` |
+| h2  | ![h2](static/h2.png) | `font-size: 36px; line-height: 1.17; font-weight: bold;`   | `--fs-700`, `--lh-700` |
+| h3  | ![h3](static/h3.png) | `font-size: 33px; line-height: 1.2; font-weight: medium;`  | `--fs-600`, `--lh-600` |
+| h4  | ![h4](static/h4.png) | `font-size: 25px; line-height: 1.12; font-weight: medium;` | `--fs-500`, `--lh-500` |
 
 **The remaining headings are used for the content part of reports and landing pages**. _For example, in widgets._
 
-|     | Appearance           | Styles                                                     | Variables             |
-| --- | -------------------- | ---------------------------------------------------------- | --------------------- |
-| h5  | ![h5](static/h5.png) | `font-size: 19px; line-height: 1.16; font-weight: medium;` | `--fs400`, `--lh-400` |
-| h6  | ![h6](static/h6.png) | `font-size: 16px; line-height: 1.5; font-weight: bold;`    | `--fs300`, `--lh-300` |
+|     | Appearance           | Styles                                                     | Variables              |
+| --- | -------------------- | ---------------------------------------------------------- | ---------------------- |
+| h5  | ![h5](static/h5.png) | `font-size: 19px; line-height: 1.16; font-weight: medium;` | `--fs-400`, `--lh-400` |
+| h6  | ![h6](static/h6.png) | `font-size: 16px; line-height: 1.5; font-weight: bold;`    | `--fs-300`, `--lh-300` |
 
 A heading can contain additional information, such as a counter of results found, and so on. They can be found in table headings. In these cases, the additional information is presented by secondary text of `$gray60` color and `Light (300)` face.
 
@@ -78,14 +78,14 @@ To improve readability on different screens, change the size of the headings, de
 
 > Change only font styles, not the markup.
 
-| 0px – 768px            | 768px – ∞              |
-| ---------------------- | ---------------------- |
-| H1 (36/42) — `--fs700` | H1 (48/56) — `--fs800` |
-| H2 (33/38) — `--fs600` | H2 (36/42) — `--fs700` |
-| H3 (25/28) — `--fs500` | H3 (33/38) — `--fs600` |
-| H4 (19/22) — `--fs400` | H4 (25/28) — `--fs500` |
-| H5 (16/24) — `--fs300` | H5 (19/22) — `--fs400` |
-| H6 (14/20) — `--fs200` | H6 (16/24) — `--fs300` |
+| 0px – 768px             | 768px – ∞               |
+| ----------------------- | ----------------------- |
+| H1 (36/42) — `--fs-700` | H1 (48/56) — `--fs-800` |
+| H2 (33/38) — `--fs-600` | H2 (36/42) — `--fs-700` |
+| H3 (25/28) — `--fs-500` | H3 (33/38) — `--fs-600` |
+| H4 (19/22) — `--fs-400` | H4 (25/28) — `--fs-500` |
+| H5 (16/24) — `--fs-300` | H5 (19/22) — `--fs-400` |
+| H6 (14/20) — `--fs-200` | H6 (16/24) — `--fs-300` |
 
 @## Basic text sizes and paragraph margins
 
