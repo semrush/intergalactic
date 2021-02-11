@@ -4,8 +4,6 @@ fileSource: grid
 tabName: Guide
 ---
 
-> ⚠️ The component has a major version, changes in the [migration guide](/internal/migration-guide).
-
 @## Description
 
 Component for building a 12-column grid.

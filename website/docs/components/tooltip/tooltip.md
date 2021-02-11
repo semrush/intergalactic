@@ -6,8 +6,6 @@ tabName: Guide
 
 @import playground
 
-> ⚠️ The component has a major version, changes are in the changelog.
-
 @## Description
 
 **Tooltip** is a modeless popover designed to display all sorts of tips in tools.

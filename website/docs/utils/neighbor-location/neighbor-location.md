@@ -4,8 +4,6 @@ fileSource: neighbor-location
 tabName: Guide
 ---
 
-> ⚠️ The component has a major version, changes in the [migration guide](/internal/migration-guide).
-
 @## Description
 
 **NeighborLocation** is a common component for grouping components. It indicates where the component is in relation to its neighbors.

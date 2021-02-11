@@ -6,8 +6,6 @@ tabName: Guide
 
 @import playground
 
-> ⚠️ This component has a major version, changes in the [migration guide](/internal/migration-guide).
-
 @## Description
 
 **ProgressBar** is a component used to display a long process, usually more than 5 seconds. _For example, collecting keywords or updating mentions._

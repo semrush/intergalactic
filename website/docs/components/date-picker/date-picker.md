@@ -6,8 +6,6 @@ tabName: Guide
 
 @import playground
 
-> ⚠️ The component has a major version, changes are in the [migration guide](/internal/migration-guide).
-
 @## Description
 
 **Date picker** iis a component for selection/input of the date and in some cases the time.

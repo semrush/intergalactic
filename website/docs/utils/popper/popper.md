@@ -4,8 +4,6 @@ fileSource: popper
 tabName: Guide
 ---
 
-> ⚠️ The component has a major version, changes in the changelog.
-
 The component is our `React`-wrapper over the popular [popper.js](https://popper.js.org/) library.
 
 We use it in all pop-ups: [dropdown](/components/dropdown/), [tooltip](components/tooltip/), [select](/components/select), etc.

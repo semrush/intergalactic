@@ -4,8 +4,6 @@ fileSource: flex-box
 tabName: Guide
 ---
 
-> ⚠️ The component has a major version, changes in the [migration guide](/internal/migration-guide).
-
 Layout-group components are designed to facilitate arrangement of components in their places.
 
 @## Description

@@ -35,6 +35,7 @@ class HorizontalBarRoot extends Component {
       return styled(styles)(
         <SBar
           key={i}
+          __excludeProps={['data', 'scale', 'value']}
           value={d}
           index={i}
           render="rect"

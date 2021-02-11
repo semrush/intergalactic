@@ -6,8 +6,6 @@ tabName: Guide
 
 @import playground
 
-> ⚠️ The component has a major version, changes are in the [migration guide](/internal/migration-guide).
-
 @## Description
 
 **TabPanel** is a component for navigating inside a report and grouping heterogeneous content. It is always placed under the [ProductHead](/components/product-head) of the report.

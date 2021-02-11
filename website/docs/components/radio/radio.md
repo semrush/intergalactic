@@ -6,8 +6,6 @@ tabName: Guide
 
 @import playground
 
-> ⚠️ This component has a major version, changes in the [migration guide](/internal/migration-guide).
-
 @## Description
 
 **Radio button** is a control for selecting one of several values.

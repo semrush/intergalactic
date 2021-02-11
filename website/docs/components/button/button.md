@@ -6,8 +6,6 @@ tabName: Guide
 
 @import playground
 
-> ⚠️ This component has a major version, changes are described in the [migration guide](/internal/migration-guide).
-
 @## Description
 
 **Button** is a control element that calls you to perform an action on the page. Compared to [links](/components/link/), this is an accent control or CTA required for performing the main actions on the page.
