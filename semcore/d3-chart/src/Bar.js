@@ -14,24 +14,16 @@ class BarRoot extends Component {
     offset: [0, 0],
   };
 
-  static getFilledArray = (axis, length) => {
-    return axis === 'category'
-      ? Array(length)
-          .fill(0)
-          .map((el, index) => index)
-      : null;
-  };
-
   getBackgroundProps(props, index) {
-    console.log(index, '>>>>');
-    const { x, y } = this.asProps;
-    return { x, y, index };
+    const { x, data } = this.asProps;
+    return {
+      value: data[index][x],
+    };
   }
 
   render() {
     const SBar = this.Element;
     const { styles, color, x, y, y0, data, scale, hide, offset } = this.asProps;
-    console.log(x, y, y0, data, 'x, y, y0, data, ');
 
     const [xScale, yScale] = scale;
 
@@ -58,41 +50,20 @@ class BarRoot extends Component {
 }
 
 function Background(props) {
-  const { Element: SBackground, styles, scale, x, y, data, index } = props;
-  console.log(x, y, data, index, ' x, y, data index');
+  const { Element: SBackground, styles, scale, value } = props;
 
-  const xIndex = BarRoot.getFilledArray(x, data.length);
-  const yIndex = BarRoot.getFilledArray(y, data.length);
   const [xScale, yScale] = scale;
-  const xRange = xScale.range();
   const yRange = yScale.range();
 
   return styled(styles)(
-    <>
-      {xIndex !== null && xIndex[0] !== null ? (
-        <SBackground
-          key={index}
-          render="rect"
-          index={index}
-          width={xScale.bandwidth()}
-          height={yRange[0] - yRange[1]}
-          x={xScale(data[index][x])}
-          y={yRange[1]}
-        />
-      ) : null}
-      {yIndex !== null && yIndex[0] !== null ? (
-        <SBackground
-          key={index}
-          render="rect"
-          childrenPosition="above"
-          index={index}
-          width={xRange[1] - xRange[0]}
-          height={yScale.bandwidth()}
-          x={xRange[0]}
-          y={yScale(data[index][y])}
-        />
-      ) : null}
-    </>,
+    <SBackground
+      render="rect"
+      childrenPosition="above"
+      width={xScale.bandwidth()}
+      height={yRange[0] - yRange[1]}
+      x={xScale(value)}
+      y={yRange[1]}
+    />,
   );
 }
 

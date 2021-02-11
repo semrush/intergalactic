@@ -16,19 +16,15 @@ class HorizontalBarRoot extends Component {
   };
 
   getBackgroundProps(props, index) {
-    const { x, y, styles } = this.asProps;
+    const { data, y } = this.asProps;
     return {
-      x,
-      y,
-      index,
-      styles,
+      value: data[index][y],
     };
   }
 
   render() {
     const SBar = this.Element;
     const { styles, color, x, x0, y, data, scale, offset } = this.asProps;
-    console.log(x, y, 'xy');
     const [xScale, yScale] = scale;
 
     return data.map((d, i) => {
@@ -51,4 +47,21 @@ class HorizontalBarRoot extends Component {
   }
 }
 
-export default createXYElement(HorizontalBarRoot, { Background: Bar.Background });
+function Background(props) {
+  const { Element: SBackground, styles, scale, value } = props;
+  const [xScale, yScale] = scale;
+  const xRange = xScale.range();
+
+  return styled(styles)(
+    <SBackground
+      render="rect"
+      childrenPosition="above"
+      width={xRange[1] - xRange[0]}
+      height={yScale.bandwidth()}
+      x={xRange[0]}
+      y={yScale(value)}
+    />,
+  );
+}
+
+export default createXYElement(HorizontalBarRoot, { Background });
