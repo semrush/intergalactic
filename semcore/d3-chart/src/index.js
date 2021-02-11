@@ -11,6 +11,8 @@ export { default as StackBar } from './StackBar';
 
 export { default as Tooltip } from './Tooltip';
 
+export { default as ResponsiveContainer } from './ResponsiveContainer';
+
 export { HoverLine, HoverRect } from './Hover';
 
 export { minMax } from './utils';

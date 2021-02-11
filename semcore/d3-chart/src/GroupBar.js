@@ -59,7 +59,7 @@ class GroupBarRoot extends Component {
   render() {
     const Element = this.Element;
     this.scaleGroup = this.getScaleGroup();
-    return <Element render="g" scaleGroup={this.scaleGroup} />;
+    return <Element render="g" childrenPosition="inside" scaleGroup={this.scaleGroup} />;
   }
 }
 

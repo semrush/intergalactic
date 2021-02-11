@@ -12,45 +12,24 @@ class XYPlotRoot extends Component {
 
   static style = style;
 
+  constructor(props) {
+    super(props);
+    this.eventEmitter = props.eventEmitter || new EventEmitter();
+  }
+
   static defaultProps = () => ({
-    eventEmitter: new EventEmitter(),
     data: [],
     scale: [],
+    width: 0,
+    height: 0,
   });
 
   rootRef = React.createRef();
 
-  // distributeEvents = ['onMouseEnter', 'onMouseMove', 'onMouseLeave', 'onClick', 'onDoubleClick'];
-
-  // renderChildrenByOrder(children) {
-  //   return React.Children.toArray(children).sort((a, b) => {
-  //     if (React.isValidElement(a) && React.isValidElement(b)) {
-  //       return (a.props.order || 0) - (b.props.order || 0);
-  //     }
-  //     return 0;
-  //   });
-  // }
-
-  // emitEvent = trottle((name, e) => {
-  //   this.asProps.eventEmitter.emit(`${name}Root`, e, this.rootRef.current);
-  // });
-  //
-  // bindHandlerDistributeEvent = (name) => (e) => {
-  //   e.persist();
-  //   this.emitEvent(name, e);
-  // };
-  //
-  // addEventHandlers() {
-  //   return this.distributeEvents.reduce((events, name) => {
-  //     events[name] = this.bindHandlerDistributeEvent(name);
-  //     return events;
-  //   }, {});
-  // }
-
   emitNearestXY = trottle((e) => {
     const [xScale, yScale] = this.asProps.scale;
     const [x, y] = eventToPoint(e, this.rootRef.current);
-    this.asProps.eventEmitter.emit(`onNearestXY`, [invert(xScale, x), invert(yScale, y)]);
+    this.eventEmitter.emit(`onNearestXY`, [invert(xScale, x), invert(yScale, y)]);
   });
 
   handlerMouseMove = (e) => {
@@ -59,16 +38,16 @@ class XYPlotRoot extends Component {
   };
 
   handlerMouseLeave = trottle(() => {
-    this.asProps.eventEmitter.emit(`onNearestXY`, []);
+    this.eventEmitter.emit(`onNearestXY`, []);
   });
 
   setContext() {
-    const { scale, data, eventEmitter } = this.asProps;
+    const { scale, data } = this.asProps;
     return {
       $rootProps: {
         data: data,
         scale: scale,
-        eventEmitter: eventEmitter,
+        eventEmitter: this.eventEmitter,
         rootRef: this.rootRef,
       },
     };
@@ -76,7 +55,9 @@ class XYPlotRoot extends Component {
 
   render() {
     const SXYPlot = this.Root;
-    const { styles, scale } = this.asProps;
+    const { styles, width, height } = this.asProps;
+
+    if (!width || !height) return null;
 
     return styled(styles)(
       <SXYPlot

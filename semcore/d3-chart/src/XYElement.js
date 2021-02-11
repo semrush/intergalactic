@@ -97,10 +97,13 @@ function elementEnhancement() {
 }
 
 function WrapComponent(Element) {
-  const WrapperComponent = createBaseComponent(function(props, ref) {
+  function ElementWithContext(props, ref) {
     const { $rootProps } = useContext(XYPlot[CONTEXT_COMPONENT]);
     return <Element ref={ref} $rootProps={$rootProps} {...props} />;
-  });
+  }
+  ElementWithContext.displayName = Element.displayName;
+
+  const WrapperComponent = createBaseComponent(ElementWithContext);
   WrapperComponent.displayName = Element.displayName;
 
   return hoistNonReactStatics(WrapperComponent, Element);

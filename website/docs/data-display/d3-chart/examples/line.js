@@ -25,7 +25,7 @@ export default () => {
         <XAxis.Ticks />
       </XAxis>
       <Line x="x" y="y">
-        <Line.Dots visible />
+        <Line.Dots display />
       </Line>
     </XYPlot>
   );
