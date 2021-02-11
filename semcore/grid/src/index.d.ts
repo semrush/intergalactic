@@ -1,4 +1,3 @@
-import React from 'react';
 import { PropGetterFn, CProps, ReturnEl } from '@semcore/core';
 import { IBoxProps, IFlexProps } from '@semcore/flex-box';
 
