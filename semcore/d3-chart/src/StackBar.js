@@ -56,6 +56,26 @@ class StackBarRoot extends Component {
     };
   }
 
+  getBackgroundProps({ y }, index) {
+    const { x } = this.asProps;
+    // const series = this.series.find((s) => s.key === x);
+    console.log(this.series, x, 'this.series x');
+    console.log(this.series.map((s) => console.log(s.key)), 'map');
+
+    return {
+      data: this.series.map((s) => ({
+        ...s.data,
+        [x]: s[1],
+        $x0: s[0],
+        y: s.key,
+      })),
+      x0: '$x0',
+
+      x,
+      index,
+    };
+  }
+
   getHorizontalBarProps({ x }) {
     const { y } = this.asProps;
 
@@ -82,6 +102,7 @@ class StackBarRoot extends Component {
 const StackBar = createXYElement(StackBarRoot, {
   Bar,
   HorizontalBar,
+  Background: Bar.Background,
 });
 
 export default StackBar;

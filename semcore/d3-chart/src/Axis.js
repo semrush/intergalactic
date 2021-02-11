@@ -1,5 +1,5 @@
 import React from 'react';
-import { Component, styled } from '@semcore/core';
+import { Component, styled, css } from '@semcore/core';
 import createXYElement from './XYElement';
 import { scaleOfBandwidth } from './utils';
 
@@ -140,6 +140,58 @@ const MAP_POSITION_GRID = {
   },
 };
 
+const MAP_POSITION_TITlE = {
+  top: ([xScale, yScale]) => {
+    const xRange = xScale.range();
+    const yRange = yScale.range();
+    return {
+      x: xRange[1] / 2,
+      y: yRange[1] - 20,
+    };
+  },
+  bottom: ([xScale, yScale]) => {
+    const xRange = xScale.range();
+    const yRange = yScale.range();
+    return {
+      x: xRange[1] / 2,
+      y: yRange[0] + 40,
+    };
+  },
+  right: ([xScale, yScale], value) => {
+    const xRange = xScale.range();
+    const yRange = yScale.range();
+    return {
+      // x: xRange[1] / 2 ,
+      // y: scaleOfBandwidth(yScale, value),
+      // rotate(90deg [xRange[1]  (yRange[1] * 4)] )
+      x: xRange[1] / 2,
+      y: -yRange[1] * 2.5,
+    };
+  },
+  left: ([xScale, yScale]) => {
+    const xRange = xScale.range();
+    const yRange = yScale.range();
+    return {
+      // x: xRange[0] * 6 ,
+      // y: - yRange[1] * 2 - 12,
+      x: xRange[0] - 60,
+      y: yRange[1] * 4,
+    };
+  },
+  [CUSTOM_0]: ([xScale, yScale], value, pos) => {
+    return {
+      x: scaleOfBandwidth(xScale, value),
+      y: scaleOfBandwidth(yScale, pos),
+    };
+  },
+  [CUSTOM_1]: ([xScale, yScale], value, pos) => {
+    return {
+      x: scaleOfBandwidth(xScale, pos),
+      y: scaleOfBandwidth(yScale, value),
+    };
+  },
+};
+
 function renderValue(value) {
   if (value instanceof Date) {
     return value.toLocaleDateString();
@@ -162,6 +214,16 @@ class AxisRoot extends Component {
       ticks,
       indexScale,
       position,
+    };
+  }
+
+  getTitleProps() {
+    const { ticks, position, indexScale, name } = this.asProps;
+    return {
+      ticks,
+      indexScale,
+      position,
+      name,
     };
   }
 
@@ -219,9 +281,43 @@ function Grid(props) {
   });
 }
 
+function Title(props) {
+  const { Element: STitle, styles, scale, position, indexScale, name } = props;
+
+  const pos =
+    MAP_POSITION_TITlE[position] || MAP_POSITION_TITlE[MAP_INDEX_SCALE_SYMBOL[indexScale]];
+  const positionClass = MAP_POSITION_TITlE[position] ? position : 'custom_' + indexScale;
+  console.log(positionClass, 'positionClass2');
+  // x: xRange[1] + 20,
+  // y: yRange[1] * 4,
+  const styles2 = css`
+    STitle[position='right'] {
+      transform: rotate(90deg) !important;
+      transform-origin: center;
+      width: 200px;
+      height: 50px;
+    }
+  `;
+
+  const renderTitle = (data) => {};
+
+  return styled(styles, styles2)(
+    <STitle
+      name={name}
+      render="text"
+      childrenPosition="below"
+      position={positionClass}
+      {...pos(scale, name, position)}
+    >
+      {renderValue(name)}
+    </STitle>,
+  );
+}
+
 const XAxis = createXYElement(AxisRoot, {
   Ticks,
   Grid,
+  Title,
 });
 XAxis.defaultProps = {
   indexScale: 0,
@@ -231,6 +327,7 @@ XAxis.defaultProps = {
 const YAxis = createXYElement(AxisRoot, {
   Ticks,
   Grid,
+  Title,
 });
 YAxis.defaultProps = {
   indexScale: 1,

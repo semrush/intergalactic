@@ -22,6 +22,34 @@ SGrid {
   stroke: var(--mercury);
 }
 
+STitle {
+  font-size: 12px;
+  fill: var(--gray60);
+  transform-origin: center;
+}
+
+STitle[position='top'] {
+  /*transform: translateY(-12px);*/
+}
+
+STitle[position='bottom'] {
+  /*transform: translateY(34px);*/
+
+  /*alignment-baseline: hanging;*/
+}
+
+STitle[position='right'] {
+  /*transform: rotate(-90deg);*/
+  /*alignment-baseline: middle;*/
+  /*transform:translate(30) rotate(45 50 50);*/
+}
+
+STitle[position='left'] {
+  /*transform: rotate(-90deg);*/
+
+  /*alignment-baseline: middle;*/
+}
+
 SGrid[hide] {
   display: none;
 }

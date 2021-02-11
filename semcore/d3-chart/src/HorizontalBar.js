@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { Component, styled } from '@semcore/core';
 import createXYElement from './XYElement';
+import { XYPlot, Bar, YAxis, XAxis } from '@semcore/d3-chart';
 
 import style from './style/bar.shadow.css';
 
@@ -14,9 +15,20 @@ class HorizontalBarRoot extends Component {
     offset: [0, 0],
   };
 
+  getBackgroundProps(props, index) {
+    const { x, y, styles } = this.asProps;
+    return {
+      x,
+      y,
+      index,
+      styles,
+    };
+  }
+
   render() {
     const SBar = this.Element;
     const { styles, color, x, x0, y, data, scale, offset } = this.asProps;
+    console.log(x, y, 'xy');
     const [xScale, yScale] = scale;
 
     return data.map((d, i) => {
@@ -26,6 +38,7 @@ class HorizontalBarRoot extends Component {
           value={d}
           index={i}
           render="rect"
+          childrenPosition="above"
           fill={color}
           width={Math.abs(xScale(d[x]) - Math.max(xScale(xScale.domain()[0]), xScale(d[x0] ?? 0)))}
           height={yScale.bandwidth()}
@@ -37,4 +50,4 @@ class HorizontalBarRoot extends Component {
   }
 }
 
-export default createXYElement(HorizontalBarRoot);
+export default createXYElement(HorizontalBarRoot, { Background: Bar.Background });
