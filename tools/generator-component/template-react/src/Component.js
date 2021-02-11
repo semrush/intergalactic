@@ -3,9 +3,7 @@ import createComponent, { Component, styled } from '@semcore/core';
 
 import style from './style/{{ dashCase name }}.shadow.css';
 
-export interface I{{ properCase name }}Props {}
-
-class {{ properCase name }} extends Component<I{{ properCase name }}Props> {
+class {{ properCase name }} extends Component {
   static displayName = '{{ properCase name }}';
 
   static style = style;
@@ -22,4 +20,4 @@ class {{ properCase name }} extends Component<I{{ properCase name }}Props> {
   }
 }
 
-export default createComponent<I{{ properCase name }}Props>({{ properCase name }});
+export default createComponent({{ properCase name }});

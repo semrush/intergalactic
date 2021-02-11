@@ -31,7 +31,7 @@ const Title = styled.div`
 const LinkStyled = styled(Link)`
   font-size: 18px;
   line-height: 1.25;
-  color: #3e424b;
+  color: #171a22;
   cursor: pointer;
   text-decoration: none;
   display: inline-block;

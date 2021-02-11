@@ -4,8 +4,6 @@ fileSource: select
 tabName: Guide
 ---
 
-> ⚠️ The component has a major version, changes are in the [migration guide](/internal/migration-guide).
-
 @## Description
 
 **Select** is a component for selecting one or more values from the list. Optionally, it may contain a search by values, titles, buttons, grouping and nesting.

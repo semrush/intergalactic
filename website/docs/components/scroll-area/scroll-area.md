@@ -4,8 +4,6 @@ fileSource: scroll-area
 tabName: Guide
 ---
 
-> ⚠️ The component has a major version, changes are in the [migration guide](/internal/migration-guide).
-
 @## Description
 
 **Scroll** is a component for moving through content inside a window/block vertically and/or horizontally.

@@ -6,8 +6,6 @@ tabName: Guide
 
 @import playground
 
-> ⚠️ This component has a major version, changes in the [migration guide](/internal/migration-guide).
-
 @## Description
 
 **InputTags** is the input in which the entered information is wrapped in tags. Often used together with the [Combobox](/components/auto-tips/).

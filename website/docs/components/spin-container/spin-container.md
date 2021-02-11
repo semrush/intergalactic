@@ -4,8 +4,6 @@ fileSource: spin-container
 tabName: Guide
 ---
 
-> ⚠️ The component has a major version, changes are in the [migration guide](/internal/migration-guide).
-
 @import playground
 
 @## Description

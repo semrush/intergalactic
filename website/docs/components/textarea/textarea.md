@@ -6,7 +6,7 @@ tabName: Guide
 
 @import playground
 
-> ⚠️ The component has a major version, changes are in the [migration guide](/internal/migration-guide).
+@## Description
 
 **Textarea** is an input for entering multiline text: comment, description, link list, document text, etc.
 

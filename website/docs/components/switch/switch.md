@@ -6,7 +6,7 @@ tabName: Guide
 
 @import playground
 
-> ⚠️ The component has a major version, changes are in the [migration guide](/internal/migration-guide).
+@## Description
 
 **Switch** is a control for instant switching of a certain option/state/function.
 

@@ -6,8 +6,6 @@ tabName: Guide
 
 @import playground
 
-> ⚠️ The component has a major version, changes are in the [migration guide](/internal/migration-guide).
-
 @## Description
 
 **Dot 🍊** is a component that marks updates in the interface. _For example, it shows that a new item has appeared in the button, select, tab, filter or dropdown-menu._
