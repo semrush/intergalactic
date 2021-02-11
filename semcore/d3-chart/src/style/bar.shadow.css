@@ -6,3 +6,7 @@ SBar {
 SBar[hide] {
   display: none;
 }
+
+SBackground {
+  fill: color-mod(var(--mystic));
+}

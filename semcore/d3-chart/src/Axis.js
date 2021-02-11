@@ -13,6 +13,13 @@ const MAP_INDEX_SCALE_SYMBOL = {
   1: CUSTOM_1,
 };
 
+const MAP_POSITION_REVERT = {
+  top: 'bottom',
+  right: 'left',
+  bottom: 'top',
+  left: 'right',
+};
+
 const MAP_POSITION_AXIS = {
   top: ([xScale, yScale]) => {
     const xRange = xScale.range();
@@ -140,6 +147,39 @@ const MAP_POSITION_GRID = {
   },
 };
 
+const MAP_POSITION_TITlE = {
+  top: ([xScale, yScale]) => {
+    const xRange = xScale.range();
+    const yRange = yScale.range();
+    return {
+      x: xRange[1] / 2,
+      y: yRange[1],
+    };
+  },
+  bottom: ([xScale, yScale]) => {
+    const xRange = xScale.range();
+    const yRange = yScale.range();
+    return {
+      x: xRange[1] / 2,
+      y: yRange[0],
+    };
+  },
+  right: ([xScale, yScale]) => {
+    const xRange = xScale.range();
+    return {
+      x: xRange[1],
+      y: (yScale.range()[0] + yScale.range()[1]) / 2,
+    };
+  },
+  left: ([xScale, yScale]) => {
+    const xRange = xScale.range();
+    return {
+      x: xRange[0],
+      y: (yScale.range()[0] + yScale.range()[1]) / 2,
+    };
+  },
+};
+
 function renderValue(value) {
   if (value instanceof Date) {
     return value.toLocaleDateString();
@@ -162,6 +202,16 @@ class AxisRoot extends Component {
       ticks,
       indexScale,
       position,
+    };
+  }
+
+  getTitleProps() {
+    const { ticks, position, indexScale, name } = this.asProps;
+    return {
+      ticks,
+      indexScale,
+      position: MAP_POSITION_REVERT[position],
+      name,
     };
   }
 
@@ -219,9 +269,30 @@ function Grid(props) {
   });
 }
 
+function Title(props) {
+  const { Element: STitle, styles, scale, position, indexScale, name } = props;
+
+  const pos =
+    MAP_POSITION_TITlE[position] || MAP_POSITION_TITlE[MAP_INDEX_SCALE_SYMBOL[indexScale]];
+  const positionClass = MAP_POSITION_TITlE[position] ? position : 'custom_' + indexScale;
+
+  return styled(styles)(
+    <STitle
+      name={name}
+      render="text"
+      childrenPosition="inside"
+      position={positionClass}
+      {...pos(scale, name, position)}
+    >
+      {renderValue(name)}
+    </STitle>,
+  );
+}
+
 const XAxis = createXYElement(AxisRoot, {
   Ticks,
   Grid,
+  Title,
 });
 XAxis.defaultProps = {
   indexScale: 0,
@@ -231,6 +302,7 @@ XAxis.defaultProps = {
 const YAxis = createXYElement(AxisRoot, {
   Ticks,
   Grid,
+  Title,
 });
 YAxis.defaultProps = {
   indexScale: 1,

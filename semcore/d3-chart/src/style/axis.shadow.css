@@ -22,6 +22,36 @@ SGrid {
   stroke: var(--mercury);
 }
 
+STitle {
+  font-size: 12px;
+  fill: var(--gray60);
+  transform-origin: center;
+}
+
+STitle[position='top'] {
+  text-anchor: middle;
+  transform: translateY(-16px);
+}
+
+STitle[position='bottom'] {
+  text-anchor: middle;
+  alignment-baseline: hanging;
+  transform: translateY(16px);
+}
+
+STitle[position='right'] {
+  transform: rotate(-90deg);
+  transform-box: fill-box;
+  alignment-baseline: middle;
+}
+
+STitle[position='left'] {
+  transform: rotate(-90deg);
+  text-anchor: end;
+  transform-box: fill-box;
+  alignment-baseline: middle;
+}
+
 SGrid[hide] {
   display: none;
 }
