@@ -56,16 +56,27 @@ class GroupBarRoot extends Component {
     };
   }
 
+  getBackgroundProps(props, index) {
+    const { x, y, styles } = this.asProps;
+    return {
+      x,
+      y,
+      index,
+      styles,
+    };
+  }
+
   render() {
     const Element = this.Element;
     this.scaleGroup = this.getScaleGroup();
-    return <Element render="g" scaleGroup={this.scaleGroup} />;
+    return <Element render="g" childrenPosition="above" scaleGroup={this.scaleGroup} />;
   }
 }
 
 const GroupBar = createXYElement(GroupBarRoot, {
   Bar,
   HorizontalBar,
+  Background: Bar.Background,
 });
 
 export default GroupBar;
