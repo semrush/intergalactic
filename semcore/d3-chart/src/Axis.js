@@ -164,37 +164,18 @@ const MAP_POSITION_TITlE = {
       y: yRange[0],
     };
   },
-  right: ([xScale, yScale], value) => {
+  right: ([xScale, yScale]) => {
     const xRange = xScale.range();
-    const yRange = yScale.range();
     return {
-      // x: xRange[1] / 2 ,
-      // y: scaleOfBandwidth(yScale, value),
-      // rotate(90deg [xRange[1]  (yRange[1] * 4)] )
       x: xRange[1],
-      y: yRange[0] / 2,
+      y: (yScale.range()[0] + yScale.range()[1]) / 2,
     };
   },
   left: ([xScale, yScale]) => {
     const xRange = xScale.range();
-    const yRange = yScale.range();
     return {
-      // x: xRange[0] * 6 ,
-      // y: - yRange[1] * 2 - 12,
       x: xRange[0],
-      y: yRange[0] / 2,
-    };
-  },
-  [CUSTOM_0]: ([xScale, yScale], value, pos) => {
-    return {
-      x: scaleOfBandwidth(xScale, value),
-      y: scaleOfBandwidth(yScale, pos),
-    };
-  },
-  [CUSTOM_1]: ([xScale, yScale], value, pos) => {
-    return {
-      x: scaleOfBandwidth(xScale, pos),
-      y: scaleOfBandwidth(yScale, value),
+      y: (yScale.range()[0] + yScale.range()[1]) / 2,
     };
   },
 };
@@ -294,19 +275,6 @@ function Title(props) {
   const pos =
     MAP_POSITION_TITlE[position] || MAP_POSITION_TITlE[MAP_INDEX_SCALE_SYMBOL[indexScale]];
   const positionClass = MAP_POSITION_TITlE[position] ? position : 'custom_' + indexScale;
-  console.log(positionClass, 'positionClass2');
-  // x: xRange[1] + 20,
-  // y: yRange[1] * 4,
-  // const styles2 = css`
-  //   STitle[position='right'] {
-  //     //transform: rotate(90deg) !important;
-  //     //transform-origin: center;
-  //     //width: 200px;
-  //     //height: 50px;
-  //   }
-  // `;
-
-  const renderTitle = (data) => {};
 
   return styled(styles)(
     <STitle

@@ -76,6 +76,6 @@ title: Bar chart
 
 @## Background
 
-Графикам можно задавать задний фон при необходимости. Для этого используется компонент `<BarBackground/>`
+Графикам можно задавать задний фон при необходимости. Для этого используются компоненты `<Bar.Background/>` и `<HorizontalBar.Background/>`
 
 @example bar-background
