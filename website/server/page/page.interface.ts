@@ -14,6 +14,8 @@ export class Meta {
   disabled?: boolean;
   @Field({ nullable: true })
   hide?: boolean;
+  @Field({ nullable: true })
+  beta?: boolean;
 }
 
 @ObjectType()

@@ -122,6 +122,7 @@ export const PAGE_QUERY = gql`
           disabled
           fileSource
           tabName
+          beta
         }
         children {
           title
@@ -237,6 +238,7 @@ function Page() {
                 category={data.category.title}
                 fileSource={navigationPage.metadata.fileSource}
                 sourcePath={data.page.sourcePath}
+                beta={navigationPage.metadata.beta}
               />
               <Docs page={data.page} tabs={tabs} />
             </DocumentationWrapper>

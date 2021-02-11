@@ -1,8 +1,8 @@
 ---
 title: D3 Chart
-disabled: true
 fileSource: d3-chart
 tabName: Concept
+beta: true
 ---
 
 Этот компонент является основой для построения графиков.
@@ -123,3 +123,4 @@ tabName: Concept
 @page line
 @page bar
 @page d3-chart-api
+@page d3-chart-changelog
