@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.26.0] - 2021-02-11
+
+### Added
+
+- Added vars for media query.
+
 ## [3.24.0] - 2020-12-16
 
 ### Added
