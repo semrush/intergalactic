@@ -1,7 +1,6 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import { Component, styled } from '@semcore/core';
 import createXYElement from './XYElement';
-import { XYPlot, Bar, YAxis, XAxis } from '@semcore/d3-chart';
 
 import style from './style/bar.shadow.css';
 

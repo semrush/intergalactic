@@ -166,16 +166,18 @@ const MAP_POSITION_TITlE = {
   },
   right: ([xScale, yScale]) => {
     const xRange = xScale.range();
+    const yRange = yScale.range();
     return {
       x: xRange[1],
-      y: (yScale.range()[0] + yScale.range()[1]) / 2,
+      y: (yRange[0] + yRange[1]) / 2,
     };
   },
   left: ([xScale, yScale]) => {
     const xRange = xScale.range();
+    const yRange = yScale.range();
     return {
       x: xRange[0],
-      y: (yScale.range()[0] + yScale.range()[1]) / 2,
+      y: (yRange[0] + yRange[1]) / 2,
     };
   },
 };
@@ -206,12 +208,9 @@ class AxisRoot extends Component {
   }
 
   getTitleProps() {
-    const { ticks, position, indexScale, name } = this.asProps;
+    const { position } = this.asProps;
     return {
-      ticks,
-      indexScale,
       position: MAP_POSITION_REVERT[position],
-      name,
     };
   }
 
@@ -260,32 +259,25 @@ function Ticks(props) {
 }
 
 function Grid(props) {
-  const { Element: SGrid, styles, scale, ticks, indexScale, hide } = props;
+  const { Element: SGrid, styles, scale, ticks, indexScale } = props;
 
   return ticks.map((value, i) => {
     return styled(styles)(
-      <SGrid key={i} render="line" hide={hide} {...MAP_POSITION_GRID[indexScale](scale, value)} />,
+      <SGrid key={i} render="line" {...MAP_POSITION_GRID[indexScale](scale, value)} />,
     );
   });
 }
 
 function Title(props) {
-  const { Element: STitle, styles, scale, position, indexScale, name } = props;
-
-  const pos =
-    MAP_POSITION_TITlE[position] || MAP_POSITION_TITlE[MAP_INDEX_SCALE_SYMBOL[indexScale]];
-  const positionClass = MAP_POSITION_TITlE[position] ? position : 'custom_' + indexScale;
+  const { Element: STitle, styles, scale, position } = props;
 
   return styled(styles)(
     <STitle
-      name={name}
       render="text"
       childrenPosition="inside"
-      position={positionClass}
-      {...pos(scale, name, position)}
-    >
-      {renderValue(name)}
-    </STitle>,
+      position={position}
+      {...MAP_POSITION_TITlE[position](scale)}
+    />,
   );
 }
 

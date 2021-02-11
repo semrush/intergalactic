@@ -52,10 +52,6 @@ STitle[position='left'] {
   alignment-baseline: middle;
 }
 
-SGrid[hide] {
-  display: none;
-}
-
 STick[position='top'] {
   transform: translateY(-12px);
   text-anchor: middle;
