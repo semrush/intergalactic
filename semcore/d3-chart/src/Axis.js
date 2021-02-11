@@ -1,5 +1,5 @@
 import React from 'react';
-import { Component, styled, css } from '@semcore/core';
+import { Component, styled } from '@semcore/core';
 import createXYElement from './XYElement';
 import { scaleOfBandwidth } from './utils';
 
