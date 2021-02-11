@@ -81,6 +81,9 @@ const defaultOptions = {
           'custom-properties': {
             preserve: false,
           },
+          'custom-media-queries': {
+            preserve: false,
+          },
           'color-mod-function': {
             unresolved: 'error',
           },
