@@ -19,11 +19,11 @@ export default () => {
       <YAxis ticks={yScale.ticks()}>
         <YAxis.Ticks />
         <YAxis.Grid />
-        <YAxis.Title name="YAxis title" />
+        <YAxis.Title>YAxis title</YAxis.Title>
       </YAxis>
       <XAxis ticks={xScale.domain()}>
         <XAxis.Ticks />
-        <XAxis.Title name="XAxis title" />
+        <XAxis.Title>XAxis title</XAxis.Title>
       </XAxis>
       <Bar x="category" y="bar" />
     </XYPlot>
