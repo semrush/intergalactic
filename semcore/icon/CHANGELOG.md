@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.8.0] - 2021-02-11
+
+### Added
+
+- Added new icon `VideoStop`.
+
 ## [2.7.0] - 2021-01-20
 
 ### Added
