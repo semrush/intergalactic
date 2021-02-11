@@ -55,9 +55,9 @@ Here is a table with a scale of spacings we use in our interface.
 
 @## General rules
 
-- The spacing between logically different blocks is 24px. _For example, between widgets on Overview._
+- The spacing between logically different blocks is 24px. _For example, between widgets on the Overview._
 - Inside widgets, spacings are always are: 20px at the top (required to compensate for the indent + line height of the widget's title) and 24px to the left, right and at the bottom.
-- You can use other spacings if you need to strengthen the connection between blocks or, conversely, separate them visually. **But remember about common sense, consult with your colleagues** 😏
+- You can use other spacings if you need to strengthen the connection between blocks or, conversely, separate them visually.
 
 @page box-api
 @page box-changelog
