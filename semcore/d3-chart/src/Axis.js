@@ -13,6 +13,13 @@ const MAP_INDEX_SCALE_SYMBOL = {
   1: CUSTOM_1,
 };
 
+const MAP_POSITION_REVERT = {
+  top: 'bottom',
+  right: 'left',
+  bottom: 'top',
+  left: 'right',
+};
+
 const MAP_POSITION_AXIS = {
   top: ([xScale, yScale]) => {
     const xRange = xScale.range();
@@ -146,7 +153,7 @@ const MAP_POSITION_TITlE = {
     const yRange = yScale.range();
     return {
       x: xRange[1] / 2,
-      y: yRange[1] - 20,
+      y: yRange[1],
     };
   },
   bottom: ([xScale, yScale]) => {
@@ -154,7 +161,7 @@ const MAP_POSITION_TITlE = {
     const yRange = yScale.range();
     return {
       x: xRange[1] / 2,
-      y: yRange[0] + 40,
+      y: yRange[0],
     };
   },
   right: ([xScale, yScale], value) => {
@@ -164,8 +171,8 @@ const MAP_POSITION_TITlE = {
       // x: xRange[1] / 2 ,
       // y: scaleOfBandwidth(yScale, value),
       // rotate(90deg [xRange[1]  (yRange[1] * 4)] )
-      x: xRange[1] / 2,
-      y: -yRange[1] * 2.5,
+      x: xRange[1],
+      y: yRange[0] / 2,
     };
   },
   left: ([xScale, yScale]) => {
@@ -174,8 +181,8 @@ const MAP_POSITION_TITlE = {
     return {
       // x: xRange[0] * 6 ,
       // y: - yRange[1] * 2 - 12,
-      x: xRange[0] - 60,
-      y: yRange[1] * 4,
+      x: xRange[0],
+      y: yRange[0] / 2,
     };
   },
   [CUSTOM_0]: ([xScale, yScale], value, pos) => {
@@ -222,7 +229,7 @@ class AxisRoot extends Component {
     return {
       ticks,
       indexScale,
-      position,
+      position: MAP_POSITION_REVERT[position],
       name,
     };
   }
@@ -290,22 +297,22 @@ function Title(props) {
   console.log(positionClass, 'positionClass2');
   // x: xRange[1] + 20,
   // y: yRange[1] * 4,
-  const styles2 = css`
-    STitle[position='right'] {
-      transform: rotate(90deg) !important;
-      transform-origin: center;
-      width: 200px;
-      height: 50px;
-    }
-  `;
+  // const styles2 = css`
+  //   STitle[position='right'] {
+  //     //transform: rotate(90deg) !important;
+  //     //transform-origin: center;
+  //     //width: 200px;
+  //     //height: 50px;
+  //   }
+  // `;
 
   const renderTitle = (data) => {};
 
-  return styled(styles, styles2)(
+  return styled(styles)(
     <STitle
       name={name}
       render="text"
-      childrenPosition="below"
+      childrenPosition="inside"
       position={positionClass}
       {...pos(scale, name, position)}
     >

@@ -29,25 +29,28 @@ STitle {
 }
 
 STitle[position='top'] {
-  /*transform: translateY(-12px);*/
+  text-anchor: middle;
+  transform: translateY(-12px);
 }
 
 STitle[position='bottom'] {
-  /*transform: translateY(34px);*/
-
-  /*alignment-baseline: hanging;*/
+  text-anchor: middle;
+  alignment-baseline: hanging;
+  transform: translateY(12px);
 }
 
 STitle[position='right'] {
-  /*transform: rotate(-90deg);*/
-  /*alignment-baseline: middle;*/
-  /*transform:translate(30) rotate(45 50 50);*/
+  transform: rotate(-90deg) translateY(16px);
+  text-anchor: middle;
+  transform-box: fill-box;
+  alignment-baseline: middle;
 }
 
 STitle[position='left'] {
-  /*transform: rotate(-90deg);*/
-
-  /*alignment-baseline: middle;*/
+  transform: rotate(-90deg) translateY(-16px);
+  text-anchor: middle;
+  transform-box: fill-box;
+  alignment-baseline: middle;
 }
 
 SGrid[hide] {
