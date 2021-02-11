@@ -30,7 +30,7 @@ type createBreakpointsType = (
 
 declare const MediaList: {
   prototype: MediaList;
-  new (media: mediaType): IMediaList;
+  new(media: mediaType, defaultIndex?: number): IMediaList;
 };
 declare const DEFAULT_MEDIA: mediaType;
 declare const createBreakpoints: createBreakpointsType;

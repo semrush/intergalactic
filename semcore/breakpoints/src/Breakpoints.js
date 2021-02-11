@@ -2,11 +2,15 @@ import React, { useEffect, useState } from 'react';
 import rafTrottle from '@semcore/utils/lib/rafTrottle';
 import canUseDOM from '@semcore/utils/lib/canUseDOM';
 
+const DEFAULT_MEDIA = ['(min-width: 768px)', '(max-width: 769px)'];
+
 class MediaList {
   mediaQueries = [];
   listeners = [];
+  defaultIndex = 0;
 
-  constructor(media) {
+  constructor(media, defaultIndex) {
+    this.defaultIndex = defaultIndex ?? this.defaultIndex;
     if (canUseDOM()) {
       this.mediaQueries = media.map(window.matchMedia);
     }
@@ -24,7 +28,7 @@ class MediaList {
   });
 
   matches() {
-    return this.mediaQueries.findIndex((m) => m.matches);
+    return this.mediaQueries.findIndex((m) => m.matches) ?? this.defaultIndex;
   }
 
   addListener(listener) {
@@ -37,7 +41,7 @@ class MediaList {
   }
 }
 
-function createBreakpoints(media = DEFAULT_MEDIA) {
+function createBreakpoints(media) {
   function Breakpoints({ children }) {
     const [index, updateIndex] = useState(Breakpoints.mediaList.matches());
 
@@ -55,7 +59,5 @@ function createBreakpoints(media = DEFAULT_MEDIA) {
   return Breakpoints;
 }
 
-const DEFAULT_MEDIA = ['(min-width: 768px)', '(max-width: 769px)'];
-
 export { MediaList, DEFAULT_MEDIA, createBreakpoints };
-export default createBreakpoints();
+export default createBreakpoints(DEFAULT_MEDIA);
