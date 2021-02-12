@@ -10,8 +10,8 @@ import { DocumentationModule } from './documentation/documentation.module';
       autoSchemaFile: 'schema.gql',
       // enable GraphQL playground for production
       // https://www.apollographql.com/docs/apollo-server/testing/graphql-playground/#enabling-graphql-playground-in-production
-      playground: true,
-      introspection: true,
+      // playground: true,
+      // introspection: true,
     }),
     PageModule,
     DocumentationModule,
