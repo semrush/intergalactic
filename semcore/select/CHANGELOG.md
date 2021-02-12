@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.6om/en/1.0.0/).
 
+## [2.4.1] - 2021-02-12
+
+### Fixed
+
+- Fixed to show components for tag in Select.Trigger, example `<Select.Trigger tag={FilterTrigger}`
+
 ## [2.4.0] - 2020-12-17
 
 ### Added
