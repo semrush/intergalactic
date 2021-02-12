@@ -6,45 +6,25 @@ tabName: Guide
 
 @## Description
 
-It's a component for building a 12-column grid.
+- The layout of the page depends on the breakpoint.
+- Each range determines the number of columns, maximum content width, main container margins and text sizes.
 
-> 💡 In the product interface we use a 12-column grid with a fixed 24px gutter between columns. The columns stretch.
+> 💡 After 991px, the left menu appears and, with its width of 250px, "eats away" space from the product page 🙃
 
-@## Example use
+| Breakpoint | Columns | Gutter | Max. container width                                          | Content wrapper margins | Layout scheme                                             | Description                                                                                                      |
+| ---------- | ------- | ------ | ------------------------------------------------------------- | ----------------------- | --------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| ≤ 414px    | 4       | 24px   | 374px                                                         | `margin: 80px 20px;`    | ![414 breakpoint](static/breakpoints-414.png)             | **Mobile devices**. The content has a one-column structure. The left menu is hidden.                             |
+| ≤ 768px    | 6       | 24px   | 704px                                                         | `margin: 120px 32px;`   | ![768 breakpoint](static/breakpoints-768.png)             | **Mobile devices**. You can arrange the content as a two-column structure. The left menu is hidden.              |
+|            |         |        |                                                               |                         | ![768 breakpoint](static/breakpoints-768-landscape.png)   | **Mobile devices (landscape mode)**. The content is arranged as a two-column structure. The left menu is hidden. |
+| ≥ 1154px   | 12      | 24px   | 840px for product landing pages. **956px for product pages.** | `margin; 0 auto;`       | ![1154px breakpoint](static/breakpoints-1154.png)         | **Tablet & desktop devices**. The left menu is open. You can rearrange the content as a three-column structure.  |
+|            |         |        |                                                               |                         | ![1154 breakpoint](static/breakpoints-1154-landscape.png) | **Tablet (landscape mode)**. The left menu is open. You can rearrange the content as a three-column structure.   |
 
-The `Row` component accepts all the properties of the `Flex` component, and the `Col` component accepts all the properties of the `Box` component.
+@## Product pages width
 
-@example grid
+The grid system is based on the left menu width (250px) and the maximum content width of our product pages.
 
-@## Change in general offset
-
-Arranging offsets for each column to the left.
-
-@example offset
-
-@## Change in the general gutter between the columns
-
-You can change gutters between the columns, which gives flexibility in use.
-
-@example gutter
-
-@## Automatic column size detection
-
-@example auto
-
-@## Responsive
-
-The grid has functionality for responsive layouts. You can change width and offsets of the columns depending on the screen size.
-
-> 💡 The grid works as desktop first, as our core products are designed to work primarily on the desktop.
-
-@example responsive
-
-@## Responsive alternative API
-
-We have added an alternative API for responsive grids. It's more laconic.
-
-@example alternative
+> The maximum width of the content area on the product landing pages is 840px. If your product visually differs from the core Semrush products, then, of course, your maximum width may differ.
 
 @page grid-api
+@page grid-code
 @page grid-changelog

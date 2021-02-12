@@ -70,11 +70,11 @@ In our interface, we use headings of 6 sizes and 2 styles: `Medium (500)` and `B
 
 A heading can contain additional information, such as a counter of results found, and so on. They can be found in table headings. In these cases, the additional information is presented by secondary text of `$gray60` color and `Light (300)` face.
 
-![](static/secondary_info.png)
+![secondary text](static/secondary_info.png)
 
 @## Headings on the mobile devices
 
-To improve readability on different screens, change the size of the headings, depending on the [breakpoint](/layout/breakpoints/).
+To improve readability on different screens, change the size of the headings, depending on the [breakpoint](layout/grid-system/).
 
 > Change only font styles, not the markup.
 
@@ -93,27 +93,27 @@ There are three text sizes in our interface. The main font face is `Regular (400
 
 ### 16px text
 
-![](static/p_16.png)
+![16px text](static/p_16.png)
 
 ### 14px text
 
-![](static/p_14.png)
+![14px text](static/p_14.png)
 
 ### 12px text
 
-![](static/p_12.png)
+![12px text](static/p_12.png)
 
 You can select text within a paragraph: change its face to `bold` or `italic`, make it a [link](/components/link/), a hint, or even cross it out.
 
-![](static/emphases.png)
+![text emphases](static/emphases.png)
 
 @## List
 
-|     | Styles                                     | Numbered list         | Unordered list        | Check list                   |
-| --- | ------------------------------------------ | --------------------- | --------------------- | ---------------------------- |
-| XL  | `margin-bottom: 8px; padding-right: 12px;` | ![](static/ol-16.png) | ![](static/ul-16.png) | ![](static/checklist-16.png) |
-| L   | `margin-bottom: 8px; padding-right: 12px;` | ![](static/ol-14.png) | ![](static/ul-14.png) | ![](static/checklist-14.png) |
-| M   | `margin-bottom: 8px; padding-right: 8px;`  | ![](static/ol-12.png) | ![](static/ul-12.png) | ![](static/checklist-12.png) |
+|     | Styles                                     | Numbered list                           | Unordered list                           | Check list                                  |
+| --- | ------------------------------------------ | --------------------------------------- | ---------------------------------------- | ------------------------------------------- |
+| XL  | `margin-bottom: 8px; padding-right: 12px;` | ![numbered list 16px](static/ol-16.png) | ![unordered list 16px](static/ul-16.png) | ![check list 16px](static/checklist-16.png) |
+| L   | `margin-bottom: 8px; padding-right: 12px;` | ![numbered list 14px](static/ol-14.png) | ![unordered list 14px](static/ul-14.png) | ![check list 14px](static/checklist-14.png) |
+| M   | `margin-bottom: 8px; padding-right: 8px;`  | ![numbered list 12px](static/ol-12.png) | ![unordered list 12px](static/ul-12.png) | ![check list 12px](static/checklist-12.png) |
 
 @## Nested list
 
@@ -127,13 +127,13 @@ Paragraphs have a lower margin, and each of the three paragraph sizes has its ow
 
 You can also use these margins when a paragraph is followed by a paragraph of smaller font size.
 
-![](static/paragraph_margins.png)
+![paragraph margins](static/paragraph_margins.png)
 
 @## Quote
 
 We have special styles for highlighting quotes in paragraphs.
 
-![](static/blockquote_paddings.png)
+![quote styles](static/blockquote_paddings.png)
 
 @## Hints (hint links)
 
@@ -156,21 +156,21 @@ These recommendations apply to typography in our core products and reports.
 
 **Use XL paragraph with the following headings:**
 
-![](static/h1-p.png)
+![h1 with paragraph](static/h1-p.png)
 
-![](static/h2-p.png)
+![h2 with paragraph](static/h2-p.png)
 
-![](static/h3-p.png)
+![h3 with paragraph](static/h3-p.png)
 
 **Use L paragraph with the following headings:**
 
-![](static/h4-p.png)
+![h4 with paragraph](static/h4-p.png)
 
-![](static/h5-p.png)
+![h5 with paragraph](static/h5-p.png)
 
 **Use M paragraph with the following heading:**
 
-![](static/h6-p.png)
+![h6 with paragraph](static/h6-p.png)
 
 @page typography-api
 @page typography-code
