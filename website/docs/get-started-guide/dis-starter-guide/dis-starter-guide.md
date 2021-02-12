@@ -71,22 +71,23 @@ Some products use a flexible grid, while others use a fixed one depending on the
 
 Go to [Grid system](/layout/grid-system) for a detailed description of this component with code examples.
 
-@## Breakpoints (soon will be updated)
+@## Breakpoints and grids
 
 > **TL;DR or main thoughts**: we build our interface as desktop-first, since there is a lot of data visualization and explaining text.
 
 The main breakpoints that we recommend to use in our interfaces are:
 
+- 414px
 - 768px
-- 992px
+- 1154px
 
 So you need to make designs for:
 
-- 320 — the smallest devices. Don't forget them
-- 768 — phones and tablets
-- more than 992 — big tablets and desktop devices
+- 414px — the smallest devices. Don't forget them.
+- 768px — phones and tablets.
+- more than 1154px — big tablets and desktop devices.
 
-See [Breakpoints](/layout/breakpoints/) for more information.
+See [Breakpoints](/layout/breakpoints/) and [Grid](/layout/grid-system/) for more information.
 
 @## Charts
 
