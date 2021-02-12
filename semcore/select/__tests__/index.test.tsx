@@ -1,8 +1,8 @@
 import React from 'react';
+import { FilterTrigger } from '@semcore/base-trigger';
 import { cleanup, fireEvent, render } from 'jest-preset-ui/testing';
 import snapshot from 'jest-preset-ui/snapshot';
 import Select from '../src';
-import Checkbox from '@semcore/checkbox/src/Checkbox';
 
 describe('Select Trigger', () => {
   afterEach(cleanup);
@@ -99,5 +99,40 @@ describe('Select Trigger', () => {
     expect(spy).toHaveBeenCalledTimes(1);
     fireEvent.click(getByTestId('option'));
     expect(spy).toHaveBeenCalledTimes(2);
+  });
+
+  test('Trigger renders correctly with FilterTrigger', async () => {
+    const component = (
+      <Select defaultValue="Test">
+        <Select.Trigger tag={FilterTrigger} />
+      </Select>
+    );
+    expect(await snapshot(component)).toMatchImageSnapshot();
+  });
+
+  test('Should support tag as string', async () => {
+    const component = (
+      <Select defaultValue="Test">
+        <Select.Trigger tag="button" />
+      </Select>
+    );
+    expect(await snapshot(component)).toMatchImageSnapshot();
+  });
+
+  test('Should support call render function for custom tag', () => {
+    const spy = jest.fn();
+    const Tag = React.forwardRef(({ children }, ref) => <button ref={ref}>{children}</button>);
+
+    render(
+      <Select>
+        <Select.Trigger tag={Tag}>
+          {() => {
+            spy();
+            return null;
+          }}
+        </Select.Trigger>
+      </Select>,
+    );
+    expect(spy).toBeCalledTimes(1);
   });
 });

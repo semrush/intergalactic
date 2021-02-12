@@ -346,10 +346,14 @@ class RootSelect extends Component<ISelectProps> {
   }
 }
 
-function Trigger({ Root, Children, name, value, $hiddenRef }) {
+function Trigger({ Root, Children, name, value, $hiddenRef, tag: Tag = ButtonTrigger }) {
   return (
-    <Root render={DropdownMenu.Trigger} tag={ButtonTrigger} placeholder="Select option">
-      {addonTextChildren(Children, ButtonTrigger.Text, ButtonTrigger.Addon)}
+    <Root render={DropdownMenu.Trigger} tag={Tag} placeholder="Select option">
+      {addonTextChildren(
+        Children,
+        Tag.Text || ButtonTrigger.Text,
+        Tag.Addon || ButtonTrigger.Addon,
+      )}
       {name && <input type="hidden" defaultValue={value} name={name} ref={$hiddenRef} />}
     </Root>
   );
