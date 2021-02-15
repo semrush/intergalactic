@@ -1,7 +1,7 @@
 {
   "name": "@semcore/chart",
   "description": "SEMRush Chart Component",
-  "version": "4.1.1",
+  "version": "4.2.0",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -36,7 +36,7 @@
   },
   "peerDependencies": {
     "@semcore/core": "^1",
-    "react": "^16.8.0"
+    "react": "16.8 - 17"
   },
   "jest": {
     "preset": "jest-preset-ui"
