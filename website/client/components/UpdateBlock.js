@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import Input from '@semcore/input';
 import Button from '@semcore/button';
 import updatesImg from '../static/space/updates.svg';
 import NavLink from './NavLink';
+import Tooltip from '@semcore/tooltip';
+import { css } from '@semcore/core';
+import { Text } from '@semcore/typography';
+import { Box } from '@semcore/flex-box';
 
 const UpdateWrapper = styled.div`
   display: grid;
@@ -68,7 +72,7 @@ const InputSubscribe = styled(Input)`
   height: 56px !important;
   font-size: 18px !important;
   width: 296px;
-  margin: 32px 16px 16px 0;
+  margin: 0 16px 16px 0;
   @media (max-width: 768px) {
     width: 428px;
   }
@@ -85,10 +89,8 @@ const ButtonSubscribe = styled(Button)`
   border-color: #ff622d !important;
   font-size: 18px !important;
   color: #fff !important;
-  margin-top: 16px;
+  margin-bottom: 16px;
   @media (max-width: 768px) {
-    margin-top: 0;
-    margin-bottom: 16px;
     width: 428px;
   }
   @media (max-width: 320px) {
@@ -96,17 +98,59 @@ const ButtonSubscribe = styled(Button)`
   }
 `;
 
+const styles = css`
+  STooltip {
+    background-color: #f71939 !important;
+    border-color: #f71939 !important;
+    max-width: 500px;
+    font-size: 16px;
+  }
+  SArrow {
+    &:before {
+      border-color: #f71939 !important;
+    }
+  }
+`;
+
 function UpdateBlock() {
+  const [value, setValue] = useState('');
+  const [error, setError] = useState('');
+
+  const handleInput = (value) => {
+    if (!/.+@.+\..+/i.test(value) && value !== '') {
+      setError("Email don't valid");
+    }
+  };
+
+  const handleFocus = () => setError('');
+
+  const handleChange = (value) => setValue(value);
+
   return (
     <UpdateWrapper id="updBlock">
       <UpdatesImg src={updatesImg} />
       <Info>
         <Header>All updates in your inbox</Header>
-        We will send only information about new releases and component versions. And nothing more!
-        <br />
-        <InputSubscribe size="xl">
-          <Input.Value placeholder="Your email " />
-        </InputSubscribe>
+        <Box mb={8}>
+          We will send only information about new releases and component versions. And nothing more!
+        </Box>
+        <Tooltip
+          title={'You need to enter valid mail, dear friend.'}
+          visible={!!error}
+          theme="warning"
+          styles={styles}
+          placement="top-start"
+        >
+          <InputSubscribe size="xl" state={!!error ? 'invalid' : 'normal'}>
+            <Input.Value
+              value={value}
+              placeholder="Your email "
+              onChange={handleChange}
+              onFocus={handleFocus}
+              onBlur={() => handleInput(value)}
+            />
+          </InputSubscribe>
+        </Tooltip>
         <ButtonSubscribe size="l">I want all updates</ButtonSubscribe>
         <Terms>
           By clicking the button you agree to the
