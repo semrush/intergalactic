@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.2.0] - 2021-02-15
+
+### Added
+
+- Added supported react@17.
+
 ## [4.1.1] - 2020-12-28
 
 ### Fixed
