@@ -17,12 +17,18 @@ import ArrowXS from '@semcore/icon/lib/ArrowRight/xs';
 import { Box } from '@semcore/flex-box';
 import { css } from '@semcore/core';
 
-const styles = css`
+const stylesTabLine = css`
   STabLine {
     margin: auto;
     width: 805px;
   }
 
+  STabLineItem[size='xl'] {
+    font-size: 24px;
+  }
+`;
+
+const stylesTooltip = css`
   STooltip[theme] {
     padding: 12px;
     border: 1px solid #d1d4db;
@@ -294,10 +300,6 @@ const TableOverlay = styled.div`
   }
 `;
 
-const TabLineItem = styled(TabLine.Item)`
-  font-size: 24px;
-`;
-
 const NAVIGATE_QUERY = gql`
   {
     navigation {
@@ -412,7 +414,7 @@ const getComponents = (titles, data) => {
     }
     const pic = getTooltip(child.elem.title);
     return (
-      <Tooltip styles={styles} placement="left" w={'fit-content'} key={child.elem.title}>
+      <Tooltip styles={stylesTooltip} placement="left" w={'fit-content'} key={child.elem.title}>
         <Tooltip.Trigger className="component">
           <LinkStyled to={`/${child.elem.route}/`}>{child.elem.title}</LinkStyled>
           {child.elem.metadata.beta && (
@@ -490,15 +492,15 @@ function Home() {
                 <TabLine
                   underlined={false}
                   onChange={updateValue}
-                  styles={styles}
+                  styles={stylesTabLine}
                   value={value}
                   size="xl"
                 >
-                  <TabLineItem value={'components'}>Components</TabLineItem>
-                  <TabLineItem value={'charts'}>Charts & Table</TabLineItem>
-                  <TabLineItem value={'ux'}>UX Patterns</TabLineItem>
-                  <TabLineItem value={'filters'}>Filters</TabLineItem>
-                  <TabLineItem value={'documentation'}>Developer Docs</TabLineItem>
+                  <TabLine.Item value={'components'}>Components</TabLine.Item>
+                  <TabLine.Item value={'charts'}>Charts & Table</TabLine.Item>
+                  <TabLine.Item value={'ux'}>UX Patterns</TabLine.Item>
+                  <TabLine.Item value={'filters'}>Filters</TabLine.Item>
+                  <TabLine.Item value={'documentation'}>Developer Docs</TabLine.Item>
                 </TabLine>
                 <Border>{renderSwitch(value, data)}</Border>
               </Tab>
