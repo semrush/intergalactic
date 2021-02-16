@@ -5,6 +5,7 @@
     "@semcore/badge",
     "@semcore/base-trigger",
     "@semcore/breadcrumbs",
+    "@semcore/breakpoints",
     "@semcore/button",
     "@semcore/card",
     "@semcore/carousel",
