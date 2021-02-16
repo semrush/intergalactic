@@ -1,7 +1,7 @@
 {
   "name": "@semcore/portal",
   "description": "SEMRush Portal Component",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -17,7 +17,7 @@
   "peerDependencies": {
     "@semcore/core": "^1",
     "react": "16.8 - 17",
-    "react-dom": "^16.8"
+    "react-dom": "16.8 - 17"
   },
   "jest": {
     "preset": "jest-preset-ui"
