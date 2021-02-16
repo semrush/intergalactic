@@ -1,7 +1,7 @@
 {
   "name": "@semcore/date-picker",
   "description": "SEMRush DatePicker Component",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -29,8 +29,8 @@
     "dayjs": "^1.8"
   },
   "peerDependencies": {
-    "@semcore/core": "^1.4",
-    "react": "^16.0"
+    "@semcore/core": "^1.10",
+    "react": "16.8 - 17"
   },
   "jest": {
     "preset": "jest-preset-ui"
