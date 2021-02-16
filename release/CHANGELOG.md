@@ -1,3 +1,87 @@
+## [3.0.0] - 2021-02-16
+
+### @semcore/accordion
+
+- **Changed** Update version package animation.
+
+### @semcore/animation
+
+- **Fixed** Fixed bubbling call handlers onAnimationStart, onAnimationEnd from inside components.
+
+### @semcore/base-trigger
+
+- **Fixed** Fixed color spinner for ButtonTrigger.
+
+### @semcore/breakpoints
+
+- **Added** Initial release
+
+### @semcore/carousel
+
+- **Added** Added support touch event for change to slide.
+- **Added** Added support control mod for change property index ``.
+- **Added** Added style folder with css in build folder lib.
+- **Fixed** [ts] fixed all types of components inside package.
+
+### @semcore/chart
+
+- **Added** Added supported react@17.
+- **Fixed** [ts] fixed types for function timeFormat.
+
+### @semcore/core
+
+- **Added** Added support custom enhancement.
+
+### @semcore/data-table
+
+- **Added** Added style folder with css in build folder lib.
+- **Fixed** Removed calculation min width head and body because this is caused bugs.
+
+### @semcore/errors,
+
+### @semcore/date-picker
+
+- **Added** Added supported react@17.
+
+### @semcore/grid
+
+- **BREAK** Change the responsive breakpoint from 992px to 1184px.
+- **Added** Added alternative API for span and offset.
+- **Added** Added breakpoint xs.
+
+### @semcore/icon
+
+- **Added** Added new icon VideoStop.
+- **Added** Added new color icon Github.
+- **Added** Added new icon GoogleAnalytics4 for 4 version.
+
+### @semcore/input
+
+- **Fixed** Fixed type of second argument(event) for onChange prop
+
+### @semcore/outside-click
+
+- **Changed** Changed mouse event from click to mouseup for stable performance.
+- **Added** Added supported react-dom@17.
+
+### @semcore/scroll-area,
+
+### @semcore/portal
+
+- **Added** Added supported react-dom@17.
+
+### @semcore/select
+
+- **Fixed** Fixed to show components for tag in Select.Trigger, example <Select.Trigger tag={FilterTrigger}
+
+### @semcore/textarea
+
+- **Fixed** Updated padding to be better ☺️
+
+### @semcore/utils
+
+- **Added** Added vars for media query.
+
 ## [2.4.0] - 2020-12-18
 
 ### Global
