@@ -20,7 +20,7 @@ SGridMonths {
 
 SWeekDays {
   display: grid;
-  grid-template-columns: repeat(7, 32px);
+  grid-template-columns: repeat(7, minmax(32px, auto));
 }
 
 SWeekDay {
