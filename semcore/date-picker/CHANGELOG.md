@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.2.1] - 2021-02-17
+
+### Fixed
+
+- Fixed display if one day is selected and if the same month of a different year is selected.
+
 ## [2.2.0] - 2021-02-16
 
 ### Added
