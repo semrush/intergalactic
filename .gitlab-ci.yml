@@ -7,11 +7,10 @@ stages:
   - notify
 
 variables:
-  NODE_VERSION: '15'
   IMAGE_RESULT: 'ui-kit-team/intergalactic'
   GIT_DEPTH: 10
 
-image: 'node:$NODE_VERSION'
+image: $NODE_IMAGE
 
 .job_components:
   before_script:

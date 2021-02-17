@@ -1,5 +1,14 @@
-const { toMatchImageSnapshot } = require('jest-image-snapshot');
+const { configureToMatchImageSnapshot } = require('jest-image-snapshot');
 const { toHaveStyle } = require('@testing-library/jest-dom/matchers');
+
+const toMatchImageSnapshot = configureToMatchImageSnapshot({
+  comparisonMethod: 'ssim',
+  customDiffConfig: {
+    ssim: 'fast',
+  },
+  failureThreshold: 0.01,
+  failureThresholdType: 'percent',
+});
 
 expect.extend({ toMatchImageSnapshot, toHaveStyle });
 
