@@ -306,14 +306,11 @@ function Header(props) {
           <OutsideClick onOutsideClick={() => setClicked(false)}>
             <Side>
               <Links>
-                <NavLink to="/internal/roadmap/">Roadmap</NavLink>
-                <NavLink to="/internal/release/">Releases</NavLink>
-                <NavLink
-                  to={{ pathname: 'https://github.com/semrush/intergalactic' }}
-                  target="_blank"
-                >
+                <a href="/internal/roadmap/">Roadmap</a>
+                <a href="/internal/release/">Releases</a>
+                <a href="https://github.com/semrush/intergalactic" target="_blank">
                   GitHub
-                </NavLink>
+                </a>
               </Links>
               <Line orientation="horizontal" />
               <SideBarNavigation
