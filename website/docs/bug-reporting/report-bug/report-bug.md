@@ -14,7 +14,7 @@ Submit a bug/request for an improvement in the [Github through issues](https://d
 
 @## Report with internal Slack chat
 
-Use internal Slack chat (#ui-kit-team) to report and discuss bugs, improvements and other questions you want to address the Semrush UI Kit Team.
+Use internal Slack chat (**#ui-kit-team**) to report and discuss bugs, improvements and other questions you want to address the Semrush UI Kit Team.
 
 - Convenient for Semrush developers and other maintainers, because of quick feedback, quick fix of bugs, finding solutions to problems, discussion.
 - Remember, that Slack chat isn't very helpful in terms of saving history.

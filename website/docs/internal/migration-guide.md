@@ -1,5 +1,5 @@
 ---
-title: Migration guide
+title: Migration guide (RU)
 ---
 
 @## Что произошло?
