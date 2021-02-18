@@ -6,6 +6,7 @@ import { connectAutoComplete } from 'react-instantsearch/connectors';
 import algoliasearch from 'algoliasearch/lite';
 
 import IF from '@semcore/utils/lib/if';
+import { Box } from '@semcore/flex-box';
 import Select from '@semcore/select';
 import SearchM from '@semcore/icon/lib/Search/m';
 import ArrowUpXS from '@semcore/icon/lib/ArrowUp/xs';
@@ -17,7 +18,15 @@ import convertKeyboard from '../utils/convert-keyboard';
 import observatory from '../static/search/observatory.svg';
 import CONFIG from '../algolia';
 
-const searchClient = algoliasearch(CONFIG.ALGOLIA_APP, CONFIG.ALGOLIA_OPEN_KEY);
+const algoliaClient = algoliasearch(CONFIG.ALGOLIA_APP, CONFIG.ALGOLIA_OPEN_KEY);
+const searchClient = {
+  search(requests) {
+    if (requests.every(({ params }) => !params.query)) {
+      return;
+    }
+    return algoliaClient.search(requests);
+  },
+};
 
 const Popper = styled.div`
   background-color: #fff;
@@ -29,7 +38,7 @@ const Popper = styled.div`
   border: none;
 `;
 
-const InputWrapper = styled.div`
+const InputWrapper = styled(Box)`
   position: relative;
   @media (max-width: 768px) {
     margin-right: 55px;
@@ -77,6 +86,7 @@ const SearchIcon = styled(SearchM)`
   &:hover {
     cursor: default;
   }
+
   @media (max-width: 320px) {
     display: none;
   }
