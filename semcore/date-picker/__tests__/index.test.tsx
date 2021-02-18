@@ -1,6 +1,7 @@
 import React from 'react';
 import { cleanup, render } from 'jest-preset-ui/testing';
-import { DatePicker, DateRangePicker } from '../src';
+import { DatePicker, DateRangePicker, MonthRangePicker } from '../src';
+import snapshot from 'jest-preset-ui/snapshot';
 
 const RealDate = Date;
 
@@ -52,5 +53,42 @@ describe('DateRangePicker', () => {
     getByText('Apply').click();
     const today = new Date(new Date().setHours(0, 0, 0, 0));
     expect(spy).toBeCalledWith([DateRangePicker.subtract(today, 1, 'day'), today]);
+  });
+
+  test('Should render correctly with selected date', async () => {
+    const component = (
+      <DatePicker value={new Date('January 1, 2021 00:00:00')}>
+        <DatePicker.Trigger size="xl" />
+        <DatePicker.Popper />
+      </DatePicker>
+    );
+    expect(await snapshot(component)).toMatchImageSnapshot();
+  });
+
+  test('Should render range of selected date', async () => {
+    const component = (
+      <DateRangePicker
+        value={[new Date('December 31, 2020 00:00:00'), new Date('January 2, 2021 00:00:00')]}
+      />
+    );
+    expect(await snapshot(component)).toMatchImageSnapshot();
+  });
+
+  test('Should render correctly if one day is selected', async () => {
+    const component = (
+      <DateRangePicker
+        value={[new Date('December 31, 2020 00:00:00'), new Date('December 31, 2020 00:00:00')]}
+      />
+    );
+    expect(await snapshot(component)).toMatchImageSnapshot();
+  });
+
+  test('Should render correctly if the same month of a different year is selected', async () => {
+    const component = (
+      <MonthRangePicker
+        value={[new Date('December 31, 2020 00:00:00'), new Date('December 31, 2021 00:00:00')]}
+      />
+    );
+    expect(await snapshot(component)).toMatchImageSnapshot();
   });
 });
