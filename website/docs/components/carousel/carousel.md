@@ -1,5 +1,6 @@
 ---
 title: Carousel
+fileSource: carousel
 tabName: Guide
 ---
 
