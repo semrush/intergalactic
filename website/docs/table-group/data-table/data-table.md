@@ -88,6 +88,12 @@ Sometimes we need to move the table header outside of the table, this can be don
 
 @example portal-head
 
+@## Header ellipsis
+
+If you need header ellipsis, you'll should wrap the title in text and add some styling to it.
+
+@example ellipsis-header
+
 @## Access to Row
 
 To apply some properties to a table row, you need to define `<DataTable.Row/>`. You can use multiple `<DataTable.Row/>` to separate the business logic.
