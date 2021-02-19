@@ -248,6 +248,10 @@ export default function useBox<T extends IBoxProps>(
     px,
     css,
     position,
+    top,
+    left,
+    bottom,
+    right,
     zIndex,
     ...other
   } = props;
@@ -278,6 +282,10 @@ export default function useBox<T extends IBoxProps>(
     pr,
     px,
     position,
+    top,
+    left,
+    bottom,
+    right,
     zIndex,
   ]);
 
