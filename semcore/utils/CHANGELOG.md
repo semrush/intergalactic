@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.27.0] - 2021-02-20
+
+### Changed
+
+- [TS] Update types interface `IWithI18nEnhanceProps`.
+
 ## [3.26.0] - 2021-02-11
 
 ### Added
