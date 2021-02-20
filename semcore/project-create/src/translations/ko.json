@@ -1,0 +1,14 @@
+{
+  "title": "신규 프로젝트 추가",
+  "inputDomainLabel": "프로젝트 도메인",
+  "inputDomainError": "유효한 도메인을 입력하세요",
+  "inputDomainPlaceholder": "프로젝트 도메인 입력",
+  "inputNameLabel": "프로젝트 이름",
+  "inputNameErrorLength": "프로젝트 이름은 256자 미만이어야 합니다.",
+  "inputNameErrorCharacters": "문자, 숫자, 마침표만 사용할 수 있습니다.",
+  "inputNamePlaceholder": "프로젝트 이름 입력",
+  "description": "프로젝트가 생성되면 이 도메인을 변경하실 수 없습니다. 하위 도메인만 변경 가능합니다.",
+  "buttonCreate": "프로젝트 생성하기",
+  "buttonCancel": "취소",
+  "sharingCheckboxLegend": "프로젝트가 준비되면 공유"
+}
