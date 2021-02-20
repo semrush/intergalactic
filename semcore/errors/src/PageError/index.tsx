@@ -15,6 +15,10 @@ import ja from './translations/ja.json';
 import pt from './translations/pt.json';
 import ru from './translations/ru.json';
 import zh from './translations/zh.json';
+import ko from './translations/ko.json';
+import vi from './translations/vi.json';
+
+const i18n = { de, en, es, fr, it, ja, ru, zh, pt, ko, vi };
 
 export interface IPageErrorProps extends IWithI18nEnhanceProps {
   /**
@@ -28,18 +32,8 @@ class RootPageError extends Component<IPageErrorProps> {
   static displayName = 'PageError';
   static enhance = [i18nEnhance()];
   static defaultProps = {
+    i18n,
     icon: getIconPath('page_error'),
-    i18n: {
-      de,
-      en,
-      es,
-      fr,
-      it,
-      ja,
-      pt,
-      ru,
-      zh,
-    },
   };
 
   handleReload = () => {

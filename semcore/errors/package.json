@@ -1,7 +1,7 @@
 {
   "name": "@semcore/errors",
   "description": "SEMRush Errors Component",
-  "version": "2.2.0",
+  "version": "2.3.0",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -16,7 +16,7 @@
     "deploy": "gcs-upload svg/*.svg"
   },
   "dependencies": {
-    "@semcore/utils": "^3.17",
+    "@semcore/utils": "^3.27",
     "@semcore/button": "^3",
     "@semcore/flex-box": "^4",
     "@semcore/format-text": "^2",
