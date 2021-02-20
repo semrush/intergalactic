@@ -9,7 +9,7 @@ import Button from '@semcore/button';
 import Link from '@semcore/link';
 import RepeatXS from '@semcore/icon/lib/Repeat/xs';
 
-const options = ['de', 'en', 'es', 'fr', 'it', 'ja', 'pt', 'ru', 'zh'].map((o) => ({
+const options = ['de', 'en', 'es', 'fr', 'it', 'ja', 'pt', 'ru', 'zh', 'ko', 'vi'].map((o) => ({
   value: o,
   children: o,
 }));
@@ -23,7 +23,7 @@ export default () => {
       <I18nProvider value={lang}>
         <Card my={5}>
           <Text size={400}>Known error</Text>
-          <Error description="Don't worry though, we are aware of the issue and are working to fix it. Please try again later.">
+          <Error>
             <Box mt={4}>
               <Button>Try again</Button>
             </Box>
