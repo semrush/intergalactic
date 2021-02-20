@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { Context as ContextI18n } from './WithI18n';
 
-export type LocaleKeys = 'de' | 'en' | 'es' | 'fr' | 'it' | 'ja' | 'ru' | 'zh' | 'pt';
+export type LocaleKeys = 'de' | 'en' | 'es' | 'fr' | 'it' | 'ja' | 'ru' | 'zh' | 'pt' | 'ko' | 'vi';
 export type DictionaryItem = { [key: string]: string };
 export type Dictionary = { [K in LocaleKeys]: DictionaryItem };
 
