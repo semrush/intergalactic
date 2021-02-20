@@ -1,4 +1,4 @@
-# https://crowdin.com/project/ui-kit-semcore/settings#api
+# https://support.crowdin.com/cli-tool ver.3
 "project_id_env": "CROWDIN_PROJECT_ID"
 # https://crowdin.com/settings#api-key
 "api_token_env": "CROWDIN_PERSONAL_TOKEN"
@@ -10,10 +10,6 @@
   },
   {
     "source": "/semcore/errors/src/AccessDenied/translations/en.json",
-    "translation": "/%original_path%/%two_letters_code%.json",
-  },
-  {
-    "source": "/semcore/errors/src/ConnectionLost/translations/en.json",
     "translation": "/%original_path%/%two_letters_code%.json",
   },
   {
@@ -33,19 +29,11 @@
     "translation": "/%original_path%/%two_letters_code%.json",
   },
   {
-    "source": "/semcore/widget-empty/src/DontKnowError/translations/en.json",
-    "translation": "/%original_path%/%two_letters_code%.json",
-  },
-  {
-    "source": "/semcore/widget-empty/src/KnowError/translations/en.json",
+    "source": "/semcore/widget-empty/src/Error/translations/en.json",
     "translation": "/%original_path%/%two_letters_code%.json",
   },
   {
     "source": "/semcore/widget-empty/src/NoData/translations/en.json",
-    "translation": "/%original_path%/%two_letters_code%.json",
-  },
-  {
-    "source": "/semcore/widget-empty/src/SetupTool/translations/en.json",
     "translation": "/%original_path%/%two_letters_code%.json",
   },
   {
