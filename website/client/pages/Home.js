@@ -363,7 +363,7 @@ const renderSwitch = (value, data) => {
     case 'filters':
       return getTabByTitle(['Filters'], data);
     case 'documentation':
-      return getTabByTitle(['Utils 🛠', 'Docs', 'Bug reporting'], data);
+      return getTabByTitle(['Utils 🛠', 'Docs', 'Bugs and requests'], data);
     default:
       return null;
   }
