@@ -1,0 +1,14 @@
+{
+  "title": "Thêm dự án mới",
+  "inputDomainLabel": "Domain của dự án",
+  "inputDomainError": "Vui lòng nhập domain hợp lệ",
+  "inputDomainPlaceholder": "Nhập domain dự án",
+  "inputNameLabel": "Tên dự án",
+  "inputNameErrorLength": "Độ dài nên ít hơn 256 kí tự.",
+  "inputNameErrorCharacters": "Bạn chỉ có thể nhập chữ cái, số và thời gian.",
+  "inputNamePlaceholder": "Nhập tên dự án",
+  "description": "Khi dự án đã được tạo, domain này không thể thay đổi. Chỉ có thể chỉnh sửa domain phụ.",
+  "buttonCreate": "Tạo dự án",
+  "buttonCancel": "Hủy",
+  "sharingCheckboxLegend": "Chia sẻ dự án khi hoàn thành thiết lập"
+}
