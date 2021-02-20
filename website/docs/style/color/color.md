@@ -79,6 +79,6 @@ The recommended maximum number of colors on a chart is 30.
 
 30 and more colors are for the complex cases where you need a large number of colors that will be substituted into the chart by the system.
 
-> You can also see an additional color palette in the Figma library (soon there will be a link).
+> You can also see an additional color palette in the [Figma library](https://www.figma.com/community/file/936940441147792750/Semrush-%E2%80%A2-Charts-library).
 
 @page color-code

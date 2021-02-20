@@ -149,7 +149,7 @@ Color of the X axis and auxiliary active lines on the grid (if available) — `$
 
 `Margin-bottom` to the X axis values is 12px.
 
-### МMinimum and maximum number of axes
+### Minimum and maximum number of axes
 
 To make it easier to track changes, 3-5 horizontal guide lines are displayed. In this case, it is recommended to round the values on the axes, like 25K − 20K − 15K − 10K, instead of using exact values like 24.8 K − 20.0 K − 15.2 K − 10.2 K
 
