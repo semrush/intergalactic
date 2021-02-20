@@ -13,6 +13,10 @@ import ja from './translations/ja.json';
 import pt from './translations/pt.json';
 import ru from './translations/ru.json';
 import zh from './translations/zh.json';
+import ko from './translations/ko.json';
+import vi from './translations/vi.json';
+
+const i18n = { de, en, es, fr, it, ja, ru, zh, pt, ko, vi };
 
 export interface IPageNotFoundProps extends IWithI18nEnhanceProps {
   /**
@@ -26,19 +30,9 @@ class RootPageNotFound extends Component<IPageNotFoundProps> {
   static displayName = 'Maintenance';
   static enhance = [i18nEnhance()];
   static defaultProps = {
+    i18n,
     icon: getIconPath('page_not_found'),
     homeLink: '/',
-    i18n: {
-      de,
-      en,
-      es,
-      fr,
-      it,
-      ja,
-      pt,
-      ru,
-      zh,
-    },
   };
 
   render() {
