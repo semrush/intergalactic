@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.3.0] - 2021-02-20
+
+### Added
+
+- Added support two languages `Korean, Vietnamese`.
+
 ## [2.2.1] - 2021-02-17
 
 ### Fixed
