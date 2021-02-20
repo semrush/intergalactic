@@ -9,7 +9,7 @@ import {
   ProjectNotFound,
 } from '@semcore/errors';
 
-const options = ['de', 'en', 'es', 'fr', 'it', 'ja', 'pt', 'ru', 'zh'].map((o) => ({
+const options = ['de', 'en', 'es', 'fr', 'it', 'ja', 'pt', 'ru', 'zh', 'ko', 'vi'].map((o) => ({
   value: o,
   children: o,
 }));
