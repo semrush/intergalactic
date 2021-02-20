@@ -24,8 +24,13 @@ import it from './translations/it.json';
 import ja from './translations/ja.json';
 import ru from './translations/ru.json';
 import zh from './translations/zh.json';
+import pt from './translations/pt.json';
+import ko from './translations/ko.json';
+import vi from './translations/vi.json';
 
 import style from './style/pagination.shadow.css';
+
+const i18n = { de, en, es, fr, it, ja, ru, zh, pt, ko, vi };
 
 const KEY_ENTER = 13;
 
@@ -45,26 +50,6 @@ function formatThousands(value) {
 
   return output;
 }
-
-// export interface IPaginationI18n {
-//   /**
-//    * Button label to go to the previous page
-//    */
-//   prevPageLabel: string;
-//   /**
-//    * Button label to go to the next page
-//    */
-//   nextPageLabel: string;
-//   /**
-//    * Input label of the current page
-//    */
-//   pageInputLabel: string;
-//   /**
-//    * Total pages label
-//    */
-//   totalPagesLabel: string;
-//   [key: string]: string;
-// }
 
 export interface IPaginationProps extends IBoxProps, IWithI18nEnhanceProps {
   /**
@@ -128,6 +113,7 @@ class PaginationRoot extends Component<IPaginationProps, IPaginationState> {
   static defaultProps = () => ({
     defaultCurrentPage: 1,
     defaultTotalPages: 1,
+    i18n,
     children: (
       <>
         <Pagination.FirstPage />
@@ -137,16 +123,6 @@ class PaginationRoot extends Component<IPaginationProps, IPaginationState> {
         <Pagination.TotalPages />
       </>
     ),
-    i18n: {
-      de,
-      en,
-      es,
-      fr,
-      it,
-      ja,
-      ru,
-      zh,
-    },
   });
   static style = style;
   static enhance = [i18nEnhance()];
