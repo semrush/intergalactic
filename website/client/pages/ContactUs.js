@@ -10,7 +10,7 @@ const Content = styled.div`
   position: relative;
   grid-template-rows: 1fr 6fr;
   grid-template-columns: repeat(3, 1fr);
-  padding: 152px 165px 250px;
+  padding: 152px 100px 250px;
   max-width: 1140px;
   margin: 0 auto;
   h2 {
@@ -29,7 +29,7 @@ const Content = styled.div`
   a {
     color: #1a55ed;
     text-decoration: none;
-    margin: 0 5px;
+    margin-left: 5px;
     &:hover {
       text-decoration: underline;
     }
@@ -39,7 +39,7 @@ const Content = styled.div`
     grid-template-columns: 1fr;
     padding: 152px 55px 96px;
   }
-  @media (max-width: 320px) {
+  @media (max-width: 414px) {
     grid-template-rows: 0fr 2fr 3fr 2fr;
     padding: 136px 35px 96px;
     h2 {
@@ -58,7 +58,7 @@ const Header = styled.div`
   @media (max-width: 768px) {
     grid-column: 1;
   }
-  @media (max-width: 320px) {
+  @media (max-width: 414px) {
     text-align: left;
   }
 `;
@@ -98,6 +98,7 @@ const Text = styled.div`
   background-color: #f6f7f8;
   padding: 12px 24px 24px;
   margin-top: 24px;
+  border-radius: 6px;
 `;
 
 const Subtitle = styled.div`
@@ -124,9 +125,9 @@ const Title = styled.div`
 const Postman = styled.img`
   position: absolute;
   width: 480px;
-  right: 35px;
+  right: 0px;
   bottom: 40px;
-  @media (max-width: 768px) {
+  @media (max-width: 1024px) {
     display: none;
   }
 `;
