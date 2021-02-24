@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.3.1] - 2021-02-24
+
+### Fixed
+
+- Fixed set `weekStart` for component `Calendar`. Now you can change `weekStart` for global object `Ls`.
+
 ## [2.3.0] - 2021-02-20
 
 ### Added
