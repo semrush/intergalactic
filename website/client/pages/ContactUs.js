@@ -4,6 +4,7 @@ import postman from '../static/space/email-pic.svg';
 import PinMapM from '@semcore/icon/lib/PinMap/m';
 import GitHubM from '@semcore/icon/lib/color/GitHub/m';
 import MailOutlineM from '@semcore/icon/lib/MailOutline/m';
+import Helmet from 'react-helmet';
 
 const Content = styled.div`
   display: grid;
@@ -133,93 +134,102 @@ const Postman = styled.img`
 `;
 
 const Contacts = () => (
-  <Content>
-    <Header>
-      <h2>Contact Us</h2>
-      Have any questions? We’d love to hear from you.
-    </Header>
-    <Github>
-      <Title>
-        <GitHubM mr={2} />
-        GitHub
-      </Title>
-      Any developer can contribute to the development of our design-system via pull-request and
-      <a href="https://github.com/semrush/intergalactic" target="_blank" rel="noopener noreferrer">
-        issue on the GitHub
-      </a>
-      .
-      <Text>
-        <Subtitle>Bug reporting & Improvements</Subtitle>
-        Find a bug — good job! ✨
-        <ul>
-          <li>
-            Make sure that issue tracker doesn`t contain the similar issue and create one with the
-            steps to reproduce the error.
-          </li>
-          <li>Have a solution — great! We`ll be happy to review your pull-request.</li>
-          <li>
-            Don`t forget to follow
-            <a
-              href="https://github.com/semrush/intergalactic"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              contributing guide
-            </a>
-            . It will make our joint work more effective!
-          </li>
-        </ul>
-      </Text>
-    </Github>
-    <Email>
-      <Title>
-        <MailOutlineM mr={2} />
-        Email
-      </Title>
-      Feel free to drop us a line at
-      <a href="mailto:ui-kit-team@semrush.com" target="_blank">
-        ui-kit-team@semrush.com
-      </a>{' '}
-      in case:
-      <Text>
-        <Subtitle>Send a request to develop a new component</Subtitle>
-        Before sending email, check our
-        <a href="https://i.semrush.com/internal/roadmap/" rel="noopener noreferrer">
-          Roadmap
+  <>
+    <Helmet>
+      <title>Contact Us | Contacts</title>
+    </Helmet>
+    <Content>
+      <Header>
+        <h2>Contact Us</h2>
+        Have any questions? We’d love to hear from you.
+      </Header>
+      <Github>
+        <Title>
+          <GitHubM mr={2} />
+          GitHub
+        </Title>
+        Any developer can contribute to the development of our design-system via pull-request and
+        <a
+          href="https://github.com/semrush/intergalactic"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          issue on the GitHub
         </a>
-        , perhaps needed component is already there. If not, share with some details:
-        <ul>
-          <li>Cases and requirements</li>
-          <li>Guide and mockups</li>
-          <li>Interactive prototype if there is an animation (any format: gif, axure, etc)</li>
-        </ul>
-        <Subtitle>Leave feedback</Subtitle>
-        We care about usability and will be happy to receive feedback on both the site and the
-        experience with our components.
-        <Subtitle>Ask a question</Subtitle>
-        Just write your message 🙂 Your email won`t be lost. We'll get back to you as soon as we
-        can.
-      </Text>
-    </Email>
-    <Address>
-      <Title>
-        <PinMapM mr={2} />
-        Address
-      </Title>
-      You can find us in St. Petersburg, Zastavskaya street, 22k2, office 516B.
-      <Text>
-        <Subtitle>Visit us</Subtitle>
-        If you want live dialogue, welcome to our office from 12:00 PM – 6:00 PM, Monday – Friday.{' '}
-        <br />
-        <br />
-        But please let us know about your visit in advance because now we mostly work from home.
-        <Subtitle>Send us a postcard</Subtitle>
-        If suddenly you want to do something nice for us, just send a couple of words on a postcard
-        from your city 🙂
-      </Text>
-    </Address>
-    <Postman src={postman} />
-  </Content>
+        .
+        <Text>
+          <Subtitle>Bug reporting & Improvements</Subtitle>
+          Find a bug — good job! ✨
+          <ul>
+            <li>
+              Make sure that issue tracker doesn`t contain the similar issue and create one with the
+              steps to reproduce the error.
+            </li>
+            <li>Have a solution — great! We`ll be happy to review your pull-request.</li>
+            <li>
+              Don`t forget to follow
+              <a
+                href="https://github.com/semrush/intergalactic"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                contributing guide
+              </a>
+              . It will make our joint work more effective!
+            </li>
+          </ul>
+        </Text>
+      </Github>
+      <Email>
+        <Title>
+          <MailOutlineM mr={2} />
+          Email
+        </Title>
+        Feel free to drop us a line at
+        <a href="mailto:ui-kit-team@semrush.com" target="_blank">
+          ui-kit-team@semrush.com
+        </a>{' '}
+        in case:
+        <Text>
+          <Subtitle>Send a request to develop a new component</Subtitle>
+          Before sending email, check our
+          <a href="https://i.semrush.com/internal/roadmap/" rel="noopener noreferrer">
+            Roadmap
+          </a>
+          , perhaps needed component is already there. If not, share with some details:
+          <ul>
+            <li>Cases and requirements</li>
+            <li>Guide and mockups</li>
+            <li>Interactive prototype if there is an animation (any format: gif, axure, etc)</li>
+          </ul>
+          <Subtitle>Leave feedback</Subtitle>
+          We care about usability and will be happy to receive feedback on both the site and the
+          experience with our components.
+          <Subtitle>Ask a question</Subtitle>
+          Just write your message 🙂 Your email won`t be lost. We'll get back to you as soon as we
+          can.
+        </Text>
+      </Email>
+      <Address>
+        <Title>
+          <PinMapM mr={2} />
+          Address
+        </Title>
+        You can find us in St. Petersburg, Zastavskaya street, 22k2, office 516B.
+        <Text>
+          <Subtitle>Visit us</Subtitle>
+          If you want live dialogue, welcome to our office from 12:00 PM – 6:00 PM, Monday – Friday.{' '}
+          <br />
+          <br />
+          But please let us know about your visit in advance because now we mostly work from home.
+          <Subtitle>Send us a postcard</Subtitle>
+          If suddenly you want to do something nice for us, just send a couple of words on a
+          postcard from your city 🙂
+        </Text>
+      </Address>
+      <Postman src={postman} />
+    </Content>
+  </>
 );
 
 export default Contacts;
