@@ -116,7 +116,7 @@ function Footer() {
         <a href="https://www.semrush.com/company/careers" target="_blank" rel="noopener noreferrer">
           Careers
         </a>
-        {/* <NavLink to="/contacts/contact-info/">Contact Us</NavLink> */}
+        <NavLink to="/contacts/contact-info/">Contact Us</NavLink>
       </Links>
 
       <Logo>
