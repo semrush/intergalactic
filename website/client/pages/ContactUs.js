@@ -169,7 +169,7 @@ const Contacts = () => (
             <li>
               Don`t forget to follow
               <a
-                href="https://github.com/semrush/intergalactic"
+                href="https://github.com/semrush/intergalactic/blob/master/CONTRIBUTING.md"
                 target="_blank"
                 rel="noopener noreferrer"
               >
