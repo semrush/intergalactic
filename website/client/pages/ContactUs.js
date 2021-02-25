@@ -148,7 +148,7 @@ const Contacts = () => (
           <GitHubM mr={2} />
           GitHub
         </Title>
-        Any developer can contribute to the development of our design-system via pull-request and
+        Any developer can contribute via pull-request and
         <a
           href="https://github.com/semrush/intergalactic"
           target="_blank"
