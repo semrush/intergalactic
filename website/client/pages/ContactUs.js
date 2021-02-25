@@ -80,6 +80,7 @@ const Email = styled.div`
   @media (max-width: 768px) {
     grid-row: 3;
     grid-column: 1;
+    margin: 0;
     margin-top: 40px;
   }
 `;
@@ -91,6 +92,7 @@ const Address = styled.div`
   @media (max-width: 768px) {
     grid-row: 4;
     grid-column: 1;
+    margin: 0;
     margin-top: 40px;
   }
 `;
@@ -118,6 +120,7 @@ const Title = styled.div`
   line-height: 120%;
   color: #000000;
   margin-bottom: 8px;
+  white-space: nowrap;
   @media (max-width: 768px) {
     font-size: 24px;
   }
