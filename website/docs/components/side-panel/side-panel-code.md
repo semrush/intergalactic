@@ -29,3 +29,7 @@ By default, the component is rendered with an overlay, but you can change this w
 By default, the component is rendered to the portal, to the end of the body. You can redefine this behavior with [`PortalProvider`](/utils/portal/) and disable it with `disablePortal`.
 
 @example portal
+
+@## Iframe
+
+**We recommend you not to use this component inside the iframe.** Use [modal window](/components/modal/) or [dropdown](/components/dropdown/) instead.
