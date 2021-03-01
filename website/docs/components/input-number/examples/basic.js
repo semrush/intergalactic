@@ -44,7 +44,7 @@ class Demo extends React.PureComponent {
               max={this.maxRange}
               placeholder="From"
               value={from}
-              onChange={this.handleChange('From')}
+              onChange={this.handleChange('from')}
               onBlur={this.handleBlur}
             />
             <InputNumber.Controls />
