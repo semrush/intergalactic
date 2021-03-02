@@ -120,6 +120,12 @@ beta: true
 
 @example responsive
 
+@## Легенда графика
+
+Имплиминтация работы кликабельной легенды для чартов по [гайду](/data-display/chart-legend/)
+
+@example legend
+
 @page line
 @page bar
 @page d3-chart-api
