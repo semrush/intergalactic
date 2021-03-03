@@ -25,9 +25,6 @@ const UpdateWrapper = styled.div`
   grid-template-columns: 1fr 2fr;
   margin-left: -116px;
   @media (max-width: 768px) {
-    margin-left: -238px;
-  }
-  @media (max-width: 320px) {
     grid-template-columns: 1fr;
     margin-left: 0;
   }
@@ -46,7 +43,7 @@ const Header = styled.h2`
   font-family: FactorA-Bold;
   font-size: 50px;
   line-height: 110%;
-  margin: 80px 0 8px;
+  margin: 80px 0 16px;
   @media (max-width: 768px) {
     max-width: 400px;
   }
@@ -189,9 +186,7 @@ function UpdateBlock() {
       <UpdatesImg src={updatesImg} />
       <Info>
         <Header>All updates in your inbox</Header>
-        <Box mb={8}>
-          We will send only information about new releases and component versions. And nothing more!
-        </Box>
+        <Box mb={8}>Just new releases and component versions. And nothing more!</Box>
         {status === 'subscribed' && (
           <Subscribed>
             <CheckL color={'#45E0A8'} />

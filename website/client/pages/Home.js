@@ -326,10 +326,16 @@ const UpdatesButton = styled(LinkScroll)`
   position: fixed;
   top: 439px;
   right: -21px;
-  width: 136px;
+  width: 120px;
   z-index: 999;
-  @media (max-width: 320px) {
+  @media (max-width: 768px) {
     display: none;
+  }
+  &:hover {
+    cursor: pointer;
+  }
+  img {
+    margin-top: 12px;
   }
 `;
 
