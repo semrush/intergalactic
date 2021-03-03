@@ -304,6 +304,24 @@ const TableOverlay = styled.div`
   }
 `;
 
+const ButtonUp = styled.span`
+  cursor: pointer;
+  position: sticky;
+  top: calc(100vh - 11px - 72px);
+  margin-bottom: 8px;
+  margin-left: calc(100% - 72px);
+  padding: 25px;
+  display: inline-flex;
+  background: #d1d4db;
+  border-radius: 20px 0 0 20px;
+  svg {
+    fill: #fff;
+  }
+  &:hover {
+    background-color: #898d9a;
+  }
+`;
+
 const UpdatesButton = styled(LinkScroll)`
   position: fixed;
   top: 439px;
