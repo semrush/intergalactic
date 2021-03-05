@@ -135,6 +135,7 @@ async function generateChangelogs(startDate, endDate = new Date()) {
     });
     return acc;
   }, {});
+  const zeroPad = (num, places) => String(num).padStart(places, '0');
   const tmp = Object.keys(changeLogsByComponent)
     .sort()
     .reduce((tmp, name) => {
@@ -147,7 +148,7 @@ async function generateChangelogs(startDate, endDate = new Date()) {
         });
       tmp += '\n';
       return tmp;
-    }, `## [VERSION] - ${now.getFullYear()}-${now.getMonth() + 1}-${now.getDate()}\n\n`);
+    }, `## [VERSION] - ${now.getFullYear()}-${zeroPad(now.getMonth() + 1, 2)}-${zeroPad(now.getDate(), 2)}\n\n`);
 
   fse.outputFileSync(
     './CHANGELOG.md',
