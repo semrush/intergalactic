@@ -1,23 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import ReactMarkdown from 'react-markdown';
 import styled from 'styled-components';
 import Input from '@semcore/input';
 import Button from '@semcore/button';
-import Changelog from './Changelog';
 import updatesImg from '../static/space/updates.svg';
 import NavLink from './NavLink';
 import Tooltip from '@semcore/tooltip';
 import { css } from '@semcore/core';
-import { Text } from '@semcore/typography';
 import { Box } from '@semcore/flex-box';
 import CheckL from '@semcore/icon/lib/Check/l';
 import axios from 'axios';
-import Loadable from 'react-loadable';
-import FormatText from './FormatText';
-import ChangelogByComponent from './ChangelogByComponent';
-import RenderTags from '../tags';
-const mailchimp = require('@mailchimp/mailchimp_marketing');
-import release2 from '../../../release/CHANGELOG.md';
 
 const UpdateWrapper = styled.div`
   display: grid;
@@ -148,38 +139,33 @@ function UpdateBlock() {
   const [value, setValue] = useState('');
   const [error, setError] = useState('');
   const [status, setStatus] = useState('initial');
+  const [touched, setTouched] = useState(false);
 
   const handleInput = (value) => {
+    setValue(value);
     if (!/.+@.+\..+/i.test(value)) {
       setError("Email don't valid");
     } else {
-      setTimeout(() => setStatus('subscribed'), 3000);
+      setError('');
     }
   };
 
-  const handleFocus = () => setError('');
+  const handleBlur = () => setTouched(false);
 
-  const handleChange = (value) => setValue(value);
+  const handleFocus = () => setTouched(true);
+
+  const subscribe = () => setTimeout(() => setStatus('subscribed'), 1000);
 
   const handleSubmit = (event) => {
     event.preventDefault();
     axios({
-      method: 'patch',
-      url: 'mailer/patch',
+      method: 'post',
+      url: 'mailer/post',
       data: { email: value },
     })
       .then((response) => console.log(response))
       .catch((error) => console.log(error));
   };
-
-  let releaseText;
-  useEffect(() => {
-    fetch(release2)
-      .then((response) => response.text())
-      .then((text) => {
-        releaseText = text;
-      });
-  }, []);
 
   return (
     <UpdateWrapper id="updBlock">
@@ -198,7 +184,8 @@ function UpdateBlock() {
             <form onSubmit={handleSubmit}>
               <Tooltip
                 title={'Please enter a valid email.'}
-                visible={!!error}
+                visible={!!error && touched}
+                interaction="click"
                 theme="warning"
                 styles={styles}
                 placement="top-start"
@@ -208,9 +195,9 @@ function UpdateBlock() {
                     name="email"
                     value={value}
                     placeholder="Your email "
-                    onChange={handleChange}
+                    onChange={handleInput}
                     onFocus={handleFocus}
-                    onBlur={() => handleInput(value)}
+                    onBlur={handleBlur}
                   />
                 </InputSubscribe>
               </Tooltip>
@@ -218,14 +205,12 @@ function UpdateBlock() {
                 styles={ButtonSubscribe}
                 size="l"
                 type="submit"
-                onClick={() => handleInput(value)}
-                disabled={!!error}
+                onClick={subscribe}
+                disabled={!!error || value === ''}
               >
                 I want all updates
               </Button>
             </form>
-
-            {/*<ReactMarkdown children={release2} />*/}
             <Terms>
               By clicking the button you agree to the
               <NavLink to="/terms/terms-of-use/">Terms of use</NavLink> and

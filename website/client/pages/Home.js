@@ -15,8 +15,7 @@ import layout from '../static/space/layout.svg';
 import principles from '../static/space/principles.svg';
 import style from '../static/space/style.svg';
 import ArrowXS from '@semcore/icon/lib/ArrowRight/xs';
-import { Link as LinkScroll, animateScroll } from 'react-scroll';
-import ArrowUpM from '@semcore/icon/lib/ArrowUp/m';
+import { Link as LinkScroll } from 'react-scroll';
 import { Box } from '@semcore/flex-box';
 import updatesButton from '../static/space/search-for-updates.svg';
 import { css } from '@semcore/core';
@@ -304,24 +303,6 @@ const TableOverlay = styled.div`
   }
 `;
 
-const ButtonUp = styled.span`
-  cursor: pointer;
-  position: sticky;
-  top: calc(100vh - 11px - 72px);
-  margin-bottom: 8px;
-  margin-left: calc(100% - 72px);
-  padding: 25px;
-  display: inline-flex;
-  background: #d1d4db;
-  border-radius: 20px 0 0 20px;
-  svg {
-    fill: #fff;
-  }
-  &:hover {
-    background-color: #898d9a;
-  }
-`;
-
 const UpdatesButton = styled(LinkScroll)`
   position: fixed;
   top: 439px;
@@ -550,9 +531,6 @@ function Home() {
             Updates?
             <img src={updatesButton} alt="Updates button" />
           </UpdatesButton>
-          <ButtonUp onClick={() => animateScroll.scrollToTop({ smooth: true })}>
-            <ArrowUpM interactive />
-          </ButtonUp>
         </>
       )}
     </>
