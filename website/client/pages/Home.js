@@ -467,8 +467,7 @@ function Home() {
               <Title>We unify Semrush interfaces</Title>
               <Desc>
                 Intergalactic is a constantly developing system of UI components, guidelines and UX
-                patterns. With all these tools you can build your own product based on the Semrush
-                platform.
+                patterns. With all these tools you can build your own product.
               </Desc>
               <WhaleImg src={whale} alt="Whale" />
               <Started>
