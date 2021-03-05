@@ -48,7 +48,7 @@ Our type scale is based on the modular scale with the base of a 12px font size a
 - h1, h1, h3, h4 — used for hero blocks, big advertising blocks and notices, as well as product landings and the ProductHead component
 - h5, h6 — used for smaller blocks and notices, as well as widgets inside products
 
-All our product interfaces and commonly used components are built with a 12px font size as the basis. But we strongly suggest that you use 14px and 16px sizes in for text messages across your interfaces to make them easy to read for the users.
+All our product interfaces and commonly used components are built with a 12px font size as the basis. **But we strongly recommend you to use 14px and 16px sizes for text messages across your interfaces to make them easy to read for the users.**
 
 See [Typography](/style/typography/) if want to learn more about our typography rules and recommendations.
 
@@ -73,7 +73,7 @@ Go to [Grid system](/layout/grid-system) for a detailed description of this comp
 
 @## Breakpoints and grids
 
-> **TL;DR or main thoughts**: we build our interface as desktop-first, since there is a lot of data visualization and explaining text.
+> **TL;DR or main thoughts**: we build our interface as desktop-first, since there is a lot of data visualization and explaining messages.
 
 The main breakpoints that we recommend to use in our interfaces are:
 
