@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 import { GraphQLModule } from '@nestjs/graphql';
-import { AppController } from './app.controller';
+import { AppController, Mailer } from './app.controller';
 import { PageModule } from './page/page.module';
 import { DocumentationModule } from './documentation/documentation.module';
 
@@ -17,6 +17,6 @@ import { DocumentationModule } from './documentation/documentation.module';
     DocumentationModule,
   ],
   providers: [],
-  controllers: [AppController],
+  controllers: [AppController, Mailer],
 })
 export class AppModule {}
