@@ -1,5 +1,5 @@
 ---
-title: D3 Chart
+title: D3 Chart (RU)
 fileSource: d3-chart
 tabName: Concept
 beta: true
