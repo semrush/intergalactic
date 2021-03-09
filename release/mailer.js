@@ -19,7 +19,7 @@ module.exports = task('Send mail', async (opt) => {
 
   const changelogPath = path.resolve(opt.root, 'CHANGELOG.md');
 
-  const now = new Date('2021-02-16');
+  const now = new Date();
   const year = new Intl.DateTimeFormat('ru', { year: 'numeric' }).format(now);
   const month = new Intl.DateTimeFormat('ru', { month: '2-digit' }).format(now);
   const day = new Intl.DateTimeFormat('ru', { day: '2-digit' }).format(now);
@@ -87,11 +87,11 @@ const updateEmail = async () => {
         template_id: +process.env.MAILCHIMPTEMPLATE,
         subject_line: 'updates',
         from_name: 'ui-kit-team',
+        reply_to: 'ui-kit-team@semrush.com',
         title: 'Intergalactic',
       },
     });
     campaignId = response.id;
-    console.log(response);
   } catch (error) {
     console.log(error);
   }

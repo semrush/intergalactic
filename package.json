@@ -24,6 +24,7 @@
     ]
   },
   "devDependencies": {
+    "@mailchimp/mailchimp_marketing": "^3.0.30",
     "dotenv": "^8.2.0",
     "@types/jest": "^25.1.2",
     "@types/jest-image-snapshot": "^2.11.1",
