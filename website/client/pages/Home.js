@@ -66,7 +66,7 @@ const PromoWrapper = styled.div`
 
 const Overlay = styled.div`
   max-width: 1140px;
-  padding: 80px 32px 0;
+  padding: 80px 32px 120px;
   position: relative;
   margin: 0 auto;
 `;
