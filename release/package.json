@@ -8,7 +8,6 @@
     "test": "jest"
   },
   "dependencies": {
-    "@mailchimp/mailchimp_marketing": "^3.0.30",
     "@semcore/accordion": "3.1.1",
     "@semcore/animation": "1.2.1",
     "@semcore/badge": "2.2.0",
@@ -72,8 +71,7 @@
     "@semcore/tooltip": "4.1.0",
     "@semcore/typography": "3.1.0",
     "@semcore/utils": "3.27.0",
-    "@semcore/widget-empty": "2.4.0",
-    "dotenv": "^8.2.0"
+    "@semcore/widget-empty": "2.4.0"
   },
   "devDependencies": {
     "fs-extra": "^9.0.1",
