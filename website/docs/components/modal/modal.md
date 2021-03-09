@@ -8,7 +8,7 @@ tabName: Guide
 
 @## Description
 
-**Modal window** is a component that appears on top of the page being viewed. It displays important information or requests a response from the user. It blocks all functions of the parent window. The modal window remains on the screen until the user performs the required action or closes the window.
+**Modal window** is a component that appears on top of the page to show the important information or request a response from the user. It blocks all functions of the parent window. The modal window remains on the screen until the user performs the required action or closes the window.
 
 > 🐈 A modal dialog is like my cat, Emma — who meows at 7am every morning to prompt me to feed her. I might be trying to sleep or get ready for the day, but my cat will place herself in front of me, then meow louder and incessantly until I look at her. I have to stop what I am doing to address the cat immediately if I ever hope to finish my task.
 >

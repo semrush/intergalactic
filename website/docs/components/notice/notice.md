@@ -8,7 +8,7 @@ tabName: Guide
 
 @## Description
 
-**Notice** is a global notification of the user about events related to their work in the services.
+**Notice** is a component for messages about events related to the user's work in the products.
 
 The notice shall meet three criteria. If it doesn't respond to at least one, it's not a notice.
 

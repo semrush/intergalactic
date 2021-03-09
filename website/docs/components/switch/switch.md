@@ -8,7 +8,7 @@ tabName: Guide
 
 @## Description
 
-**Switch** is a control for instant switching of a certain option/state/function.
+**Switch** is a control for instant switching between two options/states/functions.
 
 It should be used in cases when on/off should occur instantly, without reloading the page and clicking the confirmation button.
 

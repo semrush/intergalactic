@@ -6,7 +6,7 @@ tabName: Guide
 
 @## Description
 
-**Card** is a component used for visually grouping other components into cards/blocks.
+**Card** is a component used for visually grouping other components into cards/blocks/widgets.
 
 > It seems to be one of the simplest components in our library so far 🤓
 

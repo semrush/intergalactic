@@ -8,7 +8,7 @@ tabName: Guide
 
 @## Description
 
-**Tooltip** is a modeless popover designed to display all sorts of tips in tools.
+**Tooltip** is a modeless popover to display all sorts of tips in tools.
 
 Differences from [Dropdown](/components/dropdown/):
 

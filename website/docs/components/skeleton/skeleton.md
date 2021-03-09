@@ -8,7 +8,7 @@ tabName: Guide
 
 > 💡 This component is one of the components that displays the download and reaction to user actions in the interface. For general rules on such components, see the [Loading patterns](/patterns/loading-states/).
 
-**Skeleton** is a component for displaying the structure of a block and/or a page during their initial loading. Skeletons are needed to form user's ideas about downloaded data.
+**Skeleton** is a component for displaying the structure of a widget and/or a page during their initial loading. Skeletons are needed to form user's mental map about data being loaded.
 
 The "bone" is an element of the skeleton.
 

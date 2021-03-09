@@ -8,7 +8,7 @@ tabName: Guide
 
 @## Description
 
-**SpinContainer** is a component for displaying [spinner](/components/spin/) around a component block.
+**SpinContainer** is a component for displaying [spinner](/components/spin/) around a component/widget/page.
 
 @## Appearance
 
