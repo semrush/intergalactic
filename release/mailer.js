@@ -36,20 +36,22 @@ module.exports = task('Send mail', async (opt) => {
   mailText = mail(releaseDate, releaseVersion, chg.join(''));
 
   await updateEmail();
-  // await sendCampaign();
+  await sendCampaign();
 
   return opt;
 });
 
 function styles(label) {
+  const commonStyle =
+    'color:#FFFFFF;border-radius:6px;width:64px;height:20px;font-size:10px;text-align:center;padding-top:5px;padding-bottom:5px;';
   if (label[0] === 'Added')
-    return 'color:#FFFFFF;background:#00BC98;border-radius:6px;width:64px;height:20px;font-size:10px;text-align:center;padding-top:5px;padding-right:15px;padding-bottom:5px;padding-left:15px;';
+    return commonStyle + 'background:#00BC98;padding-right:15px;padding-left:15px;';
   else if (label[0] === 'Changed')
-    return 'color:#FFFFFF;background:#FF9400;border-radius:6px;width:64px;height:20px;font-size:10px;text-align:center;padding-top:5px;padding-right:9px;padding-bottom:5px;padding-left:9px;';
+    return commonStyle + 'background:#FF9400;padding-right:9px;padding-left:9px;';
   else if (label[0] === 'Fixed')
-    return 'color:#FFFFFF;background:#0070CC;border-radius:6px;width:64px;height:20px;font-size:10px;text-align:center;padding-top:5px;padding-right:17px;padding-bottom:5px;padding-left:17px;';
+    return commonStyle + 'background:#0070CC;padding-right:17px;padding-left:17px;';
   else if (label[0] === 'BREAK')
-    return 'color:#FFFFFF;background:#F71939;border-radius:6px;width:64px;height:20px;font-size:10px;text-align:center;padding-top:5px;padding-right:13px;padding-bottom:5px;padding-left:13px;';
+    return commonStyle + 'background:#F71939;padding-right:13px;padding-left:13px;';
 }
 
 function buildHtml(chs) {
@@ -80,9 +82,11 @@ const updateEmail = async () => {
     server: process.env.MAILCHIMPSERVER,
   });
   try {
-    // const response = await mailchimp.templates.updateTemplate(process.env.MAILCHIMPTEMPLATE, {html: mailText});
     const response = await mailchimp.campaigns.create({
       type: 'regular',
+      recipients: {
+        list_id: process.env.LISTID,
+      },
       settings: {
         template_id: +process.env.MAILCHIMPTEMPLATE,
         subject_line: 'updates',
@@ -93,7 +97,7 @@ const updateEmail = async () => {
     });
     campaignId = response.id;
   } catch (error) {
-    console.log(error);
+    console.log(error.response.text, 'error');
   }
 };
 
@@ -104,8 +108,8 @@ const sendCampaign = async () => {
   });
   try {
     const response = await mailchimp.campaigns.send(campaignId);
-    console.log(response, 'response');
+    console.log(response, 'send successful');
   } catch (error) {
-    console.log(error);
+    console.log(error.response.text, 'error');
   }
 };
