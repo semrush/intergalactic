@@ -10,7 +10,7 @@ tabName: Guide
 
 @## Description
 
-Dropdown is a component that is responsible for the area dropping out of a clickable item (trigger). [Select](/components/select/), [Button](/components/button/), [Input](/components/input/) or any other component may be a trigger.
+Dropdown is a component responsible for the area dropping out of a clickable item (trigger). [Select](/components/select/), [Button](/components/button/), [Input](/components/input/) or any other component may be a trigger.
 
 ### Composition
 

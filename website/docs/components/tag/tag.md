@@ -10,7 +10,7 @@ tabName: Guide
 
 **Tag** is a word or phrase for thematic grouping of information in the interface (in tables, filters, cards, etc.).
 
-It is usually put by the system or by the user himself.
+It is usually set by the system or by the user himself.
 
 @## Appearance
 

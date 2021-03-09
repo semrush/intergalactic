@@ -8,7 +8,7 @@ tabName: Guide
 
 @## Description
 
-**TabPanel** is a component for navigating inside a report and grouping heterogeneous content. It is always placed under the [ProductHead](/components/product-head) of the report.
+**TabPanel** is a component for navigating inside a report and grouping heterogeneous content. It is usually placed in the [ProductHead](/components/product-head) of the report.
 
 > 💡 **Do not use TabPanel for basic navigation.** For this purpose, use the left menu as it is more important in terms of visual hierarchy of the page. Do not use TabPanel for switching states, use [Switch](/components/switch/) and [Radio](/components/radio/) for it.
 
