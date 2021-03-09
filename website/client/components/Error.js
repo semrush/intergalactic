@@ -52,7 +52,7 @@ export default (props) => (
       <p>
         If you see this page all the time, feel free to drop us <br /> a line at{' '}
         <a href="mailto:ui-kit-team@semrush.com">ui-kit-team@semrush.com</a>
-        or or open an{' '}
+        or open an{' '}
         <a
           href="https://github.com/semrush/intergalactic"
           target="_blank"
