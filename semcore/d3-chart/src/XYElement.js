@@ -9,7 +9,7 @@ import hoistNonReactStatics from 'hoist-non-react-statics';
 
 function createElementRender() {
   const Element = React.forwardRef(function(
-    { render: Tag, childrenPosition = 'below', x: xS, y: yS, ...source },
+    { render, tag, childrenPosition = 'below', x: xS, y: yS, ...source },
     ref,
   ) {
     const {
@@ -35,6 +35,8 @@ function createElementRender() {
         ...source,
       },
     );
+
+    const Tag = typeof render === 'string' ? mergedProps.tag || render : render;
 
     if (typeof children === 'function') {
       const _child = mergedProps.children;
