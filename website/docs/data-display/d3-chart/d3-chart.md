@@ -130,3 +130,9 @@ beta: true
 @page bar
 @page d3-chart-api
 @page d3-chart-changelog
+
+@## Начальная загрузка
+
+Во время первоначальной загрузки чартов вы можете использовать вместо них [Skeleton](/components/skeleton/) c соответствующим типом чарта. Если у чарта есть заголовок, то он должен отображаться во время загрузки.
+
+Пример использования вы можете посмотреть [здесь](https://i.semrush.com/data-display/line-chart/line-chart-code/#ac26f2).
