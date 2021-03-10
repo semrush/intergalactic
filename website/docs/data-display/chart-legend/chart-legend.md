@@ -48,9 +48,13 @@ A static legend is a circle of the same size as the checkbox in the clickable le
 
 @## Interaction
 
-When you hover over the checkbox in the legend, the line increases (`stroke-width` changes from 3 to 5).
+By hovering on the checkbox, we will highlight the data on the chart by changing the transparency of the lines to 50% for the rest of the data categories.
 
 ![legend hover](static/legend-hover.png)
+
+If we disabled some data in the legend, then the data on the chart doesnэt change its transparency.
+
+![legend hover](static/legend-hover2.png)
 
 @## Disabled legend
 
