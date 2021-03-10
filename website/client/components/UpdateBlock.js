@@ -79,6 +79,12 @@ const InputSubscribe = styled(Input)`
   }
 `;
 
+const InputHidden = styled(Input)`
+  position: absolute;
+  top: -100px;
+  left: -100px;
+`;
+
 const Subscribed = styled.div`
   display: flex;
   align-items: center;
@@ -137,6 +143,7 @@ const styles = css`
 
 function UpdateBlock() {
   const [value, setValue] = useState('');
+  const [hiddenValue, setHiddenValue] = useState('');
   const [error, setError] = useState('');
   const [status, setStatus] = useState('initial');
   const [touched, setTouched] = useState(false);
@@ -201,12 +208,19 @@ function UpdateBlock() {
                   />
                 </InputSubscribe>
               </Tooltip>
+              <InputHidden>
+                <Input.Value
+                  value={hiddenValue}
+                  onChange={setHiddenValue}
+                  placeholder="Placeholder"
+                />
+              </InputHidden>
               <Button
                 styles={ButtonSubscribe}
                 size="l"
                 type="submit"
                 onClick={subscribe}
-                disabled={!!error || value === ''}
+                disabled={!!error || !value || !!hiddenValue}
               >
                 I want all updates
               </Button>
