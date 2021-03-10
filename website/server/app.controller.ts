@@ -1,6 +1,6 @@
 import { Controller, Post, Get, Next, Req, Res } from '@nestjs/common';
 import { NextFunction, Request, Response } from 'express';
-const mailchimp = require('@mailchimp/mailchimp_marketing');
+import mailchimp from '@mailchimp/mailchimp_marketing';
 require('dotenv').config();
 
 @Controller()
