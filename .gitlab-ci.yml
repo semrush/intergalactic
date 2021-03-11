@@ -123,7 +123,7 @@ deploy:docker:
   script:
     - mkdir -p ${CI_PROJECT_DIR}/images/
     - cd website
-    - echo $WEBSITE_FILE_ENV > .env
+    - cp $WEBSITE_FILE_ENV .env
     - docker load -i ${CI_PROJECT_DIR}/images/latest.tar || docker pull ${DOCKER_REGISTRY}/${IMAGE_RESULT}:latest || true
     - docker build --progress=plain --cache-from ${DOCKER_REGISTRY}/${IMAGE_RESULT}:latest -f ./docker/intergalactic/Dockerfile -t ${IMAGE_RESULT}:${CI_COMMIT_SHA} .
     - docker tag ${IMAGE_RESULT}:${CI_COMMIT_SHA} ${DOCKER_REGISTRY}/${IMAGE_RESULT}:${CI_COMMIT_SHA}
