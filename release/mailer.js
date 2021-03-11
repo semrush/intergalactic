@@ -89,7 +89,7 @@ const updateEmail = async () => {
       },
       settings: {
         template_id: +process.env.MAILCHIMPTEMPLATE,
-        subject_line: 'updates',
+        subject_line: 'New release is here!',
         from_name: 'ui-kit-team',
         reply_to: 'ui-kit-team@semrush.com',
         title: 'Intergalactic',
