@@ -2,9 +2,17 @@
 
 SNotice {
   display: flex;
-  padding: media(15px);
   font-size: var(--fs-100);
   line-height: var(--lh-100);
+  box-sizing: border-box;
+}
+
+SNotice[use='primary'] {
+  padding: 7px 32px;
+}
+
+SNotice[use='secondary'] {
+  padding: 15px;
   border-style: solid;
   border-width: 1px;
   border-radius: 2px;
@@ -12,21 +20,33 @@ SNotice {
 
 SNotice[theme='info'] {
   background-color: color-mod(var(--light-blue) alpha(15%));
+}
+
+SNotice[use='secondary'][theme='info'] {
   border-color: color-mod(var(--light-blue) alpha(25%));
 }
 
 SNotice[theme='danger'] {
   background-color: color-mod(var(--red) alpha(10%));
+}
+
+SNotice[use='secondary'][theme='danger'] {
   border-color: color-mod(var(--red) alpha(20%));
 }
 
 SNotice[theme='warning'] {
   background-color: color-mod(var(--light-orange) alpha(15%));
+}
+
+SNotice[use='secondary'][theme='warning'] {
   border-color: color-mod(var(--light-orange) alpha(40%));
 }
 
 SNotice[theme='success'] {
   background-color: color-mod(var(--green) alpha(15%));
+}
+
+SNotice[use='secondary'][theme='success'] {
   border-color: color-mod(var(--green) alpha(30%));
 }
 
@@ -37,15 +57,11 @@ SContent {
 
 SActions {
   flex-shrink: 0;
-  margin-top: media(12px);
-
-  & > * + * {
-    margin-left: media(8px);
-  }
+  margin-top: 12px;
 }
 
 SLabel {
-  margin-right: media(8px);
+  margin-right: 8px;
   display: inline-flex;
 }
 
@@ -67,18 +83,5 @@ SLabel[theme='danger'] {
 
 SCloseIcon {
   flex-shrink: 0;
-  margin-left: media(16px);
-}
-
-.animate--enter {
-  opacity: 0.01;
-}
-
-.animate--enter-active,
-.animate--exit {
-  opacity: 1;
-}
-
-.animate--exit-active {
-  opacity: 0.01;
+  margin-left: 16px;
 }

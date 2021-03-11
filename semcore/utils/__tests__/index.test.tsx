@@ -6,7 +6,7 @@ import snapshot from 'jest-preset-ui/snapshot';
 import isNode from '../src/isNode';
 import compose from '../src/compose';
 import useCss from '../src/use/useCss';
-import resolveColor, { shade } from '../src/color';
+import resolveColor, { shade, opacity } from '../src/color';
 import { interpolate } from '../src/enhances/i18nEnhance';
 import assignProps, { assignHandlers } from '../src/assignProps';
 
@@ -334,6 +334,18 @@ describe('Utils color', () => {
 
   test('should support shade for empty value', () => {
     expect(shade('', -0.08)).toBe('');
+  });
+
+  test(`shouldn't support opacity for string color`, () => {
+    expect(opacity('green', 0.2)).toBe('');
+  });
+
+  test('should support opacity for hex color', () => {
+    expect(opacity('#008000', 0.2)).toBe('rgba(0, 128, 0, 0.2)');
+  });
+
+  test('should support opacity for rgb color', () => {
+    expect(opacity('rgb(0,128,0)', 0.2)).toBe('rgba(0, 128, 0, 0.2)');
   });
 });
 
