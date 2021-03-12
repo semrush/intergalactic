@@ -27,7 +27,7 @@ export default () => {
         <NoticeSmart
           hidden={!visible}
           use="primary"
-          theme="gray80"
+          theme="light-blue"
           closable
           position="fixed"
           top={0}
@@ -39,7 +39,7 @@ export default () => {
           `}
           onClose={() => updateVisible(false)}
         >
-          <Text size={200} tag="span">
+          <Text size={200} tag="span" color="white">
             Look at this cool notice!
           </Text>
         </NoticeSmart>
