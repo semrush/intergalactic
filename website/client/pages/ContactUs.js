@@ -218,7 +218,7 @@ const Contacts = () => (
           <PinMapM mr={2} />
           Address
         </Title>
-        You can find us in St. Petersburg, Zastavskaya street, 22k2, office 516B.
+        Find us in St. Petersburg, Zastavskaya street, 22k2, 196006.
         <Text>
           <Subtitle>Visit us</Subtitle>
           If you want live dialogue, welcome to our office from 12:00 PM – 6:00 PM, Monday – Friday.{' '}
