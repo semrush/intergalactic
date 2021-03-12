@@ -19,7 +19,7 @@ class Demo extends React.PureComponent {
     return (
       <Select interaction="focus" onChange={this.changeValue} value={value}>
         <Select.Trigger tag={Input}>
-          <Input.Value value={value} onChange={this.changeValue} />
+          {() => <Input.Value value={value} onChange={this.changeValue} />}
         </Select.Trigger>
         <Select.Menu>
           {options.map((option, idx) => {
