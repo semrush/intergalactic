@@ -260,8 +260,9 @@ This approach is implemented using the **React Context API**:
 
 This may seem unnecessarily difficult, but the flexibility you get when using this approach offers incredible opportunities. You can easily change the logic of the component as well as its appearance, as long as you keep a few important things in mind:
 
-- `props` transferred by the user are always applied (even if it ends up breaking the component)
-- You can completely cancel event handlers or override their logic by returning the `false` value from them
+> `props` transferred by the user are always applied (even if it ends up breaking the component)
+>
+> You can completely cancel event handlers or override their logic by returning the `false` value from them
 
 @## Render functions
 
