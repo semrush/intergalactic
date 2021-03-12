@@ -8,7 +8,7 @@ SNotice {
 }
 
 SNotice[use='primary'] {
-  padding: 7px 32px;
+  padding: 8px 32px;
 }
 
 SNotice[use='secondary'] {

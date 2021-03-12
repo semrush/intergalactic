@@ -1,7 +1,7 @@
 import React from 'react';
 import createComponent, { Component, styled } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
-import CloseS from '@semcore/icon/lib/Close/s';
+import CloseXS from '@semcore/icon/lib/Close/xs';
 import resolveColor from '@semcore/utils/lib/color';
 import { FadeInOut } from '@semcore/animation';
 
@@ -68,7 +68,7 @@ function Content({ Root: SContent, styles }) {
 }
 
 function CloseIcon({ Root: SCloseIcon, styles }) {
-  return styled(styles)(<SCloseIcon render={Box} tag={CloseS} color="stone" interactive />);
+  return styled(styles)(<SCloseIcon render={Box} tag={CloseXS} color="stone" interactive />);
 }
 
 export default createComponent(RootNotice, {
