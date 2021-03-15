@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import Portal from '@semcore/portal';
-import { NoticeSmart } from '@semcore/notice';
-import { css } from '@semcore/core';
+import Notice from '@semcore/notice';
 import { Text } from '@semcore/typography';
 import Button from '@semcore/button';
+import { Flex } from '@semcore/flex-box';
 
 export default () => {
   const [visible, updateVisible] = useState(false);
@@ -16,6 +16,9 @@ export default () => {
     } else {
       body.style.paddingTop = '0';
     }
+    return () => {
+      body.style.paddingTop = '0';
+    };
   }, [visible]);
 
   return (
@@ -24,25 +27,21 @@ export default () => {
         {visible ? 'Close' : 'Open'} Global Notice
       </Button>
       <Portal>
-        <NoticeSmart
+        <Notice
           hidden={!visible}
           use="primary"
           theme="light-blue"
-          closable
           position="fixed"
           top={0}
           w="100%"
-          styles={css`
-            SContent {
-              text-align: center;
-            }
-          `}
-          onClose={() => updateVisible(false)}
         >
-          <Text size={200} tag="span" color="white">
-            Look at this cool notice!
-          </Text>
-        </NoticeSmart>
+          <Notice.Content tag={Flex} justifyContent="center">
+            <Text size={100} tag="span" color="white">
+              Look at this cool notice!
+            </Text>
+          </Notice.Content>
+          <Notice.CloseIcon color="white" onClick={() => updateVisible(false)} />
+        </Notice>
       </Portal>
     </>
   );
