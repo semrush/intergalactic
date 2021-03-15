@@ -8,11 +8,7 @@ import { FadeInOut } from '@semcore/animation';
 import style from './style/notice.shadow.css';
 
 function isCustomTheme(theme) {
-  const themes = ['danger', 'warning', 'success', 'info'];
-  return !themes.includes(theme);
-}
-function resolveThemeColor(theme) {
-  return isCustomTheme ? resolveColor(theme) : theme;
+  return !['danger', 'warning', 'success', 'info'].includes(theme);
 }
 
 class RootNotice extends Component {
@@ -34,7 +30,8 @@ class RootNotice extends Component {
   render() {
     const SNotice = this.Root;
     const { styles, hidden, theme, use } = this.asProps;
-    const color = resolveThemeColor(theme);
+    const color = resolveColor(theme);
+    const useTheme = isCustomTheme(theme) ? 'custom' : theme;
 
     return styled(styles)`
       SNotice[theme='custom'] {
@@ -44,14 +41,7 @@ class RootNotice extends Component {
           border-color: ${color};
         }
       }
-    `(
-      <SNotice
-        render={FadeInOut}
-        visible={!hidden}
-        use={use}
-        theme={isCustomTheme(theme) ? 'custom' : color}
-      />,
-    );
+    `(<SNotice render={FadeInOut} visible={!hidden} use={use} theme={useTheme} />);
   }
 }
 
