@@ -16,6 +16,8 @@ This section describes all the variable parameters that we use in our component 
 
 @## Basic colors
 
+> See [Visual loudness scale](/patterns/visual-loudness-scale/) guide for more information about colors using and visual hierarchy.
+
 |                                                                | Example                                 | Styles                  |
 | -------------------------------------------------------------- | --------------------------------------- | ----------------------- |
 | Basic text color                                               | ![text](static/text.png)                | `gray20` (#333)         |
@@ -26,7 +28,7 @@ This section describes all the variable parameters that we use in our component 
 | Color of success ✅                                            | ![success](static/success.png)          | `green` (#4FAE33)       |
 | Color of warning, validation and error ⚠️                      | ![warning](static/warning.png)          | `orange` (#ff7f00)      |
 | Critical message color 🚩                                      | ![critical](static/critical.png)        | `red` (#ed2d2d)         |
-| Color of brand, branded controls, and elements                 | ![brand](static/brand.png)              | `brand-color` (#ba4717) |
+| Old color of brand, branded controls, and elements             | ![brand](static/brand.png)              | `brand-color` (#ba4717) |
 
 @## Basic sizes of components
 
@@ -66,7 +68,7 @@ This section describes all the variable parameters that we use in our component 
 | Color of borders and dividers                                        | `gray80`                                                                               |
 | Border for dropdown items (dropdowns and popovers)                   | `border: solid 1px var(--stone-light);`                                                |
 | Shadow of the blocks, raised above the content (dropdowns, popovers) | `box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.25);`                                         |
-| Mask / fader                                                         | Black — `background: rgba(0,0,0,0.8);`, white — `background: rgba(255,255,255,0.85);`. |
+| Mask or fader                                                        | Black — `background: rgba(0,0,0,0.8);`, white — `background: rgba(255,255,255,0.85);`. |
 
 @## Border-radius
 
