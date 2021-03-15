@@ -2,6 +2,17 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.0.0] - 2021-03-15
+
+### BREAK
+
+- Removed global styles
+- Removed styles for media queries.
+- Replace animation package from `react-transition-group` to `@semcore/animation`
+- Update property `theme`, now this property can get any themes
+- Added property [`use`](/components/notice/notice-api/)
+- Update icon for `Notice.IconClose`
+
 ## [2.1.0] - 2020-12-17
 
 ### Added
