@@ -40,7 +40,11 @@ export default () => {
               Look at this cool notice!
             </Text>
           </Notice.Content>
-          <Notice.CloseIcon color="white" onClick={() => updateVisible(false)} />
+          <Notice.CloseIcon
+            interactive={false}
+            color="white"
+            onClick={() => updateVisible(false)}
+          />
         </Notice>
       </Portal>
     </>
