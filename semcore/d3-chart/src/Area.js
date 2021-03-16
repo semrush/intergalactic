@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { curveBasis, line as d3Line } from 'd3-shape';
+import { area, curveBasis, line } from 'd3-shape';
 import { bisector } from 'd3-array';
 import { Component, styled } from '@semcore/core';
 import createXYElement from './XYElement';
 import { definedData, scaleOfBandwidth } from './utils';
 
-import style from './style/line.shadow.css';
+import style from './style/area.shadow.css';
 
 function getNullData(data, defined, name) {
   return data.reduce((acc, d, i, data) => {
@@ -50,21 +50,28 @@ function getNullData(data, defined, name) {
   }, []);
 }
 
-class LineRoot extends Component {
-  static displayName = 'Line';
+class AreaRoot extends Component {
+  static displayName = 'Area';
+  static style = style;
+
   static defaultProps = ({ x, y, $rootProps }) => {
     const [xScale, yScale] = $rootProps.scale;
+    const yRange = yScale.range();
     return {
-      d3: d3Line()
+      d3: area()
+        .defined(definedData(x, y))
+        .x((p) => scaleOfBandwidth(xScale, p[x]))
+        .y1((p) => scaleOfBandwidth(yScale, p[y]))
+        .y0(yRange[0]),
+      d3Line: line()
         .defined(definedData(x, y))
         .x((p) => scaleOfBandwidth(xScale, p[x]))
         .y((p) => scaleOfBandwidth(yScale, p[y])),
       color: '#50aef4',
+      fill: '#50aef450',
       curve: false,
     };
   };
-
-  static style = style;
 
   getDotsProps() {
     const { x, y, d3, color } = this.asProps;
@@ -77,32 +84,33 @@ class LineRoot extends Component {
   }
 
   getNullProps() {
-    const { y, d3, color, data } = this.asProps;
+    const { y, color, data, d3Line } = this.asProps;
     return {
-      d3,
-      // TODO: vertical
-      data: getNullData(data, d3.defined(), y),
+      d3Line,
+      data: getNullData(data, d3Line.defined(), y),
       fill: color,
     };
   }
 
   render() {
-    const SLine = this.Element;
-    const { styles, hide, color, d3, data, curve } = this.asProps;
-
+    const SArea = this.Element;
+    const { styles, hide, d3, d3Line, data, fill, curve, color } = this.asProps;
     return styled(styles)(
-      <SLine
-        render="path"
-        hide={hide}
-        stroke={color}
-        curve={curve}
-        d={curve ? d3.curve(curveBasis)(data) : d3(data)}
-      />,
+      <>
+        <SArea
+          render="path"
+          hide={hide}
+          curve={curve}
+          fill={fill}
+          d={curve ? d3.curve(curveBasis)(data) : d3(data)}
+        />
+        <path color={color} d={d3Line(data)} />
+      </>,
     );
   }
 }
 
-export function Dots(props) {
+function Dots(props) {
   const { Element: SDot, styles, data, d3, x, y, eventEmitter, display, hide } = props;
   const bisect = bisector((d) => d[x]).center;
   const [activeIndex, setActiveIndex] = useState(props.activeIndex || null);
@@ -136,7 +144,7 @@ export function Dots(props) {
             index={i}
             render="circle"
             cx={d3.x()(d)}
-            cy={d3.y()(d)}
+            cy={d3.y1()(d)}
             active={active}
             hide={hide}
           />,
@@ -147,12 +155,12 @@ export function Dots(props) {
   }, []);
 }
 
-export function Null(props) {
-  const { Element: SNull, styles, d3, data, hide } = props;
-  return styled(styles)(<SNull render="path" d={d3(data)} hide={hide} />);
+function Null(props) {
+  const { Element: SNull, styles, d3Line, data, hide } = props;
+  return styled(styles)(<SNull render="path" d={d3Line(data)} hide={hide} />);
 }
 
-export default createXYElement(LineRoot, {
+export default createXYElement(AreaRoot, {
   Dots,
   Null,
 });
