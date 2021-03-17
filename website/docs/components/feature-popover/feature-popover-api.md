@@ -11,6 +11,8 @@ import FeaturePopover from '@semcore/feature-popover';
 <FeaturePopover />;
 ```
 
+@interface IPopperProps
+
 @## FeaturePopover.Trigger
 
 This is the element, to which `<FeaturePopover.Popper/>` will be attached. It is fully inherited from `<Popper.Trigger/>`.
@@ -19,6 +21,8 @@ This is the element, to which `<FeaturePopover.Popper/>` will be attached. It is
 import FeaturePopover from '@semcore/feature-popover';
 <FeaturePopover.Trigger />;
 ```
+
+@interface IPopperTriggerProps
 
 @## FeaturePopover.Popper
 
