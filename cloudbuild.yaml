@@ -76,4 +76,4 @@ steps:
 timeout: 3600s
 options:
   env:
-  - 'SCREENSHOT_URL=http://screenshot.hub-k1.semrush.net/'
+  - 'SCREENSHOT_URL=${_SCREENSHOT_URL}'
