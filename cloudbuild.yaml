@@ -75,3 +75,6 @@ steps:
       ]
 
 timeout: 3600s
+options:
+  env:
+  - 'SCREENSHOT_URL=${_SCREENSHOT_URL}'
