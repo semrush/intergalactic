@@ -1,0 +1,79 @@
+substitutions:
+  _APP_VERSION: 0.0.1
+steps:
+- name: 'node'
+  entrypoint: yarn
+  args: ['--non-interactive', '--frozen-lockfile']
+- name: 'node'
+  entrypoint: yarn
+  args: ['build']
+- name: 'node'
+  entrypoint: yarn
+  args: ['lint']
+- name: 'node'
+  entrypoint: yarn
+  args: ['--non-interactive', '--frozen-lockfile', '--cwd', 'website']
+- name: 'node'
+  entrypoint: yarn
+  args: ['--cwd', 'website', 'build:client']
+- name: 'node'
+  entrypoint: yarn
+  args: ['--cwd', 'website', 'build:server']
+- name: 'node'
+  entrypoint: yarn
+  args: ['--cwd', 'website', 'build:interface']
+- name: 'node'
+  entrypoint: yarn
+  args: ['--cwd', 'website', 'lint:md']
+- name: 'gcr.io/cloud-builders/docker'
+  args:
+  - 'build'
+  - '--build-arg'
+  - 'APP_VERSION=${_APP_VERSION}'
+  - '-t'
+  - 'us-east4-docker.pkg.dev/intergalactic-prod-tf/intergalactic-docker/intergalactic:${_APP_VERSION}'
+  - '-f'
+  - 'website/docker/intergalactic/Dockerfile'
+  - 'website/'
+- name: 'gcr.io/cloud-builders/docker'
+  args:
+  - 'build'
+  - '--build-arg'
+  - 'APP_VERSION=${_APP_VERSION}'
+  - '-t'
+  - 'us-east4-docker.pkg.dev/intergalactic-prod-tf/intergalactic-docker/intergalactic:${_APP_VERSION}-${SHORT_SHA}'
+  - '-f'
+  - 'website/docker/intergalactic/Dockerfile'
+  - 'website/'
+- name: 'gcr.io/cloud-builders/docker'
+  args:
+  - 'push'
+  - 'us-east4-docker.pkg.dev/intergalactic-prod-tf/intergalactic-docker/intergalactic:${_APP_VERSION}'
+- name: 'gcr.io/cloud-builders/docker'
+  args:
+  - 'push'
+  - 'us-east4-docker.pkg.dev/intergalactic-prod-tf/intergalactic-docker/intergalactic:${_APP_VERSION}-${SHORT_SHA}'
+
+- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+  entrypoint: gcloud
+  args: [
+      'beta',
+      'run',
+      'deploy',
+      'intergalactic-test',
+      '--image',
+      'us-east4-docker.pkg.dev/intergalactic-prod-tf/intergalactic-docker/intergalactic:${_APP_VERSION}-${SHORT_SHA}',
+      '--region',
+      'us-east4',
+      '--platform',
+      'managed',
+      '--min-instances',
+      '1',
+      '--max-instances',
+      '5'
+  ]
+
+timeout: 3600s
+options:
+  env:
+  - 'SCREENSHOT_URL=http://screenshot.hub-k1.semrush.net/'
