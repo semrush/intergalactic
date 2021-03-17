@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [1.0.0-2] - 2021-03-17
+
+### Fixed
+
+- Fixed calculate coordinates for `Hover` and `Tooltip` components.
+
 ## [1.0.0-1] - 2021-03-10
 
 ### Added
