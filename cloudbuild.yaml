@@ -88,5 +88,6 @@ steps:
 
 timeout: 3600s
 options:
+  machineType: 'N1_HIGHCPU_8'
   env:
   - 'SCREENSHOT_URL=${_SCREENSHOT_URL}'
