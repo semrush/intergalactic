@@ -73,7 +73,7 @@ steps:
       'beta',
       'run',
       'deploy',
-      'intergalactic-test',
+      'intergalactic-docker',
       '--image',
       'us-east4-docker.pkg.dev/intergalactic-prod-tf/intergalactic-docker/intergalactic:${_APP_VERSION}-${SHORT_SHA}',
       '--region',
