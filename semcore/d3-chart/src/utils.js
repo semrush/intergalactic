@@ -1,4 +1,4 @@
-import { extent } from 'd3-array';
+import { extent, bisector } from 'd3-array';
 import { scaleQuantize } from 'd3-scale';
 
 export function eventToPoint(event, svgRoot) {
@@ -31,4 +31,18 @@ export function minMax(data, key) {
     return extent(data, (d) => d[key]);
   }
   return extent(data, key);
+}
+
+export function getIndexFromData(data, key) {
+  //hack
+  const bisect = isFinite(data[0][key]) && bisector((d) => d[key]).center;
+
+  return (value) => {
+    if (isFinite(value)) {
+      return bisect(data, value);
+    } else {
+      const index = data.findIndex((d) => d[key] === value);
+      return index >= 0 ? index : null;
+    }
+  };
 }

@@ -1,12 +1,12 @@
 import React, { useCallback } from 'react';
-import { bisector } from 'd3-array';
 import { Component, styled } from '@semcore/core';
 import Popper from '@semcore/popper';
 import { Box } from '@semcore/flex-box';
+import createXYElement from './XYElement';
+import { getIndexFromData } from './utils';
+import findComponent from '@semcore/utils/lib/findComponent';
 
 import style from './style/tooltip.shadow.css';
-import createXYElement from './XYElement';
-import findComponent from '@semcore/utils/lib/findComponent';
 
 class TooltipRoot extends Component {
   static displayName = 'Tooltip';
@@ -20,12 +20,12 @@ class TooltipRoot extends Component {
 
   componentDidMount() {
     const { eventEmitter, data, x, y } = this.asProps;
-    const xBisect = bisector((d) => d[x]).center;
-    const yBisect = bisector((d) => d[y]).center;
+    const getXIndex = getIndexFromData(data, x);
+    const getYIndex = getIndexFromData(data, y);
     this.unsubscribeNearestXY = eventEmitter.subscribe('onNearestXY', ([pX, pY]) => {
       this.setState({
-        xIndex: x === undefined || pX === undefined ? null : xBisect(data, pX),
-        yIndex: y === undefined || pY === undefined ? null : yBisect(data, pY),
+        xIndex: x === undefined || pX === undefined ? null : getXIndex(pX),
+        yIndex: y === undefined || pY === undefined ? null : getYIndex(pY),
       });
     });
   }
