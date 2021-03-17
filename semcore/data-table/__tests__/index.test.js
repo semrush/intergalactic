@@ -60,3 +60,25 @@ describe('DataTable', () => {
   //   expect(await snapshot(component)).toMatchImageSnapshot();
   // });
 });
+
+describe('DataTable.Column', () => {
+  test('Should support set flex after rerender', () => {
+    const { getByTestId, rerender } = render(
+      <DataTable data={[]}>
+        <DataTable.Head>
+          <DataTable.Column name="keyword" data-testid="column" flex={0} />
+          <DataTable.Column name="kd" />
+        </DataTable.Head>
+      </DataTable>,
+    );
+    expect(getByTestId('column').style.flex).toBe('0 0px');
+    rerender(
+      <DataTable data={[]}>
+        <DataTable.Head>
+          <DataTable.Column name="keyword" data-testid="column" flex={0} />
+        </DataTable.Head>
+      </DataTable>,
+    );
+    expect(getByTestId('column').style.flex).toBe('0 0px');
+  });
+});
