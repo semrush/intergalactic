@@ -84,6 +84,8 @@ steps:
       '1',
       '--max-instances',
       '5',
+      '--ingress',
+      'internal-and-cloud-load-balancing'
     ]
 
 timeout: 3600s
