@@ -9,10 +9,10 @@ steps:
     args: ['build']
   - name: 'node'
     entrypoint: yarn
-    args: ['build', 'lint']
+    args: ['lint']
   - name: 'node'
     entrypoint: yarn
-    args: ['build', 'test']
+    args: ['test']
 
 timeout: 3600s
 options:
