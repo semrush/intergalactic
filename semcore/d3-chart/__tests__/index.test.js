@@ -1,9 +1,10 @@
 import React from 'react';
 import { bisector } from 'd3-array';
-import { scaleLinear } from 'd3-scale';
+import { scaleLinear, scaleBand } from 'd3-scale';
 import { render, fireEvent, cleanup } from 'jest-preset-ui/testing';
 import { shouldSupportClassName, shouldSupportRef } from 'jest-preset-ui/shared';
 import { XYPlot, YAxis, XAxis } from '../src';
+import { getIndexFromData } from '../src/utils';
 
 const xScale = scaleLinear()
   .range([10, 100])
@@ -140,5 +141,17 @@ describe('XAxis', () => {
     expect(eventEmitter.emit).toHaveBeenCalledTimes(1);
     // expect(bisect(data, eventEmitter.emit.mock.calls[0][1][0])).toBe(9);
     window.requestAnimationFrame.mockRestore();
+  });
+});
+
+describe('utils', () => {
+  test('should support getIndexFromData for Line, Bar chart', () => {
+    const data = [{ x: 1, y: 'test' }, { x: 2, y: 'describe' }];
+    const yScale = scaleBand()
+      .range([100, 10])
+      .domain(data.map((d) => d.name));
+
+    expect(getIndexFromData(data, xScale, 'x', 2)).toBe(1);
+    expect(getIndexFromData(data, yScale, 'y', 'test')).toBe(0);
   });
 });

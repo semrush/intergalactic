@@ -1,10 +1,9 @@
 import React from 'react';
-import { bisector } from 'd3-array';
 import { Component, styled } from '@semcore/core';
 import createXYElement from './XYElement';
+import { scaleOfBandwidth, getIndexFromData } from './utils';
 
 import style from './style/hover.shadow.css';
-import { scaleOfBandwidth } from './utils';
 
 class Hover extends Component {
   static style = style;
@@ -15,13 +14,17 @@ class Hover extends Component {
   };
 
   componentDidMount() {
-    const { eventEmitter, data, x, y } = this.asProps;
-    const xBisect = bisector((d) => d[x]).center;
-    const yBisect = bisector((d) => d[y]).center;
+    const {
+      eventEmitter,
+      scale: [xScale, yScale],
+      data,
+      x,
+      y,
+    } = this.asProps;
     this.unsubscribeNearestXY = eventEmitter.subscribe('onNearestXY', ([pX, pY]) => {
       this.setState({
-        xIndex: x === undefined || pX === undefined ? null : xBisect(data, pX),
-        yIndex: y === undefined || pY === undefined ? null : yBisect(data, pY),
+        xIndex: x === undefined || pX === undefined ? null : getIndexFromData(data, xScale, x, pX),
+        yIndex: y === undefined || pY === undefined ? null : getIndexFromData(data, yScale, y, pY),
       });
     });
   }

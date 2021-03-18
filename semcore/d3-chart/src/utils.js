@@ -1,4 +1,4 @@
-import { extent } from 'd3-array';
+import { extent, bisector } from 'd3-array';
 import { scaleQuantize } from 'd3-scale';
 
 export function eventToPoint(event, svgRoot) {
@@ -31,4 +31,20 @@ export function minMax(data, key) {
     return extent(data, (d) => d[key]);
   }
   return extent(data, key);
+}
+
+export function getIndexFromData(data, scale, key, value) {
+  // detect line chart
+  if ('invert' in scale && typeof scale.invert === 'function') {
+    const bisect = bisector((d) => d[key]).center;
+    return bisect(data, value);
+  }
+  // detect bar chart
+  else if ('step' in scale && typeof scale.step !== 'undefined') {
+    const index = data.findIndex((d) => d[key] === value);
+    return index >= 0 ? index : null;
+  } else {
+    console.warn('[d3-chart/utils/getIndexFromData] encountered incompatible scale type');
+    return null;
+  }
 }
