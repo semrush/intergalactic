@@ -18,6 +18,10 @@ const UpdateWrapper = styled.div`
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
     margin-left: 0;
+    padding: 0 35px 56px;
+  }
+  @media (max-width: 320px) {
+    padding: 0;
   }
 `;
 
@@ -25,19 +29,16 @@ const Info = styled.div`
   grid-row: 1;
   grid-column: 2;
   font-size: 18px;
-  @media (max-width: 320px) {
+  @media (max-width: 768px) {
     grid-column: 1;
   }
 `;
 
 const Header = styled.h2`
-  font-family: FactorA-Bold;
+  font-family: FactorA-Bold, sans-serif;
   font-size: 50px;
   line-height: 110%;
   margin: 80px 0 16px;
-  @media (max-width: 768px) {
-    max-width: 400px;
-  }
   @media (max-width: 768px) {
     font-size: 36px;
   }
@@ -61,7 +62,7 @@ const UpdatesImg = styled.img`
   grid-column: 1;
   margin-right: 40px;
   margin-top: -50px;
-  @media (max-width: 320px) {
+  @media (max-width: 768px) {
     display: none;
   }
 `;
@@ -72,10 +73,8 @@ const InputSubscribe = styled(Input)`
   width: 296px;
   margin: 0 16px 16px 0;
   @media (max-width: 768px) {
-    width: 428px;
-  }
-  @media (max-width: 320px) {
-    width: 250px;
+    width: 100%;
+    margin: 0 0 16px;
   }
 `;
 
@@ -116,7 +115,7 @@ const ButtonSubscribe = css`
     }
 
     @media (max-width: 768px) {
-      width: 428px;
+      width: 100%;
     }
     @media (max-width: 320px) {
       width: 250px;
@@ -190,6 +189,7 @@ function UpdateBlock() {
           <>
             <form onSubmit={handleSubmit}>
               <Tooltip
+                w={'100%'}
                 title={'Please enter a valid email.'}
                 visible={!!error && touched}
                 interaction="click"
