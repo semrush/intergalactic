@@ -3,25 +3,25 @@ substitutions:
 steps:
   - name: 'node'
     entrypoint: yarn
-    args: ['--cwd', '..', '--non-interactive', '--frozen-lockfile']
-  - name: 'node'
-    entrypoint: yarn
-    args: ['--cwd', '..', 'build']
-  - name: 'node'
-    entrypoint: yarn
     args: ['--non-interactive', '--frozen-lockfile']
   - name: 'node'
     entrypoint: yarn
-    args: ['build:client']
+    args: ['build']
   - name: 'node'
     entrypoint: yarn
-    args: ['build:server']
+    args: ['--non-interactive', '--frozen-lockfile', '--cwd', 'website']
   - name: 'node'
     entrypoint: yarn
-    args: ['build:interface']
+    args: ['--cwd', 'website', 'build:client']
   - name: 'node'
     entrypoint: yarn
-    args: ['lint:md']
+    args: ['--cwd', 'website', 'build:server']
+  - name: 'node'
+    entrypoint: yarn
+    args: ['--cwd', 'website', 'build:interface']
+  - name: 'node'
+    entrypoint: yarn
+    args: ['--cwd', 'website', 'lint:md']
   - name: 'ubuntu'
     entrypoint: 'bash'
     args:
@@ -88,5 +88,3 @@ steps:
 timeout: 3600s
 options:
   machineType: 'N1_HIGHCPU_8'
-  env:
-    - 'SCREENSHOT_URL=${_SCREENSHOT_URL}'
