@@ -1,5 +1,6 @@
 import { join } from 'path';
 import hbs from 'hbs';
+import compression from 'compression';
 import { NestFactory } from '@nestjs/core';
 import { NestExpressApplication } from '@nestjs/platform-express';
 import { AppModule } from './app.module';
@@ -23,6 +24,8 @@ async function bootstrap() {
   app.setBaseViewsDir(join(process.cwd(), './server/views'));
   hbs.registerPartials(join(process.cwd(), './server/views/partials'));
   app.setViewEngine('hbs');
+
+  app.use(compression());
 
   await app.listen(process.env.PORT || 3000);
 }
