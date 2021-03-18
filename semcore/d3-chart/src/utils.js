@@ -33,16 +33,18 @@ export function minMax(data, key) {
   return extent(data, key);
 }
 
-export function getIndexFromData(data, key) {
-  //hack
-  const bisect = isFinite(data[0][key]) && bisector((d) => d[key]).center;
-
-  return (value) => {
-    if (isFinite(value)) {
-      return bisect(data, value);
-    } else {
-      const index = data.findIndex((d) => d[key] === value);
-      return index >= 0 ? index : null;
-    }
-  };
+export function getIndexFromData(data, scale, key, value) {
+  // detect line chart
+  if ('invert' in scale && typeof scale.invert === 'function') {
+    const bisect = bisector((d) => d[key]).center;
+    return bisect(data, value);
+  }
+  // detect bar chart
+  else if ('step' in scale && typeof scale.step !== 'undefined') {
+    const index = data.findIndex((d) => d[key] === value);
+    return index >= 0 ? index : null;
+  } else {
+    console.warn('[d3-chart/utils/getIndexFromData] encountered incompatible scale type');
+    return null;
+  }
 }

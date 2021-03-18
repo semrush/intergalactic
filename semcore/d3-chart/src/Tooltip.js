@@ -19,13 +19,17 @@ class TooltipRoot extends Component {
   };
 
   componentDidMount() {
-    const { eventEmitter, data, x, y } = this.asProps;
-    const getXIndex = getIndexFromData(data, x);
-    const getYIndex = getIndexFromData(data, y);
+    const {
+      eventEmitter,
+      scale: [xScale, yScale],
+      data,
+      x,
+      y,
+    } = this.asProps;
     this.unsubscribeNearestXY = eventEmitter.subscribe('onNearestXY', ([pX, pY]) => {
       this.setState({
-        xIndex: x === undefined || pX === undefined ? null : getXIndex(pX),
-        yIndex: y === undefined || pY === undefined ? null : getYIndex(pY),
+        xIndex: x === undefined || pX === undefined ? null : getIndexFromData(data, xScale, x, pX),
+        yIndex: y === undefined || pY === undefined ? null : getIndexFromData(data, yScale, y, pY),
       });
     });
   }
