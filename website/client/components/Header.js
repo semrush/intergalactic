@@ -358,11 +358,7 @@ function Header(props) {
         </MobileSearch>
         <SearchHome
           placeholder="What brings you here, Sole Survivor?"
-          style={
-            visible
-              ? { display: 'flex', marginLeft: '-200px', width: '227px' }
-              : { display: 'none' }
-          }
+          style={visible ? { marginLeft: '-200px', width: '227px' } : { display: 'none' }}
         />
         <MobileClose
           tag={Button}
