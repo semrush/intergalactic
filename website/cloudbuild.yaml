@@ -3,25 +3,25 @@ substitutions:
 steps:
   - name: 'node'
     entrypoint: yarn
+    args: ['--non-interactive', '--frozen-lockfile', '--cwd', '..']
+  - name: 'node'
+    entrypoint: yarn
+    args: ['build', '--cwd', '..']
+  - name: 'node'
+    entrypoint: yarn
     args: ['--non-interactive', '--frozen-lockfile']
   - name: 'node'
     entrypoint: yarn
-    args: ['build']
+    args: ['build:client']
   - name: 'node'
     entrypoint: yarn
-    args: ['--non-interactive', '--frozen-lockfile', '--cwd', 'website']
+    args: ['build:server']
   - name: 'node'
     entrypoint: yarn
-    args: ['--cwd', 'website', 'build:client']
+    args: ['build:interface']
   - name: 'node'
     entrypoint: yarn
-    args: ['--cwd', 'website', 'build:server']
-  - name: 'node'
-    entrypoint: yarn
-    args: ['--cwd', 'website', 'build:interface']
-  - name: 'node'
-    entrypoint: yarn
-    args: ['--cwd', 'website', 'lint:md']
+    args: ['lint:md']
   - name: 'ubuntu'
     entrypoint: 'bash'
     args:
