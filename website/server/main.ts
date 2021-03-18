@@ -16,6 +16,8 @@ hbs.registerHelper('GA_TRACKING_ID', () => {
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
 
+  app.use(compression());
+
   app.useStaticAssets(join(process.cwd(), './client/dist'), {
     immutable: true,
     // 24 hours
@@ -24,8 +26,6 @@ async function bootstrap() {
   app.setBaseViewsDir(join(process.cwd(), './server/views'));
   hbs.registerPartials(join(process.cwd(), './server/views/partials'));
   app.setViewEngine('hbs');
-
-  app.use(compression());
 
   await app.listen(process.env.PORT || 3000);
 }
