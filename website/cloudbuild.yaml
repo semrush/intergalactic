@@ -3,10 +3,10 @@ substitutions:
 steps:
   - name: 'node'
     entrypoint: yarn
-    args: ['--non-interactive', '--frozen-lockfile', '--cwd', '..']
+    args: ['--cwd', '..', '--non-interactive', '--frozen-lockfile']
   - name: 'node'
     entrypoint: yarn
-    args: ['build', '--cwd', '..']
+    args: ['--cwd', '..', 'build']
   - name: 'node'
     entrypoint: yarn
     args: ['--non-interactive', '--frozen-lockfile']
