@@ -8,7 +8,7 @@ tabName: Guide
 
 - The layout of the page depends on the breakpoint.
 - Each range determines the number of columns, maximum content width, main container margins and text sizes.
-- **You can set your own breakpoints, if it's necessary for the correct display of the interface in a particular case. _For example, add a breakpoint for screens ≦414px in the <767px range._**
+- **You can set your own breakpoints, if it's necessary for the correct display of the interface in a particular case. _For example, add a breakpoint for screens ≦414px in the <768px range._**
 
 > 💡 After 991px, the left menu appears and, with its width of 250px, "eats away" space from the product page 🙃
 
