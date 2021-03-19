@@ -101,7 +101,7 @@ You've installed our `component` and our plugin `@semcore/babel-plugin-shadow` t
 > ⚠️ **Attention**. Make sure that you do not process our files with `babel` plugins in your code, otherwise the result is unpredictable 🤕
 
 ```bash
-npm i @semcore/buttonsemcore/babel-plugin-shadow
+npm i @semcore/button @semcore/babel-plugin-shadow
 ```
 
 ### Step two
