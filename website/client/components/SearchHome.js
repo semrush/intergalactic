@@ -73,7 +73,7 @@ const Input = styled.input`
 
 const DesktopInput = styled(Input)`
   display: none;
-  @media (min-width: 768px) {
+  @media (min-width: 769px) {
     display: flex;
   }
 `;

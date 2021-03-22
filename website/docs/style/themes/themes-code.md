@@ -106,6 +106,28 @@ npm i @semcore/button @semcore/babel-plugin-shadow
 
 ### Step two
 
+Add a new rule to your `webpack-config`:
+
+```javascript
+    {
+      test: /\.js$/,
+      include: /\/node_modules\/@semcore\//,
+      enforce: 'pre',
+      use: [
+        {
+          loader: 'babel-loader',
+          options: {
+            plugins: [
+              ['@semcore/babel-plugin-shadow', { source: 'to-our-@semcore/core' }]
+            ],
+          },
+        },
+      ]
+    }
+```
+
+### Step three
+
 You wrote your own styles for our components using one of the following methods:
 
 - css-in-js
@@ -127,7 +149,7 @@ import styles from './custom.shadow.css';
 
 > ⚠️ The extension `.shadow.css` is required
 
-### Step three
+### Step four
 
 Pass the new styles to the `styles` property of our component:
 
