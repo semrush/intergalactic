@@ -123,6 +123,12 @@ const ButtonSubscribe = css`
   }
 `;
 
+const TooltipUpdate = styled(Tooltip)`
+  @media (max-width: 768px) {
+    width: 100%;
+  }
+`;
+
 const styles = css`
   STooltip {
     background-color: #f71939 !important;
@@ -188,8 +194,7 @@ function UpdateBlock() {
         {status === 'initial' && (
           <>
             <form onSubmit={handleSubmit}>
-              <Tooltip
-                w={'100%'}
+              <TooltipUpdate
                 title={'Please enter a valid email.'}
                 visible={!!error && touched}
                 interaction="click"
@@ -207,7 +212,7 @@ function UpdateBlock() {
                     onBlur={handleBlur}
                   />
                 </InputSubscribe>
-              </Tooltip>
+              </TooltipUpdate>
               <InputHidden>
                 <Input.Value
                   value={hiddenValue}
