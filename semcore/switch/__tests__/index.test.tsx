@@ -1,5 +1,5 @@
 import React from 'react';
-import { cleanup, fireEvent, render } from 'jest-preset-ui/testing';
+import { cleanup, fireEvent, render, axe } from 'jest-preset-ui/testing';
 import { shouldSupportClassName, shouldSupportRef } from 'jest-preset-ui/shared';
 import snapshot from 'jest-preset-ui/snapshot';
 import Switch, { inputProps } from '../src';
@@ -136,6 +136,19 @@ describe('Switch', () => {
     );
 
     expect(input).toHaveProperty('checked', true);
+  });
+
+  test('a11y', async () => {
+    const { container } = render(
+      <Switch>
+        <Switch.Addon>test</Switch.Addon>
+        <Switch.Value checked />
+        <Switch.Addon>test</Switch.Addon>
+      </Switch>,
+    );
+
+    const results = await axe(container);
+    expect(results).toHaveNoViolations();
   });
 });
 

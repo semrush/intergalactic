@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, fireEvent, cleanup } from 'jest-preset-ui/testing';
+import { render, fireEvent, cleanup, axe } from 'jest-preset-ui/testing';
 import snapshot from 'jest-preset-ui/snapshot';
 import DataTable from '../src';
 import { shouldSupportClassName, shouldSupportRef } from 'jest-preset-ui/shared';
@@ -80,5 +80,19 @@ describe('DataTable.Column', () => {
       </DataTable>,
     );
     expect(getByTestId('column').style.flex).toBe('0 0px');
+  });
+
+  test('a11y', async () => {
+    const { container } = render(
+      <DataTable data={[{ keyword: 123 }]}>
+        <DataTable.Head>
+          <DataTable.Column name="keyword" />
+        </DataTable.Head>
+        <DataTable.Body />
+      </DataTable>,
+    );
+
+    const results = await axe(container);
+    expect(results).toHaveNoViolations();
   });
 });

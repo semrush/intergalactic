@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, cleanup } from 'jest-preset-ui/testing';
+import { render, cleanup, axe } from 'jest-preset-ui/testing';
 import snapshot from 'jest-preset-ui/snapshot';
 import Icon from '../src';
 
@@ -66,5 +66,16 @@ describe('Icon', () => {
     );
 
     expect(await snapshot(component)).toMatchImageSnapshot();
+  });
+
+  test('a11y', async () => {
+    const { container } = render(
+      <Icon width={22} height={22} viewBox="0 0 22 22" color="green">
+        <polygon points="18.532 3 7.501 14.054 3.468 10.012 1 12.485 7.501 19 21 5.473"></polygon>
+      </Icon>,
+    );
+
+    const results = await axe(container);
+    expect(results).toHaveNoViolations();
   });
 });

@@ -42,7 +42,7 @@ class Breadcrumbs extends Component<IBreadcrumbsProps> {
   render() {
     const { Root: SBreadcrumbs } = this;
     const { styles } = this.asProps;
-    return styled(styles)(<SBreadcrumbs render={Box} />);
+    return styled(styles)(<SBreadcrumbs render={Box} aria-label="breadcrumbs" />);
   }
 }
 
@@ -59,7 +59,7 @@ class Item extends Component<IBreadcrumbsItemProps> {
   render() {
     const SBreadcrumbsItem = this.Root;
     const { styles, active, keyboardFocused, separator } = this.asProps;
-    const SSeparator = 'li';
+    const SSeparator = 'div';
 
     return styled(styles)(
       <>
