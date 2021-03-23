@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, cleanup } from 'jest-preset-ui/testing';
+import { render, cleanup, axe } from 'jest-preset-ui/testing';
 import { shouldSupportClassName, shouldSupportRef } from 'jest-preset-ui/shared';
 import snapshot from 'jest-preset-ui/snapshot';
 import Table from '../src';
@@ -102,6 +102,27 @@ describe('Table', () => {
     );
 
     expect(await snapshot(component)).toMatchImageSnapshot();
+  });
+
+  test('a11y', async () => {
+    const { container } = render(
+      <Table>
+        <Table.Head>
+          <Table.Row>
+            <Table.CellHead>head 1</Table.CellHead>
+          </Table.Row>
+        </Table.Head>
+
+        <Table.Body>
+          <Table.Row>
+            <Table.Cell>cell 1</Table.Cell>
+          </Table.Row>
+        </Table.Body>
+      </Table>,
+    );
+
+    const results = await axe(container);
+    expect(results).toHaveNoViolations();
   });
 });
 

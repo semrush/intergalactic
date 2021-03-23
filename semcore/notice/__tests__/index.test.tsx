@@ -1,8 +1,9 @@
 import React from 'react';
-import { render, cleanup } from 'jest-preset-ui/testing';
+import { render, cleanup, axe } from 'jest-preset-ui/testing';
 import snapshot from 'jest-preset-ui/snapshot';
 import Notice, { NoticeSmart } from '../src';
 import { shouldSupportClassName, shouldSupportRef } from 'jest-preset-ui/shared';
+
 describe('Notice', () => {
   afterEach(cleanup);
 
@@ -68,5 +69,16 @@ describe('NoticeSmart', () => {
     );
 
     expect(await snapshot(component)).toMatchImageSnapshot();
+  });
+
+  test('a11y', async () => {
+    const { container } = render(
+      <NoticeSmart label="label" actions="actions" closable>
+        Text NoticeSmart
+      </NoticeSmart>,
+    );
+
+    const results = await axe(container);
+    expect(results).toHaveNoViolations();
   });
 });
