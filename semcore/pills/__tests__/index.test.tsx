@@ -1,8 +1,7 @@
 import React from 'react';
-import { render, fireEvent, cleanup } from 'jest-preset-ui/testing';
+import { render, fireEvent, cleanup, axe } from 'jest-preset-ui/testing';
 import snapshot from 'jest-preset-ui/snapshot';
 import Pills from '../src';
-import Link from '@semcore/link/src';
 
 describe('PillGroup', () => {
   afterEach(cleanup);
@@ -116,5 +115,23 @@ describe('PillGroup', () => {
     );
 
     expect(await snapshot(component)).toMatchImageSnapshot();
+  });
+
+  test('a11y', async () => {
+    const { getByTestId, container } = render(
+      <Pills value={1}>
+        <Pills.Item value={1}>1</Pills.Item>
+        <Pills.Item value={2}>2</Pills.Item>
+        <Pills.Item value={3}>3</Pills.Item>
+        <Pills.Item value={4} data-testid="tab-4">
+          4
+        </Pills.Item>
+      </Pills>,
+    );
+
+    fireEvent.click(getByTestId('tab-4'));
+
+    const results = await axe(container);
+    expect(results).toHaveNoViolations();
   });
 });

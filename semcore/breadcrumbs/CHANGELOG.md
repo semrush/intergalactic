@@ -2,6 +2,13 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.3.0] - 2021-03-23
+
+### Fixed
+
+- Added `aria-label` for `Breadcrumbs`.
+- Changed default tag `li` to `div` for wrap separator in `Breadcrumbs.Item`.
+
 ## [2.2.0] - 2020-12-17
 
 ### Added
