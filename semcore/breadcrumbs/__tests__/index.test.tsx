@@ -1,5 +1,5 @@
 import React from 'react';
-import { cleanup } from 'jest-preset-ui/testing';
+import { axe, fireEvent, render, cleanup } from 'jest-preset-ui/testing';
 import snapshot from 'jest-preset-ui/snapshot';
 import Breadcrumbs from '../src';
 
@@ -40,5 +40,19 @@ describe('Breadcrumbs', () => {
     );
 
     expect(await snapshot(component)).toMatchImageSnapshot();
+  });
+
+  test('a11y', async () => {
+    const { container } = render(
+      <Breadcrumbs>
+        <Breadcrumbs.Item>first</Breadcrumbs.Item>
+        <Breadcrumbs.Item>second</Breadcrumbs.Item>
+        <Breadcrumbs.Item>third</Breadcrumbs.Item>
+        <Breadcrumbs.Item style={{ opacity: 0.3 }}>four</Breadcrumbs.Item>
+      </Breadcrumbs>,
+    );
+    const results = await axe(container);
+
+    expect(results).toHaveNoViolations();
   });
 });
