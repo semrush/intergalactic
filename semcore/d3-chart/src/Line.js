@@ -1,54 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { curveBasis, line as d3Line } from 'd3-shape';
+import { curveCardinal, line as d3Line } from 'd3-shape';
 import { bisector } from 'd3-array';
 import { Component, styled } from '@semcore/core';
 import createXYElement from './XYElement';
-import { definedData, scaleOfBandwidth } from './utils';
+import { definedData, scaleOfBandwidth, getNullData } from './utils';
 
 import style from './style/line.shadow.css';
-
-function getNullData(data, defined, name) {
-  return data.reduce((acc, d, i, data) => {
-    if (defined(d)) {
-      acc.push({
-        [name]: null,
-      });
-    } else {
-      const prev = data[i - 1];
-      const next = data[i + 1];
-
-      if (i === 0) {
-        const defNext = data.find(defined);
-        acc.push({
-          ...d,
-          [name]: defNext ? defNext[name] : null,
-        });
-      }
-
-      // prev
-      if (prev && defined(prev)) {
-        acc.push(prev);
-      }
-
-      // next
-      if (next && defined(next)) {
-        acc.push(next);
-      }
-
-      if (data.length - 1 === i) {
-        const defPrev = data
-          .slice()
-          .reverse()
-          .find(defined);
-        acc.push({
-          ...d,
-          [name]: defPrev ? defPrev[name] : null,
-        });
-      }
-    }
-    return acc;
-  }, []);
-}
 
 class LineRoot extends Component {
   static displayName = 'Line';
@@ -96,13 +53,13 @@ class LineRoot extends Component {
         hide={hide}
         stroke={color}
         curve={curve}
-        d={curve ? d3.curve(curveBasis)(data) : d3(data)}
+        d={curve ? d3.curve(curveCardinal)(data) : d3(data)}
       />,
     );
   }
 }
 
-export function Dots(props) {
+function Dots(props) {
   const { Element: SDot, styles, data, d3, x, y, eventEmitter, display, hide } = props;
   const bisect = bisector((d) => d[x]).center;
   const [activeIndex, setActiveIndex] = useState(props.activeIndex || null);
@@ -147,7 +104,7 @@ export function Dots(props) {
   }, []);
 }
 
-export function Null(props) {
+function Null(props) {
   const { Element: SNull, styles, d3, data, hide } = props;
   return styled(styles)(<SNull render="path" d={d3(data)} hide={hide} />);
 }
