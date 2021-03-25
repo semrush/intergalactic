@@ -1,54 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { area, curveBasis, line } from 'd3-shape';
+import { area, curveCardinal, line } from 'd3-shape';
 import { bisector } from 'd3-array';
 import { Component, styled } from '@semcore/core';
 import createXYElement from './XYElement';
-import { definedData, scaleOfBandwidth } from './utils';
+import { definedData, scaleOfBandwidth, getNullData } from './utils';
 
 import style from './style/area.shadow.css';
-
-function getNullData(data, defined, name) {
-  return data.reduce((acc, d, i, data) => {
-    if (defined(d)) {
-      acc.push({
-        [name]: null,
-      });
-    } else {
-      const prev = data[i - 1];
-      const next = data[i + 1];
-
-      if (i === 0) {
-        const defNext = data.find(defined);
-        acc.push({
-          ...d,
-          [name]: defNext ? defNext[name] : null,
-        });
-      }
-
-      // prev
-      if (prev && defined(prev)) {
-        acc.push(prev);
-      }
-
-      // next
-      if (next && defined(next)) {
-        acc.push(next);
-      }
-
-      if (data.length - 1 === i) {
-        const defPrev = data
-          .slice()
-          .reverse()
-          .find(defined);
-        acc.push({
-          ...d,
-          [name]: defPrev ? defPrev[name] : null,
-        });
-      }
-    }
-    return acc;
-  }, []);
-}
 
 class AreaRoot extends Component {
   static displayName = 'Area';
@@ -57,12 +14,19 @@ class AreaRoot extends Component {
   static defaultProps = ({ x, y, $rootProps }) => {
     const [xScale, yScale] = $rootProps.scale;
     const yRange = yScale.range();
+
     return {
       d3: area()
         .defined(definedData(x, y))
-        .x((p) => scaleOfBandwidth(xScale, p[x]))
-        .y1((p) => scaleOfBandwidth(yScale, p[y]))
-        .y0(yRange[0]),
+        .x((p) => {
+          return scaleOfBandwidth(xScale, p[x]);
+        })
+        .y0((p) => {
+          return p.y0 ? scaleOfBandwidth(yScale, p.y0) : yRange[0];
+        })
+        .y1((p) => {
+          return scaleOfBandwidth(yScale, p[y]);
+        }),
       d3Line: line()
         .defined(definedData(x, y))
         .x((p) => scaleOfBandwidth(xScale, p[x]))
@@ -102,9 +66,14 @@ class AreaRoot extends Component {
           hide={hide}
           curve={curve}
           fill={fill}
-          d={curve ? d3.curve(curveBasis)(data) : d3(data)}
+          d={curve ? d3.curve(curveCardinal)(data) : d3(data)}
         />
-        <path color={color} d={d3Line(data)} />
+        <path
+          stroke={color}
+          strokeWidth="3"
+          fill="transparent"
+          d={curve ? d3Line.curve(curveCardinal)(data) : d3Line(data)}
+        />
       </>,
     );
   }
