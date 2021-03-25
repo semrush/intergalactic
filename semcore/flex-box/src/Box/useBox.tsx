@@ -46,8 +46,8 @@ export interface IBoxProps extends IStyledProps {
   /** Sets the `inline-block` property */
   inline?: boolean;
 
-  /** CSS `box-sizing` property */
-  boxSizing?: 'content-box' | 'border-box';
+  /** CSS `box-sizing: border-box` property */
+  boxSizing?: boolean | 'border-box';
 
   /** CSS `flex` property */
   flex?: FlexProperty<string>;
