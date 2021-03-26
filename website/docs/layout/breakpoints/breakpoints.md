@@ -6,7 +6,7 @@ tabName: Guide
 
 @## Adaptivity
 
-Our product interfaces are desktop first, so adaptability of the core products is optional yet.
+Most of our products are designed to work with data on the desktop, so adaptability is not yet required for all tools.
 
 > Most of the core components can be used on the adaptive interface. You need to increase their size to the biggest (XL) for ease of use on touch devices. You can see the examples in the [Code tab](/layout/breakpoints/breakpoints-code/).
 
@@ -45,7 +45,7 @@ module.exports = {
 
 A list of the main breakpoints that we recommend to use in our product interfaces:
 
-- `414px` for mobile devices
+- `320px` for mobile devices
 - `768px` for tablet devices
 - `1154px` for desktop devices
 
