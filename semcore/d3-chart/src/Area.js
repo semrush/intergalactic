@@ -18,15 +18,9 @@ class AreaRoot extends Component {
     return {
       d3: area()
         .defined(definedData(x, y))
-        .x((p) => {
-          return scaleOfBandwidth(xScale, p[x]);
-        })
-        .y0((p) => {
-          return p.y0 ? scaleOfBandwidth(yScale, p.y0) : yRange[0];
-        })
-        .y1((p) => {
-          return scaleOfBandwidth(yScale, p[y]);
-        }),
+        .x((p) => scaleOfBandwidth(xScale, p[x]))
+        .y0((p) => (p.y0 ? scaleOfBandwidth(yScale, p.y0) : yRange[0]))
+        .y1((p) => scaleOfBandwidth(yScale, p[y])),
       d3Line: line()
         .defined(definedData(x, y))
         .x((p) => scaleOfBandwidth(xScale, p[x]))

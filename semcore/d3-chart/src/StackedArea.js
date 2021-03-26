@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { area, stack } from 'd3-shape';
+import { area, stack, line } from 'd3-shape';
 import { Component, styled } from '@semcore/core';
 import createXYElement from './XYElement';
 import Area from './Area';
-
 import style from './style/area.shadow.css';
 import { bisector } from 'd3-array';
-import { definedData, scaleOfBandwidth } from './utils';
+import { definedData, scaleOfBandwidth, getNullData } from './utils';
 
 class StackedAreaRoot extends Component {
   static displayName = 'StackedArea';
@@ -31,7 +30,7 @@ class StackedAreaRoot extends Component {
     return {
       data: series.map((s) => ({
         [x]: s.data[x],
-        [y]: s[1],
+        [y]: s[1] === 0 ? null : s[1],
         y0: s[0],
       })),
       x,
@@ -72,6 +71,31 @@ class StackedAreaRoot extends Component {
       x,
       d3: dotD3,
       colors: colors,
+    };
+  }
+
+  getNullProps() {
+    const { x, color, data, Children, scale } = this.asProps;
+    const oY = [];
+    const [xScale, yScale] = scale;
+    Children.props.children.map((y) => (y.props.y ? oY.push(y.props.y) : ''));
+    const countDots = Object.keys(data[0]).length - 1;
+
+    const d3 = Array(countDots)
+      .fill({})
+      .map((element, index) => {
+        return line()
+          .defined(definedData(x, oY[index]))
+          .x((p) => scaleOfBandwidth(xScale, p[x]))
+          .y((p) => scaleOfBandwidth(yScale, this.generateDotYByNum(p, oY, index)));
+      });
+
+    const nullData = d3.map((d3, index) => getNullData(data, d3.defined(), oY[index]));
+
+    return {
+      d3Line: d3,
+      data: nullData,
+      fill: color,
     };
   }
 
@@ -130,9 +154,17 @@ function Dots(props) {
   }, []);
 }
 
+function Null(props) {
+  const { Element: SNull, styles, d3Line, data, hide } = props;
+  return d3Line.map((elem, index) => styled(styles)(
+    <SNull key={index} render="path" d={d3Line[index](data[index])} hide={hide} />,
+  ));
+}
+
 const StackedArea = createXYElement(StackedAreaRoot, {
   Area,
   Dots,
+  Null,
 });
 
 export default StackedArea;
