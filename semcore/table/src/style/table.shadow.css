@@ -114,7 +114,7 @@ SRow {
 SRow[theme='default'] {
   background-color: #fff;
 
-  &:hover SCellRow {
+  &:hover > SCellRow {
     background-color: color-mod(var(--stone) blend(#fff 90%));
   }
 }
@@ -145,7 +145,7 @@ SCellRow[theme='success'] {
 }
 
 SRow[theme='success']:hover,
-SRow[theme]:hover SCellRow[theme='success'],
+SRow[theme]:hover > SCellRow[theme='success'],
 SCellRow[highlighted][theme='success'],
 SCellRow[interactive][theme='success']:hover {
   background-color: color-mod(var(--green) blend(#fff 80%));
@@ -157,7 +157,7 @@ SCellRow[theme='warning'] {
 }
 
 SRow[theme='warning']:hover,
-SRow[theme]:hover SCellRow[theme='warning'],
+SRow[theme]:hover > SCellRow[theme='warning'],
 SCellRow[highlighted][theme='warning'],
 SCellRow[interactive][theme='warning']:hover {
   background-color: color-mod(var(--light-orange) blend(#fff 80%));
@@ -169,7 +169,7 @@ SCellRow[theme='danger'] {
 }
 
 SRow[theme='danger']:hover,
-SRow[theme]:hover SCellRow[theme='danger'],
+SRow[theme]:hover > SCellRow[theme='danger'],
 SCellRow[highlighted][theme='danger'],
 SCellRow[interactive][theme='danger']:hover {
   background-color: color-mod(var(--red) blend(#fff 85%));
