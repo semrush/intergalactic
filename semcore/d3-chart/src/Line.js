@@ -1,5 +1,5 @@
 import React from 'react';
-import { curveCardinal, line as d3Line } from 'd3-shape';
+import { curveLinear, line as d3Line } from 'd3-shape';
 import { Component, styled } from '@semcore/core';
 import createXYElement from './XYElement';
 import { definedData, scaleOfBandwidth, getNullData } from './utils';
@@ -9,15 +9,15 @@ import style from './style/line.shadow.css';
 
 class LineRoot extends Component {
   static displayName = 'Line';
-  static defaultProps = ({ x, y, $rootProps }) => {
+  static defaultProps = ({ x, y, $rootProps, curve = curveLinear }) => {
     const [xScale, yScale] = $rootProps.scale;
     return {
       d3: d3Line()
         .defined(definedData(x, y))
+        .curve(curve)
         .x((p) => scaleOfBandwidth(xScale, p[x]))
         .y((p) => scaleOfBandwidth(yScale, p[y])),
       color: '#50aef4',
-      curve: false,
     };
   };
 
@@ -45,17 +45,9 @@ class LineRoot extends Component {
 
   render() {
     const SLine = this.Element;
-    const { styles, hide, color, d3, data, curve } = this.asProps;
+    const { styles, hide, color, d3, data } = this.asProps;
 
-    return styled(styles)(
-      <SLine
-        render="path"
-        hide={hide}
-        stroke={color}
-        curve={curve}
-        d={curve ? d3.curve(curveCardinal)(data) : d3(data)}
-      />,
-    );
+    return styled(styles)(<SLine render="path" hide={hide} stroke={color} d={d3(data)} />);
   }
 }
 
