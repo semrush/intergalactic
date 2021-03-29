@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [1.0.0-3] - 2021-03-29
+
+### Added
+
+- [TS] Added types for `Bar.Background, HorizontalBar.Background`.
+
 ## [1.0.0-2] - 2021-03-18
 
 ### Fixed
