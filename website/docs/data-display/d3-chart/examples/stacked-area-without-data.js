@@ -45,17 +45,17 @@ export default () => {
                   <Tooltip.Dot mr={4} color={colors['orange-01']}>
                     Stack 3
                   </Tooltip.Dot>
-                  <Text bold>{data[xIndex].stack3 === null ? 'null' : data[xIndex].stack3}</Text>
+                  <Text bold>{data[xIndex].stack3 === null ? 'n/a' : data[xIndex].stack3}</Text>
                 </Flex>
                 <Flex mt={2} justifyContent="space-between">
                   <Tooltip.Dot mr={4} color={colors['green-01']}>
                     Stack 2
                   </Tooltip.Dot>
-                  <Text bold>{data[xIndex].stack2 === null ? 'null' : data[xIndex].stack2}</Text>
+                  <Text bold>{data[xIndex].stack2 === null ? 'n/a' : data[xIndex].stack2}</Text>
                 </Flex>
                 <Flex mt={2} justifyContent="space-between">
                   <Tooltip.Dot mr={4}>Stack 1</Tooltip.Dot>
-                  <Text bold>{data[xIndex].stack1 === null ? 'null' : data[xIndex].stack1}</Text>
+                  <Text bold>{data[xIndex].stack1 === null ? 'n/a' : data[xIndex].stack1}</Text>
                 </Flex>
               </>
             ),
@@ -63,11 +63,18 @@ export default () => {
         }}
       </Tooltip>
       <StackedArea x="time">
-        <StackedArea.Area y="stack1" />
-        <StackedArea.Area y="stack2" fill="#3AB01150" color="#3AB011" />
-        <StackedArea.Area y="stack3" fill="#FF8E2950" color="#FF8E29" />
-        <StackedArea.Null />
-        <StackedArea.Dots />
+        <StackedArea.Area y="stack1">
+          <StackedArea.Area.Null />
+          <StackedArea.Area.Dots />
+        </StackedArea.Area>
+        <StackedArea.Area y="stack2" fill="#3AB01150" color="#3AB011">
+          <StackedArea.Area.Null />
+          <StackedArea.Area.Dots />
+        </StackedArea.Area>
+        <StackedArea.Area y="stack3" fill="#FF8E2950" color="#FF8E29">
+          <StackedArea.Area.Null />
+          <StackedArea.Area.Dots />
+        </StackedArea.Area>
       </StackedArea>
     </XYPlot>
   );

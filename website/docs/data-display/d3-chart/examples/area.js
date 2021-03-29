@@ -1,6 +1,7 @@
 import React from 'react';
 import { XYPlot, XAxis, YAxis, minMax, Area } from '@semcore/d3-chart';
 import { scaleLinear } from 'd3-scale';
+import { curveCardinal } from 'd3-shape';
 
 function formatDate(value, options) {
   return new Intl.DateTimeFormat('en', options).format(value);
@@ -35,7 +36,7 @@ export default () => {
           })}
         </XAxis.Ticks>
       </XAxis>
-      <Area x="time" y="line" curve>
+      <Area x="time" y="line" curve={curveCardinal}>
         <Area.Dots display />
       </Area>
     </XYPlot>

@@ -34,7 +34,7 @@ export default () => {
                 <Tooltip.Title>{data[xIndex].x}</Tooltip.Title>
                 <Flex justifyContent="space-between">
                   <Tooltip.Dot mr={4}>Line</Tooltip.Dot>
-                  <Text bold>{data[xIndex].y === null ? 'null' : data[xIndex].y}</Text>
+                  <Text bold>{data[xIndex].y === null ? 'n/a' : data[xIndex].y}</Text>
                 </Flex>
               </>
             ),

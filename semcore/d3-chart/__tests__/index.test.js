@@ -5,6 +5,9 @@ import { render, fireEvent, cleanup } from 'jest-preset-ui/testing';
 import { shouldSupportClassName, shouldSupportRef } from 'jest-preset-ui/shared';
 import { XYPlot, YAxis, XAxis } from '../src';
 import { getIndexFromData } from '../src/utils';
+import snapshot from 'jest-preset-ui/snapshot';
+import { minMax, Area, StackedArea } from '@semcore/d3-chart';
+import { curveCardinal } from 'd3-shape';
 
 const xScale = scaleLinear()
   .range([10, 100])
@@ -153,5 +156,117 @@ describe('utils', () => {
 
     expect(getIndexFromData(data, xScale, 'x', 2)).toBe(1);
     expect(getIndexFromData(data, yScale, 'y', 'test')).toBe(0);
+  });
+});
+
+describe('Area chart', () => {
+  const MARGIN = 40;
+  const width = 500;
+  const height = 300;
+  const data = [
+    { time: 0, stack1: 1, stack2: 4, stack3: 3 },
+    { time: 1, stack1: 2, stack2: 3, stack3: 4 },
+    { time: 2, stack1: 1, stack2: 4, stack3: 5 },
+    { time: 3, stack1: 3, stack2: 2, stack3: 6 },
+    { time: 4, stack1: 2, stack2: 4, stack3: 4 },
+    { time: 5, stack1: 3, stack2: 4, stack3: 3 },
+    { time: 6, stack1: 4, stack2: 1, stack3: 5 },
+    { time: 7, stack1: 2, stack2: 5, stack3: 3 },
+    { time: 8, stack1: 2, stack2: 6, stack3: 5 },
+    { time: 9, stack1: 5, stack2: 5, stack3: 3 },
+  ];
+
+  const xScale = scaleLinear()
+    .range([MARGIN, width - MARGIN])
+    .domain(minMax(data, 'time'));
+
+  const yScale = scaleLinear()
+    .range([height - MARGIN, MARGIN])
+    .domain([0, 15]);
+
+  test('should render curve Area chart correctly', async () => {
+    const component = (
+      <XYPlot data={data} scale={[xScale, yScale]} width={width} height={height}>
+        <YAxis ticks={yScale.ticks()}>
+          <YAxis.Ticks />
+          <YAxis.Grid />
+        </YAxis>
+        <XAxis ticks={xScale.ticks()}>
+          <XAxis.Ticks></XAxis.Ticks>
+        </XAxis>
+        <Area x="time" y="stack1" curve={curveCardinal}>
+          <Area.Dots display />
+        </Area>
+      </XYPlot>
+    );
+
+    expect(await snapshot(component)).toMatchImageSnapshot();
+  });
+
+  test('should render Stacked Area chart without data correctly', async () => {
+    const data = [
+      { time: 0, stack1: 1, stack2: 4, stack3: 3 },
+      { time: 1, stack1: 2, stack2: 3, stack3: 4 },
+      { time: 2, stack1: 1, stack2: 4, stack3: 5 },
+      { time: 3, stack1: null, stack2: null, stack3: null },
+      { time: 4, stack1: null, stack2: null, stack3: null },
+      { time: 5, stack1: 3, stack2: 4, stack3: 3 },
+      { time: 6, stack1: null, stack2: null, stack3: null },
+      { time: 7, stack1: 2, stack2: 5, stack3: 3 },
+      { time: 8, stack1: 2, stack2: 6, stack3: 5 },
+      { time: 9, stack1: 5, stack2: 5, stack3: 3 },
+    ];
+
+    const component = (
+      <XYPlot data={data} scale={[xScale, yScale]} width={width} height={height}>
+        <YAxis ticks={yScale.ticks()}>
+          <YAxis.Ticks />
+          <YAxis.Grid />
+        </YAxis>
+        <XAxis ticks={xScale.ticks()}>
+          <XAxis.Ticks></XAxis.Ticks>
+        </XAxis>
+        <StackedArea x="time">
+          <StackedArea.Area y="stack1">
+            <StackedArea.Area.Null />
+          </StackedArea.Area>
+          <StackedArea.Area y="stack2" fill="#3AB01150" color="#3AB011">
+            <StackedArea.Area.Null />
+          </StackedArea.Area>
+          <StackedArea.Area y="stack3" fill="#FF8E2950" color="#FF8E29">
+            <StackedArea.Area.Null />
+          </StackedArea.Area>
+        </StackedArea>
+      </XYPlot>
+    );
+
+    expect(await snapshot(component)).toMatchImageSnapshot();
+  });
+
+  test('should render curve Stacked Area chart with dots correctly', async () => {
+    const component = (
+      <XYPlot data={data} scale={[xScale, yScale]} width={width} height={height}>
+        <YAxis ticks={yScale.ticks()}>
+          <YAxis.Ticks />
+          <YAxis.Grid />
+        </YAxis>
+        <XAxis ticks={xScale.ticks()}>
+          <XAxis.Ticks></XAxis.Ticks>
+        </XAxis>
+        <StackedArea x="time">
+          <StackedArea.Area y="stack1" curve={curveCardinal}>
+            <StackedArea.Area.Dots display />
+          </StackedArea.Area>
+          <StackedArea.Area y="stack2" fill="#3AB01150" color="#3AB011" curve={curveCardinal}>
+            <StackedArea.Area.Dots display />
+          </StackedArea.Area>
+          <StackedArea.Area y="stack3" fill="#FFA31850" color="#FFA318" curve={curveCardinal}>
+            <StackedArea.Area.Dots display />
+          </StackedArea.Area>
+        </StackedArea>
+      </XYPlot>
+    );
+
+    expect(await snapshot(component)).toMatchImageSnapshot();
   });
 });

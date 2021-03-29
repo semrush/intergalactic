@@ -12,6 +12,7 @@ import {
 import { scaleLinear } from 'd3-scale';
 import { Flex, Box } from '@semcore/flex-box';
 import { Text } from '@semcore/typography';
+import { curveCardinal } from 'd3-shape';
 
 function formatDate(value, options) {
   return new Intl.DateTimeFormat('en', options).format(value);
@@ -86,10 +87,15 @@ export default () => {
         }}
       </Tooltip>
       <StackedArea x="time">
-        <StackedArea.Area y="stack1" curve />
-        <StackedArea.Area y="stack2" fill="#3AB01150" color="#3AB011" curve />
-        <StackedArea.Area y="stack3" fill="#FFA31850" color="#FFA318" curve />
-        <StackedArea.Dots />
+        <StackedArea.Area y="stack1" curve={curveCardinal}>
+          <StackedArea.Area.Dots />
+        </StackedArea.Area>
+        <StackedArea.Area y="stack2" fill="#3AB01150" color="#3AB011" curve={curveCardinal}>
+          <StackedArea.Area.Dots />
+        </StackedArea.Area>
+        <StackedArea.Area y="stack3" fill="#FFA31850" color="#FFA318" curve={curveCardinal}>
+          <StackedArea.Area.Dots />
+        </StackedArea.Area>
       </StackedArea>
     </XYPlot>
   );
