@@ -18,6 +18,11 @@ class TooltipRoot extends Component {
     yIndex: null,
   };
 
+  popperProps = {
+    offset: 8,
+    flip: { allowedAutoPlacements: ['left', 'right'] },
+  };
+
   componentDidMount() {
     const {
       eventEmitter,
@@ -70,7 +75,7 @@ class TooltipRoot extends Component {
       Tooltip.Popper.displayName,
     ]);
     return (
-      <Root render={Popper} visible={visible} offset={8}>
+      <Root render={Popper} visible={visible} {...this.popperProps}>
         {({ popper }) => {
           popper.current?.update();
           return advanceMode ? (
