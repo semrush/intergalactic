@@ -6,7 +6,7 @@ title: Area chart
 
 - График с областями отображается с помощью компонента `Area`.
 - `Dots` — точки на линии.
-- Как и в [Line](https://i.semrush.com/data-display/d3-chart/line/), можно выбирать ломаный или сглаженный график с помощью параметра curve
+- Как и в [Line](https://i.semrush.com/data-display/d3-chart/line/), можно выбирать ломаный или сглаженный график с помощью передачи требуемого метода в curve
 
 @example area
 

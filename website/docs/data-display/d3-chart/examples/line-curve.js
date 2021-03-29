@@ -3,6 +3,7 @@ import { XYPlot, Line, XAxis, YAxis, HoverLine, Tooltip, minMax } from '@semcore
 import { scaleLinear } from 'd3-scale';
 import { Flex } from '@semcore/flex-box';
 import { Text } from '@semcore/typography';
+import { curveCardinal } from 'd3-shape';
 
 export default () => {
   const MARGIN = 40;
@@ -41,7 +42,7 @@ export default () => {
           };
         }}
       </Tooltip>
-      <Line x="x" y="y" curve>
+      <Line x="x" y="y" curve={curveCardinal}>
         <Line.Dots />
       </Line>
     </XYPlot>

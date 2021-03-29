@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { curveCardinal, line as d3Line } from 'd3-shape';
-import { bisector } from 'd3-array';
 import { Component, styled } from '@semcore/core';
 import createXYElement from './XYElement';
 import { definedData, scaleOfBandwidth, getNullData } from './utils';
+import Dots from './Dots';
 
 import style from './style/line.shadow.css';
 
@@ -57,51 +57,6 @@ class LineRoot extends Component {
       />,
     );
   }
-}
-
-function Dots(props) {
-  const { Element: SDot, styles, data, d3, x, y, eventEmitter, display, hide } = props;
-  const bisect = bisector((d) => d[x]).center;
-  const [activeIndex, setActiveIndex] = useState(props.activeIndex || null);
-
-  useEffect(() => {
-    const unsubscribeNearestXY = eventEmitter.subscribe('onNearestXY', (point) => {
-      if (point[0] === undefined) {
-        setActiveIndex(null);
-      } else {
-        setActiveIndex(bisect(data, point[0]));
-      }
-    });
-
-    return () => {
-      unsubscribeNearestXY();
-    };
-  }, [eventEmitter, data, x, y]);
-
-  return data.reduce((acc, d, i) => {
-    const isPrev = d3.defined()(data[i - 1] || {});
-    const isNext = d3.defined()(data[i + 1] || {});
-    const active = i === activeIndex;
-    if (!d3.defined()(d)) return acc;
-    if (display || i === activeIndex || (!isPrev && !isNext)) {
-      acc.push(
-        styled(styles)(
-          <SDot
-            key={i}
-            __excludeProps={['data', 'scale', 'value', 'display']}
-            value={d}
-            index={i}
-            render="circle"
-            cx={d3.x()(d)}
-            cy={d3.y()(d)}
-            active={active}
-            hide={hide}
-          />,
-        ),
-      );
-    }
-    return acc;
-  }, []);
 }
 
 function Null(props) {
