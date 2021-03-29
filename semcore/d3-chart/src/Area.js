@@ -58,10 +58,10 @@ class AreaRoot extends Component {
 
   render() {
     const SArea = this.Element;
-    const { styles, hide, d3, d3Line, data, fill, curve, color } = this.asProps;
+    const { styles, hide, d3, d3Line, data, fill, color } = this.asProps;
     return styled(styles)(
       <>
-        <SArea render="path" hide={hide} curve={curve} fill={fill} d={d3(data)} />
+        <SArea render="path" hide={hide} fill={fill} d={d3(data)} />
         <path stroke={color} strokeWidth="3" fill="transparent" d={d3Line(data)} />
       </>,
     );
