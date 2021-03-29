@@ -126,6 +126,12 @@ beta: true
 
 @example legend
 
+@## Синхронные графики
+
+> Будте внимательны при выборе scale для оси (которая общая для разных графиков).
+
+@example sync-charts
+
 @page line
 @page bar
 @page d3-chart-api
