@@ -30,3 +30,9 @@ title: Line chart
 > Если значения тиков у вас уже есть, то можно взять `scaleLine`.
 
 @example line-time
+
+@## Curve
+
+Для получения сглаженных линий нужно передать в график curve с требуемым методом закругления. Существующие методы можно посмотреть [здесь](https://github.com/d3/d3-shape#curves).
+
+@example line-curve

@@ -33,6 +33,49 @@ export function minMax(data, key) {
   return extent(data, key);
 }
 
+export function getNullData(data, defined, name) {
+  return data.reduce((acc, d, i, data) => {
+    if (defined(d)) {
+      acc.push({
+        [name]: null,
+      });
+    } else {
+      const prev = data[i - 1];
+      const next = data[i + 1];
+
+      if (i === 0) {
+        const defNext = data.find(defined);
+        acc.push({
+          ...d,
+          [name]: defNext ? defNext[name] : null,
+        });
+      }
+
+      // prev
+      if (prev && defined(prev)) {
+        acc.push(prev);
+      }
+
+      // next
+      if (next && defined(next)) {
+        acc.push(next);
+      }
+
+      if (data.length - 1 === i) {
+        const defPrev = data
+          .slice()
+          .reverse()
+          .find(defined);
+        acc.push({
+          ...d,
+          [name]: defPrev ? defPrev[name] : null,
+        });
+      }
+    }
+    return acc;
+  }, []);
+}
+
 export function getIndexFromData(data, scale, key, value) {
   // detect line chart
   if ('invert' in scale && typeof scale.invert === 'function') {
