@@ -137,3 +137,32 @@ import { GroupBar } from '@semcore/d3-chart';
 ```
 
 @interface IGroupBarProps
+
+@## Area
+
+It have children components `Dots, Null`.
+
+```js
+import { Area } from '@semcore/d3-chart';
+
+<Area>
+  <Area.Dots />
+  <Area.Null />
+</Area>;
+```
+
+@interface IAreaProps
+
+@## StackedArea
+
+It have children components `Area`.
+
+```js
+import { StackedArea } from '@semcore/d3-chart';
+
+<StackedArea>
+  <StackedArea.Area />
+</StackedArea>;
+```
+
+@interface IStackedAreaProps
