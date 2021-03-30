@@ -18,19 +18,24 @@ class StackedAreaRoot extends Component {
 
   getSeries() {
     const { data, x } = this.asProps;
-    const keys = Object.keys(data[0]).filter((oY) => oY !== x);
-    return stack().keys(keys)(data);
+    const keys = data
+      .flatMap((d) => Object.keys(d))
+      .reduce((keys, key) => keys.add(key), new Set());
+    keys.delete(x);
+    return stack().keys([...keys])(data);
   }
 
   getAreaProps({ y }) {
     const { x } = this.asProps;
+    const Y0 = Symbol('Y0');
     const series = this.series.find((s) => s.key === y);
     return {
       data: series.map((s) => ({
         [x]: s.data[x],
         [y]: s[1] === 0 ? null : s[1],
-        y0: s[0],
+        [Y0]: s[0],
       })),
+      y0: Y0,
       x,
     };
   }

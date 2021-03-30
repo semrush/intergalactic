@@ -45,17 +45,17 @@ export default () => {
                   <Tooltip.Dot mr={4} color={colors['orange-01']}>
                     Stack 3
                   </Tooltip.Dot>
-                  <Text bold>{data[xIndex].stack3 === null ? 'n/a' : data[xIndex].stack3}</Text>
+                  <Text bold>{data[xIndex].stack3 ?? 'n/a'}</Text>
                 </Flex>
                 <Flex mt={2} justifyContent="space-between">
                   <Tooltip.Dot mr={4} color={colors['green-01']}>
                     Stack 2
                   </Tooltip.Dot>
-                  <Text bold>{data[xIndex].stack2 === null ? 'n/a' : data[xIndex].stack2}</Text>
+                  <Text bold>{data[xIndex].stack2 ?? 'n/a'}</Text>
                 </Flex>
                 <Flex mt={2} justifyContent="space-between">
                   <Tooltip.Dot mr={4}>Stack 1</Tooltip.Dot>
-                  <Text bold>{data[xIndex].stack1 === null ? 'n/a' : data[xIndex].stack1}</Text>
+                  <Text bold>{data[xIndex].stack1 ?? 'n/a'}</Text>
                 </Flex>
               </>
             ),

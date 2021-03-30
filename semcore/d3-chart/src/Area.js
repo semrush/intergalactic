@@ -11,7 +11,7 @@ class AreaRoot extends Component {
   static displayName = 'Area';
   static style = style;
 
-  static defaultProps = ({ x, y, $rootProps, curve = curveLinear }) => {
+  static defaultProps = ({ x, y, y0, $rootProps, curve = curveLinear }) => {
     const [xScale, yScale] = $rootProps.scale;
     const yRange = yScale.range();
 
@@ -20,7 +20,7 @@ class AreaRoot extends Component {
         .defined(definedData(x, y))
         .curve(curve)
         .x((p) => scaleOfBandwidth(xScale, p[x]))
-        .y0((p) => (p.y0 ? scaleOfBandwidth(yScale, p.y0) : yRange[0]))
+        .y0((p) => (p[y0] ? scaleOfBandwidth(yScale, p[y0]) : yRange[0]))
         .y1((p) => scaleOfBandwidth(yScale, p[y])),
       d3Line: line()
         .defined(definedData(x, y))
@@ -33,16 +33,13 @@ class AreaRoot extends Component {
   };
 
   getDotsProps() {
-    const { scale, x, y, color, data } = this.asProps;
-    const [xScale, yScale] = scale;
+    const { x, y, color, data, d3Line } = this.asProps;
 
     return {
       x,
       y,
-      d3: line()
-        .defined(definedData(x, y))
-        .x((p) => scaleOfBandwidth(xScale, p[x]))
-        .y((p) => scaleOfBandwidth(yScale, data.find((data) => data[x] === p[x])[y])),
+      data,
+      d3: d3Line,
       fill: color,
     };
   }
