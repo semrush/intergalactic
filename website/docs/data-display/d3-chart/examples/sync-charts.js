@@ -30,7 +30,6 @@ EventEmitterLine.subscribe('onNearestXY', ([pX, pY], isSlave = true) => {
 export default () => {
   const [width, height] = [600, 300];
   const MARGIN = 80;
-  c;
 
   const xScale = scaleBand()
     .domain(data.map((d) => d.date_chart))
