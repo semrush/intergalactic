@@ -8,6 +8,8 @@ export { default as Bar } from './Bar';
 export { default as HorizontalBar } from './HorizontalBar';
 export { default as GroupBar } from './GroupBar';
 export { default as StackBar } from './StackBar';
+export { default as Area } from './Area';
+export { default as StackedArea } from './StackedArea';
 
 export { default as Tooltip } from './Tooltip';
 
