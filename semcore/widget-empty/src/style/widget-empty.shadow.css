@@ -4,14 +4,14 @@ SWidgetEmpty {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-bottom: media(16px);
+  margin-bottom: 16px;
 }
 
 SImage {
   display: flex;
   align-items: flex-end;
   justify-content: center;
-  margin-bottom: media(12px);
+  margin-bottom: 12px;
 }
 
 STitle {
@@ -29,13 +29,13 @@ SDescription {
   font-size: var(--fs-200);
   line-height: var(--lh-200);
   color: var(--gray60);
-  max-width: media(400px);
+  max-width: 400px;
 }
 
 STitle + SDescription {
-  margin-top: media(4px);
+  margin-top: 4px;
 }
 
 SDescription + SDescription {
-  margin-top: media(8px);
+  margin-top: 8px;
 }

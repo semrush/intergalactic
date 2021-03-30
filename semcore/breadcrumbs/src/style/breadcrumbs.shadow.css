@@ -9,7 +9,7 @@ SBreadcrumbs {
 }
 
 SSeparator {
-  margin: 0 media(8px);
+  margin: 0 8px;
   color: var(--gray60);
 
   &:last-child {

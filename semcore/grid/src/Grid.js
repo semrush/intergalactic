@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box, Flex } from '@semcore/flex-box';
-import createComponent, { Component, styled } from '@semcore/core';
+import createComponent, { Component, sstyled, Root } from '@semcore/core';
 
 import style from './style/grid.shadow.css';
 
@@ -19,27 +19,15 @@ class Row extends Component {
   }
 
   render() {
-    const SFlex = this.Root;
     const { gutter } = this.asProps;
 
-    return <SFlex render={Flex} flexWrap mx={gutter ? `${gutter * -2}px` : undefined} />;
+    return <Root render={Flex} flexWrap mx={gutter ? `${gutter * -2}px` : undefined} />;
   }
 }
 
 function Col(props) {
-  let {
-    Root: SCol,
-    styles,
-    gutter,
-    span,
-    md,
-    sm,
-    xs,
-    offset,
-    mdOffset,
-    smOffset,
-    xsOffset,
-  } = props;
+  const SCol = Root;
+  let { styles, gutter, span, md, sm, xs, offset, mdOffset, smOffset, xsOffset } = props;
 
   if (Array.isArray(span)) {
     [span, md, sm, xs] = span;
@@ -59,18 +47,18 @@ function Col(props) {
       ? smOffset
       : xsOffset;
 
-  return styled(styles)(
+  return sstyled(styles)(
     <SCol
       render={Box}
       px={gutter ? `${gutter * 2}px` : undefined}
-      span={span === true ? 'auto' : span}
-      md={md === true ? 'auto' : md}
-      sm={sm === true ? 'auto' : sm}
-      xs={xs === true ? 'auto' : xs}
-      offset={offset}
-      mdOffset={mdOffset}
-      smOffset={smOffset}
-      xsOffset={xsOffset}
+      use:span={span === true ? 'auto' : span}
+      use:md={md === true ? 'auto' : md}
+      use:sm={sm === true ? 'auto' : sm}
+      use:xs={xs === true ? 'auto' : xs}
+      use:offset={offset}
+      use:mdOffset={mdOffset}
+      use:smOffset={smOffset}
+      use:xsOffset={xsOffset}
     />,
   );
 }

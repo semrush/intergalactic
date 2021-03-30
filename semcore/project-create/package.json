@@ -27,7 +27,7 @@
     "react-final-form": "^6.3"
   },
   "peerDependencies": {
-    "@semcore/core": "^1",
+    "@semcore/core": "^1.11",
     "react": "16.8 - 17"
   },
   "jest": {

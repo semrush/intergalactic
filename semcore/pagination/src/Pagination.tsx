@@ -4,7 +4,8 @@ import createComponent, {
   IFunctionProps,
   Merge,
   PropGetter,
-  styled,
+  sstyled,
+  Root,
 } from '@semcore/core';
 import { Box, IBoxProps } from '@semcore/flex-box';
 import Input, { IInputProps, IInputValueProps } from '@semcore/input';
@@ -288,20 +289,20 @@ class PaginationRoot extends Component<IPaginationProps, IPaginationState> {
 
   getTotalPagesProps = () => {
     const { currentPage, totalPages, totalPagesFormatter, getI18nText } = this.asProps;
-    const disabled = currentPage === totalPages;
     return {
       // deprecated
       children: totalPagesFormatter ? totalPagesFormatter(totalPages) : formatThousands(totalPages),
-      disabled,
+      disabled: currentPage === totalPages,
       onClick: () => this.handlePageChange(totalPages),
       getI18nText,
     };
   };
 
   render() {
-    const { Root: SPagination } = this;
-    const { styles } = this.asProps;
-    return styled(styles)(<SPagination render={Box} tag="nav" aria-label="pagination" />);
+    const SPagination = Root;
+    return sstyled(this.asProps.styles)(
+      <SPagination render={Box} tag="nav" aria-label="pagination" />,
+    );
   }
 }
 
@@ -310,7 +311,6 @@ class FirstPage extends Component<IButtonProps> {
     children: <Button.Addon tag={ChevronDoubleLeftXS} />,
   });
   render() {
-    const { Root } = this;
     return <Root render={Button} />;
   }
 }
@@ -321,9 +321,8 @@ class NextPage extends Component<IButtonProps> {
   });
 
   render() {
-    const { Root: SNextPage } = this;
-    const { styles } = this.asProps;
-    return styled(styles)(<SNextPage render={Button} use="primary" theme="info" />);
+    const SNextPage = Root;
+    return sstyled(this.asProps.styles)(<SNextPage render={Button} use="primary" theme="info" />);
   }
 }
 
@@ -333,17 +332,16 @@ class PrevPage extends Component<IButtonProps> {
   });
 
   render() {
-    const { Root: SPrevPage } = this;
-    const { styles } = this.asProps;
-    return styled(styles)(<SPrevPage render={Button} />);
+    const SPrevPage = Root;
+    return sstyled(this.asProps.styles)(<SPrevPage render={Button} />);
   }
 }
 
 class TotalPages extends Component<ITotalPagesProps> {
   render() {
-    const { Root: STotalPages } = this;
+    const STotalPages = Root;
     const STotalPagesLabel = Text;
-    const { styles, label, getI18nText, disabled } = this.asProps;
+    const { styles, label, getI18nText } = this.asProps;
 
     logger.warn(
       !!label,
@@ -351,22 +349,18 @@ class TotalPages extends Component<ITotalPagesProps> {
       this.asProps['data-ui-name'],
     );
 
-    return styled(styles)(
+    return sstyled(styles)(
       <>
         <STotalPagesLabel size={100}>{label || getI18nText('totalPagesLabel')}</STotalPagesLabel>
-        {disabled ? (
-          <STotalPages render={Text} size={100} />
-        ) : (
-          <STotalPages render={Link} tag="button" type="button" size={100} />
-        )}
+        <STotalPages render={Link} tag="button" type="button" size={100} />
       </>,
     );
   }
 }
 
 const PageInputValue = (props: IFunctionProps<IInputValueProps>) => {
-  const { Root: SPageInputValue, styles } = props;
-  return styled(styles)(<SPageInputValue render={Input.Value} />);
+  const SPageInputValue = Root;
+  return sstyled(props.styles)(<SPageInputValue render={Input.Value} />);
 };
 
 class PageInput extends Component<IPageInputProps> {
@@ -380,7 +374,7 @@ class PageInput extends Component<IPageInputProps> {
   });
 
   render() {
-    const { Root: SPageInput } = this;
+    const SPageInput = Root;
     const SLabel = Text;
     const { label, getI18nText, styles } = this.asProps;
 
@@ -390,7 +384,7 @@ class PageInput extends Component<IPageInputProps> {
       this.asProps['data-ui-name'],
     );
 
-    return styled(styles)(
+    return sstyled(styles)(
       <>
         <SLabel size={100}>{label || getI18nText('pageInputLabel')}</SLabel>
         <SPageInput render={Input} />

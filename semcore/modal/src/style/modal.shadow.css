@@ -23,7 +23,7 @@ SOverlay {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: media(40px);
+  padding: 40px;
   background: rgba(0, 0, 0, 0.8);
   overflow: auto;
   z-index: 10005;
@@ -39,7 +39,7 @@ SClose {
   position: absolute;
   right: 0;
   top: 0;
-  padding: media(12px);
+  padding: 12px;
   color: var(--stone);
   cursor: pointer;
   z-index: 1;
@@ -62,6 +62,6 @@ SClose[keyboardFocused] {
   }
 
   SOverlay {
-    padding: media(10px);
+    padding: 10px;
   }
 }

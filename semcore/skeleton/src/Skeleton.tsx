@@ -1,5 +1,5 @@
 import React from 'react';
-import createComponent, { Component, IFunctionProps, Merge, styled } from '@semcore/core';
+import createComponent, { Component, IFunctionProps, Merge, sstyled, Root } from '@semcore/core';
 import { Box, IBoxProps } from '@semcore/flex-box';
 import logger from '@semcore/utils/lib/logger';
 import uniqueIDEnhancement, { IUniqueIDProps } from '@semcore/utils/lib/uniqueID';
@@ -67,18 +67,8 @@ class Skeleton extends Component<ISkeletonProps> {
   }
 
   render() {
-    const { Root: SSkeleton } = this;
-    const {
-      Children,
-      styles,
-      theme,
-      duration,
-      speed,
-      hidden,
-      visible,
-      uid,
-      ...other
-    } = this.asProps;
+    const SSkeleton = Root;
+    const { Children, styles, duration, speed, hidden, visible, uid, ...other } = this.asProps;
 
     logger.warn(
       visible !== undefined,
@@ -95,14 +85,13 @@ class Skeleton extends Component<ISkeletonProps> {
     if (visible === false) return null;
     if (hidden) return null;
 
-    const speedValue = `${duration || speed}ms`;
-
-    return styled(styles)`
-      SSkeleton {
-        animation-duration: ${speedValue};
-      }
-    `(
-      <SSkeleton render={Box} tag="svg" preserveAspectRatio="none" theme={theme}>
+    return sstyled(styles)(
+      <SSkeleton
+        render={Box}
+        tag="svg"
+        preserveAspectRatio="none"
+        durationAnim={`${duration || speed}ms`}
+      >
         <defs>
           <mask id={uid}>
             <Children />
@@ -120,7 +109,7 @@ function Text(props: IFunctionProps<ISkeletonTextProps, ISkeletonCtx>) {
   const amountLine = Number(amount);
 
   const renderRect = (props) => {
-    return styled(styles)(<SText tag="rect" rx="4" ry="4" height="8" {...props} />);
+    return sstyled(styles)(<SText tag="rect" rx="4" ry="4" height="8" {...props} />);
   };
 
   return (

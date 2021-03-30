@@ -1,6 +1,6 @@
 import React, { HTMLAttributes } from 'react';
 import { Box, IBoxProps } from '@semcore/flex-box';
-import createComponent, { Component, Merge, styled } from '@semcore/core';
+import createComponent, { Component, Merge, sstyled, Root } from '@semcore/core';
 
 import style from './style/sticky.shadow.css';
 
@@ -19,10 +19,10 @@ class Sticky extends Component<IStickyProps> {
   static style = style;
 
   render() {
-    const SSticky = this.Root;
+    const SSticky = Root;
     const { styles } = this.asProps;
 
-    return styled(styles)(<SSticky render={Box} />);
+    return sstyled(styles)(<SSticky render={Box} />);
   }
 }
 

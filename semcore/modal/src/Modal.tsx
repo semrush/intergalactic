@@ -1,7 +1,7 @@
 import React, { ComponentProps, HTMLAttributes, useRef } from 'react';
 import FocusLock from 'react-focus-lock';
 import { FadeInOut, IFadeInOutProps } from '@semcore/animation';
-import createComponent, { Component, Merge, PropGetter, styled } from '@semcore/core';
+import createComponent, { Component, Merge, PropGetter, sstyled, Root } from '@semcore/core';
 import Portal, { IPortalProps, PortalProvider } from '@semcore/portal';
 import { Box, IBoxProps } from '@semcore/flex-box';
 import OutsideClick from '@semcore/outside-click';
@@ -84,7 +84,6 @@ class ModalRoot extends Component<IModalProps> {
   }
 
   render() {
-    const { Root } = this;
     const { Children, disablePortal } = this.asProps;
 
     const advanceMode = !!findComponent(Children, [
@@ -112,12 +111,13 @@ const FocusLockWrapper = React.forwardRef<HTMLElement>(function ({ tag, ...other
 });
 
 function Window(props) {
-  const { Root: SWindow, Children, styles, visible, closable } = props;
+  const SWindow = Root;
+  const { Children, styles, visible, closable } = props;
   const windowRef = useRef<HTMLElement>(null);
 
   if (!visible) return null;
 
-  return styled(styles)(
+  return sstyled(styles)(
     <SWindow
       render={FocusLockWrapper}
       tag={Box}
@@ -135,11 +135,12 @@ function Window(props) {
 }
 
 function Overlay(props) {
-  const { Root: SOverlay, Children, styles, onOutsideClick, visible } = props;
+  const SOverlay = Root;
+  const { Children, styles, onOutsideClick, visible } = props;
   const overlayRef = useRef<HTMLElement>(null);
   usePreventScroll(visible);
 
-  return styled(styles)(
+  return sstyled(styles)(
     <SOverlay render={FadeInOut} ref={overlayRef}>
       <OutsideClick root={overlayRef} onOutsideClick={onOutsideClick}>
         <Children />
@@ -149,11 +150,8 @@ function Overlay(props) {
 }
 
 function Close(props) {
-  const { Root: SClose, styles, keyboardFocused } = props;
-
-  return styled(styles)(
-    <SClose render={Box} tag="button" tabIndex={0} keyboardFocused={keyboardFocused} />,
-  );
+  const SClose = Root;
+  return sstyled(props.styles)(<SClose render={Box} tag="button" tabIndex={0} />);
 }
 
 Close.defaultProps = {

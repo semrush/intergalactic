@@ -2,7 +2,7 @@ import React, { useMemo } from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import cn from 'classnames';
 import { FlexProperty, Properties } from 'csstype';
-import { IStyledProps, styled } from '@semcore/core';
+import { IStyledProps, sstyled } from '@semcore/core';
 import propsForElement from '@semcore/utils/lib/propsForElement';
 import logger from '@semcore/utils/lib/logger';
 
@@ -281,13 +281,13 @@ export default function useBox<T extends IBoxProps>(
     zIndex,
   ]);
 
-  const { styles } = styled(style);
-
   logger.warn(
     css !== undefined,
     "The 'css' property is deprecated, use 'style'",
     other['data-ui-name'] || 'Box',
   );
+
+  const styles = sstyled(style);
 
   return [
     Tag,
@@ -295,10 +295,10 @@ export default function useBox<T extends IBoxProps>(
       ref,
       className:
         cn(
-          {
-            [styles['box-sizing']]: boxSizing,
-            [styles['box-inline']]: inline,
-          },
+          styles.cn('SBox', {
+            SBoxSizing: boxSizing,
+            SBoxInline: inline,
+          }).className,
           className,
         ) || undefined,
       style: Object.assign({}, styleProp, css, indentStyles),

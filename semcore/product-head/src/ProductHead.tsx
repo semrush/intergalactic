@@ -1,5 +1,5 @@
 import React, { ComponentProps } from 'react';
-import createComponent, { Component, styled } from '@semcore/core';
+import createComponent, { Component, sstyled, Root } from '@semcore/core';
 import { Box, IBoxProps } from '@semcore/flex-box';
 
 import style from './style/product-head.shadow.css';
@@ -9,25 +9,24 @@ class HeaderRoot extends Component<IBoxProps> {
   static style = style;
 
   render() {
-    const SProductHead = this.Root;
-    const { styles } = this.asProps;
-    return styled(styles)(<SProductHead render={Box} />);
+    const SProductHead = Root;
+    return sstyled(this.asProps.styles)(<SProductHead render={Box} />);
   }
 }
 
 function Buttons(props) {
-  const { Root: SButtons, styles } = props;
-  return styled(styles)(<SButtons render={Box} />);
+  const SButtons = Root;
+  return sstyled(props.styles)(<SButtons render={Box} />);
 }
 
 function Links(props) {
-  const { Root: SLinks, styles } = props;
-  return styled(styles)(<SLinks render={Box} />);
+  const SLinks = Root;
+  return sstyled(props.styles)(<SLinks render={Box} />);
 }
 
 function Row(props) {
-  const { Root: SRow, styles } = props;
-  return styled(styles)(<SRow render={Box} />);
+  const SRow = Root;
+  return sstyled(props.styles)(<SRow render={Box} />);
 }
 
 const Header = createComponent<

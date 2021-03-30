@@ -7,7 +7,7 @@ SCounter {
   line-height: normal;
   box-sizing: border-box;
   vertical-align: middle;
-  border-radius: media(12px);
+  border-radius: 12px;
 
   color: var(--gray60);
   background-color: #fff;
@@ -15,26 +15,28 @@ SCounter {
 }
 
 SCounter[size='m'] {
-  height: media(16px);
-  min-width: media(16px);
-  font-size: media(9px);
-  padding: 0 media(5px);
+  height: 16px;
+  min-width: 16px;
+  font-size: 9px;
+  padding: 0 5px;
 }
 
 SCounter[size='l'] {
-  height: media(20px);
-  min-width: media(20px);
+  height: 20px;
+  min-width: 20px;
   font-size: var(--fs-100);
-  padding: 0 media(6px);
+  padding: 0 6px;
 }
 
 SCounter[size='xl'] {
-  height: media(24px);
-  min-width: media(24px);
+  height: 24px;
+  min-width: 24px;
   font-size: var(--fs-200);
-  padding: 0 media(8px);
+  padding: 0 8px;
 }
 
 SCounter[theme] {
   border-color: transparent;
+  background: var(--theme);
+  color: var(--colorText);
 }

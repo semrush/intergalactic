@@ -149,22 +149,13 @@ describe('Pagination.TotalPages', () => {
 
   shouldSupportClassName(Pagination.TotalPages, Pagination);
 
-  test('should be displayed as span if currentPage < totalPages', () => {
+  test('should be disabled if currentPage < totalPages', () => {
     const { getByTestId } = render(
       <Pagination currentPage={100} totalPages={100}>
         <Pagination.TotalPages data-testid="totalPages" />
       </Pagination>,
     );
-    expect(getByTestId('totalPages').nodeName).toBe('SPAN');
-  });
-
-  test('should be displayed as button if currentPage < totalPages', () => {
-    const { getByTestId } = render(
-      <Pagination currentPage={10} totalPages={100}>
-        <Pagination.TotalPages data-testid="totalPages" />
-      </Pagination>,
-    );
-    expect(getByTestId('totalPages').nodeName).toBe('BUTTON');
+    expect(getByTestId('totalPages').attributes.disabled).toBeDefined();
   });
 
   test('should call onCurrentPageChange(totalPages) on click', () => {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Component, styled } from '@semcore/core';
+import { Component, sstyled, Root } from '@semcore/core';
 import { Box, Flex } from '@semcore/flex-box';
 import ScrollArea from '@semcore/scroll-area';
 import SortDescXS from '@semcore/icon/lib/SortDesc/xs';
@@ -7,6 +7,8 @@ import SortAscXS from '@semcore/icon/lib/SortAsc/xs';
 import { callAllEventHandlers } from '@semcore/utils/lib/assignProps';
 import { flattenColumns, getFixedStyle, getScrollOffsetValue } from './utils';
 import logger from '@semcore/utils/lib/logger';
+
+import scrollStyles from './style/scroll-area.shadow.css';
 
 const SORTING_ICON = {
   desc: SortDescXS,
@@ -38,7 +40,7 @@ class Head extends Component {
       ...column.props.style,
     };
 
-    return styled(styles)(
+    return sstyled(styles)(
       <SColumn
         key={column.name}
         use={use}
@@ -73,7 +75,7 @@ class Head extends Component {
   }
 
   render() {
-    const SHead = this.Root;
+    const SHead = Root;
     const { Children, styles, columnsChildren, onResize, $scrollRef, sticky } = this.asProps;
     const SHeadWrapper = Box;
 
@@ -90,16 +92,15 @@ class Head extends Component {
       this.asProps['data-ui-name'] || Head.displayName,
     );
 
-    return styled(styles)`
-      SShadowHorizontal:before {
-        left: ${leftVar}!important;
-      }
-      SShadowHorizontal:after {
-        right: ${rightVar}!important;
-      }
-    `(
+    return sstyled(styles)(
       <SHeadWrapper sticky={sticky}>
-        <ScrollArea shadow onResize={onResize} styles={styled.styles}>
+        <ScrollArea
+          styles={scrollStyles}
+          left={`${offsetLeftSum}px`}
+          right={`${offsetRightSum}px`}
+          shadow
+          onResize={onResize}
+        >
           <ScrollArea.Container ref={$scrollRef}>
             <SHead render={Box}>
               {this.renderColumns(columnsChildren, 100 / this.columns.length)}

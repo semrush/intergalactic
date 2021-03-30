@@ -18,7 +18,7 @@
     "resize-observer-polyfill": "^1.5"
   },
   "peerDependencies": {
-    "@semcore/core": "^1.3",
+    "@semcore/core": "^1.11",
     "react": "16.8 - 17"
   },
   "jest": {

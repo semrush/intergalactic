@@ -5,3 +5,5 @@ export interface IStyledProps {
 export { default as styled } from '@reshadow/core';
 export { use, css } from '@reshadow/core';
 export * from '@reshadow/core';
+
+export * from './sstyled';

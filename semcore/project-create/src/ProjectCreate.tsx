@@ -13,7 +13,7 @@ import Info from '@semcore/icon/lib/InfoOutline/s';
 import assignProps from '@semcore/utils/lib/assignProps';
 import fire from '@semcore/utils/lib/fire';
 import i18nEnhance, { IWithI18nEnhanceProps } from '@semcore/utils/lib/enhances/i18nEnhance';
-import createComponent, { Component, Merge, styled } from '@semcore/core';
+import createComponent, { Component, Merge, sstyled } from '@semcore/core';
 
 import style from './style/project-create.shadow.css';
 import de from './translations/de.json';
@@ -162,66 +162,64 @@ class ProjectCreateModalRoot extends Component<Merge<IProjectCreateModalProps, F
     } = this.asProps;
     const dictionary = getI18nText();
 
-    return (
+    return sstyled(styles)(
       <Modal visible={visible} onClose={onClose}>
         <Modal.Overlay>
-          {styled(styles)(
-            <SProjectCreate>
-              <Modal.Close />
-              <Form
-                {...other}
-                onSubmit={this.handleSubmit}
-                decorators={[this.focusDecorator]}
-                validate={(values) => validate(values, dictionary)}
-              >
-                {({ handleSubmit, form }) => (
-                  <SpinContainer
-                    size="xl"
-                    loading={loading === undefined ? form.getState().submitting : loading}
-                  >
-                    <form onSubmit={handleSubmit} method="POST" noValidate>
-                      <Text tag="h2" size={500} medium>
-                        {getI18nText('title')}
+          <SProjectCreate>
+            <Modal.Close />
+            <Form
+              {...other}
+              onSubmit={this.handleSubmit}
+              decorators={[this.focusDecorator]}
+              validate={(values) => validate(values, dictionary)}
+            >
+              {({ handleSubmit, form }) => (
+                <SpinContainer
+                  size="xl"
+                  loading={loading === undefined ? form.getState().submitting : loading}
+                >
+                  <form onSubmit={handleSubmit} method="POST" noValidate>
+                    <Text tag="h2" size={500} medium>
+                      {getI18nText('title')}
+                    </Text>
+                    <ProjectCreateItem
+                      autoFocus
+                      name="url"
+                      label={getI18nText('inputDomainLabel')}
+                      placeholder={getI18nText('inputDomainPlaceholder')}
+                    />
+                    <ProjectCreateItem
+                      name="name"
+                      label={getI18nText('inputNameLabel')}
+                      placeholder={getI18nText('inputNamePlaceholder')}
+                    />
+                    {hasSharingCheckbox && (
+                      <SharingCheckbox
+                        label={getI18nText('sharingCheckboxLegend')}
+                        {...sharingCheckboxProps}
+                      />
+                    )}
+                    <Flex mt={6}>
+                      <Info style={{ flexShrink: 0 }} color="stone" mr={2} />
+                      <Text tag="p" size={100}>
+                        {getI18nText('description')}
                       </Text>
-                      <ProjectCreateItem
-                        autoFocus
-                        name="url"
-                        label={getI18nText('inputDomainLabel')}
-                        placeholder={getI18nText('inputDomainPlaceholder')}
-                      />
-                      <ProjectCreateItem
-                        name="name"
-                        label={getI18nText('inputNameLabel')}
-                        placeholder={getI18nText('inputNamePlaceholder')}
-                      />
-                      {hasSharingCheckbox && (
-                        <SharingCheckbox
-                          label={getI18nText('sharingCheckboxLegend')}
-                          {...sharingCheckboxProps}
-                        />
-                      )}
-                      <Flex mt={6}>
-                        <Info style={{ flexShrink: 0 }} color="stone" mr={2} />
-                        <Text tag="p" size={100}>
-                          {getI18nText('description')}
-                        </Text>
-                      </Flex>
-                      <Flex justifyContent="center" mt={6}>
-                        <Button use="primary" theme="success" size="l" type="submit" mr={3}>
-                          {getI18nText('buttonCreate')}
-                        </Button>
-                        <Button size="l" onClick={this.handleCloseModal}>
-                          {getI18nText('buttonCancel')}
-                        </Button>
-                      </Flex>
-                    </form>
-                  </SpinContainer>
-                )}
-              </Form>
-            </SProjectCreate>,
-          )}
+                    </Flex>
+                    <Flex justifyContent="center" mt={6}>
+                      <Button use="primary" theme="success" size="l" type="submit" mr={3}>
+                        {getI18nText('buttonCreate')}
+                      </Button>
+                      <Button size="l" onClick={this.handleCloseModal}>
+                        {getI18nText('buttonCancel')}
+                      </Button>
+                    </Flex>
+                  </form>
+                </SpinContainer>
+              )}
+            </Form>
+          </SProjectCreate>
         </Modal.Overlay>
-      </Modal>
+      </Modal>,
     );
   }
 }

@@ -1,0 +1,23 @@
+{
+  "name": "babel-plugin-styles",
+  "version": "1.0.0",
+  "main": "./babel-plugin-styles.js",
+  "bin": {
+    "babel": "./bin/babel"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/helper-module-imports": "^7.12.13",
+    "@babel/plugin-syntax-jsx": "^7.12.13",
+    "chokidar": "^3.5.1",
+    "css-selector-tokenizer": "^0.7.3",
+    "fs-extra": "^9.1.0",
+    "postcss": "^8.2.8",
+    "postcss-import-sync2": "^1.1.0",
+    "postcss-preset-env": "^6.7.0",
+    "postcss-value-parser": "^4.1.0",
+    "string-hash": "^1.1.3",
+    "synchronous-promise": "^2.0.15"
+  }
+}

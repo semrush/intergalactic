@@ -1,19 +1,19 @@
 @import '@semcore/utils/style/var.css';
 
 SFormatText {
-  & :global(strong) {
+  & strong {
     font-weight: bold;
   }
 
-  & :global(em) {
+  & em {
     font-style: italic;
   }
 
-  & :global(s) {
+  & s {
     text-decoration: line-through;
   }
 
-  & :global(abbr) {
+  & abbr {
     color: var(--gray60);
     text-decoration: underline dashed var(--gray60);
 
@@ -25,7 +25,7 @@ SFormatText {
     }
   }
 
-  & :global(a) {
+  & a {
     display: inline;
     background: none;
     outline: none;
@@ -54,44 +54,44 @@ SFormatText {
     }
   }
 
-  & :global(blockquote) {
+  & blockquote {
     position: relative;
-    margin-top: media(18px);
-    margin-bottom: media(18px);
-    padding-left: media(48px);
-    font-size: media(18px);
+    margin-top: 18px;
+    margin-bottom: 18px;
+    padding-left: 48px;
+    font-size: 18px;
     font-style: italic;
-    line-height: media(30px);
+    line-height: 30px;
     color: var(--gray20);
 
     &:before {
       content: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMyIgaGVpZ2h0PSIxOSIgdmlld0JveD0iMCAwIDIzIDE5Ij4gICAgPHBhdGggZmlsbD0iI0NDQyIgZmlsbC1ydWxlPSJub256ZXJvIiBkPSJNMTAuNDUxIDIuMzI0YTQzLjQ3NSA0My40NzUgMCAwIDAtMi41MjMgMS41NDRjLS42NDIuNDMyLTEuMjk1IDEuMDAyLTEuOTYgMS43MS0uNjE5LjY2NC0xLjA5NSAxLjM2MS0xLjQyNyAyLjA5Mi0uMzMyLjczLS41NjQgMS42NzEtLjY5NyAyLjgyMmgxLjU5NGMxLjM3MiAwIDIuNDUxLjMzOCAzLjIzNyAxLjAxMy43ODYuNjc1IDEuMTc5IDEuNjY2IDEuMTc5IDIuOTcyIDAgLjkzLS4zNSAxLjc5OC0xLjA0NiAyLjYwNi0uNjk4LjgwOC0xLjY1NSAxLjIxMi0yLjg3MiAxLjIxMi0xLjkwNCAwLTMuMjY1LS42MjUtNC4wODQtMS44NzYtLjgyLTEuMjUtMS4yMjktMi44OTQtMS4yMjktNC45MyAwLTEuNDQuMzEtMi43NTEuOTMtMy45MzVBMTMuOTQxIDEzLjk0MSAwIDAgMSAzLjgxIDQuMzgzYy45MDctLjk1MiAxLjg3LTEuNzYgMi44ODgtMi40MjRDNy43MTcgMS4yOTUgOC41Ny43NTMgOS4yNTYuMzMybDEuMTk1IDEuOTkyem0xMi4yODUgMGE0My40NzUgNDMuNDc1IDAgMCAwLTIuNTIzIDEuNTQ0Yy0uNjQyLjQzMi0xLjI5NSAxLjAwMi0xLjk2IDEuNzEtLjY0MS42ODYtMS4xMjIgMS4zOS0xLjQ0MyAyLjEwOS0uMzIxLjcxOS0uNTQ4IDEuNjU0LS42ODEgMi44MDVoMS41OTRjMS4zNzIgMCAyLjQ1MS4zMzggMy4yMzcgMS4wMTMuNzg2LjY3NSAxLjE3OSAxLjY2NiAxLjE3OSAyLjk3MiAwIC45My0uMzQ5IDEuNzk4LTEuMDQ2IDIuNjA2LS42OTcuODA4LTEuNjU1IDEuMjEyLTIuODcyIDEuMjEyLTEuOTA0IDAtMy4yNjUtLjYyNS00LjA4NC0xLjg3Ni0uODItMS4yNS0xLjIyOS0yLjg5NC0xLjIyOS00LjkzIDAtMS40NC4zMS0yLjc1MS45My0zLjkzNWExMy45NDEgMTMuOTQxIDAgMCAxIDIuMjU4LTMuMTcxYy45MDctLjk1MiAxLjg3LTEuNzYgMi44ODgtMi40MjQgMS4wMTktLjY2NCAxLjg3LTEuMjA2IDIuNTU3LTEuNjI3bDEuMTk1IDEuOTkyeiIvPjwvc3ZnPg==);
       display: inline-block;
       position: absolute;
-      top: media(7px);
+      top: 7px;
       left: 0;
       color: var(--gray80);
       font-family: Georgia, Times, 'Times New Roman', serif;
     }
 
-    & :global(cite) {
+    & cite {
       display: block;
       font-style: normal;
-      margin-top: media(16px);
+      margin-top: 16px;
       color: var(--gray60);
-      line-height: media(20px);
-      font-size: media(14px);
+      line-height: 20px;
+      font-size: 14px;
     }
   }
 
-  & :global(ol),
-  & :global(ul) {
-    margin: media(8px) 0;
+  & ol,
+  & ul {
+    margin: 8px 0;
     padding: 0;
     list-style: none;
     position: relative;
 
-    & :global(li) {
+    & li {
       &:before {
         position: absolute;
         left: 0;
@@ -99,121 +99,121 @@ SFormatText {
       }
     }
 
-    & :global(li) + :global(li) {
-      margin: media(8px) 0 0 0;
+    & li + li {
+      margin: 8px 0 0 0;
     }
   }
 
-  & :global(ol) {
+  & ol {
     counter-reset: item 0;
 
-    & :global(li):before {
+    & li:before {
       counter-increment: item;
       content: counters(item, '.');
     }
   }
 
-  & :global(ul) :global(li):before {
+  & ul li:before {
     content: '';
     background-color: var(--gray60);
   }
 
-  & :global(h1) {
+  & h1 {
     font-size: var(--fs-800);
     line-height: var(--lh-800);
     font-weight: 700;
-    margin: 0 0 media(24px) 0;
+    margin: 0 0 24px 0;
 
     &:only-child {
       margin-bottom: 0;
     }
 
-    & :global(small) {
+    & small {
       color: var(--gray60);
       font-weight: 300;
       font-size: 100%;
     }
   }
 
-  & :global(h2) {
+  & h2 {
     font-size: var(--fs-700);
     line-height: var(--lh-700);
     font-weight: 700;
-    margin: 0 0 media(16px) 0;
+    margin: 0 0 16px 0;
 
     &:only-child {
       margin-bottom: 0;
     }
 
-    & :global(small) {
+    & small {
       color: var(--gray60);
       font-weight: 300;
       font-size: 100%;
     }
   }
 
-  & :global(h3) {
+  & h3 {
     font-size: var(--fs-600);
     line-height: var(--lh-600);
     font-weight: 500;
-    margin: 0 0 media(16px) 0;
+    margin: 0 0 16px 0;
 
     &:only-child {
       margin-bottom: 0;
     }
 
-    & :global(small) {
+    & small {
       color: var(--gray60);
       font-weight: 300;
       font-size: 100%;
     }
   }
 
-  & :global(h4) {
+  & h4 {
     font-size: var(--fs-500);
     line-height: var(--lh-500);
     font-weight: 500;
-    margin: 0 0 media(12px) 0;
+    margin: 0 0 12px 0;
 
     &:only-child {
       margin-bottom: 0;
     }
 
-    & :global(small) {
+    & small {
       color: var(--gray60);
       font-weight: 300;
       font-size: 100%;
     }
   }
 
-  & :global(h5) {
+  & h5 {
     font-size: var(--fs-400);
     line-height: var(--lh-400);
     font-weight: 500;
-    margin: 0 0 media(8px) 0;
+    margin: 0 0 8px 0;
 
     &:only-child {
       margin-bottom: 0;
     }
 
-    & :global(small) {
+    & small {
       color: var(--gray60);
       font-weight: 300;
       font-size: 100%;
     }
   }
 
-  & :global(h6) {
+  & h6 {
     font-size: var(--fs-300);
     line-height: var(--lh-300);
     font-weight: 700;
-    margin: 0 0 media(4px) 0;
+    margin: 0 0 4px 0;
 
     &:only-child {
       margin-bottom: 0;
     }
 
-    & :global(small) {
+    & small {
       color: var(--gray60);
       font-weight: 300;
       font-size: 100%;
@@ -222,109 +222,109 @@ SFormatText {
 }
 
 SFormatText[size='m'] {
-  & :global(p),
-  & :global(li) {
+  & p,
+  & li {
     font-size: var(--fs-100);
     line-height: var(--lh-100);
   }
 
-  & :global(p) {
-    margin: 0 0 media(18px) 0;
+  & p {
+    margin: 0 0 18px 0;
 
     &:last-child {
       margin-bottom: 0;
     }
   }
 
-  & :global(li) {
+  & li {
     padding-left: 14px;
   }
 
-  & :global(ol) :global(ol) :global(li) {
+  & ol ol li {
     padding-left: 22px;
   }
 
-  & :global(ol) :global(ol) :global(ol) :global(li) {
+  & ol ol ol li {
     padding-left: 33px;
   }
 
-  & :global(ul) :global(li):before {
-    width: media(4px);
-    height: media(4px);
+  & ul li:before {
+    width: 4px;
+    height: 4px;
     border-radius: 50%;
-    margin-top: media(7px);
-    margin-left: media(2px);
+    margin-top: 7px;
+    margin-left: 2px;
   }
 }
 
 SFormatText[size='l'] {
-  & :global(p),
-  & :global(li) {
+  & p,
+  & li {
     font-size: var(--fs-200);
     line-height: var(--lh-200);
   }
 
-  & :global(p) {
-    margin: 0 0 media(20px) 0;
+  & p {
+    margin: 0 0 20px 0;
 
     &:last-child {
       margin-bottom: 0;
     }
   }
 
-  & :global(li) {
+  & li {
     padding-left: 15px;
   }
 
-  & :global(ol) :global(ol) :global(li) {
+  & ol ol li {
     padding-left: 26px;
   }
 
-  & :global(ol) :global(ol) :global(ol) :global(li) {
+  & ol ol ol li {
     padding-left: 38px;
   }
 
-  & :global(ul) :global(li):before {
-    width: media(5px);
-    height: media(5px);
+  & ul li:before {
+    width: 5px;
+    height: 5px;
     border-radius: 50%;
-    margin-top: media(6px);
-    margin-left: media(2px);
+    margin-top: 6px;
+    margin-left: 2px;
   }
 }
 
 SFormatText[size='xl'] {
-  & :global(p),
-  & :global(li) {
+  & p,
+  & li {
     font-size: var(--fs-300);
     line-height: var(--lh-300);
   }
 
-  & :global(p) {
-    margin: 0 0 media(24px) 0;
+  & p {
+    margin: 0 0 24px 0;
 
     &:last-child {
       margin-bottom: 0;
     }
   }
 
-  & :global(li) {
+  & li {
     padding-left: 20px;
   }
 
-  & :global(ol) :global(ol) :global(li) {
+  & ol ol li {
     padding-left: 31px;
   }
 
-  & :global(ol) :global(ol) :global(ol) :global(li) {
+  & ol ol ol li {
     padding-left: 45px;
   }
 
-  & :global(ul) :global(li):before {
-    width: media(6px);
-    height: media(6px);
+  & ul li:before {
+    width: 6px;
+    height: 6px;
     border-radius: 50%;
-    margin-top: media(9px);
-    margin-left: media(2px);
+    margin-top: 9px;
+    margin-left: 2px;
   }
 }
