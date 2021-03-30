@@ -1,6 +1,6 @@
 import React from 'react';
 import { bisector } from 'd3-array';
-import { Component, styled } from '@semcore/core';
+import { Component, sstyled } from '@semcore/core';
 import createXYElement from './XYElement';
 
 import style from './style/hover.shadow.css';
@@ -47,7 +47,7 @@ class HoverLineRoot extends Hover {
     const x1 = xIndex !== null ? scaleOfBandwidth(xScale, data[xIndex][x]) : undefined;
     const y1 = yIndex !== null ? scaleOfBandwidth(yScale, data[yIndex][y]) : undefined;
 
-    return styled(styles)(
+    return sstyled(styles)(
       <>
         {xIndex !== null ? (
           <SHoverLine render="line" index={xIndex} x1={x1} y1={yRange[0]} x2={x1} y2={yRange[1]} />
@@ -72,7 +72,7 @@ class HoverRectRoot extends Hover {
     const xRange = xScale.range();
     const yRange = yScale.range();
 
-    return styled(styles)(
+    return sstyled(styles)(
       <>
         {xIndex !== null ? (
           <SHoverRect

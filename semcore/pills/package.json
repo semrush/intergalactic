@@ -17,7 +17,7 @@
     "@semcore/neighbor-location": "^2"
   },
   "peerDependencies": {
-    "@semcore/core": "^1.8",
+    "@semcore/core": "^1.11",
     "react": "16.8 - 17"
   },
   "jest": {

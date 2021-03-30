@@ -18,6 +18,7 @@ SSpin {
   border-style: solid;
   border-bottom-color: transparent;
   border-left-color: transparent;
+  color: var(--color);
 }
 
 SSpin[theme='dark'] {
@@ -33,43 +34,43 @@ SSpin[centered] {
 }
 
 SSpin[size='xxs'] {
-  width: media(10px);
-  height: media(10px);
-  border-width: media(1px);
+  width: 10px;
+  height: 10px;
+  border-width: 1px;
 }
 
 SSpin[size='xs'] {
-  width: media(16px);
-  height: media(16px);
-  border-width: media(2px);
+  width: 16px;
+  height: 16px;
+  border-width: 2px;
 }
 
 SSpin[size='s'] {
-  width: media(20px);
-  height: media(20px);
-  border-width: media(3px);
+  width: 20px;
+  height: 20px;
+  border-width: 3px;
 }
 
 SSpin[size='m'] {
-  width: media(24px);
-  height: media(24px);
-  border-width: media(4px);
+  width: 24px;
+  height: 24px;
+  border-width: 4px;
 }
 
 SSpin[size='l'] {
-  width: media(32px);
-  height: media(32px);
-  border-width: media(6px);
+  width: 32px;
+  height: 32px;
+  border-width: 6px;
 }
 
 SSpin[size='xl'] {
-  width: media(48px);
-  height: media(48px);
-  border-width: media(8px);
+  width: 48px;
+  height: 48px;
+  border-width: 8px;
 }
 
 SSpin[size='xxl'] {
-  width: media(72px);
-  height: media(72px);
-  border-width: media(10px);
+  width: 72px;
+  height: 72px;
+  border-width: 10px;
 }

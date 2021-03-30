@@ -1,7 +1,7 @@
 import React from 'react';
 import ResizeObserver from 'resize-observer-polyfill';
 
-import createComponent, { Component, styled } from '@semcore/core';
+import createComponent, { Component, Root, sstyled } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
 import trottle from '@semcore/utils/lib/rafTrottle';
 import fire from '@semcore/utils/lib/fire';
@@ -73,9 +73,9 @@ class ResponsiveContainerRoot extends Component {
   }
 
   render() {
-    const SResponsiveContainer = this.Root;
+    const SResponsiveContainer = Root;
     const { styles } = this.asProps;
-    return styled(styles)(<SResponsiveContainer render={Box} ref={this.containerRef} />);
+    return sstyled(styles)(<SResponsiveContainer render={Box} ref={this.containerRef} />);
   }
 }
 

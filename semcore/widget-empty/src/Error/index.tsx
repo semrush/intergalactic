@@ -1,6 +1,6 @@
 import React, { HTMLAttributes } from 'react';
 import WidgetEmpty, { getIconPath, IWidgetEmptyProps } from '../WidgetEmpty';
-import createComponent, { Component, Merge } from '@semcore/core';
+import createComponent, { Component, Merge, Root } from '@semcore/core';
 import i18nEnhance, { IWithI18nEnhanceProps } from '@semcore/utils/lib/enhances/i18nEnhance';
 import de from './translations/de.json';
 import en from './translations/en.json';
@@ -35,7 +35,6 @@ class Error extends Component<IWidgetErrorProps> {
   static enhance = [i18nEnhance()];
 
   render() {
-    const Root = this.Root;
     const { Children, description, getI18nText } = this.asProps;
     const { title, description: descriptionText } = getI18nText();
 

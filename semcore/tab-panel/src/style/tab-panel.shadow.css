@@ -12,7 +12,7 @@ STabPanelItem {
   bottom: -1px;
   display: inline-flex;
   min-width: 0;
-  height: media(32px);
+  height: 32px;
   font-size: var(--fs-200);
   line-height: 1;
   color: var(--gray40);
@@ -76,7 +76,7 @@ STabPanelItem[active] {
 
 SText {
   display: inline-block;
-  margin: auto media(8px);
+  margin: auto 8px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -90,9 +90,9 @@ SAddon {
 }
 
 SAddon:not(:only-child):first-child {
-  margin-left: media(8px);
+  margin-left: 8px;
 }
 
 SAddon:not(:only-child):last-child {
-  margin-right: media(8px);
+  margin-right: 8px;
 }

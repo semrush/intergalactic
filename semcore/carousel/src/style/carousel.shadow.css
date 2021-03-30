@@ -7,12 +7,14 @@ SCarousel {
 
 SContainer {
   display: flex;
+  transition: transform var(--duration) ease-in-out;
 }
 
 SItem {
   flex: 0 0 100%;
   max-width: 100%;
   box-sizing: border-box;
+  transform: var(--transform);
 }
 
 SIndicators {

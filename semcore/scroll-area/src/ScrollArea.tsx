@@ -1,7 +1,7 @@
 import React, { ComponentProps } from 'react';
 import { findDOMNode } from 'react-dom';
 import ResizeObserver from 'resize-observer-polyfill';
-import createComponent, { Component, PropGetterFn, styled } from '@semcore/core';
+import createComponent, { Component, PropGetterFn, sstyled, Root } from '@semcore/core';
 import { Box, IBoxProps } from '@semcore/flex-box';
 import trottle from '@semcore/utils/lib/rafTrottle';
 import { getNodeByRef, NodeByRef } from '@semcore/utils/lib/ref';
@@ -199,7 +199,7 @@ class ScrollAreaRoot extends Component<IScrollAreaProps> {
   }
 
   render() {
-    const SScrollArea = this.Root;
+    const SScrollArea = Root;
     const SShadowVertical = BoxWithoutPosition;
     const SShadowHorizontal = BoxWithoutPosition;
     const { Children, styles, orientation } = this.asProps;
@@ -210,7 +210,7 @@ class ScrollAreaRoot extends Component<IScrollAreaProps> {
       ScrollAreaComponent.Bar.displayName,
     ]);
 
-    return styled(styles)(
+    return sstyled(styles)(
       <SScrollArea render={Box} ref={this.refWrapper} onScroll={this.handleScroll}>
         <If condition={shadowVertical}>
           <SShadowVertical position={shadowVertical} />
@@ -239,8 +239,9 @@ class ScrollAreaRoot extends Component<IScrollAreaProps> {
 }
 
 function ContainerRoot(props) {
-  const { Root: SContainer, Children, styles, $refInner } = props;
-  return styled(styles)(
+  const SContainer = Root;
+  const { Children, styles, $refInner } = props;
+  return sstyled(styles)(
     <SContainer render={Box}>
       <div ref={$refInner}>
         <Children />

@@ -1,0 +1,14 @@
+{
+  "name": "babel-plugin-root",
+  "version": "1.0.0",
+  "main": "./babel-plugin-root.js",
+  "bin": {
+    "babel": "./bin/babel"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/helper-module-imports": "^7.12.13",
+    "@babel/plugin-syntax-jsx": "^7.12.13"
+  }
+}

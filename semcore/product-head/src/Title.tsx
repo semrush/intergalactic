@@ -1,5 +1,5 @@
 import React, { ComponentProps, HTMLAttributes } from 'react';
-import createComponent, { Component, Merge, styled } from '@semcore/core';
+import createComponent, { Component, Merge, sstyled, Root } from '@semcore/core';
 import { Box, IBoxProps } from '@semcore/flex-box';
 import isNode from '@semcore/utils/lib/isNode';
 
@@ -14,10 +14,10 @@ class TitleRoot extends Component<IHeaderTitleProps> {
   static style = style;
 
   render() {
-    const STitle = this.Root;
-    const { Children, styles, toolName } = this.asProps;
+    const STitle = Root;
     const SName = 'div';
-    return styled(styles)(
+    const { Children, styles, toolName } = this.asProps;
+    return sstyled(styles)(
       <STitle render={Box}>
         {isNode(toolName) && <Title.Tool>{toolName}</Title.Tool>}
         <SName>
@@ -29,8 +29,8 @@ class TitleRoot extends Component<IHeaderTitleProps> {
 }
 
 function Tool(props) {
-  const { Root: STool, styles } = props;
-  return styled(styles)(<STool render={Box} />);
+  const STool = Root;
+  return sstyled(props.styles)(<STool render={Box} />);
 }
 
 const Title = createComponent<

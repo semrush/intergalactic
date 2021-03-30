@@ -7,41 +7,41 @@ SInputTags {
   overflow: initial;
 }
 
-SInputTags > :global(div) > :global(div) {
+SInputTags > div > div {
   display: flex;
   align-items: center;
   flex-flow: row wrap;
 }
 
-SInputTags > :global(div[data-ui-name='ScrollArea.Bar'][orientation='vertical']) {
+SInputTags > div[data-ui-name='ScrollArea.Bar'][orientation='vertical'] {
   right: 1px !important;
 }
 
 SInputTags[size='m'] {
-  min-height: media(26px);
+  min-height: 26px;
   height: auto;
-  padding: 1px media(4px);
+  padding: 1px 4px;
 }
 
 SInputTags[size='l'] {
-  min-height: media(32px);
+  min-height: 32px;
   height: auto;
-  padding: 1px media(6px);
+  padding: 1px 6px;
 }
 
 SInputTags[size='xl'] {
-  min-height: media(42px);
+  min-height: 42px;
   height: auto;
-  padding: 1px media(10px);
+  padding: 1px 10px;
 }
 
 STag[size='s'],
 STag[size='m'] {
-  margin: media(2px);
+  margin: 2px;
 }
 
 STag[size='l'] {
-  margin: media(4px) media(2px);
+  margin: 4px 2px;
 }
 
 STag[editable] {

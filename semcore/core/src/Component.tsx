@@ -56,7 +56,7 @@ export interface IRootNodeProps {
   [key: string]: any;
 }
 
-export type Root = ForwardRefExoticComponent<IRootNodeProps>;
+type Root = ForwardRefExoticComponent<IRootNodeProps>;
 
 /**
  * @deprecated since version ^1.8.0
@@ -71,6 +71,10 @@ export type Merge<Props, HTMLProps> = Props & Omit<HTMLProps, keyof Props>;
 export type MergeGetters<G1 extends (...args: any) => any, G2 extends (...args: any) => any> = <P>(
   props?: P,
 ) => Merge<ReturnType<G1>, ReturnType<G2>> & P;
+
+declare const Root: Root;
+
+export { Root };
 
 export default abstract class RootComponent<
   Props = {},

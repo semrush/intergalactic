@@ -13,14 +13,14 @@ SSwitch[size='m'] {
   line-height: var(--lh-100);
 
   & SToggle {
-    border-radius: media(6px);
-    width: media(20px);
-    height: media(12px);
+    border-radius: 6px;
+    width: 20px;
+    height: 12px;
   }
 
   & SSlider {
-    width: media(8px);
-    height: media(8px);
+    width: 8px;
+    height: 8px;
   }
 }
 
@@ -29,14 +29,14 @@ SSwitch[size='l'] {
   line-height: var(--lh-200);
 
   & SToggle {
-    border-radius: media(9px);
-    width: media(32px);
-    height: media(18px);
+    border-radius: 9px;
+    width: 32px;
+    height: 18px;
   }
 
   & SSlider {
-    width: media(14px);
-    height: media(14px);
+    width: 14px;
+    height: 14px;
   }
 }
 
@@ -45,14 +45,14 @@ SSwitch[size='xl'] {
   line-height: var(--lh-300);
 
   & SToggle {
-    border-radius: media(12px);
-    width: media(44px);
-    height: media(24px);
+    border-radius: 12px;
+    width: 44px;
+    height: 24px;
   }
 
   & SSlider {
-    width: media(20px);
-    height: media(20px);
+    width: 20px;
+    height: 20px;
   }
 }
 
@@ -85,28 +85,33 @@ SToggle {
   cursor: pointer;
 }
 
+SToggle[checked] {
+  color: var(--color);
+  background-color: var(--color);
+}
+
 SToggle[keyboardFocused] {
   box-shadow: var(--keyborad-focus);
 }
 
 SToggle[neighborLocation='left'] {
-  margin-left: media(8px);
+  margin-left: 8px;
 }
 
 SToggle[neighborLocation='both'] {
-  margin-right: media(8px);
-  margin-left: media(8px);
+  margin-right: 8px;
+  margin-left: 8px;
 }
 
 SToggle[neighborLocation='right'] {
-  margin-right: media(8px);
+  margin-right: 8px;
 }
 
 SSlider {
   border-radius: 50%;
   position: absolute;
   top: 50%;
-  margin: 0 media(2px);
+  margin: 0 2px;
   background: #fff;
   transform: translateX(0) translateY(-50%);
   transition: transform 0.3s;

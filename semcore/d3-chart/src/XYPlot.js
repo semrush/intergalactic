@@ -1,5 +1,5 @@
 import React from 'react';
-import createComponent, { Component, styled } from '@semcore/core';
+import createComponent, { Component, Root, sstyled } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
 import EventEmitter from '@semcore/utils/lib/eventEmitter';
 import trottle from '@semcore/utils/lib/rafTrottle';
@@ -54,12 +54,12 @@ class XYPlotRoot extends Component {
   }
 
   render() {
-    const SXYPlot = this.Root;
+    const SXYPlot = Root;
     const { styles, width, height } = this.asProps;
 
     if (!width || !height) return null;
 
-    return styled(styles)(
+    return sstyled(styles)(
       <SXYPlot
         render={Box}
         tag="svg"

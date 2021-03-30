@@ -105,55 +105,55 @@ SAddon {
 }
 
 STabLineItem[size='m'] {
-  height: media(28px);
-  margin-right: media(16px);
-  min-width: media(18px);
+  height: 28px;
+  margin-right: 16px;
+  min-width: 18px;
   font-size: var(--fs-100);
   line-height: 1;
 
   & SText:not(:last-child) {
-    margin-right: media(8px);
+    margin-right: 8px;
   }
 
   & SAddon {
     &:not(:last-child) {
-      margin-right: media(8px);
+      margin-right: 8px;
     }
   }
 }
 
 STabLineItem[size='l'] {
-  height: media(34px);
-  margin-right: media(16px);
-  min-width: media(26px);
+  height: 34px;
+  margin-right: 16px;
+  min-width: 26px;
   font-size: var(--fs-200);
   line-height: 1;
 
   & SText:not(:last-child) {
-    margin-right: media(8px);
+    margin-right: 8px;
   }
 
   & SAddon {
     &:not(:last-child) {
-      margin-right: media(8px);
+      margin-right: 8px;
     }
   }
 }
 
 STabLineItem[size='xl'] {
-  height: media(42px);
-  margin-right: media(24px);
-  min-width: media(32px);
+  height: 42px;
+  margin-right: 24px;
+  min-width: 32px;
   font-size: var(--fs-300);
   line-height: 1;
 
   & SText:not(:last-child) {
-    margin-right: media(12px);
+    margin-right: 12px;
   }
 
   & SAddon {
     &:not(:last-child) {
-      margin-right: media(12px);
+      margin-right: 12px;
     }
   }
 }

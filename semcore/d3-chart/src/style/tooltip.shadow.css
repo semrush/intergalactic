@@ -27,4 +27,5 @@ SDot {
   height: 8px;
   border-radius: 50%;
   margin-right: 8px;
+  background: var(--color);
 }

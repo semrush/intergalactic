@@ -22,9 +22,9 @@ SBack {
 }
 
 SClose {
-  top: media(12px);
-  right: media(20px);
-  padding: media(12px);
+  top: 12px;
+  right: 20px;
+  padding: 12px;
   color: var(--stone);
 
   &:hover {
@@ -33,11 +33,11 @@ SClose {
 }
 
 SBack {
-  top: media(10px);
-  left: media(32px);
+  top: 10px;
+  left: 32px;
   display: flex;
   align-items: center;
-  padding: media(2px);
+  padding: 2px;
   color: var(--gray60);
   font-size: var(--fs100);
   line-height: var(--lh100);
@@ -52,7 +52,7 @@ SBack {
 }
 
 SBackText {
-  margin-left: media(4px);
+  margin-left: 4px;
   border-bottom-width: 1px;
   border-bottom-style: solid;
   border-bottom-color: transparent;
@@ -81,10 +81,10 @@ SDescription {
 SHeader {
   display: flex;
   align-items: baseline;
-  padding-left: media(32px);
-  padding-bottom: media(12px);
-  padding-right: media(77px);
-  padding-top: media(30px);
+  padding-left: 32px;
+  padding-bottom: 12px;
+  padding-right: 77px;
+  padding-top: 30px;
   min-height: 72px;
   box-shadow: inset 0 -1px 1px 0 var(--gray80);
   box-sizing: border-box;
@@ -103,17 +103,17 @@ SBody {
 }
 
 SSection {
-  padding-top: media(24px);
-  padding-bottom: media(24px);
-  padding-left: media(32px);
-  padding-right: media(32px);
+  padding-top: 24px;
+  padding-bottom: 24px;
+  padding-left: 32px;
+  padding-right: 32px;
   flex: 1 1 auto;
 }
 
 SHeaderDivider {
-  margin-left: media(12px);
-  margin-right: media(12px);
-  height: media(16px);
+  margin-left: 12px;
+  margin-right: 12px;
+  height: 16px;
   width: 1px;
   background-color: var(--gray80);
 }

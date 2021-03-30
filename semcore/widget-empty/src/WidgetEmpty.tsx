@@ -1,5 +1,5 @@
 import React, { HTMLAttributes, ComponentProps } from 'react';
-import createComponent, { Component, Merge, styled } from '@semcore/core';
+import createComponent, { Component, Merge, sstyled, Root } from '@semcore/core';
 import { Box, Flex, IFlexProps } from '@semcore/flex-box';
 import isNode from '@semcore/utils/lib/isNode';
 
@@ -54,11 +54,11 @@ class WidgetEmpty extends Component<IWidgetEmptyProps> {
   static style = style;
 
   render() {
-    const SWidgetEmpty = this.Root;
+    const SWidgetEmpty = Root;
     const { Children, icon, styles } = this.asProps;
     const SImage = 'div';
 
-    return styled(styles)(
+    return sstyled(styles)(
       <SWidgetEmpty render={Flex}>
         {isNode(icon) && (
           <SImage>
@@ -76,13 +76,15 @@ class WidgetEmpty extends Component<IWidgetEmptyProps> {
 }
 
 const Title = (props) => {
-  const { Root: STitle, styles } = props;
-  return styled(styles)(<STitle render={Box} />);
+  const STitle = Root;
+  const { styles } = props;
+  return sstyled(styles)(<STitle render={Box} />);
 };
 
 const Description = (props) => {
-  const { Root: SDescription, styles } = props;
-  return styled(styles)(<SDescription render={Box} />);
+  const SDescription = Root;
+  const { styles } = props;
+  return sstyled(styles)(<SDescription render={Box} />);
 };
 
 export default createComponent<

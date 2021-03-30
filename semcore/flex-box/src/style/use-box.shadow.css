@@ -1,7 +1,7 @@
-.box-sizing {
+SBoxSizing {
   box-sizing: border-box;
 }
 
-.box-inline {
+SBoxInline {
   display: inline-block;
 }

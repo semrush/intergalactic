@@ -1,9 +1,11 @@
 import React from 'react';
-import { Component, styled } from '@semcore/core';
+import { Component, sstyled, Root } from '@semcore/core';
 import { Box, Flex } from '@semcore/flex-box';
 import ScrollArea from '@semcore/scroll-area';
 import { getFixedStyle, getScrollOffsetValue } from './utils';
 import assignProps from '@semcore/utils/lib/assignProps';
+
+import scrollStyles from './style/scroll-area.shadow.css';
 
 function getCellsByColumn(row) {
   return row.reduce((acc, cell) => {
@@ -32,7 +34,7 @@ class Body extends Component {
           children: this.renderCells(row, cellsByColumn, index),
         },
       );
-      return styled(styles)(
+      return sstyled(styles)(
         <SRow key={index} theme={props.theme} active={props.active} {...props} />,
       );
     });
@@ -67,7 +69,7 @@ class Body extends Component {
         );
 
         acc.push(
-          styled(styles)(
+          sstyled(styles)(
             <SCell key={cell.name} {...props} fixed={cell.fixed} theme={props.theme} use={use} />,
           ),
         );
@@ -77,41 +79,33 @@ class Body extends Component {
   }
 
   render() {
-    const SBody = this.Root;
+    const SBody = Root;
     const SBodyWrapper = Box;
-    const { Children, styles, rows, columns, $scrollRef } = this.asProps;
     const SScrollAreaBar = ScrollArea.Bar;
+    const { Children, styles, rows, columns, $scrollRef } = this.asProps;
 
     const initializeColumns = !!columns.reduce((acc, c) => acc + c.width, 0);
 
     const [offsetLeftSum, offsetRightSum] = getScrollOffsetValue(columns);
     const offsetSum = offsetLeftSum + offsetRightSum;
 
-    const offsetSumVar = offsetSum + 'px';
-    const leftVar = offsetLeftSum + 'px';
-    const rightVar = offsetRightSum + 'px';
-
-    return styled(styles)`
-      SShadowHorizontal:before {
-        left: ${leftVar}!important;
-      }
-      SShadowHorizontal:after {
-        right: ${rightVar}!important;
-      }
-      SScrollAreaBar[orientation='horizontal'] {
-        margin-left: calc(${leftVar} + 4px);
-        margin-right: calc(${rightVar} + 4px);
-        width: calc(100% - ${offsetSumVar} - 8px);
-      }
-    `(
+    return sstyled(styles)(
       <SBodyWrapper>
-        <ScrollArea shadow styles={styled.styles}>
+        <ScrollArea
+          shadow
+          styles={scrollStyles}
+          left={`${offsetLeftSum}px`}
+          right={`${offsetRightSum}px`}
+        >
           <ScrollArea.Container ref={$scrollRef}>
-            <SBody render={Box}>
-              {initializeColumns ? this.renderRows(rows) : null}
-            </SBody>
+            <SBody render={Box}>{initializeColumns ? this.renderRows(rows) : null}</SBody>
           </ScrollArea.Container>
-          <SScrollAreaBar orientation="horizontal" />
+          <SScrollAreaBar
+            orientation="horizontal"
+            left={`${offsetLeftSum}px`}
+            right={`${offsetRightSum}px`}
+            offsetSum={`${offsetSum}px`}
+          />
           <SScrollAreaBar orientation="vertical" />
         </ScrollArea>
         {Children.origin}

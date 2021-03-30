@@ -1,12 +1,14 @@
 import React, { useCallback } from 'react';
 import { bisector } from 'd3-array';
-import { Component, styled } from '@semcore/core';
+import { Component, Root, sstyled } from '@semcore/core';
 import Popper from '@semcore/popper';
 import { Box } from '@semcore/flex-box';
+import findComponent from '@semcore/utils/lib/findComponent';
+import resolveColor from '@semcore/utils/lib/color';
+
+import createXYElement from './XYElement';
 
 import style from './style/tooltip.shadow.css';
-import createXYElement from './XYElement';
-import findComponent from '@semcore/utils/lib/findComponent';
 
 class TooltipRoot extends Component {
   static displayName = 'Tooltip';
@@ -55,7 +57,6 @@ class TooltipRoot extends Component {
   }
 
   render() {
-    const Root = this.Root;
     const { Children, children, tag, ...other } = this.asProps;
     const { xIndex, yIndex } = this.state;
 
@@ -90,26 +91,24 @@ function PopperPopper(props) {
 
   if ((xIndex ?? yIndex) === null) return null;
 
-  return styled(styles)(
+  return sstyled(styles)(
     <STooltip render={Popper.Popper} childrenPosition="inside" onMouseMove={handlerCancel} />,
   );
 }
 
 function Title(props) {
-  const { Root: STitle, styles } = props;
-  return styled(styles)(<STitle render={Box} __excludeProps={['data', 'scale']} />);
+  const STitle = Root;
+  const { styles } = props;
+  return sstyled(styles)(<STitle render={Box} __excludeProps={['data', 'scale']} />);
 }
 
 function Dot(props) {
-  const { Root: SDotGroup, styles, color = '#50aef4', Children } = props;
+  const { styles, color = '#50aef4', Children } = props;
+  const SDotGroup = Root;
   const SDot = Box;
-  return styled(styles)`
-    SDot {
-      background: ${color};
-    }
-  `(
+  return sstyled(styles)(
     <SDotGroup render={Box}>
-      <SDot __excludeProps={['data', 'scale']} />
+      <SDot __excludeProps={['data', 'scale']} color={resolveColor(color)} />
       <Children />
     </SDotGroup>,
   );

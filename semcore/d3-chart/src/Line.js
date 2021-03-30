@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { line as d3Line } from 'd3-shape';
 import { bisector } from 'd3-array';
-import { Component, styled } from '@semcore/core';
+import { Component, sstyled } from '@semcore/core';
 import createXYElement from './XYElement';
 import { definedData, scaleOfBandwidth } from './utils';
 
@@ -89,7 +89,7 @@ class LineRoot extends Component {
     const SLine = this.Element;
     const { styles, hide, color, d3, data } = this.asProps;
 
-    return styled(styles)(<SLine render="path" hide={hide} stroke={color} d={d3(data)} />);
+    return sstyled(styles)(<SLine render="path" hide={hide} stroke={color} d={d3(data)} />);
   }
 }
 
@@ -119,7 +119,7 @@ function Dots(props) {
     if (!d3.defined()(d)) return acc;
     if (display || i === activeIndex || (!isPrev && !isNext)) {
       acc.push(
-        styled(styles)(
+        sstyled(styles)(
           <SDot
             key={i}
             __excludeProps={['data', 'scale', 'value', 'display']}
@@ -140,7 +140,7 @@ function Dots(props) {
 
 function Null(props) {
   const { Element: SNull, styles, d3, data, hide } = props;
-  return styled(styles)(<SNull render="path" d={d3(data)} hide={hide} />);
+  return sstyled(styles)(<SNull render="path" d={d3(data)} hide={hide} />);
 }
 
 export default createXYElement(LineRoot, {

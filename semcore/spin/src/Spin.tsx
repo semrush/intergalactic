@@ -1,6 +1,6 @@
 import React, { HTMLProps } from 'react';
 
-import createComponent, { Component, styled, Merge } from '@semcore/core';
+import createComponent, { Component, sstyled, Merge, Root } from '@semcore/core';
 import { Box, IBoxProps } from '@semcore/flex-box';
 import resolveColor from '@semcore/utils/lib/color';
 
@@ -41,13 +41,9 @@ class Spin extends Component<ISpinProps> {
   };
 
   render() {
-    const { Root: SSpin } = this;
-    const { styles, size, theme, centered } = this.asProps;
-    return styled(styles)`
-      SSpin {
-        color: ${getThemeColor(theme)};
-      }
-    `(<SSpin render={Box} size={size} theme={theme} centered={centered} />);
+    const SSpin = Root;
+    const { styles, theme } = this.asProps;
+    return sstyled(styles)(<SSpin render={Box} theme={theme} color={getThemeColor(theme)} />);
   }
 }
 

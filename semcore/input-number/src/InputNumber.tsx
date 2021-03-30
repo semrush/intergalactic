@@ -1,5 +1,5 @@
 import React, { HTMLAttributes, InputHTMLAttributes } from 'react';
-import createComponent, { Component, Merge, PropGetter, styled } from '@semcore/core';
+import createComponent, { Component, Merge, PropGetter, sstyled, Root } from '@semcore/core';
 import BUTTONS from './buttons';
 import Input, { IInputAddonProps, IInputProps, IInputValueProps } from '@semcore/input';
 import { callAllEventHandlers } from '@semcore/utils/lib/assignProps';
@@ -112,10 +112,8 @@ class InputNumber extends Component<IInputNumberProps> {
   }
 
   render() {
-    const { Root: SInputNumber } = this;
-    const { Children, style } = this.asProps;
-
-    return styled(style)(<SInputNumber render={Input}>{Children.origin}</SInputNumber>);
+    const SInputNumber = Root;
+    return sstyled(this.asProps.style)(<SInputNumber render={Input} />);
   }
 }
 
@@ -254,7 +252,7 @@ class Value extends Component<IInputNumberValueProps> {
     } = this.asProps;
     const { dirtyValue } = this.state;
 
-    return styled(styles)(
+    return sstyled(styles)(
       <SValue
         value={dirtyValue || this.value}
         disabled={disabled}
@@ -268,12 +266,13 @@ class Value extends Component<IInputNumberValueProps> {
 }
 
 function Controls(props) {
-  const { Root: SControls, Children, showControls, inc, dec, size, styles } = props;
+  const { Children, inc, dec, size, styles } = props;
+  const SControls = Root;
   const SUp = 'button';
   const SDown = 'button';
 
-  return styled(styles)(
-    <SControls render={Input.Addon} size={size} showControls={showControls}>
+  return sstyled(styles)(
+    <SControls render={Input.Addon}>
       <SUp
         onClick={inc}
         tabIndex={-1}
