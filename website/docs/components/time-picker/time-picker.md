@@ -32,13 +32,11 @@ It is used when you need the following:
 
 The paddings inside the input between the comboboxes are the same as in the [input](/components/input/).
 
-> 💡 Width of the button with am/pm is fixed in order it did not change by 1px upon switching of `am/pm`.
-
 | Size      | Appearance                                                                            | Paddings                            |
 | --------- | ------------------------------------------------------------------------------------- | ----------------------------------- |
 | XL (42px) | ![24 hours input](static/input-default-xl.png) ![12 hours input](static/input-xl.png) | ![paddings](static/paddings-xl.png) |
-| L         | ![24 hours input](static/input-default-l.png) ![12 hours input](static/input-l.png)   | ![paddings](static/paddings-l.png)  |
-| M         | ![24 hours input](static/input-default-m.png) ![12 hours input](static/input-m.png)   | ![paddings](static/paddings-m.png)  |
+| L (32px)  | ![24 hours input](static/input-default-l.png) ![12 hours input](static/input-l.png)   | ![paddings](static/paddings-l.png)  |
+| M (26px)  | ![24 hours input](static/input-default-m.png) ![12 hours input](static/input-m.png)   | ![paddings](static/paddings-m.png)  |
 
 @## Interaction
 
