@@ -1,12 +1,13 @@
 /* eslint-disable */
 import cn from 'classnames';
 import { ReactNode } from 'react';
+export { getStyles } from '@reshadow/core';
 
 const RESHADOW_ID = '__reshadow__';
 
 const isSSR = !(typeof window !== 'undefined' && window.document && window.document.createElement);
 
-const serverMap = {};
+const serverMap = getStyles().map;
 
 const getStyles = () => ({
   map: serverMap,

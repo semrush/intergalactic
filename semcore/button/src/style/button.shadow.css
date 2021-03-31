@@ -50,31 +50,31 @@ SButton[keyboardFocused] {
 }
 
 SButton[size='s'] {
-  height: media(18px);
-  min-width: media(18px);
+  height: 18px;
+  min-width: 18px;
   border-radius: 2px;
-  font-size: media(10px);
+  font-size: 10px;
 }
 
 SButton[size='m'] {
-  height: media(26px);
-  min-width: media(26px);
+  height: 26px;
+  min-width: 26px;
   border-radius: 3px;
-  font-size: media(12px);
+  font-size: 12px;
 }
 
 SButton[size='l'] {
-  height: media(32px);
-  min-width: media(32px);
+  height: 32px;
+  min-width: 32px;
   border-radius: 4px;
-  font-size: media(14px);
+  font-size: 14px;
 }
 
 SButton[size='xl'] {
-  height: media(42px);
-  min-width: media(42px);
+  height: 42px;
+  min-width: 42px;
   border-radius: 5px;
-  font-size: media(16px);
+  font-size: 16px;
 }
 
 SButton[theme='primary-info'] {
@@ -299,23 +299,23 @@ SText {
 }
 
 SText[size='s'] {
-  margin-left: media(4px);
-  margin-right: media(4px);
+  margin-left: 4px;
+  margin-right: 4px;
 }
 
 SText[size='m'] {
-  margin-left: media(8px);
-  margin-right: media(8px);
+  margin-left: 8px;
+  margin-right: 8px;
 }
 
 SText[size='l'] {
-  margin-left: media(8px);
-  margin-right: media(8px);
+  margin-left: 8px;
+  margin-right: 8px;
 }
 
 SText[size='xl'] {
-  margin-left: media(12px);
-  margin-right: media(12px);
+  margin-left: 12px;
+  margin-right: 12px;
 }
 
 SAddon {
@@ -326,60 +326,60 @@ SAddon {
 
 SAddon[size='s'] {
   &:not(:only-child):first-child {
-    margin-left: media(4px);
+    margin-left: 4px;
   }
 
   &:not(:only-child):last-child {
-    margin-right: media(4px);
+    margin-right: 4px;
   }
 
   &:only-child {
-    margin-left: media(-2px);
-    margin-right: media(-2px);
+    margin-left: -2px;
+    margin-right: -2px;
   }
 }
 
 SAddon[size='m'] {
   &:not(:only-child):first-child {
-    margin-left: media(8px);
+    margin-left: 8px;
   }
 
   &:not(:only-child):last-child {
-    margin-right: media(8px);
+    margin-right: 8px;
   }
 
   &:only-child {
-    margin-left: media(-4px);
-    margin-right: media(-4px);
+    margin-left: -4px;
+    margin-right: -4px;
   }
 }
 
 SAddon[size='l'] {
   &:not(:only-child):first-child {
-    margin-left: media(8px);
+    margin-left: 8px;
   }
 
   &:not(:only-child):last-child {
-    margin-right: media(8px);
+    margin-right: 8px;
   }
 
   &:only-child {
-    margin-left: media(-4px);
-    margin-right: media(-4px);
+    margin-left: -4px;
+    margin-right: -4px;
   }
 }
 
 SAddon[size='xl'] {
   &:not(:only-child):first-child {
-    margin-left: media(12px);
+    margin-left: 12px;
   }
 
   &:not(:only-child):last-child {
-    margin-right: media(12px);
+    margin-right: 12px;
   }
 
   &:only-child {
-    margin-left: media(-6px);
-    margin-right: media(-6px);
+    margin-left: -6px;
+    margin-right: -6px;
   }
 }
