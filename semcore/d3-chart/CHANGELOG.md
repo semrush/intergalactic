@@ -4,7 +4,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ## [1.0.0-5] - 2021-03-31
 
-### fixed
+### Fixed
 
 - [TS] Fixed types for `Line` and `Area`.
 
