@@ -1,9 +1,13 @@
 import React from 'react';
-import { stack } from 'd3-shape';
+import { stack as d3Stack, stack } from 'd3-shape';
 import { Component } from '@semcore/core';
 import createXYElement from './XYElement';
 import Area from './Area';
+
 import style from './style/area.shadow.css';
+
+const DEFAULT_INSTANCE = Symbol('DEFAULT_INSTANCE');
+const Y0 = Symbol('Y0');
 
 class StackedAreaRoot extends Component {
   static displayName = 'StackedArea';
@@ -11,23 +15,26 @@ class StackedAreaRoot extends Component {
   static style = style;
 
   static defaultProps = () => {
+    const stack = d3Stack();
+    stack[DEFAULT_INSTANCE] = true;
     return {
       color: '#50aef4',
+      stack,
     };
   };
 
   getSeries() {
-    const { data, x } = this.asProps;
-    const keys = data
-      .flatMap((d) => Object.keys(d))
-      .reduce((keys, key) => keys.add(key), new Set());
-    keys.delete(x);
-    return stack().keys([...keys])(data);
+    const { data, stack } = this.asProps;
+
+    if (stack[DEFAULT_INSTANCE]) {
+      stack.keys(data.flatMap((d) => Object.keys(d)).filter((k, i, arr) => arr.indexOf(k) === i));
+    }
+
+    return stack(data);
   }
 
   getAreaProps({ y }) {
     const { x } = this.asProps;
-    const Y0 = Symbol('Y0');
     const series = this.series.find((s) => s.key === y);
     return {
       data: series.map((s) => ({
