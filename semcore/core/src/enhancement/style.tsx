@@ -13,7 +13,6 @@ function Enhancement(childComponents, Context) {
     },
     init: function (props, WrapperComponent) {
       if (WrapperComponent.style) {
-        debugger;
         if (WrapperComponent.style[KEYS['__id__']]) {
           this[STYLES_SELF] = create([WrapperComponent.style, props._styles]);
         } else {
