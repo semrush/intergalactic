@@ -7,13 +7,6 @@ export interface IAreaProps extends IContext {
   x?: string;
   /** Field from data for Axis y for line*/
   y?: string;
-  /** Field from data for Axis x for area*/
-  y1?: string;
-  /** Field from data for Axis x for area bottom line */
-  y0?: Symbol;
-  /** Area generators
-   * @default d3.area() */
-  d3?: Area<Datum>;
   /** Color line
    * @default '#50aef4'*/
   color?: string;

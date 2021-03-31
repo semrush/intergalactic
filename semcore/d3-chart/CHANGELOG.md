@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [1.0.0-5] - 2021-03-31
+
+### fixed
+
+- [TS] Fixed types for `Line` and `Area`.
+
 ## [1.0.0-4] - 2021-03-30
 
 ### Added
