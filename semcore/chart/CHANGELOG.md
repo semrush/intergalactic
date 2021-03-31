@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.2.1] - 2021-03-31
+
+### Changed
+
+- Optimized the code for venn chart.
+
 ## [4.2.0] - 2021-02-15
 
 ### Added
