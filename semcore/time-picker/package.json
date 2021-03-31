@@ -16,7 +16,6 @@
     "@semcore/flex-box": "^4",
     "@semcore/button": "^3",
     "@semcore/input": "^2",
-    "@semcore/icon": "^2",
     "@semcore/select": "^2"
   },
   "peerDependencies": {

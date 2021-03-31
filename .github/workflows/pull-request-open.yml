@@ -2,7 +2,7 @@ name: pull-request-open
 
 on:
   pull_request:
-    types: [assigned, opened, synchronize, reopened]
+    types: [assigned, opened, reopened]
 
 jobs:
   pull-request-open:
