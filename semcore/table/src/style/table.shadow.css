@@ -111,12 +111,16 @@ SRow {
   }
 }
 
-SRow[theme='default'] {
+SRow[theme='default'],
+SCellRow[theme='default'] {
   background-color: #fff;
+}
 
-  &:hover SCellRow {
-    background-color: color-mod(var(--stone) blend(#fff 90%));
-  }
+SRow[theme='default']:hover,
+SRow[theme]:hover SCellRow[theme='default'],
+SCellRow[highlighted][theme='default'],
+SCellRow[interactive][theme='default']:hover {
+  background-color: color-mod(var(--stone) blend(#fff 90%));
 }
 
 SRow[theme='info'],
