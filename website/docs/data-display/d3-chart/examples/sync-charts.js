@@ -15,14 +15,14 @@ import EventEmitter from '@semcore/utils/lib/eventEmitter';
 const EventEmitterBar = new EventEmitter();
 const EventEmitterLine = new EventEmitter();
 
-EventEmitterBar.subscribe('onNearestXY', ([pX, pY], isMaster = true) => {
-  if (isMaster) {
+EventEmitterBar.subscribe('onNearestXY', ([pX, pY], self = true) => {
+  if (self) {
     EventEmitterLine.emit('onNearestXY', [pX, pY], false);
   }
 });
 
-EventEmitterLine.subscribe('onNearestXY', ([pX, pY], isSlave = true) => {
-  if (isSlave) {
+EventEmitterLine.subscribe('onNearestXY', ([pX, pY], self = true) => {
+  if (self) {
     EventEmitterBar.emit('onNearestXY', [pX, pY], false);
   }
 });
