@@ -80,7 +80,7 @@ export default function useFlex<T extends IFlexProps>(
       className:
         cn(
           styles.cn('SFlex', {
-            'flex-inline': inline,
+            inline: inline,
           }).className,
           className,
         ) || undefined,
