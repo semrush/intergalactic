@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import postman from '../static/space/email-pic.svg';
+import postman from '../static/illustration/email-pic.svg';
 import PinMapM from '@semcore/icon/lib/PinMap/m';
 import GitHubM from '@semcore/icon/lib/color/GitHub/m';
 import MailOutlineM from '@semcore/icon/lib/MailOutline/m';

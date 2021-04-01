@@ -10,14 +10,14 @@ import AllComponents from '../components/AllComponents';
 import Error from '../components/Error';
 import LoadingPage from '../components/LoadingPage';
 import UpdateBlock from '../components/UpdateBlock';
-import whale from '../static/whale/whale.svg';
-import layout from '../static/space/layout.svg';
-import principles from '../static/space/principles.svg';
-import style from '../static/space/style.svg';
+import whale from '../static/illustration/whale.svg';
+import layout from '../static/illustration/layout.svg';
+import principles from '../static/illustration/principles.svg';
+import style from '../static/illustration/style.svg';
 import ArrowXS from '@semcore/icon/lib/ArrowRight/xs';
 import { Link as LinkScroll } from 'react-scroll';
 import { Box } from '@semcore/flex-box';
-import updatesButton from '../static/space/search-for-updates.svg';
+import updatesButton from '../static/illustration/search-for-updates.svg';
 import { css } from '@semcore/core';
 
 const stylesTabLine = css`

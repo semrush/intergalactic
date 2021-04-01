@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import spaceman from '../static/space/spaceman.svg';
+import spaceman from '../static/illustration/spaceman.svg';
 
 const Content = styled.div`
   padding: 200px 90px 96px 160px;
