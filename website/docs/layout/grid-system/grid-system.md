@@ -8,17 +8,19 @@ tabName: Guide
 
 - The layout of the page depends on the breakpoint.
 - Each range determines the number of columns, maximum content width, main container margins and text sizes.
-- **You can set your own breakpoints, if it's necessary for the correct display of the interface in a particular case. _For example, add a breakpoint for screens ≦414px in the <768px range._**
+- **You can set your own breakpoints, if it's necessary for the correct display of the interface in a particular case. _For example, change a breakpoint for desktop screens._**
 
 > 💡 After 991px, the left menu appears and, with its width of 250px, "eats away" space from the product page 🙃
 
-| Breakpoint            | Columns | Gutter | Max. container width                                          | Content wrapper margins | Layout scheme                                             | Description                                                                                                               |
-| --------------------- | ------- | ------ | ------------------------------------------------------------- | ----------------------- | --------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
-| **<768px** (0-767)    | 4       | 24px   | 500px                                                         | `margin: 80px 20px;`    | ![414 breakpoint](static/breakpoints-414.png)             | **Mobile & tablet devices**. The content has a one-column structure. The left menu is hidden.                             |
-| **≥768px** (768-1153) | 6       | 24px   | 704px                                                         | `margin: 120px 32px;`   | ![768 breakpoint](static/breakpoints-768.png)             | **Mobile & tablet devices**. You can arrange the content as a two-column structure. The left menu is hidden.              |
-|                       |         |        |                                                               |                         | ![768 breakpoint](static/breakpoints-768-landscape.png)   | **Mobile & tablet devices (landscape mode)**. The content is arranged as a two-column structure. The left menu is hidden. |
-| **≥1154px** (1154-∞)  | 12      | 24px   | 840px for product landing pages. **956px for product pages.** | `margin; 0 auto;`       | ![1154px breakpoint](static/breakpoints-1154.png)         | **Tablet & desktop devices**. The left menu is open. You can rearrange the content as a three-column structure.           |
-|                       |         |        |                                                               |                         | ![1154 breakpoint](static/breakpoints-1154-landscape.png) | **Tablet (landscape mode)**. The left menu is open. You can rearrange the content as a three-column structure.            |
+![breakpoints-scheme](static/scheme.png)
+
+| Breakpoint                      | Columns | Gutter | Max. content width                                                               | Content wrapper margins | Layout scheme                                             | Description                                                                                                               |
+| ------------------------------- | ------- | ------ | -------------------------------------------------------------------------------- | ----------------------- | --------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
+| **min-width: 320px** (320-767)  | 4       | 24px   | We recommend setting it to 500px. But you can choose another value if necessary. | `margin: 80px 20px;`    | ![414 breakpoint](static/breakpoints-414.png)             | **Mobile & tablet devices**. The content has a one-column structure. The left menu is hidden.                             |
+| **min-width: 768px** (768-1153) | 6       | 24px   | 704px                                                                            | `margin: 120px 32px;`   | ![768 breakpoint](static/breakpoints-768.png)             | **Mobile & tablet devices**. You can arrange the content as a two-column structure. The left menu is hidden.              |
+|                                 |         |        |                                                                                  |                         | ![768 breakpoint](static/breakpoints-768-landscape.png)   | **Mobile & tablet devices (landscape mode)**. The content is arranged as a two-column structure. The left menu is hidden. |
+| **min-width: 1154px** (1154-∞)  | 12      | 24px   | 840px for product landing pages. **956px for product pages.**                    | `margin; 0 auto;`       | ![1154px breakpoint](static/breakpoints-1154.png)         | **Tablet & desktop devices**. The left menu is open. You can rearrange the content as a three-column structure.           |
+|                                 |         |        |                                                                                  |                         | ![1154 breakpoint](static/breakpoints-1154-landscape.png) | **Tablet (landscape mode)**. The left menu is open. You can rearrange the content as a three-column structure.            |
 
 @## Product pages width
 
