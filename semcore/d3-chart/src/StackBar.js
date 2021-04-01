@@ -23,10 +23,19 @@ class StackBarRoot extends Component {
   };
 
   getSeries() {
-    const { data, stack } = this.asProps;
+    const { Children, data, stack } = this.asProps;
 
     if (stack[DEFAULT_INSTANCE]) {
-      stack.keys(data.flatMap((d) => Object.keys(d)).filter((k, i, arr) => arr.indexOf(k) === i));
+      const keys = React.Children.toArray(getOriginChildren(Children)).reduce((acc, child) => {
+        if (React.isValidElement(child) && child.type === StackBar.Bar) {
+          acc.push(child.props.y);
+        }
+        if (React.isValidElement(child) && child.type === StackBar.HorizontalBar) {
+          acc.push(child.props.x);
+        }
+        return acc;
+      }, []);
+      stack.keys(keys);
     }
 
     return stack(data);
