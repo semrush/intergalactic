@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import Input from '@semcore/input';
 import Button from '@semcore/button';
-import updatesImg from '../static/space/updates.svg';
+import updatesImg from '../static/illustration/updates.svg';
 import NavLink from './NavLink';
 import Tooltip from '@semcore/tooltip';
 import { css } from '@semcore/core';
