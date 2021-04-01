@@ -1,6 +1,7 @@
 import React from 'react';
-import { stack as d3Stack, stack } from 'd3-shape';
+import { stack as d3Stack } from 'd3-shape';
 import { Component } from '@semcore/core';
+import getOriginChildren from '@semcore/utils/lib/getOriginChildren';
 import createXYElement from './XYElement';
 import Area from './Area';
 
@@ -24,10 +25,16 @@ class StackedAreaRoot extends Component {
   };
 
   getSeries() {
-    const { data, stack } = this.asProps;
+    const { Children, data, stack } = this.asProps;
 
     if (stack[DEFAULT_INSTANCE]) {
-      stack.keys(data.flatMap((d) => Object.keys(d)).filter((k, i, arr) => arr.indexOf(k) === i));
+      const keys = React.Children.toArray(getOriginChildren(Children)).reduce((acc, child) => {
+        if (React.isValidElement(child) && child.type === StackedArea.Area) {
+          acc.push(child.props.y);
+        }
+        return acc;
+      }, []);
+      stack.keys(keys);
     }
 
     return stack(data);
@@ -38,7 +45,7 @@ class StackedAreaRoot extends Component {
     const series = this.series.find((s) => s.key === y);
     return {
       data: series.map((s) => ({
-        [x]: s.data[x],
+        ...s.data,
         [y]: s[1] === 0 ? null : s[1],
         [Y0]: s[0],
       })),
