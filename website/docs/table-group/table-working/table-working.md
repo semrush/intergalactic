@@ -33,14 +33,24 @@ If there is a control inside the cell (for example, a select or checkbox).
 
 ![hover zone](static/hover-zone-2.png)
 
+### Sorting icon styles
+
+- The default color for the sorting icon is `--stone`.
+- If column sorting is active, the icon changes color to `--wall`.
+
+![sorting icon](static/sorting1.png)
+
+- If table has only one column with sorting, usually its sorting icon is unclickable and has an active state.
+
+![sorting icon](static/sorting2.png)
+
 ### Rules for sorting
 
 > 💡 If the data in the column should not be sorted, there should be no sorting icon.
 
-- The sort icon should always be displayed on cells that can be sorted.
+- The sort icon should always be displayed on cells that can be sorted. **The icon shows not the current state, but how the column will be sorted if sorting is activated.**
 - The default sorting must be set for each column to be sorted. `SortDesc` is used by default (in descending order).
-- If sorting on a column is inactive, the icon has an inactive state. **The inactive icon shows not the current state, but how the column will be sorted if sorting is activated.**
-- If sorting on a column is active, the icon has the `active` (`$wall` color) state and shows the corresponding sorting direction.
+- If sorting on a column is active, the icon has the `active` state and shows the corresponding sorting direction.
 - **When you switch sorting within a single column**, the icon changes its direction.
 - **When you select a different column**, the icon on the selected column becomes active. Icons on other columns go to the inactive state and do not change direction.
 - When you reload data in a table where data was sorted in one of the columns, the header of the sorted column remains highlighted.
@@ -75,10 +85,10 @@ A table row can be expanded by accordion type. Within such a row, there can be a
 
 > 💡 If you have too much data inside the drop-down row, you may need to think about a separate page for them.
 
-- The accordion row must have the `ChevronRight` icon in the leftmost column. It indicates that this line can be expanded. `ChevronRightXS` and color `$stone`.
+- The accordion row must have the `ChevronRight` icon in the leftmost column. It indicates that this line can be expanded. `ChevronRightXS` and color `--stone`.
 - The line that opened additional data from must remain highlighted. The `active` state of a row has the same styles as the `hover` row.
 - When the row is open, the `ChevronRight` icon should change to `ChevronDown` of the same size and color.
-- The internal line with detailed information has a lower border – `border-bottom: 1px solid $stone;`. It is necessary so that when several rows are opened, they do not merge with each other, and for other complex cases of using the accordion inside the table.
+- The internal line with detailed information has a lower border – `border-bottom: 1px solid var(--stone);`. It is necessary so that when several rows are opened, they do not merge with each other, and for other complex cases of using the accordion inside the table.
 
 ![table with accordion](static/accordion.png)
 
@@ -89,7 +99,7 @@ A table row can be expanded by accordion type. Within such a row, there can be a
 
 ![table with accordion](static/accordion-2.png)
 
-In the `active` state, the cell must be additionally highlighted with the color `#EDEFEF` (or `var (--stone)` with 20% transparency). And the `ChevronRight` icon rotates `90deg`.
+In the `active` state, the cell must be additionally highlighted with the color `#EDEFEF` (or `var(--stone)` with 20% transparency). And the `ChevronRight` icon rotates `90deg`.
 
 ![table with accordion](static/accordion-3.png)
 
@@ -117,9 +127,9 @@ We recommend using the status bar when the table has multi-row selection and pag
 
 - When scrolling a table, this row should be attached to the table header. In this case, it does not have a shadow, as well as a battered hat.
 
-| Appearance                                         | Styles                                                                                                  |
-| -------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
-| ![action row scroll](static/action-row-scroll.png) | `background-color: #FAFBFB;` (or `$stone` with transparency .05 ), `border-bottom: 1px solid $mercury;` |
+| Appearance                                         | Styles                                                                                                         |
+| -------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
+| ![action row scroll](static/action-row-scroll.png) | `background-color: #FAFBFB;` (or `--stone` with transparency .05 ), `border-bottom: 1px solid var(--mercury);` |
 
 ### The actions and rules of use
 
