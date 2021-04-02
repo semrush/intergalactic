@@ -75,7 +75,7 @@ function generateSprint(startDay, finishDay) {
 const year2018 = generateSprint(dayjs('2018-07-9'), dayjs('2018-12-23'));
 const year2019 = generateSprint(dayjs('2019-02-9'), dayjs('2019-12-29'));
 const year2020 = generateSprint(dayjs('2020-01-06'), dayjs('2020-12-27'));
-const year2021 = generateSprint(dayjs('2021-01-04'), dayjs('2021-03-28'));
+const year2021 = generateSprint(dayjs('2021-01-04'), dayjs('2021-07-04'));
 const dateSprint = [
   ...year2018,
   dayjs('2018-12-30'),
@@ -294,12 +294,22 @@ const components = {
     { text: 'Wake up sprint ⏰', size: { kit: '1/3' } },
     { text: 'Mobile first guides', size: { ui: '3/9' } },
     { text: 'Mobile first components', size: { kit: '3/11' } },
-    { text: 'Charts: Line, Bar', size: { kit: '3/7' } },
+    { text: 'D3 Charts: Line, Bar', size: { kit: '3/7' } },
     { text: 'GlobalNotice', size: { ui: '7/11', kit: '9/13' } },
     { text: 'Slider', size: { ui: '9/13', kit: '11/13' } },
     { text: 'Themes enchancement', size: { kit: '7/13' } },
-    { text: 'Charts: Donut', size: { kit: '9/13' } },
-    { text: 'Charts: Area', size: { kit: '11/13' } },
+    { text: 'D3 Charts: Donut', size: { kit: '9/13' } },
+    { text: 'D3 Charts: Area', size: { kit: '11/13' } },
+  ],
+  'Q2 2021': [
+    { text: 'Slider', size: { kit: '1/3' } },
+    { text: 'D3 Charts: Donut', size: { kit: '1/5' } },
+    { text: 'InputNumber improvements', size: { kit: '5/7' } },
+    { text: 'PanelSummary', size: { ui: '5/9', kit: '11/15' } },
+    { text: 'D3 Charts: Venn', size: { kit: '7/11' } },
+    { text: 'Filter examples', size: { kit: '9/13' } },
+    { text: 'D3 Charts: ScatterPlot', size: { kit: '11/15' } },
+    { text: 'Themes & styles enchancement', size: { kit: '1/9' } },
   ],
 };
 
@@ -352,7 +362,7 @@ function Gant(props) {
 }
 
 function Roadmap() {
-  const [value, setValue] = useState(10);
+  const [value, setValue] = useState(11);
   let TabContent = null;
 
   switch (value) {
@@ -387,7 +397,10 @@ function Roadmap() {
       TabContent = <Gant sprint={dateSprint.slice(61, 68)} components={components['Q4 2020']} />;
       break;
     case 10:
-      TabContent = <Gant sprint={dateSprint.slice(68, 76)} components={components['Q1 2021']} />;
+      TabContent = <Gant sprint={dateSprint.slice(68, 75)} components={components['Q1 2021']} />;
+      break;
+    case 11:
+      TabContent = <Gant sprint={dateSprint.slice(74, 82)} components={components['Q2 2021']} />;
       break;
   }
   return (
