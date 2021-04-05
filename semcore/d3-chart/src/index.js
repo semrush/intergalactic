@@ -10,6 +10,8 @@ export { default as GroupBar } from './GroupBar';
 export { default as StackBar } from './StackBar';
 export { default as Area } from './Area';
 export { default as StackedArea } from './StackedArea';
+export { default as Donut } from './Donut';
+export { default as SemiDonut } from './SemiDonut';
 
 export { default as Tooltip } from './Tooltip';
 
