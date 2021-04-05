@@ -10,12 +10,8 @@ SCancel {
   margin-right: media(8px);
 }
 
-SNotice {
+SNotice[use='secondary'] {
   border: none;
-
-  &[theme='custom'] {
-    background: var(--gray94);
-  }
 }
 
 SSuccess {
