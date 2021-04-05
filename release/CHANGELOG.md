@@ -1,3 +1,84 @@
+## [4.0.0] - 2021-04-05
+
+### @semcore/breadcrumbs
+
+- **Fixed** Added aria-label for Breadcrumbs.
+- **Fixed** Changed default tag li to div for wrap separator in Breadcrumbs.Item.
+
+### @semcore/chart
+
+- **Changed** Optimized the code for venn chart.
+
+### @semcore/data-table
+
+- **Fixed** Fixed automatic set property flexBasis for DataTable.Column.
+
+### @semcore/date-picker
+
+- **Added** Added support two languages Korean, Vietnamese.
+- **Added** Added supported react@17.
+- **Fixed** Fixed set weekStart for component Calendar. Now you can change weekStart for global object Ls.
+- **Fixed** Fixed display if one day is selected and if the same month of a different year is selected.
+
+### @semcore/errors
+
+- **Added** Added support two languages Korean, Vietnamese.
+
+### @semcore/flex-box
+
+- **Fixed** [TS] Fixed type boxSize, value content-box set browser by default.
+- **Fixed** [Box] Added change css styles after change value by props top, left, right, bottom.
+
+### @semcore/icon
+
+- **Changed** Update icons SEMrush, TwitterSemrush, FacebookSemrush, LinkedInSemrush.
+
+### @semcore/notice
+
+- **BREAK** Removed global styles
+- **BREAK** Removed styles for media queries.
+- **BREAK** Replace animation package from react-transition-group to @semcore/animation
+- **BREAK** Update property theme, now this property can get any themes
+- **BREAK** Added property use
+- **BREAK** Update icon for Notice.IconClose
+
+### @semcore/outside-click
+
+- **Added** Added supported react-dom@17.
+
+### @semcore/pagination
+
+- **Added** Added support two languages Korean, Vietnamese.
+
+### @semcore/portal
+
+- **Added** Added supported react-dom@17.
+
+### @semcore/project-create
+
+- **Added** Added support two languages Korean, Vietnamese.
+
+### @semcore/scroll-area
+
+- **Added** Added supported react-dom@17.
+
+### @semcore/table
+
+- **Fixed** Fixed color Cell for hover in Cell and Row with theme="default"
+
+### @semcore/time-picker
+
+- **Changed** Changed view TimePicker.Format, now view don't have icons TimeNight, TimeDay.
+
+### @semcore/utils
+
+- **Fixed** Update function opacity, now this function can set opacity for rgb color.
+- **Changed** [TS] Update types interface IWithI18nEnhanceProps.
+
+### @semcore/widget-empty
+
+- **Added** Added support two languages Korean, Vietnamese.
+
 ## [3.0.0] - 2021-02-16
 
 ### @semcore/accordion
