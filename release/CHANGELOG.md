@@ -118,7 +118,9 @@
 - **Added** Added style folder with css in build folder lib.
 - **Fixed** Removed calculation min width head and body because this is caused bugs.
 
-### @semcore/errors,
+### @semcore/errors
+
+- **Added** Added supported react@17.
 
 ### @semcore/date-picker
 
@@ -145,7 +147,9 @@
 - **Changed** Changed mouse event from click to mouseup for stable performance.
 - **Added** Added supported react-dom@17.
 
-### @semcore/scroll-area,
+### @semcore/scroll-area
+
+- **Added** Added supported react-dom@17.
 
 ### @semcore/portal
 
