@@ -5,7 +5,6 @@ const mailchimp = require('@mailchimp/mailchimp_marketing');
 const mail = require('../website/client/components/messageTemplate');
 require('dotenv').config();
 
-let mailText;
 module.exports = task('Send mail', async (opt) => {
   if (!opt.root.includes('release')) {
     opt.skip();
@@ -33,9 +32,9 @@ module.exports = task('Send mail', async (opt) => {
   const releaseVersion = changelogMeta.version;
   const releaseDate = now.toLocaleString('en-US', options);
   const chg = buildHtml(changelogMeta);
-  mailText = mail(releaseDate, releaseVersion, chg.join(''));
+  const mailText = mail(releaseDate, releaseVersion, chg.join(''));
 
-  await updateEmail();
+  await updateEmail(mailText);
   await sendCampaign();
 
   return opt;
@@ -76,12 +75,16 @@ function buildHtml(chs) {
 
 let campaignId;
 
-const updateEmail = async () => {
+const updateEmail = async (html) => {
   mailchimp.setConfig({
     apiKey: process.env.MAILCHIMPKEY2,
     server: process.env.MAILCHIMPSERVER,
   });
   try {
+    await mailchimp.templates.updateTemplate(process.env.MAILCHIMPTEMPLATE, {
+      name: 'Updates here',
+      html,
+    });
     const response = await mailchimp.campaigns.create({
       type: 'regular',
       recipients: {
