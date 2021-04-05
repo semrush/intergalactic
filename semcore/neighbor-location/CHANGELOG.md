@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.3.10] - 2022-07-13
+
+### Fixed
+
+- Added more correct child element counting. Now the empty string is not considered.
+
 ## [2.3.9] - 2022-07-07
 
 ### Changed
