@@ -72,167 +72,11 @@ function generateSprint(startDay, finishDay) {
   return dateSprint;
 }
 
-const year2018 = generateSprint(dayjs('2018-07-9'), dayjs('2018-12-23'));
-const year2019 = generateSprint(dayjs('2019-02-9'), dayjs('2019-12-29'));
 const year2020 = generateSprint(dayjs('2020-01-06'), dayjs('2020-12-27'));
-const year2021 = generateSprint(dayjs('2021-01-04'), dayjs('2021-07-04'));
-const dateSprint = [
-  ...year2018,
-  dayjs('2018-12-30'),
-  dayjs('2019-01-10'),
-  dayjs('2019-01-26'),
-  ...year2019,
-  ...year2020,
-  ...year2021,
-];
+const year2021 = generateSprint(dayjs('2021-01-18'), dayjs('2021-12-30'));
+const dateSprint = [...year2020, ...year2021];
 
 const components = {
-  'Q3 2018': [
-    { text: 'Checkbox', name: 'checkbox', size: { ui: '5/7', kit: '7/9' } },
-    { text: 'Radiobutton', name: 'radio', size: { ui: '5/7', kit: '7/9' } },
-    { text: 'Input', name: 'input', size: { ui: '1/7', kit: '7/11' } },
-    { text: 'Textarea', name: 'textarea', size: { ui: '3/7', kit: '7/11' } },
-    {
-      text: 'ControlsGroup',
-      name: 'controls-group',
-      size: { ui: '5/7', kit: '7/9' },
-    },
-    { text: 'Link', name: 'link', size: { ui: '5/7', kit: '7/9' } },
-    { text: 'Dropdown', name: 'dropdown', size: { ui: '9/11', kit: '11/13' } },
-    { text: 'Popover', size: { ui: '9/11', kit: '11/13' } },
-    { text: 'Tooltip', size: { ui: '9/11', kit: '11/13' } },
-    { text: 'Notice', name: 'notice', size: { ui: '11/13' } },
-    { text: 'Chart', size: { ui: '1/13' } },
-  ],
-  'Q4 2018': [
-    { text: 'Notice', name: 'notice', size: { kit: '1/3' } },
-    { text: 'Feedback', size: { ui: '1/3', kit: '3/5' } },
-    { text: 'FeedbackYesNo', size: { ui: '1/3' } },
-    { text: 'Tag', name: 'tag', size: { ui: '4/6', kit: '6/8' } },
-    { text: 'Pills', name: 'pills', size: { ui: '5/7', kit: '8/9' } },
-    { text: 'Badge', name: 'badge', size: { ui: '6/8', kit: '8/9' } },
-    {
-      text: 'ScrollArea',
-      name: 'scroll-area',
-      size: { ui: '10/11', kit: '11/12' },
-    },
-    {
-      text: 'Select / Option / Multiselect',
-      size: { ui: '3/11', kit: '12/15' },
-    },
-    { text: 'Dot', size: { ui: '8/14' } },
-    { text: 'Tab', size: { ui: '8/10' } },
-    { text: 'PanelSummary / Metric', size: { ui: '8/13' } },
-    { text: 'Table 2.0', size: { ui: '8/11', kit: '11/15' } },
-    { text: 'Skeleton', size: { ui: '8/14' } },
-    { text: 'Datepicker', size: { ui: '12/14' } },
-    { text: 'Modal', size: { ui: '12/14' } },
-    { text: 'Limit Indicator', size: { ui: '11/12' } },
-    { text: 'Chart', size: { ui: '1/3', kit: '9/15' } },
-  ],
-  'Q1 2019': [
-    { text: 'Tooltip', name: 'tooltip', size: { kit: '1/3' } },
-    { text: 'Select/Multiselect', name: 'select', size: { kit: '1/3' } },
-    { text: 'Dropdown-menu', name: 'dropdown-menu', size: { kit: '1/3' } },
-    { text: 'Table', name: 'table', size: { kit: '1/3' } },
-    { text: 'Dot', name: 'dot', size: { ui: '1/2', kit: '2/3' } },
-    {
-      text: 'ProgressBar',
-      name: 'progress-bar',
-      size: { ui: '1/2', kit: '3/5' },
-    },
-    { text: 'TabPanel', name: 'tab-panel', size: { ui: '3/4', kit: '4/5' } },
-    { text: 'TabLine', name: 'tab-line', size: { ui: '3/4', kit: '4/5' } },
-    { text: 'Line chart', name: 'line-chart', size: { kit: '4/7' } },
-    { text: 'Skeleton', name: 'skeleton', size: { ui: '3/6', kit: '6/7' } },
-    { text: 'Modal', name: 'modal', size: { ui: '4/6', kit: '6/7' } },
-    { text: 'Divider', name: 'divider', size: { ui: '5/6', kit: '6/7' } },
-    { text: 'Pattern: Errors', size: { kit: '5/7' } },
-    { text: 'Combobox', name: 'auto-tips', size: { ui: '5/9', kit: '9/11' } },
-    {
-      text: 'SuggestDropdown',
-      name: 'auto-tips',
-      size: { ui: '5/9', kit: '9/11' },
-    },
-    { text: 'Date picker', size: { ui: '5/11', kit: '11/13' } },
-    { text: 'Table 3.0', size: { ui: '7/10', kit: '11/12' } },
-    { text: 'Time picker', size: { ui: '7/9', kit: '11/12' } },
-    {
-      text: 'InputNumber',
-      name: 'input-number',
-      size: { ui: '7/8', kit: '8/9' },
-    },
-    { text: 'Form', name: 'form', size: { ui: '7/8', kit: '8/9' } },
-    { text: 'Pattern: Система отступов', size: { ui: '7/9' } },
-    { text: 'Pagination', name: 'pagination', size: { kit: '7/9' } },
-    { text: 'Area chart', name: 'area-chart', size: { kit: '7/9' } },
-    { text: 'Bar chart', size: { ui: '7/11', kit: '11/13' } },
-    { text: 'Pattern: Accordion', size: { ui: '9/11' } },
-    { text: 'Pattern: Система подсказок, реклама фич', size: { ui: '9/13' } },
-  ],
-  'Q2 2019': [
-    { text: 'Bar chart', name: 'bar-chart', size: { ui: '1/2', kit: '2/3' } },
-    { text: 'Sticky', name: 'sticky', size: { kit: '2/3' } },
-    { text: 'InputTags', name: 'input-tags', size: { kit: '1/3' } },
-    { text: 'Flags', name: 'flags', size: { kit: '1/3' } },
-    { text: 'Checkbox/Radio themes', size: { kit: '1/3' } },
-    { text: 'Technichal sprint 🛠', size: { kit: '3/5' } },
-    { text: 'Table 3.0', name: 'table', size: { kit: '1/7' } },
-    { text: 'Time picker', name: 'time-picker', size: { kit: '1/7' } },
-    { text: 'Product head', size: { kit: '7/9' } },
-    { text: 'Breadcrumbs', name: 'breadcrumbs', size: { kit: '7/9' } },
-    { text: 'Informer', size: { ui: '7/8', kit: '8/9' } },
-    {
-      text: 'Horizontal bar chart',
-      name: 'bar-chart',
-      size: { ui: '1/5', kit: '9/11' },
-    },
-    { text: 'Date picker', size: { ui: '1/3', kit: '9/13' } },
-    { text: 'Pie chart / Donut chart', size: { ui: '7/9', kit: '11/13' } },
-    { text: 'Chart colors 🎨', size: { kit: '11/13' } },
-    { text: 'Accordion', size: { ui: '1/13' } },
-    { text: 'FeatureTooltip', size: { ui: '5/13' } },
-    { text: 'Venn chart', size: { ui: '12/13' } },
-    { text: 'Table 4.0', size: { ui: '12/13' } },
-    { text: 'Pattern: Система подсказок', size: { ui: '1/11' } },
-  ],
-  'Q3 2019': [
-    { text: 'InputMask / InputPhone', name: 'input-mask', size: { kit: '1/3' } },
-    { text: 'Donut / Pie chart', name: 'chart', size: { kit: '1/3' } },
-    { text: 'Chart colors 🎨', size: { kit: '1/3' } },
-    { text: 'Spacing system', size: { ui: '1/4' } },
-    { text: 'Date picker', name: 'date-picker', size: { kit: '1/5' } },
-    { text: 'FilterTrigger', size: { ui: '1/7', kit: '13/15' } },
-    { text: 'ProjectCreate', size: { kit: '5/9' } },
-    { text: 'Histogram chart', size: { ui: '5/7' } },
-    { text: 'Localization', size: { kit: '7/9' } },
-    { text: 'GlobalErrors', name: 'errors', size: { kit: '9/11' } },
-    { text: 'Technichal sprint 🛠', size: { kit: '9/11' } },
-    { text: 'MonthRangePicker', name: 'date-picker', size: { kit: '9/13' } },
-    { text: 'Table 4.0', size: { ui: '5/11' } },
-    { text: 'WidgetErrors', name: 'errors', size: { kit: '11/15' } },
-    { text: 'SSO page', size: { ui: '11/13' } },
-    { text: 'Breakpoints (research)', size: { ui: '13/14', kit: '14/15' } },
-    { text: 'Themes (research)', size: { kit: '14/15' } },
-    { text: 'FeatureTooltip', size: { ui: '1/15' } },
-    { text: 'Bubble chart', size: { ui: '11/13' } },
-    { text: 'ScatterPlot chart', size: { ui: '13/15' } },
-  ],
-  'Q4 2019': [
-    { text: 'Themes in UI Kit', size: { kit: '1/13' } },
-    { text: 'Adaptive UI Kit components', size: { kit: '1/13' } },
-    { text: 'Расширяемость CSS', size: { kit: '1/13' } },
-    { text: 'ScatterPlot chart', size: { ui: '1/5' } },
-    { text: 'Accordion', size: { ui: '1/2', kit: '2/7' } },
-    { text: 'Venn chart', size: { kit: '1/7' } },
-    { text: 'FeaturePopover (Spotlight)', size: { kit: '3/7' } },
-    { text: 'Technical sprint 🛠', size: { kit: '5/7' } },
-    { text: 'Table 4.0', name: 'table', size: { kit: '5/11' } },
-    { text: 'Histogram chart', name: 'chart', size: { kit: '7/9' } },
-    { text: 'Оповещания об обновлениях', size: { kit: '7/9' } },
-    { text: 'Fullscreen modal 👑', size: { ui: '11/13' } },
-    { text: 'Technical sprint 🛠', size: { kit: '11/13' } },
-  ],
   'Q1 2020': [
     { text: 'z-index', size: { kit: '1/13' } },
     { text: 'a11y', size: { kit: '1/13' } },
@@ -362,45 +206,27 @@ function Gant(props) {
 }
 
 function Roadmap() {
-  const [value, setValue] = useState(11);
+  const [value, setValue] = useState(5);
   let TabContent = null;
 
   switch (value) {
     case 0:
-      TabContent = <Gant sprint={dateSprint.slice(0, 7)} components={components['Q3 2018']} />;
+      TabContent = <Gant sprint={dateSprint.slice(0, 7)} components={components['Q1 2020']} />;
       break;
     case 1:
-      TabContent = <Gant sprint={dateSprint.slice(6, 14)} components={components['Q4 2018']} />;
+      TabContent = <Gant sprint={dateSprint.slice(6, 14)} components={components['Q2 2020']} />;
       break;
     case 2:
-      TabContent = <Gant sprint={dateSprint.slice(14, 21)} components={components['Q1 2019']} />;
+      TabContent = <Gant sprint={dateSprint.slice(13, 21)} components={components['Q3 2020']} />;
       break;
     case 3:
-      TabContent = <Gant sprint={dateSprint.slice(20, 27)} components={components['Q2 2019']} />;
+      TabContent = <Gant sprint={dateSprint.slice(20, 27)} components={components['Q4 2020']} />;
       break;
     case 4:
-      TabContent = <Gant sprint={dateSprint.slice(26, 34)} components={components['Q3 2019']} />;
+      TabContent = <Gant sprint={dateSprint.slice(26, 33)} components={components['Q1 2021']} />;
       break;
     case 5:
-      TabContent = <Gant sprint={dateSprint.slice(33, 40)} components={components['Q4 2019']} />;
-      break;
-    case 6:
-      TabContent = <Gant sprint={dateSprint.slice(41, 48)} components={components['Q1 2020']} />;
-      break;
-    case 7:
-      TabContent = <Gant sprint={dateSprint.slice(47, 55)} components={components['Q2 2020']} />;
-      break;
-    case 8:
-      TabContent = <Gant sprint={dateSprint.slice(54, 62)} components={components['Q3 2020']} />;
-      break;
-    case 9:
-      TabContent = <Gant sprint={dateSprint.slice(61, 68)} components={components['Q4 2020']} />;
-      break;
-    case 10:
-      TabContent = <Gant sprint={dateSprint.slice(68, 75)} components={components['Q1 2021']} />;
-      break;
-    case 11:
-      TabContent = <Gant sprint={dateSprint.slice(74, 82)} components={components['Q2 2021']} />;
+      TabContent = <Gant sprint={dateSprint.slice(32, 39)} components={components['Q2 2021']} />;
       break;
   }
   return (
