@@ -75,4 +75,6 @@ jobs:
             */*/node_modules
           key: modules-${{ runner.os }}-${{ hashFiles('yarn.lock') }}
       - name: Test
+        env:
+          SCREENSHOT_URL: ${{ secrets.SCREENSHOT_URL }}
         run: yarn test
