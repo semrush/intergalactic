@@ -1,23 +1,57 @@
 import { bisector } from 'd3-array';
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { styled } from '@semcore/core';
+import trottle from '@semcore/utils/lib/rafTrottle';
+import { eventToPoint, invert } from './utils';
 
 function Dots(props) {
-  const { Element: SDot, styles, data, d3, x, y, eventEmitter, display, hide } = props;
+  const {
+    Element: SDot,
+    styles,
+    data,
+    d3,
+    x,
+    y,
+    eventEmitter,
+    display,
+    hide,
+    rootRef,
+    scale,
+  } = props;
   const bisect = bisector((d) => d[x]).center;
   const [activeIndex, setActiveIndex] = useState(props.activeIndex || null);
 
+  const handlerMouseMoveRoot = useCallback(
+    trottle((e) => {
+      const [xScale] = scale;
+      const [pX] = eventToPoint(e, rootRef.current);
+      const vX = invert(xScale, pX);
+      setActiveIndex(bisect(data, vX));
+    }),
+    [scale, data],
+  );
+
+  const handlerMouseLeaveRoot = useCallback(
+    trottle(() => {
+      setActiveIndex(null);
+    }),
+    [],
+  );
+
   useEffect(() => {
-    const unsubscribeNearestXY = eventEmitter.subscribe('onNearestXY', (point) => {
-      if (point[0] === undefined) {
-        setActiveIndex(null);
-      } else {
-        setActiveIndex(bisect(data, point[0]));
-      }
+    const unsubscribeMouseMoveRoot = eventEmitter.subscribe('onMouseMoveRoot', (e) => {
+      e.persist();
+      handlerMouseMoveRoot(e);
     });
 
+    const unsubscribeMouseLeaveRoot = eventEmitter.subscribe(
+      'onMouseLeaveRoot',
+      handlerMouseLeaveRoot,
+    );
+
     return () => {
-      unsubscribeNearestXY();
+      unsubscribeMouseMoveRoot();
+      unsubscribeMouseLeaveRoot();
     };
   }, [eventEmitter, data, x, y]);
 

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { scaleLinear } from 'd3-scale';
-import { Line, minMax, ResponsiveContainer, XAxis, XYPlot, YAxis } from '@semcore/d3-chart';
+import { Line, minMax, ResponsiveContainer, XAxis, Chart, YAxis } from '@semcore/d3-chart';
 
 export default () => {
   const [[width, height], updateSize] = useState([0, 0]);
@@ -14,7 +14,7 @@ export default () => {
 
   return (
     <ResponsiveContainer h={300} onResize={updateSize}>
-      <XYPlot data={data} scale={[xScale, yScale]} width={width} height={height}>
+      <Chart data={data} scale={[xScale, yScale]} width={width} height={height}>
         <YAxis ticks={yScale.ticks()}>
           <YAxis.Ticks />
           <YAxis.Grid />
@@ -25,7 +25,7 @@ export default () => {
         <Line x="x" y="y">
           <Line.Dots display />
         </Line>
-      </XYPlot>
+      </Chart>
     </ResponsiveContainer>
   );
 };

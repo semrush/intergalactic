@@ -1,31 +1,9 @@
 import React from 'react';
 import { scaleLinear, scaleBand } from 'd3-scale';
-import {
-  Bar,
-  HoverLine,
-  HoverRect,
-  Line,
-  Tooltip as TooltipChart,
-  XAxis,
-  XYPlot,
-  YAxis,
-} from '@semcore/d3-chart';
+import { Bar, HoverLine, HoverRect, Line, Tooltip, XAxis, Chart, YAxis } from '@semcore/d3-chart';
 import EventEmitter from '@semcore/utils/lib/eventEmitter';
 
-const EventEmitterBar = new EventEmitter();
-const EventEmitterLine = new EventEmitter();
-
-EventEmitterBar.subscribe('onNearestXY', ([pX, pY], self = true) => {
-  if (self) {
-    EventEmitterLine.emit('onNearestXY', [pX, pY], false);
-  }
-});
-
-EventEmitterLine.subscribe('onNearestXY', ([pX, pY], self = true) => {
-  if (self) {
-    EventEmitterBar.emit('onNearestXY', [pX, pY], false);
-  }
-});
+const eventEmitter = new EventEmitter();
 
 export default () => {
   const [width, height] = [600, 300];
@@ -50,34 +28,34 @@ export default () => {
 
   return (
     <>
-      <XYPlot
+      <Chart
         data={data}
         scale={[xScale, yScale]}
         width={width}
         height={height}
-        eventEmitter={EventEmitterLine}
+        eventEmitter={eventEmitter}
       >
         <YAxis ticks={yScale.ticks(4)}>
           <YAxis.Ticks />
           <YAxis.Grid />
         </YAxis>
-        <TooltipChart tag={HoverLine} x="date_chart" wMin={100}>
+        <Tooltip tag={HoverLine} x="date_chart" wMin={100}>
           {({ xIndex }) => {
             return {
               children: data[xIndex]?.download,
             };
           }}
-        </TooltipChart>
+        </Tooltip>
         <Line x="date_chart" y="download">
           <Line.Dots display />
         </Line>
-      </XYPlot>
-      <XYPlot
+      </Chart>
+      <Chart
         data={data}
         scale={[xScale, yScale]}
         width={width}
         height={height}
-        eventEmitter={EventEmitterBar}
+        eventEmitter={eventEmitter}
       >
         <YAxis ticks={yScale.ticks(4)}>
           <YAxis.Ticks />
@@ -88,15 +66,15 @@ export default () => {
             {({ value, index }) => ({ children: index % 2 === 0 ? getDate(value) : '' })}
           </XAxis.Ticks>
         </XAxis>
-        <TooltipChart tag={HoverRect} x="date_chart" wMin={100}>
+        <Tooltip tag={HoverRect} x="date_chart" wMin={100}>
           {({ xIndex }) => {
             return {
               children: data[xIndex]?.download,
             };
           }}
-        </TooltipChart>
+        </Tooltip>
         <Bar x="date_chart" y="download" />
-      </XYPlot>
+      </Chart>
     </>
   );
 };

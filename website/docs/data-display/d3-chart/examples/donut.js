@@ -1,30 +1,37 @@
 import React from 'react';
-import { Donut } from '@semcore/d3-chart';
+import { Donut, Chart, Tooltip } from '@semcore/d3-chart';
+import { Flex } from '@semcore/flex-box';
+import { Text } from '@semcore/typography';
 
 export default () => {
-  const width = 300;
-  const height = 300;
-
-  const radius = Math.min(width, height) / 2 - 1;
-
-  const data = {
-    a: 3,
-    b: 1,
-    c: 2,
-  };
-
   return (
-    <svg width={width} height={height}>
-      <Donut
-        data={data}
-        innerRadius={100}
-        outerRadius={radius}
-        transform={`translate(${width / 2},${height / 2})`}
-      >
-        <Donut.Pie dataKey="a" />
-        <Donut.Pie dataKey="b" color="#3AB011" />
-        <Donut.Pie dataKey="c" color="#890C85" />
+    <Chart width={300} height={300} data={data}>
+      <Donut innerRadius={100}>
+        <Donut.Pie dataKey="a" name="Pie 1" />
+        <Donut.Pie dataKey="b" color="#890C85" name="Pie 2" />
+        <Donut.Pie dataKey="c" color="#3AB011" name="Pie 3" />
+        <Donut.Label>Example</Donut.Label>
+        <Tooltip>
+          {({ dataKey, name }) => {
+            return {
+              children: (
+                <>
+                  <Tooltip.Title>{name}</Tooltip.Title>
+                  <Flex justifyContent="space-between">
+                    <Text bold>{data[dataKey]}</Text>
+                  </Flex>
+                </>
+              ),
+            };
+          }}
+        </Tooltip>
       </Donut>
-    </svg>
+    </Chart>
   );
+};
+
+const data = {
+  a: 3,
+  b: 1,
+  c: 2,
 };

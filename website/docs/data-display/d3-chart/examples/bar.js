@@ -1,5 +1,5 @@
 import React from 'react';
-import { XYPlot, Bar, YAxis, XAxis } from '@semcore/d3-chart';
+import { Chart, Bar, YAxis, XAxis } from '@semcore/d3-chart';
 import { scaleLinear, scaleBand } from 'd3-scale';
 
 export default () => {
@@ -18,7 +18,7 @@ export default () => {
     .domain([0, 10]);
 
   return (
-    <XYPlot data={data} scale={[xScale, yScale]} width={width} height={height}>
+    <Chart data={data} scale={[xScale, yScale]} width={width} height={height}>
       <YAxis ticks={yScale.ticks()}>
         <YAxis.Ticks />
         <YAxis.Grid />
@@ -27,7 +27,7 @@ export default () => {
         <XAxis.Ticks />
       </XAxis>
       <Bar x="category" y="bar" />
-    </XYPlot>
+    </Chart>
   );
 };
 

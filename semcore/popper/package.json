@@ -12,7 +12,7 @@
     "test": "jest"
   },
   "dependencies": {
-    "@popperjs/core": "2.5.3",
+    "@popperjs/core": "2.9.2",
     "@semcore/flex-box": "^4",
     "@semcore/neighbor-location": "^2",
     "@semcore/outside-click": "^2",

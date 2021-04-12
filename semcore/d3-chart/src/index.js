@@ -1,4 +1,4 @@
-export { default as XYPlot } from './XYPlot';
+export { default as Chart } from './Chart';
 
 export { XAxis, YAxis } from './Axis';
 
@@ -11,7 +11,6 @@ export { default as StackBar } from './StackBar';
 export { default as Area } from './Area';
 export { default as StackedArea } from './StackedArea';
 export { default as Donut } from './Donut';
-export { default as SemiDonut } from './SemiDonut';
 
 export { default as Tooltip } from './Tooltip';
 

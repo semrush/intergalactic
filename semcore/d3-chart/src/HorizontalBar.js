@@ -1,6 +1,6 @@
 import React from 'react';
 import { Component, styled } from '@semcore/core';
-import createXYElement from './XYElement';
+import createElement from './createElement';
 
 import style from './style/bar.shadow.css';
 
@@ -63,4 +63,4 @@ function Background(props) {
   );
 }
 
-export default createXYElement(HorizontalBarRoot, { Background });
+export default createElement(HorizontalBarRoot, { Background });
