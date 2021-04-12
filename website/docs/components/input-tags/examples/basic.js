@@ -19,17 +19,32 @@ const Demo = () => {
   };
 
   const handleCloseTag = (e) => {
+    e.preventDefault();
+  };
+
+  const handleEditTag = (e) => {
     const { dataset } = e.currentTarget;
+    if (!e.defaultPrevented) {
+      updateValue(value + ` ${tags[dataset.id]}`);
+    }
     updateTags(tags.filter((tag, ind) => ind !== Number(dataset.id)));
+    return false;
   };
 
   return (
     <InputTags size="l" onAdd={handleAddTag} onRemove={handleRemoveTag}>
       {tags.map((tag, idx) => (
         <Tooltip key={idx}>
-          <Tooltip.Trigger tag={InputTags.Tag} use="primary" theme="asphalt" editable>
+          <Tooltip.Trigger
+            tag={InputTags.Tag}
+            use="primary"
+            theme="asphalt"
+            editable
+            data-id={idx}
+            onClick={handleEditTag}
+          >
             <InputTags.Tag.Text>{tag}</InputTags.Tag.Text>
-            <InputTags.Tag.Close data-id={idx} onClick={handleCloseTag} />
+            <InputTags.Tag.Close onClick={handleCloseTag} />
           </Tooltip.Trigger>
           <Tooltip.Popper>tag</Tooltip.Popper>
         </Tooltip>
