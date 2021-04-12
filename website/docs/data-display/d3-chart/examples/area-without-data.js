@@ -1,5 +1,5 @@
 import React from 'react';
-import { XYPlot, XAxis, YAxis, minMax, HoverLine, Tooltip, Area } from '@semcore/d3-chart';
+import { Chart, XAxis, YAxis, minMax, HoverLine, Tooltip, Area } from '@semcore/d3-chart';
 import { scaleLinear } from 'd3-scale';
 import { Flex } from '@semcore/flex-box';
 import { Text } from '@semcore/typography';
@@ -18,7 +18,7 @@ export default () => {
     .domain([0, 10]);
 
   return (
-    <XYPlot data={data} scale={[xScale, yScale]} width={width} height={height}>
+    <Chart data={data} scale={[xScale, yScale]} width={width} height={height}>
       <YAxis ticks={yScale.ticks()}>
         <YAxis.Ticks />
         <YAxis.Grid />
@@ -45,7 +45,7 @@ export default () => {
         <Area.Dots />
         <Area.Null />
       </Area>
-    </XYPlot>
+    </Chart>
   );
 };
 

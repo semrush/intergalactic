@@ -8,6 +8,8 @@ title: Donut chart
 
 @## Semi-Donut
 
+Нужно указать значение `half` и уменьшить высоту в два раза.
+
 @example semi-donut
 
 @## Edge cases

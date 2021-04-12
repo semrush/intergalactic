@@ -1,5 +1,5 @@
 import React from 'react';
-import { XYPlot, XAxis, YAxis, minMax, Area } from '@semcore/d3-chart';
+import { Chart, XAxis, YAxis, minMax, Area } from '@semcore/d3-chart';
 import { scaleLinear } from 'd3-scale';
 import { curveCardinal } from 'd3-shape';
 
@@ -21,7 +21,7 @@ export default () => {
     .domain([0, 10]);
 
   return (
-    <XYPlot data={data} scale={[xScale, yScale]} width={width} height={height}>
+    <Chart data={data} scale={[xScale, yScale]} width={width} height={height}>
       <YAxis ticks={yScale.ticks()}>
         <YAxis.Ticks />
         <YAxis.Grid />
@@ -39,7 +39,7 @@ export default () => {
       <Area x="time" y="line" curve={curveCardinal}>
         <Area.Dots display />
       </Area>
-    </XYPlot>
+    </Chart>
   );
 };
 

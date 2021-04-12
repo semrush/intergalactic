@@ -1,6 +1,12 @@
 import { extent, bisector } from 'd3-array';
 import { scaleQuantize } from 'd3-scale';
 
+const CONSTANT = {
+  VIRTUAL_ELEMENT: Symbol('VIRTUAL_ELEMENT'),
+};
+
+export { CONSTANT };
+
 export function eventToPoint(event, svgRoot) {
   const node = event.currentTarget || event.target;
   const rect = svgRoot.getBoundingClientRect();
