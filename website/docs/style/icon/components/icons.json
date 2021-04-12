@@ -3644,7 +3644,7 @@
       "name": "VideoStop",
       "size": ["m", "s", "xs"],
       "group": "Status",
-      "tags": ["video", "видео", "stop", "остановить", "preview"]
+      "tags": ["video", "видео", "stop", "остановить", "preview", "стоп"]
     },
     {
       "name": "Vk",
