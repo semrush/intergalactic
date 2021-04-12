@@ -162,15 +162,15 @@ const Contacts = () => (
         .
         <Text>
           <Subtitle>Bug reporting & Improvements</Subtitle>
-          Find a bug — good job! ✨
+          Found a bug? Good job! ✨
           <ul>
             <li>
-              Make sure that issue tracker doesn`t contain the similar issue and create one with the
+              Make sure that issue tracker doesn't contain the similar issue and create one with the
               steps to reproduce the error.
             </li>
-            <li>Have a solution — great! We`ll be happy to review your pull-request.</li>
+            <li>Have a solution — great! We'll be happy to review your pull-request.</li>
             <li>
-              Don`t forget to follow
+              Don't forget to follow
               <a
                 href="https://github.com/semrush/intergalactic/blob/master/CONTRIBUTING.md"
                 target="_blank"
@@ -209,7 +209,7 @@ const Contacts = () => (
           We care about usability and will be happy to receive feedback on both the site and the
           experience with our components.
           <Subtitle>Ask a question</Subtitle>
-          Just write your message 🙂 Your email won`t be lost. We'll get back to you as soon as we
+          Just write your message 🙂 Your email won't be lost. We'll get back to you as soon as we
           can.
         </Text>
       </Email>
