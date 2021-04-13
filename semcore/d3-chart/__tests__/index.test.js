@@ -3,7 +3,7 @@ import { bisector } from 'd3-array';
 import { scaleLinear, scaleBand } from 'd3-scale';
 import { render, fireEvent, cleanup } from 'jest-preset-ui/testing';
 import { shouldSupportClassName, shouldSupportRef } from 'jest-preset-ui/shared';
-import { Chart, YAxis, XAxis } from '../src';
+import { Plot, YAxis, XAxis } from '../src';
 import { getIndexFromData } from '../src/utils';
 import snapshot from 'jest-preset-ui/snapshot';
 import { minMax, Area, StackedArea } from '@semcore/d3-chart';
@@ -22,16 +22,16 @@ const data = [...Array(10).keys()].map((d, i) => ({
   y: Math.random().toFixed(1) * i,
 }));
 
-const ChartTest = React.forwardRef((props, ref) => (
-  <Chart ref={ref} data={data} scale={[xScale, yScale]} width={100} height={100} {...props} />
+const PlotTest = React.forwardRef((props, ref) => (
+  <Plot ref={ref} data={data} scale={[xScale, yScale]} width={100} height={100} {...props} />
 ));
 
-describe('Chart', () => {
-  shouldSupportClassName(ChartTest);
-  shouldSupportRef(ChartTest);
+describe('Plot', () => {
+  shouldSupportClassName(PlotTest);
+  shouldSupportRef(PlotTest);
 
   test('Should support render null', () => {
-    const { queryByText } = render(<Chart>Test</Chart>);
+    const { queryByText } = render(<Plot>Test</Plot>);
     expect(queryByText(/Test/)).toBeNull();
   });
 });
@@ -39,14 +39,14 @@ describe('Chart', () => {
 describe('YAxis', () => {
   afterEach(cleanup);
 
-  shouldSupportClassName(YAxis, ChartTest);
-  shouldSupportRef(YAxis, ChartTest);
+  shouldSupportClassName(YAxis, PlotTest);
+  shouldSupportRef(YAxis, PlotTest);
 
   test('Should support call children function for Grid how many ticks are passed', () => {
     expect.assertions(2);
 
     render(
-      <Chart data={data} scale={[xScale, yScale]} width={100} height={100}>
+      <Plot data={data} scale={[xScale, yScale]} width={100} height={100}>
         <YAxis ticks={[0, 1]}>
           <YAxis.Grid>
             {(props) => {
@@ -55,7 +55,7 @@ describe('YAxis', () => {
             }}
           </YAxis.Grid>
         </YAxis>
-      </Chart>,
+      </Plot>,
     );
   });
 
@@ -63,7 +63,7 @@ describe('YAxis', () => {
     expect.assertions(2);
 
     render(
-      <Chart data={data} scale={[xScale, yScale]} width={100} height={100}>
+      <Plot data={data} scale={[xScale, yScale]} width={100} height={100}>
         <YAxis ticks={[0, 1]}>
           <YAxis.Ticks>
             {(props) => {
@@ -72,17 +72,17 @@ describe('YAxis', () => {
             }}
           </YAxis.Ticks>
         </YAxis>
-      </Chart>,
+      </Plot>,
     );
   });
 
   test('should support set data-ui-name for Line.Ticks', () => {
     const { queryByTestId } = render(
-      <Chart data={data} scale={[xScale, yScale]} width={100} height={100}>
+      <Plot data={data} scale={[xScale, yScale]} width={100} height={100}>
         <YAxis ticks={[0]}>
           <YAxis.Ticks data-testid="test" />
         </YAxis>
-      </Chart>,
+      </Plot>,
     );
     expect(queryByTestId('test').attributes['data-ui-name']).toBeTruthy();
     expect(queryByTestId('test').attributes['data-ui-name'].value).toBe('Axis.Ticks');
@@ -90,11 +90,11 @@ describe('YAxis', () => {
 
   test('should support change tag YAxis.Ticks', () => {
     const { queryByTestId } = render(
-      <Chart data={data} scale={[xScale, yScale]} width={100} height={100}>
+      <Plot data={data} scale={[xScale, yScale]} width={100} height={100}>
         <YAxis ticks={[0]}>
           <YAxis.Ticks data-testid="test" tag="foreignObject" />
         </YAxis>
-      </Chart>,
+      </Plot>,
     );
     expect(queryByTestId('test').tagName).toBe('foreignObject');
   });
@@ -103,8 +103,8 @@ describe('YAxis', () => {
 describe('XAxis', () => {
   afterEach(cleanup);
 
-  shouldSupportClassName(XAxis, ChartTest);
-  shouldSupportRef(XAxis, ChartTest);
+  shouldSupportClassName(XAxis, PlotTest);
+  shouldSupportRef(XAxis, PlotTest);
 
   test('should support hover for custom XAxis.Ticks', () => {
     jest.spyOn(window, 'requestAnimationFrame').mockImplementation((cb) => cb());
@@ -116,7 +116,7 @@ describe('XAxis', () => {
     const eventEmitter = new EventEmitter();
     eventEmitter.emit = jest.fn();
     const { getAllByTestId } = render(
-      <Chart
+      <Plot
         data={data}
         scale={[xScale, yScale]}
         width={100}
@@ -137,7 +137,7 @@ describe('XAxis', () => {
             })}
           </XAxis.Ticks>
         </XAxis>
-      </Chart>,
+      </Plot>,
     );
 
     fireEvent.mouseMove(getAllByTestId('tick')[9]);
@@ -186,7 +186,7 @@ describe('Area chart', () => {
 
   test('should render curve Area chart correctly', async () => {
     const component = (
-      <Chart data={data} scale={[xScale, yScale]} width={width} height={height}>
+      <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
         <YAxis ticks={yScale.ticks()}>
           <YAxis.Ticks />
           <YAxis.Grid />
@@ -197,7 +197,7 @@ describe('Area chart', () => {
         <Area x="time" y="stack1" curve={curveCardinal}>
           <Area.Dots display />
         </Area>
-      </Chart>
+      </Plot>
     );
 
     expect(await snapshot(component)).toMatchImageSnapshot();
@@ -218,7 +218,7 @@ describe('Area chart', () => {
     ];
 
     const component = (
-      <Chart data={data} scale={[xScale, yScale]} width={width} height={height}>
+      <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
         <YAxis ticks={yScale.ticks()}>
           <YAxis.Ticks />
           <YAxis.Grid />
@@ -237,7 +237,7 @@ describe('Area chart', () => {
             <StackedArea.Area.Null />
           </StackedArea.Area>
         </StackedArea>
-      </Chart>
+      </Plot>
     );
 
     expect(await snapshot(component)).toMatchImageSnapshot();
@@ -245,7 +245,7 @@ describe('Area chart', () => {
 
   test('should render curve Stacked Area chart with dots correctly', async () => {
     const component = (
-      <Chart data={data} scale={[xScale, yScale]} width={width} height={height}>
+      <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
         <YAxis ticks={yScale.ticks()}>
           <YAxis.Ticks />
           <YAxis.Grid />
@@ -264,7 +264,7 @@ describe('Area chart', () => {
             <StackedArea.Area.Dots display />
           </StackedArea.Area>
         </StackedArea>
-      </Chart>
+      </Plot>
     );
 
     expect(await snapshot(component)).toMatchImageSnapshot();
