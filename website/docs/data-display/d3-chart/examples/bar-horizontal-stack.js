@@ -1,5 +1,5 @@
 import React from 'react';
-import { Chart, StackBar, YAxis, XAxis, HoverRect, Tooltip, colors } from '@semcore/d3-chart';
+import { Plot, StackBar, YAxis, XAxis, HoverRect, Tooltip, colors } from '@semcore/d3-chart';
 import { scaleLinear, scaleBand } from 'd3-scale';
 import { Flex, Box } from '@semcore/flex-box';
 import { Text } from '@semcore/typography';
@@ -20,7 +20,7 @@ export default () => {
     .paddingOuter(0.2);
 
   return (
-    <Chart data={data} scale={[xScale, yScale]} width={width} height={height}>
+    <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
       <YAxis hide={false} ticks={yScale.domain()}>
         <YAxis.Ticks />
       </YAxis>
@@ -57,7 +57,7 @@ export default () => {
         <StackBar.HorizontalBar x="bar" />
         <StackBar.HorizontalBar x="bar1" color={colors['green-01']} />
       </StackBar>
-    </Chart>
+    </Plot>
   );
 };
 

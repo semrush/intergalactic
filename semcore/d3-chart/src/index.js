@@ -1,4 +1,4 @@
-export { default as Chart } from './Chart';
+export { default as Plot } from './Plot';
 
 export { XAxis, YAxis } from './Axis';
 

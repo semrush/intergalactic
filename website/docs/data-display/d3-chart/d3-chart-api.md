@@ -2,7 +2,7 @@
 title: API
 ---
 
-@## Chart
+@## Plot
 
 Root element for all charts.
 

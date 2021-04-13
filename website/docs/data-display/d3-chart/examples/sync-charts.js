@@ -1,6 +1,6 @@
 import React from 'react';
 import { scaleLinear, scaleBand } from 'd3-scale';
-import { Bar, HoverLine, HoverRect, Line, Tooltip, XAxis, Chart, YAxis } from '@semcore/d3-chart';
+import { Bar, HoverLine, HoverRect, Line, Tooltip, XAxis, Plot, YAxis } from '@semcore/d3-chart';
 import EventEmitter from '@semcore/utils/lib/eventEmitter';
 
 const eventEmitter = new EventEmitter();
@@ -28,7 +28,7 @@ export default () => {
 
   return (
     <>
-      <Chart
+      <Plot
         data={data}
         scale={[xScale, yScale]}
         width={width}
@@ -49,8 +49,8 @@ export default () => {
         <Line x="date_chart" y="download">
           <Line.Dots display />
         </Line>
-      </Chart>
-      <Chart
+      </Plot>
+      <Plot
         data={data}
         scale={[xScale, yScale]}
         width={width}
@@ -74,7 +74,7 @@ export default () => {
           }}
         </Tooltip>
         <Bar x="date_chart" y="download" />
-      </Chart>
+      </Plot>
     </>
   );
 };

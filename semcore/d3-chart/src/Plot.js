@@ -44,13 +44,13 @@ class XYPlotRoot extends Component {
   }
 
   render() {
-    const SChart = this.Root;
+    const SPlot = this.Root;
     const { styles, width, height } = this.asProps;
 
     if (!width || !height) return null;
 
     return styled(styles)(
-      <SChart
+      <SPlot
         render={Box}
         tag="svg"
         __excludeProps={['data', 'scale']}

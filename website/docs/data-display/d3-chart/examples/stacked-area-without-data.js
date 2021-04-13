@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  Chart,
+  Plot,
   XAxis,
   YAxis,
   minMax,
@@ -27,7 +27,7 @@ export default () => {
     .domain([0, 15]);
 
   return (
-    <Chart data={data} scale={[xScale, yScale]} width={width} height={height}>
+    <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
       <YAxis ticks={yScale.ticks()}>
         <YAxis.Ticks />
         <YAxis.Grid />
@@ -76,7 +76,7 @@ export default () => {
           <StackedArea.Area.Dots />
         </StackedArea.Area>
       </StackedArea>
-    </Chart>
+    </Plot>
   );
 };
 
