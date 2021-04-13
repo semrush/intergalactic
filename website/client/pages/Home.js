@@ -89,7 +89,6 @@ const Desc = styled.div`
   font-size: 18px;
   line-height: 150%;
   margin: 0;
-  color: #575c66;
   display: flex;
   align-items: flex-start;
   @media (max-width: 1140px) {
