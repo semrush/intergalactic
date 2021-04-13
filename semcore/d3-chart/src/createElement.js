@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import createComponent, { createBaseComponent, CONTEXT_COMPONENT } from '@semcore/core';
-import Chart from './Chart';
+import Plot from './Plot';
 import assignProps from '@semcore/utils/lib/assignProps';
 import { useForkRef } from '@semcore/utils/lib/ref';
 import propsForElement from '@semcore/utils/lib/propsForElement';
@@ -103,7 +103,7 @@ function elementEnhancement() {
 
 function WrapComponent(Element) {
   function ElementWithContext(props, ref) {
-    const { $rootProps } = useContext(Chart[CONTEXT_COMPONENT]);
+    const { $rootProps } = useContext(Plot[CONTEXT_COMPONENT]);
     return <Element ref={ref} $rootProps={$rootProps} {...props} />;
   }
 

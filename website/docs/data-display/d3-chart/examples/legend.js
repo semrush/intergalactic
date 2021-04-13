@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Line, minMax, XAxis, Chart, YAxis } from '@semcore/d3-chart';
+import { Line, minMax, XAxis, Plot, YAxis } from '@semcore/d3-chart';
 import { scaleLinear } from 'd3-scale';
 import { Box } from '@semcore/flex-box';
 import Checkbox from '@semcore/checkbox';
@@ -71,7 +71,7 @@ export default () => {
           );
         })}
       </Box>
-      <Chart data={data} scale={[xScale, yScale]} width={width} height={height}>
+      <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
         <YAxis ticks={yScale.ticks()}>
           <YAxis.Ticks />
           <YAxis.Grid />
@@ -91,7 +91,7 @@ export default () => {
               />
             ),
         )}
-      </Chart>
+      </Plot>
     </>
   );
 };

@@ -4,8 +4,8 @@ export declare function minMax(data: any, key: string | number): any;
 // Color
 export declare const colors: { [key: string]: string };
 
-export { default as Chart } from './Chart';
-export * from './Chart';
+export { default as Plot } from './Plot';
+export * from './Plot';
 
 export * from './Axis';
 export * from './Hover';

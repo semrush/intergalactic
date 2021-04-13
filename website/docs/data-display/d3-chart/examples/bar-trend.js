@@ -1,5 +1,5 @@
 import React from 'react';
-import { Chart, Bar, Line, HoverRect, HoverLine, YAxis, XAxis, minMax } from '@semcore/d3-chart';
+import { Plot, Bar, Line, HoverRect, HoverLine, YAxis, XAxis, minMax } from '@semcore/d3-chart';
 import resolveColor from '@semcore/utils/lib/color';
 import { scaleLinear, scaleBand } from 'd3-scale';
 
@@ -19,7 +19,7 @@ export default () => {
     .domain(minMax(data, 'bar'));
 
   return (
-    <Chart data={data} scale={[xScale, yScale]} width={width} height={height}>
+    <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
       <YAxis ticks={yScale.ticks()}>
         <YAxis.Ticks />
         <YAxis.Grid />
@@ -38,7 +38,7 @@ export default () => {
       >
         <Line.Dots display />
       </Line>
-    </Chart>
+    </Plot>
   );
 };
 

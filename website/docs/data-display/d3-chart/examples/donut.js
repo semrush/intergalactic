@@ -1,11 +1,11 @@
 import React from 'react';
-import { Donut, Chart, Tooltip } from '@semcore/d3-chart';
+import { Donut, Plot, Tooltip } from '@semcore/d3-chart';
 import { Flex } from '@semcore/flex-box';
 import { Text } from '@semcore/typography';
 
 export default () => {
   return (
-    <Chart width={300} height={300} data={data}>
+    <Plot width={300} height={300} data={data}>
       <Donut innerRadius={100}>
         <Donut.Pie dataKey="a" name="Pie 1" />
         <Donut.Pie dataKey="b" color="#890C85" name="Pie 2" />
@@ -26,7 +26,7 @@ export default () => {
           }}
         </Tooltip>
       </Donut>
-    </Chart>
+    </Plot>
   );
 };
 
