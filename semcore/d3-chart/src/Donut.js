@@ -82,7 +82,7 @@ class DonutRoot extends Component {
     };
   }
 
-  getNotDataProps() {
+  getEmptyDataProps() {
     const { d3Arc } = this.asProps;
     return {
       data: {
@@ -122,6 +122,6 @@ function Label({ Element: SLabel, styles, Children }) {
   );
 }
 
-const Donut = createElement(DonutRoot, { Pie, Label, NotData: Pie });
+const Donut = createElement(DonutRoot, { Pie, Label, EmptyData: Pie });
 
 export default Donut;

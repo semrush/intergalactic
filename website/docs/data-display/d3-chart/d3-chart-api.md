@@ -169,13 +169,13 @@ import { StackedArea } from '@semcore/d3-chart';
 
 @## Donut
 
-It have children components `Pie`, `Label`, `NotData`.
+It have children components `Pie`, `Label`, `EmptyData`.
 
 ```js
 import { Donut } from '@semcore/d3-chart';
 
 <Donut>
-  <Donut.NotData />
+  <Donut.EmptyData />
   <Donut.Pie />
   <Donut.Label />
 </Donut>;
