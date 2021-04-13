@@ -17,6 +17,7 @@ class TimePickerFormat extends Component<ITimePickerFormatProps> {
     return styled(styles)(
       <SPickerFormat
         render={Box}
+        type="button"
         tag="button"
         size={size}
         disabled={disabled}
