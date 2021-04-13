@@ -15,13 +15,13 @@ export interface IPieProps extends IContext {
   color?: string;
 }
 
-export interface INotDataProps extends IContext {}
+export interface IEmptyDataProps extends IContext {}
 
 export interface ILabelProps extends IContext {}
 
 declare const Donut: (<T>(props: CProps<IDonutProps & T>) => ReturnEl) & {
   Pie: <T>(props: CProps<IPieProps & T>) => ReturnEl;
-  NotData: <T>(props: CProps<INotDataProps & T>) => ReturnEl;
+  EmptyData: <T>(props: CProps<IEmptyDataProps & T>) => ReturnEl;
   Label: <T>(props: CProps<ILabelProps & T>) => ReturnEl;
 };
 
