@@ -7,10 +7,10 @@ title: API
 Root element for all charts.
 
 ```js
-import { Chart } from '@semcore/d3-chart';
+import { Plot } from '@semcore/d3-chart';
 ```
 
-@interface IChartProps
+@interface IPlotProps
 
 @## Axis
 
