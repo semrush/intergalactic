@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [1.0.0-6] - 2021-04-15
+
+### Added
+
+- Added Donut and Semi-donut charts
+
 ## [1.0.0-5] - 2021-03-31
 
 ### Fixed
