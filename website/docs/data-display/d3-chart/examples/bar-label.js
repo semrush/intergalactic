@@ -1,5 +1,5 @@
 import React from 'react';
-import { XYPlot, HorizontalBar, YAxis } from '@semcore/d3-chart';
+import { Plot, HorizontalBar, YAxis } from '@semcore/d3-chart';
 import { scaleLinear, scaleBand } from 'd3-scale';
 import resolveColor from '@semcore/utils/lib/color';
 
@@ -19,7 +19,7 @@ export default () => {
     .paddingOuter(0.2);
 
   return (
-    <XYPlot data={data} scale={[xScale, yScale]} width={width} height={height}>
+    <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
       <YAxis ticks={yScale.domain()}>
         <YAxis.Ticks />
       </YAxis>
@@ -40,7 +40,7 @@ export default () => {
           };
         }}
       </HorizontalBar>
-    </XYPlot>
+    </Plot>
   );
 };
 

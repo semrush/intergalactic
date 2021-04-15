@@ -2,10 +2,8 @@ import React from 'react';
 import createComponent, { Component, styled } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
 import EventEmitter from '@semcore/utils/lib/eventEmitter';
-import trottle from '@semcore/utils/lib/rafTrottle';
-import { eventToPoint, invert } from './utils';
 
-import style from './style/xyplot.shadow.css';
+import style from './style/chart.shadow.css';
 
 class XYPlotRoot extends Component {
   static displayName = 'XYPlot';
@@ -18,33 +16,25 @@ class XYPlotRoot extends Component {
   }
 
   static defaultProps = () => ({
-    data: [],
-    scale: [],
     width: 0,
     height: 0,
   });
 
   rootRef = React.createRef();
 
-  emitNearestXY = trottle((e) => {
-    const [xScale, yScale] = this.asProps.scale;
-    const [x, y] = eventToPoint(e, this.rootRef.current);
-    this.eventEmitter.emit(`onNearestXY`, [invert(xScale, x), invert(yScale, y)]);
-  });
-
   handlerMouseMove = (e) => {
-    e.persist();
-    this.emitNearestXY(e);
+    this.eventEmitter.emit(`onMouseMoveRoot`, e);
   };
 
-  handlerMouseLeave = trottle(() => {
-    this.eventEmitter.emit(`onNearestXY`, []);
-  });
+  handlerMouseLeave = (e) => {
+    this.eventEmitter.emit(`onMouseLeaveRoot`, e);
+  };
 
   setContext() {
-    const { scale, data } = this.asProps;
+    const { scale, data, width, height } = this.asProps;
     return {
       $rootProps: {
+        size: [width, height],
         data: data,
         scale: scale,
         eventEmitter: this.eventEmitter,
@@ -54,13 +44,13 @@ class XYPlotRoot extends Component {
   }
 
   render() {
-    const SXYPlot = this.Root;
+    const SPlot = this.Root;
     const { styles, width, height } = this.asProps;
 
     if (!width || !height) return null;
 
     return styled(styles)(
-      <SXYPlot
+      <SPlot
         render={Box}
         tag="svg"
         __excludeProps={['data', 'scale']}

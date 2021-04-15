@@ -2,7 +2,7 @@ import React from 'react';
 import { stack as d3Stack } from 'd3-shape';
 import { Component } from '@semcore/core';
 import getOriginChildren from '@semcore/utils/lib/getOriginChildren';
-import createXYElement from './XYElement';
+import createElement from './createElement';
 import Bar from './Bar';
 import HorizontalBar from './HorizontalBar';
 
@@ -80,7 +80,7 @@ class StackBarRoot extends Component {
   }
 }
 
-const StackBar = createXYElement(StackBarRoot, {
+const StackBar = createElement(StackBarRoot, {
   Bar,
   HorizontalBar,
 });
