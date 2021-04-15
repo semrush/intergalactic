@@ -2,7 +2,7 @@ import { IBoxProps } from '@semcore/flex-box';
 import { CProps, ReturnEl } from '@semcore/core';
 import IContext from './context';
 
-export interface IXYPlotProps extends IContext, IBoxProps {
+export interface IPlotProps extends IContext, IBoxProps {
   /** Width svg element
    * @default 0*/
   width?: number;
@@ -11,6 +11,6 @@ export interface IXYPlotProps extends IContext, IBoxProps {
   height?: number;
 }
 
-declare const XYPlot: <T>(props: CProps<IXYPlotProps & T>) => ReturnEl;
+declare const Plot: <T>(props: CProps<IPlotProps & T>) => ReturnEl;
 
-export default XYPlot;
+export default Plot;

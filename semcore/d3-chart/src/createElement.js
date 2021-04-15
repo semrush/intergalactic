@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import createComponent, { createBaseComponent, CONTEXT_COMPONENT } from '@semcore/core';
-import XYPlot from './XYPlot';
+import Plot from './Plot';
 import assignProps from '@semcore/utils/lib/assignProps';
 import { useForkRef } from '@semcore/utils/lib/ref';
 import propsForElement from '@semcore/utils/lib/propsForElement';
@@ -103,9 +103,10 @@ function elementEnhancement() {
 
 function WrapComponent(Element) {
   function ElementWithContext(props, ref) {
-    const { $rootProps } = useContext(XYPlot[CONTEXT_COMPONENT]);
+    const { $rootProps } = useContext(Plot[CONTEXT_COMPONENT]);
     return <Element ref={ref} $rootProps={$rootProps} {...props} />;
   }
+
   ElementWithContext.displayName = Element.displayName;
 
   const WrapperComponent = createBaseComponent(ElementWithContext);
@@ -114,7 +115,7 @@ function WrapComponent(Element) {
   return hoistNonReactStatics(WrapperComponent, Element);
 }
 
-function createXYElement(ElementRoot, child = {}, options = {}) {
+function createElement(ElementRoot, child = {}, options = {}) {
   const Element = createComponent(ElementRoot, child, {
     ...options,
     enhancements: [elementEnhancement],
@@ -127,4 +128,4 @@ function createXYElement(ElementRoot, child = {}, options = {}) {
   return WrapComponent(Element);
 }
 
-export default createXYElement;
+export default createElement;

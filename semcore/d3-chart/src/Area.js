@@ -2,7 +2,7 @@ import React from 'react';
 import { area, curveLinear, line } from 'd3-shape';
 import Dots from './Dots';
 import { Component, styled } from '@semcore/core';
-import createXYElement from './XYElement';
+import createElement from './createElement';
 import { definedData, scaleOfBandwidth, getNullData } from './utils';
 
 import style from './style/area.shadow.css';
@@ -70,7 +70,7 @@ function Null(props) {
   return styled(styles)(<SNull render="path" d={d3Line(data)} hide={hide} />);
 }
 
-export default createXYElement(AreaRoot, {
+export default createElement(AreaRoot, {
   Dots,
   Null,
 });

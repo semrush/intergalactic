@@ -1,4 +1,4 @@
-import { Bar, XAxis, XYPlot, YAxis } from '@semcore/d3-chart';
+import { Bar, XAxis, Plot, YAxis } from '@semcore/d3-chart';
 import React from 'react';
 import { scaleBand, scaleLinear } from 'd3-scale';
 
@@ -15,7 +15,7 @@ export default () => {
     .range([height - MARGIN, MARGIN])
     .domain([0, 10]);
   return (
-    <XYPlot data={data} scale={[xScale, yScale]} width={width} height={height}>
+    <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
       <YAxis ticks={yScale.ticks()}>
         <YAxis.Ticks />
         <YAxis.Grid />
@@ -26,7 +26,7 @@ export default () => {
         <XAxis.Title>XAxis title</XAxis.Title>
       </XAxis>
       <Bar x="category" y="bar" />
-    </XYPlot>
+    </Plot>
   );
 };
 const data = Array(5)
