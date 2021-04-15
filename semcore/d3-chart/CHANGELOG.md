@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [1.0.0-7] - 2021-04-15
+
+### Fixed
+
+- Fixed Plot naming
+
 ## [1.0.0-6] - 2021-04-15
 
 ### Added
