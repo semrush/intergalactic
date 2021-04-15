@@ -5,8 +5,8 @@ import EventEmitter from '@semcore/utils/lib/eventEmitter';
 
 import style from './style/chart.shadow.css';
 
-class XYPlotRoot extends Component {
-  static displayName = 'XYPlot';
+class PlotRoot extends Component {
+  static displayName = 'Plot';
 
   static style = style;
 
@@ -62,4 +62,4 @@ class XYPlotRoot extends Component {
   }
 }
 
-export default createComponent(XYPlotRoot);
+export default createComponent(PlotRoot);
