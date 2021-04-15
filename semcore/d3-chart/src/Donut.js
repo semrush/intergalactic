@@ -14,9 +14,9 @@ class DonutRoot extends Component {
   static displayName = 'Donut';
   static style = style;
 
-  static defaultProps = ({ innerRadius = 0, half = false, $rootProps: { size } }) => {
+  static defaultProps = ({ innerRadius = 0, halfsize = false, $rootProps: { size } }) => {
     const [width, height] = size;
-    const minORmax = half ? Math.max : Math.min;
+    const minORmax = halfsize ? Math.max : Math.min;
     const d3Arc = arc()
       .outerRadius(minORmax(width, height) / 2)
       .innerRadius(innerRadius);
@@ -25,7 +25,7 @@ class DonutRoot extends Component {
       .value(([, value]) => value);
     d3Pie[DEFAULT_INSTANCE] = true;
 
-    if (half) {
+    if (halfsize) {
       d3Pie = d3Pie.startAngle(-Math.PI / 2).endAngle(Math.PI / 2);
     }
     return {
@@ -95,10 +95,10 @@ class DonutRoot extends Component {
   }
 
   render() {
-    const { half, size } = this.asProps;
+    const { halfsize, size } = this.asProps;
     const [width, height] = size;
     const Element = this.Element;
-    const k = half ? 1 : 2;
+    const k = halfsize ? 1 : 2;
     this.arcs = this.getArcs();
     return (
       <Element

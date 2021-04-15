@@ -4,8 +4,8 @@ import IContext from './context';
 export interface IDonutProps extends IContext {
   /* Inner radius */
   innerRadius?: number;
-  /* Half donut */
-  half?: boolean;
+  /* Semi donut */
+  halfsize?: boolean;
 }
 
 export interface IPieProps extends IContext {

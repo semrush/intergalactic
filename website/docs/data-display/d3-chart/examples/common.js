@@ -1,5 +1,5 @@
 import React from 'react';
-import { Chart, Line, minMax } from '@semcore/d3-chart';
+import { Plot, Line, minMax } from '@semcore/d3-chart';
 import { scaleLinear } from 'd3-scale';
 
 export default () => {
@@ -15,9 +15,9 @@ export default () => {
     .domain(minMax(data, 'y'));
 
   return (
-    <Chart data={data} scale={[xScale, yScale]} width={width} height={height}>
+    <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
       <Line x="x" y="y" />
-    </Chart>
+    </Plot>
   );
 };
 
