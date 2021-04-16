@@ -239,7 +239,7 @@ const Links = styled.div`
     flex-direction: column;
     padding: 40px 32px 28px;
     color: #171a22;
-    font-size: 18px;
+    font-size: 16px;
     a {
       margin-bottom: 12px;
     }

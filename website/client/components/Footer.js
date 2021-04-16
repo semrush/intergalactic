@@ -33,7 +33,7 @@ const Logo = styled.div`
   grid-row: 2;
   grid-column: 1;
   display: flex;
-  font-size: 16px;
+  font-size: 14px;
   img {
     margin-left: 4px;
   }
@@ -50,7 +50,7 @@ const Description = styled.div`
   grid-row: 3;
   grid-column: 1;
   color: #898d9a;
-  font-size: 16px;
+  font-size: 14px;
   @media (max-width: 768px) {
     grid-row: 4;
   }
@@ -60,7 +60,7 @@ const Description = styled.div`
 `;
 
 const Contacts = styled.div`
-  font-size: 18px;
+  font-size: 16px;
   grid-row: 1;
   grid-column: 3;
   text-align: right;
@@ -88,7 +88,7 @@ const Contacts = styled.div`
 const Links = styled.div`
   grid-row: 1;
   grid-column: 1;
-  font-size: 18px;
+  font-size: 16px;
   white-space: nowrap;
   a {
     margin-right: 20px;

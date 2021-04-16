@@ -225,7 +225,7 @@ const StylesImg = styled.img`
 const WhaleImg = styled.img`
   position: absolute;
   right: 88px;
-  top: 88px;
+  top: 120px;
   @media (max-width: 1140px) {
     display: none;
   }
@@ -252,7 +252,7 @@ const Border = styled.div`
   height: 390px;
   padding: 40px 32px;
   font-family: Inter;
-  font-size: 18px;
+  font-size: 16px;
   line-height: 150%;
 `;
 
