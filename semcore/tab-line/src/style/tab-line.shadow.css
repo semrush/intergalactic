@@ -15,7 +15,7 @@ STabLineItem {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  line-height: 1;
+  line-height: 1.2;
   position: relative;
   touch-action: manipulation;
   white-space: nowrap;
@@ -109,7 +109,6 @@ STabLineItem[size='m'] {
   margin-right: media(16px);
   min-width: media(18px);
   font-size: var(--fs-100);
-  line-height: 1;
 
   & SText:not(:last-child) {
     margin-right: media(8px);
@@ -127,7 +126,6 @@ STabLineItem[size='l'] {
   margin-right: media(16px);
   min-width: media(26px);
   font-size: var(--fs-200);
-  line-height: 1;
 
   & SText:not(:last-child) {
     margin-right: media(8px);
@@ -145,7 +143,6 @@ STabLineItem[size='xl'] {
   margin-right: media(24px);
   min-width: media(32px);
   font-size: var(--fs-300);
-  line-height: 1;
 
   & SText:not(:last-child) {
     margin-right: media(12px);

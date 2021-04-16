@@ -295,7 +295,7 @@ SInner[loading] {
 
 SText {
   display: inline-flex;
-  line-height: 1;
+  line-height: 1.2;
 }
 
 SText[size='s'] {

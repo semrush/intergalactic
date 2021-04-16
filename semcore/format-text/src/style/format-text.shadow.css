@@ -249,10 +249,10 @@ SFormatText[size='m'] {
   }
 
   & :global(ul) :global(li):before {
-    width: media(4px);
-    height: media(4px);
+    width: media(3px);
+    height: media(3px);
     border-radius: 50%;
-    margin-top: media(7px);
+    margin-top: media(8px);
     margin-left: media(2px);
   }
 }
@@ -285,10 +285,10 @@ SFormatText[size='l'] {
   }
 
   & :global(ul) :global(li):before {
-    width: media(5px);
-    height: media(5px);
+    width: media(4px);
+    height: media(4px);
     border-radius: 50%;
-    margin-top: media(6px);
+    margin-top: media(7px);
     margin-left: media(2px);
   }
 }
@@ -321,10 +321,10 @@ SFormatText[size='xl'] {
   }
 
   & :global(ul) :global(li):before {
-    width: media(6px);
-    height: media(6px);
+    width: media(5px);
+    height: media(5px);
     border-radius: 50%;
-    margin-top: media(9px);
+    margin-top: media(10px);
     margin-left: media(2px);
   }
 }
