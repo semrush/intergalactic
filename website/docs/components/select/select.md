@@ -87,7 +87,7 @@ If the list includes more than 10 values, you should add an input with the searc
 
 ### Select all
 
-- If there are too many values, you can add the `Select all` option at the beginning of the list.
+- If you have more than 3 values, you can add the `Select all` option at the beginning of the list.
 - When everything is selected, it changes to `Deselect all`.
 
 ![multiselect scroll](static/multiselect-all.png)

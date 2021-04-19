@@ -1,6 +1,6 @@
 import { CProps, ReturnEl } from '@semcore/core';
 import IContext from './context';
-import { IBarContext } from './Bar';
+import { IBarContext, IBackgroundProps } from './Bar';
 
 export interface IHorizontalBarProps extends IContext {
   /** Field from data for Axis x */
@@ -12,6 +12,10 @@ export interface IHorizontalBarProps extends IContext {
   color?: string;
 }
 
-declare const HorizontalBar: <T>(props: CProps<IHorizontalBarProps & T, IBarContext>) => ReturnEl;
+declare const HorizontalBar: (<T>(
+  props: CProps<IHorizontalBarProps & T, IBarContext>,
+) => ReturnEl) & {
+  Background: <T>(props: CProps<IBackgroundProps & T>) => ReturnEl;
+};
 
 export default HorizontalBar;

@@ -9,12 +9,15 @@ import Tag from '@semcore/tag';
 import AllComponents from '../components/AllComponents';
 import Error from '../components/Error';
 import LoadingPage from '../components/LoadingPage';
-import whale from '../static/whale/whale.svg';
-import layout from '../static/space/layout.svg';
-import principles from '../static/space/principles.svg';
-import style from '../static/space/style.svg';
+import UpdateBlock from '../components/UpdateBlock';
+import whale from '../static/illustration/whale.svg';
+import layout from '../static/illustration/layout.svg';
+import principles from '../static/illustration/principles.svg';
+import style from '../static/illustration/style.svg';
 import ArrowXS from '@semcore/icon/lib/ArrowRight/xs';
+import { Link as LinkScroll } from 'react-scroll';
 import { Box } from '@semcore/flex-box';
+import updatesButton from '../static/illustration/search-for-updates.svg';
 import { css } from '@semcore/core';
 
 const stylesTabLine = css`
@@ -63,7 +66,7 @@ const PromoWrapper = styled.div`
 
 const Overlay = styled.div`
   max-width: 1140px;
-  padding: 80px 32px 0;
+  padding: 80px 32px 120px;
   position: relative;
   margin: 0 auto;
 `;
@@ -86,7 +89,6 @@ const Desc = styled.div`
   font-size: 18px;
   line-height: 150%;
   margin: 0;
-  color: #575c66;
   display: flex;
   align-items: flex-start;
   @media (max-width: 1140px) {
@@ -223,7 +225,7 @@ const StylesImg = styled.img`
 const WhaleImg = styled.img`
   position: absolute;
   right: 88px;
-  top: 88px;
+  top: 120px;
   @media (max-width: 1140px) {
     display: none;
   }
@@ -250,7 +252,7 @@ const Border = styled.div`
   height: 390px;
   padding: 40px 32px;
   font-family: Inter;
-  font-size: 18px;
+  font-size: 16px;
   line-height: 150%;
 `;
 
@@ -297,6 +299,23 @@ const TableOverlay = styled.div`
   a {
     margin-bottom: 8px;
     white-space: nowrap;
+  }
+`;
+
+const UpdatesButton = styled(LinkScroll)`
+  position: fixed;
+  top: 439px;
+  right: -21px;
+  width: 120px;
+  z-index: 999;
+  @media (max-width: 768px) {
+    display: none;
+  }
+  &:hover {
+    cursor: pointer;
+  }
+  img {
+    margin-top: 12px;
   }
 `;
 
@@ -363,7 +382,7 @@ const renderSwitch = (value, data) => {
     case 'filters':
       return getTabByTitle(['Filters'], data);
     case 'documentation':
-      return getTabByTitle(['Utils 🛠', 'Docs', 'Bug reporting'], data);
+      return getTabByTitle(['Utils 🛠', 'Docs', 'Bugs and requests'], data);
     default:
       return null;
   }
@@ -467,8 +486,7 @@ function Home() {
               <Title>We unify Semrush interfaces</Title>
               <Desc>
                 Intergalactic is a constantly developing system of UI components, guidelines and UX
-                patterns. With all these tools you can build your own product based on the Semrush
-                platform.
+                patterns. With all these tools you can build your own product.
               </Desc>
               <WhaleImg src={whale} alt="Whale" />
               <Started>
@@ -505,7 +523,12 @@ function Home() {
                 <Border>{renderSwitch(value, data)}</Border>
               </Tab>
             </MainWrapper>
+            <UpdateBlock />
           </Overlay>
+          <UpdatesButton activeClass="active" to="updBlock" spy={true} smooth={true}>
+            Updates?
+            <img src={updatesButton} alt="Updates button" />
+          </UpdatesButton>
         </>
       )}
     </>

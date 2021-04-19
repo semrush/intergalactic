@@ -23,6 +23,7 @@ import {
   IVennChartState,
   IVennDataItem,
   IVennPayloadItem,
+  ICirclesObjItem,
 } from './interface/VennChart';
 import fire from '@semcore/utils/lib/fire';
 import assignProps from '@semcore/utils/lib/assignProps';
@@ -78,6 +79,7 @@ export default class VennChart extends React.PureComponent<IVennChartProps, IVen
   }
 
   private circles: ICirclesObj;
+  private circlesLayout: ICirclesObjItem[];
 
   constructor(props) {
     super(props);
@@ -121,8 +123,7 @@ export default class VennChart extends React.PureComponent<IVennChartProps, IVen
     const scaledCircles = scaleSolution(normalisedCircles, width, height, padding);
     Object.keys(scaledCircles).forEach((key) => {
       const circleRadius = scaledCircles[key].radius;
-      scaledCircles[key].radius =
-        circleRadius < minAreaRadius && circleRadius !== 0 ? minAreaRadius : circleRadius;
+      scaledCircles[key].radius = Math.max(minAreaRadius, circleRadius);
       scaledCircles[key].data = getElementDataByKey(actualData, key);
     });
     this.circles = scaledCircles;
@@ -133,7 +134,7 @@ export default class VennChart extends React.PureComponent<IVennChartProps, IVen
     // tslint:disable-next-line:no-this-assignment
     const { circles } = this;
     const circleItems = findAllByType(children, VennArea);
-    return Object.keys(circles).map((circle) => {
+    this.circlesLayout = Object.keys(circles).map((circle) => {
       const circleName = circles[circle].data.name;
       const circleNode = circleItems.find(({ props }) => circleName === props.name);
       return {
@@ -169,18 +170,16 @@ export default class VennChart extends React.PureComponent<IVennChartProps, IVen
   };
 
   renderCircles() {
-    const circlesLayout = this.getCirclesLayout();
-    return circlesLayout.map(this.renderCircle);
+    return this.circlesLayout.map(this.renderCircle);
   }
 
   getIntersectionsLayout() {
     const { actualData } = this.state;
     const circlesWithIntersections = actualData.filter((item) => item.sets.length > 1);
-    const circlesLayout = this.getCirclesLayout();
     return circlesWithIntersections.map((intersection) => {
       const { sets, name, size } = intersection;
       const circleNodes = sets.map((set) =>
-        circlesLayout.find((circle) => circle.data.sets[0] === set),
+        this.circlesLayout.find((circle) => circle.data.sets[0] === set),
       );
       const path: string = intersectionAreaPath(circleNodes);
       return {
@@ -341,6 +340,7 @@ export default class VennChart extends React.PureComponent<IVennChartProps, IVen
       return null;
     }
     this.dataToCirclesLayoutObj(); // elegant crutch 🤷‍
+    this.getCirclesLayout();
     const { className, width, height, style, ...other } = this.props;
     const attrs = getPresentationAttributes(other);
     const SChart = 'div';

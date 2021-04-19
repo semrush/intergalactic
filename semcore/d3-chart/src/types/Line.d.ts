@@ -1,19 +1,19 @@
 import { CProps, ReturnEl } from '@semcore/core';
 import IContext from './context';
+import { CurveFactory } from 'd3-shape';
 
 export interface ILineProps extends IContext {
   /** Field from data for Axis x */
   x?: string;
   /** Field from data for Axis y */
   y?: string;
-  /** Line generators
-   * @default d3.line() */
-  d3?: Line<Datum>;
   /** Color line
    * @default '#50aef4'*/
   color?: string;
   /** Element hide property */
   hide?: boolean;
+  /** Curve method */
+  curve?: CurveFactory;
 }
 
 export interface ILineDotsProps extends IContext {

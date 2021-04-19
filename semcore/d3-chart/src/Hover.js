@@ -1,10 +1,10 @@
 import React from 'react';
-import { bisector } from 'd3-array';
 import { Component, sstyled } from '@semcore/core';
-import createXYElement from './XYElement';
+import createElement from './createElement';
+import trottle from '@semcore/utils/lib/rafTrottle';
+import { scaleOfBandwidth, getIndexFromData, eventToPoint, invert } from './utils';
 
 import style from './style/hover.shadow.css';
-import { scaleOfBandwidth } from './utils';
 
 class Hover extends Component {
   static style = style;
@@ -14,21 +14,57 @@ class Hover extends Component {
     yIndex: null,
   };
 
-  componentDidMount() {
-    const { eventEmitter, data, x, y } = this.asProps;
-    const xBisect = bisector((d) => d[x]).center;
-    const yBisect = bisector((d) => d[y]).center;
-    this.unsubscribeNearestXY = eventEmitter.subscribe('onNearestXY', ([pX, pY]) => {
-      this.setState({
-        xIndex: x === undefined || pX === undefined ? null : xBisect(data, pX),
-        yIndex: y === undefined || pY === undefined ? null : yBisect(data, pY),
-      });
+  hoverRef = React.createRef();
+
+  handlerMouseMoveRoot = trottle((e) => {
+    const { eventEmitter, data, scale, x, y, rootRef } = this.asProps;
+    const [xScale, yScale] = scale;
+    const [pX, pY] = eventToPoint(e, rootRef.current);
+    const vX = invert(xScale, pX);
+    const vY = invert(yScale, pY);
+    const xIndex =
+      x === undefined || vX === undefined ? null : getIndexFromData(data, xScale, x, vX);
+    const yIndex =
+      y === undefined || vY === undefined ? null : getIndexFromData(data, yScale, y, vY);
+    const state = { xIndex, yIndex };
+    this.setState(state, () => {
+      eventEmitter.emit(
+        'onTooltipVisible',
+        xIndex !== null || yIndex !== null,
+        state,
+        this.hoverRef.current,
+      );
     });
+  });
+
+  handlerMouseLeaveRoot = trottle(() => {
+    const state = {
+      xIndex: null,
+      yIndex: null,
+    };
+    this.setState(state, () => {
+      this.asProps.eventEmitter.emit('onTooltipVisible', false, state);
+    });
+  });
+
+  componentDidMount() {
+    const { eventEmitter } = this.asProps;
+    this.unsubscribeMouseMoveRoot = eventEmitter.subscribe('onMouseMoveRoot', (e) => {
+      e.persist();
+      this.handlerMouseMoveRoot(e);
+    });
+    this.unsubscribeMouseLeaveRoot = eventEmitter.subscribe(
+      'onMouseLeaveRoot',
+      this.handlerMouseLeaveRoot,
+    );
   }
 
   componentWillUnmount() {
-    if (this.unsubscribeNearestXY) {
-      this.unsubscribeNearestXY();
+    if (this.unsubscribeMouseMoveRoot) {
+      this.unsubscribeMouseMoveRoot();
+    }
+    if (this.unsubscribeMouseLeaveRoot) {
+      this.unsubscribeMouseLeaveRoot();
     }
   }
 }
@@ -50,10 +86,26 @@ class HoverLineRoot extends Hover {
     return sstyled(styles)(
       <>
         {xIndex !== null ? (
-          <SHoverLine render="line" index={xIndex} x1={x1} y1={yRange[0]} x2={x1} y2={yRange[1]} />
+          <SHoverLine
+            render="line"
+            ref={this.hoverRef}
+            index={xIndex}
+            x1={x1}
+            y1={yRange[0]}
+            x2={x1}
+            y2={yRange[1]}
+          />
         ) : null}
         {yIndex !== null ? (
-          <SHoverLine render="line" index={yIndex} x1={xRange[0]} y1={y1} x2={xRange[1]} y2={y1} />
+          <SHoverLine
+            render="line"
+            ref={this.hoverRef}
+            index={yIndex}
+            x1={xRange[0]}
+            y1={y1}
+            x2={xRange[1]}
+            y2={y1}
+          />
         ) : null}
       </>,
     );
@@ -77,6 +129,7 @@ class HoverRectRoot extends Hover {
         {xIndex !== null ? (
           <SHoverRect
             render="rect"
+            ref={this.hoverRef}
             index={xIndex}
             width={xScale.step() - xScale.paddingInner() / 2}
             height={yRange[0] - yRange[1]}
@@ -87,6 +140,7 @@ class HoverRectRoot extends Hover {
         {yIndex !== null ? (
           <SHoverRect
             render="rect"
+            ref={this.hoverRef}
             index={yIndex}
             width={xRange[1] - xRange[0]}
             height={yScale.step() - yScale.paddingInner() / 2}
@@ -99,7 +153,7 @@ class HoverRectRoot extends Hover {
   }
 }
 
-const HoverLine = createXYElement(HoverLineRoot);
-const HoverRect = createXYElement(HoverRectRoot);
+const HoverLine = createElement(HoverLineRoot);
+const HoverRect = createElement(HoverRectRoot);
 
 export { HoverLine, HoverRect };

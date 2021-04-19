@@ -1,7 +1,7 @@
 {
   "name": "@semcore/widget-empty",
   "description": "SEMRush WidgetEmpty Component",
-  "version": "2.3.0",
+  "version": "2.4.0",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -16,7 +16,7 @@
     "deploy": "gcs-upload svg/*.svg"
   },
   "dependencies": {
-    "@semcore/utils": "^3.16",
+    "@semcore/utils": "^3.27",
     "@semcore/flex-box": "^4",
     "@semcore/button": "^3",
     "@semcore/link": "^3",

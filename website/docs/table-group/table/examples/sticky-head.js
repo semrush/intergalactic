@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Spin from '@semcore/spin';
 import ScrollArea from '@semcore/scroll-area';
 import { Text } from '@semcore/typography';
@@ -76,65 +76,77 @@ let data = [
 
 data.forEach((d) => (data = shuffle(data.concat(data))));
 
-const Demo = () => (
-  <ScrollArea>
-    <ScrollArea.Container>
-      <Table style={{ tablelayout: 'fixed' }}>
-        <Table.StickyHead />
-        <Table.Head>
-          <Table.Row>
-            <Table.CellHead align="center" valign="middle" width="50">
-              <Checkbox size="l">
-                <Checkbox.Value />
-              </Checkbox>
-            </Table.CellHead>
-            <Table.CellHead width="200">
-              <Tooltip title="Lorem ipsum">
-                <span>
-                  Keyword <Text color="gray60">(1 – 100)</Text>
-                </span>
-              </Tooltip>
-            </Table.CellHead>
+const Demo = () => {
+  const [top, updateTop] = useState(0);
+  useEffect(() => {
+    const header = document.getElementsByTagName('header')[0];
+    header && updateTop(header.offsetHeight);
+  }, []);
 
-            {Object.keys(data[0])
-              .slice(1)
-              .map((name) => (
-                <Table.CellHead width="200" align="right">
-                  <Tooltip title="Lorem ipsum">
-                    <span>
-                      {name.toUpperCase()} {['kd', 'traffic'].includes(name) && '%'}
-                    </span>
-                  </Tooltip>
-                </Table.CellHead>
-              ))}
-          </Table.Row>
-        </Table.Head>
-        <Table.Body>
-          {data.map((row, i) => (
-            <Table.Row key={i} theme={row.kd === '-' ? 'danger' : 'default'}>
-              <Table.Cell theme={row.kd === '-' ? false : 'default'} align="center" valign="middle">
+  return (
+    <ScrollArea>
+      <ScrollArea.Container>
+        <Table style={{ tablelayout: 'fixed' }}>
+          <Table.StickyHead top={top} />
+          <Table.Head>
+            <Table.Row>
+              <Table.CellHead align="center" valign="middle" width="50">
                 <Checkbox size="l">
                   <Checkbox.Value />
                 </Checkbox>
-              </Table.Cell>
-              <Table.Cell theme={row.kd === '-' ? false : 'default'}>
-                <Link>{row.keyword}</Link>
-              </Table.Cell>
+              </Table.CellHead>
+              <Table.CellHead width="200">
+                <Tooltip title="Lorem ipsum">
+                  <span>
+                    Keyword <Text color="gray60">(1 – 100)</Text>
+                  </span>
+                </Tooltip>
+              </Table.CellHead>
 
               {Object.keys(data[0])
                 .slice(1)
                 .map((name) => (
-                  <Table.Cell align="right" theme={row.kd === '-' ? false : 'default'}>
-                    {row[name]}
-                  </Table.Cell>
+                  <Table.CellHead width="200" align="right">
+                    <Tooltip title="Lorem ipsum">
+                      <span>
+                        {name.toUpperCase()} {['kd', 'traffic'].includes(name) && '%'}
+                      </span>
+                    </Tooltip>
+                  </Table.CellHead>
                 ))}
             </Table.Row>
-          ))}
-        </Table.Body>
-      </Table>
-    </ScrollArea.Container>
-    <ScrollArea.Bar />
-  </ScrollArea>
-);
+          </Table.Head>
+          <Table.Body>
+            {data.map((row, i) => (
+              <Table.Row key={i} theme={row.kd === '-' ? 'danger' : 'default'}>
+                <Table.Cell
+                  theme={row.kd === '-' ? false : 'default'}
+                  align="center"
+                  valign="middle"
+                >
+                  <Checkbox size="l">
+                    <Checkbox.Value />
+                  </Checkbox>
+                </Table.Cell>
+                <Table.Cell theme={row.kd === '-' ? false : 'default'}>
+                  <Link>{row.keyword}</Link>
+                </Table.Cell>
+
+                {Object.keys(data[0])
+                  .slice(1)
+                  .map((name) => (
+                    <Table.Cell align="right" theme={row.kd === '-' ? false : 'default'}>
+                      {row[name]}
+                    </Table.Cell>
+                  ))}
+              </Table.Row>
+            ))}
+          </Table.Body>
+        </Table>
+      </ScrollArea.Container>
+      <ScrollArea.Bar />
+    </ScrollArea>
+  );
+};
 
 export default Demo;

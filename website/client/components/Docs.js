@@ -14,9 +14,11 @@ import styled from 'styled-components';
 import { gql, useQuery } from '@apollo/client';
 import Error from './Error';
 import { PAGE_QUERY } from '../pages/Page';
+import { css } from '@semcore/core';
 
 const Tab = styled.div`
   position: relative;
+  overflow: auto;
   & > div:first-child {
     font-family: FactorA-Bold, sans-serif;
   }
@@ -41,6 +43,18 @@ const Main = styled.main`
     font-size: 18px;
     line-height: 110%;
     margin: 32px 0 16px;
+  }
+`;
+
+const styles = css`
+  STabLineItem {
+    min-width: inherit !important;
+    justify-content: flex-start;
+  }
+
+  SText {
+    font-size: 24px;
+    color: #171a22;
   }
 `;
 
@@ -112,13 +126,7 @@ function Documentation(props) {
     <SidebarWrapper>
       {Boolean(props.tabs.length) && (
         <Tab>
-          <TabLine
-            value={match.url}
-            size="xl"
-            style={{ color: '#171A22' }}
-            underlined={false}
-            mb={6}
-          >
+          <TabLine value={match.url} size="xl" styles={styles} underlined={false} mb={6}>
             {props.tabs.map((tab, i) => {
               const { route } = tab;
               const [category] = route.split('/');
@@ -130,9 +138,7 @@ function Documentation(props) {
                   value={`/${route}/`}
                   onMouseEnter={() => prefetch(category, route)}
                 >
-                  <Text color={'#171A22'} fontSize={'24px'}>
-                    {tab.metadata.tabName || tab.title}
-                  </Text>
+                  <Text>{tab.metadata.tabName || tab.title}</Text>
                 </TabLine.Item>
               );
             })}

@@ -8,7 +8,9 @@ title: Code
 
 @## Table with an accordion
 
-For an example of a table with an accordion, see the [Accordion](/components/accordion) 😎
+Example of a table with an [accordion](/components/accordion) 😎
+
+@example accordion
 
 @## Table with dynamic column width
 

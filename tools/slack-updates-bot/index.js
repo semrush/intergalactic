@@ -6,14 +6,14 @@ const messageTemplate = require('./messageTemplate');
 
 dayjs.locale('en', en);
 
-module.exports = async function sendUiKitUpdates(start, end, url) {
+module.exports = async function sendUiKitUpdates(start, end, urls) {
   const componentsChangelogs = await changelogByDate(start, end);
   const toolsChangelogs = await changelogByDate(start, end, '../../tools');
   const changelog = [...componentsChangelogs, ...toolsChangelogs];
   const flatChangelog = mergeChangeLog(changelog);
   const message = messageTemplate(flatChangelog);
   const messageData = createMessage(start, end, message);
-  return postMessage(url, messageData);
+  return await postMessage(urls, messageData);
 };
 
 function mergeChangeLog(changelog) {
@@ -57,6 +57,7 @@ function getFormattedDatePeriod(start, end) {
 }
 
 function createMessage(start, end, text) {
+  if (!text) return null;
   const [startDate, endDate] = getFormattedDatePeriod(start, end);
   return JSON.stringify({
     attachments: [
@@ -69,11 +70,16 @@ function createMessage(start, end, text) {
   });
 }
 
-async function postMessage(url, data) {
-  return axios({
-    method: 'post',
-    headers: { 'Content-type': 'application/json' },
-    data,
-    url,
-  });
+function postMessage(urls, data) {
+  if (!data) return Promise.resolve(false);
+  return Promise.all(
+    urls.map((url) =>
+      axios({
+        method: 'post',
+        headers: { 'Content-type': 'application/json' },
+        data,
+        url,
+      }),
+    ),
+  );
 }

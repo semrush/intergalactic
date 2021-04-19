@@ -2,6 +2,18 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.9.0] - 2021-04-13
+
+### Added
+
+- Added new icon `SharedToUser`.
+
+## [2.8.1] - 2021-02-24
+
+### Changed
+
+- Update icons `SEMrush, TwitterSemrush, FacebookSemrush, LinkedInSemrush`.
+
 ## [2.8.0] - 2021-02-11
 
 ### Added

@@ -20,6 +20,21 @@ export interface IBarContext {
   index: number;
 }
 
-declare const Bar: <T>(props: CProps<IBarProps & T, IBarContext>) => ReturnEl;
+export interface IBackgroundProps extends IContext {
+  /** Coordinate x */
+  x?: number | string;
+  /** Coordinate y */
+  y?: number | string;
+  /** Value element of data */
+  value?: any;
+  /** Width rect */
+  width?: number | string;
+  /** Height rect */
+  height?: number | string;
+}
+
+declare const Bar: (<T>(props: CProps<IBarProps & T, IBarContext>) => ReturnEl) & {
+  Background: <T>(props: CProps<IBackgroundProps & T>) => ReturnEl;
+};
 
 export default Bar;

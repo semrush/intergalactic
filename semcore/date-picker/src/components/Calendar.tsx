@@ -89,13 +89,13 @@ const range = (N, cb) => Array.from({ length: N }, (v, k) => cb(k));
 function getDayJSLocaleParams(locale) {
   if (locale.includes('en') || locale.includes('ja')) {
     return {
-      ...dayjs.Ls[locale],
       weekStart: 0,
+      ...dayjs.Ls[locale],
     };
   }
   return {
-    ...dayjs.Ls[locale],
     weekStart: 1,
+    ...dayjs.Ls[locale],
   };
 }
 

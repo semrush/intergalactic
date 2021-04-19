@@ -1,6 +1,6 @@
 import React from 'react';
 import snapshot from 'jest-preset-ui/snapshot';
-import { render, fireEvent, cleanup } from 'jest-preset-ui/testing';
+import { axe, render, fireEvent, cleanup } from 'jest-preset-ui/testing';
 import Accordion from '../src';
 
 describe('Accordion', () => {
@@ -173,5 +173,24 @@ describe('Accordion', () => {
     );
     fireEvent.click(getByText('Item 2'));
     expect(spy).toBeCalledWith([]);
+  });
+
+  test('a11y', async () => {
+    const { getByText, container } = render(
+      <Accordion>
+        <Accordion.Item value={1}>
+          <Accordion.Item.Toggle>Item 1</Accordion.Item.Toggle>
+          <Accordion.Item.Collapse>Collapse text</Accordion.Item.Collapse>
+        </Accordion.Item>
+        <Accordion.Item value={2}>
+          <Accordion.Item.Toggle>Item 2</Accordion.Item.Toggle>
+          <Accordion.Item.Collapse>Collapse text</Accordion.Item.Collapse>
+        </Accordion.Item>
+      </Accordion>,
+    );
+    fireEvent.click(getByText('Item 2'));
+    const results = await axe(container);
+
+    expect(results).toHaveNoViolations();
   });
 });

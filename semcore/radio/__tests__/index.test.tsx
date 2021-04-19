@@ -1,5 +1,5 @@
 import React from 'react';
-import { cleanup, fireEvent, render } from 'jest-preset-ui/testing';
+import { cleanup, fireEvent, render, axe } from 'jest-preset-ui/testing';
 import snapshot from 'jest-preset-ui/snapshot';
 import Radio, { RadioGroup, inputProps } from '../src';
 import { shouldSupportClassName, shouldSupportRef } from 'jest-preset-ui/shared';
@@ -186,5 +186,23 @@ describe('RadioGroup', () => {
       </snapshot.ProxyProps>
     );
     expect(await snapshot(component)).toMatchImageSnapshot();
+  });
+
+  test('a11y', async () => {
+    const { container } = render(
+      <RadioGroup name="radio" value="1">
+        <Radio>
+          <Radio.Value value="1" />
+          <Radio.Text>1</Radio.Text>
+        </Radio>
+        <Radio>
+          <Radio.Value value="2" />
+          <Radio.Text>2</Radio.Text>
+        </Radio>
+      </RadioGroup>,
+    );
+
+    const results = await axe(container);
+    expect(results).toHaveNoViolations();
   });
 });

@@ -41,14 +41,14 @@ Go to [Color](/style/color/) to learn more about our color system.
 
 @## Typography
 
-> **TL;DR or main thoughts**: our main font is Ubuntu. The main text color is #333 (\$gray20 in our variables), while the secondary text color is #757575 (var(--gray60) in our variables).
+> **TL;DR or main thoughts**: our main font is Ubuntu. The main text color is #333 (`var(--gray20)` in our variables), while the secondary text color is #757575 (`var(--gray60)` in our variables).
 
 Our type scale is based on the modular scale with the base of a 12px font size and a 1.2 ratio.
 
 - h1, h1, h3, h4 — used for hero blocks, big advertising blocks and notices, as well as product landings and the ProductHead component
 - h5, h6 — used for smaller blocks and notices, as well as widgets inside products
 
-All our product interfaces and commonly used components are built with a 12px font size as the basis. But we strongly suggest that you use 14px and 16px sizes in for text messages across your interfaces to make them easy to read for the users.
+All our product interfaces and commonly used components are built with a 12px font size as the basis. **But we strongly recommend you to use 14px and 16px sizes for text messages across your interfaces to make them easy to read for the users.**
 
 See [Typography](/style/typography/) if want to learn more about our typography rules and recommendations.
 
@@ -73,17 +73,17 @@ Go to [Grid system](/layout/grid-system) for a detailed description of this comp
 
 @## Breakpoints and grids
 
-> **TL;DR or main thoughts**: we build our interface as desktop-first, since there is a lot of data visualization and explaining text.
+> **TL;DR or main thoughts**: most of our products are designed to work with data on the desktop, since there is a lot of data visualization and explaining messages. So adaptability is not yet required for all tools.
 
 The main breakpoints that we recommend to use in our interfaces are:
 
-- 414px
+- 320px
 - 768px
 - 1154px
 
 So you need to make designs for:
 
-- 414px — the smallest devices. Don't forget them.
+- 320px — the smallest devices. Don't forget them.
 - 768px — phones and tablets.
 - more than 1154px — big tablets and desktop devices.
 

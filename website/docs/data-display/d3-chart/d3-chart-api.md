@@ -2,15 +2,15 @@
 title: API
 ---
 
-@## XYPlot
+@## Plot
 
 Root element for all charts.
 
 ```js
-import { XYPlot } from '@semcore/d3-chart';
+import { Plot } from '@semcore/d3-chart';
 ```
 
-@interface IXYPlotProps
+@interface IPlotProps
 
 @## Axis
 
@@ -137,3 +137,48 @@ import { GroupBar } from '@semcore/d3-chart';
 ```
 
 @interface IGroupBarProps
+
+@## Area
+
+It have children components `Dots, Null`.
+
+```js
+import { Area } from '@semcore/d3-chart';
+
+<Area>
+  <Area.Dots />
+  <Area.Null />
+</Area>;
+```
+
+@interface IAreaProps
+
+@## StackedArea
+
+It have children components `Area`.
+
+```js
+import { StackedArea } from '@semcore/d3-chart';
+
+<StackedArea>
+  <StackedArea.Area />
+</StackedArea>;
+```
+
+@interface IStackedAreaProps
+
+@## Donut
+
+It have children components `Pie`, `Label`, `EmptyData`.
+
+```js
+import { Donut } from '@semcore/d3-chart';
+
+<Donut>
+  <Donut.EmptyData />
+  <Donut.Pie />
+  <Donut.Label />
+</Donut>;
+```
+
+@interface IDonutProps

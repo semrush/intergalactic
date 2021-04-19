@@ -1,5 +1,6 @@
 const { configureToMatchImageSnapshot } = require('jest-image-snapshot');
 const { toHaveStyle } = require('@testing-library/jest-dom/matchers');
+const { toHaveNoViolations } = require('jest-axe');
 
 const toMatchImageSnapshot = configureToMatchImageSnapshot({
   comparisonMethod: 'ssim',
@@ -10,6 +11,7 @@ const toMatchImageSnapshot = configureToMatchImageSnapshot({
   failureThresholdType: 'percent',
 });
 
+expect.extend(toHaveNoViolations);
 expect.extend({ toMatchImageSnapshot, toHaveStyle });
 
 // fake method because use popper.js
@@ -35,4 +37,5 @@ if (global.window) {
     removeEventListener: jest.fn(),
     dispatchEvent: jest.fn(),
   }));
+  window.HTMLElement.prototype.scrollIntoView = jest.fn;
 }

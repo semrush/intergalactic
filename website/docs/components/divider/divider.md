@@ -8,7 +8,7 @@ tabName: Guide
 
 @## Description
 
-**Divider** is a component that we use to separate content/components visually and in a semantic way.
+**Divider** is a component we use to separate content/components visually and in a semantic way.
 
 @## Types
 

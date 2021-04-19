@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "@apollo/client": "^3.0.2",
+    "@mailchimp/mailchimp_marketing": "^3.0.30",
     "@nestjs/common": "^7.6.5",
     "@nestjs/core": "^7.6.5",
     "@nestjs/graphql": "^7.9.8",
@@ -22,6 +23,7 @@
     "algoliasearch": "^4.8.4",
     "apollo-server-express": "^2.9.13",
     "chokidar": "^3.3.1",
+    "compression": "^1.7.4",
     "dayjs": "^1.10.4",
     "documentalist": "^1.6.0",
     "dotenv": "^8.2.0",

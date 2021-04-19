@@ -3057,7 +3057,7 @@
       "tags": ["search", "поиск", "magnifier", "zoom"]
     },
     {
-      "name": "Semrush",
+      "name": "SEMrush",
       "size": ["m", "s", "xs"],
       "group": "Misc",
       "tags": ["semrush", "семраш", "фейсбук", "fireball", "фаерболл"]
@@ -3113,6 +3113,22 @@
         "system",
         "preferences",
         "alt"
+      ]
+    },
+    {
+      "name": "SharedToUser",
+      "size": ["m", "s", "xs"],
+      "group": "Status",
+      "tags": [
+        "shared",
+        "user",
+        "arrow",
+        "sharing",
+        "пошарили",
+        "пошарил",
+        "пошарено",
+        "пользователь",
+        "тебе"
       ]
     },
     {
@@ -3628,7 +3644,7 @@
       "name": "VideoStop",
       "size": ["m", "s", "xs"],
       "group": "Status",
-      "tags": ["video", "видео", "stop", "остановить", "preview"]
+      "tags": ["video", "видео", "stop", "остановить", "preview", "стоп"]
     },
     {
       "name": "Vk",

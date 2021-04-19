@@ -1,6 +1,6 @@
 import React from 'react';
 import { Component, sstyled } from '@semcore/core';
-import createXYElement from './XYElement';
+import createElement from './createElement';
 import { scaleOfBandwidth } from './utils';
 
 import style from './style/axis.shadow.css';
@@ -281,7 +281,7 @@ function Title(props) {
   );
 }
 
-const XAxis = createXYElement(AxisRoot, {
+const XAxis = createElement(AxisRoot, {
   Ticks,
   Grid,
   Title,
@@ -291,7 +291,7 @@ XAxis.defaultProps = {
   position: 'bottom',
 };
 
-const YAxis = createXYElement(AxisRoot, {
+const YAxis = createElement(AxisRoot, {
   Ticks,
   Grid,
   Title,

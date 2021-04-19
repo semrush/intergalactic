@@ -29,8 +29,8 @@ const Title = styled.div`
 `;
 
 const LinkStyled = styled(Link)`
-  font-size: 18px;
-  line-height: 1.25;
+  font-size: 16px;
+  line-height: 1.5;
   color: #171a22;
   cursor: pointer;
   text-decoration: none;

@@ -8,6 +8,14 @@ tabName: Guide
 
 **NoticeBubble (Alert)** is one of the types of notifications on completed action, beginning or end of a process.
 
+Let's see the differencies with [Notice](/components/notice/).
+
+| Criteria                                                                                             | Notice | NoticeBubble |
+| ---------------------------------------------------------------------------------------------------- | ------ | ------------ |
+| **Global**. Refers to pages/blocks/large components, not specific elements.                          | ✅     | ✅ ❌        |
+| **Important**. If the users do not read the notice, they will miss an opportunity or lose something. | ✅     | ❌           |
+| **Temporary**. Not a default block element. Appears and disappears under certain conditions.         | ✅     | ✅           |
+
 @## Possible cases
 
 - Notification of the beginning or completion of a process that is hidden from the user.

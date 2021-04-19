@@ -249,10 +249,10 @@ SFormatText[size='m'] {
   }
 
   & ul li:before {
-    width: 4px;
-    height: 4px;
+    width: 3px;
+    height: 3px;
     border-radius: 50%;
-    margin-top: 7px;
+    margin-top: 8px;
     margin-left: 2px;
   }
 }
@@ -285,10 +285,10 @@ SFormatText[size='l'] {
   }
 
   & ul li:before {
-    width: 5px;
-    height: 5px;
+    width: 4px;
+    height: 4px;
     border-radius: 50%;
-    margin-top: 6px;
+    margin-top: 7px;
     margin-left: 2px;
   }
 }
@@ -321,10 +321,10 @@ SFormatText[size='xl'] {
   }
 
   & ul li:before {
-    width: 6px;
-    height: 6px;
+    width: 5px;
+    height: 5px;
     border-radius: 50%;
-    margin-top: 9px;
+    margin-top: 10px;
     margin-left: 2px;
   }
 }

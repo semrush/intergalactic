@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.2.0] - 2021-04-05
+
+### Changed
+
+- Up version `@semcore/notice` in dependence for package.
+
 ## [3.1.0] - 2020-12-17
 
 ### Added

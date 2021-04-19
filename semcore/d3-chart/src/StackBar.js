@@ -2,13 +2,14 @@ import React from 'react';
 import { stack as d3Stack } from 'd3-shape';
 import { Component } from '@semcore/core';
 import getOriginChildren from '@semcore/utils/lib/getOriginChildren';
-import createXYElement from './XYElement';
+import createElement from './createElement';
 import Bar from './Bar';
 import HorizontalBar from './HorizontalBar';
 
 import style from './style/bar.shadow.css';
 
 const DEFAULT_INSTANCE = Symbol('DEFAULT_INSTANCE');
+const XY0 = Symbol('XY0');
 
 class StackBarRoot extends Component {
   static displayName = 'StackBar';
@@ -22,7 +23,7 @@ class StackBarRoot extends Component {
   };
 
   getSeries() {
-    const { Children, stack, data } = this.asProps;
+    const { Children, data, stack } = this.asProps;
 
     if (stack[DEFAULT_INSTANCE]) {
       const keys = React.Children.toArray(getOriginChildren(Children)).reduce((acc, child) => {
@@ -49,9 +50,9 @@ class StackBarRoot extends Component {
       data: series.map((s) => ({
         ...s.data,
         [y]: s[1],
-        $y0: s[0],
+        [XY0]: s[0],
       })),
-      y0: '$y0',
+      y0: XY0,
       x,
     };
   }
@@ -65,9 +66,9 @@ class StackBarRoot extends Component {
       data: series.map((s) => ({
         ...s.data,
         [x]: s[1],
-        $x0: s[0],
+        [XY0]: s[0],
       })),
-      x0: '$x0',
+      x0: XY0,
       y,
     };
   }
@@ -79,7 +80,7 @@ class StackBarRoot extends Component {
   }
 }
 
-const StackBar = createXYElement(StackBarRoot, {
+const StackBar = createElement(StackBarRoot, {
   Bar,
   HorizontalBar,
 });

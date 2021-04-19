@@ -46,8 +46,8 @@ export interface IBoxProps extends IStyledProps {
   /** Sets the `inline-block` property */
   inline?: boolean;
 
-  /** CSS `box-sizing` property */
-  boxSizing?: 'content-box' | 'border-box';
+  /** CSS `box-sizing: border-box` property */
+  boxSizing?: boolean | 'border-box';
 
   /** CSS `flex` property */
   flex?: FlexProperty<string>;
@@ -248,6 +248,10 @@ export default function useBox<T extends IBoxProps>(
     px,
     css,
     position,
+    top,
+    left,
+    bottom,
+    right,
     zIndex,
     ...other
   } = props;
@@ -278,6 +282,10 @@ export default function useBox<T extends IBoxProps>(
     pr,
     px,
     position,
+    top,
+    left,
+    bottom,
+    right,
     zIndex,
   ]);
 

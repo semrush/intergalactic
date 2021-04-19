@@ -75,7 +75,7 @@ SPill[keyboardFocused] {
 SText {
   color: var(--gray20);
   display: inline-flex;
-  line-height: 1;
+  line-height: 1.2;
 }
 
 SAddon {
@@ -83,7 +83,7 @@ SAddon {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  line-height: 1;
+  line-height: 1.2;
 }
 
 SPill[size='s'] {

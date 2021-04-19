@@ -16,8 +16,12 @@ import ja from '../translations/ja.json';
 import pt from '../translations/pt.json';
 import ru from '../translations/ru.json';
 import zh from '../translations/zh.json';
+import ko from '../translations/ko.json';
+import vi from '../translations/vi.json';
 
 import style from '../style/date-picker.shadow.css';
+
+const i18n = { de, en, es, fr, it, ja, ru, zh, pt, ko, vi };
 
 export interface IDateRangePickerProps extends IDropdownProps, IWithI18nEnhanceProps {
   /**
@@ -70,17 +74,7 @@ class RangePickerAbstract extends Component<IDateRangePickerProps> {
   static displayName = 'DatePicker';
   static style = style;
   static defaultProps: any = {
-    i18n: {
-      de,
-      en,
-      es,
-      fr,
-      it,
-      ja,
-      pt,
-      ru,
-      zh,
-    },
+    i18n,
     locale: 'en',
     defaultDisplayedPeriod: new Date(new Date().setHours(0, 0, 0, 0)),
     defaultValue: [],

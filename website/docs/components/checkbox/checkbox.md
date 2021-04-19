@@ -8,7 +8,7 @@ tabName: Guide
 
 @## Description
 
-**Checkbox** is a control for selecting one or more values.
+**Checkbox** is a control for selecting one or more values/options.
 
 The checkbox clearly shows the status of the user's choice. It's mainly used for group settings, when there is a list of parameters/options and other things, and the user can choose any number of options, including zero, one or several.
 

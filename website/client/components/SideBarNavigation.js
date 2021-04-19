@@ -19,8 +19,8 @@ const CategoryTitle = styled.div`
   cursor: pointer;
   padding: 8px 0;
   font-weight: 500;
-  font-size: 21px !important;
-  line-height: 135%;
+  font-size: 16px !important;
+  line-height: 1.5;
   &:hover,
   &:hover > * {
     color: #ff622d;
@@ -29,8 +29,8 @@ const CategoryTitle = styled.div`
 
 const CategoryItem = styled.a`
   padding: 8px 0 8px 24px;
-  font-size: 18px;
-  line-height: 1.25;
+  font-size: 16px;
+  line-height: 1.5;
   color: #171a22;
   cursor: pointer;
   text-decoration: none;
@@ -82,7 +82,7 @@ const SideBarNavigation = ({ navigation = [] }) => {
                   transition: 'transform 0.25s ease-in-out',
                 }}
               />
-              <Text fontSize={'18px'} lineHeight={'150%'}>
+              <Text fontSize={'16px'} lineHeight={'150%'}>
                 {currentCategory.title}
               </Text>
             </CategoryTitle>

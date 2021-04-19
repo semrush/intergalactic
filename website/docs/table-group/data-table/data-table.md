@@ -2,6 +2,7 @@
 title: DataTable
 fileSource: data-table
 tabName: Code
+beta: true
 ---
 
 The DataTable component is needed to simplify the construction of tabular data. The table is based on `CSS-flex` technology and does not use native tables.

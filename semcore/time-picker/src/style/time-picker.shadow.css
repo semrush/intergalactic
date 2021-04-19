@@ -69,14 +69,12 @@ SPickerFormat {
 
 SPickerFormat[size='m'] {
   height: media(26px);
-  width: media(56px);
   font-size: media(12px);
   border-radius: 0 3px 3px 0;
 }
 
 SPickerFormat[size='l'] {
   height: media(32px);
-  width: media(64px);
   font-size: media(14px);
   border-radius: 0 4px 4px 0;
 }
@@ -90,7 +88,6 @@ SPickerFormat[size='l'] {
 
 SPickerFormat[size='xl'] {
   height: media(42px);
-  width: media(84px);
   font-size: media(16px);
   border-radius: 0 5px 5px 0;
 

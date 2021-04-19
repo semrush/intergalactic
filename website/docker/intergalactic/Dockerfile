@@ -30,6 +30,7 @@ COPY client/dist ./client/dist
 
 # for cached interface
 COPY ts.json ./ts.json
+COPY .env ./.env
 #COPY processingTS.js ./processingTS.js
 #RUN yarn build:interface
 

@@ -8,7 +8,7 @@ tabName: Guide
 
 @## Description
 
-**InputTags** is the input in which the entered information is wrapped in tags. Often used together with the [Combobox](/components/auto-tips/).
+**InputTags** is the input that wraps the entered information into tags. Often used together with the [Combobox](/components/auto-tips/).
 
 This input is usually used for entering a large amount of homogeneous information in a single field. _For example, keywords or employee emails._
 

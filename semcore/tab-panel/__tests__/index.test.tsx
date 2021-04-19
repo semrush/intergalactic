@@ -1,9 +1,8 @@
 import React from 'react';
 import { css } from '@semcore/core';
-import { render, fireEvent, cleanup } from 'jest-preset-ui/testing';
+import { render, fireEvent, cleanup, axe } from 'jest-preset-ui/testing';
 import snapshot from 'jest-preset-ui/snapshot';
 import TabPanel from '../src';
-import TabLine from '@semcore/tab-line/src';
 
 describe('TabPanel', () => {
   afterEach(cleanup);
@@ -139,5 +138,17 @@ describe('TabPanel', () => {
     );
 
     expect(await snapshot(component)).toMatchImageSnapshot();
+  });
+
+  test('a11y', async () => {
+    const { container } = render(
+      <TabPanel value={1}>
+        <TabPanel.Item value={1}>1</TabPanel.Item>
+        <TabPanel.Item value={2}>2</TabPanel.Item>
+      </TabPanel>,
+    );
+
+    const results = await axe(container);
+    expect(results).toHaveNoViolations();
   });
 });

@@ -1,5 +1,6 @@
 import { join } from 'path';
 import hbs from 'hbs';
+import compression from 'compression';
 import { NestFactory } from '@nestjs/core';
 import { NestExpressApplication } from '@nestjs/platform-express';
 import { AppModule } from './app.module';
@@ -15,6 +16,8 @@ hbs.registerHelper('GA_TRACKING_ID', () => {
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
 
+  app.use(compression());
+
   app.useStaticAssets(join(process.cwd(), './client/dist'), {
     immutable: true,
     // 24 hours
@@ -24,7 +27,7 @@ async function bootstrap() {
   hbs.registerPartials(join(process.cwd(), './server/views/partials'));
   app.setViewEngine('hbs');
 
-  await app.listen(3000);
+  await app.listen(process.env.PORT || 3000);
 }
 
 bootstrap();

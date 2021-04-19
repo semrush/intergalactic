@@ -9,6 +9,7 @@ import { Text } from '@semcore/typography';
 const Demo = () => {
   const { register, handleSubmit, errors, reset } = useForm({
     mode: 'onBlur',
+    shouldFocusError: false,
   });
 
   const onSubmit = (data, e) => {

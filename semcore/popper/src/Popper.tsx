@@ -480,6 +480,8 @@ class Popper extends Component<IPopperProps> {
   setContext() {
     return {
       popper: this.popper,
+      setTrigger: this.createTriggerRef,
+      setPopper: this.createPopperRef,
     };
   }
 

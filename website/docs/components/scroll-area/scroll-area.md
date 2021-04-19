@@ -45,8 +45,6 @@ The scroll inside the block can be controlled by means of:
 - touchpad gestures, etc.;
 - elements of a scrollbar like sliders and buttons.
 
-@## Use in UX/UI
-
 @## Long scrolling
 
 > _Long scrolling helps to build a narration and sends the user on a journey. It allows the user to scroll through the content without additional interaction._

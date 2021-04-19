@@ -18,8 +18,6 @@ The chart orientation (rotation) and the order of circles can be changed.
 
 You can add and remove the legend yourself (we'll add this example later 🤷).
 
-@example orientation-and-order
-
 @## Data loading
 
 @example skeleton

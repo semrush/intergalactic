@@ -6,7 +6,7 @@ tabName: Guide
 
 @## Description
 
-FilterTrigger is a component that is used as a trigger in filters above tables or any other data.
+**FilterTrigger** is a component we use as a trigger in filters above tables or any other data.
 
 > 💡 The component is used exclusively as a filter. It is not used anywhere else in the interface.
 >
