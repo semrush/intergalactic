@@ -8,7 +8,7 @@ import ChevronRightXS from '@semcore/icon/lib/ChevronRight/xs';
 const NavigationView = styled.div`
   padding: 32px;
   box-sizing: border-box;
-  max-width: 350px;
+  max-width: 260px;
   @media (max-width: 768px) {
     margin-right: 0;
   }
