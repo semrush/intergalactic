@@ -1,0 +1,19 @@
+substitutions:
+  _APP_VERSION: 0.0.1
+steps:
+  - name: 'node'
+    entrypoint: yarn
+    args: ['--non-interactive', '--frozen-lockfile']
+  - name: 'node'
+    entrypoint: yarn
+    args: ['build']
+  - name: 'node'
+    entrypoint: yarn
+    args: ['lint']
+  - name: 'node'
+    entrypoint: yarn
+    args: ['test']
+
+timeout: 3600s
+options:
+  machineType: 'N1_HIGHCPU_8'

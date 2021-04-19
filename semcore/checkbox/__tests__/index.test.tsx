@@ -1,5 +1,5 @@
 import React from 'react';
-import { cleanup, fireEvent, render } from 'jest-preset-ui/testing';
+import { cleanup, fireEvent, render, axe } from 'jest-preset-ui/testing';
 import { shouldSupportClassName, shouldSupportRef } from 'jest-preset-ui/shared';
 import snapshot from 'jest-preset-ui/snapshot';
 import Checkbox, { inputProps } from '../src';
@@ -340,5 +340,17 @@ describe('Checkbox', () => {
     );
 
     expect(await snapshot(component)).toMatchImageSnapshot();
+  });
+
+  test('a11y', async () => {
+    const { container } = render(
+      <Checkbox>
+        <Checkbox.Value />
+        <Checkbox.Text>Checkbox</Checkbox.Text>
+      </Checkbox>,
+    );
+
+    const results = await axe(container);
+    expect(results).toHaveNoViolations();
   });
 });

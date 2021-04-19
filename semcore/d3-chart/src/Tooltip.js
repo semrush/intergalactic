@@ -1,12 +1,11 @@
 import React, { useCallback } from 'react';
-import { bisector } from 'd3-array';
 import { Component, Root, sstyled } from '@semcore/core';
 import Popper from '@semcore/popper';
 import { Box } from '@semcore/flex-box';
 import findComponent from '@semcore/utils/lib/findComponent';
 import resolveColor from '@semcore/utils/lib/color';
-
-import createXYElement from './XYElement';
+import { CONSTANT } from './utils';
+import createElement from './createElement';
 
 import style from './style/tooltip.shadow.css';
 
@@ -16,65 +15,76 @@ class TooltipRoot extends Component {
   static style = style;
 
   state = {
-    xIndex: null,
-    yIndex: null,
+    $visible: false,
   };
 
-  componentDidMount() {
-    const { eventEmitter, data, x, y } = this.asProps;
-    const xBisect = bisector((d) => d[x]).center;
-    const yBisect = bisector((d) => d[y]).center;
-    this.unsubscribeNearestXY = eventEmitter.subscribe('onNearestXY', ([pX, pY]) => {
-      this.setState({
-        xIndex: x === undefined || pX === undefined ? null : xBisect(data, pX),
-        yIndex: y === undefined || pY === undefined ? null : yBisect(data, pY),
-      });
-    });
-  }
-
-  componentWillUnmount() {
-    if (this.unsubscribeNearestXY) {
-      this.unsubscribeNearestXY();
-    }
-  }
+  handlerCancel = () => false;
 
   getTriggerProps() {
+    // TODO: как то убрать
     const { x, y } = this.asProps;
-    return {
-      x,
-      y,
-    };
+    return { x, y };
   }
 
   getPopperProps() {
-    const { data } = this.asProps;
-    const { xIndex, yIndex } = this.state;
     return {
-      data,
-      xIndex,
-      yIndex,
+      ...this.state,
     };
+  }
+
+  componentDidMount() {
+    const { eventEmitter, rootRef } = this.asProps;
+    this.unsubscribeTooltipVisible = eventEmitter.subscribe(
+      'onTooltipVisible',
+      (visible, data, node) => {
+        this.setState(
+          {
+            ...data,
+            $visible: visible,
+          },
+          () => {
+            if (node && (node[CONSTANT.VIRTUAL_ELEMENT] || rootRef.current.contains(node))) {
+              this?.setPopperTrigger(node);
+              this.popper.current?.update();
+            }
+          },
+        );
+      },
+    );
+  }
+
+  componentWillUnmount() {
+    if (this.unsubscribeTooltipVisible) {
+      this.unsubscribeTooltipVisible();
+    }
   }
 
   render() {
     const { Children, children, tag, ...other } = this.asProps;
-    const { xIndex, yIndex } = this.state;
-
-    const visible = (xIndex ?? yIndex) !== null;
 
     const advanceMode = !!findComponent(Children, [
       Tooltip.Trigger.displayName,
       Tooltip.Popper.displayName,
     ]);
     return (
-      <Root render={Popper} visible={visible} offset={8}>
-        {({ popper }) => {
-          popper.current?.update();
+      <Root
+        render={Popper}
+        visible={this.state.$visible}
+        onFirstUpdate={this.handlerCancel}
+        onOutsideClick={this.handlerCancel}
+        interaction="none"
+        offset={8}
+        flip={{ allowedAutoPlacements: ['left', 'right'] }}
+      >
+        {({ popper, setTrigger }) => {
+          this.setPopperTrigger = setTrigger;
+          this.popper = popper;
+          this.popper.current?.update();
           return advanceMode ? (
             <Children />
           ) : (
             <>
-              <Tooltip.Trigger tag={tag} />
+              {tag && <Tooltip.Trigger tag={tag} />}
               <Tooltip.Popper {...other}>{children}</Tooltip.Popper>
             </>
           );
@@ -85,11 +95,11 @@ class TooltipRoot extends Component {
 }
 
 function PopperPopper(props) {
-  const { Element: STooltip, styles, xIndex, yIndex } = props;
+  const { Element: STooltip, styles, $visible } = props;
 
   const handlerCancel = useCallback(() => false, []);
 
-  if ((xIndex ?? yIndex) === null) return null;
+  if (!$visible) return null;
 
   return sstyled(styles)(
     <STooltip render={Popper.Popper} childrenPosition="inside" onMouseMove={handlerCancel} />,
@@ -118,7 +128,7 @@ function Footer() {
   return null;
 }
 
-const Tooltip = createXYElement(TooltipRoot, {
+const Tooltip = createElement(TooltipRoot, {
   Trigger: Popper.Trigger,
   Popper: PopperPopper,
   Title,

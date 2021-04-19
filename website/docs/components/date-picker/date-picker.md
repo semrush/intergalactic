@@ -8,7 +8,7 @@ tabName: Guide
 
 @## Description
 
-**Date picker** iis a component for selection/input of the date and in some cases the time.
+**Date picker** is a component for selection/input of the date and, in some cases, the time.
 
 The component exists in 4 types:
 

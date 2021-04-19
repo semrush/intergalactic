@@ -125,8 +125,15 @@ function hex2rgb(hex) {
 }
 
 export function opacity(color?: string, percent: number = 1) {
-  if (!color || !color.startsWith('#')) return '';
-  return `rgba(${hex2rgb(color).join(', ')}, ${percent})`;
+  if (!color) return '';
+  if (color.includes('#')) {
+    color = `rgba(${hex2rgb(color).join(', ')}, ${percent})`;
+  } else if (color.includes('rgb')) {
+    color = `rgba(${colorRGB(color).join(', ')}, ${percent})`;
+  } else {
+    color = '';
+  }
+  return color;
 }
 
 export function brightness(color) {

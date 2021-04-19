@@ -8,29 +8,32 @@ tabName: Guide
 
 @## Description
 
-**Tooltip** is a modeless popover designed to display all sorts of tips in tools.
+**Tooltip** is a modeless popover to display all sorts of tips in tools.
 
 Differences from [Dropdown](/components/dropdown/):
 
-- It appears only at hovering over the trigger;
-- It has a pointer to the trigger;
-- It contains only reference and additional information without complex controls.
+- It appears only at hovering over the trigger.
+- It has an arrow that points to the trigger.
+- It contains only hints and additional information without controls.
 
 @## Component consists of
 
-- container
-- content
-- chevron
+- container;
+- content;
+- chevron.
 
 ![scheme](static/tooltip-scheme.png)
 
 @## Types
 
-There are two types of tooltips, which are the defaulted ] and the advanced tooltip.
+There are two types of tooltips:
 
-### TooltipBase
+- default;
+- advanced.
 
-TooltipBase contains only unformatted text.
+### Default tooltip
+
+Default tooltip contains only unformatted text.
 
 ![basic](static/tooltip-basic.png)
 
@@ -38,10 +41,10 @@ TooltipBase contains only unformatted text.
 
 The advanced tooltip may contain:
 
-- formatted text,
-- simple controls ([Button](/components/button/), [Link](/components/link/), etc.),
-- custom marking,
-- image,
+- formatted text;
+- simple controls ([Button](/components/button/), [Link](/components/link/), etc.);
+- custom marking;
+- image;
 - different background color.
 
 ![advanced-example-1](static/tooltip-advanced.png)
@@ -52,22 +55,22 @@ The advanced tooltip may contain:
 
 The tooltip has themes to use on a dark background and for error messages. In both cases, the text color changes to `#fff` and the background color changes to the corresponding one.
 
-|                 | Appearance                             | Styles                                                                  |
-| --------------- | -------------------------------------- | ----------------------------------------------------------------------- |
-| Dark background | ![dark-theme](static/dark-theme.png)   | `background-color: #000; box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.65);` |
-| Error message   | ![alert-theme](static/alert-theme.png) | `background-color: $orange; box-shadow: 0 2px 5px 0 rgba(0,0,0,0.25);`  |
+|               | Appearance                             | Styles                                                                  |
+| ------------- | -------------------------------------- | ----------------------------------------------------------------------- |
+| Invert theme  | ![dark-theme](static/dark-theme.png)   | `background-color: #000; box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.65);` |
+| Warning theme | ![alert-theme](static/alert-theme.png) | `background-color: $orange; box-shadow: 0 2px 5px 0 rgba(0,0,0,0.25);`  |
 
-> 💡 In [3.1.0 version](http://i.semrush.com/components/tooltip/#Changelog), opportunity to set own theme and change background color to custom is added.
+> 💡 In [3.1.0 version](http://i.semrush.com/components/tooltip/#Changelog), you can set your own theme and change background color to custom.
 
 @## Sizes and indents
 
 ### Sizes
 
-The basic tooltip has a maximum width, namely, `max-width: 250px`. In the advanced version of the tooltip, you can set a different width if necessary.
+The basic tooltip has a maximum width — `max-width: 250px`. In the advanced version of the tooltip, you can set a different width if necessary.
 
 ### Indents
 
-**Content**. The content area of the component has optional internal indents.
+**Content**. The content area of the component has defaul padding.
 
 ![content-paddings](static/tooltip-content-paddings.png)
 
@@ -81,15 +84,15 @@ Image area is 256px х 132px.
 
 ![pic-paddings](static/tooltip-pic-paddings.png)
 
-**Chevron**. Chevron can be placed either in the middle of the component or next to any angle.
+**Arrow**. Arrow can be placed either in the middle of the component or next to any angle.
 
 ![arrow-paddings](static/tooltip-arrow-paddings.png)
 
-@## Positioning
+@## Placement
 
-- Tooltip is positioned on the basis of the [Popper.js](https://popper.js.org/) library.
+- Tooltip is built on the basis of the [Popper.js](https://popper.js.org/) library. So you can change the placement of the component according to [Popper API](/utils/popper/popper-api/).
 
-- Tooltip opens at the hover over the trigger. It should not change its position when scrolling a page (for example, it opened upwards, but when scrolling it appeared at the edge of the browser and moved down) so that it remains where it originally opened until closing. By default, it is positioned at the top in relation to the trigger.
+- By default, tooltip appears while hovering the trigger. It shouldn't change its position when scrolling a page (for example, if it appeard upwards, but when scrolling it appeared at the edge of the browser and moved down) so that it remains where it was originally opened. The default tooltip placement — top.
 
 Possible positions towards the trigger:
 
@@ -97,14 +100,14 @@ Possible positions towards the trigger:
 
 @## Interaction
 
-The tooltip trigger can be a formatted text (for example, it is available in Brand Monitoring), table header, or various controls such as [Icon](/style/icon/), [Link](/components/link/), [Button](/components/button/) etc.)
+The tooltip trigger can be a formatted text, table header, or various controls such as [Icon](/style/icon/), [Link](/components/link/), [Button](/components/button/) etc.)
 
 ### Appearance and hiding
 
 | Hidden                                                                            |                                |
 | --------------------------------------------------------------------------------- | ------------------------------ |
 | Cursor left the trigger (for basic tooltip)                                       | ![hover-1](static/hover-1.png) |
-| Cursor left the trigger or the tooltip itself (For advanced tooltip with control) | ![hover-2](static/hover-2.png) |
+| Cursor left the trigger or the tooltip itself (for advanced tooltip with control) | ![hover-2](static/hover-2.png) |
 
 ### Delay of appearance and hiding
 
@@ -119,7 +122,7 @@ If there are controls in your tooltip, which appears when you hover over a trigg
 
 ### Recommendations for use
 
-Use the tooltip to show additional or reference content to the user. Such content can be text, formatted text with lists, links, buttons and small images.
+Use the tooltip to show hints and additional information to the user. This can be text, formatted text with lists, links, buttons and small images.
 
 > 💡 For more complex content and features, use [Dropdown-menu](/components/dropdown-menu/).
 
@@ -129,7 +132,7 @@ Make sure that the tooltip does not overlap the information important for the us
 
 ![trigger-yes-no](static/tooltip-trigger-yes-no.png)
 
-> 💡 If the title of a table or a control label that can be shortened into an `ellipsis` (...) is wrapped in a tooltip, the title in the tooltip must duplicate the text of the trigger.
+> 💡 If the text in the element is too long and shortened into an `ellipsis` (...), show the full text in the tooltip.
 
 **In the case when the essence of the trigger is not obvious enough, it is better to add a title to the tooltip.** It is also necessary to add a title when the trigger does not sufficiently explain the topic of the tooltip. For example, you can describe additional conditions in the header, or expand the idea behind the trigger.
 
@@ -141,7 +144,7 @@ Make sure that the tooltip does not overlap the information important for the us
 
 ![content-paragraphs](static/tooltip-text-yes-no.png)
 
-**Do not overload the tooltip with information.** Keep your temper in check 🙃 The large amount of content is inconvenient to view in the tooltip. If there is too much content and you cannot remove anything, think about whether you need a separate block/page for it instead of a tooltip.
+**Do not overload the tooltip with information.** The large amount of content is inconvenient to view in the tooltip. If there is too much content and you cannot remove anything, think about whether you need a separate paragraph on the page or widget for it instead of a tooltip.
 
 ![content](static/tooltip-content-yes-no.png)
 

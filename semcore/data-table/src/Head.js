@@ -36,7 +36,7 @@ class Head extends Component {
     const [name, value] = getFixedStyle(column, this.columns);
     const style = {
       [name]: value,
-      flexBasis: `${width * cSize}%`,
+      flexBasis: column.props.flex === undefined && `${width * cSize}%`,
       ...column.props.style,
     };
 

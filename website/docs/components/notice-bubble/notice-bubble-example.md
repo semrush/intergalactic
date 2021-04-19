@@ -87,3 +87,7 @@ class DemoManager extends React.Component {
   }
 }
 ```
+
+@## NoticeBubble in iframe
+
+Since the component inside the iframe will have a different location from the one we recommend in the guide, you can use [Notice](/components/notice/) instead.

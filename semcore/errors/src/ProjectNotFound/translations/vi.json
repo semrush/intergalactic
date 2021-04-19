@@ -1,0 +1,6 @@
+{
+  "title": "Không tìm thấy trang",
+  "text": "<p>Chúng tôi không thể tìm thấy dự án bạn đang muốn truy cập.</p><p>Hãy kiểm tra một trong các vấn đề sau:</p><ul><li>Dự án có thể đã bị xóa hoặc có lỗi trong URL đã nhập.</li><li>Có thể bạn không có quyền xem dự án. Vui lòng yêu cầu quyền truy cập từ chủ sở hữu dự án.</li></ul><p>Bạn có thể tìm thấy tất cả các dự án của mình trên trang Dự án.</p><p>Nếu bạn gặp bất kỳ sự cố nàokhác về quyền truy cập vào dự án, vui lòng liên hệ với <a href=\"{{url}}\">Đội hỗ trợ của chúng tôi.</a></p>",
+  "btnProjects": "Chuyển đến dự án",
+  "btnContacts": "Liên hệ chúng tôi"
+}

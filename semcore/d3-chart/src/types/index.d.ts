@@ -4,8 +4,8 @@ export declare function minMax(data: any, key: string | number): any;
 // Color
 export declare const colors: { [key: string]: string };
 
-export { default as XYPlot } from './XYPlot';
-export * from './XYPlot';
+export { default as Plot } from './Plot';
+export * from './Plot';
 
 export * from './Axis';
 export * from './Hover';
@@ -27,6 +27,9 @@ export * from './GroupBar';
 
 export { default as StackBar } from './StackBar';
 export * from './StackBar';
+
+export { default as Donut } from './Donut';
+export * from './Donut';
 
 export { default as Tooltip } from './Tooltip';
 export * from './Tooltip';

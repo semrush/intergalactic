@@ -137,8 +137,8 @@ function Cancel(props: IFunctionProps<IButtonProps>) {
 }
 
 function Notice(props: IFunctionProps<INoticeSmartProps>) {
-  const { Root: SNotice, styles, theme = 'custom' } = props;
-  return styled(styles)(<SNotice render={NoticeSmart} theme={theme} />);
+  const { Root: SNotice, styles, theme = 'gray94', use = 'secondary' } = props;
+  return styled(styles)(<SNotice render={NoticeSmart} theme={theme} use={use} />);
 }
 
 export default createComponent<

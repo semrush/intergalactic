@@ -1,7 +1,7 @@
 {
   "name": "@semcore/format-text",
   "description": "SEMRush FormatText Component",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",

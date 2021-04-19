@@ -1,5 +1,5 @@
 import React from 'react';
-import { cleanup, fireEvent, render } from 'jest-preset-ui/testing';
+import { axe, cleanup, fireEvent, render } from 'jest-preset-ui/testing';
 import { shouldSupportClassName, shouldSupportRef } from 'jest-preset-ui/shared';
 import Carousel from '../src';
 
@@ -286,5 +286,25 @@ describe('Carousel.Next', () => {
 
     expect(spy).toHaveBeenCalledTimes(1);
     expect(spy).toHaveBeenCalledWith(0);
+  });
+
+  test('a11y', async () => {
+    const { getByTestId, container } = render(
+      <Carousel>
+        <Container />
+        <Indicators />
+        <Carousel.Prev data-testid="prev" />
+        <Carousel.Next data-testid="next" />
+      </Carousel>,
+    );
+
+    const next = getByTestId('next');
+    const prev = getByTestId('prev');
+    fireEvent.click(prev);
+    fireEvent.click(next);
+
+    const results = await axe(container);
+
+    expect(results).toHaveNoViolations();
   });
 });

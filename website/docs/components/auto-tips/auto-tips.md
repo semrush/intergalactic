@@ -5,7 +5,7 @@ tabName: Guide
 
 @## Description
 
-`AutoSuggest` as `Combobox` and `AutoComplete` are varieties of search with selection of values from the list.
+**AutoSuggest** as **Combobox** and **AutoComplete** are varieties of search with selection of values from the list.
 
 To assemble any implementation of search with selection of values from the list you will need the [Input](/components/input/) and [Select](/components/select/) components. And a little magic ✨
 

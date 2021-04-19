@@ -1,11 +1,16 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import DataTable from '@semcore/data-table';
 import Sticky from '@semcore/sticky';
 
 export default () => {
+  const [top, updateTop] = useState(0);
+  useEffect(() => {
+    const header = document.getElementsByTagName('header')[0];
+    header && updateTop(header.offsetHeight);
+  }, []);
   return (
     <DataTable data={data}>
-      <Sticky zIndex={2} top={80}>
+      <Sticky zIndex={2} top={top}>
         <DataTable.Head>
           <DataTable.Column name="keyword" children="Keyword" />
           <DataTable.Column name="kd" children="KD,%" />

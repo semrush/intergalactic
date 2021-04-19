@@ -62,11 +62,13 @@ class Demo extends React.PureComponent {
     return (
       <Select interaction="focus" value={value} onChange={this.changeValue}>
         <Select.Trigger tag={Input}>
-          <Input.Value
-            value={value || ''}
-            placeholder="Type domain or URL"
-            onChange={this.handleChange}
-          />
+          {() => (
+            <Input.Value
+              value={value || ''}
+              placeholder="Type domain or URL"
+              onChange={this.handleChange}
+            />
+          )}
         </Select.Trigger>
         {options.length > 0 && value && (
           <Select.Menu>

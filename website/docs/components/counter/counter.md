@@ -8,7 +8,7 @@ tabName: Guide
 
 @## Description
 
-**Counter** is a component that identifies the quantity.
+**Counter** is a component that shows the quantity.
 
 It is used inside a large number of components:
 

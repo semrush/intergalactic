@@ -2,11 +2,7 @@
 title: Roadmap
 ---
 
-@## Design system roadmap
-
-Here you can if the UI Kit team good at predicting future 😏 We are working on components with the UX/UI team and ready to share a map of components readiness.
-
-**Please remember that this is a rough estimate**. Work over the components is carried out as they are discussed within a large team.
+Here you can find if our UI Kit team is good at predicting future 😏 We are working on components with the UX/UI team and ready to share a map of components readiness. **Please remember this is a rough estimate**.
 
 @import roadmap
 

@@ -6,7 +6,7 @@ tabName: Guide
 
 @## Description
 
-**Drag & drop** is a component using which the user may drag elements in the interface (change their order and sometimes their properties).
+**Drag & drop** is a component for the elements dragging in the interface (change their order and sometimes their properties).
 
 > Frequent case of using the drag & drop in our interface is dropdowns with the order of columns in the table (the so-called **Table settings** controls).
 

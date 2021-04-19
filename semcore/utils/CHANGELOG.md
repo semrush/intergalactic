@@ -2,6 +2,18 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.28.0] - 2021-03-15
+
+### Fixed
+
+- Update function `opacity`, now this function can set opacity for rgb color.
+
+## [3.27.0] - 2021-02-20
+
+### Changed
+
+- [TS] Update types interface `IWithI18nEnhanceProps`.
+
 ## [3.26.0] - 2021-02-11
 
 ### Added

@@ -3,16 +3,16 @@ import Select from '@semcore/select';
 import Input from '@semcore/input';
 
 function setUnderlineWord(searchValue, value) {
-  const re = new RegExp(searchValue.toLowerCase(), 'g');
   const title = {
-    __html: value
-      .toLowerCase()
-      .replace(
-        re,
-        `<span style="text-decoration: underline; padding: 2px 0">${searchValue}</span>`,
-      ),
+    __html: value.toLowerCase(),
   };
-
+  if (searchValue) {
+    const re = new RegExp(searchValue.toLowerCase(), 'g');
+    title.__html = title.__html.replace(
+      re,
+      `<span style="text-decoration: underline; padding: 2px 0">${searchValue}</span>`,
+    );
+  }
   return <h3 dangerouslySetInnerHTML={title} />;
 }
 
@@ -57,8 +57,7 @@ class Demo extends React.PureComponent {
       })
       .catch(console.error);
   };
-  handleSelect = (item = []) => {
-    const { value } = item[0];
+  handleSelect = (value) => {
     this.changeValue(value);
     this.debounceSend(value);
     return false;
@@ -72,11 +71,13 @@ class Demo extends React.PureComponent {
     return (
       <Select interaction="focus" visible onChange={this.handleSelect} value={null}>
         <Select.Trigger tag={Input}>
-          <Input.Value
-            value={value}
-            placeholder="Type domain or URL"
-            onChange={this.handleChange}
-          />
+          {() => (
+            <Input.Value
+              value={value}
+              placeholder="Type domain or URL"
+              onChange={this.handleChange}
+            />
+          )}
         </Select.Trigger>
         {options.length > 0 && (
           <Select.Menu>

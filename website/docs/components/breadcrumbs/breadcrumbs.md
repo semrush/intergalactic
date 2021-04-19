@@ -8,7 +8,7 @@ tabName: Guide
 
 @## Description
 
-**Breadcrumbs** is a component used to display the "user's path" on the site. It's used as an auxiliary navigation tool.
+**Breadcrumbs** is a component used to display the "user's path" on the site. It's used as an additional navigation element.
 
 **Why breadcrumbs are useful**:
 

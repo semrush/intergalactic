@@ -12,8 +12,8 @@ tabName: Guide
 
 There are also inputs for entering certain data:
 
-- [InputNumber](/components/input-number/)
 - [InputMask](/components/input-mask/)
+- [InputNumber](/components/input-number/)
 - [InputPhone](/components/input-phone/)
 - [InputTags](/components/input-tags/)
 

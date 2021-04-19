@@ -1,5 +1,5 @@
 import React from 'react';
-import { cleanup } from 'jest-preset-ui/testing';
+import { cleanup, axe, render } from 'jest-preset-ui/testing';
 import snapshot from 'jest-preset-ui/snapshot';
 import Dropdown from '../src';
 
@@ -21,5 +21,21 @@ describe('Dropdown', () => {
     );
 
     expect(await snapshot(component)).toMatchImageSnapshot();
+  });
+
+  test('a11y', async () => {
+    const { container } = render(
+      <Dropdown visible disablePortal>
+        <Dropdown.Trigger>
+          <button>default dropdown</button>
+        </Dropdown.Trigger>
+        <Dropdown.Popper>
+          <div>text</div>
+        </Dropdown.Popper>
+      </Dropdown>,
+    );
+
+    const results = await axe(container);
+    expect(results).toHaveNoViolations();
   });
 });

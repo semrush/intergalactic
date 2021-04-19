@@ -15,6 +15,7 @@ import Tracking from './components/Tracking';
 import Home from './pages/Home';
 import Page from './pages/Page';
 import NotFound from './pages/NotFound';
+import ContactUs from './pages/ContactUs';
 
 const Body = styled.div`
   display: flex;
@@ -47,6 +48,9 @@ function App() {
           <Switch>
             <Route exact path="/">
               <Home />
+            </Route>
+            <Route exact strict path="/contacts/contact-info/">
+              <ContactUs />
             </Route>
             <Route exact strict path="/:category/:page/:tab?/">
               <Page />

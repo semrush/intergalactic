@@ -1,13 +1,26 @@
 #!/usr/bin/env node
-const { url } = require('minimist')(process.argv.slice(2));
+let lastKey = null;
+const { urls } = process.argv.slice(2).reduce((acc, key) => {
+  if (key.includes('--')) {
+    lastKey = key.replace('--', '');
+    acc[lastKey] = [];
+  } else {
+    acc[lastKey] = acc[lastKey] ? [...acc[lastKey], key] : key;
+  }
+  return acc;
+}, {});
+
 const dayjs = require('dayjs');
 const sendUiKitUpdates = require('../index');
 
 const DATE_FORMAT = 'YYYY-MM-DD';
 
 const end = dayjs().format(DATE_FORMAT);
+const valueMissedDays = dayjs().day() === 5 ? 4 : 7;
 const start = dayjs()
-  .subtract(7, 'day')
+  .subtract(valueMissedDays, 'day')
   .format(DATE_FORMAT);
 
-sendUiKitUpdates(start, end, url).catch((err) => console.log(err));
+console.log(start, end, valueMissedDays);
+
+sendUiKitUpdates(start, end, urls).catch((err) => console.log(err));

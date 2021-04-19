@@ -1,5 +1,5 @@
 import React from 'react';
-import { cleanup, render } from 'jest-preset-ui/testing';
+import { cleanup, render, axe } from 'jest-preset-ui/testing';
 import snapshot from 'jest-preset-ui/snapshot';
 import { shouldSupportClassName, shouldSupportRef } from 'jest-preset-ui/shared';
 import Link from '../src';
@@ -122,5 +122,12 @@ describe('Link', () => {
     );
 
     expect(await snapshot(component)).toMatchImageSnapshot();
+  });
+
+  test('a11y', async () => {
+    const { container } = render(<Link disabled>Link</Link>);
+
+    const results = await axe(container);
+    expect(results).toHaveNoViolations();
   });
 });

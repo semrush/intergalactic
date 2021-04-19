@@ -25,8 +25,10 @@ import ja from './translations/ja.json';
 import ru from './translations/ru.json';
 import zh from './translations/zh.json';
 import pt from './translations/pt.json';
+import ko from './translations/ko.json';
+import vi from './translations/vi.json';
 
-const i18n = { de, en, es, fr, it, ja, ru, zh, pt };
+const i18n = { de, en, es, fr, it, ja, ru, zh, pt, ko, vi };
 
 export interface IProjectCreateValues {
   url: string;
@@ -67,10 +69,6 @@ export interface IProjectCreateModalProps extends IWithI18nEnhanceProps {
   loading?: boolean;
   /** This parameter controls the visibility of the modal window */
   visible?: boolean;
-  /** Selecting the translation language
-   * @default en
-   */
-  locale?: 'de' | 'en' | 'es' | 'fr' | 'it' | 'ja' | 'ru' | 'zh' | 'pt';
   /** Properties for the project sharing checkbox
    * @default {}
    */

@@ -8,7 +8,7 @@ tabName: Guide
 
 @## Description
 
-**Radio button** is a control for selecting one of several values.
+**Radio button** is a control for selecting one of several values/options.
 
 The radio button clearly displays the user's selection status. It is used mainly for group settings when there is a list of parameters/options/etc., and the user can choose only one option.
 

@@ -200,7 +200,7 @@ const Side = styled.div`
 `;
 
 const MobileMenu = styled.span`
-  @media (min-width: 768px) {
+  @media (min-width: 769px) {
     display: none;
   }
 `;
@@ -239,7 +239,7 @@ const Links = styled.div`
     flex-direction: column;
     padding: 40px 32px 28px;
     color: #171a22;
-    font-size: 18px;
+    font-size: 16px;
     a {
       margin-bottom: 12px;
     }
@@ -306,14 +306,11 @@ function Header(props) {
           <OutsideClick onOutsideClick={() => setClicked(false)}>
             <Side>
               <Links>
-                <NavLink to="/internal/roadmap/">Roadmap</NavLink>
-                <NavLink to="/internal/release/">Releases</NavLink>
-                <NavLink
-                  to={{ pathname: 'https://github.com/semrush/intergalactic' }}
-                  target="_blank"
-                >
+                <a href="/internal/roadmap/">Roadmap</a>
+                <a href="/internal/release/">Releases</a>
+                <a href="https://github.com/semrush/intergalactic" target="_blank">
                   GitHub
-                </NavLink>
+                </a>
               </Links>
               <Line orientation="horizontal" />
               <SideBarNavigation
@@ -361,11 +358,7 @@ function Header(props) {
         </MobileSearch>
         <SearchHome
           placeholder="What brings you here, Sole Survivor?"
-          style={
-            visible
-              ? { display: 'flex', marginLeft: '-200px', width: '227px' }
-              : { display: 'none' }
-          }
+          style={visible ? { marginLeft: '-200px', width: '227px' } : { display: 'none' }}
         />
         <MobileClose
           tag={Button}

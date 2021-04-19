@@ -10,7 +10,7 @@ tabName: Guide
 
 > 💡 This component is one of the components that displays the download and response to user actions in the interface. For general rules on such components, see the [Loading patterns](/patterns/loading-states/).
 
-**Spin** is a component of the page, section or individual widget loading status for those cases when we do not know the exact time of data loading. To display it around any component block, use [SpinContainer](/components/spin-container/).
+**Spin** is a component of the page, section or individual widget loading status for those cases when we do not know the exact time of data loading. To display it around any component, use [SpinContainer](/components/spin-container/).
 
 @## Animation
 

@@ -71,6 +71,20 @@ const Input = styled.input`
   }
 `;
 
+const DesktopInput = styled(Input)`
+  display: none;
+  @media (min-width: 769px) {
+    display: flex;
+  }
+`;
+
+const MobileInput = styled(Input)`
+  display: none;
+  @media (max-width: 768px) {
+    display: flex;
+  }
+`;
+
 const IconSearchWrapper = styled.div`
   position: absolute;
   right: 15px;
@@ -172,8 +186,17 @@ const SuggestSearch = withRouter(
           {({ visible }, action) => {
             return (
               <>
-                <Input
+                <DesktopInput
                   autoFocus
+                  isOpen={!!currentRefinement && visible}
+                  onChange={(e) => {
+                    refine(convertKeyboard(e.currentTarget.value));
+                    action.visible(true);
+                    action.highlightedIndex(0);
+                  }}
+                  {...other}
+                />
+                <MobileInput
                   isOpen={!!currentRefinement && visible}
                   onChange={(e) => {
                     refine(convertKeyboard(e.currentTarget.value));
