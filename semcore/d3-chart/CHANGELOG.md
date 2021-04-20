@@ -2,17 +2,23 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [1.0.0-8] - 2021-04-20
+
+### Fixed
+
+- Fixed version dependency for package `@semcore/popper`.
+
 ## [1.0.0-7] - 2021-04-15
 
 ### Fixed
 
-- Fixed Plot naming
+- Fixed Plot naming.
 
 ## [1.0.0-6] - 2021-04-15
 
 ### Added
 
-- Added Donut and Semi-donut charts
+- Added Donut and Semi-donut charts.
 
 ## [1.0.0-5] - 2021-03-31
 
@@ -24,7 +30,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Added
 
-- Added Area and Stacked Area charts
+- Added Area and Stacked Area charts.
 
 ## [1.0.0-3] - 2021-03-29
 
@@ -42,7 +48,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Added
 
-- Added support property `tag` for all components
+- Added support property `tag` for all components.
 
 ### Fixed
 
@@ -52,4 +58,4 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Added
 
-- Initial release
+- Initial release.
