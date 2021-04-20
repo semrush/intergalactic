@@ -1,5 +1,5 @@
 {
-  "name": "babel-plugin-styles",
+  "name": "@semcore/babel-plugin-styles",
   "version": "1.0.0",
   "main": "./babel-plugin-styles.js",
   "bin": {

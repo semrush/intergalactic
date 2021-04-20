@@ -7,7 +7,7 @@ module.exports = function(babel, opts = {}) {
     ],
     plugins: [
       'babel-plugin-root',
-      'babel-plugin-styles',
+      '@semcore/babel-plugin-styles',
       ['@semcore/babel-plugin-shadow', opts.shadow],
       '@babel/plugin-proposal-export-default-from',
       '@babel/plugin-proposal-class-properties',

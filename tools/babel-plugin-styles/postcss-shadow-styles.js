@@ -2,23 +2,25 @@ const Tokenizer = require('css-selector-tokenizer');
 const ValueParser = require('postcss-value-parser');
 const stringHash = require('string-hash');
 
+const PLACEHOLDER_REPLACER = '_gg_';
+
 function walkRule(nodes = [], generateClassName, tokens) {
   let element;
   nodes.forEach((node, i) => {
     if (node.type === 'element' && /^[A-Z]/.test(node.name)) {
       node.type = 'class';
       element = node.name;
-      tokens[element] = node.name = generateClassName([node.name]);
+      tokens['__' + node.name] = node.name = generateClassName([node.name]);
     } else if (node.type === 'class') {
-      if (tokens[node.name]) element = node.name;
+      if (tokens['__' + node.name]) element = node.name;
     } else if (node.type === 'attribute') {
       node.type = 'class';
       const [mod, val] = node.content.split('=');
       if (val) {
         const value = val.replace(/['"]/g, '');
-        tokens[mod + '=' + value] = node.name = generateClassName([element, mod, value]);
+        tokens['_' + mod + '_' + value] = node.name = generateClassName([element, mod, value]);
       } else {
-        tokens[mod] = node.name = generateClassName([element, mod]);
+        tokens['_' + mod] = node.name = generateClassName([element, mod]);
       }
     } else {
       element = undefined;
@@ -64,12 +66,12 @@ const DEFAULT_OPTS = {
       .substr(0, 5);
 
     if (value) {
-      return `_${mod}_${value}_${hash}`;
+      return `_${mod}_${value}_${hash}${PLACEHOLDER_REPLACER}`;
     }
     if (mod) {
-      return `__${mod}_${hash}`;
+      return `__${mod}_${hash}${PLACEHOLDER_REPLACER}`;
     }
-    return `___${el}_${hash}`;
+    return `___${el}_${hash}${PLACEHOLDER_REPLACER}`;
   },
 };
 
@@ -129,4 +131,5 @@ module.exports = (opts) => {
   };
 };
 
+module.exports.PLACEHOLDER_REPLACER = PLACEHOLDER_REPLACER;
 module.exports.postcss = true;

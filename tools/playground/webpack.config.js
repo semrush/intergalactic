@@ -52,7 +52,10 @@ module.exports = function() {
         //     loader: 'babel-loader',
         //     options: {
         //       babelrc: false,
-        //       plugins: [['@semcore/babel-plugin-react-semcore', { media: true }]],
+        //       plugins: [['@semcore/babel-plugin-react-semcore', {
+        //         theme: ['@sellerly-kit/theme-sellerly', process.cwd()],
+        //         pkgName: 'button'
+        //       }]],
         //     },
         //   },
         // },
