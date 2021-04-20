@@ -3,19 +3,7 @@ const child_process = require('child_process');
 const syntaxJsx = require('@babel/plugin-syntax-jsx').default;
 const { addNamed } = require('@babel/helper-module-imports');
 const fs = require('fs-extra');
-const postcss = require('postcss');
-const presetEnv = require('postcss-preset-env');
-const atImport = require('postcss-import-sync2');
-
-const shadowStyles = require('./postcss-shadow-styles');
-
-const syncPlugin = (plugin) => (root, result) => {
-  const { SynchronousPromise } = require('synchronous-promise');
-  const realPromise = global.Promise;
-  global.Promise = SynchronousPromise;
-  plugin(root, result);
-  global.Promise = realPromise;
-};
+const postcss = require('./postcss');
 
 function WatchFiles() {
   const watchPath = {};
@@ -48,30 +36,7 @@ function StylesPlugin({ types: t }, opts) {
   const options = Object.assign({}, DEFAULT_OPTS, opts);
   const watch = new WatchFiles();
 
-  const processor = postcss([
-    atImport({
-      ...options.import,
-      sync: true,
-    }),
-    syncPlugin(
-      presetEnv({
-        stage: 0,
-        browsers: 'defaults',
-        features: {
-          'custom-properties': {
-            preserve: false,
-          },
-          'custom-media-queries': {
-            preserve: false,
-          },
-          'color-mod-function': {
-            unresolved: 'error',
-          },
-        },
-      }),
-    ),
-    shadowStyles(options.shadow),
-  ]);
+  const processor = postcss(options);
 
   function getAttrKey(name) {
     if (t.isJSXNamespacedName(name)) {
@@ -135,11 +100,14 @@ function StylesPlugin({ types: t }, opts) {
     p.replaceWith(
       t.SequenceExpression([
         wrapBundlerComments(
-          t.CallExpression(p.node.tag, [t.StringLiteral(css), t.StringLiteral(hash)]),
+          t.CallExpression(p.node.tag, [
+            t.StringLiteral(css),
+            t.StringLiteral(hash + postcss.PLACEHOLDER_REPLACER),
+          ]),
         ),
-        t.objectExpression(
+        t.ObjectExpression(
           Object.entries(tokens).map(([key, value]) =>
-            t.objectProperty(t.stringLiteral(key), t.stringLiteral(value)),
+            t.ObjectProperty(t.StringLiteral(key), t.StringLiteral(value)),
           ),
         ),
       ]),

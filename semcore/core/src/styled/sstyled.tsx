@@ -14,7 +14,7 @@ const getStyles = () => ({
   get css() {
     let serverStyles = '';
     for (const id in serverMap) {
-      serverStyles += `<style type="text/css" id="${id}">${serverMap[id]}</style>`;
+      serverStyles += `<style type='text/css' id='${id}'>${serverMap[id]}</style>`;
     }
     return serverStyles;
   },
@@ -71,6 +71,7 @@ function getClassAndVars(styles, name, props) {
   function getPropValue(key, props) {
     return props[`use:${key}`] ?? props[key];
   }
+
   return Object.entries(styles).reduce(
     (acc, [key, value]) => {
       if (key.startsWith('--')) {
@@ -96,6 +97,19 @@ function getClassAndVars(styles, name, props) {
   );
 }
 
+function reshadowToShadow(obj) {
+  return Object.entries(obj).reduce((style, [name, value]) => {
+    let n = name;
+    if (name.startsWith('__')) {
+      n = name.replace(/^__/, '');
+    } else if (name.startsWith('_')) {
+      n = name.replace(/^_/, '').replace('_', '=');
+    }
+    style[n] = value;
+    return style;
+  }, {});
+}
+
 function sstyled(
   styles = {},
 ): ((ReactNode) => ReactNode) & {
@@ -104,7 +118,7 @@ function sstyled(
   // @ts-ignore
   return {
     cn(name, props) {
-      const [classes, style] = getClassAndVars(styles, name, props);
+      const [classes, style] = getClassAndVars(reshadowToShadow(styles), name, props);
       const extraProps = {};
 
       if (Object.keys(classes).length) {
@@ -130,6 +144,7 @@ sstyled.css = function (css): { [key: string]: string } {
 sstyled.insert = insert;
 sstyled.merge = merge;
 sstyled.getStyles = getStyles;
+sstyled.SHADOW_STYLES = Symbol('SHADOW_STYLES');
 
 export { sstyled };
 /* eslint-enable */

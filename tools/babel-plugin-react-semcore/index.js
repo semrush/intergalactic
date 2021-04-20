@@ -140,14 +140,15 @@ module.exports = function({ types: t }, pluginOptions) {
     );
   }
 
-  function replaceWithNewStyles(node, styles, cssModulesMap) {
+  function replaceWithNewStyles(node, styles, tokens, hash) {
     const { expressions } = node;
     const [cssCall, oldCssModulesMap] = expressions;
     if (cssCall.type !== 'CallExpression' || oldCssModulesMap.type !== 'ObjectExpression') return;
     const stylesLiteral = t.stringLiteral(styles);
     t.addComment(stylesLiteral, 'leading', RESHADOW_MAGIC_COMMENTS.INNER_CSS);
     node.expressions[0].arguments[0] = stylesLiteral;
-    const map = toObjectExpression(cssModulesMap);
+    node.expressions[0].arguments[1] = t.stringLiteral(hash + parse.PLACEHOLDER_REPLACER);
+    const map = toObjectExpression(tokens);
     t.addComment(map, 'leading', RESHADOW_MAGIC_COMMENTS.CSS_END);
     node.expressions[1] = map;
   }
@@ -173,17 +174,17 @@ module.exports = function({ types: t }, pluginOptions) {
     },
     visitor: {
       // media styles expression statement
-      ExpressionStatement(p) {
-        const { node } = p;
-        if (!containsReshadowMagicComment(node)) return;
-        const parentPath = p.findParent(findParentIfStatement);
-        if (!parentPath) return;
-        if (!pluginOptions.media || (pluginOptions.media && pluginOptions.theme)) {
-          parentPath.remove();
-        } else {
-          parentPath.replaceWith(p);
-        }
-      },
+      // ExpressionStatement(p) {
+      //   const { node } = p;
+      //   if (!containsReshadowMagicComment(node)) return;
+      //   const parentPath = p.findParent(findParentIfStatement);
+      //   if (!parentPath) return;
+      //   if (!pluginOptions.media || (pluginOptions.media && pluginOptions.theme)) {
+      //     parentPath.remove();
+      //   } else {
+      //     parentPath.replaceWith(p);
+      //   }
+      // },
       // styles inject & css-modules map declaration
       VariableDeclaration(p, state) {
         const { node } = p;
@@ -196,7 +197,6 @@ module.exports = function({ types: t }, pluginOptions) {
         const cssPath = getBaseCssPath(node, state.file.opts.filename);
         if (!cssPath || !pkgName) return;
         const cssFileName = path.basename(cssPath);
-
         const themeCssPaths = getThemeCssPathsList(cssPath, {
           themeMeta: this.themeMeta,
           pkgName,
@@ -205,8 +205,8 @@ module.exports = function({ types: t }, pluginOptions) {
 
         if (!themeCssPaths) return;
 
-        const { css, tokens } = parse(themeCssPaths, pluginOptions);
-        replaceWithNewStyles(styles.init, css, tokens);
+        const { css, tokens, hash } = parse(themeCssPaths, pluginOptions);
+        replaceWithNewStyles(styles.init, css, tokens, hash);
 
         t.addComment(
           node,
