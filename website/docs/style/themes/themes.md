@@ -14,35 +14,10 @@ Themes are just CSS. You can use our set of tools to change the default style of
 
 There are 2 ways to redefine styles of our components:
 
-- babel-plugin
-- styles composition
+- Local for one specific component
+- Global for all components at once
 
-> ⚠️ **We strongly recommend you to use the babel-plugin approach**.
-
-The special parameters of each approach are described below.
-
-@## Babel-plugin
-
-Babel-plugin helps you to rewrite or to add styles to our components by redefining their appearance. **It looks like this: you write CSS, while babel-plugin combines it with our default styles and applies it to all the components**.
-
-Using this approach, you can publish themes to `npm` and reuse them later.
-
-Advantages:
-
-- Styles are applied to all the components automatically
-- The theme is applied during assembly
-- Easiness of reuse
-- De-duplication of styles
-
-Disadvantages:
-
-- There is no way to extend API
-- Strict structure and naming
-- Need to configure webpack 🙄
-
-You can write "themes" for our components this way [local](themes-code/#aaf47a) use.
-
-@## Styles composition
+@## Local specific
 
 Styles composition helps us to extend basic styles of our components, and sometimes even supplement API. In fact, you write styles using `css-in-js` approach and transfer them to our components.
 
@@ -57,6 +32,27 @@ Disadvantages:
 - No style de-duplication
 - It is difficult to reuse the styles
 
-Read more about [how to apply styles composition in practice](themes-code/#a48e9a).
+Read more about [how to apply styles composition in practice](/style/themes/themes-local/).
 
-@page themes-code
+@## Global specific
+
+This helps you to rewrite or to add styles to all our components by redefining their appearance. **It looks like this: you write CSS, while babel-plugin combines it with our default styles and applies it to all the components**.
+
+Using this approach, you can publish themes to `npm` and reuse them later.
+
+Advantages:
+
+- Styles are applied to all the components automatically
+- The theme is applied during assembly
+- Easiness of reuse
+- De-duplication of styles
+
+Disadvantages:
+
+- Strict structure and naming
+- Need to configure webpack 🙄
+
+You can write "themes" for our components this way [global](/style/themes/themes-global/) use.
+
+@page themes-local
+@page themes-global
