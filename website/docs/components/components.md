@@ -43,6 +43,7 @@ title: Components
 @page scroll-area
 @page side-panel
 @page skeleton
+@page slider
 @page spin
 @page spin-container
 @page sticky
