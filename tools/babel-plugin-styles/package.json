@@ -18,6 +18,7 @@
     "postcss-preset-env": "^6.7.0",
     "postcss-value-parser": "^4.1.0",
     "string-hash": "^1.1.3",
-    "synchronous-promise": "^2.0.15"
+    "synchronous-promise": "^2.0.15",
+    "@semcore/postcss-mediarezka": "^1.0.0"
   }
 }
