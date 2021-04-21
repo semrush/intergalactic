@@ -53,8 +53,8 @@ module.exports = function() {
         //     options: {
         //       babelrc: false,
         //       plugins: [['@semcore/babel-plugin-react-semcore', {
-        //         theme: ['@sellerly-kit/theme-sellerly', process.cwd()],
-        //         pkgName: 'button'
+        //         theme: [process.cwd()],
+        //         scope: 'semcore'
         //       }]],
         //     },
         //   },
