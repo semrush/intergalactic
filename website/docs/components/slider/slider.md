@@ -25,6 +25,8 @@ Slider consists of:
 - progress bar;
 - value labels (optional).
 
+![slider scheme](static/scheme.png)
+
 > When designing such kind of an input, keep in mind the [Akkot-Tsai law](https://en.wikipedia.org/wiki/Steering_law). It describes the dependence of the time for performing an action on the thickness and width of the horizontal control with which this action can be performed. So the larger the slider knob and the larger the bar itself, the easier and faster it is to manipulate it.
 
 ### Sizes
@@ -79,6 +81,15 @@ This design helps to reduce errors associated with homing (moving the hand from 
 
 ![slider with invalid input](static/maximum.png)
 
+@## Keyboard control
+
+- `Tab` moves focus to the slider.
+- Keyboard arrows, '←' and '→', move the slider knob to the step specified in the input.
+- `Enter` applies the entered value.
+- `Esc` removes focus from the input.
+
+> If the slider knob has focus, the user can move it with the keyboard arrows — '←', '→'.
+
 @## Use in UX/UI
 
 ### When to use the slider
@@ -95,7 +106,7 @@ Consider the context of the interface. It can be difficult for a user to click a
 
 Consider how the user will interact with the control. Do not place value labels under the input on mobile devices. Otherwise, when using such kind of control on mobile devices, the user will close all the values with his finger when interacting with it.
 
-To keep the labels of such input visible when interacting with it, place them either on the left / right, or above.
+To keep the labels of such input visible when interacting with it, place them either on the left / right, or above\*.
 
 ![slider on the mobile](static/mobile.png)
 

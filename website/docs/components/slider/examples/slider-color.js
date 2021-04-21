@@ -5,9 +5,9 @@ import { Box } from '@semcore/flex-box';
 const Demo = () => {
   return (
     <Box w={140}>
-      <Slider mt={5} value={20} background="#66ccf750">
-        <Slider.Knob color="#1d9c00" />
-        <Slider.Bar color="#8bc83550" />
+      <Slider mt={5} value={20}>
+        <Slider.Knob color="#421983" />
+        <Slider.Bar color="#B880FF" />
       </Slider>
     </Box>
   );

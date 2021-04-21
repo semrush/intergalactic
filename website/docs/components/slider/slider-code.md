@@ -12,7 +12,7 @@ The slider can be used in combination with [InputNumber](/components/input-numbe
 
 @example slider-with-input
 
-@## Possibility of changing slider colours
+@## Color customization
 
 If required, you can assign your own color to all parts of the slider.
 

@@ -36,7 +36,7 @@ const Demo = () => {
         visible={!!error}
         interaction="click"
         theme="warning"
-        placement="top-start"
+        placement="right"
       >
         <InputNumber mt={4} w={140} size="m" state={!!error ? 'invalid' : 'normal'}>
           <InputNumber.Value step={1} value={value} onChange={handleInput} />
