@@ -1,7 +1,7 @@
 {
   "name": "@semcore/d3-chart",
   "description": "SEMRush D3 Chart Component",
-  "version": "1.0.0-5",
+  "version": "1.0.0-8",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "@semcore/flex-box": "^4",
-    "@semcore/popper": "^4.7",
+    "@semcore/popper": "^4.9",
     "@semcore/utils": "^3.15",
     "d3-array": "^2.8",
     "d3-shape": "^2.0",

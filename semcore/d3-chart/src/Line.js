@@ -1,7 +1,7 @@
 import React from 'react';
 import { curveLinear, line as d3Line } from 'd3-shape';
 import { Component, styled } from '@semcore/core';
-import createXYElement from './XYElement';
+import createElement from './createElement';
 import { definedData, scaleOfBandwidth, getNullData } from './utils';
 import Dots from './Dots';
 
@@ -56,7 +56,7 @@ function Null(props) {
   return styled(styles)(<SNull render="path" d={d3(data)} hide={hide} />);
 }
 
-export default createXYElement(LineRoot, {
+export default createElement(LineRoot, {
   Dots,
   Null,
 });

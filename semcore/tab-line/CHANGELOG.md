@@ -2,6 +2,18 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.5.2] - 2021-04-20
+
+### Fixed
+
+- Fixed calculate size for `Tabline.Item` when value don't change.
+
+## [2.5.1] - 2021-04-16
+
+### Changed
+
+- Changed line-height value
+
 ## [2.5.0] - 2020-12-17
 
 ### Added

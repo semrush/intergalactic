@@ -30,7 +30,7 @@ const Tab = styled.div`
 
 const Main = styled.main`
   h2 {
-    font-size: 30px;
+    font-size: 24px;
     line-height: 120%;
     margin: 16px 0 16px;
   }

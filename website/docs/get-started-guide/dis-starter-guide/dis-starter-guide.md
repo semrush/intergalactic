@@ -41,7 +41,7 @@ Go to [Color](/style/color/) to learn more about our color system.
 
 @## Typography
 
-> **TL;DR or main thoughts**: our main font is Ubuntu. The main text color is #333 (\$gray20 in our variables), while the secondary text color is #757575 (var(--gray60) in our variables).
+> **TL;DR or main thoughts**: our main font is Ubuntu. The main text color is #333 (`var(--gray20)` in our variables), while the secondary text color is #757575 (`var(--gray60)` in our variables).
 
 Our type scale is based on the modular scale with the base of a 12px font size and a 1.2 ratio.
 
@@ -73,17 +73,17 @@ Go to [Grid system](/layout/grid-system) for a detailed description of this comp
 
 @## Breakpoints and grids
 
-> **TL;DR or main thoughts**: we build our interface as desktop-first, since there is a lot of data visualization and explaining messages.
+> **TL;DR or main thoughts**: most of our products are designed to work with data on the desktop, since there is a lot of data visualization and explaining messages. So adaptability is not yet required for all tools.
 
 The main breakpoints that we recommend to use in our interfaces are:
 
-- 414px
+- 320px
 - 768px
 - 1154px
 
 So you need to make designs for:
 
-- 414px — the smallest devices. Don't forget them.
+- 320px — the smallest devices. Don't forget them.
 - 768px — phones and tablets.
 - more than 1154px — big tablets and desktop devices.
 

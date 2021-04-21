@@ -2,7 +2,7 @@ import React from 'react';
 import { stack as d3Stack } from 'd3-shape';
 import { Component } from '@semcore/core';
 import getOriginChildren from '@semcore/utils/lib/getOriginChildren';
-import createXYElement from './XYElement';
+import createElement from './createElement';
 import Area from './Area';
 
 import style from './style/area.shadow.css';
@@ -18,10 +18,7 @@ class StackedAreaRoot extends Component {
   static defaultProps = () => {
     const stack = d3Stack();
     stack[DEFAULT_INSTANCE] = true;
-    return {
-      color: '#50aef4',
-      stack,
-    };
+    return { stack };
   };
 
   getSeries() {
@@ -61,6 +58,6 @@ class StackedAreaRoot extends Component {
   }
 }
 
-const StackedArea = createXYElement(StackedAreaRoot, { Area });
+const StackedArea = createElement(StackedAreaRoot, { Area });
 
 export default StackedArea;
