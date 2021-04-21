@@ -38,7 +38,7 @@ const Header = styled.h2`
   font-family: FactorA-Bold, sans-serif;
   font-size: 50px;
   line-height: 110%;
-  margin: 80px 0 16px;
+  margin: 48px 0 16px;
   @media (max-width: 768px) {
     font-size: 36px;
   }

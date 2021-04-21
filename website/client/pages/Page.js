@@ -23,12 +23,18 @@ const DocumentationWrapper = styled.div`
   @media (max-width: 768px) {
     padding: 96px 32px 64px;
   }
+  @media (max-width: 320px) {
+    padding: 80px 20px 32px;
+  }
 `;
 
 const NextGuide = styled.div`
   display: flex;
   justify-content: space-between;
   margin: 0 32px 96px;
+  @media (max-width: 320px) {
+    margin: 0 32px 80px;
+  }
 
   a {
     color: #171a22;
@@ -43,6 +49,7 @@ const NextGuide = styled.div`
 const SideBar = styled.div`
   height: 100%;
   background: #f5f5f5;
+  max-width: 260px;
   @media (max-width: 768px) {
     display: none;
   }
@@ -60,13 +67,20 @@ const MobileSelect = styled(Select)`
     top: 80px;
     background-color: #fff !important;
     border: 1px solid #d1d4db;
-    box-shadow: 0 2px 16px 0 rgba(0, 0, 0, 0.1);
+    border-style: solid none solid none;
     div div {
       margin: 0 32px !important;
     }
+    @media (max-width: 320px) {
+      div div {
+        margin: 0 20px !important;
+      }
+    }
 
-    &:hover {
+    &:hover,
+    &:active {
       border: 1px solid #171a22;
+      border-style: solid none solid none;
     }
   }
 `;

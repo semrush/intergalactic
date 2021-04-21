@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.9.0] - 2021-04-20
+
+### Added
+
+- Added functions `setTrigger, setPopper` in context for Popper.
+
 ## [4.8.0] - 2020-12-17
 
 ### Added

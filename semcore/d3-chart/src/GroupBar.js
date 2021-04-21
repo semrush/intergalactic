@@ -1,7 +1,7 @@
 import React from 'react';
 import { Component } from '@semcore/core';
 import getOriginChildren from '@semcore/utils/lib/getOriginChildren';
-import createXYElement from './XYElement';
+import createElement from './createElement';
 import Bar from './Bar';
 import HorizontalBar from './HorizontalBar';
 
@@ -63,7 +63,7 @@ class GroupBarRoot extends Component {
   }
 }
 
-const GroupBar = createXYElement(GroupBarRoot, {
+const GroupBar = createElement(GroupBarRoot, {
   Bar,
   HorizontalBar,
 });

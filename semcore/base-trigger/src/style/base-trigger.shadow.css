@@ -71,7 +71,7 @@ SText {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-  line-height: 1;
+  line-height: 1.2;
   flex-grow: 1;
   text-align: left;
 }

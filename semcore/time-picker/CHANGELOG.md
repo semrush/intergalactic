@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.2.1] - 2021-04-13
+
+### Added
+
+- Added `type="button"` for controls `TimePicker.Format`.
+
 ## [2.2.0] - 2021-03-31
 
 ### Changed
