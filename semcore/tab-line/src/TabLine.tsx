@@ -134,7 +134,7 @@ class TabLineRoot extends Component<ITabLineProps> {
     const { styles, Children, controlsLength } = this.asProps;
 
     return sstyled(styles)(
-      <STabLine render={Box} ref={this.$tabsParent} underlined={underlined}>
+      <STabLine render={Box} ref={this.$tabsParent}>
         <NeighborLocation controlsLength={controlsLength}>
           <Children />
         </NeighborLocation>

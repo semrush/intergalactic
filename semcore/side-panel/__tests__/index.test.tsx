@@ -37,7 +37,7 @@ describe('Drawer', () => {
     expect(component.queryByText('Content')).not.toBeNull();
   });
 
-  test('Should support closable property', () => {
+  test('Should support closable false property', () => {
     const component = render(<SidePanel visible>Content</SidePanel>);
     expect(component.queryByTitle('Close')).not.toBeNull();
 

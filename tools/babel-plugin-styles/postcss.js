@@ -1,6 +1,7 @@
 const postcss = require('postcss');
 const presetEnv = require('postcss-preset-env');
 const atImport = require('postcss-import-sync2');
+const mediarezka = require('@semcore/postcss-mediarezka');
 
 const shadowStyles = require('./postcss-shadow-styles');
 
@@ -36,6 +37,10 @@ module.exports = function(options) {
         ...options.presetEnv,
       }),
     ),
+    mediarezka({
+      getMedia: () => {},
+      ...options.mediarezka,
+    }),
     shadowStyles(options.shadow),
   ]);
 };
