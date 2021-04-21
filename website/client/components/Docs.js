@@ -32,17 +32,17 @@ const Main = styled.main`
   h2 {
     font-size: 30px;
     line-height: 120%;
-    margin: 32px 0 16px;
+    margin: 16px 0 16px;
   }
   h3 {
     font-size: 24px;
     line-height: 120%;
-    margin: 32px 0 16px;
+    margin: 16px 0 16px;
   }
   h4 {
     font-size: 18px;
     line-height: 110%;
-    margin: 32px 0 16px;
+    margin: 16px 0 16px;
   }
 `;
 
