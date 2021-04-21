@@ -13,7 +13,7 @@ class SliderRoot extends Component {
   $bar;
 
   static defaultProps = () => ({
-    value: 0,
+    defaultValue: null,
     min: 0,
     max: 100,
     step: 1,
@@ -63,10 +63,13 @@ class SliderRoot extends Component {
     };
   }
 
-  updateValue = (value, e, width, min, max, step) => {
-    const relativeValue = (value * max) / width;
-    const countSteps = Math.round(relativeValue / step);
-    this.handlers.value(countSteps * step, e);
+  updateValue = (values, e, width, min, max, step) => {
+    if (step > max - min) step = 1;
+    const [value, knobSize] = values;
+    const relativeValue = value / (width - knobSize);
+    const relativeStep = step / (max - min);
+    const countSteps = Math.round(relativeValue / relativeStep);
+    this.handlers.value(countSteps * step + min, e);
   };
 
   handleMove = (e) => {
@@ -94,7 +97,7 @@ class SliderRoot extends Component {
       knob.style.left = newLeft + 'px';
       bar.style.width = newLeft + 'px';
 
-      return newLeft;
+      return [newLeft, knob.offsetWidth];
     }
 
     this.updateValue(onMouseMove(e), e, slider.offsetWidth, min, max, step);
@@ -135,12 +138,12 @@ class SliderRoot extends Component {
 
 function convertValueToPercent(value, min, max) {
   if (value > max) return 100;
-  else return ((value - min) / (max - min)) * 100;
+  else return (Math.max(value - min, min) / (max - min)) * 100;
 }
 
 function Bar(props) {
   const { Root: SBar, styles, value, refBar, min, max, step, color, disabled } = props;
-  const width = `calc(${convertValueToPercent(value, min, max, step)}% - 10px)`;
+  const width = `${convertValueToPercent(value, min, max, step)}%`;
   return styled(styles)`
     SBar {
       width: ${width};
@@ -151,7 +154,7 @@ function Bar(props) {
 
 function Knob(props) {
   const { Root: SKnob, styles, value, refKnob, min, max, step, color, disabled } = props;
-  const left = `calc(${convertValueToPercent(value, min, max, step)}% - 10px)`;
+  const left = `${convertValueToPercent(value, min, max, step)}%`;
 
   return styled(styles)`
     SKnob {
