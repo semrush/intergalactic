@@ -41,10 +41,10 @@ const HeaderWrapper = styled.header`
     }
   }
   @media (max-width: 1140px) {
-    grid-template-columns: 1fr 4fr 1fr;
+    grid-template-columns: 1fr 4fr 0.4fr;
   }
   @media (max-width: 768px) {
-    grid-template-columns: 1fr 1fr 4fr;
+    grid-template-columns: 0.4fr 0.4fr 4fr;
     padding: 0;
   }
   @media (max-width: 320px) {
@@ -158,7 +158,7 @@ const MobileSearch = styled.div`
   width: 22px;
   height: 22px;
   top: -11px;
-  right: 35px;
+  right: 24px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -191,7 +191,7 @@ const Side = styled.div`
   left: 0;
   top: 80px;
   bottom: 0;
-  z-index: 999;
+  z-index: -1;
   background: #f5f5f5;
   box-shadow: 5px 8px 25px rgba(137, 141, 154, 0.2);
   @media (max-width: 320px) {
@@ -207,7 +207,7 @@ const MobileMenu = styled.span`
 
 const Mobile = styled.span`
   height: 80px;
-  width: 117px;
+  width: 80px;
   display: flex;
   @media (max-width: 768px) {
     justify-content: center;
@@ -241,7 +241,7 @@ const Links = styled.div`
     color: #171a22;
     font-size: 16px;
     a {
-      margin-bottom: 12px;
+      margin-bottom: 16px;
     }
   }
 `;
@@ -358,7 +358,7 @@ function Header(props) {
         </MobileSearch>
         <SearchHome
           placeholder="What brings you here, Sole Survivor?"
-          style={visible ? { marginLeft: '-200px', width: '227px' } : { display: 'none' }}
+          style={visible ? { marginLeft: '-200px', width: '244px' } : { display: 'none' }}
         />
         <MobileClose
           tag={Button}

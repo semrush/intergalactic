@@ -22,12 +22,12 @@ const styles = css`
 `;
 const Title = styled.h2`
   font-family: FactorA-Regular, sans-serif;
-  font-size: 50px;
-  line-height: 110%;
+  font-size: 40px;
+  line-height: 120%;
   margin: 0;
   margin-bottom: 4px;
   @media (max-width: 320px) {
-    font-size: 40px;
+    font-size: 30px;
     line-height: 120%;
   }
 `;

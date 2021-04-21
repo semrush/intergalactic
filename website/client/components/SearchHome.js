@@ -41,10 +41,10 @@ const Popper = styled.div`
 const InputWrapper = styled(Box)`
   position: relative;
   @media (max-width: 768px) {
-    margin-right: 55px;
+    margin-right: 32px;
   }
   @media (max-width: 320px) {
-    margin: 0 55px 0 10px;
+    margin: 0 55px 0 8px;
     width: 85%;
   }
 `;
@@ -156,7 +156,7 @@ const MenuFooter = styled.div`
 const SelectPopper = styled(Select.Popper)`
   @media (max-width: 320px) {
     margin-left: -200px !important;
-    width: 227px !important;
+    width: 244px !important;
   }
 `;
 
