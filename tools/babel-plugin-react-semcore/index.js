@@ -1,21 +1,27 @@
 const fs = require('fs');
 const path = require('path');
+const semver = require('semver');
 const parse = require('./process');
 
 const RESHADOW_MAGIC_COMMENTS = {
   CSS_START: '__reshadow_css_start__',
-  CSS_END: '__reshadow_css_end__',
-  INNER_CSS: '__inner_css_start__',
   FILE_PATH: '__reshadow-styles__',
 };
 
 const RESOLVED_THEMES_MAP = new Map();
 
-function getPkgNameFromFilePath(filepath, opts) {
-  const scope = opts.scope || '@semcore';
-  const match = filepath.match(new RegExp('\\' + `${scope}\\/[\\w\\-]+`, 'g'));
+function getPkgNameFromFilePath(filepath, scope) {
+  const reg = new RegExp(`/${scope}/(.+?)/`, 'g');
+  const match = filepath.match(reg);
   if (!match) return;
-  return match[match.length - 1].replace(new RegExp('\\' + `${scope}/`), '');
+  return match[match.length - 1].replace(reg, '$1');
+}
+
+function getPkgJsonFromPkgName(filepath, pkgName, scope) {
+  const reg = new RegExp(`/${scope}/${pkgName}/`);
+  const match = filepath.match(reg);
+  if (!match) return;
+  return filepath.substr(0, match.index + match[0].length) + 'package.json';
 }
 
 function resolveTheme(theme) {
@@ -47,43 +53,73 @@ function resolveTheme(theme) {
 function createThemeMeta(themeAbsolutePath) {
   const components = fs.readdirSync(themeAbsolutePath);
   return components.reduce((acc, component) => {
+    const configPath = path.resolve(themeAbsolutePath, component, 'versions.json');
     if (!Object.hasOwnProperty.call(acc, component)) {
       acc[component] = {};
+      if (fs.existsSync(configPath)) {
+        const config = require(configPath);
+        Object.entries(config).map(([v, s]) => {
+          acc[component][v] = {};
+          Object.entries(s).map(([css, p]) => {
+            acc[component][v][css] = path.resolve(themeAbsolutePath, component, p);
+          });
+        });
+      } else {
+        acc[component]['*'] = {};
+        const componentCss = fs
+          .readdirSync(path.resolve(themeAbsolutePath, component))
+          .filter((s) => s.endsWith('.css'));
+        componentCss.map((css) => {
+          acc[component]['*'][css] = path.resolve(themeAbsolutePath, component, css);
+        });
+      }
     }
-
-    const componentCss = fs.readdirSync(path.resolve(themeAbsolutePath, component));
-
-    componentCss.map((css) => {
-      acc[component][css] = path.resolve(themeAbsolutePath, component, css);
-    });
 
     return acc;
   }, {});
 }
 
 function getThemeCssPathsList(baseStyles, theme) {
-  const { themeMeta, pkgName, cssFileName } = theme;
+  const { themeMeta, pkgName, pkgJsonPath, cssFileName } = theme;
+
   const themeCssPaths = themeMeta.reduce((acc, meta) => {
     if (!meta[pkgName]) return acc;
-    if (!meta[pkgName][cssFileName]) return acc;
-    acc.push(meta[pkgName][cssFileName]);
+    if (meta[pkgName]['*']) {
+      if (meta[pkgName]['*'][cssFileName]) {
+        acc.push(meta[pkgName]['*'][cssFileName]);
+      }
+    } else {
+      const { version } = require(pkgJsonPath);
+      Object.entries(meta[pkgName]).forEach(([v, css]) => {
+        if (css[cssFileName] && semver.satisfies(version, v)) {
+          acc.push(css[cssFileName]);
+        }
+      });
+    }
     return acc;
   }, []);
   return themeCssPaths.length ? [baseStyles, ...themeCssPaths] : undefined;
 }
 
 /**
- * pluginOptions: {
- *   media: boolean,
+ * options: {
  *   theme: packageName (@semcore/theme-sellerly),
- *   pkgName: string (for tests, ignore & don't describe),
+ *   score: string,
+ *   postcss: Object,
  *   purgeCSS: Object, purgeCSS config object - http://rbtech.github.io/css-purge/,
  *   verbose: writes plugin's output to stdout
  * }
  */
-module.exports = function({ types: t }, pluginOptions) {
+const DEFAULT_OPTIONS = {
+  scope: '@semcore',
+  postcss: {},
+  purgeCSS: {},
+};
+module.exports = function({ types: t }, opts) {
+  const options = Object.assign({}, DEFAULT_OPTIONS, opts);
+
   function log(msg, level = 'info') {
-    if (pluginOptions.verbose) {
+    if (options.verbose) {
       console[level]('[@semcore/babel-plugin-react-semcore] ' + msg);
     }
   }
@@ -114,13 +150,6 @@ module.exports = function({ types: t }, pluginOptions) {
     return path.join(path.dirname(currentFileName), relativeCssPath);
   }
 
-  function findParentIfStatement(path) {
-    if (!t.isIfStatement(path)) return;
-    const { node } = path;
-    if (node.test.type !== 'BooleanLiteral' && node.test.value !== false) return;
-    return path;
-  }
-
   function toObjectExpression(obj) {
     return t.objectExpression(
       Object.entries(obj).map(([key, value]) =>
@@ -140,17 +169,26 @@ module.exports = function({ types: t }, pluginOptions) {
     );
   }
 
+  function copyComment(oldNode, cb) {
+    const leadingComments = (oldNode.leadingComments || []).map((c) => c.value);
+    const trailingComments = (oldNode.trailingComments || []).map((c) => c.value);
+    t.removeComments(oldNode);
+    const newNode = cb();
+    leadingComments.forEach((c) => t.addComment(newNode, 'leading', c));
+    trailingComments.forEach((c) => t.addComment(newNode, 'trailing', c));
+  }
+
   function replaceWithNewStyles(node, styles, tokens, hash) {
     const { expressions } = node;
-    const [cssCall, oldCssModulesMap] = expressions;
-    if (cssCall.type !== 'CallExpression' || oldCssModulesMap.type !== 'ObjectExpression') return;
-    const stylesLiteral = t.stringLiteral(styles);
-    t.addComment(stylesLiteral, 'leading', RESHADOW_MAGIC_COMMENTS.INNER_CSS);
-    node.expressions[0].arguments[0] = stylesLiteral;
+    const [cssCall, cssModulesMap] = expressions;
+    if (cssCall.type !== 'CallExpression' || cssModulesMap.type !== 'ObjectExpression') return;
+
+    copyComment(
+      node.expressions[0].arguments[0],
+      () => (node.expressions[0].arguments[0] = t.StringLiteral(styles)),
+    );
     node.expressions[0].arguments[1] = t.stringLiteral(hash + parse.PLACEHOLDER_REPLACER);
-    const map = toObjectExpression(tokens);
-    t.addComment(map, 'leading', RESHADOW_MAGIC_COMMENTS.CSS_END);
-    node.expressions[1] = map;
+    node.expressions[1] = toObjectExpression(tokens);
   }
 
   function isValidStyles(styles) {
@@ -160,7 +198,7 @@ module.exports = function({ types: t }, pluginOptions) {
 
   return {
     pre() {
-      let { theme } = pluginOptions;
+      let { theme } = options;
       if (!Array.isArray(theme)) theme = [theme];
       this.themeMeta = theme.reduce((acc, theme) => {
         const resolvedTheme = resolveTheme(theme);
@@ -173,49 +211,28 @@ module.exports = function({ types: t }, pluginOptions) {
       }, []);
     },
     visitor: {
-      // media styles expression statement
-      // ExpressionStatement(p) {
-      //   const { node } = p;
-      //   if (!containsReshadowMagicComment(node)) return;
-      //   const parentPath = p.findParent(findParentIfStatement);
-      //   if (!parentPath) return;
-      //   if (!pluginOptions.media || (pluginOptions.media && pluginOptions.theme)) {
-      //     parentPath.remove();
-      //   } else {
-      //     parentPath.replaceWith(p);
-      //   }
-      // },
-      // styles inject & css-modules map declaration
       VariableDeclaration(p, state) {
         const { node } = p;
-        if (!this.themeMeta.length || !pluginOptions.theme) return;
+        if (!this.themeMeta.length || !options.theme) return;
         if (!containsReshadowMagicComment(node)) return;
         const styles = node.declarations[0];
         if (!isValidStyles(styles)) return;
-        const pkgName =
-          getPkgNameFromFilePath(state.file.opts.filename, pluginOptions) || state.opts.pkgName;
+        const pkgName = getPkgNameFromFilePath(state.file.opts.filename, options.scope);
+        const pkgJsonPath = getPkgJsonFromPkgName(state.file.opts.filename, pkgName, options.scope);
         const cssPath = getBaseCssPath(node, state.file.opts.filename);
         if (!cssPath || !pkgName) return;
         const cssFileName = path.basename(cssPath);
         const themeCssPaths = getThemeCssPathsList(cssPath, {
           themeMeta: this.themeMeta,
+          pkgJsonPath,
           pkgName,
           cssFileName,
         });
 
         if (!themeCssPaths) return;
 
-        const { css, tokens, hash } = parse(themeCssPaths, pluginOptions);
+        const { css, tokens, hash } = parse(themeCssPaths, options);
         replaceWithNewStyles(styles.init, css, tokens, hash);
-
-        t.addComment(
-          node,
-          'leading',
-          `${RESHADOW_MAGIC_COMMENTS.FILE_PATH}:"${path.relative(
-            path.dirname(state.file.opts.filename),
-            themeCssPaths[themeCssPaths.length - 1],
-          )}"`,
-        );
       },
     },
   };

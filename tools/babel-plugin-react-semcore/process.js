@@ -27,7 +27,7 @@ function createImports(paths) {
   return paths.map((path) => `@import '${path}';`).join('\n');
 }
 
-function execPurgeCss(styles, purgeCSSOptions = {}) {
+function execPurgeCss(styles, purgeCSSOptions) {
   const stringBUF = Buffer.from(styles, 'utf8');
   const options = JSON.stringify(purgeCSSOptions);
 
@@ -51,7 +51,7 @@ function execPurgeCss(styles, purgeCSSOptions = {}) {
 const storage = new Cache();
 
 module.exports = function(cssPaths, pluginOptions) {
-  const processor = postcss(pluginOptions.postcss || {});
+  const processor = postcss(pluginOptions.postcss);
   const [baseImport, ...themeImport] = cssPaths;
 
   const themeCss = themeImport.map((p) => fs.readFileSync(p, 'utf8')).join('');
