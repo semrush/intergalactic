@@ -10,7 +10,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@sellerly-kit/theme-sellerly": "^1.1.8",
     "@semcore/babel-plugin-react-semcore": "*",
     "@semcore/shadow-loader": "*",
     "babel-loader": "^8.0.6",

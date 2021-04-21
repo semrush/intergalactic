@@ -2564,11 +2564,6 @@
     string-hash "^1.1.3"
     svg-tag-names "^2.0.1"
 
-"@sellerly-kit/theme-sellerly@^1.1.8":
-  version "1.1.8"
-  resolved "http://artifactory.semrush.net/artifactory/api/npm/npm/@sellerly-kit/theme-sellerly/-/@sellerly-kit/theme-sellerly-1.1.8.tgz#ca0fd90c541e570fac6be7bd25e8a256ab160ddf"
-  integrity sha1-yg/ZDFQeVw+sa+e9JeiiVqsWDd8=
-
 "@sindresorhus/is@^0.7.0":
   version "0.7.0"
   resolved "https://registry.yarnpkg.com/@sindresorhus/is/-/is-0.7.0.tgz#9a06f4f137ee84d7df0460c1fdb1135ffa6c50fd"
