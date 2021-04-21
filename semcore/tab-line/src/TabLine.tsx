@@ -68,11 +68,14 @@ class TabLineRoot extends Component<ITabLineProps> {
   };
 
   readonly $observer: ResizeObserver;
+  readonly $observerTab: ResizeObserver;
   readonly $indicator = React.createRef<HTMLDivElement>();
+  readonly $tabsParent = React.createRef<HTMLDivElement>();
 
   constructor(props) {
     super(props);
     this.$observer = new ResizeObserver(this.calculateStylesIndicator);
+    this.$observerTab = new ResizeObserver(this.calculateStylesIndicator);
   }
 
   uncontrolledProps() {
@@ -87,31 +90,33 @@ class TabLineRoot extends Component<ITabLineProps> {
 
   calculateStylesIndicator = () => {
     const indicator = this.$indicator.current;
-    if (!indicator) return false;
-    const tabsParent: HTMLElement = indicator.parentElement;
+    const tabsParent = this.$tabsParent.current;
+    if (!indicator || !tabsParent) return false;
     const tab = Array.from(tabsParent.querySelectorAll('[data-ui-name="TabLine.Item"]')).find(
       (node: HTMLElement) => node.getAttribute('value') === String(this.asProps.value),
     ) as HTMLElement;
     if (!tab) return false;
-    this.$observer.observe(tab);
+    this.$observerTab.observe(tab);
     const { offsetLeft, offsetWidth } = tab;
     indicator.style.transform = `translateX(${offsetLeft - tabsParent.clientLeft}px)`;
     indicator.style.width = `${offsetWidth}px`;
   };
 
   componentDidMount() {
+    if (this.$tabsParent.current) {
+      this.$observer.observe(this.$tabsParent.current);
+    }
     this.calculateStylesIndicator();
   }
 
-  componentDidUpdate(prevProps) {
-    if (prevProps.value !== this.asProps.value) {
-      this.$observer.disconnect();
-      this.calculateStylesIndicator();
-    }
+  componentDidUpdate() {
+    this.$observerTab.disconnect();
+    this.calculateStylesIndicator();
   }
 
   componentWillUnmount() {
     this.$observer.disconnect();
+    this.$observerTab.disconnect();
   }
 
   getItemProps(props) {
@@ -129,7 +134,7 @@ class TabLineRoot extends Component<ITabLineProps> {
     const { styles, Children, controlsLength } = this.asProps;
 
     return sstyled(styles)(
-      <STabLine render={Box}>
+      <STabLine render={Box} ref={this.$tabsParent} underlined={underlined}>
         <NeighborLocation controlsLength={controlsLength}>
           <Children />
         </NeighborLocation>
