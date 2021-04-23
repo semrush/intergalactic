@@ -17,3 +17,7 @@ As you may notice, the **TabLine** does not have indents at the edges. To make t
   <TabLine px={5} mx="-20px" />
 </Box>
 ```
+
+@## Example accessibility
+
+The same example for [TabPanel](/components/tab-panel/tab-panel-code/#a21784)
