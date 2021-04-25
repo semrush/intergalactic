@@ -64,7 +64,36 @@ After that, all the styles that will be created in your themed styles directory 
 
 👯‍ **Congratulations, you've changed the styles of the component!**
 
-@## HMR note
+@## Versioning
+
+You can design a theme for different component versions. To do this, you need to create a `versions.json` file in which you specify the required versions and paths to the css files.
+
+An example of file structure:
+
+```javascript
+    components <-- theme root directory
+    |── button
+        └-- button_v2.shadow.css
+        └-- button_v3.shadow.css
+        └-- versions.json
+```
+
+An example of file `versions.json`:
+
+```json
+{
+  "2": {
+    "button.shadow.css": "button_v2.shadow.css"
+  },
+  "3": {
+    "button.shadow.css": "button_v3.shadow.css"
+  }
+}
+```
+
+> Versions are in [semver](https://semver.org/) format, you can also specify `*`.
+
+@## Note
 
 Also for local development of "themes" you'll need HMR. It won't work out of the box, as themes are applied in build time and watchers don't see the changes.
 To start working with themes, you need:

@@ -46,6 +46,7 @@ Advantages:
 - The theme is applied during assembly
 - Easiness of reuse
 - De-duplication of styles
+- Versioning availability
 
 Disadvantages:
 
