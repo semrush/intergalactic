@@ -1,6 +1,7 @@
 const postcss = require('postcss');
 const presetEnv = require('postcss-preset-env');
 const atImport = require('postcss-import-sync2');
+const cssnano = require('cssnano');
 const mediarezka = require('@semcore/postcss-mediarezka');
 
 const shadowStyles = require('./postcss-shadow-styles');
@@ -14,7 +15,7 @@ const syncPlugin = (plugin) => (root, result) => {
 };
 
 module.exports = function(options) {
-  return postcss([
+  const processorPlugins = [
     atImport({
       ...options.import,
       sync: true,
@@ -38,10 +39,24 @@ module.exports = function(options) {
       }),
     ),
     mediarezka({
-      getMedia: () => {},
+      getMedia: () => {
+      },
       ...options.mediarezka,
     }),
     shadowStyles(options.shadow),
-  ]);
+  ];
+  if (options.cssnano || (options.cssnano !== null && process.env.NODE_ENV === 'production')) {
+    /**
+     * `preset` option is required to force `cssnano` use `preset` instead of config search
+     */
+    // set mergeLonghand: false because the problem of the ratio Api components and styles (see: NoticeBubble)
+    processorPlugins.push(syncPlugin(
+      cssnano(Object.assign(
+        { preset: ['default', { mergeLonghand: false }] },
+        options.cssnano,
+      )),
+    ));
+  }
+  return postcss(processorPlugins);
 };
 module.exports.PLACEHOLDER_REPLACER = shadowStyles.PLACEHOLDER_REPLACER;
