@@ -12,7 +12,7 @@
     "test": "jest"
   },
   "dependencies": {
-    "@semcore/utils": "^3.27",
+    "@semcore/utils": "^3.29",
     "@reshadow/core": "0.0.1-alpha.74",
     "hoist-non-react-statics": "^3.3"
   },
