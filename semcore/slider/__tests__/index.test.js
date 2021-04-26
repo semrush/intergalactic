@@ -20,8 +20,8 @@ describe('Slider', () => {
     const component = (
       <div style={{ width: 150, height: 20 }}>
         <Slider mt={5} value={20} background="#66ccf750">
-          <Slider.Knob color="#1d9c00" />
           <Slider.Bar color="#8bc83550" />
+          <Slider.Knob color="#1d9c00" />
         </Slider>
       </div>
     );

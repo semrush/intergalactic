@@ -2,6 +2,7 @@
 title: Slider
 fileSource: slider
 tabName: Guide
+beta: true
 ---
 
 @## Description
@@ -85,7 +86,6 @@ This design helps to reduce errors associated with homing (moving the hand from 
 
 - `Tab` moves focus to the slider.
 - Keyboard arrows, '←' and '→', move the slider knob to the step specified in the input.
-- `Enter` applies the entered value.
 - `Esc` removes focus from the input.
 
 > If the slider knob has focus, the user can move it with the keyboard arrows — '←', '→'.

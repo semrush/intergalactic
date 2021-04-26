@@ -7,8 +7,14 @@ SSlider {
   height: 4px;
   border-radius: 6px;
   cursor: pointer;
+  outline: none;
   &:hover {
     background-color: #00000020;
+  }
+  &:focus {
+    & > *:nth-child(2) {
+      box-shadow: 0 0 0 5px #2b94e150;
+    }
   }
 }
 
@@ -36,18 +42,12 @@ SKnob {
   position: absolute;
   top: -8px;
   height: 10px;
-  width: 10px;
   border-radius: 20px;
   background-size: 12px;
   background-color: #fff;
   border: 5px solid var(--light-blue);
-
   cursor: pointer;
-  &:hover {
-    border: 5px solid var(--denim-blue);
-  }
-  &:active,
-  &:focus {
+  &:active {
     box-shadow: 0 0 0 5px #2b94e150;
   }
 }

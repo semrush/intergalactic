@@ -1,9 +1,9 @@
 import React from 'react';
-import createComponent, { Component, styled } from '@semcore/core';
+import createComponent, { Component, styled, use } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
-import { findDOMNode } from 'react-dom';
 
 import style from './style/slider.shadow.css';
+import resolveColor, { shade } from '@semcore/utils/lib/color';
 
 class SliderRoot extends Component {
   static displayName = 'Slider';
@@ -25,34 +25,35 @@ class SliderRoot extends Component {
     ),
     color: '#2B94E1',
     background: '#00000010',
+    interactive: true,
   });
 
-  refKnob = (node) => (this.$knob = findDOMNode(node));
-  refSlider = (node) => (this.$slider = findDOMNode(node));
-  refBar = (node) => (this.$bar = findDOMNode(node));
+  refKnob = (node) => (this.$knob = node);
+  refSlider = (node) => (this.$slider = node);
+  refBar = (node) => (this.$bar = node);
 
   getKnobProps() {
-    const { value, color, min, max, step, disabled } = this.asProps;
+    const { value, color, min, max, disabled, interactive } = this.asProps;
     return {
       value,
       color,
       min,
       max,
-      step,
       disabled,
+      interactive,
       ref: this.refKnob,
     };
   }
 
   getBarProps() {
-    const { value, color, min, max, step, disabled } = this.asProps;
+    const { value, color, min, max, disabled, interactive } = this.asProps;
     return {
       value,
       color,
       min,
       max,
-      step,
       disabled,
+      interactive,
       ref: this.refBar,
     };
   }
@@ -63,13 +64,8 @@ class SliderRoot extends Component {
     };
   }
 
-  updateValue = (values, e, width, min, max, step) => {
-    if (step > max - min) step = 1;
-    const [value, knobSize] = values;
-    const relativeValue = value / (width - knobSize);
-    const relativeStep = step / (max - min);
-    const countSteps = Math.round(relativeValue / relativeStep);
-    this.handlers.value(countSteps * step + min, e);
+  updateValue = (value, e) => {
+    this.handlers.value(value, e);
   };
 
   handleMove = (e) => {
@@ -84,28 +80,67 @@ class SliderRoot extends Component {
     document.addEventListener('mouseup', onMouseUp);
 
     function onMouseMove(e) {
+      const knobSize = knob.offsetWidth;
+      const sliderSize = slider.offsetWidth;
       let newLeft = e.clientX - slider.getBoundingClientRect().left - knob.offsetWidth / 2;
 
       if (newLeft < 0) {
         newLeft = 0;
       }
-      const rightEdge = slider.offsetWidth - knob.offsetWidth;
+      const rightEdge = sliderSize - knob.offsetWidth;
       if (newLeft > rightEdge) {
         newLeft = rightEdge;
       }
 
-      knob.style.left = newLeft + 'px';
-      bar.style.width = newLeft + 'px';
+      const relativeValue = newLeft / (sliderSize - knobSize);
+      const relativeStep = step / (max - min);
+      const countSteps = Math.round(relativeValue / relativeStep);
+      const currentValue = countSteps * step + min;
+      const valueInPercent = ((currentValue - min) / (max - min)) * 100;
 
-      return [newLeft, knob.offsetWidth];
+      knob.style.left = `calc(${valueInPercent}% - ${knobSize / 2}px)`;
+      bar.style.width = `calc(${valueInPercent}% - ${knobSize / 2}px)`;
+
+      return currentValue;
     }
 
-    this.updateValue(onMouseMove(e), e, slider.offsetWidth, min, max, step);
+    this.updateValue(onMouseMove(e), e);
 
     function onMouseUp() {
       document.removeEventListener('mouseup', onMouseUp);
       document.removeEventListener('click', onMouseMove);
       document.removeEventListener('mousemove', onMouseMove);
+    }
+  };
+
+  onKeyPressed = (e) => {
+    const { value, min, max, step } = this.asProps;
+    const slider = this.$slider;
+
+    e.preventDefault();
+    function inc(v, step) {
+      if (v === max) {
+        return v;
+      }
+      return v + step;
+    }
+    function dec(v, step) {
+      if (v === min) {
+        return v;
+      }
+      return v - step;
+    }
+
+    switch (e.keyCode) {
+      case 39:
+        this.updateValue(inc(value, step), e);
+        break;
+      case 37:
+        this.updateValue(dec(value, step), e);
+        break;
+      case 27:
+        slider.blur();
+        break;
     }
   };
 
@@ -127,10 +162,12 @@ class SliderRoot extends Component {
           onMouseDown={this.handleMove}
           onMouseUp={this.handleMove}
           onDragStart={() => false}
+          onKeyDown={this.onKeyPressed}
+          tabIndex="0"
         >
           <Children />
+          <SInput tag="input" type="hidden" />
         </SSlider>
-        <SInput tag="input" value={this.value} onChange={this.handleMove} />
       </>,
     );
   }
@@ -138,30 +175,80 @@ class SliderRoot extends Component {
 
 function convertValueToPercent(value, min, max) {
   if (value > max) return 100;
-  else return (Math.max(value - min, min) / (max - min)) * 100;
+  if (value < min) return min;
+  else return ((value - min) / (max - min)) * 100;
 }
 
 function Bar(props) {
-  const { Root: SBar, styles, value, refBar, min, max, step, color, disabled } = props;
-  const width = `${convertValueToPercent(value, min, max, step)}%`;
+  const {
+    Root: SBar,
+    styles,
+    value,
+    refBar,
+    min,
+    max,
+    color: colorProps,
+    disabled,
+    interactive,
+  } = props;
+  const width = `${convertValueToPercent(value, min, max)}%`;
+  const color = resolveColor(colorProps);
+
   return styled(styles)`
-    SBar {
-      width: ${width};
+    SBar[use|color] {
       background-color: ${color};
     }
-  `(<SBar render={Box} disabled={disabled} ref={refBar} />);
+    SBar[use|interactive] {
+      &:hover {
+        background-color: ${shade(color, -0.12)};
+      }
+    }
+  `(
+    <SBar
+      render={Box}
+      w={width}
+      disabled={disabled}
+      ref={refBar}
+      {...use({ color, interactive })}
+    />,
+  );
 }
 
 function Knob(props) {
-  const { Root: SKnob, styles, value, refKnob, min, max, step, color, disabled } = props;
-  const left = `${convertValueToPercent(value, min, max, step)}%`;
+  const {
+    Root: SKnob,
+    styles,
+    value,
+    refKnob,
+    min,
+    max,
+    color: colorProps,
+    disabled,
+    interactive,
+  } = props;
+  const knobWidth = '10px';
+  const left = `calc(${convertValueToPercent(value, min, max, knobWidth)}% - ${knobWidth})`;
+  const color = resolveColor(colorProps);
 
   return styled(styles)`
-    SKnob {
-      left: ${left};
+    SKnob[use|color] {
       border-color: ${color};
     }
-  `(<SKnob render={Box} disabled={disabled} ref={refKnob} />);
+    SKnob[use|interactive] {
+      &:hover {
+        border-color: ${shade(color, -0.12)};
+      }
+    }
+  `(
+    <SKnob
+      render={Box}
+      disabled={disabled}
+      ref={refKnob}
+      left={left}
+      w={knobWidth}
+      {...use({ color, interactive })}
+    />,
+  );
 }
 
 const Slider = createComponent(SliderRoot, { Bar, Knob });

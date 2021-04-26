@@ -39,6 +39,9 @@ export interface ISliderKnobProps extends IBoxProps {
    * @default #2b94e1
    */
   color?: string;
+  /** Make a knob interactive.
+   * True by default*/
+  interactive?: boolean;
 }
 
 export interface ISliderBarProps extends IBoxProps {
@@ -46,6 +49,9 @@ export interface ISliderBarProps extends IBoxProps {
    * @default #2b94e1
    */
   color?: string;
+  /** Make a bar interactive.
+   * True by default*/
+  interactive?: boolean;
 }
 
 declare const Slider: (<T>(props: CProps<ISliderProps & T>) => ReturnEl) & {
