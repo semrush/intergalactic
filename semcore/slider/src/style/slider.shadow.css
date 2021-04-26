@@ -1,0 +1,63 @@
+@import '@semcore/utils/style/var.css';
+
+SSlider {
+  position: relative;
+  width: 140px;
+  background-color: #00000010;
+  height: 4px;
+  border-radius: 6px;
+  cursor: pointer;
+  outline: none;
+  &:hover {
+    background-color: #00000020;
+  }
+  &:focus {
+    & > *:nth-child(2) {
+      box-shadow: 0 0 0 5px #2b94e150;
+    }
+  }
+}
+
+SSlider[disabled] {
+  pointer-events: none;
+}
+
+SBar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  height: 4px;
+  border-radius: 4px;
+  background-size: 12px;
+  background-color: var(--light-blue);
+  cursor: pointer;
+}
+
+SBar[disabled] {
+  background-color: #2b94e150;
+}
+
+SKnob {
+  position: absolute;
+  top: -8px;
+  height: 10px;
+  border-radius: 20px;
+  background-size: 12px;
+  background-color: #fff;
+  border: 5px solid var(--light-blue);
+  cursor: pointer;
+  &:active {
+    box-shadow: 0 0 0 5px #2b94e150;
+  }
+}
+
+SKnob[disabled] {
+  border: 5px solid #2b94e150;
+}
+
+SInput {
+  position: absolute;
+  top: -100px;
+  left: -100px;
+}
