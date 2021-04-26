@@ -2,6 +2,15 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.10.0] - 2021-4-26
+
+### Changed
+
+- Version of dependence `@semcore/core` has been changed to `1.11`.
+- Improved performance. Removed one component wrapper.
+- The style processing system has been changed.
+- Removed the ability to apply media styles via a plugin `babel-plugin-react-semcore`.
+
 ## [4.9.0] - 2021-04-20
 
 ### Added
