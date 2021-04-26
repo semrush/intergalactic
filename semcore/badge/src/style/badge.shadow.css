@@ -16,6 +16,13 @@ SBadge {
   -moz-osx-font-smoothing: grayscale;
 }
 
+SBadge[bg] {
+  background-color: var(--bg);
+}
+SBadge[color] {
+  color: var(--color);
+}
+
 @-moz-document url-prefix() {
   SBadge {
     /* потому что в ff Ubuntu какая-то странная */

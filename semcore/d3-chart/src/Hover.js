@@ -1,5 +1,5 @@
 import React from 'react';
-import { Component, styled } from '@semcore/core';
+import { Component, sstyled } from '@semcore/core';
 import createElement from './createElement';
 import trottle from '@semcore/utils/lib/rafTrottle';
 import { scaleOfBandwidth, getIndexFromData, eventToPoint, invert } from './utils';
@@ -83,7 +83,7 @@ class HoverLineRoot extends Hover {
     const x1 = xIndex !== null ? scaleOfBandwidth(xScale, data[xIndex][x]) : undefined;
     const y1 = yIndex !== null ? scaleOfBandwidth(yScale, data[yIndex][y]) : undefined;
 
-    return styled(styles)(
+    return sstyled(styles)(
       <>
         {xIndex !== null ? (
           <SHoverLine
@@ -124,7 +124,7 @@ class HoverRectRoot extends Hover {
     const xRange = xScale.range();
     const yRange = yScale.range();
 
-    return styled(styles)(
+    return sstyled(styles)(
       <>
         {xIndex !== null ? (
           <SHoverRect

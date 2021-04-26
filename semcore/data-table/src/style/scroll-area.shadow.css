@@ -1,0 +1,6 @@
+SShadowHorizontal:before {
+  left: var(--left) !important;
+}
+SShadowHorizontal:after {
+  right: var(--right) !important;
+}

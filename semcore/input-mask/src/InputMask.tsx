@@ -1,7 +1,7 @@
 import React, { ComponentProps, InputHTMLAttributes } from 'react';
 import { createTextMaskInputElement } from 'text-mask-core';
 
-import createComponent, { Component, Merge, styled } from '@semcore/core';
+import createComponent, { Component, Merge, sstyled, Root } from '@semcore/core';
 import Input, { IInputProps, IInputValueProps } from '@semcore/input';
 import fire from '@semcore/utils/lib/fire';
 
@@ -65,7 +65,6 @@ class InputMask extends Component<IInputProps> {
   static style = style;
 
   render() {
-    const { Root } = this;
     return <Root render={Input} />;
   }
 }
@@ -177,10 +176,9 @@ class Value extends Component<IInputMaskValueProps> {
   };
 
   render() {
-    const { Root: SValue } = this;
-    const { styles } = this.asProps;
+    const SValue = Root;
 
-    return styled(styles)(
+    return sstyled(this.asProps.styles)(
       <SValue render={Input.Value} ref={this.setRef('_input')} onFocus={this.onFocus} />,
     );
   }

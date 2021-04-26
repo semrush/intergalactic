@@ -1,7 +1,7 @@
 {
   "name": "@semcore/core",
   "description": "SEMRush Core Component",
-  "version": "1.10.0",
+  "version": "1.11.0",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -12,7 +12,7 @@
     "test": "jest"
   },
   "dependencies": {
-    "@semcore/utils": "^3.15",
+    "@semcore/utils": "^3.27",
     "@reshadow/core": "0.0.1-alpha.74",
     "hoist-non-react-statics": "^3.3"
   },

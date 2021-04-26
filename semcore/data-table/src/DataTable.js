@@ -1,5 +1,5 @@
 import React from 'react';
-import createComponent, { Component, styled } from '@semcore/core';
+import createComponent, { Component, sstyled, Root } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
 import syncScroll from '@semcore/utils/lib/syncScroll';
 import { callAllEventHandlers } from '@semcore/utils/lib/assignProps';
@@ -252,10 +252,10 @@ class RootDefinitionTable extends Component {
   }
 
   render() {
-    const SDataTable = this.Root;
+    const SDataTable = Root;
     const { Children, styles } = this.asProps;
 
-    return styled(styles)(
+    return sstyled(styles)(
       <SDataTable render={Box} __excludeProps={['data']} ref={this.tableRef}>
         <Children />
       </SDataTable>,

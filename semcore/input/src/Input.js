@@ -1,5 +1,5 @@
 import React from 'react';
-import createComponent, { Component, styled } from '@semcore/core';
+import createComponent, { Component, sstyled, Root } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
 import NeighborLocation, { neighborLocationEnhance } from '@semcore/neighbor-location';
 import autoFocusEnhance from '@semcore/utils/lib/enhances/autoFocusEnhance';
@@ -48,19 +48,13 @@ class Input extends Component {
   }
 
   render() {
-    const { Root: SInput } = this;
+    const SInput = Root;
     const SOutline = 'div';
-    const { Children, styles, size, state, neighborLocation, controlsLength } = this.asProps;
+    const { Children, styles, controlsLength } = this.asProps;
     const { focused } = this.state;
 
-    return styled(styles)(
-      <SInput
-        render={Box}
-        neighborLocation={neighborLocation}
-        state={state}
-        size={size}
-        focused={focused}
-      >
+    return sstyled(styles)(
+      <SInput render={Box} focused={focused}>
         <NeighborLocation controlsLength={controlsLength}>
           <Children />
         </NeighborLocation>
@@ -83,27 +77,15 @@ class Value extends Component {
   }
 
   render() {
-    const SValue = this.Root;
-    const { styles, size, neighborLocation } = this.asProps;
+    const SValue = Root;
 
-    return styled(styles)(
-      <SValue
-        render={Box}
-        tag="input"
-        type="text"
-        neighborLocation={neighborLocation}
-        size={size}
-      />,
-    );
+    return sstyled(this.asProps.styles)(<SValue render={Box} tag="input" type="text" />);
   }
 }
 
 function Addon(props) {
-  const { Root: SAddon, interactive, disabled, size, styles } = props;
-
-  return styled(styles)(
-    <SAddon render={Box} interactive={interactive} disabled={disabled} size={size} />,
-  );
+  const SAddon = Root;
+  return sstyled(props.styles)(<SAddon render={Box} />);
 }
 
 Addon.enhance = [neighborLocationEnhance()];

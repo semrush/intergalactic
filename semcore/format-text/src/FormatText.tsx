@@ -1,6 +1,6 @@
 import React, { HTMLAttributes } from 'react';
 import { Box, IBoxProps } from '@semcore/flex-box';
-import createComponent, { Component, Merge, styled } from '@semcore/core';
+import createComponent, { Component, Merge, sstyled, Root } from '@semcore/core';
 
 import style from './style/format-text.shadow.css';
 
@@ -16,10 +16,9 @@ class FormatText extends Component<IFormatTextProps> {
   };
 
   render() {
-    const SFormatText = this.Root;
-    const { styles, size } = this.asProps;
+    const SFormatText = Root;
 
-    return styled(styles)(<SFormatText render={Box} size={size} />);
+    return sstyled(this.asProps.styles)(<SFormatText render={Box} />);
   }
 }
 

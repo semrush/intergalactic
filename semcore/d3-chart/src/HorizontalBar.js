@@ -1,5 +1,5 @@
 import React from 'react';
-import { Component, styled } from '@semcore/core';
+import { Component, sstyled } from '@semcore/core';
 import createElement from './createElement';
 
 import style from './style/bar.shadow.css';
@@ -27,7 +27,7 @@ class HorizontalBarRoot extends Component {
     const [xScale, yScale] = scale;
 
     return data.map((d, i) => {
-      return styled(styles)(
+      return sstyled(styles)(
         <SBar
           key={i}
           __excludeProps={['data', 'scale', 'value']}

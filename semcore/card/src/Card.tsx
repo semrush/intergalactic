@@ -1,5 +1,5 @@
 import React, { ComponentProps, HTMLAttributes } from 'react';
-import createComponent, { Component, Merge, styled } from '@semcore/core';
+import createComponent, { Component, Merge, sstyled, Root } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
 import { ITextProps, Text } from '@semcore/typography';
 // eslint-disable-next-line import/no-named-as-default
@@ -21,17 +21,18 @@ class Card extends Component {
   static style = style;
 
   render() {
-    const SCard = this.Root;
+    const SCard = Root;
     const { styles } = this.asProps;
 
-    return styled(styles)(<SCard render={Box} p={6} />);
+    return sstyled(styles)(<SCard render={Box} p={6} />);
   }
 }
 
 function Title(props) {
-  const { Root: STitle, styles, hint } = props;
+  const { styles, hint } = props;
+  const STitle = Root;
   const SIcon = InfoXS;
-  return styled(styles)(
+  return sstyled(styles)(
     <>
       <STitle render={Text} />
       {hint && (
@@ -44,8 +45,9 @@ function Title(props) {
 }
 
 function Description(props) {
-  const { Root: SDescription, styles } = props;
-  return styled(styles)(<SDescription render={Text} tag="p" />);
+  const { styles } = props;
+  const SDescription = Root;
+  return sstyled(styles)(<SDescription render={Text} tag="p" />);
 }
 
 export default createComponent<

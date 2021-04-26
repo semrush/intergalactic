@@ -1,5 +1,5 @@
 import React from 'react';
-import { Component, styled } from '@semcore/core';
+import { Component, sstyled } from '@semcore/core';
 import createElement from './createElement';
 import { scaleOfBandwidth } from './utils';
 
@@ -229,7 +229,7 @@ class AxisRoot extends Component {
     const pos =
       MAP_POSITION_AXIS[position] || MAP_POSITION_AXIS[MAP_INDEX_SCALE_SYMBOL[indexScale]];
 
-    return styled(styles)(<SAxis render="line" hide={hide} {...pos(scale, position)} />);
+    return sstyled(styles)(<SAxis render="line" hide={hide} {...pos(scale, position)} />);
   }
 }
 
@@ -240,7 +240,7 @@ function Ticks(props) {
   const positionClass = MAP_POSITION_TICK[position] ? position : 'custom_' + indexScale;
 
   return ticks.map((value, i) => {
-    return styled(styles)(
+    return sstyled(styles)(
       <STick
         key={i}
         __excludeProps={['data', 'scale', 'format', 'value']}
@@ -262,7 +262,7 @@ function Grid(props) {
   const { Element: SGrid, styles, scale, ticks, indexScale } = props;
 
   return ticks.map((value, i) => {
-    return styled(styles)(
+    return sstyled(styles)(
       <SGrid key={i} render="line" {...MAP_POSITION_GRID[indexScale](scale, value)} />,
     );
   });
@@ -271,7 +271,7 @@ function Grid(props) {
 function Title(props) {
   const { Element: STitle, styles, scale, position } = props;
 
-  return styled(styles)(
+  return sstyled(styles)(
     <STitle
       render="text"
       childrenPosition="inside"

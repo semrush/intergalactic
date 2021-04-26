@@ -2,8 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const { execFileSync } = require('child_process');
 const stringHash = require('string-hash');
-const postcss = require('@semcore/babel-plugin-shadow/postcss');
-const { defaultOptions } = require('@semcore/babel-plugin-shadow');
+const postcss = require('@semcore/babel-plugin-styles/postcss');
 
 function Cache() {
   const PARSED_STYLES_MAP = new Map();
@@ -28,7 +27,7 @@ function createImports(paths) {
   return paths.map((path) => `@import '${path}';`).join('\n');
 }
 
-function execPurgeCss(styles, purgeCSSOptions = {}) {
+function execPurgeCss(styles, purgeCSSOptions) {
   const stringBUF = Buffer.from(styles, 'utf8');
   const options = JSON.stringify(purgeCSSOptions);
 
@@ -52,8 +51,7 @@ function execPurgeCss(styles, purgeCSSOptions = {}) {
 const storage = new Cache();
 
 module.exports = function(cssPaths, pluginOptions) {
-  const { media, purgeCSS } = pluginOptions;
-  const parser = postcss(defaultOptions.postcss);
+  const processor = postcss(pluginOptions.postcss);
   const [baseImport, ...themeImport] = cssPaths;
 
   const themeCss = themeImport.map((p) => fs.readFileSync(p, 'utf8')).join('');
@@ -64,14 +62,17 @@ module.exports = function(cssPaths, pluginOptions) {
   }
 
   // inserting base css import on top of theme
-  const css = createImports(cssPaths);
-  const { code, media: mediaCode, tokens } = parser.process(css, { from: baseImport });
-  const purgedStyles = execPurgeCss(media ? code + mediaCode : code, purgeCSS);
+  const raw = createImports(cssPaths);
+  const { css, messages } = processor.process(raw, { from: baseImport });
+  const { tokens, hash } = messages.find((m) => m.plugin === 'postcss-shadow-styles');
+  const purgedStyles = execPurgeCss(css, pluginOptions.purgeCSS);
   const data = {
     css: purgedStyles,
     tokens,
+    hash,
   };
 
   storage.set(baseImport, themeCss, data);
   return data;
 };
+module.exports.PLACEHOLDER_REPLACER = postcss.PLACEHOLDER_REPLACER;

@@ -1,5 +1,5 @@
 import React, { HTMLAttributes } from 'react';
-import createComponent, { Component, IFunctionProps, Merge, styled } from '@semcore/core';
+import createComponent, { Component, IFunctionProps, Merge, sstyled, Root } from '@semcore/core';
 import Modal, { IModalProps, IModalContext } from '@semcore/modal';
 import { Box, IBoxProps } from '@semcore/flex-box';
 import { IIconProps } from '@semcore/icon';
@@ -44,7 +44,7 @@ class FullscreenModalRoot extends Component<IFullscreenModalProps> {
   }
 
   render() {
-    const { Root: SFullscreenModal } = this;
+    const SFullscreenModal = Root;
     const {
       styles,
       hidden,
@@ -65,7 +65,7 @@ class FullscreenModalRoot extends Component<IFullscreenModalProps> {
 
     const visible = visibleProps === undefined ? !hidden : visibleProps;
 
-    return (
+    return sstyled(styles)(
       <Modal
         closable={false}
         visible={visible}
@@ -73,15 +73,13 @@ class FullscreenModalRoot extends Component<IFullscreenModalProps> {
         duration={duration}
         disablePortal={disablePortal}
       >
-        {styled(styles)(
-          <SFullscreenOverlay>
-            <SFullscreenModal render={Modal.Window}>
-              {closable && <FullscreenModal.Close />}
-              <Children />
-            </SFullscreenModal>
-          </SFullscreenOverlay>,
-        )}
-      </Modal>
+        <SFullscreenOverlay>
+          <SFullscreenModal render={Modal.Window}>
+            {closable && <FullscreenModal.Close />}
+            <Children />
+          </SFullscreenModal>
+        </SFullscreenOverlay>
+      </Modal>,
     );
   }
 }
@@ -92,9 +90,10 @@ export interface IFullscreenModalHeaderProps extends IBoxProps {
 }
 
 function Header(props: IFunctionProps<IFullscreenModalHeaderProps>) {
+  const SHeader = Root;
   const SHeaderDivider = 'div';
-  const { Root: SHeader, Children, styles, title, description } = props;
-  return styled(styles)(
+  const { Children, styles, title, description } = props;
+  return sstyled(styles)(
     <SHeader render={Box}>
       {title && <FullscreenModal.Title children={title} />}
       {description && (
@@ -109,40 +108,41 @@ function Header(props: IFunctionProps<IFullscreenModalHeaderProps>) {
 }
 
 function Body(props: IFunctionProps<IBoxProps>) {
-  const { Root: SBody, styles } = props;
-  return styled(styles)(<SBody render={Box} />);
+  const SBody = Root;
+  return sstyled(props.styles)(<SBody render={Box} />);
 }
 
 function Section(props: IFunctionProps<IBoxProps>) {
-  const { Root: SSection, styles } = props;
-  return styled(styles)(<SSection render={Box} />);
+  const SSection = Root;
+  return sstyled(props.styles)(<SSection render={Box} />);
 }
 
 function Footer(props: IFunctionProps<IBoxProps>) {
-  const { Root: SFooter, styles } = props;
-  return styled(styles)(<SFooter render={Box} />);
+  const SFooter = Root;
+  return sstyled(props.styles)(<SFooter render={Box} />);
 }
 
 function Close(props: IFunctionProps<IIconProps>) {
-  const { Root: SClose, styles } = props;
-  return styled(styles)(<SClose render={CloseM} />);
+  const SClose = Root;
+  return sstyled(props.styles)(<SClose render={CloseM} />);
 }
 
 function Title(props: IFunctionProps<ITextProps>) {
-  const { Root: STitle, styles } = props;
-  return styled(styles)(<STitle render={Text} tag="h4" />);
+  const STitle = Root;
+  return sstyled(props.styles)(<STitle render={Text} tag="h4" />);
 }
 
 function Description(props: IFunctionProps<ITextProps>) {
-  const { Root: SDescription, styles } = props;
-  return styled(styles)(<SDescription render={Text} />);
+  const SDescription = Root;
+  return sstyled(props.styles)(<SDescription render={Text} />);
 }
 
 function Back(props: IFunctionProps<IBoxProps>) {
+  const SBack = Root;
   const SBackText = Text;
-  const { Root: SBack, Children, styles } = props;
+  const { Children, styles } = props;
 
-  return styled(styles)(
+  return sstyled(styles)(
     <SBack render={Box}>
       <ArrowLeftS />
       <SBackText>

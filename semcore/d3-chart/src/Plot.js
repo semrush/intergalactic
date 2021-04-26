@@ -1,5 +1,5 @@
 import React from 'react';
-import createComponent, { Component, styled } from '@semcore/core';
+import createComponent, { Component, Root, sstyled } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
 import EventEmitter from '@semcore/utils/lib/eventEmitter';
 
@@ -44,12 +44,12 @@ class PlotRoot extends Component {
   }
 
   render() {
-    const SPlot = this.Root;
+    const SPlot = Root;
     const { styles, width, height } = this.asProps;
 
     if (!width || !height) return null;
 
-    return styled(styles)(
+    return sstyled(styles)(
       <SPlot
         render={Box}
         tag="svg"

@@ -4,7 +4,8 @@ import createComponent, {
   Merge,
   PropGetterFn,
   PropsAndRef,
-  styled,
+  sstyled,
+  Root,
 } from '@semcore/core';
 import { Box, IBoxProps } from '@semcore/flex-box';
 import NeighborLocation, {
@@ -78,10 +79,10 @@ class RootPills extends Component<IPillsProps> {
   }
 
   render() {
-    const { Root: SPills } = this;
+    const SPills = Root;
     const { Children, styles, controlsLength } = this.asProps;
 
-    return styled(styles)(
+    return sstyled(styles)(
       <SPills render={Box}>
         <NeighborLocation controlsLength={controlsLength}>
           <Children />
@@ -92,30 +93,11 @@ class RootPills extends Component<IPillsProps> {
 }
 
 function Pill(props) {
-  const {
-    Root: SPill,
-    Children,
-    styles,
-    selected,
-    size,
-    disabled,
-    addonLeft,
-    addonRight,
-    keyboardFocused,
-    neighborLocation,
-  } = props;
+  const SPill = Root;
+  const { Children, styles, selected, addonLeft, addonRight } = props;
 
-  return styled(styles)(
-    <SPill
-      render={Box}
-      type="button"
-      tag="button"
-      active={selected}
-      size={size}
-      keyboardFocused={keyboardFocused}
-      neighborLocation={neighborLocation}
-      disabled={disabled}
-    >
+  return sstyled(styles)(
+    <SPill render={Box} type="button" tag="button" active={selected}>
       {addonLeft ? <Pills.Item.Addon tag={addonLeft} /> : null}
       {addonTextChildren(Children, Pills.Item.Text, Pills.Item.Addon)}
       {addonRight ? <Pills.Item.Addon tag={addonRight} /> : null}
@@ -126,13 +108,13 @@ function Pill(props) {
 Pill.enhance = [keyboardFocusEnhance(), neighborLocationEnhance()];
 
 function Text(props) {
-  const { Root: SText, styles } = props;
-  return styled(styles)(<SText render={Box} tag="span" />);
+  const SText = Root;
+  return sstyled(props.styles)(<SText render={Box} tag="span" />);
 }
 
 function Addon(props) {
-  const { Root: SAddon, styles } = props;
-  return styled(styles)(<SAddon render={Box} tag="span" />);
+  const SAddon = Root;
+  return sstyled(props.styles)(<SAddon render={Box} tag="span" />);
 }
 
 const Pills = createComponent<

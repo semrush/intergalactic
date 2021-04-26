@@ -1,6 +1,6 @@
 import React from 'react';
 import { curveLinear, line as d3Line } from 'd3-shape';
-import { Component, styled } from '@semcore/core';
+import { Component, sstyled } from '@semcore/core';
 import createElement from './createElement';
 import { definedData, scaleOfBandwidth, getNullData } from './utils';
 import Dots from './Dots';
@@ -47,13 +47,13 @@ class LineRoot extends Component {
     const SLine = this.Element;
     const { styles, hide, color, d3, data } = this.asProps;
 
-    return styled(styles)(<SLine render="path" hide={hide} stroke={color} d={d3(data)} />);
+    return sstyled(styles)(<SLine render="path" hide={hide} stroke={color} d={d3(data)} />);
   }
 }
 
 function Null(props) {
   const { Element: SNull, styles, d3, data, hide } = props;
-  return styled(styles)(<SNull render="path" d={d3(data)} hide={hide} />);
+  return sstyled(styles)(<SNull render="path" d={d3(data)} hide={hide} />);
 }
 
 export default createElement(LineRoot, {

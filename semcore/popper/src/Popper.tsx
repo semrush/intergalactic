@@ -19,7 +19,7 @@ import { Options as OptionsArrow } from '@popperjs/core/lib/modifiers/arrow';
 import { Options as OptionsFlip } from '@popperjs/core/lib/modifiers/flip';
 import { Options as OptionsComputeStyles } from '@popperjs/core/lib/modifiers/computeStyles';
 import { Options as OptionsEventListeners } from '@popperjs/core/lib/modifiers/eventListeners';
-import createComponent, { Component, Merge, PropGetterFn, styled } from '@semcore/core';
+import createComponent, { Component, Merge, PropGetterFn, sstyled, Root } from '@semcore/core';
 import { Box, IBoxProps } from '@semcore/flex-box';
 import OutsideClick, { IOutsideClickProps } from '@semcore/outside-click';
 import Portal, { IPortalProps, PortalProvider } from '@semcore/portal';
@@ -508,8 +508,8 @@ class Popper extends Component<IPopperProps> {
   }
 }
 
-function Trigger(props) {
-  const { Root: STrigger } = props;
+function Trigger() {
+  const STrigger = Root;
   return (
     <STrigger
       render={Box}
@@ -559,8 +559,8 @@ const FocusLockWrapper = React.forwardRef<HTMLElement, any>(function (
 });
 
 function PopperPopper(props) {
+  const SPopper = Root;
   const {
-    Root: SPopper,
     Children,
     styles,
     visible,
@@ -575,7 +575,7 @@ function PopperPopper(props) {
   // https://github.com/facebook/react/issues/11387
   const handlerStopPropagation = useCallback((e) => e.stopPropagation(), []);
 
-  return styled(styles)(
+  return sstyled(styles)(
     <If condition={visible}>
       <Portal disablePortal={disablePortal}>
         <NeighborLocation controlsLength={controlsLength}>

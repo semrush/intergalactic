@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 // @ts-ignore
-import { create } from '../styled';
+import { sstyled } from '../styled';
 import { STATIC_COMPONENT } from './staticChildren';
 
 export const STYLES_CONTEXT = Symbol('STYLES_CONTEXT');
@@ -13,7 +13,7 @@ function Enhancement(childComponents, Context) {
     },
     init: function (props, WrapperComponent) {
       if (WrapperComponent.style) {
-        this[STYLES_SELF] = create([WrapperComponent.style, props._styles]);
+        this[STYLES_SELF] = sstyled.merge(WrapperComponent.style, props._styles);
       }
     },
     context: function (context) {

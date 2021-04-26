@@ -1,0 +1,12 @@
+SAnimation {
+  animation-fill-mode: both;
+  animation-timing-function: ease-out;
+  animation-duration: var(--durationFinalize);
+  animation-delay: var(--delayFinalize);
+  animation-name: var(--keyframesFinalize);
+}
+SAnimation[visible] {
+  animation-duration: var(--durationInitialize);
+  animation-delay: var(--delayInitialize);
+  animation-name: var(--keyframesInitialize);
+}

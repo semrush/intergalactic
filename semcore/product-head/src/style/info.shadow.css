@@ -8,16 +8,16 @@ SInfo {
   line-height: 1.5;
 
   & > SItem:not(:last-child) {
-    margin-right: media(24px);
+    margin-right: 24px;
     position: relative;
 
     &:after {
       background-color: var(--gray80);
       content: '';
       display: block;
-      height: media(16px);
+      height: 16px;
       position: absolute;
-      right: media(-12px);
+      right: -12px;
       top: 50%;
       transform: translate(0, -50%);
       width: 1px;
@@ -32,14 +32,14 @@ SItem {
 }
 
 SLabel {
-  margin-right: media(4px);
+  margin-right: 4px;
 }
 
 @media (max-width: 768px) {
   SInfo {
-    margin-bottom: media(-4px);
+    margin-bottom: -4px;
   }
   SItem {
-    margin-bottom: media(4px);
+    margin-bottom: 4px;
   }
 }

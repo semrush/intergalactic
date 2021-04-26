@@ -94,8 +94,8 @@ SAddon[disabled] {
 }
 
 SInput[size='s'] {
-  font-size: media(10px);
-  height: media(18px);
+  font-size: 10px;
+  height: 18px;
 
   & SOutline {
     border-radius: 2px;
@@ -108,12 +108,12 @@ SInput[size='s'] {
 
 SValue[size='s'],
 SAddon[size='s'] {
-  padding: 0 media(4px);
+  padding: 0 4px;
 }
 
 SInput[size='m'] {
-  font-size: media(12px);
-  height: media(26px);
+  font-size: 12px;
+  height: 26px;
 
   & SOutline {
     border-radius: 3px;
@@ -126,12 +126,12 @@ SInput[size='m'] {
 
 SValue[size='m'],
 SAddon[size='m'] {
-  padding: 0 media(8px);
+  padding: 0 8px;
 }
 
 SInput[size='l'] {
-  font-size: media(14px);
-  height: media(32px);
+  font-size: 14px;
+  height: 32px;
 
   & SOutline {
     border-radius: 4px;
@@ -144,12 +144,12 @@ SInput[size='l'] {
 
 SValue[size='l'],
 SAddon[size='l'] {
-  padding: 0 media(8px);
+  padding: 0 8px;
 }
 
 SInput[size='xl'] {
-  font-size: media(16px);
-  height: media(42px);
+  font-size: 16px;
+  height: 42px;
 
   & SOutline {
     border-radius: 5px;
@@ -162,7 +162,7 @@ SInput[size='xl'] {
 
 SValue[size='xl'],
 SAddon[size='xl'] {
-  padding: 0 media(12px);
+  padding: 0 12px;
 }
 
 SInput[focused] {

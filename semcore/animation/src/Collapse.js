@@ -1,12 +1,31 @@
 import React, { useCallback, useState } from 'react';
-import { createBaseComponent, styled } from '@semcore/core';
-import Animation, { IAnimationProps } from './Animation';
+import { createBaseComponent, sstyled } from '@semcore/core';
+import Animation from './Animation';
 
-export interface ICollapseProps extends IAnimationProps {}
+const style = sstyled.css`
+  @keyframes enter {
+    from {
+      overflow: hidden;
+      height: 0;
+    }
+    to {
+      height: var(--height);
+    }
+  }
+
+  @keyframes exit {
+    from {
+      height: var(--height);
+    }
+    to {
+      height: 0;
+    }
+  }
+`;
 
 function Collapse({ onAnimationStart, onAnimationEnd, ...props }, ref) {
   const SCollapse = Animation;
-  const [heightVar, setHeightVar] = useState('auto');
+  const [height, setHeightVar] = useState('auto');
 
   const handlerAnimationStart = useCallback((e) => {
     if (e.currentTarget !== e.target) return;
@@ -22,36 +41,18 @@ function Collapse({ onAnimationStart, onAnimationEnd, ...props }, ref) {
     setHeightVar('auto');
   }, []);
 
-  return styled()`
-    @keyframes enter {
-      from {
-        overflow: hidden;
-        height: 0;
-      }
-      to {
-        height: ${heightVar};
-      }
-    }
-
-    @keyframes exit {
-      from {
-        height: ${heightVar};
-      }
-      to {
-        height: 0;
-      }
-    }
-  `(
+  return sstyled(style)(
     <SCollapse
       ref={ref}
       {...props}
       onAnimationStart={handlerAnimationStart}
       onAnimationEnd={handlerAnimationEnd}
-      keyframes={[styled.styles.enter, styled.styles.exit]}
+      height={height}
+      keyframes={[style['@enter'], style['@exit']]}
     />,
   );
 }
 
 Collapse.displayName = 'Collapse';
 
-export default createBaseComponent<ICollapseProps>(Collapse);
+export default createBaseComponent(Collapse);

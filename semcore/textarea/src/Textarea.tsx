@@ -6,7 +6,7 @@ import autoFocusEnhance, {
 } from '@semcore/utils/lib/enhances/autoFocusEnhance';
 import canUseDOM from '@semcore/utils/lib/canUseDOM';
 import cssToIntDefault from '@semcore/utils/lib/cssToIntDefault';
-import createComponent, { Component, Merge, styled } from '@semcore/core';
+import createComponent, { Component, Merge, sstyled, Root } from '@semcore/core';
 
 import style from './style/textarea.shadow.css';
 
@@ -131,22 +131,11 @@ class Textarea extends Component<ITextareaProps> {
   };
 
   render() {
-    const { Root: STextarea } = this;
-    const { size, state, resize, styles } = this.asProps;
+    const STextarea = Root;
+    const { styles } = this.asProps;
 
-    return styled(styles)`
-      STextarea {
-        resize: ${resize};
-      }
-    `(
-      <STextarea
-        render={Box}
-        tag="textarea"
-        ref={this.setRef}
-        size={size}
-        state={state}
-        onChange={this.handleChange}
-      />,
+    return sstyled(styles)(
+      <STextarea render={Box} tag="textarea" ref={this.setRef} onChange={this.handleChange} />,
     );
   }
 }
