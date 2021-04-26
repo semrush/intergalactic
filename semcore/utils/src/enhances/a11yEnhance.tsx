@@ -1,10 +1,7 @@
 import { callAllEventHandlers } from '../assignProps';
 
 const defaultOnNeighborChange = (neighborElement: HTMLElement) => {
-  if (neighborElement) {
-    neighborElement.focus();
-    neighborElement.click();
-  }
+  neighborElement?.focus();
 };
 
 const defaultFindNeighbor = (
@@ -26,8 +23,11 @@ const defaultFindNeighbor = (
 const a11yEnhance = (options: { [key: string]: any } = {}) => {
   const findNeighbor = options.findNeighbor || defaultFindNeighbor;
   const onNeighborChange = options.onNeighborChange || defaultOnNeighborChange;
+  const { childSelector } = options;
 
   return (props) => {
+    if (!childSelector)
+      throw `parameter childSelector not passed in options for a11yEnhance for ${props['data-ui-name']}`;
     const getNeighbor = (listSelectors, element: HTMLElement, direction: string): HTMLElement => {
       const neighbor = findNeighbor(listSelectors, element, direction);
       if (!neighbor) return element;
@@ -38,15 +38,14 @@ const a11yEnhance = (options: { [key: string]: any } = {}) => {
     const handleKeyDown = (e) => {
       const parent = e.currentTarget;
       const selectedElement = e.target;
-      const selector = options.item;
-      if (!selector) throw `parameter item not passed in options for a11yEnhance`;
-      if (!selectedElement.getAttribute(selector[0])) return;
+      const [childAttrName, childAttrValue] = childSelector;
+      if (!selectedElement.getAttribute(childAttrName)) return;
 
       const listSelectors = Array.from(
-        parent.querySelectorAll(`[${selector[0]}="${selector[1]}"]`),
+        parent.querySelectorAll(`[${childAttrName}="${childAttrValue}"]`),
       );
       if (!listSelectors.length)
-        throw `no items found querySelectorAll([${selector[0]}="${selector[1]}"] a11yEnhance`;
+        throw `no children found querySelectorAll([${childAttrName}="${childAttrValue}"] a11yEnhance for ${props['data-ui-name']}`;
 
       switch (e.keyCode) {
         case 37:

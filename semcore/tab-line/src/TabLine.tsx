@@ -62,6 +62,16 @@ export interface ITabLineContext {
   getItemProps: PropGetterFn;
 }
 
+const optionsA11yEnhance = {
+  onNeighborChange: (neighborElement) => {
+    if (neighborElement) {
+      neighborElement.focus();
+      neighborElement.click();
+    }
+  },
+  childSelector: ['role', 'tab'],
+};
+
 class TabLineRoot extends Component<ITabLineProps> {
   static displayName = 'TabLine';
   static style = style;
@@ -70,7 +80,7 @@ class TabLineRoot extends Component<ITabLineProps> {
     size: 'm',
     underlined: true,
   };
-  static enhance = [a11yEnhance({ item: ['role', 'tab'] })];
+  static enhance = [a11yEnhance(optionsA11yEnhance)];
 
   readonly $observer: ResizeObserver;
   readonly $observerTab: ResizeObserver;
