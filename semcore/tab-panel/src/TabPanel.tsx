@@ -42,13 +42,23 @@ export interface ITabPanelContext {
   getItemProps: PropGetterFn;
 }
 
+const optionsA11yEnhance = {
+  onNeighborChange: (neighborElement) => {
+    if (neighborElement) {
+      neighborElement.focus();
+      neighborElement.click();
+    }
+  },
+  childSelector: ['role', 'tab'],
+};
+
 class TabPanelRoot extends Component<ITabPanelProps> {
   static displayName = 'TabPanel';
   static style = style;
   static defaultProps = {
     defaultValue: null,
   };
-  static enhance = [a11yEnhance({ item: ['role', 'tab'] })];
+  static enhance = [a11yEnhance(optionsA11yEnhance)];
 
   uncontrolledProps() {
     return {
