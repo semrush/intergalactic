@@ -2,6 +2,20 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.0.0] - 2021-04-26
+
+### BREAK
+
+- Remove `media` options.
+
+### Changed
+
+- The style processing system has been changed.
+
+### Added
+
+- Added the ability to version components in themes.
+
 ## [3.0.0] - 2021-01-28
 
 ### BREAK
