@@ -2,6 +2,13 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [1.11.0] - 2021-04-26
+
+### Added
+
+- Added Root type for `babel-plugin-root`.
+- Added a new system for processing styles.
+
 ## [1.10.0] - 2020-12-28
 
 ### Added
