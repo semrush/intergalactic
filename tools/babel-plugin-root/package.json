@@ -1,9 +1,12 @@
 {
-  "name": "babel-plugin-root",
+  "name": "@semcore/babel-plugin-root",
   "version": "1.0.0",
   "main": "./babel-plugin-root.js",
   "bin": {
     "babel": "./bin/babel"
+  },
+  "scripts": {
+    "test": "echo 'no test =('"
   },
   "author": "",
   "license": "ISC",
