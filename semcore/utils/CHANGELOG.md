@@ -2,6 +2,13 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.29.0] - 2021-04-26
+
+### Changed
+
+- Added processing `forwardRef` for `assignProps`.
+- Removed the ability to apply media variables.
+
 ## [3.28.0] - 2021-03-15
 
 ### Fixed
