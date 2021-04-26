@@ -5,6 +5,9 @@
   "bin": {
     "babel": "./bin/babel"
   },
+  "scripts": {
+    "test": "echo 'no test =('"
+  },
   "author": "",
   "license": "ISC",
   "dependencies": {
