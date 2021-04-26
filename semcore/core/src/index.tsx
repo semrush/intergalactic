@@ -4,6 +4,8 @@ import hoistNonReactStatics from 'hoist-non-react-statics';
 import { useForkRef } from '@semcore/utils/lib/ref';
 // @ts-ignore
 import useEnhancedEffect from '@semcore/utils/lib/use/useEnhancedEffect';
+// @ts-ignore
+import _assignProps from '@semcore/utils/lib/assignProps';
 
 import Component, { PropsWithRenderFnChildren } from './Component';
 import register from './register';
@@ -268,6 +270,10 @@ interface ClassWithUncontrolledProps<Props> {
   uncontrolledProps(): unknown;
 }
 
+function assignProps(p1, p2) {
+  return _assignProps(p2, p1);
+}
+
 function createComponent<ComponentProps, ChildComponentProps = {}, ContextType = {}, FNType = null>(
   OriginComponent,
   childComponents = {},
@@ -375,5 +381,6 @@ export {
   INHERITED_NAME,
   CORE_COMPONENT,
   STATIC_COMPONENT,
+  assignProps,
 };
 export default createComponent;

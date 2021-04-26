@@ -21,6 +21,7 @@ module.exports = (env, argv) => {
           options: {
             presets: ['@babel/preset-env', '@babel/preset-react'],
             plugins: [
+              '@semcore/babel-plugin-styles',
               '@semcore/babel-plugin-shadow',
               '@babel/plugin-proposal-class-properties',
               '@babel/plugin-proposal-optional-chaining',

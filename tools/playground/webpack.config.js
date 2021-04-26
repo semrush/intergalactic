@@ -45,26 +45,29 @@ module.exports = function() {
             },
           },
         },
-        {
-          test: /\.(js|ts|jsx|tsx)$/i,
-          exclude: /(node_modules)/,
-          use: {
-            loader: 'babel-loader',
-            options: {
-              babelrc: false,
-              plugins: [['@semcore/babel-plugin-react-semcore', { media: true }]],
-            },
-          },
-        },
-        {
-          test: /\.(js|ts|jsx|tsx)$/i,
-          use: {
-            loader: '@semcore/shadow-loader',
-            options: {
-              cacheDirectory: path.resolve(__dirname, '../../node_modules/.cache'),
-            },
-          },
-        },
+        // {
+        //   test: /\.(js|ts|jsx|tsx)$/i,
+        //   exclude: /(node_modules)/,
+        //   use: {
+        //     loader: 'babel-loader',
+        //     options: {
+        //       babelrc: false,
+        //       plugins: [['@semcore/babel-plugin-react-semcore', {
+        //         theme: [process.cwd()],
+        //         scope: 'semcore'
+        //       }]],
+        //     },
+        //   },
+        // },
+        // {
+        //   test: /\.(js|ts|jsx|tsx)$/i,
+        //   use: {
+        //     loader: '@semcore/shadow-loader',
+        //     options: {
+        //       cacheDirectory: path.resolve(__dirname, '../../node_modules/.cache'),
+        //     },
+        //   },
+        // },
         {
           test: /\.css$/,
           include: /\/node_modules\/\.cache\//,

@@ -5,7 +5,8 @@ import createComponent, {
   Merge,
   PropGetterFn,
   PropsAndRef,
-  styled,
+  sstyled,
+  Root,
 } from '@semcore/core';
 import { Box, IBoxProps } from '@semcore/flex-box';
 import addonTextChildren from '@semcore/utils/lib/addonTextChildren';
@@ -65,34 +66,19 @@ class TabPanelRoot extends Component<ITabPanelProps> {
   }
 
   render() {
-    const { Root: STabPanel } = this;
+    const STabPanel = Root;
     const { styles } = this.asProps;
 
-    return styled(styles)(<STabPanel render={Box} />);
+    return sstyled(styles)(<STabPanel render={Box} />);
   }
 }
 
 function TabPanelItem(props: IFunctionProps<ITabPanelItemProps>) {
-  const {
-    Root: STabPanelItem,
-    Children,
-    styles,
-    selected,
-    disabled,
-    addonLeft,
-    addonRight,
-    keyboardFocused,
-  } = props;
+  const STabPanelItem = Root;
+  const { Children, styles, selected, addonLeft, addonRight } = props;
 
-  return styled(styles)(
-    <STabPanelItem
-      render={Box}
-      type="button"
-      tag="button"
-      active={selected}
-      disabled={disabled}
-      keyboardFocused={keyboardFocused}
-    >
+  return sstyled(styles)(
+    <STabPanelItem render={Box} type="button" tag="button" active={selected}>
       {addonLeft ? <TabPanel.Item.Addon tag={addonLeft} /> : null}
       {addonTextChildren(Children, TabPanel.Item.Text, TabPanel.Item.Addon)}
       {addonRight ? <TabPanel.Item.Addon tag={addonRight} /> : null}
@@ -103,13 +89,15 @@ function TabPanelItem(props: IFunctionProps<ITabPanelItemProps>) {
 TabPanelItem.enhance = [keyboardFocusEnhance()];
 
 function Text(props) {
-  const { Root: SText, styles } = props;
-  return styled(styles)(<SText render={Box} tag="span" />);
+  const SText = Root;
+  const { styles } = props;
+  return sstyled(styles)(<SText render={Box} tag="span" />);
 }
 
 function Addon(props) {
-  const { Root: SAddon, styles } = props;
-  return styled(styles)(<SAddon render={Box} tag="span" />);
+  const SAddon = Root;
+  const { styles } = props;
+  return sstyled(styles)(<SAddon render={Box} tag="span" />);
 }
 
 const TabPanel = createComponent<

@@ -1,5 +1,5 @@
 import React, { HTMLAttributes } from 'react';
-import createComponent, { Component, Merge, PropGetter, styled } from '@semcore/core';
+import createComponent, { Component, Merge, PropGetter, sstyled, Root } from '@semcore/core';
 import { Box, IBoxProps } from '@semcore/flex-box';
 import SSeparator from '@semcore/icon/lib/ChevronRight/xxs';
 import keyboardFocusEnhance, {
@@ -40,9 +40,9 @@ class Breadcrumbs extends Component<IBreadcrumbsProps> {
   }
 
   render() {
-    const { Root: SBreadcrumbs } = this;
+    const SBreadcrumbs = Root;
     const { styles } = this.asProps;
-    return styled(styles)(<SBreadcrumbs render={Box} aria-label="breadcrumbs" />);
+    return sstyled(styles)(<SBreadcrumbs render={Box} aria-label="breadcrumbs" />);
   }
 }
 
@@ -57,13 +57,13 @@ class Item extends Component<IBreadcrumbsItemProps> {
   static enhance = [keyboardFocusEnhance()];
 
   render() {
-    const SBreadcrumbsItem = this.Root;
-    const { styles, active, keyboardFocused, separator } = this.asProps;
+    const SBreadcrumbsItem = Root;
+    const { styles, separator } = this.asProps;
     const SSeparator = 'div';
 
-    return styled(styles)(
+    return sstyled(styles)(
       <>
-        <SBreadcrumbsItem render={Box} active={active} keyboardFocused={keyboardFocused} />
+        <SBreadcrumbsItem render={Box} />
         <SSeparator>{separator}</SSeparator>
       </>,
     );

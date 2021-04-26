@@ -1,5 +1,5 @@
 import React, { ComponentProps, HTMLAttributes } from 'react';
-import createComponent, { Component, Merge, PropGetter, styled } from '@semcore/core';
+import createComponent, { Component, Merge, PropGetter, sstyled, Root } from '@semcore/core';
 import Input, { IInputProps, IInputValueProps } from '@semcore/input';
 import ScrollArea, { IScrollAreaProps } from '@semcore/scroll-area';
 import Tag, { ITagProps } from '@semcore/tag';
@@ -8,7 +8,9 @@ import fire from '@semcore/utils/lib/fire';
 import style from './style/input-tag.shadow.css';
 
 export interface IInputTagsValueProps extends IInputValueProps {}
+
 export type InputTagsSize = 'xl' | 'l' | 'm';
+
 export interface IInputTagsProps extends Omit<IInputProps, 'size'>, IScrollAreaProps {
   /**
    * Component size
@@ -119,11 +121,11 @@ class InputTags extends Component<IInputTagsProps> {
   }
 
   render() {
-    const SInputTags = this.Root;
-    const { Children, styles, size } = this.asProps;
+    const SInputTags = Root;
+    const { Children, styles } = this.asProps;
 
-    return styled(styles)(
-      <SInputTags render={Input} tag={ScrollArea} size={size} onMouseDown={this.setFocusInput}>
+    return sstyled(styles)(
+      <SInputTags render={Input} tag={ScrollArea} onMouseDown={this.setFocusInput}>
         <Children />
       </SInputTags>,
     );
@@ -174,18 +176,12 @@ class Value extends Component<IInputTagsValueProps> {
   };
 
   render() {
-    const { Root: SValue } = this;
+    const SValue = Root;
     const SSpacer = 'div';
-    const { styles } = this.asProps;
-    const { width } = this.state;
 
-    return styled(styles)`
-      SValue {
-        width: ${width};
-      }
-    `(
+    return sstyled(this.asProps.styles)(
       <>
-        <SValue render={Input.Value} />
+        <SValue render={Input.Value} style={{ width: this.state.width }} />
         <SSpacer ref={this._spacer} />
       </>,
     );
@@ -193,8 +189,8 @@ class Value extends Component<IInputTagsValueProps> {
 }
 
 function InputTag(props) {
-  const { Root: STag, styles, size, editable } = props;
-  return styled(styles)(<STag render={Tag} size={size} editable={editable} />);
+  const STag = Root;
+  return sstyled(props.styles)(<STag render={Tag} />);
 }
 
 export default createComponent<

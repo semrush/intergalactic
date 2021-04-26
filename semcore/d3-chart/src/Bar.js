@@ -1,5 +1,5 @@
 import React from 'react';
-import { Component, styled } from '@semcore/core';
+import { Component, sstyled } from '@semcore/core';
 import createElement from './createElement';
 
 import style from './style/bar.shadow.css';
@@ -28,7 +28,7 @@ class BarRoot extends Component {
     const [xScale, yScale] = scale;
 
     return data.map((d, i) => {
-      return styled(styles)(
+      return sstyled(styles)(
         <SBar
           key={i}
           __excludeProps={['data', 'scale', 'value']}
@@ -55,7 +55,7 @@ function Background(props) {
   const [xScale, yScale] = scale;
   const yRange = yScale.range();
 
-  return styled(styles)(
+  return sstyled(styles)(
     <SBackground
       render="rect"
       childrenPosition="above"

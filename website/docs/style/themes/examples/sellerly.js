@@ -1,8 +1,8 @@
 import React from 'react';
 import Button from '@semcore/button';
-import { css } from '@semcore/core';
+import { sstyled } from '@semcore/core';
 
-const styles = css`
+const styles = sstyled.css`
   SButton[theme='primary-info'] {
     background-color: #5c4cdc;
     color: #fff;

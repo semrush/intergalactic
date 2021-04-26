@@ -264,3 +264,9 @@ SScrollAreaBar[orientation='horizontal'] {
 SScrollAreaBar[orientation='vertical'] {
   width: 12px;
 }
+
+SScrollAreaBar[orientation='horizontal'] {
+  margin-left: calc(var(--left) + 4px);
+  margin-right: calc(var(--right) + 4px);
+  width: calc(100% - var(--offsetSum) - 8px);
+}

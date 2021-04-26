@@ -1,7 +1,7 @@
-.flex {
+SFlex {
   display: flex;
 }
 
-.flex-inline {
+SFlex[inline] {
   display: inline-flex;
 }

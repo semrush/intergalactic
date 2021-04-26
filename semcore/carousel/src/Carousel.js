@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import createComponent, { Component, styled } from '@semcore/core';
+import createComponent, { Component, sstyled, Root } from '@semcore/core';
 
 import { Box } from '@semcore/flex-box';
 import ChevronRightL from '@semcore/icon/lib/ChevronRight/l';
@@ -320,36 +320,31 @@ class Carousel extends Component {
   }
 
   render() {
-    const { Root: SCarousel } = this;
-    const { Children, styles } = this.asProps;
+    const { styles } = this.asProps;
+    const SCarousel = Root;
 
-    return styled(styles)(
+    return sstyled(styles)(
       <SCarousel
         render={Box}
         onKeyDown={this.handlerKeyDown}
         tabIndex={0}
         onTouchStart={this.handlerTouchStart}
         onTouchEnd={this.handlerTouchEnd}
-      >
-        <Children />
-      </SCarousel>,
+      />,
     );
   }
 }
 
 const Container = (props) => {
-  const { styles, duration, Root: SContainer } = props;
-  const speedAnimation = `${duration}ms`;
+  const SContainer = Root;
+  const { styles, duration } = props;
 
-  return styled(styles)`
-    SContainer {
-      transition: transform ${speedAnimation} ease-in-out;
-    }
-  `(<SContainer render={Box} />);
+  return sstyled(styles)(<SContainer render={Box} use:duration={`${duration}ms`} />);
 };
 
 const Item = (props) => {
-  const { styles, $toogleItem, transform, Root: SItem } = props;
+  const { styles, $toogleItem } = props;
+  const SItem = Root;
   const refItem = React.createRef();
   useEffect(() => {
     // add item
@@ -360,16 +355,13 @@ const Item = (props) => {
     };
   }, []);
 
-  return styled(styles)`
-    SItem {
-      transform: ${transform};
-    }
-  `(<SItem render={Box} ref={refItem} />);
+  return sstyled(styles)(<SItem render={Box} ref={refItem} />);
 };
 
 const Prev = (props) => {
-  const { Root: SPrev, styles, disabled } = props;
-  return styled(styles)(<SPrev render={Box} disabled={disabled} />);
+  const { styles } = props;
+  const SPrev = Root;
+  return sstyled(styles)(<SPrev render={Box} />);
 };
 
 Prev.defaultProps = () => ({
@@ -378,8 +370,9 @@ Prev.defaultProps = () => ({
 });
 
 const Next = (props) => {
-  const { Root: SNext, styles, disabled } = props;
-  return styled(styles)(<SNext render={Box} disabled={disabled} />);
+  const { styles } = props;
+  const SNext = Root;
+  return sstyled(styles)(<SNext render={Box} />);
 };
 
 Next.defaultProps = () => ({
@@ -387,15 +380,16 @@ Next.defaultProps = () => ({
   top: 0,
 });
 
-const Indicators = ({ Root: SIndicators, items, styles, Children }) => {
+const Indicators = ({ items, styles, Children }) => {
+  const SIndicators = Root;
   const SIndicator = Box;
   if (Children.origin) {
     return <Children />;
   }
-  return styled(styles)(
+  return sstyled(styles)(
     <SIndicators render={Box}>
       {items.map((item) => (
-        <SIndicator active={item.active} {...item} />
+        <SIndicator {...item} />
       ))}
     </SIndicators>,
   );

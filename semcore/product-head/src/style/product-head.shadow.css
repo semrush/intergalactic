@@ -1,27 +1,27 @@
 @import '@semcore/utils/style/var.css';
 
 SProductHead {
-  margin-bottom: media(16px);
-  margin-top: media(16px);
-  padding-left: media(30px);
-  padding-right: media(30px);
+  margin-bottom: 16px;
+  margin-top: 16px;
+  padding-left: 30px;
+  padding-right: 30px;
 }
 
 SRow {
   display: flex;
   justify-content: space-between;
-  margin-top: media(8px);
-  margin-bottom: media(8px);
+  margin-top: 8px;
+  margin-bottom: 8px;
 }
 
 SButtons {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  margin-left: media(8px);
+  margin-left: 8px;
 
   & > *:not(:last-child) {
-    margin-right: media(8px);
+    margin-right: 8px;
   }
 }
 
@@ -29,10 +29,10 @@ SLinks {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  margin-left: media(8px);
+  margin-left: 8px;
 
   & > *:not(:first-child) {
-    margin-left: media(20px);
+    margin-left: 20px;
   }
 }
 
@@ -41,16 +41,16 @@ SLinks {
     flex-wrap: wrap;
   }
 
-  .SButtons {
+  SButtons {
     width: 100%;
     margin-left: 0;
-    margin-top: media(8px);
-    margin-bottom: media(-8px);
+    margin-top: 8px;
+    margin-bottom: -8px;
     justify-content: flex-start;
     flex-wrap: wrap;
 
     & > * {
-      margin-bottom: media(8px);
+      margin-bottom: 8px;
     }
   }
 

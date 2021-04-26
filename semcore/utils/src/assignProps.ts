@@ -1,5 +1,5 @@
-import cn from 'classnames';
 import { CSSProperties, Ref } from 'react';
+import cn from 'classnames';
 import { forkRef } from './ref';
 
 export function callAllEventHandlers(...fns) {
@@ -57,6 +57,10 @@ export default function assignProps<P extends AssignableProps, S extends Assigna
 
   if (source.ref && props.ref) {
     newProps.ref = forkRef(source.ref, props.ref);
+  }
+
+  if (props.forwardRef) {
+    newProps.ref = forkRef(newProps.ref, props.forwardRef);
   }
 
   if (source.style && props.style) {

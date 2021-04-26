@@ -2,7 +2,7 @@ import React from 'react';
 import Input, { IInputValueProps } from '@semcore/input';
 import Select from '@semcore/select';
 import { intOrDefault, nextInput, prevInput, withLeadingZero } from '../TimePicker';
-import { Component, styled } from '@semcore/core';
+import { Component, sstyled, Root } from '@semcore/core';
 import { callAllEventHandlers } from '@semcore/utils/lib/assignProps';
 
 const MAP_FIELD_TO_TIME = {
@@ -101,7 +101,7 @@ class ItemPicker extends Component<ITimePickerItemProps> {
   handleVisibleChange = (visible) => this.setState({ visible });
 
   render() {
-    const { Root: SPickerInput } = this;
+    const SPickerInput = Root;
     const {
       styles,
       step,
@@ -117,7 +117,7 @@ class ItemPicker extends Component<ITimePickerItemProps> {
     const value = dirtyValue === undefined ? timeValue : dirtyValue;
     const [min, max] = this.minMax();
 
-    return styled(styles)(
+    return sstyled(styles)(
       <Select
         {...other}
         interaction="focus"

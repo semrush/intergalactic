@@ -5,7 +5,8 @@ import createComponent, {
   Merge,
   PropGetterFn,
   PropsAndRef,
-  styled,
+  sstyled,
+  Root,
 } from '@semcore/core';
 import { Box, IBoxProps } from '@semcore/flex-box';
 import addonTextChildren from '@semcore/utils/lib/addonTextChildren';
@@ -128,12 +129,12 @@ class TabLineRoot extends Component<ITabLineProps> {
   }
 
   render() {
-    const { Root: STabLine } = this;
+    const STabLine = Root;
     const SIndicator = 'div';
-    const { Children, styles, underlined, controlsLength } = this.asProps;
+    const { styles, Children, controlsLength } = this.asProps;
 
-    return styled(styles)(
-      <STabLine render={Box} ref={this.$tabsParent} underlined={underlined}>
+    return sstyled(styles)(
+      <STabLine render={Box} ref={this.$tabsParent}>
         <NeighborLocation controlsLength={controlsLength}>
           <Children />
         </NeighborLocation>
@@ -144,30 +145,11 @@ class TabLineRoot extends Component<ITabLineProps> {
 }
 
 function TabLineItem(props: IFunctionProps<ITabLineItemProps>) {
-  const {
-    Root: STabLineItem,
-    Children,
-    size,
-    disabled,
-    selected,
-    styles,
-    addonLeft,
-    addonRight,
-    keyboardFocused,
-    neighborLocation,
-  } = props;
+  const STabLineItem = Root;
+  const { Children, selected, styles, addonLeft, addonRight } = props;
 
-  return styled(styles)(
-    <STabLineItem
-      render={Box}
-      type="button"
-      tag="button"
-      size={size}
-      active={selected}
-      disabled={disabled}
-      keyboardFocused={keyboardFocused}
-      neighborLocation={neighborLocation}
-    >
+  return sstyled(styles)(
+    <STabLineItem render={Box} type="button" tag="button" active={selected}>
       {addonLeft ? <TabLine.Item.Addon tag={addonLeft} /> : null}
       {addonTextChildren(Children, TabLine.Item.Text, TabLine.Item.Addon)}
       {addonRight ? <TabLine.Item.Addon tag={addonRight} /> : null}
@@ -178,13 +160,15 @@ function TabLineItem(props: IFunctionProps<ITabLineItemProps>) {
 TabLineItem.enhance = [keyboardFocusEnhance(), neighborLocationEnhance()];
 
 function Text(props: IFunctionProps<IBoxProps>) {
-  const { Root: SText, styles } = props;
-  return styled(styles)(<SText render={Box} tag="span" />);
+  const { styles } = props;
+  const SText = Root;
+  return sstyled(styles)(<SText render={Box} tag="span" />);
 }
 
 function Addon(props: IFunctionProps<IBoxProps>) {
-  const { Root: SAddon, styles } = props;
-  return styled(styles)(<SAddon render={Box} tag="span" />);
+  const { styles } = props;
+  const SAddon = Root;
+  return sstyled(styles)(<SAddon render={Box} tag="span" />);
 }
 
 const TabLine = createComponent<

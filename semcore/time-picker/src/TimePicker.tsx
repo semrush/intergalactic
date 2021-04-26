@@ -1,5 +1,5 @@
 import React, { ComponentProps, HTMLAttributes, InputHTMLAttributes } from 'react';
-import createComponent, { Component, Merge, PropGetter, styled } from '@semcore/core';
+import createComponent, { Component, Merge, PropGetter, sstyled, Root } from '@semcore/core';
 import Input, { IInputProps } from '@semcore/input';
 import { Box, IBoxProps } from '@semcore/flex-box';
 import { Hours, ITimePickerItemProps, Minutes } from './PickerInput';
@@ -218,10 +218,10 @@ class TimePickerRoot extends Component<ITimePickerProps> {
   };
 
   render() {
-    const { Root: STimePicker } = this;
-    const { size, styles, disabled } = this.asProps;
+    const STimePicker = Root;
+    const { styles } = this.asProps;
 
-    return styled(styles)(<STimePicker render={Input} size={size} disabled={disabled} />);
+    return sstyled(styles)(<STimePicker render={Input} />);
   }
 }
 
@@ -239,8 +239,6 @@ class Separator extends Component<IBoxProps> {
   };
 
   render() {
-    const { Root } = this;
-
     return <Root render={Box} ref={this.$el} onClick={this.handlerClick} />;
   }
 }

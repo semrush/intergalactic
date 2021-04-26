@@ -7,7 +7,7 @@ import {
   JustifyContentProperty,
   Properties,
 } from 'csstype';
-import { styled } from '@semcore/core';
+import { sstyled } from '@semcore/core';
 import useBox, { IBoxProps, removeUndefinedKeys } from '../Box/useBox';
 
 import style from '../style/use-flex.shadow.css';
@@ -72,18 +72,18 @@ export default function useFlex<T extends IFlexProps>(
     return calculateFlexStyles(props);
   }, [flexWrap, direction, reverse, alignItems, alignContent, justifyContent]);
 
-  const { styles } = styled(style);
+  const styles = sstyled(style);
 
   return [
     Tag,
     {
-      className: cn(
-        {
-          [styles['flex']]: !inline,
-          [styles['flex-inline']]: inline,
-        },
-        className,
-      ),
+      className:
+        cn(
+          styles.cn('SFlex', {
+            inline: inline,
+          }).className,
+          className,
+        ) || undefined,
       style: Object.assign({}, styleProp, flexStyles),
       ...other,
     },

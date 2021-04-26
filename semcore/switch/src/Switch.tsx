@@ -4,7 +4,8 @@ import createComponent, {
   IFunctionProps,
   Merge,
   PropGetter,
-  styled,
+  sstyled,
+  Root,
 } from '@semcore/core';
 import { Box, IBoxProps } from '@semcore/flex-box';
 import NeighborLocation, {
@@ -92,17 +93,11 @@ class Switch extends Component<ISwitchProps> {
   }
 
   render() {
-    const SSwitch = this.Root;
-    const { Children, styles, size, disabled, controlsLength } = this.asProps;
+    const SSwitch = Root;
+    const { Children, styles, controlsLength } = this.asProps;
 
-    return styled(styles)(
-      <SSwitch
-        render={Box}
-        tag="label"
-        size={size}
-        disabled={disabled}
-        checked={this.inputRef.current?.checked}
-      >
+    return sstyled(styles)(
+      <SSwitch render={Box} tag="label" checked={this.inputRef.current?.checked}>
         <NeighborLocation controlsLength={controlsLength}>
           <Children />
         </NeighborLocation>
@@ -162,18 +157,12 @@ class Value extends Component<ISwitchValueProps> {
 
     const [inputProps, toggleProps] = getInputProps(other, includeInputProps);
 
-    const color = resolveColor(getColor(theme));
-
-    return styled(styles)`
-      SToggle[checked] {
-        color: ${color};
-        background-color: ${color};
-      }
-    `(
+    return sstyled(styles)(
       <SToggle
         keyboardFocused={keyboardFocused}
         neighborLocation={neighborLocation}
         checked={(inputProps as ISwitchValueProps).checked}
+        color={resolveColor(getColor(theme))}
         {...toggleProps}
       >
         <SInput tag="input" type="checkbox" ref={forwardRef} {...inputProps} />
@@ -186,9 +175,9 @@ class Value extends Component<ISwitchValueProps> {
 }
 
 function Addon(props: IFunctionProps<ISwitchAddonProps>) {
-  const SAddon = props.Root;
-  const { neighborLocation, styles } = props;
-  return styled(styles)(<SAddon render={Box} tag="span" neighborLocation={neighborLocation} />);
+  const SAddon = Root;
+  const { styles } = props;
+  return sstyled(styles)(<SAddon render={Box} tag="span" />);
 }
 Addon.enhance = [neighborLocationEnhance()];
 

@@ -4,6 +4,7 @@ SSkeleton {
   animation-name: pulse;
   animation-iteration-count: infinite;
   animation-timing-function: ease-in-out;
+  animation-duration: var(--durationAnim);
   will-change: opacity;
 }
 

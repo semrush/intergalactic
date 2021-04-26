@@ -4,12 +4,14 @@ import createComponent, {
   Merge,
   PropGetterFn,
   PropsAndRef,
-  styled,
+  sstyled,
+  Root,
 } from '@semcore/core';
 import { Box, IBoxProps, IFlexProps } from '@semcore/flex-box';
 import { Collapse as CollapseAnimate, ICollapseProps } from '@semcore/animation';
 import ChevronRightXS from '@semcore/icon/lib/ChevronRight/xs';
 import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
+
 import style from './style/accordion.shadow.css';
 
 export type AccordionValue = null | number | string | Array<number | string | null>;
@@ -154,26 +156,21 @@ export class Toggle extends Component<IBoxProps> {
   }
 
   render() {
-    const SItemToggle = this.Root;
-    const { styles, keyboardFocused, disabled } = this.asProps;
-    return styled(styles)(
-      <SItemToggle
-        render={Box}
-        keyboardFocused={keyboardFocused}
-        disabled={disabled}
-        onKeyDown={this.handleKeyDown}
-      />,
-    );
+    const { styles } = this.asProps;
+    const SItemToggle = Root;
+
+    return sstyled(styles)(<SItemToggle render={Box} onKeyDown={this.handleKeyDown} />);
   }
 }
 
 export function Chevron(props) {
-  const { Root: SItemChevron, styles, selected, tag = ChevronRightXS } = props;
-  return styled(styles)(<SItemChevron render={Box} selected={selected} tag={tag} />);
+  const { styles } = props;
+  const SItemChevron = Root;
+  return sstyled(styles)(<SItemChevron render={ChevronRightXS} />);
 }
 
 export function Collapse(props) {
-  const { Root, selected } = props;
+  const { selected } = props;
   return <Root render={CollapseAnimate} visible={selected} interactive />;
 }
 

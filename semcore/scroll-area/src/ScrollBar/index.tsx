@@ -1,6 +1,6 @@
 import React, { ComponentProps } from 'react';
 import { findDOMNode } from 'react-dom';
-import createComponent, { Component, PropGetterFn, styled } from '@semcore/core';
+import createComponent, { Component, PropGetterFn, sstyled, Root } from '@semcore/core';
 import { Box, IBoxProps } from '@semcore/flex-box';
 import { getNodeByRef, NodeByRef } from '@semcore/utils/lib/ref';
 
@@ -20,9 +20,10 @@ export interface IScrollBarContext extends IScrollBarProps {
 }
 
 function Slider(props) {
-  const { Root: SSlider, styles } = props;
+  const { styles } = props;
+  const SSlider = Root;
 
-  return styled(styles)(<SSlider render={Box} onDragStart={() => false} />);
+  return sstyled(styles)(<SSlider render={Box} onDragStart={() => false} />);
 }
 
 class ScrollBarRoot extends Component<IScrollBarProps> {
@@ -268,7 +269,7 @@ class ScrollBarRoot extends Component<IScrollBarProps> {
   }
 
   render() {
-    const SScrollBar = this.Root;
+    const SScrollBar = Root;
     const { styles } = this.asProps;
     const { visibleScroll } = this.state;
 
@@ -276,7 +277,7 @@ class ScrollBarRoot extends Component<IScrollBarProps> {
       return null;
     }
 
-    return styled(styles)(
+    return sstyled(styles)(
       <SScrollBar
         render={Box}
         ref={this.refBar}
