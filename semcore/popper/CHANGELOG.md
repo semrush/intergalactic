@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.10.1] -
+
+### Fixed
+
+- Fixed the setting of attributes in HTML.
+
 ## [4.10.0] - 2021-4-26
 
 ### Changed
