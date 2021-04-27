@@ -9,7 +9,7 @@ const NavigationView = styled.div`
   padding: 32px;
   box-sizing: border-box;
   max-width: 260px;
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
     margin-right: 0;
   }
 `;

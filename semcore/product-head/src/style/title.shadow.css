@@ -22,7 +22,7 @@ SName {
   white-space: nowrap;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   STitle {
     flex-wrap: wrap;
     white-space: normal;

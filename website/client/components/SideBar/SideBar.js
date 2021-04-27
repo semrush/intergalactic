@@ -23,7 +23,7 @@ const ModalWindow = styled.div`
   @media (max-width: 992px) {
     width: 60%;
   }
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
     width: 70%;
   }
 `;
