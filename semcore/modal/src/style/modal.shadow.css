@@ -56,7 +56,7 @@ SClose[keyboardFocused] {
   box-shadow: var(--keyborad-focus);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   SWindow {
     min-width: 60%;
   }

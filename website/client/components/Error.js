@@ -9,7 +9,7 @@ const Content = styled.div`
   justify-content: center;
   font-size: 18px;
   line-height: 150%;
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
     padding: 120px 56px 96px 56px;
     flex-direction: column;
   }
@@ -29,7 +29,7 @@ const Info = styled.div`
       text-decoration: underline;
     }
   }
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
     width: 525px;
     white-space: normal;
     margin-left: 40px;

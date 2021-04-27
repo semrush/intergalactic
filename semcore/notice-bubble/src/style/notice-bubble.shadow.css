@@ -61,7 +61,7 @@ SNoticeBubble {
   right: media(10px);
   top: media(10px);
 
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
     width: calc(100% - media(20px));
   }
 }

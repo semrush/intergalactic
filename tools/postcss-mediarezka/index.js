@@ -5,7 +5,7 @@ const functionName = 'media';
 const defaults = {
   changePX: 1.3,
   precision: 5,
-  mediaQuery: 'max-width: 768px',
+  mediaQuery: 'max-width: 767px',
   include: false,
   getMedia: () => {},
 };
