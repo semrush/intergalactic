@@ -113,7 +113,7 @@ function TooltipPopper(props) {
       }
     }
   `(
-    <STooltip render={Popper.Popper} theme={useTheme}>
+    <STooltip render={Popper.Popper} theme={useTheme} role="tooltip">
       <Children />
       <SArrow data-popper-arrow theme={useTheme} />
     </STooltip>,
