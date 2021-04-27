@@ -1,5 +1,5 @@
 import React from 'react';
-import createComponent, { Component, styled, use } from '@semcore/core';
+import createComponent, { Component, sstyled, Root } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
 
 import style from './style/slider.shadow.css';
@@ -145,19 +145,15 @@ class SliderRoot extends Component {
   };
 
   render() {
-    const { Root: SSlider } = this;
-    const { Children, styles, disabled, background } = this.asProps;
+    const SSlider = Root;
+    const { Children, styles, background } = this.asProps;
     const SInput = Box;
 
-    return styled(styles)`
-      SSlider {
-        background-color: ${background};
-      }
-    `(
+    return sstyled(styles)(
       <>
         <SSlider
           render={Box}
-          disabled={disabled}
+          use:bg={resolveColor(background)}
           ref={this.refSlider}
           onMouseDown={this.handleMove}
           onMouseUp={this.handleMove}
@@ -180,73 +176,37 @@ function convertValueToPercent(value, min, max) {
 }
 
 function Bar(props) {
-  const {
-    Root: SBar,
-    styles,
-    value,
-    refBar,
-    min,
-    max,
-    color: colorProps,
-    disabled,
-    interactive,
-  } = props;
+  const SBar = Root;
+  const { styles, value, refBar, min, max, color: colorProps } = props;
   const width = `${convertValueToPercent(value, min, max)}%`;
   const color = resolveColor(colorProps);
 
-  return styled(styles)`
-    SBar[use|color] {
-      background-color: ${color};
-    }
-    SBar[use|interactive] {
-      &:hover {
-        background-color: ${shade(color, -0.12)};
-      }
-    }
-  `(
+  return sstyled(styles)(
     <SBar
       render={Box}
+      use:color={resolveColor(color)}
+      interactionColor={shade(color, -0.12)}
       w={width}
-      disabled={disabled}
       ref={refBar}
-      {...use({ color, interactive })}
     />,
   );
 }
 
 function Knob(props) {
-  const {
-    Root: SKnob,
-    styles,
-    value,
-    refKnob,
-    min,
-    max,
-    color: colorProps,
-    disabled,
-    interactive,
-  } = props;
+  const SKnob = Root;
+  const { styles, value, refKnob, min, max, color: colorProps } = props;
   const knobWidth = '10px';
   const left = `calc(${convertValueToPercent(value, min, max, knobWidth)}% - ${knobWidth})`;
   const color = resolveColor(colorProps);
 
-  return styled(styles)`
-    SKnob[use|color] {
-      border-color: ${color};
-    }
-    SKnob[use|interactive] {
-      &:hover {
-        border-color: ${shade(color, -0.12)};
-      }
-    }
-  `(
+  return sstyled(styles)(
     <SKnob
       render={Box}
-      disabled={disabled}
+      use:color={resolveColor(color)}
+      interactionColor={shade(resolveColor(color), -0.12)}
       ref={refKnob}
       left={left}
       w={knobWidth}
-      {...use({ color, interactive })}
     />,
   );
 }

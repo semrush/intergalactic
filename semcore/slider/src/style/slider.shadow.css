@@ -35,7 +35,15 @@ SBar {
 }
 
 SBar[disabled] {
-  background-color: #2b94e150;
+  background-color: #2b94e150 !important;
+}
+SBar[color] {
+  background-color: var(--color);
+}
+SBar[interactive] {
+  &:hover {
+    background-color: var(--interactionColor);
+  }
 }
 
 SKnob {
@@ -53,7 +61,17 @@ SKnob {
 }
 
 SKnob[disabled] {
-  border: 5px solid #2b94e150;
+  border: 5px solid #2b94e150 !important;
+}
+
+SKnob[color] {
+  border-color: var(--color);
+}
+
+SKnob[interactive] {
+  &:hover {
+    border-color: var(--interactionColor);
+  }
 }
 
 SInput {
