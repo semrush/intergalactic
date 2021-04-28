@@ -1,25 +1,25 @@
 substitutions:
   _APP_VERSION: 0.0.1
 steps:
-  - name: 'node'
+  - name: 'Install modules'
     entrypoint: yarn
     args: ['--non-interactive', '--frozen-lockfile']
-  - name: 'node'
+  - name: 'Build components'
     entrypoint: yarn
     args: ['build']
-  - name: 'node'
+  - name: 'Install website modules'
     entrypoint: yarn
     args: ['--non-interactive', '--frozen-lockfile', '--cwd', 'website']
-  - name: 'node'
+  - name: 'Build website client'
     entrypoint: yarn
     args: ['--cwd', 'website', 'build:client']
-  - name: 'node'
+  - name: 'Build website server'
     entrypoint: yarn
     args: ['--cwd', 'website', 'build:server']
-  - name: 'node'
+  - name: 'Build TS interface'
     entrypoint: yarn
     args: ['--cwd', 'website', 'build:interface']
-  - name: 'node'
+  - name: 'Lint docs'
     entrypoint: yarn
     args: ['--cwd', 'website', 'lint:md']
   - name: 'ubuntu'
@@ -84,10 +84,12 @@ steps:
         '--ingress',
         'internal-and-cloud-load-balancing',
       ]
-  - name: 'node'
+  - name: 'Algolia publish'
     entrypoint: node
     args: ['algoliaPublish.js']
     dir: 'website'
+    env:
+      - 'ALGOLIA_SECRET_KEY=$_ALGOLIA_SECRET_KEY'
 
 timeout: 3600s
 options:
