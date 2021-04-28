@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Button from '@semcore/button';
 import styled from 'styled-components';
+import ResizeObserver from 'resize-observer-polyfill';
 import NavLink from './NavLink';
 import logo from '../static/logo/semrush-logo-title.svg';
 import mobileLogo from '../static/logo/semrush-logo.svg';
@@ -16,13 +17,14 @@ import Error from './Error';
 import Divider from '@semcore/divider';
 import OutsideClick from '@semcore/outside-click';
 import { Flex } from '@semcore/flex-box';
+import trottle from '@semcore/utils/lib/rafTrottle';
 
 const HeaderWrapper = styled.header`
   display: grid;
   grid-template-rows: 1fr;
   grid-template-columns: 0.8fr 1fr 0.8fr;
   position: fixed;
-  width: 100%;
+  width: inherit;
   padding: 0 40px;
   flex-wrap: nowrap;
   justify-content: space-between;
@@ -33,6 +35,7 @@ const HeaderWrapper = styled.header`
   background: #ffffff;
   box-shadow: 0 2px 16px 0 rgba(0, 0, 0, 0.1);
   z-index: 999;
+  box-sizing: border-box;
   a {
     color: #171a22;
     text-decoration: none;
@@ -277,9 +280,45 @@ const NAVIGATE_QUERY = gql`
   }
 `;
 
+const MobileHeaderMenu = ({ clicked, setClicked, data }) => (
+  <MobileMenu>
+    <Mobile>
+      <MobileBackground>
+        <img
+          src={close}
+          alt="Logo"
+          tag={`Button`}
+          onClick={() => {
+            setClicked(false);
+          }}
+        />
+      </MobileBackground>
+    </Mobile>
+    <OutsideClick onOutsideClick={() => setClicked(false)}>
+      <Side>
+        <Links>
+          <a href="/internal/roadmap/">Roadmap</a>
+          <a href="/internal/release/">Releases</a>
+          <a href="https://github.com/semrush/intergalactic" target="_blank">
+            GitHub
+          </a>
+        </Links>
+        <Line orientation="horizontal" />
+        <SideBarNavigation
+          tag={`Button`}
+          visible={clicked}
+          onClose={() => setClicked(false)}
+          navigation={data.navigation.filter((nav) => !nav.metadata.hide)}
+        />
+      </Side>
+    </OutsideClick>
+  </MobileMenu>
+);
+
 function Header(props) {
   const [clicked, setClicked] = useState(false);
   const [visible, setVisible] = useState(false);
+  const headerRef = React.createRef();
 
   const { error, data } = useQuery(NAVIGATE_QUERY, {
     pollInterval: process.env.NODE_ENV === 'production' ? 120000 : 5000,
@@ -287,41 +326,28 @@ function Header(props) {
 
   if (error && !data) return <Error title="Oh no! It’s 404!" />;
 
+  const updateWidthHeader = (headerNode) =>
+    trottle(() => {
+      if (!document || !headerNode) return;
+      headerNode.style.width = document.body.offsetWidth + 'px';
+    });
+
+  useEffect(() => {
+    let resizeObserver = null;
+    if (document) {
+      resizeObserver = new ResizeObserver(updateWidthHeader(headerRef.current));
+      resizeObserver.observe(document.body);
+    }
+
+    return () => {
+      resizeObserver && resizeObserver.disconnect();
+    };
+  }, []);
+
   return (
-    <HeaderWrapper {...props}>
+    <HeaderWrapper {...props} ref={headerRef}>
       {clicked ? (
-        <MobileMenu>
-          <Mobile>
-            <MobileBackground>
-              <img
-                src={close}
-                alt="Logo"
-                tag={`Button`}
-                onClick={() => {
-                  setClicked(false);
-                }}
-              />
-            </MobileBackground>
-          </Mobile>
-          <OutsideClick onOutsideClick={() => setClicked(false)}>
-            <Side>
-              <Links>
-                <a href="/internal/roadmap/">Roadmap</a>
-                <a href="/internal/release/">Releases</a>
-                <a href="https://github.com/semrush/intergalactic" target="_blank">
-                  GitHub
-                </a>
-              </Links>
-              <Line orientation="horizontal" />
-              <SideBarNavigation
-                tag={`Button`}
-                visible={clicked}
-                onClose={() => setClicked(false)}
-                navigation={data.navigation.filter((nav) => !nav.metadata.hide)}
-              />
-            </Side>
-          </OutsideClick>
-        </MobileMenu>
+        <MobileHeaderMenu clicked={clicked} setClicked={setClicked} data={data} />
       ) : (
         <MobileMenu>
           <Mobile>
