@@ -13,6 +13,7 @@ import addonTextChildren from '@semcore/utils/lib/addonTextChildren';
 import keyboardFocusEnhance, {
   IKeyboardFocusProps,
 } from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
+import a11yEnhance from '@semcore/utils/lib/enhances/a11yEnhance';
 import NeighborLocation, {
   INeighborItemProps,
   INeighborLocationProps,
@@ -41,7 +42,10 @@ export interface ITabLineProps<T extends TabLineValue = TabLineValue>
   value?: T;
 }
 
-export interface ITabLineItemProps extends IBoxProps, IKeyboardFocusProps, INeighborItemProps {
+export interface ITabLineItemProps
+  extends IBoxProps,
+    IKeyboardFocusProps,
+    INeighborItemProps {
   /** Makes a tab selected. This property is determined automatically depending on the value. */
   selected?: boolean;
   /** Disabled state  */
@@ -58,6 +62,16 @@ export interface ITabLineContext {
   getItemProps: PropGetterFn;
 }
 
+const optionsA11yEnhance = {
+  onNeighborChange: (neighborElement) => {
+    if (neighborElement) {
+      neighborElement.focus();
+      neighborElement.click();
+    }
+  },
+  childSelector: ['role', 'tab'],
+};
+
 class TabLineRoot extends Component<ITabLineProps> {
   static displayName = 'TabLine';
   static style = style;
@@ -66,6 +80,7 @@ class TabLineRoot extends Component<ITabLineProps> {
     size: 'm',
     underlined: true,
   };
+  static enhance = [a11yEnhance(optionsA11yEnhance)];
 
   readonly $observer: ResizeObserver;
   readonly $observerTab: ResizeObserver;
@@ -92,13 +107,18 @@ class TabLineRoot extends Component<ITabLineProps> {
     const indicator = this.$indicator.current;
     const tabsParent = this.$tabsParent.current;
     if (!indicator || !tabsParent) return false;
-    const tab = Array.from(tabsParent.querySelectorAll('[data-ui-name="TabLine.Item"]')).find(
-      (node: HTMLElement) => node.getAttribute('value') === String(this.asProps.value),
+    const tab = Array.from(
+      tabsParent.querySelectorAll('[data-ui-name="TabLine.Item"]')
+    ).find(
+      (node: HTMLElement) =>
+        node.getAttribute('value') === String(this.asProps.value)
     ) as HTMLElement;
     if (!tab) return false;
     this.$observerTab.observe(tab);
     const { offsetLeft, offsetWidth } = tab;
-    indicator.style.transform = `translateX(${offsetLeft - tabsParent.clientLeft}px)`;
+    indicator.style.transform = `translateX(${
+      offsetLeft - tabsParent.clientLeft
+    }px)`;
     indicator.style.width = `${offsetWidth}px`;
   };
 
@@ -121,10 +141,14 @@ class TabLineRoot extends Component<ITabLineProps> {
 
   getItemProps(props) {
     const { value, size } = this.asProps;
+    const isSelected = value === props.value;
     return {
       size,
-      selected: value === props.value,
+      selected: isSelected,
       onClick: this.bindHandlerClick(props.value),
+      tabIndex: isSelected ? 0 : -1,
+      'aria-posinset': value,
+      'aria-selected': isSelected,
     };
   }
 
@@ -134,12 +158,12 @@ class TabLineRoot extends Component<ITabLineProps> {
     const { styles, Children, controlsLength } = this.asProps;
 
     return sstyled(styles)(
-      <STabLine render={Box} ref={this.$tabsParent}>
+      <STabLine render={Box} ref={this.$tabsParent} role="tablist">
         <NeighborLocation controlsLength={controlsLength}>
           <Children />
         </NeighborLocation>
         <SIndicator ref={this.$indicator} />
-      </STabLine>,
+      </STabLine>
     );
   }
 }
@@ -149,11 +173,17 @@ function TabLineItem(props: IFunctionProps<ITabLineItemProps>) {
   const { Children, selected, styles, addonLeft, addonRight } = props;
 
   return sstyled(styles)(
-    <STabLineItem render={Box} type="button" tag="button" active={selected}>
+    <STabLineItem
+      render={Box}
+      type="button"
+      tag="button"
+      role="tab"
+      active={selected}
+    >
       {addonLeft ? <TabLine.Item.Addon tag={addonLeft} /> : null}
       {addonTextChildren(Children, TabLine.Item.Text, TabLine.Item.Addon)}
       {addonRight ? <TabLine.Item.Addon tag={addonRight} /> : null}
-    </STabLineItem>,
+    </STabLineItem>
   );
 }
 
@@ -179,7 +209,7 @@ const TabLine = createComponent<
       {
         Text: ComponentProps<typeof Box>;
         Addon: ComponentProps<typeof Box>;
-      },
+      }
     ];
   },
   Merge<ITabLineContext, ITabLineProps>,
@@ -188,7 +218,7 @@ const TabLine = createComponent<
       ITabLineProps<T>,
       ITabLineContext,
       ReturnType<TabLineRoot['uncontrolledProps']>
-    >,
+    >
   ) => React.ReactElement
 >(TabLineRoot, {
   Item: [TabLineItem, { Text, Addon }],

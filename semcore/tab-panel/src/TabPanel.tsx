@@ -10,6 +10,7 @@ import createComponent, {
 } from '@semcore/core';
 import { Box, IBoxProps } from '@semcore/flex-box';
 import addonTextChildren from '@semcore/utils/lib/addonTextChildren';
+import a11yEnhance from '@semcore/utils/lib/enhances/a11yEnhance';
 import keyboardFocusEnhance, {
   IKeyboardFocusProps,
 } from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
@@ -18,7 +19,8 @@ import style from './style/tab-panel.shadow.css';
 
 export type TabPanelValue = string | number | boolean;
 
-export interface ITabPanelProps<T extends TabPanelValue = TabPanelValue> extends IBoxProps {
+export interface ITabPanelProps<T extends TabPanelValue = TabPanelValue>
+  extends IBoxProps {
   /** Is invoked when changing the selection */
   onChange?: (value: T, e?: React.SyntheticEvent<HTMLButtonElement>) => void;
   /** Value of the selected tab */
@@ -40,12 +42,23 @@ export interface ITabPanelContext {
   getItemProps: PropGetterFn;
 }
 
+const optionsA11yEnhance = {
+  onNeighborChange: (neighborElement) => {
+    if (neighborElement) {
+      neighborElement.focus();
+      neighborElement.click();
+    }
+  },
+  childSelector: ['role', 'tab'],
+};
+
 class TabPanelRoot extends Component<ITabPanelProps> {
   static displayName = 'TabPanel';
   static style = style;
   static defaultProps = {
     defaultValue: null,
   };
+  static enhance = [a11yEnhance(optionsA11yEnhance)];
 
   uncontrolledProps() {
     return {
@@ -59,9 +72,13 @@ class TabPanelRoot extends Component<ITabPanelProps> {
 
   getItemProps(props) {
     const { value } = this.asProps;
+    const isSelected = value === props.value;
     return {
-      selected: value === props.value,
+      selected: isSelected,
       onClick: this.bindHandlerClick(props.value),
+      tabIndex: isSelected ? 0 : -1,
+      'aria-posinset': value,
+      'aria-selected': isSelected,
     };
   }
 
@@ -69,7 +86,7 @@ class TabPanelRoot extends Component<ITabPanelProps> {
     const STabPanel = Root;
     const { styles } = this.asProps;
 
-    return sstyled(styles)(<STabPanel render={Box} />);
+    return sstyled(styles)(<STabPanel render={Box} role="tablist" />);
   }
 }
 
@@ -78,11 +95,17 @@ function TabPanelItem(props: IFunctionProps<ITabPanelItemProps>) {
   const { Children, styles, selected, addonLeft, addonRight } = props;
 
   return sstyled(styles)(
-    <STabPanelItem render={Box} type="button" tag="button" active={selected}>
+    <STabPanelItem
+      render={Box}
+      type="button"
+      tag="button"
+      role="tab"
+      active={selected}
+    >
       {addonLeft ? <TabPanel.Item.Addon tag={addonLeft} /> : null}
       {addonTextChildren(Children, TabPanel.Item.Text, TabPanel.Item.Addon)}
       {addonRight ? <TabPanel.Item.Addon tag={addonRight} /> : null}
-    </STabPanelItem>,
+    </STabPanelItem>
   );
 }
 
@@ -108,7 +131,7 @@ const TabPanel = createComponent<
       {
         Text: ComponentProps<typeof Box>;
         Addon: ComponentProps<typeof Box>;
-      },
+      }
     ];
   },
   ITabPanelContext,
@@ -117,7 +140,7 @@ const TabPanel = createComponent<
       ITabPanelProps<T>,
       ITabPanelContext,
       ReturnType<TabPanelRoot['uncontrolledProps']>
-    >,
+    >
   ) => React.ReactElement
 >(TabPanelRoot, {
   Item: [TabPanelItem, { Text, Addon }],
