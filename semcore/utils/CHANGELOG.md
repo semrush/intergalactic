@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.30.1] - 2021-04-28
+
+### Changed
+
+- Changed breakpoints value.
+
 ## [3.30.0] - 2021-04-28
 
 ### Added
