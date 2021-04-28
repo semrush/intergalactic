@@ -46,7 +46,7 @@ const HeaderWrapper = styled.header`
   @media (max-width: 1140px) {
     grid-template-columns: 1fr 4fr 0.4fr;
   }
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
     grid-template-columns: 0.4fr 0.4fr 4fr;
     padding: 0;
   }
@@ -80,7 +80,7 @@ const Logo = styled.div`
   svg {
     margin-right: 5px;
   }
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
     grid-column: 2;
   }
 `;
@@ -101,7 +101,7 @@ const Search = styled.div`
   grid-row: 1;
   grid-column: 2;
   margin-left: 40px;
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
     grid-column: 3;
     margin-left: 5px;
   }
@@ -169,7 +169,7 @@ const MobileSearch = styled.div`
 
 const MobileLogo = styled.img`
   display: none;
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
     display: flex;
     align-items: center;
   }
@@ -181,7 +181,7 @@ const DesktopLogo = styled.div`
   @media (max-width: 1140px) {
     grid-column: 2;
   }
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
     display: none;
   }
 `;
@@ -203,7 +203,7 @@ const Side = styled.div`
 `;
 
 const MobileMenu = styled.span`
-  @media (min-width: 769px) {
+  @media (min-width: 768px) {
     display: none;
   }
 `;
@@ -212,7 +212,7 @@ const Mobile = styled.span`
   height: 80px;
   width: 80px;
   display: flex;
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
     justify-content: center;
     grid-row: 1;
     grid-column: 1;
@@ -226,7 +226,7 @@ const Mobile = styled.span`
 `;
 
 const MobileBackground = styled.span`
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
     grid-row: 1;
     grid-column: 1;
     width: 100%;
@@ -237,7 +237,7 @@ const MobileBackground = styled.span`
 `;
 
 const Links = styled.div`
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
     display: flex;
     flex-direction: column;
     padding: 40px 32px 28px;
@@ -250,7 +250,7 @@ const Links = styled.div`
 `;
 
 const Line = styled(Divider)`
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
     width: 244px !important;
     margin-left: 32px;
     background-color: #d1d4db !important;

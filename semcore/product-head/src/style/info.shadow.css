@@ -35,7 +35,7 @@ SLabel {
   margin-right: 4px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   SInfo {
     margin-bottom: -4px;
   }
