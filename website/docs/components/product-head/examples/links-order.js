@@ -1,12 +1,8 @@
 import React from 'react';
-import { Text } from '@semcore/typography';
 import Link from '@semcore/link';
 import YoutubeXS from '@semcore/icon/lib/Youtube/xs';
 import ChatXS from '@semcore/icon/lib/Chat/xs';
 import BookXS from '@semcore/icon/lib/Book/xs';
-import MathPlusXS from '@semcore/icon/lib/MathPlus/xs';
-import SettingsXS from '@semcore/icon/lib/Settings/xs';
-import DesktopXS from '@semcore/icon/lib/Desktop/xs';
 import MuseumXS from '@semcore/icon/lib/Museum/xs';
 import MobileXS from '@semcore/icon/lib/Mobile/xs';
 import BracketsCodeXS from '@semcore/icon/lib/BracketsCode/xs';
@@ -15,15 +11,19 @@ import MegaphoneXS from '@semcore/icon/lib/Megaphone/xs';
 import NewsXS from '@semcore/icon/lib/News/xs';
 import ChatQuestionXS from '@semcore/icon/lib/ChatQuestion/xs';
 import QuestionAltXS from '@semcore/icon/lib/QuestionAlt/xs';
-import { Box } from '@semcore/flex-box';
+import styled from 'styled-components';
 
-import Header, { Info, Title } from '@semcore/product-head';
+import Header from '@semcore/product-head';
+
+const HeaderRow = styled(Header.Row)`
+  overflow: auto;
+`;
 
 export default () => {
   return (
     <>
       <Header>
-        <Header.Row>
+        <HeaderRow>
           <Header.Links>
             <Link>
               <Link.Addon tag={MuseumXS} />
@@ -70,7 +70,7 @@ export default () => {
               <Link.Text>Send feedback</Link.Text>
             </Link>
           </Header.Links>
-        </Header.Row>
+        </HeaderRow>
       </Header>
     </>
   );
