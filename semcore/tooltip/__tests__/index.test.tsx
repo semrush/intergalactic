@@ -1,5 +1,5 @@
 import React from 'react';
-import { cleanup, fireEvent, render } from 'jest-preset-ui/testing';
+import { cleanup, fireEvent, render, axe } from 'jest-preset-ui/testing';
 import snapshot from 'jest-preset-ui/snapshot';
 import Tooltip from '../src';
 
@@ -196,5 +196,17 @@ describe('TooltipBase', () => {
     jest.runAllTimers();
     expect(spy).toHaveBeenCalledTimes(2);
     jest.useRealTimers();
+  });
+
+  test('a11y', async () => {
+    const { container } = render(
+      <Tooltip visible disablePortal>
+        <Tooltip.Trigger tag="button">trigger</Tooltip.Trigger>
+        <Tooltip.Popper>text tooltip</Tooltip.Popper>
+      </Tooltip>,
+    );
+
+    const results = await axe(container);
+    expect(results).toHaveNoViolations();
   });
 });

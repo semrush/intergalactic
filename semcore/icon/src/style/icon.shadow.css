@@ -1,3 +1,5 @@
+@import '@semcore/utils/style/var.css';
+
 SIcon {
   display: inline-block;
   user-select: none;
@@ -5,4 +7,9 @@ SIcon {
   box-sizing: content-box;
   fill: currentColor;
   flex-shrink: 0;
+  outline: none;
+}
+
+SIcon[use|keyboardFocused] {
+  box-shadow: var(--keyborad-focus);
 }
