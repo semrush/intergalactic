@@ -1,7 +1,7 @@
 {
   "name": "@semcore/utils",
   "description": "SEMRush Utils Component",
-  "version": "3.29.0",
+  "version": "3.30.0",
   "main": "lib/index.js",
   "author": "Roman Lysov <r.lysov@semrush.com>",
   "license": "MIT",
