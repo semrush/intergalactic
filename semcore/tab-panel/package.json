@@ -1,7 +1,7 @@
 {
   "name": "@semcore/tab-panel",
   "description": "SEMRush TabPanel Component",
-  "version": "2.4.0",
+  "version": "2.5.0",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -12,7 +12,7 @@
     "test": "jest"
   },
   "dependencies": {
-    "@semcore/utils": "^3.15",
+    "@semcore/utils": "^3.30",
     "@semcore/flex-box": "^4"
   },
   "peerDependencies": {
