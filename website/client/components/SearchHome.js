@@ -40,7 +40,7 @@ const Popper = styled.div`
 
 const InputWrapper = styled(Box)`
   position: relative;
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
     margin-right: 32px;
   }
   @media (max-width: 320px) {
@@ -73,14 +73,14 @@ const Input = styled.input`
 
 const DesktopInput = styled(Input)`
   display: none;
-  @media (min-width: 769px) {
+  @media (min-width: 768px) {
     display: flex;
   }
 `;
 
 const MobileInput = styled(Input)`
   display: none;
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
     display: flex;
   }
 `;

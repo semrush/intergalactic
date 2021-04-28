@@ -51,7 +51,7 @@ const PromoWrapper = styled.div`
     padding: 0 55px 56px;
     margin-top: 48px;
   }
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
     grid-template-columns: 1fr;
     grid-template-rows: repeat(2, 0.5fr) 1fr repeat(3, 1.5fr);
     padding: 0 35px 56px;
@@ -78,7 +78,7 @@ const Title = styled.h1`
   font-size: 60px;
   line-height: 105%;
   margin-bottom: 16px;
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
     font-size: 40px;
   }
 `;
@@ -118,7 +118,7 @@ const Started = styled.div`
     grid-row: 3;
     margin: 0 15px 15px 0;
   }
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
     grid-row: 3;
     margin: 0;
     margin-top: 15px;
@@ -148,7 +148,7 @@ const Principles = styled(InitialPrinciples)`
     grid-column: 2;
     margin: 0 0 15px 15px;
   }
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
     grid-row: 4;
     grid-column: 1;
     margin: 0;
@@ -164,7 +164,7 @@ const Style = styled(InitialPrinciples)`
     grid-column: 1;
     margin: 15px 15px 0 0;
   }
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
     grid-row: 5;
     grid-column: 1;
     margin: 0;
@@ -180,7 +180,7 @@ const Layout = styled(InitialPrinciples)`
     grid-column: 2;
     margin: 15px 0 0 15px;
   }
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
     grid-row: 6;
     grid-column: 1;
     margin: 0;
@@ -233,7 +233,7 @@ const WhaleImg = styled.img`
 
 const MainWrapper = styled.div`
   padding: 32px 0 80px;
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
     display: none;
   }
 `;
@@ -308,7 +308,7 @@ const UpdatesButton = styled(LinkScroll)`
   right: -21px;
   width: 120px;
   z-index: 999;
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
     display: none;
   }
   &:hover {

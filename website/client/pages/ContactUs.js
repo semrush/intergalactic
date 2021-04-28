@@ -35,7 +35,7 @@ const Content = styled.div`
       text-decoration: underline;
     }
   }
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
     grid-template-rows: 0.5fr 2fr 3fr 2fr;
     grid-template-columns: 1fr;
     padding: 152px 55px 96px;
@@ -56,7 +56,7 @@ const Header = styled.div`
   color: #575c66;
   margin-bottom: 56px;
   text-align: center;
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
     grid-column: 1;
   }
   @media (max-width: 414px) {
@@ -68,7 +68,7 @@ const Github = styled.div`
   grid-row: 2;
   grid-column: 1;
   margin: 0 16px 0;
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
     margin: 0;
   }
 `;
@@ -77,7 +77,7 @@ const Email = styled.div`
   grid-row: 2;
   grid-column: 2;
   margin: 0 16px 0;
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
     grid-row: 3;
     grid-column: 1;
     margin: 0;
@@ -89,7 +89,7 @@ const Address = styled.div`
   grid-row: 2;
   grid-column: 3;
   margin: 0 16px 0;
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
     grid-row: 4;
     grid-column: 1;
     margin: 0;
@@ -121,7 +121,7 @@ const Title = styled.div`
   color: #000000;
   margin-bottom: 8px;
   white-space: nowrap;
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
     font-size: 24px;
   }
 `;

@@ -47,7 +47,7 @@ A list of the main breakpoints that we recommend to use in our product interface
 
 - `320px` for mobile devices
 - `768px` for tablet devices
-- `1154px` for desktop devices
+- `1200px` for desktop devices
 
 For more information about grid and page layouts see [Grid system](layout/grid-system/).
 
