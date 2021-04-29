@@ -74,7 +74,7 @@ function buildHtml(chs) {
 }
 
 let campaignId;
-
+console.log(process.env.MAILCHIMPTEMPLATE);
 const updateEmail = async (html) => {
   mailchimp.setConfig({
     apiKey: process.env.MAILCHIMPKEY2,
