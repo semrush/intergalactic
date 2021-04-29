@@ -100,7 +100,7 @@ const updateEmail = async (html) => {
     });
     campaignId = response.id;
   } catch (error) {
-    console.log(error.response.text, 'error');
+    console.log(error, 'error');
   }
 };
 
