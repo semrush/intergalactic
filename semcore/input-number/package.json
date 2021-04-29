@@ -8,7 +8,7 @@
   "author": "Roman Lysov <r.lysov@semrush.com>",
   "license": "MIT",
   "scripts": {
-    "build": "build",
+    "build": "build --module=js",
     "test": "jest"
   },
   "dependencies": {

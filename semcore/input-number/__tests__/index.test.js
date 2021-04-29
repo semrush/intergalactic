@@ -14,8 +14,8 @@ describe('InputNumber', () => {
       </InputNumber>,
     );
     const input = getByTestId('input');
-    fireEvent.change(input, { target: { value: 123 } });
-    expect(spy).toBeCalledWith(123, expect.anything());
+    fireEvent.change(input, { target: { value: '123' } });
+    expect(spy).toBeCalledWith('123', expect.anything());
   });
 
   test('Should accept float numbers', () => {
@@ -26,8 +26,8 @@ describe('InputNumber', () => {
       </InputNumber>,
     );
     const input = getByTestId('input');
-    fireEvent.change(input, { target: { value: 123.4 } });
-    expect(spy).toBeCalledWith(123.4, expect.anything());
+    fireEvent.change(input, { target: { value: '123.4' } });
+    expect(spy).toBeCalledWith('123.4', expect.anything());
   });
 
   test('Should not accept letters', () => {
@@ -46,31 +46,31 @@ describe('InputNumber', () => {
     const spy = jest.fn();
     const { getByTestId } = render(
       <InputNumber>
-        <InputNumber.Value data-testid="input" value={100000} max={10} onChange={spy} />
+        <InputNumber.Value data-testid="input" value={'100000'} max={10} onChange={spy} />
       </InputNumber>,
     );
     const input = getByTestId('input');
     fireEvent.blur(input);
-    expect(spy).toBeCalledWith(10, expect.anything());
+    expect(spy).toBeCalledWith('10', expect.anything());
   });
 
   test('Should not accept value which is smaller than min prop', () => {
     const spy = jest.fn();
     const { getByTestId } = render(
       <InputNumber>
-        <InputNumber.Value data-testid="input" value={199} min={200} onChange={spy} />
+        <InputNumber.Value data-testid="input" value={'199'} min={200} onChange={spy} />
       </InputNumber>,
     );
     const input = getByTestId('input');
     fireEvent.blur(input);
-    expect(spy).toBeCalledWith(200, expect.anything());
+    expect(spy).toBeCalledWith('200', expect.anything());
   });
 
   test('Should support inputs up/down buttons click', () => {
     const spy = jest.fn();
     const { getByTestId } = render(
       <InputNumber>
-        <InputNumber.Value data-testid="input" value={0} onChange={spy} />
+        <InputNumber.Value data-testid="input" defaultValue={'0'} onChange={spy} />
         <InputNumber.Controls data-testid="controls" />
       </InputNumber>,
     );
@@ -78,38 +78,11 @@ describe('InputNumber', () => {
 
     const arrowUp = controls.querySelectorAll('button')[0];
     fireEvent.click(arrowUp);
-    expect(spy).toBeCalledWith(1, expect.anything());
+    expect(spy).lastCalledWith('1', expect.anything());
     const arrowDown = controls.querySelectorAll('button')[1];
-    fireEvent.click(arrowDown);
-    expect(spy).toBeCalledWith(-1, expect.anything());
-  });
-
-  test('Should support step prop', () => {
-    const spy = jest.fn();
-    const { getByTestId } = render(
-      <InputNumber>
-        <InputNumber.Value data-testid="input" step={0.1} value={0} onChange={spy} />
-      </InputNumber>,
-    );
-    const input = getByTestId('input');
-    fireEvent.keyDown(input, { keyCode: 38 });
-    expect(spy).toBeCalledWith(0.1, expect.anything());
-    fireEvent.keyDown(input, { keyCode: 40 });
-    expect(spy).toBeCalledWith(-0.1, expect.anything());
-  });
-
-  test('Should support keyboard up/down buttons press', () => {
-    const spy = jest.fn();
-    const { getByTestId } = render(
-      <InputNumber>
-        <InputNumber.Value data-testid="input" value={0} onChange={spy} />
-      </InputNumber>,
-    );
-    const input = getByTestId('input');
-    fireEvent.keyDown(input, { keyCode: 38 });
-    expect(spy).toBeCalledWith(1, expect.anything());
-    fireEvent.keyDown(input, { keyCode: 40 });
-    expect(spy).toBeCalledWith(-1, expect.anything());
+    fireEvent.click(arrowDown); // 0
+    fireEvent.click(arrowDown); // -1
+    expect(spy).lastCalledWith('-1', expect.anything());
   });
 
   test('Should support sizes', async () => {

@@ -1,6 +1,7 @@
 import React from 'react';
 import InputNumber from '@semcore/input-number';
 import NeighborLocation from '@semcore/neighbor-location';
+import { Flex } from '@semcore/flex-box';
 
 class Demo extends React.PureComponent {
   constructor(props) {
@@ -9,6 +10,7 @@ class Demo extends React.PureComponent {
     this.maxRange = 8;
     this.revertValues = false;
   }
+
   state = {
     from: '',
     to: '',
@@ -35,10 +37,9 @@ class Demo extends React.PureComponent {
   render() {
     const { from, to } = this.state;
     return (
-      <div>
-        <h3>Custom range</h3>
+      <Flex w="20%">
         <NeighborLocation>
-          <InputNumber style={{ width: '10%' }}>
+          <InputNumber>
             <InputNumber.Value
               min={this.minRange}
               max={this.maxRange}
@@ -49,7 +50,7 @@ class Demo extends React.PureComponent {
             />
             <InputNumber.Controls />
           </InputNumber>
-          <InputNumber style={{ width: '10%' }}>
+          <InputNumber>
             <InputNumber.Value
               min={this.minRange}
               max={this.maxRange}
@@ -61,7 +62,7 @@ class Demo extends React.PureComponent {
             <InputNumber.Controls />
           </InputNumber>
         </NeighborLocation>
-      </div>
+      </Flex>
     );
   }
 }
