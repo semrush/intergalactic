@@ -1,12 +1,6 @@
 import React from 'react';
 import { CProps, PropGetterFn, ReturnEl } from '@semcore/core';
 import { IInputAddonProps, IInputProps, IInputValueProps } from '@semcore/input';
-import {
-  IButtonAddonProps,
-  IButtonContext,
-  IButtonProps,
-  IButtonTextProps,
-} from '../../button/src';
 
 export type InputNumberValue = string;
 export type InputNumberSize = 'm' | 'l' | 'xl';
