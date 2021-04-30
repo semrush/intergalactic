@@ -9,12 +9,14 @@ STooltip {
   font-size: var(--fs-100);
   line-height: var(--lh-100);
   word-wrap: break-word;
-  max-width: media(250px);
+  max-width: 250px;
   font-weight: normal;
   white-space: normal;
 }
 
 STooltip[theme] {
+  background-color: var(--theme);
+  border: 1px solid var(--theme);
   color: #fff;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.25), 0 -2px 5px -2px rgba(0, 0, 0, 0.25);
 }
@@ -36,7 +38,7 @@ STooltip[theme='warning'] {
   border: 1px solid var(--orange);
 }
 
-STooltip:global([data-popper-reference-hidden]) {
+STooltip[data-popper-reference-hidden] {
   visibility: hidden;
   pointer-events: none;
 }
@@ -49,6 +51,13 @@ SArrow {
     content: '';
     position: absolute;
     border: 6px solid;
+  }
+}
+
+SArrow[theme] {
+  border-color: var(--theme);
+  &:before {
+    border-color: var(--theme);
   }
 }
 
@@ -77,7 +86,7 @@ SArrow[theme='warning'] {
   }
 }
 
-STooltip:global([data-popper-placement^='top']) SArrow {
+STooltip[data-popper-placement^='top'] SArrow {
   top: 100%;
 
   border-bottom: 0 transparent;
@@ -99,7 +108,7 @@ STooltip:global([data-popper-placement^='top']) SArrow {
   }
 }
 
-STooltip:global([data-popper-placement^='bottom']) SArrow {
+STooltip[data-popper-placement^='bottom'] SArrow {
   bottom: 100%;
 
   border-top: 0 transparent;
@@ -121,7 +130,7 @@ STooltip:global([data-popper-placement^='bottom']) SArrow {
   }
 }
 
-STooltip:global([data-popper-placement^='left']) SArrow {
+STooltip[data-popper-placement^='left'] SArrow {
   left: 100%;
 
   border-right: 0 transparent;
@@ -143,7 +152,7 @@ STooltip:global([data-popper-placement^='left']) SArrow {
   }
 }
 
-STooltip:global([data-popper-placement^='right']) SArrow {
+STooltip[data-popper-placement^='right'] SArrow {
   right: 100%;
 
   border-left: 0 transparent;
