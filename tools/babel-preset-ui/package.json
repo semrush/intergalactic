@@ -3,9 +3,6 @@
   "version": "1.0.0",
   "description": "The babel preset for all packages of the mono-repo.",
   "main": "./.babelrc.js",
-  "bin": {
-    "babel": "./bin/babel"
-  },
   "author": "",
   "license": "ISC",
   "dependencies": {
