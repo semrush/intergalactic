@@ -23,6 +23,10 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Added functions `setTrigger, setPopper` in context for Popper.
 
+### Changed
+
+- Bump `poperjs` to `2.9.2`.
+
 ## [4.8.0] - 2020-12-17
 
 ### Added
