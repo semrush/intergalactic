@@ -1,5 +1,5 @@
 import React, { ComponentProps, HTMLAttributes } from 'react';
-import createComponent, { Component, CREATE_COMPONENT, Merge, styled } from '@semcore/core';
+import createComponent, { Component, CREATE_COMPONENT, Merge, sstyled, Root } from '@semcore/core';
 import PopperOrigin, { IPopperContext, IPopperProps, IPopperTriggerProps } from '@semcore/popper';
 import { Box } from '@semcore/flex-box';
 import resolveColor from '@semcore/utils/lib/color';
@@ -10,8 +10,11 @@ import style from './style/tooltip.shadow.css';
 
 const Popper = PopperOrigin[CREATE_COMPONENT]();
 
-function isCustomTheme(theme) {
-  return !['default', 'invert', 'warning'].includes(theme);
+function use(props) {
+  return Object.keys(props).reduce((acc, key) => {
+    acc[`use:${key}`] = props[key];
+    return acc;
+  }, {});
 }
 
 export interface ITooltipProps extends IPopperProps, IPopperTriggerProps {
@@ -57,7 +60,6 @@ class RootTooltip extends Component<ITooltipProps> {
   }
 
   render() {
-    const { Root } = this;
     const {
       Children,
       title,
@@ -95,27 +97,15 @@ class RootTooltip extends Component<ITooltipProps> {
 }
 
 function TooltipPopper(props) {
-  const { Root: STooltip, Children, styles, theme } = props;
+  const { Children, styles, theme } = props;
+  const STooltip = Root;
   const SArrow = Box;
 
-  const color = resolveColor(theme);
-  const useTheme = isCustomTheme(theme) ? 'custom' : theme;
-
-  return styled(styles)`
-    STooltip[theme='custom'] {
-      background-color: ${color};
-      border: 1px solid ${color};
-    }
-    SArrow[theme='custom'] {
-      border-color: ${color};
-      &:before {
-        border-color: ${color};
-      }
-    }
-  `(
-    <STooltip render={Popper.Popper} theme={useTheme} role="tooltip">
+  const uses = use({ theme: resolveColor(theme) });
+  return sstyled(styles)(
+    <STooltip render={Popper.Popper} {...uses} role="tooltip">
       <Children />
-      <SArrow data-popper-arrow theme={useTheme} />
+      <SArrow data-popper-arrow {...uses} />
     </STooltip>,
   );
 }
