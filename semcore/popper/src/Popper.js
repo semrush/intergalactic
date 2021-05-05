@@ -1,154 +1,33 @@
-import React, {
-  DOMAttributes,
-  HTMLAttributes,
-  MutableRefObject,
-  useCallback,
-  useEffect,
-  useRef,
-  useState,
-} from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import FocusLock from 'react-focus-lock';
 import { getFocusabledIn } from 'focus-lock';
 import ResizeObserver from 'resize-observer-polyfill';
-import createPopper from './createPopper';
-// eslint-disable-next-line import/named
-import { Instance, Modifier, Options } from '@popperjs/core';
-import { Options as OptionsOffset } from '@popperjs/core/lib/modifiers/offset';
-import { Options as OptionsPreventOverflow } from '@popperjs/core/lib/modifiers/preventOverflow';
-import { Options as OptionsArrow } from '@popperjs/core/lib/modifiers/arrow';
-import { Options as OptionsFlip } from '@popperjs/core/lib/modifiers/flip';
-import { Options as OptionsComputeStyles } from '@popperjs/core/lib/modifiers/computeStyles';
-import { Options as OptionsEventListeners } from '@popperjs/core/lib/modifiers/eventListeners';
-import createComponent, { Component, Merge, PropGetterFn, sstyled, Root } from '@semcore/core';
-import { Box, IBoxProps } from '@semcore/flex-box';
-import OutsideClick, { IOutsideClickProps } from '@semcore/outside-click';
-import Portal, { IPortalProps, PortalProvider } from '@semcore/portal';
+
+import createComponent, { Component, sstyled, Root } from '@semcore/core';
+import { Box } from '@semcore/flex-box';
+import OutsideClick from '@semcore/outside-click';
+import Portal, { PortalProvider } from '@semcore/portal';
+import NeighborLocation from '@semcore/neighbor-location';
 import If from '@semcore/utils/lib/if';
-import NeighborLocation, { INeighborLocationProps } from '@semcore/neighbor-location';
 import { setRef, useCallbackRef, useForkRef } from '@semcore/utils/lib/ref';
 import { callAllEventHandlers } from '@semcore/utils/lib/assignProps';
 import pick from '@semcore/utils/lib/pick';
 import useEventListener from '@semcore/utils/lib/use/useEventListener';
 import canUseDOM from '@semcore/utils/lib/canUseDOM';
 import logger from '@semcore/utils/lib/logger';
-import uniqueIDEnhancement, { IUniqueIDProps } from '@semcore/utils/lib/uniqueID';
+import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 import propsForElement from '@semcore/utils/lib/propsForElement';
 
+import createPopper from './createPopper';
+
 import style from './style/popper.shadow.css';
-
-export type eventInteraction = {
-  trigger: [Array<keyof DOMAttributes<unknown>>, Array<keyof DOMAttributes<unknown>>];
-  popper: [Array<keyof DOMAttributes<unknown>>, Array<keyof DOMAttributes<unknown>>];
-};
-
-export type Strategy = Options['strategy'];
-export type Modifiers = Options['modifiers'];
-export type Placement = Options['placement'];
-
-export interface IPopperProps extends IOutsideClickProps, IPortalProps, IUniqueIDProps {
-  /**
-   * Popper can have different positioning options
-   * @default absolute
-   */
-  strategy?: Strategy;
-  /**
-   * Modifiers for popper.js
-   */
-  modifiers?: Modifiers;
-  /**
-   * The position of the popper relative to the trigger that called it.
-   * 'auto-start' | 'auto' | 'auto-end' | 'top-start' | 'top' | 'top-end' | 'right-start' | 'right' | 'right-end' | 'bottom-end' | 'bottom' | 'bottom-start' | 'left-end' | 'left' | 'left-start'
-   * @default auto
-   */
-  placement?: Placement;
-  /**
-   * Interaction with a trigger to show and hide the popper
-   * @default click
-   */
-  interaction?: 'click' | 'hover' | 'focus' | 'none' | eventInteraction;
-  /** Timer to show and hide the popper */
-  timeout?: number | [number, number];
-  /** Popper visibility value */
-  visible?: boolean;
-  /** Default popper visibility
-   * @default false */
-  defaultVisible?: boolean;
-  /** Function called when visibility changes */
-  onVisibleChange?: (visible: boolean, e?: Event) => boolean | void;
-  /** PopperJS modifier settings for popper indent */
-  offset?: Partial<OptionsOffset> | number | [number, number];
-  /** PopperJS modifier settings for finding borders */
-  preventOverflow?: Partial<OptionsPreventOverflow>;
-  /** PopperJS modifier settings responsible for the arrow */
-  arrow?: Partial<OptionsArrow>;
-  /** PopperJS modifier settings responsible for turning the popper when there is not enough space */
-  flip?: Partial<OptionsFlip>;
-  /** PopperJS modifier settings for applying styles */
-  computeStyles?: Partial<OptionsComputeStyles>;
-  /** PopperJS modifier settings responsible for subscribing to global events */
-  eventListeners?: Partial<OptionsEventListeners>;
-  /** @ignore */
-  onFirstUpdate?: Options['onFirstUpdate'];
-
-  /**
-   * By default, Popper is styled as position: absolute. Allows to switch to fixed
-   * @deprecated v4.0.0 {@link IPopperProps.strategy}
-   */
-  positionFixed?: boolean;
-
-  /**
-   * Turns off subscription to global `resize/scroll` events
-   * @deprecated v4.0.0 {@link IPopperProps.eventListeners}
-   */
-  eventsDisabled?: boolean;
-
-  /**
-   * Trigger events to show and hide the popper
-   * @deprecated v4.0.0 {@link IPopperProps.interaction}
-   */
-  displayEvents?: {
-    show: string[];
-    hide: string[];
-  };
-
-  /**
-   * Trigger timer to show and hide the popper
-   * @deprecated v4.0.0 {@link IPopperProps.timeout}
-   */
-  displayTimeout?: {
-    show: number;
-    hide: number;
-  };
-
-  /**
-   * z-index Popper.Popper
-   * @deprecated v4.0.0
-   */
-  popperZIndex?: string | number;
-
-  /**
-   * Defines the border element used by Popper for its flip and preventOverflow modifiers. Three abbreviated keywords are supported; Popper will find the correct DOM element.
-   * `'scrollParent' | 'viewport' | 'window' | HTMLElement`
-   * @deprecated v4.0.0 {@link IPopperProps.preventOverflow}
-   */
-  boundary?: 'scrollParent' | 'viewport' | 'window' | HTMLElement;
-}
-
-export interface IPopperTriggerProps extends IBoxProps {}
-
-export interface IPopperPopperProps extends IBoxProps, INeighborLocationProps {}
-
-export interface IPopperContext {
-  getTriggerProps: PropGetterFn;
-  getPopperProps: PropGetterFn;
-}
 
 function isObject(obj) {
   return typeof obj === 'object' && !Array.isArray(obj);
 }
 
 function someArray(arr1, arr2) {
-  return arr1.filter(function (i) {
+  return arr1.filter(function(i) {
     return arr2.indexOf(i) !== -1;
   });
 }
@@ -162,7 +41,7 @@ const MODIFIERS_OPTIONS = [
   'eventListeners',
 ];
 
-class Popper extends Component<IPopperProps> {
+class Popper extends Component {
   static displayName = 'Popper';
 
   static style = style;
@@ -202,11 +81,11 @@ class Popper extends Component<IPopperProps> {
     },
   };
 
-  timer: ReturnType<typeof setTimeout>;
-  observer: ResizeObserver;
-  triggerRef = React.createRef<HTMLElement>();
-  popperRef = React.createRef<HTMLElement>();
-  popper: MutableRefObject<Instance> = React.createRef();
+  // timer: ReturnType<typeof setTimeout>;
+  // observer: ResizeObserver;
+  triggerRef = React.createRef();
+  popperRef = React.createRef();
+  popper = React.createRef();
 
   constructor(props) {
     super(props);
@@ -248,7 +127,7 @@ class Popper extends Component<IPopperProps> {
       boundary,
       ...other
     } = this.asProps;
-    const optionsModifiers = pick(other, MODIFIERS_OPTIONS) as any;
+    const optionsModifiers = pick(other, MODIFIERS_OPTIONS);
     const modifiersFallback = [];
 
     /* START positionFixed */
@@ -284,7 +163,7 @@ class Popper extends Component<IPopperProps> {
       other['data-ui-name'] || Popper.displayName,
     );
     if (boundary !== undefined) {
-      const options = {} as any;
+      const options = {};
       if (typeof boundary !== 'string') {
         options.boundary = boundary;
         options.rootBoundary = 'document';
@@ -306,7 +185,7 @@ class Popper extends Component<IPopperProps> {
     if (typeof optionsModifiers.offset === 'number') {
       optionsModifiers.offset = [0, optionsModifiers.offset];
     }
-    const modifiersOptions: Partial<Modifier<any, any>>[] = MODIFIERS_OPTIONS.filter(
+    const modifiersOptions = MODIFIERS_OPTIONS.filter(
       (name) => optionsModifiers[name] !== undefined,
     ).map((name) => ({
       name,
@@ -392,7 +271,7 @@ class Popper extends Component<IPopperProps> {
   };
   bindHandlerKeyDown = (onKeyDown) => callAllEventHandlers(onKeyDown, this.handlerKeyDown);
 
-  bindHandlerChangeVisibleWithTimer = (visible, component?) => (e) => {
+  bindHandlerChangeVisibleWithTimer = (visible, component) => (e) => {
     const currentTarget = e.currentTarget;
     this.handlerChangeVisibleWithTimer(visible, e, () => {
       if (visible && component === 'trigger' && this.popper.current) {
@@ -521,7 +400,7 @@ function Trigger() {
   );
 }
 
-const FocusLockWrapper = React.forwardRef<HTMLElement, any>(function (
+const FocusLockWrapper = React.forwardRef(function(
   { tag, disableEnforceFocus, returnFocusRef, returnFocus, ...other },
   ref,
 ) {
@@ -629,14 +508,7 @@ function PopperPopper(props) {
   );
 }
 
-export default createComponent<
-  Popper,
-  {
-    Trigger: Merge<IPopperTriggerProps, HTMLAttributes<HTMLSpanElement>>;
-    Popper: Merge<IPopperPopperProps, HTMLAttributes<HTMLDivElement>>;
-  },
-  Merge<IPopperContext, IPopperProps>
->(Popper, {
+export default createComponent(Popper, {
   Trigger,
   Popper: PopperPopper,
 });

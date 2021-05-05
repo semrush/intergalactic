@@ -1,5 +1,3 @@
-// @ts-ignore
-// eslint-disable-next-line import/named
 import {
   popperGenerator,
   eventListeners,

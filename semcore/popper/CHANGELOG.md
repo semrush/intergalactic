@@ -2,6 +2,16 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.11.0] - 2021-05-05
+
+### Changed
+
+- Rewrite code from TS to JS 🧑‍💻
+
+### Fixed
+
+- Fix position arrow after change version `popperjs`.
+
 ## [4.10.1] - 2021-04-28
 
 ### Fixed

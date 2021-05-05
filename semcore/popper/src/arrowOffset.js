@@ -13,7 +13,7 @@ const MAP_COORDINATE = {
   height: 'y',
 };
 
-function arrowOffset({ state }: ModifierArguments<Options>): void {
+function arrowOffset({ state }) {
   if (!state.modifiersData['arrow'] || !state.modifiersData['popperOffsets']) return;
 
   const [position, align] = state.placement.split('-');
@@ -43,7 +43,7 @@ function arrowOffset({ state }: ModifierArguments<Options>): void {
   }
 }
 
-const ArrowOffsetModifier: Modifier<'arrowOffset', {}> = {
+const ArrowOffsetModifier = {
   name: 'arrowOffset',
   enabled: true,
   phase: 'main',
