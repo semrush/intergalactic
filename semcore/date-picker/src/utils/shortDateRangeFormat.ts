@@ -15,7 +15,7 @@ export default function shortDateRangeFormat(
   const { format } = new Intl.DateTimeFormat(locale, options);
   const normalizeDates = dates.map((date) => dayjs(date).toDate());
   const monthsYears = dates.map((date) => [
-    dayjs(date).day(),
+    dayjs(date).date(),
     dayjs(date).month(),
     dayjs(date).year(),
   ]);
