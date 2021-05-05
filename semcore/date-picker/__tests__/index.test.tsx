@@ -1,7 +1,7 @@
 import React from 'react';
 import { cleanup, render } from 'jest-preset-ui/testing';
-import { DatePicker, DateRangePicker, MonthRangePicker } from '../src';
 import snapshot from 'jest-preset-ui/snapshot';
+import { DatePicker, DateRangePicker, MonthRangePicker } from '../src';
 
 const RealDate = Date;
 
