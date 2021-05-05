@@ -13,8 +13,12 @@ const MAP_COORDINATE = {
   height: 'y',
 };
 
+function isEmpty(obj) {
+  return !Object.keys(obj).length;
+}
+
 function arrowOffset({ state }) {
-  if (!state.modifiersData['arrow'] || !state.modifiersData['popperOffsets']) return;
+  if (isEmpty(state.modifiersData['arrow']) || isEmpty(!state.modifiersData['popperOffsets'])) return;
 
   const [position, align] = state.placement.split('-');
   const offset = MAP_OFFSET[position];
