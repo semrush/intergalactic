@@ -14,24 +14,18 @@ const MAP_COORDINATE = {
 };
 
 function arrowOffset({ state }: ModifierArguments<Options>): void {
-  if (
-    !state.modifiersData['arrow'] ||
-    !state.modifiersData['arrow#persistent'] ||
-    !state.modifiersData['popperOffsets']
-  )
-    return;
+  if (!state.modifiersData['arrow'] || !state.modifiersData['popperOffsets']) return;
 
   const [position, align] = state.placement.split('-');
   const offset = MAP_OFFSET[position];
   const coordinate = MAP_COORDINATE[offset];
-  const padding = state.modifiersData['arrow#persistent'].padding[position];
-
+  const padding = state.options.modifiers.find((mod) => mod.name === 'arrow')?.options.padding || 0;
   if (align === 'start') {
     const lenRef = state.rects.reference[offset];
     state.modifiersData.arrow[coordinate] = padding;
     if (lenRef / 2 < padding) {
       const lenArrow = state.elements.arrow[`offset${capitalizeFirstLetter(offset)}`];
-      const offsetArrow = lenArrow / 2 + padding - lenRef / 2;
+      const offsetArrow = lenArrow / 2 + padding - lenRef / 2 + 0.5;
       state.modifiersData.popperOffsets[coordinate] -= offsetArrow;
     }
   }
