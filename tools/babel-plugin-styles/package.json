@@ -1,6 +1,6 @@
 {
   "name": "@semcore/babel-plugin-styles",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "main": "./babel-plugin-styles.js",
   "scripts": {
     "test": "echo 'no test =('"
