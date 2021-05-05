@@ -1,14 +1,14 @@
 {
   "name": "@semcore/popper",
   "description": "SEMRush Popper Component",
-  "version": "4.10.1",
+  "version": "4.11.0",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
   "author": "Roman Lysov <r.lysov@semrush.com>",
   "license": "MIT",
   "scripts": {
-    "build": "build",
+    "build": "build --module=js",
     "test": "jest"
   },
   "dependencies": {
