@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [1.0.4] - 2021-04-30
+
+### Fixed
+
+- Fixed incorrect handling of reshadow-specific classes
+
 ## [1.0.3] - 2021-04-30
 
 ### Fixed
