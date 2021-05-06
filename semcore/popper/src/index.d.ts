@@ -116,7 +116,7 @@ export interface IPopperTriggerProps extends IBoxProps {}
 
 export interface IPopperPopperProps extends IBoxProps, INeighborLocationProps {}
 
-export interface IPopperCtx {
+export interface IPopperContext {
   getTriggerProps: PropGetterFn;
   getPopperProps: PropGetterFn;
   popper: Instance;
@@ -125,7 +125,7 @@ export interface IPopperCtx {
   setPopper: (ref: HTMLElement) => void;
 }
 
-declare const Popper: ((props: CProps<IPopperProps, IPopperCtx>) => ReturnEl) & {
+declare const Popper: ((props: CProps<IPopperProps, IPopperContext>) => ReturnEl) & {
   Trigger: <T>(props: IPopperTriggerProps & T) => ReturnEl;
   Popper: <T>(props: IPopperPopperProps & T) => ReturnEl;
 };
