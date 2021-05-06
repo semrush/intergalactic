@@ -18,7 +18,8 @@ function isEmpty(obj) {
 }
 
 function arrowOffset({ state }) {
-  if (isEmpty(state.modifiersData['arrow']) || isEmpty(!state.modifiersData['popperOffsets'])) return;
+  if (isEmpty(state.modifiersData['arrow']) || isEmpty(state.modifiersData['popperOffsets']))
+    return;
 
   const [position, align] = state.placement.split('-');
   const offset = MAP_OFFSET[position];
