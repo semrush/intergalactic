@@ -1,6 +1,5 @@
-import { IPopperProps, IPopperTriggerProps } from '@semcore/popper';
+import Popper, { IPopperProps, IPopperTriggerProps } from '@semcore/popper';
 import { CProps, PropGetterFn, ReturnEl } from '@semcore/core';
-import Popper from '@semcore/popper/lib/types/Popper';
 import { IBoxProps } from '@semcore/flex-box';
 import IContext from './context';
 
