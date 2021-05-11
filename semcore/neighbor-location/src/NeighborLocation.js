@@ -1,34 +1,13 @@
-import React, { RefObject, useContext, useRef } from 'react';
+import React, { useContext, useRef } from 'react';
 import createComponent, { Root, Component, register, CONTEXT_COMPONENT } from '@semcore/core';
 import getOriginChildren from '@semcore/utils/lib/getOriginChildren';
 
-export interface INeighborLocationProps {
-  /**
-   *  HTML tag name for the displayed item
-   * @default div
-   */
-  tag?: React.ElementType | string;
-  /** Number of elements in a group */
-  controlsLength?: number;
-}
-
-export interface INeighborItemProps {
-  /** Determines from which side the component has neighbors */
-  neighborLocation?: 'right' | 'both' | 'left' | false;
-}
-
 const CALCULATE_NEIGHBOR_LOCATION = Symbol('CALCULATE_NEIGHBOR_LOCATION');
 
-export type NeighborLocationType = 'both' | 'left' | 'right';
-
-export interface INeighborLocationCtx {
-  [CALCULATE_NEIGHBOR_LOCATION]: (prevNeighborLocation: RefObject<unknown>) => NeighborLocationType;
-}
-
-class NeighborLocationRoot extends Component<INeighborLocationProps> {
+class NeighborLocationRoot extends Component {
   static displayName = 'NeighborLocation';
 
-  _currentIndex: null | number = null;
+  _currentIndex = null;
 
   calculateNeighborLocation(controlsLength, prevNeighborLocation) {
     // default state
@@ -83,7 +62,7 @@ class NeighborLocationRoot extends Component<INeighborLocationProps> {
     this._currentIndex = 0;
 
     if (Tag) {
-      return <Root render={Tag}>{Children.origin}</Root>
+      return <Root render={Tag}>{Children.origin}</Root>;
     }
 
     return Children.origin;
@@ -93,7 +72,7 @@ class NeighborLocationRoot extends Component<INeighborLocationProps> {
 function neighborLocationEnhance() {
   return (props) => {
     const prevNeighborLocationRef = useRef(undefined);
-    const ctx = useContext<INeighborLocationCtx>(NeighborLocation[CONTEXT_COMPONENT]);
+    const ctx = useContext(NeighborLocation[CONTEXT_COMPONENT]);
     if (ctx[CALCULATE_NEIGHBOR_LOCATION]) {
       prevNeighborLocationRef['current'] = ctx[CALCULATE_NEIGHBOR_LOCATION](
         prevNeighborLocationRef['current'],
@@ -108,15 +87,11 @@ function neighborLocationEnhance() {
 
 const Context = register.get(
   'neighbor-location-context',
-  React.createContext<INeighborLocationCtx>({} as INeighborLocationCtx),
+  React.createContext({}),
 );
-const NeighborLocation = createComponent<INeighborLocationProps, {}, INeighborLocationCtx>(
-  NeighborLocationRoot,
-  {},
-  {
-    context: Context,
-  },
-);
+const NeighborLocation = createComponent(NeighborLocationRoot, {}, {
+  context: Context,
+});
 
 export { neighborLocationEnhance };
 
