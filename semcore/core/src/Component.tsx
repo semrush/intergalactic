@@ -50,7 +50,7 @@ export type CProps<Props, Ctx = {}, UCProps = {}> = Props & {
 export type ReturnEl = React.ReactElement | null;
 
 export interface IRootNodeProps {
-  render: React.ElementType;
+  render: React.ElementType | string;
   tag?: React.ElementType | string;
 
   [key: string]: any;
