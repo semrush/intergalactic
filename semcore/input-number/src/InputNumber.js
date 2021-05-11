@@ -38,7 +38,6 @@ class InputNumber extends Component {
     return {
       ref: this.inputRef,
       $inputHandlers: this.inputHandlersRef,
-      onChange: this.handlerChange,
     };
   }
 
@@ -95,6 +94,7 @@ class Value extends Component {
     const SValue = Root;
     const { styles, $inputHandlers } = this.asProps;
 
+    // 🐒 не делайте так
     $inputHandlers.current = this.handlers;
 
     return sstyled(styles)(
