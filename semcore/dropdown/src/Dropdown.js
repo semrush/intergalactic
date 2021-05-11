@@ -1,29 +1,12 @@
-import React, { ComponentProps } from 'react';
-import createComponent, { Component, styled, Merge } from '@semcore/core';
-import Popper, { IPopperProps, IPopperContext } from '@semcore/popper';
+import React from 'react';
+import createComponent, { Root, Component, sstyled } from '@semcore/core';
+import Popper from '@semcore/popper';
 import capitalizeFirstLetter from '@semcore/utils/lib/capitalizeFirstLetter';
 import logger from '@semcore/utils/lib/logger';
 
 import style from './style/dropdown.shadow.css';
 
-export interface IDropdownProps extends IPopperProps {
-  /**
-   * Modifier responsible for the size of the pop-up window
-   * `fixed` - a pop-up window of the same size as trigger
-   * `min` - pop-up window not less than the size of the trigger
-   * `false` - the pop-up window depends on the content within it
-   * @default 'min'
-   * */
-  stretch?: 'min' | 'fixed' | false;
-
-  /**
-   * @deprecated {@link IDropdownProps.stretch}
-   * */
-  popperStretch?: 'min' | 'fixed' | false;
-}
-export interface IDropdownContext extends IPopperContext {}
-
-class Dropdown extends Component<IDropdownProps> {
+class Dropdown extends Component {
   static displayName = 'Dropdown';
   static style = style;
   static defaultProps = {
@@ -42,7 +25,7 @@ class Dropdown extends Component<IDropdownProps> {
       name: 'stretch',
       phase: 'beforeRead',
       enabled: true,
-      fn: function ({ state, options }) {
+      fn: function({ state, options }) {
         const [position] = state.placement.split('-');
 
         const isVertical = ['left', 'right'].indexOf(position) !== -1;
@@ -67,7 +50,7 @@ class Dropdown extends Component<IDropdownProps> {
 
     logger.warn(
       popperStretch !== undefined,
-      "The 'popperStretch' property is deprecated, use 'stretch'",
+      'The \'popperStretch\' property is deprecated, use \'stretch\'',
       other['data-ui-name'] || Dropdown.displayName,
     );
 
@@ -78,12 +61,10 @@ class Dropdown extends Component<IDropdownProps> {
     return (
       <Popper
         ref={forwardRef}
-        // @ts-ignore
         modifiers={[
           ...this.defaultModifiers,
           {
             name: 'stretch',
-            // @ts-ignore
             options: typeof stretch === 'object' ? stretch : { stretch },
           },
           ...modifiers,
@@ -96,26 +77,15 @@ class Dropdown extends Component<IDropdownProps> {
   }
 }
 
-function DropdownPopper(props) {
-  const { Root: SDropdownPopper, styles } = props;
-
-  return styled(styles)(<SDropdownPopper render={Popper.Popper} />);
+function DropdownPopper({ styles }) {
+  const SDropdownPopper = Root;
+  return sstyled(styles)(<SDropdownPopper render={Popper.Popper} />);
 }
 
-export default createComponent<
-  IDropdownProps,
-  {
-    Trigger: ComponentProps<typeof Popper.Trigger>;
-    Popper: ComponentProps<typeof Popper.Popper>;
-  },
-  Merge<IDropdownContext, IDropdownProps>
->(
-  Dropdown,
-  {
+export default createComponent(Dropdown, {
     Trigger: Popper.Trigger,
     Popper: DropdownPopper,
   },
   {
     parent: Popper,
-  },
-);
+  });
