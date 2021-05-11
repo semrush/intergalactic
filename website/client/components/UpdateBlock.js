@@ -15,7 +15,7 @@ const UpdateWrapper = styled.div`
   grid-template-rows: 1fr;
   grid-template-columns: 1fr 2fr;
   margin-left: -116px;
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
     grid-template-columns: 1fr;
     margin-left: 0;
     padding: 0 35px 56px;
@@ -29,7 +29,7 @@ const Info = styled.div`
   grid-row: 1;
   grid-column: 2;
   font-size: 18px;
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
     grid-column: 1;
   }
 `;
@@ -39,7 +39,7 @@ const Header = styled.h2`
   font-size: 50px;
   line-height: 110%;
   margin: 48px 0 16px;
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
     font-size: 36px;
   }
 `;
@@ -62,7 +62,7 @@ const UpdatesImg = styled.img`
   grid-column: 1;
   margin-right: 40px;
   margin-top: -50px;
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
     display: none;
   }
 `;
@@ -72,7 +72,7 @@ const InputSubscribe = styled(Input)`
   font-size: 18px !important;
   width: 296px;
   margin: 0 16px 16px 0;
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
     width: 100%;
     margin: 0 0 16px;
   }
@@ -114,7 +114,7 @@ const ButtonSubscribe = css`
       opacity: 1 !important;
     }
 
-    @media (max-width: 768px) {
+    @media (max-width: 767px) {
       width: 100%;
     }
     @media (max-width: 320px) {
@@ -124,7 +124,7 @@ const ButtonSubscribe = css`
 `;
 
 const TooltipUpdate = styled(Tooltip)`
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
     width: 100%;
   }
 `;

@@ -2,10 +2,13 @@ import React from 'react';
 import { createBaseComponent, Merge, styled, use } from '@semcore/core';
 import { IBoxProps, useBox } from '@semcore/flex-box';
 import resolveColor, { shade } from '@semcore/utils/lib/color';
+import keyboardFocusEnhance, {
+  IKeyboardFocusProps,
+} from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 
 import styles from './style/icon.shadow.css';
 
-export interface IIconProps extends IBoxProps {
+export interface IIconProps extends IBoxProps, IKeyboardFocusProps {
   width?: string | number;
   height?: string | number;
   viewBox?: string;
@@ -30,8 +33,11 @@ function Icon(props, ref) {
   );
 
   const { interactive, color: colorProps } = props;
-
   const color = resolveColor(colorProps);
+  const { keyboardFocused, ...propsWithKeyboardEnhance } = keyboardFocusEnhance()({
+    disabled: !interactive,
+    ...other,
+  });
 
   return styled(styles)`
     SIcon[use|color] {
@@ -43,7 +49,7 @@ function Icon(props, ref) {
         color: ${shade(color, -0.12)};
       }
     }
-  `(<SIcon {...use({ color, interactive })} {...other} />);
+  `(<SIcon {...use({ color, interactive, keyboardFocused })} {...propsWithKeyboardEnhance} />);
 }
 
 Icon.displayName = 'Icon';

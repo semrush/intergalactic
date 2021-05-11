@@ -28,7 +28,8 @@ async function removeDirectory() {
     execSync(`rm -R ${toRemove.join(' ')}`, {
       stdio: 'inherit',
     });
-  } catch (e) {}
+  } catch (e) {
+  }
 }
 
 async function installComponents(packages) {
@@ -82,7 +83,7 @@ const GENERATOR = {
       const TEMPLATE = hasExportDefault(utilsModule)
         ? EXPORT_TEMPLATES.LIB_DEFAULT
         : EXPORT_TEMPLATES.LIB_NAMED;
-      fse.outputFileSync(`./${name}/lib/${util}`, TEMPLATE(dependency, util));
+      fse.outputFileSync(`./${name}/lib/${util}`, TEMPLATE(dependency, util.replace('.d.ts', '').replace('.js', '')));
     });
   },
   ICONS: (dependency, name) => {

@@ -51,7 +51,11 @@ function resolveTheme(theme) {
 }
 
 function createThemeMeta(themeAbsolutePath) {
-  const components = fs.readdirSync(themeAbsolutePath);
+  const components = fs
+    .readdirSync(themeAbsolutePath, { withFileTypes: true })
+    .filter((f) => f.isDirectory())
+    .map((f) => f.name);
+
   return components.reduce((acc, component) => {
     const configPath = path.resolve(themeAbsolutePath, component, 'versions.json');
     if (!Object.hasOwnProperty.call(acc, component)) {

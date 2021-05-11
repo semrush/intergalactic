@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.10.0] - 2021-04-28
+
+### Added
+
+- Added control with keyboard for all icons including prop `interactive`.
+
 ## [2.9.0] - 2021-04-13
 
 ### Added

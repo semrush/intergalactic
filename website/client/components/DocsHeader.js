@@ -33,7 +33,7 @@ const Title = styled.h2`
 `;
 
 const Overlay = styled(Flex)`
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
     display: none;
   }
 `;

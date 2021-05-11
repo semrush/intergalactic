@@ -13,11 +13,12 @@ function walkRule(nodes = [], generateClassName, tokens) {
       tokens['__' + node.name] = node.name = generateClassName([node.name]);
     } else if (node.type === 'class') {
       if (tokens['__' + node.name]) element = node.name;
-    } else if (node.type === 'attribute') {
+    } else if (node.type === 'attribute' && !node.content.startsWith('data-')) {
       node.type = 'class';
-      const [mod, val] = node.content.split('=');
-      if (val) {
-        const value = val.replace(/['"]/g, '');
+      let [mod, value] = node.content.split('=');
+      mod = mod.split('|').pop();
+      if (value) {
+        value = value.replace(/['"]/g, '');
         tokens['_' + mod + '_' + value] = node.name = generateClassName([element, mod, value]);
       } else {
         tokens['_' + mod] = node.name = generateClassName([element, mod]);

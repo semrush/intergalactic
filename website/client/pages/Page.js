@@ -20,7 +20,7 @@ const DocumentationWrapper = styled.div`
   padding: 56px 32px 64px;
   position: relative;
   color: #171a22;
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
     padding: 96px 32px 64px;
   }
   @media (max-width: 320px) {
@@ -50,14 +50,14 @@ const SideBar = styled.div`
   height: 100%;
   background: #f5f5f5;
   max-width: 260px;
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
     display: none;
   }
 `;
 
 const MobileSelect = styled(Select)`
   display: none;
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
     display: block;
     position: fixed;
     z-index: 998;

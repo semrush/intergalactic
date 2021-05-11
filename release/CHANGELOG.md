@@ -1,3 +1,97 @@
+## [5.0.0] - 2021-04-29
+
+### Global
+
+- **Changed** Version of dependence @semcore/core has been changed to 1.11.
+- **Changed** Improved performance. Removed one component wrapper.
+- **Changed** The style processing system has been changed.
+- **Changed** Removed the ability to apply media styles via a plugin babel-plugin-react-semcore.
+
+### @semcore/base-trigger
+
+- **Changed** Changed line-height value
+
+### @semcore/button
+
+- **Changed** Changed line-height value
+
+### @semcore/chart
+
+- **Changed** Changed line-height value
+
+### @semcore/core
+
+- **Added** Added Root type for babel-plugin-root.
+- **Added** Added a new system for processing styles.
+
+### @semcore/feedback-form
+
+- **Changed** Up version @semcore/notice in dependence for package.
+
+### @semcore/format-text
+
+- **Changed** Resized bullet points in li
+
+### @semcore/icon
+
+- **Added** Added control with keyboard for all icons including prop interactive.
+- **Added** Added new icon SharedToUser.
+
+### @semcore/input
+
+- **Changed** Changed line-height value
+
+### @semcore/input-tags
+
+- **Added** Added line-height value
+
+### @semcore/modal
+
+- **Changed** Changed media value to match breakpoints.
+
+### @semcore/notice-bubble
+
+- **Changed** Changed media value to match breakpoints.
+
+### @semcore/pills
+
+- **Changed** Changed line-height value
+
+### @semcore/popper
+
+- **Added** Added functions setTrigger, setPopper in context for Popper.
+- **Fixed** Fixed the setting of attributes in HTML.
+
+### @semcore/product-head
+
+- **Changed** Changed media value to match breakpoints.
+
+### @semcore/tab-line
+
+- **Added** Added support accessibility.
+- **Fixed** Fixed calculate size for Tabline.Item when value don't change.
+- **Changed** Changed line-height value
+
+### @semcore/tab-panel
+
+- **Added** Added support accessibility.
+- **Changed** Changed line-height value
+
+### @semcore/time-picker
+
+- **Added** Added type="button" for controls TimePicker.Format.
+
+### @semcore/tooltip
+
+- **Added** Added role tooltip
+
+### @semcore/utils
+
+- **Added** Added function enhance a11yEnhance.
+- **Changed** Changed breakpoints value.
+- **Changed** Added processing forwardRef for assignProps.
+- **Changed** Removed the ability to apply media variables.
+
 ## [4.0.0] - 2021-04-05
 
 ### @semcore/breadcrumbs
@@ -498,7 +592,8 @@
 
 ### @semcore/divider
 
-- **Added** Added Divider auto size height for vertical orientation, this fixed show <Divider orientation="vertical" in flex
+- **Added** Added Divider auto size height for vertical orientation, this fixed show <Divider orientation="vertical" in
+  flex
 
 ### @semcore/errors
 
@@ -575,7 +670,8 @@
 
 ### @semcore/table
 
-- **Fixed** убрали возможность отображения ScrollArea.Bar по вертикали для Table.StickyHead. Это поведение считается недопустимым для шапки таблицы.
+- **Fixed** убрали возможность отображения ScrollArea.Bar по вертикали для Table.StickyHead. Это поведение считается
+  недопустимым для шапки таблицы.
 
 ### @semcore/widget-empty
 
@@ -625,11 +721,13 @@
 
 ### @semcore/side-panel
 
-- **Added** SidePanel — компонент для отображения выезжающей панели (справа, снизу или слева). Иногда зовем его "шторкой"
+- **Added** SidePanel — компонент для отображения выезжающей панели (справа, снизу или слева). Иногда зовем его "
+  шторкой"
 
 ### @semcore/table
 
-- **Added** Добавили box-sizing: border-box для таблицы, это решило проблему отображения скролла, когда контента не много
+- **Added** Добавили box-sizing: border-box для таблицы, это решило проблему отображения скролла, когда контента не
+  много
 - **Fixed** Исправили отображение активной ячейки th
 - **Fixed** Исправили выравнивание контента в ячейках через свойство textAlign
 - **Changed** Переписали стили со встраиваемого CSS in JS на новый синтаксис, такой же как у всех компонентов

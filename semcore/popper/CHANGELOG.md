@@ -2,6 +2,28 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.11.4] - 2021-05-11
+
+### Fixed
+
+- Fix TS type
+
+## [4.11.3] - 2021-05-05
+
+### Changed
+
+- Rewrite code from TS to JS 🧑‍💻
+
+### Fixed
+
+- Fix position arrow after change version `popperjs`.
+
+## [4.10.1] - 2021-04-28
+
+### Fixed
+
+- Fixed the setting of attributes in HTML.
+
 ## [4.10.0] - 2021-4-26
 
 ### Changed
@@ -16,6 +38,10 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### Added
 
 - Added functions `setTrigger, setPopper` in context for Popper.
+
+### Changed
+
+- Bump `poperjs` to `2.9.2`.
 
 ## [4.8.0] - 2020-12-17
 
