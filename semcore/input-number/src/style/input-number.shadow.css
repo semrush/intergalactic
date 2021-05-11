@@ -53,6 +53,18 @@ SDown {
   }
 }
 
+SValue {
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  &[type='number'] {
+    -moz-appearance: textfield;
+  }
+}
+
 SValue[disabled] ~ SControls {
   opacity: var(--disabled-opacity);
 }
@@ -72,6 +84,7 @@ SValue:not([disabled]) ~ SControls SDown:hover {
 SUp[size='m'] {
   padding: 6px 6px 2px;
 }
+
 SDown[size='m'] {
   padding: 2px 6px 6px;
 }
@@ -79,6 +92,7 @@ SDown[size='m'] {
 SUp[size='l'] {
   padding: 7px 8px 3px;
 }
+
 SDown[size='l'] {
   padding: 3px 8px 7px;
 }
@@ -86,6 +100,7 @@ SDown[size='l'] {
 SUp[size='xl'] {
   padding: 11px 11px 4px;
 }
+
 SDown[size='xl'] {
   padding: 4px 11px 11px;
 }

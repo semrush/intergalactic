@@ -39,3 +39,5 @@ if (global.window) {
   }));
   window.HTMLElement.prototype.scrollIntoView = jest.fn;
 }
+
+jest.setTimeout(10000);
