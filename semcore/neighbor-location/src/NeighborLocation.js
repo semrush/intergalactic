@@ -1,8 +1,13 @@
 import React, { RefObject, useContext, useRef } from 'react';
-import createComponent, { Component, register, CONTEXT_COMPONENT } from '@semcore/core';
+import createComponent, { Root, Component, register, CONTEXT_COMPONENT } from '@semcore/core';
 import getOriginChildren from '@semcore/utils/lib/getOriginChildren';
 
 export interface INeighborLocationProps {
+  /**
+   *  HTML tag name for the displayed item
+   * @default div
+   */
+  tag?: React.ElementType | string;
   /** Number of elements in a group */
   controlsLength?: number;
 }
@@ -74,8 +79,12 @@ class NeighborLocationRoot extends Component<INeighborLocationProps> {
   }
 
   render() {
-    const { Children } = this.asProps;
+    const { Children, tag: Tag } = this.asProps;
     this._currentIndex = 0;
+
+    if (Tag) {
+      return <Root render={Tag}>{Children.origin}</Root>
+    }
 
     return Children.origin;
   }
