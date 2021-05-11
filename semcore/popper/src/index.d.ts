@@ -1,5 +1,5 @@
 import { DOMAttributes } from 'react';
-import { Options, Instance } from '@popperjs/core';
+import { Options, Instance } from '@popperjs/core/lib/types';
 import { Options as OptionsOffset } from '@popperjs/core/lib/modifiers/offset';
 import { Options as OptionsPreventOverflow } from '@popperjs/core/lib/modifiers/preventOverflow';
 import { Options as OptionsArrow } from '@popperjs/core/lib/modifiers/arrow';
