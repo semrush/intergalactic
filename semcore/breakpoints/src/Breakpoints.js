@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import rafTrottle from '@semcore/utils/lib/rafTrottle';
 import canUseDOM from '@semcore/utils/lib/canUseDOM';
 
-const DEFAULT_MEDIA = ['(min-width: 768px)', '(max-width: 769px)'];
+const DEFAULT_MEDIA = ['(min-width: 768px)', '(max-width: 767px)'];
 
 class MediaList {
   mediaQueries = [];

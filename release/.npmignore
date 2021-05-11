@@ -2,3 +2,4 @@ node_modules
 __tests__
 components.json
 generate.js
+mailer.js

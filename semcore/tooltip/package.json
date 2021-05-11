@@ -1,14 +1,14 @@
 {
   "name": "@semcore/tooltip",
   "description": "SEMRush Tooltip Component",
-  "version": "4.1.0",
+  "version": "4.3.0",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
   "author": "Roman Lysov <r.lysov@semrush.com>",
   "license": "MIT",
   "scripts": {
-    "build": "build",
+    "build": "build --source=js",
     "test": "jest"
   },
   "dependencies": {
@@ -18,7 +18,7 @@
     "@semcore/popper": "^4.2"
   },
   "peerDependencies": {
-    "@semcore/core": "^1",
+    "@semcore/core": "^1.11",
     "react": "16.8 - 17"
   },
   "jest": {

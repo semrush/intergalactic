@@ -18,7 +18,7 @@ const FooterWrapper = styled.footer`
   font-weight: 400;
   letter-spacing: 0;
   text-align: left;
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
     padding: 31px 55px;
     height: 366px;
     grid-template-rows: repeat(2, 6fr) repeat(2, 1fr);
@@ -37,7 +37,7 @@ const Logo = styled.div`
   img {
     margin-left: 4px;
   }
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
     grid-row: 3;
     white-space: nowrap;
   }
@@ -51,7 +51,7 @@ const Description = styled.div`
   grid-column: 1;
   color: #898d9a;
   font-size: 14px;
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
     grid-row: 4;
   }
   @media (max-width: 320px) {
@@ -73,7 +73,7 @@ const Contacts = styled.div`
       text-decoration: underline;
     }
   }
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
     grid-row: 2;
     grid-column: 1;
     text-align: left;
@@ -94,14 +94,14 @@ const Links = styled.div`
     margin-right: 20px;
     color: #171a22;
     text-decoration: none;
-    @media (max-width: 768px) {
+    @media (max-width: 767px) {
       margin-bottom: 20px;
     }
     &:hover {
       text-decoration: underline;
     }
   }
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
     display: flex;
     flex-direction: column;
   }

@@ -19,3 +19,7 @@ As you may notice, the TabPanel does not have indents at the edges. To make the 
   <TabPanel px={5} mx="-20px" />
 </Box>
 ```
+
+@## Example accessibility
+
+@example a11y
