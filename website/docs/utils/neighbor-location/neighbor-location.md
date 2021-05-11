@@ -50,5 +50,14 @@ You can also make a combo — "adhere" the entire input field, selector, and but
 
 ![KILL ME PLS](static/combo.png)
 
+@## Adding a wrapper
+
+By default, a `<NeighborLocation/>` does not create an HTML wrapper, but you can pass the component tag you want to it.
+
+> For the correct type mapping in the TC, you must also pass the interface.
+> `<NeighborLocation<IFlexProps> tag={Flex} w={200}/>`
+
+@example neighbor-location-with-tag
+
 @page neighbor-location-api
 @page neighbor-location-changelog
