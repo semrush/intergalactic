@@ -44,9 +44,7 @@ describe('FullscreenModal', () => {
 
   test('should support onClose for Escape', () => {
     const spy = jest.fn();
-    const { getByTestId } = render(
-      <FullscreenModal onClose={spy} data-testid="modal"></FullscreenModal>,
-    );
+    const { getByTestId } = render(<FullscreenModal onClose={spy} data-testid="modal" />);
     fireEvent.keyDown(getByTestId('modal'), { key: 'Escape' });
     expect(spy).toBeCalledWith('onEscape', expect.anything());
   });
