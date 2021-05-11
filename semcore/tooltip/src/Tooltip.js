@@ -17,21 +17,7 @@ function use(props) {
   }, {});
 }
 
-export interface ITooltipProps extends IPopperProps, IPopperTriggerProps {
-  /**
-   * Text in tooltip
-   */
-  title?: React.ReactNode;
-  /**
-   * Tooltip theme, there are several defaulted themes or you can use your own color
-   * @default default
-   */
-  theme?: 'default' | 'warning' | 'invert' | string;
-}
-
-export interface ITooltipContext extends IPopperContext {}
-
-class RootTooltip extends Component<ITooltipProps> {
+class RootTooltip extends Component {
   static displayName = 'Tooltip';
   static style = style;
   static defaultProps = {
@@ -63,7 +49,6 @@ class RootTooltip extends Component<ITooltipProps> {
     const {
       Children,
       title,
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       offset,
       ...other
     } = this.asProps;
@@ -75,7 +60,7 @@ class RootTooltip extends Component<ITooltipProps> {
 
     logger.warn(
       title && advanceMode,
-      "You can't use 'title' and '<Tooltip.Trigger/>/<Tooltip.Popper/>' at the same time",
+      'You can\'t use \'title\' and \'<Tooltip.Trigger/>/<Tooltip.Popper/>\' at the same time',
       other['data-ui-name'] || TooltipBase.displayName,
     );
 
@@ -101,24 +86,15 @@ function TooltipPopper(props) {
   const STooltip = Root;
   const SArrow = Box;
 
-  const uses = use({ theme: resolveColor(theme) });
   return sstyled(styles)(
-    <STooltip render={Popper.Popper} {...uses} role="tooltip">
+    <STooltip render={Popper.Popper} role='tooltip' use:theme={resolveColor(theme)}>
       <Children />
-      <SArrow data-popper-arrow {...uses} />
+      <SArrow data-popper-arrow use:theme={resolveColor(theme)} />
     </STooltip>,
   );
 }
 
-const TooltipBase = createComponent<
-  Merge<ITooltipProps, HTMLAttributes<HTMLSpanElement>>,
-  {
-    Trigger: ComponentProps<typeof Popper.Trigger>;
-    Popper: ComponentProps<typeof Popper.Popper>;
-  },
-  Merge<ITooltipContext, ITooltipProps>
->(
-  RootTooltip,
+const TooltipBase = createComponent(RootTooltip,
   {
     Trigger: Popper.Trigger,
     Popper: TooltipPopper,
@@ -130,19 +106,16 @@ const TooltipBase = createComponent<
 
 export default TooltipBase;
 
-const Tooltip = React.forwardRef(function (props, ref) {
+const Tooltip = React.forwardRef(function(props, ref) {
   logger.warn(
     true,
-    "The named import 'import { Tooltip }' is deprecated, use the default 'import Tooltip'",
+    'The named import \'import { Tooltip }\' is deprecated, use the default \'import Tooltip\'',
     props['data-ui-name'] || Tooltip.displayName,
   );
-  return <TooltipBase ref={ref} interaction="click" {...props} />;
+  return <TooltipBase ref={ref} interaction='click' {...props} />;
 });
-// @ts-ignore
 Tooltip.displayName = TooltipBase.displayName;
-// @ts-ignore
 Tooltip.Trigger = TooltipBase.Trigger;
-// @ts-ignore
 Tooltip.Popper = TooltipBase.Popper;
 
 export { Tooltip };
