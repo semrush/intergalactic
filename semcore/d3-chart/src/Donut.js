@@ -1,6 +1,6 @@
 import React from 'react';
 import { arc, pie } from 'd3-shape';
-import { Component, styled } from '@semcore/core';
+import { Component, sstyled } from '@semcore/core';
 import canUseDOM from '@semcore/utils/lib/canUseDOM';
 import getOriginChildren from '@semcore/utils/lib/getOriginChildren';
 import { CONSTANT } from './utils';
@@ -111,11 +111,11 @@ class DonutRoot extends Component {
 }
 
 function Pie({ Element: SPie, styles, d3Arc, data, color = '#50aef4' }) {
-  return styled(styles)(<SPie render="path" fill={color} d={d3Arc(data)} />);
+  return sstyled(styles)(<SPie render="path" fill={color} d={d3Arc(data)} />);
 }
 
 function Label({ Element: SLabel, styles, Children }) {
-  return styled(styles)(
+  return sstyled(styles)(
     <SLabel render="text" x="0" y="0">
       <Children />
     </SLabel>,

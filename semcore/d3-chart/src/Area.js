@@ -1,7 +1,7 @@
 import React from 'react';
 import { area, curveLinear, line } from 'd3-shape';
 import Dots from './Dots';
-import { Component, styled } from '@semcore/core';
+import { Component, sstyled } from '@semcore/core';
 import createElement from './createElement';
 import { definedData, scaleOfBandwidth, getNullData } from './utils';
 
@@ -56,7 +56,7 @@ class AreaRoot extends Component {
   render() {
     const SArea = this.Element;
     const { styles, hide, d3, d3Line, data, fill, color } = this.asProps;
-    return styled(styles)(
+    return sstyled(styles)(
       <>
         <SArea render="path" hide={hide} fill={fill} d={d3(data)} />
         <path stroke={color} strokeWidth="3" fill="transparent" d={d3Line(data)} />
@@ -67,7 +67,7 @@ class AreaRoot extends Component {
 
 function Null(props) {
   const { Element: SNull, styles, d3Line, data, hide } = props;
-  return styled(styles)(<SNull render="path" d={d3Line(data)} hide={hide} />);
+  return sstyled(styles)(<SNull render="path" d={d3Line(data)} hide={hide} />);
 }
 
 export default createElement(AreaRoot, {

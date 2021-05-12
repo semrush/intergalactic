@@ -51,7 +51,7 @@ function Background(props) {
   const [xScale, yScale] = scale;
   const xRange = xScale.range();
 
-  return styled(styles)(
+  return sstyled(styles)(
     <SBackground
       render="rect"
       childrenPosition="above"
