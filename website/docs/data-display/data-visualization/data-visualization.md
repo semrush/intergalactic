@@ -4,7 +4,7 @@ fileSource: chart
 tabName: Guide
 ---
 
-@## Data visualization types
+@## Chart types
 
 We use many types of charts in the interface. Each of them is designed to visualize different cases and data.
 

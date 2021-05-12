@@ -20,7 +20,13 @@ function Demo() {
       <NeighborLocation>
         <Button onClick={handlerControls(-1)}>-</Button>
         <InputNumber>
-          <InputNumber.Value ref={inputRef} step={10} value={value} onChange={setValue} />
+          <InputNumber.Value
+            placeholder="0"
+            ref={inputRef}
+            step={10}
+            value={value}
+            onChange={setValue}
+          />
         </InputNumber>
         <Button onClick={handlerControls(1)}>+</Button>
       </NeighborLocation>

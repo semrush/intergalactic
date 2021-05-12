@@ -79,6 +79,31 @@ In order for the user to enter the correct data and pass validation, in InputNum
 
 ![input validation yes-no examples](static/validation-yes-no.png)
 
+@## Range of values
+
+To enter a range of numbers, we need two Inputnumber grouped together, and a bit of magic ✨
+
+> 💡 You can use **"from"** and **"to"** as placeholders in such inputs.
+
+| State   | Xl (42px)                                                 | L (32px)                                                 | M (26px)                                                 |
+| ------- | --------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
+| default | ![default state input range](static/xl-range-default.png) | ![default state input range](static/l-range-default.png) | ![default state input range](static/m-range-default.png) |
+| focus   | ![focus state input range](static/xl-range-focus.png)     | ![default state input range](static/l-range.png)         | ![default state input range](static/m-range.png)         |
+
+### Validation when entering a range of numbers
+
+If the user entered a value in the right input that is less than the value in the left input, they should switch places when they lose focus.
+
+| The right value is less than the left value | When submitting, we change the values in places |
+| ------------------------------------------- | ----------------------------------------------- |
+| ![input range](static/range-1.png)          | ![input range](static/range-2.png)              |
+
+@## Alternative view
+
+In some cases you need to show steppers for values as specific buttons with "-"/"+", so you can use the alternative view of this component. See the example [in the Code tab](/components/input-number/input-number-code/#a22257).
+
+![Alternative view](static/alternative.png)
+
 @## Corner cases
 
 ### Invalid values
@@ -103,25 +128,6 @@ We treat a zero value like any other number:
 - if 0 is less than the minimum value, we reset the input value to the minimum value.
 
 > 💡 **If the input is already set to 0**, then when the focus is in the field, the user enters the value after 0. By `onBlur`, the entire value in the input is formatted, and 0, which was before the number entered by the user, is removed. For example, `001` is formatted to `1`.
-
-@## Entering a range of numbers
-
-To enter a range of numbers, we need two Inputnumber grouped together, and a bit of magic ✨
-
-> 💡 You can use **"from"** and **"to"** as placeholders in such inputs.
-
-| State   | Xl (42px)                                                 | L (32px)                                                 | M (26px)                                                 |
-| ------- | --------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
-| default | ![default state input range](static/xl-range-default.png) | ![default state input range](static/l-range-default.png) | ![default state input range](static/m-range-default.png) |
-| focus   | ![focus state input range](static/xl-range-focus.png)     | ![default state input range](static/l-range.png)         | ![default state input range](static/m-range.png)         |
-
-### InputNumber validation when entering a range of numbers
-
-If the user entered a value in the right input that is less than the value in the left input, they should switch places when they lose focus.
-
-| The right value is less than the left value | When submitting, we change the values in places |
-| ------------------------------------------- | ----------------------------------------------- |
-| ![input range](static/range-1.png)          | ![input range](static/range-2.png)              |
 
 @## Use in UX/UI
 
