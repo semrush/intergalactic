@@ -1,6 +1,6 @@
 import { bisector } from 'd3-array';
 import React, { useCallback, useEffect, useState } from 'react';
-import { styled } from '@semcore/core';
+import { sstyled } from '@semcore/core';
 import trottle from '@semcore/utils/lib/rafTrottle';
 import { eventToPoint, invert } from './utils';
 
@@ -62,7 +62,7 @@ function Dots(props) {
     if (!d3.defined()(d)) return acc;
     if (display || i === activeIndex || (!isPrev && !isNext)) {
       acc.push(
-        styled(styles)(
+        sstyled(styles)(
           <SDot
             key={i}
             __excludeProps={['data', 'scale', 'value', 'display']}
