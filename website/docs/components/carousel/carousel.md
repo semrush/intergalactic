@@ -19,11 +19,11 @@ We use it for sequential viewing of single-level information within one componen
 
 Use the carousel as an additional highlight of important website features and information, never as the only path to important content.
 
-@## Component consists of
+### Component consists of
 
-1. navigation buttons
-2. slides number indicator (optional)
-3. slide with content
+- Navigation buttons
+- Slides number indicator (optional)
+- Slide with content
 
 ![carousel scheme](static/carousel-scheme.png)
 
