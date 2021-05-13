@@ -8,7 +8,7 @@
   "author": "Roman Lysov <r.lysov@semrush.com>",
   "license": "MIT",
   "scripts": {
-    "build": "build",
+    "build": "build --source=js",
     "test": "jest"
   },
   "dependencies": {
@@ -19,7 +19,7 @@
     "react-transition-group": "^4.4"
   },
   "peerDependencies": {
-    "@semcore/core": "^1.8",
+    "@semcore/core": "^1.11",
     "react": "16.8 - 17"
   },
   "jest": {

@@ -1,7 +1,7 @@
-import React, { ComponentProps } from 'react';
+import React from 'react';
 import { CSSTransition } from 'react-transition-group';
-import createComponent, { Component, PropGetterFn, Merge, styled } from '@semcore/core';
-import Popper, { IPopperContext, IPopperPopperProps, IPopperProps } from '@semcore/popper';
+import createComponent, { Root, Component, styled } from '@semcore/core';
+import Popper from '@semcore/popper';
 import { Box } from '@semcore/flex-box';
 import Close from '@semcore/icon/lib/Close/xs';
 import If from '@semcore/utils/lib/if';
@@ -9,25 +9,7 @@ import If from '@semcore/utils/lib/if';
 import style from './style/feature-popover.shadow.css';
 import { callAllEventHandlers } from '@semcore/utils/lib/assignProps';
 
-export interface IFeaturePopoverPopperProps extends IPopperPopperProps {
-  /**
-   * The property responsible for the visibility of the closing icon
-   * @default false
-   */
-  closeIcon?: boolean;
-  /** Animation display duration in `ms`
-   * @default 200
-   */
-  duration?: number;
-  /** @ignore */
-  $onCloseClick?: () => void;
-}
-
-export interface IFeaturePopoverContext extends IPopperContext {
-  getSpotProps: PropGetterFn;
-}
-
-class FeaturePopover extends Component<IPopperProps> {
+class FeaturePopover extends Component {
   static displayName = 'FeaturePopover';
   static style = style;
   static defaultProps = {
@@ -89,20 +71,20 @@ class FeaturePopover extends Component<IPopperProps> {
   }
 }
 
-class FeaturePopoverPopper extends Component<IFeaturePopoverPopperProps> {
+class FeaturePopoverPopper extends Component {
   static defaultProps = {
     closeIcon: false,
     duration: 200,
   };
 
   render() {
-    const { Root: SFeaturePopover } = this;
+    const SFeaturePopover = Root;
     const SClose = Close;
     const { Children, styles, visible, closeIcon, duration, $onCloseClick } = this.asProps;
 
     const transitionDuration = `${duration}ms`;
     return (
-      <CSSTransition in={visible as boolean} timeout={duration} unmountOnExit>
+      <CSSTransition in={visible} timeout={duration} unmountOnExit>
         {(state) => {
           return styled(styles)`
             SFeaturePopover {
@@ -125,7 +107,9 @@ class FeaturePopoverPopper extends Component<IFeaturePopoverPopperProps> {
 }
 
 const Spot = (props) => {
-  const { Root: SSpot, styles, visible } = props;
+  const SSpot = Root;
+
+  const { styles, visible } = props;
 
   return styled(styles)(
     <If condition={visible}>
@@ -134,15 +118,7 @@ const Spot = (props) => {
   );
 };
 
-export default createComponent<
-  FeaturePopover,
-  {
-    Trigger: ComponentProps<typeof Popper.Trigger>;
-    Popper: IFeaturePopoverPopperProps & ComponentProps<typeof Box>;
-    Spot: ComponentProps<typeof Box>;
-  },
-  Merge<IFeaturePopoverContext, IPopperProps>
->(
+export default createComponent(
   FeaturePopover,
   {
     Trigger: Popper.Trigger,
