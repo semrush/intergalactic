@@ -1,7 +1,6 @@
 import { ComponentProps } from 'react';
-import { PropGetterFn, Merge, CProps, ReturnEl } from '@semcore/core';
+import { PropGetterFn, CProps, ReturnEl } from '@semcore/core';
 import Popper, { IPopperContext, IPopperPopperProps, IPopperProps } from '@semcore/popper';
-import { IDropdownContext, IDropdownProps } from '@semcore/dropdown/src';
 
 export interface IFeaturePopoverPopperProps extends IPopperPopperProps {
   /**
