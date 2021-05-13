@@ -1,107 +1,16 @@
-import React, { ComponentProps, HTMLAttributes } from 'react';
-import createComponent, { Component, Merge, PropGetterFn, styled, use } from '@semcore/core';
+import React from 'react';
+import createComponent, { Component, styled, use, Root } from '@semcore/core';
 import Dropdown, { IDropdownContext, IDropdownProps } from '@semcore/dropdown';
-import { Box, Flex, IBoxProps, IFlexProps, useBox, useFlex } from '@semcore/flex-box';
-import ScrollAreaComponent, { IScrollAreaProps } from '@semcore/scroll-area';
+import { Box, Flex, useBox, useFlex } from '@semcore/flex-box';
+import ScrollAreaComponent from '@semcore/scroll-area';
 import logger from '@semcore/utils/lib/logger';
 
 import style from './style/dropdown-menu.shadow.css';
 
-export type DropdownMenuSize = 'm' | 'l' | 'xl';
-
-export interface IDropdownMenuProps extends IDropdownProps {
-  /**
-   * Size of the menu
-   * @default m
-   */
-  size?: DropdownMenuSize;
-  /**
-   * Index of the element selected by default
-   */
-  defaultHighlightedIndex?: number;
-  /**
-   * Index of the selected item
-   */
-  highlightedIndex?: number;
-  /**
-   * Callback for highlightedIndex change
-   * highlightedIndex -  Index of the selected item
-   */
-  onHighlightedIndexChange?: (highlightedIndex: number) => void;
-  /** @deprecated v2.0.0 */
-  optionCount?: number;
-  /** Trigger type selection
-   * @deprecated v2.0.0 */
-  triggerType?: 'button' | 'input';
-  /** Handler in option selection
-   * @deprecated v2.0.0 */
-  onSelect?: (item: any) => void;
-  /** Multiple choice of options
-   * @deprecated v2.0.0 {@link ISelectProps.multiselect} */
-  multiselect?: boolean;
-}
-
-export interface IDropdownMenuListProps extends IBoxProps, IScrollAreaProps {
-  /**
-   * Size of the menu
-   * @default m
-   */
-  size?: DropdownMenuSize;
-}
-
-export interface IDropdownMenuMenuProps extends IDropdownMenuListProps {}
-
-export interface IDropdownMenuItemProps extends IFlexProps {
-  /**
-   * Enables selected state
-   */
-  selected?: boolean;
-  /**
-   * Disables the component
-   */
-  disabled?: boolean;
-  /**
-   * Adds focus styles around
-   */
-  highlighted?: boolean;
-  /**
-   * Makes the element non-interactive
-   */
-  notInteractive?: boolean;
-  /**
-   * Size of the component
-   * @default m
-   */
-  size?: DropdownMenuSize;
-}
-
-export interface IDropdownMenuItemHintProps extends IFlexProps {
-  /**
-   * Size of the component
-   * @default m
-   */
-  size?: DropdownMenuSize;
-}
-
-export interface IDropdownMenuItemTitleProps extends IFlexProps {
-  /**
-   * Size of the component
-   * @default m
-   */
-  size?: DropdownMenuSize;
-}
-
-export interface IDropdownMenuContext extends IDropdownContext {
-  getListProps: PropGetterFn;
-  getItemProps: PropGetterFn;
-  getItemHintProps: PropGetterFn;
-  getItemTitleProps: PropGetterFn;
-}
-
 const KEYS = ['ArrowDown', 'ArrowUp', 'Enter', ' '];
 const INTERACTION_TAGS = ['INPUT', 'TEXTAREA'];
 
-class DropdownMenuRoot extends Component<IDropdownMenuProps> {
+class DropdownMenuRoot extends Component {
   static displayName = 'DropdownMenu';
   static style = style;
 
@@ -113,9 +22,9 @@ class DropdownMenuRoot extends Component<IDropdownMenuProps> {
 
   _items = [];
 
-  _highlightedItem: HTMLElement;
+  _highlightedItem = null;
 
-  prevHighlightedIndex: number = null;
+  prevHighlightedIndex = null;
 
   uncontrolledProps() {
     return {
@@ -185,7 +94,7 @@ class DropdownMenuRoot extends Component<IDropdownMenuProps> {
   getItemProps(props, index) {
     const { size, highlightedIndex, onSelect } = this.asProps;
     const highlighted = index === highlightedIndex;
-    const extraProps = {} as any;
+    const extraProps = {};
 
     if (onSelect !== undefined) {
       extraProps.onClick = this.bindHandlerFallbackSelect(props, index);
@@ -268,9 +177,8 @@ class DropdownMenuRoot extends Component<IDropdownMenuProps> {
   }
 
   render() {
-    const Root = this.Root;
     const { optionCount, triggerType, onSelect, ...other } = this.asProps;
-    const props = {} as any;
+    const props = {};
 
     this._items = [];
 
@@ -298,12 +206,12 @@ class DropdownMenuRoot extends Component<IDropdownMenuProps> {
 }
 
 function List(props) {
-  const { Root: SDropdownMenuList, styles } = props;
+  const SDropdownMenuList = Root;
+  const { styles } = props;
   return styled(styles)(<SDropdownMenuList render={Box} tag={ScrollAreaComponent} role="menu" />);
 }
 
 function Menu(props) {
-  const { Root } = props;
   return (
     <DropdownMenu.Popper>
       <Root render={DropdownMenu.List} />
@@ -355,24 +263,7 @@ function Title(props) {
   );
 }
 
-const DropdownMenu = createComponent<
-  DropdownMenuRoot,
-  {
-    Trigger: ComponentProps<typeof Dropdown.Trigger>;
-    Popper: ComponentProps<typeof Dropdown.Popper>;
-    List: Merge<IDropdownMenuListProps, HTMLAttributes<HTMLDivElement>>;
-    Menu: Merge<IDropdownMenuMenuProps, HTMLAttributes<HTMLDivElement>>;
-    Item: [
-      Merge<IDropdownMenuItemProps, HTMLAttributes<HTMLDivElement>>,
-      {
-        Addon: ComponentProps<typeof Box>;
-      },
-    ];
-    ItemTitle: Merge<IDropdownMenuItemTitleProps, HTMLAttributes<HTMLDivElement>>;
-    ItemHint: Merge<IDropdownMenuItemHintProps, HTMLAttributes<HTMLDivElement>>;
-  },
-  Merge<IDropdownMenuContext, IDropdownMenuProps>
->(
+const DropdownMenu = createComponent(
   DropdownMenuRoot,
   {
     Trigger: Dropdown.Trigger,
