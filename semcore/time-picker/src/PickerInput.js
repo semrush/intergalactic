@@ -1,7 +1,7 @@
 import React from 'react';
-import Input, { IInputValueProps } from '@semcore/input';
+import Input from '@semcore/input';
 import Select from '@semcore/select';
-import { intOrDefault, nextInput, prevInput, withLeadingZero } from '../TimePicker';
+import { intOrDefault, nextInput, prevInput, withLeadingZero } from './TimePicker';
 import { Component, sstyled, Root } from '@semcore/core';
 import { callAllEventHandlers } from '@semcore/utils/lib/assignProps';
 
@@ -15,13 +15,6 @@ const MAP_SIZE_SELECT = {
   l: 'l',
   xl: 'l',
 };
-
-export interface ITimePickerItemProps extends IInputValueProps {
-  /** Step for changing of the values in the dropdown list */
-  step?: number;
-  /* @ignore */
-  $onValueChange?: (value: string, field?: string, event?: React.SyntheticEvent) => void;
-}
 
 function getOptions(min, max, step = 1) {
   const length = Number(((max + 1 - min) / step).toFixed(0));
@@ -38,18 +31,16 @@ function getOptions(min, max, step = 1) {
   });
 }
 
-class ItemPicker extends Component<ITimePickerItemProps> {
+class ItemPicker extends Component {
   static defaultProps = {
     placeholder: '00',
   };
 
-  $input = React.createRef<HTMLInputElement>();
+  $input = React.createRef();
 
-  minMax(): number[] {
+  minMax() {
     return [];
   }
-
-  field: string;
 
   state = {
     dirtyValue: undefined,

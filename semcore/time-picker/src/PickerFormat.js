@@ -1,13 +1,9 @@
 import React from 'react';
 import { Component, sstyled, Root } from '@semcore/core';
-import { Box, IBoxProps } from '@semcore/flex-box';
-import keyboardFocusEnhance, {
-  IKeyboardFocusProps,
-} from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
+import { Box } from '@semcore/flex-box';
+import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 
-export interface ITimePickerFormatProps extends IBoxProps, IKeyboardFocusProps {}
-
-class TimePickerFormat extends Component<ITimePickerFormatProps> {
+class TimePickerFormat extends Component {
   static enhance = [keyboardFocusEnhance()];
   render() {
     const SPickerFormat = Root;

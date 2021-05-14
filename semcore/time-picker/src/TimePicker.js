@@ -1,31 +1,11 @@
-import React, { ComponentProps, HTMLAttributes, InputHTMLAttributes } from 'react';
-import createComponent, { Component, Merge, PropGetter, sstyled, Root } from '@semcore/core';
+import React from 'react';
+import createComponent, { Component, sstyled, Root } from '@semcore/core';
 import Input, { IInputProps } from '@semcore/input';
-import { Box, IBoxProps } from '@semcore/flex-box';
-import { Hours, ITimePickerItemProps, Minutes } from './PickerInput';
-import Format, { ITimePickerFormatProps } from './PickerFormat';
+import { Box } from '@semcore/flex-box';
+import { Hours, Minutes } from './PickerInput';
+import Format from './PickerFormat';
 
 import style from './style/time-picker.shadow.css';
-
-export interface ITimePickerProps extends Omit<IInputProps, 'size'> {
-  /** Time in the hh:mm format */
-  value?: string;
-  /** The event responses upon time changing */
-  onChange?: (time: string, event?: React.SyntheticEvent) => void;
-  /** In charge of the component blocking */
-  disabled?: boolean;
-  /** Control size
-   * @default m */
-  size?: 'm' | 'l' | 'xl';
-  /** 12-hour time format */
-  is12Hour?: boolean;
-}
-
-export interface ITimePickerContext {
-  getHoursProps: PropGetter<TimePickerRoot['getHoursProps']>;
-  getFormatProps: PropGetter<TimePickerRoot['getFormatProps']>;
-  getMinutesProps: PropGetter<TimePickerRoot['getMinutesProps']>;
-}
 
 const MAP_MERIDIEM = {
   AM: 'PM',
@@ -55,7 +35,7 @@ export function intOrDefault(value, def = 0) {
   return Number.isNaN(number) ? def : number;
 }
 
-export function withLeadingZero(value): string {
+export function withLeadingZero(value) {
   value = String(value);
   if (value.length === 1) return `0${value}`;
   return String(value);
@@ -65,7 +45,7 @@ export function meridiemByHours(hours) {
   return hours >= 12 ? 'PM' : 'AM';
 }
 
-export function formatHoursTo12(hours: /* hours by 24 */ string): number | string {
+export function formatHoursTo12(hours /* hours by 24 */) {
   const nHours = intOrDefault(hours, NaN); // if not (:00)
   if (Number.isNaN(nHours)) return hours;
 
@@ -76,7 +56,7 @@ export function formatHoursTo12(hours: /* hours by 24 */ string): number | strin
   return hours;
 }
 
-export function formatHoursTo24(hours: /* hours by 12 */ string, meridiem): number | string {
+export function formatHoursTo24(hours /* hours by 12 */, meridiem) {
   const nHours = intOrDefault(hours, NaN); // if not (:00)
 
   if (Number.isNaN(nHours)) return hours;
@@ -92,7 +72,7 @@ export function formatHoursTo24(hours: /* hours by 12 */ string, meridiem): numb
   return hours;
 }
 
-class TimePickerRoot extends Component<ITimePickerProps> {
+class TimePickerRoot extends Component {
   static displayName = 'TimePicker';
   static style = style;
   static defaultProps = ({ is12Hour }) => ({
@@ -116,7 +96,7 @@ class TimePickerRoot extends Component<ITimePickerProps> {
     };
   }
 
-  get value(): string {
+  get value() {
     const { value } = this.asProps;
     return value === null || value === undefined ? ':' : value;
   }
@@ -134,7 +114,7 @@ class TimePickerRoot extends Component<ITimePickerProps> {
     return this._lastMeridiem;
   }
 
-  valueToTime(value): [string, string] {
+  valueToTime(value) {
     const { is12Hour } = this.asProps;
     let [hours = '', minutes = ''] = value.split(':');
 
@@ -158,7 +138,7 @@ class TimePickerRoot extends Component<ITimePickerProps> {
     return `${hours}:${minutes}`;
   }
 
-  handleValueChange = (value: string, field?: string, event?: React.SyntheticEvent): void => {
+  handleValueChange = (value, field, event) => {
     const { is12Hour } = this.asProps;
     const { meridiem } = this;
 
@@ -178,7 +158,7 @@ class TimePickerRoot extends Component<ITimePickerProps> {
     this.handlers.value(value, event);
   };
 
-  handleMeridiemClick = (event: React.SyntheticEvent) => {
+  handleMeridiemClick = (event) => {
     const { is12Hour } = this.asProps;
     let { value, meridiem } = this;
     let [hours = '', minutes = ''] = value.split(':');
@@ -225,12 +205,12 @@ class TimePickerRoot extends Component<ITimePickerProps> {
   }
 }
 
-class Separator extends Component<IBoxProps> {
+class Separator extends Component {
   static defaultProps = {
     children: ':',
   };
 
-  $el = React.createRef<HTMLDivElement>();
+  $el = React.createRef();
 
   handlerClick = () => {
     if (this.$el.current) {
@@ -243,16 +223,7 @@ class Separator extends Component<IBoxProps> {
   }
 }
 
-const TimePicker = createComponent<
-  Merge<ITimePickerProps, HTMLAttributes<HTMLDivElement>>,
-  {
-    Hours: Merge<ITimePickerItemProps, InputHTMLAttributes<HTMLInputElement>>;
-    Minutes: Merge<ITimePickerItemProps, InputHTMLAttributes<HTMLInputElement>>;
-    Separator: ComponentProps<typeof Box>;
-    Format: Merge<ITimePickerFormatProps, HTMLAttributes<HTMLButtonElement>>;
-  },
-  ITimePickerContext
->(TimePickerRoot, {
+const TimePicker = createComponent(TimePickerRoot, {
   Hours,
   Minutes,
   Separator,
