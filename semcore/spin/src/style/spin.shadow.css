@@ -13,7 +13,10 @@ SSpin {
   display: block;
   flex-shrink: 0;
   box-sizing: border-box;
-  animation: spin-rotate 0.75s infinite linear;
+  animation-name: spin-rotate;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  animation-duration: 0.75s;
   border-radius: 50%;
   border-style: solid;
   border-bottom-color: transparent;
