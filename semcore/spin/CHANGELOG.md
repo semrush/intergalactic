@@ -2,6 +2,13 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.1.1] - 2021-05-14
+
+### Fixed
+
+- Fixed animation
+- Rewrite code from TS to JS
+
 ## [3.1.0] - 2020-12-17
 
 ### Added
