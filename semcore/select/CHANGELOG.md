@@ -2,6 +2,13 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.6om/en/1.0.0/).
 
+## [x.x.x] - unreleased
+
+### Changed
+
+- Version of dependence `@semcore/core` has been changed to `1.11`.
+- Improved performance. Removed one component wrapper.
+
 ## [2.4.1] - 2021-02-12
 
 ### Fixed

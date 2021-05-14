@@ -1,7 +1,7 @@
 import React from 'react';
 import createComponent, { Component, CONTEXT_COMPONENT } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
-import Input, { IInputValueProps } from '@semcore/input';
+import Input from '@semcore/input';
 import Divider from '@semcore/divider';
 import SearchXS from '@semcore/icon/lib/Search/xs';
 import CloseXS from '@semcore/icon/lib/Close/xs';
@@ -10,9 +10,7 @@ import CloseS from '@semcore/icon/lib/Close/s';
 import SearchM from '@semcore/icon/lib/Search/m';
 import CloseM from '@semcore/icon/lib/Close/m';
 
-import Select from '../Select';
-
-export interface ISelectInputSearch extends IInputValueProps {}
+import Select from './Select';
 
 const MAP_SIZE_TO_PADDINGS = {
   m: 2,
@@ -26,7 +24,7 @@ const MAP_SIZE_TO_ICON = {
   xl: [SearchM, CloseM],
 };
 
-class InputSearch extends Component<ISelectInputSearch> {
+class InputSearch extends Component {
   static displayName = 'InputSearch';
 
   static defaultProps = {
@@ -52,12 +50,12 @@ class InputSearch extends Component<ISelectInputSearch> {
 
     return (
       <>
-        <Box p={MAP_SIZE_TO_PADDINGS[finalSize as any]}>
+        <Box p={MAP_SIZE_TO_PADDINGS[finalSize]}>
           <Input size={finalSize}>
-            <Input.Addon tag={MAP_SIZE_TO_ICON[finalSize as any][0]} />
+            <Input.Addon tag={MAP_SIZE_TO_ICON[finalSize][0]} />
             <Root render={Input.Value} autoFocus />
             <Input.Addon
-              tag={MAP_SIZE_TO_ICON[finalSize as any][1]}
+              tag={MAP_SIZE_TO_ICON[finalSize][1]}
               role="button"
               interactive
               style={{ visibility: value ? 'visible' : 'hidden' }}
@@ -71,4 +69,4 @@ class InputSearch extends Component<ISelectInputSearch> {
   }
 }
 
-export default createComponent<ISelectInputSearch>(InputSearch);
+export default createComponent(InputSearch);
