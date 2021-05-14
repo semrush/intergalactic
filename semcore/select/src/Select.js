@@ -1,14 +1,7 @@
-import React, { ComponentProps } from 'react';
-import createComponent, {
-  Component,
-  Merge,
-  MergeGetters,
-  PropGetter,
-  PropsAndRef,
-  styled,
-} from '@semcore/core';
-import DropdownMenu, { IDropdownMenuContext, IDropdownMenuProps } from '@semcore/dropdown-menu';
-import { ButtonTrigger, IBaseTriggerProps } from '@semcore/base-trigger';
+import React from 'react';
+import createComponent, { Component, Root, styled } from '@semcore/core';
+import DropdownMenu from '@semcore/dropdown-menu';
+import { ButtonTrigger } from '@semcore/base-trigger';
 import Divider from '@semcore/divider';
 import findComponent from '@semcore/utils/lib/findComponent';
 import logger from '@semcore/utils/lib/logger';
@@ -18,89 +11,6 @@ import addonTextChildren from '@semcore/utils/lib/addonTextChildren';
 import InputSearch from './InputSearch';
 
 import style from './style/select.shadow.css';
-
-export type SelectValue = string | number;
-
-export type SelectOption = {
-  value: SelectValue;
-  children?: React.ReactNode;
-  label?: React.ReactNode;
-};
-
-export interface ISelectProps<T extends SelectValue | SelectValue[] = SelectValue | SelectValue[]>
-  extends IDropdownMenuProps,
-    IBaseTriggerProps {
-  /**
-   * Multiple select
-   */
-  multiselect?: boolean;
-  /**
-   * Options array
-   */
-  options?: SelectOption[];
-  /**
-   * The value or values array selected by default when using multiselect
-   */
-  defaultValue?: T;
-  /**
-   * The selected value or values array when using multiselect
-   */
-  value?: T;
-  /**
-   * Callback on value change
-   */
-  onChange?: (value: T, e: React.SyntheticEvent) => boolean | void;
-  /**
-   * Trigger placeholder at not selected value
-   */
-  placeholder?: React.ReactNode;
-  /**
-   * Trigger state
-   */
-  state?: 'normal' | 'valid' | 'invalid';
-  /**
-   * Disables select
-   */
-  disabled?: boolean;
-  /**
-   * Input name
-   */
-  name?: string;
-
-  /**
-   * The list of options selected by default
-   * @deprecated v2.0.0 {@link ISelectProps.defaultValue}
-   */
-  defaultSelectedOptions?: ISelectOption[];
-  /**
-   * List of the selected options
-   * @deprecated v2.0.0 {@link ISelectProps.value}
-   */
-  selectedOptions?: ISelectOption[];
-}
-
-export interface ISelectContext extends ISelectProps {
-  getTriggerProps: MergeGetters<
-    PropGetter<RootSelect['getTriggerProps']>,
-    IDropdownMenuContext['getTriggerProps']
-  >;
-}
-
-export interface ISelectOption {
-  value?: any;
-
-  [key: string]: any;
-}
-
-export interface ISelectOptionProps {
-  /** Value of the option */
-  value: string | number;
-}
-
-export interface ISelectOptionCheckboxProps extends ISelectOptionProps {
-  /** Checkbox theme */
-  theme?: string;
-}
 
 function isSelectedOption(value, valueOption) {
   return Array.isArray(value) ? value.includes(valueOption) : valueOption === value;
@@ -114,9 +24,7 @@ function getEmptyValue(multiselect) {
   return multiselect ? [] : null;
 }
 
-class RootSelect extends Component<ISelectProps> {
-  isScrolledToFirstOption: boolean;
-
+class RootSelect extends Component {
   constructor(props) {
     super(props);
     this.isScrolledToFirstOption = false;
@@ -134,7 +42,7 @@ class RootSelect extends Component<ISelectProps> {
     defaultVisible: false,
   });
 
-  firstSelectedOptionRef = React.createRef<HTMLElement>();
+  firstSelectedOptionRef = React.createRef();
 
   uncontrolledProps() {
     return {
@@ -191,7 +99,7 @@ class RootSelect extends Component<ISelectProps> {
   getOptionProps(props) {
     const { value } = this.asProps;
     const selected = isSelectedOption(this.fallbackDeprecatedValue(value), props.value);
-    const other = {} as any;
+    const other = {};
 
     if (selected && !this.isScrolledToFirstOption) {
       other.ref = this.firstSelectedOptionRef;
@@ -308,7 +216,6 @@ class RootSelect extends Component<ISelectProps> {
   }
 
   render() {
-    const Root = this.Root;
     const { Children, options, multiselect, ...other } = this.asProps;
     const advanceMode = findComponent(Children, [
       Select.Trigger.displayName,
@@ -332,7 +239,7 @@ class RootSelect extends Component<ISelectProps> {
       const Component = multiselect ? Select.OptionCheckbox : Select.Option;
       return (
         <Root render={DropdownMenu}>
-          <Select.Trigger {...(other as any)} />
+          <Select.Trigger {...other} />
           <Select.Menu>
             {options.map((option, i) => {
               return <Component key={i} {...option} />;
@@ -346,7 +253,7 @@ class RootSelect extends Component<ISelectProps> {
   }
 }
 
-function Trigger({ Root, Children, name, value, $hiddenRef, tag: Tag = ButtonTrigger }) {
+function Trigger({ Children, name, value, $hiddenRef, tag: Tag = ButtonTrigger }) {
   return (
     <Root render={DropdownMenu.Trigger} tag={Tag} placeholder="Select option">
       {addonTextChildren(
@@ -390,56 +297,18 @@ function SelectDivider(props) {
   return <Divider my={1} {...props} />;
 }
 
-const InputSearchWrapper = function (props) {
-  const { Root } = props;
+const InputSearchWrapper = function(props) {
   logger.warn(
     true,
-    `\'<${props['data-ui-name']}/>\' is deprecated, use the named import \'import { InputSearch }\'`,
+    `\'<${
+      props['data-ui-name']
+    }/>\' is deprecated, use the named import \'import { InputSearch }\'`,
     props['data-ui-name'] || Select.InputSearch.displayName,
   );
   return <Root render={InputSearch} />;
 };
 
-const Select = createComponent<
-  RootSelect,
-  {
-    Trigger: [
-      Merge<ComponentProps<typeof DropdownMenu.Trigger>, ComponentProps<typeof ButtonTrigger>>,
-      {
-        Addon: ComponentProps<typeof ButtonTrigger.Addon>;
-        Text: ComponentProps<typeof ButtonTrigger.Text>;
-      },
-    ];
-    Popper: ComponentProps<typeof DropdownMenu.Popper>;
-    List: ComponentProps<typeof DropdownMenu.List>;
-    Menu: ComponentProps<typeof DropdownMenu.Menu>;
-    Option: [
-      ISelectOptionProps & ComponentProps<typeof DropdownMenu.Item>,
-      {
-        Addon: ComponentProps<typeof DropdownMenu.Item.Addon>;
-      },
-    ];
-    OptionTitle: ComponentProps<typeof DropdownMenu.ItemTitle>;
-    OptionHint: ComponentProps<typeof DropdownMenu.ItemHint>;
-    OptionCheckbox: [
-      ISelectOptionCheckboxProps & ComponentProps<typeof DropdownMenu.Item>,
-      {
-        Addon: ComponentProps<typeof DropdownMenu.Item.Addon>;
-      },
-    ];
-    Divider: ComponentProps<typeof Divider>;
-    InputSearch: ComponentProps<typeof InputSearch>;
-    Input: ComponentProps<typeof InputSearch>;
-  },
-  ISelectContext,
-  <T extends SelectValue | SelectValue[] = SelectValue | SelectValue[]>(
-    props: PropsAndRef<
-      ISelectProps<T>,
-      ISelectContext,
-      ReturnType<RootSelect['uncontrolledProps']>
-    >,
-  ) => React.ReactElement
->(
+const Select = createComponent(
   RootSelect,
   {
     Trigger: [
