@@ -5,16 +5,6 @@ import resolveColor from '@semcore/utils/lib/color';
 
 import style from './style/spin.shadow.css';
 
-function getThemeColor(theme) {
-  switch (theme) {
-    case 'dark':
-    case 'invert':
-      return 'currentColor';
-    default:
-      return resolveColor(theme);
-  }
-}
-
 class RootSpin extends Component {
   static displayName = 'Spin';
   static style = style;
@@ -26,7 +16,7 @@ class RootSpin extends Component {
   render() {
     const SSpin = Root;
     const { styles, theme } = this.asProps;
-    return sstyled(styles)(<SSpin render={Box} theme={theme} color={getThemeColor(theme)} />);
+    return sstyled(styles)(<SSpin render={Box} use:theme={resolveColor(theme)} />);
   }
 }
 

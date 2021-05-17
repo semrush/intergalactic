@@ -2,12 +2,15 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [3.1.1] - 2021-05-14
+## [3.2.0] - 2021-05-17
 
 ### Fixed
 
 - Fixed animation
-- Rewrite code from TS to JS
+
+### Changed
+
+- Rewrite code from TS to JS 👩‍💻
 
 ## [3.1.0] - 2020-12-17
 
