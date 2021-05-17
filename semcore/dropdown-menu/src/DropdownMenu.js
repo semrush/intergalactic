@@ -1,6 +1,7 @@
 import React from 'react';
-import createComponent, { Component, styled, use, Root } from '@semcore/core';
-import Dropdown, { IDropdownContext, IDropdownProps } from '@semcore/dropdown';
+import cn from 'classnames';
+import createComponent, { Component, sstyled, Root } from '@semcore/core';
+import Dropdown from '@semcore/dropdown';
 import { Box, Flex, useBox, useFlex } from '@semcore/flex-box';
 import ScrollAreaComponent from '@semcore/scroll-area';
 import logger from '@semcore/utils/lib/logger';
@@ -64,7 +65,7 @@ class DropdownMenuRoot extends Component {
       index,
       ...props,
     });
-    // @ts-ignore
+
     if (!multiselect && result !== false) {
       this.handlers.visible(false);
     }
@@ -184,17 +185,17 @@ class DropdownMenuRoot extends Component {
 
     logger.warn(
       onSelect !== undefined,
-      "Property 'onSelect' is deprecated, subscribe to the 'onClick' of the needed 'Item'",
+      'Property \'onSelect\' is deprecated, subscribe to the \'onClick\' of the needed \'Item\'',
       other['data-ui-name'] || DropdownMenu.displayName,
     );
     logger.warn(
       optionCount !== undefined,
-      "The 'optionCount' property is deprecated and is now automatically determined from the number of Item",
+      'The \'optionCount\' property is deprecated and is now automatically determined from the number of Item',
       other['data-ui-name'] || DropdownMenu.displayName,
     );
     logger.warn(
       triggerType !== undefined,
-      "The 'triggerType' property is deprecated, use 'interaction=\"focus\"'",
+      'The \'triggerType\' property is deprecated, use \'interaction="focus"\'',
       other['data-ui-name'] || DropdownMenu.displayName,
     );
     if (triggerType === 'input') {
@@ -207,11 +208,10 @@ class DropdownMenuRoot extends Component {
 
 function List(props) {
   const SDropdownMenuList = Root;
-  const { styles } = props;
-  return styled(styles)(<SDropdownMenuList render={Box} tag={ScrollAreaComponent} role="menu" />);
+  return sstyled(props.styles)(<SDropdownMenuList render={Box} tag={ScrollAreaComponent} role='menu' />);
 }
 
-function Menu(props) {
+function Menu() {
   return (
     <DropdownMenu.Popper>
       <Root render={DropdownMenu.List} />
@@ -220,46 +220,42 @@ function Menu(props) {
 }
 
 function Item(props) {
-  const [SDropdownMenuItem, other] = useFlex(props, props.forwardRef);
-  const { styles, selected, disabled, highlighted, size, notInteractive } = props;
-  return styled(styles)(
+  const [SDropdownMenuItem, { className, ...other }] = useFlex(props, props.forwardRef);
+  const styles = sstyled(props.styles);
+  return (
     <SDropdownMenuItem
-      role="menuitem"
+      role='menuitem'
       tabIndex={-1}
-      {...use({
-        size,
-        selected,
-        disabled,
-        notInteractive,
-        highlighted: !disabled && highlighted,
-      })}
+      className={cn(styles.cn('SDropdownMenuItem', {
+        ...props,
+        highlighted: !props.disabled && props.highlighted,
+      }).className, className) || undefined}
       {...other}
-    />,
+    />
   );
 }
 
 function Addon(props) {
-  const [SDropdownMenuItemAddon, other] = useBox(props, props.forwardRef);
-  const { styles } = props;
-
-  return styled(styles)(<SDropdownMenuItemAddon {...other} />);
+  const [SDropdownMenuItemAddon, { className, ...other }] = useBox(props, props.forwardRef);
+  const styles = sstyled(props.styles);
+  return (
+    <SDropdownMenuItemAddon
+      className={cn(styles.cn('SDropdownMenuItem', props).className, className) || undefined}
+      {...other}
+    />);
 }
 
 function Hint(props) {
-  const SDropdownMenuItem = Flex;
-  const { styles, size, forwardRef, ...other } = props;
-
-  return styled(styles)(
-    <SDropdownMenuItem ref={forwardRef} {...use({ variant: 'hint', size })} {...other} />,
+  const SDropdownMenuItem = Root;
+  return sstyled(props.styles)(
+    <SDropdownMenuItem render={Flex} variant='hint' />,
   );
 }
 
 function Title(props) {
-  const SDropdownMenuItem = Flex;
-  const { styles, size, forwardRef, ...other } = props;
-
-  return styled(styles)(
-    <SDropdownMenuItem ref={forwardRef} {...use({ variant: 'title', size })} {...other} />,
+  const SDropdownMenuItem = Root;
+  return sstyled(props.styles)(
+    <SDropdownMenuItem render={Flex} variant='title' />,
   );
 }
 
