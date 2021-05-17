@@ -2,11 +2,11 @@
 
 SDropdownMenuList {
   max-height: 240px;
-  margin: media(4px) 0;
+  margin: 4px 0;
   padding: 0;
   position: relative;
-  min-height: media(26px);
-  min-width: media(32px);
+  min-height: 26px;
+  min-width: 32px;
 }
 
 SDropdownMenuItem {
@@ -29,12 +29,12 @@ SDropdownMenuItem {
   }
 }
 
-SDropdownMenuItem[use|highlighted] {
+SDropdownMenuItem[highlighted] {
   z-index: 1;
   box-shadow: var(--keyborad-focus) inset;
 }
 
-SDropdownMenuItem[use|selected] {
+SDropdownMenuItem[selected] {
   background-color: color-mod(var(--light-blue) a(20%));
 
   &:hover {
@@ -42,37 +42,37 @@ SDropdownMenuItem[use|selected] {
   }
 }
 
-SDropdownMenuItem[use|disabled] {
+SDropdownMenuItem[disabled] {
   opacity: var(--disabled-opacity);
   cursor: default;
   pointer-events: none;
 }
 
-SDropdownMenuItem[use|size='xl'] {
+SDropdownMenuItem[size='xl'] {
   font-size: var(--fs-300);
   line-height: var(--lh-300);
 
-  padding: media(8px) media(12px);
-  min-height: media(42px);
+  padding: 8px 12px;
+  min-height: 42px;
 }
 
-SDropdownMenuItem[use|size='l'] {
+SDropdownMenuItem[size='l'] {
   font-size: var(--fs-200);
   line-height: var(--lh-200);
 
-  padding: media(6px) media(8px);
-  min-height: media(32px);
+  padding: 6px 8px;
+  min-height: 32px;
 }
 
-SDropdownMenuItem[use|size='m'] {
+SDropdownMenuItem[size='m'] {
   font-size: var(--fs-100);
   line-height: var(--lh-100);
 
-  padding: media(4px) media(8px);
-  min-height: media(26px);
+  padding: 4px 8px;
+  min-height: 26px;
 }
 
-SDropdownMenuItem[use|notInteractive] {
+SDropdownMenuItem[notInteractive] {
   cursor: default;
 
   &:hover {
@@ -80,7 +80,7 @@ SDropdownMenuItem[use|notInteractive] {
   }
 }
 
-SDropdownMenuItem[use|variant='hint'] {
+SDropdownMenuItem[variant='hint'] {
   color: var(--gray60);
   cursor: default;
 
@@ -89,7 +89,7 @@ SDropdownMenuItem[use|variant='hint'] {
   }
 }
 
-SDropdownMenuItem[use|variant='title'] {
+SDropdownMenuItem[variant='title'] {
   font-weight: bold;
   cursor: default;
 
@@ -100,8 +100,8 @@ SDropdownMenuItem[use|variant='title'] {
 
 SDropdownMenuItemAddon {
   display: inline-flex;
-  margin-left: media(8px);
-  margin-right: media(8px);
+  margin-left: 8px;
+  margin-right: 8px;
 
   &:first-child {
     margin-left: 0;

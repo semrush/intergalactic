@@ -46,7 +46,8 @@ export interface IDropdownMenuListProps extends IBoxProps, IScrollAreaProps {
   size?: DropdownMenuSize;
 }
 
-export interface IDropdownMenuMenuProps extends IDropdownMenuListProps {}
+export interface IDropdownMenuMenuProps extends IDropdownMenuListProps {
+}
 
 export interface IDropdownMenuItemProps extends IFlexProps {
   /**
@@ -102,12 +103,9 @@ declare const DropdownMenu: ((
   Popper: <T>(props: ComponentProps<typeof Dropdown.Popper> & T) => ReturnEl;
   List: <T>(props: IDropdownMenuListProps & T) => ReturnEl;
   Menu: <T>(props: IDropdownMenuMenuProps & T) => ReturnEl;
-  Item: [
-    <T>(props: IDropdownMenuItemProps & T) => ReturnEl,
-    {
-      Addon: <T>(props: ComponentProps<typeof Box> & T) => ReturnEl;
-    },
-  ];
+  Item: (<T>(props: IDropdownMenuItemProps & T) => ReturnEl) & {
+    Addon: <T>(props: ComponentProps<typeof Box> & T) => ReturnEl;
+  }
   ItemTitle: <T>(props: IDropdownMenuItemTitleProps & T) => ReturnEl;
   ItemHint: <T>(props: IDropdownMenuItemHintProps & T) => ReturnEl;
 };
