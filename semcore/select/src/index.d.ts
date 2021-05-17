@@ -1,6 +1,11 @@
 import React, { ComponentProps } from 'react';
 import { CProps, Merge, PropGetterFn, ReturnEl } from '@semcore/core';
-import DropdownMenu, { IDropdownMenuContext, IDropdownMenuItemProps, IDropdownMenuProps } from '@semcore/dropdown-menu';
+import DropdownMenu, {
+  IDropdownMenuContext,
+  IDropdownMenuItemProps,
+  IDropdownMenuProps,
+  IDropdownMenuHandlers,
+} from '@semcore/dropdown-menu';
 import { ButtonTrigger, IBaseTriggerProps } from '@semcore/base-trigger';
 import Divider from '@semcore/divider';
 import { IInputValueProps } from '@semcore/input';
@@ -86,7 +91,11 @@ export interface ISelectContext extends IDropdownMenuContext {
   getTriggerProps: PropGetterFn
 }
 
-declare const Select: ((props: CProps<ISelectProps, ISelectContext>) => ReturnEl) & {
+export interface ISelectHandlers extends IDropdownMenuHandlers {
+  value: (index: SelectValue) => void
+}
+
+declare const Select: ((props: CProps<ISelectProps, ISelectContext, ISelectHandlers>) => ReturnEl) & {
   Trigger: (<T>(
     props: Merge<ComponentProps<typeof DropdownMenu.Trigger>, ComponentProps<typeof ButtonTrigger>> & T) => ReturnEl) &
     {

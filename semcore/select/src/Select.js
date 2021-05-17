@@ -11,7 +11,6 @@ import addonTextChildren from '@semcore/utils/lib/addonTextChildren';
 import InputSearch from './InputSearch';
 
 import style from './style/select.shadow.css';
-import cn from 'classnames';
 
 function isSelectedOption(value, valueOption) {
   return Array.isArray(value) ? value.includes(valueOption) : valueOption === value;
@@ -246,7 +245,11 @@ class RootSelect extends Component {
       );
     }
 
-    return <Root render={DropdownMenu} />;
+    return (
+      <Root render={DropdownMenu}>
+        <Children />
+      </Root>
+    );
   }
 }
 
