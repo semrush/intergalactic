@@ -46,9 +46,10 @@ The component has several variants of list elements layout:
 
 @example options
 
-<!-- @## Render-function
+@## Render-function
 
 As with the lower-level components, you can access the component logic by passing the render-function into the body.
 
 You can see the list of available methods in the [API](/components/dropdown-menu/dropdown-menu-api/#aad4e2).
--->
+
+@example context
