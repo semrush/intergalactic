@@ -1,12 +1,13 @@
-import React from 'react';
 import { CProps, ReturnEl } from '@semcore/core';
 import { IBoxProps } from '@semcore/flex-box';
+
+export type SpinSize = 'xxs' | 'xs' | 's' | 'm' | 'l' | 'xl' | 'xxl'
 
 export interface ISpinProps extends IBoxProps {
   /** Spinner size
    * @default m
    **/
-  size?: 'xxs' | 'xs' | 's' | 'm' | 'l' | 'xl' | 'xxl';
+  size?: SpinSize;
   /** Spinner theme. There are several default themes or you can use your own color
    * @default dark
    **/
