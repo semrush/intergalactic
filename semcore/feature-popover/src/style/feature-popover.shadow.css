@@ -1,7 +1,7 @@
 @import '@semcore/utils/style/var.css';
 
 SFeaturePopover {
-  padding: media(16px);
+  padding: 16px;
   background-color: #ffe984;
   box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.1);
   border-radius: 3px;
@@ -32,7 +32,7 @@ SClose {
   position: absolute;
   right: 0;
   top: 0;
-  padding: media(8px);
+  padding: 8px;
   cursor: pointer;
   color: var(--gray60);
   font-size: 0;
@@ -64,13 +64,13 @@ SClose {
 
 SSpot {
   position: absolute;
-  bottom: media(-4px);
-  right: media(-4px);
+  bottom: -4px;
+  right: -4px;
   animation: showTrigger 0.2s ease-in;
   animation-delay: 0.4s;
   animation-fill-mode: forwards;
-  width: media(12px);
-  height: media(12px);
+  width: 12px;
+  height: 12px;
 
   &::before {
     content: '';
@@ -83,8 +83,8 @@ SSpot {
     animation-delay: 0.5s;
     background-color: #ffd54f;
     border-radius: 50%;
-    width: media(12px);
-    height: media(12px);
+    width: 12px;
+    height: 12px;
   }
 
   &::after {
@@ -93,8 +93,8 @@ SSpot {
     top: 0;
     left: 0;
     border-radius: 50%;
-    width: media(12px);
-    height: media(12px);
+    width: 12px;
+    height: 12px;
     background-color: #ffd54f;
   }
 }

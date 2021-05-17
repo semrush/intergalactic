@@ -12,8 +12,6 @@ export interface IFeaturePopoverPopperProps extends IPopperPopperProps {
    * @default 200
    */
   duration?: number;
-  /** @ignore */
-  $onCloseClick?: () => void;
 }
 
 export interface IFeaturePopoverContext extends IPopperContext {
@@ -24,7 +22,7 @@ declare const FeaturePopover: ((
   props: CProps<IPopperProps, IFeaturePopoverContext>,
 ) => ReturnEl) & {
   Trigger: <T>(props: ComponentProps<typeof Popper.Trigger> & T) => ReturnEl;
-  Popper: <T>(props: IFeaturePopoverPopperProps & ComponentProps<typeof Box> & T) => ReturnEl;
+  Popper: <T>(props: IFeaturePopoverPopperProps & T) => ReturnEl;
   Spot: <T>(props: ComponentProps<typeof Box> & T) => ReturnEl;
 };
 

@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.3.0] - 2021-05-17
+
+### Changed
+
+- The style processing system has been changed.
+
 ## [2.2.0] - 2021-05-13
 
 ### Changed
