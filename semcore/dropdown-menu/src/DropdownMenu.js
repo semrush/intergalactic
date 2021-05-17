@@ -178,7 +178,7 @@ class DropdownMenuRoot extends Component {
   }
 
   render() {
-    const { optionCount, triggerType, onSelect, ...other } = this.asProps;
+    const { Children, optionCount, triggerType, onSelect, ...other } = this.asProps;
     const props = {};
 
     this._items = [];
@@ -202,7 +202,11 @@ class DropdownMenuRoot extends Component {
       props.interaction = 'focus';
     }
 
-    return <Root render={Dropdown} {...props} />;
+    return (
+      <Root render={Dropdown} {...props}>
+        <Children />
+      </Root>
+    );
   }
 }
 
@@ -271,7 +275,7 @@ const DropdownMenu = createComponent(
     ItemHint: Hint,
   },
   {
-    parent: Dropdown,
+    parent: [Dropdown],
   },
 );
 
