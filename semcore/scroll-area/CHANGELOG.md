@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.5.1] - 2021-05-17
+
+### Fixed
+
+- Add import type for ResizeObserver
+
 ## [3.5.0] - 2021-04-26
 
 ### Changed
