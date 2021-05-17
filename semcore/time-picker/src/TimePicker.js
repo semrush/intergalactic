@@ -1,6 +1,6 @@
 import React from 'react';
 import createComponent, { Component, sstyled, Root } from '@semcore/core';
-import Input, { IInputProps } from '@semcore/input';
+import Input from '@semcore/input';
 import { Box } from '@semcore/flex-box';
 import { Hours, Minutes } from './PickerInput';
 import Format from './PickerFormat';

@@ -160,7 +160,6 @@ class Hours extends ItemPicker {
     }
   }
 
-  // @ts-ignore
   handleKeyDown = (e) => {
     const { currentTarget } = e;
     if (e.keyCode === 13) this.submitChanges(e);
@@ -202,7 +201,6 @@ class Minutes extends ItemPicker {
     }
   }
 
-  // @ts-ignore
   handleKeyDown = (e) => {
     const { currentTarget } = e;
     if (e.keyCode === 13) this.submitChanges(e);
