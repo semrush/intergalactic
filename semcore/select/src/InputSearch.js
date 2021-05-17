@@ -1,5 +1,5 @@
 import React from 'react';
-import createComponent, { Component, CONTEXT_COMPONENT } from '@semcore/core';
+import createComponent, { Component, Root, CONTEXT_COMPONENT } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
 import Input from '@semcore/input';
 import Divider from '@semcore/divider';
@@ -13,7 +13,7 @@ import CloseM from '@semcore/icon/lib/Close/m';
 import Select from './Select';
 
 const MAP_SIZE_TO_PADDINGS = {
-  m: 2,
+  m: '2px',
   l: '10px 8px',
   xl: '12px 12px',
 };
@@ -44,7 +44,6 @@ class InputSearch extends Component {
   };
 
   render() {
-    const Root = this.Root;
     const { size, value } = this.asProps;
     const finalSize = size || this.context.size;
 
