@@ -21,15 +21,15 @@ SPickerInput {
 }
 
 SPickerInput[size='m'] {
-  width: media(17px);
+  width: 17px;
 }
 
 SPickerInput[size='l'] {
-  width: media(18px);
+  width: 18px;
 }
 
 SPickerInput[size='xl'] {
-  width: media(22px);
+  width: 22px;
 }
 
 SPickerFormat {
@@ -68,14 +68,14 @@ SPickerFormat {
 }
 
 SPickerFormat[size='m'] {
-  height: media(26px);
-  font-size: media(12px);
+  height: 26px;
+  font-size: 12px;
   border-radius: 0 3px 3px 0;
 }
 
 SPickerFormat[size='l'] {
-  height: media(32px);
-  font-size: media(14px);
+  height: 32px;
+  font-size: 14px;
   border-radius: 0 4px 4px 0;
 }
 
@@ -87,8 +87,8 @@ SPickerFormat[size='l'] {
 }
 
 SPickerFormat[size='xl'] {
-  height: media(42px);
-  font-size: media(16px);
+  height: 42px;
+  font-size: 16px;
   border-radius: 0 5px 5px 0;
 
   & SPickerFormatText {
