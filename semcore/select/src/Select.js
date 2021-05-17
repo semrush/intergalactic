@@ -11,6 +11,7 @@ import addonTextChildren from '@semcore/utils/lib/addonTextChildren';
 import InputSearch from './InputSearch';
 
 import style from './style/select.shadow.css';
+import cn from 'classnames';
 
 function isSelectedOption(value, valueOption) {
   return Array.isArray(value) ? value.includes(valueOption) : valueOption === value;
@@ -266,13 +267,15 @@ function OptionCheckbox(props) {
   const { selected, ...other } = props;
   const { size, theme, children } = other;
   const SOptionCheckbox = 'div';
-  const styles = sstyled(props.styles)
+  const styles = sstyled(props.styles);
   return (
     <DropdownMenu.Item {...other}>
       <SOptionCheckbox
-        size={size}
-        use:theme={resolveColor(theme)}
-        checked={selected}
+        className={styles.cn('SOptionCheckbox', {
+          size,
+          'use:theme': resolveColor(theme),
+          checked: selected,
+        }).className || undefined}
       />
       {children}
     </DropdownMenu.Item>
@@ -280,7 +283,7 @@ function OptionCheckbox(props) {
 }
 
 function SelectDivider() {
-  return <Root render{Divider} my={1} />;
+  return <Root render={Divider} my={1} />;
 }
 
 const InputSearchWrapper = function(props) {
