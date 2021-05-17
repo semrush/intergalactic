@@ -274,19 +274,30 @@ class Interface extends React.PureComponent {
   renderPropRow = (entry, interfaceName) => {
     const { name, documentation, flags = {} } = entry;
     const { isOptional, isDeprecated } = flags;
+    let version, type;
 
     if (!documentation) {
       return null;
     }
-
-    const version = documentation.contents.find((val) => isTag(val) && val.tag === 'version');
+    const contents = documentation.contents.filter((val) => {
+      if (isTag(val)) {
+        if (val.tag === 'version') {
+          version = val.value;
+          return false;
+        }
+        if (val.tag === 'type') {
+          type = val.value;
+          return false;
+        }
+      }
+      return true;
+    });
 
     const defaultValue = entry.defaultValue ? (
       <em className={classNames('docs-prop-default')}>"{entry.defaultValue}"</em>
     ) : (
       ''
     );
-
     return (
       <Tr key={name} name={`${interfaceName}.${name}`}>
         <Text tag="td" size={300} fontWeight={400} p="12px 8px 12px 0">
@@ -295,19 +306,19 @@ class Interface extends React.PureComponent {
             {!isOptional && <Text color="#F71939">*</Text>}
           </PropertyName>
           {isDeprecated && this.renderDeprecation(isDeprecated)}
-          {this.renderType(entry.type)}
+          {this.renderType(type || entry.type)}
           <Text italic>
             {defaultValue ? ' = ' : ''}
             {defaultValue}
           </Text>
           {version && (
             <small>
-              <i>v{version.value}</i>
+              <i> v{version}</i>
             </small>
           )}
         </Text>
         <Text tag="td" size={300} p="12px 8px 12px 0">
-          <RenderTags content={documentation.contents} />
+          <RenderTags content={contents} />
           <div className="docs-prop-tags">{this.renderTags(entry)}</div>
         </Text>
       </Tr>
