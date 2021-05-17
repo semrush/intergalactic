@@ -1,5 +1,5 @@
 import React from 'react';
-import createComponent, { Component, Root, styled } from '@semcore/core';
+import createComponent, { Component, Root, sstyled } from '@semcore/core';
 import DropdownMenu from '@semcore/dropdown-menu';
 import { ButtonTrigger } from '@semcore/base-trigger';
 import Divider from '@semcore/divider';
@@ -25,11 +25,6 @@ function getEmptyValue(multiselect) {
 }
 
 class RootSelect extends Component {
-  constructor(props) {
-    super(props);
-    this.isScrolledToFirstOption = false;
-  }
-
   static displayName = 'Select';
 
   static style = style;
@@ -44,6 +39,8 @@ class RootSelect extends Component {
 
   firstSelectedOptionRef = React.createRef();
 
+  isScrolledToFirstOption = false;
+
   uncontrolledProps() {
     return {
       visible: null,
@@ -54,7 +51,6 @@ class RootSelect extends Component {
 
   isFallback() {
     const { selectedOptions, defaultSelectedOptions } = this.props;
-    // @ts-ignore
     return selectedOptions !== undefined || defaultSelectedOptions.length !== 0;
   }
 
@@ -137,10 +133,10 @@ class RootSelect extends Component {
     value = this.fallbackDeprecatedLabel(value);
     return Array.isArray(value)
       ? value.reduce((acc, value) => {
-          if (acc.length) acc.push(', ');
-          acc.push(value);
-          return acc;
-        }, [])
+        if (acc.length) acc.push(', ');
+        acc.push(value);
+        return acc;
+      }, [])
       : value;
   }
 
@@ -225,13 +221,13 @@ class RootSelect extends Component {
     logger.warn(
       // @ts-ignore
       this.isFallback(),
-      "'selectedOptions'/'defaultSelectedOptions' changed to 'value/defaultValue' and take only values, not objects.",
+      '\'selectedOptions\'/\'defaultSelectedOptions\' changed to \'value/defaultValue\' and take only values, not objects.',
       other['data-ui-name'] || Select.displayName,
     );
 
     logger.warn(
       options && advanceMode,
-      "Don't use at the same time 'options' property and '<Select.Trigger/>/<Select.Popper/>'",
+      'Don\'t use at the same time \'options\' property and \'<Select.Trigger/>/<Select.Popper/>\'',
       other['data-ui-name'] || Select.displayName,
     );
 
@@ -255,46 +251,36 @@ class RootSelect extends Component {
 
 function Trigger({ Children, name, value, $hiddenRef, tag: Tag = ButtonTrigger }) {
   return (
-    <Root render={DropdownMenu.Trigger} tag={Tag} placeholder="Select option">
+    <Root render={DropdownMenu.Trigger} tag={Tag} placeholder='Select option'>
       {addonTextChildren(
         Children,
         Tag.Text || ButtonTrigger.Text,
         Tag.Addon || ButtonTrigger.Addon,
       )}
-      {name && <input type="hidden" defaultValue={value} name={name} ref={$hiddenRef} />}
+      {name && <input type='hidden' defaultValue={value} name={name} ref={$hiddenRef} />}
     </Root>
   );
 }
 
 function OptionCheckbox(props) {
-  const { styles, selected, ...other } = props;
+  const { selected, ...other } = props;
   const { size, theme, children } = other;
   const SOptionCheckbox = 'div';
-  const color = resolveColor(theme);
-  return styled(styles)`
-    SOptionCheckbox[theme]:before {
-      border-color: ${color};
-    }
-
-    SOptionCheckbox[theme][checked]:before {
-      background-color: ${color};
-      border-color: ${color};
-    }
-  `(
+  const styles = sstyled(props.styles)
+  return (
     <DropdownMenu.Item {...other}>
       <SOptionCheckbox
-        // @ts-ignore
         size={size}
-        theme={theme}
+        use:theme={resolveColor(theme)}
         checked={selected}
       />
       {children}
-    </DropdownMenu.Item>,
+    </DropdownMenu.Item>
   );
 }
 
-function SelectDivider(props) {
-  return <Divider my={1} {...props} />;
+function SelectDivider() {
+  return <Root render{Divider} my={1} />;
 }
 
 const InputSearchWrapper = function(props) {
