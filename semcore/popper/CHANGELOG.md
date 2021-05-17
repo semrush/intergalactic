@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.11.5] - 2021-05-17
+
+### Fixed
+
+- Add type for handlers for render function
+
 ## [4.11.4] - 2021-05-11
 
 ### Fixed

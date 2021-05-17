@@ -125,7 +125,11 @@ export interface IPopperContext {
   setPopper: (ref: HTMLElement) => void;
 }
 
-declare const Popper: ((props: CProps<IPopperProps, IPopperContext>) => ReturnEl) & {
+export interface IPopperHandlers {
+  visible: (visible: boolean) => void
+}
+
+declare const Popper: ((props: CProps<IPopperProps, IPopperContext, IPopperHandlers>) => ReturnEl) & {
   Trigger: <T>(props: IPopperTriggerProps & T) => ReturnEl;
   Popper: <T>(props: IPopperPopperProps & T) => ReturnEl;
 };
