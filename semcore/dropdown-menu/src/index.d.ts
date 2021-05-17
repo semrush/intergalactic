@@ -1,6 +1,6 @@
 import { ComponentProps } from 'react';
 import { CProps, PropGetterFn, ReturnEl } from '@semcore/core';
-import { IDropdownContext, IDropdownProps } from '@semcore/dropdown';
+import { IDropdownContext, IDropdownProps, IDropdownHandlers } from '@semcore/dropdown';
 import { Box, IBoxProps, IFlexProps } from '@semcore/flex-box';
 import { IScrollAreaProps } from '@semcore/scroll-area';
 
@@ -96,8 +96,12 @@ export interface IDropdownMenuContext extends IDropdownContext {
   getItemTitleProps: PropGetterFn;
 }
 
+export interface IDropdownMenuHandlers extends IDropdownHandlers {
+  highlightedIndex: (index: number) => void
+}
+
 declare const DropdownMenu: ((
-  props: CProps<IDropdownMenuProps, IDropdownMenuContext>,
+  props: CProps<IDropdownMenuProps, IDropdownMenuContext, IDropdownMenuHandlers>,
 ) => ReturnEl) & {
   Trigger: <T>(props: ComponentProps<typeof Dropdown.Trigger> & T) => ReturnEl;
   Popper: <T>(props: ComponentProps<typeof Dropdown.Popper> & T) => ReturnEl;
