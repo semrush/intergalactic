@@ -1,6 +1,6 @@
 import { ComponentProps } from 'react';
 import { CProps, PropGetterFn, ReturnEl } from '@semcore/core';
-import { IDropdownContext, IDropdownProps, IDropdownHandlers } from '@semcore/dropdown';
+import Dropdown, { IDropdownContext, IDropdownProps, IDropdownHandlers } from '@semcore/dropdown';
 import { Box, IBoxProps, IFlexProps } from '@semcore/flex-box';
 import { IScrollAreaProps } from '@semcore/scroll-area';
 
