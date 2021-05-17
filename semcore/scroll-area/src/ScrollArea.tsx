@@ -1,6 +1,7 @@
 import React, { ComponentProps } from 'react';
 import { findDOMNode } from 'react-dom';
 import ResizeObserver from 'resize-observer-polyfill';
+import type ResizeObserverCallback from 'resize-observer-polyfill'
 import createComponent, { Component, PropGetterFn, sstyled, Root } from '@semcore/core';
 import { Box, IBoxProps } from '@semcore/flex-box';
 import trottle from '@semcore/utils/lib/rafTrottle';
