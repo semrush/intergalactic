@@ -7,11 +7,9 @@ import fire from '@semcore/utils/lib/fire';
 import Input from '@semcore/input';
 import Select from '@semcore/select';
 import CopyS from '@semcore/icon/lib/Copy/s';
-import ExpandM from '@semcore/icon/lib/Expand/m';
 import Radio, { RadioGroup } from '@semcore/radio';
 import Pills from '@semcore/pills';
 import { createPlayground, Playground } from './playground';
-import FullScreen from './FullScreen';
 import Code from './Code';
 import Copy from './Copy';
 
@@ -131,7 +129,7 @@ const WrapperPlayground = styled.div`
   display: flex;
   border: 1px solid #dee3e5;
   border-radius: 6px;
-  height: ${(props) => (props.fullHeight ? 'calc(100% - 72px)' : 'auto')};
+  height: auto;
   margin-bottom: 32px;
   & p {
     margin: 0;
@@ -215,75 +213,6 @@ const IconCopy = styled.div`
   }
 `;
 
-const IconCopyLink = styled.div`
-  position: absolute;
-  right: 50px;
-  top: 16px;
-  cursor: pointer;
-
-  & > span {
-    display: inline-block;
-  }
-
-  & svg {
-    width: 22px;
-    height: 22px;
-    fill: #999;
-
-    &:hover {
-      opacity: 0.8;
-    }
-  }
-`;
-
-const IconExpand = styled(ExpandM)`
-  position: absolute;
-  top: 16px;
-  right: 16px;
-  fill: #999;
-  cursor: pointer;
-
-  &:hover {
-    opacity: 0.8;
-  }
-`;
-
-export let QUERY_CHANGE_EVENT = '';
-try {
-  QUERY_CHANGE_EVENT = new Event('queryChange');
-} catch (e) {}
-
-export function controlsToQuery(arr) {
-  let query = '';
-  arr.map((el, index) => {
-    const { options } = el;
-    Object.keys(options).map((option) => {
-      query += `&${index}-${[option]}=${encodeURIComponent(options[option].value)}`;
-    });
-  });
-  return query;
-}
-
-function queryToObj(search) {
-  return search
-    .replace('?props=', '')
-    .split('&')
-    .reduce((acc, val) => {
-      if (!val.length) return acc;
-      const splitQuery = val.split('-');
-      const index = splitQuery[0];
-      const propsArr = splitQuery[1].split('=');
-      const name = decodeURIComponent(propsArr[0]);
-      let value = decodeURIComponent(propsArr[1]);
-      // to prevent propTypes warnings
-      if (value === 'true') value = true;
-      if (value === 'false') value = false;
-
-      acc[index] ? (acc[index][name] = value) : (acc[index] = { [name]: value });
-      return acc;
-    }, []);
-}
-
 const ChooseBackgroundColor = styled.div`
   width: 25px;
   height: 25px;
@@ -328,78 +257,12 @@ const PaintPlaygroundView = ({ backgroundColor, onChange, ...other }) => {
 class PlaygroundView extends React.Component {
   static defaultProps = {
     LayoutPreview: (props) => <div {...props} />,
-    hideExpandIcon: false,
-    fullHeight: false,
   };
 
   constructor(props) {
     super(props);
-
-    this.state = { fullScreen: false, backgroundColor: props.backgroundColor || 'white' };
+    this.state = { backgroundColor: props.backgroundColor || 'white' };
   }
-
-  componentDidMount() {
-    const { controls } = this.props;
-    if (window.location.search) {
-      this.onQueryUpdate();
-      this.setState({ fullScreen: true });
-    }
-    this.setState({
-      url: `${window.location.origin}${window.location.pathname}?props=${controlsToQuery(
-        controls,
-      )}`,
-    });
-
-    window.addEventListener('queryChange', this.viewInPlayground);
-    window.addEventListener('keydown', this.onEscClick);
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener('queryChange', this.viewInPlayground);
-    window.removeEventListener('keydown', this.onEscClick);
-  }
-
-  enterFullScreen = () => {
-    this.setState({
-      fullScreen: true,
-    });
-  };
-
-  exitFullScreen = () => {
-    const { history } = this.props;
-    this.setState({
-      fullScreen: false,
-    });
-    try {
-      const url = history.location.origin + history.location.pathname;
-      history.pushState(url, '', url);
-    } catch (e) {}
-  };
-
-  onEscClick = (e) => {
-    // esc
-    if (e.keyCode === 27 && this.state.fullScreen) {
-      this.exitFullScreen();
-    }
-  };
-
-  onQueryUpdate = () => {
-    let { controls, changeControls } = this.props;
-    const propsToMatch = queryToObj(window.location.search);
-    const newProps = controls.map((item, index) => {
-      const { options } = item;
-      Object.keys(options).forEach((prop) => {
-        options[prop].value = propsToMatch[index][prop];
-      });
-      return item;
-    });
-    changeControls(newProps);
-  };
-
-  viewInPlayground = () => {
-    this.onQueryUpdate();
-    this.enterFullScreen();
-  };
 
   onChangeBackground = (color) => {
     fire(this, 'onChange', color);
@@ -408,12 +271,12 @@ class PlaygroundView extends React.Component {
 
   render() {
     const { result, source, widgetControls, LayoutPreview } = this.props;
-    const { fullScreen, backgroundColor } = this.state;
+    const { backgroundColor } = this.state;
 
     const hasWidget = !!widgetControls.length;
 
-    const PlaygroundComponent = (
-      <WrapperPlayground fullHeight={fullScreen}>
+    return (
+      <WrapperPlayground>
         <WorkArea full={!hasWidget}>
           <ResultView backgroundColor={backgroundColor}>
             <LayoutPreview>{result}</LayoutPreview>
@@ -421,8 +284,6 @@ class PlaygroundView extends React.Component {
               backgroundColor={backgroundColor}
               onChange={this.onChangeBackground}
             />
-
-            {!fullScreen && <IconExpand onClick={this.enterFullScreen} />}
           </ResultView>
           <ResultCode>
             <SourceView lang="jsx" copy={false} block>
@@ -443,12 +304,6 @@ class PlaygroundView extends React.Component {
           </WidgetsBar>
         ) : null}
       </WrapperPlayground>
-    );
-
-    return fullScreen ? (
-      <FullScreen backHome={this.exitFullScreen}>{PlaygroundComponent}</FullScreen>
-    ) : (
-      PlaygroundComponent
     );
   }
 }
