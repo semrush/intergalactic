@@ -274,7 +274,7 @@ const FormatText = styled.div`
 
   tt,
   code {
-    background-color: hsla(0, 0%, 0%, 0.06);
+    background-color: hsla(220, 8%, 37%, 0.1);
     border-radius: 4px;
     font-family: Consolas, 'Roboto Mono', 'Liberation Mono', Menlo, Courier, monospace;
     padding: 0 0;
