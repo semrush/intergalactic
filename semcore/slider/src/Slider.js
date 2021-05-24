@@ -11,6 +11,7 @@ class SliderRoot extends Component {
   $slider;
   $knob;
   $bar;
+  $isMouseDown;
 
   static defaultProps = () => ({
     defaultValue: null,
@@ -68,21 +69,33 @@ class SliderRoot extends Component {
     this.handlers.value(value, e);
   };
 
+  onMouseUp = () => {
+    this.$isMouseDown = false;
+    document.removeEventListener('touchmove', this.handleMove);
+    document.removeEventListener('mouseup', this.onMouseUp);
+    document.removeEventListener('click', this.handleMove);
+    document.removeEventListener('mousemove', this.handleMove);
+    document.removeEventListener('touchend', this.onMouseUp);
+  };
+
   handleMove = (e) => {
-    const { min, max, step } = this.asProps;
     e.preventDefault();
-    const slider = this.$slider;
-    const knob = this.$knob;
-    const bar = this.$bar;
+    this.$isMouseDown = true;
+    document.addEventListener('touchmove', this.handleMove);
+    document.addEventListener('mousemove', this.handleMove);
+    document.addEventListener('click', this.handleMove);
+    document.addEventListener('mouseup', this.onMouseUp);
+    document.addEventListener('touchend', this.onMouseUp);
 
-    document.addEventListener('mousemove', onMouseMove);
-    document.addEventListener('click', onMouseMove);
-    document.addEventListener('mouseup', onMouseUp);
-
-    function onMouseMove(e) {
+    const { min, max, step } = this.asProps;
+    if (this.$isMouseDown) {
+      const slider = this.$slider;
+      const knob = this.$knob;
+      const bar = this.$bar;
       const knobSize = knob.offsetWidth;
       const sliderSize = slider.offsetWidth;
-      let newLeft = e.clientX - slider.getBoundingClientRect().left - knob.offsetWidth / 2;
+      const clientX = e.clientX ? e.clientX : e.touches[0].clientX;
+      let newLeft = clientX - slider.getBoundingClientRect().left - knob.offsetWidth / 2;
 
       if (newLeft < 0) {
         newLeft = 0;
@@ -101,15 +114,7 @@ class SliderRoot extends Component {
       knob.style.left = `calc(${valueInPercent}% - ${knobSize / 2}px)`;
       bar.style.width = `calc(${valueInPercent}% - ${knobSize / 2}px)`;
 
-      return currentValue;
-    }
-
-    this.updateValue(onMouseMove(e), e);
-
-    function onMouseUp() {
-      document.removeEventListener('mouseup', onMouseUp);
-      document.removeEventListener('click', onMouseMove);
-      document.removeEventListener('mousemove', onMouseMove);
+      this.updateValue(currentValue, e);
     }
   };
 
@@ -135,7 +140,13 @@ class SliderRoot extends Component {
       case 39:
         this.updateValue(inc(value, step), e);
         break;
+      case 38:
+        this.updateValue(inc(value, step), e);
+        break;
       case 37:
+        this.updateValue(dec(value, step), e);
+        break;
+      case 40:
         this.updateValue(dec(value, step), e);
         break;
       case 27:
@@ -146,7 +157,7 @@ class SliderRoot extends Component {
 
   render() {
     const SSlider = Root;
-    const { Children, styles, background } = this.asProps;
+    const { Children, styles, background, value, min, max } = this.asProps;
     const SInput = Box;
 
     return sstyled(styles)(
@@ -156,13 +167,20 @@ class SliderRoot extends Component {
           use:bg={resolveColor(background)}
           ref={this.refSlider}
           onMouseDown={this.handleMove}
-          onMouseUp={this.handleMove}
+          onMouseUp={this.onMouseUp}
+          onTouchMove={this.handleMove}
+          onTouchEnd={this.onMouseUp}
           onDragStart={() => false}
           onKeyDown={this.onKeyPressed}
           tabIndex="0"
+          role="slider"
+          aria-orientation="horizontal"
+          aria-valuemax={max}
+          aria-valuemin={min}
+          aria-valuenow={value}
         >
           <Children />
-          <SInput tag="input" type="hidden" />
+          <SInput tag="input" type="hidden" value={value} />
         </SSlider>
       </>,
     );
