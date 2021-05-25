@@ -1,3 +1,64 @@
+## [5.1.0] - 2021-05-25
+
+### @semcore/core
+  - **Changed** Extended type for Root
+
+### @semcore/popper
+- **Fixed** Add type for handlers for render function
+- **Fixed** Fix TS type
+- **Fixed** Fix position arrow after change version popperjs.
+- **Changed** Rewrite code from TS to JS 🧑‍💻
+
+### @semcore/tooltip
+- **Changed** Rewrite code from TS to JS 🧑‍💻
+- **Changed** Version of dependence @semcore/core has been changed to 1.11.
+- **Changed** Improved performance. Removed one component wrapper.
+- **Changed** The style processing system has been changed.
+- **Changed** Removed the ability to apply media styles via a plugin babel-plugin-react-semcore.
+
+### @semcore/feature-popover
+- **Changed** The style processing system has been changed.
+- **Changed** Version of dependence @semcore/core has been changed to 1.11.
+- **Changed** Improved performance. Removed one component wrapper.
+
+### @semcore/dropdown
+- **Changed** Version of dependence @semcore/core has been changed to 1.11.
+- **Changed** Improved performance. Removed one component wrapper.
+- **Changed** The style processing system has been changed.
+
+### @semcore/dropdown-menu
+- **Changed** Version of dependence @semcore/core has been changed to 1.11.
+- **Changed** Improved performance. Removed one component wrapper.
+
+### @semcore/select
+- **Changed** Version of dependence @semcore/core has been changed to 1.11.
+- **Changed** Improved performance. Removed one component wrapper.
+- **Changed** The style processing system has been changed.
+- **Changed** Removed the ability to apply media styles via a plugin babel-plugin-react-semcore.
+
+### @semcore/date-picker
+- **Fixed** Fixed short display date for identity months for Trigger.
+
+### @semcore/accordion
+  - **Changed** Rewrite code from TS to JS 🧑‍💻
+
+### @semcore/scroll-area
+- **Fixed** Add import type for ResizeObserver
+
+### @semcore/spin
+- **Fixed** Fixed animation
+- **Changed** Rewrite code from TS to JS 👩‍💻
+
+### @semcore/time-picker
+- **Changed** Rewrite code from TS to JS 🧑‍💻
+
+### @semcore/d3-chart
+  - **Fixed** Fix TS type
+
+### @semcore/neighbor-location
+  - **Added** Added the ability to add a root tag
+  - **Changed** Rewrite code from TS to JS 🧑‍💻
+
 ## [5.0.0] - 2021-04-29
 
 ### Global
