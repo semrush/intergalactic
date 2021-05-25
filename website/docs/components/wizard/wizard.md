@@ -1,6 +1,6 @@
 ---
-title: Wizard modal
+title: Wizard
 disabled: true
 ---
 
-# TODO
+# This component is currently in progress
