@@ -26,9 +26,9 @@ The widget’s “empty” state includes the following:
 
 > 💡 If the widget has a heading, it should be displayed in the “empty” state of the widget.
 
-**The maximum width of the block with “empty” state is 400px**. It is required in order the text was readable.
+**The maximum width of the “empty” state block in side the widget is 400px**. It is required in order the text was readable.
 
-**Be brief**. Write briefly and to the point in such states. Two-three short sentences are usually enough to describe the situation.
+**Be brief**. Write briefly and to the point in these states. Two or three short sentences are usually enough to describe the situation.
 
 ![paddings scheme](static/paddings-scheme.png)
 
@@ -40,7 +40,7 @@ As a rule, the widget height in “empty” state is the same as the height of t
 
 The content of the “empty” state is centered horizontally in relation to the widget content. Vertically this state is recommended to be centered optically, depending on the illustration.
 
-### Minimum height (for extreme cases)
+### Minimum height (for edge cases)
 
 There are cases when it is required to reduce the height of the widget with “empty” state for saving the space on the page. In these cases the widget height is 170px. The state heading becomes the description (usual text styles are used), it is recommended to be reduced up to one sentence. But remember that it is an extreme case.
 
@@ -50,7 +50,7 @@ There are cases when it is required to reduce the height of the widget with “e
 
 @## State types
 
-The main “empty” states of our widgets:
+The list of “empty” states in the widgets:
 
 - Nothing found
 - No more results
@@ -59,7 +59,7 @@ The main “empty” states of our widgets:
 
 @## Nothing found
 
-The state when for some reason we do not have data at the user request or cannot show it. If the widget has a heading, it should be displayed in this state. In this case we show the following instead of the data:
+We use this state, when for some reason we do not have data at the user request or cannot show it. If the widget has a heading, it should be displayed in this state. In this case we show the following instead of the data:
 
 - an image corresponding to the type of the data in the widget;
 - a text message specifying that we have no data or specifying the user’s actions in order to obtain it;
@@ -73,7 +73,7 @@ We have a certain image for each type of data. The button is an optional element
 | ![big widget empty](static/big-empty.png)         | ![medium widget empty](static/medium-empty.png)         | h6 — We have no data to show; p — {Hint message} |
 | ![big widget empty](static/big-empty-filters.png) | ![medium widget empty](static/medium-empty-filters.png) | h6 — We have no data to show; p — {Hint message} |
 
-> 💡 **Be brief**. Do not write too much text in such states. Two-three short sentences are enough.
+> 💡 **Be brief**. Do not write too much text in these states. Two or three short sentences are enough.
 
 If your widget has width of less than 300px, you may just insert the heading of the error as the text of `--fs-100` size into such “empty” state: `12px; --lh-100: 1.5;` (12px). And hide the explanatory information into the icon `Info` of S size.
 
@@ -89,12 +89,12 @@ Add the text `No more results` and center it vertically and horizontally at the 
 
 @## Set up your tool
 
-The state, when the data is absent because you need to connect something. It may be said that this is more detailed and more advertising state for the `Nothing found` state.
+We use this state, when the data is absent because you need to connect something. This state is more detailed and more advertising state than the `Nothing found` state.
 
 - In some cases the tool may be set up at once by clicking the corresponding button.
 - In other cases you should write to the specified email address for setting up the tool.
 
-> 💡 Important! Write positively in the heading and description of the state. _For example, write: “Set up the service” instead of “The service is not set up”._
+> 💡 **Important!** Write positively in the heading and description of the state. _For example, write: “Set up the service” instead of “The service is not set up”._
 
 We show the following instead of the data in this state:
 
@@ -112,7 +112,7 @@ If your widget has width of less than 300px, you may just insert the heading of 
 
 @## Something went wrong
 
-The state when something went wrong at the backend. And either we do not have any information, what exactly went wrong and where it will be repaired, or we know about the problem and inform the user about it in the most understandable form.
+We use this state, when something went wrong at the backend. And either we do not have any information, what exactly went wrong and where it will be repaired, or we know about the problem and inform the user about it in the most understandable form.
 
 ### We know that there are problems at the backend
 
