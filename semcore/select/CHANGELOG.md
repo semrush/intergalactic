@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.6om/en/1.0.0/).
 
+## [2.5.2] - 2021-05-27
+
+### Fixed
+
+- Fixed paddings in `InputSearch`.
+
 ## [2.5.1] - 2021-05-17
 
 ### Changed

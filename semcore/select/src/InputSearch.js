@@ -13,7 +13,7 @@ import CloseM from '@semcore/icon/lib/Close/m';
 import Select from './Select';
 
 const MAP_SIZE_TO_PADDINGS = {
-  m: '2px',
+  m: '8px',
   l: '10px 8px',
   xl: '12px 12px',
 };
