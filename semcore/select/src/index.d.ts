@@ -95,7 +95,7 @@ export interface ISelectHandlers extends IDropdownMenuHandlers {
   value: (index: SelectValue) => void
 }
 
-declare const Select: ((props: CProps<ISelectProps, ISelectContext, ISelectHandlers>) => ReturnEl) & {
+declare const Select: (<T extends SelectValue>(props: CProps<ISelectProps<T>, ISelectContext, ISelectHandlers>) => ReturnEl) & {
   Trigger: (<T>(
     props: Merge<ComponentProps<typeof DropdownMenu.Trigger>, ComponentProps<typeof ButtonTrigger>> & T) => ReturnEl) &
     {
