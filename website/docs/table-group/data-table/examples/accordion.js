@@ -1,7 +1,14 @@
 import React, { useState } from 'react';
+import styled from 'styled-components';
 import DataTable from '@semcore/data-table';
 import Accordion from '@semcore/accordion';
 import { Box, Flex } from '@semcore/flex-box';
+import resolveColor from '@semcore/utils/lib/color';
+
+const StyledAccordionContent = styled(Box)`
+  padding: 12px 32px;
+  border-bottom: 1px solid ${resolveColor('stone')};
+`;
 
 function RowAccordion({ value, collapse = {}, ...props }) {
   return (
@@ -34,7 +41,9 @@ export default () => {
                 /* [4] Calculate active row if need apply style */
                 active: value.includes(index),
                 collapse: {
-                  children: <Box p={'12px 32px'}>{`Section ${index + 1}`}</Box>,
+                  children: (
+                    <StyledAccordionContent>{`Section ${index + 1}`}</StyledAccordionContent>
+                  ),
                 },
               };
             }}
