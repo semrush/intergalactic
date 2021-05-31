@@ -72,17 +72,24 @@ class Value extends Component {
     };
   }
 
+  roundRemainder(value, step) {
+    const countDecimals = Math.floor(step) === step ? 0 : step.toString().split('.')[1].length || 0;
+    return countDecimals === 0
+      ? Number.parseFloat(value)
+      : Number.parseFloat(value).toPrecision(countDecimals);
+  }
+
   handleValidation = (e) => {
     const { value, min, max, step } = this.asProps;
     if (Number.isNaN(e.currentTarget.valueAsNumber)) {
       this.setState({ reactKey: Math.random() });
     } else {
       let numberValue = parseValueWithMinMax(Number.parseFloat(value), min, max);
-      const r = numberValue % step;
+      const r = this.roundRemainder(numberValue % step, step);
       if (r !== 0) {
         if (r >= step / 2) {
           numberValue += step - r;
-        } else {
+        } else if (Math.abs(r) < step) {
           numberValue -= r;
         }
       }

@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.0.1] - 2020-05-31
+
+### Fixed
+
+- Fixed the js problem with the remainder of division.
+
 ## [3.0.0] - 2021-05-11
 
 ### BREAK
