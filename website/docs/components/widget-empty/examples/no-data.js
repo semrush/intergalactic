@@ -121,6 +121,10 @@ export default () => {
           <Text size={400}>Suggestions</Text>
           <NoData type="suggestions" />
         </Card>
+        <Card my={5} pt={4}>
+          <Text size={400}>Tag cloud</Text>
+          <NoData type="tag-cloud" />
+        </Card>
       </I18nProvider>
     </div>
   );
