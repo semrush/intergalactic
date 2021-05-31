@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.6om/en/1.0.0/).
 
+## [2.5.3] - 2021-05-31
+
+### Fixed
+
+- Fixed ts type for `Select`.
+
 ## [2.5.2] - 2021-05-27
 
 ### Fixed
