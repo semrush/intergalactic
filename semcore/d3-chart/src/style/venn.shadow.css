@@ -4,5 +4,6 @@ SCircle {
 }
 
 SIntersection {
+  stroke: #fff;
   stroke-width: 2px;
 }
