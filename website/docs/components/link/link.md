@@ -111,7 +111,7 @@ If you want to place links in one line, the distance between them must be a mult
 
 ![link-margin](static/link-margin.png)
 
-@## Default link или Hint link?
+@## Default link or Hint link?
 
 > 💡 Please note that we simplified the [Link](/components/link/link-changelog) component and moved Hint link and its description to [Typography](/style/typography/#afbfef/).
 
