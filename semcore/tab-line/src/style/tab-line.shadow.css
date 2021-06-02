@@ -75,7 +75,7 @@ SIndicator {
   will-change: transform;
 }
 
-STabLineItem[active] {
+STabLineItem[selected] {
   flex-shrink: 0;
 }
 

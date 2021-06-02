@@ -10,8 +10,7 @@ import { ButtonTrigger, IBaseTriggerProps } from '@semcore/base-trigger';
 import Divider from '@semcore/divider';
 import { IInputValueProps } from '@semcore/input';
 
-export interface ISelectInputSearch extends IInputValueProps {
-}
+export interface ISelectInputSearch extends IInputValueProps {}
 
 export type OptionValue = string | number;
 export type SelectValue = string | number | Array<string | number>;
@@ -22,7 +21,9 @@ export type SelectOption = {
   label?: React.ReactNode;
 };
 
-export interface ISelectProps<T extends SelectValue = SelectValue> extends IDropdownMenuProps, IBaseTriggerProps {
+export interface ISelectProps<T extends SelectValue = SelectValue>
+  extends IDropdownMenuProps,
+    IBaseTriggerProps {
   /**
    * Multiple select
    */
@@ -88,36 +89,40 @@ export interface ISelectOptionCheckboxProps extends ISelectOptionProps {
 declare const InputSearch: <T>(props: ISelectInputSearch & T) => ReturnEl;
 
 export interface ISelectContext extends IDropdownMenuContext {
-  getTriggerProps: PropGetterFn
+  getTriggerProps: PropGetterFn;
 }
 
 export interface ISelectHandlers extends IDropdownMenuHandlers {
-  value: (index: SelectValue) => void
+  value: (index: SelectValue) => void;
 }
 
-declare const Select: (<T extends SelectValue>(props: CProps<ISelectProps<T>, ISelectContext, ISelectHandlers>) => ReturnEl) & {
+declare const Select: (<V>(
+  props: CProps<ISelectProps<V>, ISelectContext, ISelectHandlers>,
+) => ReturnEl) & {
   Trigger: (<T>(
-    props: Merge<ComponentProps<typeof DropdownMenu.Trigger>, ComponentProps<typeof ButtonTrigger>> & T) => ReturnEl) &
-    {
-      Addon: <T>(props: ComponentProps<typeof ButtonTrigger.Addon> & T) => ReturnEl;
-      Text: <T>(props: ComponentProps<typeof ButtonTrigger.Text> & T) => ReturnEl;
-    }
+    props: Merge<
+      ComponentProps<typeof DropdownMenu.Trigger>,
+      ComponentProps<typeof ButtonTrigger>
+    > &
+      T,
+  ) => ReturnEl) & {
+    Addon: typeof ButtonTrigger.Addon;
+    Text: typeof ButtonTrigger.Text;
+  };
   Popper: <T>(props: ComponentProps<typeof DropdownMenu.Popper> & T) => ReturnEl;
   List: <T>(props: ComponentProps<typeof DropdownMenu.List> & T) => ReturnEl;
   Menu: <T>(props: ComponentProps<typeof DropdownMenu.Menu> & T) => ReturnEl;
-  Option: (<T>(props: ISelectOptionProps & T) => ReturnEl) &
-    {
-      Addon: ComponentProps<typeof DropdownMenu.Item.Addon>;
-    }
-  OptionTitle: <T>(props: ComponentProps<typeof DropdownMenu.ItemTitle> & T) => ReturnEl;
-  OptionHint: <T>(props: ComponentProps<typeof DropdownMenu.ItemHint> & T) => ReturnEl;
-  OptionCheckbox: (<T>(props: ISelectOptionCheckboxProps & T) => ReturnEl) &
-    {
-      Addon: <T>(props: ComponentProps<typeof DropdownMenu.Item.Addon> & T) => ReturnEl;
-    }
-  Divider: <T>(props: ComponentProps<typeof Divider> & T) => ReturnEl;
-  InputSearch: <T>(props: ComponentProps<InputSearch> & T) => ReturnEl;
-  Input: <T>(props: ComponentProps<InputSearch> & T) => ReturnEl;
+  Option: (<T>(props: ISelectOptionProps & T) => ReturnEl) & {
+    Addon: typeof DropdownMenu.Item.Addon;
+  };
+  OptionTitle: typeof DropdownMenu.ItemTitle;
+  OptionHint: typeof DropdownMenu.ItemHint;
+  OptionCheckbox: (<T>(props: ISelectOptionCheckboxProps & T) => ReturnEl) & {
+    Addon: typeof DropdownMenu.Item.Addon;
+  };
+  Divider: typeof Divider;
+  InputSearch: typeof InputSearch;
+  Input: typeof InputSearch;
 };
 
 export { InputSearch };
