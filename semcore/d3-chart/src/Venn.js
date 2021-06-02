@@ -11,6 +11,7 @@ class VennRoot extends Component {
   static displayName = 'Venn';
   static style = style;
   virtualElement = canUseDOM() ? document.createElement('div') : {};
+  vennData = null;
 
   static defaultProps = () => {
     return {
@@ -33,8 +34,20 @@ class VennRoot extends Component {
     const { eventEmitter } = this.asProps;
     this.virtualElement.getBoundingClientRect = this.generateGetBoundingClientRect(x, y);
     this.virtualElement[CONSTANT.VIRTUAL_ELEMENT] = true;
-    eventEmitter.emit('onTooltipVisible', visible, props, this.virtualElement);
+    eventEmitter.emit(
+      'onTooltipVisible',
+      visible,
+      { name: null, sets: null, ...props },
+      this.virtualElement,
+    );
   };
+
+  getVennData(data, cache) {
+    if (!cache || !this.vennData) {
+      this.vennData = normalizeSolution(venn(data), Math.PI / 2, (c1, c2) => c2.radius - c1.radius);
+    }
+    return this.vennData;
+  }
 
   getCircleProps(props) {
     const { x, y, color, data, chart, size } = this.asProps;
@@ -44,6 +57,7 @@ class VennRoot extends Component {
       y,
       color,
       data,
+      $vennData: this.getVennData(data),
       size: data.find((d) => d.name === props.name)?.size,
       chart,
       svgSize: size,
@@ -54,9 +68,9 @@ class VennRoot extends Component {
 
   getIntersectionProps(props) {
     const { data } = this.asProps;
-
     return {
       data,
+      $vennData: this.getVennData(data, true),
       onMouseMove: this.bindHandlerTooltip(true, props),
       onMouseLeave: this.bindHandlerTooltip(false, props),
     };
@@ -75,20 +89,15 @@ class VennRoot extends Component {
   }
 }
 
-function Circle({ Element: SCircle, styles, data, color, name, svgSize }) {
+function Circle({ Element: SCircle, styles, data, $vennData, color, name, svgSize }) {
   const [active, setActive] = useState(false);
   const onMouseOverHandler = () => setActive(true);
   const onMouseOutHandler = () => setActive(false);
 
   const setName = data.find((d) => d.name === name).sets[0];
-  const vennData = venn(data);
   const [width, height] = svgSize;
-  const normalisedCircles = normalizeSolution(
-    vennData,
-    Math.PI / 2,
-    (c1, c2) => c2.radius - c1.radius,
-  );
-  const scaledCircles = scaleSolution(normalisedCircles, width, height, 10);
+
+  const scaledCircles = scaleSolution($vennData, width, height, 10);
   const newData = Object.entries(scaledCircles);
   const curData = newData.find((d) => d[0] === setName);
 
@@ -106,19 +115,15 @@ function Circle({ Element: SCircle, styles, data, color, name, svgSize }) {
   );
 }
 
-function Intersection({ Element: SIntersection, styles, data, size, sets: setName, ...other }) {
+function Intersection(props) {
+  const { Element: SIntersection, styles, data, $vennData, size } = props;
   const [active, setActive] = useState(false);
   const onMouseOverHandler = () => setActive(true);
   const onMouseOutHandler = () => setActive(false);
 
-  const vennData = venn(data);
   const [width, height] = size;
-  const normalisedCircles = normalizeSolution(
-    vennData,
-    Math.PI / 2,
-    (c1, c2) => c2.radius - c1.radius,
-  );
-  const scaledCircles = scaleSolution(normalisedCircles, width, height, 10);
+
+  const scaledCircles = scaleSolution($vennData, width, height, 10);
   Object.keys(scaledCircles).map((key) => {
     scaledCircles[key].data = data.find((el) => {
       return el.sets.length === 1 && el.sets[0] === key;
@@ -133,38 +138,28 @@ function Intersection({ Element: SIntersection, styles, data, size, sets: setNam
     };
   });
 
-  const circlesWithIntersections = data
-    .filter((item) => item.sets.length > 1)
-    .map((circle) => {
-      return {
-        name: circle.sets.join(','),
-        ...circle,
-      };
-    });
-
-  return circlesWithIntersections.map((intersection) => {
-    const { sets, name } = intersection;
+  const renderInterSection = ({ sets, ...other }) => {
+    const name = JSON.stringify(sets);
     const circleNodes = sets.map((set) =>
       circleLayout.find((circle) => circle.data.sets[0] === set),
     );
-    const intersectionProps =
-      JSON.stringify(sets) === JSON.stringify(setName) ? propsForElement(other) : '';
     const path = intersectionAreaPath(circleNodes);
-    if (JSON.stringify(sets) === JSON.stringify(setName))
-      return sstyled(styles)(
-        <SIntersection
-          render="path"
-          d={path}
-          name={name}
-          key={name}
-          onMouseOut={onMouseOutHandler}
-          onMouseOver={onMouseOverHandler}
-          fillOpacity={active ? 0.1 : 0}
-          {...intersectionProps}
-        />,
-      );
-    else return null;
-  });
+
+    return sstyled(styles)(
+      <SIntersection
+        render="path"
+        d={path}
+        key={name}
+        name={name}
+        onMouseOut={onMouseOutHandler}
+        onMouseOver={onMouseOverHandler}
+        fillOpacity={active ? 0.1 : 0}
+        {...propsForElement(other)}
+      />,
+    );
+  };
+
+  return renderInterSection(props);
 }
 
 const Venn = createElement(VennRoot, { Circle, Intersection });
