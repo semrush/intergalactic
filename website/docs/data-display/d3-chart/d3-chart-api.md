@@ -182,3 +182,18 @@ import { Donut } from '@semcore/d3-chart';
 ```
 
 @interface IDonutProps
+
+@## Venn
+
+It have children components `Circle`, `Intersection`.
+
+```js
+import { Venn } from '@semcore/d3-chart';
+
+<Venn>
+  <Venn.Circle />
+  <Venn.Intersection />
+</Venn>;
+```
+
+@interface IVennProps
