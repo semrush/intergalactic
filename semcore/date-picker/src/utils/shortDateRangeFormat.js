@@ -1,5 +1,4 @@
 import dayjs from 'dayjs';
-import { DateConstructorParams } from '../components/Calendar';
 
 function getDayJSLocale(locale) {
   if (locale.includes('en') || locale.includes('ja')) {
@@ -8,10 +7,7 @@ function getDayJSLocale(locale) {
   return 'ru';
 }
 
-export default function shortDateRangeFormat(
-  dates: DateConstructorParams[],
-  { locale = 'en-US', ...options },
-): string {
+export default function shortDateRangeFormat(dates, { locale = 'en-US', ...options }) {
   const { format } = new Intl.DateTimeFormat(locale, options);
   const normalizeDates = dates.map((date) => dayjs(date).toDate());
   const monthsYears = dates.map((date) => [
@@ -51,7 +47,6 @@ export default function shortDateRangeFormat(
     }
 
     if (isSimilarYear) {
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const { year, ...newOptions } = options;
       if (getDayJSLocale(locale) === 'en') {
         return `${new Intl.DateTimeFormat(locale, newOptions).format(

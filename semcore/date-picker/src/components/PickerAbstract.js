@@ -1,9 +1,9 @@
 import React from 'react';
 import dayjs from 'dayjs';
-import { Component, CORE_INSTANCE, styled } from '@semcore/core';
-import Dropdown, { IDropdownProps } from '@semcore/dropdown';
-import i18nEnhance, { IWithI18nEnhanceProps } from '@semcore/utils/lib/enhances/i18nEnhance';
-import { DateConstructorParams } from './Calendar';
+import { Component, Root, CORE_INSTANCE, sstyled } from '@semcore/core';
+import Dropdown from '@semcore/dropdown';
+import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
+import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 import de from '../translations/de.json';
 import en from '../translations/en.json';
 import es from '../translations/es.json';
@@ -17,61 +17,49 @@ import ko from '../translations/ko.json';
 import vi from '../translations/vi.json';
 
 import style from '../style/date-picker.shadow.css';
+import assignProps from '@semcore/utils/lib/assignProps';
 
 const i18n = { de, en, es, fr, it, ja, ru, zh, pt, ko, vi };
 
-export interface IDatePickerProps extends IDropdownProps, IWithI18nEnhanceProps {
-  /**
-   * The selected date, accepts everything which is accepted by `new Date()`
-   * */
-  value?: DateConstructorParams;
-  /**
-   * To be activated upon selecting the date
-   * */
-  onChange?: (date: Date) => void;
-  /**
-   * Array of dates blocked for selection
-   * */
-  disabled?: (Date | (Date | false)[] | string)[];
-  /**
-   * Date for showing the necessary month
-   * @default new Date()
-   * */
-  displayedPeriod?: DateConstructorParams;
-  /**
-   * To be activated upon changing the current shown month
-   * */
-  onDisplayedPeriodChange?: (date: Date) => void;
-  /**
-   * Component size
-   * @default m
-   */
-  size?: 'm' | 'l' | 'xl';
-}
-
-class PickerAbstract extends Component<IDatePickerProps> {
+class PickerAbstract extends Component {
   static displayName = 'DatePicker';
   static style = style;
-  static defaultProps: any = {
+  static defaultProps = {
     i18n,
     locale: 'en',
     defaultDisplayedPeriod: new Date(new Date().setHours(0, 0, 0, 0)),
     defaultValue: null,
     defaultVisible: false,
+    defaultHighlighted: [],
     disabled: [],
     size: 'm',
   };
-  static enhance = [i18nEnhance()];
+  static enhance = [
+    i18nEnhance(),
+    keyboardFocusEnhance({
+      propName: '$keyboardFocusEnhance',
+      isDisabled: () => false,
+      isCurrent: true,
+      focusMethod: 'onFocusCapture',
+      blurMethod: 'onBlurCapture',
+    }),
+  ];
 
   static add = (date, amount, unit) => {
-    return dayjs(date).add(amount, unit).toDate();
+    return dayjs(date)
+      .add(amount, unit)
+      .toDate();
   };
 
   static subtract = (date, amount, unit) => {
-    return dayjs(date).subtract(amount, unit).toDate();
+    return dayjs(date)
+      .subtract(amount, unit)
+      .toDate();
   };
 
-  navigateStep: dayjs.OpUnitType;
+  navigateStep;
+  keyDiff;
+  keyStep;
 
   uncontrolledProps() {
     return {
@@ -82,9 +70,12 @@ class PickerAbstract extends Component<IDatePickerProps> {
           if (visible) {
             const { value } = this.asProps;
             this.handlers.displayedPeriod(value ? dayjs(value).toDate() : new Date());
+          } else {
+            this.handlers.highlighted([]);
           }
         },
       ],
+      highlighted: null,
       value: [
         null,
         () => {
@@ -95,15 +86,33 @@ class PickerAbstract extends Component<IDatePickerProps> {
     };
   }
 
-  navigateView = (direction: number) => {
+  navigateView = (direction) => {
     const { displayedPeriod } = this.asProps;
     const action = direction >= 1 ? 'add' : 'subtract';
-    const date = dayjs(displayedPeriod)[action](1, this.navigateStep).toDate();
+    const date = dayjs(displayedPeriod)
+      [action](1, this.navigateStep)
+      .toDate();
     this.handlers.displayedPeriod(date);
   };
 
   bindHandlerNavigateClick = (direction) => () => {
     this.navigateView(direction);
+  };
+
+  handlerPopperKeyDown = (e) => {
+    if (e.target !== e.currentTarget) return;
+    const { displayedPeriod, highlighted } = this.asProps;
+    const day = this.keyDiff[e.keyCode];
+    if (e.keyCode === 32 || (e.keyCode === 13 && highlighted.length)) {
+      this.handlers.value(highlighted[0]);
+      e.preventDefault();
+    }
+    if (day) {
+      const current_highlighted = dayjs(highlighted[0] || displayedPeriod).add(day, this.keyStep);
+      this.handlers.highlighted([current_highlighted.toDate()]);
+      this.handlers.displayedPeriod(current_highlighted.toDate());
+      e.preventDefault();
+    }
   };
 
   getTriggerProps() {
@@ -116,14 +125,16 @@ class PickerAbstract extends Component<IDatePickerProps> {
 
   getPopperProps() {
     const Picker = this[CORE_INSTANCE];
-    return {
+    const { $keyboardFocusEnhance } = this.asProps;
+    return assignProps($keyboardFocusEnhance, {
+      onKeyDown: this.handlerPopperKeyDown,
       children: (
         <>
           <Picker.Header />
           <Picker.Calendar />
         </>
       ),
-    };
+    });
   }
 
   getHeaderProps() {
@@ -156,23 +167,20 @@ class PickerAbstract extends Component<IDatePickerProps> {
   }
 
   getCalendarProps() {
-    const { locale, displayedPeriod, disabled, value, onChange } = this.asProps;
+    const { locale, displayedPeriod, disabled, value, onChange, highlighted } = this.asProps;
     return {
       locale,
       displayedPeriod,
       disabled,
       onChange,
+      highlighted,
       value: [value, value],
       renderOutdated: true,
-      highlighted: [],
     };
   }
 
   render() {
-    const { Root } = this;
-    const { styles } = this.asProps;
-
-    return styled(styles)(<Root render={Dropdown} />);
+    return sstyled(this.asProps.styles)(<Root render={Dropdown} />);
   }
 }
 

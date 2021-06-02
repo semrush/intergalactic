@@ -2,6 +2,23 @@
 
 SPopper {
   padding: 16px;
+  outline: 0;
+
+  &::-moz-focus-inner {
+    border: none;
+    padding: 0;
+  }
+
+  &:active,
+  &:hover,
+  &:focus {
+    outline: 0;
+    text-decoration: none;
+  }
+}
+
+SPopper[keyboardFocused] {
+  box-shadow: var(--keyborad-focus);
 }
 
 SHeader {
@@ -21,10 +38,6 @@ SToday {
   display: flex;
   margin-top: 12px;
   justify-content: center;
-}
-
-SInner {
-  justify-content: flex-start;
 }
 
 SPeriod {

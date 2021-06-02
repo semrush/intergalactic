@@ -11,37 +11,63 @@ export interface IKeyboardFocusProps {
   keyboardFocused?: boolean;
 }
 
-function keyboardFocusEnhance() {
+function keyboardFocusEnhance(
+  options = {
+    isDisabled: (props) => props.disabled,
+    propName: '',
+    focusMethod: 'onFocus',
+    blurMethod: 'onBlur',
+    isCurrent: false,
+  },
+) {
   return (props) => {
     const { tabIndex = 0, disabled } = props;
     const [keyboardFocused, setKeyboardFocused] = useState(false);
 
-    const handlerFocus = useEventCallback(() => {
+    const handlerFocus = (e) => {
       if (register.get(KEY_REGISTER, true)) {
-        setKeyboardFocused(true);
+        if (!options.isCurrent || e.currentTarget == e.target) {
+          if (document.activeElement == e.currentTarget || document.activeElement == e.target) {
+            setKeyboardFocused(true);
+          }
+        }
+      }
+    };
+
+    const handlerBlur = (e) => {
+      if (!options.isCurrent || e.currentTarget == e.target) {
+        setKeyboardFocused(false);
+      }
+    };
+
+    const handlerKeyDown = useEventCallback((e) => {
+      if (!options.isCurrent || e.currentTarget == e.target) {
+        register.set(KEY_REGISTER, true);
       }
     });
 
-    const handlerBlur = useEventCallback(() => {
-      setKeyboardFocused(false);
-    });
-
-    const handlerKeyDown = useEventCallback(() => {
-      register.set(KEY_REGISTER, true);
-    });
-
-    const handlerMouseDown = useEventCallback(() => {
+    const handlerMouseDown = useEventCallback((e) => {
       register.set(KEY_REGISTER, false);
     });
 
-    return assignProps(props, {
-      tabIndex: disabled ? -1 : tabIndex,
+    const extends_props = {
+      tabIndex: options.isDisabled(props) ? -1 : tabIndex,
+      // tabIndex: disabled ? -1 : tabIndex,
       keyboardFocused,
-      onFocus: handlerFocus,
-      onBlur: handlerBlur,
+      [options.focusMethod]: handlerFocus,
+      [options.blurMethod]: handlerBlur,
       onKeyDown: handlerKeyDown,
       onMouseDown: handlerMouseDown,
-    });
+    };
+
+    return assignProps(
+      props,
+      options.propName
+        ? {
+            [options.propName]: extends_props,
+          }
+        : extends_props,
+    );
   };
 }
 

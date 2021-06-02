@@ -6,6 +6,8 @@ import logger from '@semcore/utils/lib/logger';
 
 import style from './style/dropdown.shadow.css';
 
+const INTERACTION_TAGS = ['INPUT', 'TEXTAREA'];
+
 class Dropdown extends Component {
   static displayName = 'Dropdown';
   static style = style;
@@ -14,7 +16,14 @@ class Dropdown extends Component {
     placement: 'bottom-start',
     offset: [0, 4],
     stretch: 'min',
+    defaultVisible: false,
   };
+
+  uncontrolledProps() {
+    return {
+      visible: null,
+    };
+  }
 
   defaultModifiers = [
     {
@@ -45,12 +54,27 @@ class Dropdown extends Component {
     },
   ];
 
+  handlerTriggerKeyDown = (e) => {
+    if (e.key === ' ' && INTERACTION_TAGS.includes(e.target.tagName)) return;
+
+    if (['Enter', ' '].includes(e.key)) {
+      e.preventDefault();
+      this.handlers.visible(true);
+    }
+  };
+
+  getTriggerProps() {
+    return {
+      onKeyDown: this.handlerTriggerKeyDown,
+    };
+  }
+
   render() {
     let { Children, forwardRef, modifiers = [], stretch, popperStretch, ...other } = this.asProps;
 
     logger.warn(
       popperStretch !== undefined,
-      'The \'popperStretch\' property is deprecated, use \'stretch\'',
+      "The 'popperStretch' property is deprecated, use 'stretch'",
       other['data-ui-name'] || Dropdown.displayName,
     );
 
@@ -82,10 +106,13 @@ function DropdownPopper({ styles }) {
   return sstyled(styles)(<SDropdownPopper render={Popper.Popper} />);
 }
 
-export default createComponent(Dropdown, {
+export default createComponent(
+  Dropdown,
+  {
     Trigger: Popper.Trigger,
     Popper: DropdownPopper,
   },
   {
     parent: Popper,
-  });
+  },
+);
