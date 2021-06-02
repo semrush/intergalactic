@@ -1,6 +1,11 @@
 import { ComponentProps } from 'react';
 import { CProps, ReturnEl } from '@semcore/core';
-import Popper, { IPopperContext, IPopperProps, IPopperHandlers } from '@semcore/popper';
+import Popper, {
+  IPopperContext,
+  IPopperProps,
+  IPopperHandlers,
+  IPopperGetterContext,
+} from '@semcore/popper';
 
 export interface IDropdownProps extends IPopperProps {
   /**
@@ -18,13 +23,13 @@ export interface IDropdownProps extends IPopperProps {
   popperStretch?: 'min' | 'fixed' | false;
 }
 
-export interface IDropdownContext extends IPopperContext {
-}
+export interface IDropdownContext extends IPopperContext, IPopperGetterContext {}
 
-export interface IDropdownHandlers extends IPopperHandlers {
-}
+export interface IDropdownHandlers extends IPopperHandlers {}
 
-declare const Dropdown: ((props: CProps<IDropdownProps, IDropdownContext, IDropdownHandlers>) => ReturnEl) & {
+declare const Dropdown: ((
+  props: CProps<IDropdownProps, IDropdownContext, IDropdownHandlers>,
+) => ReturnEl) & {
   Trigger: <T>(props: ComponentProps<typeof Popper.Trigger> & T) => ReturnEl;
   Popper: <T>(props: ComponentProps<typeof Popper.Popper> & T) => ReturnEl;
 };
