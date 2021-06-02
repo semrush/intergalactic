@@ -9,16 +9,16 @@ export default () => {
         <Venn.Circle name="Fast" color="#50AEF4" />
         <Venn.Circle name="Cheap" color="#FF8E29" />
         <Venn.Circle name="Unknown" color="#890C85" />
-        <Venn.Intersection sets={['G', 'F']} stroke="#3AB011" />
-        <Venn.Intersection sets={['G', 'C']} stroke="#50AEF4" />
-        <Venn.Intersection sets={['F', 'C']} stroke="#FF8E29" />
-        <Venn.Intersection sets={['G', 'F', 'C']} stroke="#890C85" />
+        <Venn.Intersection sets={['G', 'F']} />
+        <Venn.Intersection sets={['G', 'C']} />
+        <Venn.Intersection sets={['F', 'C']} />
+        <Venn.Intersection sets={['G', 'F', 'C']} />
         <Tooltip>
           {({ name, sets }) => {
             return {
               children: (
                 <>
-                  <Tooltip.Title>{!!sets ? sets : name}</Tooltip.Title>
+                  <Tooltip.Title>{(sets && sets.join(',')) || name}</Tooltip.Title>
                 </>
               ),
             };
