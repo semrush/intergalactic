@@ -1,4 +1,4 @@
-import { IBoxProps, IFlexProps } from '@semcore/flex-box';
+import { Box, IFlexProps } from '@semcore/flex-box';
 import { CProps, PropGetterFn, ReturnEl } from '@semcore/core';
 import { ICollapseProps } from '@semcore/animation';
 
@@ -28,6 +28,10 @@ export interface IAccordionContext {
   getItemProps: PropGetterFn;
 }
 
+export interface IAccordionHandlers {
+  value: (value: AccordionValue) => void;
+}
+
 export interface IAccordionItemProps {
   /** Tab value */
   value: string | number;
@@ -42,10 +46,14 @@ export interface IAccordionItemContext {
   selected?: boolean;
 }
 
-declare const Accordion: (<V>(props: CProps<IAccordionProps<V>>, IAccordionContext) => ReturnEl) & {
-  Item: (<T>(props: CProps<IAccordionItemProps & T, IAccordionItemContext>) => ReturnEl) & {
-    Toggle: <T>(props: IBoxProps & T) => ReturnEl;
-    Chevron: <T>(props: IBoxProps & T) => ReturnEl;
+declare const Accordion: (<V>(
+  props: CProps<IAccordionProps<V>, IAccordionContext, IAccordionHandlers>,
+) => ReturnEl) & {
+  Item: (<T>(
+    props: CProps<IAccordionItemProps & T, IAccordionItemContext, IAccordionHandlers>,
+  ) => ReturnEl) & {
+    Toggle: typeof Box;
+    Chevron: typeof Box;
     Collapse: <T>(props: ICollapseProps & T) => ReturnEl;
   };
 };

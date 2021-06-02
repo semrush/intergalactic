@@ -1,5 +1,5 @@
 import React from 'react';
-import { css } from '@semcore/core';
+import { sstyled } from '@semcore/core';
 import { render, fireEvent, cleanup } from 'jest-preset-ui/testing';
 import snapshot from 'jest-preset-ui/snapshot';
 import TabLine from '../src';
@@ -81,7 +81,7 @@ describe('TabLine', () => {
   test('Should add styles to under children', async () => {
     const component = (
       <TabLine
-        styles={css`
+        styles={sstyled.css`
           SText {
             color: green;
           }
@@ -154,7 +154,7 @@ describe('TabLine', () => {
   });
 
   test('Should support addons', async () => {
-    const Addon = React.forwardRef<HTMLElement>(function (p, ref) {
+    const Addon = React.forwardRef(function({ forwardRef, Children, Root, ...p }, ref) {
       return (
         <span ref={ref} {...p}>
           Addon prop

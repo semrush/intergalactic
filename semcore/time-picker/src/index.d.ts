@@ -23,8 +23,7 @@ export interface ITimePickerItemProps extends IInputValueProps {
   step?: number;
 }
 
-export interface ITimePickerFormatProps extends IBoxProps, IKeyboardFocusProps {
-}
+export interface ITimePickerFormatProps extends IBoxProps, IKeyboardFocusProps {}
 
 export interface ITimePickerContext {
   getHoursProps: PropGetterFn;
@@ -32,10 +31,16 @@ export interface ITimePickerContext {
   getMinutesProps: PropGetterFn;
 }
 
-declare const TimePicker: (<T>(props: CProps<ITimePickerProps & T, ITimePickerContext>) => ReturnEl) & {
+export interface ITimePickerHandlers {
+  value: (value: string) => void;
+}
+
+declare const TimePicker: (<T>(
+  props: CProps<ITimePickerProps & T, ITimePickerContext, ITimePickerHandlers>,
+) => ReturnEl) & {
   Hours: <T>(props: ITimePickerItemProps & T) => ReturnEl;
   Minutes: <T>(props: ITimePickerItemProps & T) => ReturnEl;
-  Separator: <T>(props: ComponentProps<typeof Box> & T) => ReturnEl;
+  Separator: typeof Box;
   Format: <T>(props: ITimePickerFormatProps & T) => ReturnEl;
 };
 
