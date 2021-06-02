@@ -16,6 +16,8 @@ class VennRoot extends Component {
   static defaultProps = () => {
     return {
       color: '#3AB011',
+      orientation: Math.PI / 2,
+      orientationOrder: (c1, c2) => c2.radius - c1.radius,
     };
   };
 
@@ -43,8 +45,9 @@ class VennRoot extends Component {
   };
 
   getVennData(data, cache) {
+    const { orientation, orientationOrder } = this.asProps;
     if (!cache || !this.vennData) {
-      this.vennData = normalizeSolution(venn(data), Math.PI / 2, (c1, c2) => c2.radius - c1.radius);
+      this.vennData = normalizeSolution(venn(data), orientation, orientationOrder);
     }
     return this.vennData;
   }
@@ -104,6 +107,8 @@ function Circle({ Element: SCircle, styles, data, $vennData, color, name, svgSiz
   return sstyled(styles)(
     <SCircle
       render="circle"
+      stroke="#fff"
+      strokeWidth="2px"
       onMouseOver={onMouseOverHandler}
       onMouseOut={onMouseOutHandler}
       cx={curData[1].x}
@@ -149,6 +154,8 @@ function Intersection(props) {
       <SIntersection
         render="path"
         d={path}
+        stroke="#fff"
+        strokeWidth="2px"
         key={name}
         name={name}
         onMouseOut={onMouseOutHandler}
