@@ -70,6 +70,10 @@ SCalendarUnit {
     color: var(--gray20);
     background: color-mod(var(--stone) alpha(20%));
   }
+
+  &:focus-visible {
+    box-shadow: var(--keyborad-focus);
+  }
 }
 
 SCalendarUnit[today] {
@@ -178,8 +182,4 @@ SCalendarUnit[disabled] {
 
 SCalendarUnit[outdated] {
   opacity: 0.2;
-}
-
-SCalendarUnit[keyboardFocused] {
-  box-shadow: var(--keyborad-focus);
 }

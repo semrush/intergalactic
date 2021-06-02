@@ -9,7 +9,6 @@ import logger from '@semcore/utils/lib/logger';
 import style from './style/dropdown-menu.shadow.css';
 
 const KEYS = ['ArrowDown', 'ArrowUp', 'Enter', ' '];
-const INTERACTION_TAGS = ['INPUT', 'TEXTAREA'];
 
 class DropdownMenuRoot extends Component {
   static displayName = 'DropdownMenu';
@@ -36,8 +35,6 @@ class DropdownMenuRoot extends Component {
 
   handlerKeyDown = (e) => {
     const amount = e.shiftKey ? 5 : 1;
-
-    if (e.key === ' ' && INTERACTION_TAGS.includes(e.target.tagName)) return;
 
     if (!KEYS.includes(e.key)) return;
 
@@ -185,17 +182,17 @@ class DropdownMenuRoot extends Component {
 
     logger.warn(
       onSelect !== undefined,
-      'Property \'onSelect\' is deprecated, subscribe to the \'onClick\' of the needed \'Item\'',
+      "Property 'onSelect' is deprecated, subscribe to the 'onClick' of the needed 'Item'",
       other['data-ui-name'] || DropdownMenu.displayName,
     );
     logger.warn(
       optionCount !== undefined,
-      'The \'optionCount\' property is deprecated and is now automatically determined from the number of Item',
+      "The 'optionCount' property is deprecated and is now automatically determined from the number of Item",
       other['data-ui-name'] || DropdownMenu.displayName,
     );
     logger.warn(
       triggerType !== undefined,
-      'The \'triggerType\' property is deprecated, use \'interaction="focus"\'',
+      "The 'triggerType' property is deprecated, use 'interaction=\"focus\"'",
       other['data-ui-name'] || DropdownMenu.displayName,
     );
     if (triggerType === 'input') {
@@ -212,7 +209,9 @@ class DropdownMenuRoot extends Component {
 
 function List(props) {
   const SDropdownMenuList = Root;
-  return sstyled(props.styles)(<SDropdownMenuList render={Box} tag={ScrollAreaComponent} role='menu' />);
+  return sstyled(props.styles)(
+    <SDropdownMenuList render={Box} tag={ScrollAreaComponent} role="menu" />,
+  );
 }
 
 function Menu() {
@@ -228,12 +227,17 @@ function Item(props) {
   const styles = sstyled(props.styles);
   return (
     <SDropdownMenuItem
-      role='menuitem'
+      role="menuitem"
       tabIndex={-1}
-      className={cn(styles.cn('SDropdownMenuItem', {
-        ...props,
-        highlighted: !props.disabled && props.highlighted,
-      }).className, className) || undefined}
+      className={
+        cn(
+          styles.cn('SDropdownMenuItem', {
+            ...props,
+            highlighted: !props.disabled && props.highlighted,
+          }).className,
+          className,
+        ) || undefined
+      }
       {...other}
     />
   );
@@ -246,21 +250,18 @@ function Addon(props) {
     <SDropdownMenuItemAddon
       className={cn(styles.cn('SDropdownMenuItem', props).className, className) || undefined}
       {...other}
-    />);
+    />
+  );
 }
 
 function Hint(props) {
   const SDropdownMenuItem = Root;
-  return sstyled(props.styles)(
-    <SDropdownMenuItem render={Flex} variant='hint' />,
-  );
+  return sstyled(props.styles)(<SDropdownMenuItem render={Flex} variant="hint" />);
 }
 
 function Title(props) {
   const SDropdownMenuItem = Root;
-  return sstyled(props.styles)(
-    <SDropdownMenuItem render={Flex} variant='title' />,
-  );
+  return sstyled(props.styles)(<SDropdownMenuItem render={Flex} variant="title" />);
 }
 
 const DropdownMenu = createComponent(

@@ -1,12 +1,13 @@
-import React, { ComponentProps } from 'react';
-import dayjs, { OpUnitType } from 'dayjs';
-import { Component, CORE_INSTANCE, styled } from '@semcore/core';
+import React from 'react';
+import dayjs from 'dayjs';
+import { Component, Root, CORE_INSTANCE, sstyled } from '@semcore/core';
 import Button from '@semcore/button';
 import { Box, Flex } from '@semcore/flex-box';
 import Divider from '@semcore/divider';
-import Dropdown, { IDropdownProps } from '@semcore/dropdown';
-import i18nEnhance, { IWithI18nEnhanceProps } from '@semcore/utils/lib/enhances/i18nEnhance';
-import { DateConstructorParams } from './Calendar';
+import Dropdown from '@semcore/dropdown';
+import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
+import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
+import assignProps from '@semcore/utils/lib/assignProps';
 import de from '../translations/de.json';
 import en from '../translations/en.json';
 import es from '../translations/es.json';
@@ -23,57 +24,10 @@ import style from '../style/date-picker.shadow.css';
 
 const i18n = { de, en, es, fr, it, ja, ru, zh, pt, ko, vi };
 
-export interface IDateRangePickerProps extends IDropdownProps, IWithI18nEnhanceProps {
-  /**
-   * The selected date, accepts everything which is accepted by `new Date()`
-   * */
-  value?: DateConstructorParams[];
-  /**
-   * To be activated upon selecting the date
-   * */
-  onChange?: (date: Date[]) => void;
-  /**
-   * Array of dates blocked for selection
-   * */
-  disabled?: (Date | (Date | false)[] | string)[];
-  /**
-   * Date for showing the necessary month
-   * @default new Date()
-   * */
-  displayedPeriod?: DateConstructorParams;
-  /**
-   * To be activated upon changing the current shown month
-   * */
-  onDisplayedPeriodChange?: (date: Date) => void;
-  /**
-   * Component size
-   * @default m
-   */
-  size?: 'm' | 'l' | 'xl';
-  /**
-   * The selected date, accepts everything which is accepted by `new Date()`
-   * */
-  highlighted?: DateConstructorParams[];
-  /**
-   * Remove the 'Reset' button
-   * */
-  unclearable?: boolean;
-  /**
-   * To be activated upon selecting the date
-   * */
-  onHighlightedChange?: (date: Date[]) => void;
-  /**
-   * Array of periods
-   * [{value: [new Date(), new Date()], children: "Today"}]
-   * @default Past 2 days / Past week / Past 2 week / Past month / Past 2 month
-   * */
-  periods?: (ComponentProps<typeof Button> & { value: Date[] })[];
-}
-
-class RangePickerAbstract extends Component<IDateRangePickerProps> {
+class RangePickerAbstract extends Component {
   static displayName = 'DatePicker';
   static style = style;
-  static defaultProps: any = {
+  static defaultProps = {
     i18n,
     locale: 'en',
     defaultDisplayedPeriod: new Date(new Date().setHours(0, 0, 0, 0)),
@@ -83,17 +37,32 @@ class RangePickerAbstract extends Component<IDateRangePickerProps> {
     disabled: [],
     size: 'm',
   };
-  static enhance = [i18nEnhance()];
+  static enhance = [
+    i18nEnhance(),
+    keyboardFocusEnhance({
+      propName: '$keyboardFocusEnhance',
+      isDisabled: () => false,
+      isCurrent: true,
+      focusMethod: 'onFocusCapture',
+      blurMethod: 'onBlurCapture',
+    }),
+  ];
 
   static add = (date, amount, unit) => {
-    return dayjs(date).add(amount, unit).toDate();
+    return dayjs(date)
+      .add(amount, unit)
+      .toDate();
   };
 
   static subtract = (date, amount, unit) => {
-    return dayjs(date).subtract(amount, unit).toDate();
+    return dayjs(date)
+      .subtract(amount, unit)
+      .toDate();
   };
 
-  navigateStep: OpUnitType;
+  navigateStep;
+  keyDiff;
+  keyStep;
 
   state = {
     dirtyValue: [],
@@ -124,15 +93,52 @@ class RangePickerAbstract extends Component<IDateRangePickerProps> {
     };
   }
 
-  navigateView = (direction: number) => {
+  navigateView = (direction) => {
     const { displayedPeriod } = this.asProps;
     const action = direction >= 1 ? 'add' : 'subtract';
-    const date = dayjs(displayedPeriod)[action](1, this.navigateStep).toDate();
+    const date = dayjs(displayedPeriod)
+      [action](1, this.navigateStep)
+      .toDate();
     this.handlers.displayedPeriod(date);
   };
 
-  bindHandlerNavigateClick = (direction) => () => {
-    this.navigateView(direction);
+  bindHandlerNavigateClick = (direction) => () => this.navigateView(direction);
+
+  handlerPopperKeyDown = (e) => {
+    if (e.target !== e.currentTarget) return;
+    const { displayedPeriod, highlighted } = this.asProps;
+    const { dirtyValue } = this.state;
+    const day = this.keyDiff[e.keyCode];
+
+    if (e.keyCode === 32 && highlighted.length) {
+      this.handlerChange(highlighted[1] || highlighted[0]);
+      e.preventDefault();
+    }
+    if (day) {
+      if (highlighted.length) {
+        let next_highlighted;
+        if (dirtyValue.length === 1) {
+          next_highlighted = [
+            dirtyValue[0],
+            dayjs(highlighted[1] || highlighted[0])
+              .add(day, this.keyStep)
+              .toDate(),
+          ];
+        } else {
+          next_highlighted = [
+            dayjs(highlighted[0])
+              .add(day, this.keyStep)
+              .toDate(),
+          ];
+        }
+        this.handlers.highlighted(next_highlighted);
+        this.handlers.displayedPeriod(next_highlighted[1] || next_highlighted[0]);
+      } else {
+        this.handlers.highlighted([displayedPeriod]);
+      }
+      e.preventDefault();
+    }
+    // this.handlerChange()
   };
 
   handlerApply = (value) => {
@@ -143,12 +149,15 @@ class RangePickerAbstract extends Component<IDateRangePickerProps> {
 
   handlerChange = (date) => {
     let { dirtyValue } = this.state;
+    let highlighted = [];
     if (Array.isArray(date)) {
       dirtyValue = date;
     } else if (!dirtyValue.length) {
       dirtyValue = [date];
+      highlighted = [date];
     } else if (dirtyValue.length >= 2) {
       dirtyValue = [date];
+      highlighted = [date];
     } else if (dirtyValue[0] > date) {
       dirtyValue = [date, dirtyValue[0]];
     } else {
@@ -156,7 +165,7 @@ class RangePickerAbstract extends Component<IDateRangePickerProps> {
     }
 
     this.setState({ dirtyValue }, () => {
-      this.handlers.highlighted(dirtyValue);
+      this.handlers.highlighted(highlighted);
     });
   };
 
@@ -174,7 +183,13 @@ class RangePickerAbstract extends Component<IDateRangePickerProps> {
 
   getPopperProps() {
     const Picker = this[CORE_INSTANCE];
-    const { value, periods = this.getDefaultPeriods(), unclearable, getI18nText } = this.asProps;
+    const {
+      value,
+      periods = this.getDefaultPeriods(),
+      unclearable,
+      getI18nText,
+      $keyboardFocusEnhance,
+    } = this.asProps;
     const { dirtyValue } = this.state;
 
     const buttons = (
@@ -196,7 +211,8 @@ class RangePickerAbstract extends Component<IDateRangePickerProps> {
       </>
     );
 
-    return {
+    return assignProps($keyboardFocusEnhance, {
+      onKeyDown: this.handlerPopperKeyDown,
       children: (
         <>
           <Flex>
@@ -227,7 +243,7 @@ class RangePickerAbstract extends Component<IDateRangePickerProps> {
           {!Boolean(periods.length) && <Flex mt={4}>{buttons}</Flex>}
         </>
       ),
-    };
+    });
   }
 
   getHeaderProps() {
@@ -247,7 +263,10 @@ class RangePickerAbstract extends Component<IDateRangePickerProps> {
     const { locale, displayedPeriod } = this.asProps;
     return {
       children: new Intl.DateTimeFormat(locale, { month: 'long', year: 'numeric' }).format(
-        dayjs(displayedPeriod).add(index, this.navigateStep).startOf(this.navigateStep).toDate(),
+        dayjs(displayedPeriod)
+          .add(index, this.navigateStep)
+          .startOf(this.navigateStep)
+          .toDate(),
       ),
     };
   }
@@ -265,6 +284,7 @@ class RangePickerAbstract extends Component<IDateRangePickerProps> {
   }
 
   getCalendarProps(props, index) {
+    console.log(index);
     const {
       locale,
       displayedPeriod,
@@ -307,10 +327,7 @@ class RangePickerAbstract extends Component<IDateRangePickerProps> {
   }
 
   render() {
-    const { Root } = this;
-    const { styles } = this.asProps;
-
-    return styled(styles)(<Root render={Dropdown} />);
+    return sstyled(this.asProps.styles)(<Root render={Dropdown} />);
   }
 }
 
