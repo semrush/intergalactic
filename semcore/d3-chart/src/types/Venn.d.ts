@@ -22,14 +22,14 @@ export interface ICircleProps extends IContext {
   /**
    * The `name` field of the set in the chart data array
    */
-  name: string;
+  name?: string;
 }
 
 export interface IIntersectionProps extends IContext {
   /**
    * The `sets` field of the set in the chart data array
    */
-  sets: string[];
+  sets?: string[];
 }
 
 declare const Venn: (<T>(props: CProps<IVennProps & T>) => ReturnEl) & {

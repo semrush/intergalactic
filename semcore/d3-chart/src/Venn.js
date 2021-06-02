@@ -80,13 +80,10 @@ class VennRoot extends Component {
   }
 
   render() {
-    const { Children } = this.asProps;
     const Element = this.Element;
     return (
       <>
-        <Element render="g" childrenPosition="inside">
-          {/*<Children/>*/}
-        </Element>
+        <Element render="g" childrenPosition="inside" />
       </>
     );
   }
@@ -145,10 +142,10 @@ function Intersection(props) {
 
   const renderInterSection = ({ sets, ...other }) => {
     const name = JSON.stringify(sets);
-    const circleNodes = sets.map((set) =>
+    const circleNodes = sets?.map((set) =>
       circleLayout.find((circle) => circle.data.sets[0] === set),
     );
-    const path = intersectionAreaPath(circleNodes);
+    const path = circleNodes ? intersectionAreaPath(circleNodes) : '';
 
     return sstyled(styles)(
       <SIntersection
