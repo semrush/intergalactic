@@ -18,6 +18,7 @@ import vi from '../translations/vi.json';
 
 import style from '../style/date-picker.shadow.css';
 import assignProps from '@semcore/utils/lib/assignProps';
+import includesDate from '../utils/includesDate';
 
 const i18n = { de, en, es, fr, it, ja, ru, zh, pt, ko, vi };
 
@@ -101,17 +102,29 @@ class PickerAbstract extends Component {
 
   handlerPopperKeyDown = (e) => {
     if (e.target !== e.currentTarget) return;
-    const { displayedPeriod, highlighted } = this.asProps;
+    const { displayedPeriod, highlighted, disabled: _disabled } = this.asProps;
     const day = this.keyDiff[e.keyCode];
+
+    const getCurrentHighlightedDay = (day) => {
+      const current_day = day.toDate();
+      const isDisabledDay = _disabled.some(includesDate(dayjs(current_day), 'date'));
+      return isDisabledDay ? null : current_day;
+    };
     if (e.keyCode === 32 || (e.keyCode === 13 && highlighted.length)) {
       this.handlers.value(highlighted[0]);
       e.preventDefault();
     }
     if (day) {
       const current_highlighted = dayjs(highlighted[0] || displayedPeriod).add(day, this.keyStep);
-      this.handlers.highlighted([current_highlighted.toDate()]);
-      this.handlers.displayedPeriod(current_highlighted.toDate());
-      e.preventDefault();
+      const current_day =
+        getCurrentHighlightedDay(current_highlighted) ||
+        getCurrentHighlightedDay(dayjs(highlighted[0] || displayedPeriod));
+
+      if (current_day) {
+        this.handlers.highlighted([current_day]);
+        this.handlers.displayedPeriod(current_day);
+        e.preventDefault();
+      }
     }
   };
 
