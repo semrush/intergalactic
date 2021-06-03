@@ -4,8 +4,8 @@ import isBetween from 'dayjs/plugin/isBetween';
 import createComponent, { Component, Root, sstyled } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
 import fire from '@semcore/utils/lib/fire';
-import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
-import { isInPeriod, isValidSchedule } from '../utils/cronTabScheduler';
+import includesDate from '../utils/includesDate';
+import { getLocaleDate } from '../utils/formatDate';
 
 import style from '../style/calendar.shadow.css';
 
@@ -78,20 +78,7 @@ class CalendarAbstract extends Component {
 
   createUnit({ date, ...other }, unit) {
     const self = this;
-    const { disabled: _disabled, value, highlighted: _highlighted } = this.asProps;
-
-    const includesDate = (day) => {
-      if (Array.isArray(day)) {
-        const MAX_DATE_TIMESTAMP = 8640000000000000;
-        const [start, end] = day;
-        return date.isBetween(start || -MAX_DATE_TIMESTAMP, end || MAX_DATE_TIMESTAMP, unit, '[]');
-      }
-      if (isValidSchedule(day)) {
-        return isInPeriod(day, date.toDate());
-      }
-      return date.isSame(day, 'date');
-    };
-
+    const { disabled: _disabled, value, locale, highlighted: _highlighted } = this.asProps;
     let value0 = value[0] ? dayjs(value[0]) : null;
     let value1 = value[1] ? dayjs(value[1]) : null;
     let selected;
@@ -112,10 +99,10 @@ class CalendarAbstract extends Component {
       endHighlighted = highlighted1 && date.isSame(highlighted1, 'date');
     }
 
-    const disabled = _disabled.some(includesDate);
+    const disabled = _disabled.some(includesDate(date, unit));
 
     return {
-      date: date.toDate(),
+      date: getLocaleDate(date, locale),
       children: '',
       startSelected,
       endSelected,
@@ -155,26 +142,12 @@ class CalendarAbstract extends Component {
 
     fire(this, 'onHighlightedChange', highlighted.length ? [highlighted[0]] : []);
   };
-
-  // getGridProps() {
-  //   return {
-  //     onMouseLeave: this.handleMouseLeave
-  //   }
-  // }
 }
 
-// этот компонент тут для того, что бы не перерендривался весь календарь, так как это ломает индекс
-// function CalendarGrid(props) {
-//   const SGrid = Root;
-//   return sstyled(props.styles)(<SGrid render={Box} />);
-// }
-//
-// CalendarGrid.enhance = [keyboardFocusEnhance()]
-
-function CalendarUnit(props) {
+function CalendarUnit({ styles, date }) {
   const SCalendarUnit = Root;
-  return sstyled(props.styles)(
-    <SCalendarUnit render={Box} tag="button" role="presentation" tabIndex={-1} />,
+  return sstyled(styles)(
+    <SCalendarUnit render={Box} tag="button" aria-label={date} tabIndex={-1} />,
   );
 }
 
@@ -270,7 +243,7 @@ class CalendarMonthsRoot extends CalendarAbstract {
     let date = dayjs(displayedPeriod).startOf('year');
 
     return range(12, () => {
-      const month = this.createUnit({ date: date }, 'month');
+      const month = this.createUnit({ date }, 'month');
       month.children = new Intl.DateTimeFormat(locale, { month: 'short' }).format(date.valueOf());
       date = date.add(1, 'month');
       return month;

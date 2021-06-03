@@ -284,7 +284,6 @@ class RangePickerAbstract extends Component {
   }
 
   getCalendarProps(props, index) {
-    console.log(index);
     const {
       locale,
       displayedPeriod,

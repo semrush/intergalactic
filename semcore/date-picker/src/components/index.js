@@ -8,7 +8,7 @@ import ChevronLeft from '@semcore/icon/lib/ChevronLeft/xs';
 import ChevronRight from '@semcore/icon/lib/ChevronRight/xs';
 import { callAllEventHandlers } from '@semcore/utils/lib/assignProps';
 import ButtonTrigger from './ButtonTrigger';
-import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
+import { getLocaleDate } from '../utils/formatDate';
 
 export function Trigger() {
   return <Root render={Dropdown.Trigger} tag={ButtonTrigger} />;
@@ -16,7 +16,9 @@ export function Trigger() {
 
 export function Popper(props) {
   const SPopper = Root;
-  return sstyled(props.styles)(<SPopper render={Dropdown.Popper} />);
+  return sstyled(props.styles)(
+    <SPopper render={Dropdown.Popper} role="region" aria-label="calendar-container" />,
+  );
 }
 
 export function Header(props) {
@@ -30,7 +32,16 @@ export const Title = (props) => {
 };
 
 export function Prev() {
-  return <Root render={Button} use="tertiary" theme="muted" size="l" />;
+  return (
+    <Root
+      render={Button}
+      use="tertiary"
+      theme="muted"
+      size="l"
+      tabIndex={-1}
+      aria-label="Prev period"
+    />
+  );
 }
 
 Prev.defaultProps = {
@@ -38,7 +49,16 @@ Prev.defaultProps = {
 };
 
 export function Next() {
-  return <Root render={Button} use="tertiary" theme="muted" size="l" />;
+  return (
+    <Root
+      render={Button}
+      use="tertiary"
+      theme="muted"
+      size="l"
+      tabIndex={-1}
+      aria-label="Next period"
+    />
+  );
 }
 
 Next.defaultProps = {
