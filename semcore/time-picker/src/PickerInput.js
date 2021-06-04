@@ -127,6 +127,7 @@ class ItemPicker extends Component {
           disabled={disabled}
           neighborLocation={false}
           value={value}
+          aria-label={`Search ${this.field}`}
           onChange={this.handleChange}
           onBlur={this.handleBlur}
           onFocus={this.handleFocus}

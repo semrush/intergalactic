@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, cleanup } from 'jest-preset-ui/testing';
+import { render, cleanup, axe } from 'jest-preset-ui/testing';
 import { shouldSupportClassName, shouldSupportRef } from 'jest-preset-ui/shared';
 import snapshot from 'jest-preset-ui/snapshot';
 import TimePicker from '../src';
@@ -65,6 +65,15 @@ describe('TimePicker', () => {
     );
 
     expect(await snapshot(component)).toMatchImageSnapshot();
+  });
+
+  test('a11y', async () => {
+    const { container } = render(
+      <TimePickerDefault/>
+    );
+
+    const results = await axe(container);
+    expect(results).toHaveNoViolations();
   });
 });
 

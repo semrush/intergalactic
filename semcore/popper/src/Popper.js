@@ -320,7 +320,6 @@ class Popper extends Component {
       ref: this.createTriggerRef,
       active: visible,
       // interaction,
-      'aria-pressed': visible,
       'aria-describedby': uid,
       ...interactionProps,
       onKeyDown: this.bindHandlerKeyDown(onKeyDown),
