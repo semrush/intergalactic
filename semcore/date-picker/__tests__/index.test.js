@@ -98,4 +98,11 @@ describe('DateRangePicker', () => {
     );
     expect(await snapshot(component)).toMatchImageSnapshot();
   });
+
+  test('a11y', async () => {
+    const { container } = render(<DateRangePicker visible disablePortal />);
+
+    const results = await axe(container);
+    expect(results).toHaveNoViolations();
+  });
 });

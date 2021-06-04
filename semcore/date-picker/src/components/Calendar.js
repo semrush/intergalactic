@@ -147,7 +147,7 @@ class CalendarAbstract extends Component {
 function CalendarUnit({ styles, date }) {
   const SCalendarUnit = Root;
   return sstyled(styles)(
-    <SCalendarUnit render={Box} tag="button" aria-label={date} tabIndex={-1} />,
+    <SCalendarUnit render={Box} tag="button" aria-hidden={!date} aria-label={date} tabIndex={-1} />,
   );
 }
 
