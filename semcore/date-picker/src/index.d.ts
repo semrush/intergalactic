@@ -1,28 +1,14 @@
-import PickerAbstract, { IDatePickerProps } from './components/PickerAbstract';
+import PickerAbstract from './components/PickerAbstract';
 import createComponent, { Merge, MergeGetters, PropGetter } from '@semcore/core';
 import React, { ComponentProps, HTMLAttributes } from 'react';
 import Dropdown, { IDropdownProps } from '@semcore/dropdown';
 import ButtonTrigger from './components/ButtonTrigger';
 import { Box, IBoxProps } from '@semcore/flex-box';
 import Button from '@semcore/button';
-import {
-  CalendarDays as Calendar,
-  ICalendarDaysContext,
-  ICalendarMonthsContext,
-} from './components/Calendar';
+import { CalendarDays as Calendar } from './components/Calendar';
 import dayjs from 'dayjs';
-import {
-  Header,
-  IDateRangePickerPeriodProps,
-  Next,
-  Period,
-  Popper,
-  Prev,
-  Title,
-  Trigger,
-} from './components';
-import RangePickerAbstract, { IDateRangePickerProps } from './components/RangePickerAbstract';
-import BaseTrigger from '@semcore/base-trigger';
+import { Header, Next, Period, Popper, Prev, Title, Trigger } from './components';
+import RangePickerAbstract from './components/RangePickerAbstract';
 import { IWithI18nEnhanceProps } from '@semcore/utils/lib/enhances/i18nEnhance';
 
 export interface IDatePickerContext extends IDatePickerProps {
@@ -45,7 +31,7 @@ export interface IDatePickerContext extends IDatePickerProps {
   getTodayProps: PropGetter<DatePickerRoot['getTodayProps']>;
 }
 
-const DatePicker = createComponent<
+declare const DatePicker = createComponent<
   Merge<IDatePickerProps, HTMLAttributes<HTMLButtonElement>>,
   {
     Trigger: Merge<ComponentProps<typeof Dropdown.Trigger>, ComponentProps<typeof ButtonTrigger>>;
@@ -55,9 +41,9 @@ const DatePicker = createComponent<
     Prev: ComponentProps<typeof Button>;
     Next: ComponentProps<typeof Button>;
     Calendar: [
-      ComponentProps<typeof Calendar>,
+      ICalendarProps,
       {
-        Unit: ComponentProps<typeof Calendar.Unit>;
+        Unit: ICalendarUnitProps;
       },
     ];
     Today: ComponentProps<typeof Box>;
@@ -96,7 +82,7 @@ export interface IDateRangePickerContext extends IDateRangePickerProps {
   getPeriodProps: PropGetter<DateRangePickerRoot['getPeriodProps']>;
 }
 
-const DateRangePicker = createComponent<
+declare const DateRangePicker = createComponent<
   Merge<IDateRangePickerProps, IDropdownProps>,
   {
     Trigger: Merge<ComponentProps<typeof Dropdown.Trigger>, ComponentProps<typeof ButtonTrigger>>;
@@ -106,9 +92,9 @@ const DateRangePicker = createComponent<
     Prev: ComponentProps<typeof Button>;
     Next: ComponentProps<typeof Button>;
     Calendar: [
-      ComponentProps<typeof Calendar>,
+      ICalendarProps,
       {
-        Unit: ComponentProps<typeof Calendar.Unit>;
+        Unit: ICalendarUnitProps;
       },
     ];
     Period: Merge<IDateRangePickerPeriodProps, HTMLAttributes<HTMLDivElement>>;
@@ -149,7 +135,7 @@ export interface IMonthPickerContext extends IDatePickerProps {
   getCalendarProps: PropGetter<MonthPickerRoot['getCalendarProps']>;
 }
 
-const MonthPicker = createComponent<
+declare const MonthPicker = createComponent<
   Merge<IDatePickerProps, HTMLAttributes<HTMLButtonElement>>,
   {
     Trigger: Merge<ComponentProps<typeof Dropdown.Trigger>, ComponentProps<typeof ButtonTrigger>>;
@@ -159,9 +145,9 @@ const MonthPicker = createComponent<
     Prev: ComponentProps<typeof Button>;
     Next: ComponentProps<typeof Button>;
     Calendar: [
-      ComponentProps<typeof Calendar>,
+      ICalendarProps,
       {
-        Unit: ComponentProps<typeof Calendar.Unit>;
+        Unit: ICalendarUnitProps;
       },
     ];
     add: (date: number | Date, amount: number, unit: dayjs.OpUnitType) => Date;
@@ -198,7 +184,7 @@ export interface IMonthRangePickerContext extends IDateRangePickerProps {
   getPeriodProps: PropGetter<MonthRangePickerRoot['getPeriodProps']>;
 }
 
-const MonthRangePicker = createComponent<
+declare const MonthRangePicker = createComponent<
   Merge<IDateRangePickerProps, IDropdownProps>,
   {
     Trigger: Merge<ComponentProps<typeof Dropdown.Trigger>, ComponentProps<typeof ButtonTrigger>>;
@@ -208,9 +194,9 @@ const MonthRangePicker = createComponent<
     Prev: ComponentProps<typeof Button>;
     Next: ComponentProps<typeof Button>;
     Calendar: [
-      ComponentProps<typeof Calendar>,
+      ICalendarProps,
       {
-        Unit: ComponentProps<typeof Calendar.Unit>;
+        Unit: ICalendarUnitProps;
       },
     ];
     Period: Merge<IDateRangePickerPeriodProps, HTMLAttributes<HTMLDivElement>>;
@@ -234,17 +220,6 @@ const MonthRangePicker = createComponent<
     parent: Calendar,
   },
 );
-
-const ButtonTrigger = createComponent<
-  ComponentProps<typeof BaseTrigger>,
-  {
-    Text: ComponentProps<typeof BaseTrigger.Text>;
-    Addon: ComponentProps<typeof BaseTrigger.Addon>;
-  }
->(ButtonTriggerRoot, {
-  Text: BaseTrigger.Text,
-  Addon: BaseTrigger.Addon,
-});
 
 export type DateConstructorParams = string | number | Date;
 
@@ -282,18 +257,7 @@ export interface ICalendarProps extends IBoxProps {
   displayedPeriod?: Date;
 }
 
-export interface ICalendarDaysProps extends ICalendarProps {
-  /**
-   * Displays dates of next and previous month
-   * */
-  renderOutdated?: boolean;
-}
-
 export interface ICalendarDaysContext {
-  days: ICalendarUnitProps[];
-}
-
-export interface ICalendarWeekDaysContext {
   days: ICalendarUnitProps[];
 }
 
@@ -313,28 +277,6 @@ export interface ICalendarUnitProps extends IBoxProps {
   endHighlighted?: boolean;
   children?: React.ReactNode;
 }
-
-export interface ICalendarWeekDaysProps extends IBoxProps {
-  locale?: NavigatorLanguage['language'];
-}
-
-const CalendarWeekDays = createComponent<
-  Merge<ICalendarWeekDaysProps, HTMLAttributes<HTMLDivElement>>,
-  { Unit: Merge<IBoxProps, HTMLAttributes<HTMLDivElement>> },
-  ICalendarWeekDaysContext
->(CalendarWeekDaysRoot, { Unit: CalendarWeekUnit });
-
-const CalendarDays = createComponent<
-  Merge<ICalendarDaysProps, HTMLAttributes<HTMLDivElement>>,
-  { Unit: Merge<IBoxProps, HTMLAttributes<HTMLDivElement>> },
-  ICalendarDaysContext
->(CalendarDaysRoot, { Unit: CalendarUnit });
-
-const CalendarMonths = createComponent<
-  Merge<ICalendarProps, HTMLAttributes<HTMLDivElement>>,
-  { Unit: Merge<IBoxProps, HTMLAttributes<HTMLDivElement>> },
-  ICalendarMonthsContext
->(CalendarMonthsRoot, { Unit: CalendarUnit });
 
 export interface IDatePickerProps extends IDropdownProps, IWithI18nEnhanceProps {
   /**
@@ -436,3 +378,5 @@ export interface IDateRangePickerPeriodProps extends IBoxProps {
    * */
   periods?: (ComponentProps<typeof Button> & { value: Date[] })[];
 }
+
+export { DatePicker, DateRangePicker, MonthPicker, MonthRangePicker };
