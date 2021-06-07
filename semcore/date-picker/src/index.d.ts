@@ -1,225 +1,11 @@
-import PickerAbstract from './components/PickerAbstract';
-import createComponent, { Merge, MergeGetters, PropGetter } from '@semcore/core';
-import React, { ComponentProps, HTMLAttributes } from 'react';
-import Dropdown, { IDropdownProps } from '@semcore/dropdown';
-import ButtonTrigger from './components/ButtonTrigger';
+import React, { ComponentProps } from 'react';
+import dayjs from 'dayjs';
 import { Box, IBoxProps } from '@semcore/flex-box';
 import Button from '@semcore/button';
-import { CalendarDays as Calendar } from './components/Calendar';
-import dayjs from 'dayjs';
-import { Header, Next, Period, Popper, Prev, Title, Trigger } from './components';
-import RangePickerAbstract from './components/RangePickerAbstract';
+import { CProps, Merge, PropGetterFn, ReturnEl } from '@semcore/core';
+import Dropdown, { IDropdownProps } from '@semcore/dropdown';
 import { IWithI18nEnhanceProps } from '@semcore/utils/lib/enhances/i18nEnhance';
-
-export interface IDatePickerContext extends IDatePickerProps {
-  getTriggerProps: MergeGetters<
-    PropGetter<DatePickerRoot['getTriggerProps']>,
-    PropGetter<PickerAbstract['getTriggerProps']>
-  >;
-  getPopperProps: MergeGetters<
-    PropGetter<DatePickerRoot['getPopperProps']>,
-    PropGetter<PickerAbstract['getPopperProps']>
-  >;
-  getHeaderProps: PropGetter<DatePickerRoot['getHeaderProps']>;
-  getTitleProps: MergeGetters<
-    PropGetter<DatePickerRoot['getTitleProps']>,
-    PropGetter<PickerAbstract['getTitleProps']>
-  >;
-  getNextProps: PropGetter<DatePickerRoot['getNextProps']>;
-  getPrevProps: PropGetter<DatePickerRoot['getPrevProps']>;
-  getCalendarProps: PropGetter<DatePickerRoot['getCalendarProps']>;
-  getTodayProps: PropGetter<DatePickerRoot['getTodayProps']>;
-}
-
-declare const DatePicker = createComponent<
-  Merge<IDatePickerProps, HTMLAttributes<HTMLButtonElement>>,
-  {
-    Trigger: Merge<ComponentProps<typeof Dropdown.Trigger>, ComponentProps<typeof ButtonTrigger>>;
-    Popper: ComponentProps<typeof Dropdown.Popper>;
-    Header: ComponentProps<typeof Box>;
-    Title: ComponentProps<typeof Box>;
-    Prev: ComponentProps<typeof Button>;
-    Next: ComponentProps<typeof Button>;
-    Calendar: [
-      ICalendarProps,
-      {
-        Unit: ICalendarUnitProps;
-      },
-    ];
-    Today: ComponentProps<typeof Box>;
-    add: (date: number | Date, amount: number, unit: dayjs.OpUnitType) => Date;
-    subtract: (date: number | Date, amount: number, unit: dayjs.OpUnitType) => Date;
-  },
-  IDatePickerContext & ICalendarDaysContext
->(
-  DatePickerRoot,
-  {
-    Trigger,
-    Popper,
-    Header,
-    Title,
-    Prev,
-    Next,
-    Calendar,
-    Today,
-  },
-  {
-    parent: Calendar,
-  },
-);
-
-export interface IDateRangePickerContext extends IDateRangePickerProps {
-  getTriggerProps: MergeGetters<
-    PropGetter<DateRangePickerRoot['getTriggerProps']>,
-    PropGetter<RangePickerAbstract['getTriggerProps']>
-  >;
-  getPopperProps: PropGetter<DateRangePickerRoot['getPopperProps']>;
-  getHeaderProps: PropGetter<DateRangePickerRoot['getHeaderProps']>;
-  getTitleProps: PropGetter<DateRangePickerRoot['getTitleProps']>;
-  getNextProps: PropGetter<DateRangePickerRoot['getNextProps']>;
-  getPrevProps: PropGetter<DateRangePickerRoot['getPrevProps']>;
-  getCalendarProps: PropGetter<DateRangePickerRoot['getCalendarProps']>;
-  getPeriodProps: PropGetter<DateRangePickerRoot['getPeriodProps']>;
-}
-
-declare const DateRangePicker = createComponent<
-  Merge<IDateRangePickerProps, IDropdownProps>,
-  {
-    Trigger: Merge<ComponentProps<typeof Dropdown.Trigger>, ComponentProps<typeof ButtonTrigger>>;
-    Popper: ComponentProps<typeof Dropdown.Popper>;
-    Header: ComponentProps<typeof Box>;
-    Title: ComponentProps<typeof Box>;
-    Prev: ComponentProps<typeof Button>;
-    Next: ComponentProps<typeof Button>;
-    Calendar: [
-      ICalendarProps,
-      {
-        Unit: ICalendarUnitProps;
-      },
-    ];
-    Period: Merge<IDateRangePickerPeriodProps, HTMLAttributes<HTMLDivElement>>;
-    add: (date: number | Date, amount: number, unit: dayjs.OpUnitType) => Date;
-    subtract: (date: number | Date, amount: number, unit: dayjs.OpUnitType) => Date;
-  },
-  IDateRangePickerContext & ICalendarDaysContext
->(
-  DateRangePickerRoot,
-  {
-    Trigger,
-    Popper,
-    Header,
-    Title,
-    Prev,
-    Next,
-    Calendar,
-    Period,
-  },
-  {
-    parent: Calendar,
-  },
-);
-
-export interface IMonthPickerContext extends IDatePickerProps {
-  getTriggerProps: MergeGetters<
-    PropGetter<MonthPickerRoot['getTriggerProps']>,
-    PropGetter<PickerAbstract['getTriggerProps']>
-  >;
-  getPopperProps: PropGetter<MonthPickerRoot['getTriggerProps']>;
-  getHeaderProps: PropGetter<MonthPickerRoot['getHeaderProps']>;
-  getTitleProps: MergeGetters<
-    PropGetter<MonthPickerRoot['getTitleProps']>,
-    PropGetter<PickerAbstract['getTitleProps']>
-  >;
-  getNextProps: PropGetter<MonthPickerRoot['getNextProps']>;
-  getPrevProps: PropGetter<MonthPickerRoot['getPrevProps']>;
-  getCalendarProps: PropGetter<MonthPickerRoot['getCalendarProps']>;
-}
-
-declare const MonthPicker = createComponent<
-  Merge<IDatePickerProps, HTMLAttributes<HTMLButtonElement>>,
-  {
-    Trigger: Merge<ComponentProps<typeof Dropdown.Trigger>, ComponentProps<typeof ButtonTrigger>>;
-    Popper: ComponentProps<typeof Dropdown.Popper>;
-    Header: ComponentProps<typeof Box>;
-    Title: ComponentProps<typeof Box>;
-    Prev: ComponentProps<typeof Button>;
-    Next: ComponentProps<typeof Button>;
-    Calendar: [
-      ICalendarProps,
-      {
-        Unit: ICalendarUnitProps;
-      },
-    ];
-    add: (date: number | Date, amount: number, unit: dayjs.OpUnitType) => Date;
-    subtract: (date: number | Date, amount: number, unit: dayjs.OpUnitType) => Date;
-  },
-  IMonthPickerContext & ICalendarMonthsContext
->(
-  MonthPickerRoot,
-  {
-    Trigger,
-    Popper,
-    Header,
-    Title,
-    Prev,
-    Next,
-    Calendar,
-  },
-  {
-    parent: Calendar,
-  },
-);
-
-export interface IMonthRangePickerContext extends IDateRangePickerProps {
-  getTriggerProps: MergeGetters<
-    PropGetter<MonthRangePickerRoot['getTriggerProps']>,
-    PropGetter<RangePickerAbstract['getTriggerProps']>
-  >;
-  getPopperProps: PropGetter<MonthRangePickerRoot['getPopperProps']>;
-  getHeaderProps: PropGetter<MonthRangePickerRoot['getHeaderProps']>;
-  getTitleProps: PropGetter<MonthRangePickerRoot['getTitleProps']>;
-  getNextProps: PropGetter<MonthRangePickerRoot['getNextProps']>;
-  getPrevProps: PropGetter<MonthRangePickerRoot['getPrevProps']>;
-  getCalendarProps: PropGetter<MonthRangePickerRoot['getCalendarProps']>;
-  getPeriodProps: PropGetter<MonthRangePickerRoot['getPeriodProps']>;
-}
-
-declare const MonthRangePicker = createComponent<
-  Merge<IDateRangePickerProps, IDropdownProps>,
-  {
-    Trigger: Merge<ComponentProps<typeof Dropdown.Trigger>, ComponentProps<typeof ButtonTrigger>>;
-    Popper: ComponentProps<typeof Dropdown.Popper>;
-    Header: ComponentProps<typeof Box>;
-    Title: ComponentProps<typeof Box>;
-    Prev: ComponentProps<typeof Button>;
-    Next: ComponentProps<typeof Button>;
-    Calendar: [
-      ICalendarProps,
-      {
-        Unit: ICalendarUnitProps;
-      },
-    ];
-    Period: Merge<IDateRangePickerPeriodProps, HTMLAttributes<HTMLDivElement>>;
-    add: (date: number | Date, amount: number, unit: dayjs.OpUnitType) => Date;
-    subtract: (date: number | Date, amount: number, unit: dayjs.OpUnitType) => Date;
-  },
-  IMonthRangePickerContext & ICalendarMonthsContext
->(
-  MonthRangePickerRoot,
-  {
-    Trigger,
-    Popper,
-    Header,
-    Title,
-    Prev,
-    Next,
-    Calendar,
-    Period,
-  },
-  {
-    parent: Calendar,
-  },
-);
+import BaseTrigger from '@semcore/base-trigger';
 
 export type DateConstructorParams = string | number | Date;
 
@@ -277,6 +63,16 @@ export interface ICalendarUnitProps extends IBoxProps {
   endHighlighted?: boolean;
   children?: React.ReactNode;
 }
+
+export interface ICalendarContext {
+  getUnitProps: PropGetterFn;
+}
+
+declare const Calendar: (<T>(
+  props: CProps<ICalendarProps & T, ICalendarContext, IAbstractDatePickerHandlers>,
+) => ReturnEl) & {
+  Unit: <T>(props: ICalendarUnitProps & T) => ReturnEl;
+};
 
 export interface IDatePickerProps extends IDropdownProps, IWithI18nEnhanceProps {
   /**
@@ -378,5 +174,150 @@ export interface IDateRangePickerPeriodProps extends IBoxProps {
    * */
   periods?: (ComponentProps<typeof Button> & { value: Date[] })[];
 }
+
+export interface IDatePickerContext extends IDatePickerProps {
+  getTriggerProps: PropGetterFn;
+  getPopperProps: PropGetterFn;
+  getHeaderProps: PropGetterFn;
+  getTitleProps: PropGetterFn;
+  getNextProps: PropGetterFn;
+  getPrevProps: PropGetterFn;
+  getCalendarProps: PropGetterFn;
+  getTodayProps: PropGetterFn;
+}
+
+export interface IAbstractDatePickerHandlers {
+  displayedPeriod: (value: DateConstructorParams) => void;
+  visible: (index: boolean) => void;
+  highlighted: (list: DateConstructorParams[]) => void;
+  value: (index: DateConstructorParams) => void;
+}
+
+export interface IDatePickerHandlers {
+  visible: (index: boolean) => void;
+}
+
+declare const DatePicker: ((
+  props: CProps<IDatePickerProps, IDatePickerContext & ICalendarDaysContext, IDatePickerHandlers>,
+) => ReturnEl) & {
+  Trigger: (<T>(
+    props: Merge<ComponentProps<typeof Dropdown.Trigger>, ComponentProps<typeof BaseTrigger>> & T,
+  ) => ReturnEl) & {
+    Addon: <T>(props: ComponentProps<typeof BaseTrigger.Addon> & T) => ReturnEl;
+    Text: <T>(props: ComponentProps<typeof BaseTrigger.Text> & T) => ReturnEl;
+  };
+  Popper: <T>(props: ComponentProps<typeof Dropdown.Popper> & T) => ReturnEl;
+  Header: <T>(props: ComponentProps<typeof Box> & T) => ReturnEl;
+  Title: <T>(props: ComponentProps<typeof Box> & T) => ReturnEl;
+  Prev: <T>(props: ComponentProps<typeof Button> & T) => ReturnEl;
+  Next: <T>(props: ComponentProps<typeof Button> & T) => ReturnEl;
+  Calendar: <T>(props: ComponentProps<typeof Calendar> & T) => ReturnEl;
+  Today: <T>(props: ComponentProps<typeof Box> & T) => ReturnEl;
+  add: (date: number | Date, amount: number, unit: dayjs.OpUnitType) => Date;
+  subtract: (date: number | Date, amount: number, unit: dayjs.OpUnitType) => Date;
+};
+
+export interface IDateRangePickerContext extends IDateRangePickerProps {
+  getTriggerProps: PropGetterFn;
+  getPopperProps: PropGetterFn;
+  getHeaderProps: PropGetterFn;
+  getTitleProps: PropGetterFn;
+  getNextProps: PropGetterFn;
+  getPrevProps: PropGetterFn;
+  getCalendarProps: PropGetterFn;
+  getPeriodProps: PropGetterFn;
+}
+
+declare const DateRangePicker: ((
+  props: CProps<
+    IDateRangePickerProps,
+    IDateRangePickerContext & ICalendarDaysContext,
+    IDatePickerHandlers
+  >,
+) => ReturnEl) & {
+  Trigger: (<T>(
+    props: Merge<ComponentProps<typeof Dropdown.Trigger>, ComponentProps<typeof BaseTrigger>> & T,
+  ) => ReturnEl) & {
+    Addon: <T>(props: ComponentProps<typeof BaseTrigger.Addon> & T) => ReturnEl;
+    Text: <T>(props: ComponentProps<typeof BaseTrigger.Text> & T) => ReturnEl;
+  };
+  Popper: <T>(props: ComponentProps<typeof Dropdown.Popper> & T) => ReturnEl;
+  Header: <T>(props: ComponentProps<typeof Box> & T) => ReturnEl;
+  Title: <T>(props: ComponentProps<typeof Box> & T) => ReturnEl;
+  Prev: <T>(props: ComponentProps<typeof Button> & T) => ReturnEl;
+  Next: <T>(props: ComponentProps<typeof Button> & T) => ReturnEl;
+  Calendar: <T>(props: ComponentProps<typeof Calendar> & T) => ReturnEl;
+  Period: <T>(props: IDateRangePickerPeriodProps & T) => ReturnEl;
+  add: (date: number | Date, amount: number, unit: dayjs.OpUnitType) => Date;
+  subtract: (date: number | Date, amount: number, unit: dayjs.OpUnitType) => Date;
+};
+
+export interface IMonthPickerContext extends IDatePickerProps {
+  getTriggerProps: PropGetterFn;
+  getPopperProps: PropGetterFn;
+  getHeaderProps: PropGetterFn;
+  getTitleProps: PropGetterFn;
+  getNextProps: PropGetterFn;
+  getPrevProps: PropGetterFn;
+  getCalendarProps: PropGetterFn;
+}
+
+declare const MonthPicker: ((
+  props: CProps<
+    IDatePickerProps,
+    IMonthPickerContext & ICalendarMonthsContext,
+    IDatePickerHandlers
+  >,
+) => ReturnEl) & {
+  Trigger: (<T>(
+    props: Merge<ComponentProps<typeof Dropdown.Trigger>, ComponentProps<typeof BaseTrigger>> & T,
+  ) => ReturnEl) & {
+    Addon: <T>(props: ComponentProps<typeof BaseTrigger.Addon> & T) => ReturnEl;
+    Text: <T>(props: ComponentProps<typeof BaseTrigger.Text> & T) => ReturnEl;
+  };
+  Popper: <T>(props: ComponentProps<typeof Dropdown.Popper> & T) => ReturnEl;
+  Header: <T>(props: ComponentProps<typeof Box> & T) => ReturnEl;
+  Title: <T>(props: ComponentProps<typeof Box> & T) => ReturnEl;
+  Prev: <T>(props: ComponentProps<typeof Button> & T) => ReturnEl;
+  Next: <T>(props: ComponentProps<typeof Button> & T) => ReturnEl;
+  Calendar: <T>(props: ComponentProps<typeof Calendar> & T) => ReturnEl;
+  add: (date: number | Date, amount: number, unit: dayjs.OpUnitType) => Date;
+  subtract: (date: number | Date, amount: number, unit: dayjs.OpUnitType) => Date;
+};
+
+export interface IMonthRangePickerContext extends IDateRangePickerProps {
+  getTriggerProps: PropGetterFn;
+  getPopperProps: PropGetterFn;
+  getHeaderProps: PropGetterFn;
+  getTitleProps: PropGetterFn;
+  getNextProps: PropGetterFn;
+  getPrevProps: PropGetterFn;
+  getCalendarProps: PropGetterFn;
+  getPeriodProps: PropGetterFn;
+}
+
+declare const MonthRangePicker: ((
+  props: CProps<
+    IDateRangePickerProps,
+    IMonthRangePickerContext & ICalendarMonthsContext,
+    IDatePickerHandlers
+  >,
+) => ReturnEl) & {
+  Trigger: (<T>(
+    props: Merge<ComponentProps<typeof Dropdown.Trigger>, ComponentProps<typeof BaseTrigger>> & T,
+  ) => ReturnEl) & {
+    Addon: <T>(props: ComponentProps<typeof BaseTrigger.Addon> & T) => ReturnEl;
+    Text: <T>(props: ComponentProps<typeof BaseTrigger.Text> & T) => ReturnEl;
+  };
+  Popper: <T>(props: ComponentProps<typeof Dropdown.Popper> & T) => ReturnEl;
+  Header: <T>(props: ComponentProps<typeof Box> & T) => ReturnEl;
+  Title: <T>(props: ComponentProps<typeof Box> & T) => ReturnEl;
+  Prev: <T>(props: ComponentProps<typeof Button> & T) => ReturnEl;
+  Next: <T>(props: ComponentProps<typeof Button> & T) => ReturnEl;
+  Calendar: <T>(props: ComponentProps<typeof Calendar> & T) => ReturnEl;
+  Period: <T>(props: IDateRangePickerPeriodProps & T) => ReturnEl;
+  add: (date: number | Date, amount: number, unit: dayjs.OpUnitType) => Date;
+  subtract: (date: number | Date, amount: number, unit: dayjs.OpUnitType) => Date;
+};
 
 export { DatePicker, DateRangePicker, MonthPicker, MonthRangePicker };
