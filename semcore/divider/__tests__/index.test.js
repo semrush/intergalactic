@@ -61,16 +61,16 @@ describe('Divider', () => {
       <snapshot.ProxyProps>
         {/* fix for screenshot height 20, in browser all work*/}
         <div style={{ display: 'flex', alignItems: 'center', width: 100, height: 20 }}>
-          <div style={{ width: '50%', height: 20, background: 'yellow' }}></div>
+          <div style={{ width: '50%', height: 20, background: 'yellow' }}/>
           <Divider orientation="vertical" />
-          <div style={{ width: '50%', height: 20, background: 'yellow' }}></div>
+          <div style={{ width: '50%', height: 20, background: 'yellow' }}/>
         </div>
         <div
           style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', width: 100 }}
         >
-          <div style={{ height: '20px', background: 'yellow' }}></div>
+          <div style={{ height: '20px', background: 'yellow' }}/>
           <Divider orientation="horizontal" />
-          <div style={{ height: '20px', background: 'yellow' }}></div>
+          <div style={{ height: '20px', background: 'yellow' }}/>
         </div>
       </snapshot.ProxyProps>
     );
