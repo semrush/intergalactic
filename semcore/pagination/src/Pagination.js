@@ -1,21 +1,14 @@
-import React, { ComponentProps, HTMLAttributes } from 'react';
-import createComponent, {
-  Component,
-  IFunctionProps,
-  Merge,
-  PropGetter,
-  sstyled,
-  Root,
-} from '@semcore/core';
-import { Box, IBoxProps } from '@semcore/flex-box';
-import Input, { IInputProps, IInputValueProps } from '@semcore/input';
+import React from 'react';
+import createComponent, { Component, sstyled, Root } from '@semcore/core';
+import { Box } from '@semcore/flex-box';
+import Input from '@semcore/input';
 import Link from '@semcore/link';
-import { ITextProps, Text } from '@semcore/typography';
-import Button, { IButtonProps } from '@semcore/button';
+import { Text } from '@semcore/typography';
+import Button from '@semcore/button';
 import Return from '@semcore/icon/lib/ActionReturn/xs';
 import ChevronDoubleLeftXS from '@semcore/icon/lib/ChevronDoubleLeft/xs';
 import fire from '@semcore/utils/lib/fire';
-import i18nEnhance, { IWithI18nEnhanceProps } from '@semcore/utils/lib/enhances/i18nEnhance';
+import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
 import logger from '@semcore/utils/lib/logger';
 import de from './translations/de.json';
 import en from './translations/en.json';

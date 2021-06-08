@@ -1,5 +1,5 @@
 import React from 'react';
-import { css } from '@semcore/core';
+import { sstyled } from '@semcore/core';
 import { render, fireEvent, cleanup, axe } from 'jest-preset-ui/testing';
 import snapshot from 'jest-preset-ui/snapshot';
 import TabPanel from '../src';
@@ -97,7 +97,7 @@ describe('TabPanel', () => {
     const component = (
       <TabPanel
         defaultValue={1}
-        styles={css`
+        styles={sstyled.css`
           SText {
             color: green;
           }
@@ -117,7 +117,7 @@ describe('TabPanel', () => {
   });
 
   test('Should support addons', async () => {
-    const Addon = React.forwardRef<HTMLElement>(function (p, ref) {
+    const Addon = React.forwardRef(function({ forwardRef, Children, Root, ...p }, ref) {
       return (
         <span ref={ref} {...p}>
           Addon prop

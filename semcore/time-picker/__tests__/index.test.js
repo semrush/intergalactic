@@ -68,9 +68,7 @@ describe('TimePicker', () => {
   });
 
   test('a11y', async () => {
-    const { container } = render(
-      <TimePickerDefault/>
-    );
+    const { container } = render(<TimePickerDefault />);
 
     const results = await axe(container);
     expect(results).toHaveNoViolations();
