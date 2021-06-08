@@ -1,7 +1,7 @@
-import { CProps, PropGetterFn, ReturnEl } from '@semcore/core';
 import React from 'react';
+import { CProps, PropGetterFn, ReturnEl } from '@semcore/core';
+import { Box, IBoxProps } from '@semcore/flex-box';
 import { INeighborItemProps, INeighborLocationProps } from '@semcore/neighbor-location';
-import { IBoxProps } from '@semcore/flex-box';
 import { IKeyboardFocusProps } from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 
 export type PillsValue = string | number | boolean;
@@ -42,8 +42,8 @@ declare const Pills: (<T, V>(
   props: CProps<IPillsProps<V> & T, IPillsContext, IPopperHandlers>,
 ) => ReturnEl) & {
   Item: (<T>(props: CProps<IPillProps & T, {}, IPopperHandlers>) => ReturnEl) & {
-    Text: (props: ComponentProps<typeof Box>) => ReturnEl;
-    Addon: (props: ComponentProps<typeof Box>) => ReturnEl;
+    Text: typeof Box
+    Addon: typeof Box
   };
 };
 
