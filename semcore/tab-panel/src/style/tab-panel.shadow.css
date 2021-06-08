@@ -63,7 +63,7 @@ STabPanelItem[keyboardFocused] {
   box-shadow: var(--keyborad-focus);
 }
 
-STabPanelItem[active] {
+STabPanelItem[selected] {
   color: var(--denim-blue);
   border-color: var(--gray80);
   border-bottom-color: white;

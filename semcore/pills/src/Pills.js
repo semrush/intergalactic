@@ -20,37 +20,7 @@ import addonTextChildren from '@semcore/utils/lib/addonTextChildren';
 
 import style from './style/pills.shadow.css';
 
-export type PillsValue = string | number | boolean;
-
-export interface IPillsProps<T extends PillsValue = PillsValue> extends INeighborLocationProps {
-  /** Pills size */
-  size?: 'xl' | 'l' | 'm' | 's' | false;
-  /** Disabled state */
-  disabled?: boolean;
-  /** Called when the selection is changed */
-  onChange?: (value: T, e?: React.SyntheticEvent<HTMLSpanElement>) => void;
-  /** Value for the selected pill */
-  value?: T;
-  /** Default value for the selected pill */
-  defaultValue?: T;
-}
-
-export interface IPillProps extends IBoxProps, INeighborItemProps, IKeyboardFocusProps {
-  /** Disabled state */
-  disabled?: boolean;
-  /** Pill value */
-  value: PillsValue;
-  /** Left addon text */
-  addonLeft?: React.ElementType;
-  /** Right addon tag */
-  addonRight?: React.ElementType;
-}
-
-export interface IPillsContext {
-  getItemProps: PropGetterFn;
-}
-
-class RootPills extends Component<IPillsProps> {
+class RootPills extends Component {
   static displayName = 'Pills';
   static style = style;
   static defaultProps = {
@@ -94,10 +64,10 @@ class RootPills extends Component<IPillsProps> {
 
 function Pill(props) {
   const SPill = Root;
-  const { Children, styles, selected, addonLeft, addonRight } = props;
+  const { Children, styles, addonLeft, addonRight } = props;
 
   return sstyled(styles)(
-    <SPill render={Box} type="button" tag="button" active={selected}>
+    <SPill render={Box} type="button" tag="button">
       {addonLeft ? <Pills.Item.Addon tag={addonLeft} /> : null}
       {addonTextChildren(Children, Pills.Item.Text, Pills.Item.Addon)}
       {addonRight ? <Pills.Item.Addon tag={addonRight} /> : null}
@@ -117,22 +87,7 @@ function Addon(props) {
   return sstyled(props.styles)(<SAddon render={Box} tag="span" />);
 }
 
-const Pills = createComponent<
-  RootPills,
-  {
-    Item: [
-      Merge<IPillProps, HTMLAttributes<HTMLButtonElement>>,
-      {
-        Text: ComponentProps<typeof Box>;
-        Addon: ComponentProps<typeof Box>;
-      },
-    ];
-  },
-  Merge<IPillsContext, IPillProps>,
-  <T extends PillsValue = PillsValue>(
-    props: PropsAndRef<IPillsProps<T>, IPillsContext, ReturnType<RootPills['uncontrolledProps']>>,
-  ) => React.ReactElement
->(RootPills, {
+const Pills = createComponent(RootPills, {
   Item: [Pill, { Text, Addon }],
 });
 

@@ -17,31 +17,6 @@ import keyboardFocusEnhance, {
 
 import style from './style/tab-panel.shadow.css';
 
-export type TabPanelValue = string | number | boolean;
-
-export interface ITabPanelProps<T extends TabPanelValue = TabPanelValue>
-  extends IBoxProps {
-  /** Is invoked when changing the selection */
-  onChange?: (value: T, e?: React.SyntheticEvent<HTMLButtonElement>) => void;
-  /** Value of the selected tab */
-  value?: T;
-}
-
-export interface ITabPanelItemProps extends IBoxProps, IKeyboardFocusProps {
-  /** Makes a tab selected. This property is determined automatically depending on the value. */
-  selected?: boolean;
-  /** Disabled state */
-  disabled?: boolean;
-  /** Left addon tag  */
-  addonLeft?: React.ElementType;
-  /** Right addon tag  */
-  addonRight?: React.ElementType;
-}
-
-export interface ITabPanelContext {
-  getItemProps: PropGetterFn;
-}
-
 const optionsA11yEnhance = {
   onNeighborChange: (neighborElement) => {
     if (neighborElement) {
@@ -52,7 +27,7 @@ const optionsA11yEnhance = {
   childSelector: ['role', 'tab'],
 };
 
-class TabPanelRoot extends Component<ITabPanelProps> {
+class TabPanelRoot extends Component {
   static displayName = 'TabPanel';
   static style = style;
   static defaultProps = {
@@ -90,22 +65,16 @@ class TabPanelRoot extends Component<ITabPanelProps> {
   }
 }
 
-function TabPanelItem(props: IFunctionProps<ITabPanelItemProps>) {
+function TabPanelItem(props) {
   const STabPanelItem = Root;
-  const { Children, styles, selected, addonLeft, addonRight } = props;
+  const { Children, styles, addonLeft, addonRight } = props;
 
   return sstyled(styles)(
-    <STabPanelItem
-      render={Box}
-      type="button"
-      tag="button"
-      role="tab"
-      active={selected}
-    >
+    <STabPanelItem render={Box} type="button" tag="button" role="tab">
       {addonLeft ? <TabPanel.Item.Addon tag={addonLeft} /> : null}
       {addonTextChildren(Children, TabPanel.Item.Text, TabPanel.Item.Addon)}
       {addonRight ? <TabPanel.Item.Addon tag={addonRight} /> : null}
-    </STabPanelItem>
+    </STabPanelItem>,
   );
 }
 
@@ -123,26 +92,7 @@ function Addon(props) {
   return sstyled(styles)(<SAddon render={Box} tag="span" />);
 }
 
-const TabPanel = createComponent<
-  TabPanelRoot,
-  {
-    Item: [
-      Merge<ITabPanelItemProps, HTMLAttributes<HTMLButtonElement>>,
-      {
-        Text: ComponentProps<typeof Box>;
-        Addon: ComponentProps<typeof Box>;
-      }
-    ];
-  },
-  ITabPanelContext,
-  <T extends TabPanelValue = TabPanelValue>(
-    props: PropsAndRef<
-      ITabPanelProps<T>,
-      ITabPanelContext,
-      ReturnType<TabPanelRoot['uncontrolledProps']>
-    >
-  ) => React.ReactElement
->(TabPanelRoot, {
+const TabPanel = createComponent(TabPanelRoot, {
   Item: [TabPanelItem, { Text, Addon }],
 });
 
