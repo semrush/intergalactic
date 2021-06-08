@@ -215,7 +215,7 @@ class PaginationRoot extends Component {
     const SPagination = Root;
     const { Children } = this.asProps;
     return sstyled(this.asProps.styles)(
-      <SPagination render={Box} tag="nav" aria-label="pagination">
+      <SPagination render={Box} tag='nav' aria-label='pagination'>
         <Children />
       </SPagination>,
     );
@@ -226,8 +226,9 @@ class FirstPage extends Component {
   static defaultProps = () => ({
     children: <Button.Addon tag={ChevronDoubleLeftXS} />,
   });
+
   render() {
-    return <Root render={Button} aria-label="First page" />;
+    return <Root render={Button} aria-label='First page' />;
   }
 }
 
@@ -238,7 +239,7 @@ class NextPage extends Component {
 
   render() {
     const SNextPage = Root;
-    return sstyled(this.asProps.styles)(<SNextPage render={Button} use="primary" theme="info" />);
+    return sstyled(this.asProps.styles)(<SNextPage render={Button} use='primary' theme='info' />);
   }
 }
 
@@ -268,7 +269,7 @@ class TotalPages extends Component {
     return sstyled(styles)(
       <>
         <STotalPagesLabel size={100}>{label || getI18nText('totalPagesLabel')}</STotalPagesLabel>
-        <STotalPages render={Link} tag="button" type="button" size={100} />
+        <STotalPages render={Link} tag='button' type='button' size={100} />
       </>,
     );
   }
@@ -276,7 +277,7 @@ class TotalPages extends Component {
 
 const PageInputValue = (props) => {
   const SPageInputValue = Root;
-  return sstyled(props.styles)(<SPageInputValue render={Input.Value} aria-label="Current page" />);
+  return sstyled(props.styles)(<SPageInputValue render={Input.Value} aria-label='Current page' />);
 };
 
 class PageInput extends Component {
