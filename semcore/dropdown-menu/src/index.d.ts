@@ -99,21 +99,21 @@ export interface IDropdownMenuHandlers extends IDropdownHandlers {
   highlightedIndex: (index: number) => void;
 }
 
-declare const DropdownMenu: ((
-  props: CProps<IDropdownMenuProps, IDropdownMenuContext, IDropdownMenuHandlers>,
+declare const DropdownMenu: (<T>(
+  props: CProps<IDropdownMenuProps & T, IDropdownMenuContext, IDropdownMenuHandlers>,
 ) => ReturnEl) & {
-  Trigger: <T>(props: ComponentProps<typeof Dropdown.Trigger> & T) => ReturnEl;
-  Popper: <T>(props: ComponentProps<typeof Dropdown.Popper> & T) => ReturnEl;
+  Trigger: typeof Dropdown.Trigger
+  Popper: typeof Dropdown.Popper
   List: <T>(
-    props: CProps<IDropdownMenuListProps, IDropdownMenuContext, IDropdownMenuHandlers> & T,
+    props: CProps<IDropdownMenuListProps & T, IDropdownMenuContext, IDropdownMenuHandlers>,
   ) => ReturnEl;
   Menu: <T>(
-    props: CProps<IDropdownMenuMenuProps, IDropdownMenuContext, IDropdownMenuHandlers> & T,
+    props: CProps<IDropdownMenuMenuProps & T, IDropdownMenuContext, IDropdownMenuHandlers>,
   ) => ReturnEl;
   Item: (<T>(
-    props: CProps<IDropdownMenuItemProps, IDropdownMenuContext, IDropdownMenuHandlers> & T,
+    props: CProps<IDropdownMenuItemProps & T, IDropdownMenuContext, IDropdownMenuHandlers>,
   ) => ReturnEl) & {
-    Addon: <T>(props: ComponentProps<typeof Box> & T) => ReturnEl;
+    Addon: typeof Box
   };
   ItemTitle: <T>(props: IDropdownMenuItemTitleProps & T) => ReturnEl;
   ItemHint: <T>(props: IDropdownMenuItemHintProps & T) => ReturnEl;
