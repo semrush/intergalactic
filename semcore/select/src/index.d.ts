@@ -112,7 +112,9 @@ declare const Select: (<V>(
   Popper: <T>(props: ComponentProps<typeof DropdownMenu.Popper> & T) => ReturnEl;
   List: <T>(props: ComponentProps<typeof DropdownMenu.List> & T) => ReturnEl;
   Menu: <T>(props: ComponentProps<typeof DropdownMenu.Menu> & T) => ReturnEl;
-  Option: (<T>(props: ISelectOptionProps & T) => ReturnEl) & {
+  Option: (<T>(
+    props: CProps<ISelectOptionProps, ISelectContext, ISelectHandlers> & T,
+  ) => ReturnEl) & {
     Addon: typeof DropdownMenu.Item.Addon;
   };
   OptionTitle: typeof DropdownMenu.ItemTitle;

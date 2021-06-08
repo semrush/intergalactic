@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.11.6] - 2021-06-04
+
+### Fixed
+
+- [A11] Fixed set `aria-pressed` for `Popper.Trigger`.
+
 ## [4.11.5] - 2021-05-17
 
 ### Fixed

@@ -52,63 +52,7 @@ function formatThousands(value) {
   return output;
 }
 
-export interface IPaginationProps extends IBoxProps, IWithI18nEnhanceProps {
-  /**
-   * Total number of pages
-   * @default 1
-   */
-  totalPages?: number;
-  /**
-   * Function of formatting the value totalPages
-   * @default formatThousands - inserts a comma every 3 characters
-   * @deprecated  v2.0.0 The property "totalPagesFormatter" is outdated, use the component "<Pagination.TotalPages/>"
-   */
-  totalPagesFormatter?: (totalPages: number) => string | number;
-  /**
-   * Active page number
-   * @default 1
-   */
-  currentPage?: number;
-  /**
-   * Callback for changing the active page
-   * @param pageNumber
-   * @deprecated v2.0.0 {@link IPaginationProps.onCurrentPageChange}
-   */
-  onPageChange?: (pageNumber: number) => void;
-  /**
-   * Callback for changing the active page
-   * @param pageNumber
-   */
-  onCurrentPageChange?: (pageNumber: number) => void;
-}
-
-export interface ITotalPagesProps extends ITextProps, IWithI18nEnhanceProps {
-  /**
-   * @deprecated v2.0.0 Use i118n, in order to redefine the text
-   * */
-  label?: React.ReactNode;
-}
-
-export interface IPageInputProps extends IInputProps, IWithI18nEnhanceProps {
-  /**
-   * @deprecated v2.0.0 Use i118n, in order to redefine the text
-   * */
-  label?: React.ReactNode;
-}
-
-export interface IPaginationState {
-  dirtyCurrentPage?: number;
-}
-
-export interface IPaginationContext extends IPaginationProps {
-  getFirstPageProps: PropGetter<PaginationRoot['getFirstPageProps']>;
-  getPrevPageProps: PropGetter<PaginationRoot['getPrevPageProps']>;
-  getNextPageProps: PropGetter<PaginationRoot['getNextPageProps']>;
-  getPageInputProps: PropGetter<PaginationRoot['getPageInputProps']>;
-  getTotalPagesProps: PropGetter<PaginationRoot['getTotalPagesProps']>;
-}
-
-class PaginationRoot extends Component<IPaginationProps, IPaginationState> {
+class PaginationRoot extends Component {
   static displayName = 'Pagination';
 
   static defaultProps = () => ({
@@ -276,22 +220,25 @@ class PaginationRoot extends Component<IPaginationProps, IPaginationState> {
 
   render() {
     const SPagination = Root;
+    const { Children } = this.asProps;
     return sstyled(this.asProps.styles)(
-      <SPagination render={Box} tag="nav" aria-label="pagination" />,
+      <SPagination render={Box} tag="nav" aria-label="pagination">
+        <Children />
+      </SPagination>,
     );
   }
 }
 
-class FirstPage extends Component<IButtonProps> {
+class FirstPage extends Component {
   static defaultProps = () => ({
     children: <Button.Addon tag={ChevronDoubleLeftXS} />,
   });
   render() {
-    return <Root render={Button} />;
+    return <Root render={Button} aria-label="First page" />;
   }
 }
 
-class NextPage extends Component<IButtonProps> {
+class NextPage extends Component {
   static defaultProps = (props) => ({
     children: props.getI18nText('nextPageLabel'),
   });
@@ -302,7 +249,7 @@ class NextPage extends Component<IButtonProps> {
   }
 }
 
-class PrevPage extends Component<IButtonProps> {
+class PrevPage extends Component {
   static defaultProps = (props) => ({
     children: props.getI18nText('prevPageLabel'),
   });
@@ -313,7 +260,7 @@ class PrevPage extends Component<IButtonProps> {
   }
 }
 
-class TotalPages extends Component<ITotalPagesProps> {
+class TotalPages extends Component {
   render() {
     const STotalPages = Root;
     const STotalPagesLabel = Text;
@@ -334,12 +281,12 @@ class TotalPages extends Component<ITotalPagesProps> {
   }
 }
 
-const PageInputValue = (props: IFunctionProps<IInputValueProps>) => {
+const PageInputValue = (props) => {
   const SPageInputValue = Root;
-  return sstyled(props.styles)(<SPageInputValue render={Input.Value} />);
+  return sstyled(props.styles)(<SPageInputValue render={Input.Value} aria-label="Current page" />);
 };
 
-class PageInput extends Component<IPageInputProps> {
+class PageInput extends Component {
   static defaultProps = () => ({
     children: (
       <>
@@ -369,23 +316,7 @@ class PageInput extends Component<IPageInputProps> {
   }
 }
 
-const Pagination = createComponent<
-  Merge<IPaginationProps, HTMLAttributes<HTMLDivElement>>,
-  {
-    PrevPage: Merge<IButtonProps, HTMLAttributes<HTMLButtonElement>>;
-    NextPage: Merge<IButtonProps, HTMLAttributes<HTMLButtonElement>>;
-    FirstPage: Merge<IButtonProps, HTMLAttributes<HTMLButtonElement>>;
-    TotalPages: Merge<ITotalPagesProps, HTMLAttributes<HTMLSpanElement>>;
-    PageInput: [
-      Merge<IPageInputProps, HTMLAttributes<HTMLDivElement>>,
-      {
-        Value: ComponentProps<typeof Input.Value>;
-        Addon: ComponentProps<typeof Input.Addon>;
-      },
-    ];
-  },
-  IPaginationContext
->(PaginationRoot, {
+const Pagination = createComponent(PaginationRoot, {
   PrevPage,
   NextPage,
   FirstPage,
