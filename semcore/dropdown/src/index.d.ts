@@ -23,15 +23,15 @@ export interface IDropdownProps extends IPopperProps {
   popperStretch?: 'min' | 'fixed' | false;
 }
 
-export interface IDropdownContext extends IPopperContext, IPopperGetterContext {}
+export interface IDropdownContext extends IPopperContext {}
 
 export interface IDropdownHandlers extends IPopperHandlers {}
 
-declare const Dropdown: ((
-  props: CProps<IDropdownProps, IDropdownContext, IDropdownHandlers>,
+declare const Dropdown: (<T>(
+  props: CProps<IDropdownProps & T, IDropdownContext, IDropdownHandlers>,
 ) => ReturnEl) & {
-  Trigger: <T>(props: ComponentProps<typeof Popper.Trigger> & T) => ReturnEl;
-  Popper: <T>(props: ComponentProps<typeof Popper.Popper> & T) => ReturnEl;
+  Trigger: typeof Popper.Trigger
+  Popper: typeof Popper.Popper
 };
 
 export default Dropdown;
