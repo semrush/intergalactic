@@ -1,4 +1,4 @@
-import React, { ComponentProps } from 'react';
+import React from 'react';
 import { CProps, ReturnEl } from '@semcore/core';
 import Popper, { IPopperContext, IPopperProps, IPopperTriggerProps } from '@semcore/popper';
 
@@ -14,12 +14,11 @@ export interface ITooltipProps extends IPopperProps, IPopperTriggerProps {
   theme?: 'default' | 'warning' | 'invert' | string;
 }
 
-export interface ITooltipContext extends IPopperContext {
-}
+export interface ITooltipContext extends IPopperContext {}
 
 declare const Tooltip: ((props: CProps<ITooltipProps, ITooltipContext>) => ReturnEl) & {
-  Trigger: <T>(props: ComponentProps<typeof Popper.Trigger> & T) => ReturnEl;
-  Popper: <T>(props: ComponentProps<typeof Popper.Popper> & T) => ReturnEl;
+  Trigger: typeof Popper.Trigger;
+  Popper: typeof Popper.Popper;
 };
 
 export default Tooltip;

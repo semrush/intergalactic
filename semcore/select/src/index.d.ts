@@ -1,5 +1,5 @@
 import React, { ComponentProps } from 'react';
-import { CProps, Merge, PropGetterFn, ReturnEl } from '@semcore/core';
+import { CProps, Merge, ReturnEl } from '@semcore/core';
 import DropdownMenu, {
   IDropdownMenuContext,
   IDropdownMenuItemProps,
@@ -10,8 +10,7 @@ import { ButtonTrigger, IBaseTriggerProps } from '@semcore/base-trigger';
 import Divider from '@semcore/divider';
 import { IInputValueProps } from '@semcore/input';
 
-export interface ISelectInputSearch extends IInputValueProps {
-}
+export interface ISelectInputSearch extends IInputValueProps {}
 
 export type OptionValue = string | number;
 export type SelectValue = string | number | Array<string | number>;
@@ -89,8 +88,7 @@ export interface ISelectOptionCheckboxProps extends ISelectOptionProps {
 
 declare const InputSearch: <T>(props: ISelectInputSearch & T) => ReturnEl;
 
-export interface ISelectContext extends IDropdownMenuContext {
-}
+export interface ISelectContext extends IDropdownMenuContext {}
 
 export interface ISelectHandlers extends IDropdownMenuHandlers {
   value: (index: SelectValue) => void;
@@ -100,15 +98,18 @@ declare const Select: (<T, V>(
   props: CProps<ISelectProps<V> & T, ISelectContext, ISelectHandlers>,
 ) => ReturnEl) & {
   Trigger: (<T>(
-    props: Merge<ComponentProps<typeof DropdownMenu.Trigger>,
-      ComponentProps<typeof ButtonTrigger>> & T,
+    props: Merge<
+      ComponentProps<typeof DropdownMenu.Trigger>,
+      ComponentProps<typeof ButtonTrigger>
+    > &
+      T,
   ) => ReturnEl) & {
     Addon: typeof ButtonTrigger.Addon;
     Text: typeof ButtonTrigger.Text;
   };
-  Popper: typeof DropdownMenu.Popper
-  List: typeof DropdownMenu.List
-  Menu: typeof DropdownMenu.Menu
+  Popper: typeof DropdownMenu.Popper;
+  List: typeof DropdownMenu.List;
+  Menu: typeof DropdownMenu.Menu;
   Option: (<T>(
     props: CProps<ISelectOptionProps & T, ISelectContext, ISelectHandlers>,
   ) => ReturnEl) & {
@@ -116,7 +117,9 @@ declare const Select: (<T, V>(
   };
   OptionTitle: typeof DropdownMenu.ItemTitle;
   OptionHint: typeof DropdownMenu.ItemHint;
-  OptionCheckbox: (<T>(props: CProps<ISelectOptionCheckboxProps & T, ISelectContext, ISelectHandlers>) => ReturnEl) & {
+  OptionCheckbox: (<T>(
+    props: CProps<ISelectOptionCheckboxProps & T, ISelectContext, ISelectHandlers>,
+  ) => ReturnEl) & {
     Addon: typeof DropdownMenu.Item.Addon;
   };
   Divider: typeof Divider;
