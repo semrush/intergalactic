@@ -1,7 +1,7 @@
 {
   "name": "@semcore/widget-empty",
   "description": "SEMRush WidgetEmpty Component",
-  "version": "2.5.0",
+  "version": "2.6.0",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -11,7 +11,7 @@
     "lib/*/WidgetEmpty.js"
   ],
   "scripts": {
-    "build": "build",
+    "build": "build --source=js",
     "test": "jest",
     "deploy": "gcs-upload svg/*.svg"
   },

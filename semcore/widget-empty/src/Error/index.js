@@ -1,7 +1,7 @@
-import React, { HTMLAttributes } from 'react';
-import WidgetEmpty, { getIconPath, IWidgetEmptyProps } from '../WidgetEmpty';
-import createComponent, { Component, Merge, Root } from '@semcore/core';
-import i18nEnhance, { IWithI18nEnhanceProps } from '@semcore/utils/lib/enhances/i18nEnhance';
+import React from 'react';
+import WidgetEmpty, { getIconPath } from '../WidgetEmpty';
+import createComponent, { Component, Root } from '@semcore/core';
+import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
 import de from './translations/de.json';
 import en from './translations/en.json';
 import es from './translations/es.json';
@@ -16,12 +16,7 @@ import vi from './translations/vi.json';
 
 const i18n = { de, en, es, fr, it, ja, ru, zh, pt, ko, vi };
 
-export interface IWidgetErrorProps extends IWidgetEmptyProps, IWithI18nEnhanceProps {
-  /** Error description. If it is absent, use the local default one */
-  description?: React.ReactNode;
-}
-
-class Error extends Component<IWidgetErrorProps> {
+class Error extends Component {
   static displayName = 'WidgetError';
   static defaultProps = {
     i18n,
@@ -42,4 +37,4 @@ class Error extends Component<IWidgetErrorProps> {
   }
 }
 
-export default createComponent<Merge<IWidgetEmptyProps, HTMLAttributes<HTMLDivElement>>>(Error);
+export default createComponent(Error);
