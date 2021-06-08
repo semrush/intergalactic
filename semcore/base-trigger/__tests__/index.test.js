@@ -44,13 +44,13 @@ describe('BaseTrigger', () => {
   });
 
   test('should support back ref', () => {
-    const ref = React.createRef<HTMLElement>();
+    const ref = React.createRef();
     render(<BaseTrigger ref={ref} />);
     expect(ref.current.tagName).toBeTruthy();
   });
 
   test('should support back ref', () => {
-    const ref = React.createRef<HTMLElement>();
+    const ref = React.createRef();
     render(<BaseTrigger ref={ref} />);
     expect(ref.current.tagName).toBeTruthy();
   });

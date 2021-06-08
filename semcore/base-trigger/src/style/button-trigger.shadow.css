@@ -1,6 +1,6 @@
 @import '@semcore/utils/style/var.css';
 
 SButtonAddon {
-  width: media(12px);
-  height: media(12px);
+  width: 12px;
+  height: 12px;
 }

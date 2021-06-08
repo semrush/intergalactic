@@ -1,6 +1,6 @@
-import React, { ComponentProps, HTMLAttributes } from 'react';
-import createComponent, { Component, Merge, styled } from '@semcore/core';
-import BaseTrigger, { IBaseTriggerProps } from './BaseTrigger';
+import React  from 'react';
+import createComponent, { Component, Root, sstyled } from '@semcore/core';
+import BaseTrigger from './BaseTrigger';
 import { Box } from '@semcore/flex-box';
 import NeighborLocation from '@semcore/neighbor-location';
 import Dot from '@semcore/dot';
@@ -11,27 +11,22 @@ import addonTextChildren from '@semcore/utils/lib/addonTextChildren';
 
 import style from './style/filter-trigger.shadow.css';
 
-export interface IFilterTriggerProps extends IBaseTriggerProps {
-  /** Click on the filter cleaning cross */
-  onClear?: (event: React.SyntheticEvent) => void;
-}
-
-class RootFilterTrigger extends Component<IFilterTriggerProps> {
+class RootFilterTrigger extends Component {
   static displayName = 'FilterTrigger';
   static style = style;
 
   handleStopPropagation = (e) => e.stopPropagation();
 
   render() {
-    const SWrapper = this.Root;
+    const SWrapper = Root;
     const SFilterTrigger = BaseTrigger;
     const { Children, styles, empty, onClear, size, placeholder, active, disabled } = this.asProps;
 
-    return styled(styles)(
+    return sstyled(styles)(
       <SWrapper render={Box}>
         <NeighborLocation>
           <SFilterTrigger
-            w="100%"
+            w='100%'
             size={size}
             placeholder={placeholder}
             empty={empty}
@@ -47,7 +42,7 @@ class RootFilterTrigger extends Component<IFilterTriggerProps> {
           </SFilterTrigger>
           {!empty && (
             <SFilterTrigger
-              tag="button"
+              tag='button'
               size={size}
               empty={empty}
               selected
@@ -65,18 +60,11 @@ class RootFilterTrigger extends Component<IFilterTriggerProps> {
 }
 
 function Counter(props) {
-  const { Root: SCounter, styles } = props;
-  return styled(styles)(<SCounter render={BaseTrigger.Addon} tag={Dot} />);
+  const SCounter = Root;
+  return sstyled(props.styles)(<SCounter render={BaseTrigger.Addon} tag={Dot} />);
 }
 
-const FilterTrigger = createComponent<
-  Merge<IFilterTriggerProps, HTMLAttributes<HTMLDivElement>>,
-  {
-    Text: ComponentProps<typeof BaseTrigger.Text>;
-    Addon: ComponentProps<typeof BaseTrigger.Addon>;
-    Counter: ComponentProps<typeof BaseTrigger.Addon> & ComponentProps<typeof Dot>;
-  }
->(
+const FilterTrigger = createComponent(
   RootFilterTrigger,
   {
     Text: BaseTrigger.Text,
