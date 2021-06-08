@@ -117,8 +117,6 @@ export interface IPopperTriggerProps extends IBoxProps {}
 export interface IPopperPopperProps extends IBoxProps, INeighborLocationProps {}
 
 export interface IPopperContext {
-  getTriggerProps: PropGetterFn;
-  getPopperProps: PropGetterFn;
   popper: Instance;
   // Rename to setTriggerRef
   setTrigger: (ref: HTMLElement) => void;
@@ -126,12 +124,23 @@ export interface IPopperContext {
 }
 
 export interface IPopperHandlers {
-  visible: (visible: boolean) => void
+  visible: (visible: boolean) => void;
 }
 
-declare const Popper: ((props: CProps<IPopperProps, IPopperContext, IPopperHandlers>) => ReturnEl) & {
-  Trigger: <T>(props: IPopperTriggerProps & T) => ReturnEl;
-  Popper: <T>(props: IPopperPopperProps & T) => ReturnEl;
+export interface IPopperGetterContext {
+  getTriggerProps: PropGetterFn;
+  getPopperProps: PropGetterFn;
+}
+
+declare const Popper: ((
+  props: CProps<IPopperProps, IPopperContext & IPopperGetterContext, IPopperHandlers>,
+) => ReturnEl) & {
+  Trigger: <T>(
+    props: CProps<IPopperTriggerProps, IPopperContext & IPopperGetterContext, IPopperHandlers> & T,
+  ) => ReturnEl;
+  Popper: <T>(
+    props: CProps<IPopperPopperProps, IPopperContext & IPopperGetterContext, IPopperHandlers> & T,
+  ) => ReturnEl;
 };
 
 export default Popper;

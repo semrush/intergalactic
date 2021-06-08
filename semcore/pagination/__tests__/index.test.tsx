@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, fireEvent, cleanup } from 'jest-preset-ui/testing';
+import { render, fireEvent, cleanup, axe } from 'jest-preset-ui/testing';
 import snapshot from 'jest-preset-ui/snapshot';
 import { shouldSupportClassName, shouldSupportRef } from 'jest-preset-ui/shared';
 import Pagination from '../src';
@@ -13,6 +13,13 @@ describe('Pagination', () => {
   test('Renders correctly', async () => {
     const component = <Pagination currentPage={1} totalPages={100} />;
     expect(await snapshot(component)).toMatchImageSnapshot();
+  });
+
+  test('a11y', async () => {
+    const { container } = render(<Pagination currentPage={1} totalPages={100} />);
+
+    const results = await axe(container);
+    expect(results).toHaveNoViolations();
   });
 });
 
