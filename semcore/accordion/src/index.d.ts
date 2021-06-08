@@ -46,8 +46,8 @@ export interface IAccordionItemContext {
   selected?: boolean;
 }
 
-declare const Accordion: (<V>(
-  props: CProps<IAccordionProps<V>, IAccordionContext, IAccordionHandlers>,
+declare const Accordion: (<T, V>(
+  props: CProps<IAccordionProps<V> & T, IAccordionContext, IAccordionHandlers>,
 ) => ReturnEl) & {
   Item: (<T>(
     props: CProps<IAccordionItemProps & T, IAccordionItemContext, IAccordionHandlers>,
