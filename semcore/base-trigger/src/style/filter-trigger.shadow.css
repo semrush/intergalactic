@@ -25,31 +25,31 @@ SButtonTrigger {
 }
 
 SButtonTrigger[size='s'] {
-  height: media(18px);
-  min-width: media(18px);
-  border-radius: media(2px);
-  font-size: media(10px);
+  height: 18px;
+  min-width: 18px;
+  border-radius: 2px;
+  font-size: 10px;
 }
 
 SButtonTrigger[size='m'] {
-  height: media(26px);
-  min-width: media(26px);
-  border-radius: media(3px);
-  font-size: media(12px);
+  height: 26px;
+  min-width: 26px;
+  border-radius: 3px;
+  font-size: 12px;
 }
 
 SButtonTrigger[size='l'] {
-  height: media(32px);
-  min-width: media(32px);
-  border-radius: media(4px);
-  font-size: media(14px);
+  height: 32px;
+  min-width: 32px;
+  border-radius: 4px;
+  font-size: 14px;
 }
 
 SButtonTrigger[size='xl'] {
-  height: media(42px);
-  min-width: media(42px);
-  border-radius: media(5px);
-  font-size: media(16px);
+  height: 42px;
+  min-width: 42px;
+  border-radius: 5px;
+  font-size: 16px;
 }
 
 SText[placeholder] {

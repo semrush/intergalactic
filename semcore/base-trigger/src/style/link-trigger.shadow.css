@@ -44,6 +44,14 @@ SLinkTrigger {
   }
 }
 
+SLinkTrigger[color] {
+  color: var(--color);
+
+  &:hover {
+    color: color-mod(var(--color) shade(12%));
+  }
+}
+
 SLinkTrigger[disabled] {
   opacity: var(--disabled-opacity);
   cursor: default;
@@ -63,31 +71,31 @@ SLinkAddon {
   flex-shrink: 0;
 
   &:not(:only-child):first-child {
-    margin-right: media(4px);
+    margin-right: 4px;
   }
 
   &:not(:only-child):last-child {
-    margin-left: media(4px);
+    margin-left: 4px;
   }
 }
 
 SLinkAddon {
-  width: media(12px);
-  height: media(12px);
+  width: 12px;
+  height: 12px;
 }
 
 SLinkTrigger[size='s'] {
-  font-size: media(10px);
+  font-size: 10px;
 }
 
 SLinkTrigger[size='m'] {
-  font-size: media(12px);
+  font-size: 12px;
 }
 
 SLinkTrigger[size='l'] {
-  font-size: media(14px);
+  font-size: 14px;
 }
 
 SLinkTrigger[size='xl'] {
-  font-size: media(16px);
+  font-size: 16px;
 }

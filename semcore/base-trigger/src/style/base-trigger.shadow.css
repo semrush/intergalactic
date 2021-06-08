@@ -84,114 +84,114 @@ SAddon {
 }
 
 SBaseAddon {
-  width: media(12px);
-  height: media(12px);
+  width: 12px;
+  height: 12px;
 }
 
 SBaseTrigger[size='s'] {
-  height: media(18px);
-  min-width: media(18px);
-  border-radius: media(2px);
-  font-size: media(10px);
+  height: 18px;
+  min-width: 18px;
+  border-radius: 2px;
+  font-size: 10px;
 
   & SText {
-    margin-left: media(4px);
-    margin-right: media(4px);
+    margin-left: 4px;
+    margin-right: 4px;
   }
 
   & SAddon {
     &:not(:only-child):first-child {
-      margin-left: media(4px);
+      margin-left: 4px;
     }
 
     &:not(:only-child):last-child {
-      margin-right: media(4px);
+      margin-right: 4px;
     }
 
     &:only-child {
-      margin-left: media(-2px);
-      margin-right: media(-2px);
+      margin-left: -2px;
+      margin-right: -2px;
     }
   }
 }
 
 SBaseTrigger[size='m'] {
-  height: media(26px);
-  min-width: media(26px);
-  border-radius: media(3px);
-  font-size: media(12px);
+  height: 26px;
+  min-width: 26px;
+  border-radius: 3px;
+  font-size: 12px;
 
   & SText {
-    margin-left: media(8px);
-    margin-right: media(8px);
+    margin-left: 8px;
+    margin-right: 8px;
   }
 
   & SAddon {
     &:not(:only-child):first-child {
-      margin-left: media(8px);
+      margin-left: 8px;
     }
 
     &:not(:only-child):last-child {
-      margin-right: media(8px);
+      margin-right: 8px;
     }
 
     &:only-child {
-      margin-left: media(-4px);
-      margin-right: media(-4px);
+      margin-left: -4px;
+      margin-right: -4px;
     }
   }
 }
 
 SBaseTrigger[size='l'] {
-  height: media(32px);
-  min-width: media(32px);
-  border-radius: media(4px);
-  font-size: media(14px);
+  height: 32px;
+  min-width: 32px;
+  border-radius: 4px;
+  font-size: 14px;
 
   & SText {
-    margin-left: media(8px);
-    margin-right: media(8px);
+    margin-left: 8px;
+    margin-right: 8px;
   }
 
   & SAddon {
     &:not(:only-child):first-child {
-      margin-left: media(8px);
+      margin-left: 8px;
     }
 
     &:not(:only-child):last-child {
-      margin-right: media(8px);
+      margin-right: 8px;
     }
 
     &:only-child {
-      margin-left: media(-4px);
-      margin-right: media(-4px);
+      margin-left: -4px;
+      margin-right: -4px;
     }
   }
 }
 
 SBaseTrigger[size='xl'] {
-  height: media(42px);
-  min-width: media(42px);
-  border-radius: media(5px);
-  font-size: media(16px);
+  height: 42px;
+  min-width: 42px;
+  border-radius: 5px;
+  font-size: 16px;
 
   & SText {
-    margin-left: media(12px);
-    margin-right: media(12px);
+    margin-left: 12px;
+    margin-right: 12px;
   }
 
   & SAddon {
     &:not(:only-child):first-child {
-      margin-left: media(12px);
+      margin-left: 12px;
     }
 
     &:not(:only-child):last-child {
-      margin-right: media(12px);
+      margin-right: 12px;
     }
 
     &:only-child {
-      margin-left: media(-6px);
-      margin-right: media(-6px);
+      margin-left: -6px;
+      margin-right: -6px;
     }
   }
 }
