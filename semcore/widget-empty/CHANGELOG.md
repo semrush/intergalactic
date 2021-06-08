@@ -2,7 +2,11 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [2.6.0] - 2021-05-31
+## [2.6.0] - 2021-06-08
+
+### Changed
+
+- Rewrite code from TS to JS 🧑‍💻
 
 ### Added
 
