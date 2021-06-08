@@ -112,11 +112,15 @@ export interface IPopperProps extends IOutsideClickProps, IPortalProps, IUniqueI
   boundary?: 'scrollParent' | 'viewport' | 'window' | HTMLElement;
 }
 
-export interface IPopperTriggerProps extends IBoxProps {}
+export interface IPopperTriggerProps extends IBoxProps {
+}
 
-export interface IPopperPopperProps extends IBoxProps, INeighborLocationProps {}
+export interface IPopperPopperProps extends IBoxProps, INeighborLocationProps {
+}
 
 export interface IPopperContext {
+  getTriggerProps: PropGetterFn;
+  getPopperProps: PropGetterFn;
   popper: Instance;
   // Rename to setTriggerRef
   setTrigger: (ref: HTMLElement) => void;
@@ -127,19 +131,14 @@ export interface IPopperHandlers {
   visible: (visible: boolean) => void;
 }
 
-export interface IPopperGetterContext {
-  getTriggerProps: PropGetterFn;
-  getPopperProps: PropGetterFn;
-}
-
-declare const Popper: ((
-  props: CProps<IPopperProps, IPopperContext & IPopperGetterContext, IPopperHandlers>,
+declare const Popper: (<T>(
+  props: CProps<IPopperProps & T, IPopperContext, IPopperHandlers>,
 ) => ReturnEl) & {
   Trigger: <T>(
-    props: CProps<IPopperTriggerProps, IPopperContext & IPopperGetterContext, IPopperHandlers> & T,
+    props: CProps<IPopperTriggerProps & T, IPopperContext, IPopperHandlers>,
   ) => ReturnEl;
   Popper: <T>(
-    props: CProps<IPopperPopperProps, IPopperContext & IPopperGetterContext, IPopperHandlers> & T,
+    props: CProps<IPopperPopperProps & T, IPopperContext, IPopperHandlers>,
   ) => ReturnEl;
 };
 
