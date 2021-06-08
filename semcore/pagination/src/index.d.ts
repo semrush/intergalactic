@@ -1,14 +1,10 @@
 import React, { ComponentProps } from 'react';
-import createComponent, { Merge, CProps, PropGetterFn, ReturnEl } from '@semcore/core';
-import { Box, IBoxProps } from '@semcore/flex-box';
-import Input, { IInputProps, IInputValueProps } from '@semcore/input';
-import Link, { ILinkProps } from '@semcore/link';
-import { ITextProps, Text } from '@semcore/typography';
-import Button, { IButtonProps } from '@semcore/button';
-import Return from '@semcore/icon/lib/ActionReturn/xs';
-import ChevronDoubleLeftXS from '@semcore/icon/lib/ChevronDoubleLeft/xs';
-import fire from '@semcore/utils/lib/fire';
-import i18nEnhance, { IWithI18nEnhanceProps } from '@semcore/utils/lib/enhances/i18nEnhance';
+import { CProps, PropGetterFn, ReturnEl } from '@semcore/core';
+import { IBoxProps } from '@semcore/flex-box';
+import Input, { IInputProps } from '@semcore/input';
+import { ITextProps } from '@semcore/typography';
+import Button from '@semcore/button';
+import { IWithI18nEnhanceProps } from '@semcore/utils/lib/enhances/i18nEnhance';
 
 export interface IPaginationProps extends IBoxProps, IWithI18nEnhanceProps {
   /**
@@ -54,11 +50,7 @@ export interface IPageInputProps extends IInputProps, IWithI18nEnhanceProps {
   label?: React.ReactNode;
 }
 
-export interface IPaginationState {
-  dirtyCurrentPage?: number;
-}
-
-export interface IPaginationContext extends IPaginationProps {
+export interface IPaginationContext {
   getFirstPageProps: PropGetterFn;
   getPrevPageProps: PropGetterFn;
   getNextPageProps: PropGetterFn;
@@ -77,12 +69,12 @@ declare const Pagination: (<T>(
   PrevPage: <T>(props: ComponentProps<typeof Button>) => ReturnEl;
   NextPage: <T>(props: ComponentProps<typeof Button>) => ReturnEl;
   FirstPage: <T>(props: ComponentProps<typeof Button>) => ReturnEl;
-  TotalPages: <T>(props: CProps<ITotalPagesProps, {}, {}>) => ReturnEl;
+  TotalPages: <T>(props: CProps<ITotalPagesProps, {}, IPaginationHandlers>) => ReturnEl;
   PageInput: (
-    props: CProps<IPageInputProps, {}, {}>,
+    props: CProps<IPageInputProps, {}, IPaginationHandlers>,
   ) => ReturnEl & {
-    Value: <T>(props: ComponentProps<typeof Input.Value>) => ReturnEl;
-    Addon: <T>(props: ComponentProps<typeof Input.Addon>) => ReturnEl;
+    Value: typeof Input.Value;
+    Addon: typeof Input.Addon;
   };
 };
 

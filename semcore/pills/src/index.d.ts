@@ -1,14 +1,8 @@
-import createComponent, { CProps, PropGetterFn, PropsAndRef, ReturnEl } from '@semcore/core';
+import { CProps, PropGetterFn, ReturnEl } from '@semcore/core';
 import React from 'react';
 import { INeighborItemProps, INeighborLocationProps } from '@semcore/neighbor-location';
 import { IBoxProps } from '@semcore/flex-box';
 import { IKeyboardFocusProps } from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
-import {
-  IButtonAddonProps,
-  IButtonContext,
-  IButtonProps,
-  IButtonTextProps,
-} from '@semcore/button/src';
 
 export type PillsValue = string | number | boolean;
 

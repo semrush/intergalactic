@@ -1,4 +1,4 @@
-import React, { ComponentProps } from 'react';
+import React from 'react';
 import { CProps, PropGetterFn, ReturnEl } from '@semcore/core';
 import { IBoxProps } from '@semcore/flex-box';
 import { INeighborItemProps, INeighborLocationProps } from '@semcore/neighbor-location';
