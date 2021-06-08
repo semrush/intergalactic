@@ -1,11 +1,5 @@
-import { ComponentProps } from 'react';
 import { CProps, ReturnEl } from '@semcore/core';
-import Popper, {
-  IPopperContext,
-  IPopperProps,
-  IPopperHandlers,
-  IPopperGetterContext,
-} from '@semcore/popper';
+import Popper, { IPopperContext, IPopperProps, IPopperHandlers } from '@semcore/popper';
 
 export interface IDropdownProps extends IPopperProps {
   /**
@@ -30,8 +24,8 @@ export interface IDropdownHandlers extends IPopperHandlers {}
 declare const Dropdown: (<T>(
   props: CProps<IDropdownProps & T, IDropdownContext, IDropdownHandlers>,
 ) => ReturnEl) & {
-  Trigger: typeof Popper.Trigger
-  Popper: typeof Popper.Popper
+  Trigger: typeof Popper.Trigger;
+  Popper: typeof Popper.Popper;
 };
 
 export default Dropdown;

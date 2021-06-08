@@ -1,4 +1,3 @@
-import { ComponentProps } from 'react';
 import { CProps, PropGetterFn, ReturnEl } from '@semcore/core';
 import Dropdown, { IDropdownContext, IDropdownProps, IDropdownHandlers } from '@semcore/dropdown';
 import { Box, IBoxProps, IFlexProps } from '@semcore/flex-box';
@@ -102,8 +101,8 @@ export interface IDropdownMenuHandlers extends IDropdownHandlers {
 declare const DropdownMenu: (<T>(
   props: CProps<IDropdownMenuProps & T, IDropdownMenuContext, IDropdownMenuHandlers>,
 ) => ReturnEl) & {
-  Trigger: typeof Dropdown.Trigger
-  Popper: typeof Dropdown.Popper
+  Trigger: typeof Dropdown.Trigger;
+  Popper: typeof Dropdown.Popper;
   List: <T>(
     props: CProps<IDropdownMenuListProps & T, IDropdownMenuContext, IDropdownMenuHandlers>,
   ) => ReturnEl;
@@ -113,7 +112,7 @@ declare const DropdownMenu: (<T>(
   Item: (<T>(
     props: CProps<IDropdownMenuItemProps & T, IDropdownMenuContext, IDropdownMenuHandlers>,
   ) => ReturnEl) & {
-    Addon: typeof Box
+    Addon: typeof Box;
   };
   ItemTitle: <T>(props: IDropdownMenuItemTitleProps & T) => ReturnEl;
   ItemHint: <T>(props: IDropdownMenuItemHintProps & T) => ReturnEl;
