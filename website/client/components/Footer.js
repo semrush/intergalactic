@@ -9,10 +9,9 @@ const FooterWrapper = styled.footer`
   grid-template-rows: 15fr 6fr 5fr;
   grid-template-columns: 3fr repeat(2, 4fr);
   margin-top: auto;
-  height: 163px;
   border-top: 1px solid #d1d4db;
   background: #ffffff;
-  padding: 31px 40px 40px 40px;
+  padding: 32px 40px 24px 40px;
   align-items: start;
   line-height: 150%;
   font-weight: 400;
