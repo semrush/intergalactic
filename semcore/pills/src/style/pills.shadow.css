@@ -49,7 +49,7 @@ SPill {
   }
 }
 
-SPill[active] {
+SPill[selected] {
   background: color-mod(var(--light-blue) a(20%));
   border-color: var(--light-blue);
   z-index: 1;

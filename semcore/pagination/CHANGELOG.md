@@ -2,6 +2,13 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.3.2] - 2021-06-08
+
+### Changed
+
+- Fixed ts type for `Pagination`.
+- Added `aria-label` for child components `FirstPage, PageInput`
+
 ## [2.3.0] - 2021-04-26
 
 ### Changed

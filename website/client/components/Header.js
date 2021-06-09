@@ -22,7 +22,7 @@ import trottle from '@semcore/utils/lib/rafTrottle';
 const HeaderWrapper = styled.header`
   display: grid;
   grid-template-rows: 1fr;
-  grid-template-columns: 0.8fr 1fr 0.8fr;
+  grid-template-columns: 0.5fr 1fr 1fr;
   position: fixed;
   width: inherit;
   padding: 0 40px;

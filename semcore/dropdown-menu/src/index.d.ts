@@ -1,4 +1,3 @@
-import { ComponentProps } from 'react';
 import { CProps, PropGetterFn, ReturnEl } from '@semcore/core';
 import Dropdown, { IDropdownContext, IDropdownProps, IDropdownHandlers } from '@semcore/dropdown';
 import { Box, IBoxProps, IFlexProps } from '@semcore/flex-box';
@@ -46,8 +45,7 @@ export interface IDropdownMenuListProps extends IBoxProps, IScrollAreaProps {
   size?: DropdownMenuSize;
 }
 
-export interface IDropdownMenuMenuProps extends IDropdownMenuListProps {
-}
+export interface IDropdownMenuMenuProps extends IDropdownMenuListProps {}
 
 export interface IDropdownMenuItemProps extends IFlexProps {
   /**
@@ -97,19 +95,25 @@ export interface IDropdownMenuContext extends IDropdownContext {
 }
 
 export interface IDropdownMenuHandlers extends IDropdownHandlers {
-  highlightedIndex: (index: number) => void
+  highlightedIndex: (index: number) => void;
 }
 
-declare const DropdownMenu: ((
-  props: CProps<IDropdownMenuProps, IDropdownMenuContext, IDropdownMenuHandlers>,
+declare const DropdownMenu: (<T>(
+  props: CProps<IDropdownMenuProps & T, IDropdownMenuContext, IDropdownMenuHandlers>,
 ) => ReturnEl) & {
-  Trigger: <T>(props: ComponentProps<typeof Dropdown.Trigger> & T) => ReturnEl;
-  Popper: <T>(props: ComponentProps<typeof Dropdown.Popper> & T) => ReturnEl;
-  List: <T>(props: IDropdownMenuListProps & T) => ReturnEl;
-  Menu: <T>(props: IDropdownMenuMenuProps & T) => ReturnEl;
-  Item: (<T>(props: IDropdownMenuItemProps & T) => ReturnEl) & {
-    Addon: <T>(props: ComponentProps<typeof Box> & T) => ReturnEl;
-  }
+  Trigger: typeof Dropdown.Trigger;
+  Popper: typeof Dropdown.Popper;
+  List: <T>(
+    props: CProps<IDropdownMenuListProps & T, IDropdownMenuContext, IDropdownMenuHandlers>,
+  ) => ReturnEl;
+  Menu: <T>(
+    props: CProps<IDropdownMenuMenuProps & T, IDropdownMenuContext, IDropdownMenuHandlers>,
+  ) => ReturnEl;
+  Item: (<T>(
+    props: CProps<IDropdownMenuItemProps & T, IDropdownMenuContext, IDropdownMenuHandlers>,
+  ) => ReturnEl) & {
+    Addon: typeof Box;
+  };
   ItemTitle: <T>(props: IDropdownMenuItemTitleProps & T) => ReturnEl;
   ItemHint: <T>(props: IDropdownMenuItemHintProps & T) => ReturnEl;
 };

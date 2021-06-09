@@ -138,6 +138,7 @@ beta: true
 @page bar
 @page area
 @page donut
+@page venn
 @page d3-chart-api
 @page d3-chart-changelog
 
