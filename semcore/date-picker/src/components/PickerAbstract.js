@@ -3,7 +3,6 @@ import dayjs from 'dayjs';
 import { Component, Root, CORE_INSTANCE, sstyled } from '@semcore/core';
 import Dropdown from '@semcore/dropdown';
 import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
-import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 import de from '../translations/de.json';
 import en from '../translations/en.json';
 import es from '../translations/es.json';
@@ -17,10 +16,11 @@ import ko from '../translations/ko.json';
 import vi from '../translations/vi.json';
 
 import style from '../style/date-picker.shadow.css';
-import assignProps from '@semcore/utils/lib/assignProps';
 import includesDate from '../utils/includesDate';
 
 const i18n = { de, en, es, fr, it, ja, ru, zh, pt, ko, vi };
+
+const INTERACTION_TAGS = ['INPUT'];
 
 class PickerAbstract extends Component {
   static displayName = 'DatePicker';
@@ -35,16 +35,7 @@ class PickerAbstract extends Component {
     disabled: [],
     size: 'm',
   };
-  static enhance = [
-    i18nEnhance(),
-    keyboardFocusEnhance({
-      propName: '$keyboardFocusEnhance',
-      isDisabled: () => false,
-      isCurrent: true,
-      focusMethod: 'onFocusCapture',
-      blurMethod: 'onBlurCapture',
-    }),
-  ];
+  static enhance = [i18nEnhance()];
 
   static add = (date, amount, unit) => {
     return dayjs(date)
@@ -100,9 +91,9 @@ class PickerAbstract extends Component {
     this.navigateView(direction);
   };
 
-  handlerPopperKeyDown = (e) => {
+  handlerKeyDown = (e) => {
     if (e.target !== e.currentTarget) return;
-    const { displayedPeriod, highlighted, disabled: _disabled } = this.asProps;
+    const { value, displayedPeriod, highlighted, disabled: _disabled } = this.asProps;
     const day = this.keyDiff[e.keyCode];
 
     const getCurrentHighlightedDay = (day) => {
@@ -110,12 +101,17 @@ class PickerAbstract extends Component {
       const isDisabledDay = _disabled.some(includesDate(dayjs(current_day), 'date'));
       return isDisabledDay ? null : current_day;
     };
+
     if (e.keyCode === 32 || (e.keyCode === 13 && highlighted.length)) {
       this.handlers.value(highlighted[0]);
       e.preventDefault();
     }
     if (day) {
-      const current_highlighted = dayjs(highlighted[0] || displayedPeriod).add(day, this.keyStep);
+      if (INTERACTION_TAGS.includes(e.target.tagName)) return;
+      const current_highlighted =
+        !highlighted[0] && !value
+          ? dayjs(highlighted[0] || displayedPeriod)
+          : dayjs(displayedPeriod).add(day, this.keyStep);
       const current_day =
         getCurrentHighlightedDay(current_highlighted) ||
         getCurrentHighlightedDay(dayjs(highlighted[0] || displayedPeriod));
@@ -133,21 +129,23 @@ class PickerAbstract extends Component {
     return {
       size,
       empty: !value,
+      onKeyDown: this.handlerKeyDown,
     };
   }
 
   getPopperProps() {
+    const { interaction } = this.asProps;
     const Picker = this[CORE_INSTANCE];
-    const { $keyboardFocusEnhance } = this.asProps;
-    return assignProps($keyboardFocusEnhance, {
-      onKeyDown: this.handlerPopperKeyDown,
+    return {
+      tabIndex: 0,
+      onKeyDown: this.handlerKeyDown,
       children: (
         <>
           <Picker.Header />
           <Picker.Calendar />
         </>
       ),
-    });
+    };
   }
 
   getHeaderProps() {
