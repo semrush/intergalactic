@@ -27,6 +27,7 @@ if (global.document) {
 }
 
 if (global.window) {
+  const { getComputedStyle } = global.window;
   window.matchMedia = jest.fn().mockImplementation((query) => ({
     matches: false,
     media: query,
@@ -38,6 +39,7 @@ if (global.window) {
     dispatchEvent: jest.fn(),
   }));
   window.HTMLElement.prototype.scrollIntoView = jest.fn;
+  window.getComputedStyle = (elt) => getComputedStyle(elt);
 }
 
 jest.setTimeout(10000);

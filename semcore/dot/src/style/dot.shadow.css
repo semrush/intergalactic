@@ -4,7 +4,7 @@ SDot {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-size: media(10px);
+  font-size: 10px;
   line-height: normal;
   background-color: var(--orange);
   color: #fff;
@@ -17,30 +17,30 @@ SDot {
 }
 
 SDot[size='xl'] {
-  height: media(16px);
-  min-width: media(16px);
-  padding: media(3px) media(4px);
-  border-radius: media(8px);
+  height: 16px;
+  min-width: 16px;
+  padding: 3px 4px;
+  border-radius: 8px;
 }
 
 SDot[size='l'] {
-  height: media(12px);
-  min-width: media(12px);
-  border-radius: media(6px);
+  height: 12px;
+  min-width: 12px;
+  border-radius: 6px;
 }
 
 SDot[size='m'] {
-  height: media(6px);
-  min-width: media(6px);
-  border-radius: media(3px);
+  height: 6px;
+  min-width: 6px;
+  border-radius: 3px;
 }
 
 SDot[up] {
   position: absolute;
   top: 0;
   right: 0;
-  margin-top: media(-3px);
-  margin-right: media(-3px);
+  margin-top: -3px;
+  margin-right: -3px;
 }
 
 SDot[hidden] {

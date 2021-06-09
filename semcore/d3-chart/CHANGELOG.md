@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [1.0.0-12] - 2021-06-02
+
+### Added
+
+- Added Venn chart.
+
 ## [1.0.0-11] - 2021-05-12
 
 ### Fixed
