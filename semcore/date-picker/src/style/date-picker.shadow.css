@@ -15,10 +15,10 @@ SPopper {
     outline: 0;
     text-decoration: none;
   }
-}
 
-SPopper[keyboardFocused] {
-  box-shadow: var(--keyborad-focus);
+  &:focus {
+    box-shadow: var(--keyborad-focus);
+  }
 }
 
 SHeader {

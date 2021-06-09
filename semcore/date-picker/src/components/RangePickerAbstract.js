@@ -6,8 +6,6 @@ import { Box, Flex } from '@semcore/flex-box';
 import Divider from '@semcore/divider';
 import Dropdown from '@semcore/dropdown';
 import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
-import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
-import assignProps from '@semcore/utils/lib/assignProps';
 import de from '../translations/de.json';
 import en from '../translations/en.json';
 import es from '../translations/es.json';
@@ -24,6 +22,8 @@ import style from '../style/date-picker.shadow.css';
 
 const i18n = { de, en, es, fr, it, ja, ru, zh, pt, ko, vi };
 
+const INTERACTION_TAGS = ['INPUT'];
+
 class RangePickerAbstract extends Component {
   static displayName = 'DatePicker';
   static style = style;
@@ -37,16 +37,7 @@ class RangePickerAbstract extends Component {
     disabled: [],
     size: 'm',
   };
-  static enhance = [
-    i18nEnhance(),
-    keyboardFocusEnhance({
-      propName: '$keyboardFocusEnhance',
-      isDisabled: () => false,
-      isCurrent: true,
-      focusMethod: 'onFocusCapture',
-      blurMethod: 'onBlurCapture',
-    }),
-  ];
+  static enhance = [i18nEnhance()];
 
   static add = (date, amount, unit) => {
     return dayjs(date)
@@ -104,17 +95,33 @@ class RangePickerAbstract extends Component {
 
   bindHandlerNavigateClick = (direction) => () => this.navigateView(direction);
 
-  handlerPopperKeyDown = (e) => {
+  handlerKeyDown = (e) => {
     if (e.target !== e.currentTarget) return;
     const { displayedPeriod, highlighted } = this.asProps;
     const { dirtyValue } = this.state;
     const day = this.keyDiff[e.keyCode];
+
+    const setNextDisplayedPeriod = (next_highlighted) => {
+      const [_, right_period] = next_highlighted;
+
+      if (right_period) {
+        const month_right_period = right_period.getMonth();
+        const month_displayed_Period = displayedPeriod.getMonth();
+        if (month_right_period - month_displayed_Period > 1) {
+          return RangePickerAbstract.subtract(right_period, 1, 'month');
+        } else if (month_right_period - month_displayed_Period < 0) {
+          return right_period;
+        }
+      }
+      return displayedPeriod;
+    };
 
     if (e.keyCode === 32 && highlighted.length) {
       this.handlerChange(highlighted[1] || highlighted[0]);
       e.preventDefault();
     }
     if (day) {
+      if (INTERACTION_TAGS.includes(e.target.tagName)) return;
       if (highlighted.length) {
         let next_highlighted;
         if (dirtyValue.length === 1) {
@@ -132,13 +139,12 @@ class RangePickerAbstract extends Component {
           ];
         }
         this.handlers.highlighted(next_highlighted);
-        this.handlers.displayedPeriod(next_highlighted[1] || next_highlighted[0]);
+        this.handlers.displayedPeriod(setNextDisplayedPeriod(next_highlighted));
       } else {
         this.handlers.highlighted([displayedPeriod]);
       }
       e.preventDefault();
     }
-    // this.handlerChange()
   };
 
   handlerApply = (value) => {
@@ -178,6 +184,7 @@ class RangePickerAbstract extends Component {
     return {
       size,
       empty: !value[0] && !value[1],
+      onKeyDown: this.handlerKeyDown,
     };
   }
 
@@ -188,7 +195,7 @@ class RangePickerAbstract extends Component {
       periods = this.getDefaultPeriods(),
       unclearable,
       getI18nText,
-      $keyboardFocusEnhance,
+      interaction,
     } = this.asProps;
     const { dirtyValue } = this.state;
 
@@ -211,8 +218,9 @@ class RangePickerAbstract extends Component {
       </>
     );
 
-    return assignProps($keyboardFocusEnhance, {
-      onKeyDown: this.handlerPopperKeyDown,
+    return {
+      tabIndex: 0,
+      onKeyDown: this.handlerKeyDown,
       children: (
         <>
           <Flex>
@@ -243,7 +251,7 @@ class RangePickerAbstract extends Component {
           {!Boolean(periods.length) && <Flex mt={4}>{buttons}</Flex>}
         </>
       ),
-    });
+    };
   }
 
   getHeaderProps() {
