@@ -21,9 +21,8 @@ We also have special libraries for inner usage (they are available only for Semr
 - UX/UI patterns with common modules and patterns we use across different Semrush products — **[Patterns](https://www.figma.com/file/pK5cFpKXVzBzSW1mJyNu4t/03-PATTERNS)**;
 - UI illustrations — **[UI illustrations](https://www.figma.com/file/RqNKwz285OsvD48zlMMOHN/04-UI-ILLUSTRATIONS)**;
 - basic components and templates for product landings — **[Product landings](https://www.figma.com/file/80Dnudj3T3T7rsGkGqvJUg/05-PRODUCT-LANDINGS)**;
-- product email marketing templates — **[Product email](https://www.figma.com/file/nWUZkhBAFRZLYYlRL68xYh/06-EMAIL)**;
-- supporting elements for decoration in our files — **[Decorations](https://www.figma.com/file/WOJHmjxdmhcTmrvifJo1FkRL/Decorations-for-your-files)**;
-- components for mobile devices (in progress) — **[Mobile](https://www.figma.com/file/15OlJiZ3NRBYS94LasDpEM/07-MOBILE)**.
+- product email marketing templates — **[Product emails](https://www.figma.com/file/uBxKSTlXSEDiKvFp6txzrr/NEW-%E2%80%A2-Product-emails?node-id=1%3A164)**;
+- supporting elements for decoration in our files — **[Decorations](https://www.figma.com/file/WOJHmjxdmhcTmrvifJo1FkRL/Decorations-for-your-files)**.
 
 > 💡 **Libraries with UI illustrations, patterns and email templates are open for editing for all UI Team members**.
 >

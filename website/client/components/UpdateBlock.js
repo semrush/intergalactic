@@ -13,8 +13,8 @@ import axios from 'axios';
 const UpdateWrapper = styled.div`
   display: grid;
   grid-template-rows: 1fr;
-  grid-template-columns: 1fr 2fr;
-  margin-left: -116px;
+  grid-template-columns: 3fr 1fr;
+  margin-left: 40px;
   @media (max-width: 767px) {
     grid-template-columns: 1fr;
     margin-left: 0;
@@ -27,8 +27,9 @@ const UpdateWrapper = styled.div`
 
 const Info = styled.div`
   grid-row: 1;
-  grid-column: 2;
+  grid-column: 1;
   font-size: 18px;
+  margin-right: 40px;
   @media (max-width: 767px) {
     grid-column: 1;
   }
@@ -59,9 +60,8 @@ const Terms = styled.div`
 
 const UpdatesImg = styled.img`
   grid-row: 1;
-  grid-column: 1;
-  margin-right: 40px;
-  margin-top: -50px;
+  grid-column: 2;
+  margin-right: 56px;
   @media (max-width: 767px) {
     display: none;
   }
@@ -181,7 +181,6 @@ function UpdateBlock() {
 
   return (
     <UpdateWrapper id="updBlock">
-      <UpdatesImg src={updatesImg} />
       <Info>
         <Header>All updates in your inbox</Header>
         <Box mb={8}>Just new releases and component versions. And nothing more!</Box>
@@ -238,6 +237,7 @@ function UpdateBlock() {
           </>
         )}
       </Info>
+      <UpdatesImg src={updatesImg} />
     </UpdateWrapper>
   );
 }
