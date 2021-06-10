@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.3.4] - 2021-06-10
+
+### Changed
+
+- Moved logic for checking interactive trigger to `Dropdown`.
+
 ## [2.3.3] - 2021-06-08
 
 ### Fixed

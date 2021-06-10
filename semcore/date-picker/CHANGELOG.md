@@ -2,6 +2,16 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.4.0] - 2021-06-10
+
+### Changed
+
+- Version of dependence `@semcore/core` has been changed to `1.11`.
+- Improved performance. Removed one component wrapper.
+- The style processing system has been changed.
+- Removed the ability to apply media styles via a plugin `babel-plugin-react-semcore`.
+- Added support keydown arrows for choose date to calendar.
+
 ## [2.3.2] - 2021-05-05
 
 ### Fixed

@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.11.8] - 2021-06-10
+
+### Fixed
+
+- Fixed set prop `returnFocus` for Focus-Lock
+
 ## [4.11.7] - 2021-06-08
 
 ### Fixed
