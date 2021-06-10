@@ -21,6 +21,10 @@ Left and right margin:
 - for desktop template is 40px;
 - for mobile template is 24px.
 
+@## Components
+
+> You can find all basic design components and blocks for product emails in our [Figma library](https://www.figma.com/file/uBxKSTlXSEDiKvFp6txzrr/NEW-%E2%80%A2-Product-emails?node-id=1%3A164) (available only for Semrush designers).
+
 @## Template with illustration
 
 | Desktop template                         | Mobile template                        |
@@ -33,6 +37,8 @@ Left and right margin:
 | ----------------------------------------- | --------------------------------------- |
 | ![desktop mail](static/desktop-mail2.png) | ![mobile mail](static/mobile-mail2.png) |
 
-@## Components
+@## Icons and illustrations
 
-> You can find all basic design components and blocks for product emails in our [Figma library](https://www.figma.com/file/uBxKSTlXSEDiKvFp6txzrr/NEW-%E2%80%A2-Product-emails?node-id=1%3A164) (available only for Semrush designers).
+You can find all interface icons and small illustrations for product emails in the [Figma library](https://www.figma.com/file/uBxKSTlXSEDiKvFp6txzrr/NEW-%E2%80%A2-Product-emails?node-id=456%3A8265)(available only for Semrush designers).
+
+![icons](static/icons.png)
