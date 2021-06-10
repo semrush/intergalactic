@@ -1,4 +1,4 @@
-function cronUnitToArray(unit: string) {
+function cronUnitToArray(unit) {
   if (unit.includes('-')) {
     const [start, end] = unit.split('-');
     return Array.from(
@@ -9,10 +9,10 @@ function cronUnitToArray(unit: string) {
   return unit.split(/[,\/]/);
 }
 
-export function isValidSchedule(pattern: string) {
+export function isValidSchedule(pattern) {
   if (typeof pattern !== 'string') return false;
 
-  function isValidUnit(unit: string, min: number, max: number) {
+  function isValidUnit(unit, min, max) {
     const unitValues = cronUnitToArray(unit);
     const CRON_REG = /^\d+$|^\*$|^\*\/\d+$/;
     return unitValues.every((item) => {
@@ -21,19 +21,19 @@ export function isValidSchedule(pattern: string) {
     });
   }
 
-  function isValidMonth(month: string) {
+  function isValidMonth(month) {
     return isValidUnit(month, 1, 12);
   }
 
-  function isValidWeekDay(weekDay: string) {
+  function isValidWeekDay(weekDay) {
     return isValidUnit(weekDay, 1, 7);
   }
 
-  function isValidMonthDay(monthDay: string) {
+  function isValidMonthDay(monthDay) {
     return isValidUnit(monthDay, 1, 31);
   }
 
-  function validate(pattern: string, validateFn: (arg: string) => boolean, msg: string) {
+  function validate(pattern, validateFn, msg) {
     if (validateFn(pattern)) return true;
     // eslint-disable-next-line no-console
     console.warn(`DatePicker disabledSchedule: ${msg} format is invalid`);
@@ -58,7 +58,7 @@ export function isValidSchedule(pattern: string) {
   });
 }
 
-export function isInPeriod(pattern: string, date: Date) {
+export function isInPeriod(pattern, date) {
   const patternArr = pattern.split(' ');
 
   function isInPeriod(date, period, dateMethod) {

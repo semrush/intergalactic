@@ -1,9 +1,10 @@
 import React, { ComponentProps } from 'react';
 import BaseTrigger from '@semcore/base-trigger';
+import { Box } from '@semcore/flex-box';
 import addonTextChildren from '@semcore/utils/lib/addonTextChildren';
 import CalendarXS from '@semcore/icon/lib/Calendar/xs';
 import CalendarS from '@semcore/icon/lib/Calendar/s';
-import createComponent from '@semcore/core';
+import createComponent, { Root } from '@semcore/core';
 
 const MAP_SIZE_TO_CALENDAR_SIZE = {
   m: CalendarXS,
@@ -11,9 +12,8 @@ const MAP_SIZE_TO_CALENDAR_SIZE = {
   xl: CalendarS,
 };
 
-const ButtonTriggerRoot = (props) => {
-  const { Root, Children } = props;
-  const Icon = MAP_SIZE_TO_CALENDAR_SIZE[(props.size && props.size) || 'm'];
+const ButtonTriggerRoot = ({ Children, size }) => {
+  const Icon = MAP_SIZE_TO_CALENDAR_SIZE[size || 'm'];
   return (
     <Root render={BaseTrigger}>
       <ButtonTrigger.Addon tag={Icon} />
@@ -24,13 +24,7 @@ const ButtonTriggerRoot = (props) => {
 
 ButtonTriggerRoot.displayName = 'ButtonTrigger';
 
-const ButtonTrigger = createComponent<
-  ComponentProps<typeof BaseTrigger>,
-  {
-    Text: ComponentProps<typeof BaseTrigger.Text>;
-    Addon: ComponentProps<typeof BaseTrigger.Addon>;
-  }
->(ButtonTriggerRoot, {
+const ButtonTrigger = createComponent(ButtonTriggerRoot, {
   Text: BaseTrigger.Text,
   Addon: BaseTrigger.Addon,
 });
