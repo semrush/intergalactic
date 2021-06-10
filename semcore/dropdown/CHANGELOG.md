@@ -2,6 +2,13 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.3.0] - 2021-06-10
+
+### Added
+
+- Support keydown `Enter` and `Space` for open Popper.
+- Logic checked interactive trigger from `DropdownMenu`.
+
 ## [2.2.2] - 2021-06-08
 
 ### Fixed
