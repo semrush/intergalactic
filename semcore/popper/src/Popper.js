@@ -432,6 +432,7 @@ const FocusLockWrapper = React.forwardRef(function(
       as={tag}
       disabled={disableEnforceFocus || nodesLock || eventLock}
       lockProps={propsForElement(other)}
+      returnFocus={returnFocus}
       {...other}
     />
   );

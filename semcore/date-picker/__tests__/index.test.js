@@ -1,5 +1,5 @@
 import React from 'react';
-import { cleanup, render } from 'jest-preset-ui/testing';
+import { axe, cleanup, render } from 'jest-preset-ui/testing';
 import snapshot from 'jest-preset-ui/snapshot';
 import { DatePicker, DateRangePicker, MonthRangePicker } from '../src';
 
@@ -34,6 +34,13 @@ describe('DatePicker', () => {
 
     getByText('Today').click();
     expect(spy).toBeCalledWith(new Date(new Date().setHours(0, 0, 0, 0)));
+  });
+
+  test('a11y', async () => {
+    const { container } = render(<DatePicker visible disablePortal />);
+
+    const results = await axe(container);
+    expect(results).toHaveNoViolations();
   });
 });
 
@@ -90,5 +97,12 @@ describe('DateRangePicker', () => {
       />
     );
     expect(await snapshot(component)).toMatchImageSnapshot();
+  });
+
+  test('a11y', async () => {
+    const { container } = render(<DateRangePicker visible disablePortal />);
+
+    const results = await axe(container);
+    expect(results).toHaveNoViolations();
   });
 });

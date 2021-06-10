@@ -1,86 +1,13 @@
-import React, { HTMLAttributes } from 'react';
+import React from 'react';
 import dayjs from 'dayjs';
 import isBetween from 'dayjs/plugin/isBetween';
-
-import createComponent, { Component, Merge, styled } from '@semcore/core';
-import { Box, IBoxProps } from '@semcore/flex-box';
+import createComponent, { Component, Root, sstyled } from '@semcore/core';
+import { Box } from '@semcore/flex-box';
 import fire from '@semcore/utils/lib/fire';
-import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
-import { isInPeriod, isValidSchedule } from '../utils/cronTabScheduler';
+import includesDate from '../utils/includesDate';
+import { getLocaleDate } from '../utils/formatDate';
 
 import style from '../style/calendar.shadow.css';
-
-export type DateConstructorParams = string | number | Date;
-
-export interface ICalendarProps extends IBoxProps {
-  /**
-   * Locale for displaying the days of a week and months, to be transferred to `Intl`
-   * @default en
-   * */
-  locale?: NavigatorLanguage['language'];
-  /**
-   * Array of dates blocked for selection
-   * Accepts the date, the range of dates or `falsICalendarPropse` for specifying infinity ([Date | false, Date | false]), crontab( 6,7)
-   * */
-  disabled?: (Date | (Date | false)[] | string)[];
-  /**
-   * @ignore
-   * */
-  highlighted?: DateConstructorParams[];
-  /**
-   * @ignore
-   * */
-  onHighlightedChange?: (date: Date[]) => void;
-  /**
-   * The selected date, accepts everything which is accepted by `new Date()`
-   * */
-  value?: DateConstructorParams[];
-  /**
-   * To be activated upon selecting the date
-   * */
-  onChange?: (date: Date[]) => void;
-  /**
-   * Date for showing the necessary month
-   * @default new Date()
-   * */
-  displayedPeriod?: Date;
-}
-
-export interface ICalendarDaysProps extends ICalendarProps {
-  /**
-   * Displays dates of next and previous month
-   * */
-  renderOutdated?: boolean;
-}
-
-export interface ICalendarDaysContext {
-  days: ICalendarUnitProps[];
-}
-
-export interface ICalendarWeekDaysContext {
-  days: ICalendarUnitProps[];
-}
-
-export interface ICalendarMonthsContext {
-  months: ICalendarUnitProps[];
-}
-
-export interface ICalendarUnitProps extends IBoxProps {
-  selected?: boolean;
-  outdated?: boolean;
-  disabled?: boolean;
-  today?: boolean;
-  startSelected?: boolean;
-  endSelected?: boolean;
-  highlighted?: boolean;
-  startHighlighted?: boolean;
-  endHighlighted?: boolean;
-  children?: React.ReactNode;
-}
-
-export interface ICalendarWeekDaysProps extends IBoxProps {
-  locale?: NavigatorLanguage['language'];
-}
 
 dayjs.extend(isBetween);
 
@@ -99,12 +26,7 @@ function getDayJSLocaleParams(locale) {
   };
 }
 
-function CalendarWeekUnit(props) {
-  const { Root: SWeekDay, styles } = props;
-  return styled(styles)(<SWeekDay render={Box} />);
-}
-
-class CalendarWeekDaysRoot extends Component<ICalendarWeekDaysProps> {
+class CalendarWeekDaysRoot extends Component {
   static displayName = 'CalendarWeekDays';
   static style = style;
   static defaultProps = {
@@ -115,7 +37,9 @@ class CalendarWeekDaysRoot extends Component<ICalendarWeekDaysProps> {
   getDaysByWeek() {
     const { locale } = this.asProps;
 
-    let date = dayjs().locale(locale, getDayJSLocaleParams(locale)).startOf('week');
+    let date = dayjs()
+      .locale(locale, getDayJSLocaleParams(locale))
+      .startOf('week');
     return range(7, () => {
       const weekday = new Intl.DateTimeFormat(locale, { weekday: 'short' }).format(date.valueOf());
       date = date.add(1, 'day');
@@ -132,71 +56,29 @@ class CalendarWeekDaysRoot extends Component<ICalendarWeekDaysProps> {
   }
 
   render() {
-    const SWeekDays = this.Root;
-    const { styles } = this.asProps;
-    return styled(styles)(<SWeekDays render={Box} />);
-  }
-}
-
-class CalendarUnit extends Component<ICalendarUnitProps> {
-  static enhance = [keyboardFocusEnhance()];
-
-  render() {
-    const SCalendarUnit = this.Root;
-    const {
-      styles,
-      startSelected,
-      endSelected,
-      selected,
-      outdated,
-      highlighted,
-      startHighlighted,
-      endHighlighted,
-      disabled,
-      today,
-      keyboardFocused,
-    } = this.asProps;
-
-    return styled(styles)(
-      <SCalendarUnit
-        render={Box}
-        tag="button"
-        startSelected={startSelected}
-        endSelected={endSelected}
-        selected={selected}
-        outdated={outdated}
-        highlighted={highlighted}
-        startHighlighted={startHighlighted}
-        endHighlighted={endHighlighted}
-        disabled={disabled}
-        today={today}
-        keyboardFocused={keyboardFocused}
-      />,
+    const SWeekDays = Root;
+    const { Children, styles } = this.asProps;
+    return sstyled(styles)(
+      <SWeekDays render={Box}>
+        <Children />
+      </SWeekDays>,
     );
   }
 }
 
-class CalendarRoot extends Component<ICalendarProps> {
+function CalendarWeekUnit(props) {
+  const SWeekDay = Root;
+  return sstyled(props.styles)(<SWeekDay render={Box} />);
+}
+
+class CalendarAbstract extends Component {
   static style = style;
 
   today = new Date(new Date().setHours(0, 0, 0, 0));
 
   createUnit({ date, ...other }, unit) {
     const self = this;
-    const { disabled: _disabled, value, highlighted: _highlighted } = this.asProps;
-
-    const includesDate = (day) => {
-      if (Array.isArray(day)) {
-        const MAX_DATE_TIMESTAMP = 8640000000000000;
-        const [start, end] = day;
-        return date.isBetween(start || -MAX_DATE_TIMESTAMP, end || MAX_DATE_TIMESTAMP, unit, '[]');
-      }
-      if (isValidSchedule(day)) {
-        return isInPeriod(day, date.toDate());
-      }
-      return date.isSame(day, 'date');
-    };
-
+    const { disabled: _disabled, value, locale, highlighted: _highlighted } = this.asProps;
     let value0 = value[0] ? dayjs(value[0]) : null;
     let value1 = value[1] ? dayjs(value[1]) : null;
     let selected;
@@ -217,10 +99,10 @@ class CalendarRoot extends Component<ICalendarProps> {
       endHighlighted = highlighted1 && date.isSame(highlighted1, 'date');
     }
 
-    const disabled = _disabled.some(includesDate);
+    const disabled = _disabled.some(includesDate(date, unit));
 
     return {
-      date: date.toDate(),
+      date: getLocaleDate(date, locale),
       children: '',
       startSelected,
       endSelected,
@@ -256,14 +138,20 @@ class CalendarRoot extends Component<ICalendarProps> {
   }
 
   handleMouseLeave = () => {
-    const { highlighted: _highlighted } = this.asProps;
-    const highlighted = _highlighted[0] ? [_highlighted[0]] : [];
+    const { highlighted } = this.asProps;
 
-    fire(this, 'onHighlightedChange', highlighted);
+    fire(this, 'onHighlightedChange', highlighted.length ? [highlighted[0]] : []);
   };
 }
 
-class CalendarDaysRoot extends CalendarRoot {
+function CalendarUnit({ styles, date }) {
+  const SCalendarUnit = Root;
+  return sstyled(styles)(
+    <SCalendarUnit render={Box} tag="button" aria-hidden={!date} aria-label={date} tabIndex={-1} />,
+  );
+}
+
+class CalendarDaysRoot extends CalendarAbstract {
   static displayName = 'CalendarDays';
   static defaultProps = {
     displayedPeriod: new Date(new Date().setHours(0, 0, 0, 0)),
@@ -318,7 +206,7 @@ class CalendarDaysRoot extends CalendarRoot {
       nextMonthDays = [];
     }
 
-    return [...prevMonthDays, ...monthDays, ...nextMonthDays] as [ICalendarUnitProps];
+    return [...prevMonthDays, ...monthDays, ...nextMonthDays];
   }
 
   setContext() {
@@ -328,11 +216,11 @@ class CalendarDaysRoot extends CalendarRoot {
   }
 
   render() {
-    const SCalendar = this.Root;
-    const { Children, styles, locale } = this.asProps;
+    const SCalendar = Root;
     const SGridDays = 'div';
+    const { Children, styles, locale } = this.asProps;
 
-    return styled(styles)(
+    return sstyled(styles)(
       <SCalendar render={Box}>
         <CalendarWeekDays locale={locale} />
         <SGridDays onMouseLeave={this.handleMouseLeave}>
@@ -343,7 +231,7 @@ class CalendarDaysRoot extends CalendarRoot {
   }
 }
 
-class CalendarMonthsRoot extends CalendarRoot {
+class CalendarMonthsRoot extends CalendarAbstract {
   static displayName = 'CalendarMonths';
   static defaultProps = {
     children: ({ months }) => months.map((data, i) => <CalendarMonths.Unit key={i} {...data} />),
@@ -355,11 +243,11 @@ class CalendarMonthsRoot extends CalendarRoot {
     let date = dayjs(displayedPeriod).startOf('year');
 
     return range(12, () => {
-      const month = this.createUnit({ date: date }, 'month');
+      const month = this.createUnit({ date }, 'month');
       month.children = new Intl.DateTimeFormat(locale, { month: 'short' }).format(date.valueOf());
       date = date.add(1, 'month');
       return month;
-    }) as [ICalendarUnitProps];
+    });
   }
 
   setContext() {
@@ -369,11 +257,11 @@ class CalendarMonthsRoot extends CalendarRoot {
   }
 
   render() {
-    const SCalendar = this.Root;
-    const { Children, styles } = this.asProps;
+    const SCalendar = Root;
     const SGridMonths = 'div';
+    const { Children, styles } = this.asProps;
 
-    return styled(styles)(
+    return sstyled(styles)(
       <SCalendar render={Box}>
         <SGridMonths onMouseLeave={this.handleMouseLeave}>
           <Children />
@@ -383,22 +271,16 @@ class CalendarMonthsRoot extends CalendarRoot {
   }
 }
 
-const CalendarWeekDays = createComponent<
-  Merge<ICalendarWeekDaysProps, HTMLAttributes<HTMLDivElement>>,
-  { Unit: Merge<IBoxProps, HTMLAttributes<HTMLDivElement>> },
-  ICalendarWeekDaysContext
->(CalendarWeekDaysRoot, { Unit: CalendarWeekUnit });
+const CalendarWeekDays = createComponent(CalendarWeekDaysRoot, {
+  Unit: CalendarWeekUnit,
+});
 
-const CalendarDays = createComponent<
-  Merge<ICalendarDaysProps, HTMLAttributes<HTMLDivElement>>,
-  { Unit: Merge<IBoxProps, HTMLAttributes<HTMLDivElement>> },
-  ICalendarDaysContext
->(CalendarDaysRoot, { Unit: CalendarUnit });
+const CalendarDays = createComponent(CalendarDaysRoot, {
+  Unit: CalendarUnit,
+});
 
-const CalendarMonths = createComponent<
-  Merge<ICalendarProps, HTMLAttributes<HTMLDivElement>>,
-  { Unit: Merge<IBoxProps, HTMLAttributes<HTMLDivElement>> },
-  ICalendarMonthsContext
->(CalendarMonthsRoot, { Unit: CalendarUnit });
+const CalendarMonths = createComponent(CalendarMonthsRoot, {
+  Unit: CalendarUnit,
+});
 
 export { CalendarUnit, CalendarWeekDays, CalendarDays, CalendarMonths };

@@ -1,79 +1,77 @@
-import React, { ComponentProps } from 'react';
+import React from 'react';
 import dayjs from 'dayjs';
-
-import { Component, css, styled } from '@semcore/core';
+import { Component, Root, sstyled } from '@semcore/core';
 import Dropdown from '@semcore/dropdown';
-import { Box, IBoxProps } from '@semcore/flex-box';
+import { Box } from '@semcore/flex-box';
 import Button from '@semcore/button';
 import ChevronLeft from '@semcore/icon/lib/ChevronLeft/xs';
 import ChevronRight from '@semcore/icon/lib/ChevronRight/xs';
 import { callAllEventHandlers } from '@semcore/utils/lib/assignProps';
 import ButtonTrigger from './ButtonTrigger';
-import { DateConstructorParams } from './Calendar';
+import { getLocaleDate } from '../utils/formatDate';
 
-export interface IDateRangePickerPeriodProps extends IBoxProps {
-  /**
-   * Current selected period
-   * */
-  value?: DateConstructorParams[];
-  /**
-   * To be activated by clicking the button for switching the selected period.
-   * */
-  onChange?: (date: Date[]) => void;
-  /**
-   * To be activated by hovering a cursor over the button for changing the current displayed month.
-   * */
-  onDisplayedPeriodChange?: (date: Date) => void;
-  /**
-   * To be activated by hovering a cursor over the button for selecting the dates.
-   * */
-  onHighlightedChange?: (date: Date[]) => void;
-  /**
-   * Array of periods
-   * [{value: [new Date(), new Date()], children: "Today"}]
-   * @default Past 2 days / Past week / Past 2 week / Past month / Past 2 month
-   * */
-  periods?: (ComponentProps<typeof Button> & { value: Date[] })[];
-}
-
-export function Trigger({ Root }) {
+export function Trigger() {
   return <Root render={Dropdown.Trigger} tag={ButtonTrigger} />;
 }
 
 export function Popper(props) {
-  const { Root: SPopper, styles } = props;
-  return styled(styles)(<SPopper render={Dropdown.Popper} />);
+  const SPopper = Root;
+  return sstyled(props.styles)(
+    <SPopper render={Dropdown.Popper} role="region" aria-label="calendar-container" />,
+  );
 }
 
 export function Header(props) {
-  const { Root: SHeader, styles } = props;
-
-  return styled(styles)(<SHeader render={Box} />);
+  const SHeader = Root;
+  return sstyled(props.styles)(<SHeader render={Box} />);
 }
 
 export const Title = (props) => {
-  const { Root: STitle, styles } = props;
-
-  return styled(styles)(<STitle render={Box} />);
+  const STitle = Root;
+  return sstyled(props.styles)(<STitle render={Box} />);
 };
 
-export function Prev({ Root }) {
-  return <Root render={Button} use="tertiary" theme="muted" size="l" />;
+export function Prev() {
+  return (
+    <Root
+      render={Button}
+      use="tertiary"
+      theme="muted"
+      size="l"
+      tabIndex={-1}
+      aria-label="Prev period"
+    />
+  );
 }
 
 Prev.defaultProps = {
   children: <ChevronLeft />,
 };
 
-export function Next({ Root }) {
-  return <Root render={Button} use="tertiary" theme="muted" size="l" />;
+export function Next() {
+  return (
+    <Root
+      render={Button}
+      use="tertiary"
+      theme="muted"
+      size="l"
+      tabIndex={-1}
+      aria-label="Next period"
+    />
+  );
 }
 
 Next.defaultProps = {
   children: <ChevronRight />,
 };
 
-export class Period extends Component<IDateRangePickerPeriodProps> {
+const stylesBtn = sstyled.css`
+  SInner {
+    justify-content: flex-start;
+  }
+`;
+
+export class Period extends Component {
   getActiveControl = (period = [], value) => {
     function compareMonth(monthOne, monthTwo) {
       return dayjs(monthOne).isSame(dayjs(monthTwo), 'date');
@@ -89,7 +87,7 @@ export class Period extends Component<IDateRangePickerPeriodProps> {
   };
 
   render() {
-    const SPeriod = this.Root;
+    const SPeriod = Root;
     const {
       styles,
       value,
@@ -99,17 +97,13 @@ export class Period extends Component<IDateRangePickerPeriodProps> {
       onDisplayedPeriodChange,
     } = this.asProps;
 
-    return styled(styles)(
+    return sstyled(styles)(
       <SPeriod render={Box}>
         {periods.map(({ value: period, onClick, onMouseEnter, onMouseLeave, ...other }, i) => (
           <Button
             use="tertiary"
             theme="muted"
-            styles={css`
-              SInner {
-                justify-content: flex-start;
-              }
-            `}
+            styles={stylesBtn}
             key={i}
             active={this.getActiveControl(period, value)}
             onClick={callAllEventHandlers(onClick, () => onChange(period))}
