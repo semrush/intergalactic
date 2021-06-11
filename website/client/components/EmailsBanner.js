@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import emailImg from '../static/illustration/email-library-pic.svg';
-import Badge from '@semcore/badge';
+import Tag from '@semcore/tag';
 import { Box } from '@semcore/flex-box';
 
 const EmailsWrapper = styled.div`
@@ -62,7 +62,7 @@ function BannerBlock() {
       <Info>
         <Box>
           <Header mr={2}>Product emails library</Header>
-          <Badge>soon</Badge>
+          <Tag size="s" theme="muted" use="primary" children="soon" />
         </Box>
         <Box mt={2} mb={8}>
           There we store all you need for making your product newsletter cool and consistent.
