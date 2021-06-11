@@ -16,10 +16,11 @@ const EmailsWrapper = styled.div`
   @media (max-width: 767px) {
     grid-template-columns: 1fr 2fr;
     margin-left: 0;
-    margin-bottom: 0;
+    margin: 0 35px 56px;
   }
   @media (max-width: 320px) {
     padding: 0;
+    margin: 0;
   }
 `;
 
