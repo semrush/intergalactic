@@ -116,11 +116,11 @@ Metrics can be placed not only in separate widgets, but also inside the table ce
 
 @## Difference value
 
+- Don't show the metric's title in the tooltip, because we already have it in the Summary.
 - While hovering diff value, show the tooltip with the previous and current value next to the metric. Do not abbreviate the values in the tooltip.
-- You can show both absolute and relative values inside the tooltip.
-- Don't show the metric's title in the tooltip, because we already have in in the Summary.
+- You can show both absolute and relative values inside the tooltip if needed.
 
-![tooltip with difference value](static/diff.png)
+![tooltip with difference value](static/diff.png) ![tooltip with difference value](static/diff2.png)
 
 @## Summary with minitrends
 
