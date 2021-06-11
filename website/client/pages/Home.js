@@ -9,6 +9,7 @@ import Tag from '@semcore/tag';
 import AllComponents from '../components/AllComponents';
 import Error from '../components/Error';
 import LoadingPage from '../components/LoadingPage';
+import EmailsBanner from '../components/EmailsBanner';
 import UpdateBlock from '../components/UpdateBlock';
 import whale from '../static/illustration/whale.svg';
 import layout from '../static/illustration/layout.svg';
@@ -523,6 +524,7 @@ function Home() {
                 <Border>{renderSwitch(value, data)}</Border>
               </Tab>
             </MainWrapper>
+            <EmailsBanner />
             <UpdateBlock />
           </Overlay>
           <UpdatesButton activeClass="active" to="updBlock" spy={true} smooth={true}>

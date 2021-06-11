@@ -29,6 +29,7 @@ const Info = styled.div`
   grid-row: 1;
   grid-column: 1;
   font-size: 18px;
+  line-height: 150%;
   margin-right: 40px;
   @media (max-width: 767px) {
     grid-column: 1;
