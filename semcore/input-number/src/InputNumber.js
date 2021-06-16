@@ -125,10 +125,10 @@ function Controls(props) {
 
   return sstyled(styles)(
     <SControls render={Input.Addon}>
-      <SUp onClick={inc} tabIndex={-1} type="button" size={size}>
+      <SUp onClick={inc} tabIndex={-1} type="button" size={size} aria-label="Increment number">
         <IconUp size={size} />
       </SUp>
-      <SDown onClick={dec} tabIndex={-1} type="button" size={size}>
+      <SDown onClick={dec} tabIndex={-1} type="button" size={size} aria-label="Decrement number">
         <IconDown size={size} />
       </SDown>
       <Children />

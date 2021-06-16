@@ -1,5 +1,5 @@
 import React from 'react';
-import { cleanup, fireEvent, render } from 'jest-preset-ui/testing';
+import { cleanup, fireEvent, render, axe } from 'jest-preset-ui/testing';
 import snapshot from 'jest-preset-ui/snapshot';
 import InputNumber from '../src';
 
@@ -133,5 +133,17 @@ describe('InputNumber', () => {
     );
 
     expect(await snapshot(component)).toMatchImageSnapshot();
+  });
+
+  test('a11y', async () => {
+    const { container } = render(
+      <InputNumber>
+        <InputNumber.Value aria-label="input-number" />
+        <InputNumber.Controls showControls />
+      </InputNumber>,
+    );
+
+    const results = await axe(container);
+    expect(results).toHaveNoViolations();
   });
 });
