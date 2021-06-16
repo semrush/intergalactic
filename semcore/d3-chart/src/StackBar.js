@@ -35,7 +35,7 @@ class StackBarRoot extends Component {
         }
         return acc;
       }, []);
-      stack.keys(keys);
+      stack.keys(keys.reverse());
     }
 
     return stack(data);

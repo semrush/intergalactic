@@ -3,12 +3,8 @@ import createComponent, { Component, Root, sstyled } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
 import EventEmitter from '@semcore/utils/lib/eventEmitter';
 
-import style from './style/chart.shadow.css';
-
 class PlotRoot extends Component {
   static displayName = 'Plot';
-
-  static style = style;
 
   constructor(props) {
     super(props);

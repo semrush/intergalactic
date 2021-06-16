@@ -21,10 +21,10 @@ export default () => {
 
   return (
     <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
-      <YAxis hide={false} ticks={yScale.domain()}>
+      <YAxis hide={false}>
         <YAxis.Ticks />
       </YAxis>
-      <XAxis ticks={xScale.ticks()}>
+      <XAxis>
         <XAxis.Ticks />
         <XAxis.Grid />
       </XAxis>

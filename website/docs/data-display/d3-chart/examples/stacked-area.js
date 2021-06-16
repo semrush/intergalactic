@@ -33,11 +33,11 @@ export default () => {
 
   return (
     <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
-      <YAxis ticks={yScale.ticks()}>
+      <YAxis>
         <YAxis.Ticks />
         <YAxis.Grid />
       </YAxis>
-      <XAxis ticks={xScale.ticks()}>
+      <XAxis>
         <XAxis.Ticks>
           {({ value }) => ({
             children: formatDate(value, {
@@ -60,10 +60,8 @@ export default () => {
                   })}
                 </Tooltip.Title>
                 <Flex justifyContent="space-between">
-                  <Tooltip.Dot mr={4} color={colors['orange-01']}>
-                    Stack 3
-                  </Tooltip.Dot>
-                  <Text bold>{data[xIndex].stack3}</Text>
+                  <Tooltip.Dot mr={4}>Stack 1</Tooltip.Dot>
+                  <Text bold>{data[xIndex].stack1}</Text>
                 </Flex>
                 <Flex mt={2} justifyContent="space-between">
                   <Tooltip.Dot mr={4} color={colors['green-01']}>
@@ -72,8 +70,10 @@ export default () => {
                   <Text bold>{data[xIndex].stack2}</Text>
                 </Flex>
                 <Flex mt={2} justifyContent="space-between">
-                  <Tooltip.Dot mr={4}>Stack 1</Tooltip.Dot>
-                  <Text bold>{data[xIndex].stack1}</Text>
+                  <Tooltip.Dot mr={4} color={colors['orange-01']}>
+                    Stack 3
+                  </Tooltip.Dot>
+                  <Text bold>{data[xIndex].stack3}</Text>
                 </Flex>
                 <Flex mt={2} justifyContent="space-between">
                   <Box mr={4}>Total</Box>

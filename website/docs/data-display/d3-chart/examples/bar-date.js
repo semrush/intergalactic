@@ -30,7 +30,7 @@ export default () => {
           <YAxis.Ticks />
           <YAxis.Grid />
         </YAxis>
-        <XAxis ticks={xScale.domain()}>
+        <XAxis>
           <XAxis.Ticks>
             {({ value, index }) => ({ children: index % 2 === 0 ? getDate(value) : '' })}
           </XAxis.Ticks>

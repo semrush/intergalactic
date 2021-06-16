@@ -20,7 +20,7 @@ export default () => {
 
   return (
     <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
-      <YAxis ticks={yScale.domain()}>
+      <YAxis>
         <YAxis.Ticks />
       </YAxis>
       <HorizontalBar x="bar" y="category">

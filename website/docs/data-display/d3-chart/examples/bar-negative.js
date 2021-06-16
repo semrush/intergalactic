@@ -21,11 +21,11 @@ export default () => {
 
   return (
     <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
-      <YAxis ticks={yScale.ticks()}>
+      <YAxis>
         <YAxis.Ticks />
         <YAxis.Grid />
       </YAxis>
-      <XAxis ticks={xScale.domain()}>
+      <XAxis>
         <XAxis.Ticks />
       </XAxis>
       <Tooltip tag={HoverRect} x="category" wMin={100}>
@@ -38,21 +38,21 @@ export default () => {
                   <Tooltip.Dot mr={4} color={colors['green-01']}>
                     Positive
                   </Tooltip.Dot>
-                  <Text bold>{data[xIndex].bar}</Text>
+                  <Text bold>{data[xIndex].bar1}</Text>
                 </Flex>
                 <Flex justifyContent="space-between" mt={2}>
                   <Tooltip.Dot mr={4} color={colors['red-01']}>
                     Negative
                   </Tooltip.Dot>
-                  <Text bold>{data[xIndex].bar1}</Text>
+                  <Text bold>{data[xIndex].bar2}</Text>
                 </Flex>
               </>
             ),
           };
         }}
       </Tooltip>
-      <Bar x="category" y="bar" color={colors['green-01']} />
-      <Bar x="category" y="bar1" color={colors['red-01']} />
+      <Bar x="category" y="bar1" color={colors['green-01']} />
+      <Bar x="category" y="bar2" color={colors['red-01']} />
       <XAxis position={0} />
     </Plot>
   );
@@ -62,6 +62,6 @@ const data = Array(5)
   .fill({})
   .map((d, i) => ({
     category: `Category ${i}`,
-    bar: Math.random().toFixed(1) * 10,
-    bar1: -Math.random().toFixed(1) * 10,
+    bar1: Math.random().toFixed(1) * 10,
+    bar2: -Math.random().toFixed(1) * 10,
   }));
