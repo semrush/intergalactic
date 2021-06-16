@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.0.1] - 2020-06-16
+
+### Added
+
+- [A11y] added aria-label for buttons in `InputNumber.Controls`
+
 ## [3.0.1] - 2020-05-31
 
 ### Fixed
