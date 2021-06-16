@@ -28,7 +28,6 @@ class AreaRoot extends Component {
         .x((p) => scaleOfBandwidth(xScale, p[x]))
         .y((p) => scaleOfBandwidth(yScale, p[y])),
       color: '#50aef4',
-      fill: '#50aef450',
     };
   };
 
@@ -40,34 +39,35 @@ class AreaRoot extends Component {
       y,
       data,
       d3: d3Line,
-      fill: color,
+      color,
     };
   }
 
   getNullProps() {
     const { y, color, data, d3Line } = this.asProps;
     return {
-      d3Line,
       data: getNullData(data, d3Line.defined(), y),
-      fill: color,
+      d3: d3Line,
+      color,
     };
   }
 
   render() {
     const SArea = this.Element;
-    const { styles, hide, d3, d3Line, data, fill, color } = this.asProps;
+    const SAreaLine = 'path';
+    const { styles, hide, d3, d3Line, data, color } = this.asProps;
     return sstyled(styles)(
       <>
-        <SArea render="path" hide={hide} fill={fill} d={d3(data)} />
-        <path stroke={color} strokeWidth="3" fill="transparent" d={d3Line(data)} />
+        <SAreaLine d={d3Line(data)} color={color} />
+        <SArea render="path" d={d3(data)} hide={hide} color={color} />
       </>,
     );
   }
 }
 
 function Null(props) {
-  const { Element: SNull, styles, d3Line, data, hide } = props;
-  return sstyled(styles)(<SNull render="path" d={d3Line(data)} hide={hide} />);
+  const { Element: SNull, styles, d3, data, hide, color } = props;
+  return sstyled(styles)(<SNull render="path" d={d3(data)} hide={hide} color={color} />);
 }
 
 export default createElement(AreaRoot, {

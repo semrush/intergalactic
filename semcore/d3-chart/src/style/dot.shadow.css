@@ -1,0 +1,16 @@
+@import '@semcore/utils/style/var.css';
+
+SDot {
+  stroke-width: 2px;
+  stroke: #fff;
+  r: 6px;
+  fill: var(--color);
+}
+
+SDot[hide] {
+  display: none;
+}
+
+SDot[active] {
+  r: 8px;
+}

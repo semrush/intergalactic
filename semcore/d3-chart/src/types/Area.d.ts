@@ -10,9 +10,6 @@ export interface IAreaProps extends IContext {
   /** Color line
    * @default '#50aef4'*/
   color?: string;
-  /** Area color
-   * @default '#50aef450'*/
-  fill?: string;
   /** Element hide property */
   hide?: boolean;
   /** Curve method */
@@ -24,8 +21,6 @@ export interface IAreaDotsProps extends IContext {
   display?: boolean;
   /** Hide property */
   hide?: boolean;
-  /** Index active of element */
-  activeIndex?: number;
 }
 
 export interface IAreaDotsContext {

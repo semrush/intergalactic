@@ -1,18 +1,12 @@
 SArea {
+  fill: var(--color);
+  fill-opacity: 0.5;
 }
 
-SDot {
-  stroke-width: 2px;
-  stroke: #fff;
-  r: 6px;
-}
-
-SDot[hide] {
-  display: none;
-}
-
-SDot[active] {
-  r: 8px;
+SAreaLine {
+  stroke: var(--color);
+  stroke-width: 3;
+  fill: transparent;
 }
 
 SNull {

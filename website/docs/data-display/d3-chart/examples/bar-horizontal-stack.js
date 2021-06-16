@@ -21,10 +21,10 @@ export default () => {
 
   return (
     <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
-      <YAxis hide={false} ticks={yScale.domain()}>
+      <YAxis hide={false}>
         <YAxis.Ticks />
       </YAxis>
-      <XAxis ticks={xScale.ticks()}>
+      <XAxis>
         <XAxis.Ticks />
         <XAxis.Grid />
       </XAxis>
@@ -36,17 +36,17 @@ export default () => {
                 <Tooltip.Title>{data[yIndex].category}</Tooltip.Title>
                 <Flex justifyContent="space-between">
                   <Tooltip.Dot mr={4}>Stack 1</Tooltip.Dot>
-                  <Text bold>{data[yIndex].bar}</Text>
+                  <Text bold>{data[yIndex].bar1}</Text>
                 </Flex>
                 <Flex mt={2} justifyContent="space-between">
                   <Tooltip.Dot mr={4} color={colors['green-01']}>
                     Stack 2
                   </Tooltip.Dot>
-                  <Text bold>{data[yIndex].bar1}</Text>
+                  <Text bold>{data[yIndex].bar2}</Text>
                 </Flex>
                 <Flex mt={2} justifyContent="space-between">
                   <Box mr={4}>Total</Box>
-                  <Text bold>{data[yIndex].bar + data[yIndex].bar1}</Text>
+                  <Text bold>{data[yIndex].bar1 + data[yIndex].bar2}</Text>
                 </Flex>
               </>
             ),
@@ -54,8 +54,8 @@ export default () => {
         }}
       </Tooltip>
       <StackBar y="category">
-        <StackBar.HorizontalBar x="bar" />
-        <StackBar.HorizontalBar x="bar1" color={colors['green-01']} />
+        <StackBar.HorizontalBar x="bar1" />
+        <StackBar.HorizontalBar x="bar2" color={colors['green-01']} />
       </StackBar>
     </Plot>
   );
@@ -63,6 +63,6 @@ export default () => {
 
 const data = [...Array(5).keys()].map((d, i) => ({
   category: `Category ${i}`,
-  bar: Math.random().toFixed(1) * 10,
   bar1: Math.random().toFixed(1) * 10,
+  bar2: Math.random().toFixed(1) * 10,
 }));

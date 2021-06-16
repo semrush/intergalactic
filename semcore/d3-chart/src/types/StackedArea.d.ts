@@ -1,14 +1,15 @@
 import { CProps, ReturnEl } from '@semcore/core';
 import IContext from './context';
-import { IAreaProps } from './Area';
+import Area from './Area';
 
 export interface IStackedAreaProps extends IContext {
-  /** Data for graphic */
-  data?: any[];
   /** Field from data for Axis x */
   x?: string;
   /** Field from data for Axis y */
   y?: string;
+  /** Stack generators
+   * @default d3.stack() */
+  stack?: any;
 }
 
 export interface IStackedAreaContext {
@@ -19,7 +20,7 @@ export interface IStackedAreaContext {
 declare const StackedArea: (<T>(
   props: CProps<IStackedAreaProps & T, IStackedAreaContext>,
 ) => ReturnEl) & {
-  Area: <T>(props: CProps<IAreaProps & T>) => ReturnEl;
+  Area: typeof Area;
 };
 
 export default StackedArea;
