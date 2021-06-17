@@ -124,7 +124,7 @@ describe('XAxis', () => {
         eventEmitter={eventEmitter}
       >
         <XAxis>
-          <XAxis.Ticks ticks={xScale.ticks()} tag="foreignObject" width="12" height="12">
+          <XAxis.Ticks tag="foreignObject" width="12" height="12">
             {() => ({
               children: (
                 <svg viewBox="0 0 12 12" width="12" height="12" data-testid="tick">
@@ -191,8 +191,8 @@ describe('Area chart', () => {
           <YAxis.Ticks />
           <YAxis.Grid />
         </YAxis>
-        <XAxis ticks={xScale.ticks()}>
-          <XAxis.Ticks></XAxis.Ticks>
+        <XAxis>
+          <XAxis.Ticks />
         </XAxis>
         <Area x="time" y="stack1" curve={curveCardinal}>
           <Area.Dots display />
@@ -219,22 +219,25 @@ describe('Area chart', () => {
 
     const component = (
       <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
-        <YAxis ticks={yScale.ticks()}>
+        <YAxis>
           <YAxis.Ticks />
           <YAxis.Grid />
         </YAxis>
-        <XAxis ticks={xScale.ticks()}>
-          <XAxis.Ticks></XAxis.Ticks>
+        <XAxis>
+          <XAxis.Ticks />
         </XAxis>
         <StackedArea x="time">
           <StackedArea.Area y="stack1">
             <StackedArea.Area.Null />
+            <StackedArea.Area.Dots />
           </StackedArea.Area>
           <StackedArea.Area y="stack2" fill="#3AB01150" color="#3AB011">
             <StackedArea.Area.Null />
+            <StackedArea.Area.Dots />
           </StackedArea.Area>
           <StackedArea.Area y="stack3" fill="#FF8E2950" color="#FF8E29">
             <StackedArea.Area.Null />
+            <StackedArea.Area.Dots />
           </StackedArea.Area>
         </StackedArea>
       </Plot>
@@ -246,12 +249,12 @@ describe('Area chart', () => {
   test('should render curve Stacked Area chart with dots correctly', async () => {
     const component = (
       <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
-        <YAxis ticks={yScale.ticks()}>
+        <YAxis>
           <YAxis.Ticks />
           <YAxis.Grid />
         </YAxis>
-        <XAxis ticks={xScale.ticks()}>
-          <XAxis.Ticks></XAxis.Ticks>
+        <XAxis>
+          <XAxis.Ticks />
         </XAxis>
         <StackedArea x="time">
           <StackedArea.Area y="stack1" curve={curveCardinal}>
