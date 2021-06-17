@@ -28,7 +28,13 @@ tabName: Guide
 
 @## Margins & paddings
 
-![summary ma & paddings](static/margins-paddings.png)
+The most common version of the Summary:
+
+![summary margins & paddings](static/margins-paddings.png)
+
+If the metric consists of several others, so use this spacings:
+
+![summary margins & paddings](static/margins-paddings2.png)
 
 **What Summary can consist of:**
 
@@ -93,11 +99,11 @@ _For example, Overview has metrics with the horizontal layout, because you need 
 | If there are 3 or less metrics in the frontend ->    | vertical layout                               | ![vertical layout](static/vertical.png)     |
 | If there is one metric in the interface, than ->     | show the values of which this metric consists | ![one-metric layout](static/one-metric.png) |
 
+![metric consists of several others](static/metric-yes-no.png)
+
 @## Alignment
 
-Metrics can be placed not only in separate blocks, but also inside table cells, eg.
-
-Thus, the alignment of the metric and its additional information can be both left and right.
+Metrics can be placed not only in separate widgets, but also inside the table cells and other components. Thus, the alignment of the metric and its additional information can be both left and right.
 
 ![right alignment layout](static/right-align.png)
 
@@ -110,9 +116,11 @@ Thus, the alignment of the metric and its additional information can be both lef
 
 @## Difference value
 
-While hovering diff value, show the tooltip with the previous and current value next to the metric. Do not abbreviate the values in the tooltip.
+- Don't show the metric's title in the tooltip, because we already have it in the Summary.
+- While hovering diff value, show the tooltip with the previous and current value next to the metric. Do not abbreviate the values in the tooltip.
+- You can show both absolute and relative values inside the tooltip if needed.
 
-![tooltip with difference value](static/diff.png)
+![tooltip with difference value](static/diff.png) ![tooltip with difference value](static/diff2.png)
 
 @## Summary with minitrends
 
@@ -124,6 +132,12 @@ Minitrends is a shortcut version of charts for displaying a trend, developing a 
 | ------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------- |
 | If the metrics do not fit into the maximum page width, arrange the data in a column — **move the minitrends under the metric.** | ![minitrend](static/minitrend2.png) |
 | If your metrics use the same type of minitrends (for example, linear), make them the same width.                                | ![minitrend](static/minitrend1.png) |
+
+### Tooltip
+
+You can show tooltips with values while hovering over the minitrend if necessary.
+
+![minitrend tooltip](static/minitrend-tooltip.png)
 
 ### Clickable minitrend
 
@@ -151,12 +165,13 @@ You can "hide" more detailed information (a whole widget with a full-fledged cha
 
 @## Edge cases
 
-| State                                                                                                                                                      | Appearance example                         |
-| ---------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------ |
-| Show [Skeleton](/components/skeleton) while the first page load.                                                                                           | ![skeleton](static/skeleton.png)           |
-| Show [Spin](/components/spin) after reloading the data, applying filters on the page, etc.                                                                 | ![spin](static/spin.png)                   |
-| Show `n/a` message if data is missing.                                                                                                                     | ![not available](static/not-available.png) |
-| Show `Something went wrong` message for metrics with errors. _The entire widget or individual metrics are covered by a white fader with 80% transparency._ | ![error](static/error.png)                 |
+| State                                                                                                                                                                     | Appearance example                         |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------ |
+| Show [Skeleton](/components/skeleton) while the first page load.                                                                                                          | ![skeleton](static/skeleton.png)           |
+| Show [Spin](/components/spin) after reloading the data, applying filters on the page, etc.                                                                                | ![spin](static/spin.png)                   |
+| Show `n/a` message if data is missing.                                                                                                                                    | ![not available](static/not-available.png) |
+| If we can not show metric because of the error, show `WarningS` icon with the reload link. While hovering over the icon show tooltip with `Something went wrong` message. | ![error](static/error2.png)                |
+| Show `Something went wrong` message for metrics with errors. _The entire widget or individual metrics are covered by a white fader with 80% transparency._                | ![error](static/error.png)                 |
 
 @## Adaptivity
 

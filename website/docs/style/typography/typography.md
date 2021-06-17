@@ -172,6 +172,7 @@ These recommendations apply to typography in our core products and reports.
 
 ![h6 with paragraph](static/h6-p.png)
 
+@page typography-a11y
 @page typography-api
 @page typography-code
 @page typography-changelog
