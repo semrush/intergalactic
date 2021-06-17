@@ -231,11 +231,11 @@ describe('Area chart', () => {
             <StackedArea.Area.Null />
             <StackedArea.Area.Dots />
           </StackedArea.Area>
-          <StackedArea.Area y="stack2" fill="#3AB01150" color="#3AB011">
+          <StackedArea.Area y="stack2" color="#3AB011">
             <StackedArea.Area.Null />
             <StackedArea.Area.Dots />
           </StackedArea.Area>
-          <StackedArea.Area y="stack3" fill="#FF8E2950" color="#FF8E29">
+          <StackedArea.Area y="stack3" color="#FF8E29">
             <StackedArea.Area.Null />
             <StackedArea.Area.Dots />
           </StackedArea.Area>
@@ -260,10 +260,10 @@ describe('Area chart', () => {
           <StackedArea.Area y="stack1" curve={curveCardinal}>
             <StackedArea.Area.Dots display />
           </StackedArea.Area>
-          <StackedArea.Area y="stack2" fill="#3AB01150" color="#3AB011" curve={curveCardinal}>
+          <StackedArea.Area y="stack2" color="#3AB011" curve={curveCardinal}>
             <StackedArea.Area.Dots display />
           </StackedArea.Area>
-          <StackedArea.Area y="stack3" fill="#FFA31850" color="#FFA318" curve={curveCardinal}>
+          <StackedArea.Area y="stack3" color="#FFA318" curve={curveCardinal}>
             <StackedArea.Area.Dots display />
           </StackedArea.Area>
         </StackedArea>
