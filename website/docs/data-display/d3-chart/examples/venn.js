@@ -6,14 +6,14 @@ export default () => {
   return (
     <Plot height={300} width={400} data={data}>
       <Venn>
-        <Venn.Circle name="Good" dataKey="G" color="#3AB011" />
-        <Venn.Circle name="Fast" dataKey="F" color="#50AEF4" />
-        <Venn.Circle name="Cheap" dataKey="C" color="#FF8E29" />
-        <Venn.Circle name="Unknown" dataKey="U" color="#890C85" />
-        <Venn.Intersection name="Good & Fast" dataKey="G/F" />
-        <Venn.Intersection name="Good & Cheap" dataKey="G/C" />
-        <Venn.Intersection name="Fast & Cheap" dataKey="F/C" />
-        <Venn.Intersection name="Good & Fast & Cheap" dataKey="G/F/C" />
+        <Venn.Circle dataKey="G" name="Good" color="#3AB011" />
+        <Venn.Circle dataKey="F" name="Fast" color="#50AEF4" />
+        <Venn.Circle dataKey="C" name="Cheap" color="#FF8E29" />
+        <Venn.Circle dataKey="U" name="Unknown" color="#890C85" />
+        <Venn.Intersection dataKey="G/F" name="Good & Fast" />
+        <Venn.Intersection dataKey="G/C" name="Good & Cheap" />
+        <Venn.Intersection dataKey="F/C" name="Fast & Cheap" />
+        <Venn.Intersection dataKey="G/F/C" name="Good & Fast & Cheap" />
         <Tooltip>
           {({ name, dataKey }) => {
             return {
