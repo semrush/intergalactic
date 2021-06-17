@@ -8,7 +8,6 @@ import ChevronLeft from '@semcore/icon/lib/ChevronLeft/xs';
 import ChevronRight from '@semcore/icon/lib/ChevronRight/xs';
 import { callAllEventHandlers } from '@semcore/utils/lib/assignProps';
 import ButtonTrigger from './ButtonTrigger';
-import { getLocaleDate } from '../utils/formatDate';
 
 export function Trigger() {
   return <Root render={Dropdown.Trigger} tag={ButtonTrigger} />;
@@ -26,9 +25,13 @@ export function Header(props) {
   return sstyled(props.styles)(<SHeader render={Box} />);
 }
 
-export const Title = (props) => {
+export const Title = ({ Children, styles }) => {
   const STitle = Root;
-  return sstyled(props.styles)(<STitle render={Box} />);
+  return sstyled(styles)(
+    <STitle render={Box}>
+      <Children />
+    </STitle>,
+  );
 };
 
 export function Prev() {
