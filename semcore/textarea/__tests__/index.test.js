@@ -1,5 +1,5 @@
 import React from 'react';
-import { cleanup, fireEvent, render } from 'jest-preset-ui/testing';
+import { cleanup, fireEvent, render, axe } from 'jest-preset-ui/testing';
 import { shouldSupportClassName, shouldSupportRef } from 'jest-preset-ui/shared';
 import snapshot from 'jest-preset-ui/snapshot';
 import Textarea from '../src';
@@ -59,5 +59,12 @@ describe('Textarea', () => {
   test('should support readOnly', () => {
     const { queryByTestId } = render(<Textarea data-testid="textarea" readOnly />);
     expect(queryByTestId('textarea').attributes['readOnly']).toBeTruthy();
+  });
+
+  test('a11y', async () => {
+    const { container } = render(<Textarea aria-label="textarea" />);
+
+    const results = await axe(container);
+    expect(results).toHaveNoViolations();
   });
 });

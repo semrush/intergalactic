@@ -1,41 +1,13 @@
-import React, { SyntheticEvent, TextareaHTMLAttributes } from 'react';
-import { ResizeProperty } from 'csstype';
-import { Box, IBoxProps } from '@semcore/flex-box';
-import autoFocusEnhance, {
-  IWithAutoFocusEnhanceProps,
-} from '@semcore/utils/lib/enhances/autoFocusEnhance';
+import React from 'react';
+import { Box } from '@semcore/flex-box';
+import autoFocusEnhance from '@semcore/utils/lib/enhances/autoFocusEnhance';
 import canUseDOM from '@semcore/utils/lib/canUseDOM';
 import cssToIntDefault from '@semcore/utils/lib/cssToIntDefault';
-import createComponent, { Component, Merge, sstyled, Root } from '@semcore/core';
+import createComponent, { Component, sstyled, Root } from '@semcore/core';
 
 import style from './style/textarea.shadow.css';
 
-export interface ITextareaProps extends IBoxProps, IWithAutoFocusEnhanceProps {
-  /** Textarea size
-   * @default m
-   */
-  size?: 'm' | 'l' | 'xl' | false;
-  /** The value responsible for the component state
-   * @default normal
-   */
-  state?: 'normal' | 'invalid' | 'valid' | false;
-  /** Value responsible for resizing textarea
-   * @default none
-   */
-  resize?: ResizeProperty | 'auto';
-  /** Value responsible for the minimum number of rows in recalculation
-   * @default 2
-   * */
-  minRows?: number;
-  /** Value responsible for the maximum number of rows in recalculation */
-  maxRows?: number;
-  /**
-   * Handler to change the value
-   */
-  onChange?: (value: string, event?: SyntheticEvent<HTMLTextAreaElement>) => void;
-}
-
-class Textarea extends Component<ITextareaProps> {
+class Textarea extends Component {
   static displayName = 'Textarea';
   static defaultProps = {
     size: 'm',
@@ -47,7 +19,7 @@ class Textarea extends Component<ITextareaProps> {
   static enhance = [autoFocusEnhance()];
   static style = style;
 
-  node: HTMLTextAreaElement;
+  node = null;
 
   componentDidMount() {
     this.calculateRows();
@@ -102,8 +74,8 @@ class Textarea extends Component<ITextareaProps> {
   calculateRows = () => {
     const { node } = this;
     const { rows } = this.asProps;
-    const maxRows = this.asProps.maxRows as number;
-    const minRows = this.asProps.minRows as number;
+    const maxRows = this.asProps.maxRows;
+    const minRows = this.asProps.minRows;
     if (!node || !canUseDOM() || rows || !maxRows) return;
 
     const lh = cssToIntDefault(getComputedStyle(node).getPropertyValue('line-height'));
@@ -140,6 +112,4 @@ class Textarea extends Component<ITextareaProps> {
   }
 }
 
-export default createComponent<Merge<ITextareaProps, TextareaHTMLAttributes<HTMLTextAreaElement>>>(
-  Textarea,
-);
+export default createComponent(Textarea);
