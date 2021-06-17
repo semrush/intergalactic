@@ -59,15 +59,15 @@ module.exports = function() {
         //     },
         //   },
         // },
-        // {
-        //   test: /\.(js|ts|jsx|tsx)$/i,
-        //   use: {
-        //     loader: '@semcore/shadow-loader',
-        //     options: {
-        //       cacheDirectory: path.resolve(__dirname, '../../node_modules/.cache'),
-        //     },
-        //   },
-        // },
+        {
+          test: /\.(js|ts|jsx|tsx)$/i,
+          use: {
+            loader: '@semcore/shadow-loader',
+            options: {
+              cacheDirectory: path.resolve(__dirname, '../../node_modules/.cache'),
+            },
+          },
+        },
         {
           test: /\.css$/,
           include: /\/node_modules\/\.cache\//,
