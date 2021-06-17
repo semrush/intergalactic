@@ -1,7 +1,7 @@
-import React, { SyntheticEvent, TextareaHTMLAttributes } from 'react';
+import { SyntheticEvent, TextareaHTMLAttributes } from 'react';
 import { ResizeProperty } from 'csstype';
 import { IBoxProps } from '@semcore/flex-box';
-import { CProps, ReturnEl, Merge } from '@semcore/core';
+import { ReturnEl, Merge } from '@semcore/core';
 import { IWithAutoFocusEnhanceProps } from '@semcore/utils/lib/enhances/autoFocusEnhance';
 
 export interface ITextareaProps extends IBoxProps, IWithAutoFocusEnhanceProps {
