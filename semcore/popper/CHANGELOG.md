@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.11.9] - 2021-06-18
+
+### Fixed
+
+- Fixed forwarding properties to the `Box` in `Popper.Popper`.
+
 ## [4.11.8] - 2021-06-10
 
 ### Fixed
