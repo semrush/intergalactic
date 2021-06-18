@@ -194,17 +194,10 @@ class AxisRoot extends Component {
 
   static style = style;
 
-  static defaultProps = {
-    ticks: [],
-  };
-
-  getTicksProps() {
-    const { ticks, position, indexScale } = this.asProps;
-    return {
-      ticks,
-      indexScale,
-      position,
-    };
+  get ticks() {
+    const { ticks, indexScale, scale } = this.asProps;
+    const scl = scale[indexScale];
+    return ticks || (scl.ticks && scl.ticks()) || (scl.domain && scl.domain()) || [];
   }
 
   getTitleProps() {
@@ -214,10 +207,19 @@ class AxisRoot extends Component {
     };
   }
 
-  getGridProps() {
-    const { ticks, indexScale } = this.asProps;
+  getTicksProps() {
+    const { position, indexScale } = this.asProps;
     return {
-      ticks,
+      ticks: this.ticks,
+      indexScale,
+      position,
+    };
+  }
+
+  getGridProps() {
+    const { indexScale } = this.asProps;
+    return {
+      ticks: this.ticks,
       indexScale,
     };
   }
@@ -227,7 +229,7 @@ class AxisRoot extends Component {
     const { styles, position, scale, hide, indexScale } = this.asProps;
 
     const pos =
-      MAP_POSITION_AXIS[position] || MAP_POSITION_AXIS[MAP_INDEX_SCALE_SYMBOL[indexScale]];
+      MAP_POSITION_AXIS[position] ?? MAP_POSITION_AXIS[MAP_INDEX_SCALE_SYMBOL[indexScale]];
 
     return sstyled(styles)(<SAxis render="line" hide={hide} {...pos(scale, position)} />);
   }
@@ -236,18 +238,18 @@ class AxisRoot extends Component {
 function Ticks(props) {
   const { Element: STick, styles, scale, ticks, position, hide, indexScale } = props;
 
-  const pos = MAP_POSITION_TICK[position] || MAP_POSITION_TICK[MAP_INDEX_SCALE_SYMBOL[indexScale]];
+  const pos = MAP_POSITION_TICK[position] ?? MAP_POSITION_TICK[MAP_INDEX_SCALE_SYMBOL[indexScale]];
   const positionClass = MAP_POSITION_TICK[position] ? position : 'custom_' + indexScale;
 
   return ticks.map((value, i) => {
     return sstyled(styles)(
       <STick
         key={i}
+        render="text"
+        childrenPosition="inside"
         __excludeProps={['data', 'scale', 'format', 'value']}
         value={value}
         index={i}
-        childrenPosition="inside"
-        render="text"
         position={positionClass}
         hide={hide}
         {...pos(scale, value, position)}

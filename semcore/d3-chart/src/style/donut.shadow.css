@@ -1,5 +1,6 @@
 SPie {
   stroke: #ffffff;
+  fill: var(--color);
 }
 
 SLabel {

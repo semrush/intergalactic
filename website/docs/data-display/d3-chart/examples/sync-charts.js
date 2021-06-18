@@ -61,9 +61,9 @@ export default () => {
           <YAxis.Ticks />
           <YAxis.Grid />
         </YAxis>
-        <XAxis ticks={xScale.domain()}>
+        <XAxis>
           <XAxis.Ticks>
-            {({ value, index }) => ({ children: index % 2 === 0 ? getDate(value) : '' })}
+            {({ value, index }) => ({ children: index % 2 ? '' : getDate(value) })}
           </XAxis.Ticks>
         </XAxis>
         <Tooltip tag={HoverRect} x="date_chart" wMin={100}>

@@ -1,6 +1,7 @@
 @import '@semcore/utils/style/var.css';
 
 SBar {
+  fill: var(--color);
 }
 
 SBar[hide] {

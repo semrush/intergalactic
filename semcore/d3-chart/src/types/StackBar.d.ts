@@ -4,21 +4,13 @@ import { IBarContext, IBarProps } from './Bar';
 import { IHorizontalBarProps } from './HorizontalBar';
 
 export interface IStackBarProps extends IContext {
-  /** Data for graphic */
-  data?: any[];
   /** Field from data for Axis x */
   x?: string;
   /** Field from data for Axis y */
   y?: string;
   /** Stack generators
    * @default d3.stack() */
-  stack?: Stack<
-    any,
-    {
-      [key: string]: number;
-    },
-    string
-  >;
+  stack?: any;
 }
 
 export interface IStackBarContext {

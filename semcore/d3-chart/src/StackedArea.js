@@ -31,7 +31,7 @@ class StackedAreaRoot extends Component {
         }
         return acc;
       }, []);
-      stack.keys(keys);
+      stack.keys(keys.reverse());
     }
 
     return stack(data);
@@ -43,7 +43,8 @@ class StackedAreaRoot extends Component {
     return {
       data: series.map((s) => ({
         ...s.data,
-        [y]: s[1] === 0 ? null : s[1],
+        // если в данных передан null то мы его и передаем, d3 null приводит к 0
+        [y]: s.data[y] === null ? null : s[1],
         [Y0]: s[0],
       })),
       y0: Y0,

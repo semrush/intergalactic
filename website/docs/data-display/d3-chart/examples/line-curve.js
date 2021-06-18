@@ -20,11 +20,11 @@ export default () => {
 
   return (
     <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
-      <YAxis ticks={yScale.ticks()}>
+      <YAxis>
         <YAxis.Ticks />
         <YAxis.Grid />
       </YAxis>
-      <XAxis ticks={xScale.ticks()}>
+      <XAxis>
         <XAxis.Ticks />
       </XAxis>
       <Tooltip tag={HoverLine} x="x" wMin={100}>

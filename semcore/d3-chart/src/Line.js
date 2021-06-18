@@ -9,6 +9,8 @@ import style from './style/line.shadow.css';
 
 class LineRoot extends Component {
   static displayName = 'Line';
+  static style = style;
+
   static defaultProps = ({ x, y, $rootProps, curve = curveLinear }) => {
     const [xScale, yScale] = $rootProps.scale;
     return {
@@ -21,15 +23,13 @@ class LineRoot extends Component {
     };
   };
 
-  static style = style;
-
   getDotsProps() {
     const { x, y, d3, color } = this.asProps;
     return {
       x,
       y,
       d3,
-      fill: color,
+      color,
     };
   }
 
@@ -39,7 +39,7 @@ class LineRoot extends Component {
       d3,
       // TODO: vertical
       data: getNullData(data, d3.defined(), y),
-      fill: color,
+      color,
     };
   }
 
@@ -47,7 +47,7 @@ class LineRoot extends Component {
     const SLine = this.Element;
     const { styles, hide, color, d3, data } = this.asProps;
 
-    return sstyled(styles)(<SLine render="path" hide={hide} stroke={color} d={d3(data)} />);
+    return sstyled(styles)(<SLine render="path" hide={hide} color={color} d={d3(data)} />);
   }
 }
 

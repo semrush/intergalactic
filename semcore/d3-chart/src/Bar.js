@@ -31,13 +31,13 @@ class BarRoot extends Component {
       return sstyled(styles)(
         <SBar
           key={i}
+          render="rect"
           __excludeProps={['data', 'scale', 'value']}
+          childrenPosition="above"
           value={d}
           index={i}
-          render="rect"
-          childrenPosition="above"
           hide={hide}
-          fill={color}
+          color={color}
           // TODO: https://github.com/airbnb/visx/blob/2fa674e7d7fdc9cffea13e8bf644d46dd6f0db5b/packages/visx-shape/src/util/getBandwidth.ts#L3
           width={xScale.bandwidth()}
           height={Math.abs(yScale(d[y]) - Math.min(yScale(yScale.domain()[0]), yScale(d[y0] ?? 0)))}

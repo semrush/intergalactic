@@ -15,21 +15,21 @@ export interface IVennProps extends IContext {
 }
 
 export interface ICircleProps extends IContext {
+  /**
+   * Name of the field in the data
+   * */
+  dataKey: string;
   /** Color circle
    @default #3AB011
    **/
   color?: string;
-  /**
-   * The `name` field of the set in the chart data array
-   */
-  name?: string;
 }
 
 export interface IIntersectionProps extends IContext {
   /**
-   * The `sets` field of the set in the chart data array
-   */
-  sets?: string[];
+   * Name of the field in the data
+   * */
+  dataKey: string;
 }
 
 declare const Venn: (<T>(props: CProps<IVennProps & T>) => ReturnEl) & {

@@ -4,7 +4,7 @@ import IContext from './context';
 export interface IXAxisProps extends IContext {
   /** The position of the axis relative chart
    * @default 'button' */
-  position?: 'top' | 'right' | 'bottom' | 'left';
+  position?: 'top' | 'right' | 'bottom' | 'left' | number;
   /** Element hide property
    * @default false */
   hide?: boolean;
@@ -15,7 +15,7 @@ export interface IXAxisProps extends IContext {
 export interface IYAxisProps extends IContext {
   /** The position of the axis relative chart
    * @default 'left' */
-  position?: 'top' | 'right' | 'bottom' | 'left';
+  position?: 'top' | 'right' | 'bottom' | 'left' | number;
   /** Element hide property
    * @default true */
   hide?: boolean;
