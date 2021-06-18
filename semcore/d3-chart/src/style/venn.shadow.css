@@ -1,5 +1,20 @@
 SCircle {
+  fill: var(--color);
+  stroke: #fff;
+  stroke-width: 2px;
+  fill-opacity: 0.5;
+
+  &:hover {
+    fill-opacity: 0.7;
+  }
 }
 
 SIntersection {
+  stroke: #fff;
+  stroke-width: 2px;
+  fill-opacity: 0;
+
+  &:hover {
+    fill-opacity: 0.1;
+  }
 }

@@ -1,6 +1,6 @@
 export default interface IContext {
   /** Data for graphic */
-  data?: any[];
+  data?: any;
   /** Scale for svg element */
   scale?: any[];
 }

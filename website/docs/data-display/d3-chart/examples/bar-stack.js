@@ -21,11 +21,11 @@ export default () => {
 
   return (
     <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
-      <YAxis ticks={yScale.ticks()}>
+      <YAxis>
         <YAxis.Ticks />
         <YAxis.Grid />
       </YAxis>
-      <XAxis ticks={xScale.domain()}>
+      <XAxis>
         <XAxis.Ticks />
       </XAxis>
       <Tooltip tag={HoverRect} x="category" wMin={100}>
@@ -54,8 +54,8 @@ export default () => {
         }}
       </Tooltip>
       <StackBar x="category">
-        <StackBar.Bar y="stack2" color={colors['green-01']} />
         <StackBar.Bar y="stack1" />
+        <StackBar.Bar y="stack2" color={colors['green-01']} />
       </StackBar>
     </Plot>
   );

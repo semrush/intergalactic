@@ -37,14 +37,7 @@ class DonutRoot extends Component {
   virtualElement = canUseDOM() ? document.createElement('div') : {};
 
   generateGetBoundingClientRect(x = 0, y = 0) {
-    return () => ({
-      width: 0,
-      height: 0,
-      top: y,
-      right: x,
-      bottom: y,
-      left: x,
-    });
+    return () => ({ width: 0, height: 0, top: y, right: x, bottom: y, left: x });
   }
 
   getArcs() {
@@ -75,7 +68,7 @@ class DonutRoot extends Component {
   getPieProps(props) {
     const { d3Arc } = this.asProps;
     return {
-      data: this.arcs.find((arc) => arc.data[0] == props.dataKey),
+      data: this.arcs.find((arc) => arc.data[0] === props.dataKey),
       d3Arc,
       onMouseMove: this.bindHandlerTooltip(true, props),
       onMouseLeave: this.bindHandlerTooltip(false, props),
@@ -111,7 +104,7 @@ class DonutRoot extends Component {
 }
 
 function Pie({ Element: SPie, styles, d3Arc, data, color = '#50aef4' }) {
-  return sstyled(styles)(<SPie render="path" fill={color} d={d3Arc(data)} />);
+  return sstyled(styles)(<SPie render="path" color={color} d={d3Arc(data)} />);
 }
 
 function Label({ Element: SLabel, styles, Children }) {

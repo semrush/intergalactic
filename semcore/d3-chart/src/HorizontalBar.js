@@ -23,19 +23,20 @@ class HorizontalBarRoot extends Component {
 
   render() {
     const SBar = this.Element;
-    const { styles, color, x, x0, y, data, scale, offset } = this.asProps;
+    const { styles, color, x, x0, y, data, scale, hide, offset } = this.asProps;
     const [xScale, yScale] = scale;
 
     return data.map((d, i) => {
       return sstyled(styles)(
         <SBar
           key={i}
+          render="rect"
           __excludeProps={['data', 'scale', 'value']}
+          childrenPosition="above"
           value={d}
           index={i}
-          render="rect"
-          childrenPosition="above"
-          fill={color}
+          hide={hide}
+          color={color}
           width={Math.abs(xScale(d[x]) - Math.max(xScale(xScale.domain()[0]), xScale(d[x0] ?? 0)))}
           height={yScale.bandwidth()}
           x={xScale(Math.min(d[x0] ?? 0, d[x])) + offset[0]}
