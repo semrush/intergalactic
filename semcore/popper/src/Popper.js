@@ -16,7 +16,6 @@ import useEventListener from '@semcore/utils/lib/use/useEventListener';
 import canUseDOM from '@semcore/utils/lib/canUseDOM';
 import logger from '@semcore/utils/lib/logger';
 import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
-import propsForElement from '@semcore/utils/lib/propsForElement';
 
 import createPopper from './createPopper';
 
@@ -431,7 +430,7 @@ const FocusLockWrapper = React.forwardRef(function(
       ref={useForkRef(popperRef, ref)}
       as={tag}
       disabled={disableEnforceFocus || nodesLock || eventLock}
-      lockProps={propsForElement(other)}
+      lockProps={other}
       returnFocus={returnFocus}
       {...other}
     />
