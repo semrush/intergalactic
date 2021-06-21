@@ -60,7 +60,13 @@ class RootTag extends Component {
     const colorTag = opacity(colorText, 0.15);
 
     return sstyled(styles)(
-      <STag render={Box} use:theme={useTheme} colorText={colorText} colorTag={colorTag}>
+      <STag
+        render={Box}
+        use:theme={useTheme}
+        use:interactive={interactive}
+        colorText={colorText}
+        colorTag={colorTag}
+      >
         {addonLeft ? <Tag.Addon tag={addonLeft} /> : null}
         {addonTextChildren(Children, Tag.Text, Tag.Addon)}
         {addonRight ? <Tag.Addon tag={addonRight} /> : null}

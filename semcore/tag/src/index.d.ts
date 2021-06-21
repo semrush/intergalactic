@@ -63,7 +63,7 @@ declare const Tag: (<T>(props: CProps<ITagProps & T, ITagContext>) => ReturnEl) 
   Text: <T>(props: ITagTextProps & T) => ReturnEl;
   Addon: <T>(props: ITagAddonProps & T) => ReturnEl;
   Close: <T>(props: ITagCloseProps & T) => ReturnEl;
-  Circle: <T>(props: CProps<ITagAddonProps & T>) => ReturnEl;
+  Circle: <T>(props: ITagAddonProps & T) => ReturnEl;
 };
 
 export default Tag;
