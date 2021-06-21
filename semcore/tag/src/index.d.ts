@@ -1,8 +1,7 @@
 import React from 'react';
-import { CProps, Merge, ReturnEl, PropGetterFn } from '@semcore/core';
+import { CProps, ReturnEl, PropGetterFn } from '@semcore/core';
 import { IBoxProps } from '@semcore/flex-box';
 import { IIconProps } from '@semcore/icon';
-import { IInputAddonProps, IInputProps, IInputValueProps } from '@semcore/input/src';
 
 export type TagSize = 'xl' | 'l' | 'm' | 's';
 export type TagTheme = 'muted' | 'invert' | 'warning' | string;
