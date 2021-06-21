@@ -179,3 +179,5 @@ Summary widget can have maximum and minimum width at different resolutions.
 
 - The maximum width of the Summary always depends on the content it contains.
 - **Do not stretch the metrics widget to the full width of the page.**
+
+@page summary-code
