@@ -1,3 +1,92 @@
+## [6.0.0] - 2021-06-21
+
+### @semcore/input-number
+ - **BREAK** Replaced internal representation with native input(type=number).
+ - **BREAK** Changed type for value to string.
+ - **Fixed** Fixed the js problem with the remainder of division.
+ - **Added** [A11y] added aria-label for buttons in `InputNumber.Controls`
+
+### @semcore/accordion
+  - **Changed** Fix TS type
+
+### @semcore/base-trigger
+  - **Changed** Rewrite code from TS to JS 🧑‍💻
+  - **Changed** Version of dependence @semcore/core has been changed to 1.11.
+  - **Changed** Improved performance. Removed one component wrapper.
+  - **Changed** The style processing system has been changed.
+  - **Changed** Removed the ability to apply media styles via a plugin babel-plugin-react-semcore.
+
+### @semcore/d3-chart
+  - **Added** Added Venn chart.
+
+### @semcore/date-picker
+  - **Changed** Version of dependence @semcore/core has been changed to 1.11.
+  - **Changed** Improved performance. Removed one component wrapper.
+  - **Changed** The style processing system has been changed.
+  - **Changed** Removed the ability to apply media styles via a plugin babel-plugin-react-semcore.
+  - **Changed** Added support keydown arrows for choose date to calendar.
+
+### @semcore/divider
+  - **Changed** Rewrite code from TS to JS 🧑‍💻
+  - **Changed** Version of dependence @semcore/core has been changed to 1.11.
+  - **Changed** Improved performance. Removed one component wrapper.
+  - **Changed** The style processing system has been changed.
+  - **Changed** Removed the ability to apply media styles via a plugin babel-plugin-react-semcore.
+
+### @semcore/dot
+  - **Changed** Rewrite code from TS to JS 🧑‍💻
+  - **Changed** Version of dependence @semcore/core has been changed to 1.11.
+  - **Changed** Improved performance. Removed one component wrapper.
+  - **Changed** The style processing system has been changed.
+  - **Changed** Removed the ability to apply media styles via a plugin babel-plugin-react-semcore.
+
+### @semcore/dropdown
+  - **Added** Support keydown Enter and Space for open Popper.
+  - **Added** Logic checked interactive trigger from DropdownMenu.
+  - **Fixed** Fix TS type
+
+### @semcore/dropdown-menu
+  - **Fixed** Fix TS type
+  - **Changed** Moved logic for checking interactive trigger to Dropdown.
+
+### @semcore/pagination
+  - **Changed** Fixed ts type for Pagination.
+  - **Changed** Added aria-label for child components FirstPage, PageInput
+
+### @semcore/pills
+  - **Changed** Rewrite code from TS to JS 🧑‍💻
+
+### @semcore/popper
+  - **Fixed** Fixed forwarding properties to the Box in Popper.Popper.
+  - **Fixed** Fixed set prop returnFocus for Focus-Lock
+  - **Fixed** Fix TS type
+  - **Fixed** [A11] Fixed set aria-pressed for Popper.Trigger.
+
+### @semcore/select
+  - **Fixed** Fix TS type
+  - **Fixed** Fixed ts type for Select.
+  - **Fixed** Fixed paddings in InputSearch.
+
+### @semcore/switch
+  - **Changed** [A11y] added role="switch" and support the Enter or Space key for used to toggle between a checked or unchecked
+  - **Changed** [TS] Rewrite code from TS to JS.
+
+### @semcore/tab-line
+  - **Changed** Rewrite code from TS to JS 🧑‍💻
+
+### @semcore/tab-panel
+  - **Changed** Rewrite code from TS to JS 🧑‍💻
+
+### @semcore/textarea
+  - **Changed** [TS] Rewrite code from TS to JS.
+
+### @semcore/time-picker
+  - **Added** [A11] Added aria-label for Timepicker.Hours, Timepicker.Minutes.
+
+### @semcore/widget-empty
+  - **Added** Added tag-cloud illustration
+  - **Changed** Rewrite code from TS to JS 🧑‍💻
+
 ## [5.1.0] - 2021-05-25
 
 ### @semcore/core
