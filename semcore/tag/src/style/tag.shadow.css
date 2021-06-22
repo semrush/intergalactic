@@ -9,15 +9,15 @@ STag {
   border-width: 1px;
   border-style: solid;
   border-color: transparent;
-  border-radius: media(21px);
-  padding-left: media(4px);
-  padding-right: media(4px);
+  border-radius: 21px;
+  padding-left: 4px;
+  padding-right: 4px;
 }
 
 SText {
   display: inline-block;
-  padding-left: media(4px);
-  padding-right: media(4px);
+  padding-left: 4px;
+  padding-right: 4px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -36,22 +36,13 @@ SText:not(:only-child):last-child {
   padding-left: 0;
 }
 
-SClose {
-  cursor: pointer;
-  display: inline-flex;
-  flex-shrink: 0;
-  align-items: center;
-  justify-content: center;
-  padding: media(4px);
-}
-
 SAddon {
   display: inline-flex;
   flex-shrink: 0;
   align-items: center;
   justify-content: center;
-  padding-left: media(4px);
-  padding-right: media(4px);
+  padding-left: 4px;
+  padding-right: 4px;
 }
 
 SCircle {
@@ -60,7 +51,7 @@ SCircle {
   justify-content: center;
   overflow: hidden;
   border-radius: 50%;
-  margin-right: media(4px);
+  margin-right: 4px;
 }
 
 STag[disabled] {
@@ -74,60 +65,46 @@ STag[interactive] {
 }
 
 STag[size='xl'] {
-  height: media(42px);
-  min-width: media(42px);
-  font-size: media(16px);
+  height: 42px;
+  min-width: 42px;
+  font-size: 16px;
 
   & SCircle {
-    width: media(28px);
-    height: media(28px);
+    width: 28px;
+    height: 28px;
   }
 }
 
 STag[size='l'] {
-  height: media(32px);
-  min-width: media(32px);
-  font-size: media(14px);
+  height: 32px;
+  min-width: 32px;
+  font-size: 14px;
 
   & SCircle {
-    width: media(24px);
-    height: media(24px);
+    width: 24px;
+    height: 24px;
   }
 }
 
 STag[size='m'] {
-  height: media(26px);
-  min-width: media(26px);
-  font-size: media(12px);
+  height: 26px;
+  min-width: 26px;
+  font-size: 12px;
 
   & SCircle {
-    width: media(20px);
-    height: media(20px);
+    width: 20px;
+    height: 20px;
   }
 }
 
 STag[size='s'] {
-  height: media(18px);
-  min-width: media(18px);
-  font-size: media(10px);
+  height: 18px;
+  min-width: 18px;
+  font-size: 10px;
 
   & SCircle {
-    width: media(12px);
-    height: media(12px);
-  }
-}
-
-STag[theme='primary-invert'] {
-  background-color: color-mod(#fff a(20%));
-  color: #fff;
-
-  & SClose {
-    /* это хак, тут должно быть color-mod(#fff a(50%)) */
-    color: #999999;
-
-    &:hover {
-      color: #fff;
-    }
+    width: 12px;
+    height: 12px;
   }
 }
 
@@ -135,12 +112,25 @@ STag[theme='primary-warning'] {
   background-color: var(--orange);
   color: #fff;
   border-color: var(--orange);
+}
 
-  & SClose {
-    color: #fff;
+STag[theme='primary-invert'] {
+  background-color: color-mod(#fff a(20%));
+  color: #fff;
 
+  &[interactive]:active,
+  &[active] {
+    background-color: #fff;
+    color: var(--gray20);
+  }
+  &[interactive] {
     &:hover {
-      color: #fff;
+      background-color: #fff;
+      color: var(--gray20);
+    }
+
+    & SClose:hover {
+      color: var(--gray20);
     }
   }
 }
@@ -150,56 +140,10 @@ STag[theme='secondary-muted'] {
   color: var(--gray40);
   border-color: var(--stone);
 
-  & SClose {
-    color: color-mod(var(--gray40) a(50%));
-
-    &:hover {
-      color: var(--gray20);
-    }
-  }
-}
-
-STag[theme='secondary-invert'] {
-  color: #fff;
-  border-color: color-mod(#fff a(20%));
-
-  & SClose {
-    color: color-mod(#fff a(50%));
-
-    &:hover {
-      color: #fff;
-    }
-  }
-}
-
-STag[theme='primary-invert'][interactive] {
-  &:hover {
-    background-color: #fff;
+  &[interactive]:hover {
     color: var(--gray20);
   }
 
-  & SClose:hover {
-    color: var(--gray20);
-  }
-}
-
-STag[theme='secondary-muted'][interactive]:hover {
-  color: var(--gray20);
-}
-
-STag[theme='secondary-invert'][interactive]:hover {
-  border-color: color-mod(#fff a(50%));
-}
-
-STag[theme='primary-invert'] {
-  &[interactive]:active,
-  &[active] {
-    background-color: #fff;
-    color: var(--gray20);
-  }
-}
-
-STag[theme='secondary-muted'] {
   &[interactive]:active,
   &[active] {
     background-color: var(--gray94);
@@ -208,9 +152,85 @@ STag[theme='secondary-muted'] {
 }
 
 STag[theme='secondary-invert'] {
+  border-color: color-mod(#fff a(20%));
+  color: #fff;
+
+  &[interactive]:hover {
+    border-color: color-mod(#fff a(50%));
+  }
+
   &[interactive]:active,
   &[active] {
     background-color: color-mod(#fff a(10%));
     border-color: color-mod(#fff a(50%));
+  }
+}
+
+/* primary-muted */
+STag[theme='custom'] {
+  color: var(--colorText);
+  background-color: var(--colorTag);
+  &[active] {
+    color: #fff;
+    background-color: var(--colorText);
+  }
+  &[interactive] {
+    &:hover {
+      color: #fff;
+      background-color: var(--colorText);
+    }
+    &:active {
+      color: #fff;
+      background-color: var(--colorText);
+    }
+  }
+}
+
+SClose {
+  cursor: pointer;
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+}
+
+SClose[theme='primary-warning'] {
+  color: #fff;
+
+  &:hover {
+    color: #fff;
+  }
+}
+
+SClose[theme='primary-invert'] {
+  /* это хак, тут должно быть color-mod(#fff a(50%)) */
+  color: #999999;
+
+  &:hover {
+    color: #fff;
+  }
+}
+
+SClose[theme='secondary-muted'] {
+  color: color-mod(var(--gray40) a(50%));
+
+  &:hover {
+    color: var(--gray20);
+  }
+}
+
+SClose[theme='secondary-invert'] {
+  color: color-mod(#fff a(50%));
+
+  &:hover {
+    color: #fff;
+  }
+}
+
+SClose[theme='custom'] {
+  opacity: 0.5;
+  &:hover {
+    opacity: 1;
   }
 }

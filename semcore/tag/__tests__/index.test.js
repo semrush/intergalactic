@@ -2,6 +2,7 @@ import React from 'react';
 import { cleanup, fireEvent, render } from 'jest-preset-ui/testing';
 import snapshot from 'jest-preset-ui/snapshot';
 import { shouldSupportClassName, shouldSupportRef } from 'jest-preset-ui/shared';
+import propsForElement from '@semcore/utils/lib/propsForElement';
 import Tag from '../src';
 
 describe('Tag', () => {
@@ -120,9 +121,9 @@ describe('Tag', () => {
   });
 
   test('should support addon elements', async () => {
-    const Addon = React.forwardRef<HTMLElement>(function ({ neighborLocation, ...p }: any, ref) {
+    const Addon = React.forwardRef(function(props, ref) {
       return (
-        <span ref={ref} {...p}>
+        <span ref={ref} {...propsForElement(props)}>
           Addon prop
         </span>
       );
@@ -160,27 +161,6 @@ describe('Tag', () => {
     expect(additional).toHaveLength(4);
     expect(await snapshot(component)).toMatchImageSnapshot();
   });
-
-  // Now shouldn't 🔪
-  // test('should support value false for use and theme', async () => {
-  //   const component = (
-  //     <div>
-  //       <snapshot.ProxyProps style={{ margin: 5 }}>
-  //         <Tag use={false}>
-  //           <Tag.Text>Tag</Tag.Text>
-  //         </Tag>
-  //       </snapshot.ProxyProps>
-  //       <br />
-  //       <snapshot.ProxyProps style={{ margin: 5 }}>
-  //         <Tag theme={false}>
-  //           <Tag.Text>Tag</Tag.Text>
-  //         </Tag>
-  //       </snapshot.ProxyProps>
-  //     </div>
-  //   );
-  //
-  //   expect(await snapshot(component)).toMatchImageSnapshot();
-  // });
 
   test('should support change tag name', () => {
     const { getByTestId } = render(<Tag data-testid="link" tag="span" />);
