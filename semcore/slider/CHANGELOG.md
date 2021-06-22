@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [1.0.0-2] - 22-06-2021
+
+### Added
+
+- Added box-sizing
+
 ## [1.0.0-1] - 24-05-2021
 
 ### Added
