@@ -6,6 +6,7 @@ SSlider {
   background-color: #00000010;
   height: 4px;
   border-radius: 6px;
+  box-sizing: border-box;
   cursor: pointer;
   outline: none;
   &:hover {
@@ -29,6 +30,7 @@ SBar {
   overflow: hidden;
   height: 4px;
   border-radius: 4px;
+  box-sizing: border-box;
   background-size: 12px;
   background-color: var(--light-blue);
   cursor: pointer;
@@ -49,8 +51,9 @@ SBar[interactive] {
 SKnob {
   position: absolute;
   top: -8px;
-  height: 10px;
+  height: 20px;
   border-radius: 20px;
+  box-sizing: border-box;
   background-size: 12px;
   background-color: #fff;
   border: 5px solid var(--light-blue);
