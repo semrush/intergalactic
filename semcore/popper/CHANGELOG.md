@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.11.10] - 2021-06-22
+
+### Changed
+
+- Improved render performance
+
 ## [4.11.9] - 2021-06-18
 
 ### Fixed
