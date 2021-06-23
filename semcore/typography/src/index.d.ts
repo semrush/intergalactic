@@ -46,7 +46,7 @@ export interface IListItemProps extends ITextProps {
   marker?: React.ReactNode;
 }
 
-export interface IListContext extends IListProps {
+export interface IListContext {
   getItemProps: PropGetterFn;
 }
 
@@ -55,10 +55,6 @@ export interface IHintProps extends ITextProps {
    * @default false
    */
   disabled?: boolean;
-  /**
-   * @ignore
-   **/
-  keyboardFocused?: boolean;
   /** Enable `active` state */
   active?: boolean;
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import createComponent, { Component, sstyled } from '@semcore/core';
+import createComponent, { Component, Root, sstyled } from '@semcore/core';
 import isNode from '@semcore/utils/lib/isNode';
 
 import Text from './Text';
@@ -21,20 +21,20 @@ class List extends Component {
   }
 
   render() {
-    const SList = this.Root;
+    const SList = Root;
     const { styles } = this.asProps;
     return sstyled(styles)(<SList render={Text} tag="ul" />);
   }
 }
 
 function Item(props) {
-  const SItem = Text;
-  const { styles, forwardRef, children, marker: markerNode, ...other } = props;
+  const SItem = Root;
+  const { styles, children, marker: markerNode } = props;
   const SMarker = 'span';
   const SContent = 'div';
 
   return sstyled(styles)(
-    <SItem tag="li" ref={forwardRef} {...other}>
+    <SItem render={Text} tag="li">
       {isNode(markerNode) && <SMarker>{markerNode}</SMarker>}
       <SContent>{children}</SContent>
     </SItem>,

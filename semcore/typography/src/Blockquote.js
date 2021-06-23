@@ -5,7 +5,6 @@ import Text from './Text';
 
 import styles from './style/blockquote.shadow.css';
 
-//TODO переписать на функцию
 function Blockquote(props, ref) {
   const SBlockquote = Text;
   const SAuthor = Text;

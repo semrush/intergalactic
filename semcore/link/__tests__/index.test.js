@@ -2,6 +2,7 @@ import React from 'react';
 import { cleanup, render, axe } from 'jest-preset-ui/testing';
 import snapshot from 'jest-preset-ui/snapshot';
 import { shouldSupportClassName, shouldSupportRef } from 'jest-preset-ui/shared';
+import propsForElement from '@semcore/utils/lib/propsForElement';
 import Link from '../src';
 
 describe('Link', () => {
@@ -45,16 +46,13 @@ describe('Link', () => {
   });
 
   test('should support additional elements as props', async () => {
-    const Addon =
-      React.forwardRef <
-      HTMLElement >
-      function(p, ref) {
-        return (
-          <span ref={ref} {...p}>
-            Addon prop
-          </span>
-        );
-      };
+    const Addon = React.forwardRef(function(p, ref) {
+      return (
+        <span ref={ref} {...propsForElement(p)}>
+          Addon prop
+        </span>
+      );
+    });
     const component = (
       <Link addonLeft={Addon} addonRight={Addon}>
         Text

@@ -1,8 +1,8 @@
 import React from 'react';
-import createComponent, { Component, sstyled } from '@semcore/core';
+import createComponent, { Component, Root, sstyled } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
 import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
-import addonText from '@semcore/utils/lib/addonText';
+import addonTextChildren from '@semcore/utils/lib/addonTextChildren';
 
 import Text from './Text';
 
@@ -14,26 +14,26 @@ class RootHint extends Component {
   static enhance = [keyboardFocusEnhance()];
 
   render() {
-    const SHint = Text;
-    const { styles, forwardRef, children, ...other } = this.asProps;
+    const SHint = Root;
+    const { styles, Children } = this.asProps;
     return sstyled(styles)(
-      <SHint tag="abbr" ref={forwardRef} {...other}>
-        {addonText(children, Hint.Text, Hint.Addon)}
+      <SHint render={Text} tag="abbr">
+        {addonTextChildren(Children, Hint.Text, Hint.Addon)}
       </SHint>,
     );
   }
 }
 
 function Addon(props) {
-  const SAddon = Box;
-  const { styles, forwardRef, ...other } = props;
-  return sstyled(styles)(<SAddon tag="span" ref={forwardRef} {...other} />);
+  const SAddon = Root;
+  const { styles } = props;
+  return sstyled(styles)(<SAddon render={Box} tag="span" />);
 }
 
 function HintText(props) {
-  const SText = Box;
-  const { styles, forwardRef, ...other } = props;
-  return sstyled(styles)(<SText tag="span" ref={forwardRef} {...other} />);
+  const SText = Root;
+  const { styles } = props;
+  return sstyled(styles)(<SText render={Box} tag="span" />);
 }
 
 const Hint = createComponent(RootHint, {

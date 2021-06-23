@@ -18,20 +18,7 @@ class RootLink extends Component {
 
   render() {
     const SLink = Root;
-    const {
-      Children,
-      forwardRef,
-      styles,
-      keyboardFocused,
-      noWrap,
-      inline,
-      disabled,
-      active,
-      enableVisited,
-      addonLeft,
-      addonRight,
-      color: colorProps,
-    } = this.asProps;
+    const { Children, styles, noWrap, addonLeft, addonRight, color: colorProps } = this.asProps;
     const colorText = resolveColor(colorProps);
     const colorHoverText = shade(colorText, -0.12);
 
