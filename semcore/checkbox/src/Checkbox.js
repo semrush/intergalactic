@@ -116,8 +116,8 @@ class Value extends Component {
 
 function Text(props) {
   const SText = Root;
-  const { styles, disabled } = props;
-  return sstyled(styles)(<SText render={TypographyText} tag="span" disabled={disabled} />);
+  const { styles } = props;
+  return sstyled(styles)(<SText render={TypographyText} tag="span" />);
 }
 
 export { inputProps };

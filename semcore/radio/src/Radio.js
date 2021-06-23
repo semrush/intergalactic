@@ -114,15 +114,7 @@ class Value extends Component {
   render() {
     const SValue = Box;
     const SControl = Box;
-    const {
-      forwardRef,
-      styles,
-      includeInputProps,
-      keyboardFocused,
-      size,
-      state,
-      theme,
-    } = this.asProps;
+    const { forwardRef, styles, includeInputProps, state, theme } = this.asProps;
 
     const [controlProps, boxProps] = getInputProps(this.asProps, includeInputProps);
     let color = '';
@@ -142,7 +134,7 @@ class Value extends Component {
 
 function Text(props) {
   const SText = Root;
-  const { size, styles } = props;
+  const { styles } = props;
   return sstyled(styles)(<SText render={TypographyText} />);
 }
 

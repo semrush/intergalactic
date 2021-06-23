@@ -19,9 +19,6 @@ export interface IRadioProps extends IFlexProps {
   size?: RadioSize;
   /** The theme of the radio button that you can send your color to */
   theme?: string;
-  /** Hoist props
-   * @ignore */
-  disabled?: boolean;
 }
 
 export interface IRadioGroupProps {
@@ -59,7 +56,7 @@ export interface IRadioValueProps extends IBoxProps, IKeyboardFocusProps {
   onChange?: (value: boolean, e?: React.SyntheticEvent<HTMLInputElement>) => void;
 }
 
-export interface IRadioCtx extends IRadioProps {
+export interface IRadioCtx {
   getValueProps: PropGetterFn;
   getTextProps: PropGetterFn;
 }

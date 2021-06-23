@@ -20,9 +20,6 @@ export interface ICheckboxProps extends IBoxProps {
   /** A checkbox theme you can add your own color to
    */
   theme?: string;
-  /** Hoist property
-   * @ignore */
-  disabled?: boolean;
 }
 
 export interface ICheckboxValueProps extends IKeyboardFocusProps, IFlexProps {
@@ -51,7 +48,7 @@ export interface ICheckboxValueProps extends IKeyboardFocusProps, IFlexProps {
   theme?: string;
 }
 
-export interface ICheckboxContext extends ICheckboxProps {
+export interface ICheckboxContext {
   getTextProps: PropGetterFn;
   getValueProps: PropGetterFn;
 }
