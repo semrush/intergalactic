@@ -146,7 +146,7 @@ As a result, all of our components work by default without defined properties or
 
 All properties can work in two modes: controlled (where you assign props) and uncontrolled (with the internal state). The uncontrolled mode implies that the initial state is set internally, but it can be changed without making the component controllable.
 
-> All properties that can be changed have an initial state located in the `default property + {{ property name }}` property. It can be changed by assigning a different value.
+> All properties that can be changed have an initial state located in the `default + {{ Property name }}` property. It can be changed by assigning a different value.
 >
 > For example, a tooltip has a `visible` property which is closed by default. If you want its initial state to be open, you can assign it the `defaultVisible={true}` value.
 
