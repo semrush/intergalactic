@@ -92,7 +92,7 @@ describe('RadioGroup', () => {
       </RadioGroup>,
     );
 
-    expect((getByTestId('radio') as HTMLInputElement).name).toContain('test');
+    expect(getByTestId('radio').name).toContain('test');
   });
 
   test('should support onChange', () => {
@@ -135,8 +135,8 @@ describe('RadioGroup', () => {
       </RadioGroup>,
     );
 
-    expect((getByTestId('radio') as HTMLInputElement).checked).toBeTruthy();
-    expect((getByTestId('radioSecond') as HTMLInputElement).checked).toBeFalsy();
+    expect(getByTestId('radio').checked).toBeTruthy();
+    expect(getByTestId('radioSecond').checked).toBeFalsy();
   });
 
   test('should support sizes', async () => {

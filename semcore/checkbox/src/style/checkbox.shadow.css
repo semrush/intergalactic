@@ -7,7 +7,7 @@ SLabel {
 }
 
 SText {
-  margin-left: media(8px);
+  margin-left: 8px;
 
   &[disabled] {
     opacity: var(--disabled-opacity);
@@ -57,21 +57,21 @@ SCheckbox {
 }
 
 SCheckbox[size='xl'] {
-  margin-top: media(2px);
-  width: media(20px);
-  height: media(20px);
+  margin-top: 2px;
+  width: 20px;
+  height: 20px;
 }
 
 SCheckbox[size='l'] {
-  margin-top: media(1px);
-  width: media(16px);
-  height: media(16px);
+  margin-top: 1px;
+  width: 16px;
+  height: 16px;
 }
 
 SCheckbox[size='m'] {
-  margin-top: media(2px);
-  width: media(12px);
-  height: media(12px);
+  margin-top: 2px;
+  width: 12px;
+  height: 12px;
 }
 
 SCheckbox {
@@ -135,22 +135,46 @@ SControl:indeterminate ~ SCheckbox {
   }
 
   &[size='xl']:after {
-    width: media(14px);
-    height: media(3px);
+    width: 14px;
+    height: 3px;
   }
 
   &[size='l']:after {
-    width: media(10px);
-    height: media(2px);
+    width: 10px;
+    height: 2px;
   }
 
   &[size='m']:after {
-    width: media(8px);
-    height: media(2px);
+    width: 8px;
+    height: 2px;
   }
 
   &[state='invalid']:before {
     background-color: var(--orange);
     border-color: var(--orange);
+  }
+}
+
+SCheckbox[theme] {
+  &[state='normal']:before {
+    border-color: var(--theme);
+  }
+  &[state='normal'][keyboardFocused]:before {
+    border-color: var(--theme);
+  }
+}
+
+SControl:checked {
+  & ~ SCheckbox[theme][state='normal']:before,
+  & ~ SCheckbox[theme][state='invalid']:before {
+    background-color: var(--theme);
+    border-color: var(--theme);
+  }
+}
+
+SControl:indeterminate {
+  & ~ SCheckbox[theme][state='normal']:before {
+    background-color: var(--theme);
+    border-color: var(--theme);
   }
 }
