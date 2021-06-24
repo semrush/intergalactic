@@ -77,11 +77,11 @@ SAddon {
 
 SLink SAddon {
   &:not(:only-child):first-child {
-    margin-right: media(4px);
+    margin-right: 4px;
   }
 
   &:not(:only-child):last-child {
-    margin-left: media(4px);
+    margin-left: 4px;
   }
 }
 
@@ -90,4 +90,12 @@ SText {
   border-bottom-style: solid;
   border-color: transparent;
   transition: border-bottom-color 0.15s ease-in-out;
+}
+
+SLink[color] {
+  color: var(--colorText);
+
+  &:hover {
+    color: var(--colorHoverText);
+  }
 }
