@@ -30,7 +30,7 @@ export interface ICarouselProps {
   step?: number;
 }
 
-export interface ICarouselContext extends ICarouselProps {
+export interface ICarouselContext {
   getContainerProps: PropGetterFn;
   getItemProps: PropGetterFn;
   getPrevProps: PropGetterFn;
