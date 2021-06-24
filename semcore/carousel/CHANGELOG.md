@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [1.4.1] - 2021-06-24
+
+### Added
+
+- [A11y] Added support to work `Carousel.Next, Carousel.Prev` with keyboard.
+
 ## [1.4.0] - 2021-04-26
 
 ### Changed
