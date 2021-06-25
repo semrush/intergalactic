@@ -22,6 +22,12 @@ class Head extends Component {
     this.asProps.$onSortClick(name, e);
   };
 
+  bindHandlerKeyDown = (name) => (e) => {
+    if (e.keyCode === 13) {
+      this.asProps.$onSortClick(name, e);
+    }
+  };
+
   renderColumns(columns, width) {
     return columns.map((column) => this.renderColumn(column, width));
   }
@@ -54,6 +60,10 @@ class Head extends Component {
         onClick={callAllEventHandlers(
           column.props.onClick,
           column.sortable ? this.bindHandlerSortClick(column.name) : undefined,
+        )}
+        onKeyDown={callAllEventHandlers(
+          column.props.onKeyDown,
+          column.sortable ? this.bindHandlerKeyDown(column.name) : undefined,
         )}
         style={style}
         hidden={hidden}
