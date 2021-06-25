@@ -49,6 +49,7 @@ class Head extends Component {
         sortable={column.sortable}
         active={column.active}
         group={isGroup}
+        tabIndex={column.sortable && 0}
         {...column.props}
         onClick={callAllEventHandlers(
           column.props.onClick,
