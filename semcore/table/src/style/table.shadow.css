@@ -59,6 +59,11 @@ SCellHead {
   /* for fixed header */
   z-index: 1;
   border: 1px solid;
+
+  &:focus {
+    outline: none;
+    box-shadow: inset 0 0 0 3px color-mod(var(--light-blue) a(30%));
+  }
 }
 
 SCellHeadContent {
