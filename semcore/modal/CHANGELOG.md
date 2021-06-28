@@ -2,6 +2,13 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.3.2] - 2021-06-28
+
+### Changed
+
+- [TS] rewrite code from ts to js.
+- [A11y] added role for `Window` and aria-label for `Close` and `Window`.
+
 ## [2.3.1] - 2021-04-28
 
 ### Changed

@@ -1,9 +1,9 @@
-import React, { ComponentProps, HTMLAttributes, useRef } from 'react';
+import React, { useRef } from 'react';
 import FocusLock from 'react-focus-lock';
-import { FadeInOut, IFadeInOutProps } from '@semcore/animation';
-import createComponent, { Component, Merge, PropGetter, sstyled, Root } from '@semcore/core';
-import Portal, { IPortalProps, PortalProvider } from '@semcore/portal';
-import { Box, IBoxProps } from '@semcore/flex-box';
+import { FadeInOut } from '@semcore/animation';
+import createComponent, { Component, sstyled, Root } from '@semcore/core';
+import Portal, { PortalProvider } from '@semcore/portal';
+import { Box } from '@semcore/flex-box';
 import OutsideClick from '@semcore/outside-click';
 import CloseS from '@semcore/icon/lib/Close/s';
 import fire from '@semcore/utils/lib/fire';
@@ -12,31 +12,7 @@ import findComponent from '@semcore/utils/lib/findComponent';
 import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 import style from './style/modal.shadow.css';
 
-export interface IModalProps extends IPortalProps, IBoxProps, IFadeInOutProps {
-  /** Duration of animation, ms
-   * @default 200
-   */
-  duration?: number;
-  /** This property is responsible for the visibility of the modal window */
-  visible?: boolean;
-  /** Function called when the component is hidden */
-  onClose?: (
-    trigger: 'onOutsideClick' | 'onCloseClick' | 'onEscape',
-    e?: React.MouseEvent | React.KeyboardEvent,
-  ) => void;
-  /** Displaying the close button(x) in the upper-right corner of the modal dialog
-   * @default true
-   * */
-  closable?: boolean;
-}
-
-export interface IModalContext extends IModalProps {
-  getOverlayProps: PropGetter<ModalRoot['getOverlayProps']>;
-  getWindowProps: PropGetter<ModalRoot['getWindowProps']>;
-  getCloseProps: PropGetter<ModalRoot['getCloseProps']>;
-}
-
-class ModalRoot extends Component<IModalProps> {
+class ModalRoot extends Component {
   static displayName = 'Modal';
   static style = style;
   static defaultProps = {
@@ -105,15 +81,14 @@ class ModalRoot extends Component<IModalProps> {
   }
 }
 
-// @ts-ignore
-const FocusLockWrapper = React.forwardRef<HTMLElement>(function ({ tag, ...other }, ref) {
+const FocusLockWrapper = React.forwardRef(function({ tag, ...other }, ref) {
   return <FocusLock ref={ref} as={tag} lockProps={other} {...other} />;
 });
 
 function Window(props) {
   const SWindow = Root;
   const { Children, styles, visible, closable } = props;
-  const windowRef = useRef<HTMLElement>(null);
+  const windowRef = useRef(null);
 
   if (!visible) return null;
 
@@ -125,6 +100,9 @@ function Window(props) {
       returnFocus={true}
       tabIndex={-1}
       autoFocus={true}
+      role="dialog"
+      aria-modal={true}
+      aria-label="Modal window"
     >
       <PortalProvider value={windowRef}>
         {closable && <Modal.Close />}
@@ -137,7 +115,7 @@ function Window(props) {
 function Overlay(props) {
   const SOverlay = Root;
   const { Children, styles, onOutsideClick, visible } = props;
-  const overlayRef = useRef<HTMLElement>(null);
+  const overlayRef = useRef(null);
   usePreventScroll(visible);
 
   return sstyled(styles)(
@@ -151,7 +129,9 @@ function Overlay(props) {
 
 function Close(props) {
   const SClose = Root;
-  return sstyled(props.styles)(<SClose render={Box} tag="button" tabIndex={0} />);
+  return sstyled(props.styles)(
+    <SClose render={Box} tag="button" tabIndex={0} aria-label="Close" />,
+  );
 }
 
 Close.defaultProps = {
@@ -160,15 +140,7 @@ Close.defaultProps = {
 
 Close.enhance = [keyboardFocusEnhance()];
 
-const Modal = createComponent<
-  Merge<IModalProps, HTMLAttributes<HTMLDivElement>>,
-  {
-    Window: ComponentProps<typeof Box>;
-    Overlay: ComponentProps<typeof Box>;
-    Close: ComponentProps<typeof Box>;
-  },
-  IModalContext
->(ModalRoot, {
+const Modal = createComponent(ModalRoot, {
   Window,
   Overlay,
   Close,
