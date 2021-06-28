@@ -1,5 +1,5 @@
 import React from 'react';
-import { cleanup, fireEvent, render } from 'jest-preset-ui/testing';
+import { cleanup, fireEvent, render, axe } from 'jest-preset-ui/testing';
 import { shouldSupportClassName, shouldSupportRef } from 'jest-preset-ui/shared';
 import Modal from '../src';
 
@@ -56,5 +56,16 @@ describe('Modal', () => {
     expect(document.body).toHaveStyle('overflow: hidden');
     component.unmount();
     expect(document.body).not.toHaveStyle('overflow: hidden');
+  });
+
+  test('a11y', async () => {
+    const { container } = render(
+      <Modal visible disablePortal>
+        <p data-testid="child">Test</p>
+      </Modal>,
+    );
+
+    const results = await axe(container);
+    expect(results).toHaveNoViolations();
   });
 });
