@@ -7,9 +7,15 @@ const Demo = () => {
   const [tags, updateTags] = useState(['vk', 'fk', 'twitter', 'instagram']);
   const [value, updateValue] = useState('');
 
+  const addTag = (value) => {
+    if (value) {
+      updateTags((tags) => [...tags, value]);
+      updateValue('');
+    }
+  };
+
   const handleAddTag = (value) => {
-    updateTags((tags) => [...tags, value]);
-    updateValue('');
+    addTag(value);
   };
 
   const handleRemoveTag = () => {
@@ -24,11 +30,20 @@ const Demo = () => {
 
   const handleEditTag = (e) => {
     const { dataset } = e.currentTarget;
-    if (!e.defaultPrevented) {
-      updateValue(value + ` ${tags[dataset.id]}`);
+    let allTags = [...tags];
+    if (value) {
+      allTags = [...allTags, value];
     }
-    updateTags(tags.filter((tag, ind) => ind !== Number(dataset.id)));
+    updateTags(allTags.filter((tag, ind) => ind !== Number(dataset.id)));
+    if (!e.defaultPrevented) {
+      updateValue(tags[dataset.id]);
+    }
     return false;
+  };
+
+  const handleBlurInput = (e) => {
+    const { value } = e.currentTarget;
+    addTag(value);
   };
 
   return (
@@ -49,7 +64,7 @@ const Demo = () => {
           <Tooltip.Popper>tag</Tooltip.Popper>
         </Tooltip>
       ))}
-      <InputTags.Value value={value} onChange={updateValue} />
+      <InputTags.Value value={value} onChange={updateValue} onBlur={handleBlurInput} />
     </InputTags>
   );
 };
