@@ -1,33 +1,20 @@
-import React, { HTMLAttributes } from 'react';
-import createComponent, { Component, IFunctionProps, Merge, sstyled, Root } from '@semcore/core';
-import Modal, { IModalProps, IModalContext } from '@semcore/modal';
-import { Box, IBoxProps } from '@semcore/flex-box';
-import { IIconProps } from '@semcore/icon';
+import React from 'react';
+import createComponent, { Component, sstyled, Root } from '@semcore/core';
+import Modal from '@semcore/modal';
+import { Box } from '@semcore/flex-box';
 import CloseM from '@semcore/icon/lib/Close/m';
 import ArrowLeftS from '@semcore/icon/lib/ArrowLeft/s';
-import { ITextProps, Text } from '@semcore/typography';
+import { Text } from '@semcore/typography';
 import fire from '@semcore/utils/lib/fire';
 import logger from '@semcore/utils/lib/logger';
 
 import style from './style/fullscreen-modal.shadow.css';
 
-export interface IFullscreenModalProps extends IModalProps {
-  /** This property is responsible for the visibility of the modal window */
-  hidden?: boolean;
-  /** Function that is invoked when hiding a component */
-  onClose?: (
-    trigger: 'onBackClick' | 'onCloseClick' | 'onEscape' | 'onOutsideClick',
-    e?: React.MouseEvent | React.KeyboardEvent,
-  ) => void;
-}
-
-class FullscreenModalRoot extends Component<IFullscreenModalProps> {
+class FullscreenModalRoot extends Component {
   static displayName = 'FullscreenModal';
   static style = style;
 
-  bindHandlerClose = (trigger?: 'onBackClick' | 'onCloseClick') => (
-    e?: React.MouseEvent | React.KeyboardEvent,
-  ) => {
+  bindHandlerClose = (trigger) => (e) => {
     fire(this, 'onClose', trigger, e);
   };
 
@@ -84,12 +71,7 @@ class FullscreenModalRoot extends Component<IFullscreenModalProps> {
   }
 }
 
-export interface IFullscreenModalHeaderProps extends IBoxProps {
-  title?: React.ReactNode;
-  description?: React.ReactNode;
-}
-
-function Header(props: IFunctionProps<IFullscreenModalHeaderProps>) {
+function Header(props) {
   const SHeader = Root;
   const SHeaderDivider = 'div';
   const { Children, styles, title, description } = props;
@@ -107,37 +89,37 @@ function Header(props: IFunctionProps<IFullscreenModalHeaderProps>) {
   );
 }
 
-function Body(props: IFunctionProps<IBoxProps>) {
+function Body(props) {
   const SBody = Root;
   return sstyled(props.styles)(<SBody render={Box} />);
 }
 
-function Section(props: IFunctionProps<IBoxProps>) {
+function Section(props) {
   const SSection = Root;
   return sstyled(props.styles)(<SSection render={Box} />);
 }
 
-function Footer(props: IFunctionProps<IBoxProps>) {
+function Footer(props) {
   const SFooter = Root;
   return sstyled(props.styles)(<SFooter render={Box} />);
 }
 
-function Close(props: IFunctionProps<IIconProps>) {
+function Close(props) {
   const SClose = Root;
   return sstyled(props.styles)(<SClose render={CloseM} />);
 }
 
-function Title(props: IFunctionProps<ITextProps>) {
+function Title(props) {
   const STitle = Root;
   return sstyled(props.styles)(<STitle render={Text} tag="h4" />);
 }
 
-function Description(props: IFunctionProps<ITextProps>) {
+function Description(props) {
   const SDescription = Root;
   return sstyled(props.styles)(<SDescription render={Text} />);
 }
 
-function Back(props: IFunctionProps<IBoxProps>) {
+function Back(props) {
   const SBack = Root;
   const SBackText = Text;
   const { Children, styles } = props;
@@ -152,20 +134,7 @@ function Back(props: IFunctionProps<IBoxProps>) {
   );
 }
 
-const FullscreenModal = createComponent<
-  Merge<IFullscreenModalProps, HTMLAttributes<HTMLDivElement>>,
-  {
-    Header: Merge<IFullscreenModalHeaderProps, HTMLAttributes<HTMLDivElement>>;
-    Footer: Merge<IBoxProps, HTMLAttributes<HTMLDivElement>>;
-    Close: Merge<IIconProps, React.SVGAttributes<SVGElement>>;
-    Back: Merge<IBoxProps, HTMLAttributes<HTMLDivElement>>;
-    Body: Merge<IBoxProps, HTMLAttributes<HTMLDivElement>>;
-    Section: Merge<IBoxProps, HTMLAttributes<HTMLDivElement>>;
-    Title: Merge<ITextProps, HTMLAttributes<HTMLHeadingElement>>;
-    Description: Merge<ITextProps, HTMLAttributes<HTMLSpanElement>>;
-  },
-  IModalContext
->(
+const FullscreenModal = createComponent(
   FullscreenModalRoot,
   {
     Header,

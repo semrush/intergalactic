@@ -23,7 +23,7 @@ export interface IModalProps extends IPortalProps, IBoxProps, IFadeInOutProps {
   closable?: boolean;
 }
 
-export interface IModalContext extends IModalProps {
+export interface IModalContext {
   getOverlayProps: PropGetterFn;
   getWindowProps: PropGetterFn;
   getCloseProps: PropGetterFn;
