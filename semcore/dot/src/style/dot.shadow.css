@@ -12,7 +12,9 @@ SDot {
   z-index: 1;
   border-radius: 100%;
   vertical-align: middle;
-  animation: show 300ms ease-out;
+  animation-name: show;
+  animation-duration: 300ms;
+  animation-timing-function: ease-out;
   animation-fill-mode: forwards;
 }
 
@@ -44,17 +46,7 @@ SDot[up] {
 }
 
 SDot[hidden] {
-  animation: hidden 300ms ease-out;
-  animation-fill-mode: forwards;
-}
-
-@keyframes show {
-  0% {
-    transform: scale(0);
-  }
-  100% {
-    transform: scale(1);
-  }
+  animation-name: hidden;
 }
 
 @keyframes hidden {
@@ -63,5 +55,14 @@ SDot[hidden] {
   }
   100% {
     transform: scale(0);
+  }
+}
+
+@keyframes show {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
   }
 }

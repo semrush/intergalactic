@@ -1,7 +1,7 @@
-import React, { HTMLAttributes } from 'react';
+import React from 'react';
 import createComponent, { Component, Root, sstyled } from '@semcore/core';
 
-import { Box, IBoxProps } from '@semcore/flex-box';
+import { Box } from '@semcore/flex-box';
 import logger from '@semcore/utils/lib/logger';
 import getOriginChildren from '@semcore/utils/lib/getOriginChildren';
 
@@ -25,9 +25,7 @@ class Dot extends Component {
       this.asProps['data-ui-name'] || Dot.displayName,
     );
 
-    return sstyled(styles)(
-      <SDot render={Box} tag="span" use:size={size} hidden={invisible} />,
-    );
+    return sstyled(styles)(<SDot render={Box} tag="span" use:size={size} hidden={invisible} />);
   }
 }
 
