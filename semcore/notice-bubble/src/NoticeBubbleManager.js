@@ -3,27 +3,6 @@ import EventEmitter from '@semcore/utils/lib/eventEmitter';
 
 const EVENT_NAME = 'CHANGE';
 
-export interface INoticeBubbleManager {
-  /**
-   * Adding a notice.
-   * Takes the props properties of NoticeBubble.
-   *  Returns an object with the uid and the update, remove functions.
-   * */
-  add?: (props: object) => object;
-  /**
-   * Updates the notice by uid.
-   * Takes the uid-unique identifier and the props-properties of NoticeBubble.
-   *  Returns a successful or unsuccessful update.
-   * */
-  update?: (uid: string, props: object) => boolean;
-  /**
-   * Deletes the notice by uid.
-   * Takes an uid-unique identifier.
-   * Returns a successful or unsuccessful deletion.
-   * */
-  remove?: (uid: string) => boolean;
-}
-
 /**
  * ```js
  * import NoticeBubbleManager from "@semcore/notice-bubble"
@@ -32,9 +11,9 @@ export interface INoticeBubbleManager {
  * The manager is a repository of all notices and has the ability
  * to add, delete and update notices by calling the appropriate methods.
  * */
-class NoticeBubbleManager implements INoticeBubbleManager {
-  private items = [];
-  private emitter: EventEmitter;
+class NoticeBubbleManager {
+  items = [];
+  emitter = null;
 
   constructor() {
     this.emitter = new EventEmitter();
@@ -50,7 +29,7 @@ class NoticeBubbleManager implements INoticeBubbleManager {
       uid: createUUID(),
       type: 'info',
       ...props,
-      onClose: function (...args) {
+      onClose: function(...args) {
         if (props.onClose !== undefined) {
           props.onClose.apply(this, args);
         }
@@ -62,7 +41,12 @@ class NoticeBubbleManager implements INoticeBubbleManager {
   }
 
   emit() {
-    const list = this.items.filter((item) => item.visible === undefined || item.visible);
+    const list = this.items.map((item) => {
+      if (item.visible === undefined) {
+        return { ...item, visible: true };
+      }
+      return item;
+    });
     this.emitter.emit(EVENT_NAME, list);
   }
 

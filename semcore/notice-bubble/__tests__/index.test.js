@@ -116,8 +116,8 @@ describe('NoticeBubble', () => {
     );
 
     const container = document.body.querySelector('[data-testid="container"]');
-    expect(container.firstChild.dataset.testid).toEqual('notice-2');
-    expect(container.childNodes.length).toEqual(1);
+    expect(container.querySelector('[data-testid="notice-1"]')).not.toBeTruthy();
+    expect(container.querySelector('[data-testid="notice-2"]')).toBeTruthy();
   });
 
   test('should support render outside dom', () => {
@@ -129,7 +129,7 @@ describe('NoticeBubble', () => {
     );
 
     const container = document.body.querySelector('[data-testid="container"]');
-    expect(container.firstChild.dataset.testid).toEqual('notice');
+    expect(container.querySelector('[data-testid="notice"]')).toBeTruthy();
   });
 });
 
