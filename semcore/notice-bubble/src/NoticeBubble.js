@@ -8,7 +8,6 @@ import fire from '@semcore/utils/lib/fire';
 import isNode from '@semcore/utils/lib/isNode';
 import { callAllEventHandlers } from '@semcore/utils/lib/assignProps';
 import CloseXS from '@semcore/icon/lib/Close/xs';
-import propsForElement from '@semcore/utils/lib/propsForElement';
 import { useUID } from '@semcore/utils/lib/uniqueID';
 import { Timer } from './utils';
 

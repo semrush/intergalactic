@@ -1,17 +1,10 @@
 import { IPortalProps } from '@semcore/portal';
-import { CProps, Merge, ReturnEl } from '@semcore/core';
+import { CProps, ReturnEl } from '@semcore/core';
 import { IBoxProps } from '@semcore/flex-box';
 
-export interface INoticeBubbleContainerProps extends IPortalProps {
+export interface INoticeBubbleContainerProps extends IBoxProps, IPortalProps {
   /** Manager copy */
   manager?: NoticeBubbleManager;
-  /** Offset from the upper-right corner of the screen */
-  offset?: {
-    top?: number | string;
-    right?: number | string;
-    bottom?: number | string;
-    left?: number | string;
-  };
 }
 
 export interface INoticeBubbleInfoProps extends INoticeBubbleProps {
