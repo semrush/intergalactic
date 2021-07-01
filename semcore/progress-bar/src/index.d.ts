@@ -1,6 +1,5 @@
 import { ReturnEl, CProps, PropGetterFn } from '@semcore/core';
 import { IBoxProps } from '@semcore/flex-box';
-import { IRadioCtx, IRadioProps, IRadioValueProps } from '@semcore/radio/src';
 
 export interface IProgressBarProps extends IBoxProps {
   /**
