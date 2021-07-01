@@ -1,9 +1,9 @@
 import { ComponentProps } from 'react';
 import { ReturnEl, CProps, PropGetterFn } from '@semcore/core';
-import { IModalProps, IModalContext } from '@semcore/modal';
+import { IModalProps } from '@semcore/modal';
 import { Box, IBoxProps } from '@semcore/flex-box';
 import { IIconProps } from '@semcore/icon';
-import { ITextProps, Text } from '@semcore/typography';
+import { Text } from '@semcore/typography';
 
 export interface IFullscreenModalProps extends IModalProps {
   /** This property is responsible for the visibility of the modal window */

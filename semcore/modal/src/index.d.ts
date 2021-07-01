@@ -3,7 +3,6 @@ import { IFadeInOutProps } from '@semcore/animation';
 import { CProps, PropGetterFn, ReturnEl } from '@semcore/core';
 import { IPortalProps } from '@semcore/portal';
 import { Box, IBoxProps } from '@semcore/flex-box';
-import { ILinkProps } from '@semcore/link/src';
 
 export interface IModalProps extends IPortalProps, IBoxProps, IFadeInOutProps {
   /** Duration of animation, ms
