@@ -66,7 +66,7 @@ function BannerBlock() {
           <Tag size="s" theme="muted" use="primary" children="soon" />
         </Box>
         <Box mt={2} mb={8}>
-          There we store all you need for making your product newsletter cool and consistent.
+          All you need for making your product newsletter cool and consistent.
         </Box>
       </Info>
     </EmailsWrapper>

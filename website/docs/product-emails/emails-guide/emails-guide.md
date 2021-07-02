@@ -3,7 +3,7 @@ title: Basic templates
 tabName: Guide
 ---
 
-> You can find all basic design components, blocks and styles for product emails in our **[Figma library](https://www.figma.com/file/uBxKSTlXSEDiKvFp6txzrr/NEW-%E2%80%A2-Product-emails?node-id=1%3A164) (available only for Semrush designers).**
+> You can find all basic design components, blocks and styles for product emails in our **[Figma library](https://www.figma.com/file/uBxKSTlXSEDiKvFp6txzrr/NEW-%E2%80%A2-Product-emails?node-id=1%3A164) (available for Semrush designers only).**
 
 @## Typography and styles
 
@@ -32,6 +32,6 @@ Template content is fluid and has `max-width: 600px`. It switches to mobile vers
 
 @## Icons and illustrations
 
-All interface icons and small illustrations we need for product emails we store in the [Figma library](https://www.figma.com/file/uBxKSTlXSEDiKvFp6txzrr/NEW-%E2%80%A2-Product-emails?node-id=456%3A8265)(available only for Semrush designers).
+All interface icons and small illustrations we need for product emails we store in the [Figma library](https://www.figma.com/file/uBxKSTlXSEDiKvFp6txzrr/NEW-%E2%80%A2-Product-emails?node-id=456%3A8265)(available for Semrush designers only).
 
 ![icons](static/icons.png)
