@@ -7,7 +7,7 @@ import Skeleton from '@semcore/skeleton';
 import styled from 'styled-components';
 
 const BoxBlock = styled(Box)`
-  overflow: auto;
+  overflow: hidden;
 `;
 const FlexBlock = styled(Flex)`
   overflow: hidden;

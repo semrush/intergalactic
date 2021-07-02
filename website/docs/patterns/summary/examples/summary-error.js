@@ -7,7 +7,7 @@ import styled from 'styled-components';
 import warning from './static/warning.svg';
 
 const BoxBlock = styled(Box)`
-  overflow: auto;
+  overflow: hidden;
 `;
 const Title = styled(Text)`
   &:hover {

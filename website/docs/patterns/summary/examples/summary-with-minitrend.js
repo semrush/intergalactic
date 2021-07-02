@@ -7,7 +7,7 @@ import styled from 'styled-components';
 import chart from './static/chart.svg';
 
 const BoxBlock = styled(Box)`
-  overflow: auto;
+  overflow: hidden;
 `;
 const Title = styled(Text)`
   &:hover {

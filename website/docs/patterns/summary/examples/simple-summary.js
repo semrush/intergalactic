@@ -6,7 +6,7 @@ import Divider from '@semcore/divider';
 import styled from 'styled-components';
 
 const BoxBlock = styled(Box)`
-  overflow: auto;
+  overflow: hidden;
 `;
 const Title = styled(Text)`
   &:hover {
