@@ -1,4 +1,4 @@
-import React from 'react';
+import { ComponentProps } from 'react';
 import { CProps, ReturnEl } from '@semcore/core';
 import { Box, IFlexProps } from '@semcore/flex-box';
 import { IWithI18nEnhanceProps } from '@semcore/utils/lib/enhances/i18nEnhance';
@@ -37,7 +37,7 @@ export interface IWidgetEmptyProps extends IFlexProps {
   /**
    * URL before the icon or the whole component
    */
-  icon?: iconNames | React.ReactNode;
+  icon?: React.ReactNode;
 }
 
 export interface IWidgetErrorProps extends IWidgetEmptyProps, IWithI18nEnhanceProps {
@@ -52,17 +52,14 @@ export interface IWidgetNoDataProps extends IWidgetEmptyProps, IWithI18nEnhanceP
   type?: iconNames;
 }
 
-
-declare const WidgetEmpty: ((props: CProps<IWidgetEmptyProps>) => ReturnEl) & {
-  Title: typeof Box
-  Description: typeof Box
+declare const WidgetEmpty: (<T>(props: CProps<IWidgetEmptyProps> & T) => ReturnEl) & {
+  Title: <T>(props: ComponentProps<typeof Box> & T) => ReturnEl;
+  Description: <T>(props: ComponentProps<typeof Box> & T) => ReturnEl;
 };
 
-declare const NoData: ((props: CProps<IWidgetNoDataProps>) => ReturnEl);
-declare const Error: ((props: CProps<IWidgetErrorProps>) => ReturnEl);
+declare const NoData: <T>(props: CProps<IWidgetNoDataProps> & T) => ReturnEl;
+declare const Error: <T>(props: CProps<IWidgetErrorProps> & T) => ReturnEl;
+declare const getIconPath: (name: string) => string;
 
 export default WidgetEmpty;
-export {
-  NoData,
-  Error,
-};
+export { getIconPath, NoData, Error };
