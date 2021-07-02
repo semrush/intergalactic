@@ -66,21 +66,6 @@ describe('NoticeBubble', () => {
   shouldSupportClassName(NoticeBubble);
   shouldSupportRef(NoticeBubble);
 
-  test('NoticeBubble should render correctly', async () => {
-    const component = <NoticeBubble>Message</NoticeBubble>;
-    expect(await snapshot(component)).toMatchImageSnapshot();
-  });
-
-  test('should support action node', async () => {
-    const component = (
-      <NoticeBubble action={<button data-testid="action">Action</button>}>Message</NoticeBubble>
-    );
-    const { getByTestId } = render(component);
-
-    expect(getByTestId('action')).toBeTruthy();
-    expect(await snapshot(component)).toMatchImageSnapshot();
-  });
-
   test('should support handler close', () => {
     const spy = jest.fn();
     const { getByTitle } = render(<NoticeBubble onClose={spy} />);
@@ -131,6 +116,33 @@ describe('NoticeBubble', () => {
     const container = document.body.querySelector('[data-testid="container"]');
     expect(container.querySelector('[data-testid="notice"]')).toBeTruthy();
   });
+
+  test('should render correctly', async () => {
+    const component = (
+      <>
+        <NoticeBubbleContainer style={{ position: 'static', width: 'auto' }} disablePortal />
+        <NoticeBubbleWarningImport>Message</NoticeBubbleWarningImport>
+        <NoticeBubbleImport>Message</NoticeBubbleImport>
+      </>
+    );
+    expect(await snapshot(component)).toMatchImageSnapshot();
+  });
+
+  test('should support action node', async () => {
+    const component = (
+      <>
+        <NoticeBubbleContainer style={{ position: 'static', width: 'auto' }} disablePortal />
+        <NoticeBubbleWarningImport action={<button data-testid="action">Action</button>}>
+          Message
+        </NoticeBubbleWarningImport>
+        <NoticeBubbleImport action={<button data-testid="action">Action</button>}>
+          Message
+        </NoticeBubbleImport>
+      </>
+    );
+
+    expect(await snapshot(component)).toMatchImageSnapshot();
+  });
 });
 
 describe('NoticeBubbleWarning', () => {
@@ -138,21 +150,4 @@ describe('NoticeBubbleWarning', () => {
 
   shouldSupportClassName(NoticeBubbleWarning);
   shouldSupportRef(NoticeBubbleWarning);
-
-  test('NoticeBubbleWarning should render correctly', async () => {
-    const component = <NoticeBubbleWarning>Message</NoticeBubbleWarning>;
-    expect(await snapshot(component)).toMatchImageSnapshot();
-  });
-
-  test('should support action node', async () => {
-    const component = (
-      <NoticeBubbleWarning action={<button data-testid="action">Action</button>}>
-        Message
-      </NoticeBubbleWarning>
-    );
-    const { getByTestId } = render(component);
-
-    expect(getByTestId('action')).toBeTruthy();
-    expect(await snapshot(component)).toMatchImageSnapshot();
-  });
 });

@@ -4,7 +4,7 @@ import { IBoxProps } from '@semcore/flex-box';
 
 export interface INoticeBubbleContainerProps extends IBoxProps, IPortalProps {
   /** Manager copy */
-  manager?: NoticeBubbleManager;
+  manager?: INoticeBubbleManager;
 }
 
 export interface INoticeBubbleInfoProps extends INoticeBubbleProps {
@@ -29,7 +29,7 @@ export interface INoticeBubbleProps extends IBoxProps {
    * Manager instance
    * @default NoticeBubbleManager()
    */
-  manager?: NoticeBubbleManager;
+  manager?: INoticeBubbleManager;
   /**
    * Notice visibility
    */
@@ -53,7 +53,13 @@ export interface INoticeBubbleManager {
    * Takes the props properties of NoticeBubble.
    *  Returns an object with the uid and the update, remove functions.
    * */
-  add?: (props: object) => object;
+  add?: (
+    props: object,
+  ) => {
+    uid: string;
+    update: (props: object) => boolean;
+    remove: () => boolean;
+  };
   /**
    * Updates the notice by uid.
    * Takes the uid-unique identifier and the props-properties of NoticeBubble.
@@ -77,5 +83,7 @@ declare const NoticeBubbleContainer: (<T>(
   Warning: typeof NoticeBubbleWarning;
 };
 
+declare const manager: INoticeBubbleManager;
+
 export { NoticeBubbleContainer, NoticeBubble, NoticeBubbleWarning };
-export default NoticeBubbleManager;
+export default manager;
