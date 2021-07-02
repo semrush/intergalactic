@@ -28,13 +28,8 @@ export interface ITransformProps extends IAnimationProps {
 }
 
 declare const Animation: <T>(props: CProps<IAnimationProps & T>) => ReturnEl;
-
 declare const Collapse: <T>(props: CProps<ICollapseProps & T>) => ReturnEl;
-
 declare const FadeInOut: <T>(props: CProps<IFadeInOutProps & T>) => ReturnEl;
-
 declare const Transform: <T>(props: CProps<ITransformProps & T>) => ReturnEl;
 
-export default Animation;
-
-export { Collapse, FadeInOut, Transform };
+export { Animation, Collapse, FadeInOut, Transform };
