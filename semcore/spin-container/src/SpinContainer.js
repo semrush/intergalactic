@@ -36,7 +36,6 @@ class SpinContainerRoot extends Component {
     const SSpinContainer = Root;
     const SContent = Box;
     const { styles, Children: ChildrenRoot, loading, duration } = this.asProps;
-    const transitionDuration = `${duration}ms`;
 
     const [Children, Overlay] = overlayChildren(ChildrenRoot, SpinContainer.Overlay);
 

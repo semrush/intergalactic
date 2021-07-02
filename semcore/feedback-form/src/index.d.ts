@@ -1,12 +1,10 @@
-import React, { ComponentProps } from 'react';
+import { ComponentProps } from 'react';
 import { FormProps, FieldProps } from 'react-final-form';
 
 import { ReturnEl, CProps } from '@semcore/core';
-import Button, { IButtonProps } from '@semcore/button';
-import SpinContainer from '@semcore/spin-container';
-import Tooltip from '@semcore/tooltip';
-import { INoticeSmartProps, NoticeSmart } from '@semcore/notice';
-import { Box, IBoxProps } from '@semcore/flex-box';
+import Button from '@semcore/button';
+import { NoticeSmart } from '@semcore/notice';
+import { Box } from '@semcore/flex-box';
 
 export interface IFeedbackForm extends FormProps {
   /* The event is called when the form is submitted */
