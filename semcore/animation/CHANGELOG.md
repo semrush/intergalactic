@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [1.3.1] - 2021-07-02
+
+### Fixed
+
+- [TS] fixed export components.
+
 ## [1.3.0] - 2021-04-26
 
 ### Changed
