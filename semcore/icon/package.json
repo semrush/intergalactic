@@ -10,7 +10,7 @@
   "scripts": {
     "parsing": "icon-transform-svg parsing",
     "transform": "icon-transform-svg",
-    "build": "build && npm run transform",
+    "build": "build --source=js && npm run transform",
     "test": "jest"
   },
   "dependencies": {
@@ -18,7 +18,7 @@
     "@semcore/flex-box": "^4"
   },
   "peerDependencies": {
-    "@semcore/core": "^1.3",
+    "@semcore/core": "^1.11",
     "react": "16.8 - 17"
   },
   "jest": {
