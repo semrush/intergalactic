@@ -1,7 +1,7 @@
-import React, { ComponentProps } from 'react';
+import React from 'react';
 import Button from '@semcore/button';
-import createComponent, { Component, Merge } from '@semcore/core';
-import i18nEnhance, { IWithI18nEnhanceProps } from '@semcore/utils/lib/enhances/i18nEnhance';
+import createComponent, { Component, Root } from '@semcore/core';
+import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
 import Error, { getIconPath } from '../Error';
 
 import de from './translations/de.json';
@@ -18,31 +18,22 @@ import vi from './translations/vi.json';
 
 const i18n = { de, en, es, fr, it, ja, ru, zh, pt, ko, vi };
 
-export interface IAccessDeniedProps extends IWithI18nEnhanceProps {
-  /**
-   * href of the link home
-   * @default /
-   */
-  homeLink?: string;
-}
-
-class RootAccessDenied extends Component<IAccessDeniedProps> {
-  static displayName = 'AccessDenied';
+class RootMaintenance extends Component {
+  static displayName = 'Maintenance';
   static enhance = [i18nEnhance()];
   static defaultProps = {
     i18n,
     homeLink: '/',
-    icon: getIconPath('access_denied'),
+    icon: getIconPath('maintenance'),
   };
 
   render() {
-    const { Root } = this;
-    const { Children, getI18nText, homeLink } = this.asProps;
+    const { Children, getI18nText, homeLink, toolName } = this.asProps;
     const { title, text, btnHome } = getI18nText();
     return (
       <Root render={Error}>
-        <Error.Title>{title}</Error.Title>
-        <Error.Description wMax="640px">{text}</Error.Description>
+        <Error.Title>{`${toolName} ${title}`}</Error.Title>
+        <Error.Description>{text}</Error.Description>
         <Children />
         <Error.Controls>
           <Button tag="a" type="none" size="xl" use="primary" theme="info" href={homeLink}>
@@ -54,6 +45,4 @@ class RootAccessDenied extends Component<IAccessDeniedProps> {
   }
 }
 
-export default createComponent<Merge<IAccessDeniedProps, ComponentProps<typeof Error>>>(
-  RootAccessDenied,
-);
+export default createComponent(RootMaintenance);
