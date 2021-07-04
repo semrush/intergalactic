@@ -1,7 +1,7 @@
 import React from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import cn from 'classnames';
-import { createBaseComponent, Merge, styled } from '@semcore/core';
+import { createBaseComponent, sstyled } from '@semcore/core';
 import { IBoxProps, useBox } from '@semcore/flex-box';
 import canUseDOM from '@semcore/utils/lib/canUseDOM';
 import isRetina from '@semcore/utils/lib/isRetina';
@@ -47,17 +47,6 @@ export const addLinkStyleSprite = (patch) => {
   return true;
 };
 
-export interface IFlagsProps extends IBoxProps {
-  /** URL before css file with a sprite
-   * @default `//static.semrush.com/ui-kit/flags/${version package}`
-   */
-  staticPath?: string;
-  /** Country code in two-letter format */
-  iso2?: string;
-  /** Country code in three-letter format */
-  iso3?: string;
-}
-
 let _addedStyle = false;
 
 function calculateName(iso2, iso3) {
@@ -85,7 +74,7 @@ function Flags(props, ref) {
 
   const capitalLetters = countryName ? undefined : getCapitalLetters(iso2, iso3);
 
-  return styled(styles)(
+  return sstyled(styles)(
     <SFlags
       className={cn(
         {
@@ -103,6 +92,4 @@ function Flags(props, ref) {
 Flags.displayName = 'Flags';
 
 export { iso2Name, iso3iso2 };
-export default createBaseComponent<Merge<IFlagsProps, React.HTMLAttributes<HTMLSpanElement>>>(
-  Flags,
-);
+export default createBaseComponent(Flags);
