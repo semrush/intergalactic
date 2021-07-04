@@ -89,7 +89,7 @@ SClose {
   position: absolute;
   right: 0;
   top: 0;
-  padding: media(12px);
+  padding: 12px;
   color: var(--stone);
   cursor: pointer;
   z-index: 1;

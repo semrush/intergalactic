@@ -1,13 +1,13 @@
 import React from 'react';
 import { render, fireEvent, cleanup } from 'jest-preset-ui/testing';
 import snapshot from 'jest-preset-ui/snapshot';
-import SidePanel, { SidePanelPlacement } from '../src';
+import SidePanel from '../src';
 
 describe('Drawer', () => {
   afterEach(cleanup);
 
   test('Should support placements', async () => {
-    const placements: SidePanelPlacement[] = ['left', 'right', 'bottom'];
+    const placements = ['left', 'right', 'bottom'];
     for (const placement of placements) {
       const Component = (
         <SidePanel placement={placement} disablePortal visible>
