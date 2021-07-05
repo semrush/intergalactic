@@ -29,6 +29,8 @@ import SidePanel from '@semcore/side-panel';
 
 This is a wrap over the [Box](/layout/box-system/box-api/#a3cfce) and [FocusLock](https://github.com/theKashey/react-focus-lock/blob/master/interfaces.d.ts#L4).
 
+@interface ISidePanelPanelProps
+
 @## SidePanel.Close
 
 ```jsx
@@ -37,14 +39,3 @@ import SidePanel from '@semcore/side-panel';
 ```
 
 This is a wrap over the [Box](/layout/box-system/box-api/#a3cfce) component.
-
-@## Context
-
-The component context is available inside rendering function.
-
-```jsx
-import SidePanel from '@semcore/side-panel';
-<SidePanel>{(context: ISidePanelContext) => {}}</SidePanel>;
-```
-
-@interface ISidePanelContext
