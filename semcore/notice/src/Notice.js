@@ -1,5 +1,5 @@
 import React from 'react';
-import createComponent, { Component, styled } from '@semcore/core';
+import createComponent, { Component, sstyled, Root } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
 import CloseXS from '@semcore/icon/lib/Close/xs';
 import resolveColor from '@semcore/utils/lib/color';
@@ -10,6 +10,8 @@ import style from './style/notice.shadow.css';
 function isCustomTheme(theme) {
   return !['danger', 'warning', 'success', 'info'].includes(theme);
 }
+
+const THEME_LABEL = { info: 'stone', success: 'green', warning: 'orange', danger: 'red' };
 
 class RootNotice extends Component {
   static displayName = 'Notice';
@@ -28,37 +30,46 @@ class RootNotice extends Component {
   }
 
   render() {
-    const SNotice = this.Root;
-    const { styles, hidden, theme, use } = this.asProps;
+    const SNotice = Root;
+    const { Children, styles, hidden, theme } = this.asProps;
     const color = resolveColor(theme);
     const useTheme = isCustomTheme(theme) ? 'custom' : theme;
 
-    return styled(styles)`
-      SNotice[theme='custom'] {
-        background-color: ${color};
-
-        &[use='secondary'] {
-          border-color: ${color};
-        }
-      }
-    `(<SNotice render={FadeInOut} visible={!hidden} use={use} theme={useTheme} />);
+    return sstyled(styles)(
+      <SNotice
+        render={FadeInOut}
+        visible={!hidden}
+        use:theme={useTheme}
+        backgroundColor={color}
+        role="alert"
+      >
+        <Children />
+      </SNotice>,
+    );
   }
 }
 
-function Label({ Root: SLabel, styles, theme }) {
-  return styled(styles)(<SLabel render={Box} theme={!isCustomTheme(theme) && theme} />);
+function Label({ styles, theme }) {
+  const SLabel = Root;
+  const useTheme = isCustomTheme(theme) ? resolveColor(theme) : resolveColor(THEME_LABEL[theme]);
+  return sstyled(styles)(<SLabel render={Box} use:theme={useTheme} />);
 }
 
-function Actions({ Root: SActions, styles }) {
-  return styled(styles)(<SActions render={Box} />);
+function Actions({ styles }) {
+  const SActions = Root;
+  return sstyled(styles)(<SActions render={Box} />);
 }
 
-function Content({ Root: SContent, styles }) {
-  return styled(styles)(<SContent render={Box} />);
+function Content({ styles }) {
+  const SContent = Root;
+  return sstyled(styles)(<SContent render={Box} />);
 }
 
-function CloseIcon({ Root: SCloseIcon, styles }) {
-  return styled(styles)(<SCloseIcon render={Box} tag={CloseXS} color="stone" interactive />);
+function CloseIcon({ styles }) {
+  const SCloseIcon = Root;
+  return sstyled(styles)(
+    <SCloseIcon render={Box} tag={CloseXS} color="stone" interactive aria-label="Close alert" />,
+  );
 }
 
 export default createComponent(RootNotice, {
