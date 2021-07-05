@@ -2,6 +2,20 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.0.0] - 2021-07-01
+
+### BREAK
+
+- Replace animation from package `react-transition-group` to `@semcore/animation`.
+
+### Changed
+
+- Version of dependence `@semcore/core` has been changed to `1.11`.
+- Improved performance. Removed one component wrapper.
+- The style processing system has been changed.
+- Removed the ability to apply media styles via a plugin `babel-plugin-react-semcore`.
+- [TS] rewrite code from TS to JS.
+
 ## [3.1.0] - 2020-12-17
 
 ### Added
