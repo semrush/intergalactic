@@ -53,9 +53,9 @@ export interface INoticeSmartProps extends INoticeProps {
 
 declare const Notice: (<T>(props: CProps<INoticeProps & T, INoticeContext>) => ReturnEl) & {
   Label: <T>(props: INoticeLabelProps & T) => ReturnEl;
-  Actions: <T>(props: ComponentProps<typeof Box> & T) => ReturnEl;
-  Content: <T>(props: ComponentProps<typeof Box> & T) => ReturnEl;
-  CloseIcon: <T>(props: ComponentProps<typeof Box> & IIconProps) => ReturnEl;
+  Actions: typeof Box;
+  Content: typeof Box;
+  CloseIcon: <T>(props: IIconProps & T) => ReturnEl;
 };
 
 declare const NoticeSmart: <T>(props: CProps<INoticeSmartProps & T>) => ReturnEl;
