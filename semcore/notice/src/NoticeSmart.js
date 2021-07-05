@@ -1,5 +1,5 @@
 import React from 'react';
-import createComponent, { Component } from '@semcore/core';
+import createComponent, { Component, Root } from '@semcore/core';
 import isNode from '@semcore/utils/lib/isNode';
 import Notice from './Notice';
 
@@ -11,7 +11,7 @@ class NoticeSmart extends Component {
   };
 
   render() {
-    const SNoticeSmart = this.Root;
+    const SNoticeSmart = Root;
     const { Children, label, actions, closable, onClose } = this.asProps;
     return (
       <SNoticeSmart render={Notice}>
