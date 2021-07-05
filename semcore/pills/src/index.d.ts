@@ -38,7 +38,7 @@ export interface IPopperHandlers {
   value: (value: PillsValue) => void;
 }
 
-declare const Pills: (<T, V>(
+declare const Pills: (<T, V extends PillsValue = PillsValue>(
   props: CProps<IPillsProps<V> & T, IPillsContext, IPopperHandlers>,
 ) => ReturnEl) & {
   Item: (<T>(props: CProps<IPillProps & T, {}, IPopperHandlers>) => ReturnEl) & {

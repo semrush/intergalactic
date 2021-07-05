@@ -1,21 +1,14 @@
-import React, { ComponentProps, HTMLAttributes } from 'react';
+import React from 'react';
 import createComponent, {
   Component,
-  Merge,
-  PropGetterFn,
-  PropsAndRef,
   sstyled,
   Root,
 } from '@semcore/core';
-import { Box, IBoxProps } from '@semcore/flex-box';
+import { Box } from '@semcore/flex-box';
 import NeighborLocation, {
-  INeighborItemProps,
-  INeighborLocationProps,
   neighborLocationEnhance,
 } from '@semcore/neighbor-location';
-import keyboardFocusEnhance, {
-  IKeyboardFocusProps,
-} from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
+import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 import addonTextChildren from '@semcore/utils/lib/addonTextChildren';
 
 import style from './style/pills.shadow.css';
