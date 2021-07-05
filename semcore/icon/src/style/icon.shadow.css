@@ -8,8 +8,16 @@ SIcon {
   fill: currentColor;
   flex-shrink: 0;
   outline: none;
+  color: var(--color);
 }
 
-SIcon[use|keyboardFocused] {
+SIcon[keyboardFocused] {
   box-shadow: var(--keyborad-focus);
+}
+
+SIcon[interactive] {
+  cursor: pointer;
+  &:hover {
+    color: var(--color-interactive);
+  }
 }
