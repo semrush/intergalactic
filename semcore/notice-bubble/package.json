@@ -11,7 +11,7 @@
   ],
   "license": "MIT",
   "scripts": {
-    "build": "build",
+    "build": "build --source=js",
     "test": "jest"
   },
   "dependencies": {
@@ -19,10 +19,10 @@
     "@semcore/icon": "^2",
     "@semcore/portal": "^2",
     "@semcore/flex-box": "^4",
-    "react-transition-group": "^4.3"
+    "@semcore/animation": "^1"
   },
   "peerDependencies": {
-    "@semcore/core": "^1",
+    "@semcore/core": "^1.11",
     "react": "16.8 - 17"
   },
   "jest": {

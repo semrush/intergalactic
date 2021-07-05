@@ -1,5 +1,5 @@
 import { CProps, PropGetterFn, ReturnEl } from '@semcore/core';
-import { IBoxProps } from '@semcore/flex-box';
+import { Box, IBoxProps } from '@semcore/flex-box';
 import { IIconProps } from '@semcore/icon';
 
 export type NoticeTheme = 'danger' | 'warning' | 'success' | 'info' | string;
@@ -21,11 +21,6 @@ export interface INoticeProps extends IBoxProps {
    * @default 200
    */
   duration?: number;
-  /**
-   * Property for managing visibility of Notice
-   * @deprecated v2.0.0 {@link INoticeProps.hidden}
-   *  */
-  invisible?: boolean;
 }
 
 export interface INoticeLabelProps extends IBoxProps {
@@ -36,11 +31,33 @@ export interface INoticeContext {
   getLabelProps: PropGetterFn;
 }
 
+export interface INoticeSmartProps extends INoticeProps {
+  /**
+   * A custom element for additional information
+   */
+  label?: React.ReactNode;
+  /**
+   * Custom action element
+   */
+  actions?: React.ReactNode;
+  /**
+   *  Adds a Close icon
+   */
+  closable?: boolean;
+  /**
+   * Callback on a click on the close button
+   */
+  onClose?: (event: React.SyntheticEvent) => void;
+}
+
 declare const Notice: (<T>(props: CProps<INoticeProps & T, INoticeContext>) => ReturnEl) & {
-  Label: <T>(props: CProps<INoticeLabelProps & T>) => ReturnEl;
-  Actions: <T>(props: CProps<IBoxProps & T>) => ReturnEl;
-  Content: <T>(props: CProps<IBoxProps & T>) => ReturnEl;
-  CloseIcon: <T>(props: CProps<IBoxProps & IIconProps>) => ReturnEl;
+  Label: <T>(props: INoticeLabelProps & T) => ReturnEl;
+  Actions: typeof Box;
+  Content: typeof Box;
+  CloseIcon: <T>(props: IIconProps & T) => ReturnEl;
 };
 
+declare const NoticeSmart: <T>(props: CProps<INoticeSmartProps & T>) => ReturnEl;
+
+export { NoticeSmart };
 export default Notice;

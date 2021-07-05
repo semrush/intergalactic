@@ -1,10 +1,4 @@
 class Timer {
-  timerId: any = null;
-  start: number = null;
-  remaining: number = null;
-  delay: number = null;
-  callback = null;
-
   constructor(callback, delay) {
     this.callback = callback;
     this.delay = delay;
