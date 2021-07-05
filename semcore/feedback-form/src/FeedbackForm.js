@@ -69,10 +69,10 @@ class FeedbackForm extends Component {
 }
 
 function Item(props) {
-  const { Children, tag, ...other } = props;
+  const { Children, tag } = props;
 
   return (
-    <Field {...other}>
+    <Root render={Field}>
       {({ input, meta, ...other }) => {
         const invalid = meta.invalid && meta.touched;
         const inputProps = {
@@ -97,7 +97,7 @@ function Item(props) {
           </Tooltip>
         );
       }}
-    </Field>
+    </Root>
   );
 }
 
@@ -131,10 +131,15 @@ function Cancel(props) {
 }
 
 function Notice(props) {
-  const { styles, theme = 'gray94', use = 'secondary' } = props;
+  const { styles } = props;
   const SNotice = Root;
   return sstyled(styles)(<SNotice render={NoticeSmart} />);
 }
+
+Notice.defaultProps = {
+  theme: 'gray94',
+  use: 'secondary',
+};
 
 export default createComponent(FeedbackForm, {
   Item,

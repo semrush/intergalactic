@@ -14,7 +14,7 @@ export interface IProgressBarProps extends IBoxProps {
   size?: 's' | 'm' | 'l';
   /** Value as a percentage */
   value?: number;
-  /** ДDuration of animation, ms
+  /** Duration of animation, ms
    * @default 1000
    */
   duration?: number;
