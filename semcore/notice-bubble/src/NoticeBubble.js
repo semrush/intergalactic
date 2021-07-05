@@ -1,98 +1,52 @@
 import React from 'react';
-import { CSSTransition, TransitionGroup } from 'react-transition-group';
-// eslint-disable-next-line import/named
-import { IntrinsicTransitionGroupProps } from 'react-transition-group/TransitionGroup';
-import Portal, { IPortalProps } from '@semcore/portal';
-import manager, { NoticeBubbleManager } from './Manager/NoticeBubbleManager';
-import createComponent, { Component, Merge, styled } from '@semcore/core';
-import { Box, IBoxProps } from '@semcore/flex-box';
+import Portal from '@semcore/portal';
+import manager from './NoticeBubbleManager';
+import createComponent, { Component, sstyled, Root } from '@semcore/core';
+import { Animation } from '@semcore/animation';
+import { Box } from '@semcore/flex-box';
 import fire from '@semcore/utils/lib/fire';
 import isNode from '@semcore/utils/lib/isNode';
 import { callAllEventHandlers } from '@semcore/utils/lib/assignProps';
 import CloseXS from '@semcore/icon/lib/Close/xs';
-import logger from '@semcore/utils/lib/logger';
-import propsForElement from '@semcore/utils/lib/propsForElement';
 import { useUID } from '@semcore/utils/lib/uniqueID';
 import { Timer } from './utils';
 
 import style from './style/notice-bubble.shadow.css';
 
-export interface INoticeBubbleContainerProps extends IntrinsicTransitionGroupProps, IPortalProps {
-  /** Manager copy */
-  manager?: NoticeBubbleManager;
-  /** Offset from the upper-right corner of the screen */
-  offset?: {
-    top?: number | string;
-    right?: number | string;
-    bottom?: number | string;
-    left?: number | string;
-  };
-}
+const animationNotice = sstyled.css`
+  @keyframes enter {
+    from {
+      transform: translate(100%, 0);
+    }
+    to {
+      transform: translate(0, 0);
+    }
+  }
 
-export interface INoticeBubbleContainerState {
-  notices: NoticeBubbleView[];
-  warnings: NoticeBubbleWarningView[];
-}
-
-export interface INoticeBubbleInfoProps extends INoticeBubbleProps {
-  readonly type?: 'info';
-  /** Notice display duration
-   * @default 5000
-   */
-  duration?: number;
-}
-
-export interface INoticeBubbleWarningProps extends INoticeBubbleProps {
-  readonly type?: 'warning';
-  /**
-   * Notice display duration
-   * @default 0
-   */
-  duration?: number;
-}
-
-export interface INoticeBubbleProps extends IBoxProps {
-  /**
-   * Manager instance
-   * @default NoticeBubbleManager()
-   */
-  manager?: NoticeBubbleManager;
-  /**
-   * Notice visibility
-   */
-  visible?: boolean;
-  /** Adds controls (buttons, etc.) */
-  action?: React.ReactNode;
-
-  /** Triggered when the notice is closed */
-  onClose?: () => void;
-
-  /** Triggered on mouseEnter */
-  onMouseEnter?: (e?: React.SyntheticEvent) => void;
-
-  /** Triggered on mouseLeave */
-  onMouseLeave?: (e?: React.SyntheticEvent) => void;
-}
+  @keyframes exit {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
+`;
 
 const Notices = (props) => {
-  const { styles, data = [], tag: SView = ViewInfo } = props;
+  const { styles, data = [], tag: SView = ViewInfo, visible } = props;
 
   return data.map((notice) => {
     const uid = useUID();
-    return (
-      <CSSTransition
+    return sstyled(styles)(
+      <Animation
         key={uid}
-        appear
-        classNames={{
-          exitActive: styled.styles['notice-bubble-fade--exit-active'],
-          exit: styled.styles['notice-bubble-fade--exit'],
-        }}
-        timeout={{
-          exit: 200,
-        }}
+        visible={notice.visible || visible}
+        duration={250}
+        keyframes={[animationNotice['@enter'], animationNotice['@exit']]}
       >
-        {styled(styles)(<SView {...notice} styles={notice.styles || styles} />)}
-      </CSSTransition>
+        <SView {...notice} styles={notice.styles || styles} />
+      </Animation>,
     );
   });
 };
@@ -106,16 +60,11 @@ const Notices = (props) => {
  * and subscribes to manager updates(NoticeBubbleManager)
  * */
 
-class NoticeBubbleContainerRoot extends Component<
-  INoticeBubbleContainerProps,
-  {},
-  INoticeBubbleContainerState
-> {
+class NoticeBubbleContainerRoot extends Component {
   static displayName = 'NoticeBubbleContainer';
   static style = style;
   static defaultProps = {
     manager,
-    offset: {},
   };
 
   _unsubscribe = null;
@@ -148,27 +97,18 @@ class NoticeBubbleContainerRoot extends Component<
   };
 
   render() {
-    const SNoticeBubble = TransitionGroup;
-    const { Children, offset, styles, disablePortal, forwardRef, ...other } = this.asProps;
+    const SNoticeBubble = Root;
+    const { Children, styles, disablePortal } = this.asProps;
     const { notices, warnings } = this.state;
 
-    return (
+    return sstyled(styles)(
       <Portal disablePortal={disablePortal}>
-        {styled(styles)`
-          SNoticeBubble {
-            margin-top: ${offset.top};
-            margin-right: ${offset.right};
-            margin-bottom: ${offset.bottom};
-            margin-left: ${offset.left};
-          }
-        `(
-          <SNoticeBubble ref={forwardRef} {...propsForElement(other)}>
-            <Children />
-            <Notices styles={styles} data={warnings} tag={ViewWarning} />
-            <Notices styles={styles} data={notices} tag={ViewInfo} />
-          </SNoticeBubble>,
-        )}
-      </Portal>
+        <SNoticeBubble render={Box}>
+          <Children />
+          <Notices styles={styles} data={warnings} tag={ViewWarning} />
+          <Notices styles={styles} data={notices} tag={ViewInfo} />
+        </SNoticeBubble>
+      </Portal>,
     );
   }
 }
@@ -180,8 +120,8 @@ class NoticeBubbleContainerRoot extends Component<
  *
  * View component, the appearance of the notice
  * */
-class ViewInfo extends Component<INoticeBubbleInfoProps> {
-  private timer = null;
+class ViewInfo extends Component {
+  timer = null;
 
   componentDidMount() {
     const { duration } = this.props;
@@ -234,14 +174,15 @@ class ViewInfo extends Component<INoticeBubbleInfoProps> {
       ...other
     } = this.props;
 
-    return styled(styles)(
+    return sstyled(styles)(
       <SInfo
+        role="alert"
         {...other}
         ref={forwardRef}
         onMouseEnter={callAllEventHandlers(onMouseEnter, this.handlerMouseEnter)}
         onMouseLeave={callAllEventHandlers(onMouseLeave, this.handlerMouseLeave)}
       >
-        <SDismiss title="Close" onClick={this.handlerClose}>
+        <SDismiss title="Close" onClick={this.handlerClose} aria-label="Close alert">
           <CloseXS />
         </SDismiss>
         <SMessage>{children}</SMessage>
@@ -263,8 +204,8 @@ class ViewWarning extends ViewInfo {
     const SAction = 'div';
     const { action: actionNode, children, styles, forwardRef, ...other } = this.props;
 
-    return styled(styles)(
-      <SWarning ref={forwardRef} {...other}>
+    return sstyled(styles)(
+      <SWarning ref={forwardRef} role="alert" {...other}>
         <SMessage>{children}</SMessage>
         {isNode(actionNode) ? <SAction>{actionNode}</SAction> : null}
       </SWarning>,
@@ -272,7 +213,7 @@ class ViewWarning extends ViewInfo {
   }
 }
 
-class NoticeBubbleView extends Component<INoticeBubbleInfoProps> {
+class NoticeBubbleView extends Component {
   static defaultProps = {
     duration: 5000,
     type: 'info',
@@ -310,13 +251,7 @@ class NoticeBubbleWarningView extends NoticeBubbleView {
   };
 }
 
-const NoticeBubbleContainer = createComponent<
-  Merge<INoticeBubbleContainerProps, React.HTMLAttributes<HTMLDivElement>>,
-  {
-    Info: Merge<INoticeBubbleInfoProps, React.HTMLAttributes<HTMLDivElement>>;
-    Warning: Merge<INoticeBubbleWarningProps, React.HTMLAttributes<HTMLDivElement>>;
-  }
->(NoticeBubbleContainerRoot, {
+const NoticeBubbleContainer = createComponent(NoticeBubbleContainerRoot, {
   Info: NoticeBubbleView,
   Warning: NoticeBubbleWarningView,
 });
@@ -327,16 +262,3 @@ const NoticeBubbleWarning = NoticeBubbleContainer.Warning;
 export { NoticeBubble, NoticeBubbleWarning };
 
 export default NoticeBubbleContainer;
-
-export const NoticeBubbleRepresentation = React.forwardRef(function (props, ref) {
-  logger.warn(
-    true,
-    "The component '<NoticeBubbleRepresentation/>' is deprecated, please use '<NoticeBubble/>'",
-    props['data-ui-name'] || NoticeBubble.displayName,
-  );
-  //@ts-ignore
-  if (props.type === 'warning') {
-    return <NoticeBubbleWarning ref={ref} {...props} />;
-  }
-  return <NoticeBubble ref={ref} {...props} />;
-});
