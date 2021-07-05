@@ -10,7 +10,7 @@ tabName: Guide
 
 @## Appearance
 
-### Component consists of
+### Component composition
 
 - Container with content (`ScrollArea.Container`);
 - Scroll indicator (`ScrollArea.Bar`).

@@ -14,7 +14,7 @@ tabName: Guide
 
 @## Appearance
 
-Component consists of:
+Component composition:
 
 - container;
 - text;
