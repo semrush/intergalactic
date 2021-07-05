@@ -94,7 +94,7 @@ export interface ISelectHandlers extends IDropdownMenuHandlers {
   value: (index: SelectValue) => void;
 }
 
-declare const Select: (<T, V>(
+declare const Select: (<T, V extends SelectValue = SelectValue>(
   props: CProps<ISelectProps<V> & T, ISelectContext, ISelectHandlers>,
 ) => ReturnEl) & {
   Trigger: (<T>(
