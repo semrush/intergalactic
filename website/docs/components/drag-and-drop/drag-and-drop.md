@@ -15,7 +15,7 @@ The component is meant for imitating physical dragging of objects, so the follow
 - It should be obvious, which elements or parts of the interface you may drag and where.
 - It should be visually shown during dragging, that the element is dragged and where it can be dragged.
 
-### Component consists of
+### Component composition
 
 `DroppableContex` is a container wrapping the required area for drag & drop operation.
 `Droppable` is the interface area, where the element can be dropped.

@@ -32,7 +32,7 @@ Do not open windows without prior action by the user. **Limit modal windows are 
 
 > 💡 For general recommendations for content styles in modal windows see [Modal content styles](/patterns/modal-content/).
 
-@## Component consists of
+@## Component composition
 
 The modal window consists of:
 

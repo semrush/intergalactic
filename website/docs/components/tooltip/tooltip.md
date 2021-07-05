@@ -16,7 +16,7 @@ Differences from [Dropdown](/components/dropdown/):
 - It has an arrow that points to the trigger.
 - It contains only hints and additional information without controls.
 
-@## Component consists of
+@## Component composition
 
 - container;
 - content;
@@ -62,13 +62,13 @@ The tooltip has themes to use on a dark background and for error messages. In bo
 
 > 💡 In [3.1.0 version](http://i.semrush.com/components/tooltip/#Changelog), you can set your own theme and change background color to custom.
 
-@## Sizes and indents
+@## Sizes, paddings and margins
 
 ### Sizes
 
 The basic tooltip has a maximum width — `max-width: 250px`. In the advanced version of the tooltip, you can set a different width if necessary.
 
-### Indents
+### Paddings and margins
 
 **Content**. The content area of the component has defaul padding.
 
@@ -87,6 +87,14 @@ Image area is 256px х 132px.
 **Arrow**. Arrow can be placed either in the middle of the component or next to any angle.
 
 ![arrow-paddings](static/tooltip-arrow-paddings.png)
+
+### Margins inside the data
+
+To make tooltip data more readable we have specific rules for margins between the labels and values.
+
+See detailed examples for tooltip margins in [Data visualization](/data-display/data-visualization/#ac9830) and [Summary](/patterns/summary/#a16f52).
+
+![tooltip example](static/tooltip-margins.png)
 
 @## Placement
 
