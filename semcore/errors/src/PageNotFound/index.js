@@ -1,7 +1,7 @@
-import React, { ComponentProps } from 'react';
+import React from 'react';
 import Button from '@semcore/button';
-import createComponent, { Component, Merge } from '@semcore/core';
-import i18nEnhance, { IWithI18nEnhanceProps } from '@semcore/utils/lib/enhances/i18nEnhance';
+import createComponent, { Component, Root } from '@semcore/core';
+import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
 import Error, { getIconPath } from '../Error';
 
 import de from './translations/de.json';
@@ -18,15 +18,7 @@ import vi from './translations/vi.json';
 
 const i18n = { de, en, es, fr, it, ja, ru, zh, pt, ko, vi };
 
-export interface IPageNotFoundProps extends IWithI18nEnhanceProps {
-  /**
-   * href of the link home
-   * @default /
-   */
-  homeLink?: string;
-}
-
-class RootPageNotFound extends Component<IPageNotFoundProps> {
+class RootPageNotFound extends Component {
   static displayName = 'Maintenance';
   static enhance = [i18nEnhance()];
   static defaultProps = {
@@ -36,7 +28,6 @@ class RootPageNotFound extends Component<IPageNotFoundProps> {
   };
 
   render() {
-    const { Root } = this;
     const { Children, getI18nText, homeLink } = this.asProps;
     const { title, text, btnHome } = getI18nText();
     return (
@@ -54,6 +45,4 @@ class RootPageNotFound extends Component<IPageNotFoundProps> {
   }
 }
 
-export default createComponent<Merge<IPageNotFoundProps, ComponentProps<typeof Error>>>(
-  RootPageNotFound,
-);
+export default createComponent(RootPageNotFound);

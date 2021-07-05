@@ -15,36 +15,30 @@ import Error from '@semcore/errors';
 
 @## Error.Title
 
-Error name.
+Error name. Extends for `<Box/>`.
 
 ```jsx
 import Error from '@semcore/errors';
 <Error.Title />;
 ```
 
-@interface IErrorStaticProps
-
 @## Error.Description
 
-Error description.
+Error description. Extends for `<Box/>`.
 
 ```jsx
 import Error from '@semcore/errors';
 <Error.Description />;
 ```
 
-@interface IErrorStaticProps
-
 @## Error.Controls
 
-Container for controls.
+Container for controls. Extends for `<Box/>`.
 
 ```jsx
 import Error from '@semcore/errors';
 <Error.Controls />;
 ```
-
-@interface IErrorStaticProps
 
 @## AccessDenied
 
