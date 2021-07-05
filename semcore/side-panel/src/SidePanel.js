@@ -1,12 +1,6 @@
 import React, { ComponentProps, useRef } from 'react';
 import FocusLock from 'react-focus-lock';
-import createComponent, {
-  Component,
-  IFunctionProps,
-  Merge,
-  PropGetter,
-  styled,
-} from '@semcore/core';
+import createComponent, { Component, Root, sstyled } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
 import { FadeInOut, IFadeInOutProps, ITransformProps, Transform } from '@semcore/animation';
 import Portal, { IPortalProps, PortalProvider } from '@semcore/portal';
@@ -19,78 +13,6 @@ import usePreventScroll from '@semcore/utils/lib/use/usePreventScroll';
 
 import style from './style/side-panel.shadow.css';
 
-export type OnCloseTriggerType = 'onOutsideClick' | 'onEscape' | 'onCloseClick';
-export type OnCloseType = (
-  trigger: OnCloseTriggerType,
-  e?: React.MouseEvent | React.KeyboardEvent,
-) => void;
-
-export type SidePanelPlacement = 'top' | 'left' | 'right' | 'bottom';
-
-export interface ISidePanelProps extends IPortalProps {
-  /** Animation display duration in ms
-   * @default 350
-   */
-  duration?: number;
-  /**
-   * The property responsible for the visibility of the component
-   */
-  visible?: boolean;
-  /**
-   * Callback for the component closure
-   */
-  onClose?: OnCloseType;
-  /**
-   * Property for displaying the close button
-   * @default true
-   */
-  closable?: boolean;
-  /**
-   * Position of a dropdown window
-   * @default right
-   */
-  placement?: SidePanelPlacement;
-}
-
-export interface ISidePanelOverlayProps extends IFadeInOutProps {
-  /**
-   * @link ISidePanelProps.visible
-   */
-  visible?: ISidePanelProps['visible'];
-}
-
-export interface ISidePanelPanelProps extends ITransformProps {
-  /**
-   * @link ISidePanelProps.visible
-   */
-  visible?: ISidePanelProps['visible'];
-  /**
-   * @link ISidePanelProps.placement
-   */
-  placement?: ISidePanelProps['placement'];
-  /**
-   * @link ISidePanelProps.closable
-   */
-  closable?: ISidePanelProps['closable'];
-
-  onOutsideClick?: (e?: React.SyntheticEvent) => void;
-}
-
-export interface ISidePanelContext extends ISidePanelProps {
-  /**
-   * The method that encapsulates the props needed to run SidePanel.Overlay
-   */
-  getOverlayProps?: PropGetter<RootSidePanel['getOverlayProps']>;
-  /**
-   * The method that encapsulates the props needed to run SidePanel.Panel
-   */
-  getPanelProps?: PropGetter<RootSidePanel['getPanelProps']>;
-  /**
-   * The method that encapsulates the props needed to run SidePanel.Close
-   */
-  getCloseProps?: PropGetter<RootSidePanel['getCloseProps']>;
-}
-
 const placementTransformMap = {
   top: ['translate(0, -100%)', 'translate(0, 0)'],
   right: ['translate(100%, 0)', 'translate(0, 0)'],
@@ -98,7 +20,7 @@ const placementTransformMap = {
   left: ['translate(-100%, 0)', 'translate(0, 0)'],
 };
 
-class RootSidePanel extends Component<ISidePanelProps> {
+class RootSidePanel extends Component {
   static displayName = 'SidePanel';
   static style = style;
   static defaultProps = {
@@ -107,7 +29,7 @@ class RootSidePanel extends Component<ISidePanelProps> {
     closable: true,
   };
 
-  sidebarRef = React.createRef<HTMLElement>();
+  sidebarRef = React.createRef();
 
   handleSidebarKeyDown = (e) => {
     if (e.key === 'Escape') {
@@ -179,7 +101,6 @@ class RootSidePanel extends Component<ISidePanelProps> {
   }
 
   render() {
-    const Root = this.Root;
     const { Children, disablePortal } = this.asProps;
 
     return (
@@ -196,38 +117,33 @@ class RootSidePanel extends Component<ISidePanelProps> {
   }
 }
 
-function Overlay(props: IFunctionProps<ISidePanelOverlayProps>) {
-  const { Root: SOverlay, styles, visible } = props;
-  usePreventScroll(visible);
-
-  return styled(styles)(<SOverlay render={FadeInOut} visible={visible} />);
+function Overlay(props) {
+  const SOverlay = Root;
+  usePreventScroll(props.visible);
+  return sstyled(props.styles)(<SOverlay render={FadeInOut} />);
 }
 
-const FocusLockWrapper = React.forwardRef<HTMLElement, any>(function (
-  { disableEnforceFocus, ...other },
-  ref,
-) {
+const FocusLockWrapper = React.forwardRef(function({ disableEnforceFocus, ...other }, ref) {
   return <FocusLock ref={ref} lockProps={other} disabled={disableEnforceFocus} {...other} />;
 });
 
-const TransformWrapper = React.forwardRef<HTMLElement, any>(function ({ tag, ...other }, ref) {
+const TransformWrapper = React.forwardRef(function({ tag, ...other }, ref) {
   return <Transform tag={FocusLockWrapper} ref={ref} as={tag} {...other} />;
 });
 
-function Panel(props: IFunctionProps<ISidePanelPanelProps>) {
-  const { Root: SPanel, Children, styles, visible, closable, placement, onOutsideClick } = props;
+function Panel(props) {
+  const SPanel = Root;
+  const { Children, styles, visible, closable, placement, onOutsideClick } = props;
 
-  const sidebarRef = useRef<HTMLElement>(null);
+  const sidebarRef = useRef(null);
 
-  return styled(styles)(
+  return sstyled(styles)(
     <>
       {visible && <OutsideClick onOutsideClick={onOutsideClick} excludeRefs={[sidebarRef]} />}
       <SPanel
         render={TransformWrapper}
         tag={Box}
         ref={sidebarRef}
-        placement={placement}
-        visible={visible}
         tabIndex={-1}
         returnFocus={true}
         autoFocus={true}
@@ -243,10 +159,8 @@ function Panel(props: IFunctionProps<ISidePanelPanelProps>) {
 }
 
 function Close(props) {
-  const { Root: SClose, styles, keyboardFocused } = props;
-  return styled(styles)(
-    <SClose render={Box} tag="button" tabIndex={0} keyboardFocused={keyboardFocused} />,
-  );
+  const SClose = Root;
+  return sstyled(props.styles)(<SClose render={Box} tag="button" />);
 }
 
 Close.defaultProps = {
@@ -254,15 +168,7 @@ Close.defaultProps = {
 };
 Close.enhance = [keyboardFocusEnhance()];
 
-const SidePanel = createComponent<
-  ISidePanelProps,
-  {
-    Overlay: Merge<ISidePanelOverlayProps, ComponentProps<typeof Box>>;
-    Panel: Merge<ISidePanelPanelProps, ComponentProps<typeof Box>>;
-    Close: ComponentProps<typeof Box>;
-  },
-  ISidePanelContext
->(RootSidePanel, {
+const SidePanel = createComponent(RootSidePanel, {
   Overlay,
   Panel,
   Close,
