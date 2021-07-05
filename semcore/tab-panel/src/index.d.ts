@@ -31,7 +31,7 @@ export interface ITabPanelHandlers {
   value: (value: TabPanelValue) => void;
 }
 
-declare const TabPanel: (<T, V>(
+declare const TabPanel: (<T, V extends TabPanelValue = TabPanelValue>(
   props: CProps<ITabPanelProps<V> & T, ITabPanelContext, ITabPanelHandlers>,
 ) => ReturnEl) & {
   Item: (<T>(props: CProps<ITabPanelItemProps & T, {}, ITabPanelHandlers>) => ReturnEl) & {
