@@ -1,27 +1,18 @@
-import React, { ComponentProps, HTMLAttributes } from 'react';
-import { Field, Form, FormProps } from 'react-final-form';
+import React from 'react';
+import { Field, Form } from 'react-final-form';
 import createFocusDecorator from 'final-form-focus';
 
-import createComponent, { Component, IFunctionProps, Merge, styled } from '@semcore/core';
-import Button, { IButtonProps } from '@semcore/button';
+import createComponent, { Component, sstyled, Root } from '@semcore/core';
+import Button from '@semcore/button';
 import SpinContainer from '@semcore/spin-container';
 import Tooltip from '@semcore/tooltip';
-import { INoticeSmartProps, NoticeSmart } from '@semcore/notice';
-import { Box, IBoxProps } from '@semcore/flex-box';
+import { NoticeSmart } from '@semcore/notice';
+import { Box } from '@semcore/flex-box';
 import MailSentL from '@semcore/icon/lib/MailSent/l';
 
 import style from './style/feedback-form.shadow.css';
 
-export interface IFeedbackForm extends FormProps {
-  /* The event is called when the form is submitted */
-  onSubmit: (values: any, form: any, callback?: (errors?: {}) => void) => {} | Promise<{}> | void;
-  /**
-   * The property is in charge of the spinner showing
-   * */
-  loading?: boolean;
-}
-
-class FeedbackForm extends Component<IFeedbackForm> {
+class FeedbackForm extends Component {
   static displayName = 'FeedbackForm';
   static style = style;
   static FinalForm = {
@@ -52,18 +43,18 @@ class FeedbackForm extends Component<IFeedbackForm> {
 
   render() {
     const SFeedbackForm = Box;
-    const { Children, styles, loading, ...other } = this.asProps;
+    const { Children, styles, loading, forwardRef, ...other } = this.asProps;
 
     return (
       <Form decorators={[this.focusDecorator]} {...other}>
         {(api) =>
-          styled(styles)(
+          sstyled(styles)(
             <SpinContainer size="xl" loading={loading === undefined ? api.submitting : loading}>
               <SFeedbackForm
-                render={Box}
                 tag="form"
                 noValidate
                 method="POST"
+                ref={forwardRef}
                 {...other}
                 onSubmit={api.handleSubmit}
               >
@@ -78,10 +69,10 @@ class FeedbackForm extends Component<IFeedbackForm> {
 }
 
 function Item(props) {
-  const { Root, Children, tag, ...other } = props;
+  const { Children, tag } = props;
 
   return (
-    <Field {...other}>
+    <Root render={Field}>
       {({ input, meta, ...other }) => {
         const invalid = meta.invalid && meta.touched;
         const inputProps = {
@@ -106,15 +97,16 @@ function Item(props) {
           </Tooltip>
         );
       }}
-    </Field>
+    </Root>
   );
 }
 
-function Success(props: IFunctionProps<IBoxProps>) {
-  const { Root: SSuccess, Children, styles } = props;
+function Success(props) {
+  const { Children, styles } = props;
+  const SSuccess = Root;
   const SEmail = MailSentL;
 
-  return styled(styles)(
+  return sstyled(styles)(
     <SSuccess render={Box}>
       <SEmail />
       <span>
@@ -126,31 +118,30 @@ function Success(props: IFunctionProps<IBoxProps>) {
 // because it is used without a wrapper
 Success.style = style;
 
-function Submit(props: IFunctionProps<IButtonProps>) {
-  const { Root: SSubmit, styles } = props;
-  return styled(styles)(<SSubmit render={Button} type="submit" use="primary" theme="success" />);
+function Submit(props) {
+  const { styles } = props;
+  const SSubmit = Root;
+  return sstyled(styles)(<SSubmit render={Button} type="submit" use="primary" theme="success" />);
 }
 
-function Cancel(props: IFunctionProps<IButtonProps>) {
-  const { Root: SCancel, styles } = props;
-  return styled(styles)(<SCancel render={Button} type="reset" use="secondary" theme="muted" />);
+function Cancel(props) {
+  const { styles } = props;
+  const SCancel = Root;
+  return sstyled(styles)(<SCancel render={Button} type="reset" use="secondary" theme="muted" />);
 }
 
-function Notice(props: IFunctionProps<INoticeSmartProps>) {
-  const { Root: SNotice, styles, theme = 'gray94', use = 'secondary' } = props;
-  return styled(styles)(<SNotice render={NoticeSmart} theme={theme} use={use} />);
+function Notice(props) {
+  const { styles } = props;
+  const SNotice = Root;
+  return sstyled(styles)(<SNotice render={NoticeSmart} />);
 }
 
-export default createComponent<
-  Merge<IFeedbackForm, HTMLAttributes<HTMLFormElement>>,
-  {
-    Item: HTMLAttributes<HTMLElement>;
-    Success: ComponentProps<typeof Box>;
-    Submit: ComponentProps<typeof Button>;
-    Cancel: ComponentProps<typeof Button>;
-    Notice: ComponentProps<typeof NoticeSmart>;
-  }
->(FeedbackForm, {
+Notice.defaultProps = {
+  theme: 'gray94',
+  use: 'secondary',
+};
+
+export default createComponent(FeedbackForm, {
   Item,
   Success,
   Submit,
