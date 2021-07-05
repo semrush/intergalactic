@@ -17,6 +17,8 @@ export type iconNames =
   | 'project_not_found'
   | 'timeout';
 
+export type getIconPath = (name: string) => string;
+
 export interface IErrorsProps extends IFlexProps {
   /**
    * Error icon
