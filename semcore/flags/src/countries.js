@@ -1,4 +1,3 @@
-/* tslint:disable */
 export const iso2Name = {
   AF: 'Afghanistan',
   AX: 'Aland',

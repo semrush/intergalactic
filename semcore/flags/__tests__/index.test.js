@@ -9,13 +9,13 @@ describe('Flags', () => {
   test('should support className with name country without space', () => {
     const { getByTestId } = render(<Flags data-testid="flags" iso2="EH" />);
 
-    expect(getByTestId('flags').classList[2]).toMatch('WesternSahara');
+    expect(getByTestId('flags').classList[1]).toMatch('WesternSahara');
   });
 
   test('should support className with name country and ,', () => {
     const { getByTestId } = render(<Flags data-testid="flags" iso2="BQ" />);
 
-    expect(getByTestId('flags').classList[2]).toMatch('BonaireSintEustatiusAndSaba');
+    expect(getByTestId('flags').classList[1]).toMatch('BonaireSintEustatiusAndSaba');
   });
 
   test('should support no name contry', async () => {
