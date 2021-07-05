@@ -1,7 +1,7 @@
-import React, { ComponentProps } from 'react';
+import React from 'react';
 import Button from '@semcore/button';
-import createComponent, { Component, Merge } from '@semcore/core';
-import i18nEnhance, { IWithI18nEnhanceProps } from '@semcore/utils/lib/enhances/i18nEnhance';
+import createComponent, { Component } from '@semcore/core';
+import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
 import canUseDOM from '@semcore/utils/lib/canUseDOM';
 import { callAllEventHandlers } from '@semcore/utils/lib/assignProps';
 import Error, { getIconPath } from '../Error';
@@ -20,15 +20,7 @@ import vi from './translations/vi.json';
 
 const i18n = { de, en, es, fr, it, ja, ru, zh, pt, ko, vi };
 
-export interface IPageErrorProps extends IWithI18nEnhanceProps {
-  /**
-   * Page reloading button click handler
-   * @default () => { if (canUseDOM()) { location.reload(); } }
-   */
-  onClick?: (e: React.MouseEvent) => void;
-}
-
-class RootPageError extends Component<IPageErrorProps> {
+class RootPageError extends Component {
   static displayName = 'PageError';
   static enhance = [i18nEnhance()];
   static defaultProps = {
@@ -65,4 +57,4 @@ class RootPageError extends Component<IPageErrorProps> {
   }
 }
 
-export default createComponent<Merge<IPageErrorProps, ComponentProps<typeof Error>>>(RootPageError);
+export default createComponent(RootPageError);

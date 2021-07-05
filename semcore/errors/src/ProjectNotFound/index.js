@@ -1,8 +1,8 @@
-import React, { ComponentProps } from 'react';
+import React from 'react';
 import Button from '@semcore/button';
 import FormatText from '@semcore/format-text';
-import createComponent, { Component, Merge } from '@semcore/core';
-import i18nEnhance, { IWithI18nEnhanceProps } from '@semcore/utils/lib/enhances/i18nEnhance';
+import createComponent, { Component, Root } from '@semcore/core';
+import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
 import Error, { getIconPath } from '../Error';
 import de from './translations/de.json';
 import en from './translations/en.json';
@@ -18,17 +18,7 @@ import vi from './translations/vi.json';
 
 const i18n = { de, en, es, fr, it, ja, ru, zh, pt, ko, vi };
 
-export interface IProjectNotFoundProps extends IWithI18nEnhanceProps {
-  /**
-   * Link to the projects
-   * @default /projects
-   */
-  projectsLink?: string;
-  contactsLink?: string;
-  supportTeamLink?: string;
-}
-
-class RootProjectNotFound extends Component<IProjectNotFoundProps> {
+class RootProjectNotFound extends Component {
   static displayName = 'Maintenance';
   static enhance = [i18nEnhance()];
   static defaultProps = {
@@ -40,14 +30,12 @@ class RootProjectNotFound extends Component<IProjectNotFoundProps> {
   };
 
   render() {
-    const { Root } = this;
     const { Children, getI18nText, projectsLink, contactsLink, supportTeamLink } = this.asProps;
     const { title, btnProjects, btnContacts } = getI18nText();
     const text = getI18nText('text', { url: supportTeamLink });
     return (
       <Root render={Error}>
         <Error.Title>{title}</Error.Title>
-        {/* @ts-ignore */}
         <Error.Description tag={FormatText} size="xl" dangerouslySetInnerHTML={{ __html: text }} />
         <Children />
         <Error.Controls>
@@ -63,6 +51,4 @@ class RootProjectNotFound extends Component<IProjectNotFoundProps> {
   }
 }
 
-export default createComponent<Merge<IProjectNotFoundProps, ComponentProps<typeof Error>>>(
-  RootProjectNotFound,
-);
+export default createComponent(RootProjectNotFound);
