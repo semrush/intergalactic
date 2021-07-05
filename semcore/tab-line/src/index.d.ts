@@ -44,7 +44,7 @@ export interface ITabLineHandlers {
   value: (value: TabLineValue) => void;
 }
 
-declare const TabLine: (<T, V>(
+declare const TabLine: (<T, V extends TabLineValue = TabLineValue>(
   props: CProps<ITabLineProps<V> & T, ITabLineContext, ITabLineHandlers>,
 ) => ReturnEl) & {
   Item: (<T>(props: CProps<ITabLineItemProps & T, {}, ITabLineHandlers>) => ReturnEl) & {
