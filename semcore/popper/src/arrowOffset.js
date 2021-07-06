@@ -1,4 +1,3 @@
-import { ModifierArguments, Options, Modifier } from '@popperjs/core/lib';
 import capitalizeFirstLetter from '@semcore/utils/lib/capitalizeFirstLetter';
 
 const MAP_OFFSET = {
