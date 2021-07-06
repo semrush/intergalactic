@@ -119,6 +119,10 @@ class RootSelect extends Component {
     };
   }
 
+  getDividerProps() {
+    return { my: 1 };
+  }
+
   renderChildrenTrigger(value, options) {
     if (options) {
       value = this.fallbackDeprecatedValue(value);
@@ -133,10 +137,10 @@ class RootSelect extends Component {
     value = this.fallbackDeprecatedLabel(value);
     return Array.isArray(value)
       ? value.reduce((acc, value) => {
-        if (acc.length) acc.push(', ');
-        acc.push(value);
-        return acc;
-      }, [])
+          if (acc.length) acc.push(', ');
+          acc.push(value);
+          return acc;
+        }, [])
       : value;
   }
 
@@ -221,13 +225,13 @@ class RootSelect extends Component {
     logger.warn(
       // @ts-ignore
       this.isFallback(),
-      '\'selectedOptions\'/\'defaultSelectedOptions\' changed to \'value/defaultValue\' and take only values, not objects.',
+      "'selectedOptions'/'defaultSelectedOptions' changed to 'value/defaultValue' and take only values, not objects.",
       other['data-ui-name'] || Select.displayName,
     );
 
     logger.warn(
       options && advanceMode,
-      'Don\'t use at the same time \'options\' property and \'<Select.Trigger/>/<Select.Popper/>\'',
+      "Don't use at the same time 'options' property and '<Select.Trigger/>/<Select.Popper/>'",
       other['data-ui-name'] || Select.displayName,
     );
 
@@ -255,13 +259,13 @@ class RootSelect extends Component {
 
 function Trigger({ Children, name, value, $hiddenRef, tag: Tag = ButtonTrigger }) {
   return (
-    <Root render={DropdownMenu.Trigger} tag={Tag} placeholder='Select option'>
+    <Root render={DropdownMenu.Trigger} tag={Tag} placeholder="Select option">
       {addonTextChildren(
         Children,
         Tag.Text || ButtonTrigger.Text,
         Tag.Addon || ButtonTrigger.Addon,
       )}
-      {name && <input type='hidden' defaultValue={value} name={name} ref={$hiddenRef} />}
+      {name && <input type="hidden" defaultValue={value} name={name} ref={$hiddenRef} />}
     </Root>
   );
 }
@@ -271,22 +275,18 @@ function OptionCheckbox(props) {
   const { size, theme, children } = other;
   const SOptionCheckbox = 'div';
   const styles = sstyled(props.styles);
+  const { className, style } = styles.cn('SOptionCheckbox', {
+    size,
+    'use:theme': resolveColor(theme),
+    checked: selected,
+  });
+
   return (
     <DropdownMenu.Item {...other}>
-      <SOptionCheckbox
-        className={styles.cn('SOptionCheckbox', {
-          size,
-          'use:theme': resolveColor(theme),
-          checked: selected,
-        }).className || undefined}
-      />
+      <SOptionCheckbox style={style} className={className || undefined} />
       {children}
     </DropdownMenu.Item>
   );
-}
-
-function SelectDivider() {
-  return <Root render={Divider} my={1} />;
 }
 
 const InputSearchWrapper = function(props) {
@@ -322,7 +322,7 @@ const Select = createComponent(
         Addon: DropdownMenu.Item.Addon,
       },
     ],
-    Divider: SelectDivider,
+    Divider,
     InputSearch: InputSearchWrapper,
     Input: InputSearchWrapper,
   },
