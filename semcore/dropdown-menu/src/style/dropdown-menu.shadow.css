@@ -111,3 +111,9 @@ SDropdownMenuItemAddon {
     margin-right: 0;
   }
 }
+
+SPopper {
+  &:focus {
+    box-shadow: var(--keyborad-focus);
+  }
+}

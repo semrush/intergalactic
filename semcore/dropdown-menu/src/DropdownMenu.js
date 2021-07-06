@@ -85,6 +85,7 @@ class DropdownMenuRoot extends Component {
 
   getPopperProps() {
     return {
+      tabIndex: 0,
       onKeyDown: this.handlerKeyDown,
     };
   }

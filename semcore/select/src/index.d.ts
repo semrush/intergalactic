@@ -1,5 +1,5 @@
 import React, { ComponentProps } from 'react';
-import { CProps, Merge, ReturnEl } from '@semcore/core';
+import { CProps, Merge, PropGetterFn, ReturnEl } from '@semcore/core';
 import DropdownMenu, {
   IDropdownMenuContext,
   IDropdownMenuItemProps,
@@ -88,7 +88,11 @@ export interface ISelectOptionCheckboxProps extends ISelectOptionProps {
 
 declare const InputSearch: <T>(props: ISelectInputSearch & T) => ReturnEl;
 
-export interface ISelectContext extends IDropdownMenuContext {}
+export interface ISelectContext extends IDropdownMenuContext {
+  getOptionProps: PropGetterFn;
+  getOptionCheckboxProps: PropGetterFn;
+  getDividerProps: PropGetterFn;
+}
 
 export interface ISelectHandlers extends IDropdownMenuHandlers {
   value: (index: SelectValue) => void;

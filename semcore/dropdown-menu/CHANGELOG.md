@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.3.5] - 2021-07-06
+
+### Changed
+
+- Changed `tabIndex` to `0` and styles for `DropdowmMenu.Popper`.
+
 ## [2.3.4] - 2021-06-10
 
 ### Changed
