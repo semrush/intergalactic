@@ -1,5 +1,5 @@
 import React from 'react';
-import { cleanup } from 'jest-preset-ui/testing';
+import { cleanup, axe, render } from 'jest-preset-ui/testing';
 import snapshot from 'jest-preset-ui/snapshot';
 import DropdownMenu from '../src';
 
@@ -86,5 +86,19 @@ describe('DropdownMenu', () => {
     );
 
     expect(await snapshot(Component)).toMatchImageSnapshot();
+  });
+
+  test('a11y', async () => {
+    const { container } = render(
+      <DropdownMenu visible disablePortal>
+        <DropdownMenu.Trigger>trigger</DropdownMenu.Trigger>
+        <DropdownMenu.Menu>
+          <DropdownMenu.Item>item 1</DropdownMenu.Item>
+        </DropdownMenu.Menu>
+      </DropdownMenu>,
+    );
+
+    const results = await axe(container);
+    expect(results).toHaveNoViolations();
   });
 });

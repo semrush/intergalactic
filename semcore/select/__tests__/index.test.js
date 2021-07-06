@@ -1,6 +1,6 @@
 import React from 'react';
 import { FilterTrigger } from '@semcore/base-trigger';
-import { cleanup, fireEvent, render } from 'jest-preset-ui/testing';
+import { cleanup, fireEvent, render, axe } from 'jest-preset-ui/testing';
 import snapshot from 'jest-preset-ui/snapshot';
 import Select from '../src';
 
@@ -134,5 +134,20 @@ describe('Select Trigger', () => {
       </Select>,
     );
     expect(spy).toBeCalledTimes(1);
+  });
+
+  test('a11y', async () => {
+    const { container } = render(
+      <Select visible value={['2']}>
+        <Select.Trigger />
+        <Select.Popper>
+          <Select.Option value="1">Option 1</Select.Option>
+          <Select.Option value="2">Option 2</Select.Option>
+        </Select.Popper>
+      </Select>,
+    );
+
+    const results = await axe(container);
+    expect(results).toHaveNoViolations();
   });
 });
