@@ -41,7 +41,7 @@ Go to [Color](/style/color/) to learn more about our color system.
 
 @## Typography
 
-> **TL;DR or main thoughts**: our main font is Ubuntu. The main text color is #333 (`var(--gray20)` in our variables), while the secondary text color is #757575 (`var(--gray60)` in our variables).
+> **TL;DR or main thoughts**: our main font is Inter. The main text color is #333 (`var(--gray20)` in our variables), while the secondary text color is #757575 (`var(--gray60)` in our variables).
 
 Our type scale is based on the modular scale with the base of a 12px font size and a 1.2 ratio.
 
