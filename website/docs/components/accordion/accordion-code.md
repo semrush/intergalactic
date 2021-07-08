@@ -8,9 +8,9 @@ title: Code
 
 @example base
 
-@## Customizing the toggle
+@## Customizing the trigger
 
-You can add your own styles to the accordion or change its `tag`.
+You can add your own styles to the trigger or change its `tag`.
 
 @example trigger
 
