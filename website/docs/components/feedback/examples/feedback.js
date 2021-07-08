@@ -45,37 +45,37 @@ class Feedback extends React.PureComponent {
     return (
       <FeedbackForm onSubmit={onSubmit} loading={status === 'loading'}>
         <Box p={4}>
-          <FeedbackForm.Item
-            name="feedback"
-            validate={validate.description}
-            initialValue={value.description}
-          >
-            {({ input }) => (
-              <Flex tag="label" direction="column">
-                <Text mb={1} size={100}>
-                  Tell us your suggestion or report an issue
-                </Text>
+          <Flex tag="label" direction="column">
+            <Text mb={1} size={100}>
+              Tell us your suggestion or report an issue
+            </Text>
+            <FeedbackForm.Item
+              name="feedback"
+              validate={validate.description}
+              initialValue={value.description}
+            >
+              {({ input }) => (
                 <Textarea
                   {...input}
                   autoFocus
                   h={80}
                   onChange={this.handleChange(input.onChange, 'description')}
                 />
-              </Flex>
-            )}
-          </FeedbackForm.Item>
-          <FeedbackForm.Item name="email" validate={validate.email} initialValue={value.email}>
-            {({ input }) => (
-              <Flex tag="label" mt={4} direction="column">
-                <Text mb={1} size={100}>
-                  Reply-to email
-                </Text>
+              )}
+            </FeedbackForm.Item>
+          </Flex>
+          <Flex tag="label" mt={4} direction="column">
+            <Text mb={1} size={100}>
+              Reply-to email
+            </Text>
+            <FeedbackForm.Item name="email" validate={validate.email} initialValue={value.email}>
+              {({ input }) => (
                 <Input state={input.state}>
                   <Input.Value {...input} onChange={this.handleChange(input.onChange, 'email')} />
                 </Input>
-              </Flex>
-            )}
-          </FeedbackForm.Item>
+              )}
+            </FeedbackForm.Item>
+          </Flex>
           <Box mt={2}>
             <Text lineHeight="18px" size={100}>
               We will only use this email to respond to you on your feedback.{' '}
