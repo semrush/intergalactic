@@ -3,25 +3,12 @@
 SLine {
   fill: transparent;
   stroke-width: 3;
+  stroke: var(--color);
   /*stroke-linecap: round;*/
 }
 
 SLine[hide] {
   display: none;
-}
-
-SDot {
-  stroke-width: 2px;
-  stroke: #fff;
-  r: 6px;
-}
-
-SDot[hide] {
-  display: none;
-}
-
-SDot[active] {
-  r: 8px;
 }
 
 SNull {

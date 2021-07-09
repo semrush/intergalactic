@@ -14,7 +14,7 @@ SRadio[disabled] {
 }
 
 SText {
-  margin-left: media(8px);
+  margin-left: 8px;
 }
 
 SValue {
@@ -53,21 +53,21 @@ SValue {
 }
 
 SValue[size='xl'] {
-  margin-top: media(2px);
-  width: media(20px);
-  height: media(20px);
+  margin-top: 2px;
+  width: 20px;
+  height: 20px;
 }
 
 SValue[size='l'] {
-  margin-top: media(1px);
-  width: media(16px);
-  height: media(16px);
+  margin-top: 1px;
+  width: 16px;
+  height: 16px;
 }
 
 SValue[size='m'] {
-  margin-top: media(2px);
-  width: media(12px);
-  height: media(12px);
+  margin-top: 2px;
+  width: 12px;
+  height: 12px;
 }
 
 SValue[state='normal']::before {
@@ -89,18 +89,18 @@ SControl:checked ~ SValue::before {
 }
 
 SControl:checked ~ SValue[size='xl']::after {
-  width: media(8px);
-  height: media(8px);
+  width: 8px;
+  height: 8px;
 }
 
 SControl:checked ~ SValue[size='l']::after {
-  width: media(6px);
-  height: media(6px);
+  width: 6px;
+  height: 6px;
 }
 
 SControl:checked ~ SValue[size='m']::after {
-  width: media(4px);
-  height: media(4px);
+  width: 4px;
+  height: 4px;
 }
 
 SValue[state='normal'][keyboardFocused]::before {
@@ -110,4 +110,12 @@ SValue[state='normal'][keyboardFocused]::before {
 
 SValue[state='invalid'][keyboardFocused]::before {
   box-shadow: 0 0 0 3px color-mod(var(--orange) a(30%));
+}
+
+SControl:checked ~ SValue[theme]::before {
+  border-color: var(--theme);
+  background-color: var(--theme);
+}
+SValue[state='normal'][theme]::before {
+  border-color: var(--theme);
 }

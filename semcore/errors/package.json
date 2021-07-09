@@ -1,7 +1,7 @@
 {
   "name": "@semcore/errors",
   "description": "SEMRush Errors Component",
-  "version": "2.3.0",
+  "version": "2.4.0",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -11,7 +11,7 @@
   "author": "Roman Lysov <r.lysov@semrush.com>",
   "license": "MIT",
   "scripts": {
-    "build": "build",
+    "build": "build --source=js",
     "test": "jest",
     "deploy": "gcs-upload svg/*.svg"
   },
@@ -24,7 +24,7 @@
     "@semcore/icon": "^2"
   },
   "peerDependencies": {
-    "@semcore/core": "^1.3.2",
+    "@semcore/core": "^1.11",
     "react": "16.8 - 17"
   },
   "jest": {

@@ -2,6 +2,18 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.6om/en/1.0.0/).
 
+## [2.5.6] - 2021-07-06
+
+### Fixed
+
+- Fixed set theme for `Select.OptionCheckbox`.
+
+## [2.5.5] - 2021-07-05
+
+### Fixed
+
+- Add default type for generic value
+
 ## [2.5.4] - 2021-06-08
 
 ### Fixed

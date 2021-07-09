@@ -14,7 +14,7 @@ It is usually set by the system or by the user himself.
 
 @## Appearance
 
-### Component consists of
+### Component composition
 
 - container;
 - text;

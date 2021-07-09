@@ -202,15 +202,15 @@ class RangePickerAbstract extends Component {
     const buttons = (
       <>
         <Button
-          use="primary"
+          use='primary'
           children={getI18nText('apply')}
           onClick={() => this.handlerApply(dirtyValue.length ? dirtyValue : value)}
         />
         {!unclearable && (
           <Button
             ml={2}
-            use="tertiary"
-            theme="muted"
+            use='tertiary'
+            theme='muted'
             children={getI18nText('reset')}
             onClick={() => this.handlerApply([])}
           />
@@ -240,10 +240,10 @@ class RangePickerAbstract extends Component {
             </Box>
             {Boolean(periods.length) && (
               <>
-                <Divider m="-16px 16px" orientation="vertical" h="auto" />
-                <Flex direction="column">
+                <Divider m='-16px 16px' orientation='vertical' h='auto' />
+                <Flex direction='column'>
                   <Picker.Period />
-                  <Flex mt="auto">{buttons}</Flex>
+                  <Flex mt='auto'>{buttons}</Flex>
                 </Flex>
               </>
             )}
@@ -334,7 +334,8 @@ class RangePickerAbstract extends Component {
   }
 
   render() {
-    return sstyled(this.asProps.styles)(<Root render={Dropdown} />);
+    const { Children, styles } = this.asProps;
+    return sstyled(styles)(<Root render={Dropdown}><Children /></Root>);
   }
 }
 

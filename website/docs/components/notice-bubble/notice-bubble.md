@@ -28,7 +28,7 @@ Let's see the differencies with [Notice](/components/notice/).
 - Displaying execution of a process using spinners or a progress bar. The exception is the no-network condition. If you need to display the process, use the [progress bar](/components/progress-bar/).
 - If there are any visible instant interface changes. For example, adding a tag to an item — the tag appears, adding an item to favorites — changing the icon color, adding an item to a table/list.
 
-@## Component consists of
+@## Component composition
 
 - Text (we recommend placing the message in 2 lines, maximum — 4 lines).
 - Icon that closes the alert (using the `CloseXS` icon).

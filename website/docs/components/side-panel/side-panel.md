@@ -32,7 +32,7 @@ Use this component when it is simultaneously needed:
 - Charts inside the report, which can be clicked on to see additional information.
 - On small screens where we can use the SidePanel moving from below, other interface controls can serve as a trigger.
 
-@## Component consists of
+@## Component composition
 
 - container;
 - content;

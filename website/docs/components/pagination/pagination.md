@@ -12,7 +12,7 @@ tabName: Guide
 
 @## Appearance
 
-### Component consists of
+### Component composition
 
 - `primary` и `secondary` buttons;
 - [input](/components/input/);

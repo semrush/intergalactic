@@ -2,6 +2,17 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [1.0.0-13] - 2021-07-18
+
+### BREAK
+
+- Revert area for stack area chart.
+- Change data for Venn chart.
+
+### Changed
+
+- Add default ticks for Axis.
+
 ## [1.0.0-12] - 2021-06-02
 
 ### Added

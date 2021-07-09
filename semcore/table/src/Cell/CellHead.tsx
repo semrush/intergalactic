@@ -22,7 +22,16 @@ function CellHeadInner(props, ref) {
   const { active, sorting, use, styles } = other;
 
   return styled(styles)(
-    <SCellHead ref={ref} tag="th" noWrap use={use} active={active} sorting={sorting} {...other}>
+    <SCellHead
+      ref={ref}
+      tag="th"
+      noWrap
+      use={use}
+      active={active}
+      sorting={sorting}
+      tabIndex={sorting && 0}
+      {...other}
+    >
       <SCellHeadContent>
         {children}
         {sorting === 'asc' && <SCellHeadIconAsc active={active} />}

@@ -2,6 +2,14 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.3.0] - 2021-06-16
+
+### Changed
+
+- [A11y] added `role="switch"` and support the Enter or Space key for used to toggle between a checked or unchecked
+  positions.
+- [TS] Rewrite code from TS to JS.
+
 ## [3.2.0] - 2021-04-26
 
 ### Changed

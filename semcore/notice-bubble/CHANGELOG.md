@@ -2,6 +2,22 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.0.0] - 2021-07-05
+
+### BREAK
+
+- Replace animation package from `react-transition-group` to `@semcore/animation`
+- Remove property `offset` and added `Box` inside `NoticeBubbleContainer`
+
+### Changed
+
+- Version of dependence `@semcore/core` has been changed to `1.11`.
+- Improved performance. Removed one component wrapper.
+- The style processing system has been changed.
+- Removed the ability to apply media styles via a plugin `babel-plugin-react-semcore`.
+- [TS] rewrite code from TS to JS.
+- [A11y] added role for `Alert` and aria-label for `Close`.
+
 ## [2.1.1] - 2021-04-28
 
 ### Changed

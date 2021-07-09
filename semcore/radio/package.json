@@ -1,14 +1,14 @@
 {
   "name": "@semcore/radio",
   "description": "SEMRush Radio Component",
-  "version": "4.1.0",
+  "version": "4.2.0",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
   "author": "Roman Lysov <r.lysov@semrush.com>",
   "license": "MIT",
   "scripts": {
-    "build": "build",
+    "build": "build --source=js",
     "test": "jest"
   },
   "dependencies": {
@@ -17,7 +17,7 @@
     "@semcore/flex-box": "^4"
   },
   "peerDependencies": {
-    "@semcore/core": "^1.3",
+    "@semcore/core": "^1.11",
     "react": "16.8 - 17"
   },
   "jest": {

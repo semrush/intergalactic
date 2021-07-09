@@ -3,12 +3,16 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { sstyled } from '@semcore/core';
 import trottle from '@semcore/utils/lib/rafTrottle';
 import { eventToPoint, invert } from './utils';
+import createElement from './createElement';
+
+import style from './style/dot.shadow.css';
 
 function Dots(props) {
   const {
     Element: SDot,
     styles,
     data,
+    color,
     d3,
     x,
     y,
@@ -19,7 +23,7 @@ function Dots(props) {
     scale,
   } = props;
   const bisect = bisector((d) => d[x]).center;
-  const [activeIndex, setActiveIndex] = useState(props.activeIndex || null);
+  const [activeIndex, setActiveIndex] = useState(null);
 
   const handlerMouseMoveRoot = useCallback(
     trottle((e) => {
@@ -65,14 +69,15 @@ function Dots(props) {
         sstyled(styles)(
           <SDot
             key={i}
+            render="circle"
             __excludeProps={['data', 'scale', 'value', 'display']}
             value={d}
             index={i}
-            render="circle"
             cx={d3.x()(d)}
             cy={d3.y()(d)}
             active={active}
             hide={hide}
+            color={color}
           />,
         ),
       );
@@ -81,4 +86,6 @@ function Dots(props) {
   }, []);
 }
 
-export default Dots;
+Dots.style = style;
+
+export default createElement(Dots);

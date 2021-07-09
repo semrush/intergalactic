@@ -4,23 +4,13 @@ SInfo,
 SWarning,
 SView {
   position: relative;
-  margin-bottom: media(12px);
-  padding: media(12px) media(24px) media(12px) media(12px);
+  margin-bottom: 12px;
+  padding: 12px 24px 12px 12px;
   width: 100%;
-  min-height: media(42px);
+  min-height: 42px;
   border-radius: 3px;
   overflow: hidden;
   box-sizing: border-box;
-  animation: slide 300ms;
-}
-
-@keyframes slide {
-  from {
-    left: calc(100% + media(10px));
-  }
-  to {
-    left: 0;
-  }
 }
 
 SInfo {
@@ -42,7 +32,7 @@ SDismiss {
   position: absolute;
   right: 0;
   top: 0;
-  padding: media(8px);
+  padding: 8px;
   color: var(--gray60);
 
   &:hover {
@@ -51,26 +41,17 @@ SDismiss {
 }
 
 SAction {
-  margin-top: media(8px);
+  margin-top: 8px;
 }
 
 SNoticeBubble {
   width: 300px;
   position: fixed;
   z-index: 1010;
-  right: media(10px);
-  top: media(10px);
+  right: 10px;
+  top: 10px;
 
   @media (max-width: 767px) {
-    width: calc(100% - media(20px));
+    width: calc(100% - 20px);
   }
-}
-
-.notice-bubble-fade--exit {
-  opacity: 1;
-}
-
-.notice-bubble-fade--exit-active {
-  opacity: 0;
-  transition: opacity 200ms ease-in;
 }

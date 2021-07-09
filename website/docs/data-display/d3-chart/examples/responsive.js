@@ -15,11 +15,11 @@ export default () => {
   return (
     <ResponsiveContainer h={300} onResize={updateSize}>
       <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
-        <YAxis ticks={yScale.ticks()}>
+        <YAxis>
           <YAxis.Ticks />
           <YAxis.Grid />
         </YAxis>
-        <XAxis ticks={xScale.ticks()}>
+        <XAxis>
           <XAxis.Ticks />
         </XAxis>
         <Line x="x" y="y">

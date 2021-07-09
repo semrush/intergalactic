@@ -16,7 +16,14 @@ export default () => {
     <Select placeholder="Select value">
       <Select.Trigger />
       <Select.Popper>
-        <InputSearch value={filter} onChange={setFilter} placeholder="Search" />
+        <InputSearch
+          value={filter}
+          onChange={setFilter}
+          placeholder="Search"
+          onKeyDown={(e) => {
+            e.key === ' ' && e.stopPropagation();
+          }}
+        />
         <Select.List hMax={'224px'}>
           {filteredOptions.length ? (
             filteredOptions.map(({ value }) => (

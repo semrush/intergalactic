@@ -191,7 +191,8 @@ class PickerAbstract extends Component {
   }
 
   render() {
-    return sstyled(this.asProps.styles)(<Root render={Dropdown} />);
+    const { styles, Children } = this.asProps;
+    return sstyled(styles)(<Root render={Dropdown}><Children /></Root>);
   }
 }
 

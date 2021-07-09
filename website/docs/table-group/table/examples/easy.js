@@ -82,6 +82,12 @@ class Demo extends React.Component {
 
   _timer = null;
 
+  handleHeadKeyDown = (key) => (e) => {
+    if (e.keyCode === 13) {
+      this.handleHeadClick(key)(e);
+    }
+  };
+
   handleHeadClick = (key) => () => {
     clearTimeout(this._timer);
     this.setState({
@@ -116,6 +122,7 @@ class Demo extends React.Component {
               sorting={order.keyword}
               active={active === 'keyword'}
               onClick={this.handleHeadClick('keyword')}
+              onKeyDown={this.handleHeadKeyDown('keyword')}
             >
               <Tooltip title="Jesus Christ, Joe, fucking forget about it. I'm Mr. Pink. Let's move on.">
                 <span>
@@ -139,6 +146,7 @@ class Demo extends React.Component {
               sorting={order.cpc}
               active={active === 'cpc'}
               onClick={this.handleHeadClick('cpc')}
+              onKeyDown={this.handleHeadKeyDown('cpc')}
             >
               <Tooltip title="Jesus Christ, Joe, fucking forget about it. I'm Mr. Pink. Let's move on.">
                 <span>CPC</span>
@@ -148,6 +156,7 @@ class Demo extends React.Component {
               sorting={order.vol}
               active={active === 'vol'}
               onClick={this.handleHeadClick('vol')}
+              onKeyDown={this.handleHeadKeyDown('vol')}
             >
               <Tooltip title="Jesus Christ, Joe, fucking forget about it. I'm Mr. Pink. Let's move on.">
                 <span>Vol.</span>

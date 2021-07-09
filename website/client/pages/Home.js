@@ -477,6 +477,14 @@ function Home() {
     <>
       <Helmet>
         <title>Intergalactic – Design System</title>
+        <meta
+          name="description"
+          content="Intergalactic is a constantly developing design system of UI components, guidelines and UX patterns. With all these tools you can build your own product."
+        ></meta>
+        <meta
+          name="keywords"
+          content="Semrush design system, design system, design-system, дизайн-система, дизайн-система Semrush, дизайн система"
+        ></meta>
       </Helmet>
       {loading ? (
         <LoadingPage />

@@ -2,6 +2,24 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.11.11] - 2021-07-06
+
+### Fixed
+
+- Fixed cjs build package.
+
+## [4.11.10] - 2021-06-22
+
+### Changed
+
+- Improved render performance
+
+## [4.11.9] - 2021-06-18
+
+### Fixed
+
+- Fixed forwarding properties to the `Box` in `Popper.Popper`.
+
 ## [4.11.8] - 2021-06-10
 
 ### Fixed

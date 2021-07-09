@@ -1,14 +1,14 @@
 {
   "name": "@semcore/tag",
   "description": "SEMRush Tag Component",
-  "version": "3.3.0",
+  "version": "3.4.0",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
   "author": "Roman Lysov <r.lysov@semrush.com>",
   "license": "MIT",
   "scripts": {
-    "build": "build",
+    "build": "build --source=js",
     "test": "jest"
   },
   "dependencies": {
@@ -17,7 +17,7 @@
     "@semcore/flex-box": "^4"
   },
   "peerDependencies": {
-    "@semcore/core": "^1",
+    "@semcore/core": "^1.11",
     "react": "16.8 - 17"
   },
   "jest": {

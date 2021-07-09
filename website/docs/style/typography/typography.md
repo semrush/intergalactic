@@ -5,7 +5,7 @@ tabName: Guide
 
 @## Font
 
-The main font for Semrush interface is [Ubuntu](https://design.ubuntu.com/font/).
+The main font for Semrush interface is [Inter](https://fonts.google.com/specimen/Inter?query=inter).
 
 > 💡 For a clearer rendering of the font and its color, use `webkit-font-smoothing: antialiased;` (see cross-browser compatibility at [caniuse.com](https://caniuse.com/#search=-webkit-font-smoothing)).
 
@@ -172,6 +172,7 @@ These recommendations apply to typography in our core products and reports.
 
 ![h6 with paragraph](static/h6-p.png)
 
+@page typography-a11y
 @page typography-api
 @page typography-code
 @page typography-changelog

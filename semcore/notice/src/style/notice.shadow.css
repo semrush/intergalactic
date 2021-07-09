@@ -20,34 +20,33 @@ SNotice[use='secondary'] {
 
 SNotice[theme='info'] {
   background-color: color-mod(var(--light-blue) alpha(15%));
-}
 
-SNotice[use='secondary'][theme='info'] {
-  border-color: color-mod(var(--light-blue) alpha(25%));
+  &[use='secondary'] {
+    border-color: color-mod(var(--light-blue) alpha(25%));
+  }
 }
 
 SNotice[theme='danger'] {
   background-color: color-mod(var(--red) alpha(10%));
-}
 
-SNotice[use='secondary'][theme='danger'] {
-  border-color: color-mod(var(--red) alpha(20%));
+  &[use='secondary'] {
+    border-color: color-mod(var(--red) alpha(20%));
+  }
 }
 
 SNotice[theme='warning'] {
   background-color: color-mod(var(--light-orange) alpha(15%));
-}
 
-SNotice[use='secondary'][theme='warning'] {
-  border-color: color-mod(var(--light-orange) alpha(40%));
+  &[use='secondary'] {
+    border-color: color-mod(var(--light-orange) alpha(40%));
+  }
 }
 
 SNotice[theme='success'] {
   background-color: color-mod(var(--green) alpha(15%));
-}
-
-SNotice[use='secondary'][theme='success'] {
-  border-color: color-mod(var(--green) alpha(30%));
+  &[use='secondary'] {
+    border-color: color-mod(var(--green) alpha(30%));
+  }
 }
 
 SContent {
@@ -65,23 +64,19 @@ SLabel {
   display: inline-flex;
 }
 
-SLabel[theme='info'] {
-  color: var(--stone);
-}
-
-SLabel[theme='success'] {
-  color: var(--green);
-}
-
-SLabel[theme='warning'] {
-  color: var(--orange);
-}
-
-SLabel[theme='danger'] {
-  color: var(--red);
+SLabel[theme] {
+  color: var(--theme);
 }
 
 SCloseIcon {
   flex-shrink: 0;
   margin-left: 16px;
+}
+
+SNotice[theme='custom'] {
+  background-color: var(--backgroundColor);
+
+  &[use='secondary'] {
+    border-color: var(--backgroundColor);
+  }
 }

@@ -187,9 +187,9 @@ The tooltip appears next to the cursor. It does not overlap the guide and active
 - The data tooltip shall always be displayed relative to the point with an 8px margin. The inner tooltip padding is 12px.
 - The color for the additional vertical line that appears on line charts when hovering is `$stone`. The background color that appears on charts with a higher bar chart color density is `$mist` with 20% transparency.
 
-![tooltip paddings](static/tooltip-padding.png)
+![tooltip paddings](static/tooltip-paddings.png)
 
-![tooltip paddings & margins](static/tooltip-paddings.png)
+![tooltip paddings & margins](static/tooltip-margins.png)
 
 |                          | Appearance                               | Styles                                                                                                                                                                                                                                    |
 | ------------------------ | ---------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

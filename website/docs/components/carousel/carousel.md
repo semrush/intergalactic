@@ -19,7 +19,7 @@ We use it for sequential viewing of single-level information within one componen
 
 Use the carousel as an additional highlight of important website features and information, never as the only path to important content.
 
-### Component consists of
+### Component composition
 
 - Navigation buttons
 - Slides number indicator (optional)
@@ -123,7 +123,7 @@ Slider controls must perform two functions: indicate the current slide among the
 
 @## Auto-play
 
-_Remember, it's a UX dream that auto-play through the frames in a carousel leads people through the information 🦄_
+> Remember, it's a UX dream that auto-play leads people through the carousel frames 🦄
 
 **Do not auto-play slides if:**
 

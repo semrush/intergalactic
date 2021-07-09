@@ -1,30 +1,26 @@
 import React from 'react';
 import { Plot, Venn, Tooltip } from '@semcore/d3-chart';
-
-const showTooltip = (sets, data, name) => {
-  const intersectionName = [];
-  sets?.map((set) => intersectionName.push(data.find((c) => c.sets[0] === set).name));
-  return intersectionName.join(' & ') || name;
-};
+import { Text } from '@semcore/typography';
 
 export default () => {
   return (
     <Plot height={300} width={400} data={data}>
       <Venn>
-        <Venn.Circle name="Good" />
-        <Venn.Circle name="Fast" color="#50AEF4" />
-        <Venn.Circle name="Cheap" color="#FF8E29" />
-        <Venn.Circle name="Unknown" color="#890C85" />
-        <Venn.Intersection sets={['G', 'F']} />
-        <Venn.Intersection sets={['G', 'C']} />
-        <Venn.Intersection sets={['F', 'C']} />
-        <Venn.Intersection sets={['G', 'F', 'C']} />
+        <Venn.Circle dataKey="G" name="Good" color="#3AB011" />
+        <Venn.Circle dataKey="F" name="Fast" color="#50AEF4" />
+        <Venn.Circle dataKey="C" name="Cheap" color="#FF8E29" />
+        <Venn.Circle dataKey="U" name="Unknown" color="#890C85" />
+        <Venn.Intersection dataKey="G/F" name="Good & Fast" />
+        <Venn.Intersection dataKey="G/C" name="Good & Cheap" />
+        <Venn.Intersection dataKey="F/C" name="Fast & Cheap" />
+        <Venn.Intersection dataKey="G/F/C" name="Good & Fast & Cheap" />
         <Tooltip>
-          {({ name, sets }) => {
+          {({ name, dataKey }) => {
             return {
               children: (
                 <>
-                  <Tooltip.Title>{showTooltip(sets, data, name)}</Tooltip.Title>
+                  <Tooltip.Title>{name}</Tooltip.Title>
+                  <Text bold>{data[dataKey]}</Text>
                 </>
               ),
             };
@@ -35,13 +31,13 @@ export default () => {
   );
 };
 
-const data = [
-  { name: 'Good', sets: ['G'], size: 200 },
-  { name: 'Fast', sets: ['F'], size: 200 },
-  { name: 'Cheap', sets: ['C'], size: 500 },
-  { name: 'Unknown', sets: ['U'], size: 1 },
-  { sets: ['G', 'F'], size: 100 },
-  { sets: ['G', 'C'], size: 100 },
-  { sets: ['F', 'C'], size: 100 },
-  { sets: ['G', 'F', 'C'], size: 100 },
-];
+const data = {
+  G: 200,
+  F: 200,
+  C: 500,
+  U: 1,
+  'G/F': 100,
+  'G/C': 100,
+  'F/C': 100,
+  'G/F/C': 100,
+};

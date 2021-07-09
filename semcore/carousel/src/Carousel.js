@@ -287,6 +287,14 @@ class Carousel extends Component {
     };
   }
 
+  bindHandlerKeydownControl = (direction) => (e) => {
+    const { keyCode } = e;
+    if (keyCode === 13) {
+      e.preventDefault();
+      this.bindHandlerClick(direction)();
+    }
+  };
+
   getPrevProps() {
     const { index, bounded } = this.asProps;
     const { items } = this.state;
@@ -294,7 +302,11 @@ class Carousel extends Component {
     if (items.length && bounded) {
       disabled = index === 0;
     }
-    return { onClick: this.bindHandlerClick('left'), disabled };
+    return {
+      onClick: this.bindHandlerClick('left'),
+      onKeyDown: this.bindHandlerKeydownControl('left'),
+      disabled,
+    };
   }
 
   getNextProps() {
@@ -304,7 +316,11 @@ class Carousel extends Component {
     if (items.length && bounded) {
       disabled = index === items.length - 1;
     }
-    return { onClick: this.bindHandlerClick('right'), disabled };
+    return {
+      onClick: this.bindHandlerClick('right'),
+      onKeyDown: this.bindHandlerKeydownControl('right'),
+      disabled,
+    };
   }
 
   getIndicatorsProps() {
@@ -320,8 +336,8 @@ class Carousel extends Component {
   }
 
   render() {
-    const { styles } = this.asProps;
     const SCarousel = Root;
+    const { styles, Children } = this.asProps;
 
     return sstyled(styles)(
       <SCarousel
@@ -330,7 +346,9 @@ class Carousel extends Component {
         tabIndex={0}
         onTouchStart={this.handlerTouchStart}
         onTouchEnd={this.handlerTouchEnd}
-      />,
+      >
+        <Children />
+      </SCarousel>,
     );
   }
 }
@@ -365,7 +383,7 @@ const Prev = (props) => {
 };
 
 Prev.defaultProps = () => ({
-  children: <ChevronLeftL interactive color="stone" />,
+  children: <ChevronLeftL interactive color="stone" aria-hidden={true} role="button" />,
   top: 0,
 });
 
@@ -376,7 +394,7 @@ const Next = (props) => {
 };
 
 Next.defaultProps = () => ({
-  children: <ChevronRightL interactive color="stone" />,
+  children: <ChevronRightL interactive color="stone" aria-hidden={true} role="button" />,
   top: 0,
 });
 

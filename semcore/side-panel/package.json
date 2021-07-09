@@ -1,14 +1,14 @@
 {
   "name": "@semcore/side-panel",
   "description": "SEMRush SidePanel Component",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
   "author": "Roman Lysov <r.lysov@semrush.com>",
   "license": "MIT",
   "scripts": {
-    "build": "build",
+    "build": "build --source=js",
     "test": "jest"
   },
   "dependencies": {
@@ -21,7 +21,7 @@
     "react-focus-lock": "^2.3"
   },
   "peerDependencies": {
-    "@semcore/core": "^1",
+    "@semcore/core": "^1.11",
     "react": "16.8 - 17"
   },
   "jest": {

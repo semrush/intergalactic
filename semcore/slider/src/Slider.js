@@ -213,8 +213,8 @@ function Bar(props) {
 function Knob(props) {
   const SKnob = Root;
   const { styles, value, refKnob, min, max, color: colorProps } = props;
-  const knobWidth = '10px';
-  const left = `calc(${convertValueToPercent(value, min, max, knobWidth)}% - ${knobWidth})`;
+  const knobWidth = 20;
+  const left = `calc(${convertValueToPercent(value, min, max)}% - ${knobWidth / 2}px)`;
   const color = resolveColor(colorProps);
 
   return sstyled(styles)(

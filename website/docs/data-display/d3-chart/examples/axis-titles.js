@@ -16,12 +16,12 @@ export default () => {
     .domain([0, 10]);
   return (
     <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
-      <YAxis ticks={yScale.ticks()}>
+      <YAxis>
         <YAxis.Ticks />
         <YAxis.Grid />
         <YAxis.Title>YAxis title</YAxis.Title>
       </YAxis>
-      <XAxis ticks={xScale.domain()}>
+      <XAxis>
         <XAxis.Ticks />
         <XAxis.Title>XAxis title</XAxis.Title>
       </XAxis>
