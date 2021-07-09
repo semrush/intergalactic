@@ -14,7 +14,8 @@ const EmailsWrapper = styled.div`
   background-color: #fff;
   margin-bottom: 80px;
   @media (max-width: 767px) {
-    grid-template-columns: 1fr 2fr;
+    grid-template-columns: 1fr;
+    grid-template-rows: 0.2fr 1fr;
     margin-left: 0;
     margin: 0 35px 56px;
   }
@@ -33,6 +34,8 @@ const Info = styled.div`
   max-width: 560px;
   @media (max-width: 767px) {
     margin: 0px 40px 0 16px;
+    grid-row: 2;
+    grid-column: 1;
   }
 `;
 
@@ -45,6 +48,7 @@ const Header = styled.h3`
   @media (max-width: 767px) {
     font-size: 24px;
     line-height: 120%;
+    margin: 0 8px 0 0;
   }
 `;
 
