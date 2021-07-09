@@ -155,6 +155,13 @@ const components = {
     { text: 'D3 Charts: ScatterPlot', size: { kit: '11/15' } },
     { text: 'Themes & styles enchancement', size: { kit: '1/9' } },
   ],
+  'Q3 2021': [
+    { text: 'Technical sprint', size: { kit: '1/3' } },
+    { text: 'Filter forms examples', size: { kit: '3/7' } },
+    { text: 'Product emails library', size: { kit: '3/13' } },
+    { text: 'Data visualization section restyling', size: { ui: '3/9', kit: '9/15' } },
+    { text: 'Components restyling', size: { ui: '1/15' } },
+  ],
 };
 
 function Gant(props) {
@@ -206,7 +213,7 @@ function Gant(props) {
 }
 
 function Roadmap() {
-  const [value, setValue] = useState(5);
+  const [value, setValue] = useState(6);
   let TabContent = null;
 
   switch (value) {
@@ -227,6 +234,9 @@ function Roadmap() {
       break;
     case 5:
       TabContent = <Gant sprint={dateSprint.slice(32, 39)} components={components['Q2 2021']} />;
+      break;
+    case 6:
+      TabContent = <Gant sprint={dateSprint.slice(38, 46)} components={components['Q3 2021']} />;
       break;
   }
   return (
