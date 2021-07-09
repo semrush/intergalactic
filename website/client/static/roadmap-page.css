@@ -2,6 +2,7 @@
   display: grid;
   position: relative;
   box-sizing: border-box;
+  margin-bottom: 40px;
 }
 
 .gantt__row {
