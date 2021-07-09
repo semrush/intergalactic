@@ -2,8 +2,6 @@
 title: Design principles
 ---
 
-> This page will be more informative soon 🤓
-
 ![principles](static/principles.png)
 
 **We follow these core principles when building our interfaces:**
