@@ -1,7 +1,7 @@
 {
   "name": "@semcore/feature-popover",
   "description": "SEMRush FeaturePopover Component",
-  "version": "2.3.0",
+  "version": "2.4.0",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -16,7 +16,7 @@
     "@semcore/flex-box": "^4",
     "@semcore/popper": "^4.2",
     "@semcore/icon": "^2",
-    "react-transition-group": "^4.4"
+    "@semcore/animation": "^1"
   },
   "peerDependencies": {
     "@semcore/core": "^1.11",

@@ -1,13 +1,36 @@
 import React from 'react';
-import { CSSTransition } from 'react-transition-group';
-import createComponent, { Root, Component, styled } from '@semcore/core';
+import { Animation } from '@semcore/animation';
+import createComponent, { Root, Component, sstyled } from '@semcore/core';
 import Popper from '@semcore/popper';
 import { Box } from '@semcore/flex-box';
 import Close from '@semcore/icon/lib/Close/xs';
-import If from '@semcore/utils/lib/if';
+import { callAllEventHandlers } from '@semcore/utils/lib/assignProps';
 
 import style from './style/feature-popover.shadow.css';
-import { callAllEventHandlers } from '@semcore/utils/lib/assignProps';
+
+const stylePopper = sstyled.css`
+  @keyframes enter {
+    from {
+      opacity: 0;
+      transform: translateX(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes exit {
+    from {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    to {
+      opacity: 0;
+      transform: translateX(-10px);
+    }
+  }
+`;
 
 class FeaturePopover extends Component {
   static displayName = 'FeaturePopover';
@@ -60,7 +83,7 @@ class FeaturePopover extends Component {
   render() {
     const { styles, forwardRef, onVisibleChange, modifiers = [], ...other } = this.asProps;
 
-    return styled(styles)(
+    return sstyled(styles)(
       <Popper
         ref={forwardRef}
         onVisibleChange={callAllEventHandlers(onVisibleChange, this.handleVisibleChange)}
@@ -82,26 +105,19 @@ class FeaturePopoverPopper extends Component {
     const SClose = Close;
     const { Children, styles, visible, closeIcon, duration, $onCloseClick } = this.asProps;
 
-    const transitionDuration = `${duration}ms`;
-    return (
-      <CSSTransition in={visible} timeout={duration} unmountOnExit>
-        {(state) => {
-          return styled(styles)`
-            SFeaturePopover {
-              transition: all ${transitionDuration} ease-in;
-            }
-          `(
-            <Popper.Popper disableEnforceFocus>
-              <SFeaturePopover render={Box} animate={state}>
-                <If condition={closeIcon}>
-                  <SClose onClick={$onCloseClick} />
-                </If>
-                <Children />
-              </SFeaturePopover>
-            </Popper.Popper>,
-          );
-        }}
-      </CSSTransition>
+    return sstyled(styles)(
+      <Popper.Popper disableEnforceFocus>
+        <Animation
+          visible={visible}
+          duration={duration}
+          keyframes={[stylePopper['@enter'], stylePopper['@exit']]}
+        >
+          <SFeaturePopover render={Box}>
+            {closeIcon ? <SClose onClick={$onCloseClick} /> : null}
+            <Children />
+          </SFeaturePopover>
+        </Animation>
+      </Popper.Popper>,
     );
   }
 }
@@ -111,11 +127,9 @@ const Spot = (props) => {
 
   const { styles, visible } = props;
 
-  return styled(styles)(
-    <If condition={visible}>
-      <SSpot render={Box} />
-    </If>,
-  );
+  if (!visible) return null;
+
+  return sstyled(styles)(<SSpot render={Box} />);
 };
 
 export default createComponent(
