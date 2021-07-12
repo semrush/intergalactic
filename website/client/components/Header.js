@@ -77,10 +77,10 @@ const Logo = styled.div`
   font-size: 18px;
   color: #ff622d;
   img {
-    margin-right: 8px;
+    margin-right: 4px;
   }
   svg {
-    margin-right: 5px;
+    margin-right: 4px;
   }
   @media (max-width: 767px) {
     grid-column: 2;
