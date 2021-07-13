@@ -4,7 +4,7 @@ import { CProps, ReturnEl } from '@semcore/core';
 export interface IResponsiveContainerProps extends IBoxProps {
   /** Relation between height and width dimensions block */
   aspect?: number;
-  /** Callback which will called after change size block */
+  /** Callback which will be called after changing the block size */
   onResize?: (size: [number, number], entries: ResizeObserverEntry[]) => void;
 }
 

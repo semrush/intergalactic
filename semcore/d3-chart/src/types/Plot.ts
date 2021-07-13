@@ -3,10 +3,10 @@ import { CProps, ReturnEl } from '@semcore/core';
 import IContext from './context';
 
 export interface IPlotProps extends IContext, IBoxProps {
-  /** Width svg element
+  /** Width of the svg element
    * @default 0*/
   width?: number;
-  /** Height svg element
+  /** Height of the svg element
    * @default 0*/
   height?: number;
 }

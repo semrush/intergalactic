@@ -36,12 +36,12 @@ export interface IVennChartProps extends Partial<PresentationAttributes> {
    */
   padding?: number;
   /**
-   * Used to rotate sets in the chart
+   * Rotate sets in the chart
    * @default Math.PI / 2
    */
   orientation?: number;
   /**
-   * The function of sorting sets inside the graph
+   * The function for sorting sets inside the chart
    * @default (area1, area2) => area2.radius - area1.radius
    */
   orientationOrder?: (el1: ICirclesObjItem, el2: ICirclesObjItem) => number;

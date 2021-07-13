@@ -2,11 +2,11 @@ import { CProps, ReturnEl } from '@semcore/core';
 import IContext from './context';
 
 export interface IBarProps extends IContext {
-  /** Field from data for Axis x */
+  /** Field from data for XAxis */
   x?: string;
-  /** Field from data for Axis y */
+  /** Field from data for YAxis */
   y?: string;
-  /** Color line
+  /** Line color
    * @default '#50aef4'*/
   color?: string;
   /** Element hide property */
