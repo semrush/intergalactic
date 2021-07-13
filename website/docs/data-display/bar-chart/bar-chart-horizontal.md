@@ -53,7 +53,7 @@ If you need to demonstrate the ratio of the category value to 100%, no axes can 
 
 ### With grid and axes
 
-If you do not need to present the ratio of values to 100%, but just to display their distribution, the auxiliary axes and the X-axis can be used.
+If you do not need to present the ratio of values to 100%, but just to display their distribution, the additional axes and the X-axis can be used.
 
 ![bar-chart grid](/data-display/bar-chart/static/hor-grid-2.png)
 
