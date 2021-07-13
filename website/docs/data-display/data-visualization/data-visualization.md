@@ -135,19 +135,17 @@ The legend can be clickable or non-clickable (static). For more information abou
 
 @## Axes
 
-**Axes X and Y** provide additional visual support for the chart. They should help user navigate the data and relate values to each other.
+**Axes** should help user navigate the data and relate values to each other.
 
-> 💡 Please do not make the auxiliary lines bright and colored — the emphasis should be on the data, not on the grid.
+> 💡 Please don't make the additional lines bright and colored — the emphasis should be on the data, not on the grid.
 
 ![axes-scheme](static/axes-scheme.png)
 
-The color of additional axes is `$mercury`.
-
-Color of the X axis and auxiliary active lines on the grid (if available) — `$stone`
-
-`Margin-left` to the Y axis values is 16px.
-
-`Margin-bottom` to the X axis values is 12px.
+- The **Y axis** is hidden by default.
+- The color of additional axes is `$mercury`.
+- Color of the X axis and additional active lines on the grid (if available) — `$stone`.
+- `Margin-left` to the Y axis values is 16px.
+- `Margin-bottom` to the X axis values is 12px.
 
 ### Minimum and maximum number of axes
 

@@ -66,10 +66,10 @@ The animated dot is placed next to the control that you want to draw attention t
 
 There are two types of the FeaturePopover: basic and extended. **They differ in maximum width and illustration.**
 
-| Type                                                                                                                                | Appearance                                       |
-| ----------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------ |
-| **Basic**. The illustration is the same for all FeaturePopovers of this type. The area to be illustrated is 40x40px.                | ![feature-popover](static/spotlight-default.png) |
-| **Extended**. The auxiliary Illustration captures the essence of the message metaphorically. The area to be illustrated is 80x80px. | ![feature-popover](static/spotlight-big.png)     |
+| Type                                                                                                                                 | Appearance                                       |
+| ------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------ |
+| **Basic**. The illustration is the same for all FeaturePopovers of this type. The area to be illustrated is 40x40px.                 | ![feature-popover](static/spotlight-default.png) |
+| **Extended**. The additional Illustration captures the essence of the message metaphorically. The area to be illustrated is 80x80px. | ![feature-popover](static/spotlight-big.png)     |
 
 @## Themes
 
