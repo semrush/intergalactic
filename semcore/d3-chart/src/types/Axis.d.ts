@@ -8,7 +8,7 @@ export interface IXAxisProps extends IContext {
   /** Element hide property
    * @default false */
   hide?: boolean;
-  /** Values to ticks axis */
+  /** Values for axis ticks */
   ticks?: any[];
 }
 
@@ -19,7 +19,7 @@ export interface IYAxisProps extends IContext {
   /** Element hide property
    * @default true */
   hide?: boolean;
-  /** Values to ticks axis */
+  /** Values for axis ticks */
   ticks?: any[];
 }
 
@@ -28,12 +28,12 @@ export interface IAxisTicksProps extends IContext {
   position?: 'top' | 'right' | 'bottom' | 'left';
   /** Element hide property */
   hide?: boolean;
-  /** Values to ticks axis */
+  /** Values for axis ticks */
   ticks?: any[];
 }
 
 export interface IAxisGridProps extends IContext {
-  /** Values to ticks axis */
+  /** Values for axis ticks */
   ticks?: any[];
 }
 

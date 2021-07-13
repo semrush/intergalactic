@@ -4,11 +4,11 @@ import Popper, { IPopperContext, IPopperProps, IPopperTriggerProps } from '@semc
 
 export interface ITooltipProps extends IPopperProps, IPopperTriggerProps {
   /**
-   * Text in tooltip
+   * Tooltip text
    */
   title?: React.ReactNode;
   /**
-   * Tooltip theme, there are several defaulted themes or you can use your own color
+   * Tooltip theme. You can use the default themes or create your own
    * @default default
    */
   theme?: 'default' | 'warning' | 'invert' | string;
