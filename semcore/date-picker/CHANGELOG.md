@@ -2,6 +2,14 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.5.0] - 2021-07-13
+
+### Fixed
+
+- [TS] fixed types.
+- Added styles for element `today` in Calendar.
+- Fixed show title for `MonthRangePicker`.
+
 ## [2.4.1] - 2021-06-21
 
 ### Fixed
