@@ -175,7 +175,7 @@ export interface IDateRangePickerPeriodProps extends IBoxProps {
   periods?: (ComponentProps<typeof Button> & { value: Date[] })[];
 }
 
-export interface IDatePickerContext extends IDatePickerProps {
+export interface IDatePickerContext {
   getTriggerProps: PropGetterFn;
   getPopperProps: PropGetterFn;
   getHeaderProps: PropGetterFn;
@@ -203,21 +203,23 @@ declare const DatePicker: ((
   Trigger: (<T>(
     props: Merge<ComponentProps<typeof Dropdown.Trigger>, ComponentProps<typeof BaseTrigger>> & T,
   ) => ReturnEl) & {
-    Addon: <T>(props: ComponentProps<typeof BaseTrigger.Addon> & T) => ReturnEl;
-    Text: <T>(props: ComponentProps<typeof BaseTrigger.Text> & T) => ReturnEl;
+    Addon: typeof BaseTrigger.Addon;
+    Text: typeof BaseTrigger.Text;
   };
-  Popper: <T>(props: ComponentProps<typeof Dropdown.Popper> & T) => ReturnEl;
-  Header: <T>(props: ComponentProps<typeof Box> & T) => ReturnEl;
-  Title: <T>(props: ComponentProps<typeof Box> & T) => ReturnEl;
-  Prev: <T>(props: ComponentProps<typeof Button> & T) => ReturnEl;
-  Next: <T>(props: ComponentProps<typeof Button> & T) => ReturnEl;
-  Calendar: <T>(props: ComponentProps<typeof Calendar> & T) => ReturnEl;
-  Today: <T>(props: ComponentProps<typeof Box> & T) => ReturnEl;
+  Popper: typeof Dropdown.Popper;
+  Header: typeof Box;
+  Title: <T>(
+    props: CProps<IDatePickerProps & IBoxProps & T, IDatePickerContext>,
+  ) => ReturnEl;
+  Prev: typeof Button;
+  Next: typeof Button;
+  Calendar: typeof Calendar;
+  Today: typeof Box;
   add: (date: number | Date, amount: number, unit: dayjs.OpUnitType) => Date;
   subtract: (date: number | Date, amount: number, unit: dayjs.OpUnitType) => Date;
 };
 
-export interface IDateRangePickerContext extends IDateRangePickerProps {
+export interface IDateRangePickerContext {
   getTriggerProps: PropGetterFn;
   getPopperProps: PropGetterFn;
   getHeaderProps: PropGetterFn;
@@ -238,21 +240,23 @@ declare const DateRangePicker: ((
   Trigger: (<T>(
     props: Merge<ComponentProps<typeof Dropdown.Trigger>, ComponentProps<typeof BaseTrigger>> & T,
   ) => ReturnEl) & {
-    Addon: <T>(props: ComponentProps<typeof BaseTrigger.Addon> & T) => ReturnEl;
-    Text: <T>(props: ComponentProps<typeof BaseTrigger.Text> & T) => ReturnEl;
+    Addon: typeof BaseTrigger.Addon;
+    Text: typeof BaseTrigger.Text;
   };
   Popper: <T>(props: ComponentProps<typeof Dropdown.Popper> & T) => ReturnEl;
-  Header: <T>(props: ComponentProps<typeof Box> & T) => ReturnEl;
-  Title: <T>(props: ComponentProps<typeof Box> & T) => ReturnEl;
-  Prev: <T>(props: ComponentProps<typeof Button> & T) => ReturnEl;
-  Next: <T>(props: ComponentProps<typeof Button> & T) => ReturnEl;
-  Calendar: <T>(props: ComponentProps<typeof Calendar> & T) => ReturnEl;
+  Header: typeof Box;
+  Title: <T>(
+    props: CProps<IDateRangePickerProps & IBoxProps & T, IDateRangePickerContext>,
+  ) => ReturnEl;
+  Prev: typeof Button;
+  Next: typeof Button;
+  Calendar: typeof Calendar;
   Period: <T>(props: IDateRangePickerPeriodProps & T) => ReturnEl;
   add: (date: number | Date, amount: number, unit: dayjs.OpUnitType) => Date;
   subtract: (date: number | Date, amount: number, unit: dayjs.OpUnitType) => Date;
 };
 
-export interface IMonthPickerContext extends IDatePickerProps {
+export interface IMonthPickerContext {
   getTriggerProps: PropGetterFn;
   getPopperProps: PropGetterFn;
   getHeaderProps: PropGetterFn;
@@ -272,20 +276,22 @@ declare const MonthPicker: ((
   Trigger: (<T>(
     props: Merge<ComponentProps<typeof Dropdown.Trigger>, ComponentProps<typeof BaseTrigger>> & T,
   ) => ReturnEl) & {
-    Addon: <T>(props: ComponentProps<typeof BaseTrigger.Addon> & T) => ReturnEl;
-    Text: <T>(props: ComponentProps<typeof BaseTrigger.Text> & T) => ReturnEl;
+    Addon: typeof BaseTrigger.Addon;
+    Text: typeof BaseTrigger.Text;
   };
-  Popper: <T>(props: ComponentProps<typeof Dropdown.Popper> & T) => ReturnEl;
-  Header: <T>(props: ComponentProps<typeof Box> & T) => ReturnEl;
-  Title: <T>(props: ComponentProps<typeof Box> & T) => ReturnEl;
-  Prev: <T>(props: ComponentProps<typeof Button> & T) => ReturnEl;
-  Next: <T>(props: ComponentProps<typeof Button> & T) => ReturnEl;
-  Calendar: <T>(props: ComponentProps<typeof Calendar> & T) => ReturnEl;
+  Popper: typeof Dropdown.Popper;
+  Header: typeof Box;
+  Title: <T>(
+    props: CProps<IDatePickerProps & IBoxProps & T, IMonthPickerContext>,
+  ) => ReturnEl;
+  Prev: typeof Button;
+  Next: typeof Button;
+  Calendar: typeof Calendar;
   add: (date: number | Date, amount: number, unit: dayjs.OpUnitType) => Date;
   subtract: (date: number | Date, amount: number, unit: dayjs.OpUnitType) => Date;
 };
 
-export interface IMonthRangePickerContext extends IDateRangePickerProps {
+export interface IMonthRangePickerContext {
   getTriggerProps: PropGetterFn;
   getPopperProps: PropGetterFn;
   getHeaderProps: PropGetterFn;
@@ -306,15 +312,17 @@ declare const MonthRangePicker: ((
   Trigger: (<T>(
     props: Merge<ComponentProps<typeof Dropdown.Trigger>, ComponentProps<typeof BaseTrigger>> & T,
   ) => ReturnEl) & {
-    Addon: <T>(props: ComponentProps<typeof BaseTrigger.Addon> & T) => ReturnEl;
-    Text: <T>(props: ComponentProps<typeof BaseTrigger.Text> & T) => ReturnEl;
+    Addon: typeof BaseTrigger.Addon;
+    Text: typeof BaseTrigger.Text;
   };
-  Popper: <T>(props: ComponentProps<typeof Dropdown.Popper> & T) => ReturnEl;
-  Header: <T>(props: ComponentProps<typeof Box> & T) => ReturnEl;
-  Title: <T>(props: ComponentProps<typeof Box> & T) => ReturnEl;
-  Prev: <T>(props: ComponentProps<typeof Button> & T) => ReturnEl;
-  Next: <T>(props: ComponentProps<typeof Button> & T) => ReturnEl;
-  Calendar: <T>(props: ComponentProps<typeof Calendar> & T) => ReturnEl;
+  Popper: typeof Dropdown.Popper;
+  Header: typeof Box;
+  Title: <T>(
+    props: CProps<IDateRangePickerProps & IBoxProps & T, IMonthRangePickerContext>,
+  ) => ReturnEl;
+  Prev: typeof Button;
+  Next: typeof Button;
+  Calendar: typeof Calendar;
   Period: <T>(props: IDateRangePickerPeriodProps & T) => ReturnEl;
   add: (date: number | Date, amount: number, unit: dayjs.OpUnitType) => Date;
   subtract: (date: number | Date, amount: number, unit: dayjs.OpUnitType) => Date;

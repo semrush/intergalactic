@@ -96,6 +96,19 @@ class MonthRangePickerRoot extends RangePickerAbstract {
       }),
     };
   }
+
+  getTitleProps(props, index) {
+    const { displayedPeriod, locale } = this.asProps;
+    return {
+      ...super.getTitleProps(props, index),
+      children: new Intl.DateTimeFormat(locale, { year: 'numeric' }).format(
+        dayjs(displayedPeriod)
+          .add(index, this.navigateStep)
+          .startOf(this.navigateStep)
+          .toDate(),
+      ),
+    };
+  }
 }
 
 const MonthRangePicker = createComponent(
