@@ -2,6 +2,6 @@
 title: Code
 ---
 
-@## Basic used
+@## Basic example
 
 @example basic
