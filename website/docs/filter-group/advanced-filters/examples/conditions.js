@@ -4,14 +4,14 @@ import Select from '@semcore/select';
 import Input from '@semcore/input';
 import MathPlusXS from '@semcore/icon/lib/MathPlus/xs';
 import { Flex } from '@semcore/flex-box';
-import Link from '@semcore/link';
 import Divider from '@semcore/divider';
 import Button from '@semcore/button';
 import { FilterTrigger } from '@semcore/base-trigger';
+import CloseXS from '@semcore/icon/lib/Close/xs';
 
 const generateOptions = (list) => list.map((v) => ({ value: v, children: v }));
 
-const Filter = (props) => (
+const Filter = ({ closable, onClose, ...props }) => (
   <Flex {...props}>
     <Select wMin={120} mr={4} options={generateOptions(['Include', 'Exclude'])} />
     <Select wMin={120} mr={4} options={generateOptions(['Keyword', 'Not keyword'])} />
@@ -19,6 +19,7 @@ const Filter = (props) => (
     <Input>
       <Input.Value />
     </Input>
+    {closable ? <CloseXS color="stone" interactive ml={2} py={2} onClick={onClose} /> : null}
   </Flex>
 );
 
@@ -31,6 +32,9 @@ export default () => {
   };
   const applyFilters = () => {
     updateVisible(false);
+  };
+  const handleCloseFilter = () => {
+    setFilters(filters - 1);
   };
 
   return (
@@ -45,15 +49,15 @@ export default () => {
         {!!filters && <FilterTrigger.Counter>{filters}</FilterTrigger.Counter>}
       </Dropdown.Trigger>
       <Dropdown.Popper>
-        <Flex direction="column" p={4}>
-          <Filter mb={4} />
+        <Flex direction="column" p={4} alignItems="flex-start">
+          <Filter mb={4} closable={filters} onClose={handleCloseFilter} />
           {[...new Array(filters)].map((_, ind) => (
-            <Filter key={ind} mb={4} />
+            <Filter key={ind} mb={4} closable onClose={handleCloseFilter} />
           ))}
-          <Link onClick={addFilter} size={100}>
-            <Link.Addon tag={MathPlusXS} />
-            <Link.Text>Add condition</Link.Text>
-          </Link>
+          <Button use="tertiary" onClick={addFilter}>
+            <Button.Addon tag={MathPlusXS} />
+            <Button.Text>Add condition</Button.Text>
+          </Button>
         </Flex>
         <Divider />
         <Flex p={4} justifyContent="space-between">
