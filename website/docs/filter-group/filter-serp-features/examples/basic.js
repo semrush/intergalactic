@@ -18,9 +18,18 @@ export default () => {
 
   const applyFilters = () => {
     setFilters(true);
-    let displayValue = `SERP Features: ${selectValues.length} selected`;
-    if (options.length === selectValues.length) {
-      changeDisplayValue('SERP Features: All selected');
+    const { length } = selectValues;
+    let displayValue = '';
+    if (options.length === length) {
+      displayValue = 'SERP Features: All selected';
+    }
+    if (length > 2) {
+      displayValue = `SERP Features: ${length} selected`;
+    } else {
+      displayValue = `SERP Features: ${selectValues.reduce(
+        (acc, filter) => `${acc} ${filter}`,
+        '',
+      )} selected`;
     }
     changeDisplayValue(displayValue);
     updateVisible(false);
