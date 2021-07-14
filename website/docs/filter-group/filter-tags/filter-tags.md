@@ -81,3 +81,5 @@ Don't abbreviate the name of this filter, it is always `Tags`.
 @## Validation
 
 The validations work is described in the [Filters, common rules guide](/filter-group/filter-rules/).
+
+@page filter-tags-code

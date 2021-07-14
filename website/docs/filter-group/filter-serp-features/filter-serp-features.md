@@ -71,3 +71,5 @@ For more information about tooltips, see the [Filters, common rules guide](/filt
 @## Validation
 
 The validations work is described in the [Filters, common rules guide](/filter-group/filter-rules/).
+
+@page filter-serp-features-code
