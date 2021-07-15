@@ -186,7 +186,7 @@ A badge (micro label) such as `new`, `beta`, `alpha` and others can be placed to
 
 ### The secondary text
 
-Tiny auxiliary text of color `--gray60` may be under the item.
+Tiny additional text of color `--gray60` may be under the item.
 
 | Size of the list | Appearance                                    | Styles             |
 | ---------------- | --------------------------------------------- | ------------------ |

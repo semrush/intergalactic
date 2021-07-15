@@ -74,11 +74,13 @@ const Logo = styled.div`
   align-items: center;
   text-align: center;
   font-family: FactorA-Bold, sans-serif;
+  font-size: 18px;
+  color: #ff622d;
   img {
-    margin-right: 8px;
+    margin-right: 4px;
   }
   svg {
-    margin-right: 5px;
+    margin-right: 4px;
   }
   @media (max-width: 767px) {
     grid-column: 2;
@@ -367,10 +369,7 @@ function Header(props) {
           <MobileLogo src={mobileLogo} alt="Logo" />
           <DesktopLogo>
             <img src={logo} alt="Logo" />
-            <svg width="2" height="16">
-              <rect width="1" height="16" style={{ fill: '#171A22', strokeWidth: '1' }} />
-            </svg>
-            <Flex mt={1}>INTERGALACTIC</Flex>
+            <Flex mt={1}>Intergalactic</Flex>
           </DesktopLogo>
         </Logo>
       </Link>

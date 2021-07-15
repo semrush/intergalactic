@@ -1,5 +1,6 @@
 ---
 title: Click Potential, Competitive Density, CPC
+tabName: Guide
 ---
 
 > 💡 **General rules for filters are described in the [Filters, common rules guide](/filter-group/filter-rules/).**
@@ -77,3 +78,5 @@ The validations work is described in the [Filters, common rules](/filter-group/f
 @## Nothing found
 
 The "empty" state is described in the [Filters, common rules](/filter-group/filter-rules/) guide.
+
+@page filter-cp-cd-cpc-code

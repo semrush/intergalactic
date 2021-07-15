@@ -15,7 +15,7 @@ If you have an array of points for a certain period, you can use this chart type
 **Important points to keep in mind when presenting data as a line chart:**
 
 - The axes should be clear to the user from the chart name. However, in cases where the graph name is not enough, you can denote the axes.
-- Remove all unnecessary visual information, such as extra auxiliary background lines, bunch of colors and incomprehensible bulky legends. Otherwise, this may distract the user from being able to see the data clearly.
+- Remove all unnecessary visual information, such as extra additional background lines, bunch of colors and incomprehensible bulky legends. Otherwise, this may distract the user from being able to see the data clearly.
 - If the data doesn't start from zero, in some cases you can track the chart along the `Y-axis`. This can make your data more readable and easier to understand.
 - **Try not to compare more than 5-7 values on a line chart**. In this case, the chart may become unreadable and confusing.
 

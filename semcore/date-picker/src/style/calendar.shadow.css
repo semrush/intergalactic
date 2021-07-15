@@ -87,7 +87,7 @@ SCalendarUnit[today] {
     width: calc(100% - 4px);
     height: calc(100% - 4px);
     box-sizing: border-box;
-    border-color: color-mod(black alpha(20%));
+    border: 1px solid color-mod(black alpha(20%));
   }
 }
 

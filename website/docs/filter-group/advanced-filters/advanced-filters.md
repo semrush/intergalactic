@@ -156,3 +156,5 @@ After applying the filter:
 | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------- |
 | Since the content of the dropdown for Advanced filters differs from tool to tool, stick to the rule of padding in multiples of 4 between filters. **If you need to increase or decrease the space between filters inside the dropdown, make them multiples of 4: 8px, 12px, 24px, 32px, etc.** | ![filter paddings](static/paddings.png)                 |
 | Always visually separate filter controls from the filters themselves. For this we use `border: 1px solid $ gay80;`.                                                                                                                                                                            | ![filter border](static/advanced-filters-dropdown2.png) |
+
+@page advanced-filters-code

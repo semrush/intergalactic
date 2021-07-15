@@ -1,3 +1,133 @@
+## [7.0.0] - 2021-07-12
+
+### @semcore/accordion
+  - **Fixed** Add default type for generic value
+
+### @semcore/animation
+  - **Fixed** [TS] fixed export components.
+
+### @semcore/carousel
+  - **Added** [A11y] Added support to work Carousel.Next, Carousel.Prev with keyboard.
+
+### @semcore/data-table
+  - **Added** [A11y] Added support keyboard for sortable column.
+
+### @semcore/date-picker
+  - **Fixed** Сorrect access to properties from getters function
+
+### @semcore/dot
+  - **Fixed** Fixed animation Dot.
+
+### @semcore/dropdown-menu
+  - **Changed** Changed tabIndex to 0 and styles for DropdowmMenu.Popper.
+
+### @semcore/errors
+  - **Changed** Version of dependence @semcore/core has been changed to 1.11.
+  - **Changed** Improved performance. Removed one component wrapper.
+  - **Changed** The style processing system has been changed.
+  - **Changed** Removed the ability to apply media styles via a plugin babel-plugin-react-semcore.
+
+### @semcore/feature-popover
+  - **Changed** Replace animation from package `react-transition-group` to `@semcore/animation`.
+
+### @semcore/feedback-form
+  - **Changed** Version of dependence @semcore/core has been changed to 1.11.
+  - **Changed** Improved performance. Removed one component wrapper.
+  - **Changed** The style processing system has been changed.
+  - **Changed** Removed the ability to apply media styles via a plugin babel-plugin-react-semcore.
+  - **Changed** [TS] Rewrite code from TS to JS.
+
+### @semcore/flags
+  - **Changed** Version of dependence @semcore/core has been changed to 1.11.
+  - **Changed** Improved performance. Removed one component wrapper.
+  - **Changed** The style processing system has been changed.
+  - **Changed** Removed the ability to apply media styles via a plugin babel-plugin-react-semcore.
+
+### @semcore/fullscreen-modal
+  - **Changed** Rewrite code from TS to JS.
+
+### @semcore/icon
+  - **Changed** Version of dependence @semcore/core has been changed to 1.11.
+  - **Changed** Improved performance. Removed one component wrapper.
+  - **Changed** The style processing system has been changed.
+  - **Changed** Removed the ability to apply media styles via a plugin babel-plugin-react-semcore.
+
+### @semcore/modal
+  - **Changed** [TS] rewrite code from ts to js.
+  - **Changed** [A11y] added role for Window and aria-label for Close and Window.
+
+### @semcore/notice
+  - **Changed** Version of dependence @semcore/core has been changed to 1.11.
+  - **Changed** Improved performance. Removed one component wrapper.
+  - **Changed** The style processing system has been changed.
+  - **Changed** Removed the ability to apply media styles via a plugin babel-plugin-react-semcore.
+  - **Changed** [A11y] added role for Alert and aria-label for Close.
+
+### @semcore/notice-bubble
+  - **BREAK** Replace animation package from react-transition-group to @semcore/animation
+  - **BREAK** Remove property offset and added Box inside NoticeBubbleContainer
+  - **Changed** Version of dependence @semcore/core has been changed to 1.11.
+  - **Changed** Improved performance. Removed one component wrapper.
+  - **Changed** The style processing system has been changed.
+  - **Changed** Removed the ability to apply media styles via a plugin babel-plugin-react-semcore.
+  - **Changed** [TS] rewrite code from TS to JS.
+  - **Changed** [A11y] added role for Alert and aria-label for Close.
+
+### @semcore/pills
+  - **Fixed** Add default type for generic value
+
+### @semcore/popper
+  - **Fixed** Fixed cjs build package.
+  - **Changed** Improved render performance
+
+### @semcore/progress-bar
+  - **Changed** Version of dependence @semcore/core has been changed to 1.11.
+  - **Changed** Improved performance. Removed one component wrapper.
+  - **Changed** The style processing system has been changed.
+  - **Changed** Removed the ability to apply media styles via a plugin babel-plugin-react-semcore.
+  - **Changed** [TS] rewrite code from TS to JS
+
+### @semcore/project-create
+
+- **Changed** Updated version `@semcore/spin-container`.
+
+### @semcore/select
+  - **Fixed** Fixed set theme for Select.OptionCheckbox.
+  - **Fixed** Add default type for generic value
+
+### @semcore/side-panel
+  - **Changed** Version of dependence @semcore/core has been changed to 1.11.
+  - **Changed** Improved performance. Removed one component wrapper.
+  - **Changed** The style processing system has been changed.
+  - **Changed** Removed the ability to apply media styles via a plugin babel-plugin-react-semcore.
+
+### @semcore/spin-container
+  - **BREAK** Replace animation from package react-transition-group to @semcore/animation.
+  - **Changed** Version of dependence @semcore/core has been changed to 1.11.
+  - **Changed** Improved performance. Removed one component wrapper.
+  - **Changed** The style processing system has been changed.
+  - **Changed** Removed the ability to apply media styles via a plugin babel-plugin-react-semcore.
+  - **Changed** [TS] rewrite code from TS to JS.
+
+### @semcore/tab-line
+  - **Fixed** Add default type for generic value
+
+### @semcore/tab-panel
+  - **Fixed** Add default type for generic value
+
+### @semcore/table
+  - **Added** [A11y] Added support keyboard for sortable column.
+
+### @semcore/tag
+  - **Changed** Version of dependence @semcore/core has been changed to 1.11.
+  - **Changed** Improved performance. Removed one component wrapper.
+  - **Changed** The style processing system has been changed.
+  - **Changed** Removed the ability to apply media styles via a plugin babel-plugin-react-semcore.
+  - **Changed** Rewrite from TS to JS code.
+
+### @semcore/widget-empty
+  - **Fixed** [TS] fixed types.
+
 ## [6.0.0] - 2021-06-21
 
 ### @semcore/input-number

@@ -3,12 +3,12 @@ import IContext from './context';
 
 export interface IVennProps extends IContext {
   /**
-   * Used to rotate sets in the chart
+   * Rotate sets in the chart
    * @default Math.PI / 2
    */
   orientation?: number;
   /**
-   * The function of sorting sets inside the graph
+   * The function for sorting sets inside the chart
    * @default (circle1, circle2) => circle2.radius - circle1.radius
    */
   orientationOrder?: (c1: number, c2: number) => number;

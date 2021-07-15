@@ -3,9 +3,9 @@ import IContext from './context';
 import Area from './Area';
 
 export interface IStackedAreaProps extends IContext {
-  /** Field from data for Axis x */
+  /** Field from data for XAxis */
   x?: string;
-  /** Field from data for Axis y */
+  /** Field from data for YAxis */
   y?: string;
   /** Stack generators
    * @default d3.stack() */

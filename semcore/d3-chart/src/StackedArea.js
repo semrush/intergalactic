@@ -43,7 +43,7 @@ class StackedAreaRoot extends Component {
     return {
       data: series.map((s) => ({
         ...s.data,
-        // если в данных передан null то мы его и передаем, d3 null приводит к 0
+        // if null is passed in the data, then we pass it, because d3 null leads to 0
         [y]: s.data[y] === null ? null : s[1],
         [Y0]: s[0],
       })),

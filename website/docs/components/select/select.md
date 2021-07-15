@@ -25,6 +25,8 @@ There are two types of select triggers of different importance in our interface.
 
 ![secondary-select](static/secondary.png)
 
+> Note, that the component doesn't have the XXL size as a property, because it inherits sizes from BaseTrigger component.
+
 **Link with the color of text**. We use it in three sizes: M (12px text), L (14px text), XL (16px text).
 
 ![tertiary-select](static/tertiary.png)
