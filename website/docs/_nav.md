@@ -7,6 +7,7 @@
 @page table-group
 @page filter-group
 @page patterns
+@page product-emails
 @page utils
 @page internal
 @page bug-reporting
