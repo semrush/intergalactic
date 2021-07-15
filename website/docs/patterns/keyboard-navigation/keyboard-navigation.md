@@ -73,7 +73,7 @@ Particular cases about focus behavior when working with dropdown are described b
 
 @## Focus OnClick when there are no controls in the dropdown
 
-1. By clicking / pressing `Tab`, the trigger gains focus.
+1. By clicking/pressing `Tab`, the trigger gains focus.
 2. When the trigger is focused, pressing `Enter`/`Space` opens a dropdown.
 3. If the trigger opens the select, you can also use the arrow down `↓` to move to dropdown.
 4. Pressing `Esc` key closes the dropdown, and focus remains on the trigger.
@@ -92,8 +92,8 @@ Particular cases about focus behavior when working with dropdown are described b
 
 @## Focus OnClickwhen when there is a single control in the dropdown
 
-1. By clicking / pressing `Tab`, the trigger gains focus.
-2. When you focus on trigger, `Enter` / `Space` opens a dropdown. If the trigger opens a select/menu, you can also switch to popper by using the `↓` arrow.
+1. By clicking/pressing `Tab`, the trigger gains focus.
+2. When you focus on trigger, `Enter`/`Space` opens a dropdown. If the trigger opens a select/menu, you can also switch to popper by using the `↓` arrow.
 3. Pressing `Shift + Tab` closes the popper and returns focus to the trigger.
 4. Pressing `Esc` closes the dropdown, even if the focus was on the control inside the dropdown. After closing the dropdown, focus remains on the trigger.
 5. Clicking on the `Submit` control inside the dropdown closes it and returns focus to the trigger.
@@ -103,8 +103,8 @@ Particular cases about focus behavior when working with dropdown are described b
 
 @## Focus OnClick when there are multiple controls in the dropdown
 
-1. By clicking / pressing `Tab`, the trigger gains focus.
-2. When you focus on trigger, `Enter` / `Space` opens a dropdown. If the trigger opens a select/menu, then you can also shift to the dropdown using the `↓` arrow.
+1. By clicking/pressing `Tab`, the trigger gains focus.
+2. When you focus on trigger, `Enter`/`Space` opens a dropdown. If the trigger opens a select/menu, then you can also shift to the dropdown using the `↓` arrow.
 3. `↓` in the menu shifts the focus to the next `menuItem`. From the last `menuItem`, the focus moves to the first `menuItem`. The same logic applies to the `↑` key, but backwards 🙃
 4. You can use `Shift + Tab` to return to the previous control inside the dropdown.
 5. Pressing `Esc` closes the dropdown, even if the focus was on the control inside the dropdown. After closing the dropdown, focus remains on the trigger.

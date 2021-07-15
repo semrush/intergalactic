@@ -48,14 +48,14 @@ const PromoWrapper = styled.div`
   padding: 48px 0 12px;
   @media (max-width: 1140px) {
     grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: 1fr 1fr repeat(2, 2fr);
-    padding: 0 55px 56px;
+    grid-template-rows: 1fr 0.7fr repeat(2, 2fr);
+    padding: 0 0 56px;
     margin-top: 48px;
   }
   @media (max-width: 767px) {
     grid-template-columns: 1fr;
     grid-template-rows: repeat(2, 0.5fr) 1fr repeat(3, 1.5fr);
-    padding: 0 35px 56px;
+    padding: 0 0 56px;
   }
   @media (max-width: 320px) {
     grid-template-columns: 1fr;
@@ -70,6 +70,13 @@ const Overlay = styled.div`
   padding: 80px 32px 120px;
   position: relative;
   margin: 0 auto;
+  @media (max-width: 767px) {
+    max-width: 767px;
+  }
+  @media (max-width: 320px) {
+    max-width: 320px;
+    padding-bottom: 80px;
+  }
 `;
 
 const Title = styled.h1`
@@ -79,6 +86,9 @@ const Title = styled.h1`
   font-size: 60px;
   line-height: 105%;
   margin-bottom: 16px;
+  @media (max-width: 1140px) {
+    width: 70%;
+  }
   @media (max-width: 767px) {
     font-size: 40px;
   }
@@ -95,6 +105,7 @@ const Desc = styled.div`
   @media (max-width: 1140px) {
     align-items: baseline;
     margin-bottom: 24px;
+    width: 70%;
   }
 `;
 

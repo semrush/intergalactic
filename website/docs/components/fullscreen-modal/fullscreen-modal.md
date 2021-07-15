@@ -10,7 +10,7 @@ tabName: Guide
 
 **We use this component when:**
 
-- it is necessary to fill in / edit / analyze a large amount of information with full focus on the task;
+- it is necessary to fill in/edit/analyze a large amount of information with full focus on the task;
 - it is necessary to show a large amount of additional data for the report and get a response from the user on what to do with these data;
 - it is necessary to show a large amount of additional data for the report, but you don’t need to move it to a separate page. This is another flow of interaction with the report;
 - the size of modal window that opened on the screen is less than 768px;
@@ -89,7 +89,7 @@ The window-closing button must have a left external margin of 24px.
 
 @## Content adjusting
 
-- If there are two columns / zones for content in the modal window, the content inside them is placed with `align: left`.
+- If there are two columns/zones for content in the modal window, the content inside them is placed with `align: left`.
 - If there is only one zone for content in the modal window, it is necessary to center the content with `align:center` horizontally. **We recommend you to consider an ordinary modal window in this case** 😏
 
 | Single-zone modal window                                   | Dual-zone modal window                                     |

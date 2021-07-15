@@ -82,7 +82,7 @@ This control can be represented either by the [TabLine](/components/tab-line/) c
 
 ![chart custom period](static/custom.png)
 
-#### Data frequency (daily / weekly / monthly)
+#### Data frequency (daily/weekly/monthly)
 
 ![chart period](static/period-1.png)
 

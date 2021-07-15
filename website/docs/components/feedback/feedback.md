@@ -6,7 +6,7 @@ tabName: Guide
 
 @## Description
 
-**Feedback form** is the form for sending feedback / suggestions in reports. In most cases it drops from the `Send feedback` link at the upper right of the page.
+**Feedback form** is the form for sending feedback/suggestions in reports. In most cases it drops from the `Send feedback` link at the upper right of the page.
 
 > When the link for feedback is in the [ProductHead](/components/product-head/), it should be always the far right. Learn more in the [Links order in ProductHead](/patterns/links-order/).
 

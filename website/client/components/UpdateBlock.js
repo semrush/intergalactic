@@ -14,11 +14,10 @@ const UpdateWrapper = styled.div`
   display: grid;
   grid-template-rows: 1fr;
   grid-template-columns: 3fr 1fr;
-  margin-left: 40px;
   @media (max-width: 767px) {
     grid-template-columns: 1fr;
     margin-left: 0;
-    padding: 0 35px 56px;
+    padding: 0 0 56px;
   }
   @media (max-width: 320px) {
     padding: 0;

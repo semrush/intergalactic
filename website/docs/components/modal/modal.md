@@ -162,7 +162,7 @@ See [examples](/components/modal/modal-code/) of resizing a modal window to fit 
 
 > 💡 It is recommended to avoid using modal windows on mobile devices. However, if you use modal windows on mobile devices, leave a link to the parent page. If scrolling in modal window appears due to the amount of content, then it is recommend placing the window close button both at the top and at the end of such window, or fixing it in the header when scrolling.
 >
-> [10 guidelines to consider when using overlays / modals](http://www.uxforthemasses.com/overlays/)
+> [10 guidelines to consider when using overlays/modals](http://www.uxforthemasses.com/overlays/)
 
 ![mobile modal](static/position-5-2.png)
 

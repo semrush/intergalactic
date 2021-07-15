@@ -43,7 +43,7 @@ In any case, it is better to hide additional settings in the settings button, so
 - **When hovering over the note icon on the chart axis, the icon is increased in size by two times.**
 - `ChatXS` increases to the size of the `ChatM` icon.
 
-When clicking on the `+ Add / + Add note` button, a modal window opens with the inputs for entering note parameters.
+When clicking on the `+ Add` or `+ Add note` button, a modal window opens with the inputs for entering note parameters.
 
 ![add notes modal](static/notes-add-modal.png)
 

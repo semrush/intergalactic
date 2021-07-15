@@ -88,7 +88,7 @@ Optionally you may add period presets. The presets and their names may be custom
 
 ![daterangepicker opened](static/daterangepicker_custom_presets.png)
 
-Upon hovering over the preset, the dates corresponding to the preset are highlighted. Upon that the selected (current) range of days / day does not lose its highlighting.
+Upon hovering over the preset, the dates corresponding to the preset are highlighted. Upon that the selected (current) range of days/day does not lose its highlighting.
 
 Optionallyly there may be the **Reset** button for deselecting. The trigger text in this case is changed into a placeholder.
 

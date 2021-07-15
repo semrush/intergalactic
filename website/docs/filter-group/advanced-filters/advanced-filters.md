@@ -16,7 +16,7 @@ tabName: Guide
 
 **By logical division:**
 
-- containing including / excluding conditions (Include / exclude) filters;
+- containing including / excluding conditions (Include/exclude) filters;
 - containing separate filters (SERP features, etc.).
 
 **By the method of applying the selected filters:**
