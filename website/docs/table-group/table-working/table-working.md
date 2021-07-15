@@ -20,12 +20,12 @@ Here we describe all the elements and recommendations that are important when wo
 
 @## Sorting
 
-- **If you can sort by column, it must have the `SortDesc` / `SortAsc` icon. By default, `SortDesc`.**
+- **If you can sort by column, it must have the `SortDesc`/`SortAsc` icon. By default, `SortDesc`.**
 - If you can't sort data by column, but you need to show which column it is sorted by (this is usually necessary in secondary tables), then highlight the cell with the corresponding sorting icon in the active state.
 
 ### Click zone for sorting
 
-If there is a simple text / icon inside the cell.
+If there is a simple text/icon inside the cell.
 
 ![hover zone](static/hover-zone-1.png)
 
@@ -64,7 +64,7 @@ If there is a control inside the cell (for example, a select or checkbox).
 | **Icon**                                                                                                                                                                                                                         | ![asc sort](static/asc.png)          | ![desc sort](static/desc.png)       |
 | **Numbers**. Values `-`, `n/a`, `0`, etc. are smaller values.                                                                                                                                                                    | From smaller to larger – 0, 1, 2 → 9 | From larger to smaller– 9, 8, 7 → 0 |
 | **Texts**. If there are several languages in the table, it is recommended to divide them into groups and sort them according to the priority and user needs (it may also depend on the target audience, product specifics, etc.) | A to Z                               | Z to A                              |
-| **Statuses**. At the discretion of the priority, SOFTWARE, or utility for users. We recommend using gradations of the form: good / bad, necessary / not necessary, fresh / not fresh, higher / lower, etc.                       | At the discretion of UX and PO       | At the discretion of UX and PO      |
+| **Statuses**. At the discretion of the priority, SOFTWARE, or utility for users. We recommend using gradations of the form: good/bad, necessary/not necessary, fresh/not fresh, higher/lower, etc.                               | At the discretion of UX and PO       | At the discretion of UX and PO      |
 | **Dates**                                                                                                                                                                                                                        | From a newer date to an older one    | From an older date to a newer one   |
 
 @## Changing the size of columns
@@ -140,7 +140,7 @@ We recommend using the status bar when the table has multi-row selection and pag
 
 Use no more than 3-5 actions, which are the most popular among actions on rows.
 
-@## Editing / Adding content in a row
+@## Editing/Adding content in a row
 
 - When you hover over the line, you can see the edit icon.
 
@@ -183,7 +183,7 @@ With `Shift` pressed, you can select multiple lines at once.
 
 **The value in the cell can lead to:**
 
-- in the internal report-use the link / button, depending on the context;
+- in the internal report-use the link/button, depending on the context;
 - to another site-use the gray `LinkExternalXS` icon, usually with a caption.
 
 @## Long text in a cell

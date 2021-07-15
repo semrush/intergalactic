@@ -49,7 +49,7 @@ Use the carousel as an additional highlight of important website features and in
 | Slides number indicator | Indicator size — `12px * 12px`, `color="stone"` |
 | Content slide           | `border-radius: 6px;`                           |
 
-> Click-zone of controls on the right / left is stretched to the height of the content.
+> Click-zone of controls on the right/left is stretched to the height of the content.
 
 ![click zone scheme](static/click-zone-scheme.png)
 

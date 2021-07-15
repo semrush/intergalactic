@@ -17,7 +17,7 @@ const EmailsWrapper = styled.div`
     grid-template-columns: 1fr;
     grid-template-rows: 0.2fr 1fr;
     margin-left: 0;
-    margin: 0 35px 56px;
+    margin: 0 0 56px;
   }
   @media (max-width: 320px) {
     padding: 0;

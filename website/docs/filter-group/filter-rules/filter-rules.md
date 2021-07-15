@@ -12,7 +12,7 @@ title: Filter common rules
 - quickly reset the entered data and search again;
 - be able to change data.
 
-> 💡 **It is good practice to save the entered / selected value in the filter dropdown if the user didn't save their selection.**
+> 💡 **It is good practice to save the entered/selected value in the filter dropdown if the user didn't save their selection.**
 >
 > For example, a user opened a filter dropdown, entered something into the search input, but got distracted and accidentally closed the dropdown. In this case, save the data he entered when re-opening the filter dropdown. It's not necessary to keep the scroll position.
 
@@ -22,7 +22,7 @@ title: Filter common rules
 
 - Trigger has styles of [Select](/components/select/) and [FilterTrigger](/components/filter-trigger/).
 - Set the trigger min-width to 80px. It's not recommended to make the trigger smaller. When there is enough space in the interface, make the width of the trigger dependent on the content, so the text inside the trigger doesn't have to be collapsed into the `ellipsis`.
-- Abbreviate the name of the filter during localization in the `ellipsis`, when it turns out to be larger than the width specified for the filter.
+- When it turns out that the name of the filter is larger than the width specified for the filter, collapse it into the `ellipsis`.
 
 ### Dropdown
 
@@ -30,13 +30,13 @@ Dropdown has styles of [Dropdown-menu](/components/dropdown-menu/).
 
 ### Preset values
 
-> Use an en dash, not a hyphen, between values — `Opt / Alt` + `-`.
+> Use an en dash, not a hyphen, between values — `Opt/Alt` + `-`.
 
 @## Custom range
 
 Use the [InputNumber](/components/input-number/), if the filter has the ability to select a custom period.
 
-Stepper buttons appear when you hover over such an input and in the focus state.
+Stepper buttons appear when you hover over an [InputNumber](/components/input-number/) and in the focus state.
 
 |                                                                    | Appearance example                   |
 | ------------------------------------------------------------------ | ------------------------------------ |
@@ -45,16 +45,16 @@ Stepper buttons appear when you hover over such an input and in the focus state.
 
 @## Interaction
 
-- The value is applied when user clicks on the item. The filter is applied and closed.
+- The value is applied when user clicks on the item. Then the filter applies and closes.
 - The filter can be closed by clicking outside the dropdown. If the user didn't select anything, no values are applied.
-- Also, if the user hasn't selected anything or there is no data in the Custom range fields, clicking on `Apply` closes the dropdown and nothing is applied.
+- Also, if the user hasn't selected anything or there is no data in the custom range inputs, clicking on `Apply` closes the dropdown and nothing is applied.
 
 ### Opening the filter for the first time
 
 **Preset values**
 
 - If the filter has predefined values, rank them from largest to smallest.
-- The value is applied when user clicks on the item. The filter is applied and closed.
+- The value is applied when user clicks on the item. Then the filter applies and closes.
 - If a value is selected, be sure to highlight this value when reopening the filter.
 
 **Custome range**
@@ -76,7 +76,7 @@ User-selected values are duplicated in the trigger.
 
 **Custome range**
 
-The user can copy / paste values into the input, increase / decrease them by the step set for InputNumber - 1.
+The user can copy/paste values into the input, increase/decrease them by the step set for InputNumber - 1.
 
 - If the user entered a value between 100 and 100, show keywords with an exact value of 100.
 - If the user entered a value from 100 in the left input, show data from 100 to maximum values.
@@ -109,7 +109,7 @@ Show [SpinContainer](/components/spin-container/) over the dropdown content in t
 
 @## Nothing found
 
-Show in the widget / widgets to which the filter was applied an ["empty" error state](/components/widget-empty/) with the ability to update the filter, if an error occurs during the request.
+Show in the widget/widgets to which the filter was applied an ["empty" error state](/components/widget-empty/) with the ability to update the filter, if an error occurs during the request.
 
 ![nothing found](static/nothing-found.png)
 
@@ -126,30 +126,30 @@ Don't add tooltips for the sake of tooltips.
 
 **Comma/period**
 
-The user can enter only numerical data into the input: numbers, period, minus. All other data such as slash, comma, letters, etc. the InputNumber is truncated.
+The user can enter only numerical data into the input: numbers, period, comma, minus. All other data such as slash, letters, etc. the [InputNumber](/components/input-number/) is truncated.
 
 In cases where thousandths are separated by commas rather than periods in a particular locale, format the user-entered value to match the locale.
 
 **Max/min value**
 
-Min value — 0, max value — 999 999 999.
+Minimum value — 0, maximum value — 999 999 999.
 
-If the user entered an invalid value (less than min, greater than max), the input will reset them to min / max, respectively.
+If the user entered an invalid value (less than minimum, greater than maximum), the input will reset them to min/max, respectively.
 
 **InputNumber step**
 
-- The step by which the entered numerical value will be reduced / increased when using the stepper buttons can be set (depends on the filter).
-- The user can change the step using the keyboard arrows / Shift + keyboard arrows "up", "down".
+- You can set the step by which the entered numerical value will be reduced/increased when using the stepper buttons.
+- The user can change the step using the keyboard arrows or `Shift` + keyboard arrows (`Up`, `Down`).
 
 **Keyboard control**
 
 > See all main rules and recommendations in the [Keyboard navigation](/patterns/keyboard-navigation/) guide.
 
-The shortcut keys cmd + enter (macOS) and ctrl + enter (Windows) apply the filter.
+The shortcut keys `Cmd` + `Enter` (macOS) and `Ctrl` + `Enter` (Windows) apply the filter.
 
 **Values switched places**
 
-If the user entered a value in the right input that is less than the value in the left one, they are swapped when the focus is lost.
+If the user entered a value in the right input that is less than the value in the left one, they will swap when the focus is lost.
 
 **Inserting values into an input**
 

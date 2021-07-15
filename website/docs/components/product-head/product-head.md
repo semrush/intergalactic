@@ -74,11 +74,11 @@ Margins from the left and the right edge - 30px.
 
 ![hame in ellipsis and controls margin](static/ellipsis-and-margin.png)
 
-### Small global filters / additional information
+### Small global filters/additional information
 
 ![short product-head](static/short-info.png)
 
-### No global filters / additional information / tabs
+### No global filters/additional information/tabs
 
 In these cases the padding between the block with the heading and the buttons and the tabs/divider – 16px (`mb={4}`).
 

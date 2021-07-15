@@ -14,7 +14,7 @@ tabName: Guide
 
 - they unobtrusively tell the user which page they are on;
 - they help you link to other pages on the site (useful for SEO);
-- they allow you to move between higher / lower nesting levels without clicking the Forward / Backward buttons in the browser.
+- they allow you to move between higher/lower nesting levels without clicking the Forward/Backward buttons in the browser.
 
 > 💡 Breadcrumbs are not used on the main pages.
 

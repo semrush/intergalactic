@@ -52,7 +52,7 @@ First data upload. Showing the structure of the loaded page and data.
 
 #### When we use it
 
-Loading / searching data. Data is filtered / sorted / searched for no longer than 5 seconds.
+Loading/searching data. Data is filtered/sorted/searched for no longer than 5 seconds.
 
 > 💡 If the download is fast, you can do without this state.
 

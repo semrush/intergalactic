@@ -92,12 +92,12 @@ Upon dragging the object to the area where the element can be dragged, it should
 
 Upon dragging the axis is not blocked, the element may be dragged to any part of the page, but added only to certain areas ☝🏻
 
-| State    | Appearance example                                              | Styles                                                                                                                                                                                                                                                                                                         |
-| -------- | --------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| default  | ![default](static/drag-default.png)                             | In default status the `MoveAlt` icon / pattern with dotes is not shown.                                                                                                                                                                                                                                        |
-| hover    | ![hover](static/drag-hover.png) ![hover](static/drag-table.png) | Upon hover over the element the `MoveAlt` icon / pattern with dotes of the corresponding size (depending on the size of the component where the icon should be placed) is shown. If the element has hover, the element is highlighted. Upon `hover` over the `MoveAlt` icon the cursor is changed into `move`. |
-| dragging | ![dragging](static/dragging.png)                                | The dragged object loses the hover status and obtains the `box-shadow: 0 2px 5px 0 rgba(0,0,0,0.15);`                                                                                                                                                                                                          |
-| no-drop  | ![no-drop](static/no-drop.png)                                  | If the drop zone under the dragged object is unavailable, the cursor is changed into `not-allowed`.                                                                                                                                                                                                            |
+| State    | Appearance example                                              | Styles                                                                                                                                                                                                                                                                                                       |
+| -------- | --------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| default  | ![default](static/drag-default.png)                             | In default status the `MoveAlt` icon/pattern with dotes is not shown.                                                                                                                                                                                                                                        |
+| hover    | ![hover](static/drag-hover.png) ![hover](static/drag-table.png) | Upon hover over the element the `MoveAlt` icon/pattern with dotes of the corresponding size (depending on the size of the component where the icon should be placed) is shown. If the element has hover, the element is highlighted. Upon `hover` over the `MoveAlt` icon the cursor is changed into `move`. |
+| dragging | ![dragging](static/dragging.png)                                | The dragged object loses the hover status and obtains the `box-shadow: 0 2px 5px 0 rgba(0,0,0,0.15);`                                                                                                                                                                                                        |
+| no-drop  | ![no-drop](static/no-drop.png)                                  | If the drop zone under the dragged object is unavailable, the cursor is changed into `not-allowed`.                                                                                                                                                                                                          |
 
 ### States of droppable area
 
@@ -120,7 +120,7 @@ Upon dragging the axis is not blocked, the element may be dragged to any part of
 ### Keyboard
 
 - `Tab` — places the focus on the object for dragging
-- `Shift` + `Tab` — returns the focus on the previous object / element of the interface.
+- `Shift` + `Tab` — returns the focus on the previous object/element of the interface.
 - `Space` — selects the focused object and starts dragging.
 - Repeated pressing of `Space` — terminates dragging.
 - `Arrows` — move the selected object down/up and right/left in the list, depending on the task.

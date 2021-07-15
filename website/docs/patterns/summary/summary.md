@@ -14,7 +14,7 @@ tabName: Guide
 
 ### Basic principles of using Summary
 
-- It should be clear from the title and / or additional information nearby what the metric means. And it's cool when there is more information about how the metric is calculated, when we can tell about it.
+- It should be clear from the title and/or additional information nearby what the metric means. And it's cool when there is more information about how the metric is calculated, when we can tell about it.
 - Display no more than 5-6 metrics on a report or in a widget. Thus, you will both reduce the cognitive load for the user, and work on highlighting the most important metrics on the page 😏 *Of course, there may be exceptions to this rule.*
 
 @## Pattern consists of
@@ -86,7 +86,7 @@ Sometimes you need to group the metrics. In this case, don't separate metrics re
 
 @## Horizontal & vertical layout
 
-- The main metrics of the report / widget can be placed both horizontally and vertically, if required by the report layout.
+- The main metrics of the report/widget can be placed both horizontally and vertically, if required by the report layout.
 - The vertical layout is more compact and saves space.
 
 > You can use both horizontal and vertical layout types in one product. It's ok :)

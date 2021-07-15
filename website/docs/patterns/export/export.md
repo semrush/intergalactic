@@ -143,4 +143,4 @@ All the dropdown content remains, you can click, select in order to allow the us
 - If the value is chosen in the table, the corresponding `Selected` value is selected when opening.
 - Clicking the selector in the item, it opens and also automatically activates the radio button.
 - If the item value is zero, then it is `disabled`.
-- The first item is the most popular option in the tool / report by default.
+- The first item is the most popular option in the tool/report by default.

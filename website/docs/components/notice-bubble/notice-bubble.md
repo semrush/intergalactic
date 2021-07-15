@@ -67,7 +67,7 @@ If the `Undo` process takes time, then we display an intermediate loading state 
 
 Notification confirming the `Undo` action. The notification height is equal to the previous state. M-sized icon is used. For recommendations on animation and timing, see the animation description below.
 
-### Notification of success / failure
+### Notification of success/failure
 
 Notification of actions when working with tools.
 

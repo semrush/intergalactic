@@ -11,14 +11,14 @@ tabName: Guide
 
 **When to use it:**
 
-- We need the ability to add a large list of keywords. And users frequently copy / paste and edit this data in the process.
+- We need the ability to add a large list of keywords. And users frequently copy/paste and edit this data in the process.
 - The logic “AND” + “Or” is needed in the work with the entered data.
 - If users need syntax while working with keywords.
 
 **When working with filters, it is important for the user to:**
 
-- be able to copy / paste large amounts of data.
-  -see the copied data is formatted by the filter in the correct view / format.
+- be able to copy/paste large amounts of data.
+  -see the copied data is formatted by the filter in the correct view/format.
   -quickly reset the entered data and search again;
 - be able to change data.
 
@@ -35,7 +35,7 @@ tabName: Guide
 
 ### Dropdown
 
-- The Include filter, unlike Exclude, contains radiobuttons for selecting the search logic — "AND" / "Or". They help looking for keywords containing all entered words or any of the entered ones (`All keywords` and `Any keywords`).
+- The Include filter, unlike Exclude, contains radiobuttons for selecting the search logic — "AND"/"Or". They help looking for keywords containing all entered words or any of the entered ones (`All keywords` and `Any keywords`).
 - **Textarea has 7 lines by default.**
 - When opening a dropdown texarea immediately gets the focus.
 - The filter has the `Broad / Exact match` syntax and a hint above the field and in the placeholder about its work. If the user enters a keyword without parentheses, then show keywords containing this word. If the user enters a keyword in square brackets, then show only the exact value.
@@ -92,7 +92,7 @@ There is a restriction on entering special characters in the textarea.
 
 ### The input has many errors
 
-If there are many keywords with errors in the input, show the text below the field with the number of errors and controls (down / up arrows) to switch between them.
+If there are many keywords with errors in the input, show the text below the field with the number of errors and controls (down/up arrows) to switch between them.
 
 For each error, be sure to show a tooltip with an explanation of what needs to be corrected. **When switching between errors, change the contents of the tooltip.**
 

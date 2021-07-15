@@ -106,7 +106,7 @@ Consider the context of the interface. It can be difficult for a user to click a
 
 Consider how the user will interact with the control. Do not place value labels under the input on mobile devices. Otherwise, when using such kind of control on mobile devices, the user will close all the values with his finger when interacting with it.
 
-To keep the labels of such input visible when interacting with it, place them either on the left / right, or above\*.
+To keep the labels of such input visible when interacting with it, place them either on the left/right, or above\*.
 
 ![slider on the mobile](static/mobile.png)
 

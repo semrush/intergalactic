@@ -52,7 +52,7 @@ They have a set of preset values and a custom range inputs.
 
 ### Preset values
 
-> Use an en dash, not a hyphen, between values — `Opt / Alt` + `-`.
+> Use an en dash, not a hyphen, between values — `Opt/Alt` + `-`.
 
 | Filter             | Keyword Difficulty                 | Positions                            | Volume                               |
 | ------------------ | ---------------------------------- | ------------------------------------ | ------------------------------------ |

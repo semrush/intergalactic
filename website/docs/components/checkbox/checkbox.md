@@ -89,7 +89,7 @@ The checkbox label may contain a [link](/components/link).
 
 @## Working with a checkbox group
 
-If a group of checkboxes exceeds 6-7 positions, use the `Select all` and `Deselect all` options to save the user time. The mechanics of the `Select all` / `Deselect all` buttons:
+If a group of checkboxes exceeds 6-7 positions, use the `Select all` and `Deselect all` options to save the user time. The mechanics of the `Select all`/`Deselect all` buttons:
 
 - `Select all` selects all checkboxes, and `Select all` changes to `Deselect all`;
 - `Deselect all` deselects all checkboxes at all levels;
@@ -107,7 +107,7 @@ If you use a checkbox tree, the top-level checkbox has three statuses:
 
 ![checkbox tree](static/tree.png)
 
-If you use a combination of the checkbox tree and `Select all` / `Deselect all` buttons, the mechanics are as follows:
+If you use a combination of the checkbox tree and `Select all`/`Deselect all` buttons, the mechanics are as follows:
 
 - `Select all` selects all checkboxes in the tree at all levels. `Select all` changes to `Deselect all`.
 - `Deselect all` deselects all checkboxes at all levels.

@@ -18,7 +18,7 @@ tabName: Guide
 
 ### InputNumber has several features
 
-- by default, you can enter the following numeric characters: numbers, dot, comma, minus (all other non-numeric values such as slash, dash/hyphen, letters, etc. can not be entered);
+- by default, you can enter the following numeric characters: numbers, period, comma, minus (all other non-numeric values such as slash, dash/hyphen, letters, etc. can not be entered);
 - in the input, you can enable the constant display of stepper buttons to change the value up or down;
 - in this input, you can set the minimum and maximum values that the user can enter;
 - you can also set the change step for the value using the stepper buttons/keyboard arrows/Shift + keyboard arrows `up`, `down`.
@@ -33,13 +33,13 @@ The click zone for steppers is slightly larger than their size.
 
 To change the value in InputNumber, use:
 
-- stepper buttons (steppers, spinbox interface) that appear by hover/focus in the field;
-- keys `up`, `down` on the keyboard;
-- `Shift` + `up`, `down` keys.
+- stepper buttons (steppers) which appear by hover/focus in the input;
+- keys `Up`, `Down` on the keyboard;
+- `Shift` + `Up`, `Down` keys.
 
 > 💡 **Interesting fact**
 >
-> Number inputs have little spinner buttons (also called steppers), which let users increase or decrease the input’s value by a constant amount. Luke Wroblewski’s usability testing shows that users prefer them to dropdown menus:
+> Number inputs have little stepper buttons, which let users increase or decrease the input’s value by a constant amount. Luke Wroblewski’s usability testing shows that users prefer them to dropdown menus:
 >
 > _When testing mobile flight booking forms, we found people preferred steppers for selecting the number of passengers. No dropdown menu required, especially since there’s a maximum of 8 travelers allowed and the vast majority select 1–2 travelers._
 >

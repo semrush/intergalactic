@@ -57,7 +57,7 @@ Main accent button for filters and basic actions on the page.
 
 ### Secondary
 
-Normal non-accent button for secondary / repetitive actions on the page.
+Normal non-accent button for secondary/repetitive actions on the page.
 
 |             normal              |                hover                 |                 active                 |                 loading                  | disabled                                   |
 | :-----------------------------: | :----------------------------------: | :------------------------------------: | :--------------------------------------: | ------------------------------------------ |

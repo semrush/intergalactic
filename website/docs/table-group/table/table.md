@@ -162,7 +162,7 @@ The text inside the cells in the rows and in the header is aligned according to 
 - Text
 - The link (URL)
 - Keyword
-- Code / Number / Hash (text consisting of numbers, symbols, and letters)
+- Code/Number/Hash (text consisting of numbers, symbols, and letters)
 - Abbreviation
 - Date
 - Control element
@@ -186,7 +186,7 @@ The text inside the cells in the rows and in the header is aligned according to 
 
 - Number (if needed to compare vertically)
 - Fractional number
-- Tag / badge (in cases where the entire row is marked)
+- Tag/badge (in cases where the entire row is marked)
 
 @## Horizontal scroll
 

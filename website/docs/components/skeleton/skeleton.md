@@ -117,7 +117,7 @@ Buttons and links can be divided into two types:
 
 **When downloading, we leave them as is.**
 
-- Those that interact with the downloaded content and confirm / apply / upload what the user did on the page, for example, the buttons for exporting or adding something and so on.
+- Those that interact with the downloaded content and confirm/apply/upload what the user did on the page, for example, the buttons for exporting or adding something and so on.
 
 When loading such controls, we **set the control to disabled status** so that nothing happens at full loading. It is recommended to skeleton links that do something like this.
 

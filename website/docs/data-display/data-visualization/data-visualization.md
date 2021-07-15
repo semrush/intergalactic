@@ -74,7 +74,7 @@ In our interfaces, data is usually placed in widgets, which consist of:
 | ------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | ![chart-heading](static/heading.png) | Heading — h5 (`--fs-400`), `$gray20` color. `InfoXS` icon, `$stone` color, `margin-left: 4px`. The clickable title `hover` matches the [link hover](/components/link/). |
 
-**The title may have a summary subtitle.** It usually contains information about maximum / minimum data statuses or explanation of what the data is based on, etc. Or some interesting insight/advice for the visualized data.
+**The title may have a summary subtitle.** It usually contains information about maximum/minimum data statuses or explanation of what the data is based on, etc. Or some interesting insight/advice for the visualized data.
 
 | Appearance                                           | Styles                                                |
 | ---------------------------------------------------- | ----------------------------------------------------- |

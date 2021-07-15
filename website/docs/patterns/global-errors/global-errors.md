@@ -324,7 +324,7 @@ Pages with global errors assume 2 options of use:
 1. If the error is processed by Cloudflare, we don't add buttons.
 2. In other cases, it is recommended to add controls allowing the user:
    2.1 to leave the page: `Visit Homepage`;
-   2.2 to take some actions to get rid of this state and load the page: `Reload page` / `Try again` / `Submit`.
+   2.2 to take some actions to get rid of this state and load the page: `Reload page`/`Try again`/`Submit`.
 3. The `Contact us` button is only used for unexpected error states. In order that the user could contact support and notify us that something is not working. In cases where we anticipated an error here and know that this state is being displayed, the button is not needed.
 
 @page global-errors-api
