@@ -2,6 +2,13 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.12.0] - 2021-07-15
+
+### Changed
+
+- Remove from html for svg don't used attributes.
+- Added `propsForElement` for set props to svg.
+
 ## [2.11.0] - 2021-07-05
 
 ### Changed

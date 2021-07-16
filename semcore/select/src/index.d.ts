@@ -13,7 +13,7 @@ import { IInputValueProps } from '@semcore/input';
 export interface ISelectInputSearch extends IInputValueProps {}
 
 export type OptionValue = string | number;
-export type SelectValue = string | number | Array<string | number>;
+export type SelectValue = string | number | Array<string | number> | null;
 
 export type SelectOption = {
   value: SelectValue;

@@ -1,8 +1,10 @@
 import React from 'react';
+import cn from 'classnames';
 import { createBaseComponent, sstyled } from '@semcore/core';
 import { useBox } from '@semcore/flex-box';
 import resolveColor, { shade } from '@semcore/utils/lib/color';
 import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
+import propsForElement from '@semcore/utils/lib/propsForElement';
 
 import styles from './style/icon.shadow.css';
 
@@ -26,14 +28,20 @@ function Icon(props, ref) {
     disabled: !interactive,
     ...other,
   });
+  const sstyles = sstyled(styles);
+  const { className, style } = sstyles.cn('SIcon', {
+    'color-interactive': shade(color, -0.12),
+    'use:color': color,
+    interactive: interactive,
+    keyboardFocused: keyboardFocused,
+  });
 
-  return sstyled(styles)(
+  return (
     <SIcon
-      use:color={color}
-      color-interactive={shade(color, -0.12)}
-      interactive={interactive}
-      {...propsWithKeyboardEnhance}
-    />,
+      {...propsForElement(propsWithKeyboardEnhance)}
+      style={Object.assign({}, style, props.style)}
+      className={cn(className, props.className) || undefined}
+    />
   );
 }
 
