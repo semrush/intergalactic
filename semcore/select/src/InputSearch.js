@@ -1,5 +1,5 @@
 import React from 'react';
-import createComponent, { Component, Root, CONTEXT_COMPONENT } from '@semcore/core';
+import createComponent, { Component, CONTEXT_COMPONENT } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
 import Input from '@semcore/input';
 import Divider from '@semcore/divider';
@@ -44,7 +44,7 @@ class InputSearch extends Component {
   };
 
   render() {
-    const { size, value } = this.asProps;
+    const { size, value, forwardRef, ...props } = this.asProps;
     const finalSize = size || this.context.size;
 
     return (
@@ -52,7 +52,7 @@ class InputSearch extends Component {
         <Box p={MAP_SIZE_TO_PADDINGS[finalSize]}>
           <Input size={finalSize}>
             <Input.Addon tag={MAP_SIZE_TO_ICON[finalSize][0]} />
-            <Root render={Input.Value} autoFocus />
+            <Input.Value ref={forwardRef} autoFocus {...props} />
             <Input.Addon
               tag={MAP_SIZE_TO_ICON[finalSize][1]}
               role="button"

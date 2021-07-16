@@ -2,6 +2,13 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.6om/en/1.0.0/).
 
+## [2.5.7] - 2021-07-15
+
+### Changed
+
+- [TS] Added type `null` for `value` prop in `Select`.
+- Fixed warning in console for `InputSearch`.
+
 ## [2.5.6] - 2021-07-06
 
 ### Fixed
