@@ -104,7 +104,7 @@ The list of categories is sorted by:
 Long categories are shortened according to the [rules of long URLs](/table-group/table-working/#a19308) and must have a tooltip.
 
 - **Add search if there are more than 10 categories in the list.**
-- Select all/Deselect all functionality is optional.
+- Select all / Deselect all functionality is optional.
 
 |                    | Alphabetically                                                       | By the number of domains                                  | Long category name                                     |
 | ------------------ | -------------------------------------------------------------------- | --------------------------------------------------------- | ------------------------------------------------------ |

@@ -101,7 +101,7 @@ When searching or applying a filter in the table, we didn't find anything.
 
 > 💡 In this state, the illumination of the sorted column must be preserved.
 
-**Showing this state when there is no have data** on the parameters requested by the user. The user performed some actions with filters/sorting of data.
+**Showing this state when there is no have data** on the parameters requested by the user. The user performed some actions with filters or sorting of data.
 
 In this state, we recommend adding a control that will help the user correct the situation. For example, you can add a `Clear filters` button.
 

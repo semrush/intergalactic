@@ -262,7 +262,7 @@ In cases where a user on the site has two or more global messages to display, pr
 - You can notify about the following events: tools and reports announcement, collecting feedback, quick help for additional features, system status (error, failure, end of works, new feature).
 - In some cases, notices with the same text may have different colors because they may have a different meaning.
 - In regular cases, one notice is replaced by another in order of priority: red > yellow > green > blue > gray. If you need to place notices in a row, think it over with the UX team. There may be another way to deliver your important message.
-- Be concise – don't supersede other widgets and other report functionality. Try to convey the meaning of your message to users in two lines. For the notices inside blocks/other components — four lines.
+- Be concise – don't supersede other widgets and other report functionality. Try to convey the meaning of your message to users in two lines. For the notices inside blocks / other components — four lines.
 
 ### Incorrect use
 
