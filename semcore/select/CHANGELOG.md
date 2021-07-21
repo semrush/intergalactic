@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.6om/en/1.0.0/).
 
+## [2.5.8] - 2021-07-21
+
+### Fixed
+
+- Fixed set value for `Select.InputSearch`.
+
 ## [2.5.7] - 2021-07-16
 
 ### Changed
