@@ -59,7 +59,7 @@ Stepper buttons appear when you hover over an [InputNumber](/components/input-nu
 
 **Custome range**
 
-Inputs has placeholders `From` and `to`, respectively.
+Inputs has placeholders `From` and `To`, respectively.
 
 ### Preset period is selected
 
