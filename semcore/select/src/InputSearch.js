@@ -44,7 +44,7 @@ class InputSearch extends Component {
   };
 
   render() {
-    const { size, value, forwardRef, ...props } = this.asProps;
+    const { size, value, forwardRef } = this.asProps;
     const finalSize = size || this.context.size;
 
     return (
@@ -52,7 +52,7 @@ class InputSearch extends Component {
         <Box p={MAP_SIZE_TO_PADDINGS[finalSize]}>
           <Input size={finalSize}>
             <Input.Addon tag={MAP_SIZE_TO_ICON[finalSize][0]} />
-            <Input.Value ref={forwardRef} autoFocus {...props} />
+            <Input.Value ref={forwardRef} autoFocus {...this.asProps} />
             <Input.Addon
               tag={MAP_SIZE_TO_ICON[finalSize][1]}
               role="button"
