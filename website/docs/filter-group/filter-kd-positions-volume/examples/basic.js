@@ -52,7 +52,7 @@ const InputRange = ({ value: valueState, changeValue, ...other }) => {
           <InputNumber.Value
             min={minRange}
             max={maxRange}
-            placeholder="to"
+            placeholder="To"
             value={to}
             onChange={handleChange('to')}
             onBlur={handleBlur}
