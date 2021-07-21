@@ -33,7 +33,7 @@ export default () => {
         <YAxis.Grid />
       </YAxis>
       <XAxis>
-        <XAxis.Ticks />
+        <XAxis.Ticks ticks={data.map((d) => +d.time)} />
       </XAxis>
       <Tooltip tag={HoverLine} x="time" wMin={100}>
         {({ xIndex }) => {

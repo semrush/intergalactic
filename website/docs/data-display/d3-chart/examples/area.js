@@ -27,7 +27,7 @@ export default () => {
         <YAxis.Grid />
       </YAxis>
       <XAxis>
-        <XAxis.Ticks>
+        <XAxis.Ticks ticks={data.map((d) => +d.time)}>
           {({ value }) => ({
             children: formatDate(value, {
               month: 'short',
