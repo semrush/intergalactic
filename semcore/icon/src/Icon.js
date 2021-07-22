@@ -39,8 +39,8 @@ function Icon(props, ref) {
   return (
     <SIcon
       {...propsForElement(propsWithKeyboardEnhance)}
-      style={Object.assign({}, style, props.style)}
-      className={cn(className, props.className) || undefined}
+      style={Object.assign({}, style, propsWithKeyboardEnhance.style, props.style)}
+      className={cn(className, propsWithKeyboardEnhance.className, props.className) || undefined}
     />
   );
 }

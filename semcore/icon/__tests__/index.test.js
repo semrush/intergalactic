@@ -26,6 +26,11 @@ describe('Icon', () => {
     expect(getByTestId('icon').attributes['class'].value).toMatch('more-than one-class');
   });
 
+  test('should support property for Box', () => {
+    const { getByTestId } = render(<Icon data-testid="icon" mr={2} />);
+    expect(getByTestId('icon').attributes['style'].value).toMatch('margin-right: 8px;');
+  });
+
   test('should support children', () => {
     const { getByTestId } = render(
       <Icon>

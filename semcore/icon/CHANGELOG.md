@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.12.1] - 2021-07-22
+
+### Fixed
+
+- Fixed set style which render `useBox`.
+
 ## [2.12.0] - 2021-07-16
 
 ### Changed
