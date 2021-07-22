@@ -17,7 +17,7 @@ const NavigationView = styled.div`
 const CategoryTitle = styled.div`
   color: #898d9a !important;
   cursor: pointer;
-  padding: 8px 0;
+  padding: 8px 0 2px;
   font-weight: 500;
   font-size: 16px !important;
   line-height: 1.5;
@@ -28,7 +28,7 @@ const CategoryTitle = styled.div`
 `;
 
 const CategoryItem = styled.a`
-  padding: 8px 0 8px 24px;
+  padding: 2px 0 2px 24px;
   font-size: 16px;
   line-height: 1.5;
   color: #171a22;
