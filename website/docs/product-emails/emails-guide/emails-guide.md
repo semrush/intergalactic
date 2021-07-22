@@ -35,3 +35,5 @@ Template content is fluid and has `max-width: 600px`. It switches to mobile vers
 All interface icons and small illustrations we need for product emails we store in the [Figma library](https://www.figma.com/file/uBxKSTlXSEDiKvFp6txzrr/NEW-%E2%80%A2-Product-emails?node-id=456%3A8265)(available for Semrush designers only).
 
 ![icons](static/icons.png)
+
+@page emails-guide-changelog

@@ -1,4 +1,5 @@
 import React, { useEffect, useCallback } from 'react';
+import ReactDOMServer from 'react-dom/server';
 import { useRouteMatch } from 'react-router-dom';
 import Loadable from 'react-loadable';
 import { Box } from '@semcore/flex-box';
@@ -49,6 +50,31 @@ export const tags = {
         {value}
       </HeadingLink>
     );
+  },
+  html: ({ value, ...other }) => {
+    return (props) => {
+      const match = useRouteMatch();
+      const Component = Loadable.Map({
+        delay: 0,
+        loader: {
+          Raw: () =>
+            import(
+              `!!raw-loader!@docs/${match.params.category}/${match.params.page}/examples/${value}.html`
+            ),
+        },
+        loading: (props) => <Loading value={value} {...props} />,
+        render(loaded, props) {
+          const ExampleComponent = loaded.Raw.default;
+          return (
+            <Example raw={ExampleComponent} {...props}>
+              <div dangerouslySetInnerHTML={{ __html: ExampleComponent }} {...other} />
+            </Example>
+          );
+        },
+      });
+
+      return <Component {...props} />;
+    };
   },
   example: ({ value, ...other }, asyncCallback) => {
     const resolve = asyncCallback();

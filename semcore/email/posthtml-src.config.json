@@ -1,0 +1,11 @@
+{
+  "root": "src",
+  "input": "**/*.html",
+  "output": "lib",
+  "plugins": {
+    "posthtml-extend": {
+      "encoding": "utf8",
+      "root": "./src"
+    }
+  }
+}

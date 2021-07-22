@@ -1,0 +1,34 @@
+{
+  "name": "@semcore/email",
+  "version": "1.0.0",
+  "description": "",
+  "module": "index.js",
+  "scripts": {
+    "build": "npm run build:html && npm run build:css && npm run build:html-lib",
+    "build:html": "posthtml -c posthtml-src.config.json -a",
+    "build:html-lib": "posthtml -c posthtml-lib.config.json -a",
+    "build:css": "postcss src/**/*.css --base src --dir lib",
+    "watch:html": "nodemon -e html --watch src/**/*.html -x \"npm run build:html\"",
+    "watch:css": "nodemon -e css --watch src/**/*.css -x \"npm run build:css\"",
+    "watch": "npm run watch:html & npm run watch:css && npm run build:html-lib",
+    "serve": "npx http-server ./lib"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "autoprefixer": "^10.3.1",
+    "cssnano": "^5.0.7",
+    "nodemon": "^2.0.12",
+    "postcss": "^8.3.5",
+    "postcss-cli": "^8.3.1",
+    "postcss-css-variables": "^0.18.0",
+    "postcss-import": "^14.0.2",
+    "postcss-nested": "^5.0.5",
+    "posthtml": "^0.16.4",
+    "posthtml-cli": "^0.10.0",
+    "posthtml-extend": "^0.6.0",
+    "posthtml-inline-assets": "^3.1.0",
+    "posthtml-inline-css": "^1.2.3"
+  }
+}

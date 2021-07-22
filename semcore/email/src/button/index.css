@@ -1,0 +1,29 @@
+@import '../core/var.css';
+
+.button {
+  display: inline-block;
+  text-decoration: none;
+  color: var(--white);
+  border-radius: 6px;
+  /* hack */
+  border: 0 solid #fff;
+}
+
+.button_size-m {
+  padding: 13px 24px;
+  font-size: 16px;
+  line-height: 24px;
+  font-family: var(--font-family);
+}
+
+.button_theme_primary-info {
+  background-color: var(--blue);
+}
+
+.button_theme_primary-success {
+  background-color: var(--green);
+}
+
+.button_theme_primary-warning {
+  background-color: var(--orange);
+}

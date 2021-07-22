@@ -1,0 +1,9 @@
+{
+  "root": "lib",
+  "input": "**/*.html",
+  "output": "lib",
+  "plugins": {
+    "posthtml-inline-assets": {},
+    "posthtml-inline-css": {}
+  }
+}
