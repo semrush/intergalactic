@@ -43,7 +43,7 @@ Brand colors of services (the data can be found in Semrush interface).
 
 @## Colors for charts
 
-> Palettes for charts can be viewed in Figma library (soon there will be a link).
+> Palettes for charts can be viewed in the [Figma library](https://www.figma.com/@semrush).
 
 Colors of the main palette are recommended to be taken in their due order, skipping one shade.
 
