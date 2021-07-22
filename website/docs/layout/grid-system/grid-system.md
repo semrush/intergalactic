@@ -10,7 +10,7 @@ tabName: Guide
 - Each range determines the number of columns, maximum content width, main container margins and text sizes.
 - **You can set your own breakpoints, if it's necessary for the correct display of the interface in a particular case. _For example, change a breakpoint for desktop screens._**
 
-> 💡 After 991px, the left menu appears and, with its width of 250px, "eats away" space from the product page 🙃
+> 💡 After 1200px, the left menu appears and, with its width of 250px, "eats away" space from the product page 🙃
 
 ![breakpoints-scheme](static/scheme.png)
 
