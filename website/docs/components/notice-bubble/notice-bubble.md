@@ -124,7 +124,7 @@ A notification that is designed for various events, holidays, etc. It is possibl
 
 - Minimize the number of notifications, since frequent alerts lead to "bubble blindness" and irritates users.
 - Appears in the upper-right corner of the report under the main site menu. When scrolling, it remains in the upper-right corner with the 12px indents.
-- Only one notification can appear at a time. If several actions are performed in a row that trigger notifications, each subsequent notification shall close the previous one (see the Animation section above). It was decided to display one notification at a time because, firstly, extra messages 'clog' the workspace. Secondly, they confuse the focus of attention. If multiple messages are displayed at the same time, it is likely that they will not be read.
+- Only one notification can appear at a time. If several actions are performed in a row that trigger notifications, each subsequent notification shall close the previous one (see the Animation section above). It was decided to display one notification at a time because, firstly, extra messages interfere with the workspace. Secondly, they confuse the focus of attention. If multiple messages are displayed at the same time, it is likely that they will not be read.
 - A click on the cross icon in the upper-right corner hides the notification.
 - If the notification is closed by a timer, the timer is reset by `onMouseEnter`. `OnMouseLeave` again starts counting down to the closing.
 - The Undo button cancels the completed action. To confirm this, a message with the text **Undone!** in the notification appears. This state is active for 2 seconds.
