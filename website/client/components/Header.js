@@ -251,6 +251,19 @@ const Links = styled.div`
   }
 `;
 
+const IntergalacticLink = styled.a`
+  color: #ff642d !important;
+  margin-left: 4px;
+`;
+
+const DevportalLink = styled.a`
+  display: flex;
+  align-items: center;
+  img {
+    margin-bottom: 7px;
+  }
+`;
+
 const Line = styled(Divider)`
   @media (max-width: 767px) {
     width: 244px !important;
@@ -364,15 +377,16 @@ function Header(props) {
           </Mobile>
         </MobileMenu>
       )}
-      <Link to="/" style={{ textDecoration: 'none' }}>
-        <Logo>
-          <MobileLogo src={mobileLogo} alt="Logo" />
-          <DesktopLogo>
-            <img src={logo} alt="Logo" />
-            <Flex mt={1}>Intergalactic</Flex>
-          </DesktopLogo>
-        </Logo>
-      </Link>
+      <Logo>
+        <MobileLogo src={mobileLogo} alt="Logo" />
+        <DesktopLogo>
+          <DevportalLink href="https://developer.semrush.com/">
+            <img src={mobileLogo} alt="Logo" />
+            Developer
+          </DevportalLink>
+          <IntergalacticLink href="/">Intergalactic</IntergalacticLink>
+        </DesktopLogo>
+      </Logo>
       <SearchMobile>
         <MobileSearch
           tag={Button}
