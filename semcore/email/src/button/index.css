@@ -2,28 +2,30 @@
 
 .button {
   display: inline-block;
+  text-align: center;
   text-decoration: none;
   color: var(--white);
   border-radius: 6px;
+  box-sizing: border-box;
   /* hack */
   border: 0 solid #fff;
-}
 
-.button_size-m {
-  padding: 13px 24px;
-  font-size: 16px;
-  line-height: 24px;
-  font-family: var(--font-family);
-}
+  &_theme {
+    &_primary-info {
+      background-color: var(--blue);
+    }
+    &_primary-success {
+      background-color: var(--green);
+    }
+    &_primary-warning {
+      background-color: var(--orange);
+    }
+  }
 
-.button_theme_primary-info {
-  background-color: var(--blue);
-}
-
-.button_theme_primary-success {
-  background-color: var(--green);
-}
-
-.button_theme_primary-warning {
-  background-color: var(--orange);
+  &_size-m {
+    padding: 13px 24px;
+    font-size: 16px;
+    line-height: 24px;
+    font-family: var(--font-family);
+  }
 }

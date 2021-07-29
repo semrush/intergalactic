@@ -1,7 +1,28 @@
+@custom-media --desktop (min-width: 480px);
+@custom-media --mobile (max-width: 479px);
+
 :root {
   --blue: #0082e6;
   --white: #fff;
   --green: #00bc98;
   --orange: #ff622d;
+  --gray20: #333;
+  --gray-stoke: #d1d4db;
+  --black: #171a22;
+  --light-gray: #f6f7f8;
   --font-family: Helvetica, Arial, sans-serif;
+  --fs-100: 14px;
+  --lh-100: 20px;
+  --fs-200: 16px;
+  --lh-200: 24px;
+  --fs-300: 18px;
+  --lh-300: 23px;
+  --fs-400: 20px;
+  --lh-400: 22px;
+  --fs-500: 22px;
+  --lh-500: 26px;
+  --fs-600: 26px;
+  --lh-600: 31px;
+  --fs-700: 32px;
+  --lh-700: 37px;
 }
