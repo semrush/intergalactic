@@ -8,7 +8,6 @@ import fire from '@semcore/utils/lib/fire';
 import isNode from '@semcore/utils/lib/isNode';
 import { callAllEventHandlers } from '@semcore/utils/lib/assignProps';
 import CloseXS from '@semcore/icon/lib/Close/xs';
-import { useUID } from '@semcore/utils/lib/uniqueID';
 import { Timer } from './utils';
 
 import style from './style/notice-bubble.shadow.css';
@@ -37,10 +36,9 @@ const Notices = (props) => {
   const { styles, data = [], tag: SView = ViewInfo, visible } = props;
 
   return data.map((notice) => {
-    const uid = useUID();
     return sstyled(styles)(
       <Animation
-        key={uid}
+        key={notice.uid}
         visible={notice.visible || visible}
         duration={250}
         keyframes={[animationNotice['@enter'], animationNotice['@exit']]}
@@ -87,13 +85,9 @@ class NoticeBubbleContainerRoot extends Component {
 
   handleChange = (notices) => {
     const info = notices.filter((notice) => notice.type === 'info');
-    const { length: iLength } = info;
     const warning = notices.filter((notice) => notice.type === 'warning');
-    const { length: wLength } = warning;
-    this.setState({
-      notices: iLength ? [info[iLength - 1]] : [],
-      warnings: wLength ? [warning[wLength - 1]] : [],
-    });
+
+    this.setState({ notices: info, warnings: warning });
   };
 
   render() {
