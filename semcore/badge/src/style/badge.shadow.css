@@ -4,10 +4,9 @@ SBadge {
   display: inline-block;
   box-sizing: border-box;
   height: 14px;
-  line-height: 14px;
+  line-height: 12px;
   padding: 0 4px;
   border-radius: 4px;
-
   white-space: nowrap;
   font-size: 10px;
   font-weight: 500;
@@ -21,11 +20,4 @@ SBadge[bg] {
 }
 SBadge[color] {
   color: var(--color);
-}
-
-@-moz-document url-prefix() {
-  SBadge {
-    /* потому что в ff Ubuntu какая-то странная */
-    line-height: 12.5px;
-  }
 }
