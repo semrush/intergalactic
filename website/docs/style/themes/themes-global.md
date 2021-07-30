@@ -66,6 +66,8 @@ After that, all the styles that will be created in your themed styles directory 
 
 @## Versioning
 
+> Versioning is optional, but desirable for your own safety.
+
 You can design a theme for different component versions. To do this, you need to create a `versions.json` file in which you specify the required versions and paths to the css files.
 
 An example of file structure:
