@@ -33,13 +33,13 @@ const animationNotice = sstyled.css`
 `;
 
 const Notices = (props) => {
-  const { styles, data = [], tag: SView = ViewInfo, visible } = props;
+  const { styles, data = [], tag: SView = ViewInfo } = props;
 
   return data.map((notice) => {
     return sstyled(styles)(
       <Animation
         key={notice.uid}
-        visible={notice.visible || visible}
+        visible={notice.visible === undefined ? true : notice.visible}
         duration={250}
         keyframes={[animationNotice['@enter'], animationNotice['@exit']]}
       >
@@ -136,9 +136,9 @@ class ViewInfo extends Component {
     }
   }
 
-  handlerClose = () => {
+  handlerClose = (e) => {
     // because call not only click
-    fire(this, 'onClose');
+    fire(this, 'onClose', e);
     this.clearTimer();
   };
 
