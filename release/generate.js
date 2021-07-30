@@ -1,6 +1,8 @@
 // - Удалить все папки
 // - Удалить node_modules
 // - Очистить dependencies
+// - Не забыть добавить новые компоненты в components.json
+// - npm run pub -- --root . --no-check-changelog
 
 const { execSync } = require('child_process');
 const path = require('path');
@@ -28,8 +30,7 @@ async function removeDirectory() {
     execSync(`rm -R ${toRemove.join(' ')}`, {
       stdio: 'inherit',
     });
-  } catch (e) {
-  }
+  } catch (e) {}
 }
 
 async function installComponents(packages) {
@@ -83,7 +84,10 @@ const GENERATOR = {
       const TEMPLATE = hasExportDefault(utilsModule)
         ? EXPORT_TEMPLATES.LIB_DEFAULT
         : EXPORT_TEMPLATES.LIB_NAMED;
-      fse.outputFileSync(`./${name}/lib/${util}`, TEMPLATE(dependency, util.replace('.d.ts', '').replace('.js', '')));
+      fse.outputFileSync(
+        `./${name}/lib/${util}`,
+        TEMPLATE(dependency, util.replace('.d.ts', '').replace('.js', '')),
+      );
     });
   },
   ICONS: (dependency, name) => {
