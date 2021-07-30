@@ -50,6 +50,7 @@
     "@semcore/select",
     "@semcore/side-panel",
     "@semcore/skeleton",
+    "@semcore/slider",
     "@semcore/spin",
     "@semcore/spin-container",
     "@semcore/sticky",
