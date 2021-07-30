@@ -91,7 +91,7 @@ describe('NoticeBubble', () => {
     expect(spy).not.toBeCalled();
   });
 
-  test('should support show only one notice', () => {
+  test('should support show more one notice', () => {
     render(
       <React.Fragment>
         <NoticeBubbleContainer data-testid="container" />
@@ -101,7 +101,7 @@ describe('NoticeBubble', () => {
     );
 
     const container = document.body.querySelector('[data-testid="container"]');
-    expect(container.querySelector('[data-testid="notice-1"]')).not.toBeTruthy();
+    expect(container.querySelector('[data-testid="notice-1"]')).toBeTruthy();
     expect(container.querySelector('[data-testid="notice-2"]')).toBeTruthy();
   });
 
@@ -140,7 +140,6 @@ describe('NoticeBubble', () => {
         </NoticeBubbleImport>
       </>
     );
-
     expect(await snapshot(component)).toMatchImageSnapshot();
   });
 });

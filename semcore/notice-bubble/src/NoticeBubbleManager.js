@@ -1,19 +1,11 @@
-import createUUID from '@semcore/utils/lib/createUUID';
 import EventEmitter from '@semcore/utils/lib/eventEmitter';
 
 const EVENT_NAME = 'CHANGE';
 
-/**
- * ```js
- * import NoticeBubbleManager from "@semcore/notice-bubble"
- * ```
- *
- * The manager is a repository of all notices and has the ability
- * to add, delete and update notices by calling the appropriate methods.
- * */
 class NoticeBubbleManager {
   items = [];
   emitter = null;
+  counter = 0;
 
   constructor() {
     this.emitter = new EventEmitter();
@@ -25,8 +17,9 @@ class NoticeBubbleManager {
 
   createItem(props) {
     const manager = this;
+    this.counter++;
     return {
-      uid: createUUID(),
+      uid: this.counter,
       type: 'info',
       ...props,
       onClose: function(...args) {
@@ -84,9 +77,6 @@ class NoticeBubbleManager {
     }
     return false;
   }
-
-  // for documentation because react-docgen not resolve not react files
-  render() {}
 }
 
 export { NoticeBubbleManager };
