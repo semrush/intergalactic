@@ -28,19 +28,22 @@ class DemoManager extends React.Component {
   componentDidMount() {
     // Displaying the notice (passing props as an object to the function) and getting its instance
     // The instance has its own unique UID and the update and remove methods
-    const notice = NoticeBubbleManager.add({ children: 'Text' });
+    const notice = NoticeBubbleManager.add({
+      children: 'Text',
+      duration: 3000,
+      onClose: () => {
+        // Remove the notice via the instance
+        notice.remove();
+        // OR remove the notice via the manager, these two codes are identical
+        // NoticeBubbleManager.remove(notice.uid);
+      },
+    });
     setTimeout(() => {
       // Updating the props of the notice via the instance
       notice.update({ children: 'Text is updated' });
-      // Update the props of the notice via the manager, transfering UID, these two codes are identical
-      NoticeBubbleManager.update(notice.uid, { children: 'Text is updated' });
+      // OR update the props of the notice via the manager, transfering UID, these two codes are identical
+      // NoticeBubbleManager.update(notice.uid, { children: 'Text is updated' });
     }, 1000);
-    setTimeout(() => {
-      // Remove the notice via the instance
-      notice.remove();
-      // Remove the notice via the manager, these two codes are identical
-      NoticeBubbleManager.remove(notice.uid);
-    }, 3000);
   }
 
   render() {
