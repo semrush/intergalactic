@@ -85,6 +85,7 @@ async function snapshot(Component, options = { selector: '#root' }) {
       html,
     },
   });
+  ReactDOM.unmountComponentAtNode(_tmp);
   return body;
 }
 

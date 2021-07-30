@@ -53,7 +53,7 @@ export interface INoticeBubbleManager {
    * Takes the props properties of NoticeBubble.
    *  Returns an object with the uid and the update, remove functions.
    * */
-  add?: (
+  add: (
     props: object,
   ) => {
     uid: string;
@@ -65,13 +65,13 @@ export interface INoticeBubbleManager {
    * Takes the uid-unique identifier and the props-properties of NoticeBubble.
    *  Returns a successful or unsuccessful update.
    * */
-  update?: (uid: string, props: object) => boolean;
+  update: (uid: string, props: object) => boolean;
   /**
    * Deletes the notice by uid.
    * Takes an uid-unique identifier.
    * Returns a successful or unsuccessful deletion.
    * */
-  remove?: (uid: string) => boolean;
+  remove: (uid: string) => boolean;
 }
 
 declare const NoticeBubble: <T>(props: INoticeBubbleInfoProps & T) => ReturnEl;

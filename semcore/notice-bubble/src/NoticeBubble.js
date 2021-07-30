@@ -74,6 +74,8 @@ class NoticeBubbleContainerRoot extends Component {
 
   constructor(props) {
     super(props);
+    debugger;
+    props.manager.counter = 0;
     this._unsubscribe = props.manager.addListener(this.handleChange);
   }
 
