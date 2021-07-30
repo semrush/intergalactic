@@ -1,3 +1,30 @@
+## [7.1.0] - 2021-07-30
+
+### @semcore/date-picker
+  - **Fixed** [TS] fixed types.
+  - **Fixed** Added styles for element today in Calendar.
+  - **Fixed** Fixed show title for MonthRangePicker.
+
+### @semcore/feature-popover
+  - **Changed** Replace animation from package react-transition-group to @semcore/animation.
+
+### @semcore/icon
+  - **Fixed** Fixed set style which render useBox.
+  - **Changed** Remove from html for svg don't used attributes.
+  - **Changed** Added propsForElement for set props to svg.
+
+### @semcore/notice-bubble
+  - **Added** visible property can run in uncontrolled mode
+  - **Changed** Number of simultaneous notifications can be more than one
+
+### @semcore/project-create
+  - **Changed** Updated version @semcore/spin-container.
+
+### @semcore/select
+  - **Fixed** Fixed set value for Select.InputSearch.
+  - **Changed** [TS] Added type null for value prop in Select.
+  - **Changed** Fixed warning in console for InputSearch.
+
 ## [7.0.0] - 2021-07-12
 
 ### @semcore/accordion
