@@ -2,11 +2,15 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [3.1.1] - 2021-07-29
+## [3.2.0] - 2021-07-29
 
 ### Changed
 
 - Number of simultaneous notifications can be more than one
+
+### Added
+
+- `visible` property can run in uncontrolled mode
 
 ## [3.0.0] - 2021-07-05
 

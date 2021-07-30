@@ -38,13 +38,7 @@ export interface INoticeBubbleProps extends IBoxProps {
   action?: React.ReactNode;
 
   /** Triggered when the notice is closed */
-  onClose?: () => void;
-
-  /** Triggered on mouseEnter */
-  onMouseEnter?: (e?: React.SyntheticEvent) => void;
-
-  /** Triggered on mouseLeave */
-  onMouseLeave?: (e?: React.SyntheticEvent) => void;
+  onClose?: (e?: React.SyntheticEvent) => void;
 }
 
 export interface INoticeBubbleManager {

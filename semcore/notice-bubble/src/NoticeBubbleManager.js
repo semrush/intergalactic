@@ -1,4 +1,5 @@
 import EventEmitter from '@semcore/utils/lib/eventEmitter';
+import { callAllEventHandlers } from '@semcore/utils/lib/assignProps';
 
 const EVENT_NAME = 'CHANGE';
 
@@ -17,35 +18,32 @@ class NoticeBubbleManager {
 
   createItem(props) {
     const manager = this;
-    this.counter++;
+
     return {
-      uid: this.counter,
       type: 'info',
       ...props,
-      onClose: function(...args) {
-        if (props.onClose !== undefined) {
-          props.onClose.apply(this, args);
+      // onClose: function(e) {
+      //   return callAllEventHandlers(props.onClose, () => {
+      //     if (this.props.visible === undefined) {
+      //       manager.remove(this.props.uid);
+      //     }
+      //   })(e);
+      // },
+      onClose: callAllEventHandlers(props.onClose, () => {
+        if (props.visible === undefined) {
+          console.log(manager.remove(props.uid));
         }
-        if (this.props.visible === undefined) {
-          manager.remove(this.props.uid);
-        }
-      },
+      }),
     };
   }
 
   emit() {
-    const list = this.items.map((item) => {
-      if (item.visible === undefined) {
-        return { ...item, visible: true };
-      }
-      return item;
-    });
-    this.emitter.emit(EVENT_NAME, list);
+    this.emitter.emit(EVENT_NAME, this.items);
   }
 
   add(props) {
-    const item = this.createItem(props);
-    const { uid } = item;
+    const uid = this.counter++
+    const item = this.createItem({uid, ...props});
     this.items.push(item);
     this.emit();
     return {
