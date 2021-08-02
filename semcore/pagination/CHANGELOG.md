@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.3.3] - 2021-08-02
+
+### Fixed
+
+- [ts] corrected types for `Value, Addon` in `Pagination.PageInput`.
+
 ## [2.3.2] - 2021-06-08
 
 ### Changed

@@ -70,9 +70,7 @@ declare const Pagination: (<T>(
   NextPage: <T>(props: ComponentProps<typeof Button>) => ReturnEl;
   FirstPage: <T>(props: ComponentProps<typeof Button>) => ReturnEl;
   TotalPages: <T>(props: CProps<ITotalPagesProps, {}, IPaginationHandlers>) => ReturnEl;
-  PageInput: (
-    props: CProps<IPageInputProps, {}, IPaginationHandlers>,
-  ) => ReturnEl & {
+  PageInput: (<T>(props: CProps<IPageInputProps & T, {}, IPaginationHandlers>) => ReturnEl) & {
     Value: typeof Input.Value;
     Addon: typeof Input.Addon;
   };
