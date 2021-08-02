@@ -1,3 +1,4 @@
+import { ComponentProps } from 'react';
 import { CProps, PropGetterFn, ReturnEl } from '@semcore/core';
 
 import {
