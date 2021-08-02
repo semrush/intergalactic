@@ -1,0 +1,25 @@
+@import '../core/var.css';
+
+.notice {
+  padding: 24px;
+  border-radius: 10px;
+
+  &_addon {
+    display: inline-block;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+
+  &_theme_primary-info {
+    background-color: #e5f3fd;
+  }
+  &_theme_primary-muted {
+    background-color: var(--light-gray);
+  }
+  &_theme_primary-success {
+    background-color: var(--green);
+  }
+  &_theme_primary-warning {
+    background-color: var(--orange);
+  }
+}

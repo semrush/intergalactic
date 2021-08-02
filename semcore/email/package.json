@@ -6,9 +6,10 @@
   "scripts": {
     "clean": "rm -rf lib",
     "build": "npm run clean && npm run build:html && npm run build:css && npm run build:html-lib && cp src/core/var.css lib/core",
-    "build:html": "posthtml -c posthtml-src.config.json -a",
+    "build:html": "posthtml -c posthtml-src.config.json -a && npm run build:inky",
     "build:html-lib": "posthtml -c posthtml-lib.config.json -a",
     "build:css": "postcss src/**/*.css --base src --dir lib",
+    "build:inky": "inky 'lib/grid/examples/*.html' lib/grid/examples/",
     "watch:html": "nodemon -e html --watch src -x \"npm run build:html\"",
     "watch:css": "nodemon -e css --watch src -x \"npm run build:css\"",
     "watch": "npm run watch:html & npm run watch:css && npm run build:html-lib",
@@ -20,6 +21,7 @@
   "devDependencies": {
     "autoprefixer": "^10.3.1",
     "cssnano": "^5.0.7",
+    "inky-cli": "^1.0.1",
     "nodemon": "^2.0.12",
     "postcss": "^8.3.5",
     "postcss-cli": "^8.3.1",

@@ -1,7 +1,41 @@
 @import './var.css';
 /* /\/\/\/\/\/\/\/\/ RESET STYLES /\/\/\/\/\/\/\/\/ */
-body {
+body,
+table.body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+td,
+th,
+a {
+  font-family: var(--font-family);
+  font-weight: normal;
+  padding: 0;
   margin: 0;
+  text-align: left;
+  line-height: normal;
+}
+
+table {
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+
+td {
+  word-wrap: break-word;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  hyphens: auto;
+  border-collapse: collapse !important;
+}
+
+table,
+tr,
+td {
   padding: 0;
 }
 
@@ -37,16 +71,25 @@ td {
   width: 100%;
 }
 
-.mobile_w-100 {
-  @media (--mobile) {
-    width: 100%;
-  }
-}
-
 .color-black {
   color: var(--black);
 }
 
 .color-white {
   color: var(--white);
+}
+
+@media (--desktop) {
+  .show-mobile {
+    display: none !important;
+  }
+}
+
+@media (--mobile) {
+  .show-desktop {
+    display: none !important;
+  }
+  .center-mobile {
+    text-align: center;
+  }
 }
