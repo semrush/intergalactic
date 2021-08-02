@@ -6,7 +6,7 @@ tabName: Guide
 
 @## Description
 
-**NoticeBubble (Alert)** is one of the types of notifications on completed action, beginning or end of a process.
+**NoticeBubble (Alert)** is a notification on completed action, beginning or ending of a process.
 
 Let's see the differencies with [Notice](/components/notice/).
 
@@ -25,53 +25,53 @@ Let's see the differencies with [Notice](/components/notice/).
 
 @## Prohibited cases
 
-- Displaying execution of a process using spinners or a progress bar. The exception is the no-network condition. If you need to display the process, use the [progress bar](/components/progress-bar/).
-- If there are any visible instant interface changes. For example, adding a tag to an item — the tag appears, adding an item to favorites — changing the icon color, adding an item to a table/list.
+- Displaying a process with spinner or progress bar. The exception is the no-network condition. If you need to display the process, use the [progress bar](/components/progress-bar/).
+- If there are any visible instant interface changes. _For example, adding a tag to an item — the tag appears, adding an item to favorites — changing the icon color, adding an item to a table/list._
 
 @## Component composition
 
 - Text (we recommend placing the message in 2 lines, maximum — 4 lines).
-- Icon that closes the alert (using the `CloseXS` icon).
-- Button (optional, in some cases there may be two buttons).
+- Icon that closes the alert (optional, use the `CloseXS` icon).
+- Button or two buttons (optional).
 
 ### It can't contain
 
-- text formatting
-- images (holiday alerts are the exception)
-- more than two buttons
-- more than four text lines
+- Text formatting
+- Images (holiday alerts are the exception)
+- More than two buttons
+- More than four text lines
 
 @## Types
 
 ### Text message
 
-![default notice](static/text1.png)
+Notification about the beginning or ending of a process hidden from the user in the interface. Or changes to content in other parts of the report that are not currently being viewed.
 
-Notification of the beginning or end of a process hidden from the user in the interface. Or changes to content in other parts of the report that are not currently being viewed.
+![default notice](static/text1.png)
 
 ### Cancel action
 
+Notification about a completed action with the possibility to cancel it. Good for use when moving/deleting items. Use the `secondary invert` button with size M.
+
 ![default notice with button](static/default.png)
-
-Notification of a completed action with the possibility to cancel it. Good for use when moving/deleting items. The size M `secondary invert` button is used.
-
-![notice with reload button](static/reload_btn.png)
 
 The button name may change depending on the context.
 
+![notice with reload button](static/reload_btn.png)
+
+If the `Undo` process takes time, then display an intermediate loading state when nothing can be done by the user. Use [Spin](/components/spin/) with size M (24 x 24px). Don't use this state to display any other processes in the interface. Instead, use the [progress bar](/components/progress-bar/).
+
 ![notice with loading](static/default-loading.png)
 
-If the `Undo` process takes time, then we display an intermediate loading state when nothing can be done by the user. [Size M spin (24 x 24px)](/components/spin/) is used. Do not use this state to display the execution of any other processes. Instead, use the [progress bar](/components/progress-bar/).
+If everything is done , show notification that confirms the `Undo` action (use M size icon). The notification height is equal to the previous state. For recommendations on animation and timing, see the animation description below.
 
 ![loading success](static/default-success.png)
 
-Notification confirming the `Undo` action. The notification height is equal to the previous state. M-sized icon is used. For recommendations on animation and timing, see the animation description below.
-
 ### Notification of success/failure
 
-Notification of actions when working with tools.
+Use this notification types for successful/unsuccessful user actions with products.
 
-They can be successful or unsuccessful. They have an additional visual marking in the form of a colored icon. This is necessary so that the user can quickly understand, without reading the text, how the interface responds to their actions.
+They have an additional colored icon. It's helpful for quickly understanding, without reading the text, how the interface responded to user's actions.
 
 ![ success notice](static/success-notice.png)
 
@@ -79,13 +79,13 @@ They can be successful or unsuccessful. They have an additional visual marking i
 
 ### No connection
 
+Notice without a button for those systems which monitor the network connection themselves.
+
 ![connection lost notice](static/notice.png)
 
-Notice without a button for those who monitor the network connection themselves.
+For those interfaces which can't monitor the network connection themselves and need to refresh the page, there is a notice with the **Reload the page button**.
 
 ![connection reload notice](static/reload.png)
-
-For those who can't monitor and need to refresh the page, there is a notice with the **Reload the page button**.
 
 ### Holiday notification
 
@@ -93,7 +93,7 @@ For those who can't monitor and need to refresh the page, there is a notice with
 
 A notification that is designed for various events, holidays, etc. It is possible to animate elements inside such notification.
 
-@## Dimensions and indents
+@## Sizes, margins and paddings
 
 - It appears in the upper-right corner of the report under the main site menu with 12px margins on the top and right.
 - When scrolling, it remains hanging in the upper-right corner with the same margins.
@@ -101,13 +101,13 @@ A notification that is designed for various events, holidays, etc. It is possibl
 ![notice margins](static/noticeBubble1.png)
 ![notice margins](static/noticeBubble2.png)
 
-- The alert width is fixed — 300px.
-- Container paddings — 12px 24px 12px 12px.
-- If there is a button after the text, the distance from the text to the button shall be 8px.
-- If there is a spinner in front of the text, then the distance from the text to the spinner is 8px (in this case the XS spinner 16 x 16px).
-- In the `loading` and `success` states, the distance between the spinner/icon and the text is 8px.
-- In the `loading` state, size M spinner (24 x 24px) is used.
-- The `success` state uses the M icon (22 x 22px).
+- The alert has fixed width — `300px`.
+- Container paddings — `12px 24px 12px 12px`.
+- Margin between the button and the text is 8px.
+- If there is a spinner in front of the text, then the margin between the spinner and the text is 8px (in this case the XS spinner 16px \* 16px).
+- In the `loading` and `success` states, the margin between the spinner/icon and the text is 8px.
+- For the `loading` state use size M spinner (24 x 24px).
+- For the `success` state use the M icon (22 x 22px).
 
 ![notice paddings](static/1.png)
 ![notice paddings](static/2.png)
@@ -123,21 +123,24 @@ A notification that is designed for various events, holidays, etc. It is possibl
 ### General
 
 - Minimize the number of notifications, since frequent alerts lead to "bubble blindness" and irritates users.
-- Appears in the upper-right corner of the report under the main site menu. When scrolling, it remains in the upper-right corner with the 12px indents.
-- Only one notification can appear at a time. If several actions are performed in a row that trigger notifications, each subsequent notification shall close the previous one (see the Animation section above). It was decided to display one notification at a time because, firstly, extra messages interfere with the workspace. Secondly, they confuse the focus of attention. If multiple messages are displayed at the same time, it is likely that they will not be read.
 - A click on the cross icon in the upper-right corner hides the notification.
 - If the notification is closed by a timer, the timer is reset by `onMouseEnter`. `OnMouseLeave` again starts counting down to the closing.
-- The Undo button cancels the completed action. To confirm this, a message with the text **Undone!** in the notification appears. This state is active for 2 seconds.
-- If the `Undone` process takes time, then we display the intermediate state with the Working spinner (in the same bubble) and the corresponding text, and then let's consolidate the success with the message **Undone!**. When the `Working` bubble is closed, the `Undone` bubble shall be considered closed as well. In other words, it will not appear additionally.
+- The `Undo` button cancels the completed action. To confirm this, a message with the text **Undone!** appears in the notification. This state is active for 2 seconds.
+- If the `Undone` process takes time, display the intermediate state with the spinner (in the same notice) and the corresponding text, and then confirm the success with the message **Undone!**. When the `Working` state is closed, the `Undone` notice shall be considered closed as well. In other words, it will not appear additionally.
+
+### Several notices at a time
+
+- We recommend you to show one notification at a time, firstly, because extra messages hides the useful screen workspace. Secondly, they confuse the focus of attention. If multiple messages are displayed at the same time, it is likely that they will not be read.
 - If several actions are performed simultaneously by the system, they overlap each other in the same way as the user's actions, so in fact we will only see the last message.
 
-### Notice that there is no connection
+> Note that you can show several notices at a time if necessary. Use this option thoughtfully.
 
-- Appears as soon as the network connection fails. It is used in tools with the ability to continue working with content with no network access.
-- This type of notification is triggered as a separate dedicated alert channel. It takes priority. That is, when it appears, all other user and system notifications appear below it (in the second channel). The principle of their operation corresponds to the description above: each subsequent notification overlaps the previous one.
+### Notice about lost connection
+
+- This notice type appears as soon as the network connection losts. It's used in tools with the ability to continue working with content with no network access.
+- This type of notification is triggered as a separate dedicated alert channel. It has the priority. That is, when it appears, all other user and system notifications appear below it (in the second channel). Each subsequent notification overlaps the previous one.
 - It closes automatically when the connection is restored. It cannot be closed by the user.
-- There can be two options: for commands that can monitor the network connection themselves — a notification without a button; for commands that can't monitor and require page refresh — an alert with the **Reload the page** button.
-- It was decided to display this notification at the same time as the usual black notification, because the user should see the interface's response to their actions.
+- There can be two options: for the interfaces that can monitor the network connection themselves use a notification without a button; for the interfaces that can't monitor the network connection themselves and require page refresh use an alert notification with the **Reload the page** button.
 
 @page notice-bubble-api
 @page notice-bubble-example

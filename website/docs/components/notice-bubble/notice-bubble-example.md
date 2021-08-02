@@ -8,15 +8,15 @@ There are two options how you can use the notices depending on which is more con
 
 @## Option 1
 
-When you call the notice by calling the function. For example, `NoticeBubbleManager.add({ children: "Text"})` – this outputs the notice with the body "Text". This type for calling notices can be used when, for example, you have a websocket triggered and you need to display messages.
+It's about calling the notice by calling the function. For example, `NoticeBubbleManager.add({ children: "Text"})` outputs the notice with the body "Text". This type for notice calling can be used when you have, for example, a websocket triggered and you need to display messages.
 
 @## Option 2
 
-Inserting a component into the render via JSX. For example, `<NoticeBubble visible={visible}>Text</NoticeBubble>` – this will also output a notice with the body "Text". These two examples are identical. This option can be useful when the state for notice display is available. For example, during the first render, or when the connection is failed, or when the notice display somehow depends on the parent component it was inserted in, since the unmount of the parent component will cause the unmount of the notice.
+This inserts a component into the render via JSX. For example, `<NoticeBubble visible={visible}>Text</NoticeBubble>` will also output a notice with the body "Text". This and the example above are identical. This option can be useful when the state for notice display is available. For example, during the first render, or when the connection is failed, or when the notice display somehow depends on the parent component it was inserted in, since the unmount of the parent component will cause the unmount of the notice.
 
 > Under the wrapper, the second JSX option uses the first option via the functions and by subscribing to the component's lifespan and calling the required methods.
 
-❗️ Both options require that you have `<NoticeBubbleContainer />` inserted in some part of your app (but we recommend to insert it at the top of the app). This is a container for all notices, it has `position: fixed`, and all notices get into it.
+❗️ Both options require `<NoticeBubbleContainer />` inserted in some part of your app (but we recommend to insert it at the top of the app). This is a container for all notices, it has `position: fixed`, and all notices get into it.
 
 @## Example when using functions
 
