@@ -4,7 +4,6 @@ import Button from '@semcore/button';
 import styled from 'styled-components';
 import ResizeObserver from 'resize-observer-polyfill';
 import NavLink from './NavLink';
-import logo from '../static/logo/semrush-logo-title.svg';
 import mobileLogo from '../static/logo/semrush-logo.svg';
 import hamburger from '../static/mobile/hamburger.svg';
 import Close from '@semcore/icon/lib/Close/s';
@@ -39,9 +38,6 @@ const HeaderWrapper = styled.header`
   a {
     color: #171a22;
     text-decoration: none;
-    &:hover {
-      text-decoration: underline;
-    }
   }
   @media (max-width: 1140px) {
     grid-template-columns: 1fr 4fr 0.4fr;
@@ -74,10 +70,11 @@ const Logo = styled.div`
   align-items: center;
   text-align: center;
   font-family: FactorA-Bold, sans-serif;
-  font-size: 18px;
+  font-size: 22px;
+  line-height: 130%;
   color: #ff622d;
   img {
-    margin-right: 4px;
+    margin-right: 8px;
   }
   svg {
     margin-right: 4px;
@@ -253,7 +250,7 @@ const Links = styled.div`
 
 const IntergalacticLink = styled.a`
   color: #ff642d !important;
-  margin-left: 4px;
+  margin-left: 8px;
 `;
 
 const DevportalLink = styled.a`
