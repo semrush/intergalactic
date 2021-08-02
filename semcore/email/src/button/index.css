@@ -7,24 +7,76 @@
   color: var(--white);
   border-radius: 6px;
   box-sizing: border-box;
-  /* hack */
-  border: 0 solid #fff;
+  border: 1px solid transparent;
+  /* size */
+  padding: 13px 24px;
+  font-size: 16px;
+  line-height: 24px;
+
+  &_addon-left {
+    display: inline-block;
+    margin-right: 16px;
+  }
+  &_addon-right {
+    display: inline-block;
+    margin-left: 16px;
+  }
 
   &_theme {
     &_primary-info {
       background-color: var(--blue);
+      &:hover {
+        background-color: #005fb2;
+      }
     }
     &_primary-success {
       background-color: var(--green);
+      &:hover {
+        background-color: #008275;
+      }
     }
     &_primary-warning {
       background-color: var(--orange);
+      &:hover {
+        background-color: #b23300;
+      }
     }
-  }
+    &_primary-danger {
+      background-color: var(--red);
+      &:hover {
+        background-color: #ac0614;
+      }
+    }
+    &_primary-sellzone {
+      background-color: var(--purple);
+      &:hover {
+        background-color: #421983;
+      }
+    }
 
-  &_size-m {
-    padding: 13px 24px;
-    font-size: 16px;
-    line-height: 24px;
+    &_primary-invert {
+      background-color: var(--white);
+      color: currentColor;
+      &:hover {
+        opacity: 0.6;
+      }
+    }
+
+    &_secondary-default {
+      border-color: #171a22;
+      color: #171a22;
+      &:hover {
+        border-color: var(--orange);
+        color: var(--orange);
+      }
+    }
+
+    &_secondary-invert {
+      border-color: var(--white);
+      color: var(--white);
+      &:hover {
+        opacity: 0.6;
+      }
+    }
   }
 }

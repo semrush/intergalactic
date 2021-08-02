@@ -1,40 +1,40 @@
 <extends src="core/base.html">
   <block name="content">
-    <table border="0" cellspacing="0" cellpadding="0" width="100%">
-      <tbody>
-        <tr>
-          <td><strong>Themes for button</strong></td>
-        </tr>
-        <tr>
-          <td class="button button_theme_primary-info">
-            <a href="#" class="button button_size-m">Button</a>
-          </td>
-          <td class="button button_theme_primary-success">
-            <a href="#" class="button button_size-m">Button</a>
-          </td>
-          <td class="button button_theme_primary-warning">
-            <a href="#" class="button button_size-m">Button</a>
-          </td>
-        </tr>
-        <tr style="height: 20px;"></tr>
-        <tr>
-          <td><strong>Button width 100%</strong></td>
-        </tr>
-        <tr>
-          <td class="button button_theme_primary-info w-100">
-            <a href="#" class="button button_size-m w-100">Button</a>
-          </td>
-        </tr>
-        <tr style="height: 20px;"></tr>
-        <tr>
-          <td><strong>Button width 100% only for mobile (<480px)</strong></td>
-        </tr>
-        <tr>
-          <td class="button button_theme_primary-info mobile_w-100">
-            <a href="#" class="button button_size-m mobile_w-100">Mobile Button</a>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+    <strong>Themes for button</strong>
+    <br />
+
+    <div style="padding: 10px;">
+      <a href="#" class="button button_theme_primary-info">Button</a>
+      <a href="#" class="button button_theme_primary-success">Button</a>
+      <a href="#" class="button button_theme_primary-warning">Button</a>
+      <a href="#" class="button button_theme_primary-danger">Button</a>
+      <a href="#" class="button button_theme_primary-sellzone">Button</a>
+      <a href="#" class="button button_theme_secondary-default">Button</a>
+    </div>
+
+    <div
+      style="
+        padding: 10px;
+        background-color: #000;
+      "
+    >
+      <a href="#" class="button button_theme_primary-invert">Button</a>
+      <a href="#" class="button button_theme_secondary-invert">Button</a>
+    </div>
+
+    <strong>Button width 100%</strong>
+
+    <a href="#" class="button button_theme_primary-info w-100">Button</a>
+
+    <strong>Button width 100% only for mobile (<480px)</strong>
+    <a href="#" class="button button_theme_primary-info show-desktop">Mobile Button</a>
+    <a href="#" class="button button_theme_primary-info w-100 show-mobile">Mobile Button</a>
+
+    <strong>Button width addons</strong>
+    <a href="#" class="button button_theme_primary-info">
+      <div class="button_addon-left">✔️</div>
+      <span>Button</span>
+      <div class="button_addon-right">🔜️</div>
+    </a>
   </block>
 </extends>
