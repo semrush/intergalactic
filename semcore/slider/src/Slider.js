@@ -1,9 +1,9 @@
 import React from 'react';
 import createComponent, { Component, sstyled, Root } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
+import resolveColor, { shade } from '@semcore/utils/lib/color';
 
 import style from './style/slider.shadow.css';
-import resolveColor, { shade } from '@semcore/utils/lib/color';
 
 class SliderRoot extends Component {
   static displayName = 'Slider';
