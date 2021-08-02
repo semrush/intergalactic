@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.8.2] - 2021-08-02
+
+### Fixed
+
+- [ts] correct types.
+
 ## [2.8.1] - 2021-07-05
 
 ### Fixed
