@@ -1,6 +1,7 @@
 import { CProps, PropGetterFn, ReturnEl } from '@semcore/core';
 import { IBoxProps, IFlexProps } from '@semcore/flex-box';
 import { IKeyboardFocusProps } from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
+import { Text } from '@semcore/typography';
 
 export type RadioSize = 'm' | 'l' | 'xl';
 export type RadioState = 'normal' | 'invalid';
@@ -67,7 +68,7 @@ export { RadioGroup };
 
 declare const Radio: (<T>(props: CProps<IRadioProps & T, IRadioCtx>) => ReturnEl) & {
   Value: <T>(props: IRadioValueProps & T) => ReturnEl;
-  Text: <T>(props: ComponentProps<typeof TypographyText> & T) => ReturnEl;
+  Text: typeof Text;
 };
 
 export default Radio;
