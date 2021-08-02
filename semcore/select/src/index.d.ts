@@ -16,7 +16,7 @@ export type OptionValue = string | number;
 export type SelectValue = string | number | Array<string | number> | null;
 
 export type SelectOption = {
-  value: SelectValue;
+  value: OptionValue;
   children?: React.ReactNode;
   label?: React.ReactNode;
 };
@@ -74,6 +74,11 @@ export interface ISelectProps<T extends SelectValue = SelectValue>
    * @deprecated v2.0.0 {@link ISelectProps.value}
    */
   selectedOptions?: ISelectOption[];
+}
+
+export interface ISelectOption {
+  value?: string | number;
+  [key: string]: any;
 }
 
 export interface ISelectOptionProps extends IDropdownMenuItemProps {
