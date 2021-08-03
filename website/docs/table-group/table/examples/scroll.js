@@ -91,7 +91,7 @@ const Demo = () => (
     <ScrollArea.Container>
       <TableLayoutFixed>
         <Table.Head>
-          <Table.Row>
+          <Table.Row theme="false">
             <Sticky align="center" valign="middle" width="50" tag={Table.CellHead} left={0}>
               <Checkbox size="l">
                 <Checkbox.Value />
