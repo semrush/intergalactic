@@ -19,7 +19,7 @@ const UpdateWrapper = styled.div`
     margin-left: 0;
     padding: 0 0 56px;
   }
-  @media (max-width: 320px) {
+  @media (max-width: 415px) {
     padding: 0;
   }
 `;
@@ -117,7 +117,7 @@ const ButtonSubscribe = css`
     @media (max-width: 767px) {
       width: 100%;
     }
-    @media (max-width: 320px) {
+    @media (max-width: 415px) {
       width: 250px;
     }
   }

@@ -19,7 +19,7 @@ const EmailsWrapper = styled.div`
     margin-left: 0;
     margin: 0 0 56px;
   }
-  @media (max-width: 320px) {
+  @media (max-width: 415px) {
     padding: 0;
     margin: 0;
   }

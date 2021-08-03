@@ -46,7 +46,7 @@ const HeaderWrapper = styled.header`
     grid-template-columns: 0.4fr 0.4fr 4fr;
     padding: 0;
   }
-  @media (max-width: 320px) {
+  @media (max-width: 415px) {
     grid-template-columns: 0.7fr 1fr 2fr;
     padding: 0;
   }
@@ -104,14 +104,14 @@ const Search = styled.div`
     grid-column: 3;
     margin-left: 5px;
   }
-  @media (max-width: 320px) {
+  @media (max-width: 415px) {
     display: none;
   }
 `;
 
 const SearchMobile = styled.div`
   display: none;
-  @media (max-width: 320px) {
+  @media (max-width: 415px) {
     grid-row: 1;
     grid-column: 3;
     display: flex;
@@ -122,7 +122,7 @@ const SearchMobile = styled.div`
 
 const CloseIcon = styled(Close)`
   display: none;
-  @media (max-width: 320px) {
+  @media (max-width: 415px) {
     fill: #171a22;
     display: flex;
     &:hover {
@@ -133,7 +133,7 @@ const CloseIcon = styled(Close)`
 
 const SearchIcon = styled(SearchM)`
   display: none;
-  @media (max-width: 320px) {
+  @media (max-width: 415px) {
     fill: #171a22;
     display: flex;
     &:hover {
@@ -196,7 +196,7 @@ const Side = styled.div`
   z-index: -1;
   background: #f5f5f5;
   box-shadow: 5px 8px 25px rgba(137, 141, 154, 0.2);
-  @media (max-width: 320px) {
+  @media (max-width: 415px) {
     width: 100%;
   }
 `;
@@ -267,7 +267,7 @@ const Line = styled(Divider)`
     margin-left: 32px;
     background-color: #d1d4db !important;
   }
-  @media (max-width: 320px) {
+  @media (max-width: 415px) {
     width: 100% !important;
     margin-left: 0;
   }

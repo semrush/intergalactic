@@ -57,7 +57,7 @@ const PromoWrapper = styled.div`
     grid-template-rows: repeat(2, 0.5fr) 1fr repeat(3, 1.5fr);
     padding: 0 0 56px;
   }
-  @media (max-width: 320px) {
+  @media (max-width: 415px) {
     grid-template-columns: 1fr;
     grid-template-rows: 0.8fr repeat(2, 1fr) repeat(3, 1.8fr);
     padding: 0 0 56px;
@@ -67,15 +67,16 @@ const PromoWrapper = styled.div`
 
 const Overlay = styled.div`
   max-width: 1140px;
-  padding: 80px 32px 120px;
+  padding: 80px 40px 120px;
   position: relative;
   margin: 0 auto;
   @media (max-width: 767px) {
     max-width: 767px;
+    padding: 80px 32px 120px;
   }
-  @media (max-width: 320px) {
-    max-width: 320px;
-    padding-bottom: 80px;
+  @media (max-width: 415px) {
+    max-width: 415px;
+    padding: 80px 20px;
   }
 `;
 
