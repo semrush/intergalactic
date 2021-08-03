@@ -37,7 +37,7 @@ const data = [
 const Demo = () => (
   <Table use="secondary">
     <Table.Head>
-      <Table.Row>
+      <Table.Row theme="false">
         {Object.keys(data[0])
           .slice(0, -1)
           .map((name) => (
