@@ -303,10 +303,10 @@ const TableOverlay = styled.div`
   & .component {
     margin-right: 38px;
   }
-  h3 {
+  h2 {
     margin: 0;
     margin-bottom: 8px;
-    font-size: 24px;
+    font-size: 21px;
     font-family: FactorA-Bold, sans-serif;
   }
   a {
@@ -411,7 +411,7 @@ const getTabByTitle = (titles, data) => {
             console.log(tabWidth);
             return (
               <Box mr={3}>
-                <h3>{title}</h3>
+                <h2>{title}</h2>
                 {getComponents(title, data)}
               </Box>
             );

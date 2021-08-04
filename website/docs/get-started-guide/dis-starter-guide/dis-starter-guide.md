@@ -79,13 +79,13 @@ The main breakpoints that we recommend to use in our interfaces are:
 
 - 320px
 - 768px
-- 1154px
+- 1200px
 
 So you need to make designs for:
 
 - 320px — the smallest devices. Don't forget them.
 - 768px — phones and tablets.
-- more than 1154px — big tablets and desktop devices.
+- more than 1200px — big tablets and desktop devices.
 
 See [Breakpoints](/layout/breakpoints/) and [Grid](/layout/grid-system/) for more information.
 
