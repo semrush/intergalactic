@@ -2,7 +2,6 @@
 title: Slider
 fileSource: slider
 tabName: Guide
-beta: true
 ---
 
 @## Description
