@@ -17,8 +17,6 @@ export type iconNames =
   | 'project_not_found'
   | 'timeout';
 
-export type getIconPath = (name: string) => string;
-
 export interface IErrorsProps extends IFlexProps {
   /**
    * Error icon
@@ -88,6 +86,7 @@ declare const PageNotFound: <T>(props: IPageNotFoundProps & IErrorsProps & T) =>
 declare const PageError: <T>(props: IPageErrorProps & IErrorsProps & T) => ReturnEl;
 declare const Maintenance: <T>(props: IMaintenanceProps & IErrorsProps & T) => ReturnEl;
 declare const AccessDenied: <T>(props: IAccessDeniedProps & IErrorsProps & T) => ReturnEl;
+declare const getIconPath: (name: iconNames) => string;
 
 export default Error;
-export { ProjectNotFound, PageNotFound, PageError, Maintenance, AccessDenied };
+export { ProjectNotFound, PageNotFound, PageError, Maintenance, AccessDenied, getIconPath };

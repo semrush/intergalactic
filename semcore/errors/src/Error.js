@@ -1,6 +1,6 @@
-import React, { ComponentProps, HTMLAttributes } from 'react';
-import { Box, Flex, IFlexProps } from '@semcore/flex-box';
-import createComponent, { Root, Component, Merge, sstyled } from '@semcore/core';
+import React from 'react';
+import { Box, Flex } from '@semcore/flex-box';
+import createComponent, { Root, Component, sstyled } from '@semcore/core';
 import style from './style/errors.shadow.css';
 
 const version = preval`
