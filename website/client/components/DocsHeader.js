@@ -21,7 +21,7 @@ const styles = css`
   }
 `;
 const Title = styled.h2`
-  font-family: FactorA-Regular, sans-serif;
+  font-family: FactorA-Bold, sans-serif;
   font-size: 40px;
   line-height: 120%;
   margin: 0;

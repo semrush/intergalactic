@@ -15,7 +15,7 @@ const NavigationView = styled.div`
 `;
 
 const CategoryTitle = styled.div`
-  color: #898d9a !important;
+  color: #171a22 !important;
   cursor: pointer;
   padding: 8px 0 2px;
   font-weight: 500;
