@@ -8,6 +8,7 @@ import Divider from '@semcore/divider';
 import Button from '@semcore/button';
 import { FilterTrigger } from '@semcore/base-trigger';
 import CloseXS from '@semcore/icon/lib/Close/xs';
+import styled from 'styled-components';
 
 const generateOptions = (list) => list.map((v) => ({ value: v, children: v }));
 
@@ -22,6 +23,11 @@ const Filter = ({ closable, onClose, ...props }) => (
     {closable ? <CloseXS color="stone" interactive ml={2} py={2} onClick={onClose} /> : null}
   </Flex>
 );
+
+const FlexOverflow = styled(Flex)`
+  max-height: 18em;
+  overflow: auto;
+`;
 
 export default () => {
   const [filters, setFilters] = useState(0);
@@ -49,7 +55,7 @@ export default () => {
         {!!filters && <FilterTrigger.Counter>{filters}</FilterTrigger.Counter>}
       </Dropdown.Trigger>
       <Dropdown.Popper>
-        <Flex direction="column" p={4} alignItems="flex-start">
+        <FlexOverflow direction="column" p={4} alignItems="flex-start">
           <Filter mb={4} closable={filters} onClose={handleCloseFilter} />
           {[...new Array(filters)].map((_, ind) => (
             <Filter key={ind} mb={4} closable onClose={handleCloseFilter} />
@@ -58,7 +64,7 @@ export default () => {
             <Button.Addon tag={MathPlusXS} />
             <Button.Text>Add condition</Button.Text>
           </Button>
-        </Flex>
+        </FlexOverflow>
         <Divider />
         <Flex p={4} justifyContent="space-between">
           <Button use="primary" theme="info" onClick={applyFilters}>
