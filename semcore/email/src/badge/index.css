@@ -1,0 +1,12 @@
+@import '../core/var.css';
+
+.badge {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 24px;
+  font-size: 12px;
+  font-weight: bold;
+  line-height: 14px;
+  text-align: center;
+  color: #fff;
+}

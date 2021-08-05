@@ -4,7 +4,6 @@
   display: inline-block;
   text-align: center;
   text-decoration: none;
-  color: var(--white);
   border-radius: 6px;
   box-sizing: border-box;
   border: 1px solid transparent;
@@ -13,56 +12,66 @@
   font-size: 16px;
   line-height: 24px;
 
-  &_addon-left {
+  &_addon-left,
+  &_addon-right {
     display: inline-block;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+  }
+
+  &_addon-left {
     margin-right: 16px;
   }
   &_addon-right {
-    display: inline-block;
     margin-left: 16px;
   }
 
-  &_theme {
-    &_primary-info {
+  &-theme {
+    &-primary-info {
+      color: var(--white);
       background-color: var(--blue);
       &:hover {
         background-color: #005fb2;
       }
     }
-    &_primary-success {
+    &-primary-success {
+      color: var(--white);
       background-color: var(--green);
       &:hover {
         background-color: #008275;
       }
     }
-    &_primary-warning {
+    &-primary-warning {
+      color: var(--white);
       background-color: var(--orange);
       &:hover {
         background-color: #b23300;
       }
     }
-    &_primary-danger {
+    &-primary-danger {
+      color: var(--white);
       background-color: var(--red);
       &:hover {
         background-color: #ac0614;
       }
     }
-    &_primary-sellzone {
+    &-primary-sellzone {
+      color: var(--white);
       background-color: var(--purple);
       &:hover {
-        background-color: #421983;
+        background-color: var(--dark-purple);
       }
     }
 
-    &_primary-invert {
+    &-primary-invert {
       background-color: var(--white);
-      color: currentColor;
       &:hover {
         opacity: 0.6;
       }
     }
 
-    &_secondary-default {
+    &-secondary-default {
       border-color: #171a22;
       color: #171a22;
       &:hover {
@@ -71,7 +80,7 @@
       }
     }
 
-    &_secondary-invert {
+    &-secondary-invert {
       border-color: var(--white);
       color: var(--white);
       &:hover {

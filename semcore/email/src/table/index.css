@@ -1,0 +1,16 @@
+@import '../core/var.css';
+
+.table {
+  width: 100%;
+}
+.table td,
+.table th {
+  padding: 12px 20px;
+}
+.table td {
+  border-bottom: 1px solid var(--gray-stoke);
+}
+.table th {
+  background-color: var(--light-gray);
+  font-weight: bold;
+}

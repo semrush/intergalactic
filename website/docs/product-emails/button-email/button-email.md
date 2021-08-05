@@ -4,7 +4,10 @@ tabName: Code
 ---
 
 @## Themes for button
-@html theme
+@html button-theme
 
 @## Button width 100% only for mobile (<480px)
-@html size
+@html button-size
+
+@## Button with addons
+@html button-addons

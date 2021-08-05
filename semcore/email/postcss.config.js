@@ -6,5 +6,6 @@ module.exports = {
     require('postcss-custom-media'),
     require('autoprefixer'),
     require('cssnano'),
+    require('postcss-color-mod-function'),
   ],
 };

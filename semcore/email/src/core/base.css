@@ -9,8 +9,6 @@ h4,
 h5,
 h6,
 p,
-td,
-th,
 a {
   font-family: var(--font-family);
   font-weight: normal;
@@ -20,23 +18,26 @@ a {
   line-height: normal;
 }
 
+td,
+th {
+  font-family: var(--font-family);
+  text-align: left;
+  line-height: normal;
+}
+
 table {
+  padding: 0;
   border-spacing: 0;
   border-collapse: collapse;
 }
 
 td {
+  font-weight: normal;
   word-wrap: break-word;
   -webkit-hyphens: auto;
   -moz-hyphens: auto;
   hyphens: auto;
   border-collapse: collapse !important;
-}
-
-table,
-tr,
-td {
-  padding: 0;
 }
 
 img {
@@ -55,11 +56,6 @@ a img {
   display: block;
 }
 
-table,
-td {
-  border-collapse: collapse;
-}
-
 #bodyTable {
   height: 100% !important;
   margin: 0;
@@ -71,14 +67,71 @@ td {
   width: 100%;
 }
 
-.color-black {
-  color: var(--black);
+.bg-green-100 {
+  background-color: var(--light-green);
+}
+.bg-green-200 {
+  background-color: var(--green);
+}
+.bg-green-300 {
+  background-color: var(--dark-green);
+}
+.bg-red-100 {
+  background-color: var(--light-red);
+}
+.bg-red-200 {
+  background-color: var(--red);
+}
+.bg-red-300 {
+  background-color: var(--dark-red);
+}
+.bg-orange-100 {
+  background-color: var(--light-orange);
+}
+.bg-orange-200 {
+  background-color: var(--orange);
+}
+.bg-orange-300 {
+  background-color: var(--dark-orange);
+}
+.bg-gray-100 {
+  background-color: var(--light-gray);
+}
+.bg-gray-200 {
+  background-color: var(--gray);
+}
+.bg-gray-300 {
+  background-color: var(--dark-gray);
+}
+.bg-purple-100 {
+  background-color: var(--light-purple);
+}
+.bg-purple-200 {
+  background-color: var(--purple);
+}
+.bg-purple-300 {
+  background-color: var(--dark-purple);
+}
+.bg-emerald-100 {
+  background-color: var(--light-emerald);
+}
+.bg-emerald-200 {
+  background-color: var(--emerald);
+}
+.bg-pink {
+  background-color: var(--pink);
+}
+.bold {
+  font-weight: bold;
 }
 
-.color-white {
-  color: var(--white);
+.nowrap {
+  white-space: nowrap;
 }
 
+.text-center {
+  text-align: center;
+}
 @media (--desktop) {
   .show-mobile {
     display: none !important;
@@ -89,7 +142,10 @@ td {
   .show-desktop {
     display: none !important;
   }
-  .center-mobile {
+  .mobile_text-center {
     text-align: center;
+  }
+  .mobile_w-100 {
+    width: 100%;
   }
 }
