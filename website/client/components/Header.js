@@ -55,6 +55,9 @@ const HeaderWrapper = styled.header`
 const Item = styled.span`
   padding: 10px 12px;
   font-size: 16px;
+  &:hover {
+    text-decoration: underline;
+  }
   &:first-child {
     padding-left: 0;
   }
