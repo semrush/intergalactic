@@ -62,6 +62,7 @@ The recommended order of the levels in the breadcrumbs:
 - The third link is the **Name of the project**.
 - The fourth link is the **Name of the tool**.
 
+@page breadcrumbs-a11y
 @page breadcrumbs-api
 @page breadcrumbs-code
 @page breadcrumbs-changelog
