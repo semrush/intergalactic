@@ -1,7 +1,9 @@
 import React, { useEffect, useCallback } from 'react';
+import ReactDOMServer from 'react-dom/server';
 import { useRouteMatch } from 'react-router-dom';
 import Loadable from 'react-loadable';
 import { Box } from '@semcore/flex-box';
+import Accordion from '@semcore/accordion';
 import FormatText from '../components/FormatText';
 import HeadingLink from '../components/HeadingLink';
 import ChangelogByComponent from '../components/ChangelogByComponent';
@@ -12,6 +14,8 @@ import Link from '@semcore/link';
 import { Link as ScrollLink } from 'react-scroll';
 import { useQuery } from '@apollo/client';
 import { INTERFACE_QUERY } from './interfaceQuery';
+
+const emailCSS = require(`!!raw-loader!@semcore/email/lib/core/index.css`).default;
 
 const Loading = (props) => {
   if (props.error) {
@@ -49,6 +53,50 @@ export const tags = {
         {value}
       </HeadingLink>
     );
+  },
+  email_html: ({ value, ...other }) => {
+    const [componentName, htmlName = 'index'] = value.split('-');
+    return (props) => {
+      const match = useRouteMatch();
+      const Component = Loadable.Map({
+        delay: 0,
+        loader: {
+          CompileHtml: () =>
+            import(
+              `!!raw-loader!@docs/${match.params.category}/${match.params.page}/examples/${value}.html`
+            ),
+          Raw: () =>
+            import(`!!raw-loader!@semcore/email/src/${componentName}/examples/${htmlName}.html`),
+        },
+        loading: (props) => <Loading value={value} {...props} />,
+        render(loaded, props) {
+          const ExampleComponent = loaded.Raw.default;
+          const CompileHtml = loaded.CompileHtml.default;
+
+          return (
+            <>
+              <Example raw={ExampleComponent} {...props}>
+                <style>{emailCSS}</style>
+                <div dangerouslySetInnerHTML={{ __html: CompileHtml }} {...other} />
+              </Example>
+              <Accordion>
+                <Accordion.Item>
+                  <Accordion.Item.Toggle tag={Link}>
+                    <Link.Addon tag={Accordion.Item.Chevron} mr={2} />
+                    <Link.Text size={300}>Compiled example</Link.Text>
+                  </Accordion.Item.Toggle>
+                  <Accordion.Item.Collapse>
+                    <Example raw={CompileHtml} />
+                  </Accordion.Item.Collapse>
+                </Accordion.Item>
+              </Accordion>
+            </>
+          );
+        },
+      });
+
+      return <Component {...props} />;
+    };
   },
   example: ({ value, ...other }, asyncCallback) => {
     const resolve = asyncCallback();
