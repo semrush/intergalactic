@@ -15,7 +15,7 @@ import { Link as ScrollLink } from 'react-scroll';
 import { useQuery } from '@apollo/client';
 import { INTERFACE_QUERY } from './interfaceQuery';
 
-const emailCSS = require(`!!raw-loader!email/lib/core/index.css`).default;
+const emailCSS = require(`!!raw-loader!@semcore/email/lib/core/index.css`).default;
 
 const Loading = (props) => {
   if (props.error) {
@@ -54,15 +54,19 @@ export const tags = {
       </HeadingLink>
     );
   },
-  html: ({ value, ...other }) => {
+  email_html: ({ value, ...other }) => {
     const [componentName, htmlName = 'index'] = value.split('-');
     return (props) => {
+      const match = useRouteMatch();
       const Component = Loadable.Map({
         delay: 0,
         loader: {
           CompileHtml: () =>
-            import(`!!raw-loader!email/lib/${componentName}/examples/${htmlName}.html`),
-          Raw: () => import(`!!raw-loader!email/src/${componentName}/examples/${htmlName}.html`),
+            import(
+              `!!raw-loader!@docs/${match.params.category}/${match.params.page}/examples/${value}.html`
+            ),
+          Raw: () =>
+            import(`!!raw-loader!@semcore/email/src/${componentName}/examples/${htmlName}.html`),
         },
         loading: (props) => <Loading value={value} {...props} />,
         render(loaded, props) {

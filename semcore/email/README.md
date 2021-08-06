@@ -14,4 +14,5 @@
 
 `npm run build`
 
-**Get compile code in lib/**
+**Get compile css in lib/**
+**Get compile html in .tmp/**

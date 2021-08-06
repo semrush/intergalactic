@@ -3,6 +3,7 @@ title: Product emails library
 ---
 
 @page emails-guide
+@page core-email
 @page button-email
 @page badge-email
 @page grid-email

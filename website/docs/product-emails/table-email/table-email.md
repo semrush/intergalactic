@@ -4,4 +4,4 @@ tabName: Code
 ---
 
 @## Basic example
-@html table-index
+@email_html table-index

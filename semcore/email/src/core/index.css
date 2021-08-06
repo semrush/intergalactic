@@ -1,5 +1,4 @@
 @import './base.css';
-@import '../typography/index.css';
 @import '../grid/index.css';
 @import '../button/index.css';
 @import '../badge/index.css';
@@ -7,3 +6,4 @@
 @import '../notice/index.css';
 @import '../summery/index.css';
 @import '../table/index.css';
+@import '../typography/index.css';

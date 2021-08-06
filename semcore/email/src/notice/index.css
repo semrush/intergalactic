@@ -24,7 +24,7 @@
     color: var(--white);
   }
   &-theme-primary-success {
-    background-color: var(--green);
+    background-color: var(--emerald);
     color: var(--white);
   }
   &-theme-primary-warning {

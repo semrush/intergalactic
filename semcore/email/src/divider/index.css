@@ -1,7 +1,7 @@
 @import '../core/var.css';
 
 .divider {
-  border-color: var(--gray-stoke);
+  border-color: var(--stroke-gray);
 
   &-horizontal {
     height: 0;

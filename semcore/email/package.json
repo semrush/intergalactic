@@ -4,16 +4,16 @@
   "description": "",
   "module": "index.js",
   "scripts": {
-    "clean": "rm -rf lib",
-    "build": "npm run clean && npm run build:html && npm run build:css && npm run build:html-lib && cp src/core/var.css lib/core",
+    "clean": "rm -rf lib & rm -rf .tmp",
+    "build": "npm run clean && npm run build:css && npm run build:html && npm run build:html-lib && cp src/core/var.css lib/core",
     "build:html": "posthtml -c posthtml-src.config.json -a && npm run build:inky",
     "build:html-lib": "posthtml -c posthtml-lib.config.json -a",
     "build:css": "postcss src/**/*.css --base src --dir lib",
-    "build:inky": "inky 'lib/grid/examples/*.html' lib/grid/examples/",
+    "build:inky": "inky '.tmp/grid/examples/*.html' .tmp/grid/examples/",
     "watch:html": "nodemon -e html --watch src -x \"npm run build:html\"",
     "watch:css": "nodemon -e css --watch src -x \"npm run build:css\"",
     "watch": "npm run watch:html & npm run watch:css && npm run build:html-lib",
-    "serve": "npx http-server ./lib"
+    "serve": "npx http-server ./"
   },
   "keywords": [],
   "author": "",

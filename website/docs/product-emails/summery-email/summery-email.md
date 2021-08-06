@@ -3,4 +3,4 @@ title: Summery
 tabName: Code
 ---
 
-@html grid-summery
+@email_html grid-summery

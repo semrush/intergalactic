@@ -37,7 +37,7 @@
     }
     &-primary-success {
       color: var(--white);
-      background-color: var(--green);
+      background-color: var(--emerald);
       &:hover {
         background-color: #008275;
       }

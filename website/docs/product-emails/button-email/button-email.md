@@ -4,10 +4,10 @@ tabName: Code
 ---
 
 @## Themes for button
-@html button-theme
+@email_html button-theme
 
 @## Button width 100% only for mobile (<480px)
-@html button-size
+@email_html button-size
 
 @## Button with addons
-@html button-addons
+@email_html button-addons

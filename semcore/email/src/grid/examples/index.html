@@ -1,19 +1,51 @@
 <extends src="core/base.html">
+  <block name="head">
+    <style>
+      .column {
+        height: 50px;
+        background-color: #66ccf7;
+        border: 1px solid black;
+      }
+      .column-odd {
+        height: 50px;
+        background-color: #ffd54f;
+        border: 1px solid black;
+      }
+    </style>
+  </block>
   <block name="content">
-    <strong>Container</strong>
-    <container>All the rows go here</container>
-    <strong>Rows</strong>
-    <container>
-      <row> Columns go here </row>
-    </container>
-    <strong>Columns</strong>
     <row>
-      <columns large="6">column with 50%</columns>
-      <columns large="6">column with 50%</columns>
+      <columns large="6" class="column">col - 6</columns>
+      <columns large="6" class="column-odd">col - 6</columns>
     </row>
-    <strong>Vertical spacing</strong>
-    <p>Stuff on top</p>
-    <spacer size="100"></spacer>
-    <p>Stuff on bottom</p>
+    <spacer size="20"></spacer>
+    <row>
+      <columns large="5" class="column">col - 4</columns>
+      <columns large="7" class="column-odd">col - 7</columns>
+    </row>
+    <spacer size="20"></spacer>
+    <row>
+      <columns large="4" class="column">col - 4</columns>
+      <columns large="8" class="column-odd">col - 8</columns>
+    </row>
+    <spacer size="20"></spacer>
+    <row>
+      <columns large="3" class="column">col - 3</columns>
+      <columns large="9" class="column-odd">col - 9</columns>
+    </row>
+    <spacer size="20"></spacer>
+    <row>
+      <columns large="2" class="column">col - 2</columns>
+      <columns large="10" class="column-odd">col - 10</columns>
+    </row>
+    <spacer size="20"></spacer>
+    <row>
+      <columns large="1" class="column">col - 1</columns>
+      <columns large="11" class="column-odd">col - 11</columns>
+    </row>
+    <spacer size="20"></spacer>
+    <row>
+      <columns large="12" class="column-odd">col - 12</columns>
+    </row>
   </block>
 </extends>

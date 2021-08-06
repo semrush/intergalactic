@@ -4,10 +4,10 @@ tabName: Code
 ---
 
 @## Link
-@html typography-link
+@email_html typography-link
 
 @## Size
-@html typography-size
+@email_html typography-size
 
 @## Color text
-@html typography-color
+See example for color in [core](/product-emails/core-email/#a74893)

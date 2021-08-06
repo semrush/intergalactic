@@ -4,7 +4,7 @@ tabName: Code
 ---
 
 @## Theme notice
-@html notice-theme
+@email_html notice-theme
 
 @## Notice with addons
-@html notice-addons
+@email_html notice-addons

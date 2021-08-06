@@ -8,7 +8,7 @@
   padding: 12px 20px;
 }
 .table td {
-  border-bottom: 1px solid var(--gray-stoke);
+  border-bottom: 1px solid var(--stroke-gray);
 }
 .table th {
   background-color: var(--light-gray);

@@ -4,4 +4,4 @@ tabName: Code
 ---
 
 @## Basic example
-@html divider-index
+@email_html divider-index

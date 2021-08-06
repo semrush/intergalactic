@@ -67,6 +67,14 @@ a img {
   width: 100%;
 }
 
+.bg-black {
+  background-color: var(--black);
+}
+
+.bg-white {
+  background-color: var(--white);
+}
+
 .bg-green-100 {
   background-color: var(--light-green);
 }
@@ -94,13 +102,25 @@ a img {
 .bg-orange-300 {
   background-color: var(--dark-orange);
 }
+.bg-blue-100 {
+  background-color: var(--light-blue);
+}
+.bg-blue-200 {
+  background-color: var(--blue);
+}
+.bg-blue-300 {
+  background-color: var(--dark-blue);
+}
 .bg-gray-100 {
   background-color: var(--light-gray);
 }
 .bg-gray-200 {
-  background-color: var(--gray);
+  background-color: var(--stroke-gray);
 }
 .bg-gray-300 {
+  background-color: var(--gray);
+}
+.bg-gray-400 {
   background-color: var(--dark-gray);
 }
 .bg-purple-100 {

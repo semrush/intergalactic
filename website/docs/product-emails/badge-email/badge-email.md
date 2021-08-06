@@ -4,4 +4,4 @@ tabName: Code
 ---
 
 @## Themes
-@html badge-index
+@email_html badge-index

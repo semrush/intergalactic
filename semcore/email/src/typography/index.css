@@ -62,6 +62,36 @@
   &-orange-300 {
     color: var(--dark-orange);
   }
+  &-purple-100 {
+    color: var(--light-purple);
+  }
+  &-purple-200 {
+    color: var(--purple);
+  }
+  &-purple-300 {
+    color: var(--dark-purple);
+  }
+  &-blue-100 {
+    color: var(--light-blue);
+  }
+  &-blue-200 {
+    color: var(--blue);
+  }
+  &-blue-300 {
+    color: var(--dark-blue);
+  }
+  &-gray-100 {
+    color: var(--light-gray);
+  }
+  &-gray-200 {
+    color: var(--stroke-gray);
+  }
+  &-gray-300 {
+    color: var(--gray);
+  }
+  &-gray-400 {
+    color: var(--dark-gray);
+  }
   &-emerald-100 {
     color: var(--light-emerald);
   }
