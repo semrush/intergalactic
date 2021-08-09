@@ -42,7 +42,7 @@ const PreviewIcon = styled.div`
     background-color: #e9ebef;
   }
   &:focus {
-    border-color: #ff622d;
+    border-color: #0071cd;
   }
 
   span {

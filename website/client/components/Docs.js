@@ -34,6 +34,9 @@ const Main = styled.main`
     font-size: 30px;
     line-height: 120%;
     margin: 40px 0 16px;
+    &:first-child {
+      margin: 0 0 16px;
+    }
   }
   h3 {
     font-family: FactorA-Bold, sans-serif;
