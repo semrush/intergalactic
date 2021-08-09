@@ -62,9 +62,9 @@ Make sure that the user understands all content, including charts, icons, and im
 
 ### Data visualization
 
-- To immerse the user in the context, provide a brief description for the visualizations
-- Make sure data and specifications are clearly labeled
-- Provide sufficient contrast between the presented data (for example, lines in charts), so that colorblind users can distinguish between them
+- To immerse the user in the context, provide a brief description for the visualizations.
+- Make sure data and specifications are clearly labeled.
+- Provide sufficient contrast between the presented data (for example, lines in charts), so that colorblind users can distinguish between them.
 
 ### Alternate versions
 

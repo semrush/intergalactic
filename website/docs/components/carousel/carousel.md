@@ -144,6 +144,7 @@ Ensure that users interested in a carousel realize that there is more than just 
 - navigation links and icons (as noted above)
 - **cutting off, or “bleeding” an image and displaying part of the next image.**
 
+@page carousel-a11y
 @page carousel-api
 @page carousel-code
 @page carousel-changelog
