@@ -1,6 +1,6 @@
 @import '../core/var.css';
 
-.summery {
+.summary {
   padding: 20px 24px;
   background-color: var(--light-gray);
   border-radius: 10px;

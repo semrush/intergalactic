@@ -32,28 +32,28 @@
       color: var(--white);
       background-color: var(--blue);
       &:hover {
-        background-color: #005fb2;
+        background-color: #005fb2 !important;
       }
     }
     &-primary-success {
       color: var(--white);
-      background-color: var(--emerald);
+      background-color: var(--green);
       &:hover {
-        background-color: #008275;
+        background-color: var(--dark-lime) !important;
       }
     }
     &-primary-warning {
       color: var(--white);
       background-color: var(--orange);
       &:hover {
-        background-color: #b23300;
+        background-color: var(--dark-orange) !important;
       }
     }
     &-primary-danger {
       color: var(--white);
       background-color: var(--red);
       &:hover {
-        background-color: #ac0614;
+        background-color: #ac0614 !important;
       }
     }
 
@@ -68,8 +68,8 @@
       border-color: #171a22;
       color: #171a22;
       &:hover {
-        border-color: var(--orange);
-        color: var(--orange);
+        border-color: var(--orange) !important;
+        color: var(--orange) !important;
       }
     }
 

@@ -24,7 +24,7 @@
     color: var(--white);
   }
   &-theme-primary-success {
-    background-color: var(--emerald);
+    background-color: var(--green);
     color: var(--white);
   }
   &-theme-primary-warning {
@@ -37,7 +37,7 @@
     color: var(--black);
   }
   &-theme-secondary-success {
-    background-color: color-mod(var(--green) a(10%));
+    background-color: color-mod(var(--lime) a(10%));
     color: var(--black);
   }
   &-theme-secondary-warning {
