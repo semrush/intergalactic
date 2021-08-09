@@ -75,14 +75,14 @@ a img {
   background-color: var(--white);
 }
 
-.bg-green-100 {
-  background-color: var(--light-green);
+.bg-lime-100 {
+  background-color: var(--light-lime);
 }
-.bg-green-200 {
-  background-color: var(--green);
+.bg-lime-200 {
+  background-color: var(--lime);
 }
-.bg-green-300 {
-  background-color: var(--dark-green);
+.bg-lime-300 {
+  background-color: var(--dark-lime);
 }
 .bg-red-100 {
   background-color: var(--light-red);
@@ -132,11 +132,11 @@ a img {
 .bg-purple-300 {
   background-color: var(--dark-purple);
 }
-.bg-emerald-100 {
-  background-color: var(--light-emerald);
+.bg-green-100 {
+  background-color: var(--light-green);
 }
-.bg-emerald-200 {
-  background-color: var(--emerald);
+.bg-green-200 {
+  background-color: var(--green);
 }
 .bg-pink {
   background-color: var(--pink);

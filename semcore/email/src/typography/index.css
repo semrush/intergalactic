@@ -44,14 +44,14 @@
   &-red-300 {
     color: var(--dark-red);
   }
-  &-green-100 {
-    color: var(--light-green);
+  &-lime-100 {
+    color: var(--light-lime);
   }
-  &-green-200 {
-    color: var(--green);
+  &-lime-200 {
+    color: var(--lime);
   }
-  &-green-300 {
-    color: var(--dark-green);
+  &-lime-300 {
+    color: var(--dark-lime);
   }
   &-orange-100 {
     color: var(--light-orange);
@@ -92,11 +92,11 @@
   &-gray-400 {
     color: var(--dark-gray);
   }
-  &-emerald-100 {
-    color: var(--light-emerald);
+  &-green-100 {
+    color: var(--light-green);
   }
-  &-emerald-200 {
-    color: var(--emerald);
+  &-green-200 {
+    color: var(--green);
   }
   &-pink {
     color: var(--pink);
@@ -108,14 +108,14 @@
   &-theme-default {
     color: var(--blue);
     &:hover {
-      color: #0070cc;
+      color: #0070cc !important;
     }
   }
 
   &-theme-dark {
     color: var(--dark-gray);
     &:hover {
-      color: var(--black);
+      color: var(--black) !important;
     }
   }
 }
