@@ -56,13 +56,6 @@
         background-color: #ac0614;
       }
     }
-    &-primary-sellzone {
-      color: var(--white);
-      background-color: var(--purple);
-      &:hover {
-        background-color: var(--dark-purple);
-      }
-    }
 
     &-primary-invert {
       background-color: var(--white);
