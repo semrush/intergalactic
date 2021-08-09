@@ -1,9 +1,9 @@
 ---
-title: Button
+title: Email button
 tabName: Code
 ---
 
-@## Themes for button
+@## Button themes
 @email_html button-theme
 
 @## Button width 100% only for mobile (<480px)

@@ -1,5 +1,5 @@
 ---
-title: Divider
+title: Divider for emails
 tabName: Code
 ---
 

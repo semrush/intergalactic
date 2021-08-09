@@ -1,7 +1,7 @@
 ---
-title: Badge
+title: Email badge and tag
 tabName: Code
 ---
 
-@## Themes
+@## Badge/tag themes
 @email_html badge-index

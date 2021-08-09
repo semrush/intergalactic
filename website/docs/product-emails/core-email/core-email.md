@@ -1,13 +1,13 @@
 ---
-title: Core
+title: Core email colors
 tabName: Code
 ---
 
-@## Css variables
+@## CSS variables
 @example email-vars
 
-@## Background class
+@## Background classes
 @example email-background
 
-@## Text class
+@## Text classes
 @example email-color
