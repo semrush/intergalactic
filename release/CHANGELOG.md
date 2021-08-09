@@ -1,3 +1,44 @@
+## [7.1.0] - 2021-08-09
+
+### @semcore/badge
+  - **Changed** Changed line-height value
+
+### @semcore/base-trigger
+  - **Fixed** [ts] correct types.
+
+### @semcore/d3-chart
+  - **Fixed** [ts] correct types.
+
+### @semcore/errors
+  - **Fixed** [TS] fixed types.
+
+### @semcore/feature-popover
+  - **Fixed** [ts] correct types.
+
+### @semcore/feedback-form
+  - **Fixed** [ts] correct types.
+
+### @semcore/pagination
+  - **Fixed** [ts] corrected types for Value, Addon in Pagination.PageInput.
+
+### @semcore/radio
+  - **Fixed** [ts] correct types.
+
+### @semcore/select
+  - **Fixed** [ts] correct types.
+
+### @semcore/slider
+  - **Fixed** [ts] correct types.
+
+### @semcore/tab-line
+  - **Fixed** [ts] correct types.
+
+### @semcore/tag
+  - **Added** Added line-height value
+
+### @semcore/typography
+  - **Fixed** [ts] correct types.
+
 ## [7.1.0] - 2021-07-30
 
 ### @semcore/date-picker
