@@ -4,8 +4,8 @@ title: Code
 
 @## Example in line chart
 
-An example of LineChart with a legend, see [LineChart](/data-display/line-chart/line-chart-code/#a153ab).
+See an example of a line chart with a legend in the [Line chart guide](/data-display/line-chart/line-chart-code/#a9b905).
 
 @## Example in bar chart
 
-An example of BarChart with a legend, see [BarChart](/data-display/bar-chart/bar-chart-code/#adc191).
+See an example of a bar chart with a legend in the [Bar chart guide](/data-display/bar-chart/bar-chart-code/#adc191).

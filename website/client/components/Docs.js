@@ -33,19 +33,19 @@ const Main = styled.main`
     font-family: FactorA-Bold, sans-serif;
     font-size: 30px;
     line-height: 120%;
-    margin: 16px 0 16px;
+    margin: 40px 0 16px;
   }
   h3 {
     font-family: FactorA-Bold, sans-serif;
     font-size: 24px;
     line-height: 120%;
-    margin: 16px 0 16px;
+    margin: 16px 0;
   }
   h4 {
     font-family: FactorA-Bold, sans-serif;
     font-size: 18px;
     line-height: 150%;
-    margin: 16px 0 16px;
+    margin: 16px 0;
   }
 `;
 

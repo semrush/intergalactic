@@ -1,5 +1,5 @@
 ---
-title: Notice
+title: Email notice
 tabName: Code
 ---
 

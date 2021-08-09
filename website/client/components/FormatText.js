@@ -110,7 +110,7 @@ const FormatText = styled.div`
 
   p {
     padding: 0;
-    margin: 0 0 1rem;
+    margin: 0 0 1.5rem;
     img:last-child:first-child {
       margin-bottom: 0;
     }
@@ -148,7 +148,7 @@ const FormatText = styled.div`
 
   blockquote {
     padding: 2rem;
-    margin: 0 0 1.5rem 0;
+    margin: 0 0 1rem;
     font-size: 16px;
     line-height: 1.5em;
     background-color: rgba(184, 128, 255, 0.15);

@@ -1,5 +1,5 @@
 ---
-title: Table
+title: Email table
 tabName: Code
 ---
 

@@ -1,8 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import emailImg from '../static/illustration/email-library-pic.svg';
-import Tag from '@semcore/tag';
 import { Box } from '@semcore/flex-box';
+import Link from '@semcore/link';
+import ArrowRightXS from '@semcore/icon/lib/ArrowRight/xs';
 
 const EmailsWrapper = styled.div`
   display: grid;
@@ -28,7 +29,7 @@ const EmailsWrapper = styled.div`
 const Info = styled.div`
   grid-row: 1;
   grid-column: 2;
-  font-size: 18px;
+  font-size: 16px;
   line-height: 150%;
   margin-left: 40px;
   max-width: 560px;
@@ -66,11 +67,16 @@ function BannerBlock() {
       <EmailImg src={emailImg} />
       <Info>
         <Box>
-          <Header mr={2}>Product emails library</Header>
-          <Tag size="s" theme="muted" use="primary" children="soon" />
+          <Header>Product emails library</Header>
         </Box>
+        <Box mt={2}>All you need for making your product newsletter cool and consistent.</Box>
         <Box mt={2} mb={8}>
-          All you need for making your product newsletter cool and consistent.
+          <Link size={300} color="#171A22" href="/product-emails/grid-email/">
+            <Link.Text>Dive into examples</Link.Text>
+            <Link.Addon>
+              <ArrowRightXS color="#171A22" />
+            </Link.Addon>
+          </Link>
         </Box>
       </Info>
     </EmailsWrapper>
