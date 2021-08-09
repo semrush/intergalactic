@@ -1,302 +1,370 @@
-## [7.1.0] - 2021-08-09
+## [7.1.1] - 2021-08-09
 
 ### @semcore/badge
-  - **Changed** Changed line-height value
+
+- **Changed** Changed line-height value
 
 ### @semcore/base-trigger
-  - **Fixed** [ts] correct types.
+
+- **Fixed** [ts] correct types.
 
 ### @semcore/d3-chart
-  - **Fixed** [ts] correct types.
+
+- **Fixed** [ts] correct types.
 
 ### @semcore/errors
-  - **Fixed** [TS] fixed types.
+
+- **Fixed** [TS] fixed types.
 
 ### @semcore/feature-popover
-  - **Fixed** [ts] correct types.
+
+- **Fixed** [ts] correct types.
 
 ### @semcore/feedback-form
-  - **Fixed** [ts] correct types.
+
+- **Fixed** [ts] correct types.
 
 ### @semcore/pagination
-  - **Fixed** [ts] corrected types for Value, Addon in Pagination.PageInput.
+
+- **Fixed** [ts] corrected types for Value, Addon in Pagination.PageInput.
 
 ### @semcore/radio
-  - **Fixed** [ts] correct types.
+
+- **Fixed** [ts] correct types.
 
 ### @semcore/select
-  - **Fixed** [ts] correct types.
+
+- **Fixed** [ts] correct types.
 
 ### @semcore/slider
-  - **Fixed** [ts] correct types.
+
+- **Fixed** [ts] correct types.
 
 ### @semcore/tab-line
-  - **Fixed** [ts] correct types.
+
+- **Fixed** [ts] correct types.
 
 ### @semcore/tag
-  - **Added** Added line-height value
+
+- **Added** Added line-height value
 
 ### @semcore/typography
-  - **Fixed** [ts] correct types.
+
+- **Fixed** [ts] correct types.
 
 ## [7.1.0] - 2021-07-30
 
 ### @semcore/date-picker
-  - **Fixed** [TS] fixed types.
-  - **Fixed** Added styles for element today in Calendar.
-  - **Fixed** Fixed show title for MonthRangePicker.
+
+- **Fixed** [TS] fixed types.
+- **Fixed** Added styles for element today in Calendar.
+- **Fixed** Fixed show title for MonthRangePicker.
 
 ### @semcore/feature-popover
-  - **Changed** Replace animation from package react-transition-group to @semcore/animation.
+
+- **Changed** Replace animation from package react-transition-group to @semcore/animation.
 
 ### @semcore/icon
-  - **Fixed** Fixed set style which render useBox.
-  - **Changed** Remove from html for svg don't used attributes.
-  - **Changed** Added propsForElement for set props to svg.
+
+- **Fixed** Fixed set style which render useBox.
+- **Changed** Remove from html for svg don't used attributes.
+- **Changed** Added propsForElement for set props to svg.
 
 ### @semcore/notice-bubble
-  - **Added** visible property can run in uncontrolled mode
-  - **Changed** Number of simultaneous notifications can be more than one
+
+- **Added** visible property can run in uncontrolled mode
+- **Changed** Number of simultaneous notifications can be more than one
 
 ### @semcore/project-create
-  - **Changed** Updated version @semcore/spin-container.
+
+- **Changed** Updated version @semcore/spin-container.
 
 ### @semcore/select
-  - **Fixed** Fixed set value for Select.InputSearch.
-  - **Changed** [TS] Added type null for value prop in Select.
-  - **Changed** Fixed warning in console for InputSearch.
+
+- **Fixed** Fixed set value for Select.InputSearch.
+- **Changed** [TS] Added type null for value prop in Select.
+- **Changed** Fixed warning in console for InputSearch.
 
 ## [7.0.0] - 2021-07-12
 
 ### @semcore/accordion
-  - **Fixed** Add default type for generic value
+
+- **Fixed** Add default type for generic value
 
 ### @semcore/animation
-  - **Fixed** [TS] fixed export components.
+
+- **Fixed** [TS] fixed export components.
 
 ### @semcore/carousel
-  - **Added** [A11y] Added support to work Carousel.Next, Carousel.Prev with keyboard.
+
+- **Added** [A11y] Added support to work Carousel.Next, Carousel.Prev with keyboard.
 
 ### @semcore/data-table
-  - **Added** [A11y] Added support keyboard for sortable column.
+
+- **Added** [A11y] Added support keyboard for sortable column.
 
 ### @semcore/date-picker
-  - **Fixed** Сorrect access to properties from getters function
+
+- **Fixed** Сorrect access to properties from getters function
 
 ### @semcore/dot
-  - **Fixed** Fixed animation Dot.
+
+- **Fixed** Fixed animation Dot.
 
 ### @semcore/dropdown-menu
-  - **Changed** Changed tabIndex to 0 and styles for DropdowmMenu.Popper.
+
+- **Changed** Changed tabIndex to 0 and styles for DropdowmMenu.Popper.
 
 ### @semcore/errors
-  - **Changed** Version of dependence @semcore/core has been changed to 1.11.
-  - **Changed** Improved performance. Removed one component wrapper.
-  - **Changed** The style processing system has been changed.
-  - **Changed** Removed the ability to apply media styles via a plugin babel-plugin-react-semcore.
+
+- **Changed** Version of dependence @semcore/core has been changed to 1.11.
+- **Changed** Improved performance. Removed one component wrapper.
+- **Changed** The style processing system has been changed.
+- **Changed** Removed the ability to apply media styles via a plugin babel-plugin-react-semcore.
 
 ### @semcore/feature-popover
-  - **Changed** Replace animation from package `react-transition-group` to `@semcore/animation`.
+
+- **Changed** Replace animation from package `react-transition-group` to `@semcore/animation`.
 
 ### @semcore/feedback-form
-  - **Changed** Version of dependence @semcore/core has been changed to 1.11.
-  - **Changed** Improved performance. Removed one component wrapper.
-  - **Changed** The style processing system has been changed.
-  - **Changed** Removed the ability to apply media styles via a plugin babel-plugin-react-semcore.
-  - **Changed** [TS] Rewrite code from TS to JS.
+
+- **Changed** Version of dependence @semcore/core has been changed to 1.11.
+- **Changed** Improved performance. Removed one component wrapper.
+- **Changed** The style processing system has been changed.
+- **Changed** Removed the ability to apply media styles via a plugin babel-plugin-react-semcore.
+- **Changed** [TS] Rewrite code from TS to JS.
 
 ### @semcore/flags
-  - **Changed** Version of dependence @semcore/core has been changed to 1.11.
-  - **Changed** Improved performance. Removed one component wrapper.
-  - **Changed** The style processing system has been changed.
-  - **Changed** Removed the ability to apply media styles via a plugin babel-plugin-react-semcore.
+
+- **Changed** Version of dependence @semcore/core has been changed to 1.11.
+- **Changed** Improved performance. Removed one component wrapper.
+- **Changed** The style processing system has been changed.
+- **Changed** Removed the ability to apply media styles via a plugin babel-plugin-react-semcore.
 
 ### @semcore/fullscreen-modal
-  - **Changed** Rewrite code from TS to JS.
+
+- **Changed** Rewrite code from TS to JS.
 
 ### @semcore/icon
-  - **Changed** Version of dependence @semcore/core has been changed to 1.11.
-  - **Changed** Improved performance. Removed one component wrapper.
-  - **Changed** The style processing system has been changed.
-  - **Changed** Removed the ability to apply media styles via a plugin babel-plugin-react-semcore.
+
+- **Changed** Version of dependence @semcore/core has been changed to 1.11.
+- **Changed** Improved performance. Removed one component wrapper.
+- **Changed** The style processing system has been changed.
+- **Changed** Removed the ability to apply media styles via a plugin babel-plugin-react-semcore.
 
 ### @semcore/modal
-  - **Changed** [TS] rewrite code from ts to js.
-  - **Changed** [A11y] added role for Window and aria-label for Close and Window.
+
+- **Changed** [TS] rewrite code from ts to js.
+- **Changed** [A11y] added role for Window and aria-label for Close and Window.
 
 ### @semcore/notice
-  - **Changed** Version of dependence @semcore/core has been changed to 1.11.
-  - **Changed** Improved performance. Removed one component wrapper.
-  - **Changed** The style processing system has been changed.
-  - **Changed** Removed the ability to apply media styles via a plugin babel-plugin-react-semcore.
-  - **Changed** [A11y] added role for Alert and aria-label for Close.
+
+- **Changed** Version of dependence @semcore/core has been changed to 1.11.
+- **Changed** Improved performance. Removed one component wrapper.
+- **Changed** The style processing system has been changed.
+- **Changed** Removed the ability to apply media styles via a plugin babel-plugin-react-semcore.
+- **Changed** [A11y] added role for Alert and aria-label for Close.
 
 ### @semcore/notice-bubble
-  - **BREAK** Replace animation package from react-transition-group to @semcore/animation
-  - **BREAK** Remove property offset and added Box inside NoticeBubbleContainer
-  - **Changed** Version of dependence @semcore/core has been changed to 1.11.
-  - **Changed** Improved performance. Removed one component wrapper.
-  - **Changed** The style processing system has been changed.
-  - **Changed** Removed the ability to apply media styles via a plugin babel-plugin-react-semcore.
-  - **Changed** [TS] rewrite code from TS to JS.
-  - **Changed** [A11y] added role for Alert and aria-label for Close.
+
+- **BREAK** Replace animation package from react-transition-group to @semcore/animation
+- **BREAK** Remove property offset and added Box inside NoticeBubbleContainer
+- **Changed** Version of dependence @semcore/core has been changed to 1.11.
+- **Changed** Improved performance. Removed one component wrapper.
+- **Changed** The style processing system has been changed.
+- **Changed** Removed the ability to apply media styles via a plugin babel-plugin-react-semcore.
+- **Changed** [TS] rewrite code from TS to JS.
+- **Changed** [A11y] added role for Alert and aria-label for Close.
 
 ### @semcore/pills
-  - **Fixed** Add default type for generic value
+
+- **Fixed** Add default type for generic value
 
 ### @semcore/popper
-  - **Fixed** Fixed cjs build package.
-  - **Changed** Improved render performance
+
+- **Fixed** Fixed cjs build package.
+- **Changed** Improved render performance
 
 ### @semcore/progress-bar
-  - **Changed** Version of dependence @semcore/core has been changed to 1.11.
-  - **Changed** Improved performance. Removed one component wrapper.
-  - **Changed** The style processing system has been changed.
-  - **Changed** Removed the ability to apply media styles via a plugin babel-plugin-react-semcore.
-  - **Changed** [TS] rewrite code from TS to JS
+
+- **Changed** Version of dependence @semcore/core has been changed to 1.11.
+- **Changed** Improved performance. Removed one component wrapper.
+- **Changed** The style processing system has been changed.
+- **Changed** Removed the ability to apply media styles via a plugin babel-plugin-react-semcore.
+- **Changed** [TS] rewrite code from TS to JS
 
 ### @semcore/project-create
 
 - **Changed** Updated version `@semcore/spin-container`.
 
 ### @semcore/select
-  - **Fixed** Fixed set theme for Select.OptionCheckbox.
-  - **Fixed** Add default type for generic value
+
+- **Fixed** Fixed set theme for Select.OptionCheckbox.
+- **Fixed** Add default type for generic value
 
 ### @semcore/side-panel
-  - **Changed** Version of dependence @semcore/core has been changed to 1.11.
-  - **Changed** Improved performance. Removed one component wrapper.
-  - **Changed** The style processing system has been changed.
-  - **Changed** Removed the ability to apply media styles via a plugin babel-plugin-react-semcore.
+
+- **Changed** Version of dependence @semcore/core has been changed to 1.11.
+- **Changed** Improved performance. Removed one component wrapper.
+- **Changed** The style processing system has been changed.
+- **Changed** Removed the ability to apply media styles via a plugin babel-plugin-react-semcore.
 
 ### @semcore/spin-container
-  - **BREAK** Replace animation from package react-transition-group to @semcore/animation.
-  - **Changed** Version of dependence @semcore/core has been changed to 1.11.
-  - **Changed** Improved performance. Removed one component wrapper.
-  - **Changed** The style processing system has been changed.
-  - **Changed** Removed the ability to apply media styles via a plugin babel-plugin-react-semcore.
-  - **Changed** [TS] rewrite code from TS to JS.
+
+- **BREAK** Replace animation from package react-transition-group to @semcore/animation.
+- **Changed** Version of dependence @semcore/core has been changed to 1.11.
+- **Changed** Improved performance. Removed one component wrapper.
+- **Changed** The style processing system has been changed.
+- **Changed** Removed the ability to apply media styles via a plugin babel-plugin-react-semcore.
+- **Changed** [TS] rewrite code from TS to JS.
 
 ### @semcore/tab-line
-  - **Fixed** Add default type for generic value
+
+- **Fixed** Add default type for generic value
 
 ### @semcore/tab-panel
-  - **Fixed** Add default type for generic value
+
+- **Fixed** Add default type for generic value
 
 ### @semcore/table
-  - **Added** [A11y] Added support keyboard for sortable column.
+
+- **Added** [A11y] Added support keyboard for sortable column.
 
 ### @semcore/tag
-  - **Changed** Version of dependence @semcore/core has been changed to 1.11.
-  - **Changed** Improved performance. Removed one component wrapper.
-  - **Changed** The style processing system has been changed.
-  - **Changed** Removed the ability to apply media styles via a plugin babel-plugin-react-semcore.
-  - **Changed** Rewrite from TS to JS code.
+
+- **Changed** Version of dependence @semcore/core has been changed to 1.11.
+- **Changed** Improved performance. Removed one component wrapper.
+- **Changed** The style processing system has been changed.
+- **Changed** Removed the ability to apply media styles via a plugin babel-plugin-react-semcore.
+- **Changed** Rewrite from TS to JS code.
 
 ### @semcore/widget-empty
-  - **Fixed** [TS] fixed types.
+
+- **Fixed** [TS] fixed types.
 
 ## [6.0.0] - 2021-06-21
 
 ### @semcore/input-number
- - **BREAK** Replaced internal representation with native input(type=number).
- - **BREAK** Changed type for value to string.
- - **Fixed** Fixed the js problem with the remainder of division.
- - **Added** [A11y] added aria-label for buttons in `InputNumber.Controls`
+
+- **BREAK** Replaced internal representation with native input(type=number).
+- **BREAK** Changed type for value to string.
+- **Fixed** Fixed the js problem with the remainder of division.
+- **Added** [A11y] added aria-label for buttons in `InputNumber.Controls`
 
 ### @semcore/accordion
-  - **Changed** Fix TS type
+
+- **Changed** Fix TS type
 
 ### @semcore/base-trigger
-  - **Changed** Rewrite code from TS to JS 🧑‍💻
-  - **Changed** Version of dependence @semcore/core has been changed to 1.11.
-  - **Changed** Improved performance. Removed one component wrapper.
-  - **Changed** The style processing system has been changed.
-  - **Changed** Removed the ability to apply media styles via a plugin babel-plugin-react-semcore.
+
+- **Changed** Rewrite code from TS to JS 🧑‍💻
+- **Changed** Version of dependence @semcore/core has been changed to 1.11.
+- **Changed** Improved performance. Removed one component wrapper.
+- **Changed** The style processing system has been changed.
+- **Changed** Removed the ability to apply media styles via a plugin babel-plugin-react-semcore.
 
 ### @semcore/d3-chart
-  - **Added** Added Venn chart.
+
+- **Added** Added Venn chart.
 
 ### @semcore/date-picker
-  - **Changed** Version of dependence @semcore/core has been changed to 1.11.
-  - **Changed** Improved performance. Removed one component wrapper.
-  - **Changed** The style processing system has been changed.
-  - **Changed** Removed the ability to apply media styles via a plugin babel-plugin-react-semcore.
-  - **Changed** Added support keydown arrows for choose date to calendar.
+
+- **Changed** Version of dependence @semcore/core has been changed to 1.11.
+- **Changed** Improved performance. Removed one component wrapper.
+- **Changed** The style processing system has been changed.
+- **Changed** Removed the ability to apply media styles via a plugin babel-plugin-react-semcore.
+- **Changed** Added support keydown arrows for choose date to calendar.
 
 ### @semcore/divider
-  - **Changed** Rewrite code from TS to JS 🧑‍💻
-  - **Changed** Version of dependence @semcore/core has been changed to 1.11.
-  - **Changed** Improved performance. Removed one component wrapper.
-  - **Changed** The style processing system has been changed.
-  - **Changed** Removed the ability to apply media styles via a plugin babel-plugin-react-semcore.
+
+- **Changed** Rewrite code from TS to JS 🧑‍💻
+- **Changed** Version of dependence @semcore/core has been changed to 1.11.
+- **Changed** Improved performance. Removed one component wrapper.
+- **Changed** The style processing system has been changed.
+- **Changed** Removed the ability to apply media styles via a plugin babel-plugin-react-semcore.
 
 ### @semcore/dot
-  - **Changed** Rewrite code from TS to JS 🧑‍💻
-  - **Changed** Version of dependence @semcore/core has been changed to 1.11.
-  - **Changed** Improved performance. Removed one component wrapper.
-  - **Changed** The style processing system has been changed.
-  - **Changed** Removed the ability to apply media styles via a plugin babel-plugin-react-semcore.
+
+- **Changed** Rewrite code from TS to JS 🧑‍💻
+- **Changed** Version of dependence @semcore/core has been changed to 1.11.
+- **Changed** Improved performance. Removed one component wrapper.
+- **Changed** The style processing system has been changed.
+- **Changed** Removed the ability to apply media styles via a plugin babel-plugin-react-semcore.
 
 ### @semcore/dropdown
-  - **Added** Support keydown Enter and Space for open Popper.
-  - **Added** Logic checked interactive trigger from DropdownMenu.
-  - **Fixed** Fix TS type
+
+- **Added** Support keydown Enter and Space for open Popper.
+- **Added** Logic checked interactive trigger from DropdownMenu.
+- **Fixed** Fix TS type
 
 ### @semcore/dropdown-menu
-  - **Fixed** Fix TS type
-  - **Changed** Moved logic for checking interactive trigger to Dropdown.
+
+- **Fixed** Fix TS type
+- **Changed** Moved logic for checking interactive trigger to Dropdown.
 
 ### @semcore/pagination
-  - **Changed** Fixed ts type for Pagination.
-  - **Changed** Added aria-label for child components FirstPage, PageInput
+
+- **Changed** Fixed ts type for Pagination.
+- **Changed** Added aria-label for child components FirstPage, PageInput
 
 ### @semcore/pills
-  - **Changed** Rewrite code from TS to JS 🧑‍💻
+
+- **Changed** Rewrite code from TS to JS 🧑‍💻
 
 ### @semcore/popper
-  - **Fixed** Fixed forwarding properties to the Box in Popper.Popper.
-  - **Fixed** Fixed set prop returnFocus for Focus-Lock
-  - **Fixed** Fix TS type
-  - **Fixed** [A11] Fixed set aria-pressed for Popper.Trigger.
+
+- **Fixed** Fixed forwarding properties to the Box in Popper.Popper.
+- **Fixed** Fixed set prop returnFocus for Focus-Lock
+- **Fixed** Fix TS type
+- **Fixed** [A11] Fixed set aria-pressed for Popper.Trigger.
 
 ### @semcore/select
-  - **Fixed** Fix TS type
-  - **Fixed** Fixed ts type for Select.
-  - **Fixed** Fixed paddings in InputSearch.
+
+- **Fixed** Fix TS type
+- **Fixed** Fixed ts type for Select.
+- **Fixed** Fixed paddings in InputSearch.
 
 ### @semcore/switch
-  - **Changed** [A11y] added role="switch" and support the Enter or Space key for used to toggle between a checked or unchecked
-  - **Changed** [TS] Rewrite code from TS to JS.
+
+- **Changed** [A11y] added role="switch" and support the Enter or Space key for used to toggle between a checked or unchecked
+- **Changed** [TS] Rewrite code from TS to JS.
 
 ### @semcore/tab-line
-  - **Changed** Rewrite code from TS to JS 🧑‍💻
+
+- **Changed** Rewrite code from TS to JS 🧑‍💻
 
 ### @semcore/tab-panel
-  - **Changed** Rewrite code from TS to JS 🧑‍💻
+
+- **Changed** Rewrite code from TS to JS 🧑‍💻
 
 ### @semcore/textarea
-  - **Changed** [TS] Rewrite code from TS to JS.
+
+- **Changed** [TS] Rewrite code from TS to JS.
 
 ### @semcore/time-picker
-  - **Added** [A11] Added aria-label for Timepicker.Hours, Timepicker.Minutes.
+
+- **Added** [A11] Added aria-label for Timepicker.Hours, Timepicker.Minutes.
 
 ### @semcore/widget-empty
-  - **Added** Added tag-cloud illustration
-  - **Changed** Rewrite code from TS to JS 🧑‍💻
+
+- **Added** Added tag-cloud illustration
+- **Changed** Rewrite code from TS to JS 🧑‍💻
 
 ## [5.1.0] - 2021-05-25
 
 ### @semcore/core
-  - **Changed** Extended type for Root
+
+- **Changed** Extended type for Root
 
 ### @semcore/popper
+
 - **Fixed** Add type for handlers for render function
 - **Fixed** Fix TS type
 - **Fixed** Fix position arrow after change version popperjs.
 - **Changed** Rewrite code from TS to JS 🧑‍💻
 
 ### @semcore/tooltip
+
 - **Changed** Rewrite code from TS to JS 🧑‍💻
 - **Changed** Version of dependence @semcore/core has been changed to 1.11.
 - **Changed** Improved performance. Removed one component wrapper.
@@ -304,47 +372,58 @@
 - **Changed** Removed the ability to apply media styles via a plugin babel-plugin-react-semcore.
 
 ### @semcore/feature-popover
+
 - **Changed** The style processing system has been changed.
 - **Changed** Version of dependence @semcore/core has been changed to 1.11.
 - **Changed** Improved performance. Removed one component wrapper.
 
 ### @semcore/dropdown
+
 - **Changed** Version of dependence @semcore/core has been changed to 1.11.
 - **Changed** Improved performance. Removed one component wrapper.
 - **Changed** The style processing system has been changed.
 
 ### @semcore/dropdown-menu
+
 - **Changed** Version of dependence @semcore/core has been changed to 1.11.
 - **Changed** Improved performance. Removed one component wrapper.
 
 ### @semcore/select
+
 - **Changed** Version of dependence @semcore/core has been changed to 1.11.
 - **Changed** Improved performance. Removed one component wrapper.
 - **Changed** The style processing system has been changed.
 - **Changed** Removed the ability to apply media styles via a plugin babel-plugin-react-semcore.
 
 ### @semcore/date-picker
+
 - **Fixed** Fixed short display date for identity months for Trigger.
 
 ### @semcore/accordion
-  - **Changed** Rewrite code from TS to JS 🧑‍💻
+
+- **Changed** Rewrite code from TS to JS 🧑‍💻
 
 ### @semcore/scroll-area
+
 - **Fixed** Add import type for ResizeObserver
 
 ### @semcore/spin
+
 - **Fixed** Fixed animation
 - **Changed** Rewrite code from TS to JS 👩‍💻
 
 ### @semcore/time-picker
+
 - **Changed** Rewrite code from TS to JS 🧑‍💻
 
 ### @semcore/d3-chart
-  - **Fixed** Fix TS type
+
+- **Fixed** Fix TS type
 
 ### @semcore/neighbor-location
-  - **Added** Added the ability to add a root tag
-  - **Changed** Rewrite code from TS to JS 🧑‍💻
+
+- **Added** Added the ability to add a root tag
+- **Changed** Rewrite code from TS to JS 🧑‍💻
 
 ## [5.0.0] - 2021-04-29
 
