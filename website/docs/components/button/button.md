@@ -144,6 +144,7 @@ It is better to completely paint the button in a branded color when you need to 
 
 To combine the components such as Button, Input, and Select, we have the [NeighborLocation](/utils/neighbor-location) component.
 
+@page button-a11y
 @page button-api
 @page button-code
 @page button-changelog

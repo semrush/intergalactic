@@ -135,6 +135,7 @@ When you click on a checkbox with the `indeterminate` status, all sub-level chec
 
 > 💡 Specify in the prototype or technical documentation what happens to the checkbox after refreshing the page: reset or save.
 
+@page checkbox-a11y
 @page checkbox-api
 @page checkbox-code
 @page checkbox-changelog

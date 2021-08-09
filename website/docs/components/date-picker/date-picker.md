@@ -110,6 +110,7 @@ You may also use the variant with period presets for such calendar.
 
 ![month range picker](static/monthrangepicker_presets.png)
 
+@page date-a11y
 @page date-api
 @page date-code
 @page date-changelog
