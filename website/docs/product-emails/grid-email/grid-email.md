@@ -38,3 +38,4 @@ All interface icons and small illustrations we use in product emails we store in
 
 @page grid-email-code
 @page grid-email-changelog
+@page grid-email-readme

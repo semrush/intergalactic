@@ -77,14 +77,11 @@
       .bg-white {
         background-color: #fff;
       }
-      .bg-green-100 {
+      .bg-lime-100 {
         background-color: #c7fa73;
       }
-      .bg-green-200 {
+      .bg-lime-200 {
         background-color: #84d149;
-      }
-      .bg-green-300 {
-        background-color: #008275;
       }
       .bg-red-100 {
         background-color: #f27387;
@@ -134,11 +131,14 @@
       .bg-purple-300 {
         background-color: #421983;
       }
-      .bg-emerald-100 {
+      .bg-green-100 {
         background-color: #45e0a8;
       }
-      .bg-emerald-200 {
+      .bg-green-200 {
         background-color: #00bc98;
+      }
+      .bg-green-300 {
+        background-color: #008275;
       }
       .bg-pink {
         background-color: #ff7ad1;
@@ -541,35 +541,28 @@
         color: #fff;
       }
       .button-theme-primary-info:hover {
-        background-color: #005fb2;
+        background-color: #005fb2 !important;
       }
       .button-theme-primary-success {
         background-color: #00bc98;
         color: #fff;
       }
       .button-theme-primary-success:hover {
-        background-color: #008275;
+        background-color: #008275 !important;
       }
       .button-theme-primary-warning {
         background-color: #ff622d;
         color: #fff;
       }
       .button-theme-primary-warning:hover {
-        background-color: #b23300;
+        background-color: #b23300 !important;
       }
       .button-theme-primary-danger {
         background-color: #f71939;
         color: #fff;
       }
       .button-theme-primary-danger:hover {
-        background-color: #ac0614;
-      }
-      .button-theme-primary-sellzone {
-        background-color: #6b30c7;
-        color: #fff;
-      }
-      .button-theme-primary-sellzone:hover {
-        background-color: #421983;
+        background-color: #ac0614 !important;
       }
       .button-theme-primary-invert {
         background-color: #fff;
@@ -582,8 +575,8 @@
         color: #171a22;
       }
       .button-theme-secondary-default:hover {
-        border-color: #ff622d;
-        color: #ff622d;
+        border-color: #ff622d !important;
+        color: #ff622d !important;
       }
       .button-theme-secondary-invert {
         border-color: #fff;
@@ -616,14 +609,12 @@
       }
       .notice {
         border-radius: 10px;
-        padding: 24px;
+        padding: 20px 24px;
       }
       .notice_addon-left,
       .notice_addon-right {
         display: inline-block;
-        height: 40px;
         text-align: center;
-        width: 40px;
       }
       .notice_addon-left {
         margin-right: 12px;
@@ -717,14 +708,11 @@
       .text-red-300 {
         color: #b01c3d;
       }
-      .text-green-100 {
+      .text-lime-100 {
         color: #c7fa73;
       }
-      .text-green-200 {
+      .text-lime-200 {
         color: #84d149;
-      }
-      .text-green-300 {
-        color: #008275;
       }
       .text-orange-100 {
         color: #ff9400;
@@ -765,11 +753,14 @@
       .text-gray-400 {
         color: #575c66;
       }
-      .text-emerald-100 {
+      .text-green-100 {
         color: #45e0a8;
       }
-      .text-emerald-200 {
+      .text-green-200 {
         color: #00bc98;
+      }
+      .text-green-300 {
+        color: #008275;
       }
       .text-pink {
         color: #ff7ad1;
@@ -782,13 +773,13 @@
         color: #0082e6;
       }
       .link-theme-default:hover {
-        color: #0070cc;
+        color: #0070cc !important;
       }
       .link-theme-dark {
         color: #575c66;
       }
       .link-theme-dark:hover {
-        color: #171a22;
+        color: #171a22 !important;
       }
     </style>
   </head>
@@ -832,7 +823,19 @@
           margin-right: 16px;
         "
       >
-        ✔️
+        <img
+          width="20"
+          height="15"
+          src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAeCAYAAABe3VzdAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAADbSURBVHgB7dbtCYMwEIDhgy7QERwho3SDOEJH6AjdoCN0BLtBR3CE0AmuF7CYfpnTJN6BeeHwh3A+iEgAlIWIFxoL2iLUnqbDMT3IAXfH7+wOhPM4unQ05sftB0g28eZ8Z5AsgjuBZNpxDU1fcRVXcZvE+aWQoew4HE8SjsZAQqVw4V99MTKCa2FJ+H4GC5GHmXtMdlyw2P1ZzDo0Rna0kFoKsjguBbkaLnjg1EdumThXBMdEHhm4pN9UDuRVFMdEyuJmImVwTKQsLoLsVeBefSD9tQFtDcjbmrgn/14/pHfEYTsAAAAASUVORK5CYII="
+          alt=""
+          style="
+            height: auto;
+            line-height: 100%;
+            outline: none;
+            text-decoration: none;
+            border: 0;
+          "
+        />
       </div>
       <span>Button</span>
       <div
@@ -845,7 +848,19 @@
           margin-left: 16px;
         "
       >
-        🔜️
+        <img
+          width="9"
+          height="14"
+          src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAAcCAYAAABsxO8nAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAACISURBVHgB7dXhCYAgEAVga5JGaIQ2yRFuA92sNnGERngp2Y9ERI8riHpw+EP4EIR3SsUAGPws4VTcRMThiGNhCXJm8zO2QoR8WJh9HRYyfwMjScy0YiSJ6cewvsUq3HWqSvBfXniNrUVIAjF3I/pHLgnFNkkgde0IqfKH1DrKYI6FJNgK5sreAS9G8cFfJpzjAAAAAElFTkSuQmCC"
+          alt=""
+          style="
+            height: auto;
+            line-height: 100%;
+            outline: none;
+            text-decoration: none;
+            border: 0;
+          "
+        />
       </div>
     </a>
   </body>

@@ -83,9 +83,6 @@
       .bg-lime-200 {
         background-color: #84d149;
       }
-      .bg-lime-300 {
-        background-color: #008275;
-      }
       .bg-red-100 {
         background-color: #f27387;
       }
@@ -139,6 +136,9 @@
       }
       .bg-green-200 {
         background-color: #00bc98;
+      }
+      .bg-green-300 {
+        background-color: #008275;
       }
       .bg-pink {
         background-color: #ff7ad1;
@@ -609,14 +609,12 @@
       }
       .notice {
         border-radius: 10px;
-        padding: 24px;
+        padding: 20px 24px;
       }
       .notice_addon-left,
       .notice_addon-right {
         display: inline-block;
-        height: 40px;
         text-align: center;
-        width: 40px;
       }
       .notice_addon-left {
         margin-right: 12px;
@@ -716,9 +714,6 @@
       .text-lime-200 {
         color: #84d149;
       }
-      .text-lime-300 {
-        color: #008275;
-      }
       .text-orange-100 {
         color: #ff9400;
       }
@@ -764,6 +759,9 @@
       .text-green-200 {
         color: #00bc98;
       }
+      .text-green-300 {
+        color: #008275;
+      }
       .text-pink {
         color: #ff7ad1;
       }
@@ -799,12 +797,14 @@
       class="notice notice-theme-primary-success"
       style="
         border-radius: 10px;
-        padding: 24px;
+        padding: 20px 24px;
         background-color: #00bc98;
         color: #fff;
       "
     >
       <table
+        cellpadding="0"
+        cellspacing="0"
         style="
           border-collapse: collapse;
           border-spacing: 0;
@@ -812,7 +812,7 @@
         "
       >
         <tbody>
-          <tr>
+          <tr valign="baseline">
             <td
               class="notice_addon-left"
               style="
@@ -826,12 +826,22 @@
                 -ms-hyphens: auto;
                 hyphens: auto;
                 display: inline-block;
-                height: 40px;
-                width: 40px;
                 margin-right: 12px;
               "
             >
-              ✔️
+              <img
+                width="20"
+                height="15"
+                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAeCAYAAABe3VzdAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAADbSURBVHgB7dbtCYMwEIDhgy7QERwho3SDOEJH6AjdoCN0BLtBR3CE0AmuF7CYfpnTJN6BeeHwh3A+iEgAlIWIFxoL2iLUnqbDMT3IAXfH7+wOhPM4unQ05sftB0g28eZ8Z5AsgjuBZNpxDU1fcRVXcZvE+aWQoew4HE8SjsZAQqVw4V99MTKCa2FJ+H4GC5GHmXtMdlyw2P1ZzDo0Rna0kFoKsjguBbkaLnjg1EdumThXBMdEHhm4pN9UDuRVFMdEyuJmImVwTKQsLoLsVeBefSD9tQFtDcjbmrgn/14/pHfEYTsAAAAASUVORK5CYII="
+                alt=""
+                style="
+                  height: auto;
+                  line-height: 100%;
+                  outline: none;
+                  text-decoration: none;
+                  border: 0;
+                "
+              />
             </td>
             <td
               width="100%"
@@ -880,12 +890,22 @@
                 -ms-hyphens: auto;
                 hyphens: auto;
                 display: inline-block;
-                height: 40px;
-                width: 40px;
                 margin-left: 12px;
               "
             >
-              🔜
+              <img
+                width="9"
+                height="14"
+                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAAcCAYAAABsxO8nAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAACISURBVHgB7dXhCYAgEAVga5JGaIQ2yRFuA92sNnGERngp2Y9ERI8riHpw+EP4EIR3SsUAGPws4VTcRMThiGNhCXJm8zO2QoR8WJh9HRYyfwMjScy0YiSJ6cewvsUq3HWqSvBfXniNrUVIAjF3I/pHLgnFNkkgde0IqfKH1DrKYI6FJNgK5sreAS9G8cFfJpzjAAAAAElFTkSuQmCC"
+                alt=""
+                style="
+                  height: auto;
+                  line-height: 100%;
+                  outline: none;
+                  text-decoration: none;
+                  border: 0;
+                "
+              />
             </td>
           </tr>
         </tbody>
@@ -896,7 +916,7 @@
       class="notice notice-theme-secondary-warning"
       style="
         border-radius: 10px;
-        padding: 24px;
+        padding: 20px 24px;
         background-color: rgba(255, 98, 45, 0.1);
         color: #171a22;
       "
@@ -923,12 +943,23 @@
                 -ms-hyphens: auto;
                 hyphens: auto;
                 display: inline-block;
-                height: 40px;
-                width: 40px;
                 margin-right: 12px;
               "
             >
-              ⚠️️
+              <img
+                width="22"
+                height="20"
+                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACwAAAAoCAYAAACFFRgXAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAJZSURBVHgBzZdNTuNAEIWrHEshSCNlN4lmMeYGsBhNsjM34AbADeAEwAngBhwF74AVRyCsgF0kfgwSuOgOIdiO7VR3VwOfFNmO2vbTc9uvH4AHHvrDjbveIAYPhOCBAOAwQByp3QSECUCY+95gS20i9Yun+6IgCJP2h5fwLlgzWkrbazhOxiCEqMPPvcEefIrVRI9LTzsgiJjDaW8QAeIJFAUDAYw7aXtFymUxhzPAfSiJ1ShHumn7eQ+EEHF46u5l4yCilc7N2QgcEXF46m4ziMcggLPD93/+rbay8IIz9oVo/dfNWQIOODscZiHbuRDReS47CdbBoL4CqwanxK6R7SS4ZeFY6DiXrQXnItiU6PH3f+swsXrp6kKCi0uYWDmsTtoES7EaHSa2kW3s8KKQUO5dlW7wt2bcGInWTMPEeD2sQ6LpsSxfn0b5Y7V6o6px2mW10S/tNhhgNCW0uwFOpoMMiFumnzkjwYR4CMKYhglbsO5p6jFugDxGYcIWrHsaeMLEZZZgh5Dgwu5/LMEtgUUL5x7UjbuLxi0UXNHTfMHqf43BYRXBREnxDhgDE05kNwbHNCQiMMFA4Nypn/1vt2FMNaye5ouG/lc7h1k9zRcNa+ZKh016WpmM6CB/HFh+Yer6X6Xgp/7wwrD6zOhcnxauWbf4YZCoa62X/5ybEhY9zReVkT0n+CtCgktV/ys8Pu1uy7EkvhIV1reu16Ms212+PT/6OJ4Jdu1pviiHyWxKuPY0X5T738Thbw0JBvn+N3H4W0OCQa7/Af50d/PoMAl89DRf6GbyBk8ez1e6JJGmAAAAAElFTkSuQmCC"
+                alt=""
+                style="
+                  height: auto;
+                  line-height: 100%;
+                  outline: none;
+                  text-decoration: none;
+                  border: 0;
+                "
+              />
+              ️
             </td>
             <td
               style="

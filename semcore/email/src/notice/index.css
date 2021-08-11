@@ -1,14 +1,12 @@
 @import '../core/var.css';
 
 .notice {
-  padding: 24px;
+  padding: 20px 24px;
   border-radius: 10px;
 
   &_addon-left,
   &_addon-right {
     display: inline-block;
-    width: 40px;
-    height: 40px;
     text-align: center;
   }
 
