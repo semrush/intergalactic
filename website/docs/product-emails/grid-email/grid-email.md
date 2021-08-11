@@ -1,5 +1,5 @@
 ---
-title: Basic templates
+title: Email templates
 tabName: Guide
 ---
 
@@ -37,5 +37,5 @@ All interface icons and small illustrations we use in product emails we store in
 ![icons](static/icons.png)
 
 @page grid-email-code
-@page grid-email-changelog
 @page grid-email-readme
+@page grid-email-changelog
