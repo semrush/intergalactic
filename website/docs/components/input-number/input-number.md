@@ -1,5 +1,5 @@
 ---
-title: InputNumber
+title: InputNumber & InputRange
 fileSource: input-number
 tabName: Guide
 ---
@@ -79,11 +79,11 @@ In order for the user to enter the correct data and pass validation, in InputNum
 
 ![input validation yes-no examples](static/validation-yes-no.png)
 
-@## Range of values
+@## InputRange
 
 To enter a range of numbers, we need two Inputnumber grouped together, and a bit of magic ✨
 
-> 💡 You can use **"from"** and **"to"** as placeholders in such inputs.
+> 💡 You can use **"From"** and **"To"** as placeholders in such inputs.
 
 | State   | Xl (42px)                                                 | L (32px)                                                 | M (26px)                                                 |
 | ------- | --------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
