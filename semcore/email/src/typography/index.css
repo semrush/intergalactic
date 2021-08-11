@@ -50,9 +50,6 @@
   &-lime-200 {
     color: var(--lime);
   }
-  &-lime-300 {
-    color: var(--dark-lime);
-  }
   &-orange-100 {
     color: var(--light-orange);
   }
@@ -97,6 +94,9 @@
   }
   &-green-200 {
     color: var(--green);
+  }
+  &-green-300 {
+    color: var(--dark-green);
   }
   &-pink {
     color: var(--pink);

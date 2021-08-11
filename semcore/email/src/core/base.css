@@ -81,9 +81,6 @@ a img {
 .bg-lime-200 {
   background-color: var(--lime);
 }
-.bg-lime-300 {
-  background-color: var(--dark-lime);
-}
 .bg-red-100 {
   background-color: var(--light-red);
 }
@@ -137,6 +134,9 @@ a img {
 }
 .bg-green-200 {
   background-color: var(--green);
+}
+.bg-green-300 {
+  background-color: var(--dark-green);
 }
 .bg-pink {
   background-color: var(--pink);

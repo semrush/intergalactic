@@ -39,7 +39,7 @@
       color: var(--white);
       background-color: var(--green);
       &:hover {
-        background-color: var(--dark-lime) !important;
+        background-color: var(--dark-green) !important;
       }
     }
     &-primary-warning {
