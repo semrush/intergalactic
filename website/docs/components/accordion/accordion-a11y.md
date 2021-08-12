@@ -15,6 +15,16 @@ title: A11y
 | `Tab`              | Moves focus to the next focusable element.                                         |
 | `Shift + Tab`      | Moves focus to the previous focusable element.                                     |
 
+@## Roles & attributes
+
+| Role   | Attribute                 | Element  | Usage                                                                                                                                                                                                                       |
+| ------ | ------------------------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|        |                           | `h`      | Element that serves as an accordion header.                                                                                                                                                                                 |
+|        | `aria-expanded="true"`    | `button` | Set to `true` when the Accordion panel is expanded, otherwise set to `false`.                                                                                                                                               |
+|        | `aria-controls="ID"`      | `button` | Points to the `ID` of the panel which the header controls.                                                                                                                                                                  |
+| region |                           | `div`    | Creates a landmark region that contains the currently expanded accordion panel.                                                                                                                                             |
+|        | `aria-labelledby="IDREF"` | `div`    | Defines the accessible name for the region element. References the accordion header button that expands and collapses the region. `region` elements are required to have an accessible name to be identified as a landmark. |
+
 @## Other recommendations
 
 See more accessibility recommendations in the commom [Accessibility guide](/core-principles/a11y/).

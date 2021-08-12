@@ -138,6 +138,8 @@ This component is meant for imitating physical dragging of objects, so it is imp
 - It is important to remember that the short and long clicks are not the same. The long click is used when the draggable object is clickable.
 - To show visually during dragging (the so called `DragEvent`), that the element is dragged - to add the required styles to the element.
 
+<!-- @page drag-and-drop-a11y -->
+
 @page drag-and-drop-api
 @page drag-and-drop-code
 @page drag-and-drop-changelog

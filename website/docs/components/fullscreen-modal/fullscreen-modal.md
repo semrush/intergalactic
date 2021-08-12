@@ -133,6 +133,7 @@ The error states are the same as in [Widget empty states](/components/widget-emp
 
 ![fullscreen modal width](static/fullscreen-modal-limit.png)
 
+@page fullscreen-modal-a11y
 @page fullscreen-modal-api
 @page fullscreen-modal-code
 @page fullscreen-modal-changelog
