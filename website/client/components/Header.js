@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import Button from '@semcore/button';
 import styled from 'styled-components';
 import ResizeObserver from 'resize-observer-polyfill';
@@ -15,7 +14,7 @@ import { gql, useQuery } from '@apollo/client';
 import Error from './Error';
 import Divider from '@semcore/divider';
 import OutsideClick from '@semcore/outside-click';
-import { Flex } from '@semcore/flex-box';
+import Tooltip from '@semcore/tooltip';
 import trottle from '@semcore/utils/lib/rafTrottle';
 
 const HeaderWrapper = styled.header`
@@ -312,6 +311,16 @@ const MobileHeaderMenu = ({ clicked, setClicked, data }) => (
     <OutsideClick onOutsideClick={() => setClicked(false)}>
       <Side>
         <Links>
+          <Tooltip
+            disablePortal
+            title="Available only for the users registered in corporate mail"
+            tag="a"
+            href="https://chrome.google.com/webstore/detail/ui-kit-highlighting/capgemjgihoboclcfdblhbdokpldhemf/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Extension ✨
+          </Tooltip>
           <a href="/internal/roadmap/">Roadmap</a>
           <a href="/internal/release/">Releases</a>
           <a href="https://github.com/semrush/intergalactic" target="_blank">
@@ -411,6 +420,18 @@ function Header(props) {
         <SearchHome placeholder="What brings you here, Sole Survivor?" />
       </Search>
       <Nav>
+        <Item>
+          <Tooltip
+            disablePortal
+            title="Available only for the users registered in corporate mail"
+            tag="a"
+            href="https://chrome.google.com/webstore/detail/ui-kit-highlighting/capgemjgihoboclcfdblhbdokpldhemf/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Extension ✨
+          </Tooltip>
+        </Item>
         <Item>
           <NavLink activeStyle={{ textDecoration: 'underline' }} to="/internal/roadmap/">
             Roadmap
