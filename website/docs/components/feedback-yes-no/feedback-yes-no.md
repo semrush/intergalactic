@@ -106,4 +106,5 @@ It is on the plate only if the report or tool has an alternative form for sendin
 | Appearance of the [red notice](components/notice/) on wrong sending | FeedbackYesNo | Error Send          |             |
 | Click email for communication `You can also send us an email...`    | FeedbackYesNo | Click Email Support |             |
 
+@page feedback-yes-no-a11y
 @page feedback-yes-no-code

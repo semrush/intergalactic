@@ -44,6 +44,7 @@ Example of the mask behavior in the [input field for entering a phone number](/c
 | -------------------------------------------------- | -------------------------------------------------- | ------------------------------------------------- |
 | ![input with mask](static/placeholder-default.png) | ![input with mask in focus](static/mask-focus.png) | ![filled input with mask](static/mask-filled.png) |
 
+@page input-mask-a11y
 @page input-mask-api
 @page input-mask-code
 @page input-mask-changelog

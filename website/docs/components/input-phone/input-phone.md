@@ -74,4 +74,5 @@ It is recommended that the width of the input field for entering the phone numbe
 
 ![input phone default](static/size-yes-no.png)
 
+@page input-phone-a11y
 @page input-phone-code

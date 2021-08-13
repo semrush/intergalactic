@@ -81,7 +81,7 @@ This design helps to reduce errors associated with homing (moving the hand from 
 
 ![slider with invalid input](static/maximum.png)
 
-@## Keyboard control
+@## Keyboard support
 
 - `Tab` moves focus to the slider.
 - Keyboard arrows, '←' and '→', move the slider knob to the step specified in the input.

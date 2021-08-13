@@ -4,10 +4,10 @@ title: Readme
 
 **Perfect way to use:**
 
-- copy project [email](https://github.com/semrush/intergalactic/tree/master/semcore/email) (example: `https://download-directory.github.io`);
+- copy [email project](https://github.com/semrush/intergalactic/tree/master/semcore/email) (example: `https://download-directory.github.io`);
 - install all dependencies `npm i`;
 - create your email according to the following scheme `src/Name_Component/examples/any_name.html`;
-- css, if necessary, you can place here `src/Name_Component/index.css`.
+- if necessary you can place CSS here `src/Name_Component/index.css`.
 
 **Including `@semcore/email` styles:**
 

@@ -68,6 +68,7 @@ It is not recommended to use dropdown inside dropdown.
 
 ![dropdown-trigger yes-no](static/dropdown-trigger-yes-no.png)
 
+@page dropdown-a11y
 @page dropdown-api
 @page dropdown-code
 @page dropdown-changelog

@@ -250,6 +250,7 @@ Nested groups are hidden with a delay of 0.3 seconds:
 
 If you select a nested item, the trigger contains only its name, not the name of the parent item.
 
+@page dropdown-menu-a11y
 @page dropdown-menu-api
 @page dropdown-menu-code
 @page dropdown-menu-changelog

@@ -8,7 +8,7 @@ title: A11y
 | ----- | ------------------------ |
 | `Esc` | Closes the modal window. |
 
-See detailed information about the keyboard support for the all buttons, input, etc in the [Keyboard navigation guide](/core-principles/a11y/a11y-keyboard/).
+See more about the focus behavior in the various dropdown cases in the [Keyboard navigation guide](/core-principles/a11y/a11y-keyboard/#a9cbfb).
 
 @## Other recommendations
 

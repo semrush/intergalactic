@@ -40,7 +40,7 @@ The options list opens in combobox when input become focused.
 
 ![combobox](static/combobox-example.png)
 
-### Keyboard control
+### Keyboard support
 
 - `Tab` shifts between the page interactive elements, including comboboxes;
 - `Arrows` shifts between the items.

@@ -33,7 +33,7 @@ In the active filter, the selected value/values are completely displayed or hidd
 
 ![filter-trigger](static/counter-or-not.png)
 
-@## Indents between filter triggers
+@## Margins between filter triggers
 
 The indents duplicate the [indents between the buttons](http://i.semrush.com/components/button/).
 
@@ -43,7 +43,7 @@ The indents duplicate the [indents between the buttons](http://i.semrush.com/com
 | L (32px)  | ![filter-trigger margins](static/sizes-l.png)  |
 | M (26px)  | ![filter-trigger margins](static/sizes-m.png)  |
 
-@## Interaction
+@## States and interaction
 
 ### Filter trigger with value
 
@@ -106,6 +106,7 @@ If the value is complicated, it is possible to display only `{Filter Name}` to m
 
 You can see more details about writing numbers and periods in English in the [text guide provided by Larisa](https://docs.google.com/document/d/1HZHNKEW-5k0PqvgDaIWBgu8NWyRr3rM4xCm-725PoUU/edit#heading=h.iue5c2168b0n).
 
+@page filter-trigger-a11y
 @page filter-trigger-api
 @page filter-trigger-code
 @page filter-trigger-changelog
