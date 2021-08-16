@@ -11,6 +11,7 @@ Make sure that it's possible to interact with the interface using a keyboard onl
 - Avoid overriding hotkeys. For example, don't override `Control+C` (or `Command+C` on Mac).
 - Use HTML specification and always include attributes and roles.
 - When opening a modal window, focus should move to the window, and then return to the page.
+- The user expects that the focus between elements will switch in a logical order, usually from left to right and from top to bottom.
 
 @## Basic rules
 
@@ -126,3 +127,13 @@ Particular cases about focus behavior when working with dropdown are described b
 @## Focus, onClick and dropdown in the dropdown
 
 A dropdown inside another dropdown has the same situation as in the above case.
+
+@## Resources
+
+- [Meaningful Sequence ›](https://www.w3.org/TR/WCAG21/#meaningful-sequence)
+- [Keyboard Accessible ›](https://www.w3.org/TR/WCAG21/#keyboard-accessible)
+- [Keyboard ›](https://www.w3.org/TR/WCAG21/#keyboard)
+- [No Keyboard Trap ›](https://www.w3.org/TR/WCAG21/#no-keyboard-trap)
+- [Focus Order ›](https://www.w3.org/TR/WCAG21/#focus-order)
+- [Focus Visible ›](https://www.w3.org/TR/WCAG21/#focus-visible)
+- [On Focus ›](https://www.w3.org/TR/WCAG21/#on-focus)

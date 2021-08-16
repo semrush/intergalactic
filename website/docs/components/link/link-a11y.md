@@ -39,7 +39,7 @@ title: A11y
 
 @## Other recommendations
 
-See more accessibility recommendations for the links in the common [Accessibility guide](/core-principles/a11y/a11y-keyboard/#a55218).
+See more accessibility recommendations for the links in the common [Accessibility guide](/core-principles/a11y/a11y-keyboard/#ae2a0e).
 
 @## Resources
 

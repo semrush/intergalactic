@@ -2,10 +2,13 @@
 title: A11y
 ---
 
-@## Accessibility recommendations
-
-- The user should be able to open/close the accordion section using the keyboard.
-- All focusable elements in the accordion must be included in the page `Tab` sequence.
+> ### General recommendations
+>
+> - Buttons are used as the accordions so that they are tab-able by keyboard users and accessible to screen readers.
+> - Each accordion button and realted content has a unique `id` associated with its aria-controls.
+> - Each button has an aria-expanded attribute on it that is toggled between `true` and `false`. If `aria-expanded="true"`, the content associated with it is shown, and if `aria-expanded="false"` the content is hidden.
+>
+> [A11y style guide](https://a11y-style-guide.com/style-guide/section-navigation.html)
 
 @## Keyboard support
 
@@ -31,4 +34,5 @@ See more accessibility recommendations in the common [Accessibility guide](/core
 
 @## Resources
 
-[W3 accordion example and documentation](https://www.w3.org/TR/wai-aria-practices-1.1/examples/accordion/accordion.html) has detailed information about the accordion accessible behavior.
+- [W3 accordion example and documentation](https://www.w3.org/TR/wai-aria-practices-1.1/examples/accordion/accordion.html) has detailed information about the accordion accessible behavior.
+- [A11y style guide](https://a11y-style-guide.com/style-guide/section-navigation.html) gives core recommendations for the accessible components.
