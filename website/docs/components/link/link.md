@@ -88,7 +88,7 @@ Always add quotation marks inside the link.
 
 ![link-name](static/name-example-4.png)
 
-> 💡 If a sentence ends with an e-mail, URL, or domain that is a link, then we do not put a dot at the end of the sentence. Users often copy the address and may accidentally copy the dot as well.
+> 💡 If a sentence ends with an email, URL, or domain that is a link, then we do not put a dot at the end of the sentence. Users often copy the address and may accidentally copy the dot as well.
 
 ![link-name](static/name-example-5.png)
 
