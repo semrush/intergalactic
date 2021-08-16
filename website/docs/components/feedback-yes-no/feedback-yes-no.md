@@ -100,8 +100,8 @@ It is on the plate only if the report or tool has an alternative form for sendin
 | Closing by clicking the `Close` icon                                | FeedbackYesNo | Close               |             |
 | Clicked `Ask me later`                                              | FeedbackYesNo | Click Ask           |             |
 | Appearance of an error in the input for the comment text            | FeedbackYesNo | No valid Comment    |             |
-| Appearance of an error in the input for the e-mail                  | FeedbackYesNo | No valid Email      |             |
-| Error of empty e-mail                                               | FeedbackYesNo | Empty Email         |             |
+| Appearance of an error in the input for the email                   | FeedbackYesNo | No valid Email      |             |
+| Error of empty email                                                | FeedbackYesNo | Empty Email         |             |
 | Error of empty comment                                              | FeedbackYesNo | Empty Comment       |             |
 | Appearance of the [red notice](components/notice/) on wrong sending | FeedbackYesNo | Error Send          |             |
 | Click email for communication `You can also send us an email...`    | FeedbackYesNo | Click Email Support |             |
