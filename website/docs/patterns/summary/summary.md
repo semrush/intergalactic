@@ -57,7 +57,7 @@ If the metric consists of several others, so use this spacings:
 - link;
 - additional text (eg., no changes);
 - tag;
-- etc
+- etc.
 
 @## Styles
 

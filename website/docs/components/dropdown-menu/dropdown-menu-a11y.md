@@ -8,4 +8,4 @@ See detailed information for various cases in the [Keyboard navigation guide](/c
 
 @## Other recommendations
 
-See more accessibility recommendations in the commom [Accessibility guide](/core-principles/a11y/).
+See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/).

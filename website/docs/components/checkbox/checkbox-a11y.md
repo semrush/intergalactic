@@ -18,7 +18,7 @@ title: A11y
 
 @## Other recommendations
 
-See more accessibility recommendations in the commom [Accessibility guide](/core-principles/a11y/).
+See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/).
 
 @## Resources
 

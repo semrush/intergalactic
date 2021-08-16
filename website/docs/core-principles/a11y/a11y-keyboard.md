@@ -30,7 +30,7 @@ Keyboard navigation should be performed sequentially across all interactive elem
 - The focus inside groups of controls is consistent. After the last control in the group, the focus should move to the next control in the interface.
 - If the control has a tooltip in the `hover` state, it also appears on focus using `Tab`.
 
-@## Keyboard support for button, link, input, etc
+@## Keyboard support for button, link, input, etc.
 
 ### Link и hint link
 

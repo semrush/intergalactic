@@ -12,7 +12,7 @@ See more about the focus behavior in the various dropdown cases in the [Keyboard
 
 @## Other recommendations
 
-See more accessibility recommendations in the commom [Accessibility guide](/core-principles/a11y/).
+See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/).
 
 @## Resources
 

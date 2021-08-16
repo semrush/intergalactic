@@ -9,11 +9,11 @@ title: A11y
 
 @## Keyboard support
 
-| Key                | Function                                                                           |
-| ------------------ | ---------------------------------------------------------------------------------- |
-| `Space` or `Enter` | When focus is on the accordion header of a collapsed section, expands the section. |
-| `Tab`              | Moves focus to the next focusable element.                                         |
-| `Shift + Tab`      | Moves focus to the previous focusable element.                                     |
+| Key              | Function                                                                           |
+| ---------------- | ---------------------------------------------------------------------------------- |
+| `Space`, `Enter` | When focus is on the accordion header of a collapsed section, expands the section. |
+| `Tab`            | Moves focus to the next focusable element.                                         |
+| `Shift + Tab`    | Moves focus to the previous focusable element.                                     |
 
 @## Roles & attributes
 
@@ -27,7 +27,7 @@ title: A11y
 
 @## Other recommendations
 
-See more accessibility recommendations in the commom [Accessibility guide](/core-principles/a11y/).
+See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/).
 
 @## Resources
 

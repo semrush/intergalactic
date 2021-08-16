@@ -8,4 +8,4 @@ See detailed information about the various cases in the [Keyboard navigation gui
 
 @## Other recommendations
 
-See more accessibility recommendations in the commom [Accessibility guide](/core-principles/a11y/).
+See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/).

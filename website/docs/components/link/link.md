@@ -72,7 +72,11 @@ Don't use link styles for the text that doesn't lead to another page or perform 
 
 @## Link name and click zone
 
-If a click on a link should lead the user from the page — transition to another page, a modal window, then the name of the link should make it clearly indicate the page or modal window.
+> _Link sizes should be generous. Large link sizes make it easier for users with low coordination or on mobile devices to activate links. Link size consideration is most important for links that are not contained within blocks or paragraphs of text, such as call to action links. Links should be at least 44px wide and 22px tall._
+>
+> _Links should not be too large on mobile. Very large links that take up much of the viewport can be accidently activated, such as when a user touches the screen to scroll up or down._
+>
+> [Yale University article about the accessible links](https://usability.yale.edu/web-accessibility/articles/links#other-design-considerations)
 
 ![link-name](static/name-example-1.png)
 
@@ -155,6 +159,7 @@ The use of external links shall reduced to minimum so as not to lead users away 
 - When hovering over the icon it shall darken by 8% (use the `interactive` property for the icon color) 😏
 - Use the link styles if you need to select an icon for going to an external resource.
 
+@page link-a11y
 @page link-api
 @page link-code
 @page link-changelog

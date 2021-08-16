@@ -142,6 +142,7 @@ A notification that is designed for various events, holidays, etc. It is possibl
 - It closes automatically when the connection is restored. It cannot be closed by the user.
 - There can be two options: for the interfaces that can monitor the network connection themselves use a notification without a button; for the interfaces that can't monitor the network connection themselves and require page refresh use an alert notification with the **Reload the page** button.
 
+@page notice-bubble-a11y
 @page notice-bubble-api
 @page notice-bubble-example
 @page notice-bubble-changelog
