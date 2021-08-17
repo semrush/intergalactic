@@ -62,10 +62,6 @@ class Value extends Component {
     step: 1,
   };
 
-  state = {
-    reactKey: undefined,
-  };
-
   uncontrolledProps() {
     return {
       value: null,
@@ -82,7 +78,8 @@ class Value extends Component {
   handleValidation = (e) => {
     const { value, min, max, step } = this.asProps;
     if (Number.isNaN(e.currentTarget.valueAsNumber)) {
-      this.setState({ reactKey: Math.random() });
+      e.currentTarget.value = '';
+      this.handlers.value('', e);
     } else {
       let numberValue = parseValueWithMinMax(Number.parseFloat(value), min, max);
       const r = this.roundRemainder(numberValue % step, step);
@@ -107,7 +104,6 @@ class Value extends Component {
     return sstyled(styles)(
       <SValue
         render={Input.Value}
-        key={this.state.reactKey}
         type="number"
         autoComplete="off"
         onBlur={this.handleValidation}
