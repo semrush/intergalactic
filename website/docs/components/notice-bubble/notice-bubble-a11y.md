@@ -20,6 +20,8 @@ title: A11y
 
 @## Roles & attributes
 
+The list below will help you to keep in mind the necessary roles and attributes to make our components fully accessible in your interfaces.
+
 | Role        | Attribute                  | Element | Usage                                                                                                                                                        |
 | ----------- | -------------------------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | alertdialog |                            | `div`   | Identifies the element that serves as the alert dialog container.                                                                                            |
@@ -28,10 +30,10 @@ title: A11y
 |             | `aria-modal="true"`        | `div`   | Tells assistive technologies that the windows underneath the current alert dialog are not available for interaction (inert).                                 |
 | alert       |                            | `div`   | Identifies the element that serves as the alert notification.                                                                                                |
 
-@## Other recommendations
-
-See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/).
-
 @## Resources
 
 [W3 modal alert dialog example](https://www.w3.org/TR/wai-aria-practices-1.1/examples/dialog-modal/alertdialog.html) has detailed information about the alerts accessible behavior.
+
+@## Other recommendations
+
+See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/).

@@ -121,6 +121,7 @@ In long lists with values (for example, in the list of countries), the values se
 
 ![multiselect limit](static/multiselect-limit.png)
 
+@page select-a11y
 @page select-api
 @page select-code
 @page select-changelog

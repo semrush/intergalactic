@@ -2,9 +2,9 @@
 title: A11y
 ---
 
-> Make sure that the user can easily read the text on the page.
+@## General recommendations
 
-@## Accessibility recommendations
+Make sure that the user can easily read the text on the page.
 
 - **Use a font size sufficient for comfortable reading**. The minimal font size for the body text is 16 pixels, but this size may vary depending on the font style.
 
@@ -23,6 +23,23 @@ title: A11y
   hierarchy**. Make sure that the headings differ from the main text in size, thickness, style, and color. This will ensure visual consistency and readability with the main text.
 
 - **Determine the height of the text for optimal reading**. The larger the font size and line thickness, the larger the spacing should be. For the body text, the spacing to font size ratio should be around 1.4–1.65, for headings — 1–1.3, for captions and short lines — around 1.3. Lines that are spaced too tightly or too loosely make text less readable, so finding a new line becomes more difficult.
+
+@## Headings
+
+- Navigating through the `<h1>` and `<h2>` give a user an overview of a page and how its content is structured. The `<h3>` through `<h6>` elements provide a quick understanding of the details in each section.
+- Heading tags should be in order. That means an `<h1>` is followed by an `<h2>`, an `<h2>` is followed by a `<h2>` or `<h3>` and so on. It is ok to skip heading levels when going up in order (ex. `<h4>` to `<h1>`).
+- Keep heading tags consistent. Inconsistently implementing headings can create confusion and frustration for users using assistive technologies.
+- Do not style text to give the visual appearance of headings — use actual heading tags.
+
+_Source — [A11y style guide](https://a11y-style-guide.com/style-guide/section-structure.html#kssref-structure-headings)_
+
+@## List
+
+- Creating accessible lists is fairly straight-forward and easy if you use the correct mark-up.
+- Use `ol` markup to group ordered lists; use `ul` markup to group unordered lists; and use `dl` markup to group terms with their definitions.
+- Simple comma-separated lists may not need list markup, but longer lists or groups of links should have it.
+
+_Source — [A11y style guide](https://a11y-style-guide.com/style-guide/section-structure.html#kssref-structure-lists)_
 
 @## Resources
 

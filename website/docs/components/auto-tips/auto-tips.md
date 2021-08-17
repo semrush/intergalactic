@@ -105,4 +105,5 @@ Example of using `AutoComplete` (domain input, country selection etc.).
 
 ![autocomplete](static/autocomplete.png)
 
+@page auto-tips-a11y
 @page auto-tips-code

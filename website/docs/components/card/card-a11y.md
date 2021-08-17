@@ -12,10 +12,10 @@ title: A11y
 >
 > [A11y style guide](https://a11y-style-guide.com/style-guide/section-cards.html)
 
+@## Resources
+
+[A11y style guide](https://a11y-style-guide.com/style-guide/section-cards.html) gives core recommendations for the accessible card components.
+
 @## Other recommendations
 
 See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/).
-
-@## Resources
-
-[A11y style guide](https://a11y-style-guide.com/style-guide/section-cards.html) gives core recommendations for the accessible components.

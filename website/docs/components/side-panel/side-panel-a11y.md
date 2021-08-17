@@ -8,9 +8,9 @@ title: A11y
 | ------------- | ---------------------------------------------- |
 | `Tab`         | Moves focus to the next focusable element.     |
 | `Shift + Tab` | Moves focus to the previous focusable element. |
-| `Esc`         | Closes the modal window.                       |
+| `Esc`         | Closes the side panel.                         |
 
-See more about the focus behavior in the various dropdown cases in the [Keyboard navigation guide](/core-principles/a11y/a11y-keyboard/#a9cbfb).
+See detailed information about the keyboard support for the all buttons, input, etc., in the [Keyboard navigation guide](/core-principles/a11y/a11y-keyboard/).
 
 @## Resources
 

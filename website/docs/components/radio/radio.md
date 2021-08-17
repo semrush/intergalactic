@@ -61,6 +61,7 @@ If the radio button is `disabled`, the text label and related words must also ha
 - Specify in the prototype or technical documentation what happens to the radio button after refreshing the page: reset or save.
 - This control is most often used in lists of settings. In filters, we recommend using the [Pills](/components/pills/) component instead of radio buttons.
 
+@page radio-a11y
 @page radio-api
 @page radio-code
 @page radio-changelog

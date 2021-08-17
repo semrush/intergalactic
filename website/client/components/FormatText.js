@@ -214,13 +214,13 @@ const FormatText = styled.div`
 
   li > ol {
     margin-left: 1.5rem;
-    margin-bottom: calc(1.5rem / 4);
+    margin-bottom: 1.5rem;
     margin-top: calc(1.5rem / 4);
   }
 
   li > ul {
     margin-left: 1.5rem;
-    margin-bottom: calc(1.5rem / 4);
+    margin-bottom: 1.5rem;
     margin-top: calc(1.5rem / 4);
   }
 

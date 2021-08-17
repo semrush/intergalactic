@@ -109,6 +109,7 @@ To keep the labels of such input visible when interacting with it, place them ei
 
 ![slider on the mobile](static/mobile.png)
 
+@page slider-a11y
 @page slider-api
 @page slider-code
 @page slider-changelog

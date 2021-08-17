@@ -104,6 +104,7 @@ The only case when TabLine is not used to navigate through content groups is whe
 
 The TabLine is always on top of the switched content. The indents between them and other controls or content should be multiples of 4.
 
+@page tab-line-a11y
 @page tab-line-api
 @page tab-line-code
 @page tab-line-changelog

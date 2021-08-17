@@ -72,6 +72,7 @@ Styles of the text area in different states correspond to the styles of the inpu
 - Use the text area as intended. It is suitable when the user needs to enter a large amount of data into a single area. If the user needs to enter 1-3 words, use [Input](/components/input/).
 - Name the area in such a way that the user understands what data should be entered at first glance.
 
+@page textarea-a11y
 @page textarea-api
 @page textarea-code
 @page textarea-changelog

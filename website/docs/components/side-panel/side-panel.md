@@ -182,6 +182,7 @@ If an error occurs during data loading, we show the error status in the center w
 
 ![error example](static/error.png)
 
+@page side-panel-a11y
 @page side-panel-api
 @page side-panel-code
 @page side-panel-changelog

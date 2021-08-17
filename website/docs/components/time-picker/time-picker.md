@@ -86,6 +86,7 @@ Upon moving to the button using Tab, the button is highlighted with `focus`.
 
 The inputs width should be such as the scroll could be put into the dropdown list of the combobox, and it would be comfortable for the user to click the list items.
 
+@page time-picker-a11y
 @page time-picker-api
 @page time-picker-code
 @page time-picker-changelog

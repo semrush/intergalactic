@@ -218,6 +218,7 @@ If the table contains a small amount of data, we show the pagination status for 
 
 About table states you can read in a particular notable document [Table states](/table-group/table-states/) ✨
 
+@page table-a11y
 @page table-api
 @page table-code
 @page table-changelog

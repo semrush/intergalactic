@@ -20,6 +20,8 @@ title: A11y
 
 @## Roles & attributes
 
+The list below will help you to keep in mind the necessary roles and attributes to make our components fully accessible in your interfaces.
+
 | Role   | Attribute              | Element    | Usage                                                                                                                    |
 | ------ | ---------------------- | ---------- | ------------------------------------------------------------------------------------------------------------------------ |
 | button |                        | `div`, `a` | Identifies the element as a button widget. Accessible name for the button is defined by the text content of the element. |
@@ -27,11 +29,11 @@ title: A11y
 |        | `aria-pressed="false"` | `a`        | Identifies the button as a toggle button. Indicates the toggle button is not pressed.                                    |
 |        | `aria-pressed="true"`  | `a`        | Identifies the button as a toggle button. Indicates the toggle button is pressed.                                        |
 
-@## Other recommendations
-
-See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/).
-
 @## Resources
 
 - [W3 button examples](https://www.w3.org/TR/wai-aria-practices-1.1/examples/button/button.html) has detailed information about the accordion accessible behavior.
 - [A11y style guide](https://a11y-style-guide.com/style-guide/section-general.html) gives core recommendations for the accessible components.
+
+@## Other recommendations
+
+See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/).

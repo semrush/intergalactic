@@ -159,6 +159,7 @@ Use tags for visual marking of objects, fast recognition and navigation.
 
 ![table](static/@1xtag-table-pic.png)
 
+@page tag-a11y
 @page tag-api
 @page tag-code
 @page tag-changelog

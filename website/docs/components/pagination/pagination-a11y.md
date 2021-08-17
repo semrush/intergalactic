@@ -19,6 +19,8 @@ See detailed information about the keyboard support for the buttons, links, inpu
 
 @## Roles & attributes
 
+The list below will help you to keep in mind the necessary roles and attributes to make our components fully accessible in your interfaces.
+
 | Role       | Attribute                 | Element | Usage                                                                                                                                                                                                        |
 | ---------- | ------------------------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 |            |                           | `nav`   | In order to let AT users recognize that there is a pagination, we should wrap the links in a `<nav>` element.                                                                                                |
@@ -27,10 +29,10 @@ See detailed information about the keyboard support for the buttons, links, inpu
 |            | `aria-current="page"`     | `nav`   | Points to the current page. This will tell AT that the focused link is pointing to the current page.                                                                                                         |
 |            | `aria-disabled="true"`    | `nav`   | Tells the link is disabled.                                                                                                                                                                                  |
 
-@## Other recommendations
-
-See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/).
-
 @## Resources
 
 [A11y style guide documentation](https://a11y-style-guide.com/style-guide/section-navigation.html) has detailed information about the accessible pagination best practices.
+
+@## Other recommendations
+
+See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/).
