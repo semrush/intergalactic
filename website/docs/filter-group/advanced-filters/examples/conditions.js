@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Dropdown from '@semcore/dropdown';
 import Select from '@semcore/select';
 import Input from '@semcore/input';
@@ -29,9 +29,24 @@ const FlexOverflow = styled(Flex)`
   overflow: auto;
 `;
 
+const DropdownPopper = styled(Dropdown.Popper)`
+  overflow: hidden;
+`;
+
 export default () => {
   const [filters, setFilters] = useState(0);
   const [visible, updateVisible] = useState(false);
+  const buttonRef = useRef(null);
+
+  useEffect(() => {
+    if (buttonRef.current) {
+      buttonRef.current.scrollIntoView({
+        behavior: 'smooth',
+        block: 'nearest',
+      });
+    }
+  }, [filters]);
+
   const clearAll = () => setFilters(0);
   const addFilter = () => {
     setFilters(filters + 1);
@@ -54,13 +69,13 @@ export default () => {
         <FilterTrigger.Text>Advanced filters</FilterTrigger.Text>
         {!!filters && <FilterTrigger.Counter>{filters}</FilterTrigger.Counter>}
       </Dropdown.Trigger>
-      <Dropdown.Popper>
+      <DropdownPopper>
         <FlexOverflow direction="column" p={4} alignItems="flex-start">
           <Filter mb={4} closable={filters} onClose={handleCloseFilter} />
           {[...new Array(filters)].map((_, ind) => (
             <Filter key={ind} mb={4} closable onClose={handleCloseFilter} />
           ))}
-          <Button use="tertiary" onClick={addFilter}>
+          <Button use="tertiary" onClick={addFilter} ref={buttonRef}>
             <Button.Addon tag={MathPlusXS} />
             <Button.Text>Add condition</Button.Text>
           </Button>
@@ -74,7 +89,7 @@ export default () => {
             Clear all
           </Button>
         </Flex>
-      </Dropdown.Popper>
+      </DropdownPopper>
     </Dropdown>
   );
 };
