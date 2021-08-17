@@ -29,20 +29,20 @@ The progress bar consists from (surprise!):
 
 In our interface, the progress bar is available in the following three sizes.
 
-| Size | Appearance             | Styles                              | Example of use                                                                                                                                                               |
-| ---- | ---------------------- | ----------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| L    | ![](static/l-size.png) | `height: 12px; border-radius: 6px;` | In modal windows, on the start screen when launching the tool.                                                                                                               |
-| M    | ![](static/m-size.png) | `height: 8px; border-radius: 4px;`  | Inside the product.                                                                                                                                                          |
-| S    | ![](static/s-size.png) | `height: 4px; border-radius: 2px;`  | In widgets inside reports/tools. When they replace the button (for example, restart audit). When uploading multiple files, when you need to display the status of each file. |
+| Size | Appearance                               | Styles                              | Example of use                                                                                                                                                               |
+| ---- | ---------------------------------------- | ----------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| L    | ![L sise progressbar](static/l-size.png) | `height: 12px; border-radius: 6px;` | In modal windows, on the start screen when launching the tool.                                                                                                               |
+| M    | ![M size progressbar](static/m-size.png) | `height: 8px; border-radius: 4px;`  | Inside the product.                                                                                                                                                          |
+| S    | ![S size progressbar](static/s-size.png) | `height: 4px; border-radius: 2px;`  | In widgets inside reports/tools. When they replace the button (for example, restart audit). When uploading multiple files, when you need to display the status of each file. |
 
 ### Themes and styles
 
 The progress bar has two themes to use: light and dark background. Both themes use the `$green` color with a pattern to display progress.
 
-| Theme  | Appearance                 | Styles                                |
-| ------ | -------------------------- | ------------------------------------- |
-| invert | ![](static/l-size.png)     | `background: rgba(100,120,126,0.15);` |
-| dark   | ![](static/dark-theme.png) | `background: rgba(255,255,255,0.2);`  |
+| Theme  | Appearance                                            | Styles                                |
+| ------ | ----------------------------------------------------- | ------------------------------------- |
+| invert | ![progressbar with invert theme](static/l-size.png)   | `background: rgba(100,120,126,0.15);` |
+| dark   | ![progressbar with dark theme](static/dark-theme.png) | `background: rgba(255,255,255,0.2);`  |
 
 @## Interaction
 
@@ -52,15 +52,15 @@ The progress bar has three states:
 
 - 0% – the progress bar is gray with animation.
 
-![](static/loading-gray.png)
+![progressbar without progress](static/loading-gray.png)
 
 - 11-99% – the progress bar is partially filled and the pattern is animated.
 
-![](static/l-size.png)
+![progressbar with the "in progress" state](static/l-size.png)
 
 - 100% – the progress bar is static, green.
 
-![](static/loaded.png)
+![progressbar with the loaded state](static/loaded.png)
 
 The progress bar shall not remain in the 100% state – once the process is completed, either a message about the success of the process shall be displayed, or you should offer the user further actions.
 
@@ -72,9 +72,9 @@ Depending on the usage context, the counter may be above or near the progress ba
 
 **The margins between the counter and the progress bar shall be a multiple of 4**.
 
-![](static/progressbar-counter.png)
+![progressbar with the counter](static/progressbar-counter.png)
 
-![](static/progressbar-counter-above.png)
+![progressbar with the counter](static/progressbar-counter-above.png)
 
 ### Animation
 
@@ -105,7 +105,7 @@ Progress to a value is always animated with `ease-in`.
 
 When scrolling, the progress bar can be fixed at the upper margin. In this case, it is fixed above all components, including filters, table headers, etc.
 
-![](static/progressbar-sticky.png)
+![fixed progressbar](static/progressbar-sticky.png)
 
 > 💡 This component is one of the components that displays the loading and response to user actions in the interface. For General rules for such components, see [Loading patterns](/patterns/loading-states/).
 
