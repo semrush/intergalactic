@@ -29,10 +29,6 @@ const FlexOverflow = styled(Flex)`
   overflow: auto;
 `;
 
-const DropdownPopper = styled(Dropdown.Popper)`
-  overflow: hidden;
-`;
-
 export default () => {
   const [filters, setFilters] = useState(0);
   const [visible, updateVisible] = useState(false);
@@ -69,7 +65,7 @@ export default () => {
         <FilterTrigger.Text>Advanced filters</FilterTrigger.Text>
         {!!filters && <FilterTrigger.Counter>{filters}</FilterTrigger.Counter>}
       </Dropdown.Trigger>
-      <DropdownPopper>
+      <Dropdown.Popper>
         <FlexOverflow direction="column" p={4} alignItems="flex-start">
           <Filter mb={4} closable={filters} onClose={handleCloseFilter} />
           {[...new Array(filters)].map((_, ind) => (
@@ -89,7 +85,7 @@ export default () => {
             Clear all
           </Button>
         </Flex>
-      </DropdownPopper>
+      </Dropdown.Popper>
     </Dropdown>
   );
 };
