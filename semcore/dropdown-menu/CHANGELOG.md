@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.3.6] - 2021-08-18
+
+### Fixed
+
+- Fixed typo in class names.
+
 ## [2.3.5] - 2021-07-06
 
 ### Changed
