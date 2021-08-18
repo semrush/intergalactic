@@ -78,7 +78,8 @@ describe('DropdownMenu', () => {
       <DropdownMenu>
         <DropdownMenu.List>
           <DropdownMenu.Item>
-            <DropdownMenu.Item.Addon mr={2}>Addon</DropdownMenu.Item.Addon>
+            <DropdownMenu.Item.Addon>Addon</DropdownMenu.Item.Addon>
+            <DropdownMenu.Item.Addon mr={2}>One more addon</DropdownMenu.Item.Addon>
             Text
           </DropdownMenu.Item>
         </DropdownMenu.List>
