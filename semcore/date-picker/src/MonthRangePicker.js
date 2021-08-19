@@ -8,9 +8,9 @@ import RangePickerAbstract from './components/RangePickerAbstract';
 
 class MonthRangePickerRoot extends RangePickerAbstract {
   static displayName = 'MonthRangePicker';
-  static defaultProps = () => {
+  static defaultProps = (props) => {
     return {
-      ...RangePickerAbstract.defaultProps,
+      ...RangePickerAbstract.defaultProps(props),
       children: (
         <>
           <MonthRangePicker.Trigger />

@@ -8,8 +8,8 @@ import PickerAbstract from './components/PickerAbstract';
 class MonthPickerRoot extends PickerAbstract {
   static displayName = 'MonthPicker';
 
-  static defaultProps = () => ({
-    ...PickerAbstract.defaultProps,
+  static defaultProps = (props) => ({
+    ...PickerAbstract.defaultProps(props),
     children: (
       <>
         <MonthPicker.Trigger />
