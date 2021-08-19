@@ -1,5 +1,5 @@
 ---
-title: Product emails library
+title: Product emails
 ---
 
 @page grid-email
