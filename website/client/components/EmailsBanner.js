@@ -69,7 +69,9 @@ function BannerBlock() {
         <Box>
           <Header>Product emails library</Header>
         </Box>
-        <Box mt={2}>All you need for making your product newsletter cool and consistent.</Box>
+        <Box mt={2}>
+          All you need for making your product newsletter cool, consistent and adaptive.
+        </Box>
         <Box mt={2} mb={8}>
           <Link size={300} color="#171A22" href="/product-emails/grid-email/">
             <Link.Text>Dive into examples</Link.Text>
