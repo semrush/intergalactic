@@ -15,7 +15,7 @@ let data = [
     traffic: '< 0.01',
     url: 'https://ebay.com',
     'last update': new Intl.DateTimeFormat('en-US', { year: 'numeric', era: 'long' }).format(
-      new Date('12.11.2019'),
+      new Date('2019/11/12'),
     ),
   },
 ];
