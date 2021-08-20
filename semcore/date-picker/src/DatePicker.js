@@ -13,8 +13,8 @@ import { getLocaleDate } from './utils/formatDate';
 export class DatePickerRoot extends PickerAbstract {
   static displayName = 'DatePicker';
 
-  static defaultProps = () => ({
-    ...PickerAbstract.defaultProps,
+  static defaultProps = (props) => ({
+    ...PickerAbstract.defaultProps(props),
     children: (
       <>
         <DatePicker.Trigger />

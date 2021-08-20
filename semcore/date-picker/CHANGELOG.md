@@ -2,6 +2,13 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.5.1] - 2021-08-19
+
+### Fixed
+
+- [TS] added types for default values.
+- Fixed set `displayedPeriod` for family pickers.
+
 ## [2.5.0] - 2021-07-13
 
 ### Fixed

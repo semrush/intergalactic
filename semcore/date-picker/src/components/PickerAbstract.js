@@ -22,19 +22,23 @@ const i18n = { de, en, es, fr, it, ja, ru, zh, pt, ko, vi };
 
 const INTERACTION_TAGS = ['INPUT'];
 
+const defaultDisplayedPeriod = new Date(new Date().setHours(0, 0, 0, 0));
+
 class PickerAbstract extends Component {
   static displayName = 'DatePicker';
   static style = style;
-  static defaultProps = {
-    i18n,
-    locale: 'en',
-    defaultDisplayedPeriod: new Date(new Date().setHours(0, 0, 0, 0)),
-    defaultValue: null,
-    defaultVisible: false,
-    defaultHighlighted: [],
-    disabled: [],
-    size: 'm',
-  };
+  static defaultProps({ value, defaultValue }) {
+    return {
+      i18n,
+      locale: 'en',
+      defaultDisplayedPeriod: value || defaultValue || defaultDisplayedPeriod,
+      defaultValue: null,
+      defaultVisible: false,
+      defaultHighlighted: [],
+      disabled: [],
+      size: 'm',
+    };
+  }
   static enhance = [i18nEnhance()];
 
   static add = (date, amount, unit) => {
@@ -52,6 +56,7 @@ class PickerAbstract extends Component {
   navigateStep;
   keyDiff;
   keyStep;
+  initialDisplayedPeriod;
 
   uncontrolledProps() {
     return {
@@ -59,23 +64,26 @@ class PickerAbstract extends Component {
       visible: [
         null,
         (visible) => {
-          if (visible) {
-            const { value } = this.asProps;
-            this.handlers.displayedPeriod(value ? dayjs(value).toDate() : new Date());
-          } else {
+          if (!visible) {
             this.handlers.highlighted([]);
+            this.handlers.displayedPeriod(this.initialDisplayedPeriod);
           }
         },
       ],
       highlighted: null,
       value: [
         null,
-        () => {
+        (value) => {
           // TODO: работает только из-за new Date() !== new Date()
           this.handlers.visible(false);
+          this.handlers.displayedPeriod(value);
         },
       ],
     };
+  }
+
+  componentDidMount() {
+    this.initialDisplayedPeriod = this.asProps.displayedPeriod;
   }
 
   navigateView = (direction) => {
@@ -192,7 +200,11 @@ class PickerAbstract extends Component {
 
   render() {
     const { styles, Children } = this.asProps;
-    return sstyled(styles)(<Root render={Dropdown}><Children /></Root>);
+    return sstyled(styles)(
+      <Root render={Dropdown}>
+        <Children />
+      </Root>,
+    );
   }
 }
 
