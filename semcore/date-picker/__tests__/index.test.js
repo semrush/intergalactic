@@ -1,5 +1,5 @@
 import React from 'react';
-import { axe, cleanup, render } from 'jest-preset-ui/testing';
+import { axe, cleanup, render, fireEvent } from 'jest-preset-ui/testing';
 import snapshot from 'jest-preset-ui/snapshot';
 import { DatePicker, DateRangePicker, MonthRangePicker } from '../src';
 
@@ -34,6 +34,41 @@ describe('DatePicker', () => {
 
     getByText('Today').click();
     expect(spy).toBeCalledWith(new Date(new Date().setHours(0, 0, 0, 0)));
+  });
+
+  test('Should support set custom displayPeriod', () => {
+    mockDate('2020-02-10T12:00:00.808Z');
+    const { getByText, rerender } = render(
+      <DatePicker visible defaultDisplayedPeriod="2020-03-10T12:00:00.808Z" />,
+    );
+    expect(getByText('March 2020')).toBeTruthy();
+    rerender(<DatePicker visible displayedPeriod="2020-04-10T12:00:00.808Z" />);
+    expect(getByText('April 2020')).toBeTruthy();
+  });
+
+  test('Should support set custom displayPeriod after changed date', () => {
+    jest.useFakeTimers();
+    mockDate('2020-02-10T12:00:00.808Z');
+    const component = (
+      <DatePicker defaultVisible defaultDisplayedPeriod="2020-03-10T12:00:00.808Z">
+        <DatePicker.Trigger data-testid="trigger" />
+        <DatePicker.Popper>
+          <DatePicker.Header>
+            <DatePicker.Title />
+            <DatePicker.Next data-testid="next" />
+          </DatePicker.Header>
+        </DatePicker.Popper>
+      </DatePicker>
+    );
+    const { getByText, getByTestId } = render(component);
+    fireEvent.click(getByTestId('next'));
+    // change visible
+    fireEvent.click(getByTestId('trigger'));
+    jest.runAllTimers();
+    fireEvent.click(getByTestId('trigger'));
+    jest.runAllTimers();
+    expect(getByText('March 2020')).toBeTruthy();
+    jest.useRealTimers();
   });
 
   test('a11y', async () => {
@@ -97,6 +132,41 @@ describe('DateRangePicker', () => {
       />
     );
     expect(await snapshot(component)).toMatchImageSnapshot();
+  });
+
+  test('Should support set custom displayPeriod', () => {
+    mockDate('2020-02-10T12:00:00.808Z');
+    const { getByText, rerender } = render(
+      <DateRangePicker visible defaultDisplayedPeriod="2020-03-10T12:00:00.808Z" />,
+    );
+    expect(getByText('March 2020')).toBeTruthy();
+    rerender(<DateRangePicker visible displayedPeriod="2020-04-10T12:00:00.808Z" />);
+    expect(getByText('April 2020')).toBeTruthy();
+  });
+
+  test('Should support set custom displayPeriod after changed date', () => {
+    jest.useFakeTimers();
+    mockDate('2020-02-10T12:00:00.808Z');
+    const component = (
+      <DateRangePicker defaultVisible defaultDisplayedPeriod={['2020-03-10T12:00:00.808Z']}>
+        <DateRangePicker.Trigger data-testid="trigger" />
+        <DateRangePicker.Popper>
+          <DateRangePicker.Header>
+            <DateRangePicker.Title />
+            <DateRangePicker.Next data-testid="next" />
+          </DateRangePicker.Header>
+        </DateRangePicker.Popper>
+      </DateRangePicker>
+    );
+    const { getByText, getByTestId } = render(component);
+    fireEvent.click(getByTestId('next'));
+    // change visible
+    fireEvent.click(getByTestId('trigger'));
+    jest.runAllTimers();
+    fireEvent.click(getByTestId('trigger'));
+    jest.runAllTimers();
+    expect(getByText('March 2020')).toBeTruthy();
+    jest.useRealTimers();
   });
 
   test('a11y', async () => {
