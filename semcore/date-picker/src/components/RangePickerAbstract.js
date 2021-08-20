@@ -65,7 +65,6 @@ class RangePickerAbstract extends Component {
   navigateStep;
   keyDiff;
   keyStep;
-  initialDisplayedPeriod;
 
   state = {
     dirtyValue: [],
@@ -79,33 +78,19 @@ class RangePickerAbstract extends Component {
         (visible) => {
           if (!visible) {
             this.handlers.highlighted([]);
-            this.handlers.displayedPeriod(this.initialDisplayedPeriod);
+            this.handlers.displayedPeriod(getEndDate(this.asProps.value) || this.props.defaultDisplayedPeriod);
           }
         },
       ],
       highlighted: null,
       value: [
         null,
-        (value) => {
+        () => {
           // TODO: работает только из-за new Date() !== new Date()
           this.handlers.visible(false);
-          this.handlers.displayedPeriod(getEndDate(value));
         },
       ],
     };
-  }
-
-  componentDidMount() {
-    this.initialDisplayedPeriod = this.asProps.displayedPeriod;
-  }
-
-  componentDidUpdate(prevProps) {
-    const { visible } = this.asProps;
-
-    if (prevProps.visible && !visible) {
-      this.handlerChange([]);
-      this.handlers.displayedPeriod(this.initialDisplayedPeriod);
-    }
   }
 
   navigateView = (direction) => {
