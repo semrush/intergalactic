@@ -26,7 +26,7 @@ export interface ITextareaProps extends IBoxProps, IWithAutoFocusEnhanceProps {
   /**
    * Handler to change the value
    */
-  onChange?: (value: string, event?: SyntheticEvent<HTMLTextAreaElement>) => void;
+  onChange?: (value: string, event: SyntheticEvent<HTMLTextAreaElement>) => void;
 }
 
 declare const Textarea: <T>(
