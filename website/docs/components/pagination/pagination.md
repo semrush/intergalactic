@@ -103,6 +103,7 @@ In this case we add the `tilde (≈)` to the number of pages, and they become un
 
 ![unknown pages](static/unknown.png)
 
+@page pagination-a11y
 @page pagination-api
 @page pagination-code
 @page pagination-changelog

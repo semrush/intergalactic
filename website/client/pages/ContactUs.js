@@ -203,7 +203,7 @@ const Contacts = () => (
           <ul>
             <li>Cases and requirements</li>
             <li>Guide and mockups</li>
-            <li>Interactive prototype if there is an animation (any format: gif, axure, etc)</li>
+            <li>Interactive prototype if there is an animation (any format: gif, axure, etc.)</li>
           </ul>
           <Subtitle>Leave feedback</Subtitle>
           We care about usability and will be happy to receive feedback on both the site and the

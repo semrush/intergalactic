@@ -147,6 +147,7 @@ Dates and various codes (for example, pin codes, etc.) are also numeric values.
 
 For numbers with non-numeric characters (slash, letter, etc.), it is recommend to use a standard input with `inputmode="numeric"` and the corresponding pattern attribute.
 
+@page input-number-a11y
 @page input-number-api
 @page input-number-code
 @page input-number-changelog

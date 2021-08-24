@@ -62,6 +62,7 @@ In cases when we have many tabs or there is not enough space for the tab text, w
 
 ![ellipsis](static/ellipsis.png)
 
+@page tab-panel-a11y
 @page tab-panel-api
 @page tab-panel-code
 @page tab-panel-changelog

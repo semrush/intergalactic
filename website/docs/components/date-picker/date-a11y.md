@@ -20,10 +20,10 @@ title: A11y
 | `Right Arrow`    | Moves focus to the next day.                                                                                                                                                       |
 | `Left Arrow`     | Moves focus to the previous day.                                                                                                                                                   |
 
-@## Other recommendations
-
-See more accessibility recommendations in the commom [Accessibility guide](/core-principles/a11y/).
-
 @## Resources
 
-[W3 date picker example and documentation](https://www.w3.org/TR/wai-aria-practices/examples/dialog-modal/datepicker-dialog.html) has detailed information about the accordion accessible behavior.
+[W3 date picker example](https://www.w3.org/TR/wai-aria-practices/examples/dialog-modal/datepicker-dialog.html) has detailed information about the accordion accessible behavior.
+
+@## Other recommendations
+
+See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/).
