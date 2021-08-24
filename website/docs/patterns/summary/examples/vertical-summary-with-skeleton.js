@@ -2,12 +2,16 @@ import React, { useEffect, useState } from 'react';
 import { Box, Flex } from '@semcore/flex-box';
 import { Text } from '@semcore/typography';
 import Tooltip from '@semcore/tooltip';
-import Divider from '@semcore/divider';
 import Skeleton from '@semcore/skeleton';
 import styled from 'styled-components';
 
 const BoxBlock = styled(Box)`
   overflow: hidden;
+  margin-bottom: 24px;
+  border-bottom: 1px solid #ccc;
+  &:last-child {
+    border-bottom: none !important;
+  }
 `;
 const FlexBlock = styled(Flex)`
   overflow: hidden;
@@ -31,7 +35,7 @@ const Demo = () => {
 
   return (
     <FlexBlock direction="column">
-      <BoxBlock h={92}>
+      <BoxBlock h={92} w={146}>
         <Tooltip title="Keyword" wMax="100%">
           <Title size={200} tag="p" noWrap>
             Keyword
@@ -56,8 +60,7 @@ const Demo = () => {
           <Skeleton.Text amount={1} height={30} width={70} />
         </Skeleton>
       </BoxBlock>
-      <Divider mb={6} w={146} orientation="horizontal" />
-      <BoxBlock h={92}>
+      <BoxBlock h={92} w={146}>
         <Tooltip title="Traffic" wMax="100%">
           <Title size={200} tag="p" noWrap>
             Traffic
@@ -82,8 +85,7 @@ const Demo = () => {
           <Skeleton.Text amount={1} height={30} width={70} />
         </Skeleton>
       </BoxBlock>
-      <Divider mb={6} w={146} orientation="horizontal" />
-      <BoxBlock h={92}>
+      <BoxBlock h={92} w={146}>
         <Tooltip title="Traffic cost" wMax="100%">
           <Title size={200} tag="p" noWrap>
             Traffic cost
@@ -108,8 +110,7 @@ const Demo = () => {
           <Skeleton.Text amount={1} height={30} width={70} />
         </Skeleton>
       </BoxBlock>
-      <Divider mb={6} w={146} orientation="horizontal" />
-      <BoxBlock h={92}>
+      <BoxBlock h={92} w={146}>
         <Tooltip title="Branded traffic" wMax="100%">
           <Title size={200} tag="p" noWrap>
             Branded traffic
@@ -134,8 +135,7 @@ const Demo = () => {
           <Skeleton.Text amount={1} height={30} width={70} />
         </Skeleton>
       </BoxBlock>
-      <Divider mb={6} w={146} orientation="horizontal" />
-      <BoxBlock h={92}>
+      <BoxBlock h={92} w={146}>
         <Tooltip title="Non-branded traffic" wMax="100%">
           <Title size={200} tag="p" noWrap>
             Non-branded traffic
