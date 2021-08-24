@@ -1,5 +1,5 @@
 ---
-title: Email templates
+title: Email templates & grid
 tabName: Guide
 ---
 

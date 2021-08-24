@@ -107,5 +107,6 @@ One item in the pills can't be used:
 
 ![pills-one-yes-no](static/pills-one-yes-no.png)
 
+@page pills-a11y
 @page pills-api
 @page pills-changelog

@@ -152,4 +152,5 @@ Right alignment of labels visually better connects labels with inputs, in compar
 - Such forms are more difficult to be scanned and read (labels are right aligned, your brain should be strained a little more in order to find the beginning of the following line).
 - They are less suitable for multilingual interfaces.
 
+@page form-a11y
 @page form-code

@@ -160,6 +160,7 @@ Make sure that the tooltip does not overlap the information important for the us
 
 ![trigger-hover](static/tooltip-hover-yes-no.png)
 
+@page tooltip-a11y
 @page tooltip-api
 @page tooltip-code
 @page tooltip-changelog

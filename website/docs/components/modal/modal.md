@@ -209,6 +209,7 @@ It is not recommended to use more than two main buttons inside the modal window.
 
 ![modal buttons](static/button-yes-no.png)
 
+@page modal-a11y
 @page modal-api
 @page modal-code
 @page modal-changelog

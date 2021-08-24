@@ -6,7 +6,7 @@ tabName: Guide
 
 @## Chart types
 
-We use many types of charts in the interface. Each of them is designed to visualize different cases and data.
+We use many types of charts in the interface. Each of them is designed to visualize various cases and data.
 
 - [Line chart](/data-display/line-chart/)
 - [Area chart](/data-display/area-chart/)

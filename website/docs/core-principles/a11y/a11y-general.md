@@ -39,19 +39,6 @@ Controls and inputs should support navigation using a keyboard, touch devices an
 
 > It's recommended to create elements that are hidden for the sighted users, but available for the visually impaired. This can be achieved by moving an element far off the left edge of the screen with the use of the `sr_only` class.
 
-@## Keyboard control
-
-Make sure that it's possible to interact with the interface using a keyboard only.
-
-- Check the focus on the site using the `Tab` key to make sure that it correctly navigates between the interface elements
-- Check if the interaction with forms and links using the `Enter` and `Space` keys works correctly
-- Check that it's possible to cancel actions and close modal windows with the `Esc` key
-- Use hotkeys on the website
-- Avoid overriding hotkeys. For example, don't override `Control+C` (or `Command+C` on Mac)
-- Use HTML specification and always include attributes and roles
-
-> When opening a modal window, focus should move to the window, and then return to the page.
-
 @## Forms
 
 Make sure that your markup and order of form tabs are consistent and logical.

@@ -14,7 +14,6 @@ import { gql, useQuery } from '@apollo/client';
 import Error from './Error';
 import Divider from '@semcore/divider';
 import OutsideClick from '@semcore/outside-click';
-import Tooltip from '@semcore/tooltip';
 import trottle from '@semcore/utils/lib/rafTrottle';
 
 const HeaderWrapper = styled.header`
@@ -311,16 +310,7 @@ const MobileHeaderMenu = ({ clicked, setClicked, data }) => (
     <OutsideClick onOutsideClick={() => setClicked(false)}>
       <Side>
         <Links>
-          <Tooltip
-            disablePortal
-            title="Available only for the users registered in corporate mail"
-            tag="a"
-            href="https://chrome.google.com/webstore/detail/ui-kit-highlighting/capgemjgihoboclcfdblhbdokpldhemf/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Extension ✨
-          </Tooltip>
+          <a href="/internal/extension/">Extension ✨</a>
           <a href="/internal/roadmap/">Roadmap</a>
           <a href="/internal/release/">Releases</a>
           <a href="https://github.com/semrush/intergalactic" target="_blank">
@@ -421,16 +411,9 @@ function Header(props) {
       </Search>
       <Nav>
         <Item>
-          <Tooltip
-            disablePortal
-            title="Available only for the users registered in corporate mail"
-            tag="a"
-            href="https://chrome.google.com/webstore/detail/ui-kit-highlighting/capgemjgihoboclcfdblhbdokpldhemf/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <NavLink activeStyle={{ textDecoration: 'underline' }} to="/internal/extension/">
             Extension ✨
-          </Tooltip>
+          </NavLink>
         </Item>
         <Item>
           <NavLink activeStyle={{ textDecoration: 'underline' }} to="/internal/roadmap/">

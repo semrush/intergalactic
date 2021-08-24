@@ -286,6 +286,7 @@ A notice that appears on top of the interface and notifies you of the end of the
 
 ![notice-placement-yes-no](static/notice-use-2-yes-no.png)
 
+@page notice-a11y
 @page notice-api
 @page notice-code
 @page notice-changelog

@@ -7,7 +7,6 @@ title: UX patterns
 @page export
 @page global-errors
 @page informer
-@page keyboard-navigation
 @page links-order
 @page loading-states
 @page project-create

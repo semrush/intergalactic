@@ -80,6 +80,7 @@ There may be a [counter](/components/counter/) inside the input or next to its n
 - Name the inputs so that the user can see at a glance what data needs to be entered.
 - Choose the input width so that it is relevant to the content that should be in the input field. _For example, if you have an input for entering a phone number, the input width should not be more than the expected width of the phone number._
 
+@page input-a11y
 @page input-api
 @page input-code
 @page input-changelog

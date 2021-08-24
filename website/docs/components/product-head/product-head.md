@@ -86,6 +86,7 @@ In these cases the padding between the block with the heading and the buttons an
 
 ![product-head without filters](static/min-info.png)
 
+@page product-head-a11y
 @page product-head-api
 @page product-head-code
 @page product-head-changelog

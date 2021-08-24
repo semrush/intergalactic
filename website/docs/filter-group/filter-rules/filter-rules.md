@@ -141,9 +141,9 @@ If the user entered an invalid value (less than minimum, greater than maximum), 
 - You can set the step by which the entered numerical value will be reduced/increased when using the stepper buttons.
 - The user can change the step using the keyboard arrows or `Shift` + keyboard arrows (`Up`, `Down`).
 
-**Keyboard control**
+**Keyboard support**
 
-> See all main rules and recommendations in the [Keyboard navigation](/patterns/keyboard-navigation/) guide.
+> See all main rules and recommendations in the [Keyboard navigation](/core-principles/a11y/a11y-keyboard/) guide.
 
 The shortcut keys `Cmd` + `Enter` (macOS) and `Ctrl` + `Enter` (Windows) apply the filter.
 
