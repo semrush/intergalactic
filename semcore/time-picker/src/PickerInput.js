@@ -133,7 +133,7 @@ class ItemPicker extends Component {
           onFocus={this.handleFocus}
           onKeyDown={this.handleKeyDown}
         />
-        <Select.Menu hMax={240}>{getOptions(min, max, step)}</Select.Menu>
+        <Select.Menu hMax={180}>{getOptions(min, max, step)}</Select.Menu>
       </Select>,
     );
   }

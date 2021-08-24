@@ -249,7 +249,7 @@ function Addon(props) {
   const styles = sstyled(props.styles);
   return (
     <SDropdownMenuItemAddon
-      className={cn(styles.cn('SDropdownMenuItem', props).className, className) || undefined}
+      className={cn(styles.cn('SDropdownMenuItemAddon', props).className, className) || undefined}
       {...other}
     />
   );

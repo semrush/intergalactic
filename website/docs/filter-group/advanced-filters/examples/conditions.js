@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Dropdown from '@semcore/dropdown';
 import Select from '@semcore/select';
 import Input from '@semcore/input';
@@ -32,6 +32,17 @@ const FlexOverflow = styled(Flex)`
 export default () => {
   const [filters, setFilters] = useState(0);
   const [visible, updateVisible] = useState(false);
+  const buttonRef = useRef(null);
+
+  useEffect(() => {
+    if (buttonRef.current) {
+      buttonRef.current.scrollIntoView({
+        behavior: 'smooth',
+        block: 'nearest',
+      });
+    }
+  }, [filters]);
+
   const clearAll = () => setFilters(0);
   const addFilter = () => {
     setFilters(filters + 1);
@@ -60,7 +71,7 @@ export default () => {
           {[...new Array(filters)].map((_, ind) => (
             <Filter key={ind} mb={4} closable onClose={handleCloseFilter} />
           ))}
-          <Button use="tertiary" onClick={addFilter}>
+          <Button use="tertiary" onClick={addFilter} ref={buttonRef}>
             <Button.Addon tag={MathPlusXS} />
             <Button.Text>Add condition</Button.Text>
           </Button>

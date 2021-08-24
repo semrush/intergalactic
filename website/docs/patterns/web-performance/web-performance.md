@@ -5,7 +5,7 @@ tabName: Guide
 
 @## General
 
-> 💡 Diagrams with a detailed loading process are also available in inner Figma file and [Miro](https://miro.com/app/board/o9J_kp1mGGg=/). From Figma, the schema can be exported to `pdf` or `png` format — [non-SPA upload schema](https://www.figma.com/file/eqmm39DfX895qOSM0KnQGb/Web-performance-schemes?node-id=21%3A559) and the [SPA upload schema](https://www.figma.com/file/eqmm39DfX895qOSM0KnQGb/Web-performance-schemes?node-id=21%3A560). **All these are available only for corporate Semrush developers.**
+> 💡 Diagrams with a detailed loading process are also available in inner [Figma file](https://www.figma.com/file/eqmm39DfX895qOSM0KnQGb/Web-performance-schemes) and [Miro](https://miro.com/app/board/o9J_kp1mGGg=/). From Figma, the scheme can be exported to `pdf` or `png` format — [non-SPA upload schema](https://www.figma.com/file/eqmm39DfX895qOSM0KnQGb/Web-performance-schemes?node-id=21%3A559) and the [SPA upload schema](https://www.figma.com/file/eqmm39DfX895qOSM0KnQGb/Web-performance-schemes?node-id=21%3A560). **They are available only for Semrush developers.**
 
 After adding new features in the product, check whether the loading time fits into the recommendations and rules described here. Download speed can be checked with [Speedcurve](https://speedcurve.com/) or tool from [Google](https://developers.google.com/speed/pagespeed/insights/) ✨
 
@@ -14,7 +14,7 @@ You can read more about the skeleton and spinner in the guides:
 - [Skeleton](/components/skeleton/#adbd55) (it also describes loading heavy images)
 - [Spin](/components/spin/)
 
-Animation of the appearance and disappearance of the skeleton and spinner — `ease-out 0.3`. **The exception is the first spinner that launches the tool — it doesn't have animation**, because the whale components haven't loaded yet.
+Animation of the appearance and disappearance of the skeleton and spinner — `ease-out 0.3`. **The exception is the first spinner that launches the tool — it doesn't have animation**, because the `@semcore` components haven't loaded yet.
 
 > 💡 Why is the animation time chosen this way? This is a recommendation that is related to users ' perception of time when working with interfaces. You can read more about this, for example, in the article from Smashing Magazine — [Why Perceived Performance Matters, Part 1: The Perception Of Time](https://www.smashingmagazine.com/2015/09/why-performance-matters-the-perception-of-time/).
 
@@ -48,7 +48,7 @@ If yes, and after improvements to the `Speed Index ≤1.2sec`, then
 
 If not, and `Speed Index ≤1.2sec`, since this is an exception page, then go to the page preload stage (waiting) and show the spinner in the center of the screen (the same for all pages).
 
-> IMPORTANT! The first spinner that launches the tool doesn't have animation, as the whale components haven't loaded yet. In all other cases, the animation of the appearance and disappearance of the spinner occurs with `ease-out 0.3`.
+> IMPORTANT! The first spinner that launches the tool doesn't have animation, as the `@semcore` components haven't loaded yet. In all other cases, the animation of the appearance and disappearance of the spinner occurs with `ease-out 0.3`.
 >
 > Even if the page loaded faster, we do not hide the spinner until `0.3sec` has passed (so there will be no flickering).
 
@@ -84,7 +84,7 @@ The default rule is to first select elements from the visible area of the screen
 
 ![loading page](static/loading-spa-page.png)
 
-> IMPORTANT! The first spinner that launches the tool doesn't have animation, as the whale components haven't loaded yet. In all other cases, the animation of the appearance and disappearance of the spinner occurs with `ease-out 0.3`.
+> IMPORTANT! The first spinner that launches the tool doesn't have animation, as the `@semcore` components haven't loaded yet. In all other cases, the animation of the appearance and disappearance of the spinner occurs with `ease-out 0.3`.
 >
 > Even if the page loaded faster, we do not hide the spinner until `0.3sec` has passed (so there will be no flickering).
 

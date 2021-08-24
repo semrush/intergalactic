@@ -4,7 +4,6 @@ import Spin from '@semcore/spin';
 import ScrollArea from '@semcore/scroll-area';
 import { Text } from '@semcore/typography';
 import Table from '@semcore/table';
-import Sticky from '@semcore/sticky';
 import Tooltip from '@semcore/tooltip';
 import Checkbox from '@semcore/checkbox';
 import Link from '@semcore/link';
@@ -19,7 +18,7 @@ let data = [
     traffic: '< 0.01',
     url: 'https://ebay.com',
     'last update': new Intl.DateTimeFormat('en-US', { year: 'numeric', era: 'long' }).format(
-      new Date('12.11.2019'),
+      new Date('2019/11/12'),
     ),
   },
   {
@@ -31,7 +30,7 @@ let data = [
     traffic: '< 0.01',
     url: 'https://ebay.com',
     'last update': new Intl.DateTimeFormat('en-US', { year: 'numeric', era: 'long' }).format(
-      new Date('12.11.2019'),
+      new Date('2019/11/12'),
     ),
   },
   {
@@ -43,7 +42,7 @@ let data = [
     traffic: '< 0.01',
     url: 'https://ebay.com',
     'last update': new Intl.DateTimeFormat('en-US', { year: 'numeric', era: 'long' }).format(
-      new Date('12.11.2019'),
+      new Date('2019/11/12'),
     ),
   },
   {
@@ -78,12 +77,13 @@ const TableLayoutFixed = styled(Table)`
   table-layout: fixed;
 `;
 
-const StyledCell = styled(Table.Cell)`
+const StyledCellSticky = styled(Table.Cell)`
+  position: sticky;
   z-index: 1;
 `;
 
-const StyledThSticky = styled(Sticky)`
-  box-shadow: 0 0 1px #dee3e5;
+const StyledThSticky = styled(Table.CellHead)`
+  position: sticky;
 `;
 
 const Demo = () => (
@@ -92,12 +92,12 @@ const Demo = () => (
       <TableLayoutFixed>
         <Table.Head>
           <Table.Row theme="false">
-            <Sticky align="center" valign="middle" width="50" tag={Table.CellHead} left={0}>
+            <StyledThSticky align="center" valign="middle" width="50" left={0}>
               <Checkbox size="l">
                 <Checkbox.Value />
               </Checkbox>
-            </Sticky>
-            <StyledThSticky width="150" tag={Table.CellHead} left={50}>
+            </StyledThSticky>
+            <StyledThSticky width="150" left={50} style={{ 'box-shadow': '0 0 1px #dee3e5' }}>
               <Tooltip title="Lorem ipsum">
                 <span>
                   Keyword <Text color="gray60">(1 – 100)</Text>
@@ -121,20 +121,19 @@ const Demo = () => (
         <Table.Body>
           {data.map((row, i) => (
             <Table.Row key={i} theme={row.kd === '-' ? 'danger' : 'default'}>
-              <Sticky
+              <StyledCellSticky
                 theme={row.kd === '-' ? false : 'default'}
                 align="center"
                 valign="middle"
                 left={0}
-                tag={StyledCell}
               >
                 <Checkbox size="l">
                   <Checkbox.Value />
                 </Checkbox>
-              </Sticky>
-              <Sticky theme={row.kd === '-' ? false : 'default'} tag={StyledCell} left={50}>
+              </StyledCellSticky>
+              <StyledCellSticky theme={row.kd === '-' ? false : 'default'} left={50}>
                 <Link>{row.keyword}</Link>
-              </Sticky>
+              </StyledCellSticky>
 
               {Object.keys(data[0])
                 .slice(1)
