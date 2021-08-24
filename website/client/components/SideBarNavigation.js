@@ -77,6 +77,7 @@ const SideBarNavigation = ({ navigation = [] }) => {
             >
               <ChevronRightXS
                 mr={2}
+                color="#898D9A"
                 style={{
                   transform: `rotate(${isOpen ? 90 : 0}deg)`,
                   transition: 'transform 0.25s ease-in-out',
