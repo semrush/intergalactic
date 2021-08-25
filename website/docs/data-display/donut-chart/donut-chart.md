@@ -77,7 +77,7 @@ It is recommended to display the percentage of the maximum number that one of th
 
 @## Margins
 
-The chart has a 12px top margin.
+Donut chart has a 24px top margin.
 
 ![donut margins](static/donut-margins.png)
 
