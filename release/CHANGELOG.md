@@ -1,3 +1,9 @@
+## [7.2.1] - 2021-08-26
+
+### @semcore/select
+
+- **Fixed** Fixed problem with 'sideEffect=false'
+
 ## [7.2.0] - 2021-08-26
 
 ### Global
