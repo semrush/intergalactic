@@ -54,7 +54,7 @@ const Description = styled.div`
     grid-row: 4;
   }
   @media (max-width: 415px) {
-    padding-bottom: 40px;
+    padding-bottom: 24px;
   }
 `;
 
