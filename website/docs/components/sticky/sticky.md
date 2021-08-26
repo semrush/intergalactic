@@ -46,7 +46,7 @@ We can “pin” the [ProgressBar](/components/progress-bar/) to the top of the 
 
 @## Pin of the content in blocks with limits
 
-If a limit appears in the block (a fader overlaps the block), the message about it should be centered towards the block at scrolling.
+If a limit appears in the block (an overlay overlaps the block), the message about it should be centered towards the block at scrolling.
 
 ![sticky limit message](static/table-limit-pro.png)
 
