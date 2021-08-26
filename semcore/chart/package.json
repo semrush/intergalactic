@@ -1,25 +1,11 @@
 {
   "name": "@semcore/chart",
   "description": "SEMRush Chart Component",
-  "version": "4.2.2",
+  "version": "4.2.3",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
-  "sideEffects": [
-    "lib/*/Axis/XAxis.js",
-    "lib/*/Axis/YAxis.js",
-    "lib/*/Chart/Area/Area.js",
-    "lib/*/Chart/Bar/index.js",
-    "lib/*/Chart/Histogram/index.js",
-    "lib/*/Chart/Line/Line.js",
-    "lib/*/Chart/Venn/VennChart.js",
-    "lib/*/Legend/Legend.js",
-    "lib/*/Reference/CartesianGrid.js",
-    "lib/*/Reference/ReferenceArea.js",
-    "lib/*/Reference/ReferenceLine.js",
-    "lib/*/Tooltip/index.js",
-    "lib/*/copyChart.js"
-  ],
+  "sideEffects": false,
   "author": "Roman Lysov <r.lysov@semrush.com>",
   "license": "MIT",
   "scripts": {
