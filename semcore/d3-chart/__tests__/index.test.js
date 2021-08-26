@@ -1,5 +1,5 @@
 import React from 'react';
-import { bisector } from 'd3-array';
+// import { bisector } from 'd3-array';
 import { scaleLinear, scaleBand } from 'd3-scale';
 import { render, fireEvent, cleanup } from 'jest-preset-ui/testing';
 import { shouldSupportClassName, shouldSupportRef } from 'jest-preset-ui/shared';
@@ -108,7 +108,7 @@ describe('XAxis', () => {
 
   test('should support hover for custom XAxis.Ticks', () => {
     jest.spyOn(window, 'requestAnimationFrame').mockImplementation((cb) => cb());
-    const bisect = bisector((d) => d.x).center;
+    // const bisect = bisector((d) => d.x).center;
     class EventEmitter {
       emit() {}
       subscribe() {}
