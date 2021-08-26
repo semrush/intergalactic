@@ -18,7 +18,7 @@ The component is supplied with three positioning options.
 
 @example placement
 
-@## Disabling Overlay (fader)
+@## Disabling overlay
 
 By default, the component is rendered with an overlay, but you can change this without passing it.
 
