@@ -37,11 +37,12 @@ const Info = styled.div`
 
 const Header = styled.h2`
   font-family: FactorA-Bold, sans-serif;
-  font-size: 50px;
-  line-height: 110%;
+  font-size: 40px;
+  line-height: 120%;
   margin: 48px 0 16px;
   @media (max-width: 767px) {
-    font-size: 36px;
+    font-size: 30px;
+    line-height: 120%;
   }
 `;
 
