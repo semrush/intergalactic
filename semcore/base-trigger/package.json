@@ -1,16 +1,11 @@
 {
   "name": "@semcore/base-trigger",
   "description": "SEMRush BaseTrigger Component",
-  "version": "2.3.1",
+  "version": "2.3.2",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
-  "sideEffects": [
-    "lib/*/BaseTrigger.js",
-    "lib/*/ButtonTrigger.js",
-    "lib/*/FilterTrigger.js",
-    "lib/*/LinkTrigger.js"
-  ],
+  "sideEffects": false,
   "author": "Roman Lysov <r.lysov@semrush.com>",
   "license": "MIT",
   "scripts": {
