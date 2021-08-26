@@ -1,10 +1,11 @@
 {
   "name": "@semcore/tab-line",
   "description": "SEMRush TabLine Component",
-  "version": "2.8.2",
+  "version": "2.8.3",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
+  "sideEffects": false,
   "author": "Roman Lysov <r.lysov@semrush.com>",
   "license": "MIT",
   "scripts": {
