@@ -34,6 +34,7 @@
     "postcss-nested": "^5.0.5",
     "posthtml": "^0.16.4",
     "posthtml-cli": "^0.10.0",
+    "posthtml-expressions": "^1.9.0",
     "posthtml-extend": "^0.6.0",
     "posthtml-inline-assets": "^3.1.0",
     "posthtml-inline-css": "^1.2.3"
