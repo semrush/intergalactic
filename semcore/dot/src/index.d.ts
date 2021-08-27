@@ -1,23 +1,18 @@
 import { IBoxProps } from '@semcore/flex-box';
 import { ReturnEl } from '@semcore/core';
+import { IAnimationProps } from '@semcore/animation/src';
 
-export interface IDotProps extends IBoxProps {
+export interface IDotProps extends IBoxProps, IAnimationProps {
   /** Size of the dot
    * @default m
    */
-  size?: 'xl' | 'l' | 'm';
+  size?: 'm' | 'l';
   /** Property for placing the Dot in the upper right corner of the component
    * @default false
    * */
   up?: boolean;
   /** The property for Dot visibility control */
   hidden?: boolean;
-  /** Animation duration in ms
-   * @default 0
-   */
-  duration?: number | [number, number];
-  /** Animation titles */
-  keyframes?: [string, string];
 }
 
 declare const Dot: <T>(props: IDotProps & T) => ReturnEl;
