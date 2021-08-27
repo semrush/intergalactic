@@ -2,6 +2,9 @@
 
 SBar {
   fill: var(--color);
+  transition-property: height, y;
+  transition-duration: var(--duration);
+  transition-timing-function: ease-in-out;
 }
 
 SBar[hide] {

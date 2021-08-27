@@ -5,6 +5,9 @@ SDot {
   stroke: #fff;
   r: 6px;
   fill: var(--color);
+  transition-property: cx, cy;
+  transition-duration: var(--duration);
+  transition-timing-function: ease-in-out;
 }
 
 SDot[hide] {
