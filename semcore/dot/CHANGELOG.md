@@ -2,6 +2,16 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.0.0] - 2021-08-27
+
+### Changed
+
+- Changed animation `Dot` to `@semcore/animation`.
+
+### Removed
+
+- removed deprecated property `invisible`.
+
 ## [2.2.2] - 2021-06-29
 
 ### Fixed
