@@ -1,16 +1,11 @@
 {
   "name": "@semcore/date-picker",
   "description": "SEMRush DatePicker Component",
-  "version": "2.5.2",
+  "version": "2.5.3",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
-  "sideEffects": [
-    "lib/*/DateRangePicker.js",
-    "lib/*/components/Calendar.js",
-    "lib/*/components/PickerAbstract.js",
-    "lib/*/components/RangePickerAbstract.js"
-  ],
+  "sideEffects": false,
   "author": "Roman Lysov <r.lysov@semrush.com>",
   "license": "MIT",
   "scripts": {

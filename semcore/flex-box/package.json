@@ -1,14 +1,11 @@
 {
   "name": "@semcore/flex-box",
   "description": "SEMRush FlexBox Component",
-  "version": "4.4.0",
+  "version": "4.4.1",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
-  "sideEffects": [
-    "lib/*/Box/useBox.js",
-    "lib/*/Flex/useFlex.js"
-  ],
+  "sideEffects": false,
   "author": "Roman Lysov <r.lysov@semrush.com>",
   "license": "MIT",
   "scripts": {

@@ -1,13 +1,11 @@
 {
   "name": "@semcore/notice",
   "description": "SEMRush Notice Component",
-  "version": "3.1.0",
+  "version": "3.1.1",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
-  "sideEffects": [
-    "lib/*/Notice.js"
-  ],
+  "sideEffects": false,
   "author": "Roman Lysov <r.lysov@semrush.com>",
   "license": "MIT",
   "scripts": {

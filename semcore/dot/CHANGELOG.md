@@ -12,6 +12,12 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - removed deprecated property `invisible`.
 
+## [2.2.3] - 2021-8-26
+
+### Changed
+
+- Add 'sideEffect=false' for more optimal build via webpack
+
 ## [2.2.2] - 2021-06-29
 
 ### Fixed
