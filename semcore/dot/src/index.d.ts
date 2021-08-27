@@ -12,14 +12,10 @@ export interface IDotProps extends IBoxProps {
   up?: boolean;
   /** The property for Dot visibility control */
   hidden?: boolean;
-  /**
-   * @ignore
-   *  */
-  invisible?: boolean;
-  /**
-   * Property for animation duration
-   *  */
-  duration?: number;
+  /** Animation duration in ms
+   * @default 0
+   */
+  duration?: number | [number, number];
   /** Animation titles */
   keyframes?: [string, string];
 }
