@@ -16,8 +16,14 @@ export interface IDotProps extends IBoxProps {
    * @ignore
    *  */
   invisible?: boolean;
+  /**
+   * Property for animation duration
+   *  */
+  duration?: number;
+  /** Animation titles */
+  keyframes?: [string, string];
 }
 
-declare const Dot: (<T>(props: IDotProps & T) => ReturnEl);
+declare const Dot: <T>(props: IDotProps & T) => ReturnEl;
 
 export default Dot;

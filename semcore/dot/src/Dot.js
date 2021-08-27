@@ -1,9 +1,7 @@
 import React from 'react';
 import createComponent, { Component, Root, sstyled } from '@semcore/core';
 
-import { Box } from '@semcore/flex-box';
 import { Animation } from '@semcore/animation';
-import logger from '@semcore/utils/lib/logger';
 import getOriginChildren from '@semcore/utils/lib/getOriginChildren';
 
 import style from './style/dot.shadow.css';
@@ -34,42 +32,24 @@ class Dot extends Component {
   static defaultProps = {
     size: 'm',
     duration: 300,
+    keyframes: [styleDot['@enter'], styleDot['@exit']],
   };
 
   render() {
     const SDot = Root;
-    const SAnimation = Animation;
 
-    let { Children, styles, size, invisible, hidden, duration, up } = this.asProps;
+    let { Children, styles, size, hidden, duration, keyframes } = this.asProps;
     size = React.Children.toArray(getOriginChildren(Children)).length === 0 ? size : 'xl';
-    const visible = typeof invisible === 'undefined' ? !hidden : !invisible;
-
-    logger.warn(
-      invisible !== undefined,
-      "The 'invisible' property is deprecated, use 'hidden'",
-      this.asProps['data-ui-name'] || Dot.displayName,
-    );
 
     return sstyled(styles)(
-      <>
-        {up ? (
-          <SAnimation
-            visible={visible}
-            duration={duration}
-            keyframes={[styleDot['@enter'], styleDot['@exit']]}
-          >
-            <SDot render={Box} tag="span" use:size={size} />
-          </SAnimation>
-        ) : (
-          <Animation
-            visible={visible}
-            duration={duration}
-            keyframes={[styleDot['@enter'], styleDot['@exit']]}
-          >
-            <SDot render={Box} tag="span" use:size={size} />
-          </Animation>
-        )}
-      </>,
+      <SDot
+        render={Animation}
+        tag="span"
+        use:size={size}
+        visible={!hidden}
+        duration={duration}
+        keyframes={keyframes}
+      />,
     );
   }
 }
