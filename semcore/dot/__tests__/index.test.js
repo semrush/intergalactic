@@ -1,5 +1,5 @@
 import React from 'react';
-import { cleanup } from 'jest-preset-ui/testing';
+import { cleanup, render } from 'jest-preset-ui/testing';
 import snapshot from 'jest-preset-ui/snapshot';
 import { shouldSupportClassName, shouldSupportRef } from 'jest-preset-ui/shared';
 import Dot from '../src';
@@ -45,15 +45,12 @@ describe('Dot', () => {
   });
 
   test('Should support hidden', async () => {
-    const component = (
-      <snapshot.ProxyProps style={{ margin: '3px', position: 'relative' }}>
-        <Button>
-          Button
-          <Dot hidden size="m" />
-        </Button>
-      </snapshot.ProxyProps>
+    const { queryByTestId } = render(
+      <Button>
+        Button
+        <Dot hidden size="m" data-testid="dot" />
+      </Button>,
     );
-
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    expect(queryByTestId('dot')).toBeFalsy();
   });
 });
