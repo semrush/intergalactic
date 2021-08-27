@@ -4,7 +4,7 @@ fileSource: chart
 tabName: Guide
 ---
 
-> 💡 The basic data visualization rules in widgets with graphs are described in [Data visualization](/data-display/data-visualization/).
+> 💡 The basic data visualization rules are described in the [Basic principles and conception](/data-display/conception/).
 
 @## Description
 
@@ -40,7 +40,7 @@ It is recommended to display the points on lines either when there are few of th
 
 @## Interaction
 
-When you hover over the chart area, a vertical guide line is shown at the nearest point; this point is enlarged itself, and a tooltip with detailed data for the point appears next to it. For more information about the tooltip, see [Data visualization](/data-display/data-visualization/) and [Line chart](/data-display/line-chart/).
+When you hover over the chart area, a vertical guide line is shown at the nearest point; this point is enlarged itself, and a tooltip with detailed data for the point appears next to it. For more information about the tooltip, see [Data visualization](/data-display/conception/) and [Line chart](/data-display/line-chart/).
 
 @## Edge cases
 

@@ -11,8 +11,4 @@
 @page utils
 @page internal
 @page bug-reporting
-
-<!-- @page text -->
-<!-- @page contacts -->
-
 @page terms

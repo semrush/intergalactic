@@ -1,15 +1,20 @@
 ---
-title: Data display
+title: Charts
 ---
 
-@page data-visualization
-@page chart-controls
+@page showcase
+@page conception
+
+<!-- @page grid-axis -->
+
+@page color-palette
 @page chart-legend
+@page chart-controls
+@page notes
 @page area-chart
 @page bar-chart
 @page donut-chart
 @page histogram-chart
 @page line-chart
-@page notes
 @page venn-chart
 @page d3-chart

@@ -92,7 +92,7 @@ Image area is 256px х 132px.
 
 To make tooltip data more readable we have specific rules for margins between the labels and values.
 
-See detailed examples for tooltip margins in [Data visualization](/data-display/data-visualization/#ac9830) and [Summary](/patterns/summary/#a16f52).
+See detailed examples for tooltip margins in [Data visualization](/data-display/conception/#ac9830) and [Summary](/patterns/summary/#a16f52).
 
 ![tooltip example](static/tooltip-margins.png)
 

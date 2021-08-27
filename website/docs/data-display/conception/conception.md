@@ -1,54 +1,10 @@
 ---
-title: Data visualization
+title: Basic principles and conception
 fileSource: chart
 tabName: Guide
 ---
 
-@## Chart types
-
-We use many types of charts in the interface. Each of them is designed to visualize various cases and data.
-
-- [Line chart](/data-display/line-chart/)
-- [Area chart](/data-display/area-chart/)
-- [Stacked area chart](/data-display/area-chart/)
-- [Bar chart](/data-display/bar-chart/)
-- [Stacked bar chart](/data-display/bar-chart/)
-- [Donut chart](/data-display/donut-chart/)
-- [Venn chart](/data-display/venn-chart/)
-- [Histogram chart](/data-display/histogram-chart/)
-
-The guides for the charts below are at the stage of collecting and working out the requirements within the UX/UI team:
-
-- Scatter plot chart
-- Bubble chart
-- Funnel chart
-- Heatmap chart
-- Kagi chart
-- Lollipop chart
-- Choropleth map chart
-- Radar chart
-- Polar bubble chart
-- Alluvial / Sankey chart
-- Quadrant chart
-
-@## Colors
-
-The purpose of colors in the chart widgets:
-
-| Color      | Purpose                                                     |
-| ---------- | ----------------------------------------------------------- |
-| `$gray20`  | Basic text information                                      |
-| `$gray60`  | Additional text information                                 |
-| `$stone`   | The X-axis and the accent lines on the grid when, if needed |
-| `$mercury` | Additional guide lines                                      |
-
-We have a special [palette](/style/color/) for charts.
-
-- Use color in a measured manner and don't make colors too bright for any reason. **Keep in mind the visual hierarchy.**
-- If there are several blocks on a page that mention the same entity, then use the same color for in all blocks on the same page.
-- **Keep in mind that green and red are often associated with good and bad, growth and decline.**
-
-@## Data widget composition
+@## Chart widget composition
 
 In our interfaces, data is usually placed in widgets, which consist of:
 
@@ -111,7 +67,7 @@ By their effect on the widget data the controls located next to the chart can be
 
 For more information about widget controls, see [Chart controls](/data-display/chart-controls/).
 
-### Collapsing rows with controls
+@## Collapsing rows
 
 You can collapse rows if necessary.
 
@@ -133,7 +89,7 @@ Separate different controls/groups of controls with a 1px separator in the color
 
 The legend can be clickable or non-clickable (static). For more information about the legend and its types, see [Chart legend](/data-display/chart-legend/).
 
-@## Axes
+@## Grid and axes
 
 **Axes** should help user navigate the data and relate values to each other.
 
@@ -210,10 +166,14 @@ During primary data loading, the widget displays the [Skeleton](/components/skel
 
 If the chart has a title, it should be displayed during loading. The user shall have an idea of what is being loaded and whether they need to wait for the loading process to complete.
 
-> 💡 Note that there is a skeleton for each data type. For example, for [Line chart](/data-display/line-chart/).
+> 💡 Note that every chart has it's own skeleton. For more information see guides for evety chart type.
 
 @## Edge cases
 
 The state for one, two, zero, and partial values differ for different chart types, and these states shall be checked in the documentation for respective chart types.
 
 General rules of "empty" states for widgets with charts are described in [Error & n/a widget states](/components/widget-empty/).
+
+@page conception-code
+@page conception-api
+@page conception-changelog

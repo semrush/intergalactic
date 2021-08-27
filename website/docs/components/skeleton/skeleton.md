@@ -107,7 +107,7 @@ General rules:
 
 > 💡 In exceptional cases
 
-For a more detailed guide, see the [Data Visualization](/data-display/data-visualization/).
+For a more detailed guide, see the [Data Visualization](/data-display/conception/).
 
 ### Buttons and Links
 
@@ -219,7 +219,7 @@ In addition, the following components should never use the skeleton, as they sho
 - Pill switches are active.
 - The legend is replaced by “bones" of the same size with an indent of 16px. The "bone" is centered vertically towards the checkboxes.
 - If the legend is known in advance, we keep it.
-- The chart is replaced with the skeleton state corresponding to the chart type. See more in [Data Visualization](/data-display/data-visualization/).
+- The chart is replaced with the skeleton state corresponding to the chart type. See more in [Data Visualization](/data-display/conception/).
 
 ![skeleton-chart](static/chart.png)
 

@@ -4,7 +4,7 @@ fileSource: chart
 tabName: Description
 ---
 
-> 💡 The basic data visualization rules in widgets with graphs are described in [Data visualization](/data-display/data-visualization/).
+> 💡 The basic data visualization rules are described in the [Basic principles and conception](/data-display/conception/).
 
 @## Description
 

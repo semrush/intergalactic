@@ -24,7 +24,7 @@ import { css } from '@semcore/core';
 const stylesTabLine = css`
   STabLine {
     margin: auto;
-    width: 805px;
+    width: 660px;
   }
 
   STabLineItem[size='xl'] {
@@ -389,7 +389,7 @@ const renderSwitch = (value, data) => {
     case 'components':
       return getTabByTitle(['Components'], data);
     case 'charts':
-      return getTabByTitle(['Data display', 'Table'], data);
+      return getTabByTitle(['Charts', 'Table'], data);
     case 'ux':
       return getTabByTitle(['UX patterns'], data);
     case 'filters':
