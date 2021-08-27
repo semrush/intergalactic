@@ -1,6 +1,6 @@
 import { IBoxProps } from '@semcore/flex-box';
 import { ReturnEl } from '@semcore/core';
-import { IAnimationProps } from '@semcore/animation/src';
+import { IAnimationProps } from '@semcore/animation';
 
 export interface IDotProps extends IBoxProps, IAnimationProps {
   /** Size of the dot
