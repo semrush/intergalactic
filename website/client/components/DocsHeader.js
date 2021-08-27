@@ -22,7 +22,7 @@ const styles = css`
 `;
 const Title = styled.h2`
   font-family: FactorA-Bold, sans-serif;
-  font-size: 36px;
+  font-size: 40px;
   line-height: 120%;
   margin: 0;
   margin-bottom: 4px;

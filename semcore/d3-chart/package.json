@@ -1,10 +1,11 @@
 {
   "name": "@semcore/d3-chart",
   "description": "SEMRush D3 Chart Component",
-  "version": "1.0.0-14",
+  "version": "1.0.0-15",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
+  "sideEffects": false,
   "author": "Roman Lysov <r.lysov@semrush.com>",
   "license": "MIT",
   "scripts": {
@@ -16,8 +17,8 @@
     "@semcore/popper": "^4.9",
     "@semcore/utils": "^3.15",
     "@upsetjs/venn.js": "^1.4.1",
-    "d3-array": "^2.8",
-    "d3-shape": "^2.0",
+    "d3-array": "^3",
+    "d3-shape": "^3",
     "resize-observer-polyfill": "^1.5"
   },
   "peerDependencies": {

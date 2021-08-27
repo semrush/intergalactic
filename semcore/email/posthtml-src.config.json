@@ -6,6 +6,9 @@
     "posthtml-extend": {
       "encoding": "utf8",
       "root": "./src"
+    },
+    "posthtml-expressions": {
+      "removeScriptLocals": true
     }
   }
 }

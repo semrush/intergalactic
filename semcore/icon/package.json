@@ -1,10 +1,11 @@
 {
   "name": "@semcore/icon",
   "description": "SEMRush Icon Component",
-  "version": "2.12.1",
+  "version": "2.12.2",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
+  "sideEffects": false,
   "author": "Roman Lysov <r.lysov@semrush.com>",
   "license": "MIT",
   "scripts": {

@@ -1,15 +1,13 @@
 {
   "name": "@semcore/widget-empty",
   "description": "SEMRush WidgetEmpty Component",
-  "version": "2.6.1",
+  "version": "2.6.2",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
+  "sideEffects": false,
   "author": "Roman Lysov <r.lysov@semrush.com>",
   "license": "MIT",
-  "sideEffects": [
-    "lib/*/WidgetEmpty.js"
-  ],
   "scripts": {
     "build": "build --source=js",
     "test": "jest",

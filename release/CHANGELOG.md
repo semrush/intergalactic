@@ -1,3 +1,44 @@
+## [7.2.1] - 2021-08-26
+
+### @semcore/select
+
+- **Fixed** Fixed problem with 'sideEffect=false'
+
+## [7.2.0] - 2021-08-26
+
+### Global
+
+- **Changed** Add 'sideEffect=false' for more optimal build via webpack
+
+### @semcore/time-picker
+
+- **Changed** Changed height dropdown from 240px to 180px.
+
+### @semcore/breadcrumbs
+
+- **Fixed** Fixed style separator when a custom font-size.
+
+### @semcore/date-picker
+
+- **Fixed** [TS] added types for default values.
+- **Fixed** Fixed set displayedPeriod for family pickers.
+
+### @semcore/dropdown-menu
+
+- **Fixed** Fixed typo in class names.
+
+### @semcore/feedback-form
+
+- **Fixed** Fixed placement warning tooltip for small screens.
+
+### @semcore/input
+
+- **Fixed** Changed height of the inner real input to fix horizontal display with adjacent elements.
+
+### @semcore/textarea
+
+- **Fixed** [TS] Fixed type onChange for ITextareaProps.
+
 ## [7.1.1] - 2021-08-09
 
 ### @semcore/badge

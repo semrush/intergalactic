@@ -4,10 +4,10 @@ tabName: Code
 ---
 
 @## CSS variables
-@example email-vars
+@import email-vars
 
 @## Background classes
-@example email-background
+@import email-background
 
 @## Text classes
-@example email-color
+@import email-color

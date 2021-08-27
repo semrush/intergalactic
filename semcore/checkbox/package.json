@@ -1,10 +1,11 @@
 {
   "name": "@semcore/checkbox",
   "description": "SEMRush Checkbox Component",
-  "version": "5.2.0",
+  "version": "5.2.1",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
+  "sideEffects": false,
   "author": "Roman Lysov <r.lysov@semrush.com>",
   "license": "MIT",
   "scripts": {

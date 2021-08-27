@@ -2,6 +2,8 @@
 // - Удалить node_modules
 // - Очистить dependencies
 // - Не забыть добавить новые компоненты в components.json
+// - npm run generate
+// - Посмотреть CHANGELOG.md и поправить руками
 // - npm run pub -- --root . --no-check-changelog
 
 const { execSync } = require('child_process');
