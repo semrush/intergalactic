@@ -39,7 +39,6 @@ _For example: Show the stock level over time, or expenses by month compared to b
 - Stacked area chart
 - Bar chart (column)
 - Heatmap chart
-- Funnel chart
 
 @## Part to whole
 

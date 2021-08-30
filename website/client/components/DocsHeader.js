@@ -42,7 +42,7 @@ export default function(props) {
   const { title, category, fileSource, sourcePath, beta } = props;
 
   return (
-    <Box tag="header" mb={6}>
+    <Box tag="header" mb={10}>
       <Title>
         {title} {beta && <Tag size="l" theme="warning" use="primary" children="beta" />}
       </Title>
