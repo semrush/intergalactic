@@ -104,4 +104,5 @@ Styles can be found in the guide book for [Skeleton](/components/skeleton/).
 ![skeleton](static/skeleton-raw.png)
 
 @page area-chart-api
-@page area-chart-code
+@page area-chart-d3-code
+@page area-chart-recharts-code

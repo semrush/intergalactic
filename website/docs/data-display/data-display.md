@@ -4,6 +4,7 @@ title: Charts
 
 @page showcase
 @page conception
+@page d3-chart
 
 <!-- @page grid-axis -->
 
@@ -17,4 +18,3 @@ title: Charts
 @page histogram-chart
 @page line-chart
 @page venn-chart
-@page d3-chart

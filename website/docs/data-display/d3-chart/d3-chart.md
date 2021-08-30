@@ -1,7 +1,7 @@
 ---
-title: D3 Chart (RU)
+title: D3 conception and API
 fileSource: d3-chart
-tabName: Concept
+tabName: Concept and code
 beta: true
 ---
 
