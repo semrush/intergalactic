@@ -1,8 +1,9 @@
 import React from 'react';
-import { cleanup } from 'jest-preset-ui/testing';
+import { cleanup, render } from 'jest-preset-ui/testing';
 import snapshot from 'jest-preset-ui/snapshot';
 import { shouldSupportClassName, shouldSupportRef } from 'jest-preset-ui/shared';
 import Dot from '../src';
+import Button from '@semcore/button';
 
 describe('Dot', () => {
   afterEach(cleanup);
@@ -41,5 +42,15 @@ describe('Dot', () => {
     );
 
     expect(await snapshot(component)).toMatchImageSnapshot();
+  });
+
+  test('Should support hidden', async () => {
+    const { queryByTestId } = render(
+      <Button>
+        Button
+        <Dot hidden size="m" data-testid="dot" />
+      </Button>,
+    );
+    expect(queryByTestId('dot')).toBeFalsy();
   });
 });
