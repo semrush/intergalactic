@@ -5,6 +5,15 @@ import FormatText from '@docs/../client/components/FormatText';
 
 export default () => (
   <FormatText>
-    <ReactMarkdown source={README} />
+    <ReactMarkdown
+      source={README}
+      renderers={{
+        link: ({ href, children }) => (
+          <a href={href} target="_blank">
+            {children}
+          </a>
+        ),
+      }}
+    />
   </FormatText>
 );

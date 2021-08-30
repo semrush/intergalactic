@@ -2,7 +2,8 @@
 
 - create a new folder (example: `mkdir myProject`);
 - go to the created folder (example: `cd myProject`);
-- copy everything from [package](https://github.com/semrush/intergalactic/tree/master/semcore/email) there (example: `https://download-directory.github.io`);
+- copy everything from [package](https://github.com/semrush/intergalactic/tree/master/semcore/email) there (example:
+  [click to download](https://download-directory.github.io/?url=https://github.com/semrush/intergalactic/tree/master/semcore/email));
 - install all dependencies (example: `npm i`);
 - create your email to the following scheme `src/Name_Component/examples/any_name.html` (example: `mkdir -p src/test_email/examples; touch src/test_email/examples/index.html`);
 - css, if necessary, you can place here `src/Name_Component/index.css` (example: `touch src/test_email/index.css`);.
