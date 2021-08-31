@@ -4,7 +4,7 @@ fileSource: chart
 tabName: Guide
 ---
 
-> 💡 General information on data visualization is presented in [Data Visualization](/data-display/conception/).
+> 💡 General information on data visualization is presented in [Data Visualization](/data-display/chart/).
 
 @## Control types
 

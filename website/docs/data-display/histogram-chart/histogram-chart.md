@@ -4,7 +4,7 @@ fileSource: chart
 tabName: Guide
 ---
 
-> 💡 The basic data visualization rules are described in the [Basic principles and conception](/data-display/conception/).
+> 💡 The basic data visualization rules are described in the [Basic principles and concept](/data-display/chart/).
 
 @## Description
 

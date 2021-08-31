@@ -2,11 +2,9 @@
 title: Charts
 ---
 
-@page showcase
-@page conception
+@page chart-showcase
+@page chart
 @page d3-chart
-
-<!-- @page grid-axis -->
 
 @page color-palette
 @page chart-legend

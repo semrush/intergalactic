@@ -95,7 +95,7 @@ See [Breakpoints](/layout/breakpoints/) and [Grid](/layout/grid-system/) for mor
 
 We use many different types of charts in our interfaces, and each chart is used to visualize specific cases and data. But before you start visualizing anything, be sure to look up the guidelines for specific charts first.
 
-Check out [Data visualization](/data-display/conception/) for a very detailed guideline on how to build your widget with data: margins, axes, legend, tooltips, edge cases and all that good stuff.
+Check out [Data visualization](/data-display/chart/) for a very detailed guideline on how to build your widget with data: margins, axes, legend, tooltips, edge cases and all that good stuff.
 
 @## Tables
 

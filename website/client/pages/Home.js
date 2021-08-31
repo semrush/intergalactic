@@ -272,9 +272,10 @@ const Border = styled.div`
 const Category = styled.div`
   display: grid;
   grid-template-rows: repeat(auto-fill, 36px);
+  grid-template-columns: max-content;
   grid-auto-flow: column;
   width: 100%;
-  max-height: 405px;
+  max-height: 400px;
   margin: 0;
   padding: 0;
 `;
@@ -389,7 +390,9 @@ const renderSwitch = (value, data) => {
     case 'components':
       return getTabByTitle(['Components'], data);
     case 'charts':
-      return getTabByTitle(['Charts', 'Table'], data);
+      return getTabByTitle(['Charts'], data);
+    case 'table':
+      return getTabByTitle(['Table'], data);
     case 'ux':
       return getTabByTitle(['UX patterns'], data);
     case 'filters':
@@ -536,7 +539,8 @@ function Home() {
                   size="xl"
                 >
                   <TabLine.Item value={'components'}>Components</TabLine.Item>
-                  <TabLine.Item value={'charts'}>Charts & Table</TabLine.Item>
+                  <TabLine.Item value={'charts'}>Charts</TabLine.Item>
+                  <TabLine.Item value={'table'}>Table</TabLine.Item>
                   <TabLine.Item value={'ux'}>UX Patterns</TabLine.Item>
                   <TabLine.Item value={'filters'}>Filters</TabLine.Item>
                   <TabLine.Item value={'documentation'}>Developer Docs</TabLine.Item>

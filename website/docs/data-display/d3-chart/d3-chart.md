@@ -1,5 +1,5 @@
 ---
-title: D3 conception and API
+title: D3 concept and API
 fileSource: d3-chart
 tabName: Concept and code
 beta: true

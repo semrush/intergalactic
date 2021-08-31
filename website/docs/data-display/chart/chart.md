@@ -174,4 +174,4 @@ The state for one, two, zero, and partial values differ for different chart type
 
 General rules of "empty" states for widgets with charts are described in [Error & n/a widget states](/components/widget-empty/).
 
-@page conception-code
+@page chart-code
