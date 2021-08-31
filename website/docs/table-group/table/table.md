@@ -89,7 +89,7 @@ Paddings in a secondary table cell, whether it is a header or a cell in a row, a
 
 > 💡 For detailed information about sorting columns in the table, see [Working with table](/table-group/table-working/).
 
-@## The tooltip
+@## Tooltip
 
 The column header should not contain the `Info` icon. We always show additional information about the column in the tooltip by hovering over the column title.
 
