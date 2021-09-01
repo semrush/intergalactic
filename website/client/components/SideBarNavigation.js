@@ -20,6 +20,7 @@ const CategoryTitle = styled.div`
   padding: 8px 0 2px;
   font-weight: 500;
   font-size: 16px !important;
+  font-family: Inter, sans-serif;
   line-height: 1.5;
   &:hover,
   &:hover > * {
@@ -30,6 +31,7 @@ const CategoryTitle = styled.div`
 const CategoryItem = styled.a`
   padding: 2px 0 2px 24px;
   font-size: 16px;
+  font-family: Inter, sans-serif;
   line-height: 1.5;
   color: #171a22;
   cursor: pointer;

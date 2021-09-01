@@ -4,7 +4,7 @@ tabName: Code
 ---
 
 @## Grid example
-@email_html grid-index
+@email_html grid-column
 
 @## Basic template
 @email_html grid-template

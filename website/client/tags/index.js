@@ -75,6 +75,7 @@ export const tags = {
 
           return (
             <>
+              <style>{'* {font-family: inherit;}'}</style>
               <Example raw={ExampleComponent} {...props}>
                 <style>{emailCSS}</style>
                 <div dangerouslySetInnerHTML={{ __html: CompileHtml }} {...other} />
