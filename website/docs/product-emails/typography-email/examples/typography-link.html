@@ -17,6 +17,7 @@
       p,
       table.body {
         font-weight: 400;
+        line-height: normal;
         margin: 0;
         padding: 0;
       }
@@ -33,8 +34,12 @@
       td,
       th {
         font-family: Helvetica, Arial, sans-serif;
-        line-height: normal;
         text-align: left;
+      }
+      .spacer td,
+      .spacer th {
+        margin: 0;
+        padding: 0;
       }
       table {
         border-collapse: collapse;
@@ -82,9 +87,6 @@
       }
       .bg-lime-200 {
         background-color: #84d149;
-      }
-      .bg-lime-300 {
-        background-color: #008275;
       }
       .bg-red-100 {
         background-color: #f27387;
@@ -139,6 +141,9 @@
       }
       .bg-green-200 {
         background-color: #00bc98;
+      }
+      .bg-green-300 {
+        background-color: #008275;
       }
       .bg-pink {
         background-color: #ff7ad1;
@@ -609,14 +614,12 @@
       }
       .notice {
         border-radius: 10px;
-        padding: 24px;
+        padding: 20px 24px;
       }
       .notice_addon-left,
       .notice_addon-right {
         display: inline-block;
-        height: 40px;
         text-align: center;
-        width: 40px;
       }
       .notice_addon-left {
         margin-right: 12px;
@@ -716,9 +719,6 @@
       .text-lime-200 {
         color: #84d149;
       }
-      .text-lime-300 {
-        color: #008275;
-      }
       .text-orange-100 {
         color: #ff9400;
       }
@@ -764,6 +764,9 @@
       .text-green-200 {
         color: #00bc98;
       }
+      .text-green-300 {
+        color: #008275;
+      }
       .text-pink {
         color: #ff7ad1;
       }
@@ -775,23 +778,23 @@
         color: #0082e6;
       }
       .link-theme-default:hover {
-        color: #0070cc;
+        color: #0070cc !important;
       }
       .link-theme-dark {
         color: #575c66;
       }
       .link-theme-dark:hover {
-        color: #171a22;
+        color: #171a22 !important;
       }
     </style>
   </head>
   <body
     style="
       font-weight: 400;
+      line-height: normal;
       margin: 0;
       padding: 0;
       font-family: Helvetica, Arial, sans-serif;
-      line-height: normal;
       text-align: left;
     "
   >
@@ -800,10 +803,10 @@
       class="link link-theme-default"
       style="
         font-weight: 400;
+        line-height: normal;
         margin: 0;
         padding: 0;
         font-family: Helvetica, Arial, sans-serif;
-        line-height: normal;
         text-align: left;
         -webkit-text-decoration-line: underline;
         text-decoration-line: underline;
@@ -817,10 +820,10 @@
       class="link link-theme-dark"
       style="
         font-weight: 400;
+        line-height: normal;
         margin: 0;
         padding: 0;
         font-family: Helvetica, Arial, sans-serif;
-        line-height: normal;
         text-align: left;
         -webkit-text-decoration-line: underline;
         text-decoration-line: underline;
@@ -834,10 +837,10 @@
       class="link link-theme-dark bold"
       style="
         font-weight: 700;
+        line-height: normal;
         margin: 0;
         padding: 0;
         font-family: Helvetica, Arial, sans-serif;
-        line-height: normal;
         text-align: left;
         -webkit-text-decoration-line: underline;
         text-decoration-line: underline;
