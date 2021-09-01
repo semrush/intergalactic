@@ -4,26 +4,26 @@ title: Area chart
 
 @## Area
 
-- График с областями отображается с помощью компонента `Area`.
-- `Dots` — точки на линии.
-- Как и в [Line](https://i.semrush.com/data-display/d3-chart/line/), можно выбирать ломаный или сглаженный график с помощью передачи требуемого метода в curve
+- You can draw a chart with areas using the `Area` component.
+- `Dots` are the dots on the line chart.
+- As with the [Line chart](/data-display/d3-chart/line/), you can draw a polyline or a smoothed chart by passing the required method to the `curve` property.
 
 @example area
 
 @## Stacked area
 
-Если нужно отобразить соотношение нескольких частей к целому, то это можно сделать с помощью `<StackedArea/>` и `<StackedArea.Area/>`
+If you need to display a part-to-whole ratio — use the `<StackedArea/>` and `<StackedArea.Area/>` components.
 
 @example stacked-area
 
 @## Edge cases
 
-- Если в какой-то части графика отсутствуют данные, то этот период отображается пунктирной линией
-- Если известно только одно значение, то оно отображается точкой
-- Два последовательно известных значения уже будут отображаться как `Area`
+- If a part of the chart has no data — use a dashed line to draw that period.
+- If the data has only one value — display it as a dot.
+- Two consecutively known values will automatically be displayed as the `Area` component.
 
 @example area-without-data
 
-Для `StackedArea` используется та же самая логика
+The `StackedArea` component has the same logic.
 
 @example stacked-area-without-data

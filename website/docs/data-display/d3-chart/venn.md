@@ -4,21 +4,21 @@ title: Venn chart
 
 @## Venn
 
-Диаграмма Венна помогает увидеть всевозможные пересечения между двумя или более наборами
+A Venn chart allows you to see all kinds of intersections between two or more data sets.
 
-- `Circle` — сами круги.
-- `Intersection` — пересечение кругов.
+- `Circle` are a component for circles.
+- `Intersection` is for intersections between the circles.
 
 @example venn
 
 @## Custom intersection styles
 
-Если вы хотите изменить стили пересечений, то вы можете задать дополнительные стили выбранному пересечению
+If you want to change the intersection styles, you can add additional styles to the selected intersection.
 
 @example venn-custom-intersection
 
 @## Setting orientation
 
-Ориентацию и порядок наложения кругов также можно менять
+You can also change the orientation and stacking order of the circles.
 
 @example venn-orientation

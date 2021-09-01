@@ -5,23 +5,23 @@ tabName: Concept and code
 beta: true
 ---
 
-Этот компонент является основой для построения графиков.
+These components serve as the base for building charts from your data in the product.
 
-Мы не манипулируем вашими данными и не пытаемся из них что-то вычислить, отсортировать или проверить. Манипуляции с данными — работа команд, не компонента.
+They don't manipulate your data, and will not try to calculate, sort or check it in any way. Data manipulation is the product's job, not the component's.
 
-Мы считаем, что графики — это сложный, комплексный компонент, который нельзя применять одной строчкой, поэтому его API более "развесистый" и поддерживает все концепции дизайн-системы.
+Charts are a complex component that cannot be applied in a single line. That's why its API may appear a bit inflated, since it supports all the concepts of our design system.
 
-@## Концепция
+@## Concept
 
-- Мы хотим дать вам удобную возможность использовать императивный стиль d3 с декларативным подходом React.
-- В основе всех графиков лежит d3-scale, который вы передаете в наши графики в настроенном виде.
-- Мы стараемся дать доступ к каждой `svg`-ноде, чтобы вы могли дополнить или изменить её.
+- We want to provide you with a convenient way to use the imperative d3 style with React's declarative approach.
+- All charts are based on [d3-scale](https://github.com/d3/d3-scale), which you transfer to our charts in a customized form.
+- We try to provide access to each SVG node, so that you could modify it if needed.
 
-Каждый элемент, который вы будете размещать на графике, имеет под собой реальный svg-элемент или группу элементов. Например, когда вы рендерите `<Line/>`, вы получите svg `<line d={...}>`, и все свойства будут "сквозить" на этот элемент.
+Each element that you place on the chart is based on a real SVG element or a group of elements. For example, when you render `<Line/>`, you will get an SVG (`<line d = {...}>`). All properties you pass to `<Line/>` will go to the native SVG `<line d = {...}>` tag.
 
-Когда вы рендерите `<Line.Dots/>` (точки на линейном графике), вы получаете множество `<circle cx={...} cy={...}/>`, и все свойства будут "сквозить" на эти элементы.
+When you render `<Line.Dots/>` (dots on a line plot), you get a set of `<circle cx = {...} cy = {...}/>`. So all properties you pass to <Line.Dots/> will also go to the native SVG `<circle cx = {...} cy = {...}/>` tag.
 
-Для точечного изменения свойств каждой конкретной точки нужно передать функцию, которая будет вызываться на каждой точке с рассчитанными свойствами этой точки.
+For a point change in the properties of each specific dot, you need to pass a function that will be called at each dot with the calculated properties of this dot:
 
 ```jsx
 <Line.Dots>
@@ -33,10 +33,9 @@ beta: true
 </Line.Dots>
 ```
 
-> Функцию можно положить и в одиночный элемент, если ваши свойства вычисляются динамически.
+> You also can put functions into single elements if your properties are calculated dynamically.
 
-Многие `svg`-элементы не поддерживают вложенность, поэтому мы рендерим эти элементы последовательно.
-Например,
+Since many SVG elements don't support nesting, they are rendered sequentially. For example, this code example doesn't nest `<circle/>` in `<line/>`, but draws them one after another:
 
 ```jsx
 <Line>
@@ -44,75 +43,72 @@ beta: true
 </Line>
 ```
 
-не вкладывает `<circle/>` в `<line/>`, а отрисовывает их друг за другом.
+CSS is responsible for all the chart styles. See [Themes](/style/themes/) for more information on how to customize it.
 
-За всю стилистику графиков отвечает CSS. Про его кастомизацию можно почитать в гайде [Themes](/style/themes/).
+@## Base
 
-@## Основа
+Any SVG container must have absolute values for its size.
 
-Любой `svg`-контейнер должен иметь абсолютные значения своего размера.
+See [d3-scale docs on GitHub](https://github.com/d3/d3-scale) for more information about the types of `scale`, as well as their `range` and `domain`.
 
-Про виды `scale`, их `range` и `domain`, можно почитать на [странице d3 на GitHub](https://github.com/d3/d3-scale).
-
-> `range` горизонтального `scale` задается перевернутым, чтобы начало отсчета было в нижнем левом углу.
+> The `range` of the horizontal `scale` is inverted, so that the axes origin is at the bottom left corner.
 
 @example common
 
-@## Отступы
+@## Paddings & margins
 
-Размер `svg` и размер графика обычно различаются, чтобы не допустить обрезания вспомогательных элементов, таких как оси, значения на оси и легенда.
+SVG size and chart plot size are usually different to prevent the clipping of additional items such as axes, axis values, and the legend.
 
-Поэтому в `scale.range()` задаются значения со сдвигом.
+That's why values in `scale.range ()` are set with a shift.
 
 @example margin
 
-@## Оси
+@## Axes
 
-На самом деле, оси координат уже заданы, когда вы передали `scale` в рутовый компонент. Однако для отрисовки нужно их указать.
+When you pass `scale` to the root component it also sets the coordinate axes. However, you still need to specify them for them to render.
 
-- `XAxis/YAxis` - являются осевыми линиями.
-- `Ticks` - являются значениями на оси.
+- `XAxis/YAxis` are the axis lines.
+- `ticks` are the values on the axis.
 
-Также можно располагать несколько осей с разными позициями.
+It is also possible to have multiple axes with different positions.
 
-Количество тиков можно получить из метода `scale.ticks` или `scale.domain`. Чтобы вычислить примерное количество тиков, можно разделить размер графика на размер одного тика.
+You can get the number of ticks from the `scale.ticks` or `scale.domain` method. To calculate an approximate number of ticks, divide the chart size by the size of a one tick.
 
-> `YAxis` по умолчанию скрыта (`hide=true`) в соответствии с дизайном.
+> According to the design guide, `YAxis` is hidden by default `(hide = true)`.
 
 @example axis
 
-@## Значения на оси
+@## Axis values
 
-Значения и свойства на оси можно изменять, передав функцию.
+You can change the values and properties on the axis by passing a function.
 
-Тегом по умолчанию является `<text/>`, но его можно изменить, определив свойство `tag`. Например, на `foreignObject` для вставки `html`-компонентов.
+The default tag is `<text/>`, but you can change it by defining the `tag` property. For example, you can change it to `foreignObject` for inserting `html` components.
 
-> В аргументах функции вы можете получить вычисленные координаты `x/y` и произвести свои манипуляции со сдвигом.
+> The function arguments contain calculated XY coordinates that you can use to shift the object as needed.
 
 @example axis-ticks
 
-@## Вспомогательные линии
+@## Additional lines
 
-Вспомогательные линии формируются так же, как и тики.
+Additional lines are formed in the same way as ticks.
 
-> Для простоты `ticks` можно указать на самом компоненте `Axis`, и он автоматически передастся на `<Axis.Ticks/>` и на `<Axis.Grid/>`.
+> To make things easier, ticks can be specified on the `Axis` component itself, and it will be automatically passed to `<Axis.Ticks/>` and `<Axis.Grid/>`.
 
 @example axis-grid
 
-@## Заголовки осей
+@## Axes titles
 
-Подписи к осям формируются так же, как тики и вспомогательные линии.
+Axis titles are formed in the same way as ticks and additional lines.
 
-> По умолчанию заголовок для оси Oy устанавливается справа, а для оси Ox - сверху. Но вы можете изменить это, передав в `position` необходимое расположение: right, top, left или bottom.
+> By default, the title is set to the right for the Oy axis, and at the top for the Ox axis. However, you can change this condition by passing the desired location to `position`: `right`, `top`, `left`, or `bottom`.
 
 @example axis-titles
 
-@## Aдаптивный график
+@## Adaptive chart
 
-Для нормального отображения `svg` графиков на адаптивных макетах нужно динамически расчитывать ширину и высоту блока,
-поэтому мы создали компонент `ResponsiveContainer`, который поддерживает все свойства [Box](/layout/box-system/box-api), c помощью которых можно гибко настраивать размеры блока.
+For SVG charts to display correctly on responsive layouts, you need to dynamically calculate their width and height. To help you with that, we created the `ResponsiveContainer` component that supports all the [Box properties](/layout/box-system/box-api) and can help you flexibly adjust the chart size.
 
-> ResponsiveContainer поддерживает свойство `aspect` - это отношение размеров между шириной и высотой блока.
+> `ResponsiveContainer` supports the `aspect` property — the aspect ratio between the width and height of a chart.
 
 ```jsx
 <ResponsiveContainer aspect={1}> // width = height ...</ResponsiveContainer>
@@ -120,29 +116,29 @@ beta: true
 
 @example responsive
 
-@## Легенда графика
+@## Chart legend
 
-Реализация работы кликабельной легенды для чартов по [гайду](/data-display/chart-legend/)
+See [Chart legend](/data-display/chart-legend/) for a guide on how to implement a clickable chart legend.
 
 @example legend
 
-@## Синхронные графики
+@## Synchronous charts
 
-Для синхронизации графиков стоит передать общий `eventEmitter`.
+You can pass a common `eventEmitter` to synchronize the charts.
 
-> Будьте внимательны при выборе scale для оси (которая общая для разных графиков).
+> Be careful when choosing the `scale` for the axis, since it's common across different charts.
 
 @example sync-charts
 
-@## Экспорт в изображение
+@## Export to image (png, jpeg, webp)
 
 @example export-in-image
 
-@## Начальная загрузка
+@## Initial loading
 
-Во время первоначальной загрузки чартов вы можете использовать вместо них [Skeleton](/components/skeleton/) c соответствующим типом чарта. Если у чарта есть заголовок, то он должен отображаться во время загрузки.
+Use [Skeleton](/components/skeleton/) with the appropriate chart type for the initial loading of the charts. If a chart widget has a title, it should be displayed while the chart is loading.
 
-Пример использования вы можете посмотреть [здесь](https://i.semrush.com/data-display/line-chart/line-chart-code/#ac26f2).
+See one of the examples in the [Line chart guide](https://i.semrush.com/data-display/line-chart/line-chart-code/#ac26f2).
 
 @page line
 @page bar

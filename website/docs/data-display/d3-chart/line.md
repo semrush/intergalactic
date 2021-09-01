@@ -4,35 +4,34 @@ title: Line chart
 
 @## Line
 
-- Линейный график отображается с помощью компонента `Line`.
-- `Dots` — точки на линии.
+- Line charts are displayed using the `Line` component.
+- `Dots` are the dots on the line chart.
 
 @example line
 
-@## Hover Line
+@## Hover line
 
-- За реакцию на наведение отвечает отдельный компонент `HoverLine`. Он обычно используется в линейных графиках.
-- Свойствами `vertical` и `horizontal` можно задавать ориентацию компонента.
+- The `HoverLine` component is responsible for the hover effect. Use it with line charts.
+- You can set the orientation of the component using the `vertical` and `horizontal` properties.
 
 @example hover-line
 
 @## Tooltip
 
-Тултип можно навесить на любой элемент графика. Внутренний контент можно легко вычислить через функцию.
+You can add a tooltip to any element of a chart. The internal content can be easily identified with a function.
 
 @example tooltip-line
 
 @## Time
 
-Для вычисления промежуточных значений даты нужно использовать `scaleTime`. Подробную документацию можно прочитать на
-странице [d3-scale](https://github.com/d3/d3-scale#time-scales).
+Use `scaleTime` for calculating intermediate date values. See the [d3 Time Scales documentation](https://github.com/d3/d3-scale#time-scales) for more information.
 
-> Если значения тиков у вас уже есть, то можно взять `scaleLine`.
+> If you already have the tick values, you can use `scaleLine`.
 
 @example line-time
 
 @## Curve
 
-Для получения сглаженных линий нужно передать в график curve с требуемым методом закругления. Существующие методы можно посмотреть [здесь](https://github.com/d3/d3-shape#curves).
+To get smoothed lines, you need to transfer curve with the required rounding method to the chart. You can find all available methods in the [d3 Curves documentation](https://github.com/d3/d3-shape#curves).
 
 @example line-curve

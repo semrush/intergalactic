@@ -4,84 +4,84 @@ title: Bar chart
 
 @## Bar
 
-Для столбчатых графиков используйте `scaleBand` вместо `scaleLinear`. Подробнее смотрите в документации d3 про [Ordinal Scales](https://github.com/d3/d3-scale#ordinal-scales).
+Use `scaleBand` and `scaleLinear` for creating bar charts. See [d3 Ordinal Scales](https://github.com/d3/d3-scale#ordinal-scales) for more information.
 
-`scaleBand` может работать с нечисловыми значениями, поэтому в `domain` указывайте не пару значений (минимальное и максимальное), а полный список значений.
+`scaleBand` can work with non-numeric values, so be sure to specify a complete list of values in `domain` instead of just minimum and maximum values.
 
 @example bar
 
-@## Hover Bar
+@## Hover bar
 
-Так же, как и `<HoverLine/>`, есть компонент `<HoverRect/>`, который рисует прямоугольник при наведении на график.
+The `<HoverRect/>` component draws a rectangle when hovering the cursor over a chart. It's similar to how the `<HoverLine/>` component works for the line chart.
 
 @example hover-bar
 
 @## Tooltip
 
-Тултип можно навесить на любой элемент графика. Внутренний контент можно легко вычислить через функцию.
+You can add a tooltip to any element of a chart. The internal content can be easily identified with a function.
 
 @example tooltip-bar
 
 @## Date format
 
-Когда вам нужно отобразить на одной из осей даты, вам нужно использовать все тот же `scaleBand`.
+Use `scaleBand` when you need to display dates on one of the axes.
 
 @example bar-date
 
-@## Negative Bar
+@## Negative bar
 
-Столбик может быть и с отрицательными значениями. Для лучшей читаемости стоит добавить в конец дополнительную `XAxis`, спозиционированную на нуле.
+The bar can also have negative values. For better readability, add an additional `XAxis` positioned at zero at the end.
 
 @example bar-negative
 
-@## Horizontal Bar
+@## Horizontal bar
 
-График можно повернуть, используя компонент `<HorizontalBar/>`, поменяв `scaleBand` и `scaleLinear` местами.
+You can rotate a chart using the `<HorizontalBar/>` component by swapping `scaleBand` and `scaleLinear`.
 
 @example bar-horizontal
 
-@## Label Bar
+@## Label bar
 
-Для отрисовки значений столбиков необходимо передать функцию в `<Bar/>` и получить все необходимые значения.
+To draw the values of the bars, pass the function to `<Bar/>` to receive all required values.
 
 @example bar-label
 
-@## Group Bar
+@## Group bar
 
-Для объединения нескольких баров используйте `<GroupBar/>` и `<GroupBar.Bar/>`.
+To combine multiple bars, use `<GroupBar/>` and `<GroupBar.Bar/>`.
 
-> Компонент `<GroupBar.Bar/>` является настроенным `<Bar/>` и имеет такое же API.
+> The `<GroupBar.Bar/>` component is a customized `<Bar/>` that has the same API.
 
 @example bar-group
 
-@## Horizontal Group Bar
+@## Horizontal group bar
 
-Для объединения нескольких горизонтальных баров нужно использовать `<GroupBar.HorizontalBar/>`.
+To combine multiple horizontal bars, use `<GroupBar.HorizontalBar/>`.
 
-> Компонент `<GroupBar.HorizontalBar/>` является настроенным `<HorizontalBar/>` и имеет такое же API.
+> The `<GroupBar.HorizontalBar/>` component is a customized `<HorizontalBar/>` that has the same API.
 
 @example bar-horizontal-group
 
-@## Stacked Bar
+@## Stacked bar
 
-График с накоплением можно сделать с помощью компонентов `<StackBar/>` и `<StackBar.Bar/>`, соответственно.
+To draw a stacked chart, use `<StackBar/>` and `<StackBar.Bar/>`.
 
 @example bar-stack
 
-@## Horizontal Stacked Bar
+@## Horizontal stacked bar
 
-Горизонтальный график с накоплением можно сделать с помощью компонента `<StackBar.HorizontalBar/>`.
+To draw a horizontal stacked chart, use the `<StackBar.HorizontalBar/>` component.
 
 @example bar-horizontal-stack
 
 @## Trend line
 
-Графики можно совмещать друг с другом. Например, для отображения трендовой линии на столбчатом графике.
+You can combine charts with each other. For example, to display a trend line on a bar chart.
 
 @example bar-trend
 
 @## Background
 
-Графикам можно задавать задний фон при необходимости. Для этого используйте компоненты `<Bar.Background/>` и `<HorizontalBar.Background/>`
+Use the `<Bar.Background/>` and `<HorizontalBar.Background/>` components if you need to add a background to a chart plot.
 
 @example bar-background

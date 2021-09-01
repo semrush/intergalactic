@@ -4,25 +4,25 @@ title: Donut chart
 
 @## Donut
 
-- Круговой график отображается с помощью компонента `Donut`.
-- `Pie` — отдельный сектор.
-- `Label` — подпись внутри графика.
+- You can draw donut and pie charts with the `Donut` component.
+- `Pie` is a separate sector.
+- `Label` is a text label inside the chart.
 
 @example donut
 
 @## Semi-Donut
 
-Для построения половинчатого графика нужно указать значение `halfsize` и уменьшить высоту в два раза.
+To create a half-size chart, you need to specify the `halfsize` value and reduce the height of the chart by half.
 
 @example semi-donut
 
 @## Edge cases
 
-- Если какие-либо данные отсутствуют, то они не отображаются на графике
-- Если известно только одно значение, то для отображения его маленьким сектором необходимо указать также процент/значение неизвестных данных
+- If any data is missing — don't display it on the chart.
+- If only one value is known — display it with a small sector. Be sure to also specify the percentage or value of the unknown data.
 
 @example semi-donut-with-one-data
 
-- Если данных нет, то отображается пустой график серого цвета
+- If there is no data — show an empty gray chart.
 
 @example donut-without-data
