@@ -1,5 +1,5 @@
 ---
-title: Table
+title: Table principles
 fileSource: table
 tabName: Guide
 ---

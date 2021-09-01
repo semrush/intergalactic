@@ -6,6 +6,10 @@ tabName: Guide
 
 We use many types of charts in the interface. Each of them is designed to visualize different cases and data.
 
+- [Grid & axes](/data-display/chart/#a9e6f0)
+- [Chart tooltip](/data-display/chart/#ac9830)
+- [Chart legend](/data-display/chart-legend/)
+
 > Note that some chart types are in the development yet (they aren't clickable).
 
 @## Comparison

@@ -1,6 +1,6 @@
 ---
-title: Basic chart principles
-fileSource: chart
+title: Chart principles
+fileSource: d3-chart
 tabName: Guide
 ---
 
