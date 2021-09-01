@@ -1,18 +1,20 @@
 import React from 'react';
 import { Component, sstyled } from '@semcore/core';
 import createElement from './createElement';
-import Animation from './Animation';
+import ClipPath from './ClipPath';
+import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 
 import style from './style/bar.shadow.css';
 
 class BarRoot extends Component {
   static displayName = 'Bar';
   static style = style;
+  static enhance = [uniqueIDEnhancement()];
 
   static defaultProps = {
     color: '#50aef4',
     offset: [0, 0],
-    duration: 1500,
+    duration: 500,
   };
 
   getBackgroundProps(props, index) {
@@ -24,7 +26,20 @@ class BarRoot extends Component {
 
   render() {
     const SBar = this.Element;
-    const { styles, color, x, y, y0, data, scale, hide, offset, size, duration } = this.asProps;
+    const {
+      styles,
+      color,
+      x,
+      y,
+      y0,
+      data,
+      scale,
+      hide,
+      offset,
+      size,
+      duration,
+      uid,
+    } = this.asProps;
 
     const [xScale, yScale] = scale;
 
@@ -32,9 +47,9 @@ class BarRoot extends Component {
       return sstyled(styles)(
         <>
           <SBar
-            key={i}
+            key={uid}
             render="rect"
-            clipPath={`url(#cut-off-bar-${i})`}
+            clipPath={`url(#${uid})`}
             __excludeProps={['data', 'scale', 'value']}
             childrenPosition="above"
             value={d}
@@ -51,17 +66,17 @@ class BarRoot extends Component {
             use:duration={`${duration}ms`}
           />
           {duration && (
-            <Animation
-              key={`cut-off-bar-${i}`}
+            <ClipPath
+              key={`${uid}-animation`}
               setAttributeTag={(rect) => {
-                rect.setAttribute('y', 0);
+                rect.setAttribute('height', size[1]);
               }}
-              id={`cut-off-bar-${i}`}
+              id={uid}
               x="0"
-              y={size[1]}
+              y="0"
               width={size[0]}
-              height={size[1]}
-              transition={`y ${duration}ms ease-in-out`}
+              height={0}
+              transition={`height ${duration}ms ease-in-out, y ${duration}ms ease-in-out`}
             />
           )}
         </>,

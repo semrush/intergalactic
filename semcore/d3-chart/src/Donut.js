@@ -5,6 +5,9 @@ import canUseDOM from '@semcore/utils/lib/canUseDOM';
 import getOriginChildren from '@semcore/utils/lib/getOriginChildren';
 import { CONSTANT } from './utils';
 import createElement from './createElement';
+import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
+import { interpolate } from 'd3-interpolate';
+import { transition } from 'd3-transition';
 
 import style from './style/donut.shadow.css';
 
@@ -13,6 +16,7 @@ const DEFAULT_INSTANCE = Symbol('DEFAULT_INSTANCE');
 class DonutRoot extends Component {
   static displayName = 'Donut';
   static style = style;
+  static enhance = [uniqueIDEnhancement()];
 
   static defaultProps = ({ innerRadius = 0, halfsize = false, $rootProps: { size } }) => {
     const [width, height] = size;
@@ -31,9 +35,14 @@ class DonutRoot extends Component {
     return {
       d3Pie,
       d3Arc,
+      duration: 250,
     };
   };
 
+  get id() {
+    const { uid, id } = this.asProps;
+    return id || uid;
+  }
   virtualElement = canUseDOM() ? document.createElement('div') : {};
 
   generateGetBoundingClientRect(x = 0, y = 0) {
@@ -87,6 +96,59 @@ class DonutRoot extends Component {
     };
   }
 
+  componentDidUpdate(prevProps) {
+    const { data, duration, d3Arc } = this.asProps;
+    const arcs = this.arcs;
+    if (prevProps.data !== data && duration > 0) {
+      transition()
+        .selection()
+        .selectAll(`#${this.id} path`)
+        .transition()
+        .duration(duration)
+        // .delay(function(d, i) {
+        //   return i * (duration - 50);
+        // })
+        .attrTween('d', function(_, ind, paths) {
+          const d = arcs[ind];
+          // paths[ind].setAttribute('visibility', 'visible');
+          const i = interpolate(this._current, d);
+          this._current = i(0);
+          return function(t) {
+            return d3Arc(i(t));
+          };
+        });
+    }
+  }
+
+  componentDidMount() {
+    const { duration, d3Arc } = this.asProps;
+    const arcs = this.arcs;
+
+    if (duration > 0) {
+      transition()
+        .selection()
+        .selectAll(`#${this.id} path`)
+        .each(function(_, ind) {
+          this._current = arcs[ind];
+        })
+        .attr('visibility', 'hidden')
+        .transition()
+        .duration(duration)
+        // .delay(function(d, i) {
+        //   return i * (duration - 50);
+        // })
+        .attrTween('d', function(_, ind, paths) {
+          const d = arcs[ind];
+          paths[ind].setAttribute('visibility', 'visible');
+          const i = interpolate(d.startAngle + 0.1, d.endAngle);
+          return function(t) {
+            d.endAngle = i(t);
+            return d3Arc(d);
+          };
+        });
+    }
+  }
+
   render() {
     const { halfsize, size } = this.asProps;
     const [width, height] = size;
@@ -95,6 +157,7 @@ class DonutRoot extends Component {
     this.arcs = this.getArcs();
     return (
       <Element
+        id={this.id}
         render="g"
         childrenPosition="inside"
         transform={`translate(${width / 2},${height / k})`}
