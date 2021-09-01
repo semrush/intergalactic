@@ -183,8 +183,8 @@ With `Shift` pressed, you can select multiple lines at once.
 
 **The value in the cell can lead to:**
 
-- in the internal report-use the link/button, depending on the context;
-- to another site-use the gray `LinkExternalXS` icon, usually with a caption.
+- the internal report — use the link/button, depending on the context;
+- another site — use the `LinkExternalXS` icon (color — `var(--stone)`), usually with a caption.
 
 @## Long text in a cell
 
