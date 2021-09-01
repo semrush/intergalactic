@@ -11,9 +11,9 @@ The main font for Semrush interface is [Inter](https://fonts.google.com/specimen
 
 @## Basic text colors
 
-The main text color in our interface is `$gray20`.
+The main text color in our interface is `gray20`.
 
-The color used for secondary text is `$gray60`.
+The color used for secondary text is `gray60`.
 
 Besides, both paragraphs headings and text can be colored in our main semantic colors. Depending on the situation, they are green, red, and orange.
 
@@ -68,7 +68,7 @@ In our interface, we use headings of 6 sizes and 2 styles: `Medium (500)` and `B
 | h5  | ![h5](static/h5.png) | `font-size: 19px; line-height: 1.16; font-weight: medium;` | `--fs-400`, `--lh-400` |
 | h6  | ![h6](static/h6.png) | `font-size: 16px; line-height: 1.5; font-weight: bold;`    | `--fs-300`, `--lh-300` |
 
-A heading can contain additional information, such as a counter of results found, and so on. They can be found in table headings. In these cases, the additional information is presented by secondary text of `$gray60` color and `Light (300)` face.
+A heading can contain additional information, such as a counter of results found, and so on. They can be found in table headings. In these cases, the additional information is presented by secondary text of `gray60` color and `Light (300)` face.
 
 ![secondary text](static/secondary_info.png)
 
@@ -86,7 +86,7 @@ To improve readability on different screens, change the size of the headings, de
 | H4 (19/22) — `--fs-400` | H4 (25/28) — `--fs-500` |
 | H5 (16/24) — `--fs-300` | H5 (19/22) — `--fs-400` |
 | H6 (14/20) — `--fs-200` | H6 (16/24) — `--fs-300` |
-
+F
 @## Basic text sizes and paragraph margins
 
 There are three text sizes in our interface. The main font face is `Regular (400)`.
@@ -145,7 +145,7 @@ The text can be wrapped in a **hint link (pseudo-link)**. In this case, it becom
 
 | State        | Appearance                            | Description                                                                                                                                                                                                                               | Cursor                                                          |
 | ------------ | ------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- |
-| normal       | ![normal](static/hint-default.png)    | The dotted text has `$gray60` color.                                                                                                                                                                                                      | `help` or `pointer`, if clickable                               |
+| normal       | ![normal](static/hint-default.png)    | The dotted text has `gray60` color.                                                                                                                                                                                                      | `help` or `pointer`, if clickable                               |
 | active/hover | ![hover](static/hint-hover.png)       | **The link color is 12% darker than normal**. An absolute color is `#676767`. The dotted underlining remains. If a link is used together with the icon, the latter changes its color along with the text — they have the same hover area. | `help`, `default` or `pointer` (depending on the usage context) |
 | disabled     | ![disabled](static/hint-disabled.png) | **The transparency of a component changes by 30%**. Use this state as the last resort and be sure to lebel the disabled link with an explanatory tooltip.                                                                                 | `default`                                                       |
 | visited      |                                       | This link does not have `visited` state.                                                                                                                                                                                                  |                                                                 |
