@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.5.4] - 2021-9-1
+
+### Fixed
+
+- Fixed change `displayedPeriod` after change `value` for family pickers.
+
 ## [2.5.3] - 2021-8-26
 
 ### Changed
