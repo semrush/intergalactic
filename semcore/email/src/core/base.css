@@ -22,7 +22,12 @@ td,
 th {
   font-family: var(--font-family);
   text-align: left;
-  line-height: normal;
+}
+
+.spacer td,
+.spacer th {
+  padding: 0;
+  margin: 0;
 }
 
 table {

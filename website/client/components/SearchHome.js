@@ -73,6 +73,7 @@ const Input = styled.input`
 
 const DesktopInput = styled(Input)`
   display: none;
+  font-family: Inter, sans-serif;
   @media (min-width: 768px) {
     display: flex;
   }

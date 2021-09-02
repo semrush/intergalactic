@@ -53,6 +53,7 @@ const HeaderWrapper = styled.header`
 const Item = styled.span`
   padding: 10px 12px;
   font-size: 16px;
+  font-family: Inter, sans-serif;
   &:hover {
     text-decoration: underline;
   }
@@ -252,11 +253,13 @@ const Links = styled.div`
 const IntergalacticLink = styled.a`
   color: #ff642d !important;
   margin-left: 8px;
+  font-family: FactorA-Bold, sans-serif;
 `;
 
 const DevportalLink = styled.a`
   display: flex;
   align-items: center;
+  font-family: FactorA-Bold, sans-serif;
   img {
     margin-bottom: 7px;
   }
