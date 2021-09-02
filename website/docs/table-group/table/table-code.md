@@ -2,42 +2,14 @@
 title: Code
 ---
 
-@## Simple use example
+Our library has two components for tables:
 
-@example easy
+- `Table` component is the old one.
+- `DataTable` component is completely new and based on `CSS-flex` technology and does not use native tables.
 
-@## Table with an accordion
+**We recommend you to use `DataTable` component 😉**
 
-Example of a table with an [accordion](/components/accordion) 😎
+@## Examples
 
-@example accordion
-
-@## Table with dynamic column width
-
-Example of a table where you can change the width of columns using the [react-resizable library](https://github.com/STRML/react-resizable) ✨
-
-@example resize
-
-@## Example with scroll and shadow
-
-@example scroll
-
-@## Table with a fixed header
-
-@example sticky-head
-
-@## Secondary table
-
-You can use secondary table for compact displaying small amount of data inside widgets.
-
-@example secondary
-
-@## Example of data being loaded for the first time
-
-@example skeleton
-
-@## Table with no data
-
-These states for widgets are described in detail in [Widget enpty state](/components/widget-empty/widget-empty-code/).
-
-@example no-data
+- For the old `Table` component see the [Old Table code and API](/table-group/table-old/).
+- For `DataTable` component see code examples in the [DataTable code and API](/table-group/data-table/).

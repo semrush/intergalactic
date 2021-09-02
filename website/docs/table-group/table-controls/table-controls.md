@@ -1,5 +1,5 @@
 ---
-title: Working with table
+title: Table controls
 ---
 
 > 💡 For all the main table styles and rules, see [Table](/table-group/table/).
@@ -67,7 +67,7 @@ If there is a control inside the cell (for example, a select or checkbox).
 | **Statuses**. At the discretion of the priority, SOFTWARE, or utility for users. We recommend using gradations of the form: good/bad, necessary/not necessary, fresh/not fresh, higher/lower, etc.                               | At the discretion of UX and PO       | At the discretion of UX and PO      |
 | **Dates**                                                                                                                                                                                                                        | From a newer date to an older one    | From an older date to a newer one   |
 
-@## Changing the size of columns
+@## Resizing of the columns
 
 When you hover over a border in the header, the cursor changes to `col-resize`, and the border color changes to `var(--stone)`.
 
@@ -79,7 +79,7 @@ The area that you can grab and change the size of the column includes not only t
 
 > 💡 Changing the size of one column should not change the size of other columns.
 
-@## Table row with accordion
+@## Accordion in the table
 
 A table row can be expanded by accordion type. Within such a row, there can be almost anything (within reasonable limits). As a rule, this is more detailed information on line data - graph, text, links, etc.
 
@@ -119,7 +119,7 @@ The [Checkbox](/components/checkbox/) must have the entire cell in the table as 
 
 If the table has pagination and row selection using [Checkbox](/components/checkbox/), it is important to follow the following logic. When switching between pages, checkboxes should not be reset. _For example, on page 1, the user selected 3 lines, went to page 2, and selected 5 lines there. When you return to page 1, the selected rows should be saved. That is, on the 1st page there will be 3 lines, on the 2nd-5 lines._
 
-@## The status and actions row
+@## Status and actions row
 
 > 💡 We are testing this solution. We may update this pattern soon. The line must have `transition: 400ms` specified for appearing and hiding.
 
@@ -163,13 +163,13 @@ If there are any other clickable icons in the line, then the edit icon should al
 
 ![content row edit](static/edit-5.png)
 
-@## Highlighting found content in the table
+@## Highlighting content in the table
 
 When searching a table, sometimes you need to highlight the found match in the data. In this case, we highlight what we find with the color `var(--light-orange)` with a transparency of 40% (the absolute color is `#FDE0BD`).
 
 ![table highlight](static/table-highlight.png)
 
-@## Main checkbox 👑
+@## Checkboxes
 
 To highlight all rows, the table header must have the main [Checkbox](/components/checkbox/). When you click on the checkbox in the header, all the lines on **the first page are highlighted**.
 
@@ -179,7 +179,7 @@ With `Shift` pressed, you can select multiple lines at once.
 
 ![selected rows](static/selected-shift-1.png) ![selected rows](static/selected-shift-2.png)
 
-@## Clickable value in a cell
+@## Internal and external link
 
 **The value in the cell can lead to:**
 

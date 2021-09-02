@@ -19,7 +19,7 @@ A block with a loading state or error state must have `margin-top: 40px`, so tha
 
 > 💡 It is also not recommended to change the table height when changing states.
 
-@## The first data loading
+@## First data loading
 
 When loading data for the first time, show the structure of the loaded page and data. Use the [Skeleton](/components/skeleton/).
 
@@ -69,7 +69,7 @@ The block with the spinner gets the `sticky` property and is centered relative t
 
 ![table with sticky spinner](static/sticky-loading-1.png)
 
-@## "Empty" table
+@## Empty table
 
 The table is empty and has no data in it, because the data was either deleted or was not provided at the beginning of working with the table.
 
@@ -127,7 +127,7 @@ There was an error in the tool on the backend, so we can't show the data. For mo
 
 @## Message text
 
-It is important to indicate the following things in the "empty" state message:
+It is important to indicate the following things in the empty state message:
 
 - In the heading – the essence of the current situation.
 - In the description – what you need to do to change the state.
@@ -135,9 +135,9 @@ It is important to indicate the following things in the "empty" state message:
 
 For more information about the rules for such States, see the guides – [Errors, n/a, nothing found in widgets](/components/widget-empty/), [Global errors](/patterns/global-errors/), etc.
 
-@## The header of the table
+@## Table header
 
-For all "empty" states of the table, we keep the header. If it has sorting icons, we also keep them.
+For all empty states of the table, we keep the header. If it has sorting icons, we also keep them.
 
 ![empty table with head](static/empty-yes-no.png)
 

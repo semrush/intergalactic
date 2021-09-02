@@ -14,7 +14,7 @@ tabName: Guide
 
 ### Types
 
-There are two types of tables in our interface – `primary` and `secondary`. Colors of both are based on `$stone` and `$mercury` with different transparency. These colors with transparency are converted to absolute.
+There are two types of tables in our interface – [primary](/table-group/table-primary/) and [secondary](/table-group/table-secondary/). Colors of both are based on `$stone` and `$mercury` with different transparency. These colors with transparency are converted to absolute.
 
 ### Common styles for the table content
 
@@ -28,62 +28,6 @@ There are two types of tables in our interface – `primary` and `secondary`. Co
 | Select in the header                   | [tertiary select, size M](components/select) |
 | Select in the cell                     | [tertiary select, size L](components/select) |
 | Checkbox in the header and in the cell | size L                                       |
-
-@## Primary table
-
-**Primary** is the basic type of tables in our interface for displaying large data volumes and complex functionality.
-
-### Spacing
-
-The `primary` table cell paddings, whether it is a header or a cell in a row, are 12px.
-
-![primary scheme](static/primary-scheme.png)
-
-### Styles
-
-> 💡 Content inside header cells and rows is aligned to the top.
-
-| Description                     | Appearance                                 | Styles                                                                                              |
-| ------------------------------- | ------------------------------------------ | --------------------------------------------------------------------------------------------------- |
-| Heading                         | ![th styles](static/th-styles.png)         | `background-color: #F2F3F4;` `border-bottom: 1px solid $mercury; border-right: 1px solid $mercury;` |
-| Heading of the scrollable table | ![th styles](static/th-styles-scroll.png)  | When scrolling a page with a table, the header should not have a shadow.                            |
-| Default row                     | ![td default](static/td-default.png)       | `border-bottom: 1px solid $mercury;`                                                                |
-| The last line of the accordion  | ![table accordion](static/accordion-3.png) | `border-bottom: 1px solid $stone;`                                                                  |
-
-### Multi-level header
-
-In some cases, a header should comprise two or more rows. Following conditions are recommended to be met:
-
-- the title of the merged column should be always center-aligned;
-- you can't sort by the head cell.
-
-![table head example](static/two-row-head.png)
-
-@## Secondary table
-
-**Secondary** is a secondary table type in our interface for compact displaying small amount of data inside widgets. These tables commonly either don't have any functionality, or they have something simple like sorting.
-
-### Spacing
-
-Paddings in a secondary table cell, whether it is a header or a cell in a row, are 8px.
-
-![secondary scheme](static/secondary-scheme.png)
-
-### Styles
-
-| Description | Appearance                                            | Styles                                                              |
-| ----------- | ----------------------------------------------------- | ------------------------------------------------------------------- |
-| Heading     | ![secondary table](static/secondary-table-sorted.png) | `background-color: transparent; border-bottom: 1px solid $stone;`   |
-| Default row | ![secondary table](static/secondary-table.png)        | `background-color: transparent; border-bottom: 1px solid $mercury;` |
-
-@## Interaction
-
-### Table header states
-
-| State  | Appearance                         | Styles                                        |
-| ------ | ---------------------------------- | --------------------------------------------- |
-| hover  | ![th hover](static/th-hover.png)   | `background-color: #E4E7E8; cursor: pointer;` |
-| sorted | ![th sorted](static/th-sorted.png) | `background-color: #E4E7E8; cursor: pointer;` |
 
 @## Sorting
 
@@ -139,7 +83,7 @@ If the entire row is in the `disabled` state, it should not have the `hover` sta
 - When you `hover` over the parent column, all child rows are highlighted.
 - When you `hover` over the child row, the parent column is highlighted.
 
-### The coloring of cells in other colors
+### Cells coloring
 
 If necessary, you can change the cell color using our [base color palette](/style/color/). In this case, use a color with a transparency of 5 to 15%.
 
@@ -149,9 +93,7 @@ Rules for the hover state of elements with transparency, see in [Variables](/sty
 
 ![td styles hover](static/td-style-hover.png)
 
-@## Use in UX/UI
-
-### Text alignment inside a table cell
+@## Text alignment inside a cell
 
 The text inside the cells in the rows and in the header is aligned according to the following rules.
 
@@ -219,6 +161,4 @@ If the table contains a small amount of data, we show the pagination status for 
 About table states you can read in a particular notable document [Table states](/table-group/table-states/) ✨
 
 @page table-a11y
-@page table-api
 @page table-code
-@page table-changelog

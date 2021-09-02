@@ -1,5 +1,5 @@
 ---
-title: DataTable
+title: DataTable code and API
 fileSource: data-table
 tabName: Code
 ---
