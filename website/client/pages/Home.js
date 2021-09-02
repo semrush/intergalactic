@@ -24,11 +24,11 @@ import { css } from '@semcore/core';
 const stylesTabLine = css`
   STabLine {
     margin: auto;
-    width: 660px;
+    width: 810px;
   }
 
   STabLineItem[size='xl'] {
-    font-size: 18px;
+    font-size: 24px;
   }
 `;
 
@@ -302,12 +302,12 @@ const LinkDisabled = styled.div`
 const TableOverlay = styled.div`
   display: flex;
   & .component {
-    margin-right: 38px;
+    margin-right: 40px;
   }
   h2 {
     margin: 0;
     margin-bottom: 8px;
-    font-size: 21px;
+    font-size: 16px;
     font-family: FactorA-Bold, sans-serif;
   }
   a {

@@ -1,8 +1,7 @@
 ---
-title: D3 concept and API
+title: D3 chart concept and API
 fileSource: d3-chart
 tabName: Concept and code
-beta: true
 ---
 
 These components serve as the base for building charts from your data in the product.
@@ -140,10 +139,5 @@ Use [Skeleton](/components/skeleton/) with the appropriate chart type for the in
 
 See one of the examples in the [Line chart guide](https://i.semrush.com/data-display/line-chart/line-chart-code/#ac26f2).
 
-@page line
-@page bar
-@page area
-@page donut
-@page venn
 @page d3-chart-api
 @page d3-chart-changelog

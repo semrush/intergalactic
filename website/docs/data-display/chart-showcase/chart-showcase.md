@@ -16,11 +16,13 @@ We use many types of charts in the interface. Each of them is designed to visual
 
 Compare values of items in a list that has no particular order.
 
-_For example: Compare revenues in a list of products, or transaction volumes in a list of banks._
+_For example: Compare audience in a list of selected domains versus the whole market._
 
 - Bar chart (column)
+- Bar chart (horizontal)
 - Donut chart
-- Scatterplot chart
+- Bubble chart
+- Lollipop chart
 
 @## Ranking
 
@@ -31,28 +33,33 @@ _For example: Rank countries by market share._
 - Bar chart (column)
 - Bar chart (horizontal)
 - Line chart
+- Lollipop chart
 
 @## Change over time (Trend)
 
 Show the variation of values over time.
 
-_For example: Show the stock level over time, or expenses by month compared to budget._
+_For example: Show the traffic trend over time for different devices._
 
 - Line chart
 - Area chart
 - Stacked area chart
+- Combined chart
 - Bar chart (column)
+- Stacked bar chart
 - Heatmap chart
+- Lollipop chart
 
 @## Part to whole
 
 Display the contribution of individual values to the whole.
 
-_For example: Show the percentage of sales attributed to various regions._
+_For example: Show the traffic share for different devices._
 
 - Donut chart
 - Bar chart (column)
 - Bar chart (horizontal)
+- Stacked bar chart
 - Stacked area chart
 - Funnel chart
 
@@ -60,39 +67,50 @@ _For example: Show the percentage of sales attributed to various regions._
 
 Show the distribution within a set of values.
 
-_For example: Show how exam scores are spread or grouped around the median score._
+_For example: Show the distribution of leaders, niche players and game changeres in the market._
 
 - Bar chart (column)
+- Stacked bar chart
 - Area chart
 - Stacked area chart
 - Scatterplot chart
+- Bubble chart
 - Heatmap chart
+- Lollipop chart
+- Radar chart
+- Polar chart
+- Quadrant chart
+- Alluvial chart
 
 @## Correlation
 
 Show the correlation between two or three sets of values.
 
-_For example: Show how sales revenues are impacted by customer age._
+_For example: Show how website traffic are impacted by customer age._
 
 - Venn chart
 - Scatterplot chart
 - Heatmap chart
 - Kagi chart
+- Alluvial chart
 
 @## Deviation
 
 Show the deviation, difference, or gap between two sets of values.
 
-_For example: Show the deviation between actual revenue and target revenue by product._
+_For example: Show the deviation between actual and target audience of the website._
 
 - Bar chart (column)
+- Stacked bar chart
 - Area chart
+- Stacked area chart
 - Scatterplot chart
+- Lollipop chart
 
 @## Geographical values
 
 Use a map to show the values associated with geographical areas.
 
-_For example: Show revenues by country or region on a map._
+_For example: Show website audience by country or region on a map._
 
 - Choropleth map

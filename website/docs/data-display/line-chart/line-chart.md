@@ -120,4 +120,5 @@ Styles can be found in the guide book for [Skeleton](/components/skeleton/).
 ![skeleton](static/skeleton.png)
 
 @page line-chart-api
-@page line-chart-code
+@page line-chart-d3-code
+@page line-chart-recharts-code

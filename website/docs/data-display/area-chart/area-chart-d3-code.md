@@ -2,7 +2,7 @@
 title: D3 code
 ---
 
-> See core principles, concept description, API and changelog in the [Basic principles and concept](/data-display/d3-chart/).
+> See core principles, concept description, API and changelog in the [Chart principles](/data-display/d3-chart/).
 
 @## Area
 

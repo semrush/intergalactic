@@ -1,6 +1,8 @@
 ---
-title: Bar chart
+title: D3 code
 ---
+
+> See core principles, concept description, API and changelog in the [Chart principles](/data-display/d3-chart/).
 
 @## Bar
 

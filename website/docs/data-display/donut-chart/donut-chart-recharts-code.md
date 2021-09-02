@@ -1,14 +1,16 @@
 ---
-title: Code
+title: Recharts code
 ---
+
+> 🎉 Try out [new chart library](/data-display/area-chart/area-chart-d3-code/) developed entirely with the D3.
 
 @## An example of a simple use
 
-@example simple
+@example simple-recharts
 
 @## Complex example with filtering
 
-@example complex
+@example complex-recharts
 
 @## Increasing the sector by an event on the chart
 
@@ -57,4 +59,4 @@ _If something went wrong, here's a working [example](https://i.semrush.com/data-
 
 @## Data loading
 
-@example skeleton
+@example skeleton-recharts

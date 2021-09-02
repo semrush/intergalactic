@@ -36,56 +36,17 @@ In our interfaces, data is usually placed in widgets, which consist of:
 | ---------------------------------------------------- | ----------------------------------------------------- |
 | ![chart-heading-subinfo](static/heading-subinfo.png) | Subtitle — 14px (M size, `--fs-200`), `$gray60` color |
 
-@## Control types
+@## Chart controls
 
-### Types
-
-By their effect on the widget data the controls located next to the chart can be of the following types.
-
-**General widget controls.** These shall always be placed on the same level as the title. These include:
-
-- widget settings;
-- chart display settings (smooth/sharp line);
-- screenshot settings (for future use).
-
-**The controls that make effect upon the displayed data, axes, and some controls shown below.** As well as derivatives of such controls. They are placed to the left and right relative to the chart.
-
-**Always place the following controls to the left** relative to the chart:
-
-- legend;
-- country select;
-- device (text or [Select](/components/select/));
-- other controls. For example, a campaign selector in Brand Monitoring, a comparison selector in Sensor, or other text information (for example, Chart scope);
-- notes ([Notes module](/data-display/notes/)).
-
-**Always place the following controls to the right** relative to the chart: As a rule, above the data they can produce an effect on or the data they are associated with:
-
-- period (text or [Pills](/components/pills/));
-- custom period;
-- data frequency ([Pills](/components/pills/));
-- zoom controls.
-
-For more information about widget controls, see [Chart controls](/data-display/chart-controls/).
+For detailed information about widget controls, see [Chart controls](/data-display/chart-controls/).
 
 @## Collapsing rows
 
-You can collapse rows if necessary.
-
-Separate different controls/groups of controls with a 1px separator in the color `$gray80` with `padding: 0px 16px;`.
-
-![widget-merge](static/widget-yes-no.png)
+You can collapse widget rows if necessary. See more information in the [Chart controls](/data-display/chart-controls/#adbaac) guide.
 
 @## Legend
 
 **Legend** is additional visual information that explains the data on the chart.
-
-![legend-scheme](static/legend.png)
-
-1. Legend items can be controls ([checkboxes](/components/checkbox/) or [radio](/components/radio/) buttons) or non-clickable markers (square). The marker colors shall match the chart lines. In addition to the marker and text name, the legend item can also contain an icon and/or counter.
-2. If there is only one line on the chart / one data set, etc., then do not display the legend — the purpose of the line should be clear from the chart context.
-3. The recommended position of the legend is the top left position above the chart. However, in some cases (for example, two charts under each other with one hover, or a lot of controls over the chart), the legend can be moved under the chart.
-4. **The margin between the legend items is 16px.**
-5. If parts of the legend are very large, they will be moved to the second row. In this case the spacing between the rows is 8px.
 
 The legend can be clickable or non-clickable (static). For more information about the legend and its types, see [Chart legend](/data-display/chart-legend/).
 

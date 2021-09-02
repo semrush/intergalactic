@@ -1,10 +1,10 @@
 ---
 title: Bar chart
 fileSource: chart
-tabName: Description
+tabName: Guide
 ---
 
-> 💡 The basic data visualization rules are described in the [Basic principles and concept](/data-display/chart/).
+> 💡 The basic data visualization rules are described in the [Chart principles](/data-display/chart/).
 
 @## Description
 
@@ -158,4 +158,5 @@ When you hover over a clickable date, it changes color to `$white` and is highli
 @page bar-chart-vertical
 @page bar-chart-horizontal
 @page bar-chart-api
-@page bar-chart-code
+@page bar-chart-d3-code
+@page bar-chart-recharts-code

@@ -140,4 +140,5 @@ In this case, we show the sets centered on the left side.
 ![venn chart skeleton](static/venn-skeleton.png)
 
 @page venn-chart-api
-@page venn-chart-code
+@page venn-chart-d3-code
+@page venn-chart-recharts-code

@@ -10,7 +10,7 @@ export default () => {
         <Donut.Pie dataKey="other" color="#E4ECF1" />
         <Donut.Label>
           <Text tag="tspan" x="0" dy="-1.2em" fill="#757575" size={400}>
-            Speed
+            Keyword volume
           </Text>
         </Donut.Label>
       </Donut>
