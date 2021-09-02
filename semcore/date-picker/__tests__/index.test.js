@@ -37,7 +37,6 @@ describe('DatePicker', () => {
   });
 
   test('Should support set custom displayPeriod', () => {
-    mockDate('2020-02-10T12:00:00.808Z');
     const { getByText, rerender } = render(
       <DatePicker visible defaultDisplayedPeriod="2020-03-10T12:00:00.808Z" />,
     );
@@ -46,28 +45,36 @@ describe('DatePicker', () => {
     expect(getByText('April 2020')).toBeTruthy();
   });
 
-  test('Should support set custom displayPeriod after changed date', () => {
+  test('Should support set custom displayPeriod after changed displayedPeriod', () => {
     jest.useFakeTimers();
-    mockDate('2020-02-10T12:00:00.808Z');
     const component = (
-      <DatePicker defaultVisible defaultDisplayedPeriod="2020-03-10T12:00:00.808Z">
-        <DatePicker.Trigger data-testid="trigger" />
-        <DatePicker.Popper>
-          <DatePicker.Header>
-            <DatePicker.Title />
-            <DatePicker.Next data-testid="next" />
-          </DatePicker.Header>
-        </DatePicker.Popper>
-      </DatePicker>
+      <DatePicker defaultVisible defaultDisplayedPeriod="2020-03-10T12:00:00.808Z" />
     );
-    const { getByText, getByTestId } = render(component);
-    fireEvent.click(getByTestId('next'));
+    const { getByText, getByLabelText } = render(component);
+    fireEvent.click(getByLabelText('Next period'));
     // change visible
-    fireEvent.click(getByTestId('trigger'));
+    fireEvent.click(getByText('Select date'));
     jest.runAllTimers();
-    fireEvent.click(getByTestId('trigger'));
+    fireEvent.click(getByText('Select date'));
     jest.runAllTimers();
     expect(getByText('March 2020')).toBeTruthy();
+    jest.useRealTimers();
+  });
+
+  test('Should support set custom displayPeriod after changed value date', () => {
+    jest.useFakeTimers();
+    const component = (
+      <DatePicker defaultVisible defaultDisplayedPeriod="2021-09-10T12:00:00.808Z" />
+    );
+    const { getByText, getByLabelText } = render(component);
+    fireEvent.click(getByLabelText('Prev period'));
+    // change visible
+    fireEvent.click(getByText('15'));
+    jest.runAllTimers();
+    // change visible
+    fireEvent.click(getByText('Aug 15, 2021'));
+    jest.runAllTimers();
+    expect(getByText('August 2021')).toBeTruthy();
     jest.useRealTimers();
   });
 
@@ -144,28 +151,37 @@ describe('DateRangePicker', () => {
     expect(getByText('April 2020')).toBeTruthy();
   });
 
-  test('Should support set custom displayPeriod after changed date', () => {
+  test('Should support set custom displayPeriod after changed displayedPeriod', () => {
     jest.useFakeTimers();
-    mockDate('2020-02-10T12:00:00.808Z');
     const component = (
-      <DateRangePicker defaultVisible defaultDisplayedPeriod={['2020-03-10T12:00:00.808Z']}>
-        <DateRangePicker.Trigger data-testid="trigger" />
-        <DateRangePicker.Popper>
-          <DateRangePicker.Header>
-            <DateRangePicker.Title />
-            <DateRangePicker.Next data-testid="next" />
-          </DateRangePicker.Header>
-        </DateRangePicker.Popper>
-      </DateRangePicker>
+      <DateRangePicker defaultVisible defaultDisplayedPeriod={['2020-03-10T12:00:00.808Z']} />
     );
-    const { getByText, getByTestId } = render(component);
-    fireEvent.click(getByTestId('next'));
+    const { getByText, getByLabelText } = render(component);
+    fireEvent.click(getByLabelText('Next period'));
     // change visible
-    fireEvent.click(getByTestId('trigger'));
+    fireEvent.click(getByText('Select date period'));
     jest.runAllTimers();
-    fireEvent.click(getByTestId('trigger'));
+    fireEvent.click(getByText('Select date period'));
     jest.runAllTimers();
     expect(getByText('March 2020')).toBeTruthy();
+    jest.useRealTimers();
+  });
+
+  test('Should support set custom displayPeriod after changed value date', () => {
+    jest.useFakeTimers();
+    const component = (
+      <DateRangePicker defaultVisible defaultDisplayedPeriod={['2021-09-10T12:00:00.808Z']} />
+    );
+    const { getByText, getByLabelText } = render(component);
+    fireEvent.click(getByLabelText('Prev period'));
+    // change visible
+    fireEvent.click(getByText('31'));
+    fireEvent.click(getByText('Apply'));
+    jest.runAllTimers();
+    // trigger
+    fireEvent.click(getByText('Aug 31, 2021'));
+    jest.runAllTimers();
+    expect(getByText('August 2021')).toBeTruthy();
     jest.useRealTimers();
   });
 

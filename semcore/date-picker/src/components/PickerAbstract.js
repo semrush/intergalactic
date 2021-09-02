@@ -72,9 +72,10 @@ class PickerAbstract extends Component {
       highlighted: null,
       value: [
         null,
-        () => {
+        (value) => {
           // TODO: работает только из-за new Date() !== new Date()
           this.handlers.visible(false);
+          this.handlers.displayedPeriod(value);
         },
       ],
     };
