@@ -62,9 +62,9 @@ function Dots(props) {
   }, [eventEmitter, data, x, y]);
 
   const renderCircle = useCallback(
-    (props) => {
-      return <FadeInOut tag="circle" duration={duration} {...props} />;
-    },
+    React.forwardRef((props, ref) => {
+      return <FadeInOut ref={ref} tag="circle" {...props} />;
+    }),
     [props],
   );
 

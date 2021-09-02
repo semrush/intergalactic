@@ -1,13 +1,13 @@
 import React from 'react';
-import createComponent, { Component, Root, sstyled } from '@semcore/core';
-import style from './style/bar.shadow.css';
+import createComponent, { Component } from '@semcore/core';
+import propsForElement from '@semcore/utils/lib/propsForElement';
 
 class ClipPath extends Component {
   static defaultProps = {
     tag: 'rect',
     id: '',
     transition: '',
-    setAttributeTag: () => {},
+    setAttributeTag: null,
   };
 
   refClipPath = React.createRef();
@@ -19,25 +19,17 @@ class ClipPath extends Component {
     Array.from(svg.querySelectorAll(`[clip-path="url(#${id})"]`)).forEach((node) => {
       node?.getTotalLength();
     });
-    Array.from(document.querySelectorAll(`#${id} ${tag}`)).forEach(setAttributeTag);
-  }
-
-  isRenderClipPath() {
-    return true;
-    return !this.refClipPath.current;
+    setAttributeTag &&
+      Array.from(document.querySelectorAll(`#${id} ${tag}`)).forEach(setAttributeTag);
   }
 
   render() {
-    const { id, transition, tag: Tag, style, ...other } = this.asProps;
-    if (this.isRenderClipPath()) {
-      return (
-        <clipPath ref={this.refClipPath} id={id}>
-          <Tag style={{ ...style, transition }} {...other} />
-        </clipPath>
-      );
-    }
-
-    return null;
+    const { id, transition, tag: Tag, style, className, ...other } = this.asProps;
+    return (
+      <clipPath ref={this.refClipPath} id={id}>
+        <Tag style={{ ...style, transition }} {...propsForElement(other)} />
+      </clipPath>
+    );
   }
 }
 

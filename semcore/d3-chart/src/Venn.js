@@ -68,9 +68,9 @@ class VennRoot extends Component {
     };
   }
 
-  renderElement(props) {
-    return <FadeInOut tag="g" visible {...props} />;
-  }
+  renderElement = React.forwardRef((props, ref) => {
+    return <FadeInOut ref={ref} tag="g" visible {...props} />;
+  });
 
   render() {
     const Element = this.Element;
@@ -97,9 +97,9 @@ function Circle({ Element: SCircle, styles, color = '#3AB011', data, duration })
 function Intersection(props) {
   const { Element: SIntersection, styles, data } = props;
   const renderIntersection = React.useCallback(
-    (props) => {
-      return <FadeInOut tag="path" visible {...props} />;
-    },
+    React.forwardRef((props, ref) => {
+      return <FadeInOut ref={ref} tag="path" visible {...props} />;
+    }),
     [props],
   );
   return sstyled(styles)(

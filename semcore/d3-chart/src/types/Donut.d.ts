@@ -8,6 +8,10 @@ export interface IDonutProps extends IContext {
   innerRadius?: number;
   /** Semi donut */
   halfsize?: boolean;
+  /** Animation duration in ms
+   * @default 500
+   */
+  duration?: number;
 }
 
 export interface IPieProps extends IContext {

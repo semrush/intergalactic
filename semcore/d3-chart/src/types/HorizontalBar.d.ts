@@ -10,6 +10,10 @@ export interface IHorizontalBarProps extends IContext {
   /** Line color
    * @default '#50aef4'*/
   color?: string;
+  /** Animation duration in ms
+   * @default 500
+   */
+  duration?: number;
 }
 
 declare const HorizontalBar: (<T>(

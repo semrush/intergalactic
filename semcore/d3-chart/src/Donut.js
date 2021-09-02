@@ -35,7 +35,7 @@ class DonutRoot extends Component {
     return {
       d3Pie,
       d3Arc,
-      duration: 250,
+      duration: 1500,
     };
   };
 
@@ -105,12 +105,8 @@ class DonutRoot extends Component {
         .selectAll(`#${this.id} path`)
         .transition()
         .duration(duration)
-        // .delay(function(d, i) {
-        //   return i * (duration - 50);
-        // })
-        .attrTween('d', function(_, ind, paths) {
+        .attrTween('d', function(_, ind) {
           const d = arcs[ind];
-          // paths[ind].setAttribute('visibility', 'visible');
           const i = interpolate(this._current, d);
           this._current = i(0);
           return function(t) {
@@ -131,18 +127,16 @@ class DonutRoot extends Component {
         .each(function(_, ind) {
           this._current = arcs[ind];
         })
-        .attr('visibility', 'hidden')
         .transition()
         .duration(duration)
-        // .delay(function(d, i) {
-        //   return i * (duration - 50);
-        // })
-        .attrTween('d', function(_, ind, paths) {
-          const d = arcs[ind];
-          paths[ind].setAttribute('visibility', 'visible');
-          const i = interpolate(d.startAngle + 0.1, d.endAngle);
+        .attrTween('d', function() {
+          const d = this._current;
+          if (!d) return () => '';
+          const iStart = interpolate(0, d.startAngle);
+          const iEnd = interpolate(0, d.endAngle);
           return function(t) {
-            d.endAngle = i(t);
+            d.startAngle = iStart(t);
+            d.endAngle = iEnd(t);
             return d3Arc(d);
           };
         });

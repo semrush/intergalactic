@@ -24,61 +24,52 @@ class HorizontalBarRoot extends Component {
     };
   }
 
-  render() {
+  renderBar(d, i) {
     const SBar = this.Element;
-    const {
-      styles,
-      color,
-      x,
-      x0,
-      y,
-      data,
-      scale,
-      hide,
-      offset,
-      size,
-      uid,
-      duration,
-    } = this.asProps;
+    const { styles, color, x, x0, y, scale, hide, offset, uid, duration } = this.asProps;
     const [xScale, yScale] = scale;
 
-    return data.map((d, i) => {
-      return sstyled(styles)(
-        <>
-          <SBar
-            key={uid}
-            render="rect"
-            clipPath={`url(#cut-off-horizontal-bar)`}
-            __excludeProps={['data', 'scale', 'value']}
-            childrenPosition="above"
-            value={d}
-            index={i}
-            hide={hide}
-            color={color}
-            width={Math.abs(
-              xScale(d[x]) - Math.max(xScale(xScale.domain()[0]), xScale(d[x0] ?? 0)),
-            )}
-            height={yScale.bandwidth()}
-            x={xScale(Math.min(d[x0] ?? 0, d[x])) + offset[0]}
-            y={yScale(d[y]) + offset[1]}
-            use:duration={`${duration}ms`}
+    return sstyled(styles)(
+      <SBar
+        key={`horizontal-bar-${i}`}
+        render="rect"
+        clipPath={`url(#${uid})`}
+        __excludeProps={['data', 'scale', 'value']}
+        childrenPosition="above"
+        value={d}
+        index={i}
+        hide={hide}
+        color={color}
+        width={Math.abs(xScale(d[x]) - Math.max(xScale(xScale.domain()[0]), xScale(d[x0] ?? 0)))}
+        height={yScale.bandwidth()}
+        x={xScale(Math.min(d[x0] ?? 0, d[x])) + offset[0]}
+        y={yScale(d[y]) + offset[1]}
+        use:duration={`${duration}ms`}
+      />,
+    );
+  }
+
+  render() {
+    const { data, uid, size, duration } = this.asProps;
+
+    return (
+      <>
+        {data.map(this.renderBar.bind(this))}
+        {duration && (
+          <ClipPath
+            setAttributeTag={(rect) => {
+              rect.setAttribute('width', size[0]);
+            }}
+            id={uid}
+            x="0"
+            y="0"
+            width={0}
+            height={size[1]}
+            transition={`width ${duration}ms ease-in-out`}
           />
-          {duration && (
-            <ClipPath
-              setAttributeTag={(rect) => {
-                rect.setAttribute('width', size[0]);
-              }}
-              id="cut-off-horizontal-bar"
-              x="0"
-              y="0"
-              width={0}
-              height={size[1]}
-              transition={`width ${duration}ms ease-in-out`}
-            />
-          )}
-        </>,
-      );
-    });
+        )}
+      </>
+    );
   }
 }
 

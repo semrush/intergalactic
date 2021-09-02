@@ -3,6 +3,7 @@ import { Component, sstyled } from '@semcore/core';
 import createElement from './createElement';
 import ClipPath from './ClipPath';
 import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
+import { transition } from 'd3-transition';
 
 import style from './style/bar.shadow.css';
 
@@ -24,64 +25,62 @@ class BarRoot extends Component {
     };
   }
 
-  render() {
+  componentDidMount() {
+    const { duration, uid } = this.asProps;
+
+    if (duration > 0) {
+      transition()
+        .selection()
+        .selectAll(`#${uid} rect`)
+        .transition()
+        .duration(duration)
+        .attr('y', 0);
+    }
+  }
+
+  renderBar(d, i) {
     const SBar = this.Element;
-    const {
-      styles,
-      color,
-      x,
-      y,
-      y0,
-      data,
-      scale,
-      hide,
-      offset,
-      size,
-      duration,
-      uid,
-    } = this.asProps;
+    const { styles, color, x, y, y0, scale, hide, offset, duration, uid } = this.asProps;
 
     const [xScale, yScale] = scale;
 
-    return data.map((d, i) => {
-      return sstyled(styles)(
-        <>
-          <SBar
-            key={uid}
-            render="rect"
-            clipPath={`url(#${uid})`}
-            __excludeProps={['data', 'scale', 'value']}
-            childrenPosition="above"
-            value={d}
-            index={i}
-            hide={hide}
-            color={color}
-            // TODO: https://github.com/airbnb/visx/blob/2fa674e7d7fdc9cffea13e8bf644d46dd6f0db5b/packages/visx-shape/src/util/getBandwidth.ts#L3
-            width={xScale.bandwidth()}
-            height={Math.abs(
-              yScale(d[y]) - Math.min(yScale(yScale.domain()[0]), yScale(d[y0] ?? 0)),
-            )}
-            x={xScale(d[x]) + offset[0]}
-            y={yScale(Math.max(d[y0] ?? 0, d[y])) + offset[1]}
-            use:duration={`${duration}ms`}
+    return sstyled(styles)(
+      <SBar
+        key={`bar-${i}`}
+        render="rect"
+        clipPath={`url(#${uid})`}
+        __excludeProps={['data', 'scale', 'value']}
+        childrenPosition="above"
+        value={d}
+        index={i}
+        hide={hide}
+        color={color}
+        // TODO: https://github.com/airbnb/visx/blob/2fa674e7d7fdc9cffea13e8bf644d46dd6f0db5b/packages/visx-shape/src/util/getBandwidth.ts#L3
+        width={xScale.bandwidth()}
+        height={Math.abs(yScale(d[y]) - Math.min(yScale(yScale.domain()[0]), yScale(d[y0] ?? 0)))}
+        x={xScale(d[x]) + offset[0]}
+        y={yScale(Math.max(d[y0] ?? 0, d[y])) + offset[1]}
+        use:duration={`${duration}ms`}
+      />,
+    );
+  }
+  render() {
+    const { data, uid, size, duration } = this.asProps;
+    return (
+      <>
+        {data.map(this.renderBar.bind(this))}
+        {duration && (
+          <ClipPath
+            key={`${uid}-animation`}
+            id={uid}
+            x="0"
+            y={size[1]}
+            width={size[0]}
+            height={`${size[1]}px`}
           />
-          {duration && (
-            <ClipPath
-              key={`${uid}-animation`}
-              setAttributeTag={(rect) => {
-                rect.setAttribute('height', size[1]);
-              }}
-              id={uid}
-              x="0"
-              y="0"
-              width={size[0]}
-              height={0}
-              transition={`height ${duration}ms ease-in-out, y ${duration}ms ease-in-out`}
-            />
-          )}
-        </>,
-      );
-    });
+        )}
+      </>
+    );
   }
 }
 
