@@ -117,7 +117,7 @@ class DonutRoot extends Component {
   }
 
   componentDidMount() {
-    const { duration, d3Arc } = this.asProps;
+    const { duration, d3Arc, halfsize } = this.asProps;
     const arcs = this.arcs;
 
     if (duration > 0) {
@@ -132,8 +132,8 @@ class DonutRoot extends Component {
         .attrTween('d', function() {
           const d = this._current;
           if (!d) return () => '';
-          const iStart = interpolate(0, d.startAngle);
-          const iEnd = interpolate(0, d.endAngle);
+          const iStart = interpolate(halfsize ? -Math.PI / 2 : 0, d.startAngle);
+          const iEnd = interpolate(halfsize ? -Math.PI / 2 : 0, d.endAngle);
           return function(t) {
             d.startAngle = iStart(t);
             d.endAngle = iEnd(t);
