@@ -9,7 +9,7 @@
   "author": "Roman Lysov <r.lysov@semrush.com>",
   "license": "MIT",
   "scripts": {
-    "build": "build",
+    "build": "build --source=js",
     "test": "jest"
   },
   "dependencies": {
@@ -17,9 +17,9 @@
     "@semcore/utils": "^3.21"
   },
   "peerDependencies": {
-    "@semcore/core": "^1",
+    "@semcore/core": "^1.11",
     "react": "16.8 - 17",
-    "react-dom": "^16.8"
+    "react-dom": "16.8 - 17"
   },
   "jest": {
     "preset": "jest-preset-ui"

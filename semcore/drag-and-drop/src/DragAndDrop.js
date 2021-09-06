@@ -1,12 +1,12 @@
-import React, { HTMLAttributes } from 'react';
-import createComponent, { styled, Component, PropGetter, Merge } from '@semcore/core';
-import { Box, IBoxProps } from '@semcore/flex-box';
+import React, { useRef, useEffect } from 'react';
+import createComponent, { sstyled, Component, Root } from '@semcore/core';
+import { Box } from '@semcore/flex-box';
 import EventEmitter from '@semcore/utils/lib/eventEmitter';
 import { callAllEventHandlers } from '@semcore/utils/lib/assignProps';
 
 import style from './style/drag-and-drop.shadow.css';
 
-const onSwapDraggableInner = function (draggableNode, droppableNode) {
+const onSwapDraggableInner = function(draggableNode, droppableNode) {
   if (!draggableNode || !droppableNode) return false;
 
   const parent = droppableNode.parentNode;
@@ -30,68 +30,23 @@ function getChildNumber(node) {
   return Array.prototype.indexOf.call(node.parentNode.children, node);
 }
 
-export interface IDragAndDropProps extends IBoxProps {
-  /**
-   * DragAndDrop theme
-   * @default default
-   */
-  theme?: 'default' | 'dark';
-  /**
-   * The function is responsible for changing the location of the draggable elements upon hovering the elements over each other.
-   * @default (draggableNode, droppableNode) => void
-   */
-  onSwapDraggable?: (draggableNode: React.ReactNode, droppableNode: React.ReactNode) => void;
-  /**
-   * The function is responsible for inserting the draggable element into the droppable zone
-   * @default (draggableNode, droppableNode) => void
-   */
-  onInsertDroppable?: (draggableNode: React.ReactNode, droppableNode: React.ReactNode) => void;
-}
-
-export interface IDraggableProps extends IBoxProps {
-  /** In charge of placement in relation to the content
-   * @default right
-   * */
-  placement?: 'top' | 'right' | 'bottom' | 'left' | false;
-  /** In charge of the component’s ability to be dragged
-   * @default false
-   * */
-  noDrop?: boolean;
-  /**@ignore*/
-  eventEmitter?: EventEmitter;
-}
-
-export interface IDragAndDropContext {
-  getDraggableProps: PropGetter<DragAndDropRoot['getDraggableProps']>;
-  getDroppableProps: PropGetter<DragAndDropRoot['getDroppableProps']>;
-}
-
-interface IDragAndDropState {
-  offsets?: { x: number; y: number }[];
-  draggable: {
-    item: HTMLElement;
-    indexItem: number;
-    active: boolean;
-    current: { x: number; y: number };
-    initial: { x: number; y: number };
-  };
-}
-
-class DragAndDropRoot extends Component<IDragAndDropProps, IDragAndDropContext, IDragAndDropState> {
+class DragAndDropRoot extends Component {
   static displayName = 'DragAndDrop';
   static defaultProps = {
     theme: 'default',
   };
   static style = style;
-  private _eventEmitter: EventEmitter;
 
   constructor(props) {
     super(props);
     this._eventEmitter = props.eventEmitter || new EventEmitter();
-    this._eventEmitter.subscribe('draggable', this.setItems);
-    this._eventEmitter.subscribe('draggable remove', this.setItems);
+    this._eventEmitter.subscribe('draggable', this.addDraggable);
+    this._eventEmitter.subscribe('draggable remove', this.removeDraggable);
+    this._eventEmitter.subscribe('droppable', this.updateDroppable);
+    this._eventEmitter.subscribe('droppable remove', this.updateDroppable);
 
     this.state = {
+      droppable: null,
       offsets: [{ x: 0, y: 0 }],
       draggable: {
         item: null,
@@ -103,12 +58,31 @@ class DragAndDropRoot extends Component<IDragAndDropProps, IDragAndDropContext, 
     };
   }
 
-  setItems = () => {
+  addDraggable = () => {
     this.setState((state) => {
       const { offsets } = state;
 
       return {
         offsets: [...offsets, { x: 0, y: 0 }],
+      };
+    });
+  };
+
+  removeDraggable = (index) => {
+    this.setState((state) => {
+      const { offsets } = state;
+      offsets.splice(index, 1);
+
+      return {
+        offsets: [...offsets],
+      };
+    });
+  };
+
+  updateDroppable = (node) => {
+    this.setState(() => {
+      return {
+        droppable: node,
       };
     });
   };
@@ -147,20 +121,20 @@ class DragAndDropRoot extends Component<IDragAndDropProps, IDragAndDropContext, 
 
   activeDraggable = (e) => {
     const { offsets } = this.state;
-    const { currentTarget, clientX, clientY } = e;
-    const indexItem = getChildNumber(currentTarget);
+    const { target, clientX, clientY } = e;
+    const indexItem = getChildNumber(target);
     if (indexItem >= 0) {
       const offset = offsets[indexItem];
       const initialX = clientX - offset.x;
       const initialY = clientY - offset.y;
 
-      currentTarget.style.cursor = 'move';
+      target.style.cursor = 'move';
 
       this.setState((state) => ({
         ...state,
         draggable: {
           active: true,
-          item: currentTarget,
+          item: target,
           indexItem,
           initial: { x: initialX, y: initialY },
           current: { x: initialX, y: initialY },
@@ -177,14 +151,9 @@ class DragAndDropRoot extends Component<IDragAndDropProps, IDragAndDropContext, 
     }
   };
 
-  insertNodeInDroppableZone = (e) => {
-    e.preventDefault();
-    const { draggable } = this.state;
+  insertNodeInDroppableZone = (draggableNode, droppableNode) => {
     const { onInsertDroppable } = this.asProps;
-    const droppableNode = e.currentTarget;
-    const draggableNode = draggable.item;
 
-    // @ts-ignore
     callAllEventHandlers(onInsertDroppable, (...args) => onInsertDroppableInner(...args))(
       draggableNode,
       droppableNode,
@@ -197,7 +166,6 @@ class DragAndDropRoot extends Component<IDragAndDropProps, IDragAndDropContext, 
       return;
     }
 
-    // @ts-ignore
     callAllEventHandlers(onSwapDraggable, (...args) => onSwapDraggableInner(...args))(
       draggableNode,
       droppableNode,
@@ -256,14 +224,19 @@ class DragAndDropRoot extends Component<IDragAndDropProps, IDragAndDropContext, 
 
   drop = (e) => {
     e.preventDefault();
+    const { draggable } = this.state;
+    const droppableNode = e.currentTarget;
+    const draggableNode = draggable.item;
+
     this.draggable(e);
-    this.insertNodeInDroppableZone(e);
+    this.insertNodeInDroppableZone(draggableNode, droppableNode);
     this.changePlaceholderDroppable(e, false);
   };
 
-  getDraggableProps() {
+  getDraggableProps(_, index) {
     return {
-      eventEmitter: this._eventEmitter,
+      $index: index,
+      $eventEmitter: this._eventEmitter,
       onDragOver: this.dragOver,
       onDragEnter: this.dragEnter,
       onDragLeave: this.dragLeave,
@@ -274,6 +247,7 @@ class DragAndDropRoot extends Component<IDragAndDropProps, IDragAndDropContext, 
 
   getDroppableProps() {
     return {
+      $eventEmitter: this._eventEmitter,
       onDrop: this.drop,
       onDragOver: this.droppableDragOver,
       onDragLeave: this.droppableDragLeave,
@@ -281,9 +255,16 @@ class DragAndDropRoot extends Component<IDragAndDropProps, IDragAndDropContext, 
   }
 
   handleKeyDown = (e) => {
-    const { active } = this.state.draggable;
-    //Escape
-    if (e.keyCode === 27) {
+    const {
+      draggable: { active },
+      droppable,
+    } = this.state;
+
+    const { target } = e;
+    const callFunction = droppable ? this.insertNodeInDroppableZone : this.swapDraggable;
+
+    // Escape || Tab
+    if ((e.keyCode === 27 || e.keyCode === 9) && active) {
       e.preventDefault();
       this.unActiveDraggable();
     }
@@ -299,80 +280,74 @@ class DragAndDropRoot extends Component<IDragAndDropProps, IDragAndDropContext, 
     // Arrow left
     if (e.keyCode === 37 && active) {
       e.preventDefault();
-      this.swapDraggable(e.target, e.target.previousElementSibling);
+      callFunction(target, droppable || target.previousElementSibling);
       e.target.focus();
+      this.unActiveDraggable();
     }
     // Arrow Up
     if (e.keyCode === 38 && active) {
       e.preventDefault();
-      this.swapDraggable(e.target, e.target.previousElementSibling);
-      e.target.focus();
+      callFunction(target, droppable || target.previousElementSibling);
+      target.focus();
     }
     // Arrow right
     if (e.keyCode === 39 && active) {
       e.preventDefault();
-      this.swapDraggable(e.target, e.target.nextElementSibling);
-      e.target.focus();
+      callFunction(target, droppable || target.nextElementSibling);
+      target.focus();
     }
     // Arrow Down
     if (e.keyCode === 40 && active) {
       e.preventDefault();
-      this.swapDraggable(e.target, e.target.nextElementSibling);
-      e.target.focus();
+      callFunction(target, droppable || target.nextElementSibling);
+      target.focus();
     }
   };
 
   render() {
-    const { Root } = this;
-
     return <Root render={Box} onKeyDown={this.handleKeyDown} />;
   }
 }
 
-class Draggable extends Component<IDraggableProps> {
+class Draggable extends Component {
   static defaultProps = {
     placement: 'right',
     noDrag: false,
   };
-  private element = React.createRef<HTMLDivElement>();
 
   componentDidMount() {
-    const { eventEmitter } = this.asProps;
-    eventEmitter && eventEmitter.emit('draggable', this.element.current);
+    const { $eventEmitter } = this.asProps;
+    $eventEmitter && $eventEmitter.emit('draggable');
   }
 
   componentWillUnmount() {
-    const { eventEmitter } = this.asProps;
-    eventEmitter && eventEmitter.emit('draggable remove', this.element.current);
+    const { $eventEmitter, $index } = this.asProps;
+    $eventEmitter && $eventEmitter.emit('draggable remove', $index);
   }
 
   render() {
-    const { Root: SDraggable } = this;
+    const SDraggable = Root;
     const { styles, placement, noDrag } = this.asProps;
-    return styled(styles)(
-      <SDraggable
-        render={Box}
-        ref={this.element}
-        draggable={!noDrag}
-        tabIndex={0}
-        placement={placement}
-      />,
+    return sstyled(styles)(
+      <SDraggable render={Box} draggable={!noDrag} tabIndex={0} placement={placement} />,
     );
   }
 }
 
-const Droppable = ({ Root: SDroppable, styles }) => {
-  return styled(styles)(<SDroppable render={Box} />);
+const Droppable = ({ $eventEmitter, styles }) => {
+  const SDroppable = Root;
+  const refDroppable = useRef();
+  useEffect(() => {
+    $eventEmitter && $eventEmitter.emit('droppable', refDroppable.current);
+    return () => {
+      $eventEmitter && $eventEmitter.emit('droppable remove', null);
+    };
+  }, []);
+
+  return sstyled(styles)(<SDroppable ref={refDroppable} render={Box} />);
 };
 
-const DragAndDrop = createComponent<
-  Merge<IDragAndDropProps, HTMLAttributes<HTMLDivElement>>,
-  {
-    Draggable: Merge<IDraggableProps, HTMLAttributes<HTMLDivElement>>;
-    Droppable: Merge<IBoxProps, HTMLAttributes<HTMLDivElement>>;
-  },
-  IDragAndDropContext
->(DragAndDropRoot, {
+const DragAndDrop = createComponent(DragAndDropRoot, {
   Draggable,
   Droppable,
 });
