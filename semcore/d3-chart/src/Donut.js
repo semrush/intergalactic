@@ -5,14 +5,48 @@ import canUseDOM from '@semcore/utils/lib/canUseDOM';
 import getOriginChildren from '@semcore/utils/lib/getOriginChildren';
 import { CONSTANT } from './utils';
 import createElement from './createElement';
+import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
+import { interpolate } from 'd3-interpolate';
+import { transition } from 'd3-transition';
 
 import style from './style/donut.shadow.css';
 
 const DEFAULT_INSTANCE = Symbol('DEFAULT_INSTANCE');
 
+function animationInitialPie({ halfsize, d3Arc, arcs }) {
+  return function(_, ind) {
+    const d = arcs[ind];
+    if (!d) return () => '';
+    const iStart = interpolate(halfsize ? -Math.PI / 2 : 0, d.startAngle);
+    const iEnd = interpolate(halfsize ? -Math.PI / 2 : 0, d.endAngle);
+    return function(t) {
+      d.startAngle = iStart(t);
+      d.endAngle = iEnd(t);
+      return d3Arc(d);
+    };
+  };
+}
+
+function animationUpdatePie({ halfsize, arcs, d3Arc }) {
+  return function(_, ind) {
+    const d = arcs[ind];
+    if (this._current) {
+      const i = interpolate(this._current, d);
+      this._current = i(0);
+      return function(t) {
+        return d3Arc(i(t));
+      };
+    } else {
+      this._current = d;
+      return animationInitialPie({ halfsize, arcs, d3Arc })(_, ind);
+    }
+  };
+}
+
 class DonutRoot extends Component {
   static displayName = 'Donut';
   static style = style;
+  static enhance = [uniqueIDEnhancement()];
 
   static defaultProps = ({ innerRadius = 0, halfsize = false, $rootProps: { size } }) => {
     const [width, height] = size;
@@ -31,9 +65,14 @@ class DonutRoot extends Component {
     return {
       d3Pie,
       d3Arc,
+      duration: 500,
     };
   };
 
+  get id() {
+    const { uid, id } = this.asProps;
+    return id || uid;
+  }
   virtualElement = canUseDOM() ? document.createElement('div') : {};
 
   generateGetBoundingClientRect(x = 0, y = 0) {
@@ -87,6 +126,35 @@ class DonutRoot extends Component {
     };
   }
 
+  componentDidUpdate(prevProps) {
+    const { data, duration, d3Arc, halfsize } = this.asProps;
+    const arcs = this.arcs;
+    if (prevProps.$rootProps.data !== data && duration > 0) {
+      transition()
+        .selection()
+        .selectAll(`#${this.id} [data-ui-name="Donut.Pie"]`)
+        .transition()
+        .duration(duration)
+        .attrTween('d', animationUpdatePie({ d3Arc, arcs, halfsize }));
+    }
+  }
+
+  componentDidMount() {
+    const { duration, d3Arc, halfsize } = this.asProps;
+    const arcs = this.arcs;
+    if (duration > 0) {
+      transition()
+        .selection()
+        .selectAll(`#${this.id} [data-ui-name="Donut.Pie"]`)
+        .each(function(_, ind) {
+          this._current = arcs[ind];
+        })
+        .transition()
+        .duration(duration)
+        .attrTween('d', animationInitialPie({ halfsize, d3Arc, arcs }));
+    }
+  }
+
   render() {
     const { halfsize, size } = this.asProps;
     const [width, height] = size;
@@ -95,6 +163,7 @@ class DonutRoot extends Component {
     this.arcs = this.getArcs();
     return (
       <Element
+        id={this.id}
         render="g"
         childrenPosition="inside"
         transform={`translate(${width / 2},${height / k})`}

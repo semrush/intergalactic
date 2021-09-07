@@ -9,6 +9,13 @@ SAreaLine {
   fill: transparent;
 }
 
+SArea,
+SAreaLine {
+  transition-property: d;
+  transition-duration: var(--duration);
+  transition-timing-function: ease-in-out;
+}
+
 SNull {
   fill: transparent;
   stroke: #bdc4c6;

@@ -11,6 +11,10 @@ export interface IBarProps extends IContext {
   color?: string;
   /** Element hide property */
   hide?: boolean;
+  /** Animation duration in ms
+   * @default 500
+   */
+  duration?: number;
 }
 
 export interface IBarContext {

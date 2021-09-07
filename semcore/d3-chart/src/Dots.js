@@ -4,6 +4,7 @@ import { sstyled } from '@semcore/core';
 import trottle from '@semcore/utils/lib/rafTrottle';
 import { eventToPoint, invert } from './utils';
 import createElement from './createElement';
+import { FadeInOut } from '@semcore/animation';
 
 import style from './style/dot.shadow.css';
 
@@ -21,6 +22,7 @@ function Dots(props) {
     hide,
     rootRef,
     scale,
+    duration = 500,
   } = props;
   const bisect = bisector((d) => d[x]).center;
   const [activeIndex, setActiveIndex] = useState(null);
@@ -59,29 +61,36 @@ function Dots(props) {
     };
   }, [eventEmitter, data, x, y]);
 
+  const renderCircle = useCallback(
+    React.forwardRef((props, ref) => {
+      return <FadeInOut ref={ref} tag="circle" {...props} />;
+    }),
+    [props],
+  );
+
   return data.reduce((acc, d, i) => {
     const isPrev = d3.defined()(data[i - 1] || {});
     const isNext = d3.defined()(data[i + 1] || {});
     const active = i === activeIndex;
     if (!d3.defined()(d)) return acc;
-    if (display || i === activeIndex || (!isPrev && !isNext)) {
-      acc.push(
-        sstyled(styles)(
-          <SDot
-            key={i}
-            render="circle"
-            __excludeProps={['data', 'scale', 'value', 'display']}
-            value={d}
-            index={i}
-            cx={d3.x()(d)}
-            cy={d3.y()(d)}
-            active={active}
-            hide={hide}
-            color={color}
-          />,
-        ),
-      );
-    }
+    acc.push(
+      sstyled(styles)(
+        <SDot
+          key={i}
+          render={renderCircle}
+          visible={display || i === activeIndex || (!isPrev && !isNext)}
+          __excludeProps={['data', 'scale', 'value', 'display']}
+          value={d}
+          index={i}
+          cx={d3.x()(d)}
+          cy={d3.y()(d)}
+          active={active}
+          hide={hide}
+          color={color}
+          use:duration={`${duration}ms`}
+        />,
+      ),
+    );
     return acc;
   }, []);
 }
