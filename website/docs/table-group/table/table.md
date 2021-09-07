@@ -4,8 +4,6 @@ fileSource: table
 tabName: Guide
 ---
 
-> We have a new component for tables — [Data Table](/table-group/data-table/). It is based on css-flex technology and does not use native tables.
-
 @## Description
 
 **Table** is a complex component for providing a complex data list.

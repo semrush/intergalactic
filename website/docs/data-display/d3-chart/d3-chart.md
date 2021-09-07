@@ -4,6 +4,8 @@ fileSource: d3-chart
 tabName: Concept and code
 ---
 
+> 💡 Basic data visualization rules are described in the [Chart principles](/data-display/chart/).
+
 These components serve as the base for building charts from your data in the product.
 
 They don't manipulate your data, and will not try to calculate, sort or check it in any way. Data manipulation is the product's job, not the component's.
