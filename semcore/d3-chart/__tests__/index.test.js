@@ -3,7 +3,7 @@ import React from 'react';
 import { scaleLinear, scaleBand } from 'd3-scale';
 import { render, fireEvent, cleanup } from 'jest-preset-ui/testing';
 import { shouldSupportClassName, shouldSupportRef } from 'jest-preset-ui/shared';
-import { Plot, YAxis, XAxis } from '../src';
+import { Plot, YAxis, XAxis, Venn } from '../src';
 import { getIndexFromData } from '../src/utils';
 import snapshot from 'jest-preset-ui/snapshot';
 import { minMax, Area, StackedArea } from '@semcore/d3-chart';
@@ -272,4 +272,8 @@ describe('Area chart', () => {
 
     expect(await snapshot(component)).toMatchImageSnapshot();
   });
+});
+
+describe('Venn', () => {
+  shouldSupportRef(Venn, PlotTest);
 });

@@ -14,6 +14,10 @@ export interface IAreaProps extends IContext {
   hide?: boolean;
   /** Curve method */
   curve?: CurveFactory;
+  /** Animation duration in ms
+   * @default 500
+   */
+  duration?: number;
 }
 
 export interface IAreaDotsProps extends IContext {

@@ -3,6 +3,9 @@ SCircle {
   stroke: #fff;
   stroke-width: 2px;
   fill-opacity: 0.5;
+  transition-property: cx, cy;
+  transition-duration: var(--duration);
+  transition-timing-function: ease-in-out;
 
   &:hover {
     fill-opacity: 0.7;
