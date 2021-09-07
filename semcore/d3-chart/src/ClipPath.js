@@ -17,7 +17,7 @@ class ClipPath extends Component {
     if (!document || !document.querySelector(`#${id}`)) return;
     const svg = document.querySelector(`#${id}`).closest('svg');
     Array.from(svg.querySelectorAll(`[clip-path="url(#${id})"]`)).forEach((node) => {
-      node?.getTotalLength();
+      node && node.getTotalLength && node.getTotalLength();
     });
     setAttributeTag &&
       Array.from(document.querySelectorAll(`#${id} ${tag}`)).forEach(setAttributeTag);
@@ -27,7 +27,7 @@ class ClipPath extends Component {
     const { id, transition, tag: Tag, style, className, ...other } = this.asProps;
     return (
       <clipPath ref={this.refClipPath} id={id}>
-        <Tag style={{ ...style, transition }} {...propsForElement(other)} />
+        <Tag style={{ ...style, transition }} {...propsForElement(other, Tag)} />
       </clipPath>
     );
   }

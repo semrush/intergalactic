@@ -13,6 +13,36 @@ import style from './style/donut.shadow.css';
 
 const DEFAULT_INSTANCE = Symbol('DEFAULT_INSTANCE');
 
+function animationInitialPie({ halfsize, d3Arc, arcs }) {
+  return function(_, ind) {
+    const d = arcs[ind];
+    if (!d) return () => '';
+    const iStart = interpolate(halfsize ? -Math.PI / 2 : 0, d.startAngle);
+    const iEnd = interpolate(halfsize ? -Math.PI / 2 : 0, d.endAngle);
+    return function(t) {
+      d.startAngle = iStart(t);
+      d.endAngle = iEnd(t);
+      return d3Arc(d);
+    };
+  };
+}
+
+function animationUpdatePie({ halfsize, arcs, d3Arc }) {
+  return function(_, ind) {
+    const d = arcs[ind];
+    if (this._current) {
+      const i = interpolate(this._current, d);
+      this._current = i(0);
+      return function(t) {
+        return d3Arc(i(t));
+      };
+    } else {
+      this._current = d;
+      return animationInitialPie({ halfsize, arcs, d3Arc })(_, ind);
+    }
+  };
+}
+
 class DonutRoot extends Component {
   static displayName = 'Donut';
   static style = style;
@@ -35,7 +65,7 @@ class DonutRoot extends Component {
     return {
       d3Pie,
       d3Arc,
-      duration: 1500,
+      duration: 500,
     };
   };
 
@@ -97,49 +127,31 @@ class DonutRoot extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    const { data, duration, d3Arc } = this.asProps;
+    const { data, duration, d3Arc, halfsize } = this.asProps;
     const arcs = this.arcs;
-    if (prevProps.data !== data && duration > 0) {
+    if (prevProps.$rootProps.data !== data && duration > 0) {
       transition()
         .selection()
-        .selectAll(`#${this.id} path`)
+        .selectAll(`#${this.id} [data-ui-name="Donut.Pie"]`)
         .transition()
         .duration(duration)
-        .attrTween('d', function(_, ind) {
-          const d = arcs[ind];
-          const i = interpolate(this._current, d);
-          this._current = i(0);
-          return function(t) {
-            return d3Arc(i(t));
-          };
-        });
+        .attrTween('d', animationUpdatePie({ d3Arc, arcs, halfsize }));
     }
   }
 
   componentDidMount() {
     const { duration, d3Arc, halfsize } = this.asProps;
     const arcs = this.arcs;
-
     if (duration > 0) {
       transition()
         .selection()
-        .selectAll(`#${this.id} path`)
+        .selectAll(`#${this.id} [data-ui-name="Donut.Pie"]`)
         .each(function(_, ind) {
           this._current = arcs[ind];
         })
         .transition()
         .duration(duration)
-        .attrTween('d', function() {
-          const d = this._current;
-          if (!d) return () => '';
-          const iStart = interpolate(halfsize ? -Math.PI / 2 : 0, d.startAngle);
-          const iEnd = interpolate(halfsize ? -Math.PI / 2 : 0, d.endAngle);
-          return function(t) {
-            d.startAngle = iStart(t);
-            d.endAngle = iEnd(t);
-            return d3Arc(d);
-          };
-        });
+        .attrTween('d', animationInitialPie({ halfsize, d3Arc, arcs }));
     }
   }
 

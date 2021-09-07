@@ -25,17 +25,27 @@ class BarRoot extends Component {
     };
   }
 
-  componentDidMount() {
+  animationBar() {
     const { duration, uid } = this.asProps;
+    const selectRect = transition()
+      .selection()
+      .selectAll(`#${uid} rect`);
+    const selectRectNode = selectRect.node();
 
-    if (duration > 0) {
-      transition()
-        .selection()
-        .selectAll(`#${uid} rect`)
+    if (duration > 0 && selectRectNode && selectRectNode.getAttribute('y') !== '0') {
+      selectRect
         .transition()
         .duration(duration)
         .attr('y', 0);
     }
+  }
+
+  componentDidUpdate() {
+    this.animationBar();
+  }
+
+  componentDidMount() {
+    this.animationBar();
   }
 
   renderBar(d, i) {
