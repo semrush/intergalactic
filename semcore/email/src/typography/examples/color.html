@@ -1,4 +1,8 @@
 <extends src="core/base.html">
+  <block name="head">
+    <link rel="stylesheet" href="../../../lib/typography/index.css" />
+  </block>
+
   <block name="content">
     <p class="text-black">Black text</p>
     <p class="text-lime-100">Lime text 100</p>
@@ -18,7 +22,7 @@
 
     <p class="text-pink">Pink</p>
 
-    <div class="bg-black">
+    <div style="background-color: #171a22;">
       <p class="text-white">White text</p>
     </div>
   </block>

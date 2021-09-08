@@ -5,174 +5,8 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width" />
     <!-- Link to the email's CSS, which will be inlined into the email -->
+
     <style>
-      a,
-      body,
-      h1,
-      h2,
-      h3,
-      h4,
-      h5,
-      h6,
-      p,
-      table.body {
-        font-weight: 400;
-        line-height: normal;
-        margin: 0;
-        padding: 0;
-      }
-      a,
-      body,
-      h1,
-      h2,
-      h3,
-      h4,
-      h5,
-      h6,
-      p,
-      table.body,
-      td,
-      th {
-        font-family: Helvetica, Arial, sans-serif;
-        text-align: left;
-      }
-      .spacer td,
-      .spacer th {
-        margin: 0;
-        padding: 0;
-      }
-      table {
-        border-collapse: collapse;
-        border-spacing: 0;
-        padding: 0;
-      }
-      td {
-        word-wrap: break-word;
-        border-collapse: collapse !important;
-        font-weight: 400;
-        -webkit-hyphens: auto;
-        -ms-hyphens: auto;
-        hyphens: auto;
-      }
-      img {
-        height: auto;
-        line-height: 100%;
-        outline: none;
-        text-decoration: none;
-      }
-      a img,
-      img {
-        border: 0;
-      }
-      .imageFix {
-        display: block;
-      }
-      #bodyTable {
-        height: 100% !important;
-        margin: 0;
-        padding: 0;
-        width: 100% !important;
-      }
-      .w-100 {
-        width: 100%;
-      }
-      .bg-black {
-        background-color: #171a22;
-      }
-      .bg-white {
-        background-color: #fff;
-      }
-      .bg-lime-100 {
-        background-color: #c7fa73;
-      }
-      .bg-lime-200 {
-        background-color: #84d149;
-      }
-      .bg-red-100 {
-        background-color: #f27387;
-      }
-      .bg-red-200 {
-        background-color: #f71939;
-      }
-      .bg-red-300 {
-        background-color: #b01c3d;
-      }
-      .bg-orange-100 {
-        background-color: #ff9400;
-      }
-      .bg-orange-200 {
-        background-color: #ff622d;
-      }
-      .bg-orange-300 {
-        background-color: #b23300;
-      }
-      .bg-blue-100 {
-        background-color: #6edbff;
-      }
-      .bg-blue-200 {
-        background-color: #0082e6;
-      }
-      .bg-blue-300 {
-        background-color: #0070cc;
-      }
-      .bg-gray-100 {
-        background-color: #f6f7f8;
-      }
-      .bg-gray-200 {
-        background-color: #d1d4db;
-      }
-      .bg-gray-300 {
-        background-color: #898d9a;
-      }
-      .bg-gray-400 {
-        background-color: #575c66;
-      }
-      .bg-purple-100 {
-        background-color: #b880ff;
-      }
-      .bg-purple-200 {
-        background-color: #6b30c7;
-      }
-      .bg-purple-300 {
-        background-color: #421983;
-      }
-      .bg-green-100 {
-        background-color: #45e0a8;
-      }
-      .bg-green-200 {
-        background-color: #00bc98;
-      }
-      .bg-green-300 {
-        background-color: #008275;
-      }
-      .bg-pink {
-        background-color: #ff7ad1;
-      }
-      .bold {
-        font-weight: 700;
-      }
-      .nowrap {
-        white-space: nowrap;
-      }
-      .text-center {
-        text-align: center;
-      }
-      @media (min-width: 480px) {
-        .show-mobile {
-          display: none !important;
-        }
-      }
-      @media (max-width: 479px) {
-        .show-desktop {
-          display: none !important;
-        }
-        .mobile_text-center {
-          text-align: center;
-        }
-        .mobile_w-100 {
-          width: 100%;
-        }
-      }
       table.body {
         height: 100%;
         width: 100%;
@@ -517,277 +351,7 @@
           display: none !important;
         }
       }
-      .button {
-        border: 1px solid transparent;
-        border-radius: 6px;
-        box-sizing: border-box;
-        display: inline-block;
-        font-size: 16px;
-        line-height: 24px;
-        padding: 13px 24px;
-        text-align: center;
-        text-decoration: none;
-      }
-      .button_addon-left,
-      .button_addon-right {
-        display: inline-block;
-        height: 20px;
-        text-align: center;
-        width: 20px;
-      }
-      .button_addon-left {
-        margin-right: 16px;
-      }
-      .button_addon-right {
-        margin-left: 16px;
-      }
-      .button-theme-primary-info {
-        background-color: #0082e6;
-        color: #fff;
-      }
-      .button-theme-primary-info:hover {
-        background-color: #005fb2 !important;
-      }
-      .button-theme-primary-success {
-        background-color: #00bc98;
-        color: #fff;
-      }
-      .button-theme-primary-success:hover {
-        background-color: #008275 !important;
-      }
-      .button-theme-primary-warning {
-        background-color: #ff622d;
-        color: #fff;
-      }
-      .button-theme-primary-warning:hover {
-        background-color: #b23300 !important;
-      }
-      .button-theme-primary-danger {
-        background-color: #f71939;
-        color: #fff;
-      }
-      .button-theme-primary-danger:hover {
-        background-color: #ac0614 !important;
-      }
-      .button-theme-primary-invert {
-        background-color: #fff;
-      }
-      .button-theme-primary-invert:hover {
-        opacity: 0.6;
-      }
-      .button-theme-secondary-default {
-        border-color: #171a22;
-        color: #171a22;
-      }
-      .button-theme-secondary-default:hover {
-        border-color: #ff622d !important;
-        color: #ff622d !important;
-      }
-      .button-theme-secondary-invert {
-        border-color: #fff;
-        color: #fff;
-      }
-      .button-theme-secondary-invert:hover {
-        opacity: 0.6;
-      }
-      .badge {
-        border-radius: 24px;
-        color: #fff;
-        display: inline-block;
-        font-size: 12px;
-        line-height: 14px;
-        padding: 4px 8px;
-        text-align: center;
-      }
-      .divider {
-        border-color: #d1d4db;
-      }
-      .divider-horizontal {
-        border-top-style: solid;
-        border-top-width: 1px;
-        height: 0;
-      }
-      .divider-vertical {
-        border-left-style: solid;
-        border-left-width: 1px;
-        width: 0;
-      }
-      .notice {
-        border-radius: 10px;
-        padding: 20px 24px;
-      }
-      .notice_addon-left,
-      .notice_addon-right {
-        display: inline-block;
-        text-align: center;
-      }
-      .notice_addon-left {
-        margin-right: 12px;
-      }
-      .notice_addon-right {
-        margin-left: 12px;
-      }
-      .notice-theme-primary-info {
-        background-color: #0082e6;
-        color: #fff;
-      }
-      .notice-theme-primary-success {
-        background-color: #00bc98;
-        color: #fff;
-      }
-      .notice-theme-primary-warning {
-        background-color: #ff622d;
-        color: #fff;
-      }
-      .notice-theme-secondary-info {
-        background-color: rgba(0, 130, 230, 0.1);
-        color: #171a22;
-      }
-      .notice-theme-secondary-success {
-        background-color: rgba(132, 209, 73, 0.1);
-        color: #171a22;
-      }
-      .notice-theme-secondary-warning {
-        background-color: rgba(255, 98, 45, 0.1);
-        color: #171a22;
-      }
-      .summary {
-        background-color: #f6f7f8;
-        border-radius: 10px;
-        padding: 20px 24px;
-      }
-      .table {
-        width: 100%;
-      }
-      .table td,
-      .table th {
-        padding: 12px 20px;
-      }
-      .table td {
-        border-bottom: 1px solid #d1d4db;
-      }
-      .table th {
-        background-color: #f6f7f8;
-        font-weight: 700;
-      }
-      .text-size-100 {
-        font-size: 14px;
-        line-height: 20px;
-      }
-      .text-size-200 {
-        font-size: 16px;
-        line-height: 24px;
-      }
-      .text-size-300 {
-        font-size: 18px;
-        line-height: 23px;
-      }
-      .text-size-400 {
-        font-size: 20px;
-        line-height: 22px;
-      }
-      .text-size-500 {
-        font-size: 22px;
-        line-height: 26px;
-      }
-      .text-size-600 {
-        font-size: 26px;
-        line-height: 31px;
-      }
-      .text-size-700 {
-        font-size: 32px;
-        line-height: 37px;
-      }
-      .text-black {
-        color: #171a22;
-      }
-      .text-white {
-        color: #fff;
-      }
-      .text-red-100 {
-        color: #f27387;
-      }
-      .text-red-200 {
-        color: #f71939;
-      }
-      .text-red-300 {
-        color: #b01c3d;
-      }
-      .text-lime-100 {
-        color: #c7fa73;
-      }
-      .text-lime-200 {
-        color: #84d149;
-      }
-      .text-orange-100 {
-        color: #ff9400;
-      }
-      .text-orange-200 {
-        color: #ff622d;
-      }
-      .text-orange-300 {
-        color: #b23300;
-      }
-      .text-purple-100 {
-        color: #b880ff;
-      }
-      .text-purple-200 {
-        color: #6b30c7;
-      }
-      .text-purple-300 {
-        color: #421983;
-      }
-      .text-blue-100 {
-        color: #6edbff;
-      }
-      .text-blue-200 {
-        color: #0082e6;
-      }
-      .text-blue-300 {
-        color: #0070cc;
-      }
-      .text-gray-100 {
-        color: #f6f7f8;
-      }
-      .text-gray-200 {
-        color: #d1d4db;
-      }
-      .text-gray-300 {
-        color: #898d9a;
-      }
-      .text-gray-400 {
-        color: #575c66;
-      }
-      .text-green-100 {
-        color: #45e0a8;
-      }
-      .text-green-200 {
-        color: #00bc98;
-      }
-      .text-green-300 {
-        color: #008275;
-      }
-      .text-pink {
-        color: #ff7ad1;
-      }
-      .link {
-        -webkit-text-decoration-line: underline;
-        text-decoration-line: underline;
-      }
-      .link-theme-default {
-        color: #0082e6;
-      }
-      .link-theme-default:hover {
-        color: #0070cc !important;
-      }
-      .link-theme-dark {
-        color: #575c66;
-      }
-      .link-theme-dark:hover {
-        color: #171a22 !important;
-      }
     </style>
-
     <style>
       .column {
         height: 50px;
@@ -801,21 +365,10 @@
       }
     </style>
   </head>
-  <body
-    style="
-      font-weight: 400;
-      line-height: normal;
-      margin: 0;
-      padding: 0;
-      font-family: Helvetica, Arial, sans-serif;
-      text-align: left;
-    "
-  >
+  <body>
     <table
       class="row"
       style="
-        border-collapse: collapse;
-        border-spacing: 0;
         padding: 0;
         position: relative;
         width: 100%;
@@ -826,8 +379,6 @@
           <th
             class="column small-12 large-6 columns first"
             style="
-              font-family: Helvetica, Arial, sans-serif;
-              text-align: left;
               height: 50px;
               background-color: #66ccf7;
               border: 1px solid black;
@@ -835,23 +386,10 @@
               width: 274px;
             "
           >
-            <table
-              style="
-                border-collapse: collapse;
-                border-spacing: 0;
-                padding: 0;
-              "
-            >
+            <table>
               <tbody>
                 <tr>
-                  <th
-                    style="
-                      font-family: Helvetica, Arial, sans-serif;
-                      text-align: left;
-                    "
-                  >
-                    col - 6
-                  </th>
+                  <th>col - 6</th>
                 </tr>
               </tbody>
             </table>
@@ -859,8 +397,6 @@
           <th
             class="column-odd small-12 large-6 columns last"
             style="
-              font-family: Helvetica, Arial, sans-serif;
-              text-align: left;
               height: 50px;
               background-color: #ffd54f;
               border: 1px solid black;
@@ -868,23 +404,10 @@
               width: 274px;
             "
           >
-            <table
-              style="
-                border-collapse: collapse;
-                border-spacing: 0;
-                padding: 0;
-              "
-            >
+            <table>
               <tbody>
                 <tr>
-                  <th
-                    style="
-                      font-family: Helvetica, Arial, sans-serif;
-                      text-align: left;
-                    "
-                  >
-                    col - 6
-                  </th>
+                  <th>col - 6</th>
                 </tr>
               </tbody>
             </table>
@@ -892,15 +415,7 @@
         </tr>
       </tbody>
     </table>
-    <table
-      class="spacer"
-      style="
-        border-collapse: collapse;
-        border-spacing: 0;
-        padding: 0;
-        width: 100%;
-      "
-    >
+    <table class="spacer" style="width: 100%;">
       <tbody>
         <tr>
           <td
@@ -908,14 +423,6 @@
             style="
               font-size: 20px;
               line-height: 20px;
-              font-family: Helvetica, Arial, sans-serif;
-              text-align: left;
-              word-wrap: break-word;
-              border-collapse: collapse;
-              font-weight: 400;
-              -webkit-hyphens: auto;
-              -ms-hyphens: auto;
-              hyphens: auto;
             "
           >
             &nbsp;
@@ -926,8 +433,6 @@
     <table
       class="row"
       style="
-        border-collapse: collapse;
-        border-spacing: 0;
         padding: 0;
         position: relative;
         width: 100%;
@@ -938,8 +443,6 @@
           <th
             class="column small-12 large-5 columns first"
             style="
-              font-family: Helvetica, Arial, sans-serif;
-              text-align: left;
               height: 50px;
               background-color: #66ccf7;
               border: 1px solid black;
@@ -947,23 +450,10 @@
               width: 225.66667px;
             "
           >
-            <table
-              style="
-                border-collapse: collapse;
-                border-spacing: 0;
-                padding: 0;
-              "
-            >
+            <table>
               <tbody>
                 <tr>
-                  <th
-                    style="
-                      font-family: Helvetica, Arial, sans-serif;
-                      text-align: left;
-                    "
-                  >
-                    col - 4
-                  </th>
+                  <th>col - 4</th>
                 </tr>
               </tbody>
             </table>
@@ -971,8 +461,6 @@
           <th
             class="column-odd small-12 large-7 columns last"
             style="
-              font-family: Helvetica, Arial, sans-serif;
-              text-align: left;
               height: 50px;
               background-color: #ffd54f;
               border: 1px solid black;
@@ -980,23 +468,10 @@
               width: 322.33333px;
             "
           >
-            <table
-              style="
-                border-collapse: collapse;
-                border-spacing: 0;
-                padding: 0;
-              "
-            >
+            <table>
               <tbody>
                 <tr>
-                  <th
-                    style="
-                      font-family: Helvetica, Arial, sans-serif;
-                      text-align: left;
-                    "
-                  >
-                    col - 7
-                  </th>
+                  <th>col - 7</th>
                 </tr>
               </tbody>
             </table>
@@ -1004,15 +479,7 @@
         </tr>
       </tbody>
     </table>
-    <table
-      class="spacer"
-      style="
-        border-collapse: collapse;
-        border-spacing: 0;
-        padding: 0;
-        width: 100%;
-      "
-    >
+    <table class="spacer" style="width: 100%;">
       <tbody>
         <tr>
           <td
@@ -1020,14 +487,6 @@
             style="
               font-size: 20px;
               line-height: 20px;
-              font-family: Helvetica, Arial, sans-serif;
-              text-align: left;
-              word-wrap: break-word;
-              border-collapse: collapse;
-              font-weight: 400;
-              -webkit-hyphens: auto;
-              -ms-hyphens: auto;
-              hyphens: auto;
             "
           >
             &nbsp;
@@ -1038,8 +497,6 @@
     <table
       class="row"
       style="
-        border-collapse: collapse;
-        border-spacing: 0;
         padding: 0;
         position: relative;
         width: 100%;
@@ -1050,8 +507,6 @@
           <th
             class="column small-12 large-4 columns first"
             style="
-              font-family: Helvetica, Arial, sans-serif;
-              text-align: left;
               height: 50px;
               background-color: #66ccf7;
               border: 1px solid black;
@@ -1059,23 +514,10 @@
               width: 177.33333px;
             "
           >
-            <table
-              style="
-                border-collapse: collapse;
-                border-spacing: 0;
-                padding: 0;
-              "
-            >
+            <table>
               <tbody>
                 <tr>
-                  <th
-                    style="
-                      font-family: Helvetica, Arial, sans-serif;
-                      text-align: left;
-                    "
-                  >
-                    col - 4
-                  </th>
+                  <th>col - 4</th>
                 </tr>
               </tbody>
             </table>
@@ -1083,8 +525,6 @@
           <th
             class="column-odd small-12 large-8 columns last"
             style="
-              font-family: Helvetica, Arial, sans-serif;
-              text-align: left;
               height: 50px;
               background-color: #ffd54f;
               border: 1px solid black;
@@ -1092,23 +532,10 @@
               width: 370.66667px;
             "
           >
-            <table
-              style="
-                border-collapse: collapse;
-                border-spacing: 0;
-                padding: 0;
-              "
-            >
+            <table>
               <tbody>
                 <tr>
-                  <th
-                    style="
-                      font-family: Helvetica, Arial, sans-serif;
-                      text-align: left;
-                    "
-                  >
-                    col - 8
-                  </th>
+                  <th>col - 8</th>
                 </tr>
               </tbody>
             </table>
@@ -1116,15 +543,7 @@
         </tr>
       </tbody>
     </table>
-    <table
-      class="spacer"
-      style="
-        border-collapse: collapse;
-        border-spacing: 0;
-        padding: 0;
-        width: 100%;
-      "
-    >
+    <table class="spacer" style="width: 100%;">
       <tbody>
         <tr>
           <td
@@ -1132,14 +551,6 @@
             style="
               font-size: 20px;
               line-height: 20px;
-              font-family: Helvetica, Arial, sans-serif;
-              text-align: left;
-              word-wrap: break-word;
-              border-collapse: collapse;
-              font-weight: 400;
-              -webkit-hyphens: auto;
-              -ms-hyphens: auto;
-              hyphens: auto;
             "
           >
             &nbsp;
@@ -1150,8 +561,6 @@
     <table
       class="row"
       style="
-        border-collapse: collapse;
-        border-spacing: 0;
         padding: 0;
         position: relative;
         width: 100%;
@@ -1162,8 +571,6 @@
           <th
             class="column small-12 large-3 columns first"
             style="
-              font-family: Helvetica, Arial, sans-serif;
-              text-align: left;
               height: 50px;
               background-color: #66ccf7;
               border: 1px solid black;
@@ -1171,23 +578,10 @@
               width: 129px;
             "
           >
-            <table
-              style="
-                border-collapse: collapse;
-                border-spacing: 0;
-                padding: 0;
-              "
-            >
+            <table>
               <tbody>
                 <tr>
-                  <th
-                    style="
-                      font-family: Helvetica, Arial, sans-serif;
-                      text-align: left;
-                    "
-                  >
-                    col - 3
-                  </th>
+                  <th>col - 3</th>
                 </tr>
               </tbody>
             </table>
@@ -1195,8 +589,6 @@
           <th
             class="column-odd small-12 large-9 columns last"
             style="
-              font-family: Helvetica, Arial, sans-serif;
-              text-align: left;
               height: 50px;
               background-color: #ffd54f;
               border: 1px solid black;
@@ -1204,23 +596,10 @@
               width: 419px;
             "
           >
-            <table
-              style="
-                border-collapse: collapse;
-                border-spacing: 0;
-                padding: 0;
-              "
-            >
+            <table>
               <tbody>
                 <tr>
-                  <th
-                    style="
-                      font-family: Helvetica, Arial, sans-serif;
-                      text-align: left;
-                    "
-                  >
-                    col - 9
-                  </th>
+                  <th>col - 9</th>
                 </tr>
               </tbody>
             </table>
@@ -1228,15 +607,7 @@
         </tr>
       </tbody>
     </table>
-    <table
-      class="spacer"
-      style="
-        border-collapse: collapse;
-        border-spacing: 0;
-        padding: 0;
-        width: 100%;
-      "
-    >
+    <table class="spacer" style="width: 100%;">
       <tbody>
         <tr>
           <td
@@ -1244,14 +615,6 @@
             style="
               font-size: 20px;
               line-height: 20px;
-              font-family: Helvetica, Arial, sans-serif;
-              text-align: left;
-              word-wrap: break-word;
-              border-collapse: collapse;
-              font-weight: 400;
-              -webkit-hyphens: auto;
-              -ms-hyphens: auto;
-              hyphens: auto;
             "
           >
             &nbsp;
@@ -1262,8 +625,6 @@
     <table
       class="row"
       style="
-        border-collapse: collapse;
-        border-spacing: 0;
         padding: 0;
         position: relative;
         width: 100%;
@@ -1274,8 +635,6 @@
           <th
             class="column small-12 large-2 columns first"
             style="
-              font-family: Helvetica, Arial, sans-serif;
-              text-align: left;
               height: 50px;
               background-color: #66ccf7;
               border: 1px solid black;
@@ -1283,23 +642,10 @@
               width: 80.66667px;
             "
           >
-            <table
-              style="
-                border-collapse: collapse;
-                border-spacing: 0;
-                padding: 0;
-              "
-            >
+            <table>
               <tbody>
                 <tr>
-                  <th
-                    style="
-                      font-family: Helvetica, Arial, sans-serif;
-                      text-align: left;
-                    "
-                  >
-                    col - 2
-                  </th>
+                  <th>col - 2</th>
                 </tr>
               </tbody>
             </table>
@@ -1307,8 +653,6 @@
           <th
             class="column-odd small-12 large-10 columns last"
             style="
-              font-family: Helvetica, Arial, sans-serif;
-              text-align: left;
               height: 50px;
               background-color: #ffd54f;
               border: 1px solid black;
@@ -1316,23 +660,10 @@
               width: 467.33333px;
             "
           >
-            <table
-              style="
-                border-collapse: collapse;
-                border-spacing: 0;
-                padding: 0;
-              "
-            >
+            <table>
               <tbody>
                 <tr>
-                  <th
-                    style="
-                      font-family: Helvetica, Arial, sans-serif;
-                      text-align: left;
-                    "
-                  >
-                    col - 10
-                  </th>
+                  <th>col - 10</th>
                 </tr>
               </tbody>
             </table>
@@ -1340,15 +671,7 @@
         </tr>
       </tbody>
     </table>
-    <table
-      class="spacer"
-      style="
-        border-collapse: collapse;
-        border-spacing: 0;
-        padding: 0;
-        width: 100%;
-      "
-    >
+    <table class="spacer" style="width: 100%;">
       <tbody>
         <tr>
           <td
@@ -1356,14 +679,6 @@
             style="
               font-size: 20px;
               line-height: 20px;
-              font-family: Helvetica, Arial, sans-serif;
-              text-align: left;
-              word-wrap: break-word;
-              border-collapse: collapse;
-              font-weight: 400;
-              -webkit-hyphens: auto;
-              -ms-hyphens: auto;
-              hyphens: auto;
             "
           >
             &nbsp;
@@ -1374,8 +689,6 @@
     <table
       class="row"
       style="
-        border-collapse: collapse;
-        border-spacing: 0;
         padding: 0;
         position: relative;
         width: 100%;
@@ -1386,8 +699,6 @@
           <th
             class="column small-12 large-1 columns first"
             style="
-              font-family: Helvetica, Arial, sans-serif;
-              text-align: left;
               height: 50px;
               background-color: #66ccf7;
               border: 1px solid black;
@@ -1395,23 +706,10 @@
               width: 32.33333px;
             "
           >
-            <table
-              style="
-                border-collapse: collapse;
-                border-spacing: 0;
-                padding: 0;
-              "
-            >
+            <table>
               <tbody>
                 <tr>
-                  <th
-                    style="
-                      font-family: Helvetica, Arial, sans-serif;
-                      text-align: left;
-                    "
-                  >
-                    col - 1
-                  </th>
+                  <th>col - 1</th>
                 </tr>
               </tbody>
             </table>
@@ -1419,8 +717,6 @@
           <th
             class="column-odd small-12 large-11 columns last"
             style="
-              font-family: Helvetica, Arial, sans-serif;
-              text-align: left;
               height: 50px;
               background-color: #ffd54f;
               border: 1px solid black;
@@ -1428,23 +724,10 @@
               width: 515.66667px;
             "
           >
-            <table
-              style="
-                border-collapse: collapse;
-                border-spacing: 0;
-                padding: 0;
-              "
-            >
+            <table>
               <tbody>
                 <tr>
-                  <th
-                    style="
-                      font-family: Helvetica, Arial, sans-serif;
-                      text-align: left;
-                    "
-                  >
-                    col - 11
-                  </th>
+                  <th>col - 11</th>
                 </tr>
               </tbody>
             </table>
@@ -1452,15 +735,7 @@
         </tr>
       </tbody>
     </table>
-    <table
-      class="spacer"
-      style="
-        border-collapse: collapse;
-        border-spacing: 0;
-        padding: 0;
-        width: 100%;
-      "
-    >
+    <table class="spacer" style="width: 100%;">
       <tbody>
         <tr>
           <td
@@ -1468,14 +743,6 @@
             style="
               font-size: 20px;
               line-height: 20px;
-              font-family: Helvetica, Arial, sans-serif;
-              text-align: left;
-              word-wrap: break-word;
-              border-collapse: collapse;
-              font-weight: 400;
-              -webkit-hyphens: auto;
-              -ms-hyphens: auto;
-              hyphens: auto;
             "
           >
             &nbsp;
@@ -1486,8 +753,6 @@
     <table
       class="row"
       style="
-        border-collapse: collapse;
-        border-spacing: 0;
         padding: 0;
         position: relative;
         width: 100%;
@@ -1498,8 +763,6 @@
           <th
             class="column-odd small-12 large-12 columns first last"
             style="
-              font-family: Helvetica, Arial, sans-serif;
-              text-align: left;
               height: 50px;
               background-color: #ffd54f;
               border: 1px solid black;
@@ -1507,30 +770,11 @@
               width: 564px;
             "
           >
-            <table
-              style="
-                border-collapse: collapse;
-                border-spacing: 0;
-                padding: 0;
-              "
-            >
+            <table>
               <tbody>
                 <tr>
-                  <th
-                    style="
-                      font-family: Helvetica, Arial, sans-serif;
-                      text-align: left;
-                    "
-                  >
-                    col - 12
-                  </th>
-                  <th
-                    class="expander"
-                    style="
-                      font-family: Helvetica, Arial, sans-serif;
-                      text-align: left;
-                    "
-                  ></th>
+                  <th>col - 12</th>
+                  <th class="expander"></th>
                 </tr>
               </tbody>
             </table>
