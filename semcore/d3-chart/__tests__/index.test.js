@@ -194,7 +194,7 @@ describe('Area chart', () => {
         <XAxis>
           <XAxis.Ticks />
         </XAxis>
-        <Area x="time" y="stack1" curve={curveCardinal}>
+        <Area x="time" y="stack1" curve={curveCardinal} duration={0}>
           <Area.Dots display />
         </Area>
       </Plot>
@@ -227,15 +227,15 @@ describe('Area chart', () => {
           <XAxis.Ticks />
         </XAxis>
         <StackedArea x="time">
-          <StackedArea.Area y="stack1">
+          <StackedArea.Area y="stack1" duration={0}>
             <StackedArea.Area.Null />
             <StackedArea.Area.Dots />
           </StackedArea.Area>
-          <StackedArea.Area y="stack2" color="#3AB011">
+          <StackedArea.Area y="stack2" color="#3AB011" duration={0}>
             <StackedArea.Area.Null />
             <StackedArea.Area.Dots />
           </StackedArea.Area>
-          <StackedArea.Area y="stack3" color="#FF8E29">
+          <StackedArea.Area y="stack3" color="#FF8E29" duration={0}>
             <StackedArea.Area.Null />
             <StackedArea.Area.Dots />
           </StackedArea.Area>
@@ -257,13 +257,13 @@ describe('Area chart', () => {
           <XAxis.Ticks />
         </XAxis>
         <StackedArea x="time">
-          <StackedArea.Area y="stack1" curve={curveCardinal}>
+          <StackedArea.Area y="stack1" curve={curveCardinal} duration={0}>
             <StackedArea.Area.Dots display />
           </StackedArea.Area>
-          <StackedArea.Area y="stack2" color="#3AB011" curve={curveCardinal}>
+          <StackedArea.Area y="stack2" color="#3AB011" curve={curveCardinal} duration={0}>
             <StackedArea.Area.Dots display />
           </StackedArea.Area>
-          <StackedArea.Area y="stack3" color="#FFA318" curve={curveCardinal}>
+          <StackedArea.Area y="stack3" color="#FFA318" curve={curveCardinal} duration={0}>
             <StackedArea.Area.Dots display />
           </StackedArea.Area>
         </StackedArea>
