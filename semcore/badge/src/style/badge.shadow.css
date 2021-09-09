@@ -4,7 +4,7 @@ SBadge {
   display: inline-block;
   box-sizing: border-box;
   height: 14px;
-  line-height: 12px;
+  line-height: 1.2;
   padding: 0 4px;
   border-radius: 4px;
   white-space: nowrap;
