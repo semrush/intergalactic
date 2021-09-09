@@ -9,6 +9,8 @@ const NavigationView = styled.div`
   padding: 32px;
   box-sizing: border-box;
   max-width: 260px;
+  height: 100%;
+  overflow: auto;
   @media (max-width: 767px) {
     margin-right: 0;
   }

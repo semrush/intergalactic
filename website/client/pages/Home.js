@@ -20,6 +20,7 @@ import { Link as LinkScroll } from 'react-scroll';
 import { Box } from '@semcore/flex-box';
 import updatesButton from '../static/illustration/search-for-updates.svg';
 import { css } from '@semcore/core';
+import SideBarNavigation from '../components/SideBarNavigation';
 
 const stylesTabLine = css`
   STabLine {
@@ -333,6 +334,22 @@ const UpdatesButton = styled(LinkScroll)`
   }
 `;
 
+const HomePage = styled.div`
+  display: flex;
+`;
+
+const SideBar = styled.div`
+  position: sticky;
+  top: 80px;
+
+  height: 100vh;
+  background: #f5f5f5;
+  max-width: 260px;
+  @media (max-width: 767px) {
+    display: none;
+  }
+`;
+
 const NAVIGATE_QUERY = gql`
   {
     navigation {
@@ -351,6 +368,7 @@ const NAVIGATE_QUERY = gql`
       }
     }
   }
+
 `;
 
 const mappingTableToImg = {
@@ -504,7 +522,10 @@ function Home() {
       {loading ? (
         <LoadingPage />
       ) : (
-        <>
+        <HomePage>
+          <SideBar>
+            <SideBarNavigation navigation={data.navigation.filter((nav) => !nav.metadata.hide)} />
+          </SideBar>
           <Overlay>
             <PromoWrapper>
               <Title>We unify Semrush interfaces</Title>
@@ -555,7 +576,7 @@ function Home() {
             Updates?
             <img src={updatesButton} alt="Updates button" />
           </UpdatesButton>
-        </>
+        </HomePage>
       )}
     </>
   );
