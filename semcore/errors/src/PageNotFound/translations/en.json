@@ -1,5 +1,5 @@
 {
-  "title": "Page not found",
-  "text": "We can't find the page you're looking for. You can either return to the previous page or visit our homepage.",
-  "btnHome": "Visit homepage"
+  "title": "We got lost",
+  "text": "It looks like this page doesn't exist. Try going back or click the button below and we'll take you home.",
+  "btnHome": "Go to homepage"
 }
