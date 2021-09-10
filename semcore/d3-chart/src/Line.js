@@ -2,7 +2,7 @@ import React from 'react';
 import { curveLinear, line as d3Line } from 'd3-shape';
 import { Component, sstyled } from '@semcore/core';
 import createElement from './createElement';
-import { definedData, scaleOfBandwidth, getNullData } from './utils';
+import { definedData, definedNullData, scaleOfBandwidth, getNullData } from './utils';
 import Dots from './Dots';
 import ClipPath from './ClipPath';
 import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
@@ -39,11 +39,11 @@ class LineRoot extends Component {
   }
 
   getNullProps() {
-    const { y, d3, color, data } = this.asProps;
+    const { x, y, d3, color, data } = this.asProps;
     return {
       d3,
       // TODO: vertical
-      data: getNullData(data, d3.defined(), y),
+      data: getNullData(data, definedNullData(x, y), y),
       color,
     };
   }

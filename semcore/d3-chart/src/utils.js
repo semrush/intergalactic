@@ -24,8 +24,14 @@ export function invert(scale, value) {
     .range(range[0] <= range[1] ? domain : domain.slice().reverse())(value);
 }
 
-export function definedData(x, y) {
+export function definedNullData(x, y) {
   return (p) => p[x] !== null && p[y] !== null;
+}
+
+export function definedData(x, y) {
+  return (p) => {
+    return p[x] !== null && p[x] !== undefined && (p[y] !== null && p[y] !== undefined);
+  };
 }
 
 export function scaleOfBandwidth(scale, value) {
