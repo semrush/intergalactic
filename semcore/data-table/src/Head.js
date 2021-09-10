@@ -94,9 +94,6 @@ class Head extends Component {
 
     const [offsetLeftSum, offsetRightSum] = getScrollOffsetValue(this.columns);
 
-    const leftVar = offsetLeftSum + 'px';
-    const rightVar = offsetRightSum + 'px';
-
     logger.warn(
       sticky,
       "'sticky' property is deprecated, use '<Sticky/>' wrapper",
@@ -107,8 +104,8 @@ class Head extends Component {
       <SHeadWrapper sticky={sticky}>
         <ScrollArea
           styles={scrollStyles}
-          left={`${offsetLeftSum}px`}
-          right={`${offsetRightSum}px`}
+          use:left={`${offsetLeftSum}px`}
+          use:right={`${offsetRightSum}px`}
           shadow
           onResize={onResize}
         >

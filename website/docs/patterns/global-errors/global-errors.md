@@ -86,7 +86,7 @@ If you have any other problems with access to the project, please contact our [S
 
 **Message**
 
-We are aware of the issue and are working to fix it. Please try again later or contact the [Support Team]({semrush-email@semrush.com).
+We are aware of the issue and are working to fix it. Please try again later or contact the [Support Team](mailto:semrush-email@semrush.com).
 
 **Button**
 
