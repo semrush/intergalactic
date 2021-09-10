@@ -3,7 +3,7 @@ import { area, curveLinear, line } from 'd3-shape';
 import Dots from './Dots';
 import { Component, sstyled } from '@semcore/core';
 import createElement from './createElement';
-import { definedData, scaleOfBandwidth, getNullData } from './utils';
+import { definedData, scaleOfBandwidth, getNullData, definedNullData } from './utils';
 import ClipPath from './ClipPath';
 import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 
@@ -48,9 +48,9 @@ class AreaRoot extends Component {
   }
 
   getNullProps() {
-    const { y, color, data, d3Line } = this.asProps;
+    const { x, y, color, data, d3Line } = this.asProps;
     return {
-      data: getNullData(data, d3Line.defined(), y),
+      data: getNullData(data, definedNullData(x, y), y),
       d3: d3Line,
       color,
     };
