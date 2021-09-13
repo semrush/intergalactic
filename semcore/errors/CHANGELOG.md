@@ -2,6 +2,14 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.4.3] - 2021-9-13
+
+### Changed
+
+- Updated the `title`, `text` and `btnHome` fields for the `en` locale in the `PageNoData` component.
+- Updated the `title` and `btnHome` fields for the `en` locale in the `Maintenance` component.
+- Updated the `btnHome` field for the `en` locale in the `AccessDenied` component.
+
 ## [2.4.2] - 2021-8-26
 
 ### Changed
