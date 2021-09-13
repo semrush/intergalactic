@@ -2,7 +2,6 @@
 title: D3 Chart (RU)
 fileSource: d3-chart
 tabName: Concept
-beta: true
 ---
 
 Этот компонент является основой для построения графиков.
