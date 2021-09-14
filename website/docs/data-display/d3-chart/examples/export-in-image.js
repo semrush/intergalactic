@@ -6,7 +6,7 @@ import DropdownMenu from '@semcore/dropdown-menu';
 import Button from '@semcore/button';
 import FileExportXS from '@semcore/icon/lib/FileExport/xs';
 
-const EXPORTS = ['PNG', 'JPG', 'WEBP'];
+const EXPORTS = ['PNG', 'JPEG', 'WEBP'];
 
 export default () => {
   const [visible, updateVisible] = useState(false);

@@ -10,7 +10,7 @@ Components that we use to work with user expectations:
 - [Skeleton](/components/skeleton)
 - [ProgressBar](/components/progress-bar)
 
-**They are used in different cases.** 🤓 For a detailed description of each component, see the guides.
+**They are used in the various cases.** 🤓 For a detailed description of each component, see the guides.
 
 > 💡 **The block that has the loading state should have spacing, so that in extreme cases, when the user changes the size of the viewport, the block with the loading does not "stick" to other blocks**. The margins depend on the block where the component is used. They are usually multiple 4. For the largest spinners use `margin: 40px`.
 

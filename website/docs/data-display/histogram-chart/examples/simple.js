@@ -42,7 +42,7 @@ const Demo = () => (
             new Intl.DateTimeFormat('en-US', {
               year: 'numeric',
               month: 'short',
-            }).format(Number(new Date('10.19.2019')))
+            }).format(Number(new Date('2019/10/19')))
           }
         />
         <XAxis dataKey="age" domain={['auto', 'auto']} />

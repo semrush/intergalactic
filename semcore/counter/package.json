@@ -1,11 +1,12 @@
 {
   "name": "@semcore/counter",
   "description": "SEMRush Counter Component",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
   "author": "Roman Lysov <r.lysov@semrush.com>",
+  "sideEffects": false,
   "license": "MIT",
   "scripts": {
     "build": "build --source=js",

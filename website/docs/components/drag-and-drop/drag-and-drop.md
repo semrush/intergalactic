@@ -36,14 +36,14 @@ The component is meant for imitating physical dragging of objects, so the follow
 | For light background | ![drag icon](static/drag-default.png) | `fill: var(--stone);`          |
 | For dark background  |                                       | `fill: rgba(255,255,255,0.5);` |
 
-@## Shadow of the object which can be dragged
+### Shadow of the object which can be dragged
 
 |                      | Appearance example                              | Styles                                      |
 | -------------------- | ----------------------------------------------- | ------------------------------------------- |
 | For light background | ![dragging example](static/dragging.png)        | `box-shadow: 0 2px 5px 0 rgba(0,0,0,0.15);` |
 | For dark background  | ![dragging example](static/dragging-invert.png) | `box-shadow: 0 2px 5px 0 rgba(0,0,0,0.5);`  |
 
-@## Indication of the area for dragging
+@## Area for dragging
 
 - It is the area you may grab with a long click of the mouse or using the keyboard, and drag a large object (card, table line etc.) or something.
 - For such area we use the pattern which appears upon hovering over the area or moving to the element using `Tab`.
@@ -54,7 +54,7 @@ The component is meant for imitating physical dragging of objects, so the follow
 | For light background | ![draggable zone](static/draggable-card.png) ![drag zone](static/drag-table.png) | `background: var(–gray80);`          |
 | For dark background  | ![draggable zone](static/draggable-card-invert.png)                              | `background: rgba(255,255,255,0.5);` |
 
-@## Indication of the area where the element can be placed
+@## Area for dropping
 
 In the `default` state the large area where the element can be placed has dashed border. Upon hovering over such area its styles are not changed, in order not to create the impression that the area is clickable.
 
@@ -63,7 +63,7 @@ In the `default` state the large area where the element can be placed has dashed
 | For light background | ![droppable zone](static/droppable-zone.png) ![droppable zone with hover](static/default-and-hover.png) | `border: 2px dashed var(--gray80);`         |
 | For dark background  | ![droppable zone](static/droppable-zone-invert.png)                                                     | `border: 2px dashed rgba(255,255,255,0.4);` |
 
-@## Highlighting the area upon hovering
+@## Highlighting the area
 
 Upon dragging the object to the area where the element can be dragged, it should be obligatorily highlighted.
 
@@ -108,22 +108,12 @@ Upon dragging the axis is not blocked, the element may be dragged to any part of
 | dragging | ![dragging hover](static/drag-card.png) ![table with drag & drop](static/drag-table2.png) | Upon hover over the area where the element can be dropped it changes the colour. If the object is dragged in the list of analogous objects, upon dragging they are drawn apart, showing the drop zone of colour `var(--mercury)`.                                                           |
 | no-drop  | ![no-drop](static/no-drop.png)                                                            | If the drop zone under the dragged object is unavailable, the cursor is just changed into `not-allowed`.                                                                                                                                                                                    |
 
-@## Control using the keyboard and the mouse
-
 ### Mouse
 
 - Simple click on the object does not start dragging.
 - Click with small shift (as some people call it, “sloppy click”) and long click start dragging and the dragged object obtains the styles for this condition.
 - `Esc` — cancels dragging using the mouse.
 - `Tab` and `Enter` — do nothing.
-
-### Keyboard
-
-- `Tab` — places the focus on the object for dragging
-- `Shift` + `Tab` — returns the focus on the previous object / element of the interface.
-- `Space` — selects the focused object and starts dragging.
-- Repeated pressing of `Space` — terminates dragging.
-- `Arrows` — move the selected object down/up and right/left in the list, depending on the task.
 
 @## Use in UX/UI
 
@@ -138,6 +128,7 @@ This component is meant for imitating physical dragging of objects, so it is imp
 - It is important to remember that the short and long clicks are not the same. The long click is used when the draggable object is clickable.
 - To show visually during dragging (the so called `DragEvent`), that the element is dragged - to add the required styles to the element.
 
+@page drag-and-drop-a11y
 @page drag-and-drop-api
 @page drag-and-drop-code
 @page drag-and-drop-changelog

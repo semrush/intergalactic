@@ -10,7 +10,7 @@ title: Code
 
 @example start
 
-@## Comples example
+@## Complex example
 
 @example line
 

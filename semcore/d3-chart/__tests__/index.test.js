@@ -1,9 +1,9 @@
 import React from 'react';
-import { bisector } from 'd3-array';
+// import { bisector } from 'd3-array';
 import { scaleLinear, scaleBand } from 'd3-scale';
 import { render, fireEvent, cleanup } from 'jest-preset-ui/testing';
 import { shouldSupportClassName, shouldSupportRef } from 'jest-preset-ui/shared';
-import { Plot, YAxis, XAxis } from '../src';
+import { Plot, YAxis, XAxis, Venn } from '../src';
 import { getIndexFromData } from '../src/utils';
 import snapshot from 'jest-preset-ui/snapshot';
 import { minMax, Area, StackedArea } from '@semcore/d3-chart';
@@ -108,7 +108,7 @@ describe('XAxis', () => {
 
   test('should support hover for custom XAxis.Ticks', () => {
     jest.spyOn(window, 'requestAnimationFrame').mockImplementation((cb) => cb());
-    const bisect = bisector((d) => d.x).center;
+    // const bisect = bisector((d) => d.x).center;
     class EventEmitter {
       emit() {}
       subscribe() {}
@@ -194,7 +194,7 @@ describe('Area chart', () => {
         <XAxis>
           <XAxis.Ticks />
         </XAxis>
-        <Area x="time" y="stack1" curve={curveCardinal}>
+        <Area x="time" y="stack1" curve={curveCardinal} duration={0}>
           <Area.Dots display />
         </Area>
       </Plot>
@@ -227,15 +227,15 @@ describe('Area chart', () => {
           <XAxis.Ticks />
         </XAxis>
         <StackedArea x="time">
-          <StackedArea.Area y="stack1">
+          <StackedArea.Area y="stack1" duration={0}>
             <StackedArea.Area.Null />
             <StackedArea.Area.Dots />
           </StackedArea.Area>
-          <StackedArea.Area y="stack2" color="#3AB011">
+          <StackedArea.Area y="stack2" color="#3AB011" duration={0}>
             <StackedArea.Area.Null />
             <StackedArea.Area.Dots />
           </StackedArea.Area>
-          <StackedArea.Area y="stack3" color="#FF8E29">
+          <StackedArea.Area y="stack3" color="#FF8E29" duration={0}>
             <StackedArea.Area.Null />
             <StackedArea.Area.Dots />
           </StackedArea.Area>
@@ -257,13 +257,13 @@ describe('Area chart', () => {
           <XAxis.Ticks />
         </XAxis>
         <StackedArea x="time">
-          <StackedArea.Area y="stack1" curve={curveCardinal}>
+          <StackedArea.Area y="stack1" curve={curveCardinal} duration={0}>
             <StackedArea.Area.Dots display />
           </StackedArea.Area>
-          <StackedArea.Area y="stack2" color="#3AB011" curve={curveCardinal}>
+          <StackedArea.Area y="stack2" color="#3AB011" curve={curveCardinal} duration={0}>
             <StackedArea.Area.Dots display />
           </StackedArea.Area>
-          <StackedArea.Area y="stack3" color="#FFA318" curve={curveCardinal}>
+          <StackedArea.Area y="stack3" color="#FFA318" curve={curveCardinal} duration={0}>
             <StackedArea.Area.Dots display />
           </StackedArea.Area>
         </StackedArea>
@@ -272,4 +272,8 @@ describe('Area chart', () => {
 
     expect(await snapshot(component)).toMatchImageSnapshot();
   });
+});
+
+describe('Venn', () => {
+  shouldSupportRef(Venn, PlotTest);
 });

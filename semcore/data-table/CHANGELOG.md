@@ -2,6 +2,19 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [1.4.6] - 2021-09-10
+
+### Changed
+
+- Fixed position table for fixed columns.
+- Added support property `onResize` for `DataTable.Body`.
+
+## [1.4.5] - 2021-08-26
+
+### Changed
+
+- Add 'sideEffect=false' for more optimal build via webpack
+
 ## [1.4.4] - 2021-06-25
 
 ### Added

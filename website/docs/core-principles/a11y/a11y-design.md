@@ -43,24 +43,11 @@ Make sure that the user can easily understand the meaning and structure of the p
 
 @## Typography
 
-The description is on the page [typography-a11y](/style/typography/typography-a11y/)
+See detailed information in the [Typography guide](/style/typography/typography-a11y/).
 
 @## Color and contrast
 
-![contrast](/core-principles/a11y/static/contrast.png)
-
-**Requirements**:
-
-- **Make sure that there is sufficient contrast between the text color and the background**.
-
-- **Make sure that the minimum contrast ratio is 4.5:1**. For enlarged text, you can lower the contrast to 3:1. Enlarged text is text with a minimum size of 18 points in normal or 14 points in bold. There are some exceptions:
-
-  - Logos or decorative elements on the page
-  - Inactive controls
-
-- **Make sure to use additional ways of communication or markup besides color**. This is important for colorblind users. For example, highlighting a field in red will not inform the user about an error if they cannot distinguish between colors.
-
-> **Don't rely on color as your only visual medium**. Use bold, asterisks, icons, typography, text, check required boxes, etc.
+See detailed information in the [Color guide](/style/color/color-a11y/).
 
 @## Graphics and images
 
@@ -75,9 +62,9 @@ Make sure that the user understands all content, including charts, icons, and im
 
 ### Data visualization
 
-- To immerse the user in the context, provide a brief description for the visualizations
-- Make sure data and specifications are clearly labeled
-- Provide sufficient contrast between the presented data (for example, lines in charts), so that colorblind users can distinguish between them
+- To immerse the user in the context, provide a brief description for the visualizations.
+- Make sure data and specifications are clearly labeled.
+- Provide sufficient contrast between the presented data (for example, lines in charts), so that colorblind users can distinguish between them.
 
 ### Alternate versions
 
@@ -166,29 +153,6 @@ Make sure that the touch targets of the items are large enough and are easily ac
 > - [Touch Target ›](https://www.w3.org/WAI/WCAG21/Understanding/target-size.html)
 > - [Touch Target Size and Spacing ›](https://www.w3.org/TR/mobile-accessibility-mapping/#touch-target-size-and-spacing)
 > - [Placing buttons where they are easy to access ›](https://www.w3.org/TR/mobile-accessibility-mapping/#h-placing-buttons-where-they-are-easy-to-access)
-
-@## Keyboard controls
-
-Make sure that the focus position and the transition between elements is clear and logical to the user navigating the page with a keyboard.
-
-**Requirements**:
-
-- **Users should be able to select and activate any interactive element on the page using the `Tab`, `Space`, and `Arrow` keys**
-- **For sighted users, it's important that interactive elements have visible and familiar states: focus, hover, active, and visited**. For blind users, it's important to support a way to easily navigate to the main content. This would allow them to skip ads and jump over long navigation to the main information of the page, reducing the amount of information they need to listen to.
-- **The user expects that the focus between elements will switch in a logical order, usually from left to right and from top to bottom**. The order may be obvious to the development team, but for more complex cases be sure to mark it on your prototypes and mockups.
-- **Before pushing the build to production, use the `Tab` key to make sure that it's possible to see where the focus is when navigating the interface with the keyboard**. Pay special attention to the pages that use JavaScript and are not built using standard HTML elements.
-
-> **Useful resources**
->
-> Web content accessibility guidelines on:
->
-> - [Meaningful Sequence ›](https://www.w3.org/TR/WCAG21/#meaningful-sequence)
-> - [Keyboard Accessible ›](https://www.w3.org/TR/WCAG21/#keyboard-accessible)
-> - [Keyboard ›](https://www.w3.org/TR/WCAG21/#keyboard)
-> - [No Keyboard Trap ›](https://www.w3.org/TR/WCAG21/#no-keyboard-trap)
-> - [Focus Order ›](https://www.w3.org/TR/WCAG21/#focus-order)
-> - [Focus Visible ›](https://www.w3.org/TR/WCAG21/#focus-visible)
-> - [On Focus ›](https://www.w3.org/TR/WCAG21/#on-focus)
 
 @## Text readability
 

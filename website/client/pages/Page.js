@@ -23,7 +23,7 @@ const DocumentationWrapper = styled.div`
   @media (max-width: 767px) {
     padding: 96px 32px 64px;
   }
-  @media (max-width: 320px) {
+  @media (max-width: 415px) {
     padding: 80px 20px 32px;
   }
 `;
@@ -32,7 +32,7 @@ const NextGuide = styled.div`
   display: flex;
   justify-content: space-between;
   margin: 0 32px 96px;
-  @media (max-width: 320px) {
+  @media (max-width: 415px) {
     margin: 0 32px 80px;
   }
 
@@ -71,7 +71,7 @@ const MobileSelect = styled(Select)`
     div div {
       margin: 0 32px !important;
     }
-    @media (max-width: 320px) {
+    @media (max-width: 415px) {
       div div {
         margin: 0 20px !important;
       }

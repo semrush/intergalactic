@@ -1,0 +1,45 @@
+@import '../core/var.css';
+
+.notice {
+  padding: 20px 24px;
+  border-radius: 10px;
+
+  &_addon-left,
+  &_addon-right {
+    display: inline-block;
+    text-align: center;
+  }
+
+  &_addon-left {
+    margin-right: 12px;
+  }
+  &_addon-right {
+    margin-left: 12px;
+  }
+
+  &-theme-primary-info {
+    background-color: var(--blue);
+    color: var(--white);
+  }
+  &-theme-primary-success {
+    background-color: var(--green);
+    color: var(--white);
+  }
+  &-theme-primary-warning {
+    background-color: var(--orange);
+    color: var(--white);
+  }
+
+  &-theme-secondary-info {
+    background-color: color-mod(var(--blue) a(10%));
+    color: var(--black);
+  }
+  &-theme-secondary-success {
+    background-color: color-mod(var(--lime) a(10%));
+    color: var(--black);
+  }
+  &-theme-secondary-warning {
+    background-color: color-mod(var(--orange) a(10%));
+    color: var(--black);
+  }
+}

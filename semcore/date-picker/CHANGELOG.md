@@ -2,6 +2,25 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.5.4] - 2021-9-1
+
+### Fixed
+
+- Fixed change `displayedPeriod` after change `value` for family pickers.
+
+## [2.5.3] - 2021-8-26
+
+### Changed
+
+- Add 'sideEffect=false' for more optimal build via webpack
+
+## [2.5.2] - 2021-08-20
+
+### Fixed
+
+- [TS] added types for default values.
+- Fixed set `displayedPeriod` for family pickers.
+
 ## [2.5.0] - 2021-07-13
 
 ### Fixed

@@ -1,0 +1,66 @@
+<!-- Emails use the XHTML Strict doctype -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="https://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <!-- Link to the email's CSS, which will be inlined into the email -->
+
+    <style>
+      .divider {
+        border-color: #d1d4db;
+      }
+      .divider-horizontal {
+        border-top-style: solid;
+        border-top-width: 1px;
+        height: 0;
+      }
+      .divider-vertical {
+        border-left-style: solid;
+        border-left-width: 1px;
+        width: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <table border="0" cellspacing="0" cellpadding="0" width="100%">
+      <tbody>
+        <tr style="height: 10px;"></tr>
+        <tr>
+          <td
+            class="divider divider-horizontal"
+            style="
+              border-color: #d1d4db;
+              border-top-style: solid;
+              border-top-width: 1px;
+              height: 0;
+            "
+          ></td>
+        </tr>
+      </tbody>
+    </table>
+    <table>
+      <tbody>
+        <tr style="height: 20px;"></tr>
+        <tr>
+          <td
+            style="
+              height: 30px;
+              width: 40px;
+            "
+          ></td>
+          <td
+            class="divider divider-vertical"
+            style="
+              border-color: #d1d4db;
+              border-left-style: solid;
+              border-left-width: 1px;
+              width: 0;
+            "
+          ></td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>

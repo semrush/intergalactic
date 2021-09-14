@@ -1,0 +1,77 @@
+<extends src="core/base.html">
+  <block name="head">
+    <link rel="stylesheet" href="../../../lib/core/base.css" />
+    <link rel="stylesheet" href="../../../lib/grid/index.css" />
+    <link rel="stylesheet" href="../../../lib/typography/index.css" />
+    <link rel="stylesheet" href="../../../lib/divider/index.css" />
+    <link rel="stylesheet" href="../../../lib/button/index.css" />
+    <link rel="stylesheet" href="../../../lib/summary/index.css" />
+  </block>
+
+  <block name="content">
+    <div class="summary">
+      <row>
+        <columns large="2" small="5">
+          <p class="text-size-100">Keywords</p>
+          <spacer size="4"></spacer>
+          <span class="text-size-600 bold">656</span>
+          <a href="#" class="link link-theme-default text-size-100">+Add</a>
+          <th class="divider divider-vertical"></th>
+        </columns>
+        <columns large="1" small="1"> </columns>
+        <columns large="2" small="5">
+          <p class="text-size-100">Competitors</p>
+          <spacer size="4"></spacer>
+          <span class="text-size-600 bold">4,127</span>
+          <a href="#" class="link link-theme-default text-size-100">+Add</a>
+          <th class="divider divider-vertical show-desktop"></th>
+        </columns>
+        <columns large="1" small="12"><spacer size="40" class="show-mobile"></spacer></columns>
+        <columns large="2" small="5">
+          <p class="text-size-100">Mentions</p>
+          <spacer size="4"></spacer>
+          <span class="text-size-600 bold">724</span>
+          <a href="#" class="link link-theme-default text-size-100">+Add</a>
+          <th class="divider divider-vertical"></th>
+        </columns>
+        <columns large="1" small="1"></columns>
+        <columns large="2" small="5">
+          <p class="text-size-100">Uploaded Manually</p>
+          <spacer size="4"></spacer>
+          <span class="text-size-600 bold">1,074</span>
+          <a href="#" class="link link-theme-default text-size-100">+Add</a>
+        </columns>
+      </row>
+    </div>
+
+    <h2>King summary</h2>
+    <div class="summary">
+      <row>
+        <columns large="2" small="4">
+          <p class="text-size-100">Monitored</p>
+          <spacer size="4"></spacer>
+          <a href="#656" class="link link-theme-default text-size-600 bold">656</a>
+          <th class="divider divider-vertical"></th>
+        </columns>
+        <columns large="1" small="1"> </columns>
+        <columns large="3" small="6">
+          <p class="text-size-100">Active</p>
+          <spacer size="4"></spacer>
+          <a href="#35" class="link link-theme-default text-size-600 bold">35</a>
+          <th class="divider divider-vertical show-desktop"></th>
+        </columns>
+        <columns large="1" small="1"></columns>
+        <columns large="1" small="12"><spacer size="10" class="show-mobile"></spacer></columns>
+        <columns large="5" small="12">
+          <p class="text-size-100">
+            Move inactive backlinks back to your "In Progress" list and instantly contact your link
+            partners to fix them.
+          </p>
+        </columns>
+      </row>
+      <spacer size="21" class="show-desktop"></spacer>
+      <spacer size="16" class="show-mobile"></spacer>
+      <a href="#" class="button button-theme-primary-info mobile-w-100">Go to Monitor</a>
+    </div>
+  </block>
+</extends>

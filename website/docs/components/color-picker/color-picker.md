@@ -131,7 +131,7 @@ Components that can call a picker:
 - If the `Plain` type is used with a select, the title is not used inside the dropdown with the palette. However, the `Plain` component itself may have an optional title. If a title is used, we recommend using the name: "Select a color".
 - Dropdown closes when you click outside of its area, or when you click the trigger again.
 
-@## Keyboard control
+@## Keyboard support
 
 - When the component is focused via `Tab`, the color transition occurs sequentially — from top to bottom and from left to right. If 2 palettes are used, then when tabbed, the focus of the last element of the main palette skips to the first element of the additional palette.
 - Inside the color palettes, you can navigate using the keyboard arrows.

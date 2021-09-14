@@ -31,21 +31,24 @@ const Tab = styled.div`
 const Main = styled.main`
   h2 {
     font-family: FactorA-Bold, sans-serif;
-    font-size: 30px;
+    font-size: 24px;
     line-height: 120%;
-    margin: 16px 0 16px;
+    margin: 40px 0 16px;
+    &:first-child {
+      margin: 0 0 16px;
+    }
   }
   h3 {
     font-family: FactorA-Bold, sans-serif;
-    font-size: 24px;
-    line-height: 120%;
-    margin: 16px 0 16px;
+    font-size: 18px;
+    line-height: 110%;
+    margin: 16px 0;
   }
   h4 {
     font-family: FactorA-Bold, sans-serif;
-    font-size: 18px;
+    font-size: 16px;
     line-height: 150%;
-    margin: 16px 0 16px;
+    margin: 16px 0;
   }
 `;
 
@@ -56,7 +59,7 @@ const styles = css`
   }
 
   SText {
-    font-size: 24px;
+    font-size: 18px;
     color: #171a22;
   }
 `;

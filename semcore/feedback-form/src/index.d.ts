@@ -16,7 +16,7 @@ export interface IFeedbackForm extends FormProps {
 }
 
 declare const FeedbackForm: (<T>(props: CProps<IFeedbackForm> & T) => ReturnEl) & {
-  Item: <T>(props: FieldProps & T) => ReturnEl;
+  Item: <T>(props: FieldProps<any, any> & T) => ReturnEl;
   Success: <T>(props: CProps<ComponentProps<typeof Box>> & T) => ReturnEl;
   Submit: <T>(props: ComponentProps<typeof Button> & T) => ReturnEl;
   Cancel: <T>(props: ComponentProps<typeof Button> & T) => ReturnEl;

@@ -1,0 +1,45 @@
+<extends src="core/base.html">
+  <block name="head">
+    <link rel="stylesheet" href="../../../lib/core/base.css" />
+    <link rel="stylesheet" href="../../../lib/badge/index.css" />
+    <link rel="stylesheet" href="../../../lib/table/index.css" />
+    <link rel="stylesheet" href="../../../lib/typography/index.css" />
+  </block>
+
+  <block name="content">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Landing page</th>
+          <th>Traffic</th>
+          <th>Change</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <a href="https://www.asos.com/us/" class="link link-theme-default"
+              >https://www.asos.com/us/</a
+            >
+            <div class="badge text-blue-200" style="background-color: rgba(0, 130, 230, 0.15);">
+              You
+            </div>
+          </td>
+          <td>21,763.28</td>
+          <td class="text-red-200 nowrap">–866.03</td>
+        </tr>
+        <tr>
+          <td>
+            <a
+              href="https://www.asos.com/us/men/hoodies-sweatshirts/cat/?cid=5668"
+              class="link link-theme-default"
+              >https://www.asos.com/us/men/hoodies-sweatshirts/cat/?cid=5668</a
+            >
+          </td>
+          <td>4,782.67</td>
+          <td class="text-green-200 nowrap">+52.83</td>
+        </tr>
+      </tbody>
+    </table>
+  </block>
+</extends>

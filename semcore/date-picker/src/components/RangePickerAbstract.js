@@ -24,19 +24,30 @@ const i18n = { de, en, es, fr, it, ja, ru, zh, pt, ko, vi };
 
 const INTERACTION_TAGS = ['INPUT'];
 
+const defaultDisplayedPeriod = new Date(new Date().setHours(0, 0, 0, 0));
+
+function getEndDate(value) {
+  if (!Array.isArray(value)) return null;
+  const [startDate, endDate = startDate] = value;
+  return endDate;
+}
+
 class RangePickerAbstract extends Component {
   static displayName = 'DatePicker';
   static style = style;
-  static defaultProps = {
-    i18n,
-    locale: 'en',
-    defaultDisplayedPeriod: new Date(new Date().setHours(0, 0, 0, 0)),
-    defaultValue: [],
-    defaultHighlighted: [],
-    defaultVisible: false,
-    disabled: [],
-    size: 'm',
-  };
+  static defaultProps({ value, defaultValue }) {
+    return {
+      i18n,
+      locale: 'en',
+      defaultDisplayedPeriod:
+        getEndDate(value) || getEndDate(defaultValue) || defaultDisplayedPeriod,
+      defaultValue: [],
+      defaultHighlighted: [],
+      defaultVisible: false,
+      disabled: [],
+      size: 'm',
+    };
+  }
   static enhance = [i18nEnhance()];
 
   static add = (date, amount, unit) => {
@@ -65,20 +76,21 @@ class RangePickerAbstract extends Component {
       visible: [
         null,
         (visible) => {
-          if (visible) {
-            const [startDate, endDate = startDate] = this.asProps.value;
-            this.handlers.displayedPeriod(endDate ? dayjs(endDate).toDate() : new Date());
-          } else {
-            this.handlerChange([]);
+          if (!visible) {
+            this.handlers.highlighted([]);
+            this.handlers.displayedPeriod(
+              getEndDate(this.asProps.value) || this.props.defaultDisplayedPeriod,
+            );
           }
         },
       ],
       highlighted: null,
       value: [
         null,
-        () => {
-          // TODO: работает только из-за new Date() != new Date()
+        (value) => {
+          // TODO: работает только из-за new Date() !== new Date()
           this.handlers.visible(false);
+          this.handlers.displayedPeriod(getEndDate(value));
         },
       ],
     };
@@ -202,15 +214,15 @@ class RangePickerAbstract extends Component {
     const buttons = (
       <>
         <Button
-          use='primary'
+          use="primary"
           children={getI18nText('apply')}
           onClick={() => this.handlerApply(dirtyValue.length ? dirtyValue : value)}
         />
         {!unclearable && (
           <Button
             ml={2}
-            use='tertiary'
-            theme='muted'
+            use="tertiary"
+            theme="muted"
             children={getI18nText('reset')}
             onClick={() => this.handlerApply([])}
           />
@@ -240,10 +252,10 @@ class RangePickerAbstract extends Component {
             </Box>
             {Boolean(periods.length) && (
               <>
-                <Divider m='-16px 16px' orientation='vertical' h='auto' />
-                <Flex direction='column'>
+                <Divider m="-16px 16px" orientation="vertical" h="auto" />
+                <Flex direction="column">
                   <Picker.Period />
-                  <Flex mt='auto'>{buttons}</Flex>
+                  <Flex mt="auto">{buttons}</Flex>
                 </Flex>
               </>
             )}
@@ -335,7 +347,11 @@ class RangePickerAbstract extends Component {
 
   render() {
     const { Children, styles } = this.asProps;
-    return sstyled(styles)(<Root render={Dropdown}><Children /></Root>);
+    return sstyled(styles)(
+      <Root render={Dropdown}>
+        <Children />
+      </Root>,
+    );
   }
 }
 

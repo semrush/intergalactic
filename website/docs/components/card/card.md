@@ -40,6 +40,7 @@ It is especially recommended to make a link title if the card does not have a bu
 
 ![card with clickable heading](static/card-clickable-2.png)
 
+@page card-a11y
 @page card-api
 @page card-code
 @page card-changelog

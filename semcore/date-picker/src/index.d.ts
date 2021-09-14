@@ -101,6 +101,22 @@ export interface IDatePickerProps extends IDropdownProps, IWithI18nEnhanceProps 
    * @default m
    */
   size?: 'm' | 'l' | 'xl';
+  /**
+   * The selected date, accepts everything which is accepted by `new Date()`
+   * */
+  highlighted?: DateConstructorParams[];
+  /**
+   * Default value selected date, accepts everything which is accepted by `new Date()`
+   * */
+  defaultValue?: DateConstructorParams;
+  /**
+   * Default value date for showing the necessary month
+   * */
+  defaultDisplayedPeriod?: DateConstructorParams;
+  /**
+   * Default value selected date, accepts everything which is accepted by `new Date()`
+   * */
+  defaultHighlighted?: DateConstructorParams[];
 }
 
 export interface IDateRangePickerProps extends IDropdownProps, IWithI18nEnhanceProps {
@@ -108,6 +124,18 @@ export interface IDateRangePickerProps extends IDropdownProps, IWithI18nEnhanceP
    * The selected date, accepts everything which is accepted by `new Date()`
    * */
   value?: DateConstructorParams[];
+  /**
+   * Default value selected date, accepts everything which is accepted by `new Date()`
+   * */
+  defaultValue?: DateConstructorParams[];
+  /**
+   * Default value date for showing the necessary month
+   * */
+  defaultDisplayedPeriod?: DateConstructorParams;
+  /**
+   * Default value selected date, accepts everything which is accepted by `new Date()`
+   * */
+  defaultHighlighted?: DateConstructorParams[];
   /**
    * To be activated upon selecting the date
    * */
@@ -208,9 +236,7 @@ declare const DatePicker: ((
   };
   Popper: typeof Dropdown.Popper;
   Header: typeof Box;
-  Title: <T>(
-    props: CProps<IDatePickerProps & IBoxProps & T, IDatePickerContext>,
-  ) => ReturnEl;
+  Title: <T>(props: CProps<IDatePickerProps & IBoxProps & T, IDatePickerContext>) => ReturnEl;
   Prev: typeof Button;
   Next: typeof Button;
   Calendar: typeof Calendar;
@@ -281,9 +307,7 @@ declare const MonthPicker: ((
   };
   Popper: typeof Dropdown.Popper;
   Header: typeof Box;
-  Title: <T>(
-    props: CProps<IDatePickerProps & IBoxProps & T, IMonthPickerContext>,
-  ) => ReturnEl;
+  Title: <T>(props: CProps<IDatePickerProps & IBoxProps & T, IMonthPickerContext>) => ReturnEl;
   Prev: typeof Button;
   Next: typeof Button;
   Calendar: typeof Calendar;

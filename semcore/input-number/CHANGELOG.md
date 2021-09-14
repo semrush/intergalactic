@@ -2,6 +2,18 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.0.4] - 2021-8-26
+
+### Changed
+
+- Add 'sideEffect=false' for more optimal build via webpack
+
+## [3.0.3] - 2020-08-17
+
+### Fixed
+
+- Fixed entering invalid values.
+
 ## [3.0.2] - 2020-06-16
 
 ### Added

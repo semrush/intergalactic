@@ -142,6 +142,7 @@ The text for this status: `Thank you for your feedback!`.
 
 ![feedback success](static/success.png)
 
+@page feedback-form-a11y
 @page feedback-form-api
 @page feedback-form-code
 @page feedback-form-changelog

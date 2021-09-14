@@ -1,0 +1,176 @@
+@import './var.css';
+/* /\/\/\/\/\/\/\/\/ RESET STYLES /\/\/\/\/\/\/\/\/ */
+body,
+table.body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a {
+  font-family: var(--font-family);
+  font-weight: normal;
+  padding: 0;
+  margin: 0;
+  text-align: left;
+  line-height: normal;
+}
+
+td,
+th {
+  font-family: var(--font-family);
+  text-align: left;
+}
+
+.spacer td,
+.spacer th {
+  padding: 0;
+  margin: 0;
+}
+
+table {
+  padding: 0;
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+
+td {
+  font-weight: normal;
+  word-wrap: break-word;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  hyphens: auto;
+  border-collapse: collapse !important;
+}
+
+img {
+  border: 0 none;
+  height: auto;
+  line-height: 100%;
+  outline: none;
+  text-decoration: none;
+}
+
+a img {
+  border: 0 none;
+}
+
+.imageFix {
+  display: block;
+}
+
+#bodyTable {
+  height: 100% !important;
+  margin: 0;
+  padding: 0;
+  width: 100% !important;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+.bg-black {
+  background-color: var(--black);
+}
+
+.bg-white {
+  background-color: var(--white);
+}
+
+.bg-lime-100 {
+  background-color: var(--light-lime);
+}
+.bg-lime-200 {
+  background-color: var(--lime);
+}
+.bg-red-100 {
+  background-color: var(--light-red);
+}
+.bg-red-200 {
+  background-color: var(--red);
+}
+.bg-red-300 {
+  background-color: var(--dark-red);
+}
+.bg-orange-100 {
+  background-color: var(--light-orange);
+}
+.bg-orange-200 {
+  background-color: var(--orange);
+}
+.bg-orange-300 {
+  background-color: var(--dark-orange);
+}
+.bg-blue-100 {
+  background-color: var(--light-blue);
+}
+.bg-blue-200 {
+  background-color: var(--blue);
+}
+.bg-blue-300 {
+  background-color: var(--dark-blue);
+}
+.bg-gray-100 {
+  background-color: var(--light-gray);
+}
+.bg-gray-200 {
+  background-color: var(--stroke-gray);
+}
+.bg-gray-300 {
+  background-color: var(--gray);
+}
+.bg-gray-400 {
+  background-color: var(--dark-gray);
+}
+.bg-purple-100 {
+  background-color: var(--light-purple);
+}
+.bg-purple-200 {
+  background-color: var(--purple);
+}
+.bg-purple-300 {
+  background-color: var(--dark-purple);
+}
+.bg-green-100 {
+  background-color: var(--light-green);
+}
+.bg-green-200 {
+  background-color: var(--green);
+}
+.bg-green-300 {
+  background-color: var(--dark-green);
+}
+.bg-pink {
+  background-color: var(--pink);
+}
+.bold {
+  font-weight: bold;
+}
+
+.nowrap {
+  white-space: nowrap;
+}
+
+.text-center {
+  text-align: center;
+}
+@media (--desktop) {
+  .show-mobile {
+    display: none !important;
+  }
+}
+
+@media (--mobile) {
+  .show-desktop {
+    display: none !important;
+  }
+  .mobile_text-center {
+    text-align: center;
+  }
+  .mobile_w-100 {
+    width: 100%;
+  }
+}

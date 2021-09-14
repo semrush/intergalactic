@@ -2,6 +2,7 @@ import React from 'react';
 import { venn, normalizeSolution, scaleSolution, intersectionAreaPath } from '@upsetjs/venn.js';
 import { Component, sstyled } from '@semcore/core';
 import canUseDOM from '@semcore/utils/lib/canUseDOM';
+import { FadeInOut } from '@semcore/animation';
 
 import createElement from './createElement';
 import { CONSTANT } from './utils';
@@ -15,6 +16,7 @@ class VennRoot extends Component {
   static defaultProps = {
     orientation: Math.PI / 2,
     orientationOrder: (c1, c2) => c2.radius - c1.radius,
+    duration: 500,
   };
 
   virtualElement = canUseDOM() ? document.createElement('div') : {};
@@ -47,6 +49,7 @@ class VennRoot extends Component {
 
   getCircleProps(props) {
     return {
+      duration: this.asProps.duration,
       data: this.vennData[props.dataKey],
       onMouseMove: this.bindHandlerTooltip(true, props),
       onMouseLeave: this.bindHandlerTooltip(false, props),
@@ -54,29 +57,54 @@ class VennRoot extends Component {
   }
 
   getIntersectionProps(props) {
+    const { duration } = this.asProps;
     const dataKeys = props.dataKey.split('/');
     return {
+      duration,
+      delay: duration,
       data: Object.values(this.vennData).filter((d) => dataKeys.includes(d.setid)),
       onMouseMove: this.bindHandlerTooltip(true, props),
       onMouseLeave: this.bindHandlerTooltip(false, props),
     };
   }
 
+  renderElement = React.forwardRef((props, ref) => {
+    return <FadeInOut ref={ref} tag="g" visible {...props} />;
+  });
+
   render() {
     const Element = this.Element;
     this.vennData = this.getVennData();
-    return <Element render="g" childrenPosition="inside" vennData={this.vennData} />;
+    return (
+      <Element render={this.renderElement} childrenPosition="inside" vennData={this.vennData} />
+    );
   }
 }
 
-function Circle({ Element: SCircle, styles, color = '#3AB011', data }) {
+function Circle({ Element: SCircle, styles, color = '#3AB011', data, duration }) {
   return sstyled(styles)(
-    <SCircle render="circle" color={color} cx={data.x} cy={data.y} r={data.radius} />,
+    <SCircle
+      render="circle"
+      color={color}
+      cx={data.x}
+      cy={data.y}
+      r={data.radius}
+      use:duration={`${duration}ms`}
+    />,
   );
 }
 
-function Intersection({ Element: SIntersection, styles, data }) {
-  return sstyled(styles)(<SIntersection render="path" d={intersectionAreaPath(data)} />);
+function Intersection(props) {
+  const { Element: SIntersection, styles, data } = props;
+  const renderIntersection = React.useCallback(
+    React.forwardRef((props, ref) => {
+      return <FadeInOut ref={ref} tag="path" visible {...props} />;
+    }),
+    [props],
+  );
+  return sstyled(styles)(
+    <SIntersection render={renderIntersection} d={intersectionAreaPath(data)} />,
+  );
 }
 
 const Venn = createElement(VennRoot, { Circle, Intersection });

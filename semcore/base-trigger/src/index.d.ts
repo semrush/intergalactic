@@ -1,6 +1,6 @@
 import React, { ComponentProps } from 'react';
-import { CProps, Merge, ReturnEl } from '@semcore/core';
-import { IBoxProps } from '@semcore/flex-box';
+import { CProps, ReturnEl } from '@semcore/core';
+import { Box, IBoxProps } from '@semcore/flex-box';
 import Dot from '@semcore/dot';
 import { INeighborItemProps } from '@semcore/neighbor-location';
 import { IKeyboardFocusProps } from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
@@ -55,29 +55,27 @@ export interface IFilterTriggerProps extends IBaseTriggerProps {
 }
 
 declare const BaseTrigger: (<T>(props: CProps<IBaseTriggerProps & T>) => ReturnEl) & {
-  Text: typeof Box
-  Addon: typeof Box
+  Text: typeof Box;
+  Addon: typeof Box;
 };
 
 declare const ButtonTrigger: (<T>(props: CProps<IButtonTriggerProps & T>) => ReturnEl) & {
-  Text: typeof BaseTrigger.Text
-  Addon: typeof BaseTrigger.Addon
+  Text: typeof BaseTrigger.Text;
+  Addon: typeof BaseTrigger.Addon;
 };
 
 declare const LinkTrigger: (<T>(props: CProps<ILinkTriggerProps & T>) => ReturnEl) & {
-  Text: typeof BaseTrigger.Text
-  Addon: typeof BaseTrigger.Addon
+  Text: typeof BaseTrigger.Text;
+  Addon: typeof BaseTrigger.Addon;
 };
 
 declare const FilterTrigger: (<T>(props: CProps<ILinkTriggerProps & T>) => ReturnEl) & {
-  Text: typeof BaseTrigger.Text
-  Addon: typeof BaseTrigger.Addon
-  Counter: <T>(props: Merge<ComponentProps<typeof BaseTrigger.Addon> & ComponentProps<typeof Dot>> & T) => ReturnEl
+  Text: typeof BaseTrigger.Text;
+  Addon: typeof BaseTrigger.Addon;
+  Counter: <T>(
+    props: ComponentProps<typeof BaseTrigger.Addon> & ComponentProps<typeof Dot> & T,
+  ) => ReturnEl;
 };
 
 export default BaseTrigger;
-export {
-  ButtonTrigger,
-  LinkTrigger,
-  FilterTrigger,
-};
+export { ButtonTrigger, LinkTrigger, FilterTrigger };

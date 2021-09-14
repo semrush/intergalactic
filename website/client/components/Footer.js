@@ -18,13 +18,13 @@ const FooterWrapper = styled.footer`
   letter-spacing: 0;
   text-align: left;
   @media (max-width: 767px) {
-    padding: 31px 55px;
+    padding: 32px 32px 24px;
     height: 366px;
     grid-template-rows: repeat(2, 6fr) repeat(2, 1fr);
     grid-template-columns: 1fr;
   }
-  @media (max-width: 320px) {
-    padding: 32px;
+  @media (max-width: 415px) {
+    padding: 32px 20px 24px;
   }
 `;
 
@@ -40,7 +40,7 @@ const Logo = styled.div`
     grid-row: 3;
     white-space: nowrap;
   }
-  @media (max-width: 320px) {
+  @media (max-width: 415px) {
     padding: 12px 0;
   }
 `;
@@ -53,8 +53,8 @@ const Description = styled.div`
   @media (max-width: 767px) {
     grid-row: 4;
   }
-  @media (max-width: 320px) {
-    padding-bottom: 40px;
+  @media (max-width: 415px) {
+    padding-bottom: 24px;
   }
 `;
 
@@ -78,7 +78,7 @@ const Contacts = styled.div`
     text-align: left;
     align-self: center;
   }
-  @media (max-width: 320px) {
+  @media (max-width: 415px) {
     margin: 32px 0 32px;
     white-space: break-spaces;
   }
@@ -121,7 +121,7 @@ function Footer() {
       <Logo>
         Powered by <img src={logo} alt="Logo" />
       </Logo>
-      <Description>© 2008–{new Date().getFullYear()} Semrush. All rights reserved.</Description>
+      <Description>© 2008 - {new Date().getFullYear()} Semrush. All rights reserved.</Description>
 
       <Contacts>
         If you want to ask something, drop us a line at

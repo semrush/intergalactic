@@ -43,23 +43,23 @@ const stylesTooltip = css`
 
 const PromoWrapper = styled.div`
   display: grid;
-  grid-template-rows: 2fr 2fr 3fr;
+  grid-template-rows: 0.8fr 0.98fr 1.5fr;
   grid-template-columns: repeat(4, 1fr);
   padding: 48px 0 12px;
   @media (max-width: 1140px) {
     grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: 1fr 0.7fr repeat(2, 2fr);
+    grid-template-rows: 0.8fr 0.7fr repeat(2, 2fr);
     padding: 0 0 56px;
     margin-top: 48px;
   }
   @media (max-width: 767px) {
     grid-template-columns: 1fr;
-    grid-template-rows: repeat(2, 0.5fr) 1fr repeat(3, 1.5fr);
+    grid-template-rows: repeat(1, 0.5fr) 1fr repeat(1, 1.3fr);
     padding: 0 0 56px;
   }
-  @media (max-width: 320px) {
+  @media (max-width: 415px) {
     grid-template-columns: 1fr;
-    grid-template-rows: 0.8fr repeat(2, 1fr) repeat(3, 1.8fr);
+    grid-template-rows: 0.8fr repeat(2, 1fr) 1fr;
     padding: 0 0 56px;
     margin-top: 0;
   }
@@ -67,15 +67,16 @@ const PromoWrapper = styled.div`
 
 const Overlay = styled.div`
   max-width: 1140px;
-  padding: 80px 32px 120px;
+  padding: 80px 40px 120px;
   position: relative;
   margin: 0 auto;
   @media (max-width: 767px) {
     max-width: 767px;
+    padding: 80px 32px 120px;
   }
-  @media (max-width: 320px) {
-    max-width: 320px;
-    padding-bottom: 80px;
+  @media (max-width: 415px) {
+    max-width: 415px;
+    padding: 80px 20px;
   }
 `;
 
@@ -83,8 +84,8 @@ const Title = styled.h1`
   grid-row: 1;
   grid-column: 1/3;
   font-family: FactorA-Bold, sans-serif;
-  font-size: 60px;
-  line-height: 105%;
+  font-size: 50px;
+  line-height: 110%;
   margin-bottom: 16px;
   @media (max-width: 1140px) {
     width: 70%;
@@ -237,7 +238,7 @@ const StylesImg = styled.img`
 const WhaleImg = styled.img`
   position: absolute;
   right: 88px;
-  top: 120px;
+  top: 100px;
   @media (max-width: 1140px) {
     display: none;
   }
@@ -302,10 +303,10 @@ const TableOverlay = styled.div`
   & .component {
     margin-right: 38px;
   }
-  h3 {
+  h2 {
     margin: 0;
     margin-bottom: 8px;
-    font-size: 24px;
+    font-size: 21px;
     font-family: FactorA-Bold, sans-serif;
   }
   a {
@@ -410,7 +411,7 @@ const getTabByTitle = (titles, data) => {
             console.log(tabWidth);
             return (
               <Box mr={3}>
-                <h3>{title}</h3>
+                <h2>{title}</h2>
                 {getComponents(title, data)}
               </Box>
             );

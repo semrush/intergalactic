@@ -15,11 +15,12 @@ const NavigationView = styled.div`
 `;
 
 const CategoryTitle = styled.div`
-  color: #898d9a !important;
+  color: #171a22 !important;
   cursor: pointer;
   padding: 8px 0 2px;
   font-weight: 500;
   font-size: 16px !important;
+  font-family: Inter, sans-serif;
   line-height: 1.5;
   &:hover,
   &:hover > * {
@@ -30,6 +31,7 @@ const CategoryTitle = styled.div`
 const CategoryItem = styled.a`
   padding: 2px 0 2px 24px;
   font-size: 16px;
+  font-family: Inter, sans-serif;
   line-height: 1.5;
   color: #171a22;
   cursor: pointer;
@@ -77,6 +79,7 @@ const SideBarNavigation = ({ navigation = [] }) => {
             >
               <ChevronRightXS
                 mr={2}
+                color="#898D9A"
                 style={{
                   transform: `rotate(${isOpen ? 90 : 0}deg)`,
                   transition: 'transform 0.25s ease-in-out',

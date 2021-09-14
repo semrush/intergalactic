@@ -1,6 +1,6 @@
-import { ComponentProps } from 'react';
 import { PropGetterFn, CProps, ReturnEl } from '@semcore/core';
 import Popper, { IPopperContext, IPopperPopperProps, IPopperProps } from '@semcore/popper';
+import { Box } from '@semcore/flex-box';
 
 export interface IFeaturePopoverPopperProps extends IPopperPopperProps {
   /**
@@ -21,9 +21,9 @@ export interface IFeaturePopoverContext extends IPopperContext {
 declare const FeaturePopover: ((
   props: CProps<IPopperProps, IFeaturePopoverContext>,
 ) => ReturnEl) & {
-  Trigger: <T>(props: ComponentProps<typeof Popper.Trigger> & T) => ReturnEl;
+  Trigger: typeof Popper.Trigger;
   Popper: <T>(props: IFeaturePopoverPopperProps & T) => ReturnEl;
-  Spot: <T>(props: ComponentProps<typeof Box> & T) => ReturnEl;
+  Spot: typeof Box;
 };
 
 export default FeaturePopover;

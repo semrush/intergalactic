@@ -12,10 +12,6 @@ SDot {
   z-index: 1;
   border-radius: 100%;
   vertical-align: middle;
-  animation-name: show;
-  animation-duration: 300ms;
-  animation-timing-function: ease-out;
-  animation-fill-mode: forwards;
 }
 
 SDot[size='xl'] {
@@ -43,26 +39,4 @@ SDot[up] {
   right: 0;
   margin-top: -3px;
   margin-right: -3px;
-}
-
-SDot[hidden] {
-  animation-name: hidden;
-}
-
-@keyframes hidden {
-  0% {
-    transform: scale(1);
-  }
-  100% {
-    transform: scale(0);
-  }
-}
-
-@keyframes show {
-  0% {
-    transform: scale(0);
-  }
-  100% {
-    transform: scale(1);
-  }
 }

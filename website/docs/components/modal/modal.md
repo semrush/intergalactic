@@ -39,7 +39,7 @@ The modal window consists of:
 - container;
 - content;
 - closing icons (optional);
-- fader.
+- overlay.
 
 ![modal scheme](static/modal-scheme.png)
 
@@ -67,12 +67,12 @@ We have several modal window types:
 | Indent from top and right to the `Close` icon is 12px.                                     | ![modal close button](static/close-button.png)                |
 | The cross clickable area is 40px \* 40px.                                                  | ![modal close button hover zone](static/close-hover-zone.png) |
 
-### Fader
+### Overlay
 
-| Styles                                                                                                  | Example                                     |
-| ------------------------------------------------------------------------------------------------------- | ------------------------------------------- |
-| `opacity: 0.8; background: #000;`                                                                       | ![modal fader](static/modal-fader.png)      |
-| Fader style when opening a modal window inside another modal window – `opacity: 0.2; background: #000;` | ![modal in  modal](static/second-modal.png) |
+| Styles                                                                                                    | Example                                     |
+| --------------------------------------------------------------------------------------------------------- | ------------------------------------------- |
+| `opacity: 0.8; background: #000;`                                                                         | ![modal overlay](static/modal-overlay.png)  |
+| Overlay style when opening a modal window inside another modal window – `opacity: 0.4; background: #000;` | ![modal in  modal](static/second-modal.png) |
 
 > 💡 Use a modal window inside another modal window (Xzibit triggers 😁) only when necessary – if nothing at all fits. Look through an [amazing Manifesto](https://modalzmodalzmodalz.com/) against the ubiquitous use of modal windows. Meditate.
 
@@ -170,7 +170,7 @@ See [examples](/components/modal/modal-code/) of resizing a modal window to fit 
 
 When the modal window height does not fit the browser window, it shall be positioned with a 40px indent from the upper border.
 
-> 💡 The content under the fader should not be scrolled.
+> 💡 The content under the overlay should not be scrolled.
 
 ![modal scroll](static/scroll-1.png)
 ![modal scroll](static/scroll-2.png)
@@ -209,6 +209,7 @@ It is not recommended to use more than two main buttons inside the modal window.
 
 ![modal buttons](static/button-yes-no.png)
 
+@page modal-a11y
 @page modal-api
 @page modal-code
 @page modal-changelog

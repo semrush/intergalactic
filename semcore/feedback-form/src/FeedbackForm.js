@@ -86,6 +86,9 @@ function Item(props) {
             inline={false}
             theme="warning"
             placement="left"
+            flip={{
+              fallbackPlacements: ['right', 'bottom'],
+            }}
           >
             {tag && <Root render={tag} {...inputProps} />}
             {typeof Children.origin === 'function' &&

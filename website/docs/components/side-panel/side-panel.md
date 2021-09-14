@@ -11,7 +11,7 @@ tabName: Guide
 Use this component when it is simultaneously needed:
 
 - to show sub-tasks, additional support information and links that may be useful to the user when working with a separate report, a specific widget or the whole platform;
-- to keep the user in the context of the page (even if SidePanel has a fader).
+- to keep the user in the context of the page (even if SidePanel has an overlay).
 
 > [Modal windows](/components/modal/) are used in cases where we show important information or request a response from the user.
 
@@ -37,7 +37,7 @@ Use this component when it is simultaneously needed:
 - container;
 - content;
 - closure icon (optional);
-- fader (optional).
+- overlay (optional).
 
 ![sidepanel scheme](static/sidepanel-scheme.png)
 
@@ -45,10 +45,10 @@ Use this component when it is simultaneously needed:
 
 Default theme is `light`.
 
-| Theme                | Appearance example                     | Styles                                                                                                         | When to use                                                                                                        |
-| -------------------- | -------------------------------------- | -------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
-| light, without fader | ![light-theme](static/light-theme.png) | In these case the panel has the shadow: `box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.2);`. There is no fader.      | This is a default theme if you need to show additional information for a report/tool/block.                        |
-| dark, without fader  | ![dark-theme](static/dark-theme.png)   | In this theme panel has a fader with styles – `opacity: 0.8;` `background: --var(black);`. There is no shadow. | If you need to concentrate the user on information inside SidePanel (by modal type), it is useful to enable fader. |
+| Theme                  | Appearance example                     | Styles                                                                                                            | When to use                                                                                                          |
+| ---------------------- | -------------------------------------- | ----------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| light, without overlay | ![light-theme](static/light-theme.png) | In these case the panel has the shadow: `box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.2);`. There is no overlay.       | This is a default theme if you need to show additional information for a report/tool/block.                          |
+| dark, without overlay  | ![dark-theme](static/dark-theme.png)   | In this theme panel has an overlay with styles – `opacity: 0.8;` `background: --var(black);`. There is no shadow. | If you need to concentrate the user on information inside SidePanel (by modal type), it is useful to enable overlay. |
 
 @## Default sizes and indents
 
@@ -136,7 +136,7 @@ Page scroll is controlled. You can turn it on/off.
 
 For example, page scrolling should be enabled when SidePanel has some tips and additional things for the whole report.
 
-> 💡 It is important to disable page scroll for SidePanel with fader, otherwise it will look like a bug.
+> 💡 It is important to disable page scroll for SidePanel with overlay, otherwise it will look like a bug.
 
 ### SidePanel opening and closing
 
@@ -144,7 +144,7 @@ You can close the panel with the help of ~~black magic~~:
 
 - `CTA`-control;
 - `Close` icon;
-- Clicking outside the area of the panel (at fader), optional;
+- Clicking outside the area of the panel (at overlay), optional;
 - `Esc`.
 
 SidePanel can be opened either by user clicking on the corresponding trigger or by the system in special cases to draw attention to the information in the panel.
@@ -182,6 +182,7 @@ If an error occurs during data loading, we show the error status in the center w
 
 ![error example](static/error.png)
 
+@page side-panel-a11y
 @page side-panel-api
 @page side-panel-code
 @page side-panel-changelog

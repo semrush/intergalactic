@@ -2,22 +2,57 @@ import React from 'react';
 import { Box, Flex } from '@semcore/flex-box';
 import { Text } from '@semcore/typography';
 import Tooltip from '@semcore/tooltip';
-import Divider from '@semcore/divider';
 import styled from 'styled-components';
 import warning from './static/warning.svg';
 
 const BoxBlock = styled(Box)`
   overflow: hidden;
+  border-left: 1px solid #ccc;
+  padding-left: 16px;
+  &:first-child {
+    border-left: none !important;
+    padding-left: 0 !important;
+  }
+  &:last-child {
+    border-right: none !important;
+  }
 `;
+
 const Title = styled(Text)`
   &:hover {
     cursor: pointer;
   }
 `;
 
+const container = document.getElementsByClassName('container');
+function detectWrap(node) {
+  for (const container of node) {
+    for (const child of container.children) {
+      if (child.offsetTop > container.offsetTop) {
+        child.style.borderLeft = 'none';
+        child.style.borderRight = '1px solid #ccc';
+        child.style.marginRight = '16px';
+        child.style.paddingLeft = 0;
+      } else {
+        child.style.borderLeft = '1px solid #ccc';
+        child.style.borderRight = 'none';
+        child.style.paddingLeft = '16px';
+      }
+    }
+  }
+}
+
+window.addEventListener('DOMContentLoaded', (e) => {
+  detectWrap(container);
+});
+
+window.addEventListener('resize', (e) => {
+  detectWrap(container);
+});
+
 const Demo = () => {
   return (
-    <Flex flexWrap>
+    <Flex flexWrap className="container">
       <BoxBlock w={160} mb={4}>
         <Tooltip title="Keyword" wMax="100%">
           <Title size={200} tag="p" noWrap>
@@ -33,7 +68,6 @@ const Demo = () => {
           </Text>
         </Flex>
       </BoxBlock>
-      <Divider mr={6} orientation="vertical" />
       <BoxBlock w={160} mb={4}>
         <Tooltip title="Traffic" wMax="100%">
           <Title size={200} tag="p" noWrap>
@@ -47,7 +81,6 @@ const Demo = () => {
           </Title>
         </Box>
       </BoxBlock>
-      <Divider mr={6} orientation="vertical" />
       <BoxBlock w={160} mb={4}>
         <Tooltip title="Traffic cost" wMax="100%">
           <Title size={200} tag="p" noWrap>
@@ -61,7 +94,6 @@ const Demo = () => {
           </Title>
         </Box>
       </BoxBlock>
-      <Divider mr={6} orientation="vertical" />
       <BoxBlock w={160} mb={4}>
         <Tooltip title="Branded traffic" wMax="100%">
           <Title size={200} tag="p" noWrap>

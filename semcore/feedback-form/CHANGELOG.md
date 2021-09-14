@@ -2,6 +2,24 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.3.3] - 2021-8-26
+
+### Changed
+
+- Add 'sideEffect=false' for more optimal build via webpack
+
+## [3.3.2] - 2021-08-17
+
+### Fixed
+
+- Fixed placement warning tooltip for small screens.
+
+## [3.3.1] - 2021-08-02
+
+### Fixed
+
+- [ts] correct types.
+
 ## [3.3.0] - 2021-07-05
 
 ### Changed

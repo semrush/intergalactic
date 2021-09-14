@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import Button from '@semcore/button';
 import styled from 'styled-components';
 import ResizeObserver from 'resize-observer-polyfill';
@@ -15,7 +14,6 @@ import { gql, useQuery } from '@apollo/client';
 import Error from './Error';
 import Divider from '@semcore/divider';
 import OutsideClick from '@semcore/outside-click';
-import { Flex } from '@semcore/flex-box';
 import trottle from '@semcore/utils/lib/rafTrottle';
 
 const HeaderWrapper = styled.header`
@@ -46,7 +44,7 @@ const HeaderWrapper = styled.header`
     grid-template-columns: 0.4fr 0.4fr 4fr;
     padding: 0;
   }
-  @media (max-width: 320px) {
+  @media (max-width: 415px) {
     grid-template-columns: 0.7fr 1fr 2fr;
     padding: 0;
   }
@@ -55,6 +53,10 @@ const HeaderWrapper = styled.header`
 const Item = styled.span`
   padding: 10px 12px;
   font-size: 16px;
+  font-family: Inter, sans-serif;
+  &:hover {
+    text-decoration: underline;
+  }
   &:first-child {
     padding-left: 0;
   }
@@ -104,14 +106,14 @@ const Search = styled.div`
     grid-column: 3;
     margin-left: 5px;
   }
-  @media (max-width: 320px) {
+  @media (max-width: 415px) {
     display: none;
   }
 `;
 
 const SearchMobile = styled.div`
   display: none;
-  @media (max-width: 320px) {
+  @media (max-width: 415px) {
     grid-row: 1;
     grid-column: 3;
     display: flex;
@@ -122,7 +124,7 @@ const SearchMobile = styled.div`
 
 const CloseIcon = styled(Close)`
   display: none;
-  @media (max-width: 320px) {
+  @media (max-width: 415px) {
     fill: #171a22;
     display: flex;
     &:hover {
@@ -133,7 +135,7 @@ const CloseIcon = styled(Close)`
 
 const SearchIcon = styled(SearchM)`
   display: none;
-  @media (max-width: 320px) {
+  @media (max-width: 415px) {
     fill: #171a22;
     display: flex;
     &:hover {
@@ -196,7 +198,7 @@ const Side = styled.div`
   z-index: -1;
   background: #f5f5f5;
   box-shadow: 5px 8px 25px rgba(137, 141, 154, 0.2);
-  @media (max-width: 320px) {
+  @media (max-width: 415px) {
     width: 100%;
   }
 `;
@@ -251,11 +253,13 @@ const Links = styled.div`
 const IntergalacticLink = styled.a`
   color: #ff642d !important;
   margin-left: 8px;
+  font-family: FactorA-Bold, sans-serif;
 `;
 
 const DevportalLink = styled.a`
   display: flex;
   align-items: center;
+  font-family: FactorA-Bold, sans-serif;
   img {
     margin-bottom: 7px;
   }
@@ -267,7 +271,7 @@ const Line = styled(Divider)`
     margin-left: 32px;
     background-color: #d1d4db !important;
   }
-  @media (max-width: 320px) {
+  @media (max-width: 415px) {
     width: 100% !important;
     margin-left: 0;
   }
@@ -309,6 +313,7 @@ const MobileHeaderMenu = ({ clicked, setClicked, data }) => (
     <OutsideClick onOutsideClick={() => setClicked(false)}>
       <Side>
         <Links>
+          <a href="/internal/extension/">Extension ✨</a>
           <a href="/internal/roadmap/">Roadmap</a>
           <a href="/internal/release/">Releases</a>
           <a href="https://github.com/semrush/intergalactic" target="_blank">
@@ -408,6 +413,11 @@ function Header(props) {
         <SearchHome placeholder="What brings you here, Sole Survivor?" />
       </Search>
       <Nav>
+        <Item>
+          <NavLink activeStyle={{ textDecoration: 'underline' }} to="/internal/extension/">
+            Extension ✨
+          </NavLink>
+        </Item>
         <Item>
           <NavLink activeStyle={{ textDecoration: 'underline' }} to="/internal/roadmap/">
             Roadmap

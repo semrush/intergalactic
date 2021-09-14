@@ -1,0 +1,309 @@
+<!-- Emails use the XHTML Strict doctype -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="https://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <!-- Link to the email's CSS, which will be inlined into the email -->
+
+    <style>
+      a,
+      body,
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      p,
+      table.body {
+        font-weight: 400;
+        line-height: normal;
+        margin: 0;
+        padding: 0;
+      }
+      a,
+      body,
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      p,
+      table.body,
+      td,
+      th {
+        font-family: Helvetica, Arial, sans-serif;
+        text-align: left;
+      }
+      .spacer td,
+      .spacer th {
+        margin: 0;
+        padding: 0;
+      }
+      table {
+        border-collapse: collapse;
+        border-spacing: 0;
+        padding: 0;
+      }
+      td {
+        word-wrap: break-word;
+        border-collapse: collapse !important;
+        font-weight: 400;
+        -webkit-hyphens: auto;
+        -ms-hyphens: auto;
+        hyphens: auto;
+      }
+      img {
+        height: auto;
+        line-height: 100%;
+        outline: none;
+        text-decoration: none;
+      }
+      a img,
+      img {
+        border: 0;
+      }
+      .imageFix {
+        display: block;
+      }
+      #bodyTable {
+        height: 100% !important;
+        margin: 0;
+        padding: 0;
+        width: 100% !important;
+      }
+      .w-100 {
+        width: 100%;
+      }
+      .bg-black {
+        background-color: #171a22;
+      }
+      .bg-white {
+        background-color: #fff;
+      }
+      .bg-lime-100 {
+        background-color: #c7fa73;
+      }
+      .bg-lime-200 {
+        background-color: #84d149;
+      }
+      .bg-red-100 {
+        background-color: #f27387;
+      }
+      .bg-red-200 {
+        background-color: #f71939;
+      }
+      .bg-red-300 {
+        background-color: #b01c3d;
+      }
+      .bg-orange-100 {
+        background-color: #ff9400;
+      }
+      .bg-orange-200 {
+        background-color: #ff622d;
+      }
+      .bg-orange-300 {
+        background-color: #b23300;
+      }
+      .bg-blue-100 {
+        background-color: #6edbff;
+      }
+      .bg-blue-200 {
+        background-color: #0082e6;
+      }
+      .bg-blue-300 {
+        background-color: #0070cc;
+      }
+      .bg-gray-100 {
+        background-color: #f6f7f8;
+      }
+      .bg-gray-200 {
+        background-color: #d1d4db;
+      }
+      .bg-gray-300 {
+        background-color: #898d9a;
+      }
+      .bg-gray-400 {
+        background-color: #575c66;
+      }
+      .bg-purple-100 {
+        background-color: #b880ff;
+      }
+      .bg-purple-200 {
+        background-color: #6b30c7;
+      }
+      .bg-purple-300 {
+        background-color: #421983;
+      }
+      .bg-green-100 {
+        background-color: #45e0a8;
+      }
+      .bg-green-200 {
+        background-color: #00bc98;
+      }
+      .bg-green-300 {
+        background-color: #008275;
+      }
+      .bg-pink {
+        background-color: #ff7ad1;
+      }
+      .bold {
+        font-weight: 700;
+      }
+      .nowrap {
+        white-space: nowrap;
+      }
+      .text-center {
+        text-align: center;
+      }
+      @media (min-width: 480px) {
+        .show-mobile {
+          display: none !important;
+        }
+      }
+      @media (max-width: 479px) {
+        .show-desktop {
+          display: none !important;
+        }
+        .mobile_text-center {
+          text-align: center;
+        }
+        .mobile_w-100 {
+          width: 100%;
+        }
+      }
+    </style>
+    <style>
+      .button {
+        border: 1px solid transparent;
+        border-radius: 6px;
+        box-sizing: border-box;
+        display: inline-block;
+        font-size: 16px;
+        line-height: 24px;
+        padding: 13px 24px;
+        text-align: center;
+        text-decoration: none;
+      }
+      .button_addon-left,
+      .button_addon-right {
+        display: inline-block;
+        height: 20px;
+        text-align: center;
+        width: 20px;
+      }
+      .button_addon-left {
+        margin-right: 16px;
+      }
+      .button_addon-right {
+        margin-left: 16px;
+      }
+      .button-theme-primary-info {
+        background-color: #0082e6;
+        color: #fff;
+      }
+      .button-theme-primary-info:hover {
+        background-color: #005fb2 !important;
+      }
+      .button-theme-primary-success {
+        background-color: #00bc98;
+        color: #fff;
+      }
+      .button-theme-primary-success:hover {
+        background-color: #008275 !important;
+      }
+      .button-theme-primary-warning {
+        background-color: #ff622d;
+        color: #fff;
+      }
+      .button-theme-primary-warning:hover {
+        background-color: #b23300 !important;
+      }
+      .button-theme-primary-danger {
+        background-color: #f71939;
+        color: #fff;
+      }
+      .button-theme-primary-danger:hover {
+        background-color: #ac0614 !important;
+      }
+      .button-theme-primary-invert {
+        background-color: #fff;
+      }
+      .button-theme-primary-invert:hover {
+        opacity: 0.6;
+      }
+      .button-theme-secondary-default {
+        border-color: #171a22;
+        color: #171a22;
+      }
+      .button-theme-secondary-default:hover {
+        border-color: #ff622d !important;
+        color: #ff622d !important;
+      }
+      .button-theme-secondary-invert {
+        border-color: #fff;
+        color: #fff;
+      }
+      .button-theme-secondary-invert:hover {
+        opacity: 0.6;
+      }
+    </style>
+  </head>
+  <body
+    style="
+      font-weight: 400;
+      line-height: normal;
+      margin: 0;
+      padding: 0;
+      font-family: Helvetica, Arial, sans-serif;
+      text-align: left;
+    "
+  >
+    <a
+      href="#"
+      class="button button-theme-primary-info w-100"
+      style="
+        font-weight: 400;
+        line-height: 24px;
+        margin: 0;
+        padding: 13px 24px;
+        font-family: Helvetica, Arial, sans-serif;
+        text-align: center;
+        width: 100%;
+        border: 1px solid transparent;
+        border-radius: 6px;
+        box-sizing: border-box;
+        display: inline-block;
+        font-size: 16px;
+        text-decoration: none;
+        background-color: #0082e6;
+        color: #fff;
+      "
+      >Button width 100%</a
+    >
+    <div style="height: 10px;"></div>
+    <a
+      href="#"
+      class="button button-theme-primary-info mobile-w-100"
+      style="
+        font-weight: 400;
+        line-height: 24px;
+        margin: 0;
+        padding: 13px 24px;
+        font-family: Helvetica, Arial, sans-serif;
+        text-align: center;
+        border: 1px solid transparent;
+        border-radius: 6px;
+        box-sizing: border-box;
+        display: inline-block;
+        font-size: 16px;
+        text-decoration: none;
+        background-color: #0082e6;
+        color: #fff;
+      "
+      >Mobile Button width 100%</a
+    >
+  </body>
+</html>

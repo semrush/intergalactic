@@ -6,3 +6,4 @@ title: Docs
 @page release
 @page migration-guide
 @page roadmap
+@page extension

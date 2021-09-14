@@ -6,8 +6,6 @@ tabName: Guide
 
 @import playground
 
-> ⚠️ The component has a major beta-version; changes are in the [migration guide](/internal/migration-guide).
-
 @## Description
 
 Dropdown is a component responsible for the area dropping out of a clickable item (trigger). [Select](/components/select/), [Button](/components/button/), [Input](/components/input/) or any other component may be a trigger.
@@ -68,6 +66,7 @@ It is not recommended to use dropdown inside dropdown.
 
 ![dropdown-trigger yes-no](static/dropdown-trigger-yes-no.png)
 
+@page dropdown-a11y
 @page dropdown-api
 @page dropdown-code
 @page dropdown-changelog

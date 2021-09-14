@@ -2,7 +2,6 @@
 title: Slider
 fileSource: slider
 tabName: Guide
-beta: true
 ---
 
 @## Description
@@ -82,7 +81,7 @@ This design helps to reduce errors associated with homing (moving the hand from 
 
 ![slider with invalid input](static/maximum.png)
 
-@## Keyboard control
+@## Keyboard support
 
 - `Tab` moves focus to the slider.
 - Keyboard arrows, '←' and '→', move the slider knob to the step specified in the input.
@@ -110,6 +109,7 @@ To keep the labels of such input visible when interacting with it, place them ei
 
 ![slider on the mobile](static/mobile.png)
 
+@page slider-a11y
 @page slider-api
 @page slider-code
 @page slider-changelog

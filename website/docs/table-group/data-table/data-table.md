@@ -170,5 +170,9 @@ You can use secondary table for compact displaying small amount of data inside w
 
 @example secondary
 
+@## Export in image
+
+@example export-to-pdf
+
 @page data-table-api
 @page data-table-changelog

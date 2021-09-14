@@ -2,6 +2,18 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.2.3] - 2021-8-26
+
+### Changed
+
+- Add 'sideEffect=false' for more optimal build via webpack
+
+## [3.2.2] - 2021-08-23
+
+### Fixed
+
+- [TS] Fixed type `onChange` for `ITextareaProps`.
+
 ## [3.2.1] - 2021-06-16
 
 ### Changed

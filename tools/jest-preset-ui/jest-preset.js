@@ -3,7 +3,7 @@ module.exports = {
   transform: {
     '^.+\\.(jsx?|tsx?)$': `${__dirname}/babel.config.js`,
   },
-  transformIgnorePatterns: ['node_modules/(?!@semcore/|@popperjs/)'],
+  transformIgnorePatterns: ['node_modules/(?!@semcore/|@popperjs/|d3-|internmap)'],
   // collectCoverageFrom: ['**/semcore/*/src/**.*'],
   coveragePathIgnorePatterns: ['/style/', 'src/index.tsx'],
   moduleFileExtensions: ['js', 'jsx', 'json', 'ts', 'tsx'],

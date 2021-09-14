@@ -1,3 +1,4 @@
+import { ComponentProps } from 'react';
 import Popper, { IPopperProps, IPopperTriggerProps } from '@semcore/popper';
 import { CProps, PropGetterFn, ReturnEl } from '@semcore/core';
 import { IBoxProps } from '@semcore/flex-box';

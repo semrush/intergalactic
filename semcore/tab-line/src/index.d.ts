@@ -1,6 +1,6 @@
 import React from 'react';
 import { CProps, PropGetterFn, ReturnEl } from '@semcore/core';
-import { IBoxProps } from '@semcore/flex-box';
+import { Box, IBoxProps } from '@semcore/flex-box';
 import { INeighborItemProps, INeighborLocationProps } from '@semcore/neighbor-location';
 import { IKeyboardFocusProps } from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 

@@ -19,7 +19,7 @@ const UpdateWrapper = styled.div`
     margin-left: 0;
     padding: 0 0 56px;
   }
-  @media (max-width: 320px) {
+  @media (max-width: 415px) {
     padding: 0;
   }
 `;
@@ -37,11 +37,12 @@ const Info = styled.div`
 
 const Header = styled.h2`
   font-family: FactorA-Bold, sans-serif;
-  font-size: 50px;
-  line-height: 110%;
+  font-size: 40px;
+  line-height: 120%;
   margin: 48px 0 16px;
   @media (max-width: 767px) {
-    font-size: 36px;
+    font-size: 30px;
+    line-height: 120%;
   }
 `;
 
@@ -117,7 +118,7 @@ const ButtonSubscribe = css`
     @media (max-width: 767px) {
       width: 100%;
     }
-    @media (max-width: 320px) {
+    @media (max-width: 415px) {
       width: 250px;
     }
   }

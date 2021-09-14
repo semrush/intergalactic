@@ -1,7 +1,8 @@
 import { CProps, ReturnEl } from '@semcore/core';
 import IContext from './context';
+import { IFadeInOutProps } from '@semcore/animation';
 
-export interface IVennProps extends IContext {
+export interface IVennProps extends IContext, IFadeInOutProps {
   /**
    * Rotate sets in the chart
    * @default Math.PI / 2
@@ -23,9 +24,13 @@ export interface ICircleProps extends IContext {
    @default #3AB011
    **/
   color?: string;
+  /** Animation duration in ms
+   * @default 500
+   */
+  duration?: number;
 }
 
-export interface IIntersectionProps extends IContext {
+export interface IIntersectionProps extends IContext, IFadeInOutProps {
   /**
    * Name of the field in the data
    * */

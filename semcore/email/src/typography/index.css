@@ -1,0 +1,121 @@
+@import '../core/var.css';
+
+.text {
+  &-size-100 {
+    font-size: var(--fs-100);
+    line-height: var(--lh-100);
+  }
+  &-size-200 {
+    font-size: var(--fs-200);
+    line-height: var(--lh-200);
+  }
+  &-size-300 {
+    font-size: var(--fs-300);
+    line-height: var(--lh-300);
+  }
+  &-size-400 {
+    font-size: var(--fs-400);
+    line-height: var(--lh-400);
+  }
+  &-size-500 {
+    font-size: var(--fs-500);
+    line-height: var(--lh-500);
+  }
+  &-size-600 {
+    font-size: var(--fs-600);
+    line-height: var(--lh-600);
+  }
+  &-size-700 {
+    font-size: var(--fs-700);
+    line-height: var(--lh-700);
+  }
+  &-black {
+    color: var(--black);
+  }
+  &-white {
+    color: var(--white);
+  }
+  &-red-100 {
+    color: var(--light-red);
+  }
+  &-red-200 {
+    color: var(--red);
+  }
+  &-red-300 {
+    color: var(--dark-red);
+  }
+  &-lime-100 {
+    color: var(--light-lime);
+  }
+  &-lime-200 {
+    color: var(--lime);
+  }
+  &-orange-100 {
+    color: var(--light-orange);
+  }
+  &-orange-200 {
+    color: var(--orange);
+  }
+  &-orange-300 {
+    color: var(--dark-orange);
+  }
+  &-purple-100 {
+    color: var(--light-purple);
+  }
+  &-purple-200 {
+    color: var(--purple);
+  }
+  &-purple-300 {
+    color: var(--dark-purple);
+  }
+  &-blue-100 {
+    color: var(--light-blue);
+  }
+  &-blue-200 {
+    color: var(--blue);
+  }
+  &-blue-300 {
+    color: var(--dark-blue);
+  }
+  &-gray-100 {
+    color: var(--light-gray);
+  }
+  &-gray-200 {
+    color: var(--stroke-gray);
+  }
+  &-gray-300 {
+    color: var(--gray);
+  }
+  &-gray-400 {
+    color: var(--dark-gray);
+  }
+  &-green-100 {
+    color: var(--light-green);
+  }
+  &-green-200 {
+    color: var(--green);
+  }
+  &-green-300 {
+    color: var(--dark-green);
+  }
+  &-pink {
+    color: var(--pink);
+  }
+}
+.link {
+  text-decoration-line: underline;
+
+  &-theme-default {
+    color: var(--blue);
+    &:hover {
+      color: #0070cc !important;
+    }
+  }
+
+  &-theme-dark {
+    color: var(--dark-gray);
+    &:hover {
+      color: var(--black) !important;
+    }
+  }
+}

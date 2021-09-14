@@ -11,6 +11,7 @@ SBreadcrumbs {
 SSeparator {
   margin: 0 8px;
   color: var(--gray60);
+  display: flex;
 
   &:last-child {
     display: none;

@@ -1,0 +1,657 @@
+<!-- Emails use the XHTML Strict doctype -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="https://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <!-- Link to the email's CSS, which will be inlined into the email -->
+
+    <style>
+      a,
+      body,
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      p,
+      table.body {
+        font-weight: 400;
+        line-height: normal;
+        margin: 0;
+        padding: 0;
+      }
+      a,
+      body,
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      p,
+      table.body,
+      td,
+      th {
+        font-family: Helvetica, Arial, sans-serif;
+        text-align: left;
+      }
+      .spacer td,
+      .spacer th {
+        margin: 0;
+        padding: 0;
+      }
+      table {
+        border-collapse: collapse;
+        border-spacing: 0;
+        padding: 0;
+      }
+      td {
+        word-wrap: break-word;
+        border-collapse: collapse !important;
+        font-weight: 400;
+        -webkit-hyphens: auto;
+        -ms-hyphens: auto;
+        hyphens: auto;
+      }
+      img {
+        height: auto;
+        line-height: 100%;
+        outline: none;
+        text-decoration: none;
+      }
+      a img,
+      img {
+        border: 0;
+      }
+      .imageFix {
+        display: block;
+      }
+      #bodyTable {
+        height: 100% !important;
+        margin: 0;
+        padding: 0;
+        width: 100% !important;
+      }
+      .w-100 {
+        width: 100%;
+      }
+      .bg-black {
+        background-color: #171a22;
+      }
+      .bg-white {
+        background-color: #fff;
+      }
+      .bg-lime-100 {
+        background-color: #c7fa73;
+      }
+      .bg-lime-200 {
+        background-color: #84d149;
+      }
+      .bg-red-100 {
+        background-color: #f27387;
+      }
+      .bg-red-200 {
+        background-color: #f71939;
+      }
+      .bg-red-300 {
+        background-color: #b01c3d;
+      }
+      .bg-orange-100 {
+        background-color: #ff9400;
+      }
+      .bg-orange-200 {
+        background-color: #ff622d;
+      }
+      .bg-orange-300 {
+        background-color: #b23300;
+      }
+      .bg-blue-100 {
+        background-color: #6edbff;
+      }
+      .bg-blue-200 {
+        background-color: #0082e6;
+      }
+      .bg-blue-300 {
+        background-color: #0070cc;
+      }
+      .bg-gray-100 {
+        background-color: #f6f7f8;
+      }
+      .bg-gray-200 {
+        background-color: #d1d4db;
+      }
+      .bg-gray-300 {
+        background-color: #898d9a;
+      }
+      .bg-gray-400 {
+        background-color: #575c66;
+      }
+      .bg-purple-100 {
+        background-color: #b880ff;
+      }
+      .bg-purple-200 {
+        background-color: #6b30c7;
+      }
+      .bg-purple-300 {
+        background-color: #421983;
+      }
+      .bg-green-100 {
+        background-color: #45e0a8;
+      }
+      .bg-green-200 {
+        background-color: #00bc98;
+      }
+      .bg-green-300 {
+        background-color: #008275;
+      }
+      .bg-pink {
+        background-color: #ff7ad1;
+      }
+      .bold {
+        font-weight: 700;
+      }
+      .nowrap {
+        white-space: nowrap;
+      }
+      .text-center {
+        text-align: center;
+      }
+      @media (min-width: 480px) {
+        .show-mobile {
+          display: none !important;
+        }
+      }
+      @media (max-width: 479px) {
+        .show-desktop {
+          display: none !important;
+        }
+        .mobile_text-center {
+          text-align: center;
+        }
+        .mobile_w-100 {
+          width: 100%;
+        }
+      }
+    </style>
+    <style>
+      .text-size-100 {
+        font-size: 14px;
+        line-height: 20px;
+      }
+      .text-size-200 {
+        font-size: 16px;
+        line-height: 24px;
+      }
+      .text-size-300 {
+        font-size: 18px;
+        line-height: 23px;
+      }
+      .text-size-400 {
+        font-size: 20px;
+        line-height: 22px;
+      }
+      .text-size-500 {
+        font-size: 22px;
+        line-height: 26px;
+      }
+      .text-size-600 {
+        font-size: 26px;
+        line-height: 31px;
+      }
+      .text-size-700 {
+        font-size: 32px;
+        line-height: 37px;
+      }
+      .text-black {
+        color: #171a22;
+      }
+      .text-white {
+        color: #fff;
+      }
+      .text-red-100 {
+        color: #f27387;
+      }
+      .text-red-200 {
+        color: #f71939;
+      }
+      .text-red-300 {
+        color: #b01c3d;
+      }
+      .text-lime-100 {
+        color: #c7fa73;
+      }
+      .text-lime-200 {
+        color: #84d149;
+      }
+      .text-orange-100 {
+        color: #ff9400;
+      }
+      .text-orange-200 {
+        color: #ff622d;
+      }
+      .text-orange-300 {
+        color: #b23300;
+      }
+      .text-purple-100 {
+        color: #b880ff;
+      }
+      .text-purple-200 {
+        color: #6b30c7;
+      }
+      .text-purple-300 {
+        color: #421983;
+      }
+      .text-blue-100 {
+        color: #6edbff;
+      }
+      .text-blue-200 {
+        color: #0082e6;
+      }
+      .text-blue-300 {
+        color: #0070cc;
+      }
+      .text-gray-100 {
+        color: #f6f7f8;
+      }
+      .text-gray-200 {
+        color: #d1d4db;
+      }
+      .text-gray-300 {
+        color: #898d9a;
+      }
+      .text-gray-400 {
+        color: #575c66;
+      }
+      .text-green-100 {
+        color: #45e0a8;
+      }
+      .text-green-200 {
+        color: #00bc98;
+      }
+      .text-green-300 {
+        color: #008275;
+      }
+      .text-pink {
+        color: #ff7ad1;
+      }
+      .link {
+        -webkit-text-decoration-line: underline;
+        text-decoration-line: underline;
+      }
+      .link-theme-default {
+        color: #0082e6;
+      }
+      .link-theme-default:hover {
+        color: #0070cc !important;
+      }
+      .link-theme-dark {
+        color: #575c66;
+      }
+      .link-theme-dark:hover {
+        color: #171a22 !important;
+      }
+    </style>
+    <style>
+      .notice {
+        border-radius: 10px;
+        padding: 20px 24px;
+      }
+      .notice_addon-left,
+      .notice_addon-right {
+        display: inline-block;
+        text-align: center;
+      }
+      .notice_addon-left {
+        margin-right: 12px;
+      }
+      .notice_addon-right {
+        margin-left: 12px;
+      }
+      .notice-theme-primary-info {
+        background-color: #0082e6;
+        color: #fff;
+      }
+      .notice-theme-primary-success {
+        background-color: #00bc98;
+        color: #fff;
+      }
+      .notice-theme-primary-warning {
+        background-color: #ff622d;
+        color: #fff;
+      }
+      .notice-theme-secondary-info {
+        background-color: rgba(0, 130, 230, 0.1);
+        color: #171a22;
+      }
+      .notice-theme-secondary-success {
+        background-color: rgba(132, 209, 73, 0.1);
+        color: #171a22;
+      }
+      .notice-theme-secondary-warning {
+        background-color: rgba(255, 98, 45, 0.1);
+        color: #171a22;
+      }
+    </style>
+    <style>
+      .button {
+        border: 1px solid transparent;
+        border-radius: 6px;
+        box-sizing: border-box;
+        display: inline-block;
+        font-size: 16px;
+        line-height: 24px;
+        padding: 13px 24px;
+        text-align: center;
+        text-decoration: none;
+      }
+      .button_addon-left,
+      .button_addon-right {
+        display: inline-block;
+        height: 20px;
+        text-align: center;
+        width: 20px;
+      }
+      .button_addon-left {
+        margin-right: 16px;
+      }
+      .button_addon-right {
+        margin-left: 16px;
+      }
+      .button-theme-primary-info {
+        background-color: #0082e6;
+        color: #fff;
+      }
+      .button-theme-primary-info:hover {
+        background-color: #005fb2 !important;
+      }
+      .button-theme-primary-success {
+        background-color: #00bc98;
+        color: #fff;
+      }
+      .button-theme-primary-success:hover {
+        background-color: #008275 !important;
+      }
+      .button-theme-primary-warning {
+        background-color: #ff622d;
+        color: #fff;
+      }
+      .button-theme-primary-warning:hover {
+        background-color: #b23300 !important;
+      }
+      .button-theme-primary-danger {
+        background-color: #f71939;
+        color: #fff;
+      }
+      .button-theme-primary-danger:hover {
+        background-color: #ac0614 !important;
+      }
+      .button-theme-primary-invert {
+        background-color: #fff;
+      }
+      .button-theme-primary-invert:hover {
+        opacity: 0.6;
+      }
+      .button-theme-secondary-default {
+        border-color: #171a22;
+        color: #171a22;
+      }
+      .button-theme-secondary-default:hover {
+        border-color: #ff622d !important;
+        color: #ff622d !important;
+      }
+      .button-theme-secondary-invert {
+        border-color: #fff;
+        color: #fff;
+      }
+      .button-theme-secondary-invert:hover {
+        opacity: 0.6;
+      }
+    </style>
+  </head>
+  <body
+    style="
+      font-weight: 400;
+      line-height: normal;
+      margin: 0;
+      padding: 0;
+      font-family: Helvetica, Arial, sans-serif;
+      text-align: left;
+    "
+  >
+    <div
+      class="notice notice-theme-primary-success"
+      style="
+        border-radius: 10px;
+        padding: 20px 24px;
+        background-color: #00bc98;
+        color: #fff;
+      "
+    >
+      <table
+        cellpadding="0"
+        cellspacing="0"
+        style="
+          border-collapse: collapse;
+          border-spacing: 0;
+          padding: 0;
+        "
+      >
+        <tbody>
+          <tr valign="baseline">
+            <td
+              class="notice_addon-left"
+              style="
+                font-family: Helvetica, Arial, sans-serif;
+                text-align: center;
+                word-wrap: break-word;
+                border-collapse: collapse;
+                font-weight: 400;
+                -webkit-hyphens: auto;
+                -ms-hyphens: auto;
+                hyphens: auto;
+                display: inline-block;
+                margin-right: 12px;
+              "
+            >
+              <img
+                width="20"
+                height="15"
+                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAeCAYAAABe3VzdAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAADbSURBVHgB7dbtCYMwEIDhgy7QERwho3SDOEJH6AjdoCN0BLtBR3CE0AmuF7CYfpnTJN6BeeHwh3A+iEgAlIWIFxoL2iLUnqbDMT3IAXfH7+wOhPM4unQ05sftB0g28eZ8Z5AsgjuBZNpxDU1fcRVXcZvE+aWQoew4HE8SjsZAQqVw4V99MTKCa2FJ+H4GC5GHmXtMdlyw2P1ZzDo0Rna0kFoKsjguBbkaLnjg1EdumThXBMdEHhm4pN9UDuRVFMdEyuJmImVwTKQsLoLsVeBefSD9tQFtDcjbmrgn/14/pHfEYTsAAAAASUVORK5CYII="
+                alt=""
+                style="
+                  height: auto;
+                  line-height: 100%;
+                  outline: none;
+                  text-decoration: none;
+                  border: 0;
+                "
+              />
+            </td>
+            <td
+              width="100%"
+              style="
+                font-family: Helvetica, Arial, sans-serif;
+                text-align: left;
+                word-wrap: break-word;
+                border-collapse: collapse;
+                font-weight: 400;
+                -webkit-hyphens: auto;
+                -ms-hyphens: auto;
+                hyphens: auto;
+              "
+            >
+              <span
+                class="text-size-200 bold"
+                style="
+                  font-weight: 700;
+                  font-size: 16px;
+                  line-height: 24px;
+                "
+                >788</span
+              >
+              <div style="display: inline-block;"></div>
+              <span
+                class="text-size-100 w-100"
+                style="
+                  width: 100%;
+                  font-size: 14px;
+                  line-height: 20px;
+                "
+                >issues are no longer detected. Good job!</span
+              >
+            </td>
+            <td
+              class="notice_addon-right"
+              style="
+                font-family: Helvetica, Arial, sans-serif;
+                text-align: center;
+                word-wrap: break-word;
+                border-collapse: collapse;
+                font-weight: 400;
+                -webkit-hyphens: auto;
+                -ms-hyphens: auto;
+                hyphens: auto;
+                display: inline-block;
+                margin-left: 12px;
+              "
+            >
+              <img
+                width="9"
+                height="14"
+                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAAcCAYAAABsxO8nAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAACISURBVHgB7dXhCYAgEAVga5JGaIQ2yRFuA92sNnGERngp2Y9ERI8riHpw+EP4EIR3SsUAGPws4VTcRMThiGNhCXJm8zO2QoR8WJh9HRYyfwMjScy0YiSJ6cewvsUq3HWqSvBfXniNrUVIAjF3I/pHLgnFNkkgde0IqfKH1DrKYI6FJNgK5sreAS9G8cFfJpzjAAAAAElFTkSuQmCC"
+                alt=""
+                style="
+                  height: auto;
+                  line-height: 100%;
+                  outline: none;
+                  text-decoration: none;
+                  border: 0;
+                "
+              />
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div
+      class="notice notice-theme-secondary-warning"
+      style="
+        border-radius: 10px;
+        padding: 20px 24px;
+        background-color: rgba(255, 98, 45, 0.1);
+        color: #171a22;
+      "
+    >
+      <table
+        style="
+          border-collapse: collapse;
+          border-spacing: 0;
+          padding: 0;
+        "
+      >
+        <tbody>
+          <tr>
+            <td
+              class="notice_addon-left"
+              style="
+                font-family: Helvetica, Arial, sans-serif;
+                text-align: center;
+                word-wrap: break-word;
+                border-collapse: collapse;
+                font-weight: 400;
+                -webkit-hyphens: auto;
+                -ms-hyphens: auto;
+                hyphens: auto;
+                display: inline-block;
+                margin-right: 12px;
+              "
+            >
+              <img
+                width="22"
+                height="20"
+                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACwAAAAoCAYAAACFFRgXAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAJZSURBVHgBzZdNTuNAEIWrHEshSCNlN4lmMeYGsBhNsjM34AbADeAEwAngBhwF74AVRyCsgF0kfgwSuOgOIdiO7VR3VwOfFNmO2vbTc9uvH4AHHvrDjbveIAYPhOCBAOAwQByp3QSECUCY+95gS20i9Yun+6IgCJP2h5fwLlgzWkrbazhOxiCEqMPPvcEefIrVRI9LTzsgiJjDaW8QAeIJFAUDAYw7aXtFymUxhzPAfSiJ1ShHumn7eQ+EEHF46u5l4yCilc7N2QgcEXF46m4ziMcggLPD93/+rbay8IIz9oVo/dfNWQIOODscZiHbuRDReS47CdbBoL4CqwanxK6R7SS4ZeFY6DiXrQXnItiU6PH3f+swsXrp6kKCi0uYWDmsTtoES7EaHSa2kW3s8KKQUO5dlW7wt2bcGInWTMPEeD2sQ6LpsSxfn0b5Y7V6o6px2mW10S/tNhhgNCW0uwFOpoMMiFumnzkjwYR4CMKYhglbsO5p6jFugDxGYcIWrHsaeMLEZZZgh5Dgwu5/LMEtgUUL5x7UjbuLxi0UXNHTfMHqf43BYRXBREnxDhgDE05kNwbHNCQiMMFA4Nypn/1vt2FMNaye5ouG/lc7h1k9zRcNa+ZKh016WpmM6CB/HFh+Yer6X6Xgp/7wwrD6zOhcnxauWbf4YZCoa62X/5ybEhY9zReVkT0n+CtCgktV/ys8Pu1uy7EkvhIV1reu16Ms212+PT/6OJ4Jdu1pviiHyWxKuPY0X5T738Thbw0JBvn+N3H4W0OCQa7/Af50d/PoMAl89DRf6GbyBk8ez1e6JJGmAAAAAElFTkSuQmCC"
+                alt=""
+                style="
+                  height: auto;
+                  line-height: 100%;
+                  outline: none;
+                  text-decoration: none;
+                  border: 0;
+                "
+              />
+              ️
+            </td>
+            <td
+              style="
+                font-family: Helvetica, Arial, sans-serif;
+                text-align: left;
+                word-wrap: break-word;
+                border-collapse: collapse;
+                font-weight: 400;
+                -webkit-hyphens: auto;
+                -ms-hyphens: auto;
+                hyphens: auto;
+              "
+            >
+              <p
+                class="text-size-200 bold"
+                style="
+                  font-weight: 700;
+                  line-height: 24px;
+                  margin: 0;
+                  padding: 0;
+                  font-family: Helvetica, Arial, sans-serif;
+                  text-align: left;
+                  font-size: 16px;
+                "
+              >
+                Failed To Complete Site Audit
+              </p>
+              <div style="height: 8px;"></div>
+              <p
+                class="text-size-100"
+                style="
+                  font-weight: 400;
+                  line-height: 20px;
+                  margin: 0;
+                  padding: 0;
+                  font-family: Helvetica, Arial, sans-serif;
+                  text-align: left;
+                  font-size: 14px;
+                "
+              >
+                We couldn’t complete the site audit you ran on Mar 20, 2021 because of a crawl
+                error.
+              </p>
+              <div style="height: 16px;"></div>
+              <a
+                href="#"
+                class="button button-theme-primary-warning"
+                style="
+                  font-weight: 400;
+                  line-height: 24px;
+                  margin: 0;
+                  padding: 13px 24px;
+                  font-family: Helvetica, Arial, sans-serif;
+                  text-align: center;
+                  border: 1px solid transparent;
+                  border-radius: 6px;
+                  box-sizing: border-box;
+                  display: inline-block;
+                  font-size: 16px;
+                  text-decoration: none;
+                  background-color: #ff622d;
+                  color: #fff;
+                "
+                >Go to Site Audit</a
+              >
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>

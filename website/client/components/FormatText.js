@@ -81,7 +81,7 @@ const FormatText = styled.div`
 
   hgroup {
     padding: 0;
-    margin: 0 0 1.5rem;
+    margin: 0 0 1rem;
   }
 
   ul {
@@ -100,7 +100,7 @@ const FormatText = styled.div`
 
   dl {
     padding: 0;
-    margin: 0 0 1.5rem;
+    margin: 0 0 1rem;
   }
 
   dd {
@@ -118,11 +118,11 @@ const FormatText = styled.div`
 
   figure {
     padding: 0;
-    margin: 0 0 1.5rem;
+    margin: 0 0 1rem;
   }
 
   pre {
-    margin: 0 0 1.5rem;
+    margin: 0 0 1rem;
   }
 
   pre:not([class]) {
@@ -136,19 +136,19 @@ const FormatText = styled.div`
 
   table {
     padding: 0;
-    margin: 0 0 1.5rem;
+    margin: 0 0 2rem;
     border-collapse: collapse;
     width: 100%;
   }
 
   fieldset {
     padding: 0;
-    margin: 0 0 1.5rem;
+    margin: 0 0 1rem;
   }
 
   blockquote {
     padding: 2rem;
-    margin: 0 0 1.5rem 0;
+    margin: 1rem 0 1rem;
     font-size: 16px;
     line-height: 1.5em;
     background-color: rgba(184, 128, 255, 0.15);
@@ -162,17 +162,17 @@ const FormatText = styled.div`
 
   form {
     padding: 0;
-    margin: 0 0 1.5rem;
+    margin: 0 0 1rem;
   }
 
   noscript {
     padding: 0;
-    margin: 0 0 1.5rem;
+    margin: 0 0 1rem;
   }
 
   iframe {
     padding: 0;
-    margin: 0 0 1.5rem;
+    margin: 0 0 1rem;
   }
 
   hr {
@@ -185,7 +185,7 @@ const FormatText = styled.div`
 
   address {
     padding: 0;
-    margin: 0 0 1.5rem;
+    margin: 0 0 1rem;
   }
 
   b {
@@ -214,13 +214,13 @@ const FormatText = styled.div`
 
   li > ol {
     margin-left: 1.5rem;
-    margin-bottom: calc(1.5rem / 4);
+    margin-bottom: 1.5rem;
     margin-top: calc(1.5rem / 4);
   }
 
   li > ul {
     margin-left: 1.5rem;
-    margin-bottom: calc(1.5rem / 4);
+    margin-bottom: 1.5rem;
     margin-top: calc(1.5rem / 4);
   }
 

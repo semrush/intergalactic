@@ -105,6 +105,7 @@ Mostly, they relate to the long pages loaded with content.
 - Hiding additional information makes the page look less intimidatingly loaded.
 - Accordions can be a great alternative to interstitial links as they don't break the mental model in users' heads the way the interstitial links do.
 
+@page accordion-a11y
 @page accordion-api
 @page accordion-code
 @page accordion-changelog

@@ -43,7 +43,7 @@ const InputWrapper = styled(Box)`
   @media (max-width: 767px) {
     margin-right: 32px;
   }
-  @media (max-width: 320px) {
+  @media (max-width: 415px) {
     margin: 0 55px 0 8px;
     width: 85%;
   }
@@ -73,6 +73,7 @@ const Input = styled.input`
 
 const DesktopInput = styled(Input)`
   display: none;
+  font-family: Inter, sans-serif;
   @media (min-width: 768px) {
     display: flex;
   }
@@ -91,7 +92,7 @@ const IconSearchWrapper = styled.div`
   top: 50%;
   transform: translate(0, -50%);
   color: #171a22;
-  @media (max-width: 320px) {
+  @media (max-width: 415px) {
     left: 0;
   }
 `;
@@ -101,7 +102,7 @@ const SearchIcon = styled(SearchM)`
     cursor: default;
   }
 
-  @media (max-width: 320px) {
+  @media (max-width: 415px) {
     display: none;
   }
 `;
@@ -154,7 +155,7 @@ const MenuFooter = styled.div`
 `;
 
 const SelectPopper = styled(Select.Popper)`
-  @media (max-width: 320px) {
+  @media (max-width: 415px) {
     margin-left: -200px !important;
     width: 244px !important;
   }

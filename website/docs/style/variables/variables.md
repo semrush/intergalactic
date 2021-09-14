@@ -68,7 +68,7 @@ This section describes all the variable parameters that we use in our component 
 | Color of borders and dividers                                        | `gray80`                                                                               |
 | Border for dropdown items (dropdowns and popovers)                   | `border: solid 1px var(--stone-light);`                                                |
 | Shadow of the blocks, raised above the content (dropdowns, popovers) | `box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.25);`                                         |
-| Mask or fader                                                        | Black — `background: rgba(0,0,0,0.8);`, white — `background: rgba(255,255,255,0.85);`. |
+| Mask or overlay                                                      | Black — `background: rgba(0,0,0,0.8);`, white — `background: rgba(255,255,255,0.85);`. |
 
 @## Border-radius
 

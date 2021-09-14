@@ -70,5 +70,6 @@ You can use a label without a verb in cases when:
 - space is limited, therefore, a shorter option is needed (of course, not for clarity);
 - when the label belongs to a group of switches (for example, in the settings).
 
+@page switch-a11y
 @page switch-api
 @page switch-changelog
