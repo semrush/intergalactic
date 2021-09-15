@@ -2,6 +2,7 @@
 title: Chart principles
 fileSource: d3-chart
 tabName: Guide
+docs: true
 ---
 
 @## Chart widget composition

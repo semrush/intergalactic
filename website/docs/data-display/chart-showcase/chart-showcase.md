@@ -2,6 +2,7 @@
 title: Charts showcase
 fileSource: chart
 tabName: Guide
+docs: true
 ---
 
 We use many types of charts in the interface. Each of them is designed to visualize different cases and data.

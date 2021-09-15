@@ -2,6 +2,7 @@
 title: D3 chart concept and API
 fileSource: d3-chart
 tabName: Concept and code
+docs: true
 ---
 
 > 💡 Basic data visualization rules are described in the [Chart principles](/data-display/chart/).

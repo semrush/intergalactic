@@ -20,6 +20,10 @@ import { Link as LinkScroll } from 'react-scroll';
 import { Box } from '@semcore/flex-box';
 import updatesButton from '../static/illustration/search-for-updates.svg';
 import { css } from '@semcore/core';
+import SideBarNavigation from '../components/SideBarNavigation';
+import ComponentCard from '../components/ComponentCard';
+import Text from '@semcore/typography/lib/es6/Text';
+import GetTableHeader from '../components/GetTableHeader';
 
 const stylesTabLine = css`
   STabLine {
@@ -262,7 +266,7 @@ const Tab = styled.div`
 const Border = styled.div`
   border: 1px solid #d1d4db;
   border-radius: 6px;
-  height: 390px;
+  height: fit-content;
   padding: 40px 32px;
   font-family: Inter;
   font-size: 16px;
@@ -277,6 +281,17 @@ const Category = styled.div`
   width: 100%;
   max-height: 400px;
   margin: 0;
+  padding: 0;
+`;
+
+const Cards = styled.div`
+  display: grid;
+  grid-template-rows: max-content;
+  grid-template-columns: repeat(auto-fill, 176px);
+  grid-gap: 12px 12px;
+  width: 100%;
+  margin: 0;
+  margin-top: 12px;
   padding: 0;
 `;
 
@@ -333,6 +348,36 @@ const UpdatesButton = styled(LinkScroll)`
   }
 `;
 
+const HomePage = styled.div`
+  display: flex;
+`;
+
+const SideBar = styled.div`
+  position: sticky;
+  top: 80px;
+
+  height: 100vh;
+  background: #f5f5f5;
+  max-width: 260px;
+  @media (max-width: 767px) {
+    display: none;
+  }
+`;
+
+const Docs = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-top: 12px;
+  a {
+    color: #171a22;
+    text-decoration: none;
+    &:hover {
+      cursor: pointer;
+      text-decoration: underline;
+    }
+  }
+`;
+
 const NAVIGATE_QUERY = gql`
   {
     navigation {
@@ -344,6 +389,7 @@ const NAVIGATE_QUERY = gql`
         metadata {
           disabled
           beta
+          docs
         }
       }
       metadata {
@@ -351,6 +397,7 @@ const NAVIGATE_QUERY = gql`
       }
     }
   }
+
 `;
 
 const mappingTableToImg = {
@@ -374,16 +421,14 @@ const mappingTableToImg = {
   },
 };
 
-function getCustomPage(table, data) {
-  return (
-    <table.tableStyle>
-      <AllComponents
-        navigation={data.navigation.filter((nav) => !nav.metadata.hide && nav.title === table.tag)}
-      />
-      <table.imgStyle src={table.img} alt={table.tag} />
-    </table.tableStyle>
-  );
-}
+const getCustomPage = (table, data) => (
+  <table.tableStyle>
+    <AllComponents
+      navigation={data.navigation.filter((nav) => !nav.metadata.hide && nav.title === table.tag)}
+    />
+    <table.imgStyle src={table.img} alt={table.tag} />
+  </table.tableStyle>
+);
 
 const renderSwitch = (value, data) => {
   switch (value) {
@@ -408,10 +453,12 @@ const getTabByTitle = (titles, data) => {
   return (
     <TableOverlay>
       {titles.length === 1
-        ? getComponents(titles[0], data)
+        ? titles[0] === 'Charts'
+          ? getChart(titles[0], data)
+          : titles[0] === 'Table'
+          ? getTable(titles[0], data)
+          : getComponents(titles[0], data)
         : titles.map((title) => {
-            const tabWidth = 80 / titles.length;
-            console.log(tabWidth);
             return (
               <Box mr={3}>
                 <h2>{title}</h2>
@@ -423,7 +470,7 @@ const getTabByTitle = (titles, data) => {
   );
 };
 
-const getImageName = (title) => {
+export const getImageName = (title) => {
   const name = title.replaceAll(/[ \/]+/g, '');
   return name.charAt(0).toLowerCase() + name.slice(1);
 };
@@ -479,6 +526,83 @@ const getComponents = (titles, data) => {
   return <Category>{listItems}</Category>;
 };
 
+const getChart = (titles, data) => {
+  const items = data.navigation.filter((nav) => !nav.metadata.hide && titles.includes(nav.title));
+  const getList = (child) => {
+    return (
+      <ComponentCard
+        key={child.elem.title}
+        type={items[0].title.toLowerCase()}
+        image={getImageName(child.elem.title)}
+        disabled={!!child.elem.metadata.disabled}
+        text={child.elem.title}
+        href={child.elem.route}
+      />
+    );
+  };
+
+  const getDocs = (item) => (
+    <a href={item.route} key={item.route}>
+      {item.title}
+    </a>
+  );
+
+  const listDocs = items
+    .map((item) => item.children.filter((nav) => nav.metadata.docs))[0]
+    .map((el) => getDocs(el));
+
+  const listItems = items
+    .map((item) =>
+      item.children.map((child) => {
+        return {
+          elem: child,
+          categoryRoute: item.route,
+        };
+      }),
+    )
+    .flat()
+    .map((child) => getList(child));
+
+  return (
+    <>
+      <Box mr={12}>
+        <Text tag="strong">Common docs</Text>
+        <Docs>{listDocs}</Docs>
+      </Box>
+      <Box w="100%">
+        <Text tag="strong">Types</Text>
+        <Cards>{listItems}</Cards>
+      </Box>
+    </>
+  );
+};
+
+const getTable = (titles, data) => {
+  const items = data.navigation.filter((nav) => !nav.metadata.hide && titles.includes(nav.title));
+  const getDocs = items[0].children.map((item) => (
+    <a href={item.route} key={item.route}>
+      {item.title}
+    </a>
+  ));
+
+  return (
+    <>
+      <Box mr={12}>
+        <Text tag="strong">Common docs</Text>
+        <Docs>{getDocs}</Docs>
+      </Box>
+      <Box w="100%">
+        <Text tag="strong">Controls</Text>
+        <GetTableHeader slug="table-group/table-controls" />
+        <Text tag="strong" inline mt={8}>
+          States
+        </Text>
+        <GetTableHeader slug="table-group/table-states" />
+      </Box>
+    </>
+  );
+};
+
 function Home() {
   const [value, updateValue] = useState('components');
   const { loading, error, data } = useQuery(NAVIGATE_QUERY, {
@@ -504,7 +628,10 @@ function Home() {
       {loading ? (
         <LoadingPage />
       ) : (
-        <>
+        <HomePage>
+          <SideBar>
+            <SideBarNavigation navigation={data.navigation.filter((nav) => !nav.metadata.hide)} />
+          </SideBar>
           <Overlay>
             <PromoWrapper>
               <Title>We unify Semrush interfaces</Title>
@@ -555,7 +682,7 @@ function Home() {
             Updates?
             <img src={updatesButton} alt="Updates button" />
           </UpdatesButton>
-        </>
+        </HomePage>
       )}
     </>
   );
