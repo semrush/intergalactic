@@ -134,7 +134,7 @@ function Footer() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          issue on the GitHub
+          issue on GitHub
         </a>
       </Contacts>
     </FooterWrapper>
