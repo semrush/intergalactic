@@ -1,6 +1,7 @@
 ---
-title: Stacked bar chart
-disabled: true
+title: Stacked bar
+fileSource: chart
+tabName: Guide
 ---
 
-# TODO
+> 💡 Basic data visualization rules are described in the [Chart principles](/data-display/chart/).

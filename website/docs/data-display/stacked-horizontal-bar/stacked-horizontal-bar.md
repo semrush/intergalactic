@@ -1,5 +1,5 @@
 ---
-title: Stacked area
+title: Stacked horizontal
 fileSource: chart
 tabName: Guide
 ---

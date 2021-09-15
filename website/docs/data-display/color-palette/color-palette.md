@@ -2,6 +2,7 @@
 title: Color palette
 fileSource: chart
 tabName: Guide
+docs: true
 ---
 
 @## Basic rules
