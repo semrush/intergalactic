@@ -1,7 +1,7 @@
 # Intergalactic 🐳
 
 Intergalactic is a [React](https://reactjs.org/) component library for developing interfaces.
-You can see components in action in our [documentation website](https://i.semrush.com).
+You can see components in action on our [documentation website](https://i.semrush.com).
 
 ---
 
@@ -13,8 +13,8 @@ You can add our components to your project using any package manager.
 
 ## How to contribute to the project
 
-All changes, including changes by the project participants, must go through a code review. We do that in merge
-requests in GitHub. [Learn more about contributing ›](https://github.com/semrush/intergalactic/blob/master/CONTRIBUTING.md).
+All changes, including changes by the project participants, must go through a code review. We do that in pull
+requests on GitHub. [Learn more about contributing ›](https://github.com/semrush/intergalactic/blob/master/CONTRIBUTING.md)
 
 ## I found a bug! 🕵️‍
 
