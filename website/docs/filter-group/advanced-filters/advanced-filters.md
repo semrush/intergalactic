@@ -85,18 +85,18 @@ Trigger states inherites styles from the [Select](/components/select/) and [Filt
 
 @## Tooltips
 
-|                                                                                                                                   | Appearance example                      |
-| --------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------- |
-| When hovering over the button with the Close icon in the filled filter show the tooltip with the text: `Clear advanced filters.`. | ![filter tooltip](static/tooltip-1.png) |
-| When hovering over an open select, show a tooltip with the text: `Hide advanced filters`.                                         | ![filter tooltip](static/tooltip-2.png) |
-| If the accordion needs a Close icon, then hang a tooltip on it with the text: `Hide`.                                             | ![filter tooltip](static/tooltip-3.png) |
+|                                                                                                                                  | Appearance example                      |
+| -------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------- |
+| When hovering over the button with the Close icon in the filled filter show the tooltip with the text: `Clear advanced filters`. | ![filter tooltip](static/tooltip-1.png) |
+| When hovering over an open select, show a tooltip with the text: `Hide advanced filters`.                                        | ![filter tooltip](static/tooltip-2.png) |
+| If the accordion needs a Close icon, then hang a tooltip on it with the text: `Hide`.                                            | ![filter tooltip](static/tooltip-3.png) |
 
 @## Advanced filters in the dropdown
 
 Advanced filters implemented in the dropdown have:
 
 - a button for adding a new line of conditions (optional)
-- buttons `Apply` and`Clear all`.
+- buttons `Apply` and `Clear all`.
 
 **You can fix advanced filters implemented in dropdown at the top of the page when scrolling.**
 
@@ -124,14 +124,14 @@ After applying the filter:
 
 @## Advanced filters in the accordion
 
-Container in accordion has styles: `border: 1px solid $gay80;`.
+Container in accordion has styles: `border: 1px solid --gray80;`.
 
 ### Opened filter
 
 - The filter expands in the accordion, shifting down the page content.
 - The accordion has a fixed width, which depends on the width of the page content.
 - When applying any filter in the trigger, we show a counter with the number of applied filters.
-- This group of filters has no buttons `Apply`,`Clear all`, `Cancel`.
+- This group of filters has no buttons `Apply`, `Clear all`, `Cancel`.
 
 An example of a dynamically applied filter.
 
@@ -155,6 +155,6 @@ After applying the filter:
 | Recommendation                                                                                                                                                                                                                                                                                 | Example                                                 |
 | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------- |
 | Since the content of the dropdown for Advanced filters differs from tool to tool, stick to the rule of padding in multiples of 4 between filters. **If you need to increase or decrease the space between filters inside the dropdown, make them multiples of 4: 8px, 12px, 24px, 32px, etc.** | ![filter paddings](static/paddings.png)                 |
-| Always visually separate filter controls from the filters themselves. For this we use `border: 1px solid $ gay80;`.                                                                                                                                                                            | ![filter border](static/advanced-filters-dropdown2.png) |
+| Always visually separate filter controls from the filters themselves. For this we use `border: 1px solid --gray80;`.                                                                                                                                                                           | ![filter border](static/advanced-filters-dropdown2.png) |
 
 @page advanced-filters-code

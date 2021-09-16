@@ -1,30 +1,6 @@
 import { ReturnEl, CProps, PropGetterFn } from '@semcore/core';
 import { Box, IBoxProps } from '@semcore/flex-box';
 
-const onSwapDraggableInner = function (draggableNode, droppableNode) {
-  if (!draggableNode || !droppableNode) return false;
-
-  const parent = droppableNode.parentNode;
-  const nextElement =
-    droppableNode === draggableNode.nextElementSibling
-      ? droppableNode.nextElementSibling
-      : droppableNode;
-
-  parent.insertBefore(draggableNode, nextElement);
-};
-
-const onInsertDroppableInner = (draggableNode, droppableNode) => {
-  if (!draggableNode || !droppableNode) return false;
-  if (draggableNode.parentNode !== droppableNode) {
-    droppableNode.appendChild(draggableNode);
-  }
-};
-
-function getChildNumber(node) {
-  if (!node) return;
-  return Array.prototype.indexOf.call(node.parentNode.children, node);
-}
-
 export interface IDragAndDropProps extends IBoxProps {
   /**
    * DragAndDrop theme
