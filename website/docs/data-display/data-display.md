@@ -22,15 +22,15 @@ title: Charts
 @page stacked-histogram
 @page donut-chart
 @page venn-chart
-@page bubble-chart
-@page scatterplot-chart
-@page heatmap
-@page funnel-chart
-@page radar-chart
-@page polar-chart
-@page alluvial-chart
-@page quadrant-chart
 
+@page alluvial-chart
+@page bubble-chart
+@page choropleth-map
+@page funnel-chart
+@page heatmap
 @page kagi-chart
 @page lollipop-chart
-@page choropleth-map
+@page polar-chart
+@page radar-chart
+@page scatterplot-chart
+@page quadrant-chart

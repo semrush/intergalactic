@@ -1,5 +1,5 @@
 ---
-title: Histogram
+title: Histogram chart
 fileSource: chart
 tabName: Guide
 ---

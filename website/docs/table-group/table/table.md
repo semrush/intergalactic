@@ -29,7 +29,7 @@ There are two types of tables in our interface – [primary](/table-group/table-
 
 @## Sorting
 
-> 💡 For detailed information about sorting columns in the table, see [Working with table](/table-group/table-working/).
+> 💡 For detailed information about sorting columns in the table, see [Working with table](/table-group/table-controls/).
 
 @## Tooltip
 
@@ -146,13 +146,7 @@ In this case, it appears when:
 
 @## Pagination
 
-If the table has more than one page, it must have [Pagination](/components/pagination/). Spacing between the table and the page numbers is 16px.
-
-If the table contains a small amount of data, we show the pagination status for one page.
-
-> 💡 When you navigate through the pages in the table using pagination, **you should be able to scroll the table to the first row**. Otherwise, the user have to scroll on their own, which is inconvenient.
->
-> Applying filters to a table always takes the user to the first page of the table.
+See the detailed recommendations in the [Table controls](/table-group/table-controls/#acbb81) guide.
 
 @## Table states
 

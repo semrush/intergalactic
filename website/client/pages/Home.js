@@ -397,7 +397,6 @@ const NAVIGATE_QUERY = gql`
       }
     }
   }
-
 `;
 
 const mappingTableToImg = {
@@ -592,7 +591,7 @@ const getTable = (titles, data) => {
         <Docs>{getDocs}</Docs>
       </Box>
       <Box w="100%">
-        <Text tag="strong">Controls</Text>
+        <Text tag="strong">Controls and use cases</Text>
         <GetTableHeader slug="table-group/table-controls" />
         <Text tag="strong" inline mt={8}>
           States

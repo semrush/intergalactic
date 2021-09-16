@@ -11,5 +11,5 @@ Our library has two components for tables:
 
 @## Examples
 
-- For the old `Table` component see the [Old Table code and API](/table-group/table-old/).
-- For `DataTable` component see code examples in the [DataTable code and API](/table-group/data-table/).
+- For the old `Table` component see the [Old table code and API](/table-group/table-old/).
+- For `DataTable` component see code examples in the [Table code and API](/table-group/data-table/).

@@ -1,5 +1,5 @@
 ---
-title: Stacked bar
+title: Stacked bar chart
 fileSource: chart
 tabName: Guide
 ---

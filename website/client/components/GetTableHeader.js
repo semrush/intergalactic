@@ -25,7 +25,6 @@ export const PAGE_QUERY = gql`
       level
     }
   }
-
 `;
 
 function GetTableHeader({ slug }) {
@@ -53,7 +52,7 @@ function GetTableHeader({ slug }) {
     .map((child) => {
       return {
         title: child.title,
-        route: `${slug}/${child.route}`,
+        route: `${slug}/#${child.route}`,
       };
     })
     .flat()
