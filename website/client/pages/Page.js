@@ -47,7 +47,9 @@ const NextGuide = styled.div`
 `;
 
 const SideBar = styled.div`
-  height: 100%;
+  position: sticky;
+  top: 80px;
+  height: 100vh;
   background: #f5f5f5;
   max-width: 260px;
   @media (max-width: 767px) {
@@ -153,6 +155,7 @@ export const PAGE_QUERY = gql`
       }
     }
   }
+
 `;
 const getChildren = (data) => data.navigation.map((category) => category.children).flat();
 

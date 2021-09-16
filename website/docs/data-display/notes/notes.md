@@ -1,9 +1,10 @@
 ---
-title: Notes
+title: Notes widget
 tabName: Guide
+docs: true
 ---
 
-> 💡 General information on data visualization is presented in [Data Visualization](/data-display/data-visualization/).
+> 💡 General information on data visualization is presented in [Chart principles](/data-display/chart/).
 
 @## Description
 

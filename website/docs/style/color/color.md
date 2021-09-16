@@ -43,43 +43,7 @@ Brand colors of services (the data can be found in Semrush interface).
 
 @## Colors for charts
 
-> Palettes for charts can be viewed in the [Figma library](https://www.figma.com/@semrush).
-
-Colors of the main palette are recommended to be taken in their due order, skipping one shade.
-
-- There are six basic colors, each has two shades lighter and two shades darker.
-- Gray color (`#c5c5c5`) is used to indicate "spaces", missing data, or a balance.
-- **We recommend using red in an appropriate context**. In our interface, it is usually used for destructive actions and states.
-
-### Due order of colors for charts:
-
-#### 1. Basic colors
-
-@import color-group {"group": "chart"}
-
-#### 2. One shade lighter
-
-@import color-group {"group": "chart-light-1"}
-
-#### 3. One shade darker
-
-@import color-group {"group": "chart-dark-1"}
-
-#### 4. Two shades lighter
-
-@import color-group {"group": "chart-light-2"}
-
-#### 5. Two shades darker
-
-@import color-group {"group": "chart-dark-2"}
-
-@## Additional palette for charts
-
-The recommended maximum number of colors on a chart is 30.
-
-30 and more colors are for the complex cases where you need a large number of colors that will be substituted into the chart by the system.
-
-> You can also see an additional color palette in the [Figma library](https://www.figma.com/community/file/936940441147792750/Semrush-%E2%80%A2-Charts-library).
+See detailed guide in the [Color palette for charts](/data-display/color-palette/).
 
 @page color-a11y
 @page color-code

@@ -2,7 +2,7 @@
 title: Table states
 ---
 
-@## General recommendations
+@## Empty table
 
 All the basic states of our [table](/table-group/table/) ✨ are gathered here.
 
@@ -19,7 +19,7 @@ A block with a loading state or error state must have `margin-top: 40px`, so tha
 
 > 💡 It is also not recommended to change the table height when changing states.
 
-@## The first data loading
+@## Loading
 
 When loading data for the first time, show the structure of the loaded page and data. Use the [Skeleton](/components/skeleton/).
 
@@ -39,7 +39,7 @@ In a secondary table, you can use the skeleton for all the rows (there are usual
 
 ![table with skeleton](static/skeleton-secondary.png)
 
-@## Collecting data
+@## No data
 
 If gathering data takes a large period of time (more than 1 minute, for example), we show that data is being collected. Use the [ProgressBar](/components/progress-bar) in this case.
 
@@ -51,7 +51,7 @@ When scrolling the table, pin the progressbar to the table header. The state des
 
 ![table with sticky progressbar](static/sticky-2.png)
 
-@## Loading/searching data
+@## Nothing found
 
 This state is for cases when we filter/sort/search data. In this case, we use [Spin](/components/spin/).
 
@@ -69,7 +69,7 @@ The block with the spinner gets the `sticky` property and is centered relative t
 
 ![table with sticky spinner](static/sticky-loading-1.png)
 
-@## "Empty" table
+@## Skeleton
 
 The table is empty and has no data in it, because the data was either deleted or was not provided at the beginning of working with the table.
 
@@ -82,7 +82,7 @@ The table is empty and has no data in it, because the data was either deleted or
 
 > 💡 The illustrations for these cases are usually unique. Designers create them for each specific case or tool if needed.
 
-@## No data
+@## Something went wrong
 
 **When showing:**
 
@@ -95,93 +95,102 @@ The table is empty and has no data in it, because the data was either deleted or
 
 > 💡 The icon for this state can be found in the [library for empty states](https://static.semrush.com/ui-kit/widget-empty/1.4.0/table.svg). All other icons and their names can be found in the [documentation of empty states](/components/widget-empty/widget-empty-code/).
 
-@## Nothing found
+[comment]: <> (@## Nothing found)
 
-When searching or applying a filter in the table, we didn't find anything.
+[comment]: <> (When searching or applying a filter in the table, we didn't find anything.)
 
-> 💡 In this state, the illumination of the sorted column must be preserved.
+[comment]: <> (> 💡 In this state, the illumination of the sorted column must be preserved.)
 
-**Showing this state when there is no have data** on the parameters requested by the user. The user performed some actions with filters or sorting of data.
+[comment]: <> (**Showing this state when there is no have data** on the parameters requested by the user. The user performed some actions with filters or sorting of data.)
 
-In this state, we recommend adding a control that will help the user correct the situation. For example, you can add a `Clear filters` button.
+[comment]: <> (In this state, we recommend adding a control that will help the user correct the situation. For example, you can add a `Clear filters` button.)
 
-![table with nothing found](static/nothing-found-button.png)
+[comment]: <> (![table with nothing found]&#40;static/nothing-found-button.png&#41;)
 
-> 💡 The icon for this state can be found in the [library for empty states](https://static.semrush.com/ui-kit/widget-empty/1.4.0/nothing-found.svg). All other icons and their names can be found in the [documentation of empty states](/components/widget-empty/widget-empty-code/).
+[comment]: <> (> 💡 The icon for this state can be found in the [library for empty states]&#40;https://static.semrush.com/ui-kit/widget-empty/1.4.0/nothing-found.svg&#41;. All other icons and their names can be found in the [documentation of empty states]&#40;/components/widget-empty/widget-empty-code/&#41;.)
 
-@## Service error
+[comment]: <> (@## Service error)
 
-There was an error in the tool on the backend, so we can't show the data. For more information about such errors, see [Errors, n/a, nothing found in the widgets](/components/widget-empty/).
+[comment]: <> (There was an error in the tool on the backend, so we can't show the data. For more information about such errors, see [Errors, n/a, nothing found in the widgets]&#40;/components/widget-empty/&#41;.)
 
-**When showing:**
+[comment]: <> (**When showing:**)
 
-- The error at the stage of table loading
-- Error while working with the table
+[comment]: <> (- The error at the stage of table loading)
 
-|                                            | Apperance example                                         |
-| ------------------------------------------ | --------------------------------------------------------- |
-| We are aware of the problem, and report it | ![table with known error](static/error-known.png)         |
-| We don't know about the problem            | ![table with not known error](static/error-not-known.png) |
+[comment]: <> (- Error while working with the table)
 
-> 💡 The icon for this state can be found in the [library for empty states](https://static.semrush.com/ui-kit/widget-empty/1.4.0/warning.svg). All other icons and their names can be found in the [documentation of empty states](/components/widget-empty/widget-empty-code/).
+[comment]: <> (| | Apperance example |)
 
-@## Message text
+[comment]: <> (| ------------------------------------------ | --------------------------------------------------------- |)
 
-It is important to indicate the following things in the "empty" state message:
+[comment]: <> (| We are aware of the problem, and report it | ![table with known error]&#40;static/error-known.png&#41; |)
 
-- In the heading – the essence of the current situation.
-- In the description – what you need to do to change the state.
-- If possible, suggest an action (in the form of a button or link).
+[comment]: <> (| We don't know about the problem | ![table with not known error]&#40;static/error-not-known.png&#41; |)
 
-For more information about the rules for such States, see the guides – [Errors, n/a, nothing found in widgets](/components/widget-empty/), [Global errors](/patterns/global-errors/), etc.
+[comment]: <> (> 💡 The icon for this state can be found in the [library for empty states]&#40;https://static.semrush.com/ui-kit/widget-empty/1.4.0/warning.svg&#41;. All other icons and their names can be found in the [documentation of empty states]&#40;/components/widget-empty/widget-empty-code/&#41;.)
 
-@## The header of the table
+[comment]: <> (@## Message text)
 
-For all "empty" states of the table, we keep the header. If it has sorting icons, we also keep them.
+[comment]: <> (It is important to indicate the following things in the empty state message:)
 
-![empty table with head](static/empty-yes-no.png)
+[comment]: <> (- In the heading – the essence of the current situation.)
 
-@## Cell edge cases
+[comment]: <> (- In the description – what you need to do to change the state.)
 
-### There is no data in the cell
+[comment]: <> (- If possible, suggest an action &#40;in the form of a button or link&#41;.)
 
-- Show the `n/a` text in the secondary text color `var(--gray60)`.
-- It is recommended to show a tooltip with an explanation that the data is not available (and for what reason).
+[comment]: <> (For more information about the rules for such States, see the guides – [Errors, n/a, nothing found in widgets]&#40;/components/widget-empty/&#41;, [Global errors]&#40;/patterns/global-errors/&#41;, etc.)
 
-![table cell with n/a](static/cell-na.png)
+[comment]: <> (@## Table header)
 
-![table cell with n/a](static/cell-na-tooltip.png)
+[comment]: <> (For all empty states of the table, we keep the header. If it has sorting icons, we also keep them.)
 
-### Data uploading in the cell
+[comment]: <> (![empty table with head]&#40;static/empty-yes-no.png&#41;)
 
-> 💡 Note that we use [Skeleton](/components/skeleton/). when loading the table for the first time.
+[comment]: <> (@## Cell edge cases)
 
-When loading content in one or more cells, we show the [Spin](/components/spin/) of S size.
+[comment]: <> (### There is no data in the cell)
 
-![table cell with spin](static/cell-loading.png)
+[comment]: <> (- Show the `n/a` text in the secondary text color `var&#40;--gray60&#41;`.)
 
-### Error in a table cell
+[comment]: <> (- It is recommended to show a tooltip with an explanation that the data is not available &#40;and for what reason&#41;.)
 
-This is the state when something broke in a particular cell and we can't show the data.
+[comment]: <> (![table cell with n/a]&#40;static/cell-na.png&#41;)
 
-- We use the `WarningXS` icon in a warning orange color.
-- On the hover, we always show a tooltip with an explanation that something went wrong.
+[comment]: <> (![table cell with n/a]&#40;static/cell-na-tooltip.png&#41;)
 
-> 💡 We recommend giving the user the opportunity to change the situation so that the data appears. In this case, you can display the control in a cell for reloading data, and so on.
+[comment]: <> (### Data uploading in the cell)
 
-![table cell with warning](static/cell-danger.png)
+[comment]: <> (> 💡 Note that we use [Skeleton]&#40;/components/skeleton/&#41;. when loading the table for the first time.)
 
-![table cell with warning](static/cell-danger-tooltip.png)
+[comment]: <> (When loading content in one or more cells, we show the [Spin]&#40;/components/spin/&#41; of S size.)
 
-### The cell is blocked
+[comment]: <> (![table cell with spin]&#40;static/cell-loading.png&#41;)
 
-A cell in a table may be blocked by a limit or by the need to take some action to unlock the data.
+[comment]: <> (### Error in a table cell)
 
-- Use the `LockXS` icon in the color `var(--stone)`.
-- On the hover, we always show a tooltip with an explanation of why the cell is blocked and, if possible, how to get rid of this state.
+[comment]: <> (This is the state when something broke in a particular cell and we can't show the data.)
 
-![locked table cell](static/cell-locked.png)
+[comment]: <> (- We use the `WarningXS` icon in a warning orange color.)
 
-![locked table cell](static/cell-locked-tooltip.png)
+[comment]: <> (- On the hover, we always show a tooltip with an explanation that something went wrong.)
+
+[comment]: <> (> 💡 We recommend giving the user the opportunity to change the situation so that the data appears. In this case, you can display the control in a cell for reloading data, and so on.)
+
+[comment]: <> (![table cell with warning]&#40;static/cell-danger.png&#41;)
+
+[comment]: <> (![table cell with warning]&#40;static/cell-danger-tooltip.png&#41;)
+
+[comment]: <> (### The cell is blocked)
+
+[comment]: <> (A cell in a table may be blocked by a limit or by the need to take some action to unlock the data.)
+
+[comment]: <> (- Use the `LockXS` icon in the color `var&#40;--stone&#41;`.)
+
+[comment]: <> (- On the hover, we always show a tooltip with an explanation of why the cell is blocked and, if possible, how to get rid of this state.)
+
+[comment]: <> (![locked table cell]&#40;static/cell-locked.png&#41;)
+
+[comment]: <> (![locked table cell]&#40;static/cell-locked-tooltip.png&#41;)
 
 > 💡 For all the main table styles and rules, see [Table](/table-group/table/). For all icons for different States and their names, see the [empty states documentation](/components/widget-empty/widget-empty-code/).

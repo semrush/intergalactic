@@ -42,7 +42,7 @@ const Main = styled.main`
     font-family: FactorA-Bold, sans-serif;
     font-size: 18px;
     line-height: 110%;
-    margin: 16px 0;
+    margin: 24px 0 16px 0;
   }
   h4 {
     font-family: FactorA-Bold, sans-serif;

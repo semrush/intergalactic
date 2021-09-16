@@ -2,8 +2,12 @@
 title: Table
 ---
 
+@page table-showcase
 @page table
-@page table-limits
-@page table-states
-@page table-working
 @page data-table
+@page table-old
+@page table-primary
+@page table-secondary
+@page table-controls
+@page table-filters
+@page table-states

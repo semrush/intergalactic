@@ -2,9 +2,10 @@
 title: Chart controls
 fileSource: chart
 tabName: Guide
+docs: true
 ---
 
-> 💡 General information on data visualization is presented in [Data Visualization](/data-display/data-visualization/).
+> 💡 General information on data visualization is presented in [Chart principles](/data-display/chart/).
 
 @## Control types
 
@@ -63,6 +64,8 @@ This group of controls includes all other controls and their combinations. _For 
 ![other chart controls](static/legend-bottom.png)
 
 ### Controls on the right side relative to the chart
+
+As a rule, above the data they can produce an effect on or the data they are associated with:
 
 - Period (text or [Pills](/components/pills/)) and custom period;
 - Data frequency ([Pills](/components/pills/));

@@ -4,7 +4,7 @@ fileSource: chart
 tabName: Guide
 ---
 
-> 💡 The basic data visualization rules in widgets with graphs are described in [Data vizualization](/data-display/data-visualization/).
+> 💡 Basic data visualization rules in widgets with graphs are described in [Data vizualization](/data-display/chart/).
 
 @## Description
 
@@ -120,4 +120,5 @@ Styles can be found in the guide book for [Skeleton](/components/skeleton/).
 ![skeleton](static/skeleton.png)
 
 @page line-chart-api
-@page line-chart-code
+@page line-chart-d3-code
+@page line-chart-recharts-code

@@ -2,15 +2,23 @@
 title: Chart legend
 fileSource: chart
 tabName: Guide
+docs: true
 ---
 
-> 💡 General information on data visualization is presented in [Data Visualization](/data-display/data-visualization/).
+> 💡 General information on data visualization is presented in [Chart principles](/data-display/chart/).
 
 @## Description
 
-**Legend** is a block that helps the user navigate the data presented on the chart.
+**Chart legend** is an element that helps a user navigate the data presented on the chart.
 
-> **For most charts, the legend's priority position is in the top left part of the chart.**
+1. Legend items can be controls ([checkboxes](/components/checkbox/) or [radio](/components/radio/) buttons) or non-clickable markers. The marker colors shall match the chart lines. In addition to the marker and text label, the legend item can also contain an icon and/or counter.
+2. If there is only one line on the chart / one data set, etc., then do not display the legend — the purpose of the line should be clear from the chart context.
+3. If parts of the legend are very large, they will be moved to the second row. In this case the spacing between the rows is 8px.
+4. **The margin between the legend items is 16px.**
+
+![legend-scheme](static/legend.png)
+
+> **The recommended position of the legend is the top left position above the chart.** However, in some cases (for example, two charts under each other with one hover, or a lot of controls over the chart), the legend can be moved under the chart.
 
 For charts with a large number of controls, place the legend in the left bottom part under the graph.
 
@@ -18,11 +26,11 @@ For charts with a large number of controls, place the legend in the left bottom 
 
 The legend can be clickable or non-clickable (static).
 
-The following are the examples of using different types of legend in widgets with graphs.
+The following are the examples of using different types of legend in chart widgets.
 
 @## Clickable legend
 
-A [group of checkboxes](/components/checkbox/) with specified colors is most often used as a clickable legend. [Radio buttons](/components/radio/) are used infrequently.
+[A group of checkboxes](/components/checkbox/) with specified colors is most often used as a clickable legend. [Radio buttons](/components/radio/) are used infrequently.
 
 | Component                                     | Apperance example                                                                                      | Styles                                                                                                                    |
 | --------------------------------------------- | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------- |
