@@ -25,6 +25,8 @@ _For example: Compare audience in a list of selected domains versus the whole ma
 - Bubble chart
 - Lollipop chart
 
+@import chart-group {"group": ["bar", "horizontalBar", "donut", "bubble", "lollipop"]}
+
 @## Ranking
 
 Rank items from highest to lowest, or vice versa.
