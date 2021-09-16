@@ -40,15 +40,15 @@ The block with an error is centered horizontally and vertically. A block that in
 
 [Image source](https://drive.google.com/drive/folders/1hXKRAyq23ETAVc3Y4a4h1fFOpJv6qqMb)
 
-**Heading** — Page not found
+**Heading** — We got lost
 
 **Message**
 
-We can't find the page you're looking for. You can either return to the previous page or visit our homepage.
+It looks like this page doesn't exist. Try going back or click the button below and we'll take you home.
 
 **Button**
 
-- Visit homepage (if not logged in, it leads you to the main Semrush; if logged in, it leads you to the Dashboard).
+- Go to homepage (if not logged in, it leads you to the main Semrush; if logged in, it leads you to the Dashboard).
 
 @## Project not found
 
@@ -86,9 +86,7 @@ If you have any other problems with access to the project, please contact our [S
 
 **Message**
 
-There seems to be a problem with the server. Try to reload the page.
-
-If the problem persists, please contact us at {semrush-email@semrush.com}
+We are aware of the issue and are working to fix it. Please try again later or contact the [Support Team](mailto:semrush-email@semrush.com).
 
 **Button**
 
@@ -118,15 +116,15 @@ Please try again later.
 
 [Image source](https://drive.google.com/drive/folders/1hXKRAyq23ETAVc3Y4a4h1fFOpJv6qqMb)
 
-**Heading** — {name tool} is undergoing maintenance
+**Heading** — {name tool} is under maintenance
 
 **Message**
 
-We will be up again on {Oct 23, 2017 at 11:30 AM}.
+We are doing our best to fix it as soon as possible. Please come back later.
 
 **Button**
 
-- Visit homepage (if not logged in, it leads you to the main Semrush; if logged in, it leads you to the Dashboard).
+- Go to homepage (if not logged in, it leads you to the main Semrush; if logged in, it leads you to the Dashboard).
 
 @## Log in to access
 
@@ -134,13 +132,11 @@ We will be up again on {Oct 23, 2017 at 11:30 AM}.
 
 [Image source](https://drive.google.com/drive/folders/1hXKRAyq23ETAVc3Y4a4h1fFOpJv6qqMb)
 
-**Heading** — Log in or sign up to see the page
+**Heading** — Log in to view the page
 
 **Message**
 
-It seems that you were lost in space.
-
-Please log in or sign up to see the page.
+It seems that you were lost in space. Please log in or sign up to view the page.
 
 **Controls**
 
@@ -162,7 +158,7 @@ Go back to the previous page or visit our homepage.
 
 **Button**
 
-- Visit homepage (if not logged in, it leads you to the main Semrush; if logged in, it leads you to the Dashboard).
+- Go to homepage (if not logged in, it leads you to the main Semrush; if logged in, it leads you to the Dashboard).
 
 @## Connection was lost
 
@@ -323,7 +319,7 @@ Pages with global errors assume 2 options of use:
 
 1. If the error is processed by Cloudflare, we don't add buttons.
 2. In other cases, it is recommended to add controls allowing the user:
-   2.1 to leave the page: `Visit Homepage`;
+   2.1 to leave the page: `Go to homepage`;
    2.2 to take some actions to get rid of this state and load the page: `Reload page`/`Try again`/`Submit`.
 3. The `Contact us` button is only used for unexpected error states. In order that the user could contact support and notify us that something is not working. In cases where we anticipated an error here and know that this state is being displayed, the button is not needed.
 

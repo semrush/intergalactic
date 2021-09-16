@@ -82,7 +82,7 @@ class Body extends Component {
     const SBody = Root;
     const SBodyWrapper = Box;
     const SScrollAreaBar = ScrollArea.Bar;
-    const { Children, styles, rows, columns, $scrollRef } = this.asProps;
+    const { Children, styles, rows, columns, $scrollRef, onResize } = this.asProps;
 
     const initializeColumns = !!columns.reduce((acc, c) => acc + c.width, 0);
 
@@ -94,8 +94,9 @@ class Body extends Component {
         <ScrollArea
           shadow
           styles={scrollStyles}
-          left={`${offsetLeftSum}px`}
-          right={`${offsetRightSum}px`}
+          use:left={`${offsetLeftSum}px`}
+          use:right={`${offsetRightSum}px`}
+          onResize={onResize}
         >
           <ScrollArea.Container ref={$scrollRef}>
             <SBody render={Box}>{initializeColumns ? this.renderRows(rows) : null}</SBody>

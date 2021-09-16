@@ -1,6 +1,7 @@
 import { CProps, ReturnEl } from '@semcore/core';
 import IContext from './context';
 import { CurveFactory } from 'd3-shape';
+import { IFadeInOutProps } from '@semcore/animation';
 
 export interface ILineProps extends IContext {
   /** Field from data for XAxis */
@@ -14,9 +15,13 @@ export interface ILineProps extends IContext {
   hide?: boolean;
   /** Curve method */
   curve?: CurveFactory;
+  /** Animation duration in ms
+   * @default 500
+   */
+  duration?: number;
 }
 
-export interface ILineDotsProps extends IContext {
+export interface ILineDotsProps extends IContext, IFadeInOutProps {
   /** Show all Dot */
   display?: boolean;
   /** Hide property */

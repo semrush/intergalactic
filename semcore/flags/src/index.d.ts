@@ -1,512 +1,1018 @@
 import { IBoxProps } from '@semcore/flex-box';
 import { ReturnEl } from '@semcore/core';
 
-export declare const iso2Name: {
-  AF: string;
-  AX: string;
-  AL: string;
-  DZ: string;
-  AS: string;
-  AD: string;
-  AO: string;
-  AI: string;
-  AQ: string;
-  AG: string;
-  AR: string;
-  AM: string;
-  AW: string;
-  AU: string;
-  AT: string;
-  AZ: string;
-  BS: string;
-  BH: string;
-  BD: string;
-  BB: string;
-  BY: string;
-  BE: string;
-  BZ: string;
-  BJ: string;
-  BM: string;
-  BN: string;
-  BT: string;
-  BO: string;
-  BQ: string;
-  BA: string;
-  BW: string;
-  BV: string;
-  BR: string;
-  IO: string;
-  VG: string;
-  BG: string;
-  BF: string;
-  BI: string;
-  KH: string;
-  CM: string;
-  CA: string;
-  CV: string;
-  KY: string;
-  CF: string;
-  TD: string;
-  CL: string;
-  CN: string;
-  CX: string;
-  CC: string;
-  CO: string;
-  KM: string;
-  CG: string;
-  CK: string;
-  CR: string;
-  CI: string;
-  HR: string;
-  CU: string;
-  CW: string;
-  CY: string;
-  CZ: string;
-  CD: string;
-  DK: string;
-  DJ: string;
-  DM: string;
-  DO: string;
-  TL: string;
-  EC: string;
-  EG: string;
-  SV: string;
-  GQ: string;
-  ER: string;
-  EE: string;
-  ET: string;
-  FK: string;
-  FO: string;
-  FJ: string;
-  FI: string;
-  FR: string;
-  GF: string;
-  PF: string;
-  TF: string;
-  GA: string;
-  GM: string;
-  GE: string;
-  DE: string;
-  GH: string;
-  GI: string;
-  GR: string;
-  GL: string;
-  GD: string;
-  GU: string;
-  GP: string;
-  GT: string;
-  GG: string;
-  GN: string;
-  GW: string;
-  GY: string;
-  HT: string;
-  HM: string;
-  VA: string;
-  HN: string;
-  HK: string;
-  HU: string;
-  IS: string;
-  IN: string;
-  ID: string;
-  IR: string;
-  IQ: string;
-  IE: string;
-  IM: string;
-  IL: string;
-  IT: string;
-  JM: string;
-  JP: string;
-  JE: string;
-  JO: string;
-  KZ: string;
-  KE: string;
-  KI: string;
-  KP: string;
-  KR: string;
-  XK: string;
-  KW: string;
-  KG: string;
-  LA: string;
-  LV: string;
-  LB: string;
-  LS: string;
-  LR: string;
-  LY: string;
-  LI: string;
-  LT: string;
-  LU: string;
-  MO: string;
-  MK: string;
-  MG: string;
-  MW: string;
-  MY: string;
-  MV: string;
-  ML: string;
-  MT: string;
-  MH: string;
-  MQ: string;
-  MR: string;
-  MU: string;
-  YT: string;
-  MX: string;
-  FM: string;
-  MD: string;
-  MC: string;
-  MN: string;
-  ME: string;
-  MS: string;
-  MA: string;
-  MZ: string;
-  MM: string;
-  NA: string;
-  NR: string;
-  NP: string;
-  NL: string;
-  AN: string;
-  NC: string;
-  NZ: string;
-  NI: string;
-  NE: string;
-  NG: string;
-  NU: string;
-  NF: string;
-  MP: string;
-  NO: string;
-  OM: string;
-  PK: string;
-  PW: string;
-  PS: string;
-  PA: string;
-  PG: string;
-  PY: string;
-  PE: string;
-  PH: string;
-  PM: string;
-  PN: string;
-  PL: string;
-  PT: string;
-  PR: string;
-  QA: string;
-  RE: string;
-  RO: string;
-  RU: string;
-  RW: string;
-  BL: string;
-  SH: string;
-  KN: string;
-  LC: string;
-  MF: string;
-  VC: string;
-  WS: string;
-  SM: string;
-  ST: string;
-  SA: string;
-  SN: string;
-  RS: string;
-  SC: string;
-  SL: string;
-  SG: string;
-  SX: string;
-  SK: string;
-  SI: string;
-  SB: string;
-  SO: string;
-  ZA: string;
-  GS: string;
-  SS: string;
-  ES: string;
-  LK: string;
-  SD: string;
-  SR: string;
-  SJ: string;
-  SZ: string;
-  SE: string;
-  CH: string;
-  SY: string;
-  TW: string;
-  TJ: string;
-  TZ: string;
-  TH: string;
-  TG: string;
-  TK: string;
-  TO: string;
-  TT: string;
-  TN: string;
-  TR: string;
-  TM: string;
-  TC: string;
-  TV: string;
-  UG: string;
-  UA: string;
-  AE: string;
-  GB: string;
-  US: string;
-  UM: string;
-  VI: string;
-  UY: string;
-  UZ: string;
-  VU: string;
-  VE: string;
-  VN: string;
-  WF: string;
-  EH: string;
-  YE: string;
-  ZM: string;
-  ZW: string;
-};
-export declare const iso3iso2: {
-  AFG: string;
-  ALA: string;
-  ALB: string;
-  DZA: string;
-  ASM: string;
-  AND: string;
-  ANT: string;
-  AGO: string;
-  AIA: string;
-  ATA: string;
-  ATG: string;
-  ARG: string;
-  ARM: string;
-  ABW: string;
-  AUS: string;
-  AUT: string;
-  AZE: string;
-  BHS: string;
-  BHR: string;
-  BGD: string;
-  BRB: string;
-  BLR: string;
-  BEL: string;
-  BLZ: string;
-  BEN: string;
-  BMU: string;
-  BTN: string;
-  BOL: string;
-  BES: string;
-  BIH: string;
-  BWA: string;
-  BVT: string;
-  BRA: string;
-  IOT: string;
-  BRN: string;
-  BGR: string;
-  BFA: string;
-  BDI: string;
-  CPV: string;
-  KHM: string;
-  CMR: string;
-  CAN: string;
-  CYM: string;
-  CAF: string;
-  TCD: string;
-  CHL: string;
-  CHN: string;
-  CXR: string;
-  CCK: string;
-  COL: string;
-  COM: string;
-  COG: string;
-  COD: string;
-  COK: string;
-  CRI: string;
-  CIV: string;
-  HRV: string;
-  CUB: string;
-  CUW: string;
-  CYP: string;
-  CZE: string;
-  DNK: string;
-  DJI: string;
-  DMA: string;
-  DOM: string;
-  ECU: string;
-  EGY: string;
-  SLV: string;
-  GNQ: string;
-  ERI: string;
-  EST: string;
-  ETH: string;
-  FLK: string;
-  FRO: string;
-  FJI: string;
-  FIN: string;
-  FRA: string;
-  GUF: string;
-  PYF: string;
-  ATF: string;
-  GAB: string;
-  GMB: string;
-  GEO: string;
-  DEU: string;
-  GHA: string;
-  GIB: string;
-  GRC: string;
-  GRL: string;
-  GRD: string;
-  GLP: string;
-  GUM: string;
-  GTM: string;
-  GGY: string;
-  GIN: string;
-  GNB: string;
-  GUY: string;
-  HTI: string;
-  HMD: string;
-  VAT: string;
-  HND: string;
-  HKG: string;
-  HUN: string;
-  ISL: string;
-  IND: string;
-  IDN: string;
-  IRN: string;
-  IRQ: string;
-  IRL: string;
-  IMN: string;
-  ISR: string;
-  ITA: string;
-  JAM: string;
-  JPN: string;
-  JEY: string;
-  JOR: string;
-  KAZ: string;
-  KEN: string;
-  KIR: string;
-  PRK: string;
-  KOR: string;
-  KWT: string;
-  KGZ: string;
-  LAO: string;
-  LVA: string;
-  LBN: string;
-  LSO: string;
-  LBR: string;
-  LBY: string;
-  LIE: string;
-  LTU: string;
-  LUX: string;
-  MAC: string;
-  MKD: string;
-  MDG: string;
-  MWI: string;
-  MYS: string;
-  MDV: string;
-  MLI: string;
-  MLT: string;
-  MHL: string;
-  MTQ: string;
-  MRT: string;
-  MUS: string;
-  MYT: string;
-  MEX: string;
-  FSM: string;
-  MDA: string;
-  MCO: string;
-  MNG: string;
-  MNE: string;
-  MSR: string;
-  MAR: string;
-  MOZ: string;
-  MMR: string;
-  NAM: string;
-  NRU: string;
-  NPL: string;
-  NLD: string;
-  NCL: string;
-  NZL: string;
-  NIC: string;
-  NER: string;
-  NGA: string;
-  NIU: string;
-  NFK: string;
-  MNP: string;
-  NOR: string;
-  OMN: string;
-  PAK: string;
-  PLW: string;
-  PSE: string;
-  PAN: string;
-  PNG: string;
-  PRY: string;
-  PER: string;
-  PHL: string;
-  PCN: string;
-  POL: string;
-  PRT: string;
-  PRI: string;
-  QAT: string;
-  REU: string;
-  ROU: string;
-  RUS: string;
-  RWA: string;
-  BLM: string;
-  SHN: string;
-  KNA: string;
-  LCA: string;
-  MAF: string;
-  SPM: string;
-  VCT: string;
-  WSM: string;
-  SMR: string;
-  STP: string;
-  SAU: string;
-  SEN: string;
-  SRB: string;
-  RKS: string;
-  SYC: string;
-  SLE: string;
-  SGP: string;
-  SXM: string;
-  SVK: string;
-  SVN: string;
-  SLB: string;
-  SOM: string;
-  ZAF: string;
-  SGS: string;
-  SSD: string;
-  ESP: string;
-  LKA: string;
-  SDN: string;
-  SUR: string;
-  SJM: string;
-  SWZ: string;
-  SWE: string;
-  CHE: string;
-  SYR: string;
-  TWN: string;
-  TJK: string;
-  TZA: string;
-  THA: string;
-  TLS: string;
-  TGO: string;
-  TKL: string;
-  TON: string;
-  TTO: string;
-  TUN: string;
-  TUR: string;
-  TKM: string;
-  TCA: string;
-  TUV: string;
-  UGA: string;
-  UKR: string;
-  ARE: string;
-  GBR: string;
-  USA: string;
-  UMI: string;
-  URY: string;
-  UZB: string;
-  VUT: string;
-  VEN: string;
-  VNM: string;
-  VGB: string;
-  VIR: string;
-  WLF: string;
-  ESH: string;
-  YEM: string;
-  ZMB: string;
-  ZWE: string;
-};
+export declare enum iso2Name {
+  AF,
+  AX,
+  AL,
+  DZ,
+  AS,
+  AD,
+  AO,
+  AI,
+  AQ,
+  AG,
+  AR,
+  AM,
+  AW,
+  AU,
+  AT,
+  AZ,
+  BS,
+  BH,
+  BD,
+  BB,
+  BY,
+  BE,
+  BZ,
+  BJ,
+  BM,
+  BN,
+  BT,
+  BO,
+  BQ,
+  BA,
+  BW,
+  BV,
+  BR,
+  IO,
+  VG,
+  BG,
+  BF,
+  BI,
+  KH,
+  CM,
+  CA,
+  CV,
+  KY,
+  CF,
+  TD,
+  CL,
+  CN,
+  CX,
+  CC,
+  CO,
+  KM,
+  CG,
+  CK,
+  CR,
+  CI,
+  HR,
+  CU,
+  CW,
+  CY,
+  CZ,
+  CD,
+  DK,
+  DJ,
+  DM,
+  DO,
+  TL,
+  EC,
+  EG,
+  SV,
+  GQ,
+  ER,
+  EE,
+  ET,
+  FK,
+  FO,
+  FJ,
+  FI,
+  FR,
+  GF,
+  PF,
+  TF,
+  GA,
+  GM,
+  GE,
+  DE,
+  GH,
+  GI,
+  GR,
+  GL,
+  GD,
+  GU,
+  GP,
+  GT,
+  GG,
+  GN,
+  GW,
+  GY,
+  HT,
+  HM,
+  VA,
+  HN,
+  HK,
+  HU,
+  IS,
+  IN,
+  ID,
+  IR,
+  IQ,
+  IE,
+  IM,
+  IL,
+  IT,
+  JM,
+  JP,
+  JE,
+  JO,
+  KZ,
+  KE,
+  KI,
+  KP,
+  KR,
+  XK,
+  KW,
+  KG,
+  LA,
+  LV,
+  LB,
+  LS,
+  LR,
+  LY,
+  LI,
+  LT,
+  LU,
+  MO,
+  MK,
+  MG,
+  MW,
+  MY,
+  MV,
+  ML,
+  MT,
+  MH,
+  MQ,
+  MR,
+  MU,
+  YT,
+  MX,
+  FM,
+  MD,
+  MC,
+  MN,
+  ME,
+  MS,
+  MA,
+  MZ,
+  MM,
+  NA,
+  NR,
+  NP,
+  NL,
+  AN,
+  NC,
+  NZ,
+  NI,
+  NE,
+  NG,
+  NU,
+  NF,
+  MP,
+  NO,
+  OM,
+  PK,
+  PW,
+  PS,
+  PA,
+  PG,
+  PY,
+  PE,
+  PH,
+  PM,
+  PN,
+  PL,
+  PT,
+  PR,
+  QA,
+  RE,
+  RO,
+  RU,
+  RW,
+  BL,
+  SH,
+  KN,
+  LC,
+  MF,
+  VC,
+  WS,
+  SM,
+  ST,
+  SA,
+  SN,
+  RS,
+  SC,
+  SL,
+  SG,
+  SX,
+  SK,
+  SI,
+  SB,
+  SO,
+  ZA,
+  GS,
+  SS,
+  ES,
+  LK,
+  SD,
+  SR,
+  SJ,
+  SZ,
+  SE,
+  CH,
+  SY,
+  TW,
+  TJ,
+  TZ,
+  TH,
+  TG,
+  TK,
+  TO,
+  TT,
+  TN,
+  TR,
+  TM,
+  TC,
+  TV,
+  UG,
+  UA,
+  AE,
+  GB,
+  US,
+  UM,
+  VI,
+  UY,
+  UZ,
+  VU,
+  VE,
+  VN,
+  WF,
+  EH,
+  YE,
+  ZM,
+  ZW,
+  af,
+  ax,
+  al,
+  dz,
+  as,
+  ad,
+  ao,
+  ai,
+  aq,
+  ag,
+  ar,
+  am,
+  aw,
+  au,
+  at,
+  az,
+  bs,
+  bh,
+  bd,
+  bb,
+  by,
+  be,
+  bz,
+  bj,
+  bm,
+  bn,
+  bt,
+  bo,
+  bq,
+  ba,
+  bw,
+  bv,
+  br,
+  io,
+  vg,
+  bg,
+  bf,
+  bi,
+  kh,
+  cm,
+  ca,
+  cv,
+  ky,
+  cf,
+  td,
+  cl,
+  cn,
+  cx,
+  cc,
+  co,
+  km,
+  cg,
+  ck,
+  cr,
+  ci,
+  hr,
+  cu,
+  cw,
+  cy,
+  cz,
+  cd,
+  dk,
+  dj,
+  dm,
+  do,
+  tl,
+  ec,
+  eg,
+  sv,
+  gq,
+  er,
+  ee,
+  et,
+  fk,
+  fo,
+  fj,
+  fi,
+  fr,
+  gf,
+  pf,
+  tf,
+  ga,
+  gm,
+  ge,
+  de,
+  gh,
+  gi,
+  gr,
+  gl,
+  gd,
+  gu,
+  gp,
+  gt,
+  gg,
+  gn,
+  gw,
+  gy,
+  ht,
+  hm,
+  va,
+  hn,
+  hk,
+  hu,
+  is,
+  in,
+  id,
+  ir,
+  iq,
+  ie,
+  im,
+  il,
+  it,
+  jm,
+  jp,
+  je,
+  jo,
+  kz,
+  ke,
+  ki,
+  kp,
+  kr,
+  xk,
+  kw,
+  kg,
+  la,
+  lv,
+  lb,
+  ls,
+  lr,
+  ly,
+  li,
+  lt,
+  lu,
+  mo,
+  mk,
+  mg,
+  mw,
+  my,
+  mv,
+  ml,
+  mt,
+  mh,
+  mq,
+  mr,
+  mu,
+  yt,
+  mx,
+  fm,
+  md,
+  mc,
+  mn,
+  me,
+  ms,
+  ma,
+  mz,
+  mm,
+  na,
+  nr,
+  np,
+  nl,
+  an,
+  nc,
+  nz,
+  ni,
+  ne,
+  ng,
+  nu,
+  nf,
+  mp,
+  no,
+  om,
+  pk,
+  pw,
+  ps,
+  pa,
+  pg,
+  py,
+  pe,
+  ph,
+  pm,
+  pn,
+  pl,
+  pt,
+  pr,
+  qa,
+  re,
+  ro,
+  ru,
+  rw,
+  bl,
+  sh,
+  kn,
+  lc,
+  mf,
+  vc,
+  ws,
+  sm,
+  st,
+  sa,
+  sn,
+  rs,
+  sc,
+  sl,
+  sg,
+  sx,
+  sk,
+  si,
+  sb,
+  so,
+  za,
+  gs,
+  ss,
+  es,
+  lk,
+  sd,
+  sr,
+  sj,
+  sz,
+  se,
+  ch,
+  sy,
+  tw,
+  tj,
+  tz,
+  th,
+  tg,
+  tk,
+  to,
+  tt,
+  tn,
+  tr,
+  tm,
+  tc,
+  tv,
+  ug,
+  ua,
+  ae,
+  gb,
+  us,
+  um,
+  vi,
+  uy,
+  uz,
+  vu,
+  ve,
+  vn,
+  wf,
+  eh,
+  ye,
+  zm,
+  zw,
+}
+
+export declare enum iso3Name {
+  AFG,
+  ALA,
+  ALB,
+  DZA,
+  ASM,
+  AND,
+  ANT,
+  AGO,
+  AIA,
+  ATA,
+  ATG,
+  ARG,
+  ARM,
+  ABW,
+  AUS,
+  AUT,
+  AZE,
+  BHS,
+  BHR,
+  BGD,
+  BRB,
+  BLR,
+  BEL,
+  BLZ,
+  BEN,
+  BMU,
+  BTN,
+  BOL,
+  BES,
+  BIH,
+  BWA,
+  BVT,
+  BRA,
+  IOT,
+  BRN,
+  BGR,
+  BFA,
+  BDI,
+  CPV,
+  KHM,
+  CMR,
+  CAN,
+  CYM,
+  CAF,
+  TCD,
+  CHL,
+  CHN,
+  CXR,
+  CCK,
+  COL,
+  COM,
+  COG,
+  COD,
+  COK,
+  CRI,
+  CIV,
+  HRV,
+  CUB,
+  CUW,
+  CYP,
+  CZE,
+  DNK,
+  DJI,
+  DMA,
+  DOM,
+  ECU,
+  EGY,
+  SLV,
+  GNQ,
+  ERI,
+  EST,
+  ETH,
+  FLK,
+  FRO,
+  FJI,
+  FIN,
+  FRA,
+  GUF,
+  PYF,
+  ATF,
+  GAB,
+  GMB,
+  GEO,
+  DEU,
+  GHA,
+  GIB,
+  GRC,
+  GRL,
+  GRD,
+  GLP,
+  GUM,
+  GTM,
+  GGY,
+  GIN,
+  GNB,
+  GUY,
+  HTI,
+  HMD,
+  VAT,
+  HND,
+  HKG,
+  HUN,
+  ISL,
+  IND,
+  IDN,
+  IRN,
+  IRQ,
+  IRL,
+  IMN,
+  ISR,
+  ITA,
+  JAM,
+  JPN,
+  JEY,
+  JOR,
+  KAZ,
+  KEN,
+  KIR,
+  PRK,
+  KOR,
+  KWT,
+  KGZ,
+  LAO,
+  LVA,
+  LBN,
+  LSO,
+  LBR,
+  LBY,
+  LIE,
+  LTU,
+  LUX,
+  MAC,
+  MKD,
+  MDG,
+  MWI,
+  MYS,
+  MDV,
+  MLI,
+  MLT,
+  MHL,
+  MTQ,
+  MRT,
+  MUS,
+  MYT,
+  MEX,
+  FSM,
+  MDA,
+  MCO,
+  MNG,
+  MNE,
+  MSR,
+  MAR,
+  MOZ,
+  MMR,
+  NAM,
+  NRU,
+  NPL,
+  NLD,
+  NCL,
+  NZL,
+  NIC,
+  NER,
+  NGA,
+  NIU,
+  NFK,
+  MNP,
+  NOR,
+  OMN,
+  PAK,
+  PLW,
+  PSE,
+  PAN,
+  PNG,
+  PRY,
+  PER,
+  PHL,
+  PCN,
+  POL,
+  PRT,
+  PRI,
+  QAT,
+  REU,
+  ROU,
+  RUS,
+  RWA,
+  BLM,
+  SHN,
+  KNA,
+  LCA,
+  MAF,
+  SPM,
+  VCT,
+  WSM,
+  SMR,
+  STP,
+  SAU,
+  SEN,
+  SRB,
+  RKS,
+  SYC,
+  SLE,
+  SGP,
+  SXM,
+  SVK,
+  SVN,
+  SLB,
+  SOM,
+  ZAF,
+  SGS,
+  SSD,
+  ESP,
+  LKA,
+  SDN,
+  SUR,
+  SJM,
+  SWZ,
+  SWE,
+  CHE,
+  SYR,
+  TWN,
+  TJK,
+  TZA,
+  THA,
+  TLS,
+  TGO,
+  TKL,
+  TON,
+  TTO,
+  TUN,
+  TUR,
+  TKM,
+  TCA,
+  TUV,
+  UGA,
+  UKR,
+  ARE,
+  GBR,
+  USA,
+  UMI,
+  URY,
+  UZB,
+  VUT,
+  VEN,
+  VNM,
+  VGB,
+  VIR,
+  WLF,
+  ESH,
+  YEM,
+  ZMB,
+  ZWE,
+  afg,
+  ala,
+  alb,
+  dza,
+  asm,
+  and,
+  ant,
+  ago,
+  aia,
+  ata,
+  atg,
+  arg,
+  arm,
+  abw,
+  aus,
+  aut,
+  aze,
+  bhs,
+  bhr,
+  bgd,
+  brb,
+  blr,
+  bel,
+  blz,
+  ben,
+  bmu,
+  btn,
+  bol,
+  bes,
+  bih,
+  bwa,
+  bvt,
+  bra,
+  iot,
+  brn,
+  bgr,
+  bfa,
+  bdi,
+  cpv,
+  khm,
+  cmr,
+  can,
+  cym,
+  caf,
+  tcd,
+  chl,
+  chn,
+  cxr,
+  cck,
+  col,
+  com,
+  cog,
+  cod,
+  cok,
+  cri,
+  civ,
+  hrv,
+  cub,
+  cuw,
+  cyp,
+  cze,
+  dnk,
+  dji,
+  dma,
+  dom,
+  ecu,
+  egy,
+  slv,
+  gnq,
+  eri,
+  est,
+  eth,
+  flk,
+  fro,
+  fji,
+  fin,
+  fra,
+  guf,
+  pyf,
+  atf,
+  gab,
+  gmb,
+  geo,
+  deu,
+  gha,
+  gib,
+  grc,
+  grl,
+  grd,
+  glp,
+  gum,
+  gtm,
+  ggy,
+  gin,
+  gnb,
+  guy,
+  hti,
+  hmd,
+  vat,
+  hnd,
+  hkg,
+  hun,
+  isl,
+  ind,
+  idn,
+  irn,
+  irq,
+  irl,
+  imn,
+  isr,
+  ita,
+  jam,
+  jpn,
+  jey,
+  jor,
+  kaz,
+  ken,
+  kir,
+  prk,
+  kor,
+  kwt,
+  kgz,
+  lao,
+  lva,
+  lbn,
+  lso,
+  lbr,
+  lby,
+  lie,
+  ltu,
+  lux,
+  mac,
+  mkd,
+  mdg,
+  mwi,
+  mys,
+  mdv,
+  mli,
+  mlt,
+  mhl,
+  mtq,
+  mrt,
+  mus,
+  myt,
+  mex,
+  fsm,
+  mda,
+  mco,
+  mng,
+  mne,
+  msr,
+  mar,
+  moz,
+  mmr,
+  nam,
+  nru,
+  npl,
+  nld,
+  ncl,
+  nzl,
+  nic,
+  ner,
+  nga,
+  niu,
+  nfk,
+  mnp,
+  nor,
+  omn,
+  pak,
+  plw,
+  pse,
+  pan,
+  png,
+  pry,
+  per,
+  phl,
+  pcn,
+  pol,
+  prt,
+  pri,
+  qat,
+  reu,
+  rou,
+  rus,
+  rwa,
+  blm,
+  shn,
+  kna,
+  lca,
+  maf,
+  spm,
+  vct,
+  wsm,
+  smr,
+  stp,
+  sau,
+  sen,
+  srb,
+  rks,
+  syc,
+  sle,
+  sgp,
+  sxm,
+  svk,
+  svn,
+  slb,
+  som,
+  zaf,
+  sgs,
+  ssd,
+  esp,
+  lka,
+  sdn,
+  sur,
+  sjm,
+  swz,
+  swe,
+  che,
+  syr,
+  twn,
+  tjk,
+  tza,
+  tha,
+  tls,
+  tgo,
+  tkl,
+  ton,
+  tto,
+  tun,
+  tur,
+  tkm,
+  tca,
+  tuv,
+  uga,
+  ukr,
+  are,
+  gbr,
+  usa,
+  umi,
+  ury,
+  uzb,
+  vut,
+  ven,
+  vnm,
+  vgb,
+  vir,
+  wlf,
+  esh,
+  yem,
+  zmb,
+  zwe,
+}
+
+type iso2 = keyof typeof iso2Name;
+type iso3 = keyof typeof iso3Name;
 
 export interface IFlagsProps extends IBoxProps {
   /** URL before css file with a sprite
@@ -514,9 +1020,9 @@ export interface IFlagsProps extends IBoxProps {
    */
   staticPath?: string;
   /** Country code in two-letter format */
-  iso2?: string;
+  iso2?: iso2;
   /** Country code in three-letter format */
-  iso3?: string;
+  iso3?: iso3;
 }
 
 declare const Flags: <T>(props: IFlagsProps & T) => ReturnEl;

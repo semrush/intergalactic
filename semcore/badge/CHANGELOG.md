@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.3.3] - 2021-09-09
+
+### Changed
+
+- Changed line-height value
+
 ## [2.3.2] - 2021-8-26
 
 ### Changed

@@ -723,6 +723,27 @@
       ]
     },
     {
+      "name": "BriefcaseAlt",
+      "size": ["m", "s", "xs"],
+      "group": "Misc",
+      "tags": [
+        "case",
+        "work",
+        "brief",
+        "suit",
+        "чемодан",
+        "работа",
+        "office",
+        "bag",
+        "portfolio",
+        "портфолио",
+        "attache",
+        "атташе",
+        "folder",
+        "baggage"
+      ]
+    },
+    {
       "name": "Filter",
       "size": ["m", "s", "xs"],
       "group": "Status",

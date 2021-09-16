@@ -4,7 +4,9 @@ SLine {
   fill: transparent;
   stroke-width: 3;
   stroke: var(--color);
-  /*stroke-linecap: round;*/
+  transition-property: d;
+  transition-duration: var(--duration);
+  transition-timing-function: ease-in-out;
 }
 
 SLine[hide] {
