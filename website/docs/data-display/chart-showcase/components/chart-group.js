@@ -8,26 +8,37 @@ const group = {
     title: 'Bar chart',
     route: '/data-display/bar-chart',
     disabled: false,
+    type: 'charts',
   },
   horizontalBar: {
     title: 'Horizontal bar chart',
     route: '/data-display/bar-horizontal',
     disabled: false,
+    type: 'charts',
   },
   donut: {
     title: 'Donut Pie chart',
     route: '/data-display/donut-chart',
     disabled: false,
+    type: 'charts',
   },
   bubble: {
     title: 'Bubble chart',
     route: '/data-display/bubble-chart',
     disabled: true,
+    type: 'charts',
   },
   lollipop: {
     title: 'Lollipop chart',
     route: '/data-display/lollipop-chart',
     disabled: true,
+    type: 'charts',
+  },
+  accordion: {
+    title: 'Accordion',
+    route: '/table-group/table-controls/#ac425f',
+    disabled: false,
+    type: 'table',
   },
 };
 
@@ -43,18 +54,18 @@ const Cards = styled.div`
 `;
 
 export default function(props) {
-  const charts = props.group.map((chart) => group[chart]);
+  const items = props.group.map((el) => group[el]);
 
   return (
     <Cards>
-      {charts.map((chart) => (
+      {items.map((item) => (
         <ComponentCard
-          key={chart.title}
-          image={getImageName(chart.title)}
-          text={chart.title}
-          disabled={chart.disabled}
-          href={chart.route}
-          type="charts"
+          key={item.title}
+          image={getImageName(item.title)}
+          text={item.title}
+          disabled={item.disabled}
+          href={item.route}
+          type={item.type}
         />
       ))}
     </Cards>
