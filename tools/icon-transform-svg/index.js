@@ -86,7 +86,7 @@ async function svgToReactComponent(iconPath, name, group) {
 
     return source;
   } catch (err) {
-    throw new Error(error);
+    throw new Error(err);
   }
 }
 

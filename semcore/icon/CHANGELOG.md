@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.13.0] - 2021-9-14
+
+### Added
+
+- Add new icon 'BriefcaseAlt'
+
 ## [2.12.2] - 2021-8-26
 
 ### Changed
