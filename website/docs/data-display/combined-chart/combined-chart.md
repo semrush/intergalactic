@@ -1,5 +1,5 @@
 ---
-title: Combined area and line
+title: Combined chart
 fileSource: chart
 tabName: Guide
 disabled: true

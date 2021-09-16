@@ -26,7 +26,7 @@ const Card = styled.a`
 `;
 
 const Title = styled(Text)`
-  margin-top: 8px;
+  margin-top: 12px;
   white-space: break-spaces;
 `;
 

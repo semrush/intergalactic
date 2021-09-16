@@ -2,6 +2,7 @@
 title: Table showcase
 fileSource: data-table
 tabName: Guide
+docs: true
 ---
 
 Here you will find all quick links for our table and its specific use cases.
@@ -13,32 +14,16 @@ Here you will find all quick links for our table and its specific use cases.
 
 Here you’ll find all controls and recommendations which are important when working with our tables.
 
-- Accordion
-- Checkboxes
-- Links
-- Long links
-- Pagination
-- Resizing
-- Scroll
-- Sorting
-- Status, actions row
+@import table-group {"group": ["accordion", "resizing", "checkboxes", "links", "linksLong", "pagination", "sorting", "actionsRow"]}
 
 @## Use cases
 
 This section describes the most common table use cases.
 
-- Editing & adding
-- Highlighting
-- Multi-level head
-- Table in a table
+@import table-group {"group": ["editing", "highlighting"]}
 
 @## States
 
 Here we have descriptions for all table states.
 
-- Empty table
-- Loading
-- No data
-- Nothing found
-- Skeleton
-- Something went wrong
+@import table-group {"group": ["empty", "loading", "noData", "nothingFound", "skeleton", "error"]}
