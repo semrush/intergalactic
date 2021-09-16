@@ -95,16 +95,16 @@ See [Breakpoints](/layout/breakpoints/) and [Grid](/layout/grid-system/) for mor
 
 We use many different types of charts in our interfaces, and each chart is used to visualize specific cases and data. But before you start visualizing anything, be sure to look up the guidelines for specific charts first.
 
-Check out [Data visualization](/data-display/data-visualization/) for a very detailed guideline on how to build your widget with data: margins, axes, legend, tooltips, edge cases and all that good stuff.
+Check out [Data visualization](/data-display/chart/) for a very detailed guideline on how to build your widget with data: margins, axes, legend, tooltips, edge cases and all that good stuff.
 
 @## Tables
 
-> **TL;DR or main thing**: tables are easily one of the main components of our product interfaces:
+> **TL;DR or main thing**: tables are one of the main components of our product interfaces:
 
 - Primary tables that contain a lot of different functionality
 - Secondary tables that are used to visualize small sets of data
 
-Because of the large number of use cases and edge states we have separate guidelines for [Table](/table-group/table/) and [Working with table](/table-group/table-working/). We highly recommend that you give both of them a look.
+Because of the large number of use cases and edge states we have separate guidelines for [Table principles](/table-group/table/), [Table controls](/table-group/table-controls/) and [Table states](/table-group/table-states/). We highly recommend you give all of them a look.
 
 @## Resources
 

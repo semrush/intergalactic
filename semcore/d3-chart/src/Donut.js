@@ -95,12 +95,13 @@ class DonutRoot extends Component {
         .filter(([key]) => keys.includes(key))
         .sort(([a], [b]) => (keys.indexOf(a) > keys.indexOf(b) ? 1 : -1));
     }
-    const minValue = pieData.reduce((acc, cur) => {
-      if (cur[1]) acc += cur[1];
-      return acc;
-    }, 0) / 100;
+    const minValue =
+      pieData.reduce((acc, cur) => {
+        if (cur[1]) acc += cur[1];
+        return acc;
+      }, 0) / 100;
     pieData = pieData.map((d) => {
-      if (d[1] && d[1] < minValue) d[1] = minValue
+      if (d[1] && d[1] < minValue) d[1] = minValue;
       return d;
     });
     return d3Pie(pieData);
@@ -173,8 +174,8 @@ class DonutRoot extends Component {
     return (
       <Element
         id={this.id}
-        render='g'
-        childrenPosition='inside'
+        render="g"
+        childrenPosition="inside"
         transform={`translate(${width / 2},${height / k})`}
       />
     );
@@ -182,12 +183,12 @@ class DonutRoot extends Component {
 }
 
 function Pie({ Element: SPie, styles, d3Arc, data, color = '#50aef4' }) {
-  return sstyled(styles)(<SPie render='path' color={color} d={d3Arc(data)} />);
+  return sstyled(styles)(<SPie render="path" color={color} d={d3Arc(data)} />);
 }
 
 function Label({ Element: SLabel, styles, Children }) {
   return sstyled(styles)(
-    <SLabel render='text' x='0' y='0'>
+    <SLabel render="text" x="0" y="0">
       <Children />
     </SLabel>,
   );

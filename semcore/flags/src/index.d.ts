@@ -503,7 +503,7 @@ export declare enum iso2Name {
   eh,
   ye,
   zm,
-  zw
+  zw,
 }
 
 export declare enum iso3Name {
@@ -1008,8 +1008,8 @@ export declare enum iso3Name {
   esh,
   yem,
   zmb,
-  zwe
-};
+  zwe,
+}
 
 type iso2 = keyof typeof iso2Name;
 type iso3 = keyof typeof iso3Name;

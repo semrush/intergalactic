@@ -10,6 +10,7 @@ type Meta {
   disabled: Boolean
   hide: Boolean
   beta: Boolean
+  docs: Boolean
 }
 
 type Tag {

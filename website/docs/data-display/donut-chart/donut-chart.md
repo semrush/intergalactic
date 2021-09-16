@@ -4,7 +4,7 @@ fileSource: chart
 tabName: Guide
 ---
 
-> 💡 The basic data visualization rules in widgets with graphs are described in [Data visualization](/data-display/data-visualization/).
+> 💡 Basic data visualization rules are described in the [Chart principles](/data-display/chart/).
 
 @## Description
 
@@ -207,4 +207,5 @@ The starting angle for displaying values is always `90 degrees`.
 ![start angle for donut chart](static/start-yes-no.png)
 
 @page donut-chart-api
-@page donut-chart-code
+@page donut-chart-d3-code
+@page donut-chart-recharts-code

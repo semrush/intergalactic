@@ -47,7 +47,7 @@ The list of categories is sorted by:
 - alphabetically (if there are no counters in the list options)
 - by the number of domains (if there are domain counters in the list optons)
 
-Long categories are shortened according to the [rules of long URLs](/table-group/table-working/#a19308) and must have a tooltip.
+Long categories are shortened according to the [rules of long URLs](/table-group/table-controls/#a5b913) and must have a tooltip.
 
 **Add search if there are more than 10 categories in the list.**
 
@@ -59,7 +59,7 @@ Long categories are shortened according to the [rules of long URLs](/table-group
 
 ### Filled trigger
 
-**Long categories are shortened according to the [rules of long URLs](/table-group/table-working/#a19308).**
+**Long categories are shortened according to the [rules of long URLs](/table-group/table-controls/#a5b913).**
 
 We recommend always putting a label to the filter. But, if there is not enough space and if you are sure that without a label, users will understand what kind of filter is in front of them, you can remove the label.
 
@@ -101,7 +101,7 @@ The list of categories is sorted by:
 - alphabetically (if there are no counters in the list options)
 - by the number of domains (if there are domain counters in the list optons)
 
-Long categories are shortened according to the [rules of long URLs](/table-group/table-working/#a19308) and must have a tooltip.
+Long categories are shortened according to the [rules of long URLs](/table-group/table-controls/#a5b913) and must have a tooltip.
 
 - **Add search if there are more than 10 categories in the list.**
 - Select all / Deselect all functionality is optional.

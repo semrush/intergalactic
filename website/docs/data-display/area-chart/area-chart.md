@@ -4,7 +4,7 @@ fileSource: chart
 tabName: Guide
 ---
 
-> 💡 The basic data visualization rules in widgets with graphs are described in [Data visualization](/data-display/data-visualization/).
+> 💡 Basic data visualization rules are described in the [Chart principles](/data-display/chart/).
 
 @## Description
 
@@ -40,7 +40,7 @@ It is recommended to display the points on lines either when there are few of th
 
 @## Interaction
 
-When you hover over the chart area, a vertical guide line is shown at the nearest point; this point is enlarged itself, and a tooltip with detailed data for the point appears next to it. For more information about the tooltip, see [Data visualization](/data-display/data-visualization/) and [Line chart](/data-display/line-chart/).
+When you hover over the chart area, a vertical guide line is shown at the nearest point; this point is enlarged itself, and a tooltip with detailed data for the point appears next to it. For more information about the tooltip, see [Data visualization](/data-display/chart/) and [Line chart](/data-display/line-chart/).
 
 @## Edge cases
 
@@ -104,4 +104,5 @@ Styles can be found in the guide book for [Skeleton](/components/skeleton/).
 ![skeleton](static/skeleton-raw.png)
 
 @page area-chart-api
-@page area-chart-code
+@page area-chart-d3-code
+@page area-chart-recharts-code

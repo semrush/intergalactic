@@ -1,6 +1,8 @@
 ---
 title: Stacked area chart
+fileSource: chart
+tabName: Guide
 disabled: true
 ---
 
-# TODO
+> 💡 Basic data visualization rules are described in the [Chart principles](/data-display/chart/).
