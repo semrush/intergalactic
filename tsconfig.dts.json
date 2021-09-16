@@ -1,8 +1,7 @@
 {
   "extends": "./tsconfig",
   "compilerOptions": {
-    "noEmit": true,
-    "skipLibCheck": false
+    "noEmit": true
   },
   "include": ["semcore/**/src/**/*"]
 }

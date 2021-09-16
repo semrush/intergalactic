@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [1.1.0] - 2021-09-14
+
+### Added
+
+- Display 1% of the sector as the minimum value for Donut chart
+
 ## [1.0.0] - 2021-09-08
 
 ### Added

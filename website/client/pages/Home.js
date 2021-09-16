@@ -28,7 +28,7 @@ const stylesTabLine = css`
   }
 
   STabLineItem[size='xl'] {
-    font-size: 18px;
+    font-size: 24px;
   }
 `;
 

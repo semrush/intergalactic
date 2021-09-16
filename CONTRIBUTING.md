@@ -16,9 +16,9 @@ Try to follow this advice to fill a great issue:
 - Specify which version of UI-kit you're using.
 - Contributions to Intergalactic UI-kit should be made in the form of GitHub pull requests. Each pull request will be reviewed by a core contributor (someone with permission to land patches) and either landed in the main tree or given feedback for changes that would be required.
 
-##Pull Request Checklist
+## Pull Request Checklist
 
-- Branch from the master branch and, if needed, rebase to the current master branch before submitting your pull request. If it doesn't merge cleanly with master you may be asked to rebase your changes.
+- Branch from the `master` branch and, if needed, rebase to the current `master` branch before submitting your pull request. If it doesn't merge cleanly with `master`, you may be asked to rebase your changes.
 - Commits should be as small as possible, while ensuring that each commit is correct independently (i.e., each commit should compile and pass tests).
 - Don't put submodule updates in your pull request unless they are to landed commits.
 - If your patch is not getting reviewed or you need a specific person to review it, you can @-reply a reviewer asking for a review in the pull request or a comment.
@@ -27,12 +27,11 @@ Try to follow this advice to fill a great issue:
 ## Code review
 
 All changes, including changes by the project participants, require code reviewing.
-Refer to the Github help for more usage information about
-[pull-request](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests).
+For more information, see [Collaborating with pull requests](https://docs.github.com/en/github/collaborating-with-pull-requests) in GitHub docs.
 
 ## Separating components
 
-We create an `NPM` package for each **independent** component.
+We create an npm package for each **independent** component.
 This allows us to release and manage dependencies as flexible as we can.
 
 ### Dependent component
@@ -48,16 +47,16 @@ An independent component is an entity that can be reused, which has its own publ
 
 For example, Link, although logically part of typography, is, in practice, a separate component.
 
-### NPM package
+### npm package
 
-An `NPM` package is a container that has its own version and changelog.
+An npm package is a container that has its own version and changelog.
 
 It can contain:
 
 - one component, for example a Button
 - several **dependent** components, for example a table (Table, TableHead, TableRow, etc.)
 - HOC component extending functionality, for example keyboard navigation (WithKeyboardFocus)
-- meta package, for example a list of css variables with colors
+- meta package, for example a list of CSS variables with colors
 
 ##Conduct
 All code in this repository is under the MIT License. By sending a pull request you agree to the terms of contributing under the [MIT license](https://github.com/semrush/intergalactic/blob/master/LICENSE)

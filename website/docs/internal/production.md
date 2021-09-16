@@ -81,8 +81,7 @@ There are two ways to implement SSR.
 
 ### SSR via getStyles function
 
-This method will work for you if you're not using the @semcore/shadow-loader package (see [CSS extract]
-(/internal/production/#a5c869)).
+This method will work for you if you're not using the @semcore/shadow-loader package (see [CSS extract](/internal/production/#a5c869)).
 
 Use the @semcore/core package and the `getStyles` function which will return `style` tags with all the necessary styles:
 
@@ -108,8 +107,7 @@ const html = `
 
 ### SSR via style extract
 
-This method will work for you if you are using the @semcore/shadow-loader package (see [CSS extract]
-(/internal/production/#a5c869)).
+This method will work for you if you are using the @semcore/shadow-loader package (see [CSS extract](/internal/production/#a5c869)).
 
 If you use `CSS-extract`, it should already be configured. If you don't use it, go to the [CSS extract](/internal/production/#a5c869) section and follow the steps described. Once you've done that, all component styles will be collected in a separate chunk that needs to be included in HTML generated on the server.
 

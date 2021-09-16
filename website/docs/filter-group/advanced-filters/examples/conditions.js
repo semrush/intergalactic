@@ -8,6 +8,7 @@ import Divider from '@semcore/divider';
 import Button from '@semcore/button';
 import { FilterTrigger } from '@semcore/base-trigger';
 import CloseXS from '@semcore/icon/lib/Close/xs';
+import TrashXS from '@semcore/icon/lib/Trash/xs';
 import styled from 'styled-components';
 
 const generateOptions = (list) => list.map((v) => ({ value: v, children: v }));
@@ -20,7 +21,7 @@ const Filter = ({ closable, onClose, ...props }) => (
     <Input>
       <Input.Value />
     </Input>
-    {closable ? <CloseXS color="stone" interactive ml={2} py={2} onClick={onClose} /> : null}
+    {closable ? <TrashXS color="stone" interactive ml={2} py={2} onClick={onClose} /> : null}
   </Flex>
 );
 
@@ -82,7 +83,8 @@ export default () => {
             Apply
           </Button>
           <Button use="tertiary" theme="muted" onClick={clearAll}>
-            Clear all
+            <Button.Addon tag={CloseXS} />
+            <Button.Text>Clear all</Button.Text>
           </Button>
         </Flex>
       </Dropdown.Popper>
