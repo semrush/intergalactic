@@ -2,6 +2,8 @@
 tabName: Code
 ---
 
+@## General
+
 Our library has two components for charts:
 
 - `Chart` component is based on the [recharts library](http://recharts.org). This library is extremely slow evolving.
