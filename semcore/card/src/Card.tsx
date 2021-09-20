@@ -24,7 +24,7 @@ class Card extends Component {
     const SCard = Root;
     const { styles } = this.asProps;
 
-    return sstyled(styles)(<SCard render={Box} p={6} />);
+    return sstyled(styles)(<SCard render={Box} />);
   }
 }
 

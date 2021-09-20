@@ -3,6 +3,7 @@
 SCard {
   border: 1px solid var(--gray80);
   border-radius: 2px;
+  padding: 20px 24px 24px;
 }
 
 STitle {
