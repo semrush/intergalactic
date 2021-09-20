@@ -121,17 +121,17 @@ If you want to place links in one line, the distance between them must be a mult
 
 | Action on the page                     | Default link                         | Hint link |
 | -------------------------------------- | ------------------------------------ | --------- |
-| Internal transition                    | Yes                                  | No        |
-| External transition                    | Yes                                  | No        |
-| Reloading the page                     | Yes                                  | No        |
-| Updating data in a small block/widget  | Yes                                  | No        |
-| Clickable email                        | Yes                                  | No        |
-| Updating data in a table row           | Allowed if it is an important action | Yes       |
-| Opening a modal window                 | Allowed if it is an important action | Yes       |
-| Opening a dropdown                     | Allowed if it is an important action | Yes       |
-| Opening of an accordion                | Allowed if it is an important action | Yes       |
-| Opening the full text on the same page | No                                   | Yes       |
-| Tooltip on click/hover                 | No                                   | Yes       |
+| Internal transition                    | ✅                                   | ❌        |
+| External transition                    | ✅                                   | ❌        |
+| Reloading the page                     | ✅                                   | ❌        |
+| Updating data in a small block/widget  | ✅                                   | ❌        |
+| Clickable email                        | ✅                                   | ❌        |
+| Updating data in a table row           | Allowed if it is an important action | ✅        |
+| Opening a modal window                 | Allowed if it is an important action | ✅        |
+| Opening a dropdown                     | Allowed if it is an important action | ✅        |
+| Opening of an accordion                | Allowed if it is an important action | ✅        |
+| Opening the full text on the same page | ❌                                   | ✅        |
+| Tooltip on click/hover                 | ❌                                   | ✅        |
 
 @## Links in tables
 
