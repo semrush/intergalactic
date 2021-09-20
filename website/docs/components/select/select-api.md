@@ -69,3 +69,12 @@ import Select from '@semcore/select';
 ```
 
 @interface ISelectOptionCheckboxProps
+
+@## Select.Option.Checkbox
+
+```jsx
+import Select from '@semcore/select';
+<Select.Option.Checkbox />;
+```
+
+Styled [`Box`](https://i.semrush.com/layout/box-system/box-api/#a3cfce).
