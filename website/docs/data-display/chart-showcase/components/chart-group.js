@@ -1,6 +1,6 @@
 import React from 'react';
-import ComponentCard from '../../../../client/components/ComponentCard';
-import { getImageName } from '../../../../client/pages/Home';
+import ComponentCard from '@docs/../client/components/ComponentCard';
+import { getImageName } from '@docs/../client/pages/Home';
 import styled from 'styled-components';
 
 const group = {
@@ -141,12 +141,6 @@ const group = {
     route: '/data-display/choropleth-map',
     disabled: true,
     type: 'charts',
-  },
-  accordion: {
-    title: 'Accordion',
-    route: '/table-group/table-controls/#ac425f',
-    disabled: false,
-    type: 'table',
   },
 };
 

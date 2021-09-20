@@ -7,7 +7,7 @@ import SettingsS from '@semcore/icon/lib/Settings/s';
 const TooltipContent = `Hey! Don't forget to place some useful info here 😏`;
 
 export default () => (
-  <Card pt={5} wMax="400px">
+  <Card wMax="400px">
     <Flex mb={2} alignItems="center">
       <Card.Title hint={TooltipContent}>Card heading</Card.Title>
       <SettingsS color="stone" ml="auto" interactive />
