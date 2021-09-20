@@ -1,6 +1,7 @@
 import React from 'react';
 import { FilterTrigger } from '@semcore/base-trigger';
 import { cleanup, fireEvent, render, axe } from 'jest-preset-ui/testing';
+import { shouldSupportClassName, shouldSupportRef } from 'jest-preset-ui/shared';
 import snapshot from 'jest-preset-ui/snapshot';
 import Select from '../src';
 
@@ -150,4 +151,11 @@ describe('Select Trigger', () => {
     const results = await axe(container);
     expect(results).toHaveNoViolations();
   });
+});
+
+describe('Select.Option.Checkbox', () => {
+  afterEach(cleanup);
+
+  shouldSupportClassName(Select.Option.Checkbox, Select);
+  shouldSupportRef(Select.Option.Checkbox, Select);
 });

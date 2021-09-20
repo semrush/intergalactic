@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.6om/en/1.0.0/).
 
+## [2.6.0] - 2021-9-20
+
+### Added
+
+- Added component `Select.Option.Checkbox`.
+
 ## [2.5.11] - 2021-8-26
 
 ### Changed
