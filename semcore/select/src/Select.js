@@ -1,5 +1,6 @@
-import React from 'react';
-import createComponent, { Component, Root, sstyled } from '@semcore/core';
+import React, { useContext } from 'react';
+import cn from 'classnames';
+import createComponent, { Component, CONTEXT_COMPONENT, Root, sstyled } from '@semcore/core';
 import DropdownMenu from '@semcore/dropdown-menu';
 import { ButtonTrigger } from '@semcore/base-trigger';
 import Divider from '@semcore/divider';
@@ -7,8 +8,8 @@ import findComponent from '@semcore/utils/lib/findComponent';
 import logger from '@semcore/utils/lib/logger';
 import resolveColor from '@semcore/utils/lib/color';
 import addonTextChildren from '@semcore/utils/lib/addonTextChildren';
-
 import InputSearch from './InputSearch';
+import { useBox } from '@semcore/flex-box';
 
 import style from './style/select.shadow.css';
 
@@ -96,6 +97,8 @@ class RootSelect extends Component {
     const { value } = this.asProps;
     const selected = isSelectedOption(this.fallbackDeprecatedValue(value), props.value);
     const other = {};
+    this._optionSelected = selected;
+    this._hasOption = true;
 
     if (selected && !this.isScrolledToFirstOption) {
       other.ref = this.firstSelectedOptionRef;
@@ -113,9 +116,14 @@ class RootSelect extends Component {
 
   getOptionCheckboxProps(props) {
     const { size } = this.asProps;
+    const optionProps = this._hasOption ? {} : this.getOptionProps(props);
+    const selected = this._optionSelected;
+    this._optionSelected = null;
+    this._hasOption = null;
     return {
+      ...optionProps,
       size,
-      ...this.getOptionProps(props),
+      selected,
     };
   }
 
@@ -270,11 +278,11 @@ function Trigger({ Children, name, value, $hiddenRef, tag: Tag = ButtonTrigger }
   );
 }
 
-function OptionCheckbox(props) {
-  const { selected, ...other } = props;
-  const { size, theme, children } = other;
-  const SOptionCheckbox = 'div';
+function Checkbox(props) {
+  const [SOptionCheckbox, componentProps] = useBox(props, props.forwardRef);
+  const { size, theme, selected } = props;
   const styles = sstyled(props.styles);
+
   const { className, style } = styles.cn('SOptionCheckbox', {
     size,
     'use:theme': resolveColor(theme),
@@ -282,8 +290,21 @@ function OptionCheckbox(props) {
   });
 
   return (
+    <SOptionCheckbox
+      {...componentProps}
+      className={cn(className, componentProps.className) || undefined}
+      style={{ ...style, ...componentProps.style }}
+    />
+  );
+}
+
+function OptionCheckbox(props) {
+  const { selected, ...other } = props;
+  const { size, theme, children } = other;
+
+  return (
     <DropdownMenu.Item {...other}>
-      <SOptionCheckbox style={style} className={className || undefined} />
+      <Checkbox selected={selected} size={size} theme={theme} styles={props.styles} />
       {children}
     </DropdownMenu.Item>
   );
@@ -313,7 +334,13 @@ const Select = createComponent(
     Popper: DropdownMenu.Popper,
     List: DropdownMenu.List,
     Menu: DropdownMenu.Menu,
-    Option: DropdownMenu.Item,
+    Option: [
+      DropdownMenu.Item,
+      {
+        Addon: DropdownMenu.Item.Addon,
+        Checkbox,
+      },
+    ],
     OptionTitle: DropdownMenu.ItemTitle,
     OptionHint: DropdownMenu.ItemHint,
     OptionCheckbox: [
