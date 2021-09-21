@@ -1,5 +1,5 @@
 ---
-title: Code
+title: Example
 ---
 
 @## Basic use of the modal window

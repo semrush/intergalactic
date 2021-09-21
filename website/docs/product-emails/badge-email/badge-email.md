@@ -1,6 +1,6 @@
 ---
 title: Email badge and tag
-tabName: Code
+tabName: Example
 ---
 
 @## Badge/tag themes

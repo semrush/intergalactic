@@ -1,6 +1,6 @@
 ---
 title: Email notice
-tabName: Code
+tabName: Example
 ---
 
 @## Theme notice

@@ -1,5 +1,5 @@
 ---
-title: Code
+title: Example
 ---
 
 @## Textarea with auto height
