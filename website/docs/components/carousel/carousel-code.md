@@ -1,5 +1,5 @@
 ---
-title: Code
+title: Example
 ---
 
 @## Image & video galleries on the page

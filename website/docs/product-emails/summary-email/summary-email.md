@@ -1,6 +1,6 @@
 ---
 title: Email summary
-tabName: Code
+tabName: Example
 ---
 
 @email_html summary-index

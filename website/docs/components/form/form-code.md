@@ -1,5 +1,5 @@
 ---
-title: Code
+title: Example
 ---
 
 This examples use for work library [`react-hook-form`](https://react-hook-form.com/)

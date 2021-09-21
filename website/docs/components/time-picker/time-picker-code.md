@@ -1,5 +1,5 @@
 ---
-title: Code
+title: Example
 ---
 
 @## Expanded access to all the components

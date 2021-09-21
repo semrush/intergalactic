@@ -1,7 +1,7 @@
 ---
 title: Old table code and API
 fileSource: table
-tabName: Code
+tabName: Example
 disabled: true
 ---
 

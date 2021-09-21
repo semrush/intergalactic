@@ -1,5 +1,5 @@
 ---
-title: Code
+title: Example
 ---
 
 @## Badge main types

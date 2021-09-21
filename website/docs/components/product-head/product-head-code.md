@@ -1,5 +1,5 @@
 ---
-title: Code
+title: Example
 ---
 
 @## Extended example of the header with tabs

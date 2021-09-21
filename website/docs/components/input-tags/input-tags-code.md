@@ -1,5 +1,5 @@
 ---
-title: Code
+title: Example
 ---
 
 @## Entering and editing tags

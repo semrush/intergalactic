@@ -1,5 +1,5 @@
 ---
-title: Code
+title: Example
 ---
 
 @## Range of values

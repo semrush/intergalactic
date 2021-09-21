@@ -1,5 +1,5 @@
 ---
-title: Code
+title: Example
 ---
 
 @## Filters with filter-conditions

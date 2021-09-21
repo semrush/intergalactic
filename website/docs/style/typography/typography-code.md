@@ -1,5 +1,5 @@
 ---
-title: Code
+title: Example
 ---
 
 @## Using typography in our interfaces
