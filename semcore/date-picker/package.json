@@ -1,7 +1,7 @@
 {
   "name": "@semcore/date-picker",
   "description": "SEMRush DatePicker Component",
-  "version": "2.5.4",
+  "version": "2.5.5",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",

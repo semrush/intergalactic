@@ -31,7 +31,6 @@ SWeekDay {
   justify-content: center;
   color: var(--gray60);
   font-size: var(--fs-100);
-  text-transform: uppercase;
   font-weight: 400;
   overflow: hidden;
 }
