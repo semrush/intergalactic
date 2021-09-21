@@ -112,7 +112,7 @@ class Demo extends React.Component {
       <StyledTable>
         <Table.Head>
           <Table.Row>
-            <Table.CellHead rowSpan={2} align="center" valign="middle">
+            <Table.CellHead rowSpan={2} align="center">
               <Checkbox size="l">
                 <Checkbox.Value />
               </Checkbox>
