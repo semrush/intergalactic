@@ -20,7 +20,7 @@ export interface ICellProps extends ITextProps {
 
 function Cell(props, ref) {
   const SCell = Text;
-  const { valign = 'middle', align: alignProps = 'left', textAlign, use, styles, ...other } = props;
+  const { valign = 'top', align: alignProps = 'left', textAlign, use, styles, ...other } = props;
   const align = textAlign ? textAlign : alignProps;
 
   return styled(styles)(
