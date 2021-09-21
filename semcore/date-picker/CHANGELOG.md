@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.5.5] - 2021-9-21
+
+### Changed
+
+- Changed WeekDay styles from uppercase to capital case
+
 ## [2.5.4] - 2021-9-1
 
 ### Fixed
