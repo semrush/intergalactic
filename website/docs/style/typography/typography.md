@@ -58,14 +58,14 @@ In our interface, we use headings of 6 sizes and 2 styles: `Medium (500)` and `B
 | --- | -------------------- | ---------------------------------------------------------- | ---------------------- |
 | h1  | ![h1](static/h1.png) | `font-size: 48px; line-height: 1.17; font-weight: bold;`   | `--fs-800`, `--lh-800` |
 | h2  | ![h2](static/h2.png) | `font-size: 36px; line-height: 1.17; font-weight: bold;`   | `--fs-700`, `--lh-700` |
-| h3  | ![h3](static/h3.png) | `font-size: 33px; line-height: 1.2; font-weight: medium;`  | `--fs-600`, `--lh-600` |
-| h4  | ![h4](static/h4.png) | `font-size: 25px; line-height: 1.12; font-weight: medium;` | `--fs-500`, `--lh-500` |
+| h3  | ![h3](static/h3.png) | `font-size: 33px; line-height: 1.2; font-weight: 500;`  | `--fs-600`, `--lh-600` |
+| h4  | ![h4](static/h4.png) | `font-size: 25px; line-height: 1.12; font-weight: 500;` | `--fs-500`, `--lh-500` |
 
 **The remaining headings are used for the content part of reports and landing pages**. _For example, in widgets._
 
 |     | Appearance           | Styles                                                     | Variables              |
 | --- | -------------------- | ---------------------------------------------------------- | ---------------------- |
-| h5  | ![h5](static/h5.png) | `font-size: 19px; line-height: 1.16; font-weight: medium;` | `--fs-400`, `--lh-400` |
+| h5  | ![h5](static/h5.png) | `font-size: 19px; line-height: 1.16; font-weight: 500;` | `--fs-400`, `--lh-400` |
 | h6  | ![h6](static/h6.png) | `font-size: 16px; line-height: 1.5; font-weight: bold;`    | `--fs-300`, `--lh-300` |
 
 A heading can contain additional information, such as a counter of results found, and so on. They can be found in table headings. In these cases, the additional information is presented by secondary text of `gray60` color and `Light (300)` face.
