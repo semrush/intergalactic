@@ -8,6 +8,22 @@ tabName: Guide
 
 @## Description
 
+**Bar chart** is a method to visualize distribution of values by category for value comparison. A bar chart can be [vertical]((/data-display/bar-chart/) or horizontal.
+
+> 💡 **Difference from Histogram chart**
+>
+> Bar chart displays distribution of data sets by quality categories.
+>
+> Histogram charts are used to display distribution of data sets: how often values fall into quantitative ranges.
+
+Important points to keep in mind when presenting data as a bar chart:
+
+- Always start the Y-axis from zero.
+- The axes should be clear to the user from the chart name. However, in cases where the graph name is not enough, you can denote the axes.
+- Don't use too many colors to represent values. One color or shades of the same color shall be sufficient for your tasks. However, you can always select a value if necessary.
+
+@## Usage
+
 **Horizontal bars are best used when:**
 
 - the names of compared values are long (for example, names of categories or countries);
@@ -123,3 +139,7 @@ When loading the data for the first time, [Skeleton](/components/skeleton/) shou
 ![skeleton](/data-display/bar-chart/static/hor-skeleton.png)
 
 Styles can be found in the guide book for [Skeleton](/components/skeleton/).
+
+@page bar-horizontal-api
+@page bar-horizontal-d3-code
+@page bar-horizontal-recharts-code

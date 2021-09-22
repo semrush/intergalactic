@@ -1,5 +1,5 @@
 ---
-title: Vertical
+title: Vertical bar chart
 ---
 
 @## Description
