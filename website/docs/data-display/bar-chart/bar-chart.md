@@ -8,7 +8,7 @@ tabName: Guide
 
 @## Description
 
-**Bar chart** is a method to visualize distribution of values by category for value comparison. A bar chart can be vertical or horizontal.
+**Bar chart** is a method to visualize distribution of values by category for value comparison. A bar chart can be vertical or [horizontal](/data-display/bar-horizontal/).
 
 > 💡 **Difference from Histogram chart**
 >
@@ -156,7 +156,6 @@ When you hover over a clickable date, it changes color to `$white` and is highli
 | ![clickable bar chart](static/interactive-2.png) | ![clickable bar chart](static/hor-widget-example.png) |
 
 @page bar-chart-vertical
-@page bar-chart-horizontal
 @page bar-chart-api
 @page bar-chart-d3-code
 @page bar-chart-recharts-code

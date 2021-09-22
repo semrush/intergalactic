@@ -36,18 +36,6 @@ The bar can also have negative values. For better readability, add an additional
 
 @example bar-negative
 
-@## Horizontal bar
-
-You can rotate a chart using the `<HorizontalBar/>` component by swapping `scaleBand` and `scaleLinear`.
-
-@example bar-horizontal
-
-@## Label bar
-
-To draw the values of the bars, pass the function to `<Bar/>` to receive all required values.
-
-@example bar-label
-
 @## Group bar
 
 To combine multiple bars, use `<GroupBar/>` and `<GroupBar.Bar/>`.
@@ -56,34 +44,14 @@ To combine multiple bars, use `<GroupBar/>` and `<GroupBar.Bar/>`.
 
 @example bar-group
 
-@## Horizontal group bar
-
-To combine multiple horizontal bars, use `<GroupBar.HorizontalBar/>`.
-
-> The `<GroupBar.HorizontalBar/>` component is a customized `<HorizontalBar/>` that has the same API.
-
-@example bar-horizontal-group
-
 @## Stacked bar
 
 To draw a stacked chart, use `<StackBar/>` and `<StackBar.Bar/>`.
 
 @example bar-stack
 
-@## Horizontal stacked bar
-
-To draw a horizontal stacked chart, use the `<StackBar.HorizontalBar/>` component.
-
-@example bar-horizontal-stack
-
 @## Trend line
 
 You can combine charts with each other. For example, to display a trend line on a bar chart.
 
 @example bar-trend
-
-@## Background
-
-Use the `<Bar.Background/>` and `<HorizontalBar.Background/>` components if you need to add a background to a chart plot.
-
-@example bar-background
