@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Code from './Code';
 import Copy from './Copy';
+import Sandbox from './Sandbox';
 import CopyS from '@semcore/icon/lib/Copy/s';
 
 const ExampleWrapper = styled.div`
@@ -24,9 +25,8 @@ const CodeView = styled.div`
   position: relative;
 `;
 
-const IconCopy = styled.div`
+const stylesIcons = `
   position: absolute;
-  right: 16px;
   top: 16px;
   cursor: pointer;
 
@@ -44,6 +44,15 @@ const IconCopy = styled.div`
     }
   }
 `;
+const IconCopy = styled.div`
+  right: 16px;
+  ${stylesIcons}
+`;
+
+const IconSandBox = styled.div`
+  right: 54px;
+  ${stylesIcons}
+`;
 
 class Example extends React.PureComponent {
   render() {
@@ -59,6 +68,9 @@ class Example extends React.PureComponent {
               <CopyS />
             </Copy>
           </IconCopy>
+          <IconSandBox>
+            <Sandbox raw={raw} />
+          </IconSandBox>
           <Code lang="jsx" block copy={false}>
             {raw}
           </Code>
