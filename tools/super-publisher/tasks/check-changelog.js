@@ -7,7 +7,6 @@ const configMD = {
   default: true,
   MD013: false,
   MD024: false,
-  MD028: false,
 };
 
 module.exports = task('CHANGELOG.md check', async (opt) => {

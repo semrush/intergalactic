@@ -1,5 +1,5 @@
 ---
 title: Grid and axis
-fileSource: chart
+fileSource: d3-chart
 tabName: Guide
 ---
