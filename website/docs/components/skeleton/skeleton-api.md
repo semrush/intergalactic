@@ -26,7 +26,7 @@ import Skeleton from '@semcore/skeleton';
 import { AreaChartSkeleton } from '@semcore/skeleton';
 ```
 
-See an example of use in the [Area chart](data-display/area-chart/area-chart-code/#ac26f2) component.
+See an example of use in the [Area chart](/data-display/area-chart/area-chart-recharts-code/#ac26f2) component.
 
 @## BarChartSkeleton
 
@@ -34,7 +34,7 @@ See an example of use in the [Area chart](data-display/area-chart/area-chart-cod
 import { BarChartSkeleton } from '@semcore/skeleton';
 ```
 
-See an example of use in the [Bar chart](/data-display/bar-chart/bar-chart-code/#ac26f2) component.
+See an example of use in the [Bar chart](/data-display/bar-chart/bar-chart-recharts-code/#ac26f2) component.
 
 @## PieChartSkeleton
 
@@ -42,7 +42,7 @@ See an example of use in the [Bar chart](/data-display/bar-chart/bar-chart-code/
 import { PieChartSkeleton } from '@semcore/skeleton';
 ```
 
-See an example of use in the [Donut chart](/data-display/donut-chart/donut-chart-code/#ac26f2) component.
+See an example of use in the [Donut chart](/data-display/donut-chart/donut-chart-recharts-code/#ac26f2) component.
 
 @## HistogramChartSkeleton
 
@@ -58,7 +58,7 @@ See an example of use in the [Histogram chart](/data-display/histogram-chart/his
 import { LineChartSkeleton } from '@semcore/skeleton';
 ```
 
-See an example of use in the [Line chart](/data-display/line-chart/line-chart-code/#ac26f2) component.
+See an example of use in the [Line chart](/data-display/line-chart/line-chart-recharts-code/#ac26f2) component.
 
 @## VennChartSkeleton
 
@@ -66,4 +66,4 @@ See an example of use in the [Line chart](/data-display/line-chart/line-chart-co
 import { VennChartSkeleton } from '@semcore/skeleton';
 ```
 
-See an example of use in the [Venn chart](/data-display/venn-chart/venn-chart-code/#ac26f2) component.
+See an example of use in the [Venn chart](/data-display/venn-chart/venn-chart-recharts-code/#ac26f2) component.
