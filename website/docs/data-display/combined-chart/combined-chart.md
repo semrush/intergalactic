@@ -1,6 +1,6 @@
 ---
 title: Combined chart
-fileSource: chart
+fileSource: d3-chart
 tabName: Guide
 disabled: true
 ---

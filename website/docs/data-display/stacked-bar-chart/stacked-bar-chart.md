@@ -1,6 +1,6 @@
 ---
 title: Stacked bar chart
-fileSource: chart
+fileSource: d3-chart
 tabName: Guide
 disabled: true
 ---
