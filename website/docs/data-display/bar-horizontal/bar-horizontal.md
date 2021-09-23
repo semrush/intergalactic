@@ -8,7 +8,7 @@ tabName: Guide
 
 @## Description
 
-**Bar chart** is a method to visualize distribution of values by category for value comparison. A bar chart can be [vertical]((/data-display/bar-chart/) or horizontal.
+**Bar chart** is a method to visualize distribution of values by category for value comparison. A bar chart can be [vertical](/data-display/bar-chart/) or horizontal.
 
 > 💡 **Difference from Histogram chart**
 >
