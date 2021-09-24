@@ -76,7 +76,7 @@ export const tags = {
           return (
             <>
               <style>{'* {font-family: inherit;}'}</style>
-              <Example raw={ExampleComponent} {...props}>
+              <Example raw={{ code: ExampleComponent }} {...props}>
                 <style>{emailCSS}</style>
                 <div dangerouslySetInnerHTML={{ __html: CompileHtml }} {...other} />
               </Example>
@@ -87,7 +87,7 @@ export const tags = {
                     <Link.Text size={300}>Compiled example</Link.Text>
                   </Accordion.Item.Toggle>
                   <Accordion.Item.Collapse>
-                    <Example raw={CompileHtml} />
+                    <Example raw={{ code: CompileHtml }} />
                   </Accordion.Item.Collapse>
                 </Accordion.Item>
               </Accordion>
