@@ -1,6 +1,6 @@
 ---
 title: Divider for emails
-tabName: Code
+tabName: Example
 ---
 
 @## Basic example

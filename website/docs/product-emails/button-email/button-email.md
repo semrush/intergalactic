@@ -1,6 +1,6 @@
 ---
 title: Email button
-tabName: Code
+tabName: Example
 ---
 
 @## Button themes

@@ -1,5 +1,5 @@
 ---
-tabName: Code
+tabName: Example
 ---
 
 Our library has two components for charts:

@@ -1,5 +1,5 @@
 ---
-title: Code
+title: Example
 ---
 
 Our library has two components for tables:

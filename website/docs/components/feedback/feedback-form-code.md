@@ -1,5 +1,5 @@
 ---
-title: Code
+title: Example
 ---
 
 @## Example of the default form of feedback collection

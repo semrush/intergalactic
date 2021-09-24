@@ -1,5 +1,5 @@
 ---
-title: Code
+title: Example
 ---
 
 An example of the default styles of cards with the title.

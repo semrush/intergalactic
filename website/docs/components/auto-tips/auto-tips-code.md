@@ -1,5 +1,5 @@
 ---
-title: Code
+title: Example
 ---
 
 Functional of work of **Combobox**, **AutoComplete**, **AutoSuggest** is presented here. To prepare search with tips we will need the following 🤪:
