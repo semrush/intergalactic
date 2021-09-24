@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [1.2.0] - 2021-09-24
+
+### Added
+
+- The ability to pass "undefined" to skip some of the data.
+
 ## [1.1.0] - 2021-09-14
 
 ### Added
