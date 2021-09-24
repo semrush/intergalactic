@@ -1,6 +1,6 @@
 ---
 title: Email table
-tabName: Code
+tabName: Example
 ---
 
 @## Basic example

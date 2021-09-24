@@ -1,6 +1,6 @@
 ---
 title: Core email colors
-tabName: Code
+tabName: Example
 ---
 
 @## CSS variables

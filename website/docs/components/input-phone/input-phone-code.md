@@ -1,5 +1,5 @@
 ---
-title: Code
+title: Example
 ---
 
 @## We don't know the country and number format

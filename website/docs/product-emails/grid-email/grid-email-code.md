@@ -1,6 +1,6 @@
 ---
 title: Email grid
-tabName: Code
+tabName: Example
 ---
 
 @## Grid example

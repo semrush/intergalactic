@@ -1,5 +1,5 @@
 ---
-title: Code
+title: Example
 ---
 
 The component is used as a trigger in filters above tables or any other data.

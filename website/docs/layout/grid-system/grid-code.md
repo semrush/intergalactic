@@ -1,7 +1,7 @@
 ---
 title: Grid system
 fileSource: grid
-tabName: Code
+tabName: Example
 ---
 
 @## Description

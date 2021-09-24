@@ -1,6 +1,6 @@
 ---
 title: Email typography
-tabName: Code
+tabName: Example
 ---
 
 @## Link example
