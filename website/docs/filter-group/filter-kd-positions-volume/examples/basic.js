@@ -9,8 +9,8 @@ import NeighborLocation from '@semcore/neighbor-location';
 import InputNumber from '@semcore/input-number';
 
 const InputRange = ({ value: valueState, changeValue, ...other }) => {
-  const minRange = 1;
-  const maxRange = 8;
+  const minRange = 0;
+  const maxRange = 100;
   let revertValues = false;
 
   const handleChange = (key) => (value) => {
@@ -24,7 +24,7 @@ const InputRange = ({ value: valueState, changeValue, ...other }) => {
 
   const handleBlur = () => {
     const { from, to } = valueState;
-    if (from > to) {
+    if (from > to && to !== '') {
       revertValues = true;
       changeValue({
         from: Math.max(to, minRange),
@@ -68,8 +68,11 @@ const setTriggerText = ({ from, to }) => {
   if (from && to) {
     return `${from} - ${to}`;
   }
-  if (from !== '' || to !== '') {
-    return `${from !== '' ? from : to}`;
+  if (from === '' && to !== '') {
+    return `0 - ${to}`;
+  }
+  if (from !== '') {
+    return `${from}`;
   }
   return null;
 };
