@@ -42,7 +42,7 @@ export interface IProjectNotFoundProps extends IWithI18nEnhanceProps {
 
 export interface IPageNotFoundProps extends IWithI18nEnhanceProps {
   /**
-   * href of the link home
+   * href of the home link
    * @default /
    */
   homeLink?: string;
@@ -62,7 +62,7 @@ export interface IMaintenanceProps extends IWithI18nEnhanceProps {
    */
   toolName: string;
   /**
-   * href of the link home
+   * href of the home link
    * @default /
    */
   homeLink?: string;
@@ -70,7 +70,7 @@ export interface IMaintenanceProps extends IWithI18nEnhanceProps {
 
 export interface IAccessDeniedProps extends IWithI18nEnhanceProps {
   /**
-   * href of the link home
+   * href of the home link
    * @default /
    */
   homeLink?: string;
