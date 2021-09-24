@@ -2,12 +2,19 @@ import React from 'react';
 import Tooltip from '@semcore/tooltip';
 import { getParameters } from 'codesandbox/lib/api/define';
 
-export default ({ raw: ExampleRawComponent }) => {
-  const dependencies = ExampleRawComponent.match(/import.+/g)
+export default ({ raw: { code: ExampleRawComponent, path } }) => {
+  let dependencies = ExampleRawComponent.match(/import.+/g);
+  if (!dependencies) return null;
+  dependencies = dependencies
     .map((str) => str.match(/'.+'/g))
     .flat()
-    .map((str) => str.slice(1, -1))
-    .reduce((acc, str) => ({ ...acc, [str.replace(/icon\/lib.+/g, 'icon')]: 'latest' }), {});
+    .map((str) => str && str.slice(1, -1))
+    .reduce((acc, str) => {
+      if (str) {
+        return { ...acc, [str.replace(/icon\/lib.+/g, 'icon')]: 'latest' };
+      }
+      return acc;
+    }, {});
 
   const parameters = getParameters({
     files: {
@@ -24,7 +31,8 @@ ReactDOM.render(
 `,
       },
       'App.js': {
-        content: ExampleRawComponent,
+        content: `//https://github.com/semrush/intergalactic/tree/master/website/docs/${path}
+${ExampleRawComponent}`,
       },
       'package.json': {
         content: {

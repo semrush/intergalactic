@@ -64,7 +64,7 @@ class Example extends React.PureComponent {
         </View>
         <CodeView>
           <IconCopy>
-            <Copy text={raw} textTooltip="Click to copy code">
+            <Copy text={raw.code} textTooltip="Click to copy code">
               <CopyS />
             </Copy>
           </IconCopy>
@@ -72,7 +72,7 @@ class Example extends React.PureComponent {
             <Sandbox raw={raw} />
           </IconSandBox>
           <Code lang="jsx" block copy={false}>
-            {raw}
+            {raw.code}
           </Code>
         </CodeView>
       </ExampleWrapper>

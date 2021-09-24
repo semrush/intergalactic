@@ -103,15 +103,12 @@ export const tags = {
     const resolve = asyncCallback();
     return (props) => {
       const match = useRouteMatch();
+      const examplePath = `${match.params.category}/${match.params.page}/examples/${value}.js`;
       const Component = Loadable.Map({
         delay: 0,
         loader: {
-          Example: () =>
-            import(`@docs/${match.params.category}/${match.params.page}/examples/${value}.js`),
-          Raw: () =>
-            import(
-              `!!raw-loader!@docs/${match.params.category}/${match.params.page}/examples/${value}.js`
-            ),
+          Example: () => import(`@docs/${examplePath}`),
+          Raw: () => import(`!!raw-loader!@docs/${examplePath}`),
         },
         loading: (props) => <Loading value={value} {...props} />,
         render(loaded, props) {
@@ -127,7 +124,7 @@ export const tags = {
             );
             return (
               <div onClick={handleClick}>
-                <Example raw={ExampleRawComponent} {...props}>
+                <Example raw={{ code: ExampleRawComponent, path: examplePath }} {...props}>
                   <ExampleComponent {...other} />
                 </Example>
               </div>
