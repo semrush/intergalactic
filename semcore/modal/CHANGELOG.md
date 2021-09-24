@@ -2,6 +2,13 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.3.4] - 2021-9-13
+
+### Changed
+
+- Changed overlay opacity from 80% to 60%
+- Changed overlay opacity for the second modal window from 20% to 40%
+
 ## [2.3.3] - 2021-8-26
 
 ### Changed

@@ -24,13 +24,13 @@ SOverlay {
   justify-content: center;
   align-items: center;
   padding: 40px;
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(0, 0, 0, 0.6);
   overflow: auto;
   z-index: 10005;
   -webkit-overflow-scrolling: touch;
 
   & SOverlay {
-    background: rgba(0, 0, 0, 0.2);
+    background: rgba(0, 0, 0, 0.4);
   }
 }
 
