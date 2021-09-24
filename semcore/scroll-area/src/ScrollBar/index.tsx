@@ -154,6 +154,8 @@ class ScrollBarRoot extends Component<IScrollBarProps> {
       } else if (orientation === 'vertical') {
         this.$slider.style.height = `${this.sliderStyle.height}px`;
       }
+      // Пересчитать позицию скролл при изменении размера контейнера
+      this.handleScroll();
     });
   };
 
@@ -288,13 +290,11 @@ class ScrollBarRoot extends Component<IScrollBarProps> {
   }
 }
 
-const ScrollBar = createComponent<
-  ScrollBarRoot,
+const ScrollBar = createComponent<ScrollBarRoot,
   {
     Slider: ComponentProps<typeof Box>;
   },
-  IScrollBarContext
->(ScrollBarRoot, {
+  IScrollBarContext>(ScrollBarRoot, {
   Slider,
 });
 
