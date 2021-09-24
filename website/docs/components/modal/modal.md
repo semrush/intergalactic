@@ -51,7 +51,7 @@ We have several modal window types:
 - gallery (slider);
 - fullscreen (fullscreen [modal window 👑](/components/fullscreen-modal/), can also be one- or two-zone).
 
-@## General styles for modal windows
+@## Basic styles for modal windows
 
 ### Container
 
@@ -71,7 +71,7 @@ We have several modal window types:
 
 | Styles                                                                                                    | Example                                     |
 | --------------------------------------------------------------------------------------------------------- | ------------------------------------------- |
-| `opacity: 0.8; background: #000;`                                                                         | ![modal overlay](static/modal-overlay.png)  |
+| `opacity: 0.6; background: #000;`                                                                         | ![modal overlay](static/modal-overlay.png)  |
 | Overlay style when opening a modal window inside another modal window – `opacity: 0.4; background: #000;` | ![modal in  modal](static/second-modal.png) |
 
 > 💡 Use a modal window inside another modal window (Xzibit triggers 😁) only when necessary – if nothing at all fits. Look through an [amazing Manifesto](https://modalzmodalzmodalz.com/) against the ubiquitous use of modal windows. Meditate.
