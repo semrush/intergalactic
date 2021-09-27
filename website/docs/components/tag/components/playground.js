@@ -3,7 +3,7 @@ import Tag from '@semcore/tag';
 import EditXS from '@semcore/icon/lib/Edit/xs';
 import PlaygroundGeneration from 'components/PlaygroundGeneration';
 
-const THEME_MAP = ['muted', 'invert', 'green', 'light-blue', 'red', 'warning'];
+const THEME_MAP = ['muted', 'invert', 'dark-green', 'denim-blue', 'red', 'warning'];
 
 const USE_MAP = ['primary', 'secondary'];
 
