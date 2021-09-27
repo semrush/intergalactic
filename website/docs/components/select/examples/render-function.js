@@ -39,9 +39,10 @@ export default () => (
               <Text color="denim-blue">{currentValue.length ? 'Deselect all' : 'Select all'}</Text>
             </Select.Option>
             {options.map((option) => (
-              <Select.OptionCheckbox value={option.value} key={option.value}>
+              <Select.Option value={option.value} key={option.value}>
+                <Select.Option.Checkbox />
                 {option.value}
-              </Select.OptionCheckbox>
+              </Select.Option>
             ))}
           </Select.Menu>
         </React.Fragment>
