@@ -23,7 +23,7 @@ title: Vertical bar chart
 | One category   | ![bar-chart one value](/data-display/bar-chart/static/bar-chart.png)    | The upper part of the column shall have `border-radius: 2px;` |
 | Two categories | ![bar-chart two values](/data-display/bar-chart/static/bar-chart-2.png) | The margin between two columns is 4px.                        |
 
-> 💡 If there are more than 2-3 categories, the researchers recommend using a [stacked bar chart](/data-display/stacked-bar-chart/) or try to present the data using a different type of chart.
+> 💡 If there are more than 2-3 categories, use a [stacked bar chart](/data-display/stacked-bar-chart/) or try to present the data using a different type of chart.
 >
 > It is also a good solution to allow users to switch the chart type in the widget settings.
 
