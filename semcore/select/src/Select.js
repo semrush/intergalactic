@@ -98,7 +98,6 @@ class RootSelect extends Component {
     const selected = isSelectedOption(this.fallbackDeprecatedValue(value), props.value);
     const other = {};
     this._optionSelected = selected;
-    this._hasOption = true;
 
     if (selected && !this.isScrolledToFirstOption) {
       other.ref = this.firstSelectedOptionRef;
@@ -116,10 +115,10 @@ class RootSelect extends Component {
 
   getOptionCheckboxProps(props) {
     const { size } = this.asProps;
-    const optionProps = this._hasOption ? {} : this.getOptionProps(props);
+    const hasOption = props.value === undefined;
+    const optionProps = hasOption ? {} : this.getOptionProps(props);
     const selected = this._optionSelected;
     this._optionSelected = null;
-    this._hasOption = null;
     return {
       ...optionProps,
       size,
@@ -299,11 +298,10 @@ function Checkbox(props) {
 }
 
 function OptionCheckbox(props) {
-  const { selected, ...other } = props;
-  const { size, theme, children } = other;
+  const { selected, size, theme, children } = props;
 
   return (
-    <DropdownMenu.Item {...other}>
+    <DropdownMenu.Item {...props}>
       <Checkbox selected={selected} size={size} theme={theme} styles={props.styles} />
       {children}
     </DropdownMenu.Item>

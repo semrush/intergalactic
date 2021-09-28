@@ -33,7 +33,7 @@ module.exports = (env, argv) => {
           use: ['style-loader', 'css-loader'],
         },
         {
-          test: /\.(svg|png|jpg|ico|gif|woff2)$/i,
+          test: /\.(svg|png|jpg|ico|gif|woff2|html)$/i,
           use: {
             loader: 'file-loader',
           },
