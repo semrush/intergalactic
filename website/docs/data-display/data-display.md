@@ -13,13 +13,17 @@ title: Charts
 @page line-chart
 @page area-chart
 @page stacked-area-chart
-@page combined-chart
+
+<!-- @page combined-chart -->
+
 @page bar-chart
 @page stacked-bar-chart
 @page bar-horizontal
 @page stacked-horizontal-bar
 @page histogram-chart
-@page stacked-histogram
+
+<!-- @page stacked-histogram -->
+
 @page donut-chart
 @page venn-chart
 
