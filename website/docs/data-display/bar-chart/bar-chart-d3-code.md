@@ -44,12 +44,6 @@ To combine multiple bars, use `<GroupBar/>` and `<GroupBar.Bar/>`.
 
 @example bar-group
 
-@## Stacked bar
-
-To draw a stacked chart, use `<StackBar/>` and `<StackBar.Bar/>`.
-
-@example bar-stack
-
 @## Trend line
 
 You can combine charts with each other. For example, to display a trend line on a bar chart.

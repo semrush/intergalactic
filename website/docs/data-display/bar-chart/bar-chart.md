@@ -42,19 +42,6 @@ On the other hand, color can focus attention on a specific portion of informatio
 
 ![bar chart colors yes-no examples](static/example-4.png)
 
-@## Stacked bar chart
-
-This type of bar graphs can be used if it is necessary to display more than two values and show the ratio of parts to the whole.
-
-![stacked bar chart](static/stacked-bar-chart.png)
-
-Important points to keep in mind when presenting data as a `stacked bar chart`:
-
-- Use this chart type if you have more than two values to compare.
-- Use this chart type to visualize the ratio of parts to the whole.
-- Use sufficiently contrasting colors to show different parts more clearly.
-- Don't make this chart too small in height and width – it will make it harder to read data inside such a chart.
-
 @## Legend
 
 If there is only one variable in the bar charts, the legend is not needed. It is enough to clearly name the chart. Denote the axes only in specific cases, when only one chart name is not enough.
@@ -69,17 +56,15 @@ If there is only one variable in the bar charts, the legend is not needed. It is
 | --------------------------------------------------------------- | -------------------------------------------------------------- |
 | ![bar chart with two values and legend](static/bar-chart-2.png) | ![bar chart with two values and legend](static/hor-legend.png) |
 
-### Trend
+@## Trend
 
 In some cases, a bar chart may have a trend line. Most often, this component overload such charts. However, in some cases, it can be useful for reading the overall trend.
 
 ![bar chart with trend](static/trend.png)
 
-Often, a trend line may be necessary on the `stacked bar chart`. **It allows us to focus on the total value of each point.**
-
 When you hover over any part of the column, the tooltip shall display the values for all components and the total value.
 
-![stacked bar chart](static/stacked-bar-chart-trend.png)
+![bar chart with hover over trend](static/trend-hover.png)
 
 @## Interaction
 

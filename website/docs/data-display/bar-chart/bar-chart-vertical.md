@@ -18,13 +18,12 @@ title: Vertical bar chart
 
 @## Appearance
 
-|                                                                                             | Apperance example                                                             | Styles                                                                                                                          |
-| ------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
-| One category                                                                                | ![bar-chart one value](/data-display/bar-chart/static/bar-chart.png)          | The upper part of the column shall have `border-radius: 2px;`                                                                   |
-| Two categories                                                                              | ![bar-chart two values](/data-display/bar-chart/static/bar-chart-2.png)       | The margin between two columns is 4px.                                                                                          |
-| Two or more categories: use a different chart type. _For example, the stacked bar chart ☝🏻_ | ![bar-chart two values](/data-display/bar-chart/static/stacked-bar-chart.png) | The `stacked bar chart` has no margin between values inside the column. **Choose contrasting colors for different categories.** |
+|                | Apperance example                                                       | Styles                                                        |
+| -------------- | ----------------------------------------------------------------------- | ------------------------------------------------------------- |
+| One category   | ![bar-chart one value](/data-display/bar-chart/static/bar-chart.png)    | The upper part of the column shall have `border-radius: 2px;` |
+| Two categories | ![bar-chart two values](/data-display/bar-chart/static/bar-chart-2.png) | The margin between two columns is 4px.                        |
 
-> 💡 If there are more than 2-3 categories, the researchers recommend using a stacked chart or try to present the data using a different type of chart.
+> 💡 If there are more than 2-3 categories, the researchers recommend using a [stacked bar chart](/data-display/stacked-bar-chart/) or try to present the data using a different type of chart.
 >
 > It is also a good solution to allow users to switch the chart type in the widget settings.
 
@@ -40,7 +39,6 @@ If the chart has a trend line, then while hovering a line and a point shall be d
 | --------------------------------- | -------------------------------------------------------------------------------------------- |
 | Chart with one category           | ![bar chart with hover](/data-display/bar-chart/static/bar-chart-hover.png)                  |
 | Chart with two or more categories | ![bar chart with two values and hover](/data-display/bar-chart/static/bar-chart-2-hover.png) |
-| Stacked bar chart                 | ![stacked bar chart](/data-display/bar-chart/static/stacked-bar-chart-trend.png)             |
 
 @## Edge cases
 
@@ -72,7 +70,7 @@ When you hover over a point without data, the tooltip with the `n/a` value for t
 
 ![partially data](/data-display/bar-chart/static/partially-trash.png)
 
-### Data loading
+@## Data loading
 
 Display [Skeleton](http://i.semrush.com/components/skeleton/) in the place of the chart. If the chart has a title, it should be displayed during loading. The user shall have an idea of what is being loaded and whether they need to wait for the loading process to complete.
 
