@@ -12,10 +12,10 @@ tabName: Guide
 
 **Important points to keep in mind when presenting data as an area chart:**
 
-- Use `stacked area chart` when, in addition to data amount, you need to display the parts to the whole ratio.
 - A chart with areas shall be used when you need to show a larger picture of the data. _For example, line charts can be used to show the change in a population over time, while charts with areas are excellent for demonstrating the total volume of population over a time period._
 - Try not to use too many values (**it is not recommended to use more than 4 values**). In such cases, it is better to use a line chart as it provides a cleaner and clearer understanding.
 - Don't forget to clearly name the chart so that the axes are clear when reading the data.
+- Use [Stacked area chart](/data-display/stacked-area-chart/) when, in addition to data amount, you need to display the parts to the whole ratio.
 
 > 💡 Useful materials about line chart vs. area chart:
 >
@@ -40,7 +40,7 @@ It is recommended to display the points on lines either when there are few of th
 
 @## Interaction
 
-When you hover over the chart area, a vertical guide line is shown at the nearest point; this point is enlarged itself, and a tooltip with detailed data for the point appears next to it. For more information about the tooltip, see [Data visualization](/data-display/chart/) and [Line chart](/data-display/line-chart/).
+When you hover over the chart area, a vertical guide line is shown at the nearest point; this point is enlarged itself, and a tooltip with detailed data for the point appears next to it. For more information about the tooltip, see [Chart principles](/data-display/chart/) and [Line chart](/data-display/line-chart/).
 
 @## Edge cases
 
@@ -74,12 +74,6 @@ If all values on the chart are zero, then we show the trend line on the zero axi
 > **Zero is also data. 0 ≠ `n/a`.**
 
 ![null-data](static/null.png)
-
-@## No data in one of the categories
-
-When you hover over a point that some of the categories don't have data for, a tooltip with the `n/a` value for these categories shall be displayed. We recommend to specify in the tooltip why there is no data, and when it will be available, if possible.
-
-![not available data](static/not-available.png)
 
 @## A part of the chart contains no data
 

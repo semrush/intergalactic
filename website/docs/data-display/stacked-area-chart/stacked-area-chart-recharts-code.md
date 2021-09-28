@@ -4,13 +4,13 @@ title: Recharts code
 
 > 🎉 Try out [new chart library](/data-display/area-chart/area-chart-d3-code/) developed entirely with the D3.
 
-@## Simple area chart
+@## Stacked area chart example
 
-@example simple
+@example complex
 
 @## Edge cases
 
-See examples for [Stacked area chart](/data-display/stacked-area-chart/stacked-area-chart-recharts-code/).
+@example connectNulls
 
 @## Data loading
 
