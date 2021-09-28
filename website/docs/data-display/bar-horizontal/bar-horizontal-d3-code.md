@@ -24,12 +24,6 @@ To combine multiple horizontal bars, use `<GroupBar.HorizontalBar/>`.
 
 @example bar-horizontal-group
 
-@## Horizontal stacked bar
-
-To draw a horizontal stacked chart, use the `<StackBar.HorizontalBar/>` component.
-
-@example bar-horizontal-stack
-
 @## Background
 
 Use the `<Bar.Background/>` and `<HorizontalBar.Background/>` components if you need to add a background to a chart plot.

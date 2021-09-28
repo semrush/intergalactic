@@ -20,7 +20,11 @@ const emailCSS = require(`!!raw-loader!@semcore/email/lib/core/index.css`).defau
 const Loading = (props) => {
   if (props.error) {
     console.error(props.error, props.value);
-    return <p>☠️ Error "{props.value}" :(</p>;
+    return (
+      <p>
+        ☠️ We are trying our best to load the example for "{props.value}". Try to reload the page.
+      </p>
+    );
   } else if (props.pastDelay) {
     return <p>Loading...</p>;
   } else {

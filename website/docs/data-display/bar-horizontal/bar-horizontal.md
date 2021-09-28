@@ -18,7 +18,6 @@ tabName: Guide
 
 Important points to keep in mind when presenting data as a bar chart:
 
-- Always start the Y-axis from zero.
 - The axes should be clear to the user from the chart name. However, in cases where the graph name is not enough, you can denote the axes.
 - Don't use too many colors to represent values. One color or shades of the same color shall be sufficient for your tasks. However, you can always select a value if necessary.
 
@@ -45,13 +44,12 @@ Important points to keep in mind when presenting data as a bar chart:
 
 ### Horizontal bar chart
 
-|                                                                                             | Apperance example                               | Styles                                                                                                                          |
-| ------------------------------------------------------------------------------------------- | ----------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
-| One category                                                                                | ![bar-chart one value](static/hor-one-cat.png)  | `border-radius: 2px;`                                                                                                           |
-| Two categories                                                                              | ![bar-chart two values](static/hor-two-cat.png) | The margin between two columns is 4px.                                                                                          |
-| Two or more categories: use a different chart type. _For example, the stacked bar chart ☝🏻_ | ![bar-chart stacked](static/hor-stacked.png)    | The `stacked bar chart` has no margin between values inside the column. **Choose contrasting colors for different categories.** |
+|                | Apperance example                               | Styles                                 |
+| -------------- | ----------------------------------------------- | -------------------------------------- |
+| One category   | ![bar-chart one value](static/hor-one-cat.png)  | `border-radius: 2px;`                  |
+| Two categories | ![bar-chart two values](static/hor-two-cat.png) | The margin between two columns is 4px. |
 
-> 💡 If there are more than 2-3 categories, the researchers recommend using a stacked chart or try to present the data using a different type of chart.
+> 💡 If there are more than 2-3 categories, use a [stacked horizontal bar chart](/data-display/stacked-horizontal-bar/) or try to present the data using a different type of chart.
 >
 > It is also a good solution to allow users to switch the chart type in the widget settings.
 
@@ -96,11 +94,10 @@ When you hover over a column, we highlight it with a grey background – `rgba 1
 
 If the chart has a trend line, then while hovering a line and a point shall be displayed on the trend line.
 
-|                                                 | Appearance example                                             |
-| ----------------------------------------------- | -------------------------------------------------------------- |
-| Chart with one category                         | ![bar chart with hover](static/hor-legend.png)                 |
-| Chart with two or more categories               | ![bar chart with two values and hover](static/hor-hover-2.png) |
-| Composed chart (Stacked bar chart + Line chart) | ![stacked bar chart](static/hor-hover-3.png)                   |
+|                                   | Appearance example                                             |
+| --------------------------------- | -------------------------------------------------------------- |
+| Chart with one category           | ![bar chart with hover](static/hor-legend.png)                 |
+| Chart with two or more categories | ![bar chart with two values and hover](static/hor-hover-2.png) |
 
 @## Edge cases
 
@@ -132,11 +129,11 @@ When you hover over a category without data, the tooltip with the `n/a` value fo
 
 ![not available](static/hor-na-2.png)
 
-### Initial data loading
+@## Data loading
 
 When loading the data for the first time, [Skeleton](/components/skeleton/) should be displayed instead of the chart. If the chart has a title, it should be displayed during loading. The user shall have an idea of what is being loaded and whether they need to wait for the loading process to complete.
 
-![skeleton](/data-display/bar-chart/static/hor-skeleton.png)
+![skeleton](static/hor-skeleton.png)
 
 Styles can be found in the guide book for [Skeleton](/components/skeleton/).
 
