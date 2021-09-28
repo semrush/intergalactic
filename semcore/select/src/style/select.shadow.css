@@ -64,3 +64,11 @@ SOptionCheckbox[theme][checked]:before {
   background-color: var(--theme);
   border-color: var(--theme);
 }
+
+SOptionCheckbox[selected] {
+  background-color: color-mod(var(--light-blue) a(20%));
+
+  & :hover {
+    background-color: color-mod(var(--light-blue) a(20%));
+  }
+}

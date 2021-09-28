@@ -9,9 +9,10 @@ const options = Array(20)
   }));
 
 const Option = ({ value, title }) => (
-  <Select.OptionCheckbox value={value} key={value}>
+  <Select.Option value={value} key={value}>
+    <Select.Option.Checkbox />
     {title}
-  </Select.OptionCheckbox>
+  </Select.Option>
 );
 
 export default () => {

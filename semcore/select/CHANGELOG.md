@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.6om/en/1.0.0/).
 
+## [2.6.1] - 2021-9-28
+
+### Fixed
+
+- Fixed the check for the presence of `Select.Option`.
+
 ## [2.6.0] - 2021-9-20
 
 ### Added
