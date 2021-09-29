@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [1.3.0] - 2021-09-30
+
+### Added
+
+- Added radius of curvature for `Bar, HorizontalBar`.
+
 ## [1.2.0] - 2021-09-24
 
 ### Added

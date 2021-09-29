@@ -16,7 +16,7 @@ class HorizontalBarRoot extends Component {
     color: '#50aef4',
     offset: [0, 0],
     duration: 500,
-    radius: 2,
+    r: 2,
   };
 
   getBackgroundProps(props, index) {
@@ -39,7 +39,7 @@ class HorizontalBarRoot extends Component {
       offset,
       uid,
       duration,
-      radius,
+      r,
       $index,
       height: heightProps,
       onMouseMove,
@@ -50,7 +50,7 @@ class HorizontalBarRoot extends Component {
     const barX = xScale(Math.min(d[x0] ?? 0, d[x])) + offset[0];
     const height = heightProps || getBandwidth(yScale);
     const width = Math.abs(xScale(d[x]) - Math.max(xScale(xScale.domain()[0]), xScale(d[x0] ?? 0)));
-    const isRounded = radius !== 0;
+    const isRounded = r !== 0;
 
     return sstyled(styles)(
       <SBar
@@ -64,11 +64,11 @@ class HorizontalBarRoot extends Component {
         hide={hide}
         color={color}
         d={getHorizontalRect({
-          x: isRounded ? (d[x] > 0 ? barX : barX - radius) : barX,
+          x: isRounded ? (d[x] > 0 ? barX : barX - r) : barX,
           y: barY,
-          width: isRounded ? width + radius : width,
+          width: isRounded ? width + r : width,
           height,
-          radius,
+          radius: r,
           position: d[x] > 0 ? 'right' : 'left',
         })}
         use:duration={`${duration}ms`}

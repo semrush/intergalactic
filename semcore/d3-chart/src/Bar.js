@@ -17,7 +17,7 @@ class BarRoot extends Component {
     color: '#50aef4',
     offset: [0, 0],
     duration: 500,
-    radius: 2,
+    r: 2,
   };
 
   getBackgroundProps(props, index) {
@@ -63,7 +63,7 @@ class BarRoot extends Component {
       offset,
       duration,
       uid,
-      radius,
+      r,
       $index,
       width: widthProps,
     } = this.asProps;
@@ -75,7 +75,7 @@ class BarRoot extends Component {
       yScale(d[y]) - Math.min(yScale(yScale.domain()[0]), yScale(d[y0] ?? 0)),
     );
     const width = widthProps || getBandwidth(xScale);
-    const isRounded = radius !== 0;
+    const isRounded = r !== 0;
 
     return sstyled(styles)(
       <>
@@ -91,10 +91,10 @@ class BarRoot extends Component {
           color={color}
           d={getRect({
             x: barX,
-            y: isRounded ? (d[y] > 0 ? barY - radius : barY) : barY,
+            y: isRounded ? (d[y] > 0 ? barY - r : barY) : barY,
             width,
-            height: isRounded ? height + radius : height,
-            radius,
+            height: isRounded ? height + r : height,
+            radius: r,
             position: d[y] > 0 ? 'top' : 'bottom',
           })}
           use:duration={`${duration}ms`}
