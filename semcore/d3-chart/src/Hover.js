@@ -2,7 +2,8 @@ import React from 'react';
 import { Component, sstyled } from '@semcore/core';
 import createElement from './createElement';
 import trottle from '@semcore/utils/lib/rafTrottle';
-import { scaleOfBandwidth, getIndexFromData, eventToPoint, invert } from './utils';
+import canUseDOM from '@semcore/utils/lib/canUseDOM';
+import { scaleOfBandwidth, getIndexFromData, eventToPoint, invert, CONSTANT } from './utils';
 
 import style from './style/hover.shadow.css';
 
@@ -14,10 +15,15 @@ class Hover extends Component {
     yIndex: null,
   };
 
-  hoverRef = React.createRef();
+  virtualElement = canUseDOM() ? document.createElement('div') : {};
+
+  generateGetBoundingClientRect(x = 0, y = 0) {
+    return () => ({ width: 0, height: 0, top: y, right: x, bottom: y, left: x });
+  }
 
   handlerMouseMoveRoot = trottle((e) => {
     const { eventEmitter, data, scale, x, y, rootRef } = this.asProps;
+    const { clientX, clientY } = e;
     const [xScale, yScale] = scale;
     const [pX, pY] = eventToPoint(e, rootRef.current);
     const vX = invert(xScale, pX);
@@ -27,12 +33,18 @@ class Hover extends Component {
     const yIndex =
       y === undefined || vY === undefined ? null : getIndexFromData(data, yScale, y, vY);
     const state = { xIndex, yIndex };
+    this.virtualElement.getBoundingClientRect = this.generateGetBoundingClientRect(
+      clientX,
+      clientY,
+    );
+    this.virtualElement[CONSTANT.VIRTUAL_ELEMENT] = true;
+
     this.setState(state, () => {
       eventEmitter.emit(
         'onTooltipVisible',
         xIndex !== null || yIndex !== null,
         state,
-        this.hoverRef.current,
+        this.virtualElement,
       );
     });
   });
@@ -86,26 +98,10 @@ class HoverLineRoot extends Hover {
     return sstyled(styles)(
       <>
         {xIndex !== null ? (
-          <SHoverLine
-            render="line"
-            ref={this.hoverRef}
-            index={xIndex}
-            x1={x1}
-            y1={yRange[0]}
-            x2={x1}
-            y2={yRange[1]}
-          />
+          <SHoverLine render="line" index={xIndex} x1={x1} y1={yRange[0]} x2={x1} y2={yRange[1]} />
         ) : null}
         {yIndex !== null ? (
-          <SHoverLine
-            render="line"
-            ref={this.hoverRef}
-            index={yIndex}
-            x1={xRange[0]}
-            y1={y1}
-            x2={xRange[1]}
-            y2={y1}
-          />
+          <SHoverLine render="line" index={yIndex} x1={xRange[0]} y1={y1} x2={xRange[1]} y2={y1} />
         ) : null}
       </>,
     );
@@ -129,7 +125,6 @@ class HoverRectRoot extends Hover {
         {xIndex !== null ? (
           <SHoverRect
             render="rect"
-            ref={this.hoverRef}
             index={xIndex}
             width={xScale.step() - xScale.paddingInner() / 2}
             height={yRange[0] - yRange[1]}
@@ -140,7 +135,6 @@ class HoverRectRoot extends Hover {
         {yIndex !== null ? (
           <SHoverRect
             render="rect"
-            ref={this.hoverRef}
             index={yIndex}
             width={xRange[1] - xRange[0]}
             height={yScale.step() - yScale.paddingInner() / 2}

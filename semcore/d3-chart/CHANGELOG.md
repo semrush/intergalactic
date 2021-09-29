@@ -7,6 +7,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### Added
 
 - Added radius of curvature for `Bar, HorizontalBar`.
+- Added dynamic position tooltip for `HoverRect, HoverLine`.
 
 ## [1.2.0] - 2021-09-24
 
