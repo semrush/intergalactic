@@ -65,6 +65,7 @@ class BarRoot extends Component {
       uid,
       radius,
       $index,
+      width: widthProps,
     } = this.asProps;
 
     const [xScale, yScale] = scale;
@@ -73,30 +74,32 @@ class BarRoot extends Component {
     const height = Math.abs(
       yScale(d[y]) - Math.min(yScale(yScale.domain()[0]), yScale(d[y0] ?? 0)),
     );
-    const width = getBandwidth(xScale);
-    const isRounded = !($index === 0 || d[y0] === 0 || radius === 0 || d[y] < 0);
+    const width = widthProps || getBandwidth(xScale);
+    const isRounded = radius !== 0;
 
     return sstyled(styles)(
-      <SBar
-        key={`bar-${i}`}
-        render="path"
-        clipPath={`url(#${uid})`}
-        __excludeProps={['data', 'scale', 'value']}
-        childrenPosition="above"
-        value={d}
-        index={i}
-        hide={hide}
-        color={color}
-        d={getRect({
-          x: barX,
-          y: barY,
-          width,
-          height: isRounded ? height + radius : height,
-          radius,
-          position: d[y] > 0 ? 'top' : 'bottom',
-        })}
-        use:duration={`${duration}ms`}
-      />,
+      <>
+        <SBar
+          key={`bar-${i}`}
+          render="path"
+          clipPath={`url(#${uid})`}
+          __excludeProps={['data', 'scale', 'value']}
+          childrenPosition="above"
+          value={d}
+          index={i}
+          hide={hide}
+          color={color}
+          d={getRect({
+            x: barX,
+            y: isRounded ? (d[y] > 0 ? barY - radius : barY) : barY,
+            width,
+            height: isRounded ? height + radius : height,
+            radius,
+            position: d[y] > 0 ? 'top' : 'bottom',
+          })}
+          use:duration={`${duration}ms`}
+        />
+      </>,
     );
   }
   render() {
@@ -138,6 +141,7 @@ function Background(props) {
 }
 
 function getRect({ x, y, width, height, radius, position }) {
+  if (height <= radius) return '';
   if (radius) {
     if (position === 'top')
       return roundedPath(x, y, width, height, radius, true, true, false, false);

@@ -41,15 +41,16 @@ class HorizontalBarRoot extends Component {
       duration,
       radius,
       $index,
+      height: heightProps,
       onMouseMove,
       onMouseLeave,
     } = this.asProps;
     const [xScale, yScale] = scale;
     const barY = yScale(d[y]) + offset[1];
     const barX = xScale(Math.min(d[x0] ?? 0, d[x])) + offset[0];
-    const height = getBandwidth(yScale);
+    const height = heightProps || getBandwidth(yScale);
     const width = Math.abs(xScale(d[x]) - Math.max(xScale(xScale.domain()[0]), xScale(d[x0] ?? 0)));
-    const isRounded = !($index === 0 || d[x0] === 0 || radius === 0 || d[x] < 0);
+    const isRounded = radius !== 0;
 
     return sstyled(styles)(
       <SBar
@@ -63,7 +64,7 @@ class HorizontalBarRoot extends Component {
         hide={hide}
         color={color}
         d={getHorizontalRect({
-          x: isRounded ? barX - radius : barX,
+          x: isRounded ? (d[x] > 0 ? barX : barX - radius) : barX,
           y: barY,
           width: isRounded ? width + radius : width,
           height,
@@ -119,6 +120,7 @@ function Background(props) {
 }
 
 function getHorizontalRect({ x, y, width, height, radius, position }) {
+  if (width <= radius) return '';
   if (radius) {
     if (position === 'right')
       return roundedPath(x, y, width, height, radius, false, true, false, true);
