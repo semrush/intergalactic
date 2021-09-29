@@ -35,13 +35,13 @@ class StackBarRoot extends Component {
         }
         return acc;
       }, []);
-      stack.keys(keys.reverse());
+      stack.keys(keys);
     }
 
     return stack(data);
   }
 
-  getBarProps({ y }) {
+  getBarProps({ y }, index) {
     const { x } = this.asProps;
 
     const series = this.series.find((s) => s.key === y);
@@ -54,10 +54,11 @@ class StackBarRoot extends Component {
       })),
       y0: XY0,
       x,
+      $index: index,
     };
   }
 
-  getHorizontalBarProps({ x }) {
+  getHorizontalBarProps({ x }, index) {
     const { y } = this.asProps;
 
     const series = this.series.find((s) => s.key === x);
@@ -70,6 +71,7 @@ class StackBarRoot extends Component {
       })),
       x0: XY0,
       y,
+      $index: index,
     };
   }
 

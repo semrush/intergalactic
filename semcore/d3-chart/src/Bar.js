@@ -1,9 +1,10 @@
 import React from 'react';
+import { transition } from 'd3-transition';
 import { Component, sstyled } from '@semcore/core';
+import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 import createElement from './createElement';
 import ClipPath from './ClipPath';
-import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
-import { transition } from 'd3-transition';
+import { getBandwidth, roundedPath } from './utils';
 
 import style from './style/bar.shadow.css';
 
@@ -16,6 +17,7 @@ class BarRoot extends Component {
     color: '#50aef4',
     offset: [0, 0],
     duration: 500,
+    radius: 2,
   };
 
   getBackgroundProps(props, index) {
@@ -50,14 +52,34 @@ class BarRoot extends Component {
 
   renderBar(d, i) {
     const SBar = this.Element;
-    const { styles, color, x, y, y0, scale, hide, offset, duration, uid } = this.asProps;
+    const {
+      styles,
+      color,
+      x,
+      y,
+      y0,
+      scale,
+      hide,
+      offset,
+      duration,
+      uid,
+      radius,
+      $index,
+    } = this.asProps;
 
     const [xScale, yScale] = scale;
+    const barY = yScale(Math.max(d[y0] ?? 0, d[y])) + offset[1];
+    const barX = xScale(d[x]) + offset[0];
+    const height = Math.abs(
+      yScale(d[y]) - Math.min(yScale(yScale.domain()[0]), yScale(d[y0] ?? 0)),
+    );
+    const width = getBandwidth(xScale);
+    const isRounded = !($index === 0 || d[y0] === 0 || radius === 0 || d[y] < 0);
 
     return sstyled(styles)(
       <SBar
         key={`bar-${i}`}
-        render="rect"
+        render="path"
         clipPath={`url(#${uid})`}
         __excludeProps={['data', 'scale', 'value']}
         childrenPosition="above"
@@ -65,11 +87,14 @@ class BarRoot extends Component {
         index={i}
         hide={hide}
         color={color}
-        // TODO: https://github.com/airbnb/visx/blob/2fa674e7d7fdc9cffea13e8bf644d46dd6f0db5b/packages/visx-shape/src/util/getBandwidth.ts#L3
-        width={xScale.bandwidth()}
-        height={Math.abs(yScale(d[y]) - Math.min(yScale(yScale.domain()[0]), yScale(d[y0] ?? 0)))}
-        x={xScale(d[x]) + offset[0]}
-        y={yScale(Math.max(d[y0] ?? 0, d[y])) + offset[1]}
+        d={getRect({
+          x: barX,
+          y: barY,
+          width,
+          height: isRounded ? height + radius : height,
+          radius,
+          position: d[y] > 0 ? 'top' : 'bottom',
+        })}
         use:duration={`${duration}ms`}
       />,
     );
@@ -110,6 +135,15 @@ function Background(props) {
       y={yRange[1]}
     />,
   );
+}
+
+function getRect({ x, y, width, height, radius, position }) {
+  if (radius) {
+    if (position === 'top')
+      return roundedPath(x, y, width, height, radius, true, true, false, false);
+    return roundedPath(x, y, width, height, radius, false, false, true, true);
+  }
+  return roundedPath(x, y, width, height, radius);
 }
 
 export default createElement(BarRoot, { Background });
