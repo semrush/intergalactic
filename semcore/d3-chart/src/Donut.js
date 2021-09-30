@@ -43,6 +43,29 @@ function animationUpdatePie({ halfsize, arcs, d3Arc }) {
   };
 }
 
+function animationHoverPie({ d, selector, duration, innerRadius, outerRadius }) {
+  if (duration > 0) {
+    transition()
+      .selection()
+      .select(selector)
+      .transition()
+      .duration(duration)
+      .attrTween('d', function() {
+        if (!d) return () => '';
+        const [min, max] = outerRadius;
+        const i = interpolate(min, max);
+        return function(t) {
+          const d3ArcOut = arc()
+            .innerRadius(innerRadius)
+            .outerRadius(i(t));
+          return d3ArcOut(d);
+        };
+      });
+  }
+}
+
+const increaseFactor = 8;
+
 class DonutRoot extends Component {
   static displayName = 'Donut';
   static style = style;
@@ -52,8 +75,8 @@ class DonutRoot extends Component {
     const [width, height] = size;
     const minORmax = halfsize ? Math.max : Math.min;
     const d3Arc = arc()
-      .outerRadius(minORmax(width, height) / 2)
-      .innerRadius(innerRadius);
+      .outerRadius(minORmax(width - increaseFactor * 2, height - increaseFactor * 2) / 2)
+      .innerRadius(innerRadius > increaseFactor ? innerRadius - increaseFactor : innerRadius);
     let d3Pie = pie()
       .sort(null)
       .value(([, value]) => value);
@@ -115,12 +138,36 @@ class DonutRoot extends Component {
   };
 
   getPieProps(props) {
-    const { d3Arc } = this.asProps;
+    let { d3Arc, halfsize, size, duration, innerRadius } = this.asProps;
+    const [width, height] = size;
+    const minORmax = halfsize ? Math.max : Math.min;
+    innerRadius = innerRadius > increaseFactor ? innerRadius - increaseFactor : innerRadius;
+    const outerRadius = minORmax(width - increaseFactor * 2, height - increaseFactor * 2) / 2;
+    const data = this.arcs.find((arc) => arc.data[0] === props.dataKey);
+
     return {
-      data: this.arcs.find((arc) => arc.data[0] === props.dataKey),
+      data,
       d3Arc,
       onMouseMove: this.bindHandlerTooltip(true, props),
       onMouseLeave: this.bindHandlerTooltip(false, props),
+      onMouseOver: (e) => {
+        animationHoverPie({
+          d: data,
+          selector: `[d="${e.target.getAttribute('d')}"]`,
+          duration: duration === 0 ? 0 : 300,
+          innerRadius,
+          outerRadius: [outerRadius, outerRadius + increaseFactor],
+        });
+      },
+      onMouseOut: (e) => {
+        animationHoverPie({
+          d: data,
+          selector: `[d="${e.target.getAttribute('d')}"]`,
+          duration: duration === 0 ? 0 : 300,
+          innerRadius,
+          outerRadius: [outerRadius + increaseFactor, outerRadius],
+        });
+      },
     };
   }
 
