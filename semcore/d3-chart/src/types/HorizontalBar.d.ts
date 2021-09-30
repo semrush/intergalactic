@@ -14,6 +14,10 @@ export interface IHorizontalBarProps extends IContext {
    * @default 500
    */
   duration?: number;
+  /** Radius of curvature
+   * @default 2
+   */
+  r?: number;
 }
 
 declare const HorizontalBar: (<T>(

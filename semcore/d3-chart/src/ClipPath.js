@@ -14,7 +14,7 @@ class ClipPath extends Component {
 
   componentDidMount() {
     const { id, tag, setAttributeTag } = this.asProps;
-    if (!document || !document.querySelector(`#${id}`)) return;
+    if (!document || !id || !document.querySelector(`#${id}`)) return;
     const svg = document.querySelector(`#${id}`).closest('svg');
     Array.from(svg.querySelectorAll(`[clip-path="url(#${id})"]`)).forEach((node) => {
       node && node.getTotalLength && node.getTotalLength();
