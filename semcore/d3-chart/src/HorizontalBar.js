@@ -1,8 +1,9 @@
 import React from 'react';
 import { Component, sstyled } from '@semcore/core';
+import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 import createElement from './createElement';
 import ClipPath from './ClipPath';
-import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
+import { getBandwidth, roundedPath } from './utils';
 
 import style from './style/bar.shadow.css';
 
@@ -15,6 +16,7 @@ class HorizontalBarRoot extends Component {
     color: '#50aef4',
     offset: [0, 0],
     duration: 500,
+    r: 2,
   };
 
   getBackgroundProps(props, index) {
@@ -26,13 +28,34 @@ class HorizontalBarRoot extends Component {
 
   renderBar(d, i) {
     const SBar = this.Element;
-    const { styles, color, x, x0, y, scale, hide, offset, uid, duration } = this.asProps;
+    const {
+      styles,
+      color,
+      x,
+      x0,
+      y,
+      scale,
+      hide,
+      offset,
+      uid,
+      duration,
+      r,
+      $index,
+      height: heightProps,
+      onMouseMove,
+      onMouseLeave,
+    } = this.asProps;
     const [xScale, yScale] = scale;
+    const barY = yScale(d[y]) + offset[1];
+    const barX = xScale(Math.min(d[x0] ?? 0, d[x])) + offset[0];
+    const height = heightProps || getBandwidth(yScale);
+    const width = Math.abs(xScale(d[x]) - Math.max(xScale(xScale.domain()[0]), xScale(d[x0] ?? 0)));
+    const isRounded = r !== 0;
 
     return sstyled(styles)(
       <SBar
         key={`horizontal-bar-${i}`}
-        render="rect"
+        render="path"
         clipPath={`url(#${uid})`}
         __excludeProps={['data', 'scale', 'value']}
         childrenPosition="above"
@@ -40,11 +63,17 @@ class HorizontalBarRoot extends Component {
         index={i}
         hide={hide}
         color={color}
-        width={Math.abs(xScale(d[x]) - Math.max(xScale(xScale.domain()[0]), xScale(d[x0] ?? 0)))}
-        height={yScale.bandwidth()}
-        x={xScale(Math.min(d[x0] ?? 0, d[x])) + offset[0]}
-        y={yScale(d[y]) + offset[1]}
+        d={getHorizontalRect({
+          x: isRounded ? (d[x] > 0 ? barX : barX - r) : barX,
+          y: barY,
+          width: isRounded ? width + r : width,
+          height,
+          radius: r,
+          position: d[x] > 0 ? 'right' : 'left',
+        })}
         use:duration={`${duration}ms`}
+        onMouseMove={onMouseMove}
+        onMouseLeave={onMouseLeave}
       />,
     );
   }
@@ -88,6 +117,16 @@ function Background(props) {
       y={yScale(value)}
     />,
   );
+}
+
+function getHorizontalRect({ x, y, width, height, radius, position }) {
+  if (width <= radius) return '';
+  if (radius) {
+    if (position === 'right')
+      return roundedPath(x, y, width, height, radius, false, true, false, true);
+    return roundedPath(x, y, width, height, radius, true, false, true, false);
+  }
+  return roundedPath(x, y, width, height, radius);
 }
 
 export default createElement(HorizontalBarRoot, { Background });

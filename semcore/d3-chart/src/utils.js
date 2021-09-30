@@ -103,3 +103,48 @@ export function getIndexFromData(data, scale, key, value) {
     return null;
   }
 }
+
+export function roundedPath(x, y, w, h, r, tl = false, tr = false, bl = false, br = false) {
+  let retval;
+  retval = 'M' + (x + r) + ',' + y;
+  retval += 'h' + (w - 2 * r);
+  if (tr) {
+    retval += 'a' + r + ',' + r + ' 0 0 1 ' + r + ',' + r;
+  } else {
+    retval += 'h' + r;
+    retval += 'v' + r;
+  }
+  retval += 'v' + (h - 2 * r);
+  if (br) {
+    retval += 'a' + r + ',' + r + ' 0 0 1 ' + -r + ',' + r;
+  } else {
+    retval += 'v' + r;
+    retval += 'h' + -r;
+  }
+  retval += 'h' + (2 * r - w);
+  if (bl) {
+    retval += 'a' + r + ',' + r + ' 0 0 1 ' + -r + ',' + -r;
+  } else {
+    retval += 'h' + -r;
+    retval += 'v' + -r;
+  }
+  retval += 'v' + (2 * r - h);
+  if (tl) {
+    retval += 'a' + r + ',' + r + ' 0 0 1 ' + r + ',' + -r;
+  } else {
+    retval += 'v' + -r;
+    retval += 'h' + r;
+  }
+  retval += 'z';
+  return retval;
+}
+
+export function getBandwidth(scale) {
+  if ('bandwidth' in scale) {
+    return scale.bandwidth();
+  }
+
+  const range = scale.range();
+  const domain = scale.domain();
+  return Math.abs(range[range.length - 1] - range[0]) / domain.length;
+}
