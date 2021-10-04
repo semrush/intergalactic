@@ -1,3 +1,76 @@
+## [8.0.0] - 2021-10-04
+
+### @semcore/badge
+
+- **Changed** Changed line-height value
+
+### @semcore/card
+
+- **Fixed** Fixed padding
+
+### @semcore/d3-chart
+
+- **Added** Added to release.
+
+### @semcore/data-table
+
+- **Changed** Fixed position table for fixed columns.
+- **Changed** Added support property onResize for DataTable.Body.
+
+### @semcore/date-picker
+
+- **Fixed** Fixed change displayedPeriod after change value for family pickers.
+- **Changed** Changed WeekDay styles from uppercase to capital case
+
+### @semcore/dot
+
+- **BREAK** removed deprecated property invisible.
+- **BREAK** Changed animation Dot to @semcore/animation.
+
+### @semcore/drag-and-drop
+
+- **Changed** Added support keydown for draggable block in droppable zone.
+- **Changed** Version of dependence @semcore/core has been changed to 1.11.
+- **Changed** Improved performance. Removed one component wrapper.
+- **Changed** The style processing system has been changed.
+
+### @semcore/email
+
+- **Added** Added to release.
+
+### @semcore/errors
+
+- **Changed** Updated the title, text and btnHome fields for the en locale in the PageNoData component.
+- **Changed** Updated the title and btnHome fields for the en locale in the Maintenance component.
+- **Changed** Updated the btnHome field for the en locale in the AccessDenied component.
+
+### @semcore/flags
+
+- **Fixed** [ts] correct types.
+
+### @semcore/icon
+
+- **Added** Add new icon 'BriefcaseAlt'
+
+### @semcore/modal
+
+- **Changed** Changed overlay opacity from 80% to 60%
+- **Changed** Changed overlay opacity for the second modal window from 20% to 40%
+
+### @semcore/scroll-area
+
+- **Fixed** Call calculate position scroll when change size container
+
+### @semcore/select
+
+- **Added** Added component Select.Option.Checkbox.
+- **Fixed** Fixed the check for the presence of Select.Option.
+- **Changed** Revert 'sideEffect=false' for more optimal build via webpack
+
+### @semcore/table
+
+- **Fixed** Fixed content alignment in cells
+
 ## [7.2.1] - 2021-08-26
 
 ### @semcore/select

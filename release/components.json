@@ -19,6 +19,8 @@
     "@semcore/dot",
     "@semcore/dropdown",
     "@semcore/dropdown-menu",
+    "@semcore/d3-chart",
+    "@semcore/email",
     "@semcore/errors",
     "@semcore/feature-popover",
     "@semcore/feedback-form",
