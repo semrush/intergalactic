@@ -7,9 +7,10 @@ function sortObjKeys(obj) {
 }
 
 describe('Release system', () => {
+  // index.js of utils throws an error, so we skip this package
+  const EXCLUDE_PACKAGE = ['@semcore/utils', '@semcore/email'];
   packages.forEach((pkg) => {
-    // index.js of utils throws an error, so we skip this package
-    if (pkg === '@semcore/utils') return;
+    if (EXCLUDE_PACKAGE.includes(pkg)) return;
 
     test(`Package "${pkg}" provides correct exports to release system`, () => {
       const rscUiPkgPath = pkg.replace('@semcore', '..');
