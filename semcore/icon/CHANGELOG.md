@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.14.0] - 2021-10-04
+
+### Added
+
+- Add new icons 'MailOpen' and 'MailOutlineOpen'
+
 ## [2.13.0] - 2021-9-14
 
 ### Added

@@ -2330,6 +2330,12 @@
       ]
     },
     {
+      "name": "MailOpen",
+      "size": ["m", "s", "xs"],
+      "group": "Actions",
+      "tags": ["mail", "email", "e-mail", "имейл", "мэил", "мэйл", "меил"]
+    },
+    {
       "name": "MailOutline",
       "size": ["m", "s", "xs"],
       "group": "Actions",
@@ -2347,6 +2353,12 @@
         "емейл",
         "outline"
       ]
+    },
+    {
+      "name": "MailOutlineOpen",
+      "size": ["m", "s", "xs"],
+      "group": "Actions",
+      "tags": ["mail", "email", "e-mail", "имейл", "мэил", "мэйл", "меил", "outline"]
     },
     {
       "name": "MailSent",
