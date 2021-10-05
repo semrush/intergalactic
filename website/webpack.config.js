@@ -39,7 +39,7 @@ module.exports = (env, argv) => {
           },
         },
         {
-          test: /\.md$/i,
+          test: /\.md|json$/i,
           use: {
             loader: 'raw-loader',
           },

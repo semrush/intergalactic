@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom';
 import { ApolloProvider } from '@apollo/client';
@@ -31,6 +31,19 @@ function isWorking() {
 }
 
 function App() {
+  useEffect(() => {
+    var cpm = {};
+    (function(h, u, b) {
+      var d = h.getElementsByTagName('script')[0],
+        e = h.createElement('script');
+      e.async = true;
+      e.src = 'https://cookiehub.net/c2/06c77e2e.js';
+      e.onload = function() {
+        u.cookiehub.load(b);
+      };
+      d.parentNode.insertBefore(e, d);
+    })(document, window, cpm);
+  }, []);
   return (
     <ApolloProvider client={client}>
       <Helmet>
