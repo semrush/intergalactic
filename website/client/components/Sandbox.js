@@ -3,7 +3,7 @@ import Tooltip from '@semcore/tooltip';
 import { getParameters } from 'codesandbox/lib/api/define';
 
 export default ({ raw: { code: ExampleRawComponent, path } }) => {
-  let dependencies = ExampleRawComponent.match(/import.+/g);
+  let dependencies = ExampleRawComponent.match(/from.+/g);
   if (!dependencies) return null;
   dependencies = dependencies
     .map((str) => str.match(/'.+'/g))
@@ -18,7 +18,7 @@ export default ({ raw: { code: ExampleRawComponent, path } }) => {
 
   const parameters = getParameters({
     files: {
-      'index.js': {
+      'src/index.js': {
         content: `import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
@@ -30,7 +30,7 @@ ReactDOM.render(
 );
 `,
       },
-      'App.js': {
+      'src/App.js': {
         content: `//https://github.com/semrush/intergalactic/tree/master/website/docs/${path}
 ${ExampleRawComponent}`,
       },
@@ -40,6 +40,7 @@ ${ExampleRawComponent}`,
             ...dependencies,
             'react-dom': 'latest',
             '@semcore/core': 'latest',
+            'react-scripts': 'latest',
           },
         },
       },
