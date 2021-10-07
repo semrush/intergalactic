@@ -1,10 +1,9 @@
-import { hashCode } from './server/utils';
-
 require('dotenv').config();
 const algoliasearch = require('algoliasearch');
 const { Documentalist, MarkdownPlugin } = require('documentalist');
 const CONFIG = require('./client/algolia');
 const dataIcons = require('./docs/style/icon/components/icons.json');
+const { hashCode } = require('./server/utils');
 
 const DOCS_DIR = './docs/**/*';
 
