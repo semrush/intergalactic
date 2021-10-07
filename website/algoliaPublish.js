@@ -1,3 +1,5 @@
+import { hashCode } from './server/utils';
+
 require('dotenv').config();
 const algoliasearch = require('algoliasearch');
 const { Documentalist, MarkdownPlugin } = require('documentalist');
@@ -41,6 +43,26 @@ async function main() {
               return title;
             }, null),
           });
+          c.children
+            .filter(
+              (el) => !['API', 'A11y', 'Changelog', 'Description', 'Example'].includes(el.title),
+            )
+            .map((el) => {
+              const hash = `#${hashCode(el.title)}`;
+              navigation.push({
+                title: el.title,
+                slug: `/${el.route.split('.')[0]}/${hash}`,
+                disabled: !!pages[c.reference].metadata.disabled,
+                search: pages[c.reference].metadata.search,
+                category: nav.reduce((title, p) => {
+                  if (p.children) {
+                    const child = p.children.find((c1) => c1.reference === c.reference);
+                    return child ? p.title : title;
+                  }
+                  return title;
+                }, null),
+              });
+            });
         });
       }
       return navigation;
