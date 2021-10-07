@@ -3,7 +3,7 @@ const algoliasearch = require('algoliasearch');
 const { Documentalist, MarkdownPlugin } = require('documentalist');
 const CONFIG = require('./client/algolia');
 const dataIcons = require('./docs/style/icon/components/icons.json');
-const { hashCode } = require('./server/utils');
+const crypto = require('crypto');
 
 const DOCS_DIR = './docs/**/*';
 
@@ -47,7 +47,11 @@ async function main() {
               (el) => !['API', 'A11y', 'Changelog', 'Description', 'Example'].includes(el.title),
             )
             .map((el) => {
-              const hash = `#${hashCode(el.title)}`;
+              const hash = `#a${crypto
+                .createHash('md5')
+                .update(el.title)
+                .digest('hex')
+                .slice(0, 5)}`;
               navigation.push({
                 title: el.title,
                 slug: `/${el.route.split('.')[0]}/${hash}`,
