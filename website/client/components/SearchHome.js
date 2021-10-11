@@ -195,6 +195,9 @@ const SuggestSearch = withRouter(
                     action.visible(true);
                     action.highlightedIndex(0);
                   }}
+                  onKeyDown={(e) => {
+                    e.key === ' ' && e.stopPropagation();
+                  }}
                   {...other}
                 />
                 <MobileInput
