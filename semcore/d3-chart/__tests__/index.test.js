@@ -141,8 +141,7 @@ describe('XAxis', () => {
     );
 
     fireEvent.mouseMove(getAllByTestId('tick')[9]);
-    expect(eventEmitter.emit).toHaveBeenCalledTimes(1);
-    // expect(bisect(data, eventEmitter.emit.mock.calls[0][1][0])).toBe(9);
+    expect(eventEmitter.emit).toHaveBeenCalledTimes(2); //onMouseMoveRoot, onMouseLeaveChart
     window.requestAnimationFrame.mockRestore();
   });
 });

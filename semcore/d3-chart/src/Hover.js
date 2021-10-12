@@ -61,12 +61,12 @@ class Hover extends Component {
 
   componentDidMount() {
     const { eventEmitter } = this.asProps;
-    this.unsubscribeMouseMoveRoot = eventEmitter.subscribe('onMouseMoveRoot', (e) => {
+    this.unsubscribeMouseMoveRoot = eventEmitter.subscribe('onMouseMoveChart', (e) => {
       e.persist();
       this.handlerMouseMoveRoot(e);
     });
     this.unsubscribeMouseLeaveRoot = eventEmitter.subscribe(
-      'onMouseLeaveRoot',
+      'onMouseLeaveChart',
       this.handlerMouseLeaveRoot,
     );
   }

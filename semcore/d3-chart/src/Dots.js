@@ -45,13 +45,13 @@ function Dots(props) {
   );
 
   useEffect(() => {
-    const unsubscribeMouseMoveRoot = eventEmitter.subscribe('onMouseMoveRoot', (e) => {
+    const unsubscribeMouseMoveRoot = eventEmitter.subscribe('onMouseMoveChart', (e) => {
       e.persist();
       handlerMouseMoveRoot(e);
     });
 
     const unsubscribeMouseLeaveRoot = eventEmitter.subscribe(
-      'onMouseLeaveRoot',
+      'onMouseLeaveChart',
       handlerMouseLeaveRoot,
     );
 
