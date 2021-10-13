@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import cn from 'classnames';
-import { FlexProperty, Properties } from 'csstype';
+import { FlexProperty, Properties, PositionProperty  } from 'csstype';
 import { IStyledProps, sstyled } from '@semcore/core';
 import propsForElement from '@semcore/utils/lib/propsForElement';
 import logger from '@semcore/utils/lib/logger';
@@ -153,7 +153,7 @@ export interface IBoxProps extends IStyledProps {
   css?: React.CSSProperties;
 
   /** CSS `position` property */
-  position?: 'absolute' | 'fixed' | 'relative' | 'static' | 'inherit' | 'sticky';
+  position?: PositionProperty;
   /** CSS `top` property */
   top?: number | string;
   /** CSS `left` property */
