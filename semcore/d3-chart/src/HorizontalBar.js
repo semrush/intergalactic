@@ -40,7 +40,6 @@ class HorizontalBarRoot extends Component {
       uid,
       duration,
       r,
-      $index,
       height: heightProps,
       onMouseMove,
       onMouseLeave,
