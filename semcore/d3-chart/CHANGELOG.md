@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [1.4.1] - 2021-10-13
+
+### Fixed
+
+- Fixed react key-related warning for `Bar`.
+
 ## [1.4.0] - 2021-10-12
 
 ### Added

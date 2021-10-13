@@ -64,7 +64,6 @@ class BarRoot extends Component {
       duration,
       uid,
       r,
-      $index,
       width: widthProps,
     } = this.asProps;
 
