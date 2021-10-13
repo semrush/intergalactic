@@ -1,27 +1,20 @@
-import React, {
-  useState,
-  useEffect,
-  useContext,
-  createContext,
-  useRef,
-  HTMLAttributes,
-} from 'react';
+import React, { useState, useEffect, useContext, createContext, useRef } from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { createPortal } from 'react-dom';
 import ResizeObserver from 'resize-observer-polyfill';
-import CSS from 'csstype';
+import cn from 'classnames';
 
 import canUseDOM from '@semcore/utils/lib/canUseDOM';
 import { fireFn } from '@semcore/utils/lib/fire';
-import Table, { ITableProps } from '../Table';
-import ScrollAreaSmart, { IScrollAreaProps } from '@semcore/scroll-area';
-import ContextTable from '../context';
+import Table from './Table';
+import ScrollAreaSmart from '@semcore/scroll-area';
+import ContextTable from './context';
 import trottle from '@semcore/utils/lib/rafTrottle';
 import { getNodeByRef, setRef } from '@semcore/utils/lib/ref';
 import useEventCallback from '@semcore/utils/lib/use/useEventCallback';
-import { createBaseComponent, Merge, styled } from '@semcore/core';
+import { createBaseComponent, sstyled } from '@semcore/core';
 
-const StickyHeadContext = createContext<{ container: HTMLElement; tableDOM: HTMLElement }>({
+const StickyHeadContext = createContext({
   container: null,
   tableDOM: null,
 });
@@ -119,21 +112,6 @@ const renderColGroup = (listWidthTh = []) => {
   );
 };
 
-export interface IStickyHeadProps extends IScrollAreaProps {
-  /** HTML element, which is used for table scrolling */
-  container?: HTMLElement;
-  /** Spacing at a top of a table when fixing it
-   * @default 0
-   */
-  top?: string | number;
-  /** Bottom padding when fixing a table
-   * @default 0
-   */
-  bottom?: string | number;
-  /** Handler that is called when the fixed position is changed */
-  onFixed?: (positionFixed: string) => void;
-}
-
 function Head(props, ref) {
   const { children, ...other } = props;
   const refTable = useRef(null);
@@ -181,7 +159,7 @@ function Head(props, ref) {
 
   return (
     <>
-      {styled(styles)(
+      {sstyled(styles)(
         <SStickyHeadTable ref={refTable} {...self.props} {...other}>
           {ColGroup || renderColGroup(listWidthTh)}
           {TheadElement}
@@ -194,12 +172,10 @@ function Head(props, ref) {
 
 Head.displayName = 'StickyHead.Head';
 
-const HeadCore = createBaseComponent<Merge<ITableProps, React.HTMLAttributes<HTMLDivElement>>>(
-  Head,
-);
+const HeadCore = createBaseComponent(Head);
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-const SStickyHead = React.forwardRef(({ position, ...props }: IStickyHeadProps, ref) => (
+const SStickyHead = React.forwardRef(({ position, ...props }, ref) => (
   <ScrollAreaSmart ref={ref} {...props} />
 ));
 
@@ -210,7 +186,7 @@ function ContainerSticky(props, ref) {
     setRefContainer,
     children,
     positionFixed,
-    style = {} as CSS.Properties,
+    style = {},
     ...other
   } = props;
   const { styles } = useContext(ContextTable);
@@ -219,11 +195,11 @@ function ContainerSticky(props, ref) {
   const styleBar = {};
 
   if (tableDOM) {
-    tableDOM.classList.toggle(styles['tabel-parent'], true);
+    tableDOM.classList.toggle(styles['__Table-parent'], true);
   }
 
   if (thead) {
-    thead.classList.toggle(styles['header-hidden'], true);
+    thead.classList.toggle(styles['__Header-hidden'], true);
     styleBar['top'] = thead.offsetHeight - 10;
   }
 
@@ -235,7 +211,7 @@ function ContainerSticky(props, ref) {
     style.bottom = `${bottom}px`;
   }
 
-  return styled(styles)(
+  return sstyled(styles)(
     <SStickyHead
       ref={ref}
       style={style}
@@ -259,9 +235,7 @@ function ContainerSticky(props, ref) {
 }
 ContainerSticky.displayName = 'StickyHead.ContainerSticky';
 
-const ContainerStickyCore = createBaseComponent<
-  Merge<IStickyHeadProps, React.HTMLAttributes<HTMLDivElement>>
->(ContainerSticky);
+const ContainerStickyCore = createBaseComponent(ContainerSticky);
 
 function StickyHeadInner(props, ref) {
   const {
@@ -282,7 +256,7 @@ function StickyHeadInner(props, ref) {
   const heightHeader = refScrollContainer ? refScrollContainer.offsetHeight : 0;
   let lastScrollLeft = 0;
 
-  const setPositionFixed = (positionFixed: string) => {
+  const setPositionFixed = (positionFixed) => {
     updatePositionFixed(positionFixed);
     fireFn(onFixed, positionFixed);
   };
@@ -462,6 +436,4 @@ function StickyHeadInner(props, ref) {
 }
 StickyHeadInner.displayName = 'StickyHead';
 
-export default createBaseComponent<
-  Merge<IStickyHeadProps, HTMLAttributes<HTMLTableSectionElement>>
->(StickyHeadInner);
+export default createBaseComponent(StickyHeadInner);

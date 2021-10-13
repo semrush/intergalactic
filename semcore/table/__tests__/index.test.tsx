@@ -3,6 +3,7 @@ import { render, cleanup, axe } from 'jest-preset-ui/testing';
 import { shouldSupportClassName, shouldSupportRef } from 'jest-preset-ui/shared';
 import snapshot from 'jest-preset-ui/snapshot';
 import Table from '../src';
+import Checkbox from '@semcore/checkbox';
 
 describe('Table', () => {
   afterEach(cleanup);
@@ -273,5 +274,21 @@ describe('Table.StickyHead', () => {
     const { getByTestId } = render(component);
 
     expect(getByTestId('child')).toBeTruthy();
+  });
+
+  test('should added classes to Table, Head', () => {
+    const { container } = render(
+      <Table>
+        <Table.StickyHead />
+        <Table.Head>
+          <Table.Row>
+            <Table.CellHead width="200" />
+          </Table.Row>
+        </Table.Head>
+      </Table>,
+    );
+
+    expect(container.querySelector('table').attributes.class.value).toContain('Table-parent');
+    expect(container.querySelector('thead').attributes.class.value).toContain('Header-hidden');
   });
 });
