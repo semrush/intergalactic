@@ -115,7 +115,7 @@ const renderColGroup = (listWidthTh = []) => {
 function Head(props, ref) {
   const { children, ...other } = props;
   const refTable = useRef(null);
-  const { self, styles } = useContext(ContextTable);
+  const { self, styles: tableStyles } = useContext(ContextTable);
   const { tableDOM } = useContext(StickyHeadContext);
   const [listWidthTh, updateListWidthTh] = useState(calculateWidthTh(tableDOM));
 
@@ -156,6 +156,7 @@ function Head(props, ref) {
   });
 
   const SStickyHeadTable = Table;
+  const styles = sstyled.merge(tableStyles, other.styles);
 
   return (
     <>

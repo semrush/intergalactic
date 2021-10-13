@@ -41,7 +41,8 @@ const CellRowCore = createBaseComponent(CellRowInner);
 
 const CellRow = React.forwardRef((props, ref) => {
   const contextProps = useContext(Context);
-  return <CellRowCore ref={ref} {...contextProps} {...props} />;
+  const styles = sstyled.merge(contextProps.styles, props.styles);
+  return <CellRowCore ref={ref} {...contextProps} {...props} styles={styles} />;
 });
 
 CellRow.displayName = 'CellRow';
@@ -80,7 +81,8 @@ const CellHeadCore = createBaseComponent(CellHeadInner);
 
 const CellHead = React.forwardRef((props, ref) => {
   const contextProps = useContext(Context);
-  return <CellHeadCore ref={ref} {...contextProps} {...props} />;
+  const styles = sstyled.merge(contextProps.styles, props.styles);
+  return <CellHeadCore ref={ref} {...contextProps} {...props} styles={styles} />;
 });
 
 CellHead.displayName = 'CellHead';

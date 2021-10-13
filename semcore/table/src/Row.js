@@ -18,7 +18,8 @@ const RowCore = createBaseComponent(RowInner);
 
 const Row = React.forwardRef((props, ref) => {
   const contextProps = useContext(Context);
-  return <RowCore ref={ref} {...contextProps} {...props} />;
+  const styles = sstyled.merge(contextProps.styles, props.styles);
+  return <RowCore ref={ref} {...contextProps} {...props} styles={styles} />;
 });
 
 Row.displayName = 'Row';

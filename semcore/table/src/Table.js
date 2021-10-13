@@ -9,7 +9,7 @@ import StickyHead from './StickyHead';
 import Body from './Body';
 import { Provider } from './context';
 import { Box } from '@semcore/flex-box';
-import { Component, create, sstyled, styled } from '@semcore/core';
+import { sstyled } from '@semcore/core';
 import { useForkRef } from '@semcore/utils/lib/ref';
 
 import styles from './style/table.shadow.css';
@@ -18,7 +18,7 @@ const Table = React.forwardRef((props, ref) => {
   const STable = Box;
   const refTable = useRef(null);
   const { use = 'primary', style: styleProps = {}, className: classNameProps, ...other } = props;
-  const sstyles = sstyled(styles);
+  const sstyles = sstyled(sstyled.merge(styles, other.styles));
   const { className, style } = sstyles.cn('STable', styleProps);
 
   return (
