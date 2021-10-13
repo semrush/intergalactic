@@ -194,8 +194,7 @@ SStickyHead {
   width: auto;
 }
 
-SStickyHeadTable,
-.tabel-parent {
+SStickyHeadTable {
   table-layout: fixed;
 }
 
@@ -212,7 +211,11 @@ SStickyHead[position='top'] {
   top: 0;
 }
 
-.header-hidden {
+Table-parent {
+  table-layout: fixed;
+}
+
+Header-hidden {
   visibility: hidden;
   z-index: -1;
 }

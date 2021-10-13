@@ -2,6 +2,14 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.3.0] - 2021-10-13
+
+### Changed
+
+- Version of dependence `@semcore/core` has been changed to `1.11`.
+- The style processing system has been changed.
+- Rewrite from TS to JS code.
+
 ## [2.2.4] - 2021-9-21
 
 ### Fixed
