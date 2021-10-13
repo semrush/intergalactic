@@ -86,7 +86,7 @@ const Demo = () => {
   return (
     <ScrollArea>
       <ScrollArea.Container>
-        <Table style={{ tablelayout: 'fixed' }}>
+        <Table>
           <Table.StickyHead top={top} />
           <Table.Head>
             <Table.Row>

@@ -82,4 +82,7 @@ declare const Table: (<T>(props: CProps<ITableProps & T, ITableCtx>) => ReturnEl
   CellHead: <T>(props: ITableCellHeadProps & T) => ReturnEl;
 };
 
+declare const Consumer: React.Consumer<ITableCtx>;
+
 export default Table;
+export { Consumer };
