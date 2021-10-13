@@ -78,28 +78,26 @@ class BarRoot extends Component {
     const isRounded = r !== 0;
 
     return sstyled(styles)(
-      <>
-        <SBar
-          key={`bar-${i}`}
-          render="path"
-          clipPath={`url(#${uid})`}
-          __excludeProps={['data', 'scale', 'value']}
-          childrenPosition="above"
-          value={d}
-          index={i}
-          hide={hide}
-          color={color}
-          d={getRect({
-            x: barX,
-            y: isRounded ? (d[y] > 0 ? barY - r : barY) : barY,
-            width,
-            height: isRounded ? height + r : height,
-            radius: r,
-            position: d[y] > 0 ? 'top' : 'bottom',
-          })}
-          use:duration={`${duration}ms`}
-        />
-      </>,
+      <SBar
+        key={`bar-${i}`}
+        render="path"
+        clipPath={`url(#${uid})`}
+        __excludeProps={['data', 'scale', 'value']}
+        childrenPosition="above"
+        value={d}
+        index={i}
+        hide={hide}
+        color={color}
+        d={getRect({
+          x: barX,
+          y: isRounded ? (d[y] > 0 ? barY - r : barY) : barY,
+          width,
+          height: isRounded ? height + r : height,
+          radius: r,
+          position: d[y] > 0 ? 'top' : 'bottom',
+        })}
+        use:duration={`${duration}ms`}
+      />,
     );
   }
   render() {
