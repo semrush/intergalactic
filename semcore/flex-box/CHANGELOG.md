@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.4.2] - 2021-10-13
+
+### Fixed
+
+- [TS] Fixed type `position` for `Box`.
+
 ## [4.4.1] - 2021-8-26
 
 ### Changed
