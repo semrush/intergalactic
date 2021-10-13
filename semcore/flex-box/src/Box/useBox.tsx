@@ -153,7 +153,7 @@ export interface IBoxProps extends IStyledProps {
   css?: React.CSSProperties;
 
   /** CSS `position` property */
-  position?: 'absolute' | 'fixed' | 'relative' | 'static' | 'inherit';
+  position?: 'absolute' | 'fixed' | 'relative' | 'static' | 'inherit' | 'sticky';
   /** CSS `top` property */
   top?: number | string;
   /** CSS `left` property */
