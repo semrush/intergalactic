@@ -34,6 +34,7 @@ async function main() {
             slug: `/${c.route}/`,
             disabled: !!pages[c.reference].metadata.disabled,
             search: pages[c.reference].metadata.search,
+            heading: false,
             category: nav.reduce((title, p) => {
               if (p.children) {
                 const child = p.children.find((c1) => c1.reference === c.reference);
