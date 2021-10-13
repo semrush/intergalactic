@@ -57,6 +57,7 @@ async function main() {
                 slug: `/${el.route.split('.')[0]}/${hash}`,
                 disabled: !!pages[c.reference].metadata.disabled,
                 search: pages[c.reference].metadata.search,
+                heading: true,
                 category: nav.reduce((title, p) => {
                   if (p.children) {
                     const child = p.children.find((c1) => c1.reference === c.reference);

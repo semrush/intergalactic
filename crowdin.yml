@@ -1,4 +1,6 @@
 # https://support.crowdin.com/cli-tool ver.3
+# crowdin upload sources
+# crowdin download
 "project_id_env": "CROWDIN_PROJECT_ID"
 # https://crowdin.com/settings#api-key
 "api_token_env": "CROWDIN_PERSONAL_TOKEN"
