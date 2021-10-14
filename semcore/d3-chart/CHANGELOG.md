@@ -2,6 +2,17 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [1.5.0] - 2021-10-14
+
+### Added
+
+- Added prop `outerRadius` for `Donut` chart.
+
+### Changed
+
+- Fixed call animation for hover in sector `Donut` chart.
+- Fixed animation show `Dot` in `Line` chart.
+
 ## [1.4.1] - 2021-10-13
 
 ### Fixed
