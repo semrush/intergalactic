@@ -2,6 +2,17 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.0.0] - 2021-10-14
+
+### Changed
+
+- Rewrite code from ts to js.
+
+### BREAK
+
+- change default `height` for `Skeleton` from 100 to 100px.
+- remove support props `visible, speed` for `Skeleton`.
+
 ## [2.3.1] - 2021-8-26
 
 ### Changed
