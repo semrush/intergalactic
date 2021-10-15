@@ -1,11 +1,7 @@
 import React from 'react';
-import Skeleton, { ISkeletonProps } from '../Skeleton';
+import Skeleton from '../Skeleton';
 
-export interface PieChartSkeletonProps extends ISkeletonProps {}
-
-const PieChartSkeleton: React.FunctionComponent<
-  PieChartSkeletonProps & React.SVGAttributes<SVGElement>
-> = (props) => (
+const PieChartSkeleton = (props) => (
   <Skeleton viewBox="0 0 180 180" width={180} height={180} {...props}>
     {({ gradientUrl }) => (
       <path

@@ -86,8 +86,8 @@ describe('LineChartSkeleton', () => {
   test('should support render', async () => {
     const component = (
       <>
-        <LineChartSkeleton type="monotone" />
-        <LineChartSkeleton />
+        <LineChartSkeleton type="monotone" height={100} />
+        <LineChartSkeleton height={100} />
       </>
     );
     expect(await snapshot(component)).toMatchImageSnapshot();
@@ -98,8 +98,8 @@ describe('AreaChartSkeleton', () => {
   test('should support render', async () => {
     const component = (
       <>
-        <AreaChartSkeleton type="monotone" />
-        <AreaChartSkeleton />
+        <AreaChartSkeleton type="monotone" height={100} />
+        <AreaChartSkeleton height={100} />
       </>
     );
     expect(await snapshot(component)).toMatchImageSnapshot();
@@ -110,8 +110,8 @@ describe('BarChartSkeleton', () => {
   test('should support render', async () => {
     const component = (
       <>
-        <BarChartSkeleton layout="vertical" />
-        <BarChartSkeleton />
+        <BarChartSkeleton layout="vertical" height={100} />
+        <BarChartSkeleton height={100} />
       </>
     );
     expect(await snapshot(component)).toMatchImageSnapshot();
@@ -129,8 +129,8 @@ describe('HistogramChartSkeleton', () => {
   test('should support render', async () => {
     const component = (
       <>
-        <HistogramChartSkeleton layout="vertical" />
-        <HistogramChartSkeleton />
+        <HistogramChartSkeleton layout="vertical" height={100} />
+        <HistogramChartSkeleton height={100} />
       </>
     );
     expect(await snapshot(component)).toMatchImageSnapshot();
