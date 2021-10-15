@@ -6,6 +6,10 @@ export interface IDonutProps extends IContext {
    * @default 0
    * */
   innerRadius?: number;
+  /** Outer radius
+   * @default calculated by the formula from width, height
+   * */
+  outerRadius?: number;
   /** Semi donut */
   halfsize?: boolean;
   /** Animation duration in ms

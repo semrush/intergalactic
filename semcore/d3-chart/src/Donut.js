@@ -66,16 +66,25 @@ function animationHoverPie({ d, selector, duration, innerRadius, outerRadius }) 
 
 const increaseFactor = 8;
 
+function getOuterRadius({ size, halfsize, outerRadius }) {
+  const [width, height] = size;
+  const minORmax = halfsize ? Math.max : Math.min;
+  return outerRadius || minORmax(width - increaseFactor * 2, height - increaseFactor * 2) / 2;
+}
+
 class DonutRoot extends Component {
   static displayName = 'Donut';
   static style = style;
   static enhance = [uniqueIDEnhancement()];
 
-  static defaultProps = ({ innerRadius = 0, halfsize = false, $rootProps: { size } }) => {
-    const [width, height] = size;
-    const minORmax = halfsize ? Math.max : Math.min;
+  static defaultProps = ({
+    innerRadius = 0,
+    outerRadius,
+    halfsize = false,
+    $rootProps: { size },
+  }) => {
     const d3Arc = arc()
-      .outerRadius(minORmax(width - increaseFactor * 2, height - increaseFactor * 2) / 2)
+      .outerRadius(getOuterRadius({ size, halfsize, outerRadius }))
       .innerRadius(innerRadius > increaseFactor ? innerRadius - increaseFactor : innerRadius);
     let d3Pie = pie()
       .sort(null)
@@ -138,11 +147,9 @@ class DonutRoot extends Component {
   };
 
   getPieProps(props) {
-    let { d3Arc, halfsize, size, duration, innerRadius } = this.asProps;
-    const [width, height] = size;
-    const minORmax = halfsize ? Math.max : Math.min;
+    let { d3Arc, duration, innerRadius } = this.asProps;
     innerRadius = innerRadius > increaseFactor ? innerRadius - increaseFactor : innerRadius;
-    const outerRadius = minORmax(width - increaseFactor * 2, height - increaseFactor * 2) / 2;
+    const outerRadius = getOuterRadius(this.asProps);
     const data = this.arcs.find((arc) => arc.data[0] === props.dataKey);
 
     return {
@@ -153,7 +160,7 @@ class DonutRoot extends Component {
       onMouseOver: (e) => {
         animationHoverPie({
           d: data,
-          selector: `[d="${e.target.getAttribute('d')}"]`,
+          selector: `#${this.id} [d="${e.target.getAttribute('d')}"]`,
           duration: duration === 0 ? 0 : 300,
           innerRadius,
           outerRadius: [outerRadius, outerRadius + increaseFactor],
@@ -162,7 +169,7 @@ class DonutRoot extends Component {
       onMouseOut: (e) => {
         animationHoverPie({
           d: data,
-          selector: `[d="${e.target.getAttribute('d')}"]`,
+          selector: `#${this.id} [d="${e.target.getAttribute('d')}"]`,
           duration: duration === 0 ? 0 : 300,
           innerRadius,
           outerRadius: [outerRadius + increaseFactor, outerRadius],
