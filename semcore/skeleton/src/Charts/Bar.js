@@ -1,13 +1,7 @@
 import React from 'react';
-import Skeleton, { ISkeletonProps } from '../Skeleton';
+import Skeleton from '../Skeleton';
 
-export interface BarChartSkeletonProps extends ISkeletonProps {
-  layout?: 'horizontal' | 'vertical';
-}
-
-const BarChartSkeleton: React.FunctionComponent<
-  BarChartSkeletonProps & React.SVGAttributes<SVGElement>
-> = (props) => {
+const BarChartSkeleton = (props) => {
   const { layout = 'horizontal' } = props;
 
   return (

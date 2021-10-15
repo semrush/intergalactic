@@ -1,9 +1,7 @@
 import React from 'react';
-import Skeleton, { ISkeletonProps } from '../Skeleton';
+import Skeleton from '../Skeleton';
 
-const VennChartSkeleton: React.FunctionComponent<
-  ISkeletonProps & React.SVGAttributes<SVGElement>
-> = (props) => (
+const VennChartSkeleton = (props) => (
   <Skeleton
     visible
     viewBox="0 0 200 123"

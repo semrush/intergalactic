@@ -1,13 +1,7 @@
 import React from 'react';
-import Skeleton, { ISkeletonProps } from '../Skeleton';
+import Skeleton from '../Skeleton';
 
-export interface HistogramChartSkeletonProps extends ISkeletonProps {
-  layout?: 'horizontal' | 'vertical';
-}
-
-const HistogramChartSkeleton: React.FunctionComponent<
-  HistogramChartSkeletonProps & React.SVGAttributes<SVGElement>
-> = (props) => {
+const HistogramChartSkeleton = (props) => {
   const { layout = 'horizontal' } = props;
 
   return (

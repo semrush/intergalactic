@@ -1,13 +1,7 @@
 import React from 'react';
-import Skeleton, { ISkeletonProps } from '../Skeleton';
+import Skeleton from '../Skeleton';
 
-export interface LineChartSkeletonSkeletonProps extends ISkeletonProps {
-  type?: 'linear' | 'monotone';
-}
-
-const LineChartSkeleton: React.FunctionComponent<
-  LineChartSkeletonSkeletonProps & React.SVGAttributes<SVGElement>
-> = (props) => {
+const LineChartSkeleton = (props) => {
   const { type = 'linear' } = props;
 
   const getDraw = (type) => {
