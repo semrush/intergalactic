@@ -15,11 +15,9 @@ import If from '@semcore/utils/lib/if';
 class MyFeedback extends React.PureComponent {
   render() {
     const validateDescription = FeedbackForm.validate.description(
-      `Please tell a few more words about your experience. This will help us improve our service.`,
+      `Your feedback must contain at least 3 words (10 characters).`,
     );
-    const validateEmail = FeedbackForm.validate.email(
-      `Please provide us with a valid email address so we could reply to you.`,
-    );
+    const validateEmail = FeedbackForm.validate.email(`Please enter valid email.`);
 
     return (
       <Dropdown>
