@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.11.13] - 2021-10-18
+
+### Changed
+
+- Up version package `focus-lock`.
+
 ## [4.11.12] - 2021-8-26
 
 ### Changed

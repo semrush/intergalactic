@@ -1,7 +1,7 @@
 {
   "name": "@semcore/popper",
   "description": "SEMRush Popper Component",
-  "version": "4.11.12",
+  "version": "4.11.13",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -19,7 +19,7 @@
     "@semcore/outside-click": "^2",
     "@semcore/portal": "^2",
     "@semcore/utils": "^3.24",
-    "focus-lock": "^0.6",
+    "focus-lock": "0.9.1",
     "react-focus-lock": "^2.3",
     "resize-observer-polyfill": "^1.5"
   },
