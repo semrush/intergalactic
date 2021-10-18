@@ -28,13 +28,13 @@ const validate = {
       return acc;
     }, 0);
     if (value.length - numberSpaces < 10 || splitText.length <= 2) {
-      return 'Please tell a few more words about your experience. This will help us improve our service.';
+      return 'Your feedback must contain at least 3 words (10 characters).';
     }
   },
   email: (value = '') => {
     validate.description(value);
     if (!/.+@.+\..+/i.test(String(value).toLowerCase())) {
-      return 'Please provide us with a valid email address so we could reply to you.\t';
+      return 'Please enter valid email.\t';
     }
   },
 };
