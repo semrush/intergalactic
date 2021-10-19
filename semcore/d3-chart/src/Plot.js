@@ -3,6 +3,7 @@ import createComponent, { Component, Root, sstyled } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
 import EventEmitter from '@semcore/utils/lib/eventEmitter';
 import { eventToPoint } from './utils';
+import trottle from '@semcore/utils/lib/rafTrottle';
 
 class PlotRoot extends Component {
   static displayName = 'Plot';
@@ -19,7 +20,7 @@ class PlotRoot extends Component {
 
   rootRef = React.createRef();
 
-  handlerMouseMove = (e) => {
+  handlerMouseMove = trottle((e) => {
     const { scale } = this.asProps;
     this.eventEmitter.emit(`onMouseMoveRoot`, e);
 
@@ -35,11 +36,12 @@ class PlotRoot extends Component {
         this.eventEmitter.emit('onMouseLeaveChart', e);
       }
     }
-  };
+  });
 
-  handlerMouseLeave = (e) => {
+  handlerMouseLeave = trottle((e) => {
     this.eventEmitter.emit(`onMouseLeaveRoot`, e);
-  };
+    this.eventEmitter.emit('onMouseLeaveChart', e);
+  });
 
   setContext() {
     const { scale, data, width, height } = this.asProps;

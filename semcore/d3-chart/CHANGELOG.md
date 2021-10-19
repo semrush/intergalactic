@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [1.5.1] - 2021-10-19
+
+### Fixed
+
+- Fixed hide tooltip.
+
 ## [1.5.0] - 2021-10-15
 
 ### Added

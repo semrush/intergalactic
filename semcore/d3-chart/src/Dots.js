@@ -1,7 +1,6 @@
 import { bisector } from 'd3-array';
 import React, { useCallback, useEffect, useState } from 'react';
 import { sstyled } from '@semcore/core';
-import trottle from '@semcore/utils/lib/rafTrottle';
 import { eventToPoint, invert } from './utils';
 import createElement from './createElement';
 import { FadeInOut } from '@semcore/animation';
@@ -28,21 +27,18 @@ function Dots(props) {
   const [activeIndex, setActiveIndex] = useState(null);
 
   const handlerMouseMoveRoot = useCallback(
-    trottle((e) => {
+    (e) => {
       const [xScale] = scale;
       const [pX] = eventToPoint(e, rootRef.current);
       const vX = invert(xScale, pX);
       setActiveIndex(bisect(data, vX));
-    }),
+    },
     [scale, data],
   );
 
-  const handlerMouseLeaveRoot = useCallback(
-    trottle(() => {
-      setActiveIndex(null);
-    }),
-    [],
-  );
+  const handlerMouseLeaveRoot = useCallback(() => {
+    setActiveIndex(null);
+  }, []);
 
   useEffect(() => {
     const unsubscribeMouseMoveRoot = eventEmitter.subscribe('onMouseMoveChart', (e) => {
