@@ -1,7 +1,6 @@
 import React from 'react';
 import { Component, sstyled } from '@semcore/core';
 import createElement from './createElement';
-import trottle from '@semcore/utils/lib/rafTrottle';
 import canUseDOM from '@semcore/utils/lib/canUseDOM';
 import { scaleOfBandwidth, getIndexFromData, eventToPoint, invert, CONSTANT } from './utils';
 
@@ -21,7 +20,7 @@ class Hover extends Component {
     return () => ({ width: 0, height: 0, top: y, right: x, bottom: y, left: x });
   }
 
-  handlerMouseMoveRoot = trottle((e) => {
+  handlerMouseMoveRoot = (e) => {
     const { eventEmitter, data, scale, x, y, rootRef } = this.asProps;
     const { clientX, clientY } = e;
     const [xScale, yScale] = scale;
@@ -47,9 +46,9 @@ class Hover extends Component {
         this.virtualElement,
       );
     });
-  });
+  };
 
-  handlerMouseLeaveRoot = trottle(() => {
+  handlerMouseLeaveRoot = () => {
     const state = {
       xIndex: null,
       yIndex: null,
@@ -57,7 +56,7 @@ class Hover extends Component {
     this.setState(state, () => {
       this.asProps.eventEmitter.emit('onTooltipVisible', false, state);
     });
-  });
+  };
 
   componentDidMount() {
     const { eventEmitter } = this.asProps;
