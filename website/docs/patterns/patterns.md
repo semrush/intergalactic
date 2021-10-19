@@ -11,7 +11,9 @@ title: UX patterns
 @page loading-states
 @page project-create
 @page project-select
-@page sso-page
+
+<!-- @page sso-page -->
+
 @page summary
 @page validation-form
 @page visual-loudness-scale
