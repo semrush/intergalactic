@@ -43,7 +43,7 @@ export interface HistogramChartSkeletonProps extends ISkeletonProps {
   layout?: 'horizontal' | 'vertical';
 }
 
-export interface LineChartSkeletonSkeletonProps extends ISkeletonProps {
+export interface LineChartSkeletonProps extends ISkeletonProps {
   type?: 'linear' | 'monotone';
 }
 
@@ -53,7 +53,7 @@ declare const Skeleton: (<T>(props: CProps<ISkeletonProps & T, ISkeletonCtx>) =>
 declare const AreaChartSkeleton: <T>(props: AreaChartSkeletonProps & T) => ReturnEl;
 declare const BarChartSkeleton: <T>(props: BarChartSkeletonProps & T) => ReturnEl;
 declare const HistogramChartSkeleton: <T>(props: HistogramChartSkeletonProps & T) => ReturnEl;
-declare const LineChartSkeleton: <T>(props: LineChartSkeletonSkeletonProps & T) => ReturnEl;
+declare const LineChartSkeleton: <T>(props: LineChartSkeletonProps & T) => ReturnEl;
 declare const PieChartSkeleton: typeof Skeleton;
 declare const VennChartSkeleton: typeof Skeleton;
 
