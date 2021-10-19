@@ -162,6 +162,14 @@ const components = {
     { text: 'Data visualization section restyling', size: { ui: '3/9', kit: '9/15' } },
     { text: 'Components restyling', size: { ui: '1/15' } },
   ],
+  'Q4 2021': [
+    { text: 'Technical sprint', size: { kit: '1/3' } },
+    { text: 'Scatterplot chart', size: { ui: '3/9', kit: '9/13' } },
+    { text: 'Bubble chart', size: { ui: '5/11', kit: '9/13' } },
+    { text: 'Sandbox', size: { kit: '7/11' } },
+    { text: 'Mind Map chart', size: { ui: '11/13' } },
+    { text: 'Technical sprint', size: { kit: '13/15' } },
+  ],
 };
 
 function Gant(props) {
@@ -213,7 +221,7 @@ function Gant(props) {
 }
 
 function Roadmap() {
-  const [value, setValue] = useState(6);
+  const [value, setValue] = useState(7);
   let TabContent = null;
 
   switch (value) {
@@ -237,6 +245,9 @@ function Roadmap() {
       break;
     case 6:
       TabContent = <Gant sprint={dateSprint.slice(38, 46)} components={components['Q3 2021']} />;
+      break;
+    case 7:
+      TabContent = <Gant sprint={dateSprint.slice(45, 53)} components={components['Q4 2021']} />;
       break;
   }
   return (

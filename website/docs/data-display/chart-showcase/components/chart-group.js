@@ -19,7 +19,7 @@ const group = {
   areaStacked: {
     title: 'Stacked area chart',
     route: '/data-display/stacked-area-chart',
-    disabled: true,
+    disabled: false,
     type: 'charts',
   },
   combinedAreaLine: {
@@ -37,7 +37,7 @@ const group = {
   barStacked: {
     title: 'Stacked bar chart',
     route: '/data-display/stacked-bar-chart',
-    disabled: true,
+    disabled: false,
     type: 'charts',
   },
   horizontalBar: {
@@ -49,7 +49,7 @@ const group = {
   stackedHorizontalBar: {
     title: 'Stacked horizontal bar chart',
     route: '/data-display/stacked-horizontal-bar',
-    disabled: true,
+    disabled: false,
     type: 'charts',
   },
   histogram: {
