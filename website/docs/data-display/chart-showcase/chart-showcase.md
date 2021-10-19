@@ -35,7 +35,7 @@ Show the variation of values over time.
 
 _For example: Show the traffic trend over time for different devices._
 
-@import chart-group {"group": ["line", "area", "areaStacked", "combinedAreaLine", "bar", "barStacked", "heatmap", "lollipop"]}
+@import chart-group {"group": ["line", "area", "areaStacked", "bar", "barStacked", "heatmap", "lollipop"]}
 
 @## Part to whole
 
