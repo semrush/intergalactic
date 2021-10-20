@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.4.3] - 2021-10-20
+
+### Fixed
+
+- [TS] Fixed type `direction` for `Flex`.
+
 ## [4.4.2] - 2021-10-13
 
 ### Fixed

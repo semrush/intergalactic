@@ -6,6 +6,7 @@ import {
   AlignItemsProperty,
   JustifyContentProperty,
   Properties,
+  FlexDirectionProperty,
 } from 'csstype';
 import { sstyled } from '@semcore/core';
 import useBox, { IBoxProps, removeUndefinedKeys } from '../Box/useBox';
@@ -28,7 +29,7 @@ export interface IFlexProps extends IBoxProps {
   /**
    * It manages the `flex-direction` property
    */
-  direction?: 'row' | 'column';
+  direction?: FlexDirectionProperty;
   /**
    * It manages the `align-items` property
    */
@@ -44,12 +45,17 @@ export interface IFlexProps extends IBoxProps {
 }
 
 function calculateFlexStyles(props) {
+  const DirectionReverse = {
+    row: 'row-reverse',
+    column: 'column-reverse',
+  };
+
   return removeUndefinedKeys({
     alignItems: props.alignItems,
     alignContent: props.alignContent,
     justifyContent: props.justifyContent,
     flexWrap: props.flexWrap ? `wrap${props.reverse ? '-reverse' : ''}` : undefined,
-    flexDirection: props.reverse ? `${props.direction || 'row'}-reverse` : props.direction,
+    flexDirection: (props.reverse && DirectionReverse[props.direction]) || props.direction,
   });
 }
 
