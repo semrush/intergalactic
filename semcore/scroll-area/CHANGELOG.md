@@ -2,6 +2,15 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.6.0] - 2021-10-22
+
+### Changed
+
+- Rewrite code from ts to js.
+- Changed interception event of mouse for cursor in `ScrollBar`.
+
+- Call calculate position scroll when change size container
+
 ## [3.5.3] - 2021-9-24
 
 ### Fixed
