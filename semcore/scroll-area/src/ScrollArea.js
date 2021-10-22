@@ -1,36 +1,17 @@
-import React, { ComponentProps } from 'react';
+import React from 'react';
 import { findDOMNode } from 'react-dom';
 import ResizeObserver from 'resize-observer-polyfill';
-import type ResizeObserverCallback from 'resize-observer-polyfill'
-import createComponent, { Component, PropGetterFn, sstyled, Root } from '@semcore/core';
-import { Box, IBoxProps } from '@semcore/flex-box';
+
+import createComponent, { Component, sstyled, Root } from '@semcore/core';
+import { Box } from '@semcore/flex-box';
 import trottle from '@semcore/utils/lib/rafTrottle';
-import { getNodeByRef, NodeByRef } from '@semcore/utils/lib/ref';
+import { getNodeByRef } from '@semcore/utils/lib/ref';
 import findComponent from '@semcore/utils/lib/findComponent';
-import If from '@semcore/utils/lib/if';
 import logger from '@semcore/utils/lib/logger';
 import { callAllEventHandlers } from '@semcore/utils/lib/assignProps';
 import BarRoot from './ScrollBar';
 
 import style from './style/scroll-area.shadow.css';
-
-export interface IScrollAreaProps extends IBoxProps {
-  /** Shadow display on container */
-  shadow?: boolean;
-  /** Scroll direction */
-  orientation?: 'horizontal' | 'vertical';
-  /** Link to the dom element, which will be a container with overflow */
-  container?: NodeByRef;
-  /** Link to the dom element that will be stretched along with the content */
-  inner?: NodeByRef;
-  /** Callback executed when container change size  */
-  onResize?: ResizeObserverCallback;
-}
-
-export interface IScrollAreaContext extends IScrollAreaProps {
-  getContainerProps: PropGetterFn;
-  getBarProps: PropGetterFn;
-}
 
 let eventCalculate = undefined;
 if (typeof window !== 'undefined') {
@@ -40,11 +21,11 @@ if (typeof window !== 'undefined') {
 export { eventCalculate };
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-const BoxWithoutPosition = React.forwardRef(({ position, ...props }: IBoxProps, ref) => (
+const BoxWithoutPosition = React.forwardRef(({ position, ...props }, ref) => (
   <Box ref={ref} {...props} />
 ));
 
-class ScrollAreaRoot extends Component<IScrollAreaProps> {
+class ScrollAreaRoot extends Component {
   static displayName = 'ScrollArea';
 
   static style = style;
@@ -54,9 +35,8 @@ class ScrollAreaRoot extends Component<IScrollAreaProps> {
     inner: React.createRef(),
   });
 
-  $wrapper: HTMLElement;
-
-  observer?: ResizeObserver;
+  $wrapper = null;
+  observer = null;
 
   get $container() {
     return getNodeByRef(this.asProps.container);
@@ -213,12 +193,8 @@ class ScrollAreaRoot extends Component<IScrollAreaProps> {
 
     return sstyled(styles)(
       <SScrollArea render={Box} ref={this.refWrapper} onScroll={this.handleScroll}>
-        <If condition={shadowVertical}>
-          <SShadowVertical position={shadowVertical} />
-        </If>
-        <If condition={shadowHorizontal}>
-          <SShadowHorizontal position={shadowHorizontal} />
-        </If>
+        {shadowVertical && <SShadowVertical position={shadowVertical} />}
+        {shadowHorizontal && <SShadowHorizontal position={shadowHorizontal} />}
         {advanceMode ? (
           <Children />
         ) : (
@@ -251,21 +227,14 @@ function ContainerRoot(props) {
   );
 }
 
-const ScrollAreaComponent = createComponent<
-  ScrollAreaRoot,
-  {
-    Container: ComponentProps<typeof Box>;
-    Bar: [ComponentProps<typeof BarRoot>, { Slider: ComponentProps<typeof BarRoot.Slider> }];
-  },
-  IScrollAreaContext
->(ScrollAreaRoot, {
+const ScrollAreaComponent = createComponent(ScrollAreaRoot, {
   Container: ContainerRoot,
   Bar: BarRoot,
 });
 
 export default ScrollAreaComponent;
 
-const ScrollContainer = React.forwardRef(function (props, ref) {
+const ScrollContainer = React.forwardRef(function(props, ref) {
   logger.warn(
     true,
     "The named import 'import { ScrollContainer }' is deprecated, use the static method from the default 'import ScrollArea', '<ScrollArea.Container/>'",
@@ -275,7 +244,7 @@ const ScrollContainer = React.forwardRef(function (props, ref) {
 });
 ScrollContainer.displayName = ScrollAreaComponent.Container.displayName;
 
-const ScrollBar = React.forwardRef(function (props, ref) {
+const ScrollBar = React.forwardRef(function(props, ref) {
   logger.warn(
     true,
     "The named import 'import { ScrollBar }' is deprecated, use the static method from the default 'import ScrollArea', '<ScrollArea.Bar/>'",
@@ -285,7 +254,7 @@ const ScrollBar = React.forwardRef(function (props, ref) {
 });
 ScrollBar.displayName = ScrollAreaComponent.Bar.displayName;
 
-const ScrollArea = React.forwardRef(function (props, ref) {
+const ScrollArea = React.forwardRef(function(props, ref) {
   logger.warn(
     true,
     "The named import 'import { ScrollArea }' is deprecated, use the default 'import ScrollArea'",

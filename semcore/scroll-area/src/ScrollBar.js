@@ -1,32 +1,14 @@
-import React, { ComponentProps } from 'react';
+import React from 'react';
 import { findDOMNode } from 'react-dom';
-import createComponent, { Component, PropGetterFn, sstyled, Root } from '@semcore/core';
-import { Box, IBoxProps } from '@semcore/flex-box';
-import { getNodeByRef, NodeByRef } from '@semcore/utils/lib/ref';
+import createComponent, { Component, sstyled, Root } from '@semcore/core';
+import { Box } from '@semcore/flex-box';
+import { getNodeByRef } from '@semcore/utils/lib/ref';
 
 import style from './style/scroll-bar.shadow.css';
 
 export const DEFAULT_SLIDER_SIZE = 50;
 
-export interface IScrollBarProps extends IBoxProps {
-  /** The direction of the scroll that can be calculated automatically  */
-  orientation?: 'horizontal' | 'vertical';
-  /** Link to the dom element, which will be a container with overflow */
-  container?: NodeByRef;
-}
-
-export interface IScrollBarContext extends IScrollBarProps {
-  getSliderProps: PropGetterFn;
-}
-
-function Slider(props) {
-  const { styles } = props;
-  const SSlider = Root;
-
-  return sstyled(styles)(<SSlider render={Box} onDragStart={() => false} />);
-}
-
-class ScrollBarRoot extends Component<IScrollBarProps> {
+class ScrollBarRoot extends Component {
   static displayName = 'Bar';
 
   static style = style;
@@ -38,8 +20,8 @@ class ScrollBarRoot extends Component<IScrollBarProps> {
     };
   };
 
-  $bar: HTMLElement;
-  $slider: HTMLElement;
+  $bar = null;
+  $slider = null;
 
   sliderStyle = { width: DEFAULT_SLIDER_SIZE, height: DEFAULT_SLIDER_SIZE };
 
@@ -48,9 +30,6 @@ class ScrollBarRoot extends Component<IScrollBarProps> {
 
   _scroll = { left: 0, top: 0 };
   _mouse = { pageX: 0, pageY: 0 };
-  _unRefContainer: () => void;
-  _unCalculate: () => void;
-  _unScroll: () => void;
 
   state = {
     visibleScroll: false,
@@ -195,9 +174,9 @@ class ScrollBarRoot extends Component<IScrollBarProps> {
   };
 
   handleMouseUpDocument = () => {
-    document.removeEventListener('mousemove', this.handleMouseMoveDocument);
-    document.removeEventListener('mouseup', this.handleMouseUpDocument);
-    document.removeEventListener('selectstart', this.handleSelectStartDocument);
+    document.removeEventListener('mousemove', this.handleMouseMoveDocument, true);
+    document.removeEventListener('mouseup', this.handleMouseUpDocument, true);
+    document.removeEventListener('selectstart', this.handleSelectStartDocument, true);
   };
 
   handleMouseDownSlider = (e) => {
@@ -210,9 +189,9 @@ class ScrollBarRoot extends Component<IScrollBarProps> {
     const { scrollLeft, scrollTop } = this.$container;
     this._scroll = { left: scrollLeft, top: scrollTop };
 
-    document.addEventListener('mousemove', this.handleMouseMoveDocument);
-    document.addEventListener('mouseup', this.handleMouseUpDocument);
-    document.addEventListener('selectstart', this.handleSelectStartDocument);
+    document.addEventListener('mousemove', this.handleMouseMoveDocument, true);
+    document.addEventListener('mouseup', this.handleMouseUpDocument, true);
+    document.addEventListener('selectstart', this.handleSelectStartDocument, true);
   };
 
   handleMouseDownBar = (e) => {
@@ -290,11 +269,14 @@ class ScrollBarRoot extends Component<IScrollBarProps> {
   }
 }
 
-const ScrollBar = createComponent<ScrollBarRoot,
-  {
-    Slider: ComponentProps<typeof Box>;
-  },
-  IScrollBarContext>(ScrollBarRoot, {
+function Slider(props) {
+  const { styles } = props;
+  const SSlider = Root;
+
+  return sstyled(styles)(<SSlider render={Box} onDragStart={() => false} />);
+}
+
+const ScrollBar = createComponent(ScrollBarRoot, {
   Slider,
 });
 
