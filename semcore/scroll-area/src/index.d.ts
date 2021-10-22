@@ -1,4 +1,4 @@
-import ResizeObserverCallback from 'resize-observer-polyfill';
+import type ResizeObserverCallback from 'resize-observer-polyfill';
 import { CProps, PropGetterFn, ReturnEl } from '@semcore/core';
 import { Box, IBoxProps } from '@semcore/flex-box';
 import { NodeByRef } from '@semcore/utils/lib/ref';
@@ -45,4 +45,7 @@ declare const ScrollAreaComponent: (<T>(
   Bar: typeof ScrollBar;
 };
 
+declare const eventCalculate: any;
+
+export {eventCalculate}
 export default ScrollAreaComponent;
