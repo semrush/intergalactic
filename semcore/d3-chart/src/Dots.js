@@ -4,6 +4,7 @@ import { sstyled } from '@semcore/core';
 import { eventToPoint, invert } from './utils';
 import createElement from './createElement';
 import { FadeInOut } from '@semcore/animation';
+import trottle from '@semcore/utils/lib/rafTrottle';
 
 import style from './style/dot.shadow.css';
 
@@ -27,18 +28,21 @@ function Dots(props) {
   const [activeIndex, setActiveIndex] = useState(null);
 
   const handlerMouseMoveRoot = useCallback(
-    (e) => {
+    trottle((e) => {
       const [xScale] = scale;
       const [pX] = eventToPoint(e, rootRef.current);
       const vX = invert(xScale, pX);
       setActiveIndex(bisect(data, vX));
-    },
+    }),
     [scale, data],
   );
 
-  const handlerMouseLeaveRoot = useCallback(() => {
-    setActiveIndex(null);
-  }, []);
+  const handlerMouseLeaveRoot = useCallback(
+    trottle(() => {
+      setActiveIndex(null);
+    }),
+    [],
+  );
 
   useEffect(() => {
     const unsubscribeMouseMoveRoot = eventEmitter.subscribe('onMouseMoveChart', (e) => {
