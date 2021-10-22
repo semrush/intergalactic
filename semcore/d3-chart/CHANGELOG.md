@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [1.5.2] - 2021-10-22
+
+### Fixed
+
+- Fixed field `e.currentTarget` for events in `eventEmitter`.
+
 ## [1.5.1] - 2021-10-19
 
 ### Fixed
