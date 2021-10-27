@@ -48,8 +48,18 @@ class HorizontalBarRoot extends Component {
     const barY = yScale(d[y]) + offset[1];
     const barX = xScale(Math.min(d[x0] ?? 0, d[x])) + offset[0];
     const height = heightProps || getBandwidth(yScale);
-    const width = Math.abs(xScale(d[x]) - Math.max(xScale(xScale.domain()[0]), xScale(d[x0] ?? 0)));
+    let width = Math.abs(xScale(d[x]) - Math.max(xScale(xScale.domain()[0]), xScale(d[x0] ?? 0)));
+    width = isRounded ? width + r : width;
     const isRounded = r !== 0;
+    const xValue = isRounded ? (d[x] > 0 ? barX : barX - r) : barX;
+    const dSvg = getHorizontalRect({
+      x: xValue,
+      y: barY,
+      width,
+      height,
+      radius: r,
+      position: d[x] > 0 ? 'right' : 'left',
+    });
 
     return sstyled(styles)(
       <SBar
@@ -62,14 +72,11 @@ class HorizontalBarRoot extends Component {
         index={i}
         hide={hide}
         color={color}
-        d={getHorizontalRect({
-          x: isRounded ? (d[x] > 0 ? barX : barX - r) : barX,
-          y: barY,
-          width: isRounded ? width + r : width,
-          height,
-          radius: r,
-          position: d[x] > 0 ? 'right' : 'left',
-        })}
+        x={xValue}
+        y={barY}
+        width={width}
+        height={height}
+        d={dSvg}
         use:duration={`${duration}ms`}
         onMouseMove={onMouseMove}
         onMouseLeave={onMouseLeave}

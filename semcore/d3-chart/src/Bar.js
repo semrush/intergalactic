@@ -70,11 +70,19 @@ class BarRoot extends Component {
     const [xScale, yScale] = scale;
     const barY = yScale(Math.max(d[y0] ?? 0, d[y])) + offset[1];
     const barX = xScale(d[x]) + offset[0];
-    const height = Math.abs(
-      yScale(d[y]) - Math.min(yScale(yScale.domain()[0]), yScale(d[y0] ?? 0)),
-    );
+    let height = Math.abs(yScale(d[y]) - Math.min(yScale(yScale.domain()[0]), yScale(d[y0] ?? 0)));
+    height = isRounded ? height + r : height;
     const width = widthProps || getBandwidth(xScale);
     const isRounded = r !== 0;
+    const yValue = isRounded ? (d[y] > 0 ? barY - r : barY) : barY;
+    const dSvg = getRect({
+      x: barX,
+      y: yValue,
+      width,
+      height,
+      radius: r,
+      position: d[y] > 0 ? 'top' : 'bottom',
+    });
 
     return sstyled(styles)(
       <SBar
@@ -87,14 +95,11 @@ class BarRoot extends Component {
         index={i}
         hide={hide}
         color={color}
-        d={getRect({
-          x: barX,
-          y: isRounded ? (d[y] > 0 ? barY - r : barY) : barY,
-          width,
-          height: isRounded ? height + r : height,
-          radius: r,
-          position: d[y] > 0 ? 'top' : 'bottom',
-        })}
+        x={barX}
+        y={yValue}
+        width={width}
+        height={height}
+        d={dSvg}
         use:duration={`${duration}ms`}
       />,
     );
