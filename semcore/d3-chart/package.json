@@ -1,7 +1,7 @@
 {
   "name": "@semcore/d3-chart",
   "description": "SEMRush D3 Chart Component",
-  "version": "1.5.2",
+  "version": "1.5.3",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",

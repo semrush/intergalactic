@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [1.5.3] - 2021-10-27
+
+### Fixed
+
+- Returned data `(x, y, width, height)` in render function for `Bar, Horizontalbar`.
+
 ## [1.5.2] - 2021-10-22
 
 ### Fixed
