@@ -125,16 +125,6 @@ A serious error/problem/action that does not allow the user to continue working 
 
 ![danger](static/danger.png)
 
-### Global notice
-
-The default color of this notice is `--wall`.
-
-![global-notice](static/gnotice-default.png)
-
-If necessary, you can give it a different color. For example, `--violet`, `--light-blue` or other from [our palette](/style/color/).
-
-![global-notice](static/gnotice-custom.png)
-
 @## Interaction
 
 ### Contextual notice
@@ -211,7 +201,7 @@ If the notice applies to the entire component, it is placed at the bottom or top
 
 ![gnotice-placement](static/placement.png)
 
-@## Custom notices
+@## Custom notice
 
 These are the notices that "live" by their own rules and their styles differ from regular notices.
 
@@ -220,6 +210,16 @@ These are the notices that "live" by their own rules and their styles differ fro
 It differs from the regular one – it is attached to the header and stretched to the full width of the report's content section. It has no indents at the top, right, or left. You can see an example in the [Code tab](/components/notice/notice-code).
 
 ![feedback](static/feedback.png)
+
+### Global notice
+
+The default color of this notice is `--wall`.
+
+![global-notice](static/gnotice-default.png)
+
+If necessary, you can give it a different color. For example, `--violet`, `--light-blue` or other from [our palette](/style/color/).
+
+![global-notice](static/gnotice-custom.png)
 
 ### Advertising
 
