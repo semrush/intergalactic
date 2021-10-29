@@ -1,28 +1,53 @@
-**Perfect way to use:**
+This article will guide you through creating an email template with components included in the Semcore library. In the end, you will get HTML code that you can copy and paste to your email client.
 
-- create a new folder (example: `mkdir myProject`);
-- go to the created folder (example: `cd myProject`);
-- copy everything from [package](https://github.com/semrush/intergalactic/tree/master/semcore/email) there (example:
-  [click to download](https://download-directory.github.io/?url=https://github.com/semrush/intergalactic/tree/master/semcore/email));
-- install all dependencies (example: `npm i`);
-- create your email to the following scheme `src/Name_Component/examples/any_name.html` (example: `mkdir -p src/test_email/examples; touch src/test_email/examples/index.html`);
-- css, if necessary, you can place here `src/Name_Component/index.css` (example: `touch src/test_email/index.css`);.
+## Setting up the project
 
-**Including `@semcore/email` styles:**
+1. Create a new directory for your project and navigate to it.
 
-- you can include separate files `@semcore/email/lib/button/index.css`;
-- or include all styles `@semcore/email/lib/core/index.css`;
-- you can also get all CSS variables `@semcore/email/lib/core/var.css`.
+2. [Download the semcore/email package](https://download-directory.github.io/?url=https://github.com/semrush/intergalactic/tree/master/semcore/email) and place all the files to your project directory.
 
-**Using styles in the base template**
+3. Install dependencies:
 
-- all styles are included in template `@semcore/email/lib/core/base.html` (example: `<link rel="stylesheet" href="../../../lib/core/index.css" />`);
-- you can include your styles:
+   ```
+   npm install
+   ```
+
+4. Create a directory for your email template. Replace `template_name` with the name of your template:
+
+   ```bash
+   mkdir src/template_name/examples
+   ```
+
+5. Create an HTML page for your template:
+
+   ```bash
+   touch src/template_name/examples/index.html
+   ```
+
+   This is where the code of your template will live.
+
+6. If you need additional CSS styles, create a stylesheet file and add your styles there:
+
+   ```bash
+   touch src/template_name/index.css
+   ```
+
+## Including `@semcore/email` styles
+
+To use `@semcore/email` styles in your template, add `@semcore/email/lib/core/index.css` to your `index.css` file. This will include all available styles. You can also include styles of specific components, for example `@semcore/email/lib/button/index.css`.
+
+To use CSS variables, include `@semcore/email/lib/core/var.css` in your `index.css` file.
+
+## Using styles in the base template
+
+All styles are included in the template `@semcore/email/lib/core/base.html` (example: `<link rel="stylesheet" href="../../../lib/core/index.css" />`);
+
+To include your styles, link an external stylesheet, or put the styles in the `<style>` tag. You can use both options in one block.
 
 ```html
 <block name="head">
+  <!--You can use either a stylesheet or the <style> tag, or both-->
   <link rel="stylesheet" href="YOUR STYLES" />
-  or
   <style>
     YOUR STYLES
   </style>
@@ -31,7 +56,7 @@
 
 or
 
-```html
+```htmlqq
 <block name="content">
   <style>
     YOUR STYLES
@@ -39,31 +64,42 @@ or
 </block>
 ```
 
-**Using variables in html**
+## Using variables in HTML code
 
-- for work without outside variables:
+You can use both internal and external variables in your HTML code.
 
-```html
-<p>{{text}}</p>
-<script locals>
-  module.exports = {
-    text: 'Hello',
-  };
-</script>
+- Internal variables:
+
+  ```html
+  <p>{{text}}</p>
+  <script locals>
+    module.exports = {
+      text: 'Hello',
+    };
+  </script>
+  ```
+
+- External variables:
+
+  ```html
+  <p>
+    <raw>{{text}}</raw>
+  </p>
+  ```
+
+## Rendering the template
+
+To test your template in the browser, run:
+
+```bash
+npm run watch;
+npm run serve
 ```
 
-- for work with outside variables:
+To build the email template ready for production, run:
 
-```html
-<p>
-  <raw>{{text}}</raw>
-</p>
+```bash
+npm run build
 ```
 
-**For development we run:**
-
-- `npm run watch` and `npm run serve` to get the result in the browser;
-
-**For production we run:**
-
-- `npm run build` to get our email template, which is located at `.tmp/Name_Component/examples/any_name.html`.
+This command will render your email template to the file `.tmp/template-name/examples/index.html`. Copy and paste the code to your email client. Your emails will shine!
