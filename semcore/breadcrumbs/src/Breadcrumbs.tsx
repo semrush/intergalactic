@@ -73,7 +73,7 @@ class Item extends Component<IBreadcrumbsItemProps> {
 export default createComponent<
   Merge<IBreadcrumbsProps, HTMLAttributes<HTMLElement>>,
   {
-    Item: Merge<IBreadcrumbsItemProps, HTMLAttributes<HTMLLinkElement>>;
+    Item: Merge<IBreadcrumbsItemProps, HTMLAttributes<HTMLAnchorElement>>;
   },
   IBreadcrumbsContext
 >(Breadcrumbs, {
