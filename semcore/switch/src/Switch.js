@@ -93,7 +93,6 @@ class Value extends Component {
   }
 
   handleKeyDown = (e) => {
-    const { currentTarget } = e;
     if (e.keyCode === 13) this.handlers.checked(!this.asProps.checked);
   };
 
@@ -131,7 +130,7 @@ class Value extends Component {
           {...inputProps}
           onKeyDown={callAllEventHandlers(this.handleKeyDown, inputProps.onKeyDown)}
         />
-        <SSlider>
+        <SSlider checked={inputProps.checked}>
           <Children />
         </SSlider>
       </SToggle>,
