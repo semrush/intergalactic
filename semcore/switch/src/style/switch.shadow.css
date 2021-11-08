@@ -72,10 +72,6 @@ SSwitch[checked] {
   & SAddon[neighborLocation='left'] {
     color: var(--gray20);
   }
-
-  & SSlider {
-    transform: translateX(100%) translateY(-50%);
-  }
 }
 
 SToggle {
@@ -118,6 +114,10 @@ SSlider {
   display: flex;
   align-items: center;
   justify-content: space-around;
+}
+
+SSlider[checked] {
+  transform: translateX(100%) translateY(-50%);
 }
 
 SInput {
