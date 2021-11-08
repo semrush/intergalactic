@@ -1,25 +1,25 @@
 substitutions:
   _APP_VERSION: 0.0.1
 steps:
-  - name: 'node'
+  - name: node:16
     entrypoint: yarn
     args: ['--non-interactive', '--frozen-lockfile']
-  - name: 'node'
+  - name: node:16
     entrypoint: yarn
     args: ['build']
-  - name: 'node'
+  - name: node:16
     entrypoint: yarn
     args: ['--non-interactive', '--frozen-lockfile', '--cwd', 'website']
-  - name: 'node'
+  - name: node:16
     entrypoint: yarn
     args: ['--cwd', 'website', 'build:client']
-  - name: 'node'
+  - name: node:16
     entrypoint: yarn
     args: ['--cwd', 'website', 'build:server']
-  - name: 'node'
+  - name: node:16
     entrypoint: yarn
     args: ['--cwd', 'website', 'build:interface']
-  - name: 'node'
+  - name: node:16
     entrypoint: yarn
     args: ['--cwd', 'website', 'lint:md']
   - name: 'ubuntu'
@@ -84,7 +84,7 @@ steps:
         '--ingress',
         'internal-and-cloud-load-balancing',
       ]
-  - name: 'node'
+  - name: node:16
     entrypoint: node
     args: ['algoliaPublish.js']
     dir: 'website'
