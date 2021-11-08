@@ -1,7 +1,7 @@
 # docker build -f docker/intergalactic/Dockerfile -t website .
 # docker run -p 3000:3000 website
 
-FROM node:12
+FROM node:14
 
 WORKDIR /app
 
