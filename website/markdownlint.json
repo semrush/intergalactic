@@ -10,5 +10,6 @@
   "no-duplicate-heading/no-duplicate-header": false,
   "ol-prefix": false,
   "no-emphasis-as-heading/no-emphasis-as-header": false,
-  "first-line-heading": false
+  "first-line-heading": false,
+  "header-style": false
 }
