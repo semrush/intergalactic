@@ -17,16 +17,6 @@
   background-color: transparent;
 }
 
-.gantt__row--lines_6,
-.gantt__row--months_6 {
-  grid-template-columns: repeat(6, 1fr);
-}
-
-.gantt__row--lines_7,
-.gantt__row--months_7 {
-  grid-template-columns: repeat(7, calc(100% / 7));
-}
-
 .gantt__row--lines span {
   display: block;
   text-align: center;
@@ -75,14 +65,6 @@
   padding: 9px 0;
   margin: 0;
   grid-gap: 8px 0;
-}
-
-.gantt__row-bars_12 {
-  grid-template-columns: repeat(12, 1fr);
-}
-
-.gantt__row-bars_14 {
-  grid-template-columns: repeat(14, 1fr);
 }
 
 .gantt__row-bars li {

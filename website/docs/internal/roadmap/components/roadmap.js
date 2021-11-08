@@ -58,6 +58,14 @@ const Legenda = styled.ul`
   }
 `;
 
+const Row_Column = styled.div`
+  grid-template-columns: ${({ size }) => `repeat(${size}, calc(100% / ${size}));`};
+`;
+
+const Row_Bar = styled.ul`
+  grid-template-columns: ${({ size }) => `repeat(${size}, 1fr);`};
+`;
+
 dayjs.locale('ru');
 // 1month = 2sprints
 // 1q = 3months
@@ -73,9 +81,12 @@ function generateSprint(startDay, finishDay) {
 }
 
 const year2020 = generateSprint(dayjs('2020-01-06'), dayjs('2020-12-27'));
-const year2021 = generateSprint(dayjs('2021-01-18'), dayjs('2021-12-30'));
-const dateSprint = [...year2020, ...year2021];
+const year2021 = [
+  ...generateSprint(dayjs('2021-01-18'), dayjs('2021-04-25')),
+  ...generateSprint(dayjs('2021-05-17'), dayjs('2021-12-30')),
+];
 
+const dateSprint = [...year2020, ...year2021];
 const components = {
   'Q1 2020': [
     { text: 'z-index', size: { kit: '1/13' } },
@@ -178,7 +189,7 @@ function Gant(props) {
 
   return (
     <div className="gantt">
-      <div className={`gantt__row gantt__row--months gantt__row--months_${lengthSprint}`}>
+      <Row_Column className="gantt__row gantt__row--months" size={lengthSprint}>
         {sprint.map((date, index) => {
           if (index === lengthSprint) return null;
           return (
@@ -187,8 +198,8 @@ function Gant(props) {
               .format('D MMM')}`}</span>
           );
         })}
-      </div>
-      <div className={`gantt__row gantt__row--lines gantt__row--lines_${lengthSprint}`}>
+      </Row_Column>
+      <Row_Column className="gantt__row gantt__row--lines" size={lengthSprint}>
         {sprint.map((date, index) => {
           const currentDate = dayjs();
           if (index === lengthSprint) return null;
@@ -197,10 +208,10 @@ function Gant(props) {
           }
           return <span key={date} />;
         })}
-      </div>
+      </Row_Column>
 
       {components.map((component = {}, index) => (
-        <ul className={`gantt__row-bars gantt__row-bars_${lengthSprint * 2}`} key={index}>
+        <Row_Bar className="gantt__row-bars" size={lengthSprint * 2} key={index}>
           {Object.keys(component.size).map((team, index) => (
             <li
               key={index}
@@ -214,7 +225,7 @@ function Gant(props) {
               {component.text}
             </li>
           ))}
-        </ul>
+        </Row_Bar>
       ))}
     </div>
   );
@@ -244,10 +255,10 @@ function Roadmap() {
       TabContent = <Gant sprint={dateSprint.slice(32, 39)} components={components['Q2 2021']} />;
       break;
     case 6:
-      TabContent = <Gant sprint={dateSprint.slice(38, 46)} components={components['Q3 2021']} />;
+      TabContent = <Gant sprint={dateSprint.slice(38, 47)} components={components['Q3 2021']} />;
       break;
     case 7:
-      TabContent = <Gant sprint={dateSprint.slice(45, 53)} components={components['Q4 2021']} />;
+      TabContent = <Gant sprint={dateSprint.slice(46, 53)} components={components['Q4 2021']} />;
       break;
   }
   return (
