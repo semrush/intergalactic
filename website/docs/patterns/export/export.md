@@ -105,6 +105,8 @@ Or lead to the page with the custom_report form, if possible, the text is as fol
 
 ### Error
 
+For error messages use following message: "Please try again later. If the problem persists, contact us at {email}".
+
 ![export error](static/export-error-1.png)
 
 ![export error](static/export-error-2.png)
