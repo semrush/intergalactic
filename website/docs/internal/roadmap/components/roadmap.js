@@ -174,12 +174,13 @@ const components = {
     { text: 'Components restyling', size: { ui: '1/15' } },
   ],
   'Q4 2021': [
-    { text: 'Technical sprint', size: { kit: '1/3' } },
-    { text: 'Scatterplot chart', size: { ui: '3/9', kit: '9/13' } },
-    { text: 'Bubble chart', size: { ui: '5/11', kit: '9/13' } },
+    { text: 'Technical sprint', size: { kit: '1/5' } },
+    { text: 'Restyling', size: { ui: '1/4', kit: '4/9' } },
+    { text: 'Scatterplot chart', size: { ui: '3/7', kit: '7/11' } },
+    { text: 'Bubble chart', size: { ui: '5/7', kit: '7/11' } },
     { text: 'Sandbox', size: { kit: '7/11' } },
-    { text: 'Mind Map chart', size: { ui: '11/13' } },
-    { text: 'Technical sprint', size: { kit: '13/15' } },
+    { text: 'Mind Map chart', size: { ui: '9/13' } },
+    { text: 'Technical sprint', size: { kit: '11/13' } },
   ],
 };
 
