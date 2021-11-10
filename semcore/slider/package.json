@@ -1,7 +1,7 @@
 {
   "name": "@semcore/slider",
   "description": "SEMRush Slider Component",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
