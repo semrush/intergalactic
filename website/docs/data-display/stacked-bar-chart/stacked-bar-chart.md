@@ -29,6 +29,16 @@ Stacked bar chart has no margin between values inside the column. **Choose contr
 
 Use [special chart palette](/style/color/) and follow the rules prescribed for it.
 
+@## Interaction
+
+When you hover over a column, we highlight it with a grey background – `rgba 152 170 175, 0.3` (`$mist` with .3 opacity). The hover takes up half of the margin column on the right and left sides.
+
+> 💡 If the column is clickable, the cursor must change to `pointer`.
+
+![stacked bar chart](static/stacked-bar-chart-hover.png)
+
+See detailed information in the common [Bar chart guide](/data-display/bar-chart/#a61ee5).
+
 @## Trend
 
 In some cases, a stacked bar chart may have a trend line. Most often, this component overload such charts. However, in some cases, it can be useful for reading the overall trend. It helps to focus on the total value of each point.
@@ -36,18 +46,6 @@ In some cases, a stacked bar chart may have a trend line. Most often, this compo
 When you hover over any part of the column, the tooltip shall display the values for all components and the total value.
 
 ![stacked bar chart](static/stacked-bar-chart-trend.png)
-
-@## Interaction
-
-When you hover over a column, we highlight it with a grey background – `rgba 152 170 175, 0.3` (`$mist` with .3 opacity). The hover takes up half of the margin column on the right and left sides.
-
-> 💡 If the column is clickable, the cursor must change to `pointer`.
-
-If the chart has a trend line, then while hovering a line and a point shall be displayed on the trend line.
-
-![stacked bar chart](/data-display/bar-chart/static/stacked-bar-chart-trend.png)
-
-See detailed information in the common [Bar chart guide](/data-display/bar-chart/#a61ee5).
 
 @## Edge cases
 
