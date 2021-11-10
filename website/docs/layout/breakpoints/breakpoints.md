@@ -41,7 +41,7 @@ module.exports = {
 };
 ```
 
-@## Breakpoints
+@## List of breakpoints
 
 A list of the main breakpoints that we recommend to use in our product interfaces:
 
