@@ -24,8 +24,6 @@ class SliderRoot extends Component {
         <Slider.Knob />
       </>
     ),
-    color: '#2B94E1',
-    background: '#00000010',
     interactive: true,
   });
 
