@@ -2,9 +2,7 @@
 title: Table states
 ---
 
-@## Empty table
-
-All the basic states of our [table](/table-group/table/) ✨ are gathered here.
+@## Basic rules for table states
 
 > 💡 The block with the text of the states inside the table must get the `sticky` property when scrolling and be centered relative to the parent block and the user's viewport.
 >
@@ -19,7 +17,7 @@ A block with a loading state or error state must have `margin-top: 40px`, so tha
 
 > 💡 It is also not recommended to change the table height when changing states.
 
-@## Loading
+@## Skeleton
 
 When loading data for the first time, show the structure of the loaded page and data. Use the [Skeleton](/components/skeleton/).
 
@@ -39,7 +37,7 @@ In a secondary table, you can use the skeleton for all the rows (there are usual
 
 ![table with skeleton](static/skeleton-secondary.png)
 
-@## No data
+@## Progressbar
 
 If gathering data takes a large period of time (more than 1 minute, for example), we show that data is being collected. Use the [ProgressBar](/components/progress-bar) in this case.
 
@@ -51,7 +49,7 @@ When scrolling the table, pin the progressbar to the table header. The state des
 
 ![table with sticky progressbar](static/sticky-2.png)
 
-@## Nothing found
+@## Loading
 
 This state is for cases when we filter/sort/search data. In this case, we use [Spin](/components/spin/).
 
@@ -69,7 +67,7 @@ The block with the spinner gets the `sticky` property and is centered relative t
 
 ![table with sticky spinner](static/sticky-loading-1.png)
 
-@## Skeleton
+@## Empty table
 
 The table is empty and has no data in it, because the data was either deleted or was not provided at the beginning of working with the table.
 
@@ -82,7 +80,7 @@ The table is empty and has no data in it, because the data was either deleted or
 
 > 💡 The illustrations for these cases are usually unique. Designers create them for each specific case or tool if needed.
 
-@## Something went wrong
+@## No data
 
 **When showing:**
 
@@ -109,7 +107,7 @@ In this state, we recommend adding a control that will help the user correct the
 
 > 💡 The icon for this state can be found in the [library for empty states](https://static.semrush.com/ui-kit/widget-empty/1.4.0/nothing-found.svg). All other icons and their names can be found in the [documentation of empty states](/components/widget-empty/widget-empty-code/).
 
-@## Service error
+@## Something went wrong
 
 There was an error in the tool on the backend, so we can't show the data. For more information about such errors, see [Errors, n/a, nothing found in the widgets](/components/widget-empty/).
 
@@ -141,9 +139,9 @@ For all empty states of the table, we keep the header. If it has sorting icons, 
 
 ![empty table with head](static/empty-yes-no.png)
 
-@## Cell edge cases)
+@## Cell empty & error states
 
-### There is no data in the cell)
+### There is no data in the cell
 
 - Show the `n/a` text in the secondary text color `var(--gray60)`.
 - It is recommended to show a tooltip with an explanation that the data is not available (and for what reason).
@@ -152,7 +150,7 @@ For all empty states of the table, we keep the header. If it has sorting icons, 
 
 ![table cell with n/a](static/cell-na-tooltip.png)
 
-### Data uploading in the cell)
+### Data uploading in the cell
 
 > 💡 Note that we use [Skeleton](/components/skeleton/). when loading the table for the first time.
 
@@ -160,7 +158,7 @@ When loading content in one or more cells, we show the [Spin](/components/spin/)
 
 ![table cell with spin](static/cell-loading.png)
 
-### Error in a table cell)
+### Error in a table cell
 
 This is the state when something broke in a particular cell and we can't show the data.
 
@@ -173,7 +171,7 @@ This is the state when something broke in a particular cell and we can't show th
 
 ![table cell with warning](static/cell-danger-tooltip.png)
 
-### The cell is blocked)
+### The cell is blocked
 
 A cell in a table may be blocked by a limit or by the need to take some action to unlock the data.
 

@@ -26,4 +26,4 @@ This section describes the most common table use cases.
 
 Here we have descriptions for all table states.
 
-@import table-group {"group": ["empty", "loading", "noData", "nothingFound", "skeleton", "error"]}
+@import table-group {"group": ["empty", "loading", "noData", "nothingFound", "progressbar", "skeleton", "error"]}

@@ -50,6 +50,7 @@ const PreviewIcon = styled.div`
     width: 100%;
     font-size: 14px;
     line-height: 1.33;
+    color: #575c66;
     text-align: center;
     text-overflow: ellipsis;
     white-space: nowrap;

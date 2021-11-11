@@ -88,6 +88,12 @@ const group = {
     disabled: false,
     type: 'table',
   },
+  progressbar: {
+    title: 'Progressbar',
+    route: '/table-group/table-states/#a6ab48',
+    disabled: false,
+    type: 'table',
+  },
   skeleton: {
     title: 'Skeleton',
     route: '/table-group/table-states/#a6ab48',
