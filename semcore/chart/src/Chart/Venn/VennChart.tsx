@@ -12,8 +12,9 @@ import {
   intersectionAreaPath,
   normalizeSolution,
   scaleSolution,
+  ISolution,
   venn,
-} from 'venn.js';
+} from '@upsetjs/venn.js';
 import { Tooltip } from '../../Tooltip';
 import VennArea from './VennArea';
 import VennIntersection from './VennIntersection';
@@ -124,8 +125,10 @@ export default class VennChart extends React.PureComponent<IVennChartProps, IVen
     Object.keys(scaledCircles).forEach((key) => {
       const circleRadius = scaledCircles[key].radius;
       scaledCircles[key].radius = Math.max(minAreaRadius, circleRadius);
+      //@ts-ignore
       scaledCircles[key].data = getElementDataByKey(actualData, key);
     });
+    //@ts-ignore
     this.circles = scaledCircles;
   };
 
