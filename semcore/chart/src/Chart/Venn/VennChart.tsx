@@ -12,7 +12,6 @@ import {
   intersectionAreaPath,
   normalizeSolution,
   scaleSolution,
-  ISolution,
   venn,
 } from '@upsetjs/venn.js';
 import { Tooltip } from '../../Tooltip';
