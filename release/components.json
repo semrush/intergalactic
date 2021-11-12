@@ -17,6 +17,7 @@
     "@semcore/date-picker",
     "@semcore/divider",
     "@semcore/dot",
+    "@semcore/drag-and-drop",
     "@semcore/dropdown",
     "@semcore/dropdown-menu",
     "@semcore/d3-chart",
