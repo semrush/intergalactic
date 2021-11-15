@@ -137,6 +137,7 @@ class FeedbackYesNo extends React.PureComponent {
           borderTop: 'none',
           borderRight: 'none',
           borderLeft: 'none',
+          borderRadius: '0',
         }}
       >
         <Notice.Label my="-6px">

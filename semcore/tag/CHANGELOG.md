@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.5.0] - 2021-11-15
+
+### Added
+
+- Added property for Tag color
+
 ## [3.4.2] - 2021-8-26
 
 ### Changed

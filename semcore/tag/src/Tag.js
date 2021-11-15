@@ -41,6 +41,7 @@ class RootTag extends Component {
       styles,
       theme,
       use,
+      tagColor,
       interactive,
       disabled,
       addonLeft,
@@ -57,7 +58,7 @@ class RootTag extends Component {
 
     const useTheme = getThemeName(use, theme);
     const colorText = theme ? resolveColor(theme) : '';
-    const colorTag = opacity(colorText, 0.15);
+    const colorTag = tagColor ? opacity(resolveColor(tagColor), 0.5) : '';
 
     return sstyled(styles)(
       <STag
