@@ -40,3 +40,15 @@ SCounter[theme] {
   background: var(--theme);
   color: var(--colorText);
 }
+
+SCounter[theme='warning'] {
+  border-color: transparent;
+  background: #ff622d;
+  color: white;
+}
+
+SCounter[theme='danger'] {
+  border-color: transparent;
+  background: #ff4953;
+  color: white;
+}
