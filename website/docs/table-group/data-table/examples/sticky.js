@@ -1,25 +1,45 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import DataTable from '@semcore/data-table';
 import Sticky from '@semcore/sticky';
+import ScrollArea from '@semcore/scroll-area';
 
 export default () => {
+  const containerRef = useRef();
+  const [container, updateContainer] = useState(null);
   const [top, updateTop] = useState(0);
   useEffect(() => {
+    containerRef.current &&
+      updateContainer(containerRef.current.closest('[data-ui-name="ScrollArea.Container"]'));
     const header = document.getElementsByTagName('header')[0];
     header && updateTop(header.offsetHeight);
   }, []);
   return (
-    <DataTable data={data}>
-      <Sticky zIndex={2} top={top}>
-        <DataTable.Head>
-          <DataTable.Column name="keyword" children="Keyword" />
-          <DataTable.Column name="kd" children="KD,%" />
-          <DataTable.Column name="cpc" children="CPC" />
-          <DataTable.Column name="vol" children="Vol." />
-        </DataTable.Head>
-      </Sticky>
-      <DataTable.Body />
-    </DataTable>
+    <>
+      <DataTable data={data}>
+        <Sticky zIndex={2} top={top}>
+          <DataTable.Head wMin={1000}>
+            <DataTable.Column name="keyword" children="Keyword" />
+            <DataTable.Column name="kd" children="KD,%" />
+            <DataTable.Column name="cpc" children="CPC" />
+            <DataTable.Column name="vol" children="Vol." />
+          </DataTable.Head>
+        </Sticky>
+        <DataTable.Body />
+      </DataTable>
+      <h3>with Scroll.Bar in Header</h3>
+      <DataTable data={data}>
+        <Sticky zIndex={2} top={top}>
+          <DataTable.Head wMin={1000} ref={containerRef}>
+            <DataTable.Column name="keyword" children="Keyword" />
+            <DataTable.Column name="kd" children="KD,%" />
+            <DataTable.Column name="cpc" children="CPC" />
+            <DataTable.Column name="vol" children="Vol." />
+          </DataTable.Head>
+          {container && <ScrollArea.Bar container={container} />}
+        </Sticky>
+        <DataTable.Body />
+      </DataTable>
+    </>
   );
 };
 
