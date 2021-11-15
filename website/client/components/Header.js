@@ -75,6 +75,7 @@ const Logo = styled.div`
   font-size: 22px;
   line-height: 130%;
   color: #ff622d;
+  margin-top: 6px;
   img {
     margin-right: 8px;
   }
