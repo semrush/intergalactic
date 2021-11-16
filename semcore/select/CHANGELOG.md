@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.6om/en/1.0.0/).
 
+## [2.6.2] - 2021-11-16
+
+### Added
+
+- Added classnames to InputSearch
+
 ## [2.6.1] - 2021-9-28
 
 ### Fixed
