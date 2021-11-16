@@ -1,5 +1,5 @@
 import React from 'react';
-import createComponent, { Component, CONTEXT_COMPONENT } from '@semcore/core';
+import createComponent, { Component, CONTEXT_COMPONENT, sstyled } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
 import Input from '@semcore/input';
 import Divider from '@semcore/divider';
@@ -9,14 +9,9 @@ import SearchS from '@semcore/icon/lib/Search/s';
 import CloseS from '@semcore/icon/lib/Close/s';
 import SearchM from '@semcore/icon/lib/Search/m';
 import CloseM from '@semcore/icon/lib/Close/m';
+import style from './style/select.shadow.css';
 
 import Select from './Select';
-
-const MAP_SIZE_TO_PADDINGS = {
-  m: '8px',
-  l: '10px 8px',
-  xl: '12px 12px',
-};
 
 const MAP_SIZE_TO_ICON = {
   m: [SearchXS, CloseXS],
@@ -26,6 +21,8 @@ const MAP_SIZE_TO_ICON = {
 
 class InputSearch extends Component {
   static displayName = 'InputSearch';
+
+  static style = style;
 
   static defaultProps = {
     defaultValue: '',
@@ -44,13 +41,15 @@ class InputSearch extends Component {
   };
 
   render() {
-    const { size, value, forwardRef } = this.asProps;
+    const SBox = Box;
+    const SInput = Input;
+    const { size, value, forwardRef, styles } = this.asProps;
     const finalSize = size || this.context.size;
 
-    return (
+    return sstyled(styles)(
       <>
-        <Box p={MAP_SIZE_TO_PADDINGS[finalSize]}>
-          <Input size={finalSize}>
+        <SBox size={finalSize}>
+          <SInput size={finalSize}>
             <Input.Addon tag={MAP_SIZE_TO_ICON[finalSize][0]} />
             <Input.Value ref={forwardRef} autoFocus {...this.asProps} />
             <Input.Addon
@@ -60,10 +59,10 @@ class InputSearch extends Component {
               style={{ visibility: value ? 'visible' : 'hidden' }}
               onClick={this.handleClear}
             />
-          </Input>
-        </Box>
+          </SInput>
+        </SBox>
         <Divider />
-      </>
+      </>,
     );
   }
 }

@@ -72,3 +72,15 @@ SOptionCheckbox[selected] {
     background-color: color-mod(var(--light-blue) a(20%));
   }
 }
+
+SBox[size='m'] {
+  padding: 8px;
+}
+
+SBox[size='l'] {
+  padding: 10px 8px;
+}
+
+SBox[size='xl'] {
+  padding: 12px 12px;
+}
