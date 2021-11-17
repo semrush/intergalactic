@@ -1,0 +1,21 @@
+{
+  "name": "test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {},
+  "devDependencies": {
+    "@babel/core": "^7.14.8",
+    "@babel/preset-env": "^7.14.8",
+    "@babel/preset-react": "^7.14.5",
+    "@statoscope/webpack-plugin": "^5.6.2",
+    "babel-loader": "^8.2.2",
+    "webpack": "^5.47.0",
+    "webpack-bundle-analyzer": "^4.4.2"
+  }
+}

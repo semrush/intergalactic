@@ -119,6 +119,7 @@ const DEFAULT_OPTIONS = {
   postcss: {},
   purgeCSS: {},
 };
+
 module.exports = function({ types: t }, opts) {
   const options = Object.assign({}, DEFAULT_OPTIONS, opts);
 
