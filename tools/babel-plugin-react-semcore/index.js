@@ -2,6 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const semver = require('semver');
 const parse = require('./process');
+const getColorVars = require('./utils/vars');
 
 const RESHADOW_MAGIC_COMMENTS = {
   CSS_START: '__reshadow_css_start__',
@@ -211,6 +212,7 @@ module.exports = function({ types: t }, opts) {
     if (!styles) return false;
     return styles.init.type === 'SequenceExpression' && containsReshadowMagicComment(styles.init);
   }
+
   return {
     pre() {
       let { theme } = options;
@@ -228,7 +230,9 @@ module.exports = function({ types: t }, opts) {
     visitor: {
       VariableDeclaration(p, state) {
         const { node } = p;
+
         if (!this.themeMeta.length || !options.theme) return;
+
         if (containsSemcoreMagicComment(node)) {
           const pkgName = getPkgNameFromFilePath(state.file.opts.filename, options.scope);
           const pkgJsonPath = getPkgJsonFromPkgName(
@@ -249,7 +253,12 @@ module.exports = function({ types: t }, opts) {
 
           if (!themeCssPaths) return;
 
-          const { css, tokens, hash } = parse([cssPath, ...themeCssPaths], options);
+          const vars = [cssPath, ...themeCssPaths].reduce(
+            (acc, p) => Object.assign(acc, getColorVars(p)),
+            {},
+          );
+
+          node.declarations[0].init = toObjectExpression(vars);
         }
 
         if (containsReshadowMagicComment(node)) {
@@ -274,7 +283,7 @@ module.exports = function({ types: t }, opts) {
 
           if (!themeCssPaths) return;
 
-          const { css, tokens, hash } = parse([cssPath, ...themeCssPaths], options);
+          const { css, tokens, hash } = parse(cssPath, themeCssPaths, options);
           replaceWithNewStyles(styles.init, css, tokens, hash);
         }
       },

@@ -1,6 +1,7 @@
 /*__semcore-vars__:"../style/var.css"*/ /* @ts-ignore */
 const COLORS = preval`
-  module.exports = require('@semcore/babel-plugin-react-semcore/utils/vars')('style/var.css');
+  const path = require('path');
+  module.exports = require('@semcore/babel-plugin-react-semcore/utils/vars')(path.resolve('style/var.css'));
 `;
 
 function shadeHexColor(color, percent) {

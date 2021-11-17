@@ -40,7 +40,7 @@ module.exports = {
                 [
                   '@semcore/babel-plugin-react-semcore',
                   {
-                    theme: path.resolve('theme'),
+                    theme: [path.resolve('theme')],
                     scope: 'semcore',
                   },
                 ],

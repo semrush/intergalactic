@@ -50,11 +50,10 @@ function execPurgeCss(styles, purgeCSSOptions) {
 
 const storage = new Cache();
 
-module.exports = function(cssPaths, pluginOptions) {
+module.exports = function(baseImport, themeImports, pluginOptions) {
   const processor = postcss(pluginOptions.postcss);
-  const [baseImport, ...themeImport] = cssPaths;
 
-  const themeCss = themeImport.map((p) => fs.readFileSync(p, 'utf8')).join('');
+  const themeCss = themeImports.map((p) => fs.readFileSync(p, 'utf8')).join('');
   // try to return from cache
   const fromCache = storage.get(baseImport, themeCss);
   if (fromCache) {
@@ -62,7 +61,7 @@ module.exports = function(cssPaths, pluginOptions) {
   }
 
   // inserting base css import on top of theme
-  const raw = createImports(cssPaths);
+  const raw = createImports([baseImport, ...themeImports]);
   const { css, messages } = processor.process(raw, { from: baseImport });
   const { tokens, hash } = messages.find((m) => m.plugin === 'postcss-shadow-styles');
   const purgedStyles = execPurgeCss(css, pluginOptions.purgeCSS);
@@ -76,3 +75,4 @@ module.exports = function(cssPaths, pluginOptions) {
   return data;
 };
 module.exports.PLACEHOLDER_REPLACER = postcss.PLACEHOLDER_REPLACER;
+module.exports.execPurgeCss = execPurgeCss;

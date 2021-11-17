@@ -1,5 +1,4 @@
 const fs = require('fs');
-const path = require('path');
 
 const CSS_VARS_REG = /--[\w+\-]+:\s+(#[\w\d]+|rgba?\(\d+,\s*\d+,\s*\d+(?:,\s*(\d+(?:\.\d+)?))?\))/g;
 
@@ -14,8 +13,8 @@ const CSS_VARS_REG = /--[\w+\-]+:\s+(#[\w\d]+|rgba?\(\d+,\s*\d+,\s*\d+(?:,\s*(\d
 // });
 // module.exports = Object.assign({}, ...varsList);
 
-function getVars(cssPath) {
-  const content = fs.readFileSync(path.resolve(cssPath), 'utf8');
+function getColorVars(cssPath) {
+  const content = fs.readFileSync(cssPath, 'utf8');
   return content.match(CSS_VARS_REG).reduce((acc, match) => {
     const [varName, varValue] = match.split(':');
     const colorName = varName.replace('--', '').trim();
@@ -24,4 +23,4 @@ function getVars(cssPath) {
   }, {});
 }
 
-module.exports = getVars;
+module.exports = getColorVars;
