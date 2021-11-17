@@ -30,13 +30,21 @@ module.exports = {
       },
       {
         test: /\.js$/,
-        include: /\/node_modules\/@semcore\//,
+        include: /\/semcore\//,
         enforce: 'pre',
         use: [
           {
             loader: 'babel-loader',
             options: {
-              plugins: [['@semcore/babel-plugin-react-semcore', { theme: path.resolve('theme') }]],
+              plugins: [
+                [
+                  '@semcore/babel-plugin-react-semcore',
+                  {
+                    theme: path.resolve('theme'),
+                    scope: 'semcore',
+                  },
+                ],
+              ],
             },
           },
         ],

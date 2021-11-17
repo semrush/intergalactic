@@ -1,5 +1,5 @@
-/* @ts-ignore */
-const COLORS = /*__semcore-vars__:"../style/var.css"*/ preval`
+/*__semcore-vars__:"../style/var.css"*/ /* @ts-ignore */
+const COLORS = preval`
   module.exports = require('@semcore/babel-plugin-react-semcore/utils/vars')('style/var.css');
 `;
 
