@@ -9,6 +9,9 @@ const EXPORTS = ['PNG', 'JPEG', 'WEBP'];
 
 export default () => {
   const [visible, updateVisible] = useState(false);
+  const [linkElements, updateLinkElements] = useState(
+    EXPORTS.map((name) => ({ key: name, children: name })),
+  );
 
   const svg = React.createRef();
   const download = React.createRef();
@@ -17,7 +20,6 @@ export default () => {
 
   const renderImage = () => {
     const svgElement = svg.current;
-    const linkElements = Array.from(download.current.getElementsByTagName('a'));
     let svgString = getSVGString(svgElement);
     svgString = svgString.replace(/(\w+)?:?xlink=/g, 'xmlns:xlink='); // Fix root xlink without namespace
     svgString = svgString.replace(/NS\d+:href/g, 'xlink:href'); // Safari NS namespace fix
@@ -27,9 +29,13 @@ export default () => {
       svgString2Image(svgString, 2 * width, 2 * height, format, save);
 
       function save(image) {
-        const el = linkElements[ind];
-        el.download = `image.${format}`;
-        el.href = image;
+        linkElements[ind] = {
+          ...linkElements[ind],
+          download: `image.${format}`,
+          href: image,
+        };
+
+        updateLinkElements([...linkElements]);
       }
     });
   };
@@ -53,12 +59,10 @@ export default () => {
           <Button.Addon tag={FileExportXS} />
           <Button.Text>Export</Button.Text>
         </DropdownMenu.Trigger>
-        <DropdownMenu.Popper wMax="257px" visible style={{ display: visible ? 'block' : 'none' }}>
+        <DropdownMenu.Popper wMax="257px">
           <DropdownMenu.List ref={download}>
-            {EXPORTS.map((name) => (
-              <DropdownMenu.Item tag="a" key={name}>
-                {name}
-              </DropdownMenu.Item>
+            {EXPORTS.map((name, ind) => (
+              <DropdownMenu.Item tag="a" {...linkElements[ind]} />
             ))}
           </DropdownMenu.List>
         </DropdownMenu.Popper>
