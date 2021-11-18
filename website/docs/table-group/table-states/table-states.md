@@ -97,7 +97,7 @@ The table is empty and has no data in it, because the data was either deleted or
 
 When searching or applying a filter in the table, we didn't find anything.
 
-> 💡 In this state, the illumination of the sorted column must be preserved.
+> 💡 In this state, save the active state of the sorted column.
 
 **Showing this state when there is no have data** on the parameters requested by the user. The user performed some actions with filters or sorting of data.
 
