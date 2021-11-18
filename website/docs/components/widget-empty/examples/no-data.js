@@ -111,7 +111,7 @@ export default () => {
         </Card>
         <Card my={5} pt={4}>
           <Text size={400}>Nothing found</Text>
-          <NoData type="nothing-found" />
+          <NoData type="nothing-found" description="Try changing your filters." />
         </Card>
         <Card my={5} pt={4}>
           <Text size={400}>Processing</Text>
