@@ -9,9 +9,9 @@ import SearchS from '@semcore/icon/lib/Search/s';
 import CloseS from '@semcore/icon/lib/Close/s';
 import SearchM from '@semcore/icon/lib/Search/m';
 import CloseM from '@semcore/icon/lib/Close/m';
-import style from './style/select.shadow.css';
-
 import Select from './Select';
+
+import style from './style/input-search.shadow.css';
 
 const MAP_SIZE_TO_ICON = {
   m: [SearchXS, CloseXS],
@@ -41,15 +41,14 @@ class InputSearch extends Component {
   };
 
   render() {
-    const SBox = Box;
-    const SInput = Input;
+    const SInputSearch = Box;
     const { size, value, forwardRef, styles } = this.asProps;
     const finalSize = size || this.context.size;
 
     return sstyled(styles)(
       <>
-        <SBox size={finalSize}>
-          <SInput size={finalSize}>
+        <SInputSearch size={finalSize}>
+          <Input size={finalSize}>
             <Input.Addon tag={MAP_SIZE_TO_ICON[finalSize][0]} />
             <Input.Value ref={forwardRef} autoFocus {...this.asProps} />
             <Input.Addon
@@ -59,8 +58,8 @@ class InputSearch extends Component {
               style={{ visibility: value ? 'visible' : 'hidden' }}
               onClick={this.handleClear}
             />
-          </SInput>
-        </SBox>
+          </Input>
+        </SInputSearch>
         <Divider />
       </>,
     );

@@ -9,6 +9,7 @@ import DropdownMenu, {
 import { ButtonTrigger, IBaseTriggerProps } from '@semcore/base-trigger';
 import Divider from '@semcore/divider';
 import { IInputValueProps } from '@semcore/input';
+import { IBoxProps } from '@semcore/flex-box';
 
 export interface ISelectInputSearch extends IInputValueProps {}
 
@@ -123,6 +124,7 @@ declare const Select: (<T, V extends SelectValue = SelectValue>(
     props: CProps<ISelectOptionProps & T, ISelectContext, ISelectHandlers>,
   ) => ReturnEl) & {
     Addon: typeof DropdownMenu.Item.Addon;
+    Checkbox: <T>(props: CProps<IBoxProps & { theme?: string; selected?: boolean } & T>) => ReturnEl;
   };
   OptionTitle: typeof DropdownMenu.ItemTitle;
   OptionHint: typeof DropdownMenu.ItemHint;
