@@ -9,14 +9,13 @@ import IF from '@semcore/utils/lib/if';
 import { Box } from '@semcore/flex-box';
 import Select from '@semcore/select';
 import SearchM from '@semcore/icon/lib/Search/m';
-import ArrowUpXS from '@semcore/icon/lib/ArrowUp/xs';
-import ArrowDownXS from '@semcore/icon/lib/ArrowDown/xs';
-import ActionReturnXS from '@semcore/icon/lib/ActionReturn/xs';
+import ArrowRight from '@semcore/icon/lib/ArrowRight/xxs';
 
 import convertKeyboard from '../utils/convert-keyboard';
 
 import observatory from '../static/search/observatory.svg';
 import CONFIG from '../algolia';
+import Divider from '@semcore/divider';
 
 const algoliaClient = algoliasearch(CONFIG.ALGOLIA_APP, CONFIG.ALGOLIA_OPEN_KEY);
 const searchClient = {
@@ -33,7 +32,7 @@ const Popper = styled.div`
   color: #171a22;
   z-index: 999;
   box-shadow: 0 10px 25px 0 rgba(0, 0, 0, 0.2);
-  border-radius: 0 0 6px 6px;
+  border-radius: 6px;
   overflow: hidden;
   border: none;
 `;
@@ -124,34 +123,44 @@ const NotFoundImg = styled.img`
   margin: 0 auto 4px auto;
 `;
 
-const Option = styled.span`
+const Option = styled.div`
   padding: 0 28px;
   height: 54px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  display: block;
   font-size: 16px;
   text-decoration: none;
 `;
 
-const OptionText = styled.span`
-  font-size: 16px;
-  text-decoration: none;
-`;
-
-const OptionPlace = styled.span`
+const OptionText = styled.div`
   font-size: 14px;
-  color: #898d9a;
+  text-decoration: none;
 `;
 
-const MenuFooter = styled.div`
-  height: 60px;
-  background-color: #f6f7f8;
+const OptionPlace = styled.div`
   display: flex;
   align-items: center;
-  padding: 0 28px;
-  border-bottom-left-radius: 3px;
-  border-bottom-right-radius: 3px;
+  font-size: 12px;
+  color: #575c66;
+`;
+
+const OptionHeader = styled.div`
+  padding: 8px;
+  height: 21px;
+  font-weight: bold;
+  font-size: 14px;
+  display: flex;
+  align-items: end;
+`;
+
+const ArrowRightIcon = styled(ArrowRight)`
+  margin: 0 4px;
+  &:hover {
+    cursor: default;
+  }
+
+  @media (max-width: 415px) {
+    display: none;
+  }
 `;
 
 const SelectPopper = styled(Select.Popper)`
@@ -161,21 +170,63 @@ const SelectPopper = styled(Select.Popper)`
   }
 `;
 
-const MenuAction = styled.div`
-  margin-right: 24px;
-  font-size: 16px;
-  line-height: 150%;
-  color: #898d9a;
-  display: flex;
-  align-items: center;
-
-  svg {
-    margin-right: 4px;
-  }
-`;
-
 const SuggestSearch = withRouter(
   connectAutoComplete(({ currentRefinement, refine, hits, history, ...other }) => {
+    const pages = hits.filter((el) => !el.heading);
+    const content = hits.filter((el) => el.heading);
+
+    const showList = (hits, pages, content) => {
+      let options = [];
+      if (pages.length) {
+        options.push(<OptionHeader tag={Option}>Pages</OptionHeader>);
+        options.push(
+          ...pages.map((item) => (
+            <Select.Option
+              tag={Option}
+              key={item.objectID}
+              value={item.slug}
+              disabled={item.disabled}
+            >
+              <OptionText>{item.title}</OptionText>
+              <OptionPlace>{item.category}</OptionPlace>
+            </Select.Option>
+          )),
+        );
+      }
+      if (pages.length && content.length) {
+        options.push(<Divider />);
+      }
+      if (content.length) {
+        options.push(<OptionHeader tag={Option}>Content</OptionHeader>);
+        options.push(
+          ...content.map((item) => (
+            <Select.Option
+              tag={Option}
+              key={item.objectID}
+              value={item.slug}
+              disabled={item.disabled}
+            >
+              <OptionText>{item.title}</OptionText>
+              <OptionPlace>
+                {item.category}
+                <ArrowRightIcon />
+                {item.pageTitle}
+              </OptionPlace>
+            </Select.Option>
+          )),
+        );
+      }
+      if (!hits.length)
+        options.push(
+          <NotFound key={1}>
+            <NotFoundImg src={observatory} alt="observatory" />
+            <OptionText>We found something… it's nothing</OptionText>
+          </NotFound>,
+        );
+
+      return options;
+    };
+
     return (
       <Select
         interaction="focus"
@@ -219,41 +270,8 @@ const SuggestSearch = withRouter(
         <SelectPopper tag={Popper}>
           <IF condition={!!currentRefinement}>
             <Select.List m={0} h={225} style={{ overflow: 'hidden' }}>
-              {hits.length ? (
-                hits.map((item) => (
-                  <Select.Option
-                    tag={Option}
-                    key={item.objectID}
-                    value={item.slug}
-                    disabled={item.disabled}
-                  >
-                    <OptionText>{item.title}</OptionText>
-                    <OptionPlace>in: {item.category}</OptionPlace>
-                  </Select.Option>
-                ))
-              ) : (
-                <NotFound key={1}>
-                  <NotFoundImg src={observatory} alt="observatory" />
-                  <OptionText>We found something… it's nothing</OptionText>
-                </NotFound>
-              )}
+              {showList(hits, pages, content)}
             </Select.List>
-            <MenuFooter>
-              <MenuAction>
-                <ArrowDownXS />
-                <ArrowUpXS />
-                <span>to navigate</span>
-              </MenuAction>
-              <MenuAction>
-                <ActionReturnXS />
-                <span>to select</span>
-              </MenuAction>
-              <MenuAction>
-                <span>
-                  <b>esc</b> to hide
-                </span>
-              </MenuAction>
-            </MenuFooter>
           </IF>
         </SelectPopper>
       </Select>
