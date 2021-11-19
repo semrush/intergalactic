@@ -30,6 +30,7 @@ async function main() {
       if (n.children && !pages[n.reference].metadata.hide) {
         n.children.forEach((c) => {
           navigation.push({
+            pageTitle: c.title,
             title: c.title,
             slug: `/${c.route}/`,
             disabled: !!pages[c.reference].metadata.disabled,
@@ -54,6 +55,7 @@ async function main() {
                 .digest('hex')
                 .slice(0, 5)}`;
               navigation.push({
+                pageTitle: c.title,
                 title: el.title,
                 slug: `/${el.route.split('.')[0]}/${hash}`,
                 disabled: !!pages[c.reference].metadata.disabled,
