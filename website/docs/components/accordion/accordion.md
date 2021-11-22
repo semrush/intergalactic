@@ -34,7 +34,7 @@ The `ChevronRight` icon is always used in the XS size and has a `margin-right: 8
 
 @## Trigger
 
-> 💡 The accordion trigger can be text, link or button of any size and any color from the [primary colors for the text](/style/color/).
+> 💡 The accordion trigger can be text, link or button of any size and any color from the [primary colors for the text](/style/palette/).
 
 |                           | Appearance example                              | Description and styles                                                                                                                                           |
 | ------------------------- | ----------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |

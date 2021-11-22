@@ -119,7 +119,7 @@ export default () => (
 
 Данный компонент теперь устарел, вместо него используйте функции из утилит от v3.12.0
 
-Пример использования в [color](/style/color/color-code/).
+Пример использования в [Palette](/style/palette/palette-code/).
 
 @### UI
 

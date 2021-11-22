@@ -45,7 +45,7 @@ Several types of tags can be used in our tools depending on the context.
 
 This is the main type of tag for use on a light background.
 
-> 💡 Any color of our [color palette](/style/color/) can be set as a tag color, the default color is `$asphalt`.
+> 💡 Any color of our [color palette](/style/palette/) can be set as a tag color, the default color is `$asphalt`.
 
 ### Secondary
 
@@ -80,7 +80,7 @@ The main tag type has the same `hover` and `active` styles.
 
 If the tag is put by the system:
 
-- the color is determined and chosen by the system from [basic color palette](/style/color/) or from the additional palette if necessary.
+- the color is determined and chosen by the system from [basic color palette](/style/palette/) or from the additional palette if necessary.
 - The tag can be clickable. In this case, only filtering takes place.
 - Tag cannot be edited.
 

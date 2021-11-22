@@ -16,7 +16,7 @@ The purpose of colors in the chart widgets:
 | `$stone`   | The X-axis and the accent lines on the grid when, if needed |
 | `$mercury` | Additional guide lines                                      |
 
-We have a special [palette](/style/color/) for charts.
+We have a special [palette](/style/palette/) for charts.
 
 - Use color in a measured manner and don't make colors too bright for any reason. **Keep in mind the visual hierarchy.**
 - If there are several blocks on a page that mention the same entity, then use the same color for in all blocks on the same page.
