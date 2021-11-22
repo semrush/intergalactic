@@ -37,7 +37,7 @@ There are two groups of palettes depending on where they're used:
 
 Our Figma library for charts contains their color palette, as well as rules on how to use them.
 
-Go to [Color](/style/color/) to learn more about our color system.
+Go to [Palette](/style/palette/) to learn more about our color system.
 
 @## Typography
 

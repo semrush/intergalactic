@@ -28,7 +28,7 @@ This section describes all the variable parameters that we use in our component 
 | Color of success ✅                                            | ![success](static/success.png)          | `green` (#4FAE33)       |
 | Color of warning, validation and error ⚠️                      | ![warning](static/warning.png)          | `orange` (#ff7f00)      |
 | Critical message color 🚩                                      | ![critical](static/critical.png)        | `red` (#ed2d2d)         |
-| Old color of brand, branded controls, and elements             | ![brand](static/brand.png)              | `brand-color` (#ba4717) |
+| Brand color, branded controls, and elements                    | ![brand](static/brand.png)              | `brand-color` (#FF642D) |
 
 @## Basic sizes of components
 

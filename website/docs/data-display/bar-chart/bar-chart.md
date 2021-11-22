@@ -30,7 +30,7 @@ If you have two values, you can place them next to each other — this makes it 
 
 ### Chart colors
 
-Use [special chart palette](/style/color/) and follow the rules prescribed for it.
+Use [special chart palette](/style/palette/) and follow the rules prescribed for it.
 
 ### Important moment
 

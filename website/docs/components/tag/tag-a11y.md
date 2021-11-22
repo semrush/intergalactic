@@ -4,7 +4,7 @@ title: A11y
 
 @## General recommendations
 
-Make sure you [check the contrast of the tag text](/style/color/color-a11y/) against the background.
+Make sure you [check the contrast of the tag text](/style/palette/palette-a11y/) against the background.
 
 @## Resources
 

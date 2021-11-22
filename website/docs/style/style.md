@@ -2,8 +2,8 @@
 title: Style
 ---
 
-@page color
 @page icon
+@page palette
 @page themes
 @page typography
 @page variables

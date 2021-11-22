@@ -53,7 +53,7 @@ If we need to display different categories of data within a dataset, `stacked hi
 
 @## Use of color
 
-- Use [special chart palette](/style/color/) and follow the the rules prescribed for it.
+- Use [special chart palette](/style/palette/) and follow the the rules prescribed for it.
 - **Please keep in mind that you should only color the bars on the histogram in different colors when this can be useful for easier reading of the chart.** _For example, you need to highlight a certain gradation of ranges. In this case, you can choose the appropriate colors from the chart palette._
 
 ![colors in histogram](static/color-yes-no.png)

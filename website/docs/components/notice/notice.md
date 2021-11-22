@@ -217,7 +217,7 @@ The default color of this notice is `--wall`.
 
 ![global-notice](static/gnotice-default.png)
 
-If necessary, you can give it a different color. For example, `--violet`, `--light-blue` or other from [our palette](/style/color/).
+If necessary, you can give it a different color. For example, `--violet`, `--light-blue` or other from [our palette](/style/palette/).
 
 ![global-notice](static/gnotice-custom.png)
 

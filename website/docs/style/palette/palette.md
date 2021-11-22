@@ -1,5 +1,5 @@
 ---
-title: Color
+title: Palette
 tabName: Guide
 ---
 
@@ -9,7 +9,7 @@ Variables allow us to use color names and not to remember their HEX values. The 
 
 > To enable CSS variables, use `@import '~@semcore/utils/style/var.css';`
 
-@## Interface Colors
+@## Main palette
 
 ### Bright
 
@@ -41,9 +41,9 @@ Brand colors of services (the data can be found in Semrush interface).
 
 @import color-group {"group": "additional"}
 
-@## Colors for charts
+@## Chart palette
 
 See detailed guide in the [Color palette for charts](/data-display/color-palette/).
 
-@page color-a11y
-@page color-code
+@page palette-a11y
+@page palette-code

@@ -83,7 +83,7 @@ If the entire row is in the `disabled` state, it should not have the `hover` sta
 
 ### Cells coloring
 
-If necessary, you can change the cell color using our [base color palette](/style/color/). In this case, use a color with a transparency of 5 to 15%.
+If necessary, you can change the cell color using our [base color palette](/style/palette/). In this case, use a color with a transparency of 5 to 15%.
 
 ![td styles](static/td-style.png)
 
