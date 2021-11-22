@@ -226,4 +226,8 @@ SBaseTrigger[state='valid'] {
 
 SBaseTrigger[state='invalid'] {
   border-color: var(--orange);
+
+  &[keyboardFocused] {
+    box-shadow: 0 0 0 3px color-mod(var(--orange) a(30%));
+  }
 }
