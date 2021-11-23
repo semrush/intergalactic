@@ -58,6 +58,10 @@ SBaseTrigger[disabled] {
   pointer-events: none; /* Disable link interactions */
 }
 
+SBaseTrigger[keyboardFocused] {
+  z-index: 1;
+}
+
 SInner {
   display: inline-flex;
   align-items: center;
