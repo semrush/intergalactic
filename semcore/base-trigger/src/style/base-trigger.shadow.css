@@ -39,6 +39,10 @@ SBaseTrigger {
     text-decoration: none;
   }
 
+  &:focus {
+    box-shadow: var(--keyborad-focus);
+  }
+
   &:active,
   &:hover,
   &[active] {
@@ -227,7 +231,8 @@ SBaseTrigger[state='valid'] {
 SBaseTrigger[state='invalid'] {
   border-color: var(--orange);
 
-  &[keyboardFocused] {
+  &[keyboardFocused],
+  &:focus {
     box-shadow: 0 0 0 3px color-mod(var(--orange) a(30%));
   }
 }
