@@ -39,6 +39,7 @@ SBaseTrigger {
     text-decoration: none;
   }
 
+  &[keyboardFocused],
   &:focus {
     border: 1px solid var(--light-blue);
     box-shadow: var(--keyborad-focus);
@@ -55,11 +56,6 @@ SBaseTrigger[disabled] {
   opacity: var(--disabled-opacity);
   cursor: default;
   pointer-events: none; /* Disable link interactions */
-}
-
-SBaseTrigger[keyboardFocused] {
-  box-shadow: var(--keyborad-focus);
-  z-index: 1;
 }
 
 SInner {
