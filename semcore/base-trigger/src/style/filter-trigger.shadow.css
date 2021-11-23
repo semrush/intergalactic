@@ -18,6 +18,7 @@ SButtonTrigger {
   }
 
   &:focus {
+    border: 1px solid var(--light-blue);
     box-shadow: var(--keyborad-focus);
   }
 
