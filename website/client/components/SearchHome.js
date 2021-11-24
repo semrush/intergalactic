@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { withRouter } from 'react-router-dom';
-import { InstantSearch } from 'react-instantsearch/dom';
+import { withRouter, useLocation } from 'react-router-dom';
+import { InstantSearch, Highlight } from 'react-instantsearch/dom';
 import { connectAutoComplete } from 'react-instantsearch/connectors';
 import algoliasearch from 'algoliasearch/lite';
 
@@ -152,6 +152,10 @@ const OptionHeader = styled.div`
   align-items: end;
 `;
 
+const HighlightMark = styled.mark`
+  background: rgba(255, 232, 77, 0.5);
+`;
+
 const ArrowRightIcon = styled(ArrowRight)`
   margin: 0 4px;
   &:hover {
@@ -174,6 +178,11 @@ const SuggestSearch = withRouter(
   connectAutoComplete(({ currentRefinement, refine, hits, history, ...other }) => {
     const pages = hits.filter((el) => !el.heading);
     const content = hits.filter((el) => el.heading);
+    const location = useLocation();
+
+    useEffect(() => {
+      refine('');
+    }, [location]);
 
     const showList = (hits, pages, content) => {
       let options = [];
@@ -187,7 +196,9 @@ const SuggestSearch = withRouter(
               value={item.slug}
               disabled={item.disabled}
             >
-              <OptionText>{item.title}</OptionText>
+              <OptionText>
+                <Highlight attribute="title" hit={item} tagName={HighlightMark} />
+              </OptionText>
               <OptionPlace>{item.category}</OptionPlace>
             </Select.Option>
           )),
@@ -206,7 +217,9 @@ const SuggestSearch = withRouter(
               value={item.slug}
               disabled={item.disabled}
             >
-              <OptionText>{item.title}</OptionText>
+              <OptionText>
+                <Highlight attribute="title" hit={item} tagName={HighlightMark} />
+              </OptionText>
               <OptionPlace>
                 {item.category}
                 <ArrowRightIcon />
@@ -232,6 +245,7 @@ const SuggestSearch = withRouter(
         interaction="focus"
         offset={0}
         stretch="fixed"
+        value={location.pathname}
         onChange={(value) => history.push(value)}
       >
         <Select.Trigger tag={InputWrapper} inline={false}>
@@ -240,6 +254,7 @@ const SuggestSearch = withRouter(
               <>
                 <DesktopInput
                   autoFocus
+                  value={currentRefinement}
                   isOpen={!!currentRefinement && visible}
                   onChange={(e) => {
                     refine(convertKeyboard(e.currentTarget.value));
