@@ -14,7 +14,7 @@
     "css-selector-tokenizer": "^0.7.3",
     "cssnano": "^4.1.10",
     "fs-extra": "^9.1.0",
-    "postcss": "^7.0.36",
+    "postcss": "^8.2.8",
     "postcss-import-sync2": "^1.1.0",
     "postcss-preset-env": "^6.7.0",
     "postcss-value-parser": "^4.1.0",
