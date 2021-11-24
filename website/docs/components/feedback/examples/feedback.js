@@ -17,8 +17,8 @@ const validate = {
       }
       return acc;
     }, 0);
-    if (value.length - numberSpaces < 10 || splitText.length <= 2) {
-      return 'Your feedback must contain at least 3 words (10 characters).';
+    if ([...value].length - numberSpaces < 10) {
+      return 'Your feedback must contain at least 10 characters.';
     }
   },
   email: (value = '') => {
