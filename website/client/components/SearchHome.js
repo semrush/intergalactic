@@ -178,11 +178,10 @@ const SuggestSearch = withRouter(
   connectAutoComplete(({ currentRefinement, refine, hits, history, ...other }) => {
     const pages = hits.filter((el) => !el.heading);
     const content = hits.filter((el) => el.heading);
-    const [value, setValue] = useState('');
     const location = useLocation();
 
     useEffect(() => {
-      setValue('');
+      refine('');
     }, [location]);
 
     const showList = (hits, pages, content) => {
@@ -246,6 +245,7 @@ const SuggestSearch = withRouter(
         interaction="focus"
         offset={0}
         stretch="fixed"
+        value={location.pathname}
         onChange={(value) => history.push(value)}
       >
         <Select.Trigger tag={InputWrapper} inline={false}>
@@ -254,13 +254,12 @@ const SuggestSearch = withRouter(
               <>
                 <DesktopInput
                   autoFocus
-                  value={value}
+                  value={currentRefinement}
                   isOpen={!!currentRefinement && visible}
                   onChange={(e) => {
                     refine(convertKeyboard(e.currentTarget.value));
                     action.visible(true);
                     action.highlightedIndex(0);
-                    setValue(e.currentTarget.value);
                   }}
                   onKeyDown={(e) => {
                     e.key === ' ' && e.stopPropagation();
