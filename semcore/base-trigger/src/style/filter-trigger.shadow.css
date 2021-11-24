@@ -17,8 +17,7 @@ SButtonTrigger {
     text-decoration: none;
   }
 
-  &[keyboardFocused],
-  &:focus {
+  &[keyboardFocused] {
     border: 1px solid var(--light-blue);
     box-shadow: var(--keyborad-focus);
   }
@@ -73,7 +72,6 @@ SButtonTrigger[state='valid'] {
 SButtonTrigger[state='invalid'] {
   border-color: var(--orange);
 
-  &:focus,
   &[keyboardFocused] {
     border-color: var(--orange);
     box-shadow: 0 0 0 3px color-mod(var(--orange) a(30%));
