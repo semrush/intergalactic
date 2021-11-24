@@ -57,9 +57,9 @@ The list of “empty” states in the widgets:
 - Tool is not set up
 - Something went wrong
 
-@## Nothing found
+@## No data
 
-We use this state, when for some reason we do not have data at the user request or cannot show it. If the widget has a heading, it should be displayed in this state. In this case we show the following instead of the data:
+We use this state, when for some reason we do not have data or cannot show it. If the widget has a heading, it should be displayed in this state. In this case show the following instead of the data:
 
 - an image corresponding to the type of the data in the widget;
 - a text message specifying that we have no data or specifying the user’s actions in order to obtain it;
@@ -78,6 +78,22 @@ We have a certain image for each type of data. The button is an optional element
 If your widget has width of less than 300px, you may just insert the heading of the error as the text of `--fs-100` size into such “empty” state: `12px; --lh-100: 1.5;` (12px). And hide the explanatory information into the icon `Info` of S size.
 
 ![small widget empty](static/small-empty.png)
+
+@## Nothing found
+
+It's a specific variant for cases when we do not have data at the user request. In this case show the following instead of the data:
+
+- an universal image;
+- a text message specifying that we do not have data at the user request;
+- the main button helping the users to remedy the situation (optional);
+
+| Wide widget                                              | Medium widget                                                  | Text                                               |
+| -------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------- |
+| ![big widget with nothing found](static/big-nothing.png) | ![medium widget with nothing found](static/medium-nothing.png) | h6 — Nothing found; p — Try changing your filters. |
+
+If your widget has width of less than 300px, you may just insert the heading of the error as the text of `--fs-100` size into such “empty” state: `12px; --lh-100: 1.5;` (12px). And hide the explanatory information into the icon `Info` of S size.
+
+![small widget with nothing found](static/small-nothing.png)
 
 @## No more results
 

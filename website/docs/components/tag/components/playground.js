@@ -3,9 +3,11 @@ import Tag from '@semcore/tag';
 import EditXS from '@semcore/icon/lib/Edit/xs';
 import PlaygroundGeneration from 'components/PlaygroundGeneration';
 
-const THEME_MAP = ['muted', 'invert', 'dark-green', 'denim-blue', 'red', 'warning'];
-
-const USE_MAP = ['primary', 'secondary'];
+const THEMES = {
+  primary: ['warning', 'invert'],
+  secondary: ['muted', 'invert'],
+  custom: [],
+};
 
 export default PlaygroundGeneration((createGroupWidgets) => {
   const { bool, radio, text, select } = createGroupWidgets('Tag');
@@ -21,18 +23,28 @@ export default PlaygroundGeneration((createGroupWidgets) => {
     key: 'use',
     defaultValue: 'secondary',
     label: 'Use',
-    options: Object.values(USE_MAP),
+    options: Object.values(Object.keys(THEMES)),
   });
 
-  const theme = select({
-    key: 'theme',
-    defaultValue: 'muted',
-    label: 'Theme',
-    options: THEME_MAP.map((value) => ({
-      name: value,
-      value,
-    })),
-  });
+  let theme = null;
+
+  if (use === 'custom') {
+    theme = text({
+      ey: 'theme',
+      defaultValue: '',
+      label: 'Theme',
+    });
+  } else {
+    theme = select({
+      key: 'theme',
+      defaultValue: 'muted',
+      label: 'Theme',
+      options: THEMES[use].map((value) => ({
+        name: value,
+        value,
+      })),
+    });
+  }
 
   let imageIcon = bool({
     key: 'image Icon',

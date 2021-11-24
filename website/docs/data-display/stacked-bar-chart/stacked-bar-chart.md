@@ -27,7 +27,7 @@ Stacked bar chart has no margin between values inside the column. **Choose contr
 
 ### Chart colors
 
-Use [special chart palette](/style/color/) and follow the rules prescribed for it.
+Use [special chart palette](/style/palette/) and follow the rules prescribed for it.
 
 @## Interaction
 
