@@ -14,8 +14,8 @@ class LineRoot extends Component {
   static style = style;
   static enhance = [uniqueIDEnhancement()];
 
-  static defaultProps = ({ x, y, $rootProps, curve = curveLinear }) => {
-    const [xScale, yScale] = $rootProps.scale;
+  static defaultProps = ({ x, y, $rootProps, curve = curveLinear, scale }) => {
+    const [xScale, yScale] = scale || $rootProps.scale;
     return {
       d3: d3Line()
         .defined(definedData(x, y))

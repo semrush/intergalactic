@@ -14,8 +14,8 @@ class AreaRoot extends Component {
   static style = style;
   static enhance = [uniqueIDEnhancement()];
 
-  static defaultProps = ({ x, y, y0, $rootProps, curve = curveLinear }) => {
-    const [xScale, yScale] = $rootProps.scale;
+  static defaultProps = ({ x, y, y0, $rootProps, curve = curveLinear, scale }) => {
+    const [xScale, yScale] = scale || $rootProps.scale;
     const yRange = yScale.range();
 
     return {
