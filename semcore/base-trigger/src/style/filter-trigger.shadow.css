@@ -17,11 +17,6 @@ SButtonTrigger {
     text-decoration: none;
   }
 
-  &[keyboardFocused] {
-    border: 1px solid var(--light-blue);
-    box-shadow: var(--keyborad-focus);
-  }
-
   &:active,
   &:hover,
   &[active] {
@@ -71,11 +66,6 @@ SButtonTrigger[state='valid'] {
 
 SButtonTrigger[state='invalid'] {
   border-color: var(--orange);
-
-  &[keyboardFocused] {
-    border-color: var(--orange);
-    box-shadow: 0 0 0 3px color-mod(var(--orange) a(30%));
-  }
 }
 
 SFilterTrigger[selected] {
