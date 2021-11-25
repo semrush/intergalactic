@@ -5,7 +5,7 @@ export default () => {
   return (
     <DataTable data={data}>
       <DataTable.Head>
-        <DataTable.Column name="keyword" children="Keyword" wMin={100} flex="1" />
+        <DataTable.Column name="keyword" children="Keyword" wMin={100} flex="1 0 auto" />
         <DataTable.Column name="kd" children="KD,%" flex="0" wMin={100} />
         <DataTable.Column name="cpc" children="CPC" />
         <DataTable.Column name="vol" children="Vol." />
