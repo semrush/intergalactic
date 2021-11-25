@@ -6,7 +6,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Ашчув set `scale` for `Area, Line`.
+- Fixed set `scale` for `Area, Line`.
 
 ## [1.5.3] - 2021-10-27
 
