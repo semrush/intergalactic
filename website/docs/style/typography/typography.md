@@ -86,7 +86,7 @@ To improve readability on different screens, change the size of the headings, de
 | H4 (19/22) — `--fs-400` | H4 (25/28) — `--fs-500` |
 | H5 (16/24) — `--fs-300` | H5 (19/22) — `--fs-400` |
 | H6 (14/20) — `--fs-200` | H6 (16/24) — `--fs-300` |
-F
+
 @## Basic text sizes and paragraph margins
 
 There are three text sizes in our interface. The main font face is `Regular (400)`.
