@@ -40,5 +40,15 @@ pluginTester({
       fixture: '__fixtures__/theme/purgeCSS/index.js',
       outputFixture: '__fixtures__/theme/purgeCSS/index.expected.js',
     },
+    {
+      pluginOptions: {
+        theme: '__tests__/__fixtures__/__theme_fixture__',
+        pkgName: 'utils',
+        scope: '__tests__',
+      },
+      title: 'Applies semcore theme',
+      fixture: '__fixtures__/__theme_fixture__/utils/color.js',
+      outputFixture: '__fixtures__/theme/semcore-theme/color.expected.js',
+    },
   ],
 });

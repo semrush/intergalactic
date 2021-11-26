@@ -1,16 +1,7 @@
-// @ts-ignore
+/*__semcore-vars__:"../style/var.css"*/ /* @ts-ignore */
 const COLORS = preval`
-  const fs = require('fs');
   const path = require('path');
-  const CSS_VARS_REG = /--[\\w+\\-]+:\\s+(#[\\w\\d]+|rgba?\\(\\d+,\\s*\\d+,\\s*\\d+(?:,\\s*(\\d+(?:\\.\\d+)?))?\\))/g;
-  const cssVars = path.resolve(__dirname, '../', 'style/var.css');
-  const cssVarsContent = fs.readFileSync(cssVars, 'utf8');
-  const varsList = cssVarsContent.match(CSS_VARS_REG).map(cssVarDeclaration => {
-    const [varName, varValue] = cssVarDeclaration.split(':');
-    const colorName = varName.replace('--', '').trim();
-    return { [colorName]: varValue.trim() };
-  });
-  module.exports = Object.assign({}, ...varsList);
+  module.exports = require('@semcore/babel-plugin-react-semcore/utils/vars')(path.resolve('style/var.css'));
 `;
 
 function shadeHexColor(color, percent) {

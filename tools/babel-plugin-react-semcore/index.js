@@ -2,10 +2,15 @@ const fs = require('fs');
 const path = require('path');
 const semver = require('semver');
 const parse = require('./process');
+const getColorVars = require('./utils/vars');
 
 const RESHADOW_MAGIC_COMMENTS = {
   CSS_START: '__reshadow_css_start__',
   FILE_PATH: '__reshadow-styles__',
+};
+
+const SEMCORE_MAGIC_COMMENTS = {
+  CSS_START: '__semcore-vars__',
 };
 
 const RESOLVED_THEMES_MAP = new Map();
@@ -83,7 +88,7 @@ function createThemeMeta(themeAbsolutePath) {
   }, {});
 }
 
-function getThemeCssPathsList(baseStyles, theme) {
+function getThemeCssPathsList(theme) {
   const { themeMeta, pkgName, pkgJsonPath, cssFileName } = theme;
 
   const themeCssPaths = themeMeta.reduce((acc, meta) => {
@@ -102,7 +107,8 @@ function getThemeCssPathsList(baseStyles, theme) {
     }
     return acc;
   }, []);
-  return themeCssPaths.length ? [baseStyles, ...themeCssPaths] : undefined;
+
+  return themeCssPaths.length ? themeCssPaths : undefined;
 }
 
 /**
@@ -119,6 +125,7 @@ const DEFAULT_OPTIONS = {
   postcss: {},
   purgeCSS: {},
 };
+
 module.exports = function({ types: t }, opts) {
   const options = Object.assign({}, DEFAULT_OPTIONS, opts);
 
@@ -128,23 +135,18 @@ module.exports = function({ types: t }, opts) {
     }
   }
 
-  function containsReshadowMagicComment(node) {
+  function containsMagicComment(node, css_start, file_path) {
     const { leadingComments } = node;
     if (!Array.isArray(leadingComments)) return;
     if (!leadingComments.length) return;
     const { value } = leadingComments[0];
-    return (
-      value.includes(RESHADOW_MAGIC_COMMENTS.CSS_START) ||
-      value.includes(RESHADOW_MAGIC_COMMENTS.FILE_PATH)
-    );
+    return value.includes(css_start) || value.includes(file_path);
   }
 
   function getCssFilePathFromComment(node) {
-    if (!containsReshadowMagicComment(node)) return;
     const { leadingComments } = node;
     const { value } = leadingComments[0];
-    const [magicComment, filepath] = value.split(':');
-    if (magicComment !== RESHADOW_MAGIC_COMMENTS.FILE_PATH) return;
+    const [, filepath] = value.split(':');
     return filepath.replace(/"/g, '');
   }
 
@@ -197,7 +199,14 @@ module.exports = function({ types: t }, opts) {
 
   function isValidStyles(styles) {
     if (!styles) return false;
-    return styles.init.type === 'SequenceExpression' && containsReshadowMagicComment(styles.init);
+    return (
+      styles.init.type === 'SequenceExpression' &&
+      containsMagicComment(
+        styles.init,
+        RESHADOW_MAGIC_COMMENTS.CSS_START,
+        RESHADOW_MAGIC_COMMENTS.FILE_PATH,
+      )
+    );
   }
 
   return {
@@ -217,26 +226,58 @@ module.exports = function({ types: t }, opts) {
     visitor: {
       VariableDeclaration(p, state) {
         const { node } = p;
+
         if (!this.themeMeta.length || !options.theme) return;
-        if (!containsReshadowMagicComment(node)) return;
-        const styles = node.declarations[0];
-        if (!isValidStyles(styles)) return;
-        const pkgName = getPkgNameFromFilePath(state.file.opts.filename, options.scope);
-        const pkgJsonPath = getPkgJsonFromPkgName(state.file.opts.filename, pkgName, options.scope);
-        const cssPath = getBaseCssPath(node, state.file.opts.filename);
-        if (!cssPath || !pkgName) return;
-        const cssFileName = path.basename(cssPath);
-        const themeCssPaths = getThemeCssPathsList(cssPath, {
-          themeMeta: this.themeMeta,
-          pkgJsonPath,
-          pkgName,
-          cssFileName,
-        });
 
-        if (!themeCssPaths) return;
+        const getThemeCssPaths = () => {
+          const pkgName = getPkgNameFromFilePath(state.file.opts.filename, options.scope);
+          const pkgJsonPath = getPkgJsonFromPkgName(
+            state.file.opts.filename,
+            pkgName,
+            options.scope,
+          );
+          const cssPath = getBaseCssPath(node, state.file.opts.filename);
+          if (!cssPath || !pkgName) return [null, null];
+          const cssFileName = path.basename(cssPath);
 
-        const { css, tokens, hash } = parse(themeCssPaths, options);
-        replaceWithNewStyles(styles.init, css, tokens, hash);
+          const themeCssPaths = getThemeCssPathsList({
+            themeMeta: this.themeMeta,
+            pkgJsonPath,
+            pkgName,
+            cssFileName,
+          });
+
+          return [cssPath, themeCssPaths];
+        };
+
+        if (containsMagicComment(node, SEMCORE_MAGIC_COMMENTS.CSS_START)) {
+          const [cssPath, themeCssPaths] = getThemeCssPaths();
+          if (!cssPath || !themeCssPaths) return;
+
+          const vars = [cssPath, ...themeCssPaths].reduce(
+            (acc, p) => Object.assign(acc, getColorVars(p)),
+            {},
+          );
+
+          node.declarations[0].init = toObjectExpression(vars);
+        }
+
+        if (
+          containsMagicComment(
+            node,
+            RESHADOW_MAGIC_COMMENTS.CSS_START,
+            RESHADOW_MAGIC_COMMENTS.FILE_PATH,
+          )
+        ) {
+          const styles = node.declarations[0];
+          if (!isValidStyles(styles)) return;
+
+          const [cssPath, themeCssPaths] = getThemeCssPaths();
+          if (!cssPath || !themeCssPaths) return;
+
+          const { css, tokens, hash } = parse(cssPath, themeCssPaths, options);
+          replaceWithNewStyles(styles.init, css, tokens, hash);
+        }
       },
     },
   };
