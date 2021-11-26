@@ -2,7 +2,6 @@
 title: Old table code and API
 fileSource: table
 tabName: Example
-disabled: true
 ---
 
 > We have a new component for tables — [Data Table](/table-group/data-table/). It is based on `CSS-flex` technology and does not use native tables.
