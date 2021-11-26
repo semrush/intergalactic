@@ -41,4 +41,3 @@ Icon[
 # Npm config
 .npmrc
 .creds/
-/test/dist/
