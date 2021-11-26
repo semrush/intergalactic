@@ -135,23 +135,12 @@ module.exports = function({ types: t }, opts) {
     }
   }
 
-  function containsReshadowMagicComment(node) {
+  function containsMagicComment(node, css_start, file_path) {
     const { leadingComments } = node;
     if (!Array.isArray(leadingComments)) return;
     if (!leadingComments.length) return;
     const { value } = leadingComments[0];
-    return (
-      value.includes(RESHADOW_MAGIC_COMMENTS.CSS_START) ||
-      value.includes(RESHADOW_MAGIC_COMMENTS.FILE_PATH)
-    );
-  }
-
-  function containsSemcoreMagicComment(node) {
-    const { leadingComments } = node;
-    if (!Array.isArray(leadingComments)) return;
-    if (!leadingComments.length) return;
-    const { value } = leadingComments[0];
-    return value.includes(SEMCORE_MAGIC_COMMENTS.CSS_START);
+    return value.includes(css_start) || value.includes(file_path);
   }
 
   function getCssFilePathFromComment(node) {
@@ -210,7 +199,14 @@ module.exports = function({ types: t }, opts) {
 
   function isValidStyles(styles) {
     if (!styles) return false;
-    return styles.init.type === 'SequenceExpression' && containsReshadowMagicComment(styles.init);
+    return (
+      styles.init.type === 'SequenceExpression' &&
+      containsMagicComment(
+        styles.init,
+        RESHADOW_MAGIC_COMMENTS.CSS_START,
+        RESHADOW_MAGIC_COMMENTS.FILE_PATH,
+      )
+    );
   }
 
   return {
@@ -233,7 +229,7 @@ module.exports = function({ types: t }, opts) {
 
         if (!this.themeMeta.length || !options.theme) return;
 
-        if (containsSemcoreMagicComment(node)) {
+        const getThemeCssPaths = () => {
           const pkgName = getPkgNameFromFilePath(state.file.opts.filename, options.scope);
           const pkgJsonPath = getPkgJsonFromPkgName(
             state.file.opts.filename,
@@ -241,7 +237,7 @@ module.exports = function({ types: t }, opts) {
             options.scope,
           );
           const cssPath = getBaseCssPath(node, state.file.opts.filename);
-          if (!cssPath || !pkgName) return;
+          if (!cssPath || !pkgName) return [null, null];
           const cssFileName = path.basename(cssPath);
 
           const themeCssPaths = getThemeCssPathsList({
@@ -251,7 +247,12 @@ module.exports = function({ types: t }, opts) {
             cssFileName,
           });
 
-          if (!themeCssPaths) return;
+          return [cssPath, themeCssPaths];
+        };
+
+        if (containsMagicComment(node, SEMCORE_MAGIC_COMMENTS.CSS_START)) {
+          const [cssPath, themeCssPaths] = getThemeCssPaths();
+          if (!cssPath || !themeCssPaths) return;
 
           const vars = [cssPath, ...themeCssPaths].reduce(
             (acc, p) => Object.assign(acc, getColorVars(p)),
@@ -261,27 +262,18 @@ module.exports = function({ types: t }, opts) {
           node.declarations[0].init = toObjectExpression(vars);
         }
 
-        if (containsReshadowMagicComment(node)) {
+        if (
+          containsMagicComment(
+            node,
+            RESHADOW_MAGIC_COMMENTS.CSS_START,
+            RESHADOW_MAGIC_COMMENTS.FILE_PATH,
+          )
+        ) {
           const styles = node.declarations[0];
           if (!isValidStyles(styles)) return;
-          const pkgName = getPkgNameFromFilePath(state.file.opts.filename, options.scope);
-          const pkgJsonPath = getPkgJsonFromPkgName(
-            state.file.opts.filename,
-            pkgName,
-            options.scope,
-          );
-          const cssPath = getBaseCssPath(node, state.file.opts.filename);
-          if (!cssPath || !pkgName) return;
-          const cssFileName = path.basename(cssPath);
 
-          const themeCssPaths = getThemeCssPathsList({
-            themeMeta: this.themeMeta,
-            pkgJsonPath,
-            pkgName,
-            cssFileName,
-          });
-
-          if (!themeCssPaths) return;
+          const [cssPath, themeCssPaths] = getThemeCssPaths();
+          if (!cssPath || !themeCssPaths) return;
 
           const { css, tokens, hash } = parse(cssPath, themeCssPaths, options);
           replaceWithNewStyles(styles.init, css, tokens, hash);

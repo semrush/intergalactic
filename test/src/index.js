@@ -1,3 +1,3 @@
-import Button from '@semcore/button';
+import resolveColor from '@semcore/utils/lib/color';
 
-<Button theme="warning"></Button>;
+resolveColor('green');
