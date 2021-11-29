@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.30.3] - 2021-11-29
+
+### Changed
+
+- Added magic comment in `color.ts` for update values in themes.
+
 ## [3.30.2] - 2021-8-26
 
 ### Changed
