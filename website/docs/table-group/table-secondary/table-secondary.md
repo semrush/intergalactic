@@ -22,3 +22,5 @@ Paddings in a secondary table cell, whether it is a header or a cell in a row, a
 @## Row states
 
 See more information in the common [Table principles](/table-group/table/#a1c3dd) guide.
+
+@page table-secondary-code

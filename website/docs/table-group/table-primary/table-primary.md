@@ -42,3 +42,5 @@ In some cases, a header should comprise two or more rows. Following conditions a
 @## Row states
 
 See more information in the common [Table principles](/table-group/table/#a1c3dd) guide.
+
+@page table-primary-code
