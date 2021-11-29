@@ -1,5 +1,5 @@
 ---
-title: Old table code and API
+title: Table code and API
 fileSource: table
 tabName: Example
 ---
