@@ -59,7 +59,7 @@ function getFormattedDatePeriod(start, end) {
 function createMessage(start, end, text) {
   if (!text) return null;
   const [startDate, endDate] = getFormattedDatePeriod(start, end);
-  return JSON.stringify({
+  return {
     attachments: [
       {
         mrkdwn: true,
@@ -67,7 +67,7 @@ function createMessage(start, end, text) {
         text,
       },
     ],
-  });
+  };
 }
 
 function postMessage(urls, data) {
