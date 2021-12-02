@@ -18,7 +18,7 @@ export interface IBarProps extends IContext {
   /** Radius of curvature
    * @default 2
    */
-  r?: number;
+  r?: number | number[];
 }
 
 export interface IBarContext {

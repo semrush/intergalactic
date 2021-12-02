@@ -64,9 +64,14 @@ class StackBarRoot extends Component {
   }
 
   getHorizontalBarProps({ x }) {
-    const { y } = this.asProps;
+    const { y, r } = this.asProps;
 
-    const series = this.series.find((s) => s.key === x);
+    const seriesIndex = this.series.findIndex((s) => s.key === x);
+    const series = this.series[seriesIndex];
+
+    const rBar = series.map((s, i) =>
+      this.series.slice(seriesIndex + 1).some((bar) => bar[i][0] !== bar[i][1]) ? 0 : r,
+    );
 
     return {
       data: series.map((s) => ({
@@ -76,6 +81,7 @@ class StackBarRoot extends Component {
       })),
       x0: XY0,
       y,
+      r: rBar,
     };
   }
 

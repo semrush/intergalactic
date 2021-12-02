@@ -74,10 +74,9 @@ class BarRoot extends Component {
       yScale(d[y]) - Math.min(yScale(yScale.domain()[0]), yScale(d[y0] ?? 0)),
     );
     const width = widthProps || getBandwidth(xScale);
-    const yValue = barY;
     const dSvg = getRect({
       x: barX,
-      y: yValue,
+      y: barY,
       width,
       height,
       radius: Array.isArray(r) ? r[i] : r,
@@ -96,7 +95,7 @@ class BarRoot extends Component {
         hide={hide}
         color={color}
         x={barX}
-        y={yValue}
+        y={barY}
         width={width}
         height={height}
         d={dSvg}
