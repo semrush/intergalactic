@@ -44,13 +44,14 @@ class HorizontalBarRoot extends Component {
       onMouseMove,
       onMouseLeave,
     } = this.asProps;
+
+    const isRounded = r !== 0;
     const [xScale, yScale] = scale;
     const barY = yScale(d[y]) + offset[1];
     const barX = xScale(Math.min(d[x0] ?? 0, d[x])) + offset[0];
     const height = heightProps || getBandwidth(yScale);
     let width = Math.abs(xScale(d[x]) - Math.max(xScale(xScale.domain()[0]), xScale(d[x0] ?? 0)));
     width = isRounded ? width + r : width;
-    const isRounded = r !== 0;
     const xValue = isRounded ? (d[x] > 0 ? barX : barX - r) : barX;
     const dSvg = getHorizontalRect({
       x: xValue,
