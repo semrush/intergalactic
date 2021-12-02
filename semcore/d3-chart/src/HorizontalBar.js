@@ -45,20 +45,17 @@ class HorizontalBarRoot extends Component {
       onMouseLeave,
     } = this.asProps;
 
-    const isRounded = r !== 0;
     const [xScale, yScale] = scale;
     const barY = yScale(d[y]) + offset[1];
     const barX = xScale(Math.min(d[x0] ?? 0, d[x])) + offset[0];
     const height = heightProps || getBandwidth(yScale);
-    let width = Math.abs(xScale(d[x]) - Math.max(xScale(xScale.domain()[0]), xScale(d[x0] ?? 0)));
-    width = isRounded ? width + r : width;
-    const xValue = isRounded ? (d[x] > 0 ? barX : barX - r) : barX;
+    const width = Math.abs(xScale(d[x]) - Math.max(xScale(xScale.domain()[0]), xScale(d[x0] ?? 0)));
     const dSvg = getHorizontalRect({
-      x: xValue,
+      x: barX,
       y: barY,
       width,
       height,
-      radius: r,
+      radius: Array.isArray(r) ? r[i] : r,
       position: d[x] > 0 ? 'right' : 'left',
     });
 
@@ -73,7 +70,7 @@ class HorizontalBarRoot extends Component {
         index={i}
         hide={hide}
         color={color}
-        x={xValue}
+        x={barX}
         y={barY}
         width={width}
         height={height}
