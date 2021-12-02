@@ -19,7 +19,7 @@ class StackBarRoot extends Component {
   static defaultProps = () => {
     const stack = d3Stack();
     stack[DEFAULT_INSTANCE] = true;
-    return { stack };
+    return { stack, r: 2 };
   };
 
   getSeries() {
@@ -42,9 +42,14 @@ class StackBarRoot extends Component {
   }
 
   getBarProps({ y }) {
-    const { x } = this.asProps;
+    const { x, r } = this.asProps;
 
-    const series = this.series.find((s) => s.key === y);
+    const seriesIndex = this.series.findIndex((s) => s.key === y);
+    const series = this.series[seriesIndex];
+
+    const rBar = series.map((s, i) =>
+      this.series.slice(seriesIndex + 1).some((bar) => bar[i][0] !== bar[i][1]) ? 0 : r,
+    );
 
     return {
       data: series.map((s) => ({
@@ -54,6 +59,7 @@ class StackBarRoot extends Component {
       })),
       y0: XY0,
       x,
+      r: rBar,
     };
   }
 
