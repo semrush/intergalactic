@@ -20,10 +20,14 @@ class GroupBarRoot extends Component {
     if (scaleGroup) return scaleGroup;
 
     const domain = React.Children.toArray(getOriginChildren(Children)).reduce((acc, child) => {
-      if (React.isValidElement(child) && child.type === GroupBar.Bar) {
+      if (React.isValidElement(child) && child.type === GroupBar.Bar && !child.props.hide) {
         acc.push(child.props.y);
       }
-      if (React.isValidElement(child) && child.type === GroupBar.HorizontalBar) {
+      if (
+        React.isValidElement(child) &&
+        child.type === GroupBar.HorizontalBar &&
+        !child.props.hide
+      ) {
         acc.push(child.props.x);
       }
       return acc;

@@ -27,10 +27,14 @@ class StackBarRoot extends Component {
 
     if (stack[DEFAULT_INSTANCE]) {
       const keys = React.Children.toArray(getOriginChildren(Children)).reduce((acc, child) => {
-        if (React.isValidElement(child) && child.type === StackBar.Bar) {
+        if (React.isValidElement(child) && child.type === StackBar.Bar && !child.props.hide) {
           acc.push(child.props.y);
         }
-        if (React.isValidElement(child) && child.type === StackBar.HorizontalBar) {
+        if (
+          React.isValidElement(child) &&
+          child.type === StackBar.HorizontalBar &&
+          !child.props.hide
+        ) {
           acc.push(child.props.x);
         }
         return acc;
@@ -45,7 +49,8 @@ class StackBarRoot extends Component {
     const { x, r } = this.asProps;
 
     const seriesIndex = this.series.findIndex((s) => s.key === y);
-    const series = this.series[seriesIndex];
+    // or [] if hide bar
+    const series = this.series[seriesIndex] || [];
 
     const rBar = series.map((s, i) =>
       this.series.slice(seriesIndex + 1).some((bar) => bar[i][0] !== bar[i][1]) ? 0 : r,
