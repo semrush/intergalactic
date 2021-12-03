@@ -26,7 +26,7 @@ class StackedAreaRoot extends Component {
 
     if (stack[DEFAULT_INSTANCE]) {
       const keys = React.Children.toArray(getOriginChildren(Children)).reduce((acc, child) => {
-        if (React.isValidElement(child) && child.type === StackedArea.Area) {
+        if (React.isValidElement(child) && child.type === StackedArea.Area && !child.props.hide) {
           acc.push(child.props.y);
         }
         return acc;
@@ -39,7 +39,8 @@ class StackedAreaRoot extends Component {
 
   getAreaProps({ y }) {
     const { x } = this.asProps;
-    const series = this.series.find((s) => s.key === y);
+    // or [] if hide area
+    const series = this.series.find((s) => s.key === y) || [];
     return {
       data: series.map((s) => ({
         ...s.data,
