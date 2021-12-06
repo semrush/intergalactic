@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.2.5] - 2021-12-06
+
+### Fixed
+
+- Remove 'sideEffect=false' because bug in `recahrts` lib.
+
 ## [4.2.4] - 2021-11-12
 
 ### Changed
