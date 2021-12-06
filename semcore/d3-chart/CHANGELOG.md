@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [1.5.5] - unreleased
+
+### Fixed
+
+- Calculate correct border radius for Bar.
+
 ## [1.5.4] - 2021-11-24
 
 ### Fixed
