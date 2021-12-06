@@ -70,17 +70,16 @@ class BarRoot extends Component {
     const [xScale, yScale] = scale;
     const barY = yScale(Math.max(d[y0] ?? 0, d[y])) + offset[1];
     const barX = xScale(d[x]) + offset[0];
-    let height = Math.abs(yScale(d[y]) - Math.min(yScale(yScale.domain()[0]), yScale(d[y0] ?? 0)));
-    height = isRounded ? height + r : height;
+    const height = Math.abs(
+      yScale(d[y]) - Math.min(yScale(yScale.domain()[0]), yScale(d[y0] ?? 0)),
+    );
     const width = widthProps || getBandwidth(xScale);
-    const isRounded = r !== 0;
-    const yValue = isRounded ? (d[y] > 0 ? barY - r : barY) : barY;
     const dSvg = getRect({
       x: barX,
-      y: yValue,
+      y: barY,
       width,
       height,
-      radius: r,
+      radius: Array.isArray(r) ? r[i] : r,
       position: d[y] > 0 ? 'top' : 'bottom',
     });
 
@@ -96,7 +95,7 @@ class BarRoot extends Component {
         hide={hide}
         color={color}
         x={barX}
-        y={yValue}
+        y={barY}
         width={width}
         height={height}
         d={dSvg}
