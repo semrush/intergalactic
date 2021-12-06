@@ -356,7 +356,7 @@ const SideBar = styled.div`
   position: sticky;
   top: 80px;
 
-  height: 100vh;
+  height: calc(100vh - 80px);
   background: #f5f5f5;
   max-width: 260px;
   @media (max-width: 767px) {
