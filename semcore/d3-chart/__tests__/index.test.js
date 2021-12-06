@@ -3,7 +3,7 @@ import React from 'react';
 import { scaleLinear, scaleBand } from 'd3-scale';
 import { render, fireEvent, cleanup } from 'jest-preset-ui/testing';
 import { shouldSupportClassName, shouldSupportRef } from 'jest-preset-ui/shared';
-import { Plot, YAxis, XAxis, Venn } from '../src';
+import { Plot, YAxis, XAxis, Venn, Bar, StackBar, colors } from '../src';
 import { getIndexFromData } from '../src/utils';
 import snapshot from 'jest-preset-ui/snapshot';
 import { minMax, Area, StackedArea } from '@semcore/d3-chart';
@@ -275,4 +275,69 @@ describe('Area chart', () => {
 
 describe('Venn', () => {
   shouldSupportRef(Venn, PlotTest);
+});
+
+describe('Bar chart', () => {
+  const MARGIN = 40;
+  const width = 500;
+  const height = 300;
+  const data = [
+    { time: 0, stack1: 1, stack2: 4, stack3: 3 },
+    { time: 1, stack1: 2, stack2: 3, stack3: 4 },
+    { time: 2, stack1: 1, stack2: 4, stack3: 5 },
+    { time: 3, stack1: 3, stack2: 2, stack3: 6 },
+    { time: 4, stack1: 2, stack2: 4, stack3: 4 },
+    { time: 5, stack1: 3, stack2: 4, stack3: 3 },
+    { time: 6, stack1: 4, stack2: 1, stack3: 5 },
+    { time: 7, stack1: 2, stack2: 5, stack3: 3 },
+    { time: 8, stack1: 2, stack2: 6, stack3: 5 },
+    { time: 9, stack1: 5, stack2: 5, stack3: 3 },
+  ];
+
+  const xScale = scaleBand()
+    .range([MARGIN, width - MARGIN])
+    .domain(data.map((d) => d.time))
+    .paddingInner(0.4)
+    .paddingOuter(0.2);
+
+  const yScale = scaleLinear()
+    .range([height - MARGIN, MARGIN])
+    .domain([0, 15]);
+
+  test('should render Bar chart correctly', async () => {
+    const component = (
+      <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
+        <YAxis>
+          <YAxis.Ticks />
+          <YAxis.Grid />
+        </YAxis>
+        <XAxis>
+          <XAxis.Ticks />
+        </XAxis>
+        <Bar x="time" y="stack1" duration={0}/>
+      </Plot>
+    );
+
+    expect(await snapshot(component)).toMatchImageSnapshot();
+  });
+
+  test('should render Bar chart correctly', async () => {
+    const component = (
+      <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
+        <YAxis>
+          <YAxis.Ticks />
+          <YAxis.Grid />
+        </YAxis>
+        <XAxis>
+          <XAxis.Ticks />
+        </XAxis>
+        <StackBar x="time">
+          <StackBar.Bar y="stack1" duration={0} />
+          <StackBar.Bar y="stack2" color={colors['blue-02']} duration={0} />
+        </StackBar>
+      </Plot>
+    );
+
+    expect(await snapshot(component)).toMatchImageSnapshot();
+  });
 });
