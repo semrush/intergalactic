@@ -52,7 +52,7 @@ export default () => (
           <Link>
             <Text size={500}>{data[data.length - 1].visibility}%</Text>
           </Link>
-          <Text size={300} ml={2} color="#757575">
+          <Text size={300} ml={2} color="#6C6E79">
             <small>0.00</small>
           </Text>
         </Box>

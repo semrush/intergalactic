@@ -1,10 +1,15 @@
 @import '@semcore/utils/style/var.css';
+@import '@semcore/d3-chart/src/style/var.css';
 
 SBar {
-  fill: var(--color);
+  fill: var(--blue-01);
   transition-property: height, width, y;
   transition-duration: var(--duration);
   transition-timing-function: ease-in-out;
+}
+
+SBar[color] {
+  fill: var(--color);
 }
 
 SBar[hide] {
@@ -12,5 +17,5 @@ SBar[hide] {
 }
 
 SBackground {
-  fill: color-mod(var(--mystic));
+  fill: var(--mystic);
 }

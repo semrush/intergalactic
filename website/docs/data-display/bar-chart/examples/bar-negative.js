@@ -35,13 +35,13 @@ export default () => {
               <>
                 <Tooltip.Title>{data[xIndex].category}</Tooltip.Title>
                 <Flex justifyContent="space-between">
-                  <Tooltip.Dot mr={4} color={colors['green-01']}>
+                  <Tooltip.Dot mr={4} color={colors['green-02']}>
                     Positive
                   </Tooltip.Dot>
                   <Text bold>{data[xIndex].bar1}</Text>
                 </Flex>
                 <Flex justifyContent="space-between" mt={2}>
-                  <Tooltip.Dot mr={4} color={colors['red-01']}>
+                  <Tooltip.Dot mr={4} color={colors['orange-04']}>
                     Negative
                   </Tooltip.Dot>
                   <Text bold>{data[xIndex].bar2}</Text>
@@ -51,8 +51,8 @@ export default () => {
           };
         }}
       </Tooltip>
-      <Bar x="category" y="bar1" color={colors['green-01']} />
-      <Bar x="category" y="bar2" color={colors['red-01']} />
+      <Bar x="category" y="bar1" color={colors['green-02']} />
+      <Bar x="category" y="bar2" color={colors['orange-04']} />
       <XAxis position={0} />
     </Plot>
   );

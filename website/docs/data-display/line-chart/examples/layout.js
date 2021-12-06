@@ -8,6 +8,7 @@ import Dropdown from '@semcore/dropdown';
 import Switch from '@semcore/switch';
 import InfoXS from '@semcore/icon/lib/Info/xs';
 import SettingsS from '@semcore/icon/lib/Settings/s';
+import { colors } from '@semcore/chart';
 
 class Demo extends Component {
   render() {
@@ -56,13 +57,13 @@ class Demo extends Component {
           <Flex mt={3} mb={6} alignItems="center" justifyContent="space-between">
             <Flex>
               <Box mr={4}>
-                <Checkbox theme="50aef4" size="m">
+                <Checkbox theme={colors['yellow-01']} size="m">
                   <Checkbox.Value />
                   <Checkbox.Text>Organic traffic</Checkbox.Text>
                 </Checkbox>
               </Box>
               <Box mr={4}>
-                <Checkbox theme="3ab011" size="m">
+                <Checkbox theme={colors['violet-01']} size="m">
                   <Checkbox.Value />
                   <Checkbox.Text>Paid traffic</Checkbox.Text>
                 </Checkbox>

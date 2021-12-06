@@ -1,5 +1,5 @@
 import React from 'react';
-import { Plot, Donut } from '@semcore/d3-chart';
+import { Plot, Donut, colors } from '@semcore/d3-chart';
 
 export default () => {
   return (
@@ -7,8 +7,8 @@ export default () => {
       <Donut innerRadius={100}>
         <Donut.EmptyData />
         <Donut.Pie dataKey="a" />
-        <Donut.Pie dataKey="b" color="#3AB011" />
-        <Donut.Pie dataKey="c" color="#890C85" />
+        <Donut.Pie dataKey="b" color={colors['green-02']} />
+        <Donut.Pie dataKey="c" color={colors['pink-03']} />
       </Donut>
     </Plot>
   );

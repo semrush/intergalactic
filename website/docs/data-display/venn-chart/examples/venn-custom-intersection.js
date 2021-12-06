@@ -1,21 +1,21 @@
 import React from 'react';
-import { Plot, Venn } from '@semcore/d3-chart';
+import { colors, Plot, Venn } from '@semcore/d3-chart';
 
 export default () => {
   return (
     <Plot height={300} width={400} data={data}>
       <Venn>
-        <Venn.Circle dataKey="G" color="#3AB011" />
-        <Venn.Circle dataKey="F" color="#50AEF4" />
-        <Venn.Circle dataKey="C" color="#FF8E29" />
+        <Venn.Circle dataKey="G" />
+        <Venn.Circle dataKey="F" color={colors['blue-03']} />
+        <Venn.Circle dataKey="C" color={colors['orange-04']} />
         <Venn.Intersection dataKey="G/F" />
         <Venn.Intersection dataKey="G/C" />
         <Venn.Intersection dataKey="F/C" />
         <Venn.Intersection
           dataKey="G/F/C"
           style={{
-            stroke: '#890C85',
-            fill: '#890C85',
+            stroke: colors['violet-04'],
+            fill: colors['violet-04'],
             fillOpacity: '0.3',
           }}
         />

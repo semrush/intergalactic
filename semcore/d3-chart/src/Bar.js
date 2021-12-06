@@ -14,7 +14,6 @@ class BarRoot extends Component {
   static enhance = [uniqueIDEnhancement()];
 
   static defaultProps = {
-    color: '#50aef4',
     offset: [0, 0],
     duration: 500,
     r: 2,
