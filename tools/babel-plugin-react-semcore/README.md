@@ -1,4 +1,4 @@
-# babel-plugin-react-semcore
+# babel-plugin-react-semcorebabel-plugin-react-semcore
 
 Utility for `@semcore` component's styles manipulations.
 
@@ -7,7 +7,7 @@ Utility for `@semcore` component's styles manipulations.
 yarn:
 
 ```shell
-$ yarn add babel-plugin-react-semcore -D
+$ yarn add @semcore/babel-plugin-react-semcore -D
 ```
 
 ## Usage
