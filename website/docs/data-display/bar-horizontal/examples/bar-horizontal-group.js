@@ -39,7 +39,7 @@ export default () => {
                   <Text bold>{data[yIndex].bar1}</Text>
                 </Flex>
                 <Flex mt={2} justifyContent="space-between">
-                  <Tooltip.Dot mr={4} color={colors['green-01']}>
+                  <Tooltip.Dot mr={4} color={colors['green-02']}>
                     Bar 2
                   </Tooltip.Dot>
                   <Text bold>{data[yIndex].bar2}</Text>
@@ -51,7 +51,7 @@ export default () => {
       </Tooltip>
       <GroupBar y="category">
         <GroupBar.HorizontalBar x="bar1" />
-        <GroupBar.HorizontalBar x="bar2" color={colors['green-01']} />
+        <GroupBar.HorizontalBar x="bar2" color={colors['green-02']} />
       </GroupBar>
     </Plot>
   );

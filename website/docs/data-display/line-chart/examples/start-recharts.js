@@ -72,7 +72,6 @@ const Demo = () => (
         dataKey="date"
         type="number"
         scale="time"
-        type="number"
         domain={['auto', 'auto']}
         tickFormatter={(t) =>
           new Intl.DateTimeFormat('en-US', {

@@ -7,6 +7,7 @@ import {
   CartesianGrid,
   XAxis,
   YAxis,
+  colors,
 } from '@semcore/chart';
 import Card from '@semcore/card';
 import { Flex, Box } from '@semcore/flex-box';
@@ -22,11 +23,11 @@ const BAR_TO_LABEL_MAP = {
 };
 
 const BAR_COLOR_MAP = {
-  top3: '#ffc83f',
-  top10: '#91c7ef',
-  top20: '#50aef4',
-  top50: '#0e75c2',
-  top100: '#084c80',
+  top3: colors['yellow-01'],
+  top10: colors['blue-04'],
+  top20: colors['blue-01'],
+  top50: colors['blue-02'],
+  top100: colors['gray-01'],
 };
 
 let date = Date.now();

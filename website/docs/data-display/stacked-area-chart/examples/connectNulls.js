@@ -13,6 +13,7 @@ import {
   Tooltip as ChartTooltip,
   XAxis,
   YAxis,
+  colors,
 } from '@semcore/chart';
 
 const getRandomInt = (min, max) => Math.floor(min + Math.random() * (max + 1 - min));
@@ -89,7 +90,7 @@ export default () => (
           Desktop
         </Text>
       </Flex>
-      <Text size={100} color="#757575">
+      <Text size={100} color="#6C6E79">
         Last 6 month
       </Text>
     </Flex>
@@ -131,8 +132,8 @@ export default () => (
             activeDot={activeDot}
             type="linear"
             name="Paid"
-            fill="#e91e25"
-            stroke="#e91e25"
+            fill={colors['orange-01']}
+            stroke={colors['orange-01']}
             dataKey="paid"
             stackId="1"
           />
@@ -141,8 +142,8 @@ export default () => (
             activeDot={activeDot}
             type="linear"
             name="Social"
-            fill="#890c85"
-            stroke="#890c85"
+            fill={colors['pink-01']}
+            stroke={colors['pink-01']}
             dataKey="social"
             stackId="1"
           />
@@ -151,8 +152,8 @@ export default () => (
             activeDot={activeDot}
             type="linear"
             name="Search"
-            fill="#ff8e29"
-            stroke="#ff8e29"
+            fill={colors['yellow-01']}
+            stroke={colors['yellow-01']}
             dataKey="search"
             stackId="1"
           />
@@ -161,8 +162,8 @@ export default () => (
             activeDot={activeDot}
             type="linear"
             name="Referral"
-            fill="#3ab011"
-            stroke="#3ab011"
+            fill={colors['green-01']}
+            stroke={colors['green-01']}
             dataKey="referral"
             stackId="1"
           />

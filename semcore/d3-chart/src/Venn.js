@@ -81,7 +81,7 @@ class VennRoot extends Component {
   }
 }
 
-function Circle({ Element: SCircle, styles, color = '#3AB011', data, duration }) {
+function Circle({ Element: SCircle, styles, color, data, duration }) {
   return sstyled(styles)(
     <SCircle
       render="circle"
