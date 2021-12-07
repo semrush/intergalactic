@@ -1,5 +1,5 @@
 import React, { useContext, createContext } from 'react';
-import { styled } from '@semcore/core';
+import { sstyled } from '@semcore/core';
 import { Legend as LegendRecharts } from 'recharts';
 import Checkbox from '@semcore/checkbox';
 import propsForElement from '@semcore/utils/lib/propsForElement';
@@ -75,7 +75,7 @@ const ControlsInner = (props) => {
   const SItem = 'li';
   const SControl = Checkbox;
 
-  return styled(styles)(
+  return sstyled(styles)(
     <SList style={style.list} {...propsForElement(propsList)}>
       {payload.map((entry, i) => {
         const { opacity } = entry.payload;
@@ -149,7 +149,7 @@ LegendRecharts.prototype.render = function () {
 
   const SLegend = 'div';
 
-  return styled(styles)(
+  return sstyled(styles)(
     <LegendContext.Provider
       value={{
         payload: getUniqPayload(paylodUniqBy, payload),
