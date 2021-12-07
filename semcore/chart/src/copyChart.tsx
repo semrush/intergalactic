@@ -1,5 +1,5 @@
 import React from 'react';
-import { styled } from '@semcore/core';
+import { sstyled } from '@semcore/core';
 import copyComponent from './copy';
 
 import styles from './style/chart.shadow.css';
@@ -16,7 +16,7 @@ export default function copyChart<T extends React.ComponentClass>(SChart: T): T 
     },
     render() {
       const { className, forwardedRef, children, ...other } = this.props;
-      return styled(styles)(
+      return sstyled(styles)(
         <SChart {...other} ref={forwardedRef} className={className}>
           <defs>
             <pattern
