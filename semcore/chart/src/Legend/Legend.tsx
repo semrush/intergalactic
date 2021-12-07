@@ -43,7 +43,7 @@ const getEventHandlerOfChild = (originalHandler, data, index) => (e) => {
 
 export const LegendContext = createContext({});
 
-const ControlsInner = (props) => {
+function ControlsInner(props) {
   const { payload, align, layout, verticalAlign, formatter, ...other } = props;
 
   const propsList = {};
@@ -107,11 +107,12 @@ const ControlsInner = (props) => {
       })}
     </SList>,
   );
-};
+}
 
 const Controls = (props) => {
   const context = useContext(LegendContext);
 
+  // @ts-ignore
   return <ControlsInner {...context} {...props} />;
 };
 
