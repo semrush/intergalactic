@@ -367,11 +367,12 @@ class Popper extends Component {
   }
 
   render() {
-    const { Children, visible, onOutsideClick, excludeRefs } = this.asProps;
+    const { Children, visible, root, onOutsideClick, excludeRefs } = this.asProps;
     return (
       <>
         {visible ? (
           <OutsideClick
+            root={root}
             excludeRefs={[this.triggerRef, this.popperRef, ...excludeRefs]}
             onOutsideClick={callAllEventHandlers(
               onOutsideClick,
