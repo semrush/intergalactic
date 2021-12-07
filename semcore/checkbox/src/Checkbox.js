@@ -11,9 +11,9 @@ import getInputProps, { inputProps } from '@semcore/utils/lib/inputProps';
 import style from './style/checkbox.shadow.css';
 
 const SIZE_TEXT_MAP = {
-  xl: 300,
-  l: 200,
-  m: 100,
+  l: 300,
+  m: 200,
+  s: 100,
 };
 
 class Checkbox extends Component {

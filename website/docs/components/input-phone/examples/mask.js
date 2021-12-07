@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Input from '@semcore/input';
 import InputMask, { getAfterPositionValue } from '@semcore/input-mask';
-import Select from '@semcore/select';
+import Select, { InputSearch } from '@semcore/select';
 import NeighborLocation from '@semcore/neighbor-location';
 import Flag, { iso2Name } from '@semcore/flags';
 import { Text } from '@semcore/typography';
@@ -298,12 +298,7 @@ const Demo = () => {
 
         <Select.Popper>
           <>
-            <Select.InputSearch
-              cleared
-              placeholder="Search"
-              value={filter}
-              onChange={updateFilterValue}
-            />
+            <InputSearch cleared placeholder="Search" value={filter} onChange={updateFilterValue} />
 
             <Select.List hMax="240px" w="232px">
               {Object.keys(listActuallyCountryCodes)
