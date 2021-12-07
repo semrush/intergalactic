@@ -56,19 +56,19 @@ SCheckbox {
   }
 }
 
-SCheckbox[size='xl'] {
+SCheckbox[size='l'] {
   margin-top: 2px;
   width: 20px;
   height: 20px;
 }
 
-SCheckbox[size='l'] {
+SCheckbox[size='m'] {
   margin-top: 1px;
   width: 16px;
   height: 16px;
 }
 
-SCheckbox[size='m'] {
+SCheckbox[size='s'] {
   margin-top: 2px;
   width: 12px;
   height: 12px;
@@ -134,17 +134,17 @@ SControl:indeterminate ~ SCheckbox {
     margin: auto;
   }
 
-  &[size='xl']:after {
+  &[size='l']:after {
     width: 14px;
     height: 3px;
   }
 
-  &[size='l']:after {
+  &[size='m']:after {
     width: 10px;
     height: 2px;
   }
 
-  &[size='m']:after {
+  &[size='s']:after {
     width: 8px;
     height: 2px;
   }

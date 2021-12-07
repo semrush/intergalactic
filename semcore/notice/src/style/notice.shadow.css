@@ -64,8 +64,24 @@ SLabel {
   display: inline-flex;
 }
 
-SLabel[theme] {
-  color: var(--theme);
+SLabel[theme='danger'] {
+  color: var(--red);
+}
+
+SLabel[theme='info'] {
+  color: var(--stone);
+}
+
+SLabel[theme='success'] {
+  color: var(--green);
+}
+
+SLabel[theme='warning'] {
+  color: var(--light-orange);
+}
+
+SLabel[theme='custom'] {
+  color: var(--color);
 }
 
 SCloseIcon {

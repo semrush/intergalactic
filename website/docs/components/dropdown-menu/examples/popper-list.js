@@ -34,7 +34,7 @@ export default function() {
               padding: '12px 8px',
               borderWidth: 0,
               borderTopWidth: '1px',
-              borderRadius: 0,
+              borderRadius: '0 0 6px 6px',
             }}
           >
             <Notice.Content>

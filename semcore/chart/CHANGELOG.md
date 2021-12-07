@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.2.6] - 2021-
+
+### Changed
+
+- Moved chart colors vars to style
+
 ## [4.2.5] - 2021-12-06
 
 ### Fixed

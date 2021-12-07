@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.1.2] - 2021-8-26
+
+### Changed
+
+- Moved SLabel colors to style
+
 ## [3.1.1] - 2021-8-26
 
 ### Changed
