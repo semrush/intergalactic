@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [1.1.0] - unreleased
+
+### Added
+
+- Added ability to process `:global` selectors.
+
 ## [1.0.4] - 2021-04-30
 
 ### Fixed
