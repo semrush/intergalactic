@@ -74,6 +74,18 @@ SCheckbox[size='m'] {
   height: 12px;
 }
 
+SText[size='xl'] {
+  font-size: var(--fs-300);
+}
+
+SText[size='l'] {
+  font-size: var(--fs-200);
+}
+
+SText[size='m'] {
+  font-size: var(--fs-100);
+}
+
 SCheckbox {
   &[state='normal']:before {
     border-color: var(--stone);

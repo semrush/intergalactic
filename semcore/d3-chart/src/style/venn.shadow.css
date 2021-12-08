@@ -1,5 +1,7 @@
+@import '@semcore/d3-chart/src/style/var.css';
+
 SCircle {
-  fill: var(--color);
+  fill: var(--green-01);
   stroke: #fff;
   stroke-width: 2px;
   fill-opacity: 0.5;
@@ -10,6 +12,10 @@ SCircle {
   &:hover {
     fill-opacity: 0.7;
   }
+}
+
+SCircle[color] {
+  fill: var(--color);
 }
 
 SIntersection {

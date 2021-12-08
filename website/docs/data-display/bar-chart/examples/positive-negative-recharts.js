@@ -92,7 +92,6 @@ const Demo = () => {
             name="Lost"
             dataKey="lost"
             barSize={20}
-            fill={'#ff8e29'}
             stackId="stack"
             fill={getColor('lost')}
             opacity={opacity['lost']}

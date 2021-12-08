@@ -181,12 +181,7 @@ class DonutRoot extends Component {
   getEmptyDataProps() {
     const { d3Arc } = this.asProps;
     return {
-      data: {
-        endAngle: Math.PI * 2,
-        startAngle: 0,
-      },
       d3Arc,
-      color: '#E4ECF1',
     };
   }
 
@@ -236,8 +231,14 @@ class DonutRoot extends Component {
   }
 }
 
-function Pie({ Element: SPie, styles, d3Arc, data, color = '#50aef4' }) {
+function Pie({ Element: SPie, styles, d3Arc, data, color }) {
   return sstyled(styles)(<SPie render="path" color={color} d={d3Arc(data)} />);
+}
+
+function EmptyData({ Element: SEmptyData, styles, d3Arc, color }) {
+  return sstyled(styles)(
+    <SEmptyData render="path" color={color} d={d3Arc({ endAngle: Math.PI * 2, startAngle: 0 })} />,
+  );
 }
 
 function Label({ Element: SLabel, styles, Children }) {
@@ -248,6 +249,6 @@ function Label({ Element: SLabel, styles, Children }) {
   );
 }
 
-const Donut = createElement(DonutRoot, { Pie, Label, EmptyData: Pie });
+const Donut = createElement(DonutRoot, { Pie, Label, EmptyData });
 
 export default Donut;

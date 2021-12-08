@@ -9,7 +9,7 @@ export default class VennArea extends React.PureComponent<IVennChildProps<SVGCir
     fill: colors['blue-01'],
     fillOpacity: 0.5,
     activeFillOpacity: 0.7,
-    stroke: '#ffffff',
+    stroke: colors['white-01'],
     strokeWidth: 2,
   };
 

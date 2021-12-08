@@ -3,9 +3,9 @@ import { Component, Root, sstyled } from '@semcore/core';
 import Popper from '@semcore/popper';
 import { Box } from '@semcore/flex-box';
 import findComponent from '@semcore/utils/lib/findComponent';
-import resolveColor from '@semcore/utils/lib/color';
 import { CONSTANT } from './utils';
 import createElement from './createElement';
+import resolveColor from '@semcore/utils/lib/color';
 
 import style from './style/tooltip.shadow.css';
 
@@ -114,7 +114,7 @@ function Title(props) {
 }
 
 function Dot(props) {
-  const { styles, color = '#50aef4', Children } = props;
+  const { styles, color, Children } = props;
   const SDotGroup = Root;
   const SDot = Box;
   return sstyled(styles)(

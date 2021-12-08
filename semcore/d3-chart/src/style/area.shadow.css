@@ -1,12 +1,22 @@
+@import '@semcore/d3-chart/src/style/var.css';
+
 SArea {
-  fill: var(--color);
+  fill: var(--blue-01);
   fill-opacity: 0.4;
 }
 
+SArea[color] {
+  fill: var(--color);
+}
+
 SAreaLine {
-  stroke: var(--color);
+  stroke: var(--blue-01);
   stroke-width: 3;
   fill: transparent;
+}
+
+SAreaLine[color] {
+  stroke: var(--color);
 }
 
 SArea,

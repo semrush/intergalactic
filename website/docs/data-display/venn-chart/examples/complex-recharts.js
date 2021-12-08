@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Card from '@semcore/card';
 import { Text } from '@semcore/typography';
-import { Flex, Box } from '@semcore/flex-box';
+import { Flex } from '@semcore/flex-box';
 import Tooltip from '@semcore/tooltip';
 import Checkbox from '@semcore/checkbox';
 import InfoXS from '@semcore/icon/lib/Info/xs';

@@ -87,7 +87,7 @@ class Demo extends PureComponent {
                 const { percent } = props;
                 return (
                   <>
-                    <Box tag="span" style={{ color: '#757575', fontWeight: 'normal' }}>
+                    <Box tag="span" style={{ color: '#6C6E79', fontWeight: 'normal' }}>
                       {percent.toFixed(0)}%
                     </Box>
                     <Box tag="span" ml={3}>

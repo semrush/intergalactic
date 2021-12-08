@@ -52,7 +52,7 @@ Line.prototype.renderCurveStatically = function (points, needClip, clipPathId, p
         <Curve
           {...curveProps}
           points={normalizeCurvePoints(points)}
-          stroke="#a2b3b8"
+          stroke={colors['gray-02']}
           strokeWidth={3}
           strokeDasharray="6"
         />
@@ -258,7 +258,7 @@ Line.prototype.renderDots = function (needClip, clipPathId) {
       key: `dot-${i}`,
       r: 6,
       ...lineProps,
-      stroke: '#ffffff',
+      stroke: colors['white-01'],
       strokeWidth: 2,
       ...customDotProps,
       ...dotEvents,
@@ -337,7 +337,7 @@ Line.defaultProps.strokeWidth = 3;
 // @ts-ignore
 Line.defaultProps.dot = false;
 // @ts-ignore
-Line.defaultProps.activeDot = { r: 8, strokeWidth: 2, stroke: '#fff' };
+Line.defaultProps.activeDot = { r: 8, strokeWidth: 2, stroke: colors['white-01'] };
 // @ts-ignore
 Line.defaultProps.type = 'monotone';
 

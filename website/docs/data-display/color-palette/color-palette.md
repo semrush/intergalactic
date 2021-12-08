@@ -38,21 +38,17 @@ Colors of the main palette are recommended to be taken in their due order, skipp
 
 @import color-group {"group": "chart"}
 
-#### 2. One shade lighter
+#### 2. Second pack
 
-@import color-group {"group": "chart-light-1"}
+@import color-group {"group": "second-pack"}
 
-#### 3. One shade darker
+#### 3. Third pack
 
-@import color-group {"group": "chart-dark-1"}
+@import color-group {"group": "third-pack"}
 
-#### 4. Two shades lighter
+#### 4. Other data
 
-@import color-group {"group": "chart-light-2"}
-
-#### 5. Two shades darker
-
-@import color-group {"group": "chart-dark-2"}
+@import color-group {"group": "other-data"}
 
 @## Additional palette
 

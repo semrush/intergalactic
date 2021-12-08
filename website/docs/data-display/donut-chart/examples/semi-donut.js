@@ -1,5 +1,5 @@
 import React from 'react';
-import { Plot, Donut, Tooltip } from '@semcore/d3-chart';
+import { Plot, Donut, Tooltip, colors } from '@semcore/d3-chart';
 import { Text } from '@semcore/typography';
 import { Flex } from '@semcore/flex-box';
 
@@ -8,8 +8,8 @@ export default () => {
     <Plot width={300} height={150} data={data}>
       <Donut halfsize innerRadius={100}>
         <Donut.Pie dataKey="a" name="Pie 1" />
-        <Donut.Pie dataKey="b" color="#890C85" name="Pie 2" />
-        <Donut.Pie dataKey="c" color="#3AB011" name="Pie 3" />
+        <Donut.Pie dataKey="b" color={colors['green-02']} name="Pie 2" />
+        <Donut.Pie dataKey="c" color={colors['violet-04']} name="Pie 3" />
         <Donut.Label>
           <Text tag="tspan" x="0" dy="-1.2em" fill="#333333" size={600}>
             71,240

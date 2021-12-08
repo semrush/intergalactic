@@ -1,12 +1,17 @@
 @import '@semcore/utils/style/var.css';
+@import '@semcore/d3-chart/src/style/var.css';
 
 SLine {
   fill: transparent;
   stroke-width: 3;
-  stroke: var(--color);
+  stroke: var(--blue-01);
   transition-property: d;
   transition-duration: var(--duration);
   transition-timing-function: ease-in-out;
+}
+
+SLine[color] {
+  stroke: var(--color);
 }
 
 SLine[hide] {

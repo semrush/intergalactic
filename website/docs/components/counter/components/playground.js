@@ -4,7 +4,7 @@ import Counter from '@semcore/counter';
 
 const SIZES = ['xl', 'l', 'm'];
 
-const THEME = ['', 'orange', 'light-blue', 'white'];
+const THEME = ['', 'warning', 'danger', 'light-blue', 'white'];
 
 const Preview = (preview) => {
   const { select, radio, text } = preview('Counter');
