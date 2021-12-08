@@ -1,5 +1,20 @@
+@import '@semcore/utils/style/var.css';
+@import '@semcore/d3-chart/src/style/var.css';
+
 SPie {
   stroke: #ffffff;
+  fill: var(--blue-01);
+}
+
+SPie[color] {
+  fill: var(--color);
+}
+
+SEmptyData {
+  fill: var(--mystic);
+}
+
+SEmptyData[color] {
   fill: var(--color);
 }
 

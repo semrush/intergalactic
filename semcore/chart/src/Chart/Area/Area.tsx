@@ -79,7 +79,7 @@ AreaRecharts.prototype.renderAreaStatically = function (points, baseLine, needCl
               type={type}
               connectNulls
               fill="none"
-              stroke="#a2b3b8"
+              stroke={colors['gray-02']}
               strokeWidth={3}
               strokeDasharray="6"
               points={normalizedPoints}
@@ -135,7 +135,7 @@ AreaRecharts.prototype.renderDots = function (needClip, clipPathId) {
       key: `dot-${i}`,
       r: 6,
       ...areaProps,
-      stroke: '#ffffff',
+      stroke: colors['white-01'],
       strokeWidth: 2,
       ...customDotProps,
       ...dotEvents,
@@ -215,6 +215,6 @@ AreaRecharts.defaultProps.fillOpacity = '0.2';
 // @ts-ignore
 AreaRecharts.defaultProps.dot = false;
 // @ts-ignore
-AreaRecharts.defaultProps.activeDot = { r: 8, strokeWidth: 2, stroke: '#fff' };
+AreaRecharts.defaultProps.activeDot = { r: 8, strokeWidth: 2, stroke: colors['white-01'] };
 
 export default AreaRecharts;

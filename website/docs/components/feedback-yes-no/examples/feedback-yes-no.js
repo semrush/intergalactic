@@ -83,7 +83,7 @@ class Feedback extends React.PureComponent {
             </FeedbackForm.Item>
           </Flex>
           <Box mt={2}>
-            <Text lineHeight="18px" size={100}>
+            <Text lineHeight="18px" size={100} color="#6c6e79">
               We will only use this email to respond to you on your feedback.{' '}
               <Link href="https://www.semrush.com/company/legal/privacy-policy/">
                 Privacy Policy
@@ -137,6 +137,7 @@ class FeedbackYesNo extends React.PureComponent {
           borderTop: 'none',
           borderRight: 'none',
           borderLeft: 'none',
+          borderRadius: '0',
         }}
       >
         <Notice.Label my="-6px">

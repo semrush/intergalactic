@@ -64,13 +64,13 @@ export default () => {
                   <Text bold>{data[xIndex].stack1}</Text>
                 </Flex>
                 <Flex mt={2} justifyContent="space-between">
-                  <Tooltip.Dot mr={4} color={colors['green-01']}>
+                  <Tooltip.Dot mr={4} color={colors['green-02']}>
                     Stack 2
                   </Tooltip.Dot>
                   <Text bold>{data[xIndex].stack2}</Text>
                 </Flex>
                 <Flex mt={2} justifyContent="space-between">
-                  <Tooltip.Dot mr={4} color={colors['orange-01']}>
+                  <Tooltip.Dot mr={4} color={colors['orange-04']}>
                     Stack 3
                   </Tooltip.Dot>
                   <Text bold>{data[xIndex].stack3}</Text>
@@ -90,10 +90,10 @@ export default () => {
         <StackedArea.Area y="stack1" curve={curveCardinal}>
           <StackedArea.Area.Dots />
         </StackedArea.Area>
-        <StackedArea.Area y="stack2" fill="#3AB01150" color="#3AB011" curve={curveCardinal}>
+        <StackedArea.Area y="stack2" fill="#59DDAA50" color="#59DDAA" curve={curveCardinal}>
           <StackedArea.Area.Dots />
         </StackedArea.Area>
-        <StackedArea.Area y="stack3" fill="#FFA31850" color="#FFA318" curve={curveCardinal}>
+        <StackedArea.Area y="stack3" fill="#FF622D50" color="#FF622D" curve={curveCardinal}>
           <StackedArea.Area.Dots />
         </StackedArea.Area>
       </StackedArea>

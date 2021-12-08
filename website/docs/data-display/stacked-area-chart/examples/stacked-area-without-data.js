@@ -46,13 +46,13 @@ export default () => {
                   <Text bold>{data[xIndex].stack1 ?? 'n/a'}</Text>
                 </Flex>
                 <Flex mt={2} justifyContent="space-between">
-                  <Tooltip.Dot mr={4} color={colors['green-01']}>
+                  <Tooltip.Dot mr={4} color={colors['green-02']}>
                     Stack 2
                   </Tooltip.Dot>
                   <Text bold>{data[xIndex].stack2 ?? 'n/a'}</Text>
                 </Flex>
                 <Flex mt={2} justifyContent="space-between">
-                  <Tooltip.Dot mr={4} color={colors['orange-01']}>
+                  <Tooltip.Dot mr={4} color={colors['orange-04']}>
                     Stack 3
                   </Tooltip.Dot>
                   <Text bold>{data[xIndex].stack3 ?? 'n/a'}</Text>
@@ -67,11 +67,11 @@ export default () => {
           <StackedArea.Area.Null />
           <StackedArea.Area.Dots />
         </StackedArea.Area>
-        <StackedArea.Area y="stack2" fill="#3AB01150" color="#3AB011">
+        <StackedArea.Area y="stack2" fill="#59DDAA50" color="#59DDAA">
           <StackedArea.Area.Null />
           <StackedArea.Area.Dots />
         </StackedArea.Area>
-        <StackedArea.Area y="stack3" fill="#FF8E2950" color="#FF8E29">
+        <StackedArea.Area y="stack3" fill="#FF622D50" color="#FF622D">
           <StackedArea.Area.Null />
           <StackedArea.Area.Dots />
         </StackedArea.Area>

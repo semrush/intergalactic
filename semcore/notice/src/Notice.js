@@ -11,8 +11,6 @@ function isCustomTheme(theme) {
   return !['danger', 'warning', 'success', 'info'].includes(theme);
 }
 
-const THEME_LABEL = { info: 'stone', success: 'green', warning: 'orange', danger: 'red' };
-
 class RootNotice extends Component {
   static displayName = 'Notice';
   static style = style;
@@ -51,8 +49,9 @@ class RootNotice extends Component {
 
 function Label({ styles, theme }) {
   const SLabel = Root;
-  const useTheme = isCustomTheme(theme) ? resolveColor(theme) : resolveColor(THEME_LABEL[theme]);
-  return sstyled(styles)(<SLabel render={Box} use:theme={useTheme} />);
+  const useTheme = isCustomTheme(theme) ? 'custom' : theme;
+  const color = resolveColor(theme);
+  return sstyled(styles)(<SLabel render={Box} use:theme={useTheme} color={color} />);
 }
 
 function Actions({ styles }) {

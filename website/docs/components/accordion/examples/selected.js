@@ -5,15 +5,15 @@ import styled from 'styled-components';
 import { Box } from '@semcore/flex-box';
 
 const Trigger = styled(Accordion.Item.Toggle)`
-  background: #f2f3f4;
+  background: #f4f5f9;
   text-align: left;
   margin-bottom: 1px;
   padding: 8px 12px;
   display: flex;
   align-items: center;
-  ${({ selected }) => (selected ? 'background: rgb(223, 224, 224);' : '')}
+  ${({ selected }) => (selected ? 'background: #E0E1E9' : '')}
   &:hover {
-    background: rgb(223, 224, 224);
+    background: #e0e1e9;
   }
 `;
 
@@ -24,7 +24,7 @@ const Demo = () => (
         {({ selected }) => (
           <>
             <Trigger selected={selected}>
-              <Accordion.Item.Chevron color="stone" mr={2} />
+              <Accordion.Item.Chevron color="mist" mr={2} />
               <Text size={200} color="gray20">{`Section ${index + 1}`}</Text>
             </Trigger>
             <Accordion.Item.Collapse>

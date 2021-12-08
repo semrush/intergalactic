@@ -1,4 +1,5 @@
 @import '@semcore/utils/style/var.css';
+@import '@semcore/d3-chart/src/style/var.css';
 
 STooltip {
   position: relative;
@@ -27,5 +28,9 @@ SDot {
   height: 8px;
   border-radius: 50%;
   margin-right: 8px;
+  background: var(--blue-01);
+}
+
+SDot[color] {
   background: var(--color);
 }

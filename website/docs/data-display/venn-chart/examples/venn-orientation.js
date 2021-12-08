@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Button from '@semcore/button';
-import { Plot, Venn } from '@semcore/d3-chart';
+import { colors, Plot, Venn } from '@semcore/d3-chart';
 import { Flex } from '@semcore/flex-box';
 
 const orders = [
@@ -18,8 +18,8 @@ export default () => {
     <Flex alignItems="center" direction="column">
       <Plot height={300} width={400} data={data}>
         <Venn orientation={orientations[orientation]} orientationOrder={orders[order]}>
-          <Venn.Circle dataKey="F" color="#3AB011" />
-          <Venn.Circle dataKey="S" color="#50AEF4" />
+          <Venn.Circle dataKey="F" />
+          <Venn.Circle dataKey="S" color={colors['blue-03']} />
           <Venn.Intersection dataKey="F/S" />
         </Venn>
       </Plot>

@@ -30,7 +30,6 @@ class AreaRoot extends Component {
         .curve(curve)
         .x((p) => scaleOfBandwidth(xScale, p[x]))
         .y((p) => scaleOfBandwidth(yScale, p[y])),
-      color: '#50aef4',
       duration: 500,
     };
   };
