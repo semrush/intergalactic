@@ -1,5 +1,5 @@
 import React, { useContext, createContext } from 'react';
-import { styled } from '@semcore/core';
+import { sstyled } from '@semcore/core';
 import { Legend as LegendRecharts } from 'recharts';
 import Checkbox from '@semcore/checkbox';
 import propsForElement from '@semcore/utils/lib/propsForElement';
@@ -43,7 +43,7 @@ const getEventHandlerOfChild = (originalHandler, data, index) => (e) => {
 
 export const LegendContext = createContext({});
 
-const ControlsInner = (props) => {
+function ControlsInner(props) {
   const { payload, align, layout, verticalAlign, formatter, ...other } = props;
 
   const propsList = {};
@@ -75,7 +75,7 @@ const ControlsInner = (props) => {
   const SItem = 'li';
   const SControl = Checkbox;
 
-  return styled(styles)(
+  return sstyled(styles)(
     <SList style={style.list} {...propsForElement(propsList)}>
       {payload.map((entry, i) => {
         const { opacity } = entry.payload;
@@ -107,11 +107,12 @@ const ControlsInner = (props) => {
       })}
     </SList>,
   );
-};
+}
 
 const Controls = (props) => {
   const context = useContext(LegendContext);
 
+  // @ts-ignore
   return <ControlsInner {...context} {...props} />;
 };
 
@@ -149,7 +150,7 @@ LegendRecharts.prototype.render = function () {
 
   const SLegend = 'div';
 
-  return styled(styles)(
+  return sstyled(styles)(
     <LegendContext.Provider
       value={{
         payload: getUniqPayload(paylodUniqBy, payload),
