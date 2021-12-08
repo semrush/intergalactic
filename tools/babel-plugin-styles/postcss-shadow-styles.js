@@ -4,10 +4,16 @@ const stringHash = require('string-hash');
 
 const PLACEHOLDER_REPLACER = '_gg_';
 
-function walkRule(nodes = [], generateClassName, tokens) {
+function walkRule(nodes = [], parentNode, generateClassName, tokens) {
   let element;
   nodes.forEach((node, i) => {
-    if (node.type === 'element' && /^[A-Z]/.test(node.name)) {
+    if (node.type === 'nested-pseudo-class' && node.name === 'global') {
+      if (parentNode) {
+        parentNode.nodes[i] = node.nodes;
+        parentNode.nodes = parentNode.nodes.flat();
+        // node = parentNode
+      }
+    } else if (node.type === 'element' && /^[A-Z]/.test(node.name)) {
       node.type = 'class';
       element = node.name;
       tokens['__' + node.name] = node.name = generateClassName([node.name]);
@@ -27,7 +33,7 @@ function walkRule(nodes = [], generateClassName, tokens) {
       element = undefined;
     }
     if (node.nodes?.length) {
-      walkRule(node.nodes, generateClassName, tokens);
+      walkRule(node.nodes, node, generateClassName, tokens);
     }
   });
 }
@@ -98,7 +104,7 @@ module.exports = (opts) => {
         Rule(Rule) {
           if (!Rule[processed]) {
             const rootNode = Tokenizer.parse(Rule.selector);
-            walkRule(rootNode.nodes, generateScopedName, tokens);
+            walkRule(rootNode.nodes, null, generateScopedName, tokens);
             Rule.selector = Tokenizer.stringify(rootNode);
             Rule[processed] = true;
           }
