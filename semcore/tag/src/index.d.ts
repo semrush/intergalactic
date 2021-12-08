@@ -25,6 +25,8 @@ export interface ITagProps extends IBoxProps {
    * @default muted
    */
   theme?: TagTheme;
+  /** Tag color text */
+  color?: string;
   /** Tag size
    * @default m
    */
