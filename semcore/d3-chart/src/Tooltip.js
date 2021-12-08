@@ -5,6 +5,7 @@ import { Box } from '@semcore/flex-box';
 import findComponent from '@semcore/utils/lib/findComponent';
 import { CONSTANT } from './utils';
 import createElement from './createElement';
+import resolveColor from '@semcore/utils/lib/color';
 
 import style from './style/tooltip.shadow.css';
 
@@ -118,7 +119,7 @@ function Dot(props) {
   const SDot = Box;
   return sstyled(styles)(
     <SDotGroup render={Box}>
-      <SDot __excludeProps={['data', 'scale']} color={color} />
+      <SDot __excludeProps={['data', 'scale']} color={resolveColor(color)} />
       <Children />
     </SDotGroup>,
   );

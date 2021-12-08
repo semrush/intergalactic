@@ -11,8 +11,6 @@ function isCustomTheme(theme) {
   return !['danger', 'warning', 'success', 'info'].includes(theme);
 }
 
-const THEME_LABEL = { info: 'stone', success: 'green', warning: 'orange', danger: 'red' };
-
 class RootNotice extends Component {
   static displayName = 'Notice';
   static style = style;
