@@ -27,7 +27,7 @@ import {
 } from './interface/VennChart';
 import fire from '@semcore/utils/lib/fire';
 import assignProps from '@semcore/utils/lib/assignProps';
-import { styled } from '@semcore/core';
+import { sstyled } from '@semcore/core';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import cn from 'classnames';
 import styles from './style/venn-tooltip-label.shadow.css';
@@ -328,7 +328,7 @@ export default class VennChart extends React.PureComponent<IVennChartProps, IVen
     const STooltipLabelPercentage = 'span';
     const STooltipLabelValue = 'span';
 
-    return styled(styles)(
+    return sstyled(styles)(
       <STooltipLabel>
         <STooltipLabelTitle>{label}</STooltipLabelTitle>
         <STooltipLabelPercentage>{finalPercentage}%</STooltipLabelPercentage>
@@ -346,7 +346,7 @@ export default class VennChart extends React.PureComponent<IVennChartProps, IVen
     const { className, width, height, style, ...other } = this.props;
     const attrs = getPresentationAttributes(other);
     const SChart = 'div';
-    return styled(chartStyles)(
+    return sstyled(chartStyles)(
       <SChart
         className={cn('recharts-wrapper', className)}
         style={{ position: 'relative', cursor: 'default', width, height, ...style }}

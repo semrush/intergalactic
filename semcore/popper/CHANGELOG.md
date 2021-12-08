@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.11.14] - 2021-12-07
+
+### Fixed
+
+- Property `root` for Popper set to `OutsideClick`.
+
 ## [4.11.13] - 2021-10-18
 
 ### Changed
