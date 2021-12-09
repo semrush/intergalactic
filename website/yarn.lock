@@ -1726,6 +1726,11 @@
     "@angular-devkit/core" "7.3.8"
     "@angular-devkit/schematics" "7.3.8"
 
+"@semcore/theme-redesign@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@semcore/theme-redesign/-/theme-redesign-1.0.1.tgz#f7afe13a388044bc4e13d7e483bbbebd2ac77aee"
+  integrity sha512-RvdmKAuw1uLKcKJa7BDwKP1xaTvgtt3erGgOH3RPF/5t5NlKS2Ts3Mg3H+HJTmg/1PRbtLZsbK9MV55rhi/nkQ==
+
 "@tootallnate/once@1":
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/@tootallnate/once/-/once-1.1.2.tgz#ccb91445360179a04e7fe6aff78c00ffc1eeaf82"

@@ -29,6 +29,21 @@ module.exports = (env, argv) => {
           },
         },
         {
+          test: /\.js$/,
+          include: /semcore\//,
+          enforce: 'pre',
+          use: [
+            {
+              loader: 'babel-loader',
+              options: {
+                plugins: [
+                  ['@semcore/babel-plugin-react-semcore', { theme: '@semcore/theme-redesign' }],
+                ],
+              },
+            },
+          ],
+        },
+        {
           test: /\.css$/i,
           use: ['style-loader', 'css-loader'],
         },
