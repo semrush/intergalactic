@@ -30,7 +30,7 @@ module.exports = (env, argv) => {
         },
         {
           test: /\.js$/,
-          include: /semcore\//,
+          include: /\/node_modules\/@semcore\//,
           enforce: 'pre',
           use: [
             {
