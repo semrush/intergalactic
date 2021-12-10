@@ -6,6 +6,7 @@
     "start": "node ./index.js"
   },
   "license": "MIT",
+  "private": true,
   "dependencies": {
     "axios": "^0.21.2",
     "require-all": "^3.0.0",

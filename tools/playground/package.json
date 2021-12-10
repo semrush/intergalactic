@@ -9,6 +9,7 @@
   },
   "author": "",
   "license": "ISC",
+  "private": true,
   "dependencies": {
     "@semcore/babel-plugin-react-semcore": "*",
     "@semcore/shadow-loader": "*",
