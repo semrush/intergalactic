@@ -1,3 +1,45 @@
+## [10.0.0] - 2021-12-10
+
+### @semcore/breadcrumbs
+  - **Changed** Rewrite code from TS to JS
+
+### @semcore/chart
+  - **Fixed** Remove 'sideEffect=false' because bug in recahrts lib.
+  - **Changed** Moved chart colors vars to style
+  - **Changed** Changed package from venn.js to @upsetjs/venn.js.
+
+### @semcore/checkbox
+  - **Changed** Moved checkbox size vars to style
+
+### @semcore/counter
+  - **Added** Added warning and danger themes
+
+### @semcore/d3-chart
+  - **Fixed** Calculate correct border radius for Bar.
+  - **Fixed** Fixed set scale for Area, Line.
+  - **Changed** Moved chart colors vars to style
+
+### @semcore/drag-and-drop
+  - **Fixed** Fixed global color .dnd
+  - **Changed** Up version
+
+### @semcore/notice
+  - **Changed** Moved SLabel colors to style
+
+### @semcore/popper
+  - **Fixed** Property root for Popper set to OutsideClick.
+
+### @semcore/select
+  - **Added** [TS] Added type for Select.Option.Checkbox.
+  - **Added** Added class name to InputSearch.
+  - **Fixed** Fixed import styles in InputSearch.
+
+### @semcore/tag
+  - **Added** Added property for Tag color
+
+### @semcore/utils
+  - **Changed** Added magic comment in color.ts for update values in themes.
+
 ## [9.0.0] - 2021-11-12
 
 ### @semcore/d3-chart
