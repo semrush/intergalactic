@@ -5,6 +5,7 @@
   "main": "./.babelrc.js",
   "author": "",
   "license": "ISC",
+  "private": true,
   "dependencies": {
     "@babel/cli": "^7.7.0",
     "@babel/core": "^7.7.2",

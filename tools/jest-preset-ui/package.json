@@ -5,6 +5,7 @@
   "main": "./index.js",
   "author": "",
   "license": "ISC",
+  "private": true,
   "dependencies": {
     "@testing-library/react": "^11.2.2",
     "babel-jest": "^24.8.0",
