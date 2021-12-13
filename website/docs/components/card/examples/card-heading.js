@@ -13,8 +13,10 @@ export default () => (
       <Card.Title hint={TooltipContent}>Card heading</Card.Title>
       <SettingsS color="stone" ml="auto" interactive />
     </Flex>
+    <Flex>
+      <Card.Description>This is card additional information or insights.</Card.Description>
+    </Flex>
     <Divider orientation="horizontal" mb={5} ml={-5} w={440} />
-    <Card.Description>This is card additional information or insights.</Card.Description>
     <Text size={100}>Your awesome card content ✨</Text>
   </Card>
 );
