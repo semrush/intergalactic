@@ -18,32 +18,11 @@ const ListItem = styled.li`
   }
 `;
 
-const H3 = styled.h3`
-  font-size: 16px;
-  line-height: 1.4;
-`;
-
-const ComponentName = styled.span`
-  font-weight: 400;
-  &:first-letter {
-    text-transform: capitalize;
-  }
-`;
-
-const Muted = styled.span`
-  color: #898d9a;
-`;
-
 const TagStyled = styled(Tag)`
   margin-right: 16px;
   margin-top: 4px;
   width: 80px;
   flex-shrink: 0;
-`;
-
-const AsLink = styled.span`
-  color: #0070cc;
-  text-decoration: none;
 `;
 
 function capitalizeFirstLetter(string) {
@@ -55,14 +34,14 @@ function getLabel(tag) {
   switch (tag) {
     case 'Added':
       label = (
-        <TagStyled size="l" theme="#00BC98">
+        <TagStyled size="l" theme="#9EF2C9" color="#007C65">
           {tag}
         </TagStyled>
       );
       break;
     case 'Fixed':
       label = (
-        <TagStyled size="l" theme="#0070CC">
+        <TagStyled size="l" theme="#C4E5FE" color="#006DCA">
           {tag}
         </TagStyled>
       );
@@ -71,7 +50,7 @@ function getLabel(tag) {
     case 'Removed':
     case 'Deprecated':
       label = (
-        <TagStyled size="l" theme="#FF622D">
+        <TagStyled size="l" theme="#FFDCA2" color="#C33909">
           {tag}
         </TagStyled>
       );
@@ -79,7 +58,7 @@ function getLabel(tag) {
     case 'BREAK':
     case 'Security':
       label = (
-        <TagStyled size="l" theme="#F71939">
+        <TagStyled size="l" theme="#FFD7DF" color="#D1002F">
           {tag}
         </TagStyled>
       );

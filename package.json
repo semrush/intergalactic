@@ -52,7 +52,8 @@
     "tslint-react": "^4.1.0",
     "typescript": "^3.9.5",
     "typescript-plugin-css-modules": "^2.2.0",
-    "typescript-workspace-plugin": "^2.0.1"
+    "typescript-workspace-plugin": "^2.0.1",
+    "@semcore/theme-redesign": "^1.0.1"
   },
   "jest": {
     "preset": "jest-preset-ui"
