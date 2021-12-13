@@ -4,6 +4,14 @@ title: Global theme
 
 All our components are already styled for Semrush tools, but if your tool uses a different color palette or you need to style the components differently, then you can influence the appearance of `@semcore` components with `@semcore/babel-plugin-react-semcore`.
 
+> ### Redesign 🎨
+>
+> We have created a new theme for Semrush redesign - `@semcore/theme-redesign`.
+>
+> Please use release [[10.0.0] - 2021-12-10](https://i.semrush.com/internal/release/release-changelog/) and above, or update components to the latest versions for correct changes in styles.
+>
+> Otherwise theme styles will apply incorrectly.
+
 @## Step one
 
 You have installed our `component` and our plugin `@semcore/babel-plugin-react-semcore` to properly transpile the code.

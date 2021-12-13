@@ -37,7 +37,10 @@ module.exports = (env, argv) => {
               loader: 'babel-loader',
               options: {
                 plugins: [
-                  ['@semcore/babel-plugin-react-semcore', { theme: '@semcore/theme-redesign' }],
+                  [
+                    '@semcore/babel-plugin-react-semcore',
+                    { theme: '@semcore/theme-redesign', scope: 'semcore' },
+                  ],
                 ],
               },
             },

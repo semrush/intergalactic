@@ -8,6 +8,7 @@
     "gcs-upload": "./bin/index.js"
   },
   "license": "ISC",
+  "private": true,
   "dependencies": {
     "@google-cloud/storage": "^3.1.0",
     "minimist": "^1.2.0"
