@@ -8,6 +8,7 @@ import { Text } from '@semcore/typography';
 import Button from '@semcore/button';
 import Link from '@semcore/link';
 import RepeatXS from '@semcore/icon/lib/Repeat/xs';
+import Divider from '@semcore/divider';
 
 const options = ['de', 'en', 'es', 'fr', 'it', 'ja', 'pt', 'ru', 'zh', 'ko', 'vi'].map((o) => ({
   value: o,
@@ -22,7 +23,10 @@ export default () => {
       Select lang: <Select options={options} value={lang} onChange={setLang} />
       <I18nProvider value={lang}>
         <Card my={5}>
-          <Text size={400}>Known error</Text>
+          <Text size={300} bold>
+            Known error
+          </Text>
+          <Divider orientation="horizontal" m={'8px 0 12px -20px'} w={'calc(100% + 40px)'} />
           <Error>
             <Box mt={4}>
               <Button>Try again</Button>
@@ -30,7 +34,10 @@ export default () => {
           </Error>
         </Card>
         <Card my={5}>
-          <Text size={400}>Don't known error</Text>
+          <Text size={300} bold>
+            Don't known error
+          </Text>
+          <Divider orientation="horizontal" m={'8px 0 12px -20px'} w={'calc(100% + 40px)'} />
           <Error
             description={
               <>
