@@ -4,12 +4,16 @@ import { Box } from '@semcore/flex-box';
 import Button from '@semcore/button';
 import Card from '@semcore/card';
 import WidgetEmpty, { getIconPath } from '@semcore/widget-empty';
+import Divider from '@semcore/divider';
 
 export default () => {
   return (
     <div>
       <Card my={5}>
-        <Text size={400}>[Name Tool]</Text>
+        <Text size={300} bold>
+          [Name Tool]
+        </Text>
+        <Divider orientation="horizontal" m={'8px 0 12px -20px'} w={'calc(100% + 40px)'} />
         <WidgetEmpty icon={getIconPath('combined-chart')}>
           <WidgetEmpty.Title>Set up your [Name Tool]</WidgetEmpty.Title>
           <WidgetEmpty.Description>
