@@ -15,8 +15,8 @@ const defaultFindNeighbor = (
 
   const lastIndex = lengthList - 1;
   let indexNext = indexElement + elementSibling;
-  if (indexNext === lastIndex) indexNext = 0;
   if (indexNext < 0) indexNext = lastIndex;
+  if (indexNext > lastIndex) indexNext = 0;
   return listSelectors[indexNext];
 };
 
