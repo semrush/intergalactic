@@ -182,7 +182,7 @@ If the notice applies to the entire tool, it is placed in the report header (und
 
 If the notification refers only to the content of a specific tab inside the tool, then it can be placed under the [TabPanel](http://i.semrush.com/components/tab-panel/).
 
-#### Inside the widget or block
+#### Inside the widget
 
 If the notice belongs to a block, it is placed inside the block. The exact place depends on the context. As a rule, in such cases, the notification inherits the width of the content section of the block.
 
@@ -200,6 +200,12 @@ If the notice applies to the entire component, it is placed at the bottom or top
 - Stretch it to the full width of the screen.
 
 ![gnotice-placement](static/placement.png)
+
+### Warning and error notice
+
+Show notice with an error message in the form as near as possibble to the place where user made an interaction. For example if there is an error occured after user submitted the form, then show notice directly above the buttons.
+
+![notice-component-yes-no](static/notice-error-yes-no.png)
 
 @## Custom notice
 

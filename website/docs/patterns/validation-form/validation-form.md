@@ -49,6 +49,10 @@ All form elements have the same `invalid` state: a `var(--orange)` border and a 
 
 ![Textarea](./static/textarea-validation.png)
 
+@## Error message
+
+Find more about the placement of the notice with an error message in the [Notice guide](/components/notice/).
+
 @## Validation texts
 
 The General pattern for the text: `Please enter something`.
