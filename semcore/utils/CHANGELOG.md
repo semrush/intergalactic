@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.30.4] - 2021-12-15
+
+### Fixed
+
+- Fixed logic to function `defaultFindNeighbor` for `a11yEnhance`.
+
 ## [3.30.3] - 2021-11-29
 
 ### Changed
