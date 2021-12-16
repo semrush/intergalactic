@@ -4,7 +4,7 @@ import EditXS from '@semcore/icon/lib/Edit/xs';
 import PlaygroundGeneration from 'components/PlaygroundGeneration';
 
 const THEMES = {
-  primary: ['warning', 'invert'],
+  primary: ['muted', 'warning', 'invert'],
   secondary: ['muted', 'invert'],
   custom: [],
 };
@@ -27,12 +27,18 @@ export default PlaygroundGeneration((createGroupWidgets) => {
   });
 
   let theme = null;
+  let color = null;
 
   if (use === 'custom') {
     theme = text({
-      ey: 'theme',
+      key: 'theme',
       defaultValue: '',
       label: 'Theme',
+    });
+    color = text({
+      key: 'color',
+      defaultValue: '',
+      label: 'Color',
     });
   } else {
     theme = select({
@@ -86,6 +92,7 @@ export default PlaygroundGeneration((createGroupWidgets) => {
       active={active}
       theme={theme}
       use={use}
+      color={color}
       size={size}
       disabled={disabled}
     >
