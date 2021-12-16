@@ -26,7 +26,7 @@ export default PlaygroundGeneration((createGroupWidgets) => {
     options: Object.values(Object.keys(THEMES)),
   });
 
-  let theme = null;
+  let theme;
   let color = null;
 
   if (use === 'custom') {
