@@ -108,15 +108,17 @@ function colorRGB(color) {
 }
 
 function hex2rgb(hex) {
-  return hex
-    .replace(/^#?([a-f\d])([a-f\d])([a-f\d])$/i, (m, r, g, b) => '#' + r + r + g + g + b + b)
-    .substring(1)
-    .match(/.{2}/g)
-    .map((x) => parseInt(x, 16));
+  if (hex.match(/^#?[a-f\d]{6}$/))
+    return hex
+      .replace(/^#?([a-f\d])([a-f\d])([a-f\d])$/i, (m, r, g, b) => '#' + r + r + g + g + b + b)
+      .substring(1)
+      .match(/.{2}/g)
+      .map((x) => parseInt(x, 16));
+  else return '';
 }
 
 export function opacity(color?: string, percent: number = 1) {
-  if (!color) return '';
+  if (!color || !color.match(/^#?[a-f\d]{6}$/)) return '';
   if (color.includes('#')) {
     color = `rgba(${hex2rgb(color).join(', ')}, ${percent})`;
   } else if (color.includes('rgb')) {

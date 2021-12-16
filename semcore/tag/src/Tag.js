@@ -10,7 +10,7 @@ import style from './style/tag.shadow.css';
 
 function isCustomTheme(use, theme) {
   const type = {
-    primary: ['invert', 'warning'],
+    primary: ['muted', 'invert', 'warning'],
     secondary: ['muted', 'invert'],
   };
   return type[use] ? !type[use].includes(theme) : true;
@@ -50,10 +50,6 @@ class RootTag extends Component {
 
     if (disabled) {
       interactive = false;
-    }
-    /* hack */
-    if (use === 'primary' && theme === 'muted') {
-      theme = 'asphalt';
     }
 
     const useTheme = getThemeName(use, theme);
