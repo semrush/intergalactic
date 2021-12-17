@@ -114,8 +114,7 @@ STag[theme='primary-muted'] {
   color: #6c6e79;
   &[interactive]:active,
   &[active],
-  &[interactive]:hover,
-  &:hover {
+  &[interactive]:hover {
     background-color: #e0e1e9;
   }
 }

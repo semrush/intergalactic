@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.5.2] - 2021-12-17
+
+### Fixed
+
+- Fixed hover for non-interactive tag
+
 ## [3.5.1] - 2021-12-17
 
 ### Added
