@@ -109,6 +109,17 @@ STag[size='s'] {
   }
 }
 
+STag[theme='primary-muted'] {
+  background-color: rgba(224, 225, 233, 0.5);
+  color: #6c6e79;
+  &[interactive]:active,
+  &[active],
+  &[interactive]:hover,
+  &:hover {
+    background-color: #e0e1e9;
+  }
+}
+
 STag[theme='primary-warning'] {
   background-color: var(--orange);
   color: #fff;
