@@ -481,8 +481,6 @@ function PopperPopper(props) {
           onDragStart={handlerStopPropagation}
           onDrop={handlerStopPropagation}
           onMouseDown={handlerStopPropagation}
-          onMouseEnter={handlerStopPropagation}
-          onMouseLeave={handlerStopPropagation}
           onMouseMove={handlerStopPropagation}
           onMouseOver={handlerStopPropagation}
           onMouseOut={handlerStopPropagation}
