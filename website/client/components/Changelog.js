@@ -34,14 +34,14 @@ function getLabel(tag) {
   switch (tag) {
     case 'Added':
       label = (
-        <TagStyled size="l" theme="#9EF2C9" color="#007C65">
+        <TagStyled size="l" theme="#9ef2c9" color="#007c65">
           {tag}
         </TagStyled>
       );
       break;
     case 'Fixed':
       label = (
-        <TagStyled size="l" theme="#C4E5FE" color="#006DCA">
+        <TagStyled size="l" theme="#c4e5fe" color="#006dca">
           {tag}
         </TagStyled>
       );
@@ -50,7 +50,7 @@ function getLabel(tag) {
     case 'Removed':
     case 'Deprecated':
       label = (
-        <TagStyled size="l" theme="#FFDCA2" color="#C33909">
+        <TagStyled size="l" theme="#ffdca2" color="#c33909">
           {tag}
         </TagStyled>
       );
@@ -58,7 +58,7 @@ function getLabel(tag) {
     case 'BREAK':
     case 'Security':
       label = (
-        <TagStyled size="l" theme="#FFD7DF" color="#D1002F">
+        <TagStyled size="l" theme="#ffd7df" color="#d1002f">
           {tag}
         </TagStyled>
       );
