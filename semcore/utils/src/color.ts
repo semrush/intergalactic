@@ -117,7 +117,7 @@ function hex2rgb(hex) {
 
 export function opacity(color?: string, percent: number = 1) {
   if (!color) return '';
-  if (color.includes('#') && color.match(/^#?[a-f\d]{6}$/)) {
+  if (color.includes('#') && color.match(/^#?[a-fA-F\d]{6}$/)) {
     color = `rgba(${hex2rgb(color).join(', ')}, ${percent})`;
   } else if (color.includes('rgb')) {
     color = `rgba(${colorRGB(color).join(', ')}, ${percent})`;
