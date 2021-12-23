@@ -26,6 +26,10 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Added property for Tag color
 
+### Changed
+
+- Changed the opacity of the Tag color from 0.15 to 0.5.
+
 ## [3.4.2] - 2021-8-26
 
 ### Changed
