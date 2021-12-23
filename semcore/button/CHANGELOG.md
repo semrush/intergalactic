@@ -71,6 +71,12 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Поменялся цвет текста с `gray40` на `gray60` у `secondary-muted` и `tertiary-muted`.
 
+## [3.0.1] - 2021-12-23
+
+### Changed
+
+- Changed `line-height` from 1.2 to 1.1 for correct display in all browsers.
+
 ## [3.0.0] - 2020-05-29
 
 ### BREAK

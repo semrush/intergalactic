@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.4.1] - 2021-12-23
+
+### Changed
+
+- Changed `line-height` from 1.2 to 1.1 for correct display in all browsers.
+
 ## [2.4.0] - 2021-10-01
 
 ### Changed

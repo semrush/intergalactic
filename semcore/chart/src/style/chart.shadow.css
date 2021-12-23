@@ -9,7 +9,7 @@ SChart {
   & :global(.recharts-cartesian-axis-tick-value) {
     fill: var(--gray60);
     font-size: media(12px);
-    line-height: 1.2;
+    line-height: 1.1;
   }
 
   & :global(.recharts-default-tooltip) {

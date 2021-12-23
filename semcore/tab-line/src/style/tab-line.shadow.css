@@ -15,7 +15,7 @@ STabLineItem {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  line-height: 1.2;
+  line-height: 1.1;
   position: relative;
   touch-action: manipulation;
   white-space: nowrap;
