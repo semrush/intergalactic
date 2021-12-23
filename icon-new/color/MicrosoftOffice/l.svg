@@ -1,0 +1,36 @@
+<svg width="24" height="24" xmlns="http://www.w3.org/2000/svg">
+  <path d="m13.45.1 1.82 4.16v14.48l-1.79 5.16 6.77-1.93A2.42 2.42 0 0 0 22 19.64V4.36a2.43 2.43 0 0 0-1.76-2.34L13.45.1Z" fill="url(#a)"/>
+  <path d="m4.88 18.59 1.98-1.07A1.73 1.73 0 0 0 7.75 16V8.2a1.74 1.74 0 0 1 1.14-1.63l6.38-2.3V2.5A2.51 2.51 0 0 0 13.45.1a2.53 2.53 0 0 0-1.92.23L4.22 4.5A2.42 2.42 0 0 0 3 6.6v10.86a1.28 1.28 0 0 0 1.24 1.27c.22 0 .44-.05.64-.15Z" fill="url(#b)"/>
+  <path d="M15.27 18.74H7.72a1.27 1.27 0 0 0-1.21.95 1.28 1.28 0 0 0 .58 1.43l4.5 2.56a2.45 2.45 0 0 0 1.9.22 2.46 2.46 0 0 0 1.78-2.38v-2.78Z" fill="url(#c)"/>
+  <path d="m4.88 18.59 1.98-1.07A1.73 1.73 0 0 0 7.75 16V8.2a1.74 1.74 0 0 1 1.14-1.63l6.38-2.3V2.5A2.51 2.51 0 0 0 13.45.1a2.53 2.53 0 0 0-1.92.23L4.22 4.5A2.42 2.42 0 0 0 3 6.6v10.86a1.28 1.28 0 0 0 1.24 1.27c.22 0 .44-.05.64-.15Z" fill="url(#d)"/>
+  <path d="M15.27 18.74H7.72a1.27 1.27 0 0 0-1.21.95 1.28 1.28 0 0 0 .58 1.43l4.5 2.56a2.45 2.45 0 0 0 1.9.22 2.46 2.46 0 0 0 1.78-2.38v-2.78Z" fill="url(#e)"/>
+  <defs>
+    <linearGradient id="a" x1="17.73" y1="-1.26" x2="17.73" y2="22.23" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFB900"/>
+      <stop offset=".17" stop-color="#EF8400"/>
+      <stop offset=".31" stop-color="#E25C01"/>
+      <stop offset=".43" stop-color="#DB4401"/>
+      <stop offset=".5" stop-color="#D83B01"/>
+    </linearGradient>
+    <linearGradient id="b" x1="13.5" y1="-.43" x2="1.04" y2="17.31" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#800600"/>
+      <stop offset=".6" stop-color="#C72127"/>
+      <stop offset=".73" stop-color="#C13959"/>
+      <stop offset=".85" stop-color="#BC4B81"/>
+      <stop offset=".94" stop-color="#B95799"/>
+      <stop offset="1" stop-color="#B85BA2"/>
+    </linearGradient>
+    <linearGradient id="c" x1="7.16" y1="21.37" x2="23.36" y2="21.37" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F32B44"/>
+      <stop offset=".6" stop-color="#A4070A"/>
+    </linearGradient>
+    <linearGradient id="d" x1="13.75" y1="-.79" x2="11.11" y2="2.96" gradientUnits="userSpaceOnUse">
+      <stop stop-opacity=".4"/>
+      <stop offset="1" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="e" x1="18.17" y1="21.74" x2="10.91" y2="21.11" gradientUnits="userSpaceOnUse">
+      <stop stop-opacity=".4"/>
+      <stop offset="1" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+</svg>
