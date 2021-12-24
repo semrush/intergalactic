@@ -197,3 +197,13 @@ import { Venn } from '@semcore/d3-chart';
 ```
 
 @interface IVennProps
+
+@## ScatterPlot
+
+```js
+import { ScatterPlot } from '@semcore/d3-chart';
+
+<ScatterPlot />;
+```
+
+@interface IScatterPlotProps

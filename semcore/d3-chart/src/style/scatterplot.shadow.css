@@ -1,0 +1,27 @@
+@import '@semcore/utils/style/var.css';
+@import '@semcore/d3-chart/src/style/var.css';
+
+SScatterPlot {
+  fill: var(--blue-03);
+  transition-property: cx, cy;
+  transition-duration: var(--duration);
+  transition-timing-function: ease-in-out;
+  opacity: 0.5;
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+SScatterPlot[color] {
+  fill: var(--color);
+}
+
+SValue {
+  text-anchor: middle;
+  font-size: 10px;
+  stroke: var(--blue-04);
+}
+
+SValue[color] {
+  stroke: var(--color);
+}
