@@ -11,7 +11,7 @@ import Error from '../components/Error';
 import LoadingPage from '../components/LoadingPage';
 import EmailsBanner from '../components/EmailsBanner';
 import UpdateBlock from '../components/UpdateBlock';
-import whale from '../static/illustration/whale.svg';
+import whale from '../static/illustration/whale-pic-christmas.svg';
 import layout from '../static/illustration/layout.svg';
 import principles from '../static/illustration/principles.svg';
 import style from '../static/illustration/style.svg';
