@@ -3561,7 +3561,7 @@
     },
     {
       "name": "AmericanExpress",
-      "size": ["32"],
+      "size": ["l", "m"],
       "group": "Pay",
       "tags": [
         "american",
@@ -3584,7 +3584,7 @@
     },
     {
       "name": "CreditCard",
-      "size": ["32"],
+      "size": ["l", "m"],
       "group": "Pay",
       "tags": [
         "credit",
@@ -3605,7 +3605,7 @@
     },
     {
       "name": "Discover",
-      "size": ["32"],
+      "size": ["l", "m"],
       "group": "Pay",
       "tags": [
         "discover",
@@ -3626,7 +3626,7 @@
     },
     {
       "name": "JCB",
-      "size": ["32"],
+      "size": ["l", "m"],
       "group": "Pay",
       "tags": [
         "visa",
@@ -3649,7 +3649,7 @@
     },
     {
       "name": "Mastercard",
-      "size": ["32"],
+      "size": ["l", "m"],
       "group": "Pay",
       "tags": [
         "mastercard",
@@ -3671,7 +3671,7 @@
     },
     {
       "name": "PayPal",
-      "size": ["32"],
+      "size": ["l", "m"],
       "group": "Pay",
       "tags": [
         "pay",
@@ -3694,7 +3694,7 @@
     },
     {
       "name": "UnionPay",
-      "size": ["32"],
+      "size": ["l", "m"],
       "group": "Pay",
       "tags": [
         "union",
@@ -3716,7 +3716,7 @@
     },
     {
       "name": "Visa",
-      "size": ["32"],
+      "size": ["l", "m"],
       "group": "Pay",
       "tags": [
         "visa",
@@ -3737,7 +3737,7 @@
     },
     {
       "name": "WeChatPay",
-      "size": ["32"],
+      "size": ["l", "m"],
       "group": "Pay",
       "tags": [
         "visa",
