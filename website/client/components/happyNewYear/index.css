@@ -1,7 +1,7 @@
 .christmas-lights li {
-  --christmas-lights-1: #009f81; /*color - 1*/
-  --christmas-lights-2: #ff4953; /*color - 2*/
-  --christmas-lights-3: #fce081; /*color - 3*/
+  --christmas-lights-1: #45e0a8; /*color - 1*/
+  --christmas-lights-2: #b880ff; /*color - 2*/
+  --christmas-lights-3: #ffe84d; /*color - 3*/
   animation-duration: 2s;
   animation-fill-mode: both;
   animation-iteration-count: infinite;
