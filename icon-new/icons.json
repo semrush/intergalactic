@@ -3583,28 +3583,6 @@
       ]
     },
     {
-      "name": "ApplePay",
-      "size": ["32"],
-      "group": "Pay",
-      "tags": [
-        "apple",
-        "pay",
-        "эпл",
-        "logo",
-        "лого",
-        "payment",
-        "currency",
-        "method",
-        "card",
-        "credit",
-        "debit",
-        "платеж",
-        "карта",
-        "метод",
-        "валюта"
-      ]
-    },
-    {
       "name": "CreditCard",
       "size": ["32"],
       "group": "Pay",
@@ -3617,91 +3595,6 @@
         "payment",
         "currency",
         "method",
-        "credit",
-        "debit",
-        "платеж",
-        "карта",
-        "метод",
-        "валюта"
-      ]
-    },
-    {
-      "name": "Bitcoin",
-      "size": ["32"],
-      "group": "Pay",
-      "tags": [
-        "bitcoin",
-        "биткоин",
-        "logo",
-        "лого",
-        "payment",
-        "currency",
-        "method",
-        "card",
-        "credit",
-        "debit",
-        "платеж",
-        "карта",
-        "метод",
-        "валюта"
-      ]
-    },
-    {
-      "name": "Cash",
-      "size": ["32"],
-      "group": "Pay",
-      "tags": [
-        "cash",
-        "наличные",
-        "bill",
-        "банкнота",
-        "payment",
-        "currency",
-        "method",
-        "card",
-        "credit",
-        "debit",
-        "платеж",
-        "карта",
-        "метод",
-        "валюта"
-      ]
-    },
-    {
-      "name": "Cheque",
-      "size": ["32"],
-      "group": "Pay",
-      "tags": [
-        "cheque",
-        "чек",
-        "bill",
-        "payment",
-        "currency",
-        "method",
-        "card",
-        "credit",
-        "debit",
-        "платеж",
-        "карта",
-        "метод",
-        "валюта"
-      ]
-    },
-    {
-      "name": "Diners",
-      "size": ["32"],
-      "group": "Pay",
-      "tags": [
-        "diners",
-        "club",
-        "дайнер",
-        "клаб",
-        "logo",
-        "лого",
-        "payment",
-        "currency",
-        "method",
-        "card",
         "credit",
         "debit",
         "платеж",
@@ -3732,33 +3625,12 @@
       ]
     },
     {
-      "name": "Financing",
+      "name": "JCB",
       "size": ["32"],
       "group": "Pay",
       "tags": [
-        "financing",
-        "coins",
-        "монеты",
-        "payment",
-        "currency",
-        "method",
-        "card",
-        "credit",
-        "debit",
-        "платеж",
-        "карта",
-        "метод",
-        "валюта"
-      ]
-    },
-    {
-      "name": "GooglePay",
-      "size": ["32"],
-      "group": "Pay",
-      "tags": [
-        "google",
-        "pay",
-        "гугл",
+        "visa",
+        "виза",
         "logo",
         "лого",
         "payment",
@@ -3770,26 +3642,9 @@
         "платеж",
         "карта",
         "метод",
-        "валюта"
-      ]
-    },
-    {
-      "name": "Invoice",
-      "size": ["32"],
-      "group": "Pay",
-      "tags": [
-        "invoice",
-        "инвойс",
-        "payment",
-        "currency",
-        "method",
-        "card",
-        "credit",
-        "debit",
-        "платеж",
-        "карта",
-        "метод",
-        "валюта"
+        "валюта",
+        "jcb",
+        "джисиби"
       ]
     },
     {
@@ -3823,51 +3678,6 @@
         "pal",
         "пэйпол",
         "пэйпэл",
-        "logo",
-        "лого",
-        "payment",
-        "currency",
-        "method",
-        "card",
-        "credit",
-        "debit",
-        "платеж",
-        "карта",
-        "метод",
-        "валюта"
-      ]
-    },
-    {
-      "name": "SamsungPay",
-      "size": ["32"],
-      "group": "Pay",
-      "tags": [
-        "samsung",
-        "pay",
-        "самсунг",
-        "logo",
-        "лого",
-        "payment",
-        "currency",
-        "method",
-        "card",
-        "credit",
-        "debit",
-        "платеж",
-        "карта",
-        "метод",
-        "валюта"
-      ]
-    },
-    {
-      "name": "TravelersCheck",
-      "size": ["32"],
-      "group": "Pay",
-      "tags": [
-        "travelers",
-        "check",
-        "чек",
-        "путешествие",
         "logo",
         "лого",
         "payment",
@@ -3926,15 +3736,11 @@
       ]
     },
     {
-      "name": "VPay",
+      "name": "WeChatPay",
       "size": ["32"],
       "group": "Pay",
       "tags": [
         "visa",
-        "v pay",
-        "pay",
-        "euro",
-        "sepa",
         "виза",
         "logo",
         "лого",
@@ -3947,79 +3753,9 @@
         "платеж",
         "карта",
         "метод",
-        "валюта"
-      ]
-    },
-    {
-      "name": "Maestro",
-      "size": ["32"],
-      "group": "Pay",
-      "tags": [
-        "maestro",
-        "mastercard",
-        "debit",
-        "маестро",
-        "маэстро",
-        "мастеркард",
-        "мастер",
-        "logo",
-        "лого",
-        "payment",
-        "currency",
-        "method",
-        "card",
-        "credit",
-        "debit",
-        "платеж",
-        "карта",
-        "метод",
-        "валюта"
-      ]
-    },
-    {
-      "name": "Bacs",
-      "size": ["32"],
-      "group": "Pay",
-      "tags": [
-        "bacs",
-        "uk",
-        "pay",
-        "payment",
-        "schemes",
-        "limited",
-        "бакс",
-        "logo",
-        "лого",
-        "payment",
-        "currency",
-        "method",
-        "card",
-        "credit",
-        "debit",
-        "платеж",
-        "карта",
-        "метод",
-        "валюта"
-      ]
-    },
-    {
-      "name": "DirectCredit",
-      "size": ["32"],
-      "group": "Pay",
-      "tags": [
-        "bacs",
-        "direct",
-        "credit",
-        "payment",
-        "currency",
-        "method",
-        "card",
-        "credit",
-        "debit",
-        "платеж",
-        "карта",
-        "метод",
-        "валюта"
+        "валюта",
+        "wechat",
+        "вичат"
       ]
     },
     {
