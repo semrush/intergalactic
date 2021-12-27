@@ -65,5 +65,6 @@
   },
   "lint-staged": {
     "*.tsx": "./node_modules/.bin/eslint --fix"
-  }
+  },
+  "dependencies": {}
 }
