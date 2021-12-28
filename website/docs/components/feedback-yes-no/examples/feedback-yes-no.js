@@ -93,7 +93,7 @@ class Feedback extends React.PureComponent {
           You can also send us an email to <Link>backlink.audit@semrush.com</Link>
         </FeedbackForm.Notice>
         <FeedbackForm.Notice hidden={status !== 'failed'} theme="danger">
-          Your message hasn’t been sent.
+          Your message has not been sent.
         </FeedbackForm.Notice>
       </FeedbackForm>
     );
