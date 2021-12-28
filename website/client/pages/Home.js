@@ -71,16 +71,16 @@ const PromoWrapper = styled.div`
 
 const Overlay = styled.div`
   max-width: 1140px;
-  padding: 80px 40px 120px;
+  padding: 120px 40px 120px;
   position: relative;
   margin: 0 auto;
   @media (max-width: 767px) {
     max-width: 767px;
-    padding: 80px 32px 120px;
+    padding: 120px 32px 120px;
   }
   @media (max-width: 415px) {
     max-width: 415px;
-    padding: 80px 20px;
+    padding: 120px 20px;
   }
 `;
 
@@ -354,9 +354,9 @@ const HomePage = styled.div`
 
 const SideBar = styled.div`
   position: sticky;
-  top: 80px;
+  top: 120px;
 
-  height: calc(100vh - 80px);
+  height: calc(100vh - 120px);
   background: #f5f5f5;
   max-width: 260px;
   @media (max-width: 767px) {

@@ -21,10 +21,10 @@ const DocumentationWrapper = styled.div`
   position: relative;
   color: #171a22;
   @media (max-width: 767px) {
-    padding: 96px 32px 64px;
+    padding: 156px 32px 64px;
   }
   @media (max-width: 415px) {
-    padding: 80px 20px 32px;
+    padding: 120px 20px 32px;
   }
 `;
 
@@ -49,7 +49,7 @@ const NextGuide = styled.div`
 const SideBar = styled.div`
   position: sticky;
   top: 80px;
-  height: calc(100vh - 80px);
+  height: calc(100vh - 120px);
   background: #f5f5f5;
   max-width: 260px;
   @media (max-width: 767px) {
@@ -66,7 +66,7 @@ const MobileSelect = styled(Select)`
     width: 100%;
     margin-bottom: 32px;
     border-radius: 0 !important;
-    top: 80px;
+    top: 120px;
     background-color: #fff !important;
     border: 1px solid #d1d4db;
     border-style: solid none solid none;
