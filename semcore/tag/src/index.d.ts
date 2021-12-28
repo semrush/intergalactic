@@ -5,7 +5,7 @@ import { IIconProps } from '@semcore/icon';
 
 export type TagSize = 'xl' | 'l' | 'm' | 's';
 export type TagTheme = 'muted' | 'invert' | 'warning' | string;
-export type TagUse = 'primary' | 'secondary';
+export type TagUse = 'primary' | 'secondary' | 'custom';
 
 export interface ITagProps extends IBoxProps {
   /** Value responsible for tag availability

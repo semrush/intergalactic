@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.5.4] - 2021-12-28
+
+### Fixed
+
+- [ts] Added type `custom` in property `use`.
+
 ## [3.5.3] - 2021-12-23
 
 ### Changed
