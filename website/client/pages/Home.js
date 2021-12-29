@@ -71,16 +71,20 @@ const PromoWrapper = styled.div`
 
 const Overlay = styled.div`
   max-width: 1140px;
-  padding: 120px 40px 120px;
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-bottom: 120px;
   position: relative;
   margin: 0 auto;
   @media (max-width: 767px) {
     max-width: 767px;
-    padding: 120px 32px 120px;
+    padding-left: 32px;
+    padding-right: 32px;
   }
   @media (max-width: 415px) {
     max-width: 415px;
-    padding: 120px 20px;
+    padding-left: 20px;
+    padding-right: 20px;
   }
 `;
 
@@ -350,6 +354,7 @@ const UpdatesButton = styled(LinkScroll)`
 
 const HomePage = styled.div`
   display: flex;
+  padding-top: 120px;
 `;
 
 const SideBar = styled.div`
