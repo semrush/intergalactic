@@ -55,10 +55,10 @@ The advanced tooltip may contain:
 
 The tooltip has themes to use on a dark background and for error messages. In both cases, the text color changes to `#fff` and the background color changes to the corresponding one.
 
-|               | Appearance                             | Styles                                                                  |
-| ------------- | -------------------------------------- | ----------------------------------------------------------------------- |
-| Invert theme  | ![dark-theme](static/dark-theme.png)   | `background-color: #000; box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.65);` |
-| Warning theme | ![alert-theme](static/alert-theme.png) | `background-color: $orange; box-shadow: 0 2px 5px 0 rgba(0,0,0,0.25);`  |
+|               | Appearance                             | Styles                                                                                                 |
+| ------------- | -------------------------------------- | ------------------------------------------------------------------------------------------------------ |
+| Invert theme  | ![dark-theme](static/dark-theme.png)   | `background-color: --var(gray800); border: 1px solid #6C6E79; box-shadow: 0px 1px 12px 0px #191B2326;` |
+| Warning theme | ![alert-theme](static/alert-theme.png) | `background-color: --var(red100); border: 1px solid #FF4953; box-shadow: 0px 2px 5px 0px #00000040;`   |
 
 > 💡 In [3.1.0 version](http://i.semrush.com/components/tooltip/#Changelog), you can set your own theme and change background color to custom.
 
@@ -67,6 +67,12 @@ The tooltip has themes to use on a dark background and for error messages. In bo
 ### Sizes
 
 The basic tooltip has a maximum width — `max-width: 250px`. In the advanced version of the tooltip, you can set a different width if necessary.
+
+### Offset
+
+The offset from the trigger to the tooltip is 4px.
+
+![tooltip-offset](static/tooltip-offset.png)
 
 ### Paddings and margins
 
