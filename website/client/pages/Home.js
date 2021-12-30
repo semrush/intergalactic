@@ -246,7 +246,7 @@ const StylesImg = styled.img`
 const WhaleImg = styled.img`
   position: absolute;
   right: 88px;
-  top: 100px;
+  top: 20px;
   @media (max-width: 1140px) {
     display: none;
   }
