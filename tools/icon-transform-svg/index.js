@@ -61,7 +61,7 @@ async function svgToReactComponent(iconPath, name, group) {
     const $ = cheerio.load(svg, { xmlMode: true });
     const $svg = $('svg');
     if ($svg.attr('viewBox') === undefined) {
-      reject(`Icon "${iconPath}" hasn't viewBox attribute`);
+      throw new Error(`Icon "${iconPath}" hasn't viewBox attribute`);
     }
     $svg
       .find('path')
