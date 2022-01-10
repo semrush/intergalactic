@@ -118,7 +118,7 @@ const Demo = () => {
       <ResponsiveContainer aspect={2}>
         <LineChart data={dataByPeriod}>
           <CartesianGrid />
-          <Legend verticalAlign="top">
+          <Legend verticalAlign="top" style={{ alignItems: 'baseline' }}>
             <Legend.Controls
               onMouseEnter={handleMouseEnter}
               onMouseLeave={handleMouseLeave}
