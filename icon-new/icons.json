@@ -757,13 +757,13 @@
       ]
     },
     {
-      "name": "Bookmark",
+      "name": "BookmarkFilled",
       "size": ["l", "m"],
       "group": "Actions",
       "tags": ["bookmark", "закладка", "save", "сохранить"]
     },
     {
-      "name": "BookmarkOutline",
+      "name": "Bookmark",
       "size": ["l", "m"],
       "group": "Actions",
       "tags": ["bookmark", "закладка", "save", "outline"]
@@ -884,6 +884,12 @@
     },
     {
       "name": "Chat",
+      "size": ["l", "m"],
+      "group": "Status",
+      "tags": ["chat", "bubble", "comment", "say", "text", "чат", "комментарий", "сказать"]
+    },
+    {
+      "name": "ChatFilled",
       "size": ["l", "m"],
       "group": "Status",
       "tags": ["chat", "bubble", "comment", "say", "text", "чат", "комментарий", "сказать"]
@@ -1570,7 +1576,7 @@
       ]
     },
     {
-      "name": "Favorite",
+      "name": "FavoriteFilled",
       "size": ["l", "m"],
       "group": "Misc",
       "tags": ["favorite", "favourite", "фаворит", "star", "звезда", "like", "mark"]
@@ -1582,7 +1588,7 @@
       "tags": ["plane", "take-off", "flight", "air", "airplane", "самолет", "полет", "вылет"]
     },
     {
-      "name": "FavoriteOutline",
+      "name": "Favorite",
       "size": ["l", "m"],
       "group": "Misc",
       "tags": ["favorite", "favourite", "фаворит", "star", "звезда", "like", "mark", "outline"]
@@ -1636,19 +1642,19 @@
       "tags": ["firefox", "logo", "лого", "лиса", "фаирфокс", "фаер", "браузер", "browser"]
     },
     {
-      "name": "Folder",
+      "name": "FolderFilled",
       "size": ["l", "m"],
       "group": "File",
       "tags": ["folder", "папка", "directory", "storage", "file", "директория"]
     },
     {
-      "name": "FolderOpen",
+      "name": "FolderOpenFilled",
       "size": ["l", "m"],
       "group": "File",
       "tags": ["folder", "папка", "directory", "storage", "file", "директория", "open", "открытая"]
     },
     {
-      "name": "FolderOpenOutline",
+      "name": "FolderOpen",
       "size": ["l", "m"],
       "group": "File",
       "tags": [
@@ -1664,7 +1670,7 @@
       ]
     },
     {
-      "name": "FolderOutline",
+      "name": "Folder",
       "size": ["l", "m"],
       "group": "File",
       "tags": ["folder", "папка", "directory", "storage", "file", "директория", "folder", "outline"]
@@ -1960,13 +1966,13 @@
       "tags": ["lightning", "молния", "zap", "fast", "sonic", "quick", "быстро", "flash"]
     },
     {
-      "name": "Like",
+      "name": "LikeFilled",
       "size": ["l", "m"],
       "group": "Actions",
       "tags": ["like", "heart", "сердце", "нравится", "любовь", "love"]
     },
     {
-      "name": "LikeOutline",
+      "name": "Like",
       "size": ["l", "m"],
       "group": "Actions",
       "tags": ["like", "heart", "сердце", "нравится", "любовь", "love", "outline"]
@@ -2170,7 +2176,7 @@
       "tags": ["magnet", "магнит", "pole", "north", "south", "field", "поле"]
     },
     {
-      "name": "Mail",
+      "name": "MailFilled",
       "size": ["l", "m"],
       "group": "Actions",
       "tags": [
@@ -2188,13 +2194,13 @@
       ]
     },
     {
-      "name": "MailOpen",
+      "name": "MailOpenFilled",
       "size": ["l", "m"],
       "group": "Actions",
       "tags": ["mail", "email", "e-mail", "имейл", "мэил", "мэйл", "меил"]
     },
     {
-      "name": "MailOutline",
+      "name": "Mail",
       "size": ["l", "m"],
       "group": "Actions",
       "tags": [
@@ -2213,7 +2219,7 @@
       ]
     },
     {
-      "name": "MailOutlineOpen",
+      "name": "MailOpen",
       "size": ["l", "m"],
       "group": "Actions",
       "tags": ["mail", "email", "e-mail", "имейл", "мэил", "мэйл", "меил", "outline"]
@@ -3170,13 +3176,13 @@
       "tags": ["tablet", "device", "mobile", "ipad", "планшет", "таблет", "фаблет", "phablet"]
     },
     {
-      "name": "Tag",
+      "name": "TagFilled",
       "size": ["l", "m"],
       "group": "Actions",
       "tags": ["tag", "shopping", "save", "bookmark", "note", "тэг", "шоппинг", "отметка"]
     },
     {
-      "name": "TagOutline",
+      "name": "Tag",
       "size": ["l", "m"],
       "group": "Actions",
       "tags": [
