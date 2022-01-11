@@ -1,14 +1,20 @@
 'use strict';
 
-const getConfig = (framework = 'react') => {
+const getConfig = (framework = 'react', logger = false) => {
   const config = {
     react: {
       template: (obj) => `
       import React from 'react';
       import { createBaseComponent } from '@semcore/core';
       import Icon from '@semcore/icon';
+      ${logger && "import logger from '@semcore/utils/lib/logger';"}
       
-      function ${obj.NAME}({width = '${obj.WIDTH}', height = '${obj.HEIGHT}', viewBox = '${obj.VIEW_BOX}', ...props}, ref) {
+      function ${obj.NAME}({width = '${obj.WIDTH}', height = '${obj.HEIGHT}', viewBox = '${
+        obj.VIEW_BOX
+      }', ...props}, ref) {
+        ${logger &&
+          `logger.warn(true, "use import icon from '@semcore/icon/${obj.NAME}${obj.DATA_GROUP &&
+            '/' + obj.DATA_GROUP}'", "${obj.NAME}")`};
         return (
             <Icon 
               ref={ref}

@@ -41,3 +41,7 @@ Icon[
 # Npm config
 .npmrc
 .creds/
+
+# Icon
+semcore/**/**/*.js
+semcore/**/**/*.d.ts

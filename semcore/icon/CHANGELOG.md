@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.15.0] - 2022-01-11
+
+### Added
+
+- Added import icons from root folder (exm: `@semcore/icon/ArrowDown/m`)
+
 ## [2.14.0] - 2021-10-04
 
 ### Added
