@@ -2,7 +2,7 @@
   "scripts": {
     "build": "lerna run build --scope @semcore/*",
     "typecheck": "lerna exec --scope @semcore/* -- tsc --noEmit",
-    "prebuild": "rm -rf semcore/**/lib",
+    "prebuild": "rm -rf semcore/**/lib && find semcore/icon/. -type d -maxdepth 1 | egrep -v \"__tests__|src|svg\" | xargs rm -rf || true",
     "test": "jest --projects semcore/* --no-cache",
     "playground": "yarn workspace playground start",
     "analyze": "yarn workspace analyzer start",

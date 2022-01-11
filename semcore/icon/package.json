@@ -11,7 +11,7 @@
   "scripts": {
     "parsing": "icon-transform-svg parsing",
     "transform": "icon-transform-svg",
-    "build": "build --source=js && npm run transform",
+    "build": "build --source=js && npm run transform && npm run transform -- --outputFolder=lib",
     "test": "jest"
   },
   "dependencies": {
