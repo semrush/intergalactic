@@ -496,6 +496,22 @@
       ]
     },
     {
+      "name": "Retweet",
+      "size": ["l", "m"],
+      "group": "Action",
+      "tags": [
+        "action",
+        "share",
+        "поделиться",
+        "arrows",
+        "стрелки",
+        "retweet",
+        "ретвит",
+        "шаринг",
+        "sharing"
+      ]
+    },
+    {
       "name": "Stop",
       "size": ["l", "m"],
       "group": "Action",
@@ -3402,6 +3418,25 @@
       "size": ["l", "m"],
       "group": "Status",
       "tags": ["video", "видео", "play", "воспроизвести", "preview"]
+    },
+    {
+      "name": "VideoCarousel",
+      "size": ["l", "m"],
+      "group": "Misc",
+      "tags": [
+        "video",
+        "видео",
+        "play",
+        "воспроизвести",
+        "preview",
+        "feature",
+        "featured",
+        "serp",
+        "серп",
+        "carousel",
+        "карусель",
+        "videos"
+      ]
     },
     {
       "name": "VideoAlt",
