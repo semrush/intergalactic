@@ -52,10 +52,7 @@ async function svgToReactComponent(iconPath, name, group) {
     if ($svg.attr('viewBox') === undefined) {
       throw new Error(`Icon "${iconPath}" hasn't viewBox attribute`);
     }
-    $svg
-      .find('path')
-      .removeAttr('fill-rule')
-      .attr('shape-rendering', 'geometricPrecision');
+    $svg.find('path').attr('shape-rendering', 'geometricPrecision');
     const iconSvg = converter
       ? converter.convert(`<svg>${$svg.html()}</svg>`)
       : `<svg>${$svg.html()}</svg>`;
