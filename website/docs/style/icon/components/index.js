@@ -90,7 +90,7 @@ export default function() {
       ) : (
         <>
           <IconGroup title="Navigation" />
-          <IconGroup title="Actions" />
+          <IconGroup title="Action" />
           <IconGroup title="Status" />
           <IconGroup title="Social" />
           <IconGroup title="File" />
@@ -98,6 +98,7 @@ export default function() {
           <IconGroup title="Format" />
           <IconGroup title="Map" />
           <IconGroup title="Misc" />
+          <IconGroup title="Brand" />
           <IconGroup title="Color" />
           <IconGroup title="Pay" />
           <IconGroup title="External" />
