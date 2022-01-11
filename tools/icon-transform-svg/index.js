@@ -2,7 +2,7 @@ const path = require('path');
 const fs = require('fs-extra');
 const glob = require('glob');
 const cheerio = require('cheerio');
-const { lib } = require('minimist')(process.argv.slice(2));
+const { lib, outputFolder = '.' } = require('minimist')(process.argv.slice(2));
 const util = require('util');
 const config = require('./config');
 const babel = require('@babel/core');
@@ -12,8 +12,8 @@ const readFile = util.promisify(fs.readFile);
 
 const rootDir = process.cwd();
 const { template, templateDTS = template, transformer, babelConfig: defaultBabelConfig } = lib
-  ? config(lib)
-  : config();
+  ? config(lib, outputFolder === 'lib')
+  : config('react', outputFolder === 'lib');
 const converter = transformer();
 
 function getDescriptionExternalIcons(iconPath, outLib) {
@@ -117,7 +117,6 @@ const generateIcons = (
 };
 
 module.exports = function() {
-  const outputFolder = 'lib';
   Promise.all([
     generateIcons('svg/color', `${outputFolder}/color`, getDescriptionIcons),
     generateIcons('svg/external/', `${outputFolder}/external`, getDescriptionExternalIcons),
