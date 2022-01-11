@@ -7,8 +7,8 @@ import Dropdown from '@semcore/dropdown';
 import Textarea from '@semcore/textarea';
 import Notice from '@semcore/notice';
 import Button from '@semcore/button';
-import ThumbUpXS from '@semcore/icon/lib/ThumbUp/xs';
-import ThumbDownXS from '@semcore/icon/lib/ThumbDown/xs';
+import ThumbUpXS from '@semcore/icon/lib/ThumbUp/m';
+import ThumbDownXS from '@semcore/icon/lib/ThumbDown/m';
 import { Text } from '@semcore/typography';
 import feedback from '../static/feedback.svg';
 

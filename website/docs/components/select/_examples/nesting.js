@@ -1,7 +1,7 @@
 import React from 'react';
 import Select from '@semcore/select';
 import DropdownMenu from '@semcore/dropdown-menu';
-import Chevron from '@semcore/icon/lib/ChevronRight/xs';
+import Chevron from '@semcore/icon/lib/ChevronRight/m';
 
 const options = Array(6)
   .fill('')

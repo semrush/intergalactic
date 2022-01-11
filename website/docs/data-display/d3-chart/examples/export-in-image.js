@@ -4,7 +4,7 @@ import { Line, minMax, Plot, XAxis, YAxis } from '@semcore/d3-chart';
 import { Flex } from '@semcore/flex-box';
 import DropdownMenu from '@semcore/dropdown-menu';
 import Button from '@semcore/button';
-import FileExportXS from '@semcore/icon/lib/FileExport/xs';
+import FileExportXS from '@semcore/icon/lib/FileExport/m';
 
 const EXPORTS = ['PNG', 'JPEG', 'WEBP'];
 

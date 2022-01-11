@@ -3,14 +3,10 @@ import Input from '@semcore/input';
 import PlaygroundGeneration from 'components/PlaygroundGeneration';
 
 import CheckM from '@semcore/icon/lib/Check/m';
-import CheckS from '@semcore/icon/lib/Check/s';
-import CheckXS from '@semcore/icon/lib/Check/xs';
-import CheckXXS from '@semcore/icon/lib/Check/xxs';
+import CheckL from '@semcore/icon/lib/Check/l';
 
 import ArrowRightM from '@semcore/icon/lib/ArrowRight/m';
-import ArrowRightS from '@semcore/icon/lib/ArrowRight/s';
-import ArrowRightXS from '@semcore/icon/lib/ArrowRight/xs';
-import ArrowRightXXS from '@semcore/icon/lib/ArrowRight/xxs';
+import ArrowRightL from '@semcore/icon/lib/ArrowRight/l';
 
 const SIZES = ['s', 'm', 'l', 'xl'];
 const STATES = ['normal', 'invalid', 'valid'];
@@ -60,16 +56,16 @@ const Preview = (preview) => {
   });
 
   const beforeIconMap = {
-    xl: <CheckM />,
-    l: <CheckS />,
-    m: <CheckXS />,
-    s: <CheckXXS />,
+    xl: <CheckL />,
+    l: <CheckM />,
+    m: <CheckM />,
+    s: <CheckM />,
   };
   const afterIconMap = {
-    xl: <ArrowRightM />,
-    l: <ArrowRightS />,
-    m: <ArrowRightXS />,
-    s: <ArrowRightXXS />,
+    xl: <ArrowRightL />,
+    l: <ArrowRightM />,
+    m: <ArrowRightM />,
+    s: <ArrowRightM />,
   };
 
   const renderIcon = (position, size) => {

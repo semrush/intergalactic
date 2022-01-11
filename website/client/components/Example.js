@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Code from './Code';
 import Copy from './Copy';
 import Sandbox from './Sandbox';
-import CopyS from '@semcore/icon/lib/Copy/s';
+import CopyS from '@semcore/icon/lib/Copy/m';
 
 const ExampleWrapper = styled.div`
   margin: 10px auto;

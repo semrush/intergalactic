@@ -43,17 +43,6 @@ function getDescriptionIcons(iconPath, outLib) {
   };
 }
 
-function getDescriptionPayIcons(iconPath, outLib) {
-  const name = path.basename(iconPath, '.svg').replace(/('|\s)/g, '');
-  const location = `${outLib}/${name}/index.js`;
-
-  return {
-    name,
-    location,
-    group: '',
-  };
-}
-
 async function svgToReactComponent(iconPath, name, group) {
   try {
     const svg = await readFile(iconPath, 'utf-8');
@@ -119,8 +108,8 @@ const generateIcons = (
 module.exports = function() {
   Promise.all([
     generateIcons('svg/color', `${outputFolder}/color`, getDescriptionIcons),
-    generateIcons('svg/external/', `${outputFolder}/external`, getDescriptionExternalIcons),
-    generateIcons('/svg/pay/', `${outputFolder}/pay`, getDescriptionPayIcons),
+    generateIcons('svg/external', `${outputFolder}/external`, getDescriptionExternalIcons),
+    generateIcons('/svg/pay', `${outputFolder}/pay`, getDescriptionIcons),
     generateIcons('svg/icon', outputFolder, getDescriptionIcons),
   ])
     .then(() => {

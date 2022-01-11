@@ -1,7 +1,7 @@
 import React, { useCallback, useState } from 'react';
 import Input from '@semcore/input';
-import CloseXS from '@semcore/icon/lib/Close/xs';
-import Search from '@semcore/icon/lib/Search/xs';
+import CloseXS from '@semcore/icon/lib/Close/m';
+import Search from '@semcore/icon/lib/Search/m';
 import Button from '@semcore/button';
 import NeighborLocation from '@semcore/neighbor-location';
 

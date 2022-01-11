@@ -2403,6 +2403,18 @@
     string-hash "^1.1.3"
     svg-tag-names "^2.0.1"
 
+"@semcore/icon@^2":
+  version "2.14.0"
+  resolved "https://registry.yarnpkg.com/@semcore/icon/-/icon-2.14.0.tgz#81f856ae74274c71c2ef99c886655160b05d3ed1"
+  integrity sha512-Ydu/mkPIhsZ7MiK/UI7S0pLWClioaV1Tpl0Ypff5ria5qcsiPiOoRWYEPELunYX2QlWuU9dQzZ2lnieBa5frNA==
+  dependencies:
+    "@semcore/flex-box" "^4"
+    "@semcore/utils" "^3.15"
+
+"@semcore/theme-redesign@^1.1.3":
+  version "1.1.3"
+  resolved "https://registry.yarnpkg.com/@semcore/theme-redesign/-/theme-redesign-1.1.3.tgz#b5bc57cc3f99950d8098376568690f651bf541ab"
+  integrity sha512-LhRrTwJ7BjvDl1AzvZG1UXZ0KoyJ86t0FC8synyvpbgcyV4XLAroUHaptYQmGSRt7Ej1Dg0O8dNlHmjOnW55Ng==
 "@semcore/theme-redesign@^1.1.4":
   version "1.1.4"
   resolved "https://registry.yarnpkg.com/@semcore/theme-redesign/-/theme-redesign-1.1.4.tgz#d631a9ffeafd1d045e783ac054f798074b2ba5c3"

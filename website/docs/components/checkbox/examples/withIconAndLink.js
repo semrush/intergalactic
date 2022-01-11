@@ -1,7 +1,7 @@
 import React from 'react';
 import Checkbox from '@semcore/checkbox';
 import Tooltip from '@semcore/tooltip';
-import InfoXS from '@semcore/icon/lib/Info/xs';
+import InfoXS from '@semcore/icon/lib/Info/m';
 import Link from '@semcore/link';
 
 function noop(e) {

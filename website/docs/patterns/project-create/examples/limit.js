@@ -1,6 +1,6 @@
 import React from 'react';
 import Button from '@semcore/button';
-import MathPlusXS from '@semcore/icon/lib/MathPlus/xs';
+import MathPlusXS from '@semcore/icon/lib/MathPlus/m';
 import Dropdown from '@semcore/dropdown';
 import { Text } from '@semcore/typography';
 

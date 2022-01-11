@@ -2,7 +2,7 @@ import React from 'react';
 import Tag from '@semcore/tag';
 import Input from '@semcore/input';
 import OutsideClick from '@semcore/outside-click';
-import CheckS from '@semcore/icon/lib/Check/s';
+import CheckS from '@semcore/icon/lib/Check/m';
 
 const Demo = () => {
   const inputRef = React.useRef(null);

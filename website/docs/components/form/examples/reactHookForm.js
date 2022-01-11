@@ -6,7 +6,7 @@ import { Flex, Box } from '@semcore/flex-box';
 import { Text } from '@semcore/typography';
 import Input from '@semcore/input';
 import Tooltip from '@semcore/tooltip';
-import CloseXS from '@semcore/icon/lib/Close/xs';
+import CloseXS from '@semcore/icon/lib/Close/m';
 import CalendarM from '@semcore/icon/lib/Calendar/m';
 import Flag, { iso2Name } from '@semcore/flags';
 import InputMask, { getAfterPositionValue } from '@semcore/input-mask';

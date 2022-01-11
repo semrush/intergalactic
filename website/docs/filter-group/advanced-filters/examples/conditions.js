@@ -2,13 +2,13 @@ import React, { useEffect, useRef, useState } from 'react';
 import Dropdown from '@semcore/dropdown';
 import Select from '@semcore/select';
 import Input from '@semcore/input';
-import MathPlusXS from '@semcore/icon/lib/MathPlus/xs';
+import MathPlusXS from '@semcore/icon/lib/MathPlus/m';
 import { Flex } from '@semcore/flex-box';
 import Divider from '@semcore/divider';
 import Button from '@semcore/button';
 import { FilterTrigger } from '@semcore/base-trigger';
-import CloseXS from '@semcore/icon/lib/Close/xs';
-import TrashXS from '@semcore/icon/lib/Trash/xs';
+import CloseXS from '@semcore/icon/lib/Close/m';
+import TrashXS from '@semcore/icon/lib/Trash/m';
 import styled from 'styled-components';
 
 const generateOptions = (list) => list.map((v) => ({ value: v, children: v }));

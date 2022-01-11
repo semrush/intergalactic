@@ -3,10 +3,10 @@ import Modal from '@semcore/modal';
 import Button from '@semcore/button';
 import { Flex } from '@semcore/flex-box';
 import { Text } from '@semcore/typography';
-import CloseS from '@semcore/icon/lib/Close/s';
-import CheckS from '@semcore/icon/lib/Check/s';
-import ChevronRightS from '@semcore/icon/lib/ChevronRight/s';
-import ChevronLeftS from '@semcore/icon/lib/ChevronLeft/s';
+import CloseS from '@semcore/icon/lib/Close/m';
+import CheckS from '@semcore/icon/lib/Check/m';
+import ChevronRightS from '@semcore/icon/lib/ChevronRight/m';
+import ChevronLeftS from '@semcore/icon/lib/ChevronLeft/m';
 import styled from 'styled-components';
 
 const MAP_NAVIGATION = {

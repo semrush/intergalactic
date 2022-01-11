@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import postman from '../static/illustration/email-pic.svg';
 import PinMapM from '@semcore/icon/lib/PinMap/m';
 import GitHubM from '@semcore/icon/lib/color/GitHub/m';
-import MailOutlineM from '@semcore/icon/lib/MailOutline/m';
+import MailM from '@semcore/icon/lib/Mail/m';
 import Helmet from 'react-helmet';
 
 const Content = styled.div`
@@ -185,7 +185,7 @@ const Contacts = () => (
       </Github>
       <Email>
         <Title>
-          <MailOutlineM mr={2} />
+          <MailM mr={2} />
           Email
         </Title>
         Feel free to drop us a line at

@@ -7,7 +7,7 @@ import Card from '@semcore/card';
 import { Text } from '@semcore/typography';
 import Button from '@semcore/button';
 import Link from '@semcore/link';
-import RepeatXS from '@semcore/icon/lib/Repeat/xs';
+import ReloadM from '@semcore/icon/lib/Reload/m';
 import Divider from '@semcore/divider';
 
 const options = ['de', 'en', 'es', 'fr', 'it', 'ja', 'pt', 'ru', 'zh', 'ko', 'vi'].map((o) => ({
@@ -48,7 +48,7 @@ export default () => {
           >
             <Box mt={4}>
               <Button>
-                <Button.Addon tag={RepeatXS} />
+                <Button.Addon tag={ReloadM} />
                 <Button.Text>Reload</Button.Text>
               </Button>
             </Box>

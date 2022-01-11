@@ -5,7 +5,7 @@ import ResizeObserver from 'resize-observer-polyfill';
 import NavLink from './NavLink';
 import mobileLogo from '../static/logo/semrush-logo.svg';
 import hamburger from '../static/mobile/hamburger.svg';
-import Close from '@semcore/icon/lib/Close/s';
+import Close from '@semcore/icon/lib/Close/m';
 import SearchM from '@semcore/icon/lib/Search/m';
 import close from '../static/mobile/close.svg';
 import SearchHome from './SearchHome';

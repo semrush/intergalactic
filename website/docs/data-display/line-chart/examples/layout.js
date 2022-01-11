@@ -6,8 +6,8 @@ import Checkbox from '@semcore/checkbox';
 import TabLine from '@semcore/tab-line';
 import Dropdown from '@semcore/dropdown';
 import Switch from '@semcore/switch';
-import InfoXS from '@semcore/icon/lib/Info/xs';
-import SettingsS from '@semcore/icon/lib/Settings/s';
+import InfoXS from '@semcore/icon/lib/Info/m';
+import SettingsS from '@semcore/icon/lib/Settings/m';
 import { colors } from '@semcore/chart';
 
 class Demo extends Component {
