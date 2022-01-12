@@ -2,6 +2,14 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.16.0] - 2022-01-12
+
+### Changed
+
+- Added import new icons
+- Old icons you can get from `@semcore/icon/lib/Name/Size`
+- New icons you can get from `@semcore/icon/Name/Size`
+
 ## [2.15.0] - 2022-01-11
 
 ### Added
