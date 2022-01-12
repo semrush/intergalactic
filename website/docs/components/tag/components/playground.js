@@ -1,6 +1,6 @@
 import React from 'react';
 import Tag from '@semcore/tag';
-import EditXS from '@semcore/icon/lib/Edit/xs';
+import EditXS from '@semcore/icon/Edit/m';
 import PlaygroundGeneration from 'components/PlaygroundGeneration';
 
 const THEMES = {

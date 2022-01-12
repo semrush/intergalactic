@@ -7,8 +7,8 @@ import algoliasearch from 'algoliasearch/lite';
 import IconGroup, { ListIcons } from './icon-group';
 import Input from '@semcore/input';
 import { Text } from '@semcore/typography';
-import SearchS from '@semcore/icon/lib/Search/s';
-import CloseXS from '@semcore/icon/lib/Close/xs';
+import SearchS from '@semcore/icon/Search/m';
+import CloseXS from '@semcore/icon/Close/m';
 import observatory from 'static/search/observatory.svg';
 import CONFIG from 'algolia';
 
@@ -90,7 +90,7 @@ export default function() {
       ) : (
         <>
           <IconGroup title="Navigation" />
-          <IconGroup title="Actions" />
+          <IconGroup title="Action" />
           <IconGroup title="Status" />
           <IconGroup title="Social" />
           <IconGroup title="File" />
@@ -98,6 +98,7 @@ export default function() {
           <IconGroup title="Format" />
           <IconGroup title="Map" />
           <IconGroup title="Misc" />
+          <IconGroup title="Brand" />
           <IconGroup title="Color" />
           <IconGroup title="Pay" />
           <IconGroup title="External" />

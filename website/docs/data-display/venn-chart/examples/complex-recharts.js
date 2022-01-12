@@ -4,8 +4,8 @@ import { Text } from '@semcore/typography';
 import { Flex } from '@semcore/flex-box';
 import Tooltip from '@semcore/tooltip';
 import Checkbox from '@semcore/checkbox';
-import InfoXS from '@semcore/icon/lib/Info/xs';
-import SettingsS from '@semcore/icon/lib/Settings/s';
+import InfoXS from '@semcore/icon/Info/m';
+import SettingsS from '@semcore/icon/Settings/m';
 import { VennChart, VennArea, Tooltip as RechartsTooltip, getColor } from '@semcore/chart';
 
 function formatThousands(n) {

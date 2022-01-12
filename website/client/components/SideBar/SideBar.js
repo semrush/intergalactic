@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Modal from '@semcore/modal';
 import { useQuery } from '@apollo/client';
 import { Flex } from '@semcore/flex-box';
-import ChevronLeft from '@semcore/icon/lib/ChevronLeft/m';
+import ChevronLeft from '@semcore/icon/ChevronLeft/m';
 import Button from '@semcore/button';
 import { INTERFACE_QUERY } from 'tags/interfaceQuery';
 import Interface, { InterfaceHeader } from '../Interface';

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Input from '@semcore/input';
-import CloseXS from '@semcore/icon/lib/Close/xs';
+import CloseXS from '@semcore/icon/Close/m';
 
 const Demo = () => {
   const [value, setValue] = useState('');

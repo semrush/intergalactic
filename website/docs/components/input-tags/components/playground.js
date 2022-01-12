@@ -2,9 +2,8 @@ import React from 'react';
 import InputTags from '@semcore/input-tags';
 import PlaygroundGeneration from 'components/PlaygroundGeneration';
 
-import CheckM from '@semcore/icon/lib/Check/m';
-import CheckS from '@semcore/icon/lib/Check/s';
-import CheckXS from '@semcore/icon/lib/Check/xs';
+import CheckM from '@semcore/icon/Check/m';
+import CheckL from '@semcore/icon/Check/l';
 
 const SIZES = ['m', 'l', 'xl'];
 const STATES = ['normal', 'invalid', 'valid'];
@@ -67,7 +66,7 @@ const Preview = (preview) => {
   });
 
   const beforeIconMap = {
-    xl: <CheckM />,
+    xl: <CheckL />,
     l: <CheckS />,
     m: <CheckXS />,
   };

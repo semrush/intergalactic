@@ -3,15 +3,11 @@ import React from 'react';
 import PlaygroundGeneration from 'components/PlaygroundGeneration';
 
 import Button from '@semcore/button';
-import CheckM from '@semcore/icon/lib/Check/m';
-import CheckS from '@semcore/icon/lib/Check/s';
-import CheckXS from '@semcore/icon/lib/Check/xs';
-import CheckXXS from '@semcore/icon/lib/Check/xxs';
+import CheckM from '@semcore/icon/Check/m';
+import CheckL from '@semcore/icon/Check/l';
 
-import ArrowRightM from '@semcore/icon/lib/ArrowRight/m';
-import ArrowRightS from '@semcore/icon/lib/ArrowRight/s';
-import ArrowRightXS from '@semcore/icon/lib/ArrowRight/xs';
-import ArrowRightXXS from '@semcore/icon/lib/ArrowRight/xxs';
+import ArrowRightM from '@semcore/icon/ArrowRight/m';
+import ArrowRightL from '@semcore/icon/ArrowRight/l';
 
 const SIZES = ['xl', 'l', 'm', 's'];
 const USE = ['primary', 'secondary', 'tertiary'];
@@ -89,15 +85,15 @@ const Preview = (preview) => {
   });
   const beforeIconMap = {
     xl: <CheckM />,
-    l: <CheckS />,
-    m: <CheckXS />,
-    s: <CheckXXS />,
+    l: <CheckL />,
+    m: <CheckL />,
+    s: <CheckL />,
   };
   const afterIconMap = {
-    xl: <ArrowRightM />,
-    l: <ArrowRightS />,
-    m: <ArrowRightXS />,
-    s: <ArrowRightXXS />,
+    xl: <ArrowRightL />,
+    l: <ArrowRightM />,
+    m: <ArrowRightM />,
+    s: <ArrowRightM />,
   };
 
   const renderIcon = (position, size) => {
