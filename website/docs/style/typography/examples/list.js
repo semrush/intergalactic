@@ -1,6 +1,6 @@
 import React from 'react';
 import { List } from '@semcore/typography';
-import CheckS from '@semcore/icon/lib/Check/s';
+import CheckS from '@semcore/icon/Check/m';
 
 export default () => (
   <div>

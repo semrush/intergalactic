@@ -105,7 +105,9 @@ const AreaLink = styled.a`
   left: 0;
 `;
 
-const Icons = importAll(require.context('@semcore/icon/lib', true, /^\.\/.*\.js$/));
+const Icons = importAll(
+  require.context('@semcore/icon', true, /^(?!.*\/(src|__tests__)\/).*\.js$/),
+);
 const icons = {}; // {name, fn}
 const SIZE = { L: 44, M: 22, S: 16, XS: 12, XXS: 8, 32: 32, 20: 20 };
 
@@ -159,7 +161,7 @@ class PanelChangeIcon extends PureComponent {
     let includeGroupName = haveGroupName ? `/${groupName}` : '';
 
     if (action === 'download') {
-      let includeGroupName = haveGroupName ? `${groupName}` : 'icon';
+      includeGroupName = haveGroupName ? `${groupName}` : 'icon';
       // external
       if (Number(size) === 20) {
         nameSvg = name.replace(/([A-Z])/g, '/$1').slice(1);
@@ -191,7 +193,7 @@ class PanelChangeIcon extends PureComponent {
     const includeName = haveSizeIcon ? `${name}${size.toUpperCase()}` : name;
     const includeSize = haveSizeIcon ? `/${size}` : '';
 
-    const importText = `import ${includeName} from '@semcore/icon/lib${includeGroupName}/${name}${includeSize}'`;
+    const importText = `import ${includeName} from '@semcore/icon${includeGroupName}/${name}${includeSize}'`;
 
     return (
       <Copy title="Copied!" text={importText} key={index} trigger="click">

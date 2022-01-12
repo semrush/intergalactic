@@ -2,8 +2,8 @@ import React from 'react';
 import { Text } from '@semcore/typography';
 import { Box, Flex } from '@semcore/flex-box';
 import Tooltip from '@semcore/tooltip';
-import InfoXS from '@semcore/icon/lib/Info/xs';
-import Desktop from '@semcore/icon/lib/Desktop/xs';
+import InfoXS from '@semcore/icon/Info/m';
+import Desktop from '@semcore/icon/Desktop/m';
 import {
   Area,
   AreaChart,

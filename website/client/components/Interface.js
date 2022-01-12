@@ -13,8 +13,8 @@ import { InterfaceLink } from './SideBar';
 import RenderTags from '../tags';
 import { useQuery } from '@apollo/client';
 import { TYPE_QUERY } from '../tags/typeQuery';
-import AnchorIcon from '@semcore/icon/lib/Link/s';
-import WarningIcon from '@semcore/icon/lib/Warning/xs';
+import AnchorIcon from '@semcore/icon/Link/m';
+import WarningIcon from '@semcore/icon/Warning/m';
 import { css } from '@semcore/core';
 
 const LINK_REG = /{@link(.*?)}/g;
