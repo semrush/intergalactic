@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [1.3.0] - 2022-01-12
+
+### Added
+
+- `Icon` (~2.14-2.16). Replace `icon/lib` to `icon/` and rename old icons in new.
+
 ## [1.2.0] - 2019-12-12
 
 ### Added
