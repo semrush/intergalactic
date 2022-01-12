@@ -53,7 +53,8 @@
     "react-virtualized": "^9.21.2",
     "reflect-metadata": "^0.1.13",
     "rxjs": "^6.5.3",
-    "styled-components": "^5.0.0"
+    "styled-components": "^5.0.0",
+    "@semcore/icon": "../semcore/icon/"
   },
   "devDependencies": {
     "@babel/core": "^7.7.5",

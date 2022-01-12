@@ -12,8 +12,8 @@ const readFile = util.promisify(fs.readFile);
 
 const rootDir = process.cwd();
 const { template, templateDTS = template, transformer, babelConfig: defaultBabelConfig } = lib
-  ? config(lib, outputFolder === 'lib')
-  : config('react', outputFolder === 'lib');
+  ? config(lib)
+  : config();
 const converter = transformer();
 
 function getDescriptionExternalIcons(iconPath, outLib) {
