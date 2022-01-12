@@ -7,8 +7,8 @@ import algoliasearch from 'algoliasearch/lite';
 import IconGroup, { ListIcons } from './icon-group';
 import Input from '@semcore/input';
 import { Text } from '@semcore/typography';
-import SearchS from '@semcore/icon/lib/Search/m';
-import CloseXS from '@semcore/icon/lib/Close/m';
+import SearchS from '@semcore/icon/Search/m';
+import CloseXS from '@semcore/icon/Close/m';
 import observatory from 'static/search/observatory.svg';
 import CONFIG from 'algolia';
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import LinkM from '@semcore/icon/lib/Link/m';
+import LinkM from '@semcore/icon/Link/m';
 
 const Heading = styled.h3`
   position: relative;

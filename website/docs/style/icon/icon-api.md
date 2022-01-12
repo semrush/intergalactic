@@ -7,7 +7,7 @@ title: API
 Any icon can be obtained using a template.
 
 ```js
-import IconNameSize from '@semcore/icon/lib/iconName/size';
+import IconNameSize from '@semcore/icon/iconName/size';
 ```
 
 @interface IIconProps

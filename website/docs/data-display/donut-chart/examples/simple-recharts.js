@@ -5,8 +5,8 @@ import { Text } from '@semcore/typography';
 import { Flex, Box } from '@semcore/flex-box';
 import Tooltip from '@semcore/tooltip';
 import Checkbox from '@semcore/checkbox';
-import InfoXS from '@semcore/icon/lib/Info/m';
-import SettingsS from '@semcore/icon/lib/Settings/m';
+import InfoXS from '@semcore/icon/Info/m';
+import SettingsS from '@semcore/icon/Settings/m';
 
 let data = [
   { domain: 'tut.by', value: 35844 },

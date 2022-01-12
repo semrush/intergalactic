@@ -1,8 +1,8 @@
 import React from 'react';
 import Notice from '@semcore/notice';
-import CloseAltS from '@semcore/icon/lib/Close/m';
-import ThumbUpS from '@semcore/icon/lib/ThumbUp/m';
-import ThumbDownS from '@semcore/icon/lib/ThumbDown/m';
+import CloseAltS from '@semcore/icon/Close/m';
+import ThumbUpS from '@semcore/icon/ThumbUp/m';
+import ThumbDownS from '@semcore/icon/ThumbDown/m';
 import Button from '@semcore/button';
 import { Text } from '@semcore/typography';
 

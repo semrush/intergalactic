@@ -2,7 +2,7 @@ import React from 'react';
 import { Text } from '@semcore/typography';
 import { Box, Flex } from '@semcore/flex-box';
 import ProgressBar from '@semcore/progress-bar';
-import WarningXS from '@semcore/icon/lib/Warning/m';
+import WarningXS from '@semcore/icon/Warning/m';
 
 export default () => (
   <Flex direction="column" w={350}>

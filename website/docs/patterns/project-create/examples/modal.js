@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Button from '@semcore/button';
-import MathPlusXS from '@semcore/icon/lib/MathPlus/m';
+import MathPlusXS from '@semcore/icon/MathPlus/m';
 import ProjectCreate from '@semcore/project-create';
 
 const Demo = () => {

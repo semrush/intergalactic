@@ -5,7 +5,7 @@ import Link from '@semcore/link';
 import { Text } from '@semcore/typography';
 import Notice from '@semcore/notice';
 import SpinContainer from '@semcore/spin-container';
-import FileExportXS from '@semcore/icon/lib/FileExport/m';
+import FileExportXS from '@semcore/icon/FileExport/m';
 
 export default function() {
   const [loading, setLoading] = useState(false);

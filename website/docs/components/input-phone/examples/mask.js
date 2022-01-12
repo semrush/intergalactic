@@ -5,7 +5,7 @@ import Select, { InputSearch } from '@semcore/select';
 import NeighborLocation from '@semcore/neighbor-location';
 import Flag, { iso2Name } from '@semcore/flags';
 import { Text } from '@semcore/typography';
-import CloseXS from '@semcore/icon/lib/Close/m';
+import CloseXS from '@semcore/icon/Close/m';
 
 const CountryCodes = {
   AF: { name: 'Afghanistan', dial_code: '+93', code: 'AF' },

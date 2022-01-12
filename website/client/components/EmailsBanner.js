@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import emailImg from '../static/illustration/email-library-pic.svg';
 import { Box } from '@semcore/flex-box';
 import Link from '@semcore/link';
-import ArrowRightXS from '@semcore/icon/lib/ArrowRight/m';
+import ArrowRightXS from '@semcore/icon/ArrowRight/m';
 
 const EmailsWrapper = styled.div`
   display: grid;

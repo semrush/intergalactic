@@ -2,8 +2,8 @@ import React from 'react';
 import { Text } from '@semcore/typography';
 import Tooltip from '@semcore/tooltip';
 
-import InfoM from '@semcore/icon/lib/Info/m';
-import InfoL from '@semcore/icon/lib/Info/l';
+import InfoM from '@semcore/icon/Info/m';
+import InfoL from '@semcore/icon/Info/l';
 
 class Demo extends React.Component {
   render() {

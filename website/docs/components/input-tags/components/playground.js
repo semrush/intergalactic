@@ -2,8 +2,8 @@ import React from 'react';
 import InputTags from '@semcore/input-tags';
 import PlaygroundGeneration from 'components/PlaygroundGeneration';
 
-import CheckM from '@semcore/icon/lib/Check/m';
-import CheckL from '@semcore/icon/lib/Check/l';
+import CheckM from '@semcore/icon/Check/m';
+import CheckL from '@semcore/icon/Check/l';
 
 const SIZES = ['m', 'l', 'xl'];
 const STATES = ['normal', 'invalid', 'valid'];

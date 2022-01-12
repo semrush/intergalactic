@@ -7,7 +7,7 @@ import Card from '@semcore/card';
 import { Text } from '@semcore/typography';
 import Button from '@semcore/button';
 import Link from '@semcore/link';
-import ReloadM from '@semcore/icon/lib/Reload/m';
+import ReloadM from '@semcore/icon/Reload/m';
 import Divider from '@semcore/divider';
 
 const options = ['de', 'en', 'es', 'fr', 'it', 'ja', 'pt', 'ru', 'zh', 'ko', 'vi'].map((o) => ({

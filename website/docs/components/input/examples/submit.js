@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Input from '@semcore/input';
-import ActionReturnXS from '@semcore/icon/lib/Return/m';
+import ActionReturnXS from '@semcore/icon/Return/m';
 
 const Demo = () => {
   const [focus, setFocus] = useState(false);

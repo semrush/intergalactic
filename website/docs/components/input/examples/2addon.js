@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import Input from '@semcore/input';
 import Link from '@semcore/link';
-import CloseXS from '@semcore/icon/lib/Close/m';
-import ShowYesXS from '@semcore/icon/lib/ShowYes/m';
-import ShowNoXS from '@semcore/icon/lib/ShowNo/m';
+import CloseXS from '@semcore/icon/Close/m';
+import ShowYesXS from '@semcore/icon/ShowYes/m';
+import ShowNoXS from '@semcore/icon/ShowNo/m';
 
 const MAP_ICON = {
   password: ShowYesXS,

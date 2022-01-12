@@ -8,8 +8,8 @@ import algoliasearch from 'algoliasearch/lite';
 import IF from '@semcore/utils/lib/if';
 import { Box } from '@semcore/flex-box';
 import Select from '@semcore/select';
-import SearchM from '@semcore/icon/lib/Search/m';
-import ArrowRight from '@semcore/icon/lib/ArrowRight/m';
+import SearchM from '@semcore/icon/Search/m';
+import ArrowRight from '@semcore/icon/ArrowRight/m';
 
 import convertKeyboard from '../utils/convert-keyboard';
 

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { useParams } from 'react-router-dom';
 import IF from '@semcore/utils/lib/if';
 import { Text } from '@semcore/typography';
-import ChevronRightXS from '@semcore/icon/lib/ChevronRight/m';
+import ChevronRightXS from '@semcore/icon/ChevronRight/m';
 
 const NavigationView = styled.div`
   padding: 32px;

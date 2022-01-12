@@ -1,8 +1,8 @@
 import React from 'react';
 import PlaygroundGeneration from 'components/PlaygroundGeneration';
 import Link from '@semcore/link';
-import CheckXS from '@semcore/icon/lib/Check/m';
-import ArrowRightXS from '@semcore/icon/lib/ArrowRight/m';
+import CheckXS from '@semcore/icon/Check/m';
+import ArrowRightXS from '@semcore/icon/ArrowRight/m';
 
 const SIZE = [
   { value: '100', name: '100 = 12px' },

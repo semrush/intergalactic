@@ -15,7 +15,7 @@ import whale from '../static/illustration/whale-pic-christmas.svg';
 import layout from '../static/illustration/layout.svg';
 import principles from '../static/illustration/principles.svg';
 import style from '../static/illustration/style.svg';
-import ArrowXS from '@semcore/icon/lib/ArrowRight/m';
+import ArrowXS from '@semcore/icon/ArrowRight/m';
 import { Link as LinkScroll } from 'react-scroll';
 import { Box } from '@semcore/flex-box';
 import updatesButton from '../static/illustration/search-for-updates.svg';

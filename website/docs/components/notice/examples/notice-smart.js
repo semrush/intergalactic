@@ -1,6 +1,6 @@
 import React from 'react';
 import { NoticeSmart } from '@semcore/notice';
-import QuestionAltS from '@semcore/icon/lib/Question/m';
+import QuestionAltS from '@semcore/icon/Question/m';
 
 const message = 'The reports are based on the data from the Russia Federation and CIS.';
 

@@ -2,11 +2,11 @@ import React from 'react';
 import Input from '@semcore/input';
 import PlaygroundGeneration from 'components/PlaygroundGeneration';
 
-import CheckM from '@semcore/icon/lib/Check/m';
-import CheckL from '@semcore/icon/lib/Check/l';
+import CheckM from '@semcore/icon/Check/m';
+import CheckL from '@semcore/icon/Check/l';
 
-import ArrowRightM from '@semcore/icon/lib/ArrowRight/m';
-import ArrowRightL from '@semcore/icon/lib/ArrowRight/l';
+import ArrowRightM from '@semcore/icon/ArrowRight/m';
+import ArrowRightL from '@semcore/icon/ArrowRight/l';
 
 const SIZES = ['s', 'm', 'l', 'xl'];
 const STATES = ['normal', 'invalid', 'valid'];

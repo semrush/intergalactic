@@ -1,8 +1,8 @@
 import React from 'react';
 import Pills from '@semcore/pills';
 import PlaygroundGeneration from 'components/PlaygroundGeneration';
-import LikeM from '@semcore/icon/lib/Like/m';
-import LikeL from '@semcore/icon/lib/Like/l';
+import LikeM from '@semcore/icon/Like/m';
+import LikeL from '@semcore/icon/Like/l';
 
 // LikeOutlineM.displayName = LikeOutlineS.displayName = LikeOutlineXS.displayName =
 //   'LikeOutline';

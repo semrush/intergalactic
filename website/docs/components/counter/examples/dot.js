@@ -1,6 +1,6 @@
 import React from 'react';
 import Button from '@semcore/button';
-import NotificationXS from '@semcore/icon/lib/Notification/m';
+import NotificationXS from '@semcore/icon/Notification/m';
 import Dot from '@semcore/dot';
 
 export default () => (

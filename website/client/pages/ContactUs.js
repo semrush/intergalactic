@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import postman from '../static/illustration/email-pic.svg';
-import PinMapM from '@semcore/icon/lib/PinMap/m';
-import GitHubM from '@semcore/icon/lib/color/GitHub/m';
-import MailM from '@semcore/icon/lib/Mail/m';
+import PinMapM from '@semcore/icon/PinMap/m';
+import GitHubM from '@semcore/icon/color/GitHub/m';
+import MailM from '@semcore/icon/Mail/m';
 import Helmet from 'react-helmet';
 
 const Content = styled.div`

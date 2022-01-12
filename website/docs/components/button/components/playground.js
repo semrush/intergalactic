@@ -3,11 +3,11 @@ import React from 'react';
 import PlaygroundGeneration from 'components/PlaygroundGeneration';
 
 import Button from '@semcore/button';
-import CheckM from '@semcore/icon/lib/Check/m';
-import CheckL from '@semcore/icon/lib/Check/l';
+import CheckM from '@semcore/icon/Check/m';
+import CheckL from '@semcore/icon/Check/l';
 
-import ArrowRightM from '@semcore/icon/lib/ArrowRight/m';
-import ArrowRightL from '@semcore/icon/lib/ArrowRight/l';
+import ArrowRightM from '@semcore/icon/ArrowRight/m';
+import ArrowRightL from '@semcore/icon/ArrowRight/l';
 
 const SIZES = ['xl', 'l', 'm', 's'];
 const USE = ['primary', 'secondary', 'tertiary'];

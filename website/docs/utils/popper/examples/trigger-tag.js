@@ -1,7 +1,7 @@
 import React from 'react';
 import Popper from '@semcore/popper';
 import Button from '@semcore/button';
-import HamburgerXS from '@semcore/icon/lib/Hamburger/m';
+import HamburgerXS from '@semcore/icon/Hamburger/m';
 
 const style = { background: '#FFF', border: '1px solid black', padding: '20px' };
 

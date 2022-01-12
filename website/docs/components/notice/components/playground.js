@@ -6,7 +6,7 @@ import Notice from '@semcore/notice';
 import { Text } from '@semcore/typography';
 import { Box } from '@semcore/flex-box';
 import Button from '@semcore/button';
-import QuestionAltS from '@semcore/icon/lib/Question/m';
+import QuestionAltS from '@semcore/icon/Question/m';
 
 const THEME = ['danger', 'warning', 'success', 'info'];
 const USE = ['primary', 'secondary'];

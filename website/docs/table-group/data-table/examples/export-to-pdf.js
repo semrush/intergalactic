@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Flex } from '@semcore/flex-box';
 import DropdownMenu from '@semcore/dropdown-menu';
 import Button from '@semcore/button';
-import FileExportXS from '@semcore/icon/lib/FileExport/m';
+import FileExportXS from '@semcore/icon/FileExport/m';
 import DataTable from '@semcore/data-table';
 
 const EXPORTS = ['PNG', 'JPEG', 'WEBP'];

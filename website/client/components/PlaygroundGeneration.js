@@ -6,7 +6,7 @@ import Checkbox from '@semcore/checkbox';
 import fire from '@semcore/utils/lib/fire';
 import Input from '@semcore/input';
 import Select from '@semcore/select';
-import CopyS from '@semcore/icon/lib/Copy/m';
+import CopyS from '@semcore/icon/Copy/m';
 import Radio, { RadioGroup } from '@semcore/radio';
 import Pills from '@semcore/pills';
 import { createPlayground, Playground } from './playground';

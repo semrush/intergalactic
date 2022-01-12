@@ -20,7 +20,7 @@ import TabLine from '@semcore/tab-line';
 import Card from '@semcore/card';
 import Dropdown from '@semcore/dropdown';
 import Switch from '@semcore/switch';
-import SettingsS from '@semcore/icon/lib/Settings/m';
+import SettingsS from '@semcore/icon/Settings/m';
 
 let date = Date.now();
 const data = Array(200)
