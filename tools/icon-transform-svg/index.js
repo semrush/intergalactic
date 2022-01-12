@@ -2,7 +2,9 @@ const path = require('path');
 const fs = require('fs-extra');
 const glob = require('glob');
 const cheerio = require('cheerio');
-const { lib, outputFolder = '.' } = require('minimist')(process.argv.slice(2));
+const { lib, sourceFolder = 'svg', outputFolder = '.' } = require('minimist')(
+  process.argv.slice(2),
+);
 const util = require('util');
 const config = require('./config');
 const babel = require('@babel/core');
@@ -12,8 +14,8 @@ const readFile = util.promisify(fs.readFile);
 
 const rootDir = process.cwd();
 const { template, templateDTS = template, transformer, babelConfig: defaultBabelConfig } = lib
-  ? config(lib)
-  : config();
+  ? config(lib, outputFolder === 'lib')
+  : config('react', outputFolder === 'lib');
 const converter = transformer();
 
 function getDescriptionExternalIcons(iconPath, outLib) {
@@ -102,12 +104,28 @@ const generateIcons = (
   });
 };
 
+function getDescriptionPayIcons(iconPath, outLib) {
+  if (sourceFolder === 'svg-new') return getDescriptionIcons(iconPath, outLib);
+  const name = path.basename(iconPath, '.svg').replace(/('|\s)/g, '');
+  const location = `${outLib}/${name}/index.js`;
+
+  return {
+    name,
+    location,
+    group: '',
+  };
+}
+
 module.exports = function() {
   Promise.all([
-    generateIcons('svg/color', `${outputFolder}/color`, getDescriptionIcons),
-    generateIcons('svg/external', `${outputFolder}/external`, getDescriptionExternalIcons),
-    generateIcons('/svg/pay', `${outputFolder}/pay`, getDescriptionIcons),
-    generateIcons('svg/icon', outputFolder, getDescriptionIcons),
+    generateIcons(`${sourceFolder}/color`, `${outputFolder}/color`, getDescriptionIcons),
+    generateIcons(
+      `${sourceFolder}/external`,
+      `${outputFolder}/external`,
+      getDescriptionExternalIcons,
+    ),
+    generateIcons(`${sourceFolder}/pay`, `${outputFolder}/pay`, getDescriptionPayIcons),
+    generateIcons(`${sourceFolder}/icon`, outputFolder, getDescriptionIcons),
   ])
     .then(() => {
       console.log('Done! I writed all files icons');
