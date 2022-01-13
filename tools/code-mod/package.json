@@ -1,6 +1,6 @@
 {
   "name": "@semcore/code-mod",
-  "version": "1.3.0",
+  "version": "1.3.1",
   "description": "Code mod for @semcore components",
   "bin": {
     "code-mod": "./bin/code-mode.js"

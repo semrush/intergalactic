@@ -39,6 +39,9 @@ const MAP_RENAME_NAME = {
   SharedToUser: 'UserShared',
   Webpages: 'WebPages',
   TimeWristwatch: 'Wristwatch',
+  InfoOutline: 'Info',
+  QuestionAlt: 'Question',
+  Repeat: 'Reload'
 };
 
 //@semcore/icon/Icon/m
