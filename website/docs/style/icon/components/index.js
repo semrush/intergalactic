@@ -4,7 +4,7 @@ import { InstantSearch } from 'react-instantsearch/dom';
 import { connectAutoComplete } from 'react-instantsearch/connectors';
 import algoliasearch from 'algoliasearch/lite';
 
-import IconGroup, { ListIcons } from './icon-group';
+import IconGroup, { IconGroups, ListIcons } from './icon-group';
 import Input from '@semcore/input';
 import { Text } from '@semcore/typography';
 import SearchS from '@semcore/icon/Search/m';
@@ -68,7 +68,7 @@ function SearchIcons(props) {
   );
 }
 
-export default function() {
+export default function({ icons, old }) {
   const [inputValue, updateInputValue] = useState('');
   const [filterIcons, updatefilterIcons] = useState([]);
 
@@ -78,7 +78,7 @@ export default function() {
 
       {inputValue.length ? (
         filterIcons.length ? (
-          <ListIcons data={filterIcons} />
+          <ListIcons data={filterIcons} icons={icons} old={old} />
         ) : (
           <NotFound>
             <img src={observatory} alt="observatory" />
@@ -88,7 +88,7 @@ export default function() {
           </NotFound>
         )
       ) : (
-        <>
+        <IconGroups icons={icons} old={old}>
           <IconGroup title="Navigation" />
           <IconGroup title="Action" />
           <IconGroup title="Status" />
@@ -102,7 +102,7 @@ export default function() {
           <IconGroup title="Color" />
           <IconGroup title="Pay" />
           <IconGroup title="External" />
-        </>
+        </IconGroups>
       )}
     </>
   );
