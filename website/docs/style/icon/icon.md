@@ -4,7 +4,7 @@ fileSource: icon
 tabName: Guide
 ---
 
-@import index
+@import icons
 
 @## Sizes
 
@@ -34,6 +34,7 @@ Each icon size has its own stroke thickness, with some exceptions. Icons with a 
 
 ![strokes](static/strokes.png)
 
+@page icon-old
 @page icon-api
 @page icon-code
 @page icon-changelog
