@@ -14,7 +14,7 @@ tabName: Guide
 
 The divider has a secondary type, which is a dashed line. Typically, it is needed to emphasize the connection between two parts of the content. _PanelSummary is an example of this._
 
-The color of the divider is specified in [Variables](/style/variables/#ac5b1e): `gray80`.
+The color of the divider is specified in [Variables](/style/variables/#a7af23): `gray80`.
 
 |        | Appearance                           | Styles                        |
 | ------ | ------------------------------------ | ----------------------------- |

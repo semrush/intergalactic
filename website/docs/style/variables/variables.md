@@ -75,14 +75,6 @@ This section describes all the variable parameters that we use in our component 
 | Modal window                                                                         | `--box-shadow-modal`  | `0px 3px 8px 0px rgba(25, 27, 35, 0.2)`                                          |
 | Drag & drop shadow                                                                   | `--box-shadow-dnd`    | `0 0 1px rgba(25, 27, 35, 0.16), 0 12px 40px rgba(25, 27, 35, 0.16)`             |
 
-@## Mask, overlay
-
-|                                  | Styles and variables               |
-| -------------------------------- | ---------------------------------- |
-| Black                            | `background: --var(gray800,0.70);` |
-| Black for dialog in dialog cases | `background: --var(gray800,0.40);` |
-| White                            | `background: --var(white,0.85);`   |
-
 @## Border-radius
 
 These are rules for the rounding radius of controls, fields, dropdowns, etc.
@@ -92,3 +84,11 @@ These are rules for the rounding radius of controls, fields, dropdowns, etc.
 | `--rounded-l: 12px;` | Use only for Modal window.                      |
 | `--rounded-m: 6px;`  | Use for all inputs, controls and widgets.       |
 | `--rounded-s: 4px;`  | Use only for checkboxes and placeholder addons. |
+
+@## Mask, overlay
+
+|                                  | Styles and variables               |
+| -------------------------------- | ---------------------------------- |
+| Black                            | `background: --var(gray800,0.70);` |
+| Black for dialog in dialog cases | `background: --var(gray800,0.40);` |
+| White                            | `background: --var(white,0.85);`   |
