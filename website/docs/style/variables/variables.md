@@ -40,23 +40,51 @@ This section describes all the variable parameters that we use in our component 
 
 @## States
 
-|           | Rules for styles                                                                                                                                                          |
-| --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Hover** | 1. Use next color shade from the [main palette](/style/palette). _E.g. if element has `--gray300` as a color in normal state, then use `--gray400` for it's hover state._ |
-|           | 2. If it is an element with a transparent background (usually, it is opacity of 0 – 15%), then it changes its transparency by 20% when hovering.                          |
+### Hover and active state style rules for components with a nontransparent background
 
-|            | Rules for styles                                                                                                                                                                                     |
-| ---------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Active** | 1. For buttons use next to the hover's color shade from the [main palette](/style/palette). _E.g. if element has `--blue400` as a color in hover state, then use `--blue500` for it's active state._ |
-|            | 2. If it's an element with a transparent background (usually, it is opacity of 0 – 15%), then in an active state it changes its transparency by 30%.                                                 |
+![nontransparent controls](static/nontransparent.png)
 
-|              | Styles and variables                                                                                                                                                          |
-| ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Focus**    | `--keyborad-focus`. It's `0 0 0 3px rgba(blue400, .3);`. For `normal` and `active` states, the focus color is `--blue400`. For `invalid` and `valid` states see colors below. |
-| **Invalid**  | `border-color: var(--red400);`                                                                                                                                                |
-| **Valid**    | `border-color: var(--green400);`                                                                                                                                              |
-| **Disabled** | `--disabled-opacity`                                                                                                                                                          |
-| **Loading**  | Use [Spinner](/components/spin) for marking this state.                                                                                                                       |
+|            | Rules for styles                                                                                                                                                                      |
+| ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Hover**  | Use next color shade from the [main palette](/style/palette). _E.g. if element has `--blue400` as a color in normal state, then use `--gray500` for it's hover state._                |
+| **Active** | Use next to the hover's color shade from the [main palette](/style/palette). _E.g. if element has `--blue500` as a color in hover state, then use `--blue600` for it's active state._ |
+
+### Hover and active state style rules for components with a transparent background
+
+In normal state controls with transparent background has opacity of 0 – 15%.
+
+![transparent controls](static/transparent.png)
+
+|            | Rules for styles                                |
+| ---------- | ----------------------------------------------- |
+| **Hover**  | Change it's transparency to 20% while hovering. |
+| **Active** | Change it's transparency to 30%.                |
+
+### Valid & invalid
+
+![valid and invalid controls](static/valid-invalid.png)
+
+|             | Styles and variables             |
+| ----------- | -------------------------------- |
+| **Invalid** | `border-color: var(--red400);`   |
+| **Valid**   | `border-color: var(--green400);` |
+
+### Focus
+
+![focused controls](static/focus.png)
+
+|                   | Styles and variables                                                                                                                                                          |
+| ----------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Focus**         | `--keyborad-focus`. It's `0 0 0 3px rgba(blue400, .3);`. For `normal` and `active` states, the focus color is `--blue400`. For `invalid` and `valid` states see colors below. |
+| **Invalid focus** | `border-color: var(--red400);`                                                                                                                                                |
+| **Valid focus**   | `border-color: var(--green400);`                                                                                                                                              |
+
+### Disalbled & loading
+
+|              | Styles and variables                                    |
+| ------------ | ------------------------------------------------------- |
+| **Disabled** | `--disabled-opacity`                                    |
+| **Loading**  | Use [Spinner](/components/spin) for marking this state. |
 
 @## Borders & dividers
 
@@ -66,6 +94,8 @@ This section describes all the variable parameters that we use in our component 
 | Secondary color of borders and dividers (e.g. popovers) | `--gray100` |
 
 @## Box-shadows
+
+![box-shadows](static/box-shadow.png)
 
 |                                                                                      | Variable              | Styles                                                                           |
 | ------------------------------------------------------------------------------------ | --------------------- | -------------------------------------------------------------------------------- |
