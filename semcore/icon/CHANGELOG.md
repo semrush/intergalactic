@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.17.0] - 2022-01-17
+
+### Added
+
+- Add icons 'Hotel' in new icons.
+
 ## [2.16.0] - 2022-01-12
 
 ### Changed
