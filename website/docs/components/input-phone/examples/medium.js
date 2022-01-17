@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Input from '@semcore/input';
 import Flag from '@semcore/flags';
-import CloseXS from '@semcore/icon/lib/Close/xs';
+import CloseXS from '@semcore/icon/Close/m';
 
 const Demo = () => {
   const [value, updateValue] = useState('+1');

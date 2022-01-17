@@ -12,8 +12,8 @@ import Docs from '../components/Docs';
 import DocsHeader from '../components/DocsHeader';
 import SideBarHeading from '../components/SideBarHeading';
 import Error from '../components/Error';
-import ArrowRightXS from '@semcore/icon/lib/ArrowRight/xs';
-import ArrowLeftXS from '@semcore/icon/lib/ArrowLeft/xs';
+import ArrowRightXS from '@semcore/icon/ArrowRight/m';
+import ArrowLeftXS from '@semcore/icon/ArrowLeft/m';
 import Select from '@semcore/select';
 
 const DocumentationWrapper = styled.div`

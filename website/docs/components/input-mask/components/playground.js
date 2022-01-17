@@ -1,16 +1,6 @@
 import React from 'react';
-import Input from '@semcore/input';
 import PlaygroundGeneration from 'components/PlaygroundGeneration';
 
-import CheckM from '@semcore/icon/lib/Check/m';
-import CheckS from '@semcore/icon/lib/Check/s';
-import CheckXS from '@semcore/icon/lib/Check/xs';
-import CheckXXS from '@semcore/icon/lib/Check/xxs';
-
-import ArrowRightM from '@semcore/icon/lib/ArrowRight/m';
-import ArrowRightS from '@semcore/icon/lib/ArrowRight/s';
-import ArrowRightXS from '@semcore/icon/lib/ArrowRight/xs';
-import ArrowRightXXS from '@semcore/icon/lib/ArrowRight/xxs';
 import InputMask from '@semcore/input-mask';
 
 const SIZES = ['s', 'm', 'l', 'xl'];

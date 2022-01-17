@@ -2,31 +2,37 @@
   "icons": [
     {
       "name": "GitLab",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
+      "group": "Color",
+      "tags": ["git", "lab", "гитлаб", "гитхаб", "гит", "repo", "logo", "лого"]
+    },
+    {
+      "name": "GitHub",
+      "size": ["l", "m"],
       "group": "Color",
       "tags": ["git", "lab", "гитлаб", "гитхаб", "гит", "repo", "logo", "лого"]
     },
     {
       "name": "GoogleAnalytics",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Color",
       "tags": ["google", "analytics", "гугл", "аналитика", "logo", "лого"]
     },
     {
       "name": "GoogleAnalytics4",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Color",
       "tags": ["google", "analytics", "гугл", "аналитика", "logo", "лого"]
     },
     {
-      "name": "AdobeAnalytics",
-      "size": ["m", "s", "xs"],
-      "group": "Color",
+      "name": "AdobeExperienceCloud",
+      "size": ["l", "m"],
+      "group": "Brand",
       "tags": ["adobe", "analytics", "эдоб", "эдоуби", "аналитика", "logo", "лого"]
     },
     {
       "name": "GoogleMail",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Color",
       "tags": [
         "google",
@@ -44,7 +50,7 @@
     },
     {
       "name": "GoogleDataStudio",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Color",
       "tags": [
         "google",
@@ -60,7 +66,7 @@
     },
     {
       "name": "GoogleDoc",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Color",
       "tags": [
         "google",
@@ -76,7 +82,7 @@
     },
     {
       "name": "MicrosoftExchange",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Color",
       "tags": [
         "microsoft",
@@ -96,7 +102,7 @@
     },
     {
       "name": "Office365",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Color",
       "tags": [
         "office365",
@@ -113,25 +119,19 @@
     },
     {
       "name": "Outlook",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Color",
       "tags": ["outlook", "микрософт", "мелкософт", "майкрософт", "ms", "microsoft", "logo", "лого"]
     },
     {
-      "name": "Sketch",
-      "size": ["m", "s", "xs"],
-      "group": "Color",
-      "tags": ["sketch", "bohemian", "coding", "скетч", "diamond", "бриллиант", "logo", "лого"]
-    },
-    {
       "name": "Figma",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Color",
       "tags": ["figma", "coding", "фигма", "logo", "лого"]
     },
     {
       "name": "Yahoo",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Color",
       "tags": ["yahoo", "яхху", "logo", "лого"]
     },
@@ -414,9 +414,9 @@
       "tags": ["twitter", "view", "линкед", "ин", "глаз", "eye", "твиттер", "просмотр"]
     },
     {
-      "name": "ActionRedirect",
-      "size": ["m", "s", "xs"],
-      "group": "Actions",
+      "name": "Redirect",
+      "size": ["l", "m"],
+      "group": "Action",
       "tags": [
         "action",
         "redirect",
@@ -435,9 +435,9 @@
       ]
     },
     {
-      "name": "ActionRedo",
-      "size": ["m", "s", "xs"],
-      "group": "Actions",
+      "name": "Redo",
+      "size": ["l", "m"],
+      "group": "Action",
       "tags": [
         "action",
         "redo",
@@ -453,15 +453,15 @@
       ]
     },
     {
-      "name": "ActionReply",
-      "size": ["m", "s", "xs"],
-      "group": "Actions",
+      "name": "Reply",
+      "size": ["l", "m"],
+      "group": "Action",
       "tags": ["action", "reply", "ответ", "стрелка", "arrow", "mail", "left", "лево", "налево"]
     },
     {
-      "name": "ActionReturn",
-      "size": ["m", "s", "xs"],
-      "group": "Actions",
+      "name": "Return",
+      "size": ["l", "m"],
+      "group": "Action",
       "tags": [
         "action",
         "return",
@@ -479,9 +479,9 @@
       ]
     },
     {
-      "name": "ActionShare",
-      "size": ["m", "s", "xs"],
-      "group": "Actions",
+      "name": "Share",
+      "size": ["l", "m"],
+      "group": "Action",
       "tags": [
         "action",
         "share",
@@ -496,15 +496,31 @@
       ]
     },
     {
-      "name": "ActionStop",
-      "size": ["m", "s", "xs"],
-      "group": "Actions",
+      "name": "Retweet",
+      "size": ["l", "m"],
+      "group": "Action",
+      "tags": [
+        "action",
+        "share",
+        "поделиться",
+        "arrows",
+        "стрелки",
+        "retweet",
+        "ретвит",
+        "шаринг",
+        "sharing"
+      ]
+    },
+    {
+      "name": "Stop",
+      "size": ["l", "m"],
+      "group": "Action",
       "tags": ["action", "stop", "стоп", "pause", "пауза"]
     },
     {
-      "name": "ActionUndo",
-      "size": ["m", "s", "xs"],
-      "group": "Actions",
+      "name": "Undo",
+      "size": ["l", "m"],
+      "group": "Action",
       "tags": [
         "action",
         "undo",
@@ -522,32 +538,32 @@
     },
     {
       "name": "Ad",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Status",
       "tags": ["ad", "реклама", "advertisement", "banner", "баннер"]
     },
     {
       "name": "AdBottom",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Status",
       "tags": ["ad", "bottom", "реклама", "advertisement", "banner", "баннер", "низ", "вниз"]
     },
     {
       "name": "AddCampaign",
-      "size": ["l", "m", "s", "xs"],
-      "group": "Actions",
+      "size": ["l", "m"],
+      "group": "Action",
       "tags": ["add", "campaign", "добавить", "plus", "плюс", "кампания", "list", "список"]
     },
     {
       "name": "AdTop",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Status",
       "tags": ["ad", "top", "реклама", "advertisement", "banner", "баннер", "вверх", "верх"]
     },
     {
       "name": "AllDevices",
-      "size": ["m", "s", "xs"],
-      "group": "Misc",
+      "size": ["l", "m"],
+      "group": "Hardware",
       "tags": [
         "all",
         "devices",
@@ -564,8 +580,8 @@
       ]
     },
     {
-      "name": "AmpProject",
-      "size": ["m", "s", "xs"],
+      "name": "Amp",
+      "size": ["l", "m"],
       "group": "Misc",
       "tags": [
         "amp",
@@ -582,8 +598,8 @@
     },
     {
       "name": "Android",
-      "size": ["m", "s", "xs"],
-      "group": "Hardware",
+      "size": ["l", "m"],
+      "group": "Brand",
       "tags": [
         "android",
         "андроид",
@@ -601,8 +617,8 @@
     },
     {
       "name": "Apple",
-      "size": ["m", "s", "xs"],
-      "group": "Hardware",
+      "size": ["l", "m"],
+      "group": "Brand",
       "tags": [
         "apple",
         "эпл",
@@ -620,7 +636,7 @@
     },
     {
       "name": "Archive",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Misc",
       "tags": [
         "archive",
@@ -636,74 +652,56 @@
       ]
     },
     {
+      "name": "Arrows",
+      "size": ["l", "m"],
+      "group": "Navigation",
+      "tags": ["arrow", "стрелка", "arrows", "стрелки"]
+    },
+    {
       "name": "ArrowDown",
-      "size": ["m", "s", "xs", "xxs"],
+      "size": ["l", "m", "xxs"],
       "group": "Navigation",
       "tags": ["arrow", "down", "стрелка", "вниз", "низ"]
     },
     {
-      "name": "ArrowDownAlt",
-      "size": ["m", "s", "xs"],
-      "group": "Navigation",
-      "tags": ["arrow", "down", "стрелка", "вниз", "низ", "alt"]
-    },
-    {
       "name": "ArrowLeft",
-      "size": ["m", "s", "xs", "xxs"],
+      "size": ["l", "m", "xxs"],
       "group": "Navigation",
       "tags": ["arrow", "left", "стрелка", "лево", "налево", "влево"]
     },
     {
-      "name": "ArrowLeftAlt",
-      "size": ["m", "s", "xs"],
-      "group": "Navigation",
-      "tags": ["arrow", "left", "стрелка", "лево", "влево", "налево", "alt"]
-    },
-    {
       "name": "ArrowRight",
-      "size": ["m", "s", "xs", "xxs"],
+      "size": ["l", "m", "xxs"],
       "group": "Navigation",
       "tags": ["arrow", "right", "стрелка", "вправо", "направо"]
     },
     {
-      "name": "ArrowRightAlt",
-      "size": ["m", "s", "xs"],
-      "group": "Navigation",
-      "tags": ["arrow", "right", "стрелка", "вправо", "направо", "alt"]
-    },
-    {
       "name": "ArrowUp",
-      "size": ["m", "s", "xs", "xxs"],
+      "size": ["l", "m", "xxs"],
       "group": "Navigation",
       "tags": ["arrow", "up", "стрелка", "вверх", "верх"]
     },
     {
-      "name": "ArrowUpAlt",
-      "size": ["m", "s", "xs"],
-      "group": "Navigation",
-      "tags": ["arrow", "up", "стрелка", "вверх", "верх", "alt"]
-    },
-    {
       "name": "Attach",
-      "size": ["m", "s", "xs"],
-      "group": "Actions",
+      "size": ["l", "m"],
+      "group": "Action",
       "tags": ["attach", "pin", "булавка", "аттач", "скрепка", "clip"]
     },
     {
       "name": "Block",
-      "size": ["m", "s", "xs"],
-      "group": "Actions",
+      "size": ["l", "m"],
+      "group": "Action",
       "tags": ["block", "stop", "no", "denied", "стоп", "блок", "нельзя", "доступ", "запрещен"]
     },
     {
       "name": "Book",
-      "size": ["l", "m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Misc",
       "tags": ["book", "книга"]
     },
     {
       "name": "Briefcase",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Misc",
       "tags": [
         "case",
@@ -724,7 +722,7 @@
     },
     {
       "name": "BriefcaseAlt",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Misc",
       "tags": [
         "case",
@@ -745,7 +743,7 @@
     },
     {
       "name": "Filter",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Status",
       "tags": [
         "filter",
@@ -761,7 +759,7 @@
     },
     {
       "name": "Funnel",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Status",
       "tags": [
         "filter",
@@ -775,62 +773,44 @@
       ]
     },
     {
-      "name": "Hotel",
-      "size": ["m", "s", "xs"],
-      "group": "Misc",
-      "tags": [
-        "hotel",
-        "hostel",
-        "building",
-        "house",
-        "star",
-        "rating",
-        "booking",
-        "отель",
-        "звезды",
-        "здание",
-        "хостел"
-      ]
-    },
-    {
-      "name": "Bookmark",
-      "size": ["m", "s", "xs"],
-      "group": "Actions",
+      "name": "BookmarkFilled",
+      "size": ["l", "m"],
+      "group": "Action",
       "tags": ["bookmark", "закладка", "save", "сохранить"]
     },
     {
-      "name": "BookmarkOutline",
-      "size": ["m", "s", "xs"],
-      "group": "Actions",
+      "name": "Bookmark",
+      "size": ["l", "m"],
+      "group": "Action",
       "tags": ["bookmark", "закладка", "save", "outline"]
     },
     {
       "name": "BracketsAngle",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Misc",
       "tags": ["brackets", "angle", "code", "скобки", "программирование", "угловые", "js", "html"]
     },
     {
       "name": "BracketsCode",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Misc",
       "tags": ["brackets", "code", "angle", "скобки", "программирование", "угловые", "js", "html"]
     },
     {
       "name": "BracketsCurly",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Misc",
       "tags": ["brackets", "curly", "code", "скобки", "фигурные", "скобки", "css"]
     },
     {
       "name": "Bulb",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Misc",
       "tags": ["bulb", "лампочка", "light", "свет"]
     },
     {
       "name": "Calendar",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Status",
       "tags": [
         "calendar",
@@ -846,8 +826,8 @@
       ]
     },
     {
-      "name": "CalendarCHeck",
-      "size": ["m", "s", "xs"],
+      "name": "CalendarCheck",
+      "size": ["l", "m"],
       "group": "Status",
       "tags": [
         "calendar",
@@ -868,14 +848,14 @@
     },
     {
       "name": "Cards",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Status",
       "tags": ["cards", "карточки", "gallery", "slider", "flip", "list", "список", "галерея"]
     },
     {
       "name": "Cart",
-      "size": ["m", "s", "xs"],
-      "group": "Actions",
+      "size": ["l", "m"],
+      "group": "Action",
       "tags": [
         "cart",
         "shopping",
@@ -890,43 +870,49 @@
     },
     {
       "name": "ChartBar",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Misc",
       "tags": ["chart", "bar", "график", "vertical", "вертикальный", "полосы"]
     },
     {
       "name": "ChartBarStacked",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Misc",
       "tags": ["chart", "bar", "stacked", "horizontal", "cigarette", "сигарета", "график"]
     },
     {
       "name": "ChartBubble",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Misc",
       "tags": ["chart", "bubble", "пузырь", "график", "circle"]
     },
     {
       "name": "ChartLine",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Misc",
       "tags": ["chart", "line", "график", "линия", "growth", "increase"]
     },
     {
       "name": "ChartPie",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Misc",
       "tags": ["chart", "pie", "donut", "circle", "график", "пирог", "пай"]
     },
     {
       "name": "Chat",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
+      "group": "Status",
+      "tags": ["chat", "bubble", "comment", "say", "text", "чат", "комментарий", "сказать"]
+    },
+    {
+      "name": "ChatFilled",
+      "size": ["l", "m"],
       "group": "Status",
       "tags": ["chat", "bubble", "comment", "say", "text", "чат", "комментарий", "сказать"]
     },
     {
       "name": "ChatCheck",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Status",
       "tags": [
         "chat",
@@ -943,7 +929,7 @@
     },
     {
       "name": "ChatPlus",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Status",
       "tags": [
         "chat",
@@ -961,7 +947,7 @@
     },
     {
       "name": "ChatQuestion",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Status",
       "tags": [
         "chat",
@@ -981,8 +967,8 @@
     },
     {
       "name": "Check",
-      "size": ["l", "m", "s", "xs", "xxs"],
-      "group": "Actions",
+      "size": ["l", "m"],
+      "group": "Action",
       "tags": [
         "check",
         "галочка",
@@ -999,8 +985,8 @@
     },
     {
       "name": "CheckAlt",
-      "size": ["m", "s", "xs"],
-      "group": "Actions",
+      "size": ["l", "m"],
+      "group": "Action",
       "tags": [
         "check",
         "галочка",
@@ -1018,8 +1004,8 @@
     },
     {
       "name": "Checkbox",
-      "size": ["m", "s", "xs"],
-      "group": "Actions",
+      "size": ["l", "m"],
+      "group": "Action",
       "tags": [
         "check",
         "галочка",
@@ -1039,14 +1025,14 @@
     },
     {
       "name": "ChevronDoubleDown",
-      "size": ["m", "s", "xs"],
-      "group": "Misc",
+      "size": ["l", "m"],
+      "group": "Navigation",
       "tags": ["chevron", "double", "down", "шеврон", "вниз", "низ", "двойной", "arrow", "стрелка"]
     },
     {
       "name": "ChevronDoubleLeft",
-      "size": ["m", "s", "xs"],
-      "group": "Misc",
+      "size": ["l", "m"],
+      "group": "Navigation",
       "tags": [
         "chevron",
         "double",
@@ -1062,8 +1048,8 @@
     },
     {
       "name": "ChevronDoubleRight",
-      "size": ["m", "s", "xs"],
-      "group": "Misc",
+      "size": ["l", "m"],
+      "group": "Navigation",
       "tags": [
         "chevron",
         "double",
@@ -1079,26 +1065,26 @@
     },
     {
       "name": "ChevronDoubleUp",
-      "size": ["m", "s", "xs"],
-      "group": "Misc",
+      "size": ["l", "m"],
+      "group": "Navigation",
       "tags": ["chevron", "double", "up", "шеврон", "верх", "вверх", "двойной", "arrow", "стрелка"]
     },
     {
       "name": "ChevronDown",
-      "size": ["l", "m", "s", "xs", "xxs"],
-      "group": "Misc",
+      "size": ["l", "m"],
+      "group": "Navigation",
       "tags": ["chevron", "down", "шеврон", "arrow", "стрелка", "низ", "вниз"]
     },
     {
       "name": "ChevronLeft",
-      "size": ["l", "m", "s", "xs", "xxs"],
-      "group": "Misc",
+      "size": ["l", "m"],
+      "group": "Navigation",
       "tags": ["chevron", "left", "стрелка", "лево", "влево", "налево", "arrow", "шеврон"]
     },
     {
       "name": "ChevronRight",
-      "size": ["l", "m", "s", "xs", "xxs"],
-      "group": "Misc",
+      "size": ["l", "m"],
+      "group": "Navigation",
       "tags": [
         "chevron",
         "right",
@@ -1113,31 +1099,25 @@
     },
     {
       "name": "ChevronUp",
-      "size": ["l", "m", "s", "xs", "xxs"],
-      "group": "Misc",
+      "size": ["l", "m"],
+      "group": "Navigation",
       "tags": ["chevron", "up", "верх", "вверх", "шеврон", "стрелка", "arrow"]
     },
     {
       "name": "Chrome",
-      "size": ["m", "s", "xs"],
-      "group": "Hardware",
+      "size": ["l", "m"],
+      "group": "Brand",
       "tags": ["chrome", "google", "хром", "browser", "logo", "лого", "браузер"]
     },
     {
       "name": "Close",
-      "size": ["m", "s", "xs", "xxs"],
-      "group": "Actions",
+      "size": ["l", "m", "xxs"],
+      "group": "Action",
       "tags": ["close", "cross", "закрыть", "крестик", "stop", "denied", "x"]
     },
     {
-      "name": "CloseAlt",
-      "size": ["m", "s", "xs"],
-      "group": "Actions",
-      "tags": ["close", "cross", "закрыть", "крестик", "stop", "denied", "x", "alt"]
-    },
-    {
       "name": "Collapse",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Misc",
       "tags": [
         "collapse",
@@ -1159,7 +1139,7 @@
     },
     {
       "name": "ColumnThree",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Format",
       "tags": [
         "column",
@@ -1176,7 +1156,7 @@
     },
     {
       "name": "ColumnTwo",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Format",
       "tags": [
         "column",
@@ -1192,30 +1172,14 @@
       ]
     },
     {
-      "name": "Compose",
-      "size": ["m", "s", "xs"],
-      "group": "Actions",
-      "tags": [
-        "compose",
-        "pencil",
-        "write",
-        "карандаш",
-        "mail",
-        "edit",
-        "написать",
-        "создать",
-        "create"
-      ]
-    },
-    {
       "name": "Copy",
-      "size": ["m", "s", "xs"],
-      "group": "Actions",
+      "size": ["l", "m"],
+      "group": "Action",
       "tags": ["copy", "plus", "скопировать", "копия", "double", "duplicate", "add", "плюс"]
     },
     {
       "name": "Crosshair",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Misc",
       "tags": [
         "crosshair",
@@ -1233,7 +1197,7 @@
     },
     {
       "name": "Crown",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Status",
       "tags": [
         "crown",
@@ -1250,7 +1214,7 @@
     },
     {
       "name": "CurrencyUsd",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Status",
       "tags": [
         "currency",
@@ -1269,13 +1233,13 @@
     },
     {
       "name": "CursorDefault",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Misc",
       "tags": ["cursor", "default", "arrow", "стрелка", "курсор", "mac", "point"]
     },
     {
       "name": "CursorMove",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Misc",
       "tags": [
         "cursor",
@@ -1301,36 +1265,14 @@
       ]
     },
     {
-      "name": "CursorPointer",
-      "size": ["m", "s", "xs"],
-      "group": "Misc",
-      "tags": ["cursor", "pointer", "hand", "курсор", "finger", "указатель", "палец"]
-    },
-    {
       "name": "Cut",
-      "size": ["m", "s", "xs"],
-      "group": "Actions",
+      "size": ["l", "m"],
+      "group": "Action",
       "tags": ["cut", "scissors", "вырезать", "copy", "exclude", "ножницы"]
     },
     {
-      "name": "Density",
-      "size": ["m", "s", "xs"],
-      "group": "Status",
-      "tags": [
-        "density",
-        "flask",
-        "chemistry",
-        "capacity",
-        "liquid",
-        "плотность",
-        "жидкость",
-        "колба",
-        "химия"
-      ]
-    },
-    {
       "name": "Desktop",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Hardware",
       "tags": [
         "desktop",
@@ -1346,7 +1288,7 @@
     },
     {
       "name": "DesktopChart",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Hardware",
       "tags": [
         "desktop",
@@ -1367,13 +1309,13 @@
     },
     {
       "name": "Document",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "File",
       "tags": ["document", "документ", "paper", "листок", "бумага", "sheet", "blank"]
     },
     {
       "name": "DocumentCheck",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "File",
       "tags": [
         "document",
@@ -1392,7 +1334,7 @@
     },
     {
       "name": "DocumentDrop",
-      "size": ["l", "m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "File",
       "tags": [
         "document",
@@ -1414,7 +1356,7 @@
     },
     {
       "name": "DocumentExport",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "File",
       "tags": [
         "document",
@@ -1433,7 +1375,7 @@
     },
     {
       "name": "DocumentHappy",
-      "size": ["l", "m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "File",
       "tags": [
         "document",
@@ -1454,13 +1396,13 @@
     },
     {
       "name": "DocumentPdf",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "File",
       "tags": ["document", "документ", "paper", "листок", "бумага", "sheet", "blank", "pdf"]
     },
     {
       "name": "DocumentSad",
-      "size": ["l", "m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "File",
       "tags": [
         "document",
@@ -1480,27 +1422,8 @@
       ]
     },
     {
-      "name": "Drawer",
-      "size": ["m", "s", "xs"],
-      "group": "Misc",
-      "tags": [
-        "drawer",
-        "inbox",
-        "archive",
-        "storage",
-        "ящик",
-        "empty",
-        "пустой",
-        "архив",
-        "хранение",
-        "хранилище",
-        "document",
-        "papers"
-      ]
-    },
-    {
       "name": "Drop",
-      "size": ["l", "m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Misc",
       "tags": [
         "drop",
@@ -1517,7 +1440,7 @@
     },
     {
       "name": "DropText",
-      "size": ["l", "m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Misc",
       "tags": [
         "drop",
@@ -1536,8 +1459,8 @@
     },
     {
       "name": "Edit",
-      "size": ["l", "m", "s", "xs"],
-      "group": "Actions",
+      "size": ["l", "m"],
+      "group": "Action",
       "tags": [
         "edit",
         "pencil",
@@ -1553,7 +1476,7 @@
     },
     {
       "name": "Education",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Status",
       "tags": [
         "education",
@@ -1573,7 +1496,7 @@
     },
     {
       "name": "Ellipsis",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Navigation",
       "tags": [
         "ellipsis",
@@ -1591,28 +1514,8 @@
       ]
     },
     {
-      "name": "EllipsisAlt",
-      "size": ["m", "s", "xs"],
-      "group": "Navigation",
-      "tags": [
-        "ellipsis",
-        "three",
-        "dot",
-        "многоточие",
-        "троеточие",
-        "more",
-        "details",
-        "menu",
-        "kebab",
-        "hamburger",
-        "кебаб",
-        "меню",
-        "alt"
-      ]
-    },
-    {
       "name": "Exit",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Navigation",
       "tags": [
         "exit",
@@ -1629,7 +1532,7 @@
     },
     {
       "name": "Expand",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Misc",
       "tags": [
         "expand",
@@ -1647,13 +1550,13 @@
     },
     {
       "name": "Facebook",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Social",
       "tags": ["facebook", "logo", "лого", "фейсбук", "social"]
     },
     {
       "name": "FacebookMessenger",
-      "size": ["l", "m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Social",
       "tags": [
         "facebook",
@@ -1673,7 +1576,7 @@
     },
     {
       "name": "Slack",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Social",
       "tags": [
         "slack",
@@ -1689,44 +1592,44 @@
       ]
     },
     {
-      "name": "Favorite",
-      "size": ["m", "s", "xs"],
+      "name": "FavoriteFilled",
+      "size": ["l", "m"],
       "group": "Misc",
       "tags": ["favorite", "favourite", "фаворит", "star", "звезда", "like", "mark"]
     },
     {
       "name": "Airplane",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Misc",
       "tags": ["plane", "take-off", "flight", "air", "airplane", "самолет", "полет", "вылет"]
     },
     {
-      "name": "FavoriteOutline",
-      "size": ["m", "s", "xs"],
+      "name": "Favorite",
+      "size": ["l", "m"],
       "group": "Misc",
       "tags": ["favorite", "favourite", "фаворит", "star", "звезда", "like", "mark", "outline"]
     },
     {
       "name": "FileDownload",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "File",
       "tags": ["file", "download", "arrow", "стрелка", "вниз", "низ", "down", "файл", "скачать"]
     },
     {
       "name": "FileExport",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "File",
       "tags": ["file", "export", "arrow", "стрелка", "вверх", "верх", "up", "файл", "экспорт"]
     },
     {
       "name": "FileImport",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "File",
       "tags": ["file", "arrow", "стрелка", "вниз", "низ", "down", "файл", "import"]
     },
     {
       "name": "FileUpload",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "File",
       "tags": [
         "file",
@@ -1744,31 +1647,31 @@
     },
     {
       "name": "Fire",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Status",
       "tags": ["fire", "flame", "огонь", "danger", "опасность", "foster"]
     },
     {
       "name": "Firefox",
-      "size": ["m", "s", "xs"],
-      "group": "Hardware",
+      "size": ["l", "m"],
+      "group": "Brand",
       "tags": ["firefox", "logo", "лого", "лиса", "фаирфокс", "фаер", "браузер", "browser"]
     },
     {
-      "name": "Folder",
-      "size": ["m", "s", "xs"],
+      "name": "FolderFilled",
+      "size": ["l", "m"],
       "group": "File",
       "tags": ["folder", "папка", "directory", "storage", "file", "директория"]
     },
     {
-      "name": "FolderOpen",
-      "size": ["m", "s", "xs"],
+      "name": "FolderOpenFilled",
+      "size": ["l", "m"],
       "group": "File",
       "tags": ["folder", "папка", "directory", "storage", "file", "директория", "open", "открытая"]
     },
     {
-      "name": "FolderOpenOutline",
-      "size": ["m", "s", "xs"],
+      "name": "FolderOpen",
+      "size": ["l", "m"],
       "group": "File",
       "tags": [
         "folder",
@@ -1783,14 +1686,14 @@
       ]
     },
     {
-      "name": "FolderOutline",
-      "size": ["m", "s", "xs"],
+      "name": "Folder",
+      "size": ["l", "m"],
       "group": "File",
       "tags": ["folder", "папка", "directory", "storage", "file", "директория", "folder", "outline"]
     },
     {
       "name": "Form",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Misc",
       "tags": [
         "form",
@@ -1807,7 +1710,7 @@
     },
     {
       "name": "FormatAlignCenter",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Misc",
       "tags": [
         "format",
@@ -1826,7 +1729,7 @@
     },
     {
       "name": "FormatAlignJustify",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Misc",
       "tags": [
         "format",
@@ -1848,7 +1751,7 @@
     },
     {
       "name": "FormatAlignLeft",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Misc",
       "tags": [
         "format",
@@ -1867,7 +1770,7 @@
     },
     {
       "name": "GenderMale",
-      "size": ["l", "m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Misc",
       "tags": [
         "gender",
@@ -1885,7 +1788,7 @@
     },
     {
       "name": "GenderFemale",
-      "size": ["l", "m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Misc",
       "tags": [
         "gender",
@@ -1903,7 +1806,7 @@
     },
     {
       "name": "FormatAlignRight",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Misc",
       "tags": [
         "format",
@@ -1922,37 +1825,25 @@
     },
     {
       "name": "Foursquare",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Social",
       "tags": ["foursquare", "logo", "лого", "фосквер", "форсквер", "social"]
     },
     {
       "name": "Wordpress",
-      "size": ["m", "s", "xs"],
-      "group": "Social",
+      "size": ["l", "m"],
+      "group": "Brand",
       "tags": ["wordpress", "site", "blog", "engine", "вордпресс", "блог"]
     },
     {
-      "name": "G2crowd",
-      "size": ["m", "s", "xs"],
-      "group": "Social",
-      "tags": ["g2crowd", "social", "logo", "лого"]
-    },
-    {
       "name": "Globe",
-      "size": ["m", "s", "xs"],
-      "group": "Status",
-      "tags": ["globe", "planet", "глобус", "планета", "Earth", "Земля", "world", "global", "мир"]
-    },
-    {
-      "name": "GlobeAlt",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Status",
       "tags": ["globe", "planet", "глобус", "планета", "Earth", "Земля", "world", "global", "мир"]
     },
     {
       "name": "Goblet",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Misc",
       "tags": [
         "goblet",
@@ -1970,26 +1861,26 @@
     },
     {
       "name": "Google",
-      "size": ["m", "s", "xs"],
-      "group": "Social",
+      "size": ["l", "m"],
+      "group": "Brand",
       "tags": ["google", "гугл", "лого", "logo"]
     },
     {
       "name": "GoogleColor",
-      "size": ["l", "m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Color",
       "tags": ["google", "гугл", "лого", "logo"]
     },
     {
       "name": "GoogleGSC",
-      "size": ["l", "m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Color",
       "tags": ["google", "гугл", "лого", "logo", "gsc"]
     },
     {
-      "name": "GoogleMyBusiness",
-      "size": ["m", "s", "xs"],
-      "group": "Social",
+      "name": "GoogleBusinessProfile",
+      "size": ["l", "m"],
+      "group": "Brand",
       "tags": [
         "google",
         "my",
@@ -2004,60 +1895,55 @@
       ]
     },
     {
-      "name": "GooglePlus",
-      "size": ["m", "s", "xs"],
-      "group": "Social",
-      "tags": ["google", "plus", "social", "гугл", "лого", "logo"]
+      "name": "GoogleBusinessProfile",
+      "size": ["l", "m"],
+      "group": "Color",
+      "tags": [
+        "google",
+        "my",
+        "business",
+        "google",
+        "social",
+        "logo",
+        "лого",
+        "бизнес",
+        "мой",
+        "гугл"
+      ]
     },
     {
       "name": "Hamburger",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Navigation",
       "tags": ["hamburger", "menu", "more", "kebab", "меню", "гамбургер", "еда", "кушоть", "list"]
     },
     {
       "name": "Health",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Status",
       "tags": ["health", "heart", "pulse", "beep", "monitor", "hr", "пульс", "здоровье", "сердце"]
     },
     {
       "name": "Home",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Navigation",
       "tags": ["home", "house", "chimney", "directory", "дом", "здание", "building"]
     },
     {
       "name": "Infinity",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Misc",
       "tags": ["infinity", "eight", "бесконечность", "loop", "8", "number"]
     },
     {
       "name": "Info",
-      "size": ["m", "s", "xs", "xxs"],
+      "size": ["l", "m", "xxs"],
       "group": "Status",
       "tags": ["info", "ишка", "информация", "details", "детали", "подробнее", "help", "помощь"]
     },
     {
-      "name": "InfoOutline",
-      "size": ["m", "s", "xs"],
-      "group": "Status",
-      "tags": [
-        "info",
-        "ишка",
-        "информация",
-        "details",
-        "детали",
-        "подробнее",
-        "help",
-        "помощь",
-        "outline"
-      ]
-    },
-    {
       "name": "Instagram",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Social",
       "tags": [
         "instagram",
@@ -2073,55 +1959,49 @@
     },
     {
       "name": "Key",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Misc",
       "tags": ["key", "ключ", "access", "chain", "доступ"]
     },
     {
       "name": "KeyCmd",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Misc",
       "tags": ["key", "cmd", "command", "клавиша", "board", "press", "windows", "клавиатура"]
     },
     {
       "name": "KeyHotkey",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Misc",
       "tags": ["key", "hotkey", "горячая", "клавиша", "board", "press", "quick", "быстрый"]
     },
     {
       "name": "Lightning",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Misc",
       "tags": ["lightning", "молния", "zap", "fast", "sonic", "quick", "быстро", "flash"]
     },
     {
-      "name": "Like",
-      "size": ["m", "s", "xs"],
-      "group": "Actions",
+      "name": "LikeFilled",
+      "size": ["l", "m"],
+      "group": "Action",
       "tags": ["like", "heart", "сердце", "нравится", "любовь", "love"]
     },
     {
-      "name": "LikeOutline",
-      "size": ["m", "s", "xs"],
-      "group": "Actions",
+      "name": "Like",
+      "size": ["l", "m"],
+      "group": "Action",
       "tags": ["like", "heart", "сердце", "нравится", "любовь", "love", "outline"]
     },
     {
       "name": "Link",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Status",
       "tags": ["link", "chain", "цепь", "ссылка", "pin", "clip", "connect"]
     },
     {
-      "name": "LinkAlt",
-      "size": ["l", "m", "s", "xs"],
-      "group": "Status",
-      "tags": ["link", "chain", "цепь", "ссылка", "pin", "clip", "alt", "connect"]
-    },
-    {
       "name": "LinkAltBroken",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Status",
       "tags": [
         "link",
@@ -2137,19 +2017,19 @@
     },
     {
       "name": "LinkAltHalf",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Status",
       "tags": ["link", "alt", "half", "ссылка", "pin", "clip", "connect", "частично", "разорван"]
     },
     {
       "name": "LinkedIn",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Social",
       "tags": ["linked", "in", "social", "logo", "лого", "линкед", "ин"]
     },
     {
       "name": "LinkExternal",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Status",
       "tags": [
         "link",
@@ -2169,7 +2049,7 @@
     },
     {
       "name": "LinkInternal",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Status",
       "tags": [
         "link",
@@ -2189,19 +2069,19 @@
     },
     {
       "name": "ListAddBottom",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Format",
       "tags": ["list", "add", "bottom", "список", "plus", "добавить", "низ", "вниз", "плюс"]
     },
     {
       "name": "ListAddTop",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Format",
       "tags": ["list", "add", "top", "список", "добавить", "верх", "вверх", "plus", "плюс"]
     },
     {
       "name": "ListBullet",
-      "size": ["m", "s", "xs", "xxs"],
+      "size": ["l", "m", "xxs"],
       "group": "Format",
       "tags": [
         "list",
@@ -2217,7 +2097,7 @@
     },
     {
       "name": "ListCheck",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Format",
       "tags": [
         "list",
@@ -2235,8 +2115,8 @@
       ]
     },
     {
-      "name": "ListCheckAlt",
-      "size": ["m", "s", "xs"],
+      "name": "ListAddCheck",
+      "size": ["l", "m"],
       "group": "Format",
       "tags": [
         "list",
@@ -2252,7 +2132,7 @@
     },
     {
       "name": "ListNumber",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Format",
       "tags": [
         "list",
@@ -2269,8 +2149,8 @@
     },
     {
       "name": "LockNo",
-      "size": ["m", "s", "xs"],
-      "group": "Actions",
+      "size": ["l", "m"],
+      "group": "Action",
       "tags": [
         "lock",
         "no",
@@ -2285,13 +2165,13 @@
     },
     {
       "name": "LockYes",
-      "size": ["m", "s", "xs"],
-      "group": "Actions",
+      "size": ["l", "m"],
+      "group": "Action",
       "tags": ["lock", "yes", "замок", "заблокировать", "access", "key", "доступ"]
     },
     {
       "name": "MagicWand",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Misc",
       "tags": [
         "magic",
@@ -2307,14 +2187,14 @@
     },
     {
       "name": "Magnet",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Misc",
       "tags": ["magnet", "магнит", "pole", "north", "south", "field", "поле"]
     },
     {
-      "name": "Mail",
-      "size": ["m", "s", "xs"],
-      "group": "Actions",
+      "name": "MailFilled",
+      "size": ["l", "m"],
+      "group": "Action",
       "tags": [
         "mail",
         "envelope",
@@ -2330,15 +2210,15 @@
       ]
     },
     {
-      "name": "MailOpen",
-      "size": ["m", "s", "xs"],
-      "group": "Actions",
+      "name": "MailOpenFilled",
+      "size": ["l", "m"],
+      "group": "Action",
       "tags": ["mail", "email", "e-mail", "имейл", "мэил", "мэйл", "меил"]
     },
     {
-      "name": "MailOutline",
-      "size": ["m", "s", "xs"],
-      "group": "Actions",
+      "name": "Mail",
+      "size": ["l", "m"],
+      "group": "Action",
       "tags": [
         "mail",
         "envelope",
@@ -2355,37 +2235,15 @@
       ]
     },
     {
-      "name": "MailOutlineOpen",
-      "size": ["m", "s", "xs"],
-      "group": "Actions",
+      "name": "MailOpen",
+      "size": ["l", "m"],
+      "group": "Action",
       "tags": ["mail", "email", "e-mail", "имейл", "мэил", "мэйл", "меил", "outline"]
     },
     {
-      "name": "MailSent",
-      "size": ["l", "m", "s", "xs"],
-      "group": "Actions",
-      "tags": [
-        "mail",
-        "envelope",
-        "post",
-        "почта",
-        "box",
-        "конверт",
-        "email",
-        "имейл",
-        "мэил",
-        "мейл",
-        "емейл",
-        "sent",
-        "отправлено",
-        "move",
-        "push"
-      ]
-    },
-    {
       "name": "MathMinus",
-      "size": ["m", "s", "xs", "xxs"],
-      "group": "Actions",
+      "size": ["l", "m", "xxs"],
+      "group": "Action",
       "tags": [
         "math",
         "minus",
@@ -2402,40 +2260,20 @@
       ]
     },
     {
-      "name": "MathMinusAlt",
-      "size": ["m", "s", "xs"],
-      "group": "Actions",
-      "tags": [
-        "math",
-        "minus",
-        "минус",
-        "calculator",
-        "уменьшить",
-        "hyphen",
-        "dash",
-        "тире",
-        "дефис",
-        "прочерк",
-        "none",
-        "null",
-        "alt"
-      ]
-    },
-    {
       "name": "MathPlus",
-      "size": ["m", "s", "xs", "xxs"],
-      "group": "Actions",
+      "size": ["l", "m", "xxs"],
+      "group": "Action",
       "tags": ["math", "plus", "плюс", "добавить", "add"]
     },
     {
       "name": "MathPlusAlt",
-      "size": ["m", "s", "xs"],
-      "group": "Actions",
+      "size": ["l", "m"],
+      "group": "Action",
       "tags": ["math", "plus", "плюс", "добавить", "add", "alt"]
     },
     {
       "name": "Medkit",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Misc",
       "tags": [
         "medkit",
@@ -2452,7 +2290,7 @@
     },
     {
       "name": "Megaphone",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Misc",
       "tags": [
         "megaphone",
@@ -2469,7 +2307,7 @@
     },
     {
       "name": "Microphone",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Misc",
       "tags": [
         "microphone",
@@ -2487,13 +2325,13 @@
     },
     {
       "name": "Mobile",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Hardware",
       "tags": ["mobile", "cell", "iphone", "android", "телефон", "мобильный", "device"]
     },
     {
       "name": "MoneyCoins",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Misc",
       "tags": [
         "money",
@@ -2510,7 +2348,7 @@
     },
     {
       "name": "MoveAlt",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Misc",
       "tags": [
         "move",
@@ -2528,7 +2366,7 @@
     },
     {
       "name": "Museum",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Misc",
       "tags": [
         "museum",
@@ -2544,19 +2382,25 @@
     },
     {
       "name": "News",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Status",
       "tags": ["news", "paper", "новости", "газета", "banner", "document"]
     },
     {
-      "name": "NotebookDemo",
-      "size": ["m", "s", "xs"],
-      "group": "Misc",
+      "name": "UserDemo",
+      "size": ["l", "m"],
+      "group": "Status",
+      "tags": ["notebook", "demo", "laptop", "ноутбук", "лэптоп", "play", "демо", "video", "видео"]
+    },
+    {
+      "name": "Laptop",
+      "size": ["l", "m"],
+      "group": "Hardware",
       "tags": ["notebook", "demo", "laptop", "ноутбук", "лэптоп", "play", "демо", "video", "видео"]
     },
     {
       "name": "Notification",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Status",
       "tags": [
         "notification",
@@ -2572,13 +2416,13 @@
     },
     {
       "name": "Opera",
-      "size": ["m", "s", "xs"],
-      "group": "Hardware",
+      "size": ["l", "m"],
+      "group": "Brand",
       "tags": ["opera", "browser", "браузер", "опера", "logo", "лого"]
     },
     {
       "name": "Organic",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Misc",
       "tags": [
         "organic",
@@ -2594,8 +2438,8 @@
     },
     {
       "name": "OrientationLandscape",
-      "size": ["m", "s", "xs"],
-      "group": "Actions",
+      "size": ["l", "m"],
+      "group": "Action",
       "tags": [
         "orientation",
         "landscape",
@@ -2613,8 +2457,8 @@
     },
     {
       "name": "OrientationPortrait",
-      "size": ["m", "s", "xs"],
-      "group": "Actions",
+      "size": ["l", "m"],
+      "group": "Action",
       "tags": [
         "orientation",
         "portrait",
@@ -2632,13 +2476,13 @@
     },
     {
       "name": "Pause",
-      "size": ["m", "s", "xs"],
-      "group": "Actions",
+      "size": ["l", "m"],
+      "group": "Action",
       "tags": ["pause", "stop", "пауза", "стоп"]
     },
     {
       "name": "Picture",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Format",
       "tags": [
         "picture",
@@ -2653,7 +2497,7 @@
     },
     {
       "name": "PictureAdd",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Format",
       "tags": [
         "picture",
@@ -2671,7 +2515,7 @@
     },
     {
       "name": "PictureFrame",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Format",
       "tags": [
         "picture",
@@ -2689,7 +2533,7 @@
     },
     {
       "name": "Pictures",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Format",
       "tags": [
         "pictures",
@@ -2704,7 +2548,7 @@
     },
     {
       "name": "Pin",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Map",
       "tags": [
         "pin",
@@ -2720,7 +2564,7 @@
     },
     {
       "name": "PinList",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Map",
       "tags": [
         "pin",
@@ -2739,7 +2583,7 @@
     },
     {
       "name": "PinMap",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Map",
       "tags": [
         "pin",
@@ -2756,7 +2600,7 @@
     },
     {
       "name": "PinNo",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Map",
       "tags": [
         "pin",
@@ -2776,7 +2620,7 @@
     },
     {
       "name": "Pins",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Map",
       "tags": [
         "pins",
@@ -2793,13 +2637,13 @@
     },
     {
       "name": "Pinterest",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Social",
       "tags": ["pinterest", "пинтерест", "лого", "logo", "social"]
     },
     {
       "name": "PinUsd",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Map",
       "tags": [
         "pin",
@@ -2828,7 +2672,7 @@
     },
     {
       "name": "Popup",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Misc",
       "tags": [
         "popup",
@@ -2844,7 +2688,7 @@
     },
     {
       "name": "PositionBottom",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Format",
       "tags": [
         "position",
@@ -2864,7 +2708,7 @@
     },
     {
       "name": "PositionLeft",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Format",
       "tags": [
         "position",
@@ -2886,7 +2730,7 @@
     },
     {
       "name": "PositionRight",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Format",
       "tags": [
         "position",
@@ -2908,7 +2752,7 @@
     },
     {
       "name": "PositionTop",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Format",
       "tags": [
         "position",
@@ -2928,8 +2772,14 @@
       ]
     },
     {
+      "name": "Prowly",
+      "size": ["l", "m"],
+      "group": "Brand",
+      "tags": ["prowly", "лого", "logo", "праули", "проули"]
+    },
+    {
       "name": "Pulse",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Misc",
       "tags": [
         "pulse",
@@ -2947,20 +2797,14 @@
     },
     {
       "name": "Question",
-      "size": ["l", "m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Status",
       "tags": ["question", "mark", "вопрос", "знак", "?"]
     },
     {
-      "name": "QuestionAlt",
-      "size": ["m", "s", "xs"],
-      "group": "Status",
-      "tags": ["question", "mark", "вопрос", "знак", "?", "alt"]
-    },
-    {
       "name": "Reload",
-      "size": ["m", "s", "xs"],
-      "group": "Actions",
+      "size": ["l", "m"],
+      "group": "Action",
       "tags": [
         "reload",
         "repeat",
@@ -2981,26 +2825,8 @@
       ]
     },
     {
-      "name": "Repeat",
-      "size": ["m", "s", "xs"],
-      "group": "Actions",
-      "tags": [
-        "repeat",
-        "reload",
-        "arrow",
-        "стрелка",
-        "пере",
-        "загрузка",
-        "повторить",
-        "обновить",
-        "left",
-        "влево",
-        "налево"
-      ]
-    },
-    {
       "name": "Report",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Misc",
       "tags": [
         "report",
@@ -3019,7 +2845,7 @@
     },
     {
       "name": "ResizeCol",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Format",
       "tags": [
         "resize",
@@ -3043,7 +2869,7 @@
     },
     {
       "name": "ResizeRow",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Format",
       "tags": [
         "resize",
@@ -3067,37 +2893,49 @@
     },
     {
       "name": "Robot",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Misc",
       "tags": ["robot", "робот", "cyborg", "киборг", "ai", "artificial", "intelligence"]
     },
     {
       "name": "Rss",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Misc",
       "tags": ["rss", "RDF", "site", "summary", "feed", "subscription", "подписка"]
     },
     {
       "name": "Safari",
-      "size": ["m", "s", "xs"],
-      "group": "Hardware",
+      "size": ["l", "m"],
+      "group": "Brand",
       "tags": ["safari", "browser", "logo", "лого", "сафари", "apple", "яблоко", "эпл"]
     },
     {
       "name": "Search",
-      "size": ["m", "s", "xs"],
-      "group": "Actions",
+      "size": ["l", "m"],
+      "group": "Action",
       "tags": ["search", "поиск", "magnifier", "zoom"]
     },
     {
-      "name": "SEMrush",
-      "size": ["m", "s", "xs"],
-      "group": "Misc",
+      "name": "Semrush",
+      "size": ["l", "m"],
+      "group": "Brand",
       "tags": ["semrush", "семраш", "фейсбук", "fireball", "фаерболл"]
     },
     {
+      "name": "SemrushRank",
+      "size": ["l", "m"],
+      "group": "Brand",
+      "tags": ["semrushrank", "семрашранк", "семраш", "ранк", "rank", "logo", "логотип", "лого"]
+    },
+    {
+      "name": "Sellzone",
+      "size": ["l", "m"],
+      "group": "Brand",
+      "tags": ["sellzone", "селзона", "селзон", "logo", "логотип", "лого"]
+    },
+    {
       "name": "Sent",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Misc",
       "tags": [
         "sent",
@@ -3112,8 +2950,14 @@
       ]
     },
     {
+      "name": "SeoQuake",
+      "size": ["l", "m"],
+      "group": "Brand",
+      "tags": ["seoquake", "сеоквейк", "сео", "seo", "logo", "логотип", "лого"]
+    },
+    {
       "name": "Serp",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Misc",
       "tags": [
         "serp",
@@ -3129,28 +2973,13 @@
     },
     {
       "name": "Settings",
-      "size": ["m", "s", "xs"],
-      "group": "Actions",
+      "size": ["l", "m"],
+      "group": "Action",
       "tags": ["settings", "parameters", "cog", "wheel", "настройки", "system", "preferences"]
     },
     {
-      "name": "SettingsAlt",
-      "size": ["m", "s", "xs"],
-      "group": "Actions",
-      "tags": [
-        "settings",
-        "parameters",
-        "cog",
-        "wheel",
-        "настройки",
-        "system",
-        "preferences",
-        "alt"
-      ]
-    },
-    {
-      "name": "SharedToUser",
-      "size": ["m", "s", "xs"],
+      "name": "UserShared",
+      "size": ["l", "m"],
       "group": "Status",
       "tags": [
         "shared",
@@ -3166,8 +2995,8 @@
     },
     {
       "name": "ShowNo",
-      "size": ["m", "s", "xs"],
-      "group": "Actions",
+      "size": ["l", "m"],
+      "group": "Action",
       "tags": [
         "show",
         "no",
@@ -3184,8 +3013,8 @@
     },
     {
       "name": "ShowYes",
-      "size": ["m", "s", "xs"],
-      "group": "Actions",
+      "size": ["l", "m"],
+      "group": "Action",
       "tags": [
         "show",
         "yes",
@@ -3201,7 +3030,7 @@
     },
     {
       "name": "SideMenuLeft",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Navigation",
       "tags": [
         "side",
@@ -3219,7 +3048,7 @@
     },
     {
       "name": "SideMenuRight",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Navigation",
       "tags": [
         "side",
@@ -3237,7 +3066,7 @@
     },
     {
       "name": "Sitemap",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Status",
       "tags": [
         "sitemap",
@@ -3253,13 +3082,13 @@
     },
     {
       "name": "Skype",
-      "size": ["m", "s", "xs"],
-      "group": "Hardware",
+      "size": ["l", "m"],
+      "group": "Brand",
       "tags": ["skype", "logo", "скайп", "лого", "файлообменник"]
     },
     {
       "name": "SmileHappy",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Status",
       "tags": [
         "smile",
@@ -3275,7 +3104,7 @@
     },
     {
       "name": "SmileNeutral",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Status",
       "tags": [
         "smile",
@@ -3291,13 +3120,13 @@
     },
     {
       "name": "SmileSad",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Status",
       "tags": ["smile", "sad", "emoji", "face", "emotion", "эмоция", "лицо", "react", "грустный"]
     },
     {
       "name": "SmileSimple",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Status",
       "tags": [
         "smile",
@@ -3315,7 +3144,7 @@
     },
     {
       "name": "SortAsc",
-      "size": ["m", "s", "xs", "xxs"],
+      "size": ["l", "m", "xxs"],
       "group": "Navigation",
       "tags": [
         "sort",
@@ -3333,7 +3162,7 @@
     },
     {
       "name": "SortDesc",
-      "size": ["m", "s", "xs", "xxs"],
+      "size": ["l", "m", "xxs"],
       "group": "Navigation",
       "tags": [
         "sort",
@@ -3349,106 +3178,29 @@
         "filter"
       ]
     },
-    {
-      "name": "SortDown",
-      "size": ["m", "s", "xs"],
-      "group": "Navigation",
-      "tags": [
-        "sort",
-        "down",
-        "сортировка",
-        "таблица",
-        "table",
-        "data",
-        "filter",
-        "wysiwyg",
-        "arrow",
-        "стрелка",
-        "вниз",
-        "низ"
-      ]
-    },
-    {
-      "name": "SortLeft",
-      "size": ["m", "s", "xs"],
-      "group": "Navigation",
-      "tags": [
-        "sort",
-        "left",
-        "сортировка",
-        "таблица",
-        "table",
-        "data",
-        "filter",
-        "wysiwyg",
-        "arrow",
-        "стрелка",
-        "лево",
-        "влево",
-        "налево"
-      ]
-    },
-    {
-      "name": "SortRight",
-      "size": ["m", "s", "xs"],
-      "group": "Navigation",
-      "tags": [
-        "sort",
-        "right",
-        "сортировка",
-        "таблица",
-        "table",
-        "data",
-        "filter",
-        "wysiwyg",
-        "arrow",
-        "стрелка",
-        "право",
-        "вправо",
-        "направо"
-      ]
-    },
-    {
-      "name": "SortUp",
-      "size": ["m", "s", "xs"],
-      "group": "Navigation",
-      "tags": [
-        "sort",
-        "up",
-        "сортировка",
-        "таблица",
-        "table",
-        "data",
-        "filter",
-        "wysiwyg",
-        "arrow",
-        "стрелка",
-        "верх",
-        "наверх"
-      ]
-    },
+
     {
       "name": "Table",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Format",
       "tags": ["table", "таблица", "column", "row", "header", "data"]
     },
     {
       "name": "Tablet",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Hardware",
       "tags": ["tablet", "device", "mobile", "ipad", "планшет", "таблет", "фаблет", "phablet"]
     },
     {
-      "name": "Tag",
-      "size": ["m", "s", "xs"],
-      "group": "Actions",
+      "name": "TagFilled",
+      "size": ["l", "m"],
+      "group": "Action",
       "tags": ["tag", "shopping", "save", "bookmark", "note", "тэг", "шоппинг", "отметка"]
     },
     {
-      "name": "TagOutline",
-      "size": ["m", "s", "xs"],
-      "group": "Actions",
+      "name": "Tag",
+      "size": ["l", "m"],
+      "group": "Action",
       "tags": [
         "tag",
         "shopping",
@@ -3463,20 +3215,20 @@
     },
     {
       "name": "Telescope",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Misc",
       "tags": ["telescope", "телескоп", "star", "gazing", "zoom"]
     },
     {
       "name": "Text",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Format",
       "tags": ["text", "текст", "wysiwyg", "editor", "letter", "формат", "format"]
     },
     {
       "name": "ThumbDown",
-      "size": ["m", "s", "xs"],
-      "group": "Misc",
+      "size": ["l", "m"],
+      "group": "Action",
       "tags": [
         "thumb",
         "down",
@@ -3492,37 +3244,37 @@
     },
     {
       "name": "ThumbUp",
-      "size": ["m", "s", "xs"],
-      "group": "Misc",
+      "size": ["l", "m"],
+      "group": "Action",
       "tags": ["thumb", "up", "большой", "палец", "like", "нравится", "reaction", "hand"]
     },
     {
       "name": "Tile",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Misc",
       "tags": ["tile", "плитка", "view", "menu", "меню", "sort", "сортировка"]
     },
     {
       "name": "TimeClock",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Status",
       "tags": ["time", "clock", "время", "часы", "wait", "loading", "soon"]
     },
     {
-      "name": "TimeHourglass",
-      "size": ["m", "s", "xs"],
+      "name": "Hourglass",
+      "size": ["l", "m"],
       "group": "Status",
       "tags": ["time", "hourglass", "время", "часы", "песочные", "wait", "loading", "загрузка"]
     },
     {
-      "name": "TimeWristwatch",
-      "size": ["m", "s", "xs"],
+      "name": "Wristwatch",
+      "size": ["l", "m"],
       "group": "Status",
       "tags": ["time", "wristwatch", "время", "часы", "наручные", "котлы", "hand"]
     },
     {
       "name": "TimeNight",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Status",
       "tags": [
         "time",
@@ -3539,7 +3291,7 @@
     },
     {
       "name": "TimeDay",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Status",
       "tags": [
         "time",
@@ -3557,7 +3309,7 @@
     },
     {
       "name": "Toxic",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Misc",
       "tags": [
         "toxic",
@@ -3574,8 +3326,8 @@
     },
     {
       "name": "Trash",
-      "size": ["m", "s", "xs"],
-      "group": "Actions",
+      "size": ["l", "m"],
+      "group": "Action",
       "tags": [
         "trash",
         "bin",
@@ -3594,37 +3346,37 @@
     },
     {
       "name": "Trello",
-      "size": ["m", "s", "xs"],
-      "group": "Social",
+      "size": ["l", "m"],
+      "group": "Brand",
       "tags": ["trello", "logo", "лого", "трелло", "task", "manager"]
     },
     {
       "name": "Twitter",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Social",
       "tags": ["twitter", "logo", "лого", "social", "твиттер"]
     },
     {
       "name": "User",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Status",
       "tags": ["user", "пользователь", "human", "male", "личный", "кабинет"]
     },
     {
       "name": "UserGroup",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Status",
       "tags": ["user", "group", "пользователь", "human", "male", "личный", "кабинет"]
     },
     {
       "name": "UserGroupNo",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Status",
       "tags": ["user", "group", "no", "пользователь", "human", "male", "личный", "кабинет"]
     },
     {
       "name": "Vacation",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Misc",
       "tags": [
         "vacation",
@@ -3643,7 +3395,7 @@
     },
     {
       "name": "Value",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Misc",
       "tags": [
         "value",
@@ -3663,31 +3415,50 @@
     },
     {
       "name": "Video",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Status",
       "tags": ["video", "видео", "play", "воспроизвести", "preview"]
     },
     {
+      "name": "VideoCarousel",
+      "size": ["l", "m"],
+      "group": "Misc",
+      "tags": [
+        "video",
+        "видео",
+        "play",
+        "воспроизвести",
+        "preview",
+        "feature",
+        "featured",
+        "serp",
+        "серп",
+        "carousel",
+        "карусель",
+        "videos"
+      ]
+    },
+    {
       "name": "VideoAlt",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Status",
       "tags": ["video", "alt", "видео", "play", "воспроизвести", "preview"]
     },
     {
       "name": "VideoStop",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Status",
       "tags": ["video", "видео", "stop", "остановить", "preview", "стоп"]
     },
     {
       "name": "Vk",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Social",
       "tags": ["vk", "social", "vkontakte", "вконтакте", "logo", "лого"]
     },
     {
       "name": "VolumeUp",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Misc",
       "tags": [
         "volume",
@@ -3710,7 +3481,7 @@
     },
     {
       "name": "Warning",
-      "size": ["m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Status",
       "tags": [
         "warning",
@@ -3726,8 +3497,8 @@
       ]
     },
     {
-      "name": "Webpages",
-      "size": ["m", "s", "xs"],
+      "name": "WebPages",
+      "size": ["l", "m"],
       "group": "Misc",
       "tags": [
         "webpages",
@@ -3746,31 +3517,31 @@
     },
     {
       "name": "Youtube",
-      "size": ["l", "m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Social",
       "tags": ["youtube", "video", "видео", "social", "logo", "логотип"]
     },
     {
       "name": "YoutubeRed",
-      "size": ["l", "m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Color",
       "tags": ["youtube", "video", "видео", "social", "logo", "логотип"]
     },
     {
       "name": "YoutubeAlt",
-      "size": ["l", "m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Color",
       "tags": ["youtube", "video", "видео", "social", "logo", "логотип"]
     },
     {
       "name": "WhatsApp",
-      "size": ["l", "m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Color",
       "tags": ["whatsapp", "вотсап", "ватсап", "social", "logo", "логотип"]
     },
     {
       "name": "YoutubePlaceholder",
-      "size": ["l", "m", "s", "xs"],
+      "size": ["l", "m"],
       "group": "Social",
       "tags": [
         "youtube",
@@ -3789,8 +3560,8 @@
     },
     {
       "name": "ZoomMinus",
-      "size": ["m", "s", "xs"],
-      "group": "Actions",
+      "size": ["l", "m"],
+      "group": "Action",
       "tags": [
         "zoom",
         "minus",
@@ -3806,8 +3577,8 @@
     },
     {
       "name": "ZoomPlus",
-      "size": ["m", "s", "xs"],
-      "group": "Actions",
+      "size": ["l", "m"],
+      "group": "Action",
       "tags": [
         "zoom",
         "plus",
@@ -3825,7 +3596,7 @@
     },
     {
       "name": "AmericanExpress",
-      "size": ["32"],
+      "size": ["l", "m"],
       "group": "Pay",
       "tags": [
         "american",
@@ -3847,30 +3618,8 @@
       ]
     },
     {
-      "name": "ApplePay",
-      "size": ["32"],
-      "group": "Pay",
-      "tags": [
-        "apple",
-        "pay",
-        "эпл",
-        "logo",
-        "лого",
-        "payment",
-        "currency",
-        "method",
-        "card",
-        "credit",
-        "debit",
-        "платеж",
-        "карта",
-        "метод",
-        "валюта"
-      ]
-    },
-    {
       "name": "CreditCard",
-      "size": ["32"],
+      "size": ["l", "m"],
       "group": "Pay",
       "tags": [
         "credit",
@@ -3890,93 +3639,8 @@
       ]
     },
     {
-      "name": "Bitcoin",
-      "size": ["32"],
-      "group": "Pay",
-      "tags": [
-        "bitcoin",
-        "биткоин",
-        "logo",
-        "лого",
-        "payment",
-        "currency",
-        "method",
-        "card",
-        "credit",
-        "debit",
-        "платеж",
-        "карта",
-        "метод",
-        "валюта"
-      ]
-    },
-    {
-      "name": "Cash",
-      "size": ["32"],
-      "group": "Pay",
-      "tags": [
-        "cash",
-        "наличные",
-        "bill",
-        "банкнота",
-        "payment",
-        "currency",
-        "method",
-        "card",
-        "credit",
-        "debit",
-        "платеж",
-        "карта",
-        "метод",
-        "валюта"
-      ]
-    },
-    {
-      "name": "Cheque",
-      "size": ["32"],
-      "group": "Pay",
-      "tags": [
-        "cheque",
-        "чек",
-        "bill",
-        "payment",
-        "currency",
-        "method",
-        "card",
-        "credit",
-        "debit",
-        "платеж",
-        "карта",
-        "метод",
-        "валюта"
-      ]
-    },
-    {
-      "name": "Diners",
-      "size": ["32"],
-      "group": "Pay",
-      "tags": [
-        "diners",
-        "club",
-        "дайнер",
-        "клаб",
-        "logo",
-        "лого",
-        "payment",
-        "currency",
-        "method",
-        "card",
-        "credit",
-        "debit",
-        "платеж",
-        "карта",
-        "метод",
-        "валюта"
-      ]
-    },
-    {
       "name": "Discover",
-      "size": ["32"],
+      "size": ["l", "m"],
       "group": "Pay",
       "tags": [
         "discover",
@@ -3996,33 +3660,12 @@
       ]
     },
     {
-      "name": "Financing",
-      "size": ["32"],
+      "name": "JCB",
+      "size": ["l", "m"],
       "group": "Pay",
       "tags": [
-        "financing",
-        "coins",
-        "монеты",
-        "payment",
-        "currency",
-        "method",
-        "card",
-        "credit",
-        "debit",
-        "платеж",
-        "карта",
-        "метод",
-        "валюта"
-      ]
-    },
-    {
-      "name": "GooglePay",
-      "size": ["32"],
-      "group": "Pay",
-      "tags": [
-        "google",
-        "pay",
-        "гугл",
+        "visa",
+        "виза",
         "logo",
         "лого",
         "payment",
@@ -4034,31 +3677,14 @@
         "платеж",
         "карта",
         "метод",
-        "валюта"
-      ]
-    },
-    {
-      "name": "Invoice",
-      "size": ["32"],
-      "group": "Pay",
-      "tags": [
-        "invoice",
-        "инвойс",
-        "payment",
-        "currency",
-        "method",
-        "card",
-        "credit",
-        "debit",
-        "платеж",
-        "карта",
-        "метод",
-        "валюта"
+        "валюта",
+        "jcb",
+        "джисиби"
       ]
     },
     {
       "name": "Mastercard",
-      "size": ["32"],
+      "size": ["l", "m"],
       "group": "Pay",
       "tags": [
         "mastercard",
@@ -4080,7 +3706,7 @@
     },
     {
       "name": "PayPal",
-      "size": ["32"],
+      "size": ["l", "m"],
       "group": "Pay",
       "tags": [
         "pay",
@@ -4102,53 +3728,8 @@
       ]
     },
     {
-      "name": "SamsungPay",
-      "size": ["32"],
-      "group": "Pay",
-      "tags": [
-        "samsung",
-        "pay",
-        "самсунг",
-        "logo",
-        "лого",
-        "payment",
-        "currency",
-        "method",
-        "card",
-        "credit",
-        "debit",
-        "платеж",
-        "карта",
-        "метод",
-        "валюта"
-      ]
-    },
-    {
-      "name": "TravelersCheck",
-      "size": ["32"],
-      "group": "Pay",
-      "tags": [
-        "travelers",
-        "check",
-        "чек",
-        "путешествие",
-        "logo",
-        "лого",
-        "payment",
-        "currency",
-        "method",
-        "card",
-        "credit",
-        "debit",
-        "платеж",
-        "карта",
-        "метод",
-        "валюта"
-      ]
-    },
-    {
       "name": "UnionPay",
-      "size": ["32"],
+      "size": ["l", "m"],
       "group": "Pay",
       "tags": [
         "union",
@@ -4170,7 +3751,7 @@
     },
     {
       "name": "Visa",
-      "size": ["32"],
+      "size": ["l", "m"],
       "group": "Pay",
       "tags": [
         "visa",
@@ -4190,15 +3771,11 @@
       ]
     },
     {
-      "name": "VPay",
-      "size": ["32"],
+      "name": "WeChatPay",
+      "size": ["l", "m"],
       "group": "Pay",
       "tags": [
         "visa",
-        "v pay",
-        "pay",
-        "euro",
-        "sepa",
         "виза",
         "logo",
         "лого",
@@ -4211,84 +3788,14 @@
         "платеж",
         "карта",
         "метод",
-        "валюта"
-      ]
-    },
-    {
-      "name": "Maestro",
-      "size": ["32"],
-      "group": "Pay",
-      "tags": [
-        "maestro",
-        "mastercard",
-        "debit",
-        "маестро",
-        "маэстро",
-        "мастеркард",
-        "мастер",
-        "logo",
-        "лого",
-        "payment",
-        "currency",
-        "method",
-        "card",
-        "credit",
-        "debit",
-        "платеж",
-        "карта",
-        "метод",
-        "валюта"
-      ]
-    },
-    {
-      "name": "Bacs",
-      "size": ["32"],
-      "group": "Pay",
-      "tags": [
-        "bacs",
-        "uk",
-        "pay",
-        "payment",
-        "schemes",
-        "limited",
-        "бакс",
-        "logo",
-        "лого",
-        "payment",
-        "currency",
-        "method",
-        "card",
-        "credit",
-        "debit",
-        "платеж",
-        "карта",
-        "метод",
-        "валюта"
-      ]
-    },
-    {
-      "name": "DirectCredit",
-      "size": ["32"],
-      "group": "Pay",
-      "tags": [
-        "bacs",
-        "direct",
-        "credit",
-        "payment",
-        "currency",
-        "method",
-        "card",
-        "credit",
-        "debit",
-        "платеж",
-        "карта",
-        "метод",
-        "валюта"
+        "валюта",
+        "wechat",
+        "вичат"
       ]
     },
     {
       "name": "FeaturedImage",
-      "size": ["l", "m", "s", "xs", "xxs"],
+      "size": ["l", "m"],
       "group": "Misc",
       "tags": [
         "feature",
@@ -4304,7 +3811,7 @@
     },
     {
       "name": "FeaturedVideo",
-      "size": ["l", "m", "s", "xs", "xxs"],
+      "size": ["l", "m"],
       "group": "Misc",
       "tags": ["feature", "featured", "video", "serp", "видео", "серп"]
     }
