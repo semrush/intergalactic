@@ -67,8 +67,8 @@ const Preview = (preview) => {
 
   const beforeIconMap = {
     xl: <CheckL />,
-    l: <CheckS />,
-    m: <CheckXS />,
+    l: <CheckM />,
+    m: <CheckM />,
   };
 
   const before = boolTag({
