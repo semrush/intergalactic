@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Components from './index';
+import dataIcons from './icons-old.json';
 
 const Icons = importAll(require.context('@semcore/icon/lib', true, /^\.\/.*\.js$/));
 const icons = {}; // {name, fn}
@@ -25,4 +26,4 @@ function importAll(r) {
   }, {});
 }
 
-export default () => <Components icons={icons} old />;
+export default () => <Components icons={icons} json={dataIcons} old />;
