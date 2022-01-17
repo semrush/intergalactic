@@ -68,17 +68,17 @@ function SearchIcons(props) {
   );
 }
 
-export default function({ icons, old }) {
+export default function({ icons, old, json }) {
   const [inputValue, updateInputValue] = useState('');
   const [filterIcons, updatefilterIcons] = useState([]);
 
   return (
     <>
-      <SearchIcons filteredIcons={updatefilterIcons} onChangeValue={updateInputValue} />
+      {!old && <SearchIcons filteredIcons={updatefilterIcons} onChangeValue={updateInputValue} />}
 
       {inputValue.length ? (
         filterIcons.length ? (
-          <ListIcons data={filterIcons} icons={icons} old={old} />
+          <ListIcons data={filterIcons} icons={icons} old={old} json={json} />
         ) : (
           <NotFound>
             <img src={observatory} alt="observatory" />
@@ -88,7 +88,7 @@ export default function({ icons, old }) {
           </NotFound>
         )
       ) : (
-        <IconGroups icons={icons} old={old}>
+        <IconGroups icons={icons} old={old} json={json}>
           <IconGroup title="Navigation" />
           <IconGroup title="Action" />
           <IconGroup title="Status" />
@@ -98,7 +98,7 @@ export default function({ icons, old }) {
           <IconGroup title="Format" />
           <IconGroup title="Map" />
           <IconGroup title="Misc" />
-          <IconGroup title="Brand" />
+          {!old && <IconGroup title="Brand" />}
           <IconGroup title="Color" />
           <IconGroup title="Pay" />
           <IconGroup title="External" />

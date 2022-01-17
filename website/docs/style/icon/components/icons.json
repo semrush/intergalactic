@@ -659,25 +659,25 @@
     },
     {
       "name": "ArrowDown",
-      "size": ["l", "m", "xxs"],
+      "size": ["l", "m"],
       "group": "Navigation",
       "tags": ["arrow", "down", "стрелка", "вниз", "низ"]
     },
     {
       "name": "ArrowLeft",
-      "size": ["l", "m", "xxs"],
+      "size": ["l", "m"],
       "group": "Navigation",
       "tags": ["arrow", "left", "стрелка", "лево", "налево", "влево"]
     },
     {
       "name": "ArrowRight",
-      "size": ["l", "m", "xxs"],
+      "size": ["l", "m"],
       "group": "Navigation",
       "tags": ["arrow", "right", "стрелка", "вправо", "направо"]
     },
     {
       "name": "ArrowUp",
-      "size": ["l", "m", "xxs"],
+      "size": ["l", "m"],
       "group": "Navigation",
       "tags": ["arrow", "up", "стрелка", "вверх", "верх"]
     },
@@ -770,6 +770,24 @@
         "настройки",
         "параметры",
         "switch"
+      ]
+    },
+    {
+      "name": "Hotel",
+      "size": ["l", "m"],
+      "group": "Misc",
+      "tags": [
+        "hotel",
+        "hostel",
+        "building",
+        "house",
+        "star",
+        "rating",
+        "booking",
+        "отель",
+        "звезды",
+        "здание",
+        "хостел"
       ]
     },
     {
@@ -1111,7 +1129,7 @@
     },
     {
       "name": "Close",
-      "size": ["l", "m", "xxs"],
+      "size": ["l", "m"],
       "group": "Action",
       "tags": ["close", "cross", "закрыть", "крестик", "stop", "denied", "x"]
     },
@@ -1937,7 +1955,7 @@
     },
     {
       "name": "Info",
-      "size": ["l", "m", "xxs"],
+      "size": ["l", "m"],
       "group": "Status",
       "tags": ["info", "ишка", "информация", "details", "детали", "подробнее", "help", "помощь"]
     },
@@ -2081,7 +2099,7 @@
     },
     {
       "name": "ListBullet",
-      "size": ["l", "m", "xxs"],
+      "size": ["l", "m"],
       "group": "Format",
       "tags": [
         "list",
@@ -2242,7 +2260,7 @@
     },
     {
       "name": "MathMinus",
-      "size": ["l", "m", "xxs"],
+      "size": ["l", "m"],
       "group": "Action",
       "tags": [
         "math",
@@ -2261,7 +2279,7 @@
     },
     {
       "name": "MathPlus",
-      "size": ["l", "m", "xxs"],
+      "size": ["l", "m"],
       "group": "Action",
       "tags": ["math", "plus", "плюс", "добавить", "add"]
     },
@@ -3144,7 +3162,7 @@
     },
     {
       "name": "SortAsc",
-      "size": ["l", "m", "xxs"],
+      "size": ["l", "m"],
       "group": "Navigation",
       "tags": [
         "sort",
@@ -3162,7 +3180,7 @@
     },
     {
       "name": "SortDesc",
-      "size": ["l", "m", "xxs"],
+      "size": ["l", "m"],
       "group": "Navigation",
       "tags": [
         "sort",
