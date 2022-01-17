@@ -5,7 +5,8 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-import './components/happyNewYear';
+// Add Christmas mood ↓
+// import './components/happyNewYear';
 
 ReactDOM.render(<App />, document.getElementById('root'));
 
