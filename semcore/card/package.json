@@ -9,7 +9,7 @@
   "author": "Roman Lysov <r.lysov@semrush.com>",
   "license": "MIT",
   "scripts": {
-    "build": "build",
+    "build": "build --source=js",
     "test": "jest"
   },
   "dependencies": {
@@ -17,7 +17,7 @@
     "@semcore/flex-box": "^4",
     "@semcore/typography": "^3",
     "@semcore/tooltip": "^4",
-    "@semcore/icon": "^2"
+    "@semcore/icon": "^2.16"
   },
   "peerDependencies": {
     "@semcore/core": "^1.11",

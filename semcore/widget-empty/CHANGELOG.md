@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.7.0] - 2022-01-18
+
+### Changed
+
+- Remove don't use dependency `@semcore/icon`.
+
 ## [2.6.2] - 2021-8-26
 
 ### Changed

@@ -1,7 +1,7 @@
 import React from 'react';
 import createComponent, { Component, sstyled, Root } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
-import SSeparator from '@semcore/icon/lib/ChevronRight/xxs';
+import SSeparator from '@semcore/icon/ChevronRight/m';
 import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 
 import style from './style/breadcrumbs.shadow.css';
