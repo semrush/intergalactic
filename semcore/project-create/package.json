@@ -17,7 +17,7 @@
     "@semcore/button": "^3",
     "@semcore/checkbox": "^5",
     "@semcore/flex-box": "^4",
-    "@semcore/icon": "^2",
+    "@semcore/icon": "^2.16",
     "@semcore/input": "^2",
     "@semcore/modal": "^2",
     "@semcore/spin-container": "^4",

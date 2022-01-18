@@ -17,8 +17,7 @@
     "@semcore/utils": "^3.27",
     "@semcore/flex-box": "^4",
     "@semcore/button": "^3",
-    "@semcore/link": "^3",
-    "@semcore/icon": "^2"
+    "@semcore/link": "^3"
   },
   "peerDependencies": {
     "@semcore/core": "^1.11",

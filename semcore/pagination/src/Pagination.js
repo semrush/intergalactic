@@ -5,8 +5,8 @@ import Input from '@semcore/input';
 import Link from '@semcore/link';
 import { Text } from '@semcore/typography';
 import Button from '@semcore/button';
-import Return from '@semcore/icon/lib/ActionReturn/xs';
-import ChevronDoubleLeftXS from '@semcore/icon/lib/ChevronDoubleLeft/xs';
+import Return from '@semcore/icon/Return/m';
+import ChevronDoubleLeft from '@semcore/icon/ChevronDoubleLeft/m';
 import fire from '@semcore/utils/lib/fire';
 import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
 import logger from '@semcore/utils/lib/logger';
@@ -215,7 +215,7 @@ class PaginationRoot extends Component {
     const SPagination = Root;
     const { Children } = this.asProps;
     return sstyled(this.asProps.styles)(
-      <SPagination render={Box} tag='nav' aria-label='pagination'>
+      <SPagination render={Box} tag="nav" aria-label="pagination">
         <Children />
       </SPagination>,
     );
@@ -224,11 +224,11 @@ class PaginationRoot extends Component {
 
 class FirstPage extends Component {
   static defaultProps = () => ({
-    children: <Button.Addon tag={ChevronDoubleLeftXS} />,
+    children: <Button.Addon tag={ChevronDoubleLeft} />,
   });
 
   render() {
-    return <Root render={Button} aria-label='First page' />;
+    return <Root render={Button} aria-label="First page" />;
   }
 }
 
@@ -239,7 +239,7 @@ class NextPage extends Component {
 
   render() {
     const SNextPage = Root;
-    return sstyled(this.asProps.styles)(<SNextPage render={Button} use='primary' theme='info' />);
+    return sstyled(this.asProps.styles)(<SNextPage render={Button} use="primary" theme="info" />);
   }
 }
 
@@ -269,7 +269,7 @@ class TotalPages extends Component {
     return sstyled(styles)(
       <>
         <STotalPagesLabel size={100}>{label || getI18nText('totalPagesLabel')}</STotalPagesLabel>
-        <STotalPages render={Link} tag='button' type='button' size={100} />
+        <STotalPages render={Link} tag="button" type="button" size={100} />
       </>,
     );
   }
@@ -277,7 +277,7 @@ class TotalPages extends Component {
 
 const PageInputValue = (props) => {
   const SPageInputValue = Root;
-  return sstyled(props.styles)(<SPageInputValue render={Input.Value} aria-label='Current page' />);
+  return sstyled(props.styles)(<SPageInputValue render={Input.Value} aria-label="Current page" />);
 };
 
 class PageInput extends Component {

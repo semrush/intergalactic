@@ -17,7 +17,6 @@
     "@semcore/flex-box": "^4",
     "@semcore/tooltip": "^4",
     "@semcore/spin-container": "^4",
-    "@semcore/icon": "^2",
     "@semcore/button": "^3",
     "@semcore/notice": "^3",
     "final-form": "^4.19",

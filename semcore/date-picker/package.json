@@ -18,7 +18,7 @@
     "@semcore/flex-box": "^4",
     "@semcore/button": "^3",
     "@semcore/divider": "^2",
-    "@semcore/icon": "^2",
+    "@semcore/icon": "^2.16",
     "@semcore/dropdown": "^2",
     "@semcore/typography": "^3",
     "dayjs": "^1.8"

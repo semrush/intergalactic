@@ -9,7 +9,7 @@ import Tooltip from '@semcore/tooltip';
 import Button from '@semcore/button';
 import SpinContainer from '@semcore/spin-container';
 import Checkbox, { ICheckboxValueProps } from '@semcore/checkbox';
-import Info from '@semcore/icon/lib/InfoOutline/s';
+import Info from '@semcore/icon/Info/m';
 import assignProps from '@semcore/utils/lib/assignProps';
 import fire from '@semcore/utils/lib/fire';
 import i18nEnhance, { IWithI18nEnhanceProps } from '@semcore/utils/lib/enhances/i18nEnhance';

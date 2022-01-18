@@ -4,8 +4,8 @@ import { Component, Root, sstyled } from '@semcore/core';
 import Dropdown from '@semcore/dropdown';
 import { Box } from '@semcore/flex-box';
 import Button from '@semcore/button';
-import ChevronLeft from '@semcore/icon/lib/ChevronLeft/xs';
-import ChevronRight from '@semcore/icon/lib/ChevronRight/xs';
+import ChevronLeft from '@semcore/icon/ChevronLeft/m';
+import ChevronRight from '@semcore/icon/ChevronRight/m';
 import { callAllEventHandlers } from '@semcore/utils/lib/assignProps';
 import ButtonTrigger from './ButtonTrigger';
 
