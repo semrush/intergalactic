@@ -1,7 +1,7 @@
 {
   "name": "@semcore/tag",
   "description": "SEMRush Tag Component",
-  "version": "3.5.4",
+  "version": "3.6.0",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
