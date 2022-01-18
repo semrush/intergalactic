@@ -1,7 +1,7 @@
 {
   "name": "@semcore/modal",
   "description": "SEMRush Modal Component",
-  "version": "2.3.4",
+  "version": "2.4.0",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
