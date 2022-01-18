@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [1.5.0] - 2022-01-18
+
+### Changed
+
+- Up version icons and use new icon.
+
 ## [1.4.6] - 2021-09-10
 
 ### Changed

@@ -1,11 +1,7 @@
 import React from 'react';
-import createComponent, {
-  Component,
-  Root,
-  sstyled,
-} from '@semcore/core';
+import createComponent, { Component, Root, sstyled } from '@semcore/core';
 import addonTextChildren from '@semcore/utils/lib/addonTextChildren';
-import ChevronDownXS from '@semcore/icon/lib/ChevronDown/xs';
+import ChevronDown from '@semcore/icon/ChevronDown/m';
 import Spin from '@semcore/spin';
 import { Box } from '@semcore/flex-box';
 import resolveColor, { shade } from '@semcore/utils/lib/color';
@@ -32,18 +28,13 @@ class RootLinkTrigger extends Component {
   render() {
     const SLinkTrigger = Root;
     const SLinkAddon = LinkTrigger.Addon;
-    const {
-      Children,
-      loading,
-      styles,
-      color,
-    } = this.asProps;
+    const { Children, loading, styles, color } = this.asProps;
 
     return sstyled(styles)(
       <SLinkTrigger render={Box} use:color={resolveColor(color)}>
         {addonTextChildren(Children, LinkTrigger.Text, LinkTrigger.Addon)}
         <SLinkAddon>
-          {loading ? <Spin size='xs' theme='currentColor' /> : <ChevronDownXS />}
+          {loading ? <Spin size="xs" theme="currentColor" /> : <ChevronDown />}
         </SLinkAddon>
       </SLinkTrigger>,
     );

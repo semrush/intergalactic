@@ -2,8 +2,8 @@ import React from 'react';
 import { Component, sstyled, Root } from '@semcore/core';
 import { Box, Flex } from '@semcore/flex-box';
 import ScrollArea from '@semcore/scroll-area';
-import SortDescXS from '@semcore/icon/lib/SortDesc/xs';
-import SortAscXS from '@semcore/icon/lib/SortAsc/xs';
+import SortDesc from '@semcore/icon/SortDesc/m';
+import SortAsc from '@semcore/icon/SortAsc/m';
 import { callAllEventHandlers } from '@semcore/utils/lib/assignProps';
 import { flattenColumns, getFixedStyle, getScrollOffsetValue } from './utils';
 import logger from '@semcore/utils/lib/logger';
@@ -11,8 +11,8 @@ import logger from '@semcore/utils/lib/logger';
 import scrollStyles from './style/scroll-area.shadow.css';
 
 const SORTING_ICON = {
-  desc: SortDescXS,
-  asc: SortAscXS,
+  desc: SortDesc,
+  asc: SortAsc,
 };
 
 class Head extends Component {

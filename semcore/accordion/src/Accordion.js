@@ -2,7 +2,7 @@ import React from 'react';
 import createComponent, { Component, sstyled, Root } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
 import { Collapse as CollapseAnimate } from '@semcore/animation';
-import ChevronRightXS from '@semcore/icon/lib/ChevronRight/xs';
+import ChevronRight from '@semcore/icon/ChevronRight/m';
 import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 
 import style from './style/accordion.shadow.css';
@@ -120,7 +120,7 @@ class Toggle extends Component {
 function Chevron(props) {
   const { styles } = props;
   const SItemChevron = Root;
-  return sstyled(styles)(<SItemChevron render={ChevronRightXS} />);
+  return sstyled(styles)(<SItemChevron render={ChevronRight} />);
 }
 
 function Collapse(props) {
