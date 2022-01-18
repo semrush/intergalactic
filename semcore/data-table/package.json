@@ -1,7 +1,7 @@
 {
   "name": "@semcore/data-table",
   "description": "SEMRush DataTable Component",
-  "version": "1.4.6",
+  "version": "1.5.0",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
