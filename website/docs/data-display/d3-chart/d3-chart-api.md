@@ -207,3 +207,13 @@ import { ScatterPlot } from '@semcore/d3-chart';
 ```
 
 @interface IScatterPlotProps
+
+@## Bubble
+
+```js
+import { Bubble } from '@semcore/d3-chart';
+
+<Bubble />;
+```
+
+@interface IBubbleProps

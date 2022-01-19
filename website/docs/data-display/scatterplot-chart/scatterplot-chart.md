@@ -46,4 +46,4 @@ Otherwise, it can visually distort the presence of a correlation between the dat
 Scatter plots are used when you want to show the relationship between two variables. Scatter plots are sometimes called correlation plots because they show how two variables are correlated. In the height and weight example, the chart wasn’t just a simple log of the height and weight of a set of children, but it also visualized the relationship between height and weight - namely that weight increases as height increases. Notice that the relationship isn’t perfect, some taller children weight less than some shorter children, but the general trend is pretty strong and we can see that weight is correlated with height.
 
 @page scatterplot-chart-api
-@page scatterplot-d3-code
+@page scatterplot-chart-d3-code

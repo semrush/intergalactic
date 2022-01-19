@@ -1,5 +1,5 @@
 import React from 'react';
-import { Plot, ScatterPlot, XAxis, YAxis, minMax, Tooltip } from '@semcore/d3-chart';
+import { Plot, Bubble, XAxis, YAxis, Tooltip } from '@semcore/d3-chart';
 import { scaleLinear } from 'd3-scale';
 import { Text } from '@semcore/typography';
 
@@ -10,7 +10,7 @@ export default () => {
 
   const xScale = scaleLinear()
     .range([MARGIN, width - MARGIN])
-    .domain(minMax(data, 'x'));
+    .domain([0, 10]);
 
   const yScale = scaleLinear()
     .range([height - MARGIN, MARGIN])
@@ -25,7 +25,7 @@ export default () => {
       <XAxis>
         <XAxis.Ticks />
       </XAxis>
-      <ScatterPlot data={data} x="x" y="y" value="value" />
+      <Bubble data={data} x="x" y="y" value="value" label="label" color="color" />
       <Tooltip>
         {({ dataRow }) => {
           return {
@@ -34,6 +34,7 @@ export default () => {
                 <Tooltip.Title>Data</Tooltip.Title>
                 <Text tag="div">X axis {dataRow.x}</Text>
                 <Text tag="div">Y axis {dataRow.y}</Text>
+                <Text tag="div">Value {dataRow.value}</Text>
               </>
             ),
           };
@@ -43,10 +44,10 @@ export default () => {
   );
 };
 
-const data = Array(20)
-  .fill({})
-  .map((d, i) => ({
-    x: i,
-    y: Math.random().toFixed(1) * 10,
-    value: i,
-  }));
+const data = [
+  { x: 2, y: 3, value: 5040, label: 'label 1', color: '#2BB3FF' },
+  { x: 1, y: 9, value: 40, label: 'label 2', color: '#59DDAA' },
+  { x: 6, y: 2, value: 45634, label: 'label 3', color: '#FF4953' },
+  { x: 4, y: 7, value: 245, label: 'label 4', color: '#AB6CFE' },
+  { x: 9, y: 5, value: 7462, label: 'label 5', color: '#66C030' },
+];

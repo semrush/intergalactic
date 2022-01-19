@@ -1,5 +1,5 @@
 import React from 'react';
-import { Plot, ScatterPlot, XAxis, YAxis, minMax, Tooltip } from '@semcore/d3-chart';
+import { Plot, Bubble, XAxis, YAxis, Tooltip } from '@semcore/d3-chart';
 import { scaleLinear } from 'd3-scale';
 import { Text } from '@semcore/typography';
 
@@ -10,14 +10,14 @@ export default () => {
 
   const xScale = scaleLinear()
     .range([MARGIN, width - MARGIN])
-    .domain(minMax(data, 'x'));
+    .domain([0, 10]);
 
   const yScale = scaleLinear()
     .range([height - MARGIN, MARGIN])
     .domain([0, 10]);
 
   return (
-    <Plot scale={[xScale, yScale]} width={width} height={height}>
+    <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
       <YAxis>
         <YAxis.Ticks />
         <YAxis.Grid />
@@ -25,7 +25,7 @@ export default () => {
       <XAxis>
         <XAxis.Ticks />
       </XAxis>
-      <ScatterPlot data={data} x="x" y="y" value="value" />
+      <Bubble x="x" y="y" value="value" label="label" />
       <Tooltip>
         {({ dataRow }) => {
           return {
@@ -34,6 +34,7 @@ export default () => {
                 <Tooltip.Title>Data</Tooltip.Title>
                 <Text tag="div">X axis {dataRow.x}</Text>
                 <Text tag="div">Y axis {dataRow.y}</Text>
+                <Text tag="div">Value {dataRow.value}</Text>
               </>
             ),
           };
@@ -43,10 +44,11 @@ export default () => {
   );
 };
 
-const data = Array(20)
+const data = Array(10)
   .fill({})
   .map((d, i) => ({
-    x: i,
+    x: Math.random().toFixed(1) * 10,
     y: Math.random().toFixed(1) * 10,
-    value: i,
+    value: Math.random().toFixed(1) * 1000,
+    label: `Label ${i}`,
   }));

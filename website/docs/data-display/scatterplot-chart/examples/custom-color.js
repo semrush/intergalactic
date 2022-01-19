@@ -1,6 +1,7 @@
 import React from 'react';
-import { Plot, ScatterPlot, XAxis, YAxis, minMax } from '@semcore/d3-chart';
+import { Plot, ScatterPlot, XAxis, YAxis, minMax, Tooltip } from '@semcore/d3-chart';
 import { scaleLinear } from 'd3-scale';
+import { Text } from '@semcore/typography';
 
 export default () => {
   const MARGIN = 40;
@@ -24,8 +25,21 @@ export default () => {
       <XAxis>
         <XAxis.Ticks />
       </XAxis>
-      <ScatterPlot data={data} x="x" y="y" color="#59DDAA" valueColor="#00C192" />
-      <ScatterPlot data={data2} x="x" y="y" />
+      <ScatterPlot data={data} x="x" y="y" value="value" />
+      <ScatterPlot data={data2} x="x" y="y" value="value" color="#59DDAA" valueColor="#00C192" />
+      <Tooltip>
+        {({ dataRow }) => {
+          return {
+            children: (
+              <>
+                <Tooltip.Title>Data</Tooltip.Title>
+                <Text tag="div">X axis {dataRow.x}</Text>
+                <Text tag="div">Y axis {dataRow.y}</Text>
+              </>
+            ),
+          };
+        }}
+      </Tooltip>
     </Plot>
   );
 };
@@ -35,6 +49,7 @@ const data = Array(20)
   .map((d, i) => ({
     x: i,
     y: Math.random().toFixed(1) * 10,
+    value: i,
   }));
 
 const data2 = Array(20)
@@ -42,4 +57,5 @@ const data2 = Array(20)
   .map((d, i) => ({
     x: i,
     y: Math.random().toFixed(1) * 10,
+    value: i,
   }));
