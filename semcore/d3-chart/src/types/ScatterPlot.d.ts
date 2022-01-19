@@ -3,9 +3,11 @@ import IContext from './context';
 
 export interface IScatterPlotProps extends IContext {
   /** Field from data for XAxis */
-  x?: string;
+  x: string;
   /** Field from data for YAxis */
-  y?: string;
+  y: string;
+  /** Field from data for circle value */
+  value?: string;
   /** Circle color */
   color?: string;
   /** Circle value color */

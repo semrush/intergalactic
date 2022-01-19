@@ -1,8 +1,10 @@
 @import '@semcore/utils/style/var.css';
 @import '@semcore/d3-chart/src/style/var.css';
 
-SScatterPlot {
+SBubble {
   fill: #2bb3ff;
+  stroke: #fff;
+  stroke-width: 2px;
   transition-property: cx, cy;
   transition-duration: var(--duration);
   transition-timing-function: ease-in-out;
@@ -12,16 +14,24 @@ SScatterPlot {
   }
 }
 
-SScatterPlot[color] {
+SBubble[color] {
   fill: var(--color);
 }
 
-SValue {
+SCenter {
   text-anchor: middle;
-  font-size: 10px;
-  stroke: #008ff8;
+  font-size: 11px;
+  stroke: #2bb3ff;
 }
 
-SValue[color] {
+SCenter[color] {
   stroke: var(--color);
+}
+
+SLabel {
+  fill: #2bb3ff;
+}
+
+SLabel[color] {
+  fill: var(--color);
 }
