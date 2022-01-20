@@ -1,7 +1,7 @@
 {
   "name": "@semcore/notice-bubble",
   "description": "SEMRush NoticeBubble Component",
-  "version": "3.2.1",
+  "version": "3.3.0",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "@semcore/utils": "^3.24",
-    "@semcore/icon": "^2",
+    "@semcore/icon": "^2.16",
     "@semcore/portal": "^2",
     "@semcore/flex-box": "^4",
     "@semcore/animation": "^1"

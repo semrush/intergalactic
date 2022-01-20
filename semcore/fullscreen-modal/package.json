@@ -1,7 +1,7 @@
 {
   "name": "@semcore/fullscreen-modal",
   "description": "SEMRush FullscreenModal Component",
-  "version": "1.4.2",
+  "version": "1.5.0",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "@semcore/utils": "^3.21",
-    "@semcore/icon": "^2",
+    "@semcore/icon": "^2.16",
     "@semcore/modal": "^2",
     "@semcore/typography": "^3",
     "@semcore/flex-box": "^4"

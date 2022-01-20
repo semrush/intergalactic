@@ -1,0 +1,14 @@
+<svg width="32" height="24" viewBox="0 0 32 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M32 21.82c0 1.2-.9 2.18-2 2.18H2c-1.1 0-2-.98-2-2.18V2.18C0 .98.9 0 2 0h28c1.1 0 2 .98 2 2.18v19.64Z" fill="#EBEBEB"/>
+  <path d="M17.5 14a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z" fill="url(#a)"/>
+  <path fill-rule="evenodd" clip-rule="evenodd" d="M1.5 9H0v5h1.5C2.9 14 4 12.9 4 11.5S2.9 9 1.5 9Zm0 1c.8 0 1.5.7 1.5 1.5S2.3 13 1.5 13H1v-3h.5Z" fill="#231F20"/>
+  <path d="M6 9H5v5h1V9ZM9 10.9c-.6-.2-.7-.3-.7-.6s.3-.5.7-.5c.3 0 .5.1.8.4l.5-.6c-.4-.4-.9-.6-1.5-.6-.9 0-1.5.6-1.5 1.4 0 .7.3 1 1.2 1.3.4.1.6.2.7.3.2.1.3.3.3.5 0 .4-.3.7-.8.7s-.8-.2-1.1-.6l-.6.5c.5.6 1 .9 1.7.9 1 0 1.7-.6 1.7-1.6.1-.7-.2-1.1-1.4-1.5ZM13.5 13c.4 0 .7-.2 1-.4v1.2c-.3.1-.6.2-1 .2-1.4 0-2.5-1.1-2.5-2.5S12.1 9 13.5 9c.4 0 .7.1 1 .2v1.2c-.3-.2-.6-.4-1-.4-.8 0-1.5.7-1.5 1.5s.7 1.5 1.5 1.5ZM22.7 9l-1 3.3-1-3.3h-1.1l1.6 5h1.1l1.5-5h-1.1ZM27 9v1h-2v1h2v1h-2v1h2v1h-3V9h3Z" fill="#231F20"/>
+  <path fill-rule="evenodd" clip-rule="evenodd" d="M30.2 11.9c.8-.1 1.3-.7 1.3-1.4 0-.9-.7-1.5-2-1.5H28v5h1v-2h.1l1.5 2H32l-1.8-2.1Zm-1.2-.6h.3c.7 0 1.1-.3 1.1-.8 0-.4-.4-.7-1.1-.7H29v1.5Z" fill="#231F20"/>
+  <path d="M9 24c5.5-1 20-5 23-8.5V22a2 2 0 0 1-2 2H9Z" fill="#FE4F00"/>
+  <defs>
+    <radialGradient id="a" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="matrix(-1.5 -3 3 -1.5 18.5 13)">
+      <stop stop-color="#FF8400"/>
+      <stop offset="1" stop-color="#CC3F00"/>
+    </radialGradient>
+  </defs>
+</svg>

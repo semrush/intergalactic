@@ -3,20 +3,18 @@ import createComponent, { Component, CONTEXT_COMPONENT, sstyled } from '@semcore
 import { Box } from '@semcore/flex-box';
 import Input from '@semcore/input';
 import Divider from '@semcore/divider';
-import SearchXS from '@semcore/icon/lib/Search/xs';
-import CloseXS from '@semcore/icon/lib/Close/xs';
-import SearchS from '@semcore/icon/lib/Search/s';
-import CloseS from '@semcore/icon/lib/Close/s';
-import SearchM from '@semcore/icon/lib/Search/m';
-import CloseM from '@semcore/icon/lib/Close/m';
+import SearchM from '@semcore/icon/Search/m';
+import CloseM from '@semcore/icon/Close/m';
+import SearchL from '@semcore/icon/Search/l';
+import CloseL from '@semcore/icon/Close/l';
 import Select from './Select';
 
 import style from './style/input-search.shadow.css';
 
 const MAP_SIZE_TO_ICON = {
-  m: [SearchXS, CloseXS],
-  l: [SearchS, CloseS],
-  xl: [SearchM, CloseM],
+  m: [SearchM, CloseM],
+  l: [SearchM, CloseM],
+  xl: [SearchL, CloseL],
 };
 
 class InputSearch extends Component {

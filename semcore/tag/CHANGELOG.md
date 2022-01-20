@@ -2,11 +2,45 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.6.0] - 2022-01-18
+
+### Changed
+
+- Up version icons and use new icon.
+
+## [3.5.4] - 2021-12-28
+
+### Fixed
+
+- [ts] Added type `custom` in property `use`.
+
+## [3.5.3] - 2021-12-23
+
+### Changed
+
+- Changed `line-height` from 1.2 to 1.1 for correct display in all browsers.
+
+## [3.5.2] - 2021-12-17
+
+### Fixed
+
+- Fixed hover for non-interactive tag
+
+## [3.5.1] - 2021-12-17
+
+### Added
+
+- Added primary-muted theme
+
 ## [3.5.0] - 2021-12-08
 
 ### Added
 
 - Added property for Tag color
+
+### Changed
+
+- Changed the opacity of the Tag color from 0.15 to 0.5.
 
 ## [3.4.2] - 2021-8-26
 

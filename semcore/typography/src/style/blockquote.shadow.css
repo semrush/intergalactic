@@ -19,7 +19,7 @@ SDoubleQuotation {
 
 SAuthor {
   display: block;
-  margin-top: media(16px);
+  margin-top: 16px;
   font-style: normal;
   color: var(--gray60);
 }

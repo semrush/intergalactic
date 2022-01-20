@@ -1,10 +1,10 @@
 import React from 'react';
 import Tag from '@semcore/tag';
-import EditXS from '@semcore/icon/lib/Edit/xs';
+import EditXS from '@semcore/icon/Edit/m';
 import PlaygroundGeneration from 'components/PlaygroundGeneration';
 
 const THEMES = {
-  primary: ['warning', 'invert'],
+  primary: ['muted', 'warning', 'invert'],
   secondary: ['muted', 'invert'],
   custom: [],
 };
@@ -26,13 +26,19 @@ export default PlaygroundGeneration((createGroupWidgets) => {
     options: Object.values(Object.keys(THEMES)),
   });
 
-  let theme = null;
+  let theme;
+  let color = null;
 
   if (use === 'custom') {
     theme = text({
-      ey: 'theme',
+      key: 'theme',
       defaultValue: '',
       label: 'Theme',
+    });
+    color = text({
+      key: 'color',
+      defaultValue: '',
+      label: 'Color',
     });
   } else {
     theme = select({
@@ -86,6 +92,7 @@ export default PlaygroundGeneration((createGroupWidgets) => {
       active={active}
       theme={theme}
       use={use}
+      color={color}
       size={size}
       disabled={disabled}
     >

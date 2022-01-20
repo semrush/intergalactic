@@ -1,18 +1,17 @@
 import React from 'react';
 import Pills from '@semcore/pills';
 import PlaygroundGeneration from 'components/PlaygroundGeneration';
-import LikeOutlineM from '@semcore/icon/lib/LikeOutline/m';
-import LikeOutlineS from '@semcore/icon/lib/LikeOutline/s';
-import LikeOutlineXS from '@semcore/icon/lib/LikeOutline/xs';
+import LikeM from '@semcore/icon/Like/m';
+import LikeL from '@semcore/icon/Like/l';
 
 // LikeOutlineM.displayName = LikeOutlineS.displayName = LikeOutlineXS.displayName =
 //   'LikeOutline';
 
 const SIZE_ADDON = {
-  s: <LikeOutlineXS />,
-  m: <LikeOutlineXS />,
-  l: <LikeOutlineS />,
-  xl: <LikeOutlineM />,
+  s: <LikeM />,
+  m: <LikeM />,
+  l: <LikeL />,
+  xl: <LikeL />,
 };
 
 export default PlaygroundGeneration(

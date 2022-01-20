@@ -1,7 +1,10 @@
 import React from 'react';
 import { cleanup, fireEvent, render, axe } from 'jest-preset-ui/testing';
 import { shouldSupportClassName, shouldSupportRef } from 'jest-preset-ui/shared';
+import snapshot from 'jest-preset-ui/snapshot';
 import Modal from '../src';
+import propsForElement from '@semcore/utils/lib/propsForElement';
+import Link from '@semcore/link/src';
 
 describe('Modal', () => {
   afterEach(cleanup);

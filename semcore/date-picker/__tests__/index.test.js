@@ -192,3 +192,18 @@ describe('DateRangePicker', () => {
     expect(results).toHaveNoViolations();
   });
 });
+
+describe('DatePicker.Header', () => {
+  test('Should render correctly', async () => {
+    const component = (
+      <DatePicker>
+        <DatePicker.Header w={100}>
+          <DatePicker.Prev />
+          <DatePicker.Title>Header</DatePicker.Title>
+          <DatePicker.Next />
+        </DatePicker.Header>
+      </DatePicker>
+    );
+    expect(await snapshot(component)).toMatchImageSnapshot();
+  });
+});

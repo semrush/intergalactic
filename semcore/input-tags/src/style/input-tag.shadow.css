@@ -38,12 +38,12 @@ SInputTags[size='xl'] {
 STag[size='s'],
 STag[size='m'] {
   margin: 2px;
-  line-height: 1.2;
+  line-height: 1.1;
 }
 
 STag[size='l'] {
   margin: 4px 2px;
-  line-height: 1.2;
+  line-height: 1.1;
 }
 
 STag[editable] {

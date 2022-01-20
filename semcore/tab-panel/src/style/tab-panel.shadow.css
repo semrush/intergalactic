@@ -14,7 +14,7 @@ STabPanelItem {
   min-width: 0;
   height: 32px;
   font-size: var(--fs-200);
-  line-height: 1.2;
+  line-height: 1.1;
   color: var(--gray40);
   border: 1px solid transparent;
   border-radius: 4px 4px 0 0;
@@ -80,7 +80,7 @@ SText {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  line-height: 1.2em;
+  line-height: 1.1;
 }
 
 SAddon {

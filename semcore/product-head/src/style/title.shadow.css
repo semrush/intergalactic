@@ -4,7 +4,7 @@ STitle {
   align-items: center;
   display: flex;
   font-size: var(--fs-600);
-  line-height: 1.2;
+  line-height: 1.1;
   font-weight: 500;
   min-width: 0;
   overflow: hidden;

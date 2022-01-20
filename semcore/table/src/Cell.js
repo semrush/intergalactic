@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
 import { Text } from '@semcore/typography';
 import { createBaseComponent, sstyled } from '@semcore/core';
-import SortAscXS from '@semcore/icon/lib/SortAsc/xs';
-import SortDescXS from '@semcore/icon/lib/SortDesc/xs';
+import SortAsc from '@semcore/icon/SortAsc/m';
+import SortDesc from '@semcore/icon/SortDesc/m';
 import Context from './context';
 
 function RootCell(props, ref) {
@@ -50,8 +50,8 @@ CellRow.displayName = 'CellRow';
 function CellHeadInner(props, ref) {
   const SCellHead = Cell;
   const SCellHeadContent = 'div';
-  const SCellHeadIconAsc = SortAscXS;
-  const SCellHeadIconDesc = SortDescXS;
+  const SCellHeadIconAsc = SortAsc;
+  const SCellHeadIconDesc = SortDesc;
   const { children, ...other } = props;
   const { active, sorting, use, styles } = other;
 

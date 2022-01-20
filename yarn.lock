@@ -2403,10 +2403,10 @@
     string-hash "^1.1.3"
     svg-tag-names "^2.0.1"
 
-"@semcore/theme-redesign@^1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@semcore/theme-redesign/-/theme-redesign-1.0.1.tgz#f7afe13a388044bc4e13d7e483bbbebd2ac77aee"
-  integrity sha512-RvdmKAuw1uLKcKJa7BDwKP1xaTvgtt3erGgOH3RPF/5t5NlKS2Ts3Mg3H+HJTmg/1PRbtLZsbK9MV55rhi/nkQ==
+"@semcore/theme-redesign@^1.1.3":
+  version "1.1.3"
+  resolved "https://registry.yarnpkg.com/@semcore/theme-redesign/-/theme-redesign-1.1.3.tgz#b5bc57cc3f99950d8098376568690f651bf541ab"
+  integrity sha512-LhRrTwJ7BjvDl1AzvZG1UXZ0KoyJ86t0FC8synyvpbgcyV4XLAroUHaptYQmGSRt7Ej1Dg0O8dNlHmjOnW55Ng==
 
 "@sindresorhus/is@^0.14.0":
   version "0.14.0"
@@ -4636,15 +4636,10 @@ caniuse-api@^3.0.0:
     lodash.memoize "^4.1.2"
     lodash.uniq "^4.5.0"
 
-caniuse-lite@^1.0.0, caniuse-lite@^1.0.30000981, caniuse-lite@^1.0.30001109, caniuse-lite@^1.0.30001181:
-  version "1.0.30001200"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001200.tgz#25435af6ba907c2a9c86d21ce84950d4824e6620"
-  integrity sha512-ic/jXfa6tgiPBAISWk16jRI2q8YfjxHnSG7ddSL1ptrIP8Uy11SayFrjXRAk3NumHpDb21fdTkbTxb/hOrFrnQ==
-
-caniuse-lite@^1.0.30001251:
-  version "1.0.30001251"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001251.tgz#6853a606ec50893115db660f82c094d18f096d85"
-  integrity sha512-HOe1r+9VkU4TFmnU70z+r7OLmtR+/chB1rdcJUeQlAinjEeb0cKL20tlAtOagNZhbrtLnCvV19B4FmF1rgzl6A==
+caniuse-lite@^1.0.0, caniuse-lite@^1.0.30000981, caniuse-lite@^1.0.30001109, caniuse-lite@^1.0.30001181, caniuse-lite@^1.0.30001251:
+  version "1.0.30001292"
+  resolved "https://registry.npmjs.org/caniuse-lite/-/caniuse-lite-1.0.30001292.tgz"
+  integrity sha512-jnT4Tq0Q4ma+6nncYQVe7d73kmDmE9C3OGTx3MvW7lBM/eY1S1DZTMBON7dqV481RhNiS5OxD7k9JQvmDOTirw==
 
 capture-exit@^2.0.0:
   version "2.0.0"
@@ -8326,9 +8321,9 @@ focus-lock@0.9.1, focus-lock@^0.9.1:
     tslib "^2.0.3"
 
 follow-redirects@^1.0.0, follow-redirects@^1.14.0:
-  version "1.14.5"
-  resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.14.5.tgz#f09a5848981d3c772b5392309778523f8d85c381"
-  integrity sha512-wtphSXy7d4/OR+MvIFbCVBDzZ5520qV8XfPklSN5QtxuMUJZ+b0Wnst1e1lCDocfzuCkHqj8k0FpZqO+UIaKNA==
+  version "1.14.7"
+  resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.14.7.tgz#2004c02eb9436eee9a21446a6477debf17e81685"
+  integrity sha512-+hbxoLbFMbRKDwohX8GkTataGqO6Jb7jGwpAlwgy2bIz25XtRm7KEzJM76R1WiNT5SwZkX4Y75SwBolkpmE7iQ==
 
 for-each@^0.3.3, for-each@~0.3.3:
   version "0.3.3"

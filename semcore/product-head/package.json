@@ -1,7 +1,7 @@
 {
   "name": "@semcore/product-head",
   "description": "SEMRush ProductHead Component",
-  "version": "2.2.2",
+  "version": "2.2.3",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",

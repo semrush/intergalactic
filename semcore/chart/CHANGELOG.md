@@ -2,6 +2,18 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.3.4] - 2022-01-10
+
+### Fixed
+
+- Revert color `gray` in object `colors`.
+
+## [4.3.2] - 2021-12-23
+
+### Changed
+
+- Changed `line-height Axis` from 1.2 to 1.1 for correct display in all browsers.
+
 ## [4.3.1] - 2021-12-08
 
 ### Changed

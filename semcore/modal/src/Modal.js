@@ -5,7 +5,7 @@ import createComponent, { Component, sstyled, Root } from '@semcore/core';
 import Portal, { PortalProvider } from '@semcore/portal';
 import { Box } from '@semcore/flex-box';
 import OutsideClick from '@semcore/outside-click';
-import CloseS from '@semcore/icon/lib/Close/s';
+import CloseIcon from '@semcore/icon/Close/l';
 import fire from '@semcore/utils/lib/fire';
 import usePreventScroll from '@semcore/utils/lib/use/usePreventScroll';
 import findComponent from '@semcore/utils/lib/findComponent';
@@ -135,7 +135,7 @@ function Close(props) {
 }
 
 Close.defaultProps = {
-  children: <CloseS title="Close" />,
+  children: <CloseIcon title="Close" />,
 };
 
 Close.enhance = [keyboardFocusEnhance()];

@@ -8,7 +8,6 @@ import SpinContainer from '@semcore/spin-container';
 import Tooltip from '@semcore/tooltip';
 import { NoticeSmart } from '@semcore/notice';
 import { Box } from '@semcore/flex-box';
-import MailSentL from '@semcore/icon/lib/MailSent/l';
 
 import style from './style/feedback-form.shadow.css';
 
@@ -107,7 +106,7 @@ function Item(props) {
 function Success(props) {
   const { Children, styles } = props;
   const SSuccess = Root;
-  const SEmail = MailSentL;
+  const SEmail = 'div';
 
   return sstyled(styles)(
     <SSuccess render={Box}>

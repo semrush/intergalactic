@@ -25,7 +25,7 @@ This component is always located near the top border of the report or tool.
 
 Upon that, if there is the global search line, the notice for feedback collection is located under it.
 
-![feddback notice location](static/location.png)
+![feddback notice location](static/send-feedback-notice.png)
 
 @## Appearance
 

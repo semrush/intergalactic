@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import TrashS from '@semcore/icon/lib/Trash/s';
+import TrashS from '@semcore/icon/Trash/m';
 import Button from '@semcore/button';
 import Dot from '@semcore/dot';
 
