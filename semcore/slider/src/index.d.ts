@@ -26,7 +26,7 @@ export interface ISliderProps extends IBoxProps {
   /**
    * Handler for changing the value
    */
-  onChange?: (value: string, event: React.SyntheticEvent) => void;
+  onChange?: (value: number, event: React.SyntheticEvent) => void;
   /**
    * Disable element
    */
