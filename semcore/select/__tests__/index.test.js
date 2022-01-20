@@ -4,6 +4,7 @@ import { cleanup, fireEvent, render, axe } from 'jest-preset-ui/testing';
 import { shouldSupportClassName, shouldSupportRef } from 'jest-preset-ui/shared';
 import snapshot from 'jest-preset-ui/snapshot';
 import Select from '../src';
+import InputSearch from '../src/InputSearch';
 
 describe('Select Trigger', () => {
   afterEach(cleanup);
@@ -153,9 +154,34 @@ describe('Select Trigger', () => {
   });
 });
 
-describe('Select.Option.Checkbox', () => {
+describe('InputSearch', () => {
   afterEach(cleanup);
 
   shouldSupportClassName(Select.Option.Checkbox, Select);
   shouldSupportRef(Select.Option.Checkbox, Select);
+});
+
+describe('Select.Option.Checkbox', () => {
+  afterEach(cleanup);
+
+  shouldSupportClassName(InputSearch, Select);
+  shouldSupportRef(InputSearch, Select);
+
+  test('should renders correctly', async () => {
+    const component = (
+      <>
+        <Select>
+          <InputSearch />
+        </Select>
+        <Select>
+          <InputSearch defaultValue="test" />
+        </Select>
+        <Select size="l">
+          <InputSearch />
+        </Select>
+      </>
+    );
+
+    expect(await snapshot(component)).toMatchImageSnapshot();
+  });
 });

@@ -1,7 +1,7 @@
 import React, { useLayoutEffect, useState } from 'react';
 import styled from 'styled-components';
 import { Link, animateScroll } from 'react-scroll';
-import ArrowUpM from '@semcore/icon/lib/ArrowUp/m';
+import ArrowUpM from '@semcore/icon/ArrowUp/m';
 import trottle from '@semcore/utils/lib/rafTrottle';
 
 const SideBarWrapper = styled.div`

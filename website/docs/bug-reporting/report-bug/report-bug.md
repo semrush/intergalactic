@@ -2,7 +2,7 @@
 title: Bug reporting
 ---
 
-Have you found a bug in the one of our components and don't know where or to whom to write? 🤷🏻‍♀️ We have some ways to report bugs
+Have you found a bug in the one of our components and don't know where or to whom to write? 🤷🏻‍♀️ We have some ways to report bugs.
 
 @## Report with Github issues
 

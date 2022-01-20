@@ -7,8 +7,7 @@ const colors = preval`
 let componentRenderIndex = 0;
 const cache = {};
 const colorValues = Object.keys(colors)
-  // @ts-ignore
-  .filter((name) => !name.includes(['gray-01', 'gray-02', 'white-01']))
+  .filter((name) => !name.includes('gray') && !name.includes('white'))
   .sort((a, b) => {
     return parseInt(a.match(/[0-9]/g).join(''), 10) - parseInt(b.match(/[0-9]/g).join(''), 10);
   });

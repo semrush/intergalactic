@@ -347,6 +347,11 @@ describe('Utils color', () => {
   test('should support opacity for rgb color', () => {
     expect(opacity('rgb(0,128,0)', 0.2)).toBe('rgba(0, 128, 0, 0.2)');
   });
+
+  test('should support opacity regardless of case', () => {
+    expect(opacity('#9EF2C9', 0.5)).toBe('rgba(158, 242, 201, 0.5)');
+    expect(opacity('#9ef2c9', 0.5)).toBe('rgba(158, 242, 201, 0.5)');
+  });
 });
 
 describe('Utils interpolate', () => {

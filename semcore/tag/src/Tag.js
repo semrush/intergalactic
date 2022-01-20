@@ -3,14 +3,13 @@ import createComponent, { Component, sstyled, Root } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
 import resolveColor, { opacity } from '@semcore/utils/lib/color';
 import addonTextChildren from '@semcore/utils/lib/addonTextChildren';
-import CloseXS from '@semcore/icon/lib/Close/xs';
-import CloseXXS from '@semcore/icon/lib/Close/xxs';
+import CloseM from '@semcore/icon/Close/m';
 
 import style from './style/tag.shadow.css';
 
 function isCustomTheme(use, theme) {
   const type = {
-    primary: ['invert', 'warning'],
+    primary: ['muted', 'invert', 'warning'],
     secondary: ['muted', 'invert'],
   };
   return type[use] ? !type[use].includes(theme) : true;
@@ -51,10 +50,6 @@ class RootTag extends Component {
     if (disabled) {
       interactive = false;
     }
-    /* hack */
-    if (use === 'primary' && theme === 'muted') {
-      theme = 'asphalt';
-    }
 
     const useTheme = getThemeName(use, theme);
     const colorTag = theme ? opacity(resolveColor(theme), 0.5) : '';
@@ -86,13 +81,7 @@ function Close(props) {
   const SClose = Root;
   const { styles, use, theme, size } = props;
 
-  return sstyled(styles)(
-    <SClose
-      render={Box}
-      use:theme={getThemeName(use, theme)}
-      tag={size === 'xl' ? CloseXS : CloseXXS}
-    />,
-  );
+  return sstyled(styles)(<SClose render={Box} use:theme={getThemeName(use, theme)} tag={CloseM} />);
 }
 
 function Addon(props) {

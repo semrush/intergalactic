@@ -22,16 +22,9 @@ class NoticeBubbleManager {
     return {
       type: 'info',
       ...props,
-      // onClose: function(e) {
-      //   return callAllEventHandlers(props.onClose, () => {
-      //     if (this.props.visible === undefined) {
-      //       manager.remove(this.props.uid);
-      //     }
-      //   })(e);
-      // },
       onClose: callAllEventHandlers(props.onClose, () => {
         if (props.visible === undefined) {
-          console.log(manager.remove(props.uid));
+          manager.remove(props.uid);
         }
       }),
     };
@@ -42,8 +35,8 @@ class NoticeBubbleManager {
   }
 
   add(props) {
-    const uid = this.counter++
-    const item = this.createItem({uid, ...props});
+    const uid = this.counter++;
+    const item = this.createItem({ uid, ...props });
     this.items.push(item);
     this.emit();
     return {

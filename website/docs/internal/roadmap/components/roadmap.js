@@ -85,8 +85,9 @@ const year2021 = [
   ...generateSprint(dayjs('2021-01-18'), dayjs('2021-04-25')),
   ...generateSprint(dayjs('2021-05-17'), dayjs('2021-12-30')),
 ];
+const year2022 = generateSprint(dayjs('2022-01-10'), dayjs('2022-12-30'));
 
-const dateSprint = [...year2020, ...year2021];
+const dateSprint = [...year2020, ...year2021, ...year2022];
 const components = {
   'Q1 2020': [
     { text: 'z-index', size: { kit: '1/13' } },
@@ -182,6 +183,17 @@ const components = {
     { text: 'Mind Map chart', size: { ui: '9/13' } },
     { text: 'Technical sprint', size: { kit: '11/13' } },
   ],
+  'Q1 2022': [
+    { text: 'Scatterplot chart', size: { ui: '1/3', kit: '1/5' } },
+    { text: 'New icons', size: { kit: '1/5' } },
+    { text: 'InlineInput', size: { ui: '1/7', kit: '5/9' } },
+    { text: 'Card', size: { ui: '3/9' } },
+    { text: 'Bubble chart', size: { kit: '3/9' } },
+    { text: 'Spacer', size: { ui: '9/13' } },
+    { text: 'Wizard', size: { ui: '5/13', kit: '9/13' } },
+    { text: 'MindMap chart', size: { ui: '9/13', kit: '9/13' } },
+    { text: 'Guides renewal', size: { ui: '1/13' } },
+  ],
 };
 
 function Gant(props) {
@@ -233,7 +245,7 @@ function Gant(props) {
 }
 
 function Roadmap() {
-  const [value, setValue] = useState(7);
+  const [value, setValue] = useState(8);
   let TabContent = null;
 
   switch (value) {
@@ -260,6 +272,9 @@ function Roadmap() {
       break;
     case 7:
       TabContent = <Gant sprint={dateSprint.slice(46, 53)} components={components['Q4 2021']} />;
+      break;
+    case 8:
+      TabContent = <Gant sprint={dateSprint.slice(53, 60)} components={components['Q1 2022']} />;
       break;
   }
   return (

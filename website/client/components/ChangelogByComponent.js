@@ -37,14 +37,14 @@ class ChangelogByComponent extends React.Component {
         switch (section.props.children) {
           case 'Added':
             label = (
-              <TagStyled size="l" theme="#00BC98">
+              <TagStyled size="l" theme="#9ef2c9" color="#007c65">
                 {section}
               </TagStyled>
             );
             break;
           case 'Fixed':
             label = (
-              <TagStyled size="l" theme="#0070CC">
+              <TagStyled size="l" theme="#c4e5fe" color="#006dca">
                 {section}
               </TagStyled>
             );
@@ -53,7 +53,7 @@ class ChangelogByComponent extends React.Component {
           case 'Removed':
           case 'Deprecated':
             label = (
-              <TagStyled size="l" theme="#FF622D">
+              <TagStyled size="l" theme="#ffdca2" color="#c33909">
                 {section}
               </TagStyled>
             );
@@ -61,7 +61,7 @@ class ChangelogByComponent extends React.Component {
           case 'BREAK':
           case 'Security':
             label = (
-              <TagStyled size="l" theme="#F71939">
+              <TagStyled size="l" theme="#ffd7df" color="#d1002f">
                 {section}
               </TagStyled>
             );

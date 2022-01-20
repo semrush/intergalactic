@@ -1,7 +1,7 @@
 {
   "name": "@semcore/widget-empty",
   "description": "SEMRush WidgetEmpty Component",
-  "version": "2.6.2",
+  "version": "2.6.3",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -17,8 +17,7 @@
     "@semcore/utils": "^3.27",
     "@semcore/flex-box": "^4",
     "@semcore/button": "^3",
-    "@semcore/link": "^3",
-    "@semcore/icon": "^2"
+    "@semcore/link": "^3"
   },
   "peerDependencies": {
     "@semcore/core": "^1.11",

@@ -1,11 +1,11 @@
-import React  from 'react';
+import React from 'react';
 import createComponent, { Component, Root, sstyled } from '@semcore/core';
 import BaseTrigger from './BaseTrigger';
 import { Box } from '@semcore/flex-box';
 import NeighborLocation from '@semcore/neighbor-location';
 import Dot from '@semcore/dot';
-import CloseXS from '@semcore/icon/lib/Close/xs';
-import ChevronDownXS from '@semcore/icon/lib/ChevronDown/xs';
+import Close from '@semcore/icon/Close/m';
+import ChevronDown from '@semcore/icon/ChevronDown/m';
 import { callAllEventHandlers } from '@semcore/utils/lib/assignProps';
 import addonTextChildren from '@semcore/utils/lib/addonTextChildren';
 
@@ -26,7 +26,7 @@ class RootFilterTrigger extends Component {
       <SWrapper render={Box}>
         <NeighborLocation>
           <SFilterTrigger
-            w='100%'
+            w="100%"
             size={size}
             placeholder={placeholder}
             empty={empty}
@@ -38,11 +38,11 @@ class RootFilterTrigger extends Component {
               FilterTrigger.Addon,
               FilterTrigger.Counter,
             ])}
-            {empty && <FilterTrigger.Addon tag={ChevronDownXS} />}
+            {empty && <FilterTrigger.Addon tag={ChevronDown} />}
           </SFilterTrigger>
           {!empty && (
             <SFilterTrigger
-              tag='button'
+              tag="button"
               size={size}
               empty={empty}
               selected
@@ -50,7 +50,7 @@ class RootFilterTrigger extends Component {
               onKeyDown={this.handleStopPropagation}
               disabled={disabled}
             >
-              <FilterTrigger.Addon tag={CloseXS} />
+              <FilterTrigger.Addon tag={Close} />
             </SFilterTrigger>
           )}
         </NeighborLocation>

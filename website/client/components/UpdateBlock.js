@@ -7,7 +7,7 @@ import NavLink from './NavLink';
 import Tooltip from '@semcore/tooltip';
 import { css } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
-import CheckL from '@semcore/icon/lib/Check/l';
+import CheckL from '@semcore/icon/Check/l';
 import axios from 'axios';
 
 const UpdateWrapper = styled.div`

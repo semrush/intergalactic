@@ -7,8 +7,8 @@ import Dropdown from '@semcore/dropdown';
 import Textarea from '@semcore/textarea';
 import Notice from '@semcore/notice';
 import Button from '@semcore/button';
-import ThumbUpXS from '@semcore/icon/lib/ThumbUp/xs';
-import ThumbDownXS from '@semcore/icon/lib/ThumbDown/xs';
+import ThumbUpXS from '@semcore/icon/ThumbUp/m';
+import ThumbDownXS from '@semcore/icon/ThumbDown/m';
 import { Text } from '@semcore/typography';
 import feedback from '../static/feedback.svg';
 
@@ -93,7 +93,7 @@ class Feedback extends React.PureComponent {
           You can also send us an email to <Link>backlink.audit@semrush.com</Link>
         </FeedbackForm.Notice>
         <FeedbackForm.Notice hidden={status !== 'failed'} theme="danger">
-          Your message hasn’t been sent.
+          Your message has not been sent.
         </FeedbackForm.Notice>
       </FeedbackForm>
     );

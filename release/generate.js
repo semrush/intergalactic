@@ -147,11 +147,11 @@ async function generateChangelogs(startDate, endDate = new Date()) {
     .sort()
     .reduce((tmp, name) => {
       const changes = changeLogsByComponent[name];
-      tmp += `### ${name}\n`;
+      tmp += `### ${name}\n\n`;
       changes
         .sort((a, b) => CHANGELOG_ORDER.indexOf(a.type) - CHANGELOG_ORDER.indexOf(b.type))
         .forEach((change) => {
-          tmp += `  - **${typeByChangeLog[change.type] || change.type}** ${change.data}\n`;
+          tmp += `- **${typeByChangeLog[change.type] || change.type}** ${change.data}\n`;
         });
       tmp += '\n';
       return tmp;

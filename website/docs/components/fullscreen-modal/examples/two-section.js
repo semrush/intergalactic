@@ -4,8 +4,8 @@ import { Flex } from '@semcore/flex-box';
 import { Text } from '@semcore/typography';
 import Button from '@semcore/button';
 import Divider from '@semcore/divider';
-import ArrowLeftS from '@semcore/icon/lib/ArrowLeft/s';
-import ArrowRightS from '@semcore/icon/lib/ArrowRight/s';
+import ArrowLeftS from '@semcore/icon/ArrowLeft/m';
+import ArrowRightS from '@semcore/icon/ArrowRight/m';
 
 const Demo = () => {
   const [hidden, updateHidden] = useState(true);

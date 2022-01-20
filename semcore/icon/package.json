@@ -1,7 +1,7 @@
 {
   "name": "@semcore/icon",
   "description": "SEMRush Icon Component",
-  "version": "2.14.0",
+  "version": "2.17.0",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -11,7 +11,7 @@
   "scripts": {
     "parsing": "icon-transform-svg parsing",
     "transform": "icon-transform-svg",
-    "build": "build --source=js && npm run transform",
+    "build": "build --source=js && npm run transform -- --sourceFolder=svg-new && npm run transform -- --outputFolder=lib",
     "test": "jest"
   },
   "dependencies": {

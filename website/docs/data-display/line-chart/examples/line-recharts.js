@@ -20,7 +20,7 @@ import TabLine from '@semcore/tab-line';
 import Card from '@semcore/card';
 import Dropdown from '@semcore/dropdown';
 import Switch from '@semcore/switch';
-import SettingsS from '@semcore/icon/lib/Settings/s';
+import SettingsS from '@semcore/icon/Settings/m';
 
 let date = Date.now();
 const data = Array(200)
@@ -118,7 +118,7 @@ const Demo = () => {
       <ResponsiveContainer aspect={2}>
         <LineChart data={dataByPeriod}>
           <CartesianGrid />
-          <Legend verticalAlign="top">
+          <Legend verticalAlign="top" style={{ alignItems: 'baseline' }}>
             <Legend.Controls
               onMouseEnter={handleMouseEnter}
               onMouseLeave={handleMouseLeave}

@@ -2,8 +2,8 @@ import React, { useEffect } from 'react';
 import createComponent, { Component, sstyled, Root } from '@semcore/core';
 
 import { Box } from '@semcore/flex-box';
-import ChevronRightL from '@semcore/icon/lib/ChevronRight/l';
-import ChevronLeftL from '@semcore/icon/lib/ChevronLeft/l';
+import ChevronRight from '@semcore/icon/ChevronRight/l';
+import ChevronLeft from '@semcore/icon/ChevronLeft/l';
 
 import style from './style/carousel.shadow.css';
 
@@ -383,7 +383,7 @@ const Prev = (props) => {
 };
 
 Prev.defaultProps = () => ({
-  children: <ChevronLeftL interactive color="stone" aria-hidden={true} role="button" />,
+  children: <ChevronLeft interactive color="stone" aria-hidden={true} role="button" />,
   top: 0,
 });
 
@@ -394,7 +394,7 @@ const Next = (props) => {
 };
 
 Next.defaultProps = () => ({
-  children: <ChevronRightL interactive color="stone" aria-hidden={true} role="button" />,
+  children: <ChevronRight interactive color="stone" aria-hidden={true} role="button" />,
   top: 0,
 });
 

@@ -12,7 +12,7 @@ import Card from '@semcore/card';
 import { Flex } from '@semcore/flex-box';
 import { Text } from '@semcore/typography';
 import Tooltip from '@semcore/tooltip';
-import InfoXS from '@semcore/icon/lib/Info/xs';
+import InfoXS from '@semcore/icon/Info/m';
 
 let date = Date.now();
 

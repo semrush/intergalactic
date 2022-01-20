@@ -15,7 +15,7 @@ import whale from '../static/illustration/whale.svg';
 import layout from '../static/illustration/layout.svg';
 import principles from '../static/illustration/principles.svg';
 import style from '../static/illustration/style.svg';
-import ArrowXS from '@semcore/icon/lib/ArrowRight/xs';
+import ArrowXS from '@semcore/icon/ArrowRight/m';
 import { Link as LinkScroll } from 'react-scroll';
 import { Box } from '@semcore/flex-box';
 import updatesButton from '../static/illustration/search-for-updates.svg';
@@ -71,16 +71,20 @@ const PromoWrapper = styled.div`
 
 const Overlay = styled.div`
   max-width: 1140px;
-  padding: 80px 40px 120px;
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-bottom: 120px;
   position: relative;
   margin: 0 auto;
   @media (max-width: 767px) {
     max-width: 767px;
-    padding: 80px 32px 120px;
+    padding-left: 32px;
+    padding-right: 32px;
   }
   @media (max-width: 415px) {
     max-width: 415px;
-    padding: 80px 20px;
+    padding-left: 20px;
+    padding-right: 20px;
   }
 `;
 
@@ -242,7 +246,7 @@ const StylesImg = styled.img`
 const WhaleImg = styled.img`
   position: absolute;
   right: 88px;
-  top: 100px;
+  top: 20px;
   @media (max-width: 1140px) {
     display: none;
   }
@@ -350,13 +354,14 @@ const UpdatesButton = styled(LinkScroll)`
 
 const HomePage = styled.div`
   display: flex;
+  padding-top: 120px;
 `;
 
 const SideBar = styled.div`
   position: sticky;
-  top: 80px;
+  top: 120px;
 
-  height: calc(100vh - 80px);
+  height: calc(100vh - 120px);
   background: #f5f5f5;
   max-width: 260px;
   @media (max-width: 767px) {

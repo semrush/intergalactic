@@ -12,8 +12,8 @@ import Docs from '../components/Docs';
 import DocsHeader from '../components/DocsHeader';
 import SideBarHeading from '../components/SideBarHeading';
 import Error from '../components/Error';
-import ArrowRightXS from '@semcore/icon/lib/ArrowRight/xs';
-import ArrowLeftXS from '@semcore/icon/lib/ArrowLeft/xs';
+import ArrowRightXS from '@semcore/icon/ArrowRight/m';
+import ArrowLeftXS from '@semcore/icon/ArrowLeft/m';
 import Select from '@semcore/select';
 
 const DocumentationWrapper = styled.div`
@@ -48,8 +48,8 @@ const NextGuide = styled.div`
 
 const SideBar = styled.div`
   position: sticky;
-  top: 80px;
-  height: calc(100vh - 80px);
+  top: 120px;
+  height: calc(100vh - 120px);
   background: #f5f5f5;
   max-width: 260px;
   @media (max-width: 767px) {
@@ -66,7 +66,7 @@ const MobileSelect = styled(Select)`
     width: 100%;
     margin-bottom: 32px;
     border-radius: 0 !important;
-    top: 80px;
+    top: 120px;
     background-color: #fff !important;
     border: 1px solid #d1d4db;
     border-style: solid none solid none;
@@ -85,6 +85,10 @@ const MobileSelect = styled(Select)`
       border-style: solid none solid none;
     }
   }
+`;
+
+const HomePage = styled(Row)`
+  padding-top: 120px;
 `;
 
 function getNavigationPage(navigation, page) {
@@ -240,54 +244,52 @@ function Page() {
           id="select"
         />
       )}
-      <div>
-        <Row pt={20}>
-          <Col sm={12} md={4} span={3}>
-            <SideBar>
-              <SideBarNavigation navigation={data.navigation.filter((nav) => !nav.metadata.hide)} />
-            </SideBar>
-          </Col>
-          <Col sm={12} md={8} span={7} id="main-content">
-            <DocumentationWrapper>
-              <DocsHeader
-                title={navigationPage.title}
-                category={data.category.title}
-                fileSource={navigationPage.metadata.fileSource}
-                sourcePath={data.page.sourcePath}
-                beta={navigationPage.metadata.beta}
-              />
-              <Docs page={data.page} tabs={tabs} />
-            </DocumentationWrapper>
-            <NextGuide>
-              {getPrevPage(navigationPage.title, allPages) && (
-                <div>
-                  <ArrowLeftXS mr={2} />
-                  <a
-                    href={'/' + getPrevPage(navigationPage.title, allPages).route}
-                    rel="noopener noreferrer"
-                  >
-                    {getPrevPage(navigationPage.title, allPages).title}
-                  </a>
-                </div>
-              )}
-              {getNextPage(navigationPage.title, allPages) && (
-                <div>
-                  <a
-                    href={'/' + getNextPage(navigationPage.title, allPages).route}
-                    rel="noopener noreferrer"
-                  >
-                    {getNextPage(navigationPage.title, allPages).title}
-                  </a>
-                  <ArrowRightXS ml={2} />
-                </div>
-              )}
-            </NextGuide>
-          </Col>
-          <Col md={0} span={2}>
-            <SideBarHeading headings={data.headings} />
-          </Col>
-        </Row>
-      </div>
+      <HomePage>
+        <Col sm={12} md={4} span={3}>
+          <SideBar>
+            <SideBarNavigation navigation={data.navigation.filter((nav) => !nav.metadata.hide)} />
+          </SideBar>
+        </Col>
+        <Col sm={12} md={8} span={7} id="main-content">
+          <DocumentationWrapper>
+            <DocsHeader
+              title={navigationPage.title}
+              category={data.category.title}
+              fileSource={navigationPage.metadata.fileSource}
+              sourcePath={data.page.sourcePath}
+              beta={navigationPage.metadata.beta}
+            />
+            <Docs page={data.page} tabs={tabs} />
+          </DocumentationWrapper>
+          <NextGuide>
+            {getPrevPage(navigationPage.title, allPages) && (
+              <div>
+                <ArrowLeftXS mr={2} />
+                <a
+                  href={'/' + getPrevPage(navigationPage.title, allPages).route}
+                  rel="noopener noreferrer"
+                >
+                  {getPrevPage(navigationPage.title, allPages).title}
+                </a>
+              </div>
+            )}
+            {getNextPage(navigationPage.title, allPages) && (
+              <div>
+                <a
+                  href={'/' + getNextPage(navigationPage.title, allPages).route}
+                  rel="noopener noreferrer"
+                >
+                  {getNextPage(navigationPage.title, allPages).title}
+                </a>
+                <ArrowRightXS ml={2} />
+              </div>
+            )}
+          </NextGuide>
+        </Col>
+        <Col md={0} span={2}>
+          <SideBarHeading headings={data.headings} />
+        </Col>
+      </HomePage>
     </>
   );
 }

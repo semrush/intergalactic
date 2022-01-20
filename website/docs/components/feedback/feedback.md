@@ -35,7 +35,7 @@ tabName: Guide
 - Inputs and buttons of M size and `checkbox of S size` are used in the feedback.
 - The colour of the block with the link is `$gray94`, text - 12px.
 
-![feedback paddings](static/send_feedback_sizes.png)
+![feedback paddings](static/send-feedback-sizes.png)
 
 @## Location
 
@@ -45,8 +45,8 @@ In some cases it may drop from the button `Send feedback`, located in the block.
 
 | Variant of the form location                                       | Example                                               |
 | ------------------------------------------------------------------ | ----------------------------------------------------- |
-| The basic variant of the form location                             | ![feedback paddings](static/send_feedback.png)        |
-| Variant of the form location in the notice for feedback collection | ![feedback paddings](static/send_feedback_notice.png) |
+| The basic variant of the form location                             | ![feedback paddings](static/send-feedback.png)        |
+| Variant of the form location in the notice for feedback collection | ![feedback paddings](static/send-feedback-notice.png) |
 
 @## Interaction
 
@@ -130,7 +130,7 @@ The text for the tooltip with a message: `Your feedback must contain at least 3 
 - If the error occurred upon sending, we show the message instead of the block with `mailto`.
 - If `mailto` already exists, we change its colour into red and replace the message text.
 
-Text for the notice in such case: `Your message hasn’t been sent. Try again or contact us by email at {mail address}`.
+Text for the notice in such case: `Your message has not been sent. Please try again or contact us at at {mail address}`.
 
 ![feedback error](static/error.png)
 
