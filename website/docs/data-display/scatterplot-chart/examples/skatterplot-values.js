@@ -25,7 +25,7 @@ export default () => {
       <XAxis>
         <XAxis.Ticks />
       </XAxis>
-      <ScatterPlot data={data} x="x" y="y" />
+      <ScatterPlot data={data} x="x" y="y" value="value" />
       <Tooltip>
         {({ dataRow }) => {
           return {
@@ -48,4 +48,5 @@ const data = Array(20)
   .map((d, i) => ({
     x: i,
     y: Math.random().toFixed(1) * 10,
+    value: i,
   }));
