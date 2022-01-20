@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [1.0.4] - 2021-11-10
+
+### Changed
+
+- [TS] changed type value in onChange from string to number.
+
 ## [1.0.3] - 2021-11-10
 
 ### Fixed
