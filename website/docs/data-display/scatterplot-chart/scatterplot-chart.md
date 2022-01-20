@@ -39,8 +39,8 @@ A scatterplot chart must contain:
 **Dot size — 11px \* 11px.**
 
 | Case             | Appearance example                                     | Styles                             |
-| ---------------- | ------------------------------------------------------ | ---------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
-| One dataset      | ![one dataset](static/no-correlation.png)              |                                    | The default color for the category is blue300 with 50% transparency. However, if necessary, you can select any other color from the chart palette. |
+| ---------------- | ------------------------------------------------------ | ---------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| One dataset      | ![one dataset](static/no-correlation.png)              |                                    | The default color for the category is `--blue300` with 50% transparency. However, if necessary, you can select any other color from the chart palette. |
 | Several datasets | ![several datasets](static/positive-correlation-2.png) | Use colors from the chart palette. |
 
 @## Value inside a dot
