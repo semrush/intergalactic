@@ -9,7 +9,17 @@ import style from './style/bubble.shadow.css';
 import ClipPath from './ClipPath';
 import { scaleSqrt } from 'd3-scale';
 
-function measureText(text) {
+const memoize = (func) => {
+  const results = {};
+  return (argsKey) => {
+    if (!results[argsKey]) {
+      results[argsKey] = func(argsKey);
+    }
+    return results[argsKey];
+  };
+};
+
+const measureText = memoize((text) => {
   let span = document.createElement('span');
   span.append(document.createTextNode(text));
   span.style.display = 'inline-block';
@@ -17,7 +27,7 @@ function measureText(text) {
   const textLength = span.offsetWidth;
   span.remove();
   return textLength;
-}
+});
 
 class BubbleRoot extends Component {
   static displayName = 'Bubble';
@@ -115,6 +125,17 @@ class BubbleRoot extends Component {
         onMouseMove={this.bindHandlerTooltip(true, { xIndex: i })}
         onMouseLeave={this.bindHandlerTooltip(false, { xIndex: i })}
       >
+        {markedCross && (
+          <SCenter
+            x={xScale(d[x]) + offset[0]}
+            y={yScale(d[y]) + offset[1]}
+            dy=".3em"
+            clipPath={`url(#${uid})`}
+            color={d[color] ?? color}
+          >
+            &#43;
+          </SCenter>
+        )}
         <SBubble
           id={`${uid}${uid}`}
           render="circle"
@@ -136,17 +157,6 @@ class BubbleRoot extends Component {
           >
             {d[label]}
           </SLabel>
-        )}
-        {markedCross && (
-          <SCenter
-            x={xScale(d[x]) + offset[0]}
-            y={yScale(d[y]) + offset[1]}
-            dy=".3em"
-            clipPath={`url(#${uid})`}
-            color={d[color] ?? color}
-          >
-            &#43;
-          </SCenter>
         )}
       </g>,
     );
