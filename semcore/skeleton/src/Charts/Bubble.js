@@ -2,14 +2,7 @@ import React from 'react';
 import Skeleton from '../Skeleton';
 
 const BubbleChartSkeleton = (props) => (
-  <Skeleton
-    visible
-    viewBox="0 0 460 180"
-    width={460}
-    height={180}
-    preserveAspectRatio="xMidYMid meet"
-    {...props}
-  >
+  <Skeleton visible viewBox="0 0 460 180" preserveAspectRatio="xMidYMid meet" {...props}>
     {({ gradientUrl }) => (
       <>
         <g>

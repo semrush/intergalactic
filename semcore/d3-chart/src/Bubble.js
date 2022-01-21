@@ -27,7 +27,7 @@ class BubbleRoot extends Component {
   static defaultProps = {
     offset: [0, 0],
     duration: 500,
-    centered: true,
+    markedCross: true,
   };
 
   virtualElement = canUseDOM() ? document.createElement('div') : {};
@@ -85,7 +85,7 @@ class BubbleRoot extends Component {
       duration,
       value,
       label,
-      centered,
+      markedCross,
       size,
       data,
     } = this.asProps;
@@ -94,24 +94,26 @@ class BubbleRoot extends Component {
     const SBubble = this.Element;
     const SCenter = 'text';
     const SLabel = 'text';
-    const props = { ...this.props };
-    props.dataRow = d;
     const z = scaleSqrt()
       .domain([0, Math.max(...data.map((el) => el[value]))])
       .range([5.5, 50.5]);
 
     const margin = Math.min(xScale.range()[0], xScale.range()[1]);
 
-    const labelDistance =
+    const labelPosition =
       size[0] - 2 * margin - (xScale(d[x]) + offset[0] + z(d[value])) < measureText(d[label])
-        ? xScale(d[x]) + offset[0] - z(d[value]) - measureText(d[label])
-        : xScale(d[x]) + offset[0] + z(d[value]);
+        ? 'right'
+        : 'left';
+    const labelDistance = {
+      right: xScale(d[x]) + offset[0] - z(d[value]),
+      left: xScale(d[x]) + offset[0] + z(d[value]),
+    }[labelPosition];
 
     return sstyled(styles)(
       <g
         key={`circle(#${i})`}
-        onMouseMove={this.bindHandlerTooltip(true, props)}
-        onMouseLeave={this.bindHandlerTooltip(false, props)}
+        onMouseMove={this.bindHandlerTooltip(true, { xIndex: i })}
+        onMouseLeave={this.bindHandlerTooltip(false, { xIndex: i })}
       >
         <SBubble
           id={`${uid}${uid}`}
@@ -119,7 +121,7 @@ class BubbleRoot extends Component {
           clipPath={`url(#${uid})`}
           cx={xScale(d[x]) + offset[0]}
           cy={yScale(d[y]) + offset[1]}
-          color={d[color] ?? color}
+          color={d[color]}
           r={z(d[value])}
           use:duration={`${duration}ms`}
         />
@@ -129,12 +131,13 @@ class BubbleRoot extends Component {
             y={yScale(d[y]) + offset[1]}
             dy=".3em"
             clipPath={`url(#${uid})`}
-            color={d[color] ?? color}
+            position={labelPosition}
+            color={d[color]}
           >
             {d[label]}
           </SLabel>
         )}
-        {centered && (
+        {markedCross && (
           <SCenter
             x={xScale(d[x]) + offset[0]}
             y={yScale(d[y]) + offset[1]}

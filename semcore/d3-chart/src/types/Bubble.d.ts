@@ -15,7 +15,7 @@ export interface IBubbleProps extends IContext {
   /** Cross in the center of the bubble
    * @default true
    */
-  centered?: boolean;
+  markedCross?: boolean;
   /** Animation duration in ms
    * @default 500
    */

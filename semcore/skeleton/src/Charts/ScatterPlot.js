@@ -2,14 +2,7 @@ import React from 'react';
 import Skeleton from '../Skeleton';
 
 const ScatterPlotChartSkeleton = (props) => (
-  <Skeleton
-    visible
-    viewBox="0 0 680 200"
-    width={680}
-    height={200}
-    preserveAspectRatio="xMidYMid meet"
-    {...props}
-  >
+  <Skeleton visible viewBox="0 0 680 200" preserveAspectRatio="xMidYMid meet" {...props}>
     {({ gradientUrl }) => (
       <>
         <g>
