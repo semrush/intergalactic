@@ -23,27 +23,31 @@ const Demo = () => {
         <Text size={200} tag="label" mb={1} htmlFor="email">
           Email
         </Text>
-        <Tooltip
-          interaction={errors['email'] ? 'focus' : 'none'}
-          placement="right"
-          theme="warning"
-          title={errors['email']?.message}
-          w="100%"
-          tag={Input}
-          mb={2}
-          size="l"
-          state={errors['email'] ? 'invalid' : 'normal'}
-        >
-          <Input.Value
-            id="email"
-            name="email"
-            ref={register({
-              pattern: {
-                value: /.+@.+\..+/i,
-                message: "Email don't valid",
-              },
-            })}
-          />
+        <Tooltip interaction={errors['email'] ? 'focus' : 'none'} placement="right" theme="warning">
+          <Tooltip.Trigger
+            tag={Input}
+            w="100%"
+            mb={2}
+            size="l"
+            state={errors['email'] ? 'invalid' : 'normal'}
+            controlsLength={1}
+          >
+            {({ getTriggerProps }) => (
+              <Input.Value
+                {...getTriggerProps({
+                  id: 'email',
+                  name: 'email',
+                  ref: register({
+                    pattern: {
+                      value: /.+@.+\..+/i,
+                      message: "Email don't valid",
+                    },
+                  }),
+                })}
+              />
+            )}
+          </Tooltip.Trigger>
+          {errors['email'] && <Tooltip.Popper>{errors['email']?.message}</Tooltip.Popper>}
         </Tooltip>
         <Text size={200} tag="label" mb={1} htmlFor="password">
           Password
@@ -52,19 +56,27 @@ const Demo = () => {
           interaction={errors['password'] ? 'focus' : 'none'}
           placement="right"
           theme="warning"
-          title={errors['password']?.message}
-          w="100%"
-          tag={Input}
-          mb={4}
-          size="l"
-          state={errors['password'] ? 'invalid' : 'normal'}
         >
-          <Input.Value
-            id="password"
-            name="password"
-            type="password"
-            ref={register({ required: 'Require password' })}
-          />
+          <Tooltip.Trigger
+            tag={Input}
+            w="100%"
+            mb={4}
+            size="l"
+            state={errors['password'] ? 'invalid' : 'normal'}
+            controlsLength={1}
+          >
+            {({ getTriggerProps }) => (
+              <Input.Value
+                {...getTriggerProps({
+                  id: 'password',
+                  name: 'password',
+                  type: 'password',
+                  ref: register({ required: 'Require password' }),
+                })}
+              />
+            )}
+          </Tooltip.Trigger>
+          {errors['password'] && <Tooltip.Popper>{errors['password']?.message}</Tooltip.Popper>}
         </Tooltip>
 
         <Button type="submit" use="primary" theme="success" size="l" w="100%">

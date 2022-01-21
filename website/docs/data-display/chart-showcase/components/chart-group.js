@@ -79,13 +79,11 @@ const group = {
   bubble: {
     title: 'Bubble chart',
     route: '/data-display/bubble-chart',
-    disabled: true,
     type: 'charts',
   },
   scatterplot: {
     title: 'Scatterplot chart',
     route: '/data-display/scatterplot-chart',
-    disabled: true,
     type: 'charts',
   },
   heatmap: {

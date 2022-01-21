@@ -7,7 +7,7 @@ import { Box } from '@semcore/flex-box';
 import fire from '@semcore/utils/lib/fire';
 import isNode from '@semcore/utils/lib/isNode';
 import { callAllEventHandlers } from '@semcore/utils/lib/assignProps';
-import CloseXS from '@semcore/icon/lib/Close/xs';
+import CloseIcon from '@semcore/icon/Close/m';
 import { Timer } from './utils';
 
 import style from './style/notice-bubble.shadow.css';
@@ -178,7 +178,7 @@ class ViewInfo extends Component {
         onMouseLeave={callAllEventHandlers(onMouseLeave, this.handlerMouseLeave)}
       >
         <SDismiss title="Close" onClick={this.handlerClose} aria-label="Close alert">
-          <CloseXS />
+          <CloseIcon />
         </SDismiss>
         <SMessage>{children}</SMessage>
         {isNode(actionNode) ? <SAction>{actionNode}</SAction> : null}

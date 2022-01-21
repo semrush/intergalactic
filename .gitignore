@@ -43,5 +43,5 @@ Icon[
 .creds/
 
 # Icon
-semcore/**/**/*.js
-semcore/**/**/*.d.ts
+semcore/icon/**/**/*.js
+semcore/icon/**/**/*.d.ts

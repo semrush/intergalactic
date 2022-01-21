@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.1.0] - 2022-01-21
+
+### Added
+
+- Added Bubble and ScatterPlot chart
+
 ## [3.0.1] - 2021-10-19
 
 ### Fixed

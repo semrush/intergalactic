@@ -1,7 +1,7 @@
 {
   "name": "@semcore/project-create",
   "description": "SEMRush ProjectCreate Component",
-  "version": "3.3.2",
+  "version": "3.4.0",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -17,7 +17,7 @@
     "@semcore/button": "^3",
     "@semcore/checkbox": "^5",
     "@semcore/flex-box": "^4",
-    "@semcore/icon": "^2",
+    "@semcore/icon": "^2.16",
     "@semcore/input": "^2",
     "@semcore/modal": "^2",
     "@semcore/spin-container": "^4",

@@ -1,19 +1,11 @@
-import React, { ComponentProps, HTMLAttributes } from 'react';
-import createComponent, { Component, Merge, sstyled, Root } from '@semcore/core';
+import React from 'react';
+import createComponent, { Component, sstyled, Root } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
-import { ITextProps, Text } from '@semcore/typography';
-// eslint-disable-next-line import/no-named-as-default
+import { Text } from '@semcore/typography';
 import Tooltip from '@semcore/tooltip';
-import InfoXS from '@semcore/icon/lib/Info/xs';
+import Info from '@semcore/icon/Info/m';
 
 import style from './style/card.shadow.css';
-
-export interface ITitleProps extends ITextProps {
-  /**
-   * Tooltip text
-   */
-  hint?: React.ReactNode;
-}
 
 class Card extends Component {
   static displayName = 'Card';
@@ -31,7 +23,7 @@ class Card extends Component {
 function Title(props) {
   const { styles, hint } = props;
   const STitle = Root;
-  const SIcon = InfoXS;
+  const SIcon = Info;
   return sstyled(styles)(
     <>
       <STitle render={Text} />
@@ -50,13 +42,7 @@ function Description(props) {
   return sstyled(styles)(<SDescription render={Text} tag="p" />);
 }
 
-export default createComponent<
-  ComponentProps<typeof Box>,
-  {
-    Title: Merge<ITitleProps, HTMLAttributes<HTMLSpanElement>>;
-    Description: ComponentProps<typeof Text>;
-  }
->(Card, {
+export default createComponent(Card, {
   Title,
   Description,
 });

@@ -220,6 +220,21 @@ describe('Table.CellHead', () => {
 
     expect(await snapshot(component)).toMatchImageSnapshot();
   });
+
+  test('should support sorting icons', async () => {
+    const component = (
+      <Table>
+        <Table.Head>
+          <Table.Row>
+            <Table.CellHead sorting="desc">head 1</Table.CellHead>
+            <Table.CellHead sorting="asc">head 2</Table.CellHead>
+          </Table.Row>
+        </Table.Head>
+      </Table>
+    );
+
+    expect(await snapshot(component)).toMatchImageSnapshot();
+  });
 });
 
 describe('Table.Cell', () => {

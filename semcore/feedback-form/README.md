@@ -4,7 +4,7 @@ import Link from '@semcore/link';
 import Input from '@semcore/input';
 import Textarea from '@semcore/textarea';
 import Checkbox from '@semcore/checkbox';
-import ChatXS from '@semcore/icon/lib/Chat/xs';
+import Chat from '@semcore/icon/Chat/m';
 import Dropdown from '@semcore/dropdown';
 import FeedbackForm from '@semcore/feedback-form';
 import { Box } from '@semcore/flex-box';
@@ -22,7 +22,7 @@ class MyFeedback extends React.PureComponent {
     return (
       <Dropdown>
         <Dropdown.Trigger>
-          <Link before={<ChatXS />}>Send feedback</Link>
+          <Link before={<Chat />}>Send feedback</Link>
         </Dropdown.Trigger>
         <Dropdown.Popper>
           {({ changeVisible }) => (

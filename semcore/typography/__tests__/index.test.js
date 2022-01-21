@@ -1,7 +1,6 @@
 import React from 'react';
 import { cleanup, render, axe } from 'jest-preset-ui/testing';
-import CheckXS from '@semcore/icon/lib/Check/xs';
-import CheckS from '@semcore/icon/lib/Check/s';
+import Check from '@semcore/icon/Check/m';
 import { Blockquote, List, Text, Hint } from '../src';
 import snapshot from 'jest-preset-ui/snapshot';
 import { shouldSupportClassName, shouldSupportRef } from 'jest-preset-ui/shared';
@@ -200,15 +199,15 @@ describe('Typography', () => {
   test(`Should support CheckList size`, async () => {
     const component = (
       <React.Fragment>
-        <List size={100} marker={<CheckXS color="green" />}>
+        <List size={100} marker={<Check color="green" />}>
           <List.Item>Test size Ul</List.Item>
           <List.Item>Test size Ul</List.Item>
         </List>
-        <List size={200} marker={<CheckS color="green" />}>
+        <List size={200} marker={<Check color="green" />}>
           <List.Item>Test size Ul</List.Item>
           <List.Item>Test size Ul</List.Item>
         </List>
-        <List size={300} marker={<CheckS color="green" />}>
+        <List size={300} marker={<Check color="green" />}>
           <List.Item>Test size Ul</List.Item>
           <List.Item>Test size Ul</List.Item>
         </List>
