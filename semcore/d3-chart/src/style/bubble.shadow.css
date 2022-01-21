@@ -32,6 +32,14 @@ SLabel {
   fill: #2bb3ff;
 }
 
+SLabel[position='right'] {
+  text-anchor: end;
+}
+
+SLabel[position='left'] {
+  text-anchor: start;
+}
+
 SLabel[color] {
   fill: var(--color);
 }

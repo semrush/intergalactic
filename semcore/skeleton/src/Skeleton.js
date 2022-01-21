@@ -70,6 +70,7 @@ function Text(props) {
     </React.Fragment>
   );
 }
+
 Text.defaultProps = {
   x: 0,
   y: 0,

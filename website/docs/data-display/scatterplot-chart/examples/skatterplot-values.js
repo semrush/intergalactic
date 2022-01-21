@@ -17,7 +17,7 @@ export default () => {
     .domain([0, 10]);
 
   return (
-    <Plot scale={[xScale, yScale]} width={width} height={height}>
+    <Plot scale={[xScale, yScale]} width={width} height={height} data={data}>
       <YAxis>
         <YAxis.Ticks />
         <YAxis.Grid />
@@ -25,15 +25,16 @@ export default () => {
       <XAxis>
         <XAxis.Ticks />
       </XAxis>
-      <ScatterPlot data={data} x="x" y="y" value="value" />
+      <ScatterPlot x="x" y="y" value="value" />
       <Tooltip>
-        {({ dataRow }) => {
+        {({ xIndex }) => {
           return {
             children: (
               <>
                 <Tooltip.Title>Data</Tooltip.Title>
-                <Text tag="div">X axis {dataRow.x}</Text>
-                <Text tag="div">Y axis {dataRow.y}</Text>
+                <Text tag="div">X axis {data[xIndex].x}</Text>
+                <Text tag="div">Y axis {data[xIndex].y}</Text>
+                <Text tag="div">Value {data[xIndex].value}</Text>
               </>
             ),
           };
