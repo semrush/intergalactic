@@ -8,7 +8,7 @@ tabName: Guide
 We use two font families in our interface:
 
 1. The main font is [Inter](https://fonts.google.com/specimen/Inter?query=inter).
-2. The accent font in [Factor A](https://type.today/en/factor_a).
+2. The accent font is [Factor A](https://type.today/en/factor_a).
 
 > 💡 For a clearer rendering of the font and its color, use `webkit-font-smoothing: antialiased;` (see cross-browser compatibility at [caniuse.com](https://caniuse.com/#search=-webkit-font-smoothing)).
 
@@ -20,28 +20,28 @@ The color used for secondary text is `--gray500`.
 
 Besides, both paragraphs headings and text can be colored in our main semantic colors. Depending on the situation, they are green, red, and orange.
 
-> 💡 Use this opportunity thoughtfully, and do not abuse the text coloring, as it will reduce its readability. **Don't forget to check the text for contrast against its background**.
+> 💡 Use this opportunity thoughtfully, and do not abuse the text coloring, as it can reduce it's readability. **Don't forget to check the text for contrast against its background**.
 
 @## Font variables
 
-<!-- | Variable | em      | px   |
-| -------- | ------- | ---- |
-| 800  | 3em | 48px |
-| 700  | 2.25em | 36px |
-| 600  | 2em | 32px |
-| 500  | 1.5em | 24px |
-| 400  | 1.25em   | 20px |
-| 300  | 1em | 16px |
-| 200  | 0.875em   | 14px |
-| 100  | 0.75em     | 12px | -->
+| Variables            | em      | px   | Font family |
+| -------------------- | ------- | ---- | ----------- |
+| `--fs800`, `--lh800` | 3em     | 48px | Factor A    |
+| `--fs700`, `--lh700` | 2.25em  | 36px | Factor A    |
+| `--fs600`, `--lh600` | 2em     | 32px | Factor A    |
+| `--fs500`, `--lh500` | 1.5em   | 24px | Factor A    |
+| `--fs400`, `--lh400` | 1.25em  | 20px | Inter       |
+| `--fs300`, `--lh300` | 1em     | 16px | Inter       |
+| `--fs200`, `--lh200` | 0.875em | 14px | Inter       |
+| `--fs100`, `--lh100` | 0.75em  | 12px | Inter       |
 
 @example text-variables
 
-@## Headings
+@## Heading
 
 In our interface, we use headings of 6 sizes. All of them has `bold (700)` font-weight.
 
-**The first 4 headings use Factor A as font-family. They are usually used in hero blocks, large ad screens and banners and landing pages**.
+**The first 4 headings use Factor A as font-family. They are usually used in hero blocks, large ad screens, banners and landing pages**.
 
 |     | Appearance           | Styles                                                   | Variables              |
 | --- | -------------------- | -------------------------------------------------------- | ---------------------- |
@@ -57,11 +57,13 @@ In our interface, we use headings of 6 sizes. All of them has `bold (700)` font-
 | h5  | ![h5](static/h5.png) | `font-size: 20px; line-height: 1.2; font-weight: bold;` | `--fs-400`, `--lh-400` |
 | h6  | ![h6](static/h6.png) | `font-size: 16px; line-height: 1.5; font-weight: bold;` | `--fs-300`, `--lh-300` |
 
+@## Heading with counter
+
 A heading can contain additional information, such as a counter of results found, and so on. They can be found in table headings. In these cases, the additional information is presented by secondary text of `--gray500` color and `regular (300)` font-weight.
 
 ![secondary text](static/secondary_info.png)
 
-@## Headings for mobile devices
+@## Heading for mobile devices
 
 To improve readability on different screens, change the size of the headings, depending on the [breakpoint](layout/grid-system/).
 
@@ -76,7 +78,7 @@ To improve readability on different screens, change the size of the headings, de
 | H5 (16/24) — `--fs-300`, `--lh-300` | H5 (20/24) — `--fs-400`, `--lh-400` |
 | H6 (14/20) — `--fs-200`, `--lh-200` | H6 (16/24) — `--fs-300`, `--lh-300` |
 
-@## Basic text sizes and paragraph margins
+@## Paragraph
 
 There are three text sizes we use in our products.
 
@@ -92,7 +94,17 @@ There are three text sizes we use in our products.
 
 ![12px text](static/p-12.png)
 
-You can select text within a paragraph: change its face to `bold` or `italic`, make it a [link](/components/link/), a hint, or even cross it out.
+@## Paragraph margins
+
+Paragraphs have a margin-bottom, and each of the three paragraph sizes has its own margin. A paragraph of 16px has a margin-bottom of 16px, a paragraph of 14px — 12px, a paragraph of 12px text — 8px.
+
+You can also use these margins when a paragraph is followed by a paragraph of smaller font size.
+
+![paragraph margins](static/paragraph_margins.png)
+
+@## Text styles
+
+You can change text's style: make it `bold`, `italic`, a [link](/components/link/), a hint, or even `strikethrough`.
 
 @example text-emphasis
 
@@ -113,14 +125,6 @@ Each next level of the nested list is always indented to the left. **Indents bet
 | 16px, `--fs300`, `--lh300` | ![second level list](static/second-level-16.png) |
 | 14px, `--fs200`, `--lh200` | ![second level list](static/second-level-14.png) |
 | 12px, `--fs100`, `--lh100` | ![second level list](static/second-level-12.png) |
-
-### Paragraph margins
-
-Paragraphs have a margin-bottom, and each of the three paragraph sizes has its own margin. A paragraph of XL size (16px text) has a margin-bottom of 16px, a paragraph of L size (14px text) — 12px, a paragraph of M size (12px text) — 8px.
-
-You can also use these margins when a paragraph is followed by a paragraph of smaller font size.
-
-![paragraph margins](static/paragraph_margins.png)
 
 @## Quote
 

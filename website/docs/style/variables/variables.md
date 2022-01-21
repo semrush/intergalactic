@@ -1,10 +1,11 @@
 ---
 title: Variables and basic styles
+tabName: Guide
 ---
 
 @## Description
 
-This section describes all the variable parameters that we use in our component styles.
+This section describes all the variable parameters and basic styles that we use in our components.
 
 @## Main denominator
 
@@ -55,10 +56,10 @@ In normal state controls with transparent background has opacity of 0 – 15%.
 
 ![transparent controls](static/transparent.png)
 
-|            | Rules for styles                                |
-| ---------- | ----------------------------------------------- |
-| **Hover**  | Change it's transparency to 20% while hovering. |
-| **Active** | Change it's transparency to 30%.                |
+|            | Rules for styles                           |
+| ---------- | ------------------------------------------ |
+| **Hover**  | Change it's opacity to 20% while hovering. |
+| **Active** | Change it's opacity to 30%.                |
 
 ### Valid & invalid
 
@@ -76,14 +77,14 @@ In normal state controls with transparent background has opacity of 0 – 15%.
 |                   | Styles and variables                                                                                                                                                          |
 | ----------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Focus**         | `--keyborad-focus`. It's `0 0 0 3px rgba(blue400, .3);`. For `normal` and `active` states, the focus color is `--blue400`. For `invalid` and `valid` states see colors below. |
-| **Invalid focus** | `border-color: var(--red400);`                                                                                                                                                |
-| **Valid focus**   | `border-color: var(--green400);`                                                                                                                                              |
+| **Invalid focus** | `border-color: 0 0 0 3px rgba(red400, .3);`                                                                                                                                   |
+| **Valid focus**   | `border-color: 0 0 0 3px rgba(green400, .3);`                                                                                                                                 |
 
-### Disalbled & loading
+### Disabled & loading
 
 |              | Styles and variables                                    |
 | ------------ | ------------------------------------------------------- |
-| **Disabled** | `--disabled-opacity`                                    |
+| **Disabled** | `--disabled-opacity: 0.3;`                              |
 | **Loading**  | Use [Spinner](/components/spin) for marking this state. |
 
 @## Borders & dividers
@@ -122,3 +123,5 @@ These are rules for the rounding radius of controls, fields, dropdowns, etc.
 | Black                            | `background: --var(gray800,0.70);` |
 | Black for dialog in dialog cases | `background: --var(gray800,0.40);` |
 | White                            | `background: --var(white,0.85);`   |
+
+@page variables-code
