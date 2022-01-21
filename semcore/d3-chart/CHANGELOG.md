@@ -2,11 +2,15 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [1.6.0] - 2021-01-20
+## [1.6.0] - 2021-01-21
 
 ### Added
 
 - Added Bubble and Scatter plot charts
+
+### Changed
+
+- Tooltip font size changed
 
 ## [1.5.6] - 2021-12-08
 

@@ -25,7 +25,7 @@ export default () => {
       <XAxis>
         <XAxis.Ticks />
       </XAxis>
-      <Bubble x="x" y="y" value="value" label="label" />
+      <Bubble x="x" y="y" value="value" />
       <Tooltip>
         {({ dataRow }) => {
           return {
@@ -50,5 +50,4 @@ const data = Array(10)
     x: Math.random().toFixed(1) * 10,
     y: Math.random().toFixed(1) * 10,
     value: Math.random().toFixed(1) * 1000,
-    label: `Label ${i}`,
   }));
