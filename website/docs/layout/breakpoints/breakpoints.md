@@ -6,7 +6,7 @@ tabName: Guide
 
 @## Adaptivity
 
-Most of our products are designed to work with data on the desktop, so adaptability is not yet required for all tools.
+Most of our products are designed to work with data on the desktop, so adaptivity is not yet required for all tools.
 
 > Most of the core components can be used on the adaptive interface. You need to increase their size to the biggest (XL) for ease of use on touch devices. You can see the examples in the [Code tab](/layout/breakpoints/breakpoints-code/).
 
@@ -45,9 +45,11 @@ module.exports = {
 
 A list of the main breakpoints that we recommend to use in our product interfaces:
 
-- `320px` for mobile devices
-- `768px` for tablet devices
-- `1200px` for desktop devices
+| Variable               | Usage                                                |
+| ---------------------- | ---------------------------------------------------- |
+| `--xs-screen: 320px;`  | The smallest possible breakpoint for mobile devices. |
+| `--sm-screen: 768px;`  | The most common breakpoint for tablet devices.       |
+| `--md-screen: 1200px;` | Our main breakpoint for desktop devices.             |
 
 For more information about grid and page layouts see [Grid system](/layout/grid-system/).
 

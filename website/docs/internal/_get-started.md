@@ -20,7 +20,7 @@ Our interfaces are desktop first, so adaptability is still optional.
 
 Most of the core components are adaptive. They increase their size for ease of use on touch-appliances. Complex components can change their behaviors and appearance on small screens.
 
-**Component adaptability is enabled for screens smaller than 768px**.
+**Component adaptivity is enabled for screens smaller than 768px**.
 
 Use also [Grid](/layout/grid-system/) to build the page grid. The component has an adaptive API.
 The adaptivity (css with media-queries) of components can be enabled by adding our [babel-plugin-react-semcore plugin](https://github.com/semrush/intergalactic/blob/master/tools/babel-plugin-react-semcore/README.md) for babel.
