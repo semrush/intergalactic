@@ -10,6 +10,8 @@ export { default as GroupBar } from './GroupBar';
 export { default as StackBar } from './StackBar';
 export { default as Area } from './Area';
 export { default as StackedArea } from './StackedArea';
+export { default as ScatterPlot } from './ScatterPlot';
+export { default as Bubble } from './Bubble';
 export { default as Donut } from './Donut';
 export { default as Venn } from './Venn';
 

@@ -14,19 +14,19 @@ export default () => {
         <Venn.Intersection dataKey="G/C" name="Good & Cheap" />
         <Venn.Intersection dataKey="F/C" name="Fast & Cheap" />
         <Venn.Intersection dataKey="G/F/C" name="Good & Fast & Cheap" />
-        <Tooltip>
-          {({ name, dataKey }) => {
-            return {
-              children: (
-                <>
-                  <Tooltip.Title>{name}</Tooltip.Title>
-                  <Text bold>{data[dataKey]}</Text>
-                </>
-              ),
-            };
-          }}
-        </Tooltip>
       </Venn>
+      <Tooltip>
+        {({ name, dataKey }) => {
+          return {
+            children: (
+              <>
+                <Tooltip.Title>{name}</Tooltip.Title>
+                <Text bold>{data[dataKey]}</Text>
+              </>
+            ),
+          };
+        }}
+      </Tooltip>
     </Plot>
   );
 };
