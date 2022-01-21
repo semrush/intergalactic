@@ -2,6 +2,8 @@
 @import '@semcore/d3-chart/src/style/var.css';
 
 STooltip {
+  font-size: var(--fs-100);
+  line-height: var(--lh-100);
   position: relative;
   background-color: #fff;
   border-radius: 3px;
@@ -12,8 +14,6 @@ STooltip {
 }
 
 STitle {
-  font-size: var(--fs-100);
-  line-height: var(--lh-100);
   color: var(--gray60);
   margin-bottom: 8px;
 }

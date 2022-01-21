@@ -39,3 +39,9 @@ export * from './Donut';
 
 export { default as Tooltip } from './Tooltip';
 export * from './Tooltip';
+
+export { default as ScatterPlot } from './ScatterPlot';
+export * from './ScatterPlot';
+
+export { default as Bubble } from './Bubble';
+export * from './Bubble';

@@ -1,0 +1,45 @@
+@import '@semcore/utils/style/var.css';
+@import '@semcore/d3-chart/src/style/var.css';
+
+SBubble {
+  fill: #2bb3ff;
+  stroke: #fff;
+  stroke-width: 2px;
+  transition-property: cx, cy;
+  transition-duration: var(--duration);
+  transition-timing-function: ease-in-out;
+  opacity: 0.5;
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+SBubble[color] {
+  fill: var(--color);
+}
+
+SCenter {
+  text-anchor: middle;
+  font-size: 11px;
+  stroke: #2bb3ff;
+}
+
+SCenter[color] {
+  stroke: var(--color);
+}
+
+SLabel {
+  fill: #2bb3ff;
+}
+
+SLabel[position='right'] {
+  text-anchor: end;
+}
+
+SLabel[position='left'] {
+  text-anchor: start;
+}
+
+SLabel[color] {
+  fill: var(--color);
+}

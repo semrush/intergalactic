@@ -18,21 +18,21 @@ export default () => {
             Engagements
           </Text>
         </Donut.Label>
-        <Tooltip>
-          {({ dataKey, name }) => {
-            return {
-              children: (
-                <>
-                  <Tooltip.Title>{name}</Tooltip.Title>
-                  <Flex justifyContent="space-between">
-                    <Text bold>{data[dataKey]}</Text>
-                  </Flex>
-                </>
-              ),
-            };
-          }}
-        </Tooltip>
       </Donut>
+      <Tooltip>
+        {({ dataKey, name }) => {
+          return {
+            children: (
+              <>
+                <Tooltip.Title>{name}</Tooltip.Title>
+                <Flex justifyContent="space-between">
+                  <Text bold>{data[dataKey]}</Text>
+                </Flex>
+              </>
+            ),
+          };
+        }}
+      </Tooltip>
     </Plot>
   );
 };
