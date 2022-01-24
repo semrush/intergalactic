@@ -48,7 +48,7 @@ const Logo = styled.div`
 const Description = styled.div`
   grid-row: 3;
   grid-column: 1;
-  color: #898d9a;
+  color: #575c66;
   font-size: 14px;
   @media (max-width: 767px) {
     grid-row: 4;
