@@ -1,7 +1,7 @@
 {
   "name": "@semcore/modal",
   "description": "SEMRush Modal Component",
-  "version": "2.4.0",
+  "version": "2.4.1",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -13,7 +13,7 @@
     "test": "jest"
   },
   "dependencies": {
-    "@semcore/utils": "^3.20",
+    "@semcore/utils": "^3.31",
     "@semcore/animation": "^1",
     "@semcore/portal": "^2",
     "@semcore/flex-box": "^4",
