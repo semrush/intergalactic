@@ -25,16 +25,17 @@ export default () => {
       <XAxis>
         <XAxis.Ticks />
       </XAxis>
-      <ScatterPlot x="x" y="y" value="value" color="color" valueColor="valueColor" />
+      <ScatterPlot x="x" y="y1" value="value" color="#2BB3FF" valueColor="#008ff8" />
+      <ScatterPlot x="x" y="y2" value="value" color="#59DDAA" valueColor="#00C192" />
       <Tooltip>
-        {({ xIndex }) => {
+        {({ xIndex, x, y, value }) => {
           return {
             children: (
               <>
                 <Tooltip.Title>Data</Tooltip.Title>
-                <Text tag="div">X axis {data[xIndex].x}</Text>
-                <Text tag="div">Y axis {data[xIndex].y}</Text>
-                <Text tag="div">Value {data[xIndex].value}</Text>
+                <Text tag="div">X axis {data[xIndex][x]}</Text>
+                <Text tag="div">Y axis {data[xIndex][y]}</Text>
+                <Text tag="div">Value {data[xIndex][value]}</Text>
               </>
             ),
           };
@@ -48,8 +49,7 @@ const data = Array(20)
   .fill({})
   .map((d, i) => ({
     x: i,
-    y: Math.random().toFixed(1) * 10,
+    y1: Math.random().toFixed(1) * 10,
+    y2: Math.random().toFixed(1) * 10,
     value: i,
-    color: i % 2 ? '#59DDAA' : undefined,
-    valueColor: i % 2 ? '#00C192' : undefined,
   }));

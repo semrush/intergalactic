@@ -122,8 +122,8 @@ class BubbleRoot extends Component {
     return sstyled(styles)(
       <g
         key={`circle(#${i})`}
-        onMouseMove={this.bindHandlerTooltip(true, { xIndex: i })}
-        onMouseLeave={this.bindHandlerTooltip(false, { xIndex: i })}
+        onMouseMove={this.bindHandlerTooltip(true, { ...this.props, xIndex: i })}
+        onMouseLeave={this.bindHandlerTooltip(false, { ...this.props, xIndex: i })}
       >
         {markedCross && (
           <SCenter

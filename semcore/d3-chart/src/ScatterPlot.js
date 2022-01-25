@@ -76,8 +76,8 @@ class ScatterPlotRoot extends Component {
     return sstyled(styles)(
       <g
         key={`circle(#${i})`}
-        onMouseMove={this.bindHandlerTooltip(true, { xIndex: i })}
-        onMouseLeave={this.bindHandlerTooltip(false, { xIndex: i })}
+        onMouseMove={this.bindHandlerTooltip(true, { ...this.props, xIndex: i })}
+        onMouseLeave={this.bindHandlerTooltip(false, { ...this.props, xIndex: i })}
       >
         <SScatterPlot
           id={`${uid}${i}`}
@@ -85,7 +85,7 @@ class ScatterPlotRoot extends Component {
           clipPath={`url(#${uid})`}
           cx={xScale(d[x]) + offset[0]}
           cy={yScale(d[y]) + offset[1]}
-          color={d[color]}
+          color={color}
           r={r}
           use:duration={`${duration}ms`}
         />
@@ -95,7 +95,7 @@ class ScatterPlotRoot extends Component {
             y={yScale(d[y]) + offset[1]}
             dy=".3em"
             clipPath={`url(#${uid})`}
-            color={d[valueColor]}
+            color={valueColor}
           >
             {d[value]}
           </SValue>
