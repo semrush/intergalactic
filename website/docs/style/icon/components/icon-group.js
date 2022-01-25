@@ -143,7 +143,7 @@ class PanelChangeIcon extends PureComponent {
         nameSvg = name.replace(/([A-Z])/g, '/$1').slice(1);
       }
 
-      const url = `semcore/icon/svg/${includeGroupName}/${nameSvg}.svg`;
+      const url = `semcore/icon/${old ? 'svg' : 'svg-new'}/${includeGroupName}/${nameSvg}.svg`;
       return (
         <Tooltip title="Download!" key={index}>
           <PreviewChangeIcon>
