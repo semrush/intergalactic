@@ -27,13 +27,13 @@ export default () => {
       </XAxis>
       <ScatterPlot x="x" y="y" />
       <Tooltip>
-        {({ dataRow }) => {
+        {({ xIndex }) => {
           return {
             children: (
               <>
                 <Tooltip.Title>Data</Tooltip.Title>
-                <Text tag="div">X axis {dataRow.x}</Text>
-                <Text tag="div">Y axis {dataRow.y}</Text>
+                <Text tag="div">X axis {data[xIndex].x}</Text>
+                <Text tag="div">Y axis {data[xIndex].y}</Text>
               </>
             ),
           };
