@@ -6,7 +6,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-- Replaced function `findComponent` to `isAdvanceMode` for check children in `Tooltip`. 
+- Replaced function `findComponent` to `isAdvanceMode` for check children in `Tooltip`.
 
 ## [1.6.1] - 2021-01-21
 
