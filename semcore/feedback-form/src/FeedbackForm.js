@@ -8,6 +8,7 @@ import SpinContainer from '@semcore/spin-container';
 import Tooltip from '@semcore/tooltip';
 import { NoticeSmart } from '@semcore/notice';
 import { Box } from '@semcore/flex-box';
+import pick from '@semcore/utils/lib/pick';
 
 import style from './style/feedback-form.shadow.css';
 
@@ -67,8 +68,28 @@ class FeedbackForm extends Component {
   }
 }
 
-function Item(props) {
-  const { Children, tag } = props;
+const TooltipProps = [
+  'title',
+  'theme',
+  'strategy',
+  'modifiers',
+  'placement',
+  'interaction',
+  'timeout',
+  'visible',
+  'defaultVisible',
+  'onVisibleChange',
+  'offset',
+  'preventOverflow',
+  'arrow',
+  'flip',
+  'computeStyles',
+  'eventListeners',
+  'onFirstUpdate',
+];
+
+function Item({ Children, tag, ...props }) {
+  const tooltipProps = pick(props, TooltipProps);
 
   return (
     <Root render={Field}>
@@ -88,6 +109,7 @@ function Item(props) {
             flip={{
               fallbackPlacements: ['right', 'bottom'],
             }}
+            {...tooltipProps}
           >
             {tag && <Root render={tag} {...inputProps} />}
             {typeof Children.origin === 'function' &&

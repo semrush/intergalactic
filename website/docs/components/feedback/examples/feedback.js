@@ -53,6 +53,10 @@ class Feedback extends React.PureComponent {
               name="feedback"
               validate={validate.description}
               initialValue={value.description}
+              placement="left-start"
+              flip={{
+                fallbackPlacements: ['right-start', 'bottom'],
+              }}
             >
               {({ input }) => (
                 <Textarea
