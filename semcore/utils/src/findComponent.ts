@@ -17,4 +17,12 @@ function findComponent(Children, names) {
   });
 }
 
+export function isAdvanceMode(Children, name) {
+  const children = Children[CHILDREN_COMPONENT] ? getOriginChildren(Children) : Children;
+  if (!children) return false;
+  if (typeof children === 'function') {
+    return true;
+  }
+  return !!findComponent(children, name);
+}
 export default findComponent;

@@ -8,7 +8,7 @@ import OutsideClick from '@semcore/outside-click';
 import CloseIcon from '@semcore/icon/Close/l';
 import fire from '@semcore/utils/lib/fire';
 import usePreventScroll from '@semcore/utils/lib/use/usePreventScroll';
-import findComponent from '@semcore/utils/lib/findComponent';
+import { isAdvanceMode } from '@semcore/utils/lib/findComponent';
 import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 import style from './style/modal.shadow.css';
 
@@ -62,7 +62,7 @@ class ModalRoot extends Component {
   render() {
     const { Children, disablePortal } = this.asProps;
 
-    const advanceMode = !!findComponent(Children, [
+    const advanceMode = isAdvanceMode(Children, [
       Modal.Overlay.displayName,
       Modal.Window.displayName,
     ]);

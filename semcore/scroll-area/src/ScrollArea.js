@@ -6,7 +6,7 @@ import createComponent, { Component, sstyled, Root } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
 import trottle from '@semcore/utils/lib/rafTrottle';
 import { getNodeByRef } from '@semcore/utils/lib/ref';
-import findComponent from '@semcore/utils/lib/findComponent';
+import { isAdvanceMode } from '@semcore/utils/lib/findComponent';
 import logger from '@semcore/utils/lib/logger';
 import { callAllEventHandlers } from '@semcore/utils/lib/assignProps';
 import BarRoot from './ScrollBar';
@@ -186,7 +186,7 @@ class ScrollAreaRoot extends Component {
     const { Children, styles, orientation } = this.asProps;
     const { shadowVertical, shadowHorizontal } = this.state;
 
-    const advanceMode = !!findComponent(Children, [
+    const advanceMode = isAdvanceMode(Children, [
       ScrollAreaComponent.Container.displayName,
       ScrollAreaComponent.Bar.displayName,
     ]);
