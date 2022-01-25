@@ -3,7 +3,7 @@ import createComponent, { Component, CREATE_COMPONENT, sstyled, Root } from '@se
 import PopperOrigin from '@semcore/popper';
 import { Box } from '@semcore/flex-box';
 import resolveColor from '@semcore/utils/lib/color';
-import findComponent from '@semcore/utils/lib/findComponent';
+import { isAdvanceMode } from '@semcore/utils/lib/findComponent';
 import logger from '@semcore/utils/lib/logger';
 
 import style from './style/tooltip.shadow.css';
@@ -48,7 +48,7 @@ class RootTooltip extends Component {
   render() {
     const { Children, title, offset, ...other } = this.asProps;
 
-    const advanceMode = !!findComponent(Children, [
+    const advanceMode = isAdvanceMode(Children, [
       TooltipBase.Trigger.displayName,
       TooltipBase.Popper.displayName,
     ]);
