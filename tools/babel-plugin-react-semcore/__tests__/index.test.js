@@ -9,14 +9,6 @@ pluginTester({
   formatResult: formatter,
   tests: [
     {
-      pluginOptions: {
-        media: true,
-      },
-      title: 'Removes unreachable if statement wrapper of media styles insertion call',
-      fixture: '__fixtures__/add-media/index.js',
-      outputFixture: '__fixtures__/add-media/index.expected.js',
-    },
-    {
       title: "Doesn't change code",
       fixture: '__fixtures__/theme/unchanged/index.js',
       outputFixture: '__fixtures__/theme/unchanged/index.expected.js',
