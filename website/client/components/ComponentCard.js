@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { Text } from '@semcore/typography';
 
 const Card = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
   padding: 16px;
@@ -25,6 +26,14 @@ const Card = styled.div`
   }
 `;
 
+const Link = styled.a`
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+`;
+
 const Title = styled(Text)`
   margin-top: 12px;
   white-space: break-spaces;
@@ -33,13 +42,8 @@ const Title = styled(Text)`
 function ComponentCard({ image, text, disabled, href, type }) {
   try {
     return (
-      <Card
-        disabled={disabled}
-        onClick={function(e) {
-          e.preventDefault();
-          location.href = href;
-        }}
-      >
+      <Card disabled={disabled}>
+        <Link href={href} />
         <img src={require(`../static/${type}/${image}.svg`).default} alt="image" />
         <Title>{text}</Title>
       </Card>
