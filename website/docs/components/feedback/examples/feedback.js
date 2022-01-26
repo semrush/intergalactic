@@ -4,7 +4,7 @@ import Input from '@semcore/input';
 import { Box, Flex } from '@semcore/flex-box';
 import Link from '@semcore/link';
 import Dropdown from '@semcore/dropdown';
-import ChatXS from '@semcore/icon/lib/Chat/xs';
+import ChatXS from '@semcore/icon/Chat/m';
 import Textarea from '@semcore/textarea';
 import { Text } from '@semcore/typography';
 
@@ -53,6 +53,10 @@ class Feedback extends React.PureComponent {
               name="feedback"
               validate={validate.description}
               initialValue={value.description}
+              placement="left-start"
+              flip={{
+                fallbackPlacements: ['right-start', 'bottom'],
+              }}
             >
               {({ input }) => (
                 <Textarea

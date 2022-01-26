@@ -96,14 +96,20 @@ class TooltipRoot extends Component {
 }
 
 function PopperPopper(props) {
-  const { Element: STooltip, styles, $visible } = props;
+  const { Element: STooltip, styles, $visible, x, y } = props;
 
   const handlerCancel = useCallback(() => false, []);
 
   if (!$visible) return null;
 
   return sstyled(styles)(
-    <STooltip render={Popper.Popper} childrenPosition="inside" onMouseMove={handlerCancel} />,
+    <STooltip
+      render={Popper.Popper}
+      childrenPosition="inside"
+      onMouseMove={handlerCancel}
+      x={x}
+      y={y}
+    />,
   );
 }
 

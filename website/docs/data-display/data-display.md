@@ -20,15 +20,16 @@ title: Charts
 @page stacked-bar-chart
 @page bar-horizontal
 @page stacked-horizontal-bar
+@page bubble-chart
+@page donut-chart
 @page histogram-chart
 
 <!-- @page stacked-histogram -->
 
-@page donut-chart
+@page scatterplot-chart
 @page venn-chart
 
 @page alluvial-chart
-@page bubble-chart
 @page choropleth-map
 @page funnel-chart
 @page heatmap
@@ -36,5 +37,4 @@ title: Charts
 @page lollipop-chart
 @page polar-chart
 @page radar-chart
-@page scatterplot-chart
 @page quadrant-chart

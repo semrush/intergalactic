@@ -2,6 +2,18 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [1.3.1] - 2022-01-25
+
+### Changed
+
+- Replaced function `findComponent` to `isAdvanceMode` for check children in `SidePanel`.
+
+## [1.3.0] - 2022-01-18
+
+### Changed
+
+- Up version icons and use new icon.
+
 ## [1.2.1] - 2021-8-26
 
 ### Changed

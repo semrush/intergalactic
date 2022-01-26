@@ -7,7 +7,6 @@ import { Col, Row } from '@semcore/grid';
 import Pills from '@semcore/pills';
 import OutsideClick from '@semcore/outside-click';
 import Copy from 'components/Copy';
-import dataIcons from './icons.json';
 
 const Section = styled.div`
   margin-top: ${({ mt }) => mt && `${mt}px`};
@@ -105,18 +104,6 @@ const AreaLink = styled.a`
   left: 0;
 `;
 
-const Icons = importAll(require.context('@semcore/icon/lib', true, /^\.\/.*\.js$/));
-const icons = {}; // {name, fn}
-const SIZE = { L: 44, M: 22, S: 16, XS: 12, XXS: 8, 32: 32, 20: 20 };
-
-Object.keys(Icons).forEach((nameFile) => {
-  const fn = Icons[nameFile];
-  const name = fn.displayName;
-  if (fn && name && name !== 'Icon') {
-    icons[name] = fn;
-  }
-});
-
 // 😩
 function modalLayout() {
   if (!document) return false;
@@ -129,28 +116,19 @@ function modalLayout() {
   return node;
 }
 
-function importAll(r) {
-  return r.keys().reduce((components, key) => {
-    const module = r(key);
-
-    if (module.default) {
-      components[key] = module.default;
-    } else {
-      components[key] = module;
-    }
-    return components;
-  }, {});
-}
-
 class PanelChangeIcon extends PureComponent {
   state = { action: 'copy' };
+  get SIZE() {
+    return this.props.old
+      ? { L: 44, M: 22, S: 16, XS: 12, XXS: 8, 32: 32, 20: 20 }
+      : { L: 24, M: 16 };
+  }
 
   renderIconSize = (size, index) => {
-    const { name } = this.props;
+    const { name, old, json: dataIcons, icon: Icon } = this.props;
     const { action } = this.state;
-    const Icon = icons[name];
 
-    const iconSize = SIZE[size.toUpperCase()] || '';
+    const iconSize = this.SIZE[size.toUpperCase()] || '';
     let nameSvg = `${name}/${size}`;
 
     const filterIcons = dataIcons.icons.filter((icon) => icon.name === name)[0];
@@ -159,13 +137,13 @@ class PanelChangeIcon extends PureComponent {
     let includeGroupName = haveGroupName ? `/${groupName}` : '';
 
     if (action === 'download') {
-      let includeGroupName = haveGroupName ? `${groupName}` : 'icon';
+      includeGroupName = haveGroupName ? `${groupName}` : 'icon';
       // external
       if (Number(size) === 20) {
         nameSvg = name.replace(/([A-Z])/g, '/$1').slice(1);
       }
 
-      const url = `semcore/icon/svg/${includeGroupName}/${nameSvg}.svg`;
+      const url = `semcore/icon/${old ? 'svg' : 'svg-new'}/${includeGroupName}/${nameSvg}.svg`;
       return (
         <Tooltip title="Download!" key={index}>
           <PreviewChangeIcon>
@@ -190,8 +168,8 @@ class PanelChangeIcon extends PureComponent {
     const haveSizeIcon = filterIcons.size.length > 1;
     const includeName = haveSizeIcon ? `${name}${size.toUpperCase()}` : name;
     const includeSize = haveSizeIcon ? `/${size}` : '';
-
-    const importText = `import ${includeName} from '@semcore/icon/lib${includeGroupName}/${name}${includeSize}'`;
+    const includeLib = old ? `/lib` : '';
+    const importText = `import ${includeName} from '@semcore/icon${includeLib}${includeGroupName}/${name}${includeSize}'`;
 
     return (
       <Copy title="Copied!" text={importText} key={index} trigger="click">
@@ -207,7 +185,7 @@ class PanelChangeIcon extends PureComponent {
   };
 
   render() {
-    const { name } = this.props;
+    const { name, json: dataIcons } = this.props;
     const { action } = this.state;
 
     return (
@@ -251,7 +229,7 @@ class PanelChangeIcon extends PureComponent {
   }
 }
 
-export const ListIcons = ({ data }) => (
+export const ListIcons = ({ data, icons, json, old = false }) => (
   <List>
     {data.map((icon, index) => {
       const Icon = icons[icon.name];
@@ -269,7 +247,10 @@ export const ListIcons = ({ data }) => (
           onClick={() => {
             const node = modalLayout();
             if (!node) return;
-            ReactDOM.render(<PanelChangeIcon name={icon.name} />, node);
+            ReactDOM.render(
+              <PanelChangeIcon name={icon.name} icon={icons[icon.name]} old={old} json={json} />,
+              node,
+            );
           }}
         >
           <Icon width={20} height={20} />
@@ -280,13 +261,20 @@ export const ListIcons = ({ data }) => (
   </List>
 );
 
+const Context = React.createContext();
+
+export const IconGroups = ({ children, ...props }) => {
+  return <Context.Provider value={props} children={children} />;
+};
 export default function({ title }) {
+  const context = React.useContext(Context);
+  const dataIcons = context.json;
   const filterIcons = dataIcons.icons.filter((icon) => icon.group === title);
 
   return (
     <Section>
       <h3>{title}</h3>
-      <ListIcons data={filterIcons} />
+      <ListIcons data={filterIcons} {...context} />
     </Section>
   );
 }

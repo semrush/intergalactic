@@ -1,3 +1,121 @@
+## [10.1.0] - 2022-01-24
+
+### @semcore/accordion
+
+- **Changed** Up version icons and use new icon.
+
+### @semcore/badge
+
+- **Changed** correct line-height value to 1.2.
+
+### @semcore/base-trigger
+
+- **Changed** Up version icons and use new icon.
+
+### @semcore/breadcrumbs
+
+- **Changed** Up version icons and use new icon.
+
+### @semcore/card
+
+- **Changed** Up version icons and use new icon.
+- **Changed** Rewrite code from TS to JS 🧑‍💻
+
+### @semcore/carousel
+
+- **Changed** Up version icons and use new icon.
+
+### @semcore/chart
+
+- **Fixed** Fixed filtering colors without index.
+- **Fixed** Revert color gray in object colors.
+
+### @semcore/data-table
+
+- **Changed** Up version icons and use new icon.
+
+### @semcore/date-picker
+
+- **Changed** Up version icons and use new icon.
+
+### @semcore/errors
+
+- **Changed** Remove don't use dependency @semcore/icon.
+
+### @semcore/feature-popover
+
+- **Changed** Up version icons and use new icon.
+
+### @semcore/feedback-form
+
+- **Changed** Up version icons and use new icon.
+
+### @semcore/fullscreen-modal
+
+- **Changed** Up version icons and use new icon.
+
+### @semcore/icon
+
+- **Added** Add icons 'Hotel' in new icons.
+- **Added** Added import icons from root folder (exm: @semcore/icon/ArrowDown/m)
+- **Changed** Added import new icons
+- **Changed** Old icons you can get from @semcore/icon/lib/Name/Size
+- **Changed** New icons you can get from @semcore/icon/Name/Size
+
+### @semcore/modal
+
+- **Changed** Up version icons and use new icon.
+
+### @semcore/notice
+
+- **Changed** Up version icons and use new icon.
+
+### @semcore/notice-bubble
+
+- **Changed** Up version icons and use new icon.
+
+### @semcore/pagination
+
+- **Changed** Up version icons and use new icon.
+
+### @semcore/project-create
+
+- **Changed** Up version icons and use new icon.
+
+### @semcore/select
+
+- **Changed** Up version icons and use new icon.
+
+### @semcore/side-panel
+
+- **Changed** Up version icons and use new icon.
+
+### @semcore/skeleton
+
+- **Added** Added Bubble and ScatterPlot chart
+
+### @semcore/table
+
+- **Changed** Up version icons and use new icon.
+
+### @semcore/tag
+
+- **Fixed** [ts] Added type custom in property use.
+- **Changed** Up version icons and use new icon.
+
+### @semcore/tooltip
+
+- **Changed** Remove don't use dependency @semcore/icon.
+
+### @semcore/typography
+
+- **Changed** Up version icons and use new icon.
+- **Changed** Removed the ability to apply media styles via a plugin babel-plugin-react-semcore.
+
+### @semcore/widget-empty
+
+- **Changed** Remove don't use dependency @semcore/icon.
+
 ## [10.0.1] - 2021-12-24
 
 ### @semcore/badge

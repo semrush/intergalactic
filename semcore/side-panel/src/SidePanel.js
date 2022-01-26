@@ -5,9 +5,9 @@ import { Box } from '@semcore/flex-box';
 import { FadeInOut, IFadeInOutProps, ITransformProps, Transform } from '@semcore/animation';
 import Portal, { IPortalProps, PortalProvider } from '@semcore/portal';
 import OutsideClick from '@semcore/outside-click';
-import CloseS from '@semcore/icon/lib/Close/s';
+import CloseIcon from '@semcore/icon/Close/l';
 import fire from '@semcore/utils/lib/fire';
-import findComponent from '@semcore/utils/lib/findComponent';
+import findComponent, { isAdvanceMode } from '@semcore/utils/lib/findComponent';
 import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 import usePreventScroll from '@semcore/utils/lib/use/usePreventScroll';
 
@@ -47,7 +47,7 @@ class RootSidePanel extends Component {
   };
 
   isAdvanceMode() {
-    return !!findComponent(this.asProps.Children, [
+    return isAdvanceMode(this.asProps.Children, [
       SidePanel.Overlay.displayName,
       SidePanel.Panel.displayName,
     ]);
@@ -55,8 +55,7 @@ class RootSidePanel extends Component {
 
   isUsedOverlay() {
     return (
-      !this.isAdvanceMode() ||
-      !!findComponent(this.asProps.Children, [SidePanel.Overlay.displayName])
+      !this.isAdvanceMode() || isAdvanceMode(this.asProps.Children, [SidePanel.Overlay.displayName])
     );
   }
 
@@ -164,7 +163,7 @@ function Close(props) {
 }
 
 Close.defaultProps = {
-  children: <CloseS title="Close" />,
+  children: <CloseIcon title="Close" />,
 };
 Close.enhance = [keyboardFocusEnhance()];
 

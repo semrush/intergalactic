@@ -6,14 +6,15 @@ const colors = preval`
 
 let componentRenderIndex = 0;
 const cache = {};
+const colorReg = /[0-9]/g;
 const colorValues = Object.keys(colors)
-  // @ts-ignore
-  .filter((name) => !name.includes(['gray-01', 'gray-02', 'white-01']))
+  .filter((name) => name.match(colorReg))
   .sort((a, b) => {
-    return parseInt(a.match(/[0-9]/g).join(''), 10) - parseInt(b.match(/[0-9]/g).join(''), 10);
+    return parseInt(a.match(colorReg).join(''), 10) - parseInt(b.match(colorReg).join(''), 10);
   });
 
 export { colors };
+
 export function getColor(key: string): string {
   if (cache[key]) {
     return cache[key];

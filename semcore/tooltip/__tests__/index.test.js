@@ -169,6 +169,22 @@ describe('Tooltip.Popper', () => {
 
     expect(getByTestId('child')).toBeTruthy();
   });
+
+  test('should support render function for children', () => {
+    const component = (
+      <Tooltip visible>
+        {() => (
+          <>
+            <Tooltip.Trigger />
+            <Tooltip.Popper />
+          </>
+        )}
+      </Tooltip>
+    );
+    render(component);
+
+    expect(document.querySelectorAll('[data-ui-name="Tooltip.Popper"]').length).toBe(1);
+  });
 });
 
 describe('TooltipBase', () => {

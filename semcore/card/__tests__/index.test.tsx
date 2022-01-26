@@ -45,4 +45,14 @@ describe('Card', () => {
 
     expect(await snapshot(Component)).toMatchImageSnapshot();
   });
+
+  test('Renders correctly Tittle with hint', async () => {
+    const Component = (
+      <Card>
+        <Card.Title hint>Title</Card.Title>
+      </Card>
+    );
+
+    expect(await snapshot(Component)).toMatchImageSnapshot();
+  });
 });

@@ -1,7 +1,7 @@
 {
   "name": "@semcore/accordion",
   "description": "SEMRush Accordion Component",
-  "version": "3.3.4",
+  "version": "3.4.0",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -16,7 +16,7 @@
     "@semcore/utils": "^3.17",
     "@semcore/animation": "^1.2",
     "@semcore/flex-box": "^4",
-    "@semcore/icon": "^2"
+    "@semcore/icon": "^2.16"
   },
   "peerDependencies": {
     "@semcore/core": "^1.11",

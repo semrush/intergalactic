@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.31.0] - 2022-01-25
+
+### Added
+
+- Added function `isAdvanceMode` in `findComponent`.
+
 ## [3.30.5] - 2021-12-22
 
 ### Fixed

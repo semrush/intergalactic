@@ -11,21 +11,21 @@ export default () => {
         <Donut.Pie dataKey="b" color={colors['green-02']} name="Pie 2" />
         <Donut.Pie dataKey="c" color={colors['violet-04']} name="Pie 3" />
         <Donut.Label>Example</Donut.Label>
-        <Tooltip>
-          {({ dataKey, name }) => {
-            return {
-              children: (
-                <>
-                  <Tooltip.Title>{name}</Tooltip.Title>
-                  <Flex justifyContent="space-between">
-                    <Text bold>{data[dataKey]}</Text>
-                  </Flex>
-                </>
-              ),
-            };
-          }}
-        </Tooltip>
       </Donut>
+      <Tooltip>
+        {({ dataKey, name }) => {
+          return {
+            children: (
+              <>
+                <Tooltip.Title>{name}</Tooltip.Title>
+                <Flex justifyContent="space-between">
+                  <Text bold>{data[dataKey]}</Text>
+                </Flex>
+              </>
+            ),
+          };
+        }}
+      </Tooltip>
     </Plot>
   );
 };

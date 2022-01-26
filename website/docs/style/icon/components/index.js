@@ -4,11 +4,11 @@ import { InstantSearch } from 'react-instantsearch/dom';
 import { connectAutoComplete } from 'react-instantsearch/connectors';
 import algoliasearch from 'algoliasearch/lite';
 
-import IconGroup, { ListIcons } from './icon-group';
+import IconGroup, { IconGroups, ListIcons } from './icon-group';
 import Input from '@semcore/input';
 import { Text } from '@semcore/typography';
-import SearchS from '@semcore/icon/lib/Search/s';
-import CloseXS from '@semcore/icon/lib/Close/xs';
+import SearchS from '@semcore/icon/Search/m';
+import CloseXS from '@semcore/icon/Close/m';
 import observatory from 'static/search/observatory.svg';
 import CONFIG from 'algolia';
 
@@ -68,17 +68,17 @@ function SearchIcons(props) {
   );
 }
 
-export default function() {
+export default function({ icons, old, json }) {
   const [inputValue, updateInputValue] = useState('');
   const [filterIcons, updatefilterIcons] = useState([]);
 
   return (
     <>
-      <SearchIcons filteredIcons={updatefilterIcons} onChangeValue={updateInputValue} />
+      {!old && <SearchIcons filteredIcons={updatefilterIcons} onChangeValue={updateInputValue} />}
 
       {inputValue.length ? (
         filterIcons.length ? (
-          <ListIcons data={filterIcons} />
+          <ListIcons data={filterIcons} icons={icons} old={old} json={json} />
         ) : (
           <NotFound>
             <img src={observatory} alt="observatory" />
@@ -88,9 +88,9 @@ export default function() {
           </NotFound>
         )
       ) : (
-        <>
+        <IconGroups icons={icons} old={old} json={json}>
           <IconGroup title="Navigation" />
-          <IconGroup title="Actions" />
+          <IconGroup title="Action" />
           <IconGroup title="Status" />
           <IconGroup title="Social" />
           <IconGroup title="File" />
@@ -98,10 +98,11 @@ export default function() {
           <IconGroup title="Format" />
           <IconGroup title="Map" />
           <IconGroup title="Misc" />
+          {!old && <IconGroup title="Brand" />}
           <IconGroup title="Color" />
           <IconGroup title="Pay" />
           <IconGroup title="External" />
-        </>
+        </IconGroups>
       )}
     </>
   );

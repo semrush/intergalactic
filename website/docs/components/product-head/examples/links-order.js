@@ -1,16 +1,15 @@
 import React from 'react';
 import Link from '@semcore/link';
-import YoutubeXS from '@semcore/icon/lib/Youtube/xs';
-import ChatXS from '@semcore/icon/lib/Chat/xs';
-import BookXS from '@semcore/icon/lib/Book/xs';
-import MuseumXS from '@semcore/icon/lib/Museum/xs';
-import MobileXS from '@semcore/icon/lib/Mobile/xs';
-import BracketsCodeXS from '@semcore/icon/lib/BracketsCode/xs';
-// import GobletXS from '@semcore/icon/lib/Goblet/xs';
-import MegaphoneXS from '@semcore/icon/lib/Megaphone/xs';
-import NewsXS from '@semcore/icon/lib/News/xs';
-import ChatQuestionXS from '@semcore/icon/lib/ChatQuestion/xs';
-import QuestionAltXS from '@semcore/icon/lib/QuestionAlt/xs';
+import YoutubeXS from '@semcore/icon/Youtube/m';
+import ChatXS from '@semcore/icon/Chat/m';
+import BookXS from '@semcore/icon/Book/m';
+import MuseumXS from '@semcore/icon/Museum/m';
+import MobileXS from '@semcore/icon/Mobile/m';
+import BracketsCodeXS from '@semcore/icon/BracketsCode/m';
+import MegaphoneXS from '@semcore/icon/Megaphone/m';
+import NewsXS from '@semcore/icon/News/m';
+import ChatQuestionXS from '@semcore/icon/ChatQuestion/m';
+import QuestionAltXS from '@semcore/icon/Question/m';
 import styled from 'styled-components';
 
 import Header from '@semcore/product-head';

@@ -1,6 +1,7 @@
 import React from 'react';
 import { cleanup, fireEvent, render, axe } from 'jest-preset-ui/testing';
 import { shouldSupportClassName, shouldSupportRef } from 'jest-preset-ui/shared';
+import snapshot from 'jest-preset-ui/snapshot';
 import Modal from '../src';
 
 describe('Modal', () => {
@@ -49,6 +50,13 @@ describe('Modal', () => {
     const { getByTestId } = render(component);
 
     expect(getByTestId('child')).toBeTruthy();
+  });
+
+  test('should support render function for children', () => {
+    const component = <Modal visible>{() => <Modal.Overlay />}</Modal>;
+    render(component);
+
+    expect(document.querySelectorAll('[data-ui-name="Modal.Overlay"]').length).toBe(1);
   });
 
   test('should block global scroll when visible', () => {

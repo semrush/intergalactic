@@ -95,6 +95,13 @@ describe('Drawer', () => {
     expect(document.body).toHaveStyle('overflow: hidden');
   });
 
+  test('should support render function for children', () => {
+    const component = <SidePanel visible>{() => <SidePanel.Overlay />}</SidePanel>;
+    render(component);
+
+    expect(document.querySelectorAll('[data-ui-name="SidePanel.Overlay"]').length).toBe(1);
+  });
+
   xtest('Should support not block page scroll without Overlay', () => {
     render(
       <SidePanel visible>

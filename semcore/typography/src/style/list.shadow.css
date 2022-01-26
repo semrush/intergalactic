@@ -12,7 +12,7 @@ SContent {
 }
 
 SList SList {
-  margin-top: media(8px);
+  margin-top: 8px;
 }
 
 SItem {
@@ -20,10 +20,10 @@ SItem {
 }
 
 SItem + SItem {
-  margin-top: media(8px);
+  margin-top: 8px;
 }
 
 SMarker {
-  margin-right: media(10px);
+  margin-right: 10px;
   color: var(--gray60);
 }

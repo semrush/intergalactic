@@ -5,8 +5,8 @@ import ResizeObserver from 'resize-observer-polyfill';
 import NavLink from './NavLink';
 import mobileLogo from '../static/logo/semrush-logo.svg';
 import hamburger from '../static/mobile/hamburger.svg';
-import Close from '@semcore/icon/lib/Close/s';
-import SearchM from '@semcore/icon/lib/Search/m';
+import Close from '@semcore/icon/Close/m';
+import SearchM from '@semcore/icon/Search/l';
 import close from '../static/mobile/close.svg';
 import SearchHome from './SearchHome';
 import SideBarNavigation from './SideBarNavigation';
@@ -21,6 +21,7 @@ const HeaderWrapper = styled.header`
   grid-template-rows: 1fr;
   grid-template-columns: 0.5fr 1fr 1fr;
   position: fixed;
+  top: 40px;
   width: inherit;
   padding: 0 40px;
   flex-wrap: nowrap;

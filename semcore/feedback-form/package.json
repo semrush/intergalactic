@@ -1,7 +1,7 @@
 {
   "name": "@semcore/feedback-form",
   "description": "SEMRush Feedback Form Component",
-  "version": "3.3.3",
+  "version": "3.5.0",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -17,7 +17,6 @@
     "@semcore/flex-box": "^4",
     "@semcore/tooltip": "^4",
     "@semcore/spin-container": "^4",
-    "@semcore/icon": "^2",
     "@semcore/button": "^3",
     "@semcore/notice": "^3",
     "final-form": "^4.19",

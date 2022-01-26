@@ -73,7 +73,7 @@ Go to [Grid system](/layout/grid-system) for a detailed description of this comp
 
 @## Breakpoints and grids
 
-> **TL;DR or main thoughts**: most of our products are designed to work with data on the desktop, since there is a lot of data visualization and explaining messages. So adaptability is not yet required for all tools.
+> **TL;DR or main thoughts**: most of our products are designed to work with data on the desktop, since there is a lot of data visualization and explaining messages. So adaptivity is not yet required for all tools.
 
 The main breakpoints that we recommend to use in our interfaces are:
 

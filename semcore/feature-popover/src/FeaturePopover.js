@@ -3,7 +3,7 @@ import { Animation } from '@semcore/animation';
 import createComponent, { Root, Component, sstyled } from '@semcore/core';
 import Popper from '@semcore/popper';
 import { Box } from '@semcore/flex-box';
-import Close from '@semcore/icon/lib/Close/xs';
+import Close from '@semcore/icon/Close/m';
 import { callAllEventHandlers } from '@semcore/utils/lib/assignProps';
 
 import style from './style/feature-popover.shadow.css';

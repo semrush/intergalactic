@@ -2,8 +2,8 @@ import React from 'react';
 import createComponent, { Component, sstyled, Root } from '@semcore/core';
 import Modal from '@semcore/modal';
 import { Box } from '@semcore/flex-box';
-import CloseM from '@semcore/icon/lib/Close/m';
-import ArrowLeftS from '@semcore/icon/lib/ArrowLeft/s';
+import CloseIcon from '@semcore/icon/Close/l';
+import ArrowLeft from '@semcore/icon/ArrowLeft/m';
 import { Text } from '@semcore/typography';
 import fire from '@semcore/utils/lib/fire';
 import logger from '@semcore/utils/lib/logger';
@@ -106,7 +106,7 @@ function Footer(props) {
 
 function Close(props) {
   const SClose = Root;
-  return sstyled(props.styles)(<SClose render={CloseM} />);
+  return sstyled(props.styles)(<SClose render={CloseIcon} />);
 }
 
 function Title(props) {
@@ -126,7 +126,7 @@ function Back(props) {
 
   return sstyled(styles)(
     <SBack render={Box}>
-      <ArrowLeftS />
+      <ArrowLeft />
       <SBackText>
         <Children />
       </SBackText>

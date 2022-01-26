@@ -2,7 +2,9 @@ const path = require('path');
 const fs = require('fs-extra');
 const glob = require('glob');
 const cheerio = require('cheerio');
-const { lib } = require('minimist')(process.argv.slice(2));
+const { lib, sourceFolder = 'svg', outputFolder = '.' } = require('minimist')(
+  process.argv.slice(2),
+);
 const util = require('util');
 const config = require('./config');
 const babel = require('@babel/core');
@@ -12,8 +14,8 @@ const readFile = util.promisify(fs.readFile);
 
 const rootDir = process.cwd();
 const { template, templateDTS = template, transformer, babelConfig: defaultBabelConfig } = lib
-  ? config(lib)
-  : config();
+  ? config(lib, outputFolder === 'lib')
+  : config('react', outputFolder === 'lib');
 const converter = transformer();
 
 function getDescriptionExternalIcons(iconPath, outLib) {
@@ -43,17 +45,6 @@ function getDescriptionIcons(iconPath, outLib) {
   };
 }
 
-function getDescriptionPayIcons(iconPath, outLib) {
-  const name = path.basename(iconPath, '.svg').replace(/('|\s)/g, '');
-  const location = `${outLib}/${name}/index.js`;
-
-  return {
-    name,
-    location,
-    group: '',
-  };
-}
-
 async function svgToReactComponent(iconPath, name, group) {
   try {
     const svg = await readFile(iconPath, 'utf-8');
@@ -61,12 +52,9 @@ async function svgToReactComponent(iconPath, name, group) {
     const $ = cheerio.load(svg, { xmlMode: true });
     const $svg = $('svg');
     if ($svg.attr('viewBox') === undefined) {
-      reject(`Icon "${iconPath}" hasn't viewBox attribute`);
+      throw new Error(`Icon "${iconPath}" hasn't viewBox attribute`);
     }
-    $svg
-      .find('path')
-      .removeAttr('fill-rule')
-      .attr('shape-rendering', 'geometricPrecision');
+    $svg.find('path').attr('shape-rendering', 'geometricPrecision');
     const iconSvg = converter
       ? converter.convert(`<svg>${$svg.html()}</svg>`)
       : `<svg>${$svg.html()}</svg>`;
@@ -116,13 +104,28 @@ const generateIcons = (
   });
 };
 
+function getDescriptionPayIcons(iconPath, outLib) {
+  if (sourceFolder === 'svg-new') return getDescriptionIcons(iconPath, outLib);
+  const name = path.basename(iconPath, '.svg').replace(/('|\s)/g, '');
+  const location = `${outLib}/${name}/index.js`;
+
+  return {
+    name,
+    location,
+    group: '',
+  };
+}
+
 module.exports = function() {
-  const outputFolder = 'lib';
   Promise.all([
-    generateIcons('svg/color', `${outputFolder}/color`, getDescriptionIcons),
-    generateIcons('svg/external/', `${outputFolder}/external`, getDescriptionExternalIcons),
-    generateIcons('/svg/pay/', `${outputFolder}/pay`, getDescriptionPayIcons),
-    generateIcons('svg/icon', outputFolder, getDescriptionIcons),
+    generateIcons(`${sourceFolder}/color`, `${outputFolder}/color`, getDescriptionIcons),
+    generateIcons(
+      `${sourceFolder}/external`,
+      `${outputFolder}/external`,
+      getDescriptionExternalIcons,
+    ),
+    generateIcons(`${sourceFolder}/pay`, `${outputFolder}/pay`, getDescriptionPayIcons),
+    generateIcons(`${sourceFolder}/icon`, outputFolder, getDescriptionIcons),
   ])
     .then(() => {
       console.log('Done! I writed all files icons');
