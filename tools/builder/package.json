@@ -13,7 +13,7 @@
     "execa": "^5.0.0",
     "fs-extra": "^8.1.0",
     "minimist": "^1.2.5",
-    "postcss": "^7.0.27",
+    "postcss": "^8.2.13",
     "postcss-cli": "^7.1.0",
     "postcss-import": "^12.0.1",
     "postcss-inline-comment": "^3.0.0",

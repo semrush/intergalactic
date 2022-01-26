@@ -25,7 +25,7 @@
     "cssnano": "^5.0.7",
     "inky-cli": "^1.0.1",
     "nodemon": "^2.0.12",
-    "postcss": "^8.3.5",
+    "postcss": "^8.2.13",
     "postcss-cli": "^8.3.1",
     "postcss-color-mod-function": "^3.0.3",
     "postcss-css-variables": "^0.18.0",
