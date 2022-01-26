@@ -1,7 +1,7 @@
 import React from 'react';
 import { sstyled } from '@semcore/core';
-import { render, fireEvent, cleanup } from 'jest-preset-ui/testing';
-import snapshot from 'jest-preset-ui/snapshot';
+import { render, fireEvent, cleanup } from '@semcore/jest-preset-ui/testing';
+import snapshot from '@semcore/jest-preset-ui/snapshot';
 import TabLine from '../src';
 
 describe('TabLine', () => {

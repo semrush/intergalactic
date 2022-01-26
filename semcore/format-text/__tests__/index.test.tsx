@@ -1,7 +1,7 @@
 import React from 'react';
-import { cleanup } from 'jest-preset-ui/testing';
-import { shouldSupportClassName, shouldSupportRef } from 'jest-preset-ui/shared';
-import snapshot from 'jest-preset-ui/snapshot';
+import { cleanup } from '@semcore/jest-preset-ui/testing';
+import { shouldSupportClassName, shouldSupportRef } from '@semcore/jest-preset-ui/shared';
+import snapshot from '@semcore/jest-preset-ui/snapshot';
 import FormatText from '../src';
 
 describe('FormatText', () => {

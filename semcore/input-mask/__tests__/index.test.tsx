@@ -1,6 +1,6 @@
 import React from 'react';
-import { cleanup } from 'jest-preset-ui/testing';
-import { shouldSupportClassName, shouldSupportRef } from 'jest-preset-ui/shared';
+import { cleanup } from '@semcore/jest-preset-ui/testing';
+import { shouldSupportClassName, shouldSupportRef } from '@semcore/jest-preset-ui/shared';
 import InputMask from '../src';
 
 describe('InputMask', () => {

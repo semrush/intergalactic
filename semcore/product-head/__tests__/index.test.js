@@ -1,6 +1,6 @@
 import React from 'react';
-import { cleanup } from 'jest-preset-ui/testing';
-import snapshot from 'jest-preset-ui/snapshot';
+import { cleanup } from '@semcore/jest-preset-ui/testing';
+import snapshot from '@semcore/jest-preset-ui/snapshot';
 import ProductHead, { Info, Title } from '../src';
 
 describe('ProductHead', () => {

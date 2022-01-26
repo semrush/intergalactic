@@ -1,8 +1,8 @@
 import React from 'react';
-import { render, cleanup, axe } from 'jest-preset-ui/testing';
-import snapshot from 'jest-preset-ui/snapshot';
+import { render, cleanup, axe } from '@semcore/jest-preset-ui/testing';
+import snapshot from '@semcore/jest-preset-ui/snapshot';
 import Notice, { NoticeSmart } from '../src';
-import { shouldSupportClassName, shouldSupportRef } from 'jest-preset-ui/shared';
+import { shouldSupportClassName, shouldSupportRef } from '@semcore/jest-preset-ui/shared';
 
 describe('Notice', () => {
   afterEach(cleanup);

@@ -1,6 +1,6 @@
 import React from 'react';
-import { cleanup, axe, render } from 'jest-preset-ui/testing';
-import snapshot from 'jest-preset-ui/snapshot';
+import { cleanup, axe, render } from '@semcore/jest-preset-ui/testing';
+import snapshot from '@semcore/jest-preset-ui/snapshot';
 import DropdownMenu from '../src';
 
 describe('DropdownMenu', () => {

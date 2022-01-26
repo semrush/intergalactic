@@ -1,12 +1,12 @@
 import React from 'react';
-import { render, fireEvent, cleanup } from 'jest-preset-ui/testing';
-import snapshot from 'jest-preset-ui/snapshot';
+import { render, fireEvent, cleanup } from '@semcore/jest-preset-ui/testing';
+import snapshot from '@semcore/jest-preset-ui/snapshot';
 import {
   NoticeBubbleContainer,
   NoticeBubble as NoticeBubbleImport,
   NoticeBubbleWarning as NoticeBubbleWarningImport,
 } from '../src';
-import { shouldSupportClassName, shouldSupportRef } from 'jest-preset-ui/shared';
+import { shouldSupportClassName, shouldSupportRef } from '@semcore/jest-preset-ui/shared';
 
 const NoticeBubble = React.forwardRef((props, ref) => (
   <>
