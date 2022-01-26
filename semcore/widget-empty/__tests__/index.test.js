@@ -1,8 +1,8 @@
 import React from 'react';
-import { cleanup } from 'jest-preset-ui/testing';
-import { shouldSupportClassName, shouldSupportRef } from 'jest-preset-ui/shared';
+import { cleanup } from '@semcore/jest-preset-ui/testing';
+import { shouldSupportClassName, shouldSupportRef } from '@semcore/jest-preset-ui/shared';
 import WidgetEmpty, { NoData, Error } from '../src';
-import snapshot from 'jest-preset-ui/snapshot';
+import snapshot from '@semcore/jest-preset-ui/snapshot';
 
 describe('WidgetEmpty', () => {
   afterEach(cleanup);
@@ -12,7 +12,7 @@ describe('WidgetEmpty', () => {
 
   test('Renders correctly WidgetEmpty', async () => {
     const component = (
-      <WidgetEmpty icon='line-chart'>
+      <WidgetEmpty icon="line-chart">
         <WidgetEmpty.Title>Title</WidgetEmpty.Title>
         <WidgetEmpty.Description>Description</WidgetEmpty.Description>
       </WidgetEmpty>
@@ -22,17 +22,17 @@ describe('WidgetEmpty', () => {
 
   test('Renders correctly NoData', async () => {
     const component = (
-      <NoData description='Description' type='line-chart'>No Data</NoData>
+      <NoData description="Description" type="line-chart">
+        No Data
+      </NoData>
     );
     expect(await snapshot(component)).toMatchImageSnapshot();
-  })
+  });
 
   test('Renders correctly Error', async () => {
-    const component = (
-      <Error description='Description'>Error</Error>
-    );
+    const component = <Error description="Description">Error</Error>;
     expect(await snapshot(component)).toMatchImageSnapshot();
-  })
+  });
 });
 
 describe('WidgetEmpty.Title', () => {

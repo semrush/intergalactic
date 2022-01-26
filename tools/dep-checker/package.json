@@ -1,5 +1,5 @@
 {
-  "name": "dep-checker",
+  "name": "@semcore/dep-checker",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {

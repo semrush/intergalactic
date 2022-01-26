@@ -1,5 +1,5 @@
 import React from 'react';
-import { cleanup, render } from 'jest-preset-ui/testing';
+import { cleanup, render } from '@semcore/jest-preset-ui/testing';
 import createComponent, { Component } from '@semcore/core';
 import NeighborLocation, { neighborLocationEnhance } from '../src';
 

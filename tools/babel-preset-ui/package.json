@@ -1,5 +1,5 @@
 {
-  "name": "babel-preset-ui",
+  "name": "@semcore/babel-preset-ui",
   "version": "1.0.0",
   "description": "The babel preset for all packages of the mono-repo.",
   "main": "./.babelrc.js",

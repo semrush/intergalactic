@@ -1,5 +1,5 @@
 {
-  "name": "changelogs-by-date",
+  "name": "@semcore/changelogs-by-date",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",

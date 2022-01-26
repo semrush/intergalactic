@@ -1,5 +1,5 @@
 {
-  "name": "babel-plugin-recharts",
+  "name": "@semcore/babel-plugin-recharts",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",

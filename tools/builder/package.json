@@ -1,5 +1,5 @@
 {
-  "name": "builder",
+  "name": "@semcore/builder",
   "version": "1.0.0",
   "bin": {
     "build": "bin/index.js"
@@ -9,7 +9,7 @@
   "dependencies": {
     "@babel/cli": "^7.8.4",
     "@babel/core": "^7.8.7",
-    "babel-preset-ui": "*",
+    "@semcore/babel-preset-ui": "*",
     "execa": "^5.0.0",
     "fs-extra": "^8.1.0",
     "minimist": "^1.2.5",

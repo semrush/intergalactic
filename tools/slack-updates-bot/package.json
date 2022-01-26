@@ -1,5 +1,5 @@
 {
-  "name": "slack-updates-bot",
+  "name": "@semcore/slack-updates-bot",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "axios": "^0.21.2",
-    "changelogs-by-date": "*",
+    "@semcore/changelogs-by-date": "*",
     "dayjs": "^1.8.17",
     "lodash": "^4.17.15"
   }

@@ -1,7 +1,7 @@
 import React from 'react';
-import { cleanup, render, axe } from 'jest-preset-ui/testing';
-import snapshot from 'jest-preset-ui/snapshot';
-import { shouldSupportClassName, shouldSupportRef } from 'jest-preset-ui/shared';
+import { cleanup, render, axe } from '@semcore/jest-preset-ui/testing';
+import snapshot from '@semcore/jest-preset-ui/snapshot';
+import { shouldSupportClassName, shouldSupportRef } from '@semcore/jest-preset-ui/shared';
 import propsForElement from '@semcore/utils/lib/propsForElement';
 import Link from '../src';
 

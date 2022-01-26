@@ -1,5 +1,5 @@
 {
-  "name": "postcss-theme-replacer",
+  "name": "@semcore/postcss-theme-replacer",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",

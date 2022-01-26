@@ -14,7 +14,7 @@ module.exports = function(babel, opts = {}) {
       'babel-plugin-preval',
       '@babel/plugin-transform-runtime',
       [
-        'babel-plugin-recharts',
+        '@semcore/babel-plugin-recharts',
         {
           replacePattern: ['lib', 'es6'],
           ...opts.recharts,
@@ -32,7 +32,7 @@ module.exports = function(babel, opts = {}) {
             },
           ],
           [
-            'babel-plugin-recharts',
+            '@semcore/babel-plugin-recharts',
             {
               replacePattern: ['es6', 'lib'],
             },
