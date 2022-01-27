@@ -2403,10 +2403,10 @@
     string-hash "^1.1.3"
     svg-tag-names "^2.0.1"
 
-"@semcore/theme-redesign@^1.2.2":
-  version "1.2.2"
-  resolved "https://registry.yarnpkg.com/@semcore/theme-redesign/-/theme-redesign-1.2.2.tgz#7fc58d4491c56f5d23a6de61f2d772418b63bc0e"
-  integrity sha512-ATq20qu/RmastMD5u90f/GnSJ687dxiBohJR+WeNO2LYDE9wAgTYtFhEcYFH85TKA3vZJGlr4/XeGJFtu7zbJg==
+"@semcore/theme-redesign@^1.3.1":
+  version "1.3.1"
+  resolved "https://registry.yarnpkg.com/@semcore/theme-redesign/-/theme-redesign-1.3.1.tgz#33d62b9776dc2bef2fb03ec741fd270220e0b130"
+  integrity sha512-+tfshvLW2APOTgXQ2RZVKu1atXG+NugMimyk7pFfWy82xps58CkH5HFu3YWsrYQUwEBoIBJ+D37rb2cS1Fj9Zg==
 
 "@sindresorhus/is@^0.14.0":
   version "0.14.0"
