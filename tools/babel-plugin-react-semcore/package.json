@@ -4,8 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "test": "echo 'no test =('",
-    "test2": "jest index.test.js --no-cache"
+    "test": "jest index.test.js --no-cache"
   },
   "dependencies": {
     "@semcore/babel-plugin-shadow": "^1.2",

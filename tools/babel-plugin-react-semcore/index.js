@@ -230,7 +230,8 @@ module.exports = function({ types: t }, opts) {
         if (!this.themeMeta.length || !options.theme) return;
 
         const getThemeCssPaths = () => {
-          const pkgName = getPkgNameFromFilePath(state.file.opts.filename, options.scope);
+          const pkgName =
+            options.pkgName || getPkgNameFromFilePath(state.file.opts.filename, options.scope);
           const pkgJsonPath = getPkgJsonFromPkgName(
             state.file.opts.filename,
             pkgName,
