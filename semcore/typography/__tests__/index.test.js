@@ -1,9 +1,9 @@
 import React from 'react';
-import { cleanup, render, axe } from 'jest-preset-ui/testing';
+import { cleanup, render, axe } from '@semcore/jest-preset-ui/testing';
 import Check from '@semcore/icon/Check/m';
 import { Blockquote, List, Text, Hint } from '../src';
-import snapshot from 'jest-preset-ui/snapshot';
-import { shouldSupportClassName, shouldSupportRef } from 'jest-preset-ui/shared';
+import snapshot from '@semcore/jest-preset-ui/snapshot';
+import { shouldSupportClassName, shouldSupportRef } from '@semcore/jest-preset-ui/shared';
 
 describe('Typography', () => {
   afterEach(cleanup);

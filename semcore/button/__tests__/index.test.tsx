@@ -1,6 +1,6 @@
 import React from 'react';
-import { cleanup, fireEvent, render } from 'jest-preset-ui/testing';
-import snapshot from 'jest-preset-ui/snapshot';
+import { cleanup, fireEvent, render } from '@semcore/jest-preset-ui/testing';
+import snapshot from '@semcore/jest-preset-ui/snapshot';
 import NeighborLocation from '@semcore/neighbor-location';
 import { Flex } from '@semcore/flex-box';
 import Button from '../src';

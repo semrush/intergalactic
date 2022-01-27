@@ -1,8 +1,8 @@
 import React from 'react';
 import { FilterTrigger } from '@semcore/base-trigger';
-import { cleanup, fireEvent, render, axe } from 'jest-preset-ui/testing';
-import { shouldSupportClassName, shouldSupportRef } from 'jest-preset-ui/shared';
-import snapshot from 'jest-preset-ui/snapshot';
+import { cleanup, fireEvent, render, axe } from '@semcore/jest-preset-ui/testing';
+import { shouldSupportClassName, shouldSupportRef } from '@semcore/jest-preset-ui/shared';
+import snapshot from '@semcore/jest-preset-ui/snapshot';
 import Select from '../src';
 import InputSearch from '../src/InputSearch';
 

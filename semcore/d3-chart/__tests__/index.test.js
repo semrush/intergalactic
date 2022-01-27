@@ -1,11 +1,11 @@
 import React from 'react';
 // import { bisector } from 'd3-array';
 import { scaleLinear, scaleBand } from 'd3-scale';
-import { render, fireEvent, cleanup } from 'jest-preset-ui/testing';
-import { shouldSupportClassName, shouldSupportRef } from 'jest-preset-ui/shared';
+import { render, fireEvent, cleanup } from '@semcore/jest-preset-ui/testing';
+import { shouldSupportClassName, shouldSupportRef } from '@semcore/jest-preset-ui/shared';
 import { Plot, YAxis, XAxis, Venn, Bar, StackBar, colors } from '../src';
 import { getIndexFromData } from '../src/utils';
-import snapshot from 'jest-preset-ui/snapshot';
+import snapshot from '@semcore/jest-preset-ui/snapshot';
 import { minMax, Area, StackedArea } from '@semcore/d3-chart';
 import { curveCardinal } from 'd3-shape';
 
@@ -314,7 +314,7 @@ describe('Bar chart', () => {
         <XAxis>
           <XAxis.Ticks />
         </XAxis>
-        <Bar x="time" y="stack1" duration={0}/>
+        <Bar x="time" y="stack1" duration={0} />
       </Plot>
     );
 

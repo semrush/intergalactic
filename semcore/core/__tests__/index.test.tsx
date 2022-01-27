@@ -1,6 +1,6 @@
 import React, { HTMLAttributes } from 'react';
-import { cleanup, fireEvent, render } from 'jest-preset-ui/testing';
-import { shouldSupportRef } from 'jest-preset-ui/shared';
+import { cleanup, fireEvent, render } from '@semcore/jest-preset-ui/testing';
+import { shouldSupportRef } from '@semcore/jest-preset-ui/shared';
 import createComponent, { createBaseComponent, Component, IComponentProps } from '../src';
 
 class RootTestClass extends Component<IComponentProps<{ test: 'test' }>> {
