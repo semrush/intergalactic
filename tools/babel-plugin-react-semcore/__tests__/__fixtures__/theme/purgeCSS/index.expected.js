@@ -3,20 +3,16 @@ import React from 'react';
 import { styled, css, __css__, set, create, map } from '@semcore/core';
 /*__reshadow-styles__:"./button.shadow.css"*/
 
-/*__reshadow-styles__:"../../__theme_fixture__/button-purge/button.shadow.css"*/
 var _ref =
     /*__reshadow_css_start__*/
     (__css__(
       /*__inner_css_start__*/
-      '.___SButton_12c2l_gg_{padding:0 20px;background:purple}.___SButton_12c2l_gg_.__theme_12c2l_gg_.__theme_default_12c2l_gg_{background:#bada55}',
-      /*__inner_css_end__*/
-      'z5y4k3',
+      '.___SButton_wdxwg_gg_{padding:0 20px;background:purple}.___SButton_wdxwg_gg_._theme_default_wdxwg_gg_{background:#bada55}',
+      '6pdq09_gg_',
     ),
-    /*__reshadow_css_end__*/
     {
-      __SButton: `___SButton_12c2l_gg_`,
-      _theme: `__theme_12c2l_gg_`,
-      _theme_default: `__theme_default_12c2l_gg_`,
+      __SButton: `___SButton_wdxwg_gg_`,
+      _theme_default: `_theme_default_wdxwg_gg_`,
     }),
   styles = _extends({}, _ref);
 
