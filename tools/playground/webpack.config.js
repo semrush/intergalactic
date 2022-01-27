@@ -41,7 +41,7 @@ module.exports = function() {
             loader: 'babel-loader',
             options: {
               babelrc: false,
-              presets: ['babel-preset-ui'],
+              presets: ['@semcore/babel-preset-ui'],
             },
           },
         },

@@ -26,6 +26,6 @@
     "react": "16.8 - 17"
   },
   "jest": {
-    "preset": "jest-preset-ui"
+    "preset": "@semcore/jest-preset-ui"
   }
 }

@@ -1,5 +1,5 @@
 {
-  "name": "gcs-upload",
+  "name": "@semcore/gcs-upload",
   "version": "1.0.0",
   "description": "package for uploading files to semrush.static",
   "main": "index.js",

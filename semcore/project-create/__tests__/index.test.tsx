@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, fireEvent, cleanup } from 'jest-preset-ui/testing';
+import { render, fireEvent, cleanup } from '@semcore/jest-preset-ui/testing';
 import ProjectCreate from '../src';
 
 describe('ProjectCreate', () => {

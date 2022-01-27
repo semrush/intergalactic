@@ -1,5 +1,5 @@
 import React from 'react';
-import { cleanup, render } from 'jest-preset-ui/testing';
+import { cleanup, render } from '@semcore/jest-preset-ui/testing';
 import Portal, { PortalProvider } from '../src';
 
 describe('Portal', () => {
