@@ -1,10 +1,18 @@
 const path = require('path');
 const chalk = require('chalk');
-const figlet = require('figlet');
+const { get } = require('axios');
 
 module.exports = async function(args) {
-  console.log(chalk.yellow(figlet.textSync('Ö Б Н У Л И С Ь !', { font: 'Banner' })));
-  console.log('\n\n');
+  console.log(chalk.green('Starting super publisher\n'));
+  try {
+    const {
+      data: {
+        contents: { jokes },
+      },
+    } = await get(`https://api.jokes.one/jod`, { headers: { 'Content-Type': 'application/json' } });
+    console.log(chalk.yellow(jokes[0].joke.text));
+    console.log('\n\n');
+  } catch (err) {}
 
   const taskRunner = require(path.join(process.cwd(), '.publisher'));
   let tasks = await taskRunner(args);
