@@ -2,6 +2,8 @@
 title: Icons old
 ---
 
+> For automatically update to new icons, use the [code-mode](/utils/code-mod/) utility.
+
 @import icons-old
 
 @## Sizes
