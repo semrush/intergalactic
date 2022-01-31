@@ -11,7 +11,7 @@ const path = require('path');
 const fse = require('fs-extra');
 const glob = require('glob');
 // eslint-disable-next-line import/no-extraneous-dependencies
-const changeLogsByDate = require('changelogs-by-date');
+const changeLogsByDate = require('@semcore/changelogs-by-date');
 const pkg = require('./package');
 const components = require('./components');
 
