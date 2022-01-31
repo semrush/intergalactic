@@ -26,7 +26,6 @@
   },
   "devDependencies": {
     "@mailchimp/mailchimp_marketing": "^3.0.30",
-    "@reshadow/prettier": "^0.0.1-alpha.70",
     "@types/jest": "^26.0.23",
     "@types/jest-image-snapshot": "^2.11.1",
     "@types/react": "^17.0.0",
