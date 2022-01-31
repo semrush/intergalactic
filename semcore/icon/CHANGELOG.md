@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.17.1] - 2022-01-31
+
+### Fixed
+
+- Fixed view icon `MailOpenFilled` size `m`.
+
 ## [2.17.0] - 2022-01-17
 
 ### Added
