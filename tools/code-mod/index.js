@@ -44,7 +44,7 @@ async function getSourceFilesDir() {
     type: 'input',
     name: 'dir',
     message: 'Input relative path to dir with source files:',
-    validate: async function(value) {
+    validate: async function (value) {
       fs.statSync(path.resolve(process.cwd(), value), (e) => {
         if (e) {
           return `Directory ${value} doesn't exist.\n Try again, please`;

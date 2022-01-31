@@ -30,7 +30,7 @@ export function definedNullData(x, y) {
 
 export function definedData(x, y) {
   return (p) => {
-    return p[x] !== null && p[x] !== undefined && (p[y] !== null && p[y] !== undefined);
+    return p[x] !== null && p[x] !== undefined && p[y] !== null && p[y] !== undefined;
   };
 }
 
@@ -74,10 +74,7 @@ export function getNullData(data, defined, name) {
       }
 
       if (data.length - 1 === i) {
-        const defPrev = data
-          .slice()
-          .reverse()
-          .find(defined);
+        const defPrev = data.slice().reverse().find(defined);
         acc.push({
           ...d,
           [name]: defPrev ? defPrev[name] : null,

@@ -8,28 +8,28 @@ import ChevronLeft from '@semcore/icon/ChevronLeft/l';
 import style from './style/carousel.shadow.css';
 
 const position = {
-  getItemMin: function(items) {
+  getItemMin: function (items) {
     let indexItem = 0;
-    items.forEach(function(item, index) {
+    items.forEach(function (item, index) {
       if (item.position < items[indexItem].position) {
         indexItem = index;
       }
     });
     return indexItem;
   },
-  getItemMax: function(items) {
+  getItemMax: function (items) {
     let indexItem = 0;
-    items.forEach(function(item, index) {
+    items.forEach(function (item, index) {
       if (item.position > items[indexItem].position) {
         indexItem = index;
       }
     });
     return indexItem;
   },
-  getMin: function(items) {
+  getMin: function (items) {
     return items[position.getItemMin(items)].position;
   },
-  getMax: function(items) {
+  getMax: function (items) {
     return items[position.getItemMax(items)].position;
   },
 };

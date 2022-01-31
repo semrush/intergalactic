@@ -1,4 +1,4 @@
-module.exports = function({ types }) {
+module.exports = function ({ types }) {
   return {
     visitor: {
       ImportDeclaration(path, { opts }) {

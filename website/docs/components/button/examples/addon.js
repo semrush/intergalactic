@@ -3,7 +3,7 @@ import Button from '@semcore/button';
 import CheckXS from '@semcore/icon/Check/m';
 import ArrowRightXS from '@semcore/icon/ArrowRight/m';
 
-export default function() {
+export default function () {
   return (
     <>
       <Button addonLeft={CheckXS} addonRight={ArrowRightXS}>

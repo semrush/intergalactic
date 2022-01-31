@@ -3,7 +3,7 @@ const glob = require('glob');
 const cheerio = require('cheerio');
 const path = require('path');
 
-module.exports = async function() {
+module.exports = async function () {
   const publicPath = path.join(process.cwd(), '/svg');
 
   glob(`${path.resolve(__dirname)}/svg/**/*.svg`, {}, async (er, files) => {
@@ -35,13 +35,9 @@ function parsingSvg(filePath) {
         normalizeWhitespace: false,
       });
 
-      const pathSvg = $('body')
-        .find('path')
-        .removeAttr('id');
+      const pathSvg = $('body').find('path').removeAttr('id');
 
-      const polygonSvg = $('body')
-        .find('polygon')
-        .removeAttr('id');
+      const polygonSvg = $('body').find('polygon').removeAttr('id');
 
       const svg = $('body').find('svg');
 

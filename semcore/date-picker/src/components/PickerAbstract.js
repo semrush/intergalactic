@@ -42,15 +42,11 @@ class PickerAbstract extends Component {
   static enhance = [i18nEnhance()];
 
   static add = (date, amount, unit) => {
-    return dayjs(date)
-      .add(amount, unit)
-      .toDate();
+    return dayjs(date).add(amount, unit).toDate();
   };
 
   static subtract = (date, amount, unit) => {
-    return dayjs(date)
-      .subtract(amount, unit)
-      .toDate();
+    return dayjs(date).subtract(amount, unit).toDate();
   };
 
   navigateStep;
@@ -84,9 +80,7 @@ class PickerAbstract extends Component {
   navigateView = (direction) => {
     const { displayedPeriod } = this.asProps;
     const action = direction >= 1 ? 'add' : 'subtract';
-    const date = dayjs(displayedPeriod)
-      [action](1, this.navigateStep)
-      .toDate();
+    const date = dayjs(displayedPeriod)[action](1, this.navigateStep).toDate();
     this.handlers.displayedPeriod(date);
   };
 

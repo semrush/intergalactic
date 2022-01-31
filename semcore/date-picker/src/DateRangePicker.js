@@ -35,48 +35,23 @@ class DateRangePickerRoot extends RangePickerAbstract {
     return [
       {
         children: getI18nText('last2Days'),
-        value: [
-          dayjs(today)
-            .subtract(1, 'day')
-            .toDate(),
-          today,
-        ],
+        value: [dayjs(today).subtract(1, 'day').toDate(), today],
       },
       {
         children: getI18nText('lastWeek'),
-        value: [
-          dayjs(today)
-            .subtract(6, 'day')
-            .toDate(),
-          today,
-        ],
+        value: [dayjs(today).subtract(6, 'day').toDate(), today],
       },
       {
         children: getI18nText('last2Weeks'),
-        value: [
-          dayjs(today)
-            .subtract(13, 'day')
-            .toDate(),
-          today,
-        ],
+        value: [dayjs(today).subtract(13, 'day').toDate(), today],
       },
       {
         children: getI18nText('lastMonth'),
-        value: [
-          dayjs(today)
-            .subtract(1, 'month')
-            .toDate(),
-          today,
-        ],
+        value: [dayjs(today).subtract(1, 'month').toDate(), today],
       },
       {
         children: getI18nText('last2Months'),
-        value: [
-          dayjs(today)
-            .subtract(2, 'month')
-            .toDate(),
-          today,
-        ],
+        value: [dayjs(today).subtract(2, 'month').toDate(), today],
       },
     ];
   }

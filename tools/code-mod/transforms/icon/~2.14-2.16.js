@@ -41,7 +41,7 @@ const MAP_RENAME_NAME = {
   TimeWristwatch: 'Wristwatch',
   InfoOutline: 'Info',
   QuestionAlt: 'Question',
-  Repeat: 'Reload'
+  Repeat: 'Reload',
 };
 
 //@semcore/icon/Icon/m
@@ -63,7 +63,7 @@ function generateNewPath(path) {
   return path;
 }
 
-module.exports = function(fileInfo, { jscodeshift: j }) {
+module.exports = function (fileInfo, { jscodeshift: j }) {
   const ast = j(fileInfo.source);
 
   // replace group and name icons

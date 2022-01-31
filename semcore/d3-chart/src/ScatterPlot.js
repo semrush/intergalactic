@@ -34,17 +34,11 @@ class ScatterPlotRoot extends Component {
   animationCircle() {
     const { duration, uid, r, value } = this.asProps;
     const radius = r ? r : value ? 12 : 5.5;
-    const selectRect = transition()
-      .selection()
-      .selectAll(`[id^=${uid}]`)
-      .attr('r', 0);
+    const selectRect = transition().selection().selectAll(`[id^=${uid}]`).attr('r', 0);
     const selectRectNode = selectRect.node();
 
     if (duration > 0 && selectRectNode) {
-      selectRect
-        .transition()
-        .duration(duration)
-        .attr('r', radius);
+      selectRect.transition().duration(duration).attr('r', radius);
     }
   }
 

@@ -124,7 +124,9 @@ declare const Select: (<T, V extends SelectValue = SelectValue>(
     props: CProps<ISelectOptionProps & T, ISelectContext, ISelectHandlers>,
   ) => ReturnEl) & {
     Addon: typeof DropdownMenu.Item.Addon;
-    Checkbox: <T>(props: CProps<IBoxProps & { theme?: string; selected?: boolean } & T>) => ReturnEl;
+    Checkbox: <T>(
+      props: CProps<IBoxProps & { theme?: string; selected?: boolean } & T>,
+    ) => ReturnEl;
   };
   OptionTitle: typeof DropdownMenu.ItemTitle;
   OptionHint: typeof DropdownMenu.ItemHint;

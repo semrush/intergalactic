@@ -47,5 +47,5 @@ declare const ScrollAreaComponent: (<T>(
 
 declare const eventCalculate: any;
 
-export {eventCalculate}
+export { eventCalculate };
 export default ScrollAreaComponent;

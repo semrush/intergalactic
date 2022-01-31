@@ -70,7 +70,7 @@ class Changelog extends React.Component {
   renderers() {
     return {
       list: (props) => <List {...props} />,
-      listItem: function({ children }) {
+      listItem: function ({ children }) {
         return (
           <ListItem>
             {getLabel(children[0]?.props?.children[0]?.props?.children)}
@@ -78,7 +78,7 @@ class Changelog extends React.Component {
           </ListItem>
         );
       },
-      heading: function({ level, children }) {
+      heading: function ({ level, children }) {
         if (level === 2) {
           const version = children[0]?.props?.children;
           return (

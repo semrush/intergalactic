@@ -44,7 +44,10 @@ function beforeAfterReplacer(path, createWrapChildren = true) {
   const { before, after } = props;
 
   return b.jsxElement(
-    b.jsxOpeningElement(name, attributes.filter((node) => !propArr.includes(node.name.name))),
+    b.jsxOpeningElement(
+      name,
+      attributes.filter((node) => !propArr.includes(node.name.name)),
+    ),
     node.closingElement,
     [
       before && b.jsxText('\n'),

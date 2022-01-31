@@ -63,7 +63,7 @@ function setValueSize(j, valueSize) {
   return valueSize;
 }
 
-module.exports = function(fileInfo, { jscodeshift: j }) {
+module.exports = function (fileInfo, { jscodeshift: j }) {
   const ast = j(fileInfo.source);
   // RadioGroup remove renderFunction
   ast

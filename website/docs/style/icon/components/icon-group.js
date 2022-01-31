@@ -266,7 +266,7 @@ const Context = React.createContext();
 export const IconGroups = ({ children, ...props }) => {
   return <Context.Provider value={props} children={children} />;
 };
-export default function({ title }) {
+export default function ({ title }) {
   const context = React.useContext(Context);
   const dataIcons = context.json;
   const filterIcons = dataIcons.icons.filter((icon) => icon.group === title);

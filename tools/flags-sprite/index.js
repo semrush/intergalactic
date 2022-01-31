@@ -106,7 +106,7 @@ const generateCssSprite = (result, size, outLib, version) => {
   });
 };
 
-module.exports = async function(version) {
+module.exports = async function (version) {
   version = version.split('.').join('_');
 
   let result1x = await generatePngSprite('png', '1x', 'lib/sprites');

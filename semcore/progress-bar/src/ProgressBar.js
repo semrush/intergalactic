@@ -77,7 +77,7 @@ const ProgressBar = createComponent(ProgressBarRoot, {
 
 export default ProgressBar;
 
-const Progress = React.forwardRef(function(props, ref) {
+const Progress = React.forwardRef(function (props, ref) {
   logger.warn(
     true,
     "Component '<Progress/>' is deprecated, use '<ProgressBar.Value/>'",
@@ -86,7 +86,7 @@ const Progress = React.forwardRef(function(props, ref) {
   return <ProgressBar.Value ref={ref} {...props} />;
 });
 
-const Bar = React.forwardRef(function(props, ref) {
+const Bar = React.forwardRef(function (props, ref) {
   logger.warn(
     true,
     "Component '<Bar/>' is deprecated, please use '<ProgressBar/>'",

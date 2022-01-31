@@ -1,9 +1,5 @@
-import React  from 'react';
-import createComponent, {
-  Component,
-  Root,
-  sstyled,
-} from '@semcore/core';
+import React from 'react';
+import createComponent, { Component, Root, sstyled } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
 import { neighborLocationEnhance } from '@semcore/neighbor-location';
 import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
@@ -31,24 +27,17 @@ class RootBaseTrigger extends Component {
   render() {
     const SBaseTrigger = Root;
     const SInner = 'div';
-    const {
-      Children,
-      styles,
-      theme,
-    } = this.asProps;
+    const { Children, styles, theme } = this.asProps;
 
     logger.warn(
       theme !== undefined,
-      'The \'theme\' property is deprecated, use \'state\'',
+      "The 'theme' property is deprecated, use 'state'",
       this.asProps['data-ui-name'] || BaseTrigger.displayName,
     );
 
     // TODO: add aria
     return sstyled(styles)(
-      <SBaseTrigger
-        render={Box}
-        state={theme}
-      >
+      <SBaseTrigger render={Box} state={theme}>
         <SInner>{addonTextChildren(Children, BaseTrigger.Text, BaseTrigger.Addon)}</SInner>
       </SBaseTrigger>,
     );

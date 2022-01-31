@@ -13,9 +13,9 @@ module.exports = (name, taskfn) => {
           progress: (message) => reporter.progress(message),
           skip: () => reporter.emit('skip', name),
           log: (message) => reporter.emit('message', name, message),
-          warn: (message) => reporter.emit('warning', name, message)
+          warn: (message) => reporter.emit('warning', name, message),
         },
-        args
+        args,
       );
 
       reporter.emit('done', name);

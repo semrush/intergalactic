@@ -31,9 +31,9 @@ module.exports = postcss.plugin(pluginName, (opts = {}) => {
   return (root, result) => {
     let css = postcss.parse(`@media (${options.mediaQuery}) {}`);
     const media = css.last;
-    root.walkRules(function(rule) {
+    root.walkRules(function (rule) {
       const mediaRule = rule.clone({ nodes: [] });
-      rule.walkDecls(function(decl) {
+      rule.walkDecls(function (decl) {
         if (decl.value && decl.value.includes(functionName + '(')) {
           const value = decl.value.replace(regexp, '$1');
           decl.value = value;

@@ -46,7 +46,7 @@ describe('Link', () => {
   });
 
   test('should support additional elements as props', async () => {
-    const Addon = React.forwardRef(function(p, ref) {
+    const Addon = React.forwardRef(function (p, ref) {
       return (
         <span ref={ref} {...propsForElement(p)}>
           Addon prop

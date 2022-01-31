@@ -9,13 +9,9 @@ import snapshot from '@semcore/jest-preset-ui/snapshot';
 import { minMax, Area, StackedArea } from '@semcore/d3-chart';
 import { curveCardinal } from 'd3-shape';
 
-const xScale = scaleLinear()
-  .range([10, 100])
-  .domain([0, 10]);
+const xScale = scaleLinear().range([10, 100]).domain([0, 10]);
 
-const yScale = scaleLinear()
-  .range([100, 10])
-  .domain([0, 10]);
+const yScale = scaleLinear().range([100, 10]).domain([0, 10]);
 
 const data = [...Array(10).keys()].map((d, i) => ({
   x: i,
@@ -148,7 +144,10 @@ describe('XAxis', () => {
 
 describe('utils', () => {
   test('should support getIndexFromData for Line, Bar chart', () => {
-    const data = [{ x: 1, y: 'test' }, { x: 2, y: 'describe' }];
+    const data = [
+      { x: 1, y: 'test' },
+      { x: 2, y: 'describe' },
+    ];
     const yScale = scaleBand()
       .range([100, 10])
       .domain(data.map((d) => d.name));

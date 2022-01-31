@@ -30,7 +30,10 @@ export default () => {
   );
 };
 function datePipe(value) {
-  const limits = [[0, 12], [19, 99]];
+  const limits = [
+    [0, 12],
+    [19, 99],
+  ];
   const valueArr = value.split('/');
   const indexesOfPipedChars = [];
   const month = parseInt(valueArr[0], 10);

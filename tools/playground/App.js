@@ -37,7 +37,7 @@ try {
 
 // Webpack Hot Module Replacement API
 if (module.hot) {
-  module.hot.accept('./Playground.js', function() {
+  module.hot.accept('./Playground.js', function () {
     render(require('./Playground.js').default);
   });
 }

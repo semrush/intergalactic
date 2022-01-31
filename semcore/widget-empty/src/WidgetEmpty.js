@@ -26,7 +26,7 @@ class WidgetEmpty extends Component {
         {isNode(icon) && (
           <SImage>
             {typeof icon === 'string' ? (
-              <img src={icon} alt='widget empty icon' width={100} height={72} />
+              <img src={icon} alt="widget empty icon" width={100} height={72} />
             ) : (
               icon
             )}

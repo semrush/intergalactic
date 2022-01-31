@@ -153,7 +153,7 @@ const Cards = styled.div`
   padding: 0;
 `;
 
-export default function(props) {
+export default function (props) {
   const items = props.group.map((el) => group[el]);
 
   return (
