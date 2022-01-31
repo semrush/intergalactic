@@ -50,7 +50,7 @@ function createJSXElement(j, path, tagName, attributes, children) {
   );
 }
 
-module.exports = function(fileInfo, { jscodeshift: j }) {
+module.exports = function (fileInfo, { jscodeshift: j }) {
   const ast = j(fileInfo.source);
 
   // replace import

@@ -6,7 +6,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-- Revert function `findComponent` for check children in `Tooltip`, because it's valid for children `() => ({})`.  
+- Revert function `findComponent` for check children in `Tooltip`, because it's valid for children `() => ({})`.
 
 ## [1.6.2] - 2022-01-25
 

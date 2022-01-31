@@ -26,7 +26,7 @@ const group = {
   'other-data': ['#C4C7CF'],
 };
 
-export default function(props) {
+export default function (props) {
   const colors = group[props.group];
   if (!colors) {
     return `Group "${props.group}" not found`;

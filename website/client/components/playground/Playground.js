@@ -4,11 +4,11 @@ import reactElementToJSXString from 'react-element-to-jsx-string';
 class Playground extends Component {
   static widgets = {};
 
-  static createWidget = function(widgetType, fn) {
+  static createWidget = function (widgetType, fn) {
     Playground.widgets[widgetType] = fn;
   };
 
-  static getState = function(preview, controls) {
+  static getState = function (preview, controls) {
     return getState(preview, controls);
   };
 
@@ -65,7 +65,7 @@ class Playground extends Component {
           return widgetsType;
         },
         {
-          onChange: function(key, value) {
+          onChange: function (key, value) {
             onChangeControls(
               controls.map((control) => {
                 if (control.name === groupName && control.options[key]) {

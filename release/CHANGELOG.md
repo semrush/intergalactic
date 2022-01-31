@@ -176,48 +176,60 @@
 ## [10.0.0] - 2021-12-10
 
 ### @semcore/breadcrumbs
+
 - **Changed** Rewrite code from TS to JS
 
 ### @semcore/chart
+
 - **Fixed** Remove 'sideEffect=false' because bug in recahrts lib.
 - **Changed** Moved chart colors vars to style
 - **Changed** Changed package from venn.js to @upsetjs/venn.js.
 
 ### @semcore/checkbox
+
 - **Changed** Moved checkbox size vars to style
 
 ### @semcore/counter
+
 - **Added** Added warning and danger themes
 
 ### @semcore/d3-chart
+
 - **Fixed** Calculate correct border radius for Bar.
 - **Fixed** Fixed set scale for Area, Line.
 - **Changed** Moved chart colors vars to style
 
 ### @semcore/drag-and-drop
+
 - **Fixed** Fixed global color .dnd
 - **Changed** Up version
 
 ### @semcore/notice
+
 - **Changed** Moved SLabel colors to style
 
 ### @semcore/popper
+
 - **Fixed** Property root for Popper set to OutsideClick.
 
 ### @semcore/select
+
 - **Added** [TS] Added type for Select.Option.Checkbox.
 - **Added** Added class name to InputSearch.
 - **Fixed** Fixed import styles in InputSearch.
 
 ### @semcore/tag
+
 - **Added** Added property for Tag color
 
 ### @semcore/utils
+
 - **Changed** Added magic comment in color.ts for update values in themes.
 
 ## [9.0.0] - 2021-11-12
 
 ### @semcore/d3-chart
+
 - **Added** Added prop outerRadius for Donut chart.
 - **Added** Added new event onMouseMoveChart, onMouseLeaveChart for eventEmitter.
 - **Fixed** Returned data (x, y, width, height) in render function for Bar, Horizontalbar.
@@ -230,37 +242,46 @@
 - **Changed** Fixed animation show Dot in Line chart.
 
 ### @semcore/date-picker
+
 - **Fixed** Fixed clear highlighted data after close popup in DataRangePicker.
 
 ### @semcore/flex-box
+
 - **Fixed** [TS] Fixed type direction for Flex.
 - **Fixed** [TS] Fixed type position for Box.
 
 ### @semcore/icon
+
 - **Added** Add new icons 'MailOpen' and 'MailOutlineOpen'
 
 ### @semcore/popper
+
 - **Changed** Up version package focus-lock.
 
 ### @semcore/scroll-area
+
 - **Fixed** [TS] Fixed types.
 - **Changed** Rewrite code from ts to js.
 - **Changed** Changed interception event of mouse for cursor in ScrollBar.
 - **Changed** Call calculate position scroll when change size container
 
 ### @semcore/skeleton
+
 - **BREAK** change default height for Skeleton from 100px to 100%.
 - **BREAK** remove support props visible, speed for Skeleton.
 - **Fixed** Fixed typo in ts.
 - **Changed** Rewrite code from ts to js.
 
 ### @semcore/slider
+
 - **Fixed** Fixed default color
 
 ### @semcore/switch
+
 - **Fixed** Fixed animation checked when opening in Popper.
 
 ### @semcore/table
+
 - **Changed** Version of dependence @semcore/core has been changed to 1.11.
 - **Changed** The style processing system has been changed.
 - **Changed** Rewrite from TS to JS code.

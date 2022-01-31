@@ -201,13 +201,16 @@ class TimePickerRoot extends Component {
     const STimePicker = Root;
     const { styles, Children } = this.asProps;
 
-    return sstyled(styles)(<STimePicker render={Input}><Children /></STimePicker>);
+    return sstyled(styles)(
+      <STimePicker render={Input}>
+        <Children />
+      </STimePicker>,
+    );
   }
 }
 
 class Separator extends Component {
-  static
-  defaultProps = {
+  static defaultProps = {
     children: ':',
   };
 
@@ -224,13 +227,11 @@ class Separator extends Component {
   }
 }
 
-const TimePicker = createComponent(TimePickerRoot,
-  {
-    Hours,
-    Minutes,
-    Separator,
-    Format,
-  },
-);
+const TimePicker = createComponent(TimePickerRoot, {
+  Hours,
+  Minutes,
+  Separator,
+  Format,
+});
 
 export default TimePicker;

@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import cn from 'classnames';
-import { FlexProperty, Properties, PositionProperty  } from 'csstype';
+import { FlexProperty, Properties, PositionProperty } from 'csstype';
 import { IStyledProps, sstyled } from '@semcore/core';
 import propsForElement from '@semcore/utils/lib/propsForElement';
 import logger from '@semcore/utils/lib/logger';

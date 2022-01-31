@@ -27,25 +27,27 @@ let count = 0;
 console.time('process');
 packages
   .map((pac) => async () => {
-    const depCheck = (await Promise.all(
-      Object.keys(pac.dependencies).map(async (name) => {
-        const selfVersion = pac.dependencies[name];
-        const depNpm = await fetchNpm(name);
-        const isValid = isValidRange(selfVersion, Object.keys(depNpm.versions));
-        if (isValid) {
-          const diffRelease = diff(depNpm['dist-tags'].latest, coerce(selfVersion));
-          if (diffRelease === null || diffRelease === 'patch' || diffRelease === 'prepatch') {
-            // console.info(`[${name}] has valid range.`);
+    const depCheck = (
+      await Promise.all(
+        Object.keys(pac.dependencies).map(async (name) => {
+          const selfVersion = pac.dependencies[name];
+          const depNpm = await fetchNpm(name);
+          const isValid = isValidRange(selfVersion, Object.keys(depNpm.versions));
+          if (isValid) {
+            const diffRelease = diff(depNpm['dist-tags'].latest, coerce(selfVersion));
+            if (diffRelease === null || diffRelease === 'patch' || diffRelease === 'prepatch') {
+              // console.info(`[${name}] has valid range.`);
+            } else {
+              const parseVersion = parse(depNpm['dist-tags'].latest);
+              return [name, selfVersion, `^${parseVersion.major}.${parseVersion.minor}`];
+            }
           } else {
-            const parseVersion = parse(depNpm['dist-tags'].latest);
-            return [name, selfVersion, `^${parseVersion.major}.${parseVersion.minor}`];
+            return [name, selfVersion, `HAS NO PUBLISHED VERSIONS TO SATISFY`];
           }
-        } else {
-          return [name, selfVersion, `HAS NO PUBLISHED VERSIONS TO SATISFY`];
-        }
-        return [];
-      }),
-    )).filter((dep) => dep.length);
+          return [];
+        }),
+      )
+    ).filter((dep) => dep.length);
 
     if (depCheck.length) {
       count++;

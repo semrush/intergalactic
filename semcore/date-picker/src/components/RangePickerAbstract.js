@@ -51,15 +51,11 @@ class RangePickerAbstract extends Component {
   static enhance = [i18nEnhance()];
 
   static add = (date, amount, unit) => {
-    return dayjs(date)
-      .add(amount, unit)
-      .toDate();
+    return dayjs(date).add(amount, unit).toDate();
   };
 
   static subtract = (date, amount, unit) => {
-    return dayjs(date)
-      .subtract(amount, unit)
-      .toDate();
+    return dayjs(date).subtract(amount, unit).toDate();
   };
 
   navigateStep;
@@ -100,9 +96,7 @@ class RangePickerAbstract extends Component {
   navigateView = (direction) => {
     const { displayedPeriod } = this.asProps;
     const action = direction >= 1 ? 'add' : 'subtract';
-    const date = dayjs(displayedPeriod)
-      [action](1, this.navigateStep)
-      .toDate();
+    const date = dayjs(displayedPeriod)[action](1, this.navigateStep).toDate();
     this.handlers.displayedPeriod(date);
   };
 
@@ -145,11 +139,7 @@ class RangePickerAbstract extends Component {
               .toDate(),
           ];
         } else {
-          next_highlighted = [
-            dayjs(highlighted[0])
-              .add(day, this.keyStep)
-              .toDate(),
-          ];
+          next_highlighted = [dayjs(highlighted[0]).add(day, this.keyStep).toDate()];
         }
         this.handlers.highlighted(next_highlighted);
         this.handlers.displayedPeriod(setNextDisplayedPeriod(next_highlighted));
@@ -284,10 +274,7 @@ class RangePickerAbstract extends Component {
     const { locale, displayedPeriod } = this.asProps;
     return {
       children: new Intl.DateTimeFormat(locale, { month: 'long', year: 'numeric' }).format(
-        dayjs(displayedPeriod)
-          .add(index, this.navigateStep)
-          .startOf(this.navigateStep)
-          .toDate(),
+        dayjs(displayedPeriod).add(index, this.navigateStep).startOf(this.navigateStep).toDate(),
       ),
     };
   }

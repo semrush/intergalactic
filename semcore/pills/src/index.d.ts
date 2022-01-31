@@ -42,8 +42,8 @@ declare const Pills: (<T, V extends PillsValue = PillsValue>(
   props: CProps<IPillsProps<V> & T, IPillsContext, IPopperHandlers>,
 ) => ReturnEl) & {
   Item: (<T>(props: CProps<IPillProps & T, {}, IPopperHandlers>) => ReturnEl) & {
-    Text: typeof Box
-    Addon: typeof Box
+    Text: typeof Box;
+    Addon: typeof Box;
   };
 };
 

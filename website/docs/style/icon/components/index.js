@@ -68,7 +68,7 @@ function SearchIcons(props) {
   );
 }
 
-export default function({ icons, old, json }) {
+export default function ({ icons, old, json }) {
   const [inputValue, updateInputValue] = useState('');
   const [filterIcons, updatefilterIcons] = useState([]);
 

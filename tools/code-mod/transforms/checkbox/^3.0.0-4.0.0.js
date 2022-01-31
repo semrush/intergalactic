@@ -132,7 +132,7 @@ function addImport(j, path, defaultName, packageName) {
   );
 }
 
-module.exports = function(fileInfo, { jscodeshift: j }) {
+module.exports = function (fileInfo, { jscodeshift: j }) {
   const ast = j(fileInfo.source);
   let addImportRootRef = false;
 
