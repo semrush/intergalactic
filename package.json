@@ -4,7 +4,7 @@
     "typecheck": "lerna exec --scope @semcore/* -- tsc --noEmit",
     "prebuild": "rm -rf semcore/**/lib && find semcore/icon/. -type d -maxdepth 1 | egrep -v \"__tests__|src|svg|svg-new\" | xargs rm -rf || true",
     "test": "jest --projects semcore/* --no-cache",
-    "playground": "yarn workspace playground start",
+    "playground": "yarn workspace @semcore/playground start",
     "analyze": "yarn workspace analyzer start",
     "pub": "super-publisher --root ./semcore",
     "lint:dts": "tsc --project tsconfig.dts.json",
