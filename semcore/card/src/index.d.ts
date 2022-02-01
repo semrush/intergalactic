@@ -13,6 +13,8 @@ export interface ITitleProps extends ITextProps {
 declare const Card: (<T>(props: CProps<IBoxProps & T>) => ReturnEl) & {
   Title: <T>(props: ITitleProps & T) => ReturnEl;
   Description: typeof Text;
+  Header: <T>(props: IBoxProps & T) => ReturnEl;
+  Body: <T>(props: IBoxProps & T) => ReturnEl;
 };
 
 export default Card;
