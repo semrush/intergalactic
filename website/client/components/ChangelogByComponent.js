@@ -31,7 +31,7 @@ class ChangelogByComponent extends React.Component {
     let section;
     return {
       list: (props) => <List {...props} />,
-      listItem: function({ children }) {
+      listItem: function ({ children }) {
         let label = null;
         if (!section) return null;
         switch (section.props.children) {
@@ -73,7 +73,7 @@ class ChangelogByComponent extends React.Component {
           </ListItem>
         );
       },
-      heading: function({ level, children }) {
+      heading: function ({ level, children }) {
         if (level === 2) {
           const version = children[0]?.props?.children;
           return (

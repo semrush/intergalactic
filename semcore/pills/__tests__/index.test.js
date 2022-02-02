@@ -94,7 +94,7 @@ describe('PillGroup', () => {
   });
 
   test('should support additional elements as props', async () => {
-    const Addon = React.forwardRef(function({ forwardRef, Children, Root, ...p }, ref) {
+    const Addon = React.forwardRef(function ({ forwardRef, Children, Root, ...p }, ref) {
       return (
         <span ref={ref} {...p}>
           Addon prop

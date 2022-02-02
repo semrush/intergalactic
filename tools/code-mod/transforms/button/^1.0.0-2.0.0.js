@@ -91,7 +91,7 @@ function addImport(j, path, defaultName, packageName) {
   );
 }
 
-module.exports = function(fileInfo, { jscodeshift: j }) {
+module.exports = function (fileInfo, { jscodeshift: j }) {
   const ast = j(fileInfo.source);
   let addImportRootRef = false;
 
@@ -151,7 +151,13 @@ module.exports = function(fileInfo, { jscodeshift: j }) {
       createAddon(j, value['after'] ? value['after'].expression : undefined, 'Button.Addon'),
     ];
 
-    return createJSXElement(j, path, '', attributes, children.filter((item) => item !== null));
+    return createJSXElement(
+      j,
+      path,
+      '',
+      attributes,
+      children.filter((item) => item !== null),
+    );
   });
 
   return ast.toSource();

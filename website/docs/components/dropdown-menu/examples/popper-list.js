@@ -7,7 +7,7 @@ import Notice from '@semcore/notice';
 import SpinContainer from '@semcore/spin-container';
 import FileExportXS from '@semcore/icon/FileExport/m';
 
-export default function() {
+export default function () {
   const [loading, setLoading] = useState(false);
 
   const handleClick = () => {

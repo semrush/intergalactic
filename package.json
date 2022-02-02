@@ -4,7 +4,7 @@
     "typecheck": "lerna exec --scope @semcore/* -- tsc --noEmit",
     "prebuild": "rm -rf semcore/**/lib && find semcore/icon/. -type d -maxdepth 1 | egrep -v \"__tests__|src|svg|svg-new\" | xargs rm -rf || true",
     "test": "jest --projects semcore/* --no-cache",
-    "playground": "yarn workspace playground start",
+    "playground": "yarn workspace @semcore/playground start",
     "analyze": "yarn workspace analyzer start",
     "pub": "super-publisher --root ./semcore",
     "lint:dts": "tsc --project tsconfig.dts.json",
@@ -26,7 +26,6 @@
   },
   "devDependencies": {
     "@mailchimp/mailchimp_marketing": "^3.0.30",
-    "@reshadow/prettier": "^0.0.1-alpha.70",
     "@types/jest": "^26.0.23",
     "@types/jest-image-snapshot": "^2.11.1",
     "@types/react": "^17.0.0",
@@ -53,7 +52,7 @@
     "typescript": "^3.9.5",
     "typescript-plugin-css-modules": "^2.2.0",
     "typescript-workspace-plugin": "^2.0.1",
-    "@semcore/theme-redesign": "^1.3.3"
+    "@semcore/theme-redesign": "^1.3.4"
   },
   "jest": {
     "preset": "@semcore/jest-preset-ui"

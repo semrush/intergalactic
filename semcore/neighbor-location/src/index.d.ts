@@ -16,7 +16,6 @@ export interface INeighborItemProps {
   neighborLocation?: 'right' | 'both' | 'left' | false;
 }
 
-
 declare const neighborLocationEnhance: () => PropGetterFn;
 declare const NeighborLocation: <T>(props: INeighborLocationProps & T) => ReturnEl;
 

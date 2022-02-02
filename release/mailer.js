@@ -1,6 +1,6 @@
 const path = require('path');
 const task = require('@semcore/super-publisher/task');
-const { getChangelogByDate } = require('changelogs-by-date/getChangeLogByDate');
+const { getChangelogByDate } = require('@semcore/changelogs-by-date/getChangeLogByDate');
 const mailchimp = require('@mailchimp/mailchimp_marketing');
 const mail = require('../website/client/components/messageTemplate');
 require('dotenv').config();
@@ -64,10 +64,7 @@ function buildHtml(chs) {
       label +
       '</span>' +
       '<span class="desc" style="color:#171A22;font-size:14px;line-height:150%;margin-left:8px">' +
-      ch.data
-        .split(' ')
-        .slice(1)
-        .join(' ') +
+      ch.data.split(' ').slice(1).join(' ') +
       '</span>'
     );
   });

@@ -60,9 +60,9 @@ SSpot {
     top: 0;
     left: 0;
     transform-origin: 50%;
-     animation-name: scaleSizeAndHide;
-     animation-duration: 1s;
-     animation-iteration-count: infinite;
+    animation-name: scaleSizeAndHide;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
     animation-fill-mode: forwards;
     animation-delay: 0.5s;
     background-color: #ffd54f;

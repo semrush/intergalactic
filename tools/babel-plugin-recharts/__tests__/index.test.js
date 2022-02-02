@@ -6,15 +6,15 @@ pluginTester({
   pluginName: 'babel-plugin-remove-inject',
   filename: __filename,
   pluginOptions: {
-    replacePattern: ['es6', 'lib']
+    replacePattern: ['es6', 'lib'],
   },
   tests: [
     {
-      title: 'Shouldn\'t change code with no Recharts imports',
+      title: "Shouldn't change code with no Recharts imports",
       fixture: '__fixtures__/1_unchanged.js',
     },
     {
-      title: 'Shouldn\'t change code with valid Recharts imports',
+      title: "Shouldn't change code with valid Recharts imports",
       fixture: '__fixtures__/2_unchanged_lib_import_commonjs.js',
     },
     {
@@ -27,8 +27,8 @@ pluginTester({
       fixture: '__fixtures__/4_lib_import_es6.js',
       outputFixture: '__fixtures__/4_lib_import_es6.expected.js',
       pluginOptions: {
-        replacePattern: ['lib', 'es6']
-      }
+        replacePattern: ['lib', 'es6'],
+      },
     },
-  ]
+  ],
 });

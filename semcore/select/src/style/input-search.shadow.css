@@ -1,11 +1,11 @@
 SInputSearch[size='m'] {
-    padding: 8px;
+  padding: 8px;
 }
 
 SInputSearch[size='l'] {
-    padding: 10px 8px;
+  padding: 10px 8px;
 }
 
 SInputSearch[size='xl'] {
-    padding: 12px 12px;
+  padding: 12px 12px;
 }

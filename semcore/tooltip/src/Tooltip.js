@@ -102,7 +102,7 @@ const TooltipBase = createComponent(
 
 export default TooltipBase;
 
-const Tooltip = React.forwardRef(function(props, ref) {
+const Tooltip = React.forwardRef(function (props, ref) {
   logger.warn(
     true,
     "The named import 'import { Tooltip }' is deprecated, use the default 'import Tooltip'",

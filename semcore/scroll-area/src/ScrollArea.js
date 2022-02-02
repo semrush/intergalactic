@@ -234,7 +234,7 @@ const ScrollAreaComponent = createComponent(ScrollAreaRoot, {
 
 export default ScrollAreaComponent;
 
-const ScrollContainer = React.forwardRef(function(props, ref) {
+const ScrollContainer = React.forwardRef(function (props, ref) {
   logger.warn(
     true,
     "The named import 'import { ScrollContainer }' is deprecated, use the static method from the default 'import ScrollArea', '<ScrollArea.Container/>'",
@@ -244,7 +244,7 @@ const ScrollContainer = React.forwardRef(function(props, ref) {
 });
 ScrollContainer.displayName = ScrollAreaComponent.Container.displayName;
 
-const ScrollBar = React.forwardRef(function(props, ref) {
+const ScrollBar = React.forwardRef(function (props, ref) {
   logger.warn(
     true,
     "The named import 'import { ScrollBar }' is deprecated, use the static method from the default 'import ScrollArea', '<ScrollArea.Bar/>'",
@@ -254,7 +254,7 @@ const ScrollBar = React.forwardRef(function(props, ref) {
 });
 ScrollBar.displayName = ScrollAreaComponent.Bar.displayName;
 
-const ScrollArea = React.forwardRef(function(props, ref) {
+const ScrollArea = React.forwardRef(function (props, ref) {
   logger.warn(
     true,
     "The named import 'import { ScrollArea }' is deprecated, use the default 'import ScrollArea'",

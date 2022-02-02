@@ -126,7 +126,7 @@ const DEFAULT_OPTIONS = {
   purgeCSS: {},
 };
 
-module.exports = function({ types: t }, opts) {
+module.exports = function ({ types: t }, opts) {
   const options = Object.assign({}, DEFAULT_OPTIONS, opts);
 
   function log(msg, level = 'info') {

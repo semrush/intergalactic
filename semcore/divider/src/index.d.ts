@@ -18,6 +18,6 @@ export interface IDividerProps extends IBoxProps {
   orientation?: 'horizontal' | 'vertical';
 }
 
-declare const Divider: (<T>(props: IDividerProps & T) => ReturnEl);
+declare const Divider: <T>(props: IDividerProps & T) => ReturnEl;
 
 export default Divider;

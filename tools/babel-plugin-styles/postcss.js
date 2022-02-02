@@ -14,7 +14,7 @@ const syncPlugin = (plugin) => (root, result) => {
   global.Promise = realPromise;
 };
 
-module.exports = function(options) {
+module.exports = function (options) {
   const processorPlugins = [
     atImport({
       ...options.import,
@@ -39,8 +39,7 @@ module.exports = function(options) {
       }),
     ),
     mediarezka({
-      getMedia: () => {
-      },
+      getMedia: () => {},
       ...options.mediarezka,
     }),
     shadowStyles(options.shadow),
@@ -50,12 +49,11 @@ module.exports = function(options) {
      * `preset` option is required to force `cssnano` use `preset` instead of config search
      */
     // set mergeLonghand: false because the problem of the ratio Api components and styles (see: NoticeBubble)
-    processorPlugins.push(syncPlugin(
-      cssnano(Object.assign(
-        { preset: ['default', { mergeLonghand: false }] },
-        options.cssnano,
-      )),
-    ));
+    processorPlugins.push(
+      syncPlugin(
+        cssnano(Object.assign({ preset: ['default', { mergeLonghand: false }] }, options.cssnano)),
+      ),
+    );
   }
   return postcss(processorPlugins);
 };

@@ -36,49 +36,29 @@ class MonthRangePickerRoot extends RangePickerAbstract {
       {
         children: getI18nText('lastMonth'),
         value: [
-          dayjs(today)
-            .subtract(1, 'month')
-            .startOf('month')
-            .toDate(),
-          dayjs(today)
-            .startOf('month')
-            .toDate(),
+          dayjs(today).subtract(1, 'month').startOf('month').toDate(),
+          dayjs(today).startOf('month').toDate(),
         ],
       },
       {
         children: getI18nText('last3Months'),
         value: [
-          dayjs(today)
-            .subtract(2, 'month')
-            .startOf('month')
-            .toDate(),
-          dayjs(today)
-            .startOf('month')
-            .toDate(),
+          dayjs(today).subtract(2, 'month').startOf('month').toDate(),
+          dayjs(today).startOf('month').toDate(),
         ],
       },
       {
         children: getI18nText('last6Months'),
         value: [
-          dayjs(today)
-            .subtract(5, 'month')
-            .startOf('month')
-            .toDate(),
-          dayjs(today)
-            .startOf('month')
-            .toDate(),
+          dayjs(today).subtract(5, 'month').startOf('month').toDate(),
+          dayjs(today).startOf('month').toDate(),
         ],
       },
       {
         children: getI18nText('last12Months'),
         value: [
-          dayjs(today)
-            .subtract(11, 'month')
-            .startOf('month')
-            .toDate(),
-          dayjs(today)
-            .startOf('month')
-            .toDate(),
+          dayjs(today).subtract(11, 'month').startOf('month').toDate(),
+          dayjs(today).startOf('month').toDate(),
         ],
       },
     ];
@@ -102,10 +82,7 @@ class MonthRangePickerRoot extends RangePickerAbstract {
     return {
       ...super.getTitleProps(props, index),
       children: new Intl.DateTimeFormat(locale, { year: 'numeric' }).format(
-        dayjs(displayedPeriod)
-          .add(index, this.navigateStep)
-          .startOf(this.navigateStep)
-          .toDate(),
+        dayjs(displayedPeriod).add(index, this.navigateStep).startOf(this.navigateStep).toDate(),
       ),
     };
   }

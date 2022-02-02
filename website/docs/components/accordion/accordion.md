@@ -36,9 +36,9 @@ The `ChevronRight` icon is always used in the XS size and has a `margin-right: 8
 
 > 💡 The accordion trigger can be text, link or button of any size and any color from the [primary colors for the text](/style/palette/).
 
-|                           | Appearance example                              | Description and styles                                                                                                                                           |
-| ------------------------- | ----------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Default accordion         | ![accordion default](static/acc-default.png)    | The text label and icon can be any color depending on the usage context. Default colors: icon — `--stone`; text — `--gray20`.                                    |
+|                           | Appearance example                              | Description and styles                                                                                                                            |
+| ------------------------- | ----------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Default accordion         | ![accordion default](static/acc-default.png)    | The text label and icon can be any color depending on the usage context. Default colors: icon — `--stone`; text — `--gray20`.                     |
 | Accordion with background | ![accordion default](static/acc-default-bg.png) | The background and text color can be any color depending on the usage context. The default background color is `--mercury` with 40% transparency. |
 
 @## Sizes

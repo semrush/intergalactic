@@ -6,6 +6,5 @@
   "trailingComma": "all",
   "bracketSpacing": true,
   "jsxBracketSameLine": false,
-  "arrowParens": "always",
-  "plugins": ["@reshadow/prettier"]
+  "arrowParens": "always"
 }

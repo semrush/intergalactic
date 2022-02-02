@@ -3,20 +3,21 @@ import { css, styled } from '@semcore/core';
 import { Box, Flex } from '@semcore/flex-box';
 import Carousel from '@semcore/carousel';
 
-const Indicator = (props) => styled(css`
-  Box {
-    border-radius: 6px;
-    opacity: 0.5;
-    cursor: pointer;
+const Indicator = (props) =>
+  styled(css`
+    Box {
+      border-radius: 6px;
+      opacity: 0.5;
+      cursor: pointer;
 
-    &:hover {
-      opacity: 0.7;
+      &:hover {
+        opacity: 0.7;
+      }
     }
-  }
-  Box[active] {
-    opacity: 1;
-  }
-`)(<Box active={props.active} {...props} />);
+    Box[active] {
+      opacity: 1;
+    }
+  `)(<Box active={props.active} {...props} />);
 
 const Demo = () => (
   <Flex justifyContent="center">

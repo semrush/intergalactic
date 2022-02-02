@@ -2,14 +2,7 @@ import * as crypto from 'crypto';
 import { Tag } from '../page/page.interface';
 
 export function hashCode(s) {
-  return (
-    'a' +
-    crypto
-      .createHash('md5')
-      .update(s)
-      .digest('hex')
-      .slice(0, 5)
-  );
+  return 'a' + crypto.createHash('md5').update(s).digest('hex').slice(0, 5);
 }
 
 export function normalizeDocumentalistContents(contents): Tag[] {

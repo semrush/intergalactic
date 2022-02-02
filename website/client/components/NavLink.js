@@ -6,7 +6,7 @@ const Link = styled(RouterNavLink)`
   -webkit-appearance: none;
 `;
 
-const NavLink = React.forwardRef(function(
+const NavLink = React.forwardRef(function (
   { neighborLocation, keyboardFocused, highlighted, active, ...other },
   ref,
 ) {

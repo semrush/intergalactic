@@ -121,7 +121,7 @@ describe('Tag', () => {
   });
 
   test('should support addon elements', async () => {
-    const Addon = React.forwardRef(function(props, ref) {
+    const Addon = React.forwardRef(function (props, ref) {
       return (
         <span ref={ref} {...propsForElement(props)}>
           Addon prop
