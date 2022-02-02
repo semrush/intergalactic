@@ -1,0 +1,57 @@
+name: publish
+on:
+  push:
+    branches: master
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+      - name: Cache node modules
+        uses: actions/cache@v2
+        id: cache-modules
+        with:
+          path: |
+            node_modules
+            */*/node_modules
+          key: modules-${{ runner.os }}-${{ hashFiles('yarn.lock') }}
+      - name: Install dependencies
+        if: steps.cache-modules.outputs.cache-hit != 'true'
+        run: yarn --non-interactive --frozen-lockfile
+  build:
+    runs-on: ubuntu-latest
+    needs: setup
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+      - name: Restore cache node modules
+        uses: actions/cache@v2
+        with:
+          path: |
+            node_modules
+            */*/node_modules
+          key: modules-${{ runner.os }}-${{ hashFiles('yarn.lock') }}
+      - name: Сache build
+        uses: actions/cache@v2
+        id: cache-build
+        with:
+          path: |
+            **/lib
+            semcore/icon/**/*.js
+            semcore/icon/**/*.d.ts
+          key: build-${{ hashFiles('semcore/**', 'tools/**', 'tsconfig.json', 'yarn.lock') }}
+      - name: Build
+        if: steps.cache-build.outputs.cache-hit != 'true'
+        run: yarn build
+      - name: Github auth
+        run: |
+          git config --global user.name 'Your Name'
+          git config --global user.email 'your-username@users.noreply.github.com'
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/semrush/intergalactic
+      - name: Lint
+        run: yarn lint
+      - name: Test
+        run: yarn test
+      - name: Delivery
+        run: yarn continuous-delivery
