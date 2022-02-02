@@ -10,7 +10,10 @@ commander
   .option('--many', 'Publish some packages')
   .option('--no-check-git', 'No git check')
   .option('--no-select-version', 'No version selection')
-  .option('--release [name]', 'Choose next release')
+  .option(
+    '--release [name]',
+    'Choose next release (current|prepatch|preminor|premajor|patch|minor|major)',
+  )
   .option('--changelog [string]', 'Write to changelog')
   .option('--no-check-changelog', 'No check changelog')
   .option('--no-check-deps', 'No check dependency')
