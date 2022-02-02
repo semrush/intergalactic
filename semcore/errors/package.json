@@ -15,7 +15,7 @@
   },
   "dependencies": {
     "@semcore/utils": "^3.27",
-    "@semcore/button": "^3",
+    "@semcore/button": "^3.3.3-0",
     "@semcore/flex-box": "^4",
     "@semcore/format-text": "^2",
     "@semcore/typography": "^3"
