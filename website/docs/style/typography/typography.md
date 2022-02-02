@@ -10,7 +10,7 @@ We use two font families in our interface:
 1. The main font is [Inter](https://fonts.google.com/specimen/Inter?query=inter).
 2. The accent font is [Factor A](https://type.today/en/factor_a).
 
-> 💡 For a clearer rendering of the font and its color, use `webkit-font-smoothing: antialiased;` (see cross-browser compatibility at [caniuse.com](https://caniuse.com/#search=-webkit-font-smoothing)).
+> 💡 For a clearer rendering of the font and its color, use `-webkit-font-smoothing: antialiased;` (see cross-browser compatibility at [caniuse.com](https://caniuse.com/#search=-webkit-font-smoothing)).
 
 @## Basic text colors
 

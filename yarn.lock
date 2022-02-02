@@ -2396,10 +2396,10 @@
     string-hash "^1.1.3"
     svg-tag-names "^2.0.1"
 
-"@semcore/theme-redesign@^1.3.3":
-  version "1.3.3"
-  resolved "https://registry.yarnpkg.com/@semcore/theme-redesign/-/theme-redesign-1.3.3.tgz#a60bb531f75c051249b5038275314f0a7acec66e"
-  integrity sha512-z5UNl+h0RgvesI5zzl0WLV+qBGJXeYZAcCevSYLsbrR1q4+DPBdoNdgpadJnD2yt3J07IB4nqjejdj65rpa4Uw==
+"@semcore/theme-redesign@^1.3.4":
+  version "1.3.4"
+  resolved "https://registry.yarnpkg.com/@semcore/theme-redesign/-/theme-redesign-1.3.4.tgz#de43ad11f9184f37d42ac482a43c0a00d1c5a7c4"
+  integrity sha512-igdE4qVg0RqXGUFZzdHWNkb5F+q+y10D7gUq5OIJp+zdX2ljmmYj1DDZdxFBH6VzBeOzPPr4v6G1ivbzbaA/JA==
 
 "@sindresorhus/is@^0.14.0":
   version "0.14.0"
