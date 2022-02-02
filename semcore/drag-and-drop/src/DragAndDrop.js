@@ -6,7 +6,7 @@ import { callAllEventHandlers } from '@semcore/utils/lib/assignProps';
 
 import style from './style/drag-and-drop.shadow.css';
 
-const onSwapDraggableInner = function(draggableNode, droppableNode) {
+const onSwapDraggableInner = function (draggableNode, droppableNode) {
   if (!draggableNode || !droppableNode) return false;
 
   const parent = droppableNode.parentNode;

@@ -38,7 +38,7 @@ const Overlay = styled(Flex)`
   }
 `;
 
-export default function(props) {
+export default function (props) {
   const { title, category, fileSource, sourcePath, beta } = props;
 
   return (

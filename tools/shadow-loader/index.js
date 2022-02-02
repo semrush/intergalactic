@@ -13,10 +13,13 @@ let cacheDirectory;
 let options;
 
 const makeLoader = (loader) =>
-  function(...args) {
+  function (...args) {
     // Make the loader async
     const callback = this.async();
-    loader.apply(this, args).then((args) => callback(null, ...args), (err) => callback(err));
+    loader.apply(this, args).then(
+      (args) => callback(null, ...args),
+      (err) => callback(err),
+    );
   };
 
 async function loader(source, inputSourceMap) {
@@ -100,10 +103,7 @@ async function loader(source, inputSourceMap) {
         queue.push(
           writeModule(
             filepath,
-            code
-              .replace(/\\"/g, '"')
-              .replace(/\\'/g, "'")
-              .replace(/\\n/g, '\n'),
+            code.replace(/\\"/g, '"').replace(/\\'/g, "'").replace(/\\n/g, '\n'),
           ),
         );
         const [requirePath] = filepath.split('node_modules/').slice(-1);

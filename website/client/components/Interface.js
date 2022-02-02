@@ -119,7 +119,7 @@ const Tr = styled.tr`
   vertical-align: top;
 `;
 
-const ModifierTable = function({ children, emptyMessage }) {
+const ModifierTable = function ({ children, emptyMessage }) {
   return (
     <div className="docs-modifiers-table">
       <Table>

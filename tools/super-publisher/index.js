@@ -2,7 +2,7 @@ const path = require('path');
 const chalk = require('chalk');
 const { get } = require('axios');
 
-module.exports = async function(args) {
+module.exports = async function (args) {
   console.log(chalk.green('Starting super publisher\n'));
   try {
     const {

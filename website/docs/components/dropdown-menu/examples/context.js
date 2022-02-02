@@ -15,7 +15,7 @@ const ListItem = styled.li`
   color: ${(props) => (props.highlighted ? 'red' : '#000')};
 `;
 
-export default function() {
+export default function () {
   return (
     <DropdownMenu>
       {(props, handlers) => {

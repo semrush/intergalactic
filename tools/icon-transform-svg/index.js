@@ -116,7 +116,7 @@ function getDescriptionPayIcons(iconPath, outLib) {
   };
 }
 
-module.exports = function() {
+module.exports = function () {
   Promise.all([
     generateIcons(`${sourceFolder}/color`, `${outputFolder}/color`, getDescriptionIcons),
     generateIcons(

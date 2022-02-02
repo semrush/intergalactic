@@ -274,6 +274,6 @@ const filters = {
 
 exports.filters = filters;
 exports.globalMethods = globalMethods;
-exports.plugin = function(j) {
+exports.plugin = function (j) {
   j.registerMethods(globalMethods);
 };

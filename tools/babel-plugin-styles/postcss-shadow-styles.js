@@ -61,7 +61,7 @@ function walkAnimation(nodes, hash) {
 }
 
 const DEFAULT_OPTS = {
-  generateScopedName: function([el, mod, value], filename, css) {
+  generateScopedName: function ([el, mod, value], filename, css) {
     // const i = css.indexOf(`.${name}`);
     // const lineNumber = css.substr(0, i).split(/[\r\n]/).length;
     // const hash = stringHash(css + version + filename + lineNumber)

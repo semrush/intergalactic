@@ -1,4 +1,4 @@
-module.exports = function(babel, opts = {}) {
+module.exports = function (babel, opts = {}) {
   return {
     presets: [
       '@babel/preset-typescript',

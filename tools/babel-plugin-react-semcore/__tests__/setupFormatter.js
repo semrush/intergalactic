@@ -1,7 +1,7 @@
 const path = require('path');
 const { resolveConfig, format } = require('prettier');
 
-module.exports = function(code, { fileName }) {
+module.exports = function (code, { fileName }) {
   const prettierConfig = path.resolve(__dirname, '../../.prettierrc');
   const config = resolveConfig.sync(prettierConfig);
 

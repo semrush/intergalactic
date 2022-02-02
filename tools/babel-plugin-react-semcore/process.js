@@ -50,7 +50,7 @@ function execPurgeCss(styles, purgeCSSOptions) {
 
 const storage = new Cache();
 
-module.exports = function(baseImport, themeImports, pluginOptions) {
+module.exports = function (baseImport, themeImports, pluginOptions) {
   const processor = postcss(pluginOptions.postcss);
 
   const themeCss = themeImports.map((p) => fs.readFileSync(p, 'utf8')).join('');

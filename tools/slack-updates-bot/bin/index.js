@@ -17,9 +17,7 @@ const DATE_FORMAT = 'YYYY-MM-DD';
 
 const end = dayjs().format(DATE_FORMAT);
 const valueMissedDays = dayjs().day() === 5 ? 4 : 7;
-const start = dayjs()
-  .subtract(valueMissedDays, 'day')
-  .format(DATE_FORMAT);
+const start = dayjs().subtract(valueMissedDays, 'day').format(DATE_FORMAT);
 
 console.log(start, end, valueMissedDays);
 

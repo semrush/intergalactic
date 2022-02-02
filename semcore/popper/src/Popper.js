@@ -25,7 +25,7 @@ function isObject(obj) {
 }
 
 function someArray(arr1, arr2) {
-  return arr1.filter(function(i) {
+  return arr1.filter(function (i) {
     return arr2.indexOf(i) !== -1;
   });
 }
@@ -131,7 +131,7 @@ class Popper extends Component {
     /* START positionFixed */
     logger.warn(
       positionFixed !== undefined,
-      'The \'positionFixed\' property is deprecated, use \'strategy="fixed"\'',
+      "The 'positionFixed' property is deprecated, use 'strategy=\"fixed\"'",
       other['data-ui-name'] || Popper.displayName,
     );
     if (positionFixed) {
@@ -141,7 +141,7 @@ class Popper extends Component {
     /* START eventsDisabled */
     logger.warn(
       eventsDisabled !== undefined,
-      'The \'eventsDisabled\' property is deprecated, use \'eventListeners={{scroll: false, resize: false}}\'',
+      "The 'eventsDisabled' property is deprecated, use 'eventListeners={{scroll: false, resize: false}}'",
       other['data-ui-name'] || Popper.displayName,
     );
     if (eventsDisabled !== undefined) {
@@ -157,7 +157,7 @@ class Popper extends Component {
     /* START boundary */
     logger.warn(
       boundary !== undefined,
-      'The \'boundary\' property is deprecated, use \'preventOverflow={{rootBoundary: "document", boundary: HTMLElement}}\'',
+      "The 'boundary' property is deprecated, use 'preventOverflow={{rootBoundary: \"document\", boundary: HTMLElement}}'",
       other['data-ui-name'] || Popper.displayName,
     );
     if (boundary !== undefined) {
@@ -222,7 +222,7 @@ class Popper extends Component {
     const { displayEvents, ...other } = this.asProps;
     logger.warn(
       displayEvents !== undefined,
-      'The \'displayEvents\' property is deprecated, use \'interaction\'',
+      "The 'displayEvents' property is deprecated, use 'interaction'",
       other['data-ui-name'] || Popper.displayName,
     );
     if (displayEvents !== undefined) {
@@ -289,7 +289,7 @@ class Popper extends Component {
     /* START displayTimeout */
     logger.warn(
       displayTimeout !== undefined,
-      '\'DisplayTimeout\' property is deprecated, use \'timeout\'',
+      "'DisplayTimeout' property is deprecated, use 'timeout'",
       other['data-ui-name'] || Popper.displayName,
     );
     if (displayTimeout !== undefined) {
@@ -336,7 +336,7 @@ class Popper extends Component {
     /* START popperZIndex */
     logger.warn(
       popperZIndex !== undefined,
-      'The \'popperZIndex\' property is deprecated, use styles directly in \'<Popper.Popper/>\'',
+      "The 'popperZIndex' property is deprecated, use styles directly in '<Popper.Popper/>'",
       other['data-ui-name'] || Popper.displayName,
     );
     /* END popperZIndex */
@@ -398,7 +398,7 @@ function Trigger() {
   );
 }
 
-const FocusLockWrapper = React.forwardRef(function(
+const FocusLockWrapper = React.forwardRef(function (
   { tag, disableEnforceFocus, returnFocusRef, returnFocus, ...other },
   ref,
 ) {

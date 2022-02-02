@@ -12,7 +12,7 @@ const PreStyled = styled.pre`
   display: ${({ block }) => (block ? 'block' : 'inline-block')};
 `;
 
-export default function({ children, lang, ...others }) {
+export default function ({ children, lang, ...others }) {
   return (
     <Highlight {...defaultProps} code={children} language={lang} theme={theme}>
       {({ className, style, tokens, getLineProps, getTokenProps }) => (

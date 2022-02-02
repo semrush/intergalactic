@@ -29,7 +29,7 @@ class PlotRoot extends Component {
       const [minX, maxX] = xScale.range();
       const [maxY, minY] = yScale.range();
 
-      if (pX >= minX && pX <= maxX && (pY >= minY && pY <= maxY)) {
+      if (pX >= minX && pX <= maxX && pY >= minY && pY <= maxY) {
         this.eventEmitter.emit('onMouseMoveChart', e);
       } else {
         this.eventEmitter.emit('onMouseLeaveChart', e);

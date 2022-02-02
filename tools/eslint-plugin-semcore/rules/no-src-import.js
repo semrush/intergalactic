@@ -12,9 +12,9 @@ module.exports = {
       recommended: true,
     },
   },
-  create: function(context) {
+  create: function (context) {
     return {
-      ImportDeclaration: function(node) {
+      ImportDeclaration: function (node) {
         const { source } = node;
         if (REG.LIB.test(source.value) && REG.SOURCE.test(source.value)) {
           context.report({

@@ -2,7 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-module.exports = function() {
+module.exports = function () {
   return {
     entry: path.join(__dirname, 'App.js'),
     devtool: 'source-map',
@@ -97,7 +97,7 @@ module.exports = function() {
         template: './index.html',
         favicon: './favicon.ico',
       }),
-      new webpack.NormalModuleReplacementPlugin(/^@semcore/, function(resource) {
+      new webpack.NormalModuleReplacementPlugin(/^@semcore/, function (resource) {
         try {
           const resolvePath = require.resolve(resource.request, {
             paths: [resource.context],

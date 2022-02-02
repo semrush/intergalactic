@@ -64,9 +64,7 @@ export class DatePickerRoot extends PickerAbstract {
     return {
       ...super.getTitleProps(),
       children: new Intl.DateTimeFormat(locale, { month: 'long', year: 'numeric' }).format(
-        dayjs(displayedPeriod)
-          .startOf('month')
-          .toDate(),
+        dayjs(displayedPeriod).startOf('month').toDate(),
       ),
     };
   }

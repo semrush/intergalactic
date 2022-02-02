@@ -59,7 +59,7 @@ const regReplace = /./g;
 
 function convert(str) {
   if (regStart.test(str)) {
-    return str.replace(regReplace, function(ch) {
+    return str.replace(regReplace, function (ch) {
       return full[ch] || ch;
     });
   }

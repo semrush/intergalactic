@@ -35,7 +35,10 @@ const Demo = () => {
 
   const handleCloseTag = (e) => {
     const { dataset } = e.currentTarget;
-    changeState(tags.filter((tag, ind) => ind !== Number(dataset.id)), undefined);
+    changeState(
+      tags.filter((tag, ind) => ind !== Number(dataset.id)),
+      undefined,
+    );
   };
 
   const handleSelect = (value) => {

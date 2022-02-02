@@ -8,7 +8,7 @@ import getOriginChildren from '@semcore/utils/lib/getOriginChildren';
 import hoistNonReactStatics from 'hoist-non-react-statics';
 
 function createElementRender() {
-  const Element = React.forwardRef(function(
+  const Element = React.forwardRef(function (
     { render, tag, childrenPosition = 'below', x: xS, y: yS, ...source },
     ref,
   ) {
@@ -78,10 +78,10 @@ function createElementRender() {
 
 function elementEnhancement() {
   return {
-    init: function() {
+    init: function () {
       this.Element = createElementRender();
     },
-    asProps: function({ $rootProps, ...props }, WrapperComponent, isFunction) {
+    asProps: function ({ $rootProps, ...props }, WrapperComponent, isFunction) {
       if (isFunction) {
         return {
           ...$rootProps,
@@ -94,7 +94,7 @@ function elementEnhancement() {
         ...props,
       };
     },
-    render: function(render, props) {
+    render: function (render, props) {
       this.Element.props = props;
       return render;
     },

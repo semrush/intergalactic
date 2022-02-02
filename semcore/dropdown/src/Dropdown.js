@@ -34,7 +34,7 @@ class Dropdown extends Component {
       name: 'stretch',
       phase: 'beforeRead',
       enabled: true,
-      fn: function({ state, options }) {
+      fn: function ({ state, options }) {
         const [position] = state.placement.split('-');
 
         const isVertical = ['left', 'right'].indexOf(position) !== -1;

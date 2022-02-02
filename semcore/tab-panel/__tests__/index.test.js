@@ -117,7 +117,7 @@ describe('TabPanel', () => {
   });
 
   test('Should support addons', async () => {
-    const Addon = React.forwardRef(function({ forwardRef, Children, Root, ...p }, ref) {
+    const Addon = React.forwardRef(function ({ forwardRef, Children, Root, ...p }, ref) {
       return (
         <span ref={ref} {...p}>
           Addon prop
