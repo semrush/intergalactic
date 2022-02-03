@@ -9,4 +9,5 @@ function Flex(props, ref) {
 
 Flex.displayName = 'Flex';
 
+// eslint-disable-next-line ssr-friendly/no-dom-globals-in-module-scope
 export default createBaseComponent<Merge<IFlexProps, HTMLAttributes<HTMLDivElement>>>(Flex);

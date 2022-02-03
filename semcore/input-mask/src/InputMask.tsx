@@ -187,6 +187,7 @@ class Value extends Component<IInputMaskValueProps> {
 export default createComponent<
   IInputProps,
   {
+    // eslint-disable-next-line ssr-friendly/no-dom-globals-in-module-scope
     Value: Merge<IInputMaskValueProps, InputHTMLAttributes<HTMLInputElement>>;
     Addon: ComponentProps<typeof Input.Addon>;
   }

@@ -26,4 +26,5 @@ class Sticky extends Component<IStickyProps> {
   }
 }
 
+// eslint-disable-next-line ssr-friendly/no-dom-globals-in-module-scope
 export default createComponent<Merge<IStickyProps, HTMLAttributes<HTMLDivElement>>>(Sticky);

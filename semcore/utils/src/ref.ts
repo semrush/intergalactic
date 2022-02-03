@@ -60,8 +60,10 @@ export function forkRef<T>(...refs): Ref<T> {
 }
 
 export type NodeByRef =
+  /* eslint-disable ssr-friendly/no-dom-globals-in-module-scope */
   | RefObject<HTMLElement>
   | HTMLElement
+  /* eslint-enable ssr-friendly/no-dom-globals-in-module-scope */
   | (() => RefObject<HTMLElement> | HTMLElement);
 
 export function getNodeByRef(ref: NodeByRef): HTMLElement {
