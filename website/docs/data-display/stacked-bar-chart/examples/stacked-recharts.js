@@ -27,7 +27,7 @@ const BAR_COLOR_MAP = {
   top10: colors['blue-04'],
   top20: colors['blue-01'],
   top50: colors['blue-02'],
-  top100: colors['gray-01'],
+  top100: colors['gray'],
 };
 
 let date = Date.now();
