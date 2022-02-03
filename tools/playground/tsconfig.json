@@ -8,7 +8,7 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "strict": true,
-    "noEmit": false,
+    "noEmit": true,
     "sourceMap": true,
     "importHelpers": false,
     "noEmitHelpers": true,
