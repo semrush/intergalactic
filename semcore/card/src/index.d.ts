@@ -1,6 +1,6 @@
 import React from 'react';
 import { CProps, ReturnEl } from '@semcore/core';
-import { IBoxProps } from '@semcore/flex-box';
+import { Box, IBoxProps } from '@semcore/flex-box';
 import { Text, ITextProps } from '@semcore/typography';
 
 export interface ITitleProps extends ITextProps {
@@ -13,8 +13,8 @@ export interface ITitleProps extends ITextProps {
 declare const Card: (<T>(props: CProps<IBoxProps & T>) => ReturnEl) & {
   Title: <T>(props: ITitleProps & T) => ReturnEl;
   Description: typeof Text;
-  Header: <T>(props: IBoxProps & T) => ReturnEl;
-  Body: <T>(props: IBoxProps & T) => ReturnEl;
+  Header: typeof Box;
+  Body: typeof Box;
 };
 
 export default Card;
