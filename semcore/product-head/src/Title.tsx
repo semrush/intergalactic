@@ -34,6 +34,7 @@ function Tool(props) {
 }
 
 const Title = createComponent<
+  // eslint-disable-next-line ssr-friendly/no-dom-globals-in-module-scope
   Merge<IHeaderTitleProps, HTMLAttributes<HTMLDivElement>>,
   {
     Tool: ComponentProps<typeof Box>;

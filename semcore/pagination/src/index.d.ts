@@ -66,10 +66,10 @@ export interface IPaginationHandlers {
 declare const Pagination: (<T>(
   props: CProps<IPaginationProps & T, IPaginationContext, IPaginationHandlers>,
 ) => ReturnEl) & {
-  PrevPage: <T>(props: ComponentProps<typeof Button>) => ReturnEl;
-  NextPage: <T>(props: ComponentProps<typeof Button>) => ReturnEl;
-  FirstPage: <T>(props: ComponentProps<typeof Button>) => ReturnEl;
-  TotalPages: <T>(props: CProps<ITotalPagesProps, {}, IPaginationHandlers>) => ReturnEl;
+  PrevPage: (props: ComponentProps<typeof Button>) => ReturnEl;
+  NextPage: (props: ComponentProps<typeof Button>) => ReturnEl;
+  FirstPage: (props: ComponentProps<typeof Button>) => ReturnEl;
+  TotalPages: (props: CProps<ITotalPagesProps, {}, IPaginationHandlers>) => ReturnEl;
   PageInput: (<T>(props: CProps<IPageInputProps & T, {}, IPaginationHandlers>) => ReturnEl) & {
     Value: typeof Input.Value;
     Addon: typeof Input.Addon;

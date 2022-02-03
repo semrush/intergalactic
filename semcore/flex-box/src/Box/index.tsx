@@ -9,4 +9,5 @@ function Box(props, ref) {
 
 Box.displayName = 'Box';
 
+// eslint-disable-next-line ssr-friendly/no-dom-globals-in-module-scope
 export default createBaseComponent<Merge<IBoxProps, HTMLAttributes<HTMLDivElement>>>(Box);
