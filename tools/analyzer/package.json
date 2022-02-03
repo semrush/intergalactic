@@ -1,5 +1,5 @@
 {
-  "name": "analyzer",
+  "name": "@semcore/analyzer",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
