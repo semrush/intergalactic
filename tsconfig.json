@@ -19,6 +19,10 @@
     "typeRoots": ["node_modules/@types", "tools/@types"],
     "plugins": [{ "name": "typescript-workspace-plugin" }]
   },
+  "paths": {
+    "@semcore/*": ["semcore/*"],
+    "@tools/*": ["tools/*"]
+  },
   "project": ["./semcore/*/tsconfig.json", "./tools/*/tsconfig.json"],
   "include": ["semcore", "tools"],
   "exclude": [

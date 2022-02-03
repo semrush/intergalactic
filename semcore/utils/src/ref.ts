@@ -10,7 +10,7 @@ export function setRef<T>(ref: Ref<T>, value: T) {
   }
 }
 
-export function getRef(ref: RefObject<HTMLElement>) {
+export function getRef(ref: RefObject<HTMLElement> | HTMLElement): HTMLElement {
   if (!ref) return null;
   return 'current' in ref ? ref.current : ref;
 }
