@@ -19,7 +19,7 @@ export default () => (
   <Card>
     <Card.Header>
       <Flex alignItems="center" justifyContent="space-between">
-        <Flex alignItems="flex-end">
+        <Flex alignItems="center">
           <Card.Title w="234px" noWrap inline hint={TooltipContent}>
             Market Traffic vs Selected Domains Trends
           </Card.Title>
@@ -31,7 +31,7 @@ export default () => (
           <Close color="stone" ml="auto" interactive />
         </Flex>
       </Flex>
-      <Card.Description>
+      <Card.Description tag="div">
         <Select tag={LinkTrigger} options={options} placeholder="Select" mr={4} />
         This is card additional information or insights.
       </Card.Description>
