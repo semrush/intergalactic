@@ -10,9 +10,6 @@ SCard {
 STitle {
   font-size: var(--fs-400);
   font-weight: 500;
-  flex: 1 1 auto;
-  align-items: center;
-  overflow: hidden;
 }
 
 SIcon {
@@ -23,15 +20,20 @@ SIcon {
 
 SDescription {
   margin-bottom: 12px;
-  margin-top: 8px;
   font-size: var(--fs-200);
   color: var(--gray60);
 }
 
 SHeader {
-  padding: 20px 24px 0;
+  padding-bottom: 0;
+  padding-left: 24px;
+  padding-right: 24px;
+  padding-top: 20px;
 }
 
 SBody {
-  padding: 20px 24px 24px;
+  padding-bottom: 24px;
+  padding-left: 24px;
+  padding-right: 24px;
+  padding-top: 20px;
 }
