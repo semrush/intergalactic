@@ -96,7 +96,7 @@ class Feedback extends React.PureComponent {
         <FeedbackForm.Notice hidden={status === 'failed'}>
           You can also send us an email to <Link>backlink.audit@semrush.com</Link>
         </FeedbackForm.Notice>
-        <FeedbackForm.Notice hidden={status !== 'failed'} theme="danger">
+        <FeedbackForm.Notice hidden={status !== 'failed'} theme="danger" use="secondary">
           Your message has not been sent.
         </FeedbackForm.Notice>
       </FeedbackForm>
