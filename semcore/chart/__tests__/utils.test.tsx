@@ -1,5 +1,5 @@
 import { normalizeCurvePoints, filterDotPoints } from '../src/utils';
-
+import { colors } from '../src/utils/colors';
 /**
  * @param {Number[]} indexes
  * @param {Object[]} arr
@@ -66,5 +66,10 @@ describe('filterPoints', () => {
   test('Returns true if point finish get null & point after has null', () => {
     const source = addNulls([18], pointsMock);
     expect(source.filter(filterFn)).toHaveLength(1);
+  });
+
+  test('Support export function colors', () => {
+    expect(typeof colors).toEqual('object');
+    expect(colors['white']).toEqual('#ffffff');
   });
 });
