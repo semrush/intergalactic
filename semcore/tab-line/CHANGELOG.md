@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.8.5] - 2022-02-04
+
+### Fixed
+
+- Fixed show active tab when `TableLine` have padding.
+
 ## [2.8.4] - 2021-12-23
 
 ### Changed
