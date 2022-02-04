@@ -68,6 +68,7 @@ export class RootItem extends Component {
       disabled,
       onClick: this.handleClick,
       id: `trigger-${value}`,
+      role: 'button',
       'aria-expanded': selected,
       'aria-controls': `content-${value}`,
     };
