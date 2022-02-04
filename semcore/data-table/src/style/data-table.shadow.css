@@ -56,7 +56,7 @@ SColumn[use='primary'] {
 SColumn[use='secondary'] {
   padding: 8px;
   border-bottom: 1px solid var(--stone);
-  background-color: transparent;
+  background-color: #fff;
 }
 
 SColumn[use]:last-child {
@@ -230,7 +230,7 @@ SCell[use='primary'] {
 SCell[use='secondary'] {
   padding: 8px;
   min-height: 37px;
-  background-color: transparent;
+  background-color: #fff;
 }
 
 SCell[fixed] {

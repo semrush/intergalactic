@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.4.1] - 2022-02-04
+
+### Changed
+
+- Changed background-color from undefined to `#fff` for `<CellHead use="secondary"/>`.
+
 ## [2.4.0] - 2022-01-18
 
 ### Changed
