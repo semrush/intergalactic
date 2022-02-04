@@ -76,11 +76,10 @@ declare const Root: Root;
 
 export { Root };
 
-export default abstract class RootComponent<
-  Props = {},
-  Context = {},
-  State = {}
-> extends PureComponent<Props & IRootComponentProps<Props, Context>, State> {
+abstract class RootComponent<Props = {}, Context = {}, State = {}> extends PureComponent<
+  Props & IRootComponentProps<Props, Context>,
+  State
+> {
   get handlers(): Readonly<IRootComponentHandlers> {
     return {};
   }
@@ -93,3 +92,17 @@ export default abstract class RootComponent<
 
   Root: Root;
 }
+
+export const Component = RootComponent;
+export type Component<
+  Props = {},
+  Context = {},
+  State = {},
+  Handlers extends IRootComponentHandlers = IRootComponentHandlers,
+> = React.ComponentClass<Props, State> & {
+  handlers: Readonly<Handlers>;
+
+  asProps: Readonly<Merge<Props & IRootComponentProps<Props, Context>, AllHTMLAttributes<any>>>;
+
+  Root: Root;
+};
