@@ -6689,6 +6689,11 @@ dateformat@^3.0.0:
   resolved "https://registry.yarnpkg.com/dateformat/-/dateformat-3.0.3.tgz"
   integrity sha512-jyCETtSl3VMZMWeRo7iY1FL19ges1t55hMo5yaam4Jrsm5EPL89UQkoQRyiI+Yf4k8r2ZpdngkV8hr1lIdjb3Q==
 
+dayjs@^1.10.7:
+  version "1.10.7"
+  resolved "https://registry.yarnpkg.com/dayjs/-/dayjs-1.10.7.tgz#2cf5f91add28116748440866a0a1d26f3a6ce468"
+  integrity sha512-P6twpd70BcPK34K26uJ1KT3wlhpuOAPoMwJzpsIWUxHZ7wpmbdZL/hQqBDfz7hGurYSa5PhzdhDHtt319hL3ig==
+
 dayjs@^1.8, dayjs@^1.8.17:
   version "1.10.6"
   resolved "https://registry.yarnpkg.com/dayjs/-/dayjs-1.10.6.tgz"
@@ -19147,6 +19152,13 @@ tslint-react@^4.1.0:
   integrity sha512-lO22+FKr9ZZGueGiuALzvZE/8ANoDoCHGCknX1Ge3ALrfcLQHQ1VGdyb1scZXQFdEQEfwBTIU40r5BUlJpn0JA==
   dependencies:
     tsutils "^3.9.1"
+
+tsm@^2.2.1:
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/tsm/-/tsm-2.2.1.tgz#3e78e86a03b2f569c20cff4a9f66c4ec8fce65fc"
+  integrity sha512-qvJB0baPnxQJolZru11mRgGTdNlx17WqgJnle7eht3Vhb+VUR4/zFA5hFl6NqRe7m8BD9w/6yu0B2XciRrdoJA==
+  dependencies:
+    esbuild "^0.14.0"
 
 tsutils@^3.21.0, tsutils@^3.9.1:
   version "3.21.0"

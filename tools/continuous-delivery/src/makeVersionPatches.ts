@@ -39,7 +39,9 @@ export const makeVersionPatches = (packages: Package[]) => {
     );
     if (!lastVersion) continue;
 
-    const hasNewerVersion = semver.compare(packageFile.currentVersion, lastVersion.version) === -1;
+    const hasNewerVersion =
+      semver.compare(packageFile.lastPublishedVersion, lastVersion.version) === -1;
+
     if (!hasNewerVersion) continue;
 
     const versionPatch: VersionPatch = {
