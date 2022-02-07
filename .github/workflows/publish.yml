@@ -52,6 +52,9 @@ jobs:
           git config --global user.name 'semrush-ci-whale'
           git config --global user.email 'semrush-ci-whale@users.noreply.github.com'
           git remote set-url origin https://x-access-token:${{ secrets.BOT_ACCOUNT_GITHUB_TOKEN }}@github.com/semrush/intergalactic
+      - name: NPM setup
+        run: |
+          echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" >> ".npmrc"
       - name: Lint
         run: yarn lint
       - name: Test
