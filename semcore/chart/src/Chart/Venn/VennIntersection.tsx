@@ -12,7 +12,7 @@ export default class VennIntersection extends React.PureComponent<IVennChildProp
     fillOpacity: 0,
     activeFillOpacity: 0.1,
     strokeWidth: 2,
-    stroke: colors['white-01'],
+    stroke: colors['white'],
   };
 
   render() {
