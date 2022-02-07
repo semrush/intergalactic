@@ -1,8 +1,7 @@
 name: publish
 on:
   push:
-    branches:
-      - continuous-delivery: true
+    branches: continuous-delivery
 jobs:
   setup:
     runs-on: ubuntu-latest
@@ -23,6 +22,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
     needs: setup
+    env:
+      GCLOUD_SECRET: ${{ secrets.GCLOUD_SECRET }}
+      SCREENSHOT_URL: ${{ secrets.SCREENSHOT_URL }}
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
@@ -56,5 +58,3 @@ jobs:
         run: yarn test
       - name: Delivery
         run: yarn continuous-delivery
-        env:
-          - 'GCLOUD_SECRET=$GCLOUD_SECRET'
