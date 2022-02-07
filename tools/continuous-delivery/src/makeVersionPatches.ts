@@ -60,6 +60,7 @@ export const makeVersionPatches = (packages: Package[]) => {
       if (versionPatchesMap.has(packageFile.name)) continue;
 
       let updateType: semver.ReleaseType | null = null;
+      let updateTypeFallback: 'patch' | 'prerelease' = 'patch';
       let needUpdate = false;
 
       for (const dependenciesType of ['dependencies', 'devDependencies', 'peerDependencies']) {
@@ -67,6 +68,13 @@ export const makeVersionPatches = (packages: Package[]) => {
           const dependencyVersionPatch = versionPatchesMap.get(dependency);
           if (!dependencyVersionPatch) continue;
           needUpdate = true;
+
+          if (
+            semver.prerelease(normalizeSemver(dependencyVersionPatch.to)) !== null &&
+            updateTypeFallback !== 'prerelease'
+          ) {
+            updateTypeFallback = 'prerelease';
+          }
 
           if (
             !semver.satisfies(dependencyVersionPatch.to, packageFile[dependenciesType][dependency])
@@ -88,7 +96,14 @@ export const makeVersionPatches = (packages: Package[]) => {
 
       if (needUpdate) {
         recursiveChildrenUpdateCompleted = false;
-        const version = semver.inc(packageFile.currentVersion, updateType || 'patch');
+        const versionBase = semver.compare(
+          packageFile.currentVersion,
+          packageFile.lastPublishedVersion,
+        )
+          ? packageFile.currentVersion
+          : packageFile.lastPublishedVersion;
+
+        const version = semver.inc(versionBase, updateType || updateTypeFallback);
 
         const versionPatch: VersionPatch = {
           package: packageFile,
