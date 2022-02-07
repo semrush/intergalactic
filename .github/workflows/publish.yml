@@ -55,3 +55,5 @@ jobs:
         run: yarn test
       - name: Delivery
         run: yarn continuous-delivery
+        env:
+          - 'GCLOUD_SECRET=$GCLOUD_SECRET'
