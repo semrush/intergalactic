@@ -258,7 +258,7 @@ Line.prototype.renderDots = function (needClip, clipPathId) {
       key: `dot-${i}`,
       r: 6,
       ...lineProps,
-      stroke: colors['white-01'],
+      stroke: colors['white'],
       strokeWidth: 2,
       ...customDotProps,
       ...dotEvents,
@@ -337,7 +337,7 @@ Line.defaultProps.strokeWidth = 3;
 // @ts-ignore
 Line.defaultProps.dot = false;
 // @ts-ignore
-Line.defaultProps.activeDot = { r: 8, strokeWidth: 2, stroke: colors['white-01'] };
+Line.defaultProps.activeDot = { r: 8, strokeWidth: 2, stroke: colors['white'] };
 // @ts-ignore
 Line.defaultProps.type = 'monotone';
 

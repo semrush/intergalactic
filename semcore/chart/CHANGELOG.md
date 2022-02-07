@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.3.7] - 2022-02-07
+
+### Fixed
+
+- Rename deprecate color `white-01` to `white`.
+
 ## [4.3.6] - 2022-02-03
 
 ### Fixed
