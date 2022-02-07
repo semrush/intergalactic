@@ -50,6 +50,18 @@ describe('Divider', () => {
         <div style={{ height: 100 }}>
           <Divider use="secondary" theme="invert" orientation="vertical" />
         </div>
+        <br />
+        <div style={{ width: 100 }}>
+          <Divider theme="red" />
+        </div>
+        <br />
+        <div style={{ width: 100 }}>
+          <Divider use="primary" theme="red" />
+        </div>
+        <br />
+        <div style={{ width: 100 }}>
+          <Divider use="secondary" theme="red" />
+        </div>
       </snapshot.ProxyProps>
     );
 

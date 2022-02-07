@@ -3,7 +3,9 @@ const presetEnv = require('postcss-preset-env');
 const atImport = require('postcss-import-sync2');
 const cssnano = require('cssnano');
 const mediarezka = require('@semcore/postcss-mediarezka');
+const postcssColorMod = require('postcss-color-mod-function');
 
+const inlineCssVariables = require('./inline-css-variables');
 const shadowStyles = require('./postcss-shadow-styles');
 
 const syncPlugin = (plugin) => (root, result) => {
@@ -25,9 +27,7 @@ module.exports = function (options) {
         stage: 0,
         browsers: 'defaults',
         features: {
-          'custom-properties': {
-            preserve: false,
-          },
+          'custom-properties': false,
           'custom-media-queries': {
             preserve: false,
           },
@@ -38,6 +38,8 @@ module.exports = function (options) {
         ...options.presetEnv,
       }),
     ),
+    inlineCssVariables(),
+    syncPlugin(postcssColorMod()),
     mediarezka({
       getMedia: () => {},
       ...options.mediarezka,
