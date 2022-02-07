@@ -1,19 +1,18 @@
 @import '@semcore/utils/style/var.css';
-
 SDivider {
   display: block;
 }
 
 SDivider[use='primary'] {
-  background-color: var(--gray80);
+  background-color: var(--theme, var(--gray80));
 }
 
 SDivider[use='primary']SDivider[theme='invert'] {
-  background-color: color-mod(var(--gray80) alpha(20%));
+  background: color-mod(var(--gray80) alpha(20%));
 }
 
 SDivider[orientation='horizontal']SDivider[use='secondary'] {
-  background: linear-gradient(to right, #ccc 3px, transparent 1px);
+  background: linear-gradient(to right, var(--theme, var(--gray80)) 3px, transparent 1px);
   background-size: 5px 1px;
 }
 
@@ -23,7 +22,7 @@ SDivider[orientation='horizontal']SDivider[use='secondary']SDivider[theme='inver
 }
 
 SDivider[orientation='vertical']SDivider[use='secondary'] {
-  background: linear-gradient(to bottom, #ccc 3px, transparent 1px);
+  background: linear-gradient(to bottom, var(--theme, var(--gray80)) 3px, transparent 1px);
   background-size: 1px 5px;
 }
 

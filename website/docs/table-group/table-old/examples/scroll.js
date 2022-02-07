@@ -97,7 +97,7 @@ const Demo = () => (
                 <Checkbox.Value />
               </Checkbox>
             </StyledThSticky>
-            <StyledThSticky width="150" left={50} style={{ 'box-shadow': '0 0 1px #dee3e5' }}>
+            <StyledThSticky width="150" left={50} style={{ boxShadow: '0 0 1px #dee3e5' }}>
               <Tooltip title="Lorem ipsum">
                 <span>
                   Keyword <Text color="gray60">(1 – 100)</Text>

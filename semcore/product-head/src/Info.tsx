@@ -39,6 +39,7 @@ const Info = createComponent<
   ComponentProps<typeof Box>,
   {
     Item: [
+      // eslint-disable-next-line ssr-friendly/no-dom-globals-in-module-scope
       Merge<IInfoItemProps, HTMLAttributes<HTMLDivElement>>,
       {
         Label: ComponentProps<typeof Box>;

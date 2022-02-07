@@ -194,6 +194,7 @@ function InputTag(props) {
 }
 
 export default createComponent<
+  // eslint-disable-next-line ssr-friendly/no-dom-globals-in-module-scope
   Merge<IInputTagsProps, HTMLAttributes<HTMLDivElement>>,
   {
     Value: ComponentProps<typeof Input.Value>;

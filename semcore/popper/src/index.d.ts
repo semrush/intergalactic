@@ -109,6 +109,7 @@ export interface IPopperProps extends IOutsideClickProps, IPortalProps, IUniqueI
    * `'scrollParent' | 'viewport' | 'window' | HTMLElement`
    * @deprecated v4.0.0 {@link IPopperProps.preventOverflow}
    */
+  // eslint-disable-next-line ssr-friendly/no-dom-globals-in-module-scope
   boundary?: 'scrollParent' | 'viewport' | 'window' | HTMLElement;
 }
 

@@ -29,6 +29,7 @@ type createBreakpointsType = (
 };
 
 declare const MediaList: {
+  // eslint-disable-next-line ssr-friendly/no-dom-globals-in-module-scope
   prototype: MediaList;
   new (media: mediaType, defaultIndex?: number): IMediaList;
 };

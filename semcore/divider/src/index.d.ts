@@ -10,7 +10,7 @@ export interface IDividerProps extends IBoxProps {
   /**
    * Theme of the divider
    */
-  theme?: 'invert';
+  theme?: string | 'invert';
   /**
    * Orientation of the divider
    * @default horizontal

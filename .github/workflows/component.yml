@@ -1,9 +1,8 @@
 name: component
 on:
+  pull_request:
   push:
-    branches:
-      - master: true
-  pull_request: true
+    branches: master
 jobs:
   setup:
     runs-on: ubuntu-latest

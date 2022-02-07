@@ -7,7 +7,7 @@ import useEnhancedEffect from '@semcore/utils/lib/use/useEnhancedEffect';
 // @ts-ignore
 import _assignProps from '@semcore/utils/lib/assignProps';
 
-import Component, { PropsWithRenderFnChildren } from './Component';
+import { Component, PropsWithRenderFnChildren } from './Component';
 import register from './register';
 
 import childrenEnhancement, { CHILDREN_COMPONENT } from './enhancement/Children';
@@ -246,26 +246,22 @@ export type ComponentType<
   ChildComponentProps = {},
   ContextType = {},
   UCProps = {},
-  FNType = null
+  FNType = null,
 > = (FNType extends null
   ? ForwardRefComponent<ComponentProps, ContextType, UCProps>
-  : FNType & { displayName: string }) &
-  {
-    [K in keyof ChildComponentProps]: ComponentOrProps<
-      ChildComponentProps[K],
-      ContextType,
-      UCProps
-    >;
-  } & {
-    [CORE_COMPONENT]: boolean;
-    [CREATE_COMPONENT]: () => ComponentType<
-      ComponentProps,
-      ChildComponentProps,
-      ContextType,
-      UCProps
-    >;
-  };
+  : FNType & { displayName: string }) & {
+  [K in keyof ChildComponentProps]: ComponentOrProps<ChildComponentProps[K], ContextType, UCProps>;
+} & {
+  [CORE_COMPONENT]: boolean;
+  [CREATE_COMPONENT]: () => ComponentType<
+    ComponentProps,
+    ChildComponentProps,
+    ContextType,
+    UCProps
+  >;
+};
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 interface ClassWithUncontrolledProps<Props> {
   uncontrolledProps(): unknown;
 }
@@ -372,7 +368,6 @@ export * from './styled';
 export * from './register';
 export {
   createBaseComponent,
-  Component,
   register,
   CREATE_COMPONENT,
   CORE_INSTANCE,
