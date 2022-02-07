@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [1.1.1] - 2022-02-03
+
+### Fixed
+
+- Supported nested css variables in css variables fallback
+
 ## [1.1.0] - 2022-01-10
 
 ### Added
