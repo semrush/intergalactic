@@ -10,6 +10,7 @@ export const runPublisher = async (versionPatches: VersionPatch[]) => {
     .join(',');
 
   const args = `--no-check-git --release current --no-check-changelog --package ${packageArg}`;
+
   execSync(`yarn pub ${args}`, {
     stdio: 'inherit',
   });
