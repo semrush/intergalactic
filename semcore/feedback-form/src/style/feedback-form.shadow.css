@@ -11,7 +11,7 @@ SCancel {
 }
 
 SNotice[use='secondary'] {
-  border: 1px none;
+  border-width: 1px 0 0;
   border-top-style: solid;
   border-radius: 0 0 3px 3px;
 }
