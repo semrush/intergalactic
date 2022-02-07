@@ -76,14 +76,17 @@ SCheckbox[size='m'] {
 
 SText[size='xl'] {
   font-size: var(--fs-300);
+  line-height: var(--lh-300);
 }
 
 SText[size='l'] {
   font-size: var(--fs-200);
+  line-height: var(--lh-200);
 }
 
 SText[size='m'] {
   font-size: var(--fs-100);
+  line-height: var(--lh-100);
 }
 
 SCheckbox {

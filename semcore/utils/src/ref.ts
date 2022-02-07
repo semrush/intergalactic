@@ -10,7 +10,7 @@ export function setRef<T>(ref: Ref<T>, value: T) {
   }
 }
 
-export function getRef(ref: RefObject<HTMLElement>) {
+export function getRef(ref: RefObject<HTMLElement> | HTMLElement): HTMLElement {
   if (!ref) return null;
   return 'current' in ref ? ref.current : ref;
 }
@@ -60,8 +60,10 @@ export function forkRef<T>(...refs): Ref<T> {
 }
 
 export type NodeByRef =
+  /* eslint-disable ssr-friendly/no-dom-globals-in-module-scope */
   | RefObject<HTMLElement>
   | HTMLElement
+  /* eslint-enable ssr-friendly/no-dom-globals-in-module-scope */
   | (() => RefObject<HTMLElement> | HTMLElement);
 
 export function getNodeByRef(ref: NodeByRef): HTMLElement {

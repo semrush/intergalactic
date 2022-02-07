@@ -39,6 +39,7 @@ export interface ICarouselContext {
 }
 
 export interface ICarouselState {
+  // eslint-disable-next-line ssr-friendly/no-dom-globals-in-module-scope
   items: { transform: number; position: number; node: HTMLDivElement }[];
 }
 

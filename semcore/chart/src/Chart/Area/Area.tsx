@@ -79,7 +79,7 @@ AreaRecharts.prototype.renderAreaStatically = function (points, baseLine, needCl
               type={type}
               connectNulls
               fill="none"
-              stroke={colors['gray-02']}
+              stroke={colors['gray-blue']}
               strokeWidth={3}
               strokeDasharray="6"
               points={normalizedPoints}

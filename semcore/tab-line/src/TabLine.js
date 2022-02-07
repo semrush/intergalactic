@@ -74,7 +74,8 @@ class TabLineRoot extends Component {
     if (!tab) return false;
     this.$observerTab.observe(tab);
     const { offsetLeft, offsetWidth } = tab;
-    indicator.style.transform = `translateX(${offsetLeft - tabsParent.clientLeft}px)`;
+    const positionLeftParent = tabsParent.clientLeft + parseInt(tabsParent.style.paddingLeft, 10) || 0;
+    indicator.style.transform = `translateX(${offsetLeft - positionLeftParent}px)`;
     indicator.style.width = `${offsetWidth}px`;
   };
 

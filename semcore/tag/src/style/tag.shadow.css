@@ -15,7 +15,9 @@ STag {
 }
 
 SText {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  height: 100%;
   padding-left: 4px;
   padding-right: 4px;
   white-space: nowrap;

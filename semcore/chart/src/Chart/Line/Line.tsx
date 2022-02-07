@@ -52,7 +52,7 @@ Line.prototype.renderCurveStatically = function (points, needClip, clipPathId, p
         <Curve
           {...curveProps}
           points={normalizeCurvePoints(points)}
-          stroke={colors['gray-02']}
+          stroke={colors['gray-blue']}
           strokeWidth={3}
           strokeDasharray="6"
         />

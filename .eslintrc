@@ -61,5 +61,13 @@
       "error",
       { "devDependencies": true, "optionalDependencies": false, "peerDependencies": true }
     ]
-  }
+  },
+  "overrides": [
+    {
+      "files": "tools/playground/examples/**/*",
+      "rules": {
+        "import/no-extraneous-dependencies": "off"
+      }
+    }
+  ]
 }

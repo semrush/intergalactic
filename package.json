@@ -1,14 +1,14 @@
 {
   "scripts": {
-    "build": "lerna run build --scope @semcore/*",
+    "build": "lerna run build --scope @semcore/icon && lerna run build --scope @semcore/* --ignore @semcore/icon",
     "typecheck": "lerna exec --scope @semcore/* -- tsc --noEmit",
     "prebuild": "rm -rf semcore/**/lib && find semcore/icon/. -type d -maxdepth 1 | egrep -v \"__tests__|src|svg|svg-new\" | xargs rm -rf || true",
     "test": "jest --projects semcore/* --no-cache",
     "playground": "yarn workspace @semcore/playground start",
-    "analyze": "yarn workspace analyzer start",
+    "analyze": "yarn workspace @semcore/analyzer start",
     "pub": "super-publisher --root ./semcore",
-    "lint:dts": "tsc --project tsconfig.dts.json",
-    "lint": "yarn lint:dts & eslint -c .eslintrc --ext .ts,.tsx ./semcore",
+    "lint:ts": "tsc --project tsconfig.json --noEmit",
+    "lint": "yarn lint:ts & eslint -c .eslintrc --ext .ts,.tsx ./semcore",
     "prettier:fix": "pretty-quick --staged --ignore-path=./.prettierignore"
   },
   "private": true,
@@ -26,11 +26,12 @@
   },
   "devDependencies": {
     "@mailchimp/mailchimp_marketing": "^3.0.30",
+    "@semcore/theme-redesign": "^1.4.1",
     "@types/jest": "^26.0.23",
     "@types/jest-image-snapshot": "^2.11.1",
     "@types/react": "^17.0.0",
-    "@typescript-eslint/eslint-plugin": "^2.25.0",
-    "@typescript-eslint/parser": "^2.25.0",
+    "@typescript-eslint/eslint-plugin": "^5.10.2",
+    "@typescript-eslint/parser": "^5.10.2",
     "dotenv": "^8.2.0",
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.10.1",
@@ -49,10 +50,9 @@
     "tslint-config-prettier": "^1.18.0",
     "tslint-plugin-prettier": "^2.0.1",
     "tslint-react": "^4.1.0",
-    "typescript": "^3.9.5",
+    "typescript": "^4.5.5",
     "typescript-plugin-css-modules": "^2.2.0",
-    "typescript-workspace-plugin": "^2.0.1",
-    "@semcore/theme-redesign": "^1.3.4"
+    "typescript-workspace-plugin": "^2.0.1"
   },
   "jest": {
     "preset": "@semcore/jest-preset-ui"

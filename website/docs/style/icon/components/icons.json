@@ -1994,6 +1994,12 @@
       "tags": ["key", "hotkey", "горячая", "клавиша", "board", "press", "quick", "быстрый"]
     },
     {
+      "name": "LightningFilled",
+      "size": ["l", "m"],
+      "group": "Misc",
+      "tags": ["lightning", "молния", "zap", "fast", "sonic", "quick", "быстро", "flash"]
+    },
+    {
       "name": "Lightning",
       "size": ["l", "m"],
       "group": "Misc",
