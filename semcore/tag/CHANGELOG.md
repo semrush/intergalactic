@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.6.1] - 2022-01-18
+
+### Fixed
+
+- Tag text vertical cut in some rare cases.
+
 ## [3.6.0] - 2022-01-18
 
 ### Changed
