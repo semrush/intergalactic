@@ -24,8 +24,10 @@ export const runPublisher = async (versionPatches: VersionPatch[]) => {
     // eslint-disable-next-line no-console
     console.log(`Running publisher with following args: ${args}`);
 
-    execSync(`yarn pub ${args}`, {
-      stdio: 'inherit',
-    });
+    if (!process.argv.includes('--dry-run')) {
+      execSync(`yarn pub ${args}`, {
+        stdio: 'inherit',
+      });
+    }
   }
 };
