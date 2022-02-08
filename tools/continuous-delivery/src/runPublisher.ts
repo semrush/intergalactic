@@ -1,3 +1,4 @@
+import { execSync } from 'child_process';
 import { VersionPatch } from './makeVersionPatches';
 
 export const runPublisher = async (versionPatches: VersionPatch[]) => {
