@@ -70,11 +70,11 @@ describe('Icon', () => {
   });
 
   pkgFiles.forEach((filePath) => {
-    const utilsModule = filePath.split('/icon/lib/')[1];
+    const utilsModule = filePath.split('/icon/')[1];
 
     test(`file ${utilsModule} provides correct exports to release system`, () => {
-      const source = require(`@semcore/icon/lib/${utilsModule}`);
-      const rscUi = require(`../icon/lib/${utilsModule}`);
+      const source = require(`@semcore/icon/${utilsModule}`);
+      const rscUi = require(`../icon/${utilsModule}`);
 
       expect(sortObjKeys(source)).toStrictEqual(sortObjKeys(rscUi));
     });

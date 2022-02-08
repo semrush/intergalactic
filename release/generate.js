@@ -14,6 +14,7 @@ const glob = require('glob');
 const changeLogsByDate = require('@semcore/changelogs-by-date');
 const pkg = require('./package');
 const components = require('./components');
+const { dirname } = require('path');
 
 const REGISTRY_URL = 'https://registry.npmjs.org/';
 const CHANGELOG_ORDER = ['break', 'added', 'fixed', 'changed'];
@@ -25,6 +26,8 @@ const typeByChangeLog = {
   fixed: 'Fixed',
   changed: 'Changed',
 };
+
+const hasUppercase = (str) => str.toLowerCase() !== str;
 
 async function removeDirectory() {
   const toRemove = [...glob.sync('!(*.*|__tests__)'), 'yarn.lock'];
@@ -94,18 +97,55 @@ const GENERATOR = {
   },
   ICONS: (dependency, name) => {
     const iconPath = require.resolve(dependency);
-    const icons = glob
-      .sync('!(cjs|es6|types)/**/*.js', { cwd: path.join(iconPath, '../..') })
-      .map((icon) => icon.replace(/\/index\.js/, ''));
-    icons.map((icon) => {
-      fse.outputFileSync(
-        `./${name}/lib/${icon}/index.js`,
-        EXPORT_TEMPLATES.LIB_DEFAULT(dependency, icon),
+
+    const oldIconsDir = path.join(iconPath, '../..');
+    const newIconsDir = path.join(iconPath, '../../..');
+
+    const isIconDir = (dir) =>
+      fse.statSync(dir).isDirectory() &&
+      !['__tests__', 'src', 'svg', 'svg-new', 'lib', 'cjs', 'es6', 'types'].includes(
+        path.basename(dir),
       );
-      fse.outputFileSync(
-        `./${name}/lib/${icon}/index.d.ts`,
-        EXPORT_TEMPLATES.LIB_DEFAULT(dependency, icon),
-      );
+    const oldIcons = fse
+      .readdirSync(oldIconsDir)
+      .filter((iconDir) => isIconDir(path.join(oldIconsDir, iconDir)));
+    const newIcons = fse
+      .readdirSync(newIconsDir)
+      .filter((iconDir) => isIconDir(path.join(newIconsDir, iconDir)));
+
+    oldIcons.map((icon) => {
+      const subFiles = glob
+        .sync('!(cjs|es6|types)/**/*.js', {
+          cwd: path.resolve(oldIconsDir, icon),
+        })
+        .map(path.dirname);
+      for (let subFile of subFiles) {
+        fse.outputFileSync(
+          `./${name}/lib/${icon}/${subFile}/index.js`,
+          EXPORT_TEMPLATES.LIB_DEFAULT(dependency, `${icon}/${subFile}`),
+        );
+        fse.outputFileSync(
+          `./${name}/lib/${icon}/${subFile}/index.d.ts`,
+          EXPORT_TEMPLATES.LIB_DEFAULT(dependency, `${icon}/${subFile}`),
+        );
+      }
+    });
+    newIcons.map((icon) => {
+      const subFiles = glob
+        .sync('!(cjs|es6|types)/**/*.js', {
+          cwd: path.resolve(newIconsDir, icon),
+        })
+        .map(path.dirname);
+      for (let subFile of subFiles) {
+        fse.outputFileSync(
+          `./${name}/${icon}/${subFile}/index.js`,
+          EXPORT_TEMPLATES.DEFAULT(`${dependency}/${icon}/${subFile}`),
+        );
+        fse.outputFileSync(
+          `./${name}/${icon}/${subFile}/index.d.ts`,
+          EXPORT_TEMPLATES.DEFAULT(`${dependency}/${icon}/${subFile}`),
+        );
+      }
     });
   },
   OTHER: (dependency, name) => {
