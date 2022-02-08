@@ -66,23 +66,23 @@ SText[italic] {
 SText[decoration] {
   text-decoration: var(--decoration);
 }
+
 SText[color] {
   color: var(--color);
 }
 
 SText[fontSize] {
-  &[fontSize] {
-    font-size: var(--fontSize);
-  }
+  font-size: var(--fontSize);
 }
+
 SText[lineHeight] {
-  &[lineHeight] {
-    line-height: var(--lineHeight);
-  }
+  line-height: var(--lineHeight);
 }
+
 SText[fontWeight] {
   font-weight: var(--fontWeight);
 }
+
 SText[textAlign] {
   text-align: var(--textAlign);
 }

@@ -21,26 +21,6 @@ class Textarea extends Component {
 
   node = null;
 
-  componentDidMount() {
-    this.calculateRows();
-    this.addGlobalHandlers();
-  }
-
-  componentWillUnmount() {
-    this.removeGlobalHandlers();
-  }
-
-  componentDidUpdate(prevProps) {
-    const { minRows, maxRows, value } = this.asProps;
-    if (
-      prevProps.minRows !== minRows ||
-      prevProps.maxRows !== maxRows ||
-      prevProps.value !== value
-    ) {
-      this.calculateRows();
-    }
-  }
-
   uncontrolledProps() {
     return {
       value: (e) => e.target.value,
@@ -50,13 +30,6 @@ class Textarea extends Component {
   setRef = (node) => {
     if (!node) return;
     this.node = node;
-  };
-
-  handleChange = () => {
-    const { value } = this.asProps;
-    if (value === undefined) {
-      this.calculateRows();
-    }
   };
 
   addGlobalHandlers = () => {
@@ -71,11 +44,9 @@ class Textarea extends Component {
     window.removeEventListener('resize', this.calculateRows);
   };
 
-  calculateRows = () => {
+  calculateRows = (disabledScrolling = false) => {
     const { node } = this;
-    const { rows } = this.asProps;
-    const maxRows = this.asProps.maxRows;
-    const minRows = this.asProps.minRows;
+    const { rows, minRows, maxRows } = this.asProps;
     if (!node || !canUseDOM() || rows || !maxRows) return;
 
     const lh = cssToIntDefault(getComputedStyle(node).getPropertyValue('line-height'));
@@ -99,15 +70,37 @@ class Textarea extends Component {
       node.rows = computed;
     }
 
-    node.scrollTop = node.scrollHeight;
+    if (!disabledScrolling) {
+      node.scrollTop = node.scrollHeight;
+    }
   };
+
+  componentDidMount() {
+    this.calculateRows(true);
+    this.addGlobalHandlers();
+  }
+
+  componentDidUpdate(prevProps) {
+    const { minRows, maxRows, value } = this.asProps;
+    if (
+      prevProps.minRows !== minRows ||
+      prevProps.maxRows !== maxRows ||
+      prevProps.value !== value
+    ) {
+      this.calculateRows();
+    }
+  }
+
+  componentWillUnmount() {
+    this.removeGlobalHandlers();
+  }
 
   render() {
     const STextarea = Root;
     const { styles } = this.asProps;
 
     return sstyled(styles)(
-      <STextarea render={Box} tag="textarea" ref={this.setRef} onChange={this.handleChange} />,
+      <STextarea render={Box} tag="textarea" ref={this.setRef} onChange={this.calculateRows} />,
     );
   }
 }
