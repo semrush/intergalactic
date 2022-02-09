@@ -2,7 +2,6 @@ import React from 'react';
 import { CProps, PropGetterFn, ReturnEl } from '@semcore/core';
 import { Box, IBoxProps } from '@semcore/flex-box';
 import { IKeyboardFocusProps } from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
-import { TabLineValue } from '@semcore/tab-line/src';
 
 export type TabPanelValue = string | number | boolean;
 
@@ -11,6 +10,10 @@ export interface ITabPanelProps<T extends TabPanelValue = TabPanelValue> extends
   onChange?: (value: T, e?: React.SyntheticEvent<HTMLButtonElement>) => void;
   /** Value of the selected tab */
   value?: T;
+  /** Default value of the selected tab
+   * @default null
+   * */
+  defaultValue?: T;
 }
 
 export interface ITabPanelItemProps extends IBoxProps, IKeyboardFocusProps {
