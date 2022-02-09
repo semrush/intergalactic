@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { cleanup, render, axe } from '@semcore/jest-preset-ui/testing';
+import { cleanup, fireEvent, render, axe } from '@semcore/jest-preset-ui/testing';
 import snapshot from '@semcore/jest-preset-ui/snapshot';
 import Textarea from '../src';
 
@@ -41,6 +41,14 @@ describe('Textarea', () => {
     );
 
     expect(await snapshot(component)).toMatchImageSnapshot();
+  });
+
+  test('Should support onChange callback', () => {
+    const spyChange = jest.fn();
+    const { getByTestId } = render(<Textarea data-testid={'textarea'} onChange={spyChange} />);
+
+    fireEvent.input(getByTestId('textarea'), { target: { value: 'text' } });
+    expect(spyChange).toBeCalledWith('text', expect.any(Object));
   });
 
   // TODO: because jsdom not supported scrollHeight and getComputedStyle
