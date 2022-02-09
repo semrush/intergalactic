@@ -1,7 +1,6 @@
-import React from 'react';
-import { cleanup, fireEvent, render } from '@semcore/jest-preset-ui/testing';
+import * as React from 'react';
+import { cleanup } from '@semcore/jest-preset-ui/testing';
 import snapshot from '@semcore/jest-preset-ui/snapshot';
-import { shouldSupportClassName, shouldSupportRef } from '@semcore/jest-preset-ui/shared';
 import propsForElement from '@semcore/utils/lib/propsForElement';
 import Tag from '../src';
 
@@ -25,7 +24,7 @@ describe('Tag', () => {
   });
 
   test('Renders correctly with Addon as props', async () => {
-    const Addon = React.forwardRef((props, ref) => {
+    const Addon = React.forwardRef<HTMLSpanElement>((props, ref) => {
       return (
         <span ref={ref} {...propsForElement(props)}>
           Addon prop
