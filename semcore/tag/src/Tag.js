@@ -29,36 +29,26 @@ class RootTag extends Component {
   };
 
   getCloseProps() {
-    const { use, theme, size } = this.asProps;
-    return { use, theme, size };
+    const { use, theme } = this.asProps;
+    return { use, theme };
   }
 
   render() {
     const STag = Root;
-    let {
-      Children,
-      styles,
-      theme,
-      use,
-      color,
-      interactive,
-      disabled,
-      addonLeft,
-      addonRight,
-    } = this.asProps;
+    let { Children, styles, theme, use, color, interactive, disabled, addonLeft, addonRight } =
+      this.asProps;
 
     if (disabled) {
       interactive = false;
     }
 
-    const useTheme = getThemeName(use, theme);
     const colorTag = theme ? opacity(resolveColor(theme), 0.5) : '';
     const colorText = color ? resolveColor(color) : resolveColor(theme);
 
     return sstyled(styles)(
       <STag
         render={Box}
-        use:theme={useTheme}
+        use:theme={getThemeName(use, theme)}
         use:interactive={interactive}
         colorText={colorText}
         colorTag={colorTag}
@@ -79,7 +69,7 @@ function Text(props) {
 
 function Close(props) {
   const SClose = Root;
-  const { styles, use, theme, size } = props;
+  const { styles, use, theme } = props;
 
   return sstyled(styles)(<SClose render={Box} use:theme={getThemeName(use, theme)} tag={CloseM} />);
 }
