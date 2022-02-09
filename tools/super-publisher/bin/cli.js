@@ -14,6 +14,7 @@ commander
   .option('--changelog [string]', 'Write to changelog')
   .option('--no-check-changelog', 'No check changelog')
   .option('--no-check-deps', 'No check dependency')
+  .option('--no-check-release', 'No check release')
   .option('--no-test', 'No run test')
   .parse(process.argv);
 
