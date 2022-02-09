@@ -15,6 +15,8 @@
 
 ### @semcore/d3-chart
 
+- **Added** Added Bubble and Scatter plot charts.
+- **Changed** Tooltip font size changed.
 - **Changed** Revert function findComponent for check children in Tooltip, because it's valid for children () => ({}).
 - **Changed** Replaced function findComponent to isAdvanceMode for check children in Tooltip.
 
