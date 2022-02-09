@@ -21,6 +21,10 @@ export interface ITabLineProps<T extends TabLineValue = TabLineValue>
   onChange?: (value: T, e?: React.SyntheticEvent<HTMLButtonElement>) => void;
   /** Value of the selected tab */
   value?: T;
+  /** Default value of the selected tab
+   * @default null
+   * */
+  defaultValue?: T;
 }
 
 export interface ITabLineItemProps extends IBoxProps, IKeyboardFocusProps, INeighborItemProps {
