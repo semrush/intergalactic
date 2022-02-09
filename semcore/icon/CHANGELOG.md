@@ -2,6 +2,16 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.19.0] - 2022-02-09
+
+### Added
+
+- Add icon `Hubspot`.
+
+### Changed
+
+- Changed svg for `SortAsc`, `SortDesc`.
+
 ## [2.18.0] - 2022-02-03
 
 ### Added
