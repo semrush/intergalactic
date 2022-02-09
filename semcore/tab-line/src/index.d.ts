@@ -29,7 +29,7 @@ export interface ITabLineItemProps extends IBoxProps, IKeyboardFocusProps, INeig
   /** Disabled state  */
   disabled?: boolean;
   /** Tab value */
-  value: TabLineValue;
+  value?: TabLineValue;
   /** Left addon tag */
   addonLeft?: React.ElementType;
   /** Right addon tag  */

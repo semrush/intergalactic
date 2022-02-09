@@ -1,24 +1,10 @@
-import React, { ComponentProps, HTMLAttributes } from 'react';
-import createComponent, {
-  Component,
-  IFunctionProps,
-  Merge,
-  PropGetterFn,
-  PropsAndRef,
-  sstyled,
-  Root,
-} from '@semcore/core';
-import { Box, IBoxProps } from '@semcore/flex-box';
+import React from 'react';
+import createComponent, { Component, sstyled, Root } from '@semcore/core';
+import { Box } from '@semcore/flex-box';
 import addonTextChildren from '@semcore/utils/lib/addonTextChildren';
-import keyboardFocusEnhance, {
-  IKeyboardFocusProps,
-} from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
+import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 import a11yEnhance from '@semcore/utils/lib/enhances/a11yEnhance';
-import NeighborLocation, {
-  INeighborItemProps,
-  INeighborLocationProps,
-  neighborLocationEnhance,
-} from '@semcore/neighbor-location';
+import NeighborLocation, { neighborLocationEnhance } from '@semcore/neighbor-location';
 import ResizeObserver from 'resize-observer-polyfill';
 
 import style from './style/tab-line.shadow.css';
@@ -74,7 +60,8 @@ class TabLineRoot extends Component {
     if (!tab) return false;
     this.$observerTab.observe(tab);
     const { offsetLeft, offsetWidth } = tab;
-    const positionLeftParent = tabsParent.clientLeft + parseInt(tabsParent.style.paddingLeft, 10) || 0;
+    const positionLeftParent =
+      tabsParent.clientLeft + parseInt(tabsParent.style.paddingLeft, 10) || 0;
     indicator.style.transform = `translateX(${offsetLeft - positionLeftParent}px)`;
     indicator.style.width = `${offsetWidth}px`;
   };
