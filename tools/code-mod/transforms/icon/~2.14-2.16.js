@@ -57,8 +57,13 @@ function generateNewNameGroup(path) {
 }
 function generateNewPath(path) {
   const iconsReg = /@semcore\/icon\/lib\//;
+  const iconsReleaseReg = /@semcore\/ui\/icon\/lib\//;
+
   if (iconsReg.test(path)) {
     return path.replace(iconsReg, '@semcore/icon/');
+  }
+  if (iconsReleaseReg.test(path)) {
+    return path.replace(iconsReleaseReg, '@semcore/ui/icon/');
   }
   return path;
 }
@@ -72,7 +77,7 @@ module.exports = function (fileInfo, { jscodeshift: j }) {
     .find(j.ImportDeclaration)
     .filter((p) => {
       const importPath = p.value.source.value;
-      return /@semcore\/icon\//.test(importPath);
+      return /@semcore(\/ui)?\/icon\//.test(importPath);
     })
     .replaceWith((p) => {
       const importPath = p.value.source.value;
