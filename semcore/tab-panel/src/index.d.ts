@@ -2,6 +2,7 @@ import React from 'react';
 import { CProps, PropGetterFn, ReturnEl } from '@semcore/core';
 import { Box, IBoxProps } from '@semcore/flex-box';
 import { IKeyboardFocusProps } from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
+import { TabLineValue } from '@semcore/tab-line/src';
 
 export type TabPanelValue = string | number | boolean;
 
@@ -17,6 +18,8 @@ export interface ITabPanelItemProps extends IBoxProps, IKeyboardFocusProps {
   selected?: boolean;
   /** Disabled state */
   disabled?: boolean;
+  /** Tab value */
+  value?: TabPanelValue;
   /** Left addon tag  */
   addonLeft?: React.ElementType;
   /** Right addon tag  */
