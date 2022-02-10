@@ -12,15 +12,19 @@ describe('Slider', () => {
     expect(await snapshot(component)).toMatchImageSnapshot();
   });
 
-  test('should support color change', async () => {
+  test('Renders correctly with Bar/Knob', async () => {
     const component = (
-      <div style={{ width: 150, height: 20 }}>
-        <Slider mt={5} value={20} background="#66ccf750">
-          <Slider.Bar color="#8bc83550" />
-          <Slider.Knob color="#1d9c00" />
-        </Slider>
-      </div>
+      <Slider value={50}>
+        <Slider.Bar />
+        <Slider.Knob />
+      </Slider>
     );
+
+    expect(await snapshot(component)).toMatchImageSnapshot();
+  });
+
+  test('Should support disabled', async () => {
+    const component = <Slider value={50} disabled />;
 
     expect(await snapshot(component)).toMatchImageSnapshot();
   });
