@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { cleanup } from '@semcore/jest-preset-ui/testing';
 import snapshot from '@semcore/jest-preset-ui/snapshot';
 import Slider from '../src';
@@ -6,12 +6,8 @@ import Slider from '../src';
 describe('Slider', () => {
   afterEach(cleanup);
 
-  test('should support default value', async () => {
-    const component = (
-      <div style={{ width: 150, height: 20 }}>
-        <Slider mt={5} value={50} />
-      </div>
-    );
+  test('Renders correctly', async () => {
+    const component = <Slider value={50} />;
 
     expect(await snapshot(component)).toMatchImageSnapshot();
   });
