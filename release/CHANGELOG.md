@@ -1,3 +1,14 @@
+## [10.2.1] - 2022-02-10
+
+### @semcore/errors
+
+- **Fixed** Static files were missing in release 10.2.0
+
+### @semcore/icon
+
+- **Added** Add icon Hubspot.
+- **Changed** Changed svg for SortAsc, SortDesc.
+
 ## [10.2.0] - 2022-02-08
 
 ### @semcore/card
