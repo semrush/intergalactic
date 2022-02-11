@@ -98,8 +98,8 @@ describe('TabLine', () => {
     );
 
     fireEvent.click(getByTestId('tab-4'));
-    expect(spyClick).toBeCalledWith(expect.any(Object));
-    expect(spyChange).toBeCalledWith(4, expect.any(Object));
+    expect(spyClick).lastCalledWith(expect.any(Object));
+    expect(spyChange).lastCalledWith(4, expect.any(Object));
   });
 
   test('Should not support clicks on disabled tab', () => {
