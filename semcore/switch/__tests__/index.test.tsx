@@ -140,7 +140,7 @@ describe('Switch', () => {
     );
 
     fireEvent.click(getByTestId('label'));
-    expect(spy).toBeCalledWith(true, expect.any(Object));
+    expect(spy).lastCalledWith(true, expect.any(Object));
   });
 
   test('Should support onChange callback with keyboard', async () => {
@@ -156,7 +156,7 @@ describe('Switch', () => {
     );
 
     fireEvent.keyDown(getByTestId('value'), { keyCode: 13 });
-    expect(spy).toBeCalledWith(true, expect.any(Object));
+    expect(spy).lastCalledWith(true, expect.any(Object));
   });
 
   test('a11y', async () => {
