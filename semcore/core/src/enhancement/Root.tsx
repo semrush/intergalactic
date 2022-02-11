@@ -45,7 +45,7 @@ function createRootRender() {
       },
     );
     if (!Tag) {
-      throw new Error('В Root нужно передать render');
+      throw new Error('`render` prop of Root is not provided');
     }
     return <Tag {...other} />;
   });
