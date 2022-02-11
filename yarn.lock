@@ -7657,6 +7657,13 @@ eslint-plugin-import@^2.20.1:
     resolve "^1.20.0"
     tsconfig-paths "^3.12.0"
 
+eslint-plugin-no-cyrillic-string@^1.0.5:
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-no-cyrillic-string/-/eslint-plugin-no-cyrillic-string-1.0.5.tgz#7ad42e5041e47ae614ca199100762907bd94d208"
+  integrity sha512-/B5pak+o2USi9HSaUm5uOigRBeFDG0s6s+TC1XrS6BrB8bk7mMVKJkKvPJvFsSSZb0kwCCg25/jhJPeSpVFEUw==
+  dependencies:
+    eslint-plugin-react "^7.21.0"
+
 eslint-plugin-prettier@^2.2.0:
   version "2.7.0"
   resolved "https://registry.yarnpkg.com/eslint-plugin-prettier/-/eslint-plugin-prettier-2.7.0.tgz"
@@ -7672,7 +7679,7 @@ eslint-plugin-prettier@^3.1.2:
   dependencies:
     prettier-linter-helpers "^1.0.0"
 
-eslint-plugin-react@^7.19.0:
+eslint-plugin-react@^7.19.0, eslint-plugin-react@^7.21.0:
   version "7.28.0"
   resolved "https://registry.yarnpkg.com/eslint-plugin-react/-/eslint-plugin-react-7.28.0.tgz#8f3ff450677571a659ce76efc6d80b6a525adbdf"
   integrity sha512-IOlFIRHzWfEQQKcAD4iyYDndHwTQiCMcJVJjxempf203jnNLUnW34AXLrV33+nEXoifJE2ZEGmcjKPL8957eSw==
