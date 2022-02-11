@@ -19,7 +19,7 @@ export const updateVersions = async (versionPatches: VersionPatch[]) => {
         setVersions[packageFile.name],
       );
     }
-    for (const dependenciesType of ['dependencies', 'devDependencies', 'peerDependencies']) {
+    for (const dependenciesType of ['dependencies', 'devDependencies']) {
       for (const dependency in packageFile[dependenciesType]) {
         if (
           setVersions[dependency] &&

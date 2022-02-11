@@ -132,7 +132,7 @@ export const collectPackages = async (inNpmVersions: { [packageName: string]: st
     }
 
     const dependencies: Package['dependencies'] = {};
-    for (const dependenciesType of ['dependencies', 'devDependencies', 'peerDependencies']) {
+    for (const dependenciesType of ['dependencies', 'devDependencies']) {
       for (const dependency in packageFile[dependenciesType]) {
         if (['@types/react'].includes(dependency)) continue;
 

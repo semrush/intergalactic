@@ -65,7 +65,7 @@ export const makeVersionPatches = (packages: Package[]) => {
       let updateTypeFallback: 'patch' | 'prerelease' = 'patch';
       let needUpdate = false;
 
-      for (const dependenciesType of ['dependencies', 'devDependencies', 'peerDependencies']) {
+      for (const dependenciesType of ['dependencies', 'devDependencies']) {
         for (const dependency in packageFile[dependenciesType]) {
           const dependencyVersionPatch = versionPatchesMap.get(dependency);
           if (!dependencyVersionPatch) continue;
