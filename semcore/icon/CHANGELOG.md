@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.19.1] - 2022-02-14
+
+### Fixed
+
+- Fixed color setting for `LightningFilled, MailOpenFilled`.
+
 ## [2.19.0] - 2022-02-09
 
 ### Added
