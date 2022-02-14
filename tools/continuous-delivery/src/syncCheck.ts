@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { Package } from './collectPackages';
 
 export const syncCheck = async (packages: Package[]) => {
@@ -9,7 +10,7 @@ export const syncCheck = async (packages: Package[]) => {
   if (unsynchronizedPackages.length > 0) {
     console.log('\n\n');
 
-    for (let { name, currentVersion, lastPublishedVersion } of unsynchronizedPackages) {
+    for (const { name, currentVersion, lastPublishedVersion } of unsynchronizedPackages) {
       console.log(`[${name}]: ${currentVersion} (in repo) ${lastPublishedVersion} (in npm)`);
     }
 

@@ -1,3 +1,5 @@
+import semver from 'semver';
+
 const validateForBullshit = (version: string) => {
   if (version === '*') {
     throw new Error(
@@ -49,4 +51,17 @@ export const carefulVersionUpdate = (oldVersion: string, newVersion: string) => 
   }
 
   return newVersion;
+};
+
+export const isValidSemver = (version: string) => {
+  if (version === '*') return true;
+
+  let cleaned = String(version).trim();
+  if (cleaned.startsWith('~')) {
+    cleaned = cleaned.substring(1);
+  } else if (cleaned.startsWith('^')) {
+    cleaned = cleaned.substring(1);
+  }
+
+  return semver.valid(semver.coerce(cleaned.trim()));
 };
