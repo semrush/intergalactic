@@ -1,5 +1,6 @@
 import semver from 'semver';
-import { Package, Version } from './collectPackages';
+import { Version } from './changelog';
+import { Package } from './collectPackages';
 import { normalizeSemver } from './utils';
 
 export type VersionPatch = {
