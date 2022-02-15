@@ -7,6 +7,9 @@ SDivider[use='primary'] {
   background-color: var(--theme, var(--gray80));
 }
 
+SDivider[use='primary']SDivider[theme='default'] {
+  background: var(--gray80);
+}
 SDivider[use='primary']SDivider[theme='invert'] {
   background: color-mod(var(--gray80) alpha(20%));
 }
@@ -16,6 +19,10 @@ SDivider[orientation='horizontal']SDivider[use='secondary'] {
   background-size: 5px 1px;
 }
 
+SDivider[orientation='horizontal']SDivider[use='secondary']SDivider[theme='default'] {
+  background: linear-gradient(to right, var(--gray80) 3px, transparent 1px);
+  background-size: 5px 1px;
+}
 SDivider[orientation='horizontal']SDivider[use='secondary']SDivider[theme='invert'] {
   background: linear-gradient(to right, color-mod(var(--gray80) alpha(20%)) 3px, transparent 1px);
   background-size: 5px 1px;
@@ -26,6 +33,10 @@ SDivider[orientation='vertical']SDivider[use='secondary'] {
   background-size: 1px 5px;
 }
 
+SDivider[orientation='vertical']SDivider[use='secondary']SDivider[theme='default'] {
+  background: linear-gradient(to bottom, var(--gray80) 3px, transparent 1px);
+  background-size: 1px 5px;
+}
 SDivider[orientation='vertical']SDivider[use='secondary']SDivider[theme='invert'] {
   background: linear-gradient(to bottom, color-mod(var(--gray80) alpha(20%)) 3px, transparent 1px);
   background-size: 1px 5px;
