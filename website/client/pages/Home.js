@@ -638,7 +638,7 @@ function Home() {
           </SideBar>
           <Overlay>
             <PromoWrapper>
-              <Title>We unify Semrush interfaces</Title>
+              <Title>Intergalactic Design System</Title>
               <Desc>
                 Intergalactic is a constantly developing system of UI components, guidelines and UX
                 patterns. With all these tools you can build your own product.
