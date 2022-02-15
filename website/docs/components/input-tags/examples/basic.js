@@ -53,7 +53,6 @@ const Demo = () => {
           <Tooltip.Trigger
             tag={InputTags.Tag}
             use="primary"
-            theme="asphalt"
             editable
             data-id={idx}
             onClick={handleEditTag}

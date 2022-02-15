@@ -39,14 +39,14 @@ const Demo = () => {
         </FullscreenModal.Body>
         <FullscreenModal.Footer>
           <Flex alignItems="center" justifyContent="center" h="100%">
-            <Button size="l" color="gray60" theme="muted" use="tertiary">
+            <Button size="m" color="gray60" theme="muted" use="tertiary">
               <Button.Addon>
                 <ArrowLeftS />
               </Button.Addon>
               <Button.Text ml={2}>Prev button</Button.Text>
             </Button>
             <Divider orientation="vertical" h={26} mx={6} />
-            <Button size="l" color="gray60" theme="muted" use="tertiary">
+            <Button size="m" color="gray60" theme="muted" use="tertiary">
               <Button.Text mr={2}>Next button</Button.Text>
               <Button.Addon>
                 <ArrowRightS />
