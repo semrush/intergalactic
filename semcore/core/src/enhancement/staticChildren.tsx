@@ -52,7 +52,7 @@ function Enhancement(childComponents, createComponent, options) {
         const selfGetterMethod = getterMethodNameByDisplayName(WrapperComponent.displayName);
         logger.warn(
           true,
-          `Метод "${selfGetterMethod}" не может быть вызван, так как вызов getter функции внутри статичного компонента для которого эта функция предназначена - не возможно`,
+          `Getter \`${selfGetterMethod}\` can't be fired as it is a getter of static component`,
           props['data-ui-name'] || WrapperComponent.displayName,
         );
       };

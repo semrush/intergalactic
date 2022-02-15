@@ -1,3 +1,82 @@
+## [10.2.1] - 2022-02-10
+
+### @semcore/errors
+
+- **Fixed** Static files were missing in release 10.2.0
+
+### @semcore/icon
+
+- **Added** Add icon Hubspot.
+- **Changed** Changed svg for SortAsc, SortDesc.
+
+## [10.2.0] - 2022-02-08
+
+### @semcore/card
+
+- **Changed** Changed styles.
+
+### @semcore/chart
+
+- **Fixed** Rename deprecate color `white-01` to `white`.
+- **Fixed** Fixed list colors to get from a function getColor.
+
+### @semcore/checkbox
+
+- **Fixed** Add line-height for label text to not depend on external line-height.
+
+### @semcore/d3-chart
+
+- **Added** Added Bubble and Scatter plot charts.
+- **Changed** Tooltip font size changed.
+- **Changed** Revert function findComponent for check children in Tooltip, because it's valid for children () => ({}).
+- **Changed** Replaced function findComponent to isAdvanceMode for check children in Tooltip.
+
+### @semcore/data-table
+
+- **Changed** Changed background-color from transparent to #fff for use="secondary" `DataTable.Column` and `DataTable.Cell`.
+
+### @semcore/divider
+
+- **Added** Added ability to use custom theme color.
+
+### @semcore/feedback-form
+
+- **Added** Added support Tooltip props for `FeedbackForm.Item`.
+- **Fixed** fixed styles for secondary Notice.
+
+### @semcore/icon
+
+- **Added** Add icons 'LightningFilled' in new icons.
+- **Fixed** Fixed view icon MailOpenFilled size m.
+
+### @semcore/modal
+
+- **Changed** Replaced function findComponent to isAdvanceMode for check children in Modal.
+
+### @semcore/scroll-area
+
+- **Changed** Replaced function findComponent to isAdvanceMode for check children in ScrollArea.
+
+### @semcore/side-panel
+
+- **Changed** Replaced function findComponent to isAdvanceMode for check children in SidePanel.
+
+### @semcore/tab-line
+
+- **Fixed** Fixed show active tab when TableLine have padding.
+
+### @semcore/table
+
+- **Changed** Changed background-color from `undefined` to `#fff` for ``.
+
+### @semcore/tooltip
+
+- **Changed** Replaced function findComponent to isAdvanceMode for check children in Tooltip.
+
+### @semcore/utils
+
+- **Added** Added function isAdvanceMode in findComponent.
+
 ## [10.1.0] - 2022-01-24
 
 ### @semcore/accordion

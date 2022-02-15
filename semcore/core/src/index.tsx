@@ -132,7 +132,7 @@ function wrapClass(OriginComponent, enhancements, Context) {
       this[CORE_AS_PROPS] = null;
       // TODO if not production
       if (!super.render) {
-        throw new Error('нужно определить render метод');
+        throw new Error('Component `render` method is not defined');
       }
       const asProps = this.asProps;
       const ctx = this.setContext();

@@ -5,7 +5,7 @@ import EditXS from '@semcore/icon/Edit/m';
 export default function () {
   return (
     <>
-      <Tag theme="#8649E1" color="#EDD9FF">
+      <Tag theme="#FFD7DF" color="#D1002F">
         <Tag.Addon tag={EditXS} />
         <Tag.Text>Tag</Tag.Text>
       </Tag>

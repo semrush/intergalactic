@@ -3838,6 +3838,12 @@
       "size": ["l", "m"],
       "group": "Misc",
       "tags": ["feature", "featured", "video", "serp", "видео", "серп"]
+    },
+    {
+      "name": "Hubspot",
+      "size": ["l", "m"],
+      "group": "Color",
+      "tags": ["hubspot", "хабспот", "logo", "лого"]
     }
   ]
 }
