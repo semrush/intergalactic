@@ -1,7 +1,7 @@
 name: publish
 on:
   push:
-    branches: continuous-delivery
+    branches: [master]
 jobs:
   setup:
     runs-on: ubuntu-latest

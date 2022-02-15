@@ -24,7 +24,7 @@ module.exports = task('GIT fixation', async (opt) => {
 
     await git.tag(['-f', tag]);
 
-    await git.push('origin', 'continuous-delivery', {
+    await git.push('origin', 'master', {
       '--no-verify': null,
       // '--tags': null,
       '--follow-tags': null,
