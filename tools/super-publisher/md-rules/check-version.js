@@ -1,6 +1,6 @@
 module.exports = {
   names: ['validate-version'],
-  description: `Don't current version package`,
+  description: `Doesn't have package current version`,
   tags: ['version'],
   function: function rule(params, onError) {
     const { version } = require(params.name.replace('CHANGELOG.md', 'package.json'));

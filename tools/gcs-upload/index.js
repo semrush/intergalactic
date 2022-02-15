@@ -5,6 +5,9 @@ const BUCKET_NAME = `ui-kit-flags`;
 
 function connect() {
   const confFilePath = path.join(__dirname, 'config.json');
+  if (process.env.GCLOUD_SECRET) {
+    fs.writeFileSync(confFilePath, process.env.GCLOUD_SECRET);
+  }
   const { projectId } = require(confFilePath);
   return new Storage({
     projectId,
