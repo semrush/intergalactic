@@ -52,8 +52,8 @@ const Demo = () => (
             </Flex>
           )}
         </Carousel.Indicators>
-        <Carousel.Prev position="absolute" h={400} w={80} left="-80px" />
-        <Carousel.Next position="absolute" h={400} w={80} right="-80px" />
+        <Carousel.Prev position="absolute" h={400} w={48} left="-48px" />
+        <Carousel.Next position="absolute" h={400} w={48} right="-48px" />
       </Carousel>
     </Box>
   </Flex>

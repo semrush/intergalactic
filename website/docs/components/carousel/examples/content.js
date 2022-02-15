@@ -38,8 +38,8 @@ const Demo = () => {
               </Carousel.Item>
             ))}
           </Carousel.Container>
-          <Carousel.Prev position="absolute" h="100%" w={80} left="-80px" />
-          <Carousel.Next position="absolute" h="100%" w={80} right="-80px" />
+          <Carousel.Prev position="absolute" h="100%" w={48} left="-48px" />
+          <Carousel.Next position="absolute" h="100%" w={48} right="-48px" />
         </Carousel>
       </Modal>
     </>
