@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [1.4.0] - 2022-02-09
+
+### Added
+
+- Added support replace `ui/icon/lib` to `ui/icon/`.
+
 ## [1.3.1] - 2022-01-13
 
 ### Fixed
