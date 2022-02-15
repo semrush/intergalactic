@@ -16,7 +16,7 @@
     "@semcore/utils": "^3.27",
     "@semcore/base-trigger": "^2",
     "@semcore/flex-box": "^4",
-    "@semcore/button": "^3",
+    "@semcore/button": "^3.3.2",
     "@semcore/divider": "^2",
     "@semcore/icon": "^2.16",
     "@semcore/dropdown": "^2",

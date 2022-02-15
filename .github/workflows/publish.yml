@@ -1,0 +1,63 @@
+name: publish
+on:
+  push:
+    branches: continuous-delivery
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+      - name: Cache node modules
+        uses: actions/cache@v2
+        id: cache-modules
+        with:
+          path: |
+            node_modules
+            */*/node_modules
+          key: modules-${{ runner.os }}-${{ hashFiles('yarn.lock') }}
+      - name: Install dependencies
+        if: steps.cache-modules.outputs.cache-hit != 'true'
+        run: yarn --non-interactive --frozen-lockfile
+  build:
+    runs-on: ubuntu-latest
+    needs: setup
+    env:
+      GCLOUD_SECRET: ${{ secrets.GCLOUD_SECRET }}
+      SCREENSHOT_URL: ${{ secrets.SCREENSHOT_URL }}
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+      - name: Restore cache node modules
+        uses: actions/cache@v2
+        with:
+          path: |
+            node_modules
+            */*/node_modules
+          key: modules-${{ runner.os }}-${{ hashFiles('yarn.lock') }}
+      - name: Сache build
+        uses: actions/cache@v2
+        id: cache-build
+        with:
+          path: |
+            **/lib
+            semcore/icon/**/*.js
+            semcore/icon/**/*.d.ts
+          key: build-${{ hashFiles('semcore/**', 'tools/**', 'tsconfig.json', 'yarn.lock') }}
+      - name: Build
+        if: steps.cache-build.outputs.cache-hit != 'true'
+        run: yarn build
+      - name: Github auth
+        run: |
+          git config --global user.name 'semrush-ci-whale'
+          git config --global user.email 'semrush-ci-whale@users.noreply.github.com'
+          git remote set-url origin https://x-access-token:${{ secrets.BOT_ACCOUNT_GITHUB_TOKEN }}@github.com/semrush/intergalactic
+      - name: NPM setup
+        run: |
+          echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" >> ".npmrc"
+      - name: Lint
+        run: yarn lint
+      - name: Test
+        run: yarn test
+      - name: Delivery
+        run: yarn continuous-delivery
