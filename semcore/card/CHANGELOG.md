@@ -12,7 +12,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-- Changed styles
+- `Card` has been split into Header and Body and a background has been added
 
 ## [2.3.0] - 2022-01-18
 
