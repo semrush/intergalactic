@@ -4,7 +4,14 @@ import PlaygroundGeneration from 'components/PlaygroundGeneration';
 
 import Badge from '@semcore/badge';
 
-const BG = ['mist', 'cyan', 'red', 'orange', 'green', 'white'];
+const BG = {
+  mist: 'mist',
+  cyan: 'cyan',
+  red: 'red-300',
+  orange: 'orange-300',
+  green: 'green-300',
+  white: 'white',
+};
 
 const Preview = (preview) => {
   const { select, radio, text } = preview('Button');
@@ -20,9 +27,9 @@ const Preview = (preview) => {
     key: 'bg',
     defaultValue: 'mist',
     label: 'Background',
-    options: BG.map((value) => ({
+    options: Object.keys(BG).map((value) => ({
       name: value,
-      value,
+      value: BG[value],
     })),
   });
 
