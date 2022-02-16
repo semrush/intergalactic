@@ -10,17 +10,17 @@
   "dependencies": {
     "@babel/helper-module-imports": "^7.12.13",
     "@babel/plugin-syntax-jsx": "^7.12.13",
+    "@semcore/postcss-mediarezka": "^1.0.0",
     "chokidar": "^3.5.1",
     "css-selector-tokenizer": "^0.7.3",
     "cssnano": "^4.1.10",
     "fs-extra": "^9.1.0",
     "postcss": "^8.2.8",
-    "postcss-import-sync2": "^1.1.0",
-    "postcss-preset-env": "^6.7.0",
-    "postcss-value-parser": "^4.1.0",
     "postcss-color-mod-function": "^3.0.3",
+    "postcss-import-sync2": "^1.1.0",
+    "postcss-preset-env": "^7.4.0",
+    "postcss-value-parser": "^4.1.0",
     "string-hash": "^1.1.3",
-    "synchronous-promise": "^2.0.15",
-    "@semcore/postcss-mediarezka": "^1.0.0"
+    "synchronous-promise": "^2.0.15"
   }
 }
