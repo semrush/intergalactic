@@ -85,7 +85,7 @@ After clicking on an option in the dropdown-menu, the selected option is inserte
 
 ### Adding and deleting a line
 
-Some cases may require the feature “Add content”. Ther user can may add a line (for example, through the modal window) by using it.
+Some cases may require the feature “Add content”. Other user can may add a line (for example, through the modal window) by using it.
 
 ![add option](static/auto-tips-add.png)
 
