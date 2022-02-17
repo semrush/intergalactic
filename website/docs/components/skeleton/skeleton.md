@@ -35,7 +35,7 @@ Our skeletons are animated. You can see the live skeleton animation in the [Code
 
 One animation is added per data block (widgets, tables, graphs). There is no need to synchronize it between different blocks, as it may affect the page loading time.
 
-Content pulsing animation has 2000 ms duration by default.
+Content appearance animation is 300 ms with `ease-out`. Skeleton pulsing animation has 2000 ms duration by default.
 
 > 💡 In case you do not need animation in the skeleton (for example, when a modal window with a limit or registration opened on the page), you can stop the animation using the API property `duration="0"` 🕺🏻
 
