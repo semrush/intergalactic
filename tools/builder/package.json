@@ -17,7 +17,7 @@
     "postcss-cli": "^7.1.0",
     "postcss-import": "^12.0.1",
     "postcss-inline-comment": "^3.0.0",
-    "postcss-preset-env": "^7.4.0",
+    "postcss-preset-env": "^6.7.0",
     "typescript": "^3.9.5"
   }
 }
