@@ -7,7 +7,7 @@ var _ref =
     /*__reshadow_css_start__*/
     (__css__(
       /*__inner_css_start__*/
-      '.___SButton_10c1g_gg_{padding:0 20px;background:purple}.___SButton_10c1g_gg_._theme_default_10c1g_gg_{background:red;background:#bada55}',
+      '.___SButton_10c1g_gg_{padding:0 20px;background:purple}.___SButton_10c1g_gg_._theme_default_10c1g_gg_{background:red;background:#bada55;box-shadow:0 0 0 black}',
       '13etaf6_gg_',
     ),
     {
