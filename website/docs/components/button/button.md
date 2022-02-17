@@ -14,7 +14,7 @@ tabName: Design
 
 @## Appearance
 
-**There are 4 button sizes in our interface.** The button content is always centered relative to the vertical and horizontal position of the button.
+**There are 2 button sizes in our interface.** The button content is always centered relative to the vertical and horizontal position of the button.
 
 You can add an [icon](/style/icon/), a [counter](/components/counter/), a [badge](/components/badge/), a ["mandarin"](/components/dot/) and a [flag](/components/flags/) to each of these buttons before and after the text.
 
@@ -24,12 +24,10 @@ The button text has margins on the right and left, and Addons that can be insert
 
 @## Sizes
 
-| Button size   | Icon size | Appearance example               | Description                                                                                                                                                                                                                        |
-| ------------- | --------- | -------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **XL (42px)** | M         | ![button XL](static/size_xl.png) | Used in: landing pages for main actions; limits (when the entire report or a significant part of the report is overlapped, and you need to focus on the main actions); modal windows with limits; modal windows with registration. |
-| **L (32px)**  | S         | ![button L](static/size_l.png)   | Used in: modal windows for main actions; empty pages and states that need to focus on the target action.                                                                                                                           |
-| **M (26px)**  | XS        | ![button M](static/size_m.png)   | This is the standard size of buttons for everyday routine actions in tools. Used in: filters, dropdowns, tables, modal windows for secondary actions and filters.                                                                  |
-| **S (18px)**  | XXS       | ![button S](static/size_s.png)   | 💡 **This is the deprecated size. Please do not use it in your interfaces, as it is already outdated**.                                                                                                                            |
+| Button size  | Icon size | Appearance example             | Description                                                                                                                                                       |
+| ------------ | --------- | ------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **L (40px)** | M         | ![button L](static/size_l.png) | Used in: modal windows for main actions; empty pages and states that need to focus on the target action.                                                          |
+| **M (28px)** | M         | ![button M](static/size_m.png) | This is the standard size of buttons for everyday routine actions in tools. Used in: filters, dropdowns, tables, modal windows for secondary actions and filters. |
 
 @## Button width
 
@@ -77,6 +75,26 @@ Control for third-party actions on the page. The tertiary button, unlike link, c
 | :----------------------------: | :---------------------------------: | :-----------------------------------: | :-------------------------------------: | ----------------------------------------- |
 | ![normal](static/tertiary.png) | ![hover](static/tertiary-hover.png) | ![active](static/tertiary-active.png) | ![loading](static/tertiary-loading.png) | ![disabled](static/tertiary-disabled.png) |
 
+### Invert primary
+
+It's recommended to use invert buttons on dark or colored background. For example in Tooltip, NoticeBubble etc.
+
+|               normal                |               hover               |               active                |                loading                | disabled                                |
+| :---------------------------------: | :-------------------------------: | :---------------------------------: | :-----------------------------------: | --------------------------------------- |
+| ![normal](static/invert-normal.png) | ![hover](static/invert-hover.png) | ![active](static/invert-active.png) | ![loading](static/invert-loading.png) | ![disabled](static/invert-disabled.png) |
+
+### Invert secondary
+
+|                   normal                   |                  hover                   |                   active                   |                   loading                    | disabled                                       |
+| :----------------------------------------: | :--------------------------------------: | :----------------------------------------: | :------------------------------------------: | ---------------------------------------------- |
+| ![normal](static/invert-second-normal.png) | ![hover](static/invert-second-hover.png) | ![active](static/invert-second-active.png) | ![loading](static/invert-second-loading.png) | ![disabled](static/invert-second-disabled.png) |
+
+### Invert tertiary
+
+|                    normal                    |                   hover                    |                    active                    |                    loading                     | disabled                                         |
+| :------------------------------------------: | :----------------------------------------: | :------------------------------------------: | :--------------------------------------------: | ------------------------------------------------ |
+| ![normal](static/invert-tertiary-normal.png) | ![hover](static/invert-tertiary-hover.png) | ![active](static/invert-tertiary-active.png) | ![loading](static/invert-tertiary-loading.png) | ![disabled](static/invert-tertiary-disabled.png) |
+
 @## Themes
 
 For the primary button, use the themes that correspond to a particular situation. See the [visual loudness scale](/patterns/visual-loudness-scale) guide.
@@ -91,9 +109,9 @@ For the primary button, use the themes that correspond to a particular situation
 
 **The margin shall be multiple of 4**. If there are several buttons next to each other, use the margins shown in table below for the appropriate button size.
 
-|             XL (42px)              |             L (32px)              |             M (26px)              |             S (18px)              |
-| :--------------------------------: | :-------------------------------: | :-------------------------------: | :-------------------------------: |
-| ![margin xl](static/padding-1.png) | ![margin l](static/padding-2.png) | ![margin m](static/padding-3.png) | ![margin s](static/padding-4.png) |
+| L (40px)                          | M (28px)                          |     |
+| :-------------------------------- | :-------------------------------- | :-- |
+| ![margin L](static/padding-1.png) | ![margin M](static/padding-2.png) |     |
 
 @## Use in UX/UI
 
