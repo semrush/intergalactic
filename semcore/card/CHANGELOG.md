@@ -2,6 +2,16 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.0.0] - 2022-02-18
+
+### BREAK
+
+- `Card` was divided into Header and Body
+
+### Added
+
+- Background was added
+
 ## [2.5.0] - 2021-02-18
 
 ### Fixed
