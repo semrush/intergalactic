@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.5.1] - 2022-02-18
+
+### Fixed
+
+- Fixed LinkTrigger hovered text color.
+
 ## [2.5.0] - 2022-01-18
 
 ### Changed
