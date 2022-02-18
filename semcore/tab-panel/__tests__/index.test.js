@@ -1,7 +1,9 @@
 import React from 'react';
 import { sstyled } from '@semcore/core';
-import { render, fireEvent, cleanup, axe } from '@semcore/jest-preset-ui/testing';
-import snapshot from '@semcore/jest-preset-ui/snapshot';
+import { testing } from '@semcore/jest-preset-ui';
+const { render, fireEvent, cleanup, axe } = testing;
+
+import { snapshot } from '@semcore/jest-preset-ui';
 import TabPanel from '../src';
 
 describe('TabPanel', () => {

@@ -1,8 +1,11 @@
 import React from 'react';
-import { cleanup, fireEvent, render, axe } from '@semcore/jest-preset-ui/testing';
-import snapshot from '@semcore/jest-preset-ui/snapshot';
+import { testing } from '@semcore/jest-preset-ui';
+const { cleanup, fireEvent, render, axe } = testing;
+
+import { snapshot } from '@semcore/jest-preset-ui';
 import Radio, { RadioGroup, inputProps } from '../src';
-import { shouldSupportClassName, shouldSupportRef } from '@semcore/jest-preset-ui/shared';
+import { shared as testsShared } from '@semcore/jest-preset-ui';
+const { shouldSupportClassName, shouldSupportRef } = testsShared;
 
 describe('Radio', () => {
   afterEach(cleanup);

@@ -1,1 +1,1 @@
-module.exports = require('./jest-preset.js');
+module.exports = require('./src');

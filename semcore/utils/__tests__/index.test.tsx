@@ -1,7 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { cleanup } from '@semcore/jest-preset-ui/testing';
-import snapshot from '@semcore/jest-preset-ui/snapshot';
+import { testing } from '@semcore/jest-preset-ui';
+const { cleanup } = testing;
+
+import { snapshot } from '@semcore/jest-preset-ui';
 
 import isNode from '../src/isNode';
 import compose from '../src/compose';

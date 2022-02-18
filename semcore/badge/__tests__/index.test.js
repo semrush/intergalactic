@@ -1,7 +1,9 @@
 import React from 'react';
-import snapshot from '@semcore/jest-preset-ui/snapshot';
-import { cleanup, render } from '@semcore/jest-preset-ui/testing';
-import { shouldSupportClassName, shouldSupportRef } from '@semcore/jest-preset-ui/shared';
+import { snapshot } from '@semcore/jest-preset-ui';
+import { testing } from '@semcore/jest-preset-ui';
+const { cleanup, render } = testing;
+import { shared as testsShared } from '@semcore/jest-preset-ui';
+const { shouldSupportClassName, shouldSupportRef } = testsShared;
 import Badge from '../src';
 
 describe('Badge', () => {

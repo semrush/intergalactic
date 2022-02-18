@@ -1,6 +1,9 @@
 import React from 'react';
-import { axe, cleanup, fireEvent, render } from '@semcore/jest-preset-ui/testing';
-import { shouldSupportClassName, shouldSupportRef } from '@semcore/jest-preset-ui/shared';
+import { testing } from '@semcore/jest-preset-ui';
+const { axe, cleanup, fireEvent, render } = testing;
+
+import { shared as testsShared } from '@semcore/jest-preset-ui';
+const { shouldSupportClassName, shouldSupportRef } = testsShared;
 import Carousel from '../src';
 
 const Container = (props) => (

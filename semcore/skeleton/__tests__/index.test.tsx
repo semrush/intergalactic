@@ -1,7 +1,10 @@
 import React from 'react';
-import { render, cleanup } from '@semcore/jest-preset-ui/testing';
-import snapshot from '@semcore/jest-preset-ui/snapshot';
-import { shouldSupportClassName, shouldSupportRef } from '@semcore/jest-preset-ui/shared';
+import { testing } from '@semcore/jest-preset-ui';
+const { render, cleanup } = testing;
+
+import { snapshot } from '@semcore/jest-preset-ui';
+import { shared as testsShared } from '@semcore/jest-preset-ui';
+const { shouldSupportClassName, shouldSupportRef } = testsShared;
 import Skeleton, {
   LineChartSkeleton,
   AreaChartSkeleton,
