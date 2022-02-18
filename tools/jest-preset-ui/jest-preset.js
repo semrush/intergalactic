@@ -1,6 +1,6 @@
 module.exports = {
   // testMatch: ['**/(release|semcore|tools)/**/?(*.)+(spec|test).[jt]s?(x)'],
-  testMatch: ['**/(release|semcore)/**/?(*.)+(spec|test).[jt]s?(x)'],
+  testMatch: ['**/(semcore|tools)/**/?(*.)+(spec|test).[jt]s?(x)'],
   setupFilesAfterEnv: [`${__dirname}/src/setupTests.js`],
   transform: {
     '^.+\\.(jsx?|tsx?)$': `${__dirname}/src/babel.config.js`,
