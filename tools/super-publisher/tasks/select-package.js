@@ -13,7 +13,7 @@ module.exports = task('Choose package', async (opt, args) => {
     if (args.package?.includes(',')) {
       components = args.package.split(',');
     } else {
-      let promptResult = await inquirer.prompt([
+      const promptResult = await inquirer.prompt([
         {
           type: 'checkbox',
           name: 'components',
@@ -36,12 +36,14 @@ module.exports = task('Choose package', async (opt, args) => {
         stdout: 'inherit',
       });
     }, Promise.resolve());
+
+    process.exit();
   } else {
     if (args.package) {
       opt.log(args.package.toUpperCase());
       opt.root = path.join(path.resolve(args.root), args.package);
     } else {
-      let value = await inquirer.prompt([
+      const value = await inquirer.prompt([
         {
           type: 'list',
           name: 'component',
