@@ -48,7 +48,7 @@ SLinkTrigger[color] {
   color: var(--color);
 
   &:hover {
-    color: color-mod(var(--color) shade(12%));
+    color: var(--color-hover);
   }
 }
 
