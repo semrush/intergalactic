@@ -1,7 +1,7 @@
 import React from 'react';
-import snapshot from '@semcore/jest-preset-ui/snapshot';
-import { axe, render, fireEvent, cleanup } from '@semcore/jest-preset-ui/testing';
+import { snapshot, testing } from '@semcore/jest-preset-ui';
 import Accordion from '../src';
+const { axe, render, fireEvent, cleanup } = testing;
 
 describe('Accordion', () => {
   afterEach(cleanup);

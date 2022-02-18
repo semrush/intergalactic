@@ -12,6 +12,7 @@
     "postcss": "^8.2.13"
   },
   "jest": {
-    "testEnvironment": "node"
+    "testEnvironment": "node",
+    "preset": "@semcore/jest-preset-ui"
   }
 }

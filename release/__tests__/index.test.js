@@ -1,12 +1,19 @@
 import { packages } from '../components.json';
 import path from 'path';
+import fs from 'fs-extra';
 import glob from 'glob';
 
 function sortObjKeys(obj) {
   return Object.keys(obj).sort();
 }
 
+const generated = fs.readdirSync('..').length < 2;
+
 describe('Release system', () => {
+  if (!generated) {
+    test.skip('release was not generated', () => {});
+    return;
+  }
   // index.js of utils throws an error, so we skip this package
   const EXCLUDE_PACKAGE = ['@semcore/utils', '@semcore/email'];
   packages.forEach((pkg) => {
@@ -24,6 +31,10 @@ describe('Release system', () => {
 });
 
 describe('Utils', () => {
+  if (!generated) {
+    test.skip('release was not generated', () => {});
+    return;
+  }
   const utils = require.resolve('@semcore/utils/lib');
   const utilsDir = path.dirname(utils);
   const rscUtilsDir = path.resolve(__dirname, '../utils/lib');
@@ -55,6 +66,10 @@ describe('Utils', () => {
 });
 
 describe('Icon', () => {
+  if (!generated) {
+    test.skip('release was not generated', () => {});
+    return;
+  }
   const icons = require.resolve('@semcore/icon');
   const iconsDir = path.resolve(icons, '../..');
   const rscIconsDir = path.resolve(__dirname, '../icon/lib');

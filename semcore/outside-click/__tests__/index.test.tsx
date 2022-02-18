@@ -1,5 +1,7 @@
 import React from 'react';
-import { cleanup, fireEvent, render } from '@semcore/jest-preset-ui/testing';
+import { testing } from '@semcore/jest-preset-ui';
+const { cleanup, fireEvent, render } = testing;
+
 import OutsideClick from '../src';
 
 describe('OutsideClick', () => {

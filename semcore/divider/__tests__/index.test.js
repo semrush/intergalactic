@@ -1,7 +1,9 @@
 import React from 'react';
-import { cleanup, render } from '@semcore/jest-preset-ui/testing';
-import snapshot from '@semcore/jest-preset-ui/snapshot';
-import { shouldSupportClassName, shouldSupportRef } from '@semcore/jest-preset-ui/shared';
+import { testing } from '@semcore/jest-preset-ui';
+const { cleanup, render } = testing;
+import { snapshot } from '@semcore/jest-preset-ui';
+import { shared as testsShared } from '@semcore/jest-preset-ui';
+const { shouldSupportClassName, shouldSupportRef } = testsShared;
 import Divider from '../src';
 
 describe('Divider', () => {

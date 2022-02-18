@@ -12,5 +12,8 @@
     "mkdirp": "^1.0.4",
     "@reshadow/utils": "0.0.1-alpha.75",
     "webpack-virtual-modules": "^0.3.2"
+  },
+  "jest": {
+    "preset": "@semcore/jest-preset-ui"
   }
 }
