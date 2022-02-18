@@ -7,7 +7,10 @@ function sortObjKeys(obj) {
   return Object.keys(obj).sort();
 }
 
-const generated = fs.readdirSync('..').length < 2;
+const releaseDirs = fs
+  .readdirSync(path.resolve(__dirname, '..'))
+  .filter((entry) => fs.statSync(path.resolve(__dirname, '..', entry)).isDirectory());
+const generated = releaseDirs.length > 2;
 
 describe('Release system', () => {
   if (!generated) {
@@ -20,7 +23,7 @@ describe('Release system', () => {
     if (EXCLUDE_PACKAGE.includes(pkg)) return;
 
     test(`Package "${pkg}" provides correct exports to release system`, () => {
-      const rscUiPkgPath = pkg.replace('@semcore', '..');
+      const rscUiPkgPath = path.resolve(__dirname, pkg.replace('@semcore', '..'));
 
       const source = require(pkg);
       const rscUi = require(rscUiPkgPath);
@@ -58,7 +61,7 @@ describe('Utils', () => {
 
     test(`file ${utilsModule} provides correct exports to release system`, () => {
       const source = require(`@semcore/utils/lib/${utilsModule}`);
-      const rscUi = require(`../utils/lib/${utilsModule}`);
+      const rscUi = require(path.resolve(__dirname, `../utils/lib/${utilsModule}`));
 
       expect(sortObjKeys(source)).toStrictEqual(sortObjKeys(rscUi));
     });
@@ -89,7 +92,7 @@ describe('Icon', () => {
 
     test(`file ${utilsModule} provides correct exports to release system`, () => {
       const source = require(`@semcore/icon/${utilsModule}`);
-      const rscUi = require(`../icon/${utilsModule}`);
+      const rscUi = require(path.resolve(__dirname, `../icon/${utilsModule}`));
 
       expect(sortObjKeys(source)).toStrictEqual(sortObjKeys(rscUi));
     });
