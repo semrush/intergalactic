@@ -3,8 +3,7 @@
 SCard {
   border: 1px solid var(--gray80);
   border-radius: 2px;
-  box-sizing: border-box;
-  background: var(--white);
+  padding: 20px 24px 24px;
 }
 
 STitle {
@@ -22,18 +21,4 @@ SDescription {
   margin-bottom: 12px;
   font-size: var(--fs-200);
   color: var(--gray60);
-}
-
-SHeader {
-  padding-bottom: 0;
-  padding-left: 24px;
-  padding-right: 24px;
-  padding-top: 20px;
-}
-
-SBody {
-  padding-bottom: 24px;
-  padding-left: 24px;
-  padding-right: 24px;
-  padding-top: 20px;
 }

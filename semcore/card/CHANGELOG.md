@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.5.0] - 2021-02-18
+
+### Fixed
+
+- Reverted `Card` to a previous state with styles in the card itself and without `Header` and `Body`
+
 ## [2.4.1] - 2021-02-14
 
 ### Fixed
