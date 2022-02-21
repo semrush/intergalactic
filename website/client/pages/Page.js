@@ -19,7 +19,7 @@ import Select from '@semcore/select';
 const DocumentationWrapper = styled.div`
   padding: 56px 32px 64px;
   position: relative;
-  color: #171a22;
+  color: #191b23;
   @media (max-width: 767px) {
     padding: 96px 32px 64px;
   }

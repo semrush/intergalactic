@@ -2,6 +2,18 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [1.1.3] - 2022-02-17
+
+### Fixed
+
+- Fixed recursive css variables resolving
+
+## [1.1.2] - 2022-02-16
+
+### Fixed
+
+- Disabled unsafe minification rules
+
 ## [1.1.1] - 2022-02-03
 
 ### Fixed

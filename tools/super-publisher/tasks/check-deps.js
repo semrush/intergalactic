@@ -48,8 +48,8 @@ module.exports = task('Dependency check', async (opt) => {
     Object.keys(dependencies).map(async (name) => {
       const selfVersion = dependencies[name];
       const depNpm = await fetchNpm(name);
-      const isValid = isValidRange(selfVersion, Object.keys(depNpm.versions));
-      if (isValid) {
+      const isPublished = isValidRange(selfVersion, Object.keys(depNpm.versions));
+      if (isPublished) {
         const diffRelease = diff(depNpm['dist-tags'].latest, coerce(selfVersion));
         if (diffRelease === null || diffRelease === 'patch' || diffRelease === 'prepatch') {
           // opt.log(`[${name}] has valid range.`);

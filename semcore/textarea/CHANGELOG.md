@@ -142,7 +142,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Добавлено css-свойство `font-family: inherit;`
 
-## [2.0.2] - 2019-03-11
+## [2.0.2-0] - 2019-03-11
 
 ### Fixed
 

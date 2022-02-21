@@ -7,19 +7,29 @@
 const valuesParser = require('postcss-value-parser');
 
 function transformValueAST(root, customProperties) {
-  root.walk((node) => {
+  const handleNode = (node, handledNames = new Set()) => {
     if (isVarFunction(node)) {
       const [propertyNode, ...fallbacks] = node.nodes.filter((node) => node.type !== 'div');
       const { value: name } = propertyNode;
 
+      if (handledNames.has(name)) {
+        const applyStack = `${[...handledNames].join(' -> ')} -> ${name}`;
+        throw new Error(
+          `Recursive apply of css custom property ${name} found. (apply stack ${applyStack})`,
+        );
+      }
+
       if (name in Object(customProperties)) {
         node.type = 'decl';
         node.nodes = customProperties[name].nodes;
+        handledNames.add(name);
+        node.nodes.forEach((node) => handleNode(node, handledNames));
       } else if (fallbacks.length && fallbacks.every((fallback) => fallback.type !== 'function')) {
         node.nodes = fallbacks;
       }
     }
-  });
+  };
+  root.walk((node) => handleNode(node));
 
   return root.toString();
 }

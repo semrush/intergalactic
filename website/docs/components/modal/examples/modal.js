@@ -29,18 +29,18 @@ const Demo = () => {
         Open modal
       </Button>
       <Modal visible={visible} onClose={handleClose}>
-        <Text tag="h2" size={400} mb={4}>
+        <Text tag="h2" size={400} mb={2}>
           Do you want to save your changes?
         </Text>
         <SpinContainer loading={loading}>
-          <Text size={200} mb={3} tag="p">
+          <Text size={200} mb={4} tag="p">
             Your changes will be lost if you don't save them.
           </Text>
-          <Button use="primary" theme="success" onClick={handleClose}>
+          <Button use="primary" theme="success" size="l" onClick={handleClose}>
             Save changes
           </Button>
-          <Button ml={2} onClick={handleClose}>
-            Cancel
+          <Button size="l" ml={2} onClick={handleClose}>
+            Don't save
           </Button>
         </SpinContainer>
       </Modal>
