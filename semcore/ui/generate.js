@@ -1,11 +1,3 @@
-// - Удалить все папки
-// - Удалить node_modules
-// - Очистить dependencies
-// - Не забыть добавить новые компоненты в components.json
-// - npm run generate
-// - Посмотреть CHANGELOG.md и поправить руками
-// - npm run pub -- --root . --no-check-changelog
-
 const { execSync } = require('child_process');
 const path = require('path');
 const fse = require('fs-extra');
@@ -57,7 +49,9 @@ function hasExportDefault(dependency) {
     // fallback resolver
     const dependencyPkgJson = require.resolve(dependency + '/package.json');
     const { module } = fse.readJsonSync(dependencyPkgJson);
-    if (!module) return true; // nasty hack, it's true only because i know it's true lol
+
+    if (!module) return true;
+
     const dependencyES6EntryPath = require.resolve(dependency + `/${module}`);
     const ES6EntryContent = fse.readFileSync(dependencyES6EntryPath, 'utf8');
     return ES6EntryContent.match(EXPORT_DEFAULT_REG) !== null;
@@ -103,40 +97,40 @@ const GENERATOR = {
 
     const isIconDir = (dir) =>
       fse.statSync(dir).isDirectory() &&
-      !['__tests__', 'src', 'svg', 'svg-new', 'lib', 'cjs', 'es6', 'types'].includes(
-        path.basename(dir),
-      );
+      !['__tests__', 'src', 'svg', 'svg-new', 'node_modules'].includes(path.basename(dir));
     const oldIcons = fse
       .readdirSync(oldIconsDir)
       .filter((iconDir) => isIconDir(path.join(oldIconsDir, iconDir)));
+
     const newIcons = fse
       .readdirSync(newIconsDir)
       .filter((iconDir) => isIconDir(path.join(newIconsDir, iconDir)));
 
     oldIcons.map((icon) => {
-      const subFiles = glob
-        .sync('!(cjs|es6|types)/**/*.js', {
+      const subDirs = glob
+        .sync('./**/*.[tj]s', {
           cwd: path.resolve(oldIconsDir, icon),
         })
         .map(path.dirname);
-      for (let subFile of subFiles) {
+      for (const subFile of subDirs) {
         fse.outputFileSync(
-          `./${name}/lib/${icon}/${subFile}/index.js`,
+          path.resolve(`./${name}/lib/${icon}/${subFile}`, `index.js`),
           EXPORT_TEMPLATES.LIB_DEFAULT(dependency, `${icon}/${subFile}`),
         );
         fse.outputFileSync(
-          `./${name}/lib/${icon}/${subFile}/index.d.ts`,
+          path.resolve(`./${name}/lib/${icon}/${subFile}`, `index.d.ts`),
           EXPORT_TEMPLATES.LIB_DEFAULT(dependency, `${icon}/${subFile}`),
         );
       }
     });
     newIcons.map((icon) => {
       const subFiles = glob
-        .sync('!(cjs|es6|types)/**/*.js', {
+        .sync('./**/*.[tj]s', {
           cwd: path.resolve(newIconsDir, icon),
         })
         .map(path.dirname);
-      for (let subFile of subFiles) {
+
+      for (const subFile of subFiles) {
         fse.outputFileSync(
           `./${name}/${icon}/${subFile}/index.js`,
           EXPORT_TEMPLATES.DEFAULT(`${dependency}/${icon}/${subFile}`),
@@ -214,8 +208,8 @@ async function main(pkg) {
   execSync('yarn test');
 }
 
-// eslint-disable-next-line no-console
 main(pkg).catch((error) => {
+  // eslint-disable-next-line no-console
   console.error(error);
   process.exit(1);
 });
