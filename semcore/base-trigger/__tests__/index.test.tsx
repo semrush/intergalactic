@@ -3,16 +3,23 @@ import { cleanup, render } from '@semcore/jest-preset-ui/testing';
 import { shouldSupportClassName, shouldSupportRef } from '@semcore/jest-preset-ui/shared';
 import snapshot from '@semcore/jest-preset-ui/snapshot';
 import BaseTrigger, { ButtonTrigger, FilterTrigger, LinkTrigger } from '../src';
+import NeighborLocation from '@semcore/neighbor-location';
 
 describe('BaseTrigger', () => {
   afterEach(cleanup);
 
   shouldSupportClassName(BaseTrigger);
   shouldSupportRef(BaseTrigger);
+
+  test('Renders correctly', async () => {
+    const component = <BaseTrigger>Button</BaseTrigger>;
+
+    expect(await snapshot(component)).toMatchImageSnapshot();
+  });
+
   test('should support "state" prop', async () => {
     const component = (
       <>
-        <BaseTrigger>Button</BaseTrigger>
         <BaseTrigger state="valid">Button</BaseTrigger>
         <BaseTrigger state="invalid">Button</BaseTrigger>
       </>
@@ -33,6 +40,25 @@ describe('BaseTrigger', () => {
     expect(await snapshot(component)).toMatchImageSnapshot();
   });
 
+  test('should support disabled', async () => {
+    const component = <BaseTrigger disabled>Button</BaseTrigger>;
+    expect(await snapshot(component)).toMatchImageSnapshot();
+  });
+
+  test('should support neighborLocation', async () => {
+    const component = (
+      <>
+        <NeighborLocation>
+          <BaseTrigger>Button</BaseTrigger>
+          <BaseTrigger>Button</BaseTrigger>
+          <BaseTrigger>Button</BaseTrigger>
+        </NeighborLocation>
+      </>
+    );
+
+    expect(await snapshot(component)).toMatchImageSnapshot();
+  });
+
   test('should support "placeholder" prop', async () => {
     const component = (
       <BaseTrigger empty placeholder="placeholder">
@@ -42,18 +68,6 @@ describe('BaseTrigger', () => {
 
     expect(await snapshot(component)).toMatchImageSnapshot();
   });
-
-  test('should support back ref', () => {
-    const ref = React.createRef();
-    render(<BaseTrigger ref={ref} />);
-    expect(ref.current.tagName).toBeTruthy();
-  });
-
-  test('should support back ref', () => {
-    const ref = React.createRef();
-    render(<BaseTrigger ref={ref} />);
-    expect(ref.current.tagName).toBeTruthy();
-  });
 });
 
 describe('ButtonTrigger', () => {
@@ -61,6 +75,17 @@ describe('ButtonTrigger', () => {
 
   shouldSupportClassName(ButtonTrigger);
   shouldSupportRef(ButtonTrigger);
+
+  test('Renders correctly with Addon', async () => {
+    const component = (
+      <>
+        <ButtonTrigger>Button</ButtonTrigger>
+        <ButtonTrigger loading>Button</ButtonTrigger>
+      </>
+    );
+
+    expect(await snapshot(component)).toMatchImageSnapshot();
+  });
 });
 
 describe('FilterTrigger', () => {
@@ -69,13 +94,13 @@ describe('FilterTrigger', () => {
   shouldSupportClassName(FilterTrigger);
   shouldSupportRef(FilterTrigger);
 
-  test('Should have correct disabled state', async () => {
+  test('Should support disabled', async () => {
     const component = <FilterTrigger disabled>Disabled</FilterTrigger>;
 
     expect(await snapshot(component)).toMatchImageSnapshot();
   });
 
-  test('Should have correct counter', async () => {
+  test('Should renders correctly with counter', async () => {
     const component = (
       <FilterTrigger>
         <FilterTrigger.Counter>99</FilterTrigger.Counter>
@@ -93,7 +118,7 @@ describe('LinkTrigger', () => {
   shouldSupportClassName(LinkTrigger);
   shouldSupportRef(LinkTrigger);
 
-  test('should support correct render', async () => {
+  test('Renders correctly', async () => {
     const component = (
       <snapshot.ProxyProps style={{ margin: 5 }}>
         <LinkTrigger>LinkTrigger</LinkTrigger>
@@ -101,6 +126,19 @@ describe('LinkTrigger', () => {
         <LinkTrigger loading>LinkTrigger</LinkTrigger>
         <LinkTrigger color="gray20">LinkTrigger</LinkTrigger>
       </snapshot.ProxyProps>
+    );
+
+    expect(await snapshot(component)).toMatchImageSnapshot();
+  });
+
+  test('Renders correctly with empty', async () => {
+    const component = (
+      <>
+        <LinkTrigger>
+          <LinkTrigger.Text empty>LinkTrigger</LinkTrigger.Text>
+          <LinkTrigger.Text>LinkTrigger</LinkTrigger.Text>
+        </LinkTrigger>
+      </>
     );
 
     expect(await snapshot(component)).toMatchImageSnapshot();
