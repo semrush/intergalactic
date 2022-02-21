@@ -111,7 +111,7 @@ const getIsInsideComment = (isInsideComment, lastString) => {
   return lastCommentOpenning > lastCommentClosing;
 };
 
-const PROJECT_ROOT = process.cwd();
+const PROJECT_ROOT = path.resolve(__dirname, '../..');
 
 module.exports = (babel, pluginOptions = {}) => {
   const options = Object.assign({}, defaultOptions, pluginOptions);

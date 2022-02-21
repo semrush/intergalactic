@@ -53,7 +53,12 @@ module.exports = function (options) {
     // set mergeLonghand: false because the problem of the ratio Api components and styles (see: NoticeBubble)
     processorPlugins.push(
       syncPlugin(
-        cssnano(Object.assign({ preset: ['default', { mergeLonghand: false }] }, options.cssnano)),
+        cssnano(
+          Object.assign(
+            { preset: ['default', { mergeLonghand: false, mergeRules: false }] },
+            options.cssnano,
+          ),
+        ),
       ),
     );
   }

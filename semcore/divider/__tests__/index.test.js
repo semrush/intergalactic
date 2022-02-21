@@ -24,6 +24,10 @@ describe('Divider', () => {
         </div>
         <br />
         <div style={{ width: 100 }}>
+          <Divider theme="default" />
+        </div>
+        <br />
+        <div style={{ width: 100 }}>
           <Divider use="secondary" />
         </div>
         <br />
@@ -49,6 +53,10 @@ describe('Divider', () => {
         <br />
         <div style={{ height: 100 }}>
           <Divider use="secondary" theme="invert" orientation="vertical" />
+        </div>
+        <br />
+        <div style={{ height: 100 }}>
+          <Divider use="secondary" theme="default" orientation="vertical" />
         </div>
         <br />
         <div style={{ width: 100 }}>

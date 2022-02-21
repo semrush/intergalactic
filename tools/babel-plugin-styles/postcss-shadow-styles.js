@@ -1,6 +1,7 @@
 const Tokenizer = require('css-selector-tokenizer');
 const ValueParser = require('postcss-value-parser');
 const stringHash = require('string-hash');
+const path = require('path');
 
 const PLACEHOLDER_REPLACER = '_gg_';
 
@@ -68,7 +69,9 @@ const DEFAULT_OPTS = {
     //   .toString(36)
     //   .substr(0, 5);
 
-    const hash = stringHash(css + filename)
+    const projectRoot = path.resolve(__dirname, '../..');
+    const relativePath = path.relative(projectRoot, filename);
+    const hash = stringHash(css + relativePath)
       .toString(36)
       .substr(0, 5);
 
