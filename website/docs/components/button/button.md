@@ -109,9 +109,9 @@ For the primary button, use the themes that correspond to a particular situation
 
 **The margin shall be multiple of 4**. If there are several buttons next to each other, use the margins shown in table below for the appropriate button size.
 
-| L (40px)                          | M (28px)                          |     |
-| :-------------------------------- | :-------------------------------- | :-- |
-| ![margin L](static/padding-1.png) | ![margin M](static/padding-2.png) |     |
+| L (40px)                          | M (28px)                          |
+| :-------------------------------- | :-------------------------------- |
+| ![margin L](static/padding-1.png) | ![margin M](static/padding-2.png) |
 
 @## Use in UX/UI
 
