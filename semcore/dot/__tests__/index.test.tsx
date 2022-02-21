@@ -11,7 +11,43 @@ describe('Dot', () => {
   shouldSupportClassName(Dot);
   shouldSupportRef(Dot);
 
-  test('Should supported size', async () => {
+  test('Renders correctly', async () => {
+    const component = (
+      <button>
+        Button
+        <Dot />
+      </button>
+    );
+    expect(await snapshot(component)).toMatchImageSnapshot();
+  });
+
+  test('Renders correctly with up', async () => {
+    const component = (
+      <button>
+        Button
+        <Dot up />
+      </button>
+    );
+    expect(await snapshot(component)).toMatchImageSnapshot();
+  });
+
+  test('Should support value', async () => {
+    const component = (
+      <>
+        <Button>
+          Button
+          <Dot up>12</Dot>
+        </Button>
+        <Button>
+          Button
+          <Dot>12</Dot>
+        </Button>
+      </>
+    );
+    expect(await snapshot(component)).toMatchImageSnapshot();
+  });
+
+  test('Should support size', async () => {
     const component = (
       <snapshot.ProxyProps style={{ margin: '3px', position: 'relative' }}>
         <button>
@@ -24,9 +60,6 @@ describe('Dot', () => {
           Button <Dot size="m" />
         </button>
         <button>
-          Button <Dot>12</Dot>
-        </button>
-        <button>
           Button <Dot up size="xl" />
         </button>
         <button>
@@ -34,9 +67,6 @@ describe('Dot', () => {
         </button>
         <button>
           Button <Dot up size="m" />
-        </button>
-        <button>
-          Button <Dot up>12</Dot>
         </button>
       </snapshot.ProxyProps>
     );

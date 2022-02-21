@@ -55,4 +55,18 @@ describe('Card', () => {
 
     expect(await snapshot(Component)).toMatchImageSnapshot();
   });
+
+  test('Renders correctly Header and Body', async () => {
+    const Component = (
+      <Card>
+        <Card.Header>
+          <Card.Title>Title</Card.Title>
+          <Card.Description>Description</Card.Description>
+        </Card.Header>
+        <Card.Body>Your awesome card content</Card.Body>
+      </Card>
+    );
+
+    expect(await snapshot(Component)).toMatchImageSnapshot();
+  });
 });
