@@ -34,7 +34,7 @@ The informer consists of:
 |        | Appearance example                           | Styles                                                   |
 | ------ | -------------------------------------------- | -------------------------------------------------------- |
 | normal | ![info icon xs size](static/info-xs.png)     | `background-color: $stone;`                              |
-| hover  | ![info icon with hover](static/hover-xs.png) | The icon color doesn't change on hover: `cursor: help;`. |
+| hover  | ![info icon with hover](static/hover-xs.png) | The icon color doesn't change on hover. Only cursor changes to `cursor: help;`. |
 
 @## Click zone
 
