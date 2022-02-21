@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.0.0] - 2022-02-22
+
+### BREAK
+
+- Add new children component `SpinContainer.Content` when using advanced mode along with `SpinContainer.Overlay`.
+
 ## [4.0.1] - 2021-8-26
 
 ### Changed
