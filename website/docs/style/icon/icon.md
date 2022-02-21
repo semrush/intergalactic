@@ -101,7 +101,7 @@ Each icon should be tagged in their parent symbol description, with list of tags
 
 ![icon-tags](static/icon-tags.png)
 
-Keep the names **icon** and color --grey800 of shapes inside the symbols consistent (except for colored icons).
+Keep the names **icon** and color --gray-800 of shapes inside the symbols consistent (except for colored icons).
 
 ![name-color](static/name-color.png)
 

@@ -24,10 +24,10 @@ Links inside this component are custom style links.
 
 ![breadcrumbs style](static/breadcrumbs.png)
 
-|                     | Styles                                                                           |
-| ------------------- | -------------------------------------------------------------------------------- |
-| Link                | `font-size: 14px; color: --gray500; cursor: pointer;`, there is no `line-height` |
-| `ChevronRight` icon | `color: --gray300`; `cursor: default;`                                           |
+|                     | Styles                                                                            |
+| ------------------- | --------------------------------------------------------------------------------- |
+| Link                | `font-size: 14px; color: --gray-500; cursor: pointer;`, there is no `line-height` |
+| `ChevronRight` icon | `color: --gray-300`; `cursor: default;`                                           |
 
 > 💡 **Pay attention**. The last item in the breadcrumbs is always non-clickable.
 
@@ -47,11 +47,11 @@ If the links in the breadcrumbs don't fit (the screen is too small or the text i
 
 ![breadcrumbs hover](static/hover.png)
 
-|        | Styles                                                                           |
-| ------ | -------------------------------------------------------------------------------- |
-| normal | `font-size: 14px; color: --gray500; cursor: pointer;`, there is no `line-height` |
-| hover  | `color: --gray600;` + underline                                                  |
-| active | `color: --gray800; cursor: default;`                                             |
+|        | Styles                                                                            |
+| ------ | --------------------------------------------------------------------------------- |
+| normal | `font-size: 14px; color: --gray-500; cursor: pointer;`, there is no `line-height` |
+| hover  | `color: --gray-600;` + underline                                                  |
+| active | `color: --gray-800; cursor: default;`                                             |
 
 @## Use in UX/UI
 
