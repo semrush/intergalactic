@@ -215,4 +215,7 @@ async function main(pkg) {
 }
 
 // eslint-disable-next-line no-console
-main(pkg).catch(console.error);
+main(pkg).catch((error) => {
+  console.error(error);
+  process.exit(1);
+});
