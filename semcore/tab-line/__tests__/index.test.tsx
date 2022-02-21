@@ -110,7 +110,7 @@ describe('TabLine', () => {
         <TabLine.Item value={1}>Item 1</TabLine.Item>
         <TabLine.Item value={2}>Item 2</TabLine.Item>
         <TabLine.Item value={3}>Item 3</TabLine.Item>
-        <TabLine.Item value={3} data-testid={'tab-4'} disabled>
+        <TabLine.Item value={4} data-testid={'tab-4'} disabled>
           Item 4
         </TabLine.Item>
       </TabLine>,
@@ -157,6 +157,23 @@ describe('TabLine', () => {
     );
 
     expect(await snapshot(component)).toMatchImageSnapshot();
+  });
+
+  // js-dom not supported element.click
+  xtest('Should support navigation with keyboard', async () => {
+    const spy = jest.fn();
+
+    const { getByTestId } = render(
+      <TabLine value={1 as Number} onChange={spy} data-testid={'tab-root'}>
+        <TabLine.Item value={1}>Item 1</TabLine.Item>
+        <TabLine.Item value={2}>Item 2</TabLine.Item>
+        <TabLine.Item value={3}>Item 3</TabLine.Item>
+      </TabLine>,
+    );
+
+    fireEvent.keyDown(getByTestId('tab-root'), { keyCode: 39 });
+
+    expect(spy).lastCalledWith(2, expect.any(Object));
   });
 
   test('a11y', async () => {

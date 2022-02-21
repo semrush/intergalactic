@@ -7,6 +7,9 @@ import Skeleton, {
   BarChartSkeleton,
   PieChartSkeleton,
   HistogramChartSkeleton,
+  BubbleChartSkeleton,
+  ScatterPlotChartSkeleton,
+  VennChartSkeleton,
 } from '../src';
 
 describe('Skeleton', () => {
@@ -110,6 +113,27 @@ describe('HistogramChartSkeleton', () => {
         <HistogramChartSkeleton height={100} />
       </>
     );
+    expect(await snapshot(component)).toMatchImageSnapshot();
+  });
+});
+
+describe('BubbleChartSkeleton', () => {
+  test('Renders correctly', async () => {
+    const component = <BubbleChartSkeleton height={100} />;
+    expect(await snapshot(component)).toMatchImageSnapshot();
+  });
+});
+
+describe('ScatterPlotChartSkeleton', () => {
+  test('Renders correctly', async () => {
+    const component = <ScatterPlotChartSkeleton height={100} />;
+    expect(await snapshot(component)).toMatchImageSnapshot();
+  });
+});
+
+describe('VennChartSkeleton', () => {
+  test('Renders correctly', async () => {
+    const component = <VennChartSkeleton />;
     expect(await snapshot(component)).toMatchImageSnapshot();
   });
 });

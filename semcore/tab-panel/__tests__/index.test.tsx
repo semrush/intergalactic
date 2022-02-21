@@ -121,6 +121,23 @@ describe('TabPanel', () => {
     expect(spy).toHaveBeenCalledTimes(0);
   });
 
+  // js-dom not supported element.click
+  xtest('Should support navigation with keyboard', async () => {
+    const spy = jest.fn();
+
+    const { getByTestId } = render(
+      <TabPanel value={1 as Number} onChange={spy} data-testid={'tab-root'}>
+        <TabPanel.Item value={1}>Item 1</TabPanel.Item>
+        <TabPanel.Item value={2}>Item 2</TabPanel.Item>
+        <TabPanel.Item value={3}>Item 3</TabPanel.Item>
+      </TabPanel>,
+    );
+
+    fireEvent.keyDown(getByTestId('tab-root'), { keyCode: 39 });
+
+    expect(spy).lastCalledWith(2, expect.any(Object));
+  });
+
   test('a11y', async () => {
     const { container } = render(
       <TabPanel value={1}>

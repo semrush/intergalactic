@@ -59,22 +59,22 @@ class SliderRoot extends Component {
     };
   }
 
-  onMouseUp = () => {
-    document.removeEventListener('touchmove', this.handleMove);
-    document.removeEventListener('mousemove', this.handleMove);
-    document.removeEventListener('click', this.handleMove);
-    document.removeEventListener('mouseup', this.onMouseUp);
-    document.removeEventListener('touchend', this.onMouseUp);
+  handleMouseEnd = () => {
+    document.removeEventListener('touchmove', this.handleMouseMove);
+    document.removeEventListener('mousemove', this.handleMouseMove);
+    document.removeEventListener('click', this.handleMouseMove);
+    document.removeEventListener('mouseup', this.handleMouseEnd);
+    document.removeEventListener('touchend', this.handleMouseEnd);
   };
 
-  handleMove = (e) => {
+  handleMouseMove = (e) => {
     e.preventDefault();
 
-    document.addEventListener('touchmove', this.handleMove);
-    document.addEventListener('mousemove', this.handleMove);
-    document.addEventListener('click', this.handleMove);
-    document.addEventListener('mouseup', this.onMouseUp);
-    document.addEventListener('touchend', this.onMouseUp);
+    document.addEventListener('touchmove', this.handleMouseMove);
+    document.addEventListener('mousemove', this.handleMouseMove);
+    document.addEventListener('click', this.handleMouseMove);
+    document.addEventListener('mouseup', this.handleMouseEnd);
+    document.addEventListener('touchend', this.handleMouseEnd);
 
     const { min, max, step } = this.asProps;
 
@@ -124,10 +124,10 @@ class SliderRoot extends Component {
         <SSlider
           render={Box}
           ref={this.refSlider}
-          onMouseDown={this.handleMove}
-          onMouseUp={this.onMouseUp}
-          onTouchMove={this.handleMove}
-          onTouchEnd={this.onMouseUp}
+          onMouseDown={this.handleMouseMove}
+          onTouchMove={this.handleMouseMove}
+          onMouseUp={this.handleMouseEnd}
+          onTouchEnd={this.handleMouseEnd}
           onDragStart={() => false}
           onKeyDown={this.onKeyPressed}
           role="slider"
