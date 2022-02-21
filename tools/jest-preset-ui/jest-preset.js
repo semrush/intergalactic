@@ -1,5 +1,4 @@
 module.exports = {
-  // testMatch: ['**/(release|semcore|tools)/**/?(*.)+(spec|test).[jt]s?(x)'],
   testMatch: ['**/(semcore|tools)/**/?(*.)+(spec|test).[jt]s?(x)'],
   setupFilesAfterEnv: [`${__dirname}/src/setupTests.js`],
   transform: {
@@ -16,6 +15,7 @@ module.exports = {
     '^@semcore/(.*)/lib/(.*)': '@semcore/$1/lib/$2',
     '^@semcore/icon/(.*)/(.*)': '@semcore/icon/$1/$2',
     '^@semcore/(.*)': '@semcore/$1/src',
+    '^disable-jest-mapper/(.*)': '$1',
   },
   modulePathIgnorePatterns: ['/generator-component/'],
 };
