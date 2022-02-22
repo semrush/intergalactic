@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.6.3] - 2022-02-22
+
+### Fixed
+
+- Fixed colors for `primary-warning`.
+
 ## [3.6.2] - 2022-01-18
 
 ### Fixed
