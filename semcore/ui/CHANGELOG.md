@@ -307,6 +307,13 @@
 
 ## [9.0.0] - 2021-11-12
 
+### @semcore/skeleton
+
+- **BREAK** change default height for Skeleton from 100px to 100%.
+- **BREAK** remove support props visible, speed for Skeleton.
+- **Fixed** Fixed typo in ts.
+- **Changed** Rewrite code from ts to js.
+
 ### @semcore/d3-chart
 
 - **Added** Added prop outerRadius for Donut chart.
@@ -344,13 +351,6 @@
 - **Changed** Changed interception event of mouse for cursor in ScrollBar.
 - **Changed** Call calculate position scroll when change size container
 
-### @semcore/skeleton
-
-- **BREAK** change default height for Skeleton from 100px to 100%.
-- **BREAK** remove support props visible, speed for Skeleton.
-- **Fixed** Fixed typo in ts.
-- **Changed** Rewrite code from ts to js.
-
 ### @semcore/slider
 
 - **Fixed** Fixed default color
@@ -366,6 +366,11 @@
 - **Changed** Rewrite from TS to JS code.
 
 ## [8.0.0] - 2021-10-04
+
+### @semcore/dot
+
+- **BREAK** removed deprecated property invisible.
+- **BREAK** Changed animation Dot to @semcore/animation.
 
 ### @semcore/badge
 
@@ -388,11 +393,6 @@
 
 - **Fixed** Fixed change displayedPeriod after change value for family pickers.
 - **Changed** Changed WeekDay styles from uppercase to capital case
-
-### @semcore/dot
-
-- **BREAK** removed deprecated property invisible.
-- **BREAK** Changed animation Dot to @semcore/animation.
 
 ### @semcore/drag-and-drop
 
@@ -450,10 +450,6 @@
 
 - **Changed** Add 'sideEffect=false' for more optimal build via webpack
 
-### @semcore/time-picker
-
-- **Changed** Changed height dropdown from 240px to 180px.
-
 ### @semcore/breadcrumbs
 
 - **Fixed** Fixed style separator when a custom font-size.
@@ -478,6 +474,10 @@
 ### @semcore/textarea
 
 - **Fixed** [TS] Fixed type onChange for ITextareaProps.
+
+### @semcore/time-picker
+
+- **Changed** Changed height dropdown from 240px to 180px.
 
 ## [7.1.1] - 2021-08-09
 
@@ -568,6 +568,26 @@
 
 ## [7.0.0] - 2021-07-12
 
+### @semcore/notice-bubble
+
+- **BREAK** Replace animation package from react-transition-group to @semcore/animation
+- **BREAK** Remove property offset and added Box inside NoticeBubbleContainer
+- **Changed** Version of dependence @semcore/core has been changed to 1.11.
+- **Changed** Improved performance. Removed one component wrapper.
+- **Changed** The style processing system has been changed.
+- **Changed** Removed the ability to apply media styles via a plugin babel-plugin-react-semcore.
+- **Changed** [TS] rewrite code from TS to JS.
+- **Changed** [A11y] added role for Alert and aria-label for Close.
+
+### @semcore/spin-container
+
+- **BREAK** Replace animation from package react-transition-group to @semcore/animation.
+- **Changed** Version of dependence @semcore/core has been changed to 1.11.
+- **Changed** Improved performance. Removed one component wrapper.
+- **Changed** The style processing system has been changed.
+- **Changed** Removed the ability to apply media styles via a plugin babel-plugin-react-semcore.
+- **Changed** [TS] rewrite code from TS to JS.
+
 ### @semcore/accordion
 
 - **Fixed** Add default type for generic value
@@ -646,17 +666,6 @@
 - **Changed** Removed the ability to apply media styles via a plugin babel-plugin-react-semcore.
 - **Changed** [A11y] added role for Alert and aria-label for Close.
 
-### @semcore/notice-bubble
-
-- **BREAK** Replace animation package from react-transition-group to @semcore/animation
-- **BREAK** Remove property offset and added Box inside NoticeBubbleContainer
-- **Changed** Version of dependence @semcore/core has been changed to 1.11.
-- **Changed** Improved performance. Removed one component wrapper.
-- **Changed** The style processing system has been changed.
-- **Changed** Removed the ability to apply media styles via a plugin babel-plugin-react-semcore.
-- **Changed** [TS] rewrite code from TS to JS.
-- **Changed** [A11y] added role for Alert and aria-label for Close.
-
 ### @semcore/pills
 
 - **Fixed** Add default type for generic value
@@ -689,15 +698,6 @@
 - **Changed** Improved performance. Removed one component wrapper.
 - **Changed** The style processing system has been changed.
 - **Changed** Removed the ability to apply media styles via a plugin babel-plugin-react-semcore.
-
-### @semcore/spin-container
-
-- **BREAK** Replace animation from package react-transition-group to @semcore/animation.
-- **Changed** Version of dependence @semcore/core has been changed to 1.11.
-- **Changed** Improved performance. Removed one component wrapper.
-- **Changed** The style processing system has been changed.
-- **Changed** Removed the ability to apply media styles via a plugin babel-plugin-react-semcore.
-- **Changed** [TS] rewrite code from TS to JS.
 
 ### @semcore/tab-line
 
@@ -833,30 +833,21 @@
 
 ## [5.1.0] - 2021-05-25
 
+### @semcore/accordion
+
+- **Changed** Rewrite code from TS to JS 🧑‍💻
+
 ### @semcore/core
 
 - **Changed** Extended type for Root
 
-### @semcore/popper
+### @semcore/d3-chart
 
-- **Fixed** Add type for handlers for render function
 - **Fixed** Fix TS type
-- **Fixed** Fix position arrow after change version popperjs.
-- **Changed** Rewrite code from TS to JS 🧑‍💻
 
-### @semcore/tooltip
+### @semcore/date-picker
 
-- **Changed** Rewrite code from TS to JS 🧑‍💻
-- **Changed** Version of dependence @semcore/core has been changed to 1.11.
-- **Changed** Improved performance. Removed one component wrapper.
-- **Changed** The style processing system has been changed.
-- **Changed** Removed the ability to apply media styles via a plugin babel-plugin-react-semcore.
-
-### @semcore/feature-popover
-
-- **Changed** The style processing system has been changed.
-- **Changed** Version of dependence @semcore/core has been changed to 1.11.
-- **Changed** Improved performance. Removed one component wrapper.
+- **Fixed** Fixed short display date for identity months for Trigger.
 
 ### @semcore/dropdown
 
@@ -869,24 +860,34 @@
 - **Changed** Version of dependence @semcore/core has been changed to 1.11.
 - **Changed** Improved performance. Removed one component wrapper.
 
+### @semcore/feature-popover
+
+- **Changed** The style processing system has been changed.
+- **Changed** Version of dependence @semcore/core has been changed to 1.11.
+- **Changed** Improved performance. Removed one component wrapper.
+
+### @semcore/neighbor-location
+
+- **Added** Added the ability to add a root tag
+- **Changed** Rewrite code from TS to JS 🧑‍💻
+
+### @semcore/popper
+
+- **Fixed** Add type for handlers for render function
+- **Fixed** Fix TS type
+- **Fixed** Fix position arrow after change version popperjs.
+- **Changed** Rewrite code from TS to JS 🧑‍💻
+
+### @semcore/scroll-area
+
+- **Fixed** Add import type for ResizeObserver
+
 ### @semcore/select
 
 - **Changed** Version of dependence @semcore/core has been changed to 1.11.
 - **Changed** Improved performance. Removed one component wrapper.
 - **Changed** The style processing system has been changed.
 - **Changed** Removed the ability to apply media styles via a plugin babel-plugin-react-semcore.
-
-### @semcore/date-picker
-
-- **Fixed** Fixed short display date for identity months for Trigger.
-
-### @semcore/accordion
-
-- **Changed** Rewrite code from TS to JS 🧑‍💻
-
-### @semcore/scroll-area
-
-- **Fixed** Add import type for ResizeObserver
 
 ### @semcore/spin
 
@@ -897,14 +898,13 @@
 
 - **Changed** Rewrite code from TS to JS 🧑‍💻
 
-### @semcore/d3-chart
+### @semcore/tooltip
 
-- **Fixed** Fix TS type
-
-### @semcore/neighbor-location
-
-- **Added** Added the ability to add a root tag
 - **Changed** Rewrite code from TS to JS 🧑‍💻
+- **Changed** Version of dependence @semcore/core has been changed to 1.11.
+- **Changed** Improved performance. Removed one component wrapper.
+- **Changed** The style processing system has been changed.
+- **Changed** Removed the ability to apply media styles via a plugin babel-plugin-react-semcore.
 
 ## [5.0.0] - 2021-04-29
 
@@ -1002,6 +1002,15 @@
 
 ## [4.0.0] - 2021-04-05
 
+### @semcore/notice
+
+- **BREAK** Removed global styles
+- **BREAK** Removed styles for media queries.
+- **BREAK** Replace animation package from react-transition-group to @semcore/animation
+- **BREAK** Update property theme, now this property can get any themes
+- **BREAK** Added property use
+- **BREAK** Update icon for Notice.IconClose
+
 ### @semcore/breadcrumbs
 
 - **Fixed** Added aria-label for Breadcrumbs.
@@ -1034,15 +1043,6 @@
 ### @semcore/icon
 
 - **Changed** Update icons SEMrush, TwitterSemrush, FacebookSemrush, LinkedInSemrush.
-
-### @semcore/notice
-
-- **BREAK** Removed global styles
-- **BREAK** Removed styles for media queries.
-- **BREAK** Replace animation package from react-transition-group to @semcore/animation
-- **BREAK** Update property theme, now this property can get any themes
-- **BREAK** Added property use
-- **BREAK** Update icon for Notice.IconClose
 
 ### @semcore/outside-click
 
@@ -1083,6 +1083,12 @@
 
 ## [3.0.0] - 2021-02-16
 
+### @semcore/grid
+
+- **BREAK** Change the responsive breakpoint from 992px to 1184px.
+- **Added** Added alternative API for span and offset.
+- **Added** Added breakpoint xs.
+
 ### @semcore/accordion
 
 - **Changed** Update version package animation.
@@ -1120,19 +1126,13 @@
 - **Added** Added style folder with css in build folder lib.
 - **Fixed** Removed calculation min width head and body because this is caused bugs.
 
-### @semcore/errors
-
-- **Added** Added supported react@17.
-
 ### @semcore/date-picker
 
 - **Added** Added supported react@17.
 
-### @semcore/grid
+### @semcore/errors
 
-- **BREAK** Change the responsive breakpoint from 992px to 1184px.
-- **Added** Added alternative API for span and offset.
-- **Added** Added breakpoint xs.
+- **Added** Added supported react@17.
 
 ### @semcore/icon
 
@@ -1149,11 +1149,11 @@
 - **Changed** Changed mouse event from click to mouseup for stable performance.
 - **Added** Added supported react-dom@17.
 
-### @semcore/scroll-area
+### @semcore/portal
 
 - **Added** Added supported react-dom@17.
 
-### @semcore/portal
+### @semcore/scroll-area
 
 - **Added** Added supported react-dom@17.
 
@@ -1352,6 +1352,13 @@
 - **Fixed** Bubbling event from interaction components inside Accordion.Item.Content for listener onChange in Accordion
 - **Changed** Update @semcore/core version to ^1.8
 
+### @semcore/input-mask
+
+- **BREAK** Property placeholderChar, it is everything have to use `\_`, because mask show in value to input
+- **Added** Manage cursor position for InputMask.Value with show mask
+- **Added** Export function getAfterPositionValue. It use when need to know where last symbol of value.
+- **Fixed** Show mask for InputMask.Value when size input less than size mask
+
 ### @semcore/animation
 
 - **Added** Add Collapse animation.
@@ -1409,13 +1416,6 @@
 ### @semcore/icon
 
 - **Added** Added new icon color/WhatsApp.
-
-### @semcore/input-mask
-
-- **BREAK** Property placeholderChar, it is everything have to use `\_`, because mask show in value to input
-- **Added** Manage cursor position for InputMask.Value with show mask
-- **Added** Export function getAfterPositionValue. It use when need to know where last symbol of value.
-- **Fixed** Show mask for InputMask.Value when size input less than size mask
 
 ### @semcore/link
 
