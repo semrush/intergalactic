@@ -2,7 +2,7 @@ name: lint-and-test
 on:
   pull_request:
   push:
-    branches: master
+    branches: [master]
 jobs:
   setup:
     runs-on: ubuntu-latest
