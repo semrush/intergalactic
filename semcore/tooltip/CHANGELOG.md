@@ -195,6 +195,8 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ## [3.0.1] - 2019-06-13
 
+### Fixed
+
 - Исправлены типы TS для `title`,так как `title` является стандартным свойством dom
 
 ## [3.0.0] - 2019-06-06
