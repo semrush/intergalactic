@@ -2,7 +2,7 @@ const path = require('path');
 const task = require('@semcore/super-publisher/task');
 const { getChangelogByDate } = require('@semcore/changelogs-by-date/getChangeLogByDate');
 const mailchimp = require('@mailchimp/mailchimp_marketing');
-const mail = require('../website/client/components/messageTemplate');
+const mail = require('../../website/client/components/messageTemplate');
 require('dotenv').config();
 
 module.exports = task('Send mail', async (opt) => {
