@@ -1652,6 +1652,6 @@
 
 ## [0.0.1] - 2020-07-27
 
-### Added
+### Global
 
-- Initial release
+- **Added** Initial release
