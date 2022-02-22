@@ -1,21 +1,17 @@
-import React from 'react';
+import * as React from 'react';
 import snapshot from '@semcore/jest-preset-ui/snapshot';
-import { cleanup, render } from '@semcore/jest-preset-ui/testing';
-import { shouldSupportClassName, shouldSupportRef } from '@semcore/jest-preset-ui/shared';
+import { cleanup } from '@semcore/jest-preset-ui/testing';
 import Badge from '../src';
 
 describe('Badge', () => {
   afterEach(cleanup);
 
-  shouldSupportRef(Badge);
-  shouldSupportClassName(Badge);
-
-  test('renders correctly', async () => {
+  test('Renders correctly', async () => {
     const component = <Badge>admin</Badge>;
     expect(await snapshot(component)).toMatchImageSnapshot();
   });
 
-  test('should support color', async () => {
+  test('Should support color', async () => {
     const component = (
       <>
         <Badge color="white">admin</Badge>
@@ -26,7 +22,7 @@ describe('Badge', () => {
     expect(await snapshot(component)).toMatchImageSnapshot();
   });
 
-  test('should support bg', async () => {
+  test('Should support bg', async () => {
     const component = (
       <>
         <Badge bg="cyan">admin</Badge>
