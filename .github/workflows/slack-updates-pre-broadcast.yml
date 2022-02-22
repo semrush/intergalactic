@@ -1,4 +1,4 @@
-name: notification
+name: slack-updates-pre-broadcast
 
 on:
   schedule:
@@ -23,7 +23,7 @@ jobs:
         if: steps.cache-modules.outputs.cache-hit != 'true'
         run: yarn --non-interactive --frozen-lockfile
 
-  notification:
+  slack-updates-pre-broadcast:
     runs-on: ubuntu-latest
     needs: setup
     steps:

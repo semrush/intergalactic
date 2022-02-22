@@ -1,4 +1,4 @@
-name: component
+name: lint-and-test
 on:
   pull_request:
   push:
