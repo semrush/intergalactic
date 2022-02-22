@@ -13,7 +13,7 @@ module.exports = task('RELEASE check', async (opt) => {
     return opt;
   }
 
-  const releaseChangelogPath = path.resolve(__dirname, '../../../release/CHANGELOG.md');
+  const releaseChangelogPath = path.resolve(__dirname, '../../../semcore/ui/CHANGELOG.md');
   const releaseChangelog = fse.readFileSync(releaseChangelogPath, 'utf-8');
 
   if (releaseChangelog.includes('[VERSION]')) {
