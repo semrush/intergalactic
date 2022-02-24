@@ -1,47 +1,49 @@
-import React from 'react';
-import { testing } from '@semcore/jest-preset-ui';
-const { render, cleanup } = testing;
-
-import { snapshot } from '@semcore/jest-preset-ui';
-import { shared as testsShared } from '@semcore/jest-preset-ui';
-const { shouldSupportClassName, shouldSupportRef } = testsShared;
+import * as React from 'react';
+import { testing, snapshot } from '@semcore/jest-preset-ui';
 import Skeleton, {
   LineChartSkeleton,
   AreaChartSkeleton,
   BarChartSkeleton,
   PieChartSkeleton,
   HistogramChartSkeleton,
+  BubbleChartSkeleton,
+  ScatterPlotChartSkeleton,
+  VennChartSkeleton,
 } from '../src';
+
+const { render, cleanup } = testing;
 
 describe('Skeleton', () => {
   afterEach(cleanup);
 
-  shouldSupportClassName(Skeleton);
-  shouldSupportRef(Skeleton);
-
-  test('should support custom attributes', () => {
-    const { getByTestId } = render(<Skeleton data-testid="test" name="svg" />);
-
-    expect(getByTestId('test').attributes['name'].value).toBe('svg');
-  });
-
-  test('should support children', async () => {
+  test('Renders correctly', async () => {
     const component = (
-      <Skeleton>
-        <text data-testid="child">Test</text>
+      <Skeleton h={48}>
+        <Skeleton.Text />
       </Skeleton>
     );
-    const { getByTestId } = render(component);
-
-    expect(getByTestId('child')).toBeTruthy();
+    expect(await snapshot(component)).toMatchImageSnapshot();
   });
 
-  test('should support render null', () => {
-    const { queryByText } = render(<Skeleton hidden>Test</Skeleton>);
+  test('Should support amount', async () => {
+    const component = (
+      <Skeleton h={48}>
+        <Skeleton.Text amount={3} />
+      </Skeleton>
+    );
+    expect(await snapshot(component)).toMatchImageSnapshot();
+  });
+
+  test('Should support hidden', () => {
+    const { queryByText } = render(
+      <Skeleton h={48} hidden>
+        <text>Test</text>
+      </Skeleton>,
+    );
     expect(queryByText(/Test/)).toBeNull();
   });
 
-  test('should support theme', async () => {
+  test('Should support theme', async () => {
     const component = (
       <>
         <Skeleton height={48}>
@@ -61,32 +63,8 @@ describe('Skeleton', () => {
   });
 });
 
-describe('Skeleton.Text', () => {
-  afterEach(cleanup);
-
-  shouldSupportClassName(Skeleton.Text, Skeleton);
-  shouldSupportRef(Skeleton.Text, Skeleton);
-
-  test('should support amount', () => {
-    const { queryAllByText, rerender } = render(
-      <svg>
-        <Skeleton.Text>Test</Skeleton.Text>
-      </svg>,
-    );
-
-    expect(queryAllByText(/Test/)).toHaveLength(1);
-
-    rerender(
-      <svg>
-        <Skeleton.Text amount={2}>Test</Skeleton.Text>
-      </svg>,
-    );
-    expect(queryAllByText(/Test/)).toHaveLength(2);
-  });
-});
-
 describe('LineChartSkeleton', () => {
-  test('should support render', async () => {
+  test('Renders correctly', async () => {
     const component = (
       <>
         <LineChartSkeleton type="monotone" height={100} />
@@ -98,7 +76,7 @@ describe('LineChartSkeleton', () => {
 });
 
 describe('AreaChartSkeleton', () => {
-  test('should support render', async () => {
+  test('Renders correctly', async () => {
     const component = (
       <>
         <AreaChartSkeleton type="monotone" height={100} />
@@ -110,7 +88,7 @@ describe('AreaChartSkeleton', () => {
 });
 
 describe('BarChartSkeleton', () => {
-  test('should support render', async () => {
+  test('Renders correctly', async () => {
     const component = (
       <>
         <BarChartSkeleton layout="vertical" height={100} />
@@ -122,20 +100,41 @@ describe('BarChartSkeleton', () => {
 });
 
 describe('PieChartSkeleton', () => {
-  test('should support render', async () => {
+  test('Renders correctly', async () => {
     const component = <PieChartSkeleton />;
     expect(await snapshot(component)).toMatchImageSnapshot();
   });
 });
 
 describe('HistogramChartSkeleton', () => {
-  test('should support render', async () => {
+  test('Renders correctly', async () => {
     const component = (
       <>
         <HistogramChartSkeleton layout="vertical" height={100} />
         <HistogramChartSkeleton height={100} />
       </>
     );
+    expect(await snapshot(component)).toMatchImageSnapshot();
+  });
+});
+
+describe('BubbleChartSkeleton', () => {
+  test('Renders correctly', async () => {
+    const component = <BubbleChartSkeleton height={100} />;
+    expect(await snapshot(component)).toMatchImageSnapshot();
+  });
+});
+
+describe('ScatterPlotChartSkeleton', () => {
+  test('Renders correctly', async () => {
+    const component = <ScatterPlotChartSkeleton height={100} />;
+    expect(await snapshot(component)).toMatchImageSnapshot();
+  });
+});
+
+describe('VennChartSkeleton', () => {
+  test('Renders correctly', async () => {
+    const component = <VennChartSkeleton />;
     expect(await snapshot(component)).toMatchImageSnapshot();
   });
 });
