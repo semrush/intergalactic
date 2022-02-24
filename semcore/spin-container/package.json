@@ -13,7 +13,7 @@
     "test": "jest"
   },
   "dependencies": {
-    "@semcore/utils": "^3.15",
+    "@semcore/utils": "^3.31",
     "@semcore/spin": "^3",
     "@semcore/flex-box": "^4",
     "@semcore/animation": "^1"

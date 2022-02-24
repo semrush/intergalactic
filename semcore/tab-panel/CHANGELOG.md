@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.6.4] - 2022-02-22
+
+### Fixed
+
+- Add missed ts type `defaultValue`.
+
 ## [2.6.3] - 2021-12-23
 
 ### Changed

@@ -4,9 +4,12 @@ import { IBoxProps } from '@semcore/flex-box';
 
 export interface ISliderProps extends IBoxProps {
   /** Numeric value
-   * @default 0
    */
   value?: number;
+  /** Numeric default value
+   * @default 0
+   */
+  defaultValue?: number;
   /** Minimum value
    * @default 0
    */
@@ -19,10 +22,6 @@ export interface ISliderProps extends IBoxProps {
    * @default 1
    */
   step?: number;
-  /** Slider color
-   * @default #00000010
-   */
-  background?: string;
   /**
    * Handler for changing the value
    */
@@ -33,29 +32,9 @@ export interface ISliderProps extends IBoxProps {
   disabled?: boolean;
 }
 
-export interface ISliderKnobProps extends IBoxProps {
-  /** Knob color
-   * @default #2b94e1
-   */
-  color?: string;
-  /** Make a knob interactive.
-   * True by default*/
-  interactive?: boolean;
-}
-
-export interface ISliderBarProps extends IBoxProps {
-  /** Bar color
-   * @default #2b94e1
-   */
-  color?: string;
-  /** Make a bar interactive.
-   * True by default*/
-  interactive?: boolean;
-}
-
 declare const Slider: (<T>(props: CProps<ISliderProps & T>) => ReturnEl) & {
-  Knob: <T>(props: ISliderKnobProps & T) => ReturnEl;
-  Bar: <T>(props: ISliderBarProps & T) => ReturnEl;
+  Knob: typeof Box;
+  Bar: typeof Box;
 };
 
 export default Slider;

@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.1.1] - 2022-02-22
+
+### Fixed
+
+- Added export type for Bubble, ScatterPlot, Venn charts
+
 ## [3.1.0] - 2022-01-21
 
 ### Added

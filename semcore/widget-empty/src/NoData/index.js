@@ -27,7 +27,6 @@ class NoData extends Component {
   render() {
     const { Children, type, description, getI18nText } = this.asProps;
     const { title, description: descriptionText } = getI18nText();
-
     return (
       <Root render={WidgetEmpty} icon={getIconPath(type)}>
         <WidgetEmpty.Title>{title}</WidgetEmpty.Title>

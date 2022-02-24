@@ -31,6 +31,7 @@ export interface ISpinContainerOverlayProps extends IBoxProps {
 declare const SpinContainer: (<T>(
   props: CProps<ISpinContainerProps & T, ISpinContainerContext>,
 ) => ReturnEl) & {
+  Content: typeof Box;
   Overlay: <T>(props: ISpinContainerOverlayProps & T) => ReturnEl;
 };
 
