@@ -23,5 +23,8 @@
   "devDependencies": {
     "@types/fs-extra": "^9.0.13",
     "@types/semver": "^7.3.9"
+  },
+  "jest": {
+    "preset": "@semcore/jest-preset-ui"
   }
 }

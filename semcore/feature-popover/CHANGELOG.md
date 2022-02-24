@@ -81,6 +81,8 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ## [2.0.4] - 2020-09-08
 
+### Fixed
+
 - Fixed possible styles collisions between components with different versions, but same styles
 
 ## [2.0.3] - 2020-09-07

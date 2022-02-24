@@ -1,5 +1,6 @@
 import React from 'react';
-import { render, fireEvent, cleanup } from '@semcore/jest-preset-ui/testing';
+import { testing } from '@semcore/jest-preset-ui';
+const { render, fireEvent, cleanup } = testing;
 import ProjectCreate from '../src';
 
 describe('ProjectCreate', () => {

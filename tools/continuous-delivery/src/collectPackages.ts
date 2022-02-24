@@ -21,7 +21,7 @@ export const collectPackages = async (inNpmVersions: { [packageName: string]: st
     ...(await fs.readdir(resolvePath('./tools'))).map((packageName) =>
       resolvePath('./tools', packageName),
     ),
-  ];
+  ].filter((path) => !path.endsWith('semcore/ui'));
 
   const files = (
     await Promise.all(

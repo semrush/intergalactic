@@ -2,21 +2,21 @@ const path = require('path');
 const task = require('@semcore/super-publisher/task');
 const { getChangelogByDate } = require('@semcore/changelogs-by-date/getChangeLogByDate');
 const mailchimp = require('@mailchimp/mailchimp_marketing');
-const mail = require('../website/client/components/messageTemplate');
+const mail = require('../../website/client/components/messageTemplate');
 require('dotenv').config();
 
 module.exports = task('Send mail', async (opt) => {
-  if (!opt.root.includes('release')) {
+  if (!opt.package !== '@semcore/ui') {
     opt.skip();
     return opt;
   }
 
-  const packagePath = path.resolve(opt.root, 'package.json');
+  const packagePath = path.resolve(__dirname, 'package.json');
   delete require.cache[packagePath];
 
   const { version } = require(packagePath);
 
-  const changelogPath = path.resolve(opt.root, 'CHANGELOG.md');
+  const changelogPath = path.resolve(__dirname, 'CHANGELOG.md');
 
   const now = new Date();
   const year = new Intl.DateTimeFormat('ru', { year: 'numeric' }).format(now);

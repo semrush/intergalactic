@@ -1,6 +1,8 @@
 import React from 'react';
-import { render, cleanup } from '@semcore/jest-preset-ui/testing';
-import snapshot from '@semcore/jest-preset-ui/snapshot';
+import { testing } from '@semcore/jest-preset-ui';
+const { render, cleanup } = testing;
+
+import { snapshot } from '@semcore/jest-preset-ui';
 import Flags from '../src';
 
 describe('Flags', () => {

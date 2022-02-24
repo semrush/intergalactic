@@ -1,11 +1,11 @@
-name: pull-request-open
+name: slack-pr-notify
 
 on:
   pull_request:
     types: [assigned, opened, reopened]
 
 jobs:
-  pull-request-open:
+  slack-pr-notify:
     runs-on: ubuntu-latest
     steps:
       - run: |

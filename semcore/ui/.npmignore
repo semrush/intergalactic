@@ -3,3 +3,4 @@ __tests__
 components.json
 generate.js
 mailer.js
+tsconfig.json

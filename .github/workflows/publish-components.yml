@@ -1,4 +1,4 @@
-name: publish
+name: publish-components
 on:
   push:
     branches: [master]
@@ -19,7 +19,7 @@ jobs:
       - name: Install dependencies
         if: steps.cache-modules.outputs.cache-hit != 'true'
         run: yarn --non-interactive --frozen-lockfile
-  build:
+  publish-components:
     runs-on: ubuntu-latest
     needs: setup
     env:

@@ -223,3 +223,4 @@ function StylesPlugin({ types: t }, opts) {
 }
 
 module.exports = StylesPlugin;
+module.exports.postcss = postcss;

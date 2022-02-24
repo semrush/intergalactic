@@ -283,3 +283,4 @@ module.exports = function ({ types: t }, opts) {
     },
   };
 };
+module.exports.getColorVars = getColorVars;

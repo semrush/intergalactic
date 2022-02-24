@@ -35,5 +35,8 @@
   },
   "devDependencies": {
     "@babel/core": "^7.5.5"
+  },
+  "jest": {
+    "preset": "@semcore/jest-preset-ui"
   }
 }

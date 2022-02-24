@@ -1,10 +1,9 @@
 import React from 'react';
-import { render, fireEvent, cleanup } from '@semcore/jest-preset-ui/testing';
-import snapshot from '@semcore/jest-preset-ui/snapshot';
+import { testing } from '@semcore/jest-preset-ui';
 import Animation from '../src';
 
 describe('Animation', () => {
-  afterEach(cleanup);
+  afterEach(testing.cleanup);
 
   test('TODO', () => {
     expect(true).toEqual(true);

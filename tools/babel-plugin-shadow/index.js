@@ -18,6 +18,9 @@ const buildClassName = template.expression(`
     NAME.${KEYS.__styles__}["ELEMENT"]
 `);
 
+const projectRoot = path.resolve(__dirname, '../..');
+const makeStringHash = (str) => stringHash(str.replaceAll(projectRoot, '<rootDir>'));
+
 const toObjectExpression = (obj) =>
   t.objectExpression(
     Object.entries(obj).map(([key, value]) =>
@@ -67,9 +70,9 @@ const defaultOptions = {
     generateScopedName: function generateScopedName(name, filename, css) {
       const i = css.indexOf(`.${name}`);
       const lineNumber = css.substr(0, i).split(/[\r\n]/).length;
-      const hash = stringHash(css + version + filename + lineNumber)
+      const hash = makeStringHash(css + version + filename + lineNumber)
         .toString(36)
-        .substr(0, 5);
+        .substring(0, 5);
 
       return `_${name}_${hash}${PLACEHOLDER_REPLACE}`;
     },
@@ -147,7 +150,7 @@ module.exports = (babel, pluginOptions = {}) => {
   const pre = (file) => {
     ({ filename } = file.opts);
 
-    FILENAME_HASH = stringHash(path.relative(PROJECT_ROOT, filename || '')).toString(36);
+    FILENAME_HASH = makeStringHash(filename || '').toString(36);
     FILE = file;
     index = 1;
     STYLED = new Set();
@@ -651,7 +654,7 @@ module.exports = (babel, pluginOptions = {}) => {
 
       const { raw } = quasi.quasis[0].value;
 
-      const hash = stringHash(raw).toString(36);
+      const hash = makeStringHash(raw).toString(36);
 
       // addTrailingBundlerComment(quasi);
 
@@ -680,7 +683,7 @@ module.exports = (babel, pluginOptions = {}) => {
       const code = result.code;
       const media = result.media;
       const tokens = toObjectExpression(result.tokens);
-      const processedStylesHash = stringHash(code).toString(36);
+      const processedStylesHash = makeStringHash(code).toString(36);
 
       /* Replace hash of unprocessed styles with hash of processed styles
          Required to prevent possible collisions between versions with same styles,
@@ -688,7 +691,7 @@ module.exports = (babel, pluginOptions = {}) => {
       p.node.arguments[1] = t.stringLiteral(processedStylesHash + PLACEHOLDER_REPLACE);
 
       if (media) {
-        const mediaHash = stringHash(media).toString(36);
+        const mediaHash = makeStringHash(media).toString(36);
         const mediaStylesNode = createMediaStylesCall(media, mediaHash);
         p.findParent((path) => {
           if (!t.isVariableDeclaration(path)) return;
