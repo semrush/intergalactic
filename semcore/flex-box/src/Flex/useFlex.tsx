@@ -7,6 +7,9 @@ import {
   JustifyContentProperty,
   Properties,
   FlexDirectionProperty,
+  GapProperty,
+  RowGapProperty,
+  ColumnGapProperty,
 } from 'csstype';
 import { sstyled } from '@semcore/core';
 import useBox, { IBoxProps, removeUndefinedKeys } from '../Box/useBox';
@@ -42,6 +45,18 @@ export interface IFlexProps extends IBoxProps {
    * CSS `justify-content` property
    */
   justifyContent?: JustifyContentProperty;
+  /**
+   * CSS `gap` property
+   */
+  gap?: GapProperty<number>;
+  /**
+   * CSS `gap` property
+   */
+  rowGap?: RowGapProperty<number>;
+  /**
+   * CSS `gap` property
+   */
+  columnGap?: ColumnGapProperty<number>;
 }
 
 function calculateFlexStyles(props) {
@@ -56,6 +71,8 @@ function calculateFlexStyles(props) {
     justifyContent: props.justifyContent,
     flexWrap: props.flexWrap ? `wrap${props.reverse ? '-reverse' : ''}` : undefined,
     flexDirection: (props.reverse && DirectionReverse[props.direction]) || props.direction,
+    rowGap: props.rowGap || props.gap,
+    columnGap: props.columnGap || props.gap,
   });
 }
 
@@ -72,11 +89,32 @@ export default function useFlex<T extends IFlexProps>(
     },
     ref,
   );
-  const { inline, flexWrap, direction, reverse, alignItems, alignContent, justifyContent } = props;
+  const {
+    inline,
+    flexWrap,
+    direction,
+    reverse,
+    alignItems,
+    alignContent,
+    justifyContent,
+    gap,
+    rowGap,
+    columnGap,
+  } = props;
 
   const flexStyles: Properties = useMemo(() => {
     return calculateFlexStyles(props);
-  }, [flexWrap, direction, reverse, alignItems, alignContent, justifyContent]);
+  }, [
+    flexWrap,
+    direction,
+    reverse,
+    alignItems,
+    alignContent,
+    justifyContent,
+    gap,
+    rowGap,
+    columnGap,
+  ]);
 
   const styles = sstyled(style);
 

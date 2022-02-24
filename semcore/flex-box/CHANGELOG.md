@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.5.0] - 2022-02-24
+
+### Added
+
+- Added `gap`, `rowGap` and `columnGap` css properties support for `Flex` component.
+
 ## [4.4.3] - 2021-10-20
 
 ### Fixed
