@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.6.4] - 2022-02-24
+
+### Changed
+
+- Remove don't use dependency `@semcore/link`, `@semcore/button`.
+
 ## [2.6.3] - 2022-01-18
 
 ### Changed
