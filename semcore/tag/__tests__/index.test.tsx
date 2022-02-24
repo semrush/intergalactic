@@ -1,8 +1,9 @@
 import * as React from 'react';
-import { cleanup } from '@semcore/jest-preset-ui/testing';
-import snapshot from '@semcore/jest-preset-ui/snapshot';
+import { testing, snapshot } from '@semcore/jest-preset-ui';
 import propsForElement from '@semcore/utils/lib/propsForElement';
 import Tag from '../src';
+
+const { cleanup } = testing;
 
 describe('Tag', () => {
   afterEach(cleanup);

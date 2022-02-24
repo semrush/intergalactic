@@ -1,8 +1,9 @@
 import React from 'react';
-import { cleanup, fireEvent, render, axe } from '@semcore/jest-preset-ui/testing';
-import { shouldSupportClassName, shouldSupportRef } from '@semcore/jest-preset-ui/shared';
-import snapshot from '@semcore/jest-preset-ui/snapshot';
-import Checkbox, { inputProps } from '../src';
+import { testing, shared, snapshot } from '@semcore/jest-preset-ui';
+import Checkbox from '../src';
+
+const { cleanup, render, axe } = testing;
+const { shouldSupportClassName, shouldSupportRef } = shared;
 
 describe('Checkbox', () => {
   afterEach(cleanup);

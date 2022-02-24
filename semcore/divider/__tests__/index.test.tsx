@@ -1,8 +1,9 @@
 import React from 'react';
-import { cleanup } from '@semcore/jest-preset-ui/testing';
-import snapshot from '@semcore/jest-preset-ui/snapshot';
-import { shouldSupportClassName, shouldSupportRef } from '@semcore/jest-preset-ui/shared';
+import { testing, snapshot, shared } from '@semcore/jest-preset-ui';
 import Divider from '../src';
+
+const { cleanup } = testing;
+const { shouldSupportClassName, shouldSupportRef } = shared;
 
 describe('Divider', () => {
   afterEach(cleanup);

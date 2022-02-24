@@ -1,8 +1,9 @@
 import * as React from 'react';
-import { cleanup, render, axe } from '@semcore/jest-preset-ui/testing';
-import snapshot from '@semcore/jest-preset-ui/snapshot';
+import { testing, snapshot } from '@semcore/jest-preset-ui';
 import Check from '@semcore/icon/Check/m';
 import { Blockquote, List, Text, Hint } from '../src';
+
+const { cleanup, render, axe } = testing;
 
 describe('Text', () => {
   afterEach(cleanup);

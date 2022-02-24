@@ -1,7 +1,8 @@
 import * as React from 'react';
-import { cleanup, fireEvent, render, axe } from '@semcore/jest-preset-ui/testing';
-import snapshot from '@semcore/jest-preset-ui/snapshot';
+import { testing, snapshot } from '@semcore/jest-preset-ui';
 import Textarea from '../src';
+
+const { cleanup, fireEvent, render, axe } = testing;
 
 describe('Textarea', () => {
   afterEach(cleanup);

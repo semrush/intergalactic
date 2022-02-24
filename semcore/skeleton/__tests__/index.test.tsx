@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { render, cleanup } from '@semcore/jest-preset-ui/testing';
-import snapshot from '@semcore/jest-preset-ui/snapshot';
+import { testing, snapshot } from '@semcore/jest-preset-ui';
 import Skeleton, {
   LineChartSkeleton,
   AreaChartSkeleton,
@@ -11,6 +10,8 @@ import Skeleton, {
   ScatterPlotChartSkeleton,
   VennChartSkeleton,
 } from '../src';
+
+const { render, cleanup } = testing;
 
 describe('Skeleton', () => {
   afterEach(cleanup);
