@@ -89,7 +89,6 @@ describe('Icon', () => {
   const pkgFiles = glob.sync(`${iconsDir}/**/*.js`).filter(isCopiedFile);
 
   const rscFiles = glob.sync(`${rscIconsDir}/**/*.js`).filter(isCopiedFile);
-  console.log(`${rscIconsDir}/**/*.js`);
 
   test(`package provides whole filesystem to release system`, () => {
     const pathFormatter = (path) => path.split('/icon/')[1];
