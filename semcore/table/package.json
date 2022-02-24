@@ -1,7 +1,7 @@
 {
   "name": "@semcore/table",
   "description": "SEMRush Table Component",
-  "version": "2.4.1",
+  "version": "2.4.2",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
