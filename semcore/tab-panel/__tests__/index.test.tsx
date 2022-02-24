@@ -1,8 +1,9 @@
 import * as React from 'react';
-import { render, fireEvent, cleanup, axe } from '@semcore/jest-preset-ui/testing';
-import snapshot from '@semcore/jest-preset-ui/snapshot';
+import { testing, snapshot } from '@semcore/jest-preset-ui';
 import propsForElement from '@semcore/utils/lib/propsForElement';
 import TabPanel from '../src';
+
+const { render, fireEvent, cleanup, axe } = testing;
 
 describe('TabPanel', () => {
   afterEach(cleanup);

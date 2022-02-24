@@ -1,7 +1,8 @@
 import * as React from 'react';
-import snapshot from '@semcore/jest-preset-ui/snapshot';
-import { cleanup } from '@semcore/jest-preset-ui/testing';
+import { testing, snapshot } from '@semcore/jest-preset-ui';
 import Badge from '../src';
+
+const { cleanup } = testing;
 
 describe('Badge', () => {
   afterEach(cleanup);

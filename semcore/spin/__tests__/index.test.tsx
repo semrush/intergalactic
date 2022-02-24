@@ -1,7 +1,8 @@
 import * as React from 'react';
-import { cleanup } from '@semcore/jest-preset-ui/testing';
-import snapshot from '@semcore/jest-preset-ui/snapshot';
+import { testing, snapshot } from '@semcore/jest-preset-ui';
 import Spin from '../src';
+
+const { cleanup } = testing;
 
 describe('Spin', () => {
   afterEach(cleanup);

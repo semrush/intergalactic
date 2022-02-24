@@ -1,9 +1,10 @@
 // TODO: add a11y
 
 import * as React from 'react';
-import { cleanup } from '@semcore/jest-preset-ui/testing';
-import snapshot from '@semcore/jest-preset-ui/snapshot';
+import { testing, snapshot } from '@semcore/jest-preset-ui';
 import WidgetEmpty, { NoData, Error, getIconPath } from '../src';
+
+const { cleanup } = testing;
 
 describe('WidgetEmpty', () => {
   afterEach(cleanup);
