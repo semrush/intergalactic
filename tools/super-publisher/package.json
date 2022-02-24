@@ -20,5 +20,8 @@
     "pretty-error": "^2.1.1",
     "semver": "^5.6.0",
     "simple-git": "^1.107.0"
+  },
+  "jest": {
+    "preset": "@semcore/jest-preset-ui"
   }
 }

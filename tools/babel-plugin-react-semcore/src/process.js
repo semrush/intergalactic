@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const { execFileSync } = require('child_process');
 const stringHash = require('string-hash');
-const postcss = require('@semcore/babel-plugin-styles/postcss');
+const { postcss } = require('@semcore/babel-plugin-styles');
 
 function Cache() {
   const PARSED_STYLES_MAP = new Map();

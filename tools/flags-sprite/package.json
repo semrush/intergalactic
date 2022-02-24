@@ -20,5 +20,8 @@
     "imagemin": "^7.0.1",
     "imagemin-pngquant": "^8.0.0",
     "spritesmith": "^3.3.1"
+  },
+  "jest": {
+    "preset": "@semcore/jest-preset-ui"
   }
 }

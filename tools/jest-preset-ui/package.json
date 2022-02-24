@@ -18,5 +18,8 @@
   "devDependencies": {
     "@testing-library/jest-dom": "^5.11.3",
     "@types/jest-axe": "^3.5.1"
+  },
+  "jest": {
+    "preset": "@semcore/jest-preset-ui"
   }
 }

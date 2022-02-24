@@ -3,6 +3,9 @@ const ValueParser = require('postcss-value-parser');
 const stringHash = require('string-hash');
 const path = require('path');
 
+const projectRoot = path.resolve(__dirname, '../../..');
+const makeStringHash = (str) => stringHash(str.replaceAll(projectRoot, '<rootDir>'));
+
 const PLACEHOLDER_REPLACER = '_gg_';
 
 function walkRule(nodes = [], parentNode, generateClassName, tokens) {
@@ -69,11 +72,9 @@ const DEFAULT_OPTS = {
     //   .toString(36)
     //   .substr(0, 5);
 
-    const projectRoot = path.resolve(__dirname, '../..');
-    const relativePath = path.relative(projectRoot, filename);
-    const hash = stringHash(css + relativePath)
+    const hash = makeStringHash(css + filename)
       .toString(36)
-      .substr(0, 5);
+      .substring(0, 5);
 
     if (value) {
       return `_${mod}_${value}_${hash}${PLACEHOLDER_REPLACER}`;
@@ -94,7 +95,7 @@ module.exports = (opts) => {
     postcssPlugin: 'postcss-shadow-styles',
     prepare(result) {
       const tokens = {};
-      const hash = stringHash(result.root.source.input.css).toString(36);
+      const hash = makeStringHash(result.root.source.input.css).toString(36);
       const generateScopedName = (classes) =>
         options.generateScopedName(classes, result.opts.from, result.root.source.input.css);
       return {

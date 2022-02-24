@@ -1,5 +1,7 @@
 import React from 'react';
-import { render, cleanup } from '@semcore/jest-preset-ui/testing';
+import { testing } from '@semcore/jest-preset-ui';
+const { render, cleanup } = testing;
+
 import FeaturePopover from '../src';
 
 describe('FeaturePopover.Trigger', () => {

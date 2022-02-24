@@ -1,6 +1,7 @@
 import React from 'react';
-import { axe, fireEvent, render, cleanup } from '@semcore/jest-preset-ui/testing';
-import snapshot from '@semcore/jest-preset-ui/snapshot';
+import { testing } from '@semcore/jest-preset-ui';
+const { axe, fireEvent, render, cleanup } = testing;
+import { snapshot } from '@semcore/jest-preset-ui';
 import Breadcrumbs from '../src';
 
 describe('Breadcrumbs', () => {
