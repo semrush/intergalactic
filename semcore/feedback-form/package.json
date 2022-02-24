@@ -29,5 +29,10 @@
   },
   "jest": {
     "preset": "@semcore/jest-preset-ui"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/semrush/intergalactic.git",
+    "directory": "semcore/feedback-form"
   }
 }
