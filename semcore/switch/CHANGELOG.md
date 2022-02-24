@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.3.4] - 2022-02-24
+
+### Added
+
+- Added repository field to package.json file.
+
 ## [3.3.3] - 2022-02-22
 
 ### Fixed
