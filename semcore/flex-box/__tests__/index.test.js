@@ -20,7 +20,7 @@ describe('Flex', () => {
   test('Should gaps', async () => {
     const component = (
       <div>
-        <Flex columnGap={20}>
+        <Flex columnGap={2} scaleIndent={10}>
           <Box inline style={styleBox} w={100} h={100}>
             column gap left
           </Box>
@@ -33,7 +33,7 @@ describe('Flex', () => {
         <br />
         <br />
 
-        <Flex rowGap={20} w={100} direction="column">
+        <Flex rowGap={5} w={100} direction="column">
           <Box inline style={styleBox} w={100} h={100}>
             row gap upper
           </Box>
@@ -46,7 +46,7 @@ describe('Flex', () => {
         <br />
         <br />
 
-        <Flex gap={20} w={225} h={225} flexWrap={true}>
+        <Flex gap={5} w={225} h={225} flexWrap={true}>
           <Box inline style={styleBox} w={100} h={100}>
             gap left-upper
           </Box>
