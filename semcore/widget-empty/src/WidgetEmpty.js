@@ -10,9 +10,7 @@ const version = preval`
 `;
 
 export const getIconPath = (name) => {
-  return `${
-    process.env.NODE_ENV === 'test' ? 'http:' : ''
-  }//static.semrush.com/ui-kit/widget-empty/${version}/${name}.svg`;
+  return `https://static.semrush.com/ui-kit/widget-empty/${version}/${name}.svg`;
 };
 
 class WidgetEmpty extends Component {
