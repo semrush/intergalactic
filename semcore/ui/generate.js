@@ -37,7 +37,6 @@ async function installComponents(packages) {
   });
 
   const node_modules = execSync('find ./node_modules/@semcore -name "node_modules" -type d', {
-    stdio: 'inherit',
     cwd: __dirname,
   }).toString();
   if (node_modules) throw new Error(`DUPLICATES FOUND ${node_modules}`);
@@ -202,7 +201,6 @@ async function generateChangelogs(startDate, endDate = new Date()) {
 async function main(pkg) {
   const info = JSON.parse(
     execSync(`npm_config_registry=${REGISTRY_URL} yarn info ${pkg.name} --json`, {
-      stdio: 'inherit',
       cwd: __dirname,
     }).toString(),
   );
