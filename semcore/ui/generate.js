@@ -36,9 +36,12 @@ async function installComponents(packages) {
     cwd: __dirname,
   });
 
-  const node_modules = execSync('find ./node_modules/@semcore -name "node_modules" -type d', {
-    cwd: __dirname,
-  }).toString();
+  const node_modules = execSync(
+    'mkdir -p ./node_modules/@semcore && find ./node_modules/@semcore -name "node_modules" -type d',
+    {
+      cwd: __dirname,
+    },
+  ).toString();
   if (node_modules) throw new Error(`DUPLICATES FOUND ${node_modules}`);
 }
 
