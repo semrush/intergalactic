@@ -1,7 +1,7 @@
 {
   "name": "@semcore/errors",
   "description": "SEMRush Errors Component",
-  "version": "2.5.2",
+  "version": "2.5.3",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
