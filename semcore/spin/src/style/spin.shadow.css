@@ -17,19 +17,15 @@ SSpin {
   animation-iteration-count: infinite;
   animation-timing-function: linear;
   animation-duration: 0.75s;
-  border-radius: 50%;
-  border-style: solid;
-  border-bottom-color: transparent;
-  border-left-color: transparent;
-  color: var(--theme);
+  fill: var(--theme);
 }
 
 SSpin[theme='dark'] {
-  color: rgba(0, 0, 0, 0.3);
+  fill: rgba(0, 0, 0, 0.3);
 }
 
 SSpin[theme='invert'] {
-  color: #fff;
+  fill: #fff;
 }
 
 SSpin[centered] {
@@ -39,41 +35,34 @@ SSpin[centered] {
 SSpin[size='xxs'] {
   width: 10px;
   height: 10px;
-  border-width: 1px;
 }
 
 SSpin[size='xs'] {
   width: 16px;
   height: 16px;
-  border-width: 2px;
 }
 
 SSpin[size='s'] {
   width: 20px;
   height: 20px;
-  border-width: 3px;
 }
 
 SSpin[size='m'] {
   width: 24px;
   height: 24px;
-  border-width: 4px;
 }
 
 SSpin[size='l'] {
   width: 32px;
   height: 32px;
-  border-width: 6px;
 }
 
 SSpin[size='xl'] {
   width: 48px;
   height: 48px;
-  border-width: 8px;
 }
 
 SSpin[size='xxl'] {
   width: 72px;
   height: 72px;
-  border-width: 10px;
 }
