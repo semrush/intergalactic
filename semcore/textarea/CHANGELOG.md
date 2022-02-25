@@ -2,6 +2,18 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.2.5] - 2022-02-24
+
+### Added
+
+- Added repository field to package.json file.
+
+## [3.2.4] - 2022-02-22
+
+### Fixed
+
+- Auto change rows now works in controlled mode.
+
 ## [3.2.3] - 2021-8-26
 
 ### Changed

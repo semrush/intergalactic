@@ -12,6 +12,12 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Added roundings
 
+## [3.2.2] - 2022-02-24
+
+### Added
+
+- Added repository field to package.json file.
+
 ## [3.2.1] - 2021-8-26
 
 ### Changed

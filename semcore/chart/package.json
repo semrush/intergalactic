@@ -1,7 +1,7 @@
 {
   "name": "@semcore/chart",
   "description": "SEMRush Chart Component",
-  "version": "4.3.7",
+  "version": "4.3.8",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -40,5 +40,10 @@
   },
   "jest": {
     "preset": "@semcore/jest-preset-ui"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/semrush/intergalactic.git",
+    "directory": "semcore/chart"
   }
 }

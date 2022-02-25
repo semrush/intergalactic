@@ -1,7 +1,7 @@
 {
   "name": "@semcore/utils",
   "description": "SEMRush Utils Component",
-  "version": "3.31.0",
+  "version": "3.31.1",
   "main": "lib/index.js",
   "sideEffects": false,
   "author": "Roman Lysov <r.lysov@semrush.com>",
@@ -27,5 +27,10 @@
   },
   "jest": {
     "preset": "@semcore/jest-preset-ui"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/semrush/intergalactic.git",
+    "directory": "semcore/utils"
   }
 }

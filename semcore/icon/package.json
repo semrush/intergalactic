@@ -1,7 +1,7 @@
 {
   "name": "@semcore/icon",
   "description": "SEMRush Icon Component",
-  "version": "2.19.2",
+  "version": "2.19.3",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -24,5 +24,10 @@
   },
   "jest": {
     "preset": "@semcore/jest-preset-ui"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/semrush/intergalactic.git",
+    "directory": "semcore/icon"
   }
 }

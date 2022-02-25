@@ -11,7 +11,7 @@ const checkDeps = require('@semcore/super-publisher/tasks/check-deps');
 const checkGit = require('@semcore/super-publisher/tasks/check-git');
 const checkRelease = require('@semcore/super-publisher/tasks/check-release');
 const npmPublish = require('@semcore/super-publisher/tasks/npm-publish');
-const mailer = require('./release/mailer');
+const mailer = require('@semcore/ui/mailer');
 
 module.exports = () => [
   checkGit,

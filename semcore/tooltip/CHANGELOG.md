@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.3.4] - 2022-02-24
+
+### Added
+
+- Added repository field to package.json file.
+
 ## [4.3.3] - 2022-01-25
 
 ### Changed
@@ -194,6 +200,8 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 - Обновлена версия `@semcore/popper`
 
 ## [3.0.1] - 2019-06-13
+
+### Fixed
 
 - Исправлены типы TS для `title`,так как `title` является стандартным свойством dom
 

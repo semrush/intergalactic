@@ -1,5 +1,5 @@
 import React from 'react';
-import WidgetEmpty, { getIconPath, iconNames } from '../WidgetEmpty';
+import WidgetEmpty, { getIconPath } from '../WidgetEmpty';
 import createComponent, { Component, Root } from '@semcore/core';
 import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
 import de from './translations/de.json';
@@ -27,7 +27,6 @@ class NoData extends Component {
   render() {
     const { Children, type, description, getI18nText } = this.asProps;
     const { title, description: descriptionText } = getI18nText();
-
     return (
       <Root render={WidgetEmpty} icon={getIconPath(type)}>
         <WidgetEmpty.Title>{title}</WidgetEmpty.Title>

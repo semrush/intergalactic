@@ -1,0 +1,4 @@
+{
+  "extends": "../../tsconfig.json",
+  "include": ["__tests__", "generate.js", "index.js", "mailer.js"]
+}

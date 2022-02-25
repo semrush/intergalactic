@@ -19,7 +19,7 @@ export const runPublisher = async (versionPatches: VersionPatch[]) => {
       })
       .join(',');
 
-    const args = `--no-check-git --release current --no-check-changelog --root ./${root} --package ${packageArg}`;
+    const args = `--no-check-git --release current --no-check-changelog --no-test --root ./${root} --package ${packageArg}`;
 
     // eslint-disable-next-line no-console
     console.log(`Running publisher with following args: ${args}`);

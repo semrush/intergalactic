@@ -3,20 +3,24 @@
 SSlider {
   position: relative;
   width: 140px;
-  background-color: #00000010;
+  background-color: rgba(0, 0, 0, 0.1);
   height: 4px;
   border-radius: 6px;
   box-sizing: border-box;
   cursor: pointer;
   outline: none;
+
   &:hover {
-    background-color: #00000020;
+    background-color: rgba(0, 0, 0, 0.2);
   }
-  &:focus {
-    & > *:nth-child(2) {
-      box-shadow: 0 0 0 5px #2b94e150;
-    }
+
+  &:active SKnob {
+    box-shadow: 0 0 0 5px color-mod(var(--light-blue) a(30%));
   }
+}
+
+SSlider[keyboardFocused] SKnob {
+  box-shadow: 0 0 0 5px color-mod(var(--light-blue) a(30%));
 }
 
 SSlider[disabled] {
@@ -37,44 +41,28 @@ SBar {
 }
 
 SBar[disabled] {
-  background-color: #2b94e150 !important;
-}
-SBar[color] {
-  background-color: var(--color);
-}
-SBar[interactive] {
-  &:hover {
-    background-color: var(--interactionColor);
-  }
+  background-color: #2b94e150;
 }
 
 SKnob {
   position: absolute;
-  top: -8px;
+  top: 50%;
   height: 20px;
-  border-radius: 20px;
+  width: 20px;
+  border-radius: 50%;
   box-sizing: border-box;
-  background-size: 12px;
   background-color: #fff;
   border: 5px solid var(--light-blue);
   cursor: pointer;
-  &:active {
-    box-shadow: 0 0 0 5px #2b94e150;
+  transform: translate(-50%, -50%);
+
+  &:hover {
+    border-color: var(--denim-blue);
   }
 }
 
 SKnob[disabled] {
-  border: 5px solid #2b94e150 !important;
-}
-
-SKnob[color] {
-  border-color: var(--color);
-}
-
-SKnob[interactive] {
-  &:hover {
-    border-color: var(--interactionColor);
-  }
+  border: 5px solid #2b94e150;
 }
 
 SInput {

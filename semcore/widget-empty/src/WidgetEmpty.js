@@ -9,8 +9,9 @@ const version = preval`
   module.exports = require('../package.json').version
 `;
 
-export const getIconPath = (name) =>
-  `//static.semrush.com/ui-kit/widget-empty/${version}/${name}.svg`;
+export const getIconPath = (name) => {
+  return `https://static.semrush.com/ui-kit/widget-empty/${version}/${name}.svg`;
+};
 
 class WidgetEmpty extends Component {
   static displayName = 'WidgetEmpty';

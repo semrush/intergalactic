@@ -24,5 +24,4 @@ class RootSpin extends Component {
   }
 }
 
-const Spin = createComponent(RootSpin);
-export default Spin;
+export default createComponent(RootSpin);

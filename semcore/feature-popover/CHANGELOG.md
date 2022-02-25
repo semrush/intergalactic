@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.5.1] - 2022-02-24
+
+### Added
+
+- Added repository field to package.json file.
+
 ## [2.5.0] - 2022-01-18
 
 ### Changed
@@ -80,6 +86,8 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 - Replace property `disabled` to `disableEnforceFocus` for disabled focus trap in `Popper.Popper`
 
 ## [2.0.4] - 2020-09-08
+
+### Fixed
 
 - Fixed possible styles collisions between components with different versions, but same styles
 

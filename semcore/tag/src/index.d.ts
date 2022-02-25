@@ -46,10 +46,6 @@ export interface ITagCloseProps extends IIconProps {
    * @default muted
    */
   theme?: TagTheme;
-  /** Tag size
-   * @default m
-   */
-  size?: TagSize;
 }
 
 export interface ITagContext extends ITagProps {
