@@ -18,6 +18,6 @@ const versionPatches = await makeVersionPatches(packages);
 
 if (versionPatches.length > 0) {
   await updateVersions(versionPatches);
-  await runTests();
+  // await runTests();
   await runPublisher(versionPatches);
 }
