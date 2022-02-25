@@ -68,7 +68,7 @@ module.exports = (env, argv) => {
       modules: [path.join(__dirname, 'client'), 'node_modules', '../node_modules'],
       alias: {
         '@docs': path.join(__dirname, './docs'),
-        release: path.join(__dirname, '../release'),
+        release: path.join(__dirname, '../semcore/ui'),
         react: path.join(__dirname, './node_modules/react'),
         'react-dom': path.join(__dirname, './node_modules/react-dom'),
       },

@@ -1,0 +1,14 @@
+name: slack-pr-notify
+
+on:
+  pull_request:
+    types: [assigned, opened, reopened]
+
+jobs:
+  slack-pr-notify:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          curl -X POST \
+          -H 'Content-type: application/json' \
+          --data '{"text":"${{ github.event.pull_request.user.login }} opened merge request [${{ github.event.pull_request.title }}] on ${{ github.event.pull_request.html_url }}"}' ${{ secrets.SLACK_WEBHOOK_URL_DEV }}

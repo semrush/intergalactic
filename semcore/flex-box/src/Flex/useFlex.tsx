@@ -7,11 +7,15 @@ import {
   JustifyContentProperty,
   Properties,
   FlexDirectionProperty,
+  GapProperty,
+  RowGapProperty,
+  ColumnGapProperty,
 } from 'csstype';
 import { sstyled } from '@semcore/core';
 import useBox, { IBoxProps, removeUndefinedKeys } from '../Box/useBox';
 
 import style from '../style/use-flex.shadow.css';
+import { getAutoOrScaleIndent } from '../utils';
 
 export interface IFlexProps extends IBoxProps {
   /**
@@ -42,6 +46,24 @@ export interface IFlexProps extends IBoxProps {
    * CSS `justify-content` property
    */
   justifyContent?: JustifyContentProperty;
+  /**
+   * CSS `gap` property
+   */
+  gap?: GapProperty<number>;
+  /**
+   * CSS `gap` property
+   */
+  rowGap?: RowGapProperty<number>;
+  /**
+   * CSS `gap` property
+   */
+  columnGap?: ColumnGapProperty<number>;
+
+  /**
+   * Multiplier of all indents. For example, if you specify a margin-top equal to 3 (mt = {3}), it will be 12px (3 * 4 = 12).
+   * @default 4
+   */
+  scaleIndent?: number;
 }
 
 function calculateFlexStyles(props) {
@@ -50,12 +72,16 @@ function calculateFlexStyles(props) {
     column: 'column-reverse',
   };
 
+  const scaleIndent = props.scaleIndent ?? 4;
+
   return removeUndefinedKeys({
     alignItems: props.alignItems,
     alignContent: props.alignContent,
     justifyContent: props.justifyContent,
     flexWrap: props.flexWrap ? `wrap${props.reverse ? '-reverse' : ''}` : undefined,
     flexDirection: (props.reverse && DirectionReverse[props.direction]) || props.direction,
+    rowGap: getAutoOrScaleIndent(props.rowGap || props.gap, scaleIndent),
+    columnGap: getAutoOrScaleIndent(props.columnGap || props.gap, scaleIndent),
   });
 }
 
@@ -72,11 +98,34 @@ export default function useFlex<T extends IFlexProps>(
     },
     ref,
   );
-  const { inline, flexWrap, direction, reverse, alignItems, alignContent, justifyContent } = props;
+  const {
+    inline,
+    flexWrap,
+    direction,
+    reverse,
+    alignItems,
+    alignContent,
+    justifyContent,
+    gap,
+    rowGap,
+    columnGap,
+    scaleIndent,
+  } = props;
 
   const flexStyles: Properties = useMemo(() => {
     return calculateFlexStyles(props);
-  }, [flexWrap, direction, reverse, alignItems, alignContent, justifyContent]);
+  }, [
+    flexWrap,
+    direction,
+    reverse,
+    alignItems,
+    alignContent,
+    justifyContent,
+    gap,
+    rowGap,
+    columnGap,
+    scaleIndent,
+  ]);
 
   const styles = sstyled(style);
 

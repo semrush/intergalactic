@@ -1,7 +1,7 @@
 {
   "name": "@semcore/typography",
   "description": "SEMRush Typography Component",
-  "version": "3.3.0",
+  "version": "3.3.2",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -24,5 +24,10 @@
   },
   "jest": {
     "preset": "@semcore/jest-preset-ui"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/semrush/intergalactic.git",
+    "directory": "semcore/typography"
   }
 }

@@ -1,19 +1,9 @@
-import React, { ComponentProps, HTMLAttributes } from 'react';
-import createComponent, {
-  Component,
-  IFunctionProps,
-  Merge,
-  PropGetterFn,
-  PropsAndRef,
-  sstyled,
-  Root,
-} from '@semcore/core';
-import { Box, IBoxProps } from '@semcore/flex-box';
+import React from 'react';
+import createComponent, { Component, sstyled, Root } from '@semcore/core';
+import { Box } from '@semcore/flex-box';
 import addonTextChildren from '@semcore/utils/lib/addonTextChildren';
 import a11yEnhance from '@semcore/utils/lib/enhances/a11yEnhance';
-import keyboardFocusEnhance, {
-  IKeyboardFocusProps,
-} from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
+import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 
 import style from './style/tab-panel.shadow.css';
 

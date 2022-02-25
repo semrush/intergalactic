@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "build": "lerna run build --scope @semcore/icon && lerna run build --scope @semcore/* --ignore @semcore/icon",
+    "build": "lerna run build --scope @semcore/icon && lerna run build --scope @semcore/* --ignore @semcore/icon,@semcore/ui",
     "typecheck": "lerna exec --scope @semcore/* -- tsc --noEmit",
     "prebuild": "rm -rf semcore/**/lib && find semcore/icon/. -type d -maxdepth 1 | egrep -v \"__tests__|src|svg|svg-new\" | xargs rm -rf || true",
     "test": "jest --no-cache",
@@ -27,7 +27,7 @@
   },
   "devDependencies": {
     "@mailchimp/mailchimp_marketing": "^3.0.30",
-    "@semcore/theme-redesign": "^1.5.2",
+    "@semcore/theme-redesign": "^1.5.3",
     "@types/jest": "^26.0.23",
     "@types/jest-image-snapshot": "^2.11.1",
     "@types/react": "^17.0.0",

@@ -2,6 +2,18 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.1.2] - 2022-02-24
+
+### Added
+
+- Added repository field to package.json file.
+
+## [3.1.1] - 2022-02-22
+
+### Fixed
+
+- Added export type for Bubble, ScatterPlot, Venn charts
+
 ## [3.1.0] - 2022-01-21
 
 ### Added

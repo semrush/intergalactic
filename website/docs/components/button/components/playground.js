@@ -84,10 +84,10 @@ const Preview = (preview) => {
     label: 'Text',
   });
   const beforeIconMap = {
-    xl: <CheckM />,
-    l: <CheckL />,
-    m: <CheckL />,
-    s: <CheckL />,
+    xl: <CheckL />,
+    l: <CheckM />,
+    m: <CheckM />,
+    s: <CheckM />,
   };
   const afterIconMap = {
     xl: <ArrowRightL />,

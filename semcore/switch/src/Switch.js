@@ -66,13 +66,16 @@ class Value extends Component {
   static hoistProps = ['disabled'];
   static enhance = [keyboardFocusEnhance(), neighborLocationEnhance()];
 
+  timer = null;
+
   uncontrolledProps() {
     return {
       checked: [
         (e) => e.target.checked,
         () => {
           // TODO: bad crutch for updating the DOM node
-          setTimeout(() => {
+          clearTimeout(this.timer);
+          this.timer = setTimeout(() => {
             this.asProps.$rootForceUpdate();
           }, 0);
         },
@@ -92,8 +95,12 @@ class Value extends Component {
     }
   }
 
+  componentWillUnmount() {
+    clearTimeout(this.timer);
+  }
+
   handleKeyDown = (e) => {
-    if (e.keyCode === 13) this.handlers.checked(!this.asProps.checked);
+    if (e.keyCode === 13) this.handlers.checked(!this.asProps.checked, e);
   };
 
   render() {
@@ -143,6 +150,7 @@ function Addon(props) {
   const { styles } = props;
   return sstyled(styles)(<SAddon render={Box} tag="span" />);
 }
+
 Addon.enhance = [neighborLocationEnhance()];
 
 export { inputProps };

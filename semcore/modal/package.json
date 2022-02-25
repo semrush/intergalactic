@@ -1,7 +1,7 @@
 {
   "name": "@semcore/modal",
   "description": "SEMRush Modal Component",
-  "version": "2.4.1",
+  "version": "2.4.2",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -27,5 +27,10 @@
   },
   "jest": {
     "preset": "@semcore/jest-preset-ui"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/semrush/intergalactic.git",
+    "directory": "semcore/modal"
   }
 }

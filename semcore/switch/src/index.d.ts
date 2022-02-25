@@ -3,6 +3,7 @@ import { PropGetterFn, CProps, ReturnEl } from '@semcore/core';
 import { IBoxProps } from '@semcore/flex-box';
 import { INeighborItemProps, INeighborLocationProps } from '@semcore/neighbor-location';
 import { IKeyboardFocusProps } from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
+import { inputProps } from '@semcore/utils/lib/inputProps';
 
 export type SwitchTheme = 'info' | 'success' | string;
 
@@ -25,6 +26,8 @@ export interface ISwitchValueProps extends IBoxProps, INeighborItemProps, IKeybo
   /** Initial state for uncontrolled mode
    * @default false */
   defaultChecked?: boolean;
+  /** Disabled state  */
+  disabled?: boolean;
   /** The list of properties that can be placed in the hidden input */
   includeInputProps?: string[];
   /** Switch theme */
@@ -43,4 +46,5 @@ declare const Switch: (<T>(props: CProps<ISwitchProps & T, ISwitchContext>) => R
   Addon: <T>(props: ISwitchAddonProps & T) => ReturnEl;
 };
 
+export { inputProps };
 export default Switch;
