@@ -1,3 +1,297 @@
+## [11.0.0] - 2022-02-25
+
+### @semcore/accordion
+
+- **Added** Added repository field to package.json file.
+
+### @semcore/animation
+
+- **Added** Added repository field to package.json file.
+
+### @semcore/badge
+
+- **Added** Added repository field to package.json file.
+
+### @semcore/base-trigger
+
+- **Added** Added repository field to package.json file.
+- **Fixed** Fixed LinkTrigger hovered text color.
+
+### @semcore/breadcrumbs
+
+- **Added** Added repository field to package.json file.
+
+### @semcore/breakpoints
+
+- **Added** Added repository field to package.json file.
+
+### @semcore/button
+
+- **Added** Added repository field to package.json file.
+
+### @semcore/card
+
+- **BREAK** Card was divided into Header and Body
+- **Added** Added repository field to package.json file.
+- **Added** Background was added
+
+### @semcore/carousel
+
+- **Added** Added repository field to package.json file.
+
+### @semcore/chart
+
+- **Added** Added repository field to package.json file.
+
+### @semcore/checkbox
+
+- **Added** Added repository field to package.json file.
+
+### @semcore/core
+
+- **Added** Added repository field to package.json file.
+
+### @semcore/counter
+
+- **Added** Added repository field to package.json file.
+
+### @semcore/d3-chart
+
+- **Added** Added repository field to package.json file.
+- **Fixed** Fixed animation display when resizing.
+
+### @semcore/data-table
+
+- **Added** Added repository field to package.json file.
+
+### @semcore/date-picker
+
+- **Added** Added repository field to package.json file.
+
+### @semcore/divider
+
+- **Added** Added repository field to package.json file.
+- **Fixed** Fixed explicit default theme
+
+### @semcore/dot
+
+- **Added** Added repository field to package.json file.
+
+### @semcore/drag-and-drop
+
+- **Added** Added repository field to package.json file.
+
+### @semcore/dropdown
+
+- **Added** Added repository field to package.json file.
+
+### @semcore/dropdown-menu
+
+- **Added** Added repository field to package.json file.
+
+### @semcore/email
+
+- **Added** Added repository field to package.json file.
+
+### @semcore/errors
+
+- **Added** Added repository field to package.json file.
+
+### @semcore/feature-popover
+
+- **Added** Added repository field to package.json file.
+
+### @semcore/feedback-form
+
+- **Added** Added repository field to package.json file.
+
+### @semcore/flex-box
+
+- **Added** Added gap, rowGap and columnGap css properties support for Flex component.
+
+### @semcore/format-text
+
+- **Added** Added repository field to package.json file.
+
+### @semcore/fullscreen-modal
+
+- **Added** Added repository field to package.json file.
+
+### @semcore/grid
+
+- **Added** Added repository field to package.json file.
+
+### @semcore/icon
+
+- **Added** Added repository field to package.json file.
+- **Fixed** Fixed sizes for a few icons.
+- **Fixed** Fixed color setting for LightningFilled, MailOpenFilled.
+
+### @semcore/input
+
+- **Added** Added repository field to package.json file.
+
+### @semcore/input-mask
+
+- **Added** Added repository field to package.json file.
+
+### @semcore/input-number
+
+- **Added** Added repository field to package.json file.
+
+### @semcore/input-tags
+
+- **Added** Added repository field to package.json file.
+
+### @semcore/link
+
+- **Added** Added repository field to package.json file.
+
+### @semcore/modal
+
+- **Added** Added repository field to package.json file.
+
+### @semcore/neighbor-location
+
+- **Added** Added repository field to package.json file.
+
+### @semcore/notice
+
+- **Added** Added repository field to package.json file.
+
+### @semcore/notice-bubble
+
+- **Added** Added repository field to package.json file.
+
+### @semcore/outside-click
+
+- **Added** Added repository field to package.json file.
+
+### @semcore/pagination
+
+- **Added** Added repository field to package.json file.
+
+### @semcore/pills
+
+- **Added** Added repository field to package.json file.
+
+### @semcore/popper
+
+- **Added** Added repository field to package.json file.
+
+### @semcore/portal
+
+- **Added** Added repository field to package.json file.
+
+### @semcore/product-head
+
+- **Added** Added repository field to package.json file.
+
+### @semcore/progress-bar
+
+- **Added** Added repository field to package.json file.
+
+### @semcore/project-create
+
+- **Added** Added repository field to package.json file.
+
+### @semcore/radio
+
+- **Added** Added repository field to package.json file.
+
+### @semcore/scroll-area
+
+- **Added** Added repository field to package.json file.
+
+### @semcore/select
+
+- **Added** Added repository field to package.json file.
+
+### @semcore/side-panel
+
+- **Added** Added repository field to package.json file.
+
+### @semcore/skeleton
+
+- **Added** Added repository field to package.json file.
+- **Fixed** Added export type for Bubble, ScatterPlot, Venn charts
+
+### @semcore/slider
+
+- **BREAK** Remove props background/color/interaction, use theme instead.
+- **BREAK** Refactoring component to handle extreme values.
+- **Added** Added repository field to package.json file.
+
+### @semcore/spin
+
+- **Added** Added repository field to package.json file.
+
+### @semcore/spin-container
+
+- **BREAK** Add new children component SpinContainer.Content when using advanced mode along with SpinContainer.Overlay.
+- **Added** Added repository field to package.json file.
+
+### @semcore/sticky
+
+- **Added** Added repository field to package.json file.
+
+### @semcore/switch
+
+- **Added** Added repository field to package.json file.
+- **Fixed** Remove react warning when not clearing timer.
+
+### @semcore/tab-line
+
+- **Added** Added repository field to package.json file.
+- **Fixed** Add missed ts type defaultValue.
+
+### @semcore/tab-panel
+
+- **Added** Added repository field to package.json file.
+- **Fixed** Add missed ts type defaultValue.
+
+### @semcore/table
+
+- **Added** Added repository field to package.json file.
+
+### @semcore/tag
+
+- **Added** Added repository field to package.json file.
+- **Fixed** Fixed colors for primary-warning.
+
+### @semcore/textarea
+
+- **Added** Added repository field to package.json file.
+- **Fixed** Auto change rows now works in controlled mode.
+
+### @semcore/time-picker
+
+- **Added** Added repository field to package.json file.
+
+### @semcore/tooltip
+
+- **Added** Added repository field to package.json file.
+
+### @semcore/typography
+
+- **Added** Added repository field to package.json file.
+- **Fixed** Remove css specificity for props lineHeight/fontSize for Text.
+
+### @semcore/ui
+
+- **@semcore/errors** Fixed Static files were missing in release 10.2.0
+- **@semcore/icon** Added icon Hubspot.
+- **@semcore/icon** Changed svg for SortAsc, SortDesc.
+
+### @semcore/utils
+
+- **Added** Added repository field to package.json file.
+
+### @semcore/widget-empty
+
+- **Added** Added repository field to package.json file.
+- **Changed** Remove don't use dependency @semcore/link, @semcore/button.
+
 ## [10.2.1] - 2022-02-10
 
 ### @semcore/errors
