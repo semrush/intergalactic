@@ -6,7 +6,6 @@ const glob = require('glob');
 const changeLogsByDate = require('@semcore/changelogs-by-date');
 const pkg = require('./package');
 const components = require('./components');
-const { dirname } = require('path');
 
 const REGISTRY_URL = 'https://registry.npmjs.org/';
 const CHANGELOG_ORDER = ['break', 'added', 'fixed', 'changed'];
@@ -26,6 +25,7 @@ async function removeDirectory() {
   try {
     execSync(`rm -R ${toRemove.join(' ')}`, {
       stdio: 'inherit',
+      cwd: __dirname,
     });
   } catch (e) {}
 }
@@ -33,11 +33,13 @@ async function removeDirectory() {
 async function installComponents(packages) {
   execSync(`npm_config_registry=${REGISTRY_URL} yarn add ${packages.join(' ')} -E`, {
     stdio: 'inherit',
+    cwd: __dirname,
   });
 
-  const node_modules = execSync(
-    'find ./node_modules/@semcore -name "node_modules" -type d',
-  ).toString();
+  const node_modules = execSync('find ./node_modules/@semcore -name "node_modules" -type d', {
+    stdio: 'inherit',
+    cwd: __dirname,
+  }).toString();
   if (node_modules) throw new Error(`DUPLICATES FOUND ${node_modules}`);
 }
 
@@ -199,13 +201,19 @@ async function generateChangelogs(startDate, endDate = new Date()) {
 
 async function main(pkg) {
   const info = JSON.parse(
-    execSync(`npm_config_registry=${REGISTRY_URL} yarn info ${pkg.name} --json`).toString(),
+    execSync(`npm_config_registry=${REGISTRY_URL} yarn info ${pkg.name} --json`, {
+      stdio: 'inherit',
+      cwd: __dirname,
+    }).toString(),
   );
   await removeDirectory();
   await installComponents(components.packages);
   await generateFiles(components.packages);
   await generateChangelogs(info.data.time[info.data.version]);
-  execSync('yarn test');
+  execSync('yarn test', {
+    stdio: 'inherit',
+    cwd: __dirname,
+  });
 }
 
 main(pkg).catch((error) => {
