@@ -6,7 +6,7 @@ const mail = require('../../website/client/components/messageTemplate');
 require('dotenv').config();
 
 module.exports = task('Send mail', async (opt) => {
-  if (!opt.package !== '@semcore/ui') {
+  if (!opt.package !== 'ui') {
     opt.skip();
     return opt;
   }

@@ -7,7 +7,7 @@ module.exports = task('RELEASE check', async (opt) => {
     opt.skip();
     return opt;
   }
-  if (opt.package !== '@semcore/ui') {
+  if (opt.package !== 'ui') {
     opt.log('not a @semcore/ui release');
     opt.skip();
     return opt;
