@@ -1,11 +1,13 @@
-const path = require('path');
-const task = require('@semcore/super-publisher/task');
-const { getChangelogByDate } = require('@semcore/changelogs-by-date/getChangeLogByDate');
-const mailchimp = require('@mailchimp/mailchimp_marketing');
-const mail = require('../../website/client/components/messageTemplate');
-require('dotenv').config();
+import path from 'path';
+import { createTask } from '../task';
+import { getChangelogByDate } from '@semcore/changelogs-by-date/getChangeLogByDate';
+import mailchimp from '@mailchimp/mailchimp_marketing';
+import mail from '@semcore/mailer/src/generators/release/template';
+import dotenv from 'dotenv';
 
-module.exports = task('Send mail', async (opt) => {
+dotenv.config();
+
+export const mailerTask = createTask('Send mail', async (opt) => {
   if (!(opt.package !== 'ui')) {
     opt.skip();
     return opt;
