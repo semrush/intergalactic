@@ -2,7 +2,10 @@
 
 Package that reexports all components from a single point
 
-- Add new components to components.json
-- run `yarn generate`
+CLI commands should be run in repo root dir.
+
+- Run `yarn build`
+- Add new components to `./semcore/ui/components.json`
+- `yarn workspace @semcore/ui generate`
 - Check out CHANGELOG.md and fix if needed
-- run `yarn pub --package ui --no-check-changelog`
+- Run `yarn pub --package ui --no-check-changelog`
