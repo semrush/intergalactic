@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.5.3] - 2022-02-25
+
+### Fixed
+
+- Improved keyboard focus styles.
+
 ## [2.5.2] - 2022-02-24
 
 ### Added
