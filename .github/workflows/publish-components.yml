@@ -60,4 +60,4 @@ jobs:
       - name: Test
         run: yarn test
       - name: Delivery
-        run: yarn continuous-delivery --dry-run
+        run: yarn continuous-delivery
