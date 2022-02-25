@@ -10,7 +10,7 @@ const version = preval`
 `;
 
 export const getIconPath = (name) => {
-  return `https://static.semrush.com/ui-kit/widget-empty/${version}/${name}.svg`;
+  return `https://static.semrush.com/ui-kit/widget-empty/2.6.3/${name}.svg`;
 };
 
 class WidgetEmpty extends Component {
