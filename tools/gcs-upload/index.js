@@ -50,10 +50,10 @@ function upload(files) {
           cacheControl: 'public, max-age=31536000',
         },
       })
-      .then(
-        () => console.log(`${fileName} uploaded to ${destination}`),
-        (err) => console.error(`Failed to upload ${fileName}.\n`, err),
-      );
+      .then(() => console.log(`${fileName} uploaded to ${destination}`))
+      .catch((err) => {
+        throw err;
+      });
   });
 }
 
