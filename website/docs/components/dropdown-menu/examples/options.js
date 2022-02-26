@@ -2,7 +2,7 @@ import React from 'react';
 import DropdownMenu from '@semcore/dropdown-menu';
 import { ButtonTrigger } from '@semcore/base-trigger';
 
-export default function() {
+export default function () {
   return (
     <DropdownMenu>
       <DropdownMenu.Trigger tag={ButtonTrigger}>

@@ -1,7 +1,7 @@
 {
   "name": "@semcore/breakpoints",
   "description": "SEMRush Breakpoints Component",
-  "version": "1.1.2",
+  "version": "1.1.3",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -19,6 +19,11 @@
     "react": "16.8 - 17"
   },
   "jest": {
-    "preset": "jest-preset-ui"
+    "preset": "@semcore/jest-preset-ui"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/semrush/intergalactic.git",
+    "directory": "semcore/breakpoints"
   }
 }

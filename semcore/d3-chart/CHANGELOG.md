@@ -2,11 +2,23 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [1.6.5] - 2022-02-24
+
+### Added
+
+- Added repository field to package.json file.
+
+## [1.6.4] - 2022-02-10
+
+### Fixed
+
+- Fixed animation display when resizing.
+
 ## [1.6.3] - 2022-01-26
 
 ### Changed
 
-- Revert function `findComponent` for check children in `Tooltip`, because it's valid for children `() => ({})`.  
+- Revert function `findComponent` for check children in `Tooltip`, because it's valid for children `() => ({})`.
 
 ## [1.6.2] - 2022-01-25
 

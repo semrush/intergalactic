@@ -2,12 +2,12 @@ import './index.css';
 
 let christmas = {
   delay: null,
-  delete: function() {
-    document.body.querySelectorAll('.christmas-lights').forEach(function(ul) {
+  delete: function () {
+    document.body.querySelectorAll('.christmas-lights').forEach(function (ul) {
       ul.remove();
     });
   },
-  create: function() {
+  create: function () {
     let v = window.innerHeight / 60 + 2,
       h = window.innerWidth / 60 + 2,
       data = {
@@ -29,13 +29,13 @@ let christmas = {
   },
 };
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
   christmas.create();
 });
 
-window.addEventListener('resize', function(e) {
+window.addEventListener('resize', function (e) {
   clearTimeout(christmas.delay);
-  christmas.delay = setTimeout(function() {
+  christmas.delay = setTimeout(function () {
     christmas.delete();
     christmas.create();
   }, 100);

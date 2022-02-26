@@ -1,7 +1,9 @@
 import React from 'react';
-import { cleanup, render } from 'jest-preset-ui/testing';
-import { shouldSupportClassName, shouldSupportRef } from 'jest-preset-ui/shared';
-import snapshot from 'jest-preset-ui/snapshot';
+import { testing } from '@semcore/jest-preset-ui';
+const { cleanup, render } = testing;
+import { shared as testsShared } from '@semcore/jest-preset-ui';
+const { shouldSupportClassName, shouldSupportRef } = testsShared;
+import { snapshot } from '@semcore/jest-preset-ui';
 import { Box, Flex } from '../src';
 
 const styleBox = {
@@ -14,6 +16,54 @@ describe('Flex', () => {
 
   shouldSupportClassName(Flex);
   shouldSupportRef(Flex);
+
+  test('Should gaps', async () => {
+    const component = (
+      <div>
+        <Flex columnGap={2} scaleIndent={10}>
+          <Box inline style={styleBox} w={100} h={100}>
+            column gap left
+          </Box>
+          <Box inline style={styleBox} w={100} h={100}>
+            column gap right
+          </Box>
+        </Flex>
+
+        <br />
+        <br />
+        <br />
+
+        <Flex rowGap={5} w={100} direction="column">
+          <Box inline style={styleBox} w={100} h={100}>
+            row gap upper
+          </Box>
+          <Box inline style={styleBox} w={100} h={100}>
+            row gap lower
+          </Box>
+        </Flex>
+
+        <br />
+        <br />
+        <br />
+
+        <Flex gap={5} w={225} h={225} flexWrap={true}>
+          <Box inline style={styleBox} w={100} h={100}>
+            gap left-upper
+          </Box>
+          <Box inline style={styleBox} w={100} h={100}>
+            gap right-upper
+          </Box>
+          <Box inline style={styleBox} w={100} h={100}>
+            gap left-lower
+          </Box>
+          <Box inline style={styleBox} w={100} h={100}>
+            gap right-lower
+          </Box>
+        </Flex>
+      </div>
+    );
+    expect(await snapshot(component)).toMatchImageSnapshot();
+  });
 });
 
 describe('Box', () => {
@@ -111,7 +161,7 @@ describe('Box', () => {
   });
 
   test("Should support Box 'tag' prop component", () => {
-    const Span = function(props) {
+    const Span = function (props) {
       return <span {...props} />;
     };
     const { getByTestId } = render(

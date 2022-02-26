@@ -55,8 +55,9 @@ declare const BarChartSkeleton: <T>(props: BarChartSkeletonProps & T) => ReturnE
 declare const HistogramChartSkeleton: <T>(props: HistogramChartSkeletonProps & T) => ReturnEl;
 declare const LineChartSkeleton: <T>(props: LineChartSkeletonProps & T) => ReturnEl;
 declare const PieChartSkeleton: typeof Skeleton;
-declare const ScatterPlotChartSkeleton: typeof Skeleton;
+declare const VennChartSkeleton: typeof Skeleton;
 declare const BubbleChartSkeleton: typeof Skeleton;
+declare const ScatterPlotChartSkeleton: typeof Skeleton;
 
 export default Skeleton;
 export {
@@ -66,4 +67,6 @@ export {
   LineChartSkeleton,
   PieChartSkeleton,
   VennChartSkeleton,
+  BubbleChartSkeleton,
+  ScatterPlotChartSkeleton,
 };

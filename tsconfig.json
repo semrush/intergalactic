@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "module": "es2015",
+    "module": "esnext",
     "target": "esnext",
     "lib": ["dom", "es6", "es7"],
     "jsx": "react",
@@ -19,5 +19,16 @@
     "typeRoots": ["node_modules/@types", "tools/@types"],
     "plugins": [{ "name": "typescript-workspace-plugin" }]
   },
-  "exclude": ["node_modules", "website", "tools", "**/__tests__/**"]
+  "paths": {
+    "@semcore/*": ["semcore/*"],
+    "@tools/*": ["tools/*"]
+  },
+  "project": ["./semcore/*/tsconfig.json", "./tools/*/tsconfig.json"],
+  "include": ["semcore", "tools"],
+  "exclude": [
+    "node_modules",
+    "website",
+    "**/__tests__/**",
+    "tools/generator-component/template-react"
+  ]
 }

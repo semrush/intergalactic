@@ -1,7 +1,7 @@
 const axios = require('axios');
 const dayjs = require('dayjs');
 const en = require('dayjs/locale/en');
-const changelogByDate = require('changelogs-by-date');
+const changelogByDate = require('@semcore/changelogs-by-date');
 const messageTemplate = require('./messageTemplate');
 
 dayjs.locale('en', en);

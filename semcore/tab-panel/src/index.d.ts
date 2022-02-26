@@ -10,6 +10,10 @@ export interface ITabPanelProps<T extends TabPanelValue = TabPanelValue> extends
   onChange?: (value: T, e?: React.SyntheticEvent<HTMLButtonElement>) => void;
   /** Value of the selected tab */
   value?: T;
+  /** Default value of the selected tab
+   * @default null
+   * */
+  defaultValue?: T;
 }
 
 export interface ITabPanelItemProps extends IBoxProps, IKeyboardFocusProps {
@@ -17,6 +21,8 @@ export interface ITabPanelItemProps extends IBoxProps, IKeyboardFocusProps {
   selected?: boolean;
   /** Disabled state */
   disabled?: boolean;
+  /** Tab value */
+  value?: TabPanelValue;
   /** Left addon tag  */
   addonLeft?: React.ElementType;
   /** Right addon tag  */

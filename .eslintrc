@@ -16,7 +16,7 @@
     },
     "project": "./tsconfig.json"
   },
-  "plugins": ["@typescript-eslint", "react", "ssr-friendly"],
+  "plugins": ["@typescript-eslint", "react", "ssr-friendly", "eslint-plugin-no-cyrillic-string"],
   "settings": {
     "import/parsers": {
       "@typescript-eslint/parser": [".ts", ".tsx"]
@@ -60,6 +60,15 @@
     "import/no-extraneous-dependencies": [
       "error",
       { "devDependencies": true, "optionalDependencies": false, "peerDependencies": true }
-    ]
-  }
+    ],
+    "no-cyrillic-string/no-cyrillic-string": "error"
+  },
+  "overrides": [
+    {
+      "files": "tools/playground/examples/**/*",
+      "rules": {
+        "import/no-extraneous-dependencies": "off"
+      }
+    }
+  ]
 }

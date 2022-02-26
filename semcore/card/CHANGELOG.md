@@ -2,6 +2,40 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.0.1] - 2022-02-24
+
+### Added
+
+- Added repository field to package.json file.
+
+## [3.0.0] - 2022-02-18
+
+### BREAK
+
+- `Card` was divided into Header and Body
+
+### Added
+
+- Background was added
+
+## [2.5.0] - 2021-02-18
+
+### Fixed
+
+- Reverted `Card` to a previous state with styles in the card itself and without `Header` and `Body`
+
+## [2.4.1] - 2021-02-14
+
+### Fixed
+
+- Up version of `Utils`
+
+## [2.4.0] - 2022-02-03
+
+### Changed
+
+- `Card` has been split into Header and Body and a background has been added
+
 ## [2.3.0] - 2022-01-18
 
 ### Changed

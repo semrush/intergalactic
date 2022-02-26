@@ -37,9 +37,7 @@ class CalendarWeekDaysRoot extends Component {
   getDaysByWeek() {
     const { locale } = this.asProps;
 
-    let date = dayjs()
-      .locale(locale, getDayJSLocaleParams(locale))
-      .startOf('week');
+    let date = dayjs().locale(locale, getDayJSLocaleParams(locale)).startOf('week');
     return range(7, () => {
       const weekday = new Intl.DateTimeFormat(locale, { weekday: 'short' }).format(date.valueOf());
       date = date.add(1, 'day');

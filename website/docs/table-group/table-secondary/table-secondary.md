@@ -14,10 +14,11 @@ Paddings in a secondary table cell, whether it is a header or a cell in a row, a
 
 @## Styles
 
-| Description | Appearance                                            | Styles                                                              |
-| ----------- | ----------------------------------------------------- | ------------------------------------------------------------------- |
-| Heading     | ![secondary table](static/secondary-table-sorted.png) | `background-color: transparent; border-bottom: 1px solid $stone;`   |
-| Default row | ![secondary table](static/secondary-table.png)        | `background-color: transparent; border-bottom: 1px solid $mercury;` |
+| Description    | Appearance                                            | Styles                                                       |
+| -------------- | ----------------------------------------------------- | ------------------------------------------------------------ |
+| Heading        | ![secondary table](static/secondary-table-sorted.png) | `background-color: #fff; border-bottom: 1px                  |
+| solid $stone;` |
+| Default row    | ![secondary table](static/secondary-table.png)        | `background-color: #fff; border-bottom: 1px solid $mercury;` |
 
 @## Row states
 

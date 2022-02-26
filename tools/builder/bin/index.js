@@ -15,7 +15,7 @@ async function run(name, ...args) {
 const babelArgs = [
   '--extensions .ts,.tsx,.js',
   '--ignore **/*.d.ts',
-  '--presets babel-preset-ui',
+  '--presets @semcore/babel-preset-ui',
   '--no-babelrc',
   '--source-maps',
   '--copy-files',

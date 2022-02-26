@@ -11,7 +11,7 @@ export default ({ raw: { code: ExampleRawComponent, path } }) => {
     .map((str) => str && str.slice(1, -1))
     .reduce((acc, str) => {
       if (str) {
-        return { ...acc, [str.replace(/icon\/lib.+/g, 'icon')]: 'latest' };
+        return { ...acc, [str.replace(/icon\/.+/g, 'icon')]: 'latest' };
       }
       return acc;
     }, {});

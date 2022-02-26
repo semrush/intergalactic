@@ -12,7 +12,7 @@ Addons can be set by passing the desired tag to the `addonLeft`/`addonRight` pro
 
 Tag colours can be set by yourself
 
-@example addon
+@example custom-color
 
 @## Example of addition tag
 

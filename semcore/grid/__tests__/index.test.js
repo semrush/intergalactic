@@ -1,8 +1,11 @@
 import React from 'react';
-import { cleanup } from 'jest-preset-ui/testing';
-import { shouldSupportClassName, shouldSupportRef } from 'jest-preset-ui/shared';
+import { testing } from '@semcore/jest-preset-ui';
+const { cleanup } = testing;
+
+import { shared as testsShared } from '@semcore/jest-preset-ui';
+const { shouldSupportClassName, shouldSupportRef } = testsShared;
 import { Col, Row } from '../src';
-import snapshot from 'jest-preset-ui/snapshot';
+import { snapshot } from '@semcore/jest-preset-ui';
 
 const styleBox = {
   border: '3px solid #fff',

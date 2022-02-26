@@ -1,6 +1,9 @@
 import React from 'react';
-import { cleanup, fireEvent, render } from 'jest-preset-ui/testing';
-import { shouldSupportClassName, shouldSupportRef } from 'jest-preset-ui/shared';
+import { testing } from '@semcore/jest-preset-ui';
+const { cleanup, fireEvent, render } = testing;
+
+import { shared as testsShared } from '@semcore/jest-preset-ui';
+const { shouldSupportClassName, shouldSupportRef } = testsShared;
 import Popper from '../src';
 
 jest.mock('@popperjs/core', () => {

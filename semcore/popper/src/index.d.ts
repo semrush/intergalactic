@@ -109,14 +109,13 @@ export interface IPopperProps extends IOutsideClickProps, IPortalProps, IUniqueI
    * `'scrollParent' | 'viewport' | 'window' | HTMLElement`
    * @deprecated v4.0.0 {@link IPopperProps.preventOverflow}
    */
+  // eslint-disable-next-line ssr-friendly/no-dom-globals-in-module-scope
   boundary?: 'scrollParent' | 'viewport' | 'window' | HTMLElement;
 }
 
-export interface IPopperTriggerProps extends IBoxProps {
-}
+export interface IPopperTriggerProps extends IBoxProps {}
 
-export interface IPopperPopperProps extends IBoxProps, INeighborLocationProps {
-}
+export interface IPopperPopperProps extends IBoxProps, INeighborLocationProps {}
 
 export interface IPopperContext {
   getTriggerProps: PropGetterFn;
@@ -134,12 +133,8 @@ export interface IPopperHandlers {
 declare const Popper: (<T>(
   props: CProps<IPopperProps & T, IPopperContext, IPopperHandlers>,
 ) => ReturnEl) & {
-  Trigger: <T>(
-    props: CProps<IPopperTriggerProps & T, IPopperContext, IPopperHandlers>,
-  ) => ReturnEl;
-  Popper: <T>(
-    props: CProps<IPopperPopperProps & T, IPopperContext, IPopperHandlers>,
-  ) => ReturnEl;
+  Trigger: <T>(props: CProps<IPopperTriggerProps & T, IPopperContext, IPopperHandlers>) => ReturnEl;
+  Popper: <T>(props: CProps<IPopperPopperProps & T, IPopperContext, IPopperHandlers>) => ReturnEl;
 };
 
 export default Popper;

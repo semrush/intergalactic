@@ -14,12 +14,12 @@ import style from './style/donut.shadow.css';
 const DEFAULT_INSTANCE = Symbol('DEFAULT_INSTANCE');
 
 function animationInitialPie({ halfsize, d3Arc, arcs }) {
-  return function(_, ind) {
+  return function (_, ind) {
     const d = arcs[ind];
     if (!d) return () => '';
     const iStart = interpolate(halfsize ? -Math.PI / 2 : 0, d.startAngle);
     const iEnd = interpolate(halfsize ? -Math.PI / 2 : 0, d.endAngle);
-    return function(t) {
+    return function (t) {
       d.startAngle = iStart(t);
       d.endAngle = iEnd(t);
       return d3Arc(d);
@@ -28,12 +28,12 @@ function animationInitialPie({ halfsize, d3Arc, arcs }) {
 }
 
 function animationUpdatePie({ halfsize, arcs, d3Arc }) {
-  return function(_, ind) {
+  return function (_, ind) {
     const d = arcs[ind];
     if (this._current) {
       const i = interpolate(this._current, d);
       this._current = i(0);
-      return function(t) {
+      return function (t) {
         return d3Arc(i(t));
       };
     } else {
@@ -50,14 +50,12 @@ function animationHoverPie({ d, selector, duration, innerRadius, outerRadius }) 
       .select(selector)
       .transition()
       .duration(duration)
-      .attrTween('d', function() {
+      .attrTween('d', function () {
         if (!d) return () => '';
         const [min, max] = outerRadius;
         const i = interpolate(min, max);
-        return function(t) {
-          const d3ArcOut = arc()
-            .innerRadius(innerRadius)
-            .outerRadius(i(t));
+        return function (t) {
+          const d3ArcOut = arc().innerRadius(innerRadius).outerRadius(i(t));
           return d3ArcOut(d);
         };
       });
@@ -205,7 +203,7 @@ class DonutRoot extends Component {
       transition()
         .selection()
         .selectAll(`#${this.id} [data-ui-name="Donut.Pie"]`)
-        .each(function(_, ind) {
+        .each(function (_, ind) {
           this._current = arcs[ind];
         })
         .transition()

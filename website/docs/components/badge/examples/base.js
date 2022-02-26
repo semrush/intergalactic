@@ -4,9 +4,9 @@ import { Box } from '@semcore/flex-box';
 
 const BageList = [
   <Badge bg="cyan">admin</Badge>,
-  <Badge bg="red">alpha</Badge>,
-  <Badge bg="orange">beta</Badge>,
-  <Badge bg="green">new</Badge>,
+  <Badge bg="red-300">alpha</Badge>,
+  <Badge bg="orange-300">beta</Badge>,
+  <Badge bg="green-300">new</Badge>,
   <Badge>soon</Badge>,
 ];
 

@@ -30,7 +30,7 @@ export interface ITextProps extends IBoxProps {
   fontSize?: FontSizeProperty<any>;
   /** Custom `line-height` */
   lineHeight?: LineHeightProperty<any>;
-  /** Custom `font-width` */
+  /** Custom `font-weight` */
   fontWeight?: FontWeightProperty;
   /** Text alignment */
   textAlign?: TextAlignProperty;

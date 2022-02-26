@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.31.1] - 2022-02-24
+
+### Added
+
+- Added repository field to package.json file.
+
 ## [3.31.0] - 2022-01-25
 
 ### Added
@@ -404,20 +410,20 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Переменные с размером текста в `style/var.css` приведены в соответствие с типографикой
 
-## [2.6.0] 2019-08-23
+## [2.6.0] - 2019-08-23
 
 ### Added
 
 - Добавлен `HOC` `WithI18n`, хук `useI18n` и `Context` для проброса локали
 - Добавлена ф-ция `fireFn` в утилиту `fire`
 
-## [2.5.1] 2019-08-12
+## [2.5.1] - 2019-08-12
 
 ### Added
 
 - Добавлена функция `addonText` оборачивающая содержимое компонента в `Text` если это нужно
 
-## [2.4.2] 2019-06-25
+## [2.4.2] - 2019-06-25
 
 ### Fixed
 

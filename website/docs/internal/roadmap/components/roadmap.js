@@ -186,12 +186,12 @@ const components = {
   'Q1 2022': [
     { text: 'Scatterplot chart', size: { ui: '1/3', kit: '1/5' } },
     { text: 'New icons', size: { kit: '1/5' } },
-    { text: 'InlineInput', size: { ui: '1/7', kit: '5/9' } },
-    { text: 'Card', size: { ui: '3/9' } },
-    { text: 'Bubble chart', size: { kit: '3/9' } },
-    { text: 'Spacer', size: { ui: '9/13' } },
+    { text: 'Bubble chart', size: { kit: '3/7' } },
+    { text: 'InlineInput', size: { ui: '3/9', kit: '5/9' } },
     { text: 'Wizard', size: { ui: '5/13', kit: '9/13' } },
-    { text: 'MindMap chart', size: { ui: '9/13', kit: '9/13' } },
+    { text: 'MindMap chart', size: { ui: '6/11', kit: '7/13' } },
+    { text: 'Card', size: { ui: '7/13' } },
+    { text: 'Spacer', size: { ui: '9/13' } },
     { text: 'Guides renewal', size: { ui: '1/13' } },
   ],
 };

@@ -2,6 +2,46 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.19.3] - 2022-02-24
+
+### Added
+
+- Added repository field to package.json file.
+
+## [2.19.2] - 2022-02-14
+
+### Fixed
+
+- Fixed sizes for a few icons.
+
+## [2.19.1] - 2022-02-14
+
+### Fixed
+
+- Fixed color setting for `LightningFilled, MailOpenFilled`.
+
+## [2.19.0] - 2022-02-09
+
+### Added
+
+- Add icon `Hubspot`.
+
+### Changed
+
+- Changed svg for `SortAsc`, `SortDesc`.
+
+## [2.18.0] - 2022-02-03
+
+### Added
+
+- Add icons 'LightningFilled' in new icons.
+
+## [2.17.1] - 2022-01-31
+
+### Fixed
+
+- Fixed view icon `MailOpenFilled` size `m`.
+
 ## [2.17.0] - 2022-01-17
 
 ### Added

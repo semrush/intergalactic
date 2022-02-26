@@ -10,7 +10,7 @@ var _ref =
       '.___SButton_1pmdw_gg_ {\n  padding: 0 20px;\n  background:' +
       ' purple;\n}\n\n.___SButton_1pmdw_gg_.__theme_1pmdw_gg_.__theme_default_1pmdw_gg_ {\n  background: #bada55;\n}\n',
       /*__inner_css_end__*/
-      'z5y4k3',
+      '1dlh6zt_gg_',
     ),
     /*__reshadow_css_end__*/
     {

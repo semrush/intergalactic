@@ -65,7 +65,7 @@
       ]
     },
     {
-      "name": "GoogleDoc",
+      "name": "GoogleDocs",
       "size": ["l", "m"],
       "group": "Color",
       "tags": [
@@ -101,7 +101,7 @@
       ]
     },
     {
-      "name": "Office365",
+      "name": "MicrosoftOffice",
       "size": ["l", "m"],
       "group": "Color",
       "tags": [
@@ -118,7 +118,7 @@
       ]
     },
     {
-      "name": "Outlook",
+      "name": "MicrosoftOutlook",
       "size": ["l", "m"],
       "group": "Color",
       "tags": ["outlook", "микрософт", "мелкософт", "майкрософт", "ms", "microsoft", "logo", "лого"]
@@ -1890,7 +1890,7 @@
       "tags": ["google", "гугл", "лого", "logo"]
     },
     {
-      "name": "GoogleGSC",
+      "name": "GoogleSearchConsole",
       "size": ["l", "m"],
       "group": "Color",
       "tags": ["google", "гугл", "лого", "logo", "gsc"]
@@ -1992,6 +1992,12 @@
       "size": ["l", "m"],
       "group": "Misc",
       "tags": ["key", "hotkey", "горячая", "клавиша", "board", "press", "quick", "быстрый"]
+    },
+    {
+      "name": "LightningFilled",
+      "size": ["l", "m"],
+      "group": "Misc",
+      "tags": ["lightning", "молния", "zap", "fast", "sonic", "quick", "быстро", "flash"]
     },
     {
       "name": "Lightning",
@@ -3832,6 +3838,12 @@
       "size": ["l", "m"],
       "group": "Misc",
       "tags": ["feature", "featured", "video", "serp", "видео", "серп"]
+    },
+    {
+      "name": "Hubspot",
+      "size": ["l", "m"],
+      "group": "Color",
+      "tags": ["hubspot", "хабспот", "logo", "лого"]
     }
   ]
 }

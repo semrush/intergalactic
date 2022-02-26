@@ -1,6 +1,8 @@
 import React from 'react';
-import { cleanup, render } from 'jest-preset-ui/testing';
-import { shouldSupportClassName, shouldSupportRef } from 'jest-preset-ui/shared';
+import { testing } from '@semcore/jest-preset-ui';
+const { cleanup, render } = testing;
+import { shared as testsShared } from '@semcore/jest-preset-ui';
+const { shouldSupportClassName, shouldSupportRef } = testsShared;
 import ScrollArea from '../src';
 
 describe('ScrollArea', () => {

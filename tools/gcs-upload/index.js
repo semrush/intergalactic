@@ -5,6 +5,9 @@ const BUCKET_NAME = `ui-kit-flags`;
 
 function connect() {
   const confFilePath = path.join(__dirname, 'config.json');
+  if (process.env.GCLOUD_SECRET) {
+    fs.writeFileSync(confFilePath, process.env.GCLOUD_SECRET);
+  }
   const { projectId } = require(confFilePath);
   return new Storage({
     projectId,
@@ -47,10 +50,10 @@ function upload(files) {
           cacheControl: 'public, max-age=31536000',
         },
       })
-      .then(
-        () => console.log(`${fileName} uploaded to ${destination}`),
-        (err) => console.error(`Failed to upload ${fileName}.\n`, err),
-      );
+      .then(() => console.log(`${fileName} uploaded to ${destination}`))
+      .catch((err) => {
+        throw err;
+      });
   });
 }
 

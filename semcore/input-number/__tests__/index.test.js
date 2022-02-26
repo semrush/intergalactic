@@ -1,6 +1,8 @@
 import React from 'react';
-import { cleanup, fireEvent, render, axe } from 'jest-preset-ui/testing';
-import snapshot from 'jest-preset-ui/snapshot';
+import { testing } from '@semcore/jest-preset-ui';
+const { cleanup, fireEvent, render, axe } = testing;
+
+import { snapshot } from '@semcore/jest-preset-ui';
 import InputNumber from '../src';
 
 describe('InputNumber', () => {

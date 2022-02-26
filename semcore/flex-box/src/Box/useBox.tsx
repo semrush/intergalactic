@@ -1,12 +1,13 @@
 import React, { useMemo } from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import cn from 'classnames';
-import { FlexProperty, Properties, PositionProperty  } from 'csstype';
+import { FlexProperty, Properties, PositionProperty } from 'csstype';
 import { IStyledProps, sstyled } from '@semcore/core';
 import propsForElement from '@semcore/utils/lib/propsForElement';
 import logger from '@semcore/utils/lib/logger';
 
 import style from '../style/use-box.shadow.css';
+import { getAutoOrScaleIndent } from '../utils';
 
 export function removeUndefinedKeys<T extends {}>(obj: T) {
   return Object.entries(obj).reduce((acc, [key, value]) => {
@@ -27,19 +28,6 @@ function getSize(size) {
   if (size >= 1) {
     return `${size}px`;
   }
-}
-
-function getAutoOrScaleIndent(indent, scaleIndent) {
-  if (typeof indent === 'string') {
-    return indent;
-  }
-  if (typeof indent === 'number' && indent > -1 && indent < 1) {
-    return `${100 * indent}%`;
-  }
-  if (typeof indent === 'number' && (indent >= 1 || indent <= -1)) {
-    return `${indent * scaleIndent}px`;
-  }
-  return indent;
 }
 
 export interface IBoxProps extends IStyledProps {

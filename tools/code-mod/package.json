@@ -1,6 +1,6 @@
 {
   "name": "@semcore/code-mod",
-  "version": "1.3.1",
+  "version": "1.4.0",
   "description": "Code mod for @semcore components",
   "bin": {
     "code-mod": "./bin/code-mode.js"
@@ -22,9 +22,9 @@
   },
   "devDependencies": {
     "jest": "*",
-    "jest-preset-ui": "*"
+    "@semcore/jest-preset-ui": "*"
   },
   "jest": {
-    "preset": "jest-preset-ui"
+    "preset": "@semcore/jest-preset-ui"
   }
 }

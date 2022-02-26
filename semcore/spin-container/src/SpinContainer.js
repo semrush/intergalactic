@@ -1,16 +1,10 @@
-import React, { HTMLAttributes } from 'react';
-import createComponent, {
-  CHILDREN_COMPONENT,
-  Component,
-  INHERITED_NAME,
-  sstyled,
-  Root,
-} from '@semcore/core';
+import React from 'react';
+import createComponent, { Component, sstyled, Root } from '@semcore/core';
 import { FadeInOut } from '@semcore/animation';
 import Spin from '@semcore/spin';
 import { Box } from '@semcore/flex-box';
 import resolveColor from '@semcore/utils/lib/color';
-import getOriginChildren from '@semcore/utils/lib/getOriginChildren';
+import { isAdvanceMode } from '@semcore/utils/lib/findComponent';
 
 import style from './style/spin-container.shadow.css';
 
@@ -24,9 +18,13 @@ class SpinContainerRoot extends Component {
   };
 
   getOverlayProps() {
-    const { background, size, theme } = this.asProps;
+    const { loading, background, duration, size, theme } = this.asProps;
     return {
       background,
+      // for Animated
+      loading,
+      duration,
+      // for Spin
       size,
       theme,
     };
@@ -34,46 +32,28 @@ class SpinContainerRoot extends Component {
 
   render() {
     const SSpinContainer = Root;
-    const SContent = Box;
-    const { styles, Children: ChildrenRoot, loading, duration } = this.asProps;
+    const { styles, Children } = this.asProps;
 
-    const [Children, Overlay] = overlayChildren(ChildrenRoot, SpinContainer.Overlay);
+    const advanceMode = isAdvanceMode(Children, [
+      SpinContainer.Content.displayName,
+      SpinContainer.Overlay.displayName,
+    ]);
 
     return sstyled(styles)(
       <SSpinContainer render={Box}>
-        <SContent>{Children}</SContent>
-        <FadeInOut visible={loading} duration={duration}>
-          {Overlay || <SpinContainer.Overlay />}
-        </FadeInOut>
+        {advanceMode ? (
+          <Children />
+        ) : (
+          <>
+            <SpinContainer.Content>
+              <Children />
+            </SpinContainer.Content>
+            <SpinContainer.Overlay />
+          </>
+        )}
       </SSpinContainer>,
     );
   }
-}
-
-function overlayChildren(Children, Overlay) {
-  const children = getOriginChildren(Children);
-  if (typeof children === 'function') {
-    return [<Children />, null];
-  }
-
-  let OverlayChildren = null;
-  return [
-    React.Children.toArray(children).map((element) => {
-      if (!React.isValidElement(element)) return element;
-      if (element.type === React.Fragment) return element;
-      if (element.type[CHILDREN_COMPONENT]) {
-        return overlayChildren(element.type, Overlay);
-      }
-
-      const inheritedNames = element.type[INHERITED_NAME] || [element.type.displayName];
-      if (inheritedNames.includes(Overlay.displayName)) {
-        OverlayChildren = element;
-        return null;
-      }
-      return element;
-    }),
-    OverlayChildren,
-  ];
 }
 
 class Overlay extends Component {
@@ -83,12 +63,25 @@ class Overlay extends Component {
 
   render() {
     const SOverlay = Root;
-    const { background, styles } = this.asProps;
+    const { styles, background, loading, duration } = this.asProps;
 
-    return sstyled(styles)(<SOverlay render={Box} use:background={resolveColor(background)} />);
+    return sstyled(styles)(
+      <FadeInOut visible={loading} duration={duration}>
+        <SOverlay render={Box} use:background={resolveColor(background)} />
+      </FadeInOut>,
+    );
   }
 }
 
-const SpinContainer = createComponent(SpinContainerRoot, { Overlay });
+function Content(props) {
+  const SContent = Root;
+  const { styles } = props;
+  return sstyled(styles)(<SContent render={Box} />);
+}
+
+const SpinContainer = createComponent(SpinContainerRoot, {
+  Overlay,
+  Content,
+});
 
 export default SpinContainer;

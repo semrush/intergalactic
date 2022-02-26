@@ -1,10 +1,13 @@
 {
   "name": "@semcore/postcss-mediarezka",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "src/index.js",
   "license": "MIT",
   "private": true,
   "dependencies": {
-    "postcss": "^7.0.0"
+    "postcss": "^8.2.13"
+  },
+  "jest": {
+    "preset": "@semcore/jest-preset-ui"
   }
 }

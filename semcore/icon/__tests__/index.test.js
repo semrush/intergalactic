@@ -1,7 +1,8 @@
 import React from 'react';
-import { render, cleanup, axe } from 'jest-preset-ui/testing';
-import snapshot from 'jest-preset-ui/snapshot';
+import { snapshot, testing } from '@semcore/jest-preset-ui';
 import Icon from '../src';
+
+const { render, cleanup, axe } = testing;
 
 describe('Icon', () => {
   afterEach(cleanup);

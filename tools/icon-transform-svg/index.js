@@ -116,7 +116,7 @@ function getDescriptionPayIcons(iconPath, outLib) {
   };
 }
 
-module.exports = function() {
+module.exports = function () {
   Promise.all([
     generateIcons(`${sourceFolder}/color`, `${outputFolder}/color`, getDescriptionIcons),
     generateIcons(
@@ -128,7 +128,7 @@ module.exports = function() {
     generateIcons(`${sourceFolder}/icon`, outputFolder, getDescriptionIcons),
   ])
     .then(() => {
-      console.log('Done! I writed all files icons');
+      console.log('Done! Wrote all icon files.');
     })
     .catch((err) => {
       throw new Error(err);

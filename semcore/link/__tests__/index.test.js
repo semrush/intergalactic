@@ -1,7 +1,10 @@
 import React from 'react';
-import { cleanup, render, axe } from 'jest-preset-ui/testing';
-import snapshot from 'jest-preset-ui/snapshot';
-import { shouldSupportClassName, shouldSupportRef } from 'jest-preset-ui/shared';
+import { testing } from '@semcore/jest-preset-ui';
+const { cleanup, render, axe } = testing;
+
+import { snapshot } from '@semcore/jest-preset-ui';
+import { shared as testsShared } from '@semcore/jest-preset-ui';
+const { shouldSupportClassName, shouldSupportRef } = testsShared;
 import propsForElement from '@semcore/utils/lib/propsForElement';
 import Link from '../src';
 
@@ -46,7 +49,7 @@ describe('Link', () => {
   });
 
   test('should support additional elements as props', async () => {
-    const Addon = React.forwardRef(function(p, ref) {
+    const Addon = React.forwardRef(function (p, ref) {
       return (
         <span ref={ref} {...propsForElement(p)}>
           Addon prop

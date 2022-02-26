@@ -26,6 +26,7 @@ export interface IWithI18nProps extends IWithI18nInjectedProps {
 }
 
 class WithI18n extends Component<IWithI18nProps> {
+  /* @ts-ignore */
   context: LocaleKeys;
 
   static contextType = Context;

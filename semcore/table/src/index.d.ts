@@ -51,6 +51,7 @@ export interface ITableCellRowProps extends ICellProps {
 
 export interface IStickyHeadProps extends IScrollAreaProps {
   /** HTML element, which is used for table scrolling */
+  // eslint-disable-next-line ssr-friendly/no-dom-globals-in-module-scope
   container?: HTMLElement;
   /** Spacing at a top of a table when fixing it
    * @default 0

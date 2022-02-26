@@ -1,6 +1,8 @@
 import React from 'react';
-import { axe, cleanup, render, fireEvent } from 'jest-preset-ui/testing';
-import snapshot from 'jest-preset-ui/snapshot';
+import { testing } from '@semcore/jest-preset-ui';
+const { axe, cleanup, render, fireEvent } = testing;
+
+import { snapshot } from '@semcore/jest-preset-ui';
 import { DatePicker, DateRangePicker, MonthRangePicker } from '../src';
 
 const RealDate = Date;

@@ -1,5 +1,5 @@
 {
-  "name": "playground",
+  "name": "@semcore/playground",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -14,7 +14,7 @@
     "@semcore/babel-plugin-react-semcore": "*",
     "@semcore/shadow-loader": "*",
     "babel-loader": "^8.0.6",
-    "babel-preset-ui": "*",
+    "@semcore/babel-preset-ui": "*",
     "css-loader": "^3.0.0",
     "css-variables-loader": "^2.0.2",
     "file-loader": "^4.0.0",

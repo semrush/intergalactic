@@ -28,10 +28,13 @@ class RootLinkTrigger extends Component {
   render() {
     const SLinkTrigger = Root;
     const SLinkAddon = LinkTrigger.Addon;
-    const { Children, loading, styles, color } = this.asProps;
+    const { Children, loading, styles, color: providedColor } = this.asProps;
+
+    const color = resolveColor(providedColor);
+    const colorHover = shade(color, -0.12);
 
     return sstyled(styles)(
-      <SLinkTrigger render={Box} use:color={resolveColor(color)}>
+      <SLinkTrigger render={Box} use:color={color} use:color-hover={colorHover}>
         {addonTextChildren(Children, LinkTrigger.Text, LinkTrigger.Addon)}
         <SLinkAddon>
           {loading ? <Spin size="xs" theme="currentColor" /> : <ChevronDown />}

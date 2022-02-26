@@ -23,7 +23,7 @@ function scanDir(dir) {
   return returnValue;
 }
 
-module.exports = function(source) {
+module.exports = function (source) {
   const files = scanDir(path.join(__dirname, 'examples'));
   let file;
 

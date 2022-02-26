@@ -2,6 +2,18 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.2.4] - 2022-02-24
+
+### Added
+
+- Added repository field to package.json file.
+
+## [5.2.3] - 2022-02-03
+
+### Fixed
+
+- Add line-height for lable text to not depend on external line-height
+
 ## [5.2.2] - 2021-12-08
 
 ### Changed

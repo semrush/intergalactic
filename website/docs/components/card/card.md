@@ -8,7 +8,7 @@ tabName: Guide
 
 **Card** is a component used for visually grouping other components into cards/blocks/widgets.
 
-> It seems to be one of the simplest components in our library so far 🤓
+> In the last major update, component was divided into two parts: `Header` and `Body`. This was done to make it easier to use the restyling component. Also, `Card` now has a white background.
 
 @## Appearance
 

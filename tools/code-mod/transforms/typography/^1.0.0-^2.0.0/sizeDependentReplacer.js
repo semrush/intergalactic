@@ -10,7 +10,7 @@ const t = recast.types.namedTypes;
  * @returns {Function}
  */
 function sizeDependentReplacer(propName, map) {
-  return function(path) {
+  return function (path) {
     const node = path.value;
     const parent = path.parent.value;
     if (

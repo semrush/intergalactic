@@ -57,7 +57,10 @@ const Demo = () => {
   const handleCloseTag = (e) => {
     const tags = getValues('emails');
     const { dataset } = e.currentTarget;
-    setValue('emails', tags.filter((tag, ind) => ind !== Number(dataset.id)));
+    setValue(
+      'emails',
+      tags.filter((tag, ind) => ind !== Number(dataset.id)),
+    );
   };
 
   const periods = ['Daily', 'Weekly'].map((value) => ({ value, children: value }));

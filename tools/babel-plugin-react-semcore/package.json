@@ -1,15 +1,14 @@
 {
   "name": "@semcore/babel-plugin-react-semcore",
-  "version": "4.1.0",
-  "main": "index.js",
+  "version": "4.1.4",
+  "main": "src/index.js",
   "license": "MIT",
   "scripts": {
-    "test": "echo 'no test =('",
-    "test2": "jest index.test.js --no-cache"
+    "test": "jest index.test.js --no-cache"
   },
   "dependencies": {
     "@semcore/babel-plugin-shadow": "^1.2",
-    "@semcore/babel-plugin-styles": "^1.0",
+    "@semcore/babel-plugin-styles": "^1.1.3",
     "css-purge": "^3.1.8",
     "semver": "^7.3.5",
     "string-hash": "^1.1.3"
@@ -17,5 +16,8 @@
   "devDependencies": {
     "babel-plugin-tester": "^8.0.1",
     "jest": "^26.6.3"
+  },
+  "jest": {
+    "preset": "@semcore/jest-preset-ui"
   }
 }

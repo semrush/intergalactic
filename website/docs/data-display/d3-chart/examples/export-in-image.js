@@ -163,7 +163,7 @@ function svgString2Image(svgString, width, height, format, callback) {
   canvas.height = height;
 
   const image = new Image();
-  image.onload = function() {
+  image.onload = function () {
     context.clearRect(0, 0, width, height);
     context.drawImage(image, 0, 0, width, height);
 

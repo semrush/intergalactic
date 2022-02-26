@@ -81,7 +81,7 @@ class ModalRoot extends Component {
   }
 }
 
-const FocusLockWrapper = React.forwardRef(function({ tag, ...other }, ref) {
+const FocusLockWrapper = React.forwardRef(function ({ tag, ...other }, ref) {
   return <FocusLock ref={ref} as={tag} lockProps={other} {...other} />;
 });
 

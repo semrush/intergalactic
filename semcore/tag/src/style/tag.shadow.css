@@ -15,7 +15,9 @@ STag {
 }
 
 SText {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  height: 100%;
   padding-left: 4px;
   padding-right: 4px;
   white-space: nowrap;
@@ -120,9 +122,20 @@ STag[theme='primary-muted'] {
 }
 
 STag[theme='primary-warning'] {
-  background-color: var(--orange);
-  color: #fff;
-  border-color: var(--orange);
+  background-color: color-mod(var(--orange) a(15%));
+  color: var(--orange);
+  &[interactive]:hover,
+  &[interactive]:active,
+  &[active] {
+    background-color: var(--orange);
+    color: #fff;
+    & SClose {
+      color: color-mod(#fff a(15%));
+      &:hover {
+        color: #fff;
+      }
+    }
+  }
 }
 
 STag[theme='primary-invert'] {
@@ -207,11 +220,7 @@ SClose {
 }
 
 SClose[theme='primary-warning'] {
-  color: #fff;
-
-  &:hover {
-    color: #fff;
-  }
+  color: color-mod(var(--orange) a(50%));
 }
 
 SClose[theme='primary-invert'] {

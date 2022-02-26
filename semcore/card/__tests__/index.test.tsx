@@ -1,7 +1,10 @@
 import React from 'react';
-import { cleanup } from 'jest-preset-ui/testing';
-import snapshot from 'jest-preset-ui/snapshot';
-import { shouldSupportClassName, shouldSupportRef } from 'jest-preset-ui/shared';
+import { testing } from '@semcore/jest-preset-ui';
+const { cleanup } = testing;
+
+import { snapshot } from '@semcore/jest-preset-ui';
+import { shared as testsShared } from '@semcore/jest-preset-ui';
+const { shouldSupportClassName, shouldSupportRef } = testsShared;
 import Card from '../src';
 
 describe('Card', () => {
@@ -50,6 +53,20 @@ describe('Card', () => {
     const Component = (
       <Card>
         <Card.Title hint>Title</Card.Title>
+      </Card>
+    );
+
+    expect(await snapshot(Component)).toMatchImageSnapshot();
+  });
+
+  test('Renders correctly Header and Body', async () => {
+    const Component = (
+      <Card>
+        <Card.Header>
+          <Card.Title>Title</Card.Title>
+          <Card.Description>Description</Card.Description>
+        </Card.Header>
+        <Card.Body>Your awesome card content</Card.Body>
       </Card>
     );
 

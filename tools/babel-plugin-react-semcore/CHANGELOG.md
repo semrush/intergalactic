@@ -2,6 +2,24 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.1.4] - 2022-02-03
+
+### Fixed
+
+- Updated critical children dependencies
+
+## [4.1.3] - 2022-02-03
+
+### Fixed
+
+- Do not crash in case of variables absence in theme file for backward capability to `4.1.0`.
+
+## [4.1.1] - 2022-01-27
+
+### Fixed
+
+- Supported internal `pkgName` option.
+
 ## [4.1.0] - 2021-11-26
 
 ### Added

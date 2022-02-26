@@ -4,11 +4,29 @@ title: API
 
 @## Card
 
-It's just a `Box`, with pre-installed paddings.
+It's just a `Box`.
 
 ```jsx
 import Card from '@semcore/card';
 <Card />;
+```
+
+@## Card.Header
+
+It's just a `Box`, with pre-installed paddings. Contains `Card.Title` and `Card.Description`.
+
+```jsx
+import Card from '@semcore/card';
+<Card.Header />;
+```
+
+@## Card.Body
+
+It's just a `Box`, with pre-installed paddings.
+
+```jsx
+import Card from '@semcore/card';
+<Card.Body />;
 ```
 
 @## Card.Title

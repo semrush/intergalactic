@@ -1,21 +1,19 @@
 import React from 'react';
 // import { bisector } from 'd3-array';
 import { scaleLinear, scaleBand } from 'd3-scale';
-import { render, fireEvent, cleanup } from 'jest-preset-ui/testing';
-import { shouldSupportClassName, shouldSupportRef } from 'jest-preset-ui/shared';
+import { testing } from '@semcore/jest-preset-ui';
+const { render, fireEvent, cleanup } = testing;
+import { shared as testsShared } from '@semcore/jest-preset-ui';
+const { shouldSupportClassName, shouldSupportRef } = testsShared;
 import { Plot, YAxis, XAxis, Venn, Bar, StackBar, colors } from '../src';
 import { getIndexFromData } from '../src/utils';
-import snapshot from 'jest-preset-ui/snapshot';
+import { snapshot } from '@semcore/jest-preset-ui';
 import { minMax, Area, StackedArea } from '@semcore/d3-chart';
 import { curveCardinal } from 'd3-shape';
 
-const xScale = scaleLinear()
-  .range([10, 100])
-  .domain([0, 10]);
+const xScale = scaleLinear().range([10, 100]).domain([0, 10]);
 
-const yScale = scaleLinear()
-  .range([100, 10])
-  .domain([0, 10]);
+const yScale = scaleLinear().range([100, 10]).domain([0, 10]);
 
 const data = [...Array(10).keys()].map((d, i) => ({
   x: i,
@@ -148,7 +146,10 @@ describe('XAxis', () => {
 
 describe('utils', () => {
   test('should support getIndexFromData for Line, Bar chart', () => {
-    const data = [{ x: 1, y: 'test' }, { x: 2, y: 'describe' }];
+    const data = [
+      { x: 1, y: 'test' },
+      { x: 2, y: 'describe' },
+    ];
     const yScale = scaleBand()
       .range([100, 10])
       .domain(data.map((d) => d.name));
@@ -314,7 +315,7 @@ describe('Bar chart', () => {
         <XAxis>
           <XAxis.Ticks />
         </XAxis>
-        <Bar x="time" y="stack1" duration={0}/>
+        <Bar x="time" y="stack1" duration={0} />
       </Plot>
     );
 

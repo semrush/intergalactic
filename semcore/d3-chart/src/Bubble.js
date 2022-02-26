@@ -59,17 +59,14 @@ class BubbleRoot extends Component {
       .domain([0, Math.max(...data.map((el) => el[value]))])
       .range([5.5, 50.5]);
 
-    const selectRect = transition()
-      .selection()
-      .selectAll(`[id^=${uid}${uid}]`)
-      .attr('r', 0);
+    const selectRect = transition().selection().selectAll(`[id^=${uid}${uid}]`).attr('r', 0);
 
     const selectRectNode = selectRect.node();
     if (duration > 0 && selectRectNode) {
       selectRect
         .transition()
         .duration(duration)
-        .attr('r', function(_, ind) {
+        .attr('r', function (_, ind) {
           return z(data[ind][value]);
         });
     }

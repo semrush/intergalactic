@@ -1,7 +1,8 @@
 module.exports = {
-  setupTestFrameworkScriptFile: `${__dirname}/setupTests.js`,
+  testMatch: ['**/(semcore|tools)/**/?(*.)+(spec|test).[jt]s?(x)'],
+  setupFilesAfterEnv: [`${__dirname}/src/setupTests.js`],
   transform: {
-    '^.+\\.(jsx?|tsx?)$': `${__dirname}/babel.config.js`,
+    '^.+\\.(jsx?|tsx?)$': `${__dirname}/src/babel.config.js`,
   },
   transformIgnorePatterns: ['node_modules/(?!@semcore/|@popperjs/|d3-|internmap)'],
   // collectCoverageFrom: ['**/semcore/*/src/**.*'],
@@ -14,6 +15,7 @@ module.exports = {
     '^@semcore/(.*)/lib/(.*)': '@semcore/$1/lib/$2',
     '^@semcore/icon/(.*)/(.*)': '@semcore/icon/$1/$2',
     '^@semcore/(.*)': '@semcore/$1/src',
+    '^disable-jest-mapper/(.*)': '$1',
   },
-  modulePathIgnorePatterns: ['/tools/'],
+  modulePathIgnorePatterns: ['/generator-component/'],
 };

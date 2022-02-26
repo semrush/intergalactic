@@ -122,11 +122,11 @@ function Overlay(props) {
   return sstyled(props.styles)(<SOverlay render={FadeInOut} />);
 }
 
-const FocusLockWrapper = React.forwardRef(function({ disableEnforceFocus, ...other }, ref) {
+const FocusLockWrapper = React.forwardRef(function ({ disableEnforceFocus, ...other }, ref) {
   return <FocusLock ref={ref} lockProps={other} disabled={disableEnforceFocus} {...other} />;
 });
 
-const TransformWrapper = React.forwardRef(function({ tag, ...other }, ref) {
+const TransformWrapper = React.forwardRef(function ({ tag, ...other }, ref) {
   return <Transform tag={FocusLockWrapper} ref={ref} as={tag} {...other} />;
 });
 

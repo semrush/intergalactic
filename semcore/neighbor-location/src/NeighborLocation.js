@@ -85,13 +85,14 @@ function neighborLocationEnhance() {
   };
 }
 
-const Context = register.get(
-  'neighbor-location-context',
-  React.createContext({}),
+const Context = register.get('neighbor-location-context', React.createContext({}));
+const NeighborLocation = createComponent(
+  NeighborLocationRoot,
+  {},
+  {
+    context: Context,
+  },
 );
-const NeighborLocation = createComponent(NeighborLocationRoot, {}, {
-  context: Context,
-});
 
 export { neighborLocationEnhance };
 

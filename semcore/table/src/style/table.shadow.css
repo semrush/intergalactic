@@ -78,6 +78,7 @@ SCellHead[use='primary'] {
 }
 
 SCellHead[use='secondary'] {
+  background-color: #fff;
   border-width: 1px 0;
   border-color: var(--stone);
 }

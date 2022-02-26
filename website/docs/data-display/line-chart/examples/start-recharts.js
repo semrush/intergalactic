@@ -49,7 +49,7 @@ const converValueThousand = (str) => {
   return output;
 };
 
-DefaultTooltipContent.prototype.render = function() {
+DefaultTooltipContent.prototype.render = function () {
   const { labelFormatter, label } = this.props;
   return (
     <div className="recharts-default-tooltip">

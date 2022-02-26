@@ -14,9 +14,7 @@ class Divider extends Component {
 
   render() {
     const SDivider = Root;
-    return sstyled(this.asProps.styles)(
-      <SDivider render={Box} />,
-    );
+    return sstyled(this.asProps.styles)(<SDivider render={Box} />);
   }
 }
 

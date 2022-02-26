@@ -4,7 +4,7 @@ const fs = require('fs');
 // copy files in DOCS (examples):
 // from: semcore/email/.tmp/badge/examples/index.html
 // top website/docs/product-emails/badge-email/examples/badge-index.html
-(function() {
+(function () {
   const buildFolderName = '.tmp';
   const rootSourceTemplate = path.join(__dirname, `../semcore/email/${buildFolderName}`);
 

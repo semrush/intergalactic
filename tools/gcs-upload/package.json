@@ -1,5 +1,5 @@
 {
-  "name": "gcs-upload",
+  "name": "@semcore/gcs-upload",
   "version": "1.0.0",
   "description": "package for uploading files to semrush.static",
   "main": "index.js",
@@ -12,5 +12,8 @@
   "dependencies": {
     "@google-cloud/storage": "^3.1.0",
     "minimist": "^1.2.0"
+  },
+  "jest": {
+    "preset": "@semcore/jest-preset-ui"
   }
 }

@@ -5,7 +5,7 @@ import DropdownMenu from '@semcore/dropdown-menu';
 
 const tagsSelect = ['vk', 'fk', 'twitter', 'instagram'];
 
-export default function() {
+export default function () {
   const [tags, setTags] = useState([]);
   const [valueInput, setValueInput] = useState('');
   const [visible, setVisible] = useState(false);

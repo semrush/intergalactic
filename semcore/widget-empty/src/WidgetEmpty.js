@@ -9,8 +9,9 @@ const version = preval`
   module.exports = require('../package.json').version
 `;
 
-export const getIconPath = (name) =>
-  `//static.semrush.com/ui-kit/widget-empty/${version}/${name}.svg`;
+export const getIconPath = (name) => {
+  return `https://static.semrush.com/ui-kit/widget-empty/${version}/${name}.svg`;
+};
 
 class WidgetEmpty extends Component {
   static displayName = 'WidgetEmpty';
@@ -26,7 +27,7 @@ class WidgetEmpty extends Component {
         {isNode(icon) && (
           <SImage>
             {typeof icon === 'string' ? (
-              <img src={icon} alt='widget empty icon' width={100} height={72} />
+              <img src={icon} alt="widget empty icon" width={100} height={72} />
             ) : (
               icon
             )}

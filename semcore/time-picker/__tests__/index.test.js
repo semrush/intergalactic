@@ -1,7 +1,9 @@
 import React from 'react';
-import { render, cleanup, axe } from 'jest-preset-ui/testing';
-import { shouldSupportClassName, shouldSupportRef } from 'jest-preset-ui/shared';
-import snapshot from 'jest-preset-ui/snapshot';
+import { testing } from '@semcore/jest-preset-ui';
+const { render, cleanup, axe } = testing;
+import { shared as testsShared } from '@semcore/jest-preset-ui';
+const { shouldSupportClassName, shouldSupportRef } = testsShared;
+import { snapshot } from '@semcore/jest-preset-ui';
 import TimePicker from '../src';
 
 const TimePickerDefault = ({ children, ...other }) => (

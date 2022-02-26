@@ -1,18 +1,18 @@
 import React from 'react';
 import Button from '@semcore/button';
-import CheckXS from '@semcore/icon/Check/m';
-import ArrowRightXS from '@semcore/icon/ArrowRight/m';
+import CheckM from '@semcore/icon/Check/m';
+import ArrowRightM from '@semcore/icon/ArrowRight/m';
 
-export default function() {
+export default function () {
   return (
     <>
-      <Button addonLeft={CheckXS} addonRight={ArrowRightXS}>
+      <Button addonLeft={CheckM} addonRight={ArrowRightM}>
         Button
       </Button>
       <Button ml={2}>
-        <Button.Addon tag={CheckXS} />
+        <Button.Addon tag={CheckM} />
         <Button.Text>Button</Button.Text>
-        <Button.Addon tag={ArrowRightXS} />
+        <Button.Addon tag={ArrowRightM} />
       </Button>
     </>
   );

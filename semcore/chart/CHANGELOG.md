@@ -2,6 +2,24 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.3.8] - 2022-02-24
+
+### Added
+
+- Added repository field to package.json file.
+
+## [4.3.7] - 2022-02-07
+
+### Fixed
+
+- Rename deprecate color `white-01` to `white`.
+
+## [4.3.6] - 2022-02-03
+
+### Fixed
+
+- Fixed list colors to get from a function `getColor`.
+
 ## [4.3.5] - 2022-01-13
 
 ### Fixed
