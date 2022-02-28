@@ -15,7 +15,7 @@ module.exports = {
     '^@semcore/(.*)/lib/(.*)': '@semcore/$1/lib/$2',
     '^@semcore/icon/(.*)/(.*)': '@semcore/icon/$1/$2',
     '^@semcore/(.*)': '@semcore/$1/src',
-    '^disable-jest-mapper/(.*)': '$1',
+    '^disable-jest-mapper:(.*)': '$1',
   },
   modulePathIgnorePatterns: ['/generator-component/'],
 };

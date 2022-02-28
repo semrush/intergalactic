@@ -1,8 +1,8 @@
 {
   "name": "@semcore/builder",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "bin": {
-    "build": "bin/index.js"
+    "build": "bin/index.ts"
   },
   "license": "MIT",
   "private": true,
@@ -18,7 +18,7 @@
     "postcss-import": "^12.0.1",
     "postcss-inline-comment": "^3.0.0",
     "postcss-preset-env": "^6.7.0",
-    "typescript": "^3.9.5"
+    "typescript": "^4.5.5"
   },
   "jest": {
     "preset": "@semcore/jest-preset-ui"

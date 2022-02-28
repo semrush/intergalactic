@@ -1,13 +1,13 @@
 import { resolve as resolvePath } from 'path';
 import fs from 'fs-extra';
 import { isValidSemver } from './utils';
-import { parseChangelog, Version } from './changelog';
+import { componentChangelogParser, Changelog } from '@semcore/changelog-handler';
 
 export type Package = {
   name: string;
   path: string;
   isPrivate: boolean;
-  versions: Version[];
+  changelogs: Changelog[];
   currentVersion: string;
   lastPublishedVersion: string | null;
   dependencies: { [dependencyName: string]: string };
@@ -38,11 +38,11 @@ export const collectPackages = async (inNpmVersions: { [packageName: string]: st
           private?: boolean;
           dependencies: { [dependencyName: string]: string };
         } = await fs.readJson(resolvePath(packagePath, 'package.json'));
-        const changelog = await fs.readFile(resolvePath(packagePath, 'CHANGELOG.md'), 'utf-8');
+        const changelogFile = await fs.readFile(resolvePath(packagePath, 'CHANGELOG.md'), 'utf-8');
 
         return {
           packageFile,
-          changelog,
+          changelogFile,
           changelogPath,
           packageFilePath,
           packagePath,
@@ -55,8 +55,12 @@ export const collectPackages = async (inNpmVersions: { [packageName: string]: st
 
   const packages: Package[] = [];
 
-  for (const { packageFile, changelog, changelogPath, packageFilePath, packagePath } of files) {
-    const versions: Version[] = parseChangelog(changelog, changelogPath);
+  for (const { packageFile, changelogFile, changelogPath, packageFilePath, packagePath } of files) {
+    const changelogs: Changelog[] = componentChangelogParser(
+      packageFile.name,
+      changelogFile,
+      changelogPath,
+    );
 
     const dependencies: Package['dependencies'] = {};
     for (const dependenciesType of ['dependencies', 'devDependencies']) {
@@ -77,7 +81,7 @@ export const collectPackages = async (inNpmVersions: { [packageName: string]: st
       name: packageFile.name,
       path: packagePath,
       isPrivate: packageFile.private || false,
-      versions,
+      changelogs,
       currentVersion: packageFile.version,
       lastPublishedVersion: null,
       dependencies,

@@ -8,13 +8,15 @@
   "private": true,
   "license": "MIT",
   "dependencies": {
+    "@semcore/changelog-handler": "0.0.1",
     "axios": "^0.25.0",
     "dayjs": "^1.10.7",
+    "execa": "^6.1.0",
     "fs-extra": "^9.0.1",
     "marked-ast": "^0.3.0",
     "marked-ast-markdown": "^2.1.0",
     "semver": "^5.6.0",
-    "simple-git": "^1.107.0",
+    "simple-git": "^3.2.6",
     "tsm": "^2.2.1"
   },
   "scripts": {
