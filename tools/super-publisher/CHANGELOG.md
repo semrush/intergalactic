@@ -13,9 +13,6 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### Added
 
 - Added property for cli command, `--no-check-changelog`.
-
-### Added
-
 - Added prop root = cwd by default
 
 ## [0.1.0] - 2020-10-14
