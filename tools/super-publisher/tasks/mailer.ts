@@ -8,7 +8,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 export const mailerTask = createTask('Send mail', async (opt) => {
-  if (!(opt.package !== 'ui')) {
+  if (opt.package !== 'ui') {
     opt.skip();
     return opt;
   }
