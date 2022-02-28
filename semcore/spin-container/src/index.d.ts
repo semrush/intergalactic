@@ -1,6 +1,6 @@
 import { PropGetterFn, ReturnEl, CProps } from '@semcore/core';
 import { ISpinProps } from '@semcore/spin';
-import { IBoxProps } from '@semcore/flex-box';
+import { Box, IBoxProps } from '@semcore/flex-box';
 
 export interface ISpinContainerProps extends IBoxProps, ISpinProps {
   /**
