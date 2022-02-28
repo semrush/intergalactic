@@ -40,7 +40,7 @@ describe('Utils', () => {
     test.skip('release was not generated', () => {});
     return;
   }
-  const utils = require.resolve('disable-jest-mapper/@semcore/utils/lib');
+  const utils = require.resolve('disable-jest-mapper:@semcore/utils/lib');
   const utilsDir = path.dirname(utils);
   const rscUtilsDir = path.resolve(__dirname, '../utils/lib');
 
@@ -62,8 +62,8 @@ describe('Utils', () => {
     if (utilsModule === 'index.js') return;
 
     test(`file ${utilsModule} provides correct exports to release system`, () => {
-      const source = require(`disable-jest-mapper/@semcore/utils/lib/${utilsModule}`);
-      const rscUi = require('disable-jest-mapper/' +
+      const source = require(`disable-jest-mapper:@semcore/utils/lib/${utilsModule}`);
+      const rscUi = require('disable-jest-mapper:' +
         path.resolve(__dirname, `../utils/lib/${utilsModule}`));
 
       expect(sortObjKeys(source)).toStrictEqual(sortObjKeys(rscUi));
@@ -76,7 +76,7 @@ describe('Icon', () => {
     test.skip('release was not generated', () => {});
     return;
   }
-  const icons = require.resolve('disable-jest-mapper/@semcore/icon');
+  const icons = require.resolve('disable-jest-mapper:@semcore/icon');
   const iconsDir = path.resolve(icons, '../..');
   const rscIconsDir = path.resolve(__dirname, '../icon/lib');
 
@@ -101,7 +101,7 @@ describe('Icon', () => {
     const utilsModule = filePath.split('/icon/')[1];
 
     test(`file ${utilsModule} provides correct exports to release system`, () => {
-      const source = require(`disable-jest-mapper/@semcore/icon/${utilsModule}`);
+      const source = require(`disable-jest-mapper:@semcore/icon/${utilsModule}`);
       const rscUi = require(path.resolve(__dirname, `../icon/${utilsModule}`));
 
       expect(sortObjKeys(source)).toStrictEqual(sortObjKeys(rscUi));

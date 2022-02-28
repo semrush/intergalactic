@@ -1,0 +1,15 @@
+{
+  "name": "@semcore/mailer",
+  "version": "0.0.1",
+  "main": "src/index.ts",
+  "private": true,
+  "license": "MIT",
+  "dependencies": {
+    "@mailchimp/mailchimp_marketing": "^3.0.74",
+    "dayjs": "^1.10.7",
+    "dotenv": "^16.0.0",
+    "tsm": "^2.2.1",
+    "@semcore/changelog-handler": "0.0.1"
+  },
+  "devDependencies": {}
+}

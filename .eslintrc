@@ -13,8 +13,7 @@
     "sourceType": "module",
     "ecmaFeatures": {
       "jsx": true
-    },
-    "project": "./tsconfig.json"
+    }
   },
   "plugins": ["@typescript-eslint", "react", "ssr-friendly", "eslint-plugin-no-cyrillic-string"],
   "settings": {

@@ -1,13 +1,14 @@
 import semver from 'semver';
-import { Version } from './changelog';
+import { ChangelogChange } from '@semcore/changelog-handler';
 import { Package } from './collectPackages';
 import { normalizeSemver } from './utils';
+import dayjs from 'dayjs';
 
 export type VersionPatch = {
   package: Package;
   from: string;
   to: string;
-  notes: Version['notes'];
+  changes: ChangelogChange[];
   changelogUpdated: boolean;
 };
 
@@ -35,21 +36,21 @@ export const makeVersionPatches = (packages: Package[]) => {
 
     if (versionPatchesMap.has(packageFile.name)) continue;
 
-    const lastVersion = packageFile.versions.find(
-      (version) => !packageFile.isPrivate && !version.isPrivate,
+    const lastChangelog = packageFile.changelogs.find(
+      (changelog) => !packageFile.isPrivate && dayjs(changelog.date).isValid(),
     );
-    if (!lastVersion) continue;
+    if (!lastChangelog) continue;
 
     const hasNewerVersion =
-      semver.compare(packageFile.lastPublishedVersion, lastVersion.version) === -1;
+      semver.compare(packageFile.lastPublishedVersion, lastChangelog.version) === -1;
 
     if (!hasNewerVersion) continue;
 
     const versionPatch: VersionPatch = {
       package: packageFile,
       from: packageFile.currentVersion,
-      to: lastVersion.version,
-      notes: lastVersion.notes,
+      to: lastChangelog.version,
+      changes: lastChangelog.changes,
       changelogUpdated: true,
     };
     versionPatchesMap.set(packageFile.name, versionPatch);
@@ -65,12 +66,19 @@ export const makeVersionPatches = (packages: Package[]) => {
       let updateType: semver.ReleaseType | null = null;
       let updateTypeFallback: 'patch' | 'prerelease' = 'patch';
       let needUpdate = false;
+      const updatedDependencies: { name: string; from: string; to: string }[] = [];
 
       for (const dependenciesType of ['dependencies', 'devDependencies']) {
         for (const dependency in packageFile[dependenciesType]) {
           const dependencyVersionPatch = versionPatchesMap.get(dependency);
           if (!dependencyVersionPatch) continue;
           needUpdate = true;
+
+          updatedDependencies.push({
+            name: dependency,
+            from: dependencyVersionPatch.from,
+            to: dependencyVersionPatch.to,
+          });
 
           if (
             semver.prerelease(normalizeSemver(dependencyVersionPatch.to)) !== null &&
@@ -107,20 +115,28 @@ export const makeVersionPatches = (packages: Package[]) => {
           : packageFile.lastPublishedVersion;
 
         const version = semver.inc(versionBase, updateType || updateTypeFallback);
+        const descriptionBefore = `Version ${
+          updateType || updateTypeFallback
+        } update due to children dependencies update (`;
+        const description =
+          descriptionBefore +
+          updatedDependencies
+            .map(({ name, from, to }) => `\`${name}\` [${from} ~> ${to}]`)
+            .join(', ') +
+          ').';
 
         const versionPatch: VersionPatch = {
           package: packageFile,
           from: packageFile.currentVersion,
           to: version,
-          notes: {
-            ['Changed']: [
-              {
-                type: 'list',
-                body: [{ type: 'listitem', text: ['Updated children dependencies'] }],
-                ordered: false,
-              },
-            ],
-          },
+          changes: [
+            {
+              component: packageFile.name,
+              label: 'Changed',
+              description: description,
+              descriptionFormatted: [description],
+            },
+          ],
           changelogUpdated: false,
         };
         versionPatchesMap.set(packageFile.name, versionPatch);
