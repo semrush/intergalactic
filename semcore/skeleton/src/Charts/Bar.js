@@ -5,7 +5,7 @@ const BarChartSkeleton = (props) => {
   const { layout = 'horizontal' } = props;
 
   return (
-    <Skeleton viewBox="0 0 908 166" preserveAspectRatio="xMidYMid meet" {...props}>
+    <Skeleton viewBox="0 0 912 166" preserveAspectRatio="xMidYMid meet" {...props}>
       {({ gradientUrl }) => {
         if (layout === 'vertical') {
           return (
