@@ -2,7 +2,7 @@
   "name": "@semcore/mailer",
   "version": "0.0.1",
   "main": "src/index.ts",
-  "private": true,
+  "private": false,
   "license": "MIT",
   "dependencies": {
     "@mailchimp/mailchimp_marketing": "^3.0.74",
