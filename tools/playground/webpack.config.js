@@ -16,8 +16,7 @@ module.exports = function () {
     //   minimize: false
     // },
     devServer: {
-      contentBase: './.tmp/playground',
-      hot: true,
+      static: './.tmp/playground',
     },
     resolveLoader: {
       alias: {
@@ -36,7 +35,7 @@ module.exports = function () {
         {
           test: /\.(js|ts|jsx|tsx)$/i,
           exclude: /(node_modules)/,
-          enforce: 'pre',
+          // enforce: 'pre',
           use: {
             loader: 'babel-loader',
             options: {
