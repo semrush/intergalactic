@@ -48,6 +48,7 @@ export const checkDependenciesTask = createTask('Dependency check', async (opt) 
   const warnings = await Promise.all(
     Object.keys(dependencies).map(async (name) => {
       const selfVersion = dependencies[name];
+      opt.log(`[${name}@${selfVersion}] calling npm to checkout published version`);
       const depNpm = await fetchNpm(name);
       const isPublished = isValidRange(selfVersion, Object.keys(depNpm.versions));
       if (isPublished) {
@@ -58,12 +59,12 @@ export const checkDependenciesTask = createTask('Dependency check', async (opt) 
         } else {
           const parseVersion = parse(depNpm['dist-tags'].latest);
           opt.log(
-            `[${name}] THERE IS A NEWER VERSION (${selfVersion} -> ^${parseVersion.major}.${parseVersion.minor})`,
+            `[${name}] there is a new vesion (${selfVersion} -> ^${parseVersion.major}.${parseVersion.minor})`,
           );
           return false;
         }
       } else {
-        opt.warn(`[${name}] HAS NO PUBLISHED VERSIONS TO SATISFY ${selfVersion}`);
+        opt.warn(`[${name}] has no published version to satisfy ${selfVersion}`);
         process.exit(1);
       }
     }),
