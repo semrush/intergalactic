@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.1.3] - 2022-03-01
+
+### Fixed
+
+- Fixed `viewBox` for `BarChartSkeleton`.
+
 ## [3.1.2] - 2022-02-24
 
 ### Added
