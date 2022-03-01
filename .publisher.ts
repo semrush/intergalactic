@@ -12,16 +12,16 @@ import { npmPublishTask } from './tools/super-publisher/tasks/npm-publish';
 import { mailerTask } from './tools/super-publisher/tasks/mailer';
 
 export const publisherConfigFactory = () => [
-  selectPackageTask,
-  selectNextVersionTask,
-  jestTask,
-  buildTask,
-  deployTask,
-  gitTask,
-  checkChangelogTask,
-  checkDependenciesTask,
   checkGitTask,
   checkReleaseTask,
+  selectPackageTask,
+  selectNextVersionTask,
+  checkChangelogTask,
+  checkDependenciesTask,
+  jestTask,
+  buildTask,
+  gitTask,
+  deployTask,
   npmPublishTask,
   mailerTask,
 ];
