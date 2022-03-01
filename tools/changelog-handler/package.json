@@ -2,7 +2,7 @@
   "name": "@semcore/changelog-handler",
   "version": "0.0.1",
   "main": "index.ts",
-  "private": true,
+  "private": false,
   "license": "MIT",
   "dependencies": {
     "dayjs": "^1.10.7",
