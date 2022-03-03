@@ -66,3 +66,9 @@ SSpin[size='xxl'] {
   width: 72px;
   height: 72px;
 }
+
+@media (prefers-reduced-motion) {
+  SSpin {
+    animation-name: none;
+  }
+}
