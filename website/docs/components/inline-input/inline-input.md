@@ -94,7 +94,7 @@ InlineInput can take on the same states as a [normal input](/components/input/),
 
 - The user has clicked a trigger that opens an InlineInput.
 - InlineInput immediately receives focus.
-- The user enters data. Either saves the data, or using the cancel button / Esc key returns from edit mode to view mode.
+- The user enters data. Either saves the data, or using the cancel button / `Esc` key returns from edit mode to view mode.
 - When focus is lost (for example, the user is distracted by another screen), `onBlur` saves the entered value.
 
 | State         | Appearance example                       | Styles                                                                                                                     |
