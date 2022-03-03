@@ -211,7 +211,7 @@ SRow[theme='danger']:hover SCell:not([theme]) {
 
 SCell {
   display: flex;
-  flex: 0 0 auto;
+  flex: 1;
   font-size: 14px;
   color: var(--gray20);
   line-height: 20px;
