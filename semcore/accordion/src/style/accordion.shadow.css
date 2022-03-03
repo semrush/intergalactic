@@ -23,3 +23,9 @@ SItemChevron {
     transform: rotate(90deg);
   }
 }
+
+@media (prefers-reduced-motion) {
+  SItemChevron {
+    transition: none;
+  }
+}

@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [1.6.0] - 2021-03-04
+
+### Added
+
+- Disabled animation if reduce motion is preferred.
+
 ## [1.5.1] - 2022-02-24
 
 ### Added
