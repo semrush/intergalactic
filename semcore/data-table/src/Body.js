@@ -84,8 +84,6 @@ class Body extends Component {
     const SScrollAreaBar = ScrollArea.Bar;
     const { Children, styles, rows, columns, $scrollRef, onResize } = this.asProps;
 
-    const initializeColumns = !!columns.reduce((acc, c) => acc + c.width, 0);
-
     const [offsetLeftSum, offsetRightSum] = getScrollOffsetValue(columns);
     const offsetSum = offsetLeftSum + offsetRightSum;
 
@@ -99,7 +97,7 @@ class Body extends Component {
           onResize={onResize}
         >
           <ScrollArea.Container ref={$scrollRef}>
-            <SBody render={Box}>{initializeColumns ? this.renderRows(rows) : null}</SBody>
+            <SBody render={Box}>{this.renderRows(rows)}</SBody>
           </ScrollArea.Container>
           <SScrollAreaBar
             orientation="horizontal"
