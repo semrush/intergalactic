@@ -1,6 +1,5 @@
 const request = require('request');
 const util = require('util');
-const fs = require('fs');
 const path = require('path');
 const React = require('react');
 const ReactDOM = require('react-dom');
@@ -20,9 +19,9 @@ if (!process.env.SCREENSHOT_URL) {
 
 async function snapshot(Component, options = { selector: '#root' }) {
   const _tmp = document.createElement('div');
-
   ReactDOM.render(Component, _tmp);
 
+  // const requestBody = renderToStaticMarkup(Component);
   const requestBody = _tmp.innerHTML;
   const style = document.head.innerHTML;
   const html = `
@@ -78,9 +77,6 @@ async function snapshot(Component, options = { selector: '#root' }) {
             </div>
         </body>
     </html>`;
-
-  /* Uncomment line below to debug snapshot in your browser */
-  // fs.writeFileSync('./tmp.html', html);
   const { body } = await post({
     url: process.env.SCREENSHOT_URL,
     encoding: null,

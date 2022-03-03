@@ -2,12 +2,6 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [2.0.0] - 2022-03-03
-
-### Fixed
-
-- Fixed uninitialized columns width from fixed size to equal flex-boxes.
-
 ## [1.5.2] - 2022-02-24
 
 ### Added
