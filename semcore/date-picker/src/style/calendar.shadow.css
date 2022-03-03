@@ -182,3 +182,9 @@ SCalendarUnit[disabled] {
 SCalendarUnit[outdated] {
   opacity: 0.2;
 }
+
+@media (prefers-reduced-motion) {
+  SCalendarUnit {
+    transition: none;
+  }
+}

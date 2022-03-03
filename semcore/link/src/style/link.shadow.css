@@ -99,3 +99,12 @@ SLink[color] {
     color: var(--colorHoverText);
   }
 }
+
+@media (prefers-reduced-motion) {
+  SLink {
+    transition: none;
+  }
+  SText {
+    transition: none;
+  }
+}

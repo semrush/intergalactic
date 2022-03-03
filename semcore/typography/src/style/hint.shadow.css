@@ -55,3 +55,9 @@ SText {
   border-bottom-style: dotted;
   border-color: currentColor;
 }
+
+@media (prefers-reduced-motion) {
+  SHint {
+    transition: none;
+  }
+}
