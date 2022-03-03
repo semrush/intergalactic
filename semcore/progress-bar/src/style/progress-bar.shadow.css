@@ -100,3 +100,12 @@ SValue[theme] {
   background-color: var(--backgroundColor);
   background-image: var(--backgroundColor);
 }
+
+@media (prefers-reduced-motion) {
+  SValue {
+    animation-name: none;
+  }
+  SProgressBar[animation] {
+    animation-name: none;
+  }
+}

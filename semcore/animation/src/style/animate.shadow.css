@@ -10,3 +10,12 @@ SAnimation[visible] {
   animation-delay: var(--delayInitialize);
   animation-name: var(--keyframesInitialize);
 }
+
+@media (prefers-reduced-motion) {
+  SAnimation {
+    animation-name: none;
+  }
+  SAnimation[visible] {
+    animation-name: none;
+  }
+}
