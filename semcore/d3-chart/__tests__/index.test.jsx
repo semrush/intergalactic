@@ -1,13 +1,11 @@
 import React from 'react';
 // import { bisector } from 'd3-array';
 import { scaleLinear, scaleBand } from 'd3-scale';
-import { testing } from '@semcore/jest-preset-ui';
+import { testing, shared as testsShared, snapshot } from '@semcore/jest-preset-ui';
 const { render, fireEvent, cleanup } = testing;
-import { shared as testsShared } from '@semcore/jest-preset-ui';
 const { shouldSupportClassName, shouldSupportRef } = testsShared;
-import { Plot, YAxis, XAxis, Venn, Bar, StackBar, colors } from '../src';
+import { Plot, YAxis, XAxis, Venn, Bar, StackBar, colors, Bubble, ScatterPlot } from '../src';
 import { getIndexFromData } from '../src/utils';
-import { snapshot } from '@semcore/jest-preset-ui';
 import { minMax, Area, StackedArea } from '@semcore/d3-chart';
 import { curveCardinal } from 'd3-shape';
 
@@ -337,6 +335,55 @@ describe('Bar chart', () => {
           <StackBar.Bar y="stack2" color={colors['blue-02']} duration={0} />
         </StackBar>
       </Plot>
+    );
+
+    expect(await snapshot(component)).toMatchImageSnapshot();
+  });
+
+  test('should not cut content on right with left margin', async () => {
+    const width = 500;
+    const height = 300;
+
+    const data = Array(10)
+      .fill({})
+      .map((d, i) => ({
+        x: (i / 10).toFixed(1) * 10,
+        y: ((10 - i) / 10).toFixed(1) * 10,
+        value: i,
+      }));
+
+    const MARGIN = {
+      top: 40,
+      left: 40,
+      bottom: 0,
+      right: 0,
+    };
+
+    const xScale = scaleLinear()
+      .range([MARGIN.left, width - MARGIN.right])
+      .domain([0, 10]);
+
+    const yScale = scaleLinear()
+      .range([height - MARGIN.bottom, MARGIN.top])
+      .domain([0, 10]);
+
+    const component = (
+      <>
+        <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
+          <YAxis>
+            <YAxis.Grid />
+          </YAxis>
+          <Bubble x="x" y="y" value="value" />
+        </Plot>
+        <br />
+        <br />
+        <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
+          <YAxis>
+            <YAxis.Grid />
+          </YAxis>
+          <ScatterPlot x="x" y="y" value="value" r={30} />
+        </Plot>
+      </>
     );
 
     expect(await snapshot(component)).toMatchImageSnapshot();
