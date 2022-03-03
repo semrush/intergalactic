@@ -1,0 +1,10 @@
+{
+  "name": "@semcore/illustration",
+  "description": "SEMRush Illustration Component",
+  "version": "1.0.0",
+  "main": "index.js",
+  "module": "index.js",
+  "sideEffects": false,
+  "author": "Roman Lysov <r.lysov@semrush.com>",
+  "license": "MIT"
+}
