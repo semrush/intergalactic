@@ -90,21 +90,17 @@ class ScatterPlotRoot extends Component {
   }
 
   render() {
-    const { data, uid, size, scale } = this.asProps;
+    const { data, uid, scale } = this.asProps;
     const [xScale, yScale] = scale;
-    const marginX = Math.min(xScale.range()[0], xScale.range()[1]);
-    const marginY = Math.min(yScale.range()[0], yScale.range()[1]);
+    const xSize = Math.abs(xScale.range()[0] - xScale.range()[1]);
+    const ySize = Math.abs(yScale.range()[0] - yScale.range()[1]);
+    const xMargin = Math.min(xScale.range()[0], xScale.range()[1]);
+    const yMargin = Math.min(yScale.range()[0], yScale.range()[1]);
 
     return (
       <>
         {data.map(this.renderCircle.bind(this))}
-        <ClipPath
-          id={uid}
-          x={marginX}
-          y={marginY}
-          width={`${size[0] - 2 * marginX}px`}
-          height={`${size[1] - 2 * marginY}px`}
-        />
+        <ClipPath id={uid} x={xMargin} y={yMargin} width={`${xSize}px`} height={`${ySize}px`} />
       </>
     );
   }
