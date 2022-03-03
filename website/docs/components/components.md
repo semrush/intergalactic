@@ -25,6 +25,7 @@ title: Components
 @page filter-trigger
 @page form
 @page fullscreen-modal
+@page inline-edit
 @page inline-input
 @page input
 @page input-mask
