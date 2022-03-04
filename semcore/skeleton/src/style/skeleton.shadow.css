@@ -31,3 +31,9 @@ SSkeleton[theme='dark'] {
 SText {
   box-sizing: border-box;
 }
+
+@media (prefers-reduced-motion) {
+  SSkeleton {
+    animation-name: none;
+  }
+}

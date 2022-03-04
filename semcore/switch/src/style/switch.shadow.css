@@ -132,3 +132,9 @@ SAddon[neighborLocation='right'] {
 SAddon[neighborLocation='left'] {
   color: var(--gray60);
 }
+
+@media (prefers-reduced-motion) {
+  SSlider {
+    transition: none;
+  }
+}

@@ -82,3 +82,12 @@ SSpot {
     background-color: #ffd54f;
   }
 }
+
+@media (prefers-reduced-motion) {
+  SSpot {
+    animation-name: none;
+    &::before {
+      animation-name: none;
+    }
+  }
+}

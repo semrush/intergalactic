@@ -99,3 +99,12 @@ SLinkTrigger[size='l'] {
 SLinkTrigger[size='xl'] {
   font-size: 16px;
 }
+
+@media (prefers-reduced-motion) {
+  SLinkTrigger {
+    transition: none;
+    & SText {
+      transition: none;
+    }
+  }
+}

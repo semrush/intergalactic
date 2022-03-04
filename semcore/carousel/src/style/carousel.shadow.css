@@ -62,3 +62,9 @@ SNext[disabled] {
   cursor: default;
   pointer-events: none;
 }
+
+@media (prefers-reduced-motion) {
+  SContainer {
+    transition: none;
+  }
+}

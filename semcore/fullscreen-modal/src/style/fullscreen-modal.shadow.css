@@ -117,3 +117,9 @@ SHeaderDivider {
   width: 1px;
   background-color: var(--gray80);
 }
+
+@media (prefers-reduced-motion) {
+  SBackText {
+    transition: none;
+  }
+}

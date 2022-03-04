@@ -158,3 +158,15 @@ STabLineItem[size='xl'] {
 STabLineItem[neighborLocation='left'] {
   margin-right: 0;
 }
+
+@media (prefers-reduced-motion) {
+  STabLineItem {
+    &::after {
+      transition: none;
+    }
+  }
+
+  SIndicator {
+    transition: none;
+  }
+}
