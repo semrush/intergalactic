@@ -69,17 +69,17 @@ jobs:
           echo "firstCommitHash=$(git log master..origin/${{ env.release_branch_name }} --pretty=format:"%H" | tail -1)" >> $GITHUB_ENV
           echo "secondCommitHash=$(git log master..origin/${{ env.release_branch_name }} --pretty=format:"%H" | tail -2 | head -1)" >> $GITHUB_ENV
           echo "lastCommitHash=$(git log master..origin/${{ env.release_branch_name }} --pretty=format:"%H" | head -1)" >> $GITHUB_ENV
-      - name: update release changelog
+      - name: commit changelog change as a first commit in the release branch
         run: |
           yarn update-release-changelog
           git add semcore/ui/CHANGELOG.md
-      - name: commit changelog change as a first commit in the release branch
-        run: |
           git commit -m "Automatically updated @semcore/ui changelog"
         if: env.release_branch_already_exists != 'true'
       - name: edit changelog change commit in the release branch
         run: |
           git checkout "${{ env.firstCommitHash }}"
+          yarn update-release-changelog
+          git add semcore/ui/CHANGELOG.md
           git commit -m "Automatically updated @semcore/ui changelog" --amend --no-edit
           git cherry-pick "${{ env.secondCommitHash }}..${{ env.lastCommitHash }}" --strategy-option theirs
           git checkout "${{ env.release_branch_name }}"
