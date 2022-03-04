@@ -3,6 +3,7 @@
 import semver from 'semver';
 import commander from 'commander';
 import { runPublisherTasks } from '../index';
+import { TaskArgs } from '../task';
 
 export type PublisherOptions = Partial<{
   root: string;
@@ -18,7 +19,7 @@ export type PublisherOptions = Partial<{
   dryRun: boolean;
 }>;
 
-const options: PublisherOptions = commander
+const options = commander
   .option('--root [root]', 'Path to directory with packages', process.cwd())
   .option('--package [name]', 'Name directory where is the package.json')
   .option('--many', 'Publish some packages')
@@ -34,7 +35,9 @@ const options: PublisherOptions = commander
   .option('--no-test', 'No run test')
   .option('--dry-run', 'No deploy, no commit, no publish, no mail')
   .parse(process.argv)
-  .opts();
+  .opts() as TaskArgs;
+
+options.rawArgs = process.argv;
 
 runPublisherTasks(options).catch((error) => {
   if (error !== null) {

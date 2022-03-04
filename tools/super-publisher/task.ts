@@ -9,7 +9,7 @@ type TaskOptions = PublisherOptions & {
   warn: (message: string) => void;
 };
 
-type TaskArgs = PublisherOptions & {
+export type TaskArgs = PublisherOptions & {
   rawArgs: string[];
 };
 
