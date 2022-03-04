@@ -50,7 +50,7 @@ jobs:
           git config --global user.name 'semrush-ci-whale'
           git config --global user.email 'semrush-ci-whale@users.noreply.github.com'
           git remote set-url origin https://x-access-token:${{ secrets.BOT_ACCOUNT_GITHUB_TOKEN }}@github.com/semrush/intergalactic
-          "${{ secrets.BOT_ACCOUNT_GITHUB_TOKEN }}" > ./.gh-auth-token.txt
+          echo "${{ secrets.BOT_ACCOUNT_GITHUB_TOKEN }}" > ./.gh-auth-token.txt
           gh auth login --with-token < ./.gh-auth-token.txt
           rm ./.gh-auth-token.txt
       - name: check release branch already exists
