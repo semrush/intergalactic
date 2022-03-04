@@ -67,9 +67,8 @@ jobs:
           git fetch --all
           git checkout -b "${{ env.release_branch_name }}"
           echo "firstCommitHash=$(git log master..origin/${{ env.release_branch_name }} --pretty=format:"%H" | tail -1)" >> $GITHUB_ENV
-          echo "secondCommitHash=$(git log master..origin/${{ env.release_branch_name }} --pretty=format:"%H" | tail -2)" >> $GITHUB_ENV
+          echo "secondCommitHash=$(git log master..origin/${{ env.release_branch_name }} --pretty=format:"%H" | tail -2 | head -1)" >> $GITHUB_ENV
           echo "lastCommitHash=$(git log master..origin/${{ env.release_branch_name }} --pretty=format:"%H" | head -1)" >> $GITHUB_ENV
-          cat $GITHUB_ENV
       - name: update release changelog
         run: |
           yarn update-release-changelog
