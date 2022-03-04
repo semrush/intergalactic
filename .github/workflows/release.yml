@@ -66,6 +66,11 @@ jobs:
         run: |
           git fetch --all
           git checkout -b "${{ env.release_branch_name }}"
+      - name: get branch commit hashes
+        run: |
+          echo "firstCommitHash=$(git log master..origin/${{ env.release_branch_name }} --pretty=format:"%H" | tail -1)" >> $GITHUB_ENV
+          echo "secondCommitHash=$(git log master..origin/${{ env.release_branch_name }} --pretty=format:"%H" | tail -2)" >> $GITHUB_ENV
+          echo "lastCommitHash=$(git log master..origin/${{ env.release_branch_name }} --pretty=format:"%H" | head -1)" >> $GITHUB_ENV
       - name: update release changelog
         run: |
           yarn update-release-changelog
@@ -76,10 +81,6 @@ jobs:
         if: env.release_branch_already_exists != 'true'
       - name: edit changelog change commit in the release branch
         run: |
-          # git pull origin "${{ env.release_branch_name }}" --rebase
-          echo "firstCommitHash=$(git log master..origin/${{ env.release_branch_name }} --pretty=format:"%H" | tail -1)" >> $GITHUB_ENV
-          echo "secondCommitHash=$(git log master..origin/${{ env.release_branch_name }} --pretty=format:"%H" | tail -2)" >> $GITHUB_ENV
-          echo "lastCommitHash=$(git log master..origin/${{ env.release_branch_name }} --pretty=format:"%H" | head -1)" >> $GITHUB_ENV
           git checkout "${{ env.firstCommitHash }}"
           git commit -m "Automatically updated @semcore/ui changelog" --amend --no-edit
           git cherry-pick "${{ env.secondCommitHash }}..${{ env.lastCommitHash }}" --strategy-option theirs
