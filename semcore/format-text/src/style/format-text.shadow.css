@@ -328,3 +328,11 @@ SFormatText[size='xl'] {
     margin-left: 2px;
   }
 }
+
+@media (prefers-reduced-motion) {
+  SFormatText {
+    & a {
+      transition: none;
+    }
+  }
+}
