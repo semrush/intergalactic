@@ -43,7 +43,7 @@ jobs:
         run: yarn --non-interactive --frozen-lockfile
       - name: generate release pull request name
         run: |
-          currentSemcoreUiVersion=cat semcore/ui/package.json | jq .version
+          currentSemcoreUiVersion="$(cat semcore/ui/package.json | jq .version)"
           echo "release_pr_name=release-after-$currentSemcoreUiVersion" >> $GITHUB_ENV
           echo "release_branch_name=release/after-$currentSemcoreUiVersion" >> $GITHUB_ENV
       - name: Github auth
