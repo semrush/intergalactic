@@ -173,4 +173,9 @@ describe('Tag', () => {
     );
     expect(await snapshot(component)).toMatchImageSnapshot();
   });
+
+  test('should display ellipsis if text is too long', async () => {
+    const component = <Tag w={80}>Lorem ipsum dolor sit amet</Tag>;
+    expect(await snapshot(component)).toMatchImageSnapshot();
+  });
 });
