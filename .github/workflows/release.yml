@@ -43,7 +43,7 @@ jobs:
         run: yarn --non-interactive --frozen-lockfile
       - name: generate release pull request name
         run: |
-          currentSemcoreUiVersion="$(cat semcore/ui/package.json | jq .version)"
+          currentSemcoreUiVersion="$(cat semcore/ui/package.json | jq -r .version)"
           echo "release_pr_name=release-after-$currentSemcoreUiVersion" >> $GITHUB_ENV
           echo "release_branch_name=release/after-$currentSemcoreUiVersion" >> $GITHUB_ENV
       - name: Github auth
@@ -56,11 +56,11 @@ jobs:
           rm ./.gh-auth-token.txt
       - name: check release branch already exists
         run: |
-          existed_in_remote=$(git ls-remote --heads origin ${{ env.release_branch_name }})
+          existed_in_remote=$(git ls-remote --heads origin "${{ env.release_branch_name }}")
           if [[ -z ${existed_in_remote} ]]; then
-            echo "release_branch_already_exists=true" >> $GITHUB_ENV
-          else
             echo "release_branch_already_exists=false" >> $GITHUB_ENV
+          else
+            echo "release_branch_already_exists=true" >> $GITHUB_ENV
           fi
       - name: create release branch
         run: |
