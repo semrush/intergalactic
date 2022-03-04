@@ -4,6 +4,7 @@ on:
     - cron: '0 8 * * *'
   repository_dispatch:
     types: [update-command]
+  workflow_dispatch:
 jobs:
   check_new_commits:
     runs-on: ubuntu-latest
