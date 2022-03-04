@@ -80,7 +80,7 @@ jobs:
           git checkout $firstCommitHash
           git commit -m "Automatically updated @semcore/ui changelog" --amend --no-edit
           git checkout "${{ env.release_branch_name }}"
-          git pull --rebase
+          git pull origin "${{ env.release_branch_name }}" --rebase
         if: env.release_branch_already_exists == 'true'
       - name: push updated changelog
         run: |
