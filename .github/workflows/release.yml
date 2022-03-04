@@ -53,6 +53,14 @@ jobs:
           "${{ secrets.BOT_ACCOUNT_GITHUB_TOKEN }}" > ./.gh-auth-token.txt
           gh auth login --with-token < ./.gh-auth-token.txt
           rm ./.gh-auth-token.txt
+      - name: check release branch already exists
+        run: |
+          local existed_in_remote=$(git ls-remote --heads origin ${{ env.release_branch_name }})
+          if [[ -z ${existed_in_remote} ]]; then
+            echo "release_branch_already_exists=true" >> $GITHUB_ENV
+          else
+            echo "release_branch_already_exists=false" >> $GITHUB_ENV
+          fi
       - name: create release branch
         run: |
           git checkout -b "${{ env.release_branch_name }}"
@@ -60,7 +68,7 @@ jobs:
       - name: create pull request
         run: |
           gh pr create --title "${{ env.release_pr_name }}" --body "Test release pull request" --base "${{ env.release_branch_name }}"
-        if: ${{ git checkout "${{ env.release_branch_name }}" || echo $? == 1 }}
+        if: env.release_branch_already_exists != 'true'
       - name: update release changelog
         run: |
           yarn update-release-changelog
