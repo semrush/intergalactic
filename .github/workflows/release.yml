@@ -77,12 +77,12 @@ jobs:
       - name: edit changelog change commit in the release branch
         run: |
           # git pull origin "${{ env.release_branch_name }}" --rebase
-          firstCommitHash="$(git log master.."${{ env.release_branch_name }}" --pretty=format:"%H" | tail -1)"
-          secondCommitHash="$(git log master.."${{ env.release_branch_name }}" --pretty=format:"%H" | tail -2)"
-          lastCommitHash="$(git log master.."${{ env.release_branch_name }}" --pretty=format:"%H" | head -1)"
-          git checkout $firstCommitHash
+          echo "firstCommitHash=$(git log master.."${{ env.release_branch_name }}" --pretty=format:"%H" | tail -1)" >> $GITHUB_ENV
+          echo "secondCommitHash=$(git log master.."${{ env.release_branch_name }}" --pretty=format:"%H" | tail -2)" >> $GITHUB_ENV
+          echo "lastCommitHash=$(git log master.."${{ env.release_branch_name }}" --pretty=format:"%H" | head -1)" >> $GITHUB_ENV
+          git checkout "${{ env.firstCommitHash }}"
           git commit -m "Automatically updated @semcore/ui changelog" --amend --no-edit
-          git cherry-pick "$secondCommitHash..$lastCommitHash" --strategy-option theirs
+          git cherry-pick "${{ env.secondCommitHash }}..${{ env.lastCommitHash }}" --strategy-option theirs
           git checkout "${{ env.release_branch_name }}"
         if: env.release_branch_already_exists == 'true'
       - name: push updated changelog
