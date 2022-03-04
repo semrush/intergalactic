@@ -43,8 +43,9 @@ jobs:
         run: yarn --non-interactive --frozen-lockfile
       - name: generate release pull request name
         run: |
-          echo "release_pr_name=release-after-{cat semcore/ui/package.json | jq .version}" >> $GITHUB_ENV
-          echo "release_branch_name=release/after-{cat semcore/ui/package.json | jq .version}" >> $GITHUB_ENV
+          currentSemcoreUiVersion=cat semcore/ui/package.json | jq .version
+          echo "release_pr_name=release-after-$currentSemcoreUiVersion" >> $GITHUB_ENV
+          echo "release_branch_name=release/after-$currentSemcoreUiVersion" >> $GITHUB_ENV
       - name: Github auth
         run: |
           git config --global user.name 'semrush-ci-whale'
