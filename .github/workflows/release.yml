@@ -66,13 +66,13 @@ jobs:
         run: |
           git checkout -b "${{ env.release_branch_name }}"
           git push --set-upstream origin "${{ env.release_branch_name }}"
-      - name: create pull request
-        run: |
-          gh pr create --title "${{ env.release_pr_name }}" --body "Test release pull request" --draft --base master
-        if: env.release_branch_already_exists != 'true'
       - name: update release changelog
         run: |
           yarn update-release-changelog
           git add semcore/ui/CHANGELOG.md
           git commit -m "Automatically updated @semcore/ui changelog"
           git push
+      - name: create pull request
+        run: |
+          gh pr create --title "${{ env.release_pr_name }}" --body "Test release pull request" --draft --base master
+        if: env.release_branch_already_exists != 'true'
