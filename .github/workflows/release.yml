@@ -64,6 +64,7 @@ jobs:
           fi
       - name: checkout release branch
         run: |
+          git fetch --all
           git checkout -b "${{ env.release_branch_name }}"
       - name: update release changelog
         run: |
