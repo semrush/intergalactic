@@ -2652,6 +2652,14 @@
     string-hash "^1.1.3"
     svg-tag-names "^2.0.1"
 
+"@semcore/skeleton@3.1.2":
+  version "3.1.2"
+  resolved "https://registry.yarnpkg.com/@semcore/skeleton/-/skeleton-3.1.2.tgz#0071fc8e4fe4395d69eb72fd6bd64bd039a88a28"
+  integrity sha512-M1Plo7sQ25F6b6r55vz6YiQDO7IhXMWeqKqfZLCZDeeBd4H4hj12SPPTgdn6p8mQ3scKrr09gtyW0C7o4rusNQ==
+  dependencies:
+    "@semcore/flex-box" "^4"
+    "@semcore/utils" "^3.24"
+
 "@semcore/spin-container@5.0.1":
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/@semcore/spin-container/-/spin-container-5.0.1.tgz#ea84c8bc2643737820b6a87a5bb6f741a9a61e9b"

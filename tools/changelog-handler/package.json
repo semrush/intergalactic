@@ -2,6 +2,9 @@
   "name": "@semcore/changelog-handler",
   "version": "0.0.1",
   "main": "index.ts",
+  "bin": {
+    "update-release-changelog": "bin/update-release-changelog.ts"
+  },
   "private": false,
   "license": "MIT",
   "dependencies": {
