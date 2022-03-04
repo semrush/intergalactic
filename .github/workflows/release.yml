@@ -62,15 +62,28 @@ jobs:
           else
             echo "release_branch_already_exists=true" >> $GITHUB_ENV
           fi
-      - name: create release branch
+      - name: checkout release branch
         run: |
           git checkout -b "${{ env.release_branch_name }}"
-          git push --set-upstream origin "${{ env.release_branch_name }}"
       - name: update release changelog
         run: |
           yarn update-release-changelog
           git add semcore/ui/CHANGELOG.md
+      - name: make first branch commit
+        run: |
           git commit -m "Automatically updated @semcore/ui changelog"
+          # git pull --rebase
+        if: env.release_branch_already_exists != 'true'
+      - name: update existing first branch commit
+        run: |
+          firstCommitHash="$(git log master.."${{ env.release_branch_name }}" --pretty=format:"%H" | tail -1)"
+          git checkout $firstCommitHash
+          git commit -m "Automatically updated @semcore/ui changelog" --amend --no-edit
+          git pull --rebase
+        if: env.release_branch_already_exists == 'true'
+      - name: push updated changelog
+        run: |
+          git push --set-upstream origin "${{ env.release_branch_name }}" --force
           git push
       - name: create pull request
         run: |
