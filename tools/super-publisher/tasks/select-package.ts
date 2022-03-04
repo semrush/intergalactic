@@ -27,11 +27,13 @@ export const selectPackageTask = createTask('Choose package', async (opt, args) 
 
     await components.reduce(async (task, component) => {
       await task;
-      const [command, ...parentArgs] = args.rawArgs.filter(
+      const parentArgs = args.rawArgs.filter(
         (arg, argIndex) => arg !== '--package' && args.rawArgs[argIndex - 1] !== '--package',
       );
+      const argsStart = parentArgs.findIndex((arg) => arg.startsWith('-'));
+      const usedArgs = parentArgs.slice(argsStart);
 
-      return execa(command, [...parentArgs, '--package', component], {
+      return execa('yarn', ['pub', ...usedArgs, '--package', component], {
         stdin: 'inherit',
         stdout: 'inherit',
       });
