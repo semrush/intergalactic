@@ -230,14 +230,14 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ## [1.0.0] - 2019-05-20
 
-### Added
-
-- Добавлено свойство `underlined`
-
 ### BREAK
 
 - Удалено свойство `theme`
 - Изменены размеры в соответствии с типографикой
+
+### Added
+
+- Добавлено свойство `underlined`
 
 ## [1.0.0-1] - 2019-02-13
 
