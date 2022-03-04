@@ -73,5 +73,6 @@ jobs:
       - name: update release changelog
         run: |
           yarn update-release-changelog
+          git add semcore/ui/CHANGELOG.add
           git commit -m "Automatically updated @semcore/ui changelog"
           git push
