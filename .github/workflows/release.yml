@@ -1,0 +1,67 @@
+name: release
+on:
+  schedule:
+    - cron: '0 8 * * *'
+  repository_dispatch:
+    types: [update-command]
+jobs:
+  check_new_commits:
+    runs-on: ubuntu-latest
+    name: Check latest commit
+    outputs:
+      should_run: ${{ steps.should_run.outputs.should_run }}
+    steps:
+      - uses: actions/checkout@v2
+      - name: print latest_commit
+        run: echo ${{ github.sha }}
+
+      - id: should_run
+        continue-on-error: true
+        name: check latest commit is less than a day
+        if: ${{ github.event_name == 'schedule' }}
+        run: test -z $(git rev-list  --after="24 hours"  ${{ github.sha }}) && echo "::set-output name=should_run::false"
+
+  create-release-pull-request:
+    needs:
+      - check_new_commits
+    if: ${{ needs.check_date.outputs.should_run != 'false' && needs.check_date.outputs.pr_commented != 'false' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+      - name: Cache node modules
+        uses: actions/cache@v2
+        id: cache-modules
+        with:
+          path: |
+            node_modules
+            */*/node_modules
+          key: modules-${{ runner.os }}-${{ hashFiles('yarn.lock') }}
+      - name: Install dependencies
+        if: steps.cache-modules.outputs.cache-hit != 'true'
+        run: yarn --non-interactive --frozen-lockfile
+      - name: generate release pull request name
+        run: |
+          echo "release_pr_name=release-after-{cat semcore/ui/package.json | jq .version}" >> $GITHUB_ENV
+          echo "release_branch_name=release/after-{cat semcore/ui/package.json | jq .version}" >> $GITHUB_ENV
+      - name: Github auth
+        run: |
+          git config --global user.name 'semrush-ci-whale'
+          git config --global user.email 'semrush-ci-whale@users.noreply.github.com'
+          git remote set-url origin https://x-access-token:${{ secrets.BOT_ACCOUNT_GITHUB_TOKEN }}@github.com/semrush/intergalactic
+          "${{ secrets.BOT_ACCOUNT_GITHUB_TOKEN }}" > ./.gh-auth-token.txt
+          gh auth login --with-token < ./.gh-auth-token.txt
+          rm ./.gh-auth-token.txt
+      - name: create release branch
+        run: |
+          git checkout -b "${{ env.release_branch_name }}"
+          git push --set-upstream origin "${{ env.release_branch_name }}"
+      - name: create pull request
+        run: |
+          gh pr create --title "${{ env.release_pr_name }}" --body "Test release pull request" --base "${{ env.release_branch_name }}"
+        if: ${{ git checkout "${{ env.release_branch_name }}" || echo $? == 1 }}
+      - name: update release changelog
+        run: |
+          yarn update-release-changelog
+          git commit -m "Automatically updated @semcore/ui changelog"
+          git push
