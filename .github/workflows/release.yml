@@ -69,23 +69,24 @@ jobs:
         run: |
           yarn update-release-changelog
           git add semcore/ui/CHANGELOG.md
-      - name: make first branch commit
+      - name: commit changelog change as a first commit in the release branch
         run: |
           git commit -m "Automatically updated @semcore/ui changelog"
-          # git pull --rebase
         if: env.release_branch_already_exists != 'true'
-      - name: update existing first branch commit
+      - name: edit changelog change commit in the release branch
         run: |
+          # git pull origin "${{ env.release_branch_name }}" --rebase
           firstCommitHash="$(git log master.."${{ env.release_branch_name }}" --pretty=format:"%H" | tail -1)"
+          secondCommitHash="$(git log master.."${{ env.release_branch_name }}" --pretty=format:"%H" | tail -2)"
+          lastCommitHash="$(git log master.."${{ env.release_branch_name }}" --pretty=format:"%H" | head -1)"
           git checkout $firstCommitHash
           git commit -m "Automatically updated @semcore/ui changelog" --amend --no-edit
+          git cherry-pick "$secondCommitHash..$lastCommitHash" --strategy-option theirs
           git checkout "${{ env.release_branch_name }}"
-          git pull origin "${{ env.release_branch_name }}" --rebase
         if: env.release_branch_already_exists == 'true'
       - name: push updated changelog
         run: |
           git push --set-upstream origin "${{ env.release_branch_name }}" --force
-          git push
       - name: create pull request
         run: |
           gh pr create --title "${{ env.release_pr_name }}" --body "Test release pull request" --draft --base master
