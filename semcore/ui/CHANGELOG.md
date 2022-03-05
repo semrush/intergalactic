@@ -53,8 +53,8 @@
 
 ### @semcore/spin
 
-- **Changed** Rewrite the component to svg
-- **Added** Added roundings
+- **Changed** Rewrite the component to svg.
+- **Added** Rounded corners.
 
 ### @semcore/super-publisher
 
