@@ -10,6 +10,7 @@ jobs:
         uses: peter-evans/slash-command-dispatch@v2
         with:
           token: ${{ secrets.BOT_ACCOUNT_GITHUB_TOKEN }}
+          dispatch-type: repository
           reaction-type: eyes
           permission: |
             write
