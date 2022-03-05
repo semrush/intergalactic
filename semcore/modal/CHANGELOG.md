@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.4.5] - 2022-03-09
+
+### Fixed
+
+- Fixed jumping content, when modal inside modal and body don't have `box-sizing`.
+
 ## [2.4.3] - 2022-03-05
 
 ### Changed

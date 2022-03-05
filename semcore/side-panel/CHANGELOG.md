@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [1.3.4] - 2022-03-09
+
+### Fixed
+
+- Fixed jumping content, when body don't have `box-sizing`.
+
 ## [1.3.3] - 2022-03-05
 
 ### Changed
