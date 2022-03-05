@@ -4,13 +4,20 @@ import fs from 'fs-extra';
 import { fileURLToPath } from 'url';
 const filename = fileURLToPath(import.meta.url);
 
+const log = (message: string) => {
+  // eslint-disable-next-line no-console
+  console.log(`[gcs-upload tool]: ${message}`);
+};
+
 const BUCKET_NAME = `ui-kit-flags`;
 
 export const setupStorage = async () => {
   const configFilePath = path.join(path.dirname(filename), 'config.json');
   if (process.env.GCLOUD_SECRET) {
+    log(`GCLOUD_SECRET env variable found, writing it's content to ${configFilePath}`);
     await fs.writeFile(configFilePath, process.env.GCLOUD_SECRET);
   }
+  log(`Using config ${configFilePath}`);
   if (!(await fs.pathExists(configFilePath))) {
     const exampleFilePath = configFilePath.replace(/config\.json$/, 'config.example.json');
     throw new Error(
@@ -20,10 +27,16 @@ export const setupStorage = async () => {
   const config = await fs.readJson(configFilePath);
   const { projectId } = config;
 
-  return new Storage({
+  log(`Initiating storage for ${projectId} project`);
+
+  const storage = new Storage({
     projectId,
     keyFilename: configFilePath,
   });
+
+  log(`Initiated storage for ${projectId} project`);
+
+  return storage;
 };
 
 export const getPackageData = async () => {
@@ -52,15 +65,19 @@ export const upload = async (filePaths: string[]) => {
   }
 
   const { version: packageVersion, name: packageName } = await getPackageData();
+
   const storage = await setupStorage();
 
-  // eslint-disable-next-line no-console
-  console.log(`Starting uploading following paths: ${filePaths.join(', ')}`);
+  log(
+    `Initiating uploading of ${filePaths.join(', ')} from ${packageName}@${packageVersion} package`,
+  );
 
   await Promise.all(
     filePaths.map((filePath) => {
       const fileName = filePath.split('/').pop();
       const destination = `ui-kit/${packageName}/${packageVersion}/${fileName}`;
+
+      log(`Uploading ${fileName} to ${destination}`);
 
       return (
         storage
@@ -88,27 +105,33 @@ export const remove = async (filePaths: string[]) => {
 
   const storage = await setupStorage();
 
+  log(`Initiating removing of ${filePaths.join(', ')}`);
+
   await Promise.all(
-    filePaths.map((filePath) =>
-      storage
+    filePaths.map(async (filePath) => {
+      log(`Removing ${filePath}`);
+
+      await storage
         .bucket(BUCKET_NAME)
         .file(filePath)
         .delete()
         // eslint-disable-next-line no-console
-        .then((file) => console.log(`gs://${BUCKET_NAME}/${file} deleted`)),
-    ),
+        .then((file) => console.log(`gs://${BUCKET_NAME}/${file} removed`));
+    }),
   );
 };
 
 export const ls = async () => {
   const storage = await setupStorage();
 
+  log(`Listing files`);
+
   const [files] = await storage.bucket(BUCKET_NAME).getFiles();
 
   return files.map((file) => file.name);
 };
 
-export const uploadFilesInFolders = async (folderPaths) => {
+export const uploadFilesInFolders = async (folderPaths: string[]) => {
   if (!folderPaths || !folderPaths.length) {
     throw new Error(
       `@semcore/gcs-upload package requires at least one folder path to be provided for uploading, got ${folderPaths}`,
@@ -117,14 +140,20 @@ export const uploadFilesInFolders = async (folderPaths) => {
 
   const storage = await setupStorage();
 
+  log(`Uploading files from folders ${folderPaths.join(', ')}`);
+
   await Promise.all(
     folderPaths.map(async (folderPath) => {
       const folderName = folderPath.split('/').pop();
       const fileNames = await fs.readdir(folderPath);
 
+      log(`Uploading files from folder ${folderPath}`);
+
       return await Promise.all(
         fileNames.map((fileName) => {
           const destination = `ui-kit/${folderName}/${fileName}`;
+
+          log(`Uploading ${fileName} to ${destination}`);
 
           return (
             storage
