@@ -16,6 +16,7 @@ export const buildTask = createTask('Building', async (opt) => {
       env: {
         NODE_ENV: 'production',
       },
+      stdio: 'inherit',
     });
 
     try {

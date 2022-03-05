@@ -1,5 +1,11 @@
-**npm run build**
-Соберет спрайты
+```sh
+yarn build
+```
 
-**npm run deploy**
-Для загрузки спрайтов на `cdn`, Но сперва ознакомся с пакетом `flags-sprite`
+Build sprites.
+
+```sh
+yarn upload-static
+```
+
+Upload sprites to `cdn`. Before using take a look at `flags-sprite` package.

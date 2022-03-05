@@ -28,7 +28,9 @@ export const npmPublishTask = createTask('NPM publishing', async (opt) => {
     opt.log(`Running \`npm ${npmArgs.join(' ')}\``);
 
     if (!opt.dryRun) {
-      await execa('npm', npmArgs);
+      await execa('npm', npmArgs, {
+        stdio: 'inherit',
+      });
     }
   } catch (e) {
     throw new Error(e.message);

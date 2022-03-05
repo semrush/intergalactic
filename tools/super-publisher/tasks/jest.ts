@@ -9,7 +9,10 @@ export const jestTask = createTask('Testing', async (opt) => {
 
   const { root } = opt;
   opt.progress('processing...');
-  await execa('npm', ['run', 'test', '--', '--no-cache'], { cwd: root ? root : process.cwd() });
+  await execa('npm', ['run', 'test', '--', '--no-cache'], {
+    cwd: root ? root : process.cwd(),
+    stdio: 'inherit',
+  });
 
   return opt;
 });

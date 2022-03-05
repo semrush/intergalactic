@@ -33,7 +33,7 @@ const options = commander
   .option('--no-check-deps', 'No check dependency')
   .option('--no-check-release', 'No check release')
   .option('--no-test', 'No run test')
-  .option('--dry-run', 'No deploy, no commit, no publish, no mail')
+  .option('--dry-run', 'No upload-static, no commit, no publish, no mail')
   .parse(process.argv)
   .opts() as TaskArgs;
 
