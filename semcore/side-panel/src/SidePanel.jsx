@@ -1,13 +1,13 @@
-import React, { ComponentProps, useRef } from 'react';
+import React, { useRef } from 'react';
 import FocusLock from 'react-focus-lock';
 import createComponent, { Component, Root, sstyled } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
-import { FadeInOut, IFadeInOutProps, ITransformProps, Transform } from '@semcore/animation';
-import Portal, { IPortalProps, PortalProvider } from '@semcore/portal';
+import { FadeInOut, Transform } from '@semcore/animation';
+import Portal, { PortalProvider } from '@semcore/portal';
 import OutsideClick from '@semcore/outside-click';
 import CloseIcon from '@semcore/icon/Close/l';
 import fire from '@semcore/utils/lib/fire';
-import findComponent, { isAdvanceMode } from '@semcore/utils/lib/findComponent';
+import { isAdvanceMode } from '@semcore/utils/lib/findComponent';
 import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 import usePreventScroll from '@semcore/utils/lib/use/usePreventScroll';
 
