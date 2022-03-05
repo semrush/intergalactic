@@ -4,7 +4,6 @@ import fs from 'fs-extra';
 import glob from 'glob';
 import { fileURLToPath } from 'url';
 import { createRequire } from 'module';
-import { updateReleaseChangelog } from '@semcore/changelog-handler';
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.resolve(filename, '..');
@@ -167,7 +166,6 @@ const generateFiles = async (packages: string[]) => {
 await removeDirectory();
 await installComponents(components.packages);
 await generateFiles(components.packages);
-await updateReleaseChangelog();
 
 execSync('yarn test', {
   stdio: 'inherit',
