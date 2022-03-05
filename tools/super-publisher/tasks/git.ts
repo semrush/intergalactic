@@ -19,22 +19,21 @@ export const gitTask = createTask('GIT fixation', async (opt) => {
   if (status.files.length) {
     const tag = `${name}_${version}`;
 
-    opt.log('Running `git commit --no-verify`');
+    if (opt.dryRun) {
+      opt.log('No running git commit, you use --dry-run flag');
+    } else {
+      opt.log('Running `git commit --no-verify`');
 
-    if (!opt.dryRun) {
       await git.commit(`[${name}] upgrade to ${version}`, undefined, {
         '--no-verify': null,
       });
-    }
 
-    opt.log(`Running \`git tag -f ${tag}\``);
-    if (!opt.dryRun) {
+      opt.log(`Running \`git tag -f ${tag}\``);
+
       await git.tag(['-f', tag]);
-    }
 
-    opt.log('Running `git push origin master --no-verify --follow-tags`');
+      opt.log('Running `git push origin master --no-verify --follow-tags`');
 
-    if (!opt.dryRun) {
       await git.push('origin', 'master', {
         '--no-verify': null,
         // '--tags': null,

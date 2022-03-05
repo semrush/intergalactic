@@ -36,7 +36,7 @@ module.exports = function () {
         {
           test: /\.(js|ts|jsx|tsx)$/i,
           exclude: /(node_modules)/,
-          // enforce: 'pre',
+          enforce: 'pre',
           use: {
             loader: 'babel-loader',
             options: {
