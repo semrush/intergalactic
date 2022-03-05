@@ -20,10 +20,12 @@ jobs:
       - name: Install dependencies
         if: steps.cache-modules.outputs.cache-hit != 'true'
         run: yarn --non-interactive --frozen-lockfile
-      - name: generate release pull request name
+      - name: get release pull request name
         run: |
-          echo "release_pr_name=$( gh pr list --search ${{ github.event.pull_request.head.ref }} --limit 1 --json headRefName | jq -r ".[0].headRefName" )" >> $GITHUB_ENV
-          echo "release_branch_name=${{ github.event.pull_request.head.ref }}" >> $GITHUB_ENV
+          currentBranch=git rev-parse --abbrev-ref HEAD
+          echo "Current branch is $currentBranch"
+          echo "release_pr_name=$( gh pr list --search $currentBranch --limit 1 --json headRefName | jq -r ".[0].headRefName" )" >> $GITHUB_ENV
+          echo "release_branch_name=$currentBranch" >> $GITHUB_ENV
       - name: Github auth
         run: |
           git config --global user.name 'semrush-ci-whale'
