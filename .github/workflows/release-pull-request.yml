@@ -44,7 +44,7 @@ jobs:
         run: yarn --non-interactive --frozen-lockfile
       - name: generate release pull request name
         run: |
-          currentBranch=git rev-parse --abbrev-ref HEAD
+          currentBranch=$(git rev-parse --abbrev-ref HEAD)
           currentSemcoreUiVersion="$(cat semcore/ui/package.json | jq -r .version)"
           # if it sheduled triggered
           [[ "$currentBranch" -eq master ]] && echo "release_pr_name=release-after-$currentSemcoreUiVersion" >> $GITHUB_ENV
@@ -84,6 +84,7 @@ jobs:
         run: |
           yarn update-release-changelog
           git add semcore/ui/CHANGELOG.md
+          git add semcore/ui/package.json
           git commit -m "Automatically updated @semcore/ui changelog"
         if: env.release_branch_already_exists != 'true'
       - name: edit changelog change commit in the release branch
@@ -91,6 +92,7 @@ jobs:
           git checkout "${{ env.firstCommitHash }}"
           yarn update-release-changelog
           git add semcore/ui/CHANGELOG.md
+          git add semcore/ui/package.json
           git commit -m "Automatically updated @semcore/ui changelog" --amend --no-edit
           [[ "${{ env.firstCommitHash }}" -eq "${{ env.lastCommitHash }}" ]] || git cherry-pick "${{ env.secondCommitHash }}^..${{ env.lastCommitHash }}" --strategy-option theirs
           git checkout "${{ env.release_branch_name }}"
