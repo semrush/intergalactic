@@ -62,13 +62,18 @@ jobs:
           else
             echo "release_branch_already_exists=true" >> $GITHUB_ENV
           fi
+      - name: create release branch
+        run: |
+          git checkout -b "${{ env.release_branch_name }}"
+        if: env.release_branch_already_exists != 'true'
       - name: checkout release branch
         run: |
           git fetch --all
+          git checkout "${{ env.release_branch_name }}"
           echo "firstCommitHash=$(git log origin/master..origin/${{ env.release_branch_name }} --pretty=format:"%H" | tail -1)" >> $GITHUB_ENV
           echo "secondCommitHash=$(git log origin/master..origin/${{ env.release_branch_name }} --pretty=format:"%H" | tail -2 | head -1)" >> $GITHUB_ENV
           echo "lastCommitHash=$(git log origin/master..origin/${{ env.release_branch_name }} --pretty=format:"%H" | head -1)" >> $GITHUB_ENV
-          git checkout -b "${{ env.release_branch_name }}"
+        if: env.release_branch_already_exists == 'true'
       - name: commit changelog change as a first commit in the release branch
         run: |
           yarn update-release-changelog
