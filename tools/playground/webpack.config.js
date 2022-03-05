@@ -17,6 +17,7 @@ module.exports = function () {
     // },
     devServer: {
       static: './.tmp/playground',
+      port: 8080,
     },
     resolveLoader: {
       alias: {
