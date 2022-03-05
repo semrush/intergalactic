@@ -13,9 +13,11 @@ SAnimation[visible] {
 
 @media (prefers-reduced-motion) {
   SAnimation {
-    animation-name: none;
+    animation-timing-function: step-end;
+    animation-iteration-count: 1;
   }
   SAnimation[visible] {
-    animation-name: none;
+    animation-timing-function: step-end;
+    animation-iteration-count: 1;
   }
 }
