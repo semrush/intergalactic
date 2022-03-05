@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [1.4.1] - 2021-03-05
+
+### Fixed
+
+- Fixed fade animation behavior in prefer reduce motion mode.
+
 ## [1.4.0] - 2021-03-04
 
 ### Added
