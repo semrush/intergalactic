@@ -11,7 +11,7 @@
   "scripts": {
     "build": "build --source=js",
     "test": "jest",
-    "deploy": "gcs-upload svg/*.svg"
+    "upload-static": "gcs-upload svg/*.svg"
   },
   "dependencies": {
     "@semcore/utils": "^3.27",

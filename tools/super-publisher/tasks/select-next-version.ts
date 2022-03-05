@@ -54,6 +54,7 @@ export const selectNextVersionTask = createTask('Choose next version', async (op
   if (release !== 'current') {
     await execa('npm', ['version', release, '--no-git-tag-version'], {
       cwd: opt.root,
+      stdio: 'inherit',
     });
   }
 

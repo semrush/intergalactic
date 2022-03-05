@@ -10,7 +10,7 @@
   "license": "MIT",
   "scripts": {
     "build": "build --source=js && flags-sprite",
-    "deploy": "gcs-upload lib/sprites/*",
+    "upload-static": "gcs-upload lib/sprites/*",
     "test": "jest"
   },
   "dependencies": {
