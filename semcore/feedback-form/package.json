@@ -1,7 +1,7 @@
 {
   "name": "@semcore/feedback-form",
   "description": "SEMRush Feedback Form Component",
-  "version": "4.0.1",
+  "version": "4.0.2",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
