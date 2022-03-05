@@ -1,0 +1,53 @@
+name: publish-release
+on:
+  repository_dispatch:
+    types: [release-command]
+  workflow_dispatch:
+jobs:
+  publish-release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+      - name: Cache node modules
+        uses: actions/cache@v2
+        id: cache-modules
+        with:
+          path: |
+            node_modules
+            */*/node_modules
+          key: modules-${{ runner.os }}-${{ hashFiles('yarn.lock') }}
+      - name: Install dependencies
+        if: steps.cache-modules.outputs.cache-hit != 'true'
+        run: yarn --non-interactive --frozen-lockfile
+      - name: generate release pull request name
+        run: |
+          echo "release_pr_name=$( gh pr list --search ${{ github.event.client_payload.slash_command.args.named.branch }} --limit 1 --json headRefName | jq -r ".[0].headRefName" )" >> $GITHUB_ENV
+          echo "release_branch_name=${{ github.event.client_payload.slash_command.args.named.branch }}" >> $GITHUB_ENV
+      - name: Github auth
+        run: |
+          git config --global user.name 'semrush-ci-whale'
+          git config --global user.email 'semrush-ci-whale@users.noreply.github.com'
+          git remote set-url origin https://x-access-token:${{ secrets.BOT_ACCOUNT_GITHUB_TOKEN }}@github.com/semrush/intergalactic
+          echo "${{ secrets.BOT_ACCOUNT_GITHUB_TOKEN }}" > ./.gh-auth-token.txt
+          gh auth login --with-token < ./.gh-auth-token.txt
+          rm ./.gh-auth-token.txt
+      - name: checkout release branch
+        run: |
+          git fetch --all
+          git checkout "${{ env.release_branch_name }}"
+      - name: build components
+        run: |
+          yarn build
+      - name: build @semcore/ui
+        run: |
+          yarn workspace @semcore/ui generate
+      - name: publish semcore/ui to npm
+        run: |
+          echo pass
+          # yarn pub --package ui --no-check-changelog
+      - name: merge pull request
+        run: |
+          echo pass
+          # gh pr edit --ready
+          # gh pr merge

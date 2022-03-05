@@ -1,4 +1,4 @@
-name: release
+name: release-pull-request
 on:
   schedule:
     - cron: '0 8 * * *'
@@ -21,7 +21,6 @@ jobs:
         name: check latest commit is less than a day
         if: ${{ github.event_name == 'schedule' }}
         run: test -z $(git rev-list  --after="24 hours"  ${{ github.sha }}) && echo "::set-output name=should_run::false"
-
   create-release-pull-request:
     needs:
       - check_new_commits
@@ -46,8 +45,12 @@ jobs:
       - name: generate release pull request name
         run: |
           currentSemcoreUiVersion="$(cat semcore/ui/package.json | jq -r .version)"
-          echo "release_pr_name=release-after-$currentSemcoreUiVersion" >> $GITHUB_ENV
-          echo "release_branch_name=release/after-$currentSemcoreUiVersion" >> $GITHUB_ENV
+          # if it sheduled triggered
+          [[ "${{ github.event.client_payload.slash_command.args.named.branch }}" -eq master ]] && echo "release_pr_name=release-after-$currentSemcoreUiVersion" >> $GITHUB_ENV
+          [[ "${{ github.event.client_payload.slash_command.args.named.branch }}" -eq master ]] && echo "release_branch_name=release/after-$currentSemcoreUiVersion" >> $GITHUB_ENV
+          # if it slash command triggered
+          [[ "${{ github.event.client_payload.slash_command.args.named.branch }}" -eq master ]] || echo "release_pr_name=$( gh pr list --search ${{ github.event.client_payload.slash_command.args.named.branch }} --limit 1 --json headRefName | jq -r ".[0].headRefName" )" >> $GITHUB_ENV
+          [[ "${{ github.event.client_payload.slash_command.args.named.branch }}" -eq master ]] || echo "release_branch_name=${{ github.event.client_payload.slash_command.args.named.branch }}" >> $GITHUB_ENV
       - name: Github auth
         run: |
           git config --global user.name 'semrush-ci-whale'
@@ -90,6 +93,7 @@ jobs:
           git commit -m "Automatically updated @semcore/ui changelog" --amend --no-edit
           [[ "${{ env.firstCommitHash }}" -eq "${{ env.lastCommitHash }}" ]] || git cherry-pick "${{ env.secondCommitHash }}^..${{ env.lastCommitHash }}" --strategy-option theirs
           git checkout "${{ env.release_branch_name }}"
+          git pull origin master --rebase
         if: env.release_branch_already_exists == 'true'
       - name: push updated changelog
         run: |

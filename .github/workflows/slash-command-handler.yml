@@ -10,5 +10,8 @@ jobs:
         uses: peter-evans/slash-command-dispatch@v2
         with:
           token: ${{ secrets.BOT_ACCOUNT_GITHUB_TOKEN }}
+          permission: |
+            write
           commands: |
             update
+            release
