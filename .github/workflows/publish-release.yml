@@ -22,8 +22,8 @@ jobs:
         run: yarn --non-interactive --frozen-lockfile
       - name: generate release pull request name
         run: |
-          echo "release_pr_name=$( gh pr list --search ${{ github.event.client_payload.slash_command.args.named.branch }} --limit 1 --json headRefName | jq -r ".[0].headRefName" )" >> $GITHUB_ENV
-          echo "release_branch_name=${{ github.event.client_payload.slash_command.args.named.branch }}" >> $GITHUB_ENV
+          echo "release_pr_name=$( gh pr list --search ${{ github.event.pull_request.head.ref }} --limit 1 --json headRefName | jq -r ".[0].headRefName" )" >> $GITHUB_ENV
+          echo "release_branch_name=${{ github.event.pull_request.head.ref }}" >> $GITHUB_ENV
       - name: Github auth
         run: |
           git config --global user.name 'semrush-ci-whale'
