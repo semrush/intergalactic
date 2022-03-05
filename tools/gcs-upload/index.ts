@@ -25,7 +25,7 @@ export const setupStorage = async () => {
     );
   }
   const config = await fs.readJson(configFilePath);
-  const { projectId } = config;
+  const { project_id: projectId } = config;
 
   log(`Initiating storage for ${projectId} project`);
 
