@@ -6,6 +6,7 @@
 
 - [ ] Dependencies checked (if applicable)
 - [ ] TS types updated (if applicable)
+- [ ] CHANGELOG.md updated (if applicable)
 - [ ] Complete unit testing (if applicable)
 - [ ] Complete screenshot testing (if applicable)
 - [ ] Complete UX review (if applicable)
