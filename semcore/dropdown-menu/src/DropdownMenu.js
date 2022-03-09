@@ -9,6 +9,7 @@ import logger from '@semcore/utils/lib/logger';
 import style from './style/dropdown-menu.shadow.css';
 
 const KEYS = ['ArrowDown', 'ArrowUp', 'Enter', ' '];
+const INTERACTION_TAGS = ['INPUT', 'TEXTAREA'];
 
 class DropdownMenuRoot extends Component {
   static displayName = 'DropdownMenu';
@@ -36,6 +37,7 @@ class DropdownMenuRoot extends Component {
   handlerKeyDown = (e) => {
     const amount = e.shiftKey ? 5 : 1;
 
+    if (e.key === ' ' && INTERACTION_TAGS.includes(e.target.tagName)) return;
     if (!KEYS.includes(e.key)) return;
 
     e.preventDefault();
