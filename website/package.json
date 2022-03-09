@@ -33,7 +33,6 @@
     "gray-matter": "^4.0.2",
     "hbs": "^4.2.0",
     "html-to-react": "^1.4.2",
-    "lodash": "^4.17.15",
     "normalize.css": "^8.0.1",
     "prism-react-renderer": "^1.0.2",
     "prismjs": "^1.17.1",
