@@ -22,7 +22,7 @@ jobs:
         run: yarn --non-interactive --frozen-lockfile
       - name: get release pull request name
         run: |
-          echo "release_branch_name=${{ github.event.client_payload.pull_request.head.ref }} >> $GITHUB_ENV
+          echo "release_branch_name=${{ github.event.client_payload.pull_request.head.ref }}" >> $GITHUB_ENV
       - name: Github auth
         run: |
           git config --global user.name 'semrush-ci-whale'
