@@ -71,6 +71,7 @@ jobs:
   test:
     runs-on: ubuntu-latest
     needs: build
+    if: ${{ secrets.SCREENSHOT_URL }}
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
@@ -93,4 +94,3 @@ jobs:
         env:
           SCREENSHOT_URL: ${{ secrets.SCREENSHOT_URL }}
         run: yarn test
-        if: ${{ secrets.SCREENSHOT_URL }}
