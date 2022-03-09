@@ -24,7 +24,7 @@ export const gitTask = createTask('GIT fixation', async (opt) => {
     } else {
       opt.log('Running `git commit --no-verify`');
 
-      await git.commit(`[${name}] upgrade to ${version}`, undefined, {
+      await git.commit(`[${name}]: upgrade to ${version}`, undefined, {
         '--no-verify': null,
       });
 
