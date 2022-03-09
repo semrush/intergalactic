@@ -85,15 +85,6 @@ function sortPropsByDefault(props) {
   });
 }
 
-function markdownCode(text) {
-  return {
-    __html: text
-      .replace('<', '&lt;')
-      .replace(/```([^`]+)```/g, (_, code) => `<pre>${code}</pre>`)
-      .replace(/`([^`]+)`/g, (_, code) => `<code>${code}</code>`),
-  };
-}
-
 function isEmpty(children) {
   const array = React.Children.toArray(children);
   return array.length === 0 || array.filter((item) => !!item).length === 0;
