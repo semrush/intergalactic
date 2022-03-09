@@ -24,12 +24,14 @@ class ScatterPlotRoot extends Component {
     return () => ({ width: 0, height: 0, top: y, right: x, bottom: y, left: x });
   }
 
-  bindHandlerTooltip = (visible, props) => ({ clientX: x, clientY: y }) => {
-    const { eventEmitter } = this.asProps;
-    this.virtualElement.getBoundingClientRect = this.generateGetBoundingClientRect(x, y);
-    this.virtualElement[CONSTANT.VIRTUAL_ELEMENT] = true;
-    eventEmitter.emit('onTooltipVisible', visible, props, this.virtualElement);
-  };
+  bindHandlerTooltip =
+    (visible, props) =>
+    ({ clientX: x, clientY: y }) => {
+      const { eventEmitter } = this.asProps;
+      this.virtualElement.getBoundingClientRect = this.generateGetBoundingClientRect(x, y);
+      this.virtualElement[CONSTANT.VIRTUAL_ELEMENT] = true;
+      eventEmitter.emit('onTooltipVisible', visible, props, this.virtualElement);
+    };
 
   animationCircle() {
     const { duration, uid, r, value } = this.asProps;
@@ -51,19 +53,8 @@ class ScatterPlotRoot extends Component {
   }
 
   renderCircle(d, i) {
-    const {
-      color,
-      scale,
-      x,
-      y,
-      r,
-      offset,
-      styles,
-      uid,
-      duration,
-      value,
-      valueColor,
-    } = this.asProps;
+    const { color, scale, x, y, r, offset, styles, uid, duration, value, valueColor } =
+      this.asProps;
     const [xScale, yScale] = scale;
     const SScatterPlot = this.Element;
     const SValue = 'text';

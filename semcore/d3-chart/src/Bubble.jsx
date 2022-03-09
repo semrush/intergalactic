@@ -46,12 +46,14 @@ class BubbleRoot extends Component {
     return () => ({ width: 0, height: 0, top: y, right: x, bottom: y, left: x });
   }
 
-  bindHandlerTooltip = (visible, props) => ({ clientX: x, clientY: y }) => {
-    const { eventEmitter } = this.asProps;
-    this.virtualElement.getBoundingClientRect = this.generateGetBoundingClientRect(x, y);
-    this.virtualElement[CONSTANT.VIRTUAL_ELEMENT] = true;
-    eventEmitter.emit('onTooltipVisible', visible, props, this.virtualElement);
-  };
+  bindHandlerTooltip =
+    (visible, props) =>
+    ({ clientX: x, clientY: y }) => {
+      const { eventEmitter } = this.asProps;
+      this.virtualElement.getBoundingClientRect = this.generateGetBoundingClientRect(x, y);
+      this.virtualElement[CONSTANT.VIRTUAL_ELEMENT] = true;
+      eventEmitter.emit('onTooltipVisible', visible, props, this.virtualElement);
+    };
 
   animationCircle() {
     const { duration, uid, data, value } = this.asProps;

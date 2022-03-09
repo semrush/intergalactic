@@ -93,16 +93,8 @@ class ItemPicker extends Component {
 
   render() {
     const SPickerInput = Root;
-    const {
-      styles,
-      step,
-      onSelect,
-      time,
-      size,
-      disabled,
-      onVisibleChange,
-      ...other
-    } = this.asProps;
+    const { styles, step, onSelect, time, size, disabled, onVisibleChange, ...other } =
+      this.asProps;
     const { dirtyValue, visible } = this.state;
     const timeValue = time[MAP_FIELD_TO_TIME[this.field]];
     const value = dirtyValue === undefined ? timeValue : dirtyValue;

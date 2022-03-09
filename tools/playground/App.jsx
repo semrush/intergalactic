@@ -27,17 +27,17 @@ const startTime = Date.now();
 const render = (Component, fn) =>
   ReactDOM.render(<Component />, document.getElementById('root'), fn);
 try {
-  render(require('./Playground.js').default, () => {
+  render(require('./Playground.jsx').default, () => {
     console.info('Render time ms:', Date.now() - startTime);
   });
 } catch (e) {
   console.error(e);
-  render(() => <h1>Create file playground/Playground.js and export default React component</h1>);
+  render(() => <h1>Create file playground/Playground.jsx and export default React component</h1>);
 }
 
 // Webpack Hot Module Replacement API
 if (module.hot) {
-  module.hot.accept('./Playground.js', function () {
-    render(require('./Playground.js').default);
+  module.hot.accept('./Playground.jsx', function () {
+    render(require('./Playground.jsx').default);
   });
 }

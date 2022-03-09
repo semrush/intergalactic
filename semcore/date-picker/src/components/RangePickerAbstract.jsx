@@ -292,14 +292,8 @@ class RangePickerAbstract extends Component {
   }
 
   getCalendarProps(props, index) {
-    const {
-      locale,
-      displayedPeriod,
-      disabled,
-      value,
-      highlighted,
-      onHighlightedChange,
-    } = this.asProps;
+    const { locale, displayedPeriod, disabled, value, highlighted, onHighlightedChange } =
+      this.asProps;
     const { dirtyValue } = this.state;
 
     return {

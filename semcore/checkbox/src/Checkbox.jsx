@@ -71,16 +71,8 @@ class Value extends Component {
   }
 
   render() {
-    const {
-      forwardRef,
-      styles,
-      size,
-      state,
-      theme,
-      keyboardFocused,
-      includeInputProps,
-      ...other
-    } = this.asProps;
+    const { forwardRef, styles, size, state, theme, keyboardFocused, includeInputProps, ...other } =
+      this.asProps;
 
     const SControl = Box;
     const SCheckbox = Flex;

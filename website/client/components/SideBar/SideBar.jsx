@@ -29,14 +29,8 @@ const ModalWindow = styled.div`
 `;
 
 export default function SideBar() {
-  const {
-    interfaceName,
-    visible,
-    changeVisible,
-    isHistoryEmpty,
-    handleHistoryBack,
-    clearHistory,
-  } = useContext(SideBarContext);
+  const { interfaceName, visible, changeVisible, isHistoryEmpty, handleHistoryBack, clearHistory } =
+    useContext(SideBarContext);
 
   if (!interfaceName) {
     return null;

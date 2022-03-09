@@ -25,18 +25,22 @@ class FeedbackForm extends Component {
   };
 
   static validate = {
-    description: (error) => (value = '') => {
-      const words = value.split(/\s+/);
-      const symbols = words.join(' ');
-      if (symbols.length < 10 || words.length < 3) {
-        return error;
-      }
-    },
-    email: (error) => (value = '') => {
-      if (!/.+@.+\..+/i.test(String(value).toLowerCase())) {
-        return error;
-      }
-    },
+    description:
+      (error) =>
+      (value = '') => {
+        const words = value.split(/\s+/);
+        const symbols = words.join(' ');
+        if (symbols.length < 10 || words.length < 3) {
+          return error;
+        }
+      },
+    email:
+      (error) =>
+      (value = '') => {
+        if (!/.+@.+\..+/i.test(String(value).toLowerCase())) {
+          return error;
+        }
+      },
   };
 
   focusDecorator = createFocusDecorator();

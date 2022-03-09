@@ -60,11 +60,13 @@ const ResizeableTitle = (props) => {
 const DemoResize = () => {
   const [columns, updateColumns] = useState([...new Array(11)].map((_, ind) => ({ width: 90 })));
 
-  const handleResize = (index) => (e, { size }) => {
-    const nextColumns = [...columns];
-    nextColumns[index] = { width: size.width };
-    updateColumns(nextColumns);
-  };
+  const handleResize =
+    (index) =>
+    (e, { size }) => {
+      const nextColumns = [...columns];
+      nextColumns[index] = { width: size.width };
+      updateColumns(nextColumns);
+    };
 
   return (
     <ScrollArea>

@@ -4,7 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = function () {
   return {
-    entry: path.join(__dirname, 'App.js'),
+    entry: path.join(__dirname, 'App.jsx'),
     devtool: 'source-map',
     output: {
       filename: 'build.js',

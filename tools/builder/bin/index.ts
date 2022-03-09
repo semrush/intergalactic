@@ -28,7 +28,7 @@ const runCommand = async <Command extends keyof typeof makeCommand>(
 };
 
 const babelArgs = [
-  '--extensions .ts,.tsx,.js',
+  '--extensions .ts,.tsx,.js,.jsx',
   '--ignore **/*.d.ts',
   '--presets @semcore/babel-preset-ui',
   '--no-babelrc',
@@ -50,11 +50,15 @@ await runCommand('CLEANUP');
 
 if (argv.modules) {
   tasks.push(runCommand('BABEL', '', MAP_BABEL_ENV[argv.modules]));
-  tasks.push(runCommand(argv.source === 'js' ? 'COPY_TYPES' : 'TYPES', ''));
+  tasks.push(
+    runCommand(argv.source === 'jsx' || argv.source === 'js' ? 'COPY_TYPES' : 'TYPES', ''),
+  );
 } else {
   tasks.push(runCommand('BABEL', 'cjs', 'commonjs'));
   tasks.push(runCommand('BABEL', 'es6', 'es6'));
-  tasks.push(runCommand(argv.source === 'js' ? 'COPY_TYPES' : 'TYPES', 'types'));
+  tasks.push(
+    runCommand(argv.source === 'jsx' || argv.source === 'js' ? 'COPY_TYPES' : 'TYPES', 'types'),
+  );
 }
 
 await Promise.all(tasks);
