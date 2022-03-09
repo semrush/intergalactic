@@ -102,5 +102,5 @@ jobs:
           git push --set-upstream origin "${{ env.release_branch_name }}" --force
       - name: create pull request
         run: |
-          gh pr create --title "${{ env.release_pr_name }}" --body "Test release pull request" --draft --base master
+          gh pr create --title "${{ env.release_pr_name }}" --body "This is automatically created pull request for the next `@semcore/ui` package release.\n\nBot pulls changes from `master` branch and regenerates `./semcore/ui/CHANGELOG.md` file every morning and when `/update` command dispatched in pull request comment.\n\nTo edit changelog or release version in your own way, checkout branch, commit changes and push it to pull request.\n\nWhen release is ready, dispatch it with `/release` comment." --draft --base master
         if: env.release_branch_already_exists != 'true'
