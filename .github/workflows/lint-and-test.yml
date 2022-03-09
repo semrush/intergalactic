@@ -93,3 +93,4 @@ jobs:
         env:
           SCREENSHOT_URL: ${{ secrets.SCREENSHOT_URL }}
         run: yarn test
+        if: ${{ secrets.SCREENSHOT_URL }}
