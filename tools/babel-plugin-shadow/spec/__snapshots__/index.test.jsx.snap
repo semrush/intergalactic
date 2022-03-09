@@ -494,11 +494,11 @@ const styled_c8 = create([styles,
 __css__(
 /*__inner_css_start__*/
 \`button[disabled] {
-    color: var(--1mb9jfq_0);
-    background-color: var(--1mb9jfq_1);
+    color: var(--i5lz0e_0);
+    background-color: var(--i5lz0e_1);
 }\`
 /*__inner_css_end__*/
-, \\"jmkdyj_gg_\\")
+, \\"4ascwb_gg_\\")
 /*__reshadow_css_end__*/
 ]);
 
@@ -508,8 +508,8 @@ const App = ({
   color,
   bgcolor
 }) => styled((set([styled_c8], {
-  \\"--1mb9jfq_0\\": color,
-  \\"--1mb9jfq_1\\": bgcolor
+  \\"--i5lz0e_0\\": color,
+  \\"--i5lz0e_1\\": bgcolor
 }), /*#__PURE__*/React.createElement(\\"button\\", map(\\"button\\", {
   type: type,
   disabled: disabled,
@@ -530,18 +530,18 @@ const styled_c8 = create([styles,
 __css__(
 /*__inner_css_start__*/
 \`button {
-    color: var(--1mb9jfq_0);
-    background-color: var(--1mb9jfq_0);
+    color: var(--i5lz0e_0);
+    background-color: var(--i5lz0e_0);
 }\`
 /*__inner_css_end__*/
-, \\"gagtuk_gg_\\")
+, \\"1mij4zg_gg_\\")
 /*__reshadow_css_end__*/
 ]);
 
 const App = ({
   color
 }) => styled((set([styled_c8], {
-  \\"--1mb9jfq_0\\": color
+  \\"--i5lz0e_0\\": color
 }), /*#__PURE__*/React.createElement(\\"button\\", {
   className: styled.styles[\\"__button\\"],
   style: styled.$$style
@@ -570,11 +570,11 @@ const styled_12c = create([
 __css__(
 /*__inner_css_start__*/
 \`button[disabled] {
-    color: var(--1mb9jfq_0);
-    background-color: var(--1mb9jfq_1);
+    color: var(--i5lz0e_0);
+    background-color: var(--i5lz0e_1);
 }\`
 /*__inner_css_end__*/
-, \\"jmkdyj_gg_\\")
+, \\"4ascwb_gg_\\")
 /*__reshadow_css_end__*/
 ]);
 
@@ -586,8 +586,8 @@ const App = ({
 }) => styled((set([styled_c8]), /*#__PURE__*/React.createElement(\\"div\\", {
   className: styled.styles[\\"__div\\"]
 }, styled((set([styled_12c], {
-  \\"--1mb9jfq_0\\": color,
-  \\"--1mb9jfq_1\\": bgcolor
+  \\"--i5lz0e_0\\": color,
+  \\"--i5lz0e_1\\": bgcolor
 }), /*#__PURE__*/React.createElement(\\"button\\", map(\\"button\\", {
   type: type,
   disabled: disabled,
@@ -606,11 +606,11 @@ const styled_c8 = create([styles,
 __css__(
 /*__inner_css_start__*/
 \`button[disabled] {
-    color: var(--1mb9jfq_0);
-    background-color: var(--1mb9jfq_1);
+    color: var(--i5lz0e_0);
+    background-color: var(--i5lz0e_1);
 }\`
 /*__inner_css_end__*/
-, \\"jmkdyj_gg_\\")
+, \\"4ascwb_gg_\\")
 /*__reshadow_css_end__*/
 ]);
 
@@ -620,8 +620,8 @@ const App = ({
   color,
   bgcolor
 }) => styled((set([styled_c8], {
-  \\"--1mb9jfq_0\\": color,
-  \\"--1mb9jfq_1\\": bgcolor
+  \\"--i5lz0e_0\\": color,
+  \\"--i5lz0e_1\\": bgcolor
 }), /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(\\"button\\", map(\\"button\\", {
   type: type,
   disabled: disabled,
@@ -648,11 +648,11 @@ const styled_c8 = create([styles,
 __css__(
 /*__inner_css_start__*/
 \`button[disabled] {
-    color: var(--1mb9jfq_0);
-    background-color: var(--1mb9jfq_1);
+    color: var(--i5lz0e_0);
+    background-color: var(--i5lz0e_1);
 }\`
 /*__inner_css_end__*/
-, \\"jmkdyj_gg_\\")
+, \\"4ascwb_gg_\\")
 /*__reshadow_css_end__*/
 ]);
 
@@ -661,7 +661,7 @@ const App = ({
   type,
   color,
   bgcolor
-}) => styled((set([styled_c8], \`--1mb9jfq_0:\${color};--1mb9jfq_1:\${bgcolor};\`), /*#__PURE__*/React.createElement(\\"button\\", map(\\"button\\", {
+}) => styled((set([styled_c8], \`--i5lz0e_0:\${color};--i5lz0e_1:\${bgcolor};\`), /*#__PURE__*/React.createElement(\\"button\\", map(\\"button\\", {
   type: type,
   disabled: disabled,
   $$style: styled.$$style
@@ -681,11 +681,11 @@ const styled_c8 = create([styles,
 __css__(
 /*__inner_css_start__*/
 \`button[disabled] {
-    color: var(--1mb9jfq_0);
-    background-color: var(--1mb9jfq_0);
+    color: var(--i5lz0e_0);
+    background-color: var(--i5lz0e_0);
 }\`
 /*__inner_css_end__*/
-, \\"17oho8a_gg_\\")
+, \\"r2jfpm_gg_\\")
 /*__reshadow_css_end__*/
 ]);
 
@@ -693,7 +693,7 @@ const App = ({
   disabled,
   type,
   color
-}) => styled((set([styled_c8], \`--1mb9jfq_0:\${color};\`), /*#__PURE__*/React.createElement(\\"button\\", map(\\"button\\", {
+}) => styled((set([styled_c8], \`--i5lz0e_0:\${color};\`), /*#__PURE__*/React.createElement(\\"button\\", map(\\"button\\", {
   type: type,
   disabled: disabled,
   $$style: styled.$$style
@@ -713,11 +713,11 @@ const styled_c8 = create([styles,
 __css__(
 /*__inner_css_start__*/
 \`button {
-    color: var(--1mb9jfq_0);
-    background-color: var(--1mb9jfq_1);
+    color: var(--i5lz0e_0);
+    background-color: var(--i5lz0e_1);
 }\`
 /*__inner_css_end__*/
-, \\"lij1zx_gg_\\")
+, \\"9fzzi5_gg_\\")
 /*__reshadow_css_end__*/
 ]);
 
@@ -725,8 +725,8 @@ const App = ({
   color,
   bgcolor
 }) => styled((set([styled_c8], {
-  \\"--1mb9jfq_0\\": color,
-  \\"--1mb9jfq_1\\": bgcolor
+  \\"--i5lz0e_0\\": color,
+  \\"--i5lz0e_1\\": bgcolor
 }), /*#__PURE__*/React.createElement(\\"button\\", {
   className: styled.styles[\\"__button\\"],
   style: styled.$$style
