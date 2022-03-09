@@ -2652,6 +2652,269 @@
     string-hash "^1.1.3"
     svg-tag-names "^2.0.1"
 
+"@semcore/accordion@3.4.1":
+  version "3.4.1"
+  resolved "https://registry.yarnpkg.com/@semcore/accordion/-/accordion-3.4.1.tgz#e5825a2537804e0aa1a31558c61dc822c8047d90"
+  integrity sha512-nHPtJnYNX8QfZ8DqLK2dU689f5iehH/PeInqGr+WTQD+edU8HFGow+xQJtmOL3ZJxn8vaeDtKM+JnjkWL913DQ==
+  dependencies:
+    "@semcore/animation" "^1.2"
+    "@semcore/flex-box" "^4"
+    "@semcore/icon" "^2.16"
+    "@semcore/utils" "^3.17"
+
+"@semcore/animation@1.3.3":
+  version "1.3.3"
+  resolved "https://registry.yarnpkg.com/@semcore/animation/-/animation-1.3.3.tgz#2804a4cdce00905d720680a86a8355a263ed80f2"
+  integrity sha512-LlpzpR7ioNCcowuxQVn/PpjLphiBoS0jL0Yzx7E69sHLzog6CY5j/MvUQ5JuMaD2s69BROcP9HLtm+xS4IiGFA==
+  dependencies:
+    "@semcore/flex-box" "^4"
+    "@semcore/utils" "^3.15"
+
+"@semcore/base-trigger@2.5.3":
+  version "2.5.3"
+  resolved "https://registry.yarnpkg.com/@semcore/base-trigger/-/base-trigger-2.5.3.tgz#95f6628bf42c690877ae080ea9ed2032f97630dd"
+  integrity sha512-14YGLZW3x0uDYsMDAL2Z0WAIK0oKvi+9Vf4xi2L4AUPZlj1C0E2m4mK93rgXs6l4zdj/ePVht5FLXvIV9MwpmA==
+  dependencies:
+    "@semcore/dot" "^3"
+    "@semcore/flex-box" "^4"
+    "@semcore/icon" "^2.16"
+    "@semcore/neighbor-location" "^2"
+    "@semcore/spin" "^3"
+    "@semcore/utils" "^3.15"
+
+"@semcore/button@3.3.5":
+  version "3.3.5"
+  resolved "https://registry.yarnpkg.com/@semcore/button/-/button-3.3.5.tgz#d89c11905cb4db9f222e281e837349f6bdda779f"
+  integrity sha512-akGlIgu4VcM9hmDDDjl7u5Brwz7JnVIXMW28oVm/AqxyHozTtruuKAM+HCtV4LMojM8q4WxEIz+N2cZb25lmew==
+  dependencies:
+    "@semcore/flex-box" "^4"
+    "@semcore/neighbor-location" "^2"
+    "@semcore/spin" "^3"
+    "@semcore/utils" "^3.15"
+
+"@semcore/card@3.0.2":
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/@semcore/card/-/card-3.0.2.tgz#7d127bdd18fa0e5779448af97a41fedbca258898"
+  integrity sha512-zlvS3OtjiImQPrCoNDYDnZ6pVeNuTejyPXwqZCMpkqWac/etyyKwhOhHQ8GRSdOHKyKhC0VFfSxQNmWqfjUTSg==
+  dependencies:
+    "@semcore/flex-box" "^4"
+    "@semcore/icon" "^2.16"
+    "@semcore/tooltip" "^4"
+    "@semcore/typography" "^3"
+    "@semcore/utils" "^3.31"
+
+"@semcore/carousel@1.5.1":
+  version "1.5.1"
+  resolved "https://registry.yarnpkg.com/@semcore/carousel/-/carousel-1.5.1.tgz#7e12a19239cd7af3bed56057352573c7229cf550"
+  integrity sha512-Z9t16M58/w2C5RHjp1YkmtBC5uvNmms3bQP6NA7ovGR+FRaD92+WpYwgzZk/gTqh8Jg6ltxc4ZfwGwdNgwGXiA==
+  dependencies:
+    "@semcore/flex-box" "^4"
+    "@semcore/icon" "^2.16"
+    "@semcore/utils" "^3.15"
+
+"@semcore/checkbox@5.2.5":
+  version "5.2.5"
+  resolved "https://registry.yarnpkg.com/@semcore/checkbox/-/checkbox-5.2.5.tgz#55995aee883ac207a34ac85d2066e50b1c2c150b"
+  integrity sha512-iobjmOBLVqTLYLtbo/u8vv4ZEOiS89X6bjrGp7gxC7fK6HnY/R63wjFE+uSklQVZ2jtO5ks4C2fBi4d1/6+1bg==
+  dependencies:
+    "@semcore/flex-box" "^4"
+    "@semcore/typography" "^3"
+    "@semcore/utils" "^3.15"
+
+"@semcore/d3-chart@1.6.5":
+  version "1.6.5"
+  resolved "https://registry.yarnpkg.com/@semcore/d3-chart/-/d3-chart-1.6.5.tgz#d18cbe7f132383d2a01fde706fa23ed3f971c9e9"
+  integrity sha512-iaHcpdWlDwrwgXd34/ljRYJQkMnHb3qXYmxGCgKxLIDsVUvNMKiVcbYOtpg1/+dcvet3ie1wLVawI3zT0ySwUw==
+  dependencies:
+    "@semcore/animation" "^1"
+    "@semcore/flex-box" "^4"
+    "@semcore/popper" "^4.9"
+    "@semcore/utils" "^3.15"
+    "@upsetjs/venn.js" "^1.4.1"
+    d3-array "^3"
+    d3-interpolate "^3"
+    d3-scale "^4"
+    d3-shape "^3"
+    d3-transition "^3"
+    resize-observer-polyfill "^1.5"
+
+"@semcore/date-picker@2.7.5":
+  version "2.7.5"
+  resolved "https://registry.yarnpkg.com/@semcore/date-picker/-/date-picker-2.7.5.tgz#2a081f301e51906109014e793ef987caf5a25d1f"
+  integrity sha512-jvhiiA9Qc9xjrLplvCqdPqXheeA6muH5SqT2D4K/ufisEdG/xTEAxabRr+m2KLkCz9xoFD8J5CJkekqlE2vByw==
+  dependencies:
+    "@semcore/base-trigger" "^2"
+    "@semcore/button" "^3.3.2"
+    "@semcore/divider" "^2"
+    "@semcore/dropdown" "^2"
+    "@semcore/flex-box" "^4"
+    "@semcore/icon" "^2.16"
+    "@semcore/typography" "^3"
+    "@semcore/utils" "^3.27"
+    dayjs "^1.8"
+
+"@semcore/dot@3.0.1":
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/@semcore/dot/-/dot-3.0.1.tgz#af2f73a05f31171a3edc0909ac458975f248dbdc"
+  integrity sha512-f/LegarLfiD9Xb4ION25wB4gG+St4TZa443du2hUCBIiGAoFcGvSvzKm6Yn5Ym4U/f2945KlOV2Z4HKNUPqHqg==
+  dependencies:
+    "@semcore/animation" "^1.3.2"
+    "@semcore/flex-box" "^4"
+    "@semcore/utils" "^3.15"
+
+"@semcore/errors@2.5.3":
+  version "2.5.3"
+  resolved "https://registry.yarnpkg.com/@semcore/errors/-/errors-2.5.3.tgz#349dd64e6a272dcc1946370830dae0b33dd3354f"
+  integrity sha512-Q94Oc0dup8NRx+zrcww3hohD9LvAMN4Nhf/lSmNJBjOgT1zvPvkuR7ch2H7nsGyKdDYnguBPj11lsf2iZALfiQ==
+  dependencies:
+    "@semcore/button" "^3"
+    "@semcore/flex-box" "^4"
+    "@semcore/format-text" "^2"
+    "@semcore/typography" "^3"
+    "@semcore/utils" "^3.27"
+
+"@semcore/feature-popover@2.5.1":
+  version "2.5.1"
+  resolved "https://registry.yarnpkg.com/@semcore/feature-popover/-/feature-popover-2.5.1.tgz#864d89d9c9a7c2ee85f3be14efb1a4f22bd5f10f"
+  integrity sha512-TwY5lxWBP98x0P0ifciFQoI25X3AbSMfQRWnVzNWHkt6rJE1t7ppM/TcSzt47o2O1/vETSPYyBQFudZY31UVYw==
+  dependencies:
+    "@semcore/animation" "^1"
+    "@semcore/flex-box" "^4"
+    "@semcore/icon" "^2.16"
+    "@semcore/popper" "^4.2"
+    "@semcore/utils" "^3.15"
+
+"@semcore/feedback-form@4.0.1":
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/@semcore/feedback-form/-/feedback-form-4.0.1.tgz#08c93a5809cff4eba78c189914145b99427caef6"
+  integrity sha512-74Xa5oSkGJ++pnlcaq5oYkSE3ZyEKqgBdEkqD/Y8D0ttCJn61Ru3xpqHpyUhzxU+v+zEUR0ZnpeQnJ62PREzGQ==
+  dependencies:
+    "@semcore/button" "^3"
+    "@semcore/flex-box" "^4"
+    "@semcore/notice" "^3"
+    "@semcore/spin-container" "^5.0.0"
+    "@semcore/tooltip" "^4"
+    "@semcore/utils" "^3.15"
+    final-form "^4.19"
+    final-form-focus "^1.1"
+    react-final-form "^6.4"
+
+"@semcore/format-text@2.2.2":
+  version "2.2.2"
+  resolved "https://registry.yarnpkg.com/@semcore/format-text/-/format-text-2.2.2.tgz#ae1b5d458df47592916be7cf65fce499c97fffdc"
+  integrity sha512-m7NmKKglOkWCULeXWfzFzj5A0La2gLKD14wOjm7eurNh9C6yh9WBaiyuu/3JbZI9wO/HcvQgJ4RQ7KK0Pq9l0Q==
+  dependencies:
+    "@semcore/flex-box" "^4.0.0"
+    "@semcore/utils" "^3.15"
+
+"@semcore/fullscreen-modal@1.5.2":
+  version "1.5.2"
+  resolved "https://registry.yarnpkg.com/@semcore/fullscreen-modal/-/fullscreen-modal-1.5.2.tgz#420387c9d116fe309268e72e9312a801162f70e0"
+  integrity sha512-A1JFlexmvqKv78sctk+dOCgL4uRIHWLJ1b2QvdCkG3CGVUSrxHzf8i1eZDBOflICng9fL6wtNxrUm3DHx93CfA==
+  dependencies:
+    "@semcore/flex-box" "^4"
+    "@semcore/icon" "^2.16"
+    "@semcore/modal" "^2"
+    "@semcore/typography" "^3"
+    "@semcore/utils" "^3.21"
+
+"@semcore/link@3.4.3":
+  version "3.4.3"
+  resolved "https://registry.yarnpkg.com/@semcore/link/-/link-3.4.3.tgz#ca4bedc6305facde2ca001bb0b6d73fefdcea764"
+  integrity sha512-dA4XsVr+m0iLk3S7px67yZvsF0pawkHbmmsGH1toAQFDki2Z/g0zQkyEkOsi/uZ7+OwWSO2XcHD0TNBQs+t5LA==
+  dependencies:
+    "@semcore/flex-box" "^4"
+    "@semcore/typography" "^3"
+    "@semcore/utils" "^3.15"
+
+"@semcore/modal@2.4.2":
+  version "2.4.2"
+  resolved "https://registry.yarnpkg.com/@semcore/modal/-/modal-2.4.2.tgz#b81d3c62bef33c88a079bc62a58442e4b41790c2"
+  integrity sha512-Wck+1UZ93/vp9k7kRTKDs+XvppSegRHglrth18rw2q3En0SGBw0rTvL9BNZUqbzccQqB/nB9/nTwhaM9pmj4xQ==
+  dependencies:
+    "@semcore/animation" "^1"
+    "@semcore/flex-box" "^4"
+    "@semcore/icon" "^2.16"
+    "@semcore/outside-click" "^2"
+    "@semcore/portal" "^2"
+    "@semcore/utils" "^3.31"
+    react-focus-lock "^2.3"
+
+"@semcore/notice-bubble@3.3.1":
+  version "3.3.1"
+  resolved "https://registry.yarnpkg.com/@semcore/notice-bubble/-/notice-bubble-3.3.1.tgz#8e185fe1bce8832218d26fd986fb811a512f34cd"
+  integrity sha512-GhoP++57l0ZBLTdgKto7ApWn3B1Owh1vjF+LbM7+AC094nG2pHLooBGu+8nrQ09W7rgKlTKm7eN/F6aQNPi9Fg==
+  dependencies:
+    "@semcore/animation" "^1"
+    "@semcore/flex-box" "^4"
+    "@semcore/icon" "^2.16"
+    "@semcore/portal" "^2"
+    "@semcore/utils" "^3.24"
+
+"@semcore/notice@3.2.1":
+  version "3.2.1"
+  resolved "https://registry.yarnpkg.com/@semcore/notice/-/notice-3.2.1.tgz#0fe8a5be024ea554076bd668346a6102b13fa750"
+  integrity sha512-2SIWsWvx4a5Y92uRJv3WlcRCT0bbJfCp7ZAig84gan2fmQHXBzh+P9f1pNesQPKT0KtZ26xVEF5rzSD+6w5WpQ==
+  dependencies:
+    "@semcore/animation" "^1"
+    "@semcore/flex-box" "^4"
+    "@semcore/icon" "^2.16"
+    "@semcore/utils" "^3.15"
+
+"@semcore/progress-bar@2.2.2":
+  version "2.2.2"
+  resolved "https://registry.yarnpkg.com/@semcore/progress-bar/-/progress-bar-2.2.2.tgz#09fd397afcc619375b67fa1a3000d681703a1d6b"
+  integrity sha512-YWCXaDPitx76Yx3BtC9AEo1/gS8zt8C/BlPYda8tB+d/wZ6fcTlYhJbhOQaREWofyltD7eic+Nehdl1MvVGsVg==
+  dependencies:
+    "@semcore/flex-box" "^4"
+    "@semcore/utils" "^3.15"
+
+"@semcore/project-create@4.0.1":
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/@semcore/project-create/-/project-create-4.0.1.tgz#774f6aa4fa3c092b0878c85e98f724946849d70d"
+  integrity sha512-ypgIBJ1XmKx7wFnD8Mj3jqQGy4D6WQOcqk5zAbbIzUQSmqKqfOSXOeoWXjnbc6CocLW6LZ5stY8YqA3L9czagA==
+  dependencies:
+    "@semcore/button" "^3"
+    "@semcore/checkbox" "^5"
+    "@semcore/flex-box" "^4"
+    "@semcore/icon" "^2.16"
+    "@semcore/input" "^2"
+    "@semcore/modal" "^2"
+    "@semcore/spin-container" "^5.0.0"
+    "@semcore/tooltip" "^4"
+    "@semcore/typography" "^3"
+    "@semcore/utils" "^3.27"
+    final-form "^4.18"
+    final-form-focus "^1.1"
+    react-final-form "^6.3"
+
+"@semcore/select@2.7.4":
+  version "2.7.4"
+  resolved "https://registry.yarnpkg.com/@semcore/select/-/select-2.7.4.tgz#b8a595b7025db782c1ba6fb98bc48cfc5193de2b"
+  integrity sha512-C8FMvdssQ21m60tAqyXmHbSTBBdvTxfwx/mIyGT6c3dPH1RJTcSsGAIVqD7NfSS4W0Yd7l03N7ujOvBL3fJP9g==
+  dependencies:
+    "@semcore/base-trigger" "^2"
+    "@semcore/checkbox" "^5"
+    "@semcore/divider" "^2"
+    "@semcore/dropdown-menu" "^2"
+    "@semcore/flex-box" "^4"
+    "@semcore/icon" "^2.16"
+    "@semcore/input" "^2"
+    "@semcore/utils" "^3.15"
+
+"@semcore/side-panel@1.3.2":
+  version "1.3.2"
+  resolved "https://registry.yarnpkg.com/@semcore/side-panel/-/side-panel-1.3.2.tgz#9ecd7611f3d23ac092a59446437a023c62ca6cf6"
+  integrity sha512-Y/yTKIRTUmBEVNX8D57ZEPTsI1m8VjJy+VYxJAeWUSc/G8+DWJVvhS8B/zAzEB4mnQJ4Rfzot22nylFk7H2OYQ==
+  dependencies:
+    "@semcore/animation" "^1"
+    "@semcore/flex-box" "^4"
+    "@semcore/icon" "^2.16"
+    "@semcore/outside-click" "^2"
+    "@semcore/portal" "^2"
+    "@semcore/utils" "^3.31"
+    react-focus-lock "^2.3"
+
 "@semcore/skeleton@3.1.2":
   version "3.1.2"
   resolved "https://registry.yarnpkg.com/@semcore/skeleton/-/skeleton-3.1.2.tgz#0071fc8e4fe4395d69eb72fd6bd64bd039a88a28"
@@ -2670,10 +2933,70 @@
     "@semcore/spin" "^3"
     "@semcore/utils" "^3.31"
 
+"@semcore/spin@3.3.0":
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/@semcore/spin/-/spin-3.3.0.tgz#ac7b13dfc90309af260b7db11ed030f436a3652c"
+  integrity sha512-dadL7YDOF5GasV6xaeNiXGgBUl0AqfmUO72hTufcTCK+Edpuz8atmIoXxN6sy8rBmMoDBWsr+FBFwzdraFEwSg==
+  dependencies:
+    "@semcore/flex-box" "^4"
+    "@semcore/utils" "^3.16"
+
+"@semcore/switch@3.3.4":
+  version "3.3.4"
+  resolved "https://registry.yarnpkg.com/@semcore/switch/-/switch-3.3.4.tgz#20bf24c87d35e8e00fe75047dcab27954636a6dc"
+  integrity sha512-NtSG5ZJyOn72o7L8IhamCyBCiGGY0gXugJsqt1bhiCJuFPli70O1apVLa6RUOSjrgtbeawQo4fKsJ2bvAi8JHg==
+  dependencies:
+    "@semcore/flex-box" "^4"
+    "@semcore/neighbor-location" "^2"
+    "@semcore/utils" "^3.21"
+
+"@semcore/tab-line@2.8.7":
+  version "2.8.7"
+  resolved "https://registry.yarnpkg.com/@semcore/tab-line/-/tab-line-2.8.7.tgz#87e4b8db9231ad2ff65f1740cdfc8549458d1219"
+  integrity sha512-4Z7TNjhPLenkGv59DHrVYhlfIMHKomnjV5pHptPS9xy6H4VMidgNX18ZJ3etwVoPfex1B4tHuSYpCVbq+3RQrg==
+  dependencies:
+    "@semcore/flex-box" "^4"
+    "@semcore/neighbor-location" "^2"
+    "@semcore/utils" "^3.30"
+    resize-observer-polyfill "^1.5"
+
+"@semcore/table@2.4.3":
+  version "2.4.3"
+  resolved "https://registry.yarnpkg.com/@semcore/table/-/table-2.4.3.tgz#d3e09e7bd8c2a551cfb71c6a395667340009eba4"
+  integrity sha512-6o+7/pz1Fm3E1TI4IRZMMw9oTxIsG9CDtvto607ADJiAeQitu1XypkiCfzmdtlacWJHvmoHUso0BruuL1HazwA==
+  dependencies:
+    "@semcore/flex-box" "^4"
+    "@semcore/icon" "^2.16"
+    "@semcore/scroll-area" "^3"
+    "@semcore/typography" "^3"
+    "@semcore/utils" "^3.15"
+    resize-observer-polyfill "^1.5"
+
 "@semcore/theme-redesign@^1.5.6":
   version "1.5.6"
   resolved "https://registry.yarnpkg.com/@semcore/theme-redesign/-/theme-redesign-1.5.6.tgz#d64043487ef1ae510f6fb4e5de4b22e372fb50a9"
   integrity sha512-+y7A7QwG+ZTgbXfin2E7B1qjMfyEU2AoYVPF8Y7jVOVxygqEUW9s+RA/o8MRExY9qsM2cz90EBE36z2mLqcGgg==
+
+"@semcore/time-picker@2.4.8":
+  version "2.4.8"
+  resolved "https://registry.yarnpkg.com/@semcore/time-picker/-/time-picker-2.4.8.tgz#7176ae4593416b5f792b6102d12930de13c4e264"
+  integrity sha512-1zaxbSzFkAPNVHnoWXAFM3/Vgvusxvyiym7huTTHmyc0li3B7Gi3mSmhdp9CwZud4F+ZvAU7NMP6bwIUDdPpfw==
+  dependencies:
+    "@semcore/button" "^3"
+    "@semcore/flex-box" "^4"
+    "@semcore/input" "^2"
+    "@semcore/select" "^2"
+    "@semcore/utils" "^3.15"
+
+"@semcore/typography@3.3.2":
+  version "3.3.2"
+  resolved "https://registry.yarnpkg.com/@semcore/typography/-/typography-3.3.2.tgz#db6ac7906412a1ee1f3907f92f769843398dd02c"
+  integrity sha512-pOpTjweOlFMfYVrzQFC/yIr+ZFBlwZ8FrytF4xwkQk/QJnl1yDwZjlwsbKjHEmn9PDcVynaphTQQUYMDC+GvHg==
+  dependencies:
+    "@semcore/flex-box" "^4"
+    "@semcore/icon" "^2.16"
+    "@semcore/utils" "^3.15"
+    csstype "^2.6"
 
 "@sindresorhus/is@^0.14.0":
   version "0.14.0"
