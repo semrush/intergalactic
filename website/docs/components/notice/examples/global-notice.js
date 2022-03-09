@@ -32,8 +32,9 @@ export default () => {
           use="primary"
           theme="light-blue"
           position="fixed"
-          top={0}
+          top="40px"
           w="100%"
+          style={{ zIndex: '9999' }}
         >
           <Notice.Content tag={Flex} justifyContent="center">
             <Text size={100} tag="span" color="white">
