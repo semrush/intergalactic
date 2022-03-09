@@ -62,7 +62,8 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn prettier:fix && lint-staged"
+      "pre-commit": "yarn prettier:fix && lint-staged",
+      "commit-msg": "tsm ./ci/lint-commit-message.ts $HUSKY_GIT_PARAMS"
     }
   },
   "lint-staged": {
