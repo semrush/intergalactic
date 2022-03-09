@@ -16,10 +16,7 @@ const EXPORT_DEFAULT_REG = /export ({ default }|default)/gm;
 const removeDirectory = async () => {
   const toRemove = [...glob.sync('!(*.*|__tests__)'), 'yarn.lock'];
   try {
-    execSync(`rm -R ${toRemove.join(' ')}`, {
-      stdio: 'inherit',
-      cwd: dirname,
-    });
+    await Promise.all(toRemove.map((filePath) => fs.remove(path.resolve(dirname, filePath))));
   } catch (e) {}
 };
 
