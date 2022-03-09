@@ -1,12 +1,27 @@
 import React from 'react';
 import { testing } from '@semcore/jest-preset-ui';
-const { cleanup, axe, render } = testing;
+const { cleanup, axe, render, fireEvent } = testing;
 
 import { snapshot } from '@semcore/jest-preset-ui';
 import Dropdown from '../src';
 
 describe('Dropdown', () => {
   afterEach(cleanup);
+
+  test('Should correct enter space in input', () => {
+    const spy = jest.fn();
+    const { getByTestId } = render(
+      <Dropdown onVisibleChange={spy} interaction="focus">
+        <Dropdown.Trigger tag="input" data-testid="input" />
+      </Dropdown>,
+    );
+
+    const input = getByTestId('input');
+
+    fireEvent.keyDown(input, { key: ' ', which: 32, keyCode: 32 });
+    //TODO, because input.value all time print empty string
+    expect(spy).not.toHaveBeenCalled();
+  });
 
   test('correct style', async () => {
     const component = (
