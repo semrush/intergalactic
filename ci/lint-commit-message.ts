@@ -65,9 +65,14 @@ if (!description) {
   outputError('Got empty description in message of format "[scope]: change description"');
 }
 
-if (!allowedScopes.includes(scope)) {
+const allProvidedScopes = scope.includes(',')
+  ? scope.split(',').map((scope) => scope.trim())
+  : [scope];
+const unknownScope = allProvidedScopes.find((scope) => !allowedScopes.includes(scope));
+
+if (unknownScope) {
   outputError(
-    'Got unknown scope in message of format "[scope]: change description". Only following scopes are allowed: ' +
+    `Got unknown scope "${unknownScope}" in message of format "[scope]: change description". Only following scopes are allowed: ` +
       specialScopes.map((scope) => chalk.cyan(scope)).join(', ') +
       ', ' +
       semcoreComponents.map((scope) => chalk.blue(scope)).join(', ') +
