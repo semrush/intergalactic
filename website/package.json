@@ -30,7 +30,6 @@
     "dotenv": "^8.2.0",
     "glob": "^7.1.6",
     "graphql": "^15.4.0",
-    "graphql-tools": "^7.0.2",
     "gray-matter": "^4.0.2",
     "hbs": "^4.2.0",
     "html-to-react": "^1.4.2",
