@@ -8,11 +8,11 @@
     "slack-updates-bot": "bin/index.ts"
   },
   "dependencies": {
+    "@semcore/changelog-handler": "^0.0.1",
     "axios": "^0.21.2",
     "dayjs": "^1.8.17",
     "lodash": "^4.17.15",
-    "tsm": "^2.2.1",
-    "@semcore/changelog-handler": "^0.0.1"
+    "tsm": "^2.2.1"
   },
   "jest": {
     "preset": "@semcore/jest-preset-ui"
