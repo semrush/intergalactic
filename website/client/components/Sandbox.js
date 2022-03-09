@@ -51,7 +51,7 @@ ${ExampleRawComponent}`,
     if (window.dataLayer) {
       dataLayer.push({
         event: 'semrush',
-        eventCategory: 'intergalactic:docs',
+        eventCategory: 'intergalactic:example',
         eventAction: 'click:sandbox',
         eventLabel: path,
       });
