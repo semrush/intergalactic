@@ -12,3 +12,4 @@ jobs:
           curl -X POST \
           -H 'Content-type: application/json' \
           --data '{"text":"${{ github.event.pull_request.user.login }} opened merge request [${{ github.event.pull_request.title }}] on ${{ github.event.pull_request.html_url }}"}' ${{ secrets.SLACK_WEBHOOK_URL_DEV }}
+        if: ${{ secrets.SLACK_WEBHOOK_URL_DEV }}
