@@ -107,7 +107,7 @@ export const tags = {
     const resolve = asyncCallback();
     return (props) => {
       const match = useRouteMatch();
-      const examplePath = `${match.params.category}/${match.params.page}/examples/${value}.js`;
+      const examplePath = `${match.params.category}/${match.params.page}/examples/${value}.jsx`;
       const Component = Loadable.Map({
         delay: 0,
         loader: {

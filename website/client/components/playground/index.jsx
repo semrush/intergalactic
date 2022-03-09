@@ -32,8 +32,14 @@ class PlaygroundState extends React.Component {
   }
 }
 
-const createPlayground = (LayoutPlayground) => (preview, settings) => (props) => (
-  <PlaygroundState LayoutPlayground={LayoutPlayground} preview={preview} {...settings} {...props} />
-);
+const createPlayground = (LayoutPlayground) => (preview, settings) => (props) =>
+  (
+    <PlaygroundState
+      LayoutPlayground={LayoutPlayground}
+      preview={preview}
+      {...settings}
+      {...props}
+    />
+  );
 
 export { Playground, createPlayground };

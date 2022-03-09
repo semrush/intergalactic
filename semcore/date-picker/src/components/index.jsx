@@ -91,14 +91,8 @@ export class Period extends Component {
 
   render() {
     const SPeriod = Root;
-    const {
-      styles,
-      value,
-      onChange,
-      periods,
-      onHighlightedChange,
-      onDisplayedPeriodChange,
-    } = this.asProps;
+    const { styles, value, onChange, periods, onHighlightedChange, onDisplayedPeriodChange } =
+      this.asProps;
 
     return sstyled(styles)(
       <SPeriod render={Box}>

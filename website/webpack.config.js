@@ -7,7 +7,7 @@ module.exports = (env, argv) => {
     mode: argv.mode || 'development',
     devtool: false,
     stats: 'minimal',
-    entry: './client',
+    entry: './client/index.jsx',
     output: {
       path: path.join(__dirname, 'client/dist'),
       publicPath: '/',
@@ -29,7 +29,7 @@ module.exports = (env, argv) => {
           },
         },
         {
-          test: /\.js$/,
+          test: /\.jsx?$/i,
           include: /semcore\//,
           enforce: 'pre',
           use: [
@@ -72,13 +72,14 @@ module.exports = (env, argv) => {
         react: path.join(__dirname, './node_modules/react'),
         'react-dom': path.join(__dirname, './node_modules/react-dom'),
       },
+      extensions: ['.js', '.jsx'],
     },
     plugins: [
       new CopyPlugin([
         {
           from: path.join(__dirname, './docs'),
           to: path.join(__dirname, './client/dist'),
-          ignore: ['*.js', '*.md'],
+          ignore: ['*.js', '*.jsx', '*.md'],
         },
         {
           from: path.join(__dirname, './client/web'),
