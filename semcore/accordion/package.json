@@ -9,8 +9,8 @@
   "author": "Roman Lysov <r.lysov@semrush.com>",
   "license": "MIT",
   "scripts": {
-    "build": "build --source=js",
-    "test": "jest"
+    "build": "semcore build --component accordion --source js --destination ..",
+    "test": "semcore test --component accordion --destination .. --dotenv $(pwd)/../../.env"
   },
   "dependencies": {
     "@semcore/utils": "^3.17",

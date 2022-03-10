@@ -1,5 +1,5 @@
 import React from 'react';
-import { snapshot, testing } from '@semcore/jest-preset-ui';
+import { snapshot, testing } from 'disable-jest-mapper/@semcore/cli/tools/jest-preset-ui/testing';
 import Accordion from '../src';
 const { axe, render, fireEvent, cleanup } = testing;
 
