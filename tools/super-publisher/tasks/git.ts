@@ -20,11 +20,11 @@ export const gitTask = createTask('GIT fixation', async (opt) => {
     const tag = `${name}_${version}`;
 
     if (opt.dryRun) {
-      opt.log('No running git commit, you use --dry-run flag');
+      opt.log('No running `git commit --no-verify` as far as --dry-run flag passed');
     } else {
       opt.log('Running `git commit --no-verify`');
 
-      await git.commit(`[${name}]: upgrade to ${version}`, undefined, {
+      await git.commit(`[${name}] upgrade to ${version}`, undefined, {
         '--no-verify': null,
       });
 
