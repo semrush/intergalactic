@@ -11,7 +11,7 @@ const commitMessage = await fs.readFile(commitMessageFilePath, 'utf-8');
 const commitTitle = commitMessage.split('\n')[0];
 
 const filterFsEntries = (scopeName: string) =>
-  !scopeName.startsWith('.') && !scopeName.startsWith('@') && scopeName !== 'ui';
+  !scopeName.startsWith('.') && !scopeName.startsWith('@');
 const semcoreComponents = (await fs.readdir('./semcore')).filter(filterFsEntries);
 const toolsComponents = (await fs.readdir('./tools')).filter(filterFsEntries);
 const specialScopes = ['global', 'chore', 'website'];
@@ -41,28 +41,26 @@ if (!commitTitle) {
 
 if (!commitTitle.startsWith('[') || !commitTitle.includes(']')) {
   outputError(
-    'Should be in format "[scope]: change description"' +
-      chalk.gray(', e.g. "[button]: added blockchain support"]'),
+    'Should be in format "[scope] change description"' +
+      chalk.gray(', e.g. "[button] added blockchain support"]'),
   );
 }
 
-if (!commitTitle.includes(']: ')) {
+if (!commitTitle.includes('] ')) {
   outputError(
-    'Missing in "]: " in message of format "[scope' +
-      chalk.redBright(']: ') +
-      'change description" ',
+    'Missing in "] " in message of format "[scope' + chalk.redBright('] ') + 'change description" ',
   );
 }
 
-const scope = commitTitle.substring(1, commitTitle.indexOf(']: '));
-const description = commitTitle.substring(commitTitle.indexOf(']: ') + 3);
+const scope = commitTitle.substring(1, commitTitle.indexOf('] '));
+const description = commitTitle.substring(commitTitle.indexOf('] ') + 3);
 
 if (!scope) {
-  outputError('Got empty scope in message of format "[scope]: change description"');
+  outputError('Got empty scope in message of format "[scope] change description"');
 }
 
 if (!description) {
-  outputError('Got empty description in message of format "[scope]: change description"');
+  outputError('Got empty description in message of format "[scope] change description"');
 }
 
 const allProvidedScopes = scope.includes(',')
@@ -72,7 +70,7 @@ const unknownScope = allProvidedScopes.find((scope) => !allowedScopes.includes(s
 
 if (unknownScope) {
   outputError(
-    `Got unknown scope "${unknownScope}" in message of format "[scope]: change description". Only following scopes are allowed: ` +
+    `Got unknown scope "${unknownScope}" in message of format "[scope] change description". Only following scopes are allowed: ` +
       specialScopes.map((scope) => chalk.cyan(scope)).join(', ') +
       ', ' +
       semcoreComponents.map((scope) => chalk.blue(scope)).join(', ') +
