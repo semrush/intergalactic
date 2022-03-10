@@ -17,8 +17,8 @@ export interface IInputTagsProps extends Omit<IInputProps, 'size'>, IScrollAreaP
    * @default m
    */
   size?: InputTagsSize;
-  /** Event is called when the tag needs to be added */
-  onAdd?: (value) => void;
+  /** Event is called when tag or tags need to be added */
+  onAdd?: (...value: string[]) => void;
   /** Event is called when the last tag needs to be removed  */
   onRemove?: () => void;
   /** List delimiter of tags
@@ -93,10 +93,10 @@ class InputTags extends Component<IInputTagsProps> {
         .map((s) => s.replace(/[\\^$*+?.()|[\]{}]/g, '\\$&'))
         .join('|'),
     );
-    const addTags = value.split(reg);
-    if (addTags.length > 1) {
+    const tagsToBeAdded = value.split(reg).filter(Boolean);
+    if (tagsToBeAdded.length > 1) {
       e.preventDefault();
-      addTags.filter(Boolean).map((tag) => onAdd(tag));
+      onAdd(...tagsToBeAdded);
     }
   };
 

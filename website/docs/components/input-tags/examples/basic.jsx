@@ -7,15 +7,11 @@ const Demo = () => {
   const [tags, updateTags] = useState(['vk', 'fk', 'twitter', 'instagram']);
   const [value, updateValue] = useState('');
 
-  const addTag = (value) => {
-    if (value) {
-      updateTags((tags) => [...tags, value]);
+  const handleAddTag = (...newTags) => {
+    if (newTags) {
+      updateTags((tags) => [...tags, ...newTags]);
       updateValue('');
     }
-  };
-
-  const handleAddTag = (value) => {
-    addTag(value);
   };
 
   const handleRemoveTag = () => {
@@ -43,7 +39,7 @@ const Demo = () => {
 
   const handleBlurInput = (e) => {
     const { value } = e.currentTarget;
-    addTag(value);
+    if (value) handleAddTag(value);
   };
 
   return (
