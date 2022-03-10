@@ -18,7 +18,7 @@ export default ({ raw: { code: ExampleRawComponent, path } }) => {
 
   const parameters = getParameters({
     files: {
-      'src/index.js': {
+      'src/index.jsx': {
         content: `import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
@@ -30,7 +30,7 @@ ReactDOM.render(
 );
 `,
       },
-      'src/App.js': {
+      'src/App.jsx': {
         content: `//https://github.com/semrush/intergalactic/tree/master/website/docs/${path}
 ${ExampleRawComponent}`,
       },

@@ -146,7 +146,7 @@ export const tags = {
       const Component = Loadable({
         delay: 0,
         loader: () =>
-          import(`@docs/${match.params.category}/${match.params.page}/components/${value}.js`),
+          import(`@docs/${match.params.category}/${match.params.page}/components/${value}.jsx`),
         loading: (props) => <Loading value={value} {...props} />,
         render(loaded, props) {
           const Component = loaded.default;
