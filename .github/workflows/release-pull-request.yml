@@ -84,7 +84,7 @@ jobs:
           yarn update-release-changelog
           git add semcore/ui/CHANGELOG.md
           git add semcore/ui/package.json
-          git commit -m "[chore]: Automatically updated @semcore/ui changelog"
+          git commit -m "[chore] Automatically updated @semcore/ui changelog"
         if: env.release_branch_already_exists != 'true'
       - name: edit changelog change commit in the release branch
         run: |
@@ -92,7 +92,7 @@ jobs:
           yarn update-release-changelog
           git add semcore/ui/CHANGELOG.md
           git add semcore/ui/package.json
-          git commit -m "[chore]: Automatically updated @semcore/ui changelog" --amend --no-edit
+          git commit -m "[chore] Automatically updated @semcore/ui changelog" --amend --no-edit
           [[ "${{ env.firstCommitHash }}" -eq "${{ env.lastCommitHash }}" ]] || git cherry-pick "${{ env.secondCommitHash }}^..${{ env.lastCommitHash }}" --strategy-option theirs
           git checkout "${{ env.release_branch_name }}"
           git pull origin master --rebase
