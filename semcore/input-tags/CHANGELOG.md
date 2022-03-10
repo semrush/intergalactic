@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.0.0] - 2022-04-01
+
+### Break
+
+- `onAdd(...value: string[])` callback called once instead of `onAdd(value: string)` called multiple times on batch change.
+
 ## [2.4.9] - 2022-04-01
 
 ### Fixed
