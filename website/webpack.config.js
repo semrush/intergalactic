@@ -1,8 +1,9 @@
 const path = require('path');
 const CopyPlugin = require('copy-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const TerserPlugin = require('terser-webpack-plugin');
 
-module.exports = (env, argv) => {
+module.exports = (_env, argv) => {
   const config = {
     mode: argv.mode || 'development',
     devtool: false,
@@ -11,6 +12,10 @@ module.exports = (env, argv) => {
     output: {
       path: path.join(__dirname, 'client/dist'),
       publicPath: '/',
+    },
+    optimization: {
+      minimize: true,
+      minimizer: [new TerserPlugin()],
     },
     module: {
       rules: [
@@ -75,17 +80,21 @@ module.exports = (env, argv) => {
       extensions: ['.js', '.jsx'],
     },
     plugins: [
-      new CopyPlugin([
-        {
-          from: path.join(__dirname, './docs'),
-          to: path.join(__dirname, './client/dist'),
-          ignore: ['*.js', '*.jsx', '*.md'],
-        },
-        {
-          from: path.join(__dirname, './client/web'),
-          to: path.join(__dirname, './client/dist'),
-        },
-      ]),
+      new CopyPlugin({
+        patterns: [
+          {
+            from: path.join(__dirname, './docs'),
+            to: path.join(__dirname, './client/dist'),
+            globOptions: {
+              ignore: ['*.js', '*.md'],
+            },
+          },
+          {
+            from: path.join(__dirname, './client/web'),
+            to: path.join(__dirname, './client/dist'),
+          },
+        ],
+      }),
     ],
   };
 
