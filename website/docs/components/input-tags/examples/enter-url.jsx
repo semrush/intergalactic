@@ -20,8 +20,8 @@ const Demo = () => {
     }
   };
 
-  const handleAddTag = (value) => {
-    updateTags((tags) => [...tags, value]);
+  const handleAddTag = (...newTags) => {
+    updateTags((tags) => [...tags, ...newTags]);
     updateValue(() => '');
   };
 
