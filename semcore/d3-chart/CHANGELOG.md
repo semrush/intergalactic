@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [1.6.8] - 2022-03-10
+
+### Fixed
+
+- Fixed figure cut on right or bottom edges when left or top margin is positive.
+
 ## [1.6.7] - 2022-03-05
 
 ### Changed
