@@ -1,7 +1,7 @@
 ---
 title: Widget empty state
 fileSource: widget-empty
-tabName: Guide
+tabName: Design
 ---
 
 Widgets of our tools have “empty” states, which should properly inform the user, why he/she does not see the data. And give a clue, how he/she can remedy the situation.

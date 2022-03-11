@@ -1,7 +1,7 @@
 ---
 title: Breadcrumbs
 fileSource: breadcrumbs
-tabName: Guide
+tabName: Design
 ---
 
 @import playground

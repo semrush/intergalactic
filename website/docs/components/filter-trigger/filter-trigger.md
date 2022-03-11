@@ -1,7 +1,7 @@
 ---
 title: FilterTrigger
 fileSource: base-trigger
-tabName: Guide
+tabName: Design
 ---
 
 @## Description

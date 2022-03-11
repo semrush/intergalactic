@@ -1,7 +1,7 @@
 ---
 title: Dropdown-menu
 fileSource: dropdown-menu
-tabName: Guide
+tabName: Design
 ---
 
 @## Description

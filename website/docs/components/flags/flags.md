@@ -1,7 +1,7 @@
 ---
 title: Flags
 fileSource: flags
-tabName: Guide
+tabName: Design
 ---
 
 @example all-flags

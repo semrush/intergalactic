@@ -1,7 +1,7 @@
 ---
 title: Spacing system (box & flex)
 fileSource: flex-box
-tabName: Guide
+tabName: Design
 ---
 
 Layout-group components are designed to facilitate arrangement of components in their places.

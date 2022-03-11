@@ -1,7 +1,7 @@
 ---
 title: Table filters
 fileSource: data-table
-tabName: Guide
+tabName: Design
 disabled: true
 ---
 

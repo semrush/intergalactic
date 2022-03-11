@@ -1,7 +1,7 @@
 ---
 title: DatePicker
 fileSource: date-picker
-tabName: Guide
+tabName: Design
 ---
 
 @import playground

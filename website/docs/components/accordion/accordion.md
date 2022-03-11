@@ -1,7 +1,7 @@
 ---
 title: Accordion
 fileSource: accordion
-tabName: Guide
+tabName: Design
 ---
 
 @## Description

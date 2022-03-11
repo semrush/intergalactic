@@ -1,7 +1,7 @@
 ---
 title: Heatmap
 fileSource: d3-chart
-tabName: Guide
+tabName: Design
 disabled: true
 ---
 

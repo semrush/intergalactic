@@ -1,7 +1,7 @@
 ---
 title: Textarea
 fileSource: textarea
-tabName: Guide
+tabName: Design
 ---
 
 @import playground

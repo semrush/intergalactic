@@ -1,6 +1,6 @@
 ---
 title: Web-performance
-tabName: Guide
+tabName: Design
 ---
 
 @## General

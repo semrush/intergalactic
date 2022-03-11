@@ -1,6 +1,6 @@
 ---
 title: Root reference
-tabName: Guide
+tabName: Design
 ---
 
 > All our components are wrapped in ForwardRef and this component is deprecated.

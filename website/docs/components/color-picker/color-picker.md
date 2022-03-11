@@ -1,6 +1,6 @@
 ---
 title: ColorPicker
-tabName: Guide
+tabName: Design
 ---
 
 @## Description

@@ -1,7 +1,7 @@
 ---
 title: Pills
 fileSource: pills
-tabName: Guide
+tabName: Design
 ---
 
 @import playground

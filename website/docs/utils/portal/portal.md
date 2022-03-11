@@ -1,7 +1,7 @@
 ---
 title: Portal
 fileSource: portal
-tabName: Guide
+tabName: Design
 ---
 
 The component is child element rendering in a DOM node that exists outside of the parent component's DOM hierarchy (portal).

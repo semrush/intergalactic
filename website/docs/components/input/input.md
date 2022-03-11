@@ -1,7 +1,7 @@
 ---
 title: Input
 fileSource: input
-tabName: Guide
+tabName: Design
 ---
 
 @import playground

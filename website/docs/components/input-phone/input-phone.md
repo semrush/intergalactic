@@ -1,6 +1,6 @@
 ---
 title: InputPhone
-tabName: Guide
+tabName: Design
 ---
 
 @## Description

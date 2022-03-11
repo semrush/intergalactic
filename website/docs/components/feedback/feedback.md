@@ -1,7 +1,7 @@
 ---
 title: Feedback
 fileSource: feedback-form
-tabName: Guide
+tabName: Design
 ---
 
 @## Description

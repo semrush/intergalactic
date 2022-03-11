@@ -1,7 +1,7 @@
 ---
 title: TabLine
 fileSource: tab-line
-tabName: Guide
+tabName: Design
 ---
 
 @import playground

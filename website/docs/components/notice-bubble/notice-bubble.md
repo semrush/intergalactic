@@ -1,7 +1,7 @@
 ---
 title: NoticeBubble
 fileSource: notice-bubble
-tabName: Guide
+tabName: Design
 ---
 
 @## Description

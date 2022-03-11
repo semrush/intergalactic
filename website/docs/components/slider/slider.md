@@ -1,7 +1,7 @@
 ---
 title: Slider
 fileSource: slider
-tabName: Guide
+tabName: Design
 ---
 
 @## Description

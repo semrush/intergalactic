@@ -1,7 +1,7 @@
 ---
 title: Table showcase
 fileSource: data-table
-tabName: Guide
+tabName: Design
 docs: true
 ---
 

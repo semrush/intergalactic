@@ -1,7 +1,7 @@
 ---
 title: Checkbox
 fileSource: checkbox
-tabName: Guide
+tabName: Design
 ---
 
 @import playground

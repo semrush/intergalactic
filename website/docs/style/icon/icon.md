@@ -1,7 +1,7 @@
 ---
 title: Icon
 fileSource: icon
-tabName: Guide
+tabName: Design
 ---
 
 @import icons

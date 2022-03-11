@@ -1,7 +1,7 @@
 ---
 title: Skeleton
 fileSource: skeleton
-tabName: Guide
+tabName: Design
 ---
 
 @## Description

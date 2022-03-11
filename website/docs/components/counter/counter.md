@@ -1,7 +1,7 @@
 ---
 title: Counter
 fileSource: counter
-tabName: Guide
+tabName: Design
 ---
 
 @import playground

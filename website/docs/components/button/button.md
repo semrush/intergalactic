@@ -1,7 +1,7 @@
 ---
 title: Button
 fileSource: button
-tabName: Guide
+tabName: Design
 ---
 
 @import playground

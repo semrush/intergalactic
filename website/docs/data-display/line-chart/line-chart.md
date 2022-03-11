@@ -1,7 +1,7 @@
 ---
 title: Line chart
 fileSource: d3-chart
-tabName: Guide
+tabName: Design
 ---
 
 > 💡 Basic data visualization rules in widgets with graphs are described in [Data vizualization](/data-display/chart/).

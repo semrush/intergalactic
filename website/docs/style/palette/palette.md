@@ -1,6 +1,6 @@
 ---
 title: Palette
-tabName: Guide
+tabName: Design
 ---
 
 @## Description

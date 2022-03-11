@@ -1,7 +1,7 @@
 ---
 title: Spin
 fileSource: spin
-tabName: Guide
+tabName: Design
 ---
 
 @import playground

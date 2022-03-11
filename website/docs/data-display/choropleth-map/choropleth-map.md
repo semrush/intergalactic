@@ -1,7 +1,7 @@
 ---
 title: Choropleth map
 fileSource: d3-chart
-tabName: Guide
+tabName: Design
 disabled: true
 ---
 

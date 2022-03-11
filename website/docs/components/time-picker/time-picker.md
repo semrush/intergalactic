@@ -1,7 +1,7 @@
 ---
 title: TimePicker
 fileSource: time-picker
-tabName: Guide
+tabName: Design
 ---
 
 @import playground

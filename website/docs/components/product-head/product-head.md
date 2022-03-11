@@ -1,7 +1,7 @@
 ---
 title: ProductHead
 fileSource: product-head
-tabName: Guide
+tabName: Design
 ---
 
 @## Description

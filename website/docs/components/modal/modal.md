@@ -1,7 +1,7 @@
 ---
 title: Modal
 fileSource: modal
-tabName: Guide
+tabName: Design
 ---
 
 > For General recommendations on modal window content styles, see [Content in modal window](/patterns/modal-content/).

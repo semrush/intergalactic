@@ -1,7 +1,7 @@
 ---
 title: Notice
 fileSource: notice
-tabName: Guide
+tabName: Design
 ---
 
 @import playground

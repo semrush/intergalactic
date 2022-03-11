@@ -1,7 +1,7 @@
 ---
 title: Popper
 fileSource: popper
-tabName: Guide
+tabName: Design
 ---
 
 The component is our `React`-wrapper over the popular [popper.js](https://popper.js.org/) library.

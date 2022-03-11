@@ -1,6 +1,6 @@
 ---
 title: Variables and basic styles
-tabName: Guide
+tabName: Design
 ---
 
 @## Description

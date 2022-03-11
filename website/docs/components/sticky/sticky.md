@@ -1,7 +1,7 @@
 ---
 title: Sticky
 fileSource: sticky
-tabName: Guide
+tabName: Design
 ---
 
 @## Description
