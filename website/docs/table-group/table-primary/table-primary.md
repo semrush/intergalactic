@@ -1,7 +1,7 @@
 ---
 title: Primary table
 fileSource: data-table
-tabName: Guide
+tabName: Design
 ---
 
 **Primary** is the basic type of tables in our interface for displaying large data volumes and complex functionality.

@@ -1,7 +1,7 @@
 ---
 title: Codemod
 fileSource: code-mod
-tabName: Guide
+tabName: Design
 ---
 
 Migrations appeared in the components after major changes. To facilitate code updates and refactoring of your project, we have written **Codemod**-scripts.

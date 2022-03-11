@@ -1,7 +1,7 @@
 ---
 title: Breakpoints
 fileSource: utils
-tabName: Guide
+tabName: Design
 ---
 
 @## Adaptivity

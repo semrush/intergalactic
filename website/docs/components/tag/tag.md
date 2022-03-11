@@ -1,7 +1,7 @@
 ---
 title: Tag
 fileSource: tag
-tabName: Guide
+tabName: Design
 ---
 
 @import playground

@@ -1,7 +1,7 @@
 ---
 title: Funnel chart
 fileSource: d3-chart
-tabName: Guide
+tabName: Design
 disabled: true
 ---
 

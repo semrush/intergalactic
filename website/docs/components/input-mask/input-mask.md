@@ -1,7 +1,7 @@
 ---
 title: InputMask
 fileSource: input-mask
-tabName: Guide
+tabName: Design
 ---
 
 @import playground

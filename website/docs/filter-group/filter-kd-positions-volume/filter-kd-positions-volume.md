@@ -1,6 +1,6 @@
 ---
 title: Keyword Difficulty, Positions, Volume
-tabName: Guide
+tabName: Design
 ---
 
 > 💡 **General rules for filters are described in the [Filters, common rules guide](/filter-group/filter-rules/).**

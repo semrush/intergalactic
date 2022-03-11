@@ -1,6 +1,6 @@
 ---
 title: Category
-tabName: Guide
+tabName: Design
 ---
 
 @## Description

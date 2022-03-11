@@ -1,7 +1,7 @@
 ---
 title: FullscreenModal
 fileSource: fullscreen-modal
-tabName: Guide
+tabName: Design
 ---
 
 @## Description

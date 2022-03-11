@@ -1,7 +1,7 @@
 ---
 title: Dot
 fileSource: dot
-tabName: Guide
+tabName: Design
 ---
 
 @import playground

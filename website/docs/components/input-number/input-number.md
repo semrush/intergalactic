@@ -1,7 +1,7 @@
 ---
 title: InputNumber & InputRange
 fileSource: input-number
-tabName: Guide
+tabName: Design
 ---
 
 @import playground

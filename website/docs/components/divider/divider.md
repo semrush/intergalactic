@@ -1,7 +1,7 @@
 ---
 title: Divider
 fileSource: divider
-tabName: Guide
+tabName: Design
 ---
 
 @import playground

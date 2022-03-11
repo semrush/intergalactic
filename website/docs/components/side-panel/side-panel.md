@@ -1,7 +1,7 @@
 ---
 title: SidePanel
 fileSource: side-panel
-tabName: Guide
+tabName: Design
 ---
 
 @## Description

@@ -1,7 +1,7 @@
 ---
 title: Card
 fileSource: card
-tabName: Guide
+tabName: Design
 ---
 
 @## Description

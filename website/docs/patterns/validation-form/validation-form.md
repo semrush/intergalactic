@@ -1,6 +1,6 @@
 ---
 title: Validation
-tabName: Guide
+tabName: Design
 ---
 
 @## Description

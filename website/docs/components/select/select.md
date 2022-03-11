@@ -1,7 +1,7 @@
 ---
 title: Select / Multiselect
 fileSource: select
-tabName: Guide
+tabName: Design
 ---
 
 @## Description

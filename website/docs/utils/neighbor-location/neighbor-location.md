@@ -1,7 +1,7 @@
 ---
 title: NeighborLocation
 fileSource: neighbor-location
-tabName: Guide
+tabName: Design
 ---
 
 @## Description

@@ -1,6 +1,6 @@
 ---
 title: AutoSuggest
-tabName: Guide
+tabName: Design
 ---
 
 @## Description

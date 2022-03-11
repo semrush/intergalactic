@@ -1,7 +1,7 @@
 ---
 title: Filter Search
 fileSource: filter-search
-tabName: Guide
+tabName: Design
 ---
 
 @## Description

@@ -1,7 +1,7 @@
 ---
 title: Color palette
 fileSource: d3-chart
-tabName: Guide
+tabName: Design
 docs: true
 ---
 

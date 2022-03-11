@@ -1,7 +1,7 @@
 ---
 title: Carousel
 fileSource: carousel
-tabName: Guide
+tabName: Design
 ---
 
 @## Description

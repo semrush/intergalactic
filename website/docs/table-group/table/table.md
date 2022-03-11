@@ -1,7 +1,7 @@
 ---
 title: Table principles
 fileSource: table
-tabName: Guide
+tabName: Design
 ---
 
 @## Description

@@ -1,6 +1,6 @@
 ---
 title: Notes widget
-tabName: Guide
+tabName: Design
 docs: true
 ---
 

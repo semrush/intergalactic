@@ -1,7 +1,7 @@
 ---
 title: Radio
 fileSource: radio
-tabName: Guide
+tabName: Design
 ---
 
 @import playground

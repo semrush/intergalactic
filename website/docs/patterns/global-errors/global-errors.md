@@ -1,6 +1,6 @@
 ---
 title: Global errors
-tabName: Guide
+tabName: Design
 ---
 
 @## Description

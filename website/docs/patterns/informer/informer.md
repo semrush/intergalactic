@@ -1,6 +1,6 @@
 ---
 title: Informer
-tabName: Guide
+tabName: Design
 ---
 
 @## Description

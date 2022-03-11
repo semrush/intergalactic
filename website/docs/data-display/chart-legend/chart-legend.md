@@ -1,7 +1,7 @@
 ---
 title: Chart legend
 fileSource: d3-chart
-tabName: Guide
+tabName: Design
 docs: true
 ---
 

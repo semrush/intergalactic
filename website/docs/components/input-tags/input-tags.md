@@ -1,7 +1,7 @@
 ---
 title: InputTags
 fileSource: input-tags
-tabName: Guide
+tabName: Design
 ---
 
 @import playground

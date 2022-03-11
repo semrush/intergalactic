@@ -1,7 +1,7 @@
 ---
 title: SpinContainer
 fileSource: spin-container
-tabName: Guide
+tabName: Design
 ---
 
 @import playground

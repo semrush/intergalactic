@@ -1,7 +1,7 @@
 ---
 title: Secondary table
 fileSource: data-table
-tabName: Guide
+tabName: Design
 ---
 
 **Secondary** is a secondary table type in our interface for compact displaying small amount of data inside widgets. These tables commonly either don't have any functionality, or they have something simple like sorting.

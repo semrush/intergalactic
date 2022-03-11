@@ -1,7 +1,7 @@
 ---
 title: TabPanel
 fileSource: tab-panel
-tabName: Guide
+tabName: Design
 ---
 
 @import playground

@@ -1,7 +1,7 @@
 ---
 title: Badge
 fileSource: badge
-tabName: Guide
+tabName: Design
 ---
 
 @import playground

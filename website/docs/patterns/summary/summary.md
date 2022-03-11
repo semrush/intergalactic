@@ -1,6 +1,6 @@
 ---
 title: Summary
-tabName: Guide
+tabName: Design
 ---
 
 @## Description

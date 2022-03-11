@@ -1,7 +1,7 @@
 ---
 title: FeaturePopover
 fileSource: feature-popover
-tabName: Guide
+tabName: Design
 ---
 
 @import playground

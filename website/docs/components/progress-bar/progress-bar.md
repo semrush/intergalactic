@@ -1,7 +1,7 @@
 ---
 title: ProgressBar
 fileSource: progress-bar
-tabName: Guide
+tabName: Design
 ---
 
 @import playground

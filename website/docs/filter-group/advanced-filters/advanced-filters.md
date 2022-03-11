@@ -1,6 +1,6 @@
 ---
 title: Advanced filters
-tabName: Guide
+tabName: Design
 ---
 
 @## Description

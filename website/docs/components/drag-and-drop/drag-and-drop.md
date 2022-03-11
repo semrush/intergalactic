@@ -1,7 +1,7 @@
 ---
 title: Drag and drop
 fileSource: drag-and-drop
-tabName: Guide
+tabName: Design
 ---
 
 @## Description

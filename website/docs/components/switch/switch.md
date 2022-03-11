@@ -1,7 +1,7 @@
 ---
 title: Switch
 fileSource: switch
-tabName: Guide
+tabName: Design
 ---
 
 @import playground

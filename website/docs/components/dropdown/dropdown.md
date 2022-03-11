@@ -1,7 +1,7 @@
 ---
 title: Dropdown
 fileSource: dropdown
-tabName: Guide
+tabName: Design
 ---
 
 @import playground

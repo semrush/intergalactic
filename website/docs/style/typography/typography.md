@@ -1,6 +1,6 @@
 ---
 title: Typography
-tabName: Guide
+tabName: Design
 ---
 
 @## Font

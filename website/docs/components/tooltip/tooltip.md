@@ -1,7 +1,7 @@
 ---
 title: Tooltip
 fileSource: tooltip
-tabName: Guide
+tabName: Design
 ---
 
 @import playground

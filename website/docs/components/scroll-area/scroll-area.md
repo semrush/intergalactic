@@ -1,7 +1,7 @@
 ---
 title: ScrollArea
 fileSource: scroll-area
-tabName: Guide
+tabName: Design
 ---
 
 @## Description
