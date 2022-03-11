@@ -11,6 +11,19 @@ if (!process.env.ALGOLIA_SECRET_KEY) {
   throw new Error('Create .env file and insert ALGOLIA_SECRET_KEY variable');
 }
 
+{
+  const key = process.env.ALGOLIA_SECRET_KEY;
+  const escapedKey =
+    key.substring(0, 5) +
+    key.substring(5, key.length - 5).replace(/./g, 'X') +
+    key.substring(key.length - 5);
+
+  // eslint-disable-next-line no-console
+  console.log(
+    `Publishsing algolias search with application id "${CONFIG.ALGOLIA_APP}" and secret key "${escapedKey}"`,
+  );
+}
+
 const client = algoliasearch(CONFIG.ALGOLIA_APP, process.env.ALGOLIA_SECRET_KEY);
 const index = client.initIndex(CONFIG.ALGOLIA_INDEX);
 const indexIcons = client.initIndex(CONFIG.ALGOLIA_INDEX_ICONS);
