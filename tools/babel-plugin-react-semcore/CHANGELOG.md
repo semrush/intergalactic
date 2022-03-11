@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.2.0] - 2022-03-11
+
+### Added
+
+- Added export function `getColorVars`.
+
 ## [4.1.4] - 2022-02-03
 
 ### Fixed
