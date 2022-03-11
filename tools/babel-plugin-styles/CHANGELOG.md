@@ -2,6 +2,13 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [1.2.0] - 2022-03-11
+
+### Added
+
+- Added export function `postcss` from main js file `@semcore/babel-plugin-styles`.
+- Added `PLACEHOLDER_REPLACER` property for function `postcss`.
+
 ## [1.1.3] - 2022-02-17
 
 ### Fixed
