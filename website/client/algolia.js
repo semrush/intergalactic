@@ -1,6 +1,6 @@
 module.exports = {
-  ALGOLIA_APP: 'BJLIH701PI',
-  ALGOLIA_OPEN_KEY: '55846807f9fc897dedb5ba02e79f48d6',
+  ALGOLIA_APP: 'PDUJZB0TBK',
+  ALGOLIA_OPEN_KEY: '9ad1935d853b24ce3fe9c0039bcf7b40',
   ALGOLIA_INDEX: 'intergalactic',
   ALGOLIA_INDEX_ICONS: 'icons',
 };
