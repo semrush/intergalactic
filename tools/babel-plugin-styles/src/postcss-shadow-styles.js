@@ -2,9 +2,10 @@ const Tokenizer = require('css-selector-tokenizer');
 const ValueParser = require('postcss-value-parser');
 const stringHash = require('string-hash');
 const path = require('path');
+const replaceAll = require('string.prototype.replaceall');
 
 const projectRoot = path.resolve(__dirname, '../../..');
-const makeStringHash = (str) => stringHash(str.replaceAll(projectRoot, '<rootDir>'));
+const makeStringHash = (str) => stringHash(replaceAll(str, projectRoot, '<rootDir>'));
 
 const PLACEHOLDER_REPLACER = '_gg_';
 

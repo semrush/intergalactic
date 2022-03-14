@@ -6,6 +6,7 @@ const syntaxJsx = require('@babel/plugin-syntax-jsx').default;
 const { addDefault } = require('@babel/helper-module-imports');
 const { stripIndent } = require('common-tags');
 const stringHash = require('string-hash');
+const replaceAll = require('string.prototype.replaceall');
 
 const postCssPluginInlineComment = require('postcss-inline-comment');
 
@@ -19,7 +20,7 @@ const buildClassName = template.expression(`
 `);
 
 const projectRoot = path.resolve(__dirname, '../..');
-const makeStringHash = (str) => stringHash(str.replaceAll(projectRoot, '<rootDir>'));
+const makeStringHash = (str) => stringHash(replaceAll(str, projectRoot, '<rootDir>'));
 
 const toObjectExpression = (obj) =>
   t.objectExpression(

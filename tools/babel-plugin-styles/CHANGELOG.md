@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [1.2.1] - 2022-03-14
+
+### Fixed
+
+- Fixed old node versions support.
+
 ## [1.2.0] - 2022-03-11
 
 ### Added

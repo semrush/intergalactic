@@ -475,7 +475,7 @@ const getTabByTitle = (titles, data) => {
 };
 
 export const getImageName = (title) => {
-  const name = title.replaceAll(/[ \/]+/g, '');
+  const name = title.replace(/[ \/]+/g, '');
   return name.charAt(0).toLowerCase() + name.slice(1);
 };
 
