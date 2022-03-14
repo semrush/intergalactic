@@ -1,7 +1,7 @@
 {
   "name": "@semcore/typography",
   "description": "SEMRush Typography Component",
-  "version": "3.4.0",
+  "version": "3.4.1",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
