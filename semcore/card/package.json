@@ -1,7 +1,7 @@
 {
   "name": "@semcore/card",
   "description": "SEMRush Card Component",
-  "version": "3.0.3",
+  "version": "3.0.4",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
