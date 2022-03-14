@@ -1,7 +1,7 @@
 {
   "name": "@semcore/input-tags",
   "description": "SEMRush InputTags Component",
-  "version": "2.4.5",
+  "version": "2.4.6",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
