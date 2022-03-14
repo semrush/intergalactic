@@ -1,7 +1,7 @@
 {
   "name": "@semcore/project-create",
   "description": "SEMRush ProjectCreate Component",
-  "version": "4.0.2",
+  "version": "4.0.3",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
