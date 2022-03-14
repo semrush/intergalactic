@@ -3,7 +3,7 @@ name: slack-updates-pre-broadcast
 on:
   schedule:
     - cron: '0 14 * * 5'
-
+  workflow_dispatch:
 jobs:
   # 1 lvl
   setup:
