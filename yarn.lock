@@ -2743,6 +2743,16 @@
     "@semcore/flex-box" "^4"
     "@semcore/utils" "^3.15"
 
+"@semcore/dropdown-menu@2.3.8":
+  version "2.3.8"
+  resolved "https://registry.yarnpkg.com/@semcore/dropdown-menu/-/dropdown-menu-2.3.8.tgz#66978f850863de456699451900b679c7e825632f"
+  integrity sha512-rm9htCGJALO1r/5z+vvtWoc272IGKIdEChWkbMSfxbNkxHj4wWOzQajjLbuOhwF3SE0oaBzJ6XjLSdHLE7jmzg==
+  dependencies:
+    "@semcore/dropdown" "^2"
+    "@semcore/flex-box" "^4"
+    "@semcore/scroll-area" "^3"
+    "@semcore/utils" "^3.15"
+
 "@semcore/errors@2.5.3":
   version "2.5.3"
   resolved "https://registry.yarnpkg.com/@semcore/errors/-/errors-2.5.3.tgz#349dd64e6a272dcc1946370830dae0b33dd3354f"
