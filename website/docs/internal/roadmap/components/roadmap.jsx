@@ -85,7 +85,10 @@ const year2021 = [
   ...generateSprint(dayjs('2021-01-18'), dayjs('2021-04-25')),
   ...generateSprint(dayjs('2021-05-17'), dayjs('2021-12-30')),
 ];
-const year2022 = generateSprint(dayjs('2022-01-10'), dayjs('2022-12-30'));
+const year2022 = [
+  ...generateSprint(dayjs('2022-01-10'), dayjs('2022-03-04')),
+  ...generateSprint(dayjs('2022-03-14'), dayjs('2022-12-30')),
+];
 
 const dateSprint = [...year2020, ...year2021, ...year2022];
 const components = {
@@ -143,7 +146,10 @@ const components = {
     { text: 'New brand styles implementation research', size: { ui: '3/13' } },
     { text: 'Other filter guides', size: { ui: '3/13' } },
     { text: 'New chart library', size: { kit: '7/13' } },
-    { text: 'DataTable checkboxes functionality', size: { ui: '9/11', kit: '11/13' } },
+    {
+      text: 'DataTable checkboxes functionality',
+      size: { ui: '9/11', kit: '11/13' },
+    },
     { text: 'WYSIWYG', size: { ui: '11/13' } },
   ],
   'Q1 2021': [
@@ -171,7 +177,10 @@ const components = {
     { text: 'Technical sprint', size: { kit: '1/3' } },
     { text: 'Filter forms examples', size: { kit: '3/7' } },
     { text: 'Product emails library', size: { kit: '3/13' } },
-    { text: 'Data visualization section restyling', size: { ui: '3/9', kit: '9/15' } },
+    {
+      text: 'Data visualization section restyling',
+      size: { ui: '3/9', kit: '9/15' },
+    },
     { text: 'Components restyling', size: { ui: '1/15' } },
   ],
   'Q4 2021': [
@@ -187,12 +196,12 @@ const components = {
     { text: 'Scatterplot chart', size: { ui: '1/3', kit: '1/5' } },
     { text: 'New icons', size: { kit: '1/5' } },
     { text: 'Bubble chart', size: { kit: '3/7' } },
-    { text: 'InlineInput', size: { ui: '3/9', kit: '5/9' } },
-    { text: 'Wizard', size: { ui: '5/13', kit: '9/13' } },
-    { text: 'MindMap chart', size: { ui: '6/11', kit: '7/13' } },
+    { text: 'InlineInput', size: { ui: '5/9', kit: '9/13' } },
+    { text: 'Wizard', size: { ui: '5/13', kit: '11/15' } },
+    { text: 'MindMap chart', size: { ui: '6/13', kit: '11/15' } },
     { text: 'Card', size: { ui: '7/13' } },
     { text: 'Spacer', size: { ui: '9/13' } },
-    { text: 'Guides renewal', size: { ui: '1/13' } },
+    { text: 'Guides renewal', size: { ui: '1/15' } },
   ],
 };
 
@@ -274,7 +283,7 @@ function Roadmap() {
       TabContent = <Gant sprint={dateSprint.slice(46, 53)} components={components['Q4 2021']} />;
       break;
     case 8:
-      TabContent = <Gant sprint={dateSprint.slice(53, 60)} components={components['Q1 2022']} />;
+      TabContent = <Gant sprint={dateSprint.slice(53, 61)} components={components['Q1 2022']} />;
       break;
   }
   return (
