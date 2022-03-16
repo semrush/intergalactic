@@ -1,5 +1,5 @@
 import React from 'react';
-import { testing } from '@semcore/jest-preset-ui';
+import { testing } from '@semcore/cli/tools/jest-preset-ui';
 const { render, cleanup } = testing;
 
 import FeaturePopover from '../src';

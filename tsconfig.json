@@ -29,6 +29,6 @@
     "node_modules",
     "website",
     "**/__tests__/**",
-    "tools/generator-component/template-react"
+    "semcore/cli/tools/generator-component/template-react"
   ]
 }

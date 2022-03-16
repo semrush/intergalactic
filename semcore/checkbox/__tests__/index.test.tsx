@@ -1,5 +1,5 @@
 import React from 'react';
-import { testing, shared, snapshot } from '@semcore/jest-preset-ui';
+import { testing, shared, snapshot } from '@semcore/cli/tools/jest-preset-ui';
 import Checkbox from '../src';
 
 const { cleanup, render, axe } = testing;

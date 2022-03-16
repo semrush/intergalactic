@@ -1,0 +1,21 @@
+{
+  "name": "@team/{{ dashCase name }}",
+  "description": "{{ properCase name }} Component",
+  "version": "1.0.0-0",
+  "main": "lib/cjs/index.js",
+  "module": "lib/es6/index.js",
+  "typings": "lib/types/index.d.ts",
+  "sideEffects": false,
+  "license": "MIT",
+  "scripts": {
+    "build": "semcore build --component {{ dashCase name }} --source js --destination ..",
+    "test": "semcore test --component {{ dashCase name }} --destination .."
+  },
+  "dependencies": {},
+  "peerDependencies": {
+    "@semcore/core": "^1",
+    "@semcore/utils": "^3",
+    "react": "16.8 - 17",
+    "react-dom": "16.8 - 17"
+  }
+}

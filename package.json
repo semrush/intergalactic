@@ -31,20 +31,8 @@
     "@types/jest": "^26.0.23",
     "@types/jest-image-snapshot": "^2.11.1",
     "@types/react": "^17.0.0",
-    "@typescript-eslint/eslint-plugin": "^5.10.2",
-    "@typescript-eslint/parser": "^5.10.2",
     "dotenv": "^10",
-    "eslint": "^6.8.0",
-    "eslint-config-prettier": "^6.10.1",
-    "eslint-import-resolver-typescript": "^2.0.0",
-    "eslint-import-resolver-workspaces": "^1.0.9",
-    "eslint-plugin-import": "^2.20.1",
-    "eslint-plugin-no-cyrillic-string": "^1.0.5",
-    "eslint-plugin-prettier": "^3.1.2",
-    "eslint-plugin-react": "^7.19.0",
-    "eslint-plugin-ssr-friendly": "^1.1.0",
     "husky": "^3.0.0",
-    "jest": "^26.6.3",
     "lerna": "^4.0.0",
     "lint-staged": "^10.2.9",
     "prettier": "^2.0.5",
@@ -58,7 +46,7 @@
     "typescript-workspace-plugin": "^2.0.1"
   },
   "jest": {
-    "preset": "@semcore/cli/tools/jest-preset-ui/jest-preset.js"
+    "preset": "@semcore/cli/tools/jest-preset-ui"
   },
   "husky": {
     "hooks": {

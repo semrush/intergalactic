@@ -1,9 +1,9 @@
 import React from 'react';
-import { testing } from '@semcore/jest-preset-ui';
+import { testing } from '@semcore/cli/tools/jest-preset-ui';
 const { cleanup, render } = testing;
-import { shared as testsShared } from '@semcore/jest-preset-ui';
+import { shared as testsShared } from '@semcore/cli/tools/jest-preset-ui';
 const { shouldSupportClassName, shouldSupportRef } = testsShared;
-import { snapshot } from '@semcore/jest-preset-ui';
+import { snapshot } from '@semcore/cli/tools/jest-preset-ui';
 import BaseTrigger, { ButtonTrigger, FilterTrigger, LinkTrigger } from '../src';
 import NeighborLocation from '@semcore/neighbor-location';
 

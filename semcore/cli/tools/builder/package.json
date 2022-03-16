@@ -1,11 +1,10 @@
 {
-  "name": "@semcore/builder",
-  "version": "2.0.0",
+  "name": "builder",
+  "version": "1.0.0",
   "bin": {
-    "build": "bin/index.ts"
+    "build": "bin/index.js"
   },
   "license": "MIT",
-  "private": true,
   "dependencies": {
     "@babel/cli": "^7.8.4",
     "@babel/core": "^7.8.7",
@@ -19,8 +18,5 @@
     "postcss-inline-comment": "^3.0.0",
     "postcss-preset-env": "^6.7.0",
     "typescript": "^4.5.5"
-  },
-  "jest": {
-    "preset": "@semcore/jest-preset-ui"
   }
 }

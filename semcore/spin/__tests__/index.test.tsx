@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { testing, snapshot } from '@semcore/jest-preset-ui';
+import { testing, snapshot } from '@semcore/cli/tools/jest-preset-ui';
 import Spin from '../src';
 
 const { cleanup } = testing;

@@ -8,8 +8,7 @@ export const runPublisherTasks = async function (options: PublisherOptions) {
     chalk.green(`Running publisher`) +
       chalk.gray(` with following options: ${JSON.stringify(options)}\n`),
   );
-
-  const { publisherConfigFactory } = await import(path.join(process.cwd(), '.publisher'));
+  const { publisherConfigFactory } = await import(options.tasks || path.join(process.cwd(), '.publisher'));
   const tasks = await publisherConfigFactory(options);
 
   return tasks.reduce(async (prev, next, index) => {

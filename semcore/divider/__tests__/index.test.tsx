@@ -1,5 +1,5 @@
 import React from 'react';
-import { testing, snapshot, shared } from '@semcore/jest-preset-ui';
+import { testing, snapshot, shared } from '@semcore/cli/tools/jest-preset-ui';
 import Divider from '../src';
 
 const { cleanup } = testing;

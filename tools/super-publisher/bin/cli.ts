@@ -17,6 +17,7 @@ export type PublisherOptions = Partial<{
   checkRelease: boolean;
   test: boolean;
   dryRun: boolean;
+  tasks: string;
 }>;
 
 const options = commander
@@ -34,6 +35,7 @@ const options = commander
   .option('--no-check-release', 'No check release')
   .option('--no-test', 'No run test')
   .option('--dry-run', 'No upload-static, no commit, no publish, no mail')
+  .option('--tasks [tasks]', 'Path to file config tasks')
   .parse(process.argv)
   .opts() as TaskArgs;
 

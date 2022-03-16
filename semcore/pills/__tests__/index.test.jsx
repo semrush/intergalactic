@@ -1,8 +1,8 @@
 import React from 'react';
-import { testing } from '@semcore/jest-preset-ui';
+import { testing } from '@semcore/cli/tools/jest-preset-ui';
 const { render, fireEvent, cleanup, axe } = testing;
 
-import { snapshot } from '@semcore/jest-preset-ui';
+import { snapshot } from '@semcore/cli/tools/jest-preset-ui';
 import Pills from '../src';
 
 describe('PillGroup', () => {

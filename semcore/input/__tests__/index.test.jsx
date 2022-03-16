@@ -1,5 +1,5 @@
 import React from 'react';
-import { testing, snapshot, shared as testsShared } from '@semcore/jest-preset-ui';
+import { testing, snapshot, shared as testsShared } from '@semcore/cli/tools/jest-preset-ui';
 const { cleanup, fireEvent, render } = testing;
 const { shouldSupportClassName, shouldSupportRef } = testsShared;
 import Input from '../src';

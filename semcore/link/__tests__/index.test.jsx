@@ -1,5 +1,5 @@
 import React from 'react';
-import { testing, snapshot, shared as testsShared } from '@semcore/jest-preset-ui';
+import { testing, snapshot, shared as testsShared } from '@semcore/cli/tools/jest-preset-ui';
 import propsForElement from '@semcore/utils/lib/propsForElement';
 const { cleanup, render, axe } = testing;
 const { shouldSupportClassName, shouldSupportRef } = testsShared;

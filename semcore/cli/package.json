@@ -1,0 +1,69 @@
+{
+  "name": "@semcore/cli",
+  "version": "1.0.0-3",
+  "description": "",
+  "main": "index.js",
+  "bin": {
+    "semcore": "bin/semcore.js"
+  },
+  "scripts": {
+    "build": "./tools/builder/bin/index.js",
+    "test": "jest",
+    "lint:ts": "tsc",
+    "lint:es": "eslint -c .eslintrc --ext .ts,.tsx",
+    "pub": "super-publisher"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.8.7",
+    "@babel/plugin-proposal-class-properties": "^7.7.0",
+    "@babel/plugin-proposal-export-default-from": "^7.5.2",
+    "@babel/plugin-transform-modules-commonjs": "^7.7.0",
+    "@babel/preset-env": "^7.7.1",
+    "@babel/preset-react": "^7.7.0",
+    "@babel/preset-typescript": "^7.7.2",
+    "babel-plugin-preval": "^3.0",
+    "@testing-library/react": "^11.2.2",
+    "@testing-library/jest-dom": "^5.11.3",
+    "@typescript-eslint/eslint-plugin": "^5.10.2",
+    "@typescript-eslint/parser": "^5.10.2",
+    "babel-jest": "^24.8.0",
+    "@semcore/babel-preset-ui": "file:./tools/babel-preset-ui",
+    "@semcore/super-publisher": "*",
+    "dotenv": "^16",
+    "identity-obj-proxy": "^3.0.0",
+    "jest-axe": "^4.1.0",
+    "jest-image-snapshot": "^4.5.1",
+    "execa": "^5.0.0",
+    "fs-extra": "^8.1.0",
+    "minimist": "^1.2.5",
+    "postcss": "^8.2.13",
+    "postcss-cli": "^7.1.0",
+    "postcss-import": "^12.0.1",
+    "postcss-inline-comment": "^3.0.0",
+    "postcss-preset-env": "^6.7.0",
+    "typescript": "^4.5.5",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.10.1",
+    "eslint-import-resolver-typescript": "^2.0.0",
+    "eslint-import-resolver-workspaces": "^1.0.9",
+    "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-no-cyrillic-string": "^1.0.5",
+    "eslint-plugin-prettier": "^3.1.2",
+    "eslint-plugin-react": "^7.19.0",
+    "eslint-plugin-ssr-friendly": "^1.1.0",
+    "inquirer": "^6.5.2",
+    "jest": "^26.6.3",
+    "plop": "^2.7.6",
+    "request": "^2"
+  },
+  "jest": {
+    "preset": "./tools/jest-preset-ui/jest-preset.js"
+  },
+  "lint-staged": {
+    "*.tsx": "./node_modules/.bin/eslint --fix"
+  }
+}

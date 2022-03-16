@@ -1,5 +1,5 @@
 import React from 'react';
-import { testing, snapshot } from '@semcore/jest-preset-ui';
+import { testing, snapshot } from '@semcore/cli/tools/jest-preset-ui';
 const { cleanup, fireEvent, render, axe } = testing;
 
 import Tooltip from '../src';

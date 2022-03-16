@@ -3,16 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "plopfile.js",
-  "scripts": {
-    "start": "plop"
-  },
   "author": "",
   "license": "ISC",
-  "private": true,
   "devDependencies": {
     "plop": "^2.4.0"
-  },
-  "jest": {
-    "preset": "@semcore/jest-preset-ui"
   }
 }

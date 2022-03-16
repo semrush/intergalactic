@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { testing, snapshot } from '@semcore/jest-preset-ui';
+import { testing, snapshot } from '@semcore/cli/tools/jest-preset-ui';
 import Check from '@semcore/icon/Check/m';
 import { Blockquote, List, Text, Hint } from '../src';
 

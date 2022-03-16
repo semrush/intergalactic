@@ -1,0 +1,23 @@
+{
+  "name": "@semcore/jest-preset-ui",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./index.js",
+  "author": "",
+  "license": "ISC",
+  "private": true,
+  "dependencies": {
+    "@testing-library/react": "^11.2.2",
+    "@testing-library/jest-dom": "^5.11.3",
+    "babel-jest": "^24.8.0",
+    "@semcore/babel-preset-ui": "file:../babel-preset-ui",
+    "dotenv": "^8.2.0",
+    "identity-obj-proxy": "^3.0.0",
+    "jest-axe": "^4.1.0",
+    "jest-image-snapshot": "^2.9.0",
+    "request": "^2"
+  },
+  "devDependencies": {
+    "@types/jest-axe": "^3.5.1"
+  }
+}

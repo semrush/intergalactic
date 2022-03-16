@@ -1,8 +1,8 @@
 import React from 'react';
-import { testing } from '@semcore/jest-preset-ui';
+import { testing } from '@semcore/cli/tools/jest-preset-ui';
 const { render, fireEvent, cleanup } = testing;
-import { snapshot } from '@semcore/jest-preset-ui';
-import { shared as testsShared } from '@semcore/jest-preset-ui';
+import { snapshot } from '@semcore/cli/tools/jest-preset-ui';
+import { shared as testsShared } from '@semcore/cli/tools/jest-preset-ui';
 const { shouldSupportClassName, shouldSupportRef } = testsShared;
 import FullscreenModal from '../src';
 

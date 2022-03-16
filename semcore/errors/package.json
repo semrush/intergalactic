@@ -25,7 +25,7 @@
     "react": "16.8 - 17"
   },
   "jest": {
-    "preset": "@semcore/jest-preset-ui"
+    "preset": "@semcore/cli/tools/jest-preset-ui"
   },
   "repository": {
     "type": "git",
