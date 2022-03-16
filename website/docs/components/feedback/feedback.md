@@ -33,7 +33,7 @@ tabName: Design
 - All the paddings inside the dropdown should be 4px-fold.
 - The trigger for the feedback form may be both a link with an icon and a button.
 - Inputs and buttons of M size and `checkbox of S size` are used in the feedback.
-- The colour of the block with the link is `$gray94`, text - 12px.
+- The color of the block with the link is `$gray94`, text - 12px.
 
 ![feedback paddings](static/send-feedback-sizes.png)
 
@@ -128,7 +128,7 @@ The text for the tooltip with a message: `Your feedback must contain at least 3 
 #### Error at backend
 
 - If the error occurred upon sending, we show the message instead of the block with `mailto`.
-- If `mailto` already exists, we change its colour into red and replace the message text.
+- If `mailto` already exists, we change its color into red and replace the message text.
 
 Text for the notice in such case: `Your message has not been sent. Please try again or contact us at at {mail address}`.
 
