@@ -73,7 +73,7 @@ As a rule, above the data they can produce an effect on or the data they are ass
 
 #### Data period / frequency
 
-This control can be represented either by the [TabLine](/components/tab-line/) component or by grey text with the `$gray60` colour.
+This control can be represented either by the [TabLine](/components/tab-line/) component or by grey text with the `$gray60` color.
 
 ![chart period](static/period-1.png)
 
