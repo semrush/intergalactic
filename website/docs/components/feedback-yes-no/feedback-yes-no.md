@@ -1,6 +1,6 @@
 ---
 title: FeedbackYesNo
-fileSource: feedback
+fileSource: feedback-form
 tabName: Design
 ---
 

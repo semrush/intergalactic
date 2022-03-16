@@ -284,7 +284,7 @@ const SuggestSearch = withRouter(
         </Select.Trigger>
         <SelectPopper tag={Popper}>
           <IF condition={!!currentRefinement}>
-            <Select.List m={0} h={225} style={{ overflow: 'hidden' }}>
+            <Select.List m={0} style={{ overflow: 'hidden' }}>
               {showList(hits, pages, content)}
             </Select.List>
           </IF>
