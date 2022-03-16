@@ -1,6 +1,6 @@
 ---
 title: InlineEdit
-tabName: Guide
+tabName: Design
 ---
 
 <!-- @import playground -->
@@ -56,4 +56,4 @@ In view-mode, set the text size to the same size as the edit input you selected.
 
 _For example, if the heading you need to edit has 24px font-size, then it should also be 24px when you enter edit mode._
 
-![case with inpur size](static/inline-edit-yes-no.png)
+![case with input size](static/inline-edit-yes-no.png)
