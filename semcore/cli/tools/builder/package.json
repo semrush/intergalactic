@@ -2,7 +2,7 @@
   "name": "builder",
   "version": "1.0.0",
   "bin": {
-    "build": "bin/index.js"
+    "build": "bin/index.ts"
   },
   "license": "MIT",
   "dependencies": {

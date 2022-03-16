@@ -11,8 +11,8 @@
   "scripts": {
     "parsing": "icon-transform-svg parsing",
     "transform": "icon-transform-svg",
-    "build": "build --source=js && npm run transform -- --sourceFolder=svg-new && npm run transform -- --outputFolder=lib",
-    "test": "jest"
+    "build": "semcore build . --source js --presets @semcore/babel-preset-ui && npm run transform -- --sourceFolder=svg-new && npm run transform -- --outputFolder=lib",
+    "test": "semcore test . --dotenv $(pwd)/../../.env"
   },
   "dependencies": {
     "@semcore/utils": "^3.15",
@@ -23,7 +23,7 @@
     "react": "16.8 - 17"
   },
   "jest": {
-    "preset": "@semcore/cli/tools/jest-preset-ui"
+    "preset": "@semcore/jest-preset-ui"
   },
   "repository": {
     "type": "git",

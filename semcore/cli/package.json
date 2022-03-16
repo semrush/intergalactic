@@ -7,8 +7,8 @@
     "semcore": "bin/semcore.js"
   },
   "scripts": {
-    "build": "./tools/builder/bin/index.js",
-    "test": "jest",
+    "build": "./tools/builder/bin/index.ts",
+    "test": "semcore test . --dotenv $(pwd)/../../.env",
     "lint:ts": "tsc",
     "lint:es": "eslint -c .eslintrc --ext .ts,.tsx",
     "pub": "super-publisher"
@@ -45,6 +45,7 @@
     "postcss-import": "^12.0.1",
     "postcss-inline-comment": "^3.0.0",
     "postcss-preset-env": "^6.7.0",
+    "tsm": "^2.2.1",
     "typescript": "^4.5.5",
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.10.1",

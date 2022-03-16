@@ -12,6 +12,6 @@
     "jest": "^26.6.3"
   },
   "jest": {
-    "preset": "@semcore/cli/tools/jest-preset-ui"
+    "preset": "@semcore/jest-preset-ui"
   }
 }

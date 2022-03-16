@@ -12,7 +12,7 @@
   "author": "",
   "license": "MIT",
   "scripts": {
-    "test": "jest",
+    "test": "semcore test . --dotenv $(pwd)/../../.env",
     "build": "exit 0"
   },
   "dependencies": {
@@ -25,6 +25,6 @@
     "@semcore/jest-preset-ui": "*"
   },
   "jest": {
-    "preset": "@semcore/cli/tools/jest-preset-ui"
+    "preset": "@semcore/jest-preset-ui"
   }
 }

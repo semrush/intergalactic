@@ -1,6 +1,1 @@
-module.exports = {
-  setupTests: require('./setupTests'),
-  snapshot: require('./snapshot'),
-  testing: require('./testing'),
-  shared: require('./shared'),
-};
+module.exports = require('@semcore/cli/tools/jest-preset-ui/src');

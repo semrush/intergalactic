@@ -40,7 +40,7 @@ module.exports.task = function (bashScript, usedKeys = []) {
   try {
     const otherArgv = removeCommandsFromArgv(
       argv,
-      [...usedKeys, 'dotenv'].map((name) => `--${name}`),
+      [...usedKeys, 'dotenv'].map((name) => (name === '.' ? name : `--${name}`)),
     ).join(' ');
 
     const env = pathToEnv

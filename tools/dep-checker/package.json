@@ -13,6 +13,6 @@
     "semver": "^6.3.0"
   },
   "jest": {
-    "preset": "@semcore/cli/tools/jest-preset-ui"
+    "preset": "@semcore/jest-preset-ui"
   }
 }

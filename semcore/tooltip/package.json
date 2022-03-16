@@ -9,8 +9,8 @@
   "author": "Roman Lysov <r.lysov@semrush.com>",
   "license": "MIT",
   "scripts": {
-    "build": "build --source=js",
-    "test": "jest"
+    "build": "semcore build . --source js --presets @semcore/babel-preset-ui",
+    "test": "semcore test . --dotenv $(pwd)/../../.env"
   },
   "dependencies": {
     "@semcore/utils": "^3.31",
@@ -22,7 +22,7 @@
     "react": "16.8 - 17"
   },
   "jest": {
-    "preset": "@semcore/cli/tools/jest-preset-ui"
+    "preset": "@semcore/jest-preset-ui"
   },
   "repository": {
     "type": "git",
