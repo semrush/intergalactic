@@ -11,13 +11,13 @@ These components serve as the base for building charts from your data in the pro
 
 They don't manipulate your data, and will not try to calculate, sort or check it in any way. Data manipulation is the product's job, not the component's.
 
-Charts are a complex component that cannot be applied in a single line. That's why its API may appear a bit inflated, since it supports all the concepts of our design system.
+Charts are a complex component that cannot be applied in a single line. That's why its API may seem a bit inflated, since it supports all the concepts of our design system.
 
 @## Concept
 
 - We want to provide you with a convenient way to use the imperative d3 style with React's declarative approach.
 - All charts are based on [d3-scale](https://github.com/d3/d3-scale), which you transfer to our charts in a customized form.
-- We try to provide access to each SVG node, so that you could modify it if needed.
+- We try to provide access to each SVG node, so you could modify it if needed.
 
 Each element that you place on the chart is based on a real SVG element or a group of elements. For example, when you render `<Line/>`, you will get an SVG (`<line d = {...}>`). All properties you pass to `<Line/>` will go to the native SVG `<line d = {...}>` tag.
 
