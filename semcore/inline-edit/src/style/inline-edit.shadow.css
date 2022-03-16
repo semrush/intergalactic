@@ -44,7 +44,7 @@ SEdit[exiting] {
 SView {
   cursor: pointer;
   opacity: 1;
-  transition: 0.1s ease-in-out;
+  transition: opacity 0.1s ease-in-out;
 }
 
 SView[hiddenView] {
