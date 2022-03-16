@@ -32,7 +32,7 @@ Upon that, if there is the global search line, place the notice under it.
 - Height of the notice — 72px.
 - In front of the text place the [image](static/feedback.svg). The image size is 40px х 40px.
 - The button `Ask me later` is a `button` with `use="tertiary"`and `theme="info"`. Not a link.
-- Optionally you may add a cross icon for closing the plate — `CloseAlt` icon, S size, `$mist` colour. Upon hover the cross icon changes its colour into `$wall`.
+- Optionally you may add a cross icon for closing the plate — `CloseAlt` icon, S size, `$mist` color. Upon hover the cross icon changes its color into `$wall`.
 
 @## Margins and paddings
 
@@ -79,7 +79,7 @@ Show this element if the report or product has an alternative form for sending f
 - The first variant: it is always in the notice.
 - The second variant (**recommended**): when you click on `Ask me later`, the Close icon appears upon opening in the second session (may appear in the second or the third or the n-session).
 
-1. We use the M sized `Close` icon and. `--blue-400` color. While hovering it changes its colour to `--blue-500`.
+1. We use the M sized `Close` icon and. `--blue-400` color. While hovering it changes its color to `--blue-500`.
 2. After clicking the icon the notice will close.
 
 @## Remembering states

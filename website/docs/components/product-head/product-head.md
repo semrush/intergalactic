@@ -50,10 +50,10 @@ Margins from the left and the right edge - 30px.
 
 - The heading, buttons and labels are aligned center with regard to each other.
 - [The size of the heading is always h3](/style/typography/).
-- The main text colour - `var(--gray20)`, projects – `var(--gray60)`.
-- The size of the nearby icons — M. The icon’s colour corresponds to the element near it.
+- The main text color - `var(--gray20)`, projects – `var(--gray60)`.
+- The size of the nearby icons — M. The icon’s color corresponds to the element near it.
 - The icons are aligned by the heading’s basic line.
-- The [buttons’ size is M](/components/button/), the colour is determined by the control’s purpose.
+- The [buttons’ size is M](/components/button/), the color is determined by the control’s purpose.
 
 ### Line with filters and/or additional information
 
@@ -61,7 +61,7 @@ Margins from the left and the right edge - 30px.
 - Block height — 18px.
 - `font-size: var(--fs-100); line-height 18px;`.
 - The used icons size — XS.
-- The dividers height is 18px, the colour is `var(--gray80)`.
+- The dividers height is 18px, the color is `var(--gray80)`.
 - The dividers’ paddings — 12px (`mx={3}`) at the right and at the left.
 
 @## Report header variants

@@ -25,7 +25,7 @@ The component is meant for imitating physical dragging of objects, so the follow
 
 @## Common styles
 
-> 💡 Styles for dark background are constructed on the basis of white colour with transparency. It is required for using this theme both on the background and on the coloured background.
+> 💡 Styles for dark background are constructed on the basis of white color with transparency. It is required for using this theme both on the background and on the colored background.
 
 ### Icon for identification of the possibility to drag the object
 
@@ -101,12 +101,12 @@ Upon dragging the axis is not blocked, the element may be dragged to any part of
 
 ### States of droppable area
 
-| State    | Appearance example                                                                        | Styles                                                                                                                                                                                                                                                                                      |
-| -------- | ----------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| default  | ![droppable zone](static/droppable-zone.png)                                              | In the default condition the large area where the element can be placed has dashed border. Inside such zone you may place the text describing what can be dropped into this area and appropriate according to the context. For the text we use the secondary text colour — `var(--gray60)`. |
-| hover    | ![droppable zone](static/default-and-hover.png)                                           | The colour of the border upon hover over the zone, where the object may be dragged, is not changed.                                                                                                                                                                                         |
-| dragging | ![dragging hover](static/drag-card.png) ![table with drag & drop](static/drag-table2.png) | Upon hover over the area where the element can be dropped it changes the colour. If the object is dragged in the list of analogous objects, upon dragging they are drawn apart, showing the drop zone of colour `var(--mercury)`.                                                           |
-| no-drop  | ![no-drop](static/no-drop.png)                                                            | If the drop zone under the dragged object is unavailable, the cursor is just changed into `not-allowed`.                                                                                                                                                                                    |
+| State    | Appearance example                                                                        | Styles                                                                                                                                                                                                                                                                                     |
+| -------- | ----------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| default  | ![droppable zone](static/droppable-zone.png)                                              | In the default condition the large area where the element can be placed has dashed border. Inside such zone you may place the text describing what can be dropped into this area and appropriate according to the context. For the text we use the secondary text color — `var(--gray60)`. |
+| hover    | ![droppable zone](static/default-and-hover.png)                                           | The color of the border upon hover over the zone, where the object may be dragged, is not changed.                                                                                                                                                                                         |
+| dragging | ![dragging hover](static/drag-card.png) ![table with drag & drop](static/drag-table2.png) | Upon hover over the area where the element can be dropped it changes the color. If the object is dragged in the list of analogous objects, upon dragging they are drawn apart, showing the drop zone of color `var(--mercury)`.                                                            |
+| no-drop  | ![no-drop](static/no-drop.png)                                                            | If the drop zone under the dragged object is unavailable, the cursor is just changed into `not-allowed`.                                                                                                                                                                                   |
 
 ### Mouse
 
