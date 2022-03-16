@@ -34,7 +34,7 @@ const babelArgs = {
   '--source-maps': 1,
   '--copy-files': 1,
   '--no-copy-ignored': 1,
-  ...getOptionsFromArgv(removeCommandsFromArgv(argv, ['--destination', '--source'])),
+  ...getOptionsFromArgv(removeCommandsFromArgv(argv, ['--destination', '--source', '--modules'])),
 };
 
 const MAP_BABEL_ENV = {

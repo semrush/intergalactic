@@ -7,7 +7,7 @@
   "author": "Roman Lysov <r.lysov@semrush.com>",
   "license": "MIT",
   "scripts": {
-    "build": "build --modules=cjs",
+    "build": "semcore build . --modules cjs --presets @semcore/babel-preset-ui",
     "test": "semcore test . --dotenv $(pwd)/../../.env"
   },
   "devDependencies": {

@@ -9,7 +9,7 @@
   "author": "Roman Lysov <r.lysov@semrush.com>",
   "license": "MIT",
   "scripts": {
-    "build": "build",
+    "build": "semcore build .  --presets @semcore/babel-preset-ui",
     "test": "semcore test . --dotenv $(pwd)/../../.env"
   },
   "dependencies": {
