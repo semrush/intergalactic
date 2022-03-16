@@ -141,3 +141,5 @@ _An InlineInput is convenient when you need to add a note, an additional descrip
 For a tag that adds another tag, use InlineInput instead of [normal input](/components/input/). A regular input does not have the ability to change the height of the input to fit it into a compact table.
 
 ![case with tags](static/inline-tag-yes-no.png)
+
+@page inline-input-example
