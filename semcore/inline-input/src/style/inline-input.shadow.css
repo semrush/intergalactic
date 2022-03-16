@@ -1,0 +1,193 @@
+@import '@semcore/utils/style/var.css';
+
+SInlineInput {
+  display: inline-flex;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  position: relative;
+  z-index: 0;
+  vertical-align: middle;
+  padding: 1px;
+  box-sizing: border-box;
+
+  background-color: var(--white);
+}
+
+SControls {
+  display: flex;
+  flex-direction: row;
+  flex-shrink: 0;
+}
+
+SConfirmIcon {
+  color: var(--green-300);
+  cursor: pointer;
+}
+SConfirmIcon:hover {
+  color: var(--green-400);
+}
+
+SCancelIcon {
+  color: var(--gray-300);
+  cursor: pointer;
+}
+SCancelIcon:hover {
+  color: var(--gray-400);
+}
+
+SValue {
+  /* hack for firefox */
+  min-width: 0;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: none;
+  box-sizing: border-box;
+  color: var(--gray20);
+  font-size: inherit;
+  line-height: 1.1;
+  text-overflow: ellipsis;
+  font-family: inherit;
+  background: transparent;
+  min-height: 20px;
+
+  &:focus {
+    outline: none;
+  }
+
+  &::placeholder {
+    color: var(--gray70);
+  }
+
+  &:read-only ~ SOutline {
+    /* background: var(--gray96); */
+  }
+
+  &:disabled {
+    user-select: none;
+    opacity: var(--disabled-opacity);
+
+    & ~ SOutline {
+      opacity: var(--disabled-opacity);
+      cursor: default;
+      pointer-events: none;
+    }
+  }
+}
+
+SOutline {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-grow: 1;
+  height: 100%;
+  width: 100%;
+  border: 1px solid transparent;
+  border-bottom: 1px solid var(--gray-200);
+}
+
+SAddon {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  flex: 0 0 auto;
+  height: 100%;
+  color: var(--gray-300);
+  padding: 0 2px;
+}
+
+SAddon[disabled] {
+  opacity: var(--disabled-opacity);
+  cursor: default;
+  pointer-events: none;
+}
+
+SInlineInput[size='s'] {
+  font-size: 10px;
+  max-height: 18px;
+}
+
+SValue[size='s'],
+SAddon[size='s'] {
+  padding: 0 4px;
+}
+
+SInlineInput[size='m'] {
+  font-size: 12px;
+  max-height: 26px;
+}
+
+SValue[size='m'],
+SAddon[size='m'] {
+  padding: 0 4px;
+}
+
+SInlineInput[size='l'] {
+  font-size: 14px;
+  max-height: 32px;
+}
+
+SValue[size='l'],
+SAddon[size='l'] {
+  padding: 0 8px;
+}
+
+SInlineInput[size='xl'] {
+  font-size: 16px;
+  max-height: 42px;
+}
+
+SValue[size='xl'],
+SAddon[size='xl'] {
+  padding: 0 12px;
+}
+
+SInlineInput[focused] {
+  z-index: 1;
+}
+
+SInlineInput[focused] SOutline {
+  border-color: var(--blue-400);
+  box-shadow: var(--keyborad-focus);
+}
+
+SInlineInput[state='valid'] SOutline {
+  border-color: var(--green-200);
+}
+SInlineInput[state='valid'][focused] SOutline {
+  border-color: var(--green-400);
+  box-shadow: var(--keyborad-focus-valid);
+}
+SInlineInput[state='invalid'] SOutline {
+  border-color: var(--red-200);
+}
+SInlineInput[state='invalid'][focused] SOutline {
+  border-color: var(--red-400);
+  box-shadow: var(--keyborad-focus-invalid);
+}
+SInlineInput[state='disabled'],
+SInlineInput[loading] {
+  cursor: default;
+  opacity: var(--disabled-opacity);
+}
+
+CloseM[disabled] {
+  cursor: default;
+  opacity: var(--disabled-opacity);
+}
+
+SConfirmButton,
+SCancelButton {
+  margin-left: 4px;
+}
+
+.controls-icon {
+  display: flex;
+  align-items: center;
+}
+
+.spin {
+  min-width: 16px;
+  cursor: default;
+}
