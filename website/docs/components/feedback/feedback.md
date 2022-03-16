@@ -51,7 +51,7 @@ In some cases it may drop from the button "Send feedback", located in the report
 
 > If the user closes the form and then opens it again, the content previously entered into the inputs should be saved.
 
-### Inputs behaviour
+### Inputs behavior
 
 #### Feedback textarea
 
@@ -82,7 +82,7 @@ Placeholder for this textarea: "I need help, please contact me".
 
 You may add a message about the alternative way to send feedback with the `mailto` link: "You can also send us an email at comand_name@semrush.com".
 
-### Buttons behaviour
+### Buttons behavior
 
 - The trigger of the dropdown should be in the `active` state if the dropdown is opened.
 - After validation of the inputs and sending of the message show the success illustration and the text "Thank you for your feedback!". After `2500ms` the dropdown is smoothly closed with a fade of `500ms`.
