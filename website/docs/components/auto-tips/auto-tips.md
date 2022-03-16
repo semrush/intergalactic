@@ -17,7 +17,7 @@ For illustrative purposes we have collected the table of differences between suc
 | AutoComplete | ❌                                                           | ✅                                      | ✅                                                | ✅                                       | ✅                                                  |
 | AutoSuggest  | ❌                                                           | ✅                                      | ❌                                                | ❌                                       | ✅                                                  |
 
-> If your search behaviour is different from those presented in the table, it is possible that you discovered a new pattern 🕺🏻 (or we did not take something into account).
+> If your search behavior is different from those presented in the table, it is possible that you discovered a new pattern 🕺🏻 (or we did not take something into account).
 
 @## Appearance
 
