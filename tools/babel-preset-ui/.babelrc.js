@@ -1,18 +1,16 @@
+const babelrc = require('@semcore/cli/tools/babel-preset-ui');
+
 module.exports = function (babel, opts = {}) {
+  const { presets, plugins, env } = babelrc;
+  env.commonjs.plugins = [
+    ...env.commonjs.plugins,
+    ['@semcore/babel-plugin-recharts', { replacePattern: ['es6', 'lib'] }],
+  ];
   return {
-    presets: [
-      '@babel/preset-typescript',
-      ['@babel/preset-env', { modules: false, ...opts.env }],
-      '@babel/preset-react',
-    ],
+    env,
+    presets,
     plugins: [
-      '@semcore/babel-plugin-root',
-      '@semcore/babel-plugin-styles',
-      ['@semcore/babel-plugin-shadow', opts.shadow],
-      '@babel/plugin-proposal-export-default-from',
-      '@babel/plugin-proposal-class-properties',
-      'babel-plugin-preval',
-      '@babel/plugin-transform-runtime',
+      ...plugins,
       [
         '@semcore/babel-plugin-recharts',
         {
@@ -21,24 +19,5 @@ module.exports = function (babel, opts = {}) {
         },
       ],
     ],
-    env: {
-      commonjs: {
-        presets: [['@babel/preset-env', opts.env]],
-        plugins: [
-          [
-            '@babel/plugin-transform-modules-commonjs',
-            {
-              loose: false,
-            },
-          ],
-          [
-            '@semcore/babel-plugin-recharts',
-            {
-              replacePattern: ['es6', 'lib'],
-            },
-          ],
-        ],
-      },
-    },
   };
 };

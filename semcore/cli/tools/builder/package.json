@@ -8,7 +8,7 @@
   "dependencies": {
     "@babel/cli": "^7.8.4",
     "@babel/core": "^7.8.7",
-    "@semcore/babel-preset-ui": "*",
+    "@semcore/babel-preset-ui": "file:../babel-preset-ui",
     "execa": "^5.0.0",
     "fs-extra": "^8.1.0",
     "minimist": "^1.2.5",
