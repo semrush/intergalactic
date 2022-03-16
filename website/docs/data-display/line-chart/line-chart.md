@@ -46,7 +46,7 @@ When you hover over the chart area, a vertical guide line is shown at the neares
 
 ![one-dot-popover](static/popover-1.png)
 
-When hovering over the chart area without values, a tooltip with information shall also be displayed. In this case, the value is `n/a`. And the dot is grey, `$stone-light`.
+When hovering over the chart area without values, a tooltip with information shall also be displayed. In this case, the value is `n/a`. And the dot is colorgray, `$stone-light`.
 
 ![partially-info-popover](static/partially.png)
 

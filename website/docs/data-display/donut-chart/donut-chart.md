@@ -196,7 +196,7 @@ If the chart has a title, it should be displayed during loading. The user shall 
 
 @## Use in UX/UI
 
-> 💡 **It is not recommended to display more than five categories on the donut chart**. If there are more than five categories, display the largest five, and places the others in the sixth category and name it Other (to be highlighted grey).
+> 💡 **It is not recommended to display more than five categories on the donut chart**. If there are more than five categories, display the largest five, and places the others in the sixth category and name it Other (to be highlighted colorgray).
 
 Don't use donut charts to compare two sets of values. Instead, you can use [Stacked bar chart](/data-display/bar-chart).
 

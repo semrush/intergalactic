@@ -68,7 +68,7 @@ When you hover over any part of the column, the tooltip shall display the values
 
 @## Interaction
 
-When you hover over a column, we highlight it with a grey background – `rgba 152 170 175, 0.3` (`$mist` with .3 opacity). The hover takes up half of the margin column on the right and left sides.
+When you hover over a column, we highlight it with a colorgray background – `rgba 152 170 175, 0.3` (`$mist` with .3 opacity). The hover takes up half of the margin column on the right and left sides.
 
 > 💡 If the column is clickable, the cursor must change to `pointer`.
 
@@ -122,7 +122,7 @@ Sometimes the chart displays overall picture, and detailed data can be viewed wh
 
 In this case, clicking on the column opens the corresponding report. In this case, the column must have the `hover` state. You can add the `Click to view details` text to the chart tooltip for clarity.
 
-When hovering over, the column/columns are highlighted with grey background – `background-color: rgba(152, 170, 175, 0.3)`.
+When hovering over, the column/columns are highlighted with colorgray background – `background-color: rgba(152, 170, 175, 0.3)`.
 
 | Vertical bar chart example                     | Horizontal bar chart example                   |
 | ---------------------------------------------- | ---------------------------------------------- |
