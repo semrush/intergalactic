@@ -67,7 +67,9 @@
   --lh-700: 1.17;
   --fs-800: 48px;
   --lh-800: 1.17;
-  --keyborad-focus: 0 0 0 3px color-mod(var(--light-blue) a(30%));
+  --keyborad-focus: 0px 0px 0px 3px rgba(0, 143, 248, 0.2);
+  --keyborad-focus-valid: 0px 0px 0px 3px rgba(0, 159, 129, 0.2);
+  --keyborad-focus-invalid: 0px 0px 0px 3px rgba(255, 73, 83, 0.2);
   --disabled-opacity: 0.3;
 
   --xs-screen: 320px;
@@ -86,6 +88,17 @@
   --font-size_5: 19px;
   --font-size_6: 21px;
   --font-size_8: 25px;
+
+  --gray-200: #c4c7cf;
+  --gray-300: #a9abb6;
+  --gray-400: #8a8e9b;
+  --blue-300: #2bb3ff;
+  --blue-400: #008ff8;
+  --green-200: #59ddaa;
+  --green-300: #00c192;
+  --green-400: #009f81;
+  --red-200: #ffaeb5;
+  --red-400: #ff4953;
 }
 
 @custom-media --xs-media (width < 320px);
