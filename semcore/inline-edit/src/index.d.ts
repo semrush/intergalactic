@@ -22,8 +22,10 @@ interface IInputCtx {
   getEditProps: PropGetterFn;
 }
 
-declare const Input: (<T>(props: CProps<IInlineEditProps & T, IInputCtx>) => React.ReactElement) & {
+declare const InlineEdit: (<T>(
+  props: CProps<IInlineEditProps & T, IInputCtx>,
+) => React.ReactElement) & {
   View: <T>(props: CProps<IInlineEditViewProps & T, IInlineEditProps>) => React.ReactElement;
   Edit: <T>(props: CProps<IInlineEditEditProps & T, IInlineEditProps>) => React.ReactElement;
 };
-export default Input;
+export default InlineEdit;
