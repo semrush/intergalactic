@@ -1,6 +1,6 @@
 ---
 title: InlineInput
-tabName: Guide
+tabName: Design
 ---
 
 <!-- @import playground -->
