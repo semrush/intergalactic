@@ -21,13 +21,13 @@ This section describes all the variable parameters and basic styles that we use 
 
 |                                              | Example                                 | Variable        |
 | -------------------------------------------- | --------------------------------------- | --------------- |
-| Defaulr text color                           | ![text](static/text.png)                | `--gray800`     |
-| Secondary text color                         | ![secondary](static/secondary-text.png) | `--gray500`     |
-| Placeholder color                            | ![placeholder](static/placeholder.png)  | `--gray300`     |
+| Defaulr text color                           | ![text](static/text.png)                | `--gray-800`    |
+| Secondary text color                         | ![secondary](static/secondary-text.png) | `--gray-500`    |
+| Placeholder color                            | ![placeholder](static/placeholder.png)  | `--gray-300`    |
 | Color for text on a dark or color background | ![dark bg](static/text-on-dark.png)     | `white`         |
-| Link color                                   | ![link](static/link.png)                | `--blue500`     |
-| Color of success ✅                          | ![success](static/success.png)          | `--green500`    |
-| Color of warning, validation and error ⚠️    | ![warning](static/warning.png)          | `--red500`      |
+| Link color                                   | ![link](static/link.png)                | `--blue-500`    |
+| Color of success ✅                          | ![success](static/success.png)          | `--green-500`   |
+| Color of warning, validation and error ⚠️    | ![warning](static/warning.png)          | `--red-500`     |
 | Brand color, branded controls, and elements  | ![brand](static/brand.png)              | `--brand-color` |
 
 @## Component's size system
@@ -45,10 +45,10 @@ This section describes all the variable parameters and basic styles that we use 
 
 ![nontransparent controls](static/nontransparent.png)
 
-|            | Rules for styles                                                                                                                                                                      |
-| ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Hover**  | Use next color shade from the [main palette](/style/palette). _E.g. if element has `--blue400` as a color in normal state, then use `--gray500` for it's hover state._                |
-| **Active** | Use next to the hover's color shade from the [main palette](/style/palette). _E.g. if element has `--blue500` as a color in hover state, then use `--blue600` for it's active state._ |
+|            | Rules for styles                                                                                                                                                                        |
+| ---------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Hover**  | Use next color shade from the [main palette](/style/palette). _E.g. if element has `--blue-400` as a color in normal state, then use `--gray-500` for it's hover state._                |
+| **Active** | Use next to the hover's color shade from the [main palette](/style/palette). _E.g. if element has `--blue-500` as a color in hover state, then use `--blue-600` for it's active state._ |
 
 ### Hover and active state style rules for components with a transparent background
 
@@ -65,20 +65,20 @@ In normal state controls with transparent background has opacity of 0 – 15%.
 
 ![valid and invalid controls](static/valid-invalid.png)
 
-|             | Styles and variables             |
-| ----------- | -------------------------------- |
-| **Invalid** | `border-color: var(--red400);`   |
-| **Valid**   | `border-color: var(--green400);` |
+|             | Styles and variables              |
+| ----------- | --------------------------------- |
+| **Invalid** | `border-color: var(--red-400);`   |
+| **Valid**   | `border-color: var(--green-400);` |
 
 ### Focus
 
 ![focused controls](static/focus.png)
 
-|                   | Styles and variables                                                                                                                                                          |
-| ----------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Focus**         | `--keyborad-focus`. It's `0 0 0 3px rgba(blue400, .3);`. For `normal` and `active` states, the focus color is `--blue400`. For `invalid` and `valid` states see colors below. |
-| **Invalid focus** | `border-color: 0 0 0 3px rgba(red400, .3);`                                                                                                                                   |
-| **Valid focus**   | `border-color: 0 0 0 3px rgba(green400, .3);`                                                                                                                                 |
+|                   | Styles and variables                                                                                                                                                            |
+| ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Focus**         | `--keyborad-focus`. It's `0 0 0 3px rgba(blue-400, .3);`. For `normal` and `active` states, the focus color is `--blue-400`. For `invalid` and `valid` states see colors below. |
+| **Invalid focus** | `border-color: 0 0 0 3px rgba(red-400, .3);`                                                                                                                                    |
+| **Valid focus**   | `border-color: 0 0 0 3px rgba(green-400, .3);`                                                                                                                                  |
 
 ### Disabled & loading
 
@@ -89,22 +89,22 @@ In normal state controls with transparent background has opacity of 0 – 15%.
 
 @## Borders & dividers
 
-|                                                         | Variable    |
-| ------------------------------------------------------- | ----------- |
-| Primary color of borders and dividers                   | `--gray200` |
-| Secondary color of borders and dividers (e.g. popovers) | `--gray100` |
+|                                                         | Variable     |
+| ------------------------------------------------------- | ------------ |
+| Primary color of borders and dividers                   | `--gray-200` |
+| Secondary color of borders and dividers (e.g. popovers) | `--gray-100` |
 
 @## Box-shadows
 
 ![box-shadows](static/box-shadow.png)
 
-|                                                                                      | Variable              | Styles                                                                           |
-| ------------------------------------------------------------------------------------ | --------------------- | -------------------------------------------------------------------------------- |
-| Card                                                                                 | `--box-shadow-card`   | `0px 1px 2px 0px rgba(25, 27, 35, 0.12), 0px 0px 1px 0px rgba(25, 27, 35, 0.16)` |
-| Card's hover                                                                         | `--box-shadow-hover`  | `3px 3px 30px 0px rgba(25, 27, 35, 0.15)`                                        |
-| Shadow of the widgets and components, raised above the content (dropdowns, popovers) | `--box-shadow-popper` | `0px 1px 12px 0px rgba(25, 27, 35, 0.15)`                                        |
-| Modal window                                                                         | `--box-shadow-modal`  | `0px 3px 8px 0px rgba(25, 27, 35, 0.2)`                                          |
-| Drag & drop shadow                                                                   | `--box-shadow-dnd`    | `0 0 1px rgba(25, 27, 35, 0.16), 0 12px 40px rgba(25, 27, 35, 0.16)`             |
+|                                                                                      | Variable              | Styles                                                                       |
+| ------------------------------------------------------------------------------------ | --------------------- | ---------------------------------------------------------------------------- |
+| Card                                                                                 | `--box-shadow-card`   | `0px 1px 2px 0px rgba(gray-800, 0.12), 0px 0px 1px 0px rgba(gray-800, 0.16)` |
+| Card's hover                                                                         | `--box-shadow-hover`  | `3px 3px 30px 0px rgba(gray-800, 0.15)`                                      |
+| Shadow of the widgets and components, raised above the content (dropdowns, popovers) | `--box-shadow-popper` | `0px 1px 12px 0px rgba(gray-800, 0.15)`                                      |
+| Modal window                                                                         | `--box-shadow-modal`  | `0px 3px 8px 0px rgba(gray-800, 0.2)`                                        |
+| Drag & drop shadow                                                                   | `--box-shadow-dnd`    | `0 0 1px rgba(gray-800, 0.16)`                                               |
 
 @## Border-radius
 
@@ -118,10 +118,10 @@ These are rules for the rounding radius of controls, fields, dropdowns, etc.
 
 @## Mask, overlay
 
-|                                  | Styles and variables               |
-| -------------------------------- | ---------------------------------- |
-| Black                            | `background: --var(gray800,0.70);` |
-| Black for dialog in dialog cases | `background: --var(gray800,0.40);` |
-| White                            | `background: --var(white,0.85);`   |
+|                                  | Styles and variables                |
+| -------------------------------- | ----------------------------------- |
+| Black                            | `background: --var(gray-800,0.70);` |
+| Black for dialog in dialog cases | `background: --var(gray-800,0.40);` |
+| White                            | `background: --var(white,0.85);`    |
 
 @page variables-code

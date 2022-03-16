@@ -14,9 +14,9 @@ We use two font families in our interface:
 
 @## Basic text colors
 
-The main text color in our interface is `--gray800`.
+The main text color in our interface is `--gray-800`.
 
-The color used for secondary text is `--gray500`.
+The color used for secondary text is `--gray-500`.
 
 Besides, both paragraphs headings and text can be colored in our main semantic colors. Depending on the situation, they are green, red, and orange.
 
@@ -24,16 +24,16 @@ Besides, both paragraphs headings and text can be colored in our main semantic c
 
 @## Font variables
 
-| Variables            | em      | px   | Font family |
-| -------------------- | ------- | ---- | ----------- |
-| `--fs800`, `--lh800` | 3em     | 48px | Factor A    |
-| `--fs700`, `--lh700` | 2.25em  | 36px | Factor A    |
-| `--fs600`, `--lh600` | 2em     | 32px | Factor A    |
-| `--fs500`, `--lh500` | 1.5em   | 24px | Factor A    |
-| `--fs400`, `--lh400` | 1.25em  | 20px | Inter       |
-| `--fs300`, `--lh300` | 1em     | 16px | Inter       |
-| `--fs200`, `--lh200` | 0.875em | 14px | Inter       |
-| `--fs100`, `--lh100` | 0.75em  | 12px | Inter       |
+| Variables              | em      | px   | Font family |
+| ---------------------- | ------- | ---- | ----------- |
+| `--fs-800`, `--lh-800` | 3em     | 48px | Factor A    |
+| `--fs-700`, `--lh-700` | 2.25em  | 36px | Factor A    |
+| `--fs-600`, `--lh-600` | 2em     | 32px | Factor A    |
+| `--fs-500`, `--lh-500` | 1.5em   | 24px | Factor A    |
+| `--fs-400`, `--lh-400` | 1.25em  | 20px | Inter       |
+| `--fs-300`, `--lh-300` | 1em     | 16px | Inter       |
+| `--fs-200`, `--lh-200` | 0.875em | 14px | Inter       |
+| `--fs-100`, `--lh-100` | 0.75em  | 12px | Inter       |
 
 @example text-variables
 
@@ -59,7 +59,7 @@ In our interface, we use headings of 6 sizes. All of them has `bold (700)` font-
 
 @## Heading with counter
 
-A heading can contain additional information, such as a counter of results found, and so on. They can be found in table headings. In these cases, the additional information is presented by secondary text of `--gray500` color and `regular (300)` font-weight.
+A heading can contain additional information, such as a counter of results found, and so on. They can be found in table headings. In these cases, the additional information is presented by secondary text of `--gray-500` color and `regular (400)` font-weight.
 
 ![secondary text](static/secondary_info.png)
 
@@ -110,21 +110,21 @@ You can change text's style: make it `bold`, `italic`, a [link](/components/link
 
 @## List
 
-| Variables                  | Styles                                    | Numbered list                           | Unordered list                           | Check list                                  |
-| -------------------------- | ----------------------------------------- | --------------------------------------- | ---------------------------------------- | ------------------------------------------- |
-| 16px, `--fs300`, `--lh300` | `margin-bottom: 8px; padding-right: 8px;` | ![numbered list 16px](static/ol-16.png) | ![unordered list 16px](static/ul-16.png) | ![check list 16px](static/checklist-16.png) |
-| 14px, `--fs200`, `--lh200` | `margin-bottom: 8px; padding-right: 8px;` | ![numbered list 14px](static/ol-14.png) | ![unordered list 14px](static/ul-14.png) | ![check list 14px](static/checklist-14.png) |
-| 12px, `--fs100`, `--lh100` | `margin-bottom: 8px; padding-right: 8px;` | ![numbered list 12px](static/ol-12.png) | ![unordered list 12px](static/ul-12.png) | ![check list 12px](static/checklist-12.png) |
+| Variables                    | Styles                                    | Numbered list                           | Unordered list                           | Check list                                  |
+| ---------------------------- | ----------------------------------------- | --------------------------------------- | ---------------------------------------- | ------------------------------------------- |
+| 16px, `--fs-300`, `--lh-300` | `margin-bottom: 8px; padding-right: 8px;` | ![numbered list 16px](static/ol-16.png) | ![unordered list 16px](static/ul-16.png) | ![check list 16px](static/checklist-16.png) |
+| 14px, `--fs-200`, `--lh-200` | `margin-bottom: 8px; padding-right: 8px;` | ![numbered list 14px](static/ol-14.png) | ![unordered list 14px](static/ul-14.png) | ![check list 14px](static/checklist-14.png) |
+| 12px, `--fs-100`, `--lh-100` | `margin-bottom: 8px; padding-right: 8px;` | ![numbered list 12px](static/ol-12.png) | ![unordered list 12px](static/ul-12.png) | ![check list 12px](static/checklist-12.png) |
 
 @## Nested list
 
 Each next level of the nested list is always indented to the left. **Indents between the list levels for all font sizes are 8px**.
 
-| Variables                  | Margins                                          |
-| -------------------------- | ------------------------------------------------ |
-| 16px, `--fs300`, `--lh300` | ![second level list](static/second-level-16.png) |
-| 14px, `--fs200`, `--lh200` | ![second level list](static/second-level-14.png) |
-| 12px, `--fs100`, `--lh100` | ![second level list](static/second-level-12.png) |
+| Variables                    | Margins                                          |
+| ---------------------------- | ------------------------------------------------ |
+| 16px, `--fs-300`, `--lh-300` | ![second level list](static/second-level-16.png) |
+| 14px, `--fs-200`, `--lh-200` | ![second level list](static/second-level-14.png) |
+| 12px, `--fs-100`, `--lh-100` | ![second level list](static/second-level-12.png) |
 
 @## Quote
 
@@ -140,12 +140,12 @@ The text can be wrapped in a **hint link (pseudo-link)**. In this case, it becom
 
 ### Hint link states
 
-| State        | Appearance                            | Description                                                                                                                                                                                             | Cursor                                                          |
-| ------------ | ------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- |
-| normal       | ![normal](static/hint-default.png)    | Link has `--gray500` color and is underlined with dashed bottom border. color.                                                                                                                          | `help` or `pointer`, if clickable                               |
-| active/hover | ![hover](static/hint-hover.png)       | **Link changes it's color to `--gray600`**. The dotted underlining remains. If a link is used together with the icon, the latter changes its color along with the text — they have the same hover area. | `help`, `default` or `pointer` (depending on the usage context) |
-| disabled     | ![disabled](static/hint-disabled.png) | **The transparency of a component changes by 30%**. Use this state as the last resort and be sure to label the disabled link with an explanatory tooltip.                                               | `default`                                                       |
-| visited      |                                       | This link does not have `visited` state.                                                                                                                                                                |                                                                 |
+| State        | Appearance                            | Description                                                                                                                                                                                              | Cursor                                                          |
+| ------------ | ------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- |
+| normal       | ![normal](static/hint-default.png)    | Link has `--gray-500` color and is underlined with dashed bottom border. color.                                                                                                                          | `help` or `pointer`, if clickable                               |
+| active/hover | ![hover](static/hint-hover.png)       | **Link changes it's color to `--gray-600`**. The dotted underlining remains. If a link is used together with the icon, the latter changes its color along with the text — they have the same hover area. | `help`, `default` or `pointer` (depending on the usage context) |
+| disabled     | ![disabled](static/hint-disabled.png) | **The transparency of a component changes by 30%**. Use this state as the last resort and be sure to label the disabled link with an explanatory tooltip.                                                | `default`                                                       |
+| visited      |                                       | This link does not have `visited` state.                                                                                                                                                                 |                                                                 |
 
 @## Which heading with which paragraph size shall be used?
 

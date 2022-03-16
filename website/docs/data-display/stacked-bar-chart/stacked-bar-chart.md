@@ -31,7 +31,7 @@ Use [special chart palette](/style/palette/) and follow the rules prescribed for
 
 @## Interaction
 
-When you hover over a column, we highlight it with a grey background – `rgba 152 170 175, 0.3` (`$mist` with .3 opacity). The hover takes up half of the margin column on the right and left sides.
+When you hover over a column, we highlight it with a colorgray background – `rgba 152 170 175, 0.3` (`$mist` with .3 opacity). The hover takes up half of the margin column on the right and left sides.
 
 > 💡 If the column is clickable, the cursor must change to `pointer`.
 
