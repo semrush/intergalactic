@@ -48,7 +48,7 @@ border-bottom: 1px solid var(–gray80);
 ![fullscreem modal header margins](static/fullscreen-modal-divider.png)
 
 - Window subtitles must be less than h4/h3 (`--fs-500`/`--fs-400`) to maintain hierarchy in the content.
-- If there is an area with grey baseplate, its color is `--gray94` (`#eee`).
+- If there is an area with colorgray baseplate, its color is `--gray94` (`#eee`).
 - Full-screen modal window can be single-zone and dual-zone.
 
 | Single-zone modal window                           | Dual-zone modal window                             |
