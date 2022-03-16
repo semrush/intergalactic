@@ -38,11 +38,11 @@ Upon that, if there is the global search line, place the notice under it.
 
 ![feedback margins](static/feedback-yes-no-sizes.png)
 
-@## Form behaviour
+@## Form behavior
 
-See the detailed description of behaviour of the feedback dropdown in [Feedback](/components/feedback/).
+See the detailed description of behavior of the feedback dropdown in [Feedback](/components/feedback/).
 
-@## Buttons behaviour
+@## Buttons behavior
 
 ### "Yes" and "No" buttons
 

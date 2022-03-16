@@ -104,7 +104,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Removed vertical `ScrollArea.Bar` display in `Table.StickyHead`, because this is unacceptable behaviour now
+- Removed vertical `ScrollArea.Bar` display in `Table.StickyHead`, because this is unacceptable behavior now
 
 ## [2.1.1] - 2020-07-30
 

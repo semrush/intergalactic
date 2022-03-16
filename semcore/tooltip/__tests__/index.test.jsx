@@ -1,8 +1,7 @@
 import React from 'react';
-import { testing } from '@semcore/jest-preset-ui';
+import { testing, snapshot } from '@semcore/jest-preset-ui';
 const { cleanup, fireEvent, render, axe } = testing;
 
-import { snapshot } from '@semcore/jest-preset-ui';
 import Tooltip from '../src';
 
 describe('Tooltip', () => {
