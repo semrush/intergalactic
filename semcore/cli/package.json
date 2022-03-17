@@ -8,7 +8,7 @@
   },
   "scripts": {
     "build": "./tools/builder/bin/index.ts",
-    "test": "semcore test . --dotenv $(pwd)/../../.env",
+    "test": "jest",
     "lint:ts": "tsc",
     "lint:es": "eslint -c .eslintrc --ext .ts,.tsx",
     "pub": "super-publisher"
@@ -62,9 +62,14 @@
     "request": "^2"
   },
   "jest": {
-    "preset": "./tools/jest-preset-ui/jest-preset.js"
+    "preset": "./tools/jest-preset-ui/jest-preset.js",
+    "testPathIgnorePatterns": [
+      "scripts"
+    ]
   },
-  "lint-staged": {
-    "*.tsx": "./node_modules/.bin/eslint --fix"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/semrush/intergalactic.git",
+    "directory": "semcore/cli"
   }
 }

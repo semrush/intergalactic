@@ -46,7 +46,10 @@
     "typescript-workspace-plugin": "^2.0.1"
   },
   "jest": {
-    "preset": "@semcore/jest-preset-ui"
+    "preset": "@semcore/jest-preset-ui",
+    "testPathIgnorePatterns": [
+      "semcore/cli/scripts"
+    ]
   },
   "husky": {
     "hooks": {

@@ -1,12 +1,24 @@
 import React from 'react';
 // import { bisector } from 'd3-array';
 import { scaleLinear, scaleBand } from 'd3-scale';
-import { testing, shared as testsShared, snapshot } from '@semcore/jest-preset-ui';
+import { testing, shared as testsShared, snapshot } from '@semcore/cli/tools/jest-preset-ui';
 const { render, fireEvent, cleanup } = testing;
 const { shouldSupportClassName, shouldSupportRef } = testsShared;
-import { Plot, YAxis, XAxis, Venn, Bar, StackBar, colors, Bubble, ScatterPlot } from '../src';
+import {
+  Plot,
+  YAxis,
+  XAxis,
+  Venn,
+  Bar,
+  StackBar,
+  colors,
+  Bubble,
+  ScatterPlot,
+  minMax,
+  Area,
+  StackedArea,
+} from '../src';
 import { getIndexFromData } from '../src/utils';
-import { minMax, Area, StackedArea } from '@semcore/d3-chart';
 import { curveCardinal } from 'd3-shape';
 
 const xScale = scaleLinear().range([10, 100]).domain([0, 10]);

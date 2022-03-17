@@ -8,8 +8,8 @@
   "sideEffects": false,
   "license": "MIT",
   "scripts": {
-    "build": "semcore build --component {{ dashCase name }} --source js --destination ..",
-    "test": "semcore test --component {{ dashCase name }} --destination .."
+    "build": "semcore build . --source js",
+    "test": "semcore test ."
   },
   "dependencies": {},
   "peerDependencies": {
@@ -17,5 +17,10 @@
     "@semcore/utils": "^3",
     "react": "16.8 - 17",
     "react-dom": "16.8 - 17"
+  },
+  "repository": {
+    "type": "git",
+    "url": "",
+    "directory": "@team/{{ dashCase name }}"
   }
 }
