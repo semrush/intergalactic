@@ -5,7 +5,7 @@ tabName: Design
 docs: true
 ---
 
-> 💡 General information on data visualization is presented in [Chart principles](/data-display/chart/).
+> 💡 Basic data visualization rules in widgets with charts are described in [Chart principles](/data-display/chart/).
 
 @## Control types
 
