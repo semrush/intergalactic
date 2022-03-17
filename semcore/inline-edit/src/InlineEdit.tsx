@@ -67,7 +67,9 @@ const Edit: React.FC<AsProps> = (props) => {
   const render = useDeferredState(visible, [true], 100);
   if (!render) return null;
   const SEdit = Root;
-  return sstyled(props.styles)(<SEdit render={Box} exiting={!visible} />) as React.ReactElement;
+  return sstyled(props.styles)(
+    <SEdit aria-hidden={!visible} exiting={!visible} render={Box} />,
+  ) as React.ReactElement;
 };
 const View: React.FC<AsProps> = (props) => {
   const visible = !props.editable;
@@ -76,6 +78,8 @@ const View: React.FC<AsProps> = (props) => {
     <SView
       render={Box}
       tabIndex={0}
+      aria-hidden={!visible}
+      role="button"
       hiddenView={!visible}
       onClick={visible ? props.onEdit : undefined}
     />,
