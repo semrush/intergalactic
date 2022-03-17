@@ -22,9 +22,9 @@
   },
   "devDependencies": {
     "jest": "*",
-    "@semcore/jest-preset-ui": "*"
+    "@semcore/cli": "1.0.0-3"
   },
   "jest": {
-    "preset": "@semcore/jest-preset-ui"
+    "preset": "@semcore/cli/tools/jest-preset-ui"
   }
 }

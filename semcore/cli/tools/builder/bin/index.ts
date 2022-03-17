@@ -45,7 +45,7 @@ const MAP_BABEL_ENV = {
 const makeCommand = {
   CLEANUP: () => `rm -rf ${destination}/lib`,
   TYPES: (output) =>
-    `tsc --emitDeclarationOnly --baseUrl ${destination}/src --outDir ${destination}/lib/${output}`,
+    `tsc --emitDeclarationOnly --project ${destination} --baseUrl ${destination}/src --outDir ${destination}/lib/${output}`,
   COPY_TYPES: (output) =>
     `mkdir -p ${destination}/lib/${output} && find ${destination}/src -type f -name "*.d.ts" -exec cp {} ${destination}/lib/${output} ";"`,
   BABEL: (output, env) =>

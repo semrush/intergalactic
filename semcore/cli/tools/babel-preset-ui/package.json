@@ -18,7 +18,6 @@
     "@semcore/babel-plugin-shadow": "*",
     "babel-plugin-preval": "^3.0",
     "@semcore/babel-plugin-root": "*",
-    "@semcore/babel-plugin-styles": "*",
-    "@semcore/babel-preset-ui": "file:../babel-preset-ui/"
+    "@semcore/babel-plugin-styles": "*"
   }
 }

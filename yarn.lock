@@ -2651,7 +2651,7 @@
     "@semcore/flex-box" "^4"
     "@semcore/utils" "^3.15"
 
-"@semcore/babel-preset-ui@file:./semcore/cli/tools/babel-preset-ui", "@semcore/babel-preset-ui@file:semcore/cli/tools/babel-preset-ui":
+"@semcore/babel-preset-ui@file:./semcore/cli/tools/babel-preset-ui":
   version "1.0.0"
   dependencies:
     "@babel/cli" "^7.7.0"
@@ -2666,7 +2666,6 @@
     "@semcore/babel-plugin-root" "*"
     "@semcore/babel-plugin-shadow" "*"
     "@semcore/babel-plugin-styles" "*"
-    "@semcore/babel-preset-ui" "file:../../Library/Caches/Yarn/v6/npm-@semcore-babel-preset-ui-1.0.0-7359abb3-4a36-4566-a29e-470f361c755e-1647462004924/node_modules/@semcore/babel-preset-ui"
     babel-plugin-preval "^3.0"
 
 "@semcore/badge@2.3.6":
@@ -3589,14 +3588,6 @@
   integrity sha512-c3mAZEuK0lvBp8tmuL74XRKn1+y2dcwOUpH7x4WrF6gk1GIgiluDRgMYQtw2OFcBvAJWlt6ASU3tSqxp0Uu0Aw==
   dependencies:
     "@types/istanbul-lib-report" "*"
-
-"@types/jest-axe@^3.5.1":
-  version "3.5.3"
-  resolved "https://registry.yarnpkg.com/@types/jest-axe/-/jest-axe-3.5.3.tgz#5af918553388aa0a448af75603b44093985778c6"
-  integrity sha512-ad9qI9f+00N8IlOuGh6dnZ6o0BDdV9VhGfTUr1zCejsPvOfZd6eohffe4JYxUoUuRYEftyMcaJ6Ux4+MsOpGHg==
-  dependencies:
-    "@types/jest" "*"
-    axe-core "^3.5.5"
 
 "@types/jest-image-snapshot@^2.11.1":
   version "2.12.2"
@@ -4729,11 +4720,6 @@ aws4@^1.8.0:
   version "1.11.0"
   resolved "https://registry.yarnpkg.com/aws4/-/aws4-1.11.0.tgz"
   integrity sha512-xh1Rl34h6Fi1DC2WWKfxUTVqRsNnr6LsKz2+hfwDxQJWmrx8+c7ylaqBMcHfl1U1r2dsifOvKX3LQuLNZ+XSvA==
-
-axe-core@^3.5.5:
-  version "3.5.6"
-  resolved "https://registry.yarnpkg.com/axe-core/-/axe-core-3.5.6.tgz#e762a90d7f6dbd244ceacb4e72760ff8aad521b5"
-  integrity sha512-LEUDjgmdJoA3LqklSTwKYqkjcZ4HKc4ddIYGSAiSkr46NTjzg2L9RNB+lekO9P7Dlpa87+hBtzc2Fzn/+GUWMQ==
 
 axe-core@^4.0.1:
   version "4.4.0"

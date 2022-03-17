@@ -8,6 +8,6 @@
     "test": "node ./__tests__/index.test.js"
   },
   "jest": {
-    "preset": "@semcore/jest-preset-ui"
+    "preset": "@semcore/cli/tools/jest-preset-ui"
   }
 }

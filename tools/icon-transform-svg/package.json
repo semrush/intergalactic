@@ -22,6 +22,6 @@
     "minimist": "^1.2.0"
   },
   "jest": {
-    "preset": "@semcore/jest-preset-ui"
+    "preset": "@semcore/cli/tools/jest-preset-ui"
   }
 }

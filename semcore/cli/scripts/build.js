@@ -10,7 +10,7 @@ module.exports = (async function init() {
     const cwdPathList = cwdPath.split('/');
     args.destination = '..';
     args.component = cwdPathList.slice(-1);
-    args.source = 'js';
+    args.source = args.source || 'ts';
   }
 
   const destination = await question(args, {
