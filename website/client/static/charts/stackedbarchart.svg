@@ -1,9 +1,35 @@
-<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="144" height="80" viewBox="0 0 144 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect y="9" width="144" height="71" fill="url(#pattern0)"/>
+<svg width="144" height="80" viewBox="0 0 144 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_751_30773)">
+<path d="M8 50C8 48.8954 8.89543 48 10 48H18C19.1046 48 20 48.8954 20 50V76H8V50Z" fill="#FDC23C"/>
+<rect x="8" y="76" width="12" height="1" fill="#008FF8"/>
+<rect x="8" y="77" width="12" height="1" fill="#8ECDFF"/>
+<rect x="8" y="78" width="12" height="7" fill="#C4C7CF"/>
+</g>
+<path d="M31.2002 20C31.2002 18.8954 32.0956 18 33.2002 18H41.2002C42.3048 18 43.2002 18.8954 43.2002 20V46H31.2002V20Z" fill="#FDC23C"/>
+<rect x="31.2002" y="46" width="12" height="13.5" fill="#008FF8"/>
+<rect x="31.2002" y="59.5" width="12" height="13.5" fill="#8ECDFF"/>
+<rect x="31.2002" y="73" width="12" height="7" fill="#C4C7CF"/>
+<path d="M54.3999 23C54.3999 21.8954 55.2953 21 56.3999 21H64.3999C65.5045 21 66.3999 21.8954 66.3999 23V49H54.3999V23Z" fill="#FDC23C"/>
+<rect x="54.3999" y="49" width="12" height="12" fill="#008FF8"/>
+<rect x="54.3999" y="61" width="12" height="12" fill="#8ECDFF"/>
+<rect x="54.3999" y="73" width="12" height="7" fill="#C4C7CF"/>
+<path d="M77.6001 39C77.6001 37.8954 78.4955 37 79.6001 37H87.6001C88.7047 37 89.6001 37.8954 89.6001 39V65H77.6001V39Z" fill="#FDC23C"/>
+<rect x="77.6001" y="65" width="12" height="4" fill="#008FF8"/>
+<rect x="77.6001" y="69" width="12" height="4" fill="#8ECDFF"/>
+<rect x="77.6001" y="73" width="12" height="7" fill="#C4C7CF"/>
+<path d="M100.8 26C100.8 24.8954 101.695 24 102.8 24H110.8C111.904 24 112.8 24.8954 112.8 26V52H100.8V26Z" fill="#FDC23C"/>
+<rect x="100.8" y="52" width="12" height="10.5" fill="#008FF8"/>
+<rect x="100.8" y="62.5" width="12" height="10.5" fill="#8ECDFF"/>
+<rect x="100.8" y="73" width="12" height="7" fill="#C4C7CF"/>
+<g clip-path="url(#clip1_751_30773)">
+<path d="M124 64C124 62.8954 124.895 62 126 62H134C135.105 62 136 62.8954 136 64V90H124V64Z" fill="#FDC23C"/>
+</g>
 <defs>
-<pattern id="pattern0" patternContentUnits="objectBoundingBox" width="1" height="1">
-<use xlink:href="#image0" transform="translate(-0.0013842) scale(0.00333146 0.00675676)"/>
-</pattern>
-<image id="image0" width="301" height="148" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAS0AAACUCAYAAADGUX/nAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAASBSURBVHgB7d0xa15VGAfwkxJwkKJSURCRG5fSIUOh4BZo1275AkKcnDr4BQIdFFzyEeri5uDkbOgiODnUwaV1cMniYhch12ZJIrTpPT33fe/znPf3mzKc4XB5+eec5z7n3FIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAKAPWwV4pfGXvc/LuHX04s93XzP0adkaD7c+O/6usFLXCvBq49ZheX1gnRlerAGOCisntOBqw+SR46Rwo5HQAlIRWkAqQgtIRWgBqWwXuuaVPb2x0uqdV/Z0Rmj1b5g80it7EhBaQCpCC0hFaAGpCC0gFaEFpCK0gFQ0lwYTvRlUs2obz6+dlVY00ZtBNau28fyaCa14hskjl2kGHSaP1Kz6MsPkkZ7fSwktIBWhBaQitIBUhBaQitACUhFaQCpCC0hFaAGpbDtWQE/8nvt3zbECuuL33L2z7eEwebRjBcQ3TB7p95ySmhaQitACUnGfViOF377dPz4odX4urJbQalVf+BVaiTw+2SnEYnvYbpg8UuEXmgktIBWhBaSiptW5L3/dL3UUkolNaHXu+2e3C/TE9hBIRWgBqQgtIBWhBaQitIBUvD0M5p0fHpY6e2Wdos8vuujPL8NZWist4EKCSxSFFnDZMHnkQmdphRaQitACUhFaQCpCC0hFaAGpbM/dNxK9z8Od7n3TR9a/+Vda0fs8fMwTUlvF9nCYPHKZPo9h8kh3ukM4jvE0qr9kz82g0EJoNaq/ztiOE1p4ewikIrSAVGwPIbFNbDGy0oLMNrDFSGhBbsPkkZ20GAktIBWhBaSiEA+cq+87XH+ztNCCKwzvv101/reSW/0Jj/UTWnCFL/Y+rRr/oLBqalpAKkILSMX2sHMP93erxj/4tkBos4fW/eODUme9bx+izw+42uyh9fhkp0QWfX7A1dS0gFTUtIKJXoNSI2vj+bWz0gJSsdKCxKIfu1nF/IQWJBb92M0q5md7CKSyrTBIT/ye+2elBaSiptXooPIWgCP/2aGJ0Gq0U3nfEv8X/WsyxGN7yLKif02GcIQWSxsmj1zmazIEI7SAVNS0gHO3P3mvavwSFzcJLeDc/p2Pq8YvEVq2h0AqQgtIZfbtYfRmS82gkNvsoRW92VIzKOSmEM+ivn5yt9TxoZFNJ7RY1De/3yt1DgsX7t76oGr8j2W9VjE/oQWJ3bv1YdX4dYfWKubn7SGQitACUhFaQCrha1ruWwIui7/Sct8ScEmG7eEweaT7lqB7alpAKkILSEVzKYuqvb/pUWHThQ+t3Z++KnWcTcuk9qbMR4VNFz60/nyutg5cUNMCUhFaQCpCC0hFaAGphC/EZ/gOG/26Uf4uxBI+tDJ8hy2ym+OzwpvbOf2rEIvm0mDunD4pc7o+/lPmNPf8No3n127bQ2yzM/pPHInfc/+stBrdGNU86MdH40mJbvbQ2h3/KJFFnx/UuF6elznNHVpzz+/M7KH11vhviSz6/KDGzdOnJbJVzM/2kEVpKaCW0GJRWgqoFT60vA0CLnOMB0jlP1SGKxdyGYwIAAAAAElFTkSuQmCC"/>
+<clipPath id="clip0_751_30773">
+<path d="M0 50C0 48.8954 0.895431 48 2 48H26C27.1046 48 28 48.8954 28 50V80H0V50Z" fill="white"/>
+</clipPath>
+<clipPath id="clip1_751_30773">
+<path d="M116 64C116 62.8954 116.895 62 118 62H142C143.105 62 144 62.8954 144 64V80H116V64Z" fill="white"/>
+</clipPath>
 </defs>
 </svg>
