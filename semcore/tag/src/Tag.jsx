@@ -63,13 +63,8 @@ class RootTag extends Component {
 
 function Text(props) {
   const SText = Root;
-  const STagInner = 'div';
   const { styles } = props;
-  return sstyled(styles)(
-    <STagInner>
-      <SText render={Box} tag="span" />
-    </STagInner>,
-  );
+  return sstyled(styles)(<SText render={Box} tag="span" />);
 }
 
 function Close(props) {
