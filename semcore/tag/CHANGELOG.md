@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.7.0] - 2022-03-18
+
+### Fixed
+
+- Fixed previously lost overflowed text ellipsis.
+
 ## [3.6.5] - 2022-03-14
 
 ### Changed
