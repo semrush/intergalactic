@@ -12,38 +12,28 @@ STag {
   border-radius: 21px;
   padding-left: 4px;
   padding-right: 4px;
-  overflow: hidden;
-}
-
-STagInner {
-  display: inline-flex;
-  justify-content: center;
-  flex-direction: column;
-  overflow: hidden;
-  width: 100%;
-  height: 100%;
-  padding-left: 4px;
-  padding-right: 4px;
 }
 
 SText {
+  display: inline-block;
+  padding-left: 4px;
+  padding-right: 4px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  line-height: 1.1;
-  max-width: 100%;
+  line-height: 1.2;
 }
 
-STagInner:not(:only-child):first-child {
+SText:not(:only-child):first-child {
   padding-right: 0;
 }
 
-STagInner:not(:first-child):not(:last-child) {
+SText:not(:first-child):not(:last-child) {
   padding-left: 0;
   padding-right: 0;
 }
 
-STagInner:not(:only-child):last-child {
+SText:not(:only-child):last-child {
   padding-left: 0;
 }
 
@@ -54,7 +44,6 @@ SAddon {
   justify-content: center;
   padding-left: 4px;
   padding-right: 4px;
-  flex-shrink: 0;
 }
 
 SCircle {
@@ -63,8 +52,7 @@ SCircle {
   justify-content: center;
   overflow: hidden;
   border-radius: 50%;
-  flex-shrink: 0;
-  margin: 0 4px;
+  margin-right: 4px;
 }
 
 STag[disabled] {
