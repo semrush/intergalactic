@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "bin": {
-    "semcore": "bin/semcore.js"
+    "semcore": "bin/cli.ts"
   },
   "scripts": {
     "build": "./tools/builder/bin/index.ts",

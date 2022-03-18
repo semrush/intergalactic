@@ -1,16 +1,21 @@
-const { execSync } = require('child_process');
-const path = require('path');
-const inquirer = require('inquirer');
-const { removeCommandsFromArgv } = require('./getOptions');
-const minimist = require('minimist');
-const dotenv = require('dotenv');
+import { execSync } from 'child_process';
+import path from 'path';
+import inquirer from 'inquirer';
+import { removeCommandsFromArgv } from './getOptions';
+import minimist from 'minimist';
+import dotenv from 'dotenv';
+import { fileURLToPath } from 'url';
+const __dirname = fileURLToPath(new URL('.', import.meta.url));
 
 const argv = process.argv.slice(2);
 const cwdPath = process.cwd();
 const rootPath = path.resolve(__dirname, '../../');
 const args = minimist(argv);
 
-module.exports.question = async function (args, params = {}) {
+export const question = async function (
+  args: { [key: string]: string },
+  params: { [key: string]: any } = {},
+) {
   const { name } = params;
 
   if (!args[name]) {
@@ -25,7 +30,7 @@ module.exports.question = async function (args, params = {}) {
   return args[name];
 };
 
-module.exports.getTaskOptions = function () {
+export const getTaskOptions = function () {
   return {
     argv,
     args,
@@ -34,7 +39,7 @@ module.exports.getTaskOptions = function () {
   };
 };
 
-module.exports.task = function (bashScript, usedKeys = []) {
+export const task = function (bashScript: string, usedKeys: string[] = []) {
   const { dotenv: pathToEnv } = args;
 
   try {

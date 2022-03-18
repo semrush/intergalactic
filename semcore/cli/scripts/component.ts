@@ -1,9 +1,9 @@
-const path = require('path');
+import path from 'path';
+import { task, getTaskOptions, question } from './utils/task';
 
-const { task, getTaskOptions, question } = require('./utils/task');
 const { rootPath, cwdPath, args } = getTaskOptions();
 
-module.exports = (async function init() {
+(async function init() {
   const name = await question(args, {
     type: 'input',
     name: 'name',

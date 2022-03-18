@@ -24,7 +24,8 @@
     "pretty-error": "^2.1.1",
     "semver": "^5.6.0",
     "simple-git": "^3.2.6",
-    "tempy": "^2.0.0"
+    "tempy": "^2.0.0",
+    "tsm": "^2.2.1"
   },
   "jest": {
     "preset": "@semcore/cli/tools/jest-preset-ui"

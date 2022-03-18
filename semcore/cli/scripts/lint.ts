@@ -1,12 +1,11 @@
-const path = require('path');
-const fsPromises = require('fs-extra');
+import path from 'path';
+import fs from 'fs';
+import fsPromises from 'fs-extra';
+import { task, getTaskOptions, question } from './utils/task';
 
-const { task, getTaskOptions, question } = require('./utils/task');
 const { cwdPath, rootPath, args } = getTaskOptions();
 
-const tscConfig = require(`${rootPath}/tsconfig.json`);
-
-module.exports = (async function init() {
+(async function init() {
   const destination = await question(args, {
     type: 'input',
     name: 'destination',
@@ -16,13 +15,12 @@ module.exports = (async function init() {
 
   const filePath = path.resolve(`${cwdPath}/${destination}`);
 
+  const tscConfig: { [key: string]: any } = JSON.parse(fs.readFileSync(`${rootPath}/tsconfig.json`).toString());
   tscConfig.compilerOptions = Object.assign(tscConfig.compilerOptions, {
     baseUrl: filePath,
   });
 
-  let esLintConfig = await fsPromises.readFile(`${rootPath}/.eslintrc`);
-  esLintConfig = JSON.parse(esLintConfig);
-
+  const esLintConfig: { [key: string]: any } = JSON.parse(fs.readFileSync(`${rootPath}/.eslintrc`).toString());
   const files = [`${cwdPath}/.eslintrc`, `${cwdPath}/tsconfig.json`];
   const data = [esLintConfig, tscConfig];
 

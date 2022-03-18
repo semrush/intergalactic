@@ -6,7 +6,7 @@ import {
   getOptionsFromArgv,
   removeCommandsFromArgv,
   getArgvFromObject,
-} from '../../../scripts/utils/getOptions.js';
+} from '../../../scripts/utils/getOptions';
 
 const argv = process.argv.slice(2);
 const args = minimist(argv, {

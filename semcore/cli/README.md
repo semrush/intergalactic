@@ -85,3 +85,9 @@ Accepts parameters:
 ```bash
 [any command above] --dotenv pathToEnv
 ```
+
+### Added option . for use current path
+
+```bash
+[any command above] .
+```

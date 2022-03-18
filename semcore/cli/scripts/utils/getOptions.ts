@@ -1,6 +1,8 @@
-module.exports.getOptionsFromArgv = function (argv, delimiter = ' ') {
+type Args = { [key: string]: string | number };
+
+export const getOptionsFromArgv = function (argv: string[]): Args {
   const { length: lengthArgv } = argv;
-  const args = {};
+  const args: Args = {};
   for (let indexArgv = 0; indexArgv < lengthArgv; indexArgv++) {
     const command = argv[indexArgv];
     if (command.includes('--')) {
@@ -17,16 +19,19 @@ module.exports.getOptionsFromArgv = function (argv, delimiter = ' ') {
   return args;
 };
 
-module.exports.getArgvFromObject = function (params) {
+export const getArgvFromObject = function (params: Args): string {
   return Object.entries(params)
     .map((arr) => [arr[0], arr[1] === 1 ? '' : arr[1]])
     .flat()
     .join(' ');
 };
 
-module.exports.removeCommandsFromArgv = function (argv = [], commands = []) {
+export const removeCommandsFromArgv = function (
+  argv: string[] = [],
+  commands: string[] = [],
+): string[] {
   const { length: lengthArgv } = argv;
-  let nodeArgv = [];
+  const nodeArgv: string[] = [];
   let indexRemove = null;
   for (let indexArgv = 0; indexArgv < lengthArgv; indexArgv++) {
     const command = argv[indexArgv];

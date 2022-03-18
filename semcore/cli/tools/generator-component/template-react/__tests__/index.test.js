@@ -1,5 +1,5 @@
 import React from 'react';
-import { snapshot, shared, testing } from 'disable-jest-mapper:@semcore/cli/tools/jest-preset-ui';
+import { snapshot, shared, testing } from '@semcore/cli/tools/jest-preset-ui';
 import {{ properCase name }} from '../src';
 
 const  { render, fireEvent, cleanup } = testing

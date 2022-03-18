@@ -1,16 +1,15 @@
-const path = require('path');
-const fs = require('fs');
+import path from 'path';
+import fs from 'fs';
+import { task, getTaskOptions, question } from './utils/task';
 
-const { task, getTaskOptions, question } = require('./utils/task');
 const { cwdPath, args } = getTaskOptions();
 
-module.exports = (async function init() {
+(async function init() {
   // Support cwd path component
   if (args['_'] && args['_'].includes('.')) {
     const cwdPathList = cwdPath.split('/');
     args.destination = '..';
     args.component = cwdPathList.slice(-1);
-    args.source = args.source || 'ts';
   }
 
   const destination = await question(args, {
@@ -27,19 +26,7 @@ module.exports = (async function init() {
     choices: args.component ? [] : fs.readdirSync(`${cwdPath}/${destination}`),
   });
 
-  const source = await question(args, {
-    type: 'input',
-    name: 'source',
-    default: 'js',
-    message: 'Please enter source name',
-  });
-
   const filePath = path.resolve(`${cwdPath}/${destination}/${component}`);
 
-  task(`npm run build -- --source ${source} --destination ${filePath}`, [
-    'destination',
-    'component',
-    'source',
-    '.',
-  ]);
+  task(`npm run test -- --roots=${filePath} --no-cache`, ['destination', 'component', '.']);
 })();
