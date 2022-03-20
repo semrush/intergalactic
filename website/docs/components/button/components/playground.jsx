@@ -113,7 +113,7 @@ const Preview = (preview) => {
       theme={theme}
       size={size}
       loading={loading}
-      disabled={disabled}
+      disabled={disabled || loading}
       active={active}
     >
       {beforeIcon && <Button.Addon>{renderIcon(beforeIcon && 'before', size)}</Button.Addon>}
