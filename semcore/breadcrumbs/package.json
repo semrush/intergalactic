@@ -1,7 +1,7 @@
 {
   "name": "@semcore/breadcrumbs",
   "description": "SEMRush Breadcrumbs Component",
-  "version": "2.6.2",
+  "version": "2.6.3",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
