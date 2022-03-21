@@ -1,7 +1,7 @@
 {
   "name": "@semcore/carousel",
   "description": "SEMRush Carousel Component",
-  "version": "1.6.1",
+  "version": "1.6.2",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
