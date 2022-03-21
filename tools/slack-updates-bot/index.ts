@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { makeMessageBody, makeMessageTitle } from './makeMessage';
-import { getReleaseChangelog } from '@semcore/changelog-handler';
+import { collectComponentChangelogs } from '@semcore/changelog-handler';
 import dayjs from 'dayjs';
 import isBetween from 'dayjs/plugin/isBetween.js';
 dayjs.extend(isBetween);
@@ -16,15 +16,17 @@ export const sendUiKitUpdates = async ({
   endpoints: string[];
   dryRun: boolean;
 }) => {
-  const { changelogs } = await getReleaseChangelog();
-  const title = makeMessageTitle(startDate, endDate);
-  const body = makeMessageBody(
-    changelogs.filter(
+  const packages = await collectComponentChangelogs();
+  const changelogs = packages
+    .map(({ changelogs }) => changelogs)
+    .flat()
+    .filter(
       (changelog) =>
         dayjs(changelog.date).isValid() &&
         dayjs(changelog.date).isBetween(startDate, endDate, 'd', '[)'),
-    ),
-  );
+    );
+  const title = makeMessageTitle(startDate, endDate);
+  const body = makeMessageBody(changelogs);
 
   return await sendMessage({ endpoints, title, body, dryRun });
 };
