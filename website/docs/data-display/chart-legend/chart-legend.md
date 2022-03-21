@@ -42,7 +42,7 @@ A non-interactive legend is a colored circle with a label. This legend does not 
 | --------------------------------------------------- | -------------------------------------------------------------------------------------- |
 | ![non-interactive legend](static/static-legend.png) | Circle has `12px * 12px` size. Text has 14px size (`--fs-200`) and `--gray-800` color. |
 
-@## Trend/average value in the legend
+@## Trend or average value in the legend
 
 To show the trend or average value in the legend, use the `--gray-400` color. At the same time, we must separate it from the main legend with a [divider](/components/divider/) with `margin: 0 16px`.
 
