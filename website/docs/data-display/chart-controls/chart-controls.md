@@ -9,41 +9,41 @@ docs: true
 
 @## Control types
 
-By their effect on the widget data the controls located next to the chart can be of the following types:
+Controls in the widget can be divided into the following types:
 
-- general widget controls;
-- controls above the chart.
+- general controls and filters;
+- chart controls.
 
-@## General widget controls
+@## General controls and filters¬
 
-General widget controls are always placed on the same level as the title. For example these include:
+General controls and filters are always placed on the same level as the title. For example they include:
 
 - widget settings;
-- chart display settings (smooth or sharp line, points or no points);
-- screenshots settings, etc.
+- chart display settings (smooth or sharp line, dot or without dots);
+- screenshot settings, etc.
 
-|                        | Apperance example                                                                    | Styles                                                                                                                                                                                                                                                                              |
-| ---------------------- | ------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Widget settings        | ![chart settings](static/settings.png)                                               | Icon `SettingsS`, color - `$stone`. When adding other settings controls to the settings icon, put a 1px separator between them, the color is `$gray80` – `padding: 0px 16px`. When you hover over the settings icon, a tooltip with description for the control shall be displayed. |
-| Chart display settings | ![chart settings](static/settings-on.png) ![chart settings](static/settings-off.png) | Icon `SettingsS`, color - `$stone`. When adding other settings controls to the settings icon, put a 1px separator between them, the color is `$gray80` – `padding: 0px 16px`. When you hover over the settings icon, a tooltip with description for the control shall be displayed. |
+For widget settings use icon button with `use="tertiary"` and `theme="muted"`. If you want to place another button next to the settings button, add [Divider](/components/divider/) with 16px margin between them. Don't forget to add a tooltip to all the buttons.
 
-@## Controls above the chart
+![chart settings](static/settings.png)
 
-As a rule, these are the controls that make effect upon the displayed data, axes, and some controls shown below. As well as derivatives of such controls.
+![chart settings](static/settings-on.png)
 
-### Controls on the left relative to the chart
+@## Chart controls and filters
+
+These controls filter the data, axes, and some controls shown below.
+
+### Left-placed controls and filters
 
 - Legend;
 - Country select;
-- Device (text or [Select](/components/select/));
-- Other controls. For example, a campaign selector in Brand Monitoring, a comparison selector in Sensor, or other text information (for example, Chart scope);
+- Device ([Select](/components/select/) or just text);
 - Notes ([Notes module](/data-display/notes/)).
 
 #### Legend
 
-We use several types of legends in our charts. Styles for each of them are available in [Chart legend](/data-display/chart-legend/).
+We use several types of legends in our charts. Find more details in the [Chart legend](/data-display/chart-legend/) guide.
 
-> The priority legend location is top left - above the chart. For charts with a large number of controls, place the legend in the left bottom part under the graph.
+> We recommend you to place legend in the top left — above the chart. For charts with a large number of filters, place the legend in the left bottom under the data.
 
 ![chart legend](static/legend-top.png)
 
@@ -55,31 +55,27 @@ We use several types of legends in our charts. Styles for each of them are avail
 
 #### Notes (Notes module)
 
-You can display notes made by the user, system, or other services on the chart. To read more about this tool, see [Notes](/data-display/notes/).
+You can display notes made by the user, system, or other services on the chart. To read more about this module, see [Notes](/data-display/notes/).
 
-#### Other controls
+### Right-placed controls and filters
 
-This group of controls includes all other controls and their combinations. _For example, a campaign selector in Brand Monitoring, a comparison selector in Sensor, or other text information (for example, Chart scope)._
+Always place these controls on the right side of the widget:
 
-![other chart controls](static/legend-bottom.png)
-
-### Controls on the right side relative to the chart
-
-As a rule, above the data they can produce an effect on or the data they are associated with:
-
-- Period (text or [Pills](/components/pills/)) and custom period;
+- Period ([Pills](/components/pills/) or text) or custom period;
 - Data frequency ([Pills](/components/pills/));
 - Zoom controls.
 
 #### Data period / frequency
 
-This control can be represented either by the [TabLine](/components/tab-line/) component or by colorgray text with the `$gray60` color.
+Data period can be represented either by the [TabLine](/components/tab-line/) or by additional text with the `--gray-500` color.
 
 ![chart period](static/period-1.png)
 
 ![chart period](static/period-2.png)
 
 #### Custom period
+
+For custom period use [DateRangePicker](/components/date-picker/#a3d75b).
 
 ![chart custom period](static/period-custom.png)
 
@@ -91,13 +87,13 @@ This control can be represented either by the [TabLine](/components/tab-line/) c
 
 #### Chart with a zoom
 
-![chart trend line](static/trend.png)
+![chart trend line](static/zoom.png)
 
 @## Collapsing rows with controls
 
 You can collapse rows if necessary.
 
-Separate different controls/groups of controls with a 1px separator of the color `$gray80` with `padding: 0px 16px`.
+Divide different controls or groups of controls with [Divider](/components/divider/) with the `--gray-200` color and `margin: 0px 16px`.
 
 ![chart widget](static/widget-yes-no.png)
 
