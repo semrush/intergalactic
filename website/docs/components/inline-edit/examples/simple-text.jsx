@@ -9,13 +9,8 @@ const Example = () => {
 
   return (
     <div>
-      <InlineEdit
-        editable={editable}
-        onEditableChange={setEditable}
-        w={100}
-        onBlurBehavior={'confirm'}
-      >
-        <InlineEdit.View style={{ display: 'flex', gap: 10, alignItems: 'center' }}>
+      <InlineEdit editable={editable} onEditableChange={setEditable} onBlurBehavior={'confirm'}>
+        <InlineEdit.View style={{ display: 'flex', gap: 10, alignItems: 'center' }} pr={2}>
           {text} <EditM />
         </InlineEdit.View>
         <InlineEdit.Edit>

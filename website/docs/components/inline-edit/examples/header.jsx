@@ -20,20 +20,22 @@ const Example = () => {
 
   return (
     <>
-      <InlineEdit tag="h1" editable={editingTitle} onEditableChange={setEditingTitle}>
-        <InlineEdit.View>
-          {title} <EditM />
-        </InlineEdit.View>
-        <InlineEdit.Edit w={200}>
-          <InlineInput
-            autoFocus
-            defaultValue={title}
-            onConfirm={handleTitle}
-            onCancel={stopEditing}
-            loading={savingTitle}
-          />
-        </InlineEdit.Edit>
-      </InlineEdit>
+      <Text tag="h1">
+        <InlineEdit editable={editingTitle} onEditableChange={setEditingTitle}>
+          <InlineEdit.View pr={5}>
+            {title} <EditM />
+          </InlineEdit.View>
+          <InlineEdit.Edit>
+            <InlineInput
+              autoFocus
+              defaultValue={title}
+              onConfirm={handleTitle}
+              onCancel={stopEditing}
+              loading={savingTitle}
+            />
+          </InlineEdit.Edit>
+        </InlineEdit>
+      </Text>
       dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
       dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
       ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit

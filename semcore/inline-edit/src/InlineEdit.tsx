@@ -65,6 +65,7 @@ class InlineEdit extends Component<AsProps> {
 const Edit: React.FC<AsProps> = (props) => {
   const visible = props.editable;
   const render = useDeferredState(visible, [true], 100);
+
   if (!render) return null;
   const SEdit = Root;
   return sstyled(props.styles)(
@@ -74,14 +75,37 @@ const Edit: React.FC<AsProps> = (props) => {
 const View: React.FC<AsProps> = (props) => {
   const visible = !props.editable;
   const SView = Root;
+
+  const containerRef = React.useRef<HTMLElement>(null);
+  const prevVisibleRef = React.useRef(visible);
+  React.useEffect(() => {
+    if (visible && prevVisibleRef.current !== visible) {
+      containerRef.current?.focus();
+    }
+    prevVisibleRef.current = visible;
+  }, [visible]);
+
+  const handlekeyDown = React.useCallback(
+    (event: React.KeyboardEvent) => {
+      if (!visible) return;
+      if (event.code === 'Enter' || event.code === 'Space') {
+        event.preventDefault();
+        props.onEdit();
+      }
+    },
+    [visible, props.onEdit],
+  );
+
   return sstyled(props.styles)(
     <SView
       render={Box}
       tabIndex={0}
       aria-hidden={!visible}
       role="button"
+      ref={containerRef}
       hiddenView={!visible}
       onClick={visible ? props.onEdit : undefined}
+      onKeyDown={handlekeyDown}
     />,
   ) as React.ReactElement;
 };

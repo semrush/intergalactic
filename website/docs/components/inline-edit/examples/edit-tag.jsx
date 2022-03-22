@@ -15,8 +15,8 @@ const Demo = () => {
 
   return (
     <>
-      <InlineEdit w={150} editable={editable} onEditableChange={setEditable}>
-        <InlineEdit.View>
+      <InlineEdit editable={editable} onEditableChange={setEditable}>
+        <InlineEdit.View pr={2}>
           <Tag interactive>
             <Tag.Text>{value}</Tag.Text>
             <Tag.Close onClick={(e) => e.stopPropagation()} />
