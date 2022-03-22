@@ -1,5 +1,6 @@
 import React from 'react';
-
+import InlineInput from '@semcore/inline-input';
+import InlineEdit from '@semcore/inline-edit';
 import EditM from '@semcore/icon/Edit/m';
 
 const Example = () => {
@@ -8,7 +9,6 @@ const Example = () => {
 
   return (
     <div>
-      Before
       <InlineEdit
         editable={editable}
         onEditableChange={setEditable}
