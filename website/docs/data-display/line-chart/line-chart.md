@@ -28,7 +28,7 @@ If you have an array of values for a certain period, you can use this chart type
 
 By default, we show a chart with straight lines. This view facilitates reading the trend; this is what most people look at the chart for.
 
-> 💡 Add a possibility for user to select either straight or smooth line type in the widget settings.
+> 💡 Add a possibility to select either straight or smooth line type in the widget settings.
 
 | Example                                       | Styles                 |
 | --------------------------------------------- | ---------------------- |
@@ -79,7 +79,7 @@ For this case enable the display of dots on the chart by default.
 
 ![two dots](static/two-dots1.png)
 
-**Example 2** is when there is data for two consecutive dates.
+**Example 2** is when there is data for one after another dates.
 
 ![two dots](static/two-dots2.png)
 

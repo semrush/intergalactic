@@ -20,8 +20,8 @@ title: Charts
 @page stacked-bar-chart
 @page bar-horizontal
 @page stacked-horizontal-bar
-@page bubble-chart
 @page donut-chart
+@page bubble-chart
 @page histogram-chart
 
 <!-- @page stacked-histogram -->
