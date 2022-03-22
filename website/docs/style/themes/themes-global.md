@@ -2,37 +2,33 @@
 title: Global theme
 ---
 
-All our components are already styled for Semrush tools, but if your tool uses a different color palette or you need to style the components differently, then you can influence the appearance of `@semcore` components with `@semcore/babel-plugin-react-semcore`.
+All our components include Semrush styles. However, if your tool uses a different color palette or you need to style the components differently, you may want to change the default Semrush styles. This page contains instructions on how to do that using the React Semcore plugin for Babel.
 
 > ### Redesign 🎨
 >
-> We have created a new theme for Semrush redesign - `@semcore/theme-redesign`.
+> We have created a new theme for the Semrush redesign—`@semcore/theme-redesign`.
 >
-> Please use release [[10.0.0] - 2021-12-10](https://i.semrush.com/internal/release/release-changelog/) and above, or update components to the latest versions for correct changes in styles.
->
-> Otherwise theme styles will apply incorrectly.
+> For correct changes in styles, use release [[10.0.0] - 2021-12-10](https://i.semrush.com/internal/release/release-changelog/) and above, or update the components to the latest versions. Otherwise, theme styles will apply incorrectly.
 
 @## Step one
 
-You have installed our `component` and our plugin `@semcore/babel-plugin-react-semcore` to properly transpile the code.
-
-> ⚠️ **Attention**. Make sure that you don't process our files with `babel`-plugins in your code, otherwise the result is unpredictable 🤕
+Install the component you want to restyle and our React Semcore plugin. They're needed to properly transpile the code. To install the plugin, use the following command:
 
 ```bash
-npm i @semcore/button @semcore/babel-plugin-react-semcore
+npm i @semcore/babel-plugin-react-semcore
 ```
+
+> ⚠️ **Attention**. Don't process our files with Babel plugins in your code. This may lead to unpredictable results 🤕
 
 @## Step two
 
-Create a directory for themed components.
-
-Themes are very much tied to naming and file structure, which adds several restrictions.
+Create a directory for themed components taking into account the following restrictions. They're needed because themes are very much tied to naming and file structure.
 
 - The directory with the theme must contain directories with component names without the `@semcore` prefix.
-- Directories with names of components should contain only `.shadow.css` files.
-- The names of `.shadow.css` files must match the names of the stylesheets of the corresponding components.
+- Directories with component names should contain only `.shadow.css` files.
+- The names of `.shadow.css` files must match the names of the corresponding components' stylesheets.
 
-An example of a correct file structure:
+In the following example, a directory contains three components:
 
 ```javascript
     components <-- theme root directory
@@ -66,17 +62,17 @@ Add a new rule to your `webpack-config`:
     }
 ```
 
-> You can also use the name of the package with themes. For example `{ theme: "my-theme-npm-package" }`
+> You can also use the name of the package with themes, for example `{ theme: "my-theme-npm-package" }`
 
-After that, all the styles that will be created in your themed styles directory will be applied to the corresponding components.
+After that, all the styles created in your theme style directory will be applied to the corresponding components.
 
-👯‍ **Congratulations, you've changed the styles of the component!**
+👯‍ **Congratulations, you've changed the styles of the components!**
 
 @## Versioning
 
-> Versioning is optional, but desirable for your own safety.
+> Versioning is optional, but recommended for your own safety.
 
-You can design a theme for different component versions. To do this, you need to create a `versions.json` file in which you specify the required versions and paths to the css files.
+You can design a theme for different component versions. To do this, create a `versions.json` file and specify the versions and paths to the `.css` files.
 
 An example of file structure:
 
@@ -88,7 +84,7 @@ An example of file structure:
         └-- versions.json
 ```
 
-An example of file `versions.json`:
+An example of the `versions.json` file :
 
 ```json
 {
@@ -101,15 +97,14 @@ An example of file `versions.json`:
 }
 ```
 
-> Versions are in [semver](https://semver.org/) format, you can also specify `*`.
+> Versions follow the [SemVer](https://semver.org/) format, you can also specify `*`.
 
 @## Note
 
-Also for local development of "themes" you'll need HMR. It won't work out of the box, as themes are applied in build time and watchers don't see the changes.
-To start working with themes, you need:
+To develop themes locally, you need hot module replacement. It won't work out of the box because themes are applied during the build process and watchers can't see the changes. To fix that:
 
-- add our `@semcore/shadow-loader` to webpack-config
-- add loaders for `.css` files
+1. Add  `@semcore/shadow-loader` to the webpack configuration.
+2. Add loaders for `.css` files
 
 Example rules for webpack:
 
