@@ -18,7 +18,17 @@ export default ({ raw: { code: ExampleRawComponent, path } }) => {
 
   const parameters = getParameters({
     files: {
-      'src/index.jsx': {
+      'package.json': {
+        content: {
+          dependencies: {
+            ...dependencies,
+            'react-dom': 'latest',
+            '@semcore/core': 'latest',
+            'react-scripts': 'latest',
+          },
+        },
+      },
+      'src/index.js': {
         content: `import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
@@ -30,19 +40,9 @@ ReactDOM.render(
 );
 `,
       },
-      'src/App.jsx': {
+      'src/App.js': {
         content: `//https://github.com/semrush/intergalactic/tree/master/website/docs/${path}
 ${ExampleRawComponent}`,
-      },
-      'package.json': {
-        content: {
-          dependencies: {
-            ...dependencies,
-            'react-dom': 'latest',
-            '@semcore/core': 'latest',
-            'react-scripts': 'latest',
-          },
-        },
       },
     },
   });
@@ -62,6 +62,7 @@ ${ExampleRawComponent}`,
     <Tooltip
       title="Open in CodeSandbox"
       tag="a"
+      rel="noopener noreferrer nofollow"
       target="__blank"
       href={`https://codesandbox.io/api/v1/sandboxes/define?parameters=${parameters}`}
       onClick={openHandler}
