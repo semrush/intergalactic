@@ -2,6 +2,14 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [1.0.0-4] - 2022-03-22
+
+### Changed
+
+- Replace code from js to ts
+- Added support '.' for running code from current directory (exm.: `semcore build .`)
+- Added help commands (`semcore -h`, `semcore build -h`)
+
 ## [1.0.0-3] - 2022-03-15
 
 ### Fixed

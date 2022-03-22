@@ -1,6 +1,6 @@
 {
   "name": "@semcore/cli",
-  "version": "1.0.0-3",
+  "version": "1.0.0-4",
   "description": "",
   "main": "index.js",
   "bin": {
