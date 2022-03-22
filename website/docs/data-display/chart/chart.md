@@ -95,13 +95,13 @@ Minimum (small) chart height has 3 additional horizontal guides.
 
 @## Tooltip
 
-When hovering over any part of the chart, show a tooltip with data for the point or points.
+When hovering over any part of the chart, show a tooltip with data for the dot or dots.
 
-The tooltip is displayed even for the points with no data. In this case, we show `n/a` instead of the value and recommend adding a note about the forecast.
+The tooltip is displayed even for the dots with no data. In this case, we show `n/a` instead of the value and recommend adding a note about the forecast.
 
 ![tooltip-scheme](static/tooltip-scheme.png)
 
-The tooltip appears next to the cursor. It is always located inside the chart container. _In other words, if the point is near the upper or lower border of the chart area, the tooltip will position within the chart area._
+The tooltip appears next to the cursor. It is always located inside the chart container. _In other words, if the dot is near the upper or lower border of the chart area, the tooltip will position within the chart area._
 
 - The tooltip shows data for all the lines for the selected date.
 - For tooltip title use the date or data category name. For easy comparison, the values shall be right-aligned.
@@ -112,7 +112,7 @@ The tooltip appears next to the cursor. It is always located inside the chart co
 
 ### Styles
 
-The data tooltip shall always be displayed relative to the point with an 8px margin.
+The data tooltip shall always be displayed relative to the dot with an 8px margin.
 
 | Appearance                                                                                      | Styles description                                                                                    |
 | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
@@ -122,17 +122,17 @@ The data tooltip shall always be displayed relative to the point with an 8px mar
 
 ### Cases
 
-| Case                     | Appearance                               | Styles description                                                                                                                                            |
-| ------------------------ | ---------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| One point                | ![one-dot](static/tooltip-1.png)         | The default point size is `12px * 12px` (plus a 2px border). The size of the point in a hoiver state is `16px * 16px`.                                        |
-| Several points           | ![many-dots](static/tooltip-2.png)       |
-| Not available data       | ![not-available](static/partially.png)   | Use a dashed line to show not available data.                                                                                                                 |
-| Start of data collecting | ![new-data](static/new-data-tooltip.png) | Solid line, color of the point corresponds to the legend. In the tooltip, the text about the beginning of data collection is 12px and has `--gray-300` color. |
+| Case                     | Appearance                               | Styles description                                                                                                                                          |
+| ------------------------ | ---------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| One dot                  | ![one-dot](static/tooltip-1.png)         | The default dot size is `12px * 12px` (plus a 2px border). The size of the dot in a hoiver state is `16px * 16px`.                                          |
+| Several dots             | ![many-dots](static/tooltip-2.png)       |
+| Not available data       | ![not-available](static/partially.png)   | Use a dashed line to show not available data.                                                                                                               |
+| Start of data collecting | ![new-data](static/new-data-tooltip.png) | Solid line, color of the dot corresponds to the legend. In the tooltip, the text about the beginning of data collection is 12px and has `--gray-300` color. |
 
 @## Trend and average value
 To display the trend line or average value on the chart, use gray color with styles: `border: solid 2px var(--gray-400)`. Similarly, we can display total values.
 
-- Points on the line are optional.
+- Dots on the line are optional.
 - The legend must have a checkbox for the trend line. On the charts, the universal color for the checkbox is `var(--gray-400)`.
 
 ![checkbox total legend](static/trend.png)

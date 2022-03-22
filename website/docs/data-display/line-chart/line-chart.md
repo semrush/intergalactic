@@ -8,16 +8,16 @@ tabName: Design
 
 @## Description
 
-**Line chart** helps to visualize the trend of quantitative indicators over a period of time.
+**Line chart** helps to visualize the trend of numeric variables over a period of time.
 
-If you have an array of points for a certain period, you can use this chart type to present all changes and developments.
+If you have an array of values for a certain period, you can use this chart type to present changes of the array through the time.
 
 **Important points to keep in mind when presenting data as a line chart:**
 
-- The axes should be clear to the user from the chart name. However, in cases where the graph name is not enough, you can denote the axes.
-- Remove all unnecessary visual information, such as extra additional background lines, bunch of colors and incomprehensible bulky legends. Otherwise, this may distract the user from being able to see the data clearly.
-- If the data doesn't start from zero, in some cases you can track the chart along the `Y-axis`. This can make your data more readable and easier to understand.
-- **Try not to compare more than 5-7 values on a line chart**. In this case, the chart may become unreadable and confusing.
+- The axes should be clear to the user from the chart name. However, in cases where the chart name is not enough, you can add labels for the axes.
+- Remove all unnecessary visual information, such as extra additional background lines and a bunch of colors. Otherwise, this may distract the user from being able to understand the data.
+- If the data doesn't start from zero, in some cases you can zoom the chart to the `Y-axis`. This can make your data more readable and easier to understand.
+- **Try not to compare more than 5-7 categories on a line chart**. The chart may become unreadable and confusing.
 
 > 💡 Useful materials about line chart vs. area chart:
 >
@@ -26,96 +26,96 @@ If you have an array of points for a certain period, you can use this chart type
 
 @## Appearance
 
-By default, we show a chart with rounded lines. This view facilitates reading the trend; this is what most people look at the chart for. For those who are interested in specific values, there is a tooltip with data for a specific point that appears when you hover over the chart.
+By default, we show a chart with straight lines. This view facilitates reading the trend; this is what most people look at the chart for.
 
-> 💡 Add a possibility for user to select either rounded or sharp line type in the widget settings.
+> 💡 Add a possibility for user to select either straight or smooth line type in the widget settings.
 
 | Example                                       | Styles                 |
 | --------------------------------------------- | ---------------------- |
-| ![line-without-dots](static/without-dots.png) | Line thickness is 3px. |
+| ![line without dots](static/without-dots.png) | Line thickness is 3px. |
 
-It is recommended to display the points on lines either when there are few of them (one or two), or when data collection is irregular.
+We recommended you to display the dots on lines either when there are few of them (one or two), or when data collection is irregular.
 
-| Example                            | Styles                                                                                                        |
-| ---------------------------------- | ------------------------------------------------------------------------------------------------------------- |
-| ![line-with-dots](static/dots.png) | Point size is `16px * 16px`, `border: 2px solid $white`. When hovering, the point increases to `20px * 20px`. |
+| Example                            | Styles                                                                                                    |
+| ---------------------------------- | --------------------------------------------------------------------------------------------------------- |
+| ![line with dots](static/dots.png) | Point size is `8px * 8px`, `border: 2px solid $white`. When hovering, the dot increases to `12px * 12px`. |
 
 @## Interaction
 
-When you hover over the chart area, a vertical guide line is shown at the nearest point; this point is enlarged itself, and a tooltip with detailed data for the point appears next to it. The color of the vertical guide line is `$stone`.
+When user hovers over the chart area, show a vertical guide line at the nearest dot and a tooltip with detailed data for the dot appears next to it. The color of the vertical guide line is `--gray-300`.
 
-![one-dot-popover](static/popover-1.png)
+![tooltip](static/popover-1.png)
 
-When hovering over the chart area without values, a tooltip with information shall also be displayed. In this case, the value is `n/a`. And the dot is colorgray, `$stone-light`.
+When user hovers over the chart area without values, show tooltip with information. In this case, the value is `n/a`.
 
-![partially-info-popover](static/partially.png)
+![tooltip with n/a values](static/partially.png)
 
-If there are a lot of lines on the chart, the tooltip shows points and values for all points under the cursor on the `Y-axis`.
+If there are a lot of categories on the chart, the tooltip shows dots and values for all dots under the cursor.
 
-At the same time, we do not change the order of points inside the tooltip in relation to the order of lines on the chart.
+> Do not change the order of categories inside the tooltip in relation to the order of lines on the chart.
 
-![many-dots-popover](static/popover-2.png)
+![tooltip with values for many dots](static/popover-2.png)
 
 @## Edge cases
 
-Here you will find the states for one, two, zero, and fractional values. All other "empty states" for widgets are specified in [Error & n/a widget states](/components/widget-empty/).
+Here you will find the states for one, two, zero values, etc. All other "empty states" for widgets are specified in [Error & n/a widget states](/components/widget-empty/).
 
 @## One value
 
-For this case, it will be needed to enable the display of points on the chart by default.
+For this case enable the display of dots on the chart by default.
 
-![one-dot](static/one-dot.png)
+![one dot](static/one-dot.png)
 
 ### Styles
 
-- **Point size is 16px \* 16px**. When hovering, the point increases to **20px \* 20px**.
-- The line where the point is displayed has the `dashed` line style. Color `$stone-light`.
+- **Point size is 8px \* 8px**. When hovering, the point increases to **12px \* 12px**.
+- The line has the `dashed` border style and `--gray-200` color.
 
 @## Two values
 
-For this case, it will be needed to enable the display of points on the chart by default.
-
-If there are only two data points on the chart, then these two shall be displayed by connecting them with a dotted line. Do not change the range of the selected period. After the existing data points, continue the dotted line of the expected trend.
+For this case enable the display of dots on the chart by default.
 
 **Example 1** is for the case when there is data for two non-near dates.
 
+![two dots](static/two-dots1.png)
+
 **Example 2** is when there is data for two consecutive dates.
 
-![two-dots](static/two-dots.png)
+![two dots](static/two-dots2.png)
 
-@## All values are zero
+@## All values are null
 
-If all values on the chart are zero, then we show the trend line on the zero axis.
+If all values on the chart are zero, then show the trend line on the zero axis.
 
 > **Zero is also data. 0 ≠ `n/a`.**
 
-![null-data](static/null.png)
+![null data](static/null.png)
 
-@## No data in one of the categories
+@## No data
 
-When you hover over a point that some of the categories don't have data for, a tooltip with the `n/a` value for these categories shall be displayed.
+When user hovers over a dot that some of the categories don't have data for, show tooltip with the `n/a` value for these categories.
 
 ![not available data](static/not-available.png)
 
-@## A part of the chart contains no data
-
-In the area without data, a dotted line between known points should be displayed. If the unknown period is at the beginning or end of the chart, then the lines must be horizontal.
-
-When you hover over a point without data, the tooltip with the `n/a` value for the point shall be shown. We recommend to specify in the tooltip why there is no data, and when it will be available, if possible.
+@## No data area
 
 > **When there is no data, you can't draw a zero line. Zero is also data. 0 ≠ `n/a`.**
 
-![partially-data](static/partially.png)
+In the area without data, show a dashed line between known dots. If the not available period is at the beginning or end of the chart, then the lines must be horizontal.
 
 ![partially-data](static/partially-trash.png)
 
+When user hovers over a dot without data, show the tooltip with the `n/a` value. We recommend you to add a message why there is no data, and when it will be available, if possible.
+
+![partially-data](static/partially.png)
+
 @## Initial data loading
 
-When loading the chart for the first time, [Skeleton](/components/skeleton/) should be displayed instead of the chart.
+When loading the chart for the first time, show [Skeleton](/components/skeleton/) instead of the chart.
 
-If the chart has a title, it should be displayed during loading. The user shall have an idea of what is being loaded and whether they need to wait for the loading process to complete.
+If the chart has a title, show it during the loading. The user shall have an idea of what is being loaded and whether they need to wait for the loading process to complete.
 
-Styles can be found in the guide book for [Skeleton](/components/skeleton/).
+More information about this state see in the guide for [Skeleton](/components/skeleton/).
 
 ![skeleton](static/skeleton.png)
 
