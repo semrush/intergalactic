@@ -67,7 +67,7 @@
   --lh-700: 1.17;
   --fs-800: 48px;
   --lh-800: 1.17;
-  --keyborad-focus: 0px 0px 0px 3px rgba(0, 143, 248, 0.2);
+  --keyborad-focus: 0 0 0 3px color-mod(var(--light-blue) a(30%));
   --keyborad-focus-valid: 0px 0px 0px 3px rgba(0, 159, 129, 0.2);
   --keyborad-focus-invalid: 0px 0px 0px 3px rgba(255, 73, 83, 0.2);
   --disabled-opacity: 0.3;
