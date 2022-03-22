@@ -32,8 +32,7 @@
     "@semcore/spin": "^3.3.0",
     "@semcore/spin-container": "^5.0.2",
     "@semcore/sticky": "^2.2.2",
-    "@semcore/tooltip": "^4.3.4",
-    "styled-components": "^5.3.3"
+    "@semcore/tooltip": "^4.3.4"
   },
   "peerDependencies": {
     "@semcore/core": "^1.11",
