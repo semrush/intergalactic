@@ -1,5 +1,5 @@
 ---
-title: Dropdown-menu
+title: DropdownMenu
 fileSource: dropdown-menu
 tabName: Design
 ---
@@ -8,7 +8,7 @@ tabName: Design
 
 > 💡 See description of trigger and examples in [Select/Multiselect](/components/select/).
 
-**Dropdown-menu** is a component for displaying the dropdown list and its nested items.
+**DropdownMenu** is a component for displaying the dropdown list and its nested items.
 
 @## Sizes of the list
 
