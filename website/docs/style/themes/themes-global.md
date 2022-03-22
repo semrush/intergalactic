@@ -109,16 +109,16 @@ To develop themes locally, you need hot module replacement. It won't work out of
 Example rules for webpack:
 
 ```javascript
-   {
-  test: /\.js$/,
-    include: /\/node_modules\/@semcore\//,
-    use: {
-    loader: '@semcore/shadow-loader',
-  },
-},
-{
-  test: /\.css$/,
-    include: /\/node_modules\/\.cache\//,
-  use: ['style-loader', 'css-loader'],
-}
-```
+    {
+      test: /\.js$/,
+      include: /\/node_modules\/@semcore\//,
+      use: {
+        loader: '@semcore/shadow-loader',
+      },
+    },
+    {
+      test: /\.css$/,
+      include: /\/node_modules\/\.cache\//,
+      use: ['style-loader', 'css-loader'],
+    }
+ ```
