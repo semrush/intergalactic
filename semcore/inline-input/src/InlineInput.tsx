@@ -81,6 +81,7 @@ class InlineInputBase extends Component<AsProps> {
     super(props);
     this.handleFocus = this.handleFocus.bind(this);
     this.handleBlur = this.handleBlur.bind(this);
+    this.handleKeyDown = this.handleKeyDown.bind(this);
   }
 
   componentDidMount() {
@@ -183,6 +184,11 @@ class InlineInputBase extends Component<AsProps> {
       onBlur(event);
     }
   }
+  handleKeyDown(event: React.KeyboardEvent) {
+    const { onConfirm, onCancel, value } = this.asProps;
+    if (event.code === 'Enter') onConfirm?.(value);
+    if (event.code === 'Escape') onCancel?.(this.initValue);
+  }
 
   render() {
     const SInlineInput = Root;
@@ -195,6 +201,7 @@ class InlineInputBase extends Component<AsProps> {
         ref={this.rootRef}
         onFocus={this.handleFocus}
         onBlur={this.handleBlur}
+        onKeyDown={this.handleKeyDown}
         render={Box}
         focused={focused}
         loading={loading}
@@ -256,6 +263,17 @@ const ConfirmIcon: React.FC<AsProps> = (props) => {
   const handleConfirm = React.useCallback(() => {
     props.onConfirm?.(props.value);
   }, [props.onConfirm, props.value]);
+  const handleKeydown = React.useCallback(
+    (event: React.KeyboardEvent) => {
+      if (props.loading) return;
+      if (event.code === 'Enter' || event.code === 'Space') {
+        event.preventDefault();
+        event.stopPropagation();
+        handleConfirm();
+      }
+    },
+    [props.loading, handleConfirm],
+  );
 
   if (props.loading) {
     return sstyled(props.styles)(
@@ -266,7 +284,7 @@ const ConfirmIcon: React.FC<AsProps> = (props) => {
   }
 
   return sstyled(props.styles)(
-    <SConfirmIcon render={Box}>
+    <SConfirmIcon render={Box} onKeyDown={handleKeydown}>
       <Tooltip {...props.tooltipsProps}>
         <Tooltip.Trigger className="controls-icon">
           <CheckM
@@ -288,17 +306,28 @@ const CancelIcon: React.FC<AsProps> = (props) => {
     if (props.loading || !props.onCancel) return;
     props.onCancel?.(initValue.current);
   }, [props.loading, props.onCancel]);
+  const handleKeydown = React.useCallback(
+    (event: React.KeyboardEvent) => {
+      if (props.loading) return;
+      if (event.code === 'Enter' || event.code === 'Space') {
+        event.preventDefault();
+        event.stopPropagation();
+        handleCancel();
+      }
+    },
+    [props.loading, handleCancel],
+  );
 
   if (props.loading) {
     return sstyled(props.styles)(
       <SCancelIcon render={Box} className="controls-icon">
-        <CloseM disabled={true} onClick={handleCancel} />
+        <CloseM disabled={true} />
       </SCancelIcon>,
     ) as React.ReactElement;
   }
 
   return sstyled(props.styles)(
-    <SCancelIcon render={Box}>
+    <SCancelIcon render={Box} onKeyDown={handleKeydown}>
       <Tooltip {...props.tooltipsProps}>
         <Tooltip.Trigger className="controls-icon">
           <CloseM tabIndex={0} aria-label={props.cancelText} role="button" onClick={handleCancel} />
