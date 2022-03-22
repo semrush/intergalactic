@@ -1,6 +1,5 @@
 import React from 'react';
 import { testing, snapshot, shared as testsShared } from '@semcore/jest-preset-ui';
-const { render, cleanup, axe } = testing;
 import Sticky from '@semcore/sticky';
 import ProgressBar from '@semcore/progress-bar';
 import Divider from '@semcore/divider';
@@ -9,7 +8,6 @@ import Skeleton from '@semcore/skeleton';
 import SpinContainer from '@semcore/spin-container';
 import Accordion from '@semcore/accordion';
 import { Box, Flex } from '@semcore/flex-box';
-import styled from 'styled-components';
 import Spin from '@semcore/spin';
 import Link from '@semcore/link';
 import Tooltip from '@semcore/tooltip';
@@ -19,6 +17,8 @@ import { LinkTrigger } from '@semcore/base-trigger';
 import resolveColor from '@semcore/utils/lib/color';
 
 import DataTable, { ROW_GROUP } from '../src';
+
+const { render, cleanup, axe } = testing;
 const { shouldSupportClassName, shouldSupportRef } = testsShared;
 
 const data = [
@@ -403,11 +403,6 @@ describe('DataTable', () => {
     expect(await snapshot(component)).toMatchImageSnapshot();
   });
   test('Accordion in the table', async () => {
-    const StyledAccordionContent = styled(Box)`
-      padding: 12px 32px;
-      border-bottom: 1px solid ${resolveColor('stone')};
-    `;
-
     function RowAccordion({ value, collapse = {}, ...props }) {
       return (
         <Accordion.Item value={value}>
@@ -416,6 +411,7 @@ describe('DataTable', () => {
         </Accordion.Item>
       );
     }
+
     const component = (
       <div style={{ width: 800 }}>
         <Accordion value={[1, 2]} onChange={jest.fn}>
@@ -434,7 +430,14 @@ describe('DataTable', () => {
                     active: [1, 2].includes(index),
                     collapse: {
                       children: (
-                        <StyledAccordionContent>{`Section ${index + 1}`}</StyledAccordionContent>
+                        <Box
+                          style={{
+                            padding: '12px 32px',
+                            borderBottom: `1px solid ${resolveColor('stone')}`,
+                          }}
+                        >
+                          {`Section ${index + 1}`}
+                        </Box>
                       ),
                     },
                   };
@@ -547,6 +550,7 @@ describe('DataTable', () => {
         ),
       }));
     }
+
     const component = (
       <div style={{ width: 800 }}>
         <DataTable data={data}>
