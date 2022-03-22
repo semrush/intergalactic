@@ -6,6 +6,7 @@
   "license": "MIT",
   "scripts": {
     "start": "nest start --watch & webpack --watch",
+    "build": "yarn build:interface & yarn build:server & yarn build:client",
     "build:interface": "node processingTS.js '../semcore/**/*' > ts.json",
     "build:server": "nest build",
     "prebuild:server": "rm -rf dist",
