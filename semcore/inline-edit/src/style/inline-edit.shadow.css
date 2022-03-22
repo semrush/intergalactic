@@ -1,3 +1,5 @@
+@import '@semcore/utils/style/var.css';
+
 @keyframes enter {
   from {
     opacity: 0;
@@ -16,6 +18,7 @@
 }
 
 SInlineEdit {
+  display: inline-block;
   position: relative;
 }
 
@@ -46,6 +49,13 @@ SView {
   cursor: pointer;
   opacity: 1;
   transition: opacity 0.1s ease-in-out;
+  border-radius: 2px;
+
+  &:focus,
+  &:active {
+    outline: none;
+    background-color: var(--gray-50);
+  }
 }
 
 SView[hiddenView] {
