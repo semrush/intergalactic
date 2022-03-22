@@ -9,19 +9,10 @@ import ProgressBar from '../src';
 describe('ProgressBar', () => {
   afterEach(cleanup);
 
-  test('should support custom className', () => {
-    const { getByTestId } = render(
-      <ProgressBar data-testid="notice" className="more-than one-class" />,
-    );
-    expect(getByTestId('notice').attributes['class'].value).toContain('more-than one-class');
-  });
+  shouldSupportClassName(ProgressBar);
+  shouldSupportRef(ProgressBar);
 
-  test('should support custom attributes', () => {
-    const { getByTestId } = render(<ProgressBar data-testid="notice" name="notice" />);
-    expect(getByTestId('notice').attributes['name'].value).toBe('notice');
-  });
-
-  test('should support children', () => {
+  test('Should support children', () => {
     const component = (
       <ProgressBar data-testid="parent">
         <p>Test</p>
@@ -33,7 +24,20 @@ describe('ProgressBar', () => {
     expect(getByTestId('parent').children.length).toEqual(3);
   });
 
-  test('should support dark view', async () => {
+  test('Renders correctly', async () => {
+    const component = (
+      <snapshot.ProxyProps style={{ margin: 5, width: '200px' }}>
+        <ProgressBar />
+        <ProgressBar value={0} />
+        <ProgressBar value={50} />
+        <ProgressBar value={100} />
+      </snapshot.ProxyProps>
+    );
+
+    expect(await snapshot(component)).toMatchImageSnapshot();
+  });
+
+  test('Should support dark view', async () => {
     const component = (
       <div style={{ width: '200px', padding: '10px', background: 'black' }}>
         <ProgressBar value={50} theme="dark" />
@@ -42,7 +46,7 @@ describe('ProgressBar', () => {
     expect(await snapshot(component)).toMatchImageSnapshot();
   });
 
-  test('should support size props', async () => {
+  test('Should support size props', async () => {
     const component = (
       <div style={{ width: '200px' }}>
         <ProgressBar value={50} size="l" />
@@ -56,7 +60,7 @@ describe('ProgressBar', () => {
     expect(await snapshot(component)).toMatchImageSnapshot();
   });
 
-  test('should support custom theme', async () => {
+  test('Should support custom theme', async () => {
     const component = (
       <div style={{ width: '200px' }}>
         <ProgressBar
@@ -75,7 +79,7 @@ describe('ProgressBar.Value', () => {
   shouldSupportClassName(ProgressBar.Value, ProgressBar);
   shouldSupportRef(ProgressBar.Value, ProgressBar);
 
-  test('should support custom theme', async () => {
+  test('Should support custom theme', async () => {
     const component = (
       <div style={{ width: '200px' }}>
         <ProgressBar value={50}>

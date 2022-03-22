@@ -17,7 +17,7 @@ describe('Radio', () => {
   shouldSupportClassName(Radio.Text, Radio);
   shouldSupportRef(Radio.Text, Radio);
 
-  test('should support custom attributes on the input', () => {
+  test('Should support custom attributes on the input', () => {
     const { getByTestId } = render(
       <Radio>
         <Radio.Value
@@ -31,7 +31,7 @@ describe('Radio', () => {
     expect(getByTestId('input').attributes['name'].value).toBe('radio');
   });
 
-  test('should support sizes', async () => {
+  test('Should support sizes', async () => {
     const component = (
       <snapshot.ProxyProps m="5px">
         <Radio size="xl">
@@ -49,20 +49,26 @@ describe('Radio', () => {
     expect(await snapshot(component)).toMatchImageSnapshot();
   });
 
-  test('should support focus, defaultChecked, checked, invalid, disabled', async () => {
+  test('Should support normal state', async () => {
     const component = (
       <snapshot.ProxyProps m="5px">
         <Radio>
           <Radio.Value />
         </Radio>
         <Radio>
-          <Radio.Value checked onChange={() => {}} />
-        </Radio>
-        <Radio state="invalid">
-          <Radio.Value />
+          <Radio.Value disabled />
         </Radio>
         <Radio>
-          <Radio.Value defaultChecked disabled />
+          <Radio.Value keyboardFocused />
+        </Radio>
+        <Radio>
+          <Radio.Value checked />
+        </Radio>
+        <Radio>
+          <Radio.Value checked disabled />
+        </Radio>
+        <Radio>
+          <Radio.Value checked keyboardFocused />
         </Radio>
       </snapshot.ProxyProps>
     );
@@ -70,7 +76,34 @@ describe('Radio', () => {
     expect(await snapshot(component)).toMatchImageSnapshot();
   });
 
-  test('should support change of state "checked" on click in label', async () => {
+  test('Should support invalid state', async () => {
+    const component = (
+      <snapshot.ProxyProps m="5px">
+        <Radio state="invalid">
+          <Radio.Value />
+        </Radio>
+        <Radio state="invalid">
+          <Radio.Value disabled />
+        </Radio>
+        <Radio state="invalid">
+          <Radio.Value keyboardFocused />
+        </Radio>
+        <Radio state="invalid">
+          <Radio.Value checked />
+        </Radio>
+        <Radio state="invalid">
+          <Radio.Value checked disabled />
+        </Radio>
+        <Radio state="invalid">
+          <Radio.Value checked keyboardFocused />
+        </Radio>
+      </snapshot.ProxyProps>
+    );
+
+    expect(await snapshot(component)).toMatchImageSnapshot();
+  });
+
+  test('Should support change of state "checked" on click in label', async () => {
     const spy = jest.fn();
     const { getByTestId } = render(
       <Radio data-testid="label">
@@ -86,7 +119,7 @@ describe('Radio', () => {
 describe('RadioGroup', () => {
   afterEach(cleanup);
 
-  test('transfer name to Radio', () => {
+  test('Should transfer name to Radio', () => {
     const { getByTestId } = render(
       <RadioGroup name="test">
         <Radio>
@@ -98,7 +131,7 @@ describe('RadioGroup', () => {
     expect(getByTestId('radio').name).toContain('test');
   });
 
-  test('should support onChange', () => {
+  test('Should support onChange', () => {
     const onChange = jest.fn();
     const onChangeRadio = jest.fn();
     const value = 'test';
@@ -120,7 +153,7 @@ describe('RadioGroup', () => {
     expect(onChangeRadio).toHaveBeenCalled();
   });
 
-  test('should support initial value', () => {
+  test('Should support initial value', () => {
     const { getByTestId } = render(
       <RadioGroup name="test" value="1">
         <Radio>
@@ -142,7 +175,7 @@ describe('RadioGroup', () => {
     expect(getByTestId('radioSecond').checked).toBeFalsy();
   });
 
-  test('should support sizes', async () => {
+  test('Should support sizes', async () => {
     const component = (
       <snapshot.ProxyProps m="5px">
         <RadioGroup size="xl">
@@ -175,7 +208,7 @@ describe('RadioGroup', () => {
     expect(await snapshot(component)).toMatchImageSnapshot();
   });
 
-  test('should support change size when set property in Radio.Value', async () => {
+  test('Should support change size when set property in Radio.Value', async () => {
     const component = (
       <snapshot.ProxyProps m="5px">
         <RadioGroup>
