@@ -50,6 +50,7 @@ class InlineInputBase extends Component<AsProps> {
     size: 's',
     state: 'normal',
     loading: false,
+    defaultValue: '',
     __excludeProps: [
       'defaultValue',
       'placeholder',
@@ -69,6 +70,12 @@ class InlineInputBase extends Component<AsProps> {
   rootRef = React.createRef<HTMLElement>();
   inputRef = React.createRef();
   initValue: string = '';
+
+  uncontrolledProps() {
+    return {
+      value: null,
+    };
+  }
 
   constructor(props) {
     super(props);
