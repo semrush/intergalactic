@@ -13,6 +13,7 @@
 - [ ] Documentation guide updated (if any)
 - [ ] Documentation examples updated (if any)
 - [ ] Documentation API updated (if any)
+- [ ] Add link to design (if any)
 - [ ] No major bugs pending
 - [ ] Complete self code review
 
