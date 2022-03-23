@@ -82,14 +82,26 @@ describe('PillGroup', () => {
 
   test('Should render correctly', async () => {
     const component = (
-      <Pills value={1}>
-        <Pills.Item value={1}>1</Pills.Item>
-        <Pills.Item value={2}>1</Pills.Item>
-        <Pills.Item value={3}>1</Pills.Item>
-        <Pills.Item value={3} disabled>
-          1
-        </Pills.Item>
-      </Pills>
+      <snapshot.ProxyProps style={{ margin: 5 }}>
+        <Pills value={1}>
+          <Pills.Item value={1}>1</Pills.Item>
+          <Pills.Item value={2} keyboardFocused>
+            2
+          </Pills.Item>
+        </Pills>
+        <Pills value={1}>
+          <Pills.Item value={1} keyboardFocused>
+            1
+          </Pills.Item>
+          <Pills.Item value={2}>2</Pills.Item>
+        </Pills>
+        <Pills>
+          <Pills.Item value={1}>1</Pills.Item>
+          <Pills.Item value={2} disabled>
+            2
+          </Pills.Item>
+        </Pills>
+      </snapshot.ProxyProps>
     );
 
     expect(await snapshot(component)).toMatchImageSnapshot();
@@ -114,6 +126,80 @@ describe('PillGroup', () => {
           <Pills.Item.Addon tag={Addon} />
         </Pills.Item>
       </Pills>
+    );
+
+    expect(await snapshot(component)).toMatchImageSnapshot();
+  });
+
+  test('Should support sizes', async () => {
+    const component = (
+      <snapshot.ProxyProps style={{ margin: 5 }}>
+        <Pills size="s">
+          <Pills.Item value={1}>Itemqr</Pills.Item>
+        </Pills>
+        <Pills>
+          <Pills.Item value={1}>Itemqr</Pills.Item>
+        </Pills>
+        <Pills size="l">
+          <Pills.Item value={1}>Itemqr</Pills.Item>
+        </Pills>
+        <Pills size="xl">
+          <Pills.Item value={1}>Itemqr</Pills.Item>
+        </Pills>
+      </snapshot.ProxyProps>
+    );
+
+    expect(await snapshot(component)).toMatchImageSnapshot();
+  });
+
+  test('Should support Addon for different sizes', async () => {
+    const PillsSize = ({ size = 'm', ...props }) => (
+      <Pills size={size} {...props}>
+        <Pills.Item value={1}>
+          <Pills.Item.Text>Itemqr</Pills.Item.Text>
+          <Pills.Item.Addon>Addon</Pills.Item.Addon>
+        </Pills.Item>
+        <Pills.Item value={2}>
+          {size === 'xl' ? (
+            <Pills.Item.Addon>
+              <div style={{ width: '24px', height: '24px', background: 'orange' }} />
+            </Pills.Item.Addon>
+          ) : (
+            <Pills.Item.Addon>
+              <div style={{ width: '16px', height: '16px', background: 'orange' }} />
+            </Pills.Item.Addon>
+          )}
+        </Pills.Item>
+      </Pills>
+    );
+    const component = (
+      <snapshot.ProxyProps style={{ margin: 5 }}>
+        <PillsSize size="s" />
+        <PillsSize size="m" />
+        <PillsSize size="l" />
+        <PillsSize size="xl" />
+      </snapshot.ProxyProps>
+    );
+
+    expect(await snapshot(component)).toMatchImageSnapshot();
+  });
+
+  test('Should correct render for different number Items', async () => {
+    const component = (
+      <snapshot.ProxyProps style={{ margin: 5 }}>
+        <Pills>
+          <Pills.Item value={1}>1</Pills.Item>
+        </Pills>
+        <Pills>
+          <Pills.Item value={1}>1</Pills.Item>
+          <Pills.Item value={2}>2</Pills.Item>
+        </Pills>
+        <Pills>
+          <Pills.Item value={1}>1</Pills.Item>
+          <Pills.Item value={2}>2</Pills.Item>
+          <Pills.Item value={3}>3</Pills.Item>
+        </Pills>
+      </snapshot.ProxyProps>
     );
 
     expect(await snapshot(component)).toMatchImageSnapshot();
