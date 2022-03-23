@@ -1,5 +1,6 @@
-import logger from '@semcore/utils/lib/logger'; /* @ts-ignore */
-/*__semcore-vars__:"../style/var.css"*/ const colors: { [key: string]: string } = preval`
+import logger from '@semcore/utils/lib/logger';
+/*__semcore-vars__:"../style/var.css"*/
+const colors = preval`
   const path = require('path');
   module.exports = require('@semcore/babel-plugin-react-semcore').getColorVars(path.resolve(__dirname, '../', 'style/var.css'));
 `;
@@ -21,7 +22,7 @@ const fallbackColors = {
 };
 
 const colorsProxy = new Proxy(colors, {
-  get: (obj, prop: string) => {
+  get: (obj, prop) => {
     if (Object.keys(fallbackColors).includes(prop)) {
       logger.warn(
         true,
@@ -36,7 +37,7 @@ const colorsProxy = new Proxy(colors, {
 
 export { colorsProxy as colors };
 
-export function getColor(key: string): string {
+export function getColor(key) {
   if (cache[key]) {
     return cache[key];
   }
