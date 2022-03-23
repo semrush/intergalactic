@@ -2,11 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [3.0.0] - 2022-04-01
+## [2.5.0] - 2022-04-11
 
-### Break
+### Changed
 
-- `onAdd(...value: string[])` callback called once instead of `onAdd(value: string)` called multiple times on batch change.
+- Deprecated `onAdd` callback property in favor of new `onAppend` one.
+- Provided SyntheticEvents to second callbacks argument.
 
 ## [2.4.9] - 2022-04-01
 

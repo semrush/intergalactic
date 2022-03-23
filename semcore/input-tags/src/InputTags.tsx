@@ -17,10 +17,13 @@ export interface IInputTagsProps extends Omit<IInputProps, 'size'>, IScrollAreaP
    * @default m
    */
   size?: InputTagsSize;
-  /** Event is called when tag or tags need to be added */
-  onAdd?: (...value: string[]) => void;
-  /** Event is called when the last tag needs to be removed  */
-  onRemove?: () => void;
+  /** @deprecated use `onAppend` instead */
+  /** Event is called when tag needs to be added */
+  onAdd?: (value: string, event: React.KeyboardEvent | React.ClipboardEvent) => void;
+  /** Event is called when tags need to be added */
+  onAppend?: (values: string[], event: React.KeyboardEvent | React.ClipboardEvent) => void;
+  /** Event is called when tags need to be removed  */
+  onRemove?: (event: React.KeyboardEvent | React.MouseEvent) => void;
   /** List delimiter of tags
    * @default [',', ';', '|']
    * */
@@ -64,29 +67,28 @@ class InputTags extends Component<IInputTagsProps> {
     }
   };
 
-  handleKeyDown = (e) => {
-    const { key, currentTarget } = e;
+  handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    const { key, currentTarget } = event;
     const { delimiters } = this.asProps;
     const { value } = currentTarget;
     const lastSymbol = value.slice(-1);
     const trimmedValue = value.trim();
 
-    // ADD
     if ((delimiters.includes(key) || (lastSymbol === ' ' && key === ' ')) && trimmedValue) {
-      e.preventDefault();
-      fire(this, 'onAdd', trimmedValue);
+      event.preventDefault();
+      fire(this, 'onAdd', trimmedValue, event);
+      fire(this, 'onAppend', [trimmedValue], event);
     }
 
-    // REMOVE
     if (key === 'Backspace' && !value) {
-      e.preventDefault();
-      fire(this, 'onRemove');
+      event.preventDefault();
+      fire(this, 'onRemove', event);
     }
   };
 
-  handlePaste = (e) => {
-    const value = e.clipboardData.getData('text/plain');
-    const { delimiters, onAdd } = this.asProps;
+  handlePaste = (event: React.ClipboardEvent) => {
+    const value = event.clipboardData.getData('text/plain');
+    const { delimiters, onAdd, onAppend } = this.asProps;
     const reg = new RegExp(
       delimiters
         .filter((s) => !/\w+/.test(String(s)))
@@ -94,15 +96,18 @@ class InputTags extends Component<IInputTagsProps> {
         .join('|'),
     );
     const tagsToBeAdded = value.split(reg).filter(Boolean);
-    if (tagsToBeAdded.length > 1) {
-      e.preventDefault();
-      onAdd(...tagsToBeAdded);
+    if (tagsToBeAdded.length > 0) {
+      event.preventDefault();
+      for (const tag of tagsToBeAdded) {
+        onAdd?.(tag, event);
+      }
+      onAppend?.(tagsToBeAdded, event);
     }
   };
 
-  bindHandlerTagClick = (editable) => () => {
+  bindHandlerTagClick = (editable: boolean) => (event: React.MouseEvent) => {
     if (!editable) return;
-    fire(this, 'onRemove');
+    fire(this, 'onRemove', event);
   };
 
   getValueProps() {
@@ -113,7 +118,7 @@ class InputTags extends Component<IInputTagsProps> {
     };
   }
 
-  getTagProps({ editable }) {
+  getTagProps({ editable }: { editable: boolean }) {
     return {
       size: MAP_SIZES_TAG[this.asProps.size],
       onClick: this.bindHandlerTagClick(editable),
@@ -190,7 +195,7 @@ class Value extends Component<IInputTagsValueProps> {
 
 function InputTag(props) {
   const STag = Root;
-  return sstyled(props.styles)(<STag render={Tag} />);
+  return sstyled(props.styles)(<STag data-value={props.value} render={Tag} />);
 }
 
 export default createComponent<
