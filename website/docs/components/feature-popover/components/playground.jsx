@@ -4,8 +4,23 @@ import Button from '@semcore/button';
 import FeaturePopover from '@semcore/feature-popover';
 import PlaygroundGeneration from 'components/PlaygroundGeneration';
 
+const PLACEMENT = [
+  'top-start',
+  'top',
+  'top-end',
+  'right-start',
+  'right',
+  'right-end',
+  'bottom-start',
+  'bottom',
+  'bottom-end',
+  'left-start',
+  'left',
+  'left-end',
+];
+
 export default PlaygroundGeneration((createGroupWidgets) => {
-  const { bool, onChange } = createGroupWidgets('FeaturePopover');
+  const { bool, select, onChange } = createGroupWidgets('FeaturePopover');
 
   const closeIcon = bool({
     key: 'icon',
@@ -19,8 +34,22 @@ export default PlaygroundGeneration((createGroupWidgets) => {
     label: 'Visible',
   });
 
+  const placement = select({
+    key: 'placement',
+    defaultValue: 'bottom-start',
+    label: 'Placement',
+    options: PLACEMENT.map((value) => ({
+      name: value,
+      value,
+    })),
+  });
+
   return (
-    <FeaturePopover visible={visible} onVisibleChange={(v) => onChange('visible', v)}>
+    <FeaturePopover
+      visible={visible}
+      placement={placement}
+      onVisibleChange={(v) => onChange('visible', v)}
+    >
       <FeaturePopover.Trigger>
         <Button>
           Open Popover
