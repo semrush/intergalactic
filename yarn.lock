@@ -3245,10 +3245,10 @@
     "@semcore/utils" "^3.15"
     csstype "^2.6"
 
-"@semcore/theme-redesign@^1.5.6":
-  version "1.5.6"
-  resolved "https://registry.yarnpkg.com/@semcore/theme-redesign/-/theme-redesign-1.5.6.tgz#d64043487ef1ae510f6fb4e5de4b22e372fb50a9"
-  integrity sha512-+y7A7QwG+ZTgbXfin2E7B1qjMfyEU2AoYVPF8Y7jVOVxygqEUW9s+RA/o8MRExY9qsM2cz90EBE36z2mLqcGgg==
+"@semcore/theme-redesign@^1.5.10":
+  version "1.5.10"
+  resolved "https://registry.yarnpkg.com/@semcore/theme-redesign/-/theme-redesign-1.5.10.tgz#722f8980ae8c6ad9f7681745bff0e02b2ceb5da3"
+  integrity sha512-QckzPWEKoHoPboEbkBAkF/dZ6yCu9UNTN4Egv/0pCovaljW/51iURV6ir2tDX+U8avh9Y2UUp+71TgVWwGnhCA==
 
 "@semcore/time-picker@2.4.8":
   version "2.4.8"
