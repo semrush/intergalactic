@@ -20,7 +20,7 @@ const Demo = () => {
     }
   };
 
-  const handleAddTag = (...newTags) => {
+  const handleAppendTags = (newTags) => {
     updateTags((tags) => [...tags, ...newTags]);
     updateValue(() => '');
   };
@@ -47,7 +47,12 @@ const Demo = () => {
 
   return (
     <Select interaction="focus" onChange={handleSelect}>
-      <Select.Trigger tag={InputTags} size="l" onAdd={handleAddTag} onRemove={handleRemoveTag}>
+      <Select.Trigger
+        tag={InputTags}
+        size="l"
+        onAppend={handleAppendTags}
+        onRemove={handleRemoveTag}
+      >
         {tags.map((tag, idx) => (
           <InputTags.Tag key={idx} theme={isValidEmail(tag) ? 'green' : 'red'}>
             <InputTags.Tag.Text>{tag}</InputTags.Tag.Text>

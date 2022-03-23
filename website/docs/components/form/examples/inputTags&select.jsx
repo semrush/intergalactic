@@ -33,17 +33,17 @@ const Demo = () => {
     alert(JSON.stringify(data));
   };
 
-  const handleAddTag = (value) => {
+  const handleAppendTags = (newTags) => {
     const tags = getValues('emails');
-    if (!/.+@.+\..+/i.test(value)) {
+    if (newTags.some((tag) => !/.+@.+\..+/i.test(tag))) {
       setError('emails', { message: "Email don't valid" });
       return;
     }
-    if (tags.length === 5) {
+    if (tags.length + newTags.length > 5) {
       setError('emails', { message: 'Max emails is 5' });
       return;
     }
-    setValue('emails', [...tags, value]);
+    setValue('emails', [...tags, ...newTags]);
     changeInputTagsValue('');
   };
 
@@ -106,7 +106,7 @@ const Demo = () => {
               <InputTags
                 size="l"
                 state={errors['emails'] ? 'invalid' : 'normal'}
-                onAdd={handleAddTag}
+                onAppend={handleAppendTags}
                 onRemove={handleRemoveTag}
               >
                 {tags.map((tag, idx) => (

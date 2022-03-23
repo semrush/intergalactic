@@ -7,11 +7,9 @@ const Demo = () => {
   const [tags, updateTags] = useState(['vk', 'fk', 'twitter', 'instagram']);
   const [value, updateValue] = useState('');
 
-  const handleAddTag = (...newTags) => {
-    if (newTags) {
-      updateTags((tags) => [...tags, ...newTags]);
-      updateValue('');
-    }
+  const handleAppendTags = (newTags) => {
+    updateTags((tags) => [...tags, ...newTags]);
+    updateValue('');
   };
 
   const handleRemoveTag = () => {
@@ -39,11 +37,11 @@ const Demo = () => {
 
   const handleBlurInput = (e) => {
     const { value } = e.currentTarget;
-    if (value) handleAddTag(value);
+    if (value) handleAppendTags([value]);
   };
 
   return (
-    <InputTags size="l" onAdd={handleAddTag} onRemove={handleRemoveTag}>
+    <InputTags size="l" onAppend={handleAppendTags} onRemove={handleRemoveTag}>
       {tags.map((tag, idx) => (
         <Tooltip key={idx}>
           <Tooltip.Trigger

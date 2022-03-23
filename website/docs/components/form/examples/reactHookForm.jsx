@@ -70,8 +70,8 @@ export default function App() {
     }
   }, [value, valueMask]);
 
-  const handleAddTag = (value) => {
-    updateTags((tags) => [...tags, value]);
+  const handleAppendTags = (newTags) => {
+    updateTags((tags) => [...tags, ...newTags]);
     updateValueTag('');
   };
   const handleRemoveTag = () => {
@@ -295,7 +295,7 @@ export default function App() {
                 w={390}
                 size="l"
                 state={errors['inputTag'] ? 'invalid' : 'normal'}
-                onAdd={handleAddTag}
+                onAppend={handleAppendTags}
                 onRemove={handleRemoveTag}
               >
                 {tags.map((tag, idx) => (
