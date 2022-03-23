@@ -81,7 +81,7 @@ const Preview = (preview) => {
         </Notice.Label>
       )}
       <Notice.Content>
-        <Text size={300} bold tag="p" mb={2}>
+        <Text bold mb={2} size={300} lineHeight="24px" tag="div">
           Look at this cool notice!
         </Text>
         {msg}
