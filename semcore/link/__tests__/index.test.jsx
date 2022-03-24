@@ -1,11 +1,8 @@
 import React from 'react';
-import { testing } from '@semcore/jest-preset-ui';
-const { cleanup, render, axe } = testing;
-
-import { snapshot } from '@semcore/jest-preset-ui';
-import { shared as testsShared } from '@semcore/jest-preset-ui';
-const { shouldSupportClassName, shouldSupportRef } = testsShared;
+import { testing, snapshot, shared as testsShared } from '@semcore/jest-preset-ui';
 import propsForElement from '@semcore/utils/lib/propsForElement';
+const { cleanup, render, axe } = testing;
+const { shouldSupportClassName, shouldSupportRef } = testsShared;
 import Link from '../src';
 
 describe('Link', () => {
@@ -14,12 +11,12 @@ describe('Link', () => {
   shouldSupportClassName(Link);
   shouldSupportRef(Link);
 
-  test('should support custom attributes', () => {
+  test('Should support custom attributes', () => {
     const { getByTestId } = render(<Link data-testid="link" name="test" />);
     expect(getByTestId('link').attributes['name'].value).toBe('test');
   });
 
-  test('should support children', async () => {
+  test('Should support children', async () => {
     const component = (
       <Link>
         <p data-testid="child">Test</p>
@@ -29,16 +26,12 @@ describe('Link', () => {
     expect(getByTestId('child')).toBeTruthy();
   });
 
-  test('should support additional elements', async () => {
+  test('Should support additional elements', async () => {
     const component = (
       <Link>
-        <Link.Addon>
-          <span>ICON</span>
-        </Link.Addon>
+        <Link.Addon>ICON</Link.Addon>
         <Link.Text>Link</Link.Text>
-        <Link.Addon>
-          <span>ICON</span>
-        </Link.Addon>
+        <Link.Addon>ICON</Link.Addon>
       </Link>
     );
     const { queryAllByText } = render(component);
@@ -48,7 +41,7 @@ describe('Link', () => {
     expect(await snapshot(component)).toMatchImageSnapshot();
   });
 
-  test('should support additional elements as props', async () => {
+  test('Should support additional elements as props', async () => {
     const Addon = React.forwardRef(function (p, ref) {
       return (
         <span ref={ref} {...propsForElement(p)}>
@@ -65,66 +58,61 @@ describe('Link', () => {
     expect(await snapshot(component)).toMatchImageSnapshot();
   });
 
-  test('should support change tag name', () => {
+  test('Should support change tag name', () => {
     const { getByTestId } = render(<Link data-testid="link" tag="span" />);
     expect(getByTestId('link').tagName).toBe('SPAN');
   });
 
-  test('should support active property', async () => {
+  test('Should support normal state', async () => {
     const component = (
       <snapshot.ProxyProps style={{ margin: 5 }}>
         <Link active>Link</Link>
         <Link active>
-          <Link.Addon>
-            <span>ICON</span>
-          </Link.Addon>
+          <Link.Addon>ICON</Link.Addon>
           <Link.Text>Link</Link.Text>
-          <Link.Addon>
-            <span>ICON</span>
-          </Link.Addon>
+          <Link.Addon>ICON</Link.Addon>
         </Link>
+        <Link disabled>Link</Link>
+        <Link keyboardFocused>Link</Link>
       </snapshot.ProxyProps>
     );
 
     expect(await snapshot(component)).toMatchImageSnapshot();
   });
 
-  test('should support inline property', () => {
-    const { getByTestId } = render(<Link data-testid="link" tag="span" inline />);
+  test('Should support inline property', () => {
+    const { rerender, getByTestId } = render(<Link data-testid="link" />);
+    expect(getComputedStyle(getByTestId('link')).display).toBe('inline-block');
+    rerender(<Link data-testid="link" inline />);
     expect(getComputedStyle(getByTestId('link')).display).toBe('inline');
   });
 
-  test('should support normal render when noWrap=true (default) for all sizes', async () => {
+  test('Should support noWrap property', () => {
+    const { rerender, getByTestId } = render(<Link data-testid="link" />);
+    expect(getComputedStyle(getByTestId('link'))['white-space']).toBe('nowrap');
+    rerender(<Link data-testid="link" noWrap={false} />);
+    expect(getComputedStyle(getByTestId('link'))['white-space']).toBe('');
+  });
+
+  test('Should support sizes', async () => {
     const component = (
       <snapshot.ProxyProps style={{ margin: 5 }}>
-        <Link active>Link</Link>
-        <Link active size={100}>
-          Link
-        </Link>
-        <Link active size={200}>
-          Link
-        </Link>
-        <Link active size={300}>
-          Link
-        </Link>
-        <Link active size={400}>
-          Link
-        </Link>
-        <Link active size={500}>
-          Link
-        </Link>
-        <Link active size={600}>
-          Link
-        </Link>
-        <Link active size={700}>
-          Link
-        </Link>
-        <Link active size={800}>
-          Link
-        </Link>
+        <Link size={100}>Link</Link>
+        <Link size={200}>Link</Link>
+        <Link size={300}>Link</Link>
+        <Link size={400}>Link</Link>
+        <Link size={500}>Link</Link>
+        <Link size={600}>Link</Link>
+        <Link size={700}>Link</Link>
+        <Link size={800}>Link</Link>
       </snapshot.ProxyProps>
     );
 
+    expect(await snapshot(component)).toMatchImageSnapshot();
+  });
+
+  test('Should support custom color', async () => {
+    const component = <Link color="purple">Link</Link>;
     expect(await snapshot(component)).toMatchImageSnapshot();
   });
 
