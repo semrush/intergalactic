@@ -217,3 +217,17 @@ import { Bubble } from '@semcore/d3-chart';
 ```
 
 @interface IBubbleProps
+
+@## Radial tree
+
+It have children component `Title`.
+
+```js
+import { RadialTree } from '@semcore/d3-chart';
+
+<RadialTree>
+  <RadialTree.Title></RadialTree.Title>
+</RadialTree>;
+```
+
+@interface IRadialTreeProps
