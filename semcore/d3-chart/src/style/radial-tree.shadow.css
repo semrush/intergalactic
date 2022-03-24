@@ -1,0 +1,21 @@
+@import '@semcore/utils/style/var.css';
+@import '@semcore/d3-chart/src/style/var.css';
+
+SRadian {
+  cursor: pointer;
+}
+SLineCup {
+  transition: r 0.1s;
+}
+SLabel {
+  cursor: var(--text-cursor);
+}
+SRadian:hover SLabel {
+  fill: var(--color-hovered);
+}
+
+@media (prefers-reduced-motion) {
+  SLineCup {
+    transition: none;
+  }
+}
