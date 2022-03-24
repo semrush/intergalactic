@@ -1,9 +1,7 @@
 import React from 'react';
-import { testing } from '@semcore/jest-preset-ui';
+import { testing, snapshot, shared as testsShared } from '@semcore/jest-preset-ui';
 const { render, fireEvent, cleanup, axe } = testing;
 
-import { snapshot } from '@semcore/jest-preset-ui';
-import { shared as testsShared } from '@semcore/jest-preset-ui';
 const { shouldSupportClassName, shouldSupportRef } = testsShared;
 import Pagination from '../src';
 
@@ -159,7 +157,7 @@ describe('Pagination.TotalPages', () => {
 
   shouldSupportClassName(Pagination.TotalPages, Pagination);
 
-  test('should be disabled if currentPage < totalPages', () => {
+  test('should be disabled if currentPage = totalPages', () => {
     const { getByTestId } = render(
       <Pagination currentPage={100} totalPages={100}>
         <Pagination.TotalPages data-testid="totalPages" />
@@ -181,31 +179,28 @@ describe('Pagination.TotalPages', () => {
     expect(spy).toBeCalledTimes(1);
     expect(spy).toBeCalledWith(TOTAL_PAGES);
   });
-
-  test('should support totalPagesFormatter property', () => {
-    const TOTAL_PAGES = 1000000;
-    const { getByTestId, rerender } = render(
-      <Pagination totalPages={TOTAL_PAGES}>
-        <Pagination.TotalPages data-testid="totalPages" />
-      </Pagination>,
-    );
-    const pages = getByTestId('totalPages');
-    expect(pages.textContent).toBe('1,000,000');
-
-    rerender(
-      <Pagination totalPages={TOTAL_PAGES} totalPagesFormatter={(a) => a}>
-        <Pagination.TotalPages data-testid="totalPages" />
-      </Pagination>,
-    );
-
-    expect(pages.textContent).toBe(TOTAL_PAGES.toString());
-  });
 });
 
 describe('Pagination.PageInput', () => {
   afterEach(cleanup);
   shouldSupportRef(Pagination.PageInput, Pagination);
   shouldSupportClassName(Pagination.PageInput, Pagination);
+
+  test('Should correctly render', async () => {
+    const component = (
+      <snapshot.ProxyProps style={{ margin: 5 }}>
+        <Pagination currentPage={1} totalPages={10}>
+          <Pagination.PageInput>
+            <Pagination.PageInput.Value />
+          </Pagination.PageInput>
+        </Pagination>
+        <Pagination currentPage={1} totalPages={10}>
+          <Pagination.PageInput />
+        </Pagination>
+      </snapshot.ProxyProps>
+    );
+    expect(await snapshot(component)).toMatchImageSnapshot();
+  });
 });
 
 describe('Pagination.PageInput.Value', () => {
