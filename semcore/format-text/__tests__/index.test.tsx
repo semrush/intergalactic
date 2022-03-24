@@ -1,10 +1,7 @@
 import React from 'react';
-import { testing } from '@semcore/jest-preset-ui';
+import { testing, snapshot, shared as testsShared } from '@semcore/jest-preset-ui';
 const { cleanup } = testing;
-
-import { shared as testsShared } from '@semcore/jest-preset-ui';
 const { shouldSupportClassName, shouldSupportRef } = testsShared;
-import { snapshot } from '@semcore/jest-preset-ui';
 import FormatText from '../src';
 
 describe('FormatText', () => {
@@ -35,11 +32,29 @@ describe('FormatText', () => {
           <cite>- Великий мудрец</cite>
         </blockquote>
         <h1>test</h1>
+        <h1>
+          test <small>small</small>
+        </h1>
         <h2>test</h2>
+        <h2>
+          test <small>small</small>
+        </h2>
         <h3>test</h3>
+        <h3>
+          test <small>small</small>
+        </h3>
         <h4>test</h4>
+        <h4>
+          test <small>small</small>
+        </h4>
         <h5>test</h5>
+        <h5>
+          test <small>small</small>
+        </h5>
         <h6>test</h6>
+        <h6>
+          test <small>small</small>
+        </h6>
         <ul>
           <li>doggo 1</li>
           <li>doggo 2</li>
@@ -89,7 +104,12 @@ describe('FormatText', () => {
             <ol>
               <li>doggo</li>
               <li>doggo</li>
-              <li>doggo</li>
+              <li>
+                <ol>
+                  <li>doggo</li>
+                  <li>doggo</li>
+                </ol>
+              </li>
             </ol>
           </li>
         </ol>
@@ -97,13 +117,13 @@ describe('FormatText', () => {
     );
     const component = (
       <snapshot.ProxyProps style={{ margin: 5 }}>
-        <FormatText size={'m'}>
+        <FormatText size="m">
           <Inner />
         </FormatText>
-        <FormatText size={'l'}>
+        <FormatText size="l">
           <Inner />
         </FormatText>
-        <FormatText size={'xl'}>
+        <FormatText size="xl">
           <Inner />
         </FormatText>
       </snapshot.ProxyProps>
@@ -130,13 +150,13 @@ describe('FormatText', () => {
 
     const component = (
       <snapshot.ProxyProps style={{ margin: 5 }}>
-        <FormatText size={'m'}>
+        <FormatText size="m">
           <Inner />
         </FormatText>
-        <FormatText size={'l'}>
+        <FormatText size="l">
           <Inner />
         </FormatText>
-        <FormatText size={'xl'}>
+        <FormatText size="xl">
           <Inner />
         </FormatText>
       </snapshot.ProxyProps>
