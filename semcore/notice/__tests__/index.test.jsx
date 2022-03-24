@@ -1,9 +1,7 @@
 import React from 'react';
-import { testing } from '@semcore/jest-preset-ui';
+import { testing, snapshot, shared as testsShared } from '@semcore/jest-preset-ui';
 const { render, cleanup, axe } = testing;
-import { snapshot } from '@semcore/jest-preset-ui';
 import Notice, { NoticeSmart } from '../src';
-import { shared as testsShared } from '@semcore/jest-preset-ui';
 const { shouldSupportClassName, shouldSupportRef } = testsShared;
 
 describe('Notice', () => {
@@ -12,12 +10,12 @@ describe('Notice', () => {
   shouldSupportClassName(Notice);
   shouldSupportRef(Notice);
 
-  test('should support custom attributes', () => {
+  test('Should support custom attributes', () => {
     const { getByTestId } = render(<Notice data-testid="notice" name="notice" />);
     expect(getByTestId('notice').attributes['name'].value).toBe('notice');
   });
 
-  test('should support children', () => {
+  test('Should support children', () => {
     const component = (
       <Notice>
         <p data-testid="child">Test</p>
@@ -27,7 +25,7 @@ describe('Notice', () => {
     expect(getByTestId('child')).toBeTruthy();
   });
 
-  test('should support custom close icon', () => {
+  test('Should support custom close icon', () => {
     const component = (
       <Notice>
         <Notice.CloseIcon data-testid="close">Close Icon</Notice.CloseIcon>
@@ -37,16 +35,109 @@ describe('Notice', () => {
     expect(getByTestId('close')).toBeTruthy();
   });
 
-  test('should support theme props', async () => {
+  test('Should support theme for use primary', async () => {
     const component = (
       <>
-        <Notice>Text Notice</Notice>
+        <Notice use="primary">Text Notice</Notice>
         <br />
-        <Notice theme="success">Text Notice</Notice>
+        <Notice theme="success" use="primary">
+          Text Notice
+        </Notice>
         <br />
-        <Notice theme="danger">Text Notice</Notice>
+        <Notice theme="danger" use="primary">
+          Text Notice
+        </Notice>
         <br />
-        <Notice theme="warning">Text Notice</Notice>
+        <Notice theme="warning" use="primary">
+          Text Notice
+        </Notice>
+      </>
+    );
+
+    expect(await snapshot(component)).toMatchImageSnapshot();
+  });
+
+  test('Should support theme for use secondary', async () => {
+    const component = (
+      <>
+        <Notice use="secondary">Text Notice</Notice>
+        <br />
+        <Notice theme="success" use="secondary">
+          Text Notice
+        </Notice>
+        <br />
+        <Notice theme="danger" use="secondary">
+          Text Notice
+        </Notice>
+        <br />
+        <Notice theme="warning" use="secondary">
+          Text Notice
+        </Notice>
+      </>
+    );
+
+    expect(await snapshot(component)).toMatchImageSnapshot();
+  });
+
+  test('Should support custom theme', async () => {
+    const component = (
+      <>
+        <Notice theme="#feebc5">
+          <Notice.Label>Lab</Notice.Label>
+          <Notice.Content>
+            Text Notice
+            <Notice.Actions>
+              <button>Wow, so cool!</button>
+            </Notice.Actions>
+          </Notice.Content>
+          <Notice.CloseIcon />
+        </Notice>
+      </>
+    );
+
+    expect(await snapshot(component)).toMatchImageSnapshot();
+  });
+
+  test('Should correctly render', async () => {
+    const component = (
+      <Notice>
+        <Notice.Label>
+          <div style={{ width: '16px', height: '16px', background: 'orange' }} />
+        </Notice.Label>
+        <Notice.Content>
+          Look at this cool notice!
+          <Notice.Actions>
+            <button>Wow, so cool!</button>
+          </Notice.Actions>
+        </Notice.Content>
+        <Notice.CloseIcon />
+      </Notice>
+    );
+    expect(await snapshot(component)).toMatchImageSnapshot();
+  });
+});
+
+describe('Notice.Label', () => {
+  afterEach(cleanup);
+
+  test('Should support theme', async () => {
+    const component = (
+      <>
+        <Notice>
+          <Notice.Label>Lab</Notice.Label>
+        </Notice>
+        <br />
+        <Notice theme="success">
+          <Notice.Label>Lab</Notice.Label>
+        </Notice>
+        <br />
+        <Notice theme="danger">
+          <Notice.Label>Lab</Notice.Label>
+        </Notice>
+        <br />
+        <Notice theme="warning">
+          <Notice.Label>Lab</Notice.Label>
+        </Notice>
       </>
     );
 
@@ -55,9 +146,12 @@ describe('Notice', () => {
 });
 
 describe('NoticeSmart', () => {
+  afterEach(cleanup);
+
+  shouldSupportClassName(NoticeSmart);
   shouldSupportRef(NoticeSmart);
 
-  test('should support theme props', async () => {
+  test('Should support theme props', async () => {
     const component = (
       <>
         <NoticeSmart>Text NoticeSmart</NoticeSmart>
@@ -70,6 +164,19 @@ describe('NoticeSmart', () => {
       </>
     );
 
+    expect(await snapshot(component)).toMatchImageSnapshot();
+  });
+
+  test('Should correctly render', async () => {
+    const component = (
+      <NoticeSmart
+        label={<div style={{ width: '16px', height: '16px', background: 'orange' }} />}
+        actions={<button>Wow, so cool!</button>}
+        closable
+      >
+        Look at this cool notice!
+      </NoticeSmart>
+    );
     expect(await snapshot(component)).toMatchImageSnapshot();
   });
 
