@@ -2,6 +2,8 @@ import { createTask } from '../task';
 import fse from 'fs-extra';
 import path from 'path';
 import { validateMailerEnv } from '@semcore/mailer';
+import { fileURLToPath } from 'url';
+const filename = fileURLToPath(import.meta.url);
 
 export const checkReleaseTask = createTask('RELEASE check', async (opt) => {
   if (!opt.checkRelease) {
@@ -14,7 +16,7 @@ export const checkReleaseTask = createTask('RELEASE check', async (opt) => {
     return opt;
   }
 
-  const releaseChangelogPath = path.resolve(__dirname, '../../../semcore/ui/CHANGELOG.md');
+  const releaseChangelogPath = path.resolve(filename, '../../../../semcore/ui/CHANGELOG.md');
   const releaseChangelog = fse.readFileSync(releaseChangelogPath, 'utf-8');
 
   if (releaseChangelog.includes('[VERSION]')) {
