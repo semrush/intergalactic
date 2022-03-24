@@ -30,7 +30,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Remove css specificity for props lineHeight/fontSize for `Text`.
+- Removed css specificity of props lineHeight/fontSize in `Text` component.
 
 ## [3.3.0] - 2022-01-18
 

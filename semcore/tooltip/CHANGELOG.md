@@ -24,7 +24,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-- Remove don't use dependency `@semcore/icon`.
+- Removed unused dependency `@semcore/icon`.
 
 ## [4.3.1] - 2021-8-26
 

@@ -37,15 +37,15 @@
 ### @semcore/slider
 
 - **BREAK** Remove props background/color/interaction, use theme instead.
-- **BREAK** Refactoring component to handle extreme values.
+- **BREAK** Refactored component to handle extreme values.
 
 ### @semcore/spin-container
 
-- **BREAK** Add new children component SpinContainer.Content when using advanced mode along with SpinContainer.Overlay.
+- **BREAK** Add new children components `SpinContainer.Content` when using advanced mode along with `SpinContainer.Overlay`.
 
 ### @semcore/switch
 
-- **Fixed** Remove react warning when not clearing timer.
+- **Fixed** Removed react warning about uncontrolled timer.
 
 ### @semcore/tab-line
 
@@ -65,7 +65,7 @@
 
 ### @semcore/typography
 
-- **Fixed** Remove css specificity for props lineHeight/fontSize for Text.
+- **Fixed** Removed css specificity of props lineHeight/fontSize in `Text` component
 
 ### @semcore/errors
 
@@ -73,12 +73,12 @@
 
 ### @semcore/icon
 
-- **Added** Added icon Hubspot.
-- **Changed** Changed svg for SortAsc, SortDesc.
+- **Added** Added `Hubspot` icon.
+- **Changed** Changed image `SortAsc` and `SortDesc` icons.
 
 ### @semcore/widget-empty
 
-- **Changed** Remove don't use dependency @semcore/link, @semcore/button.
+- **Changed** Removed unused dependencies `@semcore/link`, `@semcore/button`.
 
 ## [10.2.1] - 2022-02-10
 
@@ -196,7 +196,7 @@
 
 ### @semcore/errors
 
-- **Changed** Remove don't use dependency @semcore/icon.
+- **Changed** Removed unused dependencies @semcore/icon.
 
 ### @semcore/feature-popover
 
@@ -261,7 +261,7 @@
 
 ### @semcore/tooltip
 
-- **Changed** Remove don't use dependency @semcore/icon.
+- **Changed** Removed unused dependencies @semcore/icon.
 
 ### @semcore/typography
 
@@ -270,7 +270,7 @@
 
 ### @semcore/widget-empty
 
-- **Changed** Remove don't use dependency @semcore/icon.
+- **Changed** Removed unused dependencies @semcore/icon.
 
 ## [10.0.1] - 2021-12-24
 
