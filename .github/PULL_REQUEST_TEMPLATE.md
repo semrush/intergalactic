@@ -10,7 +10,7 @@
 - [ ] Complete unit testing (if applicable)
 - [ ] Complete screenshot testing (if applicable)
 - [ ] Complete UX review (if applicable)
-- [ ] Documentation guide updated (if any)
+- [ ] Documentation design guide updated (if any)
 - [ ] Documentation examples updated (if any)
 - [ ] Documentation API updated (if any)
 - [ ] Add link to design (if any)
@@ -26,4 +26,4 @@
 - [ ] Verify the unit tests are testing the code to perform the intended functionality
 - [ ] Verify the unit tests cover the positive and negative scenarios
 - [ ] Verify the screenshot tests are added and are they comprehensive
-- [ ] Verify documentation(guide/api/example) has been added/updated
+- [ ] Verify documentation (design/api/example) has been added/updated
