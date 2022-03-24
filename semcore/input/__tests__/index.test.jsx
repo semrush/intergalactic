@@ -1,83 +1,28 @@
 import React from 'react';
-import { testing } from '@semcore/jest-preset-ui';
+import { testing, snapshot, shared as testsShared } from '@semcore/jest-preset-ui';
 const { cleanup, fireEvent, render } = testing;
-
-import { shared as testsShared } from '@semcore/jest-preset-ui';
 const { shouldSupportClassName, shouldSupportRef } = testsShared;
-import { snapshot } from '@semcore/jest-preset-ui';
 import Input from '../src';
 
 describe('Input', () => {
   afterEach(cleanup);
 
   shouldSupportClassName(Input);
-  shouldSupportRef(Input.Value, Input);
-
-  test('Should support additional elements', () => {
-    const { queryAllByText } = render(
-      <Input>
-        <Input.Addon>addon</Input.Addon>
-      </Input>,
-    );
-    const before = queryAllByText('addon');
-    expect(before).toHaveLength(1);
-  });
-
-  // TODO: какая то проблема с тестами и 17 реактом( руками работает
-  xtest('Should focus input on additional element click.', () => {
-    const spy = jest.fn();
-    const { queryByText } = render(
-      <Input>
-        <Input.Addon>addon</Input.Addon>
-        <Input.Value onFocus={spy} />
-      </Input>,
-    );
-    expect(spy).toHaveBeenCalledTimes(0);
-    fireEvent.mouseDown(queryByText('addon'));
-    expect(spy).toHaveBeenCalledTimes(1);
-  });
-
-  test('Should not focus input on additional elements propagation stopped click.', () => {
-    const spy = jest.fn();
-    const { queryByText } = render(
-      <Input>
-        <Input.Addon onMouseDown={() => false}>addon</Input.Addon>
-        <Input.Value onFocus={spy} />
-      </Input>,
-    );
-    expect(spy).toHaveBeenCalledTimes(0);
-    fireEvent.mouseDown(queryByText('addon'));
-    expect(spy).toHaveBeenCalledTimes(0);
-  });
-
-  test('Should support Input.Addon', async () => {
-    const component = (
-      <Input>
-        <Input.Addon>1</Input.Addon>
-        <Input.Value />
-        <Input.Addon>2</Input.Addon>
-      </Input>
-    );
-    expect(await snapshot(component)).toMatchImageSnapshot();
-  });
-
-  test('Input.Addon should support interactive prop', async () => {
-    const component = (
-      <Input>
-        <Input.Value />
-        <Input.Addon interactive>1</Input.Addon>
-      </Input>
-    );
-    expect(await snapshot(component)).toMatchImageSnapshot();
-  });
+  shouldSupportRef(Input);
 
   test('Should support sizes', async () => {
+    const InputSize = (props) => (
+      <Input {...props}>
+        <Input.Addon>Addon</Input.Addon>
+        <Input.Value />
+      </Input>
+    );
     const component = (
       <snapshot.ProxyProps style={{ margin: 5, width: 200 }}>
-        <Input size="s" />
-        <Input size="m" />
-        <Input size="l" />
-        <Input size="xl" />
+        <InputSize size="s" />
+        <InputSize size="m" />
+        <InputSize size="l" />
+        <InputSize size="xl" />
       </snapshot.ProxyProps>
     );
     expect(await snapshot(component)).toMatchImageSnapshot();
@@ -94,14 +39,17 @@ describe('Input', () => {
     expect(await snapshot(component)).toMatchImageSnapshot();
   });
 
-  test('Should support placeholder color', async () => {
+  test('Should support correctly render', async () => {
     const component = (
       <snapshot.ProxyProps style={{ margin: 5, width: 200 }}>
         <Input>
           <Input.Value placeholder="Placeholder" />
         </Input>
         <Input>
-          <Input.Value disabled placeholder="Placeholder" />
+          <Input.Value readOnly />
+        </Input>
+        <Input>
+          <Input.Value disabled />
         </Input>
       </snapshot.ProxyProps>
     );
@@ -111,7 +59,7 @@ describe('Input', () => {
   test('Should support change value when rerender', () => {
     const { getByTestId, rerender } = render(
       <Input>
-        <Input.Value readOnly data-testid="value" value="" />
+        <Input.Value data-testid="value" value="" />
       </Input>,
     );
 
@@ -119,7 +67,7 @@ describe('Input', () => {
 
     rerender(
       <Input>
-        <Input.Value readOnly data-testid="value" value="test" />
+        <Input.Value data-testid="value" value="test" />
       </Input>,
     );
 
@@ -152,5 +100,58 @@ describe('Input', () => {
     );
 
     expect(input).toHaveProperty('value', 'test');
+  });
+});
+
+describe('Input.Addon', () => {
+  afterEach(cleanup);
+
+  shouldSupportClassName(Input.Value);
+  shouldSupportRef(Input.Value, Input);
+
+  test('Should focus input if additional element click', () => {
+    const spy = jest.fn();
+    const { queryByText } = render(
+      <Input>
+        <Input.Addon>addon</Input.Addon>
+        <Input.Value onFocus={spy} />
+      </Input>,
+    );
+    expect(spy).toHaveBeenCalledTimes(0);
+    fireEvent.mouseDown(queryByText('addon'));
+    expect(spy).toHaveBeenCalledTimes(1);
+  });
+
+  test(`Should't focus input if onMouseDown additional return false`, () => {
+    const spy = jest.fn();
+    const { queryByText } = render(
+      <Input>
+        <Input.Addon onMouseDown={() => false}>addon</Input.Addon>
+        <Input.Value onFocus={spy} />
+      </Input>,
+    );
+    fireEvent.mouseDown(queryByText('addon'));
+    expect(spy).toHaveBeenCalledTimes(0);
+  });
+
+  test('Should correctly render', async () => {
+    const component = (
+      <snapshot.ProxyProps style={{ margin: 5, width: 200 }}>
+        <Input>
+          <Input.Addon>1</Input.Addon>
+          <Input.Value />
+          <Input.Addon>2</Input.Addon>
+        </Input>
+        <Input>
+          <Input.Addon interactive>1</Input.Addon>
+          <Input.Value />
+        </Input>
+        <Input>
+          <Input.Addon disabled>1</Input.Addon>
+          <Input.Value />
+        </Input>
+      </snapshot.ProxyProps>
+    );
+    expect(await snapshot(component)).toMatchImageSnapshot();
   });
 });
