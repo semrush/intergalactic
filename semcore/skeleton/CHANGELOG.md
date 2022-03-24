@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.3.0] - unreleased
+
+### Added
+
+- Added skeleton for Radial Tree chart.
+
 ## [3.2.1] - 2022-03-14
 
 ### Changed

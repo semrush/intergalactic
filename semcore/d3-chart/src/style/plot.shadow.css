@@ -1,0 +1,6 @@
+@import '@semcore/utils/style/var.css';
+@import '@semcore/d3-chart/src/style/var.css';
+
+SPlot {
+  overflow: hidden;
+}

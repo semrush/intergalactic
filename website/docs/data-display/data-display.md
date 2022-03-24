@@ -23,6 +23,7 @@ title: Charts
 @page donut-chart
 @page bubble-chart
 @page histogram-chart
+@page radial-tree-chart
 
 <!-- @page stacked-histogram -->
 
