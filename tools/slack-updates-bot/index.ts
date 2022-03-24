@@ -1,9 +1,25 @@
 import axios from 'axios';
 import { makeMessageBody, makeMessageTitle } from './makeMessage';
-import { collectComponentChangelogs } from '@semcore/changelog-handler';
+import { Changelog, collectComponentChangelogs } from '@semcore/changelog-handler';
 import dayjs from 'dayjs';
 import isBetween from 'dayjs/plugin/isBetween.js';
 dayjs.extend(isBetween);
+
+const filterByDate = (changelogs: Changelog[], startDate: string, endDate: string) =>
+  changelogs.filter(
+    (changelog) =>
+      dayjs(changelog.date).isValid() &&
+      dayjs(changelog.date).isBetween(startDate, endDate, 'd', '[)'),
+  );
+const filterAutomaticChanges = (changelogs: Changelog[]) =>
+  changelogs
+    .map(({ changes, ...changelog }) => ({
+      ...changelog,
+      changes: changes.filter(
+        (change) => !change.description.includes('due to children dependencies update'),
+      ),
+    }))
+    .filter((changelog) => changelog.changes.length > 0);
 
 export const sendUiKitUpdates = async ({
   startDate,
@@ -17,16 +33,10 @@ export const sendUiKitUpdates = async ({
   dryRun: boolean;
 }) => {
   const packages = await collectComponentChangelogs();
-  const changelogs = packages
-    .map(({ changelogs }) => changelogs)
-    .flat()
-    .filter(
-      (changelog) =>
-        dayjs(changelog.date).isValid() &&
-        dayjs(changelog.date).isBetween(startDate, endDate, 'd', '[)'),
-    );
+  const changelogs = packages.map(({ changelogs }) => changelogs).flat();
+  const filteredChangelogs = filterAutomaticChanges(filterByDate(changelogs, startDate, endDate));
   const title = makeMessageTitle(startDate, endDate);
-  const body = makeMessageBody(changelogs);
+  const body = makeMessageBody(filteredChangelogs);
 
   return await sendMessage({ endpoints, title, body, dryRun });
 };
