@@ -24,7 +24,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Remove react warning when not clearing timer.
+- Removed react warning about uncontrolled timer.
 
 ## [3.3.2] - 2021-11-08
 

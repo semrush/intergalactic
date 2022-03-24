@@ -19,7 +19,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### BREAK
 
 - Remove props `background/color/interaction`, use theme instead.
-- Refactoring component to handle extreme values.
+- Refactored component to handle extreme values.
 
 ## [1.0.4] - 2021-11-10
 

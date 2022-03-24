@@ -18,13 +18,13 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-- Remove don't use dependency `@semcore/link`, `@semcore/button`.
+- Removed unused dependencies `@semcore/link`, `@semcore/button`.
 
 ## [2.6.3] - 2022-01-18
 
 ### Changed
 
-- Remove don't use dependency `@semcore/icon`.
+- Removed unused dependencies `@semcore/icon`.
 
 ## [2.6.2] - 2021-8-26
 
