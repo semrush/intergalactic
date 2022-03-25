@@ -6,10 +6,10 @@ const Example = () => {
   return (
     <InlineInput>
       <InlineInput.Addon tag={UserM} />
-      <InlineInput.Outline>
+      <InlineInput.Underline>
         <InlineInput.Addon>user name:</InlineInput.Addon>
         <InlineInput.Value />
-      </InlineInput.Outline>
+      </InlineInput.Underline>
       <InlineInput.ConfirmIcon />
       <InlineInput.CancelIcon />
     </InlineInput>

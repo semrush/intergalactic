@@ -19,17 +19,21 @@ class Animation extends Component {
   };
 
   static getDerivedStateFromProps(props, state) {
-    if (props.visible) return { render: true };
+    if (props.visible || props.preserveNode) {
+      return { render: true };
+    }
     return state;
   }
 
   state = {
-    render: this.props.visible,
+    render: this.props.visible || this.props.preserveNode,
   };
 
   onAnimationEnd = (e) => {
     e.stopPropagation();
-    if (!this.asProps.visible) this.setState({ render: false });
+    if (!this.asProps.visible && !this.props.preserveNode) {
+      this.setState({ render: false });
+    }
   };
 
   render() {
