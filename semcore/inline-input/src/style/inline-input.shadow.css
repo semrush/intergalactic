@@ -20,19 +20,19 @@ SControls {
   flex-shrink: 0;
 }
 
-SConfirmIcon {
+SConfirmControl {
   color: var(--green-300);
   cursor: pointer;
 }
-SConfirmIcon:hover {
+SConfirmControl:hover {
   color: var(--green-400);
 }
 
-SCancelIcon {
+SCancelControl {
   color: var(--gray-300);
   cursor: pointer;
 }
-SCancelIcon:hover {
+SCancelControl:hover {
   color: var(--gray-400);
 }
 
@@ -41,7 +41,7 @@ SValue {
   min-width: 0;
   width: 100%;
   height: 100%;
-  padding: 0;
+  padding: 0 4px;
   border: none;
   box-sizing: border-box;
   color: var(--gray20);
@@ -60,7 +60,7 @@ SValue {
     color: var(--gray70);
   }
 
-  &:read-only ~ SOutline {
+  &:read-only ~ SUnderline {
     /* background: var(--gray96); */
   }
 
@@ -71,14 +71,14 @@ SValue {
   &[disabled] {
     user-select: none;
 
-    & ~ SOutline {
+    & ~ SUnderline {
       cursor: default;
       pointer-events: none;
     }
   }
 }
 
-SOutline {
+SUnderline {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -97,7 +97,7 @@ SAddon {
   flex: 0 0 auto;
   height: 100%;
   color: var(--gray-300);
-  padding: 0 2px;
+  padding: 0 4px;
 }
 
 SAddon[disabled] {
@@ -106,64 +106,28 @@ SAddon[disabled] {
   pointer-events: none;
 }
 
-SInlineInput[size='s'] {
-  max-height: 18px;
-}
-
-SValue[size='s'],
-SAddon[size='s'] {
-  padding: 0 4px;
-}
-
-SInlineInput[size='m'] {
-  max-height: 26px;
-}
-
-SValue[size='m'],
-SAddon[size='m'] {
-  padding: 0 4px;
-}
-
-SInlineInput[size='l'] {
-  max-height: 32px;
-}
-
-SValue[size='l'],
-SAddon[size='l'] {
-  padding: 0 8px;
-}
-
-SInlineInput[size='xl'] {
-  max-height: 42px;
-}
-
-SValue[size='xl'],
-SAddon[size='xl'] {
-  padding: 0 12px;
-}
-
 SInlineInput[focused] {
   z-index: 1;
 }
 
-SInlineInput[focused] SOutline {
+SInlineInput[focused] SUnderline {
   border-color: var(--blue-400);
   box-shadow: var(--keyborad-focus);
 }
 
-SInlineInput[state='valid'] SOutline {
+SInlineInput[state='valid'] SUnderline {
   border-color: var(--green-200);
 }
-SInlineInput[state='valid'][focused] SOutline {
+SInlineInput[state='valid'][focused] SUnderline {
   border-color: var(--green-400);
-  box-shadow: var(--keyborad-focus-valid);
+  box-shadow: var(--keyboard-focus-valid);
 }
-SInlineInput[state='invalid'] SOutline {
+SInlineInput[state='invalid'] SUnderline {
   border-color: var(--red-200);
 }
-SInlineInput[state='invalid'][focused] SOutline {
+SInlineInput[state='invalid'][focused] SUnderline {
   border-color: var(--red-400);
-  box-shadow: var(--keyborad-focus-invalid);
+  box-shadow: var(--keyboard-focus-invalid);
 }
 SInlineInput[state='disabled'],
 SInlineInput[loading] {
@@ -173,11 +137,6 @@ SInlineInput[loading] {
 CloseM[disabled] {
   cursor: default;
   opacity: var(--disabled-opacity);
-}
-
-SConfirmButton,
-SCancelButton {
-  margin-left: 4px;
 }
 
 .controls-icon {

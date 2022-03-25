@@ -31,39 +31,25 @@ const makePlayground = () => (
     <br />
     <InlineInput state="valid" inputId="valid" />
     <br />
-    <label htmlFor="valid-with-buttons">Valid with buttons</label>
-    <br />
-    <InlineInput state="valid" inputId="valid-with-buttons">
-      <InlineInput.Outline />
-      <InlineInput.ControlButtons />
-    </InlineInput>
-    <br />
     <label htmlFor="with-icons">With icons</label>
     <br />
     <InlineInput inputId="with-icons">
       <InlineInput.Addon tag={UserM} />
-      <InlineInput.Outline>
+      <InlineInput.Underline>
         <InlineInput.Addon tag={SerpM} />
         <InlineInput.Value />
-      </InlineInput.Outline>
-      <InlineInput.ControlIcons />
-    </InlineInput>
-    <br />
-    <label htmlFor="loading-with-buttons">Loading with buttons</label>
-    <br />
-    <InlineInput loading={true} inputId="loading-with-buttons">
-      <InlineInput.Outline />
-      <InlineInput.ControlButtons />
+      </InlineInput.Underline>
+      <InlineInput.Controls />
     </InlineInput>
     <br />
     <label htmlFor="decomposed">Decomposed</label>
     <br />
     <InlineInput inputId="decomposed">
-      <InlineInput.Outline>
+      <InlineInput.Underline>
         <InlineInput.Value />
-      </InlineInput.Outline>
-      <InlineInput.ConfirmButton />
-      <InlineInput.CancelButton />
+      </InlineInput.Underline>
+      <InlineInput.ConfirmControl />
+      <InlineInput.CancelControl />
     </InlineInput>
     <br />
     <label htmlFor="primitive">Primitve</label>
@@ -73,10 +59,10 @@ const makePlayground = () => (
     <label htmlFor="const-placeholder">Constant placeholder</label>
     <br />
     <InlineInput inputId="const-placeholder">
-      <InlineInput.Outline>
+      <InlineInput.Underline>
         <InlineInput.Addon>I am a don't care, I punk:</InlineInput.Addon>
         <InlineInput.Value />
-      </InlineInput.Outline>
+      </InlineInput.Underline>
     </InlineInput>
     <br />
     <label htmlFor="size-s">size=s</label>
@@ -94,36 +80,6 @@ const makePlayground = () => (
     <label htmlFor="size-xl">size=xl</label>
     <br />
     <InlineInput inputId="size-xl" size="xl" />
-
-    <br />
-    <label htmlFor="buttons_size-s">buttons size=s</label>
-    <br />
-    <InlineInput inputId="buttons_size-s" size="s">
-      <InlineInput.Outline />
-      <InlineInput.ControlButtons />
-    </InlineInput>
-    <br />
-    <label htmlFor="buttons_size-m">buttons size=m</label>
-    <br />
-    <InlineInput inputId="buttons_size-m" size="m">
-      <InlineInput.Outline />
-      <InlineInput.ControlButtons />
-    </InlineInput>
-    <br />
-    <label htmlFor="buttons_size-l">buttons size=l</label>
-    <br />
-    <InlineInput inputId="buttons_size-l" size="l">
-      <InlineInput.Outline />
-      <InlineInput.ControlButtons />
-    </InlineInput>
-    <br />
-    <label htmlFor="buttons_size-xl">buttons size=xl</label>
-    <br />
-    <InlineInput inputId="buttons_size-xl" size="xl">
-      <InlineInput.Outline />
-      <InlineInput.ControlButtons />
-    </InlineInput>
-    <br />
   </>
 );
 
@@ -152,11 +108,11 @@ describe('InlineInput', () => {
           cancelText="DRAIN THE SWAMP!"
           tooltipsProps={{ visible: true, disablePortal: true }}
         >
-          <InlineInput.Outline>
+          <InlineInput.Underline>
             <InlineInput.Value />
-          </InlineInput.Outline>
-          <InlineInput.ConfirmButton />
-          <InlineInput.CancelIcon />
+          </InlineInput.Underline>
+          <InlineInput.ConfirmControl />
+          <InlineInput.CancelControl />
         </InlineInput>
         <br />
         <br />

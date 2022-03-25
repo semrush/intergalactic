@@ -1,9 +1,16 @@
 import React from 'react';
 import createComponent, { Component, sstyled, Root } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
-import useDeferredState from 'use-deferred-state';
+import { FadeInOut } from '@semcore/animation';
 
 import style from './style/inline-edit.shadow.css';
+
+const isElementInside = (element: Element, possibleParent: Element) => {
+  while (element.parentElement !== possibleParent && element !== document.body) {
+    element = element.parentElement;
+  }
+  return element.parentElement === possibleParent;
+};
 
 type AsProps = {
   defaultEditable?: boolean;
@@ -27,12 +34,18 @@ class InlineEdit extends Component<AsProps> {
     };
   }
 
+  constructor(props) {
+    super(props);
+    this.handleOnEdit = this.handleOnEdit.bind(this);
+  }
+
   getViewProps() {
     const { editable } = this.asProps;
 
     return {
       editable,
-      onEdit: () => this.handlers.editable(true),
+      onEdit: this.handleOnEdit,
+      inlineEditContainerRef: this.containerRef,
     };
   }
 
@@ -43,6 +56,12 @@ class InlineEdit extends Component<AsProps> {
       editable,
     };
   }
+
+  handleOnEdit() {
+    this.handlers.editable(true);
+  }
+
+  containerRef = React.createRef<HTMLElement>();
 
   render() {
     const SInlineEdit = Root;
@@ -55,7 +74,7 @@ class InlineEdit extends Component<AsProps> {
     }
 
     return sstyled(styles)(
-      <SInlineEdit render={Box}>
+      <SInlineEdit render={Box} ref={this.containerRef}>
         <Children />
       </SInlineEdit>,
     );
@@ -64,23 +83,37 @@ class InlineEdit extends Component<AsProps> {
 
 const Edit: React.FC<AsProps> = (props) => {
   const visible = props.editable;
-  const render = useDeferredState(visible, [true], 100);
-
-  if (!render) return null;
   const SEdit = Root;
+
   return sstyled(props.styles)(
-    <SEdit aria-hidden={!visible} exiting={!visible} render={Box} />,
+    <SEdit
+      render={FadeInOut}
+      visible={visible}
+      duration={200}
+      aria-hidden={!visible}
+      exiting={!visible}
+    />,
   ) as React.ReactElement;
 };
-const View: React.FC<AsProps> = (props) => {
+// eslint-disable-next-line ssr-friendly/no-dom-globals-in-module-scope
+const View: React.FC<AsProps & { inlineEditContainerRef: React.RefObject<HTMLElement> }> = (
+  props,
+) => {
   const visible = !props.editable;
   const SView = Root;
 
   const containerRef = React.useRef<HTMLElement>(null);
   const prevVisibleRef = React.useRef(visible);
   React.useEffect(() => {
-    if (visible && prevVisibleRef.current !== visible) {
-      containerRef.current?.focus();
+    const visibleChanged = prevVisibleRef.current !== visible;
+    if (visible && visibleChanged) {
+      const focusWithinContainer = isElementInside(
+        document.activeElement,
+        props.inlineEditContainerRef.current,
+      );
+      if (focusWithinContainer) {
+        // containerRef.current?.focus();
+      }
     }
     prevVisibleRef.current = visible;
   }, [visible]);
@@ -98,12 +131,13 @@ const View: React.FC<AsProps> = (props) => {
 
   return sstyled(props.styles)(
     <SView
-      render={Box}
+      render={FadeInOut}
+      visible={visible}
+      preserveNode
       tabIndex={0}
       aria-hidden={!visible}
       role="button"
       ref={containerRef}
-      hiddenView={!visible}
       onClick={visible ? props.onEdit : undefined}
       onKeyDown={handlekeyDown}
     />,

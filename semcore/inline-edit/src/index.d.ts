@@ -9,8 +9,19 @@ type CProps<Props, Ctx = {}, UCProps = {}> = Props & {
 /* utils type */
 
 export interface IInlineEditProps extends IBoxProps {
-  defaultEditable?: boolean;
+  /**
+   * Determines which children should be displayed
+   */
   editable?: boolean;
+  /**
+   * Default value if `editable` property is not provided
+   * @default false
+   */
+  defaultEditable?: boolean;
+  /**
+   * Fired when user clicks on view children, expects `editable` property be switched to `true` value.
+   * Note: there not pair callback that expects switch to edit mode, you should be handled by yourself
+   */
   onEdit?: () => void;
 }
 

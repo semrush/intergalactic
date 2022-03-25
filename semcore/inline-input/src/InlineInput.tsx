@@ -3,7 +3,6 @@ import createComponent, { Component, sstyled, Root } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
 import autoFocusEnhance from '@semcore/utils/lib/enhances/autoFocusEnhance';
 import Tooltip, { ITooltipProps } from '@semcore/tooltip';
-import Button from '@semcore/button';
 import style from './style/inline-input.shadow.css';
 import CheckM from '@semcore/icon/Check/m';
 import CloseM from '@semcore/icon/Close/m';
@@ -23,11 +22,16 @@ const isFocusOutsideOf = (element: HTMLElement) => {
 };
 
 type AsProps = {
-  size?: 's' | 'm' | 'l' | 'xl';
   state?: 'normal' | 'valid' | 'invalid' | 'disabled';
   loading?: boolean;
-  onConfirm?: (value: string) => void;
-  onCancel?: (prevValue: string) => void;
+  onConfirm?: (
+    value: string,
+    event: React.MouseEvent | React.FocusEvent | React.KeyboardEvent,
+  ) => void;
+  onCancel?: (
+    prevValue: string,
+    event: React.MouseEvent | React.FocusEvent | React.KeyboardEvent,
+  ) => void;
   value?: string;
   defaultValue?: string;
   confirmText?: string;
@@ -41,13 +45,13 @@ type AsProps = {
   onFocus?: (event: React.FocusEvent) => void;
   onBlurBehavior?: 'cancel' | 'confirm';
   styles?: React.CSSProperties;
+  Children: React.FC;
 };
 
 class InlineInputBase extends Component<AsProps> {
   static displayName = 'InlineInput';
 
   static defaultProps = {
-    size: 's',
     state: 'normal',
     loading: false,
     defaultValue: '',
@@ -79,6 +83,8 @@ class InlineInputBase extends Component<AsProps> {
 
   constructor(props) {
     super(props);
+    this.handleConfirm = this.handleConfirm.bind(this);
+    this.handleCancel = this.handleCancel.bind(this);
     this.handleFocus = this.handleFocus.bind(this);
     this.handleBlur = this.handleBlur.bind(this);
     this.handleKeyDown = this.handleKeyDown.bind(this);
@@ -90,10 +96,7 @@ class InlineInputBase extends Component<AsProps> {
 
   getContextProps() {
     const {
-      size,
       loading,
-      onConfirm,
-      onCancel,
       value,
       defaultValue,
       state,
@@ -103,16 +106,9 @@ class InlineInputBase extends Component<AsProps> {
     } = this.asProps;
 
     return {
-      size,
       loading,
-      onConfirm: (text: string) => {
-        onConfirm?.(text);
-        return false;
-      },
-      onCancel: (prevText: string) => {
-        onCancel?.(prevText);
-        return false;
-      },
+      onConfirm: this.handleConfirm,
+      onCancel: this.handleCancel,
       value,
       defaultValue,
       state,
@@ -125,32 +121,22 @@ class InlineInputBase extends Component<AsProps> {
   geAddonProps() {
     return this.getContextProps();
   }
-  getConfirmIconProps() {
+  getConfirmControlProps() {
     return this.getContextProps();
   }
-  getCancelIconProps() {
+  getCancelControlProps() {
     return this.getContextProps();
   }
-  getControlIconsProps() {
-    return this.getContextProps();
-  }
-  getConfirmButtonProps() {
-    return this.getContextProps();
-  }
-  getCancelButtonProps() {
-    return this.getContextProps();
-  }
-  getControlButtonsProps() {
+  getControlsProps() {
     return this.getContextProps();
   }
 
   getValueProps() {
-    const { size, autoFocus, value, inputId, defaultValue, onChange, state, loading, placeholder } =
+    const { autoFocus, value, inputId, defaultValue, onChange, state, loading, placeholder } =
       this.asProps;
 
     return {
       ref: this.inputRef,
-      size,
       autoFocus,
       value,
       defaultValue,
@@ -160,6 +146,17 @@ class InlineInputBase extends Component<AsProps> {
       placeholder,
       id: inputId,
     };
+  }
+
+  handleConfirm(text: string, event: React.MouseEvent | React.FocusEvent | React.KeyboardEvent) {
+    const { onConfirm } = this.asProps;
+    onConfirm?.(text, event);
+    return false;
+  }
+  handleCancel(prevText: string, event: React.MouseEvent | React.FocusEvent | React.KeyboardEvent) {
+    const { onCancel } = this.asProps;
+    onCancel?.(prevText, event);
+    return false;
   }
 
   handleFocus(event: React.FocusEvent) {
@@ -175,8 +172,8 @@ class InlineInputBase extends Component<AsProps> {
     if (onBlurBehavior) {
       setTimeout(() => {
         if (isFocusOutsideOf(this.rootRef.current)) {
-          if (onBlurBehavior === 'confirm') onConfirm?.(value);
-          if (onBlurBehavior === 'cancel') onCancel?.(this.initValue);
+          if (onBlurBehavior === 'confirm') onConfirm?.(value, event);
+          if (onBlurBehavior === 'cancel') onCancel?.(this.initValue, event);
         }
       }, 0);
     }
@@ -186,8 +183,8 @@ class InlineInputBase extends Component<AsProps> {
   }
   handleKeyDown(event: React.KeyboardEvent) {
     const { onConfirm, onCancel, value } = this.asProps;
-    if (event.code === 'Enter') onConfirm?.(value);
-    if (event.code === 'Escape') onCancel?.(this.initValue);
+    if (event.code === 'Enter') onConfirm?.(value, event);
+    if (event.code === 'Escape') onCancel?.(this.initValue, event);
   }
 
   render() {
@@ -212,12 +209,12 @@ class InlineInputBase extends Component<AsProps> {
   }
 }
 
-const Outline: React.FC<AsProps> = (props) => {
-  const SOutline = Root;
+const Underline: React.FC<AsProps> = (props) => {
+  const SUnderline = Root;
   const { styles, children, ...restProps } = props;
 
   return sstyled(styles)(
-    <SOutline render={Box}>{children || <InlineInput.Value {...restProps} />}</SOutline>,
+    <SUnderline render={Box}>{children || <InlineInput.Value {...restProps} />}</SUnderline>,
   ) as React.ReactElement;
 };
 
@@ -240,14 +237,12 @@ class Value extends Component<AsProps> {
     const SValue = Root;
 
     return sstyled(this.asProps.styles)(
-      <>
-        <SValue
-          render={Box}
-          tag="input"
-          type="text"
-          disabled={this.asProps.state === 'disabled' || this.asProps.loading}
-        />
-      </>,
+      <SValue
+        render={Box}
+        tag="input"
+        type="text"
+        disabled={this.asProps.state === 'disabled' || this.asProps.loading}
+      />,
     );
   }
 }
@@ -257,19 +252,23 @@ const Addon: React.FC<AsProps> = (props) => {
   return sstyled(props.styles)(<SAddon render={Box} />) as React.ReactElement;
 };
 
-const ConfirmIcon: React.FC<AsProps> = (props) => {
-  const SConfirmIcon = Root;
+const ConfirmControl: React.FC<AsProps> = (props) => {
+  const SConfirmControl = Root;
+  const { Children, children: hasChildren } = props;
 
-  const handleConfirm = React.useCallback(() => {
-    props.onConfirm?.(props.value);
-  }, [props.onConfirm, props.value]);
+  const handleConfirm = React.useCallback(
+    (event: React.MouseEvent | React.KeyboardEvent) => {
+      props.onConfirm?.(props.value, event);
+    },
+    [props.onConfirm, props.value],
+  );
   const handleKeydown = React.useCallback(
     (event: React.KeyboardEvent) => {
       if (props.loading) return;
       if (event.code === 'Enter' || event.code === 'Space') {
         event.preventDefault();
         event.stopPropagation();
-        handleConfirm();
+        handleConfirm(event);
       }
     },
     [props.loading, handleConfirm],
@@ -277,42 +276,50 @@ const ConfirmIcon: React.FC<AsProps> = (props) => {
 
   if (props.loading) {
     return sstyled(props.styles)(
-      <SConfirmIcon render={Box} className="controls-icon">
-        <Spin size="xxs" className="spin" />
-      </SConfirmIcon>,
+      <SConfirmControl render={Box} className="controls-icon">
+        {hasChildren ? <Children /> : <Spin size="xxs" className="spin" />}
+      </SConfirmControl>,
     ) as React.ReactElement;
   }
 
   return sstyled(props.styles)(
-    <SConfirmIcon render={Box} onKeyDown={handleKeydown}>
-      <Tooltip {...props.tooltipsProps}>
-        <Tooltip.Trigger className="controls-icon">
-          <CheckM
-            tabIndex={0}
-            aria-label={`${props.confirmText} ${props.value ?? ''}`}
-            role="button"
-            onClick={handleConfirm}
-          />
-        </Tooltip.Trigger>
-        <Tooltip.Popper p={2}>{props.confirmText}</Tooltip.Popper>
-      </Tooltip>
-    </SConfirmIcon>,
+    <SConfirmControl render={Box} onKeyDown={handleKeydown}>
+      {hasChildren ? (
+        <Children />
+      ) : (
+        <Tooltip {...props.tooltipsProps}>
+          <Tooltip.Trigger className="controls-icon">
+            <CheckM
+              tabIndex={0}
+              aria-label={`${props.confirmText} ${props.value ?? ''}`}
+              role="button"
+              onClick={handleConfirm}
+            />
+          </Tooltip.Trigger>
+          <Tooltip.Popper p={2}>{props.confirmText}</Tooltip.Popper>
+        </Tooltip>
+      )}
+    </SConfirmControl>,
   ) as React.ReactElement;
 };
-const CancelIcon: React.FC<AsProps> = (props) => {
-  const SCancelIcon = Root;
+const CancelControl: React.FC<AsProps> = (props) => {
+  const SCancelControl = Root;
+  const { Children, children: hasChildren } = props;
   const initValue = React.useRef(props.value ?? props.defaultValue);
-  const handleCancel = React.useCallback(() => {
-    if (props.loading || !props.onCancel) return;
-    props.onCancel?.(initValue.current);
-  }, [props.loading, props.onCancel]);
+  const handleCancel = React.useCallback(
+    (event: React.MouseEvent | React.KeyboardEvent) => {
+      if (props.loading || !props.onCancel) return;
+      props.onCancel?.(initValue.current, event);
+    },
+    [props.loading, props.onCancel],
+  );
   const handleKeydown = React.useCallback(
     (event: React.KeyboardEvent) => {
       if (props.loading) return;
       if (event.code === 'Enter' || event.code === 'Space') {
         event.preventDefault();
         event.stopPropagation();
-        handleCancel();
+        handleCancel(event);
       }
     },
     [props.loading, handleCancel],
@@ -320,97 +327,45 @@ const CancelIcon: React.FC<AsProps> = (props) => {
 
   if (props.loading) {
     return sstyled(props.styles)(
-      <SCancelIcon render={Box} className="controls-icon">
-        <CloseM disabled={true} />
-      </SCancelIcon>,
+      <SCancelControl render={Box} className="controls-icon">
+        {hasChildren ? <Children /> : <CloseM disabled={true} />}
+      </SCancelControl>,
     ) as React.ReactElement;
   }
 
   return sstyled(props.styles)(
-    <SCancelIcon render={Box} onKeyDown={handleKeydown}>
-      <Tooltip {...props.tooltipsProps}>
-        <Tooltip.Trigger className="controls-icon">
-          <CloseM tabIndex={0} aria-label={props.cancelText} role="button" onClick={handleCancel} />
-        </Tooltip.Trigger>
-        <Tooltip.Popper p={2}>{props.cancelText}</Tooltip.Popper>
-      </Tooltip>
-    </SCancelIcon>,
+    <SCancelControl render={Box} onKeyDown={handleKeydown}>
+      {hasChildren ? (
+        <Children />
+      ) : (
+        <Tooltip {...props.tooltipsProps}>
+          <Tooltip.Trigger className="controls-icon">
+            <CloseM
+              tabIndex={0}
+              aria-label={props.cancelText}
+              role="button"
+              onClick={handleCancel}
+            />
+          </Tooltip.Trigger>
+          <Tooltip.Popper p={2}>{props.cancelText}</Tooltip.Popper>
+        </Tooltip>
+      )}
+    </SCancelControl>,
   ) as React.ReactElement;
 };
 
-const ControlIcons: React.FC<AsProps> = (props) => {
+const Controls: React.FC<AsProps> = (props) => {
   const SControls = Root;
   return sstyled(props.styles)(
     <SControls render={Box}>
-      <InlineInput.ConfirmIcon
+      <InlineInput.ConfirmControl
         tooltipsProps={props.tooltipsProps}
         confirmText={props.confirmText}
         onConfirm={props.onConfirm}
       />
-      <InlineInput.CancelIcon
+      <InlineInput.CancelControl
         tooltipsProps={props.tooltipsProps}
         cancelText={props.cancelText}
-        onCancel={props.onCancel}
-      />
-    </SControls>,
-  ) as React.ReactElement;
-};
-
-const ConfirmButton: React.FC<AsProps> = (props) => {
-  const SConfirmButton = Root;
-
-  const handleConfirm = React.useCallback(() => {
-    props.onConfirm?.(props.value);
-  }, [props.onConfirm, props.value]);
-
-  return sstyled(props.styles)(
-    <SConfirmButton render={Box}>
-      <Button
-        use="primary"
-        aria-label={`${props.confirmText} ${props.value ?? ''}`}
-        loading={props.loading}
-        disabled={props.state === 'disabled'}
-        onClick={handleConfirm}
-        size={props.size}
-      >
-        {props.confirmText}
-      </Button>
-    </SConfirmButton>,
-  ) as React.ReactElement;
-};
-const CancelButton: React.FC<AsProps> = (props) => {
-  const SCancelButton = Root;
-  const initValue = React.useRef(props.value);
-  const handleCancel = React.useCallback(() => {
-    if (props.loading || !props.onCancel) return;
-    props.onCancel?.(initValue.current);
-  }, [props.loading, props.onCancel]);
-
-  return sstyled(props.styles)(
-    <SCancelButton render={Box}>
-      <Button
-        disabled={props.loading || props.state === 'disabled'}
-        onClick={handleCancel}
-        aria-label={props.cancelText}
-        size={props.size}
-      >
-        {props.cancelText}
-      </Button>
-    </SCancelButton>,
-  ) as React.ReactElement;
-};
-const ControlButtons: React.FC<AsProps> = (props) => {
-  const SControls = Root;
-  return sstyled(props.styles)(
-    <SControls render={Box}>
-      <InlineInput.ConfirmButton
-        confirmText={props.confirmText}
-        size={props.size}
-        onConfirm={props.onConfirm}
-      />
-      <InlineInput.CancelButton
-        cancelText={props.cancelText}
-        size={props.size}
         onCancel={props.onCancel}
       />
     </SControls>,
@@ -419,24 +374,21 @@ const ControlButtons: React.FC<AsProps> = (props) => {
 
 const DefaultChildren: React.FC<AsProps> = (props) => {
   return (
-    <InlineInput.Outline>
+    <InlineInput.Underline>
       <InlineInput.Value {...props} />
-      <InlineInput.ControlIcons />
-    </InlineInput.Outline>
+      <InlineInput.Controls />
+    </InlineInput.Underline>
   ) as React.ReactElement;
 };
 
 /** `createComponent` currently exposes unrelated junk instead of typings, that the reason of to any cast  */
 const InlineInput = createComponent(InlineInputBase, {
   Addon,
-  Outline,
+  Underline,
   Value,
-  ConfirmIcon,
-  CancelIcon,
-  ControlIcons,
-  ConfirmButton,
-  CancelButton,
-  ControlButtons,
+  ConfirmControl,
+  CancelControl,
+  Controls,
 }) as any;
 
 export default InlineInput;
