@@ -99,9 +99,7 @@ class Textarea extends Component {
     const STextarea = Root;
     const { styles } = this.asProps;
 
-    return sstyled(styles)(
-      <STextarea render={Box} tag="textarea" ref={this.setRef} onChange={this.calculateRows} />,
-    );
+    return sstyled(styles)(<STextarea render={Box} tag="textarea" ref={this.setRef} />);
   }
 }
 
