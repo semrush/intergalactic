@@ -14,6 +14,8 @@ export interface IAnimationProps extends IBoxProps {
   delay?: number | [number, number];
   /** Animation titles */
   keyframes?: [string, string];
+  /** If it set to `true`, animated node is persisted in dom even if `visible=false`   */
+  preserveNode?: boolean;
 }
 
 export interface ICollapseProps extends IAnimationProps {}

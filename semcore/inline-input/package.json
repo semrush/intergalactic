@@ -13,7 +13,6 @@
     "test": "jest"
   },
   "dependencies": {
-    "@semcore/button": "^3.3.6",
     "@semcore/flex-box": "^4.5.0",
     "@semcore/icon": "^2.19.3",
     "@semcore/spin": "^3.4.0",

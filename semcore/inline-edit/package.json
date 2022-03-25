@@ -15,7 +15,7 @@
   "dependencies": {
     "@semcore/flex-box": "^4",
     "@semcore/utils": "^3.15",
-    "use-deferred-state": "^1.0.2"
+    "@semcore/animation": "^1.5.0"
   },
   "devDependencies": {
     "@semcore/jest-preset-ui": "1.0.0"

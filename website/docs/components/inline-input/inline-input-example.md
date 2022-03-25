@@ -22,12 +22,6 @@ By specifying component children and using `<InlineInput.Addon />` you can add i
 
 @example decomposed
 
-@## Buttons
-
-Instead of icons you can use buttons. Also you can mix them by using, e.g. `<><InlineInput.ConfirmButton /><InlineInput.CancelIcon /></>` or vice versa.
-
-@example buttons
-
 @## Different states
 
 @example states
