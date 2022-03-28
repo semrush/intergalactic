@@ -56,8 +56,8 @@ class InputTags extends Component<IInputTagsProps> {
 
   setFocusInput = (e) => {
     const inputRef = this._input.current;
-    const caretPosition = inputRef.value.length;
     if (inputRef && e.target !== inputRef) {
+      const caretPosition = inputRef.value.length;
       e.preventDefault();
       inputRef.focus();
       inputRef.setSelectionRange(caretPosition, caretPosition);
