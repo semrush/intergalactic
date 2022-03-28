@@ -104,6 +104,7 @@ export const releaseChangelogParser = (
         const label = (item.text[0] as any as { text: [ChangelogChangeLabel] }).text[0];
         const descriptionFormatted = restText as Token[];
         const description = toMarkdown(descriptionFormatted).trim();
+        const isAutomatic = description.includes('update due to children dependencies update');
 
         if (changelogs[changelogs.length - 1]?.version !== traversingVersion) {
           changelogs.push({
@@ -119,6 +120,7 @@ export const releaseChangelogParser = (
           label,
           description,
           descriptionFormatted,
+          isAutomatic,
         });
       }
     } else {

@@ -29,21 +29,29 @@ export const patchReleaseChangelog = async (previousVersionId: string) => {
     releaseChangelog.changelogs[previousVersionIndex - 1]?.date || dayjs().format('YYYY-MM-DD');
 
   const componentChanges = componentChangelogs.map(({ changelogs }) =>
-    changelogs.filter(
-      ({ date }) =>
-        dayjs(date).isValid() && dayjs(date).isBetween(previousVersionDate, versionDate, 'd', '[)'),
-    ),
+    changelogs
+      .filter(
+        ({ date }) =>
+          dayjs(date).isValid() &&
+          dayjs(date).isBetween(previousVersionDate, versionDate, 'd', '[)'),
+      )
+      .map((changelog) => ({
+        ...changelog,
+        changes: changelog.changes.filter((change) => !change.isAutomatic),
+      }))
+      .filter(({ changes }) => changes.length > 0),
   );
 
   const componentChangedVersionIncrements = componentChanges
     .map((changelogs) =>
-      changelogs.map(({ version }, index) =>
-        changelogs[index + 1]?.version
+      changelogs.map(({ version }, index) => {
+        return changelogs[index + 1]?.version
           ? (semver.diff(changelogs[index + 1]?.version, version) as semver.ReleaseType)
-          : 'patch',
-      ),
+          : 'patch';
+      }),
     )
     .flat();
+
   const releaseIncrement = componentChangedVersionIncrements.reduce(
     (max, current) =>
       orderedVersionIncrement.indexOf(current) < orderedVersionIncrement.indexOf(max)

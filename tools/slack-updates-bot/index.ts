@@ -15,9 +15,7 @@ const filterAutomaticChanges = (changelogs: Changelog[]) =>
   changelogs
     .map(({ changes, ...changelog }) => ({
       ...changelog,
-      changes: changes.filter(
-        (change) => !change.description.includes('due to children dependencies update'),
-      ),
+      changes: changes.filter((change) => !change.isAutomatic),
     }))
     .filter((changelog) => changelog.changes.length > 0);
 
