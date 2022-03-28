@@ -7,6 +7,7 @@ export type ChangelogChange = {
   label: ChangelogChangeLabel;
   description: string;
   descriptionFormatted: (string | Token)[];
+  isAutomatic: boolean;
 };
 
 export type Changelog = {

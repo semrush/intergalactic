@@ -75,15 +75,14 @@ export const componentChangelogParser = (
         const label = traversingChangeLabel as ChangelogChangeLabel;
         const descriptionFormatted = (Array.isArray(listItem) ? listItem[0] : listItem).text;
         const description = toMarkdown(descriptionFormatted);
-        if (!description) {
-          throw descriptionFormatted;
-        }
+        const isAutomatic = description.includes('update due to children dependencies update');
 
         changelogs[changelogs.length - 1].changes.push({
           component,
           label,
           description,
           descriptionFormatted,
+          isAutomatic,
         });
       }
     } else {
