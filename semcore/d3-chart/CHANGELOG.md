@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [1.7.0] - 2022-03-28
+
+### Fixed
+
+- Left and bottom plot titles now do not overlap axis ticks.
+
 ## [1.6.9] - 2022-03-14
 
 ### Changed

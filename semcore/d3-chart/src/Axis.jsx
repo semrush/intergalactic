@@ -147,6 +147,7 @@ const MAP_POSITION_GRID = {
   },
 };
 
+const TICKS_OVERLAP_SHIFT = 15;
 const MAP_POSITION_TITlE = {
   top: ([xScale, yScale]) => {
     const xRange = xScale.range();
@@ -161,7 +162,7 @@ const MAP_POSITION_TITlE = {
     const yRange = yScale.range();
     return {
       x: xRange[1] / 2,
-      y: yRange[0],
+      y: yRange[0] + TICKS_OVERLAP_SHIFT,
     };
   },
   right: ([xScale, yScale]) => {
@@ -176,7 +177,7 @@ const MAP_POSITION_TITlE = {
     const xRange = xScale.range();
     const yRange = yScale.range();
     return {
-      x: xRange[0],
+      x: xRange[0] / 2,
       y: (yRange[0] + yRange[1]) / 2,
     };
   },
