@@ -78,6 +78,7 @@ jobs:
           echo "firstCommitHash=$(git log origin/master..origin/${{ env.release_branch_name }} --pretty=format:"%H" | tail -1)" >> $GITHUB_ENV
           echo "secondCommitHash=$(git log origin/master..origin/${{ env.release_branch_name }} --pretty=format:"%H" | tail -2 | head -1)" >> $GITHUB_ENV
           echo "lastCommitHash=$(git log origin/master..origin/${{ env.release_branch_name }} --pretty=format:"%H" | head -1)" >> $GITHUB_ENV
+          echo "temporaryBranch=tmp-$(openssl rand -hex 20)" >> $GITHUB_ENV
         if: env.release_branch_already_exists == 'true'
       - name: commit changelog change as a first commit in the release branch
         run: |
@@ -95,11 +96,15 @@ jobs:
           git add semcore/ui/package.json
           git commit -m "[chore] Automatically updated @semcore/ui changelog"
           [[ "${{ env.firstCommitHash }}" -eq "${{ env.lastCommitHash }}" ]] || git cherry-pick "${{ env.secondCommitHash }}^..${{ env.lastCommitHash }}" --strategy-option theirs  --allow-empty
+          git branch "${{ env.temporaryBranch }}"
         if: env.release_branch_already_exists == 'true'
       - name: push updated changelog
         run: |
           git push --set-upstream origin "${{ env.release_branch_name }}" --force
+          git branch -D "${{ env.temporaryBranch }}" || echo "No temporary branch"
       - name: create pull request
         run: |
+          git checkout "${{ env.release_branch_name }}"
+          git pull --rebase
           gh pr create --title "${{ env.release_pr_name }}" --body "This is automatically created pull request for the next `@semcore/ui` package release.\n\nBot pulls changes from `master` branch and regenerates `./semcore/ui/CHANGELOG.md` file every morning and when `/update` command dispatched in pull request comment.\n\nTo edit changelog or release version in your own way, checkout branch, commit changes and push it to pull request.\n\nWhen release is ready, dispatch it with `/release` comment." --draft --base master
         if: env.release_branch_already_exists != 'true'
