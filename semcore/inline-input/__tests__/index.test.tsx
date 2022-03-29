@@ -1,7 +1,6 @@
 import React from 'react';
 import { testing, shared as testsShared, snapshot } from '@semcore/jest-preset-ui';
 import InlineInput from '../src/InlineInput';
-import UserM from '@semcore/icon/User/m';
 import SerpM from '@semcore/icon/Serp/m';
 const { cleanup, fireEvent, render, axe } = testing;
 
@@ -34,20 +33,15 @@ const makePlayground = () => (
     <label htmlFor="with-icons">With icons</label>
     <br />
     <InlineInput inputId="with-icons">
-      <InlineInput.Addon tag={UserM} />
-      <InlineInput.Underline>
-        <InlineInput.Addon tag={SerpM} />
-        <InlineInput.Value />
-      </InlineInput.Underline>
+      <InlineInput.Addon tag={SerpM} />
+      <InlineInput.Value />
       <InlineInput.Controls />
     </InlineInput>
     <br />
     <label htmlFor="decomposed">Decomposed</label>
     <br />
     <InlineInput inputId="decomposed">
-      <InlineInput.Underline>
-        <InlineInput.Value />
-      </InlineInput.Underline>
+      <InlineInput.Value />
       <InlineInput.ConfirmControl />
       <InlineInput.CancelControl />
     </InlineInput>
@@ -59,27 +53,9 @@ const makePlayground = () => (
     <label htmlFor="const-placeholder">Constant placeholder</label>
     <br />
     <InlineInput inputId="const-placeholder">
-      <InlineInput.Underline>
-        <InlineInput.Addon>I am a don't care, I punk:</InlineInput.Addon>
-        <InlineInput.Value />
-      </InlineInput.Underline>
+      <InlineInput.Addon>I am a don't care, I punk:</InlineInput.Addon>
+      <InlineInput.Value />
     </InlineInput>
-    <br />
-    <label htmlFor="size-s">size=s</label>
-    <br />
-    <InlineInput inputId="size-s" size="s" />
-    <br />
-    <label htmlFor="size-m">size=m</label>
-    <br />
-    <InlineInput inputId="size-m" size="m" />
-    <br />
-    <label htmlFor="size-l">size=l</label>
-    <br />
-    <InlineInput inputId="size-l" size="l" />
-    <br />
-    <label htmlFor="size-xl">size=xl</label>
-    <br />
-    <InlineInput inputId="size-xl" size="xl" />
   </>
 );
 
@@ -108,9 +84,7 @@ describe('InlineInput', () => {
           cancelText="DRAIN THE SWAMP!"
           tooltipsProps={{ visible: true, disablePortal: true }}
         >
-          <InlineInput.Underline>
-            <InlineInput.Value />
-          </InlineInput.Underline>
+          <InlineInput.Value />
           <InlineInput.ConfirmControl />
           <InlineInput.CancelControl />
         </InlineInput>
