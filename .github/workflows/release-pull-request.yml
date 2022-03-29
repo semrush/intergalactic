@@ -96,7 +96,7 @@ jobs:
           git add semcore/ui/package.json
           git commit -m "[chore] Automatically updated @semcore/ui changelog"
           [[ "${{ env.firstCommitHash }}" -eq "${{ env.lastCommitHash }}" ]] || git cherry-pick "${{ env.secondCommitHash }}^..${{ env.lastCommitHash }}" --strategy-option theirs  --allow-empty
-          git branch "${{ env.temporaryBranch }}"
+          git checkout -b "${{ env.temporaryBranch }}"
         if: env.release_branch_already_exists == 'true'
       - name: push updated changelog
         run: |
