@@ -42,7 +42,7 @@ export const makeVersionPatches = (packages: Package[]) => {
     if (!lastChangelog) continue;
 
     if (packageFile.lastPublishedVersion === null) {
-      throw new Error(`${packageFile.name} not found in npm registry, skipping`);
+      throw new Error(`${packageFile.name} not found in npm registry`);
     }
 
     const hasNewerVersion =

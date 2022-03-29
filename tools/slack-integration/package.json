@@ -1,9 +1,12 @@
 {
   "name": "@semcore/slack-integration",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "main": "index.ts",
   "license": "MIT",
   "private": false,
+  "scripts": {
+    "test": "echo \"no tests\""
+  },
   "bin": {
     "slack-updates-broadcast": "bin/broadcast-updates.ts"
   },
