@@ -9,7 +9,7 @@
   "dependencies": {
     "@semcore/mailer": "0.0.1",
     "@semcore/changelog-handler": "0.0.1",
-    "@semcore/slack-integration": "0.0.1",
+    "@semcore/slack-integration": "0.0.3",
     "axios": "^0.21.2",
     "chalk": "^2.4.2",
     "changelog-parser": "^2.6.0",
