@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server",
-    "build": "webpack"
+    "build": "echo \"No build\""
   },
   "author": "",
   "license": "ISC",
