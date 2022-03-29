@@ -140,6 +140,11 @@ const group = {
     disabled: true,
     type: 'charts',
   },
+  radialTree: {
+    title: 'Radial Tree chart',
+    route: '/data-display/radial-tree-chart',
+    type: 'charts',
+  },
 };
 
 const Cards = styled.div`

@@ -59,7 +59,7 @@ Show the correlation between two or three sets of values.
 
 _For example: Show how website traffic are impacted by customer age._
 
-@import chart-group {"group": ["venn", "scatterplot", "heatmap", "kagi", "alluvial"]}
+@import chart-group {"group": ["venn", "scatterplot", "radialTree", "heatmap", "kagi", "alluvial"]}
 
 @## Deviation
 
