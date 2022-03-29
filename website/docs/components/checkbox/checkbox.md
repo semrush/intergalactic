@@ -20,11 +20,11 @@ The exception to the image above is multi-selection (for example, in filters).
 
 ### Sizes
 
-**Our interface uses 3 control sizes — XL, L, and M**. The text label is placed to the right of the checkbox.
+**Our interface uses 2 control sizes — L and M**. The text label is placed to the right of the checkbox.
 
-|    XL (20px \* 20px)     |    L (16px \* 16px)     |    M (12px \* 12px)     |
-| :----------------------: | :---------------------: | :---------------------: |
-| ![xl](static/size-l.png) | ![l](static/size-m.png) | ![m](static/size-s.png) |
+|    L (20px \* 20px)     |    M (16px \* 16px)     |
+| :---------------------: | :---------------------: |
+| ![l](static/size-l.png) | ![m](static/size-m.png) |
 
 ### Margins
 
@@ -32,19 +32,18 @@ Make the margins between the checkboxes so the options will be easy to read.
 
 The margins may vary depending on the usage context. Make margins multiples of 4. Default recommended margins are shown below.
 
-|    XL (20px \* 20px)     |    L (16px \* 16px)     |    M (12px \* 12px)     |
-| :----------------------: | :---------------------: | :---------------------: |
-| ![xl](static/vert-l.png) | ![l](static/vert-m.png) | ![m](static/vert-s.png) |
+|    L (20px \* 20px)     |    M (16px \* 16px)     |
+| :---------------------: | :---------------------: |
+| ![l](static/vert-l.png) | ![m](static/vert-m.png) |
 
 @## Checkbox with a paragraph
 
 All checkbox sizes can be used with the corresponding text paragraphs.
 
-| Checkbox size     | Paragraph size        | Appearance example                       |
-| ----------------- | --------------------- | ---------------------------------------- |
-| XL (20px \* 20px) | XL, `font-size: 16px` | ![xl paragraph](static/paragraph-xl.png) |
-| L (16px \* 16px)  | L, `font-size: 14px`  | ![l paragraph](static/paragraph-l.png)   |
-| M (12px \* 12px)  | M, `font-size: 12px`  | ![m paragraph](static/paragraph-m.png)   |
+| Checkbox size    | Paragraph size       | Appearance example                     |
+| ---------------- | -------------------- | -------------------------------------- |
+| L (20px \* 20px) | L, `font-size: 16px` | ![l paragraph](static/paragraph-l.png) |
+| M (16px \* 16px) | M, `font-size: 14px` | ![m paragraph](static/paragraph-m.png) |
 
 @## Checkbox with Info icon
 
@@ -52,7 +51,7 @@ You can place the `Info` icon next to the checkbox label. By hovering over the i
 
 ![checkbox with info icon](static/info-icon.png)
 
-> 💡 The `Info` icon should have a margin of 4px on the left.
+> 💡 The `Info` icon should have a margin of 8px on the left.
 
 ![checkbox with info icon](static/info-icon-margin.png)
 
@@ -70,15 +69,15 @@ The checkbox label may contain a [link](/components/link).
 
 ### States
 
-| State                 | Appearance                                               |
-| --------------------- | -------------------------------------------------------- |
-| unchecked             | ![unchecked](static/state-unchecked.png)                 |
-| checked               | ![checked](static/state-checked.png)                     |
-| indeterminate         | ![indeterminate](static/state-indetermenate.png)         |
-| indeterminate invalid | ![indeterminate](static/state-indetermenate-invalid.png) |
-| checked disabled      | ![disabled-checked](static/state-checked-disabled.png)   |
-| disabled              | ![disabled](static/state-disabled.png)                   |
-| invalid               | ![invalid](static/state-invalid.png)                     |
+| State                 | Appearance                                                       |
+| --------------------- | ---------------------------------------------------------------- |
+| unchecked             | ![unchecked](static/state-unchecked.png)                         |
+| checked               | ![checked](static/state-checked.png)                             |
+| indeterminate         | ![indeterminate](static/state-indetermenate.png)                 |
+| indeterminate invalid | ![invalid-indeterminate](static/state-indetermenate-invalid.png) |
+| checked invalid       | ![invalid-checked](static/state-checked-invalid.png)             |
+| disabled              | ![disabled](static/state-disabled.png)                           |
+| invalid               | ![invalid](static/state-invalid.png)                             |
 
 ### Behavior
 

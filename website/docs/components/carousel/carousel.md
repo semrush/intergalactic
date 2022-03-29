@@ -39,15 +39,16 @@ Use the carousel as an additional highlight of important website features and in
 
 ### Margins
 
-![carousel margins](static/carousel-margins.png)
+![carousel margins](static/carousel-margins-1.png)
+![carousel margins](static/carousel-margins-2.png)
 
 ### Default styles
 
-|                         | Default styles                                  |
-| ----------------------- | ----------------------------------------------- |
-| Navigation buttons      | L size icons, `color="stone"`                   |
-| Slides number indicator | Indicator size — `12px * 12px`, `color="stone"` |
-| Content slide           | `border-radius: 6px;`                           |
+|                         | Default styles                                      |
+| ----------------------- | --------------------------------------------------- |
+| Navigation buttons      | `icon size: L;` `color: --gray-300;`                |
+| Slides number indicator | `indicator size: 12px x 12px;` `color: --gray-100;` |
+| Content slide           | `border-radius: 6px;`                               |
 
 > Click-zone of controls on the right/left is stretched to the height of the content.
 
@@ -65,11 +66,11 @@ This example has the same styles as the example on the light background.
 
 Navigation buttons have the following states.
 
-| State    | Arrearance example                      | Styles                                                    |
-| -------- | --------------------------------------- | --------------------------------------------------------- |
-| default  | ![default button](static/default.png)   | `color="stone"`                                           |
-| hover    | ![button with hover](static/hover.png)  | `color="stone"` and `interactive` (12% darker color icon) |
-| disabled | ![disabled button](static/disabled.png) | opacity: 30%                                              |
+| State    | Arrearance example                      | Styles                      |
+| -------- | --------------------------------------- | --------------------------- |
+| default  | ![default button](static/default.png)   | `--gray-300`                |
+| hover    | ![button with hover](static/hover.png)  | `--gray-400`                |
+| disabled | ![disabled button](static/disabled.png) | `--gray-300` `opacity: 30%` |
 
 > Navigation buttons are center aligned.
 
@@ -87,11 +88,11 @@ Number of slides indicator have the following states.
 
 ![slides number indicators states](static/default-indicators.png)
 
-| State    | Styles                        |
-| -------- | ----------------------------- |
-| default  | `color="stone"`, opacity: 30% |
-| hover    | `color="stone"`, opacity: 80% |
-| disabled | `color="stone"`               |
+| State    | Styles       |
+| -------- | ------------ |
+| default  | `--gray-100` |
+| hover    | `--gray-300` |
+| disabled | `--gray-400` |
 
 @## Animation
 
@@ -102,8 +103,8 @@ Default animation properties:
 
 @## Keyboard navigation
 
-- `Key →` goes to the next slide.
-- `Key ←` goes to the previous slide.
+- `Key →` goes to the next slide
+- `Key ←` goes to the previous slide
 - `Tab` moves focus on the controls
 
 > On mobile devices, it should be possible to change slides using swipe.
