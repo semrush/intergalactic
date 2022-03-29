@@ -4,6 +4,7 @@ export type ChangelogChangeLabel = 'Added' | 'Changed' | 'Fixed' | 'BREAK';
 
 export type ChangelogChange = {
   component: string;
+  version: string;
   label: ChangelogChangeLabel;
   description: string;
   descriptionFormatted: (string | Token)[];

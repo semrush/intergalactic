@@ -132,6 +132,8 @@ export const makeVersionPatches = (packages: Package[]) => {
           changes: [
             {
               component: packageFile.name,
+              version,
+              isAutomatic: true,
               label: 'Changed',
               description: description,
               descriptionFormatted: [description],

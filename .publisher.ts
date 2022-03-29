@@ -9,7 +9,8 @@ import { checkDependenciesTask } from './tools/super-publisher/tasks/check-deps'
 import { checkGitTask } from './tools/super-publisher/tasks/check-git';
 import { checkReleaseTask } from './tools/super-publisher/tasks/check-release';
 import { npmPublishTask } from './tools/super-publisher/tasks/npm-publish';
-import { mailerTask } from './tools/super-publisher/tasks/mailer';
+import { slackBroadcastTask } from './tools/super-publisher/tasks/slack-broadcast';
+import { mailBroadcastTask } from './tools/super-publisher/tasks/mail-broadcast';
 
 export const publisherConfigFactory = () => [
   checkGitTask,
@@ -23,5 +24,6 @@ export const publisherConfigFactory = () => [
   gitTask,
   uploadStaticTask,
   npmPublishTask,
-  mailerTask,
+  slackBroadcastTask,
+  mailBroadcastTask,
 ];

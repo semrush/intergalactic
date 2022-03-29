@@ -1,14 +1,15 @@
 {
-  "name": "@semcore/slack-updates-bot",
-  "version": "2.0.0",
-  "main": "index.js",
+  "name": "@semcore/slack-integration",
+  "version": "0.0.1",
+  "main": "index.ts",
   "license": "MIT",
-  "private": true,
+  "private": false,
   "bin": {
-    "slack-updates-bot": "bin/index.ts"
+    "slack-updates-broadcast": "bin/broadcast-updates.ts"
   },
   "dependencies": {
     "@semcore/changelog-handler": "^0.0.1",
+    "dotenv": "^16.0.0",
     "axios": "^0.21.2",
     "dayjs": "^1.8.17",
     "tsm": "^2.2.1"
