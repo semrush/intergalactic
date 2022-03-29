@@ -119,15 +119,18 @@ Components that can call a picker:
 
 ### Behavior
 
-- When you hover over an unselected marker, an outline appears around it with the same color as the selected marker, and the cursor changes to pointer. When hovering over unselected markers, the selected marker still has the outline.
+- When you hover over an unselected marker, an outline appears around it with color `--gray-200`, and the cursor changes to pointer. When hovering over unselected markers, the selected marker still has the outline.
 
 ![qwdqwd](static/cp-plaint+dd-trigger.png)
 
-- Standard marker color in the trigger if a color is selected in the range from 1 to 8: `$asphalt: #45575c`.
+- Standard marker color in the trigger if a color is selected in the range from 1 to 8: `--gray-200`.
+
   - If you select a color in the dropdown from the range of colors from 9 to 20, the color of the marker in the trigger is equal to the selected color. In the trigger, the marker has a stroke with the same color.
     ![Color plain dropdown select event](static/cp-plain-select-e.png)
   - If a dropdown color is selected from the range of colors from 1 to 8, the marker of the selected color is duplicated in both the dropdown and plain component.
+
     ![Selected color in the plain picker](static/cp-plain-select-states.png)
+
 - If the `Plain` type is used with a select, the title is not used inside the dropdown with the palette. However, the `Plain` component itself may have an optional title. If a title is used, we recommend using the name: "Select a color".
 - Dropdown closes when you click outside of its area, or when you click the trigger again.
 
