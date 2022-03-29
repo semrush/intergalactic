@@ -100,6 +100,7 @@ export const releaseChangelogParser = (
           );
         }
 
+        const version = traversingVersion;
         const component = traversingComponent;
         const label = (item.text[0] as any as { text: [ChangelogChangeLabel] }).text[0];
         const descriptionFormatted = restText as Token[];
@@ -117,6 +118,7 @@ export const releaseChangelogParser = (
 
         changelogs[changelogs.length - 1].changes.push({
           component,
+          version,
           label,
           description,
           descriptionFormatted,

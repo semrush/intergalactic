@@ -44,6 +44,8 @@ jobs:
       - name: publish semcore/ui to npm
         run: |
           echo pass
+          # dev url for now
+          # echo "\nSLACK_API_ENDPOINTS=${{ secrets.SLACK_WEBHOOK_URLS_DEV }}" >> .env
           # yarn pub --package ui --no-check-changelog
       - name: merge pull request
         run: |

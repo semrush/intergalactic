@@ -8,7 +8,11 @@ import { getReleaseChangelog } from '@semcore/changelog-handler';
 
 dotenv.config();
 
-export const mailerTask = createTask('Send mail', async (opt) => {
+export const mailBroadcastTask = createTask('Send mail', async (opt) => {
+  opt.log('Email sending is not available for now due to provider integration issues');
+  opt.skip();
+  return opt;
+
   if (opt.package !== 'ui') {
     opt.skip();
     return opt;
