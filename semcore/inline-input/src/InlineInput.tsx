@@ -189,6 +189,7 @@ class InlineInputBase extends Component<AsProps> {
 
   render() {
     const SInlineInput = Root;
+    const SUnderline = 'div';
     const { Children: providedChildren, children: hasChildren, styles, loading } = this.asProps;
     const Children = hasChildren ? providedChildren : DefaultChildren;
     const { focused } = this.state;
@@ -203,20 +204,13 @@ class InlineInputBase extends Component<AsProps> {
         focused={focused}
         loading={loading}
       >
-        <Children />
+        <SUnderline>
+          <Children />
+        </SUnderline>
       </SInlineInput>,
     );
   }
 }
-
-const Underline: React.FC<AsProps> = (props) => {
-  const SUnderline = Root;
-  const { styles, children, ...restProps } = props;
-
-  return sstyled(styles)(
-    <SUnderline render={Box}>{children || <InlineInput.Value {...restProps} />}</SUnderline>,
-  ) as React.ReactElement;
-};
 
 class Value extends Component<AsProps> {
   static defaultProps = {
@@ -374,17 +368,16 @@ const Controls: React.FC<AsProps> = (props) => {
 
 const DefaultChildren: React.FC<AsProps> = (props) => {
   return (
-    <InlineInput.Underline>
+    <>
       <InlineInput.Value {...props} />
       <InlineInput.Controls />
-    </InlineInput.Underline>
+    </>
   ) as React.ReactElement;
 };
 
 /** `createComponent` currently exposes unrelated junk instead of typings, that the reason of to any cast  */
 const InlineInput = createComponent(InlineInputBase, {
   Addon,
-  Underline,
   Value,
   ConfirmControl,
   CancelControl,
