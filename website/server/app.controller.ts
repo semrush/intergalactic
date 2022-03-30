@@ -1,4 +1,4 @@
-import { Controller, Post, Get, Next, Req, Res, HostParam } from '@nestjs/common';
+import { Controller, Post, Get, Next, Req, Res } from '@nestjs/common';
 import { NextFunction, Request, Response } from 'express';
 import mailchimp from '@mailchimp/mailchimp_marketing';
 
@@ -12,13 +12,13 @@ export class AppController {
   }
 
   @Get('*')
-  site(@Res() res: Response, @Next() next: NextFunction, @Req() req: Request, @HostParam() host) {
-    // console.log(host);
+  site(@Res() res: Response, @Next() next: NextFunction, @Req() req: Request) {
+    // console.log(req.headers.host);
     if (req.path.includes('graphql')) return next();
 
     return res.render('index', {
       ROOT_PATH: process.env.ROOT_PATH || '/',
-      host: JSON.stringify(host),
+      host: req.headers.host,
       path: req.path,
     });
   }
