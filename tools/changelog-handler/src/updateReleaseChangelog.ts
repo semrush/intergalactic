@@ -10,12 +10,17 @@ const filename = fileURLToPath(import.meta.url);
 const releasePackageDir = resolvePath(filename, '../../../../semcore/ui/');
 
 export const updateReleaseChangelog = async () => {
-  const releasePackageFile = await fs.readJson(resolvePath(releasePackageDir, 'package.json'));
+  const releasePackageFilePath = resolvePath(releasePackageDir, 'package.json');
+  let releasePackageFile = await fs.readJson(releasePackageFilePath);
   const currentVersion = releasePackageFile.version;
-  const patchedReleaseChangelog = await patchReleaseChangelog(currentVersion);
+  const changelogPatch = await patchReleaseChangelog(currentVersion);
+  const { changelogs: patchedReleaseChangelog, version: newVersion } = changelogPatch;
   const changelogMarkdownAst = serializeReleaseChangelog(patchedReleaseChangelog);
   const changelogText = toMarkdown(changelogMarkdownAst);
   const changelogFilePath = resolvePath(releasePackageDir, 'CHANGELOG.md');
   await fs.writeFile(changelogFilePath, changelogText);
   await execa('prettier', ['--write', changelogFilePath]);
+  releasePackageFile = await fs.readJson(releasePackageFilePath);
+  releasePackageFile.version = newVersion;
+  await fs.writeJson(releasePackageFilePath, releasePackageFile);
 };

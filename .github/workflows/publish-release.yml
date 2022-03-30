@@ -49,7 +49,7 @@ jobs:
           SLACK_API_ENDPOINTS: ${{ secrets.SLACK_WEBHOOK_URL_DEV }}
           SCREENSHOT_URL: ${{ secrets.SCREENSHOT_URL }}
         run: |
-          yarn pub --package ui  --dry-run
+          yarn pub --package ui --release current --dry-run
       - name: merge pull request
         run: |
           echo "Like merged pr"
