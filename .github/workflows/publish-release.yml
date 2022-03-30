@@ -43,8 +43,8 @@ jobs:
           yarn workspace @semcore/ui generate
       - name: publish semcore/ui to npm
         run: |
-          echo "\nSLACK_API_ENDPOINTS=${{ secrets.SLACK_WEBHOOK_URL_DEV }}" >> .env
-          yarn pub --package ui --no-check-changelog --dry-run
+          echo "\nSLACK_API_ENDPOINTS=slack-test" >> .env
+          yarn pub --package ui --dry-run
       - name: merge pull request
         run: |
           echo "Like merged pr"
