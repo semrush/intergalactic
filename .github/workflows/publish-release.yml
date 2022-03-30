@@ -52,6 +52,5 @@ jobs:
           yarn pub --package ui --release current
       - name: merge pull request
         run: |
-          echo "Like merged pr"
-          # gh pr edit --ready
-          # gh pr merge
+          gh pr edit --ready
+          gh pr merge
