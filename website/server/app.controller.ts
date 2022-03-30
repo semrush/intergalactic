@@ -7,17 +7,19 @@ require('dotenv').config();
 @Controller()
 export class AppController {
   @Post('/callback')
-  callbackMonitoring(@Req() req: Request, @HostParam() host) {
+  callbackMonitoring(@Req() req: Request) {
     return JSON.stringify(host);
   }
 
   @Get('*')
-  site(@Res() res: Response, @Next() next: NextFunction, @Req() req: Request) {
+  site(@Res() res: Response, @Next() next: NextFunction, @Req() req: Request, @HostParam() host) {
     // console.log(host);
     if (req.path.includes('graphql')) return next();
 
     return res.render('index', {
-      ROOT_PATH: process.env.ROOT_PATH,
+      ROOT_PATH: process.env.ROOT_PATH || '/',
+      host: JSON.stringify(host),
+      path: req.path,
     });
   }
 }
