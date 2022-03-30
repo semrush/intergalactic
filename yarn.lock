@@ -20470,11 +20470,6 @@ use-callback-ref@^1.2.5:
   resolved "https://registry.yarnpkg.com/use-callback-ref/-/use-callback-ref-1.2.5.tgz"
   integrity sha512-gN3vgMISAgacF7sqsLPByqoePooY3n2emTH59Ur5d/M8eg4WTWu1xp8i8DHjohftIyEx0S08RiYxbffr4j8Peg==
 
-use-deferred-state@^1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/use-deferred-state/-/use-deferred-state-1.0.2.tgz#ac1a48f26aa5ffdaaccb8c9bcc5cd2ae75385576"
-  integrity sha512-D+SoKBfx70vGuOf2tK0FIoZ5ILYWHuh5xY8I78yklRKyCbgIMtOcxXbQB4xc3rrcgbGKFsHsOhUsgSQvaBOKdA==
-
 use-sidecar@^1.0.5:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/use-sidecar/-/use-sidecar-1.0.5.tgz"
