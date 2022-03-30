@@ -52,5 +52,5 @@ jobs:
           yarn pub --package ui --release current
       - name: merge pull request
         run: |
-          gh pr edit --ready
-          gh pr merge
+          gh pr edit ready
+          gh pr merge --rebase
