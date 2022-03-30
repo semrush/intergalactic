@@ -46,12 +46,11 @@ jobs:
           echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" >> ".npmrc"
       - name: publish semcore/ui to npm
         env:
-          SLACK_API_ENDPOINTS: ${{ secrets.SLACK_WEBHOOK_URL_DEV }}
+          SLACK_API_ENDPOINTS: ${{ secrets.SLACK_WEBHOOK_URLS }}
           SCREENSHOT_URL: ${{ secrets.SCREENSHOT_URL }}
         run: |
-          yarn pub --package ui --release current --dry-run
+          yarn pub --package ui --release current
       - name: merge pull request
         run: |
-          echo "Like merged pr"
-          # gh pr edit --ready
-          # gh pr merge
+          gh pr edit --ready
+          gh pr merge
