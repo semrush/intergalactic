@@ -41,9 +41,13 @@ jobs:
       - name: build @semcore/ui
         run: |
           yarn workspace @semcore/ui generate
+      - name: NPM setup
+        run: |
+          echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" >> ".npmrc"
       - name: publish semcore/ui to npm
         env:
           SLACK_API_ENDPOINTS: ${{ secrets.SLACK_WEBHOOK_URL_DEV }}
+          SCREENSHOT_URL: ${{ secrets.SCREENSHOT_URL }}
         run: |
           yarn pub --package ui  --dry-run
       - name: merge pull request
