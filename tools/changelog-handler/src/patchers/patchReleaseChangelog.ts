@@ -77,5 +77,5 @@ export const patchReleaseChangelog = async (previousVersionId: string) => {
     releaseChangelog.changelogs.splice(previousVersionIndex, 0, versionChangelog);
   }
 
-  return releaseChangelog.changelogs;
+  return { changelogs: releaseChangelog.changelogs, version: guessedVersion };
 };
