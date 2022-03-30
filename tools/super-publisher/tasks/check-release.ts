@@ -25,7 +25,9 @@ export const checkReleaseTask = createTask('RELEASE check', async (opt) => {
   }
 
   validateSlackIntegrationEnv();
-  validateMailerEnv();
+
+  // mailer is unavailable now
+  // validateMailerEnv();
 
   return opt;
 });
