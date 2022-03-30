@@ -32,6 +32,8 @@ export const sendMessage = async ({
       );
 
       if (dryRun) {
+        // eslint-disable-next-line no-console
+        console.log(`Sending is canceled due to dry run`);
         return null;
       }
 

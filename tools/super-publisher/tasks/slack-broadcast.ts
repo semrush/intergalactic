@@ -9,7 +9,7 @@ import {
 
 dotenv.config();
 
-export const slackBroadcastTask = createTask('Send mail', async (opt) => {
+export const slackBroadcastTask = createTask('Send slack broadcast', async (opt) => {
   if (opt.package !== 'ui') {
     opt.skip();
     return opt;
