@@ -22,5 +22,5 @@ export const updateReleaseChangelog = async () => {
   await execa('prettier', ['--write', changelogFilePath]);
   releasePackageFile = await fs.readJson(releasePackageFilePath);
   releasePackageFile.version = newVersion;
-  await fs.writeJson(releasePackageFilePath, releasePackageFile);
+  await fs.writeJson(releasePackageFilePath, releasePackageFile, { spaces: 2 });
 };

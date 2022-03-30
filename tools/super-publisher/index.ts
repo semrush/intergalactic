@@ -12,9 +12,12 @@ export const runPublisherTasks = async function (options: PublisherOptions) {
   const { publisherConfigFactory } = await import(path.join(process.cwd(), '.publisher'));
   const tasks = await publisherConfigFactory(options);
 
-  return tasks.reduce(async (prev, next) => {
+  return tasks.reduce(async (prev, next, index) => {
     const nextPlugin = await next;
     const prevResult = await prev;
+    if (!prevResult) {
+      throw new Error(`Got empty (${prevResult}) result from task #${index + 1}`);
+    }
     return nextPlugin(prevResult, options);
   }, Promise.resolve(options));
 };
