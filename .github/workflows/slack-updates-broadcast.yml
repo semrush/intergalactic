@@ -37,6 +37,7 @@ jobs:
             */*/node_modules
           key: modules-${{ runner.os }}-${{ hashFiles('yarn.lock') }}
       - name: Notification
+        env:
+          SLACK_API_ENDPOINTS: ${{ secrets.SLACK_WEBHOOK_URLS }}
         run: |
-          echo "\nSLACK_API_ENDPOINTS=${{ secrets.SLACK_WEBHOOK_URLS }}" >> .env
           yarn slack-updates-broadcast
