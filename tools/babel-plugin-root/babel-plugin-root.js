@@ -34,11 +34,10 @@ function RootPlugin({ types: t }, opts) {
             const propsIdent = refP.scope.generateUidIdentifierBasedOnNode('props');
             refP.scope.push({
               id: propsIdent,
-              init: t.ConditionalExpression(
-                t.ThisExpression(),
-                t.MemberExpression(t.ThisExpression(), t.Identifier(options.fieldAssign)),
-                t.Identifier('arguments[0]'),
-              ),
+              init:
+                refP.scope.block.type === 'ClassMethod'
+                  ? t.MemberExpression(t.ThisExpression(), t.Identifier(options.fieldAssign))
+                  : t.Identifier('arguments[0]'),
             });
 
             refP.scope.path.traverse({
