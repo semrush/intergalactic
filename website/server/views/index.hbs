@@ -19,7 +19,10 @@
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id='root'></div>
-    <script src='/main.js'></script>
+    <script>
+      window.ROOT_PATH = '{{ROOT_PATH}}';
+    </script>
+    <script src='{{ROOT_PATH}}main.js'></script>
     {{#if (IS_PROD)}}
       <!-- Google Tag Manager (noscript) -->
       <noscript><iframe
@@ -32,5 +35,9 @@
         ></iframe></noscript>
       <!-- End Google Tag Manager (noscript) -->
     {{/if}}
+    <noscript>
+      {{host}}
+      {{path}}
+    </noscript>
   </body>
 </html>
