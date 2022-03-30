@@ -31,7 +31,7 @@ export const slackBroadcastTask = createTask('Send mail', async (opt) => {
   await sendMessage({
     title,
     body,
-    dryRun: opt.dryRun,
+    dryRun: false, //opt.dryRun,
   });
 
   return opt;

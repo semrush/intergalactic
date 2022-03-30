@@ -20,8 +20,8 @@ export const checkGitTask = createTask('GIT check', async (opt) => {
     );
   }
 
-  if (status.current !== 'master') {
-    throw new Error('To publish components, switch to `master` branch.');
+  if (status.current !== 'master' && !status.current.startsWith('release/')) {
+    throw new Error('To publish components, switch to `master` or `release/*` branch.');
   }
 
   if (status.files.length) {
