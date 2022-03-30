@@ -8,7 +8,7 @@ require('dotenv').config();
 export class AppController {
   @Post('/callback')
   callbackMonitoring(@Req() req: Request) {
-    return JSON.stringify(host);
+    return 'true';
   }
 
   @Get('*')
