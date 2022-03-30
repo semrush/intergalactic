@@ -23,15 +23,15 @@ export const slackBroadcastTask = createTask('Send mail', async (opt) => {
   } = await getReleaseChangelog();
   const lastVersionChangelogs = changelogs.filter((changelog) => changelog.version === version);
 
-  const title = 'New release is here!';
-  const body = makeMessageFromChangelogs(lastVersionChangelogs);
+  const title = `New release v${version} is here!`;
+  const body = makeMessageFromChangelogs(lastVersionChangelogs, false);
 
   opt.log(`Sending slack broadcast`);
 
   await sendMessage({
     title,
     body,
-    dryRun: false, //opt.dryRun,
+    dryRun: opt.dryRun,
   });
 
   return opt;

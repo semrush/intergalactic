@@ -43,7 +43,7 @@ export const broadcastUpdates = async ({
   const changelogs = packages.map(({ changelogs }) => changelogs).flat();
   const filteredChangelogs = filterAutomaticChanges(filterByDate(changelogs, startDate, endDate));
   const title = makeMessageTitle(startDate, endDate);
-  const body = makeMessageFromChangelogs(filteredChangelogs);
+  const body = makeMessageFromChangelogs(filteredChangelogs, true);
 
   return await sendMessage({ title, body, dryRun });
 };

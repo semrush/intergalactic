@@ -19,16 +19,16 @@ type Changelog = {
   }[];
 };
 
-export const makeMessageFromChangelogs = (changelogs: Changelog[]) =>
+export const makeMessageFromChangelogs = (changelogs: Changelog[], withVersions: boolean) =>
   changelogs
-    .map(({ changes }) => bodyTemplate(changes))
+    .map(({ changes }) => bodyTemplate(changes, withVersions))
     .flat()
     .join('\n');
 
 const titleTemplate = (name: string, version: string) =>
-  `\n-------- \n:black_heart: *${name}* v${version} \n\n`;
+  `\n-------- \n:black_heart: *${name}* ${version ? 'v' + version : ''} \n\n`;
 
-const bodyTemplate = (changes: Changelog['changes']) => {
+const bodyTemplate = (changes: Changelog['changes'], withVersions: boolean) => {
   const components: Partial<{ [componentName: string]: Changelog['changes'] }> = {};
   for (const change of changes) {
     components[change.component] = components[change.component] || [];
@@ -44,7 +44,7 @@ const bodyTemplate = (changes: Changelog['changes']) => {
     }
 
     return (
-      titleTemplate(component, version) +
+      titleTemplate(component, withVersions ? version : null) +
       Object.entries(sections)
         .map(([label, changeDescriptions]) => {
           const title =
