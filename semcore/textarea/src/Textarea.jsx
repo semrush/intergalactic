@@ -3,6 +3,7 @@ import { Box } from '@semcore/flex-box';
 import autoFocusEnhance from '@semcore/utils/lib/enhances/autoFocusEnhance';
 import canUseDOM from '@semcore/utils/lib/canUseDOM';
 import cssToIntDefault from '@semcore/utils/lib/cssToIntDefault';
+import rafTrottle from '@semcore/utils/lib/rafTrottle';
 import createComponent, { Component, sstyled, Root } from '@semcore/core';
 
 import style from './style/textarea.shadow.css';
@@ -23,7 +24,12 @@ class Textarea extends Component {
 
   uncontrolledProps() {
     return {
-      value: (e) => e.target.value,
+      value: [
+        (e) => e.target.value,
+        () => {
+          this.calculateRows();
+        },
+      ],
     };
   }
 
@@ -44,7 +50,7 @@ class Textarea extends Component {
     window.removeEventListener('resize', this.calculateRows);
   };
 
-  calculateRows = (disabledScrolling = false) => {
+  calculateRows = rafTrottle((disabledScrolling = false) => {
     const { node } = this;
     const { rows, minRows, maxRows } = this.asProps;
     if (!node || !canUseDOM() || rows || !maxRows) return;
@@ -73,7 +79,7 @@ class Textarea extends Component {
     if (!disabledScrolling) {
       node.scrollTop = node.scrollHeight;
     }
-  };
+  });
 
   componentDidMount() {
     this.calculateRows(true);
