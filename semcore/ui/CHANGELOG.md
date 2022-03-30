@@ -1,17 +1,97 @@
+## [11.1.0] - 2022-03-30
+
+### @semcore/babel-plugin-react-semcore
+
+- **Added** Added export function `getColorVars`.
+
+### @semcore/babel-plugin-shadow
+
+- **Fixed** Fixed old node versions support.
+
+### @semcore/babel-plugin-styles
+
+- **Fixed** Fixed old node versions support.
+- **Added** Added export function `postcss` from main js file `@semcore/babel-plugin-styles`.
+- **Added** Added `PLACEHOLDER_REPLACER` property for function `postcss`.
+
+### @semcore/base-trigger
+
+- **Fixed** Improved keyboard focus styles.
+
+### @semcore/chart
+
+- **Fixed** Rewrite file colors from tsx to js, for normal parsing in `babel-plugin-react-semcore`.
+
+### @semcore/d3-chart
+
+- **Fixed** Left and bottom plot titles now do not overlap axis ticks.
+- **Fixed** Fixed figure cut on right or bottom edges when left or top margin is positive.
+
+### @semcore/dropdown-menu
+
+- **Fixed** Fixed enter space in input trigger for `DropdownMenu.Trigger`.
+
+### @semcore/flags
+
+- **Added** Added repository field to package.json file.
+
+### @semcore/icon
+
+- **Added** Added icons `Formal, Casual, QuestionSerp, MathMinusAlt`.
+
+### @semcore/modal
+
+- **Fixed** Fixed jumping content, when modal inside modal and body don't have `box-sizing`.
+
+### @semcore/side-panel
+
+- **Fixed** Fixed jumping content, when body don't have `box-sizing`.
+
+### @semcore/skeleton
+
+- **Fixed** Fixed `viewBox` for `BarChartSkeleton`.
+
+### @semcore/spin
+
+- **Changed** Rewrite the component to svg
+- **Added** Added roundings
+
+### @semcore/super-publisher
+
+- **Changed** Added slack notifications.
+- **Changed** Rewritten to typescript.
+
+### @semcore/tag
+
+- **Fixed** Fixed previously lost overflowed text ellipsis.
+
+### @semcore/utils
+
+- **Fixed** Fixed set property in body (when window inside window and body don't have `box-sizing`) in `usePreventScroll`.
+
 ## [11.0.0] - 2022-02-25
 
 ### Global
 
 - **Added** Added repository field to package.json file.
 
-### @semcore/base-trigger
+### @semcore/slider
 
-- **Fixed** Fixed LinkTrigger hovered text color.
+- **BREAK** Remove props background/color/interaction, use theme instead.
+- **BREAK** Refactored component to handle extreme values.
 
 ### @semcore/card
 
 - **BREAK** Card was divided into Header and Body
 - **Added** Background was added
+
+### @semcore/spin-container
+
+- **BREAK** Add new children components `SpinContainer.Content` when using advanced mode along with `SpinContainer.Overlay`.
+
+### @semcore/base-trigger
+
+- **Fixed** Fixed LinkTrigger hovered text color.
 
 ### @semcore/d3-chart
 
@@ -21,6 +101,10 @@
 
 - **Fixed** Fixed explicit default theme
 
+### @semcore/errors
+
+- **Fixed** Fixed Static files were missing in release 10.2.0
+
 ### @semcore/flex-box
 
 - **Added** Added gap, rowGap and columnGap css properties support for Flex component.
@@ -29,19 +113,12 @@
 
 - **Fixed** Fixed sizes for a few icons.
 - **Fixed** Fixed color setting for LightningFilled, MailOpenFilled.
+- **Added** Added `Hubspot` icon.
+- **Changed** Changed image `SortAsc` and `SortDesc` icons.
 
 ### @semcore/skeleton
 
 - **Fixed** Added export type for Bubble, ScatterPlot, Venn charts
-
-### @semcore/slider
-
-- **BREAK** Remove props background/color/interaction, use theme instead.
-- **BREAK** Refactored component to handle extreme values.
-
-### @semcore/spin-container
-
-- **BREAK** Add new children components `SpinContainer.Content` when using advanced mode along with `SpinContainer.Overlay`.
 
 ### @semcore/switch
 
@@ -66,15 +143,6 @@
 ### @semcore/typography
 
 - **Fixed** Removed css specificity of props lineHeight/fontSize in `Text` component
-
-### @semcore/errors
-
-- **Fixed** Fixed Static files were missing in release 10.2.0
-
-### @semcore/icon
-
-- **Added** Added `Hubspot` icon.
-- **Changed** Changed image `SortAsc` and `SortDesc` icons.
 
 ### @semcore/widget-empty
 
