@@ -1,4 +1,4 @@
-import { Controller, Post, Get, Next, Req, Res } from '@nestjs/common';
+import { Controller, Post, Get, Next, Req, Res, HostParam } from '@nestjs/common';
 import { NextFunction, Request, Response } from 'express';
 import mailchimp from '@mailchimp/mailchimp_marketing';
 
@@ -7,15 +7,18 @@ require('dotenv').config();
 @Controller()
 export class AppController {
   @Post('/callback')
-  callbackMonitoring(@Req() req: Request) {
-    console.log(req.body);
+  callbackMonitoring(@Req() req: Request, @HostParam() host) {
+    return JSON.stringify(host);
   }
 
   @Get('*')
   site(@Res() res: Response, @Next() next: NextFunction, @Req() req: Request) {
+    // console.log(host);
     if (req.path.includes('graphql')) return next();
 
-    return res.render('index');
+    return res.render('index', {
+      ROOT_PATH: process.env.ROOT_PATH,
+    });
   }
 }
 
