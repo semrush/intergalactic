@@ -68,8 +68,8 @@
   --fs-800: 48px;
   --lh-800: 1.17;
   --keyborad-focus: 0 0 0 3px color-mod(var(--light-blue) a(30%));
-  --keyboard-focus-valid: 0px 0px 0px 3px color-mod(var(--green-400), a(20%));
-  --keyboard-focus-invalid: 0px 0px 0px 3px color-mod(var(--red-400), a(20%));
+  --keyboard-focus-valid: 0px 0px 0px 3px color-mod(var(--green-400) a(20%));
+  --keyboard-focus-invalid: 0px 0px 0px 3px color-mod(var(--red-400) a(20%));
   --disabled-opacity: 0.3;
 
   --xs-screen: 320px;
