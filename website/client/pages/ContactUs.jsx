@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 import postman from '../static/illustration/email-pic.svg';
 import PinMapM from '@semcore/icon/PinMap/m';
 import GitHubM from '@semcore/icon/color/GitHub/m';
@@ -196,9 +197,9 @@ const Contacts = () => (
         <Text>
           <Subtitle>Send a request to develop a new component</Subtitle>
           Before sending email, check our
-          <a href="https://i.semrush.com/internal/roadmap/" rel="noopener noreferrer">
+          <Link to="/internal/roadmap/" rel="noopener noreferrer">
             Roadmap
-          </a>
+          </Link>
           , perhaps needed component is already there. If not, share with some details:
           <ul>
             <li>Cases and requirements</li>

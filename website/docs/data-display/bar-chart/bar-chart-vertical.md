@@ -72,8 +72,8 @@ When you hover over a point without data, the tooltip with the `n/a` value for t
 
 @## Data loading
 
-Display [Skeleton](http://i.semrush.com/components/skeleton/) in the place of the chart. If the chart has a title, it should be displayed during loading. The user shall have an idea of what is being loaded and whether they need to wait for the loading process to complete.
+Display [Skeleton](/components/skeleton/) in the place of the chart. If the chart has a title, it should be displayed during loading. The user shall have an idea of what is being loaded and whether they need to wait for the loading process to complete.
 
-Styles can be found in the guide book for [Skeleton](http://i.semrush.com/components/skeleton/).
+Styles can be found in the guide book for [Skeleton](/components/skeleton/).
 
 ![skeleton](/data-display/bar-chart/static/skeleton.png)

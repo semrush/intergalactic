@@ -10,7 +10,7 @@ tabName: Design
 
 > 💡 The component is used exclusively as a filter. It is not used anywhere else in the interface.
 >
-> [Selecting a date](http://i.semrush.com/components/date-picker/) usually refers to global report settings, so you should not use FilterTrigger for it.
+> [Selecting a date](/components/date-picker/) usually refers to global report settings, so you should not use FilterTrigger for it.
 
 It is important for filters:
 
@@ -35,7 +35,7 @@ In the active filter, the selected value/values are completely displayed or hidd
 
 @## Margins between filter triggers
 
-The indents duplicate the [indents between the buttons](http://i.semrush.com/components/button/).
+The indents duplicate the [indents between the buttons](/components/button/).
 
 | Sizes     | Margins between controls                       |
 | --------- | ---------------------------------------------- |

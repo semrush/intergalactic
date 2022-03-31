@@ -95,7 +95,7 @@ As well, you may add the control for deleting a line.
 
 @## Use examples
 
-Example of using `Combobox` in [Time picker](http://i.semrush.com/components/time-picker/).
+Example of using `Combobox` in [Time picker](/components/time-picker/).
 
 ![combobox](static/combobox.png)
 

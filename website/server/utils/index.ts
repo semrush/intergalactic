@@ -22,7 +22,7 @@ export function normalizeDocumentalistContents(contents, ROOT_PATH): Tag[] {
       }
     }
     if (typeof tag === 'string') {
-      tag = { tag: 'text', value: tag };
+      tag = { tag: 'text', value: tag.replace(re, `href="${ROOT_PATH}$1"`) };
     }
     return tag;
   });

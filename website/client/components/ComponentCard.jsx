@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 import { Text } from '@semcore/typography';
 
 const Card = styled.div`
@@ -26,7 +27,7 @@ const Card = styled.div`
   }
 `;
 
-const Link = styled.a`
+const LinkUI = styled(Link)`
   position: absolute;
   top: 0;
   right: 0;
@@ -43,13 +44,13 @@ function ComponentCard({ image, text, disabled, href, type }) {
   try {
     return (
       <Card disabled={disabled}>
-        <Link href={href} />
+        <LinkUI to={href} />
         <img src={require(`../static/${type}/${image}.svg`).default} alt="image" />
         <Title>{text}</Title>
       </Card>
     );
   } catch (err) {
-    ('error');
+    console.log('Card:', err);
   }
   return false;
 }

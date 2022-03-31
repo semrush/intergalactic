@@ -3,6 +3,8 @@ const CopyPlugin = require('copy-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const TerserPlugin = require('terser-webpack-plugin');
 
+require('dotenv').config();
+
 module.exports = (_env, argv) => {
   const config = {
     mode: argv.mode || 'development',
@@ -11,7 +13,6 @@ module.exports = (_env, argv) => {
     entry: './client/index.jsx',
     output: {
       path: path.join(__dirname, 'client/dist'),
-      publicPath: '/',
     },
     optimization: {
       minimize: true,

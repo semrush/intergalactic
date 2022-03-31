@@ -8,7 +8,7 @@ title: D3 example
 
 - You can draw a chart with areas using the `Area` component.
 - `Dots` are the dots on the line chart.
-- As with the [Line chart](https://i.semrush.com/data-display/line-chart/line-chart-d3-code/), you can draw a polyline or a smoothed chart by passing the required method to the curve property.
+- As with the [Line chart](/data-display/line-chart/line-chart-d3-code/), you can draw a polyline or a smoothed chart by passing the required method to the curve property.
 
 @example area
 
