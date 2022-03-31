@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang='en'>
   <head>
     <meta property='og:title' content='Intergalactic – Design System' />
@@ -23,21 +24,14 @@
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id='root'></div>
     <script>
-      <!-- For integration developer portal --> window.ROOT_PATH = '{{ROOT_PATH}}';
+      <!-- For integration developer portal -->
+      window.ROOT_PATH = '{{ROOT_PATH}}';
     </script>
     <script src='{{ROOT_PATH}}main.js'></script>
     {{#if (IS_PROD)}}
       <!-- Google Tag Manager (noscript) -->
-      <noscript>
-        <iframe
-          src='“https:'
-          www.googletagmanager.com
-          ns.html?id='GTM-PP7RKT7”'
-          height='“0"'
-          width='“0”'
-          style='“display:none;visibility:hidden”'
-        ></iframe>
-      </noscript>
+      <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PP7RKT7"
+                        height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <!-- End Google Tag Manager (noscript) -->
     {{/if}}
     <noscript>
