@@ -5,6 +5,7 @@
 website/public/**
 website/dist/**
 website/tmp/**
+website/**/*.hbs
 vue-semcore/**
 crowdin.yml
 tools/generator-component/**
