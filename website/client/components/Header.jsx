@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Button from '@semcore/button';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 import ResizeObserver from 'resize-observer-polyfill';
 import NavLink from './NavLink';
 import mobileLogo from '../static/logo/semrush-logo.svg';
@@ -34,10 +35,12 @@ const HeaderWrapper = styled.header`
   box-shadow: 0 2px 16px 0 rgba(0, 0, 0, 0.1);
   z-index: 999;
   box-sizing: border-box;
+
   a {
     color: #171a22;
     text-decoration: none;
   }
+
   @media (max-width: 1140px) {
     grid-template-columns: 1fr 4fr 0.4fr;
   }
@@ -55,12 +58,15 @@ const Item = styled.span`
   padding: 10px 12px;
   font-size: 16px;
   font-family: Inter, sans-serif;
+
   &:hover {
     text-decoration: underline;
   }
+
   &:first-child {
     padding-left: 0;
   }
+
   &:last-child {
     padding-right: 0;
   }
@@ -77,12 +83,15 @@ const Logo = styled.div`
   line-height: 130%;
   color: #ff622d;
   margin-top: 6px;
+
   img {
     margin-right: 8px;
   }
+
   svg {
     margin-right: 4px;
   }
+
   @media (max-width: 767px) {
     grid-column: 2;
   }
@@ -220,8 +229,10 @@ const Mobile = styled.span`
     grid-row: 1;
     grid-column: 1;
   }
+
   img {
     width: 20px;
+
     &:hover {
       cursor: pointer;
     }
@@ -252,7 +263,7 @@ const Links = styled.div`
   }
 `;
 
-const IntergalacticLink = styled.a`
+const IntergalacticLink = styled(Link)`
   color: #ff642d !important;
   margin-left: 8px;
   font-family: FactorA-Bold, sans-serif;
@@ -262,6 +273,7 @@ const DevportalLink = styled.a`
   display: flex;
   align-items: center;
   font-family: FactorA-Bold, sans-serif;
+
   img {
     margin-bottom: 7px;
   }
@@ -315,9 +327,9 @@ const MobileHeaderMenu = ({ clicked, setClicked, data }) => (
     <OutsideClick onOutsideClick={() => setClicked(false)}>
       <Side>
         <Links>
-          <a href="/internal/extension/">Extension ✨</a>
-          <a href="/internal/roadmap/">Roadmap</a>
-          <a href="/internal/release/">Releases</a>
+          <Link to="/internal/extension/">Extension ✨</Link>
+          <Link to="/internal/roadmap/">Roadmap</Link>
+          <Link to="/internal/release/">Releases</Link>
           <a href="https://github.com/semrush/intergalactic" target="_blank">
             GitHub
           </a>
@@ -388,7 +400,7 @@ function Header(props) {
             <img src={mobileLogo} alt="Logo" />
             Developer
           </DevportalLink>
-          <IntergalacticLink href="/">Intergalactic</IntergalacticLink>
+          <IntergalacticLink to="/">Intergalactic</IntergalacticLink>
         </DesktopLogo>
       </Logo>
       <SearchMobile>

@@ -16,16 +16,16 @@ There are two types of tables in our interface – [primary](/table-group/table-
 
 ### Common styles for the table content
 
-| Content                                | Styles                                       |
-| -------------------------------------- | -------------------------------------------- |
-| Text in the header                     | `font-size: 12px; color: $gray20;`           |
-| The text in the row                    | `font-size: 14px; color: $gray20;`           |
-| Secondary text                         | `color: $gray60;`                            |
-| Stand alone icon                       | `icon-size: S; color: stone;`                |
-| The icon next to the text              | `icon-size: XS; color: stone;`               |
-| Select in the header                   | [tertiary select, size M](components/select) |
-| Select in the cell                     | [tertiary select, size L](components/select) |
-| Checkbox in the header and in the cell | size L                                       |
+| Content                                | Styles                                        |
+| -------------------------------------- | --------------------------------------------- |
+| Text in the header                     | `font-size: 12px; color: $gray20;`            |
+| The text in the row                    | `font-size: 14px; color: $gray20;`            |
+| Secondary text                         | `color: $gray60;`                             |
+| Stand alone icon                       | `icon-size: S; color: stone;`                 |
+| The icon next to the text              | `icon-size: XS; color: stone;`                |
+| Select in the header                   | [tertiary select, size M](/components/select) |
+| Select in the cell                     | [tertiary select, size L](/components/select) |
+| Checkbox in the header and in the cell | size L                                        |
 
 @## Sorting
 

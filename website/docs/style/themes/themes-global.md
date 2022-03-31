@@ -8,7 +8,7 @@ All our components include Semrush styles. However, if your tool uses a differen
 >
 > We have created a new theme for the Semrush redesign—`@semcore/theme-redesign`.
 >
-> For correct changes in styles, use release [[10.0.0] - 2021-12-10](https://i.semrush.com/internal/release/release-changelog/) and above, or update the components to the latest versions. Otherwise, theme styles will apply incorrectly.
+> For correct changes in styles, use release [[10.0.0] - 2021-12-10](/internal/release/release-changelog/) and above, or update the components to the latest versions. Otherwise, theme styles will apply incorrectly.
 
 @## Step one
 
@@ -103,7 +103,7 @@ An example of the `versions.json` file :
 
 To develop themes locally, you need hot module replacement. It won't work out of the box because themes are applied during the build process and watchers can't see the changes. To fix that:
 
-1. Add  `@semcore/shadow-loader` to the webpack configuration.
+1. Add `@semcore/shadow-loader` to the webpack configuration.
 2. Add loaders for `.css` files
 
 Example rules for webpack:
