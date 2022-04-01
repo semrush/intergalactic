@@ -7,6 +7,8 @@ import assignProps from '@semcore/utils/lib/assignProps';
 
 import scrollStyles from './style/scroll-area.shadow.css';
 
+const testEnv = process.env.NODE_ENV === 'test';
+
 function getCellsByColumn(row) {
   return row.reduce((acc, cell) => {
     acc[cell.name] = acc[cell.name]
@@ -86,6 +88,7 @@ class Body extends Component {
 
     const [offsetLeftSum, offsetRightSum] = getScrollOffsetValue(columns);
     const offsetSum = offsetLeftSum + offsetRightSum;
+    const columnsInitialized = columns.reduce((sum, { width }) => sum + width, 0) > 0 || testEnv;
 
     return sstyled(styles)(
       <SBodyWrapper>
@@ -97,7 +100,7 @@ class Body extends Component {
           onResize={onResize}
         >
           <ScrollArea.Container ref={$scrollRef}>
-            <SBody render={Box}>{this.renderRows(rows)}</SBody>
+            <SBody render={Box}>{columnsInitialized ? this.renderRows(rows) : null}</SBody>
           </ScrollArea.Container>
           <SScrollAreaBar
             orientation="horizontal"
