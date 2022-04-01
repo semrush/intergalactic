@@ -34,6 +34,9 @@ export * from './Area';
 export { default as StackedArea } from './StackedArea';
 export * from './StackedArea';
 
+export { default as RadialTree } from './RadialTree';
+export * from './RadialTree';
+
 export { default as Donut } from './Donut';
 export * from './Donut';
 

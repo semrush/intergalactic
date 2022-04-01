@@ -4,18 +4,19 @@
 SRadian {
   cursor: pointer;
 }
-SLineCup {
+SCap {
   transition: r 0.1s;
 }
 SLabel {
   cursor: var(--text-cursor);
+  transform-origin: var(--transform-origin);
 }
 SRadian:hover SLabel {
   fill: var(--color-hovered);
 }
 
 @media (prefers-reduced-motion) {
-  SLineCup {
+  SLineCap {
     transition: none;
   }
 }
