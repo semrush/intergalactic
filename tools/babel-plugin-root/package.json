@@ -1,6 +1,6 @@
 {
   "name": "@semcore/babel-plugin-root",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "main": "./babel-plugin-root.js",
   "scripts": {
     "test": "echo 'no test =('"
