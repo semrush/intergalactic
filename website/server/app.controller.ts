@@ -20,6 +20,13 @@ export class AppController {
 
     if (req.path.includes('graphql')) return next();
 
+    if (req.header('host') === 'i.semrush.com') {
+      return {
+        url: 'https://developer.semrush.com/intergalactic' + req.path,
+        statusCode: 302,
+      };
+    }
+
     return res.render('index', {
       ROOT_PATH: ROOT_PATH,
     });
