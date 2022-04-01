@@ -3,7 +3,9 @@
 import execa from 'execa';
 import minimist from 'minimist';
 
-const argv = minimist(process.argv.slice(2), {
+const argv = minimist<{
+  source: string;
+}>(process.argv.slice(2), {
   default: {
     source: 'ts',
   },
@@ -45,20 +47,17 @@ const MAP_BABEL_ENV = {
 // eslint-disable-next-line no-console
 console.log(`running builder from dir ${process.cwd()}\n`);
 
-const tasks = [];
 await runCommand('CLEANUP');
 
-if (argv.modules) {
-  tasks.push(runCommand('BABEL', '', MAP_BABEL_ENV[argv.modules]));
-  tasks.push(
-    runCommand(argv.source === 'jsx' || argv.source === 'js' ? 'COPY_TYPES' : 'TYPES', ''),
-  );
-} else {
-  tasks.push(runCommand('BABEL', 'cjs', 'commonjs'));
-  tasks.push(runCommand('BABEL', 'es6', 'es6'));
-  tasks.push(
-    runCommand(argv.source === 'jsx' || argv.source === 'js' ? 'COPY_TYPES' : 'TYPES', 'types'),
-  );
-}
+const source = argv.source.split(',');
 
-await Promise.all(tasks);
+if (argv.modules) {
+  await runCommand('BABEL', '', MAP_BABEL_ENV[argv.modules]);
+  if (source.includes('jsx') || source.includes('js')) await runCommand('COPY_TYPES', '');
+  if (source.includes('tsx') || source.includes('ts')) await runCommand('TYPES', '');
+} else {
+  await runCommand('BABEL', 'cjs', 'commonjs');
+  await runCommand('BABEL', 'es6', 'es6');
+  if (source.includes('jsx') || source.includes('js')) await runCommand('COPY_TYPES', 'types');
+  if (source.includes('tsx') || source.includes('ts')) await runCommand('TYPES', 'types');
+}

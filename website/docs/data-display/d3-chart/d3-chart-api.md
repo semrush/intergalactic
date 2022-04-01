@@ -226,6 +226,13 @@ It have children component `Title`.
 import { RadialTree } from '@semcore/d3-chart';
 
 <RadialTree>
+  <RadialTree.Radian>
+    <RadialTree.Radian.InteractiveArea />
+    <RadialTree.Radian.Label />
+    <RadialTree.Radian.Line />
+    <RadialTree.Radian.Cap />
+    <RadialTree.Radian.Icon />
+  </RadialTree.Radian>
   <RadialTree.Title></RadialTree.Title>
 </RadialTree>;
 ```

@@ -42,6 +42,13 @@ export default () => {
       textSize={textSize}
     >
       <RadialTree color="#AB6CFE">
+        <RadialTree.Radian>
+          <RadialTree.Radian.InteractiveArea />
+          <RadialTree.Radian.Label />
+          <RadialTree.Radian.Line />
+          <RadialTree.Radian.Cap />
+          <RadialTree.Radian.Icon />
+        </RadialTree.Radian>
         <RadialTree.Title fontSize={lineHeight} fill="#AB6CFE">
           {textLines.map((line, lineIndex) => (
             <tspan
