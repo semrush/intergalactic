@@ -28,7 +28,7 @@
   },
   "devDependencies": {
     "@mailchimp/mailchimp_marketing": "^3.0.30",
-    "@semcore/theme-redesign": "^1.5.10",
+    "@semcore/theme-redesign": "^1.5.12",
     "@types/jest": "^26.0.23",
     "@types/jest-image-snapshot": "^2.11.1",
     "@types/react": "^17.0.0",
