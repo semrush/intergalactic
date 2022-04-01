@@ -67,14 +67,14 @@ class InputTags extends Component<IInputTagsProps> {
   handleKeyDown = (e) => {
     const { key, currentTarget } = e;
     const { delimiters } = this.asProps;
-    let { value } = currentTarget;
+    const { value } = currentTarget;
     const lastSymbol = value.slice(-1);
-    value = value.trim();
+    const trimmedValue = value.trim();
 
     // ADD
-    if ((delimiters.includes(key) || (lastSymbol === ' ' && key === ' ')) && value) {
+    if ((delimiters.includes(key) || (lastSymbol === ' ' && key === ' ')) && trimmedValue) {
       e.preventDefault();
-      fire(this, 'onAdd', value);
+      fire(this, 'onAdd', trimmedValue);
     }
 
     // REMOVE
