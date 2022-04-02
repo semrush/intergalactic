@@ -18,15 +18,16 @@ export class AppController {
   site(@Res() res: Response, @Next() next: NextFunction, @Req() req: Request) {
     if (req.path.includes('graphql')) return next();
 
-    if (req.header('host') === 'i.semrush.com') {
-      return {
-        url: 'https://developer.semrush.com/intergalactic' + req.path,
-        statusCode: 302,
-      };
-    }
+    // if (req.header('host') === 'i.semrush.com') {
+    //   return {
+    //     url: 'https://developer.semrush.com/intergalactic' + req.path,
+    //     statusCode: 302,
+    //   };
+    // }
 
     return res.render('index', {
       ROOT_PATH: this.configService.get('ROOT_PATH', '/'),
+      host: req.header('host'),
     });
   }
 }
