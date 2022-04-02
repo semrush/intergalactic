@@ -4,11 +4,14 @@ import { Interface } from './documentation.interface';
 import { Type } from './documentation.type';
 import { normalizeDocumentalistContents } from '../utils';
 import { ITypescriptPluginData } from 'documentalist';
+import { ConfigService } from '@nestjs/config';
 
 @Injectable()
 export class DocumentationService implements OnModuleInit {
   private interfaces: Interface[] = [];
   private types: Type[] = [];
+
+  constructor(private configService: ConfigService) {}
 
   onModuleInit() {
     const waitProcessingTS = () => {
@@ -26,6 +29,8 @@ export class DocumentationService implements OnModuleInit {
   }
 
   addInterface(typescript: ITypescriptPluginData) {
+    const ROOT_PATH = this.configService.get('ROOT_PATH', '/');
+
     Object.values(typescript).forEach((ts) => {
       if (ts.kind === 'interface') {
         this.interfaces.push({
@@ -36,14 +41,14 @@ export class DocumentationService implements OnModuleInit {
             documentation: {
               ...prop.documentation,
               contents: prop.documentation
-                ? normalizeDocumentalistContents(prop.documentation.contents)
+                ? normalizeDocumentalistContents(prop.documentation.contents, ROOT_PATH)
                 : [],
             },
           })),
           documentation: {
             ...ts.documentation,
             contents: ts.documentation
-              ? normalizeDocumentalistContents(ts.documentation.contents)
+              ? normalizeDocumentalistContents(ts.documentation.contents, ROOT_PATH)
               : [],
           },
         });

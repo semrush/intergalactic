@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { useQuery, gql } from '@apollo/client';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import Helmet from 'react-helmet';
 import { scroller } from 'react-scroll';
 import { Col, Row } from '@semcore/grid';
@@ -265,22 +265,22 @@ function Page() {
             {getPrevPage(navigationPage.title, allPages) && (
               <div>
                 <ArrowLeftXS mr={2} />
-                <a
-                  href={'/' + getPrevPage(navigationPage.title, allPages).route}
+                <Link
+                  to={'/' + getPrevPage(navigationPage.title, allPages).route}
                   rel="noopener noreferrer"
                 >
                   {getPrevPage(navigationPage.title, allPages).title}
-                </a>
+                </Link>
               </div>
             )}
             {getNextPage(navigationPage.title, allPages) && (
               <div>
-                <a
-                  href={'/' + getNextPage(navigationPage.title, allPages).route}
+                <Link
+                  to={'/' + getNextPage(navigationPage.title, allPages).route}
                   rel="noopener noreferrer"
                 >
                   {getNextPage(navigationPage.title, allPages).title}
-                </a>
+                </Link>
                 <ArrowRightXS ml={2} />
               </div>
             )}

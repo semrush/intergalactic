@@ -65,7 +65,7 @@ A heading can contain additional information, such as a counter of results found
 
 @## Heading for mobile devices
 
-To improve readability on different screens, change the size of the headings, depending on the [breakpoint](layout/grid-system/).
+To improve readability on different screens, change the size of the headings, depending on the [breakpoint](/layout/grid-system/).
 
 > Change only font styles, not the markup.
 

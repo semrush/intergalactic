@@ -102,7 +102,7 @@ Do not stretch the text to the full width of the notice, especially if the notic
 
 #### Info
 
-Neutral message, information, collecting feedback. To announce a new feature or other tool, use this notice with a large image (we usually call these [advertising notices](https://i.semrush.com/components/notice/#a61937)).
+Neutral message, information, collecting feedback. To announce a new feature or other tool, use this notice with a large image (we usually call these [advertising notices](/components/notice/#a61937)).
 
 ![info](static/info.png)
 
@@ -174,13 +174,13 @@ For the smooth appearance and disappearance of the component, be sure to add ani
 
 #### On page
 
-If the notice applies to the entire tool, it is placed in the report header (under the breadcrumbs) and inherits the width of the content section. For more information about indents, see the [ProductHead](https://i.semrush.com/components/product-head/#a4fd53)component.
+If the notice applies to the entire tool, it is placed in the report header (under the breadcrumbs) and inherits the width of the content section. For more information about indents, see the [ProductHead](/components/product-head/#a4fd53)component.
 
 **Do not place multiple notices on the page at once**.
 
 ![notice-placement-yes-no](static/notice-placement-yes-no.png)
 
-If the notification refers only to the content of a specific tab inside the tool, then it can be placed under the [TabPanel](http://i.semrush.com/components/tab-panel/).
+If the notification refers only to the content of a specific tab inside the tool, then it can be placed under the [TabPanel](/components/tab-panel/).
 
 #### Inside the widget
 

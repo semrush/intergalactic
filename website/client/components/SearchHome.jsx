@@ -158,6 +158,7 @@ const HighlightMark = styled.mark`
 
 const ArrowRightIcon = styled(ArrowRight)`
   margin: 0 4px;
+
   &:hover {
     cursor: default;
   }
@@ -193,7 +194,7 @@ const SuggestSearch = withRouter(
             <Select.Option
               tag={Option}
               key={item.objectID}
-              value={item.slug}
+              value={window.ROOT_PATH + item.slug.replace(/^\//, '')}
               disabled={item.disabled}
             >
               <OptionText>
@@ -214,7 +215,7 @@ const SuggestSearch = withRouter(
             <Select.Option
               tag={Option}
               key={item.objectID}
-              value={item.slug}
+              value={window.ROOT_PATH + item.slug.replace(/^\//, '')}
               disabled={item.disabled}
             >
               <OptionText>

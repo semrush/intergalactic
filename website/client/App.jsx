@@ -59,7 +59,7 @@ function App() {
         <title>Loading...</title>
         <meta name="description" content="Intergalactic – Design System" />
       </Helmet>
-      <Router>
+      <Router basename={ROOT_PATH}>
         <Tracking />
         <Body>
           <NoticeTheme>

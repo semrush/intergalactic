@@ -16,7 +16,7 @@
   "private": true,
   "workspaces": [
     "tools/*",
-    "semcore/*"
+    "semcore/!(ui)/*"
   ],
   "workspace-sources": {
     "@semcore/*": [

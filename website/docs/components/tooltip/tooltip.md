@@ -52,7 +52,7 @@ The tooltip has themes to use on a dark background and for error messages. In bo
 | Invert  | ![invert-theme](static/invert-theme.png)   | `background-color: --var(gray-800); border: 1px solid var(--gray-500); box-shadow: 0px 1px 12px 0px #191B2326;`        |
 | Warning | ![alert-theme](static/alert-theme.png)     | `background-color: --var(red-100); border: 1px solid var(--red-400; box-shadow: 0px 2px 5px 0px rgba(black, .25);`     |
 
-> 💡 In [3.1.0 version](http://i.semrush.com/components/tooltip/#Changelog), you can set your own theme and change background color to custom.
+> 💡 In [3.1.0 version](/components/tooltip/#Changelog), you can set your own theme and change background color to custom.
 
 @## Maximum width and offset
 

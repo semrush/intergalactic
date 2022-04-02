@@ -3,6 +3,7 @@ import * as chokidar from 'chokidar';
 import { Documentalist, MarkdownPlugin } from 'documentalist';
 import { Heading, Navigation, Page } from './page.interface';
 import { hashCode, normalizeDocumentalistContents } from '../utils';
+import { ConfigService } from '@nestjs/config';
 
 const DOCS_DIR = './docs/**/**.md';
 const LIST_HASH_TITLE = [];
@@ -46,7 +47,7 @@ function checkValidUrl(pages, validUrls) {
             .replace(/^\/|\/$/g, '');
           const hash = url.split('#')[1];
 
-          if (!validUrls.includes(url)) {
+          if (!validUrls.includes('/' + url)) {
             // check valid hash
             if (hash && LIST_HASH_TITLE.find((name) => name === hash)) {
               return false;
@@ -67,24 +68,29 @@ export class PageService implements OnModuleInit {
     [reference: string]: Heading[];
   } = {};
   private navigation: Navigation[] = [];
+  constructor(private configService: ConfigService) {}
 
   async onModuleInit() {
+    const ROOT_PATH = this.configService.get('ROOT_PATH', '/');
+
     const watcher = chokidar.watch(DOCS_DIR, { ignoreInitial: true });
     watcher.on('add', this.processingMD.bind(this));
     watcher.on('change', this.processingMD.bind(this));
     watcher.on('unlink', this.processingMD.bind(this));
-    await this.processingMD();
+    await this.processingMD(ROOT_PATH);
 
-    const allRoutes = flatList(this.getNavigation(), 'children').map((item) => item.route);
+    const allRoutes = flatList(this.getNavigation(), 'children').map(
+      (item) => `${ROOT_PATH}${item.route}`,
+    );
     checkValidUrl(this.getPages(), allRoutes);
   }
 
-  async processingMD() {
+  async processingMD(ROOT_PATH) {
     const { nav, pages } = await processDocumentalist.documentGlobs(DOCS_DIR);
 
     this.pages = Object.values(pages).map((page) => ({
       ...page,
-      contents: normalizeDocumentalistContents(page.contents),
+      contents: normalizeDocumentalistContents(page.contents, ROOT_PATH),
     }));
 
     this.heading = nav.reduce(function reduceHeading(heading, n) {
