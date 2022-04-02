@@ -5,9 +5,9 @@ export function hashCode(s) {
   return 'a' + crypto.createHash('md5').update(s).digest('hex').slice(0, 5);
 }
 
-// const re = new RegExp('href="/(.*?)"', 'gmi');
+const re = new RegExp('href="/(.*?)"', 'gmi');
 
-export function normalizeDocumentalistContents(contents): Tag[] {
+export function normalizeDocumentalistContents(contents, ROOT_PATH): Tag[] {
   return contents.map((tag) => {
     if (typeof tag === 'object' && tag.value) {
       const _splitValue = tag.value.split('{');
@@ -22,7 +22,7 @@ export function normalizeDocumentalistContents(contents): Tag[] {
       }
     }
     if (typeof tag === 'string') {
-      tag = { tag: 'text', value: tag };
+      tag = { tag: 'text', value: tag.replace(re, `href="${ROOT_PATH}$1"`) };
     }
     return tag;
   });

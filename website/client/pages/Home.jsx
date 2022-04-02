@@ -546,9 +546,9 @@ const getChart = (titles, data) => {
   };
 
   const getDocs = (item) => (
-    <a href={item.route} key={item.route}>
+    <Link to={item.route} key={item.route}>
       {item.title}
-    </a>
+    </Link>
   );
 
   const listDocs = items
@@ -584,9 +584,9 @@ const getChart = (titles, data) => {
 const getTable = (titles, data) => {
   const items = data.navigation.filter((nav) => !nav.metadata.hide && titles.includes(nav.title));
   const getDocs = items[0].children.map((item) => (
-    <a href={item.route} key={item.route}>
+    <Link to={item.route} key={item.route}>
       {item.title}
-    </a>
+    </Link>
   ));
 
   return (
@@ -646,15 +646,15 @@ function Home() {
               <WhaleImg src={whale} alt="Whale" />
               <Started>
                 Get started
-                <a href="/get-started-guide/dev-starter-guide/" rel="noopener noreferrer">
+                <Link to="/get-started-guide/dev-starter-guide/" rel="noopener noreferrer">
                   For developers <ArrowXS />
-                </a>
-                <a href="/get-started-guide/dis-starter-guide/" rel="noopener noreferrer">
+                </Link>
+                <Link to="/get-started-guide/dis-starter-guide/" rel="noopener noreferrer">
                   For designers <ArrowXS />
-                </a>
-                <a href="/get-started-guide/work-figma/" rel="noopener noreferrer">
+                </Link>
+                <Link to="/get-started-guide/work-figma/" rel="noopener noreferrer">
                   Figma libraries <ArrowXS />
-                </a>
+                </Link>
               </Started>
               {getCustomPage(mappingTableToImg.principles, data)}
               {getCustomPage(mappingTableToImg.styles, data)}

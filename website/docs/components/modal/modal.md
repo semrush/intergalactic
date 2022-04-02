@@ -61,11 +61,11 @@ We have several modal window types:
 
 ### Close button (optional)
 
-| Styles                                                                                     | Example                                                       |
-| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------- |
-| CloseS icon, color `$stone`. [Hover is 12% darker](http://i.semrush.com/style/variables/). | ![modal close button hover](static/close-hover.png)           |
-| Indent from top and right to the `Close` icon is 12px.                                     | ![modal close button](static/close-button.png)                |
-| The cross clickable area is 40px \* 40px.                                                  | ![modal close button hover zone](static/close-hover-zone.png) |
+| Styles                                                                 | Example                                                       |
+| ---------------------------------------------------------------------- | ------------------------------------------------------------- |
+| CloseS icon, color `$stone`. [Hover is 12% darker](/style/variables/). | ![modal close button hover](static/close-hover.png)           |
+| Indent from top and right to the `Close` icon is 12px.                 | ![modal close button](static/close-button.png)                |
+| The cross clickable area is 40px \* 40px.                              | ![modal close button hover zone](static/close-hover-zone.png) |
 
 ### Overlay
 

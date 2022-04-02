@@ -55,7 +55,7 @@ import {Pie} from '@semcore/charts'
 
 - Congratulations, you now have an interactive chart 💪🏼
 
-_If something went wrong, here's a working [example](https://i.semrush.com/data-display/donut-chart/donut-chart-code/#aa80d4)._
+_If something went wrong, here's a working [example](/data-display/donut-chart/donut-chart-code/#aa80d4)._
 
 @## Data loading
 

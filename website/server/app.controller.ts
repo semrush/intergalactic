@@ -1,11 +1,14 @@
 import { Controller, Post, Get, Next, Req, Res } from '@nestjs/common';
 import { NextFunction, Request, Response } from 'express';
 import mailchimp from '@mailchimp/mailchimp_marketing';
+import { ConfigService } from '@nestjs/config';
 
 require('dotenv').config();
 
 @Controller()
 export class AppController {
+  constructor(private configService: ConfigService) {}
+
   @Post('/callback')
   callbackMonitoring(@Req() req: Request) {
     return 'true';
@@ -13,13 +16,17 @@ export class AppController {
 
   @Get('*')
   site(@Res() res: Response, @Next() next: NextFunction, @Req() req: Request) {
-    // console.log(req.headers.host);
     if (req.path.includes('graphql')) return next();
 
+    if (req.header('host') === 'i.semrush.com') {
+      return {
+        url: 'https://developer.semrush.com/intergalactic' + req.path,
+        statusCode: 302,
+      };
+    }
+
     return res.render('index', {
-      ROOT_PATH: process.env.ROOT_PATH || '/',
-      host: req.headers.host,
-      path: req.path,
+      ROOT_PATH: this.configService.get('ROOT_PATH', '/'),
     });
   }
 }

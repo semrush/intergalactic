@@ -81,7 +81,7 @@ If you show this picture as it is, with a zero value on the `Y-axis`, then large
 
 ![outliers in histogram](static/histogram-outliers.png)
 
-Possible solutions for such cases are described in the guide about bar charts, [see the section describing large values](data-display/bar-chart/). **The recommended solution is to make the scale logarithmic instead of linear.**
+Possible solutions for such cases are described in the guide about bar charts, [see the section describing large values](/data-display/bar-chart/). **The recommended solution is to make the scale logarithmic instead of linear.**
 
 @## Interaction
 

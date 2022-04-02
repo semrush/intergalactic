@@ -140,7 +140,7 @@ You can pass a common `eventEmitter` to synchronize the charts.
 
 Use [Skeleton](/components/skeleton/) with the appropriate chart type for the initial loading of the charts. If a chart widget has a title, it should be displayed while the chart is loading.
 
-See one of the examples in the [Line chart guide](https://i.semrush.com/data-display/line-chart/line-chart-code/#ac26f2).
+See one of the examples in the [Line chart guide](/data-display/line-chart/line-chart-code/#ac26f2).
 
 @page d3-chart-api
 @page d3-chart-changelog

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import IF from '@semcore/utils/lib/if';
 import { Text } from '@semcore/typography';
 import ChevronRightXS from '@semcore/icon/ChevronRight/m';
@@ -30,7 +30,7 @@ const CategoryTitle = styled.div`
   }
 `;
 
-const CategoryItem = styled.a`
+const CategoryItem = styled(Link)`
   padding: 2px 0 2px 24px;
   font-size: 16px;
   font-family: Inter, sans-serif;
@@ -96,7 +96,7 @@ const SideBarNavigation = ({ navigation = [] }) => {
                 return (
                   <CategoryItem
                     disabled={p.metadata.disabled}
-                    href={`/${p.route}/`}
+                    to={`/${p.route}/`}
                     active={p.route === `${category}/${page}`}
                     key={`page-${i}`}
                     dangerouslySetInnerHTML={{ __html: p.title }}

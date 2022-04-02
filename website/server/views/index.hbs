@@ -26,6 +26,7 @@
     <script>
       <!-- For integration developer portal -->
       window.ROOT_PATH = '{{ROOT_PATH}}';
+      window.__webpack_public_path__ = window.ROOT_PATH
     </script>
     <script src='{{ROOT_PATH}}main.js'></script>
     {{#if (IS_PROD)}}
@@ -34,9 +35,5 @@
                         height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <!-- End Google Tag Manager (noscript) -->
     {{/if}}
-    <noscript>
-      {{host}}
-      {{path}}
-    </noscript>
   </body>
 </html>

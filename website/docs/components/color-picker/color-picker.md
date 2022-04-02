@@ -97,20 +97,20 @@ The Plain picker colors can be expanded in two ways:
 
 Components that can call a picker:
 
-- [Input](https://i.semrush.com/components/input/)
-- [Link](https://i.semrush.com/components/link/)
+- [Input](/components/input/)
+- [Link](/components/link/)
 
 ![Color picker triggers](static/cp-triggers.png)
 
 @## Where can we place the color marker?
 
-- [Button](https://i.semrush.com/components/button/)
-- [FilterTrigger](https://i.semrush.com/components/filter-trigger/)
-- [Pills](https://i.semrush.com/components/pills/)
-- [Select/Multiselect](https://i.semrush.com/components/select/)
-- [Tabine](https://i.semrush.com/components/tab-line/)
-- [TabPanel](https://i.semrush.com/components/tab-panel/)
-- [Tag](https://i.semrush.com/components/tag/)
+- [Button](/components/button/)
+- [FilterTrigger](/components/filter-trigger/)
+- [Pills](/components/pills/)
+- [Select/Multiselect](/components/select/)
+- [Tabine](/components/tab-line/)
+- [TabPanel](/components/tab-panel/)
+- [Tag](/components/tag/)
 - [Option](/components/dropdown-menu/#a66af9/)
 
 ![Color picker places](static/cp-places.png)

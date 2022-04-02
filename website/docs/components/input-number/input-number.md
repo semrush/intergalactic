@@ -70,7 +70,7 @@ The input size shall not be longer than the largest number that can be entered i
 
 @## Validation
 
-InputNumber, like any input, can be made mandatory. General rules for validating forms and inputs can be found in [Validation](http://i.semrush.com/patterns/validation-form/).
+InputNumber, like any input, can be made mandatory. General rules for validating forms and inputs can be found in [Validation](/patterns/validation-form/).
 
 In order for the user to enter the correct data and pass validation, in InputNumber you can:
 

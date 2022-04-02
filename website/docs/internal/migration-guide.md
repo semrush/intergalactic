@@ -271,7 +271,7 @@ npm i @semcore/modal
 
 @### DatePicker
 
-[Version API 2.0](components/date-picker/date-api/)
+[Version API 2.0](/components/date-picker/date-api/)
 
 ```bash
 npm i @semcore/date-picker
