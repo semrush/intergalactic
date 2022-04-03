@@ -215,7 +215,7 @@ const SuggestSearch = withRouter(
             <Select.Option
               tag={Option}
               key={item.objectID}
-              value={window.ROOT_PATH + item.slug.replace(/^\//, '')}
+              value={item.slug}
               disabled={item.disabled}
             >
               <OptionText>
