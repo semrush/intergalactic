@@ -97,15 +97,14 @@ module.exports = (_env, argv) => {
         ],
       }),
     ],
-    experiments: {
-      lazyCompilation: {
-        imports: true,
-        entries: false,
-      },
-    },
+    experiments: {},
   };
 
   if (argv.mode !== 'production') {
+    config.experiments.lazyCompilation = {
+      imports: true,
+      entries: false,
+    };
     config.plugins.push(new BundleAnalyzerPlugin({ openAnalyzer: false }));
   }
   return config;
