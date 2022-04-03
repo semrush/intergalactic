@@ -8,7 +8,7 @@ tabName: Design
 
 @## Description
 
-> 💡 Please note that we simplified the [Link](/components/link/link-changelog) component and moved Hint link and its description to [Typography](/style/typography/#afbfef/).
+> 💡 Please note that we simplified the [Link](/components/link/link-changelog) component and moved Hint link and its description to [Typography](/style/typography/#afbfef).
 
 **Link** is a control that links to another web page or element. Links can be internal or external. It is the easiest control on the [visual loudness scale](/patterns/visual-loudness-scale) guide.
 
@@ -117,7 +117,7 @@ If you want to place links in one line, the distance between them must be a mult
 
 @## Default link or Hint link?
 
-> 💡 Please note that we simplified the [Link](/components/link/link-changelog) component and moved Hint link and its description to [Typography](/style/typography/#afbfef/).
+> 💡 Please note that we simplified the [Link](/components/link/link-changelog) component and moved Hint link and its description to [Typography](/style/typography/#afbfef).
 
 | Action on the page                     | Default link                         | Hint link |
 | -------------------------------------- | ------------------------------------ | --------- |

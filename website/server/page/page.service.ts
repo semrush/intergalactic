@@ -2,11 +2,10 @@ import { Injectable, OnModuleInit } from '@nestjs/common';
 import * as chokidar from 'chokidar';
 import { Documentalist, MarkdownPlugin } from 'documentalist';
 import { Heading, Navigation, Page } from './page.interface';
-import { hashCode, normalizeDocumentalistContents } from '../utils';
+import { checkValidUrl, flatList, hashCode, normalizeDocumentalistContents } from '../utils';
 import { ConfigService } from '@nestjs/config';
 
 const DOCS_DIR = './docs/**/**.md';
-const LIST_HASH_TITLE = [];
 
 const processDocumentalist = new Documentalist({}, [
   {
@@ -15,52 +14,6 @@ const processDocumentalist = new Documentalist({}, [
   },
 ]);
 
-function flatList(list: any[], property: string): any[] {
-  if (!Array.isArray(list)) return list;
-  const flatList = [];
-
-  list.forEach((element) => {
-    getElement(element);
-  });
-
-  function getElement(element) {
-    flatList.push(element);
-    if (element[property] && element[property].length) {
-      element[property].forEach(getElement);
-    }
-  }
-  return flatList;
-}
-
-function checkValidUrl(pages, validUrls) {
-  pages.forEach((page) => {
-    page.contents.forEach((content) => {
-      const urls = content.value.match(/href="[^\s]+"/g);
-      if (urls) {
-        urls.forEach((href) => {
-          if (href.includes('http') || href.includes('mailto') || href.length < 9) {
-            return false;
-          }
-          const url = href
-            .replace(/href="/, '')
-            .slice(0, -1)
-            .replace(/^\/|\/$/g, '');
-          const hash = url.split('#')[1];
-
-          if (!validUrls.includes('/' + url)) {
-            // check valid hash
-            if (hash && LIST_HASH_TITLE.find((name) => name === hash)) {
-              return false;
-            }
-
-            console.log(`I not valid url "${url}" in "${page.route}"`);
-          }
-        });
-      }
-    });
-  });
-}
-
 @Injectable()
 export class PageService implements OnModuleInit {
   private pages: Page[] = [];
@@ -68,6 +21,7 @@ export class PageService implements OnModuleInit {
     [reference: string]: Heading[];
   } = {};
   private navigation: Navigation[] = [];
+  private hashesTitles: string[] = [];
   constructor(private configService: ConfigService) {}
 
   async onModuleInit() {
@@ -82,11 +36,12 @@ export class PageService implements OnModuleInit {
     const allRoutes = flatList(this.getNavigation(), 'children').map(
       (item) => `${ROOT_PATH}${item.route}`,
     );
-    checkValidUrl(this.getPages(), allRoutes);
+    checkValidUrl(this.getPages(), allRoutes, this.hashesTitles);
   }
 
   async processingMD(ROOT_PATH) {
     const { nav, pages } = await processDocumentalist.documentGlobs(DOCS_DIR);
+    const self = this;
 
     this.pages = Object.values(pages).map((page) => ({
       ...page,
@@ -99,7 +54,7 @@ export class PageService implements OnModuleInit {
         heading[reference] = heading[reference] || [];
         n.route = hashCode(n.title);
         heading[reference].push(n);
-        LIST_HASH_TITLE.push(n.route);
+        self.hashesTitles.push(n.route);
       }
       if (n.children) n.children.reduce(reduceHeading, heading);
       return heading;

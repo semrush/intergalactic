@@ -111,7 +111,7 @@ Components that can call a picker:
 - [Tabine](/components/tab-line/)
 - [TabPanel](/components/tab-panel/)
 - [Tag](/components/tag/)
-- [Option](/components/dropdown-menu/#a66af9/)
+- [Option](/components/dropdown-menu/#a66af9)
 
 ![Color picker places](static/cp-places.png)
 
