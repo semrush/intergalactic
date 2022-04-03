@@ -99,9 +99,7 @@ module.exports = (_env, argv) => {
     ],
     experiments: {
       lazyCompilation: {
-        // disable lazy compilation for dynamic imports
         imports: true,
-        // disable lazy compilation for entries
         entries: false,
       },
     },
