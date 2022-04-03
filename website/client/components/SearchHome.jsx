@@ -194,7 +194,7 @@ const SuggestSearch = withRouter(
             <Select.Option
               tag={Option}
               key={item.objectID}
-              value={item.slug.replace(/^\//, '')}
+              value={item.slug}
               disabled={item.disabled}
             >
               <OptionText>
