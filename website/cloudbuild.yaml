@@ -35,6 +35,7 @@ steps:
         echo "MAILCHIMPCAMPAIGN=${_MAILCHIMPCAMPAIGN}" >> website/.env
         echo "MAILCHIMPTEMPLATE=${_MAILCHIMPTEMPLATE}" >> website/.env
         echo "LISTID=${_LISTID}" >> website/.env
+        echo "ROOT_PATH=${_ROOT_PATH}" >> website/.env
   - name: 'gcr.io/cloud-builders/docker'
     args:
       - 'build'
