@@ -25,6 +25,7 @@ export class AppController {
     return res.render('index', {
       ROOT_PATH: this.configService.get('ROOT_PATH', '/'),
       host: req.header('host'),
+      path: req.path,
     });
   }
 }
