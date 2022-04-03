@@ -14,7 +14,7 @@ const client = new ApolloClient({
       if (networkError) console.log(`[Network error]: ${networkError}`);
     }),
     new BatchHttpLink({
-      uri: '/graphql',
+      uri: ROOT_PATH + 'graphql',
       credentials: 'same-origin',
     }),
   ]),
