@@ -1,10 +1,35 @@
 import React, { HTMLAttributes } from 'react';
 import { testing } from '@semcore/jest-preset-ui';
+
 const { cleanup, fireEvent, render } = testing;
 
 import { shared as testsShared } from '@semcore/jest-preset-ui';
+
 const { shouldSupportRef } = testsShared;
-import createComponent, { createBaseComponent, Component, IComponentProps } from '../src';
+import createComponent, {
+  createBaseComponent,
+  Component,
+  IComponentProps,
+  CORE_COMPONENT,
+} from '../src';
+
+/*
+ * - control/uncontrollprops
+ * - Root
+ * - Children
+ * - getProps
+ * - data-ui-name
+ * - bindHandler
+ * - default props
+ * - enhance
+ * - hoistProps
+ * - inheritedName
+ * - assainProps
+ * - assain function
+ * - style
+ * - createBase
+ * -
+ * */
 
 class RootTestClass extends Component<IComponentProps<{ test: 'test' }>> {
   static displayName = 'RootTestClass';
@@ -197,6 +222,7 @@ describe('Core', () => {
 
   test('should support move props from Root in Children Function', () => {
     const spy = jest.fn();
+
     function ChildrenTestFunc(props) {
       const { Root, test } = props;
       spy(test);
@@ -214,6 +240,7 @@ describe('Core', () => {
 
   test('should support move props from Root in Children Class', () => {
     const spy = jest.fn();
+
     class ChildrenTestClass extends Component<IComponentProps<{ test: unknown }>> {
       render() {
         const { Root } = this;
@@ -233,6 +260,7 @@ describe('Core', () => {
 
   test('should support hoist props from Children Class to Root', () => {
     const spy = jest.fn();
+
     class RootComponent extends RootTestClass {
       render() {
         const { Root } = this;
@@ -243,6 +271,7 @@ describe('Core', () => {
 
     class ChildrenTestClass extends Component<IComponentProps<{}>> {
       static hoistProps = ['test'];
+
       render() {
         const { Root } = this;
         return <Root render="div" />;
@@ -287,6 +316,7 @@ describe('Core', () => {
 
   test('should support hoist props from Children Function to Root', () => {
     const spy = jest.fn();
+
     class RootComponent extends RootTestClass {
       render() {
         const { Root } = this;
@@ -373,6 +403,7 @@ describe('Core', () => {
 
   test('should support set data-ui-name', () => {
     const InheritTest = createComponent(RootTestClass);
+
     class TestClass extends Component<IComponentProps<{}>> {
       static displayName = 'TestClass';
 
@@ -381,49 +412,39 @@ describe('Core', () => {
         return <Root render={InheritTest} />;
       }
     }
+
     const Test = createComponent(TestClass);
 
     const { queryByTestId } = render(<Test data-testid="test" />);
     expect(queryByTestId('test').attributes['data-ui-name'].value).toBe('TestClass');
   });
 
-  test('should support normal nested name getChildrenProps', () => {
-    const mock = { value: 'test' };
-
+  test('should support normal nested name getter function', () => {
     class TestRoot extends RootTestClass {
       getItemValueProps() {
-        return mock;
+        return {
+          id: 'test',
+        };
       }
     }
 
-    type ItemWithValue = { Item: [HTMLAttributes<HTMLDivElement>, { Value: { value?: unknown } }] };
-
-    const Test = createComponent<CompType, ItemWithValue>(TestRoot, {
+    const Test = createComponent(TestRoot, {
       Item: [ChildrenTestClass, { Value: ChildrenTestClass }],
-    });
+    }) as any;
 
-    render(
+    const { getByTestId } = render(
       <Test>
         <Test.Item>
-          <Test.Item.Value>
+          <Test.Item.Value data-testid="item">
             {(props) => {
-              expect(mock.value).toEqual(props.value);
+              expect(props.id).toBe('test');
               return null;
             }}
           </Test.Item.Value>
         </Test.Item>
       </Test>,
     );
-  });
-
-  test('createBaseComponent should support set data-ui-name for Component', () => {
-    function TestComponent(props, ref) {
-      return <div ref={ref} {...props} />;
-    }
-    TestComponent.displayName = 'Test';
-    const Test = createBaseComponent(TestComponent);
-    const { getByTestId } = render(<Test data-testid="test" />);
-    expect(getByTestId('test').dataset.uiName).toBe(TestComponent.displayName);
+    expect(getByTestId('item').id).toBe('test');
   });
 
   test('should support optimization function in getter method', () => {
@@ -432,11 +453,11 @@ describe('Core', () => {
     class TestRoot extends Component {
       static displayName = 'TestRoot';
 
-      bindHandlerClick = (value) => (e) => {};
+      bindHandlerClick = (value, a, b, c) => (e) => {};
 
       getItemProps({ value }) {
         return {
-          onClick: this.bindHandlerClick(value),
+          onClick: this.bindHandlerClick(value, 'a', 'b', 'c'),
         };
       }
 
@@ -476,80 +497,50 @@ describe('Core', () => {
     );
     expect(spy).toBeCalledTimes(2);
   });
+});
 
-  test('Should merge prop-getters for nested components', () => {
-    type GetterReturn = { foo?: string; bar?: string; baz?: string };
-    type InnerItemType = { Item: GetterReturn };
-    type ContextType = { getItemProps?: () => GetterReturn };
+describe('Getter function from context', () => {
+  afterEach(cleanup);
 
-    class FirstRoot extends Component {
-      static displayName = 'First';
-
-      getItemProps() {
-        return { foo: 'foo' };
-      }
-
-      render() {
-        const { Root } = this;
+  test('should merge prop-getters for nested components', () => {
+    function createMockComponent(name, render) {
+      function Item(props) {
+        const { Root } = props;
         return <Root render="div" />;
       }
-    }
 
-    class SecondRoot extends Component {
-      static displayName = 'Second';
+      class ComponentRoot extends Component {
+        static displayName = name;
 
-      getItemProps() {
-        return { bar: 'bar' };
+        getItemProps() {
+          return { [name]: name };
+        }
+
+        render() {
+          const { Root } = this;
+          return <Root render={render || 'div'} />;
+        }
       }
 
-      render() {
-        const { Root } = this;
-        return <Root render={First} />;
-      }
+      return createComponent(ComponentRoot, { Item }, { parent: render });
     }
 
-    class ThirdRoot extends Component {
-      static displayName = 'Third';
-
-      getItemProps() {
-        return { baz: 'baz' };
-      }
-
-      render() {
-        const { Root } = this;
-        return <Root render={Second} />;
-      }
-    }
-
-    function Item(props) {
-      const { Root } = props;
-      return <Root render="div" />;
-    }
-
-    const First = createComponent<CompType, InnerItemType, ContextType>(FirstRoot, { Item });
-    const Second = createComponent<CompType, InnerItemType, ContextType>(
-      SecondRoot,
-      { Item },
-      { parent: First },
-    );
-    const Third = createComponent<CompType, InnerItemType, ContextType>(
-      ThirdRoot,
-      { Item },
-      { parent: Second },
-    );
+    const First = createMockComponent('First', undefined);
+    const Second = createMockComponent('Second', First);
+    const Third = createMockComponent('Third', Second);
 
     const tests = [
       {
         Component: First,
-        expected: ['foo', undefined, undefined],
+        expected: ['First', undefined, undefined],
       },
       {
         Component: Second,
-        expected: ['foo', 'bar', undefined],
+        expected: ['First', 'Second', undefined],
       },
       {
         Component: Third,
-        expected: ['foo', 'bar', 'baz'],
+        expected: ['First', 'Second', 'Third'],
       },
     ];
 
@@ -557,9 +548,9 @@ describe('Core', () => {
       const spy = jest.fn();
       render(
         <Component>
-          {({ getItemProps }) => {
-            const { foo, bar, baz } = getItemProps();
-            spy(foo, bar, baz);
+          {({ getItemProps }: any) => {
+            const { First, Second, Third } = getItemProps();
+            spy(First, Second, Third);
             return 'test';
           }}
         </Component>,
@@ -569,80 +560,42 @@ describe('Core', () => {
     });
   });
 
-  test('Should merge prop-getters handlers for nested components, and call em in wright order', () => {
-    type GetterReturn = { onClick?: () => void };
-    type InnerItemType = { Item: GetterReturn };
-    type ContextType = { getItemProps?: <T extends {}>(props: T) => GetterReturn & T };
-
-    const firstSpy = jest.fn();
-
-    class FirstRoot extends Component {
-      static displayName = 'First';
-
-      getItemProps() {
-        return { onClick: firstSpy };
-      }
-
-      render() {
-        const { Root } = this;
+  test('should merge prop-getters handlers for nested components, and call em in wright order', () => {
+    function createMockComponent(name, render) {
+      function Item(props) {
+        const { Root } = props;
         return <Root render="div" />;
       }
-    }
 
-    const secondSpy = jest.fn();
+      class ComponentRoot extends Component {
+        static displayName = name;
 
-    class SecondRoot extends Component {
-      static displayName = 'Second';
+        getItemProps(props) {
+          return {
+            onClick: () => clickSpy(name),
+          };
+        }
 
-      getItemProps() {
-        return { onClick: secondSpy };
+        render() {
+          const { Root } = this;
+          return <Root render={render || 'div'} />;
+        }
       }
 
-      render() {
-        const { Root } = this;
-        return <Root render={First} />;
-      }
+      return createComponent(ComponentRoot, { Item }, { parent: render });
     }
 
-    const thirdSpy = jest.fn();
+    const clickSpy = jest.fn();
 
-    class ThirdRoot extends Component {
-      static displayName = 'Third';
-
-      getItemProps() {
-        return { onClick: thirdSpy };
-      }
-
-      render() {
-        const { Root } = this;
-        return <Root render={Second} />;
-      }
-    }
-
-    function Item(props) {
-      const { Root } = props;
-      return <Root render="div" />;
-    }
-
-    const First = createComponent<CompType, InnerItemType, ContextType>(FirstRoot, { Item });
-    const Second = createComponent<CompType, InnerItemType, ContextType>(
-      SecondRoot,
-      { Item },
-      { parent: First },
-    );
-    const Third = createComponent<CompType, InnerItemType, ContextType>(
-      ThirdRoot,
-      { Item },
-      { parent: Second },
-    );
-
-    const handlerSpy = jest.fn();
+    const First = createMockComponent('First', undefined);
+    const Second = createMockComponent('Second', First);
+    const Third = createMockComponent('Third', Second);
 
     const component = render(
       <Third>
-        {({ getItemProps }) => {
+        {({ getItemProps }: any) => {
           const props = {
-            onClick: handlerSpy,
+            onClick: () => clickSpy('User'),
           };
           const { onClick } = getItemProps(props);
           onClick();
@@ -650,19 +603,19 @@ describe('Core', () => {
         }}
       </Third>,
     );
-
-    expect(firstSpy).toBeCalledTimes(1);
-    expect(secondSpy).toBeCalledTimes(1);
-    expect(thirdSpy).toBeCalledTimes(1);
-    expect(handlerSpy).toBeCalledTimes(1);
-
-    const falsySpy = jest.fn(() => false);
+    expect(clickSpy.mock.calls[0][0]).toBe('User');
+    expect(clickSpy.mock.calls[1][0]).toBe('First');
+    expect(clickSpy.mock.calls[2][0]).toBe('Second');
+    expect(clickSpy.mock.calls[3][0]).toBe('Third');
 
     component.rerender(
       <Third>
-        {({ getItemProps }) => {
+        {({ getItemProps }: any) => {
           const props = {
-            onClick: falsySpy,
+            onClick: () => {
+              clickSpy('User');
+              return false;
+            },
           };
           const { onClick } = getItemProps(props);
           onClick();
@@ -670,10 +623,33 @@ describe('Core', () => {
         }}
       </Third>,
     );
+    expect(clickSpy.mock.calls.length).toBe(5);
+  });
+});
 
-    expect(firstSpy).toBeCalledTimes(1);
-    expect(secondSpy).toBeCalledTimes(1);
-    expect(thirdSpy).toBeCalledTimes(1);
-    expect(falsySpy).toBeCalledTimes(1);
+describe('createBaseComponent', () => {
+  afterEach(cleanup);
+
+  function TestFuncWithRef(props, ref) {
+    return <div ref={ref} {...props} />;
+  }
+
+  TestFuncWithRef.displayName = 'TestFuncWithRef';
+
+  test('should support symbol CORE_COMPONENT', () => {
+    const Test = createBaseComponent(TestFuncWithRef);
+    expect(Test[CORE_COMPONENT]).toBe(true);
+  });
+  test('should support data-ui-name', () => {
+    const Test = createBaseComponent(TestFuncWithRef);
+    const { getByTestId } = render(<Test data-testid="test" />);
+    expect(getByTestId('test').dataset.uiName).toBe(Test.displayName);
+  });
+
+  test('should support ref', () => {
+    const Test = createBaseComponent(TestFuncWithRef);
+    const ref = React.createRef();
+    render(<Test ref={ref} />);
+    expect(ref.current.nodeName).toBe('DIV');
   });
 });
