@@ -66,6 +66,7 @@ export const makeVersionPatches = (packages: Package[]) => {
     recursiveChildrenUpdateCompleted = true;
     for (const packageFile of packages) {
       if (versionPatchesMap.has(packageFile.name)) continue;
+      if (!packageFile.lastPublishedVersion) continue;
 
       let updateType: semver.ReleaseType | null = null;
       let updateTypeFallback: 'patch' | 'prerelease' = 'patch';
@@ -110,7 +111,6 @@ export const makeVersionPatches = (packages: Package[]) => {
       }
 
       if (needUpdate) {
-        recursiveChildrenUpdateCompleted = false;
         const versionBase = semver.compare(
           packageFile.currentVersion,
           packageFile.lastPublishedVersion,
