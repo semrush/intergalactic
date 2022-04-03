@@ -102,7 +102,7 @@ Do not stretch the text to the full width of the notice, especially if the notic
 
 #### Info
 
-Neutral message, information, collecting feedback. To announce a new feature or other tool, use this notice with a large image (we usually call these [advertising notices](/components/notice/#a61937)).
+Neutral message, information, collecting feedback. To announce a new feature or other tool, use this notice with a large image (we usually call these [advertising notices](/components/notice/#a47391)).
 
 ![info](static/info.png)
 
@@ -174,7 +174,7 @@ For the smooth appearance and disappearance of the component, be sure to add ani
 
 #### On page
 
-If the notice applies to the entire tool, it is placed in the report header (under the breadcrumbs) and inherits the width of the content section. For more information about indents, see the [ProductHead](/components/product-head/#a4fd53)component.
+If the notice applies to the entire tool, it is placed in the report header (under the breadcrumbs) and inherits the width of the content section. For more information about indents, see the [ProductHead](/components/product-head/) component.
 
 **Do not place multiple notices on the page at once**.
 
