@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { withRouter, useLocation } from 'react-router-dom';
 import { InstantSearch, Highlight } from 'react-instantsearch/dom';
-import { connectAutoComplete } from 'react-instantsearch/connectors';
+import { connectAutoComplete, connectStateResults } from 'react-instantsearch/connectors';
 import algoliasearch from 'algoliasearch/lite';
 
 import IF from '@semcore/utils/lib/if';
@@ -11,7 +11,7 @@ import Select from '@semcore/select';
 import SearchM from '@semcore/icon/Search/m';
 import ArrowRight from '@semcore/icon/ArrowRight/m';
 
-import convertKeyboard from '../utils/convert-keyboard';
+const ru = require('convert-layout/ru');
 
 import observatory from '../static/search/observatory.svg';
 import CONFIG from '../algolia';
@@ -32,7 +32,7 @@ const Popper = styled.div`
   color: #171a22;
   z-index: 999;
   box-shadow: 0 10px 25px 0 rgba(0, 0, 0, 0.2);
-  border-radius: 6px;
+  border-radius: 0 0 6px 6px;
   overflow: hidden;
   border: none;
 `;
@@ -88,8 +88,7 @@ const MobileInput = styled(Input)`
 const IconSearchWrapper = styled.div`
   position: absolute;
   right: 15px;
-  top: 50%;
-  transform: translate(0, -50%);
+  top: 14px;
   color: #171a22;
   @media (max-width: 415px) {
     left: 0;
@@ -97,30 +96,26 @@ const IconSearchWrapper = styled.div`
 `;
 
 const SearchIcon = styled(SearchM)`
-  &:hover {
-    cursor: default;
-  }
-
+  cursor: default;
   @media (max-width: 415px) {
     display: none;
   }
 `;
 
 const NotFound = styled.div`
-  height: 142px;
-  padding: 24px;
+  padding: 24px 68px 64px;
   display: flex;
-  flex-flow: row wrap;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
   color: #575c66;
 `;
 
 const NotFoundImg = styled.img`
-  flex: 1 0 100%;
-  width: 80px;
-  height: 80px;
-  margin: 0 auto 4px auto;
+  margin: 0 auto 8px auto;
+`;
+
+const NotFoundText = styled.div`
+  font-size: 14px;
+  text-align: center;
 `;
 
 const Option = styled.div`
@@ -158,10 +153,7 @@ const HighlightMark = styled.mark`
 
 const ArrowRightIcon = styled(ArrowRight)`
   margin: 0 4px;
-
-  &:hover {
-    cursor: default;
-  }
+  cursor: default;
 
   @media (max-width: 415px) {
     display: none;
@@ -175,125 +167,134 @@ const SelectPopper = styled(Select.Popper)`
   }
 `;
 
-const SuggestSearch = withRouter(
-  connectAutoComplete(({ currentRefinement, refine, hits, history, ...other }) => {
-    const pages = hits.filter((el) => !el.heading);
-    const content = hits.filter((el) => el.heading);
-    const location = useLocation();
+const Search = ({ currentRefinement, refine, hits, history, searchResults, ...other }) => {
+  const pages = hits.filter((el) => !el.heading);
+  const content = hits.filter((el) => el.heading);
+  const location = useLocation();
 
-    useEffect(() => {
-      refine('');
-    }, [location]);
+  useEffect(() => {
+    refine('');
+  }, [location]);
 
-    const showList = (hits, pages, content) => {
-      let options = [];
-      if (pages.length) {
-        options.push(<OptionHeader tag={Option}>Pages</OptionHeader>);
-        options.push(
-          ...pages.map((item) => (
-            <Select.Option
-              tag={Option}
-              key={item.objectID}
-              value={item.slug}
-              disabled={item.disabled}
-            >
-              <OptionText>
-                <Highlight attribute="title" hit={item} tagName={HighlightMark} />
-              </OptionText>
-              <OptionPlace>{item.category}</OptionPlace>
-            </Select.Option>
-          )),
-        );
-      }
-      if (pages.length && content.length) {
-        options.push(<Divider />);
-      }
-      if (content.length) {
-        options.push(<OptionHeader tag={Option}>Content</OptionHeader>);
-        options.push(
-          ...content.map((item) => (
-            <Select.Option
-              tag={Option}
-              key={item.objectID}
-              value={item.slug}
-              disabled={item.disabled}
-            >
-              <OptionText>
-                <Highlight attribute="title" hit={item} tagName={HighlightMark} />
-              </OptionText>
-              <OptionPlace>
-                {item.category}
-                <ArrowRightIcon />
-                {item.pageTitle}
-              </OptionPlace>
-            </Select.Option>
-          )),
-        );
-      }
-      if (!hits.length)
-        options.push(
-          <NotFound key={1}>
-            <NotFoundImg src={observatory} alt="observatory" />
-            <OptionText>We found something… it's nothing</OptionText>
-          </NotFound>,
-        );
+  const showList = (hits, pages, content) => {
+    let options = [];
+    if (pages.length) {
+      options.push(
+        <OptionHeader tag={Option} key={1}>
+          Pages
+        </OptionHeader>,
+      );
+      options.push(
+        ...pages.map((item) => (
+          <Select.Option
+            tag={Option}
+            key={item.objectID}
+            value={item.slug}
+            disabled={item.disabled}
+          >
+            <OptionText>
+              <Highlight attribute="title" hit={item} tagName={HighlightMark} />
+            </OptionText>
+            <OptionPlace>{item.category}</OptionPlace>
+          </Select.Option>
+        )),
+      );
+    }
+    if (pages.length && content.length) {
+      options.push(<Divider key={2} />);
+    }
+    if (content.length) {
+      options.push(
+        <OptionHeader tag={Option} key={3}>
+          Content
+        </OptionHeader>,
+      );
+      options.push(
+        ...content.map((item) => (
+          <Select.Option
+            tag={Option}
+            key={item.objectID}
+            value={item.slug}
+            disabled={item.disabled}
+          >
+            <OptionText>
+              <Highlight attribute="title" hit={item} tagName={HighlightMark} />
+            </OptionText>
+            <OptionPlace>
+              {item.category}
+              <ArrowRightIcon />
+              {item.pageTitle}
+            </OptionPlace>
+          </Select.Option>
+        )),
+      );
+    }
+    if (!hits.length)
+      options.push(
+        <NotFound key={4}>
+          <NotFoundImg src={observatory} alt="observatory" />
+          <NotFoundText>We found something… it's nothing</NotFoundText>
+        </NotFound>,
+      );
 
-      return options;
-    };
+    return options;
+  };
 
-    return (
-      <Select
-        interaction="focus"
-        offset={0}
-        stretch="fixed"
-        value={location.pathname}
-        onChange={(value) => history.push(value)}
-      >
-        <Select.Trigger tag={InputWrapper} inline={false}>
-          {({ visible }, action) => {
-            return (
-              <>
-                <DesktopInput
-                  autoFocus
-                  value={currentRefinement}
-                  isOpen={!!currentRefinement && visible}
-                  onChange={(e) => {
-                    refine(convertKeyboard(e.currentTarget.value));
-                    action.visible(true);
-                    action.highlightedIndex(0);
-                  }}
-                  onKeyDown={(e) => {
-                    e.key === ' ' && e.stopPropagation();
-                  }}
-                  {...other}
-                />
-                <MobileInput
-                  isOpen={!!currentRefinement && visible}
-                  onChange={(e) => {
-                    refine(convertKeyboard(e.currentTarget.value));
-                    action.visible(true);
-                    action.highlightedIndex(0);
-                  }}
-                  {...other}
-                />
-                <IconSearchWrapper>
-                  <SearchIcon />
-                </IconSearchWrapper>
-              </>
-            );
-          }}
-        </Select.Trigger>
-        <SelectPopper tag={Popper}>
-          <IF condition={!!currentRefinement}>
-            <Select.List m={0} style={{ overflow: 'hidden' }}>
-              {showList(hits, pages, content)}
-            </Select.List>
-          </IF>
-        </SelectPopper>
-      </Select>
-    );
-  }),
-);
+  return (
+    <Select
+      interaction="focus"
+      offset={0}
+      stretch="fixed"
+      value={location.pathname}
+      onChange={(value) => history.push(value)}
+    >
+      <Select.Trigger tag={InputWrapper} inline={false}>
+        {({ visible }, action) => {
+          return (
+            <>
+              <DesktopInput
+                autoFocus
+                value={ru.toEn(currentRefinement)}
+                isOpen={!!currentRefinement && visible}
+                onChange={(e) => {
+                  refine(ru.toEn(e.currentTarget.value));
+                  action.visible(true);
+                  action.highlightedIndex(0);
+                }}
+                onKeyDown={(e) => {
+                  e.key === ' ' && e.stopPropagation();
+                }}
+                {...other}
+              />
+              <MobileInput
+                isOpen={!!currentRefinement && visible}
+                value={ru.toEn(currentRefinement)}
+                onChange={(e) => {
+                  refine(ru.toEn(e.currentTarget.value));
+                  action.visible(true);
+                  action.highlightedIndex(0);
+                }}
+                {...other}
+              />
+              <IconSearchWrapper>
+                <SearchIcon />
+              </IconSearchWrapper>
+            </>
+          );
+        }}
+      </Select.Trigger>
+      <SelectPopper tag={Popper}>
+        <IF condition={!!currentRefinement && searchResults}>
+          <Select.List m={0} style={{ overflow: 'hidden' }}>
+            {showList(hits, pages, content)}
+          </Select.List>
+        </IF>
+      </SelectPopper>
+    </Select>
+  );
+};
+
+const SuggestSearch = withRouter(connectAutoComplete(connectStateResults(Search)));
 
 function SearchHome(props) {
   return (
