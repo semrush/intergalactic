@@ -12,30 +12,51 @@ const makePlayground = () => (
     <br />
     <label htmlFor="simple">Simple</label>
     <br />
-    <InlineInput onBlurBehavior="cancel" inputId="simple" />
+    <InlineInput onBlurBehavior="cancel" inputId="simple">
+      <InlineInput.Value />
+      <InlineInput.ConfirmControl />
+      <InlineInput.CancelControl />
+    </InlineInput>
     <br />
     <label htmlFor="loading">Loading state</label>
     <br />
-    <InlineInput loading inputId="loading" />
+    <InlineInput loading inputId="loading">
+      <InlineInput.Value />
+      <InlineInput.ConfirmControl />
+      <InlineInput.CancelControl />
+    </InlineInput>
     <br />
     <label htmlFor="disabled">Disabled</label>
     <br />
-    <InlineInput state="disabled" inputId="disabled" />
+    <InlineInput state="disabled" inputId="disabled">
+      <InlineInput.Value />
+      <InlineInput.ConfirmControl />
+      <InlineInput.CancelControl />
+    </InlineInput>
     <br />
     <label htmlFor="custom-text">Custom text</label>
     <br />
-    <InlineInput state="invalid" confirmText="Good" cancelText="Awfull" inputId="custom-text" />
+    <InlineInput state="invalid" confirmText="Good" cancelText="Awfull" inputId="custom-text">
+      <InlineInput.Value />
+      <InlineInput.ConfirmControl />
+      <InlineInput.CancelControl />
+    </InlineInput>
     <br />
     <label htmlFor="valid">Valid </label>
     <br />
-    <InlineInput state="valid" inputId="valid" />
+    <InlineInput state="valid" inputId="valid">
+      <InlineInput.Value />
+      <InlineInput.ConfirmControl />
+      <InlineInput.CancelControl />
+    </InlineInput>
     <br />
     <label htmlFor="with-icons">With icons</label>
     <br />
     <InlineInput inputId="with-icons">
       <InlineInput.Addon tag={SerpM} />
       <InlineInput.Value />
-      <InlineInput.Controls />
+      <InlineInput.ConfirmControl />
+      <InlineInput.CancelControl />
     </InlineInput>
     <br />
     <label htmlFor="decomposed">Decomposed</label>
@@ -48,7 +69,11 @@ const makePlayground = () => (
     <br />
     <label htmlFor="primitive">Primitve</label>
     <br />
-    <InlineInput inputId="primitive" />
+    <InlineInput inputId="primitive">
+      <InlineInput.Value />
+      <InlineInput.ConfirmControl />
+      <InlineInput.CancelControl />
+    </InlineInput>
     <br />
     <label htmlFor="const-placeholder">Constant placeholder</label>
     <br />
@@ -82,7 +107,7 @@ describe('InlineInput', () => {
         <InlineInput
           confirmText="Sh**ck is love"
           cancelText="DRAIN THE SWAMP!"
-          tooltipsProps={{ visible: true, disablePortal: true }}
+          $tooltipsProps={{ visible: true, disablePortal: true }}
         >
           <InlineInput.Value />
           <InlineInput.ConfirmControl />
@@ -111,12 +136,12 @@ describe('InlineInput', () => {
 
     const { getByPlaceholderText } = render(
       <>
-        <InlineInput placeholder="behavior-cancel" onBlurBehavior="cancel" onCancel={spyCancel} />
-        <InlineInput
-          placeholder="behavior-confirm"
-          onBlurBehavior="confirm"
-          onConfirm={spyConfirm}
-        />
+        <InlineInput placeholder="behavior-cancel" onBlurBehavior="cancel" onCancel={spyCancel}>
+          <InlineInput.Value />
+        </InlineInput>
+        <InlineInput placeholder="behavior-confirm" onBlurBehavior="confirm" onConfirm={spyConfirm}>
+          <InlineInput.Value />
+        </InlineInput>
       </>,
     );
 

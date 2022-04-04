@@ -2,6 +2,7 @@ import React from 'react';
 import InlineInput from '@semcore/inline-input';
 import InlineEdit from '@semcore/inline-edit';
 import EditM from '@semcore/icon/Edit/m';
+import { Text } from '@semcore/typography';
 
 const Example = () => {
   const [title, setTitle] = React.useState('Lorem ipsum');
@@ -32,7 +33,11 @@ const Example = () => {
               onConfirm={handleTitle}
               onCancel={stopEditing}
               loading={savingTitle}
-            />
+            >
+              <InlineInput.Value />
+              <InlineInput.ConfirmControl />
+              <InlineInput.CancelControl />
+            </InlineInput>
           </InlineEdit.Edit>
         </InlineEdit>
       </Text>

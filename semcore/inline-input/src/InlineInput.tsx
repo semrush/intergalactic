@@ -22,8 +22,9 @@ const isFocusOutsideOf = (element: HTMLElement) => {
 };
 
 type AsProps = {
-  state?: 'normal' | 'valid' | 'invalid' | 'disabled';
+  state?: 'normal' | 'valid' | 'invalid';
   loading?: boolean;
+  disabled?: boolean;
   onConfirm?: (
     value: string,
     event: React.MouseEvent | React.FocusEvent | React.KeyboardEvent,
@@ -36,7 +37,7 @@ type AsProps = {
   defaultValue?: string;
   confirmText?: string;
   cancelText?: string;
-  tooltipsProps?: ITooltipProps;
+  $tooltipsProps?: ITooltipProps;
   autoFocus?: boolean;
   placeholder?: string;
   inputId?: string;
@@ -58,7 +59,7 @@ class InlineInputBase extends Component<AsProps> {
     __excludeProps: [
       'defaultValue',
       'placeholder',
-      'tooltipsProps',
+      '$tooltipsProps',
       'confirmText',
       'cancelText',
       'autoFocus',
@@ -102,7 +103,7 @@ class InlineInputBase extends Component<AsProps> {
       state,
       confirmText = 'Confirm',
       cancelText = 'Cancel',
-      tooltipsProps = {},
+      $tooltipsProps = {},
     } = this.asProps;
 
     return {
@@ -114,7 +115,7 @@ class InlineInputBase extends Component<AsProps> {
       state,
       confirmText,
       cancelText,
-      tooltipsProps,
+      $tooltipsProps,
     };
   }
 
@@ -125,9 +126,6 @@ class InlineInputBase extends Component<AsProps> {
     return this.getContextProps();
   }
   getCancelControlProps() {
-    return this.getContextProps();
-  }
-  getControlsProps() {
     return this.getContextProps();
   }
 
@@ -190,8 +188,7 @@ class InlineInputBase extends Component<AsProps> {
   render() {
     const SInlineInput = Root;
     const SUnderline = 'div';
-    const { Children: providedChildren, children: hasChildren, styles, loading } = this.asProps;
-    const Children = hasChildren ? providedChildren : DefaultChildren;
+    const { Children, styles, loading } = this.asProps;
     const { focused } = this.state;
 
     return sstyled(styles)(
@@ -235,7 +232,7 @@ class Value extends Component<AsProps> {
         render={Box}
         tag="input"
         type="text"
-        disabled={this.asProps.state === 'disabled' || this.asProps.loading}
+        disabled={this.asProps.disabled || this.asProps.loading}
       />,
     );
   }
@@ -281,7 +278,7 @@ const ConfirmControl: React.FC<AsProps> = (props) => {
       {hasChildren ? (
         <Children />
       ) : (
-        <Tooltip {...props.tooltipsProps}>
+        <Tooltip {...props.$tooltipsProps}>
           <Tooltip.Trigger className="controls-icon">
             <CheckM
               tabIndex={0}
@@ -332,7 +329,7 @@ const CancelControl: React.FC<AsProps> = (props) => {
       {hasChildren ? (
         <Children />
       ) : (
-        <Tooltip {...props.tooltipsProps}>
+        <Tooltip {...props.$tooltipsProps}>
           <Tooltip.Trigger className="controls-icon">
             <CloseM
               tabIndex={0}
@@ -348,40 +345,12 @@ const CancelControl: React.FC<AsProps> = (props) => {
   ) as React.ReactElement;
 };
 
-const Controls: React.FC<AsProps> = (props) => {
-  const SControls = Root;
-  return sstyled(props.styles)(
-    <SControls render={Box}>
-      <InlineInput.ConfirmControl
-        tooltipsProps={props.tooltipsProps}
-        confirmText={props.confirmText}
-        onConfirm={props.onConfirm}
-      />
-      <InlineInput.CancelControl
-        tooltipsProps={props.tooltipsProps}
-        cancelText={props.cancelText}
-        onCancel={props.onCancel}
-      />
-    </SControls>,
-  ) as React.ReactElement;
-};
-
-const DefaultChildren: React.FC<AsProps> = (props) => {
-  return (
-    <>
-      <InlineInput.Value {...props} />
-      <InlineInput.Controls />
-    </>
-  ) as React.ReactElement;
-};
-
 /** `createComponent` currently exposes unrelated junk instead of typings, that the reason of to any cast  */
 const InlineInput = createComponent(InlineInputBase, {
   Addon,
   Value,
   ConfirmControl,
   CancelControl,
-  Controls,
 }) as any;
 
 export default InlineInput;
