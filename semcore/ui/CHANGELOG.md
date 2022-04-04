@@ -1,3 +1,21 @@
+## [11.1.1] - 2022-04-04
+
+### @semcore/animation
+
+- **Added** Added `preserveNode` property.
+
+### @semcore/chart
+
+- **Fixed** Fixed lost typings of `@semcore/chart/utils/colors` utility.
+
+### @semcore/input-tags
+
+- **Fixed** Component may fire `onRemove` event even when new tag text field is filled with space symbols.
+
+### @semcore/textarea
+
+- **Fix** Fixed wrong resize of controlled textarea when value is significantly changes in parent controller.
+
 ## [11.1.0] - 2022-03-30
 
 ### @semcore/babel-plugin-react-semcore
