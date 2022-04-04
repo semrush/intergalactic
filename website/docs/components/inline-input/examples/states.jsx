@@ -3,18 +3,34 @@ import InlineInput from '@semcore/inline-input';
 
 const Example = () => {
   return (
-    <>
-      <InlineInput state="valid" />
+    <div>
+      <InlineInput state="valid">
+        <InlineInput.Value />
+        <InlineInput.ConfirmControl />
+        <InlineInput.CancelControl />
+      </InlineInput>
       <br />
       <br />
-      <InlineInput state="invalid" />
+      <InlineInput state="invalid">
+        <InlineInput.Value />
+        <InlineInput.ConfirmControl />
+        <InlineInput.CancelControl />
+      </InlineInput>
       <br />
       <br />
-      <InlineInput state="disabled" />
+      <InlineInput disabled>
+        <InlineInput.Value />
+        <InlineInput.ConfirmControl />
+        <InlineInput.CancelControl />
+      </InlineInput>
       <br />
       <br />
-      <InlineInput loading />
-    </>
+      <InlineInput loading>
+        <InlineInput.Value />
+        <InlineInput.ConfirmControl />
+        <InlineInput.CancelControl />
+      </InlineInput>
+    </div>
   );
 };
 

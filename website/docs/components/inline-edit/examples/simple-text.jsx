@@ -23,7 +23,11 @@ const Example = () => {
               setText(prevText);
               setEditable(false);
             }}
-          />
+          >
+            <InlineInput.Value />
+            <InlineInput.ConfirmControl />
+            <InlineInput.CancelControl />
+          </InlineInput>
         </InlineEdit.Edit>
       </InlineEdit>
     </div>

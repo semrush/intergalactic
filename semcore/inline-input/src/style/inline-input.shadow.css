@@ -129,7 +129,7 @@ SInlineInput[state='invalid'][focused] SUnderline {
   border-color: var(--red-400);
   box-shadow: var(--keyboard-focus-invalid);
 }
-SInlineInput[state='disabled'],
+SInlineInput[disabled],
 SInlineInput[loading] {
   cursor: default;
 }
