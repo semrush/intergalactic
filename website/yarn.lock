@@ -3436,6 +3436,11 @@ content-type@~1.0.4:
   resolved "https://registry.npmjs.org/content-type/-/content-type-1.0.4.tgz"
   integrity sha512-hIP3EEPs8tB9AT1L+NUqtwOAps4mk2Zob89MWXMHjHWg9milF/j4osnnQLXBCBFBk/tvIG/tUc9mOUJiPBhPXA==
 
+convert-layout@^0.11.1:
+  version "0.11.1"
+  resolved "https://registry.yarnpkg.com/convert-layout/-/convert-layout-0.11.1.tgz#823bd72268e1a959f2433348a44a9c7185bba22e"
+  integrity sha512-Zy+yE2AqFZUYZxvwS/He7DmnwEahGdy/GyiM33YdxoixyI1YZCYYup2OEYnrhn5r34L9YRa+PZC2ooVmQHY9oQ==
+
 convert-source-map@^1.7.0:
   version "1.7.0"
   resolved "https://registry.npmjs.org/convert-source-map/-/convert-source-map-1.7.0.tgz"
