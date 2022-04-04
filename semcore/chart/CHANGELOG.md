@@ -2,11 +2,17 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.3.12] - 2022-04-04
+
+### Fixed
+
+- Fixed lost typings of `@semcore/chart/utils/colors` utility.
+
 ## [4.3.11] - 2022-03-23
 
 ### Fixed
 
-- Rewrite file colors from tsx to js, for normal parsing in `babel-plugin-react-semcore`.
+- Rewrite file colors from tsx to js, for correct parsing in `babel-plugin-react-semcore`.
 
 ## [4.3.10] - 2022-03-21
 
