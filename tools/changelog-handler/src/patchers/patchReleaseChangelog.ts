@@ -1,10 +1,15 @@
 import { getReleaseChangelog } from '../getReleaseChangelog';
 import { collectComponentChangelogs } from '../collectComponentChangelogs';
 import { Changelog } from '../types';
+import fs from 'fs-extra';
+import { resolve as resolvePath } from 'path';
 import dayjs from 'dayjs';
 import semver from 'semver';
+import { fileURLToPath } from 'url';
 import isBetween from 'dayjs/plugin/isBetween.js';
 dayjs.extend(isBetween);
+
+const filename = fileURLToPath(import.meta.url);
 
 const orderedVersionIncrement: semver.ReleaseType[] = [
   'major',
@@ -20,6 +25,13 @@ export const patchReleaseChangelog = async (previousVersionId: string) => {
   const componentChangelogs = await collectComponentChangelogs();
   const releaseChangelog = await getReleaseChangelog();
 
+  const { packages: exportedPackages }: { packages: string[] } = await fs.readJSON(
+    resolvePath(filename, '../../../../../semcore/ui/components.json'),
+  );
+  const exportedPackagesMap = Object.fromEntries(
+    exportedPackages.map((packageName) => [packageName, true]),
+  );
+
   const previousVersionIndex = releaseChangelog.changelogs.findIndex(
     (changelog) => changelog.version === previousVersionId,
   );
@@ -30,6 +42,7 @@ export const patchReleaseChangelog = async (previousVersionId: string) => {
 
   const componentChanges = componentChangelogs.map(({ changelogs }) =>
     changelogs
+      .filter((changelog) => exportedPackagesMap[changelog.component])
       .filter(
         ({ date }) =>
           dayjs(date).isValid() &&
