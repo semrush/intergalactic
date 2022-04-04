@@ -1,10 +1,9 @@
 ---
 title: InlineInput
 tabName: Design
-disabled: true
 ---
 
-<!-- @import playground -->
+@import playground
 
 @## Description
 
