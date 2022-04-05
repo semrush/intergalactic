@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Button from '@semcore/button';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import ResizeObserver from 'resize-observer-polyfill';
 import NavLink from './NavLink';
 import mobileLogo from '../static/logo/semrush-logo.svg';
 import hamburger from '../static/mobile/hamburger.svg';
@@ -15,7 +14,6 @@ import { gql, useQuery } from '@apollo/client';
 import Error from './Error';
 import Divider from '@semcore/divider';
 import OutsideClick from '@semcore/outside-click';
-import trottle from '@semcore/utils/lib/rafTrottle';
 
 const HeaderWrapper = styled.header`
   display: grid;
@@ -34,7 +32,6 @@ const HeaderWrapper = styled.header`
   background: #ffffff;
   box-shadow: 0 2px 16px 0 rgba(0, 0, 0, 0.1);
   z-index: 999;
-  box-sizing: border-box;
 
   a {
     color: #171a22;
@@ -349,7 +346,6 @@ const MobileHeaderMenu = ({ clicked, setClicked, data }) => (
 function Header(props) {
   const [clicked, setClicked] = useState(false);
   const [visible, setVisible] = useState(false);
-  const headerRef = React.createRef();
 
   const { error, data } = useQuery(NAVIGATE_QUERY, {
     pollInterval: process.env.NODE_ENV === 'production' ? 120000 : 5000,
@@ -357,26 +353,8 @@ function Header(props) {
 
   if (error && !data) return <Error title="Oh no! It’s 404!" />;
 
-  const updateWidthHeader = (headerNode) =>
-    trottle(() => {
-      if (!document || !headerNode) return;
-      headerNode.style.width = document.body.offsetWidth + 'px';
-    });
-
-  useEffect(() => {
-    let resizeObserver = null;
-    if (document) {
-      resizeObserver = new ResizeObserver(updateWidthHeader(headerRef.current));
-      resizeObserver.observe(document.body);
-    }
-
-    return () => {
-      resizeObserver && resizeObserver.disconnect();
-    };
-  }, []);
-
   return (
-    <HeaderWrapper {...props} ref={headerRef}>
+    <HeaderWrapper {...props}>
       {clicked ? (
         <MobileHeaderMenu clicked={clicked} setClicked={setClicked} data={data} />
       ) : (
@@ -413,7 +391,7 @@ function Header(props) {
         </MobileSearch>
         <SearchHome
           placeholder="What brings you here, Sole Survivor?"
-          style={visible ? { marginLeft: '-200px', width: '244px' } : { display: 'none' }}
+          style={visible ? { marginLeft: '-200px', width: '258px' } : { display: 'none' }}
         />
         <MobileClose
           tag={Button}
