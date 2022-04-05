@@ -1,5 +1,5 @@
 import React from 'react';
-import { testing, shared as testsShared, snapshot } from '@semcore/jest-preset-ui';
+import { testing, shared as testsShared, snapshot } from '@semcore/cli/tools/jest-preset-ui';
 import InlineInput from '../src/InlineInput';
 import SerpM from '@semcore/icon/Serp/m';
 const { cleanup, fireEvent, render, axe } = testing;
