@@ -255,6 +255,80 @@ describe('Core', () => {
   });
 });
 
+describe('Root', () => {
+  test('should set props', () => {
+    class TestRoot extends Component {
+      static displayName = 'Test';
+
+      render() {
+        const { Root } = this;
+        return (
+          <div>
+            <Root data-testid={'root'} render={'div'} />
+          </div>
+        );
+      }
+    }
+
+    const Test = createComponent(TestRoot);
+    const { queryByTestId } = render(<Test id="test" />);
+
+    expect(queryByTestId('root').id).toBe('test');
+  });
+  test('should support assign props', () => {
+    class TestRoot extends Component {
+      static displayName = 'Test';
+
+      render() {
+        const { Root } = this;
+        return (
+          <Root
+            data-testid={'root'}
+            render={'div'}
+            id="root-test"
+            className="root-test"
+            style={{
+              left: '5px',
+              padding: '5px',
+            }}
+            onClick={() => spyClick('root-test')}
+            ref={(node) => spyRef(node)}
+          />
+        );
+      }
+    }
+
+    const spyClick = jest.fn();
+    const spyRef = jest.fn();
+    const Test = createComponent(TestRoot);
+    const { queryByTestId } = render(
+      <Test
+        id="test"
+        className="test"
+        style={{
+          padding: '10px',
+          margin: '10px',
+        }}
+        onClick={() => spyClick('test')}
+        ref={(node) => spyRef(node)}
+      />,
+    );
+    fireEvent.click(queryByTestId('root'));
+
+    expect(queryByTestId('root').id).toBe('test');
+    expect(queryByTestId('root').className).toBe('test root-test');
+    expect(queryByTestId('root').style).toMatchObject({
+      left: '5px',
+      padding: '10px',
+      margin: '10px',
+    });
+    expect(spyClick.mock.calls[0][0]).toBe('test');
+    expect(spyClick.mock.calls[1][0]).toBe('root-test');
+    expect(spyRef.mock.calls[0][0].nodeName).toBe('DIV');
+    expect(spyRef.mock.calls[1][0].nodeName).toBe('DIV');
+  });
+});
+
 describe('Controll/Uncontroll mode', () => {
   test('should support create prop with name and handler in uncontroll mode', () => {
     const spy = jest.fn();
@@ -310,17 +384,31 @@ describe('Controll/Uncontroll mode', () => {
 
 describe('Getter props function', () => {
   test('should support move props from Root in Children Class', () => {
-    const spy = jest.fn();
+    class RootTestClass extends Component {
+      static displayName = 'Test';
 
-    class ChildrenTestClass extends Component<IComponentProps<{ test: unknown }>> {
+      getItemProps() {
+        return { test: 'test' };
+      }
+
       render() {
         const { Root } = this;
+        return <Root render="div" />;
+      }
+    }
+
+    class ChildrenTestClass extends Component {
+      render() {
+        const { Root } = this;
+        // @ts-ignore
         spy(this.asProps.test);
         return <Root render="div" />;
       }
     }
 
-    const Test = createComponent<CompType, ItemType>(RootTestClass, { Item: ChildrenTestClass });
+    const spy = jest.fn();
+
+    const Test = createComponent(RootTestClass, { Item: ChildrenTestClass }) as any;
     render(
       <Test>
         <Test.Item />
@@ -329,7 +417,18 @@ describe('Getter props function', () => {
     expect(spy).toHaveBeenCalledWith('test');
   });
   test('should support move props from Root in Children Function', () => {
-    const spy = jest.fn();
+    class RootTestClass extends Component {
+      static displayName = 'Test';
+
+      getItemProps() {
+        return { test: 'test' };
+      }
+
+      render() {
+        const { Root } = this;
+        return <Root render="div" />;
+      }
+    }
 
     function ChildrenTestFunc(props) {
       const { Root, test } = props;
@@ -337,7 +436,8 @@ describe('Getter props function', () => {
       return <Root render="div" />;
     }
 
-    const Test = createComponent<CompType, ItemType>(RootTestClass, { Item: ChildrenTestFunc });
+    const spy = jest.fn();
+    const Test = createComponent(RootTestClass, { Item: ChildrenTestFunc }) as any;
     render(
       <Test>
         <Test.Item />
@@ -345,8 +445,86 @@ describe('Getter props function', () => {
     );
     expect(spy).toHaveBeenCalledWith('test');
   });
-  //  TODO: передача getProps(props) и его ассаин
-  //  ассаин свойств при return
+  test('should support self props in getter', () => {
+    class RootTestClass extends Component {
+      static displayName = 'Test';
+
+      getItemProps(props) {
+        spy(props.id);
+      }
+
+      render() {
+        const { Root } = this;
+        return <Root render="div" />;
+      }
+    }
+
+    const spy = jest.fn();
+
+    const Test = createComponent<CompType, ItemType>(RootTestClass, { Item: ChildrenTestFunc });
+    render(
+      <Test>
+        <Test.Item id="test" />
+      </Test>,
+    );
+    expect(spy).toHaveBeenCalledWith('test');
+  });
+
+  test('should support assign props in getter', () => {
+    class RootTestClass extends Component {
+      static displayName = 'Test';
+
+      getItemProps() {
+        return {
+          className: 'root-test',
+          style: {
+            left: '5px',
+            padding: '5px',
+          },
+          onClick: () => spyClick('root-test'),
+          ref: (node) => spyRef(node),
+        };
+      }
+
+      render() {
+        const { Root } = this;
+        return <Root render="div" />;
+      }
+    }
+
+    const spyClick = jest.fn();
+    const spyRef = jest.fn();
+
+    const Test = createComponent(RootTestClass, { Item: ChildrenTestFunc }) as any;
+    const { queryByTestId } = render(
+      <Test>
+        <Test.Item
+          data-testid="item"
+          id="test"
+          className="test"
+          style={{
+            padding: '10px',
+            margin: '10px',
+          }}
+          onClick={() => spyClick('test')}
+          ref={(node) => spyRef(node)}
+        />
+      </Test>,
+    );
+
+    fireEvent.click(queryByTestId('item'));
+    expect(queryByTestId('item').id).toBe('test');
+    expect(queryByTestId('item').className).toBe('test root-test');
+    expect(queryByTestId('item').style).toMatchObject({
+      left: '5px',
+      padding: '10px',
+      margin: '10px',
+    });
+    expect(spyClick.mock.calls[0][0]).toBe('test');
+    expect(spyClick.mock.calls[1][0]).toBe('root-test');
+    expect(spyRef.mock.calls[0][0].nodeName).toBe('DIV');
+    expect(spyRef.mock.calls[1][0].nodeName).toBe('DIV');
+  });
 });
 
 describe('Hoist props', () => {
