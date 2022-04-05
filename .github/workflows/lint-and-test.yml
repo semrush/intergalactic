@@ -93,4 +93,6 @@ jobs:
       - name: Test
         env:
           SCREENSHOT_URL: ${{ secrets.SCREENSHOT_URL }}
-        run: yarn test
+        run: yarn coverage
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v2
