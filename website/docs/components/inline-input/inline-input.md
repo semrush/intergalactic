@@ -1,6 +1,7 @@
 ---
 title: InlineInput
 tabName: Design
+disabled: true
 ---
 
 @import playground
