@@ -1,7 +1,6 @@
 ---
 title: InlineEdit
 tabName: Design
-disabled: true
 ---
 
 @import playground
