@@ -12,74 +12,74 @@ const makePlayground = () => (
     <br />
     <label htmlFor="simple">Simple</label>
     <br />
-    <InlineInput onBlurBehavior="cancel" inputId="simple">
-      <InlineInput.Value />
+    <InlineInput onBlurBehavior="cancel">
+      <InlineInput.Value id="simple" />
       <InlineInput.ConfirmControl />
       <InlineInput.CancelControl />
     </InlineInput>
     <br />
     <label htmlFor="loading">Loading state</label>
     <br />
-    <InlineInput loading inputId="loading">
-      <InlineInput.Value />
+    <InlineInput loading>
+      <InlineInput.Value id="loading" />
       <InlineInput.ConfirmControl />
       <InlineInput.CancelControl />
     </InlineInput>
     <br />
     <label htmlFor="disabled">Disabled</label>
     <br />
-    <InlineInput state="disabled" inputId="disabled">
-      <InlineInput.Value />
+    <InlineInput disabled>
+      <InlineInput.Value id="disabled" />
       <InlineInput.ConfirmControl />
       <InlineInput.CancelControl />
     </InlineInput>
     <br />
     <label htmlFor="custom-text">Custom text</label>
     <br />
-    <InlineInput state="invalid" confirmText="Good" cancelText="Awfull" inputId="custom-text">
-      <InlineInput.Value />
-      <InlineInput.ConfirmControl />
-      <InlineInput.CancelControl />
+    <InlineInput state="invalid">
+      <InlineInput.Value id="custom-text" />
+      <InlineInput.ConfirmControl title="Good" />
+      <InlineInput.CancelControl title="Awfull" />
     </InlineInput>
     <br />
     <label htmlFor="valid">Valid </label>
     <br />
-    <InlineInput state="valid" inputId="valid">
-      <InlineInput.Value />
+    <InlineInput state="valid">
+      <InlineInput.Value id="valid" />
       <InlineInput.ConfirmControl />
       <InlineInput.CancelControl />
     </InlineInput>
     <br />
     <label htmlFor="with-icons">With icons</label>
     <br />
-    <InlineInput inputId="with-icons">
+    <InlineInput>
       <InlineInput.Addon tag={SerpM} />
-      <InlineInput.Value />
+      <InlineInput.Value id="with-icons" />
       <InlineInput.ConfirmControl />
       <InlineInput.CancelControl />
     </InlineInput>
     <br />
     <label htmlFor="decomposed">Decomposed</label>
     <br />
-    <InlineInput inputId="decomposed">
-      <InlineInput.Value />
+    <InlineInput>
+      <InlineInput.Value id="decomposed" />
       <InlineInput.ConfirmControl />
       <InlineInput.CancelControl />
     </InlineInput>
     <br />
     <label htmlFor="primitive">Primitve</label>
     <br />
-    <InlineInput inputId="primitive">
-      <InlineInput.Value />
+    <InlineInput>
+      <InlineInput.Value id="primitive" />
       <InlineInput.ConfirmControl />
       <InlineInput.CancelControl />
     </InlineInput>
     <br />
     <label htmlFor="const-placeholder">Constant placeholder</label>
     <br />
-    <InlineInput inputId="const-placeholder">
+    <InlineInput>
       <InlineInput.Addon>I am a don't care, I punk:</InlineInput.Addon>
-      <InlineInput.Value />
+      <InlineInput.Value id="const-placeholder" />
     </InlineInput>
   </>
 );
@@ -104,14 +104,16 @@ describe('InlineInput', () => {
         <br />
         <br />
         <br />
-        <InlineInput
-          confirmText="Sh**ck is love"
-          cancelText="DRAIN THE SWAMP!"
-          $tooltipsProps={{ visible: true, disablePortal: true }}
-        >
+        <InlineInput>
           <InlineInput.Value />
-          <InlineInput.ConfirmControl />
-          <InlineInput.CancelControl />
+          <InlineInput.ConfirmControl
+            title="Sh**ck is love"
+            $tooltipsProps={{ visible: true, disablePortal: true }}
+          />
+          <InlineInput.CancelControl
+            title="DRAIN THE SWAMP!"
+            $tooltipsProps={{ visible: true, disablePortal: true }}
+          />
         </InlineInput>
         <br />
         <br />
@@ -134,12 +136,12 @@ describe('InlineInput', () => {
     const spyCancel = jest.fn();
     const spyConfirm = jest.fn();
 
-    const { getByPlaceholderText } = render(
+    const { getByTestId } = render(
       <>
-        <InlineInput placeholder="behavior-cancel" onBlurBehavior="cancel" onCancel={spyCancel}>
+        <InlineInput data-testid="behavior-cancel" onBlurBehavior="cancel" onCancel={spyCancel}>
           <InlineInput.Value />
         </InlineInput>
-        <InlineInput placeholder="behavior-confirm" onBlurBehavior="confirm" onConfirm={spyConfirm}>
+        <InlineInput data-testid="behavior-confirm" onBlurBehavior="confirm" onConfirm={spyConfirm}>
           <InlineInput.Value />
         </InlineInput>
       </>,
@@ -149,10 +151,10 @@ describe('InlineInput', () => {
     expect(spyConfirm).toHaveBeenCalledTimes(0);
 
     /** bubbling doesn't work in jest? */
-    fireEvent.blur(getByPlaceholderText('behavior-cancel'));
+    fireEvent.blur(getByTestId('behavior-cancel'));
     jest.runAllTimers();
     expect(spyCancel).toHaveBeenCalledTimes(1);
-    fireEvent.blur(getByPlaceholderText('behavior-confirm'));
+    fireEvent.blur(getByTestId('behavior-confirm'));
     jest.runAllTimers();
     expect(spyConfirm).toHaveBeenCalledTimes(1);
     jest.useRealTimers();
