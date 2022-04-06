@@ -1,5 +1,5 @@
 ---
-title: D3 example
+title: Examples
 ---
 
 > See core principles, concept description, API and changelog in the [Chart principles](/data-display/d3-chart/).
