@@ -150,17 +150,11 @@ class InlineInputBase extends Component<AsProps> {
   render() {
     const SInlineInput = Root;
     const SUnderline = 'div';
-    const { Children, styles, loading } = this.asProps;
+    const { Children, styles } = this.asProps;
     const { focused } = this.state;
 
     return sstyled(styles)(
-      <SInlineInput
-        render={Box}
-        ref={this.rootRef}
-        focused={focused}
-        disabled={loading}
-        onBlur={this.handleBlur}
-      >
+      <SInlineInput render={Box} ref={this.rootRef} focused={focused} onBlur={this.handleBlur}>
         <SUnderline>
           <Children />
         </SUnderline>
