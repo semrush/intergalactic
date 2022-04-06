@@ -95,11 +95,10 @@ class InlineInputBase extends Component<AsProps> {
   }
 
   getValueProps() {
-    const { state, loading } = this.asProps;
+    const { state } = this.asProps;
     return {
       ref: this.inputRef,
       state,
-      disabled: loading,
       onKeyDown: this.handleKeyDown,
       onFocus: this.handleFocus,
       onBlur: this.handleBlur,
@@ -150,14 +149,13 @@ class InlineInputBase extends Component<AsProps> {
   render() {
     const SInlineInput = Root;
     const SUnderline = 'div';
-    const { Children, styles } = this.asProps;
+    const { Children, styles, disabled } = this.asProps;
     const { focused } = this.state;
 
     return sstyled(styles)(
-      <SInlineInput render={Box} ref={this.rootRef} focused={focused}>
-        <SUnderline>
-          <Children />
-        </SUnderline>
+      <SInlineInput render={Box} ref={this.rootRef} focused={focused} disabled={disabled}>
+        <Children />
+        <SUnderline />
       </SInlineInput>,
     );
   }
@@ -168,6 +166,7 @@ class Value extends Component<AsProps> {
     defaultValue: '',
   };
   static enhance = [autoFocusEnhance()];
+  static hoistProps = ['disabled'];
 
   uncontrolledProps() {
     return {
