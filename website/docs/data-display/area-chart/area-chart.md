@@ -28,9 +28,9 @@ By default, we show a chart with straight lines. This view facilitates reading t
 
 > 💡 Add a possibility to select either straight or smooth line type in the widget settings.
 
-| Example                                             | Styles                                                                                                    |
-| --------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
-| ![area chart without dots](static/without-dots.png) | **Line thickness is 3px**. Background color under the line is the color of the line with 0.2 transparency |
+| Example                                             | Styles                                                                                                     |
+| --------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
+| ![area chart without dots](static/without-dots.png) | **Line thickness is 3px**. Background color under the line is the color of the line with 0.2 transparency. |
 
 We recommend you to display the dots on lines either when there are few of them (one or two), or when data collection is irregular.
 
@@ -40,7 +40,9 @@ We recommend you to display the dots on lines either when there are few of them 
 
 @## Interaction
 
-When user hovers over the chart area, show a vertical guide line at the nearest dot and a tooltip with detailed data for the dot appears next to it. The color of the vertical guide line is `--gray-300`. For more information about the tooltip, see [Chart principles](/data-display/chart/) and [Line chart](/data-display/line-chart/).
+When user hovers over the chart area, show a vertical guide line at the nearest dot and a tooltip with detailed data for the dot appears next to it. The color of the vertical guide line is `--gray-300`.
+
+> To see detailed information about tooltip for charts see [Chart principles](/data-display/chart/#ac9830) or [Line chart](/data-display/line-chart/).
 
 @## Edge cases
 
@@ -54,7 +56,7 @@ For this case enable the display of dots on the chart by default.
 
 ### Styles
 
-- **Point size is 8px \* 8px**. When hovering, the point increases to **12px \* 12px**.
+- **Dot size is 8px \* 8px**. When hovering, the point increases to **12px \* 12px**.
 - The line has the `dashed` border style and `--gray-200` color.
 
 @## Two values

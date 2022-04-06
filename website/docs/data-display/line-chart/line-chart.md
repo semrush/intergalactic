@@ -56,6 +56,8 @@ If there are a lot of categories on the chart, the tooltip shows dots and values
 
 ![tooltip with values for many dots](static/popover-2.png)
 
+> To see detailed information about tooltip for charts see [Chart principles](/data-display/chart/#ac9830).
+
 @## Edge cases
 
 Here you will find the states for one, two, zero values, etc. All other "empty states" for widgets are specified in [Error & n/a widget states](/components/widget-empty/).
