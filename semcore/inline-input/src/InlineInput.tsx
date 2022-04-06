@@ -55,6 +55,7 @@ class InlineInputBase extends Component<AsProps> {
 
   static defaultProps = {
     state: 'normal',
+    onBlurBehavior: 'confirm',
   };
   static style = style;
 
@@ -77,19 +78,20 @@ class InlineInputBase extends Component<AsProps> {
   }
 
   getConfirmControlProps() {
-    const { value, loading } = this.asProps;
+    const { loading } = this.asProps;
     return {
-      value,
+      value: this.inputRef.current?.value,
       loading,
       onConfirm: this.handleConfirm,
     };
   }
 
   getCancelControlProps() {
-    const { loading } = this.asProps;
+    const { loading, disabled } = this.asProps;
     return {
       value: this.initValue,
-      loading,
+      // because double disabled(root disabled and addon disabled)
+      disabled: loading && !disabled,
       onCancel: this.handleCancel,
     };
   }
@@ -100,10 +102,14 @@ class InlineInputBase extends Component<AsProps> {
       ref: this.inputRef,
       state,
       onKeyDown: this.handleKeyDown,
-      onFocus: this.handleFocus,
-      onBlur: this.handleBlur,
+      onFocus: this.bindHandlerValueFocused(true),
+      onBlur: this.bindHandlerValueFocused(false),
     };
   }
+
+  bindHandlerValueFocused = (focused) => () => {
+    this.setState({ focused });
+  };
 
   handleMouseDownAddon = (e) => {
     e.preventDefault();
@@ -123,17 +129,12 @@ class InlineInputBase extends Component<AsProps> {
     this.asProps.onCancel?.(prevText, event);
   };
 
-  handleFocus = () => {
-    this.setState({ focused: true });
-  };
-
   handleBlur = (event: React.FocusEvent) => {
-    const { onConfirm, onCancel, onBlurBehavior, value } = this.asProps;
-    this.setState({ focused: false });
+    const { onConfirm, onCancel, onBlurBehavior } = this.asProps;
     if (onBlurBehavior) {
       setTimeout(() => {
         if (isFocusOutsideOf(this.rootRef.current)) {
-          if (onBlurBehavior === 'confirm') onConfirm?.(value, event);
+          if (onBlurBehavior === 'confirm') onConfirm?.(this.inputRef.current?.value, event);
           if (onBlurBehavior === 'cancel') onCancel?.(this.initValue, event);
         }
       }, 0);
@@ -141,21 +142,28 @@ class InlineInputBase extends Component<AsProps> {
   };
 
   handleKeyDown = (event: React.KeyboardEvent) => {
-    const { onConfirm, onCancel, value } = this.asProps;
-    if (event.code === 'Enter') onConfirm?.(value, event);
+    const { onConfirm, onCancel } = this.asProps;
+    if (event.code === 'Enter') onConfirm?.(this.inputRef.current?.value, event);
     if (event.code === 'Escape') onCancel?.(this.initValue, event);
   };
 
   render() {
     const SInlineInput = Root;
     const SUnderline = 'div';
-    const { Children, styles, disabled } = this.asProps;
+    const { Children, styles, loading } = this.asProps;
     const { focused } = this.state;
 
     return sstyled(styles)(
-      <SInlineInput render={Box} ref={this.rootRef} focused={focused} disabled={disabled}>
-        <Children />
-        <SUnderline />
+      <SInlineInput
+        render={Box}
+        ref={this.rootRef}
+        focused={focused}
+        disabled={loading}
+        onBlur={this.handleBlur}
+      >
+        <SUnderline>
+          <Children />
+        </SUnderline>
       </SInlineInput>,
     );
   }
@@ -228,7 +236,7 @@ const ConfirmControl: React.FC<AsProps> = (props) => {
             color="green-300"
             onClick={handleConfirm}
           />
-          <Tooltip.Popper p={2}>{props.title}</Tooltip.Popper>
+          <Tooltip.Popper p={3}>{props.title}</Tooltip.Popper>
         </Tooltip>
       )}
     </SAddon>,
@@ -239,7 +247,6 @@ ConfirmControl.defaultProps = {
 };
 const CancelControl: React.FC<AsProps> = (props) => {
   const SAddon = Root;
-  const SCloseM = CloseM;
   const { Children, children: hasChildren, title } = props;
 
   const handleCancel = React.useCallback(
@@ -260,9 +267,9 @@ const CancelControl: React.FC<AsProps> = (props) => {
     [handleCancel],
   );
 
-  if (props.loading) {
+  if (props.disabled) {
     return sstyled(props.styles)(
-      <SAddon render={Box}>{hasChildren ? <Children /> : <SCloseM disabled />}</SAddon>,
+      <SAddon render={Box}>{hasChildren ? <Children /> : <CloseM disabled />}</SAddon>,
     ) as React.ReactElement;
   }
 
@@ -273,14 +280,14 @@ const CancelControl: React.FC<AsProps> = (props) => {
       ) : (
         <Tooltip {...props.$tooltipsProps}>
           <Tooltip.Trigger
-            tag={SCloseM}
+            tag={CloseM}
             aria-label={title}
             role="button"
             interactive
             color="gray-300"
             onClick={handleCancel}
           />
-          <Tooltip.Popper p={2}>{title}</Tooltip.Popper>
+          <Tooltip.Popper p={3}>{title}</Tooltip.Popper>
         </Tooltip>
       )}
     </SAddon>,
