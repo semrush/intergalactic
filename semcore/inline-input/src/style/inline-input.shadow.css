@@ -10,6 +10,8 @@ SInlineInput {
   vertical-align: middle;
   padding: 1px;
   box-sizing: border-box;
+
+  background-color: var(--white);
 }
 
 SInlineInput[disabled] {
@@ -52,13 +54,13 @@ SValue {
 }
 
 SUnderline {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: -1;
-  background: #fff;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-grow: 1;
+  width: 100%;
+  height: 100%;
+  min-height: 1em;
   border: 1px solid transparent;
   border-bottom: 1px solid var(--gray-200);
 }
@@ -101,8 +103,4 @@ SInlineInput[state='invalid'] SUnderline {
 SInlineInput[state='invalid'][focused] SUnderline {
   border-color: var(--red-400);
   box-shadow: var(--keyboard-focus-invalid);
-}
-
-SCloseM[disabled] {
-  opacity: var(--disabled-opacity);
 }
