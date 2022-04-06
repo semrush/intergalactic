@@ -118,7 +118,7 @@ The data tooltip shall always be displayed relative to the dot with an 8px margi
 | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
 | ![tooltip paddings](static/tooltip-paddings.png) ![tooltip margins](static/tooltip-margins.png) | The inner tooltip padding is 12px.                                                                    |
 | ![one-dot](static/tooltip-1.png)                                                                | The color for the additional vertical line that appears on line charts when hovering is `--gray-300`. |
-| ![one-dot](static/tooltip-3.png)                                                                | The background color that appears on bar charts is `--gray-200` with 30% transparency.                |
+| ![one-dot](static/tooltip-3.png)                                                                | The background color that appears on bar charts is `--gray-200` with .3 opacity.                      |
 
 ### Cases
 
