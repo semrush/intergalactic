@@ -3,7 +3,7 @@ title: InlineInput
 tabName: Design
 ---
 
-@import playground
+<!-- @import playground -->
 
 @## Description
 
@@ -142,4 +142,6 @@ For a tag that adds another tag, use InlineInput instead of [normal input](/comp
 
 ![case with tags](static/inline-tag-yes-no.png)
 
+@page inline-input-api
 @page inline-input-example
+@page inline-input-changelog

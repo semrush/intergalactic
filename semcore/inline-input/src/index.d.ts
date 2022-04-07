@@ -4,7 +4,10 @@ import { IBoxProps } from '@semcore/flex-box';
 
 /* utils type */
 type CProps<Props, Ctx = {}, UCProps = {}> = Props & {
-  children?: ((props: Props & Ctx, handlers: UCProps) => React.ReactElement) | React.ReactElement;
+  children?:
+    | ((props: Props & Ctx, handlers: UCProps) => React.ReactNode)
+    | React.ReactNode
+    | React.ReactNode[];
 };
 /* utils type */
 
@@ -27,11 +30,17 @@ export interface IInlineInputProps extends IBoxProps {
   /**
    * Fired with entered value when user clicks confirm control or hits `Enter` or `Space`
    */
-  onConfirm?: (value: string, event: React.MouseEvent | React.KeyboardEvent) => void;
+  onConfirm?: (
+    value: string,
+    event: React.MouseEvent | React.FocusEvent | React.KeyboardEvent,
+  ) => void;
   /**
    * Fired with value (or defaultValue) that was provided during component mount when user clicks cancel control or hits `Escape`
    */
-  onCancel?: (prevValue: string) => void;
+  onCancel?: (
+    prevValue: string,
+    event: React.MouseEvent | React.FocusEvent | React.KeyboardEvent,
+  ) => void;
   /**
    * Text value of input. Should be used with `onChange` property together
    */
@@ -41,16 +50,6 @@ export interface IInlineInputProps extends IBoxProps {
    */
   defaultValue?: string;
   /**
-   * Tooltip and aria-label text of the confirm control
-   * @default Confirm
-   */
-  confirmText?: string;
-  /**
-   * Tooltip and aria-label text of the cancel control
-   * @default Cancel
-   */
-  cancelText?: string;
-  /**
    * Makes component to catch browser focus on component mount
    * @default false
    */
@@ -59,10 +58,6 @@ export interface IInlineInputProps extends IBoxProps {
    * Gray text displayed in empty input
    */
   placeholder?: string;
-  /**
-   * `id` attribute of `<input />` dom tag. Use it to attach `<label />` via `htmlFor` attribute to `<input />` tag
-   */
-  inputId?: string;
   /**
    * Fired on every input value change. Should be used with `value` property together
    */
@@ -76,40 +71,74 @@ export interface IInlineInputProps extends IBoxProps {
    */
   onFocus?: (event: React.FocusEvent) => void;
   /**
-   * @description defines callback (`onCancel` or `onConfirm`) triggered when `blur` event out of container fired
+   * defines callback (`onCancel` or `onConfirm`) triggered when `blur` event out of container fired
    * Triggered after all previous macrotasks completed (internally called inside of `setTimeout`)
    */
   onBlurBehavior?: 'cancel' | 'confirm';
 }
 
-export interface IInlineInputAddonProps extends IBoxProps {
-  size?: 's' | 'm' | 'l' | 'xl';
-}
+export interface IInlineInputAddonProps extends IBoxProps {}
 export interface IInlineInputValueProps extends IBoxProps {
+  /**
+   * id attribute of input tag
+   */
   id?: string;
-  size?: 's' | 'm' | 'l' | 'xl';
+  /**
+   * when `true`, element is focused immediately after mount
+   */
   autoFocus?: boolean;
+  /**
+   * value of input tag
+   */
   value?: string;
+  /**
+   * uncontrolled value of input tag
+   */
   defaultValue?: string;
+  /**
+   * callback invoked on every change of input tag value
+   */
   onChange?: (value: string, event: React.ChangeEvent) => void;
+  /**
+   * visual state of component
+   */
   state?: 'normal' | 'valid' | 'invalid';
+  /**
+   * shows spinner in `InlineInput.ConfirmControl` and disables other interactive elements
+   */
   loading?: boolean;
+  /**
+   * disables interactive elements
+   */
   disabled?: boolean;
+  /**
+   * gray text in empty input tag
+   */
   placeholder?: string;
 }
 export interface IInlineInputConfirmControlProps extends IBoxProps {
-  onConfirm?: (value: string) => void;
   /**
-   * @default "Confirm"
+   * Text of tooltip
+   * @default Confirm
    */
-  confirmText?: string;
+  title?: string;
+  /**
+   * Icon component
+   * @default CheckM
+   */
+  icon?: React.FC;
 }
 export interface IInlineInputCancelControlProps extends IBoxProps {
-  onCancel?: (prevValue: string) => void;
   /**
-   * @default "Cancel"
+   * Text of tooltip
+   * @default Cancel
    */
-  cancelText?: string;
+  title?: string;
+  /**
+   * Icon component
+   * @default CloseM
+   */
+  icon?: React.FC;
 }
 
 interface IInlineInputCtx {

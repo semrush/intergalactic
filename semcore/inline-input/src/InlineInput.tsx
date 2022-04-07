@@ -21,27 +21,24 @@ const isFocusOutsideOf = (element: HTMLElement) => {
   );
 };
 
-type AsProps = {
+type OnConfirm = (
+  value: string,
+  event: React.MouseEvent | React.FocusEvent | React.KeyboardEvent,
+) => void;
+type OnCancel = (
+  prevValue: string,
+  event: React.MouseEvent | React.FocusEvent | React.KeyboardEvent,
+) => void;
+type RootAsProps = {
   state?: 'normal' | 'valid' | 'invalid';
   loading?: boolean;
   disabled?: boolean;
-  onConfirm?: (
-    value: string,
-    event: React.MouseEvent | React.FocusEvent | React.KeyboardEvent,
-  ) => void;
-  onCancel?: (
-    prevValue: string,
-    event: React.MouseEvent | React.FocusEvent | React.KeyboardEvent,
-  ) => void;
+  onConfirm?: OnConfirm;
+  onCancel?: OnCancel;
   value?: string;
   defaultValue?: string;
-  confirmText?: string;
-  cancelText?: string;
-  $tooltipsProps?: ITooltipProps;
-  title?: string;
   autoFocus?: boolean;
   placeholder?: string;
-  inputId?: string;
   onChange?: (value: string, event: React.ChangeEvent) => void;
   onBlur?: (event: React.FocusEvent) => void;
   onFocus?: (event: React.FocusEvent) => void;
@@ -50,7 +47,30 @@ type AsProps = {
   Children: React.FC;
 };
 
-class InlineInputBase extends Component<AsProps> {
+type AddonAsProps = {
+  styles?: React.CSSProperties;
+  Children: React.FC;
+};
+
+type ControlAsProps = {
+  Children: React.FC;
+  styles?: React.CSSProperties;
+  title?: string;
+  $tooltipsProps?: ITooltipProps;
+  loading?: boolean;
+  disabled?: boolean;
+  onCancel?: OnCancel;
+  value?: string;
+  icon?: React.FC;
+};
+type ConfirmControlAsProps = ControlAsProps & {
+  onConfirm?: OnConfirm;
+};
+type CancelControlAsProps = ControlAsProps & {
+  onCancel?: OnCancel;
+};
+
+class InlineInputBase extends Component<RootAsProps> {
   static displayName = 'InlineInput';
 
   static defaultProps = {
@@ -163,7 +183,7 @@ class InlineInputBase extends Component<AsProps> {
   }
 }
 
-class Value extends Component<AsProps> {
+class Value extends Component<RootAsProps> {
   static defaultProps = {
     defaultValue: '',
   };
@@ -183,12 +203,12 @@ class Value extends Component<AsProps> {
   }
 }
 
-const Addon: React.FC<AsProps> = (props) => {
+const Addon: React.FC<AddonAsProps> = (props) => {
   const SAddon = Root;
   return sstyled(props.styles)(<SAddon render={Box} />) as React.ReactElement;
 };
 
-const ConfirmControl: React.FC<AsProps> = (props) => {
+const ConfirmControl: React.FC<ConfirmControlAsProps> = (props) => {
   const SAddon = Root;
   const { Children, children: hasChildren, title } = props;
 
@@ -223,7 +243,7 @@ const ConfirmControl: React.FC<AsProps> = (props) => {
       ) : (
         <Tooltip {...props.$tooltipsProps}>
           <Tooltip.Trigger
-            tag={CheckM}
+            tag={props.icon ?? CheckM}
             aria-label={`${title} ${props.value ?? ''}`}
             role="button"
             interactive
@@ -239,7 +259,7 @@ const ConfirmControl: React.FC<AsProps> = (props) => {
 ConfirmControl.defaultProps = {
   title: 'Confirm',
 };
-const CancelControl: React.FC<AsProps> = (props) => {
+const CancelControl: React.FC<CancelControlAsProps> = (props) => {
   const SAddon = Root;
   const { Children, children: hasChildren, title } = props;
 
@@ -274,7 +294,7 @@ const CancelControl: React.FC<AsProps> = (props) => {
       ) : (
         <Tooltip {...props.$tooltipsProps}>
           <Tooltip.Trigger
-            tag={CloseM}
+            tag={props.icon ?? CloseM}
             aria-label={title}
             role="button"
             interactive

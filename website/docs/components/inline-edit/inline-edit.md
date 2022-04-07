@@ -59,4 +59,6 @@ _For example, if the heading you need to edit has 24px font-size, then it should
 
 ![case with input size](static/inline-edit-yes-no.png)
 
+@page inline-edit-api
 @page inline-edit-example
+@page inline-edit-changelog
