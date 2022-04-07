@@ -4,7 +4,10 @@ import { IBoxProps } from '@semcore/flex-box';
 
 /* utils type */
 type CProps<Props, Ctx = {}, UCProps = {}> = Props & {
-  children?: ((props: Props & Ctx, handlers: UCProps) => React.ReactElement) | React.ReactElement;
+  children?:
+    | ((props: Props & Ctx, handlers: UCProps) => React.ReactNode)
+    | React.ReactNode
+    | React.ReactNode[];
 };
 /* utils type */
 

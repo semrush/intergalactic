@@ -15,16 +15,13 @@ const Example = () => {
         </InlineEdit.View>
         <InlineEdit.Edit>
           <InlineInput
-            autoFocus
-            value={text}
-            onChange={setText}
             onConfirm={() => setEditable(false)}
             onCancel={(prevText) => {
               setText(prevText);
               setEditable(false);
             }}
           >
-            <InlineInput.Value />
+            <InlineInput.Value autoFocus value={text} onChange={setText} />
             <InlineInput.ConfirmControl />
             <InlineInput.CancelControl />
           </InlineInput>
