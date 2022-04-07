@@ -19,6 +19,7 @@ import resolveColor from '@semcore/utils/lib/color';
 import DataTable, { ROW_GROUP } from '../src';
 
 const { render, cleanup, axe } = testing;
+
 const { shouldSupportClassName, shouldSupportRef } = testsShared;
 
 const data = [
@@ -151,7 +152,7 @@ describe('DataTable', () => {
   test('Sorting', async () => {
     const component = (
       <div style={{ width: 800 }}>
-        <DataTable data={data} sort={['kd, cpc']} onSortChange={jest.fn()}>
+        <DataTable data={data} sort={['kd, cpc', 'desc']} onSortChange={jest.fn()}>
           <DataTable.Head>
             <DataTable.Column name="keyword" children="Keyword" />
             <DataTable.Column name="kd" children="KD,%" sortable />
@@ -280,7 +281,7 @@ describe('DataTable', () => {
           </DataTable.Head>
           <DataTable.Body>
             <DataTable.Row>
-              {(props, row, index) => {
+              {(props, row) => {
                 return {
                   theme: row['kd'] === '-' ? 'warning' : props.theme,
                 };
@@ -319,7 +320,7 @@ describe('DataTable', () => {
           </DataTable.Head>
           <DataTable.Body>
             <DataTable.Cell name="keyword">
-              {(props, row, index) => {
+              {(props, row) => {
                 return {
                   children: <Link>{row[props.name]}</Link>,
                 };
@@ -358,9 +359,9 @@ describe('DataTable', () => {
           </DataTable.Head>
           <DataTable.Body>
             <DataTable.Cell name="keyword/kd/cpc/vol">
-              {(props, row, index) => {
+              {(props, row) => {
                 return {
-                  children: ['-', '$0', 'n/a'].includes(row[props.name]) ? (
+                  children: ['-', '$0', 'n/a'].includes((row as any)[props.name]) ? (
                     <Spin />
                   ) : (
                     props.children
@@ -424,7 +425,7 @@ describe('DataTable', () => {
             </DataTable.Head>
             <DataTable.Body>
               <DataTable.Row tag={RowAccordion}>
-                {(props, row, index) => {
+                {(_props, _row, index) => {
                   return {
                     value: index,
                     active: [1, 2].includes(index),
@@ -444,7 +445,7 @@ describe('DataTable', () => {
                 }}
               </DataTable.Row>
               <DataTable.Cell name="keyword">
-                {(props, row, index) => {
+                {(props) => {
                   return {
                     children: (
                       <Flex alignItems="center">
@@ -505,7 +506,7 @@ describe('DataTable', () => {
                 }}
               </DataTable.Row>
               <DataTable.Cell name="keyword">
-                {(props, row, index) => {
+                {(props) => {
                   return {
                     children: (
                       <Flex alignItems="center">

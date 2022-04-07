@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.1.0] - 2022-04-07
+
+### Changed
+
+- Internal enhances, rewritten from js to ts, render algorithmic performance increased.
+
 ## [2.0.0] - 2022-04-06
 
 ### Fixed

@@ -6,45 +6,63 @@ import SortDesc from '@semcore/icon/SortDesc/m';
 import SortAsc from '@semcore/icon/SortAsc/m';
 import { callAllEventHandlers } from '@semcore/utils/lib/assignProps';
 import { flattenColumns, getFixedStyle, getScrollOffsetValue } from './utils';
+import type { Column } from './types';
 import logger from '@semcore/utils/lib/logger';
+import type ResizeObserverCallback from 'resize-observer-polyfill';
 
 import scrollStyles from './style/scroll-area.shadow.css';
 
 const SORTING_ICON = {
   desc: SortDesc,
   asc: SortAsc,
+} as const;
+
+type AsProps = {
+  $onSortClick: (name: string, event: React.MouseEvent | React.KeyboardEvent) => void;
+  $scrollRef: (instance: unknown) => void;
+  use: 'primary' | 'secondary';
+  columnsChildren: Column[];
+  onResize: ResizeObserverCallback;
+  sticky: boolean;
+  ['data-ui-name']: string;
 };
 
-class Head extends Component {
-  columns = [];
+class Head extends Component<AsProps> {
+  columns: Column[] = [];
 
-  bindHandlerSortClick = (name) => (e) => {
-    this.asProps.$onSortClick(name, e);
+  static displayName: string;
+
+  bindHandlerSortClick = (name: string) => (event: React.MouseEvent) => {
+    this.asProps.$onSortClick(name, event);
   };
 
-  bindHandlerKeyDown = (name) => (e) => {
-    if (e.keyCode === 13) {
-      this.asProps.$onSortClick(name, e);
+  bindHandlerKeyDown = (name: string) => (event: React.KeyboardEvent) => {
+    if (event.code === 'Enter') {
+      this.asProps.$onSortClick(name, event);
     }
   };
 
-  renderColumns(columns, width) {
+  renderColumns(columns: Column[], width: number) {
     return columns.map((column) => this.renderColumn(column, width));
   }
 
-  renderColumn(column, width) {
+  renderColumn(column: Column, width: number) {
     const { styles, use, hidden } = this.asProps;
     const SColumn = Flex;
     const SHead = Box;
     const SSortIcon = SORTING_ICON[column.sortDirection];
-    const isGroup = !!column.columns;
+    const isGroup = column.columns?.length > 0;
     const cSize = isGroup ? flattenColumns(column.columns).length : 1;
     const [name, value] = getFixedStyle(column, this.columns);
+
     const style = {
-      [name]: value,
       flexBasis: column.props.flex === undefined && `${width * cSize}%`,
       ...column.props.style,
     };
+
+    if (name !== undefined && value !== undefined) {
+      style[name] = value;
+    }
 
     return sstyled(styles)(
       <SColumn
