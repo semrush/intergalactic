@@ -9,15 +9,15 @@ import CloseM from '@semcore/icon/Close/m';
 import Spin from '@semcore/spin';
 
 const isFocusOutsideOf = (element: HTMLElement) => {
-  let traversed = document.activeElement;
+  let traversed: Element | null | undefined = document.activeElement;
   for (let i = 0; i < 1000000; i++) {
     if (traversed === element) return false;
     if (traversed === document.body) return true;
-    traversed = traversed.parentElement;
+    traversed = traversed?.parentElement;
   }
 
   throw new Error(
-    'Failed to traverse parents chain in utilite `isFocusOutsideOf` reasonable count of iterations. Possibly Shadow DOM or come other uncommon DOM-way is used, that is not supported by utilite yet. If you are not doing weird things or that is reasonable, contact developers team for yours case support.',
+    'Failed to traverse parents chain in utilite `isFocusOutsideOf` in reasonable count of iterations. Possibly Shadow DOM or come other uncommon DOM-way is used, that is not supported by utilite yet. If you are not doing weird things or that is reasonable, contact developers team for yours case support.',
   );
 };
 
@@ -107,12 +107,12 @@ class InlineInputBase extends Component<AsProps> {
     };
   }
 
-  bindHandlerValueFocused = (focused) => () => {
+  bindHandlerValueFocused = (focused: boolean) => () => {
     this.setState({ focused });
   };
 
-  handleMouseDownAddon = (e) => {
-    e.preventDefault();
+  handleMouseDownAddon = (event: React.MouseEvent) => {
+    event.preventDefault();
     this.inputRef.current?.focus();
   };
 
@@ -133,8 +133,8 @@ class InlineInputBase extends Component<AsProps> {
     const { onConfirm, onCancel, onBlurBehavior } = this.asProps;
     if (onBlurBehavior) {
       setTimeout(() => {
-        if (isFocusOutsideOf(this.rootRef.current)) {
-          if (onBlurBehavior === 'confirm') onConfirm?.(this.inputRef.current?.value, event);
+        if (this.rootRef.current && isFocusOutsideOf(this.rootRef.current)) {
+          if (onBlurBehavior === 'confirm') onConfirm?.(this.inputRef.current?.value ?? '', event);
           if (onBlurBehavior === 'cancel') onCancel?.(this.initValue, event);
         }
       }, 0);
@@ -143,7 +143,7 @@ class InlineInputBase extends Component<AsProps> {
 
   handleKeyDown = (event: React.KeyboardEvent) => {
     const { onConfirm, onCancel } = this.asProps;
-    if (event.code === 'Enter') onConfirm?.(this.inputRef.current?.value, event);
+    if (event.code === 'Enter') onConfirm?.(this.inputRef.current?.value ?? '', event);
     if (event.code === 'Escape') onCancel?.(this.initValue, event);
   };
 
@@ -172,7 +172,7 @@ class Value extends Component<AsProps> {
 
   uncontrolledProps() {
     return {
-      value: (event) => event.target.value,
+      value: (event: React.ChangeEvent<HTMLInputElement>) => event.target.value,
     };
   }
 
@@ -194,7 +194,7 @@ const ConfirmControl: React.FC<AsProps> = (props) => {
 
   const handleConfirm = React.useCallback(
     (event: React.MouseEvent | React.KeyboardEvent) => {
-      props.onConfirm?.(props.value, event);
+      props.onConfirm?.(props.value ?? '', event);
     },
     [props.onConfirm, props.value],
   );
@@ -245,7 +245,7 @@ const CancelControl: React.FC<AsProps> = (props) => {
 
   const handleCancel = React.useCallback(
     (event: React.MouseEvent | React.KeyboardEvent) => {
-      props.onCancel?.(props.value, event);
+      props.onCancel?.(props.value ?? '', event);
     },
     [props.onCancel, props.value],
   );
