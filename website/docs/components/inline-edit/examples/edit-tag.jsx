@@ -23,8 +23,8 @@ const Demo = () => {
           </Tag>
         </InlineEdit.View>
         <InlineEdit.Edit>
-          <InlineInput defaultValue={value} onConfirm={handleValue} onCancel={resetEditable}>
-            <InlineInput.Value />
+          <InlineInput onConfirm={handleValue} onCancel={resetEditable}>
+            <InlineInput.Value defaultValue={value} autoFocus />
             <InlineInput.ConfirmControl />
             <InlineInput.CancelControl />
           </InlineInput>
