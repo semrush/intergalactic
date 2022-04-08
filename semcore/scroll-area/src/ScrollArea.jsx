@@ -142,11 +142,11 @@ class ScrollAreaRoot extends Component {
   };
 
   getContainerProps() {
-    const { container, inner } = this.asProps;
+    const { container, inner, onScroll } = this.asProps;
     return {
       ref: container,
       $refInner: inner,
-      onScroll: this.handleScrollContainer,
+      onScroll: callAllEventHandlers(onScroll, this.handleScrollContainer),
     };
   }
 

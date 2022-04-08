@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.2.0] - unreleased
+
+### Added
+
+- Virtual scroll support.
+
 ## [2.1.0] - 2022-04-07
 
 ### Changed

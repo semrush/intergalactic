@@ -140,6 +140,12 @@ We use the example with [the accordion above](/table-group/data-table/#ab2a56).
 
 @example table-in-table
 
+@## Virtual scroll in the table
+
+Use `virtualScroll` property to enable scroll virtualization.
+
+@example virtual-scroll
+
 @## Download status
 
 You can replace the `tag` property with `<DataTable.Body/>` on the `SpinContainer` to cover the table with the spinner.
