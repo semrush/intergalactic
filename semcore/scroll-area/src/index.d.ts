@@ -1,4 +1,4 @@
-import type ResizeObserverCallback from 'resize-observer-polyfill';
+import 'resize-observer-polyfill';
 import { CProps, PropGetterFn, ReturnEl } from '@semcore/core';
 import { Box, IBoxProps } from '@semcore/flex-box';
 import { NodeByRef } from '@semcore/utils/lib/ref';
@@ -14,6 +14,8 @@ export interface IScrollAreaProps extends IBoxProps {
   inner?: NodeByRef;
   /** Callback executed when container change size  */
   onResize?: ResizeObserverCallback;
+  /** Called every time user scrolls area  */
+  onScroll: (event: React.SyntheticEvent<HTMLElement>) => void;
 }
 
 export interface IScrollAreaContext extends IScrollAreaProps {

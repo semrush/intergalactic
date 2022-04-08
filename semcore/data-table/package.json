@@ -16,7 +16,8 @@
     "@semcore/flex-box": "^4",
     "@semcore/icon": "^2.16",
     "@semcore/scroll-area": "^3.2",
-    "@semcore/utils": "^3.22"
+    "@semcore/utils": "^3.22",
+    "resize-observer-polyfill": "^1.5"
   },
   "devDependencies": {
     "@semcore/jest-preset-ui": "1.0.0",

@@ -36,6 +36,7 @@ type AsProps = {
   use: 'primary' | 'secondary';
   sort: SortDirection[];
   data: RowData[];
+  dataKey: string;
 };
 
 type HeadAsProps = {
@@ -79,6 +80,10 @@ export interface IDataTableProps extends IBoxProps {
   sort?: DataTableSort;
   /** Handler call when will request change sort */
   onSortChange?: (sort: DataTableSort, e?: React.SyntheticEvent) => void;
+  /** Field name in one data entity that is unique accross all set of data
+   * @default id
+   */
+  dataKey?: string;
 }
 
 export interface IDataTableHeadProps extends IBoxProps {
@@ -106,6 +111,12 @@ export interface IDataTableColumnProps extends IFlexProps {
 export interface IDataTableBodyProps extends IBoxProps {
   /** Rows table */
   rows?: DataTableRow[];
+  /** When enabled, only visually acessable rows are rendered.
+   * `tollerance` property controls how many rows outside of viewport are render.
+   * `rowHeight` fixes the rows height if it known. If not provided, first row node height is measured.
+   * @default { tollerance: 2 }
+   */
+  virtualScroll?: boolean | { tollerance?: number; rowHeight?: number };
 }
 
 export interface IDataTableRowProps extends IBoxProps {
@@ -129,6 +140,7 @@ class RootDefinitionTable extends Component<AsProps> {
 
   static defaultProps = {
     use: 'primary',
+    dataKey: 'id',
     sort: [],
     data: [],
   } as AsProps;
@@ -260,7 +272,7 @@ class RootDefinitionTable extends Component<AsProps> {
   }
 
   getBodyProps(props: BodyAsProps) {
-    const { data, use } = this.asProps;
+    const { data, use, dataKey } = this.asProps;
 
     const cellPropsLayers: { [columnName: string]: PropsLayer[] } = {};
     const rowPropsLayers: PropsLayer[] = [];
@@ -289,13 +301,16 @@ class RootDefinitionTable extends Component<AsProps> {
       }
     });
 
-    return {
+    const result = {
       columns: this.columns,
       rows: this.dataToRows(data, cellPropsLayers),
+      dataKey,
       use,
       rowPropsLayers,
       $scrollRef: this.scrollBodyRef,
     };
+
+    return result;
   }
 
   dataToRows(data: RowData[], cellPropsLayers: { [columnName: string]: PropsLayer[] }) {
