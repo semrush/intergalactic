@@ -33,7 +33,6 @@ export type Column<
     style: React.CSSProperties;
     fixed: 'left' | 'right';
     children: React.ReactNode[];
-
     resizable: boolean;
     sortable: boolean | SortDirection;
     sortDirection: SortDirection;
