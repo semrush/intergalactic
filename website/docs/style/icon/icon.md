@@ -6,8 +6,6 @@ tabName: Design
 
 @import icons
 
-@import index
-
 @## Sizes
 
 There are two icon sizes:
