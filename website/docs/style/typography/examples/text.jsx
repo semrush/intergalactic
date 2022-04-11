@@ -47,8 +47,10 @@ export default () => (
       <List.Item>Carpe diem. Seize the day, boys. Make your lives extraordinary.</List.Item>
     </List>
     <List tag="ol" mb={2}>
-      <List.Item>I'm gonna make him an offer he can't refuse.</List.Item>
-      <List.Item>Carpe diem. Seize the day, boys. Make your lives extraordinary.</List.Item>
+      <List.Item marker={1}>I'm gonna make him an offer he can't refuse.</List.Item>
+      <List.Item marker={2}>
+        Carpe diem. Seize the day, boys. Make your lives extraordinary.
+      </List.Item>
     </List>
     <Blockquote author="Author Author" my={4.5}>
       Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diem nonummy nibh euismod
