@@ -274,12 +274,22 @@ function Grid(props) {
 function Title(props) {
   const { Element: STitle, styles, scale, position } = props;
 
+  const { x, y } = MAP_POSITION_TITlE[position](scale);
+
+  const sstyles = sstyled(styles);
+  const sTitleStyles = sstyles.cn('STitle', {
+    'transform-origin': `${x.toFixed(2)}px ${y.toFixed(2)}px`,
+  });
+
   return sstyled(styles)(
     <STitle
       render="text"
       childrenPosition="inside"
       position={position}
-      {...MAP_POSITION_TITlE[position](scale)}
+      className={sTitleStyles.className}
+      style={sTitleStyles.style}
+      x={x}
+      y={y}
     />,
   );
 }

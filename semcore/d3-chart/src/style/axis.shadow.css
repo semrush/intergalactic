@@ -25,7 +25,7 @@ SGrid {
 STitle {
   font-size: 12px;
   fill: var(--gray60);
-  transform-origin: center;
+  transform-origin: var(--transform-origin);
 }
 
 STitle[position='top'] {
@@ -41,14 +41,12 @@ STitle[position='bottom'] {
 
 STitle[position='right'] {
   transform: rotate(-90deg);
-  transform-box: fill-box;
   alignment-baseline: middle;
 }
 
 STitle[position='left'] {
   transform: rotate(-90deg);
-  text-anchor: end;
-  transform-box: fill-box;
+  text-anchor: middle;
   alignment-baseline: middle;
 }
 
