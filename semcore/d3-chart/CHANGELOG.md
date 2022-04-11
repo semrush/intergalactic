@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [1.8.0] - 2022-04-11
+
+### Fixed
+
+- Fixed left and right `<Axis.Title />` unexpected horizontal transition based on title characters count.
+
 ## [1.7.1] - 2022-04-03
 
 ### Changed
