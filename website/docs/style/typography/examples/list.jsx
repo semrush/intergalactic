@@ -4,7 +4,7 @@ import CheckS from '@semcore/icon/Check/m';
 
 export default () => (
   <div>
-    <List size={300} marker={<CheckS color="green" />}>
+    <List size={300} marker={<CheckS color="green" mt={1} />}>
       <List.Item>I'm gonna make him an offer he can't refuse.</List.Item>
       <List.Item marker={<CheckS />}>
         (Uncheck icon) Carpe diem. Seize the day, boys. Make your lives extraordinary.
