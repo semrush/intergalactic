@@ -17,11 +17,6 @@
     "resolveJsonModule": true,
     "noImplicitAny": true,
     "baseUrl": "./semcore",
-    //    "paths": {
-    //      "@semcore/*": [
-    //        "*/src"
-    //      ]
-    //    },
     "plugins": [
       { "name": "typescript-workspace-plugin" },
       {
@@ -30,7 +25,8 @@
           "customMatcher": "\\.shadow\\.css$"
         }
       }
-    ]
+    ],
+    "typeRoots": ["types"]
   },
   "exclude": ["node_modules", "website", "website", "tools"]
 }

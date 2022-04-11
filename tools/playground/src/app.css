@@ -1,0 +1,14 @@
+html {
+  font-family: Ubuntu, Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  color: #333333;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+}
+
+.intergalactic-playground_playground-view {
+  padding: 20px;
+}

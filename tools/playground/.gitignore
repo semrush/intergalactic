@@ -2,3 +2,4 @@ examples/*
 !examples/index.tsx
 
 lib/
+public/dist

@@ -1,0 +1,17 @@
+.intergalactic-playground_error-boundary {
+  font-size: 20px;
+}
+
+.intergalactic-playground_error-boundary .title {
+  font-weight: bold;
+  font-size: 30px;
+  color: #fe5252;
+  margin-bottom: 30px;
+}
+
+.intergalactic-playground_error-boundary .stack-trace {
+  color: #fe5252;
+  font-size: 22px;
+  line-height: 2;
+  margin: 0;
+}
