@@ -4,6 +4,7 @@ import Skeleton from '@semcore/skeleton';
 
 function getSkeleton() {
   return ['keyword', 'kd', 'cpc', 'vol'].map((c) => ({
+    cssVar: `--${c}_width`,
     name: c,
     data: (
       <Skeleton height={17}>
