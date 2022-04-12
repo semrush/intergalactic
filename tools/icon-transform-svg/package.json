@@ -7,7 +7,7 @@
     "icon-transform-svg": "./bin/index.js"
   },
   "scripts": {
-    "test": "jest index.test.js"
+    "test": "jest"
   },
   "author": "",
   "license": "ISC",

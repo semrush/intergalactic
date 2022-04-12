@@ -1,10 +1,8 @@
 const path = require('path');
 const fs = require('fs-extra');
 const glob = require('glob');
+const { exec } = require('child_process');
 const pluginTester = require('babel-plugin-tester');
-
-const parsingSvg = require('../parsingSvg');
-const transformSvg = require('../index');
 
 const rootPath = path.resolve(process.cwd(), '__tests__');
 
@@ -12,7 +10,7 @@ describe('Parsing svg', () => {
   test('Files should compile', async () => {
     const publicPath = `${rootPath}/svg`;
     await fs.emptyDir(publicPath);
-    await parsingSvg(publicPath, `${rootPath}/src/**/*.svg`);
+    await cli(`${rootPath}/parsingSvg`, rootPath);
     //TODO for support old icons pay
     await fs.move(`${publicPath}/src/pay/polygon.svg`, `${publicPath}/pay/polygon.svg`);
     await fs.remove(`${publicPath}/src`);
@@ -60,7 +58,7 @@ describe('Transform svg', () => {
 
     const publicSvgPath = `${rootPath}/svg`;
     const publicSvgNewPath = `${rootPath}/svg-new`;
-    await transformSvg();
+    await cli(`${rootPath}/transformSvg`, rootPath);
 
     await checkDistFiles(publicSvgPath, 'icon', { slice: -2 });
     await checkDistFiles(publicSvgPath, 'color', { slice: -3 });
@@ -73,6 +71,7 @@ describe('Transform svg', () => {
     await checkDistFiles(publicSvgPath, 'pay', { slice: -2 });
 
     //new Icons
+    await cli(`${rootPath}/transformSvg --sourceFolder=svg-new`, rootPath);
     await checkDistFiles(publicSvgNewPath, 'icon', { slice: -2 });
     await checkDistFiles(publicSvgNewPath, 'color', { slice: -3 });
 
@@ -88,7 +87,7 @@ describe('Transform svg', () => {
 const familyNameIcons = ['color', 'external', 'pay', 'path', 'pathNew'];
 pluginTester({
   plugin: () => ({}),
-  pluginName: 'babel-plugin-remove-inject',
+  pluginName: 'test',
   filename: __filename,
   tests: familyNameIcons
     .map((name) => {
@@ -101,3 +100,19 @@ pluginTester({
     })
     .flat(),
 });
+
+function cli(scriptPath, cwd, args = []) {
+  return new Promise((resolve) => {
+    exec(`node ${path.resolve(scriptPath)} ${args.join(' ')}`, { cwd }, (error, stdout, stderr) => {
+      if (error && error.code) {
+        throw Error(error);
+      }
+      resolve({
+        code: error && error.code ? error.code : 0,
+        error,
+        stdout,
+        stderr,
+      });
+    });
+  });
+}
