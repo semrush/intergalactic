@@ -36,7 +36,7 @@ type AsProps = {
   use: 'primary' | 'secondary';
   sort: SortDirection[];
   data: RowData[];
-  dataKey: string;
+  uniqueKey: string;
 };
 
 type HeadAsProps = {
@@ -83,7 +83,7 @@ export interface IDataTableProps extends IBoxProps {
   /** Field name in one data entity that is unique accross all set of data
    * @default id
    */
-  dataKey?: string;
+  uniqueKey?: string;
 }
 
 export interface IDataTableHeadProps extends IBoxProps {
@@ -140,7 +140,7 @@ class RootDefinitionTable extends Component<AsProps> {
 
   static defaultProps = {
     use: 'primary',
-    dataKey: 'id',
+    uniqueKey: 'id',
     sort: [],
     data: [],
   } as AsProps;
@@ -272,7 +272,7 @@ class RootDefinitionTable extends Component<AsProps> {
   }
 
   getBodyProps(props: BodyAsProps) {
-    const { data, use, dataKey } = this.asProps;
+    const { data, use, uniqueKey } = this.asProps;
 
     const cellPropsLayers: { [columnName: string]: PropsLayer[] } = {};
     const rowPropsLayers: PropsLayer[] = [];
@@ -304,7 +304,7 @@ class RootDefinitionTable extends Component<AsProps> {
     const result = {
       columns: this.columns,
       rows: this.dataToRows(data, cellPropsLayers),
-      dataKey,
+      uniqueKey,
       use,
       rowPropsLayers,
       $scrollRef: this.scrollBodyRef,
