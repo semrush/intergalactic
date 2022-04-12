@@ -9,22 +9,22 @@
   "license": "MIT",
   "dependencies": {
     "@semcore/changelog-handler": "0.0.1",
-    "axios": "^0.25.0",
-    "dayjs": "^1.10.7",
-    "execa": "^6.1.0",
-    "fs-extra": "^9.0.1",
-    "marked-ast": "^0.3.0",
-    "marked-ast-markdown": "^2.1.0",
-    "semver": "^5.6.0",
-    "simple-git": "^3.2.6",
-    "tsm": "^2.2.1"
+    "axios": "0.25.0",
+    "dayjs": "1.10.7",
+    "execa": "6.1.0",
+    "fs-extra": "9.0.1",
+    "marked-ast": "0.3.0",
+    "marked-ast-markdown": "2.1.0",
+    "semver": "5.6.0",
+    "simple-git": "3.2.6",
+    "tsm": "2.2.1"
   },
   "scripts": {
     "start": "tsm index.ts"
   },
   "devDependencies": {
-    "@types/fs-extra": "^9.0.13",
-    "@types/semver": "^7.3.9"
+    "@types/fs-extra": "9.0.13",
+    "@types/semver": "7.3.9"
   },
   "jest": {
     "preset": "@semcore/jest-preset-ui"

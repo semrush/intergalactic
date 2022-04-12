@@ -21,7 +21,7 @@
     "@semcore/icon": "^2.16",
     "@semcore/dropdown": "^2",
     "@semcore/typography": "^3",
-    "dayjs": "^1.8"
+    "dayjs": "1.8.36"
   },
   "peerDependencies": {
     "@semcore/core": "^1.11",

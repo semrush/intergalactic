@@ -23,9 +23,9 @@
     "@semcore/spin-container": "^5.0.0",
     "@semcore/tooltip": "^4",
     "@semcore/typography": "^3",
-    "final-form": "^4.18",
-    "final-form-focus": "^1.1",
-    "react-final-form": "^6.3"
+    "final-form": "4.18.7",
+    "final-form-focus": "1.1.2",
+    "react-final-form": "6.3.5"
   },
   "peerDependencies": {
     "@semcore/core": "^1.11",

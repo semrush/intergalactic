@@ -7,17 +7,17 @@
   "license": "ISC",
   "private": true,
   "dependencies": {
-    "@testing-library/react": "^11.2.2",
-    "babel-jest": "^24.8.0",
+    "@testing-library/react": "11.2.2",
+    "babel-jest": "24.8.0",
     "@semcore/babel-preset-ui": "*",
-    "dotenv": "^8.2.0",
-    "identity-obj-proxy": "^3.0.0",
-    "jest-axe": "^4.1.0",
-    "jest-image-snapshot": "^2.9.0"
+    "dotenv": "8.2.0",
+    "identity-obj-proxy": "3.0.0",
+    "jest-axe": "4.1.0",
+    "jest-image-snapshot": "2.9.0"
   },
   "devDependencies": {
-    "@testing-library/jest-dom": "^5.11.3",
-    "@types/jest-axe": "^3.5.1"
+    "@testing-library/jest-dom": "5.11.3",
+    "@types/jest-axe": "3.5.1"
   },
   "jest": {
     "preset": "@semcore/jest-preset-ui"

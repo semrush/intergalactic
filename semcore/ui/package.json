@@ -79,9 +79,9 @@
     "@semcore/widget-empty": "2.6.5"
   },
   "devDependencies": {
-    "fs-extra": "^9.0.1",
-    "glob": "^7.1.6",
-    "jest": "^26.5.3"
+    "fs-extra": "9.0.1",
+    "glob": "7.1.6",
+    "jest": "26.5.3"
   },
   "jest": {
     "preset": "@semcore/jest-preset-ui"

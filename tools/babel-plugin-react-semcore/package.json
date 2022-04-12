@@ -9,13 +9,13 @@
   "dependencies": {
     "@semcore/babel-plugin-shadow": "^1.2",
     "@semcore/babel-plugin-styles": "^1.2",
-    "css-purge": "^3.1.8",
-    "semver": "^7.3.5",
-    "string-hash": "^1.1.3"
+    "css-purge": "3.1.8",
+    "semver": "7.3.5",
+    "string-hash": "1.1.3"
   },
   "devDependencies": {
-    "babel-plugin-tester": "^8.0.1",
-    "jest": "^26.6.3"
+    "babel-plugin-tester": "8.0.1",
+    "jest": "26.6.3"
   },
   "jest": {
     "preset": "@semcore/jest-preset-ui"
