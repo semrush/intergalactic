@@ -44,8 +44,38 @@ const getConfig = (framework = 'react', logger = false) => {
         export default _default;
       `,
       transformer: () => {
-        const HtmlToJsx = require('htmltojsx');
-        return new HtmlToJsx({ createClass: false });
+        const HtmlToReactParser = require('html-to-react').Parser;
+        const parser = new HtmlToReactParser();
+        const stringifyJsx = (reactElement) => {
+          if (!reactElement) {
+            return '';
+          }
+          if (Array.isArray(reactElement)) {
+            return reactElement.map(stringifyJsx).join('');
+          }
+          if (typeof reactElement === 'string') {
+            return reactElement;
+          }
+          if (reactElement.children) {
+            return stringifyJsx(reactElement.children);
+          }
+          const { type, props } = reactElement;
+          const { children, ...otherProps } = props;
+          let attributes = Object.entries(otherProps)
+            .map(([key, value]) => (value === true ? key : `${key}="${value}"`))
+            .join(' ');
+          if (attributes) {
+            attributes = ' ' + attributes;
+          }
+          return `<${type}${attributes}>${stringifyJsx(children)}</${type}>`;
+        };
+        return {
+          convert: (htmlText) => {
+            const jsxModel = parser.parse(htmlText);
+
+            return stringifyJsx(jsxModel);
+          },
+        };
       },
       babelConfig: {
         presets: ['@babel/preset-react', ['@babel/preset-env', { modules: 'cjs' }]],
