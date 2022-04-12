@@ -14,12 +14,12 @@
   "license": "ISC",
   "private": true,
   "dependencies": {
-    "@google-cloud/storage": "^2.4.3",
-    "fs-extra": "^8.1.0",
-    "glob": "^7.1.4",
-    "imagemin": "^7.0.1",
-    "imagemin-pngquant": "^8.0.0",
-    "spritesmith": "^3.3.1"
+    "@google-cloud/storage": "2.4.3",
+    "fs-extra": "8.1.0",
+    "glob": "7.1.4",
+    "imagemin": "7.0.1",
+    "imagemin-pngquant": "8.0.0",
+    "spritesmith": "3.3.1"
   },
   "jest": {
     "preset": "@semcore/jest-preset-ui"

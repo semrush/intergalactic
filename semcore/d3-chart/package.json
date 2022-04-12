@@ -17,13 +17,13 @@
     "@semcore/popper": "^4.9",
     "@semcore/utils": "^3.15",
     "@semcore/animation": "^1",
-    "@upsetjs/venn.js": "^1.4.1",
-    "d3-array": "^3",
-    "d3-shape": "^3",
-    "d3-scale": "^4",
-    "d3-interpolate": "^3",
-    "d3-transition": "^3",
-    "resize-observer-polyfill": "^1.5"
+    "@upsetjs/venn.js": "1.4.1",
+    "d3-array": "3.1.6",
+    "d3-shape": "3.1.0",
+    "d3-scale": "3.3.0",
+    "d3-interpolate": "3.0.1",
+    "d3-transition": "3.0.1",
+    "resize-observer-polyfill": "1.5.1"
   },
   "peerDependencies": {
     "@semcore/core": "^1.11",

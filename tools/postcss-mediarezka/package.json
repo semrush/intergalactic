@@ -5,7 +5,7 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
-    "postcss": "^8.2.13"
+    "postcss": "8.2.13"
   },
   "jest": {
     "preset": "@semcore/jest-preset-ui"

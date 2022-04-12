@@ -20,8 +20,8 @@
     "@semcore/portal": "^2",
     "@semcore/utils": "^3.24",
     "focus-lock": "0.9.1",
-    "react-focus-lock": "^2.3",
-    "resize-observer-polyfill": "^1.5"
+    "react-focus-lock": "2.3.1",
+    "resize-observer-polyfill": "1.5.1"
   },
   "peerDependencies": {
     "@semcore/core": "^1.11",

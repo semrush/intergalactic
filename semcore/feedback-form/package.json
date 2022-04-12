@@ -19,9 +19,9 @@
     "@semcore/spin-container": "^5.0.0",
     "@semcore/button": "^3",
     "@semcore/notice": "^3",
-    "final-form": "^4.19",
-    "final-form-focus": "^1.1",
-    "react-final-form": "^6.4"
+    "final-form": "4.19.1",
+    "final-form-focus": "1.1.2",
+    "react-final-form": "6.4.0"
   },
   "peerDependencies": {
     "@semcore/core": "^1.11",

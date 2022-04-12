@@ -7,18 +7,18 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
-    "@babel/cli": "^7.8.4",
-    "@babel/core": "^7.8.7",
+    "@babel/cli": "7.8.4",
+    "@babel/core": "7.8.7",
     "@semcore/babel-preset-ui": "*",
-    "execa": "^5.0.0",
-    "fs-extra": "^8.1.0",
-    "minimist": "^1.2.5",
-    "postcss": "^8.2.13",
-    "postcss-cli": "^7.1.0",
-    "postcss-import": "^12.0.1",
-    "postcss-inline-comment": "^3.0.0",
-    "postcss-preset-env": "^6.7.0",
-    "typescript": "^4.5.5"
+    "execa": "5.0.0",
+    "fs-extra": "8.1.0",
+    "minimist": "1.2.5",
+    "postcss": "8.2.13",
+    "postcss-cli": "7.1.0",
+    "postcss-import": "12.0.1",
+    "postcss-inline-comment": "3.0.0",
+    "postcss-preset-env": "6.7.0",
+    "typescript": "4.5.5"
   },
   "jest": {
     "preset": "@semcore/jest-preset-ui"

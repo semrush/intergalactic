@@ -30,9 +30,9 @@
     "@semcore/checkbox": "^5",
     "@semcore/utils": "^3.17",
     "@types/recharts": "1.8.14",
-    "hoist-non-react-statics": "^3.3",
+    "hoist-non-react-statics": "3.3.2",
     "recharts": "1.8.5",
-    "@upsetjs/venn.js": "^1.4.1"
+    "@upsetjs/venn.js": "1.4.1"
   },
   "peerDependencies": {
     "@semcore/core": "^1",
