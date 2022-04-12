@@ -7,8 +7,11 @@ on:
 jobs:
   slack-pr-notify:
     runs-on: ubuntu-latest
+    env:
+      # because https://securitylab.github.com/research/github-actions-untrusted-input/
+      TITLE: ${{ github.event.issue.title }}
     steps:
       - run: |
           curl -X POST \
           -H 'Content-type: application/json' \
-          --data '{"text":"${{ github.event.pull_request.user.login }} opened merge request [${{ github.event.pull_request.title }}] on ${{ github.event.pull_request.html_url }}"}' ${{ secrets.SLACK_WEBHOOK_URL_DEV }}
+          --data '{"text":"${{ github.event.pull_request.user.login }} opened merge request [$TITLE] on ${{ github.event.pull_request.html_url }}"}' ${{ secrets.SLACK_WEBHOOK_URL_DEV }}
