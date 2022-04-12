@@ -19,7 +19,8 @@
     "@semcore/input": "^2",
     "@semcore/checkbox": "^5",
     "@semcore/flex-box": "^4",
-    "@semcore/divider": "^2"
+    "@semcore/divider": "^2",
+    "classnames": "2.2.6"
   },
   "peerDependencies": {
     "@semcore/core": "^1.11",
@@ -32,5 +33,8 @@
     "type": "git",
     "url": "https://github.com/semrush/intergalactic.git",
     "directory": "semcore/select"
+  },
+  "devDependencies": {
+    "@semcore/jest-preset-ui": "1.0.0"
   }
 }

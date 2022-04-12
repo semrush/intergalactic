@@ -16,7 +16,8 @@
     "@semcore/utils": "^3.15",
     "@semcore/dropdown": "^2",
     "@semcore/flex-box": "^4",
-    "@semcore/scroll-area": "^3"
+    "@semcore/scroll-area": "^3",
+    "classnames": "2.2.6"
   },
   "peerDependencies": {
     "@semcore/core": "^1.11",
@@ -29,5 +30,8 @@
     "type": "git",
     "url": "https://github.com/semrush/intergalactic.git",
     "directory": "semcore/dropdown-menu"
+  },
+  "devDependencies": {
+    "@semcore/jest-preset-ui": "1.0.0"
   }
 }

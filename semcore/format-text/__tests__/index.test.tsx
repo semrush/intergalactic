@@ -28,8 +28,8 @@ describe('FormatText', () => {
         </a>
         <br />
         <blockquote>
-          Не тот велик, кто не велик, а тот велик, кто велик.
-          <cite>- Великий мудрец</cite>
+          Not the great one who is not great, but the great one who is great.
+          <cite>- The Great Sage</cite>
         </blockquote>
         <h1>test</h1>
         <h1>

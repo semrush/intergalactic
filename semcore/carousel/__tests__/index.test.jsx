@@ -1,8 +1,7 @@
 import React from 'react';
-import { testing } from '@semcore/jest-preset-ui';
+import { testing, shared as testsShared } from '@semcore/jest-preset-ui';
 const { axe, cleanup, fireEvent, render } = testing;
 
-import { shared as testsShared } from '@semcore/jest-preset-ui';
 const { shouldSupportClassName, shouldSupportRef } = testsShared;
 import Carousel from '../src';
 
@@ -14,7 +13,7 @@ const Container = (props) => (
   </Carousel.Container>
 );
 
-const Indicators = (props) => (
+const Indicators = () => (
   <Carousel.Indicators>
     {({ items }) => (
       <>

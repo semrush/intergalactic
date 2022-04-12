@@ -9,11 +9,13 @@ import hoistNonReactStatics from 'hoist-non-react-statics';
 
 function createElementRender() {
   const Element = React.forwardRef(function (
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     { render, tag, childrenPosition = 'below', x: xS, y: yS, ...source },
     ref,
   ) {
     const {
       forwardRef = null,
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       children: _children,
       Children,
       x = xS,
@@ -50,7 +52,7 @@ function createElementRender() {
     }
 
     if (!Tag) {
-      throw new Error('В Element нужно передать render');
+      throw new Error('Element expected render prop to be passed');
     }
     return [
       <React.Fragment key="child-above">

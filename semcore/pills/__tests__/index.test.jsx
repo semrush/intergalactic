@@ -1,8 +1,7 @@
 import React from 'react';
-import { testing } from '@semcore/jest-preset-ui';
+import { testing, snapshot } from '@semcore/jest-preset-ui';
 const { render, fireEvent, cleanup, axe } = testing;
 
-import { snapshot } from '@semcore/jest-preset-ui';
 import Pills from '../src';
 
 describe('PillGroup', () => {
@@ -108,6 +107,7 @@ describe('PillGroup', () => {
   });
 
   test('should support additional elements as props', async () => {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const Addon = React.forwardRef(function ({ forwardRef, Children, Root, ...p }, ref) {
       return (
         <span ref={ref} {...p}>

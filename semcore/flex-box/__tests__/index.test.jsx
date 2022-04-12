@@ -106,7 +106,7 @@ describe('Flex', () => {
     const nodes = await getAllByText('Flex');
     nodes.forEach((node) => {
       const { testid } = node.dataset;
-      const [prop, value] = testid.split('-');
+      const [prop] = testid.split('-');
       const data = MAP_CSS[prop];
       const cssValue = getComputedStyle(node)[data.css];
       expect(cssValue).toBe(MAP_CSS[prop].values.find((v) => v === cssValue));

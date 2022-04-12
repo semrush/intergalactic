@@ -1,7 +1,5 @@
-import React from 'react';
 import { testing } from '@semcore/jest-preset-ui';
-const { render, fireEvent, cleanup } = testing;
-import { snapshot } from '@semcore/jest-preset-ui';
+const { cleanup } = testing;
 
 describe('Chart', () => {
   afterEach(cleanup);

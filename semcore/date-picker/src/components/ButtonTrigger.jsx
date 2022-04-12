@@ -1,11 +1,10 @@
-import React, { ComponentProps } from 'react';
+import React from 'react';
 import BaseTrigger from '@semcore/base-trigger';
-import { Box } from '@semcore/flex-box';
 import addonTextChildren from '@semcore/utils/lib/addonTextChildren';
 import Calendar from '@semcore/icon/Calendar/m';
 import createComponent, { Root } from '@semcore/core';
 
-const ButtonTriggerRoot = ({ Children, size }) => {
+const ButtonTriggerRoot = ({ Children }) => {
   return (
     <Root render={BaseTrigger}>
       <ButtonTrigger.Addon tag={Calendar} />

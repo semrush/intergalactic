@@ -96,6 +96,7 @@ export function getIndexFromData(data, scale, key, value) {
     const index = data.findIndex((d) => d[key] === value);
     return index >= 0 ? index : null;
   } else {
+    // eslint-disable-next-line no-console
     console.warn('[d3-chart/utils/getIndexFromData] encountered incompatible scale type');
     return null;
   }

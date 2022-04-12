@@ -1,7 +1,7 @@
 import React from 'react';
-import { testing } from '@semcore/jest-preset-ui';
+import { testing, snapshot } from '@semcore/jest-preset-ui';
 const { render, fireEvent, cleanup } = testing;
-import { snapshot } from '@semcore/jest-preset-ui';
+
 import SidePanel from '../src';
 
 describe('Drawer', () => {

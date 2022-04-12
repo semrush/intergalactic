@@ -6,6 +6,7 @@ const { render, fireEvent, cleanup } = testing;
 const { shouldSupportClassName, shouldSupportRef } = testsShared;
 import { Plot, YAxis, XAxis, Venn, Bar, StackBar, colors, Bubble, ScatterPlot } from '../src';
 import { getIndexFromData } from '../src/utils';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { minMax, Area, StackedArea } from '@semcore/d3-chart';
 import { curveCardinal } from 'd3-shape';
 

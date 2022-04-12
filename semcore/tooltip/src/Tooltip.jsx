@@ -10,13 +10,6 @@ import style from './style/tooltip.shadow.css';
 
 const Popper = PopperOrigin[CREATE_COMPONENT]();
 
-function use(props) {
-  return Object.keys(props).reduce((acc, key) => {
-    acc[`use:${key}`] = props[key];
-    return acc;
-  }, {});
-}
-
 class RootTooltip extends Component {
   static displayName = 'Tooltip';
   static style = style;
@@ -46,6 +39,7 @@ class RootTooltip extends Component {
   }
 
   render() {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { Children, title, offset, ...other } = this.asProps;
 
     const advanceMode = isAdvanceMode(Children, [
