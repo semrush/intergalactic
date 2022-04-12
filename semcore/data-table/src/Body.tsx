@@ -24,7 +24,7 @@ type AsProps = {
   onResize: ResizeObserverCallback;
   rowPropsLayers: PropsLayer[];
   use: 'primary' | 'secondary';
-  dataKey: string;
+  uniqueKey: string;
   virtualScroll?: boolean | { tollerance?: number; rowHeight?: number };
 };
 
@@ -98,11 +98,11 @@ class Body extends Component<AsProps, State> {
     { dataIndex, topOffset, nested }: { dataIndex: number; topOffset?: number; nested: boolean },
   ) {
     const SRow = Box;
-    const { styles, rowPropsLayers, dataKey, virtualScroll } = this.asProps;
+    const { styles, rowPropsLayers, uniqueKey, virtualScroll } = this.asProps;
     const rowHeightFromProps = typeof virtualScroll === 'object' && virtualScroll?.rowHeight;
 
     const rowData = cells.flatRowData || getCellsByColumn(cells);
-    const key = rowData[dataKey] ? String(rowData[dataKey]) : `row_${dataIndex}`;
+    const key = rowData[uniqueKey] ? String(rowData[uniqueKey]) : `row_${dataIndex}`;
     const needToMeasureHeight = dataIndex === 0 && !nested && !rowHeightFromProps;
 
     let props = {
