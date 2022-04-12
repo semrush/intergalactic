@@ -11,11 +11,13 @@ const data = Array(10000)
   .map((_, index) => ({
     id: `#${index + 1}`,
     keyword: keyword[Math.floor(keyword.length * Math.random())],
-    [ROW_GROUP]: {
-      kd: kd[Math.floor(kd.length * Math.random())],
-      cpc: cpc[Math.floor(cpc.length * Math.random())],
-      vol: vol[Math.floor(vol.length * Math.random())],
-    },
+    [ROW_GROUP]: [
+      {
+        kd: kd[Math.floor(kd.length * Math.random())],
+        cpc: cpc[Math.floor(cpc.length * Math.random())],
+        vol: vol[Math.floor(vol.length * Math.random())],
+      },
+    ],
   }));
 
 export default () => {
@@ -31,7 +33,7 @@ export default () => {
           <DataTable.Column name="vol" children="Vol." />
         </DataTable.Column>
       </DataTable.Head>
-      <DataTable.Body h={400} virtualScroll />
+      <DataTable.Body hMax={400} virtualScroll />
     </DataTable>
   );
 };
