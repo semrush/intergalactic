@@ -18,7 +18,6 @@ describe('OutsideClick', () => {
 
   test('should not call onOutsideClick if event inside', () => {
     const onOutsideClick = jest.fn();
-    const body = document.getElementsByTagName('body')[0];
     const { getByTestId } = render(
       <OutsideClick onOutsideClick={onOutsideClick}>
         <div data-testid="child">test</div>
@@ -49,7 +48,7 @@ describe('OutsideClick', () => {
 
   test('should support excludeRefs node', () => {
     const onOutsideClick = jest.fn();
-    const { getByTestId } = render(
+    render(
       <>
         <OutsideClick onOutsideClick={onOutsideClick} excludeRefs={[document.body]} />
       </>,

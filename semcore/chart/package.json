@@ -45,5 +45,8 @@
     "type": "git",
     "url": "https://github.com/semrush/intergalactic.git",
     "directory": "semcore/chart"
+  },
+  "devDependencies": {
+    "@semcore/jest-preset-ui": "1.0.0"
   }
 }

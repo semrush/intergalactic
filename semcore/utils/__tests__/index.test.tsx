@@ -1,9 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { testing } from '@semcore/jest-preset-ui';
+import { testing, snapshot } from '@semcore/jest-preset-ui';
 const { cleanup } = testing;
-
-import { snapshot } from '@semcore/jest-preset-ui';
 
 import isNode from '../src/isNode';
 import compose from '../src/compose';
@@ -365,10 +363,8 @@ describe('Utils interpolate', () => {
   });
 
   test('Should interpolate more then one variable', () => {
-    const Template = '{{who}}, {{who}}, где были? У {{where}}! {{ps}}';
-    expect(interpolate(Template, { who: 'ладушки', where: 'бабушки', ps: 'KEK' })).toBe(
-      'ладушки, ладушки, где были? У бабушки! KEK',
-    );
+    const Template = '{{a}}{{b}}{{c}}';
+    expect(interpolate(Template, { a: 'A', b: 'B', c: 'C' })).toBe('ABC');
   });
 
   test('Should not fail if variable for template is not specified', () => {

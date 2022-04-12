@@ -1,9 +1,7 @@
 import React, { HTMLAttributes } from 'react';
-import { testing } from '@semcore/jest-preset-ui';
+import { testing, shared as testsShared } from '@semcore/jest-preset-ui';
 
 const { cleanup, fireEvent, render } = testing;
-
-import { shared as testsShared } from '@semcore/jest-preset-ui';
 
 const { shouldSupportRef } = testsShared;
 import createComponent, {
@@ -209,6 +207,7 @@ describe('Core', () => {
     class TestRoot extends Component {
       static displayName = 'TestRoot';
 
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       bindHandlerClick = (value, a, b, c) => (e) => {};
 
       getItemProps({ value }) {
@@ -819,7 +818,7 @@ describe('Option "parent"', () => {
       class ComponentRoot extends Component {
         static displayName = name;
 
-        getItemProps(props) {
+        getItemProps() {
           return {
             onClick: () => clickSpy(name),
           };

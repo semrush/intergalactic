@@ -1,8 +1,7 @@
 import React from 'react';
-import { testing } from '@semcore/jest-preset-ui';
+import { testing, snapshot, shared as testsShared } from '@semcore/jest-preset-ui';
 const { render, fireEvent, cleanup } = testing;
-import { snapshot } from '@semcore/jest-preset-ui';
-import { shared as testsShared } from '@semcore/jest-preset-ui';
+
 const { shouldSupportClassName, shouldSupportRef } = testsShared;
 import FullscreenModal from '../src';
 
@@ -79,7 +78,8 @@ describe('FullscreenModal', () => {
   });
 
   test('should change overflow style for body in modal', async () => {
-    const { unmount } = await render(<FullscreenModal />);
+    // const { unmount } =
+    await render(<FullscreenModal />);
     expect(document.body.style.overflow).toBe('hidden');
     // Why it's not work in console
     // unmount();

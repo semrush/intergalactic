@@ -109,7 +109,7 @@ class RangePickerAbstract extends Component {
     const day = this.keyDiff[e.keyCode];
 
     const setNextDisplayedPeriod = (next_highlighted) => {
-      const [_, right_period] = next_highlighted;
+      const [, right_period] = next_highlighted;
 
       if (right_period) {
         const month_right_period = right_period.getMonth();
@@ -193,13 +193,7 @@ class RangePickerAbstract extends Component {
 
   getPopperProps() {
     const Picker = this[CORE_INSTANCE];
-    const {
-      value,
-      periods = this.getDefaultPeriods(),
-      unclearable,
-      getI18nText,
-      interaction,
-    } = this.asProps;
+    const { value, periods = this.getDefaultPeriods(), unclearable, getI18nText } = this.asProps;
     const { dirtyValue } = this.state;
 
     const buttons = (
@@ -292,8 +286,14 @@ class RangePickerAbstract extends Component {
   }
 
   getCalendarProps(props, index) {
-    const { locale, displayedPeriod, disabled, value, highlighted, onHighlightedChange } =
-      this.asProps;
+    const {
+      locale,
+      displayedPeriod,
+      disabled,
+      value,
+      highlighted,
+      onHighlightedChange,
+    } = this.asProps;
     const { dirtyValue } = this.state;
 
     return {

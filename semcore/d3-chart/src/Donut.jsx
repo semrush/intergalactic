@@ -111,7 +111,7 @@ class DonutRoot extends Component {
   }
 
   getArcs() {
-    let { Children, data, d3Pie } = this.asProps;
+    const { Children, data, d3Pie } = this.asProps;
     let pieData = Object.entries(data);
 
     if (d3Pie[DEFAULT_INSTANCE]) {
@@ -137,14 +137,12 @@ class DonutRoot extends Component {
     return d3Pie(pieData);
   }
 
-  bindHandlerTooltip =
-    (visible, props) =>
-    ({ clientX: x, clientY: y }) => {
-      const { eventEmitter } = this.asProps;
-      this.virtualElement.getBoundingClientRect = this.generateGetBoundingClientRect(x, y);
-      this.virtualElement[CONSTANT.VIRTUAL_ELEMENT] = true;
-      eventEmitter.emit('onTooltipVisible', visible, props, this.virtualElement);
-    };
+  bindHandlerTooltip = (visible, props) => ({ clientX: x, clientY: y }) => {
+    const { eventEmitter } = this.asProps;
+    this.virtualElement.getBoundingClientRect = this.generateGetBoundingClientRect(x, y);
+    this.virtualElement[CONSTANT.VIRTUAL_ELEMENT] = true;
+    eventEmitter.emit('onTooltipVisible', visible, props, this.virtualElement);
+  };
 
   getPieProps(props) {
     let { d3Arc, duration, innerRadius } = this.asProps;

@@ -1,7 +1,7 @@
-import React, { ComponentProps } from 'react';
+import React from 'react';
 import Button from '@semcore/button';
 import createComponent, { Component, Root } from '@semcore/core';
-import i18nEnhance, { IWithI18nEnhanceProps } from '@semcore/utils/lib/enhances/i18nEnhance';
+import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
 import Error, { getIconPath } from '../Error';
 
 import de from './translations/de.json';

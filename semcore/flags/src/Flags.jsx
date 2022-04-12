@@ -2,7 +2,7 @@ import React from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import cn from 'classnames';
 import { createBaseComponent, sstyled } from '@semcore/core';
-import { IBoxProps, useBox } from '@semcore/flex-box';
+import { useBox } from '@semcore/flex-box';
 import canUseDOM from '@semcore/utils/lib/canUseDOM';
 import isRetina from '@semcore/utils/lib/isRetina';
 import { iso2Name, iso3iso2 } from './countries';

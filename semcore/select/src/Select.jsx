@@ -1,6 +1,6 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import cn from 'classnames';
-import createComponent, { Component, CONTEXT_COMPONENT, Root, sstyled } from '@semcore/core';
+import createComponent, { Component, Root, sstyled } from '@semcore/core';
 import DropdownMenu from '@semcore/dropdown-menu';
 import { ButtonTrigger } from '@semcore/base-trigger';
 import Divider from '@semcore/divider';

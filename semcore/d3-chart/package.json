@@ -23,7 +23,8 @@
     "d3-scale": "3.3.0",
     "d3-interpolate": "3.0.1",
     "d3-transition": "3.0.1",
-    "resize-observer-polyfill": "1.5.1"
+    "resize-observer-polyfill": "1.5.1",
+    "hoist-non-react-statics": "3.3.2"
   },
   "peerDependencies": {
     "@semcore/core": "^1.11",
@@ -36,5 +37,8 @@
     "type": "git",
     "url": "https://github.com/semrush/intergalactic.git",
     "directory": "semcore/d3-chart"
+  },
+  "devDependencies": {
+    "@semcore/jest-preset-ui": "1.0.0"
   }
 }

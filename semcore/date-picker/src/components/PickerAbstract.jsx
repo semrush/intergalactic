@@ -131,7 +131,6 @@ class PickerAbstract extends Component {
   }
 
   getPopperProps() {
-    const { interaction } = this.asProps;
     const Picker = this[CORE_INSTANCE];
     return {
       tabIndex: 0,

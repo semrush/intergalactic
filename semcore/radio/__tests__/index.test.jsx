@@ -1,10 +1,9 @@
 import React from 'react';
-import { testing } from '@semcore/jest-preset-ui';
+import { testing, snapshot, shared as testsShared } from '@semcore/jest-preset-ui';
 const { cleanup, fireEvent, render, axe } = testing;
 
-import { snapshot } from '@semcore/jest-preset-ui';
-import Radio, { RadioGroup, inputProps } from '../src';
-import { shared as testsShared } from '@semcore/jest-preset-ui';
+import Radio, { RadioGroup, inputProps } from '../src/Radio';
+
 const { shouldSupportClassName, shouldSupportRef } = testsShared;
 
 describe('Radio', () => {

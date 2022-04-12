@@ -30,7 +30,7 @@ class Skeleton extends Component {
 
   render() {
     const SSkeleton = Root;
-    const { Children, styles, duration, speed, hidden, uid, ...other } = this.asProps;
+    const { Children, styles, duration, hidden, uid } = this.asProps;
 
     if (hidden) return null;
 

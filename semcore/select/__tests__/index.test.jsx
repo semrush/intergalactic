@@ -1,11 +1,10 @@
 import React from 'react';
 import { FilterTrigger } from '@semcore/base-trigger';
-import { testing } from '@semcore/jest-preset-ui';
+import { testing, shared as testsShared, snapshot } from '@semcore/jest-preset-ui';
 const { cleanup, fireEvent, render, axe } = testing;
 
-import { shared as testsShared } from '@semcore/jest-preset-ui';
 const { shouldSupportClassName, shouldSupportRef } = testsShared;
-import { snapshot } from '@semcore/jest-preset-ui';
+
 import Select from '../src';
 import InputSearch from '../src/InputSearch';
 

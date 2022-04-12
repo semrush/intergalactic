@@ -34,6 +34,7 @@ class ClipPath extends Component {
   }
 
   render() {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { id, transition, tag: Tag, style, className, ...other } = this.asProps;
     return (
       <clipPath ref={this.refClipPath} id={id}>

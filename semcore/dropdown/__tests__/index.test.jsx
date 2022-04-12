@@ -1,8 +1,7 @@
 import React from 'react';
-import { testing } from '@semcore/jest-preset-ui';
+import { testing, snapshot } from '@semcore/jest-preset-ui';
 const { cleanup, axe, render, fireEvent } = testing;
 
-import { snapshot } from '@semcore/jest-preset-ui';
 import Dropdown from '../src';
 
 describe('Dropdown', () => {

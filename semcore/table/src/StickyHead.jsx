@@ -2,7 +2,6 @@ import React, { useState, useEffect, useContext, createContext, useRef } from 'r
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { createPortal } from 'react-dom';
 import ResizeObserver from 'resize-observer-polyfill';
-import cn from 'classnames';
 
 import canUseDOM from '@semcore/utils/lib/canUseDOM';
 import { fireFn } from '@semcore/utils/lib/fire';

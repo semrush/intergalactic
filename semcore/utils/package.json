@@ -11,7 +11,8 @@
     "test": "jest"
   },
   "devDependencies": {
-    "@semcore/core": "^1"
+    "@semcore/core": "^1",
+    "@semcore/jest-preset-ui": "1.0.0"
   },
   "dependencies": {
     "@babel/runtime": "7.10.5",

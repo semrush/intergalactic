@@ -18,7 +18,8 @@
     "@semcore/flex-box": "^4",
     "@semcore/typography": "^3",
     "@semcore/scroll-area": "^3",
-    "resize-observer-polyfill": "1.5.1"
+    "resize-observer-polyfill": "1.5.1",
+    "classnames": "2.2.6"
   },
   "peerDependencies": {
     "@semcore/core": "^1.11",
@@ -31,5 +32,8 @@
     "type": "git",
     "url": "https://github.com/semrush/intergalactic.git",
     "directory": "semcore/table"
+  },
+  "devDependencies": {
+    "@semcore/jest-preset-ui": "1.0.0"
   }
 }
