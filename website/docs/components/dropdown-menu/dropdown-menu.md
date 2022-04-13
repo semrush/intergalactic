@@ -12,11 +12,11 @@ tabName: Design
 
 @## Sizes of the list
 
-The list has three sizes.
+The list has two sizes.
 
-| XL                                                   | L                                                  | M                                                  |
-| ---------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- |
-| ![dropdown-paddings-xl-size](static/dropdown-xl.png) | ![dropdown-paddings-l-size](static/dropdown-l.png) | ![dropdown-paddings-m-size](static/dropdown-m.png) |
+| L                                                  | M                                                  |
+| -------------------------------------------------- | -------------------------------------------------- |
+| ![dropdown-paddings-l-size](static/dropdown-l.png) | ![dropdown-paddings-m-size](static/dropdown-m.png) |
 
 @## Container width and height
 
@@ -49,7 +49,7 @@ When typing in the input, only those items that match the entered request remain
 
 @## Data Loading
 
-If after clicking on the trigger of the select we cannot show the list at once (we cannot load it at once, or we are searching for data somewhere else, etc.), then the chevron of the trigger must be changed to a spinner of `XXS` size. In this case, the trigger remains in the `default` state and it is not clickable.
+If after clicking on the trigger of the select we cannot show the list at once (we cannot load it at once, or we are searching for data somewhere else, etc.), then the chevron of the trigger must be changed to a spinner of `XS` size. In this case, the trigger remains in the `default` state and it is not clickable.
 
 See all states of the trigger in [Select/Multiselect](/components/select/#a24650).
 
@@ -59,12 +59,12 @@ See all states of the trigger in [Select/Multiselect](/components/select/#a24650
 
 ### States
 
-|          | Appearance                                 | Styles                             |
-| -------- | ------------------------------------------ | ---------------------------------- |
-| Default  | ![item-default](static/item-default.png)   |                                    |
-| Hover    | ![item-hover](static/item-hover.png)       | `background: rgba($stone,.2)`      |
-| Active   | ![item-active](static/item-active.png)     | `background: rgba($light-blue,.2)` |
-| Disabled | ![item-disabled](static/item-disabled.png) | `opacity: .3`                      |
+|          | Appearance                                 | Styles                           |
+| -------- | ------------------------------------------ | -------------------------------- |
+| Default  | ![item-default](static/item-default.png)   |                                  |
+| Hover    | ![item-hover](static/item-hover.png)       | `background: rgba(gray-50)`      |
+| Active   | ![item-active](static/item-active.png)     | `background: rgba(blue-100, .7)` |
+| Disabled | ![item-disabled](static/item-disabled.png) | `opacity: .3`                    |
 
 ### Dividers
 
@@ -124,7 +124,7 @@ An icon performing a separate action may appear on the right of the item.
 
 You can drag while holding the cursor over a button and moving the item down/up. A shadow appears below an item when you hold the cursor over it.
 
-The color below the item is `rgba(&stone, .2)`.
+The color below the item is `rgba(gray-50)`.
 
 ![dragging](static/dragging.png)
 
@@ -138,7 +138,7 @@ The Reset button appears only if an item from the list is selected. After you cl
 
 ![reset-scheme](static/reset-scheme.png)
 
-@##Content of the item
+@## Content of the item
 
 You can insert addons such as an icon, flag, label, user picture or some kind of control to the left and right of the item text.
 
@@ -186,13 +186,12 @@ A badge (micro label) such as `new`, `beta`, `alpha` and others can be placed to
 
 ### The secondary text
 
-Tiny additional text of color `--gray60` may be under the item.
+Tiny additional text of color `--gray-500` may be under the item.
 
-| Size of the list | Appearance                                    | Styles             |
-| ---------------- | --------------------------------------------- | ------------------ |
-| XL               | ![secondary-text-xl](static/secondary-xl.png) | `font-size: 14px;` |
-| L                | ![secondary-text-l](static/secondary-l.png)   | `font-size: 12px;` |
-| M                | ![secondary-text-m](static/secondary-m.png)   | `font-size: 12px;` |
+| Size of the list | Appearance                                  | Styles             |
+| ---------------- | ------------------------------------------- | ------------------ |
+| L                | ![secondary-text-l](static/secondary-l.png) | `font-size: 16px;` |
+| M                | ![secondary-text-m](static/secondary-m.png) | `font-size: 14px;` |
 
 @## Scroll in the dropdown
 
@@ -213,10 +212,6 @@ An item with a title, input, notice or a button can be fixed at the top or at th
 **Input with search**. If the list contains more than 10 items, it is necessary to add the input with search to it. When you open the list, the input with search immediately gets the `focus` state. The text of a placeholder for this type of input is **“Start typing {parameter}”**. In this case, the search should not be performed by titles and it should work fast without submission.
 
 ![fixed-input](static/fixed-input.png)
-
-When the user types the text, we show him the items that fall under the search criteria. The `active` (selected) item (if any) is not displayed in the search. The search icon may be either at the beginning of the parameter or anywhere else (we search for all matches). The matching part should be marked with underline.
-
-![fixed-input-focus](static/fixed-input-focus.png)
 
 **Notice**. The notice item has the divider, the color of which coincides with the style of an ordinary notice.
 
