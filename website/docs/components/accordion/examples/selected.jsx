@@ -11,10 +11,11 @@ const Trigger = styled(Accordion.Item.Toggle)`
   padding: 8px 12px;
   display: flex;
   align-items: center;
-  ${({ selected }) => (selected ? 'background: #E0E1E9' : '')}
   &:hover {
     background: #e0e1e9;
   }
+
+  ${({ selected }) => (selected ? 'background: #e0e1e9' : '')}
 `;
 
 const Demo = () => (
