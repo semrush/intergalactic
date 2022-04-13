@@ -10,8 +10,8 @@ tabName: Design
 
 There are two icon sizes:
 
-- M (16x16px)
-- L (24x24px)
+- M (16 \* 16px)
+- L (24 \* 24px)
 
 All icon sizes use a consistent stroke width of 2px. That applies to both inner and outer strokes.
 
@@ -105,7 +105,7 @@ Tagging the icon with synonymic names in both English and Russian helps your col
 
 ![icon-tags](static/icon-tags.png)
 
-Keep the names **icon** and color --gray-800 of shapes inside the symbols consistent (except for colored icons).
+Keep the names **icon** and color `--gray-800` of shapes inside the symbols consistent (except for colored icons).
 
 ![name-color](static/name-color.png)
 

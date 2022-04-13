@@ -21,6 +21,9 @@ The component exists in 4 types:
 
 Trigger, as a rule, is in the form of select trigger, only without the chevron icon.
 
+> 💡 Use the en dash to indicate range of dates. Don't add a space on either side of the en dash for numbers.  
+> For example: Mar 4–10, 2022
+
 | Description                        | Appearance example                    |
 | ---------------------------------- | ------------------------------------- |
 | Placeholder                        | ![trigger](static/placeholder.png)    |

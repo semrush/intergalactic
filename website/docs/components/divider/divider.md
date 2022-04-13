@@ -14,12 +14,12 @@ tabName: Design
 
 The divider has a secondary type, which is a dashed line. Typically, it is needed to emphasize the connection between two parts of the content. _PanelSummary is an example of this._
 
-The color of the divider is specified in [Variables](/style/variables/#a7af23): `gray80`.
+The color of the divider is specified in [Variables](/style/variables/#a7af23): `--gray-200`.
 
-|        | Appearance                           | Styles                        |
-| ------ | ------------------------------------ | ----------------------------- |
-| solid  | ![solid-divider](static/solid.png)   | `border: 1px solid $gray80;`  |
-| dashed | ![dashed-divider](static/dashed.png) | `border: 1px dashed $gray80;` |
+|        | Appearance                           | Styles                           |
+| ------ | ------------------------------------ | -------------------------------- |
+| solid  | ![solid-divider](static/solid.png)   | `border: 1px solid --gray-200;`  |
+| dashed | ![dashed-divider](static/dashed.png) | `border: 1px dashed --gray-200;` |
 
 @## The orientation of the divider is specified in
 
@@ -32,10 +32,10 @@ The color of the divider is specified in [Variables](/style/variables/#a7af23): 
 
 The divider can be used either on a light or dark/colored background.
 
-|         | Appearance                                   | Styles                                    |
-| ------- | -------------------------------------------- | ----------------------------------------- |
-| default | ![default-divider](static/default-theme.png) | `border: 1px solid $gray80;`              |
-| invert  | ![invert-divider](static/invert-theme.png)   | `border: 1px solid $gray80;` opacity: .2; |
+|         | Appearance                                   | Styles                                        |
+| ------- | -------------------------------------------- | --------------------------------------------- |
+| default | ![default-divider](static/default-theme.png) | `border: 1px solid --gray-200;`               |
+| invert  | ![invert-divider](static/invert-theme.png)   | `border: 1px solid --gray-200;` opacity: 20%; |
 
 @## Use in UX/UI
 

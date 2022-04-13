@@ -33,15 +33,15 @@ If Dot points to a new element in the list inside the [Dropdown-menu](/component
 
 The component has two sizes. In cases where a dot is above the component, it is always shifted in this way: `transform: translate (30%, -30%);`.
 
-| Size                    | Appearance                                      | Styles                                            | Usage                                                                           |
-| ----------------------- | ----------------------------------------------- | ------------------------------------------------- | ------------------------------------------------------------------------------- |
-| L with a counter inside | ![dot-xl](static/dot-xl.png)                    | `background-color: $orange`                       | It helps to mark the controls from the outside and shows the number of updates. |
-|                         | ![dot-margins-xl](static/xl-margins.png)        |                                                   |                                                                                 |
-| L                       | ![dot-l](static/dot-l.png)                      | `background-color: $orange`                       | It is used to mark the controls from the outside.                               |
-|                         | ![dot-margins-l](static/l-margins.png)          |                                                   |                                                                                 |
-| M                       | ![dot-m](static/dot-m.png)                      | `margin-left: 4px; border: 1px solid #fff;`       | It's used to mark text items inside the list.                                   |
-|                         | ![dot-margins-s](static/s-margins.png)          |                                                   |                                                                                 |
-|                         | ![dot-in-list](static/mc-notifications-yes.png) | `top: -1px; right: -1px; border: 1px solid #fff;` | It's used to mark images/controls inside the list.                              |
+| Size                    | Appearance                                      | Styles                                               | Usage                                                                           |
+| ----------------------- | ----------------------------------------------- | ---------------------------------------------------- | ------------------------------------------------------------------------------- |
+| L with a counter inside | ![dot-xl](static/dot-on.png)                    | `background-color: --orange-400;`                    | It helps to mark the controls from the outside and shows the number of updates. |
+|                         | ![dot-margins-xl](static/xl-margins.png)        |                                                      |                                                                                 |
+| L                       | ![dot-l](static/dot-l.png)                      | `background-color: --orange-400;`                    | It is used to mark the controls from the outside.                               |
+|                         | ![dot-margins-l](static/l-margins.png)          |                                                      |                                                                                 |
+| M                       | ![dot-m](static/dot-m.png)                      | `margin-left: 4px; border: 1px solid --white;`       | It's used to mark text items inside the list.                                   |
+|                         | ![dot-margins-s](static/s-margins.png)          |                                                      |                                                                                 |
+|                         | ![dot-in-list](static/mc-notifications-yes.png) | `top: -1px; right: -1px; border: 1px solid --white;` | It's used to mark images/controls inside the list.                              |
 
 @## Counter
 There may be a counter with the number of notifications inside the dot. See [Counter](/components/counter/) for more information about this case.
