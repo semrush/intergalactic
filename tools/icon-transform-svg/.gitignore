@@ -1,1 +1,6 @@
 svg/
+__tests__/external/
+__tests__/path/
+__tests__/pathNew/
+__tests__/pay/
+__tests__/color/

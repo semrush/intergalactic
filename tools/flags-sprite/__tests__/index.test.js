@@ -3,7 +3,7 @@ const fs = require('fs-extra');
 const path = require('path');
 const glob = require('glob');
 
-const rootPath = path.resolve(process.cwd(), '__tests__');
+const rootPath = path.resolve(__dirname);
 
 describe('Flag Sprite', () => {
   test('Should render correctly', async () => {
@@ -33,7 +33,7 @@ describe('Flag Sprite', () => {
       CssFiles.map(async (filePath) => {
         const libCss = await fs.readFile(filePath, 'utf-8');
         const fixtureCss = await fs.readFile(
-          filePath.replace('__tests__', '__tests__/__fixtures__'),
+          filePath.replace('__tests__/lib', '__tests__/__fixtures__'),
           'utf-8',
         );
 

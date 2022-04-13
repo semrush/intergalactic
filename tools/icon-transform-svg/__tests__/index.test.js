@@ -4,7 +4,7 @@ const glob = require('glob');
 const { exec } = require('child_process');
 const pluginTester = require('babel-plugin-tester');
 
-const rootPath = path.resolve(process.cwd(), '__tests__');
+const rootPath = path.resolve(__dirname);
 
 describe('Parsing svg', () => {
   test('Files should compile', async () => {
@@ -103,16 +103,20 @@ pluginTester({
 
 function cli(scriptPath, cwd, args = []) {
   return new Promise((resolve) => {
-    exec(`node ${path.resolve(scriptPath)} ${args.join(' ')}`, { cwd }, (error, stdout, stderr) => {
-      if (error && error.code) {
-        throw Error(error);
-      }
-      resolve({
-        code: error && error.code ? error.code : 0,
-        error,
-        stdout,
-        stderr,
-      });
-    });
+    exec(
+      `node ${path.resolve(scriptPath)} ${args.join(' ')} && prettier ${rootPath}`,
+      { cwd },
+      (error, stdout, stderr) => {
+        if (error && error.code) {
+          throw Error(error);
+        }
+        resolve({
+          code: error && error.code ? error.code : 0,
+          error,
+          stdout,
+          stderr,
+        });
+      },
+    );
   });
 }
