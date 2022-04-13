@@ -29,7 +29,7 @@ export const esbuildPluginSemcoreSourcesResolve = (): Plugin => ({
       if (filesOfSemcoreDir.includes(componentName)) {
         componentsDir = 'semcore';
         if (subPath.startsWith('lib/')) {
-          subPath = subPath.replace('lib/', 'src/');
+          subPath = componentName === 'icon' && subPath ? subPath : subPath.replace('lib/', 'src/');
         } else if (!subPath.startsWith('style/') && !(componentName === 'icon' && subPath)) {
           subPath = 'src/' + subPath;
         }
