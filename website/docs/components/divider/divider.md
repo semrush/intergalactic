@@ -32,10 +32,10 @@ The color of the divider is specified in [Variables](/style/variables/#a7af23): 
 
 The divider can be used either on a light or dark/colored background.
 
-|         | Appearance                                   | Styles                                        |
-| ------- | -------------------------------------------- | --------------------------------------------- |
-| default | ![default-divider](static/default-theme.png) | `border: 1px solid --gray-200;`               |
-| invert  | ![invert-divider](static/invert-theme.png)   | `border: 1px solid --gray-200;` opacity: 20%; |
+|         | Appearance                                   | Styles                                       |
+| ------- | -------------------------------------------- | -------------------------------------------- |
+| default | ![default-divider](static/default-theme.png) | `border: 1px solid --gray-200;`              |
+| invert  | ![invert-divider](static/invert-theme.png)   | `border: 1px solid --gray-200;` opacity: .2; |
 
 @## Use in UX/UI
 
