@@ -1,7 +1,7 @@
 import { Controller, Post, Get, Next, Req, Res } from '@nestjs/common';
 import { NextFunction, Request, Response } from 'express';
-import mailchimp from '@mailchimp/mailchimp_marketing';
 import { ConfigService } from '@nestjs/config';
+import { Pool } from 'pg';
 
 require('dotenv').config();
 
@@ -30,28 +30,35 @@ export class AppController {
 
 @Controller('mailer')
 export class Mailer {
+  pool: any;
+
+  constructor(private configService: ConfigService) {
+    // TODO: use service
+    this.pool = new Pool({
+      connectionString: this.configService.get('POSTGRES_URL'),
+      max: 20,
+      idleTimeoutMillis: 30000,
+      connectionTimeoutMillis: 2000,
+    });
+  }
+
   @Post('post')
   async sendEmail(@Res() res: Response, @Req() req: Request) {
-    const listID = process.env.LISTID;
-    mailchimp.setConfig({
-      apiKey: process.env.MAILCHIMPKEY1,
-      server: process.env.MAILCHIMPSERVER,
-    });
-    const email = req.body.email;
-    const jsonData = {
-      email_address: email,
-      status: 'subscribed',
-    };
+    const client = await this.pool.connect();
     try {
-      await mailchimp.lists.addListMember(listID, jsonData);
+      await client.query(
+        `INSERT INTO email(created_at, email) VALUES (to_timestamp($1 / 1000.0), $2)`,
+        [Date.now(), req.body.email],
+      );
       res.json({
         success: true,
       });
-    } catch (error) {
-      console.error(error);
+    } catch (e) {
       res.json({
         success: false,
       });
+    } finally {
+      client.release();
     }
   }
 }

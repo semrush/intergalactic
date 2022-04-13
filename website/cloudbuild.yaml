@@ -27,15 +27,8 @@ steps:
     args:
       - '-c'
       - |
-        echo "MAILCHIMPKEY1=${_MAILCHIMPKEY1}" > website/.env
-        echo "MAILCHIMPKEY2=${_MAILCHIMPKEY2}" >> website/.env
-        echo "MAILCHIMPKEY3=${_MAILCHIMPKEY3}" >> website/.env
-        echo "MAILCHIMPKEY4=${_MAILCHIMPKEY4}" >> website/.env
-        echo "MAILCHIMPSERVER=${_MAILCHIMPSERVER}" >> website/.env
-        echo "MAILCHIMPCAMPAIGN=${_MAILCHIMPCAMPAIGN}" >> website/.env
-        echo "MAILCHIMPTEMPLATE=${_MAILCHIMPTEMPLATE}" >> website/.env
-        echo "LISTID=${_LISTID}" >> website/.env
         echo "ROOT_PATH=${_ROOT_PATH}" >> website/.env
+        echo "POSTGRES_URL=${_POSTGRES_URL}" >> website/.env
   - name: 'gcr.io/cloud-builders/docker'
     args:
       - 'build'
