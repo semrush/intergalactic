@@ -66,19 +66,19 @@ The animated dot is placed next to the control that you want to draw attention t
 
 There are two types of the FeaturePopover: basic and extended. **They differ in maximum width and illustration.**
 
-| Type                                                                                                                                 | Appearance                                       |
-| ------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------ |
-| **Basic**. The illustration is the same for all FeaturePopovers of this type. The area to be illustrated is 40x40px.                 | ![feature-popover](static/spotlight-default.png) |
-| **Extended**. The additional Illustration captures the essence of the message metaphorically. The area to be illustrated is 80x80px. | ![feature-popover](static/spotlight-big.png)     |
+| Type                                                                                                                                    | Appearance                                       |
+| --------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------ |
+| **Basic**. The illustration is the same for all FeaturePopovers of this type. The area to be illustrated is 40 \* 40px.                 | ![feature-popover](static/spotlight-default.png) |
+| **Extended**. The additional Illustration captures the essence of the message metaphorically. The area to be illustrated is 80 \* 80px. | ![feature-popover](static/spotlight-big.png)     |
 
 @## Themes
 
 The FeaturePopover theme is used on both light and dark backgrounds.
 
-| Element   | Styles                                                                     |
-| --------- | -------------------------------------------------------------------------- |
-| Container | `box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.10); background-color: #FFE984;` |
-| Spot      | `background-color: #FFD54F;                                                |
+| Element   | Styles                                                                            |
+| --------- | --------------------------------------------------------------------------------- |
+| Container | `box-shadow: 0 1px 12px 0 rgba(gray-800, .15);` `background-color: --yellow-100;` |
+| Spot      | `background-color: --yellow-100;`                                                 |
 
 @## Sizes and indents
 
@@ -95,12 +95,12 @@ Basic and extended types have maximum width:
 
 ![feature-popover](static/spotlight-content-paddings.png)
 
-Paddings of the container are 16px.
+Paddings of the container are 16px (padding-right is 32px).
 
 Recommendations for indents and content sizes:
 
 - The title is 16px (margin-bottom is 4px).
-- Text paragraph is 12px.
+- Text paragraph is 14px.
 - The invert `primary` & `tertiary` muted button has the size m (margin-top of the group of controls is 16px).
 - The area for the picture is `40px * 40px` or `80px * 80px` (margin-right to the content is 16px).
 
