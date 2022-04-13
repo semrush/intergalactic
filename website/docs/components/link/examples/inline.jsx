@@ -11,7 +11,7 @@ class Demo extends React.PureComponent {
           Lorem ipsum dolor sit amet, adipisicing elit. Ab aperiam aut autem beatae, consequuntur
           debitis doloremque facilis fuga illum inventore ipsa iure magni maxime molestias omnis
           reprehenderit, voluptas voluptatem voluptates{' '}
-          <Link>
+          <Link inline noWrap={false}>
             <Link.Addon tag={EditXS} />
             <Link.Text>consectetur corporis cupiditate</Link.Text>
           </Link>
@@ -19,7 +19,7 @@ class Demo extends React.PureComponent {
         </p>
         <p>
           Atque beatae commodi culpa dicta nam odit rerum{' '}
-          <Link>
+          <Link inline noWrap={false}>
             suscipit temporibus! Accusamus accusantium assumenda beatae dignissimos eius id nam{' '}
           </Link>{' '}
           quae repellendus temporibus voluptatibus. Ad cum error excepturi, ipsum necessitatibus
@@ -32,8 +32,11 @@ class Demo extends React.PureComponent {
         </p>
         <p>
           Distinctio doloremque eaque eos fugiat incidunt iure magni officia praesentium quidem{' '}
-          <Link>repudiandae tempora, voluptate, voluptatem voluptatibus!</Link> Enim exercitationem
-          id labore sunt totam velit. Ab animi provident quo quos tenetur voluptatem.
+          <Link inline noWrap={false}>
+            repudiandae tempora, voluptate, voluptatem voluptatibus!
+          </Link>{' '}
+          Enim exercitationem id labore sunt totam velit. Ab animi provident quo quos tenetur
+          voluptatem.
         </p>
       </FormatText>
     );
