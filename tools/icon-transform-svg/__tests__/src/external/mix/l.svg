@@ -1,0 +1,5 @@
+<svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+    <path id="test-path" fill-rule="evenodd" clip-rule="evenodd" d="M16 16"/>
+    <polygon id="test-polygon" points="100,10 40,198 190,78 10,78 160,198"/>
+    <circle cx="0" cy="0" r="16" />
+</svg>

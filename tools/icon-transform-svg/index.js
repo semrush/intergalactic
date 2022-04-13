@@ -2,9 +2,11 @@ const path = require('path');
 const fs = require('fs-extra');
 const glob = require('glob');
 const cheerio = require('cheerio');
-const { lib, sourceFolder = 'svg', outputFolder = '.' } = require('minimist')(
-  process.argv.slice(2),
-);
+const {
+  lib,
+  sourceFolder = 'svg',
+  outputFolder = '.',
+} = require('minimist')(process.argv.slice(2));
 const util = require('util');
 const config = require('./config');
 const babel = require('@babel/core');
@@ -13,9 +15,12 @@ const outputFile = util.promisify(fs.outputFile);
 const readFile = util.promisify(fs.readFile);
 
 const rootDir = process.cwd();
-const { template, templateDTS = template, transformer, babelConfig: defaultBabelConfig } = lib
-  ? config(lib, outputFolder === 'lib')
-  : config('react', outputFolder === 'lib');
+const {
+  template,
+  templateDTS = template,
+  transformer,
+  babelConfig: defaultBabelConfig,
+} = lib ? config(lib, outputFolder === 'lib') : config('react', outputFolder === 'lib');
 const converter = transformer();
 
 function getDescriptionExternalIcons(iconPath, outLib) {
@@ -116,21 +121,20 @@ function getDescriptionPayIcons(iconPath, outLib) {
   };
 }
 
-module.exports = function () {
-  Promise.all([
-    generateIcons(`${sourceFolder}/color`, `${outputFolder}/color`, getDescriptionIcons),
-    generateIcons(
-      `${sourceFolder}/external`,
-      `${outputFolder}/external`,
-      getDescriptionExternalIcons,
-    ),
-    generateIcons(`${sourceFolder}/pay`, `${outputFolder}/pay`, getDescriptionPayIcons),
-    generateIcons(`${sourceFolder}/icon`, outputFolder, getDescriptionIcons),
-  ])
-    .then(() => {
-      console.log('Done! Wrote all icon files.');
-    })
-    .catch((err) => {
-      throw new Error(err);
-    });
+module.exports = async function () {
+  try {
+    await Promise.all([
+      generateIcons(`${sourceFolder}/color`, `${outputFolder}/color`, getDescriptionIcons),
+      generateIcons(
+        `${sourceFolder}/external`,
+        `${outputFolder}/external`,
+        getDescriptionExternalIcons,
+      ),
+      generateIcons(`${sourceFolder}/pay`, `${outputFolder}/pay`, getDescriptionPayIcons),
+      generateIcons(`${sourceFolder}/icon`, outputFolder, getDescriptionIcons),
+    ]);
+    console.log('Done! Wrote all icon files.');
+  } catch (err) {
+    throw new Error(err);
+  }
 };
