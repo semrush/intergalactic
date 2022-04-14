@@ -136,7 +136,6 @@
     "semcore/typography",
     "semcore/utils",
     "semcore/widget-empty",
-    "tools/@types",
     "tools/analyzer",
     "tools/babel-plugin-react-semcore",
     "tools/babel-plugin-recharts",
