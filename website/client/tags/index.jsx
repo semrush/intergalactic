@@ -165,7 +165,9 @@ export const tags = {
     return Loadable({
       delay: 0,
       loader: () =>
-        isRelease ? import('@semcore/ui/CHANGELOG.md') : import(`@semcore/${value}/CHANGELOG.md`),
+        isRelease
+          ? import('../../../semcore/ui/CHANGELOG.md')
+          : import(`@semcore/${value}/CHANGELOG.md`),
       loading: (props) => <Loading value={value} {...props} />,
       render(loaded, props) {
         return React.createElement(() => {
