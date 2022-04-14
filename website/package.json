@@ -35,7 +35,7 @@
     "hbs": "4.2.0",
     "html-to-react": "1.4.2",
     "normalize.css": "8.0.1",
-    "pg": "^8.7.3",
+    "pg": "8.7.3",
     "prism-react-renderer": "1.0.2",
     "prismjs": "1.17.1",
     "react": "17.0.1",
