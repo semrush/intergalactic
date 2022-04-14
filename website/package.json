@@ -22,7 +22,7 @@
     "@nestjs/graphql": "7.9.8",
     "@nestjs/platform-express": "7.6.5",
     "algoliasearch": "4.8.4",
-    "apollo-server-express": "2.9.13",
+    "apollo-server-express": "2.14.2",
     "chokidar": "3.3.1",
     "compression": "1.7.4",
     "dayjs": "1.10.4",
