@@ -15,10 +15,13 @@ jobs:
           path: |
             node_modules
             */*/node_modules
-          key: modules-${{ runner.os }}-${{ hashFiles('yarn.lock') }}
+          key: modules-${{ runner.os }}-${{ hashFiles('yarn.lock') }}-${{ hashFiles('website/yarn.lock') }}
       - name: Install dependencies
         if: steps.cache-modules.outputs.cache-hit != 'true'
-        run: yarn --non-interactive --frozen-lockfile
+        run: |
+          yarn --non-interactive --frozen-lockfile
+          cd website
+          yarn --non-interactive --frozen-lockfile
   publish-components:
     runs-on: ubuntu-latest
     needs: setup
