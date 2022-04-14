@@ -19,6 +19,7 @@
     "fps-emitter": "1.0.0",
     "react": "17.0.1",
     "react-dom": "17.0.1",
-    "tsm": "2.2.1"
+    "tsm": "2.2.1",
+    "styled-components": "5.3.5"
   }
 }
