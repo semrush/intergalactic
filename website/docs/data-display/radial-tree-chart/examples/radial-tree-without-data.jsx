@@ -1,5 +1,6 @@
 import React from 'react';
+import { NoData } from '@semcore/widget-empty';
 
 export default () => {
-  return <>Waiting for designer's svg file</>;
+  return <NoData type="radial-tree-chart" />;
 };
