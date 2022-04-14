@@ -17,7 +17,8 @@ jobs:
           path: |
             node_modules
             */*/node_modules
-          key: modules-${{ runner.os }}-${{ hashFiles('yarn.lock') }}-${{ hashFiles('website/yarn.lock') }}
+            website/node_modules
+          key: modules-${{ runner.os }}-${{ hashFiles('yarn.lock') }}--${{ hashFiles('website/yarn.lock') }}
       - name: Install dependencies
         if: steps.cache-modules.outputs.cache-hit != 'true'
         run: |
@@ -36,7 +37,8 @@ jobs:
           path: |
             node_modules
             */*/node_modules
-          key: modules-${{ runner.os }}-${{ hashFiles('yarn.lock') }}-${{ hashFiles('website/yarn.lock') }}
+            website/node_modules
+          key: modules-${{ runner.os }}-${{ hashFiles('yarn.lock') }}--${{ hashFiles('website/yarn.lock') }}
       - name: Сache build
         uses: actions/cache@v2
         id: cache-build
