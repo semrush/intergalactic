@@ -6,7 +6,7 @@ SBadge {
   height: 14px;
   line-height: 1.2;
   padding: 0 4px;
-  border-radius: 4px;
+  border-radius: var(--rounded-m);
   white-space: nowrap;
   font-size: 10px;
   font-weight: 500;

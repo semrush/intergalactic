@@ -8,34 +8,34 @@ SChart {
 
   & :global(.recharts-cartesian-axis-tick-value) {
     fill: var(--gray60);
-    font-size: media(12px);
+    font-size: 12px;
     line-height: 1.1;
   }
 
   & :global(.recharts-default-tooltip) {
-    border: 1px solid var(--stone-light);
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25);
-    border-radius: 3px;
-    padding: media(12px);
+    padding: 12px;
     margin: 0;
     background-color: #fff;
     white-space: nowrap;
+    border: 1px solid var(--mercury);
+    box-shadow: var(--box-shadow-popper);
+    border-radius: 6px;
   }
 
   & :global(.recharts-tooltip-item) {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    font-size: media(12px);
+    font-size: 12px;
     color: var(--gray20);
-    padding: media(4px) 0;
+    padding: 4px 0;
   }
 
   & :global(.recharts-tooltip-label) {
-    font-size: media(12px);
+    font-size: 12px;
     color: var(--gray60);
     margin-top: 0;
-    margin-bottom: media(8px);
+    margin-bottom: 8px;
 
     &:empty {
       margin-bottom: 0;
@@ -46,7 +46,7 @@ SChart {
   }
 
   & :global(.recharts-tooltip-item-value-wrapper) {
-    margin-left: media(12px);
+    margin-left: 12px;
   }
 
   & :global(.recharts-tooltip-item-value) {
@@ -55,9 +55,9 @@ SChart {
 
   & :global(.recharts-tooltip-item-color) {
     display: inline-block;
-    margin-right: media(8px);
-    width: media(8px);
-    height: media(8px);
+    margin-right: 8px;
+    width: 8px;
+    height: 8px;
     border-radius: 50%;
   }
 

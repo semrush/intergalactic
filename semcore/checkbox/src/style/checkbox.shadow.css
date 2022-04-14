@@ -4,6 +4,10 @@ SLabel {
   display: inline-flex;
   align-items: flex-start;
   cursor: pointer;
+
+  &[disabled] {
+    cursor: default;
+  }
 }
 
 SText {
@@ -39,18 +43,18 @@ SCheckbox {
     bottom: 0;
     background: #fff;
     border: 1px solid;
-    border-radius: 2px;
+    border-radius: var(--rounded-s);
   }
 
   &::after {
     content: '';
     position: absolute;
-    top: 0;
+    top: 1px;
     left: 0;
     right: 0;
     bottom: 0;
     margin: 0 2px;
-    background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4IDYiIGZpbGw9IiNmZmYiPgogICAgPHBhdGggZD0iTTc3Ny44ODQsNTkzLjc4MmwtMC42NzktLjY3NWEwLjQsMC40LDAsMCwwLS41NTksMGwtMy41NzMsMy41NTYtMS43Mi0xLjcxM2EwLjQsMC40LDAsMCwwLS41NTgsMGwtMC42NzkuNjc1YTAuMzg0LDAuMzg0LDAsMCwwLS4xMTYuMjcyLDAuNCwwLjQsMCwwLDAsLjExNS4yODRsMi42NzksMi42NjVhMC40LDAuNCwwLDAsMCwuNTU5LDBsNC41MzEtNC41MDhhMC40LDAuNCwwLDAsMCwuMTE2LTAuMjg1QTAuMzgyLDAuMzgyLDAsMCwwLDc3Ny44ODQsNTkzLjc4MloiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC03NzAgLTU5MykiLz4KPC9zdmc+Cgo=');
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIiIGhlaWdodD0iOSIgdmlld0JveD0iMCAwIDEyIDkiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxwYXRoIGQ9Ik0xMSAxLjVMNC43NSA3Ljc1TDEgNCIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KPC9zdmc+Cg==');
     background-repeat: no-repeat;
     background-position: center center;
   }
@@ -63,15 +67,15 @@ SCheckbox[size='xl'] {
 }
 
 SCheckbox[size='l'] {
-  margin-top: 1px;
-  width: 16px;
-  height: 16px;
+  margin-top: 2px;
+  width: 20px;
+  height: 20px;
 }
 
 SCheckbox[size='m'] {
   margin-top: 2px;
-  width: 12px;
-  height: 12px;
+  width: 16px;
+  height: 16px;
 }
 
 SText[size='xl'] {
@@ -80,18 +84,18 @@ SText[size='xl'] {
 }
 
 SText[size='l'] {
+  font-size: var(--fs-300);
+  line-height: var(--lh-300);
+}
+
+SText[size='m'] {
   font-size: var(--fs-200);
   line-height: var(--lh-200);
 }
 
-SText[size='m'] {
-  font-size: var(--fs-100);
-  line-height: var(--lh-100);
-}
-
 SCheckbox {
   &[state='normal']:before {
-    border-color: var(--stone);
+    border-color: var(--stone-light);
   }
 
   &[state='normal'][keyboardFocused]:before {
@@ -116,11 +120,11 @@ SControl:indeterminate {
 
 SCheckbox[state='invalid'] {
   &:before {
-    border-color: var(--orange);
+    border-color: var(--red);
   }
 
   &[keyboardFocused]:before {
-    box-shadow: 0 0 0 3px color-mod(var(--orange) a(30%));
+    box-shadow: 0 0 0 3px color-mod(var(--red) a(20%));
   }
 }
 
@@ -138,8 +142,8 @@ SControl:disabled ~ SCheckbox:before {
 
 SControl:checked ~ SCheckbox {
   &[state='invalid']:before {
-    background-color: var(--orange);
-    border-color: var(--orange);
+    background-color: var(--red);
+    border-color: var(--red);
   }
 }
 
@@ -149,13 +153,9 @@ SControl:indeterminate ~ SCheckbox {
     margin: auto;
   }
 
+  &[size='l']:after,
   &[size='xl']:after {
-    width: 14px;
-    height: 3px;
-  }
-
-  &[size='l']:after {
-    width: 10px;
+    width: 12px;
     height: 2px;
   }
 
@@ -165,8 +165,8 @@ SControl:indeterminate ~ SCheckbox {
   }
 
   &[state='invalid']:before {
-    background-color: var(--orange);
-    border-color: var(--orange);
+    background-color: var(--red);
+    border-color: var(--red);
   }
 }
 

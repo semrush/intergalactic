@@ -29,7 +29,7 @@ SLinkTrigger {
   &[active],
   &:hover,
   &:active {
-    color: color-mod(var(--denim-blue) shade(12%));
+    color: var(--blue600);
 
     & SText {
       border-color: currentColor;
@@ -80,8 +80,8 @@ SLinkAddon {
 }
 
 SLinkAddon {
-  width: 12px;
-  height: 12px;
+  width: 16px;
+  height: 16px;
 }
 
 SLinkTrigger[size='s'] {
@@ -89,15 +89,15 @@ SLinkTrigger[size='s'] {
 }
 
 SLinkTrigger[size='m'] {
-  font-size: 12px;
+  font-size: var(--fs-200);
 }
 
 SLinkTrigger[size='l'] {
-  font-size: 14px;
+  font-size: var(--fs-300);
 }
 
 SLinkTrigger[size='xl'] {
-  font-size: 16px;
+  font-size: var(--fs-300);
 }
 
 @media (prefers-reduced-motion) {
