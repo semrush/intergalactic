@@ -38,7 +38,7 @@ jobs:
           path: |
             node_modules
             */*/node_modules
-          key: modules-${{ runner.os }}-${{ hashFiles('yarn.lock') }}
+          key: modules-${{ runner.os }}-${{ hashFiles('yarn.lock') }}-${{ hashFiles('website/yarn.lock') }}
       - name: Install dependencies
         if: steps.cache-modules.outputs.cache-hit != 'true'
         run: yarn --non-interactive --frozen-lockfile
