@@ -8,7 +8,7 @@ tabName: Design
 
 @## Description
 
-**Bar chart** is a method to visualize distribution of values by category for value comparison. A bar chart can be [vertical](/data-display/bar-chart/) or horizontal.
+**Bar chart** visualizes distribution of values by category for value comparison. A bar chart can be [vertical](/data-display/bar-chart/) or horizontal.
 
 > 💡 **Difference from Histogram chart**
 >
@@ -18,22 +18,22 @@ tabName: Design
 
 Important points to keep in mind when presenting data as a bar chart:
 
-- The axes should be clear to the user from the chart name. However, in cases where the graph name is not enough, you can denote the axes.
-- Don't use too many colors to represent values. One color or shades of the same color shall be sufficient for your tasks. However, you can always select a value if necessary.
+- The axes should be clear to the user from the chart name. However, in cases where the chart name is not enough, you can denote the axes.
+- Don't use too many colors to represent values. One color or shades of one color is enough. However, you can always highlight a value if necessary.
 
 @## Usage
 
 **Horizontal bars are best used when:**
 
-- the names of compared values are long (for example, names of categories or countries);
-- you need to compare more than 10 values;
-- you need to denote value for each unit of measure.
+- the names of compared categories of values are long (for example, names of countries);
+- you need to compare more than 10 categories of values;
+- you need to label value for each category to measure.
 
 **Horizontal bars are not recommended when:**
 
-- you need to display a trend (use Line chart instead);
-- you need to compare information for a certain period of time (use Vertical bar chart or [Line chart](/data-display/line-chart/) in this case);
-- compare category values if they ALL ADD up to 100% (use [Donut chart](/data-display/donut-chart/)).
+- you need to display a trend (use [Line chart](/data-display/line-chart/) instead);
+- you need to compare data for a certain period of time (use Vertical bar chart or [Line chart](/data-display/line-chart/) in this case);
+- compare category values if they all add up to 100% (use [Donut chart](/data-display/donut-chart/)).
 
 **Horizontal bars help you compare data in the following cases:**
 
@@ -44,98 +44,97 @@ Important points to keep in mind when presenting data as a bar chart:
 
 ### Horizontal bar chart
 
-|                | Apperance example                               | Styles                                 |
-| -------------- | ----------------------------------------------- | -------------------------------------- |
-| One category   | ![bar-chart one value](static/hor-one-cat.png)  | `border-radius: 2px;`                  |
-| Two categories | ![bar-chart two values](static/hor-two-cat.png) | The margin between two columns is 4px. |
+|                | Apperance example                           | Styles                                 |
+| -------------- | ------------------------------------------- | -------------------------------------- |
+| One category   | ![bar-chart one value](static/one-cat.png)  | `border-radius: 2px;`                  |
+| Two categories | ![bar-chart two values](static/two-cat.png) | The margin between two columns is 4px. |
 
-> 💡 If there are more than 2-3 categories, use a [stacked horizontal bar chart](/data-display/stacked-horizontal-bar/) or try to present the data using a different type of chart.
+> 💡 If there are more than 2-3 categories, use a [Stacked horizontal bar chart](/data-display/stacked-horizontal-bar/) or try to present the data using a different type of chart.
 >
 > It is also a good solution to allow users to switch the chart type in the widget settings.
 
 @## Margins
 
-| Description                                                                                                                                                                                                                    | Apperance example                              |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------- |
-| For this type of chart, the upper margin is divided into two parts. The first 12px is the margin from the controls to the chart itself, the second 12px – is the margin inside the chart from the bar to the edge of the grid. | ![bar-chart margins](static/hor-margins-1.png) |
-| The margin between categories and values on the Y-axis and bars is 16px. The margin between values is 8px.                                                                                                                     | ![bar-chart margins](static/hor-margins-2.png) |
-| The margin between categories shall be 20px minimum. Otherwise, the categories visually "stick together".                                                                                                                      | ![bar-chart margins](static/hor-margins-3.png) |
+| Description                                                                                                | Apperance example                          |
+| ---------------------------------------------------------------------------------------------------------- | ------------------------------------------ |
+| `margin: 8px 0px;`                                                                                         | ![bar-chart margins](static/margins-1.png) |
+| The margin between categories and values on the Y-axis and bars is 16px. The margin between values is 8px. | ![bar-chart margins](static/margins-2.png) |
+| The margin between categories shall be 20px minimum. Otherwise, the data becomes a mess.                   | ![bar-chart margins](static/margins-3.png) |
 
 @## Grid and axes
 
 ### No grid and axes
 
-If you need to demonstrate the ratio of the category value to 100%, no axes can be used in the chart. The values shall have presented the percentages they occupy.
+If you need to demonstrate the ratio of the category value to 100%, don't use grid and axes.
 
-![bar-chart no grid](static/hor-grid-1.png)
+![bar-chart no grid](static/one-cat.png)
 
 ### With grid and axes
 
-If you do not need to present the ratio of values to 100%, but just to display their distribution, the additional axes and the X-axis can be used.
+If you do not need to present the ratio of values to 100%, but just to display their distribution, use the additional axes and the X-axis.
 
-![bar-chart grid](static/hor-grid-2.png)
+![bar-chart grid](static/grid.png)
 
-> 💡 Don't forget to provide space for category values in the right and left parts of the widget.
+> 💡 Don't forget to provide space for category values in the right and left parts of the chart.
 
 @## Labels of categories and values
 
-- Unlike vertical chart, the Y-axis labels must have same color as the color of the main text – `$gray20`.
-- They are one of the main elements for "reading" information by the values of this chart type.
-- If the category label is too long, it collapses into an `ellipsis`. By hovering over it, we present the tooltip with the full category name.
-- It is better to add the tooltip on the right or left side relative to the category label (it will overlap labels of other categories at the top or bottom).
+- Unlike vertical chart, the Y-axis labels must have same color as the color of the main text – `--gray-800`.They are one of the main elements for "reading" data on this chart type.
+- If the category label is too long, collapse into an `ellipsis`. By hovering over it, show the tooltip with the full category name.
+- It is better to add the tooltip on the right or left side relative to the category label (so it will not labels of other categories).
 
-![bar-chart label](static/hor-label.png)
+![bar-chart label](static/label.png)
 
 @## Interaction
 
-When you hover over a column, we highlight it with a colorgray background – `rgba 152 170 175, 0.3` (`$mist` with .3 opacity). The hover takes up half of the margin column on the right and left sides.
+When you hover over a column, we highlight it with `--gray-200` color with .3 opacity. The hover takes up half of the margin column on the right and left sides.
 
-> 💡 If the column is clickable, the cursor must change to `pointer`.
+If the column is clickable, the cursor changes to `pointer`.
 
-If the chart has a trend line, then while hovering a line and a point shall be displayed on the trend line.
-
-|                                   | Appearance example                                             |
-| --------------------------------- | -------------------------------------------------------------- |
-| Chart with one category           | ![bar chart with hover](static/hor-legend.png)                 |
-| Chart with two or more categories | ![bar chart with two values and hover](static/hor-hover-2.png) |
+|                                   | Appearance example                                         |
+| --------------------------------- | ---------------------------------------------------------- |
+| Chart with one category           | ![bar chart with hover](static/hover-1.png)                |
+| Chart with two or more categories | ![bar chart with two values and hover](static/hover-2.png) |
 
 @## Edge cases
 
-### Data for categories 1-3
+### No more results
 
-We display one or two columns, and type the text `No more results` below it in place of the other columns.
+Display message: "No more results" — below the values with a 32px margin.
 
-![one category](static/hor-no-more.png)
+![one category](static/no-more.png)
 
-![more categories](static/hor-no-more-2.png)
+![more categories](static/no-more-2.png)
 
-### All values are zero
+### Null values
 
-If all the values on the chart are zero, then in the tooltip we shall display O for this point.
+If all the values on the chart are zero, then in the tooltip we shall display null all of them in the tooltips.
 
 > 💡 **Zero is also data. 0 ≠ `n/a`.**
 
-![null](static/hor-null.png)
+![null](static/null.png)
 
-![null](static/hor-null-2.png)
+![null](static/null-2.png)
 
-### A part of the chart contains no data
+### Some dots have no data
 
-Do not display columns in the area without data.
+Do not display bars without data.
 
-When you hover over a category without data, the tooltip with the `n/a` value for the point shall appear. It is recommended to specify in the tooltip why there is no data, and when it will be available (if possible).
+When you hover over a dot without data, show tooltip with the `n/a` value. We also recommend you to add a message, which explains why there is no data, and when it will be available (if possible).
 
-![not available](static/hor-na.png)
+![not available](static/na.png)
 
-![not available](static/hor-na-2.png)
+![not available](static/na-2.png)
 
-@## Data loading
+@## Initial loading
 
-When loading the data for the first time, [Skeleton](/components/skeleton/) should be displayed instead of the chart. If the chart has a title, it should be displayed during loading. The user shall have an idea of what is being loaded and whether they need to wait for the loading process to complete.
+When loading the chart for the first time, show [Skeleton](/components/skeleton/) instead of the chart.
 
-![skeleton](static/hor-skeleton.png)
+If the chart has a title, show it during the loading. The user shall have an idea of what is being loaded and whether they need to wait for the loading process to complete.
 
-Styles can be found in the guide book for [Skeleton](/components/skeleton/).
+![skeleton](static/skeleton.png)
+
+More information about this state see in the guide for [Skeleton](/components/skeleton/).
 
 @page bar-horizontal-api
 @page bar-horizontal-d3-code
