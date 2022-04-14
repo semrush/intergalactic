@@ -2,8 +2,8 @@
 
 /* eslint-disable no-console */
 
-import fs from 'fs-extra';
-import chalk from 'chalk';
+import fs from 'fs/promises';
+import pc from 'picocolors';
 
 const commitMessageFilePath = [...process.argv].pop();
 const commitMessage = await fs.readFile(commitMessageFilePath, 'utf-8');
@@ -20,12 +20,12 @@ const allowedScopes = [...specialScopes, ...semcoreComponents, ...toolsComponent
 const outputError = (message: string) => {
   console.log(
     '\n' +
-      chalk.redBright('Invalid commit message!') +
+      pc.red('Invalid commit message!') +
       ' ' +
       message +
       '\n' +
       'Got commit message: ' +
-      chalk.gray(commitMessage) +
+      pc.gray(commitMessage) +
       '\n',
   );
   process.exit(1);
@@ -42,13 +42,13 @@ if (!commitTitle) {
 if (!commitTitle.startsWith('[') || !commitTitle.includes(']')) {
   outputError(
     'Should be in format "[scope] change description"' +
-      chalk.gray(', e.g. "[button] added blockchain support"]'),
+      pc.gray(', e.g. "[button] added blockchain support"]'),
   );
 }
 
 if (!commitTitle.includes('] ')) {
   outputError(
-    'Missing in "] " in message of format "[scope' + chalk.redBright('] ') + 'change description" ',
+    'Missing in "] " in message of format "[scope' + pc.red('] ') + 'change description" ',
   );
 }
 
@@ -71,10 +71,10 @@ const unknownScope = allProvidedScopes.find((scope) => !allowedScopes.includes(s
 if (unknownScope) {
   outputError(
     `Got unknown scope "${unknownScope}" in message of format "[scope] change description". Only following scopes are allowed: ` +
-      specialScopes.map((scope) => chalk.cyan(scope)).join(', ') +
+      specialScopes.map((scope) => pc.cyan(scope)).join(', ') +
       ', ' +
-      semcoreComponents.map((scope) => chalk.blue(scope)).join(', ') +
+      semcoreComponents.map((scope) => pc.blue(scope)).join(', ') +
       ', ' +
-      toolsComponents.map((scope) => chalk.magenta(scope)).join(', '),
+      toolsComponents.map((scope) => pc.magenta(scope)).join(', '),
   );
 }

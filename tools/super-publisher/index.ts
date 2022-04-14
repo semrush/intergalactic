@@ -1,12 +1,12 @@
 import path from 'path';
-import chalk from 'chalk';
+import pc from 'picocolors';
 import { PublisherOptions } from './bin/cli';
 
 export const runPublisherTasks = async function (options: PublisherOptions) {
   // eslint-disable-next-line no-console
   console.log(
-    chalk.green(`Running publisher`) +
-      chalk.gray(` with following options: ${JSON.stringify(options)}\n`),
+    pc.green(`Running publisher`) +
+      pc.gray(` with following options: ${JSON.stringify(options)}\n`),
   );
 
   const { publisherConfigFactory } = await import(path.join(process.cwd(), '.publisher'));

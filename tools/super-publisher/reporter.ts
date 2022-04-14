@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 import EventEmitter from 'events';
-import chalk from 'chalk';
+import pc from 'picocolors';
 import PrettyError from 'pretty-error';
 
 export class Reporter extends EventEmitter {
@@ -19,19 +19,19 @@ export class Reporter extends EventEmitter {
 
     this.on('start', (taskName) => {
       this.progressTasks.push(taskName);
-      console.log(`${this.getProgressTask(taskName)} ${chalk.green(`${taskName}`)}`);
+      console.log(`${this.getProgressTask(taskName)} ${pc.green(`${taskName}`)}`);
     });
 
     this.on('skip', (taskName) => {
-      console.log(`${chalk.blue(`${taskName}`)}: SKIP`);
+      console.log(`${pc.blue(`${taskName}`)}: SKIP`);
     });
 
     this.on('message', (taskName, message) => {
-      console.log(`${chalk.cyan(`${taskName}`)}: ${message}`);
+      console.log(`${pc.cyan(`${taskName}`)}: ${message}`);
     });
 
     this.on('warning', (taskName, message) => {
-      console.log(`${chalk.red(`${taskName}`)}: ${message}`);
+      console.log(`${pc.red(`${taskName}`)}: ${message}`);
     });
 
     this.on('done', (taskName) => {
@@ -58,7 +58,7 @@ export class Reporter extends EventEmitter {
 
   getProgressTask(taskName) {
     const index = this.progressTasks.indexOf(taskName);
-    return chalk.inverse(` ${index + 1}/${this.tasks.length} `);
+    return pc.inverse(` ${index + 1}/${this.tasks.length} `);
   }
 
   addTask(taskName) {

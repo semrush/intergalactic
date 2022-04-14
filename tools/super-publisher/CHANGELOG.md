@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [1.0.1] - 2022-04-15
+
+### Changed
+
+- Migrated from `chalk` to `picocolors`.
+
 ## [1.1.0] - 2022-03-28
 
 ### Changed
