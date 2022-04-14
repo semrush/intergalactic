@@ -60,7 +60,12 @@ SCheckbox {
   }
 }
 
-SCheckbox[size='xl'],
+SCheckbox[size='xl'] {
+  margin-top: 2px;
+  width: 20px;
+  height: 20px;
+}
+
 SCheckbox[size='l'] {
   margin-top: 2px;
   width: 20px;
