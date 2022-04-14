@@ -312,8 +312,8 @@ export default function App() {
             }
             control={control}
             name="inputTag"
-            rules={{ required: true, validate: (value) => value !== [] }}
-            defaultValue={tags === [] ? null : tags}
+            rules={{ required: true, validate: (value) => value?.length > 0 }}
+            defaultValue={tags?.length === 0 ? null : tags}
           />
         </Tooltip>
 

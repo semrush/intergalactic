@@ -106,7 +106,6 @@ const Demo = () => {
             opacity={opacity['new']}
             hide={!bars.includes('new')}
           />
-          }
         </BarChart>
       </ResponsiveContainer>
     </Card>
