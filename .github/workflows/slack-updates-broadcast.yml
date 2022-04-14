@@ -18,7 +18,8 @@ jobs:
           path: |
             node_modules
             */*/node_modules
-          key: modules-${{ runner.os }}-${{ hashFiles('yarn.lock') }}
+            website/node_modules
+          key: modules-${{ runner.os }}-${{ hashFiles('yarn.lock') }}--${{ hashFiles('website/yarn.lock') }}
       - name: Install dependencies
         if: steps.cache-modules.outputs.cache-hit != 'true'
         run: yarn --non-interactive --frozen-lockfile
@@ -35,7 +36,8 @@ jobs:
           path: |
             node_modules
             */*/node_modules
-          key: modules-${{ runner.os }}-${{ hashFiles('yarn.lock') }}
+            website/node_modules
+          key: modules-${{ runner.os }}-${{ hashFiles('yarn.lock') }}--${{ hashFiles('website/yarn.lock') }}
       - name: Notification
         env:
           SLACK_API_ENDPOINTS: ${{ secrets.SLACK_WEBHOOK_URLS }}
