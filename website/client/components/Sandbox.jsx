@@ -1,6 +1,21 @@
 import React, { useCallback } from 'react';
 import Tooltip from '@semcore/tooltip';
-import { getParameters } from 'codesandbox/lib/api/define';
+import { compressToBase64 as lzCompressToBase64 } from 'lz-string';
+
+const dataToLzCompressedJson = (data) => {
+  /**
+   * Ejected from
+   * "codesandbox-import-utils/lib/api/define" from
+   * "codesandbox/lib/api/define"
+   */
+  const json = JSON.stringify(data);
+  const base64 = lzCompressToBase64(json)
+    .replace(/\+/g, '-') // Convert '+' to '-'
+    .replace(/\//g, '_') // Convert '/' to '_'
+    .replace(/=+$/, ''); // Remove ending '='
+
+  return base64;
+};
 
 export default ({ raw: { code: ExampleRawComponent, path } }) => {
   let dependencies = ExampleRawComponent.match(/from.+/g);
@@ -16,7 +31,7 @@ export default ({ raw: { code: ExampleRawComponent, path } }) => {
       return acc;
     }, {});
 
-  const parameters = getParameters({
+  const parameters = dataToLzCompressedJson({
     files: {
       'package.json': {
         content: {
