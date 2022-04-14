@@ -1,6 +1,9 @@
 import { Plugin } from 'esbuild';
-import { resolve as resolvePath } from 'path';
-import { readdir, access as fsAccess, stat as fsStat } from 'fs/promises';
+import { resolve as resolvePath, dirname as resolveDirname } from 'path';
+import { access as fsAccess, stat as fsStat, readFile } from 'fs/promises';
+import { fileURLToPath } from 'url';
+
+const __dirname = resolveDirname(fileURLToPath(import.meta.url));
 
 const fsExists = async (path: string) => {
   try {
@@ -15,64 +18,102 @@ const isFile = async (path: string) => {
   return (await fsStat(path)).isFile();
 };
 
+const getRepoPackageFile = async () => {
+  const packageFilePath = resolvePath(__dirname, '../../package.json');
+  const packageFileText = await readFile(packageFilePath, 'utf-8');
+  return JSON.parse(packageFileText) as {
+    workspaces: string[];
+  };
+};
+
+const tryToResolveWorkspacePath = async (path: string) => {
+  if (!path.startsWith('@semcore/')) {
+    throw new Error(
+      `Unable to resolve workspace for non @semcore package (trying to resolve "${path}")`,
+    );
+  }
+  const { workspaces } = await getRepoPackageFile();
+  {
+    const destinationDirs = workspaces.map((workspacePath) => workspacePath.split('/').pop());
+    if (destinationDirs.length !== [...new Set(destinationDirs)].length) {
+      const ambiguousWorkspaces = destinationDirs
+        .filter((workspaceName, index) => destinationDirs.indexOf(workspaceName) !== index)
+        .join(', ');
+      throw new Error(
+        `Unable to resolve ambiguous workspaces (destination dir ${ambiguousWorkspaces} occured in multiple paths)`,
+      );
+    }
+  }
+
+  const componentName = path.split('/')[1];
+
+  for (const workspace of workspaces) {
+    const workspaceDestination = workspace.split('/').pop();
+    if (workspaceDestination === componentName) {
+      return resolvePath(__dirname, '../..', workspace);
+    }
+  }
+
+  throw new Error(`Unable to find workspace dir while trying to resolve "${path}"`);
+};
+
+const tryToResolveFile = async (path: string) => {
+  if (await isFile(path)) {
+    return {
+      path,
+      namespace: 'file',
+    };
+  }
+};
+
 const extensions = ['.js', '.jsx', '.ts', '.tsx', '.css'];
+const tryToResolveFileExtention = async (path: string) => {
+  for (const extension of extensions) {
+    const resolved = await tryToResolveFile(path + extension);
+    if (resolved) return resolved;
+  }
+};
+
+const tryToResolveIndexFile = async (path: string) => {
+  return tryToResolveFileExtention(resolvePath(path, 'index'));
+};
+
+const rootFiles = ['README.md', 'package.json'];
+const generatedComponents = ['icon', 'ui'];
+const outOfSourceDirs = ['style'];
 
 export const esbuildPluginSemcoreSourcesResolve = (): Plugin => ({
   name: 'esbuild-plugin-semcore-sources-resolve',
   setup(build) {
     build.onResolve({ filter: /^@semcore\// }, async ({ path }) => {
-      let subPath = path.split('/').slice(2).join('/');
+      const workspacePath = await tryToResolveWorkspacePath(path);
       const componentName = path.split('/')[1];
-      const filesOfSemcoreDir = await readdir('../../semcore');
-      const filesOfToolsDir = await readdir('../../tools');
-      let componentsDir: string | null = null;
-      if (filesOfSemcoreDir.includes(componentName)) {
-        componentsDir = 'semcore';
-        if (subPath.startsWith('lib/')) {
-          subPath = componentName === 'icon' && subPath ? subPath : subPath.replace('lib/', 'src/');
-        } else if (!subPath.startsWith('style/') && !(componentName === 'icon' && subPath)) {
+      let subPath = path.split('/').slice(2).join('/');
+
+      if (
+        !rootFiles.includes(subPath) &&
+        !(generatedComponents.includes(componentName) && subPath) &&
+        !outOfSourceDirs.some((dir) => subPath.startsWith(dir))
+      ) {
+        if (subPath.includes('lib')) {
+          subPath = subPath.replace('lib/', 'src/');
+        } else if (!subPath.startsWith('src/')) {
           subPath = 'src/' + subPath;
         }
       }
-      if (filesOfToolsDir.includes(componentName)) {
-        componentsDir = 'tools';
-      }
-      if (!componentsDir) {
-        throw new Error(`Unable to determine ${componentName} location`);
-      }
 
-      const relativePath = `../../${componentsDir}/` + componentName + '/' + subPath;
-      const absolutePath = resolvePath(relativePath);
+      const absolutePath = resolvePath(workspacePath, subPath);
 
-      if (await isFile(absolutePath)) {
-        return {
-          path: absolutePath,
-          namespace: 'file',
-        };
-      }
-      for (const extension of extensions) {
-        if (await isFile(absolutePath + extension)) {
-          return {
-            path: absolutePath + extension,
-            namespace: 'file',
-          };
-        }
+      for (const tryToResolve of [
+        tryToResolveFile,
+        tryToResolveFileExtention,
+        tryToResolveIndexFile,
+      ]) {
+        const resolved = await tryToResolve(absolutePath);
+        if (resolved) return resolved;
       }
 
-      const indexFileName = (await readdir(absolutePath)).find(
-        (filename) => filename.startsWith('index') && !filename.endsWith('.d.ts'),
-      );
-
-      if (!indexFileName) {
-        throw new Error(
-          `Unable to find index file in "${absolutePath}". esbuild-plugin-semcore-playground currently works only with components that contains index file, maybe you should extends things that plugin able to do`,
-        );
-      }
-
-      return {
-        path: absolutePath + '/' + indexFileName,
-        namespace: 'file',
-      };
+      throw new Error(`Unable to resolve file in "${absolutePath}" (trying to resolve "${path}") `);
     });
   },
 });

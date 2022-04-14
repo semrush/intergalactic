@@ -22,7 +22,7 @@ import updatesButton from '../static/illustration/search-for-updates.svg';
 import { css } from '@semcore/core';
 import SideBarNavigation from '../components/SideBarNavigation';
 import ComponentCard from '../components/ComponentCard';
-import Text from '@semcore/typography/lib/es6/Text';
+import { Text } from '@semcore/typography';
 import GetTableHeader from '../components/GetTableHeader';
 
 const stylesTabLine = css`

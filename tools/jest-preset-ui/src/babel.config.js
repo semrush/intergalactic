@@ -12,4 +12,5 @@ module.exports = createTransformer({
       },
     ],
   ],
+  plugins: ['babel-plugin-transform-import-meta'],
 });
