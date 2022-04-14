@@ -8,7 +8,7 @@
     "playground": "yarn workspace @semcore/playground start",
     "analyze": "yarn workspace @semcore/analyzer start",
     "pub": "super-publisher --root ./semcore",
-    "lint:es": "eslint -c .eslintrc --ext .ts,.tsx ./semcore",
+    "lint:es": "eslint -c .eslintrc --ext .ts,.tsx,.js,.jsx ./semcore",
     "lint:ts": "tsc --project tsconfig.json --noEmit",
     "lint": "yarn lint:ts & yarn lint:es",
     "prettier:fix": "pretty-quick --staged --ignore-path=./.prettierignore",
