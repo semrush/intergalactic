@@ -34,7 +34,10 @@ export * from './Area';
 export { default as StackedArea } from './StackedArea';
 export * from './StackedArea';
 
+/** It becomes resolvable after building and moving file to lib dir */
+// eslint-disable-next-line import/no-unresolved
 export { default as RadialTree } from './RadialTree';
+// eslint-disable-next-line import/no-unresolved
 export * from './RadialTree';
 
 export { default as Donut } from './Donut';

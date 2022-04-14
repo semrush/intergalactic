@@ -1,35 +1,14 @@
 import React from 'react';
 import { Component, sstyled, CProps, ReturnEl } from '@semcore/core';
+// @ts-ignore
 import createElement from './createElement';
 import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 import { transition } from 'd3-transition';
 import style from './style/radial-tree.shadow.css';
 import { shade } from '@semcore/utils/lib/color';
-
-const memoize = <T extends (...args: (string | number)[]) => any>(func: T): T => {
-  const results: { [cacheKey: string]: ReturnType<T> } = {};
-  return ((...args) => {
-    const argsKey = args.join(',');
-    if (!results[argsKey]) {
-      results[argsKey] = func(...args);
-    }
-    return results[argsKey];
-  }) as T;
-};
-
-const measureText = memoize((text: string, fontSize: number) => {
-  const span = document.createElement('span');
-  span.style.fontSize = `${fontSize}px`;
-  for (const line of text.split('\n')) {
-    span.append(document.createTextNode(line));
-    span.append(document.createElement('br'));
-  }
-  span.style.display = 'inline-block';
-  document.body.append(span);
-  const textWidth = span.offsetWidth;
-  span.remove();
-  return textWidth;
-});
+import { measureText } from './utils';
+import assignProps from '@semcore/utils/lib/assignProps';
+import getOriginChildren from '@semcore/utils/lib/getOriginChildren';
 
 const baseAngle = -Math.PI / 2; // The top vertical line
 
@@ -53,7 +32,7 @@ type RadianData = {
   icon?: React.FC;
   /**
    * Color of radian's line, cap and label.
-   * @default #000
+   * @default #008FF8
    */
   color?: string;
   /**
@@ -72,10 +51,10 @@ export interface IRadialTreeProps {
   /**
    * List of radians. `{ label: string; key: string; capSize?: number; icon?: React.FC; color?: string; iconColor?: string; iconSize?: number; }`
    */
-  data?: RadianData[];
+  data: RadianData[];
   /**
    * Angel (in rads) that rotates chart. 0 means that first radian is exactly on top vertical line.
-   * @default Math.PI / 5
+   * @default 0
    */
   angleOffset?: number;
   /**
@@ -95,7 +74,7 @@ export interface IRadialTreeProps {
   labelMargin?: number;
   /**
    * Color of all radian's line, cap and label.
-   * @default #000
+   * @default #008FF8
    */
   color?: string;
   /**
@@ -138,6 +117,13 @@ type RootAsProps = IRadialTreeProps & {
   activeKey: string | null;
   Children: React.FC;
   size: [width: number, height: number];
+  data: RadianData[];
+  duration: number;
+  textSize: number;
+  capSize: number;
+  centralMargin: number;
+  angleOffset: number;
+  $rootProps: RootAsProps;
 };
 
 class RadialTreeBase extends Component<RootAsProps> {
@@ -146,21 +132,21 @@ class RadialTreeBase extends Component<RootAsProps> {
   static enhance = [uniqueIDEnhancement()];
 
   static defaultProps: Partial<IRadialTreeProps> = {
-    angleOffset: Math.PI / 5,
+    angleOffset: 0,
     duration: 300,
     centralMargin: 50,
     labelMargin: 2,
-    color: '#000',
+    color: '#008FF8',
     iconColor: '#fff',
-    capSize: 16,
-    iconSize: 16,
+    capSize: 8,
+    iconSize: 8,
     textSize: 14,
     defaultActiveKey: null,
   };
 
   Element!: React.FC<{ render: string }>;
 
-  constructor(props) {
+  constructor(props: any) {
     super(props);
     this.handleRadianClick = this.handleRadianClick.bind(this);
   }
@@ -191,16 +177,17 @@ class RadialTreeBase extends Component<RootAsProps> {
     const labelsAnimation = transition()
       .selection()
       .selectAll(`[data-radial-animation=${uid}-label]`);
-    const circlesNodes = circlesAnimation.nodes();
-    const iconsNodes = iconsAnimation.nodes();
-    const linesNodes = linesAnimation.nodes();
-    const labelsNodes = linesAnimation.nodes();
+    const circlesNodes = circlesAnimation.nodes() as SVGCircleElement[];
+    const iconsNodes = iconsAnimation.nodes() as SVGRectElement[];
+    const linesNodes = linesAnimation.nodes() as SVGLineElement[];
+    const labelsNodes = linesAnimation.nodes() as SVGTextElement[];
 
     if (circlesNodes.length > 0) {
       const attrs = circlesNodes.map((node) => {
         const cx = node.cx?.baseVal?.value;
         const cy = node.cy?.baseVal?.value;
-        const lineNode = linesNodes[node.dataset.radianIndex];
+        const radianIndex = parseInt(node.dataset.radianIndex!, 10);
+        const lineNode = linesNodes[radianIndex];
         return {
           from: {
             cx: lineNode.x1?.baseVal?.value,
@@ -227,7 +214,8 @@ class RadialTreeBase extends Component<RootAsProps> {
         const y = node.y?.baseVal?.value;
         const width = node.width?.baseVal?.value;
         const height = node.height?.baseVal?.value;
-        const lineNode = linesNodes[node.dataset.radianIndex];
+        const radianIndex = parseInt(node.dataset.radianIndex!, 10);
+        const lineNode = linesNodes[radianIndex];
         return {
           from: {
             x: lineNode.x1?.baseVal?.value - width / 2,
@@ -284,7 +272,7 @@ class RadialTreeBase extends Component<RootAsProps> {
     }
   }
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate(prevProps: RootAsProps) {
     if (prevProps.$rootProps.data?.length !== this.asProps.data?.length) {
       this.runAppearAnimation();
     }
@@ -295,7 +283,10 @@ class RadialTreeBase extends Component<RootAsProps> {
   }
 
   handleRadianClick(key: string) {
-    return (event: React.MouseEvent) => this.handlers.activeKey(key, event);
+    return (event: React.MouseEvent) => {
+      const newKey = key !== this.asProps.activeKey ? key : null;
+      this.handlers.activeKey(newKey, event);
+    };
   }
 
   computeTextWidth() {
@@ -306,7 +297,7 @@ class RadialTreeBase extends Component<RootAsProps> {
   }
 
   getTitleProps() {
-    const { uid, size, textSize, color } = this.asProps;
+    const { uid, size, textSize } = this.asProps;
 
     const [width, height] = size;
     const center = [width / 2, height / 2];
@@ -316,7 +307,6 @@ class RadialTreeBase extends Component<RootAsProps> {
       y,
       textSize: textSize * 1.5,
       ['data-radial-animation']: `${uid}-label`,
-      color,
     } as IRadialTreeTitleProps;
   }
 
@@ -334,7 +324,6 @@ class RadialTreeBase extends Component<RootAsProps> {
   }
 
   render() {
-    // const SRadialTree = this.Element;
     const SRadialTree = this.Element;
     const { Children } = this.asProps;
 
@@ -365,7 +354,6 @@ class RadialTreeRadian extends Component<RadianAsProps> {
   static defaultProps: Partial<IRadialTreeRadianProps> = {
     centralMargin: 50,
     labelMargin: 2,
-    color: '#000',
     iconColor: '#fff',
     capSize: 16,
     iconSize: 16,
@@ -373,13 +361,13 @@ class RadialTreeRadian extends Component<RadianAsProps> {
   };
   Element!: React.FC<{ render: string }>;
 
-  constructor(props) {
+  constructor(props: any) {
     super(props);
     this.renderRadian = this.renderRadian.bind(this);
   }
 
   getInteractiveAreaProps({ $rootProps }: { $rootProps: IRadialTreeProps }, index: number) {
-    const data = $rootProps.data[index];
+    const data = $rootProps.data![index];
     const { xStart, yStart, xLabelCenter, yLabelCenter, capSize } = this.computeRadianPosition(
       data,
       index,
@@ -394,11 +382,10 @@ class RadialTreeRadian extends Component<RadianAsProps> {
     } as IRadialTreeRadianInteractiveAreaProps;
   }
   getLineProps({ $rootProps }: { $rootProps: IRadialTreeProps }, index: number) {
-    const data = $rootProps.data[index];
+    const data = $rootProps.data![index];
     const { xStart, yStart, xEnd, yEnd } = this.computeRadianPosition(data, index);
-    const asProps = this.asProps;
-    const color = data.color ?? asProps.color;
-    const { uid } = asProps;
+    const { uid } = this.asProps;
+    const color = data.color ?? this.asProps.color;
 
     return {
       x1: xStart,
@@ -411,11 +398,10 @@ class RadialTreeRadian extends Component<RadianAsProps> {
     } as IRadialTreeRadianLineProps;
   }
   getCapProps({ $rootProps }: { $rootProps: IRadialTreeProps }, index: number) {
-    const data = $rootProps.data[index];
+    const data = $rootProps.data![index];
     const { xEnd, yEnd, capSize } = this.computeRadianPosition(data, index);
-    const asProps = this.asProps;
-    const color = data.color ?? asProps.color;
-    const { uid } = asProps;
+    const { uid } = this.asProps;
+    const color = data.color ?? this.asProps.color;
 
     return {
       x: xEnd,
@@ -427,17 +413,16 @@ class RadialTreeRadian extends Component<RadianAsProps> {
     } as IRadialTreeRadianCapProps;
   }
   getIconProps({ $rootProps }: { $rootProps: IRadialTreeProps }, index: number) {
-    const data = $rootProps.data[index];
+    const data = $rootProps.data![index];
     const { xEnd, yEnd, isActive } = this.computeRadianPosition(data, index);
-    const asProps = this.asProps;
-    const iconColor = data.iconColor ?? asProps.iconColor;
-    const iconSize = data.iconSize ?? asProps.iconSize;
-    const icon = data.icon ?? asProps.icon;
-    const { uid } = asProps;
+    const { uid } = this.asProps;
+    const iconColor = data.iconColor ?? this.asProps.iconColor;
+    const iconSize = data.iconSize ?? this.asProps.iconSize;
+    const icon = data.icon ?? this.asProps.icon;
 
     return {
-      x: xEnd,
-      y: yEnd,
+      x: xEnd - iconSize! / 2,
+      y: yEnd - iconSize! / 2,
       iconSize,
       color: iconColor ?? '#fff',
       ['data-radial-animation']: `${uid}-cap-icon`,
@@ -447,15 +432,14 @@ class RadialTreeRadian extends Component<RadianAsProps> {
     } as IRadialTreeRadianIconProps;
   }
   getLabelProps({ $rootProps }: { $rootProps: IRadialTreeProps }, index: number) {
-    const data = $rootProps.data[index];
+    const data = $rootProps.data![index];
     const { xLabelCenter, yLabelCenter, labelAngle, isHorizontal } = this.computeRadianPosition(
       data,
       index,
     );
-    const asProps = this.asProps;
-    const { uid, textSize } = asProps;
+    const { uid, textSize } = this.asProps;
     const { label } = data;
-    const color = data.color ?? asProps.color;
+    const color = data.color ?? this.asProps.color;
 
     return {
       x: xLabelCenter,
@@ -471,17 +455,15 @@ class RadialTreeRadian extends Component<RadianAsProps> {
   }
 
   getRadianKey(data: RadianData, index: number) {
-    if (!data) debugger;
     return data.key ?? `radian-${index}`;
   }
 
   computeRadianPosition(data: RadianData, index: number) {
-    const asProps = this.asProps;
-    const { centralMargin, angleOffset, activeKey, size, radiansCount, textWidth } = asProps;
+    const { centralMargin, angleOffset, activeKey, size, radiansCount, textWidth } = this.asProps;
     const [width, height] = size;
     const key = this.getRadianKey(data, index);
     const isActive = activeKey === key;
-    const baseCapSize = data.capSize ?? asProps.capSize;
+    const baseCapSize = data.capSize ?? this.asProps.capSize;
     const capSize = baseCapSize * (isActive ? 1 : 0.5);
 
     const minDemSize = Math.min(width, height) / 2;
@@ -528,21 +510,32 @@ class RadialTreeRadian extends Component<RadianAsProps> {
   }
 
   renderRadian(data: RadianData, index: number) {
-    const asProps = this.asProps;
-    const { styles, Children, onRadianClick } = asProps;
+    const { styles, Children, onRadianClick } = this.asProps;
     const key = this.getRadianKey(data, index);
     const SRadian = 'g';
 
+    let children = getOriginChildren(Children);
+
+    if (typeof children === 'function') {
+      const _child = this.asProps.children;
+      const mergedProps = assignProps(children(this.asProps), this.asProps);
+      children = mergedProps.children;
+      mergedProps.children = _child;
+    }
+
+    // hidden from publicly typed export
+    const InteractiveArea = (RadialTree.Radian as any).InteractiveArea;
+
     return sstyled(styles)(
       <SRadian key={key} onClick={onRadianClick(key)}>
-        <Children />
+        <InteractiveArea />
+        {children}
       </SRadian>,
     );
   }
 
   render() {
     const { data } = this.asProps;
-    // const SRadianList = this.Element;
     const SRadianList = 'g';
 
     return sstyled(this.asProps.styles)(
@@ -620,27 +613,30 @@ export interface IRadialTreeRadianIconProps {
   color?: string;
   ['data-radial-animation']?: `${string}-cap-icon`;
   ['data-radian-index']?: number;
-  icon?: React.FC;
+  tag?: React.FC;
   isActive?: boolean;
 }
 type RadialTreeRadianIconAsProps = IRadialTreeRadianIconProps & {
   Element: React.FC<{ render: string | React.FC } & React.SVGProps<any>>;
+  x: number;
+  y: number;
+  iconSize: number;
   styles: React.CSSProperties;
 };
 const Icon: React.FC<RadialTreeRadianIconAsProps> = ({
   Element: SIcon,
   styles,
   isActive,
-  icon,
+  tag,
   x,
   y,
   iconSize,
 }) => {
-  if (!(isActive && icon)) return null;
+  if (!(isActive && tag)) return null;
   const width = iconSize;
   const height = iconSize;
   return sstyled(styles)(
-    <SIcon x={x - width / 2} y={y - height / 2} width={width} height={height} render={icon} />,
+    <SIcon x={x} y={y} width={width} height={height} render={tag} />,
   ) as React.ReactElement;
 };
 
@@ -659,6 +655,10 @@ type RadialTreeRadianLabelAsProps = IRadialTreeRadianLabelProps & {
   Element: React.FC<{ render: string } & React.SVGProps<any>>;
   Children: React.FC;
   styles: React.CSSProperties;
+  x: number;
+  y: number;
+  angle: number;
+  textSize: number;
 };
 const Label: React.FC<RadialTreeRadianLabelAsProps> = ({
   Element: SLabel,
@@ -672,12 +672,13 @@ const Label: React.FC<RadialTreeRadianLabelAsProps> = ({
   textSize,
   angle,
 }) => {
-  const lines = label.split('\n');
+  const lines = String(label).split('\n');
   const linesCount = lines.length;
   const SLabelLine = 'tspan';
 
   const sstyles = sstyled(styles);
   const sLabelStyles = sstyles.cn('SLabel', {
+    color,
     'color-hovered': shade(color, -0.12),
     'text-cursor': isHorizontal ? 'text' : 'vertical-text',
     'transform-origin': `${x.toFixed(2)}px ${y.toFixed(2)}px`,
@@ -757,7 +758,6 @@ const RadialTree = createElement(RadialTreeBase, { Title, Radian }) as (<T>(
 ) => ReturnEl) & {
   Title: <T>(props: CProps<IRadialTreeTitleProps & T>) => ReturnEl;
   Radian: (<T>(props: CProps<IRadialTreeRadianProps & T>) => ReturnEl) & {
-    InteractiveArea: <T>(props: CProps<IRadialTreeRadianInteractiveAreaProps & T>) => ReturnEl;
     Line: <T>(props: CProps<IRadialTreeRadianLineProps & T>) => ReturnEl;
     Cap: <T>(props: CProps<IRadialTreeRadianCapProps & T>) => ReturnEl;
     Icon: <T>(props: CProps<IRadialTreeRadianIconProps & T>) => ReturnEl;

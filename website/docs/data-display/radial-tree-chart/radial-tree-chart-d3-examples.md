@@ -8,6 +8,12 @@ title: Examples
 
 @example radial-tree
 
+@## Multicolor
+
+Pass color in data to specify radians color.
+
+@example radial-tree-multicolor
+
 @## Custom svg in center
 
 Any svg elements may be used in the center of radial tree.

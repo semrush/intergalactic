@@ -18,7 +18,6 @@ export default () => {
     <Plot data={data} scale={[scaleLinear(), scaleLinear()]} width={width} height={height}>
       <RadialTree centralMargin={85} color="#AB6CFE">
         <RadialTree.Radian>
-          <RadialTree.Radian.InteractiveArea />
           <RadialTree.Radian.Label />
           <RadialTree.Radian.Line />
           <RadialTree.Radian.Cap />

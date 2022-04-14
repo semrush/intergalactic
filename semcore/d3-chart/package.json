@@ -13,10 +13,10 @@
     "test": "jest"
   },
   "dependencies": {
+    "@semcore/animation": "^1",
     "@semcore/flex-box": "^4",
     "@semcore/popper": "^4.9",
     "@semcore/utils": "^3.15",
-    "@semcore/animation": "^1",
     "@upsetjs/venn.js": "1.4.1",
     "d3-array": "3.1.6",
     "d3-shape": "3.1.0",
@@ -39,6 +39,9 @@
     "directory": "semcore/d3-chart"
   },
   "devDependencies": {
-    "@semcore/jest-preset-ui": "1.0.0"
+    "@semcore/jest-preset-ui": "1.0.0",
+    "@types/d3-array": "^3.0.2",
+    "@types/d3-scale": "^4.0.2",
+    "@types/d3-transition": "^3.0.1"
   }
 }
