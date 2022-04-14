@@ -1,33 +1,13 @@
 import React from 'react';
 import { Component, sstyled } from '@semcore/core';
 import canUseDOM from '@semcore/utils/lib/canUseDOM';
-import { CONSTANT } from './utils';
+import { CONSTANT, measureText } from './utils';
 import createElement from './createElement';
 import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 import { transition } from 'd3-transition';
 import style from './style/bubble.shadow.css';
 import ClipPath from './ClipPath';
 import { scaleSqrt } from 'd3-scale';
-
-const memoize = (func) => {
-  const results = {};
-  return (argsKey) => {
-    if (!results[argsKey]) {
-      results[argsKey] = func(argsKey);
-    }
-    return results[argsKey];
-  };
-};
-
-const measureText = memoize((text) => {
-  const span = document.createElement('span');
-  span.append(document.createTextNode(text));
-  span.style.display = 'inline-block';
-  document.body.append(span);
-  const textLength = span.offsetWidth;
-  span.remove();
-  return textLength;
-});
 
 class BubbleRoot extends Component {
   static displayName = 'Bubble';
