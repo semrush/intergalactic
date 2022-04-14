@@ -19,7 +19,7 @@
     "fs-extra": "8.1.0",
     "glob": "7.1.4",
     "html-to-react": "1.4.8",
-    "minimist": "1.2.0"
+    "minimist": "1.2.6"
   },
   "jest": {
     "preset": "@semcore/jest-preset-ui"

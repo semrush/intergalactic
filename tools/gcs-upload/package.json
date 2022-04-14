@@ -12,7 +12,7 @@
   "dependencies": {
     "@google-cloud/storage": "3.1.0",
     "fs-extra": "10.0.1",
-    "minimist": "1.2.0"
+    "minimist": "1.2.6"
   },
   "jest": {
     "preset": "@semcore/jest-preset-ui"

@@ -16,7 +16,7 @@
     "marked-ast": "0.3.0",
     "marked-ast-markdown": "2.1.0",
     "semver": "5.6.0",
-    "simple-git": "3.2.6",
+    "simple-git": "3.5.0",
     "tsm": "2.2.1"
   },
   "scripts": {
