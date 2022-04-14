@@ -63,7 +63,8 @@ jobs:
           path: |
             node_modules
             */*/node_modules
-          key: modules-${{ runner.os }}-${{ hashFiles('yarn.lock') }}
+            website/node_modules
+          key: modules-${{ runner.os }}-${{ hashFiles('yarn.lock') }}--${{ hashFiles('website/yarn.lock') }}
       - name: Restore cache build
         uses: actions/cache@v2
         with:
@@ -86,7 +87,8 @@ jobs:
           path: |
             node_modules
             */*/node_modules
-          key: modules-${{ runner.os }}-${{ hashFiles('yarn.lock') }}
+            website/node_modules
+          key: modules-${{ runner.os }}-${{ hashFiles('yarn.lock') }}--${{ hashFiles('website/yarn.lock') }}
       - name: Restore cache build
         uses: actions/cache@v2
         with:
