@@ -33,6 +33,7 @@ describe('Playground sources resolving', () => {
       external: [
         'react',
         'react-dom',
+        'react-virtualized',
         'components',
         'tags',
         'static',
