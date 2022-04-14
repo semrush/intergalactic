@@ -23,9 +23,11 @@ SBaseTrigger {
   font-family: inherit;
   cursor: pointer;
 
-  border: 1px solid var(--stone);
   background: #ffffff;
-  color: var(--gray20);
+
+  font-weight: 400;
+  border: 1px solid var(--stone-light);
+  color: var(--gray-800);
 
   &::-moz-focus-inner {
     border: none;
@@ -44,10 +46,13 @@ SBaseTrigger {
     box-shadow: var(--keyborad-focus);
   }
 
+  &:hover {
+    background-color: color-mod(var(--wall) a(20%));
+  }
+
   &:active,
-  &:hover,
   &[active] {
-    background-color: color-mod(var(--stone) a(20%));
+    background-color: color-mod(var(--wall) a(30%));
   }
 }
 
@@ -120,10 +125,10 @@ SBaseTrigger[size='s'] {
 }
 
 SBaseTrigger[size='m'] {
-  height: 26px;
   min-width: 26px;
-  border-radius: 3px;
-  font-size: 12px;
+  height: 28px;
+  border-radius: var(--rounded-m);
+  font-size: var(--fs-200);
 
   & SText {
     margin-left: 8px;
@@ -147,10 +152,10 @@ SBaseTrigger[size='m'] {
 }
 
 SBaseTrigger[size='l'] {
-  height: 32px;
   min-width: 32px;
-  border-radius: 4px;
-  font-size: 14px;
+  height: 40px;
+  border-radius: var(--rounded-m);
+  font-size: var(--fs-300);
 
   & SText {
     margin-left: 8px;
@@ -221,15 +226,15 @@ SText[placeholder] {
 }
 
 SBaseTrigger[state='normal'] {
-  border-color: var(--stone);
+  border-color: var(--stone-light);
 }
 
 SBaseTrigger[state='valid'] {
-  border-color: var(--green);
+  border-color: var(--green200);
 }
 
 SBaseTrigger[state='invalid'] {
-  border-color: var(--orange);
+  border-color: var(--red200);
 
   &[keyboardFocused] {
     border-color: var(--orange);

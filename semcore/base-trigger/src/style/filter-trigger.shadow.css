@@ -1,7 +1,7 @@
 @import '@semcore/utils/style/var.css';
 
 SButtonTrigger {
-  border: 1px solid var(--stone);
+  border: 1px solid var(--stone-light);
   background: #ffffff;
   color: var(--gray20);
 
@@ -20,7 +20,7 @@ SButtonTrigger {
   &:active,
   &:hover,
   &[active] {
-    background-color: color-mod(var(--stone) a(20%));
+    background-color: color-mod(var(--wall) a(20%));
   }
 }
 
@@ -32,17 +32,17 @@ SButtonTrigger[size='s'] {
 }
 
 SButtonTrigger[size='m'] {
-  height: 26px;
   min-width: 26px;
-  border-radius: 3px;
-  font-size: 12px;
+  height: 28px;
+  border-radius: var(--rounded-m);
+  font-size: var(--fs-200);
 }
 
 SButtonTrigger[size='l'] {
-  height: 32px;
   min-width: 32px;
-  border-radius: 4px;
-  font-size: 14px;
+  height: 40px;
+  border-radius: var(--rounded-m);
+  font-size: var(--fs-300);
 }
 
 SButtonTrigger[size='xl'] {
@@ -57,20 +57,21 @@ SText[placeholder] {
 }
 
 SButtonTrigger[state='normal'] {
-  border-color: var(--stone);
+  border-color: var(--stone-light);
 }
 
 SButtonTrigger[state='valid'] {
-  border-color: var(--green);
+  border-color: var(--green200);
 }
 
 SButtonTrigger[state='invalid'] {
-  border-color: var(--orange);
+  border-color: var(--red200);
 }
 
 SFilterTrigger[selected] {
   border-color: var(--light-blue);
   background-color: color-mod(var(--light-blue) a(20%));
+  color: var(--gray-800);
 
   &[active],
   &:hover {

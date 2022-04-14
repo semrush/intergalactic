@@ -10,7 +10,7 @@ SBreadcrumbs {
 
 SSeparator {
   margin: 0 8px;
-  color: var(--gray60);
+  color: var(--gray70);
   display: flex;
 
   &:last-child {
@@ -20,7 +20,7 @@ SSeparator {
 
 SBreadcrumbsItem {
   position: relative;
-  font-size: var(--fs-100);
+  font-size: var(--fs-200);
   line-height: var(--lh-100);
   color: var(--gray60);
   text-decoration: none;
@@ -33,7 +33,7 @@ SBreadcrumbsItem {
 
   &:hover {
     text-decoration: underline;
-    color: var(--gray20);
+    color: var(--gray40);
   }
 }
 

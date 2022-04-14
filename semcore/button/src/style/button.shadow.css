@@ -9,13 +9,11 @@ SButton {
   margin: 0;
   white-space: nowrap;
   font-family: inherit;
-  font-weight: normal;
   line-height: normal;
   text-decoration: none;
   text-align: center;
   vertical-align: middle;
   border: 1px solid transparent;
-  color: var(--gray40);
   outline: 0;
   box-shadow: none;
   cursor: pointer;
@@ -24,6 +22,8 @@ SButton {
   user-select: none;
   touch-action: manipulation;
   -webkit-tap-highlight-color: transparent;
+  font-weight: 500;
+  color: var(--gray500);
 
   &::-moz-focus-inner {
     padding: 0;
@@ -57,23 +57,23 @@ SButton[size='s'] {
 }
 
 SButton[size='m'] {
-  height: 26px;
-  min-width: 26px;
-  border-radius: 3px;
-  font-size: 12px;
-}
-
-SButton[size='l'] {
-  height: 32px;
-  min-width: 32px;
-  border-radius: 4px;
+  height: 28px;
+  min-width: 28px;
+  border-radius: var(--rounded-m);
   font-size: 14px;
 }
 
+SButton[size='l'] {
+  height: 40px;
+  min-width: 40px;
+  border-radius: var(--rounded-m);
+  font-size: 16px;
+}
+
 SButton[size='xl'] {
-  height: 42px;
-  min-width: 42px;
-  border-radius: 5px;
+  height: 48px;
+  min-width: 48px;
+  border-radius: var(--rounded-m);
   font-size: 16px;
 }
 
@@ -87,7 +87,7 @@ SButton[theme='primary-info'] {
 
   &:active,
   &[active] {
-    background-color: color-mod(var(--denim-blue) shade(5%) saturation(+5%));
+    background-color: var(--blue600);
   }
 }
 
@@ -101,7 +101,7 @@ SButton[theme='primary-success'] {
 
   &:active,
   &[active] {
-    background-color: color-mod(var(--dark-green) shade(5%) saturation(+5%));
+    background-color: var(--green600);
   }
 }
 
@@ -129,7 +129,7 @@ SButton[theme='primary-danger'] {
 
   &:active,
   &[active] {
-    background-color: color-mod(var(--dark-red) shade(5%) saturation(+5%));
+    background-color: var(--red600);
   }
 }
 
@@ -138,27 +138,29 @@ SButton[theme='primary-invert'] {
   color: var(--gray20);
 
   &:hover {
-    background-color: var(--gray94);
+    background-color: var(--gray96);
   }
 
   &:active,
   &[active] {
-    background-color: color-mod(var(--gray94) shade(5%) saturation(+5%));
+    background-color: var(--mercury);
   }
 }
 
 SButton[theme='secondary-muted'] {
   color: var(--gray60);
-  border-color: var(--stone);
-  background-color: color-mod(var(--stone) a(10%));
+  border-color: var(--stone-light);
+  background-color: color-mod(var(--wall) a(10%));
 
   &:hover {
-    background-color: color-mod(var(--stone) a(20%));
+    background-color: color-mod(var(--wall) a(20%));
+    color: var(--gray20);
   }
 
   &:active,
   &[active] {
-    background-color: color-mod(var(--stone) a(30%));
+    background-color: color-mod(var(--wall) a(30%));
+    color: var(--gray20);
   }
 }
 
@@ -183,7 +185,7 @@ SButton[theme='secondary-invert'] {
   border-color: #fff;
 
   &:hover {
-    background-color: color-mod(#fff a(20%));
+    background-color: color-mod(#fff a(10%));
   }
 
   &:active,
@@ -211,12 +213,14 @@ SButton[theme='tertiary-muted'] {
   background-color: transparent;
 
   &:hover {
-    background-color: color-mod(var(--stone) a(20%));
+    background-color: color-mod(var(--wall) a(20%));
+    color: var(--gray20);
   }
 
   &:active,
   &[active] {
-    background-color: color-mod(var(--stone) a(30%));
+    background-color: color-mod(var(--wall) a(30%));
+    color: var(--gray20);
   }
 }
 
@@ -225,7 +229,7 @@ SButton[theme='tertiary-invert'] {
   background-color: transparent;
 
   &:hover {
-    background-color: color-mod(#fff a(20%));
+    background-color: color-mod(#fff a(10%));
   }
 
   &:active,
@@ -309,8 +313,8 @@ SText[size='m'] {
 }
 
 SText[size='l'] {
-  margin-left: 8px;
-  margin-right: 8px;
+  margin-left: 12px;
+  margin-right: 12px;
 }
 
 SText[size='xl'] {
