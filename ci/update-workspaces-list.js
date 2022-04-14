@@ -16,6 +16,8 @@ const workspaces = [
     .filter((dirname) => !dirname.startsWith('.'))
     .map((dirname) => `tools/${dirname}`),
 ];
-packageFile.workspaces = workspaces.filter((workspace) => !excludeWorkspaces[workspace]);
+packageFile.workspaces = workspaces
+  .filter((workspace) => !excludeWorkspaces[workspace])
+  .filter((workspace) => fs.existsSync(path.resolve(__dirname, '..', workspace, 'package.json')));
 
-fs.writeFileSync(packageFilePath, JSON.stringify(packageFile, null, 2));
+fs.writeFileSync(packageFilePath, JSON.stringify(packageFile, null, 2) + '\n');
