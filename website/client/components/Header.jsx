@@ -13,6 +13,7 @@ import SideBarNavigation from './SideBarNavigation';
 import { gql, useQuery } from '@apollo/client';
 import Error from './Error';
 import Divider from '@semcore/divider';
+import LinkKit from '@semcore/link';
 import OutsideClick from '@semcore/outside-click';
 
 const HeaderWrapper = styled.header`
@@ -421,13 +422,14 @@ function Header(props) {
           </NavLink>
         </Item>
         <Item>
-          <NavLink
-            activeStyle={{ textDecoration: 'underline' }}
-            to={{ pathname: 'https://github.com/semrush/intergalactic' }}
+          <LinkKit
+            href="https://github.com/semrush/intergalactic"
             target="_blank"
+            rel="noopener noreferrer nofollow"
+            color="#171a22"
           >
             GitHub
-          </NavLink>
+          </LinkKit>
         </Item>
       </Nav>
     </HeaderWrapper>
