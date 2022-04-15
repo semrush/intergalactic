@@ -10,7 +10,7 @@ tabName: Design
 
 **Bar chart** visualizes distribution of values by category for value comparison. A bar chart can be [vertical (like columns)](../bar-chart/bar-chart-vertical/) or [horizontal](/data-display/bar-horizontal/).
 
-> 💡 **Difference from Histogram chart**
+> 💡 **Difference from histogram chart**
 >
 > Bar chart displays distribution of data sets by quality categories.
 >
@@ -20,7 +20,7 @@ Important points to keep in mind when presenting data as a bar chart:
 
 - Always start the Y-axis from zero.
 - The axes should be clear to the user from the chart name. However, in cases where the chart name is not enough, you can denote the axes.
-- Don't use too many colors to represent values. One color or shades of one color is enough. However, you can always highlight a value if necessary.
+- Don't use too many colors to represent categories. One color or shades of one color is enough. However, you can always highlight a category if necessary.
 
 @## Appearance
 

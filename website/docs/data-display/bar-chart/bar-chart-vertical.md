@@ -54,7 +54,7 @@ Here you will find the states for some specific cases. All other common ["empty 
 
 ![two dots](/data-display/bar-chart/static/two-dots.png)
 
-### All values are null
+### All values are zero
 
 If all the values on the chart are zero, then in the tooltip we shall display null all of them in the tooltips.
 
