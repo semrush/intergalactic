@@ -4,7 +4,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ## [3.2.7] - 2022-03-30
 
-### Fix
+### Fixed
 
 - Fixed wrong resize of controlled textarea when value is significantly changes in parent controller.
 
