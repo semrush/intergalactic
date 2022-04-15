@@ -4,7 +4,6 @@ import { access as fsAccess, stat as fsStat, readFile } from 'fs/promises';
 import { fileURLToPath } from 'url';
 
 const __dirname = resolveDirname(fileURLToPath(import.meta.url));
-
 const fsExists = async (path: string) => {
   try {
     await fsAccess(path);
@@ -85,7 +84,9 @@ const outOfSourceDirs = ['style'];
 export const esbuildPluginSemcoreSourcesResolve = (): Plugin => ({
   name: 'esbuild-plugin-semcore-sources-resolve',
   setup(build) {
-    build.onResolve({ filter: /^@semcore\// }, async ({ path }) => {
+    build.onResolve({ filter: /^(!!raw-loader!)?@semcore\// }, async ({ path }) => {
+      const namespace = path.startsWith('!!raw-loader!') ? 'rawFile' : 'file';
+      if (namespace === 'rawFile') path = path.substring('!!raw-loader!'.length);
       const workspacePath = await tryToResolveWorkspacePath(path);
       const componentName = path.split('/')[1];
       let subPath = path.split('/').slice(2).join('/');
@@ -110,10 +111,17 @@ export const esbuildPluginSemcoreSourcesResolve = (): Plugin => ({
         tryToResolveIndexFile,
       ]) {
         const resolved = await tryToResolve(absolutePath);
-        if (resolved) return resolved;
+        if (resolved) return { ...resolved, namespace };
       }
 
       throw new Error(`Unable to resolve file in "${absolutePath}" (trying to resolve "${path}") `);
+    });
+    build.onLoad({ filter: /./, namespace: 'rawFile' }, async ({ path }) => {
+      const contents = await readFile(path, 'utf-8');
+      return {
+        contents,
+        loader: 'text',
+      };
     });
   },
 });
