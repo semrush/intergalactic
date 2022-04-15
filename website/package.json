@@ -52,9 +52,9 @@
     "react-scroll": "1.7.14",
     "react-virtualized": "9.21.2",
     "reflect-metadata": "0.1.13",
+    "rxjs": "6.5.3",
     "styled-components": "5.0.0",
-    "terser-webpack-plugin": "5.3.1",
-    "rxjs": "6.6.7"
+    "terser-webpack-plugin": "5.3.1"
   },
   "devDependencies": {
     "@babel/core": "7.7.5",
