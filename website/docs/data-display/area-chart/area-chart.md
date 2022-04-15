@@ -71,7 +71,7 @@ For this case enable the display of dots on the chart by default.
 
 ![two-dots](static/two-dots2.png)
 
-@## All values are null
+@## All values are zero
 
 If all values on the chart are zero, then show the trend line on the zero axis.
 
