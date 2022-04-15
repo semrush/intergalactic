@@ -15,6 +15,7 @@
     "@babel/core": "7.17.8",
     "@semcore/babel-plugin-react-semcore": "^4.2.1",
     "@semcore/babel-preset-ui": "*",
+    "@types/node": "^17.0.23",
     "esbuild": "0.14.29",
     "file-loader": "4.0.0",
     "fps-emitter": "1.0.0",

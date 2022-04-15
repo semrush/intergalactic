@@ -117,6 +117,8 @@ const clearOldCache = async (dirPath: string) => {
 
 const cacheDirName = '.cache/esbuild-plugin-semcore';
 const cacheTTL = 1000 * 60 * 60 * 24 * 30;
+const supportedExtensions = ['ts', 'js', 'tsx', 'jsx', 'css'];
+const loaderOfExtension: { [key: string]: Loader } = { md: 'text' };
 
 await ensureDur(cacheDirName);
 await clearOldCache(cacheDirName);
@@ -124,14 +126,22 @@ await clearOldCache(cacheDirName);
 export const esbuildPluginSemcore = (filter: RegExp, excludeFilter?: RegExp): Plugin => ({
   name: 'esbuild-plugin-semcore',
   setup(build) {
-    build.onLoad({ filter }, async ({ path }) => {
+    build.onLoad({ filter }, async ({ path, namespace }) => {
       const sourceContents = await readFile(path, 'utf-8');
       const extension = path.split('.').pop()! as Loader;
+      const loader = loaderOfExtension[extension] || extension;
 
-      if (excludeFilter && excludeFilter.test(path)) {
+      if (namespace === 'rawFile') {
         return {
           contents: sourceContents,
-          loader: extension,
+          loader: 'text',
+        };
+      }
+
+      if ((excludeFilter && excludeFilter.test(path)) || !supportedExtensions.includes(extension)) {
+        return {
+          contents: sourceContents,
+          loader,
         };
       }
 
@@ -164,7 +174,7 @@ export const esbuildPluginSemcore = (filter: RegExp, excludeFilter?: RegExp): Pl
 
       return {
         contents,
-        loader: extension,
+        loader,
       };
     });
   },
