@@ -14,7 +14,7 @@
 
 ### @semcore/textarea
 
-- **Fix** Fixed wrong resize of controlled textarea when value is significantly changes in parent controller.
+- **Fixed** Fixed wrong resize of controlled textarea when value is significantly changes in parent controller.
 
 ## [11.1.0] - 2022-03-30
 
