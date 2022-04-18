@@ -11,7 +11,7 @@ const Content = styled.div`
   display: grid;
   position: relative;
   grid-template-rows: 1fr 6fr;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   padding: 152px 100px 250px;
   max-width: 1140px;
   margin: 0 auto;
@@ -36,13 +36,16 @@ const Content = styled.div`
       text-decoration: underline;
     }
   }
+  @media (max-width: 1024px) {
+    padding-bottom: 96px;
+  }
   @media (max-width: 767px) {
-    grid-template-rows: 0.5fr 2fr 3fr 2fr;
+    grid-template-rows: 0.5fr 2fr 3fr;
     grid-template-columns: 1fr;
     padding: 152px 55px 96px;
   }
   @media (max-width: 414px) {
-    grid-template-rows: 0fr 2fr 3fr 2fr;
+    grid-template-rows: 0fr 2fr 3fr;
     padding: 136px 35px 96px;
     h2 {
       font-size: 30px;
@@ -147,6 +150,36 @@ const Contacts = () => (
         <h2>Contact Us</h2>
         Have any questions? We’d love to hear from you.
       </Header>
+      <Email>
+        <Title>
+          <MailM mr={2} />
+          Email
+        </Title>
+        Feel free to drop us a line at
+        <a href="mailto:ui-kit-team@semrush.com" target="_blank">
+          ui-kit-team@semrush.com
+        </a>{' '}
+        in case:
+        <Text>
+          <Subtitle>Send a request to develop a new component</Subtitle>
+          Before sending email, check our
+          <Link to="/internal/roadmap/" rel="noopener noreferrer">
+            Roadmap
+          </Link>
+          , perhaps needed component is already there. If not, share with some details:
+          <ul>
+            <li>Cases and requirements</li>
+            <li>Guide and mockups</li>
+            <li>Interactive prototype if there is an animation (any format: gif, axure, etc.)</li>
+          </ul>
+          <Subtitle>Leave feedback</Subtitle>
+          We care about usability and will be happy to receive feedback on both the site and the
+          experience with our components.
+          <Subtitle>Ask a question</Subtitle>
+          Just write your message 🙂 Your email won't be lost. We'll get back to you as soon as we
+          can.
+        </Text>
+      </Email>
       <Github>
         <Title>
           <GitHubM mr={2} />
@@ -184,37 +217,7 @@ const Contacts = () => (
           </ul>
         </Text>
       </Github>
-      <Email>
-        <Title>
-          <MailM mr={2} />
-          Email
-        </Title>
-        Feel free to drop us a line at
-        <a href="mailto:ui-kit-team@semrush.com" target="_blank">
-          ui-kit-team@semrush.com
-        </a>{' '}
-        in case:
-        <Text>
-          <Subtitle>Send a request to develop a new component</Subtitle>
-          Before sending email, check our
-          <Link to="/internal/roadmap/" rel="noopener noreferrer">
-            Roadmap
-          </Link>
-          , perhaps needed component is already there. If not, share with some details:
-          <ul>
-            <li>Cases and requirements</li>
-            <li>Guide and mockups</li>
-            <li>Interactive prototype if there is an animation (any format: gif, axure, etc.)</li>
-          </ul>
-          <Subtitle>Leave feedback</Subtitle>
-          We care about usability and will be happy to receive feedback on both the site and the
-          experience with our components.
-          <Subtitle>Ask a question</Subtitle>
-          Just write your message 🙂 Your email won't be lost. We'll get back to you as soon as we
-          can.
-        </Text>
-      </Email>
-      <Address>
+      {/* <Address>
         <Title>
           <PinMapM mr={2} />
           Address
@@ -230,7 +233,7 @@ const Contacts = () => (
           If suddenly you want to do something nice for us, just send a couple of words on a
           postcard from your city 🙂
         </Text>
-      </Address>
+      </Address> */}
       <Postman src={postman} />
     </Content>
   </>
