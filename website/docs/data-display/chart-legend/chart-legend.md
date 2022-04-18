@@ -26,7 +26,7 @@ The legend can be interactive or non-interactive.
 
 For an interactive legend use a group of [checkboxes](/components/checkbox/) or [radio buttons](/components/radio/) with specified colors.
 
-| Component                                     | Apperance example                                                                                      | Styles                                                                                                                                                 |
+| Component                                     | Appearance example                                                                                     | Styles                                                                                                                                                 |
 | --------------------------------------------- | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | Checkbox                                      | ![checkbox legend](static/checkbox.png) ![checkbox bottom legend](static/legend-bottom.png)            | Checkbox has M size. Text has 14px size (`--fs-200`) and `--gray-800` color.                                                                           |
 | Checkbox with icon                            | ![checkbox legend](static/checkbox-icon.png)                                                           | Icon has M size and usually `--gray-800` color.                                                                                                        |
@@ -38,7 +38,7 @@ For an interactive legend use a group of [checkboxes](/components/checkbox/) or 
 
 A non-interactive legend is a colored circle with a label. This legend does not disable/enable the lines on the chart.
 
-| Apperance example                                   | Styles                                                                                 |
+| Appearance example                                  | Styles                                                                                 |
 | --------------------------------------------------- | -------------------------------------------------------------------------------------- |
 | ![non-interactive legend](static/static-legend.png) | Circle has `12px * 12px` size. Text has 14px size (`--fs-200`) and `--gray-800` color. |
 

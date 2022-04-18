@@ -44,7 +44,7 @@ Important points to keep in mind when presenting data as a bar chart:
 
 ### Horizontal bar chart
 
-|                | Apperance example                           | Styles                                 |
+|                | Appearance example                          | Styles                                 |
 | -------------- | ------------------------------------------- | -------------------------------------- |
 | One category   | ![bar-chart one value](static/one-cat.png)  | `border-radius: 2px;`                  |
 | Two categories | ![bar-chart two values](static/two-cat.png) | The margin between two columns is 4px. |
@@ -55,7 +55,7 @@ Important points to keep in mind when presenting data as a bar chart:
 
 @## Margins
 
-| Description                                                                                                | Apperance example                          |
+| Description                                                                                                | Appearance example                         |
 | ---------------------------------------------------------------------------------------------------------- | ------------------------------------------ |
 | `margin: 8px 0px;`                                                                                         | ![bar-chart margins](static/margins-1.png) |
 | The margin between categories and values on the Y-axis and bars is 16px. The margin between values is 8px. | ![bar-chart margins](static/margins-2.png) |
