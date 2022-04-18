@@ -29,10 +29,10 @@ async function snapshot(Component, options) {
   const requestBody = _tmp.innerHTML;
   const style = document.head.innerHTML;
   const html = `
-    <!--<!DOCTYPE html>-->
+    <!DOCTYPE html>
     <html>
         <head>
-          <!--<meta charset="UTF-8" />-->
+          <meta charset="UTF-8" />
           <style>
             /* cyrillic */
             /*@font-face {*/
