@@ -1,4 +1,5 @@
 :root {
+  /* DEPRECATED START */
   --denim-blue: #006dca;
   --light-blue: #008ff8;
   --neon-blue: #8ecdff;
@@ -49,6 +50,28 @@
   --orange100: #ffdca2;
   --orange200: #ffb26e;
   --yellow100: #fce081;
+
+  --font-size_-1: 11px;
+  --font-size_-2: 10px;
+  --font-size_0: 12px;
+  --font-size_1: 13px;
+  --font-size_11: 33px;
+  --font-size_12: 36px;
+  --font-size_15: 48px;
+  --font-size_2: 14px;
+  --font-size_3: 16px;
+  --font-size_5: 19px;
+  --font-size_6: 21px;
+  --font-size_8: 25px;
+
+  --iceberg-blue: #6fafd4;
+  --salad: #8bc835;
+  --granitic: #2f3439;
+  --gray10: #222222;
+  --sky: #e1f2ff;
+  --lily: #e6f9fd;
+  --marble: #f1f6f8;
+  /* DEPRECATED END */
 
   --white: #ffffff;
   --black: #000000;
@@ -143,8 +166,12 @@
   --google-my-business: #1a73e8;
   --google-blue: #1a0dab;
   --google-green: #016723;
+  --googleplus: #e14b3f;
+  --linkedin: #1a7ab2;
 
-  --keyborad-focus: 0 0 0 3px rgba(0, 143, 248, 0.2);
+  --keyborad-focus: 0 0 0 3px color-mod(var(--blue-400) a(20%));
+  --keyboard-focus-valid: 0px 0px 0px 3px color-mod(var(--green-400) a(20%));
+  --keyboard-focus-invalid: 0px 0px 0px 3px color-mod(var(--red-400) a(20%));
 
   --rounded-s: 4px;
   --rounded-m: 6px;
@@ -155,15 +182,6 @@
   --box-shadow-popper: 0px 1px 12px rgba(25, 27, 35, 0.15);
   --box-shadow-modal: 0px 3px 8px 0px rgba(25, 27, 35, 0.2);
   --box-shadow-dnd: 0 0 1px rgba(25, 27, 35, 0.16), 0 12px 40px rgba(25, 27, 35, 0.16);
-  --iceberg-blue: #6fafd4;
-  --salad: #8bc835;
-  --granitic: #2f3439;
-  --gray10: #222222;
-  --sky: #e1f2ff;
-  --lily: #e6f9fd;
-  --marble: #f1f6f8;
-  --googleplus: #e14b3f;
-  --linkedin: #1a7ab2;
 
   --fs-100: 12px;
   --lh-100: 1.33;
@@ -181,26 +199,12 @@
   --lh-700: 1.1;
   --fs-800: 48px;
   --lh-800: 1.17;
-  --keyboard-focus-valid: 0px 0px 0px 3px color-mod(var(--green-400) a(20%));
-  --keyboard-focus-invalid: 0px 0px 0px 3px color-mod(var(--red-400) a(20%));
+
   --disabled-opacity: 0.3;
 
   --xs-screen: 320px;
   --sm-screen: 768px;
   --md-screen: 1200px;
-
-  --font-size_-1: 11px;
-  --font-size_-2: 10px;
-  --font-size_0: 12px;
-  --font-size_1: 13px;
-  --font-size_11: 33px;
-  --font-size_12: 36px;
-  --font-size_15: 48px;
-  --font-size_2: 14px;
-  --font-size_3: 16px;
-  --font-size_5: 19px;
-  --font-size_6: 21px;
-  --font-size_8: 25px;
 }
 
 @custom-media --xs-media (width < 320px);
