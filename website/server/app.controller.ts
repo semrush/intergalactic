@@ -42,24 +42,21 @@ export class Mailer {
 
   @Post('post')
   async sendEmail(@Res() res: Response, @Req() req: Request) {
+    const client = await this.pool.connect();
     try {
-      const client = await this.pool.connect();
-      try {
-        await client.query(
-          `INSERT INTO email(created_at, email) VALUES (to_timestamp($1 / 1000.0), $2)`,
-          [Date.now(), req.body.email],
-        );
-        res.json({
-          success: true,
-        });
-      } catch (e) {
-        res.json({
-          success: false,
-        });
-      }
-      client.release();
+      await client.query(
+        `INSERT INTO email(created_at, email) VALUES (to_timestamp($1 / 1000.0), $2)`,
+        [Date.now(), req.body.email],
+      );
+      res.json({
+        success: true,
+      });
     } catch (e) {
-      res.send(this.configService.get('POSTGRES_URL').split('/')[0]);
+      res.json({
+        success: false,
+      });
+    } finally {
+      client.release();
     }
   }
 }
