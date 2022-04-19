@@ -165,7 +165,7 @@ function Notice(props) {
 }
 
 Notice.defaultProps = {
-  theme: 'gray94',
+  theme: 'gray96',
   use: 'secondary',
 };
 

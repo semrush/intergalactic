@@ -21,7 +21,7 @@ SDropdownMenuItem {
   line-height: normal;
 
   &:hover {
-    background-color: color-mod(black a(10%));
+    background-color: var(--mystic);
   }
 
   &:focus {
@@ -35,10 +35,10 @@ SDropdownMenuItem[highlighted] {
 }
 
 SDropdownMenuItem[selected] {
-  background-color: color-mod(var(--light-blue) a(20%));
+  background-color: color-mod(var(--blue-100) a(70%));
 
   &:hover {
-    background-color: color-mod(var(--light-blue) a(20%));
+    background-color: var(--blue-100);
   }
 }
 
@@ -51,25 +51,22 @@ SDropdownMenuItem[disabled] {
 SDropdownMenuItem[size='xl'] {
   font-size: var(--fs-300);
   line-height: var(--lh-300);
-
-  padding: 8px 12px;
-  min-height: 42px;
+  padding: 12px;
+  min-height: 48px;
 }
 
 SDropdownMenuItem[size='l'] {
-  font-size: var(--fs-200);
-  line-height: var(--lh-200);
-
-  padding: 6px 8px;
-  min-height: 32px;
+  font-size: var(--fs-300);
+  line-height: var(--lh-300);
+  padding: 8px 12px;
+  min-height: 40px;
 }
 
 SDropdownMenuItem[size='m'] {
-  font-size: var(--fs-100);
-  line-height: var(--lh-100);
-
-  padding: 4px 8px;
-  min-height: 26px;
+  font-size: var(--fs-200);
+  line-height: var(--lh-200);
+  padding: 6px 8px;
+  min-height: 32px;
 }
 
 SDropdownMenuItem[notInteractive] {

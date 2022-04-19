@@ -17,6 +17,8 @@ SDraggable[draggable] {
 
   &:active {
     cursor: grabbing;
+    box-shadow: 0 0 1px rgba(25, 27, 35, 0.16), 0 12px 40px rgba(25, 27, 35, 0.16);
+    background-color: var(--white);
   }
 
   &:hover::after {
@@ -88,10 +90,11 @@ SDraggable[placement='left']::after {
 
 SDroppable {
   border: 2px dashed var(--gray80);
+  border-radius: var(--rounded-m);
 }
 
 :global(.dnd-placeholder-default.dnd-placeholder-default) {
-  background-color: var(--mercury);
+  background-color: var(--gray96);
 }
 
 :global(.dnd-placeholder-dark.dnd-placeholder-dark) {

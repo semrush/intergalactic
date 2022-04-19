@@ -6,10 +6,10 @@ STooltip {
   line-height: var(--lh-100);
   position: relative;
   background-color: #fff;
-  border-radius: 3px;
-  border: 1px solid var(--stone-light);
+  border-radius: 6px;
+  border: 1px solid var(--mercury);
   box-sizing: border-box;
-  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.25), 0 -2px 5px -2px rgba(0, 0, 0, 0.25);
+  box-shadow: var(--box-shadow-popper);
   padding: 12px;
 }
 
@@ -28,7 +28,7 @@ SDot {
   height: 8px;
   border-radius: 50%;
   margin-right: 8px;
-  background: var(--blue-01);
+  background: var(--blue-03);
 }
 
 SDot[color] {

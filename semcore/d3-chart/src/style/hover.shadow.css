@@ -5,5 +5,5 @@ SHoverLine {
 }
 
 SHoverRect {
-  fill: color-mod(var(--mist) a(30%));
+  fill: color-mod(var(--stone-light) a(30%));
 }
