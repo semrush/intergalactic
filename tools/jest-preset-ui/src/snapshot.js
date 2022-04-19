@@ -18,7 +18,10 @@ if (!process.env.SCREENSHOT_URL) {
   throw new Error('Create .env file and insert SCREENSHOT_URL variable');
 }
 
-async function snapshot(Component, options = { selector: '#root' }) {
+const DEFAULT_OPTIONS = { selector: '#root' };
+
+async function snapshot(Component, options) {
+  options = Object.assign({}, DEFAULT_OPTIONS, options);
   const _tmp = document.createElement('div');
 
   ReactDOM.render(Component, _tmp);
@@ -26,8 +29,10 @@ async function snapshot(Component, options = { selector: '#root' }) {
   const requestBody = _tmp.innerHTML;
   const style = document.head.innerHTML;
   const html = `
+    <!DOCTYPE html>
     <html>
         <head>
+          <meta charset="UTF-8" />
           <style>
             /* cyrillic */
             /*@font-face {*/
@@ -85,7 +90,7 @@ async function snapshot(Component, options = { selector: '#root' }) {
     url: process.env.SCREENSHOT_URL,
     encoding: null,
     form: {
-      selector: options.selector,
+      ...options,
       html,
     },
   });
