@@ -680,12 +680,12 @@ function Home() {
               </Tab>
             </MainWrapper>
             <EmailsBanner />
-            <UpdateBlock />
+            {/*<UpdateBlock />*/}
           </Overlay>
-          <UpdatesButton activeClass="active" to="updBlock" spy={true} smooth={true}>
-            Updates?
-            <img src={updatesButton} alt="Updates button" />
-          </UpdatesButton>
+          {/*<UpdatesButton activeClass="active" to="updBlock" spy={true} smooth={true}>*/}
+          {/*  Updates?*/}
+          {/*  <img src={updatesButton} alt="Updates button" />*/}
+          {/*</UpdatesButton>*/}
         </HomePage>
       )}
     </>
