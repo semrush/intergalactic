@@ -7,8 +7,8 @@ SView {
   margin-bottom: 12px;
   padding: 12px 24px 12px 12px;
   width: 100%;
-  min-height: 42px;
-  border-radius: 3px;
+  min-height: 44px;
+  border-radius: var(--rounded-m);
   overflow: hidden;
   box-sizing: border-box;
 }
@@ -18,11 +18,11 @@ SInfo {
 }
 
 SWarning {
-  background: var(--orange);
+  background: var(--red);
 }
 
 SMessage {
-  font-size: var(--fs-100);
+  font-size: var(--fs-200);
   color: #fff;
   line-height: var(--lh-100);
 }
@@ -33,10 +33,10 @@ SDismiss {
   right: 0;
   top: 0;
   padding: 8px;
-  color: var(--gray60);
+  color: var(--white);
 
   &:hover {
-    color: var(--gray80);
+    color: var(--gray94);
   }
 }
 
@@ -48,10 +48,10 @@ SNoticeBubble {
   width: 300px;
   position: fixed;
   z-index: 1010;
-  right: 10px;
-  top: 10px;
+  right: 12px;
+  top: 12px;
 
   @media (max-width: 767px) {
-    width: calc(100% - 20px);
+    width: calc(100% - 24px);
   }
 }

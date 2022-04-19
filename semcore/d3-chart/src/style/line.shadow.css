@@ -4,7 +4,7 @@
 SLine {
   fill: transparent;
   stroke-width: 3;
-  stroke: var(--blue-01);
+  stroke: var(--blue-03);
   transition-property: d;
   transition-duration: var(--duration);
   transition-timing-function: ease-in-out;
@@ -20,7 +20,7 @@ SLine[hide] {
 
 SNull {
   fill: transparent;
-  stroke: var(--mist);
+  stroke: var(--stone-light);
   stroke-dasharray: 4;
 }
 

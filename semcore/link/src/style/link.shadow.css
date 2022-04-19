@@ -35,7 +35,7 @@ SLink {
   &[active],
   &:hover,
   &:active {
-    color: color-mod(var(--denim-blue) shade(12%));
+    color: var(--blue600);
 
     & SText {
       border-color: currentColor;
@@ -60,7 +60,7 @@ SLink[noWrapText] {
 SLink {
   &[enableVisited]:visited,
   &[enableVisited]:visited:hover {
-    color: var(--violet);
+    color: var(--dark-violet);
   }
 }
 

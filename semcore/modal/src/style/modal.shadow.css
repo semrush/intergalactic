@@ -2,11 +2,12 @@
 
 SWindow {
   position: relative;
-  border-radius: 6px;
+  border-radius: var(--rounded-l);
   background: var(--white);
   box-sizing: border-box;
   margin: auto;
-  padding: 24px 32px 32px 32px;
+  padding: 40px;
+  box-shadow: 0 3px 8px rgba(25, 27, 35, 0.2);
 
   &:focus {
     outline: none;
@@ -24,13 +25,13 @@ SOverlay {
   justify-content: center;
   align-items: center;
   padding: 40px;
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(25, 27, 35, 0.7);
   overflow: auto;
   z-index: 10005;
   -webkit-overflow-scrolling: touch;
 
   & SOverlay {
-    background: rgba(0, 0, 0, 0.4);
+    background: rgba(25, 27, 35, 0.4);
   }
 }
 
@@ -48,7 +49,7 @@ SClose {
   outline: none;
 
   &:hover {
-    color: color-mod(var(--stone) shade(12%));
+    color: var(--wall);
   }
 }
 
@@ -62,6 +63,6 @@ SClose[keyboardFocused] {
   }
 
   SOverlay {
-    padding: 10px;
+    padding: 12px;
   }
 }

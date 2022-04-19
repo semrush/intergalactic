@@ -11,11 +11,16 @@ SInput {
   box-sizing: border-box;
 
   & input:-webkit-autofill {
+    border-radius: var(--rounded-m);
     -webkit-box-shadow: 0 0 0 30px rgb(250, 255, 189) inset;
 
     & ~ SOutline {
       background-color: rgb(250, 255, 189);
     }
+  }
+
+  & SOutline {
+    border-radius: var(--rounded-m);
   }
 }
 
@@ -43,7 +48,7 @@ SValue {
   }
 
   &:read-only ~ SOutline {
-    background: var(--gray96);
+    background: var(--gray-50);
   }
 
   &:disabled {
@@ -75,15 +80,15 @@ SAddon {
   align-items: center;
   flex: 0 0 auto;
   height: 100%;
-  color: var(--gray40);
+  color: var(--gray70);
 }
 
 SAddon[interactive] {
-  color: var(--stone);
+  color: var(--gray70);
   cursor: pointer;
 
   &:hover {
-    color: color-mod(var(--stone) shade(12%));
+    color: var(--wall);
   }
 }
 
@@ -96,14 +101,6 @@ SAddon[disabled] {
 SInput[size='s'] {
   font-size: 10px;
   height: 18px;
-
-  & SOutline {
-    border-radius: 2px;
-  }
-
-  & input:-webkit-autofill {
-    border-radius: 1px;
-  }
 }
 
 SValue[size='s'],
@@ -112,16 +109,8 @@ SAddon[size='s'] {
 }
 
 SInput[size='m'] {
-  font-size: 12px;
-  height: 26px;
-
-  & SOutline {
-    border-radius: 3px;
-  }
-
-  & input:-webkit-autofill {
-    border-radius: 2px;
-  }
+  font-size: var(--fs-200);
+  height: 28px;
 }
 
 SValue[size='m'],
@@ -130,16 +119,8 @@ SAddon[size='m'] {
 }
 
 SInput[size='l'] {
-  font-size: 14px;
-  height: 32px;
-
-  & SOutline {
-    border-radius: 4px;
-  }
-
-  & input:-webkit-autofill {
-    border-radius: 3px;
-  }
+  font-size: var(--fs-300);
+  height: 40px;
 }
 
 SValue[size='l'],
@@ -149,15 +130,7 @@ SAddon[size='l'] {
 
 SInput[size='xl'] {
   font-size: 16px;
-  height: 42px;
-
-  & SOutline {
-    border-radius: 5px;
-  }
-
-  & input:-webkit-autofill {
-    border-radius: 4px;
-  }
+  height: 48px;
 }
 
 SValue[size='xl'],
@@ -171,32 +144,32 @@ SInput[focused] {
 
 SInput[state='normal'] {
   & SOutline {
-    border-color: var(--stone);
+    border-color: var(--stone-light);
   }
 
   & SValue:focus ~ SOutline {
-    border-color: var(--light-blue);
+    border-color: var(--blue400);
     box-shadow: var(--keyborad-focus);
   }
 }
 SInput[state='valid'] {
   & SOutline {
-    border-color: var(--green);
+    border-color: var(--green200);
   }
 
   & SValue:focus ~ SOutline {
     border-color: var(--green);
-    box-shadow: 0 0 0 3px color-mod(var(--green) a(30%));
+    box-shadow: 0 0 0 3px rgba(0, 159, 129, 0.2);
   }
 }
 SInput[state='invalid'] {
   & SOutline {
-    border-color: var(--orange);
+    border-color: var(--red200);
   }
 
   & SValue:focus ~ SOutline {
-    border-color: var(--orange);
-    box-shadow: 0 0 0 3px color-mod(var(--orange) a(30%));
+    border-color: var(--red);
+    box-shadow: 0 0 0 3px rgba(255, 73, 83, 0.2);
   }
 }
 

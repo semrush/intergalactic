@@ -45,8 +45,8 @@ SFormatText {
     }
 
     &:hover {
-      color: color-mod(var(--denim-blue) shade(12%));
-      border-color: color-mod(var(--denim-blue) shade(12%));
+      color: var(--blue600);
+      border-color: var(--blue600);
     }
 
     &:focus {

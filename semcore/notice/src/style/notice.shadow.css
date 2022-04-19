@@ -2,8 +2,8 @@
 
 SNotice {
   display: flex;
-  font-size: var(--fs-100);
-  line-height: var(--lh-100);
+  font-size: var(--fs-200);
+  line-height: var(--lh-200);
   box-sizing: border-box;
 }
 
@@ -15,37 +15,48 @@ SNotice[use='secondary'] {
   padding: 15px;
   border-style: solid;
   border-width: 1px;
-  border-radius: 2px;
+  border-radius: var(--rounded-m);
 }
 
 SNotice[theme='info'] {
-  background-color: color-mod(var(--light-blue) alpha(15%));
-
+  background-color: var(--blue50);
   &[use='secondary'] {
-    border-color: color-mod(var(--light-blue) alpha(25%));
+    border-color: var(--neon-blue);
+  }
+  & SCloseIcon {
+    color: var(--light-blue);
   }
 }
 
 SNotice[theme='danger'] {
-  background-color: color-mod(var(--red) alpha(10%));
+  background-color: var(--red50);
 
   &[use='secondary'] {
-    border-color: color-mod(var(--red) alpha(20%));
+    border-color: var(--red200);
+  }
+  & SCloseIcon {
+    color: var(--red);
   }
 }
 
 SNotice[theme='warning'] {
-  background-color: color-mod(var(--light-orange) alpha(15%));
+  background-color: var(--orange50);
 
   &[use='secondary'] {
-    border-color: color-mod(var(--light-orange) alpha(40%));
+    border-color: var(--orange200);
+  }
+  & SCloseIcon {
+    color: var(--orange);
   }
 }
 
 SNotice[theme='success'] {
-  background-color: color-mod(var(--green) alpha(15%));
+  background-color: var(--green50);
   &[use='secondary'] {
-    border-color: color-mod(var(--green) alpha(30%));
+    border-color: var(--green200);
+  }
+  & SCloseIcon {
+    color: var(--green);
   }
 }
 
@@ -60,24 +71,25 @@ SActions {
 }
 
 SLabel {
+  margin-top: 4px;
   margin-right: 8px;
   display: inline-flex;
+}
+
+SLabel[theme='info'] {
+  color: var(--gray-400);
 }
 
 SLabel[theme='danger'] {
   color: var(--red);
 }
 
-SLabel[theme='info'] {
-  color: var(--stone);
+SLabel[theme='warning'] {
+  color: var(--orange);
 }
 
 SLabel[theme='success'] {
   color: var(--green);
-}
-
-SLabel[theme='warning'] {
-  color: var(--light-orange);
 }
 
 SLabel[theme='custom'] {

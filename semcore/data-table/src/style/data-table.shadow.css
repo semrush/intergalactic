@@ -28,14 +28,14 @@ SColumn {
   /* Надо подумать можно ли уменьшать */
   /*flex-shrink: 0;*/
   font-size: 12px;
-  line-height: 18px;
+  line-height: 16px;
   color: var(--gray20);
   box-sizing: border-box;
   position: relative;
 
   &:focus {
     outline: none;
-    box-shadow: inset 0 0 0 3px color-mod(var(--light-blue) a(30%));
+    box-shadow: inset 0 0 0 3px color-mod(var(--light-blue) a(20%));
   }
 }
 
@@ -50,7 +50,7 @@ SColumn[use='primary'] {
   padding: 12px;
   border-right: 1px solid var(--mercury);
   border-bottom: 1px solid var(--mercury);
-  background-color: #f2f3f4;
+  background-color: var(--gray96);
 }
 
 SColumn[use='secondary'] {
@@ -90,17 +90,17 @@ SColumn[sortable] {
   cursor: pointer;
 
   &[use='primary']:hover {
-    background-color: #e4e7e8;
+    background-color: var(--mercury);
   }
 }
 
 SColumn[active][use='primary'] {
-  background-color: #e4e7e8;
+  background-color: var(--mercury);
 }
 
 SColumn[resizable] {
   &:hover:after {
-    background: #a6b0b3;
+    background: var(--stone);
   }
 
   &:after {
@@ -122,13 +122,12 @@ SColumn[fixed] {
 }
 
 SSortIcon {
-  margin-top: 2px;
   margin-left: 4px;
-  color: var(--stone-light);
+  color: var(--stone);
 }
 
 SSortIcon[active] {
-  fill: var(--wall);
+  fill: var(--asphalt);
 }
 
 SBodyWrapper {
@@ -151,7 +150,7 @@ SRow {
 /* DEFAULT THEME */
 SRow[active] SCell:not([theme]),
 SRow:hover SCell:not([theme]) {
-  background-color: #f6f7f7;
+  background-color: color-mod(var(--gray-100) blend(#fff 50%));
 }
 
 /* MUTED THEME */
@@ -167,46 +166,46 @@ SRow[theme='muted']:hover SCell:not([theme]) {
 
 /* INFO THEME */
 SRow[theme='info'] SCell:not([theme]) {
-  background-color: color-mod(var(--light-blue) blend(#fff 80%));
+  background-color: var(--blue50);
 }
 
 SRow:hover SCell[theme='info'],
 SRow[theme='info'][active] SCell:not([theme]),
 SRow[theme='info']:hover SCell:not([theme]) {
-  background-color: color-mod(var(--light-blue) blend(#fff 75%));
+  background-color: var(--blue100);
 }
 
 /* SUCCESS THEME */
 SRow[theme='success'] SCell:not([theme]) {
-  background-color: color-mod(var(--green) blend(#fff 85%));
+  background-color: var(--green50);
 }
 
 SRow:hover SCell[theme='success'],
 SRow[theme='success'][active] SCell:not([theme]),
 SRow[theme='success']:hover SCell:not([theme]) {
-  background-color: color-mod(var(--green) blend(#fff 80%));
+  background-color: var(--green100);
 }
 
 /* WARNING THEME */
 SRow[theme='warning'] SCell:not([theme]) {
-  background-color: color-mod(var(--light-orange) blend(#fff 85%));
+  background-color: var(--orange50);
 }
 
 SRow:hover SCell[theme='warning'],
 SRow[theme='warning'][active] SCell:not([theme]),
 SRow[theme='warning']:hover SCell:not([theme]) {
-  background-color: color-mod(var(--light-orange) blend(#fff 80%));
+  background-color: var(--orange100);
 }
 
 /* DANGER THEME */
 SRow[theme='danger'] SCell:not([theme]) {
-  background-color: color-mod(var(--red) blend(#fff 90%));
+  background-color: var(--red50);
 }
 
 SRow:hover SCell[theme='danger'],
 SRow[theme='danger'][active] SCell:not([theme]),
 SRow[theme='danger']:hover SCell:not([theme]) {
-  background-color: color-mod(var(--red) blend(#fff 85%));
+  background-color: var(--red100);
 }
 
 SRow[positioned] {
@@ -247,19 +246,19 @@ SCell[theme='muted'] {
 }
 
 SCell[theme='info'] {
-  background-color: color-mod(var(--light-blue) blend(#fff 80%));
+  background-color: var(--blue50);
 }
 
 SCell[theme='success'] {
-  background-color: color-mod(var(--green) blend(#fff 85%));
+  background-color: var(--green50);
 }
 
 SCell[theme='warning'] {
-  background-color: color-mod(var(--light-orange) blend(#fff 85%));
+  background-color: var(--orange50);
 }
 
 SCell[theme='danger'] {
-  background-color: color-mod(var(--red) blend(#fff 90%));
+  background-color: var(--red50);
 }
 
 SScrollAreaBar[orientation='horizontal'] {

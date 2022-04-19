@@ -1,7 +1,7 @@
 @import '@semcore/utils/style/var.css';
 
 SAxis {
-  stroke: var(--stone);
+  stroke: var(--stone-light);
 }
 
 SAxis[hide] {

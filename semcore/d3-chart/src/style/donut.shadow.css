@@ -3,7 +3,7 @@
 
 SPie {
   stroke: #ffffff;
-  fill: var(--blue-01);
+  fill: var(--blue-03);
 }
 
 SPie[color] {
@@ -11,7 +11,7 @@ SPie[color] {
 }
 
 SEmptyData {
-  fill: var(--mystic);
+  fill: var(--mercury);
 }
 
 SEmptyData[color] {

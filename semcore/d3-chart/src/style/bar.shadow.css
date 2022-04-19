@@ -2,7 +2,7 @@
 @import '@semcore/d3-chart/src/style/var.css';
 
 SBar {
-  fill: var(--blue-01);
+  fill: var(--blue-03);
   transition-property: height, width, y;
   transition-duration: var(--duration);
   transition-timing-function: ease-in-out;
@@ -17,5 +17,5 @@ SBar[hide] {
 }
 
 SBackground {
-  fill: var(--mystic);
+  fill: var(--stone-light);
 }

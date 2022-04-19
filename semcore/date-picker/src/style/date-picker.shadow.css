@@ -23,10 +23,11 @@ SPopper {
 
 SHeader {
   display: flex;
+  align-items: center;
 }
 
 STitle {
-  font-size: var(--fs-100);
+  font-size: var(--fs-200);
   height: 32px;
   width: 100%;
   display: flex;
