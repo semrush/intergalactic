@@ -3,8 +3,6 @@ import { NextFunction, Request, Response } from 'express';
 import { ConfigService } from '@nestjs/config';
 import { Pool } from 'pg';
 
-require('dotenv').config();
-
 @Controller()
 export class AppController {
   constructor(private configService: ConfigService) {}
@@ -44,21 +42,26 @@ export class Mailer {
 
   @Post('post')
   async sendEmail(@Res() res: Response, @Req() req: Request) {
-    const client = await this.pool.connect();
     try {
-      await client.query(
-        `INSERT INTO email(created_at, email) VALUES (to_timestamp($1 / 1000.0), $2)`,
-        [Date.now(), req.body.email],
-      );
-      res.json({
-        success: true,
-      });
+      const client = await this.pool.connect();
+      try {
+        await client.query(
+          `INSERT INTO email(created_at, email) VALUES (to_timestamp($1 / 1000.0), $2)`,
+          [Date.now(), req.body.email],
+        );
+        res.json({
+          success: true,
+        });
+      } catch (e) {
+        res.json({
+          success: false,
+        });
+      }
+      client.release();
     } catch (e) {
       res.json({
-        success: false,
+        message: e,
       });
-    } finally {
-      client.release();
     }
   }
 }
