@@ -33,22 +33,13 @@ async function snapshot(Component, options) {
     <html>
         <head>
           <meta charset="UTF-8" />
+          <link href='https://fonts.googleapis.com/css2?family=Inter:slnt,wght@-10..0,100..900&amp;family=Ubuntu:wght@300;400;500;700&amp;display=swap' rel='stylesheet'>
           <style>
-            /* cyrillic */
-            /*@font-face {*/
-              /*font-family: 'Ubuntu';*/
-              /*font-style: normal;*/
-              /*font-weight: 400;*/
-              /*src: local('Ubuntu Regular'), local('Ubuntu-Regular'), url(https://fonts.gstatic.com/s/ubuntu/v12/4iCs6KVjbNBYlgoKew72nU6AF7xm.woff2) format('woff2');*/
-              /*unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;*/
-            /*}*/
-            
-            body, html {
-              color: #333;
-              font-size: 12px;
-              /*font-family: Ubuntu, sans-serif;*/
-              /*-webkit-font-smoothing: antialiased;*/
+            html {
+              font-family: Inter, sans-serif;
+              -webkit-font-smoothing: antialiased;
             }
+            
             #wrap {
               display: flex;
             }
@@ -76,8 +67,8 @@ async function snapshot(Component, options) {
           </style>${style}
         </head>
         <body>
-            <div id="wrap">
-                <div id="root">
+            <div id='wrap'>
+                <div id='root'>
                     ${requestBody}
                 </div>
             </div>
