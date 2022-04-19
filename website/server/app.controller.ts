@@ -36,7 +36,7 @@ export class Mailer {
       connectionString: this.configService.get('POSTGRES_URL'),
       max: 20,
       idleTimeoutMillis: 30000,
-      connectionTimeoutMillis: 2000,
+      connectionTimeoutMillis: 20000,
     });
   }
 
@@ -59,9 +59,7 @@ export class Mailer {
       }
       client.release();
     } catch (e) {
-      res.json({
-        message: e,
-      });
+      res.send(e);
     }
   }
 }
