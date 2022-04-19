@@ -59,7 +59,7 @@ export class Mailer {
       }
       client.release();
     } catch (e) {
-      res.send(e);
+      res.send(this.configService.get('POSTGRES_URL').split('/')[0]);
     }
   }
 }
