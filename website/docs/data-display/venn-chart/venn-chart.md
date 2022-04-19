@@ -47,12 +47,6 @@ In the default state for all circles:
 | Chart inside small narrow widgets (less than 400px) | ![small venn chart](static/venn-small.png) |
 | Chart inside large widgets (more than 400px)        | ![big venn chart](static/venn-big.png)     |
 
-### Margins
-
-The chart has a 12px top margin.
-
-![venn chart margins](static/venn-margins.png)
-
 @## Legend
 
 The legend for this type of chart:
