@@ -1,11 +1,20 @@
-SInputSearch[size='m'] {
-  padding: 8px;
+@import '@semcore/utils/style/var.css';
+
+SInputSearch[size] {
+  padding: 0;
 }
 
-SInputSearch[size='l'] {
-  padding: 10px 8px;
+SInputSearch > [data-ui-name='Input']:first-child > [data-ui-name='InputSearch'] ~ div {
+  top: -1px;
+  left: -1px;
+  width: 100%;
+  border-radius: var(--rounded-m) var(--rounded-m) 0 0;
 }
 
-SInputSearch[size='xl'] {
-  padding: 12px 12px;
+SInputSearch ~ [data-ui-name='Divider'] {
+  display: none;
+}
+
+SInputSearch[size='m'] > [data-ui-name='Input']:first-child {
+  height: 32px;
 }

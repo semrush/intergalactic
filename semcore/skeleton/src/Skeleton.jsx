@@ -6,8 +6,8 @@ import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 import style from './style/skeleton.shadow.css';
 
 const MAP_COLOR_THEME = {
-  dark: 'rgba(255,255,255,0.5)',
-  invert: '#edeff0',
+  dark: 'rgba(255, 255, 255, 0.3)',
+  invert: 'rgba(224, 225, 233, 0.8)',
 };
 
 class Skeleton extends Component {

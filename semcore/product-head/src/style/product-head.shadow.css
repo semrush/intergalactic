@@ -3,8 +3,8 @@
 SProductHead {
   margin-bottom: 16px;
   margin-top: 16px;
-  padding-left: 30px;
-  padding-right: 30px;
+  padding-left: 32px;
+  padding-right: 32px;
 }
 
 SRow {
@@ -30,6 +30,8 @@ SLinks {
   align-items: center;
   justify-content: flex-end;
   margin-left: 8px;
+  font-size: var(--fs-200);
+  line-height: var(--lh-200);
 
   & > *:not(:first-child) {
     margin-left: 20px;

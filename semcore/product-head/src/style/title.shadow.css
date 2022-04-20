@@ -3,9 +3,9 @@
 STitle {
   align-items: center;
   display: flex;
-  font-size: var(--fs-600);
-  line-height: 1.1;
-  font-weight: 500;
+  font-size: var(--fs-400);
+  line-height: var(--lh-400);
+  font-weight: 600;
   min-width: 0;
   overflow: hidden;
   text-overflow: ellipsis;

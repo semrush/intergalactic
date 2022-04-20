@@ -59,23 +59,23 @@ SValue[size='xl'] {
 }
 
 SValue[size='l'] {
-  margin-top: 1px;
+  margin-top: 2px;
   width: 16px;
   height: 16px;
 }
 
 SValue[size='m'] {
   margin-top: 2px;
-  width: 12px;
-  height: 12px;
+  width: 16px;
+  height: 16px;
 }
 
 SValue[state='normal']::before {
-  border-color: var(--stone);
+  border-color: var(--stone-light);
 }
 
 SValue[state='invalid']::before {
-  border-color: var(--orange);
+  border-color: var(--red);
 }
 
 SControl {
@@ -99,8 +99,8 @@ SControl:checked ~ SValue[size='l']::after {
 }
 
 SControl:checked ~ SValue[size='m']::after {
-  width: 4px;
-  height: 4px;
+  width: 6px;
+  height: 6px;
 }
 
 SValue[state='normal'][keyboardFocused]::before {
@@ -109,7 +109,7 @@ SValue[state='normal'][keyboardFocused]::before {
 }
 
 SValue[state='invalid'][keyboardFocused]::before {
-  box-shadow: 0 0 0 3px color-mod(var(--orange) a(30%));
+  box-shadow: 0 0 0 3px color-mod(var(--red) a(20%));
 }
 
 SControl:checked ~ SValue[theme]::before {

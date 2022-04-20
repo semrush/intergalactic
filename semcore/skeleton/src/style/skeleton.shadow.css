@@ -21,11 +21,11 @@ SSkeleton {
 }
 
 SSkeleton[theme='invert'] {
-  fill: #edeff0;
+  fill: rgba(224, 225, 233, 0.8);
 }
 
 SSkeleton[theme='dark'] {
-  fill: rgba(255, 255, 255, 0.5);
+  fill: rgba(255, 255, 255, 0.3);
 }
 
 SText {

@@ -10,7 +10,7 @@ SOverlay {
   display: flex;
   overflow: hidden;
   z-index: 10005;
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(25, 27, 35, 0.7);
   -webkit-overflow-scrolling: touch;
 }
 
@@ -26,7 +26,7 @@ SPanel {
 }
 
 SPanel[placement='top'] {
-  box-shadow: 3px 0 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 1px 0 12px rgba(25, 27, 35, 0.15);
   width: 100%;
   margin-bottom: auto;
   top: 0;
@@ -34,7 +34,7 @@ SPanel[placement='top'] {
 }
 
 SPanel[placement='right'] {
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: var(--box-shadow-popper);
   height: 100vh;
   margin-left: auto;
   top: 0;
@@ -42,7 +42,7 @@ SPanel[placement='right'] {
 }
 
 SPanel[placement='bottom'] {
-  box-shadow: 3px 0 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 1px 0 12px rgba(25, 27, 35, 0.15);
   width: 100%;
   margin-top: auto;
   bottom: 0;
@@ -50,7 +50,7 @@ SPanel[placement='bottom'] {
 }
 
 SPanel[placement='left'] {
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: var(--box-shadow-popper);
   height: 100vh;
   margin-right: auto;
   top: 0;
@@ -98,7 +98,7 @@ SClose {
   outline: none;
 
   &:hover {
-    color: color-mod(var(--stone) shade(12%));
+    color: var(--wall);
   }
 }
 
