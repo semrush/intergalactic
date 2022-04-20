@@ -6,7 +6,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### BREAK
 
-- Restyling component
+- Restyling component.
 
 ### Added
 
