@@ -1,14 +1,14 @@
 import React from 'react';
-import { testing, shared as testsShared, snapshot } from '@semcore/jest-preset-ui';
+import { testing, snapshot } from '@semcore/jest-preset-ui';
+
 const { render, cleanup, axe } = testing;
-const { shouldSupportClassName, shouldSupportRef } = testsShared;
 import TimePicker from '../src';
 
 const TimePickerDefault = ({ children, ...other }) => (
   <TimePicker {...other}>
-    <TimePicker.Hours />
+    <TimePicker.Hours id="hours" />
     <TimePicker.Separator />
-    <TimePicker.Minutes />
+    <TimePicker.Minutes id="minutes" />
     {children}
   </TimePicker>
 );
@@ -16,21 +16,11 @@ const TimePickerDefault = ({ children, ...other }) => (
 describe('TimePicker', () => {
   afterEach(cleanup);
 
-  shouldSupportClassName(TimePicker);
-  shouldSupportRef(TimePicker);
-
-  test('should support custom attributes on the TimePicker', () => {
-    const { getByTestId } = render(<TimePicker data-testid="textarea" name="test" />);
-
-    expect(getByTestId('textarea').attributes['name'].value).toBe('test');
-  });
-
   test('should support sizes', async () => {
     const component = (
       <snapshot.ProxyProps style={{ margin: 5 }}>
-        <TimePickerDefault size="xl" />
-        <TimePickerDefault size="l" />
-        <TimePickerDefault size="m" />
+        <TimePickerDefault value="11" size="l" />
+        <TimePickerDefault value="11" size="m" />
       </snapshot.ProxyProps>
     );
 
@@ -67,22 +57,100 @@ describe('TimePicker', () => {
     expect(await snapshot(component)).toMatchImageSnapshot();
   });
 
+  test('should support focus', async () => {
+    expect(
+      await snapshot(<TimePickerDefault />, {
+        actions: {
+          focus: '#hours',
+        },
+      }),
+    ).toMatchImageSnapshot();
+    expect(
+      await snapshot(
+        <TimePickerDefault>
+          <TimePicker.Format />
+        </TimePickerDefault>,
+        {
+          actions: {
+            focus: '#hours',
+          },
+        },
+      ),
+    ).toMatchImageSnapshot();
+    expect(
+      await snapshot(<TimePickerDefault state="valid" />, {
+        actions: {
+          focus: '#hours',
+        },
+      }),
+    ).toMatchImageSnapshot();
+    expect(
+      await snapshot(
+        <TimePickerDefault state="valid">
+          <TimePicker.Format />
+        </TimePickerDefault>,
+        {
+          actions: {
+            focus: '#hours',
+          },
+        },
+      ),
+    ).toMatchImageSnapshot();
+    expect(
+      await snapshot(<TimePickerDefault state="invalid" />, {
+        actions: {
+          focus: '#hours',
+        },
+      }),
+    ).toMatchImageSnapshot();
+    expect(
+      await snapshot(
+        <TimePickerDefault state="invalid">
+          <TimePicker.Format />
+        </TimePickerDefault>,
+        {
+          actions: {
+            focus: '#hours',
+          },
+        },
+      ),
+    ).toMatchImageSnapshot();
+  });
+
+  test('should support hover format', async () => {
+    expect(
+      await snapshot(
+        <TimePickerDefault>
+          <TimePicker.Format id="format" />
+        </TimePickerDefault>,
+        {
+          actions: {
+            hover: '#format',
+          },
+        },
+      ),
+    ).toMatchImageSnapshot();
+  });
+
+  test('should support active format', async () => {
+    expect(
+      await snapshot(
+        <TimePickerDefault>
+          <TimePicker.Format id="format" />
+        </TimePickerDefault>,
+        {
+          actions: {
+            active: '#format',
+          },
+        },
+      ),
+    ).toMatchImageSnapshot();
+  });
+
   test('a11y', async () => {
     const { container } = render(<TimePickerDefault />);
 
     const results = await axe(container);
     expect(results).toHaveNoViolations();
   });
-});
-
-describe('TimePicker.Hours', () => {
-  afterEach(cleanup);
-  shouldSupportClassName(TimePicker.Hours, TimePicker);
-  shouldSupportRef(TimePicker.Hours, TimePicker);
-});
-
-describe('TimePicker.Minutes', () => {
-  afterEach(cleanup);
-  shouldSupportClassName(TimePicker.Minutes, TimePicker);
-  shouldSupportRef(TimePicker.Minutes, TimePicker);
 });

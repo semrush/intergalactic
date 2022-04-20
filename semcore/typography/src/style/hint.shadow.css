@@ -11,6 +11,7 @@ SHint {
 
 SHint {
   &[active],
+  &:active,
   &:hover {
     color: var(--gray-600);
   }

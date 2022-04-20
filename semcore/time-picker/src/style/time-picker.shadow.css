@@ -21,15 +21,11 @@ SPickerInput {
 }
 
 SPickerInput[size='m'] {
-  width: 17px;
+  width: 19px;
 }
 
 SPickerInput[size='l'] {
-  width: 18px;
-}
-
-SPickerInput[size='xl'] {
-  width: 22px;
+  width: 21px;
 }
 
 SPickerFormat {
@@ -40,11 +36,12 @@ SPickerFormat {
   margin: 0 -1px 0 0;
   white-space: nowrap;
   font-family: inherit;
-  font-weight: normal;
+  font-weight: 500;
   line-height: normal;
   text-decoration: none;
   align-items: center;
-  border: 1px solid transparent;
+  border: 1px solid var(--gray-200);
+  border-radius: 0 var(--rounded-m) var(--rounded-m) 0;
   outline: 0;
   box-shadow: none;
   cursor: pointer;
@@ -53,44 +50,32 @@ SPickerFormat {
   user-select: none;
   touch-action: manipulation;
   -webkit-tap-highlight-color: transparent;
-  color: var(--gray40);
-  border-color: var(--stone);
-  background-color: color-mod(var(--stone) a(10%));
+  color: var(--gray-500);
+  background-color: color-mod(var(--gray-400) a(10%));
 
   &:hover {
-    background-color: color-mod(var(--stone) a(20%));
+    color: var(--gray-500);
+    background-color: color-mod(var(--gray-400) a(20%));
   }
 
   &:active,
   &[active] {
-    background-color: color-mod(var(--stone) a(30%));
+    color: var(--gray-500);
+    background-color: color-mod(var(--gray-400) a(30%));
   }
 }
 
 SPickerFormat[size='m'] {
-  height: 26px;
-  font-size: 12px;
-  border-radius: 0 3px 3px 0;
-}
-
-SPickerFormat[size='l'] {
-  height: 32px;
-  font-size: 14px;
-  border-radius: 0 4px 4px 0;
-}
-
-SPickerFormat[size='m'],
-SPickerFormat[size='l'] {
+  height: 28px;
+  font-size: var(--fs-200);
   & SPickerFormatText {
     margin: 0 8px;
   }
 }
 
-SPickerFormat[size='xl'] {
-  height: 42px;
-  font-size: 16px;
-  border-radius: 0 5px 5px 0;
-
+SPickerFormat[size='l'] {
+  height: 40px;
+  font-size: var(--fs-300);
   & SPickerFormatText {
     margin: 0 12px;
   }
@@ -100,9 +85,14 @@ SPickerFormat[disabled] {
   opacity: var(--disabled-opacity);
   cursor: default;
   pointer-events: none;
-  border-color: transparent transparent transparent var(--stone);
+  border-color: transparent transparent transparent var(--gray-200);
 }
 
 SPickerFormat[keyboardFocused] {
   box-shadow: var(--keyborad-focus);
+}
+
+STimePickerSeparator[disabled] {
+  opacity: var(--disabled-opacity);
+  pointer-events: none;
 }

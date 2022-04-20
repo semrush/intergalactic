@@ -13,7 +13,7 @@ export interface ITimePickerProps extends Omit<IInputProps, 'size'> {
   disabled?: boolean;
   /** Control size
    * @default m */
-  size?: 'm' | 'l' | 'xl';
+  size?: 'm' | 'l';
   /** 12-hour time format */
   is12Hour?: boolean;
 }
