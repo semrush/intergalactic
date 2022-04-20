@@ -12,11 +12,26 @@ describe('Textarea', () => {
       <>
         <Textarea size="m" />
         <Textarea size="l" />
-        <Textarea size="xl" />
       </>
     );
 
     expect(await snapshot(component)).toMatchImageSnapshot();
+
+    expect(
+      await snapshot(<Textarea size="m" id="textarea" />, {
+        actions: {
+          focus: '#textarea',
+        },
+      }),
+    ).toMatchImageSnapshot();
+
+    expect(
+      await snapshot(<Textarea size="l" id="textarea" />, {
+        actions: {
+          focus: '#textarea',
+        },
+      }),
+    ).toMatchImageSnapshot();
   });
 
   test('Should support state', async () => {
@@ -31,10 +46,33 @@ describe('Textarea', () => {
     expect(await snapshot(component)).toMatchImageSnapshot();
   });
 
+  test('Should support focus', async () => {
+    expect(
+      await snapshot(<Textarea state="normal" id="textarea" />, {
+        actions: {
+          focus: '#textarea',
+        },
+      }),
+    ).toMatchImageSnapshot();
+    expect(
+      await snapshot(<Textarea state="valid" id="textarea" />, {
+        actions: {
+          focus: '#textarea',
+        },
+      }),
+    ).toMatchImageSnapshot();
+    expect(
+      await snapshot(<Textarea state="invalid" id="textarea" />, {
+        actions: {
+          focus: '#textarea',
+        },
+      }),
+    ).toMatchImageSnapshot();
+  });
+
   test('Should support focus, disabled, read-only, resize', async () => {
     const component = (
       <>
-        <Textarea autoFocus />
         <Textarea disabled />
         <Textarea readOnly />
         <Textarea resize="both" />

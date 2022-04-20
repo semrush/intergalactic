@@ -2,8 +2,9 @@
 
 STextarea {
   height: auto;
-  color: var(--gray20);
-  border: 1px solid var(--stone);
+  color: var(--gray-800);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--rounded-m);
   outline: none;
   width: 100%;
   box-sizing: border-box;
@@ -11,7 +12,7 @@ STextarea {
   resize: var(--resize);
 
   &:read-only {
-    background-color: var(--gray96);
+    background-color: var(--gray-50);
   }
 
   &:disabled {
@@ -19,48 +20,39 @@ STextarea {
   }
 
   &::placeholder {
-    color: var(--gray70);
+    color: var(--gray-300);
   }
 }
 
 STextarea[size='m'] {
-  padding: 3px 8px;
-  font-size: var(--fs-100);
-  line-height: var(--lh-100);
-  border-radius: 3px;
+  padding: 4px 8px;
+  font-size: var(--fs-200);
+  line-height: var(--lh-200);
 }
 
 STextarea[size='l'] {
-  padding: 5px 8px 6px;
-  font-size: var(--fs-200);
-  line-height: var(--lh-200);
-  border-radius: 4px;
-}
-
-STextarea[size='xl'] {
-  padding: 8px 12px;
+  padding: 8px 8px 8px 12px;
   font-size: var(--fs-300);
-  line-height: var(--lh-300);
-  border-radius: 5px;
+  line-height: var(--lh-400);
 }
 
 STextarea[state='normal'] {
   &:focus {
     box-shadow: var(--keyborad-focus);
-    border-color: var(--light-blue);
+    border-color: var(--blue-400);
   }
 }
 
 STextarea[state='valid'] {
-  border-color: var(--green);
+  border-color: var(--green-200);
   &:focus {
-    box-shadow: 0 0 0 3px color-mod(var(--green) a(30%));
+    box-shadow: var(--keyboard-focus-valid);
   }
 }
 
 STextarea[state='invalid'] {
-  border-color: var(--orange);
+  border-color: var(--red-200);
   &:focus {
-    box-shadow: 0 0 0 3px color-mod(var(--orange) a(30%));
+    box-shadow: var(--keyboard-focus-invalid);
   }
 }
