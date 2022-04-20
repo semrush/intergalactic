@@ -26,14 +26,16 @@ const installComponents = (packages: string[]) => {
     cwd: dirname,
   });
 
-  const node_modules = execSync(
-    'mkdir -p ./node_modules/@semcore && find ./node_modules/@semcore -name "node_modules" -type d',
-    {
-      cwd: dirname,
-    },
+  const execOptions = { cwd: dirname };
+  execSync('mkdir -p ./node_modules/@semcore', execOptions);
+  const nestedNodeModules = execSync(
+    'find ./node_modules/@semcore -name "node_modules" -type d',
+    execOptions,
   ).toString();
 
-  if (node_modules) throw new Error(`DUPLICATES FOUND ${node_modules}`);
+  if (nestedNodeModules) {
+    throw new Error(`Nested node_modules found:\n${nestedNodeModules}`);
+  }
 };
 
 const hasExportDefault = async (dependency: string) => {
