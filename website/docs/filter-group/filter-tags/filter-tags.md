@@ -3,7 +3,7 @@ title: Tags
 tabName: Design
 ---
 
-> 💡 **General rules for filters are described in the [Filters, common rules guide](/filter-group/filter-rules/).**
+> 💡 **General recommendations for filters are described in the [Filters, common rules guide](/filter-group/filter-rules/).**
 
 @## Description
 

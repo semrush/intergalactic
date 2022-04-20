@@ -65,7 +65,7 @@ The checkbox label may contain a [link](/components/link).
 
 ![checkbox with info icon](static/link-hover-zone.png)
 
-@## Mechanics and states
+@## Interaction
 
 ### States
 
