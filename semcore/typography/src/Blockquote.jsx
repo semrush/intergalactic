@@ -1,26 +1,22 @@
 import React from 'react';
-import { createBaseComponent, sstyled } from '@semcore/core';
+import { createBaseComponent, Root, sstyled } from '@semcore/core';
 import isNode from '@semcore/utils/lib/isNode';
-import Text from './Text';
+import { Box } from '@semcore/flex-box';
 
 import styles from './style/blockquote.shadow.css';
 
 function Blockquote(props, ref) {
-  const SBlockquote = Text;
-  const SAuthor = Text;
+  const SBlockquote = Root;
   const SDoubleQuotation = 'span';
-  const { children, author: authorProp, ...other } = props;
+  const SAuthor = 'cite';
+  const { children, author } = props;
 
   return sstyled(styles)(
-    <SBlockquote tag="blockquote" size={400} ref={ref} {...other}>
+    <SBlockquote render={Box} tag="blockquote" ref={ref}>
       <SDoubleQuotation>“</SDoubleQuotation>
       <span>
         {children}
-        {isNode(authorProp) && (
-          <SAuthor tag="cite" size={200}>
-            {authorProp}
-          </SAuthor>
-        )}
+        {isNode(author) && <SAuthor>{author}</SAuthor>}
       </span>
     </SBlockquote>,
   );

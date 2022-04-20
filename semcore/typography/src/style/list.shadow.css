@@ -25,5 +25,5 @@ SItem + SItem {
 
 SMarker {
   margin-right: 10px;
-  color: var(--gray60);
+  color: var(--gray-500);
 }
