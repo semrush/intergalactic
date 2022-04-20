@@ -30,7 +30,7 @@ The title may have a subhead-summary. It usually contains information about the 
 
 ![card with title and description](static/card-title-and-description.png)
 
-@## Mechanics and states
+@## Interaction
 
 By default, the card is non-clickable. However, the card may have a clickable title.
 
