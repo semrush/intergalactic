@@ -96,6 +96,8 @@ If the column is clickable, the cursor changes to `pointer`.
 
 @## Edge cases
 
+Here you will find the states for some specific cases. All other "empty states" for widgets are specified in [Error & n/a widget states](/components/widget-empty/).
+
 ### Data for one range
 
 - We display a single bar if we only have data for one range.
@@ -105,7 +107,7 @@ If the column is clickable, the cursor changes to `pointer`.
 
 ![histogram with n/a](static/no-more.png)
 
-### All values are zero
+### Null values
 
 If all the values on the chart are zero, then show 0 for them in the tooltip.
 

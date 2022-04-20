@@ -94,6 +94,8 @@ If legend label is very long, wrap it to the next line.
 
 @## Edge cases
 
+Here you will find the states for some specific cases. All other "empty states" for widgets are specified in [Error & n/a widget states](/components/widget-empty/).
+
 ### Value less than 1%
 
 Show circle with the minimum size — 12px \* 12px.

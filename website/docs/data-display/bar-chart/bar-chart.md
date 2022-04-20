@@ -70,6 +70,13 @@ When you hover over a column, we highlight it with `--gray-200` color with .3 op
 
 If the column is clickable, the cursor changes to `pointer`.
 
+If the chart has a trend line, then while hovering a line and a point shall be displayed on the trend line.
+
+|                                   | Appearance example                                                                           |
+| --------------------------------- | -------------------------------------------------------------------------------------------- |
+| Chart with one category           | ![bar chart with hover](/data-display/bar-chart/static/bar-chart-hover.png)                  |
+| Chart with two or more categories | ![bar chart with two values and hover](/data-display/bar-chart/static/bar-chart-2-hover.png) |
+
 > To see detailed information about tooltip for charts see [Chart principles](/data-display/chart/#ac9830).
 
 @## Use in UX/UI
