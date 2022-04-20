@@ -2,12 +2,13 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [4.0.0] - unreleased
+## [5.0.0] - unreleased
 
 ### BREAK
 
 - Restyling component.
 - Removed ability to pass custom color to "theme" property.
+- Remove named import "Tooltip".
 
 ## [4.3.5] - 2022-03-14
 
