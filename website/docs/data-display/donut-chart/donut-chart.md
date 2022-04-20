@@ -134,6 +134,8 @@ Hovering over the chart triggers a tooltip with the name and value of the data.
 
 @## Edge cases
 
+Here you will find the states for some specific cases. All other "empty states" for widgets are specified in [Error & n/a widget states](/components/widget-empty/).
+
 ### Null values
 
 If the data for any category is zero, then do not disable the legend. Show 0 as the values in the legend, use `--gray-500` color. The zero value sector is not displayed on the chart.

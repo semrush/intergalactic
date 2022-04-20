@@ -37,7 +37,7 @@ If the column is clickable, the cursor changes to `pointer`.
 
 ![stacked bar chart](static/stacked-bar-chart-hover.png)
 
-See detailed information in the common [Bar chart guide](/data-display/bar-chart/#a61ee5).
+See detailed information in the common [Bar chart guide](/data-display/bar-chart/#a61ee5/).
 
 @## Trend
 

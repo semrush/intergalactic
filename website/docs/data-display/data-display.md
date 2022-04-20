@@ -10,23 +10,25 @@ title: Charts
 @page chart-controls
 @page notes
 
-@page line-chart
 @page area-chart
 @page stacked-area-chart
-
-<!-- @page combined-chart -->
 
 @page bar-chart
 @page stacked-bar-chart
 @page bar-horizontal
 @page stacked-horizontal-bar
-@page donut-chart
+
 @page bubble-chart
+
+<!-- @page combined-chart -->
+
+@page donut-chart
 @page histogram-chart
-@page radial-tree-chart
 
 <!-- @page stacked-histogram -->
 
+@page line-chart
+@page radial-tree-chart
 @page scatterplot-chart
 @page venn-chart
 
