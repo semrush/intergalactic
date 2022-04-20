@@ -25,6 +25,7 @@ export function assignHandlers(props, source) {
 function assignHandlersInner(props, source) {
   return Object.keys(source).reduce((proxySource, propName) => {
     if (
+      propName !== 'ref' &&
       typeof source[propName] === 'function' &&
       typeof props[propName] === 'function' &&
       propName.startsWith('on')
@@ -55,7 +56,15 @@ export default function assignProps<P extends AssignableProps, S extends Assigna
     ...assignHandlersInner(props, source),
   };
 
-  if (source.ref && props.ref) {
+  // because react set getter for ref
+  const sourceDescriptorRef = Object.getOwnPropertyDescriptor(source, 'ref');
+  const propsDescriptorRef = Object.getOwnPropertyDescriptor(props, 'ref');
+  if (
+    sourceDescriptorRef &&
+    sourceDescriptorRef.configurable &&
+    propsDescriptorRef &&
+    propsDescriptorRef.configurable
+  ) {
     newProps.ref = forkRef(source.ref, props.ref);
   }
 

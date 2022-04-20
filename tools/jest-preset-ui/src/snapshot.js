@@ -30,7 +30,7 @@ async function snapshot(Component, options) {
   const style = document.head.innerHTML;
   const html = `
     <!DOCTYPE html>
-    <html>
+    <html lang='en'>
         <head>
           <meta charset="UTF-8" />
           <link href='https://fonts.googleapis.com/css2?family=Inter:slnt,wght@-10..0,100..900&amp;family=Ubuntu:wght@300;400;500;700&amp;display=swap' rel='stylesheet'>

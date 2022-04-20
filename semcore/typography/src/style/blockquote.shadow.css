@@ -4,22 +4,26 @@ SBlockquote {
   position: relative;
   display: flex;
   font-style: italic;
-  color: var(--gray20);
+  font-size: var(--fs-400);
+  line-height: var(--lh-400);
+  color: var(--gray-800);
 }
 
 SDoubleQuotation {
   position: relative;
-  left: -5px;
   margin-right: 20px;
+  font-family: 'Times New Roman', serif;
+  font-style: normal;
   font-size: 68px;
-  line-height: 70px;
-  color: var(--gray80);
-  font-family: Georgia, Times, 'Times New Roman', serif;
+  line-height: 52px;
+  color: var(--gray-300);
 }
 
 SAuthor {
   display: block;
   margin-top: 16px;
-  font-style: normal;
   color: var(--gray60);
+  font-style: normal;
+  font-size: var(--fs-300);
+  line-height: var(--lh-300);
 }

@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.31.3] - unreleased
+
+### Fixed
+
+- Remove react warning when accessing "ref" property
+
 ## [3.31.2] - 2022-03-05
 
 ### Fixed

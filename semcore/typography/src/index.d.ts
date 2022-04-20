@@ -60,7 +60,7 @@ export interface IHintProps extends ITextProps {
   active?: boolean;
 }
 
-export interface IBlockquoteProps extends ITextProps {
+export interface IBlockquoteProps extends IBoxProps {
   /** Source of the quote */
   author?: React.ReactNode;
 }
