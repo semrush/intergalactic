@@ -2,40 +2,35 @@
 
 STooltip {
   position: relative;
-  padding: 16px;
-  color: var(--gray20);
-  border-radius: 3px;
+  padding: 12px;
+  border-radius: var(--rounded-m);
   box-sizing: border-box;
-  font-size: var(--fs-100);
-  line-height: var(--lh-100);
+  color: var(--gray-800);
+  font-size: var(--fs-200);
+  line-height: var(--lh-200);
   word-wrap: break-word;
   max-width: 250px;
   font-weight: normal;
   white-space: normal;
 }
 
-STooltip[theme] {
-  background-color: var(--theme);
-  border: 1px solid var(--theme);
-  color: #fff;
-  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.25), 0 -2px 5px -2px rgba(0, 0, 0, 0.25);
-}
-
 STooltip[theme='default'] {
-  color: var(--gray20);
-  background-color: #fff;
-  border: 1px solid var(--stone-light);
+  background-color: var(--white);
+  border: 1px solid var(--gray-100);
+  box-shadow: 0 1px 12px 0 color-mod(var(--gray-800) a(15%));
 }
 
 STooltip[theme='invert'] {
-  background-color: #000;
-  border: 3px solid #fff;
-  box-shadow: none;
+  color: var(--white);
+  background-color: var(--gray-800);
+  border: 1px solid var(--gray-500);
+  box-shadow: 0 1px 12px 0 color-mod(var(--gray-800) a(15%));
 }
 
 STooltip[theme='warning'] {
-  background-color: var(--orange);
-  border: 1px solid var(--orange);
+  background-color: var(--red-100);
+  border: 1px solid var(--red-400);
+  box-shadow: 0 2px 5px color-mod(var(--black) a(25%));
 }
 
 STooltip[data-popper-reference-hidden] {
@@ -54,35 +49,27 @@ SArrow {
   }
 }
 
-SArrow[theme] {
-  border-color: var(--theme);
-  &:before {
-    border-color: var(--theme);
-  }
-}
-
 SArrow[theme='default'] {
-  border-color: var(--stone-light);
+  border-color: var(--gray-100);
 
   &:before {
-    border-color: #fff;
+    border-color: var(--white);
   }
 }
 
 SArrow[theme='invert'] {
-  border-color: #fff;
-  border-width: 8px;
+  border-color: var(--gray-500);
 
   &::before {
-    border-color: #000;
+    border-color: var(--gray-800);
   }
 }
 
 SArrow[theme='warning'] {
-  border-color: var(--orange);
+  border-color: var(--red-400);
 
   &::before {
-    border-color: var(--orange);
+    border-color: var(--red-100);
   }
 }
 
@@ -92,11 +79,6 @@ STooltip[data-popper-placement^='top'] SArrow {
   border-bottom: 0 transparent;
   border-right-color: transparent !important;
   border-left-color: transparent !important;
-
-  &[theme='invert']::before {
-    top: -9px;
-    left: -6px;
-  }
 
   &::before {
     top: -7px;
@@ -115,11 +97,6 @@ STooltip[data-popper-placement^='bottom'] SArrow {
   border-right-color: transparent !important;
   border-left-color: transparent !important;
 
-  &[theme='invert']::before {
-    top: 3px;
-    left: -6px;
-  }
-
   &::before {
     top: 1px;
     left: -6px;
@@ -137,11 +114,6 @@ STooltip[data-popper-placement^='left'] SArrow {
   border-top-color: transparent !important;
   border-bottom-color: transparent !important;
 
-  &[theme='invert']::before {
-    top: -6px;
-    left: -9px;
-  }
-
   &::before {
     top: -6px;
     left: -7px;
@@ -158,11 +130,6 @@ STooltip[data-popper-placement^='right'] SArrow {
   border-left: 0 transparent;
   border-top-color: transparent !important;
   border-bottom-color: transparent !important;
-
-  &[theme='invert']::before {
-    top: -6px;
-    left: 3px;
-  }
 
   &::before {
     top: -6px;

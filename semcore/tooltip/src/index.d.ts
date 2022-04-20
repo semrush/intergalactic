@@ -11,7 +11,7 @@ export interface ITooltipProps extends IPopperProps, IPopperTriggerProps {
    * Tooltip theme. You can use the default themes or create your own
    * @default default
    */
-  theme?: 'default' | 'warning' | 'invert' | string;
+  theme?: 'default' | 'warning' | 'invert';
 }
 
 export interface ITooltipContext extends IPopperContext {}
