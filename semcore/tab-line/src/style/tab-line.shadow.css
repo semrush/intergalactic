@@ -8,14 +8,13 @@ STabLine {
 }
 
 STabLine[underlined] {
-  border-bottom: 1px solid var(--gray80);
+  border-bottom: 1px solid var(--gray-200);
 }
 
 STabLineItem {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  line-height: 1.1;
   position: relative;
   touch-action: manipulation;
   white-space: nowrap;
@@ -35,6 +34,8 @@ STabLineItem {
   cursor: pointer;
   border: none;
   background: transparent;
+  color: var(--gray-800);
+  margin-right: 16px;
 
   &::-moz-focus-inner {
     border: none;
@@ -57,7 +58,15 @@ STabLineItem {
   }
 
   &:hover::after {
-    background-color: var(--stone);
+    background-color: var(--gray-200);
+  }
+
+  & SText:not(:last-child) {
+    margin-right: 8px;
+  }
+
+  & SAddon:not(:last-child) {
+    margin-right: 8px;
   }
 }
 
@@ -71,7 +80,7 @@ STabLineItem::after {
 
 SIndicator {
   transition: transform 0.5s ease;
-  background-color: var(--light-blue);
+  background-color: var(--blue-400);
   will-change: transform;
 }
 
@@ -91,14 +100,12 @@ STabLineItem[keyboardFocused] {
 
 SText {
   display: inline-block;
-  color: var(--gray20);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
 SAddon {
-  color: var(--gray60);
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -106,53 +113,14 @@ SAddon {
 
 STabLineItem[size='m'] {
   height: 28px;
-  margin-right: 16px;
   min-width: 18px;
-  font-size: var(--fs-100);
-
-  & SText:not(:last-child) {
-    margin-right: 8px;
-  }
-
-  & SAddon {
-    &:not(:last-child) {
-      margin-right: 8px;
-    }
-  }
+  font-size: var(--fs-200);
 }
 
 STabLineItem[size='l'] {
-  height: 34px;
-  margin-right: 16px;
+  height: 40px;
   min-width: 26px;
-  font-size: var(--fs-200);
-
-  & SText:not(:last-child) {
-    margin-right: 8px;
-  }
-
-  & SAddon {
-    &:not(:last-child) {
-      margin-right: 8px;
-    }
-  }
-}
-
-STabLineItem[size='xl'] {
-  height: 42px;
-  margin-right: 24px;
-  min-width: 32px;
   font-size: var(--fs-300);
-
-  & SText:not(:last-child) {
-    margin-right: 12px;
-  }
-
-  & SAddon {
-    &:not(:last-child) {
-      margin-right: 12px;
-    }
-  }
 }
 
 STabLineItem[neighborLocation='left'] {
