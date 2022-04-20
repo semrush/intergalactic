@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { testing, snapshot } from '@semcore/jest-preset-ui';
 import Check from '@semcore/icon/Check/m';
+import Question from '@semcore/icon/Question/m';
 import { Blockquote, List, Text, Hint } from '../src';
 
 const { cleanup, render, axe } = testing;
@@ -261,9 +262,23 @@ describe('Hint', () => {
   test('Renders correctly with Addon and Text', async () => {
     const component = (
       <Hint>
-        <Hint.Addon>Left</Hint.Addon>
+        <Hint.Addon>
+          <Question />
+        </Hint.Addon>
         <Hint.Text>Test</Hint.Text>
-        <Hint.Addon>Right</Hint.Addon>
+        <Hint.Addon>
+          <Question />
+        </Hint.Addon>
+      </Hint>
+    );
+
+    expect(await snapshot(component)).toMatchImageSnapshot();
+  });
+
+  test('Renders correctly with alternative api Addon and Text', async () => {
+    const component = (
+      <Hint addonLeft={Question} addonRight={Question}>
+        Test
       </Hint>
     );
 
