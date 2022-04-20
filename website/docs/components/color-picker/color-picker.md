@@ -9,60 +9,58 @@ tabName: Design
 
 @## Appearance
 
-### Composition
+The color picker appearance varies depending on the usage context.
 
-The color picker appearance varies depending on the context.
+### Color picker types
 
-### Types of pickers and color palettes
+We have two types of color picker that can be used:
 
-There are two types of picker that can be used:
+- Color picker in a [dropdown](/components/dropdown/)
+- Inline color picker
 
-- Dropdown
-- Plain
-
-| Dropdown                                              | Plain                                           |
-| ----------------------------------------------------- | ----------------------------------------------- |
-| ![Color picker dropdown](static/cp-type-dropdown.png) | ![Color picker plain](static/cp-type-plain.png) |
+| Color picker in a dropdown                            | Inline color picker                              |
+| ----------------------------------------------------- | ------------------------------------------------ |
+| ![Color picker dropdown](static/cp-type-dropdown.png) | ![Color picker inline](static/cp-type-plain.png) |
 
 A picker can have two different content types:
 
-- Color
-- Color-text
+- Background color
+- Text color
 
-| Color                                                 | Color-text                                            |
-| ----------------------------------------------------- | ----------------------------------------------------- |
-| ![Color picker dropdown](static/cp-type-dropdown.png) | ![Color picker plain](static/cp-type-dropdown-ct.png) |
-| ![Color picker dropdown](static/cp-type-plain.png)    | ![Color picker plain](static/cp-type-plain-ct.png)    |
+| Background color                                      | Text color                                             |
+| ----------------------------------------------------- | ------------------------------------------------------ |
+| ![Color picker dropdown](static/cp-type-dropdown.png) | ![Color picker inline](static/cp-type-dropdown-ct.png) |
+| ![Color picker dropdown](static/cp-type-plain.png)    | ![Color picker inline](static/cp-type-plain-ct.png)    |
 
 Each type can be expanded with an additional set of colors. There are two sets in total:
 
 - standard comprising 10 colors;
 - additional - also 10 colors.
 
-| Color + More button                                                | Color + Less button                                                |
+| Set of background colors + "More" button                           | Set of background colors + "Less" button                           |
 | ------------------------------------------------------------------ | ------------------------------------------------------------------ |
 | ![Color dropdown with more button](static/cp-type-dropdown+bm.png) | ![Color dropdown with less button](static/cp-type-dropdown+bl.png) |
 
-| Color-text + More button                                                   | Color-text + Less button                                                   |
+| Set of text colors + "More" button                                         | Set of text colors + "Less" button                                         |
 | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
 | ![Color-text dropdown with more button](static/cp-type-dropdown-ct+bm.png) | ![Color-text dropdown with less button](static/cp-type-dropdown-ct+bl.png) |
 
-The Plain picker colors can be expanded in two ways:
+The set of colors in inline color picker can be expanded in two ways:
 
 - add an additional set to the main one as a separate row of colors;
 - show via select dropdown with all the sets.
 
-| Color 2 rows                                          | Color-text 2 rows                                           |
-| ----------------------------------------------------- | ----------------------------------------------------------- |
-| ![Plain color 2 rows](static/cp-type-plain-ext-c.png) | ![Plain color-text 2 rows](static/cp-type-plain-ext-ct.png) |
+| Set of background colors in 2 rows                     | Set of text colors in 2 rows                                 |
+| ------------------------------------------------------ | ------------------------------------------------------------ |
+| ![Inline color 2 rows](static/cp-type-plain-ext-c.png) | ![Inline color-text 2 rows](static/cp-type-plain-ext-ct.png) |
 
-| Color + Select + Dropdown                                | Color-text + Select + Dropdown                                 |
-| -------------------------------------------------------- | -------------------------------------------------------------- |
-| ![Plain color + dropdown](static/cp-type-plain+dd-c.png) | ![Plain color-text + dropdown](static/cp-type-plain+dd-ct.png) |
+| Set of background colors + Select + Dropdown              | Set of text colors + Select + Dropdown                          |
+| --------------------------------------------------------- | --------------------------------------------------------------- |
+| ![Inline color + dropdown](static/cp-type-plain+dd-c.png) | ![Inline color-text + dropdown](static/cp-type-plain+dd-ct.png) |
 
 @## Content
 
-### What can a Dropdown color picker consist of
+### What a color picker in dropdown can consist of
 
 |                                                                |                                                                      |
 | -------------------------------------------------------------- | -------------------------------------------------------------------- |
@@ -73,14 +71,14 @@ The Plain picker colors can be expanded in two ways:
 - Trigger
 - Dropdown that has:
   - Title
-  - Set of 10 colors in two rows for the background (or for the background and text)
+  - Set of 10 colors in 2 rows for the background (or for the background and text)
 
 **Optional**
 
 - Master expand/hide button
 - Additional set of 10 colors in 2 rows
 
-### What can Plain color picker consist of
+### What inline color picker can consist of
 
 |                                                          |                                                                |
 | -------------------------------------------------------- | -------------------------------------------------------------- |
@@ -95,14 +93,15 @@ The Plain picker colors can be expanded in two ways:
 
 @## Triggers
 
-Components that can call a picker:
+Components that can be a trigger for the color picker:
 
 - [Input](/components/input/)
 - [Link](/components/link/)
+- [Select](/components/select/)
 
 ![Color picker triggers](static/cp-triggers.png)
 
-@## Where can we place the color marker?
+You can place the color marker in the following components:
 
 - [Button](/components/button/)
 - [FilterTrigger](/components/filter-trigger/)
@@ -115,9 +114,7 @@ Components that can call a picker:
 
 ![Color picker places](static/cp-places.png)
 
-@## Mechanics and states
-
-### Behavior
+@## Interaction
 
 - When you hover over an unselected marker, an outline appears around it with color `--gray-200`, and the cursor changes to pointer. When hovering over unselected markers, the selected marker still has the outline.
 
@@ -131,7 +128,7 @@ Components that can call a picker:
 
     ![Selected color in the plain picker](static/cp-plain-select-states.png)
 
-- If the `Plain` type is used with a select, the title is not used inside the dropdown with the palette. However, the `Plain` component itself may have an optional title. If a title is used, we recommend using the name: "Select a color".
+- If the `Inline` type is used with a select, the title is not used inside the dropdown with the palette. However, the `Inline` component itself may have an optional title. If a title is used, we recommend using the name: "Select a color".
 - Dropdown closes when you click outside of its area, or when you click the trigger again.
 
 @## Keyboard support
@@ -144,7 +141,7 @@ Components that can call a picker:
 
 @## Use in UX/UI
 
-### Dropdown color
+### Color picker in a dropdown
 
 Use it when **there is not enough space** and you need to change the color of the object/element, and:
 
@@ -152,11 +149,11 @@ Use it when **there is not enough space** and you need to change the color of th
 - it is not a background for the text;
 - if you need to change the color of a text that has a white background color.
 
-### Plain color
+### Inline color picker
 
 Use it when **there is enough space**. Or color selection is a priority for the user.
 
-### Dropdown color-text
+### Text color picker in a dropdown
 
 Use it when **there is not enough space** and you need to change the color of the object/element, and:
 
@@ -166,6 +163,6 @@ Use it when **there is not enough space** and you need to change the color of th
 
 The text color and background color are based on the same color.
 
-### Plain color-text
+### Inline text color picker
 
 Use it when **there is enough space**. Or color selection is a priority for the user.

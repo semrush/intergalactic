@@ -77,7 +77,11 @@ Show legend with the values.
 - **The legend label has 16px margin-right. The margin between the values is 12px.**
 - The legend is aligned to the top of the chart.
 
-![donut legend margins](static/donut-legend-margins.png)
+![donut legend margins](static/donut-legend-margins-1.png)
+
+- If you need to place the legend under the chart, then add 24px margin to the legend.
+
+![donut legend margins](static/donut-legend-margins-2.png)
 
 ### Long label
 

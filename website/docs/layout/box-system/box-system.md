@@ -53,7 +53,7 @@ Here is a table with a scale of spacings we use in our interface.
 | 40            | 2.5            | ![color for 40px spacing](static/spacing-40.png) |
 | 48            | 3              | ![color for 48px spacing](static/spacing-48.png) |
 
-@## General rules
+@## General recommendations
 
 - The spacing between logically different blocks is 24px. _For example, between widgets on the Overview._
 - Inside widgets, spacings are always are: 20px at the top (required to compensate for the indent + line height of the widget's title) and 24px to the left, right and at the bottom.

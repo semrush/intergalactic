@@ -149,6 +149,6 @@ If the chart has a title, it should be displayed during the initial loading. The
 
 The particular edge cases differ for different chart types, so see them in the documentation for specific chart you need.
 
-General rules of "empty" states for widgets with charts are described in [Error & n/a widget states](/components/widget-empty/).
+General recommendations of "empty" states for widgets with charts are described in [Error & n/a widget states](/components/widget-empty/).
 
 @page chart-code
