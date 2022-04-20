@@ -28,9 +28,9 @@ SPill {
   vertical-align: middle;
   font-family: inherit;
   cursor: pointer;
-  color: var(--gray40);
+  color: var(--gray20);
   background: #fff;
-  border: 1px solid var(--stone);
+  border: 1px solid var(--stone-light);
 
   &::-moz-focus-inner {
     border: none;
@@ -45,7 +45,7 @@ SPill {
   }
 
   &:hover {
-    background: color-mod(var(--stone) a(20%));
+    background: color-mod(var(--wall) a(20%));
   }
 }
 
@@ -87,10 +87,10 @@ SAddon {
 }
 
 SPill[size='s'] {
-  height: 18px;
-  min-width: 18px;
-  border-radius: 2px;
-  font-size: 10px;
+  height: 20px;
+  min-width: 20px;
+  border-radius: var(--rounded-m);
+  font-size: 12px;
 
   & SText {
     margin-left: 4px;
@@ -114,36 +114,9 @@ SPill[size='s'] {
 }
 
 SPill[size='m'] {
-  height: 26px;
-  min-width: 26px;
-  border-radius: 3px;
-  font-size: 12px;
-
-  & SText {
-    margin-left: 8px;
-    margin-right: 8px;
-  }
-
-  & SAddon {
-    &:not(:only-child):first-child {
-      margin-left: 8px;
-    }
-
-    &:not(:only-child):last-child {
-      margin-right: 8px;
-    }
-
-    &:only-child {
-      margin-left: -4px;
-      margin-right: -4px;
-    }
-  }
-}
-
-SPill[size='l'] {
-  height: 32px;
-  min-width: 32px;
-  border-radius: 4px;
+  height: 28px;
+  min-width: 28px;
+  border-radius: var(--rounded-m);
   font-size: 14px;
 
   & SText {
@@ -167,10 +140,37 @@ SPill[size='l'] {
   }
 }
 
+SPill[size='l'] {
+  height: 40px;
+  min-width: 40px;
+  border-radius: var(--rounded-m);
+  font-size: 16px;
+
+  & SText {
+    margin-left: 8px;
+    margin-right: 8px;
+  }
+
+  & SAddon {
+    &:not(:only-child):first-child {
+      margin-left: 8px;
+    }
+
+    &:not(:only-child):last-child {
+      margin-right: 8px;
+    }
+
+    &:only-child {
+      margin-left: -4px;
+      margin-right: -4px;
+    }
+  }
+}
+
 SPill[size='xl'] {
-  height: 42px;
-  min-width: 42px;
-  border-radius: 5px;
+  height: 48px;
+  min-width: 48px;
+  border-radius: var(--rounded-m);
   font-size: 16px;
 
   & SText {

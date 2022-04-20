@@ -4,24 +4,12 @@ SInfo {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  font-size: var(--fs-100);
+  font-size: var(--fs-200);
   line-height: 1.5;
 
   & > SItem:not(:last-child) {
     margin-right: 24px;
     position: relative;
-
-    &:after {
-      background-color: var(--gray80);
-      content: '';
-      display: block;
-      height: 16px;
-      position: absolute;
-      right: -12px;
-      top: 50%;
-      transform: translate(0, -50%);
-      width: 1px;
-    }
   }
 }
 

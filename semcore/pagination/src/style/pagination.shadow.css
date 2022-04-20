@@ -41,3 +41,10 @@ SPageInputValue {
     position: static;
   }
 }
+
+SLabel,
+STotalPages,
+STotalPagesLabel {
+  font-size: var(--fs-200);
+  line-height: var(--lh-200);
+}

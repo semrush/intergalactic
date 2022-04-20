@@ -35,12 +35,15 @@ describe('Radio', () => {
       <snapshot.ProxyProps m="5px">
         <Radio size="xl">
           <Radio.Value />
+          <Radio.Text>Test quest</Radio.Text>
         </Radio>
         <Radio size="l">
           <Radio.Value />
+          <Radio.Text>Test quest</Radio.Text>
         </Radio>
         <Radio size="m">
           <Radio.Value />
+          <Radio.Text>Test quest</Radio.Text>
         </Radio>
       </snapshot.ProxyProps>
     );
