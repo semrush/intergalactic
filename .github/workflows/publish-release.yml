@@ -41,7 +41,9 @@ jobs:
           yarn build
       - name: build @semcore/ui
         run: |
-          yarn workspace @semcore/ui generate
+          cd semcore/ui
+          yarn install
+          yarn generate
       - name: NPM setup
         run: |
           echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" >> ".npmrc"
