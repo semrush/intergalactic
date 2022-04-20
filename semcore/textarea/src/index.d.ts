@@ -8,7 +8,7 @@ export interface ITextareaProps extends IBoxProps, IWithAutoFocusEnhanceProps {
   /** Textarea size
    * @default m
    */
-  size?: 'm' | 'l' | 'xl' | false;
+  size?: 'm' | 'l' | false;
   /** The value responsible for the component state
    * @default normal
    */
