@@ -47,6 +47,27 @@ describe('TabPanel', () => {
     expect(await snapshot(component)).toMatchImageSnapshot();
   });
 
+  test('Should support hover item', async () => {
+    const component = (
+      <TabPanel value={2}>
+        <TabPanel.Item value={1}>Item 1</TabPanel.Item>
+        <TabPanel.Item value={2}>Item 2</TabPanel.Item>
+        <TabPanel.Item value={3} id="tab-panel">
+          Item 3
+        </TabPanel.Item>
+        <TabPanel.Item value={4}>Item 4</TabPanel.Item>
+      </TabPanel>
+    );
+
+    expect(
+      await snapshot(component, {
+        actions: {
+          hover: '#tab-panel',
+        },
+      }),
+    ).toMatchImageSnapshot();
+  });
+
   test('Should support keyboardFocused/disabled/selected', async () => {
     const component = (
       <TabPanel>

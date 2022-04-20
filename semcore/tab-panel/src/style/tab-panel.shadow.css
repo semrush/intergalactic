@@ -4,7 +4,7 @@ STabPanel {
   display: flex;
   width: 100%;
   max-width: 100%;
-  border-bottom: 1px solid var(--gray80);
+  border-bottom: 1px solid var(--gray-200);
 }
 
 STabPanelItem {
@@ -14,10 +14,9 @@ STabPanelItem {
   min-width: 0;
   height: 32px;
   font-size: var(--fs-200);
-  line-height: 1.1;
-  color: var(--gray40);
+  color: var(--gray-500);
   border: 1px solid transparent;
-  border-radius: 4px 4px 0 0;
+  border-radius: var(--rounded-m) var(--rounded-m) 0 0;
   background: transparent;
   align-items: center;
   justify-content: center;
@@ -49,7 +48,7 @@ STabPanelItem {
   }
 
   &:hover {
-    color: var(--gray20);
+    color: var(--gray-800);
   }
 }
 
@@ -64,9 +63,9 @@ STabPanelItem[keyboardFocused] {
 }
 
 STabPanelItem[selected] {
-  color: var(--denim-blue);
-  border-color: var(--gray80);
-  border-bottom-color: white;
+  color: var(--blue-500);
+  border-color: var(--gray-200);
+  border-bottom-color: var(--white);
   flex-shrink: 0;
 
   &:hover {
@@ -80,7 +79,6 @@ SText {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  line-height: 1.1;
 }
 
 SAddon {
