@@ -46,7 +46,7 @@ When user hovers over the chart area, show a vertical guide line at the nearest 
 
 @## Edge cases
 
-Here you will find the states for one, two, zero values, etc. All other "empty states" for widgets are specified in [Error & n/a widget states](/components/widget-empty/).
+Here you will find the states for some specific cases. All other "empty states" for widgets are specified in [Error & n/a widget states](/components/widget-empty/).
 
 @## One value
 
@@ -71,7 +71,7 @@ For this case enable the display of dots on the chart by default.
 
 ![two-dots](static/two-dots2.png)
 
-@## All values are zero
+@## Null values
 
 If all values on the chart are zero, then show the trend line on the zero axis.
 
