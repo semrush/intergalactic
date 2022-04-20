@@ -169,7 +169,7 @@ class TimePickerRoot extends Component {
     this.handlers.value(value, event);
   };
 
-  getHoursProps = () => {
+  _getHoursAndMinutesProps = () => {
     const { is12Hour, size, disabled } = this.asProps;
     const time = this.valueToTime(this.value);
 
@@ -182,11 +182,16 @@ class TimePickerRoot extends Component {
     };
   };
 
-  getMinutesProps = () => {
-    return this.getHoursProps();
-  };
+  getHoursProps = this._getHoursAndMinutesProps;
+  getMinutesProps = this._getHoursAndMinutesProps;
 
-  getFormatProps = () => {
+  getSeparatorProps() {
+    return {
+      disabled: this.asProps.disabled,
+    };
+  }
+
+  getFormatProps() {
     const { size, disabled, disablePortal } = this.asProps;
     return {
       size,
@@ -195,7 +200,7 @@ class TimePickerRoot extends Component {
       meridiem: this.meridiem,
       onClick: this.handleMeridiemClick,
     };
-  };
+  }
 
   render() {
     const STimePicker = Root;
@@ -223,7 +228,8 @@ class Separator extends Component {
   };
 
   render() {
-    return <Root render={Box} ref={this.$el} onClick={this.handlerClick} />;
+    const STimePickerSeparator = Root;
+    return <STimePickerSeparator render={Box} ref={this.$el} onClick={this.handlerClick} />;
   }
 }
 

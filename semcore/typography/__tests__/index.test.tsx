@@ -271,9 +271,31 @@ describe('Hint', () => {
   });
 
   test('Should support active', async () => {
-    const component = <Hint active>Hint</Hint>;
+    const component = (
+      <>
+        <Hint active>Hint</Hint> <Hint id="hint">Hint</Hint>
+      </>
+    );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    expect(
+      await snapshot(component, {
+        actions: {
+          active: '#hint',
+        },
+      }),
+    ).toMatchImageSnapshot();
+  });
+
+  test('Should support hover', async () => {
+    const component = <Hint id="hint">Hint</Hint>;
+
+    expect(
+      await snapshot(component, {
+        actions: {
+          hover: '#hint',
+        },
+      }),
+    ).toMatchImageSnapshot();
   });
 
   test('Should support disabled', async () => {
