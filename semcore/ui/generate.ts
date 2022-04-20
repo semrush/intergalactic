@@ -21,7 +21,7 @@ const removeDirectory = async () => {
 };
 
 const installComponents = (packages: string[]) => {
-  execSync(`npm_config_registry=${REGISTRY_URL} yarn add ${packages.join(' ')} -E`, {
+  execSync(`npm_config_registry=${REGISTRY_URL} yarn add ${packages.join(' ')} --exact`, {
     stdio: 'inherit',
     cwd: dirname,
   });
@@ -57,12 +57,38 @@ const hasExportDefault = async (dependency: string) => {
   }
 };
 
-const EXPORT_TEMPLATES = {
-  LIB_DEFAULT: (lib: string, component: string) =>
-    `export { default } from '${lib}/lib/${component}';\nexport * from '${lib}/lib/${component}';`,
-  LIB_NAMED: (lib: string, component: string) => `export * from '${lib}/lib/${component}';`,
-  DEFAULT: (lib: string) => `export { default } from '${lib}';\nexport * from '${lib}';`,
-  NAMED: (lib: string) => `export * from '${lib}';`,
+type ExportExtensions = 'js' | 'd.ts' | 'cjs' | 'mjs';
+const exportExtensions: ExportExtensions[] = ['js', 'd.ts', 'cjs', 'mjs'];
+
+const EXPORT_TEMPLATES: {
+  [extention in ExportExtensions]: {
+    LIB_DEFAULT: (lib: string, component: string) => string;
+    LIB_NAMED: (lib: string, component: string) => string;
+    DEFAULT: (lib: string) => string;
+    NAMED: (lib: string) => string;
+  };
+} = {
+  cjs: {
+    LIB_DEFAULT: (lib: string, component: string) =>
+      `module.exports = require('${lib}/lib/${component}');`,
+    LIB_NAMED: (lib: string, component: string) =>
+      `module.exports = require('${lib}/lib/${component}');`,
+    DEFAULT: (lib: string) => `module.exports = require('${lib}');`,
+    NAMED: (lib: string) => `module.exports = require('${lib}');`,
+  },
+  mjs: {
+    LIB_DEFAULT: (lib: string, component: string) =>
+      `export { default } from '${lib}/lib/${component}';\nexport * from '${lib}/lib/${component}';`,
+    LIB_NAMED: (lib: string, component: string) => `export * from '${lib}/lib/${component}';`,
+    DEFAULT: (lib: string) => `export { default } from '${lib}';\nexport * from '${lib}';`,
+    NAMED: (lib: string) => `export * from '${lib}';`,
+  },
+  get js() {
+    return EXPORT_TEMPLATES.mjs;
+  },
+  get 'd.ts'() {
+    return EXPORT_TEMPLATES.mjs;
+  },
 } as const;
 
 const GENERATOR = {
@@ -72,21 +98,25 @@ const GENERATOR = {
     const utilsPath = path.join(utilsMain, '..');
     const utils = glob.sync('**/*.+(js|ts)', { cwd: utilsPath });
     for (const util of utils) {
-      const utilsModule = `${utilsPath}/${util.replace('.d.ts', '.js')}`;
+      const utilNameWithoutExtention = util.replace(/\.(d\.)?(t|j)s$/, '');
 
       // index.js of utils throws & useless, so we copy it
-      if (util.replace('.d.ts', '.js') === 'index.js') {
+      if (utilNameWithoutExtention === 'index') {
         await fs.copy(`${utilsPath}/${util}`, `./${name}/lib/${util}`);
         continue;
       }
 
-      const TEMPLATE = (await hasExportDefault(utilsModule))
-        ? EXPORT_TEMPLATES.LIB_DEFAULT
-        : EXPORT_TEMPLATES.LIB_NAMED;
-      await fs.outputFile(
-        `./${name}/lib/${util}`,
-        TEMPLATE(dependency, util.replace('.d.ts', '').replace('.js', '')),
-      );
+      for (const extension of exportExtensions) {
+        const defaultExport = await hasExportDefault(`${utilsPath}/${utilNameWithoutExtention}`);
+        const template = defaultExport
+          ? EXPORT_TEMPLATES[extension].LIB_DEFAULT
+          : EXPORT_TEMPLATES[extension].LIB_NAMED;
+
+        await fs.outputFile(
+          `./${name}/lib/${utilNameWithoutExtention}.${extension}`,
+          template(dependency, utilNameWithoutExtention),
+        );
+      }
     }
   },
   ICONS: async (dependency: string, name: string) => {
@@ -114,14 +144,14 @@ const GENERATOR = {
         })
         .map(path.dirname);
       for (const subFile of subDirs) {
-        await fs.outputFile(
-          path.resolve(`./${name}/lib/${icon}/${subFile}`, `index.js`),
-          EXPORT_TEMPLATES.LIB_DEFAULT(dependency, `${icon}/${subFile}`),
-        );
-        await fs.outputFile(
-          path.resolve(`./${name}/lib/${icon}/${subFile}`, `index.d.ts`),
-          EXPORT_TEMPLATES.LIB_DEFAULT(dependency, `${icon}/${subFile}`),
-        );
+        for (const extension of exportExtensions) {
+          const template = EXPORT_TEMPLATES[extension].LIB_DEFAULT;
+
+          await fs.outputFile(
+            path.resolve(`./${name}/lib/${icon}/${subFile}`, `index.${extension}`),
+            template(dependency, `${icon}/${subFile}`),
+          );
+        }
       }
     }
     for (const icon of newIcons) {
@@ -132,23 +162,25 @@ const GENERATOR = {
         .map(path.dirname);
 
       for (const subFile of subFiles) {
-        await fs.outputFile(
-          `./${name}/${icon}/${subFile}/index.js`,
-          EXPORT_TEMPLATES.DEFAULT(`${dependency}/${icon}/${subFile}`),
-        );
-        await fs.outputFile(
-          `./${name}/${icon}/${subFile}/index.d.ts`,
-          EXPORT_TEMPLATES.DEFAULT(`${dependency}/${icon}/${subFile}`),
-        );
+        for (const extension of exportExtensions) {
+          const template = EXPORT_TEMPLATES[extension].DEFAULT;
+          await fs.outputFile(
+            `./${name}/${icon}/${subFile}/index.${extension}`,
+            template(`${dependency}/${icon}/${subFile}`),
+          );
+        }
       }
     }
   },
   OTHER: async (dependency: string, name: string) => {
-    const TEMPLATE = (await hasExportDefault(dependency))
-      ? EXPORT_TEMPLATES.DEFAULT
-      : EXPORT_TEMPLATES.NAMED;
-    await fs.outputFile(`./${name}/index.js`, TEMPLATE(dependency));
-    await fs.outputFile(`./${name}/index.d.ts`, TEMPLATE(dependency));
+    const defaultExport = await hasExportDefault(dependency);
+
+    for (const extension of exportExtensions) {
+      const template = defaultExport
+        ? EXPORT_TEMPLATES[extension].DEFAULT
+        : EXPORT_TEMPLATES[extension].NAMED;
+      await fs.outputFile(`./${name}/index.${extension}`, template(dependency));
+    }
   },
 };
 
