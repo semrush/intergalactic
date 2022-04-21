@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.7.0] - 2022-04-21
+
+### Added
+
+- Added `onScroll` property.
+
 ## [3.6.4] - 2022-03-14
 
 ### Changed
