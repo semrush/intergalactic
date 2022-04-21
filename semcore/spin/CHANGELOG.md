@@ -2,6 +2,16 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.0.0] - unrelease
+
+### Removed
+
+- Removed size `xxs`.
+
+### Changed
+
+- Updated colors
+
 ## [3.4.1] - 2022-03-14
 
 ### Changed

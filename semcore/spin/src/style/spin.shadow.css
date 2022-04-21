@@ -21,7 +21,7 @@ SSpin {
 }
 
 SSpin[theme='dark'] {
-  fill: rgba(25, 27, 35, 0.3);
+  fill: var(--gray-200);
 }
 
 SSpin[theme='invert'] {
@@ -30,11 +30,6 @@ SSpin[theme='invert'] {
 
 SSpin[centered] {
   margin: auto;
-}
-
-SSpin[size='xxs'] {
-  width: 10px;
-  height: 10px;
 }
 
 SSpin[size='xs'] {

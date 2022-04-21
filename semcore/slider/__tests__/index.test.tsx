@@ -8,7 +8,7 @@ describe('Slider', () => {
   afterEach(cleanup);
 
   test('Renders correctly', async () => {
-    const component = <Slider value={50} />;
+    const component = <Slider value={50} m="10px" />;
 
     expect(await snapshot(component)).toMatchImageSnapshot();
   });
@@ -24,10 +24,54 @@ describe('Slider', () => {
     expect(await snapshot(component)).toMatchImageSnapshot();
   });
 
-  test('Should support disabled', async () => {
-    const component = <Slider value={50} disabled />;
+  test('Should support normal state', async () => {
+    const component = (
+      <snapshot.ProxyProps m="25px">
+        <Slider value={50} keyboardFocused />
+        <Slider value={50} disabled />
+        <div style={{ background: 'black', padding: '1px' }}>
+          <Slider value={50} disabled m="25px" />
+        </div>
+      </snapshot.ProxyProps>
+    );
 
     expect(await snapshot(component)).toMatchImageSnapshot();
+  });
+
+  test('Should support hover', async () => {
+    expect(
+      await snapshot(<Slider value={50} id="slider" m="10px" />, {
+        actions: {
+          hover: '#slider',
+        },
+      }),
+    ).toMatchImageSnapshot();
+  });
+
+  test('Should support active', async () => {
+    expect(
+      await snapshot(<Slider value={50} id="slider" m="10px" />, {
+        actions: {
+          active: '#slider',
+        },
+      }),
+    ).toMatchImageSnapshot();
+  });
+
+  test('Should support hover Knob', async () => {
+    expect(
+      await snapshot(
+        <Slider value={50} m="10px">
+          <Slider.Bar />
+          <Slider.Knob id="knob" />
+        </Slider>,
+        {
+          actions: {
+            active: '#knob',
+          },
+        },
+      ),
+    ).toMatchImageSnapshot();
   });
 
   test('Should support onChange callback with keyboard', async () => {
@@ -58,11 +102,11 @@ describe('Slider', () => {
     expect(spy).lastCalledWith(0, expect.any(Object));
   });
 
-  xtest('a11y', async () => {
+  test('a11y', async () => {
     const { container } = render(
       <>
-        <Slider />
-        <Slider disabled />
+        <Slider aria-label="slider" />
+        <Slider aria-label="slider disabled" disabled />
       </>,
     );
 
