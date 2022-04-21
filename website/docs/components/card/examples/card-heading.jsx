@@ -14,7 +14,14 @@ export default () => (
       <SettingsS color="stone" ml="auto" interactive />
     </Flex>
     <Card.Description>This is card additional information or insights.</Card.Description>
-    <Divider orientation="horizontal" mb={5} ml={-5} mt={2} w={`calc(100% + 40px)`} />
+    <Divider
+      orientation="horizontal"
+      theme="#E0E1E9"
+      mb={5}
+      ml={-5}
+      mt={2}
+      w={`calc(100% + 40px)`}
+    />
     <Text size={100}>Your awesome card content ✨</Text>
   </Card>
 );
