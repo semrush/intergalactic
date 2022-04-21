@@ -15,7 +15,7 @@ export interface IScrollAreaProps extends IBoxProps {
   /** Callback executed when container change size  */
   onResize?: ResizeObserverCallback;
   /** Called every time user scrolls area  */
-  onScroll: (event: React.SyntheticEvent<HTMLElement>) => void;
+  onScroll?: (event: React.SyntheticEvent<HTMLElement>) => void;
 }
 
 export interface IScrollAreaContext extends IScrollAreaProps {
