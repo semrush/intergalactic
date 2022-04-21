@@ -69,22 +69,31 @@ SSwitch[disabled] {
 
 SSwitch[checked] {
   & SAddon[neighborLocation='right'] {
-    color: var(--gray60);
+    color: var(--gray-500);
   }
 
   & SAddon[neighborLocation='left'] {
-    color: var(--gray20);
+    color: var(--gray-800);
   }
 }
 
 SToggle {
-  background: var(--gray70);
+  background: var(--gray-300);
   position: relative;
-  color: var(--gray70);
+  color: var(--gray-300);
   cursor: pointer;
 }
 
-SToggle[checked] {
+SToggle[checked][theme='info'] {
+  color: var(--blue-400);
+  background-color: var(--blue-400);
+}
+SToggle[checked][theme='success'] {
+  color: var(--green-400);
+  background-color: var(--green-400);
+}
+
+SToggle[checked][theme='custom'] {
   color: var(--color);
   background-color: var(--color);
 }
@@ -129,11 +138,11 @@ SInput {
 }
 
 SAddon[neighborLocation='right'] {
-  color: var(--gray20);
+  color: var(--gray-800);
 }
 
 SAddon[neighborLocation='left'] {
-  color: var(--gray60);
+  color: var(--gray-500);
 }
 
 @media (prefers-reduced-motion) {

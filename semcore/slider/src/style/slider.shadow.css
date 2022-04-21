@@ -15,15 +15,17 @@ SSlider {
   }
 
   &:active SKnob {
-    box-shadow: 0 0 0 5px color-mod(var(--light-blue) a(30%));
+    box-shadow: 0 0 0 5px color-mod(var(--blue-400) a(30%));
   }
 }
 
 SSlider[keyboardFocused] SKnob {
-  box-shadow: 0 0 0 5px color-mod(var(--light-blue) a(30%));
+  box-shadow: 0 0 0 5px color-mod(var(--blue-400) a(30%));
 }
 
 SSlider[disabled] {
+  opacity: var(--disabled-opacity);
+  cursor: default;
   pointer-events: none;
 }
 
@@ -36,12 +38,8 @@ SBar {
   border-radius: 4px;
   box-sizing: border-box;
   background-size: 12px;
-  background-color: var(--light-blue);
+  background-color: var(--blue-400);
   cursor: pointer;
-}
-
-SBar[disabled] {
-  background-color: #2b94e150;
 }
 
 SKnob {
@@ -52,17 +50,13 @@ SKnob {
   border-radius: 50%;
   box-sizing: border-box;
   background-color: #fff;
-  border: 5px solid var(--light-blue);
+  border: 5px solid var(--blue-400);
   cursor: pointer;
   transform: translate(-50%, -50%);
 
   &:hover {
-    border-color: var(--denim-blue);
+    border-color: var(--blue-500);
   }
-}
-
-SKnob[disabled] {
-  border: 5px solid #2b94e150;
 }
 
 SInput {

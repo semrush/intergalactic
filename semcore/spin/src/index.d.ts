@@ -1,7 +1,7 @@
 import { CProps, ReturnEl } from '@semcore/core';
 import { IBoxProps } from '@semcore/flex-box';
 
-export type SpinSize = 'xxs' | 'xs' | 's' | 'm' | 'l' | 'xl' | 'xxl';
+export type SpinSize = 'xs' | 's' | 'm' | 'l' | 'xl' | 'xxl';
 
 export interface ISpinProps extends IBoxProps {
   /** Spinner size

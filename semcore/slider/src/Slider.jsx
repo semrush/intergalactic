@@ -137,7 +137,7 @@ class SliderRoot extends Component {
           aria-valuenow={value}
         >
           <Children />
-          <SInput tag="input" type="hidden" value={value} name={name} />
+          <SInput tag="input" type="hidden" value={value} name={name} aria-hidden />
         </SSlider>
       </>,
     );

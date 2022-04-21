@@ -45,7 +45,6 @@ describe('Spin', () => {
   test('Should support size', async () => {
     const component = (
       <>
-        <Spin size="xxs" />
         <Spin size="xs" />
         <Spin size="s" />
         <Spin size="m" />
