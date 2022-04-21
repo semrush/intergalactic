@@ -33,7 +33,7 @@ export default () => {
           <DataTable.Column name="vol" children="Vol." />
         </DataTable.Column>
       </DataTable.Head>
-      <DataTable.Body hMax={400} virtualScroll />
+      <DataTable.Body h={400} virtualScroll />
     </DataTable>
   );
 };
