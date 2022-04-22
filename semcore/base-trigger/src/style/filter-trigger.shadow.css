@@ -1,9 +1,9 @@
 @import '@semcore/utils/style/var.css';
 
 SButtonTrigger {
-  border: 1px solid var(--stone-light);
+  border: 1px solid var(--gray-200);
   background: #ffffff;
-  color: var(--gray20);
+  color: var(--gray-800);
 
   &::-moz-focus-inner {
     border: none;
@@ -20,15 +20,8 @@ SButtonTrigger {
   &:active,
   &:hover,
   &[active] {
-    background-color: color-mod(var(--wall) a(20%));
+    background-color: color-mod(var(--gray-400) a(20%));
   }
-}
-
-SButtonTrigger[size='s'] {
-  height: 18px;
-  min-width: 18px;
-  border-radius: 2px;
-  font-size: 10px;
 }
 
 SButtonTrigger[size='m'] {
@@ -45,37 +38,30 @@ SButtonTrigger[size='l'] {
   font-size: var(--fs-300);
 }
 
-SButtonTrigger[size='xl'] {
-  height: 42px;
-  min-width: 42px;
-  border-radius: 5px;
-  font-size: 16px;
-}
-
 SText[placeholder] {
-  color: var(--gray70);
+  color: var(--gray-300);
 }
 
 SButtonTrigger[state='normal'] {
-  border-color: var(--stone-light);
+  border-color: var(--gray-200);
 }
 
 SButtonTrigger[state='valid'] {
-  border-color: var(--green200);
+  border-color: var(--green-200);
 }
 
 SButtonTrigger[state='invalid'] {
-  border-color: var(--red200);
+  border-color: var(--red-200);
 }
 
 SFilterTrigger[selected] {
-  border-color: var(--light-blue);
-  background-color: color-mod(var(--light-blue) a(20%));
+  border-color: var(--blue-400);
+  background-color: color-mod(var(--blue-400) a(20%));
   color: var(--gray-800);
 
   &[active],
   &:hover {
-    background: color-mod(var(--light-blue) a(30%));
+    background: color-mod(var(--blue-400) a(30%));
   }
 }
 
@@ -92,5 +78,5 @@ SWrapper[keyboardFocused] {
 }
 
 SCounter {
-  background-color: var(--light-blue);
+  background-color: var(--blue-400);
 }

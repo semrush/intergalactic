@@ -10,7 +10,7 @@ SBreadcrumbs {
 
 SSeparator {
   margin: 0 8px;
-  color: var(--gray70);
+  color: var(--gray-300);
   display: flex;
 
   &:last-child {
@@ -22,7 +22,8 @@ SBreadcrumbsItem {
   position: relative;
   font-size: var(--fs-200);
   line-height: var(--lh-100);
-  color: var(--gray60);
+  font-family: Inter, sans-serif;
+  color: var(--gray-500);
   text-decoration: none;
   box-sizing: border-box;
   outline: none;
@@ -33,7 +34,7 @@ SBreadcrumbsItem {
 
   &:hover {
     text-decoration: underline;
-    color: var(--gray40);
+    color: var(--gray-600);
   }
 }
 
@@ -42,7 +43,7 @@ SBreadcrumbsItem[keyboardFocused] {
 }
 
 SBreadcrumbsItem[active] {
-  color: var(--gray20);
+  color: var(--gray-800);
   cursor: default;
   &:hover {
     text-decoration: none;

@@ -1,66 +1,43 @@
 import React from 'react';
 import { testing, snapshot } from '@semcore/jest-preset-ui';
-const { cleanup, fireEvent, render } = testing;
+const { cleanup, render } = testing;
 
 import NeighborLocation from '@semcore/neighbor-location';
 import { Flex } from '@semcore/flex-box';
 import Button from '../src';
+import propsForElement from '@semcore/utils/lib/propsForElement';
 
 describe('Button', () => {
   afterEach(cleanup);
 
-  test('should support custom className', () => {
-    const { getByTestId } = render(<Button data-testid="button" className="more-than one-class" />);
+  test('renders correctly', async () => {
+    const component = <Button>Button</Button>;
 
-    expect(getByTestId('button').attributes['class'].value).toContain('more-than one-class');
-  });
-
-  test('should support custom attributes', () => {
-    const { getByTestId } = render(<Button data-testid="button" name="button" />);
-
-    expect(getByTestId('button').attributes['name'].value).toBe('button');
-  });
-
-  test('should support ref', () => {
-    const ref = React.createRef<HTMLButtonElement>();
-    render(<Button ref={ref} />);
-    expect(ref.current.nodeName).toBe('BUTTON');
-  });
-
-  test('should support children', async () => {
-    const component = (
-      <Button>
-        <p data-testid="child">Test</p>
-      </Button>
-    );
-    const { getByTestId } = render(component);
-
-    expect(getByTestId('child')).toBeTruthy();
     expect(await snapshot(component)).toMatchImageSnapshot();
   });
 
-  test('should support additional elements', async () => {
+  test('Renders correctly with Addon and Text', async () => {
     const component = (
       <Button>
         <Button.Addon>Addon</Button.Addon>
         <Button.Text>Text</Button.Text>
       </Button>
     );
-    const { queryAllByText } = render(component);
-    const additional = queryAllByText('Addon');
 
-    expect(additional).toHaveLength(1);
     expect(await snapshot(component)).toMatchImageSnapshot();
   });
 
-  test('should support additional elements as props', async () => {
-    const Addon = React.forwardRef<HTMLElement>(function (p, ref) {
-      return (
-        <span ref={ref} {...p}>
-          Addon prop
-        </span>
-      );
-    });
+  test('Renders correctly with Addon as props', async () => {
+    const Addon =
+      React.forwardRef <
+      HTMLElement >
+      function (p, ref) {
+        return (
+          <span ref={ref} {...propsForElement(p)}>
+            Addon prop
+          </span>
+        );
+      };
     const component = (
       <Button addonLeft={Addon} addonRight={Addon}>
         Text
@@ -70,46 +47,10 @@ describe('Button', () => {
     expect(await snapshot(component)).toMatchImageSnapshot();
   });
 
-  test('additional elements should support ref', () => {
-    const textRef = React.createRef<HTMLSpanElement>();
-    const addonRef = React.createRef<HTMLSpanElement>();
-    render(
-      <Button>
-        <Button.Addon ref={addonRef} />
-        <Button.Text ref={textRef} />
-      </Button>,
-    );
-    expect(textRef.current.nodeName).toBe('SPAN');
-    expect(addonRef.current.nodeName).toBe('SPAN');
-  });
-
   test('should support loading', () => {
     const { queryByTestId } = render(<Button data-testid="button" loading />);
     expect(queryByTestId('button').attributes['disabled']).toBeTruthy();
     expect(queryByTestId('button').querySelectorAll('[data-ui-name="Spin"]')).toHaveLength(1);
-  });
-
-  test('should support mouse click', () => {
-    const spy = jest.fn();
-    const { getByTestId } = render(<Button data-testid="button" onClick={spy} />);
-    fireEvent.click(getByTestId('button'));
-
-    expect(spy).toBeCalled();
-  });
-
-  test('should support tag prop', () => {
-    const { queryByTestId } = render(<Button data-testid="button" tag="a" />);
-    expect(queryByTestId('button').tagName).toBe('A');
-  });
-
-  test('should support "fullWidth" prop', async () => {
-    const component = (
-      <div style={{ width: 200 }}>
-        <Button w="100%">Button</Button>
-      </div>
-    );
-
-    expect(await snapshot(component)).toMatchImageSnapshot();
   });
 
   test('should support "active" prop', async () => {
@@ -118,21 +59,11 @@ describe('Button', () => {
     expect(await snapshot(Component)).toMatchImageSnapshot();
   });
 
-  test('should not call onClick handler when disabled', () => {
-    const spy = jest.fn();
-    const { getByTestId } = render(<Button data-testid="button" onClick={spy} disabled />);
-    fireEvent.click(getByTestId('button'));
-
-    expect(spy).not.toBeCalled();
-  });
-
   test('should support size props', async () => {
     const component = (
       <snapshot.ProxyProps style={{ margin: 5 }}>
-        <Button size="xl">Button</Button>
         <Button size="l">Button</Button>
         <Button size="m">Button</Button>
-        <Button size="s">Button</Button>
       </snapshot.ProxyProps>
     );
 
@@ -409,5 +340,301 @@ describe('Button', () => {
     );
 
     expect(await snapshot(component)).toMatchImageSnapshot();
+  });
+
+  test('Should support hover', async () => {
+    expect(
+      await snapshot(<Button id="button">Button</Button>, {
+        actions: {
+          hover: '#button',
+        },
+      }),
+    ).toMatchImageSnapshot();
+    expect(
+      await snapshot(
+        <div style={{ background: '#eee' }}>
+          <Button id="button" use="tertiary" theme="invert">
+            Button
+          </Button>
+        </div>,
+        {
+          actions: {
+            hover: '#button',
+          },
+        },
+      ),
+    ).toMatchImageSnapshot();
+    expect(
+      await snapshot(
+        <div style={{ background: '#eee' }}>
+          <Button id="button" use="secondary" theme="invert">
+            Button
+          </Button>
+        </div>,
+        {
+          actions: {
+            hover: '#button',
+          },
+        },
+      ),
+    ).toMatchImageSnapshot();
+    expect(
+      await snapshot(
+        <div style={{ background: '#eee' }}>
+          <Button id="button" use="primary" theme="invert">
+            Button
+          </Button>
+        </div>,
+        {
+          actions: {
+            hover: '#button',
+          },
+        },
+      ),
+    ).toMatchImageSnapshot();
+    expect(
+      await snapshot(
+        <Button id="button" use="primary" theme="danger">
+          Button
+        </Button>,
+        {
+          actions: {
+            hover: '#button',
+          },
+        },
+      ),
+    ).toMatchImageSnapshot();
+    expect(
+      await snapshot(
+        <Button id="button" use="primary" theme="warning">
+          Button
+        </Button>,
+        {
+          actions: {
+            hover: '#button',
+          },
+        },
+      ),
+    ).toMatchImageSnapshot();
+    expect(
+      await snapshot(
+        <Button id="button" use="primary" theme="success">
+          Button
+        </Button>,
+        {
+          actions: {
+            hover: '#button',
+          },
+        },
+      ),
+    ).toMatchImageSnapshot();
+    expect(
+      await snapshot(
+        <Button id="button" use="primary" theme="info">
+          Button
+        </Button>,
+        {
+          actions: {
+            hover: '#button',
+          },
+        },
+      ),
+    ).toMatchImageSnapshot();
+    expect(
+      await snapshot(
+        <Button id="button" use="secondary" theme="muted">
+          Button
+        </Button>,
+        {
+          actions: {
+            hover: '#button',
+          },
+        },
+      ),
+    ).toMatchImageSnapshot();
+    expect(
+      await snapshot(
+        <Button id="button" use="secondary" theme="info">
+          Button
+        </Button>,
+        {
+          actions: {
+            hover: '#button',
+          },
+        },
+      ),
+    ).toMatchImageSnapshot();
+    expect(
+      await snapshot(
+        <Button id="button" use="tertiary" theme="info">
+          Button
+        </Button>,
+        {
+          actions: {
+            hover: '#button',
+          },
+        },
+      ),
+    ).toMatchImageSnapshot();
+    expect(
+      await snapshot(
+        <Button id="button" use="tertiary" theme="muted">
+          Button
+        </Button>,
+        {
+          actions: {
+            hover: '#button',
+          },
+        },
+      ),
+    ).toMatchImageSnapshot();
+  });
+
+  test('Should support active', async () => {
+    expect(
+      await snapshot(<Button id="button">Button</Button>, {
+        actions: {
+          active: '#button',
+        },
+      }),
+    ).toMatchImageSnapshot();
+    expect(
+      await snapshot(
+        <div style={{ background: '#eee' }}>
+          <Button id="button" use="tertiary" theme="invert">
+            Button
+          </Button>
+        </div>,
+        {
+          actions: {
+            active: '#button',
+          },
+        },
+      ),
+    ).toMatchImageSnapshot();
+    expect(
+      await snapshot(
+        <div style={{ background: '#eee' }}>
+          <Button id="button" use="secondary" theme="invert">
+            Button
+          </Button>
+        </div>,
+        {
+          actions: {
+            active: '#button',
+          },
+        },
+      ),
+    ).toMatchImageSnapshot();
+    expect(
+      await snapshot(
+        <div style={{ background: '#eee' }}>
+          <Button id="button" use="primary" theme="invert">
+            Button
+          </Button>
+        </div>,
+        {
+          actions: {
+            active: '#button',
+          },
+        },
+      ),
+    ).toMatchImageSnapshot();
+    expect(
+      await snapshot(
+        <Button id="button" use="primary" theme="danger">
+          Button
+        </Button>,
+        {
+          actions: {
+            active: '#button',
+          },
+        },
+      ),
+    ).toMatchImageSnapshot();
+    expect(
+      await snapshot(
+        <Button id="button" use="primary" theme="warning">
+          Button
+        </Button>,
+        {
+          actions: {
+            active: '#button',
+          },
+        },
+      ),
+    ).toMatchImageSnapshot();
+    expect(
+      await snapshot(
+        <Button id="button" use="primary" theme="success">
+          Button
+        </Button>,
+        {
+          actions: {
+            active: '#button',
+          },
+        },
+      ),
+    ).toMatchImageSnapshot();
+    expect(
+      await snapshot(
+        <Button id="button" use="primary" theme="info">
+          Button
+        </Button>,
+        {
+          actions: {
+            active: '#button',
+          },
+        },
+      ),
+    ).toMatchImageSnapshot();
+    expect(
+      await snapshot(
+        <Button id="button" use="secondary" theme="muted">
+          Button
+        </Button>,
+        {
+          actions: {
+            active: '#button',
+          },
+        },
+      ),
+    ).toMatchImageSnapshot();
+    expect(
+      await snapshot(
+        <Button id="button" use="secondary" theme="info">
+          Button
+        </Button>,
+        {
+          actions: {
+            active: '#button',
+          },
+        },
+      ),
+    ).toMatchImageSnapshot();
+    expect(
+      await snapshot(
+        <Button id="button" use="tertiary" theme="info">
+          Button
+        </Button>,
+        {
+          actions: {
+            active: '#button',
+          },
+        },
+      ),
+    ).toMatchImageSnapshot();
+    expect(
+      await snapshot(
+        <Button id="button" use="tertiary" theme="muted">
+          Button
+        </Button>,
+        {
+          actions: {
+            active: '#button',
+          },
+        },
+      ),
+    ).toMatchImageSnapshot();
   });
 });

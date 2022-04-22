@@ -25,8 +25,8 @@ const Demo = () => (
         {({ selected }) => (
           <>
             <Trigger selected={selected}>
-              <Accordion.Item.Chevron color="mist" mr={2} />
-              <Text size={200} color="gray20">{`Section ${index + 1}`}</Text>
+              <Accordion.Item.Chevron color="gray-300" mr={2} />
+              <Text size={200} color="gray-800">{`Section ${index + 1}`}</Text>
             </Trigger>
             <Accordion.Item.Collapse>
               <Box p="12px 32px">{`Hello Section ${index + 1}`}</Box>
