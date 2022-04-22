@@ -17,19 +17,16 @@ SLinkTrigger {
   overflow: visible;
   outline: 0;
   vertical-align: middle;
-  font-family: inherit;
+  font-family: Inter, sans-serif;
   cursor: pointer;
-}
-
-SLinkTrigger {
-  color: var(--denim-blue);
+  color: var(--blue-500);
   background: none;
   transition: color 0.15s ease-in-out;
 
   &[active],
   &:hover,
   &:active {
-    color: var(--blue600);
+    color: var(--blue-600);
 
     & SText {
       border-color: currentColor;
@@ -41,6 +38,7 @@ SLinkTrigger {
     border-bottom-style: solid;
     border-color: transparent;
     transition: border-bottom-color 0.15s ease-in-out;
+    line-height: var(--lh-200);
   }
 }
 
@@ -84,19 +82,11 @@ SLinkAddon {
   height: 16px;
 }
 
-SLinkTrigger[size='s'] {
-  font-size: 10px;
-}
-
 SLinkTrigger[size='m'] {
   font-size: var(--fs-200);
 }
 
 SLinkTrigger[size='l'] {
-  font-size: var(--fs-300);
-}
-
-SLinkTrigger[size='xl'] {
   font-size: var(--fs-300);
 }
 

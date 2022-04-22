@@ -4,3 +4,7 @@ SButtonAddon {
   width: 12px;
   height: 12px;
 }
+
+SButtonTriggerSpin {
+  fill: var(--gray-500);
+}

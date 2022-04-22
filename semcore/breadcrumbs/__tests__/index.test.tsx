@@ -29,6 +29,24 @@ describe('Breadcrumbs', () => {
     expect(await snapshot(component)).toMatchImageSnapshot();
   });
 
+  test('Should support hover item', async () => {
+    const component = (
+      <Breadcrumbs>
+        <Breadcrumbs.Item id="breadcrumbs">Dashboard</Breadcrumbs.Item>
+        <Breadcrumbs.Item>Projects</Breadcrumbs.Item>
+        <Breadcrumbs.Item>semrush.com</Breadcrumbs.Item>
+      </Breadcrumbs>
+    );
+
+    expect(
+      await snapshot(component, {
+        actions: {
+          hover: '#breadcrumbs',
+        },
+      }),
+    ).toMatchImageSnapshot();
+  });
+
   test('Correctly truncate big text', async () => {
     const component = (
       <Breadcrumbs>

@@ -20,13 +20,13 @@ SBaseTrigger {
   outline: 0;
   text-align: center;
   vertical-align: middle;
-  font-family: inherit;
+  font-family: Inter, sans-serif;
   cursor: pointer;
 
   background: #ffffff;
 
   font-weight: 400;
-  border: 1px solid var(--stone-light);
+  border: 1px solid var(--gray-200);
   color: var(--gray-800);
 
   &::-moz-focus-inner {
@@ -42,17 +42,17 @@ SBaseTrigger {
   }
 
   &[keyboardFocused] {
-    border: 1px solid var(--light-blue);
+    border: 1px solid var(--blue-400);
     box-shadow: var(--keyborad-focus);
   }
 
   &:hover {
-    background-color: color-mod(var(--wall) a(20%));
+    background-color: color-mod(var(--gray-400) a(20%));
   }
 
   &:active,
   &[active] {
-    background-color: color-mod(var(--wall) a(30%));
+    background-color: color-mod(var(--gray-400) a(30%));
   }
 }
 
@@ -80,7 +80,7 @@ SText {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-  line-height: 1.1;
+  line-height: var(--lh-200);
   flex-grow: 1;
   text-align: left;
 }
@@ -95,33 +95,6 @@ SAddon {
 SBaseAddon {
   width: 12px;
   height: 12px;
-}
-
-SBaseTrigger[size='s'] {
-  height: 18px;
-  min-width: 18px;
-  border-radius: 2px;
-  font-size: 10px;
-
-  & SText {
-    margin-left: 4px;
-    margin-right: 4px;
-  }
-
-  & SAddon {
-    &:not(:only-child):first-child {
-      margin-left: 4px;
-    }
-
-    &:not(:only-child):last-child {
-      margin-right: 4px;
-    }
-
-    &:only-child {
-      margin-left: -2px;
-      margin-right: -2px;
-    }
-  }
 }
 
 SBaseTrigger[size='m'] {
@@ -178,33 +151,6 @@ SBaseTrigger[size='l'] {
   }
 }
 
-SBaseTrigger[size='xl'] {
-  height: 42px;
-  min-width: 42px;
-  border-radius: 5px;
-  font-size: 16px;
-
-  & SText {
-    margin-left: 12px;
-    margin-right: 12px;
-  }
-
-  & SAddon {
-    &:not(:only-child):first-child {
-      margin-left: 12px;
-    }
-
-    &:not(:only-child):last-child {
-      margin-right: 12px;
-    }
-
-    &:only-child {
-      margin-left: -6px;
-      margin-right: -6px;
-    }
-  }
-}
-
 SBaseTrigger[neighborLocation='right'] {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
@@ -222,22 +168,22 @@ SBaseTrigger[neighborLocation='left'] {
 }
 
 SText[placeholder] {
-  color: var(--gray70);
+  color: var(--gray-300);
 }
 
 SBaseTrigger[state='normal'] {
-  border-color: var(--stone-light);
+  border-color: var(--gray-200);
 }
 
 SBaseTrigger[state='valid'] {
-  border-color: var(--green200);
+  border-color: var(--green-200);
 }
 
 SBaseTrigger[state='invalid'] {
-  border-color: var(--red200);
+  border-color: var(--red-200);
 
   &[keyboardFocused] {
-    border-color: var(--orange);
-    box-shadow: 0 0 0 3px color-mod(var(--orange) a(30%));
+    border-color: var(--orange-400);
+    box-shadow: 0 0 0 3px color-mod(var(--orange-400) a(30%));
   }
 }

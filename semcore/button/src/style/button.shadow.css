@@ -8,7 +8,7 @@ SButton {
   padding: 0;
   margin: 0;
   white-space: nowrap;
-  font-family: inherit;
+  font-family: Inter, sans-serif;
   line-height: normal;
   text-decoration: none;
   text-align: center;
@@ -23,7 +23,7 @@ SButton {
   touch-action: manipulation;
   -webkit-tap-highlight-color: transparent;
   font-weight: 500;
-  color: var(--gray500);
+  color: var(--gray-500);
 
   &::-moz-focus-inner {
     padding: 0;
@@ -49,13 +49,6 @@ SButton[keyboardFocused] {
   z-index: 1;
 }
 
-SButton[size='s'] {
-  height: 18px;
-  min-width: 18px;
-  border-radius: 2px;
-  font-size: 10px;
-}
-
 SButton[size='m'] {
   height: 28px;
   min-width: 28px;
@@ -70,112 +63,105 @@ SButton[size='l'] {
   font-size: 16px;
 }
 
-SButton[size='xl'] {
-  height: 48px;
-  min-width: 48px;
-  border-radius: var(--rounded-m);
-  font-size: 16px;
-}
-
 SButton[theme='primary-info'] {
   color: var(--white);
-  background-color: var(--light-blue);
+  background-color: var(--blue-400);
 
   &:hover {
-    background-color: var(--denim-blue);
+    background-color: var(--blue-500);
   }
 
   &:active,
   &[active] {
-    background-color: var(--blue600);
+    background-color: var(--blue-600);
   }
 }
 
 SButton[theme='primary-success'] {
   color: var(--white);
-  background-color: var(--green);
+  background-color: var(--green-400);
 
   &:hover {
-    background-color: var(--dark-green);
+    background-color: var(--green-500);
   }
 
   &:active,
   &[active] {
-    background-color: var(--green600);
+    background-color: var(--green-600);
   }
 }
 
 SButton[theme='primary-warning'] {
-  background-color: var(--orange);
-  color: #fff;
+  background-color: var(--orange-400);
+  color: var(--white);
 
   &:hover {
-    background-color: var(--dark-orange);
+    background-color: var(--orange-500);
   }
 
   &:active,
   &[active] {
-    background-color: color-mod(var(--dark-orange) shade(5%) saturation(+5%));
+    background-color: color-mod(var(--orange-500) shade(5%) saturation(+5%));
   }
 }
 
 SButton[theme='primary-danger'] {
-  background-color: var(--red);
-  color: #fff;
+  background-color: var(--red-400);
+  color: var(--white);
 
   &:hover {
-    background-color: var(--dark-red);
+    background-color: var(--red-500);
   }
 
   &:active,
   &[active] {
-    background-color: var(--red600);
+    background-color: var(--red-600);
   }
 }
 
 SButton[theme='primary-invert'] {
   background-color: #fff;
-  color: var(--gray20);
+  color: var(--gray-800);
 
   &:hover {
-    background-color: var(--gray96);
+    background-color: var(--gray-50);
   }
 
   &:active,
   &[active] {
-    background-color: var(--mercury);
+    background-color: var(--gray-100);
   }
 }
 
 SButton[theme='secondary-muted'] {
-  color: var(--gray60);
-  border-color: var(--stone-light);
-  background-color: color-mod(var(--wall) a(10%));
+  color: var(--gray-500);
+  border-color: var(--gray-200);
+  background-color: color-mod(var(--gray-400) a(10%));
 
   &:hover {
-    background-color: color-mod(var(--wall) a(20%));
-    color: var(--gray20);
+    background-color: color-mod(var(--gray-400) a(20%));
+    color: var(--gray-800);
   }
 
   &:active,
   &[active] {
-    background-color: color-mod(var(--wall) a(30%));
-    color: var(--gray20);
+    background-color: color-mod(var(--gray-400) a(30%));
+    color: var(--gray-800);
   }
 }
 
 SButton[theme='secondary-info'] {
-  background-color: color-mod(var(--light-blue) a(5%));
-  color: var(--light-blue);
-  border-color: var(--light-blue);
+  background-color: color-mod(var(--blue-400) a(5%));
+  color: var(--blue-400);
+  border-color: var(--blue-400);
 
   &:hover {
-    background-color: color-mod(var(--denim-blue) a(20%));
+    background-color: color-mod(var(--blue-500) a(20%));
   }
 
   &:active,
   &[active] {
-    background-color: color-mod(var(--denim-blue) a(30%));
+    background-color: color-mod(var(--blue-500) a(30%));
   }
 }
 
@@ -195,32 +181,32 @@ SButton[theme='secondary-invert'] {
 }
 
 SButton[theme='tertiary-info'] {
-  color: var(--denim-blue);
+  color: var(--blue-500);
   background-color: transparent;
 
   &:hover {
-    background-color: color-mod(var(--light-blue) a(20%));
+    background-color: color-mod(var(--blue-400) a(20%));
   }
 
   &:active,
   &[active] {
-    background-color: color-mod(var(--light-blue) a(30%));
+    background-color: color-mod(var(--blue-400) a(30%));
   }
 }
 
 SButton[theme='tertiary-muted'] {
-  color: var(--gray60);
+  color: var(--gray-500);
   background-color: transparent;
 
   &:hover {
-    background-color: color-mod(var(--wall) a(20%));
-    color: var(--gray20);
+    background-color: color-mod(var(--gray-400) a(20%));
+    color: var(--gray-800);
   }
 
   &:active,
   &[active] {
-    background-color: color-mod(var(--wall) a(30%));
-    color: var(--gray20);
+    background-color: color-mod(var(--gray-400) a(30%));
+    color: var(--gray-800);
   }
 }
 
@@ -299,48 +285,24 @@ SInner[loading] {
 
 SText {
   display: inline-flex;
-  line-height: 1.1;
-}
-
-SText[size='s'] {
-  margin-left: 4px;
-  margin-right: 4px;
 }
 
 SText[size='m'] {
   margin-left: 8px;
   margin-right: 8px;
+  line-height: var(--lh-200);
 }
 
 SText[size='l'] {
   margin-left: 12px;
   margin-right: 12px;
-}
-
-SText[size='xl'] {
-  margin-left: 12px;
-  margin-right: 12px;
+  line-height: var(--lh-300);
 }
 
 SAddon {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-}
-
-SAddon[size='s'] {
-  &:not(:only-child):first-child {
-    margin-left: 4px;
-  }
-
-  &:not(:only-child):last-child {
-    margin-right: 4px;
-  }
-
-  &:only-child {
-    margin-left: -2px;
-    margin-right: -2px;
-  }
 }
 
 SAddon[size='m'] {
@@ -370,20 +332,5 @@ SAddon[size='l'] {
   &:only-child {
     margin-left: -4px;
     margin-right: -4px;
-  }
-}
-
-SAddon[size='xl'] {
-  &:not(:only-child):first-child {
-    margin-left: 12px;
-  }
-
-  &:not(:only-child):last-child {
-    margin-right: 12px;
-  }
-
-  &:only-child {
-    margin-left: -6px;
-    margin-right: -6px;
   }
 }
