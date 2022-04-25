@@ -21,8 +21,11 @@ esbuild
       plugins: [
         esbuildPluginPlaygroundsLoader('./examples'),
         esbuildPluginSemcoreSourcesResolve(),
-        esbuildPluginSemcore(/semcore|tools/, /tools\/playground/),
+        esbuildPluginSemcore(/semcore|tools/, /(tools\/playground)|node_modules/),
       ],
+      loader: {
+        '.svg': 'file',
+      },
     },
   )
   .then(() => {
