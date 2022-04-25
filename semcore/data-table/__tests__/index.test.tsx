@@ -685,6 +685,50 @@ describe('DataTable', () => {
     expect(await snapshot(component)).toMatchImageSnapshot();
   });
 
+  test('Hover of grouped rows', async () => {
+    const data = [
+      {
+        keyword: 'www.ebay.com',
+        [ROW_GROUP]: [
+          {
+            kd: '11.2',
+          },
+          {
+            kd: '10',
+          },
+        ],
+      },
+    ];
+
+    const component = (
+      <div style={{ width: 800 }}>
+        <DataTable data={data}>
+          <DataTable.Head>
+            <DataTable.Column name="keyword" children="Keyword" />
+            <DataTable.Column name="kd" children="KD,%" />
+          </DataTable.Head>
+          <DataTable.Body />
+        </DataTable>
+      </div>
+    );
+
+    expect(
+      await snapshot(component, {
+        actions: {
+          hover: '[data-ui-name="DefinitionTable.Body"] [data-ui-name="Flex"]',
+        },
+      }),
+    ).toMatchImageSnapshot();
+    expect(
+      await snapshot(component, {
+        actions: {
+          hover:
+            '[data-ui-name="DefinitionTable.Body"] [data-ui-name="group-cell"] [data-ui-name="Flex"]',
+        },
+      }),
+    ).toMatchImageSnapshot();
+  });
+
   test('a11y', async () => {
     const { container } = render(
       <DataTable data={[{ keyword: 123 }]}>
