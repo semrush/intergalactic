@@ -51,7 +51,8 @@
       "error",
       "never",
       {
-        "json": "always"
+        "json": "always",
+        "svg": "always"
       }
     ],
     "import/prefer-default-export": "off",

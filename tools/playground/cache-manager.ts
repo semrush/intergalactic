@@ -9,6 +9,8 @@ import {
 import { relative as resolveRelativePath, resolve as resolvePath } from 'path';
 import { createHash } from 'crypto';
 
+const verbose = false;
+
 const hashString = (str: string) => createHash('md5').update(str).digest('hex');
 
 const fsExists = async (path: string) => {
@@ -82,6 +84,13 @@ export const makeCacheManager = (id: string, cwd = '.', cacheTtl = 1000 * 60 * 6
         );
       }
 
+      if (verbose) {
+        // eslint-disable-next-line no-console
+        console.info(
+          `Removing ${longUnusedFiles.length} long unused files and ${unknownFiles.length} unknown files from cache dir (${cacheDir})`,
+        );
+      }
+
       await Promise.all(
         [...longUnusedFiles, ...unknownFiles].map(async (fileName) => {
           if (fileName === '.' || fileName === '..') return;
@@ -91,10 +100,19 @@ export const makeCacheManager = (id: string, cwd = '.', cacheTtl = 1000 * 60 * 6
       );
     },
     reset: async () => {
+      if (verbose) {
+        // eslint-disable-next-line no-console
+        console.info(`Resetting cache dir (${cacheDir})`);
+      }
       await removeFile(cacheDir, { recursive: true, force: true });
       await ensureDir(cacheDir);
     },
     hasInCache: async (filePath: string) => {
+      const timeLabel = `Reading from cache of ${filePath}`;
+      if (verbose) {
+        // eslint-disable-next-line no-console
+        console.time(timeLabel);
+      }
       const relativePath = resolveRelativePath(cwd, filePath);
       const cacheFileName = relativePath.split('/').join('_');
       const cachedContentsFilePath = resolvePath(cacheDir, cacheFileName + '_contents');
@@ -131,6 +149,13 @@ export const makeCacheManager = (id: string, cwd = '.', cacheTtl = 1000 * 60 * 6
         return null;
       }
 
+      if (verbose) {
+        // eslint-disable-next-line no-console
+        console.timeEnd(timeLabel);
+        // eslint-disable-next-line no-console
+        console.info(`Using ${filePath} from cache`);
+      }
+
       await writeFile(cachedLastUseFilePath, Date.now().toString());
       return await readFile(cachedContentsFilePath, 'utf-8');
     },
@@ -143,6 +168,11 @@ export const makeCacheManager = (id: string, cwd = '.', cacheTtl = 1000 * 60 * 6
       const impDepsFilePath = resolvePath(cacheDir, cacheFileName + '_imp_deps');
 
       const hashSum = await hashFiles([filePath, ...implicitDependencies]);
+
+      if (verbose) {
+        // eslint-disable-next-line no-console
+        console.info(`Added ${filePath} to cache`);
+      }
 
       await Promise.all([
         await writeFile(cachedContentsFilePath, content),

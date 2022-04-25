@@ -3,6 +3,7 @@ import { useLocationHash } from './useLocationHash';
 // eslint-disable-next-line import/no-unresolved
 import { playgrounds } from '@playgrounds';
 import './nav.css';
+import LogoImage from '../../../../website/client/static/illustration/whale.svg';
 
 export const Nav: React.FC = () => {
   const [currentPlayground, setPlayground] = useLocationHash();
@@ -17,7 +18,11 @@ export const Nav: React.FC = () => {
 
   return (
     <nav className="intergalactic-playground_nav">
-      <div className="intergalactic-playground_logo" onClick={goHome} />
+      <div
+        className="intergalactic-playground_logo"
+        style={{ backgroundImage: LogoImage }}
+        onClick={goHome}
+      />
       <h1 className="intergalactic-playground_title" onClick={goHome}>
         Intergalactic playground
       </h1>
