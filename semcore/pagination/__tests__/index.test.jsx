@@ -1,6 +1,7 @@
 import React from 'react';
 import { testing, snapshot, shared as testsShared } from '@semcore/jest-preset-ui';
 const { render, fireEvent, cleanup, axe } = testing;
+import Return from '@semcore/icon/Return/m';
 
 const { shouldSupportClassName, shouldSupportRef } = testsShared;
 import Pagination from '../src';
@@ -200,6 +201,26 @@ describe('Pagination.PageInput', () => {
       </snapshot.ProxyProps>
     );
     expect(await snapshot(component)).toMatchImageSnapshot();
+  });
+
+  test('Should not cut up to 4 digits', async () => {
+    const component = (
+      <snapshot.ProxyProps style={{ margin: 5 }}>
+        <Pagination currentPage={1234} totalPages={1234}>
+          <Pagination.PageInput>
+            <Pagination.PageInput.Value id="page-number" />
+            <Pagination.PageInput.Addon tag={Return} interactive />
+          </Pagination.PageInput>
+        </Pagination>
+      </snapshot.ProxyProps>
+    );
+    expect(
+      await snapshot(component, {
+        actions: {
+          focus: '#page-number',
+        },
+      }),
+    ).toMatchImageSnapshot();
   });
 });
 
