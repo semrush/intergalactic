@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.1.0] - 2022-04-25
+
+### Fixed
+
+- Fixed scollable spin-container (e.g. in `data-table`).
+
 ## [5.0.5] - 2022-04-03
 
 ### Changed
