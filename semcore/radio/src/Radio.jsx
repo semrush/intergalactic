@@ -1,19 +1,12 @@
 import React from 'react';
 import createComponent, { Component, CONTEXT_COMPONENT, sstyled, Root } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
-import { Text as TypographyText } from '@semcore/typography';
 import assignProps from '@semcore/utils/lib/assignProps';
 import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 import resolveColor from '@semcore/utils/lib/color';
 import getInputProps, { inputProps } from '@semcore/utils/lib/inputProps';
 
 import style from './style/radio.shadow.css';
-
-const SIZE_TEXT_MAP = {
-  xl: 300,
-  l: 200,
-  m: 100,
-};
 
 class RadioGroupRoot extends Component {
   static displayName = 'RadioGroup';
@@ -81,7 +74,7 @@ class Radio extends Component {
     // The default values are here, since you cannot rewrite out of context
     const { size = 'm' } = assignProps(this.props, this.context);
     return {
-      size: SIZE_TEXT_MAP[size],
+      size: size,
     };
   }
 
@@ -117,16 +110,11 @@ class Value extends Component {
     const { forwardRef, styles, includeInputProps, state, theme } = this.asProps;
 
     const [controlProps, boxProps] = getInputProps(this.asProps, includeInputProps);
-    let color = '';
-
-    if (theme && state !== 'invalid') {
-      color = resolveColor(theme);
-    }
 
     return sstyled(styles)(
       <>
         <SControl tag="input" type="radio" {...controlProps} />
-        <SValue ref={forwardRef} use:theme={color} {...boxProps} />
+        <SValue ref={forwardRef} use:theme={resolveColor(theme)} {...boxProps} />
       </>,
     );
   }
@@ -135,7 +123,7 @@ class Value extends Component {
 function Text(props) {
   const SText = Root;
   const { styles } = props;
-  return sstyled(styles)(<SText render={TypographyText} />);
+  return sstyled(styles)(<SText render={Box} />);
 }
 
 export { inputProps, RadioGroup };

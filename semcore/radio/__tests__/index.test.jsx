@@ -33,16 +33,20 @@ describe('Radio', () => {
   test('Should support sizes', async () => {
     const component = (
       <snapshot.ProxyProps m="5px">
-        <Radio size="xl">
-          <Radio.Value />
-          <Radio.Text>Test quest</Radio.Text>
-        </Radio>
         <Radio size="l">
           <Radio.Value />
           <Radio.Text>Test quest</Radio.Text>
         </Radio>
         <Radio size="m">
           <Radio.Value />
+          <Radio.Text>Test quest</Radio.Text>
+        </Radio>
+        <Radio size="l">
+          <Radio.Value checked />
+          <Radio.Text>Test quest</Radio.Text>
+        </Radio>
+        <Radio size="m">
+          <Radio.Value checked />
           <Radio.Text>Test quest</Radio.Text>
         </Radio>
       </snapshot.ProxyProps>
@@ -98,6 +102,27 @@ describe('Radio', () => {
         </Radio>
         <Radio state="invalid">
           <Radio.Value checked keyboardFocused />
+        </Radio>
+      </snapshot.ProxyProps>
+    );
+
+    expect(await snapshot(component)).toMatchImageSnapshot();
+  });
+
+  test('Should support theme', async () => {
+    const component = (
+      <snapshot.ProxyProps m="5px">
+        <Radio theme="yellow-400">
+          <Radio.Value />
+        </Radio>
+        <Radio theme="yellow-400">
+          <Radio.Value checked />
+        </Radio>
+        <Radio state="invalid" theme="yellow-400">
+          <Radio.Value />
+        </Radio>
+        <Radio state="invalid" theme="yellow-400">
+          <Radio.Value checked />
         </Radio>
       </snapshot.ProxyProps>
     );
@@ -180,14 +205,6 @@ describe('RadioGroup', () => {
   test('Should support sizes', async () => {
     const component = (
       <snapshot.ProxyProps m="5px">
-        <RadioGroup size="xl">
-          <Radio>
-            <Radio.Value />
-          </Radio>
-          <Radio>
-            <Radio.Value />
-          </Radio>
-        </RadioGroup>
         <RadioGroup size="l">
           <Radio>
             <Radio.Value />
@@ -217,7 +234,7 @@ describe('RadioGroup', () => {
           <Radio>
             <Radio.Value />
           </Radio>
-          <Radio size="xl">
+          <Radio size="l">
             <Radio.Value />
           </Radio>
         </RadioGroup>

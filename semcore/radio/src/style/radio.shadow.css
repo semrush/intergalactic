@@ -17,13 +17,24 @@ SText {
   margin-left: 8px;
 }
 
+SText[size='m'] {
+  font-size: var(--fs-200);
+  line-height: var(--lh-200);
+}
+
+SText[size='l'] {
+  font-size: var(--fs-300);
+  line-height: var(--lh-300);
+}
+
 SValue {
   position: relative;
   flex-shrink: 0;
-  margin: 0;
   padding: 0;
   outline: none;
   z-index: 0;
+
+  margin-top: 2px;
 
   &::before {
     content: '';
@@ -52,30 +63,22 @@ SValue {
   }
 }
 
-SValue[size='xl'] {
-  margin-top: 2px;
+SValue[size='m'] {
+  width: 16px;
+  height: 16px;
+}
+
+SValue[size='l'] {
   width: 20px;
   height: 20px;
 }
 
-SValue[size='l'] {
-  margin-top: 2px;
-  width: 16px;
-  height: 16px;
-}
-
-SValue[size='m'] {
-  margin-top: 2px;
-  width: 16px;
-  height: 16px;
-}
-
 SValue[state='normal']::before {
-  border-color: var(--stone-light);
+  border-color: var(--gray-200);
 }
 
 SValue[state='invalid']::before {
-  border-color: var(--red);
+  border-color: var(--red-400);
 }
 
 SControl {
@@ -84,23 +87,18 @@ SControl {
 }
 
 SControl:checked ~ SValue::before {
-  border-color: var(--light-blue);
-  background-color: var(--light-blue);
-}
-
-SControl:checked ~ SValue[size='xl']::after {
-  width: 8px;
-  height: 8px;
-}
-
-SControl:checked ~ SValue[size='l']::after {
-  width: 6px;
-  height: 6px;
+  border-color: var(--blue-400);
+  background-color: var(--blue-400);
 }
 
 SControl:checked ~ SValue[size='m']::after {
   width: 6px;
   height: 6px;
+}
+
+SControl:checked ~ SValue[size='l']::after {
+  width: 8px;
+  height: 8px;
 }
 
 SValue[state='normal'][keyboardFocused]::before {
@@ -109,13 +107,14 @@ SValue[state='normal'][keyboardFocused]::before {
 }
 
 SValue[state='invalid'][keyboardFocused]::before {
-  box-shadow: 0 0 0 3px color-mod(var(--red) a(20%));
+  box-shadow: 0 0 0 3px var(--keyboard-focus-invalid);
 }
 
 SControl:checked ~ SValue[theme]::before {
   border-color: var(--theme);
   background-color: var(--theme);
 }
+
 SValue[state='normal'][theme]::before {
   border-color: var(--theme);
 }
