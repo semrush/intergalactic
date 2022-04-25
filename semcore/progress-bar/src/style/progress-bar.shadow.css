@@ -12,12 +12,12 @@ SValue {
   left: 0;
   background-image: linear-gradient(
     -45deg,
-    color-mod(var(--green) shade(10%)) 25%,
-    var(--green) 0,
-    var(--green) 50%,
-    color-mod(var(--green) shade(10%)) 0,
-    color-mod(var(--green) shade(10%)) 76%,
-    var(--green) 0
+    color-mod(var(--green-400) shade(10%)) 25%,
+    var(--green-400) 0,
+    var(--green-400) 50%,
+    color-mod(var(--green-400) shade(10%)) 0,
+    color-mod(var(--green-400) shade(10%)) 76%,
+    var(--green-400) 0
   );
   overflow: hidden;
 
@@ -55,7 +55,7 @@ SProgressBar[theme='dark'] {
 }
 
 SProgressBar[theme='invert'] {
-  background-color: var(--mercury);
+  background-color: var(--gray-100);
 }
 
 @keyframes loading {
@@ -70,12 +70,12 @@ SProgressBar[theme='invert'] {
 SProgressBar[animation] {
   background-image: linear-gradient(
     -45deg,
-    color-mod(var(--mercury) shade(10%)) 25%,
-    var(--mercury) 0,
-    var(--mercury) 50%,
-    color-mod(var(--mercury) shade(10%)) 0,
-    color-mod(var(--mercury) shade(10%)) 76%,
-    var(--mercury) 0
+    color-mod(var(--gray-100) shade(10%)) 25%,
+    var(--gray-100) 0,
+    var(--gray-100) 50%,
+    color-mod(var(--gray-100) shade(10%)) 0,
+    color-mod(var(--gray-100) shade(10%)) 76%,
+    var(--gray-100) 0
   );
   animation-name: loading;
   animation-timing-function: linear;
@@ -83,10 +83,8 @@ SProgressBar[animation] {
 }
 
 SProgressBar[theme='custom'] {
-  background-color: var(--backgroundColor);
-}
-SProgressBar[theme='custom'] {
-  background-image: var(--backgroundColor);
+  background-color: var(--сolorBg);
+  background-image: var(--сolorBg);
 }
 SProgressBar[animation] {
   animation-duration: var(--duration);
@@ -97,8 +95,8 @@ SValue {
   animation-duration: var(--duration);
 }
 SValue[theme] {
-  background-color: var(--backgroundColor);
-  background-image: var(--backgroundColor);
+  background-color: var(--сolorBg);
+  background-image: var(--сolorBg);
 }
 
 @media (prefers-reduced-motion) {
