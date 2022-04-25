@@ -3,55 +3,107 @@ import createComponent, { Component, sstyled, Root } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
 import resolveColor, { opacity } from '@semcore/utils/lib/color';
 import addonTextChildren from '@semcore/utils/lib/addonTextChildren';
+import logger from '@semcore/utils/lib/logger';
 import CloseM from '@semcore/icon/Close/m';
 
 import style from './style/tag.shadow.css';
 
-function isCustomTheme(use, theme) {
-  const type = {
-    primary: ['muted', 'invert', 'warning'],
-    secondary: ['muted', 'invert'],
+function getPrimaryColors(color) {
+  const TEXT_BG_PRIMARY_MAP = {
+    'gray-500': 'gray-100',
+    'blue-500': 'blue-100',
+    'green-500': 'green-100',
+    'salad-500': 'salad-100',
+    'orange-500': 'orange-100',
+    'yellow-500': 'yellow-100',
+    'red-500': 'red-100',
+    'pink-500': 'pink-100',
+    'violet-500': 'violet-100',
   };
-  return type[use] ? !type[use].includes(theme) : true;
+
+  return {
+    colorBg: opacity(resolveColor(TEXT_BG_PRIMARY_MAP[color]), 0.5),
+    colorBgHover: resolveColor(TEXT_BG_PRIMARY_MAP[color]),
+    colorText: resolveColor(color),
+  };
 }
 
-function getThemeName(use, theme) {
-  return isCustomTheme(use, theme) ? 'custom' : `${use}-${theme}`;
+function getSecondaryColors(color) {
+  const TEXT_BG_HOVER_SECONDARY_MAP = {
+    'gray-500': 'gray-50',
+    'blue-500': 'blue-50',
+    'green-500': 'green-50',
+    'salad-500': 'salad-50',
+    'orange-500': 'orange-50',
+    'yellow-500': 'yellow-50',
+    'red-500': 'red-50',
+    'pink-500': 'pink-50',
+    'violet-500': 'violet-50',
+  };
+  const TEXT_BORDER_SECONDARY_MAP = {
+    'gray-500': 'gray-200',
+    'blue-500': 'blue-200',
+    'green-500': 'green-200',
+    'salad-500': 'salad-200',
+    'orange-500': 'orange-200',
+    'yellow-500': 'yellow-200',
+    'red-500': 'red-200',
+    'pink-500': 'pink-200',
+    'violet-500': 'violet-200',
+  };
+  return {
+    colorBg: resolveColor('white'),
+    colorBgHover: resolveColor(TEXT_BG_HOVER_SECONDARY_MAP[color]),
+    colorText: resolveColor(color),
+    colorBorder: resolveColor(TEXT_BORDER_SECONDARY_MAP[color]),
+  };
 }
 
 class RootTag extends Component {
   static displayName = 'Tag';
   static style = style;
   static defaultProps = {
-    use: 'secondary',
-    theme: 'muted',
+    theme: 'secondary',
+    color: 'gray-500',
     size: 'm',
   };
 
-  getCloseProps() {
-    const { use, theme } = this.asProps;
-    return { use, theme };
+  constructor(props) {
+    super(props);
+
+    logger.warn(
+      props.use,
+      `Property 'use' is deprecated, replace property to "theme='${props.use}-${props.theme}'"`,
+      props['data-ui-name'] || Tag.displayName,
+    );
+  }
+
+  getCircleProps() {
+    const { size } = this.asProps;
+    return { size };
   }
 
   render() {
     const STag = Root;
-    let { Children, styles, theme, use, color, interactive, disabled, addonLeft, addonRight } =
+    const { Children, styles, theme, color, interactive, disabled, addonLeft, addonRight } =
       this.asProps;
 
-    if (disabled) {
-      interactive = false;
+    let colors = {};
+    if (theme === 'primary') {
+      colors = getPrimaryColors(color);
     }
-
-    const colorTag = theme ? opacity(resolveColor(theme), 0.5) : '';
-    const colorText = color ? resolveColor(color) : resolveColor(theme);
+    if (theme === 'secondary') {
+      colors = getSecondaryColors(color);
+    }
 
     return sstyled(styles)(
       <STag
         render={Box}
-        use:theme={getThemeName(use, theme)}
-        use:interactive={interactive}
-        colorText={colorText}
-        colorTag={colorTag}
+        use:interactive={!disabled && interactive}
+        colorBg={colors.colorBg}
+        colorBgHover={colors.colorBgHover}
+        colorText={colors.colorText}
+        colorBorder={colors.colorBorder}
       >
         {addonLeft ? <Tag.Addon tag={addonLeft} /> : null}
         {addonTextChildren(Children, Tag.Text, Tag.Addon)}
@@ -69,9 +121,9 @@ function Text(props) {
 
 function Close(props) {
   const SClose = Root;
-  const { styles, use, theme } = props;
+  const { styles } = props;
 
-  return sstyled(styles)(<SClose render={Box} use:theme={getThemeName(use, theme)} tag={CloseM} />);
+  return sstyled(styles)(<SClose render={Box} tag={CloseM} interactive />);
 }
 
 function Addon(props) {
