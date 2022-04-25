@@ -3,9 +3,19 @@ import { CProps, ReturnEl, PropGetterFn } from '@semcore/core';
 import { IBoxProps } from '@semcore/flex-box';
 import { IIconProps } from '@semcore/icon';
 
-export type TagSize = 'xl' | 'l' | 'm' | 's';
-export type TagTheme = 'muted' | 'invert' | 'warning' | string;
-export type TagUse = 'primary' | 'secondary' | 'custom';
+export type TagSize = 'xl' | 'l' | 'm';
+export type TagThemeOld = 'muted' | 'info' | 'success' | 'warning' | 'danger' | 'invert';
+export type TagTheme =
+  | 'primary-muted'
+  | 'primary-info'
+  | 'primary-success'
+  | 'primary-warning'
+  | 'primary-danger'
+  | 'primary-invert'
+  | 'secondary-muted'
+  | 'secondary-invert'
+  | (string & TagThemeOld);
+export type TagUse = 'primary' | 'secondary';
 
 export interface ITagProps extends IBoxProps {
   /** Value responsible for tag availability
@@ -19,6 +29,7 @@ export interface ITagProps extends IBoxProps {
   interactive?: boolean;
   /** Tag type
    * @default secondary
+   * @deprecated {@link ITagProps.theme}
    */
   use?: TagUse;
   /** Tag theme, there are several default themes or you can use your color
