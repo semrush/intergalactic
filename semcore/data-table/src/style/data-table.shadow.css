@@ -149,8 +149,9 @@ SRow {
 }
 
 /* DEFAULT THEME */
-SRow[active] SCell:not([theme]),
-SRow:hover SCell:not([theme]) {
+SRow[active] > SCell:not([theme]),
+SRow:hover > SCell:not([theme]),
+SRow SCell:hover + SGroupCell SCell:not([theme]) {
   background-color: #f6f7f7;
 }
 
@@ -159,9 +160,10 @@ SRow[theme='muted'] SCell:not([theme]) {
   background-color: #f2f3f4;
 }
 
-SRow:hover SCell[theme='muted'],
-SRow[theme='muted'][active] SCell:not([theme]),
-SRow[theme='muted']:hover SCell:not([theme]) {
+SRow:hover > SCell[theme='muted'],
+SRow[theme='muted'][active] > SCell:not([theme]),
+SRow[theme='muted']:hover > SCell:not([theme]),
+SRow[theme='muted'] SCell:hover + SGroupCell SCell:not([theme]) {
   background-color: #f6f7f7;
 }
 
@@ -170,9 +172,10 @@ SRow[theme='info'] SCell:not([theme]) {
   background-color: color-mod(var(--light-blue) blend(#fff 80%));
 }
 
-SRow:hover SCell[theme='info'],
-SRow[theme='info'][active] SCell:not([theme]),
-SRow[theme='info']:hover SCell:not([theme]) {
+SRow:hover > SCell[theme='info'],
+SRow[theme='info'][active] > SCell:not([theme]),
+SRow[theme='info']:hover > SCell:not([theme]),
+SRow[theme='info'] SCell:hover + SGroupCell SCell:not([theme]) {
   background-color: color-mod(var(--light-blue) blend(#fff 75%));
 }
 
@@ -181,9 +184,10 @@ SRow[theme='success'] SCell:not([theme]) {
   background-color: color-mod(var(--green) blend(#fff 85%));
 }
 
-SRow:hover SCell[theme='success'],
-SRow[theme='success'][active] SCell:not([theme]),
-SRow[theme='success']:hover SCell:not([theme]) {
+SRow:hover > SCell[theme='success'],
+SRow[theme='success'][active] > SCell:not([theme]),
+SRow[theme='success']:hover > SCell:not([theme]),
+SRow[theme='success'] SCell:hover + SGroupCell SCell:not([theme]) {
   background-color: color-mod(var(--green) blend(#fff 80%));
 }
 
@@ -192,9 +196,10 @@ SRow[theme='warning'] SCell:not([theme]) {
   background-color: color-mod(var(--light-orange) blend(#fff 85%));
 }
 
-SRow:hover SCell[theme='warning'],
-SRow[theme='warning'][active] SCell:not([theme]),
-SRow[theme='warning']:hover SCell:not([theme]) {
+SRow:hover > SCell[theme='warning'],
+SRow[theme='warning'][active] > SCell:not([theme]),
+SRow[theme='warning']:hover > SCell:not([theme]),
+SRow[theme='warning'] SCell:hover + SGroupCell SCell:not([theme]) {
   background-color: color-mod(var(--light-orange) blend(#fff 80%));
 }
 
@@ -203,9 +208,10 @@ SRow[theme='danger'] SCell:not([theme]) {
   background-color: color-mod(var(--red) blend(#fff 90%));
 }
 
-SRow:hover SCell[theme='danger'],
-SRow[theme='danger'][active] SCell:not([theme]),
-SRow[theme='danger']:hover SCell:not([theme]) {
+SRow:hover > SCell[theme='danger'],
+SRow[theme='danger'][active] > SCell:not([theme]),
+SRow[theme='danger']:hover > SCell:not([theme]),
+SRow[theme='danger'] SCell:hover + SGroupCell SCell:not([theme]) {
   background-color: color-mod(var(--red) blend(#fff 85%));
 }
 

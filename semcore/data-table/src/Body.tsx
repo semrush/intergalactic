@@ -55,7 +55,12 @@ class Body extends Component<AsProps, State> {
     const { styles, columns, use } = this.asProps;
     return cells.map((cell) => {
       if (Array.isArray(cell)) {
-        return <div>{this.renderRows(cell as NestedCells[])}</div>;
+        const SGroupCell = 'div';
+        return sstyled(styles)(
+          <SGroupCell data-ui-name="group-cell">
+            {this.renderRows(cell as NestedCells[])}
+          </SGroupCell>,
+        );
       } else {
         const column = columns.find((c) => c.name === cell.name);
         const [name, value] = getFixedStyle(cell, columns);
