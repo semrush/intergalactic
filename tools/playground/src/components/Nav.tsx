@@ -20,7 +20,7 @@ export const Nav: React.FC = () => {
     <nav className="intergalactic-playground_nav">
       <div
         className="intergalactic-playground_logo"
-        style={{ backgroundImage: LogoImage }}
+        style={{ backgroundImage: `url(${LogoImage})` }}
         onClick={goHome}
       />
       <h1 className="intergalactic-playground_title" onClick={goHome}>
