@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.5.0] - 2022-04-25
+
+### Fixed
+
+- Fixed displaying of 2, 3 and 4 digit page number in focused pagination input.
+
 ## [2.4.4] - 2022-03-21
 
 ### Changed
