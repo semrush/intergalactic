@@ -35,7 +35,11 @@ SPageInputValue {
     clip: rect(1px, 1px, 1px, 1px);
     position: absolute;
   }
+  &:focus {
+    padding-right: 0;
+  }
   &:focus + * {
+    padding-left: 2px;
     visibility: visible;
     clip: initial;
     position: static;
