@@ -18,10 +18,6 @@ export interface IProgressBarProps extends IBoxProps {
    * @default 1000
    */
   duration?: number;
-  /** Sets an animated background
-   * @deprecated v2.0.0 {@link IProgressBarProps.value}
-   * */
-  animation?: boolean;
 }
 
 export interface IValueProps extends IBoxProps {
