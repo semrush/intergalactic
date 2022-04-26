@@ -1,3 +1,60 @@
+## [11.2.0] - 2022-04-26
+
+### @semcore/animation
+
+- **Added** Added `preserveNode` property.
+
+### @semcore/chart
+
+- **Fixed** Fixed lost typings of `@semcore/chart/utils/colors` utility.
+
+### @semcore/d3-chart
+
+- **Added** Added `<RadialTree />` chart.
+- **Fixed** Fixed left and right `<Axis.Title />` unexpected horizontal transition based on title characters count.
+
+### @semcore/data-table
+
+- **Fixed** Fixed package lost typings.
+- **Changed** Fixed grouped rows hover highlight.
+- **Added** Virtual scroll support.
+- **Changed** Internal enhances, rewritten from js to ts, render algorithmic performance increased.
+- **Fixed** Fixed uninitialized columns width from fixed size to equal flex-boxes.
+
+### @semcore/inline-edit
+
+- **Added** Introduced `<InlineEdit />` component.
+
+### @semcore/inline-input
+
+- **Changed** Changed `<InlineInput />` api to make it more consistent with other components.
+
+### @semcore/input-tags
+
+- **Changed** Deprecated `onAdd` callback property in favor of new `onAppend` one.
+- **Changed** Provided SyntheticEvents to second callbacks argument.
+
+### @semcore/pagination
+
+- **Fixed** Fixed displaying of 2, 3 and 4 digit page number in focused pagination input.
+
+### @semcore/scroll-area
+
+- **Fixed** Made `onScroll` property optional.
+- **Added** Added `onScroll` property.
+
+### @semcore/slider
+
+- **Fixed** Fixed types for `Slider.Knob` and `Slider.Bar`
+
+### @semcore/spin-container
+
+- **Fixed** Fixed scollable spin-container (e.g. in `data-table`).
+
+### @semcore/widget-empty
+
+- **Added** Added `radial-tree-chart` illustration.
+
 ## [11.1.1] - 2022-04-03
 
 ### @semcore/animation
