@@ -1,5 +1,5 @@
 import React from 'react';
-import { testing, shared as testsShared } from '@semcore/jest-preset-ui';
+import { testing, shared as testsShared, snapshot } from '@semcore/jest-preset-ui';
 const { cleanup, fireEvent, render, axe } = testing;
 
 const { shouldSupportClassName, shouldSupportRef } = testsShared;
@@ -66,6 +66,79 @@ describe('Modal', () => {
     expect(document.body).toHaveStyle('overflow: hidden');
     component.unmount();
     expect(document.body).not.toHaveStyle('overflow: hidden');
+  });
+
+  test('Should render correctly', async () => {
+    const component = (
+      <Modal disablePortal visible>
+        Test
+      </Modal>
+    );
+
+    expect(
+      await snapshot(component, {
+        selector: 'body',
+        width: 300,
+        height: 300,
+      }),
+    ).toMatchImageSnapshot();
+  });
+
+  test('Should support closable prop', async () => {
+    const component = (
+      <Modal closable={false} disablePortal visible>
+        Test
+      </Modal>
+    );
+
+    expect(
+      await snapshot(component, {
+        selector: 'body',
+        width: 300,
+        height: 300,
+      }),
+    ).toMatchImageSnapshot();
+  });
+
+  test('Should support hover close icon', async () => {
+    const component = (
+      <Modal closable={false} disablePortal visible>
+        Test
+        <Modal.Close id="icon" />
+      </Modal>
+    );
+
+    expect(
+      await snapshot(component, {
+        selector: 'body',
+        width: 300,
+        height: 300,
+        actions: {
+          hover: '#icon',
+        },
+      }),
+    ).toMatchImageSnapshot();
+  });
+
+  test('Should support nested modal', async () => {
+    const component = (
+      <Modal disablePortal visible>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias aperiam atque doloribus eius
+        est harum impedit in inventore iusto magnam molestias nesciunt nobis perferendis, quia sit.
+        Excepturi itaque officiis ullam?
+        <Modal disablePortal visible>
+          Test nested
+        </Modal>
+      </Modal>
+    );
+
+    expect(
+      await snapshot(component, {
+        selector: 'body',
+        width: 300,
+        height: 300,
+      }),
+    ).toMatchImageSnapshot();
   });
 
   test('a11y', async () => {

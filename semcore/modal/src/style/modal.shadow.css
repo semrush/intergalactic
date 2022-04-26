@@ -7,7 +7,7 @@ SWindow {
   box-sizing: border-box;
   margin: auto;
   padding: 40px;
-  box-shadow: 0 3px 8px rgba(25, 27, 35, 0.2);
+  box-shadow: 0 3px 8px color-mod(var(--gray-800) a(20%));
 
   &:focus {
     outline: none;
@@ -25,13 +25,13 @@ SOverlay {
   justify-content: center;
   align-items: center;
   padding: 40px;
-  background: rgba(25, 27, 35, 0.7);
+  background: color-mod(var(--gray-800) a(70%));
   overflow: auto;
   z-index: 10005;
   -webkit-overflow-scrolling: touch;
 
   & SOverlay {
-    background: rgba(25, 27, 35, 0.4);
+    background: color-mod(var(--gray-800) a(40%));
   }
 }
 
@@ -41,7 +41,8 @@ SClose {
   right: 0;
   top: 0;
   padding: 12px;
-  color: var(--stone);
+  margin: 3px;
+  color: var(--gray-300);
   cursor: pointer;
   z-index: 1;
   border: none;
@@ -49,7 +50,7 @@ SClose {
   outline: none;
 
   &:hover {
-    color: var(--wall);
+    color: var(--gray-400);
   }
 }
 
