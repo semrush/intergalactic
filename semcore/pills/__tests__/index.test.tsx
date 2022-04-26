@@ -13,7 +13,7 @@ describe('PillGroup', () => {
   test('Should support onChange callback', () => {
     const spy = jest.fn();
     const { getByTestId } = render(
-      <Pills value={1} onChange={spy}>
+      <Pills value={1 as Number} onChange={spy}>
         <Pills.Item value={1}>1</Pills.Item>
         <Pills.Item value={2}>1</Pills.Item>
         <Pills.Item value={3}>1</Pills.Item>
