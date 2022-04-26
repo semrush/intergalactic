@@ -43,7 +43,7 @@ If the links in the breadcrumbs don't fit (the screen is too small or the text i
 
 ![breadcrumbs ellipsis](static/ellipsis.png)
 
-@## Mechanics and states
+@## Interaction
 
 ![breadcrumbs hover](static/hover.png)
 

@@ -12,7 +12,7 @@ tabName: Design
 
 As a rule, the progress bar does not block working with the tool. The exception is the first launch of the tool when the data is partially displayed or not displayed at all.
 
-> 💡 This component is one of the components that displays the loading and response to user actions in the interface. For General rules for such components, see [Loading patterns](/patterns/loading-states/).
+> 💡 This component is one of the components that displays the loading and response to user actions in the interface. For general recommendations for such components, see [Loading patterns](/patterns/loading-states/).
 
 @## Appearance
 
@@ -107,7 +107,7 @@ When scrolling, the progress bar can be fixed at the upper margin. In this case,
 
 ![fixed progressbar](static/progressbar-sticky.png)
 
-> 💡 This component is one of the components that displays the loading and response to user actions in the interface. For General rules for such components, see [Loading patterns](/patterns/loading-states/).
+> 💡 This component is one of the components that displays the loading and response to user actions in the interface. For general recommendations for such components, see [Loading patterns](/patterns/loading-states/).
 
 @page progress-bar-api
 @page progress-bar-code

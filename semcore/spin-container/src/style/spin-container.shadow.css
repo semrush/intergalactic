@@ -4,6 +4,7 @@ SSpinContainer {
   z-index: 0;
   position: relative;
   display: block;
+  overflow: hidden;
 }
 
 SContent {

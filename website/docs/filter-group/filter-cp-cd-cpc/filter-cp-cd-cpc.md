@@ -3,7 +3,7 @@ title: Click Potential, Competitive Density, CPC
 tabName: Design
 ---
 
-> 💡 **General rules for filters are described in the [Filters, common rules guide](/filter-group/filter-rules/).**
+> 💡 **General recommendations for filters are described in the [Filters, common rules guide](/filter-group/filter-rules/).**
 >
 > **These filters are combined in one guide, since they differ only in the sorting parameter and the name.**
 >

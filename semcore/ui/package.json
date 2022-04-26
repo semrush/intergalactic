@@ -81,7 +81,8 @@
   "devDependencies": {
     "fs-extra": "9.0.1",
     "glob": "7.1.6",
-    "jest": "26.5.3"
+    "jest": "26.5.3",
+    "tsm": "2.2.1"
   },
   "jest": {
     "preset": "@semcore/jest-preset-ui"

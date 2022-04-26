@@ -11,7 +11,8 @@ import resolveColor from '@semcore/utils/lib/color';
 resolveColor('gray20'); // #333333
 ```
 
-> 🦄 Components that you can transfer colors to, such as [Tag](/components/tag/) or [Badge](/components/badge/), pass through this utility.
+> 🦄 Components that you can transfer colors to, such as [Tag](/components/tag/), [Badge](/components/badge/), etc.,
+> pass through this utility. (for example, `<Tag theme="gray20"/>`)
 
 Here is a simple example of using it.
 

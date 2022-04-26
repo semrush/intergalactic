@@ -85,6 +85,8 @@ For this type of charts, we do not show values for the intersection of categorie
 
 @## Edge cases
 
+Here you will find the states for some specific cases. All other "empty states" for widgets are specified in [Error & n/a widget states](/components/widget-empty/).
+
 | Case                                   | Description                                                                                                                                                                                                       | Appearance example                                                    |
 | -------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------- |
 | Outliers                               | To prevent small values from being lost under the large ones (outliers), the bubble has a minimum size — 11px \* 11px.                                                                                            | ![outliers](static/outliers-1.png) ![outliers](static/outliers-2.png) |

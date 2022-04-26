@@ -8,7 +8,7 @@ tabName: Design
 
 @## Description
 
-> 💡 This component is one of the components that displays the download and response to user actions in the interface. For general rules on such components, see the [Loading patterns](/patterns/loading-states/).
+> 💡 This component is one of the components that displays the download and response to user actions in the interface. For general recommendations on such components, see the [Loading patterns](/patterns/loading-states/).
 
 **Spin** is a component of the page, section or individual widget loading status for those cases when we do not know the exact time of data loading. To display it around any component, use [SpinContainer](/components/spin-container/).
 
@@ -58,7 +58,7 @@ The component has two themes — `dark` and `invert`. Custom colored spinners ar
 
 Remember that the page progress indicator should help the user to estimate the interface response time, i.e. how long he should wait for a certain result. Therefore, in cases where you don't know exactly how long it will take to load or it will be very long, it is recommended to add explanatory text to a spin, for example: **Loading...** etc.
 
-> 💡 This component is one of the components that displays the loading and response to user actions in the interface. For general rules on such components, see the [Loading patterns](/patterns/loading-states/).
+> 💡 This component is one of the components that displays the loading and response to user actions in the interface. For general recommendations on such components, see the [Loading patterns](/patterns/loading-states/).
 
 @page spin-api
 @page spin-changelog

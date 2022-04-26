@@ -1,6 +1,6 @@
 import React from 'react';
 import { CProps, ReturnEl } from '@semcore/core';
-import { IBoxProps } from '@semcore/flex-box';
+import { Box, IBoxProps } from '@semcore/flex-box';
 
 export interface ISliderProps extends IBoxProps {
   /** Numeric value
