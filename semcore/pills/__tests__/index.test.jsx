@@ -1,5 +1,8 @@
 import React from 'react';
 import { testing, snapshot } from '@semcore/jest-preset-ui';
+import Globe from '@semcore/icon/Globe/m';
+import Badge from '@semcore/badge';
+
 const { render, fireEvent, cleanup, axe } = testing;
 
 import Pills from '../src';
@@ -79,7 +82,7 @@ describe('PillGroup', () => {
     expect(spy).toHaveBeenCalledTimes(0);
   });
 
-  test('Should render correctly', async () => {
+  test('Should render correctly states', async () => {
     const component = (
       <snapshot.ProxyProps style={{ margin: 5 }}>
         <Pills value={1}>
@@ -131,57 +134,70 @@ describe('PillGroup', () => {
     expect(await snapshot(component)).toMatchImageSnapshot();
   });
 
-  test('Should support sizes', async () => {
-    const component = (
-      <snapshot.ProxyProps style={{ margin: 5 }}>
-        <Pills size="s">
-          <Pills.Item value={1}>Itemqr</Pills.Item>
-        </Pills>
+  test('Should support hover', async () => {
+    expect(
+      await snapshot(
         <Pills>
-          <Pills.Item value={1}>Itemqr</Pills.Item>
-        </Pills>
-        <Pills size="l">
-          <Pills.Item value={1}>Itemqr</Pills.Item>
-        </Pills>
-        <Pills size="xl">
-          <Pills.Item value={1}>Itemqr</Pills.Item>
-        </Pills>
-      </snapshot.ProxyProps>
-    );
-
-    expect(await snapshot(component)).toMatchImageSnapshot();
+          <Pills.Item id="item">Item 1</Pills.Item>
+          <Pills.Item>Item 2</Pills.Item>
+        </Pills>,
+        {
+          actions: {
+            hover: '#item',
+          },
+        },
+      ),
+    ).toMatchImageSnapshot();
+    expect(
+      await snapshot(
+        <Pills>
+          <Pills.Item id="item" selected>
+            Item 1
+          </Pills.Item>
+          <Pills.Item>Item 2</Pills.Item>
+        </Pills>,
+        {
+          actions: {
+            hover: '#item',
+          },
+        },
+      ),
+    ).toMatchImageSnapshot();
   });
 
-  test('Should support Addon for different sizes', async () => {
-    const PillsSize = ({ size = 'm', ...props }) => (
-      <Pills size={size} {...props}>
-        <Pills.Item value={1}>
-          <Pills.Item.Text>Itemqr</Pills.Item.Text>
-          <Pills.Item.Addon>Addon</Pills.Item.Addon>
+  test('Should support size with Addon', async () => {
+    const PillsSize = ({ size }) => (
+      <Pills size={size}>
+        <Pills.Item>
+          <Pills.Item.Addon>
+            <Globe />
+          </Pills.Item.Addon>
+          <Pills.Item.Text>Item 1</Pills.Item.Text>
+          <Pills.Item.Addon>
+            <Badge bg="orange">beta</Badge>
+          </Pills.Item.Addon>
         </Pills.Item>
-        <Pills.Item value={2}>
-          {size === 'xl' ? (
-            <Pills.Item.Addon>
-              <div style={{ width: '24px', height: '24px', background: 'orange' }} />
-            </Pills.Item.Addon>
-          ) : (
-            <Pills.Item.Addon>
-              <div style={{ width: '16px', height: '16px', background: 'orange' }} />
-            </Pills.Item.Addon>
-          )}
+        <Pills.Item>
+          <Pills.Item.Addon>
+            <Globe />
+          </Pills.Item.Addon>
+          <Pills.Item.Text>Item 2</Pills.Item.Text>
+        </Pills.Item>
+        <Pills.Item>
+          <Pills.Item.Text>Item 3</Pills.Item.Text>
+          <Pills.Item.Addon>
+            <Badge bg="orange">beta</Badge>
+          </Pills.Item.Addon>
+        </Pills.Item>
+        <Pills.Item>Item 4</Pills.Item>
+        <Pills.Item>
+          <Globe />
         </Pills.Item>
       </Pills>
     );
-    const component = (
-      <snapshot.ProxyProps style={{ margin: 5 }}>
-        <PillsSize size="s" />
-        <PillsSize size="m" />
-        <PillsSize size="l" />
-        <PillsSize size="xl" />
-      </snapshot.ProxyProps>
-    );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    expect(await snapshot(<PillsSize size="m" />)).toMatchImageSnapshot();
+    expect(await snapshot(<PillsSize size="l" />)).toMatchImageSnapshot();
   });
 
   test('Should correct render for different number Items', async () => {
