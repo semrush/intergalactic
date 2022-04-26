@@ -3,7 +3,7 @@
 SLink {
   display: inline-block;
   font-family: inherit;
-  color: var(--denim-blue);
+  color: var(--blue-500);
   line-height: normal;
   position: relative;
   cursor: pointer;
@@ -35,7 +35,7 @@ SLink {
   &[active],
   &:hover,
   &:active {
-    color: var(--blue600);
+    color: var(--blue-600);
 
     & SText {
       border-color: currentColor;
@@ -60,7 +60,7 @@ SLink[noWrapText] {
 SLink {
   &[enableVisited]:visited,
   &[enableVisited]:visited:hover {
-    color: var(--dark-violet);
+    color: var(--violet-500);
   }
 }
 
@@ -93,8 +93,6 @@ SText {
 }
 
 SLink[color] {
-  color: var(--colorText);
-
   &:hover {
     color: var(--colorHoverText);
   }

@@ -1,6 +1,6 @@
 import React from 'react';
 import { testing, snapshot, shared as testsShared } from '@semcore/jest-preset-ui';
-import propsForElement from '@semcore/utils/lib/propsForElement';
+import Calendar from '@semcore/icon/Calendar/m';
 const { cleanup, render, axe } = testing;
 const { shouldSupportClassName, shouldSupportRef } = testsShared;
 import Link from '../src';
@@ -42,15 +42,8 @@ describe('Link', () => {
   });
 
   test('Should support additional elements as props', async () => {
-    const Addon = React.forwardRef(function (p, ref) {
-      return (
-        <span ref={ref} {...propsForElement(p)}>
-          Addon prop
-        </span>
-      );
-    });
     const component = (
-      <Link addonLeft={Addon} addonRight={Addon}>
+      <Link addonLeft={Calendar} addonRight={Calendar}>
         Text
       </Link>
     );
@@ -68,9 +61,11 @@ describe('Link', () => {
       <snapshot.ProxyProps style={{ margin: 5 }}>
         <Link active>Link</Link>
         <Link active>
-          <Link.Addon>ICON</Link.Addon>
+          <Link.Addon tag={Calendar} />
           <Link.Text>Link</Link.Text>
-          <Link.Addon>ICON</Link.Addon>
+          <Link.Addon>
+            <Calendar />
+          </Link.Addon>
         </Link>
         <Link disabled>Link</Link>
         <Link keyboardFocused>Link</Link>
@@ -111,9 +106,35 @@ describe('Link', () => {
     expect(await snapshot(component)).toMatchImageSnapshot();
   });
 
+  test('Should support hover', async () => {
+    const component = <Link id="link">Link</Link>;
+    expect(
+      await snapshot(component, {
+        actions: {
+          hover: '#link',
+        },
+      }),
+    ).toMatchImageSnapshot();
+  });
+
   test('Should support custom color', async () => {
-    const component = <Link color="purple">Link</Link>;
+    const component = <Link color="salad-400">Link</Link>;
     expect(await snapshot(component)).toMatchImageSnapshot();
+  });
+
+  test('Should support hover custom color', async () => {
+    const component = (
+      <Link id="link" color="salad-400">
+        Link
+      </Link>
+    );
+    expect(
+      await snapshot(component, {
+        actions: {
+          hover: '#link',
+        },
+      }),
+    ).toMatchImageSnapshot();
   });
 
   test('a11y', async () => {
