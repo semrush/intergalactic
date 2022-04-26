@@ -141,6 +141,42 @@ describe('Modal', () => {
     ).toMatchImageSnapshot();
   });
 
+  test('Should support small viewport', async () => {
+    const component = (
+      <Modal disablePortal visible>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque facilis laudantium nam
+        officiis ratione saepe. Asperiores atque eius enim error fuga impedit laudantium maxime
+        nulla quae quidem. Consequatur, dolorum, ducimus!
+      </Modal>
+    );
+
+    expect(
+      await snapshot(component, {
+        selector: 'body',
+        width: 300,
+        height: 400,
+      }),
+    ).toMatchImageSnapshot();
+  });
+
+  test('Should support big viewport', async () => {
+    const component = (
+      <Modal disablePortal visible>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque facilis laudantium nam
+        officiis ratione saepe. Asperiores atque eius enim error fuga impedit laudantium maxime
+        nulla quae quidem. Consequatur, dolorum, ducimus!
+      </Modal>
+    );
+
+    expect(
+      await snapshot(component, {
+        selector: 'body',
+        width: 800,
+        height: 300,
+      }),
+    ).toMatchImageSnapshot();
+  });
+
   test('a11y', async () => {
     const { container } = render(
       <Modal visible disablePortal>
