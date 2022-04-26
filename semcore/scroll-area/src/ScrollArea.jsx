@@ -7,7 +7,6 @@ import { Box } from '@semcore/flex-box';
 import trottle from '@semcore/utils/lib/rafTrottle';
 import { getNodeByRef } from '@semcore/utils/lib/ref';
 import { isAdvanceMode } from '@semcore/utils/lib/findComponent';
-import logger from '@semcore/utils/lib/logger';
 import { callAllEventHandlers } from '@semcore/utils/lib/assignProps';
 import BarRoot from './ScrollBar';
 
@@ -227,35 +226,3 @@ const ScrollAreaComponent = createComponent(ScrollAreaRoot, {
 });
 
 export default ScrollAreaComponent;
-
-const ScrollContainer = React.forwardRef(function (props, ref) {
-  logger.warn(
-    true,
-    "The named import 'import { ScrollContainer }' is deprecated, use the static method from the default 'import ScrollArea', '<ScrollArea.Container/>'",
-    props['data-ui-name'] || ScrollAreaComponent.Container.displayName,
-  );
-  return <ScrollAreaComponent.Container ref={ref} {...props} />;
-});
-ScrollContainer.displayName = ScrollAreaComponent.Container.displayName;
-
-const ScrollBar = React.forwardRef(function (props, ref) {
-  logger.warn(
-    true,
-    "The named import 'import { ScrollBar }' is deprecated, use the static method from the default 'import ScrollArea', '<ScrollArea.Bar/>'",
-    props['data-ui-name'] || ScrollAreaComponent.Bar.displayName,
-  );
-  return <ScrollAreaComponent.Bar ref={ref} {...props} />;
-});
-ScrollBar.displayName = ScrollAreaComponent.Bar.displayName;
-
-const ScrollArea = React.forwardRef(function (props, ref) {
-  logger.warn(
-    true,
-    "The named import 'import { ScrollArea }' is deprecated, use the default 'import ScrollArea'",
-    props['data-ui-name'] || ScrollAreaComponent.displayName,
-  );
-  return <ScrollAreaComponent ref={ref} {...props} />;
-});
-ScrollArea.displayName = ScrollAreaComponent.displayName;
-
-export { ScrollArea, ScrollBar, ScrollContainer };

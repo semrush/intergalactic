@@ -25,7 +25,6 @@ SSlider {
   cursor: pointer;
   width: 6px;
   height: 6px;
-
-  border-radius: 2px;
-  background-color: rgba(25, 27, 35, 0.3);
+  border-radius: 3px;
+  background-color: color-mod(var(--black) a(30%));
 }
