@@ -3,7 +3,7 @@ import { IBoxProps, IFlexProps } from '@semcore/flex-box';
 import { ITextProps } from '@semcore/typography';
 import { IKeyboardFocusProps } from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 
-export type CheckboxSize = 'm' | 'l' | 'xl';
+export type CheckboxSize = 'm' | 'l';
 export type CheckboxState = 'normal' | 'invalid';
 
 export interface ICheckboxProps extends IBoxProps {

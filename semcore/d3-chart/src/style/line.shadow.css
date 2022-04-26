@@ -20,7 +20,7 @@ SLine[hide] {
 
 SNull {
   fill: transparent;
-  stroke: var(--stone-light);
+  stroke: var(--gray-200);
   stroke-dasharray: 4;
 }
 

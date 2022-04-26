@@ -7,14 +7,14 @@ STooltip {
   position: relative;
   background-color: #fff;
   border-radius: 6px;
-  border: 1px solid var(--mercury);
+  border: 1px solid var(--gray-100);
   box-sizing: border-box;
   box-shadow: var(--box-shadow-popper);
   padding: 12px;
 }
 
 STitle {
-  color: var(--gray60);
+  color: var(--gray-500);
   margin-bottom: 8px;
 }
 

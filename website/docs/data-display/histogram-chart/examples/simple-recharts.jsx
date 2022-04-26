@@ -30,7 +30,7 @@ const Demo = () => (
         Domain Audience Age
       </Text>
       <Tooltip title="Average age of a researched domain’s audience">
-        <InfoXS color="#a6b0b3" cursor="help" />
+        <InfoXS color="gray-300" cursor="help" />
       </Tooltip>
     </Flex>
     <ResponsiveContainer height={200}>

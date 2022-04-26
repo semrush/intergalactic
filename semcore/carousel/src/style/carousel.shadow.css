@@ -34,17 +34,17 @@ SIndicator {
     width: 12px;
     height: 12px;
     border-radius: 50%;
-    background-color: color-mod(var(--stone) a(30%));
+    background-color: color-mod(var(--gray-300) a(30%));
   }
 
   &:hover::before {
-    background-color: color-mod(var(--stone) a(60%));
+    background-color: color-mod(var(--gray-300) a(60%));
   }
 }
 
 SIndicator[active] {
   &::before {
-    background-color: var(--stone);
+    background-color: var(--gray-300);
   }
 }
 

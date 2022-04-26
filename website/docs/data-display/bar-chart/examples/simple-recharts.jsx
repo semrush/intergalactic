@@ -37,7 +37,7 @@ export default () => (
         Branded traffic trend
       </Text>
       <Tooltip title={TooltipContent}>
-        <InfoXS color="#a6b0b3" cursor="help" />
+        <InfoXS color="gray-300" cursor="help" />
       </Tooltip>
     </Flex>
     <ResponsiveContainer height={100}>

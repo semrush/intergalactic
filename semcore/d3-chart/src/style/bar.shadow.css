@@ -17,5 +17,5 @@ SBar[hide] {
 }
 
 SBackground {
-  fill: var(--stone-light);
+  fill: var(--gray-200);
 }

@@ -84,7 +84,7 @@ const Demo = () => {
       <Flex mb={2} alignItems="center">
         <Card.Title hint="This is just an example of line chart">Chart heading</Card.Title>
         <Dropdown placement="bottom-end">
-          <Dropdown.Trigger tag={SettingsS} ml="auto" color="stone" interactive />
+          <Dropdown.Trigger tag={SettingsS} ml="auto" color="gray-300" interactive />
           <Dropdown.Popper>
             <Box p={3}>
               <Text size={100} bold mb={3}>

@@ -14,12 +14,12 @@ import { Flex } from '@semcore/flex-box';
 import { Text } from '@semcore/typography';
 
 const UI = styled.g`
-  fill: ${({ selected }) => (selected ? 'rgba(152, 170, 175, 0.2)' : 'rgba(0, 0, 0, 0)')};
+  fill: ${({ selected }) => (selected ? 'rgba(196, 199, 207, 0.3)' : 'rgba(0, 0, 0, 0)')};
   text {
-    fill: #757575;
+    fill: #6c6e79;
   }
   &:hover {
-    fill: #98aaaf;
+    fill: #a9abb6;
     text {
       fill: #fff;
     }

@@ -47,10 +47,10 @@ const Demo = () => {
         <Text tag="h3" size={400} medium mt={0} mx={0} mb={2}>
           Chart heading
           <Tooltip title="Awesome hint text">
-            <InfoXS ml="4px" color="stone" interactive />
+            <InfoXS ml="4px" color="gray-300" interactive />
           </Tooltip>
         </Text>
-        <SettingsS color="stone" interactive />
+        <SettingsS color="gray-300" interactive />
       </Flex>
       <Flex mt={3} alignItems="flex-start" justifyContent="flex-start" flexWrap={true}>
         <VennChart
