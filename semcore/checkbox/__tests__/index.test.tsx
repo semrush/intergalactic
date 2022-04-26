@@ -35,10 +35,6 @@ describe('Checkbox', () => {
   test('Should support sizes', async () => {
     const component = (
       <snapshot.ProxyProps m="5px">
-        <Checkbox size="xl">
-          <Checkbox.Value />
-          <Checkbox.Text>Label</Checkbox.Text>
-        </Checkbox>
         <Checkbox size="l">
           <Checkbox.Value />
           <Checkbox.Text>Label</Checkbox.Text>
