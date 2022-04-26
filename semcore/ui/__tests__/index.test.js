@@ -81,7 +81,7 @@ describe('Icon', () => {
   const rscIconsDir = path.resolve(__dirname, '../icon/lib');
 
   const isCopiedFile = (absolutePath) =>
-    ['/__tests__/', '/src/', '/svg/', '/svg-new/', 'es6', 'cjs', 'types', '/node_modules/'].every(
+    ['/__tests__/', '/src/', '/svg/', '/svg-new/', 'es6', 'cjs', 'types'].every(
       (ignorePath) =>
         !path.relative(path.resolve(__dirname, '../../..'), absolutePath).includes(ignorePath),
     );

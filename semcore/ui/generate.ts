@@ -1,7 +1,7 @@
 import { execSync } from 'child_process';
 import path from 'path';
 import fs from 'fs-extra';
-import glob from 'glob';
+import glob from 'fast-glob';
 import { fileURLToPath } from 'url';
 import { createRequire } from 'module';
 
@@ -26,15 +26,42 @@ const installComponents = (packages: string[]) => {
     cwd: dirname,
   });
 
-  const execOptions = { cwd: dirname };
-  execSync('mkdir -p ./node_modules/@semcore', execOptions);
-  const nestedNodeModules = execSync(
-    'find ./node_modules/@semcore -name "node_modules" -type d',
-    execOptions,
-  ).toString();
+  const nestedNodeModulesAllowList = {
+    // remove after external theme update (https://github.com/semrush/intergalactic/tree/feature/restyling) will be merged (approx may 10 2022)
+    './node_modules/@semcore/project-create/node_modules/final-form': '4.18.7',
+    './node_modules/@semcore/project-create/node_modules/react-final-form': '6.3.5',
+    './node_modules/@semcore/utils/node_modules/classnames': '2.3.1',
+    './node_modules/@semcore/chart/node_modules/@upsetjs/venn.js': '1.4.2',
+    // Exclude @semcore/chart from @semcore/ui and remove followings
+    './node_modules/@semcore/chart/node_modules/d3-selection': '3.0.0',
+    './node_modules/@semcore/d3-chart/node_modules/d3-array': '3.1.6',
+    './node_modules/@semcore/d3-chart/node_modules/d3-color': '3.1.0',
+    './node_modules/@semcore/d3-chart/node_modules/d3-interpolate': '3.0.1',
+    './node_modules/@semcore/d3-chart/node_modules/internmap': '2.0.3',
+  };
 
-  if (nestedNodeModules) {
-    throw new Error(`Nested node_modules found:\n${nestedNodeModules}`);
+  const nestedNodeModules = glob
+    .sync('**/node_modules/**/package.json', {
+      cwd: path.resolve(dirname, 'node_modules/@semcore'),
+    })
+    .map(
+      (packageFilePath) =>
+        './node_modules/@semcore/' +
+        packageFilePath.substring(0, packageFilePath.length - '/package.json'.length),
+    )
+    .map((relativePath) => {
+      const { version } = fs.readJsonSync(path.resolve(dirname, relativePath, 'package.json'));
+
+      return `${relativePath} @${version}`;
+    })
+    .filter((dependency) => {
+      const [relativePath, version] = dependency.split(' @');
+      if (!nestedNodeModulesAllowList[relativePath]) return true;
+      return nestedNodeModulesAllowList[relativePath] !== version;
+    });
+
+  if (nestedNodeModules.length > 0) {
+    throw new Error(`Nested node_modules found:\n- ${nestedNodeModules.join('\n- ')}\n`);
   }
 };
 
