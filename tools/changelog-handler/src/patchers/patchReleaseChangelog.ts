@@ -38,7 +38,8 @@ export const patchReleaseChangelog = async (previousVersionId: string) => {
   const previousVersion = releaseChangelog.changelogs[previousVersionIndex];
   const previousVersionDate = previousVersion?.date;
   const versionDate =
-    releaseChangelog.changelogs[previousVersionIndex - 1]?.date || dayjs().format('YYYY-MM-DD');
+    releaseChangelog.changelogs[previousVersionIndex - 1]?.date ||
+    dayjs().add(1, 'day').format('YYYY-MM-DD');
 
   const componentChanges = componentChangelogs.map(({ changelogs }) =>
     changelogs

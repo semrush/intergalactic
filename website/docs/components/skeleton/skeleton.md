@@ -99,7 +99,7 @@ If suddenly you need to show a "bone" instead of an icon, the size of "bone" wil
 
 ### Charts
 
-General rules:
+General recommendations:
 
 - Do not show axes and text to them.
 - The legend is replaced by a skeleton.
@@ -297,7 +297,7 @@ Load dropdowns and selects at once.
 
 It would be great to show the skeleton immediately without showing the [Spin](/components/spin/) before. The exception to this case is the initialization of the tool.
 
-> 💡 This component is one of the components that displays the download and reaction to user actions in the interface. For general rules on such components, see the [Loading patterns](/patterns/loading-states/).
+> 💡 This component is one of the components that displays the download and reaction to user actions in the interface. For general recommendations on such components, see the [Loading patterns](/patterns/loading-states/).
 
 @page skeleton-api
 @page skeleton-code

@@ -41,7 +41,9 @@ jobs:
           yarn build
       - name: build @semcore/ui
         run: |
-          yarn workspace @semcore/ui generate
+          cd semcore/ui
+          yarn install
+          yarn generate
       - name: NPM setup
         run: |
           echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" >> ".npmrc"
@@ -51,6 +53,12 @@ jobs:
           SCREENSHOT_URL: ${{ secrets.SCREENSHOT_URL }}
         run: |
           yarn pub --package ui --release current
+      - name: add github release record
+        run: |
+          version="$(cat semcore/ui/package.json | jq -r .version)"
+          git diff master --patch -- semcore/ui/CHANGELOG.md | grep '^+++' --invert-match | grep '^+' | cut -c 2- > .github-release-notes.txt
+          gh release create "v$version" --notes-file .github-release-notes.txt
+          rm .github-release-notes.txt
       - name: merge pull request
         run: |
           gh pr ready "${{ env.release_branch_name }}"

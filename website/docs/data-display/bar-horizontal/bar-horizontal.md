@@ -44,18 +44,18 @@ Important points to keep in mind when presenting data as a bar chart:
 
 ### Horizontal bar chart
 
-|                | Apperance example                           | Styles                                 |
+|                | Appearance example                          | Styles                                 |
 | -------------- | ------------------------------------------- | -------------------------------------- |
 | One category   | ![bar-chart one value](static/one-cat.png)  | `border-radius: 2px;`                  |
 | Two categories | ![bar-chart two values](static/two-cat.png) | The margin between two columns is 4px. |
 
-> 💡 If there are more than 2-3 categories, use a [Stacked horizontal bar chart](/data-display/stacked-horizontal-bar/) or try to present the data using a different type of chart.
+> 💡 If there are more than 3-4 categories, use a [Stacked horizontal bar chart](/data-display/stacked-horizontal-bar/) or try to present the data using a different type of chart.
 >
 > It is also a good solution to allow users to switch the chart type in the widget settings.
 
 @## Margins
 
-| Description                                                                                                | Apperance example                          |
+| Description                                                                                                | Appearance example                         |
 | ---------------------------------------------------------------------------------------------------------- | ------------------------------------------ |
 | `margin: 8px 0px;`                                                                                         | ![bar-chart margins](static/margins-1.png) |
 | The margin between categories and values on the Y-axis and bars is 16px. The margin between values is 8px. | ![bar-chart margins](static/margins-2.png) |
@@ -97,6 +97,8 @@ If the column is clickable, the cursor changes to `pointer`.
 | Chart with two or more categories | ![bar chart with two values and hover](static/hover-2.png) |
 
 @## Edge cases
+
+Here you will find the states for some specific cases. All other "empty states" for widgets are specified in [Error & n/a widget states](/components/widget-empty/).
 
 ### No more results
 

@@ -4,41 +4,59 @@ fileSource: card
 tabName: Design
 ---
 
+> In the last major update, component was divided into two parts: `Header` and `Body`. This was done to make it easier to use the restyling component. Also, `Card` now has a white background.
+
 @## Description
 
-**Card** is a component used for visually grouping other components into cards/blocks/widgets.
-
-> In the last major update, component was divided into two parts: `Header` and `Body`. This was done to make it easier to use the restyling component. Also, `Card` now has a white background.
+**Card** is a component used for visually grouping data and other components into widgets.
 
 @## Appearance
 
-This component always has internal margins. **By default: 24px**.
+The component consists of:
 
-![card with default paddings](static/card-paddings2.png)
+- Header (can have Title and Description inside)
+- [Divider](/components/divider/) (use only for big cards)
+- Body
 
-> 💡 However, if the card has a title, the upper margin should always be slightly smaller.
+| Size  | Example                                       |
+| ----- | --------------------------------------------- |
+| Small | ![small card scheme](static/card-scheme2.png) |
+| Big   | ![card scheme](static/card-scheme.png)        |
 
-This is necessary to visually compensate for the distance between the upper border and the line-height of the header.
+@## Card header
 
-![card with paddings](static/card-paddings.png)
+![card header paddings](static/card-paddings1.png)
 
-@## Title and additional information
+![card header margins](static/card-margins1.png)
 
-The card usually has a title.
+### Title and description
 
-The title may have a subhead-summary. It usually contains information about the extreme states of the data or an explanation of what the data is based on, etc. Or some interesting insight/advice on the visualized data.
+For the card title use 16px text (`--fs-300`, `--lh-300`) with `font-weight: 700`.
 
-![card with title and description](static/card-title-and-description.png)
+The card may have a description. It usually contains an explanation of what the data is based on, interesting insight/advice on the visualized data, etc.
 
-@## Mechanics and states
+@## Card body
+
+### Paddings and margins
+
+| Case  | Paddings                                         |
+| ----- | ------------------------------------------------ |
+| Chart | ![card body paddings](static/card-paddings2.png) |
+| Table | ![card body paddings](static/card-paddings3.png) |
+
+![card body margins](static/card-margins2.png)
+
+### Layout
+
+You can divide content into sections if needed.
+
+![card layout](static/card-layout.png)
+
+@## Interaction
 
 By default, the card is non-clickable. However, the card may have a clickable title.
 
 ![card with clickable heading](static/card-clickable.png)
-
-It is especially recommended to make a link title if the card does not have a button to open the detailed report.
-
-![card with clickable heading](static/card-clickable-2.png)
 
 @page card-a11y
 @page card-api

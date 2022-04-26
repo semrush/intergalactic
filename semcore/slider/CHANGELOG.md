@@ -8,6 +8,12 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Updated colors
 
+## [2.0.3] - 2022-04-25
+
+### Fixed
+
+- Fixed types for `Slider.Knob` and `Slider.Bar`
+
 ## [2.0.2] - 2022-03-14
 
 ### Changed

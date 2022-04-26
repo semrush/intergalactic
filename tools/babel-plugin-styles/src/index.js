@@ -1,40 +1,13 @@
 const path = require('path');
-const child_process = require('child_process');
 const syntaxJsx = require('@babel/plugin-syntax-jsx').default;
 const { addNamed } = require('@babel/helper-module-imports');
 const fs = require('fs-extra');
 const postcss = require('./postcss');
 
-function WatchFiles() {
-  const watchPath = {};
-  let child_watch;
-
-  function kill() {
-    child_watch?.kill();
-  }
-
-  process.on('exit', kill);
-
-  return {
-    kill,
-    add(css, js) {
-      watchPath[css] = js;
-    },
-    run() {
-      child_watch = child_process.spawn('node', ['./styles-watch.js', JSON.stringify(watchPath)], {
-        detached: true,
-        stdio: 'ignore',
-      });
-      child_watch.unref();
-    },
-  };
-}
-
 const DEFAULT_OPTS = {};
 
 function StylesPlugin({ types: t }, opts) {
   const options = Object.assign({}, DEFAULT_OPTS, opts);
-  const watch = new WatchFiles();
 
   const processor = postcss(options);
 
@@ -175,13 +148,6 @@ function StylesPlugin({ types: t }, opts) {
     pre() {
       INIT_SSTYLED = false;
       clearTimeout(timer);
-      watch.kill();
-    },
-    post() {
-      timer = setTimeout(() => {
-        watch.kill();
-        watch.run();
-      }, 300);
     },
     visitor: {
       ImportDeclaration(p, state) {
@@ -213,7 +179,6 @@ function StylesPlugin({ types: t }, opts) {
               const cssPath = path.resolve(path.dirname(state.filename), source.value);
               importProcessing(p, specifier.local.name, cssPath);
               p.addComment('leading', `__reshadow-styles__:"${source.value}"`);
-              watch.add(cssPath, state.filename);
             }
           });
         }

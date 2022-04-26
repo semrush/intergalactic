@@ -92,6 +92,8 @@ If you have several datasets on the chart, it is important to show their color i
 
 @## Edge cases
 
+Here you will find the states for some specific cases. All other "empty states" for widgets are specified in [Error & n/a widget states](/components/widget-empty/).
+
 | Case                                   | Description                                                                                                                                                                                                       | Appearance example                                        |
 | -------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------- |
 | Outliers                               | When there is a trend on the chart, but some data does not fit into it.                                                                                                                                           | ![outliers](static/outliers-1.png)                        |
