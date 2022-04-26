@@ -79,16 +79,16 @@ Also note that the configuration of the `rule` parameter in JS files uses `enfor
 
 There are two ways to implement SSR.
 
-### SSR via getStyles function
+### SSR via sstyled.getStyles function
 
 This method will work for you if you're not using the @semcore/shadow-loader package (see [CSS extract](/internal/production/#a5c869)).
 
-Use the @semcore/core package and the `getStyles` function which will return `style` tags with all the necessary styles:
+Use the @semcore/core package and the `sstyled.getStyles` function which will return `style` tags with all the necessary styles:
 
 ```jsx
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { getStyles } from '@semcore/core';
+import { sstyled } from '@semcore/core';
 import App from './App';
 
 const body = ReactDOM.renderToString(<App />);
@@ -96,7 +96,7 @@ const body = ReactDOM.renderToString(<App />);
 const html = `
     <html>
         <head>
-            {getStyles().css}
+            {sstyled.getStyles().css}
         </head>
         <body>
             <div id="root">{body}</div>
