@@ -10,7 +10,7 @@
   "license": "MIT",
   "scripts": {
     "build": "build --source=js",
-    "test": "jest"
+    "test": "jest --no-cache"
   },
   "dependencies": {
     "@semcore/utils": "^3.15",
@@ -30,6 +30,7 @@
     "directory": "semcore/link"
   },
   "devDependencies": {
-    "@semcore/jest-preset-ui": "1.0.0"
+    "@semcore/jest-preset-ui": "1.0.0",
+    "@semcore/icon": "*"
   }
 }

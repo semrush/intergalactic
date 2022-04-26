@@ -18,15 +18,13 @@ class RootLink extends Component {
 
   render() {
     const SLink = Root;
-    const { Children, styles, noWrap, addonLeft, addonRight, color: colorProps } = this.asProps;
-    const colorText = resolveColor(colorProps);
-    const colorHoverText = shade(colorText, -0.12);
+    const { Children, styles, noWrap, addonLeft, addonRight, color } = this.asProps;
+    const colorHoverText = shade(resolveColor(color), -0.12);
 
     return sstyled(styles)(
       <SLink
         render={Text}
         tag="a"
-        colorText={colorText}
         colorHoverText={colorHoverText}
         noWrapText={noWrap}
         use:noWrap={false}
