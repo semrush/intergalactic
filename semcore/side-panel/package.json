@@ -17,6 +17,7 @@
     "@semcore/animation": "^1",
     "@semcore/flex-box": "^4",
     "@semcore/portal": "^2",
+    "@semcore/typography": "^3",
     "@semcore/outside-click": "^2",
     "@semcore/icon": "^2.16",
     "react-focus-lock": "2.3.1"

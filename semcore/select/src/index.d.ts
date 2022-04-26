@@ -64,17 +64,6 @@ export interface ISelectProps<T extends SelectValue = SelectValue>
    * Input name
    */
   name?: string;
-
-  /**
-   * The list of options selected by default
-   * @deprecated v2.0.0 {@link ISelectProps.defaultValue}
-   */
-  defaultSelectedOptions?: ISelectOption[];
-  /**
-   * List of the selected options
-   * @deprecated v2.0.0 {@link ISelectProps.value}
-   */
-  selectedOptions?: ISelectOption[];
 }
 
 export interface ISelectOption {
@@ -130,11 +119,6 @@ declare const Select: (<T, V extends SelectValue = SelectValue>(
   };
   OptionTitle: typeof DropdownMenu.ItemTitle;
   OptionHint: typeof DropdownMenu.ItemHint;
-  OptionCheckbox: (<T>(
-    props: CProps<ISelectOptionCheckboxProps & T, ISelectContext, ISelectHandlers>,
-  ) => ReturnEl) & {
-    Addon: typeof DropdownMenu.Item.Addon;
-  };
   Divider: typeof Divider;
   InputSearch: typeof InputSearch;
   Input: typeof InputSearch;

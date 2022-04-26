@@ -34,7 +34,6 @@ class RootSelect extends Component {
     placeholder: props.multiselect ? 'Select options' : 'Select option',
     size: 'm',
     defaultValue: getEmptyValue(props.multiselect),
-    defaultSelectedOptions: [],
     defaultVisible: false,
   });
 
@@ -46,21 +45,7 @@ class RootSelect extends Component {
     return {
       visible: null,
       value: null,
-      selectedOptions: null,
     };
-  }
-
-  isFallback() {
-    const { selectedOptions, defaultSelectedOptions } = this.props;
-    return selectedOptions !== undefined || defaultSelectedOptions.length !== 0;
-  }
-
-  fallbackDeprecatedValue(value) {
-    return this.isFallback() ? this.asProps.selectedOptions.map((o) => o.value) : value;
-  }
-
-  fallbackDeprecatedLabel(value) {
-    return this.isFallback() ? this.asProps.selectedOptions.map((o) => o.label || o.value) : value;
   }
 
   getTriggerProps() {
@@ -78,7 +63,7 @@ class RootSelect extends Component {
     } = this.asProps;
 
     return {
-      empty: isEmptyValue(this.fallbackDeprecatedValue(value)),
+      empty: isEmptyValue(value),
       size,
       value,
       name,
@@ -89,13 +74,13 @@ class RootSelect extends Component {
       disabled,
       active: visible,
       onClear: this.handlerClear,
-      children: this.renderChildrenTrigger(this.fallbackDeprecatedValue(value), options),
+      children: this.renderChildrenTrigger(value, options),
     };
   }
 
   getOptionProps(props) {
     const { value } = this.asProps;
-    const selected = isSelectedOption(this.fallbackDeprecatedValue(value), props.value);
+    const selected = isSelectedOption(value, props.value);
     const other = {};
     this._optionSelected = selected;
 
@@ -106,9 +91,7 @@ class RootSelect extends Component {
 
     return {
       selected,
-      onClick: this.isFallback()
-        ? this.bindHandlerOptionFallbackClick(props)
-        : this.bindHandlerOptionClick(props.value),
+      onClick: this.bindHandlerOptionClick(props.value),
       ...other,
     };
   }
@@ -132,7 +115,6 @@ class RootSelect extends Component {
 
   renderChildrenTrigger(value, options) {
     if (options) {
-      value = this.fallbackDeprecatedValue(value);
       return [].concat(value).reduce((acc, value) => {
         const selectedOption = options.find((o) => isSelectedOption(value, o.value));
         if (!selectedOption) return acc;
@@ -141,7 +123,6 @@ class RootSelect extends Component {
         return acc;
       }, []);
     }
-    value = this.fallbackDeprecatedLabel(value);
     return Array.isArray(value)
       ? value.reduce((acc, value) => {
           if (acc.length) acc.push(', ');
@@ -165,28 +146,10 @@ class RootSelect extends Component {
     if (!multiselect) this.handlers.visible(false);
   };
 
-  bindHandlerOptionFallbackClick = (props) => (e) => {
-    const { selectedOptions, multiselect } = this.asProps;
-    let optionProps = [props];
-    if (multiselect) {
-      if (isSelectedOption(this.fallbackDeprecatedValue(selectedOptions), props.value)) {
-        optionProps = selectedOptions.filter((o) => o.value !== props.value);
-      } else {
-        optionProps = selectedOptions.concat(props);
-      }
-    }
-    this.handlers.value(optionProps, e);
-    if (!multiselect) this.handlers.visible(false);
-  };
-
   handlerClear = (e) => {
     const { value } = this.asProps;
-    const emptyValue = getEmptyValue(Array.isArray(this.fallbackDeprecatedValue(value)));
-    if (this.isFallback()) {
-      this.handlers.value(Array.isArray(emptyValue) ? emptyValue : [], e);
-    } else {
-      this.handlers.value(emptyValue, e);
-    }
+    const emptyValue = getEmptyValue(Array.isArray(value));
+    this.handlers.value(emptyValue, e);
     this.handlers.visible(false);
   };
 
@@ -230,26 +193,22 @@ class RootSelect extends Component {
     ]);
 
     logger.warn(
-      // @ts-ignore
-      this.isFallback(),
-      "'selectedOptions'/'defaultSelectedOptions' changed to 'value/defaultValue' and take only values, not objects.",
-      other['data-ui-name'] || Select.displayName,
-    );
-
-    logger.warn(
       options && advanceMode,
       "Don't use at the same time 'options' property and '<Select.Trigger/>/<Select.Popper/>'",
       other['data-ui-name'] || Select.displayName,
     );
 
     if (options) {
-      const Component = multiselect ? Select.OptionCheckbox : Select.Option;
       return (
         <Root render={DropdownMenu}>
           <Select.Trigger {...other} />
           <Select.Menu>
             {options.map((option, i) => {
-              return <Component key={i} {...option} />;
+              return (
+                <Select.Option key={i} {...option}>
+                  {multiselect && <Select.Option.Checkbox />}
+                </Select.Option>
+              );
             })}
           </Select.Menu>
         </Root>
@@ -297,23 +256,7 @@ function Checkbox(props) {
   );
 }
 
-function OptionCheckbox(props) {
-  const { selected, size, theme, children } = props;
-
-  return (
-    <DropdownMenu.Item {...props}>
-      <Checkbox selected={selected} size={size} theme={theme} styles={props.styles} />
-      {children}
-    </DropdownMenu.Item>
-  );
-}
-
-const InputSearchWrapper = function (props) {
-  logger.warn(
-    true,
-    `\'<${props['data-ui-name']}/>\' is deprecated, use the named import \'import { InputSearch }\'`,
-    props['data-ui-name'] || Select.InputSearch.displayName,
-  );
+const InputSearchWrapper = function () {
   return <Root render={InputSearch} />;
 };
 
@@ -339,12 +282,6 @@ const Select = createComponent(
     ],
     OptionTitle: DropdownMenu.ItemTitle,
     OptionHint: DropdownMenu.ItemHint,
-    OptionCheckbox: [
-      OptionCheckbox,
-      {
-        Addon: DropdownMenu.Item.Addon,
-      },
-    ],
     Divider,
     InputSearch: InputSearchWrapper,
     Input: InputSearchWrapper,

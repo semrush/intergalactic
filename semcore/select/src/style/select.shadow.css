@@ -16,7 +16,7 @@ SOptionCheckbox {
     background: #fff;
     border: 1px solid;
     border-radius: var(--rounded-s);
-    border-color: var(--stone-light);
+    border-color: var(--gray-200);
   }
 
   &::after {
@@ -49,11 +49,15 @@ SOptionCheckbox[size='m'] {
   margin-top: 2px;
   width: 16px;
   height: 16px;
+
+  &:after {
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAiIGhlaWdodD0iNyIgdmlld0JveD0iMCAwIDEwIDciIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxwYXRoIGQ9Ik04LjI1IDFMNCA1LjI1TDEuNzUgMyIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KPC9zdmc+Cg==');
+  }
 }
 
 SOptionCheckbox[checked]:before {
-  background-color: var(--light-blue);
-  border-color: var(--light-blue);
+  background-color: var(--blue-400);
+  border-color: var(--blue-400);
 }
 
 SOptionCheckbox[theme]:before {
@@ -66,9 +70,9 @@ SOptionCheckbox[theme][checked]:before {
 }
 
 SOptionCheckbox[selected] {
-  background-color: color-mod(var(--light-blue) a(20%));
+  background-color: color-mod(var(--blue-100) a(70%));
 
-  & :hover {
-    background-color: color-mod(var(--light-blue) a(20%));
+  &:hover {
+    background-color: color-mod(var(--blue-100) a(70%));
   }
 }

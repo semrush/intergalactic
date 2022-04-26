@@ -2,6 +2,13 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.0.0] - unrelease
+
+### BREAK
+
+- Remove property `use`.
+- Move view `Notice use="primary"` to component `NoticeGlobal`.
+
 ## [3.2.5] - 2022-04-03
 
 ### Changed

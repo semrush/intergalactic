@@ -14,11 +14,11 @@ SView {
 }
 
 SInfo {
-  background: var(--gray20);
+  background: var(--gray-800);
 }
 
 SWarning {
-  background: var(--red);
+  background: var(--red-400);
 }
 
 SMessage {
@@ -36,7 +36,7 @@ SDismiss {
   color: var(--white);
 
   &:hover {
-    color: var(--gray94);
+    color: var(--gray-100);
   }
 }
 

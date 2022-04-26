@@ -140,6 +140,80 @@ describe('Select Trigger', () => {
     expect(spy).toBeCalledTimes(1);
   });
 
+  test('Should support Option.Checkbox', async () => {
+    const Component = ({ theme, ...props }) => (
+      <div style={{ position: 'relative', width: '150px', height: '100px' }}>
+        <Select {...props} visible disablePortal value="1">
+          <Select.Trigger />
+          <Select.Popper>
+            <Select.Option value="1">
+              <Select.Option.Checkbox theme={theme} />
+              size m selected
+            </Select.Option>
+            <Select.Option value="2">
+              <Select.Option.Checkbox theme={theme} />
+              size m
+            </Select.Option>
+          </Select.Popper>
+        </Select>
+      </div>
+    );
+    expect(
+      await snapshot(
+        <>
+          <Component size="xl" />
+          <Component size="l" />
+          <Component size="m" />
+          <Component theme="violet-800" />
+        </>,
+      ),
+    ).toMatchImageSnapshot();
+  });
+
+  test('Option.Checkbox should support hover', async () => {
+    const Component = ({ theme, ...props }) => (
+      <div style={{ position: 'relative', width: '150px', height: '100px' }}>
+        <Select {...props} visible disablePortal>
+          <Select.Trigger />
+          <Select.Popper>
+            <Select.Option value="1" id="option">
+              <Select.Option.Checkbox theme={theme} />
+              size m selected
+            </Select.Option>
+          </Select.Popper>
+        </Select>
+      </div>
+    );
+    expect(
+      await snapshot(<Component />, {
+        actions: {
+          hover: '#option',
+        },
+      }),
+    ).toMatchImageSnapshot();
+    expect(
+      await snapshot(<Component value="1" />, {
+        actions: {
+          hover: '#option',
+        },
+      }),
+    ).toMatchImageSnapshot();
+    expect(
+      await snapshot(<Component theme="violet-800" />, {
+        actions: {
+          hover: '#option',
+        },
+      }),
+    ).toMatchImageSnapshot();
+    expect(
+      await snapshot(<Component theme="violet-800" value="1" />, {
+        actions: {
+          hover: '#option',
+        },
+      }),
+    ).toMatchImageSnapshot();
+  });
+
   test('a11y', async () => {
     const { container } = render(
       <Select visible value={['2']}>

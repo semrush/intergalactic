@@ -35,44 +35,16 @@ describe('Notice', () => {
     expect(getByTestId('close')).toBeTruthy();
   });
 
-  test('Should support theme for use primary', async () => {
+  test('Should support theme', async () => {
     const component = (
       <>
-        <Notice use="primary">Text Notice</Notice>
+        <Notice>Text Notice</Notice>
         <br />
-        <Notice theme="success" use="primary">
-          Text Notice
-        </Notice>
+        <Notice theme="success">Text Notice</Notice>
         <br />
-        <Notice theme="danger" use="primary">
-          Text Notice
-        </Notice>
+        <Notice theme="danger">Text Notice</Notice>
         <br />
-        <Notice theme="warning" use="primary">
-          Text Notice
-        </Notice>
-      </>
-    );
-
-    expect(await snapshot(component)).toMatchImageSnapshot();
-  });
-
-  test('Should support theme for use secondary', async () => {
-    const component = (
-      <>
-        <Notice use="secondary">Text Notice</Notice>
-        <br />
-        <Notice theme="success" use="secondary">
-          Text Notice
-        </Notice>
-        <br />
-        <Notice theme="danger" use="secondary">
-          Text Notice
-        </Notice>
-        <br />
-        <Notice theme="warning" use="secondary">
-          Text Notice
-        </Notice>
+        <Notice theme="warning">Text Notice</Notice>
       </>
     );
 

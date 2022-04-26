@@ -11,10 +11,14 @@ SInputSearch > [data-ui-name='Input']:first-child > [data-ui-name='InputSearch']
   border-radius: var(--rounded-m) var(--rounded-m) 0 0;
 }
 
-SInputSearch ~ [data-ui-name='Divider'] {
-  display: none;
-}
-
 SInputSearch[size='m'] > [data-ui-name='Input']:first-child {
   height: 32px;
+}
+
+SInputSearch [data-ui-name='Input.Addon']:last-of-type {
+  visibility: hidden;
+}
+
+SInputSearch[filled] [data-ui-name='Input.Addon']:last-of-type {
+  visibility: visible;
 }
