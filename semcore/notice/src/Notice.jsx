@@ -15,7 +15,6 @@ class RootNotice extends Component {
   static displayName = 'Notice';
   static style = style;
   static defaultProps = {
-    use: 'secondary',
     theme: 'info',
     duration: 200,
   };
@@ -67,7 +66,7 @@ function Content({ styles }) {
 function CloseIcon({ styles }) {
   const SCloseIcon = Root;
   return sstyled(styles)(
-    <SCloseIcon render={Box} tag={Close} color="stone" interactive aria-label="Close alert" />,
+    <SCloseIcon render={Box} tag={Close} interactive aria-label="Close alert" />,
   );
 }
 

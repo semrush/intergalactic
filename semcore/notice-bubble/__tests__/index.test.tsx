@@ -68,7 +68,7 @@ describe('NoticeBubble', () => {
   shouldSupportClassName(NoticeBubble);
   shouldSupportRef(NoticeBubble);
 
-  test('should support handler close', () => {
+  test('should support handler for close', () => {
     const spy = jest.fn();
     const { getByTitle } = render(<NoticeBubble onClose={spy} />);
     fireEvent.click(getByTitle('Close'));
@@ -91,6 +91,18 @@ describe('NoticeBubble', () => {
     jest.runAllTimers();
 
     expect(spy).not.toBeCalled();
+  });
+
+  test('should support hover for icon close', async () => {
+    const component = (
+      <>
+        <NoticeBubbleContainer style={{ position: 'static', width: 'auto' }} disablePortal />
+        <NoticeBubbleImport id="notice">Message</NoticeBubbleImport>
+      </>
+    );
+    expect(
+      await snapshot(component, { actions: { hover: '#notice [title="Close"]' } }),
+    ).toMatchImageSnapshot();
   });
 
   test('should support show more one notice', () => {
@@ -143,6 +155,22 @@ describe('NoticeBubble', () => {
       </>
     );
     expect(await snapshot(component)).toMatchImageSnapshot();
+  });
+
+  test('Should render correctly for screen size 760px', async () => {
+    const component = (
+      <>
+        <NoticeBubbleContainer style={{ position: 'static', width: 'auto' }} disablePortal />
+        <NoticeBubbleImport>Message</NoticeBubbleImport>
+      </>
+    );
+    expect(
+      await snapshot(component, {
+        selector: 'body',
+        width: 320,
+        height: 100,
+      }),
+    ).toMatchImageSnapshot();
   });
 });
 

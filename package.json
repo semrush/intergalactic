@@ -110,6 +110,7 @@
     "semcore/neighbor-location",
     "semcore/notice",
     "semcore/notice-bubble",
+    "semcore/notice-global",
     "semcore/outside-click",
     "semcore/pagination",
     "semcore/pills",

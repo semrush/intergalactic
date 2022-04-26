@@ -49,6 +49,7 @@
     "@semcore/neighbor-location": "2.3.4",
     "@semcore/notice": "3.2.1",
     "@semcore/notice-bubble": "3.3.1",
+    "@semcore/notice-global": "1.0.0",
     "@semcore/outside-click": "2.4.2",
     "@semcore/pagination": "2.4.2",
     "@semcore/pills": "3.5.4",
