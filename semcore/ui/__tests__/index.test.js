@@ -1,7 +1,7 @@
 import { packages } from '../components.json';
 import path from 'path';
 import fs from 'fs-extra';
-import glob from 'glob';
+import glob from 'fast-glob';
 
 function sortObjKeys(obj) {
   return Object.keys(obj).sort();
