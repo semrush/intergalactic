@@ -8,7 +8,7 @@ export type PillsValue = string | number | boolean;
 
 export interface IPillsProps<T extends PillsValue = PillsValue> extends INeighborLocationProps {
   /** Pills size */
-  size?: 'xl' | 'l' | 'm' | 's' | false;
+  size?: 'l' | 'm';
   /** Disabled state */
   disabled?: boolean;
   /** Called when the selection is changed */
@@ -20,10 +20,12 @@ export interface IPillsProps<T extends PillsValue = PillsValue> extends INeighbo
 }
 
 export interface IPillProps extends IBoxProps, INeighborItemProps, IKeyboardFocusProps {
+  /** Pill value */
+  value?: PillsValue;
   /** Disabled state */
   disabled?: boolean;
-  /** Pill value */
-  value: PillsValue;
+  /** Selected state */
+  selected?: boolean;
   /** Left addon text */
   addonLeft?: React.ElementType;
   /** Right addon tag */
