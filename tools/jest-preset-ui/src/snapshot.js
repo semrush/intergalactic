@@ -40,6 +40,11 @@ async function snapshot(Component, options) {
               -webkit-font-smoothing: antialiased;
             }
             
+            body {
+              min-height: 100vh;
+              margin: 0;
+            }
+            
             #wrap {
               display: flex;
             }
