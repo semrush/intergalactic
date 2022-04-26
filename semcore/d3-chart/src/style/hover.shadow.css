@@ -1,9 +1,9 @@
 @import '@semcore/utils/style/var.css';
 
 SHoverLine {
-  stroke: var(--stone);
+  stroke: var(--gray-300);
 }
 
 SHoverRect {
-  fill: color-mod(var(--stone-light) a(30%));
+  fill: color-mod(var(--gray-200) a(30%));
 }

@@ -11,7 +11,7 @@ SPie[color] {
 }
 
 SEmptyData {
-  fill: var(--mercury);
+  fill: var(--gray-100);
 }
 
 SEmptyData[color] {

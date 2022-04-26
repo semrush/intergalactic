@@ -3,10 +3,21 @@
 
 SRadian {
   cursor: pointer;
+  fill: var(--blue-04);
 }
+
+SLine {
+  stroke: var(--blue-04);
+}
+
+SLine[color] {
+  stroke: var(--color);
+}
+
 SCap {
   transition: r 0.1s;
 }
+
 SLabel {
   fill: var(--color);
   cursor: var(--text-cursor);

@@ -139,7 +139,7 @@ function getSVGString(svgNode) {
     return extractedCSSText;
 
     function contains(str, arr) {
-      return arr.indexOf(str) === -1 ? false : true;
+      return arr.indexOf(str) !== -1;
     }
   }
 

@@ -383,7 +383,7 @@ const Prev = (props) => {
 };
 
 Prev.defaultProps = () => ({
-  children: <ChevronLeft interactive color="stone" aria-hidden={true} role="button" />,
+  children: <ChevronLeft interactive color="gray-300" aria-hidden={true} role="button" />,
   top: 0,
 });
 
@@ -394,7 +394,7 @@ const Next = (props) => {
 };
 
 Next.defaultProps = () => ({
-  children: <ChevronRight interactive color="stone" aria-hidden={true} role="button" />,
+  children: <ChevronRight interactive color="gray-300" aria-hidden={true} role="button" />,
   top: 0,
 });
 

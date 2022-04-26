@@ -10,7 +10,7 @@ export interface IBaseTriggerProps extends IBoxProps, INeighborItemProps, IKeybo
    * Trigger size
    * @default m
    */
-  size?: 'm' | 'l' | 'xl';
+  size?: 'm' | 'l';
   /**
    * Trigger state
    */

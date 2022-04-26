@@ -7,9 +7,11 @@ SCard {
   border: none;
   border-radius: var(--rounded-m);
   box-shadow: 0 0 1px rgba(25, 27, 35, 0.16), 0 1px 2px rgba(25, 27, 35, 0.12);
+  font-family: Inter, sans-serif;
 }
 
 STitle {
+  color: var(--gray-800);
   font-size: var(--fs-300);
   line-height: var(--lh-300);
   font-weight: 700;
@@ -17,7 +19,7 @@ STitle {
 
 SIcon {
   margin-left: 4px;
-  color: var(--stone);
+  color: var(--gray-300);
   cursor: help;
 }
 
@@ -25,7 +27,7 @@ SDescription {
   margin-bottom: 0;
   margin-top: 8px;
   font-size: var(--fs-200);
-  color: var(--gray60);
+  color: var(--gray-500);
 }
 
 SHeader {
@@ -33,10 +35,11 @@ SHeader {
   padding-bottom: 8px;
   padding-left: 20px;
   padding-right: 20px;
-  box-shadow: inset 0 -1px 0 var(--mercury);
+  box-shadow: inset 0 -1px 0 var(--gray-100);
 }
 
 SBody {
+  color: var(--gray-800);
   padding-bottom: 20px;
   padding-left: 20px;
   padding-right: 20px;

@@ -28,7 +28,7 @@ SAreaLine {
 
 SNull {
   fill: transparent;
-  stroke: var(--wall);
+  stroke: var(--gray-400);
   stroke-dasharray: 4;
 }
 

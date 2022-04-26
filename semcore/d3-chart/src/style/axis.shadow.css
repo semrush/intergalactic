@@ -1,7 +1,7 @@
 @import '@semcore/utils/style/var.css';
 
 SAxis {
-  stroke: var(--stone-light);
+  stroke: var(--gray-200);
 }
 
 SAxis[hide] {
@@ -10,7 +10,7 @@ SAxis[hide] {
 
 STick {
   font-size: 12px;
-  fill: var(--gray60);
+  fill: var(--gray-500);
 }
 
 STick[hide] {
@@ -19,12 +19,12 @@ STick[hide] {
 
 SGrid {
   fill: transparent;
-  stroke: var(--mercury);
+  stroke: var(--gray-100);
 }
 
 STitle {
   font-size: 12px;
-  fill: var(--gray60);
+  fill: var(--gray-500);
   transform-origin: var(--transform-origin);
 }
 
