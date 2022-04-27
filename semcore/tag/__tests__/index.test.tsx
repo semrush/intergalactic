@@ -16,12 +16,19 @@ describe('Tag', () => {
   test('Renders correctly with Addon and Text', async () => {
     const component = (
       <Tag>
-        <Tag.Addon>Addon</Tag.Addon>
-        <Tag.Text>Test</Tag.Text>
-        <Tag.Addon>Addon</Tag.Addon>
+        <Tag.Addon id="hover">Addon</Tag.Addon>
+        <Tag.Text id="hover-1">Test</Tag.Text>
+        <Tag.Addon id="hover-3">Addon</Tag.Addon>
       </Tag>
     );
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    expect(
+      await snapshot(component, {
+        actions: {
+          hover: ['#hover', '#hover-1', '#hoveer-3'],
+          focus: ['#hover', '#hover-1', '#hoveer-3'],
+        },
+      }),
+    ).toMatchImageSnapshot();
   });
 
   test('Renders correctly with Addon as props', async () => {

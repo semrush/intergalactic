@@ -1,8 +1,10 @@
 import React from 'react';
+import Search from '@semcore/icon/Search/m';
 import { testing, snapshot, shared as testsShared } from '@semcore/jest-preset-ui';
+import Input from '../src';
+
 const { cleanup, fireEvent, render } = testing;
 const { shouldSupportClassName, shouldSupportRef } = testsShared;
-import Input from '../src';
 
 describe('Input', () => {
   afterEach(cleanup);
@@ -12,17 +14,35 @@ describe('Input', () => {
 
   test('Should support sizes', async () => {
     const InputSize = (props) => (
-      <Input {...props}>
-        <Input.Addon>Addon</Input.Addon>
-        <Input.Value />
-      </Input>
+      <>
+        <Input {...props}>
+          <Input.Addon tag={Search} />
+          <Input.Value />
+          <Input.Addon>
+            <Search />
+          </Input.Addon>
+        </Input>
+        <Input {...props}>
+          <Input.Addon>
+            <Search />
+          </Input.Addon>
+          <Input.Value />
+        </Input>
+        <Input {...props}>
+          <Input.Value />
+          <Input.Addon>
+            <Search />
+          </Input.Addon>
+        </Input>
+        <Input {...props}>
+          <Input.Value />
+        </Input>
+      </>
     );
     const component = (
-      <snapshot.ProxyProps style={{ margin: 5, width: 200 }}>
-        <InputSize size="s" />
+      <snapshot.ProxyProps style={{ margin: 5, width: 150 }}>
         <InputSize size="m" />
         <InputSize size="l" />
-        <InputSize size="xl" />
       </snapshot.ProxyProps>
     );
     expect(await snapshot(component)).toMatchImageSnapshot();
@@ -31,9 +51,74 @@ describe('Input', () => {
   test('Should support states', async () => {
     const component = (
       <snapshot.ProxyProps style={{ margin: 5, width: 200 }}>
-        <Input state="normal" />
-        <Input state="valid" />
-        <Input state="invalid" />
+        <Input state="normal">
+          <Input.Value />
+        </Input>
+        <Input state="valid">
+          <Input.Value />
+        </Input>
+        <Input state="invalid">
+          <Input.Value />
+        </Input>
+      </snapshot.ProxyProps>
+    );
+    expect(await snapshot(component)).toMatchImageSnapshot();
+  });
+
+  test('Should support focus states', async () => {
+    expect(
+      await snapshot(
+        <Input state="normal">
+          <Input.Value id="input" />
+        </Input>,
+        {
+          actions: {
+            focus: '#input',
+          },
+        },
+      ),
+    ).toMatchImageSnapshot();
+    expect(
+      await snapshot(
+        <Input state="valid">
+          <Input.Value id="input" />
+        </Input>,
+        {
+          actions: {
+            focus: '#input',
+          },
+        },
+      ),
+    ).toMatchImageSnapshot();
+    expect(
+      await snapshot(
+        <Input state="invalid">
+          <Input.Value id="input" />
+        </Input>,
+        {
+          actions: {
+            focus: '#input',
+          },
+        },
+      ),
+    ).toMatchImageSnapshot();
+  });
+
+  test('Should support root disabled', async () => {
+    const component = (
+      <snapshot.ProxyProps style={{ margin: 5, width: 200 }}>
+        <Input disabled>
+          <Input.Addon>
+            <Search />
+          </Input.Addon>
+          <Input.Value />
+        </Input>
+        <Input>
+          <Input.Addon>
+            <Search />
+          </Input.Addon>
+          <Input.Value disabled />
+        </Input>
       </snapshot.ProxyProps>
     );
     expect(await snapshot(component)).toMatchImageSnapshot();
@@ -134,24 +219,22 @@ describe('Input.Addon', () => {
     expect(spy).toHaveBeenCalledTimes(0);
   });
 
-  test('Should correctly render', async () => {
+  test('Should support hover interactive', async () => {
     const component = (
-      <snapshot.ProxyProps style={{ margin: 5, width: 200 }}>
-        <Input>
-          <Input.Addon>1</Input.Addon>
-          <Input.Value />
-          <Input.Addon>2</Input.Addon>
-        </Input>
-        <Input>
-          <Input.Addon interactive>1</Input.Addon>
-          <Input.Value />
-        </Input>
-        <Input>
-          <Input.Addon disabled>1</Input.Addon>
-          <Input.Value />
-        </Input>
-      </snapshot.ProxyProps>
+      <Input>
+        <Input.Addon interactive id="addon">
+          Addon
+        </Input.Addon>
+        <Input.Value />
+        <Input.Addon interactive>Addon</Input.Addon>
+      </Input>
     );
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    expect(
+      await snapshot(component, {
+        actions: {
+          hover: '#addon',
+        },
+      }),
+    ).toMatchImageSnapshot();
   });
 });
