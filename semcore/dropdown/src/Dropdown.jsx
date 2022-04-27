@@ -70,17 +70,7 @@ class Dropdown extends Component {
   }
 
   render() {
-    let { Children, forwardRef, modifiers = [], stretch, popperStretch, ...other } = this.asProps;
-
-    logger.warn(
-      popperStretch !== undefined,
-      "The 'popperStretch' property is deprecated, use 'stretch'",
-      other['data-ui-name'] || Dropdown.displayName,
-    );
-
-    if (popperStretch !== undefined) {
-      stretch = popperStretch;
-    }
+    let { Children, forwardRef, modifiers = [], stretch, ...other } = this.asProps;
 
     return (
       <Popper

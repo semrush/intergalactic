@@ -3,7 +3,7 @@ import Badge from '@semcore/badge';
 import { Box } from '@semcore/flex-box';
 
 const BageList = [
-  <Badge bg="cyan">admin</Badge>,
+  <Badge bg="blue-300">admin</Badge>,
   <Badge bg="red-300">alpha</Badge>,
   <Badge bg="orange-300">beta</Badge>,
   <Badge bg="green-300">new</Badge>,
