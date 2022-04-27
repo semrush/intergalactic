@@ -32,9 +32,8 @@ SValue {
   padding: 0;
   border: none;
   box-sizing: border-box;
-  color: var(--gray20);
+  color: var(--gray-800);
   font-size: inherit;
-  line-height: 1.1;
   text-overflow: ellipsis;
   font-family: inherit;
   background: transparent;
@@ -44,7 +43,7 @@ SValue {
   }
 
   &::placeholder {
-    color: var(--gray70);
+    color: var(--gray-300);
   }
 
   &:read-only ~ SOutline {
@@ -80,15 +79,15 @@ SAddon {
   align-items: center;
   flex: 0 0 auto;
   height: 100%;
-  color: var(--gray70);
+  color: var(--gray-300);
 }
 
 SAddon[interactive] {
-  color: var(--gray70);
+  color: var(--gray-300);
   cursor: pointer;
 
   &:hover {
-    color: var(--wall);
+    color: var(--gray-400);
   }
 }
 
@@ -98,19 +97,9 @@ SAddon[disabled] {
   pointer-events: none;
 }
 
-SInput[size='s'] {
-  font-size: 10px;
-  height: 18px;
-}
-
-SValue[size='s'],
-SAddon[size='s'] {
-  padding: 0 4px;
-}
-
 SInput[size='m'] {
   font-size: var(--fs-200);
-  height: 28px;
+  height: var(--form-control-m);
 }
 
 SValue[size='m'],
@@ -120,21 +109,11 @@ SAddon[size='m'] {
 
 SInput[size='l'] {
   font-size: var(--fs-300);
-  height: 40px;
+  height: var(--form-control-l);
 }
 
 SValue[size='l'],
 SAddon[size='l'] {
-  padding: 0 8px;
-}
-
-SInput[size='xl'] {
-  font-size: 16px;
-  height: 48px;
-}
-
-SValue[size='xl'],
-SAddon[size='xl'] {
   padding: 0 12px;
 }
 
@@ -144,32 +123,32 @@ SInput[focused] {
 
 SInput[state='normal'] {
   & SOutline {
-    border-color: var(--stone-light);
+    border-color: var(--gray-200);
   }
 
   & SValue:focus ~ SOutline {
-    border-color: var(--blue400);
+    border-color: var(--blue-400);
     box-shadow: var(--keyborad-focus);
   }
 }
 SInput[state='valid'] {
   & SOutline {
-    border-color: var(--green200);
+    border-color: var(--green-200);
   }
 
   & SValue:focus ~ SOutline {
-    border-color: var(--green);
-    box-shadow: 0 0 0 3px rgba(0, 159, 129, 0.2);
+    border-color: var(--green-400);
+    box-shadow: var(--keyboard-focus-valid);
   }
 }
 SInput[state='invalid'] {
   & SOutline {
-    border-color: var(--red200);
+    border-color: var(--red-200);
   }
 
   & SValue:focus ~ SOutline {
-    border-color: var(--red);
-    box-shadow: 0 0 0 3px rgba(255, 73, 83, 0.2);
+    border-color: var(--red-400);
+    box-shadow: var(--keyboard-focus-invalid);
   }
 }
 
@@ -191,6 +170,14 @@ SInput[neighborLocation='left'] {
     border-bottom-left-radius: 0;
     border-left: none;
   }
+}
+
+SAddon[size='l'][neighborLocation='right'] {
+  padding-right: 8px;
+}
+
+SAddon[size='l'][neighborLocation='left'] {
+  padding-left: 8px;
 }
 
 SValue[neighborLocation='right'] {

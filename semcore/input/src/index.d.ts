@@ -11,9 +11,13 @@ type CProps<Props, Ctx = {}, UCProps = {}> = Props & {
 type ReturnEl = React.ReactElement | null;
 /* utils type */
 
-export type InputSize = 's' | 'm' | 'l' | 'xl';
+export type InputSize = 'm' | 'l';
 
 export interface IInputProps extends IBoxProps, INeighborItemProps, INeighborLocationProps {
+  /**
+   * Sets the input and addons to the disabled state
+   * */
+  disabled?: boolean;
   /**
    * Input size
    * @default m
@@ -31,14 +35,26 @@ export interface IInputValueProps
     INeighborItemProps,
     IWithAutoFocusEnhanceProps {
   /**
-   * Input size
-   * @default m
+   * Input value
    */
-  size?: InputSize;
+  value?: string;
   /**
    * Handler for changing the value
    */
   onChange?: (value: string, event: React.SyntheticEvent<HTMLInputElement>) => void;
+  /**
+   * Sets the input to the disabled state
+   * */
+  disabled?: boolean;
+  /**
+   * Sets the input to the read-only state
+   * */
+  readOnly?: boolean;
+  /**
+   * Input size
+   * @default m
+   */
+  size?: InputSize;
 }
 
 export interface IInputAddonProps extends IBoxProps, INeighborItemProps {

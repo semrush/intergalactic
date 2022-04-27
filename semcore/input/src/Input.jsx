@@ -30,18 +30,20 @@ class Input extends Component {
   bindHandlerValueFocused = (focused) => () => this.setState({ focused });
 
   getAddonProps() {
-    const { size } = this.asProps;
+    const { size, disabled } = this.asProps;
     return {
       size,
+      disabled,
       onMouseDown: this.handleMouseDownAddon,
     };
   }
 
   getValueProps() {
-    const { size } = this.asProps;
+    const { size, disabled } = this.asProps;
     return {
       ref: this.inputRef,
       size,
+      disabled,
       onFocus: this.bindHandlerValueFocused(true),
       onBlur: this.bindHandlerValueFocused(false),
     };
