@@ -66,7 +66,7 @@ SPickerFormat {
 }
 
 SPickerFormat[size='m'] {
-  height: 28px;
+  height: var(--form-control-m);
   font-size: var(--fs-200);
   & SPickerFormatText {
     margin: 0 8px;
@@ -74,7 +74,7 @@ SPickerFormat[size='m'] {
 }
 
 SPickerFormat[size='l'] {
-  height: 40px;
+  height: var(--form-control-l);
   font-size: var(--fs-300);
   & SPickerFormatText {
     margin: 0 12px;
