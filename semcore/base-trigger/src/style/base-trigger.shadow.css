@@ -131,17 +131,17 @@ SBaseTrigger[size='l'] {
   font-size: var(--fs-300);
 
   & SText {
-    margin-left: 8px;
-    margin-right: 8px;
+    margin-left: 12px;
+    margin-right: 12px;
   }
 
   & SAddon {
     &:not(:only-child):first-child {
-      margin-left: 8px;
+      margin-left: 12px;
     }
 
     &:not(:only-child):last-child {
-      margin-right: 8px;
+      margin-right: 12px;
     }
 
     &:only-child {

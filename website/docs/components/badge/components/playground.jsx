@@ -5,8 +5,8 @@ import PlaygroundGeneration from 'components/PlaygroundGeneration';
 import Badge from '@semcore/badge';
 
 const BG = {
-  mist: 'mist',
-  cyan: 'cyan',
+  mist: 'gray-300',
+  cyan: 'blue-300',
   red: 'red-300',
   orange: 'orange-300',
   green: 'green-300',
@@ -20,7 +20,7 @@ const Preview = (preview) => {
     key: 'color',
     defaultValue: 'white',
     label: 'Color',
-    options: ['white', 'gray20'],
+    options: ['white', 'gray-800'],
   });
 
   const bg = select({

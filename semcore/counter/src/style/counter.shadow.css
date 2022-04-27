@@ -10,9 +10,9 @@ SCounter {
   border-radius: 12px;
   font-weight: 500;
 
-  color: var(--gray60);
+  color: var(--gray-500);
   background-color: #fff;
-  border: 1px solid var(--gray80);
+  border: 1px solid var(--gray-200);
 }
 
 SCounter[size='m'] {
@@ -44,12 +44,12 @@ SCounter[theme] {
 
 SCounter[theme='warning'] {
   border-color: transparent;
-  background: #ff622d;
+  background: var(--orange-400);
   color: white;
 }
 
 SCounter[theme='danger'] {
   border-color: transparent;
-  background: #ff4953;
+  background: var(--red-400);
   color: white;
 }

@@ -58,16 +58,6 @@ describe('DropdownMenu', () => {
             <DropdownMenu.ItemTitle>Title 1</DropdownMenu.ItemTitle>
           </DropdownMenu.List>
         </DropdownMenu>
-        <hr />
-        <DropdownMenu size="xl">
-          <DropdownMenu.List>
-            <DropdownMenu.Item>Item 1</DropdownMenu.Item>
-            <DropdownMenu.Item>Item 2</DropdownMenu.Item>
-            <DropdownMenu.Item>Item 2</DropdownMenu.Item>
-            <DropdownMenu.ItemHint>Hint 1</DropdownMenu.ItemHint>
-            <DropdownMenu.ItemTitle>Title 1</DropdownMenu.ItemTitle>
-          </DropdownMenu.List>
-        </DropdownMenu>
       </React.Fragment>
     );
 
@@ -103,6 +93,48 @@ describe('DropdownMenu', () => {
     );
 
     expect(await snapshot(Component)).toMatchImageSnapshot();
+  });
+
+  test('Should support hover', async () => {
+    const Component = (
+      <DropdownMenu>
+        <DropdownMenu.List>
+          <DropdownMenu.Item>Item 1</DropdownMenu.Item>
+          <DropdownMenu.Item id="dd">Item 2</DropdownMenu.Item>
+          <DropdownMenu.Item>Item 2</DropdownMenu.Item>
+        </DropdownMenu.List>
+      </DropdownMenu>
+    );
+
+    expect(
+      await snapshot(Component, {
+        actions: {
+          hover: '#dd',
+        },
+      }),
+    ).toMatchImageSnapshot();
+  });
+
+  test('Should support selected hover ', async () => {
+    const Component = (
+      <DropdownMenu>
+        <DropdownMenu.List>
+          <DropdownMenu.Item>Item 1</DropdownMenu.Item>
+          <DropdownMenu.Item id="dd" selected>
+            Item 2
+          </DropdownMenu.Item>
+          <DropdownMenu.Item>Item 2</DropdownMenu.Item>
+        </DropdownMenu.List>
+      </DropdownMenu>
+    );
+
+    expect(
+      await snapshot(Component, {
+        actions: {
+          hover: '#dd',
+        },
+      }),
+    ).toMatchImageSnapshot();
   });
 
   test('a11y', async () => {

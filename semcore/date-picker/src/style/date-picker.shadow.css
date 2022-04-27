@@ -28,6 +28,7 @@ SHeader {
 
 STitle {
   font-size: var(--fs-200);
+  color: var(--gray-800);
   height: 32px;
   width: 100%;
   display: flex;

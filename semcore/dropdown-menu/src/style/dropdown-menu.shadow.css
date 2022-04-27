@@ -21,7 +21,7 @@ SDropdownMenuItem {
   line-height: normal;
 
   &:hover {
-    background-color: var(--mystic);
+    background-color: var(--gray-50);
   }
 
   &:focus {
@@ -48,13 +48,6 @@ SDropdownMenuItem[disabled] {
   pointer-events: none;
 }
 
-SDropdownMenuItem[size='xl'] {
-  font-size: var(--fs-300);
-  line-height: var(--lh-300);
-  padding: 12px;
-  min-height: 48px;
-}
-
 SDropdownMenuItem[size='l'] {
   font-size: var(--fs-300);
   line-height: var(--lh-300);
@@ -78,7 +71,7 @@ SDropdownMenuItem[notInteractive] {
 }
 
 SDropdownMenuItem[variant='hint'] {
-  color: var(--gray60);
+  color: var(--gray-500);
   cursor: default;
 
   &:hover {

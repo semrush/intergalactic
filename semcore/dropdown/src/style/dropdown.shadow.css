@@ -5,7 +5,7 @@ SDropdownPopper {
   background-color: #fff;
   border-radius: var(--rounded-m);
   box-sizing: border-box;
-  border: 1px solid var(--gray94);
+  border: 1px solid var(--gray-100);
   white-space: normal;
   box-shadow: var(--box-shadow-popper);
 }

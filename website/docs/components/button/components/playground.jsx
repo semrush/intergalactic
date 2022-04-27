@@ -9,7 +9,7 @@ import CheckL from '@semcore/icon/Check/l';
 import ArrowRightM from '@semcore/icon/ArrowRight/m';
 import ArrowRightL from '@semcore/icon/ArrowRight/l';
 
-const SIZES = ['xl', 'l', 'm', 's'];
+const SIZES = ['l', 'm'];
 const USE = ['primary', 'secondary', 'tertiary'];
 const THEME = {
   primary: ['info', 'success', 'warning', 'danger', 'invert'],
@@ -84,16 +84,12 @@ const Preview = (preview) => {
     label: 'Text',
   });
   const beforeIconMap = {
-    xl: <CheckL />,
     l: <CheckM />,
     m: <CheckM />,
-    s: <CheckM />,
   };
   const afterIconMap = {
-    xl: <ArrowRightL />,
     l: <ArrowRightM />,
     m: <ArrowRightM />,
-    s: <ArrowRightM />,
   };
 
   const renderIcon = (position, size) => {

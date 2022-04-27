@@ -4,41 +4,41 @@ SDivider {
 }
 
 SDivider[use='primary'] {
-  background-color: var(--theme, var(--gray80));
+  background-color: var(--theme, var(--gray-200));
 }
 
 SDivider[use='primary']SDivider[theme='default'] {
-  background: var(--gray80);
+  background: var(--gray-200);
 }
 SDivider[use='primary']SDivider[theme='invert'] {
-  background-color: var(--gray80);
+  background-color: var(--gray-200);
 }
 
 SDivider[orientation='horizontal']SDivider[use='secondary'] {
-  background-image: linear-gradient(to right, var(--gray80) 3px, transparent 1px);
+  background-image: linear-gradient(to right, var(--gray-200) 3px, transparent 1px);
   background-size: 5px 1px;
 }
 
 SDivider[orientation='horizontal']SDivider[use='secondary']SDivider[theme='default'] {
-  background: linear-gradient(to right, var(--gray80) 3px, transparent 1px);
+  background: linear-gradient(to right, var(--gray-200) 3px, transparent 1px);
   background-size: 5px 1px;
 }
 SDivider[orientation='horizontal']SDivider[use='secondary']SDivider[theme='invert'] {
-  background-image: linear-gradient(to right, var(--gray80) 3px, transparent 1px);
+  background-image: linear-gradient(to right, var(--gray-200) 3px, transparent 1px);
   background-size: 5px 1px;
 }
 
 SDivider[orientation='vertical']SDivider[use='secondary'] {
-  background-image: linear-gradient(to bottom, var(--gray80) 3px, transparent 1px);
+  background-image: linear-gradient(to bottom, var(--gray-200) 3px, transparent 1px);
   background-size: 1px 5px;
 }
 
 SDivider[orientation='vertical']SDivider[use='secondary']SDivider[theme='default'] {
-  background-image: linear-gradient(to bottom, var(--gray80) 3px, transparent 1px);
+  background-image: linear-gradient(to bottom, var(--gray-200) 3px, transparent 1px);
   background-size: 1px 5px;
 }
 SDivider[orientation='vertical']SDivider[use='secondary']SDivider[theme='invert'] {
-  background-image: linear-gradient(to bottom, var(--gray80) 3px, transparent 1px);
+  background-image: linear-gradient(to bottom, var(--gray-200) 3px, transparent 1px);
   background-size: 1px 5px;
 }
 

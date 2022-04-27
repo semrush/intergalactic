@@ -108,7 +108,7 @@ describe('DateRangePicker', () => {
   test('Should render correctly with selected date', async () => {
     const component = (
       <DatePicker value={new Date('January 1, 2021 00:00:00')}>
-        <DatePicker.Trigger size="xl" />
+        <DatePicker.Trigger size="l" />
         <DatePicker.Popper />
       </DatePicker>
     );
@@ -140,6 +140,68 @@ describe('DateRangePicker', () => {
       />
     );
     expect(await snapshot(component)).toMatchImageSnapshot();
+  });
+
+  test('Should render correctly', async () => {
+    const component = (
+      <DatePicker>
+        <DatePicker.Header w={100}>
+          <DatePicker.Prev />
+          <DatePicker.Title>Header</DatePicker.Title>
+          <DatePicker.Next />
+        </DatePicker.Header>
+      </DatePicker>
+    );
+    expect(await snapshot(component)).toMatchImageSnapshot();
+  });
+
+  test('Should support hover item', async () => {
+    expect(
+      await snapshot(
+        <DatePicker value={new Date('January 1, 2021 00:00:00')}>
+          <DatePicker.Trigger id="datapicker" />
+          <DatePicker.Popper />
+        </DatePicker>,
+        {
+          actions: {
+            hover: '#datapicker',
+          },
+        },
+      ),
+    ).toMatchImageSnapshot();
+    expect(
+      await snapshot(
+        <DatePicker>
+          <DatePicker.Header w={100}>
+            <DatePicker.Prev id="datapicker" />
+            <DatePicker.Title>Header</DatePicker.Title>
+            <DatePicker.Next />
+          </DatePicker.Header>
+        </DatePicker>,
+        {
+          actions: {
+            hover: '#datapicker',
+          },
+        },
+      ),
+    ).toMatchImageSnapshot();
+  });
+
+  test('Should support active item', async () => {
+    const component = (
+      <DatePicker value={new Date('January 1, 2021 00:00:00')}>
+        <DatePicker.Trigger id="datapicker" />
+        <DatePicker.Popper />
+      </DatePicker>
+    );
+
+    expect(
+      await snapshot(component, {
+        actions: {
+          active: '#datapicker',
+        },
+      }),
+    ).toMatchImageSnapshot();
   });
 
   test('Should support set custom displayPeriod', () => {
