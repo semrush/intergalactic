@@ -222,6 +222,7 @@ SRow[positioned] {
 SCell {
   display: flex;
   flex: 1;
+  flex-basis: auto;
   font-size: 14px;
   color: var(--gray20);
   line-height: 20px;
