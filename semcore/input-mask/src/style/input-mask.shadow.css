@@ -13,7 +13,7 @@ SPlaceholder {
   position: absolute;
   font-size: inherit;
   white-space: pre;
-  color: var(--gray70);
+  color: var(--gray-300);
   box-sizing: border-box;
   cursor: text;
 }

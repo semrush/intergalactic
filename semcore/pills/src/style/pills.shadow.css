@@ -81,8 +81,8 @@ SAddon {
 }
 
 SPill[size='m'] {
-  height: 28px;
-  min-width: 28px;
+  height: var(--form-control-m);
+  min-width: var(--form-control-m);
   font-size: var(--fs-200);
 
   & SText {
@@ -107,8 +107,8 @@ SPill[size='m'] {
 }
 
 SPill[size='l'] {
-  height: 40px;
-  min-width: 40px;
+  height: var(--form-control-l);
+  min-width: var(--form-control-l);
   font-size: var(--fs-300);
 
   & SText {
