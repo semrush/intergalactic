@@ -18,12 +18,10 @@ const svg = (orientation, width, height) => (
 
 export default {
   up: {
-    xl: svg('up', 10, 5),
     l: svg('up', 10, 5),
     m: svg('up', 8, 4),
   },
   down: {
-    xl: svg('down', 10, 5),
     l: svg('down', 10, 5),
     m: svg('down', 8, 4),
   },

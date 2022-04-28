@@ -91,12 +91,11 @@ describe('InputNumber', () => {
       <React.Fragment>
         <InputNumber size="m">
           <InputNumber.Value />
+          <InputNumber.Controls showControls />
         </InputNumber>
         <InputNumber size="l">
           <InputNumber.Value />
-        </InputNumber>
-        <InputNumber size="xl">
-          <InputNumber.Value />
+          <InputNumber.Controls showControls />
         </InputNumber>
       </React.Fragment>
     );
@@ -134,6 +133,40 @@ describe('InputNumber', () => {
     );
 
     expect(await snapshot(component)).toMatchImageSnapshot();
+  });
+
+  test('Should support view controls', async () => {
+    const component = (
+      <InputNumber>
+        <InputNumber.Value id="input" />
+        <InputNumber.Controls />
+      </InputNumber>
+    );
+
+    expect(
+      await snapshot(component, {
+        actions: {
+          focus: '#input',
+        },
+      }),
+    ).toMatchImageSnapshot();
+  });
+
+  test('Should support controls hover', async () => {
+    const component = (
+      <InputNumber>
+        <InputNumber.Value />
+        <InputNumber.Controls showControls id={'controls'} />
+      </InputNumber>
+    );
+
+    expect(
+      await snapshot(component, {
+        actions: {
+          hover: '#controls > button',
+        },
+      }),
+    ).toMatchImageSnapshot();
   });
 
   test('a11y', async () => {
