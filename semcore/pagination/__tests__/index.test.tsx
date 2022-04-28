@@ -17,6 +17,11 @@ describe('Pagination', () => {
     expect(await snapshot(component)).toMatchImageSnapshot();
   });
 
+  test('Should support not render button if totalPage 1', async () => {
+    const component = <Pagination currentPage={1} totalPages={1} />;
+    expect(await snapshot(component)).toMatchImageSnapshot();
+  });
+
   test('a11y', async () => {
     const { container } = render(<Pagination currentPage={1} totalPages={100} />);
 
@@ -203,7 +208,7 @@ describe('Pagination.PageInput', () => {
     expect(await snapshot(component)).toMatchImageSnapshot();
   });
 
-  test('Should not cut up to 4 digits', async () => {
+  test('Should not cut up to 3 digits', async () => {
     const component = (
       <snapshot.ProxyProps style={{ margin: 5 }}>
         <Pagination currentPage={1234} totalPages={1234}>

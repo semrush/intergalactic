@@ -2,6 +2,13 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.0.0] - unreleased
+
+### BREAK
+
+- Restyling component.
+- Remove deprecated props "onPageChange"/"totalPagesFormatter"/"label"
+
 ## [2.5.0] - 2022-04-25
 
 ### Fixed

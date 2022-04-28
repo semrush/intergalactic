@@ -13,12 +13,6 @@ export interface IPaginationProps extends IBoxProps, IWithI18nEnhanceProps {
    */
   totalPages?: number;
   /**
-   * Function of formatting the value totalPages
-   * @default formatThousands - inserts a comma every 3 characters
-   * @deprecated  v2.0.0 The property "totalPagesFormatter" is outdated, use the component "<Pagination.TotalPages/>"
-   */
-  totalPagesFormatter?: (totalPages: number) => string | number;
-  /**
    * Active page number
    * @default 1
    */
@@ -26,29 +20,13 @@ export interface IPaginationProps extends IBoxProps, IWithI18nEnhanceProps {
   /**
    * Callback for changing the active page
    * @param pageNumber
-   * @deprecated v2.0.0 {@link IPaginationProps.onCurrentPageChange}
-   */
-  onPageChange?: (pageNumber: number) => void;
-  /**
-   * Callback for changing the active page
-   * @param pageNumber
    */
   onCurrentPageChange?: (pageNumber: number) => void;
 }
 
-export interface ITotalPagesProps extends ITextProps, IWithI18nEnhanceProps {
-  /**
-   * @deprecated v2.0.0 Use i118n, in order to redefine the text
-   * */
-  label?: React.ReactNode;
-}
+export interface ITotalPagesProps extends ITextProps, IWithI18nEnhanceProps {}
 
-export interface IPageInputProps extends IInputProps, IWithI18nEnhanceProps {
-  /**
-   * @deprecated v2.0.0 Use i118n, in order to redefine the text
-   * */
-  label?: React.ReactNode;
-}
+export interface IPageInputProps extends IInputProps, IWithI18nEnhanceProps {}
 
 export interface IPaginationContext {
   getFirstPageProps: PropGetterFn;
