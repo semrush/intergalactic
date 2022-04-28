@@ -8,6 +8,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Remove property `use`.
 - Move view `Notice use="primary"` to component `NoticeGlobal`.
+- Updated colors
 
 ## [3.2.5] - 2022-04-03
 

@@ -3,10 +3,7 @@
 SValue {
   letter-spacing: 0.1em;
   text-overflow: inherit;
-
-  & ~ SPlaceholder {
-    letter-spacing: 0.15em;
-  }
+  font-family: sans-serif;
 }
 
 SPlaceholder {

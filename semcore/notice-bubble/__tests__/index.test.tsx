@@ -160,7 +160,7 @@ describe('NoticeBubble', () => {
   test('Should render correctly for screen size 760px', async () => {
     const component = (
       <>
-        <NoticeBubbleContainer style={{ position: 'static', width: 'auto' }} disablePortal />
+        <NoticeBubbleContainer disablePortal />
         <NoticeBubbleImport>Message</NoticeBubbleImport>
       </>
     );
