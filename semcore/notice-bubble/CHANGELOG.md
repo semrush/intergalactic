@@ -6,7 +6,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
--
+- Updated colors
 
 ## [3.3.5] - 2022-04-03
 

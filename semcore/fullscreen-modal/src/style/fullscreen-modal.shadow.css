@@ -22,13 +22,13 @@ SBack {
 }
 
 SClose {
-  top: 12px;
-  right: 20px;
+  top: 17px;
+  right: 23px;
   padding: 12px;
-  color: var(--gray70);
+  color: var(--gray-300);
 
   &:hover {
-    color: var(--wall);
+    color: var(--gray-400);
   }
 }
 
@@ -37,16 +37,13 @@ SBack {
   left: 32px;
   display: flex;
   align-items: center;
-  color: var(--gray60);
-  font-size: var(--fs100);
-  line-height: var(--lh100);
+  margin-bottom: 12px;
+  color: var(--gray-500);
+  font-size: var(--fs-100);
+  line-height: var(--lh-100);
 
   &:hover {
-    color: color-mod(var(--gray60) shade(12%));
-
-    & SBackText {
-      border-bottom-color: currentColor;
-    }
+    color: var(--gray-600);
   }
 }
 
@@ -54,6 +51,9 @@ SBackText {
   margin-left: 4px;
   font-size: var(--fs-200);
   line-height: var(--lh-200);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 STitle,
 SDescription {
@@ -66,13 +66,27 @@ STitle {
   font-size: var(--fs-500);
   line-height: var(--lh-500);
   font-weight: 700;
-  color: var(--gray20);
+  color: var(--gray-800);
 }
 
 SDescription {
+  display: flex;
+  align-items: baseline;
   font-size: var(--fs-100);
   line-height: var(--lh-100);
-  color: var(--gray60);
+  color: var(--gray-500);
+
+  &::before {
+    content: '';
+    position: relative;
+    top: 4px;
+    display: block;
+    margin-left: 12px;
+    margin-right: 12px;
+    height: 24px;
+    width: 1px;
+    background-color: var(--gray-200);
+  }
 }
 
 SHeader {
@@ -80,16 +94,16 @@ SHeader {
   align-items: baseline;
   padding-left: 32px;
   padding-bottom: 8px;
-  padding-right: 80px;
+  padding-right: 72px;
   padding-top: 40px;
   min-height: 76px;
-  box-shadow: inset 0 -1px 0 var(--gray80);
+  box-shadow: inset 0 -1px 0 var(--gray-200);
   box-sizing: border-box;
 }
 
 SFooter {
   min-height: 52px;
-  box-shadow: inset 0 1px 1px 0 var(--gray80);
+  box-shadow: inset 0 1px 1px 0 var(--gray-200);
   box-sizing: border-box;
 }
 
@@ -105,14 +119,6 @@ SSection {
   padding-left: 32px;
   padding-right: 32px;
   flex: 1 1 auto;
-}
-
-SHeaderDivider {
-  margin-left: 12px;
-  margin-right: 12px;
-  height: 16px;
-  width: 1px;
-  background-color: var(--gray80);
 }
 
 @media (prefers-reduced-motion) {

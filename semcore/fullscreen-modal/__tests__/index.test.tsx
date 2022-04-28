@@ -110,4 +110,41 @@ describe('FullscreenModal.Header', () => {
     );
     expect(queryByText(/Text/)).toBeTruthy();
   });
+
+  test('Title and Back should correctly if a very long text', async () => {
+    const component = (
+      <FullscreenModal disablePortal visible>
+        <FullscreenModal.Header>
+          <FullscreenModal.Back>Go to Tool Name Go to Tool Name</FullscreenModal.Back>
+          <FullscreenModal.Title>Heading 6, 16px Heading 6, 16px</FullscreenModal.Title>
+        </FullscreenModal.Header>
+      </FullscreenModal>
+    );
+
+    expect(
+      await snapshot(component, { selector: 'body', width: 320, height: 100 }),
+    ).toMatchImageSnapshot();
+  });
+
+  test('Close icon should support hover', async () => {
+    expect(
+      await snapshot(
+        <FullscreenModal disablePortal visible>
+          <FullscreenModal.Close id="close" />
+        </FullscreenModal>,
+        { selector: 'body', width: 320, height: 100, actions: { hover: '#close' } },
+      ),
+    ).toMatchImageSnapshot();
+  });
+
+  test('Back icon should support hover', async () => {
+    expect(
+      await snapshot(
+        <FullscreenModal disablePortal visible>
+          <FullscreenModal.Back id="back">Go to Tool Name</FullscreenModal.Back>
+        </FullscreenModal>,
+        { selector: 'body', width: 320, height: 100, actions: { hover: '#back' } },
+      ),
+    ).toMatchImageSnapshot();
+  });
 });
