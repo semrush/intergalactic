@@ -2,6 +2,20 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.21.0] - 2022-04-28
+
+### Added
+
+- Added icons `IndentedResult, UserSharedFirst`.
+
+### Changed
+
+- Changed icon `UserGroup`.
+
+### Removed
+
+- Removed icons `UserGroupNo, UserShared`.
+
 ## [2.20.0] - 2022-03-21
 
 ### Added
