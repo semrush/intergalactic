@@ -19,20 +19,12 @@ SControls {
   box-sizing: border-box;
 }
 
-SControls[size='s'] {
-  width: 20px;
-}
-
 SControls[size='m'] {
-  width: 20px;
-}
-
-SControls[size='l'] {
   width: 25px;
 }
 
-SControls[size='xl'] {
-  width: 32px;
+SControls[size='l'] {
+  width: 30px;
 }
 
 SControls[showControls] {
@@ -41,15 +33,20 @@ SControls[showControls] {
 
 SUp,
 SDown {
-  color: var(--gray70);
+  color: var(--gray-300);
   box-sizing: border-box;
   display: inline-flex;
   justify-content: center;
   border: none;
   background: none;
+  cursor: pointer;
 
   &:focus {
     outline: none;
+  }
+
+  &:hover {
+    color: var(--gray-600);
   }
 }
 
@@ -67,40 +64,22 @@ SValue {
 
 SValue[disabled] ~ SControls {
   opacity: var(--disabled-opacity);
-}
-
-SValue:not([disabled]) {
-  & ~ SControls SUp:hover {
-    cursor: pointer;
-    color: var(--gray40);
-  }
-}
-
-SValue:not([disabled]) ~ SControls SDown:hover {
-  cursor: pointer;
-  color: var(--gray40);
+  cursor: default;
+  pointer-events: none;
 }
 
 SUp[size='m'] {
-  padding: 6px 6px 2px;
+  padding: 8px 8px 1px;
 }
 
 SDown[size='m'] {
-  padding: 2px 6px 6px;
+  padding: 1px 8px 8px;
 }
 
 SUp[size='l'] {
-  padding: 7px 8px 3px;
+  padding: 13px 8px 1px;
 }
 
 SDown[size='l'] {
-  padding: 3px 8px 7px;
-}
-
-SUp[size='xl'] {
-  padding: 11px 11px 4px;
-}
-
-SDown[size='xl'] {
-  padding: 4px 11px 11px;
+  padding: 1px 8px 13px;
 }

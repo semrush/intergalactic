@@ -3,7 +3,7 @@ import { CProps, PropGetterFn, ReturnEl } from '@semcore/core';
 import { IInputAddonProps, IInputProps, IInputValueProps } from '@semcore/input';
 
 export type InputNumberValue = string;
-export type InputNumberSize = 'm' | 'l' | 'xl';
+export type InputNumberSize = 'm' | 'l';
 
 export interface IInputNumberProps extends IInputProps {
   /** Input size
