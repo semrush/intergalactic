@@ -1,3 +1,5 @@
+@import '@semcore/utils/style/var.css';
+
 SPagination {
   display: flex;
   justify-content: flex-start;
@@ -10,7 +12,7 @@ SPrevPage {
   margin-left: 8px;
 }
 
-SLabel {
+SLabel:not(:first-child) {
   margin-left: 16px;
 }
 
@@ -25,25 +27,20 @@ STotalPagesLabel {
 }
 
 SPageInput {
-  max-width: 64px;
+  max-width: 68px;
   margin-left: 4px;
 }
 
-SPageInputValue {
-  & + * {
-    visibility: hidden;
-    clip: rect(1px, 1px, 1px, 1px);
-    position: absolute;
-  }
-  &:focus {
-    padding-right: 0;
-  }
-  &:focus + * {
-    padding-left: 2px;
-    visibility: visible;
-    clip: initial;
-    position: static;
-  }
+SPageInputValue:focus ~ SPageInputAddon {
+  visibility: visible;
+  clip: initial;
+  position: static;
+}
+
+SPageInputAddon {
+  visibility: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+  position: absolute;
 }
 
 SLabel,
