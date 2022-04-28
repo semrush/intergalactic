@@ -208,6 +208,32 @@ describe('Pagination.PageInput', () => {
     expect(await snapshot(component)).toMatchImageSnapshot();
   });
 
+  test('Should support view icon', async () => {
+    const component = (
+      <snapshot.ProxyProps style={{ margin: 5 }}>
+        <Pagination currentPage={1} totalPages={1234}>
+          <Pagination.PageInput>
+            <Pagination.PageInput.Value />
+            <Pagination.PageInput.Addon tag={Return} interactive />
+          </Pagination.PageInput>
+        </Pagination>
+        <Pagination currentPage={1} totalPages={1234}>
+          <Pagination.PageInput>
+            <Pagination.PageInput.Value id="page-number" />
+            <Pagination.PageInput.Addon tag={Return} interactive />
+          </Pagination.PageInput>
+        </Pagination>
+      </snapshot.ProxyProps>
+    );
+    expect(
+      await snapshot(component, {
+        actions: {
+          focus: '#page-number',
+        },
+      }),
+    ).toMatchImageSnapshot();
+  });
+
   test('Should not cut up to 3 digits', async () => {
     const component = (
       <snapshot.ProxyProps style={{ margin: 5 }}>
