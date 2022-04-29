@@ -2,7 +2,7 @@ import React from 'react';
 import InputMask from '../src';
 
 import { testing, shared as testsShared, snapshot } from '@semcore/jest-preset-ui';
-const { cleanup } = testing;
+const { cleanup, fireEvent, render } = testing;
 
 const { shouldSupportClassName, shouldSupportRef } = testsShared;
 
@@ -12,13 +12,25 @@ describe('InputMask', () => {
   shouldSupportClassName(InputMask);
   shouldSupportRef(InputMask);
 
-  xtest('Should support placeholder', async () => {
-    const component = (
+  test('Should correct render', async () => {
+    const Component = ({ value = '' }) => (
       <InputMask size="l" mb={4}>
-        <InputMask.Value mask="9999 9999 9999 9999" placeholder="____ ____ ____ ____" value={999} />
+        <InputMask.Value
+          mask="99 99"
+          placeholder="__ __"
+          data-testid="input"
+          defaultValue={value}
+        />
       </InputMask>
     );
-    expect(await snapshot(component)).toMatchImageSnapshot();
+
+    const { getByTestId } = render(<Component />);
+    const input = getByTestId('input');
+    input.focus();
+    fireEvent.change(input, { target: { value: '999' } });
+
+    expect(input.value).toBe('99 9_');
+    expect(await snapshot(<Component value={input.value} />)).toMatchImageSnapshot();
   });
 });
 
