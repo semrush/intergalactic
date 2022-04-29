@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.5.5] - unreleased
+
+### Fixed
+
+- Fixed styles and colors desync with design.
+
 ## [2.5.4] - 2022-04-25
 
 ### Changed
