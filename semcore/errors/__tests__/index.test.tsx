@@ -58,4 +58,22 @@ describe('Error', () => {
     );
     expect(await snapshot(component)).toMatchImageSnapshot();
   });
+
+  test('Render correctly on small screen', async () => {
+    const component = (
+      <Error icon="https://static.semrush.com/ui-kit/errors/1.3.0/page_not_found.svg">
+        <Error.Title>Horrible error</Error.Title>
+        <Error.Description>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+        </Error.Description>
+      </Error>
+    );
+    expect(
+      await snapshot(component, {
+        selector: 'body',
+        width: 320,
+        height: 100,
+      }),
+    ).toMatchImageSnapshot();
+  });
 });

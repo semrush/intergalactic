@@ -101,20 +101,16 @@ SBaseTrigger[size='m'] {
   min-width: 26px;
   height: 28px;
   border-radius: var(--rounded-m);
+  padding: 0 8px;
   font-size: var(--fs-200);
-
-  & SText {
-    margin-left: 8px;
-    margin-right: 8px;
-  }
 
   & SAddon {
     &:not(:only-child):first-child {
-      margin-left: 8px;
+      margin-right: 8px;
     }
 
     &:not(:only-child):last-child {
-      margin-right: 8px;
+      margin-left: 8px;
     }
 
     &:only-child {
@@ -128,20 +124,16 @@ SBaseTrigger[size='l'] {
   min-width: 32px;
   height: 40px;
   border-radius: var(--rounded-m);
+  padding: 0 12px;
   font-size: var(--fs-300);
-
-  & SText {
-    margin-left: 12px;
-    margin-right: 12px;
-  }
 
   & SAddon {
     &:not(:only-child):first-child {
-      margin-left: 12px;
+      margin-right: 8px;
     }
 
     &:not(:only-child):last-child {
-      margin-right: 12px;
+      margin-left: 8px;
     }
 
     &:only-child {
