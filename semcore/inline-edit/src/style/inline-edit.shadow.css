@@ -23,6 +23,6 @@ SView {
   &:focus,
   &:active {
     outline: none;
-    box-shadow: var(--keyborad-focus);
+    box-shadow: var(--keyboard-focus);
   }
 }
