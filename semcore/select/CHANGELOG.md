@@ -9,6 +9,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 - Remove support to used `Select.InputSearch`
 - Remove support properties `selectedOptions, defaultSelectedOptions` for `Select`
 - Remove support `Select.OptionCheckbox`
+- `Select.Option.Checkbox` used only two sizes `l, m`
 
 ### Changed
 

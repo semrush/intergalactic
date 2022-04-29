@@ -1,6 +1,7 @@
 @import '@semcore/utils/style/var.css';
 
 SOptionCheckbox {
+  margin-top: 2px;
   margin-right: 8px;
   margin-bottom: auto;
   position: relative;
@@ -27,26 +28,21 @@ SOptionCheckbox {
     right: 0;
     bottom: 0;
     margin: 0 2px;
-    background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIiIGhlaWdodD0iOSIgdmlld0JveD0iMCAwIDEyIDkiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxwYXRoIGQ9Ik0xMSAxLjVMNC43NSA3Ljc1TDEgNCIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KPC9zdmc+Cg==');
     background-repeat: no-repeat;
     background-position: center center;
   }
 }
 
-SOptionCheckbox[size='xl'] {
-  margin-top: 2px;
-  width: 20px;
-  height: 20px;
-}
-
 SOptionCheckbox[size='l'] {
-  margin-top: 1px;
   width: 20px;
   height: 20px;
+
+  &:after {
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIiIGhlaWdodD0iOSIgdmlld0JveD0iMCAwIDEyIDkiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxwYXRoIGQ9Ik0xMSAxLjVMNC43NSA3Ljc1TDEgNCIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KPC9zdmc+Cg==');
+  }
 }
 
 SOptionCheckbox[size='m'] {
-  margin-top: 2px;
   width: 16px;
   height: 16px;
 
