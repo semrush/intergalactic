@@ -24,18 +24,16 @@ SHead {
 
 SColumn {
   display: flex;
+  align-items: center;
   flex-grow: 1;
-  /* Надо подумать можно ли уменьшать */
-  /*flex-shrink: 0;*/
   font-size: 12px;
-  line-height: 16px;
-  color: var(--gray20);
+  color: var(--gray-800);
   box-sizing: border-box;
   position: relative;
 
   &:focus {
     outline: none;
-    box-shadow: inset 0 0 0 3px color-mod(var(--light-blue) a(20%));
+    box-shadow: var(--keyboard-focus);
   }
 }
 
@@ -48,15 +46,15 @@ SColumn[hidden] {
 
 SColumn[use='primary'] {
   padding: 12px;
-  border-right: 1px solid var(--mercury);
-  border-bottom: 1px solid var(--mercury);
-  background-color: var(--gray96);
+  border-right: 1px solid var(--gray-100);
+  border-bottom: 1px solid var(--gray-100);
+  background-color: var(--gray-50);
 }
 
 SColumn[use='secondary'] {
   padding: 8px;
-  border-bottom: 1px solid var(--stone);
-  background-color: #fff;
+  border-bottom: 1px solid var(--gray-100);
+  background-color: var(--white);
 }
 
 SColumn[use]:last-child {
@@ -79,28 +77,28 @@ SColumn[groupHead][use] {
 }
 
 SColumn[groupHead][use='primary'] {
-  border-bottom: 1px solid var(--mercury);
+  border-bottom: 1px solid var(--gray-100);
 }
 
 SColumn[groupHead][use='secondary'] {
-  border-bottom: 1px solid var(--stone);
+  border-bottom: 1px solid var(--gray-100);
 }
 
 SColumn[sortable] {
   cursor: pointer;
 
   &[use='primary']:hover {
-    background-color: var(--mercury);
+    background-color: var(--gray-100);
   }
 }
 
 SColumn[active][use='primary'] {
-  background-color: var(--mercury);
+  background-color: var(--gray-100);
 }
 
 SColumn[resizable] {
   &:hover:after {
-    background: var(--stone);
+    background: var(--gray-100);
   }
 
   &:after {
@@ -122,12 +120,12 @@ SColumn[fixed] {
 }
 
 SSortIcon {
-  margin-left: 4px;
-  color: var(--stone);
+  fill: var(--gray-300);
+  margin-left: 6px;
 }
 
 SSortIcon[active] {
-  fill: var(--asphalt);
+  fill: var(--gray-400);
 }
 
 SBodyWrapper {
@@ -151,7 +149,7 @@ SRow {
 SRow[active] > SCell:not([theme]),
 SRow:hover > SCell:not([theme]),
 SRow SCell:hover + SGroupCell SCell:not([theme]) {
-  background-color: color-mod(var(--gray-100) blend(#fff 50%));
+  background-color: color-mod(var(--gray-100) blend(var(--white) 50%));
 }
 
 /* MUTED THEME */
@@ -168,50 +166,50 @@ SRow[theme='muted'] SCell:hover + SGroupCell SCell:not([theme]) {
 
 /* INFO THEME */
 SRow[theme='info'] SCell:not([theme]) {
-  background-color: var(--blue50);
+  background-color: var(--blue-50);
 }
 
 SRow:hover > SCell[theme='info'],
 SRow[theme='info'][active] > SCell:not([theme]),
 SRow[theme='info']:hover > SCell:not([theme]),
 SRow[theme='info'] SCell:hover + SGroupCell SCell:not([theme]) {
-  background-color: var(--blue100);
+  background-color: var(--blue-100);
 }
 
 /* SUCCESS THEME */
 SRow[theme='success'] SCell:not([theme]) {
-  background-color: var(--green50);
+  background-color: var(--green-50);
 }
 
 SRow:hover > SCell[theme='success'],
 SRow[theme='success'][active] > SCell:not([theme]),
 SRow[theme='success']:hover > SCell:not([theme]),
 SRow[theme='success'] SCell:hover + SGroupCell SCell:not([theme]) {
-  background-color: var(--green100);
+  background-color: var(--green-100);
 }
 
 /* WARNING THEME */
 SRow[theme='warning'] SCell:not([theme]) {
-  background-color: var(--orange50);
+  background-color: var(--orange-50);
 }
 
 SRow:hover > SCell[theme='warning'],
 SRow[theme='warning'][active] > SCell:not([theme]),
 SRow[theme='warning']:hover > SCell:not([theme]),
 SRow[theme='warning'] SCell:hover + SGroupCell SCell:not([theme]) {
-  background-color: var(--orange100);
+  background-color: var(--orange-100);
 }
 
 /* DANGER THEME */
 SRow[theme='danger'] SCell:not([theme]) {
-  background-color: var(--red50);
+  background-color: var(--red-50);
 }
 
 SRow:hover > SCell[theme='danger'],
 SRow[theme='danger'][active] > SCell:not([theme]),
 SRow[theme='danger']:hover > SCell:not([theme]),
 SRow[theme='danger'] SCell:hover + SGroupCell SCell:not([theme]) {
-  background-color: var(--red100);
+  background-color: var(--red-100);
 }
 
 SRow[positioned] {
@@ -221,11 +219,12 @@ SRow[positioned] {
 SCell {
   display: flex;
   flex: 1;
+  flex-basis: auto;
   font-size: 14px;
-  color: var(--gray20);
+  color: var(--gray-20);
   line-height: 20px;
   box-sizing: border-box;
-  border-bottom: 1px solid var(--mercury);
+  border-bottom: 1px solid var(--gray-100);
   overflow: hidden;
   white-space: nowrap;
 }
@@ -233,13 +232,13 @@ SCell {
 SCell[use='primary'] {
   padding: 12px;
   min-height: 45px;
-  background-color: #fff;
+  background-color: var(--white);
 }
 
 SCell[use='secondary'] {
   padding: 8px;
   min-height: 37px;
-  background-color: #fff;
+  background-color: var(--white);
 }
 
 SCell[fixed] {
@@ -252,19 +251,19 @@ SCell[theme='muted'] {
 }
 
 SCell[theme='info'] {
-  background-color: var(--blue50);
+  background-color: var(--blue-50);
 }
 
 SCell[theme='success'] {
-  background-color: var(--green50);
+  background-color: var(--green-50);
 }
 
 SCell[theme='warning'] {
-  background-color: var(--orange50);
+  background-color: var(--orange-50);
 }
 
 SCell[theme='danger'] {
-  background-color: var(--red50);
+  background-color: var(--red-50);
 }
 
 SScrollAreaBar[orientation='horizontal'] {
@@ -288,6 +287,6 @@ SScrollAreaBar[orientation='horizontal'] {
 SHeightHold {
   position: absolute;
   top: 0;
-  width: 100px;
-  /* pointer-events: none; */
+  width: 0;
+  pointer-events: none;
 }
