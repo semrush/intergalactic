@@ -78,6 +78,22 @@ SAddon[disabled] {
   pointer-events: none;
 }
 
+SConfirmIcon {
+  color: var(--green-300);
+  cursor: pointer;
+}
+SConfirmIcon:hover {
+  color: var(--green-400);
+}
+
+SCancelIcon {
+  color: var(--gray-300);
+  cursor: pointer;
+}
+SCancelIcon:hover {
+  color: var(--gray-400);
+}
+
 SInlineInput[focused] {
   z-index: 1;
 }
