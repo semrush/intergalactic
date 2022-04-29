@@ -236,6 +236,9 @@ const ConfirmControl: React.FC<ConfirmControlAsProps> = (props) => {
     ) as React.ReactElement;
   }
 
+  const sstyles = sstyled(props.styles);
+  const sConfirmIconStyles = sstyles.cn('SConfirmIcon', {});
+
   return sstyled(props.styles)(
     <SAddon render={Box} onKeyDown={handleKeydown}>
       {hasChildren ? (
@@ -246,9 +249,9 @@ const ConfirmControl: React.FC<ConfirmControlAsProps> = (props) => {
             tag={props.icon ?? CheckM}
             aria-label={`${title} ${props.value ?? ''}`}
             role="button"
-            interactive
-            color="green-300"
             onClick={handleConfirm}
+            className={sConfirmIconStyles.className}
+            style={sConfirmIconStyles.style}
           />
           <Tooltip.Popper p={3}>{props.title}</Tooltip.Popper>
         </Tooltip>
@@ -287,6 +290,9 @@ const CancelControl: React.FC<CancelControlAsProps> = (props) => {
     ) as React.ReactElement;
   }
 
+  const sstyles = sstyled(props.styles);
+  const sCancelIconStyles = sstyles.cn('SCancelIcon', {});
+
   return sstyled(props.styles)(
     <SAddon render={Box} onKeyDown={handleKeydown}>
       {hasChildren ? (
@@ -297,9 +303,9 @@ const CancelControl: React.FC<CancelControlAsProps> = (props) => {
             tag={props.icon ?? CloseM}
             aria-label={title}
             role="button"
-            interactive
-            color="gray-300"
             onClick={handleCancel}
+            className={sCancelIconStyles.className}
+            style={sCancelIconStyles.style}
           />
           <Tooltip.Popper p={3}>{title}</Tooltip.Popper>
         </Tooltip>

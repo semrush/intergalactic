@@ -7,6 +7,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### Changed
 
 - Synced colors with design.
+- Moved all color definitions to themable styles.
 
 ## [2.0.0] - 2022-04-07
 
