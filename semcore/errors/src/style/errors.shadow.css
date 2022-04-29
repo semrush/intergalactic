@@ -20,9 +20,22 @@ SInner {
 }
 
 SImageWrapper {
-  width: 240px;
-  height: 240px;
+  width: 260px;
+  height: 260px;
   margin-right: 80px;
+  @media (max-width: 420px) {
+    width: 200px;
+    height: 200px;
+  }
+}
+
+SImage {
+  width: 260px;
+  height: 260px;
+  @media (max-width: 420px) {
+    width: 200px;
+    height: 200px;
+  }
 }
 
 SWrapper {
@@ -37,6 +50,7 @@ SWrapper {
 STitle {
   font-size: var(--fs-700);
   line-height: var(--lh-700);
+  color: var(--gray-800);
   font-weight: 700;
   margin: 0 0 16px 0;
 }
@@ -44,6 +58,7 @@ STitle {
 SDescription {
   font-size: var(--fs-300);
   line-height: var(--lh-300);
+  color: var(--gray-800);
   margin: 0 0 24px 0;
 }
 
