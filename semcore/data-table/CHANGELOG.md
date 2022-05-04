@@ -2,11 +2,29 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [2.2.5] - unreleased
+## [3.0.0] - unreleased
 
 ### Fixed
 
 - Fixed styles and colors desync with design.
+
+## [2.2.7] - 2022-04-28
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/icon` [2.20.0 ~> 2.21.0], `@semcore/base-trigger` [2.6.3 ~> 2.6.4], `@semcore/accordion` [3.5.4 ~> 3.5.5]).
+
+## [2.2.6] - 2022-04-27
+
+### Fixed
+
+- Fixed columns width was usually not controlled by `w`, `wMin` and `wMax` props
+
+## [2.2.5] - 2022-04-26
+
+### Fixed
+
+- Fixed package lost typings.
 
 ## [2.2.4] - 2022-04-25
 

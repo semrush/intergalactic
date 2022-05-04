@@ -10,6 +10,12 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 - Move view `Notice use="primary"` to component `NoticeGlobal`.
 - Updated colors
 
+## [3.2.6] - 2022-04-28
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/icon` [2.20.0 ~> 2.21.0]).
+
 ## [3.2.5] - 2022-04-03
 
 ### Changed

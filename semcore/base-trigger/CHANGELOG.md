@@ -9,6 +9,12 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 - Restyling component.
 - Remove value "xl" and "s" for "size".
 
+## [2.6.4] - 2022-04-28
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/icon` [2.20.0 ~> 2.21.0]).
+
 ## [2.6.3] - 2022-03-21
 
 ### Changed
