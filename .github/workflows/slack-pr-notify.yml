@@ -3,6 +3,8 @@ name: slack-pr-notify
 on:
   pull_request_target:
     types: [assigned, opened, reopened]
+    branches:
+      - master
 
 jobs:
   slack-pr-notify:
