@@ -8,6 +8,12 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Restyling component.
 
+## [2.4.15] - 2022-04-28
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/select` [2.7.10 ~> 2.7.11]).
+
 ## [2.4.14] - 2022-04-25
 
 ### Changed

@@ -10,6 +10,12 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 - `Footer` now use inside component `Flex`
 - Updated colors
 
+## [1.6.4] - 2022-04-28
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/icon` [2.20.0 ~> 2.21.0]).
+
 ## [1.6.3] - 2022-03-21
 
 ### Changed

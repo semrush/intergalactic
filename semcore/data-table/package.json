@@ -1,7 +1,7 @@
 {
   "name": "@semcore/data-table",
   "description": "SEMRush DataTable Component",
-  "version": "2.2.4",
+  "version": "2.2.7",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -9,7 +9,7 @@
   "author": "Roman Lysov <r.lysov@semrush.com>",
   "license": "MIT",
   "scripts": {
-    "build": "build --source=js",
+    "build": "build --source=ts",
     "test": "jest"
   },
   "dependencies": {

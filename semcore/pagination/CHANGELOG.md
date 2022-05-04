@@ -9,6 +9,12 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 - Restyling component.
 - Remove deprecated props "onPageChange"/"totalPagesFormatter"/"label"
 
+## [2.5.1] - 2022-04-28
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/icon` [2.20.0 ~> 2.21.0]).
+
 ## [2.5.0] - 2022-04-25
 
 ### Fixed

@@ -8,7 +8,7 @@ import { callAllEventHandlers } from '@semcore/utils/lib/assignProps';
 import { flattenColumns, getFixedStyle, getScrollOffsetValue } from './utils';
 import type { Column } from './types';
 import logger from '@semcore/utils/lib/logger';
-import type ResizeObserverCallback from 'resize-observer-polyfill';
+import 'resize-observer-polyfill';
 
 import scrollStyles from './style/scroll-area.shadow.css';
 
