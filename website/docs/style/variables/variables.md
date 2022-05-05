@@ -76,7 +76,7 @@ In normal state controls with transparent background has opacity of 0 – 15%.
 
 |                   | Styles and variables                                                                                                                                                            |
 | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Focus**         | `--keyborad-focus`. It's `0 0 0 3px rgba(blue-400, .3);`. For `normal` and `active` states, the focus color is `--blue-400`. For `invalid` and `valid` states see colors below. |
+| **Focus**         | `--keyboard-focus`. It's `0 0 0 3px rgba(blue-400, .3);`. For `normal` and `active` states, the focus color is `--blue-400`. For `invalid` and `valid` states see colors below. |
 | **Invalid focus** | `border-color: 0 0 0 3px rgba(red-400, .3);`                                                                                                                                    |
 | **Valid focus**   | `border-color: 0 0 0 3px rgba(green-400, .3);`                                                                                                                                  |
 

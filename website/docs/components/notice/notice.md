@@ -219,11 +219,11 @@ It differs from the regular one – it is attached to the header and stretched t
 
 ### Global notice
 
-The default color of this notice is `--wall`.
+The default color of this notice is `--gray-400`.
 
 ![global-notice](static/gnotice-default.png)
 
-If necessary, you can give it a different color. For example, `--violet`, `--light-blue` or other from [our palette](/style/palette/).
+If necessary, you can give it a different color. For example, `--violet-400`, `--blue-400` or other from [our palette](/style/palette/).
 
 ![global-notice](static/gnotice-custom.png)
 

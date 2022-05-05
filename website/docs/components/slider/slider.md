@@ -41,7 +41,7 @@ Default component sizes:
 Default component styles:
 
 - bar color — `#000, 0.1`
-- progress and knob color — `--light-blue`
+- progress and knob color — `--blue-400`
 
 ![default slider styles](static/default.png)
 

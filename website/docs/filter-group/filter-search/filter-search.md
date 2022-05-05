@@ -97,9 +97,9 @@ The minimum width of 160px for this kind of input must always be specified, othe
 
 This is an optional functionality. It's used extensively in Backlinks and Link Buildings. And it helps the user to find on the page what he was looking for.
 
-| Appearance example                               | Styles                                                                                                                                                                             |
-| ------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ![highlighting results](static/highlighting.png) | Use `--light-orange` color with 40% opacity for highlighting: `background-color: rgb(249 176 88,40%);`. The height of the highlighted area must match the line-height of the line. |
+| Appearance example                               | Styles                                                                                                                                                                           |
+| ------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ![highlighting results](static/highlighting.png) | Use `--orange-200` color with 40% opacity for highlighting: `background-color: rgb(249 176 88,40%);`. The height of the highlighted area must match the line-height of the line. |
 
 @## Nothing found
 

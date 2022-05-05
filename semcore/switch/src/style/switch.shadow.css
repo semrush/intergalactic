@@ -99,7 +99,7 @@ SToggle[checked][theme='custom'] {
 }
 
 SToggle[keyboardFocused] {
-  box-shadow: var(--keyborad-focus);
+  box-shadow: var(--keyboard-focus);
 }
 
 SToggle[neighborLocation='left'] {

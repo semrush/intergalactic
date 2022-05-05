@@ -42,7 +42,7 @@ SValue {
   }
 
   &::placeholder {
-    color: var(--gray70);
+    color: var(--gray-300);
   }
 
   &[disabled] {

@@ -128,7 +128,7 @@ SInput[state='normal'] {
 
   & SValue:focus ~ SOutline {
     border-color: var(--blue-400);
-    box-shadow: var(--keyborad-focus);
+    box-shadow: var(--keyboard-focus);
   }
 }
 SInput[state='valid'] {

@@ -6,8 +6,8 @@ tabName: Design
 @## Description
 
 Variables allow us to use color names and not to remember their HEX values. The same color gradations have a number
-at the end (for example, for `css` files you should use `var(--gray40)`, for our components you should use
-`propName="gray40"`).
+at the end (for example, for `css` files you should use `var(--gray-600)`, for our components you should use
+`propName="gray-600"`).
 
 > To enable CSS variables, use `@import '~@semcore/utils/style/var.css';`
 

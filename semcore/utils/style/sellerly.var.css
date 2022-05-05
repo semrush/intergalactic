@@ -13,5 +13,5 @@
   --rose: #e60563;
   --ghost-white: #f2f0fc;
   --ghost-white50: #f7f6fd;
-  --keyborad-focus: 0 0 0 3px color-mod(var(--light-ultramarine) a(30%));
+  --keyboard-focus: 0 0 0 3px color-mod(var(--light-ultramarine) a(30%));
 }

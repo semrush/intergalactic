@@ -59,7 +59,7 @@ STabPanelItem[disabled] {
 }
 
 STabPanelItem[keyboardFocused] {
-  box-shadow: var(--keyborad-focus);
+  box-shadow: var(--keyboard-focus);
 }
 
 STabPanelItem[selected] {
@@ -69,7 +69,7 @@ STabPanelItem[selected] {
   flex-shrink: 0;
 
   &:hover {
-    color: var(--denim-blue);
+    color: var(--blue-500);
   }
 }
 

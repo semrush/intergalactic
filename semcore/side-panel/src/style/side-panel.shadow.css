@@ -107,7 +107,7 @@ SClose {
 }
 
 SClose[keyboardFocused] {
-  box-shadow: var(--keyborad-focus);
+  box-shadow: var(--keyboard-focus);
 }
 
 SBack {

@@ -57,7 +57,7 @@ SLinkTrigger[disabled] {
 }
 
 SLinkTrigger[keyboardFocused] {
-  box-shadow: var(--keyborad-focus);
+  box-shadow: var(--keyboard-focus);
   z-index: 1;
 }
 

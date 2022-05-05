@@ -31,7 +31,7 @@ SDropdownMenuItem {
 
 SDropdownMenuItem[highlighted] {
   z-index: 1;
-  box-shadow: var(--keyborad-focus) inset;
+  box-shadow: var(--keyboard-focus) inset;
 }
 
 SDropdownMenuItem[selected] {
@@ -104,6 +104,6 @@ SDropdownMenuItemAddon {
 
 SPopper {
   &:focus {
-    box-shadow: var(--keyborad-focus);
+    box-shadow: var(--keyboard-focus);
   }
 }
