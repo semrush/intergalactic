@@ -31,6 +31,8 @@
     "directory": "semcore/input-tags"
   },
   "devDependencies": {
-    "@semcore/jest-preset-ui": "1.0.0"
+    "@semcore/jest-preset-ui": "1.0.0",
+    "@semcore/tooltip": "*",
+    "@semcore/select": "*"
   }
 }
