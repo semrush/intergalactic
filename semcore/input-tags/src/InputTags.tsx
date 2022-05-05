@@ -1,5 +1,5 @@
 import React, { ComponentProps, HTMLAttributes } from 'react';
-import createComponent, { Component, sstyled, Root, PropGetterFn } from '@semcore/core';
+import createComponent, { Component, sstyled, Root, PropGetterFn, Merge } from '@semcore/core';
 import Input, { IInputProps, IInputValueProps } from '@semcore/input';
 import ScrollArea, { IScrollAreaProps } from '@semcore/scroll-area';
 import Tag, { ITagProps } from '@semcore/tag';
