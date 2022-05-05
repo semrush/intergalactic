@@ -150,7 +150,6 @@
     "tools/code-mod",
     "tools/continuous-delivery",
     "tools/dep-checker",
-    "tools/eslint-plugin-semcore",
     "tools/flags-sprite",
     "tools/gcs-upload",
     "tools/generator-component",
