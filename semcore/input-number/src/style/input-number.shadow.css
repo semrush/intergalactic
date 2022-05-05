@@ -19,20 +19,14 @@ SControls {
   box-sizing: border-box;
 }
 
-SControls[size='m'] {
-  width: 25px;
-}
-
-SControls[size='l'] {
-  width: 30px;
-}
-
 SControls[showControls] {
   visibility: visible;
 }
 
 SUp,
 SDown {
+  padding: 0;
+  width: 16px;
   color: var(--gray-300);
   box-sizing: border-box;
   display: inline-flex;
@@ -48,6 +42,14 @@ SDown {
   &:hover {
     color: var(--gray-600);
   }
+}
+
+SUp {
+  padding-bottom: 1px;
+}
+
+SDown {
+  padding-top: 1px;
 }
 
 SValue {
@@ -66,20 +68,4 @@ SValue[disabled] ~ SControls {
   opacity: var(--disabled-opacity);
   cursor: default;
   pointer-events: none;
-}
-
-SUp[size='m'] {
-  padding: 8px 8px 1px;
-}
-
-SDown[size='m'] {
-  padding: 1px 8px 8px;
-}
-
-SUp[size='l'] {
-  padding: 13px 8px 1px;
-}
-
-SDown[size='l'] {
-  padding: 1px 8px 13px;
 }

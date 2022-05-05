@@ -20,41 +20,21 @@ SInputTags > div[data-ui-name='ScrollArea.Bar'][orientation='vertical'] {
 SInputTags[size='m'] {
   min-height: 28px;
   height: auto;
-  padding: 1px 4px;
+  padding: 2px 6px;
 }
 
 SInputTags[size='l'] {
   min-height: 40px;
   height: auto;
-  padding: 1px 6px;
+  padding: 2px 10px;
 }
 
-SInputTags[size='xl'] {
-  min-height: 42px;
-  height: auto;
-  padding: 1px 10px;
-}
-
-STag[size='s'],
 STag[size='m'] {
   margin: 2px;
 }
 
 STag[size='l'] {
   margin: 4px 2px;
-}
-
-STag[size='s'] {
-  font-size: 12px;
-  line-height: 16px;
-  height: 20px;
-}
-
-STag[size='l'],
-STag[size='m'] {
-  font-size: 14px;
-  line-height: 20px;
-  height: 28px;
 }
 
 STag[editable] {

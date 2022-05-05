@@ -7,8 +7,8 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### BREAK
 
 - Restyling component.
-- Remove logger
-- Remove value "xl" for "size".
+- Removed deprecated props `onSelect, optionCount, triggerType`.
+- Removed value "xl" for "size".
 
 ## [2.3.12] - 2022-04-25
 

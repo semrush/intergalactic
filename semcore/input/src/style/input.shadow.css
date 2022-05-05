@@ -103,18 +103,17 @@ SInput[size='m'] {
 }
 
 SValue[size='m'],
-SAddon[size='m'] {
+SAddon[size='m'],
+SValue[size='l'],
+SAddon[size='l'] {
   padding: 0 8px;
 }
 
 SInput[size='l'] {
   font-size: var(--fs-300);
   height: var(--form-control-l);
-}
-
-SValue[size='l'],
-SAddon[size='l'] {
-  padding: 0 12px;
+  padding-left: 4px;
+  padding-right: 4px;
 }
 
 SInput[focused] {

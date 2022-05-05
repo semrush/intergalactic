@@ -19,32 +19,24 @@ SInner {
   }
 }
 
-SImageWrapper {
-  width: 260px;
-  height: 260px;
-  margin-right: 80px;
-  @media (max-width: 420px) {
-    width: 200px;
-    height: 200px;
-  }
-}
-
+SImageWrapper,
 SImage {
   width: 260px;
   height: 260px;
-  @media (max-width: 420px) {
+  @media (max-width: 320px) {
     width: 200px;
     height: 200px;
   }
 }
 
+SImageWrapper {
+  margin-right: 40px;
+}
+
 SWrapper {
-  flex: 1 0 320px;
+  flex: 1 0 300px;
+  max-width: 100%;
   margin-top: 32px;
-  @media (max-width: 920px) {
-    flex: 1 0 300px;
-    max-width: 100%;
-  }
 }
 
 STitle {
