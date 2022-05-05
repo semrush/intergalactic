@@ -5,7 +5,7 @@ import createComponent, { Component, Merge, sstyled, Root } from '@semcore/core'
 import style from './style/format-text.shadow.css';
 
 export interface IFormatTextProps extends IBoxProps {
-  size?: 'm' | 'l' | 'xl';
+  size?: 's' | 'm' | 'l';
 }
 
 class FormatText extends Component<IFormatTextProps> {

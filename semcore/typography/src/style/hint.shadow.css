@@ -44,7 +44,7 @@ SHint SAddon {
 
 SText {
   border-bottom-width: 1px;
-  border-bottom-style: dotted;
+  border-bottom-style: dashed;
   border-color: currentColor;
 }
 

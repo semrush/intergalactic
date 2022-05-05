@@ -30,7 +30,7 @@ const Demo = () => {
             <Text size={300} bold tag="p" mb={1}>
               Work with your team!
             </Text>
-            <Text mb={4} size={100} tag="p">
+            <Text mb={4} size={200} tag="p">
               Well, if you like burgers give 'em a try sometime.
             </Text>
             <Button theme="invert" use="primary" onClick={changeVisible(false)}>
