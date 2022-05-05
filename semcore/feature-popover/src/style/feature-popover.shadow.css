@@ -8,6 +8,7 @@ SFeaturePopover {
   border-radius: var(--rounded-m);
   box-sizing: border-box;
   background-color: var(--yellow-100);
+  color: var(--gray-800);
   box-shadow: 0 1px 12px rgba(25, 27, 35, 0.15);
 }
 
