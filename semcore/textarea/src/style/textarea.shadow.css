@@ -38,7 +38,7 @@ STextarea[size='l'] {
 
 STextarea[state='normal'] {
   &:focus {
-    box-shadow: var(--keyborad-focus);
+    box-shadow: var(--keyboard-focus);
     border-color: var(--blue-400);
   }
 }

@@ -95,7 +95,7 @@ STabLineItem[disabled] {
 }
 
 STabLineItem[keyboardFocused] {
-  box-shadow: var(--keyborad-focus);
+  box-shadow: var(--keyboard-focus);
 }
 
 SText {

@@ -154,7 +154,7 @@ The use of external links shall reduced to minimum so as not to lead users away 
 
 ### Styles
 
-- To indicate the transition to an external resource, use `LinkExternal`, size `XS`, color `var(--stone)`.
+- To indicate the transition to an external resource, use `LinkExternal`, size `XS`, color `var(--gray-300)`.
 - It should always have a 4 px left intend.
 - When hovering over the icon it shall darken by 8% (use the `interactive` property for the icon color) 😏
 - Use the link styles if you need to select an icon for going to an external resource.

@@ -25,8 +25,8 @@ SSO from the design point of view consists of:
 - Modal window has H4 heading (25px, `--fs-500`). Page with a form has H2 heading (36px, `--fs-700`).
 - Additional text under the heading — 14px (`--fs-200`).
 - Size of the hint text — 12px (`--fs-100`).
-- The color of the main text (both the title and the text below it) is always #333333 (`--gray20`).
-- The color of the tooltips at the bottom of the form - #757575 (`--gray60`).
+- The color of the main text (both the title and the text below it) is always #333333 (`--gray-800`).
+- The color of the tooltips at the bottom of the form - #757575 (`--gray-500`).
 
 @## Spacing
 

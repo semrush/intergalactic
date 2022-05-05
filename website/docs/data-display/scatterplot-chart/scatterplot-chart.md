@@ -49,7 +49,7 @@ A scatterplot chart must contain:
 - Text size — 12px.
 
 If the value inside the scatterplot dot is bigger than 100, show it as 99+.
-For text color use the same color as the dot but pick the next shade (e.g. `--blue300` → `--blue400`).
+For text color use the same color as the dot but pick the next shade (e.g. `--blue-300` → `--blue-400`).
 
 | Case             | Appearance example                                   |
 | ---------------- | ---------------------------------------------------- |

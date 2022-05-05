@@ -6,7 +6,7 @@ STimePicker {
 }
 
 STimePicker[disabled] {
-  color: color-mod(var(--gray20) a(30%));
+  color: color-mod(var(--gray-800) a(30%));
   cursor: default;
 }
 
@@ -89,7 +89,7 @@ SPickerFormat[disabled] {
 }
 
 SPickerFormat[keyboardFocused] {
-  box-shadow: var(--keyborad-focus);
+  box-shadow: var(--keyboard-focus);
 }
 
 STimePickerSeparator[disabled] {

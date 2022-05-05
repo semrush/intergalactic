@@ -143,7 +143,7 @@ For all empty states of the table, we keep the header. If it has sorting icons, 
 
 ### There is no data in the cell
 
-- Show the `n/a` text in the secondary text color `var(--gray60)`.
+- Show the `n/a` text in the secondary text color `var(--gray-500)`.
 - It is recommended to show a tooltip with an explanation that the data is not available (and for what reason).
 
 ![table cell with n/a](static/cell-na.png)
@@ -175,7 +175,7 @@ This is the state when something broke in a particular cell and we can't show th
 
 A cell in a table may be blocked by a limit or by the need to take some action to unlock the data.
 
-- Use the `LockXS` icon in the color `var(--stone)`.
+- Use the `LockXS` icon in the color `var(--gray-300)`.
 - On the hover, we always show a tooltip with an explanation of why the cell is blocked and, if possible, how to get rid of this state.
 
 ![locked table cell](static/cell-locked.png)

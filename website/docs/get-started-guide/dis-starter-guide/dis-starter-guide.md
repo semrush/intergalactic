@@ -26,7 +26,7 @@ We follow these core principles when building our interfaces:
 > - blue tinted gray palette — used for the secondary elements in the interface
 > - gray palette — used for text
 
-We use variables to avoid having to keep in mind the HEX values of all colors. Each color has a name, while gradations of the same color have an added number at the end (for example, var(--gray40)).
+We use variables to avoid having to keep in mind the HEX values of all colors. Each color has a name, while gradations of the same color have an added number at the end (for example, `var(--gray-600)`).
 
 To make things more convenient, the colors in our core components library in Figma are divided into meaningful groups. We hope it's not too confusing for you!
 
@@ -41,7 +41,7 @@ Go to [Palette](/style/palette/) to learn more about our color system.
 
 @## Typography
 
-> **TL;DR or main thoughts**: our main font is Inter. The main text color is #333 (`var(--gray20)` in our variables), while the secondary text color is #757575 (`var(--gray60)` in our variables).
+> **TL;DR or main thoughts**: our main font is Inter. The main text color is #333 (`var(--gray-800)` in our variables), while the secondary text color is #757575 (`var(--gray-500)` in our variables).
 
 Our type scale is based on the modular scale with the base of a 12px font size and a 1.2 ratio.
 

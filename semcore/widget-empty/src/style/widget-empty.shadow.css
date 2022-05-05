@@ -15,7 +15,7 @@ SImage {
 }
 
 STitle {
-  color: var(--gray60);
+  color: var(--gray-500);
 }
 
 STitle {
@@ -28,7 +28,7 @@ SDescription {
   text-align: center;
   font-size: var(--fs-200);
   line-height: var(--lh-200);
-  color: var(--gray60);
+  color: var(--gray-500);
   max-width: 400px;
 }
 

@@ -37,7 +37,7 @@ Use this validation to make it easier for the user to fill out forms and filters
 
 @## Appearance
 
-All form elements have the same `invalid` state: a `var(--orange)` border and a tooltip with the `warning` theme when focused.
+All form elements have the same `invalid` state: a `var(--orange-400)` border and a tooltip with the `warning` theme when focused.
 
 ![Checkbox](./static/checkbox-validation.png)
 

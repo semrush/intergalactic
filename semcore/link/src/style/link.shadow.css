@@ -44,7 +44,7 @@ SLink {
 }
 
 SLink[keyboardFocused] {
-  box-shadow: var(--keyborad-focus);
+  box-shadow: var(--keyboard-focus);
 }
 
 SLink[disabled] {

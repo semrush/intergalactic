@@ -90,43 +90,43 @@ SText[size='m'] {
 
 SCheckbox {
   &[state='normal']:before {
-    border-color: var(--stone-light);
+    border-color: var(--gray-200);
   }
 
   &[state='normal'][keyboardFocused]:before {
-    border-color: var(--light-blue);
+    border-color: var(--blue-400);
   }
 }
 
 SControl:checked {
   & ~ SCheckbox[state='normal']:before,
   & ~ SCheckbox[state='invalid']:before {
-    background-color: var(--light-blue);
-    border-color: var(--light-blue);
+    background-color: var(--blue-400);
+    border-color: var(--blue-400);
   }
 }
 
 SControl:indeterminate {
   & ~ SCheckbox[state='normal']:before {
-    background-color: var(--light-blue);
-    border-color: var(--light-blue);
+    background-color: var(--blue-400);
+    border-color: var(--blue-400);
   }
 }
 
 SCheckbox[state='invalid'] {
   &:before {
-    border-color: var(--red);
+    border-color: var(--red-400);
   }
 
   &[keyboardFocused]:before {
-    box-shadow: 0 0 0 3px color-mod(var(--red) a(20%));
+    box-shadow: 0 0 0 3px color-mod(var(--red-400) a(20%));
   }
 }
 
 SCheckbox[state='normal'],
 SControl:checked ~ SCheckbox[state='invalid'] {
   &[keyboardFocused]:before {
-    box-shadow: var(--keyborad-focus);
+    box-shadow: var(--keyboard-focus);
   }
 }
 
@@ -137,8 +137,8 @@ SControl:disabled ~ SCheckbox:before {
 
 SControl:checked ~ SCheckbox {
   &[state='invalid']:before {
-    background-color: var(--red);
-    border-color: var(--red);
+    background-color: var(--red-400);
+    border-color: var(--red-400);
   }
 }
 
@@ -160,8 +160,8 @@ SControl:indeterminate ~ SCheckbox {
   }
 
   &[state='invalid']:before {
-    background-color: var(--red);
-    border-color: var(--red);
+    background-color: var(--red-400);
+    border-color: var(--red-400);
   }
 }
 
