@@ -1,5 +1,5 @@
 import React, { ComponentProps, HTMLAttributes } from 'react';
-import createComponent, { Component, Merge, PropGetter, sstyled, Root } from '@semcore/core';
+import createComponent, { Component, sstyled, Root, PropGetterFn } from '@semcore/core';
 import Input, { IInputProps, IInputValueProps } from '@semcore/input';
 import ScrollArea, { IScrollAreaProps } from '@semcore/scroll-area';
 import Tag, { ITagProps } from '@semcore/tag';
@@ -9,7 +9,7 @@ import style from './style/input-tag.shadow.css';
 
 export interface IInputTagsValueProps extends IInputValueProps {}
 
-export type InputTagsSize = 'xl' | 'l' | 'm';
+export type InputTagsSize = 'l' | 'm';
 
 export interface IInputTagsProps extends Omit<IInputProps, 'size'>, IScrollAreaProps {
   /**
@@ -36,14 +36,13 @@ export interface IInputTagsTagProps extends ITagProps {
 }
 
 export interface IInputTagsContext extends IInputTagsProps {
-  getValueProps: PropGetter<InputTags['getValueProps']>;
-  getTagProps: PropGetter<InputTags['getTagProps']>;
+  getValueProps: PropGetterFn;
+  getTagProps: PropGetterFn;
 }
 
 const MAP_SIZES_TAG = {
-  xl: 'l',
-  l: 'm',
-  m: 's',
+  l: 'l',
+  m: 'm',
 };
 
 class InputTags extends Component<IInputTagsProps> {

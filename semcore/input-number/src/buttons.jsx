@@ -17,12 +17,6 @@ const svg = (orientation, width, height) => (
 );
 
 export default {
-  up: {
-    l: svg('up', 10, 5),
-    m: svg('up', 8, 4),
-  },
-  down: {
-    l: svg('down', 10, 5),
-    m: svg('down', 8, 4),
-  },
+  up: svg('up', 10, 5),
+  down: svg('down', 10, 5),
 };
