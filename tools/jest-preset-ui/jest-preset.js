@@ -1,6 +1,6 @@
 module.exports = {
   testMatch: ['**/(semcore|tools)/**/?(*.)+(spec|test).[jt]s?(x)'],
-  setupFilesAfterEnv: [`${__dirname}/src/setupTests.js`],
+  setupFilesAfterEnv: [`${__dirname}/src/setupTests.js`, 'jest-canvas-mock'],
   transform: {
     '^.+\\.(jsx?|tsx?)$': `${__dirname}/src/babel.config.js`,
   },
