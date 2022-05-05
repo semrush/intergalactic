@@ -12,7 +12,7 @@ jobs:
           token: ${{ secrets.BOT_ACCOUNT_GITHUB_TOKEN }}
           dispatch-type: repository
           issue-type: pull-request
-          reaction-type: eyes
+          reactions: eyes
           permission: |
             write
           commands: |
