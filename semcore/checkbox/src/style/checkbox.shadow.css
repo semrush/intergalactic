@@ -98,19 +98,15 @@ SCheckbox {
   }
 }
 
-SControl:checked {
-  & ~ SCheckbox[state='normal']:before,
-  & ~ SCheckbox[state='invalid']:before {
-    background-color: var(--blue-400);
-    border-color: var(--blue-400);
-  }
+SControl[checked] ~ SCheckbox[state='normal']:before,
+SControl[checked] ~ SCheckbox[state='invalid']:before {
+  background-color: var(--blue-400);
+  border-color: var(--blue-400);
 }
 
-SControl:indeterminate {
-  & ~ SCheckbox[state='normal']:before {
-    background-color: var(--blue-400);
-    border-color: var(--blue-400);
-  }
+SControl[indeterminate] ~ SCheckbox[state='normal']:before {
+  background-color: var(--blue-400);
+  border-color: var(--blue-400);
 }
 
 SCheckbox[state='invalid'] {
@@ -124,67 +120,59 @@ SCheckbox[state='invalid'] {
 }
 
 SCheckbox[state='normal'],
-SControl:checked ~ SCheckbox[state='invalid'] {
+SControl[checked] ~ SCheckbox[state='invalid'] {
   &[keyboardFocused]:before {
     box-shadow: var(--keyboard-focus);
   }
 }
 
-SControl:disabled ~ SCheckbox:before {
+SControl[disabled] ~ SCheckbox:before {
   opacity: var(--disabled-opacity);
   cursor: default;
 }
 
-SControl:checked ~ SCheckbox {
+SControl[checked] ~ SCheckbox {
   &[state='invalid']:before {
     background-color: var(--red-400);
     border-color: var(--red-400);
   }
 }
 
-SControl:indeterminate ~ SCheckbox {
-  &:after {
-    background-color: #fff;
-    margin: auto;
-    border-radius: 1px;
-  }
-
-  &[size='l']:after {
-    width: 12px;
-    height: 2px;
-  }
-
-  &[size='m']:after {
-    width: 8px;
-    height: 2px;
-  }
-
-  &[state='invalid']:before {
-    background-color: var(--red-400);
-    border-color: var(--red-400);
-  }
+SControl[indeterminate] ~ SCheckbox:after {
+  background-color: #fff;
+  margin: auto;
+  border-radius: 1px;
 }
 
-SCheckbox[theme] {
-  &[state='normal']:before {
-    border-color: var(--theme);
-  }
-  &[state='normal'][keyboardFocused]:before {
-    border-color: var(--theme);
-  }
+SControl[indeterminate] ~ SCheckbox[size='l']:after {
+  width: 12px;
+  height: 2px;
 }
 
-SControl:checked {
-  & ~ SCheckbox[theme][state='normal']:before,
-  & ~ SCheckbox[theme][state='invalid']:before {
-    background-color: var(--theme);
-    border-color: var(--theme);
-  }
+SControl[indeterminate] ~ SCheckbox[size='m']:after {
+  width: 8px;
+  height: 2px;
 }
 
-SControl:indeterminate {
-  & ~ SCheckbox[theme][state='normal']:before {
-    background-color: var(--theme);
-    border-color: var(--theme);
-  }
+SControl[indeterminate] ~ SCheckbox[state='invalid']:before {
+  background-color: var(--red-400);
+  border-color: var(--red-400);
+}
+
+SCheckbox[theme][state='normal']:before {
+  border-color: var(--theme);
+}
+SCheckbox[theme][state='normal'][keyboardFocused]:before {
+  border-color: var(--theme);
+}
+
+SControl[checked] ~ SCheckbox[theme][state='normal']:before,
+SControl[checked] ~ SCheckbox[theme][state='invalid']:before {
+  background-color: var(--theme);
+  border-color: var(--theme);
+}
+
+SControl[indeterminate] ~ SCheckbox[theme][state='normal']:before {
+  background-color: var(--theme);
+  border-color: var(--theme);
 }
