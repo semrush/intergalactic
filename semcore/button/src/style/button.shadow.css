@@ -50,15 +50,15 @@ SButton[keyboardFocused] {
 }
 
 SButton[size='m'] {
-  height: 28px;
-  min-width: 28px;
+  height: 26px;
+  min-width: 26px;
   border-radius: var(--rounded-m);
   font-size: 14px;
 }
 
 SButton[size='l'] {
-  height: 40px;
-  min-width: 40px;
+  height: 38px;
+  min-width: 38px;
   border-radius: var(--rounded-m);
   font-size: 16px;
 }
