@@ -6,7 +6,7 @@ import Close from '@semcore/icon/Close/m';
 import Select from '@semcore/select';
 import { LinkTrigger } from '@semcore/base-trigger';
 
-const TooltipContent = `Hey! Don't forget to place some useful info here 😏`;
+const tooltipContent = `Hey! Don't forget to place some useful info here 😏`;
 const options = Array(6)
   .fill('')
   .map((_, index) => ({
@@ -20,7 +20,7 @@ export default () => (
     <Card.Header>
       <Flex alignItems="center" justifyContent="space-between">
         <Flex alignItems="center">
-          <Card.Title w="234px" noWrap inline hint={TooltipContent}>
+          <Card.Title w="234px" noWrap inline hint={tooltipContent}>
             Market Traffic vs Selected Domains Trends
           </Card.Title>
         </Flex>
