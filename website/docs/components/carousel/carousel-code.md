@@ -6,17 +6,15 @@ title: Example
 
 @example image
 
+@## Dots indicators
+
+@example dots
+
 @## Content galleries inside the modal window
 
 @example content
 
-@## Galleries on the responsive page
-
-@example responsive
-
-@## Hidden controlls for move focus in hidden block
-
-You have this code
+@## Hidden controls to move focus in hidden block
 
 ```jsx
 <Carousel index={index} onIndexChange={handleChangeIndex}>

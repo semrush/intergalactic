@@ -11,7 +11,7 @@ const width = 600;
 const imageWidth = width - 75;
 
 const Demo = () => (
-  <Carousel w={width} defaultIndex={1}>
+  <Carousel w={width} defaultIndex={0}>
     <Flex alignItems="center">
       <Carousel.Prev />
       <Box style={{ overflow: 'hidden' }}>
@@ -23,20 +23,7 @@ const Demo = () => (
       </Box>
       <Carousel.Next />
     </Flex>
-    <Carousel.Indicators>
-      {({ items }) =>
-        items.map((indicatorProps, index) => (
-          <Carousel.Indicator
-            {...indicatorProps}
-            tag="img"
-            key={images[index]}
-            src={images[index]}
-            w={100}
-            h={100}
-          />
-        ))
-      }
-    </Carousel.Indicators>
+    <Carousel.Indicators />
   </Carousel>
 );
 
