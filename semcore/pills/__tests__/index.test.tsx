@@ -221,6 +221,24 @@ describe('PillGroup', () => {
     expect(await snapshot(component)).toMatchImageSnapshot();
   });
 
+  test('Should correct render for alone Item, Item.Addon', async () => {
+    const PillsSize = ({ size }) => (
+      <>
+        <Pills size={size}>
+          <Pills.Item value={1}>
+            <Pills.Item.Addon tag={Globe} />
+          </Pills.Item>
+        </Pills>
+        <Pills size={size}>
+          <Pills.Item value={1}>Pill</Pills.Item>
+        </Pills>
+      </>
+    );
+
+    expect(await snapshot(<PillsSize size="m" />)).toMatchImageSnapshot();
+    expect(await snapshot(<PillsSize size="l" />)).toMatchImageSnapshot();
+  });
+
   test('a11y', async () => {
     const { getByTestId, container } = render(
       <Pills value={1}>
