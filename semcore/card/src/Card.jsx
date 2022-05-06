@@ -3,7 +3,7 @@ import createComponent, { Component, sstyled, Root } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
 import { Text } from '@semcore/typography';
 import Tooltip from '@semcore/tooltip';
-import Info from '@semcore/icon/Info/m';
+import InfoM from '@semcore/icon/Info/m';
 
 import style from './style/card.shadow.css';
 import { isAdvanceMode } from '@semcore/utils/lib/findComponent';
@@ -36,14 +36,15 @@ class CardRoot extends Component {
 function Title(props) {
   const { styles, hint } = props;
   const STitle = Root;
-  const SIcon = Info;
+  const SIcon = InfoM;
+  const STooltip = Tooltip;
   return sstyled(styles)(
     <>
       <STitle render={Text} />
       {hint && (
-        <Tooltip title={hint}>
+        <STooltip title={hint}>
           <SIcon />
-        </Tooltip>
+        </STooltip>
       )}
     </>,
   );
