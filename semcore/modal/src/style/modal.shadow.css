@@ -41,7 +41,6 @@ SClose {
   right: 0;
   top: 0;
   padding: 12px;
-  margin: 3px;
   color: var(--gray-300);
   cursor: pointer;
   z-index: 1;

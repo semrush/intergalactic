@@ -100,8 +100,8 @@ SPill[size='m'] {
     }
 
     &:only-child {
-      margin-left: 6px;
-      margin-right: 6px;
+      margin-left: 8px;
+      margin-right: 8px;
     }
   }
 }
