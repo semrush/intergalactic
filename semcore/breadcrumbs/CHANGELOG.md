@@ -7,6 +7,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### BREAK
 
 - Restyling component.
+- Increased gap between elements to match planned design.
 
 ## [2.6.4] - 2022-04-28
 

@@ -9,7 +9,7 @@ SBreadcrumbs {
 }
 
 SSeparator {
-  margin: 0 8px;
+  margin: 0 10px 0 12px;
   color: var(--gray-300);
   display: flex;
 
