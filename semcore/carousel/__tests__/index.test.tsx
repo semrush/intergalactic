@@ -1,6 +1,7 @@
 import React from 'react';
-import { testing, shared as testsShared } from '@semcore/jest-preset-ui';
+import { testing, shared as testsShared, snapshot } from '@semcore/jest-preset-ui';
 const { axe, cleanup, fireEvent, render } = testing;
+import { Box, Flex } from '@semcore/flex-box';
 
 const { shouldSupportClassName, shouldSupportRef } = testsShared;
 import Carousel from '../src';
@@ -308,5 +309,80 @@ describe('Carousel.Next', () => {
     const results = await axe(container);
 
     expect(results).toHaveNoViolations();
+  });
+});
+
+describe('Carousel visual regression', () => {
+  /*
+    Indicators are not displayed due to props hoisting architecture.
+  */
+  test('image indicators', async () => {
+    const images = [
+      `https://picsum.photos/id/1023/600/400`,
+      `https://picsum.photos/id/1024/600/400`,
+      `https://picsum.photos/id/1025/600/400`,
+    ];
+    const width = 600;
+    const imageWidth = width - 75;
+
+    const component = (
+      <Carousel w={width} defaultIndex={1}>
+        <Flex alignItems="center">
+          <Carousel.Prev />
+          <Box style={{ overflow: 'hidden' }}>
+            <Carousel.Container>
+              {images.map((url) => (
+                <Carousel.Item tag="img" key={url} src={url} w={imageWidth} />
+              ))}
+            </Carousel.Container>
+          </Box>
+          <Carousel.Next />
+        </Flex>
+        <Carousel.Indicators>
+          {({ items }) =>
+            items.map((indicatorProps, index) => (
+              <Carousel.Indicator
+                {...indicatorProps}
+                tag="img"
+                key={images[index]}
+                src={images[index]}
+                w={100}
+                h={100}
+              />
+            ))
+          }
+        </Carousel.Indicators>
+      </Carousel>
+    );
+
+    expect(await snapshot(component)).toMatchImageSnapshot();
+  });
+  test('dot indicators', async () => {
+    const images = [
+      `https://picsum.photos/id/1023/600/400`,
+      `https://picsum.photos/id/1024/600/400`,
+      `https://picsum.photos/id/1025/600/400`,
+    ];
+    const width = 600;
+    const imageWidth = width - 75;
+
+    const component = (
+      <Carousel w={width}>
+        <Flex alignItems="center">
+          <Carousel.Prev />
+          <Box style={{ overflow: 'hidden' }}>
+            <Carousel.Container>
+              {images.map((url) => (
+                <Carousel.Item tag="img" key={url} src={url} w={imageWidth} />
+              ))}
+            </Carousel.Container>
+          </Box>
+          <Carousel.Next />
+        </Flex>
+        <Carousel.Indicators />
+      </Carousel>
+    );
+
+    expect(await snapshot(component)).toMatchImageSnapshot();
   });
 });

@@ -13,7 +13,7 @@ const Demo = () => {
       <Modal visible={visible} onClose={() => updateVisible(false)} w={664}>
         <Carousel autoFocus tabIndex={1}>
           <Carousel.Container>
-            {[...new Array(2)].map((_, ind) => (
+            {[1, 2].map((_, ind) => (
               <Carousel.Item key={ind}>
                 <Text size={500} mb={4} bold tag="h4">
                   Heading
