@@ -72,4 +72,5 @@ You can use a label without a verb in cases when:
 
 @page switch-a11y
 @page switch-api
+@page switch-code
 @page switch-changelog
