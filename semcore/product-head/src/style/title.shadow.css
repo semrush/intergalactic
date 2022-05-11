@@ -10,10 +10,11 @@ STitle {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  color: var(--gray-800);
 }
 
 STool {
-  margin-right: 8px;
+  margin-right: 4px;
 }
 
 SName {

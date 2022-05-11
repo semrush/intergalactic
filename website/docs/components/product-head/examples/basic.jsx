@@ -48,7 +48,7 @@ export default () => {
 
         <Header.Row>
           <Title toolName="Tool Name for:">
-            <Text color="gray60" noWrap>
+            <Text color="gray-500" noWrap>
               Domain.com
             </Text>
           </Title>
@@ -68,7 +68,11 @@ export default () => {
         <Header.Row>
           <Info>
             <Info.Item label="Location:">
-              <Select value={['us']} placeholder="Select an option, sir 🧐" m="auto">
+              <Select
+                value={['us']}
+                placeholder="Select an option, sir 🧐"
+                m="auto"
+              >
                 <Select.Trigger tag={Link}>
                   United States
                   <Link.Addon tag={ChevronDownM} />
@@ -86,7 +90,11 @@ export default () => {
               </Select>
             </Info.Item>
             <Info.Item label="Device:">
-              <Select value={['desktop']} placeholder="Select an option, sir 🧐" m="auto">
+              <Select
+                value={['desktop']}
+                placeholder="Select an option, sir 🧐"
+                m="auto"
+              >
                 <Select.Trigger tag={Link}>
                   <Link.Addon tag={DesktopM} />
                   Desktop
@@ -104,7 +112,7 @@ export default () => {
                 title="Some more details why data is fresh 🌚"
                 style={{ display: 'inline-flex' }}
               >
-                <InfoM ml={1} color="stone" cursor="help" />
+                <InfoXS ml={1} color="gray-300" cursor="help" />
               </Tooltip>
             </Info.Item>
             <Info.Item>

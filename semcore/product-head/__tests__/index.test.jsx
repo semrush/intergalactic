@@ -7,63 +7,56 @@ import ProductHead, { Info, Title } from '../src';
 describe('ProductHead', () => {
   afterEach(cleanup);
 
+  const component = (
+    <ProductHead>
+      <ProductHead.Row>
+        <div>Breadcrumbs</div>
+
+        <ProductHead.Links>
+          <span>Link</span>
+          <span>Link</span>
+          <span>Link</span>
+        </ProductHead.Links>
+      </ProductHead.Row>
+
+      <ProductHead.Row>
+        <Title toolName="Tool Name for:">Domain.com</Title>
+
+        <ProductHead.Buttons>
+          <span>Button</span>
+          <span>Button</span>
+          <span>Button</span>
+        </ProductHead.Buttons>
+      </ProductHead.Row>
+
+      <ProductHead.Row>
+        <Info>
+          <Info.Item label="Location:">United States</Info.Item>
+          <Info.Item label="Device:">Desktop</Info.Item>
+          <Info.Item label="Data:">Fresh</Info.Item>
+          <Info.Item>
+            <Info.Item.Label>Last update:</Info.Item.Label>1 hour ago
+          </Info.Item>
+        </Info>
+      </ProductHead.Row>
+    </ProductHead>
+  );
+
   test('Render correctly', async () => {
-    const component = (
-      <ProductHead>
-        <ProductHead.Row>
-          <div>Breadcrumbs</div>
-
-          <ProductHead.Links>
-            <span>Link</span>
-            <span>Link</span>
-            <span>Link</span>
-          </ProductHead.Links>
-        </ProductHead.Row>
-
-        <ProductHead.Row>
-          <Title toolName="Tool Name for:">Domain.com</Title>
-
-          <ProductHead.Buttons>
-            <span>Button</span>
-            <span>Button</span>
-            <span>Button</span>
-          </ProductHead.Buttons>
-        </ProductHead.Row>
-
-        <ProductHead.Row>
-          <Info>
-            <Info.Item label="Location:">United States</Info.Item>
-            <Info.Item label="Device:">Desktop</Info.Item>
-            <Info.Item label="Data:">Fresh</Info.Item>
-            <Info.Item>
-              <Info.Item.Label>Last update:</Info.Item.Label>1 hour ago
-            </Info.Item>
-          </Info>
-        </ProductHead.Row>
-      </ProductHead>
-    );
-
     expect(await snapshot(component)).toMatchImageSnapshot();
+  });
+
+  test('Render correctly for tablet', async () => {
+    expect(await snapshot(component, { width: 766 })).toMatchImageSnapshot();
   });
 });
 
 describe('Title', () => {
   afterEach(cleanup);
 
-  test('Renders correctly', async () => {
-    const component = (
-      <snapshot.ProxyProps style={{ margin: 5 }}>
-        <Title>Tool Name for: Domain.com</Title>
-        <Title toolName="Tool Name for:">Domain.com</Title>
-      </snapshot.ProxyProps>
-    );
-
-    expect(await snapshot(component)).toMatchImageSnapshot();
-  });
-
   test('Renders correctly if not enough space', async () => {
     const component = (
-      <snapshot.ProxyProps style={{ margin: 5, width: '300px' }}>
+      <snapshot.ProxyProps style={{ margin: 5, width: '200px' }}>
         <Title>Tool Name for: Domain.com</Title>
         <Title toolName="Tool Name for:">Domain.com</Title>
       </snapshot.ProxyProps>

@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.0.0] - unrelease
+
+### BREAK
+
+- Restyling component.
+
 ## [4.0.7] - 2022-04-28
 
 ### Changed
