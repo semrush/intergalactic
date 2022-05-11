@@ -5,7 +5,7 @@ SInfo {
   align-items: center;
   flex-wrap: wrap;
   font-size: var(--fs-200);
-  line-height: 1.5;
+  line-height: var(--lh-200);
 
   & > SItem:not(:last-child) {
     margin-right: 24px;
