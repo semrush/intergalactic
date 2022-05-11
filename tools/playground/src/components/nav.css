@@ -34,6 +34,7 @@
   background-size: contain;
   background-position: center center;
   background-repeat: no-repeat;
+  flex-shrink: 0;
 }
 
 .intergalactic-playground_title {

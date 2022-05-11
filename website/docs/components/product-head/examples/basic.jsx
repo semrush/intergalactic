@@ -3,17 +3,18 @@ import { Text } from '@semcore/typography';
 import Link from '@semcore/link';
 import Button from '@semcore/button';
 import Tooltip from '@semcore/tooltip';
-import ChevronDownXS from '@semcore/icon/ChevronDown/m';
-import YoutubeXS from '@semcore/icon/Youtube/m';
-import ChatXS from '@semcore/icon/Chat/m';
-import BookXS from '@semcore/icon/Book/m';
-import MathPlusXS from '@semcore/icon/MathPlus/m';
-import SettingsXS from '@semcore/icon/Settings/m';
-import DesktopXS from '@semcore/icon/Desktop/m';
-import InfoXS from '@semcore/icon/Info/m';
+import ChevronDownM from '@semcore/icon/ChevronDown/m';
+import VideoM from '@semcore/icon/Video/m';
+import ChatM from '@semcore/icon/Chat/m';
+import BookM from '@semcore/icon/Book/m';
+import MathPlusM from '@semcore/icon/MathPlus/m';
+import SettingsM from '@semcore/icon/Settings/m';
+import DesktopM from '@semcore/icon/Desktop/m';
+import InfoM from '@semcore/icon/Info/m';
 import Breadcrumbs from '@semcore/breadcrumbs';
 import { Box } from '@semcore/flex-box';
 import TabPanel from '@semcore/tab-panel';
+import Select from '@semcore/select';
 
 import Header, { Info, Title } from '@semcore/product-head';
 
@@ -31,15 +32,15 @@ export default () => {
 
           <Header.Links>
             <Link>
-              <Link.Addon tag={YoutubeXS} />
+              <Link.Addon tag={VideoM} />
               <Link.Text>Video tutorial</Link.Text>
             </Link>
             <Link>
-              <Link.Addon tag={BookXS} />
+              <Link.Addon tag={BookM} />
               <Link.Text>User manual</Link.Text>
             </Link>
             <Link>
-              <Link.Addon tag={ChatXS} />
+              <Link.Addon tag={ChatM} />
               <Link.Text>Send feedback</Link.Text>
             </Link>
           </Header.Links>
@@ -54,11 +55,11 @@ export default () => {
 
           <Header.Buttons>
             <Button use="primary">
-              <Button.Addon tag={MathPlusXS} />
+              <Button.Addon tag={MathPlusM} />
               <Button.Text>Add Project</Button.Text>
             </Button>
             <Button>
-              <Button.Addon tag={SettingsXS} />
+              <Button.Addon tag={SettingsM} />
               <Button.Text>Settings</Button.Text>
             </Button>
           </Header.Buttons>
@@ -67,22 +68,43 @@ export default () => {
         <Header.Row>
           <Info>
             <Info.Item label="Location:">
-              <Link>
-                <Link.Text>United States</Link.Text>
-                <Link.Addon tag={ChevronDownXS} />
-              </Link>
+              <Select value={['us']} placeholder="Select an option, sir 🧐" m="auto">
+                <Select.Trigger tag={Link}>
+                  United States
+                  <Link.Addon tag={ChevronDownM} />
+                </Select.Trigger>
+                <Select.Popper>
+                  <Select.Option value="us">United States</Select.Option>
+                  <Select.Option value="ch">China</Select.Option>
+                  <Select.Option value="jp">Japan</Select.Option>
+                  <Select.Option value="gr">Germany</Select.Option>
+                  <Select.Option value="uk">United Kingdom</Select.Option>
+                  <Select.Option value="in">India</Select.Option>
+                  <Select.Option value="fr">France</Select.Option>
+                  <Select.Option value="it">Italy</Select.Option>
+                </Select.Popper>
+              </Select>
             </Info.Item>
             <Info.Item label="Device:">
-              <Link>
-                <Link.Addon tag={DesktopXS} />
-                <Link.Text>Desktop</Link.Text>
-                <Link.Addon tag={ChevronDownXS} />
-              </Link>
+              <Select value={['desktop']} placeholder="Select an option, sir 🧐" m="auto">
+                <Select.Trigger tag={Link}>
+                  <Link.Addon tag={DesktopM} />
+                  Desktop
+                  <Link.Addon tag={ChevronDownM} />
+                </Select.Trigger>
+                <Select.Popper>
+                  <Select.Option value="desktop">Desktop</Select.Option>
+                  <Select.Option value="mobile">Mobile</Select.Option>
+                </Select.Popper>
+              </Select>
             </Info.Item>
             <Info.Item label="Data:">
               Fresh
-              <Tooltip title="Fresh data tro-lo-lo">
-                <InfoXS ml={1} color="stone" cursor="help" />
+              <Tooltip
+                title="Some more details why data is fresh 🌚"
+                style={{ display: 'inline-flex' }}
+              >
+                <InfoM ml={1} color="stone" cursor="help" />
               </Tooltip>
             </Info.Item>
             <Info.Item>
@@ -92,11 +114,11 @@ export default () => {
         </Header.Row>
       </Header>
 
-      <TabPanel>
+      <TabPanel defaultValue="overview">
         <Box px="15px" />
-        <TabPanel.Item selected>Overview</TabPanel.Item>
-        <TabPanel.Item>Issues</TabPanel.Item>
-        <TabPanel.Item>LinkedIn</TabPanel.Item>
+        <TabPanel.Item value="overview">Overview</TabPanel.Item>
+        <TabPanel.Item value="issues">Issues</TabPanel.Item>
+        <TabPanel.Item value="linked_in">LinkedIn</TabPanel.Item>
         <Box px="15px" />
       </TabPanel>
     </>
