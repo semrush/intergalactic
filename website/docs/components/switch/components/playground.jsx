@@ -1,6 +1,7 @@
 import React from 'react';
 import Switch from '@semcore/switch';
 import PlaygroundGeneration from 'components/PlaygroundGeneration';
+import CheckM from '@semcore/icon/Check/m';
 
 export default PlaygroundGeneration(
   (createGroupWidgets) => {
@@ -54,7 +55,7 @@ export default PlaygroundGeneration(
           checked={checked}
           onChange={(value) => onChange('checked', value)}
         >
-          {icon && '$'}
+          {icon && <CheckM />}
         </Switch.Value>
         {after && <Switch.Addon>{after}</Switch.Addon>}
       </Switch>
