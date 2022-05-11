@@ -207,6 +207,7 @@ class RootSelect extends Component {
               return (
                 <Select.Option key={i} {...option}>
                   {multiselect && <Select.Option.Checkbox />}
+                  {option.children}
                 </Select.Option>
               );
             })}
