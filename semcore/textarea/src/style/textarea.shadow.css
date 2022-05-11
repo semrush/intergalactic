@@ -44,14 +44,14 @@ STextarea[state='normal'] {
 }
 
 STextarea[state='valid'] {
-  border-color: var(--green-200);
+  border-color: var(--green-400);
   &:focus {
     box-shadow: var(--keyboard-focus-valid);
   }
 }
 
 STextarea[state='invalid'] {
-  border-color: var(--red-200);
+  border-color: var(--red-400);
   &:focus {
     box-shadow: var(--keyboard-focus-invalid);
   }

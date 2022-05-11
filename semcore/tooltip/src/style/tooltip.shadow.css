@@ -12,25 +12,23 @@ STooltip {
   max-width: 250px;
   font-weight: normal;
   white-space: normal;
+  box-shadow: var(--box-shadow-popper);
 }
 
 STooltip[theme='default'] {
   background-color: var(--white);
   border: 1px solid var(--gray-100);
-  box-shadow: 0 1px 12px 0 color-mod(var(--gray-800) a(15%));
 }
 
 STooltip[theme='invert'] {
   color: var(--white);
   background-color: var(--gray-800);
   border: 1px solid var(--gray-500);
-  box-shadow: 0 1px 12px 0 color-mod(var(--gray-800) a(15%));
 }
 
 STooltip[theme='warning'] {
   background-color: var(--red-100);
   border: 1px solid var(--red-400);
-  box-shadow: 0 2px 5px color-mod(var(--black) a(25%));
 }
 
 STooltip[data-popper-reference-hidden] {
