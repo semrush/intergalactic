@@ -8,6 +8,19 @@ const { cleanup } = testing;
 describe('Tag', () => {
   afterEach(cleanup);
 
+  const colors = [
+    'gray-500',
+    'blue-500',
+    'green-500',
+    'salad-500',
+    'orange-500',
+    'yellow-500',
+    'red-500',
+    'pink-500',
+    'violet-500',
+  ];
+  const themes = ['primary', 'secondary'];
+
   test('Renders correctly', async () => {
     const component = <Tag>Tag</Tag>;
     expect(await snapshot(component)).toMatchImageSnapshot();
@@ -59,100 +72,49 @@ describe('Tag', () => {
   });
 
   test('Should support active', async () => {
-    const component = (
-      <div style={{ background: '#979797' }}>
-        <Tag use="primary" active>
-          <Tag.Text>primary+muted</Tag.Text>
-          <Tag.Close />
-        </Tag>
-        <Tag use="primary" theme="invert" active>
-          <Tag.Text>primary+invert</Tag.Text>
-          <Tag.Close />
-        </Tag>
-        <Tag use="secondary" active>
-          <Tag.Text>secondary+muted</Tag.Text>
-          <Tag.Close />
-        </Tag>
-        <Tag use="secondary" theme="invert" active>
-          <Tag.Text>secondary+invert</Tag.Text>
-          <Tag.Close />
-        </Tag>
-        <Tag theme="dark-violet" color="white">
-          <Tag.Text>dark-violet+white</Tag.Text>
-          <Tag.Close />
-        </Tag>
-      </div>
-    );
+    const component = themes
+      .map((theme) =>
+        colors.map((color) => (
+          <Tag key={`${theme}-${color}`} theme={theme} color={color} active>
+            <Tag.Text>Tag name</Tag.Text>
+            <Tag.Close />
+          </Tag>
+        )),
+      )
+      .flat();
 
     expect(await snapshot(component)).toMatchImageSnapshot();
   });
 
   test('Should support size props', async () => {
-    const component = (
-      <>
-        <Tag size="xl">
-          <Tag.Circle>
-            <div style={{ width: 100, height: 100, background: 'black' }} />
-          </Tag.Circle>
-          <Tag.Text>xl</Tag.Text>
-          <Tag.Close />
-        </Tag>
-        <Tag size="l">
-          <Tag.Circle>
-            <div style={{ width: 100, height: 100, background: 'black' }} />
-          </Tag.Circle>
-          <Tag.Text>l</Tag.Text>
-          <Tag.Close />
-        </Tag>
-        <Tag size="m">
-          <Tag.Circle>
-            <div style={{ width: 100, height: 100, background: 'black' }} />
-          </Tag.Circle>
-          <Tag.Text>m</Tag.Text>
-          <Tag.Close />
-        </Tag>
-        <Tag size="s">
-          <Tag.Circle>
-            <div style={{ width: 100, height: 100, background: 'black' }} />
-          </Tag.Circle>
-          <Tag.Text>s</Tag.Text>
-          <Tag.Close />
-        </Tag>
-      </>
-    );
+    const component = ['xl', 'l', 'm'].map((size) => (
+      <Tag size={size} key={size}>
+        <Tag.Circle>
+          <div style={{ width: 100, height: 100, background: 'black' }} />
+        </Tag.Circle>
+        <Tag.Text>{size}</Tag.Text>
+        <Tag.Close />
+      </Tag>
+    ));
 
     expect(await snapshot(component)).toMatchImageSnapshot();
   });
 
-  test('should support use-theme props', async () => {
-    const component = (
-      <div style={{ background: '#979797' }}>
-        <Tag use="primary">
-          <Tag.Text>primary+muted</Tag.Text>
-          <Tag.Close />
-        </Tag>
-        <Tag use="primary" theme="invert">
-          <Tag.Text>primary+invert</Tag.Text>
-          <Tag.Close />
-        </Tag>
-        <Tag use="primary" theme="warning">
-          <Tag.Text>primary+warning</Tag.Text>
-          <Tag.Close />
-        </Tag>
-        <Tag use="secondary">
-          <Tag.Text>secondary+muted</Tag.Text>
-          <Tag.Close />
-        </Tag>
-        <Tag use="secondary" theme="invert">
-          <Tag.Text>secondary+invert</Tag.Text>
-          <Tag.Close />
-        </Tag>
-      </div>
-    );
+  test('should support theme props', async () => {
+    const component = themes
+      .map((theme) =>
+        colors.map((color) => (
+          <Tag key={`${theme}-${color}`} theme={theme} color={color}>
+            <Tag.Text>Tag name</Tag.Text>
+            <Tag.Close />
+          </Tag>
+        )),
+      )
+      .flat();
     expect(await snapshot(component)).toMatchImageSnapshot();
   });
 
-  test('should support custom theme', async () => {
+  xtest('should support custom theme', async () => {
     const component = (
       <>
         <Tag theme="blanchedalmond">
@@ -172,7 +134,7 @@ describe('Tag', () => {
     expect(await snapshot(component)).toMatchImageSnapshot();
   });
 
-  test('should support color text', async () => {
+  xtest('should support color text', async () => {
     const component = (
       <Tag theme="dark-violet" color="white">
         dark-violet

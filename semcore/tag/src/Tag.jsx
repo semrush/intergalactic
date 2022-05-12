@@ -59,6 +59,20 @@ function getSecondaryColors(color) {
   };
 }
 
+const MAP_OLD_THEME = {
+  primary: {
+    muted: 'gray-500',
+    info: 'blue-500',
+    success: 'green-500',
+    warning: 'orange-500',
+    danger: 'red-500',
+  },
+  secondary: {
+    muted: 'gray-50',
+  },
+  undefined: {},
+};
+
 class RootTag extends Component {
   static displayName = 'Tag';
   static style = style;
@@ -73,7 +87,9 @@ class RootTag extends Component {
 
     logger.warn(
       props.use,
-      `Property 'use' is deprecated, replace property to "theme='${props.use}-${props.theme}'"`,
+      `Property 'use' is deprecated, replace property to "theme='${props.use}' color='${
+        MAP_OLD_THEME[props.use][props.theme]
+      }'"`,
       props['data-ui-name'] || Tag.displayName,
     );
   }

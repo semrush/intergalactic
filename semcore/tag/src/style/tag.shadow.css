@@ -49,6 +49,14 @@ STag[size='xl'] {
   height: 40px;
   min-width: 40px;
   font-size: var(--fs-300);
+
+  & SCircle:first-child {
+    margin-left: 4px;
+  }
+
+  & SCircle:last-child {
+    margin-right: 4px;
+  }
 }
 
 STag[theme='primary'] {
@@ -93,29 +101,6 @@ STag[theme='secondary-invert'] {
   &[interactive]:active,
   &[active] {
     background-color: rgba(255, 255, 255, 0.1);
-  }
-}
-
-/* primary-muted */
-STag[theme='custom'] {
-  color: var(--colorText);
-  background-color: var(--colorTag);
-
-  &[active] {
-    color: #fff;
-    background-color: var(--colorText);
-  }
-
-  &[interactive] {
-    &:hover {
-      color: #fff;
-      background-color: var(--colorText);
-    }
-
-    &:active {
-      color: #fff;
-      background-color: var(--colorText);
-    }
   }
 }
 
