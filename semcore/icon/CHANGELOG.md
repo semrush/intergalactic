@@ -2,6 +2,16 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.22.0] - 2022-05-12
+
+### Added
+
+- Added icon `UserShared`.
+
+### Changed
+
+- Update pay icons `Visa, JCB`.
+
 ## [2.21.0] - 2022-04-28
 
 ### Added
