@@ -46,7 +46,7 @@ SCell[use='secondary'] {
 }
 
 SCellHead {
-  font-size: 12px;
+  font-size: var(--fs-100);
   font-weight: normal;
   line-height: 18px;
   color: var(--gray-800);
@@ -76,7 +76,7 @@ SCellHead[use='primary'] {
 SCellHead[use='secondary'] {
   background-color: var(--white);
   border-width: 1px 0;
-  border-color: var(--gray-100);
+  border-color: var(--gray-300);
 }
 
 SCellHead[sorting] {
@@ -180,8 +180,8 @@ SCellRow[interactive] {
 }
 
 SCellRow {
-  font-size: 14px;
-  line-height: 20px;
+  font-size: var(--fs-200);
+  line-height: var(--lh-200);
   color: var(--gray-800);
 }
 
