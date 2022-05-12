@@ -71,7 +71,7 @@ describe('InputTags', () => {
             <Tooltip key={idx}>
               <Tooltip.Trigger
                 tag={InputTags.Tag}
-                use="primary"
+                theme="primary"
                 editable
                 data-id={idx}
                 onClick={handleEditTag}
