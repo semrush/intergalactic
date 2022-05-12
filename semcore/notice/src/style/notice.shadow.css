@@ -5,7 +5,14 @@ SNotice {
   font-size: var(--fs-200);
   line-height: var(--lh-200);
   box-sizing: border-box;
-  padding: 15px;
+}
+
+SNotice[use='primary'] {
+  padding: 8px 32px;
+}
+
+SNotice[use='secondary'] {
+  padding: 16px;
   border-style: solid;
   border-width: 1px;
   border-radius: var(--rounded-m);
@@ -13,8 +20,9 @@ SNotice {
 
 SNotice[theme='info'] {
   background-color: var(--blue-50);
-  border-color: var(--blue-200);
-
+  &[use='secondary'] {
+    border-color: var(--blue-200);
+  }
   & SCloseIcon {
     color: var(--blue-400);
   }
@@ -22,8 +30,10 @@ SNotice[theme='info'] {
 
 SNotice[theme='danger'] {
   background-color: var(--red-50);
-  border-color: var(--red-200);
 
+  &[use='secondary'] {
+    border-color: var(--red-200);
+  }
   & SCloseIcon {
     color: var(--red-400);
   }
@@ -31,8 +41,10 @@ SNotice[theme='danger'] {
 
 SNotice[theme='warning'] {
   background-color: var(--orange-50);
-  border-color: var(--orange-200);
 
+  &[use='secondary'] {
+    border-color: var(--orange-200);
+  }
   & SCloseIcon {
     color: var(--orange-400);
   }
@@ -40,8 +52,9 @@ SNotice[theme='warning'] {
 
 SNotice[theme='success'] {
   background-color: var(--green-50);
-  border-color: var(--green-200);
-
+  &[use='secondary'] {
+    border-color: var(--green-200);
+  }
   & SCloseIcon {
     color: var(--green-400);
   }
@@ -85,11 +98,13 @@ SLabel[theme='custom'] {
 
 SCloseIcon {
   flex-shrink: 0;
-  margin-left: 15px;
-  color: var(--gray-300);
+  margin-left: 16px;
 }
 
 SNotice[theme='custom'] {
   background-color: var(--backgroundColor);
-  border-color: var(--backgroundColor);
+
+  &[use='secondary'] {
+    border-color: var(--backgroundColor);
+  }
 }
