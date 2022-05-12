@@ -1,5 +1,44 @@
 'use strict';
 
+// Reference: https://developer.mozilla.org/en-US/docs/Web/SVG/Element#SVG_elements
+const GET_ELEMENT_TAG_NAME = (name) => {
+  const ELEMENT_TAG_NAME_MAPPING = {
+    animatemotion: 'animateMotion',
+    animatetransform: 'animateTransform',
+    clippath: 'clipPath',
+    'color-profile': 'colorProfile',
+    feblend: 'feBlend',
+    fecolormatrix: 'feColorMatrix',
+    fecomponenttransfer: 'feComponentTransfer',
+    fecomposite: 'feComposite',
+    feconvolvematrix: 'feConvolveMatrix',
+    fediffuselighting: 'feDiffuseLighting',
+    fedisplacementmap: 'feDisplacementMap',
+    fedistantlight: 'feDistantLight',
+    fedropshadow: 'feDropShadow',
+    feflood: 'feFlood',
+    fefunca: 'feFuncA',
+    fefuncb: 'feFuncB',
+    fefuncg: 'feFuncG',
+    fefuncr: 'feFuncR',
+    fegaussianblur: 'feGaussianBlur',
+    feimage: 'feImage',
+    femerge: 'feMerge',
+    femergenode: 'feMergeNode',
+    femorphology: 'feMorphology',
+    feoffset: 'feOffset',
+    fepointlight: 'fePointLight',
+    fespecularlighting: 'feSpecularLighting',
+    fespotlight: 'feSpotLight',
+    fetile: 'feTile',
+    feturbulence: 'feTurbulence',
+    foreignobject: 'foreignObject',
+    lineargradient: 'linearGradient',
+    radialgradient: 'radialGradient',
+    textpath: 'textPath',
+  };
+  return ELEMENT_TAG_NAME_MAPPING[name] || name;
+};
 const getConfig = (framework = 'react', logger = false) => {
   const config = {
     react: {
@@ -60,6 +99,7 @@ const getConfig = (framework = 'react', logger = false) => {
             return stringifyJsx(reactElement.children);
           }
           const { type, props } = reactElement;
+          const tagName = GET_ELEMENT_TAG_NAME(type);
           const { children, ...otherProps } = props;
           let attributes = Object.entries(otherProps)
             .map(([key, value]) => (value === true ? key : `${key}="${value}"`))
@@ -67,12 +107,11 @@ const getConfig = (framework = 'react', logger = false) => {
           if (attributes) {
             attributes = ' ' + attributes;
           }
-          return `<${type}${attributes}>${stringifyJsx(children)}</${type}>`;
+          return `<${tagName}${attributes}>${stringifyJsx(children)}</${tagName}>`;
         };
         return {
           convert: (htmlText) => {
             const jsxModel = parser.parse(htmlText);
-
             return stringifyJsx(jsxModel);
           },
         };
