@@ -2,6 +2,7 @@
 
 SProjectCreate {
   max-width: 400px;
+  color: var(--gray-800);
 }
 
 SIconInfo {
@@ -20,7 +21,7 @@ SLabel {
 }
 
 SSharingCheckbox {
-  margin-top: 16px;
+  margin-top: 24px;
 }
 
 SButtonSuccess {
@@ -29,8 +30,8 @@ SButtonSuccess {
 
 STitle {
   font-size: var(--fs-500);
+  font-family: FactorA-Bold, sans-serif;
   line-height: var(--lh-500);
-  font-weight: 500;
 }
 
 SDescription {

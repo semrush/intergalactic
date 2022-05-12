@@ -220,7 +220,7 @@ class ProjectCreateModalRoot extends Component<Merge<IProjectCreateModalProps, F
                         <SIconInfo />
                         <SDescription tag="p">{getI18nText('description')}</SDescription>
                       </SItem>
-                      <SItem justifyContent="center">
+                      <SItem>
                         <SButtonSuccess use="primary" theme="success" size="l" type="submit">
                           {getI18nText('buttonCreate')}
                         </SButtonSuccess>
