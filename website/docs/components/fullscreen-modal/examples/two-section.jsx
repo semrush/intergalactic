@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import FullscreenModal from '@semcore/fullscreen-modal';
-import { Flex } from '@semcore/flex-box';
 import { Text } from '@semcore/typography';
 import Button from '@semcore/button';
 import Divider from '@semcore/divider';
@@ -8,23 +7,22 @@ import ArrowLeftS from '@semcore/icon/ArrowLeft/m';
 import ArrowRightS from '@semcore/icon/ArrowRight/m';
 
 const Demo = () => {
-  const [hidden, updateHidden] = useState(true);
+  const [visible, updateVisible] = useState(true);
 
-  const changeHiddenModal = () => {
-    updateHidden((hidden) => !hidden);
+  const changeModalVisibility = () => {
+    updateVisible((visible) => !visible);
   };
 
   return (
     <>
-      <Button use="primary" onClick={changeHiddenModal}>
+      <Button use="primary" onClick={changeModalVisibility}>
         Открыть окно
       </Button>
-      <FullscreenModal hidden={hidden} onClose={changeHiddenModal}>
+      <FullscreenModal visible={visible} onClose={changeModalVisibility}>
         <FullscreenModal.Close />
         <FullscreenModal.Back>Go to Tool Name</FullscreenModal.Back>
         <FullscreenModal.Header>
           <FullscreenModal.Title>Heading 4, 25px</FullscreenModal.Title>
-          <Divider orientation="vertical" h={16} mx={3} />
           <FullscreenModal.Description>Some additional information</FullscreenModal.Description>
         </FullscreenModal.Header>
         <FullscreenModal.Body>
@@ -37,22 +35,20 @@ const Demo = () => {
             </div>
           </FullscreenModal.Section>
         </FullscreenModal.Body>
-        <FullscreenModal.Footer>
-          <Flex alignItems="center" justifyContent="center" h="100%">
-            <Button size="m" color="gray60" theme="muted" use="tertiary">
-              <Button.Addon>
-                <ArrowLeftS />
-              </Button.Addon>
-              <Button.Text ml={2}>Prev button</Button.Text>
-            </Button>
-            <Divider orientation="vertical" h={26} mx={6} />
-            <Button size="m" color="gray60" theme="muted" use="tertiary">
-              <Button.Text mr={2}>Next button</Button.Text>
-              <Button.Addon>
-                <ArrowRightS />
-              </Button.Addon>
-            </Button>
-          </Flex>
+        <FullscreenModal.Footer justifyContent="center" alignItems="center">
+          <Button size="m" color="gray60" theme="muted" use="tertiary">
+            <Button.Addon>
+              <ArrowLeftS />
+            </Button.Addon>
+            <Button.Text ml={2}>Prev button</Button.Text>
+          </Button>
+          <Divider orientation="vertical" h={26} mx={6} />
+          <Button size="m" color="gray60" theme="muted" use="tertiary">
+            <Button.Text mr={2}>Next button</Button.Text>
+            <Button.Addon>
+              <ArrowRightS />
+            </Button.Addon>
+          </Button>
         </FullscreenModal.Footer>
       </FullscreenModal>
     </>
