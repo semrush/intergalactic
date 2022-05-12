@@ -2,7 +2,7 @@ import React from 'react';
 
 import Button from '@semcore/button';
 import Tooltip from '@semcore/tooltip';
-import PlaygroundGeneration from 'components/PlaygroundGeneration';
+import PlaygroundGeneration from '@components/PlaygroundGeneration';
 
 const PLACEMENT = [
   'top-start',

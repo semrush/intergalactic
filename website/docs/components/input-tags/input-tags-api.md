@@ -1,5 +1,6 @@
 ---
 title: API
+fileSource: input-tags
 ---
 
 @## InputTags
@@ -8,7 +9,7 @@ title: API
 import InputTags from '@semcore/input-tags';
 ```
 
-@interface IInputTagsProps
+@typescript IInputTagsProps
 
 @## InputTags.Value
 
@@ -17,7 +18,7 @@ import InputTags from '@semcore/input-tags';
 <InputTags.Value />;
 ```
 
-@interface IInputTagsValueProps
+@typescript IInputTagsValueProps
 
 @## InputTags.Tag
 
@@ -28,7 +29,7 @@ import InputTags from '@semcore/input-tags';
 <InputTags.Tag />;
 ```
 
-@interface IInputTagsTagProps
+@typescript IInputTagsTagProps
 
 @## InputTags.Tag.Addon
 

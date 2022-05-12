@@ -2,6 +2,8 @@ import { Storage } from '@google-cloud/storage';
 import path from 'path';
 import fs from 'fs-extra';
 import { fileURLToPath } from 'url';
+import pLimit from 'p-limit';
+
 const filename = fileURLToPath(import.meta.url);
 
 const log = (message: string) => {
@@ -57,7 +59,13 @@ export const getPackageData = async () => {
   return { version, name };
 };
 
-export const upload = async (filePaths: string[]) => {
+export const upload = async (
+  filePaths: string[],
+  {
+    uploadSrcBaseDir,
+    destinationSubDir,
+  }: { uploadSrcBaseDir?: string; destinationSubDir?: string },
+) => {
   if (!filePaths || !filePaths.length) {
     throw new Error(
       `@semcore/gcs-upload package requires at least one file path to be provided for uploading, got ${filePaths}`,
@@ -72,27 +80,39 @@ export const upload = async (filePaths: string[]) => {
     `Initiating uploading of ${filePaths.join(', ')} from ${packageName}@${packageVersion} package`,
   );
 
+  const limit = pLimit(50);
+
   await Promise.all(
-    filePaths.map((filePath) => {
-      const fileName = filePath.split('/').pop();
-      const destination = `ui-kit/${packageName}/${packageVersion}/${fileName}`;
+    filePaths.map((filePath) =>
+      limit(() => {
+        const fileName = uploadSrcBaseDir
+          ? path.relative(uploadSrcBaseDir, filePath)
+          : filePath.split('/').pop();
+        const destination = [`ui-kit`, packageName, packageVersion, destinationSubDir, fileName]
+          .filter((part) => part !== undefined)
+          .join('/');
 
-      log(`Uploading ${fileName} to ${destination}`);
+        log(`Uploading ${destination} from ${filePath}`);
 
-      return (
-        storage
-          .bucket(BUCKET_NAME)
-          .upload(filePath, {
-            gzip: true,
-            destination,
-            metadata: {
-              cacheControl: 'public, max-age=31536000',
-            },
-          })
-          // eslint-disable-next-line no-console
-          .then(() => console.log(`${fileName} uploaded to ${destination}`))
-      );
-    }),
+        if (filePath.includes('hydrate') && filePath.includes('js')) {
+          process.exit(0);
+        }
+
+        // return (
+        //   storage
+        //     .bucket(BUCKET_NAME)
+        //     .upload(filePath, {
+        //       gzip: true,
+        //       destination,
+        //       metadata: {
+        //         cacheControl: 'public, max-age=31536000',
+        //       },
+        //     })
+        //     // eslint-disable-next-line no-console
+        //     .then(() => console.log(`${fileName} uploaded to ${destination}`)),
+        // );
+      }),
+    ),
   );
 };
 

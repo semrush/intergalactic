@@ -32,7 +32,8 @@ export interface IBaseTriggerProps extends IBoxProps, INeighborItemProps, IKeybo
    */
   disabled?: boolean;
   /** Trigger theme
-   * @deprecated {@link IBaseTriggerProps.state}
+   * @deprecated
+   * @use IBaseTriggerProps.state
    * */
   theme?: 'normal' | 'valid' | 'invalid' | false;
 }

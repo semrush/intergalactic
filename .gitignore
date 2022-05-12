@@ -13,7 +13,7 @@ node_modules/
 .tmp/
 
 # Build directories
-public/
+public/dist
 lib/
 
 # Logs files

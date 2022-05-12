@@ -1,5 +1,6 @@
 ---
 title: Example
+fileSource: input
 ---
 
 @## Input for entering a password

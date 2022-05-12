@@ -34,7 +34,7 @@
     "@typescript-eslint/parser": "5.10.2",
     "dotenv": "8.2.0",
     "eslint": "8.14.0",
-    "eslint-config-prettier": "6.10.1",
+    "eslint-config-prettier": "8.3.0",
     "eslint-import-resolver-typescript": "2.0.0",
     "eslint-import-resolver-workspaces": "1.0.9",
     "eslint-plugin-import": "2.26.0",

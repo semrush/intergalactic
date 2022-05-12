@@ -1,5 +1,6 @@
 ---
 title: Changelog
+fileSource: button
 ---
 
 @changelog button

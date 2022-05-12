@@ -1,5 +1,6 @@
 ---
 title: API
+fileSource: d3-chart
 ---
 
 @## D3 API
@@ -8,4 +9,4 @@ All properties for the radial tree chart developed with D3 you can find in the [
 
 ### Radial Tree
 
-@interface IRadialTreeProps
+@typescript IRadialTreeProps

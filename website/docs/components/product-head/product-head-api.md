@@ -1,5 +1,6 @@
 ---
 title: API
+fileSource: product-head
 ---
 
 @## ProductHead
@@ -47,7 +48,7 @@ import { Title } from '@semcore/product-head';
 <Title />;
 ```
 
-@interface IHeaderTitleProps
+@typescript IHeaderTitleProps
 
 @## Info
 
@@ -67,4 +68,4 @@ import { Info } from '@semcore/product-head';
 <Info.Item />;
 ```
 
-@interface IInfoItemProps
+@typescript IInfoItemProps

@@ -1,5 +1,6 @@
 ---
 title: API
+fileSource: sticky
 ---
 
 > This component doesn't work properly inside the iframe.
@@ -12,4 +13,4 @@ The component is a wrap over CSS `position: sticky;`.
 import Sticky from '@semcore/sticky';
 ```
 
-@interface IStickyProps
+@typescript IStickyProps

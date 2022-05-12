@@ -1,5 +1,6 @@
 ---
 title: API
+fileSource: flex-box
 ---
 
 @## Box
@@ -11,7 +12,7 @@ import { Box } from '@semcore/flex-box';
 <Box />;
 ```
 
-@interface IBoxProps
+@typescript IBoxProps
 
 @## Flex
 
@@ -22,4 +23,4 @@ import { Flex } from '@semcore/flex-box';
 <Flex />;
 ```
 
-@interface IFlexProps
+@typescript IFlexProps

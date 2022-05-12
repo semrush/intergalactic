@@ -1,5 +1,6 @@
 ---
 title: API
+fileSource: d3-chart
 ---
 
 @## D3 API
@@ -16,13 +17,13 @@ We tried to keep API as consistent as possible with respect to other charts.
 import { VennChart } from '@semcore/chart';
 ```
 
-@interface IVennChartProps
+@typescript IVennChartProps
 
 ### IVennDataItem
 
 Data unit for the chart. In the data, the `name` key is required for the set, but not for the intersection.
 
-@interface IVennDataItem
+@typescript IVennDataItem
 
 ### VennArea
 
@@ -32,4 +33,4 @@ Component for displaying a set in the chart.
 import { VennArea } from '@semcore/chart';
 ```
 
-@interface IVennChildProps
+@typescript IVennChildProps

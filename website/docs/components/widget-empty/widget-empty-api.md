@@ -1,5 +1,6 @@
 ---
 title: API
+fileSource: widget-empty
 ---
 
 @## WidgetEmpty
@@ -11,7 +12,7 @@ import WidgetEmpty from '@semcore/widget-empty';
 <WidgetEmpty />;
 ```
 
-@interface IWidgetEmptyProps
+@typescript IWidgetEmptyProps
 
 @## NoData
 
@@ -22,7 +23,7 @@ import { NoData } from '@semcore/widget-empty';
 <NoData />;
 ```
 
-@interface IWidgetNoDataProps
+@typescript IWidgetNoDataProps
 
 @## Error
 
@@ -33,7 +34,7 @@ import { Error } from '@semcore/widget-empty';
 <Error />;
 ```
 
-@interface IWidgetErrorProps
+@typescript IWidgetErrorProps
 
 @## Images
 

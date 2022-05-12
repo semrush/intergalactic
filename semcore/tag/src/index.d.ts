@@ -20,7 +20,8 @@ export interface ITagProps extends IBoxProps {
   interactive?: boolean;
   /** Tag type
    * @default secondary
-   * @deprecated {@link ITagProps.theme}
+   * @deprecated v4.0.0
+   * @use ITagProps.theme
    */
   use?: TagUse;
   /** Tag theme, there are several default themes or you can use your color

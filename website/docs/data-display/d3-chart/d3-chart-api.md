@@ -1,5 +1,6 @@
 ---
 title: API
+fileSource: d3-chart
 ---
 
 @## Plot
@@ -10,7 +11,7 @@ Root element for all charts.
 import { Plot } from '@semcore/d3-chart';
 ```
 
-@interface IPlotProps
+@typescript IPlotProps
 
 @## Axis
 
@@ -25,8 +26,9 @@ import { XAxis, YAxis } from '@semcore/d3-chart';
 </XAxis>;
 ```
 
-@interface IXAxisProps
-@interface IYAxisProps
+@typescript IXAxisProps
+
+@typescript IYAxisProps
 
 @## ResponsiveContainer
 
@@ -36,7 +38,7 @@ Container watch to size block.
 import { ResponsiveContainer } from '@semcore/d3-chart';
 ```
 
-@interface IResponsiveContainerProps
+@typescript IResponsiveContainerProps
 
 @## Tooltip
 
@@ -51,7 +53,7 @@ import { Tooltip } from '@semcore/d3-chart';
 </Tooltip>;
 ```
 
-@interface ITooltipProps
+@typescript ITooltipProps
 
 @## HoverLine
 
@@ -61,7 +63,7 @@ Component for show line after hover on chart.
 import { HoverLine } from '@semcore/d3-chart';
 ```
 
-@interface IHoverProps
+@typescript IHoverProps
 
 @## HoverRect
 
@@ -71,7 +73,7 @@ Component for show sector after hover on chart.
 import { HoverRect } from '@semcore/d3-chart';
 ```
 
-@interface IHoverProps
+@typescript IHoverProps
 
 @## Line
 
@@ -86,7 +88,7 @@ import { Line } from '@semcore/d3-chart';
 </Line>;
 ```
 
-@interface ILineProps
+@typescript ILineProps
 
 @## Bar
 
@@ -96,7 +98,7 @@ Chart Bar.
 import { Bar } from '@semcore/d3-chart';
 ```
 
-@interface IBarProps
+@typescript IBarProps
 
 @## HorizontalBar
 
@@ -106,7 +108,7 @@ Horizontal chart Bar.
 import { HorizontalBar } from '@semcore/d3-chart';
 ```
 
-@interface IHorizontalBarProps
+@typescript IHorizontalBarProps
 
 @## StackBar
 
@@ -121,7 +123,7 @@ import { StackBar } from '@semcore/d3-chart';
 </StackBar>;
 ```
 
-@interface IStackBarProps
+@typescript IStackBarProps
 
 @## GroupBar
 
@@ -136,7 +138,7 @@ import { GroupBar } from '@semcore/d3-chart';
 </GroupBar>;
 ```
 
-@interface IGroupBarProps
+@typescript IGroupBarProps
 
 @## Area
 
@@ -151,7 +153,7 @@ import { Area } from '@semcore/d3-chart';
 </Area>;
 ```
 
-@interface IAreaProps
+@typescript IAreaProps
 
 @## StackedArea
 
@@ -165,7 +167,7 @@ import { StackedArea } from '@semcore/d3-chart';
 </StackedArea>;
 ```
 
-@interface IStackedAreaProps
+@typescript IStackedAreaProps
 
 @## Donut
 
@@ -181,7 +183,7 @@ import { Donut } from '@semcore/d3-chart';
 </Donut>;
 ```
 
-@interface IDonutProps
+@typescript IDonutProps
 
 @## Venn
 
@@ -196,7 +198,7 @@ import { Venn } from '@semcore/d3-chart';
 </Venn>;
 ```
 
-@interface IVennProps
+@typescript IVennProps
 
 @## ScatterPlot
 
@@ -206,7 +208,7 @@ import { ScatterPlot } from '@semcore/d3-chart';
 <ScatterPlot />;
 ```
 
-@interface IScatterPlotProps
+@typescript IScatterPlotProps
 
 @## Bubble
 
@@ -216,7 +218,7 @@ import { Bubble } from '@semcore/d3-chart';
 <Bubble />;
 ```
 
-@interface IBubbleProps
+@typescript IBubbleProps
 
 @## Radial tree
 
@@ -236,4 +238,4 @@ import { RadialTree } from '@semcore/d3-chart';
 </RadialTree>;
 ```
 
-@interface IRadialTreeProps
+@typescript IRadialTreeProps

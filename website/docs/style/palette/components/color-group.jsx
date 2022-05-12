@@ -1,5 +1,5 @@
 import React from 'react';
-import Color from 'components/Color';
+import Color from '@components/Color';
 
 const group = {
   bright: [

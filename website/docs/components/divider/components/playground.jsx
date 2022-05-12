@@ -1,6 +1,6 @@
 import React from 'react';
 import Divider from '@semcore/divider';
-import PlaygroundGeneration from 'components/PlaygroundGeneration';
+import PlaygroundGeneration from '@components/PlaygroundGeneration';
 import styled from 'styled-components';
 
 const USE = ['primary', 'secondary'];

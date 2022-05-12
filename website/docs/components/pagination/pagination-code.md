@@ -1,5 +1,6 @@
 ---
 title: Example
+fileSource: pagination
 ---
 
 ### Simple use example

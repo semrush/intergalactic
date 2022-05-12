@@ -11,7 +11,7 @@ import { Text } from '@semcore/typography';
 <Text />;
 ```
 
-@interface ITextProps
+@typescript ITextProps
 
 @## List
 
@@ -22,7 +22,7 @@ import { List } from '@semcore/typography';
 <List />;
 ```
 
-@interface IListProps
+@typescript IListProps
 
 @## List.Item
 
@@ -33,7 +33,7 @@ import { List } from '@semcore/typography';
 <List.Item />;
 ```
 
-@interface IListItemProps
+@typescript IListItemProps
 
 @## Blockquote
 
@@ -44,7 +44,7 @@ import { Blockquote } from '@semcore/typography';
 <Blockquote />;
 ```
 
-@interface IBlockquoteProps
+@typescript IBlockquoteProps
 
 @## Hint
 
@@ -58,7 +58,7 @@ import { Hint } from '@semcore/typography';
 </Hint>;
 ```
 
-@interface IHintProps
+@typescript IHintProps
 
 @## FormatText
 
@@ -71,4 +71,4 @@ import FormatText from '@semcore/format-text';
 <FormatText />;
 ```
 
-@interface IFormatTextProps
+@typescript IFormatTextProps

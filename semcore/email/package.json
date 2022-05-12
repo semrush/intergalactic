@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo 'no test'",
     "clean": "rm -rf lib & rm -rf .tmp",
-    "build": "npm run clean && npm run build:css && npm run build:html && npm run build:html-lib && cp src/core/var.css lib/core 2>/dev/null || :",
+    "build": "npm run clean && npm run build:css && npm run build:html && npm run build:html-lib",
     "build:html": "posthtml -c posthtml-src.config.json -a && npm run build:inky",
     "build:html-lib": "posthtml -c posthtml-lib.config.json -a",
     "build:css": "postcss src/**/*.css --base src --dir lib",

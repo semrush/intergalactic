@@ -1,5 +1,6 @@
 ---
 title: Example
+fileSource: base-trigger
 ---
 
 The component is used as a trigger in filters above tables or any other data.

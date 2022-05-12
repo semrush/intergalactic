@@ -1,5 +1,6 @@
 ---
 title: Example
+fileSource: input-tags
 ---
 
 @## Entering and editing tags

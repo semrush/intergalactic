@@ -1,5 +1,6 @@
 ---
 title: API
+fileSource: link
 ---
 
 @## Link
@@ -11,7 +12,7 @@ import Link from '@semcore/link';
 <Link />;
 ```
 
-@interface ILinkProps
+@typescript ILinkProps
 
 @## Link.Addon
 

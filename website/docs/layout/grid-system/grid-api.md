@@ -1,5 +1,6 @@
 ---
 title: API
+fileSource: grid
 ---
 
 @## Row
@@ -9,7 +10,7 @@ import { Row } from '@semcore/grid';
 <Row />;
 ```
 
-@interface IRowProps
+@typescript IRowProps
 
 @## Col
 
@@ -18,4 +19,4 @@ import { Col } from '@semcore/grid';
 <Col />;
 ```
 
-@interface IColProps
+@typescript IColProps

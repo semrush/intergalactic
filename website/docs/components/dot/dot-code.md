@@ -1,5 +1,6 @@
 ---
 title: Example
+fileSource: dot
 ---
 
 @## Example of dot animation

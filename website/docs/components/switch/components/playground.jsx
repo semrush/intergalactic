@@ -1,7 +1,7 @@
 import React from 'react';
 import Switch from '@semcore/switch';
-import PlaygroundGeneration from 'components/PlaygroundGeneration';
 import CheckM from '@semcore/icon/Check/m';
+import PlaygroundGeneration from '@components/PlaygroundGeneration';
 
 export default PlaygroundGeneration(
   (createGroupWidgets) => {

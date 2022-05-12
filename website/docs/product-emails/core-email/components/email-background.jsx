@@ -1,7 +1,8 @@
 import React from 'react';
 
-import baseCss from '!!raw-loader!@semcore/email/lib/core/base.css';
-import Color from 'components/Color';
+import '@semcore/email/core/var.css';
+import baseCss from '!!raw-loader!@semcore/email/core/base.css';
+import Color from '@components/Color';
 import { bg_100_400, bg_100_300, bg_100_200, bg } from './utils';
 
 const shades = ['100', '200', '300'];

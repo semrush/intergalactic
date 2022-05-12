@@ -1,5 +1,6 @@
 ---
 title: API
+fileSource: data-table
 ---
 
 @## DataTable
@@ -9,7 +10,7 @@ import DataTable from '@semcore/data-table';
 <DataTable />;
 ```
 
-@interface IDataTableProps
+@typescript IDataTableProps
 
 @## DataTable.Head
 
@@ -18,7 +19,7 @@ import DataTable from '@semcore/data-table';
 <DataTable.Head />;
 ```
 
-@interface IDataTableHeadProps
+@typescript IDataTableHeadProps
 
 @## DataTable.Column
 
@@ -27,7 +28,7 @@ import DataTable from '@semcore/data-table';
 <DataTable.Column />;
 ```
 
-@interface IDataTableColumnProps
+@typescript IDataTableColumnProps
 
 @## DataTable.Body
 
@@ -45,7 +46,7 @@ import DataTable from '@semcore/data-table';
 <DataTable.Row />;
 ```
 
-@interface IDataTableRowProps
+@typescript IDataTableRowProps
 
 @## DataTable.Cell
 
@@ -54,4 +55,4 @@ import DataTable from '@semcore/data-table';
 <DataTable.Cell />;
 ```
 
-@interface IDataTableCellProps
+@typescript IDataTableCellProps

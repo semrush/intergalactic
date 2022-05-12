@@ -1,5 +1,6 @@
 ---
 title: API
+fileSource: time-picker
 ---
 
 @## Time picker
@@ -8,11 +9,11 @@ title: API
 import Timepicker from '@semcore/time-picker';
 ```
 
-@interface ITimePickerProps
+@typescript ITimePickerProps
 
 ### TimePicker.Hours, TimePicker.Minutes
 
-@interface ITimePickerItemProps
+@typescript ITimePickerItemProps
 
 ```jsx
 import Timepicker from '@semcore/time-picker';
@@ -24,7 +25,7 @@ import Timepicker from '@semcore/time-picker';
 
 ### TimePicker.Format
 
-@interface ITimePickerFormatProps
+@typescript ITimePickerFormatProps
 
 ```jsx
 import Timepicker from '@semcore/time-picker';

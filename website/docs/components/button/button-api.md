@@ -1,5 +1,6 @@
 ---
 title: API
+fileSource: button
 ---
 
 @## Button
@@ -11,7 +12,7 @@ import Button from '@semcore/button';
 <Button />;
 ```
 
-@interface IButtonProps
+@typescript IButtonProps
 
 @## Button.Addon
 

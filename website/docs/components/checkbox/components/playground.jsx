@@ -1,6 +1,6 @@
 import React from 'react';
 import Checkbox from '@semcore/checkbox';
-import PlaygroundGeneration from 'components/PlaygroundGeneration';
+import PlaygroundGeneration from '@components/PlaygroundGeneration';
 
 export default PlaygroundGeneration(
   (createGroupWidgets) => {

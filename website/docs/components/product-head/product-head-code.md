@@ -1,5 +1,6 @@
 ---
 title: Example
+fileSource: product-head
 ---
 
 @## Extended example of the header with tabs

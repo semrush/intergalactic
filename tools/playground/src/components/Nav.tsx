@@ -3,7 +3,7 @@ import { useLocationHash } from './useLocationHash';
 // eslint-disable-next-line import/no-unresolved
 import { playgrounds } from '@playgrounds';
 import './nav.css';
-import LogoImage from '../../../../website/client/static/illustration/whale.svg';
+import LogoImage from '../../../../website/src/static/illustration/whale.svg';
 
 export const Nav: React.FC = () => {
   const [currentPlayground, setPlayground] = useLocationHash();
