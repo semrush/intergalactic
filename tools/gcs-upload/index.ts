@@ -128,7 +128,7 @@ export const ls = async () => {
 
   const [files] = await storage.bucket(BUCKET_NAME).getFiles();
 
-  return files.map((file) => file.name);
+  return files.map((file) => console.log(file.name));
 };
 
 export const uploadFilesInFolders = async (folderPaths: string[]) => {
@@ -158,7 +158,7 @@ export const uploadFilesInFolders = async (folderPaths: string[]) => {
           return (
             storage
               .bucket(BUCKET_NAME)
-              .upload(`${folderName}/{${fileName}`, {
+              .upload(`${folderPath}/{${fileName}`, {
                 gzip: true,
                 destination,
                 metadata: {
