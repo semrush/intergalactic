@@ -62,6 +62,7 @@ STag[size='xl'] {
 
 STag[theme='primary'] {
   background-color: var(--colorBg);
+  border-color: var(--colorBg);
   color: var(--colorText);
 
   &[interactive]:hover,

@@ -101,8 +101,6 @@ class RootTag extends Component {
 
     const colors = theme !== 'primary' ? getSecondaryColors(color) : getPrimaryColors(color);
 
-    console.log(colors);
-
     return sstyled(styles)(
       <STag
         render={Box}
