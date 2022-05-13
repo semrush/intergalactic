@@ -32,5 +32,5 @@ const data = Array(21)
   .fill({})
   .map((d, i) => ({
     x: i,
-    y: Math.random().toFixed(1) * 10,
+    y: Math.random() * 10,
   }));

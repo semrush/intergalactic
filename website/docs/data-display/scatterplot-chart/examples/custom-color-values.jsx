@@ -49,7 +49,7 @@ const data = Array(20)
   .fill({})
   .map((d, i) => ({
     x: i,
-    y1: Math.random().toFixed(1) * 10,
-    y2: Math.random().toFixed(1) * 10,
+    y1: Math.random() * 10,
+    y2: Math.random() * 10,
     value: i,
   }));

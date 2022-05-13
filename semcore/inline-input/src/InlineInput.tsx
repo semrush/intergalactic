@@ -232,7 +232,7 @@ const ConfirmControl: React.FC<ConfirmControlAsProps> = (props) => {
 
   if (props.loading) {
     return sstyled(props.styles)(
-      <SAddon render={Box}>{hasChildren ? <Children /> : <Spin size="xxs" />}</SAddon>,
+      <SAddon render={Box}>{hasChildren ? <Children /> : <Spin size="xs" />}</SAddon>,
     ) as React.ReactElement;
   }
 

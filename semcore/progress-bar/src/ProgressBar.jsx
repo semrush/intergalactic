@@ -2,7 +2,6 @@ import React from 'react';
 import createComponent, { Component, sstyled, Root } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
 import resolveColor from '@semcore/utils/lib/color';
-import logger from '@semcore/utils/lib/logger';
 
 import style from './style/progress-bar.shadow.css';
 

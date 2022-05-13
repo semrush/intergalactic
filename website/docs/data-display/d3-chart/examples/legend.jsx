@@ -98,6 +98,6 @@ export default () => {
 
 const data = [...Array(10).keys()].map((d, i) => ({
   x: i,
-  y: Math.random().toFixed(1) * i,
-  y2: Math.random().toFixed(1) * (i + 2),
+  y: Math.random() * i,
+  y2: Math.random() * (i + 2),
 }));

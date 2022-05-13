@@ -2,7 +2,6 @@ import React from 'react';
 import createComponent, { Root, Component, sstyled } from '@semcore/core';
 import Popper from '@semcore/popper';
 import capitalizeFirstLetter from '@semcore/utils/lib/capitalizeFirstLetter';
-import logger from '@semcore/utils/lib/logger';
 
 import style from './style/dropdown.shadow.css';
 
@@ -70,7 +69,7 @@ class Dropdown extends Component {
   }
 
   render() {
-    let { Children, forwardRef, modifiers = [], stretch, ...other } = this.asProps;
+    const { Children, forwardRef, modifiers = [], stretch, ...other } = this.asProps;
 
     return (
       <Popper

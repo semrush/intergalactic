@@ -104,7 +104,7 @@ export default () => {
 const date = new Date();
 const data = [...Array(5).keys()].map((d, i) => ({
   time: new Date(date.setDate(date.getDate() + 5)),
-  stack1: Math.random().toFixed(1) * 5,
-  stack2: Math.random().toFixed(1) * 5,
-  stack3: Math.random().toFixed(1) * 5,
+  stack1: Math.random() * 5,
+  stack2: Math.random() * 5,
+  stack3: Math.random() * 5,
 }));

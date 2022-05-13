@@ -47,7 +47,7 @@ export default () => {
 const data = Array(10)
   .fill({})
   .map((d, i) => ({
-    x: Math.random().toFixed(1) * 10,
-    y: Math.random().toFixed(1) * 10,
-    value: Math.random().toFixed(1) * 1000,
+    x: Math.random() * 10,
+    y: Math.random() * 10,
+    value: Math.random() * 1000,
   }));
