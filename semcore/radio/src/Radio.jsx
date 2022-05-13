@@ -107,7 +107,7 @@ class Value extends Component {
   render() {
     const SValue = Box;
     const SControl = Box;
-    const { forwardRef, styles, includeInputProps, state, theme } = this.asProps;
+    const { forwardRef, styles, includeInputProps, theme } = this.asProps;
 
     const [controlProps, boxProps] = getInputProps(this.asProps, includeInputProps);
 

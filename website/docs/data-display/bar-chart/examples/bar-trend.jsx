@@ -46,5 +46,5 @@ const data = Array(10)
   .fill({})
   .map((d, i) => ({
     category: i,
-    bar: Math.random().toFixed(1) * i,
+    bar: Math.random() * i,
   }));

@@ -373,8 +373,8 @@ describe('Bar chart', () => {
     const data = Array(10)
       .fill({})
       .map((d, i) => ({
-        x: (i / 10).toFixed(1) * 10,
-        y: ((10 - i) / 10).toFixed(1) * 10,
+        x: (i / 10) * 10,
+        y: ((10 - i) / 10) * 10,
         value: i,
       }));
 

@@ -4,7 +4,6 @@ import createComponent, { Component, sstyled, Root } from '@semcore/core';
 import Dropdown from '@semcore/dropdown';
 import { Box, Flex, useBox, useFlex } from '@semcore/flex-box';
 import ScrollAreaComponent from '@semcore/scroll-area';
-import logger from '@semcore/utils/lib/logger';
 
 import style from './style/dropdown-menu.shadow.css';
 
