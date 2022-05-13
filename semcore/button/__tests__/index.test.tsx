@@ -28,16 +28,13 @@ describe('Button', () => {
   });
 
   test('Renders correctly with Addon as props', async () => {
-    const Addon =
-      React.forwardRef <
-      HTMLElement >
-      function (p, ref) {
-        return (
-          <span ref={ref} {...propsForElement(p)}>
-            Addon prop
-          </span>
-        );
-      };
+    const Addon = React.forwardRef(function (p, ref) {
+      return (
+        <span ref={ref} {...propsForElement(p)}>
+          Addon prop
+        </span>
+      );
+    });
     const component = (
       <Button addonLeft={Addon} addonRight={Addon}>
         Text
