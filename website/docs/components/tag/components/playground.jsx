@@ -28,7 +28,7 @@ export default PlaygroundGeneration((createGroupWidgets) => {
   const color = select({
     key: 'color',
     defaultValue: 'gray-500',
-    label: 'Theme',
+    label: 'Color',
     options: COLORS.map((value) => ({
       name: value,
       value,
@@ -37,9 +37,9 @@ export default PlaygroundGeneration((createGroupWidgets) => {
 
   const theme = select({
     key: 'theme',
-    defaultValue: 'secondary',
+    defaultValue: 'primary',
     label: 'Theme',
-    options: ['primary', 'secondary'].map((value) => ({
+    options: ['primary', 'secondary', 'additional'].map((value) => ({
       name: value,
       value,
     })),

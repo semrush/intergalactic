@@ -4,7 +4,7 @@ import MathPlusXS from '@semcore/icon/MathPlus/m';
 
 function Demo() {
   return (
-    <Tag interactive style={{ borderStyle: 'dashed' }}>
+    <Tag interactive theme="additional">
       <Tag.Addon tag={MathPlusXS} />
       <Tag.Text>Add tag</Tag.Text>
     </Tag>
