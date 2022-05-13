@@ -184,15 +184,12 @@ export const light = (color?: string, factor: number = 1) => {
     throw new Error(`Got invalid color ${color}`);
   }
 
-  let hsl = rgbToHsl(r, g, b);
+  const hsl = rgbToHsl(r, g, b);
 
   hsl[2] += (1 - hsl[2]) * factor;
 
   const rgb = hslToRgb(...hsl);
 
-  requestAnimationFrame(() => {
-    console.log(lightMemo, [r, g, b, a], hsl);
-  });
   return (lightMemo[inputKey] = `rgba(${rgb[0]}, ${rgb[1]}, ${rgb[2]}, ${a})`);
 };
 
