@@ -5,7 +5,6 @@
     "plugin:import/typescript",
     "plugin:import/warnings",
     "plugin:import/errors",
-    "plugin:semcore/internal",
     "plugin:ssr-friendly/recommended"
   ],
   "parserOptions": {
