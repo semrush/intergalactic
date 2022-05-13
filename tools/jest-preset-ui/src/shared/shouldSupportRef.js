@@ -2,14 +2,13 @@ const React = require('react');
 const { render } = require('@testing-library/react');
 
 module.exports = {
-  shouldSupportRef: function shouldSupportRef(Component, WrapperComponent) {
+  shouldSupportRef: function shouldSupportRef(Component, Wrapper = React.Fragment, props = {}) {
     test('ref should return DOM-node', () => {
       const ref = React.createRef();
-      const Wrapper = WrapperComponent || React.Fragment;
 
       render(
         <Wrapper>
-          <Component ref={ref} />
+          <Component {...props} ref={ref} />
         </Wrapper>,
       );
 
