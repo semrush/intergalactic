@@ -44,8 +44,6 @@ SFormatText {
 
   & blockquote {
     position: relative;
-    margin-top: 18px;
-    margin-bottom: 18px;
     padding-left: 51px;
     font-size: var(--fs-400);
     line-height: var(--lh-400);
