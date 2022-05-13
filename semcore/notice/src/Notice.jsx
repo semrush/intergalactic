@@ -16,6 +16,7 @@ class RootNotice extends Component {
   static style = style;
   static defaultProps = {
     theme: 'info',
+    use: 'secondary',
     duration: 200,
   };
 
