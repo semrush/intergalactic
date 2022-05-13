@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import FocusLock from 'react-focus-lock';
 import createComponent, { Component, Root, sstyled } from '@semcore/core';
-import { Box } from '@semcore/flex-box';
+import { Flex, Box } from '@semcore/flex-box';
 import { FadeInOut, Transform } from '@semcore/animation';
 import Portal, { PortalProvider } from '@semcore/portal';
 import OutsideClick from '@semcore/outside-click';
@@ -10,6 +10,8 @@ import fire from '@semcore/utils/lib/fire';
 import { isAdvanceMode } from '@semcore/utils/lib/findComponent';
 import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 import usePreventScroll from '@semcore/utils/lib/use/usePreventScroll';
+import { Text } from '@semcore/typography';
+import ArrowLeft from '@semcore/icon/ArrowLeft/m';
 
 import style from './style/side-panel.shadow.css';
 
@@ -157,20 +159,65 @@ function Panel(props) {
   );
 }
 
+function Footer(props) {
+  const SFooter = Root;
+  return sstyled(props.styles)(<SFooter render={Flex} />);
+}
+
 function Close(props) {
   const SClose = Root;
   return sstyled(props.styles)(<SClose render={Box} tag="button" />);
 }
-
 Close.defaultProps = {
   children: <CloseIcon title="Close" />,
 };
 Close.enhance = [keyboardFocusEnhance()];
 
+function Title(props) {
+  const STitle = Root;
+  return sstyled(props.styles)(<STitle render={Text} tag="h6" />);
+}
+
+function Back(props) {
+  const SBack = Root;
+  const SBackText = Text;
+  const { Children, styles } = props;
+
+  return sstyled(styles)(
+    <SBack render={Box}>
+      <ArrowLeft />
+      <SBackText>
+        <Children />
+      </SBackText>
+    </SBack>,
+  );
+}
+
+function Body(props) {
+  const SBody = Root;
+  return sstyled(props.styles)(<SBody render={Box} />);
+}
+
+function Header(props) {
+  const SHeader = Root;
+  const { Children, styles, title } = props;
+  return sstyled(styles)(
+    <SHeader render={Box}>
+      {title && <SidePanel.Title children={title} />}
+      <Children />
+    </SHeader>,
+  );
+}
+
 const SidePanel = createComponent(RootSidePanel, {
   Overlay,
   Panel,
   Close,
+  Header,
+  Footer,
+  Body,
+  Back,
+  Title,
 });
 
 export default SidePanel;
