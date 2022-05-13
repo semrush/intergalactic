@@ -13,10 +13,6 @@ SInner {
   flex-wrap: wrap;
   align-items: flex-start;
   box-sizing: border-box;
-
-  @media (max-width: 920px) {
-    padding: 0 10px;
-  }
 }
 
 SImageWrapper,

@@ -78,12 +78,12 @@ SAddon {
   justify-content: center;
   align-items: center;
   flex: 0 0 auto;
+  padding: 0 8px;
   height: 100%;
   color: var(--gray-300);
 }
 
 SAddon[interactive] {
-  color: var(--gray-300);
   cursor: pointer;
 
   &:hover {
@@ -103,9 +103,7 @@ SInput[size='m'] {
 }
 
 SValue[size='m'],
-SAddon[size='m'],
-SValue[size='l'],
-SAddon[size='l'] {
+SValue[size='l'] {
   padding: 0 8px;
 }
 
@@ -171,11 +169,11 @@ SInput[neighborLocation='left'] {
   }
 }
 
-SAddon[size='l'][neighborLocation='right'] {
+SAddon[neighborLocation='right'] {
   padding-right: 8px;
 }
 
-SAddon[size='l'][neighborLocation='left'] {
+SAddon[neighborLocation='left'] {
   padding-left: 8px;
 }
 
