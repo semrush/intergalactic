@@ -6,7 +6,12 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### BREAK
 
+- Set `primary` as default component theme.
 - Restyling component.
+
+### Added
+
+- Added `additional` theme.
 
 ## [3.7.2] - 2022-04-28
 

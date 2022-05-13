@@ -13,6 +13,15 @@ STag {
   padding-left: 4px;
   padding-right: 4px;
   font-weight: 500;
+  background-color: var(--colorBg);
+  color: var(--colorText);
+  border-color: var(--colorBorder);
+
+  &[interactive]:hover,
+  &[interactive]:active,
+  &[active] {
+    background-color: var(--colorBgHover);
+  }
 }
 
 STag[disabled] {
@@ -49,14 +58,6 @@ STag[size='xl'] {
   height: 40px;
   min-width: 40px;
   font-size: var(--fs-300);
-
-  & SCircle:first-child {
-    margin-left: 4px;
-  }
-
-  & SCircle:last-child {
-    margin-right: 4px;
-  }
 }
 
 STag[theme='primary'] {
@@ -80,20 +81,8 @@ STag[theme='primary-invert'] {
     background-color: rgba(255, 255, 255, 0.3);
   }
 }
-
-STag[theme='secondary'] {
-  background-color: var(--colorBg);
-  color: var(--colorText);
-  border-color: var(--colorBorder);
-
-  &[interactive]:hover,
-  &[interactive]:active,
-  &[active] {
-    background-color: var(--colorBgHover);
-  }
-}
-
-STag[theme='secondary-invert'] {
+STag[theme='secondary-invert'],
+STag[theme='additional-invert'] {
   color: var(--white);
   border-color: color-mod(var(--white) a(30%));
 
@@ -102,6 +91,10 @@ STag[theme='secondary-invert'] {
   &[active] {
     background-color: rgba(255, 255, 255, 0.1);
   }
+}
+
+STag[theme='additional'] {
+  border-style: dashed;
 }
 
 SText {
@@ -141,13 +134,14 @@ SCircle {
   justify-content: center;
   overflow: hidden;
   border-radius: 50%;
+  margin: 0 4px;
 
   &:first-child {
-    margin-right: 4px;
+    margin-left: 0;
   }
 
   &:last-child {
-    margin-left: 4px;
+    margin-right: 0;
   }
 }
 
