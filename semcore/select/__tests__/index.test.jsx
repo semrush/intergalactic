@@ -141,18 +141,18 @@ describe('Select Trigger', () => {
   });
 
   test('Should support Option.Checkbox', async () => {
-    const Component = ({ theme, ...props }) => (
+    const Component = ({ theme, size, ...props }) => (
       <div style={{ position: 'relative', width: '150px', height: '100px' }}>
-        <Select {...props} visible disablePortal value="1">
+        <Select {...props} size={size} visible disablePortal value="1">
           <Select.Trigger />
           <Select.Popper>
             <Select.Option value="1">
               <Select.Option.Checkbox theme={theme} />
-              size m selected
+              size {size ?? '%none%'} selected
             </Select.Option>
             <Select.Option value="2">
               <Select.Option.Checkbox theme={theme} />
-              size m
+              size {size ?? '%none%'}
             </Select.Option>
           </Select.Popper>
         </Select>
