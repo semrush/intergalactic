@@ -48,7 +48,8 @@ SDropdownMenuItem[disabled] {
   pointer-events: none;
 }
 
-SDropdownMenuItem[size='l'] {
+SDropdownMenuItem[size='l'],
+SDropdownMenuItem[size='xl'] {
   font-size: var(--fs-300);
   line-height: var(--lh-300);
   padding: 8px 12px;
