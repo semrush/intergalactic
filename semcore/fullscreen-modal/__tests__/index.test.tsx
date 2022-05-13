@@ -8,23 +8,21 @@ import FullscreenModal from '../src';
 describe('FullscreenModal', () => {
   afterEach(cleanup);
 
-  shouldSupportClassName(FullscreenModal);
-  shouldSupportRef(FullscreenModal);
+  shouldSupportClassName(FullscreenModal, React.Fragment, { visible: true });
+  shouldSupportRef(FullscreenModal, React.Fragment, { visible: true });
 
   test('should support hidden props', () => {
-    const { rerender, queryByText } = render(
-      <FullscreenModal visible={false}>Text</FullscreenModal>,
-    );
+    const { rerender, queryByText } = render(<FullscreenModal>Text</FullscreenModal>);
     expect(queryByText(/Text/)).toBeNull();
 
-    rerender(<FullscreenModal>Text</FullscreenModal>);
+    rerender(<FullscreenModal visible>Text</FullscreenModal>);
     expect(queryByText(/Text/)).toBeTruthy();
   });
 
   test('should support onClose for CloseIcons', () => {
     const spy = jest.fn();
     const { getByTestId } = render(
-      <FullscreenModal onClose={spy}>
+      <FullscreenModal onClose={spy} visible>
         <FullscreenModal.Close data-testid="close" />
       </FullscreenModal>,
     );
@@ -35,7 +33,7 @@ describe('FullscreenModal', () => {
   test('should support onClose for BackClick', () => {
     const spy = jest.fn();
     const { getByTestId } = render(
-      <FullscreenModal onClose={spy}>
+      <FullscreenModal onClose={spy} visible>
         <FullscreenModal.Back data-testid="back" />
       </FullscreenModal>,
     );
@@ -45,7 +43,7 @@ describe('FullscreenModal', () => {
 
   test('should support onClose for Escape', () => {
     const spy = jest.fn();
-    const { getByTestId } = render(<FullscreenModal onClose={spy} data-testid="modal" />);
+    const { getByTestId } = render(<FullscreenModal visible onClose={spy} data-testid="modal" />);
     fireEvent.keyDown(getByTestId('modal'), { key: 'Escape' });
     expect(spy).toBeCalledWith('onEscape', expect.anything());
   });
@@ -53,7 +51,7 @@ describe('FullscreenModal', () => {
   test('should support render', async () => {
     const Component = (
       <div style={{ width: '785px', height: '600px' }}>
-        <FullscreenModal disablePortal>
+        <FullscreenModal disablePortal visible>
           <FullscreenModal.Close />
           <FullscreenModal.Back>Go to Tool Name</FullscreenModal.Back>
           <FullscreenModal.Header>
@@ -90,12 +88,16 @@ describe('FullscreenModal', () => {
 describe('FullscreenModal.Header', () => {
   afterEach(cleanup);
 
-  shouldSupportClassName(FullscreenModal.Header, FullscreenModal);
-  shouldSupportRef(FullscreenModal.Header, FullscreenModal);
+  shouldSupportClassName(FullscreenModal.Header, ({ children }) => (
+    <FullscreenModal visible>{children}</FullscreenModal>
+  ));
+  shouldSupportRef(FullscreenModal.Header, ({ children }) => (
+    <FullscreenModal visible>{children}</FullscreenModal>
+  ));
 
   test('should support title', () => {
     const { queryByText } = render(
-      <FullscreenModal>
+      <FullscreenModal visible>
         <FullscreenModal.Header title="Text" />
       </FullscreenModal>,
     );
@@ -104,7 +106,7 @@ describe('FullscreenModal.Header', () => {
 
   test('should support description', () => {
     const { queryByText } = render(
-      <FullscreenModal>
+      <FullscreenModal visible>
         <FullscreenModal.Header description="Text" />
       </FullscreenModal>,
     );
