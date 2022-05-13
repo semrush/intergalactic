@@ -32,7 +32,6 @@ class Input extends Component {
   getAddonProps() {
     const { size, disabled } = this.asProps;
     return {
-      size,
       disabled,
       onMouseDown: this.handleMouseDownAddon,
     };
