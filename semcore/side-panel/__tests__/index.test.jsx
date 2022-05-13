@@ -114,41 +114,6 @@ describe('SidePanel', () => {
     expect(document.body).not.toHaveStyle('overflow: hidden');
   });
 
-  test('Should correctly render', async () => {
-    const Component = (
-      <SidePanel disablePortal visible>
-        <SidePanel.Close />
-        <SidePanel.Header>
-          <SidePanel.Back>Go to Tool Name</SidePanel.Back>
-          <SidePanel.Title>Heading 6, 16px</SidePanel.Title>
-        </SidePanel.Header>
-        <SidePanel.Body> ???? </SidePanel.Body>
-        <SidePanel.Footer justifyContent="center" pt={2}>
-          <button>Primary</button>
-          <button style={{ marginLeft: '8px' }}>Cancel</button>
-        </SidePanel.Footer>
-      </SidePanel>
-    );
-    expect(
-      await snapshot(Component, { selector: 'body', width: 300, height: 300 }),
-    ).toMatchImageSnapshot();
-  });
-
-  test('Title and Back should correctly if a very long text', async () => {
-    const component = (
-      <SidePanel disablePortal visible>
-        <SidePanel.Header>
-          <SidePanel.Back>Go to Tool Name Go to Tool Name</SidePanel.Back>
-          <SidePanel.Title>Heading 6, 16px Heading 6, 16px</SidePanel.Title>
-        </SidePanel.Header>
-      </SidePanel>
-    );
-
-    expect(
-      await snapshot(component, { selector: 'body', width: 320, height: 100 }),
-    ).toMatchImageSnapshot();
-  });
-
   test('Close icon should support hover', async () => {
     expect(
       await snapshot(
@@ -156,19 +121,6 @@ describe('SidePanel', () => {
           <SidePanel.Close id="close" />
         </SidePanel>,
         { selector: 'body', width: 320, height: 100, actions: { hover: '#close' } },
-      ),
-    ).toMatchImageSnapshot();
-  });
-
-  test('Back icon should support hover', async () => {
-    expect(
-      await snapshot(
-        <SidePanel disablePortal visible>
-          <SidePanel.Header>
-            <SidePanel.Back id="back">Go to Tool Name</SidePanel.Back>
-          </SidePanel.Header>
-        </SidePanel>,
-        { selector: 'body', width: 320, height: 100, actions: { hover: '#back' } },
       ),
     ).toMatchImageSnapshot();
   });
