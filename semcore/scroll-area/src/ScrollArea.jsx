@@ -180,8 +180,8 @@ class ScrollAreaRoot extends Component {
     const { shadowVertical, shadowHorizontal } = this.state;
 
     const advanceMode = isAdvanceMode(Children, [
-      ScrollAreaComponent.Container.displayName,
-      ScrollAreaComponent.Bar.displayName,
+      ScrollArea.Container.displayName,
+      ScrollArea.Bar.displayName,
     ]);
 
     return sstyled(styles)(
@@ -192,14 +192,14 @@ class ScrollAreaRoot extends Component {
           <Children />
         ) : (
           <>
-            <ScrollAreaComponent.Container>
+            <ScrollArea.Container>
               <Children />
-            </ScrollAreaComponent.Container>
+            </ScrollArea.Container>
             {(orientation === undefined || orientation === 'horizontal') && (
-              <ScrollAreaComponent.Bar orientation="horizontal" />
+              <ScrollArea.Bar orientation="horizontal" />
             )}
             {(orientation === undefined || orientation === 'vertical') && (
-              <ScrollAreaComponent.Bar orientation="vertical" />
+              <ScrollArea.Bar orientation="vertical" />
             )}
           </>
         )}
@@ -220,9 +220,9 @@ function ContainerRoot(props) {
   );
 }
 
-const ScrollAreaComponent = createComponent(ScrollAreaRoot, {
+export const ScrollArea = createComponent(ScrollAreaRoot, {
   Container: ContainerRoot,
   Bar: BarRoot,
 });
 
-export default ScrollAreaComponent;
+export default ScrollArea;
