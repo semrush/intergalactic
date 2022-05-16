@@ -6,7 +6,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### BREAK
 
-- Restyling component.
+- Updated styles according to the library redesign policy.
 - Removed deprecated props `onSelect, optionCount, triggerType`.
 - Removed value "xl" for "size".
 

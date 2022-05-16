@@ -2,15 +2,11 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [5.2.0] - unrelease
+## [6.0.0] - unreleased
 
-### Added
+### BREAK
 
-- Added theme in css
-
-### Changed
-
-- Updated colors
+- Updated styles according to the library redesign policy.
 
 ## [5.1.0] - 2022-04-25
 

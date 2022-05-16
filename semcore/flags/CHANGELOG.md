@@ -2,9 +2,9 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [2.3.0] - unrelease
+## [3.0.0] - unreleased
 
-### Changed
+### BREAK
 
 - Changed size flags from 14x11 to 16x16.
 
