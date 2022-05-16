@@ -161,7 +161,6 @@ describe('Select Trigger', () => {
     expect(
       await snapshot(
         <>
-          <Component size="xl" />
           <Component size="l" />
           <Component size="m" />
           <Component theme="violet-800" />

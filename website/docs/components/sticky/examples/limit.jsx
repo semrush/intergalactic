@@ -92,7 +92,7 @@ const Demo = () => (
             <Text size={300} tag="p" mb="24px">
               To view more data, upgrade to a Guru or Business subscription plan.
             </Text>
-            <Button use="primary" theme="success" size="xl">
+            <Button use="primary" theme="success" size="l">
               See plans and pricing
             </Button>
           </Sticky>

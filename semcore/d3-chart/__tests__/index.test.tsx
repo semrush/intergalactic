@@ -21,10 +21,12 @@ import {
   Donut,
   HorizontalBar,
   GroupBar,
+  minMax,
+  Area,
+  StackedArea,
 } from '../src';
 import { getIndexFromData } from '../src/utils';
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { minMax, Area, StackedArea } from '@semcore/d3-chart';
 import { curveCardinal } from 'd3-shape';
 import { Flex, Box } from '@semcore/flex-box';
 import resolveColor from '@semcore/utils/lib/color';
@@ -479,7 +481,7 @@ describe('d3 charts visual regression', () => {
       return new Intl.DateTimeFormat('en', options).format(value);
     }
 
-    const date = new Date();
+    const date = new Date('05-16-2022');
     const data = Array(10)
       .fill({})
       .map((d, i) => {

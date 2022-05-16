@@ -33,9 +33,6 @@ The input may be marked as optional for completing.
 
 | Input size | Vertical label. The name is attached at the left, optional - at the right of the input. | Horizontal label. The name is centered in the input, optional - always under the name. | Font size                            |
 | ---------- | --------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | ------------------------------------ |
-| XL (42px)  | ![vertical label with margin to input](static/input-xl.png)                             | ![horizontal label with margin to input](static/input-left-xl.png)                     | `font-size: 16px; line-height: 1.5;` |
-|            | ![vertical label with margin to checkbox](static/checkbox-xl.png)                       | ![horizontal label with margin to checkbox](static/checkbox-left-xl.png)               |                                      |
-|            | ![vertical label with margin to textarea](static/textarea-xl.png)                       | ![horizontal label with margin to checkbox](static/textarea-left-xl.png)               |                                      |
 | L          | ![vertical label with margin to input](static/input-l.png)                              | ![horizontal label with margin to input](static/input-left-l.png)                      | `font-size: 14px; line-height: 1.4;` |
 |            | ![vertical label with margin to checkbox](static/checkbox-l.png)                        | ![horizontal label with margin to checkbox](static/checkbox-left-l.png)                |                                      |
 |            | ![vertical label with margin to textarea](static/textarea-l.png)                        | ![horizontal label with margin to checkbox](static/textarea-left-l.png)                |                                      |
@@ -71,9 +68,9 @@ The form may contain any controls and inputs from our design system.
 
 Below there are recommendations with regard to the paddings between the inputs in the form. You may use other ones, 4-fold, paddings, if necessary.
 
-| XL (42px)                                          | L (32px)                                          | M (26px)                                          |
-| -------------------------------------------------- | ------------------------------------------------- | ------------------------------------------------- |
-| ![paddings between input in a form](static/xl.png) | ![paddings between input in a form](static/l.png) | ![paddings between input in a form](static/m.png) |
+| L (32px)                                          | M (26px)                                          |
+| ------------------------------------------------- | ------------------------------------------------- |
+| ![paddings between input in a form](static/l.png) | ![paddings between input in a form](static/m.png) |
 
 @## Form validation
 

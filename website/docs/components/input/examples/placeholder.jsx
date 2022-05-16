@@ -5,7 +5,7 @@ import { Text } from '@semcore/typography';
 const Demo = () => {
   return (
     <>
-      <Input size="xl" w={300}>
+      <Input size="l" w={300}>
         <Input.Addon tag={Text} color="gray70" pr="3px">
           Permanent text:
         </Input.Addon>

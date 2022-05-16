@@ -28,11 +28,10 @@ In all TabLine sizes:
 - the right padding is 16px (except for `last-child`);
 - padding of addons before and after the text is 8px.
 
-| Size      | Paddings                     | Styles                                                                 |
-| --------- | ---------------------------- | ---------------------------------------------------------------------- |
-| XL (42px) | ![tab-xl](static/tab-xl.png) | `font-size: 16px; line-height: 1.37em; height: 42px; before-icon: m;`  |
-| L (32px)  | ![tab-l](static/tab-l.png)   | `font-size: 14px; line-height: 1.29em; height: 32px; before-icon: s;`  |
-| M (26px)  | ![tab-m](static/tab-m.png)   | `font-size: 12px; line-height: 1.33em; height: 26px; before-icon: xs;` |
+| Size     | Paddings                   | Styles                                                                 |
+| -------- | -------------------------- | ---------------------------------------------------------------------- |
+| L (32px) | ![tab-l](static/tab-l.png) | `font-size: 14px; line-height: 1.29em; height: 32px; before-icon: s;`  |
+| M (26px) | ![tab-m](static/tab-m.png) | `font-size: 12px; line-height: 1.33em; height: 26px; before-icon: xs;` |
 
 ### Addons (optional elements)
 

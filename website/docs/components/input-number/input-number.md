@@ -47,20 +47,19 @@ To change the value in InputNumber, use:
 >
 > _from [Form Design Patterns](https://www.smashingmagazine.com/printed-books/form-design-patterns/)_
 
-|           | Appearance                            |
-| --------- | ------------------------------------- |
-| XL (42px) | ![xl input size](static/xl-sizes.png) |
-| L (32px)  | ![l input size](static/l-sizes.png)   |
-| M (26px)  | ![m input size](static/m-sizes.png)   |
+|          | Appearance                          |
+| -------- | ----------------------------------- |
+| L (32px) | ![l input size](static/l-sizes.png) |
+| M (26px) | ![m input size](static/m-sizes.png) |
 
 > 💡 If necessary, you can use a number as a placeholder inside this kind of input.
 
-| State      | Xl (42px)                                     | L (32px)                                     | M (26px)                                     | Styles                                                                |
-| ---------- | --------------------------------------------- | -------------------------------------------- | -------------------------------------------- | --------------------------------------------------------------------- |
-| default    | ![default state](static/xl-placeholder.png)   | ![default state](static/l-placeholder.png)   | ![default state](static/m-placeholder.png)   |                                                                       |
-| hover      | ![hover state](static/xl-hover.png)           | ![hover state](static/l-hover.png)           | ![hover state](static/m-hover.png)           | `icon color: $stone;`                                                 |
-| Icon hover | ![icon hover state](static/xl-icon-hover.png) | ![icon hover state](static/l-icon-hover.png) | ![icon hover state](static/m-icon-hover.png) | When hovering the cursor over, the color of the icon is darker by 8%. |
-| focus      | ![focus state](static/xl-focus.png)           | ![focus state](static/l-focus.png)           | ![focus state](static/m-focus.png)           |                                                                       |
+| State      | L (32px)                                     | M (26px)                                     | Styles                                                                |
+| ---------- | -------------------------------------------- | -------------------------------------------- | --------------------------------------------------------------------- |
+| default    | ![default state](static/l-placeholder.png)   | ![default state](static/m-placeholder.png)   |                                                                       |
+| hover      | ![hover state](static/l-hover.png)           | ![hover state](static/m-hover.png)           | `icon color: $stone;`                                                 |
+| Icon hover | ![icon hover state](static/l-icon-hover.png) | ![icon hover state](static/m-icon-hover.png) | When hovering the cursor over, the color of the icon is darker by 8%. |
+| focus      | ![focus state](static/l-focus.png)           | ![focus state](static/m-focus.png)           |                                                                       |
 
 @## Input size
 
@@ -85,10 +84,10 @@ To enter a range of numbers, we need two Inputnumber grouped together, and a bit
 
 > 💡 You can use **"From"** and **"To"** as placeholders in such inputs.
 
-| State   | Xl (42px)                                                 | L (32px)                                                 | M (26px)                                                 |
-| ------- | --------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
-| default | ![default state input range](static/xl-range-default.png) | ![default state input range](static/l-range-default.png) | ![default state input range](static/m-range-default.png) |
-| focus   | ![focus state input range](static/xl-range-focus.png)     | ![default state input range](static/l-range.png)         | ![default state input range](static/m-range.png)         |
+| State   | L (32px)                                                 | M (26px)                                                 |
+| ------- | -------------------------------------------------------- | -------------------------------------------------------- |
+| default | ![default state input range](static/l-range-default.png) | ![default state input range](static/m-range-default.png) |
+| focus   | ![default state input range](static/l-range.png)         | ![default state input range](static/m-range.png)         |
 
 ### Validation when entering a range of numbers
 
