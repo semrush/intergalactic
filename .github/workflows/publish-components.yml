@@ -53,7 +53,7 @@ jobs:
         if: steps.cache-build.outputs.cache-hit != 'true'
         run: yarn build
       - name: Import GPG key
-        uses: crazy-max/ghaction-import-gpg@v4.4.0
+        uses: crazy-max/ghaction-import-gpg@v4
         with:
           gpg_private_key: ${{ secrets.BOT_ACCOUNT_GPG_PRIVATE_KEY }}
           git_user_signingkey: true
