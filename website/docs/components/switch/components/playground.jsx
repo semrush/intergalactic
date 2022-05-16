@@ -11,7 +11,7 @@ export default PlaygroundGeneration(
       key: 'size',
       defaultValue: 'm',
       label: 'Size',
-      options: ['m', 'l'],
+      options: ['m', 'l', 'xl'],
     });
 
     const theme = select({
