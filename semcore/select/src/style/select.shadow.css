@@ -34,7 +34,6 @@ SOptionCheckbox {
   }
 }
 
-SOptionCheckbox[size='xl'],
 SOptionCheckbox[size='l'] {
   width: 20px;
   height: 20px;
