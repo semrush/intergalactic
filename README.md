@@ -1,6 +1,8 @@
 # Intergalactic 🐳
 
 [![codecov](https://codecov.io/gh/semrush/intergalactic/branch/master/graph/badge.svg?token=OILALW3YQE)](https://codecov.io/gh/semrush/intergalactic)
+[![version](https://img.shields.io/npm/v/@semcore/ui.svg)](https://www.npmjs.com/package/@semcore/ui)
+[![downloads](https://img.shields.io/npm/dt/@semcore/ui.svg)](https://www.npmjs.com/package/@semcore/ui)
 
 Intergalactic is a [React](https://reactjs.org/) component library for developing interfaces.
 You can see components in action on our [documentation website](https://i.semrush.com).
