@@ -4,9 +4,9 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ## [3.0.0] - unreleased
 
-### Fixed
+### BREAK
 
-- Fixed styles and colors desync with design.
+- Updated styles according to the library redesign policy.
 
 ## [2.5.5] - 2022-04-28
 

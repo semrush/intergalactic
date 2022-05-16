@@ -6,8 +6,8 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### BREAK
 
+- Updated styles according to the library redesign policy.
 - Set `primary` as default component theme.
-- Restyling component.
 
 ### Added
 

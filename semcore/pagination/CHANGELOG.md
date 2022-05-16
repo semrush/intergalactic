@@ -6,7 +6,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### BREAK
 
-- Restyling component.
+- Updated styles according to the library redesign policy.
 - Remove deprecated props "onPageChange"/"totalPagesFormatter"/"label"
 
 ## [2.5.1] - 2022-04-28

@@ -6,7 +6,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### BREAK
 
-- Restyling component.
+- Updated styles according to the library redesign policy.
 - Major update components.
 
 ## [2.5.2] - 2022-04-25

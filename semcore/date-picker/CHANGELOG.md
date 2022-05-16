@@ -6,7 +6,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### BREAK
 
-- Restyling component.
+- Updated styles according to the library redesign policy.
 - Remove value "xl" for "size".
 
 ## [2.8.4] - 2022-04-28

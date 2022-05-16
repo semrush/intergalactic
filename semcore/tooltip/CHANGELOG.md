@@ -6,7 +6,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### BREAK
 
-- Restyling component.
+- Updated styles according to the library redesign policy.
 - Removed ability to pass custom color to "theme" property.
 - Remove named import "Tooltip".
 
