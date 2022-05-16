@@ -16,12 +16,13 @@ It should be used in cases when on/off should occur instantly, without reloading
 
 @## Sizes and margins
 
-Our interface uses two switch sizes, which are l and m. You can sign either one or both of the switch states with the label. At the same time, the enabled option always has the main color `--gray20`, and the disabled option has the secondary color `--gray60`.
+Our interface uses three switch sizes, which are xl, l and m. You can sign either one or both of the switch states with the label. At the same time, the enabled option always has the main color `--gray20`, and the disabled option has the secondary color `--gray60`.
 
-|     | Appearance and margins                   | Styles                                                                         |
-| --- | ---------------------------------------- | ------------------------------------------------------------------------------ |
-| L   | ![l switch](static/switch-on-text-l.png) | `width: 32px; height: 18px; circle: 14px; font-size: 14px; font-padding: 8px;` |
-| M   | ![m switch](static/switch-on-text-m.png) | `width: 20px; height: 12px; circle: 8px; font-size: 12px; font-padding: 8px;`  |
+|     | Appearance and margins                     | Styles                                                                         |
+| --- | ------------------------------------------ | ------------------------------------------------------------------------------ |
+| XL  | ![xl switch](static/switch-on-text-xl.png) | `width: 44px; height: 24px; circle: 20px; font-size: 16px; font-padding: 8px;` |
+| L   | ![l switch](static/switch-on-text-l.png)   | `width: 32px; height: 18px; circle: 14px; font-size: 14px; font-padding: 8px;` |
+| M   | ![m switch](static/switch-on-text-m.png)   | `width: 20px; height: 12px; circle: 8px; font-size: 12px; font-padding: 8px;`  |
 
 @## Themes
 
@@ -51,7 +52,7 @@ The switch can be in one of three main states: off, on, and disabled. To change 
 | State    | Appearance                                                                            | Styles                                                   |
 | -------- | ------------------------------------------------------------------------------------- | -------------------------------------------------------- |
 | off      | ![off switch](static/off.png)                                                         | `background: rgba(0, 0, 0, 0.4);`                        |
-| on       | ![on switch](static/on-green.png) ![on switch](static/on-blue.png)                    | `background:$green` или `background: $light-blue`        |
+| on       | ![on switch](static/on-green.png) ![on switch](static/on-blue.png)                    | `background:--green` или `background: --light-blue`      |
 | disabled | ![disabled switch](static/disabled.png) ![disabled switch](static/disabled-green.png) | The transparency of the entire component changes by 30%. |
 
 @## Use in UX/UI
