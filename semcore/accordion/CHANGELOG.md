@@ -8,6 +8,12 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Updated styles according to the library redesign policy.
 
+## [3.5.6] - 2022-05-16
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/icon` [2.21.0 ~> 2.24.0]).
+
 ## [3.5.5] - 2022-04-28
 
 ### Changed

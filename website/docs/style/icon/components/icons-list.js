@@ -3340,6 +3340,22 @@ module.exports = {
       ],
     },
     {
+      name: 'UserShared',
+      size: ['l', 'm'],
+      group: 'Status',
+      tags: [
+        'user',
+        'пользователь',
+        'пошарено',
+        'пошарил',
+        'пошарили',
+        'shared',
+        'sharing',
+        'arrow',
+        'тебе',
+      ],
+    },
+    {
       name: 'UserSharedFirst',
       size: ['l', 'm'],
       group: 'Status',

@@ -13,6 +13,12 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Added `additional` theme.
 
+## [3.7.3] - 2022-05-16
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/icon` [2.21.0 ~> 2.24.0]).
+
 ## [3.7.2] - 2022-04-28
 
 ### Changed

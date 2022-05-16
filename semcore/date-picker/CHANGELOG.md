@@ -9,6 +9,12 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 - Updated styles according to the library redesign policy.
 - Remove value "xl" for "size".
 
+## [2.8.5] - 2022-05-16
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/base-trigger` [2.6.4 ~> 2.6.5], `@semcore/icon` [2.21.0 ~> 2.24.0]).
+
 ## [2.8.4] - 2022-04-28
 
 ### Changed
