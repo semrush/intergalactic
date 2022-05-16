@@ -10,7 +10,7 @@
     "build:html": "posthtml -c posthtml-src.config.json -a && npm run build:inky",
     "build:html-lib": "posthtml -c posthtml-lib.config.json -a",
     "build:css": "postcss src/**/*.css --base src --dir lib",
-    "build:inky": "find .tmp -name '*.html' -exec inky {} {}/../ \\; && wait",
+    "build:inky": "find .tmp-src -name '*.html' -exec inky {} {}/../ \\; && wait",
     "watch:html": "nodemon -e html --watch src -x \"npm run build:html\"",
     "watch:css": "nodemon -e css --watch src -x \"npm run build:css\"",
     "watch": "npm run watch:html & npm run watch:css && npm run build:html-lib",
