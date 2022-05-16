@@ -37,7 +37,7 @@ class Demo extends React.Component {
                           placement="top"
                         >
                           <Input
-                            size="xl"
+                            size="l"
                             state={meta.touched && meta.invalid ? 'invalid' : 'normal'}
                           >
                             <Input.Value placeholder="First name" {...input} />
@@ -57,7 +57,7 @@ class Demo extends React.Component {
                         >
                           <Input
                             ml={3}
-                            size="xl"
+                            size="l"
                             state={meta.touched && meta.invalid ? 'invalid' : 'normal'}
                           >
                             <Input.Value placeholder="Last name" {...input} />
@@ -80,14 +80,14 @@ class Demo extends React.Component {
                       theme="warning"
                       placement="right"
                     >
-                      <Input size="xl" state={meta.touched && meta.invalid ? 'invalid' : 'normal'}>
+                      <Input size="l" state={meta.touched && meta.invalid ? 'invalid' : 'normal'}>
                         <Input.Value placeholder="Email" {...input} />
                       </Input>
                     </Tooltip>
                   )}
                 </Field>
               </Flex>
-              <Button ml="112px" size="xl" use="primary" theme="success" type="submit">
+              <Button ml="112px" size="l" use="primary" theme="success" type="submit">
                 <Button.Text>Submit</Button.Text>
               </Button>
             </form>

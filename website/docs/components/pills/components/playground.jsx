@@ -2,7 +2,6 @@ import React from 'react';
 import Pills from '@semcore/pills';
 import PlaygroundGeneration from 'components/PlaygroundGeneration';
 import LikeM from '@semcore/icon/Like/m';
-import LikeL from '@semcore/icon/Like/l';
 
 // LikeOutlineM.displayName = LikeOutlineS.displayName = LikeOutlineXS.displayName =
 //   'LikeOutline';
@@ -11,7 +10,6 @@ const SIZE_ADDON = {
   s: <LikeM />,
   m: <LikeM />,
   l: <LikeL />,
-  xl: <LikeL />,
 };
 
 export default PlaygroundGeneration(
@@ -22,7 +20,7 @@ export default PlaygroundGeneration(
       key: 'size',
       defaultValue: 'm',
       label: 'Size',
-      options: ['s', 'm', 'l', 'xl'],
+      options: ['s', 'm', 'l'],
     });
 
     const selected = empty({

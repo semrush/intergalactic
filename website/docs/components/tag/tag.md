@@ -28,12 +28,11 @@ It is usually set by the system or by the user himself.
 
 @## Sizes and indents
 
-|     | Appearance and indents                                             |
-| --- | ------------------------------------------------------------------ |
-| XL  | ![size XL](static/@1xtag-XL.png) ![size XL](static/@1xtag2-XL.png) |
-| L   | ![size L](static/tag-L.png) ![size L](static/@1xtag2-L.png)        |
-| M   | ![size M](static/tag-M.png) ![size M](static/@1xtag2-M.png)        |
-| S   | ![size S](static/tag-S.png) ![size S](static/@1xtag2-S.png)        |
+|     | Appearance and indents                                      |
+| --- | ----------------------------------------------------------- |
+| L   | ![size L](static/tag-L.png) ![size L](static/@1xtag2-L.png) |
+| M   | ![size M](static/tag-M.png) ![size M](static/@1xtag2-M.png) |
+| S   | ![size S](static/tag-S.png) ![size S](static/@1xtag2-S.png) |
 
 @## Types
 
@@ -134,12 +133,11 @@ In case you have a huge number of tags and do not need to show them all at once 
 
 The tags always have margins multiple of 4 towards each other.
 
-|     | Margins                                  |
-| --- | ---------------------------------------- |
-| XL  | ![size XL](static/@1xtag-margins-XL.png) |
-| L   | ![size L](static/@1xtag-margins-L.png)   |
-| M   | ![size M](static/@1xtag-margins-M.png)   |
-| S   | ![size S](static/@1xtag-margins-S.png)   |
+|     | Margins                                |
+| --- | -------------------------------------- |
+| L   | ![size L](static/@1xtag-margins-L.png) |
+| M   | ![size M](static/@1xtag-margins-M.png) |
+| S   | ![size S](static/@1xtag-margins-S.png) |
 
 Recommendations on positioning of tags in relation to other components:
 

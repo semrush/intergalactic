@@ -4,8 +4,6 @@ import { Box } from '@semcore/flex-box';
 import Input from '@semcore/input';
 import SearchM from '@semcore/icon/Search/m';
 import CloseM from '@semcore/icon/Close/m';
-import SearchL from '@semcore/icon/Search/l';
-import CloseL from '@semcore/icon/Close/l';
 import Select from './Select';
 
 import style from './style/input-search.shadow.css';
@@ -13,7 +11,6 @@ import style from './style/input-search.shadow.css';
 const MAP_SIZE_TO_ICON = {
   m: [SearchM, CloseM],
   l: [SearchM, CloseM],
-  xl: [SearchL, CloseL],
 };
 
 class InputSearch extends Component {

@@ -18,16 +18,16 @@ The informer consists of:
 
 > 💡 The Info icon shouldn't be used with the h1 title. This is generally the header of hero blocks, etc. Hiding them in an info icon is strange, isn't it? 😎
 
-| Size | Appearance                                 | Use                                                                                                                    |
-| ---- | ------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------- |
-| M    | ![info icon m size](static/info-m.png)     | Used only with the largest titles – h2 (`--fs-700`) and h3 (`--fs-600`), text of size from 33px, XL components (42px). |
-|      |                                            | ![info icon m size example](static/m.png)                                                                              |
-| S    | ![info icon s size](static/info-s.png)     | Used only with h4 and text of size 25px (`--fs-500`), and L components (32px).                                         |
-|      |                                            | ![info icon s size example](static/s.png)                                                                              |
-| XS   | ![info icon xs size](static/info-xs.png)   | Used next to widget headings, tables, and components of size M (26px).                                                 |
-|      |                                            | ![info icon xs size example](static/xs.png)                                                                            |
-| XXS  | ![info icon xxs size](static/info-xxs.png) | Used only inside `Options` next to the text.                                                                           |
-|      |                                            | ![info icon xxs size example](static/xxs.png)                                                                          |
+| Size | Appearance                                 | Use                                                                                              |
+| ---- | ------------------------------------------ | ------------------------------------------------------------------------------------------------ |
+| M    | ![info icon m size](static/info-m.png)     | Used only with the largest titles – h2 (`--fs-700`) and h3 (`--fs-600`), text of size from 33px. |
+|      |                                            | ![info icon m size example](static/m.png)                                                        |
+| S    | ![info icon s size](static/info-s.png)     | Used only with h4 and text of size 25px (`--fs-500`), and L components (32px).                   |
+|      |                                            | ![info icon s size example](static/s.png)                                                        |
+| XS   | ![info icon xs size](static/info-xs.png)   | Used next to widget headings, tables, and components of size M (26px).                           |
+|      |                                            | ![info icon xs size example](static/xs.png)                                                      |
+| XXS  | ![info icon xxs size](static/info-xxs.png) | Used only inside `Options` next to the text.                                                     |
+|      |                                            | ![info icon xxs size example](static/xxs.png)                                                    |
 
 @## Interaction
 

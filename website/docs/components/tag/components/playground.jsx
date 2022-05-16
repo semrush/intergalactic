@@ -10,7 +10,7 @@ export default PlaygroundGeneration((createGroupWidgets) => {
     key: 'size',
     defaultValue: 'm',
     label: 'Size',
-    options: ['xl', 'l', 'm'],
+    options: ['l', 'm'],
   });
 
   const COLORS = [
@@ -45,13 +45,13 @@ export default PlaygroundGeneration((createGroupWidgets) => {
     })),
   });
 
-  let imageIcon = bool({
+  const imageIcon = bool({
     key: 'image Icon',
     defaultValue: false,
     label: 'Image Icon',
   });
 
-  let beforeIcon = bool({
+  const beforeIcon = bool({
     key: 'before Icon',
     defaultValue: false,
     label: 'Before Icon',

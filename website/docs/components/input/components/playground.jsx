@@ -3,12 +3,9 @@ import Input from '@semcore/input';
 import PlaygroundGeneration from 'components/PlaygroundGeneration';
 
 import CheckM from '@semcore/icon/Check/m';
-import CheckL from '@semcore/icon/Check/l';
-
 import ArrowRightM from '@semcore/icon/ArrowRight/m';
-import ArrowRightL from '@semcore/icon/ArrowRight/l';
 
-const SIZES = ['s', 'm', 'l', 'xl'];
+const SIZES = ['s', 'm', 'l'];
 const STATES = ['normal', 'invalid', 'valid'];
 
 const Preview = (preview) => {
@@ -56,13 +53,11 @@ const Preview = (preview) => {
   });
 
   const beforeIconMap = {
-    xl: <CheckL />,
     l: <CheckM />,
     m: <CheckM />,
     s: <CheckM />,
   };
   const afterIconMap = {
-    xl: <ArrowRightL />,
     l: <ArrowRightM />,
     m: <ArrowRightM />,
     s: <ArrowRightM />,

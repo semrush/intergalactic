@@ -27,9 +27,9 @@ In the active filter, the selected value/values are completely displayed or hidd
 
 **The counter of the active filter** is shown only for **Advanced filters** and filters that have a lot of other additional filters inside. The counter in the trigger respectively indicates the number of additional filters applied.
 
-| Sizes    | Inactive filter                                      | Active filter                                      | Active filter with the counter                             |
-| -------- | ---------------------------------------------------- | -------------------------------------------------- | ---------------------------------------------------------- |
-| M, L, XL | ![filter-trigger default](static/filter-default.png) | ![filter-trigger active](static/filter-active.png) | ![filter-trigger active](static/filter-active-counter.png) |
+| Sizes | Inactive filter                                      | Active filter                                      | Active filter with the counter                             |
+| ----- | ---------------------------------------------------- | -------------------------------------------------- | ---------------------------------------------------------- |
+| M, L  | ![filter-trigger default](static/filter-default.png) | ![filter-trigger active](static/filter-active.png) | ![filter-trigger active](static/filter-active-counter.png) |
 
 ![filter-trigger](static/counter-or-not.png)
 
@@ -37,11 +37,10 @@ In the active filter, the selected value/values are completely displayed or hidd
 
 The indents duplicate the [indents between the buttons](/components/button/).
 
-| Sizes     | Margins between controls                       |
-| --------- | ---------------------------------------------- |
-| XL (42px) | ![filter-trigger margins](static/sizes-xl.png) |
-| L (32px)  | ![filter-trigger margins](static/sizes-l.png)  |
-| M (26px)  | ![filter-trigger margins](static/sizes-m.png)  |
+| Sizes    | Margins between controls                      |
+| -------- | --------------------------------------------- |
+| L (32px) | ![filter-trigger margins](static/sizes-l.png) |
+| M (26px) | ![filter-trigger margins](static/sizes-m.png) |
 
 @## States and interaction
 

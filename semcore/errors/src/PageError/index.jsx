@@ -45,7 +45,7 @@ class RootPageError extends Component {
         <Error.Controls>
           <Button
             onClick={callAllEventHandlers(onClick, this.handleReload)}
-            size="xl"
+            size="l"
             use="primary"
             theme="info"
           >

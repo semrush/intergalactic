@@ -29,11 +29,10 @@ The icon is placed to the left of the test. The indent from the link text to the
 - The icon shall match the meaning of the action that will be performed when clicked.
 - In some cases, if a click on a link with an icon causes a long download, the icon may turn into [Spin](/components/spin/) for the duration of the download.
 
-| Size | Text size | Appearance                         | Icon size |
-| ---- | --------- | ---------------------------------- | --------- |
-| XL   | 16px      | ![xl-paddings](static/link-xl.png) | XS        |
-| L    | 14px      | ![l-paddings](static/link-l.png)   | XS        |
-| M    | 12px      | ![m-paddings](static/link-m.png)   | XS        |
+| Size | Text size | Appearance                       | Icon size |
+| ---- | --------- | -------------------------------- | --------- |
+| L    | 14px      | ![l-paddings](static/link-l.png) | XS        |
+| M    | 12px      | ![m-paddings](static/link-m.png) | XS        |
 
 @## Interaction
 

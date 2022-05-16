@@ -36,7 +36,7 @@ class RootAccessDenied extends Component {
         <Error.Description wMax="640px">{text}</Error.Description>
         <Children />
         <Error.Controls>
-          <Button tag="a" type="none" size="xl" use="primary" theme="info" href={homeLink}>
+          <Button tag="a" type="none" size="l" use="primary" theme="info" href={homeLink}>
             {btnHome}
           </Button>
         </Error.Controls>

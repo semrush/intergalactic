@@ -10,7 +10,7 @@ export default () => (
       of your way.
     </Error.Description>
     <Error.Controls>
-      <Button size="xl" use="primary" theme="info">
+      <Button size="l" use="primary" theme="info">
         Submit
       </Button>
     </Error.Controls>

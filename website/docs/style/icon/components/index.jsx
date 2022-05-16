@@ -44,7 +44,7 @@ const SuggestSearch = connectAutoComplete(
     filteredIcons(hits);
 
     return (
-      <Search size="xl" mb={4}>
+      <Search size="l" mb={4}>
         <Input.Addon tag={SearchS} />
         <Input.Value
           {...others}
