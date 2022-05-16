@@ -2,6 +2,16 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.0.0] - unreleased
+
+### BREAK
+
+- Remove support to used `Select.InputSearch`
+- Remove support properties `selectedOptions, defaultSelectedOptions` for `Select`
+- Remove support `Select.OptionCheckbox`
+- `Select.Option.Checkbox` used only two sizes `l, m`
+- Updated styles according to the library redesign policy.
+
 ## [2.7.12] - 2022-05-16
 
 ### Changed

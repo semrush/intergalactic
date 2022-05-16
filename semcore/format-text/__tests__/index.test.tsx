@@ -164,4 +164,52 @@ describe('FormatText', () => {
 
     expect(await snapshot(component)).toMatchImageSnapshot();
   });
+
+  test('Abbr should correct render', async () => {
+    const component = (
+      <FormatText>
+        <abbr id="element">abbr element</abbr>
+      </FormatText>
+    );
+    expect(
+      await snapshot(component, {
+        actions: { hover: '#element' },
+      }),
+    ).toMatchImageSnapshot();
+    expect(
+      await snapshot(component, {
+        actions: { active: '#element' },
+      }),
+    ).toMatchImageSnapshot();
+    expect(
+      await snapshot(component, {
+        actions: { focus: '#element' },
+      }),
+    ).toMatchImageSnapshot();
+  });
+
+  test('Link should correct render', async () => {
+    const component = (
+      <FormatText>
+        <a href="#" id="element">
+          link
+        </a>
+      </FormatText>
+    );
+    expect(
+      await snapshot(component, {
+        actions: { hover: '#element' },
+      }),
+    ).toMatchImageSnapshot();
+    expect(
+      await snapshot(component, {
+        actions: { active: '#element' },
+      }),
+    ).toMatchImageSnapshot();
+    expect(
+      await snapshot(component, {
+        actions: { focus: '#element' },
+      }),
+    ).toMatchImageSnapshot();
+  });
 });

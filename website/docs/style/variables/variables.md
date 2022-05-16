@@ -34,7 +34,6 @@ This section describes all the variable parameters and basic styles that we use 
 
 | Size (height) | Description                                                                                                                                                                                                                                                   |
 | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| XL (48px)     | An extra-large size of components that are used mainly for marketing landing pages.                                                                                                                                                                           |
 | L (40px)      | A large size of the components. For buttons and inputs, it is 28px. For other components such as tags, labels, input fields, etc., it is a size with 16px text size. Components (such as counters and tags) which is used inside the inputs use 14 text size. |
 | M (28px)      | **Default size of components**. For buttons and inputs, it is 28px. For other components such as tags, labels, input fields, etc., it is a size with 14px text size. Components (such as counters and tags) which is used inside the inputs use 12 text size. |
 | S (20px)      | A small size of the components. For components such as tags, labels, input fields, etc., it is a size with 12px text size. **When using this size, keep in mind that this size of text is difficult to read** 🙏                                              |
@@ -76,7 +75,7 @@ In normal state controls with transparent background has opacity of 0 – 15%.
 
 |                   | Styles and variables                                                                                                                                                            |
 | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Focus**         | `--keyborad-focus`. It's `0 0 0 3px rgba(blue-400, .3);`. For `normal` and `active` states, the focus color is `--blue-400`. For `invalid` and `valid` states see colors below. |
+| **Focus**         | `--keyboard-focus`. It's `0 0 0 3px rgba(blue-400, .3);`. For `normal` and `active` states, the focus color is `--blue-400`. For `invalid` and `valid` states see colors below. |
 | **Invalid focus** | `border-color: 0 0 0 3px rgba(red-400, .3);`                                                                                                                                    |
 | **Valid focus**   | `border-color: 0 0 0 3px rgba(green-400, .3);`                                                                                                                                  |
 

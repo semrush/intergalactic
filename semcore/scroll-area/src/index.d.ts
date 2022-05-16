@@ -40,7 +40,7 @@ declare const ScrollBar: (<T>(
   Slider: typeof Box;
 };
 
-declare const ScrollAreaComponent: (<T>(
+declare const ScrollArea: (<T>(
   props: CProps<IScrollAreaProps & T, IScrollAreaContext>,
 ) => ReturnEl) & {
   Container: typeof Box;
@@ -50,4 +50,4 @@ declare const ScrollAreaComponent: (<T>(
 declare const eventCalculate: any;
 
 export { eventCalculate };
-export default ScrollAreaComponent;
+export default ScrollArea;

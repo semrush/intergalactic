@@ -8,31 +8,32 @@ SCounter {
   box-sizing: border-box;
   vertical-align: middle;
   border-radius: 12px;
+  font-weight: 500;
 
-  color: var(--gray60);
+  color: var(--gray-500);
   background-color: #fff;
-  border: 1px solid var(--gray80);
+  border: 1px solid var(--gray-200);
 }
 
 SCounter[size='m'] {
   height: 16px;
   min-width: 16px;
-  font-size: 9px;
-  padding: 0 5px;
+  font-size: 10px;
+  padding: 4px;
 }
 
 SCounter[size='l'] {
   height: 20px;
   min-width: 20px;
   font-size: var(--fs-100);
-  padding: 0 6px;
+  padding: 2px 6px;
 }
 
 SCounter[size='xl'] {
   height: 24px;
   min-width: 24px;
   font-size: var(--fs-200);
-  padding: 0 8px;
+  padding: 2px 6px;
 }
 
 SCounter[theme] {
@@ -43,12 +44,12 @@ SCounter[theme] {
 
 SCounter[theme='warning'] {
   border-color: transparent;
-  background: #ff622d;
+  background: var(--orange-400);
   color: white;
 }
 
 SCounter[theme='danger'] {
   border-color: transparent;
-  background: #ff4953;
+  background: var(--red-400);
   color: white;
 }

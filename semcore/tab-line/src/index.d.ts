@@ -12,7 +12,7 @@ export interface ITabLineProps<T extends TabLineValue = TabLineValue>
   /** TabLine size
    * @default m
    * */
-  size?: 'm' | 'l' | 'xl';
+  size?: 'm' | 'l' | false;
   /** Adds a bottom border for the entire component
    * @default true
    * */

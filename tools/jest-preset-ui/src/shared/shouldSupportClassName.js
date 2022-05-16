@@ -2,14 +2,17 @@ const React = require('react');
 const { render } = require('@testing-library/react');
 
 module.exports = {
-  shouldSupportClassName: function shouldSupportClassName(Component, WrapperComponent) {
+  shouldSupportClassName: function shouldSupportClassName(
+    Component,
+    Wrapper = React.Fragment,
+    props = {},
+  ) {
     test('should support className extending', () => {
       const className = 'more-then one-class';
-      const Wrapper = WrapperComponent || React.Fragment;
 
       const { getByTestId } = render(
         <Wrapper>
-          <Component data-testid="component" className={className} />
+          <Component data-testid="component" {...props} className={className} />
         </Wrapper>,
       );
 

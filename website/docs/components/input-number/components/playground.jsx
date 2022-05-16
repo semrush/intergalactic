@@ -3,7 +3,7 @@ import InputNumber from '@semcore/input-number';
 import PlaygroundGeneration from 'components/PlaygroundGeneration';
 
 const STATES = ['normal', 'invalid', 'valid'];
-const SIZES = ['m', 'l', 'xl'];
+const SIZES = ['m', 'l'];
 
 const Preview = (preview) => {
   const { bool, select, radio, text, empty, onChange } = preview('InputNumber');

@@ -63,11 +63,12 @@ class Overlay extends Component {
 
   render() {
     const SOverlay = Root;
-    const { styles, background, loading, duration } = this.asProps;
+    const { styles, theme, background, loading, duration } = this.asProps;
+    const useTheme = background ? 'custom' : theme;
 
     return sstyled(styles)(
       <FadeInOut visible={loading} duration={duration}>
-        <SOverlay render={Box} use:background={resolveColor(background)} />
+        <SOverlay render={Box} use:theme={useTheme} use:background={resolveColor(background)} />
       </FadeInOut>,
     );
   }

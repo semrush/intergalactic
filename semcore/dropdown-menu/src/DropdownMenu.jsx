@@ -4,7 +4,6 @@ import createComponent, { Component, sstyled, Root } from '@semcore/core';
 import Dropdown from '@semcore/dropdown';
 import { Box, Flex, useBox, useFlex } from '@semcore/flex-box';
 import ScrollAreaComponent from '@semcore/scroll-area';
-import logger from '@semcore/utils/lib/logger';
 
 import style from './style/dropdown-menu.shadow.css';
 
@@ -58,18 +57,6 @@ class DropdownMenuRoot extends Component {
     }
   };
 
-  bindHandlerFallbackSelect = (props, index) => () => {
-    const { onSelect, multiselect } = this.asProps;
-    const result = onSelect({
-      index,
-      ...props,
-    });
-
-    if (!multiselect && result !== false) {
-      this.handlers.visible(false);
-    }
-  };
-
   getTriggerProps() {
     const { size } = this.asProps;
     return {
@@ -93,13 +80,9 @@ class DropdownMenuRoot extends Component {
   }
 
   getItemProps(props, index) {
-    const { size, highlightedIndex, onSelect } = this.asProps;
+    const { size, highlightedIndex } = this.asProps;
     const highlighted = index === highlightedIndex;
     const extraProps = {};
-
-    if (onSelect !== undefined) {
-      extraProps.onClick = this.bindHandlerFallbackSelect(props, index);
-    }
 
     this._items.push(props);
     if (highlighted) {
@@ -178,29 +161,10 @@ class DropdownMenuRoot extends Component {
   }
 
   render() {
-    const { Children, optionCount, triggerType, onSelect, ...other } = this.asProps;
+    const { Children } = this.asProps;
     const props = {};
 
     this._items = [];
-
-    logger.warn(
-      onSelect !== undefined,
-      "Property 'onSelect' is deprecated, subscribe to the 'onClick' of the needed 'Item'",
-      other['data-ui-name'] || DropdownMenu.displayName,
-    );
-    logger.warn(
-      optionCount !== undefined,
-      "The 'optionCount' property is deprecated and is now automatically determined from the number of Item",
-      other['data-ui-name'] || DropdownMenu.displayName,
-    );
-    logger.warn(
-      triggerType !== undefined,
-      "The 'triggerType' property is deprecated, use 'interaction=\"focus\"'",
-      other['data-ui-name'] || DropdownMenu.displayName,
-    );
-    if (triggerType === 'input') {
-      props.interaction = 'focus';
-    }
 
     return (
       <Root render={Dropdown} {...props}>

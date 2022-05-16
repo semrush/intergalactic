@@ -10,7 +10,7 @@ export default PlaygroundGeneration(
       key: 'size',
       defaultValue: 'm',
       label: 'Size',
-      options: ['m', 'l', 'xl'],
+      options: ['m', 'l'],
     });
 
     const checked = bool({

@@ -4,7 +4,7 @@ import { IKeyboardFocusProps } from '@semcore/utils/lib/enhances/keyboardFocusEn
 import { IBoxProps } from '@semcore/flex-box';
 import { INeighborItemProps } from '@semcore/neighbor-location';
 
-export type ButtonSize = 'xl' | 'l' | 'm' | 's';
+export type ButtonSize = 'l' | 'm';
 
 export interface IButtonProps extends IBoxProps, INeighborItemProps, IKeyboardFocusProps {
   /**

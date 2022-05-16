@@ -80,7 +80,7 @@ const data = Array(20)
   .fill({})
   .map((d, i) => ({
     x: i,
-    y: Math.random().toFixed(1) * 10,
+    y: Math.random() * 10,
   }));
 
 function getSVGString(svgNode) {
@@ -139,7 +139,7 @@ function getSVGString(svgNode) {
     return extractedCSSText;
 
     function contains(str, arr) {
-      return arr.indexOf(str) === -1 ? false : true;
+      return arr.indexOf(str) !== -1;
     }
   }
 

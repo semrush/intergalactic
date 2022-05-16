@@ -1,0 +1,36 @@
+{
+  "name": "@semcore/notice-global",
+  "description": "SEMRush NoticeGlobal Component",
+  "version": "1.0.0",
+  "main": "lib/cjs/index.js",
+  "module": "lib/es6/index.js",
+  "typings": "lib/types/index.d.ts",
+  "author": "Roman Lysov <r.lysov@semrush.com>",
+  "sideEffects": false,
+  "license": "MIT",
+  "scripts": {
+    "build": "build --source=js",
+    "test": "jest"
+  },
+  "dependencies": {
+    "@semcore/utils": "^3.24",
+    "@semcore/icon": "^2.16",
+    "@semcore/flex-box": "^4",
+    "@semcore/animation": "^1"
+  },
+  "peerDependencies": {
+    "@semcore/core": "^1.11",
+    "react": "16.8 - 17"
+  },
+  "jest": {
+    "preset": "@semcore/jest-preset-ui"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/semrush/intergalactic.git",
+    "directory": "semcore/notice-global"
+  },
+  "devDependencies": {
+    "@semcore/jest-preset-ui": "1.0.0"
+  }
+}

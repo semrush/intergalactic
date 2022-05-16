@@ -36,13 +36,13 @@ class RootProjectNotFound extends Component {
     return (
       <Root render={Error}>
         <Error.Title>{title}</Error.Title>
-        <Error.Description tag={FormatText} size="xl" dangerouslySetInnerHTML={{ __html: text }} />
+        <Error.Description tag={FormatText} size="l" dangerouslySetInnerHTML={{ __html: text }} />
         <Children />
         <Error.Controls>
-          <Button tag="a" type="none" size="xl" use="primary" theme="info" href={projectsLink}>
+          <Button tag="a" type="none" size="l" use="primary" theme="info" href={projectsLink}>
             {btnProjects}
           </Button>
-          <Button size="xl" tag="a" type="none" href={contactsLink}>
+          <Button size="l" tag="a" type="none" href={contactsLink}>
             {btnContacts}
           </Button>
         </Error.Controls>

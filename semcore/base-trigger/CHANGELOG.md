@@ -2,6 +2,13 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.0.0] - unreleased
+
+### BREAK
+
+- Updated styles according to the library redesign policy.
+- Remove value "xl" and "s" for "size".
+
 ## [2.6.5] - 2022-05-16
 
 ### Changed

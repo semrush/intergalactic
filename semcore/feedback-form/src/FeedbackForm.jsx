@@ -96,7 +96,7 @@ function Item({ Children, tag, ...props }) {
   const tooltipProps = pick(props, TooltipProps);
 
   return (
-    <Root render={Field}>
+    <Field {...props}>
       {({ input, meta, ...other }) => {
         const invalid = meta.invalid && meta.touched;
         const inputProps = {
@@ -125,7 +125,7 @@ function Item({ Children, tag, ...props }) {
           </Tooltip>
         );
       }}
-    </Root>
+    </Field>
   );
 }
 
@@ -165,7 +165,7 @@ function Notice(props) {
 }
 
 Notice.defaultProps = {
-  theme: 'gray94',
+  theme: 'gray96',
   use: 'secondary',
 };
 

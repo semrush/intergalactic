@@ -39,14 +39,14 @@ const Preview = (preview) => {
       </InlineEdit.View>
       <InlineEdit.Edit>
         <InlineInput
-          autoFocus
-          value={text}
           onConfirm={() => setEditable('false')}
           onCancel={(prevText) => {
             setText(prevText);
             setEditable('false');
           }}
-        />
+        >
+          <InlineInput.Value autoFocus value={text} />
+        </InlineInput>
       </InlineEdit.Edit>
     </InlineEdit>
   );

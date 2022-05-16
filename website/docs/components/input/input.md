@@ -23,9 +23,9 @@ There are also inputs for entering certain data:
 
 We implement 4 input sizes in our interfaces.
 
-|                 XL (42px)                  |                 L (32px)                 |                 M (26px)                 |                 S (18px)                 |
-| :----------------------------------------: | :--------------------------------------: | :--------------------------------------: | :--------------------------------------: |
-| ![input-xl no-margin](static/input-xl.png) | ![input-l no-margin](static/input-l.png) | ![input-m no-margin](static/input-m.png) | ![input-s no-margin](static/input-s.png) |
+|                 L (32px)                 |                 M (26px)                 |                 S (18px)                 |
+| :--------------------------------------: | :--------------------------------------: | :--------------------------------------: |
+| ![input-l no-margin](static/input-l.png) | ![input-m no-margin](static/input-m.png) | ![input-s no-margin](static/input-s.png) |
 
 @## Content
 
@@ -68,11 +68,10 @@ There may be a [counter](/components/counter/) inside the input or next to its n
 
 > 💡 Please do not use the [Tag](/components/tag/) component for the counter. It has a different purpose.
 
-|           | Input with a label                           | Input without a label                           |
-| --------- | -------------------------------------------- | ----------------------------------------------- |
-| XL (42px) | ![input with counter](static/counter-XL.png) | ![input with counter](static/counter-in-xl.png) |
-| L (32px)  | ![input with counter](static/counter-L.png)  | ![input with counter](static/counter-in-l.png)  |
-| M (26px)  | ![input with counter](static/counter-M.png)  | ![input with counter](static/counter-in-m.png)  |
+|          | Input with a label                          | Input without a label                          |
+| -------- | ------------------------------------------- | ---------------------------------------------- |
+| L (32px) | ![input with counter](static/counter-L.png) | ![input with counter](static/counter-in-l.png) |
+| M (26px) | ![input with counter](static/counter-M.png) | ![input with counter](static/counter-in-m.png) |
 
 @## Use in UX/UI
 

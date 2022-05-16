@@ -15,11 +15,10 @@ tabName: Design
 
 @## Sizes and paddings
 
-|           | Paddings                                 |
-| --------- | ---------------------------------------- |
-| XL (42px) | ![pill XL](static/pills-paddings-XL.png) |
-| L (32px)  | ![pill L](static/pills-paddings-L.png)   |
-| M (26px)  | ![pill M](static/pills-paddings-M.png)   |
+|          | Paddings                               |
+| -------- | -------------------------------------- |
+| L (32px) | ![pill L](static/pills-paddings-L.png) |
+| M (26px) | ![pill M](static/pills-paddings-M.png) |
 
 Optionally elements (icon/flag, status badge, counter) have the same indent as elements inside the [Button](/components/button/).
 

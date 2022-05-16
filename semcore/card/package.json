@@ -32,6 +32,8 @@
     "directory": "semcore/card"
   },
   "devDependencies": {
-    "@semcore/jest-preset-ui": "1.0.0"
+    "@semcore/jest-preset-ui": "1.0.0",
+    "@semcore/typography": "*",
+    "@semcore/icon": "*"
   }
 }

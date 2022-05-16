@@ -29,11 +29,10 @@ The icon is placed to the left of the test. The indent from the link text to the
 - The icon shall match the meaning of the action that will be performed when clicked.
 - In some cases, if a click on a link with an icon causes a long download, the icon may turn into [Spin](/components/spin/) for the duration of the download.
 
-| Size | Text size | Appearance                         | Icon size |
-| ---- | --------- | ---------------------------------- | --------- |
-| XL   | 16px      | ![xl-paddings](static/link-xl.png) | XS        |
-| L    | 14px      | ![l-paddings](static/link-l.png)   | XS        |
-| M    | 12px      | ![m-paddings](static/link-m.png)   | XS        |
+| Size | Text size | Appearance                       | Icon size |
+| ---- | --------- | -------------------------------- | --------- |
+| L    | 14px      | ![l-paddings](static/link-l.png) | XS        |
+| M    | 12px      | ![m-paddings](static/link-m.png) | XS        |
 
 @## Interaction
 
@@ -154,7 +153,7 @@ The use of external links shall reduced to minimum so as not to lead users away 
 
 ### Styles
 
-- To indicate the transition to an external resource, use `LinkExternal`, size `XS`, color `var(--stone)`.
+- To indicate the transition to an external resource, use `LinkExternal`, size `XS`, color `var(--gray-300)`.
 - It should always have a 4 px left intend.
 - When hovering over the icon it shall darken by 8% (use the `interactive` property for the icon color) 😏
 - Use the link styles if you need to select an icon for going to an external resource.

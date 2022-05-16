@@ -21,7 +21,7 @@ describe('TabLine', () => {
     expect(await snapshot(component)).toMatchImageSnapshot();
   });
 
-  test('Render correctly with min/max width', async () => {
+  test('Render correctly with min width', async () => {
     const component = (
       <>
         <TabLine value={2} w={150}>
@@ -33,7 +33,7 @@ describe('TabLine', () => {
           <TabLine.Item value={4}>Item 4</TabLine.Item>
         </TabLine>
         <br />
-        <TabLine value={2} w={250}>
+        <TabLine value={2} w={200} size="l">
           <TabLine.Item value={1}>Item 1</TabLine.Item>
           <TabLine.Item value={2}>Item 2</TabLine.Item>
           <TabLine.Item value={3} disabled>
@@ -47,10 +47,30 @@ describe('TabLine', () => {
     expect(await snapshot(component)).toMatchImageSnapshot();
   });
 
+  test('Should support hover item', async () => {
+    const component = (
+      <TabLine value={2}>
+        <TabLine.Item value={1}>Item 1</TabLine.Item>
+        <TabLine.Item value={2}>Item 2</TabLine.Item>
+        <TabLine.Item value={3} id="tab-line">
+          Item 3
+        </TabLine.Item>
+        <TabLine.Item value={4}>Item 4</TabLine.Item>
+      </TabLine>
+    );
+
+    expect(
+      await snapshot(component, {
+        actions: {
+          hover: '#tab-line',
+        },
+      }),
+    ).toMatchImageSnapshot();
+  });
+
   test('Should support keyboardFocused/disabled/selected', async () => {
     const component = (
       <TabLine>
-        <TabLine.Item>Item 1</TabLine.Item>
         <TabLine.Item selected>Item 2</TabLine.Item>
         <TabLine.Item disabled>Item 3</TabLine.Item>
         <TabLine.Item keyboardFocused>Item 4</TabLine.Item>
@@ -136,19 +156,13 @@ describe('TabLine', () => {
           <TabLine.Item value={2}>Item 2</TabLine.Item>
           <TabLine.Item value={3}>Item 3</TabLine.Item>
         </TabLine>
-        <br />
-        <TabLine value={3} size="xl">
-          <TabLine.Item value={1}>Item 1</TabLine.Item>
-          <TabLine.Item value={2}>Item 2</TabLine.Item>
-          <TabLine.Item value={3}>Item 3</TabLine.Item>
-        </TabLine>
       </>
     );
 
     expect(await snapshot(component)).toMatchImageSnapshot();
   });
 
-  test('Should support underlined', async () => {
+  test('Should support underlined=false', async () => {
     const component = (
       <TabLine value={1} underlined={false}>
         <TabLine.Item value={1}>Item 1</TabLine.Item>

@@ -2,6 +2,16 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.32.0] - unreleased
+
+### Added
+
+- Added `light` function for increasing `l` axes in hsl color space of `rgb(a)` and hex colors
+
+### Fixed
+
+- Remove react warning when accessing "ref" property
+
 ## [3.31.2] - 2022-03-05
 
 ### Fixed

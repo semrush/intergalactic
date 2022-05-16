@@ -4,7 +4,7 @@ const { render, fireEvent, cleanup } = testing;
 
 import SidePanel from '../src';
 
-describe('Drawer', () => {
+describe('SidePanel', () => {
   afterEach(cleanup);
 
   test('Should support placements', async () => {
@@ -27,7 +27,9 @@ describe('Drawer', () => {
       </SidePanel>
     );
 
-    expect(await snapshot(Component, { selector: 'body' })).toMatchImageSnapshot();
+    expect(
+      await snapshot(Component, { selector: 'body', width: 300, height: 100 }),
+    ).toMatchImageSnapshot();
   });
 
   test('Should support visible property', () => {
@@ -103,12 +105,23 @@ describe('Drawer', () => {
     expect(document.querySelectorAll('[data-ui-name="SidePanel.Overlay"]').length).toBe(1);
   });
 
-  xtest('Should support not block page scroll without Overlay', () => {
+  test('Should support not block page scroll without Overlay', () => {
     render(
       <SidePanel visible>
         <SidePanel.Panel />
       </SidePanel>,
     );
     expect(document.body).not.toHaveStyle('overflow: hidden');
+  });
+
+  test('Close icon should support hover', async () => {
+    expect(
+      await snapshot(
+        <SidePanel disablePortal visible>
+          <SidePanel.Close id="close" />
+        </SidePanel>,
+        { selector: 'body', width: 320, height: 100, actions: { hover: '#close' } },
+      ),
+    ).toMatchImageSnapshot();
   });
 });

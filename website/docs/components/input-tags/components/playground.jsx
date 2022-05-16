@@ -3,9 +3,8 @@ import InputTags from '@semcore/input-tags';
 import PlaygroundGeneration from 'components/PlaygroundGeneration';
 
 import CheckM from '@semcore/icon/Check/m';
-import CheckL from '@semcore/icon/Check/l';
 
-const SIZES = ['m', 'l', 'xl'];
+const SIZES = ['m', 'l'];
 const STATES = ['normal', 'invalid', 'valid'];
 
 const Preview = (preview) => {
@@ -66,7 +65,6 @@ const Preview = (preview) => {
   });
 
   const beforeIconMap = {
-    xl: <CheckL />,
     l: <CheckM />,
     m: <CheckM />,
   };

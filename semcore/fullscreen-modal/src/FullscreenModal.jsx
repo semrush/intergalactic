@@ -1,12 +1,11 @@
 import React from 'react';
 import createComponent, { Component, sstyled, Root } from '@semcore/core';
 import Modal from '@semcore/modal';
-import { Box } from '@semcore/flex-box';
+import { Flex, Box } from '@semcore/flex-box';
 import CloseIcon from '@semcore/icon/Close/l';
 import ArrowLeft from '@semcore/icon/ArrowLeft/m';
 import { Text } from '@semcore/typography';
 import fire from '@semcore/utils/lib/fire';
-import logger from '@semcore/utils/lib/logger';
 
 import style from './style/fullscreen-modal.shadow.css';
 
@@ -32,25 +31,8 @@ class FullscreenModalRoot extends Component {
 
   render() {
     const SFullscreenModal = Root;
-    const {
-      styles,
-      hidden,
-      Children,
-      onClose,
-      visible: visibleProps,
-      closable,
-      duration,
-      disablePortal,
-    } = this.asProps;
+    const { styles, Children, onClose, visible, closable, duration, disablePortal } = this.asProps;
     const SFullscreenOverlay = Modal.Overlay;
-
-    logger.warn(
-      hidden !== undefined,
-      "The 'hidden' property is deprecated, use 'visible'",
-      this.asProps['data-ui-name'] || FullscreenModalRoot.displayName,
-    );
-
-    const visible = visibleProps === undefined ? !hidden : visibleProps;
 
     return sstyled(styles)(
       <Modal
@@ -73,17 +55,11 @@ class FullscreenModalRoot extends Component {
 
 function Header(props) {
   const SHeader = Root;
-  const SHeaderDivider = 'div';
   const { Children, styles, title, description } = props;
   return sstyled(styles)(
     <SHeader render={Box}>
       {title && <FullscreenModal.Title children={title} />}
-      {description && (
-        <>
-          <SHeaderDivider />
-          <FullscreenModal.Description children={description} />
-        </>
-      )}
+      {description && <FullscreenModal.Description children={description} />}
       <Children />
     </SHeader>,
   );
@@ -101,7 +77,7 @@ function Section(props) {
 
 function Footer(props) {
   const SFooter = Root;
-  return sstyled(props.styles)(<SFooter render={Box} />);
+  return sstyled(props.styles)(<SFooter render={Flex} />);
 }
 
 function Close(props) {

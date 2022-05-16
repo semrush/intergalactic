@@ -39,7 +39,7 @@ const MAP_TRANSFORM = {
   ArrowRight: 'right',
 };
 
-class Carousel extends Component {
+class CarouselRoot extends Component {
   static displayName = 'Carousel';
   static defaultProps = {
     defaultIndex: 0,
@@ -331,6 +331,7 @@ class Carousel extends Component {
       items: items.map((item, key) => ({
         active: key === index,
         onClick: this.bindHandlerClickIndicator(key),
+        key,
       })),
     };
   }
@@ -383,7 +384,7 @@ const Prev = (props) => {
 };
 
 Prev.defaultProps = () => ({
-  children: <ChevronLeft interactive color="stone" aria-hidden={true} role="button" />,
+  children: <ChevronLeft interactive color="gray-300" aria-hidden={true} role="button" />,
   top: 0,
 });
 
@@ -394,29 +395,44 @@ const Next = (props) => {
 };
 
 Next.defaultProps = () => ({
-  children: <ChevronRight interactive color="stone" aria-hidden={true} role="button" />,
+  children: <ChevronRight interactive color="gray-300" aria-hidden={true} role="button" />,
   top: 0,
 });
 
 const Indicators = ({ items, styles, Children }) => {
   const SIndicators = Root;
-  const SIndicator = Box;
   if (Children.origin) {
-    return <Children />;
+    return sstyled(styles)(
+      <SIndicators render={Box}>
+        <Children />
+      </SIndicators>,
+    );
   }
   return sstyled(styles)(
     <SIndicators render={Box}>
-      {items.map((item) => (
-        <SIndicator {...item} />
+      {items.map((item, index) => (
+        <Carousel.Indicator key={index} {...item} />
       ))}
     </SIndicators>,
   );
 };
 
-export default createComponent(Carousel, {
+const Indicator = ({ styles, Children }) => {
+  const SIndicator = Root;
+  return sstyled(styles)(
+    <SIndicator render={Box}>
+      <Children />
+    </SIndicator>,
+  );
+};
+
+const Carousel = createComponent(CarouselRoot, {
   Container,
   Indicators,
+  Indicator,
   Item,
   Prev,
   Next,
 });
+
+export default Carousel;

@@ -61,10 +61,10 @@ class Demo extends PureComponent {
           <Text tag="h3" size={400} medium mt={0} mx={0} mb={2}>
             Chart heading
             <Tooltip title="Awesome hint text">
-              <InfoXS ml="4px" color="stone" cursor="help" />
+              <InfoXS ml="4px" color="gray-300" cursor="help" />
             </Tooltip>
           </Text>
-          <SettingsS color="stone" interactive />
+          <SettingsS color="gray-300" interactive />
         </Flex>
         <Flex mt={3} alignItems="flex-start" flexWrap="wrap">
           <PieChart height={80} width={80} style={{ margin: '0 28px 24px 0' }}>
@@ -124,7 +124,7 @@ class Demo extends PureComponent {
                       </Checkbox.Text>
                     </Checkbox>
                   </td>
-                  <Text color="gray60" pr={4} tag="td">
+                  <Text color="gray-500" pr={4} tag="td">
                     {((value / this.commonValue) * 100).toFixed(0)}%
                   </Text>
                   <Text tag="td">{formatThousands(value)}</Text>

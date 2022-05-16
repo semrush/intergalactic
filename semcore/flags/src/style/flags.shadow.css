@@ -1,17 +1,29 @@
 @import '@semcore/utils/style/var.css';
 
 SFlags {
+  position: relative;
   display: inline-block;
-  width: 14px;
-  height: 11px;
-  background-color: var(--gray80);
+  width: 16px;
+  height: 16px;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 3px;
+    left: 1px;
+    display: block;
+    width: 14px;
+    height: 11px;
+    background-color: var(--gray-200);
+    z-index: -1;
+  }
 }
 
 SFlags[data-capital-letters] {
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  background: var(--mercury);
+  background: var(--gray-100);
 
   &::before {
     content: attr(data-capital-letters);
@@ -19,6 +31,6 @@ SFlags[data-capital-letters] {
     font-size: 8px;
     line-height: normal;
     font-weight: bold;
-    color: var(--gray60);
+    color: var(--gray-500);
   }
 }

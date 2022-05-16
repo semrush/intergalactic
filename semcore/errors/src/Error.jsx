@@ -19,16 +19,13 @@ class RootError extends Component {
     const SInner = 'div';
     const SImageWrapper = 'div';
     const SWrapper = 'div';
+    const SImage = 'img';
     return sstyled(styles)(
       <SError render={Flex}>
         <SInner>
           {icon && (
             <SImageWrapper>
-              {typeof icon === 'string' ? (
-                <img width={240} height={240} src={icon} alt="error icon" />
-              ) : (
-                icon
-              )}
+              {typeof icon === 'string' ? <SImage src={icon} alt="error icon" /> : icon}
             </SImageWrapper>
           )}
           <SWrapper>

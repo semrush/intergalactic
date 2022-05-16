@@ -74,29 +74,29 @@ const activeDot = (props) => {
 };
 
 export default () => (
-  <Box my={6} pt={5} pb={6} px={6} style={{ border: '1px solid #ccc' }}>
+  <Box my={6} pt={5} pb={6} px={6} style={{ border: '1px solid #c4c7cf', borderRadius: '6px' }}>
     <Flex alignItems="center" mb={2}>
       <Text size={400} mr={1} medium>
         Traffic sources
       </Text>
       <Tooltip title={TooltipContent}>
-        <InfoXS color="#a6b0b3" cursor="help" />
+        <InfoXS color="gray-300" cursor="help" />
       </Tooltip>
     </Flex>
     <Flex justifyContent="space-between" mt={3} mb={6}>
       <Flex alignItems="center">
-        <Desktop color="#a6b0b3" />
+        <Desktop color="gray-300" />
         <Text size={100} ml={1}>
           Desktop
         </Text>
       </Flex>
-      <Text size={100} color="#6C6E79">
+      <Text size={100} color="gray-500">
         Last 6 month
       </Text>
     </Flex>
     <Flex>
       <Flex alignItems="center" wMax="20px">
-        <Text size={200} color="gray60" style={{ transform: 'rotate(-90deg)' }}>
+        <Text size={200} color="gray-500" style={{ transform: 'rotate(-90deg)' }}>
           Visits
         </Text>
       </Flex>

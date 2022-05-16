@@ -37,7 +37,7 @@ export default () => (
       pb="24px"
       justifyContent="space-between"
       alignItems="flex-end"
-      style={{ border: '1px solid #ccc' }}
+      style={{ border: '1px solid #c4c7cf', borderRadius: '6px' }}
     >
       <Box>
         <Flex alignItems="center">
@@ -45,14 +45,14 @@ export default () => (
             Visibility
           </Text>
           <Tooltip title={tooltipContent}>
-            <InfoXS color="#a6b0b3" cursor="help" />
+            <InfoXS color="gray-300" cursor="help" />
           </Tooltip>
         </Flex>
         <Box>
           <Link>
             <Text size={500}>{data[data.length - 1].visibility}%</Text>
           </Link>
-          <Text size={300} ml={2} color="#6C6E79">
+          <Text size={300} ml={2} color="gray-500">
             <small>0.00</small>
           </Text>
         </Box>

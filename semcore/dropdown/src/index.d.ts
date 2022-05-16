@@ -10,11 +10,6 @@ export interface IDropdownProps extends IPopperProps {
    * @default 'min'
    * */
   stretch?: 'min' | 'fixed' | false;
-
-  /**
-   * @deprecated {@link IDropdownProps.stretch}
-   * */
-  popperStretch?: 'min' | 'fixed' | false;
 }
 
 export interface IDropdownContext extends IPopperContext {}

@@ -10,7 +10,7 @@ import style from './style/tooltip.shadow.css';
 
 const Popper = PopperOrigin[CREATE_COMPONENT]();
 
-class RootTooltip extends Component {
+class TooltipRoot extends Component {
   static displayName = 'Tooltip';
   static style = style;
   static defaultProps = {
@@ -43,14 +43,14 @@ class RootTooltip extends Component {
     const { Children, title, offset, ...other } = this.asProps;
 
     const advanceMode = isAdvanceMode(Children, [
-      TooltipBase.Trigger.displayName,
-      TooltipBase.Popper.displayName,
+      Tooltip.Trigger.displayName,
+      Tooltip.Popper.displayName,
     ]);
 
     logger.warn(
       title && advanceMode,
       "You can't use 'title' and '<Tooltip.Trigger/>/<Tooltip.Popper/>' at the same time",
-      other['data-ui-name'] || TooltipBase.displayName,
+      other['data-ui-name'] || Tooltip.displayName,
     );
 
     return (
@@ -59,10 +59,10 @@ class RootTooltip extends Component {
           <Children />
         ) : (
           <>
-            <TooltipBase.Trigger {...other}>
+            <Tooltip.Trigger {...other}>
               <Children />
-            </TooltipBase.Trigger>
-            <TooltipBase.Popper>{title}</TooltipBase.Popper>
+            </Tooltip.Trigger>
+            <Tooltip.Popper>{title}</Tooltip.Popper>
           </>
         )}
       </Root>
@@ -83,8 +83,8 @@ function TooltipPopper(props) {
   );
 }
 
-const TooltipBase = createComponent(
-  RootTooltip,
+const Tooltip = createComponent(
+  TooltipRoot,
   {
     Trigger: Popper.Trigger,
     Popper: TooltipPopper,
@@ -94,18 +94,4 @@ const TooltipBase = createComponent(
   },
 );
 
-export default TooltipBase;
-
-const Tooltip = React.forwardRef(function (props, ref) {
-  logger.warn(
-    true,
-    "The named import 'import { Tooltip }' is deprecated, use the default 'import Tooltip'",
-    props['data-ui-name'] || Tooltip.displayName,
-  );
-  return <TooltipBase ref={ref} interaction="click" {...props} />;
-});
-Tooltip.displayName = TooltipBase.displayName;
-Tooltip.Trigger = TooltipBase.Trigger;
-Tooltip.Popper = TooltipBase.Popper;
-
-export { Tooltip };
+export default Tooltip;

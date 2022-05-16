@@ -2,11 +2,7 @@ import React from 'react';
 import {
   CartesianGrid,
   Line,
-  Area,
   LineChart,
-  AreaChart,
-  BarChart,
-  ReferenceArea,
   ReferenceLine,
   ResponsiveContainer,
   Tooltip,
@@ -56,7 +52,7 @@ DefaultTooltipContent.prototype.render = function () {
       <p className="recharts-tooltip-label">{label && labelFormatter(label)}</p>
       {this.renderContent()}
       {label === data[3].date && (
-        <Box m="16px -12px -12px" px={3} py={1} style={{ background: '#f5f5f5' }}>
+        <Box m="16px -12px -12px" px={3} py={1} style={{ background: '#f4f5f9' }}>
           {label && labelFormatter(label)} start tracking
         </Box>
       )}

@@ -8,7 +8,7 @@ tabName: Design
 
 Most of our products are designed to work with data on the desktop, so adaptivity is not yet required for all tools.
 
-> Most of the core components can be used on the adaptive interface. You need to increase their size to the biggest (XL) for ease of use on touch devices. You can see the examples in the [Code tab](/layout/breakpoints/breakpoints-code/).
+> Most of the core components can be used on the adaptive interface. You need to increase their size to the biggest (L) for ease of use on touch devices. You can see the examples in the [Code tab](/layout/breakpoints/breakpoints-code/).
 
 If you are adding the adaptivity to your interface, then use the breakpoints (described below), but remember to stretch the layout in each range (except for wide screens, where we usually fix the maximum content width).
 

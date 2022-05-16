@@ -24,17 +24,6 @@ export interface IDropdownMenuProps extends IDropdownProps {
    * highlightedIndex -  Index of the selected item
    */
   onHighlightedIndexChange?: (highlightedIndex: number) => void;
-  /** @deprecated v2.0.0 */
-  optionCount?: number;
-  /** Trigger type selection
-   * @deprecated v2.0.0 */
-  triggerType?: 'button' | 'input';
-  /** Handler in option selection
-   * @deprecated v2.0.0 */
-  onSelect?: (item: any) => void;
-  /** Multiple choice of options
-   * @deprecated v2.0.0 {@link ISelectProps.multiselect} */
-  multiselect?: boolean;
 }
 
 export interface IDropdownMenuListProps extends IBoxProps, IScrollAreaProps {

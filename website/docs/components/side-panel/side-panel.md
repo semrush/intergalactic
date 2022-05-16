@@ -108,7 +108,7 @@ You can place common controls for SidePanel content in the footer.
 > 💡 A footer with controls is pinned when scrolling large content inside a SidePanel.
 
 - In case SidePanel content is separated and has separate CTAs and controls, it makes no sense to place them in the footer 🤷🏻‍♀️
-- The recommended size of controls in the panel on the desktop is M (26px height). Depending on the context, use L or XL controls in the panel on small screens.
+- The recommended size of controls in the panel on the desktop is M (26px height). Depending on the context, use M or L controls in the panel on small screens.
 
 Footer styles:
 

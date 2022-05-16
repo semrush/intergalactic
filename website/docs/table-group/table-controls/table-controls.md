@@ -24,10 +24,10 @@ A table row can be expanded by accordion type. Within such a row, there can be a
 
 > 💡 If you have too much data inside the drop-down row, you may need to think about a separate page for them.
 
-- The accordion row must have the `ChevronRight` icon in the leftmost column. It indicates that this line can be expanded. `ChevronRightXS` and color `--stone`.
+- The accordion row must have the `ChevronRight` icon in the leftmost column. It indicates that this line can be expanded. `ChevronRightXS` and color `--gray-300`.
 - The line that opened additional data from must remain highlighted. The `active` state of a row has the same styles as the `hover` row.
 - When the row is open, the `ChevronRight` icon should change to `ChevronDown` of the same size and color.
-- The internal line with detailed information has a lower border – `border-bottom: 1px solid var(--stone);`. It is necessary so that when several rows are opened, they do not merge with each other, and for other complex cases of using the accordion inside the table.
+- The internal line with detailed information has a lower border – `border-bottom: 1px solid var(--gray-300);`. It is necessary so that when several rows are opened, they do not merge with each other, and for other complex cases of using the accordion inside the table.
 
 ![table with accordion](static/accordion.png)
 
@@ -38,7 +38,7 @@ A table row can be expanded by accordion type. Within such a row, there can be a
 
 ![table with accordion](static/accordion-2.png)
 
-In the `active` state, the cell must be additionally highlighted with the color `#EDEFEF` (or `var(--stone)` with 20% transparency). And the `ChevronRight` icon rotates `90deg`.
+In the `active` state, the cell must be additionally highlighted with the color `#EDEFEF` (or `var(--gray-300)` with 20% transparency). And the `ChevronRight` icon rotates `90deg`.
 
 ![table with accordion](static/accordion-3.png)
 
@@ -66,7 +66,7 @@ With `Shift` pressed, you can select multiple lines at once.
 
 @## Columns resizing
 
-When you hover over a border in the header, the cursor changes to `col-resize`, and the border color changes to `var(--stone)`.
+When you hover over a border in the header, the cursor changes to `col-resize`, and the border color changes to `var(--gray-300)`.
 
 ![table with column resize](static/resize.png)
 
@@ -101,7 +101,7 @@ If there are any other clickable icons in the line, then the edit icon should al
 
 @## Highlighting content
 
-When searching a table, sometimes you need to highlight the found match in the data. In this case, we highlight what we find with the color `var(--light-orange)` with a transparency of 40% (the absolute color is `#FDE0BD`).
+When searching a table, sometimes you need to highlight the found match in the data. In this case, we highlight what we find with the color `var(--orange-200)` with a transparency of 40% (the absolute color is `#FDE0BD`).
 
 ![table highlight](static/table-highlight.png)
 
@@ -110,7 +110,7 @@ When searching a table, sometimes you need to highlight the found match in the d
 **The value in the cell can lead to:**
 
 - the internal report — use the link/button, depending on the context;
-- another site — use the `LinkExternalXS` icon (color — `var(--stone)`), usually with a caption.
+- another site — use the `LinkExternalXS` icon (color — `var(--gray-300)`), usually with a caption.
 
 @## Long links and text
 
@@ -167,8 +167,8 @@ If there is a control inside the cell (for example, a select or checkbox).
 
 ### Sorting icon styles
 
-- The default color for the sorting icon is `--stone`.
-- If column sorting is active, the icon changes color to `--wall`.
+- The default color for the sorting icon is `--gray-300`.
+- If column sorting is active, the icon changes color to `--gray-400`.
 
 ![sorting icon](static/sorting1.png)
 
@@ -207,9 +207,9 @@ We recommend using the status bar when the table has multi-row selection and pag
 
 - When scrolling a table, this row should be attached to the table header. In this case, it does not have a shadow, as well as a battered hat.
 
-| Appearance                                         | Styles                                                                                                         |
-| -------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
-| ![action row scroll](static/action-row-scroll.png) | `background-color: #FAFBFB;` (or `--stone` with transparency .05 ), `border-bottom: 1px solid var(--mercury);` |
+| Appearance                                         | Styles                                                                                                             |
+| -------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
+| ![action row scroll](static/action-row-scroll.png) | `background-color: #FAFBFB;` (or `--gray-300` with transparency .05 ), `border-bottom: 1px solid var(--gray-200);` |
 
 ### The actions and rules of use
 

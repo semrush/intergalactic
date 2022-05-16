@@ -1,5 +1,5 @@
 import React from 'react';
-import { testing } from '@semcore/jest-preset-ui';
+import { testing, snapshot } from '@semcore/jest-preset-ui';
 const { render, fireEvent, cleanup } = testing;
 import ProjectCreate from '../src';
 
@@ -28,5 +28,25 @@ describe('ProjectCreate', () => {
     );
     fireEvent.click(getByTestId('checkbox'));
     expect(spy).toBeCalledWith(false, expect.anything());
+  });
+
+  test('Should correct render', async () => {
+    expect(
+      await snapshot(<ProjectCreate disablePortal visible hasSharingCheckbox />, {
+        selector: 'body',
+        width: 600,
+        height: 600,
+      }),
+    ).toMatchImageSnapshot();
+  });
+
+  test('Should correct render loading state', async () => {
+    expect(
+      await snapshot(<ProjectCreate loading disablePortal visible hasSharingCheckbox />, {
+        selector: 'body',
+        width: 600,
+        height: 600,
+      }),
+    ).toMatchImageSnapshot();
   });
 });

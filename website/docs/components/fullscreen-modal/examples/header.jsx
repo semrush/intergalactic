@@ -3,18 +3,18 @@ import FullscreenModal from '@semcore/fullscreen-modal';
 import Button from '@semcore/button';
 
 const Demo = () => {
-  const [hidden, updateHidden] = useState(true);
+  const [visible, updateVisible] = useState(false);
 
-  const changeHiddenModal = () => {
-    updateHidden((hidden) => !hidden);
+  const changeModalVisibility = () => {
+    updateVisible((visible) => !visible);
   };
 
   return (
     <>
-      <Button use="primary" onClick={changeHiddenModal}>
+      <Button use="primary" onClick={changeModalVisibility}>
         Открыть окно
       </Button>
-      <FullscreenModal hidden={hidden} onClose={changeHiddenModal}>
+      <FullscreenModal visible={visible} onClose={changeModalVisibility}>
         <FullscreenModal.Close />
         <FullscreenModal.Back>Go to Tool Name</FullscreenModal.Back>
         <FullscreenModal.Header title="Heading 4, 25px" description="Some additional information" />

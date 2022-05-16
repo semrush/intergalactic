@@ -7,7 +7,7 @@ type ChildRenderFn<Props> = Props & {
     items,
   }: {
     items: { active: boolean; onClick: () => void }[];
-  }) => React.ReactElement;
+  }) => React.ReactElement | React.ReactElement[];
 };
 
 export interface ICarouselProps {
@@ -48,6 +48,9 @@ declare const Carousel: (<T>(
 ) => ReturnEl) & {
   Container: <T>(props: IBoxProps & T) => ReturnEl;
   Indicators: <T>(props: ChildRenderFn<IBoxProps & T>) => ReturnEl;
+  Indicator: <T>(
+    props: ChildRenderFn<IBoxProps & { active: boolean; onClick: () => void } & T>,
+  ) => ReturnEl;
   Item: <T>(props: IBoxProps & T) => ReturnEl;
   Prev: <T>(props: IBoxProps & T) => ReturnEl;
   Next: <T>(props: IBoxProps & T) => ReturnEl;

@@ -63,6 +63,6 @@ export default () => {
 
 const data = [...Array(5).keys()].map((d, i) => ({
   category: `Category ${i}`,
-  stack1: Math.random().toFixed(1) * 10,
-  stack2: Math.random().toFixed(1) * 10,
+  stack1: Math.random() * 10,
+  stack2: Math.random() * 10,
 }));

@@ -1,39 +1,52 @@
 @import '@semcore/utils/style/var.css';
 
 SCard {
-  border: 1px solid var(--gray80);
-  border-radius: 2px;
   box-sizing: border-box;
   background: var(--white);
+  padding: 0;
+  border: none;
+  border-radius: var(--rounded-m);
+  box-shadow: 0 0 1px rgba(25, 27, 35, 0.16), 0 1px 2px rgba(25, 27, 35, 0.12);
+  font-family: Inter, sans-serif;
 }
 
 STitle {
-  font-size: var(--fs-400);
-  font-weight: 500;
+  color: var(--gray-800);
+  font-size: var(--fs-300);
+  line-height: var(--lh-300);
+  font-weight: 700;
+  margin-right: 4px;
 }
 
 SIcon {
-  margin-left: 4px;
-  color: var(--stone);
+  color: var(--gray-300);
   cursor: help;
+  margin-right: 4px;
+}
+STooltip {
+  display: inline-flex;
+  vertical-align: middle;
 }
 
 SDescription {
-  margin-bottom: 12px;
+  margin-bottom: 0;
+  margin-top: 8px;
   font-size: var(--fs-200);
-  color: var(--gray60);
+  color: var(--gray-500);
 }
 
 SHeader {
-  padding-bottom: 0;
-  padding-left: 24px;
-  padding-right: 24px;
-  padding-top: 20px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 20px;
+  padding-right: 20px;
+  box-shadow: inset 0 -1px 0 var(--gray-100);
 }
 
 SBody {
-  padding-bottom: 24px;
-  padding-left: 24px;
-  padding-right: 24px;
+  color: var(--gray-800);
+  padding-bottom: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
   padding-top: 20px;
 }

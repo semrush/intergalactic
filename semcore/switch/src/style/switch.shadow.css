@@ -8,12 +8,17 @@ SSwitch {
   user-select: none;
 }
 
+SSwitch[size] {
+  & SToggle {
+    border-radius: 24px;
+  }
+}
+
 SSwitch[size='m'] {
   font-size: var(--fs-100);
   line-height: var(--lh-100);
 
   & SToggle {
-    border-radius: 6px;
     width: 20px;
     height: 12px;
   }
@@ -29,14 +34,13 @@ SSwitch[size='l'] {
   line-height: var(--lh-200);
 
   & SToggle {
-    border-radius: 9px;
-    width: 32px;
-    height: 18px;
+    height: 20px;
+    width: 36px;
   }
 
   & SSlider {
-    width: 14px;
-    height: 14px;
+    width: 16px;
+    height: 16px;
   }
 }
 
@@ -45,7 +49,6 @@ SSwitch[size='xl'] {
   line-height: var(--lh-300);
 
   & SToggle {
-    border-radius: 12px;
     width: 44px;
     height: 24px;
   }
@@ -66,28 +69,37 @@ SSwitch[disabled] {
 
 SSwitch[checked] {
   & SAddon[neighborLocation='right'] {
-    color: var(--gray60);
+    color: var(--gray-500);
   }
 
   & SAddon[neighborLocation='left'] {
-    color: var(--gray20);
+    color: var(--gray-800);
   }
 }
 
 SToggle {
-  background: rgba(0, 0, 0, 0.4);
+  background: var(--gray-300);
   position: relative;
-  color: rgba(0, 0, 0, 0.4);
+  color: var(--gray-300);
   cursor: pointer;
 }
 
-SToggle[checked] {
+SToggle[checked][theme='info'] {
+  color: var(--blue-400);
+  background-color: var(--blue-400);
+}
+SToggle[checked][theme='success'] {
+  color: var(--green-400);
+  background-color: var(--green-400);
+}
+
+SToggle[checked][theme='custom'] {
   color: var(--color);
   background-color: var(--color);
 }
 
 SToggle[keyboardFocused] {
-  box-shadow: var(--keyborad-focus);
+  box-shadow: var(--keyboard-focus);
 }
 
 SToggle[neighborLocation='left'] {
@@ -126,11 +138,11 @@ SInput {
 }
 
 SAddon[neighborLocation='right'] {
-  color: var(--gray20);
+  color: var(--gray-800);
 }
 
 SAddon[neighborLocation='left'] {
-  color: var(--gray60);
+  color: var(--gray-500);
 }
 
 @media (prefers-reduced-motion) {

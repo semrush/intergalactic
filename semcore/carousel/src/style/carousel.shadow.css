@@ -15,6 +15,8 @@ SItem {
   max-width: 100%;
   box-sizing: border-box;
   transform: var(--transform);
+  border-radius: 6px;
+  overflow: hidden;
 }
 
 SIndicators {
@@ -24,28 +26,24 @@ SIndicators {
 }
 
 SIndicator {
-  margin: 0 5px;
-  padding: 0 5px;
+  margin: 0 6px;
   cursor: pointer;
+  display: block;
+  width: 12px;
+  height: 12px;
+  border-radius: 6px;
+  background-color: var(--gray-300);
+  opacity: 0.3;
+  object-fit: cover;
+  transition: ease-in-out opacity 0.1s;
+}
 
-  &::before {
-    content: '';
-    display: block;
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background-color: color-mod(var(--stone) a(30%));
-  }
-
-  &:hover::before {
-    background-color: color-mod(var(--stone) a(60%));
-  }
+SIndicator:hover {
+  opacity: 0.6;
 }
 
 SIndicator[active] {
-  &::before {
-    background-color: var(--stone);
-  }
+  opacity: 1;
 }
 
 SPrev,
@@ -54,6 +52,13 @@ SNext {
   align-items: center;
   justify-content: center;
   cursor: pointer;
+}
+
+SPrev {
+  margin-right: 12px;
+}
+SNext {
+  margin-left: 12px;
 }
 
 SPrev[disabled],

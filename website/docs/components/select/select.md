@@ -17,26 +17,24 @@ The component consists of:
 
 There are two types of select triggers of different importance in our interface.
 
-**Button**. We use it in three sizes: M (26px in height, 12px text), L (32px in height, 14px text), XL (42px in height, 16px text).
+**Button**. We use it in three sizes: M (26px in height, 12px text), L (32px in height, 14px text).
 
 ![primary-select](static/primary.png)
 
-**Link**. We use it in four sizes: M (12px text), L (14px text), XL (16px text), XXL (33px text).
+**Link**. We use it in four sizes: M (12px text), L (14px text).
 
 ![secondary-select](static/secondary.png)
 
 > Note, that the component doesn't have the XXL size as a property, because it inherits sizes from BaseTrigger component.
 
-**Link with the color of text**. We use it in three sizes: M (12px text), L (14px text), XL (16px text).
+**Link with the color of text**. We use it in three sizes: M (12px text), L (14px text).
 
 ![tertiary-select](static/tertiary.png)
 
-| Size | ButtonTrigger                               | LinkTrigger                             | LinkTrigger with the color of text            |
-| ---- | ------------------------------------------- | --------------------------------------- | --------------------------------------------- |
-| XXL  | -                                           | ![secondary-xxl](static/select-xxl.png) | -                                             |
-| XL   | ![primary-xl](static/primary-select-xl.png) | ![secondary-xl](static/select-xl.png)   | ![tertiary-xl](static/tertiary-select-xl.png) |
-| L    | ![primary-l](static/primary-select-l.png)   | ![secondary-l](static/select-l.png)     | ![tertiary-l](static/tertiary-select-l.png)   |
-| M    | ![primary-m](static/primary-select-m.png)   | ![secondary-m](static/select-m.png)     | ![tertiary-m](static/tertiary-select-m.png)   |
+| Size | ButtonTrigger                             | LinkTrigger                         | LinkTrigger with the color of text          |
+| ---- | ----------------------------------------- | ----------------------------------- | ------------------------------------------- |
+| L    | ![primary-l](static/primary-select-l.png) | ![secondary-l](static/select-l.png) | ![tertiary-l](static/tertiary-select-l.png) |
+| M    | ![primary-m](static/primary-select-m.png) | ![secondary-m](static/select-m.png) | ![tertiary-m](static/tertiary-select-m.png) |
 
 @## Trigger states
 

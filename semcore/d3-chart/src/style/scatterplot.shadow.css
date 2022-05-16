@@ -2,7 +2,7 @@
 @import '@semcore/d3-chart/src/style/var.css';
 
 SScatterPlot {
-  fill: #2bb3ff;
+  fill: var(--blue-03);
   transition-property: cx, cy;
   transition-duration: var(--duration);
   transition-timing-function: ease-in-out;
@@ -19,7 +19,7 @@ SScatterPlot[color] {
 SValue {
   text-anchor: middle;
   font-size: 10px;
-  stroke: #008ff8;
+  stroke: var(--blue-04);
 }
 
 SValue[color] {

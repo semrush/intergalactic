@@ -100,7 +100,7 @@ export interface IDatePickerProps extends IDropdownProps, IWithI18nEnhanceProps 
    * Component size
    * @default m
    */
-  size?: 'm' | 'l' | 'xl';
+  size?: 'm' | 'l';
   /**
    * The selected date, accepts everything which is accepted by `new Date()`
    * */
