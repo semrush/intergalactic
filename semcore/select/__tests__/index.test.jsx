@@ -148,11 +148,11 @@ describe('Select Trigger', () => {
           <Select.Popper>
             <Select.Option value="1">
               <Select.Option.Checkbox theme={theme} />
-              size {size ?? '%none%'} selected
+              size {size ?? 'default'} selected
             </Select.Option>
             <Select.Option value="2">
               <Select.Option.Checkbox theme={theme} />
-              size {size ?? '%none%'}
+              size {size ?? 'default'}
             </Select.Option>
           </Select.Popper>
         </Select>
