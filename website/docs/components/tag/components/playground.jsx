@@ -3,12 +3,6 @@ import Tag from '@semcore/tag';
 import EditXS from '@semcore/icon/Edit/m';
 import PlaygroundGeneration from 'components/PlaygroundGeneration';
 
-const THEMES = {
-  primary: ['muted', 'warning', 'invert'],
-  secondary: ['muted', 'invert'],
-  custom: [],
-};
-
 export default PlaygroundGeneration((createGroupWidgets) => {
   const { bool, radio, text, select } = createGroupWidgets('Tag');
 
@@ -16,49 +10,48 @@ export default PlaygroundGeneration((createGroupWidgets) => {
     key: 'size',
     defaultValue: 'm',
     label: 'Size',
-    options: ['xl', 'l', 'm', 's'],
+    options: ['l', 'm'],
   });
 
-  const use = radio({
-    key: 'use',
-    defaultValue: 'secondary',
-    label: 'Use',
-    options: Object.values(Object.keys(THEMES)),
+  const COLORS = [
+    'gray-500',
+    'blue-500',
+    'green-500',
+    'salad-500',
+    'orange-500',
+    'yellow-500',
+    'red-500',
+    'pink-500',
+    'violet-500',
+  ];
+
+  const color = select({
+    key: 'color',
+    defaultValue: 'gray-500',
+    label: 'Color',
+    options: COLORS.map((value) => ({
+      name: value,
+      value,
+    })),
   });
 
-  let theme;
-  let color = null;
+  const theme = select({
+    key: 'theme',
+    defaultValue: 'primary',
+    label: 'Theme',
+    options: ['primary', 'secondary', 'additional'].map((value) => ({
+      name: value,
+      value,
+    })),
+  });
 
-  if (use === 'custom') {
-    theme = text({
-      key: 'theme',
-      defaultValue: '',
-      label: 'Theme',
-    });
-    color = text({
-      key: 'color',
-      defaultValue: '',
-      label: 'Color',
-    });
-  } else {
-    theme = select({
-      key: 'theme',
-      defaultValue: 'muted',
-      label: 'Theme',
-      options: THEMES[use].map((value) => ({
-        name: value,
-        value,
-      })),
-    });
-  }
-
-  let imageIcon = bool({
+  const imageIcon = bool({
     key: 'image Icon',
     defaultValue: false,
     label: 'Image Icon',
   });
 
-  let beforeIcon = bool({
+  const beforeIcon = bool({
     key: 'before Icon',
     defaultValue: false,
     label: 'Before Icon',
@@ -91,7 +84,6 @@ export default PlaygroundGeneration((createGroupWidgets) => {
       interactive={interactive}
       active={active}
       theme={theme}
-      use={use}
       color={color}
       size={size}
       disabled={disabled}

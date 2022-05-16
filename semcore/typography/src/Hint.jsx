@@ -15,10 +15,12 @@ class RootHint extends Component {
 
   render() {
     const SHint = Root;
-    const { styles, Children } = this.asProps;
+    const { styles, Children, addonLeft, addonRight } = this.asProps;
     return sstyled(styles)(
       <SHint render={Text} tag="abbr">
+        {addonLeft ? <Hint.Addon tag={addonLeft} /> : null}
         {addonTextChildren(Children, Hint.Text, Hint.Addon)}
+        {addonRight ? <Hint.Addon tag={addonRight} /> : null}
       </SHint>,
     );
   }

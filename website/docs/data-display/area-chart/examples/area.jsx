@@ -49,6 +49,6 @@ const data = Array(10)
   .map((d, i) => {
     return {
       time: new Date(date.setDate(date.getDate() + 5)),
-      line: Math.random().toFixed(1) * 10,
+      line: Math.random() * 10,
     };
   });

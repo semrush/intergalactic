@@ -49,7 +49,7 @@ class Popper extends Component {
     placement: 'auto',
     modifiers: [],
     arrow: {
-      padding: 12,
+      padding: 6,
     },
     strategy: 'absolute',
     interaction: 'click',

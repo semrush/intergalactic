@@ -20,12 +20,14 @@ SBaseTrigger {
   outline: 0;
   text-align: center;
   vertical-align: middle;
-  font-family: inherit;
+  font-family: Inter, sans-serif;
   cursor: pointer;
 
-  border: 1px solid var(--stone);
   background: #ffffff;
-  color: var(--gray20);
+
+  font-weight: 400;
+  border: 1px solid var(--gray-200);
+  color: var(--gray-800);
 
   &::-moz-focus-inner {
     border: none;
@@ -40,14 +42,17 @@ SBaseTrigger {
   }
 
   &[keyboardFocused] {
-    border: 1px solid var(--light-blue);
-    box-shadow: var(--keyborad-focus);
+    border: 1px solid var(--blue-400);
+    box-shadow: var(--keyboard-focus);
+  }
+
+  &:hover {
+    background-color: color-mod(var(--gray-400) a(20%));
   }
 
   &:active,
-  &:hover,
   &[active] {
-    background-color: color-mod(var(--stone) a(20%));
+    background-color: color-mod(var(--gray-400) a(30%));
   }
 }
 
@@ -75,7 +80,7 @@ SText {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-  line-height: 1.1;
+  line-height: var(--lh-200);
   flex-grow: 1;
   text-align: left;
 }
@@ -92,51 +97,20 @@ SBaseAddon {
   height: 12px;
 }
 
-SBaseTrigger[size='s'] {
-  height: 18px;
-  min-width: 18px;
-  border-radius: 2px;
-  font-size: 10px;
-
-  & SText {
-    margin-left: 4px;
-    margin-right: 4px;
-  }
-
-  & SAddon {
-    &:not(:only-child):first-child {
-      margin-left: 4px;
-    }
-
-    &:not(:only-child):last-child {
-      margin-right: 4px;
-    }
-
-    &:only-child {
-      margin-left: -2px;
-      margin-right: -2px;
-    }
-  }
-}
-
 SBaseTrigger[size='m'] {
-  height: 26px;
   min-width: 26px;
-  border-radius: 3px;
-  font-size: 12px;
-
-  & SText {
-    margin-left: 8px;
-    margin-right: 8px;
-  }
+  height: 28px;
+  border-radius: var(--rounded-m);
+  padding: 0 8px;
+  font-size: var(--fs-200);
 
   & SAddon {
     &:not(:only-child):first-child {
-      margin-left: 8px;
+      margin-right: 8px;
     }
 
     &:not(:only-child):last-child {
-      margin-right: 8px;
+      margin-left: 8px;
     }
 
     &:only-child {
@@ -147,55 +121,24 @@ SBaseTrigger[size='m'] {
 }
 
 SBaseTrigger[size='l'] {
-  height: 32px;
   min-width: 32px;
-  border-radius: 4px;
-  font-size: 14px;
-
-  & SText {
-    margin-left: 8px;
-    margin-right: 8px;
-  }
+  height: 40px;
+  border-radius: var(--rounded-m);
+  padding: 0 12px;
+  font-size: var(--fs-300);
 
   & SAddon {
     &:not(:only-child):first-child {
-      margin-left: 8px;
+      margin-right: 8px;
     }
 
     &:not(:only-child):last-child {
-      margin-right: 8px;
+      margin-left: 8px;
     }
 
     &:only-child {
       margin-left: -4px;
       margin-right: -4px;
-    }
-  }
-}
-
-SBaseTrigger[size='xl'] {
-  height: 42px;
-  min-width: 42px;
-  border-radius: 5px;
-  font-size: 16px;
-
-  & SText {
-    margin-left: 12px;
-    margin-right: 12px;
-  }
-
-  & SAddon {
-    &:not(:only-child):first-child {
-      margin-left: 12px;
-    }
-
-    &:not(:only-child):last-child {
-      margin-right: 12px;
-    }
-
-    &:only-child {
-      margin-left: -6px;
-      margin-right: -6px;
     }
   }
 }
@@ -217,22 +160,22 @@ SBaseTrigger[neighborLocation='left'] {
 }
 
 SText[placeholder] {
-  color: var(--gray70);
+  color: var(--gray-300);
 }
 
 SBaseTrigger[state='normal'] {
-  border-color: var(--stone);
+  border-color: var(--gray-200);
 }
 
 SBaseTrigger[state='valid'] {
-  border-color: var(--green);
+  border-color: var(--green-200);
 }
 
 SBaseTrigger[state='invalid'] {
-  border-color: var(--orange);
+  border-color: var(--red-200);
 
   &[keyboardFocused] {
-    border-color: var(--orange);
-    box-shadow: 0 0 0 3px color-mod(var(--orange) a(30%));
+    border-color: var(--orange-400);
+    box-shadow: 0 0 0 3px color-mod(var(--orange-400) a(30%));
   }
 }

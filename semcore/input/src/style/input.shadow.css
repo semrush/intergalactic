@@ -11,11 +11,16 @@ SInput {
   box-sizing: border-box;
 
   & input:-webkit-autofill {
+    border-radius: var(--rounded-m);
     -webkit-box-shadow: 0 0 0 30px rgb(250, 255, 189) inset;
 
     & ~ SOutline {
       background-color: rgb(250, 255, 189);
     }
+  }
+
+  & SOutline {
+    border-radius: var(--rounded-m);
   }
 }
 
@@ -27,9 +32,8 @@ SValue {
   padding: 0;
   border: none;
   box-sizing: border-box;
-  color: var(--gray20);
+  color: var(--gray-800);
   font-size: inherit;
-  line-height: 1.1;
   text-overflow: ellipsis;
   font-family: inherit;
   background: transparent;
@@ -39,11 +43,11 @@ SValue {
   }
 
   &::placeholder {
-    color: var(--gray70);
+    color: var(--gray-300);
   }
 
   &:read-only ~ SOutline {
-    background: var(--gray96);
+    background: var(--gray-50);
   }
 
   &:disabled {
@@ -74,16 +78,16 @@ SAddon {
   justify-content: center;
   align-items: center;
   flex: 0 0 auto;
+  padding: 0 8px;
   height: 100%;
-  color: var(--gray40);
+  color: var(--gray-300);
 }
 
 SAddon[interactive] {
-  color: var(--stone);
   cursor: pointer;
 
   &:hover {
-    color: color-mod(var(--stone) shade(12%));
+    color: var(--gray-400);
   }
 }
 
@@ -93,76 +97,21 @@ SAddon[disabled] {
   pointer-events: none;
 }
 
-SInput[size='s'] {
-  font-size: 10px;
-  height: 18px;
-
-  & SOutline {
-    border-radius: 2px;
-  }
-
-  & input:-webkit-autofill {
-    border-radius: 1px;
-  }
-}
-
-SValue[size='s'],
-SAddon[size='s'] {
-  padding: 0 4px;
-}
-
 SInput[size='m'] {
-  font-size: 12px;
-  height: 26px;
-
-  & SOutline {
-    border-radius: 3px;
-  }
-
-  & input:-webkit-autofill {
-    border-radius: 2px;
-  }
+  font-size: var(--fs-200);
+  height: var(--form-control-m);
 }
 
 SValue[size='m'],
-SAddon[size='m'] {
+SValue[size='l'] {
   padding: 0 8px;
 }
 
 SInput[size='l'] {
-  font-size: 14px;
-  height: 32px;
-
-  & SOutline {
-    border-radius: 4px;
-  }
-
-  & input:-webkit-autofill {
-    border-radius: 3px;
-  }
-}
-
-SValue[size='l'],
-SAddon[size='l'] {
-  padding: 0 8px;
-}
-
-SInput[size='xl'] {
-  font-size: 16px;
-  height: 42px;
-
-  & SOutline {
-    border-radius: 5px;
-  }
-
-  & input:-webkit-autofill {
-    border-radius: 4px;
-  }
-}
-
-SValue[size='xl'],
-SAddon[size='xl'] {
-  padding: 0 12px;
+  font-size: var(--fs-300);
+  height: var(--form-control-l);
+  padding-left: 4px;
+  padding-right: 4px;
 }
 
 SInput[focused] {
@@ -171,32 +120,32 @@ SInput[focused] {
 
 SInput[state='normal'] {
   & SOutline {
-    border-color: var(--stone);
+    border-color: var(--gray-200);
   }
 
   & SValue:focus ~ SOutline {
-    border-color: var(--light-blue);
-    box-shadow: var(--keyborad-focus);
+    border-color: var(--blue-400);
+    box-shadow: var(--keyboard-focus);
   }
 }
 SInput[state='valid'] {
   & SOutline {
-    border-color: var(--green);
+    border-color: var(--green-200);
   }
 
   & SValue:focus ~ SOutline {
-    border-color: var(--green);
-    box-shadow: 0 0 0 3px color-mod(var(--green) a(30%));
+    border-color: var(--green-400);
+    box-shadow: var(--keyboard-focus-valid);
   }
 }
 SInput[state='invalid'] {
   & SOutline {
-    border-color: var(--orange);
+    border-color: var(--red-200);
   }
 
   & SValue:focus ~ SOutline {
-    border-color: var(--orange);
-    box-shadow: 0 0 0 3px color-mod(var(--orange) a(30%));
+    border-color: var(--red-400);
+    box-shadow: var(--keyboard-focus-invalid);
   }
 }
 
@@ -218,6 +167,14 @@ SInput[neighborLocation='left'] {
     border-bottom-left-radius: 0;
     border-left: none;
   }
+}
+
+SAddon[neighborLocation='right'] {
+  padding-right: 8px;
+}
+
+SAddon[neighborLocation='left'] {
+  padding-left: 8px;
 }
 
 SValue[neighborLocation='right'] {

@@ -2,6 +2,16 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.0.0] - unreleased
+
+### BREAK
+
+- Updated styles according to the library redesign policy.
+
+### Added
+
+- Added `coffee`/`heat-map-chart`/`kagi-chart`/`radial-tree-chart`/`suggestion`/`under-construction` illustrations.
+
 ## [2.7.0] - 2022-04-14
 
 ### Added

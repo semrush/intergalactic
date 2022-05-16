@@ -1,5 +1,5 @@
 import React from 'react';
-import { createBaseComponent, sstyled } from '@semcore/core';
+import { createBaseComponent, Root, sstyled } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
 import resolveColor from '@semcore/utils/lib/color';
 
@@ -16,18 +16,18 @@ function getTextDecoration(underline, lineThrough) {
 }
 
 function Text(props, ref) {
-  const SText = Box;
+  const SText = Root;
   const { color, underline, lineThrough } = props;
   const textDecoration = getTextDecoration(underline, lineThrough);
 
   return sstyled(styles)(
     <SText
-      ref={ref}
+      render={Box}
       tag="span"
       data-ui-name="Text"
+      ref={ref}
       use:decoration={textDecoration}
       use:color={resolveColor(color)}
-      {...props}
     />,
   );
 }

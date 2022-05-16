@@ -13,15 +13,15 @@ import { colors } from '@semcore/chart';
 class Demo extends Component {
   render() {
     return (
-      <Box my={6} pt={5} pb={6} px={6} style={{ border: '1px solid #cccccc', borderRadius: '2px' }}>
+      <Box my={6} pt={5} pb={6} px={6} style={{ border: '1px solid #c4c7cf', borderRadius: '6px' }}>
         <Box>
           <Flex mb={2} alignItems="center">
             <Text size={400}>Chart heading</Text>
             <TooltipUI title="This is just an example of line chart">
-              <InfoXS ml={1} color="stone" cursor="help" />
+              <InfoXS ml={1} color="gray-300" cursor="help" />
             </TooltipUI>
             <Dropdown placement="bottom-end">
-              <Dropdown.Trigger tag={SettingsS} ml="auto" color="stone" interactive />
+              <Dropdown.Trigger tag={SettingsS} ml="auto" color="gray-300" interactive />
               <Dropdown.Popper>
                 <Box p={3}>
                   <Text size={100} bold mb={3}>
@@ -51,7 +51,7 @@ class Demo extends Component {
               </Dropdown.Popper>
             </Dropdown>
           </Flex>
-          <Text size={200} color="gray60" mb={3} tag="div">
+          <Text size={200} color="gray-500" mb={3} tag="div">
             Subinfo about data represented on the chart (optional)
           </Text>
           <Flex mt={3} mb={6} alignItems="center" justifyContent="space-between">

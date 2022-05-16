@@ -30,6 +30,7 @@
     "directory": "semcore/input"
   },
   "devDependencies": {
-    "@semcore/jest-preset-ui": "1.0.0"
+    "@semcore/jest-preset-ui": "1.0.0",
+    "@semcore/icon": "*"
   }
 }

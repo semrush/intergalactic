@@ -4,7 +4,7 @@ import { DatePicker } from '@semcore/date-picker';
 function Demo() {
   return (
     <DatePicker>
-      <DatePicker.Trigger size="xl" />
+      <DatePicker.Trigger size="l" />
       <DatePicker.Popper />
     </DatePicker>
   );

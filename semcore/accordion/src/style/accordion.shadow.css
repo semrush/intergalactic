@@ -6,7 +6,7 @@ SItemToggle {
 }
 
 SItemToggle[keyboardFocused] {
-  box-shadow: var(--keyborad-focus);
+  box-shadow: var(--keyboard-focus);
 }
 
 SItemToggle[disabled] {

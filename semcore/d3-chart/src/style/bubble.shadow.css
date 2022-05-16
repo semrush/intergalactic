@@ -2,7 +2,7 @@
 @import '@semcore/d3-chart/src/style/var.css';
 
 SBubble {
-  fill: #2bb3ff;
+  fill: var(--blue-03);
   stroke: #fff;
   stroke-width: 2px;
   transition-property: cx, cy;
@@ -21,7 +21,7 @@ SBubble[color] {
 SCenter {
   text-anchor: middle;
   font-size: 11px;
-  stroke: #2bb3ff;
+  stroke: var(--blue-03);
 }
 
 SCenter[color] {
@@ -29,7 +29,7 @@ SCenter[color] {
 }
 
 SLabel {
-  fill: #2bb3ff;
+  fill: var(--blue-03);
 }
 
 SLabel[position='right'] {

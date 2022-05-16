@@ -52,7 +52,7 @@ export class DatePickerRoot extends PickerAbstract {
         <>
           <DatePicker.Header />
           <DatePicker.Calendar />
-          <Divider ml={-4} w="calc(100% + 32px)" />
+          <Divider ml={-4} mt={4} w="calc(100% + 32px)" />
           <DatePicker.Today />
         </>
       ),

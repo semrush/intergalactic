@@ -1,4 +1,4 @@
-import { ComponentProps } from 'react';
+import React, { ComponentProps } from 'react';
 import { CProps, PropGetterFn, ReturnEl } from '@semcore/core';
 
 import {
@@ -58,9 +58,13 @@ export interface IHintProps extends ITextProps {
   disabled?: boolean;
   /** Enable `active` state */
   active?: boolean;
+  /** Left addon hint  */
+  addonLeft?: React.ElementType;
+  /** Right addon hint  */
+  addonRight?: React.ElementType;
 }
 
-export interface IBlockquoteProps extends ITextProps {
+export interface IBlockquoteProps extends IBoxProps {
   /** Source of the quote */
   author?: React.ReactNode;
 }

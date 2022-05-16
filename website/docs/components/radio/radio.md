@@ -16,25 +16,23 @@ The radio button clearly displays the user's selection status. It is used mainly
 
 ### Dimensions and indents
 
-Our interface uses 3 control's sizes — Xl, L, and M. The text label is placed to the right of the radio button.
+Our interface uses 2 control's sizes — L, and M. The text label is placed to the right of the radio button.
 
 Try to indent the radio buttons so that the options are easy to read. The indents may vary depending on the context of use. But it is advisable to make them multiples of 4. Recommended ones are listed below.
 
-| Size   | Appearance                        | Magin                                |
-| ------ | --------------------------------- | ------------------------------------ |
-| **XL** | ![xl](static/radio-padding-4.png) | ![xl](static/@1xradio-vert-20px.png) |
-| **L**  | ![l](static/radio-padding-5.png)  | ![l](static/@1xradio-vert-16px.png)  |
-| **M**  | ![m](static/radio-padding-6.png)  | ![m](static/@1xradio-vert-12px.png)  |
+| Size  | Appearance                       | Magin                               |
+| ----- | -------------------------------- | ----------------------------------- |
+| **L** | ![l](static/radio-padding-5.png) | ![l](static/@1xradio-vert-16px.png) |
+| **M** | ![m](static/radio-padding-6.png) | ![m](static/@1xradio-vert-12px.png) |
 
 ### Radio button with a paragraph
 
 All sizes of radio buttons can be used with the corresponding text paragraphs.
 
-| Size   | Appearance                                                 |
-| ------ | ---------------------------------------------------------- |
-| **XL** | ![radiobutton-paragraph-16](static/@1xparagraph-120px.png) |
-| **L**  | ![radiobutton-paragraph-14](static/@1xparagraph-16px.png)  |
-| **M**  | ![radiobutton-paragraph-12](static/@1xparagraph-12px.png)  |
+| Size  | Appearance                                                |
+| ----- | --------------------------------------------------------- |
+| **L** | ![radiobutton-paragraph-14](static/@1xparagraph-16px.png) |
+| **M** | ![radiobutton-paragraph-12](static/@1xparagraph-12px.png) |
 
 @## Interaction
 

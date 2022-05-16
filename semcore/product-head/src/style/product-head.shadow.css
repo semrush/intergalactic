@@ -1,10 +1,7 @@
 @import '@semcore/utils/style/var.css';
 
 SProductHead {
-  margin-bottom: 16px;
   margin-top: 16px;
-  padding-left: 30px;
-  padding-right: 30px;
 }
 
 SRow {
@@ -12,6 +9,7 @@ SRow {
   justify-content: space-between;
   margin-top: 8px;
   margin-bottom: 8px;
+  overflow: auto;
 }
 
 SButtons {
@@ -30,6 +28,8 @@ SLinks {
   align-items: center;
   justify-content: flex-end;
   margin-left: 8px;
+  font-size: var(--fs-200);
+  line-height: var(--lh-200);
 
   & > *:not(:first-child) {
     margin-left: 20px;
@@ -45,13 +45,8 @@ SLinks {
     width: 100%;
     margin-left: 0;
     margin-top: 8px;
-    margin-bottom: -8px;
     justify-content: flex-start;
     flex-wrap: wrap;
-
-    & > * {
-      margin-bottom: 8px;
-    }
   }
 
   SLinks {

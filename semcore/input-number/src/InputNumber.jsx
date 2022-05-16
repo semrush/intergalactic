@@ -9,8 +9,8 @@ function parseValueWithMinMax(value, min = Number.MIN_SAFE_INTEGER, max = Number
   return Math.max(min, Math.min(max, value));
 }
 
-const IconUp = ({ size }) => BUTTONS.up[size] || BUTTONS.up['m'];
-const IconDown = ({ size }) => BUTTONS.down[size] || BUTTONS.down['m'];
+const IconUp = () => BUTTONS.up;
+const IconDown = () => BUTTONS.down;
 
 class InputNumber extends Component {
   static displayName = 'InputNumber';
@@ -122,10 +122,10 @@ function Controls(props) {
   return sstyled(styles)(
     <SControls render={Input.Addon}>
       <SUp onClick={inc} tabIndex={-1} type="button" size={size} aria-label="Increment number">
-        <IconUp size={size} />
+        <IconUp />
       </SUp>
       <SDown onClick={dec} tabIndex={-1} type="button" size={size} aria-label="Decrement number">
-        <IconDown size={size} />
+        <IconDown />
       </SDown>
       <Children />
     </SControls>,

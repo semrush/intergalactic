@@ -24,9 +24,9 @@ The filter inherits all [FilterTrigger](/components/filter-trigger/) styles and 
 
 It's better not to make controls smaller than recommended min-widths, otherwise the user may not read at all what the filter is or cann't see what category is selected.
 
-| Input sizes                                        | Inactive filter (select)              | Active filter (filterTrigger)              |
-| -------------------------------------------------- | ------------------------------------- | ------------------------------------------ |
-| M (26px height), L (32px height), XL (42px height) | ![inactive filter](static/select.png) | ![active filter](static/filterTrigger.png) |
+| Input sizes                      | Inactive filter (select)              | Active filter (filterTrigger)              |
+| -------------------------------- | ------------------------------------- | ------------------------------------------ |
+| M (26px height), L (32px height) | ![inactive filter](static/select.png) | ![active filter](static/filterTrigger.png) |
 
 @## Filter by one category
 

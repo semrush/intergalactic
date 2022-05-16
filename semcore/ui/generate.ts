@@ -14,7 +14,7 @@ const REGISTRY_URL = 'https://registry.npmjs.org/';
 const EXPORT_DEFAULT_REG = /export ({ default }|default)/gm;
 
 const removeDirectory = async () => {
-  const toRemove = [...glob.sync('!(*.*|__tests__)'), 'yarn.lock'];
+  const toRemove = [...glob.sync('!(*.*|__tests__)', { onlyDirectories: true }), 'yarn.lock'];
   try {
     await Promise.all(toRemove.map((filePath) => fs.remove(path.resolve(dirname, filePath))));
   } catch (e) {}

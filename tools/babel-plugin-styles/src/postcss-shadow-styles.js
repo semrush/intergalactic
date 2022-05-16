@@ -96,6 +96,9 @@ module.exports = (opts) => {
     postcssPlugin: 'postcss-shadow-styles',
     prepare(result) {
       const tokens = {};
+      if (!result.root) {
+        throw new Error(`Failed to process .shadow.css file ${result.opts.from}`);
+      }
       const hash = makeStringHash(result.root.source.input.css).toString(36);
       const generateScopedName = (classes) =>
         options.generateScopedName(classes, result.opts.from, result.root.source.input.css);

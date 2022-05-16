@@ -3,7 +3,7 @@ import { IBoxProps, IFlexProps } from '@semcore/flex-box';
 import { IKeyboardFocusProps } from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 import { Text } from '@semcore/typography';
 
-export type RadioSize = 'm' | 'l' | 'xl';
+export type RadioSize = 'm' | 'l';
 export type RadioState = 'normal' | 'invalid';
 export type RadioValue = string | number | boolean;
 
@@ -55,6 +55,8 @@ export interface IRadioValueProps extends IBoxProps, IKeyboardFocusProps {
   value?: RadioValue;
   /** Called when the value changes */
   onChange?: (value: boolean, e?: React.SyntheticEvent<HTMLInputElement>) => void;
+  /** Blocks access and changes to the form field */
+  disabled?: boolean;
 }
 
 export interface IRadioCtx {

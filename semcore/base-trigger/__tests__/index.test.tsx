@@ -35,7 +35,6 @@ describe('BaseTrigger', () => {
       <>
         <BaseTrigger size="m">Button</BaseTrigger>
         <BaseTrigger size="l">Button</BaseTrigger>
-        <BaseTrigger size="xl">Button</BaseTrigger>
       </>
     );
 
@@ -69,6 +68,30 @@ describe('BaseTrigger', () => {
     );
 
     expect(await snapshot(component)).toMatchImageSnapshot();
+  });
+
+  test('Should support hover', async () => {
+    const component = <BaseTrigger id="base-trigger">Button</BaseTrigger>;
+
+    expect(
+      await snapshot(component, {
+        actions: {
+          hover: '#base-trigger',
+        },
+      }),
+    ).toMatchImageSnapshot();
+  });
+
+  test('Should support active', async () => {
+    const component = <BaseTrigger id="base-trigger">Button</BaseTrigger>;
+
+    expect(
+      await snapshot(component, {
+        actions: {
+          active: '#base-trigger',
+        },
+      }),
+    ).toMatchImageSnapshot();
   });
 });
 
@@ -112,6 +135,35 @@ describe('FilterTrigger', () => {
 
     expect(await snapshot(component)).toMatchImageSnapshot();
   });
+
+  test('Should support active', async () => {
+    const component = <FilterTrigger id="filter-trigger">Filter</FilterTrigger>;
+
+    expect(
+      await snapshot(component, {
+        actions: {
+          active: '#filter-trigger',
+        },
+      }),
+    ).toMatchImageSnapshot();
+  });
+
+  test('Should support active with counter', async () => {
+    const component = (
+      <FilterTrigger id="filter-trigger">
+        <FilterTrigger.Counter>99</FilterTrigger.Counter>
+        <FilterTrigger.Text>Problems</FilterTrigger.Text>
+      </FilterTrigger>
+    );
+
+    expect(
+      await snapshot(component, {
+        actions: {
+          active: '#filter-trigger',
+        },
+      }),
+    ).toMatchImageSnapshot();
+  });
 });
 
 describe('LinkTrigger', () => {
@@ -144,5 +196,17 @@ describe('LinkTrigger', () => {
     );
 
     expect(await snapshot(component)).toMatchImageSnapshot();
+  });
+
+  test('Should support active', async () => {
+    const component = <LinkTrigger id="link-trigger">Filter</LinkTrigger>;
+
+    expect(
+      await snapshot(component, {
+        actions: {
+          active: '#link-trigger',
+        },
+      }),
+    ).toMatchImageSnapshot();
   });
 });

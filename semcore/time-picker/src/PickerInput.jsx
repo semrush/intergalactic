@@ -13,7 +13,6 @@ const MAP_FIELD_TO_TIME = {
 const MAP_SIZE_SELECT = {
   m: 'm',
   l: 'l',
-  xl: 'l',
 };
 
 function getOptions(min, max, step = 1) {

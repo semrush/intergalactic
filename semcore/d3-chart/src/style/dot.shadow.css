@@ -5,7 +5,7 @@ SDot {
   stroke-width: 2px;
   stroke: #fff;
   r: 6px;
-  fill: var(--blue-01);
+  fill: var(--blue-03);
   transition-property: cx, cy;
   transition-duration: var(--duration);
   transition-timing-function: ease-in-out;

@@ -5,8 +5,8 @@
   justify-content: space-between;
   width: 100%;
   padding-bottom: 8px;
-  border-bottom: 1px solid var(--gray80);
-  color: var(--gray20);
+  border-bottom: 1px solid var(--gray-200);
+  color: var(--gray-800);
   font-size: var(--fs-100);
   line-height: var(--lh-100);
 }
@@ -17,7 +17,7 @@
 
 .venn-tooltip-label__percentage {
   margin-right: 12px;
-  color: var(--gray60);
+  color: var(--gray-500);
 }
 
 .venn-tooltip-label__value {

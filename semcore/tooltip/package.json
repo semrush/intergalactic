@@ -10,7 +10,7 @@
   "license": "MIT",
   "scripts": {
     "build": "build --source=js",
-    "test": "jest"
+    "test": "jest --no-cache"
   },
   "dependencies": {
     "@semcore/utils": "^3.31",

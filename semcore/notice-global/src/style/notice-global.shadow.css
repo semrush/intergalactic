@@ -1,0 +1,62 @@
+@import '@semcore/utils/style/var.css';
+
+SNoticeGlobal {
+  display: flex;
+  font-size: var(--fs-200);
+  line-height: var(--lh-200);
+  box-sizing: border-box;
+  padding: 8px 32px;
+}
+
+SCloseIcon {
+  flex-shrink: 0;
+  margin-top: 2px;
+  margin-left: 15px;
+}
+
+SNoticeGlobal[theme='neutral'] {
+  background-color: var(--gray-400);
+  color: #ffffff;
+}
+
+SNoticeGlobal[theme='info'] {
+  background-color: var(--blue-50);
+
+  & SCloseIcon {
+    color: var(--blue-400);
+  }
+}
+
+SNoticeGlobal[theme='danger'] {
+  background-color: var(--red-50);
+
+  & SCloseIcon {
+    color: var(--red-400);
+  }
+}
+
+SNoticeGlobal[theme='warning'] {
+  background-color: var(--orange-50);
+
+  & SCloseIcon {
+    color: var(--orange-400);
+  }
+}
+
+SNoticeGlobal[theme='success'] {
+  background-color: var(--green-50);
+
+  & SCloseIcon {
+    color: var(--green-400);
+  }
+}
+
+SNoticeGlobal[theme='custom'] {
+  background-color: var(--backgroundColor);
+}
+
+SContent {
+  flex: 1 1 auto;
+  width: 100%;
+  justify-content: center;
+}

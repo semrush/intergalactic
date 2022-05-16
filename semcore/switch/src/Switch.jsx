@@ -9,15 +9,8 @@ import { callAllEventHandlers } from '@semcore/utils/lib/assignProps';
 
 import style from './style/switch.shadow.css';
 
-function getColor(theme) {
-  switch (theme) {
-    case 'info':
-      return 'light-blue';
-    case 'success':
-      return 'green';
-    default:
-      return theme;
-  }
+function isCustomTheme(theme) {
+  return !['info', 'success'].includes(theme);
 }
 
 class Switch extends Component {
@@ -119,13 +112,16 @@ class Value extends Component {
     } = this.asProps;
 
     const [inputProps, toggleProps] = getInputProps(other, includeInputProps);
+    const useTheme = isCustomTheme(theme) ? 'custom' : theme;
+    const color = resolveColor(theme);
 
     return sstyled(styles)(
       <SToggle
         keyboardFocused={keyboardFocused}
         neighborLocation={neighborLocation}
         checked={inputProps.checked}
-        color={resolveColor(getColor(theme))}
+        use:theme={useTheme}
+        use:color={color}
         {...toggleProps}
       >
         <SInput

@@ -1,7 +1,7 @@
 @import '@semcore/d3-chart/src/style/var.css';
 
 SCircle {
-  fill: var(--green-01);
+  fill: var(--green-02);
   stroke: #fff;
   stroke-width: 2px;
   fill-opacity: 0.5;

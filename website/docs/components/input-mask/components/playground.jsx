@@ -3,7 +3,7 @@ import PlaygroundGeneration from 'components/PlaygroundGeneration';
 
 import InputMask from '@semcore/input-mask';
 
-const SIZES = ['s', 'm', 'l', 'xl'];
+const SIZES = ['s', 'm', 'l'];
 const STATES = ['normal', 'invalid', 'valid'];
 
 const Preview = (preview) => {

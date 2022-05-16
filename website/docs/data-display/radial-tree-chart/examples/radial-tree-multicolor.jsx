@@ -4,23 +4,23 @@ import { scaleLinear } from 'd3-scale';
 import LikeM from '@semcore/icon/Like/m';
 
 const movies = [
-  { label: 'Action', color: '#00b0ed' },
-  { label: 'Comedy', color: '#00b0ed' },
-  { label: 'Drama', color: '#00b0ed' },
-  { label: 'Fantasy', color: '#00b0ed' },
-  { label: 'Mystery', color: '#00b0ed' },
-  { label: 'Romance', color: '#00b0ed' },
-  { label: 'Western', color: '#00b0ed' },
+  { label: 'Action', color: '#008ff8' },
+  { label: 'Comedy', color: '#008ff8' },
+  { label: 'Drama', color: '#008ff8' },
+  { label: 'Fantasy', color: '#008ff8' },
+  { label: 'Mystery', color: '#008ff8' },
+  { label: 'Romance', color: '#008ff8' },
+  { label: 'Western', color: '#008ff8' },
   { label: 'Thriller', color: '#f160c3' },
   { label: 'Crime Thriller', color: '#f160c3' },
   { label: 'Disaster Thriller', color: '#f160c3' },
   { label: 'Psychological\nThriller', color: '#f160c3' },
   { label: 'Techno Thriller', color: '#f160c3' },
-  { label: 'Horror', color: '#ed2d2d' },
-  { label: 'Zombie Horror', color: '#ed2d2d' },
-  { label: 'Folk Horror', color: '#ed2d2d' },
-  { label: 'Body Horror', color: '#ed2d2d' },
-  { label: 'Found\nFootage Horror', color: '#ed2d2d' },
+  { label: 'Horror', color: '#ff4953' },
+  { label: 'Zombie Horror', color: '#ff4953' },
+  { label: 'Folk Horror', color: '#ff4953' },
+  { label: 'Body Horror', color: '#ff4953' },
+  { label: 'Found\nFootage Horror', color: '#ff4953' },
 ];
 
 export default () => {

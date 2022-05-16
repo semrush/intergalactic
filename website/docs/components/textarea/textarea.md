@@ -16,7 +16,6 @@ tabName: Design
 
 |     | Appearance                               |
 | --- | ---------------------------------------- |
-| XL  | ![button L](static/@1xtextarea-16px.png) |
 | L   | ![button M](static/@1xtextarea-14px.png) |
 | M   | ![button S](static/@1xtextarea-12px.png) |
 
@@ -34,11 +33,10 @@ Text area may contain a counter showing the number of available characters, limi
 
 The counter can be placed either next to the area label or near the area itself (for example, under it or on its right).
 
-|     | Input with label                         | Input without label                            |
-| --- | ---------------------------------------- | ---------------------------------------------- |
-| XL  | ![XL](static/@1xtextarea-counter-XL.png) | ![XL](static/@1xtextarea-counter-inner-XL.png) |
-| L   | ![L](static/@1xtextarea-counter-L.png)   | ![L](static/@1xtextarea-counter-inner-L.png)   |
-| M   | ![M](static/@1xtextarea-counter-M.png)   | ![M](static/@1xtextarea-counter-inner-M.png)   |
+|     | Input with label                       | Input without label                          |
+| --- | -------------------------------------- | -------------------------------------------- |
+| L   | ![L](static/@1xtextarea-counter-L.png) | ![L](static/@1xtextarea-counter-inner-L.png) |
+| M   | ![M](static/@1xtextarea-counter-M.png) | ![M](static/@1xtextarea-counter-inner-M.png) |
 
 @## Interaction
 

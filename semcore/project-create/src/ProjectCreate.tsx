@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Field, FieldProps, Form, FormProps } from 'react-final-form';
 import createFocusDecorator from 'final-form-focus';
 import { Text } from '@semcore/typography';
@@ -13,9 +13,14 @@ import Info from '@semcore/icon/Info/m';
 import assignProps from '@semcore/utils/lib/assignProps';
 import fire from '@semcore/utils/lib/fire';
 import i18nEnhance, { IWithI18nEnhanceProps } from '@semcore/utils/lib/enhances/i18nEnhance';
-import createComponent, { Component, Merge, sstyled } from '@semcore/core';
+import createComponent, {
+  Component,
+  CONTEXT_COMPONENT,
+  IStyledProps,
+  Merge,
+  sstyled,
+} from '@semcore/core';
 
-import style from './style/project-create.shadow.css';
 import de from './translations/de.json';
 import en from './translations/en.json';
 import es from './translations/es.json';
@@ -27,6 +32,8 @@ import zh from './translations/zh.json';
 import pt from './translations/pt.json';
 import ko from './translations/ko.json';
 import vi from './translations/vi.json';
+
+import style from './style/project-create.shadow.css';
 
 const i18n = { de, en, es, fr, it, ja, ru, zh, pt, ko, vi };
 
@@ -69,6 +76,8 @@ export interface IProjectCreateModalProps extends IWithI18nEnhanceProps {
   loading?: boolean;
   /** This parameter controls the visibility of the modal window */
   visible?: boolean;
+  /** Disables children rendering in React portal */
+  disablePortal?: boolean;
   /** Properties for the project sharing checkbox
    * @default {}
    */
@@ -95,6 +104,8 @@ export interface IProjectCreateModalProps extends IWithI18nEnhanceProps {
 
 export interface IProjectCreateModalItemProps extends FieldProps<any, any> {
   label?: string;
+  /** @ignore */
+  styles?: IStyledProps['styles'];
 }
 
 export interface ISharingCheckboxProps extends ICheckboxValueProps {
@@ -145,8 +156,17 @@ class ProjectCreateModalRoot extends Component<Merge<IProjectCreateModalProps, F
     fire(this, 'onClose', 'onCloseClick', e);
   };
 
+  setContext() {
+    return { styles: this.asProps.styles };
+  }
+
   render() {
     const SProjectCreate = Modal.Window;
+    const SIconInfo = Info;
+    const SItem = Flex;
+    const STitle = Text;
+    const SDescription = Text;
+    const SButtonSuccess = Button;
     const {
       loading,
       visible,
@@ -156,79 +176,77 @@ class ProjectCreateModalRoot extends Component<Merge<IProjectCreateModalProps, F
       getI18nText,
       hasSharingCheckbox,
       sharingCheckboxProps,
+      disablePortal,
       ...other
     } = this.asProps;
     const dictionary = getI18nText();
 
-    return sstyled(styles)(
-      <Modal visible={visible} onClose={onClose}>
-        <Modal.Overlay>
-          <SProjectCreate>
-            <Modal.Close />
-            <Form
-              {...other}
-              onSubmit={this.handleSubmit}
-              decorators={[this.focusDecorator]}
-              validate={(values) => validate(values, dictionary)}
-            >
-              {({ handleSubmit, form }) => (
-                <SpinContainer
-                  size="xl"
-                  loading={loading === undefined ? form.getState().submitting : loading}
-                >
-                  <form onSubmit={handleSubmit} method="POST" noValidate>
-                    <Text tag="h2" size={500} medium>
-                      {getI18nText('title')}
-                    </Text>
-                    <ProjectCreateItem
-                      autoFocus
-                      name="url"
-                      label={getI18nText('inputDomainLabel')}
-                      placeholder={getI18nText('inputDomainPlaceholder')}
-                    />
-                    <ProjectCreateItem
-                      name="name"
-                      label={getI18nText('inputNameLabel')}
-                      placeholder={getI18nText('inputNamePlaceholder')}
-                    />
-                    {hasSharingCheckbox && (
-                      <SharingCheckbox
-                        label={getI18nText('sharingCheckboxLegend')}
-                        {...sharingCheckboxProps}
+    return (
+      <Form
+        {...other}
+        onSubmit={this.handleSubmit}
+        decorators={[this.focusDecorator]}
+        validate={(values) => validate(values, dictionary)}
+      >
+        {({ handleSubmit, form }) =>
+          sstyled(styles)(
+            <Modal visible={visible} onClose={onClose} disablePortal={disablePortal}>
+              <Modal.Overlay>
+                <SProjectCreate>
+                  <SpinContainer
+                    size="xl"
+                    loading={loading === undefined ? form.getState().submitting : loading}
+                  >
+                    <form onSubmit={handleSubmit} method="POST" noValidate>
+                      <STitle tag="h2">{getI18nText('title')}</STitle>
+                      <ProjectCreateItem
+                        autoFocus
+                        name="url"
+                        label={getI18nText('inputDomainLabel')}
+                        placeholder={getI18nText('inputDomainPlaceholder')}
                       />
-                    )}
-                    <Flex mt={6}>
-                      <Info style={{ flexShrink: 0 }} color="stone" mr={2} />
-                      <Text tag="p" size={100}>
-                        {getI18nText('description')}
-                      </Text>
-                    </Flex>
-                    <Flex justifyContent="center" mt={6}>
-                      <Button use="primary" theme="success" size="l" type="submit" mr={3}>
-                        {getI18nText('buttonCreate')}
-                      </Button>
-                      <Button size="l" onClick={this.handleCloseModal}>
-                        {getI18nText('buttonCancel')}
-                      </Button>
-                    </Flex>
-                  </form>
-                </SpinContainer>
-              )}
-            </Form>
-          </SProjectCreate>
-        </Modal.Overlay>
-      </Modal>,
+                      <ProjectCreateItem
+                        name="name"
+                        label={getI18nText('inputNameLabel')}
+                        placeholder={getI18nText('inputNamePlaceholder')}
+                      />
+                      {hasSharingCheckbox && (
+                        <SharingCheckbox
+                          label={getI18nText('sharingCheckboxLegend')}
+                          {...sharingCheckboxProps}
+                        />
+                      )}
+                      <SItem>
+                        <SIconInfo />
+                        <SDescription tag="p">{getI18nText('description')}</SDescription>
+                      </SItem>
+                      <SItem>
+                        <SButtonSuccess use="primary" theme="success" size="l" type="submit">
+                          {getI18nText('buttonCreate')}
+                        </SButtonSuccess>
+                        <Button size="l" onClick={this.handleCloseModal}>
+                          {getI18nText('buttonCancel')}
+                        </Button>
+                      </SItem>
+                    </form>
+                  </SpinContainer>
+                </SProjectCreate>
+              </Modal.Overlay>
+            </Modal>,
+          )
+        }
+      </Form>
     );
   }
 }
 
-function ProjectCreateItem(props: IProjectCreateModalItemProps) {
-  const { placeholder, label, ...other } = props;
-  return (
-    <Box mt={6}>
-      <Text tag="p" size={200} mb={2}>
-        {label}
-      </Text>
+function ProjectCreateItemInner(props: IProjectCreateModalItemProps): any {
+  const SItem = Box;
+  const SLabel = Text;
+  const { placeholder, label, styles, ...other } = props;
+  return sstyled(styles)(
+    <SItem>
+      <SLabel tag="p">{label}</SLabel>
       <Field {...other}>
         {({ input, meta, ...fieldProps }) => {
           const invalid = meta.invalid && meta.touched;
@@ -251,24 +269,34 @@ function ProjectCreateItem(props: IProjectCreateModalItemProps) {
           );
         }}
       </Field>
-    </Box>
+    </SItem>,
   );
 }
 
-function SharingCheckbox(props: ISharingCheckboxProps) {
-  const { label, ...other } = props;
-  return (
-    <Box mt={4}>
+function SharingCheckboxInner(props: ISharingCheckboxProps): any {
+  const SSharingCheckbox = Box;
+  const { label, styles, ...other } = props;
+  return sstyled(styles)(
+    <SSharingCheckbox>
       <Checkbox>
         <Checkbox.Value {...other} />
         <Checkbox.Text>{label}</Checkbox.Text>
       </Checkbox>
-    </Box>
+    </SSharingCheckbox>,
   );
 }
 
-const ProjectCreateModal = createComponent<Merge<IProjectCreateModalProps, FormProps>>(
-  ProjectCreateModalRoot,
-);
+function ProjectCreateItem(props: IProjectCreateModalItemProps) {
+  const { styles } = useContext(ProjectCreateModal[CONTEXT_COMPONENT]);
+  return <ProjectCreateItemInner styles={styles} {...props} />;
+}
+
+function SharingCheckbox(props: ISharingCheckboxProps) {
+  const { styles } = useContext(ProjectCreateModal[CONTEXT_COMPONENT]);
+  return <SharingCheckboxInner styles={styles} {...props} />;
+}
+
+const ProjectCreateModal =
+  createComponent<Merge<IProjectCreateModalProps, FormProps>>(ProjectCreateModalRoot);
 
 export default ProjectCreateModal;

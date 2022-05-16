@@ -17,19 +17,16 @@ SLinkTrigger {
   overflow: visible;
   outline: 0;
   vertical-align: middle;
-  font-family: inherit;
+  font-family: Inter, sans-serif;
   cursor: pointer;
-}
-
-SLinkTrigger {
-  color: var(--denim-blue);
+  color: var(--blue-500);
   background: none;
   transition: color 0.15s ease-in-out;
 
   &[active],
   &:hover,
   &:active {
-    color: color-mod(var(--denim-blue) shade(12%));
+    color: var(--blue-600);
 
     & SText {
       border-color: currentColor;
@@ -41,6 +38,7 @@ SLinkTrigger {
     border-bottom-style: solid;
     border-color: transparent;
     transition: border-bottom-color 0.15s ease-in-out;
+    line-height: var(--lh-200);
   }
 }
 
@@ -59,7 +57,7 @@ SLinkTrigger[disabled] {
 }
 
 SLinkTrigger[keyboardFocused] {
-  box-shadow: var(--keyborad-focus);
+  box-shadow: var(--keyboard-focus);
   z-index: 1;
 }
 
@@ -80,24 +78,16 @@ SLinkAddon {
 }
 
 SLinkAddon {
-  width: 12px;
-  height: 12px;
-}
-
-SLinkTrigger[size='s'] {
-  font-size: 10px;
+  width: 16px;
+  height: 16px;
 }
 
 SLinkTrigger[size='m'] {
-  font-size: 12px;
+  font-size: var(--fs-200);
 }
 
 SLinkTrigger[size='l'] {
-  font-size: 14px;
-}
-
-SLinkTrigger[size='xl'] {
-  font-size: 16px;
+  font-size: var(--fs-300);
 }
 
 @media (prefers-reduced-motion) {

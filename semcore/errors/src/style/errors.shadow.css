@@ -13,30 +13,32 @@ SInner {
   flex-wrap: wrap;
   align-items: flex-start;
   box-sizing: border-box;
+}
 
-  @media (max-width: 920px) {
-    padding: 0 10px;
+SImageWrapper,
+SImage {
+  width: 260px;
+  height: 260px;
+  @media (max-width: 320px) {
+    width: 200px;
+    height: 200px;
   }
 }
 
 SImageWrapper {
-  width: 240px;
-  height: 240px;
-  margin-right: 80px;
+  margin-right: 40px;
 }
 
 SWrapper {
-  flex: 1 0 320px;
+  flex: 1 0 300px;
+  max-width: 100%;
   margin-top: 32px;
-  @media (max-width: 920px) {
-    flex: 1 0 300px;
-    max-width: 100%;
-  }
 }
 
 STitle {
   font-size: var(--fs-700);
   line-height: var(--lh-700);
+  color: var(--gray-800);
   font-weight: 700;
   margin: 0 0 16px 0;
 }
@@ -44,6 +46,7 @@ STitle {
 SDescription {
   font-size: var(--fs-300);
   line-height: var(--lh-300);
+  color: var(--gray-800);
   margin: 0 0 24px 0;
 }
 

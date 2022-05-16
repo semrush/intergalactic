@@ -14,10 +14,10 @@ export const SPIN_THEME_MAP = {
   'primary-warning': 'invert',
   'primary-danger': 'invert',
   'secondary-invert': 'invert',
-  'secondary-muted': 'gray40',
-  'secondary-info': 'light-blue',
+  'secondary-muted': 'gray-600',
+  'secondary-info': 'blue-400',
   'tertiary-invert': 'invert',
-  'tertiary-info': 'light-blue',
+  'tertiary-info': 'blue-400',
 };
 
 export default function SpinButton({ theme, size, ...others }) {

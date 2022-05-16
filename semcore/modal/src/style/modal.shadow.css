@@ -2,11 +2,12 @@
 
 SWindow {
   position: relative;
-  border-radius: 6px;
+  border-radius: var(--rounded-l);
   background: var(--white);
   box-sizing: border-box;
   margin: auto;
-  padding: 24px 32px 32px 32px;
+  padding: 40px;
+  box-shadow: 0 3px 8px color-mod(var(--gray-800) a(20%));
 
   &:focus {
     outline: none;
@@ -24,13 +25,13 @@ SOverlay {
   justify-content: center;
   align-items: center;
   padding: 40px;
-  background: rgba(0, 0, 0, 0.6);
+  background: color-mod(var(--gray-800) a(70%));
   overflow: auto;
   z-index: 10005;
   -webkit-overflow-scrolling: touch;
 
   & SOverlay {
-    background: rgba(0, 0, 0, 0.4);
+    background: color-mod(var(--gray-800) a(40%));
   }
 }
 
@@ -40,7 +41,7 @@ SClose {
   right: 0;
   top: 0;
   padding: 12px;
-  color: var(--stone);
+  color: var(--gray-300);
   cursor: pointer;
   z-index: 1;
   border: none;
@@ -48,12 +49,12 @@ SClose {
   outline: none;
 
   &:hover {
-    color: color-mod(var(--stone) shade(12%));
+    color: var(--gray-400);
   }
 }
 
 SClose[keyboardFocused] {
-  box-shadow: var(--keyborad-focus);
+  box-shadow: var(--keyboard-focus);
 }
 
 @media (max-width: 767px) {
@@ -62,6 +63,6 @@ SClose[keyboardFocused] {
   }
 
   SOverlay {
-    padding: 10px;
+    padding: 12px;
   }
 }

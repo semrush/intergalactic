@@ -136,7 +136,6 @@ class RadialTreeBase extends Component<RootAsProps> {
     duration: 300,
     centralMargin: 50,
     labelMargin: 2,
-    color: '#008FF8',
     iconColor: '#fff',
     capSize: 8,
     iconSize: 8,
@@ -577,8 +576,8 @@ type RadialTreeRadianLineAsProps = IRadialTreeRadianLineProps & {
   Element: React.FC<{ render: string } & React.SVGProps<any>>;
   styles: React.CSSProperties;
 };
-const Line: React.FC<RadialTreeRadianLineAsProps> = ({ Element: SLine, styles }) => {
-  return sstyled(styles)(<SLine render="line" />) as React.ReactElement;
+const Line: React.FC<RadialTreeRadianLineAsProps> = ({ Element: SLine, styles, stroke }) => {
+  return sstyled(styles)(<SLine render="line" stroke={stroke} />) as React.ReactElement;
 };
 
 export interface IRadialTreeRadianCapProps {

@@ -59,6 +59,6 @@ const data = Array(5)
   .fill({})
   .map((d, i) => ({
     category: `Category ${i}`,
-    bar1: Math.random().toFixed(1) * 10,
-    bar2: Math.random().toFixed(1) * 10,
+    bar1: Math.random() * 10,
+    bar2: Math.random() * 10,
   }));

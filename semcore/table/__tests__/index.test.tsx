@@ -104,6 +104,34 @@ describe('Table', () => {
     expect(await snapshot(component)).toMatchImageSnapshot();
   });
 
+  test('should support correct color theme', async () => {
+    const Component = ({ theme = 'default' }) => (
+      <Table>
+        <Table.Body>
+          <Table.Row theme={theme}>
+            <Table.Cell>cell 1</Table.Cell>
+          </Table.Row>
+          <Table.Row theme={theme} id="element">
+            <Table.Cell>cell 2</Table.Cell>
+          </Table.Row>
+        </Table.Body>
+      </Table>
+    );
+
+    expect(
+      await snapshot(<Component theme="info" />, { actions: { hover: '#element' } }),
+    ).toMatchImageSnapshot();
+    expect(
+      await snapshot(<Component theme="success" />, { actions: { hover: '#element' } }),
+    ).toMatchImageSnapshot();
+    expect(
+      await snapshot(<Component theme="warning" />, { actions: { hover: '#element' } }),
+    ).toMatchImageSnapshot();
+    expect(
+      await snapshot(<Component theme="danger" />, { actions: { hover: '#element' } }),
+    ).toMatchImageSnapshot();
+  });
+
   test('a11y', async () => {
     const { container } = render(
       <Table>

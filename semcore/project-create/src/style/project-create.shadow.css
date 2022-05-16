@@ -1,3 +1,40 @@
+@import '@semcore/utils/style/var.css';
+
 SProjectCreate {
   max-width: 400px;
+  color: var(--gray-800);
+}
+
+SIconInfo {
+  margin-right: 8px;
+  color: var(--gray-300);
+}
+
+SItem {
+  margin-top: 24px;
+}
+
+SLabel {
+  margin-bottom: 8px;
+  font-size: var(--fs-200);
+  line-height: var(--lh-200);
+}
+
+SSharingCheckbox {
+  margin-top: 24px;
+}
+
+SButtonSuccess {
+  margin-right: 12px;
+}
+
+STitle {
+  font-size: var(--fs-500);
+  font-family: FactorA-Bold, sans-serif;
+  line-height: var(--lh-500);
+}
+
+SDescription {
+  font-size: var(--fs-100);
+  line-height: var(--lh-100);
 }

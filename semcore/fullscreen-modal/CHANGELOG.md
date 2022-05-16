@@ -2,6 +2,14 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.0.0] - unreleased
+
+### BREAK
+
+- Remove support property `hidden` for `FullscreenModal`.
+- `Footer` now use inside component `Flex`
+- Updated styles according to the library redesign policy.
+
 ## [1.6.5] - 2022-05-16
 
 ### Changed

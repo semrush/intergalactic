@@ -21,6 +21,10 @@ export const generate = async (version: string) => {
   const aliases: { [aliased: string]: string[] } = JSON.parse(
     fs.readFileSync('./src/aliases.json', 'utf-8'),
   );
+  // Minimal size for png icon 14x11
+  const FLAG_SIZES = { 1: 16, 2: 32 };
+  // Offset for correct position icon
+  const OFFSET = { x: 1, y: 3 };
 
   for (const scaling of [1, 2]) {
     const spritesList = await fs.readdirSync(`png/${scaling}x`);
@@ -46,8 +50,14 @@ export const generate = async (version: string) => {
       }
     }
 
-    const partWidth = parts.reduce((width, part) => Math.max(width, part.image.width), 0);
-    const partHeight = parts.reduce((height, part) => Math.max(height, part.image.height), 0);
+    const partWidth = parts.reduce(
+      (width, part) => Math.max(width, part.image.width),
+      FLAG_SIZES[scaling],
+    );
+    const partHeight = parts.reduce(
+      (height, part) => Math.max(height, part.image.height),
+      FLAG_SIZES[scaling],
+    );
 
     const spriteUrl = `https://static.semrush.com/ui-kit/flags/${version}/sprite@${scaling}x.png`;
     const backgroundWidth = `${(spriteWidth * partWidth) / scaling}px`;
@@ -64,8 +74,8 @@ export const generate = async (version: string) => {
       const x = (i % spriteWidth) * partWidth;
       const y = Math.floor(i / spriteWidth) * partHeight;
       const { name, image } = parts[i];
-      const cssX = -x / scaling;
-      const cssY = -y / scaling;
+      const cssX = -x / scaling + OFFSET['x'];
+      const cssY = -y / scaling + OFFSET['y'];
       cssRules.push(
         `.flag-${name}-${versionHash} {\n  background-position: ${cssX}px ${cssY}px;\n}`,
       );

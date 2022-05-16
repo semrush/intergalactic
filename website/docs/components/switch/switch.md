@@ -16,7 +16,7 @@ It should be used in cases when on/off should occur instantly, without reloading
 
 @## Sizes and margins
 
-Our interface uses three switch sizes, which are xl, l and m. You can sign either one or both of the switch states with the label. At the same time, the enabled option always has the main color `$gray20`, and the disabled option has the secondary color `$gray60`.
+Our interface uses three switch sizes, which are xl, l and m. You can sign either one or both of the switch states with the label. At the same time, the enabled option always has the main color `--gray20`, and the disabled option has the secondary color `--gray60`.
 
 |     | Appearance and margins                     | Styles                                                                         |
 | --- | ------------------------------------------ | ------------------------------------------------------------------------------ |
@@ -52,7 +52,7 @@ The switch can be in one of three main states: off, on, and disabled. To change 
 | State    | Appearance                                                                            | Styles                                                   |
 | -------- | ------------------------------------------------------------------------------------- | -------------------------------------------------------- |
 | off      | ![off switch](static/off.png)                                                         | `background: rgba(0, 0, 0, 0.4);`                        |
-| on       | ![on switch](static/on-green.png) ![on switch](static/on-blue.png)                    | `background:$green` или `background: $light-blue`        |
+| on       | ![on switch](static/on-green.png) ![on switch](static/on-blue.png)                    | `background:--green` или `background: --light-blue`      |
 | disabled | ![disabled switch](static/disabled.png) ![disabled switch](static/disabled-green.png) | The transparency of the entire component changes by 30%. |
 
 @## Use in UX/UI
@@ -72,4 +72,5 @@ You can use a label without a verb in cases when:
 
 @page switch-a11y
 @page switch-api
+@page switch-code
 @page switch-changelog

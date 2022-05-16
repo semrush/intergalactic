@@ -35,10 +35,6 @@ describe('Checkbox', () => {
   test('Should support sizes', async () => {
     const component = (
       <snapshot.ProxyProps m="5px">
-        <Checkbox size="xl">
-          <Checkbox.Value />
-          <Checkbox.Text>Label</Checkbox.Text>
-        </Checkbox>
         <Checkbox size="l">
           <Checkbox.Value />
           <Checkbox.Text>Label</Checkbox.Text>
@@ -107,6 +103,63 @@ describe('Checkbox', () => {
         </Checkbox>
         <Checkbox state="invalid">
           <Checkbox.Value checked keyboardFocused />
+          <Checkbox.Text>Label</Checkbox.Text>
+        </Checkbox>
+      </snapshot.ProxyProps>
+    );
+
+    expect(await snapshot(component)).toMatchImageSnapshot();
+  });
+
+  test('Should support intermediate state', async () => {
+    const component = (
+      <snapshot.ProxyProps m="5px">
+        <Checkbox>
+          <Checkbox.Value indeterminate />
+          <Checkbox.Text>Label</Checkbox.Text>
+        </Checkbox>
+        <Checkbox>
+          <Checkbox.Value disabled indeterminate />
+          <Checkbox.Text>Label</Checkbox.Text>
+        </Checkbox>
+        <Checkbox>
+          <Checkbox.Value keyboardFocused indeterminate />
+          <Checkbox.Text>Label</Checkbox.Text>
+        </Checkbox>
+        <Checkbox>
+          <Checkbox.Value checked indeterminate />
+          <Checkbox.Text>Label</Checkbox.Text>
+        </Checkbox>
+        <Checkbox>
+          <Checkbox.Value checked disabled indeterminate />
+          <Checkbox.Text>Label</Checkbox.Text>
+        </Checkbox>
+        <Checkbox>
+          <Checkbox.Value checked keyboardFocused indeterminate />
+          <Checkbox.Text>Label</Checkbox.Text>
+        </Checkbox>
+        <Checkbox state="invalid">
+          <Checkbox.Value indeterminate />
+          <Checkbox.Text>Label</Checkbox.Text>
+        </Checkbox>
+        <Checkbox state="invalid">
+          <Checkbox.Value disabled indeterminate />
+          <Checkbox.Text>Label</Checkbox.Text>
+        </Checkbox>
+        <Checkbox state="invalid">
+          <Checkbox.Value keyboardFocused indeterminate />
+          <Checkbox.Text>Label</Checkbox.Text>
+        </Checkbox>
+        <Checkbox state="invalid">
+          <Checkbox.Value checked indeterminate />
+          <Checkbox.Text>Label</Checkbox.Text>
+        </Checkbox>
+        <Checkbox state="invalid">
+          <Checkbox.Value checked disabled indeterminate />
+          <Checkbox.Text>Label</Checkbox.Text>
+        </Checkbox>
+        <Checkbox state="invalid">
+          <Checkbox.Value checked keyboardFocused indeterminate />
           <Checkbox.Text>Label</Checkbox.Text>
         </Checkbox>
       </snapshot.ProxyProps>

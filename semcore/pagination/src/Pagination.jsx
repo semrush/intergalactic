@@ -7,9 +7,7 @@ import { Text } from '@semcore/typography';
 import Button from '@semcore/button';
 import Return from '@semcore/icon/Return/m';
 import ChevronDoubleLeft from '@semcore/icon/ChevronDoubleLeft/m';
-import fire from '@semcore/utils/lib/fire';
 import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
-import logger from '@semcore/utils/lib/logger';
 import de from './translations/de.json';
 import en from './translations/en.json';
 import es from './translations/es.json';
@@ -48,20 +46,27 @@ function formatThousands(value) {
 class PaginationRoot extends Component {
   static displayName = 'Pagination';
 
-  static defaultProps = () => ({
-    defaultCurrentPage: 1,
-    defaultTotalPages: 1,
-    i18n,
-    children: (
-      <>
-        <Pagination.FirstPage />
-        <Pagination.PrevPage />
-        <Pagination.NextPage />
-        <Pagination.PageInput />
-        <Pagination.TotalPages />
-      </>
-    ),
-  });
+  static defaultProps = (props) => {
+    const totalPages = props.totalPages || props.defaultTotalPages || 1;
+    return {
+      defaultCurrentPage: 1,
+      defaultTotalPages: 1,
+      i18n,
+      children: (
+        <>
+          {totalPages === 1 ? null : (
+            <>
+              <Pagination.FirstPage />
+              <Pagination.PrevPage />
+              <Pagination.NextPage />
+            </>
+          )}
+          <Pagination.PageInput />
+          <Pagination.TotalPages />
+        </>
+      ),
+    };
+  };
   static style = style;
   static enhance = [i18nEnhance()];
 
@@ -69,20 +74,6 @@ class PaginationRoot extends Component {
     // Crutch, so as not to take out `dirtyCurrentPage` in props
     dirtyCurrentPage: undefined,
   };
-
-  constructor(props) {
-    super(props);
-    logger.warn(
-      !!props.onPageChange,
-      'The property "onPageChange" is deprecated, use "onCurrentPageChange"',
-      props['data-ui-name'],
-    );
-    logger.warn(
-      !!props.totalPagesFormatter,
-      'The "totalPagesFormatter" property is deprecated, use the "<Pagination.TotalPages/>" component',
-      props['data-ui-name'],
-    );
-  }
 
   uncontrolledProps() {
     return {
@@ -92,7 +83,7 @@ class PaginationRoot extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (prevProps.currentPage !== this.asProps.currentPage) {
+    if (prevProps.currentPage !== undefined && prevProps.currentPage !== this.asProps.currentPage) {
       this.setState({ dirtyCurrentPage: undefined });
     }
   }
@@ -102,12 +93,8 @@ class PaginationRoot extends Component {
     if (Number.isNaN(currentPage)) {
       return;
     }
-
     this.handlers.currentPage(currentPage);
-    this.setState({ dirtyCurrentPage: undefined }, () => {
-      // deprecated
-      fire(this, 'onPageChange', currentPage);
-    });
+    this.setState({ dirtyCurrentPage: undefined });
   };
 
   handlePageValueChange = (value) => {
@@ -188,7 +175,6 @@ class PaginationRoot extends Component {
   getPageInputValueProps = () => {
     const { dirtyCurrentPage } = this.state;
     const { currentPage, totalPages, getI18nText } = this.asProps;
-
     return {
       min: 1,
       max: totalPages,
@@ -201,10 +187,9 @@ class PaginationRoot extends Component {
   };
 
   getTotalPagesProps = () => {
-    const { currentPage, totalPages, totalPagesFormatter, getI18nText } = this.asProps;
+    const { currentPage, totalPages, getI18nText } = this.asProps;
     return {
-      // deprecated
-      children: totalPagesFormatter ? totalPagesFormatter(totalPages) : formatThousands(totalPages),
+      children: formatThousands(totalPages),
       disabled: currentPage === totalPages,
       onClick: () => this.handlePageChange(totalPages),
       getI18nText,
@@ -258,18 +243,12 @@ class TotalPages extends Component {
   render() {
     const STotalPages = Root;
     const STotalPagesLabel = Text;
-    const { styles, label, getI18nText } = this.asProps;
-
-    logger.warn(
-      !!label,
-      '"Label" property is deprecated, use i118n to override text',
-      this.asProps['data-ui-name'],
-    );
+    const { styles, getI18nText } = this.asProps;
 
     return sstyled(styles)(
       <>
-        <STotalPagesLabel size={100}>{label || getI18nText('totalPagesLabel')}</STotalPagesLabel>
-        <STotalPages render={Link} tag="button" type="button" size={100} />
+        <STotalPagesLabel>{getI18nText('totalPagesLabel')}</STotalPagesLabel>
+        <STotalPages render={Link} tag="button" type="button" />
       </>,
     );
   }
@@ -280,31 +259,32 @@ const PageInputValue = (props) => {
   return sstyled(props.styles)(<SPageInputValue render={Input.Value} aria-label="Current page" />);
 };
 
-class PageInput extends Component {
-  static defaultProps = () => ({
-    children: (
-      <>
-        <Pagination.PageInput.Value />
-        <Pagination.PageInput.Addon tag={Return} interactive />
-      </>
-    ),
-  });
+const PageInputAddon = (props) => {
+  const SPageInputAddon = Root;
+  return sstyled(props.styles)(<SPageInputAddon render={Input.Addon} />);
+};
 
+class PageInput extends Component {
   render() {
     const SPageInput = Root;
     const SLabel = Text;
-    const { label, getI18nText, styles } = this.asProps;
-
-    logger.warn(
-      !!label,
-      '"Label" property is deprecated, use i118n to override text',
-      this.asProps['data-ui-name'],
-    );
+    const { Children, getI18nText, styles } = this.asProps;
 
     return sstyled(styles)(
       <>
-        <SLabel size={100}>{label || getI18nText('pageInputLabel')}</SLabel>
-        <SPageInput render={Input} />
+        <SLabel>{getI18nText('pageInputLabel')}</SLabel>
+        <SPageInput render={Input} controlsLength={Children.origin ? undefined : 2}>
+          {Children.origin ? (
+            <Children />
+          ) : (
+            <>
+              <Pagination.PageInput.Value />
+              <Pagination.PageInput.Addon interactive>
+                <Return />
+              </Pagination.PageInput.Addon>
+            </>
+          )}
+        </SPageInput>
       </>,
     );
   }
@@ -319,7 +299,7 @@ const Pagination = createComponent(PaginationRoot, {
     PageInput,
     {
       Value: PageInputValue,
-      Addon: Input.Addon,
+      Addon: PageInputAddon,
     },
   ],
 });

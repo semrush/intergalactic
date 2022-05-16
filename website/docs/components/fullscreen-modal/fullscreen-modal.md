@@ -48,7 +48,7 @@ border-bottom: 1px solid var(–gray80);
 ![fullscreem modal header margins](static/fullscreen-modal-divider.png)
 
 - Window subtitles must be less than h4/h3 (`--fs-500`/`--fs-400`) to maintain hierarchy in the content.
-- If there is an area with colorgray baseplate, its color is `--gray94` (`#eee`).
+- If there is an area with colorgray baseplate, its color is `--gray-100` (`#eee`).
 - Full-screen modal window can be single-zone and dual-zone.
 
 | Single-zone modal window                           | Dual-zone modal window                             |
@@ -71,7 +71,7 @@ The window-closing button must have a left external margin of 24px.
 
 - The size of the main window controls (submit, switching between windows) is L (32px).
 - If a scroll appears in the content inside the window, the buttons may be fixed at the bottom of the window in case of scrolling.
-- The height of the area under the button is 56px. The spacer should have the 1px solid `#CCCCCC` (`--gray80`) border at the top.
+- The height of the area under the button is 56px. The spacer should have the 1px solid `#CCCCCC` (`--gray-200`) border at the top.
 
 > 💡 Note that the example below shows a default composition of all elements that can be changed. This means that the controls may not be in the center, they can be on the right, for example. Everything depends on the user’s flow and the number of controls.
 

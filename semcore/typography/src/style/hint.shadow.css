@@ -2,31 +2,23 @@
 
 SHint {
   display: inline-block;
-  outline: none;
   transition: all 0.15s ease-in-out;
   text-decoration: none;
+  outline: none;
   cursor: pointer;
-  color: var(--gray60);
-
-  &[active],
-  &:active,
-  &:hover,
-  &:focus {
-    outline: 0;
-    text-decoration: none;
-  }
+  color: var(--gray-500);
 }
 
 SHint {
   &[active],
+  &:active,
   &:hover {
-    color: color-mod(var(--gray60) shade(12%));
-    text-decoration: none;
+    color: var(--gray-600);
   }
 }
 
 SHint[keyboardFocused] {
-  box-shadow: var(--keyborad-focus);
+  box-shadow: var(--keyboard-focus);
 }
 
 SHint[disabled] {
@@ -37,7 +29,7 @@ SHint[disabled] {
 
 SAddon {
   vertical-align: middle;
-  margin-top: -4px;
+  display: inline-flex;
 }
 
 SHint SAddon {
@@ -46,13 +38,13 @@ SHint SAddon {
   }
 
   &:not(:only-child):last-child {
-    margin-left: 8px;
+    margin-left: 4px;
   }
 }
 
 SText {
   border-bottom-width: 1px;
-  border-bottom-style: dotted;
+  border-bottom-style: dashed;
   border-color: currentColor;
 }
 
