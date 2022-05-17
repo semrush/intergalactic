@@ -151,5 +151,28 @@ export const makeVersionPatches = (packages: Package[]) => {
     }
   }
 
-  return versionPatches;
+  const transitDependencies: { [packageName: string]: Set<string> } = {};
+  const addTransitDependencies = (to: string, by: string) => {
+    const dependencies = packagesMap.get(by).dependencies;
+    for (const dependency in dependencies) {
+      if (transitDependencies[to].has(dependency)) return;
+      transitDependencies[to].add(dependency);
+      addTransitDependencies(to, dependency);
+    }
+  };
+  for (const { name } of packages) {
+    transitDependencies[name] = new Set();
+    addTransitDependencies(name, name);
+  }
+
+  const sortedPatches = versionPatches.sort((a, b) => {
+    const aName = a.package.name;
+    const bName = b.package.name;
+
+    if (transitDependencies[aName].has(bName)) return 1;
+    if (transitDependencies[bName].has(aName)) return -1;
+    return Math.random() > 0.5 ? 1 : -1; // unstable sorting to ensure all patches are compared (in O(n^2) but n is limited))
+  });
+
+  return sortedPatches;
 };
