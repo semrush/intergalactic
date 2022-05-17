@@ -6,6 +6,10 @@ title: Example
 
 @example basic
 
+@## Advanced example
+
+@example fullset
+
 @## Advanced example, access to internal components
 
 You can access the internal components by deploying `SideBar` at `Overlay/Panel/Close`.

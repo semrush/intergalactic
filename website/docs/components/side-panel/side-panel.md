@@ -4,6 +4,8 @@ fileSource: side-panel
 tabName: Design
 ---
 
+> In the last update, component was divided into three parts: `Header`,`Body` and `Footer`. This was done to make it easier to use the restyling component. Also, got an optional `Back` button
+
 @## Description
 
 **SidePanel** is a component for displaying the sliding panel (from the right, from the bottom or from the left). Sometimes we call it "panel" or drawer.
