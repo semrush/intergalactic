@@ -2,7 +2,7 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [5.0.0] - unreleased
+## [5.0.0] - 2022-05-17
 
 ### BREAK
 
@@ -75,7 +75,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Moved chart colors vars to style
 
-## [4.3.0] - unreleased
+## [4.3.0] - 2021-12-07
 
 ### Changed
 
