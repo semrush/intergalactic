@@ -4,7 +4,7 @@ import ReactMarkdown from 'react-markdown';
 import Tag from '@semcore/tag';
 import { Text } from '@semcore/typography';
 
-const List = styled.ul`
+export const List = styled.ul`
   padding: 0;
   list-style: none;
   margin: 0 0 20px 0;
@@ -30,6 +30,7 @@ function capitalizeFirstLetter(string) {
 }
 
 function getLabel(tag) {
+  if (!tag) return null;
   let label = <strong>{tag}</strong>;
   switch (tag) {
     case 'Added':
@@ -66,17 +67,24 @@ function getLabel(tag) {
   return label;
 }
 
+export function renderListItem({ labelText, text }) {
+  return (
+    <ListItem>
+      {getLabel(labelText)}
+      <div>{text}</div>
+    </ListItem>
+  );
+}
+
 class Changelog extends React.Component {
   renderers() {
     return {
       list: (props) => <List {...props} />,
       listItem: function ({ children }) {
-        return (
-          <ListItem>
-            {getLabel(children[0]?.props?.children[0]?.props?.children)}
-            <div>{children[1]}</div>
-          </ListItem>
-        );
+        return renderListItem({
+          labelText: children[0]?.props?.children[0]?.props?.children,
+          text: children[1],
+        });
       },
       heading: function ({ level, children }) {
         if (level === 2) {
