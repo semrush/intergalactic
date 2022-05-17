@@ -1,5 +1,5 @@
 */
 !__tests__
-yarn.lock
+pnpm-lock.yaml
 # Env variable
 .env

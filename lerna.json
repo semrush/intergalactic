@@ -3,7 +3,7 @@
   "packages": ["tools/*", "semcore/*"],
   "command": {
     "run": {
-      "npmClient": "yarn"
+      "npmClient": "pnpm"
     }
   },
   "useWorkspaces": true,

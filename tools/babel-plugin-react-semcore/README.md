@@ -4,10 +4,10 @@ Utility for `@semcore` component's styles manipulations.
 
 ## Install
 
-yarn:
+pnpm:
 
 ```shell
-$ yarn add @semcore/babel-plugin-react-semcore -D
+$ pnpm add @semcore/babel-plugin-react-semcore -D
 ```
 
 ## Usage

@@ -8,6 +8,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - uses: pnpm/action-setup@v2.1.0
+        with:
+          version: 7.0.0
       - uses: actions/setup-node@v2
       - name: Cache node modules
         uses: actions/cache@v2
@@ -17,10 +20,10 @@ jobs:
             node_modules
             */*/node_modules
             website/node_modules
-          key: modules-${{ runner.os }}-${{ hashFiles('yarn.lock') }}--${{ hashFiles('website/yarn.lock') }}
+          key: modules-${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml') }}--${{ hashFiles('website/pnpm-lock.yaml') }}
       - name: Install dependencies
         if: steps.cache-modules.outputs.cache-hit != 'true'
-        run: yarn --non-interactive --frozen-lockfile
+        run: pnpm install --frozen-lockfile
       - name: get release pull request name
         run: |
           echo "release_branch_name=${{ github.event.client_payload.pull_request.head.ref }}" >> $GITHUB_ENV
@@ -43,12 +46,13 @@ jobs:
           git checkout "${{ env.release_branch_name }}"
       - name: build components
         run: |
-          yarn build
+          pnpm install --frozen-lockfile
+          pnpm build
       - name: build @semcore/ui
         run: |
           cd semcore/ui
-          yarn install
-          yarn generate
+          pnpm install
+          pnpm generate
       - name: NPM setup
         run: |
           echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" >> ".npmrc"
@@ -57,7 +61,7 @@ jobs:
           SLACK_API_ENDPOINTS: ${{ secrets.SLACK_WEBHOOK_URLS }}
           SCREENSHOT_URL: ${{ secrets.SCREENSHOT_URL }}
         run: |
-          yarn pub --package ui --release current
+          pnpm pub --package ui --release current
       - name: add github release record
         run: |
           version="$(cat semcore/ui/package.json | jq -r .version)"

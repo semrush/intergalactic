@@ -14,14 +14,14 @@ const REGISTRY_URL = 'https://registry.npmjs.org/';
 const EXPORT_DEFAULT_REG = /export ({ default }|default)/gm;
 
 const removeDirectory = async () => {
-  const toRemove = [...glob.sync('!(*.*|__tests__)', { onlyDirectories: true }), 'yarn.lock'];
+  const toRemove = [...glob.sync('!(*.*|__tests__)', { onlyDirectories: true }), 'pnpm-lock.yaml'];
   try {
     await Promise.all(toRemove.map((filePath) => fs.remove(path.resolve(dirname, filePath))));
   } catch (e) {}
 };
 
 const installComponents = (packages: string[]) => {
-  execSync(`npm_config_registry=${REGISTRY_URL} yarn add ${packages.join(' ')} --exact`, {
+  execSync(`npm_config_registry=${REGISTRY_URL} pnpm add ${packages.join(' ')} --exact`, {
     stdio: 'inherit',
     cwd: dirname,
   });
@@ -225,7 +225,7 @@ await removeDirectory();
 await installComponents(components.packages);
 await generateFiles(components.packages);
 
-execSync('yarn test', {
+execSync('pnpm test', {
   stdio: 'inherit',
   cwd: dirname,
 });

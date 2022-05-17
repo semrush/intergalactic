@@ -33,7 +33,7 @@ export const selectPackageTask = createTask('Choose package', async (opt, args) 
       const argsStart = parentArgs.findIndex((arg) => arg.startsWith('-'));
       const usedArgs = parentArgs.slice(argsStart);
 
-      return execa('yarn', ['pub', ...usedArgs, '--package', component], {
+      return execa('pnpm', ['pub', ...usedArgs, '--package', component], {
         stdin: 'inherit',
         stdout: 'inherit',
       });
