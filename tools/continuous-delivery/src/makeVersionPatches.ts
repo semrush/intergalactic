@@ -207,7 +207,7 @@ const reversedTopologicalSort = (patches: VersionPatch[]) => {
       if (patchLowLink.get(patch) === patchIndex.get(patch)) {
         let dependantPatch: VersionPatch | null = null;
         let priority = 0;
-        while (dependantPatch !== patch) {
+        while (stack.length > 0) {
           dependantPatch = stack.pop();
           onStack.set(dependantPatch, false);
           priority += patchLowLink.get(dependantPatch);
