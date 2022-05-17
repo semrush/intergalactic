@@ -2,17 +2,17 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.0.0] - 2022-05-17
+
+### BREAK
+
+- Updated styles according to the library redesign policy.
+
 ## [2.2.9] - 2022-05-16
 
 ### Changed
 
 - Version patch update due to children dependencies update (`@semcore/skeleton` [3.2.1 ~> 3.3.0]).
-
-## [3.0.0] - unreleased
-
-### BREAK
-
-- Updated styles according to the library redesign policy.
 
 ## [2.2.8] - 2022-05-16
 
