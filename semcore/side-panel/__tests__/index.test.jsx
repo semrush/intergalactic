@@ -114,6 +114,17 @@ describe('SidePanel', () => {
     expect(document.body).not.toHaveStyle('overflow: hidden');
   });
 
+  test('Close icon should support hover', async () => {
+    expect(
+      await snapshot(
+        <SidePanel disablePortal visible>
+          <SidePanel.Close id="close" />
+        </SidePanel>,
+        { selector: 'body', width: 320, height: 100, actions: { hover: '#close' } },
+      ),
+    ).toMatchImageSnapshot();
+  });
+
   test('Should correctly render', async () => {
     const Component = (
       <SidePanel disablePortal visible>
