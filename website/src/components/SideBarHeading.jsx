@@ -62,8 +62,6 @@ const ButtonUp = styled.span`
 function SideBarHeading({ headings }) {
   const [activeId, setActiveId] = React.useState(headings.length ? headings[0].id : undefined);
 
-  console.log({ headings, activeId });
-
   React.useEffect(() => {
     const links = headings.map((heading) => document.querySelector(`#${heading.id}`)).reverse();
     const handleScroll = trottle(() => {
