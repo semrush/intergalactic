@@ -90,9 +90,6 @@ SClose {
   cursor: pointer;
   position: absolute;
   z-index: 1;
-}
-
-SClose {
   display: inline-flex;
   right: 0;
   top: 0;

@@ -2,6 +2,22 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.0.0] - 2022-05-17
+
+### Added
+
+- Added children components `Header, Footer, Body, Back, Title` for `SidePanel`.
+
+### BREAK
+
+- Updated styles according to the library redesign policy.
+
+## [1.3.8] - 2022-05-16
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/icon` [2.21.0 ~> 2.24.0]).
+
 ## [1.3.7] - 2022-04-28
 
 ### Changed
