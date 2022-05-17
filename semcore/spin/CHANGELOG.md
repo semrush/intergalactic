@@ -4,13 +4,13 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ## [4.0.0] - 2022-05-17
 
-### Removed
-
-- Removed size `xxs`.
-
 ### BREAK
 
 - Updated styles according to the library redesign policy.
+
+### Removed
+
+- Removed size `xxs`.
 
 ## [3.4.1] - 2022-03-14
 
