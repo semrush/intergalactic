@@ -150,8 +150,8 @@ export const makeVersionPatches = (packages: Package[]) => {
       }
     }
   }
+
   const sortedPatches = reversedTopologicalSort(versionPatches);
-  process.exit();
 
   return sortedPatches;
 };
