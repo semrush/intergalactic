@@ -64,7 +64,7 @@ export const upload = async (
   {
     uploadSrcBaseDir,
     destinationSubDir,
-  }: { uploadSrcBaseDir?: string; destinationSubDir?: string },
+  }: { uploadSrcBaseDir?: string; destinationSubDir?: string } = {},
 ) => {
   if (!filePaths || !filePaths.length) {
     throw new Error(

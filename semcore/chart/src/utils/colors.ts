@@ -1,8 +1,5 @@
 import logger from '@semcore/utils/lib/logger';
 
-declare global {
-  const preval: (toEval: TemplateStringsArray) => unknown;
-}
 type Colors = { [colorName: string | symbol]: string };
 
 /*__semcore-vars__:"../style/var.css"*/
