@@ -19,6 +19,7 @@ SPanel {
   flex-direction: column;
   width: 260px;
   outline: none;
+  font-family: Inter, sans-serif;
   position: fixed;
   box-sizing: border-box;
   will-change: transform;
@@ -95,7 +96,7 @@ SClose {
   display: inline-flex;
   right: 0;
   top: 0;
-  padding: 15px 19px 15px 15px;
+  padding: 12px 12px 16px 12px;
   color: var(--gray-300);
   border: none;
   background: none;
@@ -107,7 +108,7 @@ SClose {
 }
 
 SClose[keyboardFocused] {
-  box-shadow: var(--keyborad-focus);
+  box-shadow: var(--keyboard-focus);
 }
 
 SBack {
@@ -116,6 +117,7 @@ SBack {
   color: var(--gray-500);
   font-size: var(--fs-100);
   line-height: var(--lh-100);
+  margin-bottom: 4px;
   cursor: pointer;
 
   &:hover {
@@ -125,7 +127,7 @@ SBack {
 
 SBackText {
   margin-left: 4px;
-  font-size: var(--fs-200);
+  font-size: var(--fs-100);
   line-height: var(--lh-200);
   white-space: nowrap;
   overflow: hidden;
@@ -145,7 +147,7 @@ STitle {
 SHeader {
   padding-left: 24px;
   padding-bottom: 4px;
-  padding-right: 48px;
+  padding-right: 56px;
   padding-top: 4px;
   min-height: 52px;
   box-shadow: inset 0 -1px 0 var(--gray-200);
@@ -159,11 +161,10 @@ SFooter {
 }
 
 SBody {
-  display: flex;
   height: 100%;
   overflow: auto;
   padding-left: 24px;
   padding-bottom: 4px;
-  padding-right: 19px;
-  padding-top: 4px;
+  padding-right: 40px;
+  padding-top: 16px;
 }
