@@ -150,29 +150,82 @@ export const makeVersionPatches = (packages: Package[]) => {
       }
     }
   }
-
-  const transitDependencies: { [packageName: string]: Set<string> } = {};
-  const addTransitDependencies = (to: string, by: string) => {
-    const dependencies = packagesMap.get(by).dependencies;
-    for (const dependency in dependencies) {
-      if (transitDependencies[to].has(dependency)) return;
-      transitDependencies[to].add(dependency);
-      addTransitDependencies(to, dependency);
-    }
-  };
-  for (const { name } of packages) {
-    transitDependencies[name] = new Set();
-    addTransitDependencies(name, name);
-  }
-
-  const sortedPatches = versionPatches.sort((a, b) => {
-    const aName = a.package.name;
-    const bName = b.package.name;
-
-    if (transitDependencies[aName].has(bName)) return 1;
-    if (transitDependencies[bName].has(aName)) return -1;
-    return Math.random() > 0.5 ? 1 : -1; // unstable sorting to ensure all patches are compared (in O(n^2) but n is limited))
-  });
+  const sortedPatches = reversedTopologicalSort(versionPatches);
+  process.exit();
 
   return sortedPatches;
+};
+
+const reversedTopologicalSort = (patches: VersionPatch[]) => {
+  const patchesMap = new Map<string, VersionPatch>();
+  const rootPatches = new Set(patches);
+  for (const patch of patches) {
+    patchesMap.set(patch.package.name, patch);
+  }
+  for (const patch of patches) {
+    for (const dependency in patch.package.dependencies) {
+      rootPatches.delete(patchesMap.get(dependency));
+    }
+  }
+  const sumPatchPriority = new Map<VersionPatch, number>();
+
+  for (const rootPatch of rootPatches) {
+    // Tarjan algo. Only difference that we already know root.
+    // https://en.wikipedia.org/wiki/Tarjan%27s_strongly_connected_components_algorithm
+
+    const patchIndex = new Map<VersionPatch, number>();
+    const patchPriority = new Map<VersionPatch, number>();
+    const patchLowLink = new Map<VersionPatch, number>();
+    let index = 0;
+    const stack: VersionPatch[] = [];
+    const onStack = new Map<VersionPatch, boolean>();
+
+    const strongconnect = (patch: VersionPatch) => {
+      patchIndex.set(patch, index);
+      patchLowLink.set(patch, index);
+      index++;
+      stack.push(patch);
+      onStack.set(patch, true);
+
+      for (const dependency in patch.package.dependencies) {
+        const dependantPatch = patchesMap.get(dependency);
+        if (!dependantPatch) continue;
+        if (!patchIndex.has(dependantPatch)) {
+          strongconnect(dependantPatch);
+          patchLowLink.set(
+            patch,
+            Math.min(patchLowLink.get(patch), patchLowLink.get(dependantPatch)),
+          );
+        } else if (onStack.get(dependantPatch)) {
+          patchLowLink.set(
+            patch,
+            Math.min(patchLowLink.get(patch), patchIndex.get(dependantPatch)),
+          );
+        }
+      }
+
+      if (patchLowLink.get(patch) === patchIndex.get(patch)) {
+        let dependantPatch: VersionPatch | null = null;
+        let priority = 0;
+        while (dependantPatch !== patch) {
+          dependantPatch = stack.pop();
+          onStack.set(dependantPatch, false);
+          priority += patchLowLink.get(dependantPatch);
+        }
+        priority += patchLowLink.get(patch);
+        patchPriority.set(patch, priority);
+      }
+    };
+
+    strongconnect(rootPatch);
+
+    for (const patch of patches) {
+      sumPatchPriority.set(
+        patch,
+        (sumPatchPriority.get(patch) || 0) + (patchPriority.get(patch) || 0),
+      );
+    }
+  }
+
+  return [...patches].sort((a, b) => sumPatchPriority.get(b) - sumPatchPriority.get(a));
 };
