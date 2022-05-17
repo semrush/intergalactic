@@ -16,8 +16,7 @@
     "experimentalDecorators": true,
     "resolveJsonModule": true,
     "baseUrl": "./semcore",
-    "typeRoots": ["node_modules/@types", "tools/@types"],
-    "plugins": [{ "name": "typescript-workspace-plugin" }]
+    "typeRoots": ["node_modules/@types", "tools/@types"]
   },
   "paths": {
     "@semcore/*": ["semcore/*"],

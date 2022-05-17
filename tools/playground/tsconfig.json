@@ -18,7 +18,6 @@
     "noImplicitAny": true,
     "baseUrl": "./semcore",
     "plugins": [
-      { "name": "typescript-workspace-plugin" },
       {
         "name": "typescript-plugin-css-modules",
         "options": {

@@ -26,7 +26,7 @@ Our release cycle is **2 weeks**. That means that every two weeks we collect the
 Install a new package and its dependencies will include all library components:
 
 ```bash
-yarn add @semcore/ui
+pnpm add @semcore/ui
 ```
 
 All components inside the package are divided into folders and can perform a re-export of actual components.

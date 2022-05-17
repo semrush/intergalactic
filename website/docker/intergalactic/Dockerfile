@@ -7,9 +7,9 @@ WORKDIR /app
 
 # for cached node_modules
 COPY package.json ./
-COPY yarn.lock ./
+COPY pnpm-lock.yaml ./
 #COPY node_modules ./node_modules
-RUN yarn install --production --silent --non-interactive --frozen-lockfile
+RUN pnpm install --silent  --frozen-lockfile
 
 # for cached server
 COPY dist ./dist
@@ -18,7 +18,7 @@ COPY server ./server
 #COPY nest-cli.json ./nest-cli.json
 #COPY tsconfig.json ./tsconfig.json
 #COPY tsconfig.build.json ./tsconfig.build.json
-#RUN yarn build:server
+#RUN pnpm build:server
 
 # for cached docs
 COPY docs ./docs
@@ -26,15 +26,15 @@ COPY docs ./docs
 # for cached client
 COPY client/dist ./client/dist
 #COPY webpack.config.js ./webpack.config.js
-#RUN yarn build:client
+#RUN pnpm build:client
 
 # for cached interface
 COPY ts.json ./ts.json
 COPY .env ./.env
 #COPY processingTS.js ./processingTS.js
-#RUN yarn build:interface
+#RUN pnpm build:interface
 
-#RUN yarn build:server & yarn build:client & yarn build:interface
+#RUN pnpm build:server & pnpm build:client & pnpm build:interface
 
 EXPOSE 3000
 CMD NODE_ENV=production node ./dist/main.js

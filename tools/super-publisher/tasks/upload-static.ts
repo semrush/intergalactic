@@ -11,7 +11,7 @@ export const uploadStaticTask = createTask('Upload static', async (opt) => {
   if (pkg?.scripts?.['upload-static']) {
     opt.log('Running upload-static script');
     if (!opt.dryRun) {
-      await execa('yarn', ['upload-static'], { cwd: opt.root, stdio: 'inherit' });
+      await execa('pnpm', ['upload-static'], { cwd: opt.root, stdio: 'inherit' });
     }
   }
 
