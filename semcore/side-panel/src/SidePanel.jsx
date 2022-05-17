@@ -135,6 +135,11 @@ const TransformWrapper = React.forwardRef(function ({ tag, ...other }, ref) {
 function Panel(props) {
   const SPanel = Root;
   const { Children, styles, visible, closable, placement, onOutsideClick } = props;
+  const advanceMode = isAdvanceMode(Children, [
+    SidePanel.Header.displayName,
+    SidePanel.Body.displayName,
+    SidePanel.Footer.displayName,
+  ]);
 
   const sidebarRef = useRef(null);
 
@@ -152,7 +157,13 @@ function Panel(props) {
       >
         <PortalProvider value={sidebarRef}>
           {closable && <SidePanel.Close />}
-          <Children />
+          {advanceMode ? (
+            <Children />
+          ) : (
+            <SidePanel.Body>
+              <Children />
+            </SidePanel.Body>
+          )}
         </PortalProvider>
       </SPanel>
     </>,

@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { ComponentProps } from 'react';
 import { IPortalProps } from '@semcore/portal';
 import { IFadeInOutProps, ITransformProps } from '@semcore/animation';
 import { CProps, PropGetterFn, ReturnEl } from '@semcore/core';
-import { Box, IBoxProps } from '@semcore/flex-box';
+import { Box, IBoxProps, Flex } from '@semcore/flex-box';
+import { Text } from '@semcore/typography';
 
 export type OnCloseTriggerType = 'onOutsideClick' | 'onEscape' | 'onCloseClick';
 export type OnCloseType = (
@@ -49,9 +50,18 @@ export interface ISidePanelContext {
   getCloseProps?: PropGetterFn;
 }
 
+export interface ISidePanelHeaderProps extends IBoxProps {
+  title?: React.ReactNode;
+}
+
 declare const SidePanel: (<T>(
   props: CProps<ISidePanelProps & T, ISidePanelContext>,
 ) => ReturnEl) & {
+  Header: <T>(props: ISidePanelHeaderProps & T) => ReturnEl;
+  Back: <T>(props: ComponentProps<typeof Box> & T) => ReturnEl;
+  Body: <T>(props: ComponentProps<typeof Box> & T) => ReturnEl;
+  Footer: <T>(props: ComponentProps<typeof Flex> & T) => ReturnEl;
+  Title: <T>(props: ComponentProps<typeof Text> & T) => ReturnEl;
   Overlay: <T>(props: ISidePanelOverlayProps & T) => ReturnEl;
   Panel: <T>(props: ISidePanelPanelProps & T) => ReturnEl;
   Close: typeof Box;
