@@ -1,8 +1,8 @@
 @import '@semcore/utils/style/var.css';
 
 SText {
-  margin: 0;
   padding: 0;
+  margin: 0;
 }
 
 SText[size='100'] {

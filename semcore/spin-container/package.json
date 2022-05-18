@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "@semcore/utils": "^3.31",
-    "@semcore/spin": "^3",
+    "@semcore/spin": "^4",
     "@semcore/flex-box": "^4",
     "@semcore/animation": "^1"
   },
