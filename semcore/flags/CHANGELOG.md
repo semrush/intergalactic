@@ -8,8 +8,6 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Changed size flags from 14x11 to 16x16.
 
-### Changed
-
 ## [2.2.5] - 2022-03-14
 
 ### Changed
