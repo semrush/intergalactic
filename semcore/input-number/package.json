@@ -1,7 +1,7 @@
 {
   "name": "@semcore/input-number",
   "description": "SEMRush InputNumber Component",
-  "version": "3.0.6",
+  "version": "4.0.0",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "@semcore/utils": "^3.15",
-    "@semcore/input": "^2"
+    "@semcore/input": "^3.0.0"
   },
   "peerDependencies": {
     "@semcore/core": "^1.11",
