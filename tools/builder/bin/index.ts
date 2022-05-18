@@ -1,9 +1,9 @@
 #!/usr/bin/env tsm
 
 import execa from 'execa';
-import minimist from 'minimist';
+import mri from 'mri';
 
-const argv = minimist<{
+const argv = mri<{
   source: string;
 }>(process.argv.slice(2), {
   default: {
