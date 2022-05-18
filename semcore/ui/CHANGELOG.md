@@ -127,9 +127,9 @@
 
 - **Added** Added `coffee`/`heat-map-chart`/`kagi-chart`/`radial-tree-chart`/`suggestion`/`under-construction` illustrations.
 
-### @semcore/inline-edit
+### @semcore/inline-input
 
-- **Fixed** Synced dependencies versions to remove duplicates in the single export package.
+- **Changed** Moved all color definitions to themable styles.
 
 ### @semcore/utils
 
