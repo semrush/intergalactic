@@ -6,7 +6,6 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Added
 
-- Added icon `Kebab`.
 - Added icon `GoogleCloud`.
 - Added icon `Kebab`.
 
