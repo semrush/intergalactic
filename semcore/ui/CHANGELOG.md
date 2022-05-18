@@ -107,6 +107,19 @@
 
 - **BREAK** Changed size flags from 14x11 to 16x16.
 
+### @semcore/spin
+
+- **BREAK** Removed size `xxs`.
+
+### @semcore/icon
+
+- **BREAK** Removed icons `UserGroupNo, UserShared`.
+- **Added** Added icon `GoogleCloud`.
+- **Added** Added icon `UserShared`.
+- **Changed** Update pay icons `Visa, JCB`.
+- **Added** Added icons `IndentedResult, UserSharedFirst`.
+- **Changed** Changed icon `UserGroup`.
+
 ### @semcore/side-panel
 
 - **Added** Added children components `Header, Footer, Body, Back, Title` for `SidePanel`.
@@ -115,28 +128,11 @@
 
 - **Added** Added skeleton for Radial Tree chart.
 
-### @semcore/spin
-
-- **Removed** Removed size `xxs`.
-
 ### @semcore/widget-empty
 
 - **Added** Added `coffee`/`heat-map-chart`/`kagi-chart`/`radial-tree-chart`/`suggestion`/`under-construction` illustrations.
 
-### @semcore/flex-box
-
-- **Fixed** Synced dependencies versions to remove duplicates in the single export package.
-
-### @semcore/icon
-
-- **Added** Added icon `GoogleCloud`.
-- **Added** Added icon `UserShared`.
-- **Changed** Update pay icons `Visa, JCB`.
-- **Added** Added icons `IndentedResult, UserSharedFirst`.
-- **Changed** Changed icon `UserGroup`.
-- **Removed** Removed icons `UserGroupNo, UserShared`.
-
-### @semcore/popper
+### @semcore/inline-edit
 
 - **Fixed** Synced dependencies versions to remove duplicates in the single export package.
 
