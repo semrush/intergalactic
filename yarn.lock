@@ -2983,76 +2983,10 @@
     string-hash "^1.1.3"
     svg-tag-names "^2.0.1"
 
-"@semcore/button@^3", "@semcore/button@^3.3.7":
-  version "3.3.7"
-  resolved "https://registry.yarnpkg.com/@semcore/button/-/button-3.3.7.tgz#56948c279555c14d22ce8a7233a7d79e3763e5ef"
-  integrity sha512-HlL86TxAv707Vr24ZeF5HE1jK4bClFm6oUA/7l4+nhzwhbvkjmsv94yIHB9jpBSTw1xWLhPh4aPVNir2YIrF7A==
-  dependencies:
-    "@semcore/flex-box" "^4"
-    "@semcore/neighbor-location" "^2"
-    "@semcore/spin" "^3"
-    "@semcore/utils" "^3.15"
-
-"@semcore/checkbox@^5":
-  version "5.2.8"
-  resolved "https://registry.yarnpkg.com/@semcore/checkbox/-/checkbox-5.2.8.tgz#a5683f35ffa4628a12fab44d5a24a6140ceb730c"
-  integrity sha512-DM1yTplIeAHPOYyFrc8nliBsTtimKYfLvO2yOXviMR58+LUA1b6OdAeB29MpRccpzggRMvuJF8iXTMyWpAORMg==
-  dependencies:
-    "@semcore/flex-box" "^4"
-    "@semcore/typography" "^3"
-    "@semcore/utils" "^3.15"
-
-"@semcore/divider@^2":
-  version "2.2.5"
-  resolved "https://registry.yarnpkg.com/@semcore/divider/-/divider-2.2.5.tgz#123f43b524ed8636a87bd8f7dbb191ffe997abeb"
-  integrity sha512-40Se+jbOa/v3CG7kHv+ZWxe1aIQ0p4syEt9RDC8DxkfbMsIoLrQVMlGZaMPUJRoxZ976qUyeYEXFZWmbdu5rlA==
-  dependencies:
-    "@semcore/flex-box" "^4"
-    "@semcore/utils" "^3.15"
-
-"@semcore/dropdown@^2":
-  version "2.3.3"
-  resolved "https://registry.yarnpkg.com/@semcore/dropdown/-/dropdown-2.3.3.tgz#1fc01af99c579ae9095781f18ceb435292903a62"
-  integrity sha512-BhOHD0JscD41QVvOsqqOdC8kOAWefmkS+HWomvv/aV5FoVCbtnk7Yqrzb5G0U0pDNtouGdmJE1rfYpyOShgs+w==
-  dependencies:
-    "@semcore/flex-box" "^4"
-    "@semcore/popper" "^4"
-    "@semcore/utils" "^3.15"
-
-"@semcore/modal@^2":
-  version "2.4.9"
-  resolved "https://registry.yarnpkg.com/@semcore/modal/-/modal-2.4.9.tgz#c797c2242a6b04fce071d79fe4a4a508c017a762"
-  integrity sha512-uOf3sKQcqU0b5PKSqDfGvch9v3Lhf8DfLNS4JfTwC7VX9x722Pz1T3gNSqxJCNHC2GOQ/ZnZslyc8ZyUdkfsdA==
-  dependencies:
-    "@semcore/animation" "^1"
-    "@semcore/flex-box" "^4"
-    "@semcore/icon" "^2.16"
-    "@semcore/outside-click" "^2"
-    "@semcore/portal" "^2"
-    "@semcore/utils" "^3.31.2"
-    react-focus-lock "2.3.1"
-
-"@semcore/spin@^3":
-  version "3.4.1"
-  resolved "https://registry.yarnpkg.com/@semcore/spin/-/spin-3.4.1.tgz#d08d04fa55318c13e3d9e2e8e777741400de61c2"
-  integrity sha512-NQeZ3NBOoNhqpIGvLagl03c75Hh1AIeH0p9JyaJjVExYzJz3C3KpsYC63VAvxj6v6ms1casvry771TiH80nYwg==
-  dependencies:
-    "@semcore/flex-box" "^4"
-    "@semcore/utils" "^3.16"
-
 "@semcore/theme-redesign@1.5.12":
   version "1.5.12"
   resolved "https://registry.yarnpkg.com/@semcore/theme-redesign/-/theme-redesign-1.5.12.tgz#d97d7be2dfcaaac2cb8a58ef35b20e4ac0215761"
   integrity sha512-zmABHHcsbbEHCTX3YWIXcIIzQx6S1oyj2NyPkea6QOh2HE+vopSWdNbUhWYT2Zax5NhQQ3HrDRdvkolhr6aBKA==
-
-"@semcore/tooltip@^4":
-  version "4.3.5"
-  resolved "https://registry.yarnpkg.com/@semcore/tooltip/-/tooltip-4.3.5.tgz#f179255990e3019e74cdf7f3b6f1b97a4e82bf5d"
-  integrity sha512-ZbY7soYxt23B5cfVZufkm09EgHFfzcCtUPnqzwLEhnMmN5QdwJutm5Do7Q7l22an8xfuu4znr363Dv3n7JMJXw==
-  dependencies:
-    "@semcore/flex-box" "^4"
-    "@semcore/popper" "^4.2"
-    "@semcore/utils" "^3.31"
 
 "@semcore/typography@^3":
   version "3.4.4"
@@ -13662,15 +13596,15 @@ minimist-options@4.1.0:
     is-plain-obj "^1.1.0"
     kind-of "^6.0.3"
 
-minimist@1.2.6, minimist@^1.2.6:
-  version "1.2.6"
-  resolved "https://registry.yarnpkg.com/minimist/-/minimist-1.2.6.tgz#8637a5b759ea0d6e98702cfb3a9283323c93af44"
-  integrity sha512-Jsjnk4bw3YJqYzbdyBiNsPWHPfO++UGG749Cxs6peCu5Xg4nrena6OVxOYxrQTqww0Jmwt+Ref8rggumkTLz9Q==
-
 minimist@^1.1.1, minimist@^1.1.3, minimist@^1.2.0, minimist@^1.2.5, minimist@~1.2.5:
   version "1.2.5"
   resolved "https://registry.yarnpkg.com/minimist/-/minimist-1.2.5.tgz"
   integrity sha512-FM9nNUYrRBAELZQT3xeZQ7fmMOBg6nWNmJKTcgsJeaLstP/UODVpGsr5OhXhhXg6f+qtJ8uiZ+PUxkDWcgIXLw==
+
+minimist@^1.2.6:
+  version "1.2.6"
+  resolved "https://registry.yarnpkg.com/minimist/-/minimist-1.2.6.tgz#8637a5b759ea0d6e98702cfb3a9283323c93af44"
+  integrity sha512-Jsjnk4bw3YJqYzbdyBiNsPWHPfO++UGG749Cxs6peCu5Xg4nrena6OVxOYxrQTqww0Jmwt+Ref8rggumkTLz9Q==
 
 minipass-collect@^1.0.2:
   version "1.0.2"
@@ -13824,6 +13758,11 @@ move-concurrently@^1.0.1:
     mkdirp "^0.5.1"
     rimraf "^2.5.4"
     run-queue "^1.0.3"
+
+mri@1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/mri/-/mri-1.2.0.tgz#6721480fec2a11a4889861115a48b6cbe7cc8f0b"
+  integrity sha512-tzzskb3bG8LvYGFF/mDTpq3jpI6Q9wc3LEmBaghu+DdCssd1FakN7Bc0hVNmEyGq1bq3RgfkCb3cmQLpNPOroA==
 
 mri@^1.1.0:
   version "1.1.6"
