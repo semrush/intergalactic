@@ -27,7 +27,7 @@
     "test": "jest"
   },
   "dependencies": {
-    "@semcore/checkbox": "^5",
+    "@semcore/checkbox": "^6",
     "@semcore/utils": "^3.17",
     "@types/recharts": "1.8.14",
     "hoist-non-react-statics": "3.3.2",

@@ -20,10 +20,10 @@
     "@semcore/utils": "^3.31.1"
   },
   "devDependencies": {
-    "@semcore/button": "^3.3.7",
-    "@semcore/jest-preset-ui": "1.0.0",
-    "@semcore/spin": "^3.4.1",
-    "@semcore/tooltip": "^4.3.5"
+    "@semcore/button": "*",
+    "@semcore/jest-preset-ui": "*",
+    "@semcore/spin": "*",
+    "@semcore/tooltip": "*"
   },
   "peerDependencies": {
     "@semcore/core": "^1.11",
