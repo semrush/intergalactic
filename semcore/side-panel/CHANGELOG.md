@@ -4,13 +4,13 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ## [1.4.0] - 2022-05-17
 
-### Added
-
-- Added children components `Header, Footer, Body, Back, Title` for `SidePanel`.
-
 ### BREAK
 
 - Updated styles according to the library redesign policy.
+
+### Added
+
+- Added children components `Header, Footer, Body, Back, Title` for `SidePanel`.
 
 ## [1.3.8] - 2022-05-16
 
