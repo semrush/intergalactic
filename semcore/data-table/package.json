@@ -30,7 +30,7 @@
     "@semcore/portal": "*",
     "@semcore/progress-bar": "*",
     "@semcore/skeleton": "*",
-    "@semcore/spin": "*",
+    "@semcore/spin": "^4",
     "@semcore/spin-container": "*",
     "@semcore/sticky": "*",
     "@semcore/tooltip": "*"
