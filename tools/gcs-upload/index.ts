@@ -94,23 +94,19 @@ export const upload = async (
 
         log(`Uploading ${destination} from ${filePath}`);
 
-        if (filePath.includes('hydrate') && filePath.includes('js')) {
-          process.exit(0);
-        }
-
-        // return (
-        //   storage
-        //     .bucket(BUCKET_NAME)
-        //     .upload(filePath, {
-        //       gzip: true,
-        //       destination,
-        //       metadata: {
-        //         cacheControl: 'public, max-age=31536000',
-        //       },
-        //     })
-        //     // eslint-disable-next-line no-console
-        //     .then(() => console.log(`${fileName} uploaded to ${destination}`)),
-        // );
+        return (
+          storage
+            .bucket(BUCKET_NAME)
+            .upload(filePath, {
+              gzip: true,
+              destination,
+              metadata: {
+                cacheControl: 'public, max-age=31536000',
+              },
+            })
+            // eslint-disable-next-line no-console
+            .then(() => console.log(`${fileName} uploaded to ${destination}`))
+        );
       }),
     ),
   );
