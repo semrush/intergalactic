@@ -1,7 +1,7 @@
 {
   "name": "@semcore/errors",
   "description": "SEMRush Errors Component",
-  "version": "2.5.6",
+  "version": "3.0.0",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -17,7 +17,7 @@
     "@semcore/utils": "^3.27",
     "@semcore/button": "^4",
     "@semcore/flex-box": "^4",
-    "@semcore/format-text": "^2",
+    "@semcore/format-text": "^3.0.0",
     "@semcore/typography": "^4"
   },
   "peerDependencies": {
