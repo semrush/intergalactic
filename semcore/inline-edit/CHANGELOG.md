@@ -4,7 +4,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ## [2.0.0] - 2022-05-17
 
-### Changed
+### BREAK
 
 - Updated styles according to the library redesign policy.
 
