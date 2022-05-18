@@ -49,6 +49,12 @@ module.exports = {
       ],
     },
     {
+      name: 'GoogleCloud',
+      size: ['l', 'm'],
+      group: 'Color',
+      tags: ['google', 'cloud', 'клауд', 'облако', 'гугл', 'logo', 'лого'],
+    },
+    {
       name: 'GoogleDataStudio',
       size: ['l', 'm'],
       group: 'Color',

@@ -7,6 +7,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### Added
 
 - Added icon `Kebab`.
+- Added icon `GoogleCloud`.
 
 ## [2.24.0] - 2022-05-12
 
