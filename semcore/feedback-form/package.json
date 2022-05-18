@@ -37,5 +37,10 @@
   },
   "devDependencies": {
     "@semcore/jest-preset-ui": "1.0.0"
+  },
+  "overrides": {
+    "final-form": {
+      "@babel/runtime": "7.17.9"
+    }
   }
 }

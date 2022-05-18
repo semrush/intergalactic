@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.32.1] - 2022-05-19
+
+### Fixed
+
+- Synced dependencies versions to remove duplicates in the single export package.
+
 ## [3.32.0] - 2022-05-17
 
 ### Added
