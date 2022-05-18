@@ -13,6 +13,9 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### BREAK
 
 - Updated styles according to the library redesign policy.
+
+### Changed
+
 - Moved all color definitions to themable styles.
 
 ## [2.0.2] - 2022-05-16
