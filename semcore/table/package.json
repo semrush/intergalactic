@@ -1,7 +1,7 @@
 {
   "name": "@semcore/table",
   "description": "SEMRush Table Component",
-  "version": "2.5.6",
+  "version": "3.0.0",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -17,7 +17,7 @@
     "@semcore/icon": "^2.16",
     "@semcore/flex-box": "^4",
     "@semcore/typography": "^3",
-    "@semcore/scroll-area": "^3",
+    "@semcore/scroll-area": "^4.0.0",
     "resize-observer-polyfill": "1.5.1",
     "classnames": "2.2.6"
   },
