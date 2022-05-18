@@ -1,292 +1,126 @@
 ## [12.0.0] - 2022-05-19
 
+### Global
+
+- **BREAK** Updated styles according to the library redesign policy.
+
 ### @semcore/select
 
-- **BREAK** Remove support to used `Select.InputSearch`
-- **BREAK** Remove support properties `selectedOptions, defaultSelectedOptions` for `Select`
-- **BREAK** Remove support `Select.OptionCheckbox`
+- **BREAK** Removed support to used `Select.InputSearch`
+- **BREAK** Removed support properties `selectedOptions, defaultSelectedOptions` for `Select`
+- **BREAK** Removed support `Select.OptionCheckbox`
 - **BREAK** `Select.Option.Checkbox` used only two sizes `l, m`
-- **BREAK** Updated styles according to the library redesign policy.
-- **Fixed** Fixed non-closing popper after clicking on an Option
 
 ### @semcore/dropdown-menu
 
-- **BREAK** Updated styles according to the library redesign policy.
 - **BREAK** Removed deprecated props `onSelect, optionCount, triggerType`.
 - **BREAK** Removed value "xl" for "size".
 
 ### @semcore/fullscreen-modal
 
-- **BREAK** Remove support property `hidden` for `FullscreenModal`.
+- **BREAK** Removed support property `hidden` for `FullscreenModal`.
 - **BREAK** `Footer` now use inside component `Flex`
-- **BREAK** Updated styles according to the library redesign policy.
-- **Fixed** Updated Intergalactic internal dependencies to the latest.
 
 ### @semcore/notice
 
-- **BREAK** Remove property `use`.
-- **BREAK** Move view `Notice use="primary"` to component `NoticeGlobal`.
-- **BREAK** Updated styles according to the library redesign policy.
+- **BREAK** Removed property `use`.
+- **BREAK** Moved view `Notice use="primary"` to component `NoticeGlobal`.
 
 ### @semcore/progress-bar
 
-- **BREAK** Updated styles according to the library redesign policy.
-- **BREAK** Remove named import "Progress" and "Bar".
-- **BREAK** Remove "animation" props, use "value=0".
+- **BREAK** Removed named import "Progress" and "Bar".
+- **BREAK** Removed "animation" props, use "value=0".
 
 ### @semcore/tooltip
 
-- **BREAK** Updated styles according to the library redesign policy.
 - **BREAK** Removed ability to pass custom color to "theme" property.
-- **BREAK** Remove named import "Tooltip".
+- **BREAK** Removed named import "Tooltip".
 
 ### @semcore/base-trigger
 
-- **BREAK** Updated styles according to the library redesign policy.
-- **BREAK** Remove value "xl" and "s" for "size".
-- **Fixed** Updated Intergalactic internal dependencies to the latest.
-
-### @semcore/breadcrumbs
-
-- **BREAK** Updated styles according to the library redesign policy.Updated styles according to library redesign policy.
-- **BREAK** Increased gap between elements to match planned design.
+- **BREAK** Removed value "xl" and "s" for "size".
 
 ### @semcore/button
 
-- **BREAK** Updated styles according to the library redesign policy.
-- **BREAK** Remove value "xl" and "s" for "size".
-- **Fixed** Updated Intergalactic internal dependencies to the latest.
+- **BREAK** Removed value "xl" and "s" for "size".
 
 ### @semcore/chart
 
-- **BREAK** Updated styles according to the library redesign policy.
-- **BREAK** Removed media.
-- **Fixed** Updated Intergalactic internal dependencies to the latest.
+- **BREAK** Removed css media rules.
 
 ### @semcore/checkbox
 
-- **BREAK** Updated styles according to the library redesign policy.
-- **BREAK** Remove value "xl" for "size".
-- **Fixed** Updated Intergalactic internal dependencies to the latest.
+- **BREAK** Removed value "xl" for "size".
 
 ### @semcore/date-picker
 
-- **BREAK** Updated styles according to the library redesign policy.
-- **BREAK** Remove value "xl" for "size".
-- **Fixed** Updated Intergalactic internal dependencies to the latest.
+- **BREAK** Removed value "xl" for "size".
 
 ### @semcore/dropdown
 
-- **BREAK** Updated styles according to the library redesign policy.
 - **BREAK** Removed deprecated prop `popperStretch`.
 
 ### @semcore/format-text
 
-- **BREAK** Updated styles according to the library redesign policy.
 - **BREAK** Changed sizes from m/l/xl to s/m/l
 
 ### @semcore/input
 
-- **BREAK** Updated styles according to the library redesign policy.
-- **BREAK** Remove value "xl"/"s"" for "size".
-
-### @semcore/input-mask
-
-- **BREAK** Updated styles according to the library redesign policy.
-- **BREAK** Major dependency update Input.
-
-### @semcore/input-number
-
-- **BREAK** Updated styles according to the library redesign policy.
-- **BREAK** Major dependency update Input.
-
-### @semcore/input-tags
-
-- **BREAK** Updated styles according to the library redesign policy.
-- **BREAK** Major update components.
+- **BREAK** Removed value "xl"/"s"" for "size".
 
 ### @semcore/pagination
 
-- **BREAK** Updated styles according to the library redesign policy.
-- **BREAK** Remove deprecated props "onPageChange"/"totalPagesFormatter"/"label"
+- **BREAK** Removed deprecated props "onPageChange"/"totalPagesFormatter"/"label"
 
 ### @semcore/pills
 
-- **BREAK** Updated styles according to the library redesign policy.
-- **BREAK** Remove value "xl"/"s"" for "size".
+- **BREAK** Removed value "xl"/"s"" for "size".
 
 ### @semcore/radio
 
-- **BREAK** Updated styles according to the library redesign policy.
-- **BREAK** Remove value "xl" for "size".
-- **Fixed** Updated Intergalactic internal dependencies to the latest.
+- **BREAK** Removed value "xl" for "size".
 
 ### @semcore/scroll-area
 
-- **BREAK** Remove named imports.
-- **BREAK** Updated styles according to the library redesign policy.
+- **BREAK** Removed named imports.
 
 ### @semcore/tab-line
 
-- **BREAK** Updated styles according to the library redesign policy.
-- **BREAK** Remove value "xl" for "size".
+- **BREAK** Removed value "xl" for "size".
 
 ### @semcore/tag
 
-- **BREAK** Updated styles according to the library redesign policy.
 - **BREAK** Set `primary` as default component theme.
 - **Added** Added `additional` theme.
 
 ### @semcore/textarea
 
-- **BREAK** Updated styles according to the library redesign policy.
-- **BREAK** Remove value "xl" for "size".
-- **Fixed** Synced dependencies versions to remove duplicates in the single export package.
-
-### @semcore/accordion
-
-- **BREAK** Updated styles according to the library redesign policy.
-
-### @semcore/badge
-
-- **BREAK** Updated styles according to the library redesign policy.
-
-### @semcore/card
-
-- **BREAK** Updated styles according to the library redesign policy.
-- **Fixed** Updated Intergalactic internal dependencies to the latest.
-
-### @semcore/carousel
-
-- **BREAK** Updated styles according to the library redesign policy.
-
-### @semcore/counter
-
-- **BREAK** Updated styles according to the library redesign policy.
-
-### @semcore/d3-chart
-
-- **BREAK** Updated styles according to the library redesign policy.
+- **BREAK** Removed value "xl" for "size".
 
 ### @semcore/data-table
 
-- **BREAK** Updated styles according to the library redesign policy.
 - **Fixed** Fixed collapsing of header grouped cells.
 - **Fixed** Fixed columns width was usually not controlled by `w`, `wMin` and `wMax` props
 - **Fixed** Fixed package lost typings.
-
-### @semcore/divider
-
-- **BREAK** Updated styles according to the library redesign policy.
-
-### @semcore/dot
-
-- **BREAK** Updated styles according to the library redesign policy.
-
-### @semcore/drag-and-drop
-
-- **BREAK** Updated styles according to the library redesign policy.
-
-### @semcore/errors
-
-- **BREAK** Updated styles according to the library redesign policy.
-
-### @semcore/feature-popover
-
-- **BREAK** Updated styles according to the library redesign policy.
-
-### @semcore/feedback-form
-
-- **BREAK** Updated styles according to the library redesign policy.
-- **Fixed** Fixed Item tag property setting
-- **Fixed** Synced dependencies versions to remove duplicates in the single export package.
 
 ### @semcore/flags
 
 - **BREAK** Changed size flags from 14x11 to 16x16.
 
-### @semcore/inline-edit
-
-- **BREAK** Updated styles according to the library redesign policy.
-
-### @semcore/inline-input
-
-- **BREAK** Updated styles according to the library redesign policy.
-- **Fixed** Updated Intergalactic internal dependencies to the latest.
-- **Changed** Moved all color definitions to themable styles.
-
-### @semcore/link
-
-- **BREAK** Updated styles according to the library redesign policy.
-- **Fixed** Updated Intergalactic internal dependencies to the latest.
-
-### @semcore/modal
-
-- **BREAK** Updated styles according to the library redesign policy.
-- **Fixed** Synced dependencies versions to remove duplicates in the single export package.
-
-### @semcore/notice-bubble
-
-- **BREAK** Updated styles according to the library redesign policy.
-
-### @semcore/product-head
-
-- **BREAK** Updated styles according to the library redesign policy.
-
-### @semcore/project-create
-
-- **BREAK** Updated styles according to the library redesign policy.
-- **Fixed** Synced dependencies versions to remove duplicates in the single export package.
-
 ### @semcore/side-panel
 
-- **BREAK** Updated styles according to the library redesign policy.
-- **Fixed** Synced dependencies versions to remove duplicates in the single export package.
 - **Added** Added children components `Header, Footer, Body, Back, Title` for `SidePanel`.
 
 ### @semcore/skeleton
 
-- **BREAK** Updated styles according to the library redesign policy.
 - **Added** Added skeleton for Radial Tree chart.
-
-### @semcore/slider
-
-- **BREAK** Updated styles according to the library redesign policy.
 
 ### @semcore/spin
 
-- **BREAK** Updated styles according to the library redesign policy.
 - **Removed** Removed size `xxs`.
-
-### @semcore/spin-container
-
-- **BREAK** Updated styles according to the library redesign policy.
-
-### @semcore/switch
-
-- **BREAK** Updated styles according to the library redesign policy.
-
-### @semcore/tab-panel
-
-- **BREAK** Updated styles according to the library redesign policy.
-
-### @semcore/table
-
-- **BREAK** Updated styles according to the library redesign policy.
-
-### @semcore/time-picker
-
-- **BREAK** Updated styles according to the library redesign policy.
-- **Fixed** Updated Intergalactic internal dependencies to the latest.
-
-### @semcore/typography
-
-- **BREAK** Updated styles according to the library redesign policy.
-- **Fixed** Synced dependencies versions to remove duplicates in the single export package.
 
 ### @semcore/widget-empty
 
-- **BREAK** Updated styles according to the library redesign policy.
 - **Added** Added `coffee`/`heat-map-chart`/`kagi-chart`/`radial-tree-chart`/`suggestion`/`under-construction` illustrations.
 
 ### @semcore/flex-box
@@ -310,7 +144,7 @@
 
 - **Fixed** Synced dependencies versions to remove duplicates in the single export package.
 - **Added** Added `light` function for increasing `l` axes in hsl color space of `rgb(a)` and hex colors
-- **Fixed** Remove react warning when accessing "ref" property
+- **Fixed** Removed react warning when accessing "ref" property
 
 ## [11.2.0] - 2022-04-26
 
