@@ -21,11 +21,6 @@
 - **BREAK** Removed support property `hidden` for `FullscreenModal`.
 - **BREAK** `Footer` now use inside component `Flex`
 
-### @semcore/notice
-
-- **BREAK** Removed property `use`.
-- **BREAK** Moved view `Notice use="primary"` to component `NoticeGlobal`.
-
 ### @semcore/progress-bar
 
 - **BREAK** Removed named import "Progress" and "Bar".
