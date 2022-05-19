@@ -6,9 +6,9 @@ title: Figma libraries
 
 If you're building an interface inside the Semrush suite, feel free to use our Figma libraries:
 
-- **Core components libraries: [Inner](https://www.figma.com/file/pird5k22HfjGRUzZUfW1Qf/%E2%9D%96-New-Components), [Public](https://www.figma.com/community/file/936212718295795001/Semrush-library-%E2%80%A2-Core-components-library)**
-- **Interface icons libraries: [Inner](https://www.figma.com/file/lVX2dKnVFtcSTQV7eSS5j1/%F0%9F%94%8D-Icons), [Public](https://www.figma.com/community/file/936235318408664380/Semrush-%E2%80%A2-Core-icons-library)**
-- **Charts libraries: [Inner](https://www.figma.com/file/eODzGSSSlI8fl0x5fsv9cf/%E2%9C%A8-Charts), [Public](https://www.figma.com/community/file/936940441147792750/Semrush-%E2%80%A2-Charts-library)**
+- **Core components libraries: [Inner](https://www.figma.com/file/pird5k22HfjGRUzZUfW1Qf/%E2%9D%96-New-Components), [Public](https://www.figma.com/community/file/1085155066176261708)**
+- **Interface icons libraries: [Inner](https://www.figma.com/file/lVX2dKnVFtcSTQV7eSS5j1/%F0%9F%94%8D-Icons), [Public](https://www.figma.com/community/file/1104055318873511031)**
+- **Charts libraries: [Inner](https://www.figma.com/file/eODzGSSSlI8fl0x5fsv9cf/%E2%9C%A8-Charts), [Public](https://www.figma.com/community/file/1104055641569356920)**
 
 > There are a lot of helpful tips and hints right inside the libraries.
 
