@@ -94,6 +94,7 @@ const TooltipProps = [
 
 function Item({ Children, tag, ...props }) {
   const tooltipProps = pick(props, TooltipProps);
+  const ItemRoot = Root;
 
   return (
     <Field {...props}>
@@ -115,7 +116,7 @@ function Item({ Children, tag, ...props }) {
             }}
             {...tooltipProps}
           >
-            {tag && <Root render={tag} {...inputProps} />}
+            {tag && <ItemRoot render={tag} {...inputProps} />}
             {typeof Children.origin === 'function' &&
               Children.origin({
                 input: inputProps,
