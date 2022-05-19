@@ -164,6 +164,7 @@
     "tools/super-publisher"
   ],
   "resolutions": {
-    "@types/react/csstype": "3.0.8"
+    "@types/react/csstype": "3.0.8",
+    "**/**/minimist": "1.2.6"
   }
 }
