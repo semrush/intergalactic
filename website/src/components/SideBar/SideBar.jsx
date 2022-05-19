@@ -47,7 +47,7 @@ export default function SideBar() {
             <>
               <TypescriptDeclarationView
                 namePrefix={
-                  <Button size="xl" use="tertiary" theme="muted" mr={4} onClick={handleHistoryBack}>
+                  <Button size="l" use="tertiary" theme="muted" mr={4} onClick={handleHistoryBack}>
                     <Button.Addon>
                       <ChevronLeft />
                     </Button.Addon>

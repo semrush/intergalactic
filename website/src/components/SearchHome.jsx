@@ -72,7 +72,6 @@ const Input = styled.input`
 
 const DesktopInput = styled(Input)`
   display: none;
-  font-family: Inter, sans-serif;
   @media (min-width: 768px) {
     display: flex;
   }
@@ -177,7 +176,7 @@ const Search = ({ currentRefinement, refine, hits, history, searchResults, ...ot
   }, [location]);
 
   const showList = (hits, pages, content) => {
-    let options = [];
+    const options = [];
     if (pages.length) {
       options.push(
         <OptionHeader tag={Option} key={1}>

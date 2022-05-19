@@ -16,7 +16,6 @@ const Content = styled.div`
   max-width: 1140px;
   margin: 0 auto;
   h2 {
-    font-family: FactorA-Bold, sans-serif;
     font-size: 50px;
     line-height: 110%;
     color: #171a22;
@@ -118,7 +117,6 @@ const Subtitle = styled.div`
 `;
 
 const Title = styled.div`
-  font-family: FactorA-Bold, sans-serif;
   font-size: 30px;
   font-weight: 600;
   line-height: 120%;

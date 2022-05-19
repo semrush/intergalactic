@@ -18,17 +18,3 @@
   font-weight: 700;
   src: url('./fonts/Inter-Bold.ttf');
 }
-
-@font-face {
-  font-family: 'FactorA-Bold';
-  src: url('./fonts/FactorA-Bold.woff2');
-  font-weight: bold;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'FactorA-Regular';
-  src: url('./fonts/FactorA-Regular.woff2');
-  font-weight: normal;
-  font-style: normal;
-}

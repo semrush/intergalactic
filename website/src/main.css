@@ -4,7 +4,7 @@
 @import '@semcore/utils/style/var.css';
 
 html {
-  font-family: Inter, sans-serif, Arial;
+  font-family: Inter, -apple-system, sans-serif, Arial;
   color: #171a22;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

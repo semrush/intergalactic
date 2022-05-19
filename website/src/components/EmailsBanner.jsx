@@ -42,7 +42,6 @@ const Info = styled.div`
 `;
 
 const Header = styled.h3`
-  font-family: FactorA-Bold, sans-serif;
   font-size: 30px;
   line-height: 120%;
   margin: 40px 8px 0 0;
