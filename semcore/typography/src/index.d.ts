@@ -1,12 +1,7 @@
 import React, { ComponentProps } from 'react';
 import { CProps, PropGetterFn, ReturnEl } from '@semcore/core';
 
-import {
-  FontSizeProperty,
-  FontWeightProperty,
-  LineHeightProperty,
-  TextAlignProperty,
-} from 'csstype';
+import { Property } from 'csstype';
 import { Box, IBoxProps } from '@semcore/flex-box';
 
 export interface ITextProps extends IBoxProps {
@@ -27,13 +22,13 @@ export interface ITextProps extends IBoxProps {
   /** Text color **/
   color?: string;
   /** Custom `font-size` */
-  fontSize?: FontSizeProperty<any>;
+  fontSize?: Property.FontSize<any>;
   /** Custom `line-height` */
-  lineHeight?: LineHeightProperty<any>;
+  lineHeight?: Property.LineHeight<any>;
   /** Custom `font-weight` */
-  fontWeight?: FontWeightProperty;
+  fontWeight?: Property.FontWeight;
   /** Text alignment */
-  textAlign?: TextAlignProperty;
+  textAlign?: Property.TextAlign;
 }
 
 export interface IListProps extends ITextProps {
