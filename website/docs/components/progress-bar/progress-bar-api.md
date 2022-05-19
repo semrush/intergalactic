@@ -1,5 +1,6 @@
 ---
 title: API
+fileSource: progress-bar
 ---
 
 @## ProgressBar
@@ -11,7 +12,7 @@ import ProgressBar from '@semcore/progress-bar';
 <ProgressBar />;
 ```
 
-@interface IProgressBarProps
+@typescript IProgressBarProps
 
 @## ProgressBar.Value
 
@@ -22,4 +23,4 @@ import ProgressBar from '@semcore/progress-bar';
 <ProgressBar.Value />;
 ```
 
-@interface IValueProps
+@typescript IValueProps

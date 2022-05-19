@@ -1,0 +1,96 @@
+.container {
+  margin-top: 20px;
+}
+
+.title {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 20px 0;
+}
+
+.requiredMark {
+  color: #f71939;
+}
+
+.typeText {
+  color: #f71939;
+}
+
+.table {
+  width: 100%;
+}
+
+.tableHead {
+  text-align: left;
+}
+
+.propertyCell {
+  padding: 18px 0;
+  padding-right: 6px;
+  border-bottom: 1px solid #cccccc;
+}
+.propertyDetails {
+  display: flex;
+  flex-direction: column;
+  row-gap: 5px;
+}
+
+.descriptionCell {
+  padding: 18px 0;
+  border-bottom: 1px solid #cccccc;
+}
+.descriptionCell code {
+  background-color: rgba(87, 92, 102, 0.1);
+  border-radius: 4px;
+}
+.descriptionCell code::before,
+.descriptionCell code::after {
+  content: '';
+  display: inline;
+  padding-right: 0.2em;
+}
+
+.interactiveTypeReference {
+  color: #006dca;
+  text-decoration: none;
+  cursor: pointer;
+}
+.interactiveTypeReference:hover {
+  color: #044792;
+  text-decoration: underline;
+}
+
+.propertyNameAnchor {
+  position: absolute;
+  left: -20px;
+  top: 3px;
+  padding-right: 4px;
+  opacity: 0;
+  transition: opacity 0.2s ease-in;
+  cursor: pointer;
+  color: #a6b0b3;
+}
+.propertyNameAnchor:hover {
+  color: #333333;
+}
+
+.propertyName {
+  margin-bottom: 8px;
+  position: relative;
+}
+.propertyCell:hover .propertyNameAnchor {
+  opacity: 1;
+}
+
+.deprecated {
+  display: inline-flex;
+  align-items: center;
+  column-gap: 4px;
+  padding: 4px;
+  background: rgba(247, 25, 57, 0.15);
+  color: #f71939;
+  fill: #f71939;
+  border: 1px solid #f71939;
+  border-radius: 10px;
+}

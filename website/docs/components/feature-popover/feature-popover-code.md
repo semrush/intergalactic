@@ -1,5 +1,6 @@
 ---
 title: Example
+fileSource: feature-popover
 ---
 
 @## Animation example

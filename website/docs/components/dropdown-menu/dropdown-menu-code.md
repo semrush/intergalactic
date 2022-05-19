@@ -1,5 +1,6 @@
 ---
 title: Example
+fileSource: dropdown-menu
 ---
 
 > ⚠️ If you need to customize your work with the dropdown menu, please refer to the documentation [@semcore/popper](/utils/popper/)

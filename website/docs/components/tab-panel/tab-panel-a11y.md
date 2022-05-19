@@ -1,5 +1,6 @@
 ---
 title: A11y
+fileSource: tab-panel
 ---
 
 > ### General recommendations

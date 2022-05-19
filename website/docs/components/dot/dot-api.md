@@ -1,5 +1,6 @@
 ---
 title: API
+fileSource: dot
 ---
 
 @## Dot
@@ -9,4 +10,4 @@ import Dot from '@semcore/dot';
 <Dot />;
 ```
 
-@interface IDotProps
+@typescript IDotProps

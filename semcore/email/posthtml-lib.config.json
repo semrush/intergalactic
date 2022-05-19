@@ -1,7 +1,7 @@
 {
   "root": ".tmp",
   "input": "**/*.html",
-  "output": ".tmp",
+  "output": ".tmp-lib",
   "plugins": {
     "posthtml-inline-assets": {},
     "posthtml-inline-css": {}

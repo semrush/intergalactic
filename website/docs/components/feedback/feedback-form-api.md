@@ -1,5 +1,6 @@
 ---
 title: API
+fileSource: feedback-form
 ---
 
 @## FeedbackForm
@@ -11,7 +12,7 @@ import FeedbackForm from '@semcore/feedback-form';
 <FeedbackForm />;
 ```
 
-@interface IFeedbackForm
+@typescript IFeedbackForm
 
 @## FeedbackForm.Item
 

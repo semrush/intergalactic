@@ -1,5 +1,6 @@
 ---
 title: API
+fileSource: modal
 ---
 
 @## Modal
@@ -9,7 +10,7 @@ import Modal from '@semcore/modal';
 <Modal />;
 ```
 
-@interface IModalProps
+@typescript IModalProps
 
 @## Modal.Overlay
 

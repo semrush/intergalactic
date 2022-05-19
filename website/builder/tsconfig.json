@@ -1,0 +1,12 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "composite": true,
+    "rootDir": ".."
+  },
+  "exclude": [],
+  "include": ["../deploy.ts", "../searchIndexUpload.ts", "**/*"]
+}

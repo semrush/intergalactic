@@ -1,5 +1,6 @@
 ---
 title: A11y
+fileSource: side-panel
 ---
 
 @## Keyboard support

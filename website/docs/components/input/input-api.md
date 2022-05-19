@@ -1,5 +1,6 @@
 ---
 title: API
+fileSource: input
 ---
 
 @## Input
@@ -11,7 +12,7 @@ import Input from '@semcore/input';
 <Input />;
 ```
 
-@interface IInputProps
+@typescript IInputProps
 
 @## Input.Value
 
@@ -22,7 +23,7 @@ import Input from '@semcore/input';
 <Input.Value />;
 ```
 
-@interface IInputValueProps
+@typescript IInputValueProps
 
 @## Input.Addon
 
@@ -35,4 +36,4 @@ import Input from '@semcore/input';
 <Input.Addon />;
 ```
 
-@interface IInputAddonProps
+@typescript IInputAddonProps

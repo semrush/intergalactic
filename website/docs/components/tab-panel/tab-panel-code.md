@@ -1,5 +1,6 @@
 ---
 title: Example
+fileSource: tab-panel
 ---
 
 @## Basic use

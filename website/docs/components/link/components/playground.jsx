@@ -1,5 +1,5 @@
 import React from 'react';
-import PlaygroundGeneration from 'components/PlaygroundGeneration';
+import PlaygroundGeneration from '@components/PlaygroundGeneration';
 import Link from '@semcore/link';
 import CheckXS from '@semcore/icon/Check/m';
 import ArrowRightXS from '@semcore/icon/ArrowRight/m';

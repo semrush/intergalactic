@@ -1,5 +1,6 @@
 ---
 title: Example
+fileSource: dropdown-menu
 ---
 
 @## Базовый пример

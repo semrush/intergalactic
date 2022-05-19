@@ -4,4 +4,5 @@ tabName: Example
 ---
 
 @## Basic example
-@email_html table-index
+
+@email_html compiled-examples/table-index.html src/table/examples/index.html

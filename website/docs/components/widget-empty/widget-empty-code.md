@@ -1,5 +1,6 @@
 ---
 title: Example
+fileSource: widget-empty
 ---
 
 @## NoData example

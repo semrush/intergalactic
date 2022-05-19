@@ -146,6 +146,9 @@ export const makeCacheManager = (id: string, cwd = '.', cacheTtl = 1000 * 60 * 6
       const cachedHashSum = await readFile(cachedHashSumFilePath, 'utf-8');
 
       if (hashSum !== cachedHashSum) {
+        if (verbose) {
+          console.log(`Cache invalidated for ${filePath}`);
+        }
         return null;
       }
 

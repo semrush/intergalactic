@@ -1,6 +1,6 @@
 import React from 'react';
 import Radio from '@semcore/radio';
-import PlaygroundGeneration from 'components/PlaygroundGeneration';
+import PlaygroundGeneration from '@components/PlaygroundGeneration';
 
 export default PlaygroundGeneration(
   (createGroupWidgets) => {
