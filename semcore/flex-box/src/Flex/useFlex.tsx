@@ -1,16 +1,7 @@
 import React, { useMemo } from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import cn from 'classnames';
-import {
-  AlignContentProperty,
-  AlignItemsProperty,
-  JustifyContentProperty,
-  Properties,
-  FlexDirectionProperty,
-  GapProperty,
-  RowGapProperty,
-  ColumnGapProperty,
-} from 'csstype';
+import { Property, Properties } from 'csstype';
 import { sstyled } from '@semcore/core';
 import useBox, { IBoxProps, removeUndefinedKeys } from '../Box/useBox';
 
@@ -33,31 +24,31 @@ export interface IFlexProps extends IBoxProps {
   /**
    * It manages the `flex-direction` property
    */
-  direction?: FlexDirectionProperty;
+  direction?: Property.FlexDirection;
   /**
    * It manages the `align-items` property
    */
-  alignItems?: AlignItemsProperty;
+  alignItems?: Property.AlignItems;
   /**
    * It manages the `align-content` property
    */
-  alignContent?: AlignContentProperty;
+  alignContent?: Property.AlignContent;
   /**
    * CSS `justify-content` property
    */
-  justifyContent?: JustifyContentProperty;
+  justifyContent?: Property.JustifyContent;
   /**
    * CSS `gap` property
    */
-  gap?: GapProperty<number>;
+  gap?: Property.Gap<number>;
   /**
    * CSS `gap` property
    */
-  rowGap?: RowGapProperty<number>;
+  rowGap?: Property.RowGap<number>;
   /**
    * CSS `gap` property
    */
-  columnGap?: ColumnGapProperty<number>;
+  columnGap?: Property.ColumnGap<number>;
 
   /**
    * Multiplier of all indents. For example, if you specify a margin-top equal to 3 (mt = {3}), it will be 12px (3 * 4 = 12).
