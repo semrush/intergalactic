@@ -8,7 +8,7 @@ import { fireFn } from '@semcore/utils/lib/fire';
 import Table from './Table';
 import ScrollAreaSmart from '@semcore/scroll-area';
 import ContextTable from './context';
-import trottle from '@semcore/utils/lib/rafTrottle';
+import throttle from '@semcore/utils/lib/rafTrottle';
 import { getNodeByRef, setRef } from '@semcore/utils/lib/ref';
 import useEventCallback from '@semcore/utils/lib/use/useEventCallback';
 import { createBaseComponent, sstyled } from '@semcore/core';
@@ -313,12 +313,12 @@ function StickyHeadInner(props, ref) {
     }
   });
 
-  const getScrollPage = trottle(setPositionContainer);
+  const getScrollPage = throttle(setPositionContainer);
 
   let masterScrollActive = false;
   let slaveScrollActive = false;
 
-  const handleScroll = trottle((e) => {
+  const handleScroll = throttle((e) => {
     if (!refScrollContainer || !container) return false;
 
     const { target } = e;
@@ -353,6 +353,7 @@ function StickyHeadInner(props, ref) {
         updateContainerNode(getScrollParent(getNodeByRef(self.ref)));
       }
       return () => {
+        getScrollPage.cancel();
         document.removeEventListener('scroll', getScrollPage);
       };
     },
@@ -365,6 +366,7 @@ function StickyHeadInner(props, ref) {
         refScrollContainer.addEventListener('scroll', handleScroll);
       }
       return () => {
+        handleScroll.cancel();
         refScrollContainer && refScrollContainer.removeEventListener('scroll', handleScroll);
       };
     },
