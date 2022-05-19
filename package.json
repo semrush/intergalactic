@@ -157,7 +157,6 @@
     "tools/jest-preset-ui",
     "tools/mailer",
     "tools/playground",
-    "tools/postcss-mediarezka",
     "tools/shadow-loader",
     "tools/slack-integration",
     "tools/super-publisher"
