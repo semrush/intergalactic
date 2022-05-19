@@ -16,9 +16,6 @@ import { routes } from '@navigation';
 const Tab = styled.div`
   position: relative;
   overflow: auto;
-  & > div:first-child {
-    font-family: FactorA-Bold, sans-serif;
-  }
   & > div:first-child > div {
     background-color: #ff622d;
     height: 2px;
@@ -27,7 +24,6 @@ const Tab = styled.div`
 
 const Main = styled.main`
   h2 {
-    font-family: FactorA-Bold, sans-serif;
     font-size: 24px;
     line-height: 120%;
     margin: 40px 0 16px;
@@ -36,13 +32,11 @@ const Main = styled.main`
     }
   }
   h3 {
-    font-family: FactorA-Bold, sans-serif;
     font-size: 18px;
     line-height: 110%;
     margin: 24px 0 16px 0;
   }
   h4 {
-    font-family: FactorA-Bold, sans-serif;
     font-size: 16px;
     line-height: 150%;
     margin: 16px 0;
@@ -119,7 +113,7 @@ export const Docs = ({ tokens, tabs }) => {
     <SidebarWrapper>
       {Boolean(tabs.length) && (
         <Tab>
-          <TabLine value={match.url} size="xl" styles={styles} underlined={false} mb={6}>
+          <TabLine value={match.url} size="l" styles={styles} underlined={false} mb={6}>
             {tabs.map((tab) => {
               const { route } = tab;
               return (

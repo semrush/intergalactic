@@ -161,7 +161,7 @@ const PageView = ({ route, page }) => {
             });
           }}
           placeholder="Select section"
-          size="xl"
+          size="l"
           id="select"
         />
       )}

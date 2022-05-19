@@ -26,6 +26,7 @@ import staticFiles from '@static';
 import { usePageData } from '../components/routing';
 import Spin from '@semcore/spin';
 import Error from '../components/Error';
+import styles from './Home.module.css';
 
 const stylesTabLine = css`
   STabLine {
@@ -33,7 +34,7 @@ const stylesTabLine = css`
     width: 810px;
   }
 
-  STabLineItem[size='xl'] {
+  STabLineItem[size='l'] {
     font-size: 24px;
   }
 `;
@@ -93,7 +94,6 @@ const Overlay = styled.div`
 const Title = styled.h1`
   grid-row: 1;
   grid-column: 1/3;
-  font-family: FactorA-Bold, sans-serif;
   font-size: 50px;
   line-height: 110%;
   margin-bottom: 16px;
@@ -127,7 +127,6 @@ const Started = styled.div`
   padding: 40px 0;
   display: flex;
   flex-direction: column;
-  font-family: FactorA-Bold, sans-serif;
   font-size: 24px;
   a {
     margin-top: 16px;
@@ -262,7 +261,6 @@ const MainWrapper = styled.div`
 `;
 
 const Tab = styled.div`
-  font-family: FactorA-Bold, sans-serif;
   & > div:first-child > div {
     background-color: #ff622d;
     height: 2px;
@@ -274,7 +272,6 @@ const Border = styled.div`
   border-radius: 6px;
   height: fit-content;
   padding: 40px 32px;
-  font-family: Inter;
   font-size: 16px;
   line-height: 150%;
 `;
@@ -329,7 +326,6 @@ const TableOverlay = styled.div`
     margin: 0;
     margin-bottom: 8px;
     font-size: 16px;
-    font-family: FactorA-Bold, sans-serif;
   }
   a {
     margin-bottom: 8px;
@@ -666,23 +662,35 @@ function Home() {
             {getCustomPage(mappingTableToImg.layout)}
           </PromoWrapper>
           <MainWrapper>
-            <Tab>
+            <div className={styles.tabsWrapper}>
               <TabLine
                 underlined={false}
                 onChange={updateValue}
-                styles={stylesTabLine}
+                className={styles.tabs}
                 value={value}
-                size="xl"
+                size="l"
               >
-                <TabLine.Item value={'components'}>Components</TabLine.Item>
-                <TabLine.Item value={'charts'}>Charts</TabLine.Item>
-                <TabLine.Item value={'table'}>Table</TabLine.Item>
-                <TabLine.Item value={'ux'}>UX Patterns</TabLine.Item>
-                <TabLine.Item value={'filters'}>Filters</TabLine.Item>
-                <TabLine.Item value={'documentation'}>Developer Docs</TabLine.Item>
+                <TabLine.Item className={styles.tab} value={'components'}>
+                  Components
+                </TabLine.Item>
+                <TabLine.Item className={styles.tab} value={'charts'}>
+                  Charts
+                </TabLine.Item>
+                <TabLine.Item className={styles.tab} value={'table'}>
+                  Table
+                </TabLine.Item>
+                <TabLine.Item className={styles.tab} value={'ux'}>
+                  UX Patterns
+                </TabLine.Item>
+                <TabLine.Item className={styles.tab} value={'filters'}>
+                  Filters
+                </TabLine.Item>
+                <TabLine.Item className={styles.tab} value={'documentation'}>
+                  Developer Docs
+                </TabLine.Item>
               </TabLine>
-              <Border>{renderSwitch(value)}</Border>
-            </Tab>
+            </div>
+            <Border>{renderSwitch(value)}</Border>
           </MainWrapper>
           <EmailsBanner />
           {/* <UpdateBlock /> */}
