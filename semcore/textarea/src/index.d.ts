@@ -1,5 +1,5 @@
 import { SyntheticEvent, TextareaHTMLAttributes } from 'react';
-import { ResizeProperty } from 'csstype';
+import { Property } from 'csstype';
 import { IBoxProps } from '@semcore/flex-box';
 import { ReturnEl, Merge } from '@semcore/core';
 import { IWithAutoFocusEnhanceProps } from '@semcore/utils/lib/enhances/autoFocusEnhance';
@@ -16,7 +16,7 @@ export interface ITextareaProps extends IBoxProps, IWithAutoFocusEnhanceProps {
   /** Value responsible for resizing textarea
    * @default none
    */
-  resize?: ResizeProperty | 'auto';
+  resize?: Property.Resize | 'auto';
   /** Value responsible for the minimum number of rows in recalculation
    * @default 2
    * */
