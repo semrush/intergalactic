@@ -4,6 +4,8 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ## [3.0.3] - 2022-05-19
 
+### Fixed
+
 - Fixed non-closing popper after clicking on an Option
 
 ## [3.0.2] - 2022-05-18
