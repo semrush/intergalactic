@@ -5,6 +5,7 @@ import mri from 'mri';
 
 const argv = mri<{
   source: string;
+  modules: string;
 }>(process.argv.slice(2), {
   default: {
     source: 'ts',
