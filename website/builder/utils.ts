@@ -12,7 +12,13 @@ import { createHash } from 'crypto';
 export const generateLegacyHeadingId = (headingText: string) =>
   'a' + createHash('md5').update(headingText).digest('hex').slice(0, 5);
 export const generateHeadingId = (headingText: string) =>
-  headingText.toLowerCase().trim().replace(/\W+/g, '_');
+  headingText
+    .toLowerCase()
+    .trim()
+    .replace(/^\d+/g, '_')
+    .replace(/\W+/g, '_')
+    .replace(/^_+/g, '')
+    .replace(/_+$/g, '_');
 
 export const fsExists = async (path: string) => {
   try {
