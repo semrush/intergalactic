@@ -12,7 +12,6 @@ const scope = require('postcss-modules-scope');
 const values = require('postcss-modules-values');
 
 const reshadow = require('@reshadow/postcss');
-const mediarezka = require('@semcore/postcss-mediarezka');
 
 const stringHash = require('string-hash');
 const genericNames = require('generic-names');
@@ -128,15 +127,6 @@ module.exports = ({ plugins = [], options = {}, generateScopedName }) => {
   }
 
   processorPlugins.push(...modulesPlugins, parser.plugin);
-
-  if (options.mediarezka !== null) {
-    processorPlugins.push(
-      mediarezka({
-        getMedia: (css) => (OUTPUT.media = css),
-        ...options.mediarezka,
-      }),
-    );
-  }
 
   if (options.cssnano || (options.cssnano !== null && process.env.NODE_ENV === 'production')) {
     /**
