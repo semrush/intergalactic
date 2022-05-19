@@ -8,6 +8,7 @@ import { resolve as resolvePath } from 'path';
 import { esbuildPluginDocs } from './esbuild-plugin-docs';
 import { esbuildPluginStatic } from './esbuild-plugin-static';
 import cssModulesPlugin from 'esbuild-plugin-css-modules';
+import { esbuildPluginIcons } from './esbuild-plugin-icons';
 
 export const websiteEsbuildConfig: esbuild.BuildOptions = {
   entryPoints: ['./src/main-render.jsx', './src/main.css'],
@@ -24,6 +25,7 @@ export const websiteEsbuildConfig: esbuild.BuildOptions = {
     esbuildPluginSemcore(/semcore|tools/),
     esbuildPluginDocs(),
     esbuildPluginStatic(),
+    esbuildPluginIcons(),
     process.env.NODE_ENV !== 'production'
       ? esbuildPluginAlias({
           react: resolvePath('./node_modules/react/index.js'),

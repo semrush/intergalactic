@@ -234,7 +234,7 @@ export const ListIcons = ({ data, icons, json, old = false }) => (
     {data.map((icon, index) => {
       const Icon = icons[icon.name];
       if (!Icon) {
-        new Error(icon.name);
+        new Error(`Icon ${icon.name} was not founded in import from @icons`);
         return null;
       }
 
