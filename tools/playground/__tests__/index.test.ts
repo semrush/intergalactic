@@ -46,6 +46,8 @@ describe('Playground sources resolving', () => {
         '@components/Color',
         '@components/Copy',
         '@components/algolia-config',
+        '@icons/lib',
+        '@icons',
       ],
       outdir: './output-is-disabled-with-write-false-option',
       write: false,
