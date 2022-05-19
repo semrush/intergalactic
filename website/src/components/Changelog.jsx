@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import ReactMarkdown from 'react-markdown';
 import Tag from '@semcore/tag';
 import { Text } from '@semcore/typography';
 
