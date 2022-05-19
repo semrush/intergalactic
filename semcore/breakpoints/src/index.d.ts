@@ -21,9 +21,9 @@ export interface IBreakpointsProps {
   children: React.ReactNode;
 }
 
-type createBreakpointsType = (
-  media: mediaType,
-) => ((props: IBreakpointsProps) => React.ReactElement) & {
+type createBreakpointsType = (media: mediaType) => ((
+  props: IBreakpointsProps,
+) => React.ReactElement) & {
   Context: React.Context<number>;
   mediaList: IMediaList;
 };

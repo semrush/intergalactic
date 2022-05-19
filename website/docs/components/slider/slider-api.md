@@ -1,5 +1,6 @@
 ---
 title: API
+fileSource: slider
 ---
 
 @## Slider
@@ -9,7 +10,7 @@ import Slider from '@semcore/slider';
 <Slider />;
 ```
 
-@interface ISliderProps
+@typescript ISliderProps
 
 @## Slider.Bar
 
@@ -18,13 +19,9 @@ import Slider from '@semcore/slider';
 <Slider.Bar />;
 ```
 
-@interface ISliderBarProps
-
 @## Slider.Knob
 
 ```jsx
 import Slider from '@semcore/slider';
 <Slider.Knob />;
 ```
-
-@interface ISliderKnobProps

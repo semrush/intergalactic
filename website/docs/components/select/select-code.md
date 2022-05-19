@@ -1,5 +1,6 @@
 ---
 title: Example
+fileSource: select
 ---
 
 > ⚠️ If you need to customize work with the dropdown menu, please refer to the documentation [@semcore/popper](/utils/popper/)

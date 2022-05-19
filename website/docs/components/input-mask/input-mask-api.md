@@ -1,5 +1,6 @@
 ---
 title: API
+fileSource: input-mask
 ---
 
 @## InputMask
@@ -17,7 +18,7 @@ import InputMask from '@semcore/input-mask';
 <InputMask.Value />;
 ```
 
-@interface IInputMaskValueProps
+@typescript IInputMaskValueProps
 
 @## InputMask.Addon
 

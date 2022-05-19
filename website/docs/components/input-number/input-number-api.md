@@ -1,5 +1,6 @@
 ---
 title: API
+fileSource: input-number
 ---
 
 @## InputNumber
@@ -8,7 +9,7 @@ title: API
 import InputNumber from '@semcore/input-number';
 ```
 
-@interface IInputNumberProps
+@typescript IInputNumberProps
 
 @## InputNumber.Value
 
@@ -17,7 +18,7 @@ import InputNumber from '@semcore/input-number';
 <InputNumber.Value />;
 ```
 
-@interface IInputNumberValueProps
+@typescript IInputNumberValueProps
 
 @## InputNumber.Controls
 
@@ -26,7 +27,7 @@ import InputNumber from '@semcore/input-number';
 <InputNumber.Controls />;
 ```
 
-@interface IInputNumberControlsProps
+@typescript IInputNumberControlsProps
 
 @## InputNumber.Addon
 

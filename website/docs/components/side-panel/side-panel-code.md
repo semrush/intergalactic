@@ -1,5 +1,6 @@
 ---
 title: Example
+fileSource: side-panel
 ---
 
 @## Basic example

@@ -1,5 +1,6 @@
 ---
 title: Example
+fileSource: fullscreen-modal
 ---
 
 @## Example of simplified use of the header (Fullscreen.Header)

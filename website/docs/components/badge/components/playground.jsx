@@ -1,6 +1,6 @@
 import React from 'react';
 
-import PlaygroundGeneration from 'components/PlaygroundGeneration';
+import PlaygroundGeneration from '@components/PlaygroundGeneration';
 
 import Badge from '@semcore/badge';
 

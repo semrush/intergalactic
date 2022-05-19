@@ -11,14 +11,14 @@ import ProjectCreate from '@semcore/project-create';
 <ProjectCreate />;
 ```
 
-@interface IProjectCreateModalProps
+@typescript IProjectCreateModalProps
 
 @## Prop sharingCheckboxProps
 
-@interface ISharingCheckboxProps
+@typescript ISharingCheckboxProps
 
 @## I18n
 
 The component supports the following fields for the localization:
 
-@interface IProjectCreateI18n
+@typescript IProjectCreateI18n

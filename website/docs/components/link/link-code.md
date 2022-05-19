@@ -1,5 +1,6 @@
 ---
 title: Example
+fileSource: link
 ---
 
 @## Links inside the content

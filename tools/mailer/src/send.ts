@@ -2,6 +2,8 @@
 import dotenv from 'dotenv';
 // import { validateMailerEnv } from './validateMailerEnv';
 
+const mailchimp: any = {};
+
 dotenv.config();
 
 export const sendMail = async (options: {

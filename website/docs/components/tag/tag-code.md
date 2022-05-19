@@ -1,5 +1,6 @@
 ---
 title: Example
+fileSource: tag
 ---
 
 @## Addon for tag

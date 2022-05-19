@@ -1,5 +1,6 @@
 ---
 title: Example
+fileSource: d3-chart
 ---
 
 @## Selected date

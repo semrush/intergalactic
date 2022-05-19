@@ -1,5 +1,6 @@
 ---
 title: API
+fileSource: skeleton
 ---
 
 @## Skeleton
@@ -9,7 +10,7 @@ import Skeleton from '@semcore/skeleton';
 <Skeleton />;
 ```
 
-@interface ISkeletonProps
+@typescript ISkeletonProps
 
 @## Skeleton.Text
 
@@ -18,7 +19,7 @@ import Skeleton from '@semcore/skeleton';
 <Skeleton.Text />;
 ```
 
-@interface ISkeletonTextProps
+@typescript ISkeletonTextProps
 
 @## AreaChartSkeleton
 

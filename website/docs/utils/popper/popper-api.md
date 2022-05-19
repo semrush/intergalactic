@@ -1,5 +1,6 @@
 ---
 title: API
+fileSource: popper
 ---
 
 @## Popper
@@ -11,7 +12,7 @@ import Popper from '@semcore/popper';
 <Popper />;
 ```
 
-@interface IPopperProps
+@typescript IPopperProps
 
 @## Popper.Trigger
 
@@ -22,7 +23,7 @@ import Popper from '@semcore/popper';
 <Popper.Trigger />;
 ```
 
-@interface IPopperTriggerProps
+@typescript IPopperTriggerProps
 
 @## Popper.Popper
 
@@ -33,4 +34,4 @@ import Popper from '@semcore/popper';
 <Popper.Popper />;
 ```
 
-@interface IPopperPopperProps
+@typescript IPopperPopperProps

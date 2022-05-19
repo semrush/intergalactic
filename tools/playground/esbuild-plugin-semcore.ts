@@ -25,7 +25,7 @@ const babelTransform = async (contents: string, path: string) => {
   return code as string;
 };
 
-const supportedExtensions = ['ts', 'js', 'tsx', 'jsx', 'css'];
+const supportedExtensions = ['ts', 'js', 'tsx', 'jsx'];
 const loaderOfExtension: { [key: string]: Loader } = { md: 'text' };
 
 const cacheManager = makeCacheManager('esbuild_plugin_semcore');

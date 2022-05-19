@@ -1,5 +1,6 @@
 ---
 title: API
+fileSource: fullscreen-modal
 ---
 
 @## FullscreenModal
@@ -8,11 +9,11 @@ title: API
 import FullscreenModal from '@semcore/fullscreen-modal';
 ```
 
-@interface IFullscreenModalProps
+@typescript IFullscreenModalProps
 
 @## FullscreenModal.Header
 
-@interface IFullscreenModalHeaderProps
+@typescript IFullscreenModalHeaderProps
 
 @## FullscreenModal.Close
 

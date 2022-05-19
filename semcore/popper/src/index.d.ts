@@ -70,19 +70,22 @@ export interface IPopperProps extends IOutsideClickProps, IPortalProps, IUniqueI
 
   /**
    * By default, Popper is styled as position: absolute. Allows to switch to fixed
-   * @deprecated v4.0.0 {@link IPopperProps.strategy}
+   * @deprecated v4.0.0
+   * @use IPopperProps.strategy
    */
   positionFixed?: boolean;
 
   /**
    * Turns off subscription to global `resize/scroll` events
-   * @deprecated v4.0.0 {@link IPopperProps.eventListeners}
+   * @deprecated v4.0.0
+   * @use IPopperProps.eventListeners
    */
   eventsDisabled?: boolean;
 
   /**
    * Trigger events to show and hide the popper
-   * @deprecated v4.0.0 {@link IPopperProps.interaction}
+   * @deprecated v4.0.0
+   * @use IPopperProps.interaction
    */
   displayEvents?: {
     show: string[];
@@ -91,7 +94,8 @@ export interface IPopperProps extends IOutsideClickProps, IPortalProps, IUniqueI
 
   /**
    * Trigger timer to show and hide the popper
-   * @deprecated v4.0.0 {@link IPopperProps.timeout}
+   * @deprecated v4.0.0
+   * @use IPopperProps.timeout
    */
   displayTimeout?: {
     show: number;
@@ -107,7 +111,8 @@ export interface IPopperProps extends IOutsideClickProps, IPortalProps, IUniqueI
   /**
    * Defines the border element used by Popper for its flip and preventOverflow modifiers. Three abbreviated keywords are supported; Popper will find the correct DOM element.
    * `'scrollParent' | 'viewport' | 'window' | HTMLElement`
-   * @deprecated v4.0.0 {@link IPopperProps.preventOverflow}
+   * @deprecated v4.0.0
+   * @use IPopperProps.preventOverflow
    */
   // eslint-disable-next-line ssr-friendly/no-dom-globals-in-module-scope
   boundary?: 'scrollParent' | 'viewport' | 'window' | HTMLElement;

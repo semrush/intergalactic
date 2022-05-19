@@ -1,0 +1,20 @@
+@import 'normalize.css/normalize.css';
+@import 'prismjs/themes/prism.css';
+@import './fonts.css';
+@import '@semcore/utils/style/var.css';
+
+html {
+  font-family: Inter, -apple-system, sans-serif, Arial;
+  color: #171a22;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}

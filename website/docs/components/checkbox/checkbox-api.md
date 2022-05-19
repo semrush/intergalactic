@@ -1,5 +1,6 @@
 ---
 title: API
+fileSource: checkbox
 ---
 
 @## Checkbox
@@ -11,7 +12,7 @@ import Checkbox from '@semcore/checkbox';
 <Checkbox />;
 ```
 
-@interface ICheckboxProps
+@typescript ICheckboxProps
 
 @## Checkbox.Value
 
@@ -22,7 +23,7 @@ import Checkbox from '@semcore/checkbox';
 <Checkbox.Value />;
 ```
 
-@interface ICheckboxValueProps
+@typescript ICheckboxValueProps
 
 @## Checkbox.Text
 
@@ -33,4 +34,4 @@ import Checkbox from '@semcore/checkbox';
 <Checkbox.Text />;
 ```
 
-@interface ICheckboxTextProps
+@typescript ICheckboxTextProps

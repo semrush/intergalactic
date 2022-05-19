@@ -1,5 +1,6 @@
 ---
 title: API
+fileSource: carousel
 ---
 
 @## Carousel
@@ -11,7 +12,7 @@ import Carousel from '@semcore/carousel';
 <Carousel />;
 ```
 
-@interface ICarouselProps
+@typescript ICarouselProps
 
 @## Carousel.Container
 

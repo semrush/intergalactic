@@ -1,5 +1,6 @@
 ---
 title: API
+fileSource: feature-popover
 ---
 
 @## FeaturePopover
@@ -11,7 +12,7 @@ import FeaturePopover from '@semcore/feature-popover';
 <FeaturePopover />;
 ```
 
-@interface IPopperProps
+@typescript IPopperProps
 
 @## FeaturePopover.Trigger
 
@@ -22,7 +23,7 @@ import FeaturePopover from '@semcore/feature-popover';
 <FeaturePopover.Trigger />;
 ```
 
-@interface IPopperTriggerProps
+@typescript IPopperTriggerProps
 
 @## FeaturePopover.Popper
 
@@ -33,7 +34,7 @@ import FeaturePopover from '@semcore/feature-popover';
 <FeaturePopover.Popper />;
 ```
 
-@interface IFeaturePopoverPopperProps
+@typescript IFeaturePopoverPopperProps
 
 @## FeaturePopover.Spot
 

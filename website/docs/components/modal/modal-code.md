@@ -1,5 +1,6 @@
 ---
 title: Example
+fileSource: modal
 ---
 
 @## Basic use of the modal window

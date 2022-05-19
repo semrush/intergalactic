@@ -1,5 +1,6 @@
 ---
 title: API
+fileSource: spin
 ---
 
 @## Spin
@@ -11,4 +12,4 @@ import Spin from '@semcore/spin';
 <Spin />;
 ```
 
-@interface ISpinProps
+@typescript ISpinProps

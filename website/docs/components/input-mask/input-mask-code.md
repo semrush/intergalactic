@@ -1,5 +1,6 @@
 ---
 title: Example
+fileSource: input-mask
 ---
 
 @## InputMask

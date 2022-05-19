@@ -1,5 +1,6 @@
 ---
 title: API
+fileSource: tab-panel
 ---
 
 @## TabPanel
@@ -11,7 +12,7 @@ import TabPanel from '@semcore/tab-panel';
 <TabPanel />;
 ```
 
-@interface ITabPanelProps
+@typescript ITabPanelProps
 
 @## TabPanel.Item
 
@@ -24,7 +25,7 @@ import TabPanel from '@semcore/tab-panel';
 <TabPanel.Item />;
 ```
 
-@interface ITabPanelItemProps
+@typescript ITabPanelItemProps
 
 @## TabPanel.Item.Addon
 

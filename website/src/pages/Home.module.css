@@ -1,0 +1,16 @@
+.tabsWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.tabs.tabs {
+  width: auto;
+}
+.tab.tab.tab {
+  font-size: 24px;
+  font-weight: bold;
+}
+.tabs > div:last-child {
+  /* SIndicator */
+  background-color: #ff622d;
+}

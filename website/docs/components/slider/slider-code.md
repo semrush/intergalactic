@@ -1,5 +1,6 @@
 ---
 title: Example
+fileSource: slider
 ---
 
 @## Slider with value labels

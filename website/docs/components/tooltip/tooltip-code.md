@@ -1,5 +1,6 @@
 ---
 title: Example
+fileSource: tooltip
 ---
 
 > ⚠️ If you need to customize work with the tooltip, see the [@semcore/popper](/utils/popper/) documentation.

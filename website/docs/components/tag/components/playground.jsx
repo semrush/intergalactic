@@ -1,7 +1,7 @@
 import React from 'react';
 import Tag from '@semcore/tag';
 import EditXS from '@semcore/icon/Edit/m';
-import PlaygroundGeneration from 'components/PlaygroundGeneration';
+import PlaygroundGeneration from '@components/PlaygroundGeneration';
 
 export default PlaygroundGeneration((createGroupWidgets) => {
   const { bool, radio, text, select } = createGroupWidgets('Tag');

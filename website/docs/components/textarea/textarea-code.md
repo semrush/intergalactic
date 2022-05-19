@@ -1,5 +1,6 @@
 ---
 title: Example
+fileSource: textarea
 ---
 
 @## Textarea with auto height
