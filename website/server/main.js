@@ -13,7 +13,6 @@ app.get('/ping', function (req, res) {
 
 app.get('*', function (req, res) {
   res.status(404);
-  res.send(`response to ${req.method} request to "${req.url}"`);
 });
 
 app.listen(port).on('listening', () => {
