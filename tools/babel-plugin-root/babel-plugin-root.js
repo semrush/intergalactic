@@ -31,13 +31,33 @@ function RootPlugin({ types: t }, opts) {
             if (!t.isVariableDeclarator(refP.container) && !t.isJSXOpeningElement(refP.container))
               return;
 
+            let propsVal;
             const propsIdent = refP.scope.generateUidIdentifierBasedOnNode('props');
+            const nearestParentFunction = refP.scope.getFunctionParent()?.block;
+            const deepParentClassMethod = refP.findParent((path) => path.isClassMethod());
+
+            if (
+              deepParentClassMethod?.type === 'ClassMethod' &&
+              nearestParentFunction?.type !== 'FunctionDeclaration' &&
+              nearestParentFunction?.type !== 'ArrowFunctionExpression' &&
+              nearestParentFunction?.type !== 'FunctionExpression'
+            ) {
+              propsVal = t.MemberExpression(t.ThisExpression(), t.Identifier(options.fieldAssign));
+            } else if (
+              refP.scope.parent.block.type === 'Program' &&
+              (nearestParentFunction?.type === 'FunctionDeclaration' ||
+                nearestParentFunction?.type === 'ArrowFunctionExpression' ||
+                nearestParentFunction?.type === 'FunctionExpression')
+            ) {
+              propsVal = t.Identifier('arguments[0]');
+            } else {
+              throw new Error(
+                `Root does not support such placement, use it inside functional components or class methods`,
+              );
+            }
             refP.scope.push({
               id: propsIdent,
-              init:
-                refP.scope.block.type === 'ClassMethod'
-                  ? t.MemberExpression(t.ThisExpression(), t.Identifier(options.fieldAssign))
-                  : t.Identifier('arguments[0]'),
+              init: propsVal,
             });
 
             refP.scope.path.traverse({

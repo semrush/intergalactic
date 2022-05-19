@@ -2,6 +2,13 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [1.1.1] - 2022-04-01
+
+### Fixed
+
+- Fixed root props passing in conditional blocks
+- Added error if placement validation failed
+
 ## [1.1.0] - 2022-04-01
 
 ### Fixed
