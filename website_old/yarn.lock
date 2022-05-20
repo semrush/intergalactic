@@ -4260,9 +4260,9 @@ fizzy-ui-utils@^2.0.0:
     desandro-matches-selector "^2.0.0"
 
 follow-redirects@^1.10.0:
-  version "1.13.3"
-  resolved "https://registry.npmjs.org/follow-redirects/-/follow-redirects-1.13.3.tgz"
-  integrity sha512-DUgl6+HDzB0iEptNQEXLx/KhTmDb8tZUHSeLqpnjpknR70H0nC2t9N73BK6fN4hOvJ84pKlIQVQ4k5FFlBedKA==
+  version "1.15.0"
+  resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.15.0.tgz#06441868281c86d0dda4ad8bdaead2d02dca89d4"
+  integrity sha512-aExlJShTV4qOUOL7yF1U5tvLCB0xQuudbf6toyYA0E/acBNw71mvjFTnLaRp50aQaYocMR0a/RMMBIHeZnGyjQ==
 
 for-each@^0.3.3:
   version "0.3.3"
