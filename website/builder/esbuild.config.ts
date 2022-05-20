@@ -16,7 +16,7 @@ export const websiteEsbuildConfig: esbuild.BuildOptions = {
   sourcemap: true,
   outdir: './src/public',
   publicPath: process.env.PUBLIC_PATH || '/',
-  assetNames: 'assets/[dir]/[name]-[hash]',
+  assetNames: (process.env.PUBLIC_PATH || '') + 'assets/[dir]/[name]-[hash]',
   plugins: [
     cssModulesPlugin({
       localIdentName: '[local]-[hash:8:md5:hex]',
