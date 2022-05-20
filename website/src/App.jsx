@@ -61,7 +61,7 @@ const Router = !globalThis.__ssr
 
 export function App() {
   React.useEffect(() => {
-    if (location.origin === 'https://i.semrush.com/') {
+    if (location.origin === 'https://i.semrush.com') {
       let pathname = location.pathname;
       if (!pathname.startsWith('/intergalactic')) {
         pathname = '/intergalactic' + pathname;
