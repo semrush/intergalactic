@@ -6,16 +6,14 @@ steps:
     args: ['--non-interactive', '--frozen-lockfile']
   - name: node:16
     entrypoint: yarn
-    args: ['build']
+    args: ['build:icons']
   - name: node:16
     entrypoint: yarn
     args: ['--non-interactive', '--frozen-lockfile', '--cwd', 'website']
   - name: node:16
     entrypoint: yarn
-    args: ['deploy']
+    args: ['build']
     dir: 'website'
-    env:
-      - 'GCLOUD_SECRET=$_GCLOUD_SECRET'
   - name: 'gcr.io/cloud-builders/docker'
     args:
       - 'build'
