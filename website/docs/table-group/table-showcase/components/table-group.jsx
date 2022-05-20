@@ -1,6 +1,6 @@
 import React from 'react';
-import ComponentCard from '@docs/../client/components/ComponentCard';
-import { getImageName } from '@docs/../client/pages/Home';
+import ComponentCard from '@docs/../src/components/ComponentCard';
+import { getImageName } from '@docs/../src/pages/Home';
 import styled from 'styled-components';
 
 const group = {

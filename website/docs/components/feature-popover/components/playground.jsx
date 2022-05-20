@@ -2,7 +2,7 @@ import React from 'react';
 
 import Button from '@semcore/button';
 import FeaturePopover from '@semcore/feature-popover';
-import PlaygroundGeneration from 'components/PlaygroundGeneration';
+import PlaygroundGeneration from '@components/PlaygroundGeneration';
 
 const PLACEMENT = [
   'top-start',

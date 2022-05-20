@@ -1,5 +1,6 @@
 ---
 title: Example
+fileSource: time-picker
 ---
 
 @## Expanded access to all the components

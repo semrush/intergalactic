@@ -1,5 +1,6 @@
 ---
 title: Example
+fileSource: feedback-form
 ---
 
 @## Default feedback form

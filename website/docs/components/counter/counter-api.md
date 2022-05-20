@@ -1,5 +1,6 @@
 ---
 title: API
+fileSource: counter
 ---
 
 @## Counter
@@ -9,4 +10,4 @@ import Counter from '@semcore/counter';
 <Counter />;
 ```
 
-@interface ICounterProps
+@typescript ICounterProps

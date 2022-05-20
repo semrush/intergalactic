@@ -1,5 +1,6 @@
 ---
 title: API
+fileSource: pagination
 ---
 
 @## Pagination
@@ -9,7 +10,7 @@ import Pagination from '@semcore/pagination';
 <Pagination />;
 ```
 
-@interface IPaginationProps
+@typescript IPaginationProps
 
 @## Pagination.FirstPage
 
@@ -36,7 +37,7 @@ import Pagination from '@semcore/pagination';
 <Pagination.PageInput />;
 ```
 
-@interface IPageInputProps
+@typescript IPageInputProps
 
 @## Pagination.PageInput.Value
 
@@ -45,7 +46,7 @@ import Pagination from '@semcore/pagination';
 <Pagination.PageInput.Value />;
 ```
 
-@interface IInputValueProps
+@typescript IInputValueProps
 
 @## Pagination.PrevPage
 
@@ -63,4 +64,4 @@ import Pagination from '@semcore/pagination';
 <Pagination.TotalPages />;
 ```
 
-@interface ITotalPagesProps
+@typescript ITotalPagesProps

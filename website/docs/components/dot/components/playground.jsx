@@ -2,7 +2,7 @@ import React from 'react';
 
 import Dot from '@semcore/dot';
 import Button from '@semcore/button';
-import PlaygroundGeneration from 'components/PlaygroundGeneration';
+import PlaygroundGeneration from '@components/PlaygroundGeneration';
 
 const SIZES = ['m', 'l'];
 

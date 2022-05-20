@@ -1,5 +1,6 @@
 ---
 title: API
+fileSource: textarea
 ---
 
 @## Textarea
@@ -11,4 +12,4 @@ import Textarea from '@semcore/textarea';
 <Textarea />;
 ```
 
-@interface ITextareaProps
+@typescript ITextareaProps

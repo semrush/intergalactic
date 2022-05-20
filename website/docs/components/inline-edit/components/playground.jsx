@@ -1,7 +1,7 @@
 import React from 'react';
 import InlineEdit from '@semcore/inline-edit';
 import InlineInput from '@semcore/inline-input';
-import PlaygroundGeneration from 'components/PlaygroundGeneration';
+import PlaygroundGeneration from '@components/PlaygroundGeneration';
 
 import EditM from '@semcore/icon/Edit/m';
 import { Flex } from '@semcore/flex-box';

@@ -1,5 +1,6 @@
 ---
 title: Example
+fileSource: d3-chart
 ---
 
 @## Example in line chart

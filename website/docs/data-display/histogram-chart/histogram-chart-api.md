@@ -1,5 +1,6 @@
 ---
 title: API
+fileSource: d3-chart
 ---
 
 Histogram chart is based on the [bar chart](/data-display/bar-chart), but has slightly different settings.

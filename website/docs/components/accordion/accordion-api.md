@@ -1,5 +1,6 @@
 ---
 title: API
+fileSource: accordion
 ---
 
 @## Accordion
@@ -10,7 +11,7 @@ import Accordion from '@semcore/accordion';
 <Accordion />;
 ```
 
-@interface IAccordionProps
+@typescript IAccordionProps
 
 @## Accordion.Item
 
@@ -20,7 +21,7 @@ import { Accordion } from '@semcore/accordion';
 <Accordion.Item />;
 ```
 
-@interface IAccordionItemProps
+@typescript IAccordionItemProps
 
 @## Accordion.Item.Toggle
 

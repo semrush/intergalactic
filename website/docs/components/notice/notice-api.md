@@ -1,5 +1,6 @@
 ---
 title: API
+fileSource: notice
 ---
 
 @## Notice
@@ -9,7 +10,7 @@ import Notice from '@semcore/notice';
 <Notice />;
 ```
 
-@interface INoticeProps
+@typescript INoticeProps
 
 @## Notice.Label
 
@@ -56,4 +57,4 @@ import { NoticeSmart } from '@semcore/notice';
 <NoticeSmart />;
 ```
 
-@interface INoticeSmartProps
+@typescript INoticeSmartProps

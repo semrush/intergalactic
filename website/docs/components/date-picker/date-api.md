@@ -1,5 +1,6 @@
 ---
 title: API
+fileSource: date-picker
 ---
 
 @## DatePicker/MonthPicker
@@ -12,7 +13,7 @@ import { DatePicker, MonthPicker } from '@semcore/date-picker';
 <MonthPicker />;
 ```
 
-@interface IDatePickerProps
+@typescript IDatePickerProps
 
 @## DateRangePicker
 
@@ -24,7 +25,7 @@ import { DateRangePicker, MonthRangePicker } from '@semcore/date-picker';
 <MonthRangePicker />;
 ```
 
-@interface IDateRangePickerProps
+@typescript IDateRangePickerProps
 
 @## DatePicker.Trigger/DateRangePicker.Trigger
 
@@ -44,7 +45,7 @@ import { DateRangePicker } from '@semcore/date-picker';
 <DateRangePicker.Period />;
 ```
 
-@interface IDateRangePickerPeriodProps
+@typescript IDateRangePickerPeriodProps
 
 @## Calendar
 
@@ -56,7 +57,7 @@ import { DatePicker, MonthPicker } from '@semcore/date-picker';
 <MonthPicker.Calendar />;
 ```
 
-@interface ICalendarProps
+@typescript ICalendarProps
 
 @## Calendar.Unit
 
@@ -68,4 +69,4 @@ import { DatePicker, MonthPicker } from '@semcore/date-picker';
 <MonthPicker.Calendar.Unit />;
 ```
 
-@interface ICalendarUnitProps
+@typescript ICalendarUnitProps

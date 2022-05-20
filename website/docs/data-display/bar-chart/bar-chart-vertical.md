@@ -1,5 +1,6 @@
 ---
 title: Vertical bar chart
+fileSource: d3-chart
 ---
 
 @## Description

@@ -1,7 +1,17 @@
 import React from 'react';
 
-import cssVariable from '!css-variables-loader!@semcore/email/lib/core/var.css';
-import Color from 'components/Color';
+import '@semcore/email/core/var.css';
+import cssVariableFile from '!!raw-loader!@semcore/email/core/var.css';
+
+const cssVariable = Object.fromEntries(
+  cssVariableFile
+    .split('\n')
+    .map((line) => line.trim())
+    .filter((line) => line.startsWith('--') && line.endsWith(';'))
+    .map((line) => line.split(': ')),
+);
+
+import Color from '@components/Color';
 import { bg_100_400, bg_100_300, bg_100_200, bg } from './utils';
 
 const shades = ['light', '', 'dark'];

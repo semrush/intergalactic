@@ -1,7 +1,7 @@
 import React from 'react';
 import { ButtonTrigger } from '@semcore/base-trigger';
 import Dropdown from '@semcore/dropdown';
-import PlaygroundGeneration from 'components/PlaygroundGeneration';
+import PlaygroundGeneration from '@components/PlaygroundGeneration';
 
 const PLACEMENT = [
   'top-start',

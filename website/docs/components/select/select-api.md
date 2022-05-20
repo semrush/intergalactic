@@ -1,5 +1,6 @@
 ---
 title: API
+fileSource: select
 ---
 
 > `Select` is a wrap over `DropdownMenu` with the addition of new selection features.
@@ -11,7 +12,7 @@ import Select from '@semcore/select';
 <Select />;
 ```
 
-@interface ISelectProps
+@typescript ISelectProps
 
 @## Select.Trigger
 
@@ -45,7 +46,7 @@ import Select from '@semcore/select';
 <Select.Option />;
 ```
 
-@interface ISelectOptionProps
+@typescript ISelectOptionProps
 
 @## Select.OptionHint
 
@@ -68,7 +69,7 @@ import Select from '@semcore/select';
 <Select.OptionCheckbox />;
 ```
 
-@interface ISelectOptionCheckboxProps
+@typescript ISelectOptionCheckboxProps
 
 @## Select.Option.Checkbox
 

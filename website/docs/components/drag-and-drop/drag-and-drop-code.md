@@ -1,5 +1,6 @@
 ---
 title: Example
+fileSource: drag-and-drop
 ---
 
 @## Use in the DropdownMenu

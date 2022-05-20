@@ -1,5 +1,6 @@
 ---
 title: Example
+fileSource: input-number
 ---
 
 @## Range of values

@@ -1,5 +1,6 @@
 ---
 title: API
+fileSource: pills
 ---
 
 @## Pills
@@ -8,7 +9,7 @@ title: API
 import Pills from '@semcore/pills';
 ```
 
-@interface IPillsProps
+@typescript IPillsProps
 
 @## Pill.Item
 
@@ -17,7 +18,7 @@ import Pills from '@semcore/pills';
 <Pills.Item />;
 ```
 
-@interface IPillProps
+@typescript IPillProps
 
 @## Pill.Item.Addon
 

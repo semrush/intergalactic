@@ -1,5 +1,5 @@
 import React from 'react';
-import Color from 'components/Color';
+import Color from '@components/Color';
 
 const group = {
   chart: ['#2BB3FF', '#59DDAA', '#FF622D', '#F67CF2', '#FDC23C', '#AB6CFE', '#FF8786', '#9BD85D'],

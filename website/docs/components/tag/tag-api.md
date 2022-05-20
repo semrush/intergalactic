@@ -1,10 +1,11 @@
 ---
 title: API
+fileSource: tag
 ---
 
 @## Tag
 
-@interface ITagProps
+@typescript ITagProps
 
 @## Tag.Addon
 

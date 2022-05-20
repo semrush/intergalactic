@@ -1,5 +1,6 @@
 ---
 title: API
+fileSource: flags
 ---
 
 @## Flags
@@ -8,4 +9,4 @@ title: API
 import Flags from '@semcore/flags';
 ```
 
-@interface IFlagsProps
+@typescript IFlagsProps

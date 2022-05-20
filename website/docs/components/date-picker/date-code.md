@@ -1,5 +1,6 @@
 ---
 title: Example
+fileSource: date-picker
 ---
 
 @## DatePicker

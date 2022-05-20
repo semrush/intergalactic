@@ -1,5 +1,6 @@
 ---
 tabName: Example
+fileSource: d3-chart
 ---
 
 Our library has two components for charts:

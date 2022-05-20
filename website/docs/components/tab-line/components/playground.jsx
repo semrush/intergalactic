@@ -1,7 +1,7 @@
 import React from 'react';
 import TabLine from '@semcore/tab-line';
 import Badge from '@semcore/badge';
-import PlaygroundGeneration from 'components/PlaygroundGeneration';
+import PlaygroundGeneration from '@components/PlaygroundGeneration';
 
 export default PlaygroundGeneration(
   (createGroupWidgets) => {

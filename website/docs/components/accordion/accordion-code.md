@@ -1,5 +1,6 @@
 ---
 title: Example
+fileSource: accordion
 ---
 
 @## Basic usage

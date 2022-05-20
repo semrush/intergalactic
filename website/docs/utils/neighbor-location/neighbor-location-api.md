@@ -1,5 +1,6 @@
 ---
 title: API
+fileSource: neighbor-location
 ---
 
 @## NeighborLocation
@@ -11,4 +12,4 @@ import NeighborLocation from '@semcore/neighbor-location';
 <NeighborLocation />;
 ```
 
-@interface INeighborLocationProps
+@typescript INeighborLocationProps

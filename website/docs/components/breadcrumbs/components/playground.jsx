@@ -1,5 +1,5 @@
 import React from 'react';
-import PlaygroundGeneration from 'components/PlaygroundGeneration';
+import PlaygroundGeneration from '@components/PlaygroundGeneration';
 import Breadcrumbs from '@semcore/breadcrumbs';
 
 export default PlaygroundGeneration(() => {
