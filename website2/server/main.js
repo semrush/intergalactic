@@ -16,5 +16,5 @@ app.get('*', function (req, res) {
 });
 
 app.listen(port).on('listening', () => {
-  console.info(`server started on port ${port}`);
+  console.info(`api server started on port ${port}`);
 });
