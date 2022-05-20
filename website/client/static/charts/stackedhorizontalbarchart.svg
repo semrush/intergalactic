@@ -1,0 +1,36 @@
+<svg width="144" height="80" viewBox="0 0 144 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_751_30777)">
+<path d="M0 5H142C143.105 5 144 5.89543 144 7V19C144 20.1046 143.105 21 142 21H0V5Z" fill="white"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M0 5H1V21H0V5Z" fill="#2BB3FF"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M2 5H50V21H2V5Z" fill="#8ECDFF"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M51 5H52V21H51V5Z" fill="#C4E5FE"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M53 5H120V21H53V5Z" fill="#FDC23C"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M121 5H192V21H121V5Z" fill="#FCE081"/>
+</g>
+<g clip-path="url(#clip1_751_30777)">
+<path d="M0 32H142C143.105 32 144 32.8954 144 34V46C144 47.1046 143.105 48 142 48H0V32Z" fill="white"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M0 32H71V48H0V32Z" fill="#2BB3FF"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M72 32H73V48H72V32Z" fill="#8ECDFF"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M74 32H75V48H74V32Z" fill="#C4E5FE"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M76 32H77V48H76V32Z" fill="#FDC23C"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M78 32H149V48H78V32Z" fill="#FCE081"/>
+</g>
+<g clip-path="url(#clip2_751_30777)">
+<path d="M0 59H142C143.105 59 144 59.8954 144 61V73C144 74.1046 143.105 75 142 75H0V59Z" fill="white"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M0 59H71V75H0V59Z" fill="#2BB3FF"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M72 59H120V75H72V59Z" fill="#8ECDFF"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M121 59H122V75H121V59Z" fill="#C4E5FE"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M123 59H190V75H123V59Z" fill="#FDC23C"/>
+</g>
+<defs>
+<clipPath id="clip0_751_30777">
+<path d="M0 5H142C143.105 5 144 5.89543 144 7V19C144 20.1046 143.105 21 142 21H0V5Z" fill="white"/>
+</clipPath>
+<clipPath id="clip1_751_30777">
+<path d="M0 32H142C143.105 32 144 32.8954 144 34V46C144 47.1046 143.105 48 142 48H0V32Z" fill="white"/>
+</clipPath>
+<clipPath id="clip2_751_30777">
+<path d="M0 59H142C143.105 59 144 59.8954 144 61V73C144 74.1046 143.105 75 142 75H0V59Z" fill="white"/>
+</clipPath>
+</defs>
+</svg>
