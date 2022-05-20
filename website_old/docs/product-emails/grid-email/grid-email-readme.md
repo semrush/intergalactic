@@ -1,5 +1,0 @@
----
-title: Readme
----
-
-@import readme
