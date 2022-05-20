@@ -1,5 +1,6 @@
 ---
 title: API
+fileSource: dropdown
 ---
 
 > The `Dropdown` is a wrap over the `Popper` with the addition of styles, presets and modifiers.
@@ -13,7 +14,7 @@ import Dropdown from '@semcore/dropdown';
 <Dropdown />;
 ```
 
-@interface IDropdownProps
+@typescript IDropdownProps
 
 @## Dropdown.Trigger
 
@@ -24,7 +25,7 @@ import Dropdown from '@semcore/dropdown';
 <Dropdown.Trigger />;
 ```
 
-@interface IPopperTriggerProps
+@typescript IPopperTriggerProps
 
 @## Dropdown.Popper
 
@@ -35,4 +36,4 @@ import Dropdown from '@semcore/dropdown';
 <Dropdown.Popper />;
 ```
 
-@interface IPopperPopperProps
+@typescript IPopperPopperProps

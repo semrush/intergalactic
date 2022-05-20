@@ -1,5 +1,6 @@
 ---
 title: API
+fileSource: table
 ---
 
 @## Table
@@ -9,7 +10,7 @@ import Table from '@semcore/table';
 <Table />;
 ```
 
-@interface ITableProps
+@typescript ITableProps
 
 @## Table.Row
 
@@ -18,7 +19,7 @@ import Table from '@semcore/table';
 <Table.Row />;
 ```
 
-@interface ITableRowProps
+@typescript ITableRowProps
 
 @## Table.Cell
 
@@ -27,7 +28,7 @@ import Table from '@semcore/table';
 <Table.Cell />;
 ```
 
-@interface ITableCellRowProps
+@typescript ITableCellRowProps
 
 @## Table.CellHead
 
@@ -36,7 +37,7 @@ import Table from '@semcore/table';
 <Table.CellHead />;
 ```
 
-@interface ITableCellHeadProps
+@typescript ITableCellHeadProps
 
 @## Table.StickyHead
 
@@ -48,4 +49,4 @@ import Table from '@semcore/table';
 </Table>;
 ```
 
-@interface IStickyHeadProps
+@typescript IStickyHeadProps

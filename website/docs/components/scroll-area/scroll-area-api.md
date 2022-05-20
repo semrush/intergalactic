@@ -1,5 +1,6 @@
 ---
 title: API
+fileSource: scroll-area
 ---
 
 @## ScrollArea
@@ -9,7 +10,7 @@ import ScrollArea from '@semcore/scroll-area';
 <ScrollArea />;
 ```
 
-@interface IScrollAreaProps
+@typescript IScrollAreaProps
 
 @## ScrollArea.Container
 
@@ -27,7 +28,7 @@ import ScrollArea from '@semcore/scroll-area';
 <ScrollArea.Bar />;
 ```
 
-@interface IScrollBarProps
+@typescript IScrollBarProps
 
 @## ScrollArea.Bar.Slider
 

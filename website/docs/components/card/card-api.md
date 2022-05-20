@@ -1,5 +1,6 @@
 ---
 title: API
+fileSource: card
 ---
 
 @## Card
@@ -38,7 +39,7 @@ import Card from '@semcore/card';
 <Card.Title />;
 ```
 
-@interface ITitleProps
+@typescript ITitleProps
 
 @## Card.Description
 

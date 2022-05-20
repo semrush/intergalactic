@@ -1,34 +1,19 @@
 substitutions:
-  _APP_VERSION: 0.0.1
+  _APP_VERSION: 0.0.2
 steps:
   - name: node:16
     entrypoint: yarn
     args: ['--non-interactive', '--frozen-lockfile']
   - name: node:16
     entrypoint: yarn
-    args: ['build']
+    args: ['build:icons']
   - name: node:16
     entrypoint: yarn
     args: ['--non-interactive', '--frozen-lockfile', '--cwd', 'website']
   - name: node:16
     entrypoint: yarn
-    args: ['--cwd', 'website', 'build:client']
-  - name: node:16
-    entrypoint: yarn
-    args: ['--cwd', 'website', 'build:server']
-  - name: node:16
-    entrypoint: yarn
-    args: ['--cwd', 'website', 'build:interface']
-  - name: node:16
-    entrypoint: yarn
-    args: ['--cwd', 'website', 'lint:md']
-  - name: 'ubuntu'
-    entrypoint: 'bash'
-    args:
-      - '-c'
-      - |
-        echo "ROOT_PATH=${_ROOT_PATH}" >> website/.env
-        echo "POSTGRES_URL=${_POSTGRES_URL}" >> website/.env
+    args: ['build']
+    dir: 'website'
   - name: 'gcr.io/cloud-builders/docker'
     args:
       - 'build'
@@ -37,7 +22,7 @@ steps:
       - '-t'
       - 'us-east4-docker.pkg.dev/intergalactic-prod-tf/intergalactic-docker/intergalactic:${_APP_VERSION}'
       - '-f'
-      - 'website/docker/intergalactic/Dockerfile'
+      - 'website/Dockerfile'
       - 'website/'
   - name: 'gcr.io/cloud-builders/docker'
     args:
@@ -47,7 +32,7 @@ steps:
       - '-t'
       - 'us-east4-docker.pkg.dev/intergalactic-prod-tf/intergalactic-docker/intergalactic:${_APP_VERSION}-${SHORT_SHA}'
       - '-f'
-      - 'website/docker/intergalactic/Dockerfile'
+      - 'website/Dockerfile'
       - 'website/'
   - name: 'gcr.io/cloud-builders/docker'
     args:
@@ -79,8 +64,8 @@ steps:
         'internal-and-cloud-load-balancing',
       ]
   - name: node:16
-    entrypoint: node
-    args: ['algoliaPublish.js']
+    entrypoint: yarn
+    args: ['upload-search-index']
     dir: 'website'
     env:
       - 'ALGOLIA_SECRET_KEY=$_ALGOLIA_SECRET_KEY'

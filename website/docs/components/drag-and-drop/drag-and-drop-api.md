@@ -1,5 +1,6 @@
 ---
 title: API
+fileSource: drag-and-drop
 ---
 
 @## DragAndDrop
@@ -11,7 +12,7 @@ import DnD from '@semcore/drag-and-drop;
 <DnD />;
 ```
 
-@interface IDragAndDropProps
+@typescript IDragAndDropProps
 
 @## DragAndDrop.Draggable
 
@@ -24,7 +25,7 @@ import DnD from '@semcore/drag-and-drop;
 </DnD>
 ```
 
-@interface IDraggableProps
+@typescript IDraggableProps
 
 @## DragAndDrop.Droppable
 

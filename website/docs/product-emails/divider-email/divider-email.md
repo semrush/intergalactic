@@ -4,4 +4,5 @@ tabName: Example
 ---
 
 @## Basic example
-@email_html divider-index
+
+@email_html compiled-examples/divider-index.html src/divider/examples/index.html

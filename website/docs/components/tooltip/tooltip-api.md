@@ -1,5 +1,6 @@
 ---
 title: API
+fileSource: tooltip
 ---
 
 ```jsx
@@ -7,4 +8,4 @@ import Tooltip from '@semcore/tooltip';
 <Tooltip />;
 ```
 
-@interface ITooltipProps
+@typescript ITooltipProps

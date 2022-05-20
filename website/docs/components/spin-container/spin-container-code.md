@@ -1,5 +1,6 @@
 ---
 title: Example
+fileSource: spin-container
 ---
 
 @## Use for content

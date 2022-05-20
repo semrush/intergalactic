@@ -1,6 +1,6 @@
 import React from 'react';
 import Input from '@semcore/input';
-import PlaygroundGeneration from 'components/PlaygroundGeneration';
+import PlaygroundGeneration from '@components/PlaygroundGeneration';
 
 import CheckM from '@semcore/icon/Check/m';
 import ArrowRightM from '@semcore/icon/ArrowRight/m';

@@ -1,5 +1,6 @@
 ---
 title: API
+fileSource: icon
 ---
 
 @## Icon
@@ -10,4 +11,4 @@ Any icon can be obtained using a template.
 import IconNameSize from '@semcore/icon/iconName/size';
 ```
 
-@interface IIconProps
+@typescript IIconProps

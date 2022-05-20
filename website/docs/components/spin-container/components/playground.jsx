@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import SpinContainer from '@semcore/spin-container';
-import PlaygroundGeneration from 'components/PlaygroundGeneration';
+import PlaygroundGeneration from '@components/PlaygroundGeneration';
 import Input from '@semcore/input';
 import { Box } from '@semcore/flex-box';
 

@@ -1,5 +1,6 @@
 ---
 title: API
+fileSource: badge
 ---
 
 @## Badge
@@ -9,4 +10,4 @@ import Badge from '@semcore/badge';
 <Badge />;
 ```
 
-@interface IBadgeProps
+@typescript IBadgeProps

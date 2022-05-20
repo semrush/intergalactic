@@ -33,8 +33,6 @@ The button text has margins on the right and left, and Addons that can be insert
 
 The button width is determined by the width of the typed text/content. But it can also be stretched to a certain width (100%) - `w="100%"`.
 
-###
-
 This is necessary when the button text is short, but the button is a CTA on the page/in a modal window or it performs an important action. Also, in terms of visual hierarchy, it is not good to make it small-sized in such cases. Use this opportunity thoughtfully and carefully.
 
 ![button width example](static/button-width.png)

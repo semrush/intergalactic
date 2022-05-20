@@ -9,10 +9,10 @@ import Input from '@semcore/input';
 import { Text } from '@semcore/typography';
 import SearchS from '@semcore/icon/Search/m';
 import CloseXS from '@semcore/icon/Close/m';
-import observatory from 'static/search/observatory.svg';
-import CONFIG from 'algolia';
+import staticFiles from '@static';
+import algoliaConfig from '@components/algolia-config';
 
-const searchClient = algoliasearch(CONFIG.ALGOLIA_APP, CONFIG.ALGOLIA_OPEN_KEY);
+const searchClient = algoliasearch(algoliaConfig.ALGOLIA_APP, algoliaConfig.ALGOLIA_OPEN_KEY);
 
 const NotFound = styled.div`
   display: flex;
@@ -62,7 +62,7 @@ const SuggestSearch = connectAutoComplete(
 
 function SearchIcons(props) {
   return (
-    <InstantSearch searchClient={searchClient} indexName={CONFIG.ALGOLIA_INDEX_ICONS}>
+    <InstantSearch searchClient={searchClient} indexName={algoliaConfig.ALGOLIA_INDEX_ICONS}>
       <SuggestSearch {...props} />
     </InstantSearch>
   );
@@ -81,7 +81,7 @@ export default function ({ icons, old, json }) {
           <ListIcons data={filterIcons} icons={icons} old={old} json={json} />
         ) : (
           <NotFound>
-            <img src={observatory} alt="observatory" />
+            <img src={staticFiles['search/observatory.svg']} alt="observatory" />
             <Text size={300} mt={2}>
               We found something… it's nothing
             </Text>

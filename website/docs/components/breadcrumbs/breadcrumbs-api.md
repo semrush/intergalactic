@@ -1,5 +1,6 @@
 ---
 title: API
+fileSource: breadcrumbs
 ---
 
 @## Breadcrumbs
@@ -11,7 +12,7 @@ import Breadcrumbs from '@semcore/breadcrumbs';
 <Breadcrumbs />;
 ```
 
-@interface IBreadcrumbsProps
+@typescript IBreadcrumbsProps
 
 @## Breadcrumbs.Item
 
@@ -22,4 +23,4 @@ import Breadcrumbs from '@semcore/breadcrumbs';
 <Breadcrumbs.Item />;
 ```
 
-@interface IBreadcrumbsItemProps
+@typescript IBreadcrumbsItemProps

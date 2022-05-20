@@ -1,5 +1,6 @@
 ---
 title: API
+fileSource: dropdown-menu
 ---
 
 > `DropdownMenu` is a wrap over `Dropdown` with the addition of features for switching options from the keyboard.
@@ -13,7 +14,7 @@ import DropdownMenu from '@semcore/dropdown';
 <DropdownMenu />;
 ```
 
-@interface IDropdownMenuProps
+@typescript IDropdownMenuProps
 
 @## DropdownMenu.Trigger
 
@@ -42,7 +43,7 @@ import DropdownMenu from '@semcore/dropdown-menu';
 <DropdownMenu.List />;
 ```
 
-@interface IDropdownMenuListProps
+@typescript IDropdownMenuListProps
 
 @## DropdownMenu.Menu
 
@@ -53,7 +54,7 @@ import DropdownMenu from '@semcore/dropdown-menu';
 <DropdownMenu.Menu />;
 ```
 
-@interface IDropdownMenuMenuProps
+@typescript IDropdownMenuMenuProps
 
 @## DropdownMenu.Item
 
@@ -64,7 +65,7 @@ import DropdownMenu from '@semcore/dropdown-menu';
 <DropdownMenu.Item />;
 ```
 
-@interface IDropdownMenuItemProps
+@typescript IDropdownMenuItemProps
 
 @## DropdownMenu.ItemTitle
 
@@ -75,7 +76,7 @@ import DropdownMenu from '@semcore/dropdown-menu';
 <DropdownMenu.ItemTitle />;
 ```
 
-@interface IDropdownMenuItemTitleProps
+@typescript IDropdownMenuItemTitleProps
 
 @## DropdownMenu.ItemHint
 
@@ -86,10 +87,10 @@ import DropdownMenu from '@semcore/dropdown-menu';
 <DropdownMenu.ItemHint />;
 ```
 
-@interface IDropdownMenuItemHintProps
+@typescript IDropdownMenuItemHintProps
 
 @## Context
 
 Context of the component is available inside the render-function.
 
-@interface IDropdownMenuContext
+@typescript IDropdownMenuContext

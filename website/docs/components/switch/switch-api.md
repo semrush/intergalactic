@@ -1,5 +1,6 @@
 ---
 title: API
+fileSource: switch
 ---
 
 @## Switch
@@ -9,7 +10,7 @@ import Switch from '@semcore/switch';
 <Switch />;
 ```
 
-@interface ISwitchProps
+@typescript ISwitchProps
 
 @## Switch.Value
 
@@ -18,7 +19,7 @@ import Switch from '@semcore/switch';
 <Switch.Value />;
 ```
 
-@interface ISwitchValueProps
+@typescript ISwitchValueProps
 
 @## Switch.Addon
 
@@ -27,4 +28,4 @@ import Switch from '@semcore/switch';
 <Switch.Addon />;
 ```
 
-@interface ISwitchAddonProps
+@typescript ISwitchAddonProps

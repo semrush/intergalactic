@@ -1,5 +1,6 @@
 ---
 title: API
+fileSource: radio
 ---
 
 @## RadioGroup
@@ -11,7 +12,7 @@ import { RadioGroup } from '@semcore/radio';
 <RadioGroup />;
 ```
 
-@interface IRadioGroupProps
+@typescript IRadioGroupProps
 
 @## Radio
 
@@ -22,7 +23,7 @@ import Radio from '@semcore/radio';
 <Radio />;
 ```
 
-@interface IRadioProps
+@typescript IRadioProps
 
 @## Radio.Value
 
@@ -31,7 +32,7 @@ import Radio from '@semcore/radio';
 <Radio.Value />;
 ```
 
-@interface IRadioValueProps
+@typescript IRadioValueProps
 
 @## Radio.Text
 
@@ -39,5 +40,3 @@ import Radio from '@semcore/radio';
 import Radio from '@semcore/radio';
 <Radio.Text />;
 ```
-
-@interface IRadioTextProps

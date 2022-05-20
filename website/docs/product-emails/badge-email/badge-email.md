@@ -4,4 +4,5 @@ tabName: Example
 ---
 
 @## Badge/tag themes
-@email_html badge-index
+
+@email_html compiled-examples/badge-index.html src/badge/examples/index.html

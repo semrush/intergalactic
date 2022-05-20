@@ -1,5 +1,6 @@
 ---
 title: API
+fileSource: tab-line
 ---
 
 @## TabLine
@@ -11,7 +12,7 @@ import TabLine from '@semcore/tab-line';
 <TabLine />;
 ```
 
-@interface ITabLineProps
+@typescript ITabLineProps
 
 @## TabLine.Item
 
@@ -22,7 +23,7 @@ import TabLine from '@semcore/tab-line';
 <TabLine.Item />;
 ```
 
-@interface ITabLineItemProps
+@typescript ITabLineItemProps
 
 @## TabLine.Item.Addon
 

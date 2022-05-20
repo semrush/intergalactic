@@ -1,6 +1,6 @@
 import React from 'react';
 import InputTags from '@semcore/input-tags';
-import PlaygroundGeneration from 'components/PlaygroundGeneration';
+import PlaygroundGeneration from '@components/PlaygroundGeneration';
 
 import CheckM from '@semcore/icon/Check/m';
 

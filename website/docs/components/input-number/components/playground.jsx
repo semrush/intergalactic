@@ -1,6 +1,6 @@
 import React from 'react';
 import InputNumber from '@semcore/input-number';
-import PlaygroundGeneration from 'components/PlaygroundGeneration';
+import PlaygroundGeneration from '@components/PlaygroundGeneration';
 
 const STATES = ['normal', 'invalid', 'valid'];
 const SIZES = ['m', 'l'];

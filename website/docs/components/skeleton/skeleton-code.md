@@ -1,5 +1,6 @@
 ---
 title: Example
+fileSource: skeleton
 ---
 
 @## Example of use for text downloading

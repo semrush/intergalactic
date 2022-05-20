@@ -1,5 +1,6 @@
 ---
 title: API
+fileSource: spin-container
 ---
 
 @## SpinContainer
@@ -9,7 +10,7 @@ import SpinContainer from '@semcore/spin-container';
 <SpinContainer />;
 ```
 
-@interface ISpinContainerProps
+@typescript ISpinContainerProps
 
 @## SpinContainer.Content
 

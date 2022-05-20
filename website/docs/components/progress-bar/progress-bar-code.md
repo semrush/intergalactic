@@ -1,5 +1,6 @@
 ---
 title: Example
+fileSource: progress-bar
 ---
 
 @## Complex usage example
