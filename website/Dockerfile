@@ -19,6 +19,6 @@ COPY ./nginx.conf /etc/nginx/nginx.conf
 RUN cat /etc/nginx/nginx.conf | sed "s/%PACKAGE_VERSION%/$(cat package.json | grep version | head -1 | awk -F: '{ print $2 }' | sed 's/[ \",]//g')/g" > /etc/nginx/nginx.conf
 RUN cat /etc/nginx/nginx.conf
 
-EXPOSE 3000
+EXPOSE 8080
 
 CMD ["./docker-entrypoint.sh"]
