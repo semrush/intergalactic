@@ -15,6 +15,7 @@ import Breadcrumbs from '@semcore/breadcrumbs';
 import { Box } from '@semcore/flex-box';
 import TabPanel from '@semcore/tab-panel';
 import Select from '@semcore/select';
+import InfoXS from '@semcore/icon/Info/m';
 
 import Header, { Info, Title } from '@semcore/product-head';
 
@@ -68,11 +69,7 @@ export default () => {
         <Header.Row>
           <Info>
             <Info.Item label="Location:">
-              <Select
-                value={['us']}
-                placeholder="Select an option, sir 🧐"
-                m="auto"
-              >
+              <Select value={['us']} placeholder="Select an option, sir 🧐" m="auto">
                 <Select.Trigger tag={Link}>
                   United States
                   <Link.Addon tag={ChevronDownM} />
@@ -90,11 +87,7 @@ export default () => {
               </Select>
             </Info.Item>
             <Info.Item label="Device:">
-              <Select
-                value={['desktop']}
-                placeholder="Select an option, sir 🧐"
-                m="auto"
-              >
+              <Select value={['desktop']} placeholder="Select an option, sir 🧐" m="auto">
                 <Select.Trigger tag={Link}>
                   <Link.Addon tag={DesktopM} />
                   Desktop
