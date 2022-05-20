@@ -7,6 +7,7 @@
     "prebuild": "rm -rf semcore/**/lib && find semcore/icon/. -type d -maxdepth 1 | egrep -v \"__tests__|src|svg|svg-new\" | xargs rm -rf || true",
     "test": "jest --no-cache",
     "playground": "yarn workspace @semcore/playground start",
+    "website": "yarn --cwd website start",
     "coverage": "jest --no-cache --coverage",
     "pub": "super-publisher --root ./semcore",
     "lint:es": "eslint -c .eslintrc --ext .ts,.tsx,.js,.jsx ./semcore",
