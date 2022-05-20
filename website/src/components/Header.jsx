@@ -266,10 +266,6 @@ const IntergalacticLink = styled(Link)`
 const DevportalLink = styled.a`
   display: flex;
   align-items: center;
-
-  img {
-    margin-bottom: 7px;
-  }
 `;
 
 const Line = styled(Divider)`
