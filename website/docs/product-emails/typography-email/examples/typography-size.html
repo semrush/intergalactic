@@ -1,0 +1,420 @@
+<!-- Emails use the XHTML Strict doctype -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="https://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <!-- Link to the email's CSS, which will be inlined into the email -->
+
+    <style>
+      a,
+      body,
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      p,
+      table.body {
+        font-weight: 400;
+        line-height: normal;
+        margin: 0;
+        padding: 0;
+      }
+      a,
+      body,
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      p,
+      table.body,
+      td,
+      th {
+        font-family: Helvetica, Arial, sans-serif;
+        text-align: left;
+      }
+      .spacer td,
+      .spacer th {
+        margin: 0;
+        padding: 0;
+      }
+      table {
+        border-collapse: collapse;
+        border-spacing: 0;
+        padding: 0;
+      }
+      td {
+        word-wrap: break-word;
+        border-collapse: collapse !important;
+        font-weight: 400;
+        -webkit-hyphens: auto;
+        -ms-hyphens: auto;
+        hyphens: auto;
+      }
+      img {
+        height: auto;
+        line-height: 100%;
+        outline: none;
+        text-decoration: none;
+      }
+      a img,
+      img {
+        border: 0;
+      }
+      .imageFix {
+        display: block;
+      }
+      #bodyTable {
+        height: 100% !important;
+        margin: 0;
+        padding: 0;
+        width: 100% !important;
+      }
+      .w-100 {
+        width: 100%;
+      }
+      .bg-black {
+        background-color: #171a22;
+      }
+      .bg-white {
+        background-color: #fff;
+      }
+      .bg-lime-100 {
+        background-color: #c7fa73;
+      }
+      .bg-lime-200 {
+        background-color: #84d149;
+      }
+      .bg-red-100 {
+        background-color: #f27387;
+      }
+      .bg-red-200 {
+        background-color: #f71939;
+      }
+      .bg-red-300 {
+        background-color: #b01c3d;
+      }
+      .bg-orange-100 {
+        background-color: #ff9400;
+      }
+      .bg-orange-200 {
+        background-color: #ff622d;
+      }
+      .bg-orange-300 {
+        background-color: #b23300;
+      }
+      .bg-blue-100 {
+        background-color: #6edbff;
+      }
+      .bg-blue-200 {
+        background-color: #0082e6;
+      }
+      .bg-blue-300 {
+        background-color: #0070cc;
+      }
+      .bg-gray-100 {
+        background-color: #f6f7f8;
+      }
+      .bg-gray-200 {
+        background-color: #d1d4db;
+      }
+      .bg-gray-300 {
+        background-color: #898d9a;
+      }
+      .bg-gray-400 {
+        background-color: #575c66;
+      }
+      .bg-purple-100 {
+        background-color: #b880ff;
+      }
+      .bg-purple-200 {
+        background-color: #6b30c7;
+      }
+      .bg-purple-300 {
+        background-color: #421983;
+      }
+      .bg-green-100 {
+        background-color: #45e0a8;
+      }
+      .bg-green-200 {
+        background-color: #00bc98;
+      }
+      .bg-green-300 {
+        background-color: #008275;
+      }
+      .bg-pink {
+        background-color: #ff7ad1;
+      }
+      .bold {
+        font-weight: 700;
+      }
+      .nowrap {
+        white-space: nowrap;
+      }
+      .text-center {
+        text-align: center;
+      }
+      @media (min-width: 480px) {
+        .show-mobile {
+          display: none !important;
+        }
+      }
+      @media (max-width: 479px) {
+        .show-desktop {
+          display: none !important;
+        }
+        .mobile_text-center {
+          text-align: center;
+        }
+        .mobile_w-100 {
+          width: 100%;
+        }
+      }
+    </style>
+    <style>
+      .text-size-100 {
+        font-size: 14px;
+        line-height: 20px;
+      }
+      .text-size-200 {
+        font-size: 16px;
+        line-height: 24px;
+      }
+      .text-size-300 {
+        font-size: 18px;
+        line-height: 23px;
+      }
+      .text-size-400 {
+        font-size: 20px;
+        line-height: 22px;
+      }
+      .text-size-500 {
+        font-size: 22px;
+        line-height: 26px;
+      }
+      .text-size-600 {
+        font-size: 26px;
+        line-height: 31px;
+      }
+      .text-size-700 {
+        font-size: 32px;
+        line-height: 37px;
+      }
+      .text-black {
+        color: #171a22;
+      }
+      .text-white {
+        color: #fff;
+      }
+      .text-red-100 {
+        color: #f27387;
+      }
+      .text-red-200 {
+        color: #f71939;
+      }
+      .text-red-300 {
+        color: #b01c3d;
+      }
+      .text-lime-100 {
+        color: #c7fa73;
+      }
+      .text-lime-200 {
+        color: #84d149;
+      }
+      .text-orange-100 {
+        color: #ff9400;
+      }
+      .text-orange-200 {
+        color: #ff622d;
+      }
+      .text-orange-300 {
+        color: #b23300;
+      }
+      .text-purple-100 {
+        color: #b880ff;
+      }
+      .text-purple-200 {
+        color: #6b30c7;
+      }
+      .text-purple-300 {
+        color: #421983;
+      }
+      .text-blue-100 {
+        color: #6edbff;
+      }
+      .text-blue-200 {
+        color: #0082e6;
+      }
+      .text-blue-300 {
+        color: #0070cc;
+      }
+      .text-gray-100 {
+        color: #f6f7f8;
+      }
+      .text-gray-200 {
+        color: #d1d4db;
+      }
+      .text-gray-300 {
+        color: #898d9a;
+      }
+      .text-gray-400 {
+        color: #575c66;
+      }
+      .text-green-100 {
+        color: #45e0a8;
+      }
+      .text-green-200 {
+        color: #00bc98;
+      }
+      .text-green-300 {
+        color: #008275;
+      }
+      .text-pink {
+        color: #ff7ad1;
+      }
+      .link {
+        -webkit-text-decoration-line: underline;
+        text-decoration-line: underline;
+      }
+      .link-theme-default {
+        color: #0082e6;
+      }
+      .link-theme-default:hover {
+        color: #0070cc !important;
+      }
+      .link-theme-dark {
+        color: #575c66;
+      }
+      .link-theme-dark:hover {
+        color: #171a22 !important;
+      }
+    </style>
+  </head>
+  <body
+    style="
+      font-weight: 400;
+      line-height: normal;
+      margin: 0;
+      padding: 0;
+      font-family: Helvetica, Arial, sans-serif;
+      text-align: left;
+    "
+  >
+    <p
+      class="text-size-100"
+      style="
+        font-weight: 400;
+        line-height: 20px;
+        margin: 0;
+        padding: 0;
+        font-family: Helvetica, Arial, sans-serif;
+        text-align: left;
+        font-size: 14px;
+      "
+    >
+      Text, 14px
+    </p>
+    <p
+      class="text-size-200"
+      style="
+        font-weight: 400;
+        line-height: 24px;
+        margin: 0;
+        padding: 0;
+        font-family: Helvetica, Arial, sans-serif;
+        text-align: left;
+        font-size: 16px;
+      "
+    >
+      Text, 16px
+    </p>
+    <p
+      class="text-size-300"
+      style="
+        font-weight: 400;
+        line-height: 23px;
+        margin: 0;
+        padding: 0;
+        font-family: Helvetica, Arial, sans-serif;
+        text-align: left;
+        font-size: 18px;
+      "
+    >
+      Text, 18px
+    </p>
+    <p
+      class="text-size-400"
+      style="
+        font-weight: 400;
+        line-height: 22px;
+        margin: 0;
+        padding: 0;
+        font-family: Helvetica, Arial, sans-serif;
+        text-align: left;
+        font-size: 20px;
+      "
+    >
+      Text, 20px
+    </p>
+    <p
+      class="text-size-500"
+      style="
+        font-weight: 400;
+        line-height: 26px;
+        margin: 0;
+        padding: 0;
+        font-family: Helvetica, Arial, sans-serif;
+        text-align: left;
+        font-size: 22px;
+      "
+    >
+      Text, 22px
+    </p>
+    <p
+      class="text-size-600"
+      style="
+        font-weight: 400;
+        line-height: 31px;
+        margin: 0;
+        padding: 0;
+        font-family: Helvetica, Arial, sans-serif;
+        text-align: left;
+        font-size: 26px;
+      "
+    >
+      Text, 26px
+    </p>
+    <p
+      class="text-size-700"
+      style="
+        font-weight: 400;
+        line-height: 37px;
+        margin: 0;
+        padding: 0;
+        font-family: Helvetica, Arial, sans-serif;
+        text-align: left;
+        font-size: 32px;
+      "
+    >
+      Text, 32px
+    </p>
+    <p
+      class="text-size-700 bold"
+      style="
+        font-weight: 700;
+        line-height: 37px;
+        margin: 0;
+        padding: 0;
+        font-family: Helvetica, Arial, sans-serif;
+        text-align: left;
+        font-size: 32px;
+      "
+    >
+      Text bold, 32px
+    </p>
+  </body>
+</html>
