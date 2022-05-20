@@ -5,7 +5,6 @@ RUN apk add --update npm yarn
 
 WORKDIR /app
 
-COPY ./.env ./.env
 COPY ./docker-entrypoint.sh ./docker-entrypoint.sh
 RUN chmod +x ./docker-entrypoint.sh
 
