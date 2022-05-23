@@ -124,7 +124,7 @@ The data tooltip shall always be displayed relative to the dot with an 8px margi
 
 | Case                     | Appearance                               | Styles description                                                                                                                                          |
 | ------------------------ | ---------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| One dot                  | ![one-dot](static/tooltip-1.png)         | The default dot size is `12px * 12px` (plus a 2px border). The size of the dot in a hoiver state is `16px * 16px`.                                          |
+| One dot                  | ![one-dot](static/tooltip-1.png)         | The default dot size is `12px * 12px`. The size of the dot in a hover state is `16px * 16px`.                                                               |
 | Several dots             | ![many-dots](static/tooltip-2.png)       |
 | Not available data       | ![not-available](static/partially.png)   | Use a dashed line to show not available data.                                                                                                               |
 | Start of data collecting | ![new-data](static/new-data-tooltip.png) | Solid line, color of the dot corresponds to the legend. In the tooltip, the text about the beginning of data collection is 12px and has `--gray-300` color. |
