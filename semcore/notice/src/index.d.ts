@@ -13,7 +13,7 @@ export interface INoticeProps extends IBoxProps {
    */
   theme?: NoticeTheme;
   /** Duration of animation, ms
-   * @default 200
+   * @default 250
    */
   duration?: number;
 }
