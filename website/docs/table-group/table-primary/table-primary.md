@@ -4,11 +4,11 @@ fileSource: data-table
 tabName: Design
 ---
 
-**Primary** is the basic type of tables in our interface for displaying large data volumes and complex functionality.
+**Primary** is the basic type of tables for displaying large data volumes and complex functionality.
 
 @## Paddings
 
-The cell in the primary table, whether it is a header or a cell in a row, has 12px padding.
+The cell in the primary table, whether it is a header or a row, has 12px padding.
 
 ![primary scheme](static/primary-paddings.png)
 
