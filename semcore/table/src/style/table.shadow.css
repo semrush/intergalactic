@@ -123,7 +123,7 @@ SRow[theme='default']:hover,
 SRow[theme]:hover SCellRow[theme='default'],
 SCellRow[highlighted][theme='default'],
 SCellRow[interactive][theme='default']:hover {
-  background-color: var(--gray-50);
+  background-color: color-mod(var(--gray-100) blend(var(--white) 50%));
 }
 
 SRow[theme='info'],
