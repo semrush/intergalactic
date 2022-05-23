@@ -101,7 +101,7 @@ SButton[theme='primary-warning'] {
 
   &:active,
   &[active] {
-    background-color: color-mod(var(--orange-500) shade(5%) saturation(+5%));
+    background-color: var(--orange-600);
   }
 }
 
