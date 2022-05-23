@@ -5,7 +5,17 @@ fileSource: d3-chart
 
 @## D3 API
 
-All properties for the area chart developed with D3 you can find in the [D3 guide](/data-display/d3-chart/d3-chart-api/#adeec4).
+It have children components `Area`.
+
+```js
+import { StackedArea } from '@semcore/d3-chart';
+
+<StackedArea>
+  <StackedArea.Area />
+</StackedArea>;
+```
+
+@typescript IStackedAreaProps
 
 @## Recharts API
 

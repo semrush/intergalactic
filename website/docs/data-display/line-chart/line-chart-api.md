@@ -5,7 +5,18 @@ fileSource: d3-chart
 
 @## D3 API
 
-All properties for the line chart developed with D3 you can find in the [D3 guide](/data-display/d3-chart/d3-chart-api/#a4803e).
+It have children components `Dots, Null`.
+
+```js
+import { Line } from '@semcore/d3-chart';
+
+<Line>
+  <Line.Dots />
+  <Line.Null />
+</Line>;
+```
+
+@typescript ILineProps
 
 @## Recharts API
 

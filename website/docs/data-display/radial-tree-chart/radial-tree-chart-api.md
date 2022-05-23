@@ -5,8 +5,20 @@ fileSource: d3-chart
 
 @## D3 API
 
-All properties for the radial tree chart developed with D3 you can find in the [D3 guide](/data-display/d3-chart/d3-chart-api/#a342f2).
+It have children component `Title`.
 
-### Radial Tree
+```js
+import { RadialTree } from '@semcore/d3-chart';
+
+<RadialTree>
+  <RadialTree.Radian>
+    <RadialTree.Radian.Label />
+    <RadialTree.Radian.Line />
+    <RadialTree.Radian.Cap />
+    <RadialTree.Radian.Icon />
+  </RadialTree.Radian>
+  <RadialTree.Title></RadialTree.Title>
+</RadialTree>;
+```
 
 @typescript IRadialTreeProps

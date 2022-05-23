@@ -5,7 +5,19 @@ fileSource: d3-chart
 
 @## D3 API
 
-All properties for the donut chart developed with D3 you can find in the [D3 guide](/data-display/d3-chart/d3-chart-api/#a8e796).
+It have children components `Pie`, `Label`, `EmptyData`.
+
+```js
+import { Donut } from '@semcore/d3-chart';
+
+<Donut>
+  <Donut.EmptyData />
+  <Donut.Pie />
+  <Donut.Label />
+</Donut>;
+```
+
+@typescript IDonutProps
 
 @## Recharts API
 

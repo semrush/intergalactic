@@ -9,7 +9,7 @@ Histogram chart is based on the [bar chart](/data-display/bar-chart), but has sl
 
 @## D3 API
 
-All properties for the histogram chart developed with D3 you can find in the [D3 guide](/data-display/d3-chart/d3-chart-api/#addc35).
+All properties for the histogram chart developed with D3 you can find in the [bar chart guide](/data-display/bar-chart/bar-chart-api).
 
 @## Recharts API
 
