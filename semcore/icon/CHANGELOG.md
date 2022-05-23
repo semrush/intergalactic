@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.26.0] - 2022-05-23
+
+### Added
+
+- Added icon `Kebab`.
+
 ## [2.25.1] - 2022-05-19
 
 ### Changed
