@@ -12,20 +12,18 @@ tabName: Design
 
 ### Types
 
-There are two types of tables in our interface – [primary](/table-group/table-primary/) and [secondary](/table-group/table-secondary/). Colors of both are based on `$stone` and `$mercury` with different transparency. These colors with transparency are converted to absolute.
+There are two types of tables in our interface – [primary](../table-primary/) and [secondary](../table-secondary/). Colors of both are based on `gray` palette.
 
 ### Common styles for the table content
 
-| Content                                | Styles                                        |
-| -------------------------------------- | --------------------------------------------- |
-| Text in the header                     | `font-size: 12px; color: $gray20;`            |
-| The text in the row                    | `font-size: 14px; color: $gray20;`            |
-| Secondary text                         | `color: $gray60;`                             |
-| Stand alone icon                       | `icon-size: S; color: stone;`                 |
-| The icon next to the text              | `icon-size: XS; color: stone;`                |
-| Select in the header                   | [tertiary select, size M](/components/select) |
-| Select in the cell                     | [tertiary select, size L](/components/select) |
-| Checkbox in the header and in the cell | size L                                        |
+| Content                                | Styles                                     |
+| -------------------------------------- | ------------------------------------------ |
+| Text in the header                     | `font-size: 12px; color: var(--gray-800);` |
+| The text in the row                    | `font-size: 14px; color: var(--gray-800);` |
+| Secondary text                         | `color: var(--gray-500);`                  |
+| Stand alone icon                       | `icon-size: M; color: var(--gray-300);`    |
+| The icon next to the text              | `icon-size: M; color: var(--gray-300);`    |
+| Checkbox in the header and in the cell | [Checkbox](/components/checkbox/), M size  |
 
 @## Sorting
 
@@ -33,11 +31,11 @@ There are two types of tables in our interface – [primary](/table-group/table-
 
 @## Tooltip
 
-The column header should not contain the `Info` icon. We always show additional information about the column in the tooltip by hovering over the column title.
+The column header should not contain the `Info` icon. Show additional information about the column in the tooltip by hovering over the column title.
 
 ### Conditions for the tooltip appearance
 
-If the text is too long, and clipped with an ellipsis.
+If the text is too long, and collapsed into an ellipsis.
 
 ![tooltip](static/tooltip-1.png)
 
@@ -49,7 +47,7 @@ If the column has additional (explanatory) information.
 
 > 💡 **Hover on a row is required for all types of tables.**
 
-Hover is needed to "highlight" information in vast volumes of data, over which you would like to perform some action (read, delete, open, etc.).
+Hover is needed to "highlight" information in vast volumes of data, with which you would like to perform some action (read, delete, open, etc.).
 
 - The row changes its state to `hover` when you hover over any area of the row.
 - Thus, if the pointer is positioned over an item, hover remains on the row, and also the hover of the element on which the cursor is pointed is applied.
@@ -58,23 +56,21 @@ Hover is needed to "highlight" information in vast volumes of data, over which y
 
 ### Hover styles for different cells
 
-The table colors are based on `$stone` and `$mercury`. Rules for states are specified in [Variables](/style/variables/) for objects with a transparent background color.
+The table colors are based on `gray` palette.
 
 If the entire row is in the `disabled` state, it should not have the `hover` state.
 
-> Note that in the component, all the colors of different themes for cells are set as absolute colors (layouts may contain transparent colors — don't worry, since the colors are the same).
-
-| State                    | Appearance                                                                | Styles                                                                                                                   |
-| ------------------------ | ------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------ |
-| Default, hover           | ![default hover](static/default-hover.png)                                | `border-bottom: 1px solid $mercury;`. When you `hover` on, the absolute color `background-color: #f6f7f7;`.              |
-| Unread, unread hover     | ![unread hover](static/unread-hover.png)                                  | `background-color: #F2F3F4;`. The `hover` state is the same as `default`.                                                |
-| Selected, selected hover | ![selected hover](static/selected-hover.png)                              | `background-color: #D5EAF9;`. When you `hover` on, the absolute color `background-color: #CAE4F7;`.                      |
-| New, new hover           | ![new hover](static/new-hover.png)                                        | `background-color: #E5F3E1;`. When you `hover` on, the absolute color `background-color: #DCEFD6;`.                      |
-| Error, error hover       | ![danger hover](static/danger-hover.png)                                  | `background-color: #FDEAEA;`. When you `hover` on, the absolute color `background-color: #FDE0E0;`.                      |
-| Warning, warning hover   | ![warning hover](static/warning-hover.png)                                | `background-color: #FFECD9);`. When you `hover` on, the absolute color `background-color: #FFE5CC;`.                     |
-| Current, current hover   | ![current](static/current.png) ![current hover](static/current-hover.png) | The row is tagged with `You`. The `hover` state is the same as the `default` state.                                      |
-| Loading                  | ![loading](static/loading.png) ![loading hover](static/loading-hover.png) | Opacity for components inside a row .3, spin size S.                                                                     |
-| Limit, limit hover       | ![limit](static/limit.png)                                                | Mask for limit rows – `background-color: rgba(255,255,255,0.85);`. The `hover` state is the same as the `default` state. |
+| State                    | Appearance                                   | Styles                                                                                                                                                                          |
+| ------------------------ | -------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Default, hover           | ![default hover](static/default-hover.png)   | `background-color: var(--white); border-bottom: 1px solid var(--gray-100);`. When you `hover` on, background color changes to `background: color-mod(var(--gray-100) a(50%));`. |
+| Unread, unread hover     | ![unread hover](static/unread-hover.png)     | `background-color: var(--gray-50);`. The `hover` state is the same as `default`.                                                                                                |
+| Selected, selected hover | ![selected hover](static/selected-hover.png) | `background-color: var(--blue-50);`. When you `hover` on, the absolute color `background-color: var(--blue-100);`.                                                              |
+| New, new hover           | ![new hover](static/new-hover.png)           | `background-color: var(--green-50);`. When you `hover` on, the absolute color `background-color: background-color: var(--green-100);`.                                          |
+| Error, error hover       | ![danger hover](static/danger-hover.png)     | `background-color: var(--red-50);`. When you `hover` on, the absolute color `background-color: var(--red-100);`.                                                                |
+| Warning, warning hover   | ![warning hover](static/warning-hover.png)   | `background-color: var(--orange-50);`. When you `hover` on, the absolute color `background-color: var(--orange-100);`.                                                          |
+| Current, current hover   | ![current hover](static/current-hover.png)   | The row is tagged with tag `You`. The `hover` state is the same as the `default` state.                                                                                         |
+| Loading                  | ![loading hover](static/loading-hover.png)   | Opacity for components inside a row .3, spin size XS.                                                                                                                           |
+| Limit, limit hover       | ![limit](static/limit.png)                   | Mask for limit rows – `background-color: color-mod(var(--white) a(85%));`. The `hover` state is the same as the `default` state.                                                |
 
 ### Hover for the row-span and col-span
 
@@ -83,11 +79,7 @@ If the entire row is in the `disabled` state, it should not have the `hover` sta
 
 ### Cells coloring
 
-If necessary, you can change the cell color using our [base color palette](/style/palette/). In this case, use a color with a transparency of 5 to 15%.
-
-![td styles](static/td-style.png)
-
-Rules for the hover state of elements with transparency, see in [Variables](/style/variables/). If the cell was colored, it remains colored when you hover over it. The user should not lose information about the color of the cell when hovering over a row.
+If the cell was colored, it remains colored when you hover over it. The user should not lose information about the color of the cell when hovering over a row.
 
 ![td styles hover](static/td-style-hover.png)
 
