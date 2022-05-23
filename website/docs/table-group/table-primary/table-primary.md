@@ -8,20 +8,20 @@ tabName: Design
 
 @## Paddings
 
-The `primary` table cell paddings, whether it is a header or a cell in a row, are 12px.
+The cell in the primary table, whether it is a header or a cell in a row, has 12px padding.
 
-![primary scheme](static/primary-scheme.png)
+![primary scheme](static/primary-paddings.png)
 
 @## Styles
 
 > 💡 Content inside header cells and rows is aligned to the top.
 
-| Description                     | Appearance                                 | Styles                                                                                              |
-| ------------------------------- | ------------------------------------------ | --------------------------------------------------------------------------------------------------- |
-| Heading                         | ![th styles](static/th-styles.png)         | `background-color: #F2F3F4;` `border-bottom: 1px solid $mercury; border-right: 1px solid $mercury;` |
-| Heading of the scrollable table | ![th styles](static/th-styles-scroll.png)  | When scrolling a page with a table, the header should not have a shadow.                            |
-| Default row                     | ![td default](static/td-default.png)       | `border-bottom: 1px solid $mercury;`                                                                |
-| The last line of the accordion  | ![table accordion](static/accordion-3.png) | `border-bottom: 1px solid $stone;`                                                                  |
+| Description                     | Appearance                                | Styles                                                                                                                  |
+| ------------------------------- | ----------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| Heading                         | ![th styles](static/th-styles.png)        | `background-color: var(--gray-50;` `border-bottom: 1px solid var(--gray-100); border-right: 1px solid var(--gray-100);` |
+| Heading of the scrollable table | ![th styles](static/th-styles-scroll.png) | When scrolling a page with a table, the header should not have a shadow.                                                |
+| Default row                     | ![td default](static/td-default.png)      | `border-bottom: 1px solid var(--gray-100);`                                                                             |
+| The last line of the accordion  | ![table accordion](static/accordion.png)  | `border-bottom: 1px solid var(--gray-300);`                                                                             |
 
 @## Multi-level header
 
@@ -34,10 +34,10 @@ In some cases, a header should comprise two or more rows. Following conditions a
 
 @## Table header states
 
-| State  | Appearance                         | Styles                                        |
-| ------ | ---------------------------------- | --------------------------------------------- |
-| hover  | ![th hover](static/th-hover.png)   | `background-color: #E4E7E8; cursor: pointer;` |
-| sorted | ![th sorted](static/th-sorted.png) | `background-color: #E4E7E8; cursor: pointer;` |
+| State  | Appearance                         | Styles                                                |
+| ------ | ---------------------------------- | ----------------------------------------------------- |
+| hover  | ![th hover](static/th-hover.png)   | `background-color: var(--gray-100); cursor: pointer;` |
+| sorted | ![th sorted](static/th-styles.png) | `background-color: var(--gray-100); cursor: pointer;` |
 
 @## Row states
 
