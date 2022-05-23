@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.0.4] - 2022-05-23
+
+### Fixed
+
+- Fixed hover color `Cell` for `theme='default'`.
+
 ## [3.0.3] - 2022-05-20
 
 ### Fixed

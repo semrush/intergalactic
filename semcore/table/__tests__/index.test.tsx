@@ -130,6 +130,9 @@ describe('Table', () => {
     expect(
       await snapshot(<Component theme="danger" />, { actions: { hover: '#element' } }),
     ).toMatchImageSnapshot();
+    expect(
+      await snapshot(<Component />, { actions: { hover: '#element' } }),
+    ).toMatchImageSnapshot();
   });
 
   test('a11y', async () => {
