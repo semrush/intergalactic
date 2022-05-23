@@ -17,7 +17,7 @@ class NoticeGlobalRoot extends Component {
   static style = style;
   static defaultProps = {
     theme: 'neutral',
-    duration: 200,
+    duration: 250,
   };
 
   render() {

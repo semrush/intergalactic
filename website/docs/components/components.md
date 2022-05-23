@@ -35,6 +35,7 @@ title: Components
 @page link
 @page modal
 @page notice
+@page notice-global
 @page notice-bubble
 @page pagination
 @page pills
