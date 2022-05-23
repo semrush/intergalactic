@@ -84,6 +84,7 @@ export const getRepoTyping = async (typingName: string, debuggingPosition: strin
   return { declaration, dependencies, dependencyFiles, filepath };
 };
 
+const startSlashRE = /^\//;
 let uniqueId = 0;
 const normalizeMarkdown = (ast: MarkdownRoot, relativePath: string) => {
   const imagesUrls: { [id: string]: string } = {};
@@ -98,6 +99,11 @@ const normalizeMarkdown = (ast: MarkdownRoot, relativePath: string) => {
       }
       imagesUrls[id] = url;
       token.url = `---------~~~~~~${id}~~~~~~---------`;
+    }
+    if (token.type === 'link') {
+      if (token.url.startsWith('/')) {
+        token.url = token.url.replace(startSlashRE, process.env.PUBLIC_PATH);
+      }
     }
     if ('children' in token) {
       token.children.forEach(traverseTokens);
