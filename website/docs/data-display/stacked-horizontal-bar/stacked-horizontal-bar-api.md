@@ -5,7 +5,18 @@ fileSource: d3-chart
 
 @## D3 API
 
-All properties for the bar chart developed with D3 you can find in the [D3 guide](/data-display/d3-chart/d3-chart-api/#addc35).
+It have children components `Bar, HorizontalBar`.
+
+```js
+import { StackBar } from '@semcore/d3-chart';
+
+<StackBar>
+  <StackBar.Bar />
+  <StackBar.HorizontalBar />
+</StackBar>;
+```
+
+@typescript IStackBarProps
 
 @## Recharts API
 

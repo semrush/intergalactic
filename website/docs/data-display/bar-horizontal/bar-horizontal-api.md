@@ -5,7 +5,30 @@ fileSource: d3-chart
 
 @## D3 API
 
-All properties for the bar chart developed with D3 you can find in the [D3 guide](/data-display/d3-chart/d3-chart-api/#addc35).
+@## HorizontalBar
+
+Horizontal chart Bar.
+
+```js
+import { HorizontalBar } from '@semcore/d3-chart';
+```
+
+@typescript IHorizontalBarProps
+
+@## GroupBar
+
+It have children components `Bar, HorizontalBar`.
+
+```js
+import { GroupBar } from '@semcore/d3-chart';
+
+<GroupBar>
+  <GroupBar.Bar />
+  <GroupBar.HorizontalBar />
+</GroupBar>;
+```
+
+@typescript IGroupBarProps
 
 @## Recharts API
 

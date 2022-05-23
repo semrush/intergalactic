@@ -5,7 +5,18 @@ fileSource: d3-chart
 
 @## D3 API
 
-All properties for the venn chart developed with D3 you can find in the [D3 guide](/data-display/d3-chart/d3-chart-api/#a43c7e).
+It have children components `Circle`, `Intersection`.
+
+```js
+import { Venn } from '@semcore/d3-chart';
+
+<Venn>
+  <Venn.Circle />
+  <Venn.Intersection />
+</Venn>;
+```
+
+@typescript IVennProps
 
 @## Recharts API
 
