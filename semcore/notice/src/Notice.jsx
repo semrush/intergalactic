@@ -4,6 +4,8 @@ import { Box } from '@semcore/flex-box';
 import Close from '@semcore/icon/Close/m';
 import resolveColor from '@semcore/utils/lib/color';
 import { FadeInOut } from '@semcore/animation';
+import logger from '@semcore/utils/lib/logger';
+import NoticeGlobal from '@semcore/notice-global';
 
 import style from './style/notice.shadow.css';
 
@@ -16,7 +18,6 @@ class RootNotice extends Component {
   static style = style;
   static defaultProps = {
     theme: 'info',
-    use: 'secondary',
     duration: 250,
   };
 
@@ -29,9 +30,18 @@ class RootNotice extends Component {
 
   render() {
     const SNotice = Root;
-    const { Children, styles, hidden, theme } = this.asProps;
+    const { Children, styles, hidden, theme, use } = this.asProps;
     const color = resolveColor(theme);
     const useTheme = isCustomTheme(theme) ? 'custom' : theme;
+
+    if (use === 'primary') {
+      logger.warn(
+        true,
+        `This deprecated property, you should use component <NoticeGlobal/>`,
+        RootNotice.displayName,
+      );
+      return <NoticeGlobal {...this.asProps} />;
+    }
 
     return sstyled(styles)(
       <SNotice
