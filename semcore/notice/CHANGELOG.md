@@ -2,6 +2,13 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.1.0] - unrelease
+
+### Changed
+
+- Changed animation duration from 200ms to 250ms.
+- Set prop `use` in deprecated. Added fallback on `NoticeGlobal`.
+
 ## [4.0.2] - 2022-05-19
 
 ### Changed
