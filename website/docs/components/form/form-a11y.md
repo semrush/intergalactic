@@ -4,7 +4,7 @@ title: A11y
 
 @## Keyboard support
 
-See detailed information about the keyboard support for the all form elements in the [Keyboard navigation guide](/core-principles/a11y/a11y-keyboard/).
+See detailed information about the keyboard support for the all form elements in the [Keyboard control guide](/core-principles/a11y/a11y-keyboard/).
 
 @## Resources
 

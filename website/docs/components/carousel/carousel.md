@@ -101,7 +101,7 @@ Default animation properties:
 - animation duration — `300`
 - animation easing function — `ease-in-out`
 
-@## Keyboard navigation
+@## Keyboard control
 
 - `Key →` goes to the next slide
 - `Key ←` goes to the previous slide

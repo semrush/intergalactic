@@ -21,7 +21,7 @@ By default, the modal window is displayed in the center, sometimes we need to ch
 
 @## Modal window inside a modal window
 
-We do not recommend this, but sometimes it is necessary to open a model window in another modal window. You should put modal windows in each other, so that the background and keyboard navigation would be correct.
+We do not recommend this, but sometimes it is necessary to open a model window in another modal window. You should put modal windows in each other, so that the background and keyboard control would be correct.
 
 @example modal-inside-modal
 

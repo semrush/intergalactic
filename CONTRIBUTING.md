@@ -55,7 +55,7 @@ It can contain:
 
 - one component, for example a Button
 - several **dependent** components, for example a table (Table, TableHead, TableRow, etc.)
-- HOC component extending functionality, for example keyboard navigation (WithKeyboardFocus)
+- HOC component extending functionality, for example keyboard control (WithKeyboardFocus)
 - meta package, for example a list of CSS variables with colors
 
 ##Conduct

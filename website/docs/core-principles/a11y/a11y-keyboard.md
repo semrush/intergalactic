@@ -15,7 +15,7 @@ Make sure that it's possible to interact with the interface using a keyboard onl
 
 @## Basic rules
 
-> 💡 **Brief guide to keyboard navigation**
+> 💡 **Brief guide to keyboard control**
 >
 > - **Tab** moves `focus` between the interactive elements on the page / in the dropdown / modal window, etc.
 > - **Shift** + **Tab** returns `focus` to the previous interactive element. If dropdown is open, it closes.
@@ -23,7 +23,7 @@ Make sure that it's possible to interact with the interface using a keyboard onl
 > - **↓** inside the dropdown moves `focus` to the next `menuItem`. From the last `menuItem`, the `focus` moves to the first `menuItem`. The same logic applies to the **↑** key, but backwards 🙃
 > - **Esc** closes the dropdown. If the `focus` was on the control inside the dropdown, `Esc` removes the `focus` from the interactive element and closes the dropdown.
 
-Keyboard navigation should be performed sequentially across all interactive elements (which have focus) on the page.
+keyboard control should be performed sequentially across all interactive elements (which have focus) on the page.
 
 - The focus state for all controls appears by pressing the `Tab` key.
 - For inputs and text fields, focus also appears by `onClick`.
@@ -90,7 +90,7 @@ Particular cases about focus behavior when working with dropdown are described b
 
 `Shift + Tab` moves focus to the previous control, and popper` closes.
 
-![keyboard navigation example](/core-principles/a11y/static/keyboard-nav1.png)
+![keyboard control example](/core-principles/a11y/static/keyboard-nav1.png)
 
 @## Focus, OnMouseEnter and dropdown
 
@@ -98,7 +98,7 @@ Particular cases about focus behavior when working with dropdown are described b
 2. The dropdown closes by pressing `Esc`, and **focus remains on the trigger**.
 3. `Shift + Tab` moves focus to the previous control, and popper` closes.
 
-![keyboard navigation example](/core-principles/a11y/static/keyboard-nav2.png)
+![keyboard control example](/core-principles/a11y/static/keyboard-nav2.png)
 
 @## Focus, OnClick and dropdown with a single interactive element
 
@@ -109,7 +109,7 @@ Particular cases about focus behavior when working with dropdown are described b
 5. Clicking on the `Submit` control inside the dropdown closes it and returns focus to the trigger.
 6. If you focus on the control inside the dropdown, the `Tab` click will move focus back to the trigger. And so it cycles in a circle until the dropdown is closed with `Esc`.
 
-![keyboard navigation example](/core-principles/a11y/static/keyboard-nav3.png)
+![keyboard control example](/core-principles/a11y/static/keyboard-nav3.png)
 
 @## Focus, OnClick and dropdown with multiple interactive elements
 
@@ -122,7 +122,7 @@ Particular cases about focus behavior when working with dropdown are described b
 7. Clicking the `Submit` control in the dropdown closes it and leaves the focus on the trigger.
 8. If focus is on controls inside the dropdown, clicking on `Tab` will move the focus back to the trigger. And so forth and so on until the dropdown is closed using `Esc`.
 
-![keyboard navigation example](/core-principles/a11y/static/keyboard-nav4.png)
+![keyboard control example](/core-principles/a11y/static/keyboard-nav4.png)
 
 @## Focus, onClick and dropdown in the dropdown
 

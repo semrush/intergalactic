@@ -5,7 +5,7 @@ fileSource: dropdown-menu
 
 @## Keyboard support
 
-See detailed information for various cases in the [Keyboard navigation guide](/core-principles/a11y/a11y-keyboard/).
+See detailed information for various cases in the [Keyboard control guide](/core-principles/a11y/a11y-keyboard/).
 
 @## Other recommendations
 
