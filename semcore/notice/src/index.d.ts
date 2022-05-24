@@ -3,10 +3,15 @@ import { Box, IBoxProps } from '@semcore/flex-box';
 import { IIconProps } from '@semcore/icon';
 
 export type NoticeTheme = 'danger' | 'warning' | 'success' | 'info' | string;
+export type NoticeUse = 'primary' | 'secondary';
 
 export interface INoticeProps extends IBoxProps {
   /** Property for managing visibility of Notice */
   hidden?: boolean;
+  /** Notice type
+   * @deprecated since version ^4.1.0
+   */
+  use?: NoticeUse;
   /**
    * Notice theme
    * @default info
