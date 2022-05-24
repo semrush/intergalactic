@@ -11,7 +11,7 @@ fileSource: side-panel
 | `Shift + Tab` | Moves focus to the previous focusable element. |
 | `Esc`         | Closes the side panel.                         |
 
-See detailed information about the keyboard support for the all buttons, input, etc., in the [Keyboard navigation guide](/core-principles/a11y/a11y-keyboard/).
+See detailed information about the keyboard support for the all buttons, input, etc., in the [Keyboard control guide](/core-principles/a11y/a11y-keyboard/).
 
 @## Resources
 
