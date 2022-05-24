@@ -14,7 +14,7 @@ fileSource: input
 
 @## Keyboard support
 
-See detailed information about the keyboard support for the Input in the [Keyboard navigation guide](/core-principles/a11y/a11y-keyboard/#ae2a0e).
+See detailed information about the keyboard support for the Input in the [Keyboard control guide](/core-principles/a11y/a11y-keyboard/#ae2a0e).
 
 @## Resources
 

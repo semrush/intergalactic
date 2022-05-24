@@ -88,7 +88,7 @@ You may add a message about the alternative way to send feedback with the `mailt
 - After validation of the inputs and sending of the message show the success illustration and the text "Thank you for your feedback!". After `2500ms` the dropdown is smoothly closed with a fade of `500ms`.
 - After clicking the `Cancel` button the dropdown is closed.
 
-@## Keyboard navigation
+@## Keyboard control
 
 1. `Tab` moves focus between the inputs.
 2. `Cmd`+`Enter` (`Ctrl`+`Enter` in Windows) submit a message.

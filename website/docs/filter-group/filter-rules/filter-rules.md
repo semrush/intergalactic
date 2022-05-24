@@ -143,7 +143,7 @@ If the user entered an invalid value (less than minimum, greater than maximum), 
 
 **Keyboard support**
 
-> See all main rules and recommendations in the [Keyboard navigation](/core-principles/a11y/a11y-keyboard/) guide.
+> See all main rules and recommendations in the [Keyboard control](/core-principles/a11y/a11y-keyboard/) guide.
 
 The shortcut keys `Cmd` + `Enter` (macOS) and `Ctrl` + `Enter` (Windows) apply the filter.
 
