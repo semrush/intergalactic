@@ -23,16 +23,17 @@ const tokenHandlers = {
       </HeadingLink>
     );
   },
-  example: ({ load, raw }) => {
+  example: ({ load, raw, relativePath }) => {
     const { data: runtimeModule, error, loading } = usePromise(load);
 
     if (loading) return <Spin />;
-    if (error) return <Example raw={{ code: raw }}>Failed to load runtime</Example>;
+    if (error)
+      return <Example raw={{ code: raw, path: relativePath }}>Failed to load runtime</Example>;
 
     const Component = runtimeModule.default;
 
     return (
-      <Example raw={{ code: raw }}>
+      <Example raw={{ code: raw, path: relativePath }}>
         <Component />
       </Example>
     );

@@ -292,6 +292,11 @@ export const buildArticle = async (docsDir: string, fullPath: string, relativePa
               return {
                 type: 'example',
                 raw: fileContent,
+                relativePath: [
+                  relativePath.replace(/\/[\w-]+\..+/, ''), // remove name file
+                  'examples',
+                  fileName + '.jsx',
+                ].join('/'),
                 load: `~~~%%%${filePath}%%%~~~`,
               };
             }
