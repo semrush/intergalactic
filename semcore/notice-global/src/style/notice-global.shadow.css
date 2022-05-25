@@ -15,39 +15,39 @@ SCloseIcon {
 }
 
 SNoticeGlobal[theme='neutral'] {
-  background-color: var(--gray-400);
-  color: #ffffff;
+  background-color: var(--gray-500);
+  color: var(--white);
 }
 
 SNoticeGlobal[theme='info'] {
-  background-color: var(--blue-50);
+  background-color: var(--blue-400);
 
   & SCloseIcon {
-    color: var(--blue-400);
+    color: var(--white);
   }
 }
 
 SNoticeGlobal[theme='danger'] {
-  background-color: var(--red-50);
+  background-color: var(--red-400);
 
   & SCloseIcon {
-    color: var(--red-400);
+    color: var(--white);
   }
 }
 
 SNoticeGlobal[theme='warning'] {
-  background-color: var(--orange-50);
+  background-color: var(--orange-400);
 
   & SCloseIcon {
-    color: var(--orange-400);
+    color: var(--white);
   }
 }
 
 SNoticeGlobal[theme='success'] {
-  background-color: var(--green-50);
+  background-color: var(--green-400);
 
   & SCloseIcon {
-    color: var(--green-400);
+    color: var(--white);
   }
 }
 
