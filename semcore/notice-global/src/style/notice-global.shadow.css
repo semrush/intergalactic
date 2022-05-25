@@ -25,6 +25,10 @@ SNoticeGlobal[theme='info'] {
 
   & SCloseIcon {
     color: var(--white);
+
+    &:hover {
+      color: var(--gray-50);
+    }
   }
 }
 
@@ -34,6 +38,10 @@ SNoticeGlobal[theme='danger'] {
 
   & SCloseIcon {
     color: var(--white);
+
+    &:hover {
+      color: var(--gray-50);
+    }
   }
 }
 
@@ -43,6 +51,10 @@ SNoticeGlobal[theme='warning'] {
 
   & SCloseIcon {
     color: var(--white);
+
+    &:hover {
+      color: var(--gray-50);
+    }
   }
 }
 
@@ -52,6 +64,10 @@ SNoticeGlobal[theme='success'] {
 
   & SCloseIcon {
     color: var(--white);
+
+    &:hover {
+      color: var(--gray-50);
+    }
   }
 }
 
