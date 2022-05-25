@@ -24,7 +24,7 @@ The notice shall meet four criteria. If it doesn't respond to at least one, it's
 - **Contextual**. It's a message on the product page, inside the widgets and blocks.
 - **Global**. It's a message that relates to the work of the whole product.
 
-### Components consists of
+### Notice consists of
 
 ![notice-scheme](static/notice-scheme.png)
 
@@ -53,7 +53,7 @@ The notice mandatory elements are a paragraph, container, and close icon. All ot
 
 ![notice-max-button](static/notice-short.png)
 
-@## Dimensions and indents
+@## Sizes, paddings and margins
 
 ### Contextual notice
 
@@ -66,7 +66,7 @@ Notice inside component. The notice internal paddings repeat the internal paddin
 ![notice-component](static/notice-component.png)
 ![notice-component-2](static/notice-component-2.png)
 
-@## Maximum text width in the notice
+@## Maximum text width
 
 Do not stretch the text to the full width of the notice, especially if the notice extends to the entire width of the screen. In this form, the text is inconvenient to read.
 
@@ -78,11 +78,13 @@ Do not stretch the text to the full width of the notice, especially if the notic
 
 ### Info
 
-Neutral message, information, collecting feedback. To announce a new feature or other tool, use this notice with a large image (we usually call these [advertising notices](/components/notice/#a47391)).
+Use it for neutral message, information, collecting feedback. To announce a new feature or other tool, use this notice with a large image (we usually call these [advertising notices](/components/notice/#a47391)).
 
 ![info](static/info.png)
 
 ### Success
+
+Use it for:
 
 - Any trigger for buying/taking a trial.
 - Success status (successful completion of the form, for example).
@@ -91,42 +93,15 @@ Neutral message, information, collecting feedback. To announce a new feature or 
 
 ### Warning
 
-Important but not critical errors/warnings: service report, unavailable functionality, temporary failure.
+Use it for important but not critical errors/warnings: service report, unavailable functionality, temporary failure.
 
 ![warning](static/warning.png)
 
 ### Danger
 
-A serious error/problem/action that does not allow the user to continue working or leads to data loss.
+Use it for a serious error/problem/action that does not allow the user to continue working or leads to data loss.
 
 ![danger](static/danger.png)
-
-@## Interaction
-
-### Opening
-
-The notice appears without delay or visual effects. It is displayed immediately when the page/component is loaded.
-
-### Lifespan
-
-Since the notice is a temporary notification, it should have a preset "lifespan".
-
-The "lifespan" can be set by the following rules:
-
-- number of days (for example, during the experiment);
-- number of user sessions;
-- event (completion of works, correcting bugs, moving features out of the beta);
-- user action as a trigger (installed something, looked at it, fixed an error).
-
-### Hiding
-
-- Clicking on the close icon.
-- Clicking on the link that causes the re-opening condition. _For example, **Ask me later**, **Never show again**, etc._
-- If there is no close icon or hide link, the user can't hide such notice. It will be hidden according to the conditions set by the service (after a certain time, certain number of sessions, after clicking on the trigger, etc.).
-
-### Animation
-
-By clicking on the closing icon/closing link, the notice shall close smoothly with `fade-out of 250ms`. The page content is pulled to the notice place within 250ms.
 
 @## Placement in the interface
 
@@ -152,9 +127,36 @@ If the notice applies to the entire component, it is placed at the bottom or top
 
 ![notice-component-yes-no](static/notice-component-yes-no.png)
 
+@## Interaction
+
+### Opening
+
+The notice appears without delay or visual effects. It is displayed immediately when the page/component is loaded.
+
+### Lifespan
+
+Since the notice is a temporary notification, it should have a preset "lifespan".
+
+The "lifespan" can be set by the following rules:
+
+- number of days (for example, during the experiment);
+- number of user sessions;
+- event (completion of works, correcting bugs, moving features out of the beta);
+- user action as a trigger (installed something, looked at it, fixed an error).
+
+### Hiding
+
+- Clicking on the close icon.
+- Clicking on the link that causes the re-opening condition. _For example, "Ask me later", "Never show again", etc._
+- If there is no close icon or hide link, the user can't hide such notice. It will be hidden according to the conditions set by the service (after a certain time, certain number of sessions, after clicking on the trigger, etc.).
+
+### Animation
+
+By clicking on the closing icon/closing link, the notice shall close smoothly with `fade-out of 250ms`. The page content is pulled to the notice place within 250ms.
+
 @## Custom notice
 
-These are the notices that "live" by their own rules and their styles differ from regular notices.
+These are the notices that have their own rules and their styles differ from the preset themes.
 
 ### Feedback
 
@@ -164,7 +166,7 @@ It differs from the regular one – it is attached to the header and stretched t
 
 ### Advertising
 
-The advertising notice shall attract user's attention more than a regular notice. It should be used when you need to announce a feature, updated version, move, limit promo action, and so on. If your tool doesn't need to focus the user's attention on these things, use a regular informational notice.
+The advertising notice shall attract user's attention more than a regular notice. Use it when you need to announce a feature, updated version, move, limit promo action, and so on. If your product doesn't need to focus the user's attention on these things, use notice with info theme.
 
 The advertising notice differs from the regular one by advertising illustrations and the possibility to insert controls such as input and select to quickly engage the user.
 

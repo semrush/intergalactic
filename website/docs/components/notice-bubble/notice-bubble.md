@@ -8,13 +8,14 @@ tabName: Design
 
 **NoticeBubble (Alert)** is a notification on completed action, beginning or ending of a process.
 
-Let's see the differencies with [Notice](/components/notice/).
+Let's see the differencies with [Notice](/components/notice/) and [NoticeGlobal](/components/notice-global/).
 
-| Criteria                                                                                             | Notice | NoticeBubble |
-| ---------------------------------------------------------------------------------------------------- | ------ | ------------ |
-| **Global**. Refers to pages/blocks/large components, not specific elements.                          | ✅     | ✅ ❌        |
-| **Important**. If the users do not read the notice, they will miss an opportunity or lose something. | ✅     | ❌           |
-| **Temporary**. Not a default block element. Appears and disappears under certain conditions.         | ✅     | ✅           |
+| Criteria                                                                                             | Notice | NoticeBubble | NoticeGlobal |
+| ---------------------------------------------------------------------------------------------------- | ------ | ------------ | ------------ |
+| Refers to the whole website.                                                                         | ❌     | ✅ ❌        | ✅           |
+| **Global**. Refers to pages/blocks/large components, not specific elements.                          | ✅     | ✅ ❌        | ✅           |
+| **Important**. If the users do not read the notice, they will miss an opportunity or lose something. | ✅     | ❌           | ✅           |
+| **Temporary**. Not a default block element. Appears and disappears under certain conditions.         | ✅     | ✅           | ✅           |
 
 @## Possible cases
 
