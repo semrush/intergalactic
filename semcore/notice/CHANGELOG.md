@@ -8,6 +8,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Changed animation duration from 200ms to 250ms.
 - Set prop `use` in deprecated. Added fallback on `NoticeGlobal`.
+- Add styles for Close icon hover.
 
 ## [4.0.2] - 2022-05-19
 
