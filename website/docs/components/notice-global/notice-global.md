@@ -27,20 +27,52 @@ The notice shall meet four criteria. If it doesn't respond to at least one, it's
 
 @## Appearance
 
-![global-notice](static/gnotice-default.png)
-
-### Dimensions and indents
-
-**Paddings**
+### Paddings
 
 ![gnotice-paddings](static/gnotice-paddings.png)
-![gnotice-paddings](static/gnotice-paddings2.png)
 
-**Margins**
+### Margins
 
 ![gnotice-margins](static/gnotice-margins.png)
 
 @## Notice themes
+
+### Neutral
+
+Use it for neutral messages about the whole website. Notice has `background-color: var(--gray-500);`.
+
+![global-notice](static/gnotice-neutral.png)
+
+### Info
+
+Use it for collecting feedback for the whole website. Notice has `background-color: var(--blue-400);`.
+
+![global-notice](static/gnotice-info.png)
+
+### Success
+
+Use it for success message concerning the whole website. Notice has `background-color: var(--green-400);`.
+
+![global-notice](static/gnotice-success.png)
+
+### Warning
+
+Use it for important but not critical errors/warnings concerning the whole website. Notice has `background-color: var(--orange-400);`.
+
+![global-notice](static/gnotice-warning.png)
+
+### Danger
+
+Use it for a serious error/problem message concerning the whole website. Notice has `background-color: var(--red-400);`.
+
+![global-notice](static/gnotice-danger.png)
+
+@## Placement in the interface
+
+- Place this notice always above the main Semrush header.
+- Stretch it to the full width of the screen.
+
+![gnotice-placement](static/placement.png)
 
 @## Interaction
 
@@ -50,7 +82,7 @@ When global notice appears, it moves the entire page down.
 
 ### Lifespan
 
-Since the notice is a temporary notification, it should have a preset "lifespan".
+Since the notice is a temporary message, it should have a preset "lifespan".
 
 The "lifespan" can be set by the following rules:
 
@@ -64,37 +96,20 @@ The "lifespan" can be set by the following rules:
 When you hide the notice, the entire page pulls up to the height of the closed component.
 
 - Clicking on the close icon.
-- Clicking on the link that causes the re-opening condition. _For example, **Ask me later**, **Never show again**, etc._
+- Clicking on the link that causes the re-opening condition. _For example, "Ask me later", "Never show again", etc._
 - If there is no close icon or hide link, the user can't hide such notice. It will be hidden according to the conditions set by the service (after a certain time, certain number of sessions, after clicking on the trigger, etc.).
 
 ### Animation
 
 By clicking on the closing icon/closing link, the notice shall close smoothly with `fade-out of 250ms`. The page content is pulled to the notice place within 250ms.
 
-@## Placement in the interface
-
-- Place this notice always above the main Semrush header.
-- Stretch it to the full width of the screen.
-
-![gnotice-placement](static/placement.png)
-
 @## Custom notice
 
-These are the notices that "live" by their own rules and their styles differ from regular notices.
+These are the notices that have their own rules and their styles differ from preset themes.
 
-### Global notice
+### Notice with illustration
 
-The default color of this notice is `--gray-400`.
-
-![global-notice](static/gnotice-default.png)
-
-If necessary, you can give it a different color. For example, `--violet-400`, `--blue-400` or other from [our palette](/style/palette/).
-
-![global-notice](static/gnotice-custom.png)
-
-### Global notice with illustration
-
-In special cases, you can add a thematic illustration to the global message. _For example, if technical work is expected on holidays, etc._
+In special cases, you can add a thematic illustration to the message. _For example, if technical work is expected on holidays, etc._
 
 Keep in mind, however, that the extra accent notice on the page adds visual noise. Therefore, do not abuse the opportunity to add an illustration to this kind of message.
 
@@ -115,12 +130,8 @@ In cases where a user on the site has two or more global messages to display, pr
 
 @## Use in UX/UI
 
-### General
-
-- You can notify about the following events: tools and reports announcement, collecting feedback, quick help for additional features, system status (error, failure, end of works, new feature).
-- In some cases, notices with the same text may have different colors because they may have a different meaning.
-- In regular cases, one notice is replaced by another in order of priority: red > yellow > green > blue > gray. If you need to place notices in a row, think it over with the UX team. There may be another way to deliver your important message.
-- Be concise – don't supersede other widgets and other report functionality. Try to convey the meaning of your message to users in two lines. For the notices inside blocks / other components — four lines.
+- You can notify about the following: website mode (e.g., admin), system status (error, failure, end of works).
+- Be concise – don't supersede other widgets and other report functionality. Try to convey the meaning of your message to users in one line.
 
 @page notice-global-a11y
 @page notice-global-api
