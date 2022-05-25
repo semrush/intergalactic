@@ -7,7 +7,7 @@ import ArrowLeftS from '@semcore/icon/ArrowLeft/m';
 import ArrowRightS from '@semcore/icon/ArrowRight/m';
 
 const Demo = () => {
-  const [visible, updateVisible] = useState(true);
+  const [visible, updateVisible] = useState(false);
 
   const changeModalVisibility = () => {
     updateVisible((visible) => !visible);
