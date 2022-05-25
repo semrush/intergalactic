@@ -1157,31 +1157,38 @@ describe('d3 charts visual regression', () => {
       .fill({})
       .map((d, i) => ({
         category: `Category ${i}`,
-        bar: Math.abs(Math.sin(Math.exp(i))) * 10,
+        bar: Math.abs(Math.sin(Math.exp(i))) * 1000000,
       }));
 
     const Component: React.FC = () => {
-      const MARGIN = 40;
       const width = 500;
       const height = 300;
       const xScale = scaleBand()
-        .range([MARGIN, width - MARGIN])
+        .range([90, width - 60])
         .domain(data.map((d) => d.category))
         .paddingInner(0.4)
         .paddingOuter(0.2);
       const yScale = scaleLinear()
-        .range([height - MARGIN, MARGIN])
-        .domain([0, 10]);
+        .range([height - 40, 40])
+        .domain([0, 1000000]);
       return (
         <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
           <YAxis>
             <YAxis.Ticks />
+            <YAxis.Ticks position="right">
+              {({ value }) => ({
+                children: Math.floor(value / 100000),
+              })}
+            </YAxis.Ticks>
             <YAxis.Grid />
+            <YAxis.Title position="left">YAxis title</YAxis.Title>
             <YAxis.Title>YAxis title</YAxis.Title>
           </YAxis>
           <XAxis>
             <XAxis.Ticks />
+            <XAxis.Ticks position="top" />
             <XAxis.Title>XAxis title</XAxis.Title>
+            <XAxis.Title position="bottom">XAxis title</XAxis.Title>
           </XAxis>
           <Bar x="category" y="bar" />
         </Plot>

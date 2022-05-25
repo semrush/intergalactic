@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.0.7] - 2022-05-25
+
+### Fixed
+
+- Fixed position title for axis.
+
 ## [2.0.6] - 2022-05-23
 
 ### Changed

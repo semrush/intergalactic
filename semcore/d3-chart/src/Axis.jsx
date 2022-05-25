@@ -147,37 +147,33 @@ const MAP_POSITION_GRID = {
   },
 };
 
-const TICKS_OVERLAP_SHIFT = 15;
+const OFFSET_TITLE = 10;
 const MAP_POSITION_TITlE = {
-  top: ([xScale, yScale]) => {
+  top: ([xScale]) => {
     const xRange = xScale.range();
-    const yRange = yScale.range();
     return {
-      x: xRange[1] / 2,
-      y: yRange[1],
+      x: (xRange[1] + xRange[0]) / 2,
+      y: OFFSET_TITLE,
     };
   },
-  bottom: ([xScale, yScale]) => {
+  bottom: ([xScale], [, height]) => {
     const xRange = xScale.range();
-    const yRange = yScale.range();
     return {
-      x: xRange[1] / 2,
-      y: yRange[0] + TICKS_OVERLAP_SHIFT,
+      x: (xRange[1] + xRange[0]) / 2,
+      y: height - OFFSET_TITLE,
     };
   },
-  right: ([xScale, yScale]) => {
-    const xRange = xScale.range();
+  right: ([, yScale], [width]) => {
     const yRange = yScale.range();
     return {
-      x: xRange[1],
+      x: width - OFFSET_TITLE,
       y: (yRange[0] + yRange[1]) / 2,
     };
   },
-  left: ([xScale, yScale]) => {
-    const xRange = xScale.range();
+  left: ([, yScale]) => {
     const yRange = yScale.range();
     return {
-      x: xRange[0] / 2,
+      x: OFFSET_TITLE,
       y: (yRange[0] + yRange[1]) / 2,
     };
   },
@@ -272,9 +268,9 @@ function Grid(props) {
 }
 
 function Title(props) {
-  const { Element: STitle, styles, scale, position } = props;
+  const { Element: STitle, styles, scale, position, size } = props;
 
-  const { x, y } = MAP_POSITION_TITlE[position](scale);
+  const { x, y } = MAP_POSITION_TITlE[position](scale, size);
 
   const sstyles = sstyled(styles);
   const sTitleStyles = sstyles.cn('STitle', {
