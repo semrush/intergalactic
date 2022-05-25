@@ -21,6 +21,7 @@ SNoticeGlobal[theme='neutral'] {
 
 SNoticeGlobal[theme='info'] {
   background-color: var(--blue-400);
+  color: var(--white);
 
   & SCloseIcon {
     color: var(--white);
@@ -29,6 +30,7 @@ SNoticeGlobal[theme='info'] {
 
 SNoticeGlobal[theme='danger'] {
   background-color: var(--red-400);
+  color: var(--white);
 
   & SCloseIcon {
     color: var(--white);
@@ -37,6 +39,7 @@ SNoticeGlobal[theme='danger'] {
 
 SNoticeGlobal[theme='warning'] {
   background-color: var(--orange-400);
+  color: var(--white);
 
   & SCloseIcon {
     color: var(--white);
@@ -45,6 +48,7 @@ SNoticeGlobal[theme='warning'] {
 
 SNoticeGlobal[theme='success'] {
   background-color: var(--green-400);
+  color: var(--white);
 
   & SCloseIcon {
     color: var(--white);
