@@ -21,21 +21,16 @@ The notice shall meet four criteria. If it doesn't respond to at least one, it's
 
 **The notice message can be:**
 
-- **Contextual**. It's a message on the product page, inside the widgets and blocks.
+- **Contextual**. It's a message on the product page, inside the widgets and cards.
 - **Global**. It's a message that relates to the work of the whole product.
 
 ### Notice consists of
 
-![notice-scheme](static/notice-scheme.png)
-
-- heading (optional);
-- paragraph;
-- element in front of the text – an [icon](/style/icon/), [badge](/components/badge/) or illustration that accompanies the message (optional);
+- title (optional);
+- text;
+- an element before the text – an [icon](/style/icon/), [badge](/components/badge/) or illustration that accompanies the message (optional);
 - close icon (optional);
-- buttons and/or groups of buttons (optional);
-- container;
-
-The notice mandatory elements are a paragraph, container, and close icon. All other elements can be added and combined if necessary.
+- button or groups of buttons (optional).
 
 ### Mini notice
 
@@ -45,23 +40,17 @@ The notice mandatory elements are a paragraph, container, and close icon. All ot
 
 ![notice-monster](static/notice-monster.png)
 
-### One-line maxi notice
-
 ![notice-max-button](static/notice-max-button.png)
 
-> 💡 As an exception, you can also use this layout of elements if you need to save the space in the interface.
-
-![notice-max-button](static/notice-short.png)
-
 @## Sizes, paddings and margins
-
-### Contextual notice
 
 You can use the notice as a self-contained component, or include it inside other components. _For example, it can be used inside dropdowns and modal windows._
 
 ![notice-monster-big-paddings](static/notice-monster-big-paddings.png)
 
-Notice inside component. The notice internal paddings repeat the internal paddings of the component the notice is nested in.
+![notice-monster-big-paddings](static/notice-margins.png)
+
+Notice internal paddings repeat the internal paddings of the component the notice is nested in.
 
 ![notice-component](static/notice-component.png)
 ![notice-component-2](static/notice-component-2.png)
@@ -107,23 +96,23 @@ Use it for a serious error/problem/action that does not allow the user to contin
 
 ### On page
 
-If the notice applies to the entire tool, it is placed in the report header (under the breadcrumbs) and inherits the width of the content section. For more information about indents, see the [ProductHead](/components/product-head/) component.
+If the notice applies to the entire product, place it in the report header (under the breadcrumbs) and inherits the width of the content section. For more information about paddings and margins, see the [ProductHead](/components/product-head/).
 
 **Do not place multiple notices on the page at once**.
 
 ![notice-placement-yes-no](static/notice-placement-yes-no.png)
 
-If the notification refers only to the content of a specific tab inside the tool, then it can be placed under the [TabPanel](/components/tab-panel/).
+If the message refers only to the content of a specific tab inside the product, then place notice under the [TabLine](/components/tab-line/).
 
 ### Inside the widget
 
-If the notice belongs to a block, it is placed inside the block. The exact place depends on the context. As a rule, in such cases, the notification inherits the width of the content section of the block.
+If the notice belongs to a widget, place it inside inside the widget. The exact place depends on the context. As a rule, in such cases, the notice inherits the width of the content section of the widget.
 
 ![notice-block-yes-no](static/notice-block-yes-no.png)
 
 ### Inside the component
 
-If the notice applies to the entire component, it is placed at the bottom or top and inherits the width of the component.
+If the notice refers only to the component, place it at the bottom or top of the component and inherit the width of the component.
 
 ![notice-component-yes-no](static/notice-component-yes-no.png)
 
@@ -131,13 +120,11 @@ If the notice applies to the entire component, it is placed at the bottom or top
 
 ### Opening
 
-The notice appears without delay or visual effects. It is displayed immediately when the page/component is loaded.
+The notice appears without delay or visual effects. Display it immediately when the page/component is loaded.
 
 ### Lifespan
 
-Since the notice is a temporary notification, it should have a preset "lifespan".
-
-The "lifespan" can be set by the following rules:
+Since the notice is a temporary notification, it should have a preset "lifespan". The "lifespan" can be set by the following rules:
 
 - number of days (for example, during the experiment);
 - number of user sessions;
@@ -156,13 +143,11 @@ By clicking on the closing icon/closing link, the notice shall close smoothly wi
 
 @## Custom notice
 
-These are the notices that have their own rules and their styles differ from the preset themes.
+These are the notices that have their own rules and their styles differ from preset themes.
 
-### Feedback
+### Feedback notice
 
-It differs from the regular one – it is attached to the header and stretched to the full width of the report's content section. It has no indents at the top, right, or left. You can see an example in the [Code tab](/components/notice/notice-code).
-
-![feedback](static/feedback.png)
+It differs from the regular one – it is attached to the header and stretched to the full width of the report's content section. It has no indents at the top, right, or left. You can see an example in the [FeedbackYesNo](/components/feedback-yes-no) guide.
 
 ### Advertising
 
@@ -196,7 +181,7 @@ A notice should not be confused with the other components:
 
 ### Examples of incorrect usage
 
-A permanent message that is an informational part of the block pretends to be a notice. Avoid this.
+A permanent message that is an informational part of the form pretends to be a notice. Avoid this.
 
 ![notice-use-yes-no](static/notice-use-yes-no.png)
 
@@ -204,7 +189,7 @@ An error related to a temporary failure. There should be an orange warning notic
 
 ![export-yes-no](static/export-yes-no.png)
 
-A notice that appears on top of the interface and notifies you of the end of the hidden process. Avoid this. In this case, it should be [NoticeBubble](/components/notice-bubble).
+A notice that appears on top of the interface and notifies you of the end of the hidden process. Avoid this. Use [NoticeBubble](/components/notice-bubble) in such case.
 
 ![notice-placement-yes-no](static/notice-use-2-yes-no.png)
 

@@ -82,9 +82,7 @@ When global notice appears, it moves the entire page down.
 
 ### Lifespan
 
-Since the notice is a temporary message, it should have a preset "lifespan".
-
-The "lifespan" can be set by the following rules:
+Since the notice is a temporary message, it should have a preset "lifespan". The "lifespan" can be set by the following rules:
 
 - number of days (for example, during the experiment);
 - number of user sessions;
