@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Portal from '@semcore/portal';
-import Notice from '@semcore/notice';
+import NoticeGlobal from '@semcore/notice-global';
 import { Text } from '@semcore/typography';
 import Button from '@semcore/button';
 import { Flex } from '@semcore/flex-box';
@@ -27,26 +27,25 @@ export default () => {
         {visible ? 'Close' : 'Open'} Global Notice
       </Button>
       <Portal>
-        <Notice
+        <NoticeGlobal
           hidden={!visible}
-          use="primary"
           theme="light-blue"
           position="fixed"
           top="40px"
           w="100%"
           style={{ zIndex: '9999' }}
         >
-          <Notice.Content tag={Flex} justifyContent="center">
+          <NoticeGlobal.Content tag={Flex} justifyContent="center">
             <Text size={100} tag="span" color="white">
               Look at this cool notice!
             </Text>
-          </Notice.Content>
-          <Notice.CloseIcon
+          </NoticeGlobal.Content>
+          <NoticeGlobal.CloseIcon
             interactive={false}
             color="white"
             onClick={() => updateVisible(false)}
           />
-        </Notice>
+        </NoticeGlobal>
       </Portal>
     </>
   );
