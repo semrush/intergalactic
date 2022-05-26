@@ -21,19 +21,21 @@ There are also inputs for entering certain data:
 
 ### Sizes
 
-We implement 4 input sizes in our interfaces.
+We implement 2 input sizes in our interfaces.
 
-|                 L (32px)                 |                 M (26px)                 |                 S (18px)                 |
-| :--------------------------------------: | :--------------------------------------: | :--------------------------------------: |
-| ![input-l no-margin](static/input-l.png) | ![input-m no-margin](static/input-m.png) | ![input-s no-margin](static/input-s.png) |
+|                 L (40px)                 |                 M (28px)                 |
+| :--------------------------------------: | :--------------------------------------: |
+| ![input-l no-margin](static/input-l.png) | ![input-m no-margin](static/input-m.png) |
 
 @## Content
 
 **Addons** are the positions inside the input field – to the left and right of the text – for placing icons/badges/counters, etc.
 
-In the left addon, we add a non-clickable icon only. This helps us visually identify the small form inputs. _For example, the login form._ The icon has the color `$gray40`, an it does not have a `hover`, and the cursor is `default`.
+In the left addon, we add a non-clickable icon only. This helps us visually identify the small form inputs. _For example, the login form._ The icon has the color `--gray-300`, an it does not have a `hover`, and the cursor is `default`.
 
-The addon on the right can be a clickable icon, a counter, a badge, a spinner, or a button link. The clickable icon has the color `$stone`, and the cursor changes to the `pointer`.
+The addon on the right can be a clickable icon, a counter, a badge, a spinner, or a button link. The clickable icon has also color `--gray-300`, and the cursor changes to the `pointer`.
+
+Icon Schevron has color `--gray-800`.
 
 | Size | Icon size                                     | Indents                                          | Min-width                                      |
 | ---- | --------------------------------------------- | ------------------------------------------------ | ---------------------------------------------- |
@@ -51,6 +53,11 @@ The addon on the right can be a clickable icon, a counter, a badge, a spinner, o
 | normal  | ![input-normal no-margin](static/input-normal.png)   | ![input-normal-focus no-margin](static/input-normal-focus.png)   | ![input-normal-disabled no-margin](static/input-normal-disabled.png)   | ![input-readonly no-margin](static/input-readonly.png) |
 | valid   | ![input-valid no-margin](static/input-valid.png)     | ![input-valid-focus no-margin](static/input-valid-focus.png)     | ![input-valid-disabled no-margin](static/input-valid-disabled.png)     |                                                        |
 | invalid | ![input-invalid no-margin](static/input-invalid.png) | ![input-invalid-focus no-margin](static/input-invalid-focus.png) | ![input-invalid-disabled no-margin](static/input-invalid-disabled.png) |                                                        |
+
+> 💡 Use state 'read only' for component that cannot be interacted with, except for copy its value.
+> Also for links which might be copied.
+>
+> Use state 'disabled' if you need to show affect of one component to another.
 
 @## Input types
 
@@ -70,8 +77,8 @@ There may be a [counter](/components/counter/) inside the input or next to its n
 
 |          | Input with a label                          | Input without a label                          |
 | -------- | ------------------------------------------- | ---------------------------------------------- |
-| L (32px) | ![input with counter](static/counter-L.png) | ![input with counter](static/counter-in-l.png) |
-| M (26px) | ![input with counter](static/counter-M.png) | ![input with counter](static/counter-in-m.png) |
+| L (40px) | ![input with counter](static/counter-L.png) | ![input with counter](static/counter-in-l.png) |
+| M (28px) | ![input with counter](static/counter-M.png) | ![input with counter](static/counter-in-m.png) |
 
 @## Use in UX/UI
 
