@@ -25,7 +25,7 @@ tabName: Design
 
 @## Interaction
 
-When you hover near such input the stepper buttons (steppers, spinbox interface) shall appear. These buttons can be used to change the value up or down.
+When you focus such input the stepper buttons (steppers, spinbox interface) shall appear. These buttons can be used to change the value up or down.
 
 The click zone for steppers is slightly larger than their size.
 
@@ -33,7 +33,7 @@ The click zone for steppers is slightly larger than their size.
 
 To change the value in InputNumber, use:
 
-- stepper buttons (steppers) which appear by hover/focus in the input;
+- stepper buttons (steppers) which appear by focus in the input;
 - keys `Up`, `Down` on the keyboard;
 - `Shift` + `Up`, `Down` keys.
 
@@ -49,17 +49,17 @@ To change the value in InputNumber, use:
 
 |          | Appearance                          |
 | -------- | ----------------------------------- |
-| L (32px) | ![l input size](static/l-sizes.png) |
-| M (26px) | ![m input size](static/m-sizes.png) |
+| L (40px) | ![l input size](static/l-sizes.png) |
+| M (28px) | ![m input size](static/m-sizes.png) |
 
 > 💡 If necessary, you can use a number as a placeholder inside this kind of input.
 
-| State      | L (32px)                                     | M (26px)                                     | Styles                                                                |
-| ---------- | -------------------------------------------- | -------------------------------------------- | --------------------------------------------------------------------- |
-| default    | ![default state](static/l-placeholder.png)   | ![default state](static/m-placeholder.png)   |                                                                       |
-| hover      | ![hover state](static/l-hover.png)           | ![hover state](static/m-hover.png)           | `icon color: $stone;`                                                 |
-| Icon hover | ![icon hover state](static/l-icon-hover.png) | ![icon hover state](static/m-icon-hover.png) | When hovering the cursor over, the color of the icon is darker by 8%. |
-| focus      | ![focus state](static/l-focus.png)           | ![focus state](static/m-focus.png)           |                                                                       |
+| State      | L (40px)                                     | M (28px)                                     | Styles                    |
+| ---------- | -------------------------------------------- | -------------------------------------------- | ------------------------- | --- |
+| default    | ![default state](static/l-placeholder.png)   | ![default state](static/m-placeholder.png)   |                           |
+| hover      | ![hover state](static/l-hover.png)           | ![hover state](static/m-hover.png)           |                           |
+| focus      | ![focus state](static/l-focus.png)           | ![focus state](static/m-focus.png)           | `icon color: --gray-300;` |     |
+| Icon hover | ![icon hover state](static/l-icon-hover.png) | ![icon hover state](static/m-icon-hover.png) | `icon color: --gray-400;` |
 
 @## Input size
 
@@ -84,7 +84,7 @@ To enter a range of numbers, we need two Inputnumber grouped together, and a bit
 
 > 💡 You can use **"From"** and **"To"** as placeholders in such inputs.
 
-| State   | L (32px)                                                 | M (26px)                                                 |
+| State   | L (40px)                                                 | M (28px)                                                 |
 | ------- | -------------------------------------------------------- | -------------------------------------------------------- |
 | default | ![default state input range](static/l-range-default.png) | ![default state input range](static/m-range-default.png) |
 | focus   | ![default state input range](static/l-range.png)         | ![default state input range](static/m-range.png)         |
