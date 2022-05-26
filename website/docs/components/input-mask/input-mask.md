@@ -29,10 +29,10 @@ The symbol that reserves space for entering data, — `_`.
 
 Example of using a mask in the [input field to enter a phone number](/components/input-phone/input-phone-code).
 
-|             | Appearance examples                                | Styles                      |
-| ----------- | -------------------------------------------------- | --------------------------- |
-| Placeholder | ![input with mask](static/placeholder-default.png) | Placeholder color `$gray70` |
-| Mask        | ![input with mask](static/mask-default.png)        | Mask color `$gray20`        |
+|             | Appearance examples                                | Styles                         |
+| ----------- | -------------------------------------------------- | ------------------------------ |
+| Placeholder | ![input with mask](static/placeholder-default.png) | Placeholder color `--gray-300` |
+| Mask        | ![input with mask](static/mask-default.png)        | Mask color `--gray-800`        |
 
 @## Interaction
 

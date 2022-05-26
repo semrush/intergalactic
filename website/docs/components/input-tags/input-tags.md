@@ -18,8 +18,8 @@ When tags overflow, the input increases in height by 1 text line.
 
 | Sizes                          | Appearance                   |                                | Indents                                |
 | ------------------------------ | ---------------------------- | ------------------------------ | -------------------------------------- |
-| L input is used with the M tag | ![l size](static/l-size.png) | ![l size](static/l-size-2.png) | ![l paddings](static/l-paddings-2.png) |
-| M input is used with the S tag | ![m size](static/m-size.png) | ![m size](static/m-size-2.png) | ![m paddings](static/m-paddings-2.png) |
+| L input is used with the L tag | ![l size](static/l-size.png) | ![l size](static/l-size-2.png) | ![l paddings](static/l-paddings-2.png) |
+| M input is used with the M tag | ![m size](static/m-size.png) | ![m size](static/m-size-2.png) | ![m paddings](static/m-paddings-2.png) |
 
 @## Tag colors
 
@@ -29,7 +29,7 @@ In most cases, we recommend using a tag with the `primary` type and the `muted` 
 
 ![default tag color](static/default-tag.png)
 
-When validating this input, we may highlight inappropriate data in orange. **Please do not forget about the clear text in the tooltip with the error.**
+When validating this input, we may highlight inappropriate data in red. **Please do not forget about the clear text in the tooltip with the error.**
 
 ![validation tag color](static/validation.png)
 
