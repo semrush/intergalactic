@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.0.4] - 2022-05-27
+
+### Fixed
+
+- Fixed `width, height` for size Button.
+
 ## [4.0.3] - 2022-05-23
 
 ### Fixed
