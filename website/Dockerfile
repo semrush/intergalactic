@@ -5,7 +5,7 @@
 
 FROM nginx:stable-alpine
 RUN apk add --no-cache bash
-RUN apk add --no-cache python2 g++ make
+RUN apk add --no-cache python3 g++ make
 RUN apk add --update npm yarn
 
 WORKDIR /app
@@ -14,7 +14,7 @@ COPY ./docker-entrypoint.sh ./docker-entrypoint.sh
 RUN chmod +x ./docker-entrypoint.sh
 
 COPY ./server ./server
-COPY ./dist ./dist 
+COPY ./dist ./dist
 
 COPY ./server/package.json ./package.json
 COPY ./server/yarn.lock ./yarn.lock
