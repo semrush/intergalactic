@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.0.7] - 2022-05-27
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/button` [4.0.3 ~> 4.0.4]).
+
 ## [3.0.6] - 2022-05-23
 
 ### Changed
