@@ -14,9 +14,14 @@ export const websiteEsbuildConfig: esbuild.BuildOptions = {
   entryPoints: ['./src/main-render.jsx', './src/main.css'],
   bundle: true,
   sourcemap: true,
-  outdir: './src/public',
-  publicPath: process.env.PUBLIC_PATH || '/',
-  assetNames: (process.env.PUBLIC_PATH || '') + 'assets/[dir]/[name]-[hash]',
+  outdir: './dist',
+  // publicPath: process.env.PUBLIC_PATH || '/',
+  outbase: 'docs',
+  entryNames: '[dir]/[name]',
+  assetNames: '[dir]/[name]-[hash]',
+  chunkNames: '[dir]/[name]-[hash]',
+  format: 'esm',
+  splitting: true,
   plugins: [
     cssModulesPlugin({
       localIdentName: '[local]-[hash:8:md5:hex]',

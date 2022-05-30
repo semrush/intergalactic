@@ -31,4 +31,4 @@ We used [recharts](http://recharts.org) and styled it. All exports are recharts 
 
 This component has undergone a few changes during the use. The main properties can be found [here](http://recharts.org/en-US/api/Pie). Some of them look like this:
 
-@typescript IPieProps
+@typescript IRechartsPieProps

@@ -2,8 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import { BrowserRouter, StaticRouter, Redirect, Route, Switch } from 'react-router-dom';
 import Helmet from 'react-helmet';
-import icon from './static/favicon/favicon.png';
-import iconRotate from './static/favicon/favicon-rotate.png';
+import icon from 'static/favicon/favicon.png';
+import iconRotate from 'static/favicon/favicon-rotate.png';
 
 import Header from './components/Header';
 import Footer from './components/Footer';

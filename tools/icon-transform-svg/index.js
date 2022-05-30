@@ -2,7 +2,12 @@ const path = require('path');
 const fs = require('fs-extra');
 const glob = require('glob');
 const cheerio = require('cheerio');
-const { lib, sourceFolder = 'svg', outputFolder = '.' } = require('mri')(process.argv.slice(2));
+const {
+  lib = 'react',
+  sourceFolder = 'svg',
+  outputFolder = '.',
+  ...otherArgs
+} = require('mri')(process.argv.slice(2));
 const util = require('util');
 const config = require('./config');
 const babel = require('@babel/core');
@@ -16,7 +21,7 @@ const {
   templateDTS = template,
   transformer,
   babelConfig: defaultBabelConfig,
-} = lib ? config(lib, outputFolder === 'lib') : config('react', outputFolder === 'lib');
+} = config(lib, otherArgs);
 const converter = transformer();
 
 function getDescriptionExternalIcons(iconPath, outLib) {

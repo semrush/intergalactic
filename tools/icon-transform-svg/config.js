@@ -39,20 +39,20 @@ const GET_ELEMENT_TAG_NAME = (name) => {
   };
   return ELEMENT_TAG_NAME_MAPPING[name] || name;
 };
-const getConfig = (framework = 'react', logger = false) => {
+const getConfig = (framework = 'react', args) => {
   const config = {
     react: {
       template: (obj) => `
       import React from 'react';
       import { createBaseComponent } from '@semcore/core';
       import Icon from '@semcore/icon';
-      ${logger ? "import logger from '@semcore/utils/lib/logger';" : ''}
+      ${args['deprecated-warning'] ? "import logger from '@semcore/utils/lib/logger';" : ''}
       
       function ${obj.NAME}({width = '${obj.WIDTH}', height = '${obj.HEIGHT}', viewBox = '${
         obj.VIEW_BOX
       }', ...props}, ref) {
         ${
-          logger
+          args['deprecated-warning']
             ? `logger.warn(true, "you are using the old icon, use import from '@semcore/icon/Name/Size'", "${obj.NAME}")`
             : ''
         }
@@ -117,8 +117,9 @@ const getConfig = (framework = 'react', logger = false) => {
         };
       },
       babelConfig: {
-        presets: ['@babel/preset-react', ['@babel/preset-env', { modules: 'cjs' }]],
-        plugins: ['@babel/plugin-proposal-class-properties', '@babel/plugin-transform-runtime'],
+        filename: '[name]',
+        envName: args['babel-env'],
+        presets: ['@semcore/babel-preset-ui'],
       },
     },
   };

@@ -1,11 +1,11 @@
 /* eslint-disable */
 import React from 'react';
 
-export type ChildrenType<T> = ((props: T) => React.ReactNode) | React.ReactNode;
+export type IfChildrenType<T> = ((props: T) => React.ReactNode) | React.ReactNode;
 
 export interface IIfChildrenProps<T extends {}> {
   context: T;
-  children: ChildrenType<T>;
+  children: IfChildrenType<T>;
 }
 
 function IfChildren<T extends {}>(props: IIfChildrenProps<T>) {

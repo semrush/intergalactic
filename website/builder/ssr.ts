@@ -53,8 +53,11 @@ const outputAssetsBySrcPath = {};
 const outputs = buildResults.metafile.outputs;
 for (const outputPath in outputs) {
   for (const inputPath in outputs[outputPath].inputs) {
-    const sameExtension = inputPath.split('.').pop() === outputPath.split('.').pop();
-    if (sameExtension) {
+    const inputExt = inputPath.split('.').pop();
+    const outputExt = outputPath.split('.').pop();
+    const sameExtension = inputExt === outputExt;
+    const transformExtension = ['ts', 'js', 'tsx', 'jsx'].includes(inputExt) && outputExt === 'js';
+    if (sameExtension || transformExtension) {
       outputAssetsBySrcPath[resolvePath(inputPath)] = resolvePath(outputPath);
     }
   }
@@ -67,7 +70,7 @@ const { navigationTree } = await buildNavigation(docsDir);
 globalThis.__ssr = true;
 
 // eslint-disable-next-line import/extensions
-await import('../dist/app-ssr.js');
+await import('../dist/_.._/src/app-ssr.js');
 
 const nodesList = [];
 const traverse = (navigationNode) => {
@@ -86,27 +89,35 @@ for (const route of allRoutes) {
 const htmlBase = await fs.readFile('src/public/index.html', 'utf-8');
 const generateCodeEntry = (navigationNode, pageData) => {
   if (!pageData) return '';
+  const { route } = navigationNode;
+  const dirname = resolvePath('docs', resolveDirname(navigationNode.filePath));
+  const articleImagesPaths: string[] = [];
+
+  pageData.tokens = pageData.tokens.map((token) => {
+    if (token.type === 'example' || token.type === 'import') {
+      const inputFilePath = resolvePath(dirname, token.filePath);
+      const outputFilePath = outputAssetsBySrcPath[inputFilePath];
+      const outputRelativePath = '/' + resolveRelativePath(outputDir, outputFilePath);
+      token.load = token.load.replace(token.filePath, outputRelativePath);
+      delete token.filePath;
+    }
+    return token;
+  });
 
   const serializedArticle = serializeArticle(pageData);
-  const articleImagesPaths: string[] = [];
-  const { route } = navigationNode;
+  for (const variableName in pageData.imagesUrls) {
+    const importPath = pageData.imagesUrls[variableName];
+    const inputFilePath = resolvePath(dirname, importPath);
+    const outputFilePath = outputAssetsBySrcPath[inputFilePath];
 
-  if (Object.keys(pageData.imagesUrls).length > 0) {
-    const dirname = resolvePath('docs', resolveDirname(navigationNode.filePath));
-    for (const variableName in pageData.imagesUrls) {
-      const importPath = pageData.imagesUrls[variableName];
-      const inputFilePath = resolvePath(dirname, importPath);
-      const outputFilePath = outputAssetsBySrcPath[inputFilePath];
-
-      if (!outputFilePath) {
-        throw new Error(
-          `Unable to find corresponding output chunk for ${importPath} from ${navigationNode.filePath}`,
-        );
-      }
-
-      const outputRelativePath = '/' + resolveRelativePath(outputDir, outputFilePath);
-      articleImagesPaths.push(`${variableName}="${outputRelativePath}";`);
+    if (!outputFilePath) {
+      throw new Error(
+        `Unable to find corresponding output chunk for ${importPath} from ${navigationNode.filePath}`,
+      );
     }
+
+    const outputRelativePath = '/' + resolveRelativePath(outputDir, outputFilePath);
+    articleImagesPaths.push(`${variableName}="${outputRelativePath}";`);
   }
   const articleImagesPathsSerialized = articleImagesPaths.join('\n');
   const preloadedPageData = `(function (){ ${articleImagesPathsSerialized}; return ${serializedArticle} })()`;
@@ -130,9 +141,8 @@ const renderPage = async (route, navigationNode?) => {
   }
 
   const contents = globalThis.renderApp();
-
   const html = htmlBase
-    .replace('<!--%ssr-entry%-->', contents)
+    .replace('<!--%ssr-html-entry%-->', contents)
     .replace('/*--%ssr-js-entry%--*/', codeEntry)
     .replace('/main-render.js', process.env.PUBLIC_PATH + 'main-hydrate.js')
     .replace('/main.css', process.env.PUBLIC_PATH + 'main.css')
