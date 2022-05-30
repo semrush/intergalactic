@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.0.6] - 2022-05-30
+
+### Fixed
+
+- Fixed version `@babel/runtime` for dependency `react-final-form`.
+
 ## [5.0.5] - 2022-05-27
 
 ### Changed
