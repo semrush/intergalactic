@@ -41,6 +41,9 @@
   "overrides": {
     "final-form": {
       "@babel/runtime": "7.17.9"
+    },
+    "react-final-form": {
+      "@babel/runtime": "7.17.9"
     }
   }
 }
