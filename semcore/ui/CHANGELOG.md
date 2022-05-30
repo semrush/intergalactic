@@ -1,65 +1,4 @@
-## [12.0.1] - 2022-05-31
-
-### @semcore/base-trigger
-
-- **Fixed** Updated Intergalactic internal dependencies to the latest.
-
-### @semcore/button
-
-- **Fixed** Fixed `width, height` for size Button.
-- **Fixed** Fixed background-color active state for `<Button use='primary' theme='warning'/>`.
-- **Fixed** Updated Intergalactic internal dependencies to the latest.
-
-### @semcore/card
-
-- **Fixed** Updated Intergalactic internal dependencies to the latest.
-
-### @semcore/chart
-
-- **Fixed** Updated Intergalactic internal dependencies to the latest.
-
-### @semcore/checkbox
-
-- **Fixed** Fixed problem show `Checkbox` in `Modal` (Checkbox added scroll on page).
-- **Fixed** Updated Intergalactic internal dependencies to the latest.
-
-### @semcore/d3-chart
-
-- **Fixed** Fixed position title for axis.
-
-### @semcore/date-picker
-
-- **Fixed** Updated Intergalactic internal dependencies to the latest.
-
-### @semcore/feedback-form
-
-- **Fixed** Fixed version `@babel/runtime` for dependency `react-final-form`.
-- **Fixed** Fixed Item tag property setting
-- **Fixed** Synced dependencies versions to remove duplicates in the single export package.
-
-### @semcore/flex-box
-
-- **Fixed** Synced dependencies versions to remove duplicates in the single export package.
-
-### @semcore/fullscreen-modal
-
-- **Fixed** Updated Intergalactic internal dependencies to the latest.
-
-### @semcore/icon
-
-- **Added** Added icon `Kebab`.
-
-### @semcore/inline-input
-
-- **Fixed** Updated Intergalactic internal dependencies to the latest.
-
-### @semcore/link
-
-- **Fixed** Updated Intergalactic internal dependencies to the latest.
-
-### @semcore/modal
-
-- **Fixed** Synced dependencies versions to remove duplicates in the single export package.
+## [12.1.0] - 2022-05-30
 
 ### @semcore/notice
 
@@ -71,48 +10,17 @@
 
 - **Added** Initial release
 
-### @semcore/popper
+### @semcore/time-picker
 
-- **Fixed** Synced dependencies versions to remove duplicates in the single export package.
+- **Fixed** Fixed show `<Timepicker size='l' is12Hour/>` (added margin right to -4px for `Timepicker.Format`).
 
-### @semcore/project-create
+### @semcore/feedback-form
 
-- **Fixed** Synced dependencies versions to remove duplicates in the single export package.
-
-### @semcore/radio
-
-- **Fixed** Updated Intergalactic internal dependencies to the latest.
+- **Fixed** Fixed Item tag property setting
 
 ### @semcore/select
 
 - **Fixed** Fixed non-closing popper after clicking on an Option
-
-### @semcore/side-panel
-
-- **Fixed** Synced dependencies versions to remove duplicates in the single export package.
-
-### @semcore/table
-
-- **Fixed** Fixed hover color `Cell` for `theme='default'`.
-- **Fixed** Fixed memory leak in `StickyHead`
-
-### @semcore/textarea
-
-- **Fixed** Synced dependencies versions to remove duplicates in the single export package.
-
-### @semcore/time-picker
-
-- **Fixed** Fixed show `<Timepicker size='l' is12Hour/>` (added margin right to -4px for `Timepicker.Format`).
-- **Fixed** Updated Intergalactic internal dependencies to the latest.
-
-### @semcore/typography
-
-- **Fixed** Synced dependencies versions to remove duplicates in the single export package.
-
-### @semcore/utils
-
-- **Changed** Update version dependency `@babel/runtime`.
-- **Fixed** Synced dependencies versions to remove duplicates in the single export package.
 
 ## [12.0.0] - 2022-05-19
 
