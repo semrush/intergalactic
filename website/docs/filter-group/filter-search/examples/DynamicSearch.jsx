@@ -19,9 +19,15 @@ const Demo = () => {
 
   return (
     <Input w={200}>
-      <Input.Addon tag={Search} />
+      <Input.Addon>
+        <Search />
+      </Input.Addon>
       <Input.Value placeholder="Filter by keyword" value={value} onChange={handleChange} />
-      {value && <Input.Addon tag={CloseXS} interactive onClick={handleClick} />}
+      {value && (
+        <Input.Addon>
+          <CloseXS interactive onClick={handleClick} />
+        </Input.Addon>
+      )}
     </Input>
   );
 };

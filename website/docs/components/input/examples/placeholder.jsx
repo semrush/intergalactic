@@ -6,32 +6,32 @@ const Demo = () => {
   return (
     <>
       <Input size="l" w={300}>
-        <Input.Addon tag={Text} color="gray70" pr="3px">
-          Permanent text:
+        <Input.Addon pr="3px">
+          <Text color="gray70">Permanent text:</Text>
         </Input.Addon>
         <Input.Value placeholder="Placeholder" />
       </Input>
       <br />
       <br />
       <Input size="l" w={300}>
-        <Input.Addon tag={Text} color="gray70" pr="3px">
-          Permanent text:
+        <Input.Addon pr="3px">
+          <Text color="gray70">Permanent text:</Text>
         </Input.Addon>
         <Input.Value placeholder="Placeholder" />
       </Input>
       <br />
       <br />
       <Input size="m" w={300}>
-        <Input.Addon tag={Text} color="gray70" pr="2px">
-          Permanent text:
+        <Input.Addon pr="2px">
+          <Text color="gray70">Permanent text:</Text>
         </Input.Addon>
         <Input.Value placeholder="Placeholder" />
       </Input>
       <br />
       <br />
       <Input size="s" w={300}>
-        <Input.Addon tag={Text} color="gray70" pr="1px">
-          Permanent text:
+        <Input.Addon pr="1px">
+          <Text color="gray70">Permanent text:</Text>
         </Input.Addon>
         <Input.Value placeholder="Placeholder" />
       </Input>

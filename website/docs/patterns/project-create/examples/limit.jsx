@@ -9,7 +9,9 @@ const Demo = () => {
     <Dropdown>
       <Dropdown.Trigger>
         <Button use="primary">
-          <Button.Addon tag={MathPlusXS} />
+          <Button.Addon>
+            <MathPlusXS />
+          </Button.Addon>
           <Button.Text>Add new Tool Name</Button.Text>
         </Button>
       </Dropdown.Trigger>

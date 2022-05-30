@@ -18,16 +18,22 @@ export default () => (
       <Notice.Actions mt={0}>
         <Text mr={1}>Meet our SEO Dashboard! Is it working well for you?</Text>
         <Button>
-          <Button.Addon tag={ThumbUpS} />
+          <Button.Addon>
+            <ThumbUpS />
+          </Button.Addon>
           <Button.Text>Yes</Button.Text>
         </Button>
         <Button>
-          <Button.Addon tag={ThumbDownS} />
+          <Button.Addon>
+            <ThumbDownS />
+          </Button.Addon>
           <Button.Text>No</Button.Text>
         </Button>
         <Button use="tertiary">Ask me later</Button>
       </Notice.Actions>
     </Notice.Content>
-    <Notice.CloseIcon tag={CloseAltS} />
+    <Notice.CloseIcon>
+      <CloseAltS />
+    </Notice.CloseIcon>
   </Notice>
 );

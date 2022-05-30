@@ -18,8 +18,8 @@ export default () => {
         </DataTable.Column>
         <DataTable.Column name="kd">
           <DropdownMenu>
-            <DropdownMenu.Trigger tag={LinkTrigger} color="gray20">
-              KD,%
+            <DropdownMenu.Trigger>
+              <LinkTrigger color="gray20">KD,%</LinkTrigger>
             </DropdownMenu.Trigger>
             <DropdownMenu.Menu>
               <DropdownMenu.Item>Options 1</DropdownMenu.Item>

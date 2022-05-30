@@ -3,11 +3,6 @@ import Input from '@semcore/input';
 import ShowYesXS from '@semcore/icon/ShowYes/m';
 import ShowNoXS from '@semcore/icon/ShowNo/m';
 
-const MAP_ICON = {
-  password: ShowYesXS,
-  text: ShowNoXS,
-};
-
 const MAP_TYPES = {
   password: 'text',
   text: 'password',
@@ -19,7 +14,9 @@ const Demo = () => {
   return (
     <Input w={240}>
       <Input.Value defaultValue="IlikeCATS" placeholder="Password" type={type} />
-      <Input.Addon tag={MAP_ICON[type]} interactive onClick={() => setType(MAP_TYPES[type])} />
+      <Input.Addon onClick={() => setType(MAP_TYPES[type])}>
+        {type === 'password' ? <ShowYesXS interactive /> : <ShowNoXS interactive />}
+      </Input.Addon>
     </Input>
   );
 };

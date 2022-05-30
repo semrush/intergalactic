@@ -8,7 +8,9 @@ const Demo = () => {
   return (
     <>
       <Button use="primary" onClick={() => changeVisible(!visible)}>
-        <Button.Addon tag={MathPlusXS} />
+        <Button.Addon>
+          <MathPlusXS />
+        </Button.Addon>
         <Button.Text>Add new Tool Name</Button.Text>
       </Button>
       <ProjectCreate

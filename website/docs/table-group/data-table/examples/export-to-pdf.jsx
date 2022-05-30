@@ -56,7 +56,9 @@ export default () => {
       </svg>
       <DropdownMenu onVisibleChange={updateVisible}>
         <DropdownMenu.Trigger tag={Button} ml={4}>
-          <Button.Addon tag={FileExportXS} />
+          <Button.Addon>
+            <FileExportXS />
+          </Button.Addon>
           <Button.Text>Export</Button.Text>
         </DropdownMenu.Trigger>
         <DropdownMenu.Popper wMax="257px">

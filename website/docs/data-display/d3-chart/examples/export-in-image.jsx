@@ -61,7 +61,9 @@ export default () => {
       </Plot>
       <DropdownMenu onVisibleChange={updateVisible}>
         <DropdownMenu.Trigger tag={Button}>
-          <Button.Addon tag={FileExportXS} />
+          <Button.Addon>
+            <FileExportXS />
+          </Button.Addon>
           <Button.Text>Export</Button.Text>
         </DropdownMenu.Trigger>
         <DropdownMenu.Popper wMax="257px">

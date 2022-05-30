@@ -48,7 +48,9 @@ export default () => {
           >
             <Box mt={4}>
               <Button>
-                <Button.Addon tag={ReloadM} />
+                <Button.Addon>
+                  <ReloadM />
+                </Button.Addon>
                 <Button.Text>Reload</Button.Text>
               </Button>
             </Box>

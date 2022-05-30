@@ -8,7 +8,9 @@ const Demo = () => {
     <Input w={180}>
       <Input.Value value={value} onChange={(v) => updateValue(v)} />
       {value.length > 1 && (
-        <Input.Addon tag={CloseXS} interactive onClick={() => updateValue('+')} />
+        <Input.Addon>
+          <CloseXS interactive onClick={() => updateValue('+')} />
+        </Input.Addon>
       )}
     </Input>
   );

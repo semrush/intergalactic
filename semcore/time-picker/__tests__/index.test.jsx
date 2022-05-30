@@ -19,8 +19,12 @@ describe('TimePicker', () => {
   test('should support sizes', async () => {
     const component = (
       <snapshot.ProxyProps style={{ margin: 5 }}>
-        <TimePickerDefault value="11" size="l" />
-        <TimePickerDefault value="11" size="m" />
+        <TimePickerDefault value="11" size="l">
+          <TimePicker.Format />
+        </TimePickerDefault>
+        <TimePickerDefault value="11" size="m">
+          <TimePicker.Format />
+        </TimePickerDefault>
       </snapshot.ProxyProps>
     );
 

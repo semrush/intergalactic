@@ -7,8 +7,8 @@ export default () => {
   const expireDateInput = useRef(null);
   const handleSuccess = () => expireDateInput.current.focus();
   return (
-    <Box wMax={240} p={8} m={'0 auto'} style={{ borderRadius: '12px', background: '#dee3e5' }}>
-      <Text tag={'p'} size={300} medium mb={2}>
+    <Box wMax={240} p={8} m="0 auto" style={{ borderRadius: '12px', background: '#dee3e5' }}>
+      <Text tag="p" size={300} medium mb={2}>
         Card number
       </Text>
       <InputMask size="l" mb={4}>

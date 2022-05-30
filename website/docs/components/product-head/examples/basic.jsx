@@ -32,15 +32,21 @@ export default () => {
 
           <Header.Links>
             <Link>
-              <Link.Addon tag={VideoM} />
+              <Link.Addon>
+                <VideoM />
+              </Link.Addon>
               <Link.Text>Video tutorial</Link.Text>
             </Link>
             <Link>
-              <Link.Addon tag={BookM} />
+              <Link.Addon>
+                <BookM />
+              </Link.Addon>
               <Link.Text>User manual</Link.Text>
             </Link>
             <Link>
-              <Link.Addon tag={ChatM} />
+              <Link.Addon>
+                <ChatM />
+              </Link.Addon>
               <Link.Text>Send feedback</Link.Text>
             </Link>
           </Header.Links>
@@ -55,11 +61,15 @@ export default () => {
 
           <Header.Buttons>
             <Button use="primary">
-              <Button.Addon tag={MathPlusM} />
+              <Button.Addon>
+                <MathPlusM />
+              </Button.Addon>
               <Button.Text>Add Project</Button.Text>
             </Button>
             <Button>
-              <Button.Addon tag={SettingsM} />
+              <Button.Addon>
+                <SettingsM />
+              </Button.Addon>
               <Button.Text>Settings</Button.Text>
             </Button>
           </Header.Buttons>
@@ -68,14 +78,14 @@ export default () => {
         <Header.Row>
           <Info>
             <Info.Item label="Location:">
-              <Select
-                value={['us']}
-                placeholder="Select an option, sir 🧐"
-                m="auto"
-              >
-                <Select.Trigger tag={Link}>
-                  United States
-                  <Link.Addon tag={ChevronDownM} />
+              <Select value={['us']} placeholder="Select an option, sir 🧐" m="auto">
+                <Select.Trigger>
+                  <Link>
+                    United States
+                    <Link.Addon>
+                      <ChevronDownM />
+                    </Link.Addon>
+                  </Link>
                 </Select.Trigger>
                 <Select.Popper>
                   <Select.Option value="us">United States</Select.Option>
@@ -90,15 +100,17 @@ export default () => {
               </Select>
             </Info.Item>
             <Info.Item label="Device:">
-              <Select
-                value={['desktop']}
-                placeholder="Select an option, sir 🧐"
-                m="auto"
-              >
-                <Select.Trigger tag={Link}>
-                  <Link.Addon tag={DesktopM} />
-                  Desktop
-                  <Link.Addon tag={ChevronDownM} />
+              <Select value={['desktop']} placeholder="Select an option, sir 🧐" m="auto">
+                <Select.Trigger>
+                  <Link>
+                    <Link.Addon>
+                      <DesktopM />
+                    </Link.Addon>
+                    Desktop
+                    <Link.Addon>
+                      <ChevronDownM />
+                    </Link.Addon>
+                  </Link>
                 </Select.Trigger>
                 <Select.Popper>
                   <Select.Option value="desktop">Desktop</Select.Option>
@@ -112,7 +124,7 @@ export default () => {
                 title="Some more details why data is fresh 🌚"
                 style={{ display: 'inline-flex' }}
               >
-                <InfoXS ml={1} color="gray-300" cursor="help" />
+                <InfoM ml={1} color="gray-300" cursor="help" />
               </Tooltip>
             </Info.Item>
             <Info.Item>

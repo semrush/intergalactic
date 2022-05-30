@@ -6,7 +6,7 @@ import Checkbox from '@semcore/checkbox';
 import TabLine from '@semcore/tab-line';
 import Dropdown from '@semcore/dropdown';
 import Switch from '@semcore/switch';
-import InfoXS from '@semcore/icon/Info/m';
+import InfoM from '@semcore/icon/Info/m';
 import SettingsS from '@semcore/icon/Settings/m';
 import { colors } from '@semcore/chart';
 
@@ -18,7 +18,7 @@ class Demo extends Component {
           <Flex mb={2} alignItems="center">
             <Text size={400}>Chart heading</Text>
             <TooltipUI title="This is just an example of line chart">
-              <InfoXS ml={1} color="gray-300" cursor="help" />
+              <InfoM ml={1} color="gray-300" cursor="help" />
             </TooltipUI>
             <Dropdown placement="bottom-end">
               <Dropdown.Trigger tag={SettingsS} ml="auto" color="gray-300" interactive />

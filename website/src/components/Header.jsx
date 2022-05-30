@@ -20,7 +20,7 @@ const HeaderWrapper = styled.header`
   grid-template-rows: 1fr;
   grid-template-columns: 0.5fr 1fr 1fr;
   position: fixed;
-  top: 40px;
+  top: 0;
   width: inherit;
   padding: 0 40px;
   flex-wrap: nowrap;

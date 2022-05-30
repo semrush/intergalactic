@@ -5,7 +5,9 @@ import { ButtonTrigger } from '@semcore/base-trigger';
 export default function () {
   return (
     <DropdownMenu>
-      <DropdownMenu.Trigger tag={ButtonTrigger}>Click me</DropdownMenu.Trigger>
+      <DropdownMenu.Trigger>
+        <ButtonTrigger>Click me</ButtonTrigger>
+      </DropdownMenu.Trigger>
       {/* Adding max-height to the dropdown menu */}
       <DropdownMenu.Menu hMax={'180px'}>
         <DropdownMenu.ItemTitle>List heading</DropdownMenu.ItemTitle>

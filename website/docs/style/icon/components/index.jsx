@@ -45,7 +45,9 @@ const SuggestSearch = connectAutoComplete(
 
     return (
       <Search size="l" mb={4}>
-        <Input.Addon tag={SearchS} />
+        <Input.Addon>
+          <SearchS />
+        </Input.Addon>
         <Input.Value
           {...others}
           onChange={handleChangeValue}
@@ -53,7 +55,9 @@ const SuggestSearch = connectAutoComplete(
           placeholder="Fill this field with 'happy smile' text :)"
         />
         {!!currentRefinement && (
-          <Input.Addon tag={CloseXS} interactive onClick={() => handleChangeValue('')} />
+          <Input.Addon>
+            <CloseXS interactive onClick={() => handleChangeValue('')} />
+          </Input.Addon>
         )}
       </Search>
     );
