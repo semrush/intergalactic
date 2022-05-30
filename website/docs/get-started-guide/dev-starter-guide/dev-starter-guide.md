@@ -74,6 +74,9 @@ import { Flex, Box } from '@semcore/ui/flex-box';
 <Box tag={Component} />
 ```
 
+> **Important!!!** When you use this way (Box tag={Component}), the Component styles merge with Box styles and the order
+> of the styles can break you the display.
+
 `Flex` is a wrapper for `Box` with the ability to assign properties for the **CSS Flexbox**:
 
 ```jsx
@@ -108,7 +111,9 @@ This is not something you'll need to worry about with our library, since it uses
 import Button from '@semcore/ui/button';
 
 <Button>
-  <Button.Addon tag={Icon} />
+  <Button.Addon>
+    <Icon />
+  </Button.Addon>
   <Button.Text>Button with icons</Button.Text>
   <Button.Addon>Whatever you want</Button.Addon>
 </Button>;

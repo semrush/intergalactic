@@ -32,10 +32,16 @@ const Demo = () => {
       <Select placeholder="Everywhere" options={options} />
       <Input w={200}>
         <Input.Value ml={2} placeholder="Filter by keyword" value={value} onChange={handleChange} />
-        {value && <Input.Addon tag={CloseXS} interactive onClick={handleClick} />}
+        {value && (
+          <Input.Addon>
+            <CloseXS interactive onClick={handleClick} />
+          </Input.Addon>
+        )}
       </Input>
       <Button>
-        <Button.Addon tag={Search} />
+        <Button.Addon>
+          <Search />
+        </Button.Addon>
       </Button>
     </NeighborLocation>
   );

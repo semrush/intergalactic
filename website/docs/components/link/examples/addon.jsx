@@ -10,9 +10,13 @@ export default function () {
         Link
       </Link>
       <Link ml={2}>
-        <Link.Addon tag={CheckXS} />
+        <Link.Addon>
+          <CheckXS />
+        </Link.Addon>
         <Link.Text>Link</Link.Text>
-        <Link.Addon tag={ArrowRightXS} />
+        <Link.Addon>
+          <ArrowRightXS />
+        </Link.Addon>
       </Link>
     </>
   );

@@ -12,7 +12,11 @@ const Demo = () => {
         value={value}
         onChange={(v) => setValue(v)}
       />
-      {value && <Input.Addon tag={CloseXS} interactive onClick={() => setValue('')} />}
+      {value && (
+        <Input.Addon>
+          <CloseXS interactive onClick={() => setValue('')} />
+        </Input.Addon>
+      )}
     </Input>
   );
 };

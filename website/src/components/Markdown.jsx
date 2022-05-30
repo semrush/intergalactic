@@ -73,9 +73,13 @@ const tokenHandlers = {
         </Example>
         <Accordion>
           <Accordion.Item>
-            <Accordion.Item.Toggle tag={Link}>
-              <Link.Addon tag={Accordion.Item.Chevron} mr={2} />
-              <Link.Text size={300}>Compiled example</Link.Text>
+            <Accordion.Item.Toggle>
+              <Link>
+                <Link.Addon mr={2}>
+                  <Accordion.Item.Chevron />
+                </Link.Addon>
+                <Link.Text size={300}>Compiled example</Link.Text>
+              </Link>
             </Accordion.Item.Toggle>
             <Accordion.Item.Collapse>
               <Example raw={{ code: compiled }} />

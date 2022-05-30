@@ -10,9 +10,13 @@ export default function () {
         Button
       </Button>
       <Button ml={2}>
-        <Button.Addon tag={CheckM} />
+        <Button.Addon>
+          <CheckM />
+        </Button.Addon>
         <Button.Text>Button</Button.Text>
-        <Button.Addon tag={ArrowRightM} />
+        <Button.Addon>
+          <ArrowRightM />
+        </Button.Addon>
       </Button>
     </>
   );

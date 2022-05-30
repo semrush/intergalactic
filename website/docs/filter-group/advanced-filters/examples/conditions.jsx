@@ -73,7 +73,9 @@ export default () => {
             <Filter key={ind} mb={4} closable onClose={handleCloseFilter} />
           ))}
           <Button use="tertiary" onClick={addFilter} ref={buttonRef}>
-            <Button.Addon tag={MathPlusXS} />
+            <Button.Addon>
+              <MathPlusXS />
+            </Button.Addon>
             <Button.Text>Add condition</Button.Text>
           </Button>
         </FlexOverflow>
@@ -83,7 +85,9 @@ export default () => {
             Apply
           </Button>
           <Button use="tertiary" theme="muted" onClick={clearAll}>
-            <Button.Addon tag={CloseXS} />
+            <Button.Addon>
+              <CloseXS />
+            </Button.Addon>
             <Button.Text>Clear all</Button.Text>
           </Button>
         </Flex>

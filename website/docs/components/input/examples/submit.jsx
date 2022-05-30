@@ -12,7 +12,11 @@ const Demo = () => {
         onBlur={() => setFocus(false)}
         onFocus={() => setFocus(true)}
       />
-      {focus && <Input.Addon tag={ActionReturnXS} interactive />}
+      {focus && (
+        <Input.Addon>
+          <ActionReturnXS interactive />
+        </Input.Addon>
+      )}
     </Input>
   );
 };

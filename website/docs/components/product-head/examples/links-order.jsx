@@ -25,15 +25,21 @@ export default () => {
         <HeaderRow>
           <Header.Links>
             <Link>
-              <Link.Addon tag={MuseumXS} />
+              <Link.Addon>
+                <MuseumXS />
+              </Link.Addon>
               <Link.Text>Old version</Link.Text>
             </Link>
             <Link>
-              <Link.Addon tag={MobileXS} />
+              <Link.Addon>
+                <MobileXS />
+              </Link.Addon>
               <Link.Text>Position Tracking App</Link.Text>
             </Link>
             <Link>
-              <Link.Addon tag={BracketsCodeXS} />
+              <Link.Addon>
+                <BracketsCodeXS />
+              </Link.Addon>
               <Link.Text>API</Link.Text>
             </Link>
             {/* <Link>
@@ -41,31 +47,45 @@ export default () => {
               <Link.Text>Top 30 Advertisers & Publishers</Link.Text>
             </Link> */}
             <Link>
-              <Link.Addon tag={MegaphoneXS} />
+              <Link.Addon>
+                <MegaphoneXS />
+              </Link.Addon>
               <Link.Text>Check out best tips</Link.Text>
             </Link>
             <Link>
-              <Link.Addon tag={NewsXS} />
+              <Link.Addon>
+                <NewsXS />
+              </Link.Addon>
               <Link.Text>News</Link.Text>
             </Link>
             <Link>
-              <Link.Addon tag={ChatQuestionXS} />
+              <Link.Addon>
+                <ChatQuestionXS />
+              </Link.Addon>
               <Link.Text>FAQ</Link.Text>
             </Link>
             <Link>
-              <Link.Addon tag={QuestionAltXS} />
+              <Link.Addon>
+                <QuestionAltXS />
+              </Link.Addon>
               <Link.Text>Product tour</Link.Text>
             </Link>
             <Link>
-              <Link.Addon tag={YoutubeXS} />
+              <Link.Addon>
+                <YoutubeXS />
+              </Link.Addon>
               <Link.Text>Video tutorial</Link.Text>
             </Link>
             <Link>
-              <Link.Addon tag={BookXS} />
+              <Link.Addon>
+                <BookXS />
+              </Link.Addon>
               <Link.Text>User manual</Link.Text>
             </Link>
             <Link>
-              <Link.Addon tag={ChatXS} />
+              <Link.Addon>
+                <ChatXS />
+              </Link.Addon>
               <Link.Text>Send feedback</Link.Text>
             </Link>
           </Header.Links>

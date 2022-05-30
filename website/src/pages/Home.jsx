@@ -76,7 +76,7 @@ const Overlay = styled.div`
   max-width: 1140px;
   padding-left: 40px;
   padding-right: 40px;
-  padding-bottom: 120px;
+  padding-bottom: 80px;
   position: relative;
   margin: 0 auto;
   @media (max-width: 767px) {
@@ -352,14 +352,14 @@ const UpdatesButton = styled(LinkScroll)`
 
 const HomePage = styled.div`
   display: flex;
-  padding-top: 120px;
+  padding-top: 80px;
 `;
 
 const SideBar = styled.div`
   position: sticky;
-  top: 120px;
+  top: 80px;
 
-  height: calc(100vh - 120px);
+  height: calc(100vh - 80px);
   background: #f5f5f5;
   max-width: 260px;
   @media (max-width: 767px) {

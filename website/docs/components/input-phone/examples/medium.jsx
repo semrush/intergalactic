@@ -11,7 +11,11 @@ const Demo = () => {
         <Flag iso2="US" />
       </Input.Addon>
       <Input.Value value={value} onChange={(v) => updateValue(v)} />
-      {value > 2 && <Input.Addon tag={CloseXS} interactive onClick={() => updateValue('+1')} />}
+      {value > 2 && (
+        <Input.Addon>
+          <CloseXS interactive onClick={() => updateValue('+1')} />
+        </Input.Addon>
+      )}
     </Input>
   );
 };

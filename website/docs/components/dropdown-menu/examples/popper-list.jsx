@@ -17,9 +17,13 @@ export default function () {
 
   return (
     <DropdownMenu>
-      <DropdownMenu.Trigger tag={Button}>
-        <Button.Addon tag={FileExportXS} />
-        <Button.Text>Export</Button.Text>
+      <DropdownMenu.Trigger>
+        <Button>
+          <Button.Addon>
+            <FileExportXS />
+          </Button.Addon>
+          <Button.Text>Export</Button.Text>
+        </Button>
       </DropdownMenu.Trigger>
       <DropdownMenu.Popper wMax="257px">
         <SpinContainer loading={loading}>

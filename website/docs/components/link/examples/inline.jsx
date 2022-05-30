@@ -12,7 +12,9 @@ class Demo extends React.PureComponent {
           debitis doloremque facilis fuga illum inventore ipsa iure magni maxime molestias omnis
           reprehenderit, voluptas voluptatem voluptates{' '}
           <Link inline noWrap={false}>
-            <Link.Addon tag={EditXS} />
+            <Link.Addon>
+              <EditXS />
+            </Link.Addon>
             <Link.Text>consectetur corporis cupiditate</Link.Text>
           </Link>
           .

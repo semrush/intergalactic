@@ -10,7 +10,9 @@ export default function () {
       </Tag>
       <br />
       <Tag>
-        <Tag.Addon tag={EditXS} />
+        <Tag.Addon>
+          <EditXS />
+        </Tag.Addon>
         <Tag.Text>Tag</Tag.Text>
       </Tag>
     </>

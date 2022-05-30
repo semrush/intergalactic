@@ -13,12 +13,16 @@ class Demo extends React.PureComponent {
         <Divider mx={4} orientation="vertical" />
         <Link w="100%" wMin={0}>
           <Flex alignItems="center">
-            <Link.Text tag={Text} w="100%" inline noWrap>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque iusto, sed!
-              Asperiores, consectetur deserunt et ipsam omnis quae repellendus velit veniam.
-              Asperiores dicta dolor ducimus enim fugit laborum minima reprehenderit?
+            <Link.Text w="100%" inline noWrap>
+              <Text w="100%" inline noWrap>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque iusto, sed!
+                Asperiores, consectetur deserunt et ipsam omnis quae repellendus velit veniam.
+                Asperiores dicta dolor ducimus enim fugit laborum minima reprehenderit?
+              </Text>
             </Link.Text>
-            <Link.Addon tag={EditXS} />
+            <Link.Addon>
+              <EditXS />
+            </Link.Addon>
           </Flex>
         </Link>
       </Flex>

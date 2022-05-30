@@ -5,8 +5,8 @@ import { ButtonTrigger } from '@semcore/base-trigger';
 export default function () {
   return (
     <DropdownMenu>
-      <DropdownMenu.Trigger tag={ButtonTrigger}>
-        I'll show u some options, buddy 😉
+      <DropdownMenu.Trigger>
+        <ButtonTrigger>I'll show u some options, buddy 😉</ButtonTrigger>
       </DropdownMenu.Trigger>
       <DropdownMenu.Menu>
         <DropdownMenu.ItemTitle>I'm title</DropdownMenu.ItemTitle>

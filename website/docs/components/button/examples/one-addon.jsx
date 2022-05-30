@@ -5,7 +5,9 @@ import CheckM from '@semcore/icon/Check/m';
 export default function () {
   return (
     <Button>
-      <Button.Addon tag={CheckM} />
+      <Button.Addon>
+        <CheckM />
+      </Button.Addon>
     </Button>
   );
 }

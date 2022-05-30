@@ -13,11 +13,11 @@ export default () => (
     <Breadcrumbs.Item tag="a" href="/components/breadcrumbs">
       breadcrumbs
     </Breadcrumbs.Item>
-    <Breadcrumbs.Item tag={Link} href="/whatever">
-      404
+    <Breadcrumbs.Item>
+      <Link href="/whatever">404</Link>
     </Breadcrumbs.Item>
-    <Breadcrumbs.Item tag={Link} active>
-      this example
+    <Breadcrumbs.Item>
+      <Link active>this example</Link>
     </Breadcrumbs.Item>
   </Breadcrumbs>
 );

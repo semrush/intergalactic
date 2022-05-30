@@ -23,22 +23,6 @@ const Body = styled.div`
   box-sizing: border-box;
 `;
 
-const NoticeTheme = styled.div`
-  position: fixed;
-  top: 0;
-  padding: 8px;
-  width: 100%;
-  background-color: #5925ab;
-  color: #fff;
-  text-align: center;
-  font-size: 16px;
-  line-height: 24px;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  z-index: 999;
-`;
-
 function isWorking() {
   const d = new Date();
   return !(d.getHours() < 8 || d.getHours() > 22);
@@ -87,10 +71,6 @@ export function App() {
       <Router basename={process.env.PUBLIC_PATH}>
         <Tracking />
         <Body>
-          <NoticeTheme>
-            🎨 All playgrounds and component examples now have <strong>a new theme applied</strong>.
-            All guides will be updated later!
-          </NoticeTheme>
           <Header />
           <Switch>
             <Route exact path="/">

@@ -174,8 +174,8 @@ class Demo extends PureComponent {
                         checked={name !== null}
                         onChange={this.handleCheckedDomain(domain, id)}
                       />
-                      <Checkbox.Text tag={Text} pr={3}>
-                        {domain}
+                      <Checkbox.Text pr={3}>
+                        <Text>{domain}</Text>
                       </Checkbox.Text>
                     </Checkbox>
                   </td>

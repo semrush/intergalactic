@@ -6,7 +6,9 @@ export default function () {
   return (
     <>
       <Tag theme="primary" color="red-500">
-        <Tag.Addon tag={EditXS} />
+        <Tag.Addon>
+          <EditXS />
+        </Tag.Addon>
         <Tag.Text>Tag</Tag.Text>
       </Tag>
     </>

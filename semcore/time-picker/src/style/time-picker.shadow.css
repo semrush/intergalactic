@@ -33,7 +33,6 @@ SPickerFormat {
   position: relative;
   display: inline-flex;
   padding: 0;
-  margin: 0 -1px 0 0;
   white-space: nowrap;
   font-family: inherit;
   font-weight: 500;
@@ -68,6 +67,7 @@ SPickerFormat {
 SPickerFormat[size='m'] {
   height: var(--form-control-m);
   font-size: var(--fs-200);
+  margin: 0 -1px 0 0;
   & SPickerFormatText {
     margin: 0 8px;
   }
@@ -76,6 +76,7 @@ SPickerFormat[size='m'] {
 SPickerFormat[size='l'] {
   height: var(--form-control-l);
   font-size: var(--fs-300);
+  margin: 0 -4px 0 0;
   & SPickerFormatText {
     margin: 0 12px;
   }

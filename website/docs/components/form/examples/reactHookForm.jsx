@@ -157,7 +157,9 @@ export default function App() {
             title="You need to feel this useless field"
           >
             <InputMask mr={4} mt={1} w={390} state={errors['inputDate'] ? 'invalid' : 'normal'}>
-              <Input.Addon tag={CalendarM} />
+              <Input.Addon>
+                <CalendarM />
+              </Input.Addon>
               <InputMask.Value
                 name="inputDate"
                 ref={register({ required: true, validate: (value) => isDateInvalid(value) })}
@@ -262,13 +264,14 @@ export default function App() {
                     mask={valueMask.replace(/_/g, '9')}
                   />
                   {value !== valueMask && (
-                    <Input.Addon
-                      interactive
-                      tag={CloseXS}
-                      onClick={() => {
-                        updateValue(valueMask);
-                      }}
-                    />
+                    <Input.Addon>
+                      <CloseXS
+                        interactive
+                        onClick={() => {
+                          updateValue(valueMask);
+                        }}
+                      />
+                    </Input.Addon>
                   )}
                 </InputMask>
               }

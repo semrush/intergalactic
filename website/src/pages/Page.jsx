@@ -55,8 +55,8 @@ const NextGuide = styled.div`
 
 const SideBar = styled.div`
   position: sticky;
-  top: 120px;
-  height: calc(100vh - 120px);
+  top: 80px;
+  height: calc(100vh - 80px);
   background: #f5f5f5;
   max-width: 260px;
   @media (max-width: 767px) {
@@ -73,7 +73,7 @@ const MobileSelect = styled(Select)`
     width: 100%;
     margin-bottom: 32px;
     border-radius: 0 !important;
-    top: 120px;
+    top: 80px;
     background-color: #fff !important;
     border: 1px solid #d1d4db;
     border-style: solid none solid none;
@@ -95,7 +95,7 @@ const MobileSelect = styled(Select)`
 `;
 
 const HomePage = styled(Row)`
-  padding-top: 120px;
+  padding-top: 80px;
 `;
 
 const getHeadingOptions = (headings) => {

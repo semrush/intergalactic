@@ -131,7 +131,9 @@ class FeedbackLink extends React.PureComponent {
       <Dropdown>
         <Dropdown.Trigger>
           <Link>
-            <Link.Addon tag={ChatXS} />
+            <Link.Addon>
+              <ChatXS />
+            </Link.Addon>
             <Link.Text>Send feedback</Link.Text>
           </Link>
         </Dropdown.Trigger>

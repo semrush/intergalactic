@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.0.8] - 2022-05-30
+
+### Fixed
+
+- Fixed show `<Timepicker size='l' is12Hour/>` (added margin right to -4px for `Timepicker.Format`).
+
 ## [3.0.7] - 2022-05-27
 
 ### Changed

@@ -5,7 +5,9 @@ import MathPlusXS from '@semcore/icon/MathPlus/m';
 function Demo() {
   return (
     <Tag interactive theme="additional">
-      <Tag.Addon tag={MathPlusXS} />
+      <Tag.Addon>
+        <MathPlusXS />
+      </Tag.Addon>
       <Tag.Text>Add tag</Tag.Text>
     </Tag>
   );

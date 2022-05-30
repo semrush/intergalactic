@@ -5,11 +5,6 @@ import CloseXS from '@semcore/icon/Close/m';
 import ShowYesXS from '@semcore/icon/ShowYes/m';
 import ShowNoXS from '@semcore/icon/ShowNo/m';
 
-const MAP_ICON = {
-  password: ShowYesXS,
-  text: ShowNoXS,
-};
-
 const MAP_TYPES = {
   password: 'text',
   text: 'password',
@@ -29,18 +24,16 @@ const Demo = () => {
         onChange={(v) => setValue(v)}
       />
       {value && (
-        <Input.Addon pl={2} pr={1} tag={CloseXS} interactive onClick={() => setValue('')} />
+        <Input.Addon pl={2} pr={1}>
+          <CloseXS interactive onClick={() => setValue('')} />
+        </Input.Addon>
       )}
       <Input.Addon px={1}>
         <Link>Forget?</Link>
       </Input.Addon>
-      <Input.Addon
-        pl={1}
-        pr={2}
-        tag={MAP_ICON[type]}
-        interactive
-        onClick={() => setType(MAP_TYPES[type])}
-      />
+      <Input.Addon pl={1} pr={2} onClick={() => setType(MAP_TYPES[type])}>
+        {type === 'password' ? <ShowYesXS interactive /> : <ShowNoXS interactive />}
+      </Input.Addon>
     </Input>
   );
 };

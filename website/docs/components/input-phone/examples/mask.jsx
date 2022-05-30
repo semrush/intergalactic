@@ -328,13 +328,14 @@ const Demo = () => {
           mask={valueMask.replace(/_/g, '9')}
         />
         {value !== valueMask && (
-          <Input.Addon
-            interactive
-            tag={CloseXS}
-            onClick={() => {
-              updateValue(valueMask);
-            }}
-          />
+          <Input.Addon>
+            <CloseXS
+              interactive
+              onClick={() => {
+                updateValue(valueMask);
+              }}
+            />
+          </Input.Addon>
         )}
       </InputMask>
     </NeighborLocation>

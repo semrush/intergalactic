@@ -32,14 +32,16 @@ export default () => {
           use="primary"
           theme="light-blue"
           position="fixed"
-          top="40px"
+          top="0px"
           w="100%"
           style={{ zIndex: '9999' }}
         >
-          <Notice.Content tag={Flex} justifyContent="center">
-            <Text size={100} tag="span" color="white">
-              Look at this cool notice!
-            </Text>
+          <Notice.Content>
+            <Flex justifyContent="center">
+              <Text size={100} tag="span" color="white">
+                Look at this cool notice!
+              </Text>
+            </Flex>
           </Notice.Content>
           <Notice.CloseIcon
             interactive={false}
