@@ -1,5 +1,10 @@
 ## [12.1.0] - 2022-05-30
 
+### @semcore/button
+
+- **Fixed** Fixed `width, height` for size Button.
+- **Fixed** Fixed background-color active state for `<Button use='primary' theme='warning'/>`.
+
 ### @semcore/notice
 
 - **Changed** Changed animation duration from 200ms to 250ms.
