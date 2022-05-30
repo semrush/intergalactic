@@ -53,7 +53,7 @@ import { Tooltip } from '@semcore/d3-chart';
 </Tooltip>;
 ```
 
-@typescript ITooltipProps
+@typescript ITooltipChartProps
 
 @## HoverLine
 

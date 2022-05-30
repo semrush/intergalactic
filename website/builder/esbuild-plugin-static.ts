@@ -6,14 +6,20 @@ import glob from 'fast-glob';
 
 const __dirname = resolveDirname(fileURLToPath(import.meta.url));
 
-const staticDir = resolvePath(__dirname, '../src/static');
+const srcDir = resolvePath(__dirname, '../src');
+const staticDir = resolvePath(srcDir, './static');
 export const esbuildPluginStatic = (): Plugin => ({
   name: 'esbuild-plugin-static',
   setup(build) {
-    build.onResolve({ filter: /^@static$/ }, async ({ path }) => ({ path, namespace: 'static' }));
-    build.onLoad({ filter: /^@static$/, namespace: 'static' }, async () => {
+    build.onResolve({ filter: /^@static$/ }, async ({ path }) => ({
+      path,
+      namespace: 'static-map',
+    }));
+    build.onLoad({ filter: /^@static$/, namespace: 'static-map' }, async () => {
       const relativePaths = await glob('**/*', { cwd: staticDir });
-      const imports = relativePaths.map((path, index) => `import static_${index} from "./${path}"`);
+      const imports = relativePaths.map(
+        (path, index) => `import static_${index} from "static/${path}"`,
+      );
       const exports = relativePaths.map((path, index) => `["${path}"]: static_${index}`);
 
       const contents =
@@ -24,6 +30,7 @@ export const esbuildPluginStatic = (): Plugin => ({
 
       return { contents, loader: 'js', resolveDir: staticDir };
     });
+
     build.onLoad({ filter: new RegExp(staticDir) }, async ({ path }) => {
       const contents = await readFile(path, 'utf-8');
       return { contents, loader: 'file' };

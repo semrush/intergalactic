@@ -4,16 +4,18 @@
   "description": "",
   "author": "",
   "license": "MIT",
+  "type": "module",
   "scripts": {
     "start": "yarn dev",
     "dev": "WATCH_TYPES=true tsm ./builder/dev-server.ts",
-    "build": "PUBLIC_PATH=/intergalactic/ NODE_ENV=production tsm ./builder/ssr.ts --reset-cache",
+    "build": "PUBLIC_PATH=/ NODE_ENV=production tsm ./builder/ssr.ts --reset-cache",
     "upload-search-index": "tsm ./searchIndexUpload.ts"
   },
   "dependencies": {
     "algoliasearch": "4.8.4",
     "dayjs": "1.10.4",
     "dotenv": "8.2.0",
+    "express": "4.18.1",
     "glob": "7.1.6",
     "lz-string": "1.4.4",
     "normalize.css": "8.0.1",

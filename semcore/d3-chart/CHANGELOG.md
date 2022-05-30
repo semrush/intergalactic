@@ -2,6 +2,13 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.1.0] - 2022-06-01
+
+### Changed
+
+- Changed type names from 'ITooltipProps' to 'ITooltipChartProps' so that there are no intersections with other components.
+- Changed type names from 'ITooltipContext' to 'ITooltipChartContext' so that there are no intersections with other components.
+
 ## [2.0.10] - 2022-05-31
 
 ### Changed

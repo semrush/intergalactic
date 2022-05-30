@@ -2,14 +2,14 @@ import { CProps, ReturnEl } from '@semcore/core';
 import { Flex } from '@semcore/flex-box';
 import { IIconProps } from '@semcore/icon';
 
-export type NoticeTheme = 'danger' | 'warning' | 'success' | 'info' | 'neutral' | string;
+export type NoticeGlobalTheme = 'danger' | 'warning' | 'success' | 'info' | 'neutral' | string;
 
 export interface INoticeGlobalProps {
   /**
    * Notice theme
    * @default neutral
    */
-  theme?: NoticeTheme;
+  theme?: NoticeGlobalTheme;
   /** Duration of animation, ms
    * @default 250
    */

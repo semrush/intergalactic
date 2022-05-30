@@ -82,7 +82,7 @@ class Playground extends Component {
     const component = preview(createGroupWidgets);
     return {
       result: component,
-      source: reactElementToJSXString(component, {
+      source: reactElementToJSXString.default(component, {
         showDefaultProps: false,
         useFragmentShortSyntax: false,
         maxInlineAttributesLineLength: 40,

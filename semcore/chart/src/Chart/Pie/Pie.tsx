@@ -11,7 +11,7 @@ import { filterEventsOfChild } from 'recharts/lib/util/ReactUtils';
 import { colors } from '../../utils/colors';
 import copyComponent from '../../copy';
 
-export interface IPieProps extends PieProps {
+export interface IRechartsPieProps extends PieProps {
   shapeAnimationBegin?: Animatable['animationBegin'];
   shapeAnimationDuration?: Animatable['animationDuration'];
   shapeAnimationEasing?: Animatable['animationEasing'];
