@@ -36,14 +36,14 @@ export interface IPillsContext {
   getItemProps: PropGetterFn;
 }
 
-export interface IPopperHandlers {
+export interface IPillsHandlers {
   value: (value: PillsValue) => void;
 }
 
 declare const Pills: (<T, V extends PillsValue = PillsValue>(
-  props: CProps<IPillsProps<V> & T, IPillsContext, IPopperHandlers>,
+  props: CProps<IPillsProps<V> & T, IPillsContext, IPillsHandlers>,
 ) => ReturnEl) & {
-  Item: (<T>(props: CProps<IPillProps & T, {}, IPopperHandlers>) => ReturnEl) & {
+  Item: (<T>(props: CProps<IPillProps & T, {}, IPillsHandlers>) => ReturnEl) & {
     Text: typeof Box;
     Addon: typeof Box;
   };

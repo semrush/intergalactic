@@ -3,7 +3,7 @@ import { CProps, ReturnEl } from '@semcore/core';
 import { Box, IFlexProps } from '@semcore/flex-box';
 import { IWithI18nEnhanceProps } from '@semcore/utils/lib/enhances/i18nEnhance';
 
-export type iconNames =
+export type iconNamesWidgetEmpty =
   | 'area-chart'
   | 'choropleth-map-chart'
   | 'coffee'
@@ -55,7 +55,7 @@ export interface IWidgetNoDataProps extends IWidgetEmptyProps, IWithI18nEnhanceP
   /** Error description. If it is absent, use the local default one */
   description?: React.ReactNode;
   /* Data types */
-  type?: iconNames;
+  type?: iconNamesWidgetEmpty;
 }
 
 declare const WidgetEmpty: (<T>(props: CProps<IWidgetEmptyProps> & T) => ReturnEl) & {

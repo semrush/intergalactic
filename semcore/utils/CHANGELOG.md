@@ -2,6 +2,13 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.33.0] - 2022-06-01
+
+### Changed
+
+- Changed type names from 'ChildrenType' to 'IfChildrenType' so that there are no intersections with other components.
+  HEAD
+
 ## [3.32.2] - 2022-05-31
 
 ### Changed

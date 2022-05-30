@@ -10,8 +10,9 @@
   "license": "MIT",
   "scripts": {
     "parsing": "icon-transform-svg parsing",
-    "transform": "icon-transform-svg",
-    "build": "build --source=js && npm run transform -- --sourceFolder=svg-new && npm run transform -- --outputFolder=lib",
+    "transform": "icon-transform-svg --sourceFolder=svg-new --outputFolder=.",
+    "transform:old-icon": "icon-transform-svg --sourceFolder=svg --outputFolder=lib --babel-env=commonjs --deprecated-warning",
+    "build": "build --source=js && npm run transform:old-icon && npm run transform",
     "test": "jest"
   },
   "dependencies": {

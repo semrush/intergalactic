@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [1.1.0] - 2022-06-01
+
+### Changed
+
+- Changed type names from 'NoticeTheme' to 'NoticeGlobalTheme' so that there are no intersections with other components.
+
 ## [1.0.1] - 2022-05-31
 
 ### Changed

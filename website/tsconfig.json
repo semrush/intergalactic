@@ -11,7 +11,11 @@
     "baseUrl": "./",
     "incremental": true,
     "esModuleInterop": true,
-    "typeRoots": ["./node_modules/@types"]
+    "typeRoots": ["./node_modules/@types"],
+    "paths": {
+      "static/*": ["src/static/*"],
+      "utils/*": ["src/utils/*"]
+    }
   },
   "exclude": ["node_modules", "dist", "builder", "deploy.ts", "searchIndexUpload.ts"]
   // "references": [{ "path": "./builder" }]

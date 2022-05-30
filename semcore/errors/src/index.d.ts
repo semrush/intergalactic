@@ -3,7 +3,7 @@ import { Box, IFlexProps } from '@semcore/flex-box';
 import { CProps, PropGetterFn, ReturnEl } from '@semcore/core';
 import { IWithI18nEnhanceProps } from '@semcore/utils/lib/enhances/i18nEnhance';
 
-export type iconNames =
+export type iconNamesErrors =
   | 'access_denied'
   | 'blocked'
   | 'confirmation'
@@ -86,7 +86,7 @@ declare const PageNotFound: <T>(props: IPageNotFoundProps & IErrorsProps & T) =>
 declare const PageError: <T>(props: IPageErrorProps & IErrorsProps & T) => ReturnEl;
 declare const Maintenance: <T>(props: IMaintenanceProps & IErrorsProps & T) => ReturnEl;
 declare const AccessDenied: <T>(props: IAccessDeniedProps & IErrorsProps & T) => ReturnEl;
-declare const getIconPath: (name: iconNames) => string;
+declare const getIconPath: (name: iconNamesErrors) => string;
 
 export default Error;
 export { ProjectNotFound, PageNotFound, PageError, Maintenance, AccessDenied, getIconPath };
