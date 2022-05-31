@@ -1,0 +1,79 @@
+@import '@semcore/utils/style/var.css';
+
+SWizard {
+  max-width: 980px;
+  max-height: 700px;
+  display: flex;
+}
+
+SSidebar {
+  background: var(--violet-600);
+  color: #fff;
+  font-weight: 700;
+  font-size: 16px;
+  padding: 40px 8px 34px;
+  width: 220px;
+  @media (max-width: 1060px) {
+    width: 44px;
+  }
+}
+
+SSidebarHeader {
+  margin: 0 20px 16px;
+  @media (max-width: 1060px) {
+    display: none;
+  }
+}
+
+SStepper {
+  display: flex;
+  font-size: 14px;
+  border-radius: 6px;
+  padding: 8px 12px;
+  position: relative;
+  &:hover {
+    background: var(--violet-700);
+  }
+  &[active] {
+    background: var(--violet-500);
+  }
+  &:disabled,
+  &[disabled] {
+    opacity: 0.3;
+  }
+}
+
+SStepNumber {
+  display: inline-block;
+  width: 20px;
+  margin-right: 2px;
+}
+
+SStepDescription {
+  @media (max-width: 1060px) {
+    display: none;
+  }
+}
+
+SStepper SStepNumber:hover + SStepDescription {
+  display: flex;
+  position: absolute;
+  background: var(--violet-700);
+  border-radius: 6px;
+  white-space: nowrap;
+  padding: 8px 12px;
+  top: 0;
+  left: 20px;
+}
+
+SStepper[active] SStepNumber:hover + SStepDescription {
+  background: var(--violet-500);
+}
+
+SContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 40px;
+  width: calc(100% - 316px);
+}
