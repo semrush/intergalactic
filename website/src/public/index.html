@@ -8,8 +8,7 @@
       content="Intergalactic is a constantly developing system of UI components, guidelines and UX patterns. With all these tools you can build your own product based on the Semrush platform."
     />
     <meta property="og:image" content="/social.png" />
-    <link rel="stylesheet" href="/_.._/src/main.css" />
-    <link rel="stylesheet" href="/_.._/src/main-render.css" />
+    <link rel="stylesheet" href="/main-render.css" />
     <script>
       dataLayer = window.dataLayer || [];
       if (location.origin === 'https://developer.semrush.com') {
@@ -27,12 +26,13 @@
     </script>
   </head>
   <body>
-    <!--    <div id="root">&lt;!&ndash;%ssr-html-entry%&ndash;&gt;</div>-->
-    <div id="root"></div>
+    <div id="root">
+      <!--%ssr-html-entry%-->
+    </div>
     <script>
       /*--%ssr-js-entry%--*/
     </script>
-    <script type="module" src="/_.._/src/main-render.js"></script>
+    <script type="module" src="/main-render.js"></script>
     <noscript>
       <iframe
         src="https://www.googletagmanager.com/ns.html?id=GTM-PP7RKT7"

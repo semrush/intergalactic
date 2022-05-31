@@ -1,0 +1,87 @@
+.documentationWrapper {
+  padding: 56px 32px 64px;
+  position: relative;
+  color: #191b23;
+}
+@media (max-width: 767px) {
+  .documentationWrapper {
+    padding: 96px 32px 64px;
+  }
+}
+@media (max-width: 415px) {
+  .documentationWrapper {
+    padding: 80px 20px 32px;
+  }
+}
+
+.nextGuide {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 32px 96px;
+}
+@media (max-width: 415px) {
+  .nextGuide {
+    margin: 0 32px 80px;
+  }
+}
+.nextGuide a {
+  color: #171a22;
+  text-decoration: none;
+}
+.nextGuide a:hover {
+  text-decoration: underline;
+}
+
+.sideBar {
+  position: sticky;
+  top: 80px;
+  height: calc(100vh - 80px);
+  background: #f5f5f5;
+  max-width: 260px;
+}
+@media (max-width: 767px) {
+  .sideBar {
+    display: none;
+  }
+}
+
+.mobileSelect {
+  display: none;
+}
+@media (max-width: 767px) {
+  .mobileSelect {
+    display: block;
+    position: fixed;
+    z-index: 998;
+    width: 100%;
+    margin-bottom: 32px;
+    border-radius: 0 !important;
+    top: 80px;
+    background-color: #fff !important;
+    border: 1px solid #d1d4db;
+    border-style: solid none solid none;
+  }
+  .mobileSelect div div {
+    margin: 0 32px !important;
+  }
+
+  .mobileSelect:hover,
+  .mobileSelect:active {
+    border: 1px solid #171a22;
+    border-style: solid none solid none;
+  }
+}
+@media (max-width: 415px) {
+  .mobileSelect div div {
+    margin: 0 20px !important;
+  }
+}
+
+.homePage {
+  padding-top: 80px;
+}
+
+.navigationButton {
+  display: flex;
+  align-items: center;
+}

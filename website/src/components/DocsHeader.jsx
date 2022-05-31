@@ -8,32 +8,16 @@ import LinkExternalXS from '@semcore/icon/LinkExternal/m';
 import FigmaS from '@semcore/icon/color/Figma/m';
 import GitHubS from '@semcore/icon/color/GitHub/m';
 import EditS from '@semcore/icon/Edit/m';
-import styled from 'styled-components';
 import { css } from '@semcore/core';
 import Tag from '@semcore/tag';
+import styles from './DocsHeader.module.css';
 
-const styles = css`
+const tooltipStyles = css`
   STooltip[theme] {
     padding: 12px;
     border: 1px solid #d1d4db;
     box-shadow: 5px 8px 25px rgba(137, 141, 154, 0.2);
     border-radius: 6px;
-  }
-`;
-const Title = styled.h2`
-  font-size: 40px;
-  line-height: 120%;
-  margin: 0;
-  margin-bottom: 4px;
-  @media (max-width: 415px) {
-    font-size: 30px;
-    line-height: 120%;
-  }
-`;
-
-const Overlay = styled(Flex)`
-  @media (max-width: 767px) {
-    display: none;
   }
 `;
 
@@ -42,13 +26,13 @@ export default function (props) {
 
   return (
     <Box tag="header" mb={10}>
-      <Title>
+      <h2 className={styles.title}>
         {title} {beta && <Tag size="l" theme="warning" use="primary" children="beta" />}
-      </Title>
+      </h2>
       <Text tag="p" color="#898D9A" mb={3} size={300}>
         {category}
       </Text>
-      <Overlay mb={3}>
+      <Flex className={styles.overlay} mb={3}>
         <Box mr={5}>
           <Link size={300} color="#171A22" target="_blank" href="https://www.figma.com/@semrush">
             <Link.Addon>
@@ -82,7 +66,7 @@ export default function (props) {
           <Divider h="20px" orientation="vertical" style={{ backgroundColor: '#D1D4DB' }} />
         </Box>
         <Box mr={4}>
-          <Tooltip styles={styles}>
+          <Tooltip styles={tooltipStyles}>
             <Tooltip.Trigger>
               <Link
                 size={300}
@@ -107,7 +91,7 @@ export default function (props) {
             </Tooltip.Popper>
           </Tooltip>
         </Box>
-      </Overlay>
+      </Flex>
       <Divider orientation="horizontal" style={{ backgroundColor: '#D1D4DB' }} />
     </Box>
   );

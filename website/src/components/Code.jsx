@@ -1,22 +1,17 @@
 import React from 'react';
-import styled from 'styled-components';
 import Highlight, { defaultProps } from 'prism-react-renderer';
 import theme from 'prism-react-renderer/themes/nightOwl';
+import styles from './Code.module.css';
 
-const PreStyled = styled.pre`
-  overflow: auto;
-  margin: 0 !important;
-  padding: 8px 16px;
-  font-size: 16px;
-  line-height: 1.2em;
-  display: ${({ block }) => (block ? 'block' : 'inline-block')};
-`;
-
-export default function ({ children, lang, ...others }) {
+export default function ({ children, lang, block, ...others }) {
   return (
     <Highlight {...defaultProps} code={children} language={lang} theme={theme}>
       {({ className, style, tokens, getLineProps, getTokenProps }) => (
-        <PreStyled {...others} className={others.className} style={style}>
+        <pre
+          {...others}
+          className={styles.pre}
+          style={{ ...style, display: block ? 'block' : 'inline-block' }}
+        >
           {tokens.map((line, i) => (
             <div {...getLineProps({ line, key: i })}>
               {line.map((token, key) => {
@@ -25,7 +20,7 @@ export default function ({ children, lang, ...others }) {
               })}
             </div>
           ))}
-        </PreStyled>
+        </pre>
       )}
     </Highlight>
   );

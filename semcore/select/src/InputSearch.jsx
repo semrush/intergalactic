@@ -1,10 +1,10 @@
 import React from 'react';
-import createComponent, { Component, CONTEXT_COMPONENT, sstyled } from '@semcore/core';
+import createComponent, { Component, sstyled } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
 import Input from '@semcore/input';
 import SearchM from '@semcore/icon/Search/m';
 import CloseM from '@semcore/icon/Close/m';
-import Select from './Select';
+import { selectContext } from './context';
 
 import style from './style/input-search.shadow.css';
 
@@ -22,7 +22,7 @@ class InputSearch extends Component {
     defaultValue: '',
   };
 
-  static contextType = Select[CONTEXT_COMPONENT];
+  static contextType = selectContext;
 
   uncontrolledProps() {
     return {

@@ -23,7 +23,7 @@ This component is always located near the top border of the report or product.
 
 Upon that, if there is the global search line, place the notice under it.
 
-![feedback notice location](static/send-feedback-notice.png)
+![feedback notice location](static/send-feedback-yes-no-notice.png)
 
 @## Appearance
 

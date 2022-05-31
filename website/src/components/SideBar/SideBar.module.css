@@ -1,0 +1,22 @@
+.modalWindow {
+  width: 50%;
+  height: 100%;
+  color: #171a22;
+  margin-right: initial;
+  background: white;
+  padding: 24px 32px 32px;
+  position: relative;
+  box-sizing: border-box;
+  border-radius: 0;
+  overflow: scroll;
+}
+@media (max-width: 992px) {
+  .modalWindow {
+    width: 60%;
+  }
+}
+@media (max-width: 767px) {
+  .modalWindow {
+    width: 70%;
+  }
+}

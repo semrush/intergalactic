@@ -1,0 +1,108 @@
+.field {
+  display: flex;
+  margin-bottom: 16px;
+  align-items: center;
+  width: 100%;
+}
+.label {
+  flex: 0 0 70px;
+}
+.control {
+  margin-left: 10px;
+}
+
+.wrapperPlayground {
+  display: flex;
+  border: 1px solid #dee3e5;
+  border-radius: 6px;
+  height: auto;
+  margin-bottom: 32px;
+}
+.wrapperPlayground p {
+  margin: 0;
+}
+@media (max-width: 767px) {
+  .wrapperPlayground {
+    display: none;
+  }
+}
+
+.resultView {
+  display: flex;
+  flex: 1 0 auto;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+  width: 100%;
+  padding: 16px;
+  box-sizing: border-box;
+  background-size: 20px 20px;
+  background-position: center center;
+  border-bottom: 1px solid #dee3e5;
+  overflow-y: auto;
+  position: relative;
+  font-size: 12px;
+}
+
+.resultCode {
+  position: relative;
+  overflow-y: auto;
+}
+
+.sourceView {
+  height: 100%;
+  margin: 0 !important;
+  border-bottom-right-radius: 0 !important;
+  border-top-right-radius: 0 !important;
+  border-top-left-radius: 0 !important;
+}
+
+.workArea {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  position: relative;
+}
+
+.widgetsBar {
+  position: relative;
+  width: 30%;
+  padding: 32px;
+  font-size: 14px;
+  background-color: #f9f9f9;
+  border-left: 1px solid #dee3e5;
+  overflow-y: auto;
+}
+
+.widgetGroup {
+  padding-bottom: 15px;
+}
+
+.iconCopy {
+  position: absolute;
+  right: 16px;
+  top: 16px;
+  cursor: pointer;
+}
+.iconCopy > span {
+  display: inline-block;
+}
+
+.iconCopy svg {
+  width: 22px;
+  height: 22px;
+  fill: #999;
+}
+.iconCopy svg:hover {
+  opacity: 0.8;
+}
+
+.chooseBackgroundColor {
+  width: 25px;
+  height: 25px;
+  border-style: solid;
+  border-width: 3px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.25s ease-in-out;
+}

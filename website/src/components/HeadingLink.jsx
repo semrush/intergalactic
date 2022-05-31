@@ -1,38 +1,21 @@
 import React from 'react';
-import styled from 'styled-components';
+import styles from './HeadingLink.module.css';
 
 import LinkM from '@semcore/icon/Link/m';
 
-const Heading = styled.h3`
-  position: relative;
-  &:hover svg {
-    opacity: 1;
-  }
-  svg {
-    cursor: pointer;
-    color: #a6b0b3;
-    position: absolute;
-    top: 50%;
-    left: 0;
-    transform: translate(-100%, -50%);
-    opacity: 0;
-    padding: 5px;
-    line-height: 16px;
-  }
-  svg:hover {
-    color: #333;
-  }
-
-  font-weight: ${({ as }) => (parseInt(as.slice(1), 10) > 3 ? 'normal' : 500)};
-`;
-
-function HeadingLink({ level, route, id, children }) {
-  return (
-    <Heading as={`h${level}`} id={id}>
-      <LinkM onClick={() => (window.location.hash = `#${id}`)} />
-      {children}
-    </Heading>
-  );
+function HeadingLink({ level, id, children }) {
+  return React.createElement(`h${level}`, {
+    className: styles.heading,
+    as: `h${level}`,
+    id,
+    style: { fontWeight: level > 3 ? 'normal' : 500 },
+    children: (
+      <>
+        <LinkM onClick={() => (window.location.hash = `#${id}`)} />
+        {children}
+      </>
+    ),
+  });
 }
 
 export default HeadingLink;

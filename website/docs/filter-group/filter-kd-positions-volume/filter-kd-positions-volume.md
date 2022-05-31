@@ -64,10 +64,10 @@ Use the [InputNumber](/components/input-number/), if the filter has the ability 
 
 Stepper buttons appear when you hover over such an input and in the focus state.
 
-|                                                                    | Appearance example                   |
-| ------------------------------------------------------------------ | ------------------------------------ |
-| If nothing is entered, the bottom stepper is disabled.             | ![steppers](static/steppers.png)     |
-| If a maximum value is entered, the upper stepper becomes inactive. | ![steppers](static/steppers-max.png) |
+|                                                                    | Appearance example                                          |
+| ------------------------------------------------------------------ | ----------------------------------------------------------- |
+| If nothing is entered, the bottom stepper is disabled.             | ![steppers](static/steppers-filter-kd-positions-volume.png) |
+| If a maximum value is entered, the upper stepper becomes inactive. | ![steppers](static/steppers-max.png)                        |
 
 @## Interaction
 
