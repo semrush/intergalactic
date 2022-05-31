@@ -1,0 +1,17 @@
+.title {
+  font-size: 40px;
+  line-height: 120%;
+  margin: 0;
+  margin-bottom: 4px;
+}
+@media (max-width: 415px) {
+  .title {
+    font-size: 30px;
+    line-height: 120%;
+  }
+}
+@media (max-width: 767px) {
+  .overlay {
+    display: none;
+  }
+}

@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styles from './Color.module.css';
 import Copy from '../components/Copy';
 
 import cssVariableFile from '!!raw-loader!@semcore/utils/style/var.css';
@@ -12,15 +12,6 @@ const cssVariable = Object.fromEntries(
     .map((line) => line.split(': ')),
 );
 
-const PaintedElement = styled.span`
-  display: inline-block;
-  width: 16px;
-  height: 16px;
-  background-color: ${({ value }) => value && value};
-  border-radius: 6px;
-  vertical-align: middle;
-`;
-
 const Color = ({ name, ...other }) => {
   const varValue = cssVariable[name];
   const value = varValue || name;
@@ -30,7 +21,12 @@ const Color = ({ name, ...other }) => {
       text={varValue ? `${name}: ${value}` : value}
       textTooltip={`Click to copy "${varValue ? `${name}: ${value}` : value}"`}
     >
-      <PaintedElement {...other} value={value} />
+      <span
+        className={styles.paintedElement}
+        {...other}
+        value={value}
+        style={{ ...(other.style ?? {}), backgroundColor: value }}
+      />
     </Copy>
   );
 };

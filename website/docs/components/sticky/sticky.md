@@ -32,7 +32,7 @@ The style of the shadow is `background-image: linear-gradient(to left, rgba(0, 0
 
 Inside the blocks, messages that are scrolled must be "pinned" towards the vertical and horizontal center of the parent block.
 
-![sticky message](static/nothing-found.png)
+![sticky message](static/nothing-found-sticky.png)
 
 ![sticky spin block](static/sticky-loading-1.png)
 

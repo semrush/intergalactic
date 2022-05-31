@@ -1,0 +1,153 @@
+.popper {
+  background-color: #fff;
+  color: #171a22;
+  z-index: 1100;
+  box-shadow: 0 10px 25px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 0 0 6px 6px;
+  overflow: hidden;
+  border: none;
+}
+
+.inputWrapper {
+  position: relative;
+}
+@media (max-width: 767px) {
+  .inputWrapper {
+    margin-right: 32px;
+  }
+}
+@media (max-width: 415px) {
+  .inputWrapper {
+    margin: 0 55px 0 8px;
+    width: 85%;
+  }
+}
+
+.input {
+  height: 46px;
+  width: 100%;
+  padding-left: 24px;
+  padding-right: 35px;
+  box-sizing: border-box;
+  font-size: 16px;
+  border: 1px solid #d1d4db;
+  outline: none;
+  text-overflow: ellipsis;
+  border-radius: 6px 6px 6px 6px;
+}
+.inputOpen {
+  border-radius: 6px 6px 0 0;
+}
+.input:focus {
+  border: 1px solid #171a22;
+}
+
+.input::placeholder {
+  color: #898d9a;
+  text-overflow: ellipsis;
+}
+
+.desktopInput {
+  display: none;
+}
+@media (min-width: 768px) {
+  .desktopInput {
+    display: flex;
+  }
+}
+
+.mobileInput {
+  display: none;
+}
+@media (max-width: 767px) {
+  .mobileInput {
+    display: flex;
+  }
+}
+
+.iconSearchWrapper {
+  position: absolute;
+  right: 15px;
+  top: 14px;
+  color: #171a22;
+}
+@media (max-width: 415px) {
+  .iconSearchWrapper {
+    left: 0;
+  }
+}
+
+.searchIcon {
+  cursor: default;
+}
+@media (max-width: 415px) {
+  .searchIcon {
+    display: none;
+  }
+}
+
+.notFound {
+  padding: 24px 68px 64px;
+  display: flex;
+  flex-direction: column;
+  color: #575c66;
+}
+
+.notFoundImg {
+  margin: 0 auto 8px auto;
+}
+
+.notFoundText {
+  font-size: 14px;
+  text-align: center;
+}
+
+.option {
+  padding: 0 28px;
+  height: 54px;
+  display: block;
+  font-size: 16px;
+  text-decoration: none;
+}
+
+.optionText {
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.optionPlace {
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+  color: #575c66;
+}
+
+.optionHeader {
+  padding: 8px;
+  height: 21px;
+  font-weight: bold;
+  font-size: 14px;
+  display: flex;
+  align-items: end;
+}
+
+.highlightMark {
+  background: rgba(255, 232, 77, 0.5);
+}
+
+.arrowRightIcon {
+  margin: 0 4px;
+  cursor: default;
+}
+@media (max-width: 415px) {
+  .arrowRightIcon {
+    display: none;
+  }
+}
+
+@media (max-width: 415px) {
+  .selectPopper {
+    margin-left: -200px !important;
+    width: 244px !important;
+  }
+}

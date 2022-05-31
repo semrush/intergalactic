@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react';
-import styled from 'styled-components';
+import React, { useState } from 'react';
 import Input from '@semcore/input';
 import Button from '@semcore/button';
 import updatesImg from '../static/illustration/updates.svg';
@@ -9,90 +8,22 @@ import { css } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
 import CheckL from '@semcore/icon/Check/l';
 import axios from 'axios';
+import styles from './UpdateBlock.module.css';
 
-const UpdateWrapper = styled.div`
-  display: grid;
-  grid-template-rows: 1fr;
-  grid-template-columns: 3fr 1fr;
-  @media (max-width: 767px) {
-    grid-template-columns: 1fr;
-    margin-left: 0;
-    padding: 0 0 56px;
+const tooltipStyles = css`
+  STooltip {
+    background-color: #f71939 !important;
+    border-color: #f71939 !important;
+    max-width: 500px;
+    font-size: 16px;
   }
-  @media (max-width: 415px) {
-    padding: 0;
-  }
-`;
-
-const Info = styled.div`
-  grid-row: 1;
-  grid-column: 1;
-  font-size: 18px;
-  line-height: 150%;
-  margin-right: 40px;
-  @media (max-width: 767px) {
-    grid-column: 1;
-  }
-`;
-
-const Header = styled.h2`
-  font-size: 40px;
-  line-height: 120%;
-  margin: 48px 0 16px;
-  @media (max-width: 767px) {
-    font-size: 30px;
-    line-height: 120%;
-  }
-`;
-
-const Terms = styled.div`
-  font-size: 16px;
-  color: #898d9a;
-  a {
-    color: #1a55ed;
-    text-decoration: none;
-    margin-left: 5px;
-    &:hover {
-      text-decoration: underline;
+  SArrow {
+    &:before {
+      border-color: #f71939 !important;
     }
   }
-`;
-
-const UpdatesImg = styled.img`
-  grid-row: 1;
-  grid-column: 2;
-  margin-right: 56px;
-  @media (max-width: 767px) {
-    display: none;
-  }
-`;
-
-const InputSubscribe = styled(Input)`
-  height: 56px !important;
-  font-size: 18px !important;
-  width: 296px;
-  margin: 0 16px 16px 0;
-  @media (max-width: 767px) {
-    width: 100%;
-    margin: 0 0 16px;
-  }
-`;
-
-const InputHidden = styled(Input)`
-  position: absolute;
-  top: -100px;
-  left: -100px;
-`;
-
-const Subscribed = styled.div`
-  display: flex;
-  align-items: center;
-  font-size: 21px;
-  color: #575c66;
-  line-height: 150%;
-  svg {
-    width: 38px;
-    margin-right: 19px;
+  SButton[disabled] {
+    opacity: 1 !important;
   }
 `;
 
@@ -120,29 +51,6 @@ const ButtonSubscribe = css`
     @media (max-width: 415px) {
       width: 250px;
     }
-  }
-`;
-
-const TooltipUpdate = styled(Tooltip)`
-  @media (max-width: 767px) {
-    width: 100%;
-  }
-`;
-
-const styles = css`
-  STooltip {
-    background-color: #f71939 !important;
-    border-color: #f71939 !important;
-    max-width: 500px;
-    font-size: 16px;
-  }
-  SArrow {
-    &:before {
-      border-color: #f71939 !important;
-    }
-  }
-  SButton[disabled] {
-    opacity: 1 !important;
   }
 `;
 
@@ -180,28 +88,33 @@ function UpdateBlock() {
   };
 
   return (
-    <UpdateWrapper id="updBlock">
-      <Info>
-        <Header>All updates in your inbox</Header>
+    <div className={styles.updateWrapper} id="updBlock">
+      <div className={styles.info}>
+        <h2 className={styles.header}>All updates in your inbox</h2>
         <Box mb={8}>Just new releases and component versions. And nothing more!</Box>
         {status === 'subscribed' && (
-          <Subscribed>
+          <div className={styles.subscribed}>
             <CheckL color={'#45E0A8'} />
             We’ll keep you updated!
-          </Subscribed>
+          </div>
         )}
         {status === 'initial' && (
           <>
             <form onSubmit={handleSubmit}>
-              <TooltipUpdate
+              <Tooltip
+                className={styles.tooltipUpdate}
                 title={'Please enter a valid email.'}
                 visible={!!error && touched}
                 interaction="click"
                 theme="warning"
-                styles={styles}
+                styles={tooltipStyles}
                 placement="top-start"
               >
-                <InputSubscribe size="xl" state={!!error ? 'invalid' : 'normal'}>
+                <Input
+                  className={styles.inputSubscribe}
+                  size="xl"
+                  state={!!error ? 'invalid' : 'normal'}
+                >
                   <Input.Value
                     name="email"
                     value={value}
@@ -210,17 +123,17 @@ function UpdateBlock() {
                     onFocus={handleFocus}
                     onBlur={handleBlur}
                   />
-                </InputSubscribe>
-              </TooltipUpdate>
-              <InputHidden>
+                </Input>
+              </Tooltip>
+              <Input className={styles.inputHidden}>
                 <Input.Value
                   value={hiddenValue}
                   onChange={setHiddenValue}
                   placeholder="Placeholder"
                 />
-              </InputHidden>
+              </Input>
               <Button
-                styles={ButtonSubscribe}
+                className={ButtonSubscribe}
                 size="l"
                 type="submit"
                 onClick={subscribe}
@@ -229,16 +142,16 @@ function UpdateBlock() {
                 I want all updates
               </Button>
             </form>
-            <Terms>
+            <div className={styles.terms}>
               By clicking the button you agree to the
               <NavLink to="/terms/terms-of-use/">Terms of use</NavLink> and
               <NavLink to="/terms/privacy/">Privacy policy</NavLink>.
-            </Terms>
+            </div>
           </>
         )}
-      </Info>
-      <UpdatesImg src={updatesImg} />
-    </UpdateWrapper>
+      </div>
+      <img className={styles.updatesImg} src={updatesImg} />
+    </div>
   );
 }
 

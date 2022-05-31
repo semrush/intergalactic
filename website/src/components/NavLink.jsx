@@ -1,16 +1,12 @@
 import React from 'react';
-import styled from 'styled-components';
+import styles from './NavLink.module.css';
 import { NavLink as RouterNavLink } from 'react-router-dom';
-
-const Link = styled(RouterNavLink)`
-  -webkit-appearance: none;
-`;
 
 const NavLink = React.forwardRef(function (
   { neighborLocation, keyboardFocused, highlighted, active, ...other },
   ref,
 ) {
-  return <Link ref={ref} {...other} />;
+  return <RouterNavLink className={styles.navLink} ref={ref} {...other} />;
 });
 
 export default NavLink;

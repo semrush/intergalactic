@@ -10,6 +10,7 @@ import resolveColor from '@semcore/utils/lib/color';
 import addonTextChildren from '@semcore/utils/lib/addonTextChildren';
 import InputSearch from './InputSearch';
 import { useBox } from '@semcore/flex-box';
+import { selectContext } from './context';
 
 import style from './style/select.shadow.css';
 
@@ -287,7 +288,7 @@ const Select = createComponent(
     InputSearch: InputSearchWrapper,
     Input: InputSearchWrapper,
   },
-  { parent: DropdownMenu },
+  { parent: DropdownMenu, context: selectContext },
 );
 
 export default Select;

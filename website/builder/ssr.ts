@@ -29,13 +29,9 @@ const ensureDir = async (path: string) => {
   }
 };
 
-const newEntryPoints = ['./src/app-ssr.jsx', './src/main-hydrate.jsx'];
-const entryPoints = Array.isArray(websiteEsbuildConfig.entryPoints)
-  ? [...websiteEsbuildConfig.entryPoints, ...newEntryPoints]
-  : newEntryPoints;
 const outputDir = resolvePath('dist');
 const publicDir = resolvePath('src/public');
-const specialRoutes = ['', 'contacts/contact-info'];
+const specialRoutes = ['', 'contacts/contact-info', 'not-found'];
 
 await fs.rm(outputDir, { force: true, recursive: true });
 await ensureDir(outputDir);
@@ -44,9 +40,16 @@ for (const file of await fs.readdir(publicDir)) {
 }
 const buildResults = await esbuild.build({
   ...websiteEsbuildConfig,
-  entryPoints,
+  entryPoints: ['./src/main-hydrate.jsx'],
   outdir: outputDir,
   metafile: true,
+});
+await esbuild.build({
+  ...websiteEsbuildConfig,
+  entryPoints: ['./src/app-ssr.jsx'],
+  outdir: outputDir,
+  splitting: false,
+  treeShaking: true,
 });
 
 const outputAssetsBySrcPath = {};
@@ -70,7 +73,7 @@ const { navigationTree } = await buildNavigation(docsDir);
 globalThis.__ssr = true;
 
 // eslint-disable-next-line import/extensions
-await import('../dist/_.._/src/app-ssr.js');
+await import('../dist/app-ssr.js');
 
 const nodesList = [];
 const traverse = (navigationNode) => {
@@ -97,7 +100,8 @@ const generateCodeEntry = (navigationNode, pageData) => {
     if (token.type === 'example' || token.type === 'import') {
       const inputFilePath = resolvePath(dirname, token.filePath);
       const outputFilePath = outputAssetsBySrcPath[inputFilePath];
-      const outputRelativePath = '/' + resolveRelativePath(outputDir, outputFilePath);
+      const outputRelativePath =
+        (process.env.PUBLIC_PATH || '/') + resolveRelativePath(outputDir, outputFilePath);
       token.load = token.load.replace(token.filePath, outputRelativePath);
       delete token.filePath;
     }
@@ -112,19 +116,22 @@ const generateCodeEntry = (navigationNode, pageData) => {
 
     if (!outputFilePath) {
       throw new Error(
-        `Unable to find corresponding output chunk for ${importPath} from ${navigationNode.filePath}`,
+        `Unable to find corresponding output chunk for ${importPath} from ${navigationNode.filePath}. Maybe you have duplicating asset file names?`,
       );
     }
 
-    const outputRelativePath = '/' + resolveRelativePath(outputDir, outputFilePath);
-    articleImagesPaths.push(`${variableName}="${outputRelativePath}";`);
+    const outputRelativePath =
+      (process.env.PUBLIC_PATH || '/') + resolveRelativePath(outputDir, outputFilePath);
+    articleImagesPaths.push(`var ${variableName}="${outputRelativePath}";`);
   }
   const articleImagesPathsSerialized = articleImagesPaths.join('\n');
   const preloadedPageData = `(function (){ ${articleImagesPathsSerialized}; return ${serializedArticle} })()`;
 
+  globalThis.__ssr_page_data = eval(preloadedPageData);
+
   return `
     __ssr_preloaded_page_route="${route}";
-    __ssr_preloaded_page_data=${preloadedPageData};
+    __ssr_preloaded_page_data=(${preloadedPageData});
   `;
 };
 const renderPage = async (route, navigationNode?) => {
@@ -135,7 +142,6 @@ const renderPage = async (route, navigationNode?) => {
   if (navigationNode) {
     const articlePath = resolvePath(docsDir, navigationNode.filePath);
     const articleData = await buildArticle(docsDir, articlePath, navigationNode.filePath);
-    globalThis.__ssr_page_data = articleData;
 
     codeEntry = generateCodeEntry(navigationNode, articleData);
   }
@@ -144,9 +150,8 @@ const renderPage = async (route, navigationNode?) => {
   const html = htmlBase
     .replace('<!--%ssr-html-entry%-->', contents)
     .replace('/*--%ssr-js-entry%--*/', codeEntry)
+    .replace('/main-render.css', process.env.PUBLIC_PATH + 'main-hydrate.css')
     .replace('/main-render.js', process.env.PUBLIC_PATH + 'main-hydrate.js')
-    .replace('/main.css', process.env.PUBLIC_PATH + 'main.css')
-    .replace('/main-render.css', process.env.PUBLIC_PATH + 'main-render.css')
     .replace('/social.png', process.env.PUBLIC_PATH + 'social.png');
 
   return html;

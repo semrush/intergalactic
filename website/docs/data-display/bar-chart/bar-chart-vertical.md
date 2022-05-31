@@ -39,7 +39,7 @@ Here you will find the states for some specific cases. All other "empty states" 
 
 ### One dot with a data
 
-![one dot](/data-display/bar-chart/static/one-dot.png)
+![one dot](/data-display/bar-chart/static/one-dot-bar-chart.png)
 
 ### Two dots with a data
 
@@ -51,7 +51,7 @@ If all the values on the chart are zero, then in the tooltip we shall display nu
 
 > 💡 **Zero is also data. 0 ≠ `n/a`.**
 
-![null data](/data-display/bar-chart/static/null.png)
+![null data](/data-display/bar-chart/static/null-bar-chart.png)
 
 ### Some dots have no data
 

@@ -38,10 +38,10 @@ Use the [InputNumber](/components/input-number/), if the filter has the ability 
 
 Stepper buttons appear when you hover over an [InputNumber](/components/input-number/) and in the focus state.
 
-|                                                                    | Appearance example                   |
-| ------------------------------------------------------------------ | ------------------------------------ |
-| If nothing is entered, the bottom stepper is disabled.             | ![steppers](static/steppers.png)     |
-| If a maximum value is entered, the upper stepper becomes inactive. | ![steppers](static/steppers-max.png) |
+|                                                                    | Appearance example                            |
+| ------------------------------------------------------------------ | --------------------------------------------- |
+| If nothing is entered, the bottom stepper is disabled.             | ![steppers](static/steppers-filter-rules.png) |
+| If a maximum value is entered, the upper stepper becomes inactive. | ![steppers](static/steppers-max.png)          |
 
 @## Interaction
 
@@ -105,13 +105,13 @@ Show [Spin](/components/spin/) in the dropdown and the text `Loading ...` in the
 
 Show [SpinContainer](/components/spin-container/) over the dropdown content in the case when the user-selected data needs a time to be applied.
 
-![spin-container](static/spin-container-tags.png)
+![spin-container](static/spin-container-tags-filter-rules.png)
 
 @## Nothing found
 
 Show in the widget/widgets to which the filter was applied an ["empty" error state](/components/widget-empty/) with the ability to update the filter, if an error occurs during the request.
 
-![nothing found](static/nothing-found.png)
+![nothing found](static/nothing-found-filter-rules.png)
 
 @## Tooltips
 

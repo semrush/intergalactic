@@ -1,43 +1,28 @@
 import React from 'react';
 import TabLine from '@semcore/tab-line';
-import styled from 'styled-components';
 import Helmet from 'react-helmet';
 import { Link } from 'react-router-dom';
 import Tooltip from '@semcore/tooltip';
 import Tag from '@semcore/tag';
 import AllComponents from '../components/AllComponents';
-import LoadingPage from '../components/LoadingPage';
 import EmailsBanner from '../components/EmailsBanner';
-import UpdateBlock from '../components/UpdateBlock';
 import whale from '../static/illustration/whale.svg';
 import layout from '../static/illustration/layout.svg';
 import principles from '../static/illustration/principles.svg';
 import style from '../static/illustration/style.svg';
 import ArrowXS from '@semcore/icon/ArrowRight/m';
-import { Link as LinkScroll } from 'react-scroll';
 import { Box } from '@semcore/flex-box';
-import updatesButton from '../static/illustration/search-for-updates.svg';
-import { css } from '@semcore/core';
+// import updatesButton from '../static/illustration/search-for-updates.svg';
 import SideBarNavigation from '../components/SideBarNavigation';
 import ComponentCard from '../components/ComponentCard';
 import { Text } from '@semcore/typography';
-import { navigationTree, routes } from '@navigation';
+import { navigationTree } from '@navigation';
 import staticFiles from '@static';
 import { usePageData } from '../components/routing';
 import Spin from '@semcore/spin';
 import Error from '../components/Error';
 import styles from './Home.module.css';
-
-const stylesTabLine = css`
-  STabLine {
-    margin: auto;
-    width: 810px;
-  }
-
-  STabLineItem[size='l'] {
-    font-size: 24px;
-  }
-`;
+import { css } from '@semcore/core';
 
 const stylesTooltip = css`
   STooltip[theme] {
@@ -48,367 +33,34 @@ const stylesTooltip = css`
   }
 `;
 
-const PromoWrapper = styled.div`
-  display: grid;
-  grid-template-rows: 0.8fr 0.98fr 1.5fr;
-  grid-template-columns: repeat(4, 1fr);
-  padding: 48px 0 12px;
-  @media (max-width: 1140px) {
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: 0.8fr 0.7fr repeat(2, 2fr);
-    padding: 0 0 56px;
-    margin-top: 48px;
-  }
-  @media (max-width: 767px) {
-    grid-template-columns: 1fr;
-    grid-template-rows: repeat(1, 0.5fr) 1fr repeat(1, 1.3fr);
-    padding: 0 0 56px;
-  }
-  @media (max-width: 415px) {
-    grid-template-columns: 1fr;
-    grid-template-rows: 0.8fr repeat(2, 1fr) 1fr;
-    padding: 0 0 56px;
-    margin-top: 0;
-  }
-`;
-
-const Overlay = styled.div`
-  max-width: 1140px;
-  padding-left: 40px;
-  padding-right: 40px;
-  padding-bottom: 80px;
-  position: relative;
-  margin: 0 auto;
-  @media (max-width: 767px) {
-    max-width: 767px;
-    padding-left: 32px;
-    padding-right: 32px;
-  }
-  @media (max-width: 415px) {
-    max-width: 415px;
-    padding-left: 20px;
-    padding-right: 20px;
-  }
-`;
-
-const Title = styled.h1`
-  grid-row: 1;
-  grid-column: 1/3;
-  font-size: 50px;
-  line-height: 110%;
-  margin-bottom: 16px;
-  @media (max-width: 1140px) {
-    width: 70%;
-  }
-  @media (max-width: 767px) {
-    font-size: 40px;
-  }
-`;
-
-const Desc = styled.div`
-  grid-row: 2;
-  grid-column: 1/3;
-  font-size: 18px;
-  line-height: 150%;
-  margin: 0;
-  display: flex;
-  align-items: flex-start;
-  @media (max-width: 1140px) {
-    align-items: baseline;
-    margin-bottom: 24px;
-    width: 70%;
-  }
-`;
-
-const Started = styled.div`
-  grid-row: 3;
-  grid-column: 1;
-  margin: 10px 15px 10px 0;
-  padding: 40px 0;
-  display: flex;
-  flex-direction: column;
-  font-size: 24px;
-  a {
-    margin-top: 16px;
-    color: #ff622d;
-    text-decoration: none;
-    &:hover {
-      text-decoration: underline;
-    }
-  }
-  @media (max-width: 1140px) {
-    grid-row: 3;
-    margin: 0 15px 15px 0;
-  }
-  @media (max-width: 767px) {
-    grid-row: 3;
-    margin: 0;
-    margin-top: 15px;
-    padding: 0;
-  }
-`;
-
-const InitialPrinciples = styled.div`
-  position: relative;
-  overflow: hidden;
-  box-shadow: 10px 10px 45px 0 rgba(137, 141, 154, 0.3);
-  margin: 10px 15px;
-  padding: 40px;
-  background-color: #fff;
-  border-radius: 6px;
-  z-index: 99;
-  @media (max-width: 1140px) {
-    margin: 0;
-  }
-`;
-
-const Principles = styled(InitialPrinciples)`
-  grid-row: 3;
-  grid-column: 2;
-  @media (max-width: 1140px) {
-    grid-row: 3;
-    grid-column: 2;
-    margin: 0 0 15px 15px;
-  }
-  @media (max-width: 767px) {
-    grid-row: 4;
-    grid-column: 1;
-    margin: 0;
-    margin-top: 15px;
-  }
-`;
-
-const Style = styled(InitialPrinciples)`
-  grid-row: 3;
-  grid-column: 3;
-  @media (max-width: 1140px) {
-    grid-row: 4;
-    grid-column: 1;
-    margin: 15px 15px 0 0;
-  }
-  @media (max-width: 767px) {
-    grid-row: 5;
-    grid-column: 1;
-    margin: 0;
-    margin-top: 40px;
-  }
-`;
-
-const Layout = styled(InitialPrinciples)`
-  grid-row: 3;
-  grid-column: 4;
-  @media (max-width: 1140px) {
-    grid-row: 4;
-    grid-column: 2;
-    margin: 15px 0 0 15px;
-  }
-  @media (max-width: 767px) {
-    grid-row: 6;
-    grid-column: 1;
-    margin: 0;
-    margin-top: 40px;
-  }
-`;
-
-const LayoutImg = styled.img`
-  position: absolute;
-  left: 32%;
-  bottom: -35%;
-  z-index: -1;
-  @media (max-width: 1140px) {
-    left: 56%;
-    bottom: -24%;
-    width: 300px;
-  }
-`;
-const PrinciplesImg = styled.img`
-  position: absolute;
-  left: 50%;
-  top: 44%;
-  z-index: -1;
-  @media (max-width: 1140px) {
-    left: 54%;
-    top: 15%;
-    width: 340px;
-  }
-`;
-const StylesImg = styled.img`
-  position: absolute;
-  left: 52%;
-  bottom: 28%;
-  z-index: -1;
-  @media (max-width: 1140px) {
-    left: 55%;
-    top: -24%;
-    width: 330px;
-  }
-`;
-
-const WhaleImg = styled.img`
-  position: absolute;
-  right: 88px;
-  top: 20px;
-  @media (max-width: 1140px) {
-    display: none;
-  }
-`;
-
-const MainWrapper = styled.div`
-  padding: 32px 0 80px;
-  @media (max-width: 767px) {
-    display: none;
-  }
-`;
-
-const Tab = styled.div`
-  & > div:first-child > div {
-    background-color: #ff622d;
-    height: 2px;
-  }
-`;
-
-const Border = styled.div`
-  border: 1px solid #d1d4db;
-  border-radius: 6px;
-  height: fit-content;
-  padding: 40px 32px;
-  font-size: 16px;
-  line-height: 150%;
-`;
-
-const Category = styled.div`
-  display: grid;
-  grid-template-rows: repeat(auto-fill, 36px);
-  grid-template-columns: max-content;
-  grid-auto-flow: column;
-  width: 100%;
-  max-height: 400px;
-  margin: 0;
-  padding: 0;
-`;
-
-const Cards = styled.div`
-  display: grid;
-  grid-template-rows: max-content;
-  grid-template-columns: repeat(auto-fill, 176px);
-  grid-gap: 12px 12px;
-  width: 100%;
-  margin: 0;
-  margin-top: 12px;
-  padding: 0;
-`;
-
-const LinkStyled = styled(Link)`
-  line-height: 1.25;
-  color: #171a22;
-  cursor: pointer;
-  text-decoration: none;
-  max-width: 235px;
-  &:hover {
-    text-decoration: underline;
-  }
-`;
-
-const LinkDisabled = styled.div`
-  line-height: 1.25;
-  color: #ccc;
-  text-decoration: none;
-  cursor: default;
-  pointer-events: none;
-`;
-
-const TableOverlay = styled.div`
-  display: flex;
-  & .component {
-    margin-right: 40px;
-  }
-  h2 {
-    margin: 0;
-    margin-bottom: 8px;
-    font-size: 16px;
-  }
-  a {
-    margin-bottom: 8px;
-    white-space: nowrap;
-  }
-`;
-
-const UpdatesButton = styled(LinkScroll)`
-  position: fixed;
-  top: 439px;
-  right: -21px;
-  width: 120px;
-  z-index: 999;
-  @media (max-width: 767px) {
-    display: none;
-  }
-  &:hover {
-    cursor: pointer;
-  }
-  img {
-    margin-top: 12px;
-  }
-`;
-
-const HomePage = styled.div`
-  display: flex;
-  padding-top: 80px;
-`;
-
-const SideBar = styled.div`
-  position: sticky;
-  top: 80px;
-
-  height: calc(100vh - 80px);
-  background: #f5f5f5;
-  max-width: 260px;
-  @media (max-width: 767px) {
-    display: none;
-  }
-`;
-
-const Docs = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin-top: 12px;
-  a {
-    color: #171a22;
-    text-decoration: none;
-    &:hover {
-      cursor: pointer;
-      text-decoration: underline;
-    }
-  }
-`;
-
 const mappingTableToImg = {
   principles: {
-    tableStyle: Principles,
-    imgStyle: PrinciplesImg,
+    className: `${styles.initialPrinciples} ${styles.principles}`,
+    imgClassName: styles.principlesImg,
     img: principles,
     tag: 'Principles',
   },
   styles: {
-    tableStyle: Style,
-    imgStyle: StylesImg,
+    className: `${styles.initialPrinciples} ${styles.styles}`,
+    imgClassName: styles.stylesImg,
     img: style,
     tag: 'Style',
   },
   layout: {
-    tableStyle: Layout,
-    imgStyle: LayoutImg,
+    className: `${styles.initialPrinciples} ${styles.layout}`,
+    imgClassName: styles.layoutImg,
     img: layout,
     tag: 'Layout',
   },
 };
 
 const getCustomPage = (table) => (
-  <table.tableStyle>
+  <div className={table.className}>
     <AllComponents
       navigation={navigationTree.filter((nav) => !nav.metadata.hide && nav.title === table.tag)}
     />
-    <table.imgStyle src={table.img} alt={table.tag} />
-  </table.tableStyle>
+    <img className={table.imgClassName} src={table.img} alt={table.tag} />
+  </div>
 );
 
 const renderSwitch = (value) => {
@@ -432,7 +84,7 @@ const renderSwitch = (value) => {
 
 const getTabByTitle = (titles) => {
   return (
-    <TableOverlay>
+    <div className={styles.tableOverlay}>
       {titles.length === 1 ? (
         titles[0] === 'Charts' ? (
           getChart(titles[0])
@@ -451,7 +103,7 @@ const getTabByTitle = (titles) => {
           );
         })
       )}
-    </TableOverlay>
+    </div>
   );
 };
 
@@ -471,16 +123,18 @@ const getComponents = (titles) => {
   const getList = (child) => {
     if (child.elem.metadata.disabled) {
       return (
-        <LinkDisabled key={child.elem.title} className="component">
+        <div className={styles.linkDisabled} key={child.elem.title}>
           {child.elem.title}
-        </LinkDisabled>
+        </div>
       );
     }
     const pic = getTooltip(child.elem.title);
     return (
       <Tooltip styles={stylesTooltip} placement="left" w={'fit-content'} key={child.elem.title}>
         <Tooltip.Trigger className="component">
-          <LinkStyled to={`/${child.elem.route}/`}>{child.elem.title}</LinkStyled>
+          <Link className={styles.linkStyled} to={`/${child.elem.route}/`}>
+            {child.elem.title}
+          </Link>
           {child.elem.metadata.beta && (
             <>
               {' '}
@@ -505,7 +159,7 @@ const getComponents = (titles) => {
     .flat()
     .map((child) => getList(child));
 
-  return <Category>{listItems}</Category>;
+  return <div className={styles.category}>{listItems}</div>;
 };
 
 const getChart = (titles) => {
@@ -549,11 +203,11 @@ const getChart = (titles) => {
     <>
       <Box mr={12}>
         <Text tag="strong">Common docs</Text>
-        <Docs>{listDocs}</Docs>
+        <div className={styles.docs}>{listDocs}</div>
       </Box>
       <Box w="100%">
         <Text tag="strong">Types</Text>
-        <Cards>{listItems}</Cards>
+        <div className={styles.cards}>{listItems}</div>
       </Box>
     </>
   );
@@ -583,11 +237,11 @@ const Table = ({ titles }) => {
     <>
       <Box mr={12}>
         <Text tag="strong">Common docs</Text>
-        <Docs>{getDocs}</Docs>
+        <div className={styles.docs}>{getDocs}</div>
       </Box>
       <Box w="100%">
         <Text tag="strong">Controls and use cases</Text>
-        <Cards>
+        <div className={styles.cards}>
           {tableControls.page.headings.map((heading) => (
             <ComponentCard
               key={heading.id}
@@ -597,11 +251,11 @@ const Table = ({ titles }) => {
               href={heading.route}
             />
           ))}
-        </Cards>
+        </div>
         <Text tag="strong" inline mt={8}>
           States
         </Text>
-        <Cards>
+        <div className={styles.cards}>
           {tableStates.page.headings.map((heading) => (
             <ComponentCard
               key={heading.id}
@@ -611,7 +265,7 @@ const Table = ({ titles }) => {
               href={heading.route}
             />
           ))}
-        </Cards>
+        </div>
       </Box>
     </>
   );
@@ -633,19 +287,19 @@ function Home() {
           content="Semrush design system, design system, design-system, дизайн-система, дизайн-система Semrush, дизайн система"
         ></meta>
       </Helmet>
-      <HomePage>
-        <SideBar>
+      <div className={styles.homePage}>
+        <div className={styles.sideBar}>
           <SideBarNavigation navigation={navigationTree.filter((nav) => !nav.metadata.hide)} />
-        </SideBar>
-        <Overlay>
-          <PromoWrapper>
-            <Title>Intergalactic Design System</Title>
-            <Desc>
+        </div>
+        <div className={styles.overlay}>
+          <div className={styles.promoWrapper}>
+            <h1 className={styles.title}>Intergalactic Design System</h1>
+            <div className={styles.desc}>
               Intergalactic is a constantly developing system of UI components, guidelines and UX
               patterns. With all these tools you can build your own product.
-            </Desc>
-            <WhaleImg src={whale} alt="Whale" />
-            <Started>
+            </div>
+            <img className={styles.whaleImg} src={whale} alt="Whale" />
+            <div className={styles.started}>
               Get started
               <Link to="/get-started-guide/dev-starter-guide/" rel="noopener noreferrer">
                 For developers <ArrowXS />
@@ -656,12 +310,12 @@ function Home() {
               <Link to="/get-started-guide/work-figma/" rel="noopener noreferrer">
                 Figma libraries <ArrowXS />
               </Link>
-            </Started>
+            </div>
             {getCustomPage(mappingTableToImg.principles)}
             {getCustomPage(mappingTableToImg.styles)}
             {getCustomPage(mappingTableToImg.layout)}
-          </PromoWrapper>
-          <MainWrapper>
+          </div>
+          <div className={styles.mainWrapper}>
             <div className={styles.tabsWrapper}>
               <TabLine
                 underlined={false}
@@ -690,16 +344,16 @@ function Home() {
                 </TabLine.Item>
               </TabLine>
             </div>
-            <Border>{renderSwitch(value)}</Border>
-          </MainWrapper>
+            <div className={styles.border}>{renderSwitch(value)}</div>
+          </div>
           <EmailsBanner />
           {/* <UpdateBlock /> */}
-        </Overlay>
-        {/* <UpdatesButton activeClass="active" to="updBlock" spy={true} smooth={true}>
+        </div>
+        {/* <LinkScroll classNmae={styles.updatesButton} activeClass="active" to="updBlock" spy={true} smooth={true}>
            Updates?
            <img src={updatesButton} alt="Updates button" />
-         </UpdatesButton> */}
-      </HomePage>
+         </LinkScroll> */}
+      </div>
     </>
   );
 }

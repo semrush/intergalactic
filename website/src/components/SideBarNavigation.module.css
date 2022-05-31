@@ -1,0 +1,48 @@
+.navigationView {
+  padding: 32px;
+  box-sizing: border-box;
+  width: 260px;
+  height: 100%;
+  overflow: auto;
+}
+@media (max-width: 767px) {
+  .navigationView {
+    margin-right: 0;
+  }
+}
+
+.categoryTitle {
+  color: #171a22 !important;
+  cursor: pointer;
+  padding: 8px 0 2px;
+  font-weight: 500;
+  font-size: 16px !important;
+  line-height: 1.5;
+}
+.categoryTitle:hover,
+.categoryTitle:hover > * {
+  color: #ff622d;
+}
+
+.categoryItem {
+  padding: 2px 0 2px 24px;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #171a22;
+  cursor: pointer;
+  text-decoration: none;
+  display: block;
+  transition: color 0.5s;
+}
+.categoryItem:hover {
+  color: #ff622d;
+}
+.categoryItemActive {
+  color: #ff622d;
+}
+
+.categoryItemDisabled {
+  cursor: default;
+  pointer-events: none;
+  color: #ccc;
+}

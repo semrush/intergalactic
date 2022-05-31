@@ -120,7 +120,7 @@ If for some reason the list takes a long time to load when opened, or the result
 
 It may be that the value entered by the user will not match the existing projects. In this case, show the user a message that nothing was found and the `Create new project` button.
 
-![project select with nothing found](static/nothing-found.png)
+![project select with nothing found](static/nothing-found-project-select.png)
 
 ### Error
 

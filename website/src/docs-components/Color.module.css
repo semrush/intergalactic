@@ -1,0 +1,7 @@
+.paintedElement {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border-radius: 6px;
+  vertical-align: middle;
+}

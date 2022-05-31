@@ -126,7 +126,7 @@ You can drag while holding the cursor over a button and moving the item down/up.
 
 The color below the item is `rgba(gray-50)`.
 
-![dragging](static/dragging.png)
+![dragging](static/dragging-dropdown.png)
 
 @## Selected item resetting
 

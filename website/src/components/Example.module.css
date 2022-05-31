@@ -1,0 +1,42 @@
+.exampleWrapper {
+  margin: 10px auto;
+  border-radius: 6px;
+  box-shadow: rgb(204, 204, 204) 0 0 1px 1px;
+}
+
+.view {
+  display: flex;
+  padding: 24px;
+  justify-content: center;
+  font-size: 12px;
+}
+
+.codeView {
+  max-height: 500px;
+  overflow: scroll;
+  position: relative;
+}
+
+.stylesIcons {
+  position: absolute;
+  top: 16px;
+  cursor: pointer;
+}
+.stylesIcons > span {
+  display: inline-block;
+}
+
+.stylesIcons svg {
+  width: 22px;
+  height: 22px;
+  fill: #898d9a;
+}
+.stylesIcons svg:hover {
+  opacity: 0.8;
+}
+.iconCopy {
+  right: 16px;
+}
+.iconSandBox {
+  right: 54px;
+}
