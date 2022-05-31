@@ -1,6 +1,7 @@
 @import '@semcore/utils/style/var.css';
 
 SLabel {
+  position: relative;
   display: inline-flex;
   align-items: flex-start;
   cursor: pointer;

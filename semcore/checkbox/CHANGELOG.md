@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [6.0.3] - 2022-05-31
+
+### Fixed
+
+- Fixed problem show `Checkbox` in `Modal` (Checkbox added scroll on page).
+
 ## [6.0.2] - 2022-05-19
 
 ### Changed
