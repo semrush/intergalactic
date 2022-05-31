@@ -182,4 +182,4 @@ A cell in a table may be blocked by a limit or by the need to take some action t
 
 ![locked table cell](static/cell-locked-tooltip.png)
 
-> 💡 For all the main table styles and rules, see [Table](/table-group/table/). For all icons for different States and their names, see the [empty states documentation](/components/widget-empty/widget-empty-code/).
+> 💡 For all the main table styles and principles, see [Table](/table-group/table/). For all icons for different States and their names, see the [empty states documentation](/components/widget-empty/widget-empty-code/).
