@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.32.2] - 2022-05-31
+
+### Changed
+
+- Update version dependency `@babel/runtime`.
+
 ## [3.32.1] - 2022-05-19
 
 ### Fixed
