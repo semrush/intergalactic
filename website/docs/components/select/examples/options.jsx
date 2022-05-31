@@ -8,7 +8,10 @@ export default () => (
       <Select.Trigger placeholder="I'll show u some options, buddy 😉" />
       <Select.Menu>
         <Select.Option value={1}>I'm option</Select.Option>
-        <Select.OptionCheckbox value={2}>I'm option-checkbox</Select.OptionCheckbox>
+        <Select.Option value={2}>
+          <Select.Option.Checkbox />
+          I'm option-checkbox
+        </Select.Option>
         <Select.OptionTitle>I'm title</Select.OptionTitle>
         <Select.OptionHint>I'm hint</Select.OptionHint>
       </Select.Menu>
