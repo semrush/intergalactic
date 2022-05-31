@@ -1,9 +1,14 @@
-## [12.1.0] - 2022-05-30
+## [12.1.0] - 2022-05-31
 
 ### @semcore/button
 
 - **Fixed** Fixed `width, height` for size Button.
 - **Fixed** Fixed background-color active state for `<Button use='primary' theme='warning'/>`.
+
+### @semcore/feedback-form
+
+- **Fixed** Fixed Item tag property setting
+- **Fixed** Fixed version `@babel/runtime` for dependency `react-final-form`.
 
 ### @semcore/notice
 
@@ -15,17 +20,21 @@
 
 - **Added** Initial release
 
+### @semcore/select
+
+- **Fixed** Fixed non-closing popper after clicking on an Option
+
 ### @semcore/time-picker
 
 - **Fixed** Fixed show `<Timepicker size='l' is12Hour/>` (added margin right to -4px for `Timepicker.Format`).
 
-### @semcore/feedback-form
+### @semcore/utils
 
-- **Fixed** Fixed Item tag property setting
+- **Changed** Update version dependency `@babel/runtime`.
 
-### @semcore/select
+### @semcore/checkbox
 
-- **Fixed** Fixed non-closing popper after clicking on an Option
+- **Fixed** Fixed problem show `Checkbox` in `Modal` (Checkbox added scroll on page).
 
 ## [12.0.0] - 2022-05-19
 
