@@ -1,3 +1,119 @@
+## [12.0.1] - 2022-05-31
+
+### @semcore/base-trigger
+
+- **Fixed** Updated Intergalactic internal dependencies to the latest.
+
+### @semcore/button
+
+- **Fixed** Fixed `width, height` for size Button.
+- **Fixed** Fixed background-color active state for `<Button use='primary' theme='warning'/>`.
+- **Fixed** Updated Intergalactic internal dependencies to the latest.
+
+### @semcore/card
+
+- **Fixed** Updated Intergalactic internal dependencies to the latest.
+
+### @semcore/chart
+
+- **Fixed** Updated Intergalactic internal dependencies to the latest.
+
+### @semcore/checkbox
+
+- **Fixed** Fixed problem show `Checkbox` in `Modal` (Checkbox added scroll on page).
+- **Fixed** Updated Intergalactic internal dependencies to the latest.
+
+### @semcore/d3-chart
+
+- **Fixed** Fixed position title for axis.
+
+### @semcore/date-picker
+
+- **Fixed** Updated Intergalactic internal dependencies to the latest.
+
+### @semcore/feedback-form
+
+- **Fixed** Fixed version `@babel/runtime` for dependency `react-final-form`.
+- **Fixed** Fixed Item tag property setting
+- **Fixed** Synced dependencies versions to remove duplicates in the single export package.
+
+### @semcore/flex-box
+
+- **Fixed** Synced dependencies versions to remove duplicates in the single export package.
+
+### @semcore/fullscreen-modal
+
+- **Fixed** Updated Intergalactic internal dependencies to the latest.
+
+### @semcore/icon
+
+- **Added** Added icon `Kebab`.
+
+### @semcore/inline-input
+
+- **Fixed** Updated Intergalactic internal dependencies to the latest.
+
+### @semcore/link
+
+- **Fixed** Updated Intergalactic internal dependencies to the latest.
+
+### @semcore/modal
+
+- **Fixed** Synced dependencies versions to remove duplicates in the single export package.
+
+### @semcore/notice
+
+- **Changed** Changed animation duration from 200ms to 250ms.
+- **Changed** Set prop `use` in deprecated. Added fallback on `NoticeGlobal`.
+- **Changed** Add styles for Close icon hover.
+
+### @semcore/notice-global
+
+- **Added** Initial release
+
+### @semcore/popper
+
+- **Fixed** Synced dependencies versions to remove duplicates in the single export package.
+
+### @semcore/project-create
+
+- **Fixed** Synced dependencies versions to remove duplicates in the single export package.
+
+### @semcore/radio
+
+- **Fixed** Updated Intergalactic internal dependencies to the latest.
+
+### @semcore/select
+
+- **Fixed** Fixed non-closing popper after clicking on an Option
+
+### @semcore/side-panel
+
+- **Fixed** Synced dependencies versions to remove duplicates in the single export package.
+
+### @semcore/table
+
+- **Fixed** Fixed hover color `Cell` for `theme='default'`.
+- **Fixed** Fixed memory leak in `StickyHead`
+
+### @semcore/textarea
+
+- **Fixed** Synced dependencies versions to remove duplicates in the single export package.
+
+### @semcore/time-picker
+
+- **Fixed** Fixed show `<Timepicker size='l' is12Hour/>` (added margin right to -4px for `Timepicker.Format`).
+- **Fixed** Updated Intergalactic internal dependencies to the latest.
+
+### @semcore/typography
+
+- **Fixed** Synced dependencies versions to remove duplicates in the single export package.
+
+### @semcore/utils
+
+- **Changed** Update version dependency `@babel/runtime`.
+- **Fixed** Synced dependencies versions to remove duplicates in the single export package.
+
 ## [12.0.0] - 2022-05-19
 
 ### Global
@@ -55,9 +171,22 @@
 
 - **BREAK** Removed deprecated prop `popperStretch`.
 
+### @semcore/flags
+
+- **BREAK** Changed size flags from 14x11 to 16x16.
+
 ### @semcore/format-text
 
 - **BREAK** Changed sizes from m/l/xl to s/m/l
+
+### @semcore/icon
+
+- **BREAK** Removed icons `UserGroupNo, UserShared`.
+- **Added** Added icon `GoogleCloud`.
+- **Added** Added icon `UserShared`.
+- **Changed** Update pay icons `Visa, JCB`.
+- **Added** Added icons `IndentedResult, UserSharedFirst`.
+- **Changed** Changed icon `UserGroup`.
 
 ### @semcore/input
 
@@ -79,6 +208,10 @@
 
 - **BREAK** Removed named imports.
 
+### @semcore/spin
+
+- **BREAK** Removed size `xxs`.
+
 ### @semcore/tab-line
 
 - **BREAK** Removed value "xl" for "size".
@@ -98,22 +231,9 @@
 - **Fixed** Fixed columns width was usually not controlled by `w`, `wMin` and `wMax` props
 - **Fixed** Fixed package lost typings.
 
-### @semcore/flags
+### @semcore/inline-input
 
-- **BREAK** Changed size flags from 14x11 to 16x16.
-
-### @semcore/spin
-
-- **BREAK** Removed size `xxs`.
-
-### @semcore/icon
-
-- **BREAK** Removed icons `UserGroupNo, UserShared`.
-- **Added** Added icon `GoogleCloud`.
-- **Added** Added icon `UserShared`.
-- **Changed** Update pay icons `Visa, JCB`.
-- **Added** Added icons `IndentedResult, UserSharedFirst`.
-- **Changed** Changed icon `UserGroup`.
+- **Changed** Moved all color definitions to themable styles.
 
 ### @semcore/side-panel
 
@@ -123,19 +243,15 @@
 
 - **Added** Added skeleton for Radial Tree chart.
 
-### @semcore/widget-empty
-
-- **Added** Added `coffee`/`heat-map-chart`/`kagi-chart`/`radial-tree-chart`/`suggestion`/`under-construction` illustrations.
-
-### @semcore/inline-input
-
-- **Changed** Moved all color definitions to themable styles.
-
 ### @semcore/utils
 
 - **Fixed** Synced dependencies versions to remove duplicates in the single export package.
 - **Added** Added `light` function for increasing `l` axes in hsl color space of `rgb(a)` and hex colors
 - **Fixed** Removed react warning when accessing "ref" property
+
+### @semcore/widget-empty
+
+- **Added** Added `coffee`/`heat-map-chart`/`kagi-chart`/`radial-tree-chart`/`suggestion`/`under-construction` illustrations.
 
 ## [11.2.0] - 2022-04-26
 
