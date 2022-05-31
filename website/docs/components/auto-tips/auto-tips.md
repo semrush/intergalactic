@@ -73,15 +73,15 @@ While entering the information into the input, the dropdown-menu is filtered by 
 
 After clicking on an option in the dropdown-menu, the selected option is inserted into the input. The dropdown-menu closes.
 
-|                      | Appearance example                               |
-| -------------------- | ------------------------------------------------ |
-| default              | ![default state](static/default.png)             |
-| start typing         | ![typing state](static/start.png)                |
-| loading results      | ![loading state](static/loading-1.png)           |
-| something went wrong | ![error state](static/error.png)                 |
-| results              | ![results state](static/results.png)             |
-| loading results      | ![loading state](static/loading-2.png)           |
-| nothing found        | ![nothing found state](static/nothing-found.png) |
+|                      | Appearance example                                         |
+| -------------------- | ---------------------------------------------------------- |
+| default              | ![default state](static/default.png)                       |
+| start typing         | ![typing state](static/start.png)                          |
+| loading results      | ![loading state](static/loading-1.png)                     |
+| something went wrong | ![error state](static/error.png)                           |
+| results              | ![results state](static/results.png)                       |
+| loading results      | ![loading state](static/loading-2.png)                     |
+| nothing found        | ![nothing found state](static/nothing-found-auto-tips.png) |
 
 ### Adding and deleting a line
 

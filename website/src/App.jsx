@@ -1,9 +1,11 @@
 import React from 'react';
-import styled from 'styled-components';
+import styles from './App.module.css';
 import { BrowserRouter, StaticRouter, Redirect, Route, Switch } from 'react-router-dom';
 import Helmet from 'react-helmet';
 import icon from 'static/favicon/favicon.png';
 import iconRotate from 'static/favicon/favicon-rotate.png';
+import './main.css';
+import './roadmap-page.css';
 
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -14,14 +16,6 @@ import Home from './pages/Home';
 import Page from './pages/Page';
 import NotFound from './pages/NotFound';
 import ContactUs from './pages/ContactUs';
-
-const Body = styled.div`
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  width: 100%;
-  box-sizing: border-box;
-`;
 
 function isWorking() {
   const d = new Date();
@@ -34,7 +28,7 @@ const Router = !globalThis.__ssr
       if (globalThis.__ssr_route === undefined) {
         throw new Error(`On server side globalThis.__ssr_route should be defined`);
       }
-      const location = globalThis.__ssr_route ? '//' : `//${globalThis.__ssr_route}/`;
+      const location = !globalThis.__ssr_route ? `/` : `/${globalThis.__ssr_route}/`;
 
       return (
         <StaticRouter basename={basename} location={location}>
@@ -44,19 +38,6 @@ const Router = !globalThis.__ssr
     };
 
 export function App() {
-  React.useEffect(() => {
-    if (location.origin === 'https://i.semrush.com') {
-      let pathname = location.pathname;
-      if (!pathname.startsWith('/intergalactic')) {
-        pathname = '/intergalactic' + pathname;
-      }
-      if (location.hash) {
-        pathname += location.hash;
-      }
-      location.replace('https://developer.semrush.com' + pathname);
-    }
-  }, []);
-
   return (
     <>
       <Helmet>
@@ -70,7 +51,7 @@ export function App() {
       </Helmet>
       <Router basename={process.env.PUBLIC_PATH}>
         <Tracking />
-        <Body>
+        <div className={styles.body}>
           <Header />
           <Switch>
             <Route exact path="/">
@@ -78,6 +59,9 @@ export function App() {
             </Route>
             <Route exact strict path="/contacts/contact-info/">
               <ContactUs />
+            </Route>
+            <Route exact strict path="/not-found/">
+              <NotFound />
             </Route>
             <Route exact strict path="/:category/:page/:tab?/">
               <Page />
@@ -88,6 +72,7 @@ export function App() {
                   location: { pathname, search, hash },
                 },
               }) => {
+                console.log({ pathname, x: pathname.slice(-1) });
                 return pathname.slice(-1) !== '/' ? (
                   <Redirect to={`${pathname}/${search}${hash}`} />
                 ) : (
@@ -97,7 +82,7 @@ export function App() {
             />
           </Switch>
           <Footer />
-        </Body>
+        </div>
       </Router>
     </>
   );

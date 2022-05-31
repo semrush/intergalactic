@@ -1,0 +1,57 @@
+.textArea {
+  position: fixed;
+  bottom: -2em;
+  left: -2em;
+  width: 2em;
+  height: 2em;
+  padding: 0;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  background: transparent;
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.tooltipStyle.popup-fade-enter,
+.tooltipStyle.popup-fade-appear {
+  opacity: 0;
+  animation-duration: 0.3s;
+  animation-fill-mode: both;
+  animation-timing-function: cubic-bezier(0.55, 0, 0.55, 0.2);
+  animation-play-state: paused;
+}
+.tooltipStyle.popup-fade-enter.popup-fade-enter-active,
+.tooltipStyle.popup-fade-enter.popup-fade-appear-active,
+.tooltipStyle.popup-fade-appear.popup-fade-enter-active,
+.tooltipStyle.popup-fade-appear.popup-fade-appear-active {
+  animation-name: fadeIn;
+  animation-play-state: running;
+}
+
+.tooltipStyle.popup-fade-leave {
+  animation-duration: 0.3s;
+  animation-fill-mode: both;
+  animation-timing-function: cubic-bezier(0.55, 0, 0.55, 0.2);
+  animation-play-state: paused;
+}
+.tooltipStyle.popup-fade-leave.popup-fade-leave-active {
+  animation-name: fadeOut;
+  animation-play-state: running;
+}

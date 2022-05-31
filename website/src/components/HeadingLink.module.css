@@ -1,0 +1,20 @@
+.heading {
+  position: relative;
+}
+.heading:hover svg {
+  opacity: 1;
+}
+.heading svg {
+  cursor: pointer;
+  color: #a6b0b3;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translate(-100%, -50%);
+  opacity: 0;
+  padding: 5px;
+  line-height: 16px;
+}
+.heading svg:hover {
+  color: #333;
+}

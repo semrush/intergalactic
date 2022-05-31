@@ -1,0 +1,136 @@
+.content {
+  display: grid;
+  position: relative;
+  grid-template-rows: 1fr 6fr;
+  grid-template-columns: repeat(2, 1fr);
+  padding: 152px 100px 250px;
+  max-width: 1140px;
+  margin: 0 auto;
+}
+.content h2 {
+  font-size: 50px;
+  line-height: 110%;
+  color: #171a22;
+  margin: 0;
+}
+.content ul {
+  padding: 0 24px;
+}
+.content li {
+  margin-bottom: 8px;
+}
+.content a {
+  color: #1a55ed;
+  text-decoration: none;
+  margin-left: 5px;
+}
+.content a:hover {
+  text-decoration: underline;
+}
+@media (max-width: 1024px) {
+  .content {
+    padding-bottom: 96px;
+  }
+}
+@media (max-width: 767px) {
+  .content {
+    grid-template-rows: 0.5fr 2fr 3fr;
+    grid-template-columns: 1fr;
+    padding: 152px 55px 96px;
+  }
+}
+@media (max-width: 414px) {
+  .content {
+    grid-template-rows: 0fr 2fr 3fr;
+    padding: 136px 35px 96px;
+  }
+  .content h2 {
+    font-size: 30px;
+  }
+}
+
+.header {
+  grid-row: 1;
+  grid-column: 1 / span 3;
+  flex-direction: column;
+  color: #575c66;
+  margin-bottom: 56px;
+  text-align: center;
+}
+@media (max-width: 767px) {
+  .header {
+    grid-column: 1;
+  }
+}
+@media (max-width: 414px) {
+  .header {
+    text-align: left;
+  }
+}
+
+.github {
+  grid-row: 2;
+  grid-column: 1;
+  margin: 0 16px 0;
+}
+@media (max-width: 767px) {
+  .github {
+    margin: 0;
+  }
+}
+
+.email {
+  grid-row: 2;
+  grid-column: 2;
+  margin: 0 16px 0;
+}
+@media (max-width: 767px) {
+  .email {
+    grid-row: 3;
+    grid-column: 1;
+    margin: 0;
+    margin-top: 40px;
+  }
+}
+
+.text {
+  background-color: #f6f7f8;
+  padding: 12px 24px 24px;
+  margin-top: 24px;
+  border-radius: 6px;
+}
+
+.subtitle {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 150%;
+  color: #000000;
+  margin: 12px 0;
+}
+
+.title {
+  font-size: 30px;
+  font-weight: 600;
+  line-height: 120%;
+  color: #000000;
+  margin-bottom: 8px;
+  white-space: nowrap;
+}
+@media (max-width: 767px) {
+  .title {
+    font-size: 24px;
+  }
+}
+
+.postman {
+  position: absolute;
+  width: 480px;
+  right: 0px;
+  bottom: 40px;
+}
+@media (max-width: 1024px) {
+  .postman {
+    display: none;
+  }
+}

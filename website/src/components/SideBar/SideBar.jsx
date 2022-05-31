@@ -1,5 +1,4 @@
 import React from 'react';
-import styled from 'styled-components';
 import Modal from '@semcore/modal';
 import ChevronLeft from '@semcore/icon/ChevronLeft/m';
 import Button from '@semcore/button';
@@ -7,25 +6,7 @@ import Spin from '@semcore/spin';
 // import Interface, { InterfaceHeader } from '../TypescriptDeclaration';
 import { SideBarContext } from './SideBarWrapper';
 import { TypescriptDeclarationView } from '../TypescriptDeclaration';
-
-const ModalWindow = styled.div`
-  width: 50%;
-  height: 100%;
-  color: #171a22;
-  margin-right: initial;
-  background: white;
-  padding: 24px 32px 32px;
-  position: relative;
-  box-sizing: border-box;
-  border-radius: 0;
-  overflow: scroll;
-  @media (max-width: 992px) {
-    width: 60%;
-  }
-  @media (max-width: 767px) {
-    width: 70%;
-  }
-`;
+import styles from './SideBar.module.css';
 
 export default function SideBar() {
   const { typing, visible, setVisible, loading, loadingError, handleHistoryBack, clearHistory } =
@@ -39,7 +20,7 @@ export default function SideBar() {
   return (
     <Modal visible={visible} onClose={topLevelCloseHandler}>
       <Modal.Overlay style={{ padding: 0 }}>
-        <Modal.Window tag={ModalWindow}>
+        <Modal.Window className={styles.modalWindow}>
           {loading && <Spin />}
           {loadingError && <Spin />}
 

@@ -71,7 +71,7 @@ Show [SpinContainer](/components/spin-container/) over the dropdown content in t
 
 Show an ["empty" error state](/components/widget-empty/) with the option to update the filter, if an error occurs during the request.
 
-![filter nothing found state](static/nothing-found.png)
+![filter nothing found state](static/nothing-found-advanced-filters.png)
 
 @## Interaction
 

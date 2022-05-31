@@ -5,6 +5,9 @@ import { routes } from '@navigation';
 export const useRouting = () => {
   const params = useParams();
   let route = `${params.category}/${params.page}`;
+  if (globalThis.__ssr_route) {
+    route = globalThis.__ssr_route;
+  }
   if (params.tab) route = `${route}/${params.tab}`;
   const { category, page } = params;
 
@@ -20,7 +23,7 @@ export const usePageData = (route) => {
     const developerError = new Error(`Unable to match route "${route}" to any navigation node`);
     const displayError = new Error('404');
     /* eslint-disable no-console */
-    console.error({ route, routes });
+    console.error({ route, routes: Object.keys(routes) });
     console.error(developerError);
     /* eslint-enable no-console */
 

@@ -40,7 +40,7 @@ The component is meant for imitating physical dragging of objects, so the follow
 
 |                      | Appearance example                              | Styles                                            |
 | -------------------- | ----------------------------------------------- | ------------------------------------------------- |
-| For light background | ![dragging example](static/dragging.png)        | `box-shadow: 0 2px 5px 0 rgba(gray-80, .16);`     |
+| For light background | ![dragging example](static/dragging-dnd.png)    | `box-shadow: 0 2px 5px 0 rgba(gray-80, .16);`     |
 | For dark background  | ![dragging example](static/dragging-invert.png) | `box-shadow: 0 2px 5px 0 rgba(138,142,155, .25);` |
 
 @## Area for dragging
@@ -69,18 +69,18 @@ Upon dragging the object to the area where the element can be dragged, it should
 
 |                      | Appearance example                                                                           | Styles                                 |
 | -------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------- |
-| For light background | ![dragging hover](static/dragging.png) ![dragging hover](static/drag-card.png)               | `border: 1px dashed rgba(--gray-200);` |
+| For light background | ![dragging hover](static/dragging-dnd.png) ![dragging hover](static/drag-card.png)           | `border: 1px dashed rgba(--gray-200);` |
 | For dark background  | ![dragging hover](static/dragging-invert.png) ![dragging hover](static/drag-card-invert.png) | `border: 1px dashed rgba(white, .3);`  |
 
 @## Components which may have drag and drop
 
-| Components                                | Appearance example                                                                                  |
-| ----------------------------------------- | --------------------------------------------------------------------------------------------------- |
-| [Accordion](/components/accordion/)       | ![accordion with drag & drop](static/drag-accordion.png)                                            |
-| [Card](/components/card/)                 | ![card with drag & drop](static/draggable-card.png) ![card with drag & drop](static/drag-card.png)  |
-| [Table](/table-group/table/)              | ![table with drag & drop](static/drag-table.png) ![table with drag & drop](static/drag-table2.png)  |
-| [TabPanel](/components/tab-panel/)        | ![tabpanel with drag & drop](static/drag-tabpanel.png)                                              |
-| [Select/Multiselect](/components/select/) | ![select with drag & drop](static/drag-default.png) ![select with drag & drop](static/dragging.png) |
+| Components                                | Appearance example                                                                                      |
+| ----------------------------------------- | ------------------------------------------------------------------------------------------------------- |
+| [Accordion](/components/accordion/)       | ![accordion with drag & drop](static/drag-accordion.png)                                                |
+| [Card](/components/card/)                 | ![card with drag & drop](static/draggable-card.png) ![card with drag & drop](static/drag-card.png)      |
+| [Table](/table-group/table/)              | ![table with drag & drop](static/drag-table.png) ![table with drag & drop](static/drag-table2.png)      |
+| [TabPanel](/components/tab-panel/)        | ![tabpanel with drag & drop](static/drag-tabpanel.png)                                                  |
+| [Select/Multiselect](/components/select/) | ![select with drag & drop](static/drag-default.png) ![select with drag & drop](static/dragging-dnd.png) |
 
 @## Interaction
 
@@ -96,7 +96,7 @@ Upon dragging the axis is not blocked, the element may be dragged to any part of
 | -------- | --------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | default  | ![default](static/drag-default.png)                             | In default status the `MoveAlt` icon / pattern with dots is not shown.                                                                                                                                                                                                                                        |
 | hover    | ![hover](static/drag-hover.png) ![hover](static/drag-table.png) | Upon hover over the element the `MoveAlt` icon / pattern with dots of the corresponding size (depending on the size of the component where the icon should be placed) is shown. If the element has hover, the element is highlighted. Upon `hover` over the `MoveAlt` icon the cursor is changed into `move`. |
-| dragging | ![dragging](static/dragging.png)                                | The dragged object loses the hover status and obtains the `box-shadow: 0 2px 5px 0 rgba(gray-80, .16);`                                                                                                                                                                                                       |
+| dragging | ![dragging](static/dragging-dnd.png)                            | The dragged object loses the hover status and obtains the `box-shadow: 0 2px 5px 0 rgba(gray-80, .16);`                                                                                                                                                                                                       |
 | no-drop  | ![no-drop](static/no-drop.png)                                  | If the drop zone under the dragged object is unavailable, the cursor is changed into `not-allowed`.                                                                                                                                                                                                           |
 
 ### States of droppable area

@@ -14,11 +14,11 @@ import emailCSS from '!!raw-loader!@semcore/email/lib/core/index.css';
 
 const tokenHandlers = {
   text: ({ html }) => {
-    return <FormatText dangerouslySetInnerHTML={{ __html: html }} />;
+    return <FormatText html={html} />;
   },
-  heading: ({ html, level, id, route }) => {
+  heading: ({ html, level, id }) => {
     return (
-      <HeadingLink level={level} id={id} route={route}>
+      <HeadingLink level={level} id={id}>
         <span dangerouslySetInnerHTML={{ __html: html }} />
       </HeadingLink>
     );

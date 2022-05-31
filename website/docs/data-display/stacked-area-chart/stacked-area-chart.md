@@ -53,7 +53,7 @@ Here you will find the states for some specific cases. All other "empty states" 
 
 For this case enable the display of dots on the chart by default.
 
-![one-dot](static/one-dot.png)
+![one-dot](static/one-dot-stacked-area-chart.png)
 
 ### Styles
 
@@ -66,7 +66,7 @@ For this case enable the display of dots on the chart by default.
 
 **Example 1** is for the case when there is data for two non-near dates.
 
-![two-dots](static/two-dots1.png)
+![two-dots](static/two-dots1-stacked-area-chart.png)
 
 **Example 2** is when there is data for one after another dates.
 
@@ -78,7 +78,7 @@ If all values on the chart are zero, then show the trend line on the zero axis.
 
 > **Zero is also data. 0 ≠ `n/a`.**
 
-![null-data](static/null.png)
+![null-data](static/null-stacked-area-chart.png)
 
 @## No data
 
