@@ -16,13 +16,13 @@ const outputFile = util.promisify(fs.outputFile);
 const readFile = util.promisify(fs.readFile);
 
 const rootDir = process.cwd();
-const {
-  template,
-  templateDTS = template,
-  transformer,
-  babelConfig: defaultBabelConfig,
-} = config(lib, otherArgs);
+const { template, templateDTS = template, transformer } = config(lib, otherArgs);
 const converter = transformer();
+
+const BABEL_ENV_EXTENSIONS_MAP = {
+  commonjs: '.js',
+  es6: '.mjs',
+};
 
 function getDescriptionExternalIcons(iconPath, outLib) {
   const name = path.basename(iconPath, '.svg');
@@ -52,55 +52,53 @@ function getDescriptionIcons(iconPath, outLib) {
 }
 
 async function svgToReactComponent(iconPath, name, group) {
-  try {
-    const svg = await readFile(iconPath, 'utf-8');
+  const svg = await readFile(iconPath, 'utf-8');
 
-    const $ = cheerio.load(svg, { xmlMode: true });
-    const $svg = $('svg');
-    if ($svg.attr('viewBox') === undefined) {
-      throw new Error(`Icon "${iconPath}" hasn't viewBox attribute`);
-    }
-    $svg.find('path').attr('shape-rendering', 'geometricPrecision');
-    const iconSvg = converter
-      ? converter.convert(`<svg>${$svg.html()}</svg>`)
-      : `<svg>${$svg.html()}</svg>`;
-    const viewBox = $svg.attr('viewBox');
-    const width = $svg.attr('width');
-    const height = $svg.attr('height');
-
-    const source = template({
-      NAME: name,
-      SOURCE_PATH: iconSvg.replace(/<(\/)?svg>(\n)?/g, ''),
-      VIEW_BOX: viewBox,
-      WIDTH: width,
-      HEIGHT: height,
-      DATA_NAME: name,
-      DATA_GROUP: group.toLowerCase(),
-    });
-
-    return source;
-  } catch (err) {
-    throw new Error(err);
+  const $ = cheerio.load(svg, { xmlMode: true });
+  const $svg = $('svg');
+  if ($svg.attr('viewBox') === undefined) {
+    throw new Error(`Icon "${iconPath}" hasn't viewBox attribute`);
   }
+  $svg.find('path').attr('shape-rendering', 'geometricPrecision');
+  const iconSvg = converter
+    ? converter.convert(`<svg>${$svg.html()}</svg>`)
+    : `<svg>${$svg.html()}</svg>`;
+  const viewBox = $svg.attr('viewBox');
+  const width = $svg.attr('width');
+  const height = $svg.attr('height');
+
+  const source = template({
+    NAME: name,
+    SOURCE_PATH: iconSvg.replace(/<(\/)?svg>(\n)?/g, ''),
+    VIEW_BOX: viewBox,
+    WIDTH: width,
+    HEIGHT: height,
+    DATA_NAME: name,
+    DATA_GROUP: group.toLowerCase(),
+  });
+
+  return source;
 }
 
-const generateIcons = (
-  sourceLib,
-  outLib,
-  getDescriptionIcons,
-  babelConfig = defaultBabelConfig,
-) => {
+const generateIcons = (sourceLib, outLib, getDescriptionIcons, babelEnv) => {
   return new Promise((resolve, reject) => {
     glob(`${rootDir}/${sourceLib}/**/*svg`, async (err, icons) => {
       if (err) reject(error);
       const results = icons.map(async (iconPath) => {
         const { name, location, group } = getDescriptionIcons(iconPath, outLib);
         const source = await svgToReactComponent(iconPath, name, group);
-        const { code } = await babel.transformAsync(source, babelConfig);
-
-        outputFile(path.join(rootDir, location), code);
+        const { code } = await babel.transformAsync(source, {
+          filename: iconPath,
+          envName: babelEnv,
+          presets: ['@semcore/babel-preset-ui'],
+        });
+        const outPathParse = path.parse(path.join(rootDir, location));
+        outputFile(
+          path.format({ ...outPathParse, base: '', ext: BABEL_ENV_EXTENSIONS_MAP[babelEnv] }),
+          code,
+        );
         // create d.ts files
-        outputFile(path.join(rootDir, location.replace('.js', '.d.ts')), templateDTS(name));
+        outputFile(path.format({ ...outPathParse, base: '', ext: '.d.ts' }), templateDTS(name));
         return { name, location, group };
       });
 
@@ -123,16 +121,32 @@ function getDescriptionPayIcons(iconPath, outLib) {
 }
 
 module.exports = function () {
-  Promise.all([
-    generateIcons(`${sourceFolder}/color`, `${outputFolder}/color`, getDescriptionIcons),
-    generateIcons(
-      `${sourceFolder}/external`,
-      `${outputFolder}/external`,
-      getDescriptionExternalIcons,
-    ),
-    generateIcons(`${sourceFolder}/pay`, `${outputFolder}/pay`, getDescriptionPayIcons),
-    generateIcons(`${sourceFolder}/icon`, outputFolder, getDescriptionIcons),
-  ])
+  const icons = ['commonjs', 'es6'].reduce(
+    (icons, babelEnv) =>
+      icons.concat([
+        generateIcons(
+          `${sourceFolder}/color`,
+          `${outputFolder}/color`,
+          getDescriptionIcons,
+          babelEnv,
+        ),
+        generateIcons(
+          `${sourceFolder}/external`,
+          `${outputFolder}/external`,
+          getDescriptionExternalIcons,
+          babelEnv,
+        ),
+        generateIcons(
+          `${sourceFolder}/pay`,
+          `${outputFolder}/pay`,
+          getDescriptionPayIcons,
+          babelEnv,
+        ),
+        generateIcons(`${sourceFolder}/icon`, outputFolder, getDescriptionIcons, babelEnv),
+      ]),
+    [],
+  );
+  Promise.all(icons)
     .then(() => {
       console.log('Done! Wrote all icon files.');
     })

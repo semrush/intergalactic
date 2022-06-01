@@ -116,11 +116,6 @@ const getConfig = (framework = 'react', args) => {
           },
         };
       },
-      babelConfig: {
-        filename: '[name]',
-        envName: args['babel-env'],
-        presets: ['@semcore/babel-preset-ui'],
-      },
     },
   };
 
