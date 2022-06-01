@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.27.0] - 2022-06-01
+
+### Changed
+
+- Added files with the extension .mjs
+
 ## [2.26.1] - 2022-05-31
 
 ### Changed

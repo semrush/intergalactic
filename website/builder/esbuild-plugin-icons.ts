@@ -20,7 +20,7 @@ export const esbuildPluginIcons = (): Plugin => ({
     }));
     build.onLoad({ filter: /^@icons/, namespace: 'icons' }, async ({ path }) => {
       const fullPath = path.endsWith('/lib') ? resolvePath(iconsDir, 'lib') : resolvePath(iconsDir);
-      const allIcons = await glob('**/index.js', {
+      const allIcons = await glob('**/index.mjs', {
         cwd: fullPath,
         ignore: ['lib', 'src', 'node_modules', 'cjs', 'es6'],
       });
@@ -39,7 +39,6 @@ export const esbuildPluginIcons = (): Plugin => ({
 
       const imports = iconPaths.map((path, index) => `import icon_${index} from "./${path}"`);
       const exports = iconNames.map((path, index) => `["${path}"]: icon_${index}`);
-
       const contents =
         imports.join('\n') +
         '\nconst importsMap = {' +
