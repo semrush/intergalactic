@@ -6,5 +6,9 @@
   "module": "index.js",
   "sideEffects": false,
   "author": "Roman Lysov <r.lysov@semrush.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "transform": "icon-transform-svg",
+    "build": "npm run transform -- --configFile=transform-svg.config.js"
+  }
 }

@@ -45,5 +45,6 @@ Icon[
 # Icon
 semcore/icon/**/*.js
 !semcore/icon/src/**/*.js
+!semcore/icon/**/*.config.js
 semcore/icon/**/*.d.ts
 !semcore/icon/src/**/*.d.ts

@@ -2,7 +2,7 @@ const path = require('path');
 const fs = require('fs-extra');
 const glob = require('glob');
 const cheerio = require('cheerio');
-const { lib, sourceFolder = 'svg', outputFolder = '.' } = require('mri')(process.argv.slice(2));
+const { configFile } = require('mri')(process.argv.slice(2));
 const util = require('util');
 const config = require('./config');
 const babel = require('@babel/core');
@@ -11,12 +11,19 @@ const outputFile = util.promisify(fs.outputFile);
 const readFile = util.promisify(fs.readFile);
 
 const rootDir = process.cwd();
+let customConfig = () => {};
+
+if (configFile) {
+  customConfig = require(path.resolve(rootDir, configFile));
+}
+
 const {
   template,
   templateDTS = template,
   transformer,
   babelConfig: defaultBabelConfig,
-} = lib ? config(lib, outputFolder === 'lib') : config('react', outputFolder === 'lib');
+  tasks,
+} = Object.assign(config(), customConfig());
 const converter = transformer();
 
 function getDescriptionExternalIcons(iconPath, outLib) {
@@ -59,18 +66,13 @@ async function svgToReactComponent(iconPath, name, group) {
     const iconSvg = converter
       ? converter.convert(`<svg>${$svg.html()}</svg>`)
       : `<svg>${$svg.html()}</svg>`;
-    const viewBox = $svg.attr('viewBox');
-    const width = $svg.attr('width');
-    const height = $svg.attr('height');
 
     const source = template({
-      NAME: name,
-      SOURCE_PATH: iconSvg.replace(/<(\/)?svg>(\n)?/g, ''),
-      VIEW_BOX: viewBox,
-      WIDTH: width,
-      HEIGHT: height,
-      DATA_NAME: name,
-      DATA_GROUP: group.toLowerCase(),
+      ...$svg[0].attribs,
+      sourcePath: iconSvg.replace(/<(\/)?svg>(\n)?/g, ''),
+      dataName: name,
+      dataGroup: group.toLowerCase(),
+      name,
     });
 
     return source;
@@ -106,7 +108,6 @@ const generateIcons = (
 };
 
 function getDescriptionPayIcons(iconPath, outLib) {
-  if (sourceFolder === 'svg-new') return getDescriptionIcons(iconPath, outLib);
   const name = path.basename(iconPath, '.svg').replace(/('|\s)/g, '');
   const location = `${outLib}/${name}/index.js`;
 
@@ -118,16 +119,14 @@ function getDescriptionPayIcons(iconPath, outLib) {
 }
 
 module.exports = function () {
-  Promise.all([
-    generateIcons(`${sourceFolder}/color`, `${outputFolder}/color`, getDescriptionIcons),
-    generateIcons(
-      `${sourceFolder}/external`,
-      `${outputFolder}/external`,
+  Promise.all(
+    tasks({
+      generateIcons,
+      getDescriptionIcons,
       getDescriptionExternalIcons,
-    ),
-    generateIcons(`${sourceFolder}/pay`, `${outputFolder}/pay`, getDescriptionPayIcons),
-    generateIcons(`${sourceFolder}/icon`, outputFolder, getDescriptionIcons),
-  ])
+      getDescriptionPayIcons,
+    }),
+  )
     .then(() => {
       console.log('Done! Wrote all icon files.');
     })

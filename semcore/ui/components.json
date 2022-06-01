@@ -31,6 +31,7 @@
     "@semcore/fullscreen-modal",
     "@semcore/grid",
     "@semcore/icon",
+    "@semcore/illustration",
     "@semcore/inline-input",
     "@semcore/inline-edit",
     "@semcore/input",
