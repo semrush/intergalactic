@@ -9,7 +9,7 @@ import Wizard from '@semcore/wizard';
 <Wizard />;
 ```
 
-@interface IWizardProps
+@typescript IWizardProps
 
 @## Wizard.Sidebar
 
@@ -18,7 +18,7 @@ import Wizard from '@semcore/wizard';
 <Wizard.Sidebar />;
 ```
 
-@interface IWizardSidebarProps
+@typescript IWizardSidebarProps
 
 @## Wizard.Step
 
@@ -27,7 +27,7 @@ import Wizard from '@semcore/wizard';
 <Wizard.Step />;
 ```
 
-@interface IWizardStepProps
+@typescript IWizardStepProps
 
 @## Wizard.Stepper
 
@@ -36,4 +36,4 @@ import Wizard from '@semcore/wizard';
 <Wizard.Stepper />;
 ```
 
-@interface IWizardStepperProps
+@typescript IWizardStepperProps

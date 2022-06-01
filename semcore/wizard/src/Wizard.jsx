@@ -1,18 +1,15 @@
 import React from 'react';
 import createComponent, { Component, Root, sstyled, styled } from '@semcore/core';
-
-import style from './style/wizard.shadow.css';
 import { Box } from '@semcore/flex-box';
 import { Text } from '@semcore/typography';
-import ArrowLeft from '@semcore/icon/ArrowLeft/m';
-import ArrowRight from '@semcore/icon/ArrowRight/m';
 import CheckM from '@semcore/icon/Check/m';
+import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
+
+import style from './style/wizard.shadow.css';
 
 class WizardRoot extends Component {
   static displayName = 'Wizard';
-
   static style = style;
-
   static defaultProps = {
     currentStep: 1,
   };
@@ -24,11 +21,16 @@ class WizardRoot extends Component {
     };
   }
 
-  getStepperProps() {
+  getStepperProps(props) {
     const { currentStep, steps } = this.asProps;
+    const isActive = props.value === currentStep;
+    const isDisabled = steps.find((s) => s.value === props.value).disabled;
+
     return {
       currentStep,
       steps,
+      'aria-disabled': isDisabled,
+      'aria-current': isActive,
     };
   }
 
@@ -49,7 +51,7 @@ function Sidebar(props) {
   const SSidebar = Root;
   const SSidebarHeader = Text;
   return sstyled(styles)(
-    <SSidebar render={Box} {...props}>
+    <SSidebar render={Box} {...props} role="menu">
       <SSidebarHeader tag="div">{title}</SSidebarHeader>
       <Children />
     </SSidebar>,
@@ -73,6 +75,7 @@ function Stepper(props) {
       active={value === currentStep}
       disabled={steps.find((s) => s.value === value).disabled}
       render={Box}
+      role="menuitem"
       {...props}
     >
       <SStepNumber>{value < currentStep ? <CheckM /> : value}</SStepNumber>
@@ -83,6 +86,8 @@ function Stepper(props) {
     </SStepper>,
   );
 }
+
+Stepper.enhance = [keyboardFocusEnhance()];
 
 function Content(props) {
   const { Children, styles } = props;

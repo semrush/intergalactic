@@ -2,7 +2,7 @@ import React, { ComponentProps } from 'react';
 import { CProps, ReturnEl } from '@semcore/core';
 import { Box, IBoxProps } from '@semcore/flex-box';
 
-export type StepValue = Array<{ value: number; title: string; disabled?: boolean }>;
+export type StepValue = Array<{ value?: number; title?: string; disabled?: boolean }>;
 
 export interface IWizardProps {
   /**
@@ -13,10 +13,6 @@ export interface IWizardProps {
    * Active step value
    */
   currentStep: number;
-  /**
-   * Step value
-   */
-  value: number;
 }
 
 export interface IWizardSidebarProps extends IBoxProps {

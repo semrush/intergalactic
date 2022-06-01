@@ -51,11 +51,11 @@ const previousStep = (value) => {
 };
 
 export default function () {
-  const [activeStep, setActiveStep] = React.useState(1);
+  const [activeStep, setActiveStep] = useState(1);
   const hasNext = nextStep(activeStep);
   const hasPrev = previousStep(activeStep);
 
-  const handleStep = (step) => () => {
+  const handleStep = (step) => {
     setActiveStep(step);
   };
 
@@ -63,9 +63,25 @@ export default function () {
     <>
       <Wizard currentStep={activeStep} steps={steps}>
         <Wizard.Sidebar title="Header">
-          <Wizard.Stepper value={1} onClick={handleStep(1)} />
+          <Wizard.Stepper
+            value={1}
+            onClick={() => handleStep(1)}
+            onKeyPress={(e) => {
+              if (e.key === 'Enter') {
+                handleStep(1);
+              }
+            }}
+          />
           <Wizard.Stepper value={2} />
-          <Wizard.Stepper value={3} onClick={handleStep(3)} />
+          <Wizard.Stepper
+            value={3}
+            onClick={() => handleStep(3)}
+            onKeyPress={(e) => {
+              if (e.key === 'Enter') {
+                handleStep(3);
+              }
+            }}
+          />
         </Wizard.Sidebar>
         <Wizard.Content>
           <Wizard.Step tag={Step1} value={1} />

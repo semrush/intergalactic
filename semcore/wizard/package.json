@@ -21,5 +21,8 @@
   },
   "jest": {
     "preset": "@semcore/jest-preset-ui"
+  },
+  "devDependencies": {
+    "@semcore/jest-preset-ui": "1.0.0"
   }
 }
