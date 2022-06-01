@@ -1,5 +1,6 @@
 ---
 title: InlineInput
+fileSource: inline-input
 tabName: Design
 ---
 
