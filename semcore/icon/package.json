@@ -11,7 +11,7 @@
   "scripts": {
     "parsing": "icon-transform-svg parsing",
     "transform": "icon-transform-svg",
-    "build": "build --source=js && npm run transform -- --configFile=transform-svg.config.js && npm run transform -- --configFile=transform-svg-legacy.config.js",
+    "build": "build --source=js && npm run transform -- --configFile=transform-svg-new.config.js && npm run transform -- --configFile=transform-svg.config.js",
     "test": "jest",
     "prebuild": "ls -d */ | egrep -v \"__tests__|src|svg|svg-new\" | xargs rm -rf"
   },

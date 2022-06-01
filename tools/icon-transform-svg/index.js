@@ -4,8 +4,8 @@ const glob = require('glob');
 const cheerio = require('cheerio');
 const { configFile } = require('mri')(process.argv.slice(2));
 const util = require('util');
-const babel = require('@babel/core');
 const config = require('./config');
+const babel = require('@babel/core');
 
 const outputFile = util.promisify(fs.outputFile);
 const readFile = util.promisify(fs.readFile);
@@ -23,7 +23,7 @@ const {
   transformer,
   babelConfig: defaultBabelConfig,
   tasks,
-} = { ...config(), ...customConfig() };
+} = Object.assign(config(), customConfig());
 const converter = transformer();
 
 function getDescriptionExternalIcons(iconPath, outLib) {
@@ -54,25 +54,31 @@ function getDescriptionIcons(iconPath, outLib) {
 }
 
 async function svgToReactComponent(iconPath, name, group) {
-  const svg = await readFile(iconPath, 'utf-8');
+  try {
+    const svg = await readFile(iconPath, 'utf-8');
 
-  const $ = cheerio.load(svg, { xmlMode: true });
-  const $svg = $('svg');
-  if ($svg.attr('viewBox') === undefined) {
-    throw new Error(`Icon "${iconPath}" hasn't viewBox attribute`);
+    const $ = cheerio.load(svg, { xmlMode: true });
+    const $svg = $('svg');
+    if ($svg.attr('viewBox') === undefined) {
+      throw new Error(`Icon "${iconPath}" hasn't viewBox attribute`);
+    }
+    $svg.find('path').attr('shape-rendering', 'geometricPrecision');
+    const iconSvg = converter
+      ? converter.convert(`<svg>${$svg.html()}</svg>`)
+      : `<svg>${$svg.html()}</svg>`;
+
+    const source = template({
+      ...$svg[0].attribs,
+      sourcePath: iconSvg.replace(/<(\/)?svg>(\n)?/g, ''),
+      dataName: name,
+      dataGroup: group.toLowerCase(),
+      name,
+    });
+
+    return source;
+  } catch (err) {
+    throw new Error(err);
   }
-  $svg.find('path').attr('shape-rendering', 'geometricPrecision');
-  const iconSvg = converter
-    ? converter.convert(`<svg>${$svg.html()}</svg>`)
-    : `<svg>${$svg.html()}</svg>`;
-
-  return template({
-    ...$svg[0].attribs,
-    sourcePath: iconSvg.replace(/<(\/)?svg>(\n)?/g, ''),
-    dataName: name,
-    dataGroup: group.toLowerCase(),
-    name,
-  });
 }
 
 const generateIcons = (
