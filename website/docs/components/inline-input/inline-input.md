@@ -30,7 +30,14 @@ You can set height and font size for the InlineInput component. So the component
 
 ![focus state](static/focus.png)
 
-`align-items: center; vertical-align: middle; line-height: 1.1; padding: 0 4px; border-bottom: 1px solid var(--gray-200); background-color: white;`
+```
+align-items: center;
+vertical-align: middle;
+line-height: 1.1;
+padding: 0 4px;
+border-bottom: 1px solid var(--gray-200);
+background-color: white;
+```
 
 ![placeholder](static/normal-placeholder.png)
 
