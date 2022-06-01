@@ -4,7 +4,7 @@ import InlineEdit from '@semcore/inline-edit';
 import EditM from '@semcore/icon/Edit/m';
 
 const Example = () => {
-  const [text, setText] = React.useState('sex');
+  const [text, setText] = React.useState('Martin Eden');
   const [editable, setEditable] = React.useState(false);
 
   return (
