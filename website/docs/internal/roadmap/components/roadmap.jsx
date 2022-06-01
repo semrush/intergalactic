@@ -205,9 +205,9 @@ const components = {
   'Q2 2022': [
     { text: 'Wizard', size: { ui: '1/3', kit: '5/9' } },
     { text: 'Card', size: { ui: '1/7' } },
-    { text: 'ColorPicker', size: { ui: '5/7', kit: '7/9' } },
-    { text: 'Lollipop chart', size: { ui: '7/11', kit: '11/13' } },
-    { text: 'Limit message', size: { ui: '7/11', kit: '11/13' } },
+    { text: 'ColorPicker', size: { ui: '9/11', kit: '11/13' } },
+    { text: 'Lollipop chart', size: { ui: '9/11', kit: '11/13' } },
+    { text: 'Limit message', size: { ui: '11/13' } },
     { text: 'Guides renewal', size: { ui: '1/13' } },
   ],
 };
