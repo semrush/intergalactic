@@ -110,4 +110,4 @@ export default copyComponent(Pie, {
   render() {
     return <Pie {...this.props} />;
   },
-}) as React.FC<IPieProps>;
+}) as React.FC<IRechartsPieProps>;
