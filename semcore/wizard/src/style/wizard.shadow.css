@@ -30,6 +30,7 @@ SStepper {
   font-size: 14px;
   border-radius: 6px;
   padding: 8px 12px;
+  cursor: pointer;
   position: relative;
   &:hover {
     background: var(--violet-700);
@@ -40,6 +41,7 @@ SStepper {
   &:disabled,
   &[disabled] {
     opacity: 0.3;
+    cursor: default;
   }
 }
 
@@ -61,9 +63,9 @@ SStepper SStepNumber:hover + SStepDescription {
   background: var(--violet-700);
   border-radius: 6px;
   white-space: nowrap;
-  padding: 8px 12px;
+  padding: 8px 12px 8px 0;
   top: 0;
-  left: 20px;
+  left: 34px;
 }
 
 SStepper[active] SStepNumber:hover + SStepDescription {

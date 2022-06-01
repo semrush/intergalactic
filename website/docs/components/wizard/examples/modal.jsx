@@ -31,7 +31,7 @@ function Step1() {
 }
 const steps = [
   { value: 1, title: 'Step 1', disabled: false },
-  { value: 2, title: 'Step 2', disabled: true },
+  { value: 2, title: 'Step 2', disabled: false },
   { value: 3, title: 'Step 3', disabled: false },
 ];
 
@@ -52,14 +52,14 @@ const previousStep = (value) => {
 };
 
 export default function () {
-  const [activeStep, setActiveStep] = React.useState(1);
+  const [activeStep, setActiveStep] = useState(1);
   const hasNext = nextStep(activeStep);
   const hasPrev = previousStep(activeStep);
 
   const [visible, changeVisible] = useState(false);
   const handleOpen = () => changeVisible(true);
   const handleClose = () => changeVisible(false);
-  const handleStep = (step) => () => {
+  const handleStep = (step) => {
     setActiveStep(step);
   };
 
@@ -78,10 +78,10 @@ export default function () {
         onClose={handleClose}
         tag={Modal}
       >
-        <Wizard.Sidebar title="Header">
-          <Wizard.Stepper value={1} onClick={handleStep(1)} />
-          <Wizard.Stepper value={2} onClick={handleStep(2)} />
-          <Wizard.Stepper value={3} onClick={handleStep(3)} />
+        <Wizard.Sidebar title="Header" style={{ borderRadius: '6px 0 0 6px' }}>
+          <Wizard.Stepper value={1} onClick={() => handleStep(1)} />
+          <Wizard.Stepper value={2} onClick={() => handleStep(2)} />
+          <Wizard.Stepper value={3} onClick={() => handleStep(3)} />
         </Wizard.Sidebar>
         <Wizard.Content>
           <Wizard.Step tag={Step1} value={1} />
