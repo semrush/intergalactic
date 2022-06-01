@@ -41,6 +41,12 @@ const getConfig = () => {
       
       export default createBaseComponent(${obj.name})
       `,
+
+    templateDTS: () => `
+        import { Box } from '@semcore/flex-box';
+        declare const _default: typeof Box;
+        export default _default;
+      `,
   };
 };
 

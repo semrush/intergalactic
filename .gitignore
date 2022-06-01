@@ -48,3 +48,8 @@ semcore/icon/**/*.js
 !semcore/icon/**/*.config.js
 semcore/icon/**/*.d.ts
 !semcore/icon/src/**/*.d.ts
+
+# Illustration
+semcore/illustration/**/*.js
+!semcore/illustration/**/*.config.js
+semcore/illustration/**/*.d.ts
