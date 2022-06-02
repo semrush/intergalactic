@@ -90,8 +90,8 @@ for (const route of allRoutes) {
 }
 
 const htmlBase = await fs.readFile('src/public/index.html', 'utf-8');
-const generateCodeEntry = (navigationNode, pageData) => {
-  if (!pageData) return '';
+const preprocessArticleData = (navigationNode, pageData) => {
+  if (!pageData) return {};
   const { route } = navigationNode;
   const dirname = resolvePath('docs', resolveDirname(navigationNode.filePath));
   const articleImagesPaths: string[] = [];
@@ -127,28 +127,31 @@ const generateCodeEntry = (navigationNode, pageData) => {
   const articleImagesPathsSerialized = articleImagesPaths.join('\n');
   const preloadedPageData = `(function (){ ${articleImagesPathsSerialized}; return ${serializedArticle} })()`;
 
-  globalThis.__ssr_page_data = eval(preloadedPageData);
-
-  return `
-    __ssr_preloaded_page_route="${route}";
-    __ssr_preloaded_page_data=(${preloadedPageData});
-  `;
+  return {
+    codeEntry: `__ssr_preloaded_page_route="${route}";
+     __ssr_preloaded_page_data=(${preloadedPageData});`,
+    preloadPageData: eval(preloadedPageData),
+  };
 };
 const renderPage = async (route, navigationNode?) => {
   let codeEntry = '';
-
-  globalThis.__ssr_route = route;
+  let preloadPageData: {} | null = null;
 
   if (navigationNode) {
     const articlePath = resolvePath(docsDir, navigationNode.filePath);
     const articleData = await buildArticle(docsDir, articlePath, navigationNode.filePath);
-
-    codeEntry = generateCodeEntry(navigationNode, articleData);
+    const preprocessedArticleData = preprocessArticleData(navigationNode, articleData);
+    codeEntry = preprocessedArticleData.codeEntry;
+    preloadPageData = preprocessedArticleData.preloadPageData;
   }
 
+  globalThis.__ssr_route = route;
+  globalThis.__ssr_page_data = preloadPageData;
   const contents = globalThis.renderApp();
+
   const html = htmlBase
-    .replace('<!--%ssr-html-entry%-->', contents)
+    .replace('<!--%ssr-html-entry%-->', contents.html)
+    .replace('<!--%ssr-head-html-entry%-->', contents.semcoreCss)
     .replace('/*--%ssr-js-entry%--*/', codeEntry)
     .replace('/main-render.css', process.env.PUBLIC_PATH + 'main-hydrate.css')
     .replace('/main-render.js', process.env.PUBLIC_PATH + 'main-hydrate.js')
@@ -158,13 +161,14 @@ const renderPage = async (route, navigationNode?) => {
 };
 
 let nodesProgress = 1;
+const contentfulNodes = nodesList.filter((node) => node.hasContent);
 await Promise.all(
-  nodesList.map(async (navigationNode) => {
+  contentfulNodes.map(async (navigationNode) => {
     const filePath = resolvePath(distDir, navigationNode.route, 'index.html');
     const html = await renderPage(navigationNode.route, navigationNode);
     await fs.writeFile(filePath, html);
 
-    console.info(`SSR common routes: ${nodesProgress++}/${nodesList.length}`);
+    console.info(`SSR common routes: ${nodesProgress++}/${contentfulNodes.length}`);
   }),
 );
 let specialRoutesProgress = 1;

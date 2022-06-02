@@ -45,11 +45,11 @@
   }
 }
 
-.mobileSelect {
+.mobileSelect.mobileSelect {
   display: none;
 }
 @media (max-width: 767px) {
-  .mobileSelect {
+  .mobileSelect.mobileSelect {
     display: block;
     position: fixed;
     z-index: 998;

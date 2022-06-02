@@ -47,7 +47,7 @@ const useLegacyPageHashes = (oldHashToNewHash) => {
 
 const PageView = ({ route, page }) => {
   useEffect(() => {
-    // if (!window.location.hash) window.scrollTo(0, 0);
+    if (!window.location.hash) window.scrollTo(0, 0);
   }, []);
 
   const tabs = [];
@@ -62,12 +62,12 @@ const PageView = ({ route, page }) => {
   const currentHeading = window.location.hash.substring(1);
   const headingOptions = getHeadingOptions(page.headings);
 
-  const title = routes[route].title ?? routeParents[route].title;
+  const title = page.title ?? routeParents[route].title;
   const category = routeParents[routeParents[route].route].title ?? routeParents[route].title;
 
   const htmlTitle = routeParents[route].title
-    ? `${routes[route].title} | ${routeParents[route].title}`
-    : `${routes[route].title}`;
+    ? `${page.title} | ${routeParents[route].title}`
+    : `${page.title}`;
 
   useLegacyPageHashes(page.legacyHeaderHashes);
 
