@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.0.9] - 2022-06-03
+
+### Fixed
+
+- Remove 4px vertical paddings.
+
 ## [3.0.8] - 2022-06-02
 
 ### Changed
