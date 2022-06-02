@@ -49,7 +49,7 @@ export function App() {
         <title>Loading...</title>
         <meta name="description" content="Intergalactic – Design System" />
       </Helmet>
-      <Router basename={process.env.PUBLIC_PATH}>
+      <Router basename={process.env.PUBLIC_PATH.slice(0, -1)}>
         <Tracking />
         <div className={styles.body}>
           <Header />
