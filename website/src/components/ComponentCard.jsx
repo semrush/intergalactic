@@ -17,7 +17,7 @@ function ComponentCard({ image, text, disabled, href, type }) {
     <div className={styles.card} disabled={disabled}>
       <Link className={styles.linkUi} to={href} />
       <img src={url} alt="image" />
-      <Text class={styles.title}>{text}</Text>
+      <Text className={styles.title}>{text}</Text>
     </div>
   );
 }

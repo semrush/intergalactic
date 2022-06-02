@@ -253,7 +253,7 @@
 }
 
 .formatText td,
-th {
+.formatText th {
   vertical-align: top;
   text-align: left;
   border-bottom: 1px solid #d1d4db;
@@ -261,17 +261,16 @@ th {
 }
 
 .formatText th:first-child,
-td:first-child {
+.formatText td:first-child {
   padding-left: 0;
 }
 
 .formatText th:last-child,
-td:last-child {
+.formatText td:last-child {
   padding-right: 0;
 }
 
-.formatText tt,
-code {
+.formatText tt code {
   background-color: hsla(220, 8%, 37%, 0.1);
   border-radius: 4px;
   font-family: Consolas, 'Roboto Mono', 'Liberation Mono', Menlo, Courier, monospace;

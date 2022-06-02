@@ -94,17 +94,22 @@ const tokenHandlers = {
   },
 };
 
-export const RenderMarkdown = ({ tokens }) => {
-  return tokens.map((token, index) => {
+export const RenderMarkdown = ({ tokens, onRender }) => {
+  const tokensLoad = [];
+  const content = tokens.map((token, index) => {
     const Renderer = tokenHandlers[token.type];
     if (Renderer === undefined) {
       throw new Error(`Unknown @tag: ${token.type}`);
     }
-
+    if (token.load) {
+      tokensLoad.push(token.load);
+    }
     return (
       <React.Fragment key={`${token.type}_${index}`}>
-        <Renderer {...token} />
+        <Renderer {...token} onLoad />
       </React.Fragment>
     );
   });
+  Promise.all(tokensLoad).then(onRender);
+  return content;
 };

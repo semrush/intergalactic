@@ -7,11 +7,12 @@ import { SideBarContext } from './SideBar/SideBarWrapper';
 import styles from './TypescriptDeclaration.module.css';
 
 const PropertyName = ({ name, parentName, children }) => {
+  const id = `${parentName}.${name}`;
   const handleClick = () => {
-    window.location.hash = name;
+    window.location.hash = id;
   };
   return (
-    <div className={styles.propertyName} id={`${parentName}.${name}`}>
+    <div className={styles.propertyName} id={id}>
       <AnchorIcon className={styles.propertyNameAnchor} onClick={handleClick} />
       {children}
     </div>

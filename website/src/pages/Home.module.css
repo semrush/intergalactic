@@ -313,6 +313,7 @@
   cursor: pointer;
   text-decoration: none;
   max-width: 235px;
+  align-self: center;
 }
 .linkStyled:hover {
   text-decoration: underline;
@@ -338,7 +339,6 @@
   font-size: 16px;
 }
 .tableOverlay a {
-  margin-bottom: 8px;
   white-space: nowrap;
 }
 
