@@ -16,6 +16,7 @@ import { Box } from '@semcore/flex-box';
 import SideBarNavigation from '../components/SideBarNavigation';
 import ComponentCard from '../components/ComponentCard';
 import { Text } from '@semcore/typography';
+import { Flex } from '@semcore/flex-box';
 import { navigationTree } from '@navigation';
 import staticFiles from '@static';
 import { usePageData } from '../components/routing';
@@ -115,7 +116,7 @@ export const getImageName = (title) => {
 const getTooltip = (title) => {
   const url = staticFiles[`tooltip/${getImageName(title)}.svg`];
 
-  return <img src={url} />;
+  return url ? <img src={url} /> : undefined;
 };
 
 const getComponents = (titles) => {
@@ -131,7 +132,7 @@ const getComponents = (titles) => {
     const pic = getTooltip(child.elem.title);
     return (
       <Tooltip styles={stylesTooltip} placement="left" w={'fit-content'} key={child.elem.title}>
-        <Tooltip.Trigger className="component">
+        <Tooltip.Trigger tag={Flex} alignContent="center" className="component">
           <Link className={styles.linkStyled} to={`/${child.elem.route}/`}>
             {child.elem.title}
           </Link>
