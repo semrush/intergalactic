@@ -9,7 +9,11 @@ const cssVariable = Object.fromEntries(
     .split('\n')
     .map((line) => line.trim())
     .filter((line) => line.startsWith('--') && line.endsWith(';'))
-    .map((line) => line.split(': ')),
+    .map((line) => {
+      const [name, value] = line.split(': ');
+      // remove ";"
+      return [name, value.slice(0, -1)];
+    }),
 );
 
 const Color = ({ name, ...other }) => {
@@ -19,7 +23,13 @@ const Color = ({ name, ...other }) => {
   return (
     <Copy
       text={varValue ? `${name}: ${value}` : value}
-      textTooltip={`Click to copy "${varValue ? `${name}: ${value}` : value}"`}
+      textTooltip={
+        <span>
+          Click to copy:
+          <br />
+          {varValue ? `${name}: "${value}"` : value}
+        </span>
+      }
     >
       <span
         className={styles.paintedElement}
