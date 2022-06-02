@@ -59,7 +59,7 @@ const PageView = ({ route, page }) => {
     tabs.push(routeParents[route], ...routeParents[route].children);
   }
 
-  const currentHeading = window.location.hash.substring(1);
+  const currentHeading = typeof window !== 'undefined' ? window.location.hash.substring(1) : '';
   const headingOptions = getHeadingOptions(page.headings);
 
   const title = page.title ?? routeParents[route].title;
