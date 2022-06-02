@@ -1,7 +1,7 @@
 import glob from 'fast-glob';
 import { readFile } from 'fs/promises';
 import { resolve as resolvePath } from 'path';
-import { parseMarkdownMeta } from './utils';
+import { parseMarkdownMeta, removeMarkdownMeta } from './utils';
 
 const serializeRoutes = (routes: { [route: string]: number[] }) => {
   const serializedRoutes = Object.entries(routes).map(
@@ -28,10 +28,20 @@ export const buildNavigation = async (docsDir: string) => {
       .map((page) => (dir ? `${dir}/${page}` : page));
     return pages;
   });
+  const hasContentMap = fileContentsList.map((contents) => {
+    const lines = removeMarkdownMeta(contents).split('\n');
+
+    return lines.filter((line) => line.length > 0 && !line.startsWith('@page ')).length > 0;
+  });
   const navigationMap = Object.fromEntries(
     filesList.map((path, index) => [
       path,
-      { meta: fileMetasList[index], subPages: fileSubPagesList[index], dir: dirsList[index] },
+      {
+        meta: fileMetasList[index],
+        subPages: fileSubPagesList[index],
+        dir: dirsList[index],
+        hasContent: hasContentMap[index],
+      },
     ]),
   );
   const navigationRoutes: { [route: string]: number[] } = {};
@@ -46,9 +56,10 @@ export const buildNavigation = async (docsDir: string) => {
       const dirIndexFile = dir + '/' + fileName;
       const siblingFile = dir + '.md';
       const filePath = navigationMap[dirIndexFile] ? dirIndexFile : siblingFile;
-      const { meta, subPages } = navigationMap[filePath];
+      const { meta, subPages, hasContent } = navigationMap[filePath];
       const navigationNode = {
         route: dir,
+        hasContent,
         metadata: {
           ...meta,
         },

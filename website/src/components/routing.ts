@@ -5,11 +5,12 @@ import { routes } from '@navigation';
 export const useRouting = () => {
   const params = useParams();
   let route = `${params.category}/${params.page}`;
+  if (params.tab) route = `${route}/${params.tab}`;
+  const { category, page } = params;
+
   if (globalThis.__ssr_route) {
     route = globalThis.__ssr_route;
   }
-  if (params.tab) route = `${route}/${params.tab}`;
-  const { category, page } = params;
 
   return {
     route,
