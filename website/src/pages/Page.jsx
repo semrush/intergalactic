@@ -25,11 +25,11 @@ import { useRouting, usePageData } from '../components/routing';
 
 const getHeadingOptions = (headings) => {
   return headings.map((option) => ({
-    value: option.route,
-    label: option.title,
+    value: option.id,
+    label: option.html,
     children: (
       <Text mx={5} color={'#171a22'}>
-        {option.title}
+        {option.html}
       </Text>
     ),
   }));
@@ -59,6 +59,7 @@ const PageView = ({ route, page }) => {
     tabs.push(routeParents[route], ...routeParents[route].children);
   }
 
+  const currentHeading = window.location.hash.substring(1);
   const headingOptions = getHeadingOptions(page.headings);
 
   const title = routes[route].title ?? routeParents[route].title;
@@ -79,6 +80,7 @@ const PageView = ({ route, page }) => {
         <Select
           className={styles.mobileSelect}
           options={headingOptions}
+          {...(currentHeading ? { defaultValue: currentHeading } : {})}
           onChange={(value) => {
             scroller.scrollTo(value, {
               smooth: true,
