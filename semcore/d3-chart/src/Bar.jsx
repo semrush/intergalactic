@@ -17,6 +17,7 @@ class BarRoot extends Component {
     offset: [0, 0],
     duration: 500,
     r: 2,
+    hMin: 4,
   };
 
   getBackgroundProps(props, index) {
@@ -58,15 +59,15 @@ class BarRoot extends Component {
       duration,
       uid,
       r,
+      hMin,
       width: widthProps,
     } = this.asProps;
 
     const [xScale, yScale] = scale;
-    const barY = yScale(Math.max(d[y0] ?? 0, d[y])) + offset[1];
+    const barY = yScale(Math.max(d[y0] ?? 0, d[y])) + offset[1] - (Object.is(d[y], 0) ? hMin : 0);
     const barX = xScale(d[x]) + offset[0];
-    const height = Math.abs(
-      yScale(d[y]) - Math.min(yScale(yScale.domain()[0]), yScale(d[y0] ?? 0)),
-    );
+    const height =
+      Math.abs(yScale(d[y]) - Math.min(yScale(yScale.domain()[0]), yScale(d[y0] ?? 0))) || hMin;
     const width = widthProps || getBandwidth(xScale);
     const dSvg = getRect({
       x: barX,
@@ -74,7 +75,7 @@ class BarRoot extends Component {
       width,
       height,
       radius: Array.isArray(r) ? r[i] : r,
-      position: d[y] > 0 ? 'top' : 'bottom',
+      position: d[y] > 0 || Object.is(d[y], 0) ? 'top' : 'bottom',
     });
 
     return sstyled(styles)(

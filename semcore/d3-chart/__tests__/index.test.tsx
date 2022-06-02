@@ -368,6 +368,38 @@ describe('Bar chart', () => {
     expect(await snapshot(component)).toMatchImageSnapshot();
   });
 
+  test('should Bar support minimal height for empty value', async () => {
+    const component = (
+      <Plot
+        data={data.map((item) => {
+          item.stack1 = 0;
+          item.stack2 = 0;
+          item.stack3 = -0;
+          return item;
+        })}
+        scale={[xScale, yScale]}
+        width={width}
+        height={height}
+      >
+        <YAxis>
+          <YAxis.Ticks />
+          <YAxis.Grid />
+        </YAxis>
+        <XAxis>
+          <XAxis.Ticks />
+        </XAxis>
+        <GroupBar x="time">
+          <GroupBar.Bar y="stack1" duration={0} />
+          <GroupBar.Bar y="stack2" hMin={10} duration={0} color="orange" />
+          <GroupBar.Bar y="stack3" duration={0} color="green" />
+        </GroupBar>
+        <XAxis position={0} />
+      </Plot>
+    );
+
+    expect(await snapshot(component)).toMatchImageSnapshot();
+  });
+
   test('should not cut content on right with left margin', async () => {
     const width = 500;
     const height = 300;

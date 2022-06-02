@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.2.0] - unrelease
+
+### Changed
+
+- Added property minimal height `hMin` for Bar (`<Bar hMin={...}/>`)
+
 ## [2.1.0] - 2022-06-01
 
 ### Changed
