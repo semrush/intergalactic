@@ -19,6 +19,10 @@ export interface IBarProps extends IContext {
    * @default 2
    */
   r?: number | number[];
+  /** Minimal height
+   * @default 4
+   */
+  hMin?: number;
 }
 
 export interface IBarContext {
