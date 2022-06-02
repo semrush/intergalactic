@@ -10,6 +10,4 @@ title: Table
 @page table-secondary
 @page table-controls
 
-<!-- @page table-filters -->
-
 @page table-states

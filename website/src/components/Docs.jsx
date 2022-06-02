@@ -100,6 +100,7 @@ export const Docs = ({ tokens, tabs }) => {
                   to={`/${route}`}
                   value={`/${route}/`}
                   onMouseEnter={() => prefetch(route)}
+                  type="tab"
                 >
                   <Text>{tab.metadata.tabName || tab.title}</Text>
                 </TabLine.Item>

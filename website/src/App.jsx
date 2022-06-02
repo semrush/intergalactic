@@ -72,7 +72,6 @@ export function App() {
                   location: { pathname, search, hash },
                 },
               }) => {
-                console.log({ pathname, x: pathname.slice(-1) });
                 return pathname.slice(-1) !== '/' ? (
                   <Redirect to={`${pathname}/${search}${hash}`} />
                 ) : (
