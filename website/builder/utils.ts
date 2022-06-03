@@ -101,7 +101,27 @@ export const parseMarkdown = (markdownText: string) => {
 };
 
 export const markdownTokenToHtml = (token: MarkdownToken | MarkdownRoot) => {
-  const hast = toHast(token, { allowDangerousHtml: true });
+  const hast = toHast(token, {
+    allowDangerousHtml: true,
+    handlers: {
+      link: (h, node) => {
+        const text = node.title ?? node.children[0]?.value;
+        const props = { href: node.url, title: text } as {
+          href: string;
+          title: string;
+          target?: '_blank';
+          rel?: 'noopener noreferrer';
+        };
+
+        if (!node.url.startsWith('/')) {
+          props.target = '_blank';
+          props.rel = 'noopener noreferrer';
+        }
+
+        return h(node, 'a', props, [{ type: 'text', value: text }]);
+      },
+    },
+  });
   const html = toHtml(hast, { allowDangerousHtml: true });
 
   return html;
