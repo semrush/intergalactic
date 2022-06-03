@@ -12,6 +12,7 @@ import ImageFromModal from './ImageFromModal';
 import { css } from '@semcore/core';
 import { routes } from '@navigation';
 import styles from './Docs.module.css';
+import scrollToHash from '../utils/scrollToHash';
 
 const tabLineStyles = css`
   STabLineItem {
@@ -44,15 +45,7 @@ function useScrollHash(options = {}) {
     }, []);
   });
   return () => {
-    readyStateComplete.then(() => {
-      if (window.location.hash) {
-        scroller.scrollTo(window.location.hash.replace('#', ''), {
-          smooth: 'easeInOutQuint',
-          offset: -150,
-          ...options,
-        });
-      }
-    });
+    readyStateComplete.then(() => scrollToHash());
   };
 }
 

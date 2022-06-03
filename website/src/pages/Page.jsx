@@ -22,6 +22,7 @@ import {
   navigationTree,
 } from '@navigation';
 import { useRouting, usePageData } from '../components/routing';
+import scrollToHash from '../utils/scrollToHash';
 
 const getHeadingOptions = (headings) => {
   return headings.map((option) => ({
@@ -40,7 +41,7 @@ const useLegacyPageHashes = (oldHashToNewHash) => {
     let hash = String(window.location.hash);
     if (hash.startsWith('#')) hash = hash.substring(1);
     if (oldHashToNewHash[hash]) {
-      window.location.hash = oldHashToNewHash[hash];
+      scrollToHash(oldHashToNewHash[hash]);
     }
   }, [oldHashToNewHash]);
 };

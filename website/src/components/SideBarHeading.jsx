@@ -2,13 +2,16 @@ import React from 'react';
 import { Link, animateScroll } from 'react-scroll';
 import ArrowUpM from '@semcore/icon/ArrowUp/m';
 import trottle from '@semcore/utils/lib/rafTrottle';
+import { useLocation } from 'react-router-dom';
 import cx from 'classnames';
 import styles from './SideBarHeading.module.css';
 
 function SideBarHeading({ headings }) {
-  const [activeId, setActiveId] = React.useState(headings.length ? headings[0].id : undefined);
+  const { pathname } = useLocation();
+  const [activeId, setActiveId] = React.useState();
 
   React.useEffect(() => {
+    setActiveId(headings.length ? headings[0].id : undefined);
     const links = headings.map((heading) => document.querySelector(`#${heading.id}`)).reverse();
     const handleScroll = trottle(() => {
       const scrollCenter =
@@ -19,7 +22,7 @@ function SideBarHeading({ headings }) {
     });
     document.addEventListener('scroll', handleScroll);
     return () => document.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [pathname, headings]);
 
   return (
     <>
