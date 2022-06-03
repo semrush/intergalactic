@@ -46,10 +46,6 @@ const useLegacyPageHashes = (oldHashToNewHash) => {
 };
 
 const PageView = ({ route, page }) => {
-  useEffect(() => {
-    if (!window.location.hash) window.scrollTo(0, 0);
-  }, []);
-
   const tabs = [];
 
   const routeDepth = route.split('/').length;

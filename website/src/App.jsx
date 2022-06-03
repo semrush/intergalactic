@@ -11,6 +11,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 
 import Tracking from './components/Tracking';
+import ScrollToTop from './components/ScrollToTop';
 
 import Home from './pages/Home';
 import Page from './pages/Page';
@@ -50,6 +51,7 @@ export function App() {
         <meta name="description" content="Intergalactic – Design System" />
       </Helmet>
       <Router basename={process.env.PUBLIC_PATH.slice(0, -1)}>
+        <ScrollToTop />
         <Tracking />
         <div className={styles.body}>
           <Header />
