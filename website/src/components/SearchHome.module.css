@@ -131,7 +131,7 @@
   align-items: end;
 }
 
-.highlightMark {
+.highlightMark mark {
   background: rgba(255, 232, 77, 0.5);
 }
 
