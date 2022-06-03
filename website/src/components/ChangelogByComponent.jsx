@@ -4,10 +4,11 @@ import Tag from '@semcore/tag';
 import { Link } from 'react-router-dom';
 import { Text } from '@semcore/typography';
 import { getLabel } from './Changelog';
+import formatTextStyles from './FormatText.module.css';
 
 const ChangelogByComponent = ({ blocks }) => {
   return blocks.map(({ title, components }) => (
-    <React.Fragment key={title}>
+    <span key={title} className={formatTextStyles.formatText}>
       <Text tag="h3">
         <Text>{title}</Text>
       </Text>
@@ -26,7 +27,7 @@ const ChangelogByComponent = ({ blocks }) => {
           </ul>
         </div>
       ))}
-    </React.Fragment>
+    </span>
   ));
   let section;
   return {
