@@ -93,5 +93,3 @@ const styles = sstyled.css`
 
 const Demo = () => <Button styles={styles} myCustomProp="red" />;
 ```
-
-@example sellerly
