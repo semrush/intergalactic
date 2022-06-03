@@ -50,6 +50,7 @@ await esbuild.build({
   outdir: outputDir,
   splitting: false,
   treeShaking: true,
+  minify: true,
 });
 
 const outputAssetsBySrcPath = {};
