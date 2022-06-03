@@ -9,6 +9,7 @@ import {
   dirname as resolveDirname,
 } from 'path';
 import { buildArticle, serializeArticle } from './build-article/build-article';
+import { createHash } from 'crypto';
 
 const fsExists = async (path: string) => {
   try {
@@ -43,6 +44,7 @@ const buildResults = await esbuild.build({
   entryPoints: ['./src/main-hydrate.jsx'],
   outdir: outputDir,
   metafile: true,
+  minify: true,
 });
 await esbuild.build({
   ...websiteEsbuildConfig,
@@ -52,6 +54,13 @@ await esbuild.build({
   treeShaking: true,
   minify: true,
 });
+
+const jsMain = await fs.readFile(resolvePath(outputDir, 'main-hydrate.js'), 'utf-8');
+const cssMain = await fs.readFile(resolvePath(outputDir, 'main-hydrate.css'), 'utf-8');
+const jsFileHash = createHash('md5').update(jsMain).digest('hex').substring(0, 8);
+const cssFileHash = createHash('md5').update(cssMain).digest('hex').substring(0, 8);
+await fs.writeFile(resolvePath(outputDir, `main-${jsFileHash}.js`), jsMain);
+await fs.writeFile(resolvePath(outputDir, `main-${cssFileHash}.css`), cssMain);
 
 const outputAssetsBySrcPath = {};
 const outputs = buildResults.metafile.outputs;
@@ -154,8 +163,8 @@ const renderPage = async (route, navigationNode?) => {
     .replace('<!--%ssr-html-entry%-->', contents.html)
     .replace('<!--%ssr-head-html-entry%-->', contents.semcoreCss)
     .replace('/*--%ssr-js-entry%--*/', codeEntry)
-    .replace('/main-render.css', process.env.PUBLIC_PATH + 'main-hydrate.css')
-    .replace('/main-render.js', process.env.PUBLIC_PATH + 'main-hydrate.js')
+    .replace('/main-render.css', process.env.PUBLIC_PATH + `main-${cssFileHash}.css`)
+    .replace('/main-render.js', process.env.PUBLIC_PATH + `main-${jsFileHash}.js`)
     .replace('/social.png', process.env.PUBLIC_PATH + 'social.png');
 
   return html;
