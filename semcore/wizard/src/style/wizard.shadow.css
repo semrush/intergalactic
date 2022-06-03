@@ -10,7 +10,7 @@ SSidebar {
   background: var(--violet-600);
   color: #fff;
   font-weight: 700;
-  font-size: 16px;
+  font-size: var(--fs-300);
   padding: 40px 8px 34px;
   width: 220px;
   @media (max-width: 1060px) {
@@ -27,8 +27,8 @@ SSidebarHeader {
 
 SStepper {
   display: flex;
-  font-size: 14px;
-  border-radius: 6px;
+  font-size: var(--fs-200);
+  border-radius: var(--rounded-m);
   padding: 8px 12px;
   cursor: pointer;
   position: relative;
@@ -40,15 +40,14 @@ SStepper {
   }
   &:disabled,
   &[disabled] {
-    opacity: 0.3;
+    opacity: var(--disabled-opacity);
     cursor: default;
   }
 }
 
 SStepNumber {
   display: inline-block;
-  width: 20px;
-  margin-right: 2px;
+  width: 24px;
 }
 
 SStepDescription {
@@ -61,7 +60,7 @@ SStepper SStepNumber:hover + SStepDescription {
   display: flex;
   position: absolute;
   background: var(--violet-700);
-  border-radius: 6px;
+  border-radius: var(--rounded-m);
   white-space: nowrap;
   padding: 8px 12px 8px 0;
   top: 0;
@@ -77,5 +76,5 @@ SContent {
   flex-direction: column;
   justify-content: space-between;
   padding: 40px;
-  width: calc(100% - 316px);
+  width: 100%;
 }
