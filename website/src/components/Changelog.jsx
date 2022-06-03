@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './Changelog.module.css';
+import formatTextStyles from './FormatText.module.css';
 import Tag from '@semcore/tag';
 import { Text } from '@semcore/typography';
 
@@ -39,7 +40,7 @@ export const getLabel = (type) => {
 
 const Changelog = ({ blocks }) => {
   return blocks.map(({ title, changes }) => (
-    <React.Fragment key={title}>
+    <span key={title} className={formatTextStyles.formatText}>
       <Text tag="h3">
         <Text>{title}</Text>
       </Text>
@@ -50,7 +51,7 @@ const Changelog = ({ blocks }) => {
           </li>
         ))}
       </ul>
-    </React.Fragment>
+    </span>
   ));
 };
 
