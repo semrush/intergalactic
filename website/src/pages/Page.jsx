@@ -133,10 +133,22 @@ const PageView = ({ route, page }) => {
   );
 };
 
+let lastPage = null;
+
 const DynamicPage = ({ route }) => {
   const { loading, error, page } = usePageData(route);
+  React.useEffect(() => {
+    if (!route || !page) return;
 
-  if (loading) return <LoadingPage />;
+    lastPage = { route, page };
+  }, [route, page]);
+
+  if (loading) {
+    if (lastPage) {
+      return <PageView route={lastPage.route} page={lastPage.page} />;
+    }
+    return <LoadingPage />;
+  }
   if (error) return <ErrorView title={`Oh no! ${error.message}`} />;
 
   return <PageView route={route} page={page} />;
@@ -155,6 +167,7 @@ const Page = () => {
   }
   if (globalThis.__ssr_preloaded_page_route === route) {
     const page = globalThis.__ssr_preloaded_page_data;
+    lastPage = { route, page };
 
     return <PageView route={route} page={page} />;
   }
