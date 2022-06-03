@@ -5,11 +5,12 @@ import AnchorIcon from '@semcore/icon/Link/m';
 import WarningIcon from '@semcore/icon/Warning/m';
 import { SideBarContext } from './SideBar/SideBarWrapper';
 import styles from './TypescriptDeclaration.module.css';
+import scrollToHash from '../utils/scrollToHash';
 
 const PropertyName = ({ name, parentName, children }) => {
   const id = `${parentName}.${name}`;
-  const handleClick = () => {
-    window.location.hash = id;
+  const handleClick = (e) => {
+    scrollToHash(id);
   };
   return (
     <div className={styles.propertyName} id={id}>

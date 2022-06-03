@@ -1,7 +1,8 @@
 import React from 'react';
-import styles from './HeadingLink.module.css';
-
 import LinkM from '@semcore/icon/Link/m';
+import scrollToHash from '../utils/scrollToHash';
+
+import styles from './HeadingLink.module.css';
 
 function HeadingLink({ level, id, children }) {
   return React.createElement(`h${level}`, {
@@ -11,7 +12,7 @@ function HeadingLink({ level, id, children }) {
     style: { fontWeight: level > 3 ? 'normal' : 500 },
     children: (
       <>
-        <LinkM onClick={() => (window.location.hash = `#${id}`)} />
+        <LinkM onClick={() => scrollToHash(id)} />
         {children}
       </>
     ),
