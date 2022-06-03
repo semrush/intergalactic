@@ -28,7 +28,82 @@ const searchClient = {
   },
 };
 
+const showList = (hits, pages, content) => {
+  const options = [];
+  if (pages.length) {
+    options.push(
+      <div className={cx(styles.optionHeader, styles.option)} key={'_page_'}>
+        Pages
+      </div>,
+    );
+    options.push(
+      ...pages.map((item) => (
+        <Select.Option
+          className={styles.option}
+          key={item.objectID}
+          value={item.slug}
+          disabled={item.disabled}
+        >
+          <div className={styles.optionText}>
+            <Highlight
+              attribute="title"
+              hit={item}
+              className={styles.highlightMark}
+              tagName="mark"
+            />
+          </div>
+          <div className={styles.optionPlace}>{item.category}</div>
+        </Select.Option>
+      )),
+    );
+  }
+  if (pages.length && content.length) {
+    options.push(<Divider key={'_divider_'} />);
+  }
+  if (content.length) {
+    options.push(
+      <div className={cx(styles.optionHeader, styles.option)} key={'_content_'}>
+        Content
+      </div>,
+    );
+    options.push(
+      ...content.map((item) => (
+        <Select.Option
+          className={styles.option}
+          key={item.objectID}
+          value={item.slug}
+          disabled={item.disabled}
+        >
+          <div className={styles.optionText}>
+            <Highlight
+              attribute="title"
+              hit={item}
+              className={styles.highlightMark}
+              tagName="mark"
+            />
+          </div>
+          <div className={styles.optionPlace}>
+            {item.category}
+            <ArrowRight className={styles.arrowRightIcon} />
+            {item.pageTitle}
+          </div>
+        </Select.Option>
+      )),
+    );
+  }
+  if (!hits.length)
+    options.push(
+      <div className={styles.notFound} key={'_nothing_'}>
+        <img className={styles.notFoundImg} src={observatory} alt="observatory" />
+        <div className={styles.notFoundText}>We found something… it's nothing</div>
+      </div>,
+    );
+
+  return options;
+};
+
 const Search = ({ currentRefinement, refine, hits, history, searchResults, ...other }) => {
+  console.log(hits);
   const pages = hits.filter((el) => !el.heading);
   const content = hits.filter((el) => el.heading);
   const location = useLocation();
@@ -36,80 +111,6 @@ const Search = ({ currentRefinement, refine, hits, history, searchResults, ...ot
   useEffect(() => {
     refine('');
   }, [location]);
-
-  const showList = (hits, pages, content) => {
-    const options = [];
-    if (pages.length) {
-      options.push(
-        <div className={cx(styles.optionHeader, styles.option)} key={1}>
-          Pages
-        </div>,
-      );
-      options.push(
-        ...pages.map((item) => (
-          <Select.Option
-            className={styles.option}
-            key={item.objectID}
-            value={item.slug}
-            disabled={item.disabled}
-          >
-            <div className={styles.optionText}>
-              <Highlight
-                attribute="title"
-                hit={item}
-                className={styles.highlightMark}
-                tagName="mark"
-              />
-            </div>
-            <div className={styles.optionPlace}>{item.category}</div>
-          </Select.Option>
-        )),
-      );
-    }
-    if (pages.length && content.length) {
-      options.push(<Divider key={2} />);
-    }
-    if (content.length) {
-      options.push(
-        <div className={cx(styles.optionHeader, styles.option)} key={3}>
-          Content
-        </div>,
-      );
-      options.push(
-        ...content.map((item) => (
-          <Select.Option
-            className={styles.option}
-            key={item.objectID}
-            value={item.slug}
-            disabled={item.disabled}
-          >
-            <div className={styles.optionText}>
-              <Highlight
-                attribute="title"
-                hit={item}
-                className={styles.highlightMark}
-                tagName="mark"
-              />
-            </div>
-            <div className={styles.optionPlace}>
-              {item.category}
-              <ArrowRight className={styles.arrowRightIcon} />
-              {item.pageTitle}
-            </div>
-          </Select.Option>
-        )),
-      );
-    }
-    if (!hits.length)
-      options.push(
-        <div className={styles.notFound} key={4}>
-          <img className={styles.notFoundImg} src={observatory} alt="observatory" />
-          <div className={styles.notFoundText}>We found something… it's nothing</div>
-        </div>,
-      );
-
-    return options;
-  };
 
   return (
     <Select
