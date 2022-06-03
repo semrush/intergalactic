@@ -2,13 +2,11 @@ import React, { ComponentProps } from 'react';
 import { CProps, ReturnEl } from '@semcore/core';
 import { Box, IBoxProps } from '@semcore/flex-box';
 
-export type StepValue = Array<{ value?: number; title?: string; disabled?: boolean }>;
-
 export interface IWizardProps {
   /**
    * Steps array
    */
-  steps: StepOption[];
+  steps: Array<{ value: number; title?: string; disabled?: boolean }>;
   /**
    * Active step value
    */
@@ -16,14 +14,23 @@ export interface IWizardProps {
 }
 
 export interface IWizardSidebarProps extends IBoxProps {
+  /**
+   * Sidebar title
+   */
   title?: React.ReactNode;
 }
 
 export interface IWizardStepProps extends IBoxProps {
+  /**
+   * Step number
+   */
   value: number;
 }
 
 export interface IWizardStepperProps extends IBoxProps {
+  /**
+   * Stepper number
+   */
   value: number;
 }
 

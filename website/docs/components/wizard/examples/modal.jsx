@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import Wizard from '@semcore/wizard';
 import Button from '@semcore/button';
 import { Text } from '@semcore/typography';
@@ -59,9 +59,9 @@ export default function () {
   const [visible, changeVisible] = useState(false);
   const handleOpen = () => changeVisible(true);
   const handleClose = () => changeVisible(false);
-  const handleStep = (step) => {
-    setActiveStep(step);
-  };
+  const handleStep = useCallback((step) => setActiveStep(step), []);
+  const handlePrevStep = useCallback((step) => setActiveStep(previousStep(step).value), []);
+  const handleNextStep = useCallback((step) => setActiveStep(nextStep(step).value), []);
 
   return (
     <>
@@ -87,22 +87,16 @@ export default function () {
           <Wizard.Step tag={Step1} value={1} />
           <Wizard.Step value={2}>Second page</Wizard.Step>
           <Wizard.Step value={3}>
-            <>
-              <Text size={400} fontWeight={500}>
-                Final page
-              </Text>
-              <Text tag="p" mt={2}>
-                Congratulations on passing all the steps
-              </Text>
-            </>
+            <Text size={400} fontWeight={500}>
+              Final page
+            </Text>
+            <Text tag="p" mt={2}>
+              Congratulations on passing all the steps
+            </Text>
           </Wizard.Step>
           <Flex justifyContent="space-between" w="100%">
             {hasPrev && (
-              <Button
-                use="tertiary"
-                mt={5}
-                onClick={() => setActiveStep((activeStep) => previousStep(activeStep).value)}
-              >
+              <Button use="tertiary" mt={5} onClick={() => handlePrevStep(activeStep)}>
                 <Button.Addon>
                   <ArrowLeft />
                 </Button.Addon>
@@ -110,11 +104,7 @@ export default function () {
               </Button>
             )}
             {hasNext && (
-              <Button
-                use="tertiary"
-                mt={5}
-                onClick={() => setActiveStep((activeStep) => nextStep(activeStep).value)}
-              >
+              <Button use="tertiary" mt={5} onClick={() => handleNextStep(activeStep)}>
                 <Button.Text>{hasNext.title}</Button.Text>
                 <Button.Addon>
                   <ArrowRight />
