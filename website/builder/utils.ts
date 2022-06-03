@@ -9,16 +9,56 @@ import { toHast } from 'mdast-util-to-hast';
 import { toHtml } from 'hast-util-to-html';
 import { createHash } from 'crypto';
 
+const cyrillicFallback = {
+  а: 'a',
+  б: 'b',
+  в: 'v',
+  г: 'g',
+  д: 'd',
+  е: 'e',
+  ё: 'yo',
+  ж: 'zh',
+  з: 'z',
+  и: 'i',
+  й: 'i',
+  к: 'k',
+  л: 'l',
+  м: 'm',
+  н: 'n',
+  о: 'o',
+  п: 'p',
+  р: 'r',
+  с: 's',
+  т: 't',
+  у: 'u',
+  ф: 'f',
+  х: 'kh',
+  ц: 'ts',
+  ч: 'ch',
+  ш: 'sh',
+  щ: 'shch',
+  ъ: "'",
+  ы: 'y',
+  ь: "'",
+  э: 'e',
+  ю: 'yu',
+  я: 'ya',
+};
+
 export const generateLegacyHeadingId = (headingText: string) =>
   'a' + createHash('md5').update(headingText).digest('hex').slice(0, 5);
 export const generateHeadingId = (headingText: string) =>
   headingText
     .toLowerCase()
     .trim()
+    .split('')
+    .map((char) => cyrillicFallback[char] ?? char)
+    .join('')
     .replace(/^\d+/g, '_')
     .replace(/\W+/g, '_')
-    .replace(/^_+/g, '')
-    .replace(/_+$/g, '_');
+    .replace(/_+/g, '_')
+    .replace(/^_/g, '')
+    .replace(/_$/g, '');
 
 export const fsExists = async (path: string) => {
   try {
