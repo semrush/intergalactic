@@ -152,6 +152,8 @@ For basic controls use L size.
 
 @## Interaction
 
+There you can see default styles for stepper button.
+
 | State    | Appearance example                                                                                | Styles                                                                                                                                         |
 | -------- | ------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
 | normal   | ![wizard stepper state](static/normal.png)                                                        | `background-color: var(--violet-600); border-radius: 6px;`                                                                                     |
