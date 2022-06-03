@@ -62,7 +62,7 @@ const PageView = ({ route, page }) => {
   const currentHeading = typeof window !== 'undefined' ? window.location.hash.substring(1) : '';
   const headingOptions = getHeadingOptions(page.headings);
 
-  const title = page.title ?? routeParents[route].title;
+  const title = routeDepth === 3 ? routeParents[route].title : page.title;
   const category = routeParents[routeParents[route].route].title ?? routeParents[route].title;
 
   const htmlTitle = routeParents[route].title
