@@ -28,6 +28,6 @@ That's all! You are awesome ❤️
 
 💚 Green — these components are from the [@semcore library](https://github.com/semrush/intergalactic). You are awesome!
 
-🌝 Yellow — these components are from the [previous old library](https://ui-kit.semrush.net/docs/components/getting-started). They should be updated.
+🌝 Yellow — these components are from the previous old library. They should be updated.
 
 💔 Red — these components are from the oldest library and are outdated for a several years. They should be updated.
