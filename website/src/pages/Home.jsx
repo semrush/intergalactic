@@ -11,12 +11,11 @@ import layout from '../static/illustration/layout.svg';
 import principles from '../static/illustration/principles.svg';
 import style from '../static/illustration/style.svg';
 import ArrowXS from '@semcore/icon/ArrowRight/m';
-import { Box } from '@semcore/flex-box';
+import { Box, Flex } from '@semcore/flex-box';
 // import updatesButton from '../static/illustration/search-for-updates.svg';
 import SideBarNavigation from '../components/SideBarNavigation';
 import ComponentCard from '../components/ComponentCard';
 import { Text } from '@semcore/typography';
-import { Flex } from '@semcore/flex-box';
 import { navigationTree } from '@navigation';
 import staticFiles from '@static';
 import { usePageData } from '../components/routing';
@@ -24,6 +23,7 @@ import Spin from '@semcore/spin';
 import Error from '../components/Error';
 import styles from './Home.module.css';
 import { css } from '@semcore/core';
+import cx from 'classnames';
 
 const stylesTooltip = css`
   STooltip[theme] {
@@ -204,11 +204,11 @@ const getChart = (titles) => {
     <>
       <Box mr={12}>
         <Text tag="strong">Common docs</Text>
-        <div className={styles.docs}>{listDocs}</div>
+        <div className={cx(styles.docs, styles.cards)}>{listDocs}</div>
       </Box>
       <Box w="100%">
         <Text tag="strong">Types</Text>
-        <div className={styles.cards}>{listItems}</div>
+        <div className={cx(styles.cards, styles.cards)}>{listItems}</div>
       </Box>
     </>
   );

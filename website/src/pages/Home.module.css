@@ -290,6 +290,7 @@
   grid-template-rows: repeat(auto-fill, 36px);
   grid-template-columns: max-content;
   grid-auto-flow: column;
+  column-gap: 10px;
   width: 100%;
   max-height: 400px;
   margin: 0;
