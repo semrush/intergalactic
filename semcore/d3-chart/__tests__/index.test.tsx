@@ -1639,6 +1639,28 @@ describe('d3 charts visual regression', () => {
     expect(await snapshot(<Component />)).toMatchImageSnapshot();
   });
 
+  test('should support active sector in donut chart', async () => {
+    const data = {
+      a: 3,
+      b: 1,
+      c: 2,
+    };
+
+    const Component: React.FC = () => {
+      return (
+        <Plot width={300} height={300} data={data}>
+          <Donut innerRadius={100}>
+            <Donut.Pie dataKey="a" name="Pie 1" active />
+            <Donut.Pie dataKey="b" color={colors['green-02']} name="Pie 2" />
+            <Donut.Pie dataKey="c" color={colors['violet-04']} name="Pie 3" />
+          </Donut>
+        </Plot>
+      );
+    };
+
+    expect(await snapshot(<Component />)).toMatchImageSnapshot();
+  });
+
   test('should render semi-donut-with-one-data', async () => {
     const data = {
       speed: 3,

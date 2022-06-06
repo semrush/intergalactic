@@ -27,6 +27,10 @@ export interface IPieProps extends IContext {
     @default #50aef4
    **/
   color?: string;
+  /**
+   * Active sector
+   * */
+  active?: boolean;
 }
 
 export interface IEmptyDataProps extends IContext {}
