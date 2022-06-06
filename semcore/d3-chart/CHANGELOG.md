@@ -7,6 +7,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### Changed
 
 - Added property minimal height `hMin` for Bar (`<Bar hMin={...}/>`)
+- Added property `active` for `Donut.Pie`
 
 ## [2.1.0] - 2022-06-01
 
