@@ -13,6 +13,12 @@ fileSource: d3-chart
 
 @example donut
 
+@## Donut with checkbox
+
+When you use checkbox with donut, you should use `active` property for highlight sector chart after hover on checkbox.
+
+@example donut-with-checkbox
+
 @## Semi-Donut
 
 To create a half-size chart, you need to specify the `halfsize` value and reduce the height of the chart by half.
