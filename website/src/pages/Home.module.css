@@ -290,13 +290,34 @@
   grid-template-rows: repeat(auto-fill, 36px);
   grid-template-columns: max-content;
   grid-auto-flow: column;
-  column-gap: 10px;
+  column-gap: 30px;
   width: 100%;
   max-height: 400px;
   margin: 0;
   padding: 0;
 }
-
+.category .component {
+  max-width: 160px;
+}
+.category .component .linkStyled {
+  max-width: 160px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.uxPatterns .category .component {
+  max-width: 100%;
+}
+.uxPatterns .category .linkStyled {
+  max-width: 100%;
+  white-space: normal;
+}
+.filters .category .component {
+  max-width: 100%;
+}
+.filters .category .linkStyled {
+  max-width: 100%;
+  white-space: normal;
+}
 .cards {
   display: grid;
   grid-template-rows: max-content;
@@ -330,9 +351,7 @@
 
 .tableOverlay {
   display: flex;
-}
-.tableOverlay .component {
-  margin-right: 40px;
+  min-height: 390px;
 }
 .tableOverlay h2 {
   margin: 0;
