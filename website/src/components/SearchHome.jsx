@@ -103,7 +103,6 @@ const showList = (hits, pages, content) => {
 };
 
 const Search = ({ currentRefinement, refine, hits, history, searchResults, ...other }) => {
-  console.log(hits);
   const pages = hits.filter((el) => !el.heading);
   const content = hits.filter((el) => el.heading);
   const location = useLocation();

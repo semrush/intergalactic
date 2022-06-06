@@ -73,9 +73,9 @@ const renderSwitch = (value) => {
     case 'table':
       return getTabByTitle(['Table']);
     case 'ux':
-      return getTabByTitle(['UX patterns']);
+      return getTabByTitle(['UX patterns'], styles.uxPatterns);
     case 'filters':
-      return getTabByTitle(['Filters']);
+      return getTabByTitle(['Filters'], styles.filters);
     case 'documentation':
       return getTabByTitle(['Utils 🛠', 'Docs', 'Bugs and requests']);
     default:
@@ -83,9 +83,9 @@ const renderSwitch = (value) => {
   }
 };
 
-const getTabByTitle = (titles) => {
+const getTabByTitle = (titles, className) => {
   return (
-    <div className={styles.tableOverlay}>
+    <div className={cx(styles.tableOverlay, className)}>
       {titles.length === 1 ? (
         titles[0] === 'Charts' ? (
           getChart(titles[0])
@@ -97,7 +97,7 @@ const getTabByTitle = (titles) => {
       ) : (
         titles.map((title) => {
           return (
-            <Box mr={3}>
+            <Box mr={7.5}>
               <h2>{title}</h2>
               {getComponents(title)}
             </Box>
@@ -132,7 +132,7 @@ const getComponents = (titles) => {
     const pic = getTooltip(child.elem.title);
     return (
       <Tooltip styles={stylesTooltip} placement="left" w={'fit-content'} key={child.elem.title}>
-        <Tooltip.Trigger tag={Flex} alignContent="center" className="component">
+        <Tooltip.Trigger tag={Flex} alignContent="center" className={styles.component}>
           <Link className={styles.linkStyled} to={`/${child.elem.route}/`}>
             {child.elem.title}
           </Link>
@@ -208,11 +208,13 @@ const getChart = (titles) => {
       </Box>
       <Box w="100%">
         <Text tag="strong">Types</Text>
-        <div className={cx(styles.cards, styles.cards)}>{listItems}</div>
+        <div className={styles.cards}>{listItems}</div>
       </Box>
     </>
   );
 };
+
+const tableDataContext = React.createContext({});
 
 const Table = ({ titles }) => {
   const items = navigationTree.filter((nav) => !nav.metadata.hide && titles.includes(nav.title));
@@ -222,23 +224,13 @@ const Table = ({ titles }) => {
     </Link>
   ));
 
-  const tableControls = usePageData('table-group/table-controls');
-  const tableStates = usePageData('table-group/table-states');
-
-  if (tableControls.loading || tableStates.loading) {
-    return <Spin />;
-  }
-
-  const error = tableControls.error || tableStates.error;
-  if (error) {
-    return <Error title={error.message} />;
-  }
+  const { tableControls, tableStates } = React.useContext(tableDataContext);
 
   return (
     <>
       <Box mr={12}>
         <Text tag="strong">Common docs</Text>
-        <div className={styles.docs}>{getDocs}</div>
+        <div className={cx(styles.docs, styles.cards)}>{getDocs}</div>
       </Box>
       <Box w="100%">
         <Text tag="strong">Controls and use cases</Text>
@@ -274,6 +266,23 @@ const Table = ({ titles }) => {
 
 function Home() {
   const [value, updateValue] = React.useState('components');
+
+  const tableControls = usePageData('table-group/table-controls');
+  const tableStates = usePageData('table-group/table-states');
+
+  const tableContext = React.useMemo(
+    () => ({ tableControls, tableStates }),
+    [tableControls, tableStates],
+  );
+
+  if (tableControls.loading || tableStates.loading) {
+    return <Spin />;
+  }
+
+  const error = tableControls.error || tableStates.error;
+  if (error) {
+    return <Error title={error.message} />;
+  }
 
   return (
     <>
@@ -345,7 +354,9 @@ function Home() {
                 </TabLine.Item>
               </TabLine>
             </div>
-            <div className={styles.border}>{renderSwitch(value)}</div>
+            <tableDataContext.Provider value={tableContext}>
+              <div className={styles.border}>{renderSwitch(value)}</div>
+            </tableDataContext.Provider>
           </div>
           <EmailsBanner />
           {/* <UpdateBlock /> */}
