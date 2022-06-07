@@ -12,7 +12,14 @@ class WizardRoot extends Component {
   static style = style;
   static defaultProps = {
     currentStep: 1,
+    defaultStep: 1,
   };
+
+  uncontrolledProps() {
+    return {
+      step: null,
+    };
+  }
 
   getStepProps() {
     const { currentStep } = this.asProps;
@@ -23,10 +30,10 @@ class WizardRoot extends Component {
 
   getStepperProps(props) {
     const { currentStep, steps } = this.asProps;
-    const isActive = props.value === currentStep;
+    const isActive = props.step === currentStep;
     const currentStepObject = useMemo(
-      () => steps.find((s) => s.value && s.value === props.value),
-      [props.value],
+      () => steps.find((s) => s.step && s.step === props.step),
+      [props.step],
     );
     const isDisabled = currentStepObject ? !!currentStepObject.disabled : false;
 
@@ -67,19 +74,19 @@ function Sidebar(props) {
 
 function Step(props) {
   const SStep = Root;
-  const { styles, currentStep, value } = props;
-  return sstyled(styles)(<>{currentStep === value ? <SStep render={Box} /> : null}</>);
+  const { styles, currentStep, step } = props;
+  return sstyled(styles)(<>{currentStep === step ? <SStep render={Box} /> : null}</>);
 }
 
 function Stepper(props) {
-  const { Children, styles, currentStep, value, isActive, isDisabled, currentStepObject } = props;
+  const { Children, styles, currentStep, step, isActive, isDisabled, currentStepObject } = props;
   const SStepper = Root;
   const SStepNumber = Text;
   const SStepDescription = Box;
 
   return sstyled(styles)(
-    <SStepper active={isActive} disabled={isDisabled} render={Box} role="menuitem" {...props}>
-      <SStepNumber>{value < currentStep ? <CheckM /> : value}</SStepNumber>
+    <SStepper active={isActive} disabled={isDisabled} render={Box} role="menuitem">
+      <SStepNumber>{step < currentStep ? <CheckM /> : step}</SStepNumber>
       <SStepDescription tag="span">
         {currentStepObject ? currentStepObject.title : null}
         <Children />

@@ -29,21 +29,21 @@ function Step1() {
   );
 }
 const steps = [
-  { value: 1, title: 'Step 1', disabled: false },
-  { value: 2, title: 'Step 2', disabled: true },
-  { value: 3, title: 'Step 3', disabled: false },
+  { step: 1, title: 'Step 1', disabled: false },
+  { step: 2, title: 'Step 2', disabled: true },
+  { step: 3, title: 'Step 3', disabled: false },
 ];
 
-const nextStep = (value) => {
-  const startElem = steps.findIndex((it) => it.value === value);
+const nextStep = (step) => {
+  const startElem = steps.findIndex((it) => it.step === step);
   for (let i = startElem + 1; i < steps.length; i++) {
     if (!steps[i].disabled) return steps[i];
   }
   return null;
 };
 
-const previousStep = (value) => {
-  const startElem = steps.findIndex((it) => it.value === value);
+const previousStep = (step) => {
+  const startElem = steps.findIndex((it) => it.step === step);
   for (let i = startElem - 1; i >= 0; i--) {
     if (!steps[i].disabled) return steps[i];
   }
@@ -51,19 +51,19 @@ const previousStep = (value) => {
 };
 
 export default function () {
-  const [activeStep, setActiveStep] = useState(1);
-  const hasNext = nextStep(activeStep);
-  const hasPrev = previousStep(activeStep);
-  const handleStep = useCallback((step) => setActiveStep(step), []);
-  const handlePrevStep = useCallback((step) => setActiveStep(previousStep(step).value), []);
-  const handleNextStep = useCallback((step) => setActiveStep(nextStep(step).value), []);
+  const [currentStep, setCurrentStep] = useState(1);
+  const hasNext = nextStep(currentStep);
+  const hasPrev = previousStep(currentStep);
+  const handleStep = useCallback((step) => setCurrentStep(step), []);
+  const handlePrevStep = useCallback((step) => setCurrentStep(previousStep(step).step), []);
+  const handleNextStep = useCallback((step) => setCurrentStep(nextStep(step).step), []);
 
   return (
     <>
-      <Wizard currentStep={activeStep} steps={steps} h={300}>
+      <Wizard currentStep={currentStep} steps={steps} h={300}>
         <Wizard.Sidebar title="Header">
           <Wizard.Stepper
-            value={1}
+            step={1}
             onClick={() => handleStep(1)}
             onKeyPress={(e) => {
               if (e.key === 'Enter') {
@@ -71,9 +71,9 @@ export default function () {
               }
             }}
           />
-          <Wizard.Stepper value={2} />
+          <Wizard.Stepper step={2} />
           <Wizard.Stepper
-            value={3}
+            step={3}
             onClick={() => handleStep(3)}
             onKeyPress={(e) => {
               if (e.key === 'Enter') {
@@ -83,9 +83,9 @@ export default function () {
           />
         </Wizard.Sidebar>
         <Wizard.Content>
-          <Wizard.Step tag={Step1} value={1} />
-          <Wizard.Step value={2}>Second page</Wizard.Step>
-          <Wizard.Step value={3}>
+          <Wizard.Step tag={Step1} step={1} />
+          <Wizard.Step step={2}>Second page</Wizard.Step>
+          <Wizard.Step step={3}>
             <>
               <Text size={400} fontWeight={500}>
                 Final page
@@ -97,7 +97,7 @@ export default function () {
           </Wizard.Step>
           <Flex justifyContent="space-between" w="100%">
             {hasPrev && (
-              <Button use="tertiary" mt={5} onClick={() => handlePrevStep(activeStep)}>
+              <Button use="tertiary" mt={5} onClick={() => handlePrevStep(currentStep)}>
                 <Button.Addon>
                   <ArrowLeft />
                 </Button.Addon>
@@ -105,7 +105,7 @@ export default function () {
               </Button>
             )}
             {hasNext && (
-              <Button use="tertiary" mt={5} onClick={() => handleNextStep(activeStep)}>
+              <Button use="tertiary" mt={5} onClick={() => handleNextStep(currentStep)}>
                 <Button.Text>{hasNext.title}</Button.Text>
                 <Button.Addon>
                   <ArrowRight />
