@@ -19,6 +19,7 @@ export { default as Venn } from './Venn';
 export { default as Tooltip } from './Tooltip';
 
 export { default as ResponsiveContainer } from './ResponsiveContainer';
+export { default as ReferenceLine } from './ReferenceLine';
 
 export { HoverLine, HoverRect } from './Hover';
 
