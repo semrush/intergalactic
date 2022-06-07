@@ -6,6 +6,7 @@ import createElement from './createElement';
 import { definedData, scaleOfBandwidth, getNullData, definedNullData } from './utils';
 import ClipPath from './ClipPath';
 import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
+import findComponent from '@semcore/utils/lib/findComponent';
 
 import style from './style/area.shadow.css';
 
@@ -55,18 +56,34 @@ class AreaRoot extends Component {
     };
   }
 
+  getLineProps() {
+    const { duration, color, data, d3Line, uid } = this.asProps;
+
+    return {
+      uid,
+      data,
+      d3: d3Line,
+      color,
+      duration,
+    };
+  }
+
   render() {
     const SArea = this.Element;
     const SAreaLine = 'path';
-    const { styles, hide, d3, d3Line, data, color, uid, size, duration } = this.asProps;
+    const { styles, hide, d3, d3Line, data, color, uid, size, duration, Children } = this.asProps;
+    const advanceMode = !!findComponent(Children, [Area.Line.displayName]);
+
     return sstyled(styles)(
       <>
-        <SAreaLine
-          clipPath={`url(#${uid})`}
-          d={d3Line(data)}
-          color={color}
-          use:duration={`${duration}ms`}
-        />
+        {!advanceMode && (
+          <SAreaLine
+            clipPath={`url(#${uid})`}
+            d={d3Line(data)}
+            color={color}
+            use:duration={`${duration}ms`}
+          />
+        )}
         <SArea
           clipPath={`url(#${uid})`}
           render="path"
@@ -93,12 +110,28 @@ class AreaRoot extends Component {
   }
 }
 
+function Line(props) {
+  const { Element: SAreaLine, styles, d3, data, color, duration, uid } = props;
+  return sstyled(styles)(
+    <SAreaLine
+      render="path"
+      clipPath={`url(#${uid})`}
+      d={d3(data)}
+      color={color}
+      use:duration={`${duration}ms`}
+    />,
+  );
+}
+
 function Null(props) {
   const { Element: SNull, styles, d3, data, hide, color } = props;
   return sstyled(styles)(<SNull render="path" d={d3(data)} hide={hide} color={color} />);
 }
 
-export default createElement(AreaRoot, {
+const Area = createElement(AreaRoot, {
   Dots,
   Null,
+  Line,
 });
+
+export default Area;

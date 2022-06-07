@@ -20,3 +20,7 @@ fileSource: d3-chart
 - Two consecutively known values will automatically be displayed as the `Area` component.
 
 @example area-without-data
+
+@## Custom line
+
+@example area-custom-line
