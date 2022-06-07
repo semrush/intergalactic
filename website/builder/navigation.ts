@@ -99,21 +99,26 @@ export const serializeNavigation = async (docsDir: string) => {
   const { navigationRoutes, navigationParents, navigationPrevSibling, navigationNextSibling } =
     chains;
 
+  const contentfulRoutesChildren: { [contentfulRoute: string]: string[] } = {};
   const contentfulRoutes = Object.keys(navigationRoutes).filter((route) => {
     const routeChain = navigationRoutes[route];
     const routeDepth = routeChain.length;
     if (routeDepth !== 2) return false;
-    const routeMeta = navigationTree[routeChain[0]].children[routeChain[1]].metadata;
+    const node = navigationTree[routeChain[0]].children[routeChain[1]];
+    const routeMeta = node.metadata;
     if (routeMeta.disabled) return false;
+
+    contentfulRoutesChildren[route] = node.children?.map((child) => child.route) ?? [];
 
     return true;
   });
   for (let i = 0; i < contentfulRoutes.length; i++) {
-    const route = contentfulRoutes[i];
     const prevChain = navigationRoutes[contentfulRoutes[i - 1]];
     const nextChain = navigationRoutes[contentfulRoutes[i + 1]];
-    if (prevChain) navigationPrevSibling[route] = prevChain;
-    if (nextChain) navigationNextSibling[route] = nextChain;
+    for (const route of [contentfulRoutes[i], ...contentfulRoutesChildren[contentfulRoutes[i]]]) {
+      if (prevChain) navigationPrevSibling[route] = prevChain;
+      if (nextChain) navigationNextSibling[route] = nextChain;
+    }
   }
 
   let stringifiedTree = JSON.stringify(navigationTree);
