@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.0.5] - 2022-06-07
+
+### Fixed
+
+- Fixed textarea scroll to bottom on every resize.
+
 ## [4.0.4] - 2022-06-02
 
 ### Changed

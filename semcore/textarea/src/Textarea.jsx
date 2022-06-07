@@ -76,9 +76,11 @@ class Textarea extends Component {
       node.rows = computed;
     }
 
-    if (!disabledScrolling) {
-      node.scrollTop = node.scrollHeight;
-    }
+    if (disabledScrolling) return;
+    const { selectionEnd, value } = node;
+    if (selectionEnd < value.length) return;
+
+    node.scrollTop = node.scrollHeight;
   });
 
   componentDidMount() {
