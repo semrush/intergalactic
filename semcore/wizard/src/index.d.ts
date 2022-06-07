@@ -6,7 +6,7 @@ export interface IWizardProps {
   /**
    * Steps array
    */
-  steps: Array<{ value: number; title?: string; disabled?: boolean }>;
+  steps: Array<{ step: number; title?: string; disabled?: boolean }>;
   /**
    * Active step value
    */
@@ -24,14 +24,14 @@ export interface IWizardStepProps extends IBoxProps {
   /**
    * Step number
    */
-  value: number;
+  step: number;
 }
 
 export interface IWizardStepperProps extends IBoxProps {
   /**
    * Stepper number
    */
-  value: number;
+  step: number;
 }
 
 declare const Wizard: (<T>(props: CProps<IWizardProps & T>) => ReturnEl) & {

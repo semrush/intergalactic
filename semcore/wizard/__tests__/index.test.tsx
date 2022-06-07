@@ -5,8 +5,8 @@ import Wizard from '../src';
 const { cleanup, render, axe } = testing;
 
 const steps = [
-  { value: 1, title: 'Step 1', disabled: false },
-  { value: 2, title: 'Step 2', disabled: false },
+  { step: 1, title: 'Step 1', disabled: false },
+  { step: 2, title: 'Step 2', disabled: false },
 ];
 
 describe('Wizard', () => {
@@ -16,12 +16,12 @@ describe('Wizard', () => {
     const Component = (
       <Wizard currentStep={1} steps={steps}>
         <Wizard.Sidebar title="Header">
-          <Wizard.Stepper value={1} />
-          <Wizard.Stepper value={2} />
+          <Wizard.Stepper step={1} />
+          <Wizard.Stepper step={2} />
         </Wizard.Sidebar>
         <Wizard.Content>
-          <Wizard.Step value={1}>First page</Wizard.Step>
-          <Wizard.Step value={2}>Second page</Wizard.Step>
+          <Wizard.Step step={1}>First page</Wizard.Step>
+          <Wizard.Step step={2}>Second page</Wizard.Step>
         </Wizard.Content>
       </Wizard>
     );
@@ -33,17 +33,17 @@ describe('Wizard', () => {
       <Wizard
         currentStep={2}
         steps={[
-          { value: 1, title: 'Step 1', disabled: true },
-          { value: 2, title: 'Step 2', disabled: false },
+          { step: 1, title: 'Step 1', disabled: true },
+          { step: 2, title: 'Step 2', disabled: false },
         ]}
       >
         <Wizard.Sidebar title="Header">
-          <Wizard.Stepper value={1} />
-          <Wizard.Stepper value={2} />
+          <Wizard.Stepper step={1} />
+          <Wizard.Stepper step={2} />
         </Wizard.Sidebar>
         <Wizard.Content>
-          <Wizard.Step value={1}>First page</Wizard.Step>
-          <Wizard.Step value={2}>Second page</Wizard.Step>
+          <Wizard.Step step={1}>First page</Wizard.Step>
+          <Wizard.Step step={2}>Second page</Wizard.Step>
         </Wizard.Content>
       </Wizard>
     );
@@ -55,12 +55,12 @@ describe('Wizard', () => {
       await snapshot(
         <Wizard currentStep={2} steps={steps}>
           <Wizard.Sidebar title="Header">
-            <Wizard.Stepper value={1} id="step" />
-            <Wizard.Stepper value={2} />
+            <Wizard.Stepper step={1} id="step" />
+            <Wizard.Stepper step={2} />
           </Wizard.Sidebar>
           <Wizard.Content>
-            <Wizard.Step value={1}>First page</Wizard.Step>
-            <Wizard.Step value={2}>Second page</Wizard.Step>
+            <Wizard.Step step={1}>First page</Wizard.Step>
+            <Wizard.Step step={2}>Second page</Wizard.Step>
           </Wizard.Content>
         </Wizard>,
         { actions: { hover: '#step' } },
@@ -72,12 +72,12 @@ describe('Wizard', () => {
     const { container } = render(
       <Wizard currentStep={1} steps={steps}>
         <Wizard.Sidebar title="Header">
-          <Wizard.Stepper value={1} />
-          <Wizard.Stepper value={2} />
+          <Wizard.Stepper step={1} />
+          <Wizard.Stepper step={2} />
         </Wizard.Sidebar>
         <Wizard.Content>
-          <Wizard.Step value={1}>First page</Wizard.Step>
-          <Wizard.Step value={2}>Second page</Wizard.Step>
+          <Wizard.Step step={1}>First page</Wizard.Step>
+          <Wizard.Step step={2}>Second page</Wizard.Step>
         </Wizard.Content>
       </Wizard>,
     );
