@@ -43,16 +43,19 @@ const textColorToBorderColor = {
 };
 
 const getPrimaryColors = (color) => ({
-  colorBg: opacity(resolveColor(textColorToBgColor[color]), 0.5) || light(color, 0.95),
-  colorBgHover: resolveColor(textColorToBgColor[color] || light(color, 0.8)),
+  colorBg:
+    opacity(resolveColor(textColorToBgColor[color]), 0.5) || light(resolveColor(color), 0.95),
+  colorBgHover: resolveColor(textColorToBgColor[color] || light(resolveColor(color), 0.8)),
   colorText: resolveColor(color),
 });
 
 const getSecondaryColors = (color) => ({
   colorBg: resolveColor('white'),
-  colorBgHover: resolveColor(textColorToHoveredTextColor[color] || light(color, 0.95)),
+  colorBgHover: resolveColor(
+    textColorToHoveredTextColor[color] || light(resolveColor(color), 0.95),
+  ),
   colorText: resolveColor(color),
-  colorBorder: resolveColor(textColorToBorderColor[color] || light(color, 0.5)),
+  colorBorder: resolveColor(textColorToBorderColor[color] || light(resolveColor(color), 0.5)),
 });
 
 const legacyThemeRecommendedMigration = {

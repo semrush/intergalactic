@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.0.6] - 2022-06-07
+
+### Fixed
+
+- Fixed non default colors resolving.
+
 ## [4.0.5] - 2022-06-02
 
 ### Changed
