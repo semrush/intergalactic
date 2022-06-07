@@ -124,6 +124,10 @@ See [Chart legend](/data-display/chart-legend/) for a guide on how to implement 
 
 @example legend
 
+@## Reference line
+
+@example reference-line
+
 @## Synchronous charts
 
 You can pass a common `eventEmitter` to synchronize the charts.
