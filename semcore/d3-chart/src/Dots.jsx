@@ -59,7 +59,7 @@ function Dots(props) {
       unsubscribeMouseMoveRoot();
       unsubscribeMouseLeaveRoot();
     };
-  }, [eventEmitter, data, x, y]);
+  }, [eventEmitter, scale, data, x, y]);
 
   const renderCircle = useCallback(
     React.forwardRef((props, ref) => {
