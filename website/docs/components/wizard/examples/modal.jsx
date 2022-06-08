@@ -8,6 +8,12 @@ import ArrowLeft from '@semcore/icon/ArrowLeft/m';
 import Input from '@semcore/input';
 import Modal from '@semcore/modal';
 
+const styles = `
+  .sidebar {
+    border-radius: 6px 0 0 6px;
+  }
+`;
+
 function Step1() {
   return (
     <Flex tag="form" direction="column">
@@ -30,21 +36,21 @@ function Step1() {
   );
 }
 const steps = [
-  { value: 1, title: 'Step 1', disabled: false },
-  { value: 2, title: 'Step 2', disabled: false },
-  { value: 3, title: 'Step 3', disabled: false },
+  { step: 1, title: 'Step 1', disabled: false },
+  { step: 2, title: 'Step 2', disabled: false },
+  { step: 3, title: 'Step 3', disabled: false },
 ];
 
-const nextStep = (value) => {
-  const startElem = steps.findIndex((it) => it.value === value);
+const nextStep = (step) => {
+  const startElem = steps.findIndex((it) => it.step === step);
   for (let i = startElem + 1; i < steps.length; i++) {
     if (!steps[i].disabled) return steps[i];
   }
   return null;
 };
 
-const previousStep = (value) => {
-  const startElem = steps.findIndex((it) => it.value === value);
+const previousStep = (step) => {
+  const startElem = steps.findIndex((it) => it.step === step);
   for (let i = startElem - 1; i >= 0; i--) {
     if (!steps[i].disabled) return steps[i];
   }
@@ -52,24 +58,25 @@ const previousStep = (value) => {
 };
 
 export default function () {
-  const [activeStep, setActiveStep] = useState(1);
-  const hasNext = nextStep(activeStep);
-  const hasPrev = previousStep(activeStep);
+  const [currentStep, setCurrentStep] = useState(1);
+  const hasNext = nextStep(currentStep);
+  const hasPrev = previousStep(currentStep);
 
   const [visible, changeVisible] = useState(false);
   const handleOpen = () => changeVisible(true);
   const handleClose = () => changeVisible(false);
-  const handleStep = useCallback((step) => setActiveStep(step), []);
-  const handlePrevStep = useCallback((step) => setActiveStep(previousStep(step).value), []);
-  const handleNextStep = useCallback((step) => setActiveStep(nextStep(step).value), []);
+  const handleStep = useCallback((step) => setCurrentStep(step), []);
+  const handlePrevStep = useCallback((step) => setCurrentStep(previousStep(step).step), []);
+  const handleNextStep = useCallback((step) => setCurrentStep(nextStep(step).step), []);
 
   return (
     <>
+      <style>{styles}</style>
       <Button use="primary" onClick={handleOpen}>
         Open modal
       </Button>
       <Wizard
-        currentStep={activeStep}
+        currentStep={currentStep}
         steps={steps}
         p={0}
         w={700}
@@ -78,15 +85,15 @@ export default function () {
         onClose={handleClose}
         tag={Modal}
       >
-        <Wizard.Sidebar title="Header" style={{ borderRadius: '6px 0 0 6px' }}>
-          <Wizard.Stepper value={1} onClick={() => handleStep(1)} />
-          <Wizard.Stepper value={2} onClick={() => handleStep(2)} />
-          <Wizard.Stepper value={3} onClick={() => handleStep(3)} />
+        <Wizard.Sidebar title="Header" className="sidebar">
+          <Wizard.Stepper step={1} onClick={() => handleStep(1)} />
+          <Wizard.Stepper step={2} onClick={() => handleStep(2)} />
+          <Wizard.Stepper step={3} onClick={() => handleStep(3)} />
         </Wizard.Sidebar>
         <Wizard.Content>
-          <Wizard.Step tag={Step1} value={1} />
-          <Wizard.Step value={2}>Second page</Wizard.Step>
-          <Wizard.Step value={3}>
+          <Wizard.Step tag={Step1} step={1} />
+          <Wizard.Step step={2}>Second page</Wizard.Step>
+          <Wizard.Step step={3}>
             <Text size={400} fontWeight={500}>
               Final page
             </Text>
@@ -96,7 +103,7 @@ export default function () {
           </Wizard.Step>
           <Flex justifyContent="space-between" w="100%">
             {hasPrev && (
-              <Button use="tertiary" mt={5} onClick={() => handlePrevStep(activeStep)}>
+              <Button use="tertiary" mt={5} onClick={() => handlePrevStep(currentStep)}>
                 <Button.Addon>
                   <ArrowLeft />
                 </Button.Addon>
@@ -104,7 +111,7 @@ export default function () {
               </Button>
             )}
             {hasNext && (
-              <Button use="tertiary" mt={5} onClick={() => handleNextStep(activeStep)}>
+              <Button use="tertiary" mt={5} onClick={() => handleNextStep(currentStep)}>
                 <Button.Text>{hasNext.title}</Button.Text>
                 <Button.Addon>
                   <ArrowRight />
