@@ -3,43 +3,114 @@ title: Palette
 tabName: Design
 ---
 
-@## Description
+Our palette is built with [Huetone tool from Alexey Ardov](https://huetone.ardov.me/) ✨ Learn more in the [Twitter thread](https://twitter.com/ardovalexey/status/1447329411678806023).
 
-Variables allow us to use color names and not to remember their HEX values. The same color gradations have a number
-at the end (for example, for `css` files you should use `var(--gray-600)`, for our components you should use
-`propName="gray-600"`).
+@## Variables
 
 > To enable CSS variables, use `@import '~@semcore/utils/style/var.css';`
 
-@## Main palette
+Shades of the same color have a value from 50 to 800
+at the end (for example, for `css` files you should use `var(--gray-600)`, for our components you should use
+`propName="gray-600"`).
 
-### Bright
+@## Brand colors
+
+We use this hot orange and dark indigo as our brand colors. Use them only for the most important and advertising information in the interface.
+
+@import color-group {"group": "brand"}
+
+@## Main colors
 
 The main semantic colors that attract attention, mark a status, and highlight main interactive elements on a page.
 
-@import color-group {"group": "bright"}
+@import color-group {"group": "main"}
 
-### Dim
+@## Gray colors
 
-Gray colors, diluted with blue. Suitable for icons, statuses, and block borders.
-
-@import color-group {"group": "dim"}
-
-### Shades of gray
-
-"Clean" gray colors for text, titles, and hints.
+Use them for text, titles, and hints.
 
 @import color-group {"group": "gray"}
 
-### Pastel
+@## Color shades usage
 
-Faded colors for block backgrounds, subsurfaces, accordions, table caps.
+### 50 shade
 
-@import color-group {"group": "pastel"}
+Use it for backgrounds only.
 
-### Additional
+> May be completely invisible to users with poor vision or low-contrast monitor
 
-Brand colors of services (the data can be found in Semrush interface).
+@import color-group {"group": "shade50"}
+
+### 100 shade
+
+Use it for:
+
+- Light borders.
+- Active faded backgrounds (e.g. widget backgrounds, accordions, table headers).
+
+> APCA ~ 15 to white (minimum visible elements)
+
+@import color-group {"group": "shade100"}
+
+### 200 shade
+
+Use it for:
+
+- Active borders.
+- Active backgrounds (e.g. widget backgrounds, accordions, table headers).
+
+@import color-group {"group": "shade200"}
+
+### 300 shade
+
+Use it for:
+
+- Icon on the white background.
+- Main colors for charts.
+- Text placeholders.
+
+@import color-group {"group": "shade300"}
+
+### 400 shade
+
+Use it for:
+
+- Icons on the color background.
+- Buttons backgrounds.
+
+Text colored in this shade can be placed on a white background
+
+> Contrast parameters: APCA ~ 65 to white, WCAG 3:1 to 50 shade.
+
+@import color-group {"group": "shade400"}
+
+### 500 shade
+
+Use it for secondary text. Text colored in this shade can be placed on the background colored in 50 and 100 shades.
+
+@import color-group {"group": "shade500"}
+
+### 600 shade
+
+Use this shade as a dark shade for charts. Text colored in this shade can be placed on the background colored in 50 and 100 shades.
+
+@import color-group {"group": "shade600"}
+
+### 700 shade
+
+Use this shade as a dark shade for charts. Text colored in this shade can be placed on the background colored in 50, 100 and 200 shades.
+
+@import color-group {"group": "shade700"}
+
+### 800 shade
+
+Use this for main text. Text colored in this shade can be placed on the background colored in 50, 100 and 200 shades.
+
+@import color-group {"group": "shade800"}
+
+@## Additional colors
+
+Brand colors of external services (the data can be found in Semrush interface).
 
 @import color-group {"group": "additional"}
 
