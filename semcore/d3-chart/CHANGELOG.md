@@ -4,8 +4,9 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ## [2.2.0] - unrelease
 
-### Changed
+### Added
 
+- Added index to Bubble chart
 - Added property minimal height `hMin` for Bar (`<Bar hMin={...}/>`)
 - Added property `active` for `Donut.Pie`
 
