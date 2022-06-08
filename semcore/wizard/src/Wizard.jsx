@@ -21,30 +21,33 @@ class WizardRoot extends Component {
     };
   }
 
-  getStepProps() {
+  getStepProps(props) {
     const { currentStep } = this.asProps;
+    const active = props.step === currentStep;
     return {
       currentStep,
+      active,
     };
   }
 
   getStepperProps(props) {
     const { currentStep, steps } = this.asProps;
-    const isActive = props.step === currentStep;
+    const active = props.step === currentStep;
     const currentStepObject = useMemo(
       () => steps.find((s) => s.step && s.step === props.step),
       [props.step],
     );
-    const isDisabled = currentStepObject ? !!currentStepObject.disabled : false;
+    const title = currentStepObject.title;
+    const disabled = currentStepObject ? !!currentStepObject.disabled : false;
 
     return {
       currentStep,
       steps,
-      isDisabled,
-      isActive,
-      currentStepObject,
-      'aria-disabled': isDisabled,
-      'aria-current': isActive,
+      disabled,
+      active,
+      title,
+      'aria-disabled': disabled,
+      'aria-current': active,
     };
   }
 
@@ -74,21 +77,24 @@ function Sidebar(props) {
 
 function Step(props) {
   const SStep = Root;
-  const { styles, currentStep, step } = props;
-  return sstyled(styles)(<>{currentStep === step ? <SStep render={Box} /> : null}</>);
+  const { styles, active } = props;
+  if (active) {
+    return sstyled(styles)(<SStep render={Box} />);
+  }
+  return null;
 }
 
 function Stepper(props) {
-  const { Children, styles, currentStep, step, isActive, isDisabled, currentStepObject } = props;
+  const { Children, styles, currentStep, step, active, disabled, title } = props;
   const SStepper = Root;
   const SStepNumber = Text;
   const SStepDescription = Box;
 
   return sstyled(styles)(
-    <SStepper active={isActive} disabled={isDisabled} render={Box} role="menuitem">
+    <SStepper active={active} disabled={disabled} render={Box} role="menuitem">
       <SStepNumber>{step < currentStep ? <CheckM /> : step}</SStepNumber>
       <SStepDescription tag="span">
-        {currentStepObject ? currentStepObject.title : null}
+        {title}
         <Children />
       </SStepDescription>
     </SStepper>,
