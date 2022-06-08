@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
-import Button from '@semcore/button';
 import { Link } from 'react-router-dom';
 import NavLink from './NavLink';
 import mobileLogo from '../static/logo/semrush-logo.svg';
-import hamburger from '../static/mobile/hamburger.svg';
-import CloseM from '@semcore/icon/Close/m';
-import SearchM from '@semcore/icon/Search/m';
-import close from '../static/mobile/close.svg';
+import HamburgerL from '@semcore/icon/Hamburger/l';
+import CloseL from '@semcore/icon/Close/l';
+import SearchL from '@semcore/icon/Search/l';
 import SearchHome from './SearchHome';
 import SideBarNavigation from './SideBarNavigation';
 import Divider from '@semcore/divider';
@@ -14,101 +12,49 @@ import LinkKit from '@semcore/link';
 import OutsideClick from '@semcore/outside-click';
 import { navigationTree } from '@navigation';
 import styles from './Header.module.css';
-
-const MobileHeaderMenu = ({ clicked, setClicked }) => (
-  <span className={styles.mobileMenu}>
-    <span className={styles.mobile}>
-      <span className={styles.mobileBackground}>
-        <img
-          src={close}
-          alt="Logo"
-          tag={`Button`}
-          onClick={() => {
-            setClicked(false);
-          }}
-        />
-      </span>
-    </span>
-    <OutsideClick onOutsideClick={() => setClicked(false)}>
-      <div className={styles.side}>
-        <div className={styles.links}>
-          <Link to="/internal/extension/">Extension ✨</Link>
-          <Link to="/internal/roadmap/">Roadmap</Link>
-          <Link to="/internal/release/">Releases</Link>
-          <a href="https://github.com/semrush/intergalactic" target="_blank">
-            GitHub
-          </a>
-        </div>
-        <Divider className={styles.line} orientation="horizontal" />
-        <SideBarNavigation
-          tag={`Button`}
-          visible={clicked}
-          onClose={() => setClicked(false)}
-          navigation={navigationTree.filter((nav) => !nav.metadata.hide)}
-        />
-      </div>
-    </OutsideClick>
-  </span>
-);
+import cx from 'classnames';
 
 function Header(props) {
-  const [clicked, setClicked] = useState(false);
-  const [visible, setVisible] = useState(false);
-
+  const [menuVisible, setMenuVisible] = useState(false);
+  const [searchVisible, setSearchVisible] = useState(false);
   return (
-    <header className={styles.headerWrapper} {...props}>
-      {clicked ? (
-        <MobileHeaderMenu clicked={clicked} setClicked={setClicked} />
-      ) : (
-        <span className={styles.mobileMenu}>
-          <span className={styles.mobile}>
-            <img
-              src={hamburger}
-              alt="Logo"
-              tag={`Button`}
-              onClick={() => {
-                setClicked(true);
-              }}
-            />
-          </span>
-        </span>
-      )}
-      <div className={styles.logo}>
-        <img className={styles.mobileLogo} src={mobileLogo} alt="Logo" />
-        <div className={styles.desktopLogo}>
+    <header className={styles.header}>
+      <div className={styles.headerMain}>
+        <div
+          className={cx(
+            styles.menuIcon,
+            menuVisible && styles.activeMenuIcon,
+            searchVisible && styles.activeSearch,
+          )}
+        >
+          {menuVisible ? (
+            <CloseL onClick={() => setMenuVisible(false)} />
+          ) : (
+            <HamburgerL onClick={() => setMenuVisible(true)} />
+          )}
+        </div>
+        <div className={cx(styles.logo, searchVisible && styles.activeSearch)}>
           <a className={styles.devportalLink} href="https://developer.semrush.com/">
-            <img src={mobileLogo} alt="Logo" />
-            Developer
+            <img src={mobileLogo} className={styles.semrushLogo} alt="Logo" />
+            <span className={styles.devportalTitle}>Developer</span>
           </a>
           <Link className={styles.intergalacticLink} to="/">
             Intergalactic
           </Link>
         </div>
-      </div>
-      <div className={styles.searchMobile}>
-        <div
-          className={styles.mobileSearch}
-          tag={Button}
-          onClick={() => setVisible(true)}
-          style={visible ? { display: 'none' } : { display: 'flex' }}
-        >
-          <SearchM className={styles.searchIcon} />
-        </div>
         <SearchHome
+          className={styles.searchField}
+          wrapperClassName={cx(styles.searchWrapper, !searchVisible && styles.mobileSearchHidden)}
           placeholder="What brings you here, Sole Survivor?"
-          style={visible ? { marginLeft: '-200px', width: '258px' } : { display: 'none' }}
+          onItemSelect={() => setSearchVisible(false)}
         />
-        <div
-          className={styles.mobileClose}
-          tag={Button}
-          onClick={() => setVisible(false)}
-          style={visible ? { display: 'flex' } : { display: 'none' }}
-        >
-          <CloseM className={styles.closeIcon} />
-        </div>
       </div>
-      <div className={styles.search}>
-        <SearchHome placeholder="What brings you here, Sole Survivor?" />
+      <div className={styles.searchIcon}>
+        {searchVisible ? (
+          <CloseL onClick={() => setSearchVisible(false)} />
+        ) : (
+          <SearchL onClick={() => setSearchVisible(true)} />
+        )}
       </div>
       <nav className={styles.nav}>
         <span className={styles.item}>
@@ -137,6 +83,40 @@ function Header(props) {
           </LinkKit>
         </span>
       </nav>
+      {menuVisible && (
+        <OutsideClick onOutsideClick={() => setMenuVisible(false)}>
+          <nav className={styles.mobileMenu}>
+            <div className={styles.mobileMenuLinks}>
+              <Link to="/internal/extension/" onClick={() => setMenuVisible(false)}>
+                Extension ✨
+              </Link>
+              <Link to="/internal/roadmap/" onClick={() => setMenuVisible(false)}>
+                Roadmap
+              </Link>
+              <Link to="/internal/release/" onClick={() => setMenuVisible(false)}>
+                Releases
+              </Link>
+              <a
+                href="https://github.com/semrush/intergalactic"
+                target="_blank"
+                onClick={() => setMenuVisible(false)}
+              >
+                GitHub
+              </a>
+            </div>
+            <div className={styles.mobileMenuDivider}>
+              <Divider orientation="horizontal" />
+            </div>
+            <SideBarNavigation
+              className={styles.mobileMenuNavigation}
+              tag={`Button`}
+              onClose={() => setMenuVisible(false)}
+              onNavigate={() => setMenuVisible(false)}
+              navigation={navigationTree.filter((nav) => !nav.metadata.hide)}
+            />
+          </nav>
+        </OutsideClick>
+      )}
     </header>
   );
 }

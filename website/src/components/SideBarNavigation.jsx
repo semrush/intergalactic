@@ -6,12 +6,12 @@ import ChevronRightXS from '@semcore/icon/ChevronRight/m';
 import cx from 'classnames';
 import styles from './SideBarNavigation.module.css';
 
-const SideBarNavigation = ({ navigation = [] }) => {
+const SideBarNavigation = ({ navigation = [], onNavigate, className }) => {
   const { category, page } = useParams();
   const [collapseCategories, setCollapseCategories] = useState([category]);
 
   return (
-    <div className={styles.navigationView}>
+    <div className={cx(styles.navigationView, className)}>
       {navigation.map((currentCategory, i) => {
         const isOpen = collapseCategories.includes(currentCategory.route);
         return (
@@ -50,6 +50,7 @@ const SideBarNavigation = ({ navigation = [] }) => {
                       p.metadata.disabled && styles.categoryItemDisabled,
                       p.route === `${category}/${page}` && styles.categoryItemActive,
                     )}
+                    onClick={onNavigate}
                     active={p.route === `${category}/${page}`}
                     to={`/${p.route}/`}
                     key={`page-${i}`}

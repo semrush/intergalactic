@@ -144,10 +144,3 @@
     display: none;
   }
 }
-
-@media (max-width: 415px) {
-  .selectPopper {
-    margin-left: -200px !important;
-    width: 244px !important;
-  }
-}
