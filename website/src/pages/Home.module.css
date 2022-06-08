@@ -287,7 +287,7 @@
 
 .category {
   display: grid;
-  grid-template-rows: repeat(auto-fill, 36px);
+  grid-template-rows: repeat(auto-fill, 40px);
   grid-template-columns: max-content;
   grid-auto-flow: column;
   column-gap: 30px;
@@ -301,8 +301,7 @@
 }
 .category .component .linkStyled {
   max-width: 160px;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  white-space: normal;
 }
 .uxPatterns .category .component {
   max-width: 100%;
@@ -330,7 +329,6 @@
 }
 
 .linkStyled {
-  line-height: 1.25;
   color: #171a22;
   cursor: pointer;
   text-decoration: none;
@@ -342,7 +340,6 @@
 }
 
 .linkDisabled {
-  line-height: 1.25;
   color: #ccc;
   text-decoration: none;
   cursor: default;

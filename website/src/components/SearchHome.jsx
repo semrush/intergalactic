@@ -102,7 +102,16 @@ const showList = (hits, pages, content) => {
   return options;
 };
 
-const Search = ({ currentRefinement, refine, hits, history, searchResults, ...other }) => {
+const Search = ({
+  currentRefinement,
+  refine,
+  hits,
+  history,
+  searchResults,
+  wrapperClassName,
+  onItemSelect,
+  ...other
+}) => {
   const pages = hits.filter((el) => !el.heading);
   const content = hits.filter((el) => el.heading);
   const location = useLocation();
@@ -117,18 +126,20 @@ const Search = ({ currentRefinement, refine, hits, history, searchResults, ...ot
       offset={0}
       stretch="fixed"
       value={location.pathname}
-      onChange={(value) => history.push(value)}
+      onChange={(value) => {
+        history.push(value);
+        onItemSelect?.();
+      }}
     >
-      <Select.Trigger tag={Box} className={styles.inputWrapper} inline={false}>
+      <Select.Trigger
+        tag={Box}
+        className={cx(styles.inputWrapper, wrapperClassName)}
+        inline={false}
+      >
         {({ visible }, action) => {
           return (
             <>
               <input
-                className={cx(
-                  styles.input,
-                  styles.desktopInput,
-                  !!currentRefinement && visible && styles.inputOpen,
-                )}
                 autoFocus
                 value={ru.toEn(currentRefinement)}
                 onChange={(e) => {
@@ -140,13 +151,14 @@ const Search = ({ currentRefinement, refine, hits, history, searchResults, ...ot
                   e.key === ' ' && e.stopPropagation();
                 }}
                 {...other}
-              />
-              <input
                 className={cx(
                   styles.input,
-                  styles.mobileInput,
+                  styles.desktopInput,
                   !!currentRefinement && visible && styles.inputOpen,
+                  other.className,
                 )}
+              />
+              <input
                 value={ru.toEn(currentRefinement)}
                 onChange={(e) => {
                   refine(ru.toEn(e.currentTarget.value));
@@ -154,6 +166,12 @@ const Search = ({ currentRefinement, refine, hits, history, searchResults, ...ot
                   action.highlightedIndex(0);
                 }}
                 {...other}
+                className={cx(
+                  styles.input,
+                  styles.mobileInput,
+                  !!currentRefinement && visible && styles.inputOpen,
+                  other.className,
+                )}
               />
               <div className={styles.iconSearchWrapper}>
                 <SearchM className={styles.searchIcon} />
@@ -178,7 +196,7 @@ const SuggestSearch = withRouter(connectAutoComplete(connectStateResults(Search)
 function SearchHome(props) {
   return (
     <InstantSearch searchClient={searchClient} indexName={CONFIG.ALGOLIA_INDEX}>
-      <SuggestSearch {...props} />
+      <SuggestSearch {...props} visible={true} />
     </InstantSearch>
   );
 }
