@@ -7,7 +7,13 @@ docs: true
 
 @## Basic rules
 
-The usage rules of colors in the chart widgets:
+- Use color thoughtfully and don't make colors too bright without a reason. **Keep in mind the visual hierarchy.**
+- If there are several widgets on a page that mention the same entity, then use the same color for the entity in all widgets on the same page.
+- **Keep in mind that green and red are often associated with good and bad, growth and decline.**
+
+> **We recommend using red carefully**. It is usually used for destructive actions and invalid states.
+
+@## Colors for text and additional information
 
 | Color        | Usage                                                       |
 | ------------ | ----------------------------------------------------------- |
@@ -16,64 +22,71 @@ The usage rules of colors in the chart widgets:
 | `--gray-100` | The X-axis and the accent lines on the grid when, if needed |
 | `--gray-200` | Additional guide lines                                      |
 
-We have a special [palette](/style/palette/) for charts.
-
-- Use color thoughtfully and don't make colors too bright without a reason. **Keep in mind the visual hierarchy.**
-- If there are several widgets on a page that mention the same entity, then use the same color for the entity in all widgets on the same page.
-- **Keep in mind that green and red are often associated with good and bad, growth and decline.**
-
-@## Palette
-
-We have eight basic colors, each has five shades. See palette in the Figma library:
-
-- [public library](https://www.figma.com/@semrush);
-- [inner library](https://www.figma.com/file/eODzGSSSlI8fl0x5fsv9cf/%E2%9C%A8-Charts).
-
-Gray color (`--gray-200`) is used to indicate voids, missing or other data.
-
-> **We recommend using red in an appropriate context**. In our interface, it is usually used for destructive actions and invalid states.
-
-@## Colors usage order
+@## Colors usage
 
 There are two ways of coloring your data with our palette.
 
-### Categorical order
+@## Categorical order
 
 This way helps to choose colors with a predefined order and contrast for your data.
 
-See recommended colors order in the Figma library:
+### Basic pack
 
-- [public library](https://www.figma.com/@semrush);
-- [inner library](https://www.figma.com/file/eODzGSSSlI8fl0x5fsv9cf/%E2%9C%A8-Charts).
+@import color-group {"group": "basicPack"}
 
-![categorical order](static/categorical.png)
+### Second pack
 
-<!-- #### 1. Basic colors -->
+@import color-group {"group": "secondPack"}
 
-<!-- @import color-group {"group": "chart"} -->
+### Third pack
 
-<!-- #### 2. Second pack -->
+@import color-group {"group": "thirdPack"}
 
-<!-- @import color-group {"group": "second-pack"} -->
+### Other data
 
-<!-- #### 3. Third pack -->
+Use it to indicate voids, missing or some other data.
 
-<!-- @import color-group {"group": "third-pack"} -->
+@import color-group {"group": "otherData"}
 
-<!-- #### 4. Other data -->
+@## Sequental order
 
-<!-- @import color-group {"group": "other-data"} -->
+This way helps to color your data in a monochromatic way.
 
-### Sequental order
+### Blue
 
-This way helps to color your data monochromatic.
+@import color-group {"group": "blue"}
 
-See palette in the Figma library:
+### Green
 
-- [public library](https://www.figma.com/@semrush);
-- [inner library](https://www.figma.com/file/eODzGSSSlI8fl0x5fsv9cf/%E2%9C%A8-Charts).
+@import color-group {"group": "green"}
 
-![sequental order](static/sequental.png)
+### Salad
+
+@import color-group {"group": "salad"}
+
+### Orange
+
+@import color-group {"group": "orange"}
+
+### Yellow
+
+@import color-group {"group": "yellow"}
+
+### Red
+
+@import color-group {"group": "red"}
+
+### Pink
+
+@import color-group {"group": "pink"}
+
+### Violet
+
+@import color-group {"group": "violet"}
+
+### Gray
+
+@import color-group {"group": "gray"}
 
 @## I need more colors 🙃
 
