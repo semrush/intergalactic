@@ -22,6 +22,11 @@ export interface IBubbleProps extends IContext {
   duration?: number;
 }
 
-declare const Bubble: <T>(props: CProps<IBubbleProps & T>) => ReturnEl;
+export interface IBubbleContext {
+  /** Index element of data */
+  index: number;
+}
+
+declare const Bubble: <T>(props: CProps<IBubbleProps & T, IBubbleContext>) => ReturnEl;
 
 export default Bubble;
