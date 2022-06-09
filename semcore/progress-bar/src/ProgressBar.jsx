@@ -39,7 +39,7 @@ class ProgressBarRoot extends Component {
         use:theme={useTheme}
         use:animation={!value}
         use:duration={`${duration}ms`}
-        сolorBg={resolveColor(theme)}
+        colorBg={resolveColor(theme)}
       >
         <Children />
       </SProgressBar>,
@@ -57,7 +57,7 @@ function Value(props) {
       render={Box}
       use:width={width}
       use:duration={`${duration}ms`}
-      сolorBg={resolveColor(theme)}
+      colorBg={resolveColor(theme)}
     />,
   );
 }

@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.0.4] - 2022-06-09
+
+### Fixed
+
+- Theme prop doesn't work when styles has been post-processed
+
 ## [3.0.3] - 2022-06-02
 
 ### Changed
