@@ -63,7 +63,7 @@ export const collectPackages = async (inNpmVersions: { [packageName: string]: st
     );
 
     const dependencies: Package['dependencies'] = {};
-    for (const dependenciesType of ['dependencies', 'devDependencies']) {
+    for (const dependenciesType of ['dependencies']) {
       for (const dependency in packageFile[dependenciesType]) {
         if (!knownPackages[dependency]) continue;
 
