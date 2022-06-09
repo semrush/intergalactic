@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.0.8] - 2022-06-09
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/progress-bar` [3.0.3 ~> 3.0.4]).
+
 ## [3.0.7] - 2022-06-02
 
 ### Changed
