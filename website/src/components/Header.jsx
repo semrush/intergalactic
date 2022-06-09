@@ -34,7 +34,7 @@ function Header(props) {
           )}
         </div>
         <div className={cx(styles.logo, searchVisible && styles.activeSearch)}>
-          <a className={styles.devportalLink} href="https://developer.semrush.com/">
+          <a className={styles.devportalLink} href="/">
             <img src={mobileLogo} className={styles.semrushLogo} alt="Logo" />
             <span className={styles.devportalTitle}>Developer</span>
           </a>
