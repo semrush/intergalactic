@@ -17,10 +17,23 @@
   position: relative;
 }
 
-.stylesIcons {
+.codeViewControlsParent {
   position: absolute;
+  top: 0;
+  right: 0;
+  padding: 4px 0 4px 4px;
+  background-color: rgba(1, 22, 39, 0.8);
+}
+
+.codeViewControls {
+  position: sticky;
   top: 16px;
+}
+
+.stylesIcons {
+  display: inline-block;
   cursor: pointer;
+  margin-right: 16px;
 }
 .stylesIcons > span {
   display: inline-block;
@@ -33,10 +46,4 @@
 }
 .stylesIcons svg:hover {
   opacity: 0.8;
-}
-.iconCopy {
-  right: 16px;
-}
-.iconSandBox {
-  right: 54px;
 }

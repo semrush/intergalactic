@@ -14,13 +14,17 @@ class Example extends React.PureComponent {
           <div style={{ width: '100%' }}>{children}</div>
         </div>
         <div className={styles.codeView}>
-          <div className={`${styles.stylesIcons} ${styles.iconCopy}`}>
-            <Copy text={raw.code} textTooltip="Click to copy code">
-              <CopyS />
-            </Copy>
-          </div>
-          <div className={`${styles.stylesIcons} ${styles.iconSandBox}`}>
-            <Sandbox raw={raw} />
+          <div className={styles.codeViewControls}>
+            <div className={styles.codeViewControlsParent}>
+              <div className={styles.stylesIcons}>
+                <Sandbox raw={raw} />
+              </div>
+              <div className={styles.stylesIcons}>
+                <Copy text={raw.code} textTooltip="Click to copy code">
+                  <CopyS />
+                </Copy>
+              </div>
+            </div>
           </div>
           <Code lang="jsx" block copy={false}>
             {raw.code}
