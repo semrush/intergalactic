@@ -3,7 +3,6 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { sstyled } from '@semcore/core';
 import { eventToPoint, invert } from './utils';
 import createElement from './createElement';
-import { FadeInOut } from '@semcore/animation';
 import trottle from '@semcore/utils/lib/rafTrottle';
 
 import style from './style/dot.shadow.css';
@@ -61,25 +60,20 @@ function Dots(props) {
     };
   }, [eventEmitter, scale, data, x, y]);
 
-  const renderCircle = useCallback(
-    React.forwardRef((props, ref) => {
-      return <FadeInOut ref={ref} tag="circle" {...props} />;
-    }),
-    [props],
-  );
-
   return data.reduce((acc, d, i) => {
     const isPrev = d3.defined()(data[i - 1] || {});
     const isNext = d3.defined()(data[i + 1] || {});
     const active = i === activeIndex;
+    const visible = display || i === activeIndex || (!isPrev && !isNext);
     if (!d3.defined()(d)) return acc;
+    if (!visible) return acc;
     acc.push(
       sstyled(styles)(
         <SDot
           key={i}
-          render={renderCircle}
-          visible={display || i === activeIndex || (!isPrev && !isNext)}
-          __excludeProps={['data', 'scale', 'value', 'display']}
+          render="circle"
+          visible={visible}
+          __excludeProps={['data', 'scale', 'value']}
           value={d}
           index={i}
           cx={d3.x()(d)}
