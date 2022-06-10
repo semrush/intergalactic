@@ -9,6 +9,11 @@ SDot {
   transition-property: cx, cy;
   transition-duration: var(--duration);
   transition-timing-function: ease-in-out;
+  animation-fill-mode: both;
+  animation-timing-function: ease-out;
+  animation-duration: 300ms;
+  animation-delay: 0ms;
+  animation-name: exit;
 }
 
 SDot[color] {
@@ -21,4 +26,26 @@ SDot[hide] {
 
 SDot[active] {
   r: 8px;
+}
+
+SDot[visible] {
+  animation-name: enter;
+}
+
+@keyframes enter {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes exit {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
 }
