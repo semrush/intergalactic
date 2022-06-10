@@ -285,13 +285,13 @@ function Pie({
 }) {
   const [isMount, setIsMount] = useState(false);
   useEffect(() => {
-    //TODO you should't run animation for first render
+    //you should't run animation for first render
     if (!isMount) {
       setIsMount(true);
       return;
     }
     if (active !== undefined && active !== null) {
-      //TODO name must unique on page
+      //name must unique on page
       $animationActivePie({ ...other, active, data, selector: `[name="${other.name}"]` });
     }
   }, [active]);

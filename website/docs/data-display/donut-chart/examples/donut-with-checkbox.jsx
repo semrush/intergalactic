@@ -8,6 +8,11 @@ import InfoM from '@semcore/icon/Info/m';
 import SettingsM from '@semcore/icon/Settings/m';
 import Checkbox from '@semcore/checkbox';
 
+const stylesTable = {
+  borderCollapse: 'separate',
+  borderSpacing: '0 4px',
+};
+
 export default () => {
   const [active, update] = React.useState(null);
   const onChange = (checked, e) => {
@@ -49,15 +54,7 @@ export default () => {
             ))}
           </Donut>
         </Plot>
-        <Text
-          tag="table"
-          size={100}
-          mt="-4px"
-          style={{
-            borderCollapse: 'separate',
-            borderSpacing: '0 4px',
-          }}
-        >
+        <Text tag="table" size={100} mt="-4px" style={stylesTable}>
           {['a', 'b', 'c'].map((name) => {
             return (
               <tr>
