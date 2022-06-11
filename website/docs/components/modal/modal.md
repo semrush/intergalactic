@@ -55,34 +55,32 @@ We have several modal window types:
 
 ### Container
 
-| Styles                                              | Example                                 |
-| --------------------------------------------------- | --------------------------------------- |
-| `border-radius: 6px; padding: 24px 32px 32px 32px;` | ![modal paddings](static/container.png) |
+| Styles                               | Example                                 |
+| ------------------------------------ | --------------------------------------- |
+| `border-radius: 12px; padding: 40px` | ![modal paddings](static/container.png) |
 
 ### Close button (optional)
 
-| Styles                                                                 | Example                                                       |
-| ---------------------------------------------------------------------- | ------------------------------------------------------------- |
-| CloseS icon, color `$stone`. [Hover is 12% darker](/style/variables/). | ![modal close button hover](static/close-hover.png)           |
-| Indent from top and right to the `Close` icon is 12px.                 | ![modal close button](static/close-button.png)                |
-| The cross clickable area is 40px \* 40px.                              | ![modal close button hover zone](static/close-hover-zone.png) |
+| Styles                                                                                 | Example                                                       |
+| -------------------------------------------------------------------------------------- | ------------------------------------------------------------- |
+| `Close` icon size **M**, has default color `--gray-300`, and hover color `--gray-400`. | ![modal close button hover](static/close-hover.png)           |
+| Indent from top and right to the `Close` icon is 12px.                                 | ![modal close button](static/close-button.png)                |
+| The cross clickable area is 48px \* 48px.                                              | ![modal close button hover zone](static/close-hover-zone.png) |
 
 ### Overlay
 
-| Styles                                                                                                    | Example                                     |
-| --------------------------------------------------------------------------------------------------------- | ------------------------------------------- |
-| `opacity: 0.6; background: #000;`                                                                         | ![modal overlay](static/modal-overlay.png)  |
-| Overlay style when opening a modal window inside another modal window – `opacity: 0.4; background: #000;` | ![modal in  modal](static/second-modal.png) |
+| Styles                                                                                                          | Example                                     |
+| --------------------------------------------------------------------------------------------------------------- | ------------------------------------------- |
+| `opacity: 0.7; background: --gray-800;`                                                                         | ![modal overlay](static/modal-overlay.png)  |
+| Overlay style when opening a modal window inside another modal window – `opacity: 0.4; background: --gray-800;` | ![modal in  modal](static/second-modal.png) |
 
 > 💡 Use a modal window inside another modal window (Xzibit triggers 😁) only when necessary – if nothing at all fits. Look through an [amazing Manifesto](https://modalzmodalzmodalz.com/) against the ubiquitous use of modal windows. Meditate.
 
 @## Window size
 
-The modal window must be at least 320px for the desktop version.
+The modal window must be at least 320px and no larger than 720px for the desktop version.
 
 ![min modal](static/yes-modal.png)
-
-You can also set the maximum width for the window. This width is optional and depends on the task, it is determined by the designer. The maximum window width can be used to avoid stretching the content and making it harder to read data.
 
 @## Interaction
 
