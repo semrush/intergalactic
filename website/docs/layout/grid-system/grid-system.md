@@ -32,7 +32,7 @@ The grid system is based on the left menu width (250px) and the maximum content 
 **The recommended maximum width of the content area:**
 
 - for the product landing pages is 980px;
-- for the product pages is 1200px.
+- for the product pages is 1440px.
 
 @page grid-api
 @page grid-code
