@@ -4,9 +4,9 @@ title: Content in modal window
 
 > 💡 Standard description of modal windows can be found in the [Modal](/components/modal/) component. And here we have compiled recommendations for content styles in modal windows.
 
-@## Spacing
+@## Margins
 
-### Spacing between the header and the content
+**Margin between the title and the content:**
 
 - 16px to a text;
 - 24px to controls/inputs.
@@ -15,66 +15,84 @@ title: Content in modal window
 
 ![modal heading margins](static/big-margins-heading.png)
 
-### Spacing between the content and CTA buttons - 24px
+**For confirm modals use small margin of 8px.**
 
-![modal button margins](static/margins.png)
+![modal heading margins](static/margins-heading-confirm.png)
+
+**Margin between the content and CTA buttons — 24px.**
 
 ![modal button margins](static/big-margins.png)
 
-@## Headings
+**For confirm modals margin between the content and CTA buttons — 16px.**
 
-- The header size in confirm windows - H5 (19px, `--fs-400`, since there is usually a small amount of content). The header size in all other window types - H4 (25px, `--fs-500`).
-- The paragraph size - L (14px, `--fs-300`). Buttons - L, 32 px.
+![modal button margins](static/margins.png)
 
-![modal heading and buttons](static/s-confirm.png)
+@## Title
 
-![modal heading and buttons](static/m-settings.png)
+- For title in confirm windows use text with 20px size (`--fs-400`, `--lh-400`). For title in all other window types use text with 24px size (`--fs-500`, `--lh-500`).
+- For paragraph text use 14px size (`--fs-300`, `--lh-300`). For buttons - M size.
+
+![modal title and buttons](static/s-confirm.png)
+
+![modal title and buttons](static/m-settings.png)
 
 @## Buttons
 
-Modal window must have a CTA or main button. The `Cancel` button and `Close` icon are optional, but recommended.
+Modal window must have a CTA or main button. The "Cancel" button and "Close" icon are optional, but recommended.
 
-@## Dual-zone modal window background
+@## Dual-zone modal window
 
-Gray background color for the dual-zone modal window – `background-color: $gray94;`.
+For the dual-zone modal window use:
 
-![two-zone modal](static/l-modal.png)
+```
+background-color: var(--gray-50);
+```
 
-@## Fixed area styles
-Shadows style of the fixed area when scrolling, see in [Variables](/style/variables/).
+![two-zone modal](static/m-modal.png)
 
-> 💡 The area with pinned elements does not overlap the inside padding in the modal window.
+@## Fixed header and footer
 
-Paddings inside the pinned area are recommended to make them not too large (for example, 8 px), so that pinned area won't take too much area.
+While scrolling the modal's content area fixed areas get following shadow style:
+
+```
+background: linear-gradient(180deg, rgba(25, 27, 35, 0.1) 20.55%, rgba(255, 255, 255, 0.0001) 100%);
+```
+
+Make paddings inside the fixed area not too big (for example, 8px).
 
 ![fixed zone in modal](static/fixed.png)
+
 ![fixed zone in modal](static/fixed-margins.png)
 
 @## Loading
 
-While loading or reloading the content inside the modal window, [Spin](/components/spin/) appears over the content.
+While loading or reloading the content inside the modal window, show [Spin](/components/spin/) over the content.
 
-- The spinner size inside the modal window is XXL (72px).
+- Use Spin with the largest size — XXL.
 - The spinner is necessarily centered regarding the hidden content.
-- The text of the spinner is optional.
+- The message for this state is optional.
 
 ![spinner in modal](static/spinner.png)
 
-@## The content alignment
+@## Content alignment
 
 In most cases, we make the content, titles, and controls of modal windows left aligned.
 
 **However, there may be exceptions,** when according to the composition, both the header and controls are should be aligned to the center of the modal window.
 
-**Align the content to the left in the following cases:**
+**Align the content to the left when:**
 
-- presence of lists, large texts (they are located on the left for readability);
-- presence of controls of different lengths;
-- the modal window is divided into several logical parts (wizards, dual-zone windows with previews and a separate filter block);
-- presence of different types of content: controls, texts, lists, tables, etc.;
-- presence of pinned controls.
+- content has lists, large texts (they are left aligned for readability);
+- form has inputs of different lengths;
+- modal window is divided into several logical parts (wizards, dual-zone windows with previews and a separate filter section);
+- content has different types of content: form, lists, tables, etc.;
+- content has fixed controls.
 
-**Align the content to the center in the following cases:**
+![modal with left aligned content](static/m-settings.png)
 
-- the modal window displays a success notification that contains an image;
-- the modal window displays a notification with a single main button or buttons that scroll through the content.
+**Align the content to the center when:**
+
+- modal window displays a success notification that contains an illustration;
+- modal window displays a notification with a single main button or buttons that scroll through the content.
+
+![modal with center aligned content](static/m-news.png)
