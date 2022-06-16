@@ -2,21 +2,23 @@
 title: Links order in ProductHead
 ---
 
-Additional links are placed in the upper right corner of [ProductHead](/components/product-head/) in the following order:
-
-- **Old version**. Switches to the old version of the page.
-- **Position Tracking App (name of an application)**. Opens the dropdown with links to applications for the relevant platforms.
-- **API**. Moving forward the page with the API description.
-- **Top data (for example, Top 30 Publishers & Advertisers)**. Opens a page/modal with a certain top data.
-- **Check out the (article title)**. Moving forward to the blog article.
-- **News**. Opens the modal window of local news.
-- **Semrush Academy**. Future possible link to the Academy page.
-- **FAQ**. Opens a modal window with the FAQ.
-- **Product tour**. Launches a product tour.
-- **Video tutorial**. Opens a modal window with the video.
-- **User manual**. The transition to the Knowledge Base.
-- **Send feedback**. Dropdown with feedback sending.
+Place additional links in the upper right corner of [ProductHead](/components/product-head/) in the following order:
 
 ![links order](static/links-order.png)
 
-> 💡 For more information about link styles, check the [Link](/components/link/).
+| Link name                                                   | Description                                                                         | Appearance example                |
+| ----------------------------------------------------------- | ----------------------------------------------------------------------------------- | --------------------------------- |
+| **Old version**                                             | Switches to the old version of the page.                                            | ![links order](static/link1.png)  |
+| **App name**                                                | Opens page with application on the relevant platforms.                              | ![links order](static/link2.png)  |
+| **API**                                                     | Opens page with the API description.                                                | ![links order](static/link3.png)  |
+| **Top data (for example, Top 30 Publishers & Advertisers)** | Opens a page/modal with a certain data.                                             | ![links order](static/link4.png)  |
+| **Check out the (article title)**                           | Opens blog article.                                                                 | ![links order](static/link5.png)  |
+| **News**                                                    | Opens the modal window with product news.                                           | ![links order](static/link6.png)  |
+| **Semrush Academy**                                         | Opens page with certain [Semrush Academy course](https://www.semrush.com/academy/). | ![links order](static/link7.png)  |
+| **FAQ**                                                     | Opens a modal window or page with the FAQ.                                          | ![links order](static/link8.png)  |
+| **Product tour**                                            | Launches a product tour.                                                            | ![links order](static/link9.png)  |
+| **Video tutorial**                                          | Opens a modal window with the video.                                                | ![links order](static/link10.png) |
+| **User manual**                                             | Opens page with manual in the Knowledge Base.                                       | ![links order](static/link11.png) |
+| **Send feedback**                                           | Opens dropdown with feedback form.                                                  | ![links order](static/link12.png) |
+
+> 💡 For more information about link styles, check the guide for [Link](/components/link/).
