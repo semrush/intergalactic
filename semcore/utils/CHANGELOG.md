@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.33.1] - 2022-06-16
+
+### Fixed
+
+- Fixed the brand colors: `--orange-400` and `--violet-700`.
+
 ## [3.33.0] - 2022-06-01
 
 ### Changed
