@@ -4,6 +4,7 @@ SWizard {
   max-width: 980px;
   max-height: 700px;
   display: flex;
+  padding: 0;
 }
 
 SSidebar {
@@ -11,8 +12,12 @@ SSidebar {
   color: #fff;
   font-weight: 700;
   font-size: var(--fs-300);
+  line-height: var(--lh-300);
   padding: 40px 8px 34px;
-  width: 220px;
+  max-width: 220px;
+  flex-shrink: 0;
+  box-sizing: border-box;
+  border-radius: var(--rounded-l) 0 0 var(--rounded-l);
   @media (max-width: 1060px) {
     width: 44px;
   }
@@ -34,6 +39,7 @@ SStepper {
   position: relative;
   &:hover {
     background: var(--violet-700);
+    z-index: 1;
   }
   &[active] {
     background: var(--violet-500);
@@ -42,39 +48,42 @@ SStepper {
   &[disabled] {
     opacity: var(--disabled-opacity);
     cursor: default;
+    pointer-events: none; /* Disable interactions */
+  }
+
+  @media (max-width: 1060px) {
+    padding: 8px;
+    &:hover SStepDescription {
+      display: block;
+      position: absolute;
+      background: var(--violet-700);
+      border-radius: var(--rounded-m);
+      white-space: nowrap;
+      padding: 8px 12px;
+      top: 0;
+      left: 32px;
+      margin-left: 0;
+    }
+    &[active]:hover SStepDescription {
+      background: var(--violet-500);
+    }
   }
 }
 
 SStepNumber {
   display: inline-block;
-  width: 24px;
+  min-width: 20px;
 }
 
 SStepDescription {
+  margin-left: 4px;
   @media (max-width: 1060px) {
     display: none;
   }
 }
 
-SStepper SStepNumber:hover + SStepDescription {
-  display: flex;
-  position: absolute;
-  background: var(--violet-700);
-  border-radius: var(--rounded-m);
-  white-space: nowrap;
-  padding: 8px 12px 8px 0;
-  top: 0;
-  left: 34px;
-}
-
-SStepper[active] SStepNumber:hover + SStepDescription {
-  background: var(--violet-500);
-}
-
 SContent {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
   padding: 40px;
   width: 100%;
+  border-radius: 0 var(--rounded-l) var(--rounded-l) 0;
 }

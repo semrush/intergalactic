@@ -1,16 +1,19 @@
 import React, { ComponentProps } from 'react';
 import { CProps, ReturnEl } from '@semcore/core';
 import { Box, IBoxProps } from '@semcore/flex-box';
+import { IModalProps } from '@semcore/modal';
 
-export interface IWizardProps {
-  /**
-   * Steps array
-   */
-  steps: Array<{ step: number; title?: string; disabled?: boolean }>;
+export type WizardStep = string | number | boolean;
+
+export interface IWizardProps extends IModalProps {
   /**
    * Active step value
    */
-  currentStep: number;
+  step: WizardStep;
+  /**
+   * Is invoked when changing the step
+   */
+  onStepChange?: (value: T, e?: React.SyntheticEvent<HTMLElement>) => void;
 }
 
 export interface IWizardSidebarProps extends IBoxProps {
@@ -22,16 +25,29 @@ export interface IWizardSidebarProps extends IBoxProps {
 
 export interface IWizardStepProps extends IBoxProps {
   /**
-   * Step number
+   * Step value
    */
-  step: number;
+  step: WizardStep;
+  /**
+   * Disabled step
+   */
+  disabled?: boolean;
 }
 
 export interface IWizardStepperProps extends IBoxProps {
   /**
-   * Stepper number
+   * Step value
    */
-  step: number;
+  step: WizardStep;
+  /**
+   * Stepper number
+   * @default incremental value
+   */
+  number?: React.ReactNode;
+  /**
+   *  Is the step completed
+   */
+  completed?: boolean;
 }
 
 declare const Wizard: (<T>(props: CProps<IWizardProps & T>) => ReturnEl) & {
