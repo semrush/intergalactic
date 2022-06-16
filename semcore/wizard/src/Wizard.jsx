@@ -51,7 +51,7 @@ class WizardRoot extends Component {
     }
     const activeIndex = Array.from(this._steps, ([v]) => v).indexOf(this.asProps.step);
     return {
-      completed: activeIndex !== -1 ? activeIndex > index : true,
+      // completed: activeIndex !== -1 ? activeIndex > index : true,
       active: props.step === this.asProps.step,
       number,
       onClick: this.bindHandlerStepperClick(props.step),
