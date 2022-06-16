@@ -41,7 +41,7 @@
   --orange-100: #ffdca2;
   --orange-200: #ffb26e;
   --orange-300: #ff8c43;
-  --orange-400: #ff622d;
+  --orange-400: #ff642d;
   --orange-500: #c33909;
   --orange-600: #8b1500;
   --orange-700: #551200;
@@ -80,7 +80,7 @@
   --violet-400: #ab6cfe;
   --violet-500: #8649e1;
   --violet-600: #5925ab;
-  --violet-700: #421984;
+  --violet-700: #421983;
   --violet-800: #220358;
   --brand-color: #ff642d;
   --pinterest: #bd081c;
@@ -105,13 +105,11 @@
   --form-control-m: 28px;
   --form-control-l: 40px;
 
-  --box-shadow-card: 0px 1px 2px 0px rgba(25, 27, 35, 0.12),
-    0px 0px 1px 0px rgba(25, 27, 35, 0.16);
+  --box-shadow-card: 0px 1px 2px 0px rgba(25, 27, 35, 0.12), 0px 0px 1px 0px rgba(25, 27, 35, 0.16);
   --box-shadow-hover: 3px 3px 30px 0px rgba(25, 27, 35, 0.15);
   --box-shadow-popper: 0px 1px 12px 0px rgba(25, 27, 35, 0.15);
   --box-shadow-modal: 0px 3px 8px 0px rgba(25, 27, 35, 0.2);
-  --box-shadow-dnd: 0 0 1px rgba(25, 27, 35, 0.16),
-    0 12px 40px rgba(25, 27, 35, 0.16);
+  --box-shadow-dnd: 0 0 1px rgba(25, 27, 35, 0.16), 0 12px 40px rgba(25, 27, 35, 0.16);
 
   --fs-100: 12px;
   --lh-100: 1.33;
@@ -150,7 +148,7 @@
   --dark-green: #007c65;
   --yellow: #fdc23c;
   --light-orange: #ff8c43;
-  --orange: #ff622d;
+  --orange: #ff642d;
   --dark-orange: #c33909;
   --red: #ff4953;
   --dark-red: #d1002f;

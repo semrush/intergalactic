@@ -2,7 +2,7 @@ import React from 'react';
 import Color from '@components/Color';
 
 const group = {
-  brand: ['--orange-400', '--violet-600'],
+  brand: ['--orange-400', '--violet-700'],
   main: ['--blue-400', '--green-400', '--orange-400', '--red-400'],
   gray: [
     '--gray-50',
