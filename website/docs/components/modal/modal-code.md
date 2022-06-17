@@ -46,8 +46,8 @@ We hope that in most cases you won't need it. **No custom cross is needed:**
 
 Whenever it’s possible, use pages instead of modal windows. Modal windows in the iframe will not overlay the entire viewport — just an area of an iframe, and will not appear at the center of viewport — only at the center of an iframe, looking very awkward.
 
-One of the alternative solutions — full-screen modal. It will cover the entire iframe and will look like a page, not a dialog.
+One of the alternative solutions — fullscreen modal. It will cover the entire iframe and will look like a page, not a dialog.
 
-> Avoid using full-screen modals for simple confirmation dialogs or warnings.
+> Avoid using fullscreen modals for simple confirmation dialogs or warnings.
 
 When using simple modal dialog, you can apply a quick fix for better looking modal window - just set `margin-top: 0` or `<Modal mt={0}/>`.

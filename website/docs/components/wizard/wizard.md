@@ -168,7 +168,7 @@ There you can see default styles for stepper button.
 - You can move between the interactive elements of the window using `Tab`.
 - You can close the window with `Esc`.
 
-When the full-screen modal closes, focus returns back to the page. See [Accessibility](/core-principles/a11y/).
+When the fullscreen modal closes, focus returns back to the page. See [Accessibility](/core-principles/a11y/).
 
 @## Use in UI/UX
 
