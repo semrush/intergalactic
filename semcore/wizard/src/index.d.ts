@@ -10,10 +10,6 @@ export interface IWizardProps extends IModalProps {
    * Active step value
    */
   step: WizardStep;
-  /**
-   * Is invoked when changing the step
-   */
-  onStepChange?: (value: T, e?: React.SyntheticEvent<HTMLElement>) => void;
 }
 
 export interface IWizardSidebarProps extends IBoxProps {
@@ -39,6 +35,10 @@ export interface IWizardStepperProps extends IBoxProps {
    * Step value
    */
   step: WizardStep;
+  /**
+   * Is invoked when active the step
+   */
+  onActive?: (step: WizardStep, e: React.SyntheticEvent<HTMLElement>) => void;
   /**
    * Stepper number
    * @default incremental value

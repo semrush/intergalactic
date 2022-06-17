@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import createComponent, { Component, Root, sstyled } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
 import Modal from '@semcore/modal';
@@ -11,26 +11,10 @@ class WizardRoot extends Component {
   static displayName = 'Wizard';
   static style = style;
   static defaultProps = {
-    defaultStep: null,
+    step: null,
   };
 
   _steps = new Map();
-
-  uncontrolledProps() {
-    return {
-      step: null,
-    };
-  }
-
-  bindHandlerStepperClick = (step) => (e) => {
-    this.handlers.step(step, e);
-  };
-
-  bindHandlerStepperKeyPress = (step) => (e) => {
-    if (e.key === 'Enter') {
-      this.handlers.step(step, e);
-    }
-  };
 
   getStepProps(props) {
     return {
@@ -41,21 +25,15 @@ class WizardRoot extends Component {
 
   getStepperProps(props, i) {
     let number = i + 1;
-    let index = i;
     if (this._steps.has(props.step)) {
       const step = this._steps.get(props.step);
       number = step.number;
-      index = step.index;
     } else {
-      this._steps.set(props.step, { number, index, ...props });
+      this._steps.set(props.step, { number, ...props });
     }
-    const activeIndex = Array.from(this._steps, ([v]) => v).indexOf(this.asProps.step);
     return {
-      // completed: activeIndex !== -1 ? activeIndex > index : true,
       active: props.step === this.asProps.step,
       number,
-      onClick: this.bindHandlerStepperClick(props.step),
-      onKeyPress: this.bindHandlerStepperKeyPress(props.step),
     };
   }
 
@@ -99,13 +77,36 @@ function Step(props) {
 }
 
 function Stepper(props) {
-  const { Children, styles, active, completed, disabled, number } = props;
+  const { Children, styles, step, active, onActive, completed, disabled, number } = props;
   const SStepper = Root;
   const SStepNumber = 'span';
   const SStepDescription = 'span';
 
+  const handlerClick = useCallback(
+    (e) => {
+      if (onActive) onActive(step, e);
+    },
+    [step, onActive],
+  );
+
+  const handlerKeyPress = useCallback(
+    (e) => {
+      if (onActive && e.key === 'Enter') {
+        onActive(step, e);
+      }
+    },
+    [step, onActive],
+  );
+
   return sstyled(styles)(
-    <SStepper render={Box} role="menuitem" aria-disabled={disabled} aria-current={active}>
+    <SStepper
+      render={Box}
+      role="menuitem"
+      aria-disabled={disabled}
+      aria-current={active}
+      onClick={handlerClick}
+      onKeyPress={handlerKeyPress}
+    >
       <SStepNumber>{completed ? <CheckM /> : number}</SStepNumber>
       <SStepDescription>
         <Children />
