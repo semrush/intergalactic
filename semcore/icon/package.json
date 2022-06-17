@@ -12,7 +12,8 @@
     "parsing": "icon-transform-svg parsing",
     "transform": "icon-transform-svg",
     "build": "build --source=js && npm run transform -- --configFile=transform-svg.config.js && npm run transform -- --configFile=transform-svg-legacy.config.js",
-    "test": "jest"
+    "test": "jest",
+    "prebuild": "ls -d */ | egrep -v \"__tests__|src|svg|svg-new\" | xargs rm -rf"
   },
   "dependencies": {
     "@semcore/utils": "^3.15",
