@@ -28,15 +28,15 @@ Pattern consists of:
 
 ![summary scheme](static/summary-metric.png)
 
-@## Margins & paddings
+@## Margins and paddings
 
 The common version of the summary metric:
 
-![summary margins & paddings](static/margins-paddings.png)
+![summary Margins and paddings](static/margins-paddings.png)
 
 If the metric consists of several others, so use these margins:
 
-![summary margins & paddings](static/margins-paddings2.png)
+![summary Margins and paddings](static/margins-paddings2.png)
 
 @## Styles
 
