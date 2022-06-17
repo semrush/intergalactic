@@ -1,78 +1,75 @@
 'use strict';
 
-// Reference: https://developer.mozilla.org/en-US/docs/Web/SVG/Element#SVG_elements
-const GET_ELEMENT_TAG_NAME = (name) => {
-  const ELEMENT_TAG_NAME_MAPPING = {
-    animatemotion: 'animateMotion',
-    animatetransform: 'animateTransform',
-    clippath: 'clipPath',
-    'color-profile': 'colorProfile',
-    feblend: 'feBlend',
-    fecolormatrix: 'feColorMatrix',
-    fecomponenttransfer: 'feComponentTransfer',
-    fecomposite: 'feComposite',
-    feconvolvematrix: 'feConvolveMatrix',
-    fediffuselighting: 'feDiffuseLighting',
-    fedisplacementmap: 'feDisplacementMap',
-    fedistantlight: 'feDistantLight',
-    fedropshadow: 'feDropShadow',
-    feflood: 'feFlood',
-    fefunca: 'feFuncA',
-    fefuncb: 'feFuncB',
-    fefuncg: 'feFuncG',
-    fefuncr: 'feFuncR',
-    fegaussianblur: 'feGaussianBlur',
-    feimage: 'feImage',
-    femerge: 'feMerge',
-    femergenode: 'feMergeNode',
-    femorphology: 'feMorphology',
-    feoffset: 'feOffset',
-    fepointlight: 'fePointLight',
-    fespecularlighting: 'feSpecularLighting',
-    fespotlight: 'feSpotLight',
-    fetile: 'feTile',
-    feturbulence: 'feTurbulence',
-    foreignobject: 'foreignObject',
-    lineargradient: 'linearGradient',
-    radialgradient: 'radialGradient',
-    textpath: 'textPath',
-  };
-  return ELEMENT_TAG_NAME_MAPPING[name] || name;
+// Source: https://developer.mozilla.org/en-US/docs/Web/SVG/Element#SVG_elements
+const svgElementTagNames = {
+  animatemotion: 'animateMotion',
+  animatetransform: 'animateTransform',
+  clippath: 'clipPath',
+  'color-profile': 'colorProfile',
+  feblend: 'feBlend',
+  fecolormatrix: 'feColorMatrix',
+  fecomponenttransfer: 'feComponentTransfer',
+  fecomposite: 'feComposite',
+  feconvolvematrix: 'feConvolveMatrix',
+  fediffuselighting: 'feDiffuseLighting',
+  fedisplacementmap: 'feDisplacementMap',
+  fedistantlight: 'feDistantLight',
+  fedropshadow: 'feDropShadow',
+  feflood: 'feFlood',
+  fefunca: 'feFuncA',
+  fefuncb: 'feFuncB',
+  fefuncg: 'feFuncG',
+  fefuncr: 'feFuncR',
+  fegaussianblur: 'feGaussianBlur',
+  feimage: 'feImage',
+  femerge: 'feMerge',
+  femergenode: 'feMergeNode',
+  femorphology: 'feMorphology',
+  feoffset: 'feOffset',
+  fepointlight: 'fePointLight',
+  fespecularlighting: 'feSpecularLighting',
+  fespotlight: 'feSpotLight',
+  fetile: 'feTile',
+  feturbulence: 'feTurbulence',
+  foreignobject: 'foreignObject',
+  lineargradient: 'linearGradient',
+  radialgradient: 'radialGradient',
+  textpath: 'textPath',
 };
 const getConfig = () => {
   return {
     tasks: () => [],
     template: (obj) => `
-      import React from 'react';
-      import { createBaseComponent } from '@semcore/core';
-      import Icon from '@semcore/icon';
-      
-      function ${obj.name}({width = '${obj.width}', height = '${obj.height}', viewBox = '${obj.viewBox}', ...props}, ref) {
-        return (
-            <Icon 
-              ref={ref}
-              data-name="${obj.dataName}" 
-              data-group="${obj.dataGroup}"
-              width={width}
-              height={height}
-              viewBox={viewBox}
-              {...props}
-            >
-               ${obj.sourcePath}
-            </Icon>
-          );
-      }
-      
-      ${obj.name}.displayName = '${obj.name}'
-      
-      export default createBaseComponent(${obj.name})
+import React from 'react';
+import { createBaseComponent } from '@semcore/core';
+import Icon from '@semcore/icon';
+
+function ${obj.name}({width = '${obj.width}', height = '${obj.height}', viewBox = '${obj.viewBox}', ...props}, ref) {
+  return (
+      <Icon 
+        ref={ref}
+        data-name="${obj.dataName}" 
+        data-group="${obj.dataGroup}"
+        width={width}
+        height={height}
+        viewBox={viewBox}
+        {...props}
+      >
+          ${obj.sourcePath}
+      </Icon>
+    );
+}
+
+${obj.name}.displayName = '${obj.name}'
+
+export default createBaseComponent(${obj.name})
       `,
-    templateDTS: (NAME) => `
-        import React from 'react';
-        import { Merge } from '@semcore/core';
-        import { IIconProps } from '@semcore/icon';
-        declare const _default: import("@semcore/core").ComponentType<Merge<IIconProps, React.SVGAttributes<SVGElement>>, {}, {}>;
-        export default _default;
+    templateDTS: () => `
+import React from 'react';
+import { Merge } from '@semcore/core';
+import { IIconProps } from '@semcore/icon';
+declare const _default: import("@semcore/core").ComponentType<Merge<IIconProps, React.SVGAttributes<SVGElement>>, {}, {}>;
+export default _default;
       `,
     transformer: () => {
       const HtmlToReactParser = require('html-to-react').Parser;
@@ -91,7 +88,7 @@ const getConfig = () => {
           return stringifyJsx(reactElement.children);
         }
         const { type, props } = reactElement;
-        const tagName = GET_ELEMENT_TAG_NAME(type);
+        const tagName = svgElementTagNames[type] ?? type;
         const { children, ...otherProps } = props;
         let attributes = Object.entries(otherProps)
           .map(([key, value]) => (value === true ? key : `${key}="${value}"`))

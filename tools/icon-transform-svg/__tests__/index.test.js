@@ -51,9 +51,11 @@ describe('Transform svg', () => {
 
         expect(isJSPathExists).toBeTruthy();
         expect(isDTSPathExists).toBeTruthy();
-      } catch (e) {
+      } catch (error) {
+        // eslint-disable-next-line no-console
+        console.error(error);
         throw Error(
-          `Transform svg don't compile ${familyIcons} images from ${publicPath
+          `Failed to compile ${familyIcons} images from ${publicPath
             .split('/')
             .slice(-1)}/${familyIcons}`,
         );
@@ -62,7 +64,7 @@ describe('Transform svg', () => {
 
     const publicSvgPath = `${rootPath}/svg`;
     const publicSvgNewPath = `${rootPath}/svg-new`;
-    await cli(`${rootPath}/transformSvg --configFile=transform-svg.config.js`, rootPath);
+    await cli(`${rootPath}/transformSvg --configFile=transform-svg-legacy.config.js`, rootPath);
 
     await checkDistFiles(publicSvgPath, 'icon', { slice: -2, rootPath: `${rootPath}/lib` });
     await checkDistFiles(publicSvgPath, 'color', { slice: -3, rootPath: `${rootPath}/lib` });
@@ -74,8 +76,7 @@ describe('Transform svg', () => {
 
     await checkDistFiles(publicSvgPath, 'pay', { slice: -2, rootPath: `${rootPath}/lib` });
 
-    //new Icons
-    await cli(`${rootPath}/transformSvg --configFile=transform-svg-new.config.js`, rootPath);
+    await cli(`${rootPath}/transformSvg --configFile=transform-svg.config.js`, rootPath);
     await checkDistFiles(publicSvgNewPath, 'icon', { slice: -2 });
     await checkDistFiles(publicSvgNewPath, 'color', { slice: -3 });
 

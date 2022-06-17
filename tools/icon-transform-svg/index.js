@@ -23,7 +23,7 @@ const {
   transformer,
   babelConfig: defaultBabelConfig,
   tasks,
-} = Object.assign(config(), customConfig());
+} = { ...config(), ...customConfig() };
 const converter = transformer();
 
 function getDescriptionExternalIcons(iconPath, outLib) {
