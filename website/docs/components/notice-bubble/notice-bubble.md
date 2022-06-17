@@ -17,6 +17,17 @@ Let's see the differencies with [Notice](/components/notice/) and [NoticeGlobal]
 | **Important**. If the users do not read the notice, they will miss an opportunity or lose something. | ✅     | ❌           | ✅           |
 | **Temporary**. Not a default block element. Appears and disappears under certain conditions.         | ✅     | ✅           | ✅           |
 
+**Component includes:**
+
+- text (we recommend placing the message in 2 lines, maximum — 4 lines);
+- icon that closes the alert (optional, use the Close icon with M size)
+- button or two buttons (optional).
+
+**It can't contain:**
+
+- images (holiday alerts are the exception);
+- more than two buttons.
+
 @## Possible cases
 
 - Notification of the beginning or completion of a process that is hidden from the user.
@@ -29,50 +40,37 @@ Let's see the differencies with [Notice](/components/notice/) and [NoticeGlobal]
 - Displaying a process with spinner or progress bar. The exception is the no-network condition. If you need to display the process, use the [progress bar](/components/progress-bar/).
 - If there are any visible instant interface changes. _For example, adding a tag to an item — the tag appears, adding an item to favorites — changing the icon color, adding an item to a table/list._
 
-@## Component composition
-
-- Text (we recommend placing the message in 2 lines, maximum — 4 lines).
-- Icon that closes the alert (optional, use the `CloseXS` icon).
-- Button or two buttons (optional).
-
-### It can't contain
-
-- Text formatting
-- Images (holiday alerts are the exception)
-- More than two buttons
-- More than four text lines
-
 @## Types
 
-### Text message
+### Default
 
-Notification about the beginning or ending of a process hidden from the user in the interface. Or changes to content in other parts of the report that are not currently being viewed.
+It's a notification about the beginning or ending of a process hidden from the user in the interface (or about changes to content in other parts of the report that are not currently being viewed).
 
 ![default notice](static/text1.png)
 
 ### Cancel action
 
-Notification about a completed action with the possibility to cancel it. Good for use when moving/deleting items. Use the `secondary invert` button with size M.
+It's a notification about a completed action with the possibility to cancel it. Good for use when moving/deleting items. Use the `secondary invert` button with M size.
 
 ![default notice with button](static/default.png)
 
 The button name may change depending on the context.
 
-![notice with reload button](static/reload_btn.png)
+![notice with reload button](static/reload-btn.png)
 
-If the `Undo` process takes time, then display an intermediate loading state when nothing can be done by the user. Use [Spin](/components/spin/) with size M (24 x 24px). Don't use this state to display any other processes in the interface. Instead, use the [progress bar](/components/progress-bar/).
+If the undo process takes time, then display an intermediate loading state when nothing can be done by the user. Use [Spin](/components/spin/) with size XS. Don't use this state to display any other processes in the interface. Instead, use the [progress bar](/components/progress-bar/).
 
 ![notice with loading](static/default-loading.png)
 
-If everything is done , show notification that confirms the `Undo` action (use M size icon). The notification height is equal to the previous state. For recommendations on animation and timing, see the animation description below.
+If everything is done, show notification that confirms the undo action (use icon with M size). The notification height is equal to the previous state. For recommendations on animation and timing, see the animation description below.
 
 ![loading success](static/default-success.png)
 
-### Notification of success/failure
+### Success/failure
 
-Use this notification types for successful/unsuccessful user actions with products.
+Use this notification type for successful/unsuccessful user actions within interface.
 
-They have an additional colored icon. It's helpful for quickly understanding, without reading the text, how the interface responded to user's actions.
+The notice has an additional colored icon. It's helpful for quickly understanding, without reading the text, how the interface responded to user's actions.
 
 ![ success notice](static/success-notice.png)
 
@@ -84,34 +82,36 @@ Notice without a button for those systems which monitor the network connection t
 
 ![connection lost notice](static/notice.png)
 
-For those interfaces which can't monitor the network connection themselves and need to refresh the page, there is a notice with the **Reload the page button**.
+For those interfaces which can't monitor the network connection themselves and need to refresh the page, there is a notice with the "Reload the page" button.
 
 ![connection reload notice](static/reload.png)
 
-### Holiday notification
+### Event notification
 
-![holiday notice](static/event_alert.png)
+![event notice](static/event-alert.png)
 
-A notification that is designed for various events, holidays, etc. It is possible to animate elements inside such notification.
+A notification that is designed for various events, holidays, etc. You can animate elements inside such notification.
 
 @## Sizes, margins and paddings
 
-- It appears in the upper-right corner of the report under the main site menu with 12px margins on the top and right.
+- It appears in the upper-right corner of the report under the main website menu with 12px margins on the top and right.
 - When scrolling, it remains hanging in the upper-right corner with the same margins.
 
 ![notice margins](static/noticeBubble1.png)
+
 ![notice margins](static/noticeBubble2.png)
 
 - The alert has fixed width — `300px`.
-- Container paddings — `12px 24px 12px 12px`.
+- Container paddings — `12px 28px 12px 12px`.
 - Margin between the button and the text is 8px.
-- If there is a spinner in front of the text, then the margin between the spinner and the text is 8px (in this case the XS spinner 16px \* 16px).
-- In the `loading` and `success` states, the margin between the spinner/icon and the text is 8px.
-- For the `loading` state use size M spinner (24 x 24px).
-- For the `success` state use the M icon (22 x 22px).
+- If there is a spinner before the text, then the margin between the spinner and the text is 4px (use Spin with XS size).
+- In the loading and success states, the margin between the spinner/icon and the text is 4px.
+- For the loading state use Spin with XS size.
+- For the success state use icon with M size.
 
-![notice paddings](static/1.png)
-![notice paddings](static/2.png)
+![notice paddings](static/paddings-1.png)
+
+![notice paddings](static/paddings-2.png)
 
 @## Animation
 
