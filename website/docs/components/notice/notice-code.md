@@ -3,6 +3,10 @@ title: Example
 fileSource: notice
 ---
 
+@## Notice
+
+@example notice
+
 @## NoticeSmart
 
 It's an example of how NoticeSmart works.
