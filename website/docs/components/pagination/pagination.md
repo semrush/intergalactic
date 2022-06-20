@@ -41,12 +41,12 @@ Size of the page where the pagination is required shall be at the discretion of 
 - The table is scrolled up to the beginning upon moving to pages.
 - Upon sorting and filtration pagination always returns to the first page.
 
-| Appearance                                       | Action                                                                                                                                                  |
-| ------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ![first page button](static/secondary-butt.png)  | Moving to the first page by click                                                                                                                       |
-| ![prev page button](static/secondary-butt-2.png) | Moving to the previous page by click                                                                                                                    |
-| ![next page button](static/primary-butt.png)     | Moving to the next page by click                                                                                                                        |
-| ![pagination staps](static/steps.png)            | When the input is in focus, the clickable icon `ActionReturnXS` appears inside it. By clicking it or pressing Enter the user moves to the entered page. |
+| Appearance                                         | Action                                                                                                                                                 |
+| -------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| ![first page button](static/secondary-button.png)  | Moving to the first page by click                                                                                                                      |
+| ![prev page button](static/secondary-button-2.png) | Moving to the previous page by click                                                                                                                   |
+| ![next page button](static/primary-button.png)     | Moving to the next page by click                                                                                                                       |
+| ![pagination staps](static/steps.png)              | When the input is in focus, the clickable icon `Return` M size appears inside it. By clicking it or pressing Enter the user moves to the entered page. |
 
 > 💡 The current page, where the user is now, should be always displayed in the input.
 
@@ -77,7 +77,7 @@ By clicking the icon or pressing `Enter` on the keyboard the user moves to the l
 
 We use this status only if there is some data and there may be more data.
 
-> If there is no data or the filter is applied, then there should not be any pagination. The table should contain a message that data is absent.
+> 💡 If there is no data or the filter is applied, then there should not be any pagination. The table should contain a message that data is absent.
 
 ![one page](static/one-page.png)
 
@@ -101,7 +101,7 @@ You must use the values shown on the screenshot below in the select. We do not u
 
 In this case we add the `tilde (≈)` to the number of pages, and they become unclickable.
 
-![unknown pages](static/unknown.png)
+![unknown pages](static/undefined-number.png)
 
 @page pagination-a11y
 @page pagination-api

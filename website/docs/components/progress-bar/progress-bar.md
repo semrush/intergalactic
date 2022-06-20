@@ -31,18 +31,18 @@ In our interface, the progress bar is available in the following three sizes.
 
 | Size | Appearance                               | Styles                              | Example of use                                                                                                                                                               |
 | ---- | ---------------------------------------- | ----------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| L    | ![L sise progressbar](static/l-size.png) | `height: 12px; border-radius: 6px;` | In modal windows, on the start screen when launching the tool.                                                                                                               |
-| M    | ![M size progressbar](static/m-size.png) | `height: 8px; border-radius: 4px;`  | Inside the product.                                                                                                                                                          |
-| S    | ![S size progressbar](static/s-size.png) | `height: 4px; border-radius: 2px;`  | In widgets inside reports/tools. When they replace the button (for example, restart audit). When uploading multiple files, when you need to display the status of each file. |
+| L    | ![L sise progressbar](static/size-l.png) | `height: 12px; border-radius: 6px;` | In modal windows, on the start screen when launching the tool.                                                                                                               |
+| M    | ![M size progressbar](static/size-m.png) | `height: 8px; border-radius: 6px;`  | Inside the product.                                                                                                                                                          |
+| S    | ![S size progressbar](static/size-s.png) | `height: 4px; border-radius: 6px;`  | In widgets inside reports/tools. When they replace the button (for example, restart audit). When uploading multiple files, when you need to display the status of each file. |
 
 ### Themes and styles
 
-The progress bar has two themes to use: light and dark background. Both themes use the `$green` color with a pattern to display progress.
+The progress bar has two themes to use: light and dark background. Both themes use the color `--green-400` with a pattern to display progress.
 
-| Theme  | Appearance                                            | Styles                                |
-| ------ | ----------------------------------------------------- | ------------------------------------- |
-| invert | ![progressbar with invert theme](static/l-size.png)   | `background: rgba(100,120,126,0.15);` |
-| dark   | ![progressbar with dark theme](static/dark-theme.png) | `background: rgba(255,255,255,0.2);`  |
+| Theme  | Appearance                                            | Styles                          |
+| ------ | ----------------------------------------------------- | ------------------------------- |
+| invert | ![progressbar with invert theme](static/size-l.png)   | `background: rgba(gray-100);`   |
+| dark   | ![progressbar with dark theme](static/dark-theme.png) | `background: rgba(white, 0.2);` |
 
 @## Interaction
 
@@ -56,7 +56,7 @@ The progress bar has three states:
 
 - 11-99% – the progress bar is partially filled and the pattern is animated.
 
-![progressbar with the "in progress" state](static/l-size.png)
+![progressbar with the "in progress" state](static/size-l.png)
 
 - 100% – the progress bar is static, green.
 
@@ -100,12 +100,6 @@ Progress to a value is always animated with `ease-in`.
 - If the download process is too long and we know about it in advance, the progress shall be visualized immediately.
 - If the exact or approximate loading time is not known, wait for 3 seconds and display the fake progress.
 - In cases when loading is very fast, set the minimum time for displaying the progress bar – 3 seconds. This is necessary to avoid "blinking" by the progress bar and the interface.
-
-### Fixed progress bar
-
-When scrolling, the progress bar can be fixed at the upper margin. In this case, it is fixed above all components, including filters, table headers, etc.
-
-![fixed progressbar](static/progressbar-sticky.png)
 
 > 💡 This component is one of the components that displays the loading and response to user actions in the interface. For general recommendations for such components, see [Loading patterns](/patterns/loading-states/).
 

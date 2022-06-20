@@ -20,19 +20,19 @@ Our interface uses 2 control's sizes — L, and M. The text label is placed to t
 
 Try to indent the radio buttons so that the options are easy to read. The indents may vary depending on the context of use. But it is advisable to make them multiples of 4. Recommended ones are listed below.
 
-| Size  | Appearance                       | Magin                               |
-| ----- | -------------------------------- | ----------------------------------- |
-| **L** | ![l](static/radio-padding-5.png) | ![l](static/@1xradio-vert-16px.png) |
-| **M** | ![m](static/radio-padding-6.png) | ![m](static/@1xradio-vert-12px.png) |
+| Size  | Appearance              | Margins                 |
+| ----- | ----------------------- | ----------------------- |
+| **L** | ![l](static/size-l.png) | ![l](static/vert-l.png) |
+| **M** | ![m](static/size-m.png) | ![m](static/vert-m.png) |
 
 ### Radio button with a paragraph
 
 All sizes of radio buttons can be used with the corresponding text paragraphs.
 
-| Size  | Appearance                                                |
-| ----- | --------------------------------------------------------- |
-| **L** | ![radiobutton-paragraph-14](static/@1xparagraph-16px.png) |
-| **M** | ![radiobutton-paragraph-12](static/@1xparagraph-12px.png) |
+| Size  | Appearance                                          |
+| ----- | --------------------------------------------------- |
+| **L** | ![radiobutton-paragraph-14](static/paragraph-l.png) |
+| **M** | ![radiobutton-paragraph-12](static/paragraph-m.png) |
 
 @## Interaction
 
@@ -44,12 +44,12 @@ If the radio button is `disabled`, the text label and related words must also ha
 
 ### States
 
-|           | Appearance                                        |
-| --------- | ------------------------------------------------- |
-| unchecked | ![unchecked-radiobutton](static/radiobutton1.png) |
-| checked   | ![checked-radiobutton](static/radiobutton2.png)   |
-| disabled  | ![invalid-radiobutton](static/radiobutton3.png)   |
-| invalid   | ![disabled-radiobutton](static/radiobutton4.png)  |
+|           | Appearance                                               |
+| --------- | -------------------------------------------------------- |
+| unchecked | ![unchecked-radiobutton](static/radiobutton-default.png) |
+| checked   | ![checked-radiobutton](static/radiobutton-checked.png)   |
+| disabled  | ![disabled-radiobutton](static/radiobutton-disabled.png) |
+| invalid   | ![invalid-radiobutton](static/radiobutton-invalid.png)   |
 
 @## Use in UX/UI
 
