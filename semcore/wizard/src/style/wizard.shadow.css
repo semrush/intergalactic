@@ -53,16 +53,15 @@ SStepper {
 
   @media (max-width: 1060px) {
     padding: 8px;
+    &:hover {
+      width: fit-content;
+      max-width: 220px;
+    }
     &:hover SStepDescription {
       display: block;
-      position: absolute;
-      background: var(--violet-700);
       border-radius: var(--rounded-m);
       white-space: nowrap;
-      padding: 8px 12px;
-      top: 0;
-      left: 32px;
-      margin-left: 0;
+      overflow: auto;
     }
     &[active]:hover SStepDescription {
       background: var(--violet-500);
@@ -72,11 +71,10 @@ SStepper {
 
 SStepNumber {
   display: inline-block;
-  min-width: 20px;
+  min-width: 24px;
 }
 
 SStepDescription {
-  margin-left: 4px;
   @media (max-width: 1060px) {
     display: none;
   }
