@@ -76,6 +76,8 @@ The table can be empty and has no data in it, because of the data that was eithe
 - the table is empty and, for example, you need to connect data to it;
 - the user deleted all data from the table.
 
+See more information in the [Empty page](/patterns/empty-page/).
+
 ![empty table](static/empty.png)
 
 > 💡 Note that illustrations for these cases are usually unique. Designers create them for each specific case or product if needed.
