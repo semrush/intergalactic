@@ -17,8 +17,8 @@ tabName: Design
 
 |          | Paddings                               |
 | -------- | -------------------------------------- |
-| L (32px) | ![pill L](static/pills-paddings-L.png) |
-| M (26px) | ![pill M](static/pills-paddings-M.png) |
+| L (40px) | ![pill L](static/pills-paddings-L.png) |
+| M (28px) | ![pill M](static/pills-paddings-M.png) |
 
 Optionally elements (icon/flag, status badge, counter) have the same indent as elements inside the [Button](/components/button/).
 
@@ -27,13 +27,13 @@ Optionally elements (icon/flag, status badge, counter) have the same indent as e
 
 @## Types
 
-### Main
+### Default pills
 
 It is used in most cases in our tools.
 
 ![normal_active](static/normal_active.png)
 
-### Main pills 👑
+### Advanced pills 👑
 
 In some tools, the pills can act as a block with shared metrics. Pills can be made "main" if they contain the target figures of the report. What is their difference from the usual pills:
 
@@ -86,7 +86,7 @@ Minimum in the component is 2, maximum – is unlimited. **But keep in mind that
 
 ![pills-collapse](static/pills-collapse.png)
 
-By clicking on the last pill with an ellipsis in the dropdown, it is possible to display a list of items that did not fit. The item selected from this list changes places with the penultimate item in the pill, and the penultimate item is added to the list in the sorting order.
+By clicking on the last pill with an ellipsis in the dropdown, it is possible to display a list of items that did not fit. The item selected from this list put before pill with ellipsis.
 
 ### Erroneous use
 
