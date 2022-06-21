@@ -271,10 +271,10 @@
 }
 
 .formatText code {
-  background-color: hsla(220, 8%, 37%, 0.1);
+  background-color: hsla(266, 99%, 71%, 0.17);
   border-radius: 4px;
   font-family: Consolas, 'Roboto Mono', 'Liberation Mono', Menlo, Courier, monospace;
-  padding: 0 2px;
+  padding: 2px;
 }
 
 .formatText pre code {
