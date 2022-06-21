@@ -1,30 +1,28 @@
 ---
-title: Project select
+title: ProjectSelect
 ---
 
 @## Description
 
-**Project select** is a control that is placed in the project header and helps you:
+**ProjectSelect** is a module that is usually placed in the project header and helps you:
 
-- switch between saved projects in the tool;
+- switch between saved projects in the product;
 - create new projects;
 - see projects shared with you and customize them.
 
-> Layouts can be viewed in the inner [Figma project](https://www.figma.com/file/FCMvgfyKLwIdYLFD5L7vWe/Project-select).
+> See more information in the [inner Figma project](https://www.figma.com/file/EWdX1ly5KsoNu8sywYJdKk/?node-id=134%3A123098).
 
 @## Placement and styles
 
-- The project selector is placed after the tool name and a colon.
-- The text size in the select is the same as the tool title — 33px (`--fs-600; --lh-600;`).
-- The color of the select is the same as that of the [links](/components/link/).
+- The ProjectSelect is placed after the product name.
+- For the title and select label use text with 32px size (`--fs-600; --lh-600;`).
+- The dropdown has a fixed width of 280px.
 
 ![productHead with project select](static/project-select.png)
 
-> The dropdown has a fixed width of 260px.
-
 ![project select with max-width](static/max-width.png)
 
-### Paragraph margins and paddings in the dropdown
+### Margins and paddings
 
 ![option margins](static/option-margins.png)
 
@@ -34,21 +32,21 @@ Show [Skeleton](/components/skeleton/), when the dropdown with projects is loadi
 
 ![name with skeleton](static/skeleton.png)
 
-Sometimes the project data is loaded immediately, show [Spin](/components/spin/) next to it in these cases.
+When the project data is loaded immediately, show [Spin](/components/spin/) next to it in these cases.
 
 ![name with spin](static/spin.png)
 
 @## Long project name
 
-In a situation where the project name is too long, we drag it to the full available width. But if there is a component on the right, then make sure to indent 24px between the project selection and the component.
+In the case when the project name is too long, collapse it to `ellipsis`. And make sure there is a 24px margin between the project name and the following element.
 
-If we can't fit the project name in the allotted width, it adds up to `ellipsis`. And for the hover in the tooltip, we display the full name.
+Show the full name in the tooltip while hovering over the collapsed into `ellipsis` project name.
 
 ![project select with ellipsis](static/long-name.png)
 
 @## One project
 
-If there is only one project, we show a select with one project and the `Create new project`. option. This button opens the [project creation modal window](/patterns/project-create/).
+If there is only one project, we show a select with one project and the "Create new project" option. This button opens the [project creation modal window](/patterns/project-create/).
 
 ![select with one project](static/one-project.png)
 

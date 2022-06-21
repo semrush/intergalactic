@@ -37,17 +37,17 @@ The title can be clickable.
 
 Place M size [Info](/style/icon/) icon next to the title.
 
-| Appearance                           | Styles                                                                                                                                                                                                                                                              |
-| ------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ![chart-heading](static/heading.png) | For chart title use 16px text (`--fs-300`, `--lh-300`, `font-weight: bold;`) and `--gray-800` color. M size`Info` icon has `--gray-300` color and `margin-left: 4px`. `Hover` state for the clickable title matches the [styles for link hover](/components/link/). |
+| Appearance                           | Styles                                                                                                                                                                                                                                                             |
+| ------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| ![chart-heading](static/heading.png) | For chart title use 16px text (`--fs-300; --lh-300;`, `font-weight: bold;`) and `--gray-800` color. M size`Info` icon has `--gray-300` color and `margin-left: 4px`. `Hover` state for the clickable title matches the [styles for link hover](/components/link/). |
 
 ### Description
 
 **The header may have a description text.** It usually contains information about maximum/minimum data statuses or explanation of what the data is based on, etc. Or some interesting insight/advice for the visualized data.
 
-| Appearance                             | Styles                                                                              |
-| -------------------------------------- | ----------------------------------------------------------------------------------- |
-| ![chart-subtitle](static/subtitle.png) | For description text use 14px text (`--fs-200`, `--lh-200`) and `--gray-500` color. |
+| Appearance                             | Styles                                                                             |
+| -------------------------------------- | ---------------------------------------------------------------------------------- |
+| ![chart-subtitle](static/subtitle.png) | For description text use 14px text (`--fs-200; --lh-200;`) and `--gray-500` color. |
 
 @## Chart controls
 

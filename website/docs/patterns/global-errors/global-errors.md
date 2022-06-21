@@ -12,7 +12,7 @@ tabName: Design
 Composition, styles, and margins of the message:
 
 - For an image in svg format use `width: 240px; height: 240px; margin-right: 40px;`.
-- For title use text with 36px size (`--fs-700`, `--lh-700`), `--gray-800` color and `margin-bottom: 16px`.
+- For title use text with 36px size (`--fs-700; --lh-700;`), `--gray-800` color and `margin-bottom: 16px`.
 - For message text use text with 14px size (`--fs-200`,`--lh-200`), `--gray-800` color and `margin-bottom: 24px`.
 - For CTA use buttons with L size (optional).
 - Captcha (optional).
