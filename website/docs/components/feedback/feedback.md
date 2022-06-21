@@ -32,7 +32,7 @@ tabName: Design
 
 - Dropdown has `padding: 16px;`.
 - All inputs in this form has one size — M.
-- For bottom message use secondary colored text (`--gray-500`) with 14px size (`--fs-200`, `--lh-200`).
+- For bottom message use secondary colored text (`--gray-500`) with 14px size (`--fs-200; --lh-200;`).
 
 ![feedback paddings](static/send-feedback-sizes.png)
 
