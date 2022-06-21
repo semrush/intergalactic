@@ -4,145 +4,132 @@ title: Export
 
 @## Description
 
-**ComplexExport** is a pattern that describes elements and the process of data export to different formats from our tools.
+**Export pattern** describes elements and the process of data export to different formats.
 
-To export data, we use a button that the user can click to set up export and/or download data in a specific format immediately.
-
-> **Essential technical information**
->
-> 💡 Remember that exporting to CSV requires using comma as a separator character.
-
-**The pattern includes:**
-
-- Trigger;
-- Dropdown with settings (when we allow export customization).
+To export data, use a button that the user can click to set up export and/or download data in a specific format immediately.
 
 @## Trigger
 
-### Basic version
+### Default
 
 ![default export trigger](static/default-export.png)
 
-- This version is recommended for use wherever there is a space and an ability to adjust export settings.
-- If exporting is the target action on the page, you can add blue or green color to the button, when it is a CTA button.
-- Clicking on this button always opens a dropdown menu with the form.
+- Use this version wherever there is enough space and an ability to adjust export settings.
+- If exporting is the target action on the page, use button with `use: "primary"`.
+- Export button opens a dropdown menu with the form.
 
-### Additional version in case if there's a little of space
+### Compact
 
-![short export trigger](static/short-export.png)
+![compact export trigger](static/short-export.png)
 
-- There is an unsigned version if there's not enough space for the main version.
-- Clicking on this button always opens a dropdown menu with the form.
+- Use compact version if there's not enough space for the default version.
+- Export button opens a dropdown menu with the form.
 
-### Additional version for exporting in a single format
+### Expanded version
 
 ![short export trigger](static/advanced-export.png)
 
-- If export is possible to the only one format and there are no additional settings, use this version.
-- Clicking on this button triggers the file download straight away.
+- Use this version if export is possible to the only one format and there are no additional settings.
+- Export button opens a dropdown menu with the form.
 
-> 💡 **Important!**
+> 💡 If there is nothing to download, the file is anyway downloaded with the table headers. The file shouldn't be empty, because it is important to show the user that the export is working.
 >
-> If there is nothing to download, the file is anyway downloaded with the table headers. The file shouldn't be empty, because it is important to show the user that the export is working.
->
-> If the process is time consuming, the button changes its state to loading. The recommended time for showing loader is `300ms`.
+> If the process is time consuming, the button gets loading state. The recommended time for showing spinner is `300ms`.
 
-@## Dropdown with settings
+@## Dropdown
 
-- The dropdown appears by clicking the export button. The button state must change to active.
-- [The dropdown content](/components/dropdown-menu/) may comprise variety of components, depending on the tool/report. An essential condition is that there should be at least two download buttons in the dropdown.
-- **The width and height of the dropdown depend on the content.**
+- The dropdown appears by clicking the export trigger. The trigger gets active state.
+- The dropdown content may consist of the variety of components, depending on the product/report. And there should be at least two download buttons in the dropdown.
+- The width and height of the dropdown depend on the content.
 
-@## The minimum version of dropdown
+@## Compact dropdown
 
-![short export dropdown](static/dropdown-1.png)
+If you can export at least in two formats, and no additional settings are needed, the button opens the list of data formats.
 
-- If you can export at least in two formats, and no additional settings are needed, the button opens the list of formats. This is necessary because new formats may appear in the future.
-- When you click on the item, the selector closes and the file starts downloading in the browser.
-- If the process is time consuming, the button state changes to `loading`.
+![compact export dropdown](static/dropdown-1.png)
 
-@## Extended version
+- When you click on the item, the dropdown closes and the file starts downloading in the browser.
+- If the process is time consuming, the button gets loading state.
 
-![advanced export dropdown](static/dropdown-2.png)
+![export loading](static/loading.png)
 
-- This version of the dropdown must have the `Export data` heading.
-- If the data can be exported to one or two formats, you should use full names in the buttons. _For example, `Export to CSV`._
+@## Export with settings
+
+![export with settings](static/dropdown-2.png)
+
+- Add "Export data" title to such a dropdown.
+- If the data can be exported to one or two formats, use full names in the buttons. _For example, `Export to CSV`._
 - If the data can be exported to three formats, it is better to shorten the button names to the format name. _For example, you can use `CSV` instead of `Export to CSV`._
-- If there is zero data for all export parameters and settings, the button shouldn't be in the `disabled` state.
+- If there is no data for all export parameters and settings, don't change button's state to the disabled.
 
-> 💡 Additionally, there may be other necessary controls in the dropdown settings. **Please, re-use existing patterns and components, do not create new ones.**
+> 💡 Additionally, you can add other necessary controls in the dropdown.
 
-@## Postponed export version
+### Postponed export
 
-![advanced export dropdown](static/dropdown-3.png)
+- Use this pattern if the file is too large and can't be exported straight away.
+- Automatically fill the input with an email address from the user profile.
+- Buttons should show possible formats for data exporting.
 
-This option is used if the file is too large and can't be exported straight away. To the input field for an email address, automatically enter the email from the profile, but it can be changed manually. Use the buttons to show possible formats for exporting.
+![postponed export dropdown](static/dropdown-3.png)
 
-@## Additional information in the dropdown
+@## Additional information
 
 ### Additional information on downloading all data and export in general
 
+- Place it under the buttons.
+- Use it as a explaining conditions for downloading all data. It concerns either limitation, large exporting, etc.
+- Use [divider](/components/divider/) to separate this information from the form above.
+
 ![export dropdown with info](static/dropdown-info-1.png)
 
-- **Always located under the buttons.**
-- There is a notification in our interface of a certain condition for downloading all data. It concerns either limitation, or large exporting, since all the data is typically not needed.
-- Use [divider](/components/divider/) to separate this information from controls.
-
-Text, that we use for such cases: `To export all data, please contact us at {email}`.
-
-Or lead to the page with the custom_report form, if possible, the text is as follows: `To export all data, please order a custom report`.
-
-> 💡 It is important to write an email in full, so it is easier to copy it for future use, compared to opening a link in the mailer.
+Use this text as a message for such cases: "To export all data, please contact us at {email}". Or lead to the page with the custom report form, in such case this message: "To export all data, please order a custom report".
 
 ### Additional information concerning the selected export settings
 
+- Place it under the buttons.
+- If there is an additional information in the dropdown that is related to data export (as a result of selected settings, for example), then use [divider](/components/divider/) to separate it from the form above.
+
 ![export dropdown with info](static/dropdown-info-2.png)
 
-- **Always located above the buttons**.
-- If there is additional information in the dropdown that is directly related to export (as a result of selected settings, for example), then use [divider](/components/divider/) to separate it (it doesn't overflow the inside content paddings in the dropdown).
-
-@## Corner cases
+@## Edge cases
 
 ### Error
 
-For error messages use following message: "Please try again later. If the problem persists, contact us at {email}".
+For error messages use the following text: "Please try again later. If the problem persists, contact us at {email}".
 
-![export error](static/export-error-1.png)
+- If the export operation fails, show [warning notice](/components/notice) at the bottom of the dropdown.
+- If you know the problem, then write about it immediately in the heading.
+- If you can't identify the problem, then write the standard text and email of the command.
+
+In the compact version of dropdown, use [NoticeBubble](/components/notice-bubble) when this error occurs.
 
 ![export error](static/export-error-2.png)
 
-- If the export operation fails, a [warning notification](/components/notice) with an error report appears at the bottom of the dropdown.
-- **If you know the problem, then write about it immediately in the heading**.
-- If you can't identify the problem, then write the standard text and email of the command.
-
-> 💡 Note that you don't need to put a dot symbol after the email.
-
-In the minimum version of dropdown with selector, a [NoticeBubble](/components/notice-bubble). appears when this error occurs.
+![export error](static/export-error-1.png)
 
 ### Limit
 
-![export error](static/export-limit-1.png)
+For limit messages use [notice](/components/notice) at the bottom of the dropdown.
 
-![export error](static/export-limit-2.png)
+User can click all settings. It's allow the user explore the export opportunities that could be lost without upgrading. But the export buttons are have disabled state.
 
-A [notice informing about the limit](/components/notice) appears at the bottom of the dropdown.
+![export limit](static/export-limit-2.png)
 
-All the dropdown content remains, you can click, select in order to allow the user explore the export opportunities that could be lost without upgrading. But the export buttons are in the `disabled` state.
+![export limit](static/export-limit-1.png)
 
 ### Loading
 
-![export error](static/export-loading.png)
-
-- **Remember the download state.**
 - It may appear at the first opening of the dropdown and after clicking the export button.
-- When loading, [SpinContainer](/components/spin-container/) hanged on the dropdown.
-- After downloading, the dropdown closes and the file starts loading in the browser.
-- The spinner size in all dropdowns is `XL`, regardless of the size of the dropdown.
+- When loading, wrap all the form in the [SpinContainer](/components/spin-container/).
+- Use Spin with XL size in all dropdowns.
+- Dropdown closes after the loading state and file starts downloading in the browser.
 
-@## How to work with the group of settings
+![export loading](static/export-loading.png)
 
-- The `All` value is selected in the radio group by default, if nothing is chosen in the table.
-- If the value is chosen in the table, the corresponding `Selected` value is selected when opening.
-- Clicking the selector in the item, it opens and also automatically activates the radio button.
-- If the item value is zero, then it is `disabled`.
-- The first item is the most popular option in the tool/report by default.
+@## Work with the group of settings
+
+- The "All" value is selected in the radio group by default, if nothing is chosen in the table.
+- If the value is chosen in the table, the corresponding "Selected' value is selected when opening.
+- Select opens and also automatically activates the radio button.
+
+![export with the group of settings](static/dropdown.png)
