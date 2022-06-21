@@ -29,8 +29,8 @@ Fullscreen modal window consists of:
 
 For the header of the fullscreen window use the following styles:
 
-- for title use text with 24px size (`--fs-500`, `--lh-500`) and bold font-weight;
-- for additional information next to the title use text with 12px size (`--fs-100`, `--lh-100`) and `--gray-500` color.
+- for title use text with 24px size (`--fs-500; --lh-500;`) and bold font-weight;
+- for additional information next to the title use text with 12px size (`--fs-100; --lh-100;`) and `--gray-500` color.
 - for return button use button with M size.
 - for window closing icon use Close icon with M size.
 

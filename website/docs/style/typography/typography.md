@@ -27,13 +27,13 @@ Besides, both paragraphs headings and text can be colored in our main semantic c
 | Variables              | em      | px   | Font family |
 | ---------------------- | ------- | ---- | ----------- |
 | `--fs-800`, `--lh-800` | 3em     | 48px | Factor A    |
-| `--fs-700`, `--lh-700` | 2.25em  | 36px | Factor A    |
-| `--fs-600`, `--lh-600` | 2em     | 32px | Factor A    |
-| `--fs-500`, `--lh-500` | 1.5em   | 24px | Factor A    |
-| `--fs-400`, `--lh-400` | 1.25em  | 20px | Inter       |
-| `--fs-300`, `--lh-300` | 1em     | 16px | Inter       |
-| `--fs-200`, `--lh-200` | 0.875em | 14px | Inter       |
-| `--fs-100`, `--lh-100` | 0.75em  | 12px | Inter       |
+| `--fs-700; --lh-700;`  | 2.25em  | 36px | Factor A    |
+| `--fs-600; --lh-600;`  | 2em     | 32px | Factor A    |
+| `--fs-500; --lh-500;`  | 1.5em   | 24px | Factor A    |
+| `--fs-400; --lh-400;`  | 1.25em  | 20px | Inter       |
+| `--fs-300; --lh-300;`  | 1em     | 16px | Inter       |
+| `--fs-200; --lh-200;`  | 0.875em | 14px | Inter       |
+| `--fs-100; --lh-100;`  | 0.75em  | 12px | Inter       |
 
 @example text-variables
 
@@ -46,16 +46,16 @@ In our interface, we use headings of 6 sizes. All of them has `bold (700)` font-
 |     | Appearance           | Styles                                                   | Variables              |
 | --- | -------------------- | -------------------------------------------------------- | ---------------------- |
 | h1  | ![h1](static/h1.png) | `font-size: 48px; line-height: 1.17; font-weight: bold;` | `--fs-800`, `--lh-800` |
-| h2  | ![h2](static/h2.png) | `font-size: 36px; line-height: 1.11; font-weight: bold;` | `--fs-700`, `--lh-700` |
-| h3  | ![h3](static/h3.png) | `font-size: 32px; line-height: 1.25; font-weight: bold;` | `--fs-600`, `--lh-600` |
-| h4  | ![h4](static/h4.png) | `font-size: 24px; line-height: 1.17; font-weight: bold;` | `--fs-500`, `--lh-500` |
+| h2  | ![h2](static/h2.png) | `font-size: 36px; line-height: 1.11; font-weight: bold;` | `--fs-700; --lh-700;`  |
+| h3  | ![h3](static/h3.png) | `font-size: 32px; line-height: 1.25; font-weight: bold;` | `--fs-600; --lh-600;`  |
+| h4  | ![h4](static/h4.png) | `font-size: 24px; line-height: 1.17; font-weight: bold;` | `--fs-500; --lh-500;`  |
 
 **The remaining headings are used for the content part of products and landing pages**. _For example, in widgets._
 
-|     | Appearance           | Styles                                                  | Variables              |
-| --- | -------------------- | ------------------------------------------------------- | ---------------------- |
-| h5  | ![h5](static/h5.png) | `font-size: 20px; line-height: 1.2; font-weight: bold;` | `--fs-400`, `--lh-400` |
-| h6  | ![h6](static/h6.png) | `font-size: 16px; line-height: 1.5; font-weight: bold;` | `--fs-300`, `--lh-300` |
+|     | Appearance           | Styles                                                  | Variables             |
+| --- | -------------------- | ------------------------------------------------------- | --------------------- |
+| h5  | ![h5](static/h5.png) | `font-size: 20px; line-height: 1.2; font-weight: bold;` | `--fs-400; --lh-400;` |
+| h6  | ![h6](static/h6.png) | `font-size: 16px; line-height: 1.5; font-weight: bold;` | `--fs-300; --lh-300;` |
 
 @## Heading with counter
 
@@ -69,14 +69,14 @@ To improve readability on different screens, change the size of the headings, de
 
 > Change only font styles, not the markup.
 
-| 0px – 768px                         | 768px – ∞                           |
-| ----------------------------------- | ----------------------------------- |
-| H1 (36/40) — `--fs-700`, `--lh-700` | H1 (48/56) — `--fs-800`, `--lh-800` |
-| H2 (32/40) — `--fs-600`, `--lh-600` | H2 (36/40) — `--fs-700`, `--lh-700` |
-| H3 (24/28) — `--fs-500`, `--lh-500` | H3 (32/40) — `--fs-600`, `--lh-600` |
-| H4 (20/24) — `--fs-400`, `--lh-400` | H4 (24/28) — `--fs-500`, `--lh-500` |
-| H5 (16/24) — `--fs-300`, `--lh-300` | H5 (20/24) — `--fs-400`, `--lh-400` |
-| H6 (14/20) — `--fs-200`, `--lh-200` | H6 (16/24) — `--fs-300`, `--lh-300` |
+| 0px – 768px                        | 768px – ∞                           |
+| ---------------------------------- | ----------------------------------- |
+| H1 (36/40) — `--fs-700; --lh-700;` | H1 (48/56) — `--fs-800`, `--lh-800` |
+| H2 (32/40) — `--fs-600; --lh-600;` | H2 (36/40) — `--fs-700; --lh-700;`  |
+| H3 (24/28) — `--fs-500; --lh-500;` | H3 (32/40) — `--fs-600; --lh-600;`  |
+| H4 (20/24) — `--fs-400; --lh-400;` | H4 (24/28) — `--fs-500; --lh-500;`  |
+| H5 (16/24) — `--fs-300; --lh-300;` | H5 (20/24) — `--fs-400; --lh-400;`  |
+| H6 (14/20) — `--fs-200; --lh-200;` | H6 (16/24) — `--fs-300; --lh-300;`  |
 
 @## Paragraph
 
@@ -110,21 +110,21 @@ You can change text's style: make it `bold`, `italic`, a [link](/components/link
 
 @## List
 
-| Variables                    | Styles                                    | Numbered list                           | Unordered list                           | Check list                                  |
-| ---------------------------- | ----------------------------------------- | --------------------------------------- | ---------------------------------------- | ------------------------------------------- |
-| 16px, `--fs-300`, `--lh-300` | `margin-bottom: 8px; padding-right: 8px;` | ![numbered list 16px](static/ol-16.png) | ![unordered list 16px](static/ul-16.png) | ![check list 16px](static/checklist-16.png) |
-| 14px, `--fs-200`, `--lh-200` | `margin-bottom: 8px; padding-right: 8px;` | ![numbered list 14px](static/ol-14.png) | ![unordered list 14px](static/ul-14.png) | ![check list 14px](static/checklist-14.png) |
-| 12px, `--fs-100`, `--lh-100` | `margin-bottom: 8px; padding-right: 8px;` | ![numbered list 12px](static/ol-12.png) | ![unordered list 12px](static/ul-12.png) | ![check list 12px](static/checklist-12.png) |
+| Variables                   | Styles                                    | Numbered list                           | Unordered list                           | Check list                                  |
+| --------------------------- | ----------------------------------------- | --------------------------------------- | ---------------------------------------- | ------------------------------------------- |
+| 16px, `--fs-300; --lh-300;` | `margin-bottom: 8px; padding-right: 8px;` | ![numbered list 16px](static/ol-16.png) | ![unordered list 16px](static/ul-16.png) | ![check list 16px](static/checklist-16.png) |
+| 14px, `--fs-200; --lh-200;` | `margin-bottom: 8px; padding-right: 8px;` | ![numbered list 14px](static/ol-14.png) | ![unordered list 14px](static/ul-14.png) | ![check list 14px](static/checklist-14.png) |
+| 12px, `--fs-100; --lh-100;` | `margin-bottom: 8px; padding-right: 8px;` | ![numbered list 12px](static/ol-12.png) | ![unordered list 12px](static/ul-12.png) | ![check list 12px](static/checklist-12.png) |
 
 @## Nested list
 
 Each next level of the nested list is always indented to the left. **Indents between the list levels for all font sizes are 8px**.
 
-| Variables                    | Margins                                          |
-| ---------------------------- | ------------------------------------------------ |
-| 16px, `--fs-300`, `--lh-300` | ![second level list](static/second-level-16.png) |
-| 14px, `--fs-200`, `--lh-200` | ![second level list](static/second-level-14.png) |
-| 12px, `--fs-100`, `--lh-100` | ![second level list](static/second-level-12.png) |
+| Variables                   | Margins                                          |
+| --------------------------- | ------------------------------------------------ |
+| 16px, `--fs-300; --lh-300;` | ![second level list](static/second-level-16.png) |
+| 14px, `--fs-200; --lh-200;` | ![second level list](static/second-level-14.png) |
+| 12px, `--fs-100; --lh-100;` | ![second level list](static/second-level-12.png) |
 
 @## Quote
 

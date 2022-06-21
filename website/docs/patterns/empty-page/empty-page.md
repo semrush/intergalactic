@@ -17,8 +17,8 @@ Commonly, the user faces this state, when certain actions are required to start 
 @## Default styles
 
 1. Illustration is always located to the left of the message and size — 300px \* 230px;
-2. For title use text with 20px size (`--fs-400`, `--lh-400`);
-3. For paragrapgh use text with 14px size (`--fs-200`, `--lh-200`);
+2. For title use text with 20px size (`--fs-400; --lh-400;`);
+3. For paragrapgh use text with 14px size (`--fs-200; --lh-200;`);
 4. For CTA use button with `use:"primary"` and M size.
 5. The entire message "sticks" to the left side of the page and doesn't stretch over the full width of the page;
 6. **Don't make content width more than 660px (otherwise it becomes difficult to read);**
