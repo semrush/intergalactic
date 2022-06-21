@@ -10,27 +10,46 @@ class Demo extends React.Component {
     return (
       <>
         <div>
+          <Text size={700}>Label</Text>
+          <Tooltip title="Awesome hint text">
+            <InfoL ml="4px" color="gray-300" cursor="help" />
+          </Tooltip>
+        </div>
+        <div>
           <Text size={600}>Label</Text>
           <Tooltip title="Awesome hint text">
-            <InfoL ml="4px" color="stone" cursor="help" />
+            <InfoL ml="4px" color="gray-300" cursor="help" />
           </Tooltip>
         </div>
         <div>
           <Text size={500}>Label</Text>
           <Tooltip title="Awesome hint text">
-            <InfoM ml="4px" color="stone" cursor="help" />
+            <InfoM ml="4px" color="gray-300" cursor="help" />
           </Tooltip>
         </div>
         <div>
+          <div>
+            <Text size={400}>Label</Text>
+            <Tooltip title="Awesome hint text">
+              <InfoM ml="4px" color="gray-300" cursor="help" />
+            </Tooltip>
+          </div>
+          <div></div>
           <Text size={300}>Label</Text>
           <Tooltip title="Awesome hint text">
-            <InfoM ml="4px" color="stone" cursor="help" />
+            <InfoM ml="4px" color="gray-300" cursor="help" />
           </Tooltip>
         </div>
         <div>
           <Text size={200}>Label</Text>
           <Tooltip title="Awesome hint text">
-            <InfoM ml="4px" color="stone" cursor="help" />
+            <InfoM ml="4px" color="gray-300" cursor="help" />
+          </Tooltip>
+        </div>
+        <div>
+          <Text size={100}>Label</Text>
+          <Tooltip title="Awesome hint text">
+            <InfoM ml="4px" color="gray-300" cursor="help" />
           </Tooltip>
         </div>
       </>
