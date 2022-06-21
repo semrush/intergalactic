@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.1.0] - 2022-06-21
+
+### Changed
+
+- Updated `react-final-form` to `6.5.2` to support React 17.
+
 ## [5.0.10] - 2022-06-02
 
 ### Changed
