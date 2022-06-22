@@ -30,7 +30,7 @@ function Enhancement(childComponents, Context) {
     },
     init: function (props, WrapperComponent, isFunction) {
       if (isFunction) {
-        // TODO: use может вызываться не ровное количество раз
+        // TODO: might breake rules of hooks (by lsroman)
         this[HOIST_SELF] = useState({});
       } else {
         this[HOIST_SELF] = [
@@ -47,7 +47,7 @@ function Enhancement(childComponents, Context) {
       };
     },
     context: function (context) {
-      // TODO: оптимизировать создание контекста
+      // TODO: need to optimizte container initialization (by lsroman)
       // WrapperComponent.hoistProps
       return {
         ...context,
@@ -55,7 +55,7 @@ function Enhancement(childComponents, Context) {
       };
     },
     asProps: function (props) {
-      // TODO добавить проверку на уникальность филда на руте
+      // TODO: need to check for no props overwriting (by lsroman)
       return assignProps(this[HOIST_SELF][0], props);
     },
     wrapperProps: function (props, WrapperComponent) {

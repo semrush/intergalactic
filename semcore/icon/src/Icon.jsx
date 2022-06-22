@@ -8,7 +8,6 @@ import propsForElement from '@semcore/utils/lib/propsForElement';
 
 import styles from './style/icon.shadow.css';
 
-// TODO: сделать useIcon?
 function Icon(props, ref) {
   const [SIcon, other] = useBox(
     {

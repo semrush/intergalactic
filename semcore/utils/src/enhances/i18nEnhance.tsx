@@ -37,7 +37,7 @@ const getText = (dictionary: Dictionary, locale: LocaleKeys) => {
         ? interpolate(dictionary[locale][key], variables)
         : interpolate(dictionary['en'][key], variables);
     }
-    // TODO: убрать эту возможность
+    // TODO: remove that fallaback
     return dictionary[locale] || dictionary['en'];
   };
 };

@@ -5,7 +5,7 @@ import createComponent, { Component, Merge, sstyled, Root } from '@semcore/core'
 import style from './style/sticky.shadow.css';
 
 export interface IStickyProps extends IBoxProps {
-  /* css свойство
+  /* css property
    * @default 0
    * */
   top?: string | number;

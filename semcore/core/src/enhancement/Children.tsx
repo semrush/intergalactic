@@ -49,18 +49,19 @@ function createChildren(Context, contexts) {
   const Children = function () {
     const children = Children.origin;
     if (typeof children === 'function') {
-      const { handlers = {}, getters = {}, ...props } = [...contexts, Context].reduce(
-        (acc, ctx) => {
-          const { handlers, ...propsAndGetters } = useContext(ctx);
-          const { props, getters } = splitPropsAndGetters(propsAndGetters);
-          return Object.assign({}, acc, {
-            handlers: Object.assign({}, acc.handlers, handlers),
-            getters: mergeObjects(acc.getters, getters),
-            ...props,
-          });
-        },
-        Children.props,
-      );
+      const {
+        handlers = {},
+        getters = {},
+        ...props
+      } = [...contexts, Context].reduce((acc, ctx) => {
+        const { handlers, ...propsAndGetters } = useContext(ctx);
+        const { props, getters } = splitPropsAndGetters(propsAndGetters);
+        return Object.assign({}, acc, {
+          handlers: Object.assign({}, acc.handlers, handlers),
+          getters: mergeObjects(acc.getters, getters),
+          ...props,
+        });
+      }, Children.props);
 
       const mergedGetters = Object.entries(getters).reduce((acc, [key, value]) => {
         acc[key] = assignGettersChain(value as []);
@@ -88,7 +89,7 @@ function Enhancement(Context, parent) {
       this[CHILDREN_SELF] = createChildren(Context, contexts);
     },
     asProps: function (props) {
-      // TODO: разобраться зачем это надо было
+      // TODO: learn the reason what it was used for (by lsroman)
       // this[CHILDREN_SELF].origin = _Children ? _Children.origin : children;
       this[CHILDREN_SELF].origin = props.children;
       this[CHILDREN_SELF].props = props;

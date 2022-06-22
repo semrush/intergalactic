@@ -39,7 +39,6 @@ class TooltipRoot extends Component {
       (visible, data, node) => {
         this.setState(
           {
-            // TODO: тут бага если одно поля нету,то оно не перезапишет стейт
             ...data,
             $visible: visible,
           },

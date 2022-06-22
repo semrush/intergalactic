@@ -14,7 +14,7 @@ class GroupBarRoot extends Component {
 
   getScaleGroup() {
     const { Children, scale, scaleGroup, x } = this.asProps;
-    // TODO: классный костыль =)
+    // TODO: love that hack (by lsroman)
     const xyScale = x ? scale[0] : scale[1];
 
     if (scaleGroup) return scaleGroup;
