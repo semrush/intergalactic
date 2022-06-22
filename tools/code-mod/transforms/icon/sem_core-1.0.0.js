@@ -5,7 +5,6 @@ function generateNewPath(path) {
   const group = splited[3];
   let name = splited[4];
 
-  // Замена стандартных переименованных иконок
   switch (name) {
     case 'MailAlt':
       name = 'MailOutline';
@@ -18,7 +17,6 @@ function generateNewPath(path) {
       break;
   }
 
-  // Замена иконок, переехавших в external
   switch (name) {
     case 'PinterestSave':
       return '@semcore/icon/lib/external/PinterestSave';
@@ -26,7 +24,6 @@ function generateNewPath(path) {
       return '@semcore/icon/lib/external/TwitterRetweet';
   }
 
-  // Замена платежных иконок
   if (group === 'pay') {
     switch (name) {
       case 'Union':

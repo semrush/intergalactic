@@ -9,9 +9,9 @@ export interface ITextProps extends IBoxProps {
   size?: 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800;
   /** The text will not be wrapped on a new line and will be cut off with ellipsis */
   noWrap?: boolean;
-  /** СSS property `font-weight: 700;` */
+  /** CSS property `font-weight: 700;` */
   bold?: boolean;
-  /** СSS property `font-weight: 500;` */
+  /** CSS property `font-weight: 500;` */
   medium?: boolean;
   /** Italicized text */
   italic?: boolean;

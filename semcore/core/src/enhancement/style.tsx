@@ -17,7 +17,7 @@ function Enhancement(childComponents, Context) {
       }
     },
     context: function (context) {
-      // для оптимизации, если нет детей, то не надо создавать контекст
+      // Optimization: if has no children there is no need to create new context (by lsroman)
       if (!this[STYLES_SELF] || !Object.keys(childComponents).length) {
         return context;
       }

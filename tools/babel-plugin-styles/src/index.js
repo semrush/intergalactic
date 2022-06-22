@@ -140,7 +140,7 @@ function StylesPlugin({ types: t }, opts) {
     });
   }
 
-  // TODO: это костыль, надо убрать когда переедем
+  // TODO: that is hack (by lsroman)
   let INIT_SSTYLED = false;
   let timer;
   return {

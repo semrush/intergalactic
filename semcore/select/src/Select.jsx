@@ -172,12 +172,9 @@ class RootSelect extends Component {
 
   componentDidUpdate(prevProps, prevState) {
     const { visible } = this.asProps;
-    //  TODO: вынести в хелпер
-    // Если открыли
     if (visible) {
       this.isScrolledToFirstOption = false;
 
-      // Если uncontroll
       if (prevProps.visible === undefined) {
         if (prevState.visible !== visible) this.scrollToSelectedOption();
       } else {

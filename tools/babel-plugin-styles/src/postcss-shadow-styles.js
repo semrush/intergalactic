@@ -132,7 +132,6 @@ module.exports = (opts) => {
               walkVar(rootNode.nodes, hash, tokens);
               Declaration.value = rootNode.toString();
               Declaration[processed] = true;
-              // else что бы не обрабатывать animation с переменными
             } else if (Declaration.prop.endsWith('animation-name')) {
               const rootNode = ValueParser(Declaration.value);
               walkAnimation(rootNode.nodes, hash);
