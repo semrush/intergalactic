@@ -55,10 +55,10 @@ To change the value in InputNumber, use:
 > 💡 If necessary, you can use a number as a placeholder inside this kind of input.
 
 | State      | L (40px)                                     | M (28px)                                     | Styles                    |
-| ---------- | -------------------------------------------- | -------------------------------------------- | ------------------------- | --- |
+| ---------- | -------------------------------------------- | -------------------------------------------- | ------------------------- |
 | default    | ![default state](static/l-placeholder.png)   | ![default state](static/m-placeholder.png)   |                           |
 | hover      | ![hover state](static/l-hover.png)           | ![hover state](static/m-hover.png)           |                           |
-| focus      | ![focus state](static/l-focus.png)           | ![focus state](static/m-focus.png)           | `icon color: --gray-300;` |     |
+| focus      | ![focus state](static/l-focus.png)           | ![focus state](static/m-focus.png)           | `icon color: --gray-300;` |
 | Icon hover | ![icon hover state](static/l-icon-hover.png) | ![icon hover state](static/m-icon-hover.png) | `icon color: --gray-400;` |
 
 @## Input size
