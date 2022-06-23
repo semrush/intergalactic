@@ -24,16 +24,16 @@ Besides, both paragraphs headings and text can be colored in our main semantic c
 
 @## Font variables
 
-| Variables              | em      | px   | Font family |
-| ---------------------- | ------- | ---- | ----------- |
-| `--fs-800`, `--lh-800` | 3em     | 48px | Factor A    |
-| `--fs-700; --lh-700;`  | 2.25em  | 36px | Factor A    |
-| `--fs-600; --lh-600;`  | 2em     | 32px | Factor A    |
-| `--fs-500; --lh-500;`  | 1.5em   | 24px | Factor A    |
-| `--fs-400; --lh-400;`  | 1.25em  | 20px | Inter       |
-| `--fs-300; --lh-300;`  | 1em     | 16px | Inter       |
-| `--fs-200; --lh-200;`  | 0.875em | 14px | Inter       |
-| `--fs-100; --lh-100;`  | 0.75em  | 12px | Inter       |
+| px  | em   | Variables | Font family            |
+| --- | ---- | --------- | ---------------------- | -------- |
+|     | 48px | 3em       | `--fs-800`, `--lh-800` | Factor A |
+|     | 36px | 2.25em    | `--fs-700; --lh-700;`  | Factor A |
+|     | 32px | 2em       | `--fs-600; --lh-600;`  | Factor A |
+|     | 24px | 1.5em     | `--fs-500; --lh-500;`  | Factor A |
+|     | 20px | 1.25em    | `--fs-400; --lh-400;`  | Inter    |
+|     | 16px | 1em       | `--fs-300; --lh-300;`  | Inter    |
+|     | 14px | 0.875em   | `--fs-200; --lh-200;`  | Inter    |
+|     | 12px | 0.75em    | `--fs-100; --lh-100;`  | Inter    |
 
 @example text-variables
 
@@ -102,6 +102,18 @@ You can also use these margins when a paragraph is followed by a paragraph of sm
 
 ![paragraph margins](static/paragraph_margins.png)
 
+@## Metric
+
+Use these styles for highlighting metrics in your interface.
+
+| px   | Variables             | Margins                              |
+| ---- | --------------------- | ------------------------------------ |
+| 32px | `--fs-600; --lh-600;` | ![metric 600](static/metric-600.png) |
+| 24px | `--fs-500; --lh-500;` | ![metric 500](static/metric-500.png) |
+| 20px | `--fs-400; --lh-400;` | ![metric 400](static/metric-400.png) |
+| 16px | `--fs-300; --lh-300;` | ![metric 300](static/metric-300.png) |
+| 14px | `--fs-200; --lh-200;` | ![metric 200](static/metric-200.png) |
+
 @## Text styles
 
 You can change text's style: make it `bold`, `italic`, a [link](/components/link/), a hint, or even `strikethrough`.
@@ -110,21 +122,21 @@ You can change text's style: make it `bold`, `italic`, a [link](/components/link
 
 @## List
 
-| Variables                   | Styles                                    | Numbered list                           | Unordered list                           | Check list                                  |
-| --------------------------- | ----------------------------------------- | --------------------------------------- | ---------------------------------------- | ------------------------------------------- |
-| 16px, `--fs-300; --lh-300;` | `margin-bottom: 8px; padding-right: 8px;` | ![numbered list 16px](static/ol-16.png) | ![unordered list 16px](static/ul-16.png) | ![check list 16px](static/checklist-16.png) |
-| 14px, `--fs-200; --lh-200;` | `margin-bottom: 8px; padding-right: 8px;` | ![numbered list 14px](static/ol-14.png) | ![unordered list 14px](static/ul-14.png) | ![check list 14px](static/checklist-14.png) |
-| 12px, `--fs-100; --lh-100;` | `margin-bottom: 8px; padding-right: 8px;` | ![numbered list 12px](static/ol-12.png) | ![unordered list 12px](static/ul-12.png) | ![check list 12px](static/checklist-12.png) |
+| px | Variables | Styles | Numbered list | Unordered list | Check list |
+| --- || --------------------------- | ----------------------------------------- | --------------------------------------- | ---------------------------------------- | ------------------------------------------- |
+| 16px | `--fs-300; --lh-300;` | `margin-bottom: 8px; padding-right: 8px;` | ![numbered list 16px](static/ol-16.png) | ![unordered list 16px](static/ul-16.png) | ![check list 16px](static/checklist-16.png) |
+| 14px | `--fs-200; --lh-200;` | `margin-bottom: 8px; padding-right: 8px;` | ![numbered list 14px](static/ol-14.png) | ![unordered list 14px](static/ul-14.png) | ![check list 14px](static/checklist-14.png) |
+| 12px | `--fs-100; --lh-100;` | `margin-bottom: 8px; padding-right: 8px;` | ![numbered list 12px](static/ol-12.png) | ![unordered list 12px](static/ul-12.png) | ![check list 12px](static/checklist-12.png) |
 
 @## Nested list
 
 Each next level of the nested list is always indented to the left. **Indents between the list levels for all font sizes are 8px**.
 
-| Variables                   | Margins                                          |
-| --------------------------- | ------------------------------------------------ |
-| 16px, `--fs-300; --lh-300;` | ![second level list](static/second-level-16.png) |
-| 14px, `--fs-200; --lh-200;` | ![second level list](static/second-level-14.png) |
-| 12px, `--fs-100; --lh-100;` | ![second level list](static/second-level-12.png) |
+| px   | Variables             | Margins                                          |
+| ---- | --------------------- | ------------------------------------------------ |
+| 16px | `--fs-300; --lh-300;` | ![second level list](static/second-level-16.png) |
+| 14px | `--fs-200; --lh-200;` | ![second level list](static/second-level-14.png) |
+| 12px | `--fs-100; --lh-100;` | ![second level list](static/second-level-12.png) |
 
 @## Quote
 
