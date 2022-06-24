@@ -56,7 +56,7 @@ Wrap filter form into [SpinContainer](/components/spin-container/) when the user
 
 @## Nothing found
 
-Show an ["empty" state](/components/widget-empty/) with the option to update the filter, if an error occurs during the request.
+Show an ["empty" state](/components/widget-empty/) with the option to update the filter.
 
 ![filter nothing found state](static/nothing-found-advanced-filters.png)
 
