@@ -12,17 +12,17 @@ title: Filter common rules
 - quickly reset the entered data and search again;
 - be able to change data.
 
-> 💡 **It is good practice to save the entered/selected value in the filter dropdown if the user didn't save their selection.**
+> 💡 **It is good practice to save the entered/selected value in the filter dropdown if the user haven't saved their selection.**
 >
-> For example, a user opened a filter dropdown, entered something into the search input, but got distracted and accidentally closed the dropdown. In this case, save the data he entered when re-opening the filter dropdown. It's not necessary to keep the scroll position.
+> For example, a user opened a filter dropdown, entered something into the search input, but got distracted and accidentally closed the dropdown. In this case, save the entered data when re-opening the filter dropdown. It's not necessary to keep the scroll position.
 
 @## Appearance
 
 ### Trigger
 
-- Trigger has styles of [Select](/components/select/) and [FilterTrigger](/components/filter-trigger/).
+- For trigger use [Select](/components/select/) and [FilterTrigger](/components/filter-trigger/).
 - Set the trigger min-width to 80px. It's not recommended to make the trigger smaller. When there is enough space in the interface, make the width of the trigger dependent on the content, so the text inside the trigger doesn't have to be collapsed into the `ellipsis`.
-- When it turns out that the name of the filter is larger than the width specified for the filter, collapse it into the `ellipsis`.
+- When it turns out that the name of the filter is larger than the width specified for the filter, collapse it into the `ellipsis` and show the full name in the tooltip.
 
 ### Dropdown
 
@@ -36,18 +36,16 @@ Dropdown has styles of [Dropdown-menu](/components/dropdown-menu/).
 
 Use the [InputNumber](/components/input-number/), if the filter has the ability to select a custom period.
 
-Stepper buttons appear when you hover over an [InputNumber](/components/input-number/) and in the focus state.
-
-|                                                                    | Appearance example                            |
-| ------------------------------------------------------------------ | --------------------------------------------- |
-| If nothing is entered, the bottom stepper is disabled.             | ![steppers](static/steppers-filter-rules.png) |
-| If a maximum value is entered, the upper stepper becomes inactive. | ![steppers](static/steppers-max.png)          |
+| Case                                                               | Appearance example                   |
+| ------------------------------------------------------------------ | ------------------------------------ |
+| If nothing is entered, the bottom stepper is disabled.             | ![steppers](static/steppers-min.png) |
+| If a maximum value is entered, the upper stepper becomes inactive. | ![steppers](static/steppers-max.png) |
 
 @## Interaction
 
-- The value is applied when user clicks on the item. Then the filter applies and closes.
+- The value is applied when user clicks on the item from the preset values list. Then the filter applies and closes.
 - The filter can be closed by clicking outside the dropdown. If the user didn't select anything, no values are applied.
-- Also, if the user hasn't selected anything or there is no data in the custom range inputs, clicking on `Apply` closes the dropdown and nothing is applied.
+- Also, if the user hasn't selected anything or there is no data in the custom range inputs, clicking "Apply" button closes the dropdown and nothing is applied.
 
 ### Opening the filter for the first time
 
@@ -59,7 +57,7 @@ Stepper buttons appear when you hover over an [InputNumber](/components/input-nu
 
 **Custome range**
 
-Inputs has placeholders `From` and `To`, respectively.
+Inputs has placeholders "From" and "To", respectively.
 
 ### Preset period is selected
 
@@ -99,26 +97,28 @@ The user can copy/paste values into the input, increase/decrease them by the ste
 
 @## Loading
 
-Show [Spin](/components/spin/) in the dropdown and the text `Loading ...` in the case when the content of the filter takes a long time to load.
+Show [Spin](/components/spin/) in the dropdown and the "Loading ..." text in the case when the content of the filter takes a long time to load.
 
 ![loading](static/loading.png)
 
 Show [SpinContainer](/components/spin-container/) over the dropdown content in the case when the user-selected data needs a time to be applied.
 
-![spin-container](static/spin-container-tags-filter-rules.png)
+![spin-container](static/spin-container-tags.png)
 
 @## Nothing found
 
-Show in the widget/widgets to which the filter was applied an ["empty" error state](/components/widget-empty/) with the ability to update the filter, if an error occurs during the request.
+Show in the widget/widgets to which the filter was applied an ["empty" state](/components/widget-empty/) with the ability to update the filter, if an error occurs during the request.
 
-![nothing found](static/nothing-found-filter-rules.png)
+![nothing found](static/nothing-found.png)
 
 @## Tooltips
 
 Don't add tooltips for the sake of tooltips.
 
-- Add them when the name is abbreviated in the filter.
-- Use them to explain how the filter works when a value is already selected.
+**Add tooltip:**
+
+- when the filter name is collapsed into `ellipsis`;
+- to explain how the filter works when a value is already selected.
 
 ![tooltips](static/tooltips-cp.png)
 
@@ -126,7 +126,7 @@ Don't add tooltips for the sake of tooltips.
 
 **Comma/period**
 
-The user can enter only numerical data into the input: numbers, period, comma, minus. All other data such as slash, letters, etc. the [InputNumber](/components/input-number/) is truncated.
+The user can enter only numerical data into the input: numbers, period, comma, minus. All other data such as slash, letters, etc. are truncated in the [InputNumber](/components/input-number/).
 
 In cases where thousandths are separated by commas rather than periods in a particular locale, format the user-entered value to match the locale.
 
