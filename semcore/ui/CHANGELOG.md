@@ -74,10 +74,6 @@
 - **Fixed** Fixed `width, height` for size Button.
 - **Fixed** Fixed background-color active state for `<Button use='primary' theme='warning'/>`.
 
-### @semcore/checkbox
-
-- **Fixed** Fixed problem show `Checkbox` in `Modal` (Checkbox added scroll on page).
-
 ### @semcore/feedback-form
 
 - **Fixed** Fixed Item tag property setting
