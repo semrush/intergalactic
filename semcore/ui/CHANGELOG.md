@@ -1,9 +1,82 @@
+## [12.2.0] - 2022-06-24
+
+### @semcore/breadcrumbs
+
+- **Fixed** Fixed separator's margin.
+
+### @semcore/chart
+
+- **Changed** Changed type names from 'IPieProps' to 'IRechartsPieProps' so that there are no intersections with other components.
+
+### @semcore/checkbox
+
+- **Fixed** Fixed problem show `Checkbox` in `Modal` (Checkbox added scroll on page).
+
+### @semcore/d3-chart
+
+- **Changed** Changed type names from 'ITooltipProps' to 'ITooltipChartProps' so that there are no intersections with other components.
+- **Changed** Changed type names from 'ITooltipContext' to 'ITooltipChartContext' so that there are no intersections with other components.
+
+### @semcore/errors
+
+- **Changed** Changed type names from 'iconNames' to 'iconNamesErrors' so that there are no intersections with other components.
+
+### @semcore/feedback-form
+
+- **Changed** Updated `react-final-form` to `6.5.2` to support React 17.
+
+### @semcore/icon
+
+- **Changed** Added files with the extension .mjs
+
+### @semcore/inline-input
+
+- **Fixed** Remove 4px vertical paddings.
+
+### @semcore/notice-global
+
+- **Changed** Changed type names from 'NoticeTheme' to 'NoticeGlobalTheme' so that there are no intersections with other components.
+
+### @semcore/pills
+
+- **Changed** Changed type names from 'IPopperHandlers' to 'IPillsHandlers' so that there are no intersections with other components.
+
+### @semcore/progress-bar
+
+- **Fixed** Theme prop doesn't work when styles has been post-processed
+
+### @semcore/project-create
+
+- **Changed** Updated `react-final-form` to `6.5.2` to support React 17.
+
+### @semcore/tag
+
+- **Fixed** Fixed non default colors resolving.
+
+### @semcore/textarea
+
+- **Fixed** Fixed textarea scroll to bottom on every resize.
+
+### @semcore/utils
+
+- **Changed** Changed type names from 'ChildrenType' to 'IfChildrenType' so that there are no intersections with other components.
+  HEAD
+- **Changed** Update version dependency `@babel/runtime`.
+
+### @semcore/widget-empty
+
+- **Changed** Changed type names from 'iconNames' to 'iconNamesWidgetEmpty' so that there are no intersections with other components.
+
 ## [12.1.0] - 2022-05-31
 
 ### @semcore/button
 
 - **Fixed** Fixed `width, height` for size Button.
 - **Fixed** Fixed background-color active state for `<Button use='primary' theme='warning'/>`.
+
+### @semcore/checkbox
+
+- **Fixed** Fixed problem show `Checkbox` in `Modal` (Checkbox added scroll on page).
 
 ### @semcore/feedback-form
 
@@ -31,10 +104,6 @@
 ### @semcore/utils
 
 - **Changed** Update version dependency `@babel/runtime`.
-
-### @semcore/checkbox
-
-- **Fixed** Fixed problem show `Checkbox` in `Modal` (Checkbox added scroll on page).
 
 ## [12.0.0] - 2022-05-19
 
