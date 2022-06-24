@@ -7,7 +7,6 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### Changed
 
 - Changed type names from 'ChildrenType' to 'IfChildrenType' so that there are no intersections with other components.
-  HEAD
 
 ## [3.32.2] - 2022-05-31
 
