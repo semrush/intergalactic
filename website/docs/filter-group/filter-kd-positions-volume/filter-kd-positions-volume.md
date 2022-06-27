@@ -73,11 +73,11 @@ Stepper buttons appear when you hover over such an input and in the focus state.
 
 When you open a dropdown, the focus immediately goes to the first Custom range field.
 
-Working and interacting with the filter are described in detail in the [Filters, common rules](/filter-group/filter-rules/) guide.
+Working and interacting with the filter are described in detail in the [Filter common rules](/filter-group/filter-rules/).
 
 @## Tooltips
 
-For more information about tooltips, see [Filters, common rules](/filter-group/filter-rules/) guide.
+For more information about tooltips, see [Filter common rules](/filter-group/filter-rules/).
 
 | Filter             | Appearance example                       |
 | ------------------ | ---------------------------------------- |
@@ -87,10 +87,10 @@ For more information about tooltips, see [Filters, common rules](/filter-group/f
 
 @## Validation
 
-The validations work is described in the [Filters, common rules](/filter-group/filter-rules/) guide.
+The validations work is described in the [Filter common rules](/filter-group/filter-rules/).
 
 @## Nothing found
 
-The "empty" state is described in the [Filters, common rules](/filter-group/filter-rules/) guide.
+The "empty" state is described in the [Filter common rules](/filter-group/filter-rules/).
 
 @page filter-kd-position-volume-code
