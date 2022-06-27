@@ -7,7 +7,7 @@ title: Filter common rules
 **When working with filters, it is important for the user to:**
 
 - understand that there are preset values and the ability to enter what he needs;
-- **quickly navigate and choose a value from the preset ones;**
+- quickly navigate and choose a value from the preset ones;
 - quickly understand that nothing was found;
 - quickly reset the entered data and search again;
 - be able to change data.
@@ -21,7 +21,7 @@ title: Filter common rules
 ### Trigger
 
 - For trigger use [Select](/components/select/) and [FilterTrigger](/components/filter-trigger/).
-- Set the trigger min-width to 80px. It's not recommended to make the trigger smaller. When there is enough space in the interface, make the width of the trigger dependent on the content, so the text inside the trigger doesn't have to be collapsed into the `ellipsis`.
+- Set the trigger min-width to 80px. It's not recommended to make the trigger smaller. When there is enough space in the interface, make the width of the trigger dependent on the content, so the label inside the trigger doesn't have to be collapsed into the `ellipsis`.
 - When it turns out that the name of the filter is larger than the width specified for the filter, collapse it into the `ellipsis` and show the full name in the tooltip.
 
 ### Dropdown
