@@ -1,9 +1,24 @@
 import React, { useState } from 'react';
 import Wizard from '@semcore/wizard';
 import Button from '@semcore/button';
-import { Flex, Box } from '@semcore/flex-box';
+import { Text } from '@semcore/typography';
+import { Flex } from '@semcore/flex-box';
 import ArrowRight from '@semcore/icon/ArrowRight/m';
 import ArrowLeft from '@semcore/icon/ArrowLeft/m';
+import Input from '@semcore/input';
+
+const Step1 = React.forwardRef(function (props, ref) {
+  return (
+    <Flex ref={ref} direction="column">
+      <Input mb={4}>
+        <Input.Value placeholder="Your name" />
+      </Input>
+      <Input>
+        <Input.Value placeholder="Your email" />
+      </Input>
+    </Flex>
+  );
+});
 
 const steps = [{ title: 'Step 1' }, { title: 'Step 2' }, { title: 'Step 3' }];
 
@@ -20,8 +35,8 @@ export default function () {
       </Button>
       <Wizard visible={visible} step={step} w={600} onClose={handleClose}>
         <Wizard.Sidebar title="Header">
-          <Wizard.Stepper step={1} onActive={setStep} completed>
-            <Box mb={1}>Step 1</Box>
+          <Wizard.Stepper step={1} onActive={setStep}>
+            Step 1
           </Wizard.Stepper>
           <Wizard.Stepper step={2} onActive={setStep}>
             Step 2
@@ -31,9 +46,20 @@ export default function () {
           </Wizard.Stepper>
         </Wizard.Sidebar>
         <Wizard.Content tag={Flex} direction="column" justifyContent="space-between">
-          <Wizard.Step step={1}>Step 1</Wizard.Step>
-          <Wizard.Step step={2}>Step 2</Wizard.Step>
-          <Wizard.Step step={3}>Step 3</Wizard.Step>
+          <Wizard.Step tag={Step1} step={1} />
+          <Wizard.Step step={2}>
+            {(props, handlers) => {
+              return 'Second page';
+            }}
+          </Wizard.Step>
+          <Wizard.Step step={3}>
+            <Text size={400} fontWeight={500}>
+              Final page
+            </Text>
+            <Text tag="p" mt={2}>
+              Congratulations on passing all the steps
+            </Text>
+          </Wizard.Step>
           <Flex justifyContent="space-between" w="100%">
             {step > 1 && (
               <Button use="tertiary" mt={5} onClick={() => setStep(step - 1)}>
