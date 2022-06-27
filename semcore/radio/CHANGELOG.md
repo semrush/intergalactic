@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.0.4] - 2022-06-27
+
+### Fixed
+
+- Change inherited TS type for Radio (IFlexProps -> IBoxProps)
+
 ## [5.0.3] - 2022-06-02
 
 ### Changed

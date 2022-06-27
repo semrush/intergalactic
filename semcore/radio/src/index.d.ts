@@ -1,5 +1,5 @@
 import { CProps, PropGetterFn, ReturnEl } from '@semcore/core';
-import { IBoxProps, IFlexProps } from '@semcore/flex-box';
+import { IBoxProps } from '@semcore/flex-box';
 import { IKeyboardFocusProps } from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 import { Text } from '@semcore/typography';
 
@@ -7,7 +7,7 @@ export type RadioSize = 'm' | 'l';
 export type RadioState = 'normal' | 'invalid';
 export type RadioValue = string | number | boolean;
 
-export interface IRadioProps extends IFlexProps {
+export interface IRadioProps extends IBoxProps {
   /**
    * The value displaying the state of the component
    * @default normal
