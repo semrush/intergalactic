@@ -31,7 +31,7 @@ You can select multiple values or "None", which will show all keywords without S
 ### Dropdown
 
 - Dropdown has the list of all SERP Features (23 for mobile and 22 for desktop).
-- There is a special option - the ability to select keywords without SERP Features (`None`).
+- There is a special option - the ability to select keywords without SERP Features ("None").
 - You cannot select both "None" and SERP Features.
 - Add a search input to the list. Read more about the search in [Filter Search](/filter-group/filter-search/).
 - Add **Select / Deselect all** option to the list.
