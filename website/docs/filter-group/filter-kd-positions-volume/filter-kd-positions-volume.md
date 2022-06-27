@@ -3,26 +3,24 @@ title: Keyword Difficulty, Positions, Volume
 tabName: Design
 ---
 
-> 💡 **General recommendations for filters are described in the [Filters, common rules guide](/filter-group/filter-rules/).**
->
-> **These filters are combined in one guide, since they differ only in the sorting parameter, a set of preset values and the name.**
->
-> The principle of work and states are the same.
+> 💡 **General recommendations for filters are described in the [Filter common rules guide](/filter-group/filter-rules/).**
+
+**These filters are combined in one guide, since they differ only in the sorting parameter, a set of preset values and the name.** The principle of work and states are the same.
 
 @## Description
 
-**Filter Keyword Difficulty** is a filter to sort the data on the page by the Keyword Difficulty parameter.
+**Keyword Difficulty filter** is a filter to sort the data on the page by the Keyword Difficulty parameter.
 
-**Filter Positions** is a filter to sort data on the page by position.
+**Positions filter** is a filter to sort data on the page by position.
 
-**Filter Volume** is a filter to sort the data on the page by the Volume parameter.
+**Volume filter** is a filter to sort the data on the page by the Volume parameter.
 
 They have a set of preset values and a custom range inputs.
 
 **When working with filters, it is important for the user to:**
 
 - understand that there are preset values and the ability to enter what he needs;
-- **quickly navigate and choose a value from the preset ones;**
+- quickly navigate and choose a value from the preset ones;
 - quickly understand that nothing was found;
 - quickly reset the entered data and search again;
 - be able to change data.
@@ -31,18 +29,18 @@ They have a set of preset values and a custom range inputs.
 
 ### Trigger
 
-- Trigger has styles of [Select](/components/select/) and [FilterTrigger](/components/filter-trigger/).
-- **Set the trigger min-width to 80px**. It's not recommended to make the trigger smaller. When there is enough space in the interface, make the width of the trigger dependent on the content, so the text inside the trigger doesn't have to be collapsed into the `ellipsis`.
+- For trigger use [Select](/components/select/) and [FilterTrigger](/components/filter-trigger/) components.
+- **Set the trigger min-width to 80px**. It's not recommended to make the trigger smaller. When there is enough space in the interface, make the width of the trigger dependent on the content, so the label inside the trigger doesn't have to be collapsed into the `ellipsis`.
 
-| Filter             | Description                                                                                                                                                              | Appearance example                                                      |
-| ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------- |
-| Keyword Difficulty | The Keyword Difficulty filter trigger always has one size, abbreviate the name to `KD%`.                                                                                 | ![default](static/placeholder-kd.png) ![active](static/active-kd.png)   |
-| Positions          | If the filter name and the value fits the width of the trigger, show the name of the filter Positions in full. If they do not fit, abbreviate the filter name to `Pos.`. | ![default](static/placeholder-pos.png) ![active](static/active-pos.png) |
-| Volume             | If the filter name and the value fits the width of the trigger, show the name of the filter Volume in full. If they do not fit, abbreviate the filter name to `Vol.`.    | ![default](static/placeholder-vol.png) ![active](static/active-vol.png) |
+| Filter             | Appearance example                                                      | Description                                                                                                                                                                |
+| ------------------ | ----------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Keyword Difficulty | ![default](static/placeholder-kd.png) ![active](static/active-kd.png)   | The Keyword Difficulty filter trigger always has one size. Abbreviate the name to **KD %**.                                                                                |
+| Positions          | ![default](static/placeholder-pos.png) ![active](static/active-pos.png) | If the filter name and the value fits the width of the trigger, show the name of the filter Positions in full. If they do not fit, abbreviate the filter name to **Pos.**. |
+| Volume             | ![default](static/placeholder-vol.png) ![active](static/active-vol.png) | If the filter name and the value fits the width of the trigger, show the name of the filter Volume in full. If they do not fit, abbreviate the filter name to **Vol.**.    |
 
 ### Dropdown
 
-**Don't make a dropdown width less than 224px**, otherwise the maximum possible values will not fit into the Custom range inputs.
+**Don't make a dropdown width less than 224px**, otherwise the maximum possible values will not fit into the custom range inputs.
 
 | Filter             | Appearance example                                                        |
 | ------------------ | ------------------------------------------------------------------------- |
@@ -60,18 +58,16 @@ They have a set of preset values and a custom range inputs.
 
 @## Custom range
 
-Use the [InputNumber](/components/input-number/), if the filter has the ability to select a custom period.
+Use [InputNumber](/components/input-number/), if the filter has the ability to select a custom period.
 
-Stepper buttons appear when you hover over such an input and in the focus state.
-
-|                                                                    | Appearance example                                          |
-| ------------------------------------------------------------------ | ----------------------------------------------------------- |
-| If nothing is entered, the bottom stepper is disabled.             | ![steppers](static/steppers-filter-kd-positions-volume.png) |
-| If a maximum value is entered, the upper stepper becomes inactive. | ![steppers](static/steppers-max.png)                        |
+|                                                                    | Appearance example                   |
+| ------------------------------------------------------------------ | ------------------------------------ |
+| If nothing is entered, the bottom stepper is disabled.             | ![steppers](static/steppers.png)     |
+| If a maximum value is entered, the upper stepper becomes inactive. | ![steppers](static/steppers-max.png) |
 
 @## Interaction
 
-When you open a dropdown, the focus immediately goes to the first Custom range field.
+When you open a dropdown, the focus immediately goes to the first custom range input.
 
 Working and interacting with the filter are described in detail in the [Filter common rules](/filter-group/filter-rules/).
 
@@ -87,10 +83,10 @@ For more information about tooltips, see [Filter common rules](/filter-group/fil
 
 @## Validation
 
-The validations work is described in the [Filter common rules](/filter-group/filter-rules/).
+Validation is described in the [Filter common rules](/filter-group/filter-rules/).
 
 @## Nothing found
 
-The "empty" state is described in the [Filter common rules](/filter-group/filter-rules/).
+"Empty" state is described in the [Filter common rules](/filter-group/filter-rules/).
 
 @page filter-kd-position-volume-code
