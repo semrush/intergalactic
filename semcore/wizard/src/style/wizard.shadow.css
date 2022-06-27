@@ -52,7 +52,7 @@ SStepper {
   }
 
   @media (max-width: 1060px) {
-    padding: 8px;
+    padding: 8px 4px;
     &:hover {
       width: fit-content;
       max-width: 220px;
