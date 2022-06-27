@@ -126,6 +126,6 @@ We can determine that the user has an input in the old browser only at the momen
 
 @## Nothing found
 
-The "empty" state is described in the [Filters, common rules](/filter-group/filter-rules/) guide.
+The "empty" state is described in the [Filter common rules](/filter-group/filter-rules/).
 
 @page filter-include-exclude-code
