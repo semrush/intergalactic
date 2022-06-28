@@ -71,8 +71,12 @@ class AreaRoot extends Component {
   render() {
     const SArea = this.Element;
     const SAreaLine = 'path';
-    const { styles, hide, d3, d3Line, data, color, uid, size, duration, Children } = this.asProps;
+    const { styles, hide, d3, d3Line, data, color, uid, size, duration, x, y, Children } =
+      this.asProps;
     const advanceMode = !!findComponent(Children, [Area.Line.displayName]);
+
+    this.asProps.dataHintsHandler.specifyDataRowFields(x, y);
+    this.asProps.dataHintsHandler.establishDataType('time-series');
 
     return sstyled(styles)(
       <>

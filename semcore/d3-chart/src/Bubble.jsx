@@ -143,12 +143,15 @@ class BubbleRoot extends Component {
   }
 
   render() {
-    const { data, uid, scale } = this.asProps;
+    const { data, uid, scale, x, y } = this.asProps;
     const [xScale, yScale] = scale;
     const xSize = Math.abs(xScale.range()[0] - xScale.range()[1]);
     const ySize = Math.abs(yScale.range()[0] - yScale.range()[1]);
     const xMargin = Math.min(xScale.range()[0], xScale.range()[1]);
     const yMargin = Math.min(yScale.range()[0], yScale.range()[1]);
+
+    this.asProps.dataHintsHandler.specifyDataRowFields(x, y);
+    this.asProps.dataHintsHandler.establishDataType('points-cloud');
 
     return (
       <>
