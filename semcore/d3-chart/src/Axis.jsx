@@ -260,6 +260,14 @@ function Ticks(props) {
 function Grid(props) {
   const { Element: SGrid, styles, scale, ticks, indexScale } = props;
 
+  if (ticks.length >= 2) {
+    if (indexScale === 1) {
+      props.dataHintsHandler.setupGrid('vertical', Math.abs(ticks[1] - ticks[0]));
+    } else if (indexScale === 0) {
+      props.dataHintsHandler.setupGrid('horizontal', Math.abs(ticks[1] - ticks[0]));
+    }
+  }
+
   return ticks.map((value, i) => {
     return sstyled(styles)(
       <SGrid key={i} render="line" {...MAP_POSITION_GRID[indexScale](scale, value)} />,
@@ -268,9 +276,15 @@ function Grid(props) {
 }
 
 function Title(props) {
-  const { Element: STitle, styles, scale, position, size } = props;
+  const { Element: STitle, styles, scale, position, size, children } = props;
 
   const { x, y } = MAP_POSITION_TITlE[position](scale, size);
+
+  if (position === 'left' || position === 'right') {
+    props.dataHintsHandler.setTitle('vertical', children);
+  } else if (position === 'top' || position === 'bottom') {
+    props.dataHintsHandler.setTitle('horizontal', children);
+  }
 
   const sstyles = sstyled(styles);
   const sTitleStyles = sstyles.cn('STitle', {

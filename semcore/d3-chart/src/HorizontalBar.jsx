@@ -58,6 +58,9 @@ class HorizontalBarRoot extends Component {
       position: d[x] > 0 ? 'right' : 'left',
     });
 
+    this.asProps.dataHintsHandler.describeValueEntity(`${d[y]} ${x}`, d[x]);
+    this.asProps.dataHintsHandler.labelKey(y, d[y]);
+
     return sstyled(styles)(
       <SBar
         key={`horizontal-bar-${i}`}

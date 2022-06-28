@@ -53,6 +53,7 @@ class VennRoot extends Component {
     return {
       duration: this.asProps.duration,
       data: this.vennData[props.dataKey],
+      originalData: this.asProps.data[props.dataKey],
       onMouseMove: this.bindHandlerTooltip(true, props),
       onMouseLeave: this.bindHandlerTooltip(false, props),
     };
@@ -65,6 +66,7 @@ class VennRoot extends Component {
       duration,
       delay: duration,
       data: Object.values(this.vennData).filter((d) => dataKeys.includes(d.setid)),
+      originalData: this.asProps.data[props.dataKey],
       onMouseMove: this.bindHandlerTooltip(true, props),
       onMouseLeave: this.bindHandlerTooltip(false, props),
     };
@@ -76,6 +78,7 @@ class VennRoot extends Component {
 
   render() {
     const Element = this.Element;
+    this.asProps.dataHintsHandler.establishDataType('values-set');
     this.vennData = this.getVennData();
     return (
       <Element render={this.renderElement} childrenPosition="inside" vennData={this.vennData} />
@@ -83,7 +86,19 @@ class VennRoot extends Component {
   }
 }
 
-function Circle({ Element: SCircle, styles, color, data, duration }) {
+function Circle({
+  Element: SCircle,
+  styles,
+  color,
+  data,
+  duration,
+  name,
+  dataKey,
+  originalData,
+  dataHintsHandler,
+}) {
+  dataHintsHandler.describeValueEntity(dataKey, originalData, name);
+
   return sstyled(styles)(
     <SCircle
       render="circle"
@@ -97,7 +112,17 @@ function Circle({ Element: SCircle, styles, color, data, duration }) {
 }
 
 function Intersection(props) {
-  const { Element: SIntersection, styles, data } = props;
+  const {
+    Element: SIntersection,
+    styles,
+    data,
+    name,
+    dataKey,
+    originalData,
+    dataHintsHandler,
+  } = props;
+  dataHintsHandler.describeValueEntity(dataKey, originalData, name);
+
   const renderIntersection = React.useCallback(
     React.forwardRef((props, ref) => {
       return <FadeInOut ref={ref} tag="path" visible {...props} />;

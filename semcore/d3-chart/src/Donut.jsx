@@ -257,6 +257,7 @@ class DonutRoot extends Component {
 
   render() {
     const { halfsize, size } = this.asProps;
+    this.asProps.dataHintsHandler.establishDataType('values-set');
     const [width, height] = size;
     const Element = this.Element;
     const k = halfsize ? 1 : 2;
@@ -281,20 +282,27 @@ function Pie({
   $animationActivePie,
   active,
   d3ArcOut,
+  name,
+  dataKey,
+  dataHintsHandler,
   ...other
 }) {
   const [isMount, setIsMount] = useState(false);
+
   useEffect(() => {
-    //you should't run animation for first render
+    // do not run animation on first render
     if (!isMount) {
       setIsMount(true);
       return;
     }
     if (active !== undefined && active !== null) {
-      //name must unique on page
       $animationActivePie({ ...other, active, data, selector: `[name="${other.name}"]` });
     }
   }, [active]);
+
+  dataHintsHandler.establishDataType('values-set');
+  dataHintsHandler.describeValueEntity(dataKey, data.data[1], name);
+
   return sstyled(styles)(
     <SPie render="path" color={color} d={active ? d3ArcOut(data) : d3Arc(data)} />,
   );
@@ -306,7 +314,9 @@ function EmptyData({ Element: SEmptyData, styles, d3Arc, color }) {
   );
 }
 
-function Label({ Element: SLabel, styles, Children }) {
+function Label({ Element: SLabel, styles, Children, children, dataHintsHandler }) {
+  dataHintsHandler.setTitle('vertical', children);
+
   return sstyled(styles)(
     <SLabel render="text" x="0" y="0">
       <Children />
