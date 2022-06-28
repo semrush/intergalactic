@@ -13,6 +13,7 @@
     "test": "jest"
   },
   "dependencies": {
+    "@formatjs/intl": "2.3.0",
     "@semcore/animation": "^1",
     "@semcore/flex-box": "^4",
     "@semcore/popper": "^4.9",
