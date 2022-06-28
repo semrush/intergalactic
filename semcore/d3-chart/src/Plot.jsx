@@ -2,8 +2,10 @@ import React from 'react';
 import createComponent, { Component, Root, sstyled } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
 import EventEmitter from '@semcore/utils/lib/eventEmitter';
-import { eventToPoint } from './utils';
+import { eventToPoint, uniqueId } from './utils';
 import style from './style/plot.shadow.css';
+import { PlotA11yModule } from './a11y/PlotA11yModule';
+import { makeDataHintsHandlers, makeDataHintsContainer } from './a11y/hints';
 
 class PlotRoot extends Component {
   static displayName = 'Plot';
@@ -19,7 +21,12 @@ class PlotRoot extends Component {
     height: 0,
   });
 
+  plotId = uniqueId();
+
   rootRef = React.createRef();
+
+  dataStructureHints = makeDataHintsContainer();
+  dataHintsHandler = makeDataHintsHandlers(this.dataStructureHints);
 
   handlerMouseMove = (e) => {
     const { scale } = this.asProps;
@@ -53,25 +60,44 @@ class PlotRoot extends Component {
         scale: scale,
         eventEmitter: this.eventEmitter,
         rootRef: this.rootRef,
+        dataHintsHandler: this.dataHintsHandler,
       },
     };
   }
 
   render() {
     const SPlot = Root;
-    const { styles, width, height } = this.asProps;
+    const { styles, width, height, Children, data, a11yAltTextConfig, label, locale } =
+      this.asProps;
 
     if (!width || !height) return null;
 
     return sstyled(styles)(
-      <SPlot
-        render={Box}
-        tag="svg"
-        __excludeProps={['data', 'scale']}
-        ref={this.rootRef}
-        onMouseMove={this.handlerMouseMove}
-        onMouseLeave={this.handlerMouseLeave}
-      />,
+      <>
+        <SPlot
+          render={Box}
+          tag="svg"
+          __excludeProps={['data', 'scale']}
+          ref={this.rootRef}
+          onMouseMove={this.handlerMouseMove}
+          onMouseLeave={this.handlerMouseLeave}
+          aria-label={label}
+          tabIndex={0}
+        >
+          <Children />
+          <foreignObject width="100%" height="100%">
+            <PlotA11yModule
+              id={this.plotId}
+              data={data}
+              plotLabel={label}
+              locale={locale}
+              plotRef={this.rootRef}
+              hints={this.dataStructureHints}
+              config={a11yAltTextConfig}
+            />
+          </foreignObject>
+        </SPlot>
+      </>,
     );
   }
 }

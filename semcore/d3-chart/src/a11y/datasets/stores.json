@@ -1,0 +1,6274 @@
+[
+  {
+    "Store ID": 1,
+    "Store_Area": 1659,
+    "Items_Available": 1961,
+    "Daily_Customer_Count": 530,
+    "Store_Sales": 66490
+  },
+  {
+    "Store ID": 2,
+    "Store_Area": 1461,
+    "Items_Available": 1752,
+    "Daily_Customer_Count": 210,
+    "Store_Sales": 39820
+  },
+  {
+    "Store ID": 3,
+    "Store_Area": 1340,
+    "Items_Available": 1609,
+    "Daily_Customer_Count": 720,
+    "Store_Sales": 54010
+  },
+  {
+    "Store ID": 4,
+    "Store_Area": 1451,
+    "Items_Available": 1748,
+    "Daily_Customer_Count": 620,
+    "Store_Sales": 53730
+  },
+  {
+    "Store ID": 5,
+    "Store_Area": 1770,
+    "Items_Available": 2111,
+    "Daily_Customer_Count": 450,
+    "Store_Sales": 46620
+  },
+  {
+    "Store ID": 6,
+    "Store_Area": 1442,
+    "Items_Available": 1733,
+    "Daily_Customer_Count": 760,
+    "Store_Sales": 45260
+  },
+  {
+    "Store ID": 7,
+    "Store_Area": 1542,
+    "Items_Available": 1858,
+    "Daily_Customer_Count": 1030,
+    "Store_Sales": 72240
+  },
+  {
+    "Store ID": 8,
+    "Store_Area": 1261,
+    "Items_Available": 1507,
+    "Daily_Customer_Count": 1020,
+    "Store_Sales": 37720
+  },
+  {
+    "Store ID": 9,
+    "Store_Area": 1090,
+    "Items_Available": 1321,
+    "Daily_Customer_Count": 680,
+    "Store_Sales": 46310
+  },
+  {
+    "Store ID": 10,
+    "Store_Area": 1030,
+    "Items_Available": 1235,
+    "Daily_Customer_Count": 1130,
+    "Store_Sales": 44150
+  },
+  {
+    "Store ID": 11,
+    "Store_Area": 1187,
+    "Items_Available": 1439,
+    "Daily_Customer_Count": 1090,
+    "Store_Sales": 71280
+  },
+  {
+    "Store ID": 12,
+    "Store_Area": 1751,
+    "Items_Available": 2098,
+    "Daily_Customer_Count": 720,
+    "Store_Sales": 57620
+  },
+  {
+    "Store ID": 13,
+    "Store_Area": 1746,
+    "Items_Available": 2064,
+    "Daily_Customer_Count": 1050,
+    "Store_Sales": 60470
+  },
+  {
+    "Store ID": 14,
+    "Store_Area": 1615,
+    "Items_Available": 1931,
+    "Daily_Customer_Count": 1160,
+    "Store_Sales": 59130
+  },
+  {
+    "Store ID": 15,
+    "Store_Area": 1469,
+    "Items_Available": 1756,
+    "Daily_Customer_Count": 770,
+    "Store_Sales": 66360
+  },
+  {
+    "Store ID": 16,
+    "Store_Area": 1644,
+    "Items_Available": 1950,
+    "Daily_Customer_Count": 790,
+    "Store_Sales": 78870
+  },
+  {
+    "Store ID": 17,
+    "Store_Area": 1578,
+    "Items_Available": 1907,
+    "Daily_Customer_Count": 1440,
+    "Store_Sales": 77250
+  },
+  {
+    "Store ID": 18,
+    "Store_Area": 1703,
+    "Items_Available": 2045,
+    "Daily_Customer_Count": 670,
+    "Store_Sales": 38170
+  },
+  {
+    "Store ID": 19,
+    "Store_Area": 1438,
+    "Items_Available": 1731,
+    "Daily_Customer_Count": 1030,
+    "Store_Sales": 63540
+  },
+  {
+    "Store ID": 20,
+    "Store_Area": 1940,
+    "Items_Available": 2340,
+    "Daily_Customer_Count": 980,
+    "Store_Sales": 40190
+  },
+  {
+    "Store ID": 21,
+    "Store_Area": 1421,
+    "Items_Available": 1700,
+    "Daily_Customer_Count": 370,
+    "Store_Sales": 43460
+  },
+  {
+    "Store ID": 22,
+    "Store_Area": 1458,
+    "Items_Available": 1746,
+    "Daily_Customer_Count": 690,
+    "Store_Sales": 68890
+  },
+  {
+    "Store ID": 23,
+    "Store_Area": 1719,
+    "Items_Available": 2065,
+    "Daily_Customer_Count": 950,
+    "Store_Sales": 52780
+  },
+  {
+    "Store ID": 24,
+    "Store_Area": 1449,
+    "Items_Available": 1752,
+    "Daily_Customer_Count": 620,
+    "Store_Sales": 50680
+  },
+  {
+    "Store ID": 25,
+    "Store_Area": 1234,
+    "Items_Available": 1488,
+    "Daily_Customer_Count": 840,
+    "Store_Sales": 41880
+  },
+  {
+    "Store ID": 26,
+    "Store_Area": 1732,
+    "Items_Available": 2073,
+    "Daily_Customer_Count": 820,
+    "Store_Sales": 70050
+  },
+  {
+    "Store ID": 27,
+    "Store_Area": 1475,
+    "Items_Available": 1777,
+    "Daily_Customer_Count": 1100,
+    "Store_Sales": 25820
+  },
+  {
+    "Store ID": 28,
+    "Store_Area": 1390,
+    "Items_Available": 1648,
+    "Daily_Customer_Count": 980,
+    "Store_Sales": 60530
+  },
+  {
+    "Store ID": 29,
+    "Store_Area": 1642,
+    "Items_Available": 1943,
+    "Daily_Customer_Count": 710,
+    "Store_Sales": 78100
+  },
+  {
+    "Store ID": 30,
+    "Store_Area": 1715,
+    "Items_Available": 2071,
+    "Daily_Customer_Count": 650,
+    "Store_Sales": 84860
+  },
+  {
+    "Store ID": 31,
+    "Store_Area": 1439,
+    "Items_Available": 1746,
+    "Daily_Customer_Count": 990,
+    "Store_Sales": 80140
+  },
+  {
+    "Store ID": 32,
+    "Store_Area": 1250,
+    "Items_Available": 1508,
+    "Daily_Customer_Count": 990,
+    "Store_Sales": 14920
+  },
+  {
+    "Store ID": 33,
+    "Store_Area": 1331,
+    "Items_Available": 1608,
+    "Daily_Customer_Count": 880,
+    "Store_Sales": 60460
+  },
+  {
+    "Store ID": 34,
+    "Store_Area": 1784,
+    "Items_Available": 2163,
+    "Daily_Customer_Count": 620,
+    "Store_Sales": 74560
+  },
+  {
+    "Store ID": 35,
+    "Store_Area": 1375,
+    "Items_Available": 1648,
+    "Daily_Customer_Count": 1020,
+    "Store_Sales": 72430
+  },
+  {
+    "Store ID": 36,
+    "Store_Area": 1871,
+    "Items_Available": 2230,
+    "Daily_Customer_Count": 700,
+    "Store_Sales": 45460
+  },
+  {
+    "Store ID": 37,
+    "Store_Area": 1442,
+    "Items_Available": 1744,
+    "Daily_Customer_Count": 610,
+    "Store_Sales": 41570
+  },
+  {
+    "Store ID": 38,
+    "Store_Area": 1174,
+    "Items_Available": 1411,
+    "Daily_Customer_Count": 1080,
+    "Store_Sales": 62870
+  },
+  {
+    "Store ID": 39,
+    "Store_Area": 1839,
+    "Items_Available": 2204,
+    "Daily_Customer_Count": 1010,
+    "Store_Sales": 55170
+  },
+  {
+    "Store ID": 40,
+    "Store_Area": 1270,
+    "Items_Available": 1516,
+    "Daily_Customer_Count": 10,
+    "Store_Sales": 45480
+  },
+  {
+    "Store ID": 41,
+    "Store_Area": 1435,
+    "Items_Available": 1725,
+    "Daily_Customer_Count": 1250,
+    "Store_Sales": 49550
+  },
+  {
+    "Store ID": 42,
+    "Store_Area": 965,
+    "Items_Available": 1152,
+    "Daily_Customer_Count": 600,
+    "Store_Sales": 48140
+  },
+  {
+    "Store ID": 43,
+    "Store_Area": 1665,
+    "Items_Available": 2001,
+    "Daily_Customer_Count": 730,
+    "Store_Sales": 67640
+  },
+  {
+    "Store ID": 44,
+    "Store_Area": 1780,
+    "Items_Available": 2117,
+    "Daily_Customer_Count": 780,
+    "Store_Sales": 39730
+  },
+  {
+    "Store ID": 45,
+    "Store_Area": 1009,
+    "Items_Available": 1194,
+    "Daily_Customer_Count": 520,
+    "Store_Sales": 35800
+  },
+  {
+    "Store ID": 46,
+    "Store_Area": 1227,
+    "Items_Available": 1471,
+    "Daily_Customer_Count": 870,
+    "Store_Sales": 49270
+  },
+  {
+    "Store ID": 47,
+    "Store_Area": 1769,
+    "Items_Available": 2087,
+    "Daily_Customer_Count": 690,
+    "Store_Sales": 66510
+  },
+  {
+    "Store ID": 48,
+    "Store_Area": 1660,
+    "Items_Available": 1982,
+    "Daily_Customer_Count": 910,
+    "Store_Sales": 62530
+  },
+  {
+    "Store ID": 49,
+    "Store_Area": 1472,
+    "Items_Available": 1776,
+    "Daily_Customer_Count": 1260,
+    "Store_Sales": 59980
+  },
+  {
+    "Store ID": 50,
+    "Store_Area": 1408,
+    "Items_Available": 1688,
+    "Daily_Customer_Count": 1040,
+    "Store_Sales": 76350
+  },
+  {
+    "Store ID": 51,
+    "Store_Area": 1514,
+    "Items_Available": 1820,
+    "Daily_Customer_Count": 910,
+    "Store_Sales": 81820
+  },
+  {
+    "Store ID": 52,
+    "Store_Area": 1565,
+    "Items_Available": 1880,
+    "Daily_Customer_Count": 1300,
+    "Store_Sales": 57830
+  },
+  {
+    "Store ID": 53,
+    "Store_Area": 1074,
+    "Items_Available": 1288,
+    "Daily_Customer_Count": 320,
+    "Store_Sales": 70450
+  },
+  {
+    "Store ID": 54,
+    "Store_Area": 1864,
+    "Items_Available": 2240,
+    "Daily_Customer_Count": 530,
+    "Store_Sales": 67000
+  },
+  {
+    "Store ID": 55,
+    "Store_Area": 1570,
+    "Items_Available": 1898,
+    "Daily_Customer_Count": 980,
+    "Store_Sales": 64090
+  },
+  {
+    "Store ID": 56,
+    "Store_Area": 1417,
+    "Items_Available": 1701,
+    "Daily_Customer_Count": 740,
+    "Store_Sales": 48670
+  },
+  {
+    "Store ID": 57,
+    "Store_Area": 1734,
+    "Items_Available": 2060,
+    "Daily_Customer_Count": 1240,
+    "Store_Sales": 66210
+  },
+  {
+    "Store ID": 58,
+    "Store_Area": 1470,
+    "Items_Available": 1763,
+    "Daily_Customer_Count": 1080,
+    "Store_Sales": 83660
+  },
+  {
+    "Store ID": 59,
+    "Store_Area": 1761,
+    "Items_Available": 2104,
+    "Daily_Customer_Count": 1080,
+    "Store_Sales": 70770
+  },
+  {
+    "Store ID": 60,
+    "Store_Area": 1756,
+    "Items_Available": 2070,
+    "Daily_Customer_Count": 460,
+    "Store_Sales": 53870
+  },
+  {
+    "Store ID": 61,
+    "Store_Area": 1704,
+    "Items_Available": 2045,
+    "Daily_Customer_Count": 300,
+    "Store_Sales": 71300
+  },
+  {
+    "Store ID": 62,
+    "Store_Area": 2011,
+    "Items_Available": 2391,
+    "Daily_Customer_Count": 530,
+    "Store_Sales": 46100
+  },
+  {
+    "Store ID": 63,
+    "Store_Area": 1472,
+    "Items_Available": 1748,
+    "Daily_Customer_Count": 600,
+    "Store_Sales": 49100
+  },
+  {
+    "Store ID": 64,
+    "Store_Area": 1310,
+    "Items_Available": 1561,
+    "Daily_Customer_Count": 860,
+    "Store_Sales": 65920
+  },
+  {
+    "Store ID": 65,
+    "Store_Area": 1544,
+    "Items_Available": 1821,
+    "Daily_Customer_Count": 590,
+    "Store_Sales": 58660
+  },
+  {
+    "Store ID": 66,
+    "Store_Area": 1707,
+    "Items_Available": 2052,
+    "Daily_Customer_Count": 920,
+    "Store_Sales": 69130
+  },
+  {
+    "Store ID": 67,
+    "Store_Area": 1881,
+    "Items_Available": 2262,
+    "Daily_Customer_Count": 570,
+    "Store_Sales": 49080
+  },
+  {
+    "Store ID": 68,
+    "Store_Area": 1416,
+    "Items_Available": 1681,
+    "Daily_Customer_Count": 290,
+    "Store_Sales": 72710
+  },
+  {
+    "Store ID": 69,
+    "Store_Area": 1631,
+    "Items_Available": 1941,
+    "Daily_Customer_Count": 650,
+    "Store_Sales": 33430
+  },
+  {
+    "Store ID": 70,
+    "Store_Area": 1318,
+    "Items_Available": 1576,
+    "Daily_Customer_Count": 710,
+    "Store_Sales": 42430
+  },
+  {
+    "Store ID": 71,
+    "Store_Area": 1692,
+    "Items_Available": 2019,
+    "Daily_Customer_Count": 850,
+    "Store_Sales": 56650
+  },
+  {
+    "Store ID": 72,
+    "Store_Area": 1152,
+    "Items_Available": 1380,
+    "Daily_Customer_Count": 530,
+    "Store_Sales": 33580
+  },
+  {
+    "Store ID": 73,
+    "Store_Area": 891,
+    "Items_Available": 1073,
+    "Daily_Customer_Count": 630,
+    "Store_Sales": 67370
+  },
+  {
+    "Store ID": 74,
+    "Store_Area": 1468,
+    "Items_Available": 1749,
+    "Daily_Customer_Count": 700,
+    "Store_Sales": 71780
+  },
+  {
+    "Store ID": 75,
+    "Store_Area": 1539,
+    "Items_Available": 1833,
+    "Daily_Customer_Count": 650,
+    "Store_Sales": 84840
+  },
+  {
+    "Store ID": 76,
+    "Store_Area": 1635,
+    "Items_Available": 1956,
+    "Daily_Customer_Count": 720,
+    "Store_Sales": 82070
+  },
+  {
+    "Store ID": 77,
+    "Store_Area": 1267,
+    "Items_Available": 1520,
+    "Daily_Customer_Count": 450,
+    "Store_Sales": 26770
+  },
+  {
+    "Store ID": 78,
+    "Store_Area": 1250,
+    "Items_Available": 1475,
+    "Daily_Customer_Count": 1390,
+    "Store_Sales": 65560
+  },
+  {
+    "Store ID": 79,
+    "Store_Area": 1720,
+    "Items_Available": 2044,
+    "Daily_Customer_Count": 960,
+    "Store_Sales": 38660
+  },
+  {
+    "Store ID": 80,
+    "Store_Area": 1462,
+    "Items_Available": 1761,
+    "Daily_Customer_Count": 600,
+    "Store_Sales": 65660
+  },
+  {
+    "Store ID": 81,
+    "Store_Area": 1431,
+    "Items_Available": 1711,
+    "Daily_Customer_Count": 620,
+    "Store_Sales": 40700
+  },
+  {
+    "Store ID": 82,
+    "Store_Area": 1539,
+    "Items_Available": 1858,
+    "Daily_Customer_Count": 1020,
+    "Store_Sales": 88910
+  },
+  {
+    "Store ID": 83,
+    "Store_Area": 1441,
+    "Items_Available": 1723,
+    "Daily_Customer_Count": 330,
+    "Store_Sales": 57860
+  },
+  {
+    "Store ID": 84,
+    "Store_Area": 1572,
+    "Items_Available": 1884,
+    "Daily_Customer_Count": 1410,
+    "Store_Sales": 42670
+  },
+  {
+    "Store ID": 85,
+    "Store_Area": 1287,
+    "Items_Available": 1525,
+    "Daily_Customer_Count": 1200,
+    "Store_Sales": 90180
+  },
+  {
+    "Store ID": 86,
+    "Store_Area": 1468,
+    "Items_Available": 1760,
+    "Daily_Customer_Count": 280,
+    "Store_Sales": 51280
+  },
+  {
+    "Store ID": 87,
+    "Store_Area": 1931,
+    "Items_Available": 2342,
+    "Daily_Customer_Count": 940,
+    "Store_Sales": 97260
+  },
+  {
+    "Store ID": 88,
+    "Store_Area": 1252,
+    "Items_Available": 1506,
+    "Daily_Customer_Count": 850,
+    "Store_Sales": 39650
+  },
+  {
+    "Store ID": 89,
+    "Store_Area": 1238,
+    "Items_Available": 1468,
+    "Daily_Customer_Count": 960,
+    "Store_Sales": 45720
+  },
+  {
+    "Store ID": 90,
+    "Store_Area": 1479,
+    "Items_Available": 1758,
+    "Daily_Customer_Count": 420,
+    "Store_Sales": 42060
+  },
+  {
+    "Store ID": 91,
+    "Store_Area": 1590,
+    "Items_Available": 1912,
+    "Daily_Customer_Count": 830,
+    "Store_Sales": 65350
+  },
+  {
+    "Store ID": 92,
+    "Store_Area": 2169,
+    "Items_Available": 2617,
+    "Daily_Customer_Count": 600,
+    "Store_Sales": 67080
+  },
+  {
+    "Store ID": 93,
+    "Store_Area": 1838,
+    "Items_Available": 2205,
+    "Daily_Customer_Count": 400,
+    "Store_Sales": 54030
+  },
+  {
+    "Store ID": 94,
+    "Store_Area": 1385,
+    "Items_Available": 1655,
+    "Daily_Customer_Count": 760,
+    "Store_Sales": 56360
+  },
+  {
+    "Store ID": 95,
+    "Store_Area": 1921,
+    "Items_Available": 2305,
+    "Daily_Customer_Count": 1470,
+    "Store_Sales": 77120
+  },
+  {
+    "Store ID": 96,
+    "Store_Area": 1975,
+    "Items_Available": 2385,
+    "Daily_Customer_Count": 500,
+    "Store_Sales": 50810
+  },
+  {
+    "Store ID": 97,
+    "Store_Area": 1853,
+    "Items_Available": 2235,
+    "Daily_Customer_Count": 1120,
+    "Store_Sales": 60960
+  },
+  {
+    "Store ID": 98,
+    "Store_Area": 1816,
+    "Items_Available": 2171,
+    "Daily_Customer_Count": 1160,
+    "Store_Sales": 61180
+  },
+  {
+    "Store ID": 99,
+    "Store_Area": 1785,
+    "Items_Available": 2147,
+    "Daily_Customer_Count": 820,
+    "Store_Sales": 63660
+  },
+  {
+    "Store ID": 100,
+    "Store_Area": 1579,
+    "Items_Available": 1899,
+    "Daily_Customer_Count": 1140,
+    "Store_Sales": 41190
+  },
+  {
+    "Store ID": 101,
+    "Store_Area": 1096,
+    "Items_Available": 1321,
+    "Daily_Customer_Count": 900,
+    "Store_Sales": 78420
+  },
+  {
+    "Store ID": 102,
+    "Store_Area": 1919,
+    "Items_Available": 2294,
+    "Daily_Customer_Count": 760,
+    "Store_Sales": 65580
+  },
+  {
+    "Store ID": 103,
+    "Store_Area": 1262,
+    "Items_Available": 1500,
+    "Daily_Customer_Count": 1170,
+    "Store_Sales": 89080
+  },
+  {
+    "Store ID": 104,
+    "Store_Area": 1374,
+    "Items_Available": 1655,
+    "Daily_Customer_Count": 1080,
+    "Store_Sales": 94170
+  },
+  {
+    "Store ID": 105,
+    "Store_Area": 1309,
+    "Items_Available": 1587,
+    "Daily_Customer_Count": 1000,
+    "Store_Sales": 50950
+  },
+  {
+    "Store ID": 106,
+    "Store_Area": 1207,
+    "Items_Available": 1434,
+    "Daily_Customer_Count": 690,
+    "Store_Sales": 65180
+  },
+  {
+    "Store ID": 107,
+    "Store_Area": 1692,
+    "Items_Available": 2031,
+    "Daily_Customer_Count": 810,
+    "Store_Sales": 69310
+  },
+  {
+    "Store ID": 108,
+    "Store_Area": 1929,
+    "Items_Available": 2311,
+    "Daily_Customer_Count": 630,
+    "Store_Sales": 79210
+  },
+  {
+    "Store ID": 109,
+    "Store_Area": 1573,
+    "Items_Available": 1878,
+    "Daily_Customer_Count": 650,
+    "Store_Sales": 23740
+  },
+  {
+    "Store ID": 110,
+    "Store_Area": 1415,
+    "Items_Available": 1700,
+    "Daily_Customer_Count": 920,
+    "Store_Sales": 36330
+  },
+  {
+    "Store ID": 111,
+    "Store_Area": 1162,
+    "Items_Available": 1382,
+    "Daily_Customer_Count": 1260,
+    "Store_Sales": 51700
+  },
+  {
+    "Store ID": 112,
+    "Store_Area": 1485,
+    "Items_Available": 1787,
+    "Daily_Customer_Count": 800,
+    "Store_Sales": 62950
+  },
+  {
+    "Store ID": 113,
+    "Store_Area": 1897,
+    "Items_Available": 2248,
+    "Daily_Customer_Count": 1330,
+    "Store_Sales": 56010
+  },
+  {
+    "Store ID": 114,
+    "Store_Area": 1607,
+    "Items_Available": 1927,
+    "Daily_Customer_Count": 940,
+    "Store_Sales": 45080
+  },
+  {
+    "Store ID": 115,
+    "Store_Area": 1909,
+    "Items_Available": 2287,
+    "Daily_Customer_Count": 1210,
+    "Store_Sales": 46830
+  },
+  {
+    "Store ID": 116,
+    "Store_Area": 1274,
+    "Items_Available": 1503,
+    "Daily_Customer_Count": 660,
+    "Store_Sales": 64750
+  },
+  {
+    "Store ID": 117,
+    "Store_Area": 1157,
+    "Items_Available": 1379,
+    "Daily_Customer_Count": 770,
+    "Store_Sales": 80780
+  },
+  {
+    "Store ID": 118,
+    "Store_Area": 1712,
+    "Items_Available": 2046,
+    "Daily_Customer_Count": 460,
+    "Store_Sales": 31180
+  },
+  {
+    "Store ID": 119,
+    "Store_Area": 1500,
+    "Items_Available": 1798,
+    "Daily_Customer_Count": 860,
+    "Store_Sales": 56710
+  },
+  {
+    "Store ID": 120,
+    "Store_Area": 1682,
+    "Items_Available": 2017,
+    "Daily_Customer_Count": 780,
+    "Store_Sales": 49390
+  },
+  {
+    "Store ID": 121,
+    "Store_Area": 1441,
+    "Items_Available": 1727,
+    "Daily_Customer_Count": 890,
+    "Store_Sales": 66000
+  },
+  {
+    "Store ID": 122,
+    "Store_Area": 1525,
+    "Items_Available": 1835,
+    "Daily_Customer_Count": 900,
+    "Store_Sales": 32770
+  },
+  {
+    "Store ID": 123,
+    "Store_Area": 1408,
+    "Items_Available": 1669,
+    "Daily_Customer_Count": 530,
+    "Store_Sales": 46580
+  },
+  {
+    "Store ID": 124,
+    "Store_Area": 1947,
+    "Items_Available": 2333,
+    "Daily_Customer_Count": 790,
+    "Store_Sales": 79780
+  },
+  {
+    "Store ID": 125,
+    "Store_Area": 1164,
+    "Items_Available": 1390,
+    "Daily_Customer_Count": 370,
+    "Store_Sales": 35510
+  },
+  {
+    "Store ID": 126,
+    "Store_Area": 1787,
+    "Items_Available": 2137,
+    "Daily_Customer_Count": 610,
+    "Store_Sales": 80970
+  },
+  {
+    "Store ID": 127,
+    "Store_Area": 1871,
+    "Items_Available": 2241,
+    "Daily_Customer_Count": 500,
+    "Store_Sales": 61150
+  },
+  {
+    "Store ID": 128,
+    "Store_Area": 1718,
+    "Items_Available": 2051,
+    "Daily_Customer_Count": 750,
+    "Store_Sales": 49210
+  },
+  {
+    "Store ID": 129,
+    "Store_Area": 1365,
+    "Items_Available": 1636,
+    "Daily_Customer_Count": 980,
+    "Store_Sales": 79950
+  },
+  {
+    "Store ID": 130,
+    "Store_Area": 1368,
+    "Items_Available": 1654,
+    "Daily_Customer_Count": 530,
+    "Store_Sales": 68740
+  },
+  {
+    "Store ID": 131,
+    "Store_Area": 1342,
+    "Items_Available": 1595,
+    "Daily_Customer_Count": 910,
+    "Store_Sales": 57480
+  },
+  {
+    "Store ID": 132,
+    "Store_Area": 1076,
+    "Items_Available": 1270,
+    "Daily_Customer_Count": 620,
+    "Store_Sales": 72630
+  },
+  {
+    "Store ID": 133,
+    "Store_Area": 1396,
+    "Items_Available": 1672,
+    "Daily_Customer_Count": 1170,
+    "Store_Sales": 50070
+  },
+  {
+    "Store ID": 134,
+    "Store_Area": 1713,
+    "Items_Available": 2071,
+    "Daily_Customer_Count": 900,
+    "Store_Sales": 40490
+  },
+  {
+    "Store ID": 135,
+    "Store_Area": 1370,
+    "Items_Available": 1638,
+    "Daily_Customer_Count": 980,
+    "Store_Sales": 51850
+  },
+  {
+    "Store ID": 136,
+    "Store_Area": 1667,
+    "Items_Available": 1993,
+    "Daily_Customer_Count": 740,
+    "Store_Sales": 42840
+  },
+  {
+    "Store ID": 137,
+    "Store_Area": 1638,
+    "Items_Available": 1972,
+    "Daily_Customer_Count": 810,
+    "Store_Sales": 60940
+  },
+  {
+    "Store ID": 138,
+    "Store_Area": 1581,
+    "Items_Available": 1905,
+    "Daily_Customer_Count": 810,
+    "Store_Sales": 62280
+  },
+  {
+    "Store ID": 139,
+    "Store_Area": 1795,
+    "Items_Available": 2187,
+    "Daily_Customer_Count": 300,
+    "Store_Sales": 76530
+  },
+  {
+    "Store ID": 140,
+    "Store_Area": 1179,
+    "Items_Available": 1412,
+    "Daily_Customer_Count": 790,
+    "Store_Sales": 85130
+  },
+  {
+    "Store ID": 141,
+    "Store_Area": 1978,
+    "Items_Available": 2374,
+    "Daily_Customer_Count": 800,
+    "Store_Sales": 48590
+  },
+  {
+    "Store ID": 142,
+    "Store_Area": 1688,
+    "Items_Available": 2042,
+    "Daily_Customer_Count": 760,
+    "Store_Sales": 73080
+  },
+  {
+    "Store ID": 143,
+    "Store_Area": 1214,
+    "Items_Available": 1456,
+    "Daily_Customer_Count": 530,
+    "Store_Sales": 48950
+  },
+  {
+    "Store ID": 144,
+    "Store_Area": 1504,
+    "Items_Available": 1805,
+    "Daily_Customer_Count": 540,
+    "Store_Sales": 48560
+  },
+  {
+    "Store ID": 145,
+    "Store_Area": 1498,
+    "Items_Available": 1770,
+    "Daily_Customer_Count": 620,
+    "Store_Sales": 59380
+  },
+  {
+    "Store ID": 146,
+    "Store_Area": 1462,
+    "Items_Available": 1762,
+    "Daily_Customer_Count": 1010,
+    "Store_Sales": 51190
+  },
+  {
+    "Store ID": 147,
+    "Store_Area": 1442,
+    "Items_Available": 1750,
+    "Daily_Customer_Count": 130,
+    "Store_Sales": 58920
+  },
+  {
+    "Store ID": 148,
+    "Store_Area": 1250,
+    "Items_Available": 1486,
+    "Daily_Customer_Count": 730,
+    "Store_Sales": 50360
+  },
+  {
+    "Store ID": 149,
+    "Store_Area": 1229,
+    "Items_Available": 1480,
+    "Daily_Customer_Count": 830,
+    "Store_Sales": 38070
+  },
+  {
+    "Store ID": 150,
+    "Store_Area": 1936,
+    "Items_Available": 2300,
+    "Daily_Customer_Count": 1060,
+    "Store_Sales": 49170
+  },
+  {
+    "Store ID": 151,
+    "Store_Area": 1369,
+    "Items_Available": 1629,
+    "Daily_Customer_Count": 770,
+    "Store_Sales": 39740
+  },
+  {
+    "Store ID": 152,
+    "Store_Area": 1662,
+    "Items_Available": 1986,
+    "Daily_Customer_Count": 70,
+    "Store_Sales": 63730
+  },
+  {
+    "Store ID": 153,
+    "Store_Area": 1548,
+    "Items_Available": 1855,
+    "Daily_Customer_Count": 670,
+    "Store_Sales": 85330
+  },
+  {
+    "Store ID": 154,
+    "Store_Area": 1649,
+    "Items_Available": 1963,
+    "Daily_Customer_Count": 490,
+    "Store_Sales": 27410
+  },
+  {
+    "Store ID": 155,
+    "Store_Area": 1393,
+    "Items_Available": 1663,
+    "Daily_Customer_Count": 670,
+    "Store_Sales": 37320
+  },
+  {
+    "Store ID": 156,
+    "Store_Area": 1450,
+    "Items_Available": 1734,
+    "Daily_Customer_Count": 380,
+    "Store_Sales": 71120
+  },
+  {
+    "Store ID": 157,
+    "Store_Area": 1613,
+    "Items_Available": 1921,
+    "Daily_Customer_Count": 1200,
+    "Store_Sales": 72800
+  },
+  {
+    "Store ID": 158,
+    "Store_Area": 1408,
+    "Items_Available": 1696,
+    "Daily_Customer_Count": 350,
+    "Store_Sales": 34410
+  },
+  {
+    "Store ID": 159,
+    "Store_Area": 775,
+    "Items_Available": 932,
+    "Daily_Customer_Count": 1090,
+    "Store_Sales": 42530
+  },
+  {
+    "Store ID": 160,
+    "Store_Area": 1275,
+    "Items_Available": 1534,
+    "Daily_Customer_Count": 1230,
+    "Store_Sales": 54300
+  },
+  {
+    "Store ID": 161,
+    "Store_Area": 1740,
+    "Items_Available": 2078,
+    "Daily_Customer_Count": 680,
+    "Store_Sales": 50780
+  },
+  {
+    "Store ID": 162,
+    "Store_Area": 1372,
+    "Items_Available": 1657,
+    "Daily_Customer_Count": 580,
+    "Store_Sales": 45020
+  },
+  {
+    "Store ID": 163,
+    "Store_Area": 1414,
+    "Items_Available": 1723,
+    "Daily_Customer_Count": 680,
+    "Store_Sales": 69600
+  },
+  {
+    "Store ID": 164,
+    "Store_Area": 2044,
+    "Items_Available": 2474,
+    "Daily_Customer_Count": 340,
+    "Store_Sales": 80340
+  },
+  {
+    "Store ID": 165,
+    "Store_Area": 1823,
+    "Items_Available": 2176,
+    "Daily_Customer_Count": 700,
+    "Store_Sales": 37810
+  },
+  {
+    "Store ID": 166,
+    "Store_Area": 955,
+    "Items_Available": 1133,
+    "Daily_Customer_Count": 580,
+    "Store_Sales": 46140
+  },
+  {
+    "Store ID": 167,
+    "Store_Area": 1465,
+    "Items_Available": 1763,
+    "Daily_Customer_Count": 680,
+    "Store_Sales": 99570
+  },
+  {
+    "Store ID": 168,
+    "Store_Area": 1331,
+    "Items_Available": 1606,
+    "Daily_Customer_Count": 630,
+    "Store_Sales": 38650
+  },
+  {
+    "Store ID": 169,
+    "Store_Area": 1232,
+    "Items_Available": 1487,
+    "Daily_Customer_Count": 860,
+    "Store_Sales": 49800
+  },
+  {
+    "Store ID": 170,
+    "Store_Area": 1481,
+    "Items_Available": 1765,
+    "Daily_Customer_Count": 490,
+    "Store_Sales": 69910
+  },
+  {
+    "Store ID": 171,
+    "Store_Area": 1343,
+    "Items_Available": 1599,
+    "Daily_Customer_Count": 870,
+    "Store_Sales": 44910
+  },
+  {
+    "Store ID": 172,
+    "Store_Area": 1539,
+    "Items_Available": 1837,
+    "Daily_Customer_Count": 990,
+    "Store_Sales": 78470
+  },
+  {
+    "Store ID": 173,
+    "Store_Area": 1007,
+    "Items_Available": 1207,
+    "Daily_Customer_Count": 670,
+    "Store_Sales": 47460
+  },
+  {
+    "Store ID": 174,
+    "Store_Area": 1762,
+    "Items_Available": 2145,
+    "Daily_Customer_Count": 490,
+    "Store_Sales": 33460
+  },
+  {
+    "Store ID": 175,
+    "Store_Area": 1527,
+    "Items_Available": 1832,
+    "Daily_Customer_Count": 580,
+    "Store_Sales": 44090
+  },
+  {
+    "Store ID": 176,
+    "Store_Area": 1356,
+    "Items_Available": 1619,
+    "Daily_Customer_Count": 700,
+    "Store_Sales": 42620
+  },
+  {
+    "Store ID": 177,
+    "Store_Area": 1536,
+    "Items_Available": 1848,
+    "Daily_Customer_Count": 670,
+    "Store_Sales": 69450
+  },
+  {
+    "Store ID": 178,
+    "Store_Area": 1605,
+    "Items_Available": 1902,
+    "Daily_Customer_Count": 390,
+    "Store_Sales": 73120
+  },
+  {
+    "Store ID": 179,
+    "Store_Area": 1704,
+    "Items_Available": 2032,
+    "Daily_Customer_Count": 590,
+    "Store_Sales": 48300
+  },
+  {
+    "Store ID": 180,
+    "Store_Area": 1626,
+    "Items_Available": 1941,
+    "Daily_Customer_Count": 1350,
+    "Store_Sales": 58090
+  },
+  {
+    "Store ID": 181,
+    "Store_Area": 1612,
+    "Items_Available": 1939,
+    "Daily_Customer_Count": 840,
+    "Store_Sales": 74250
+  },
+  {
+    "Store ID": 182,
+    "Store_Area": 1174,
+    "Items_Available": 1396,
+    "Daily_Customer_Count": 1100,
+    "Store_Sales": 40930
+  },
+  {
+    "Store ID": 183,
+    "Store_Area": 1923,
+    "Items_Available": 2339,
+    "Daily_Customer_Count": 950,
+    "Store_Sales": 70930
+  },
+  {
+    "Store ID": 184,
+    "Store_Area": 1702,
+    "Items_Available": 2053,
+    "Daily_Customer_Count": 950,
+    "Store_Sales": 64670
+  },
+  {
+    "Store ID": 185,
+    "Store_Area": 1398,
+    "Items_Available": 1692,
+    "Daily_Customer_Count": 650,
+    "Store_Sales": 77420
+  },
+  {
+    "Store ID": 186,
+    "Store_Area": 1437,
+    "Items_Available": 1717,
+    "Daily_Customer_Count": 230,
+    "Store_Sales": 32330
+  },
+  {
+    "Store ID": 187,
+    "Store_Area": 1524,
+    "Items_Available": 1796,
+    "Daily_Customer_Count": 1060,
+    "Store_Sales": 41080
+  },
+  {
+    "Store ID": 188,
+    "Store_Area": 1660,
+    "Items_Available": 1985,
+    "Daily_Customer_Count": 1180,
+    "Store_Sales": 42860
+  },
+  {
+    "Store ID": 189,
+    "Store_Area": 1302,
+    "Items_Available": 1569,
+    "Daily_Customer_Count": 710,
+    "Store_Sales": 68450
+  },
+  {
+    "Store ID": 190,
+    "Store_Area": 1666,
+    "Items_Available": 2000,
+    "Daily_Customer_Count": 480,
+    "Store_Sales": 39730
+  },
+  {
+    "Store ID": 191,
+    "Store_Area": 1391,
+    "Items_Available": 1649,
+    "Daily_Customer_Count": 810,
+    "Store_Sales": 83750
+  },
+  {
+    "Store ID": 192,
+    "Store_Area": 1778,
+    "Items_Available": 2148,
+    "Daily_Customer_Count": 1140,
+    "Store_Sales": 69940
+  },
+  {
+    "Store ID": 193,
+    "Store_Area": 1462,
+    "Items_Available": 1770,
+    "Daily_Customer_Count": 1070,
+    "Store_Sales": 67710
+  },
+  {
+    "Store ID": 194,
+    "Store_Area": 1751,
+    "Items_Available": 2115,
+    "Daily_Customer_Count": 790,
+    "Store_Sales": 67360
+  },
+  {
+    "Store ID": 195,
+    "Store_Area": 1652,
+    "Items_Available": 1982,
+    "Daily_Customer_Count": 690,
+    "Store_Sales": 52460
+  },
+  {
+    "Store ID": 196,
+    "Store_Area": 1841,
+    "Items_Available": 2215,
+    "Daily_Customer_Count": 610,
+    "Store_Sales": 88760
+  },
+  {
+    "Store ID": 197,
+    "Store_Area": 1496,
+    "Items_Available": 1791,
+    "Daily_Customer_Count": 1240,
+    "Store_Sales": 67030
+  },
+  {
+    "Store ID": 198,
+    "Store_Area": 1504,
+    "Items_Available": 1827,
+    "Daily_Customer_Count": 840,
+    "Store_Sales": 78230
+  },
+  {
+    "Store ID": 199,
+    "Store_Area": 1524,
+    "Items_Available": 1808,
+    "Daily_Customer_Count": 460,
+    "Store_Sales": 62270
+  },
+  {
+    "Store ID": 200,
+    "Store_Area": 1148,
+    "Items_Available": 1371,
+    "Daily_Customer_Count": 940,
+    "Store_Sales": 49760
+  },
+  {
+    "Store ID": 201,
+    "Store_Area": 1468,
+    "Items_Available": 1744,
+    "Daily_Customer_Count": 590,
+    "Store_Sales": 73660
+  },
+  {
+    "Store ID": 202,
+    "Store_Area": 1310,
+    "Items_Available": 1558,
+    "Daily_Customer_Count": 890,
+    "Store_Sales": 72320
+  },
+  {
+    "Store ID": 203,
+    "Store_Area": 1321,
+    "Items_Available": 1579,
+    "Daily_Customer_Count": 770,
+    "Store_Sales": 68890
+  },
+  {
+    "Store ID": 204,
+    "Store_Area": 992,
+    "Items_Available": 1192,
+    "Daily_Customer_Count": 900,
+    "Store_Sales": 34180
+  },
+  {
+    "Store ID": 205,
+    "Store_Area": 1540,
+    "Items_Available": 1857,
+    "Daily_Customer_Count": 1020,
+    "Store_Sales": 58260
+  },
+  {
+    "Store ID": 206,
+    "Store_Area": 1807,
+    "Items_Available": 2149,
+    "Daily_Customer_Count": 910,
+    "Store_Sales": 38120
+  },
+  {
+    "Store ID": 207,
+    "Store_Area": 1526,
+    "Items_Available": 1853,
+    "Daily_Customer_Count": 660,
+    "Store_Sales": 49070
+  },
+  {
+    "Store ID": 208,
+    "Store_Area": 1406,
+    "Items_Available": 1677,
+    "Daily_Customer_Count": 480,
+    "Store_Sales": 61660
+  },
+  {
+    "Store ID": 209,
+    "Store_Area": 1703,
+    "Items_Available": 2055,
+    "Daily_Customer_Count": 1080,
+    "Store_Sales": 37830
+  },
+  {
+    "Store ID": 210,
+    "Store_Area": 1575,
+    "Items_Available": 1872,
+    "Daily_Customer_Count": 690,
+    "Store_Sales": 52270
+  },
+  {
+    "Store ID": 211,
+    "Store_Area": 1309,
+    "Items_Available": 1572,
+    "Daily_Customer_Count": 510,
+    "Store_Sales": 52280
+  },
+  {
+    "Store ID": 212,
+    "Store_Area": 1488,
+    "Items_Available": 1807,
+    "Daily_Customer_Count": 1030,
+    "Store_Sales": 70810
+  },
+  {
+    "Store ID": 213,
+    "Store_Area": 1658,
+    "Items_Available": 1988,
+    "Daily_Customer_Count": 370,
+    "Store_Sales": 71530
+  },
+  {
+    "Store ID": 214,
+    "Store_Area": 1863,
+    "Items_Available": 2245,
+    "Daily_Customer_Count": 640,
+    "Store_Sales": 77260
+  },
+  {
+    "Store ID": 215,
+    "Store_Area": 1458,
+    "Items_Available": 1725,
+    "Daily_Customer_Count": 750,
+    "Store_Sales": 75550
+  },
+  {
+    "Store ID": 216,
+    "Store_Area": 1604,
+    "Items_Available": 1909,
+    "Daily_Customer_Count": 370,
+    "Store_Sales": 33730
+  },
+  {
+    "Store ID": 217,
+    "Store_Area": 1575,
+    "Items_Available": 1899,
+    "Daily_Customer_Count": 840,
+    "Store_Sales": 66270
+  },
+  {
+    "Store ID": 218,
+    "Store_Area": 1525,
+    "Items_Available": 1829,
+    "Daily_Customer_Count": 840,
+    "Store_Sales": 55820
+  },
+  {
+    "Store ID": 219,
+    "Store_Area": 1451,
+    "Items_Available": 1737,
+    "Daily_Customer_Count": 890,
+    "Store_Sales": 68430
+  },
+  {
+    "Store ID": 220,
+    "Store_Area": 1390,
+    "Items_Available": 1687,
+    "Daily_Customer_Count": 620,
+    "Store_Sales": 73990
+  },
+  {
+    "Store ID": 221,
+    "Store_Area": 1442,
+    "Items_Available": 1742,
+    "Daily_Customer_Count": 310,
+    "Store_Sales": 62800
+  },
+  {
+    "Store ID": 222,
+    "Store_Area": 1620,
+    "Items_Available": 1922,
+    "Daily_Customer_Count": 550,
+    "Store_Sales": 33740
+  },
+  {
+    "Store ID": 223,
+    "Store_Area": 1251,
+    "Items_Available": 1527,
+    "Daily_Customer_Count": 380,
+    "Store_Sales": 63830
+  },
+  {
+    "Store ID": 224,
+    "Store_Area": 1318,
+    "Items_Available": 1606,
+    "Daily_Customer_Count": 1200,
+    "Store_Sales": 24410
+  },
+  {
+    "Store ID": 225,
+    "Store_Area": 1647,
+    "Items_Available": 1962,
+    "Daily_Customer_Count": 800,
+    "Store_Sales": 70020
+  },
+  {
+    "Store ID": 226,
+    "Store_Area": 1829,
+    "Items_Available": 2175,
+    "Daily_Customer_Count": 870,
+    "Store_Sales": 92240
+  },
+  {
+    "Store ID": 227,
+    "Store_Area": 1852,
+    "Items_Available": 2227,
+    "Daily_Customer_Count": 1220,
+    "Store_Sales": 68230
+  },
+  {
+    "Store ID": 228,
+    "Store_Area": 1699,
+    "Items_Available": 2053,
+    "Daily_Customer_Count": 1080,
+    "Store_Sales": 81870
+  },
+  {
+    "Store ID": 229,
+    "Store_Area": 1325,
+    "Items_Available": 1595,
+    "Daily_Customer_Count": 540,
+    "Store_Sales": 73860
+  },
+  {
+    "Store ID": 230,
+    "Store_Area": 1350,
+    "Items_Available": 1634,
+    "Daily_Customer_Count": 880,
+    "Store_Sales": 77120
+  },
+  {
+    "Store ID": 231,
+    "Store_Area": 1347,
+    "Items_Available": 1628,
+    "Daily_Customer_Count": 120,
+    "Store_Sales": 72350
+  },
+  {
+    "Store ID": 232,
+    "Store_Area": 1397,
+    "Items_Available": 1661,
+    "Daily_Customer_Count": 1410,
+    "Store_Sales": 49160
+  },
+  {
+    "Store ID": 233,
+    "Store_Area": 1245,
+    "Items_Available": 1499,
+    "Daily_Customer_Count": 570,
+    "Store_Sales": 45650
+  },
+  {
+    "Store ID": 234,
+    "Store_Area": 1366,
+    "Items_Available": 1649,
+    "Daily_Customer_Count": 940,
+    "Store_Sales": 52780
+  },
+  {
+    "Store ID": 235,
+    "Store_Area": 1378,
+    "Items_Available": 1658,
+    "Daily_Customer_Count": 760,
+    "Store_Sales": 90960
+  },
+  {
+    "Store ID": 236,
+    "Store_Area": 1767,
+    "Items_Available": 2110,
+    "Daily_Customer_Count": 1200,
+    "Store_Sales": 64950
+  },
+  {
+    "Store ID": 237,
+    "Store_Area": 1184,
+    "Items_Available": 1434,
+    "Daily_Customer_Count": 670,
+    "Store_Sales": 47230
+  },
+  {
+    "Store ID": 238,
+    "Store_Area": 1257,
+    "Items_Available": 1505,
+    "Daily_Customer_Count": 950,
+    "Store_Sales": 83250
+  },
+  {
+    "Store ID": 239,
+    "Store_Area": 1863,
+    "Items_Available": 2247,
+    "Daily_Customer_Count": 480,
+    "Store_Sales": 51950
+  },
+  {
+    "Store ID": 240,
+    "Store_Area": 1881,
+    "Items_Available": 2244,
+    "Daily_Customer_Count": 920,
+    "Store_Sales": 66030
+  },
+  {
+    "Store ID": 241,
+    "Store_Area": 1329,
+    "Items_Available": 1609,
+    "Daily_Customer_Count": 1150,
+    "Store_Sales": 68590
+  },
+  {
+    "Store ID": 242,
+    "Store_Area": 1539,
+    "Items_Available": 1848,
+    "Daily_Customer_Count": 750,
+    "Store_Sales": 47140
+  },
+  {
+    "Store ID": 243,
+    "Store_Area": 1557,
+    "Items_Available": 1861,
+    "Daily_Customer_Count": 370,
+    "Store_Sales": 69940
+  },
+  {
+    "Store ID": 244,
+    "Store_Area": 2007,
+    "Items_Available": 2397,
+    "Daily_Customer_Count": 610,
+    "Store_Sales": 65890
+  },
+  {
+    "Store ID": 245,
+    "Store_Area": 1185,
+    "Items_Available": 1418,
+    "Daily_Customer_Count": 1150,
+    "Store_Sales": 89310
+  },
+  {
+    "Store ID": 246,
+    "Store_Area": 1657,
+    "Items_Available": 2003,
+    "Daily_Customer_Count": 1070,
+    "Store_Sales": 58540
+  },
+  {
+    "Store ID": 247,
+    "Store_Area": 1294,
+    "Items_Available": 1539,
+    "Daily_Customer_Count": 790,
+    "Store_Sales": 78130
+  },
+  {
+    "Store ID": 248,
+    "Store_Area": 1296,
+    "Items_Available": 1559,
+    "Daily_Customer_Count": 1070,
+    "Store_Sales": 92300
+  },
+  {
+    "Store ID": 249,
+    "Store_Area": 1733,
+    "Items_Available": 2097,
+    "Daily_Customer_Count": 730,
+    "Store_Sales": 56170
+  },
+  {
+    "Store ID": 250,
+    "Store_Area": 1641,
+    "Items_Available": 1976,
+    "Daily_Customer_Count": 620,
+    "Store_Sales": 46050
+  },
+  {
+    "Store ID": 251,
+    "Store_Area": 1373,
+    "Items_Available": 1648,
+    "Daily_Customer_Count": 530,
+    "Store_Sales": 43390
+  },
+  {
+    "Store ID": 252,
+    "Store_Area": 1550,
+    "Items_Available": 1845,
+    "Daily_Customer_Count": 700,
+    "Store_Sales": 61750
+  },
+  {
+    "Store ID": 253,
+    "Store_Area": 1583,
+    "Items_Available": 1907,
+    "Daily_Customer_Count": 680,
+    "Store_Sales": 21830
+  },
+  {
+    "Store ID": 254,
+    "Store_Area": 1428,
+    "Items_Available": 1719,
+    "Daily_Customer_Count": 1060,
+    "Store_Sales": 39800
+  },
+  {
+    "Store ID": 255,
+    "Store_Area": 1604,
+    "Items_Available": 1925,
+    "Daily_Customer_Count": 670,
+    "Store_Sales": 54370
+  },
+  {
+    "Store ID": 256,
+    "Store_Area": 1439,
+    "Items_Available": 1735,
+    "Daily_Customer_Count": 400,
+    "Store_Sales": 62470
+  },
+  {
+    "Store ID": 257,
+    "Store_Area": 1648,
+    "Items_Available": 2003,
+    "Daily_Customer_Count": 910,
+    "Store_Sales": 82930
+  },
+  {
+    "Store ID": 258,
+    "Store_Area": 1025,
+    "Items_Available": 1231,
+    "Daily_Customer_Count": 760,
+    "Store_Sales": 63720
+  },
+  {
+    "Store ID": 259,
+    "Store_Area": 2001,
+    "Items_Available": 2394,
+    "Daily_Customer_Count": 540,
+    "Store_Sales": 79180
+  },
+  {
+    "Store ID": 260,
+    "Store_Area": 1145,
+    "Items_Available": 1370,
+    "Daily_Customer_Count": 350,
+    "Store_Sales": 38210
+  },
+  {
+    "Store ID": 261,
+    "Store_Area": 1174,
+    "Items_Available": 1426,
+    "Daily_Customer_Count": 980,
+    "Store_Sales": 25950
+  },
+  {
+    "Store ID": 262,
+    "Store_Area": 913,
+    "Items_Available": 1106,
+    "Daily_Customer_Count": 860,
+    "Store_Sales": 56610
+  },
+  {
+    "Store ID": 263,
+    "Store_Area": 1199,
+    "Items_Available": 1433,
+    "Daily_Customer_Count": 1020,
+    "Store_Sales": 73710
+  },
+  {
+    "Store ID": 264,
+    "Store_Area": 1875,
+    "Items_Available": 2254,
+    "Daily_Customer_Count": 1120,
+    "Store_Sales": 70400
+  },
+  {
+    "Store ID": 265,
+    "Store_Area": 1153,
+    "Items_Available": 1397,
+    "Daily_Customer_Count": 1020,
+    "Store_Sales": 50440
+  },
+  {
+    "Store ID": 266,
+    "Store_Area": 1240,
+    "Items_Available": 1492,
+    "Daily_Customer_Count": 940,
+    "Store_Sales": 66840
+  },
+  {
+    "Store ID": 267,
+    "Store_Area": 1381,
+    "Items_Available": 1660,
+    "Daily_Customer_Count": 970,
+    "Store_Sales": 50170
+  },
+  {
+    "Store ID": 268,
+    "Store_Area": 1701,
+    "Items_Available": 2030,
+    "Daily_Customer_Count": 830,
+    "Store_Sales": 60140
+  },
+  {
+    "Store ID": 269,
+    "Store_Area": 1206,
+    "Items_Available": 1456,
+    "Daily_Customer_Count": 920,
+    "Store_Sales": 37130
+  },
+  {
+    "Store ID": 270,
+    "Store_Area": 1476,
+    "Items_Available": 1777,
+    "Daily_Customer_Count": 660,
+    "Store_Sales": 42890
+  },
+  {
+    "Store ID": 271,
+    "Store_Area": 1189,
+    "Items_Available": 1439,
+    "Daily_Customer_Count": 780,
+    "Store_Sales": 26220
+  },
+  {
+    "Store ID": 272,
+    "Store_Area": 1837,
+    "Items_Available": 2220,
+    "Daily_Customer_Count": 340,
+    "Store_Sales": 50840
+  },
+  {
+    "Store ID": 273,
+    "Store_Area": 1319,
+    "Items_Available": 1571,
+    "Daily_Customer_Count": 1190,
+    "Store_Sales": 25630
+  },
+  {
+    "Store ID": 274,
+    "Store_Area": 1617,
+    "Items_Available": 1901,
+    "Daily_Customer_Count": 490,
+    "Store_Sales": 60770
+  },
+  {
+    "Store ID": 275,
+    "Store_Area": 1631,
+    "Items_Available": 1967,
+    "Daily_Customer_Count": 1090,
+    "Store_Sales": 69600
+  },
+  {
+    "Store ID": 276,
+    "Store_Area": 1517,
+    "Items_Available": 1805,
+    "Daily_Customer_Count": 1040,
+    "Store_Sales": 41740
+  },
+  {
+    "Store ID": 277,
+    "Store_Area": 1764,
+    "Items_Available": 2109,
+    "Daily_Customer_Count": 1210,
+    "Store_Sales": 50130
+  },
+  {
+    "Store ID": 278,
+    "Store_Area": 1572,
+    "Items_Available": 1869,
+    "Daily_Customer_Count": 1030,
+    "Store_Sales": 21750
+  },
+  {
+    "Store ID": 279,
+    "Store_Area": 1855,
+    "Items_Available": 2197,
+    "Daily_Customer_Count": 1170,
+    "Store_Sales": 80490
+  },
+  {
+    "Store ID": 280,
+    "Store_Area": 1327,
+    "Items_Available": 1571,
+    "Daily_Customer_Count": 730,
+    "Store_Sales": 34020
+  },
+  {
+    "Store ID": 281,
+    "Store_Area": 1270,
+    "Items_Available": 1515,
+    "Daily_Customer_Count": 720,
+    "Store_Sales": 60240
+  },
+  {
+    "Store ID": 282,
+    "Store_Area": 1734,
+    "Items_Available": 2073,
+    "Daily_Customer_Count": 500,
+    "Store_Sales": 39460
+  },
+  {
+    "Store ID": 283,
+    "Store_Area": 1533,
+    "Items_Available": 1848,
+    "Daily_Customer_Count": 1070,
+    "Store_Sales": 56440
+  },
+  {
+    "Store ID": 284,
+    "Store_Area": 1390,
+    "Items_Available": 1646,
+    "Daily_Customer_Count": 800,
+    "Store_Sales": 46840
+  },
+  {
+    "Store ID": 285,
+    "Store_Area": 1856,
+    "Items_Available": 2216,
+    "Daily_Customer_Count": 1020,
+    "Store_Sales": 64820
+  },
+  {
+    "Store ID": 286,
+    "Store_Area": 1000,
+    "Items_Available": 1215,
+    "Daily_Customer_Count": 1070,
+    "Store_Sales": 52520
+  },
+  {
+    "Store ID": 287,
+    "Store_Area": 1313,
+    "Items_Available": 1586,
+    "Daily_Customer_Count": 420,
+    "Store_Sales": 45940
+  },
+  {
+    "Store ID": 288,
+    "Store_Area": 1494,
+    "Items_Available": 1799,
+    "Daily_Customer_Count": 510,
+    "Store_Sales": 38970
+  },
+  {
+    "Store ID": 289,
+    "Store_Area": 1386,
+    "Items_Available": 1674,
+    "Daily_Customer_Count": 1210,
+    "Store_Sales": 58610
+  },
+  {
+    "Store ID": 290,
+    "Store_Area": 1979,
+    "Items_Available": 2364,
+    "Daily_Customer_Count": 660,
+    "Store_Sales": 30810
+  },
+  {
+    "Store ID": 291,
+    "Store_Area": 1057,
+    "Items_Available": 1264,
+    "Daily_Customer_Count": 360,
+    "Store_Sales": 47730
+  },
+  {
+    "Store ID": 292,
+    "Store_Area": 902,
+    "Items_Available": 1093,
+    "Daily_Customer_Count": 1210,
+    "Store_Sales": 64640
+  },
+  {
+    "Store ID": 293,
+    "Store_Area": 1347,
+    "Items_Available": 1622,
+    "Daily_Customer_Count": 560,
+    "Store_Sales": 44860
+  },
+  {
+    "Store ID": 294,
+    "Store_Area": 1314,
+    "Items_Available": 1576,
+    "Daily_Customer_Count": 360,
+    "Store_Sales": 55660
+  },
+  {
+    "Store ID": 295,
+    "Store_Area": 1513,
+    "Items_Available": 1803,
+    "Daily_Customer_Count": 970,
+    "Store_Sales": 57530
+  },
+  {
+    "Store ID": 296,
+    "Store_Area": 1305,
+    "Items_Available": 1548,
+    "Daily_Customer_Count": 480,
+    "Store_Sales": 75200
+  },
+  {
+    "Store ID": 297,
+    "Store_Area": 1180,
+    "Items_Available": 1436,
+    "Daily_Customer_Count": 690,
+    "Store_Sales": 37330
+  },
+  {
+    "Store ID": 298,
+    "Store_Area": 1142,
+    "Items_Available": 1352,
+    "Daily_Customer_Count": 710,
+    "Store_Sales": 35280
+  },
+  {
+    "Store ID": 299,
+    "Store_Area": 1471,
+    "Items_Available": 1768,
+    "Daily_Customer_Count": 780,
+    "Store_Sales": 70610
+  },
+  {
+    "Store ID": 300,
+    "Store_Area": 1075,
+    "Items_Available": 1288,
+    "Daily_Customer_Count": 630,
+    "Store_Sales": 49720
+  },
+  {
+    "Store ID": 301,
+    "Store_Area": 1578,
+    "Items_Available": 1885,
+    "Daily_Customer_Count": 220,
+    "Store_Sales": 68850
+  },
+  {
+    "Store ID": 302,
+    "Store_Area": 1585,
+    "Items_Available": 1916,
+    "Daily_Customer_Count": 1110,
+    "Store_Sales": 50740
+  },
+  {
+    "Store ID": 303,
+    "Store_Area": 1391,
+    "Items_Available": 1648,
+    "Daily_Customer_Count": 720,
+    "Store_Sales": 77070
+  },
+  {
+    "Store ID": 304,
+    "Store_Area": 1577,
+    "Items_Available": 1892,
+    "Daily_Customer_Count": 560,
+    "Store_Sales": 74730
+  },
+  {
+    "Store ID": 305,
+    "Store_Area": 1092,
+    "Items_Available": 1314,
+    "Daily_Customer_Count": 600,
+    "Store_Sales": 76530
+  },
+  {
+    "Store ID": 306,
+    "Store_Area": 1375,
+    "Items_Available": 1681,
+    "Daily_Customer_Count": 440,
+    "Store_Sales": 68900
+  },
+  {
+    "Store ID": 307,
+    "Store_Area": 1523,
+    "Items_Available": 1813,
+    "Daily_Customer_Count": 520,
+    "Store_Sales": 44960
+  },
+  {
+    "Store ID": 308,
+    "Store_Area": 1373,
+    "Items_Available": 1654,
+    "Daily_Customer_Count": 410,
+    "Store_Sales": 41490
+  },
+  {
+    "Store ID": 309,
+    "Store_Area": 1550,
+    "Items_Available": 1871,
+    "Daily_Customer_Count": 590,
+    "Store_Sales": 74320
+  },
+  {
+    "Store ID": 310,
+    "Store_Area": 1614,
+    "Items_Available": 1946,
+    "Daily_Customer_Count": 740,
+    "Store_Sales": 73800
+  },
+  {
+    "Store ID": 311,
+    "Store_Area": 1566,
+    "Items_Available": 1889,
+    "Daily_Customer_Count": 610,
+    "Store_Sales": 56400
+  },
+  {
+    "Store ID": 312,
+    "Store_Area": 2019,
+    "Items_Available": 2396,
+    "Daily_Customer_Count": 540,
+    "Store_Sales": 71570
+  },
+  {
+    "Store ID": 313,
+    "Store_Area": 1494,
+    "Items_Available": 1806,
+    "Daily_Customer_Count": 1450,
+    "Store_Sales": 43640
+  },
+  {
+    "Store ID": 314,
+    "Store_Area": 1659,
+    "Items_Available": 2008,
+    "Daily_Customer_Count": 620,
+    "Store_Sales": 35120
+  },
+  {
+    "Store ID": 315,
+    "Store_Area": 1766,
+    "Items_Available": 2131,
+    "Daily_Customer_Count": 340,
+    "Store_Sales": 58670
+  },
+  {
+    "Store ID": 316,
+    "Store_Area": 1293,
+    "Items_Available": 1554,
+    "Daily_Customer_Count": 970,
+    "Store_Sales": 75800
+  },
+  {
+    "Store ID": 317,
+    "Store_Area": 1375,
+    "Items_Available": 1659,
+    "Daily_Customer_Count": 1080,
+    "Store_Sales": 76640
+  },
+  {
+    "Store ID": 318,
+    "Store_Area": 1236,
+    "Items_Available": 1484,
+    "Daily_Customer_Count": 560,
+    "Store_Sales": 31890
+  },
+  {
+    "Store ID": 319,
+    "Store_Area": 1332,
+    "Items_Available": 1586,
+    "Daily_Customer_Count": 630,
+    "Store_Sales": 61670
+  },
+  {
+    "Store ID": 320,
+    "Store_Area": 1513,
+    "Items_Available": 1825,
+    "Daily_Customer_Count": 980,
+    "Store_Sales": 75950
+  },
+  {
+    "Store ID": 321,
+    "Store_Area": 1208,
+    "Items_Available": 1459,
+    "Daily_Customer_Count": 930,
+    "Store_Sales": 41490
+  },
+  {
+    "Store ID": 322,
+    "Store_Area": 1190,
+    "Items_Available": 1429,
+    "Daily_Customer_Count": 470,
+    "Store_Sales": 66170
+  },
+  {
+    "Store ID": 323,
+    "Store_Area": 1448,
+    "Items_Available": 1734,
+    "Daily_Customer_Count": 680,
+    "Store_Sales": 37980
+  },
+  {
+    "Store ID": 324,
+    "Store_Area": 1771,
+    "Items_Available": 2147,
+    "Daily_Customer_Count": 430,
+    "Store_Sales": 62710
+  },
+  {
+    "Store ID": 325,
+    "Store_Area": 1365,
+    "Items_Available": 1645,
+    "Daily_Customer_Count": 830,
+    "Store_Sales": 60470
+  },
+  {
+    "Store ID": 326,
+    "Store_Area": 1510,
+    "Items_Available": 1810,
+    "Daily_Customer_Count": 950,
+    "Store_Sales": 35230
+  },
+  {
+    "Store ID": 327,
+    "Store_Area": 1458,
+    "Items_Available": 1736,
+    "Daily_Customer_Count": 870,
+    "Store_Sales": 48550
+  },
+  {
+    "Store ID": 328,
+    "Store_Area": 1808,
+    "Items_Available": 2157,
+    "Daily_Customer_Count": 730,
+    "Store_Sales": 56810
+  },
+  {
+    "Store ID": 329,
+    "Store_Area": 1615,
+    "Items_Available": 1954,
+    "Daily_Customer_Count": 760,
+    "Store_Sales": 41080
+  },
+  {
+    "Store ID": 330,
+    "Store_Area": 1640,
+    "Items_Available": 1948,
+    "Daily_Customer_Count": 960,
+    "Store_Sales": 51270
+  },
+  {
+    "Store ID": 331,
+    "Store_Area": 1060,
+    "Items_Available": 1273,
+    "Daily_Customer_Count": 860,
+    "Store_Sales": 57500
+  },
+  {
+    "Store ID": 332,
+    "Store_Area": 1633,
+    "Items_Available": 1968,
+    "Daily_Customer_Count": 330,
+    "Store_Sales": 81470
+  },
+  {
+    "Store ID": 333,
+    "Store_Area": 1222,
+    "Items_Available": 1473,
+    "Daily_Customer_Count": 630,
+    "Store_Sales": 49570
+  },
+  {
+    "Store ID": 334,
+    "Store_Area": 1619,
+    "Items_Available": 1957,
+    "Daily_Customer_Count": 1280,
+    "Store_Sales": 45580
+  },
+  {
+    "Store ID": 335,
+    "Store_Area": 1624,
+    "Items_Available": 1973,
+    "Daily_Customer_Count": 1440,
+    "Store_Sales": 44660
+  },
+  {
+    "Store ID": 336,
+    "Store_Area": 1887,
+    "Items_Available": 2278,
+    "Daily_Customer_Count": 570,
+    "Store_Sales": 76240
+  },
+  {
+    "Store ID": 337,
+    "Store_Area": 1320,
+    "Items_Available": 1583,
+    "Daily_Customer_Count": 540,
+    "Store_Sales": 43720
+  },
+  {
+    "Store ID": 338,
+    "Store_Area": 1450,
+    "Items_Available": 1750,
+    "Daily_Customer_Count": 480,
+    "Store_Sales": 46700
+  },
+  {
+    "Store ID": 339,
+    "Store_Area": 1455,
+    "Items_Available": 1764,
+    "Daily_Customer_Count": 390,
+    "Store_Sales": 84690
+  },
+  {
+    "Store ID": 340,
+    "Store_Area": 966,
+    "Items_Available": 1172,
+    "Daily_Customer_Count": 900,
+    "Store_Sales": 85470
+  },
+  {
+    "Store ID": 341,
+    "Store_Area": 1922,
+    "Items_Available": 2290,
+    "Daily_Customer_Count": 290,
+    "Store_Sales": 80410
+  },
+  {
+    "Store ID": 342,
+    "Store_Area": 1678,
+    "Items_Available": 1999,
+    "Daily_Customer_Count": 740,
+    "Store_Sales": 46650
+  },
+  {
+    "Store ID": 343,
+    "Store_Area": 1638,
+    "Items_Available": 1952,
+    "Daily_Customer_Count": 690,
+    "Store_Sales": 81840
+  },
+  {
+    "Store ID": 344,
+    "Store_Area": 1145,
+    "Items_Available": 1375,
+    "Daily_Customer_Count": 950,
+    "Store_Sales": 63590
+  },
+  {
+    "Store ID": 345,
+    "Store_Area": 2004,
+    "Items_Available": 2390,
+    "Daily_Customer_Count": 930,
+    "Store_Sales": 50130
+  },
+  {
+    "Store ID": 346,
+    "Store_Area": 1954,
+    "Items_Available": 2378,
+    "Daily_Customer_Count": 810,
+    "Store_Sales": 45820
+  },
+  {
+    "Store ID": 347,
+    "Store_Area": 1577,
+    "Items_Available": 1879,
+    "Daily_Customer_Count": 760,
+    "Store_Sales": 86710
+  },
+  {
+    "Store ID": 348,
+    "Store_Area": 1766,
+    "Items_Available": 2138,
+    "Daily_Customer_Count": 580,
+    "Store_Sales": 49980
+  },
+  {
+    "Store ID": 349,
+    "Store_Area": 1362,
+    "Items_Available": 1634,
+    "Daily_Customer_Count": 770,
+    "Store_Sales": 82940
+  },
+  {
+    "Store ID": 350,
+    "Store_Area": 1886,
+    "Items_Available": 2228,
+    "Daily_Customer_Count": 1530,
+    "Store_Sales": 40350
+  },
+  {
+    "Store ID": 351,
+    "Store_Area": 1291,
+    "Items_Available": 1546,
+    "Daily_Customer_Count": 420,
+    "Store_Sales": 93950
+  },
+  {
+    "Store ID": 352,
+    "Store_Area": 1584,
+    "Items_Available": 1897,
+    "Daily_Customer_Count": 1210,
+    "Store_Sales": 47310
+  },
+  {
+    "Store ID": 353,
+    "Store_Area": 1397,
+    "Items_Available": 1686,
+    "Daily_Customer_Count": 850,
+    "Store_Sales": 21300
+  },
+  {
+    "Store ID": 354,
+    "Store_Area": 1445,
+    "Items_Available": 1709,
+    "Daily_Customer_Count": 1340,
+    "Store_Sales": 62180
+  },
+  {
+    "Store ID": 355,
+    "Store_Area": 1433,
+    "Items_Available": 1707,
+    "Daily_Customer_Count": 1160,
+    "Store_Sales": 61460
+  },
+  {
+    "Store ID": 356,
+    "Store_Area": 1269,
+    "Items_Available": 1511,
+    "Daily_Customer_Count": 500,
+    "Store_Sales": 54360
+  },
+  {
+    "Store ID": 357,
+    "Store_Area": 1798,
+    "Items_Available": 2134,
+    "Daily_Customer_Count": 820,
+    "Store_Sales": 72050
+  },
+  {
+    "Store ID": 358,
+    "Store_Area": 1514,
+    "Items_Available": 1822,
+    "Daily_Customer_Count": 670,
+    "Store_Sales": 48090
+  },
+  {
+    "Store ID": 359,
+    "Store_Area": 1015,
+    "Items_Available": 1216,
+    "Daily_Customer_Count": 460,
+    "Store_Sales": 27310
+  },
+  {
+    "Store ID": 360,
+    "Store_Area": 1495,
+    "Items_Available": 1799,
+    "Daily_Customer_Count": 950,
+    "Store_Sales": 57160
+  },
+  {
+    "Store ID": 361,
+    "Store_Area": 1759,
+    "Items_Available": 2095,
+    "Daily_Customer_Count": 980,
+    "Store_Sales": 34190
+  },
+  {
+    "Store ID": 362,
+    "Store_Area": 1219,
+    "Items_Available": 1468,
+    "Daily_Customer_Count": 850,
+    "Store_Sales": 35600
+  },
+  {
+    "Store ID": 363,
+    "Store_Area": 1571,
+    "Items_Available": 1877,
+    "Daily_Customer_Count": 580,
+    "Store_Sales": 54670
+  },
+  {
+    "Store ID": 364,
+    "Store_Area": 1404,
+    "Items_Available": 1670,
+    "Daily_Customer_Count": 620,
+    "Store_Sales": 76730
+  },
+  {
+    "Store ID": 365,
+    "Store_Area": 1124,
+    "Items_Available": 1369,
+    "Daily_Customer_Count": 650,
+    "Store_Sales": 63540
+  },
+  {
+    "Store ID": 366,
+    "Store_Area": 1514,
+    "Items_Available": 1837,
+    "Daily_Customer_Count": 1130,
+    "Store_Sales": 36690
+  },
+  {
+    "Store ID": 367,
+    "Store_Area": 1207,
+    "Items_Available": 1476,
+    "Daily_Customer_Count": 720,
+    "Store_Sales": 87370
+  },
+  {
+    "Store ID": 368,
+    "Store_Area": 1484,
+    "Items_Available": 1774,
+    "Daily_Customer_Count": 940,
+    "Store_Sales": 59800
+  },
+  {
+    "Store ID": 369,
+    "Store_Area": 1398,
+    "Items_Available": 1678,
+    "Daily_Customer_Count": 920,
+    "Store_Sales": 48030
+  },
+  {
+    "Store ID": 370,
+    "Store_Area": 1769,
+    "Items_Available": 2112,
+    "Daily_Customer_Count": 660,
+    "Store_Sales": 96650
+  },
+  {
+    "Store ID": 371,
+    "Store_Area": 1111,
+    "Items_Available": 1322,
+    "Daily_Customer_Count": 610,
+    "Store_Sales": 65500
+  },
+  {
+    "Store ID": 372,
+    "Store_Area": 1078,
+    "Items_Available": 1305,
+    "Daily_Customer_Count": 1190,
+    "Store_Sales": 55530
+  },
+  {
+    "Store ID": 373,
+    "Store_Area": 1876,
+    "Items_Available": 2254,
+    "Daily_Customer_Count": 1340,
+    "Store_Sales": 21650
+  },
+  {
+    "Store ID": 374,
+    "Store_Area": 1909,
+    "Items_Available": 2306,
+    "Daily_Customer_Count": 820,
+    "Store_Sales": 31940
+  },
+  {
+    "Store ID": 375,
+    "Store_Area": 1940,
+    "Items_Available": 2343,
+    "Daily_Customer_Count": 1130,
+    "Store_Sales": 84690
+  },
+  {
+    "Store ID": 376,
+    "Store_Area": 1391,
+    "Items_Available": 1683,
+    "Daily_Customer_Count": 890,
+    "Store_Sales": 68390
+  },
+  {
+    "Store ID": 377,
+    "Store_Area": 1496,
+    "Items_Available": 1774,
+    "Daily_Customer_Count": 810,
+    "Store_Sales": 75490
+  },
+  {
+    "Store ID": 378,
+    "Store_Area": 1412,
+    "Items_Available": 1699,
+    "Daily_Customer_Count": 680,
+    "Store_Sales": 39200
+  },
+  {
+    "Store ID": 379,
+    "Store_Area": 1121,
+    "Items_Available": 1345,
+    "Daily_Customer_Count": 320,
+    "Store_Sales": 85670
+  },
+  {
+    "Store ID": 380,
+    "Store_Area": 1691,
+    "Items_Available": 2026,
+    "Daily_Customer_Count": 700,
+    "Store_Sales": 60530
+  },
+  {
+    "Store ID": 381,
+    "Store_Area": 1599,
+    "Items_Available": 1946,
+    "Daily_Customer_Count": 940,
+    "Store_Sales": 78090
+  },
+  {
+    "Store ID": 382,
+    "Store_Area": 1208,
+    "Items_Available": 1467,
+    "Daily_Customer_Count": 910,
+    "Store_Sales": 50720
+  },
+  {
+    "Store ID": 383,
+    "Store_Area": 1454,
+    "Items_Available": 1737,
+    "Daily_Customer_Count": 870,
+    "Store_Sales": 23090
+  },
+  {
+    "Store ID": 384,
+    "Store_Area": 1555,
+    "Items_Available": 1881,
+    "Daily_Customer_Count": 1260,
+    "Store_Sales": 91360
+  },
+  {
+    "Store ID": 385,
+    "Store_Area": 1554,
+    "Items_Available": 1852,
+    "Daily_Customer_Count": 440,
+    "Store_Sales": 48120
+  },
+  {
+    "Store ID": 386,
+    "Store_Area": 1491,
+    "Items_Available": 1800,
+    "Daily_Customer_Count": 980,
+    "Store_Sales": 75620
+  },
+  {
+    "Store ID": 387,
+    "Store_Area": 1415,
+    "Items_Available": 1697,
+    "Daily_Customer_Count": 1200,
+    "Store_Sales": 39420
+  },
+  {
+    "Store ID": 388,
+    "Store_Area": 1487,
+    "Items_Available": 1801,
+    "Daily_Customer_Count": 890,
+    "Store_Sales": 51130
+  },
+  {
+    "Store ID": 389,
+    "Store_Area": 1339,
+    "Items_Available": 1589,
+    "Daily_Customer_Count": 1050,
+    "Store_Sales": 33890
+  },
+  {
+    "Store ID": 390,
+    "Store_Area": 1320,
+    "Items_Available": 1562,
+    "Daily_Customer_Count": 610,
+    "Store_Sales": 87170
+  },
+  {
+    "Store ID": 391,
+    "Store_Area": 1509,
+    "Items_Available": 1799,
+    "Daily_Customer_Count": 960,
+    "Store_Sales": 38600
+  },
+  {
+    "Store ID": 392,
+    "Store_Area": 1406,
+    "Items_Available": 1680,
+    "Daily_Customer_Count": 860,
+    "Store_Sales": 60980
+  },
+  {
+    "Store ID": 393,
+    "Store_Area": 1264,
+    "Items_Available": 1502,
+    "Daily_Customer_Count": 800,
+    "Store_Sales": 79410
+  },
+  {
+    "Store ID": 394,
+    "Store_Area": 1905,
+    "Items_Available": 2280,
+    "Daily_Customer_Count": 1060,
+    "Store_Sales": 82350
+  },
+  {
+    "Store ID": 395,
+    "Store_Area": 1209,
+    "Items_Available": 1464,
+    "Daily_Customer_Count": 600,
+    "Store_Sales": 36740
+  },
+  {
+    "Store ID": 396,
+    "Store_Area": 1546,
+    "Items_Available": 1829,
+    "Daily_Customer_Count": 380,
+    "Store_Sales": 27720
+  },
+  {
+    "Store ID": 397,
+    "Store_Area": 1689,
+    "Items_Available": 2044,
+    "Daily_Customer_Count": 1140,
+    "Store_Sales": 32260
+  },
+  {
+    "Store ID": 398,
+    "Store_Area": 1153,
+    "Items_Available": 1381,
+    "Daily_Customer_Count": 730,
+    "Store_Sales": 53270
+  },
+  {
+    "Store ID": 399,
+    "Store_Area": 2063,
+    "Items_Available": 2493,
+    "Daily_Customer_Count": 810,
+    "Store_Sales": 51480
+  },
+  {
+    "Store ID": 400,
+    "Store_Area": 1848,
+    "Items_Available": 2254,
+    "Daily_Customer_Count": 1000,
+    "Store_Sales": 59970
+  },
+  {
+    "Store ID": 401,
+    "Store_Area": 1718,
+    "Items_Available": 2056,
+    "Daily_Customer_Count": 1220,
+    "Store_Sales": 83600
+  },
+  {
+    "Store ID": 402,
+    "Store_Area": 1480,
+    "Items_Available": 1773,
+    "Daily_Customer_Count": 360,
+    "Store_Sales": 63020
+  },
+  {
+    "Store ID": 403,
+    "Store_Area": 1439,
+    "Items_Available": 1724,
+    "Daily_Customer_Count": 900,
+    "Store_Sales": 50920
+  },
+  {
+    "Store ID": 404,
+    "Store_Area": 1576,
+    "Items_Available": 1896,
+    "Daily_Customer_Count": 750,
+    "Store_Sales": 56450
+  },
+  {
+    "Store ID": 405,
+    "Store_Area": 1948,
+    "Items_Available": 2374,
+    "Daily_Customer_Count": 930,
+    "Store_Sales": 89540
+  },
+  {
+    "Store ID": 406,
+    "Store_Area": 1613,
+    "Items_Available": 1893,
+    "Daily_Customer_Count": 1180,
+    "Store_Sales": 46030
+  },
+  {
+    "Store ID": 407,
+    "Store_Area": 896,
+    "Items_Available": 1059,
+    "Daily_Customer_Count": 870,
+    "Store_Sales": 75110
+  },
+  {
+    "Store ID": 408,
+    "Store_Area": 1625,
+    "Items_Available": 1943,
+    "Daily_Customer_Count": 680,
+    "Store_Sales": 74520
+  },
+  {
+    "Store ID": 409,
+    "Store_Area": 1303,
+    "Items_Available": 1587,
+    "Daily_Customer_Count": 1310,
+    "Store_Sales": 102310
+  },
+  {
+    "Store ID": 410,
+    "Store_Area": 1340,
+    "Items_Available": 1605,
+    "Daily_Customer_Count": 1000,
+    "Store_Sales": 53400
+  },
+  {
+    "Store ID": 411,
+    "Store_Area": 1410,
+    "Items_Available": 1704,
+    "Daily_Customer_Count": 1130,
+    "Store_Sales": 59760
+  },
+  {
+    "Store ID": 412,
+    "Store_Area": 1432,
+    "Items_Available": 1719,
+    "Daily_Customer_Count": 990,
+    "Store_Sales": 49540
+  },
+  {
+    "Store ID": 413,
+    "Store_Area": 1891,
+    "Items_Available": 2280,
+    "Daily_Customer_Count": 360,
+    "Store_Sales": 51560
+  },
+  {
+    "Store ID": 414,
+    "Store_Area": 1322,
+    "Items_Available": 1583,
+    "Daily_Customer_Count": 720,
+    "Store_Sales": 49510
+  },
+  {
+    "Store ID": 415,
+    "Store_Area": 1378,
+    "Items_Available": 1670,
+    "Daily_Customer_Count": 950,
+    "Store_Sales": 58610
+  },
+  {
+    "Store ID": 416,
+    "Store_Area": 1462,
+    "Items_Available": 1732,
+    "Daily_Customer_Count": 840,
+    "Store_Sales": 68260
+  },
+  {
+    "Store ID": 417,
+    "Store_Area": 1440,
+    "Items_Available": 1733,
+    "Daily_Customer_Count": 1120,
+    "Store_Sales": 65310
+  },
+  {
+    "Store ID": 418,
+    "Store_Area": 1421,
+    "Items_Available": 1724,
+    "Daily_Customer_Count": 920,
+    "Store_Sales": 52090
+  },
+  {
+    "Store ID": 419,
+    "Store_Area": 1280,
+    "Items_Available": 1530,
+    "Daily_Customer_Count": 1240,
+    "Store_Sales": 43860
+  },
+  {
+    "Store ID": 420,
+    "Store_Area": 1431,
+    "Items_Available": 1710,
+    "Daily_Customer_Count": 840,
+    "Store_Sales": 74170
+  },
+  {
+    "Store ID": 421,
+    "Store_Area": 1161,
+    "Items_Available": 1404,
+    "Daily_Customer_Count": 430,
+    "Store_Sales": 58380
+  },
+  {
+    "Store ID": 422,
+    "Store_Area": 1175,
+    "Items_Available": 1405,
+    "Daily_Customer_Count": 810,
+    "Store_Sales": 91200
+  },
+  {
+    "Store ID": 423,
+    "Store_Area": 1395,
+    "Items_Available": 1662,
+    "Daily_Customer_Count": 920,
+    "Store_Sales": 90940
+  },
+  {
+    "Store ID": 424,
+    "Store_Area": 1443,
+    "Items_Available": 1755,
+    "Daily_Customer_Count": 880,
+    "Store_Sales": 49330
+  },
+  {
+    "Store ID": 425,
+    "Store_Area": 1247,
+    "Items_Available": 1523,
+    "Daily_Customer_Count": 1350,
+    "Store_Sales": 53500
+  },
+  {
+    "Store ID": 426,
+    "Store_Area": 1788,
+    "Items_Available": 2133,
+    "Daily_Customer_Count": 1000,
+    "Store_Sales": 54590
+  },
+  {
+    "Store ID": 427,
+    "Store_Area": 1138,
+    "Items_Available": 1375,
+    "Daily_Customer_Count": 1220,
+    "Store_Sales": 57450
+  },
+  {
+    "Store ID": 428,
+    "Store_Area": 1709,
+    "Items_Available": 2042,
+    "Daily_Customer_Count": 430,
+    "Store_Sales": 33240
+  },
+  {
+    "Store ID": 429,
+    "Store_Area": 1777,
+    "Items_Available": 2145,
+    "Daily_Customer_Count": 520,
+    "Store_Sales": 80790
+  },
+  {
+    "Store ID": 430,
+    "Store_Area": 1612,
+    "Items_Available": 1918,
+    "Daily_Customer_Count": 580,
+    "Store_Sales": 61000
+  },
+  {
+    "Store ID": 431,
+    "Store_Area": 1618,
+    "Items_Available": 1943,
+    "Daily_Customer_Count": 460,
+    "Store_Sales": 47620
+  },
+  {
+    "Store ID": 432,
+    "Store_Area": 1311,
+    "Items_Available": 1571,
+    "Daily_Customer_Count": 470,
+    "Store_Sales": 72090
+  },
+  {
+    "Store ID": 433,
+    "Store_Area": 1365,
+    "Items_Available": 1638,
+    "Daily_Customer_Count": 680,
+    "Store_Sales": 102920
+  },
+  {
+    "Store ID": 434,
+    "Store_Area": 1249,
+    "Items_Available": 1503,
+    "Daily_Customer_Count": 950,
+    "Store_Sales": 61970
+  },
+  {
+    "Store ID": 435,
+    "Store_Area": 1373,
+    "Items_Available": 1635,
+    "Daily_Customer_Count": 840,
+    "Store_Sales": 61040
+  },
+  {
+    "Store ID": 436,
+    "Store_Area": 1536,
+    "Items_Available": 1836,
+    "Daily_Customer_Count": 990,
+    "Store_Sales": 52060
+  },
+  {
+    "Store ID": 437,
+    "Store_Area": 1744,
+    "Items_Available": 2101,
+    "Daily_Customer_Count": 520,
+    "Store_Sales": 69570
+  },
+  {
+    "Store ID": 438,
+    "Store_Area": 1513,
+    "Items_Available": 1820,
+    "Daily_Customer_Count": 520,
+    "Store_Sales": 66020
+  },
+  {
+    "Store ID": 439,
+    "Store_Area": 1297,
+    "Items_Available": 1561,
+    "Daily_Customer_Count": 1070,
+    "Store_Sales": 40000
+  },
+  {
+    "Store ID": 440,
+    "Store_Area": 1908,
+    "Items_Available": 2304,
+    "Daily_Customer_Count": 990,
+    "Store_Sales": 79500
+  },
+  {
+    "Store ID": 441,
+    "Store_Area": 1721,
+    "Items_Available": 2076,
+    "Daily_Customer_Count": 710,
+    "Store_Sales": 76300
+  },
+  {
+    "Store ID": 442,
+    "Store_Area": 1243,
+    "Items_Available": 1491,
+    "Daily_Customer_Count": 430,
+    "Store_Sales": 69030
+  },
+  {
+    "Store ID": 443,
+    "Store_Area": 1472,
+    "Items_Available": 1766,
+    "Daily_Customer_Count": 1290,
+    "Store_Sales": 57140
+  },
+  {
+    "Store ID": 444,
+    "Store_Area": 1307,
+    "Items_Available": 1570,
+    "Daily_Customer_Count": 1080,
+    "Store_Sales": 41710
+  },
+  {
+    "Store ID": 445,
+    "Store_Area": 1628,
+    "Items_Available": 1959,
+    "Daily_Customer_Count": 890,
+    "Store_Sales": 71480
+  },
+  {
+    "Store ID": 446,
+    "Store_Area": 1556,
+    "Items_Available": 1869,
+    "Daily_Customer_Count": 1000,
+    "Store_Sales": 33010
+  },
+  {
+    "Store ID": 447,
+    "Store_Area": 1179,
+    "Items_Available": 1428,
+    "Daily_Customer_Count": 1290,
+    "Store_Sales": 74570
+  },
+  {
+    "Store ID": 448,
+    "Store_Area": 1768,
+    "Items_Available": 2123,
+    "Daily_Customer_Count": 860,
+    "Store_Sales": 49590
+  },
+  {
+    "Store ID": 449,
+    "Store_Area": 1378,
+    "Items_Available": 1656,
+    "Daily_Customer_Count": 1010,
+    "Store_Sales": 73170
+  },
+  {
+    "Store ID": 450,
+    "Store_Area": 1685,
+    "Items_Available": 2015,
+    "Daily_Customer_Count": 1160,
+    "Store_Sales": 79220
+  },
+  {
+    "Store ID": 451,
+    "Store_Area": 1474,
+    "Items_Available": 1759,
+    "Daily_Customer_Count": 880,
+    "Store_Sales": 75880
+  },
+  {
+    "Store ID": 452,
+    "Store_Area": 1794,
+    "Items_Available": 2137,
+    "Daily_Customer_Count": 670,
+    "Store_Sales": 67610
+  },
+  {
+    "Store ID": 453,
+    "Store_Area": 1086,
+    "Items_Available": 1291,
+    "Daily_Customer_Count": 930,
+    "Store_Sales": 69090
+  },
+  {
+    "Store ID": 454,
+    "Store_Area": 1808,
+    "Items_Available": 2154,
+    "Daily_Customer_Count": 990,
+    "Store_Sales": 35220
+  },
+  {
+    "Store ID": 455,
+    "Store_Area": 1501,
+    "Items_Available": 1790,
+    "Daily_Customer_Count": 450,
+    "Store_Sales": 53940
+  },
+  {
+    "Store ID": 456,
+    "Store_Area": 1353,
+    "Items_Available": 1598,
+    "Daily_Customer_Count": 690,
+    "Store_Sales": 56660
+  },
+  {
+    "Store ID": 457,
+    "Store_Area": 1455,
+    "Items_Available": 1757,
+    "Daily_Customer_Count": 650,
+    "Store_Sales": 67520
+  },
+  {
+    "Store ID": 458,
+    "Store_Area": 1165,
+    "Items_Available": 1411,
+    "Daily_Customer_Count": 1020,
+    "Store_Sales": 38620
+  },
+  {
+    "Store ID": 459,
+    "Store_Area": 1332,
+    "Items_Available": 1610,
+    "Daily_Customer_Count": 880,
+    "Store_Sales": 38890
+  },
+  {
+    "Store ID": 460,
+    "Store_Area": 1396,
+    "Items_Available": 1668,
+    "Daily_Customer_Count": 760,
+    "Store_Sales": 79270
+  },
+  {
+    "Store ID": 461,
+    "Store_Area": 1513,
+    "Items_Available": 1821,
+    "Daily_Customer_Count": 690,
+    "Store_Sales": 42880
+  },
+  {
+    "Store ID": 462,
+    "Store_Area": 1618,
+    "Items_Available": 1940,
+    "Daily_Customer_Count": 630,
+    "Store_Sales": 44240
+  },
+  {
+    "Store ID": 463,
+    "Store_Area": 1845,
+    "Items_Available": 2233,
+    "Daily_Customer_Count": 370,
+    "Store_Sales": 43190
+  },
+  {
+    "Store ID": 464,
+    "Store_Area": 1172,
+    "Items_Available": 1411,
+    "Daily_Customer_Count": 460,
+    "Store_Sales": 74550
+  },
+  {
+    "Store ID": 465,
+    "Store_Area": 1436,
+    "Items_Available": 1737,
+    "Daily_Customer_Count": 770,
+    "Store_Sales": 57090
+  },
+  {
+    "Store ID": 466,
+    "Store_Area": 1738,
+    "Items_Available": 2065,
+    "Daily_Customer_Count": 750,
+    "Store_Sales": 56480
+  },
+  {
+    "Store ID": 467,
+    "Store_Area": 2229,
+    "Items_Available": 2667,
+    "Daily_Customer_Count": 660,
+    "Store_Sales": 87410
+  },
+  {
+    "Store ID": 468,
+    "Store_Area": 1490,
+    "Items_Available": 1783,
+    "Daily_Customer_Count": 730,
+    "Store_Sales": 81370
+  },
+  {
+    "Store ID": 469,
+    "Store_Area": 1060,
+    "Items_Available": 1279,
+    "Daily_Customer_Count": 670,
+    "Store_Sales": 97360
+  },
+  {
+    "Store ID": 470,
+    "Store_Area": 2015,
+    "Items_Available": 2436,
+    "Daily_Customer_Count": 680,
+    "Store_Sales": 77960
+  },
+  {
+    "Store ID": 471,
+    "Store_Area": 1611,
+    "Items_Available": 1919,
+    "Daily_Customer_Count": 960,
+    "Store_Sales": 71240
+  },
+  {
+    "Store ID": 472,
+    "Store_Area": 1187,
+    "Items_Available": 1417,
+    "Daily_Customer_Count": 1230,
+    "Store_Sales": 58940
+  },
+  {
+    "Store ID": 473,
+    "Store_Area": 1430,
+    "Items_Available": 1690,
+    "Daily_Customer_Count": 800,
+    "Store_Sales": 78950
+  },
+  {
+    "Store ID": 474,
+    "Store_Area": 1543,
+    "Items_Available": 1840,
+    "Daily_Customer_Count": 450,
+    "Store_Sales": 36380
+  },
+  {
+    "Store ID": 475,
+    "Store_Area": 1836,
+    "Items_Available": 2195,
+    "Daily_Customer_Count": 940,
+    "Store_Sales": 45160
+  },
+  {
+    "Store ID": 476,
+    "Store_Area": 1463,
+    "Items_Available": 1764,
+    "Daily_Customer_Count": 1060,
+    "Store_Sales": 69050
+  },
+  {
+    "Store ID": 477,
+    "Store_Area": 1213,
+    "Items_Available": 1462,
+    "Daily_Customer_Count": 560,
+    "Store_Sales": 56830
+  },
+  {
+    "Store ID": 478,
+    "Store_Area": 1244,
+    "Items_Available": 1480,
+    "Daily_Customer_Count": 860,
+    "Store_Sales": 93530
+  },
+  {
+    "Store ID": 479,
+    "Store_Area": 1745,
+    "Items_Available": 2108,
+    "Daily_Customer_Count": 730,
+    "Store_Sales": 46920
+  },
+  {
+    "Store ID": 480,
+    "Store_Area": 933,
+    "Items_Available": 1121,
+    "Daily_Customer_Count": 940,
+    "Store_Sales": 55990
+  },
+  {
+    "Store ID": 481,
+    "Store_Area": 1764,
+    "Items_Available": 2132,
+    "Daily_Customer_Count": 920,
+    "Store_Sales": 40840
+  },
+  {
+    "Store ID": 482,
+    "Store_Area": 1675,
+    "Items_Available": 2002,
+    "Daily_Customer_Count": 1050,
+    "Store_Sales": 64990
+  },
+  {
+    "Store ID": 483,
+    "Store_Area": 1688,
+    "Items_Available": 2046,
+    "Daily_Customer_Count": 380,
+    "Store_Sales": 53550
+  },
+  {
+    "Store ID": 484,
+    "Store_Area": 1842,
+    "Items_Available": 2204,
+    "Daily_Customer_Count": 930,
+    "Store_Sales": 51320
+  },
+  {
+    "Store ID": 485,
+    "Store_Area": 1316,
+    "Items_Available": 1597,
+    "Daily_Customer_Count": 980,
+    "Store_Sales": 36560
+  },
+  {
+    "Store ID": 486,
+    "Store_Area": 1440,
+    "Items_Available": 1719,
+    "Daily_Customer_Count": 580,
+    "Store_Sales": 66050
+  },
+  {
+    "Store ID": 487,
+    "Store_Area": 1760,
+    "Items_Available": 2111,
+    "Daily_Customer_Count": 680,
+    "Store_Sales": 52400
+  },
+  {
+    "Store ID": 488,
+    "Store_Area": 1323,
+    "Items_Available": 1571,
+    "Daily_Customer_Count": 850,
+    "Store_Sales": 27970
+  },
+  {
+    "Store ID": 489,
+    "Store_Area": 1230,
+    "Items_Available": 1466,
+    "Daily_Customer_Count": 730,
+    "Store_Sales": 67100
+  },
+  {
+    "Store ID": 490,
+    "Store_Area": 1540,
+    "Items_Available": 1838,
+    "Daily_Customer_Count": 570,
+    "Store_Sales": 43710
+  },
+  {
+    "Store ID": 491,
+    "Store_Area": 1167,
+    "Items_Available": 1388,
+    "Daily_Customer_Count": 620,
+    "Store_Sales": 38600
+  },
+  {
+    "Store ID": 492,
+    "Store_Area": 1429,
+    "Items_Available": 1695,
+    "Daily_Customer_Count": 890,
+    "Store_Sales": 53890
+  },
+  {
+    "Store ID": 493,
+    "Store_Area": 1491,
+    "Items_Available": 1770,
+    "Daily_Customer_Count": 800,
+    "Store_Sales": 52610
+  },
+  {
+    "Store ID": 494,
+    "Store_Area": 1313,
+    "Items_Available": 1574,
+    "Daily_Customer_Count": 920,
+    "Store_Sales": 43130
+  },
+  {
+    "Store ID": 495,
+    "Store_Area": 1609,
+    "Items_Available": 1943,
+    "Daily_Customer_Count": 920,
+    "Store_Sales": 40300
+  },
+  {
+    "Store ID": 496,
+    "Store_Area": 1109,
+    "Items_Available": 1342,
+    "Daily_Customer_Count": 760,
+    "Store_Sales": 49750
+  },
+  {
+    "Store ID": 497,
+    "Store_Area": 1207,
+    "Items_Available": 1440,
+    "Daily_Customer_Count": 500,
+    "Store_Sales": 43840
+  },
+  {
+    "Store ID": 498,
+    "Store_Area": 902,
+    "Items_Available": 1087,
+    "Daily_Customer_Count": 680,
+    "Store_Sales": 56820
+  },
+  {
+    "Store ID": 499,
+    "Store_Area": 1191,
+    "Items_Available": 1422,
+    "Daily_Customer_Count": 770,
+    "Store_Sales": 36350
+  },
+  {
+    "Store ID": 500,
+    "Store_Area": 1335,
+    "Items_Available": 1601,
+    "Daily_Customer_Count": 460,
+    "Store_Sales": 50820
+  },
+  {
+    "Store ID": 501,
+    "Store_Area": 1382,
+    "Items_Available": 1660,
+    "Daily_Customer_Count": 1070,
+    "Store_Sales": 83720
+  },
+  {
+    "Store ID": 502,
+    "Store_Area": 1588,
+    "Items_Available": 1906,
+    "Daily_Customer_Count": 450,
+    "Store_Sales": 46970
+  },
+  {
+    "Store ID": 503,
+    "Store_Area": 1918,
+    "Items_Available": 2284,
+    "Daily_Customer_Count": 310,
+    "Store_Sales": 78020
+  },
+  {
+    "Store ID": 504,
+    "Store_Area": 1484,
+    "Items_Available": 1774,
+    "Daily_Customer_Count": 880,
+    "Store_Sales": 45080
+  },
+  {
+    "Store ID": 505,
+    "Store_Area": 1334,
+    "Items_Available": 1607,
+    "Daily_Customer_Count": 370,
+    "Store_Sales": 55160
+  },
+  {
+    "Store ID": 506,
+    "Store_Area": 1556,
+    "Items_Available": 1846,
+    "Daily_Customer_Count": 760,
+    "Store_Sales": 72020
+  },
+  {
+    "Store ID": 507,
+    "Store_Area": 1784,
+    "Items_Available": 2142,
+    "Daily_Customer_Count": 950,
+    "Store_Sales": 64010
+  },
+  {
+    "Store ID": 508,
+    "Store_Area": 1244,
+    "Items_Available": 1477,
+    "Daily_Customer_Count": 890,
+    "Store_Sales": 27840
+  },
+  {
+    "Store ID": 509,
+    "Store_Area": 1496,
+    "Items_Available": 1787,
+    "Daily_Customer_Count": 800,
+    "Store_Sales": 58070
+  },
+  {
+    "Store ID": 510,
+    "Store_Area": 1719,
+    "Items_Available": 2058,
+    "Daily_Customer_Count": 700,
+    "Store_Sales": 51760
+  },
+  {
+    "Store ID": 511,
+    "Store_Area": 1678,
+    "Items_Available": 2022,
+    "Daily_Customer_Count": 1050,
+    "Store_Sales": 66050
+  },
+  {
+    "Store ID": 512,
+    "Store_Area": 1247,
+    "Items_Available": 1490,
+    "Daily_Customer_Count": 330,
+    "Store_Sales": 65750
+  },
+  {
+    "Store ID": 513,
+    "Store_Area": 1191,
+    "Items_Available": 1421,
+    "Daily_Customer_Count": 980,
+    "Store_Sales": 65820
+  },
+  {
+    "Store ID": 514,
+    "Store_Area": 1832,
+    "Items_Available": 2208,
+    "Daily_Customer_Count": 1090,
+    "Store_Sales": 46760
+  },
+  {
+    "Store ID": 515,
+    "Store_Area": 1271,
+    "Items_Available": 1523,
+    "Daily_Customer_Count": 1140,
+    "Store_Sales": 50940
+  },
+  {
+    "Store ID": 516,
+    "Store_Area": 1735,
+    "Items_Available": 2084,
+    "Daily_Customer_Count": 820,
+    "Store_Sales": 56440
+  },
+  {
+    "Store ID": 517,
+    "Store_Area": 1627,
+    "Items_Available": 1948,
+    "Daily_Customer_Count": 890,
+    "Store_Sales": 32610
+  },
+  {
+    "Store ID": 518,
+    "Store_Area": 1351,
+    "Items_Available": 1616,
+    "Daily_Customer_Count": 650,
+    "Store_Sales": 62770
+  },
+  {
+    "Store ID": 519,
+    "Store_Area": 1520,
+    "Items_Available": 1817,
+    "Daily_Customer_Count": 850,
+    "Store_Sales": 63600
+  },
+  {
+    "Store ID": 520,
+    "Store_Area": 1490,
+    "Items_Available": 1788,
+    "Daily_Customer_Count": 360,
+    "Store_Sales": 45840
+  },
+  {
+    "Store ID": 521,
+    "Store_Area": 1777,
+    "Items_Available": 2117,
+    "Daily_Customer_Count": 780,
+    "Store_Sales": 38280
+  },
+  {
+    "Store ID": 522,
+    "Store_Area": 1688,
+    "Items_Available": 2037,
+    "Daily_Customer_Count": 590,
+    "Store_Sales": 50960
+  },
+  {
+    "Store ID": 523,
+    "Store_Area": 1537,
+    "Items_Available": 1836,
+    "Daily_Customer_Count": 670,
+    "Store_Sales": 39480
+  },
+  {
+    "Store ID": 524,
+    "Store_Area": 1622,
+    "Items_Available": 1968,
+    "Daily_Customer_Count": 340,
+    "Store_Sales": 69610
+  },
+  {
+    "Store ID": 525,
+    "Store_Area": 1148,
+    "Items_Available": 1384,
+    "Daily_Customer_Count": 730,
+    "Store_Sales": 47800
+  },
+  {
+    "Store ID": 526,
+    "Store_Area": 1001,
+    "Items_Available": 1194,
+    "Daily_Customer_Count": 1210,
+    "Store_Sales": 44890
+  },
+  {
+    "Store ID": 527,
+    "Store_Area": 1857,
+    "Items_Available": 2236,
+    "Daily_Customer_Count": 1280,
+    "Store_Sales": 67420
+  },
+  {
+    "Store ID": 528,
+    "Store_Area": 1552,
+    "Items_Available": 1869,
+    "Daily_Customer_Count": 710,
+    "Store_Sales": 78870
+  },
+  {
+    "Store ID": 529,
+    "Store_Area": 1700,
+    "Items_Available": 2064,
+    "Daily_Customer_Count": 940,
+    "Store_Sales": 70310
+  },
+  {
+    "Store ID": 530,
+    "Store_Area": 1554,
+    "Items_Available": 1844,
+    "Daily_Customer_Count": 670,
+    "Store_Sales": 38530
+  },
+  {
+    "Store ID": 531,
+    "Store_Area": 1482,
+    "Items_Available": 1777,
+    "Daily_Customer_Count": 800,
+    "Store_Sales": 77570
+  },
+  {
+    "Store ID": 532,
+    "Store_Area": 1275,
+    "Items_Available": 1517,
+    "Daily_Customer_Count": 790,
+    "Store_Sales": 59920
+  },
+  {
+    "Store ID": 533,
+    "Store_Area": 1642,
+    "Items_Available": 1981,
+    "Daily_Customer_Count": 720,
+    "Store_Sales": 54450
+  },
+  {
+    "Store ID": 534,
+    "Store_Area": 1381,
+    "Items_Available": 1633,
+    "Daily_Customer_Count": 1270,
+    "Store_Sales": 50250
+  },
+  {
+    "Store ID": 535,
+    "Store_Area": 1381,
+    "Items_Available": 1634,
+    "Daily_Customer_Count": 930,
+    "Store_Sales": 30790
+  },
+  {
+    "Store ID": 536,
+    "Store_Area": 1057,
+    "Items_Available": 1262,
+    "Daily_Customer_Count": 1490,
+    "Store_Sales": 35420
+  },
+  {
+    "Store ID": 537,
+    "Store_Area": 1192,
+    "Items_Available": 1445,
+    "Daily_Customer_Count": 810,
+    "Store_Sales": 43470
+  },
+  {
+    "Store ID": 538,
+    "Store_Area": 1601,
+    "Items_Available": 1920,
+    "Daily_Customer_Count": 600,
+    "Store_Sales": 61000
+  },
+  {
+    "Store ID": 539,
+    "Store_Area": 1622,
+    "Items_Available": 1968,
+    "Daily_Customer_Count": 210,
+    "Store_Sales": 64780
+  },
+  {
+    "Store ID": 540,
+    "Store_Area": 1607,
+    "Items_Available": 1909,
+    "Daily_Customer_Count": 460,
+    "Store_Sales": 39030
+  },
+  {
+    "Store ID": 541,
+    "Store_Area": 2214,
+    "Items_Available": 2647,
+    "Daily_Customer_Count": 740,
+    "Store_Sales": 65900
+  },
+  {
+    "Store ID": 542,
+    "Store_Area": 1633,
+    "Items_Available": 1936,
+    "Daily_Customer_Count": 1320,
+    "Store_Sales": 46050
+  },
+  {
+    "Store ID": 543,
+    "Store_Area": 1546,
+    "Items_Available": 1845,
+    "Daily_Customer_Count": 760,
+    "Store_Sales": 59070
+  },
+  {
+    "Store ID": 544,
+    "Store_Area": 1475,
+    "Items_Available": 1753,
+    "Daily_Customer_Count": 920,
+    "Store_Sales": 44670
+  },
+  {
+    "Store ID": 545,
+    "Store_Area": 1270,
+    "Items_Available": 1519,
+    "Daily_Customer_Count": 920,
+    "Store_Sales": 58390
+  },
+  {
+    "Store ID": 546,
+    "Store_Area": 1185,
+    "Items_Available": 1420,
+    "Daily_Customer_Count": 880,
+    "Store_Sales": 80370
+  },
+  {
+    "Store ID": 547,
+    "Store_Area": 1614,
+    "Items_Available": 1938,
+    "Daily_Customer_Count": 1110,
+    "Store_Sales": 53230
+  },
+  {
+    "Store ID": 548,
+    "Store_Area": 1141,
+    "Items_Available": 1353,
+    "Daily_Customer_Count": 1370,
+    "Store_Sales": 72000
+  },
+  {
+    "Store ID": 549,
+    "Store_Area": 1244,
+    "Items_Available": 1481,
+    "Daily_Customer_Count": 410,
+    "Store_Sales": 84040
+  },
+  {
+    "Store ID": 550,
+    "Store_Area": 869,
+    "Items_Available": 1050,
+    "Daily_Customer_Count": 850,
+    "Store_Sales": 52540
+  },
+  {
+    "Store ID": 551,
+    "Store_Area": 2049,
+    "Items_Available": 2465,
+    "Daily_Customer_Count": 720,
+    "Store_Sales": 63510
+  },
+  {
+    "Store ID": 552,
+    "Store_Area": 1883,
+    "Items_Available": 2262,
+    "Daily_Customer_Count": 570,
+    "Store_Sales": 42240
+  },
+  {
+    "Store ID": 553,
+    "Store_Area": 1526,
+    "Items_Available": 1842,
+    "Daily_Customer_Count": 690,
+    "Store_Sales": 39580
+  },
+  {
+    "Store ID": 554,
+    "Store_Area": 1165,
+    "Items_Available": 1390,
+    "Daily_Customer_Count": 1220,
+    "Store_Sales": 54610
+  },
+  {
+    "Store ID": 555,
+    "Store_Area": 1832,
+    "Items_Available": 2185,
+    "Daily_Customer_Count": 840,
+    "Store_Sales": 87330
+  },
+  {
+    "Store ID": 556,
+    "Store_Area": 1723,
+    "Items_Available": 2072,
+    "Daily_Customer_Count": 560,
+    "Store_Sales": 88410
+  },
+  {
+    "Store ID": 557,
+    "Store_Area": 932,
+    "Items_Available": 1138,
+    "Daily_Customer_Count": 820,
+    "Store_Sales": 89760
+  },
+  {
+    "Store ID": 558,
+    "Store_Area": 1137,
+    "Items_Available": 1374,
+    "Daily_Customer_Count": 700,
+    "Store_Sales": 101780
+  },
+  {
+    "Store ID": 559,
+    "Store_Area": 1231,
+    "Items_Available": 1472,
+    "Daily_Customer_Count": 810,
+    "Store_Sales": 70290
+  },
+  {
+    "Store ID": 560,
+    "Store_Area": 1237,
+    "Items_Available": 1512,
+    "Daily_Customer_Count": 1070,
+    "Store_Sales": 88210
+  },
+  {
+    "Store ID": 561,
+    "Store_Area": 1371,
+    "Items_Available": 1650,
+    "Daily_Customer_Count": 540,
+    "Store_Sales": 87160
+  },
+  {
+    "Store ID": 562,
+    "Store_Area": 1767,
+    "Items_Available": 2158,
+    "Daily_Customer_Count": 530,
+    "Store_Sales": 41540
+  },
+  {
+    "Store ID": 563,
+    "Store_Area": 1748,
+    "Items_Available": 2092,
+    "Daily_Customer_Count": 580,
+    "Store_Sales": 49170
+  },
+  {
+    "Store ID": 564,
+    "Store_Area": 1212,
+    "Items_Available": 1440,
+    "Daily_Customer_Count": 500,
+    "Store_Sales": 63950
+  },
+  {
+    "Store ID": 565,
+    "Store_Area": 1466,
+    "Items_Available": 1743,
+    "Daily_Customer_Count": 1200,
+    "Store_Sales": 70810
+  },
+  {
+    "Store ID": 566,
+    "Store_Area": 1152,
+    "Items_Available": 1386,
+    "Daily_Customer_Count": 980,
+    "Store_Sales": 49590
+  },
+  {
+    "Store ID": 567,
+    "Store_Area": 1439,
+    "Items_Available": 1703,
+    "Daily_Customer_Count": 1000,
+    "Store_Sales": 67290
+  },
+  {
+    "Store ID": 568,
+    "Store_Area": 2026,
+    "Items_Available": 2400,
+    "Daily_Customer_Count": 720,
+    "Store_Sales": 51240
+  },
+  {
+    "Store ID": 569,
+    "Store_Area": 1772,
+    "Items_Available": 2146,
+    "Daily_Customer_Count": 1030,
+    "Store_Sales": 48540
+  },
+  {
+    "Store ID": 570,
+    "Store_Area": 1511,
+    "Items_Available": 1822,
+    "Daily_Customer_Count": 420,
+    "Store_Sales": 72410
+  },
+  {
+    "Store ID": 571,
+    "Store_Area": 1199,
+    "Items_Available": 1461,
+    "Daily_Customer_Count": 1070,
+    "Store_Sales": 54370
+  },
+  {
+    "Store ID": 572,
+    "Store_Area": 1834,
+    "Items_Available": 2184,
+    "Daily_Customer_Count": 830,
+    "Store_Sales": 94460
+  },
+  {
+    "Store ID": 573,
+    "Store_Area": 1143,
+    "Items_Available": 1375,
+    "Daily_Customer_Count": 940,
+    "Store_Sales": 85160
+  },
+  {
+    "Store ID": 574,
+    "Store_Area": 1494,
+    "Items_Available": 1794,
+    "Daily_Customer_Count": 550,
+    "Store_Sales": 52130
+  },
+  {
+    "Store ID": 575,
+    "Store_Area": 1770,
+    "Items_Available": 2131,
+    "Daily_Customer_Count": 1140,
+    "Store_Sales": 54650
+  },
+  {
+    "Store ID": 576,
+    "Store_Area": 1455,
+    "Items_Available": 1747,
+    "Daily_Customer_Count": 750,
+    "Store_Sales": 69320
+  },
+  {
+    "Store ID": 577,
+    "Store_Area": 1141,
+    "Items_Available": 1372,
+    "Daily_Customer_Count": 620,
+    "Store_Sales": 51480
+  },
+  {
+    "Store ID": 578,
+    "Store_Area": 1586,
+    "Items_Available": 1886,
+    "Daily_Customer_Count": 660,
+    "Store_Sales": 50060
+  },
+  {
+    "Store ID": 579,
+    "Store_Area": 1701,
+    "Items_Available": 2034,
+    "Daily_Customer_Count": 660,
+    "Store_Sales": 62180
+  },
+  {
+    "Store ID": 580,
+    "Store_Area": 1860,
+    "Items_Available": 2246,
+    "Daily_Customer_Count": 410,
+    "Store_Sales": 79780
+  },
+  {
+    "Store ID": 581,
+    "Store_Area": 1167,
+    "Items_Available": 1406,
+    "Daily_Customer_Count": 440,
+    "Store_Sales": 42860
+  },
+  {
+    "Store ID": 582,
+    "Store_Area": 1424,
+    "Items_Available": 1716,
+    "Daily_Customer_Count": 630,
+    "Store_Sales": 54410
+  },
+  {
+    "Store ID": 583,
+    "Store_Area": 1710,
+    "Items_Available": 2053,
+    "Daily_Customer_Count": 730,
+    "Store_Sales": 69390
+  },
+  {
+    "Store ID": 584,
+    "Store_Area": 1408,
+    "Items_Available": 1708,
+    "Daily_Customer_Count": 220,
+    "Store_Sales": 42810
+  },
+  {
+    "Store ID": 585,
+    "Store_Area": 1517,
+    "Items_Available": 1831,
+    "Daily_Customer_Count": 610,
+    "Store_Sales": 30840
+  },
+  {
+    "Store ID": 586,
+    "Store_Area": 1227,
+    "Items_Available": 1476,
+    "Daily_Customer_Count": 720,
+    "Store_Sales": 56260
+  },
+  {
+    "Store ID": 587,
+    "Store_Area": 1609,
+    "Items_Available": 1930,
+    "Daily_Customer_Count": 740,
+    "Store_Sales": 76470
+  },
+  {
+    "Store ID": 588,
+    "Store_Area": 1553,
+    "Items_Available": 1831,
+    "Daily_Customer_Count": 740,
+    "Store_Sales": 35680
+  },
+  {
+    "Store ID": 589,
+    "Store_Area": 1814,
+    "Items_Available": 2174,
+    "Daily_Customer_Count": 770,
+    "Store_Sales": 90070
+  },
+  {
+    "Store ID": 590,
+    "Store_Area": 1240,
+    "Items_Available": 1493,
+    "Daily_Customer_Count": 590,
+    "Store_Sales": 33120
+  },
+  {
+    "Store ID": 591,
+    "Store_Area": 1206,
+    "Items_Available": 1437,
+    "Daily_Customer_Count": 1330,
+    "Store_Sales": 54060
+  },
+  {
+    "Store ID": 592,
+    "Store_Area": 1847,
+    "Items_Available": 2186,
+    "Daily_Customer_Count": 910,
+    "Store_Sales": 75120
+  },
+  {
+    "Store ID": 593,
+    "Store_Area": 1009,
+    "Items_Available": 1202,
+    "Daily_Customer_Count": 330,
+    "Store_Sales": 41600
+  },
+  {
+    "Store ID": 594,
+    "Store_Area": 1624,
+    "Items_Available": 1946,
+    "Daily_Customer_Count": 870,
+    "Store_Sales": 20270
+  },
+  {
+    "Store ID": 595,
+    "Store_Area": 1612,
+    "Items_Available": 1931,
+    "Daily_Customer_Count": 790,
+    "Store_Sales": 60060
+  },
+  {
+    "Store ID": 596,
+    "Store_Area": 1498,
+    "Items_Available": 1805,
+    "Daily_Customer_Count": 1270,
+    "Store_Sales": 82270
+  },
+  {
+    "Store ID": 597,
+    "Store_Area": 946,
+    "Items_Available": 1125,
+    "Daily_Customer_Count": 590,
+    "Store_Sales": 29170
+  },
+  {
+    "Store ID": 598,
+    "Store_Area": 1563,
+    "Items_Available": 1872,
+    "Daily_Customer_Count": 1080,
+    "Store_Sales": 68420
+  },
+  {
+    "Store ID": 599,
+    "Store_Area": 1664,
+    "Items_Available": 2016,
+    "Daily_Customer_Count": 830,
+    "Store_Sales": 59130
+  },
+  {
+    "Store ID": 600,
+    "Store_Area": 1619,
+    "Items_Available": 1947,
+    "Daily_Customer_Count": 910,
+    "Store_Sales": 74330
+  },
+  {
+    "Store ID": 601,
+    "Store_Area": 1433,
+    "Items_Available": 1722,
+    "Daily_Customer_Count": 830,
+    "Store_Sales": 77080
+  },
+  {
+    "Store ID": 602,
+    "Store_Area": 1241,
+    "Items_Available": 1489,
+    "Daily_Customer_Count": 1380,
+    "Store_Sales": 76250
+  },
+  {
+    "Store ID": 603,
+    "Store_Area": 1429,
+    "Items_Available": 1720,
+    "Daily_Customer_Count": 1180,
+    "Store_Sales": 59540
+  },
+  {
+    "Store ID": 604,
+    "Store_Area": 1241,
+    "Items_Available": 1488,
+    "Daily_Customer_Count": 770,
+    "Store_Sales": 54690
+  },
+  {
+    "Store ID": 605,
+    "Store_Area": 1078,
+    "Items_Available": 1306,
+    "Daily_Customer_Count": 680,
+    "Store_Sales": 84360
+  },
+  {
+    "Store ID": 606,
+    "Store_Area": 1690,
+    "Items_Available": 2065,
+    "Daily_Customer_Count": 910,
+    "Store_Sales": 51420
+  },
+  {
+    "Store ID": 607,
+    "Store_Area": 1289,
+    "Items_Available": 1536,
+    "Daily_Customer_Count": 540,
+    "Store_Sales": 65120
+  },
+  {
+    "Store ID": 608,
+    "Store_Area": 1581,
+    "Items_Available": 1894,
+    "Daily_Customer_Count": 760,
+    "Store_Sales": 49380
+  },
+  {
+    "Store ID": 609,
+    "Store_Area": 1608,
+    "Items_Available": 1945,
+    "Daily_Customer_Count": 760,
+    "Store_Sales": 37830
+  },
+  {
+    "Store ID": 610,
+    "Store_Area": 1344,
+    "Items_Available": 1608,
+    "Daily_Customer_Count": 730,
+    "Store_Sales": 35980
+  },
+  {
+    "Store ID": 611,
+    "Store_Area": 1513,
+    "Items_Available": 1804,
+    "Daily_Customer_Count": 430,
+    "Store_Sales": 69190
+  },
+  {
+    "Store ID": 612,
+    "Store_Area": 1529,
+    "Items_Available": 1839,
+    "Daily_Customer_Count": 1000,
+    "Store_Sales": 50590
+  },
+  {
+    "Store ID": 613,
+    "Store_Area": 1677,
+    "Items_Available": 2014,
+    "Daily_Customer_Count": 660,
+    "Store_Sales": 60800
+  },
+  {
+    "Store ID": 614,
+    "Store_Area": 1015,
+    "Items_Available": 1229,
+    "Daily_Customer_Count": 930,
+    "Store_Sales": 31180
+  },
+  {
+    "Store ID": 615,
+    "Store_Area": 1438,
+    "Items_Available": 1751,
+    "Daily_Customer_Count": 760,
+    "Store_Sales": 77790
+  },
+  {
+    "Store ID": 616,
+    "Store_Area": 1426,
+    "Items_Available": 1718,
+    "Daily_Customer_Count": 370,
+    "Store_Sales": 47570
+  },
+  {
+    "Store ID": 617,
+    "Store_Area": 1412,
+    "Items_Available": 1701,
+    "Daily_Customer_Count": 630,
+    "Store_Sales": 69130
+  },
+  {
+    "Store ID": 618,
+    "Store_Area": 1622,
+    "Items_Available": 1944,
+    "Daily_Customer_Count": 360,
+    "Store_Sales": 75970
+  },
+  {
+    "Store ID": 619,
+    "Store_Area": 1503,
+    "Items_Available": 1791,
+    "Daily_Customer_Count": 630,
+    "Store_Sales": 68350
+  },
+  {
+    "Store ID": 620,
+    "Store_Area": 1501,
+    "Items_Available": 1789,
+    "Daily_Customer_Count": 670,
+    "Store_Sales": 41680
+  },
+  {
+    "Store ID": 621,
+    "Store_Area": 1971,
+    "Items_Available": 2342,
+    "Daily_Customer_Count": 690,
+    "Store_Sales": 86560
+  },
+  {
+    "Store ID": 622,
+    "Store_Area": 1383,
+    "Items_Available": 1687,
+    "Daily_Customer_Count": 830,
+    "Store_Sales": 81390
+  },
+  {
+    "Store ID": 623,
+    "Store_Area": 1371,
+    "Items_Available": 1635,
+    "Daily_Customer_Count": 720,
+    "Store_Sales": 50730
+  },
+  {
+    "Store ID": 624,
+    "Store_Area": 1508,
+    "Items_Available": 1823,
+    "Daily_Customer_Count": 520,
+    "Store_Sales": 71290
+  },
+  {
+    "Store ID": 625,
+    "Store_Area": 1057,
+    "Items_Available": 1284,
+    "Daily_Customer_Count": 750,
+    "Store_Sales": 70110
+  },
+  {
+    "Store ID": 626,
+    "Store_Area": 1411,
+    "Items_Available": 1680,
+    "Daily_Customer_Count": 1070,
+    "Store_Sales": 61590
+  },
+  {
+    "Store ID": 627,
+    "Store_Area": 1466,
+    "Items_Available": 1746,
+    "Daily_Customer_Count": 590,
+    "Store_Sales": 69370
+  },
+  {
+    "Store ID": 628,
+    "Store_Area": 1545,
+    "Items_Available": 1888,
+    "Daily_Customer_Count": 600,
+    "Store_Sales": 67110
+  },
+  {
+    "Store ID": 629,
+    "Store_Area": 2044,
+    "Items_Available": 2408,
+    "Daily_Customer_Count": 380,
+    "Store_Sales": 82020
+  },
+  {
+    "Store ID": 630,
+    "Store_Area": 1887,
+    "Items_Available": 2264,
+    "Daily_Customer_Count": 830,
+    "Store_Sales": 62050
+  },
+  {
+    "Store ID": 631,
+    "Store_Area": 1505,
+    "Items_Available": 1836,
+    "Daily_Customer_Count": 940,
+    "Store_Sales": 61730
+  },
+  {
+    "Store ID": 632,
+    "Store_Area": 1422,
+    "Items_Available": 1722,
+    "Daily_Customer_Count": 560,
+    "Store_Sales": 58660
+  },
+  {
+    "Store ID": 633,
+    "Store_Area": 1564,
+    "Items_Available": 1869,
+    "Daily_Customer_Count": 1030,
+    "Store_Sales": 53370
+  },
+  {
+    "Store ID": 634,
+    "Store_Area": 1510,
+    "Items_Available": 1810,
+    "Daily_Customer_Count": 730,
+    "Store_Sales": 39700
+  },
+  {
+    "Store ID": 635,
+    "Store_Area": 1568,
+    "Items_Available": 1920,
+    "Daily_Customer_Count": 890,
+    "Store_Sales": 53750
+  },
+  {
+    "Store ID": 636,
+    "Store_Area": 1933,
+    "Items_Available": 2338,
+    "Daily_Customer_Count": 1140,
+    "Store_Sales": 44730
+  },
+  {
+    "Store ID": 637,
+    "Store_Area": 1501,
+    "Items_Available": 1822,
+    "Daily_Customer_Count": 590,
+    "Store_Sales": 49350
+  },
+  {
+    "Store ID": 638,
+    "Store_Area": 1593,
+    "Items_Available": 1911,
+    "Daily_Customer_Count": 580,
+    "Store_Sales": 43340
+  },
+  {
+    "Store ID": 639,
+    "Store_Area": 1812,
+    "Items_Available": 2189,
+    "Daily_Customer_Count": 310,
+    "Store_Sales": 78090
+  },
+  {
+    "Store ID": 640,
+    "Store_Area": 1580,
+    "Items_Available": 1895,
+    "Daily_Customer_Count": 720,
+    "Store_Sales": 54950
+  },
+  {
+    "Store ID": 641,
+    "Store_Area": 1440,
+    "Items_Available": 1749,
+    "Daily_Customer_Count": 490,
+    "Store_Sales": 75530
+  },
+  {
+    "Store ID": 642,
+    "Store_Area": 1100,
+    "Items_Available": 1331,
+    "Daily_Customer_Count": 1010,
+    "Store_Sales": 57330
+  },
+  {
+    "Store ID": 643,
+    "Store_Area": 1534,
+    "Items_Available": 1841,
+    "Daily_Customer_Count": 680,
+    "Store_Sales": 87930
+  },
+  {
+    "Store ID": 644,
+    "Store_Area": 1299,
+    "Items_Available": 1555,
+    "Daily_Customer_Count": 1020,
+    "Store_Sales": 56850
+  },
+  {
+    "Store ID": 645,
+    "Store_Area": 1767,
+    "Items_Available": 2121,
+    "Daily_Customer_Count": 1050,
+    "Store_Sales": 78430
+  },
+  {
+    "Store ID": 646,
+    "Store_Area": 1368,
+    "Items_Available": 1649,
+    "Daily_Customer_Count": 740,
+    "Store_Sales": 63660
+  },
+  {
+    "Store ID": 647,
+    "Store_Area": 1393,
+    "Items_Available": 1670,
+    "Daily_Customer_Count": 410,
+    "Store_Sales": 62960
+  },
+  {
+    "Store ID": 648,
+    "Store_Area": 1327,
+    "Items_Available": 1590,
+    "Daily_Customer_Count": 770,
+    "Store_Sales": 81870
+  },
+  {
+    "Store ID": 649,
+    "Store_Area": 1514,
+    "Items_Available": 1794,
+    "Daily_Customer_Count": 1400,
+    "Store_Sales": 54820
+  },
+  {
+    "Store ID": 650,
+    "Store_Area": 1989,
+    "Items_Available": 2414,
+    "Daily_Customer_Count": 860,
+    "Store_Sales": 116320
+  },
+  {
+    "Store ID": 651,
+    "Store_Area": 1334,
+    "Items_Available": 1584,
+    "Daily_Customer_Count": 840,
+    "Store_Sales": 57200
+  },
+  {
+    "Store ID": 652,
+    "Store_Area": 1533,
+    "Items_Available": 1817,
+    "Daily_Customer_Count": 950,
+    "Store_Sales": 84360
+  },
+  {
+    "Store ID": 653,
+    "Store_Area": 1809,
+    "Items_Available": 2145,
+    "Daily_Customer_Count": 940,
+    "Store_Sales": 36530
+  },
+  {
+    "Store ID": 654,
+    "Store_Area": 1607,
+    "Items_Available": 1933,
+    "Daily_Customer_Count": 930,
+    "Store_Sales": 81260
+  },
+  {
+    "Store ID": 655,
+    "Store_Area": 1165,
+    "Items_Available": 1387,
+    "Daily_Customer_Count": 1060,
+    "Store_Sales": 82350
+  },
+  {
+    "Store ID": 656,
+    "Store_Area": 1193,
+    "Items_Available": 1430,
+    "Daily_Customer_Count": 560,
+    "Store_Sales": 80830
+  },
+  {
+    "Store ID": 657,
+    "Store_Area": 1709,
+    "Items_Available": 2065,
+    "Daily_Customer_Count": 670,
+    "Store_Sales": 30610
+  },
+  {
+    "Store ID": 658,
+    "Store_Area": 1525,
+    "Items_Available": 1839,
+    "Daily_Customer_Count": 540,
+    "Store_Sales": 51310
+  },
+  {
+    "Store ID": 659,
+    "Store_Area": 1348,
+    "Items_Available": 1623,
+    "Daily_Customer_Count": 1010,
+    "Store_Sales": 72940
+  },
+  {
+    "Store ID": 660,
+    "Store_Area": 1132,
+    "Items_Available": 1366,
+    "Daily_Customer_Count": 1340,
+    "Store_Sales": 52450
+  },
+  {
+    "Store ID": 661,
+    "Store_Area": 1667,
+    "Items_Available": 2020,
+    "Daily_Customer_Count": 980,
+    "Store_Sales": 66070
+  },
+  {
+    "Store ID": 662,
+    "Store_Area": 1427,
+    "Items_Available": 1720,
+    "Daily_Customer_Count": 630,
+    "Store_Sales": 43190
+  },
+  {
+    "Store ID": 663,
+    "Store_Area": 1211,
+    "Items_Available": 1447,
+    "Daily_Customer_Count": 1110,
+    "Store_Sales": 40730
+  },
+  {
+    "Store ID": 664,
+    "Store_Area": 1717,
+    "Items_Available": 2048,
+    "Daily_Customer_Count": 700,
+    "Store_Sales": 78530
+  },
+  {
+    "Store ID": 665,
+    "Store_Area": 1766,
+    "Items_Available": 2111,
+    "Daily_Customer_Count": 580,
+    "Store_Sales": 94690
+  },
+  {
+    "Store ID": 666,
+    "Store_Area": 1086,
+    "Items_Available": 1299,
+    "Daily_Customer_Count": 1050,
+    "Store_Sales": 44400
+  },
+  {
+    "Store ID": 667,
+    "Store_Area": 1410,
+    "Items_Available": 1692,
+    "Daily_Customer_Count": 790,
+    "Store_Sales": 73800
+  },
+  {
+    "Store ID": 668,
+    "Store_Area": 1476,
+    "Items_Available": 1760,
+    "Daily_Customer_Count": 600,
+    "Store_Sales": 37390
+  },
+  {
+    "Store ID": 669,
+    "Store_Area": 1068,
+    "Items_Available": 1278,
+    "Daily_Customer_Count": 440,
+    "Store_Sales": 64120
+  },
+  {
+    "Store ID": 670,
+    "Store_Area": 1485,
+    "Items_Available": 1785,
+    "Daily_Customer_Count": 1340,
+    "Store_Sales": 66160
+  },
+  {
+    "Store ID": 671,
+    "Store_Area": 1461,
+    "Items_Available": 1739,
+    "Daily_Customer_Count": 1250,
+    "Store_Sales": 22310
+  },
+  {
+    "Store ID": 672,
+    "Store_Area": 1685,
+    "Items_Available": 2010,
+    "Daily_Customer_Count": 990,
+    "Store_Sales": 62380
+  },
+  {
+    "Store ID": 673,
+    "Store_Area": 1624,
+    "Items_Available": 1958,
+    "Daily_Customer_Count": 290,
+    "Store_Sales": 63850
+  },
+  {
+    "Store ID": 674,
+    "Store_Area": 1658,
+    "Items_Available": 2000,
+    "Daily_Customer_Count": 350,
+    "Store_Sales": 36210
+  },
+  {
+    "Store ID": 675,
+    "Store_Area": 1427,
+    "Items_Available": 1677,
+    "Daily_Customer_Count": 210,
+    "Store_Sales": 54590
+  },
+  {
+    "Store ID": 676,
+    "Store_Area": 1755,
+    "Items_Available": 2072,
+    "Daily_Customer_Count": 810,
+    "Store_Sales": 69610
+  },
+  {
+    "Store ID": 677,
+    "Store_Area": 1211,
+    "Items_Available": 1472,
+    "Daily_Customer_Count": 790,
+    "Store_Sales": 65390
+  },
+  {
+    "Store ID": 678,
+    "Store_Area": 1591,
+    "Items_Available": 1896,
+    "Daily_Customer_Count": 780,
+    "Store_Sales": 78130
+  },
+  {
+    "Store ID": 679,
+    "Store_Area": 1797,
+    "Items_Available": 2126,
+    "Daily_Customer_Count": 730,
+    "Store_Sales": 55710
+  },
+  {
+    "Store ID": 680,
+    "Store_Area": 1519,
+    "Items_Available": 1823,
+    "Daily_Customer_Count": 1040,
+    "Store_Sales": 69210
+  },
+  {
+    "Store ID": 681,
+    "Store_Area": 1637,
+    "Items_Available": 1958,
+    "Daily_Customer_Count": 760,
+    "Store_Sales": 59940
+  },
+  {
+    "Store ID": 682,
+    "Store_Area": 1451,
+    "Items_Available": 1750,
+    "Daily_Customer_Count": 570,
+    "Store_Sales": 72550
+  },
+  {
+    "Store ID": 683,
+    "Store_Area": 1203,
+    "Items_Available": 1446,
+    "Daily_Customer_Count": 620,
+    "Store_Sales": 44260
+  },
+  {
+    "Store ID": 684,
+    "Store_Area": 1884,
+    "Items_Available": 2262,
+    "Daily_Customer_Count": 310,
+    "Store_Sales": 56910
+  },
+  {
+    "Store ID": 685,
+    "Store_Area": 1540,
+    "Items_Available": 1820,
+    "Daily_Customer_Count": 310,
+    "Store_Sales": 82390
+  },
+  {
+    "Store ID": 686,
+    "Store_Area": 1121,
+    "Items_Available": 1332,
+    "Daily_Customer_Count": 790,
+    "Store_Sales": 54590
+  },
+  {
+    "Store ID": 687,
+    "Store_Area": 1307,
+    "Items_Available": 1562,
+    "Daily_Customer_Count": 490,
+    "Store_Sales": 69990
+  },
+  {
+    "Store ID": 688,
+    "Store_Area": 1475,
+    "Items_Available": 1775,
+    "Daily_Customer_Count": 230,
+    "Store_Sales": 72740
+  },
+  {
+    "Store ID": 689,
+    "Store_Area": 1160,
+    "Items_Available": 1401,
+    "Daily_Customer_Count": 900,
+    "Store_Sales": 35360
+  },
+  {
+    "Store ID": 690,
+    "Store_Area": 1078,
+    "Items_Available": 1276,
+    "Daily_Customer_Count": 640,
+    "Store_Sales": 94370
+  },
+  {
+    "Store ID": 691,
+    "Store_Area": 1191,
+    "Items_Available": 1436,
+    "Daily_Customer_Count": 840,
+    "Store_Sales": 43520
+  },
+  {
+    "Store ID": 692,
+    "Store_Area": 1317,
+    "Items_Available": 1569,
+    "Daily_Customer_Count": 780,
+    "Store_Sales": 36000
+  },
+  {
+    "Store ID": 693,
+    "Store_Area": 1548,
+    "Items_Available": 1858,
+    "Daily_Customer_Count": 480,
+    "Store_Sales": 99480
+  },
+  {
+    "Store ID": 694,
+    "Store_Area": 1560,
+    "Items_Available": 1883,
+    "Daily_Customer_Count": 1040,
+    "Store_Sales": 83220
+  },
+  {
+    "Store ID": 695,
+    "Store_Area": 1297,
+    "Items_Available": 1529,
+    "Daily_Customer_Count": 870,
+    "Store_Sales": 52940
+  },
+  {
+    "Store ID": 696,
+    "Store_Area": 1645,
+    "Items_Available": 1958,
+    "Daily_Customer_Count": 530,
+    "Store_Sales": 93360
+  },
+  {
+    "Store ID": 697,
+    "Store_Area": 1225,
+    "Items_Available": 1455,
+    "Daily_Customer_Count": 750,
+    "Store_Sales": 73590
+  },
+  {
+    "Store ID": 698,
+    "Store_Area": 1421,
+    "Items_Available": 1704,
+    "Daily_Customer_Count": 840,
+    "Store_Sales": 53840
+  },
+  {
+    "Store ID": 699,
+    "Store_Area": 1655,
+    "Items_Available": 1956,
+    "Daily_Customer_Count": 800,
+    "Store_Sales": 47350
+  },
+  {
+    "Store ID": 700,
+    "Store_Area": 1615,
+    "Items_Available": 1928,
+    "Daily_Customer_Count": 660,
+    "Store_Sales": 65080
+  },
+  {
+    "Store ID": 701,
+    "Store_Area": 1872,
+    "Items_Available": 2262,
+    "Daily_Customer_Count": 560,
+    "Store_Sales": 62050
+  },
+  {
+    "Store ID": 702,
+    "Store_Area": 1317,
+    "Items_Available": 1581,
+    "Daily_Customer_Count": 910,
+    "Store_Sales": 30020
+  },
+  {
+    "Store ID": 703,
+    "Store_Area": 1434,
+    "Items_Available": 1729,
+    "Daily_Customer_Count": 480,
+    "Store_Sales": 49510
+  },
+  {
+    "Store ID": 704,
+    "Store_Area": 1791,
+    "Items_Available": 2167,
+    "Daily_Customer_Count": 700,
+    "Store_Sales": 64320
+  },
+  {
+    "Store ID": 705,
+    "Store_Area": 932,
+    "Items_Available": 1120,
+    "Daily_Customer_Count": 660,
+    "Store_Sales": 35590
+  },
+  {
+    "Store ID": 706,
+    "Store_Area": 1609,
+    "Items_Available": 1924,
+    "Daily_Customer_Count": 1170,
+    "Store_Sales": 63050
+  },
+  {
+    "Store ID": 707,
+    "Store_Area": 1495,
+    "Items_Available": 1793,
+    "Daily_Customer_Count": 1020,
+    "Store_Sales": 65300
+  },
+  {
+    "Store ID": 708,
+    "Store_Area": 1769,
+    "Items_Available": 2153,
+    "Daily_Customer_Count": 580,
+    "Store_Sales": 69560
+  },
+  {
+    "Store ID": 709,
+    "Store_Area": 1693,
+    "Items_Available": 2032,
+    "Daily_Customer_Count": 610,
+    "Store_Sales": 41910
+  },
+  {
+    "Store ID": 710,
+    "Store_Area": 1247,
+    "Items_Available": 1497,
+    "Daily_Customer_Count": 590,
+    "Store_Sales": 28330
+  },
+  {
+    "Store ID": 711,
+    "Store_Area": 1502,
+    "Items_Available": 1815,
+    "Daily_Customer_Count": 190,
+    "Store_Sales": 55980
+  },
+  {
+    "Store ID": 712,
+    "Store_Area": 1360,
+    "Items_Available": 1612,
+    "Daily_Customer_Count": 490,
+    "Store_Sales": 61080
+  },
+  {
+    "Store ID": 713,
+    "Store_Area": 1542,
+    "Items_Available": 1844,
+    "Daily_Customer_Count": 680,
+    "Store_Sales": 51380
+  },
+  {
+    "Store ID": 714,
+    "Store_Area": 1631,
+    "Items_Available": 1947,
+    "Daily_Customer_Count": 670,
+    "Store_Sales": 84410
+  },
+  {
+    "Store ID": 715,
+    "Store_Area": 1246,
+    "Items_Available": 1482,
+    "Daily_Customer_Count": 1070,
+    "Store_Sales": 60680
+  },
+  {
+    "Store ID": 716,
+    "Store_Area": 1990,
+    "Items_Available": 2384,
+    "Daily_Customer_Count": 1110,
+    "Store_Sales": 64690
+  },
+  {
+    "Store ID": 717,
+    "Store_Area": 967,
+    "Items_Available": 1154,
+    "Daily_Customer_Count": 560,
+    "Store_Sales": 45780
+  },
+  {
+    "Store ID": 718,
+    "Store_Area": 1582,
+    "Items_Available": 1894,
+    "Daily_Customer_Count": 1100,
+    "Store_Sales": 41800
+  },
+  {
+    "Store ID": 719,
+    "Store_Area": 1430,
+    "Items_Available": 1743,
+    "Daily_Customer_Count": 970,
+    "Store_Sales": 53230
+  },
+  {
+    "Store ID": 720,
+    "Store_Area": 1827,
+    "Items_Available": 2160,
+    "Daily_Customer_Count": 930,
+    "Store_Sales": 36160
+  },
+  {
+    "Store ID": 721,
+    "Store_Area": 1118,
+    "Items_Available": 1338,
+    "Daily_Customer_Count": 1040,
+    "Store_Sales": 40450
+  },
+  {
+    "Store ID": 722,
+    "Store_Area": 1766,
+    "Items_Available": 2109,
+    "Daily_Customer_Count": 1120,
+    "Store_Sales": 57910
+  },
+  {
+    "Store ID": 723,
+    "Store_Area": 1799,
+    "Items_Available": 2173,
+    "Daily_Customer_Count": 910,
+    "Store_Sales": 36280
+  },
+  {
+    "Store ID": 724,
+    "Store_Area": 1167,
+    "Items_Available": 1411,
+    "Daily_Customer_Count": 440,
+    "Store_Sales": 39190
+  },
+  {
+    "Store ID": 725,
+    "Store_Area": 1493,
+    "Items_Available": 1795,
+    "Daily_Customer_Count": 530,
+    "Store_Sales": 62380
+  },
+  {
+    "Store ID": 726,
+    "Store_Area": 1445,
+    "Items_Available": 1734,
+    "Daily_Customer_Count": 900,
+    "Store_Sales": 21470
+  },
+  {
+    "Store ID": 727,
+    "Store_Area": 1033,
+    "Items_Available": 1237,
+    "Daily_Customer_Count": 740,
+    "Store_Sales": 34610
+  },
+  {
+    "Store ID": 728,
+    "Store_Area": 1440,
+    "Items_Available": 1711,
+    "Daily_Customer_Count": 1020,
+    "Store_Sales": 88120
+  },
+  {
+    "Store ID": 729,
+    "Store_Area": 1487,
+    "Items_Available": 1773,
+    "Daily_Customer_Count": 970,
+    "Store_Sales": 59190
+  },
+  {
+    "Store ID": 730,
+    "Store_Area": 1854,
+    "Items_Available": 2205,
+    "Daily_Customer_Count": 890,
+    "Store_Sales": 36290
+  },
+  {
+    "Store ID": 731,
+    "Store_Area": 1748,
+    "Items_Available": 2086,
+    "Daily_Customer_Count": 550,
+    "Store_Sales": 53760
+  },
+  {
+    "Store ID": 732,
+    "Store_Area": 1937,
+    "Items_Available": 2310,
+    "Daily_Customer_Count": 520,
+    "Store_Sales": 66300
+  },
+  {
+    "Store ID": 733,
+    "Store_Area": 1641,
+    "Items_Available": 1999,
+    "Daily_Customer_Count": 950,
+    "Store_Sales": 93000
+  },
+  {
+    "Store ID": 734,
+    "Store_Area": 1659,
+    "Items_Available": 1999,
+    "Daily_Customer_Count": 650,
+    "Store_Sales": 65660
+  },
+  {
+    "Store ID": 735,
+    "Store_Area": 1743,
+    "Items_Available": 2061,
+    "Daily_Customer_Count": 860,
+    "Store_Sales": 81930
+  },
+  {
+    "Store ID": 736,
+    "Store_Area": 1449,
+    "Items_Available": 1733,
+    "Daily_Customer_Count": 320,
+    "Store_Sales": 60060
+  },
+  {
+    "Store ID": 737,
+    "Store_Area": 1098,
+    "Items_Available": 1309,
+    "Daily_Customer_Count": 860,
+    "Store_Sales": 59530
+  },
+  {
+    "Store ID": 738,
+    "Store_Area": 1121,
+    "Items_Available": 1351,
+    "Daily_Customer_Count": 900,
+    "Store_Sales": 46380
+  },
+  {
+    "Store ID": 739,
+    "Store_Area": 1526,
+    "Items_Available": 1858,
+    "Daily_Customer_Count": 550,
+    "Store_Sales": 76200
+  },
+  {
+    "Store ID": 740,
+    "Store_Area": 1358,
+    "Items_Available": 1645,
+    "Daily_Customer_Count": 770,
+    "Store_Sales": 56860
+  },
+  {
+    "Store ID": 741,
+    "Store_Area": 1336,
+    "Items_Available": 1616,
+    "Daily_Customer_Count": 710,
+    "Store_Sales": 86620
+  },
+  {
+    "Store ID": 742,
+    "Store_Area": 1502,
+    "Items_Available": 1802,
+    "Daily_Customer_Count": 840,
+    "Store_Sales": 49730
+  },
+  {
+    "Store ID": 743,
+    "Store_Area": 1534,
+    "Items_Available": 1858,
+    "Daily_Customer_Count": 860,
+    "Store_Sales": 88370
+  },
+  {
+    "Store ID": 744,
+    "Store_Area": 1418,
+    "Items_Available": 1699,
+    "Daily_Customer_Count": 870,
+    "Store_Sales": 49160
+  },
+  {
+    "Store ID": 745,
+    "Store_Area": 854,
+    "Items_Available": 1018,
+    "Daily_Customer_Count": 660,
+    "Store_Sales": 77740
+  },
+  {
+    "Store ID": 746,
+    "Store_Area": 1450,
+    "Items_Available": 1728,
+    "Daily_Customer_Count": 930,
+    "Store_Sales": 38560
+  },
+  {
+    "Store ID": 747,
+    "Store_Area": 1474,
+    "Items_Available": 1776,
+    "Daily_Customer_Count": 1020,
+    "Store_Sales": 51990
+  },
+  {
+    "Store ID": 748,
+    "Store_Area": 1524,
+    "Items_Available": 1819,
+    "Daily_Customer_Count": 1190,
+    "Store_Sales": 39970
+  },
+  {
+    "Store ID": 749,
+    "Store_Area": 1361,
+    "Items_Available": 1638,
+    "Daily_Customer_Count": 1140,
+    "Store_Sales": 46040
+  },
+  {
+    "Store ID": 750,
+    "Store_Area": 1398,
+    "Items_Available": 1683,
+    "Daily_Customer_Count": 490,
+    "Store_Sales": 49500
+  },
+  {
+    "Store ID": 751,
+    "Store_Area": 1085,
+    "Items_Available": 1308,
+    "Daily_Customer_Count": 1170,
+    "Store_Sales": 76670
+  },
+  {
+    "Store ID": 752,
+    "Store_Area": 1660,
+    "Items_Available": 1979,
+    "Daily_Customer_Count": 480,
+    "Store_Sales": 75800
+  },
+  {
+    "Store ID": 753,
+    "Store_Area": 1648,
+    "Items_Available": 2017,
+    "Daily_Customer_Count": 930,
+    "Store_Sales": 81720
+  },
+  {
+    "Store ID": 754,
+    "Store_Area": 1453,
+    "Items_Available": 1749,
+    "Daily_Customer_Count": 890,
+    "Store_Sales": 58440
+  },
+  {
+    "Store ID": 755,
+    "Store_Area": 1323,
+    "Items_Available": 1591,
+    "Daily_Customer_Count": 680,
+    "Store_Sales": 85720
+  },
+  {
+    "Store ID": 756,
+    "Store_Area": 1385,
+    "Items_Available": 1643,
+    "Daily_Customer_Count": 740,
+    "Store_Sales": 70940
+  },
+  {
+    "Store ID": 757,
+    "Store_Area": 1250,
+    "Items_Available": 1506,
+    "Daily_Customer_Count": 990,
+    "Store_Sales": 62420
+  },
+  {
+    "Store ID": 758,
+    "Store_Area": 1389,
+    "Items_Available": 1683,
+    "Daily_Customer_Count": 680,
+    "Store_Sales": 56880
+  },
+  {
+    "Store ID": 759,
+    "Store_Area": 1486,
+    "Items_Available": 1758,
+    "Daily_Customer_Count": 820,
+    "Store_Sales": 101820
+  },
+  {
+    "Store ID": 760,
+    "Store_Area": 1655,
+    "Items_Available": 1993,
+    "Daily_Customer_Count": 440,
+    "Store_Sales": 86890
+  },
+  {
+    "Store ID": 761,
+    "Store_Area": 1645,
+    "Items_Available": 1963,
+    "Daily_Customer_Count": 900,
+    "Store_Sales": 47300
+  },
+  {
+    "Store ID": 762,
+    "Store_Area": 1464,
+    "Items_Available": 1771,
+    "Daily_Customer_Count": 1080,
+    "Store_Sales": 31270
+  },
+  {
+    "Store ID": 763,
+    "Store_Area": 1197,
+    "Items_Available": 1428,
+    "Daily_Customer_Count": 830,
+    "Store_Sales": 65410
+  },
+  {
+    "Store ID": 764,
+    "Store_Area": 1878,
+    "Items_Available": 2264,
+    "Daily_Customer_Count": 310,
+    "Store_Sales": 54200
+  },
+  {
+    "Store ID": 765,
+    "Store_Area": 1150,
+    "Items_Available": 1378,
+    "Daily_Customer_Count": 730,
+    "Store_Sales": 67390
+  },
+  {
+    "Store ID": 766,
+    "Store_Area": 1562,
+    "Items_Available": 1881,
+    "Daily_Customer_Count": 740,
+    "Store_Sales": 54530
+  },
+  {
+    "Store ID": 767,
+    "Store_Area": 1596,
+    "Items_Available": 1939,
+    "Daily_Customer_Count": 960,
+    "Store_Sales": 79760
+  },
+  {
+    "Store ID": 768,
+    "Store_Area": 1119,
+    "Items_Available": 1345,
+    "Daily_Customer_Count": 790,
+    "Store_Sales": 78060
+  },
+  {
+    "Store ID": 769,
+    "Store_Area": 1116,
+    "Items_Available": 1347,
+    "Daily_Customer_Count": 700,
+    "Store_Sales": 74080
+  },
+  {
+    "Store ID": 770,
+    "Store_Area": 1934,
+    "Items_Available": 2349,
+    "Daily_Customer_Count": 750,
+    "Store_Sales": 52990
+  },
+  {
+    "Store ID": 771,
+    "Store_Area": 1299,
+    "Items_Available": 1540,
+    "Daily_Customer_Count": 590,
+    "Store_Sales": 70580
+  },
+  {
+    "Store ID": 772,
+    "Store_Area": 1417,
+    "Items_Available": 1689,
+    "Daily_Customer_Count": 570,
+    "Store_Sales": 34310
+  },
+  {
+    "Store ID": 773,
+    "Store_Area": 1235,
+    "Items_Available": 1503,
+    "Daily_Customer_Count": 660,
+    "Store_Sales": 74160
+  },
+  {
+    "Store ID": 774,
+    "Store_Area": 1497,
+    "Items_Available": 1815,
+    "Daily_Customer_Count": 700,
+    "Store_Sales": 59190
+  },
+  {
+    "Store ID": 775,
+    "Store_Area": 1430,
+    "Items_Available": 1704,
+    "Daily_Customer_Count": 1070,
+    "Store_Sales": 43370
+  },
+  {
+    "Store ID": 776,
+    "Store_Area": 1537,
+    "Items_Available": 1877,
+    "Daily_Customer_Count": 660,
+    "Store_Sales": 17670
+  },
+  {
+    "Store ID": 777,
+    "Store_Area": 1444,
+    "Items_Available": 1742,
+    "Daily_Customer_Count": 840,
+    "Store_Sales": 56710
+  },
+  {
+    "Store ID": 778,
+    "Store_Area": 1477,
+    "Items_Available": 1798,
+    "Daily_Customer_Count": 850,
+    "Store_Sales": 59820
+  },
+  {
+    "Store ID": 779,
+    "Store_Area": 1041,
+    "Items_Available": 1246,
+    "Daily_Customer_Count": 600,
+    "Store_Sales": 36190
+  },
+  {
+    "Store ID": 780,
+    "Store_Area": 1226,
+    "Items_Available": 1472,
+    "Daily_Customer_Count": 710,
+    "Store_Sales": 60440
+  },
+  {
+    "Store ID": 781,
+    "Store_Area": 1489,
+    "Items_Available": 1783,
+    "Daily_Customer_Count": 450,
+    "Store_Sales": 75300
+  },
+  {
+    "Store ID": 782,
+    "Store_Area": 1549,
+    "Items_Available": 1871,
+    "Daily_Customer_Count": 740,
+    "Store_Sales": 74080
+  },
+  {
+    "Store ID": 783,
+    "Store_Area": 1073,
+    "Items_Available": 1280,
+    "Daily_Customer_Count": 1240,
+    "Store_Sales": 60440
+  },
+  {
+    "Store ID": 784,
+    "Store_Area": 1473,
+    "Items_Available": 1785,
+    "Daily_Customer_Count": 570,
+    "Store_Sales": 80720
+  },
+  {
+    "Store ID": 785,
+    "Store_Area": 2013,
+    "Items_Available": 2396,
+    "Daily_Customer_Count": 580,
+    "Store_Sales": 47060
+  },
+  {
+    "Store ID": 786,
+    "Store_Area": 1975,
+    "Items_Available": 2368,
+    "Daily_Customer_Count": 450,
+    "Store_Sales": 86830
+  },
+  {
+    "Store ID": 787,
+    "Store_Area": 1561,
+    "Items_Available": 1877,
+    "Daily_Customer_Count": 790,
+    "Store_Sales": 56790
+  },
+  {
+    "Store ID": 788,
+    "Store_Area": 1427,
+    "Items_Available": 1723,
+    "Daily_Customer_Count": 1040,
+    "Store_Sales": 67090
+  },
+  {
+    "Store ID": 789,
+    "Store_Area": 1441,
+    "Items_Available": 1747,
+    "Daily_Customer_Count": 670,
+    "Store_Sales": 44370
+  },
+  {
+    "Store ID": 790,
+    "Store_Area": 1275,
+    "Items_Available": 1548,
+    "Daily_Customer_Count": 370,
+    "Store_Sales": 82970
+  },
+  {
+    "Store ID": 791,
+    "Store_Area": 1574,
+    "Items_Available": 1876,
+    "Daily_Customer_Count": 620,
+    "Store_Sales": 56230
+  },
+  {
+    "Store ID": 792,
+    "Store_Area": 1511,
+    "Items_Available": 1791,
+    "Daily_Customer_Count": 1010,
+    "Store_Sales": 53760
+  },
+  {
+    "Store ID": 793,
+    "Store_Area": 1428,
+    "Items_Available": 1713,
+    "Daily_Customer_Count": 550,
+    "Store_Sales": 55390
+  },
+  {
+    "Store ID": 794,
+    "Store_Area": 1388,
+    "Items_Available": 1672,
+    "Daily_Customer_Count": 800,
+    "Store_Sales": 73500
+  },
+  {
+    "Store ID": 795,
+    "Store_Area": 1057,
+    "Items_Available": 1280,
+    "Daily_Customer_Count": 610,
+    "Store_Sales": 41050
+  },
+  {
+    "Store ID": 796,
+    "Store_Area": 1440,
+    "Items_Available": 1747,
+    "Daily_Customer_Count": 1090,
+    "Store_Sales": 67320
+  },
+  {
+    "Store ID": 797,
+    "Store_Area": 1349,
+    "Items_Available": 1610,
+    "Daily_Customer_Count": 700,
+    "Store_Sales": 65890
+  },
+  {
+    "Store ID": 798,
+    "Store_Area": 1536,
+    "Items_Available": 1808,
+    "Daily_Customer_Count": 830,
+    "Store_Sales": 56380
+  },
+  {
+    "Store ID": 799,
+    "Store_Area": 2019,
+    "Items_Available": 2420,
+    "Daily_Customer_Count": 850,
+    "Store_Sales": 85670
+  },
+  {
+    "Store ID": 800,
+    "Store_Area": 1236,
+    "Items_Available": 1508,
+    "Daily_Customer_Count": 1260,
+    "Store_Sales": 70830
+  },
+  {
+    "Store ID": 801,
+    "Store_Area": 1436,
+    "Items_Available": 1715,
+    "Daily_Customer_Count": 1030,
+    "Store_Sales": 48180
+  },
+  {
+    "Store ID": 802,
+    "Store_Area": 1862,
+    "Items_Available": 2248,
+    "Daily_Customer_Count": 1160,
+    "Store_Sales": 51910
+  },
+  {
+    "Store ID": 803,
+    "Store_Area": 1200,
+    "Items_Available": 1442,
+    "Daily_Customer_Count": 880,
+    "Store_Sales": 44320
+  },
+  {
+    "Store ID": 804,
+    "Store_Area": 1360,
+    "Items_Available": 1650,
+    "Daily_Customer_Count": 420,
+    "Store_Sales": 58940
+  },
+  {
+    "Store ID": 805,
+    "Store_Area": 1722,
+    "Items_Available": 2078,
+    "Daily_Customer_Count": 770,
+    "Store_Sales": 73610
+  },
+  {
+    "Store ID": 806,
+    "Store_Area": 1577,
+    "Items_Available": 1902,
+    "Daily_Customer_Count": 910,
+    "Store_Sales": 54060
+  },
+  {
+    "Store ID": 807,
+    "Store_Area": 1850,
+    "Items_Available": 2214,
+    "Daily_Customer_Count": 1110,
+    "Store_Sales": 85000
+  },
+  {
+    "Store ID": 808,
+    "Store_Area": 1447,
+    "Items_Available": 1730,
+    "Daily_Customer_Count": 510,
+    "Store_Sales": 49030
+  },
+  {
+    "Store ID": 809,
+    "Store_Area": 1496,
+    "Items_Available": 1800,
+    "Daily_Customer_Count": 780,
+    "Store_Sales": 63300
+  },
+  {
+    "Store ID": 810,
+    "Store_Area": 1679,
+    "Items_Available": 2008,
+    "Daily_Customer_Count": 790,
+    "Store_Sales": 84300
+  },
+  {
+    "Store ID": 811,
+    "Store_Area": 994,
+    "Items_Available": 1194,
+    "Daily_Customer_Count": 1090,
+    "Store_Sales": 81390
+  },
+  {
+    "Store ID": 812,
+    "Store_Area": 1354,
+    "Items_Available": 1635,
+    "Daily_Customer_Count": 1270,
+    "Store_Sales": 95900
+  },
+  {
+    "Store ID": 813,
+    "Store_Area": 1597,
+    "Items_Available": 1918,
+    "Daily_Customer_Count": 1260,
+    "Store_Sales": 71830
+  },
+  {
+    "Store ID": 814,
+    "Store_Area": 1873,
+    "Items_Available": 2252,
+    "Daily_Customer_Count": 330,
+    "Store_Sales": 79310
+  },
+  {
+    "Store ID": 815,
+    "Store_Area": 1218,
+    "Items_Available": 1459,
+    "Daily_Customer_Count": 540,
+    "Store_Sales": 87890
+  },
+  {
+    "Store ID": 816,
+    "Store_Area": 1458,
+    "Items_Available": 1746,
+    "Daily_Customer_Count": 720,
+    "Store_Sales": 48610
+  },
+  {
+    "Store ID": 817,
+    "Store_Area": 1546,
+    "Items_Available": 1860,
+    "Daily_Customer_Count": 670,
+    "Store_Sales": 73160
+  },
+  {
+    "Store ID": 818,
+    "Store_Area": 1608,
+    "Items_Available": 1962,
+    "Daily_Customer_Count": 770,
+    "Store_Sales": 36280
+  },
+  {
+    "Store ID": 819,
+    "Store_Area": 1822,
+    "Items_Available": 2160,
+    "Daily_Customer_Count": 860,
+    "Store_Sales": 49720
+  },
+  {
+    "Store ID": 820,
+    "Store_Area": 1716,
+    "Items_Available": 2038,
+    "Daily_Customer_Count": 410,
+    "Store_Sales": 44400
+  },
+  {
+    "Store ID": 821,
+    "Store_Area": 1072,
+    "Items_Available": 1296,
+    "Daily_Customer_Count": 900,
+    "Store_Sales": 47590
+  },
+  {
+    "Store ID": 822,
+    "Store_Area": 1330,
+    "Items_Available": 1604,
+    "Daily_Customer_Count": 480,
+    "Store_Sales": 51460
+  },
+  {
+    "Store ID": 823,
+    "Store_Area": 1588,
+    "Items_Available": 1892,
+    "Daily_Customer_Count": 540,
+    "Store_Sales": 57750
+  },
+  {
+    "Store ID": 824,
+    "Store_Area": 1425,
+    "Items_Available": 1733,
+    "Daily_Customer_Count": 760,
+    "Store_Sales": 66000
+  },
+  {
+    "Store ID": 825,
+    "Store_Area": 1778,
+    "Items_Available": 2133,
+    "Daily_Customer_Count": 280,
+    "Store_Sales": 45950
+  },
+  {
+    "Store ID": 826,
+    "Store_Area": 1363,
+    "Items_Available": 1630,
+    "Daily_Customer_Count": 1120,
+    "Store_Sales": 53900
+  },
+  {
+    "Store ID": 827,
+    "Store_Area": 1609,
+    "Items_Available": 1928,
+    "Daily_Customer_Count": 160,
+    "Store_Sales": 37920
+  },
+  {
+    "Store ID": 828,
+    "Store_Area": 1671,
+    "Items_Available": 2024,
+    "Daily_Customer_Count": 620,
+    "Store_Sales": 63100
+  },
+  {
+    "Store ID": 829,
+    "Store_Area": 1379,
+    "Items_Available": 1636,
+    "Daily_Customer_Count": 440,
+    "Store_Sales": 36770
+  },
+  {
+    "Store ID": 830,
+    "Store_Area": 1218,
+    "Items_Available": 1452,
+    "Daily_Customer_Count": 870,
+    "Store_Sales": 43910
+  },
+  {
+    "Store ID": 831,
+    "Store_Area": 1724,
+    "Items_Available": 2101,
+    "Daily_Customer_Count": 900,
+    "Store_Sales": 66390
+  },
+  {
+    "Store ID": 832,
+    "Store_Area": 986,
+    "Items_Available": 1179,
+    "Daily_Customer_Count": 710,
+    "Store_Sales": 59160
+  },
+  {
+    "Store ID": 833,
+    "Store_Area": 1330,
+    "Items_Available": 1606,
+    "Daily_Customer_Count": 590,
+    "Store_Sales": 38510
+  },
+  {
+    "Store ID": 834,
+    "Store_Area": 1437,
+    "Items_Available": 1725,
+    "Daily_Customer_Count": 910,
+    "Store_Sales": 46220
+  },
+  {
+    "Store ID": 835,
+    "Store_Area": 1327,
+    "Items_Available": 1609,
+    "Daily_Customer_Count": 1320,
+    "Store_Sales": 41500
+  },
+  {
+    "Store ID": 836,
+    "Store_Area": 1651,
+    "Items_Available": 2009,
+    "Daily_Customer_Count": 1000,
+    "Store_Sales": 58160
+  },
+  {
+    "Store ID": 837,
+    "Store_Area": 1211,
+    "Items_Available": 1462,
+    "Daily_Customer_Count": 670,
+    "Store_Sales": 38530
+  },
+  {
+    "Store ID": 838,
+    "Store_Area": 1916,
+    "Items_Available": 2277,
+    "Daily_Customer_Count": 610,
+    "Store_Sales": 55880
+  },
+  {
+    "Store ID": 839,
+    "Store_Area": 1638,
+    "Items_Available": 1937,
+    "Daily_Customer_Count": 1050,
+    "Store_Sales": 70940
+  },
+  {
+    "Store ID": 840,
+    "Store_Area": 1172,
+    "Items_Available": 1413,
+    "Daily_Customer_Count": 480,
+    "Store_Sales": 53940
+  },
+  {
+    "Store ID": 841,
+    "Store_Area": 1350,
+    "Items_Available": 1606,
+    "Daily_Customer_Count": 770,
+    "Store_Sales": 43030
+  },
+  {
+    "Store ID": 842,
+    "Store_Area": 1528,
+    "Items_Available": 1843,
+    "Daily_Customer_Count": 340,
+    "Store_Sales": 59820
+  },
+  {
+    "Store ID": 843,
+    "Store_Area": 1305,
+    "Items_Available": 1557,
+    "Daily_Customer_Count": 580,
+    "Store_Sales": 55500
+  },
+  {
+    "Store ID": 844,
+    "Store_Area": 1463,
+    "Items_Available": 1751,
+    "Daily_Customer_Count": 900,
+    "Store_Sales": 49990
+  },
+  {
+    "Store ID": 845,
+    "Store_Area": 1409,
+    "Items_Available": 1727,
+    "Daily_Customer_Count": 700,
+    "Store_Sales": 42980
+  },
+  {
+    "Store ID": 846,
+    "Store_Area": 1419,
+    "Items_Available": 1743,
+    "Daily_Customer_Count": 860,
+    "Store_Sales": 65970
+  },
+  {
+    "Store ID": 847,
+    "Store_Area": 1535,
+    "Items_Available": 1819,
+    "Daily_Customer_Count": 540,
+    "Store_Sales": 59290
+  },
+  {
+    "Store ID": 848,
+    "Store_Area": 1474,
+    "Items_Available": 1745,
+    "Daily_Customer_Count": 970,
+    "Store_Sales": 63020
+  },
+  {
+    "Store ID": 849,
+    "Store_Area": 919,
+    "Items_Available": 1099,
+    "Daily_Customer_Count": 1560,
+    "Store_Sales": 73810
+  },
+  {
+    "Store ID": 850,
+    "Store_Area": 2067,
+    "Items_Available": 2492,
+    "Daily_Customer_Count": 790,
+    "Store_Sales": 70230
+  },
+  {
+    "Store ID": 851,
+    "Store_Area": 1977,
+    "Items_Available": 2362,
+    "Daily_Customer_Count": 1020,
+    "Store_Sales": 59950
+  },
+  {
+    "Store ID": 852,
+    "Store_Area": 1293,
+    "Items_Available": 1558,
+    "Daily_Customer_Count": 790,
+    "Store_Sales": 78100
+  },
+  {
+    "Store ID": 853,
+    "Store_Area": 1477,
+    "Items_Available": 1790,
+    "Daily_Customer_Count": 880,
+    "Store_Sales": 16370
+  },
+  {
+    "Store ID": 854,
+    "Store_Area": 1582,
+    "Items_Available": 1906,
+    "Daily_Customer_Count": 550,
+    "Store_Sales": 92640
+  },
+  {
+    "Store ID": 855,
+    "Store_Area": 1481,
+    "Items_Available": 1789,
+    "Daily_Customer_Count": 550,
+    "Store_Sales": 63540
+  },
+  {
+    "Store ID": 856,
+    "Store_Area": 1214,
+    "Items_Available": 1455,
+    "Daily_Customer_Count": 950,
+    "Store_Sales": 87220
+  },
+  {
+    "Store ID": 857,
+    "Store_Area": 1206,
+    "Items_Available": 1460,
+    "Daily_Customer_Count": 810,
+    "Store_Sales": 41990
+  },
+  {
+    "Store ID": 858,
+    "Store_Area": 1653,
+    "Items_Available": 1982,
+    "Daily_Customer_Count": 390,
+    "Store_Sales": 79410
+  },
+  {
+    "Store ID": 859,
+    "Store_Area": 1152,
+    "Items_Available": 1393,
+    "Daily_Customer_Count": 860,
+    "Store_Sales": 54380
+  },
+  {
+    "Store ID": 860,
+    "Store_Area": 1458,
+    "Items_Available": 1757,
+    "Daily_Customer_Count": 850,
+    "Store_Sales": 58600
+  },
+  {
+    "Store ID": 861,
+    "Store_Area": 1249,
+    "Items_Available": 1510,
+    "Daily_Customer_Count": 660,
+    "Store_Sales": 48950
+  },
+  {
+    "Store ID": 862,
+    "Store_Area": 1939,
+    "Items_Available": 2333,
+    "Daily_Customer_Count": 830,
+    "Store_Sales": 40670
+  },
+  {
+    "Store ID": 863,
+    "Store_Area": 1591,
+    "Items_Available": 1919,
+    "Daily_Customer_Count": 640,
+    "Store_Sales": 52340
+  },
+  {
+    "Store ID": 864,
+    "Store_Area": 1180,
+    "Items_Available": 1397,
+    "Daily_Customer_Count": 750,
+    "Store_Sales": 39140
+  },
+  {
+    "Store ID": 865,
+    "Store_Area": 1846,
+    "Items_Available": 2195,
+    "Daily_Customer_Count": 1170,
+    "Store_Sales": 41090
+  },
+  {
+    "Store ID": 866,
+    "Store_Area": 780,
+    "Items_Available": 951,
+    "Daily_Customer_Count": 790,
+    "Store_Sales": 25600
+  },
+  {
+    "Store ID": 867,
+    "Store_Area": 1565,
+    "Items_Available": 1854,
+    "Daily_Customer_Count": 900,
+    "Store_Sales": 100900
+  },
+  {
+    "Store ID": 868,
+    "Store_Area": 1648,
+    "Items_Available": 1959,
+    "Daily_Customer_Count": 370,
+    "Store_Sales": 77080
+  },
+  {
+    "Store ID": 869,
+    "Store_Area": 1775,
+    "Items_Available": 2104,
+    "Daily_Customer_Count": 980,
+    "Store_Sales": 105150
+  },
+  {
+    "Store ID": 870,
+    "Store_Area": 1439,
+    "Items_Available": 1732,
+    "Daily_Customer_Count": 1170,
+    "Store_Sales": 80580
+  },
+  {
+    "Store ID": 871,
+    "Store_Area": 1487,
+    "Items_Available": 1776,
+    "Daily_Customer_Count": 800,
+    "Store_Sales": 46230
+  },
+  {
+    "Store ID": 872,
+    "Store_Area": 1800,
+    "Items_Available": 2158,
+    "Daily_Customer_Count": 1100,
+    "Store_Sales": 98260
+  },
+  {
+    "Store ID": 873,
+    "Store_Area": 1690,
+    "Items_Available": 2024,
+    "Daily_Customer_Count": 1070,
+    "Store_Sales": 75930
+  },
+  {
+    "Store ID": 874,
+    "Store_Area": 1209,
+    "Items_Available": 1452,
+    "Daily_Customer_Count": 830,
+    "Store_Sales": 52050
+  },
+  {
+    "Store ID": 875,
+    "Store_Area": 1859,
+    "Items_Available": 2222,
+    "Daily_Customer_Count": 1210,
+    "Store_Sales": 87000
+  },
+  {
+    "Store ID": 876,
+    "Store_Area": 1691,
+    "Items_Available": 2023,
+    "Daily_Customer_Count": 540,
+    "Store_Sales": 60270
+  },
+  {
+    "Store ID": 877,
+    "Store_Area": 1259,
+    "Items_Available": 1493,
+    "Daily_Customer_Count": 100,
+    "Store_Sales": 88270
+  },
+  {
+    "Store ID": 878,
+    "Store_Area": 1771,
+    "Items_Available": 2138,
+    "Daily_Customer_Count": 820,
+    "Store_Sales": 57820
+  },
+  {
+    "Store ID": 879,
+    "Store_Area": 1205,
+    "Items_Available": 1468,
+    "Daily_Customer_Count": 1210,
+    "Store_Sales": 61210
+  },
+  {
+    "Store ID": 880,
+    "Store_Area": 1792,
+    "Items_Available": 2131,
+    "Daily_Customer_Count": 810,
+    "Store_Sales": 76420
+  },
+  {
+    "Store ID": 881,
+    "Store_Area": 1263,
+    "Items_Available": 1516,
+    "Daily_Customer_Count": 780,
+    "Store_Sales": 70980
+  },
+  {
+    "Store ID": 882,
+    "Store_Area": 1344,
+    "Items_Available": 1605,
+    "Daily_Customer_Count": 1160,
+    "Store_Sales": 76740
+  },
+  {
+    "Store ID": 883,
+    "Store_Area": 1819,
+    "Items_Available": 2187,
+    "Daily_Customer_Count": 590,
+    "Store_Sales": 47920
+  },
+  {
+    "Store ID": 884,
+    "Store_Area": 1357,
+    "Items_Available": 1625,
+    "Daily_Customer_Count": 1140,
+    "Store_Sales": 52160
+  },
+  {
+    "Store ID": 885,
+    "Store_Area": 1396,
+    "Items_Available": 1673,
+    "Daily_Customer_Count": 690,
+    "Store_Sales": 32740
+  },
+  {
+    "Store ID": 886,
+    "Store_Area": 1118,
+    "Items_Available": 1337,
+    "Daily_Customer_Count": 560,
+    "Store_Sales": 72270
+  },
+  {
+    "Store ID": 887,
+    "Store_Area": 1655,
+    "Items_Available": 1986,
+    "Daily_Customer_Count": 1150,
+    "Store_Sales": 77430
+  },
+  {
+    "Store ID": 888,
+    "Store_Area": 1156,
+    "Items_Available": 1398,
+    "Daily_Customer_Count": 140,
+    "Store_Sales": 92370
+  },
+  {
+    "Store ID": 889,
+    "Store_Area": 1451,
+    "Items_Available": 1734,
+    "Daily_Customer_Count": 670,
+    "Store_Sales": 34880
+  },
+  {
+    "Store ID": 890,
+    "Store_Area": 1539,
+    "Items_Available": 1829,
+    "Daily_Customer_Count": 650,
+    "Store_Sales": 46580
+  },
+  {
+    "Store ID": 891,
+    "Store_Area": 1549,
+    "Items_Available": 1851,
+    "Daily_Customer_Count": 1220,
+    "Store_Sales": 70620
+  },
+  {
+    "Store ID": 892,
+    "Store_Area": 1582,
+    "Items_Available": 1910,
+    "Daily_Customer_Count": 1080,
+    "Store_Sales": 66390
+  },
+  {
+    "Store ID": 893,
+    "Store_Area": 1387,
+    "Items_Available": 1663,
+    "Daily_Customer_Count": 850,
+    "Store_Sales": 82080
+  },
+  {
+    "Store ID": 894,
+    "Store_Area": 1200,
+    "Items_Available": 1436,
+    "Daily_Customer_Count": 1060,
+    "Store_Sales": 76440
+  },
+  {
+    "Store ID": 895,
+    "Store_Area": 1299,
+    "Items_Available": 1560,
+    "Daily_Customer_Count": 770,
+    "Store_Sales": 96610
+  },
+  {
+    "Store ID": 896,
+    "Store_Area": 1174,
+    "Items_Available": 1429,
+    "Daily_Customer_Count": 1110,
+    "Store_Sales": 54340
+  }
+]
