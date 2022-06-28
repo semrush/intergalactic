@@ -7,8 +7,8 @@ import chart from './static/chart.svg';
 
 const BoxBlock = styled(Box)`
   overflow: hidden;
-  border-left: 1px solid #ccc;
-  padding-left: 16px;
+  border-left: 1px solid #c4c7cf;
+  padding-left: 24px;
   &:first-child {
     border-left: none !important;
     padding-left: 0 !important;
@@ -29,13 +29,13 @@ function detectWrap(node) {
     for (const child of container.children) {
       if (child.offsetTop > container.offsetTop) {
         child.style.borderLeft = 'none';
-        child.style.borderRight = '1px solid #ccc';
-        child.style.marginRight = '16px';
+        child.style.borderRight = '1px solid #c4c7cf';
+        child.style.marginRight = '24px';
         child.style.paddingLeft = 0;
       } else {
-        child.style.borderLeft = '1px solid #ccc';
+        child.style.borderLeft = '1px solid #c4c7cf';
         child.style.borderRight = 'none';
-        child.style.paddingLeft = '16px';
+        child.style.paddingLeft = '24px';
       }
     }
   }
@@ -58,15 +58,15 @@ const Demo = () => {
             Potential Organic Traffic
           </Title>
         </Tooltip>
-        <Text size={100} color="#757575" tag="p">
+        <Text size={100} color="#6C6E79" tag="p">
           last 30 days
         </Text>
         <Flex alignItems="baseline">
           <Text size={500} color="#333333" fontWeight="bold" mr={2} tag="a">
             42
           </Text>
-          <Text size={100} color="#4FAE33" tag="p">
-            +12
+          <Text size={100} color="#007C65" tag="p">
+            ↑+12
           </Text>
         </Flex>
       </BoxBlock>
@@ -76,14 +76,14 @@ const Demo = () => {
             Volume
           </Title>
         </Tooltip>
-        <Text size={100} color="#757575" tag="p">
+        <Text size={100} color="#6C6E79" tag="p">
           all time
         </Text>
         <Flex alignItems="baseline">
-          <Text size={500} color="#0071BC" fontWeight="bold" mr={2} tag="a">
+          <Text size={500} color="#008FF8" fontWeight="bold" mr={2} tag="a">
             66.6K
           </Text>
-          <Text size={100} color="#757575" tag="p">
+          <Text size={100} color="#6C6E79" tag="p">
             no change
           </Text>
         </Flex>
@@ -94,15 +94,15 @@ const Demo = () => {
             CPC
           </Title>
         </Tooltip>
-        <Text size={100} color="#757575" tag="p">
+        <Text size={100} color="#6C6E79" tag="p">
           last 30 days
         </Text>
         <Flex alignItems="baseline">
-          <Text size={500} color="#0071BC" fontWeight="bold" mr={2} tag="a">
+          <Text size={500} color="#008FF8" fontWeight="bold" mr={2} tag="a">
             27K
           </Text>
-          <Text size={100} color="#ED2D2D" tag="p">
-            -12
+          <Text size={100} color="#D1002F" tag="p">
+            ↓-12
           </Text>
         </Flex>
       </BoxBlock>
@@ -112,11 +112,11 @@ const Demo = () => {
             Competition
           </Title>
         </Tooltip>
-        <Text size={100} color="#757575" tag="p">
+        <Text size={100} color="#6C6E79" tag="p">
           last 30 days
         </Text>
         <Flex alignItems="baseline">
-          <Text size={500} color="#AAAAAA" fontWeight="bold" mr={2} tag="a">
+          <Text size={500} color="#A9ABB6" fontWeight="bold" mr={2} tag="a">
             n/a
           </Text>
         </Flex>
@@ -127,15 +127,15 @@ const Demo = () => {
             Non-branded traffic
           </Title>
         </Tooltip>
-        <Text size={100} color="#757575" tag="p">
+        <Text size={100} color="#6C6E79" tag="p">
           all time
         </Text>
         <Flex alignItems="baseline" flexWrap>
-          <Text size={500} color="#4FAE33" fontWeight="bold" mr={2} tag="a">
+          <Text size={500} color="#008FF8" fontWeight="bold" mr={2} tag="a">
             15%
           </Text>
-          <Text size={100} color="#4FAE33" mr={2} tag="p">
-            +13
+          <Text size={100} color="#007C65" mr={2} tag="p">
+            ↑+13
           </Text>
           <Tooltip title="Jun 10 14.9%">
             <Title>

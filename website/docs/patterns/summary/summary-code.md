@@ -8,7 +8,7 @@ title: Example
 
 @## Example of a vertical layout with skeleton
 
-Yo can place main metrics vertically, if it's required by the report layout. Show [Skeleton](/components/skeleton/) on the first data download.
+You can place main metrics vertically, if it's required by the report layout. Show [Skeleton](/components/skeleton/) on the first data download.
 
 @example vertical-summary-with-skeleton
 
