@@ -6,11 +6,11 @@ title: UI/UX requirements
 
 These principles were inspired by an [article from the Google design team](https://design.google/library/designers-guide-accessibility-research/) 🖤
 
-- Try accessibility technologies on yourself
-- Develop your empathy and open-mindedness to new things
-- Be humble and willing to admit your own ignorance
-- Work with different people and technologies. Involve different stakeholders in your research
-- Test on your target audience and beyond
+- Try accessibility technologies on yourself.
+- Develop your empathy and open-mindedness to new things.
+- Be humble and willing to admit your own ignorance.
+- Work with different people and technologies. Involve different stakeholders in your research.
+- Test on your target audience and beyond.
 
 @## Scaling
 
@@ -18,7 +18,7 @@ Make sure that when you zoom in to 200%, the page is still readable and function
 
 > **Why it's important**. It's important for people with poor eyesight and when browsing the site on a mobile device.
 
-Use adaptive layout to allow the user to choose their preferred scale while preserving the readability of the site. This is especially important for blocks that contain small and low-contrast text.
+Use adaptive layout to allow the user to choose their preferred scale while preserving the readability of the site. This is especially important for elements that contain small and low-contrast text.
 
 This way you will both cover the needs of the visually impaired and ensure that your site can adapt for devices with any screen size. When the layout is ready, test the scaling by zooming in to 200% using `Control+` (or `Command+` on Mac).
 
@@ -26,32 +26,32 @@ This way you will both cover the needs of the visually impaired and ensure that 
 
 ![headings](/core-principles/a11y/static/structure.png)
 
-Make sure that the user can easily understand the meaning and structure of the page and complete the required task. The design should help the user find key information quickly and easily.
+Make sure that user can easily understand the meaning and structure of the page and complete the required task. The design should help the user find key information quickly and easily.
 
 > **Why it's important**
 >
-> - It allows users to quickly find the necessary information and solve their problems
-> - It helps users quickly understand what's happening on the page
+> - It allows users to quickly find the necessary information and solve their problems.
+> - It helps users quickly understand what's happening on the page.
 
 **Requirements:**
 
 - All content and design of the page should fit into the logical structure of the headings.
-- Make sure that users can navigate the site in multiple ways: a table of contents, a sitemap, links between pages, and search on the site.
+- Make sure that users can navigate the site in multiple ways: with a table of contents, a sitemap, links between pages, and search on the website.
 - Screen readers should read the information in the same order it is displayed.
 - Try not to use modal windows. Screen readers don't work well with pop-up objects.
 - Use styles correctly. Level 1 headings in the layout must be H1 headings in code. At the same time, text that is clearly not a level 1 heading should not be marked up as H1 in the code. Also, don't use plain text for headings.
 
 @## Typography
 
-See detailed information in the [Typography guide](/style/typography/typography-a11y/).
+See information in the [Typography guide](/style/typography/typography-a11y/).
 
 @## Color and contrast
 
-See detailed information in the [Color guide](/style/palette/palette-a11y/).
+See information in the [Color guide](/style/palette/palette-a11y/).
 
 @## Graphics and images
 
-Make sure that the user understands all content, including charts, icons, and images.
+Make sure that user understands all content, including charts, icons, and images.
 
 ### Graphics
 
@@ -91,8 +91,8 @@ Make sure that your media content (videos, images, etc.) is accessible to hearin
 Provide instructions and hints to help users avoid mistakes when filling out a form.
 
 - Make sure that all input elements have meaningful labels that remain visible even after a field has been filled out.
-- Let the user know the data format in advance (date, phone number, zip code, etc.). It's also a good practice letting the user know when their `CAPS LOCK` is on.
-- Provide clear instructions to help the user fix any errors.
+- Let the user know the data format in advance (date, phone number, zip code, etc.). It's also a good practice letting the user know when their Caps Lock button is enabled.
+- Provide clear instructions to help user fix any errors.
 
 > Minimize the need to enter text or search. Whenever possible, enable voice input, text field autocomplete, and previews.
 >
@@ -115,15 +115,15 @@ Make sure that the captions for the elements clearly indicate what will happen w
 
 **Requirements**:
 
-- **It should be clear from the link text what will happen on click**. Don't use naked links or the _Click here_ anchor text for your links, as they are too uninformative. For example, instead of _Click here_ use _Download report_, or _Create account_ instead of _Finish_. This way, the user will have a clear idea of what will happen next.
-- **Links should be an organic part of a sentence**. For example, it's better to write _In the new version of the iPhone application, we added support for the Cyrillic alphabet_ instead of _In the new application for the iPhone, we added support for the Cyrillic alphabet. Download_. Sentences like this are easier to understand for all users, and especially for those who use screen readers.
-- **If clicking on a link leads to the download of a document, let the user know**. If your link leads to a PDF file, write _Download instructions in PDF_. This is important for mobile users with data caps.
+- **It should be clear from the link text what will happen on click**. Don't use URLs or the _"Click here"_ anchor text for your links, as they are too uninformative. For example, instead of _"Click here"_ use _"Download report"_, or _"Create account"_ instead of _"Finish"_. This way, the user will have a clear idea of what will happen next.
+- **Links should be an organic part of a sentence**. For example, it's better to write: _"In the new version of the iPhone application, we added support for the Cyrillic alphabet"_ — instead of _"In the new application for the iPhone, we added support for the Cyrillic alphabet. Download"_. Sentences like this are easier to understand for all users, and especially for those who use screen readers.
+- **If clicking on a link leads to the download of a document, let the user know**. If your link leads to a PDF file, write: _"Download instructions in PDF"_. This is important for mobile users with data caps.
 
 ![captions](/core-principles/a11y/static/captions.png)
 
 - **Make sure that the instructions can be followed by hearing or visually impaired users**.
 
-- **Don't make references to the shape, size, visual layout, or sound**. Prompts like `See image above` or `Find instructions in the right column` will mean nothing to a blind user, while a deaf user will not be able to follow the instructions like `Continue after the beep` or `Confirm the transfer via a phone call`.
+- **Don't make references to the shape, size, visual layout, or sound**. Prompts like _"See image above"_ or _"Find instructions in the right column"_ will mean nothing to a blind user, while a deaf user will not be able to follow the instructions like _"Continue after the beep"_ or _"Confirm the transfer via a phone call"_.
 
 ![instructions](/core-principles/a11y/static/instructions.png)
 
