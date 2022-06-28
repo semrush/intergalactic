@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.1.1] - 2022-06-28
+
+### Fixed
+
+- Fixed feedback image.
+
 ## [5.1.0] - 2022-06-21
 
 ### Changed
