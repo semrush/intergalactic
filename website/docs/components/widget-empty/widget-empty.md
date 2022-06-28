@@ -4,45 +4,45 @@ fileSource: widget-empty
 tabName: Design
 ---
 
-Widgets of our tools have “empty” states, which should properly inform the user, why he/she does not see the data. And give a clue, how he/she can remedy the situation.
+Widgets have “empty” states, which should properly inform user, why there is no data and how to remedy the situation.
 
 @## Composition and styles
 
 The widget’s “empty” state includes the following:
 
 - image in svg format;
-- state heading;
-- state description;
+- title;
+- description;
 - button (optional);
 - select (optional).
 
-|                     | Description, styles                                |
-| ------------------- | -------------------------------------------------- |
-| Image in svg format | `margin-bottom: 12px; width: 100px; height: 72px;` |
-| Heading             | h6, `$gray60`, `margin-bottom: 8px;`               |
-| Description         | Paragraph, M size, `$gray60`                       |
-| Button (optional)   | M size button, `margin-top: 16px;`                 |
-| Select (optional)   | L size select, `margin-top: 8px;`                  |
+|                     | Description, styles                                                                        |
+| ------------------- | ------------------------------------------------------------------------------------------ |
+| Image in svg format | `margin-bottom: 12px; width: 100px; height: 72px;`                                         |
+| Title               | Text with 16px size (`--fs-300; --lh-300;`), `--gray-500` color and `margin-bottom: 4px;`. |
+| Description         | Text with 14px size (`--fs-200; ----lh-200;`) and `--gray-500` color.                      |
+| Button (optional)   | Button with M size and `margin-top: 16px;`                                                 |
+| Select (optional)   | Select with M size and `margin-bottom: 4px;`                                               |
 
-> 💡 If the widget has a heading, it should be displayed in the “empty” state of the widget.
+> 💡 If widget has a title, it should be displayed in the “empty” state, too.
 
-**The maximum width of the “empty” state block in side the widget is 400px**. It is required in order the text was readable.
+![margins scheme](static/margins-scheme.png)
 
-**Be brief**. Write briefly and to the point in these states. Two or three short sentences are usually enough to describe the situation.
+![margins scheme](static/margins-scheme-2.png)
 
-![paddings scheme](static/paddings-scheme.png)
+**The maximum width of the “empty” state message is 400px**. It is required in order the text should be readable.
 
-![paddings scheme](static/paddings-scheme-2.png)
+**Be brief**. Write briefly. Two or three short sentences are usually enough to describe the situation.
 
 @## Widget sizes
 
 As a rule, the widget height in “empty” state is the same as the height of the widget with data.
 
-The content of the “empty” state is centered horizontally in relation to the widget content. Vertically this state is recommended to be centered optically, depending on the illustration.
+The content of the “empty” state is centered horizontally and vertically in relation to the widget content.
 
 ### Minimum height (for edge cases)
 
-There are cases when it is required to reduce the height of the widget with “empty” state for saving the space on the page. In these cases the widget height is 170px. The state heading becomes the description (usual text styles are used), it is recommended to be reduced up to one sentence. But remember that it is an extreme case.
+There are cases when it is required to reduce the height of the widget with “empty” state for saving the space on the page. In these cases the widget's `min-height: 188px;`. The title becomes the description (use styles from the table above), it is recommended to be reduced up to one sentence.
 
 ![widget extra empty](static/big-extra-empty.png)
 
@@ -54,115 +54,113 @@ The list of “empty” states in the widgets:
 
 - Nothing found
 - No more results
-- Tool is not set up
+- Product is not set up
 - Something went wrong
 
 @## No data
 
-We use this state, when for some reason we do not have data or cannot show it. If the widget has a heading, it should be displayed in this state. In this case show the following instead of the data:
+Use this state, when for some reason there is no data or system cannot show it. If widget has a title, it should be displayed in this state. In this case show the following instead of the data:
 
 - an image corresponding to the type of the data in the widget;
-- a text message specifying that we have no data or specifying the user’s actions in order to obtain it;
-- the main button helping the users to remedy the situation (optional);
-- selects of filters helping to remedy the situation (optional).
+- a message specifying that we have no data or specifying the user’s actions in order to obtain it;
+- button helping the users to remedy the situation (optional);
+- filters helping to remedy the situation (optional).
 
-We have a certain image for each type of data. The button is an optional element in this case. It is recommended to use an additional button in order it did not intercept the main buttons of the report/tool by priority.
-
-| Wide widget                                       | Medium widget                                           | Text                                             |
-| ------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------ |
-| ![big widget empty](static/big-empty.png)         | ![medium widget empty](static/medium-empty.png)         | h6 — We have no data to show; p — {Hint message} |
-| ![big widget empty](static/big-empty-filters.png) | ![medium widget empty](static/medium-empty-filters.png) | h6 — We have no data to show; p — {Hint message} |
+| Wide widget                                       | Medium widget                                           | Text                                                           |
+| ------------------------------------------------- | ------------------------------------------------------- | -------------------------------------------------------------- |
+| ![big widget empty](static/big-empty.png)         | ![medium widget empty](static/medium-empty.png)         | Title: "We have no data to show". Description: {Hint message}. |
+| ![big widget empty](static/big-empty-filters.png) | ![medium widget empty](static/medium-empty-filters.png) | Title: "We have no data to show". Description: {Hint message}. |
 
 > 💡 **Be brief**. Do not write too much text in these states. Two or three short sentences are enough.
 
-If your widget has width of less than 300px, you may just insert the heading of the error as the text of `--fs-100` size into such “empty” state: `12px; --lh-100: 1.5;` (12px). And hide the explanatory information into the icon `Info` of S size.
+If your widget has width less than 300px, you may leave just the title with styles of the description text. And hide the description into the Info icon with M size.
 
 ![small widget empty](static/small-empty.png)
 
 @## Nothing found
 
-It's a specific variant for cases when we do not have data at the user request. In this case show the following instead of the data:
+It's a specific variant for cases when there is no data at the user request. In this case show the following instead of the data:
 
 - an universal image;
-- a text message specifying that we do not have data at the user request;
-- the main button helping the users to remedy the situation (optional);
+- a text message specifying that there is no data at the user request;
+- button helping to remedy the situation (optional);
 
-| Wide widget                                              | Medium widget                                                  | Text                                               |
-| -------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------- |
-| ![big widget with nothing found](static/big-nothing.png) | ![medium widget with nothing found](static/medium-nothing.png) | h6 — Nothing found; p — Try changing your filters. |
+| Wide widget                                              | Medium widget                                                  | Text                                                              |
+| -------------------------------------------------------- | -------------------------------------------------------------- | ----------------------------------------------------------------- |
+| ![big widget with nothing found](static/big-nothing.png) | ![medium widget with nothing found](static/medium-nothing.png) | Title: "Nothing found". Description: "Try changing your filters". |
 
-If your widget has width of less than 300px, you may just insert the heading of the error as the text of `--fs-100` size into such “empty” state: `12px; --lh-100: 1.5;` (12px). And hide the explanatory information into the icon `Info` of S size.
+If your widget has width less than 300px, you may leave just the title with styles of the description text. And hide the description into the Info icon with M size.
 
 ![small widget with nothing found](static/small-nothing.png)
 
 @## No more results
 
-Our tools also have the state when there is a small amount of data in the widget. This state is used in the widgets with table, text and other data not displayed as diagrams.
+Interface also can have the state when there is a small amount of data in the widget. This state is usually used in the widgets with table, text and other data.
 
-Add the text `No more results` and center it vertically and horizontally at the place where there is no data.
+Add the text: "No more results" — and center it both vertically and horizontally.
 
 ![no more results](static/no-more-results.png)
 
 @## Set up your tool
 
-We use this state, when the data is absent because you need to connect something. This state is more detailed and more advertising state than the `Nothing found` state.
+Use this state, when the data is absent because user needs to connect something. This state is more detailed and more advertising than the others.
 
-- In some cases the tool may be set up at once by clicking the corresponding button.
-- In other cases you should write to the specified email address for setting up the tool.
+- In some cases the product may be set up at once by clicking the corresponding button.
+- In other cases user should write to the specified email address for setting up the product.
 
-> 💡 **Important!** Write positively in the heading and description of the state. _For example, write: “Set up the service” instead of “The service is not set up”._
+> 💡 **Important!** Title and description must be written in a positive form. _For example, write: “Set up the service” instead of “The service is not set up”._
 
-We show the following instead of the data in this state:
+Show the following instead of the data in this state:
 
 - an image corresponding to the type of the data in the widget / advertising picture;
-- a text message specifying what you should set up or do in order to obtain the data;
-- the main button.
+- text message specifying what user should set up or do in order to obtain the data;
+- button.
 
-| Wide widget                                 | Medium widget                                     | Text                                             |
-| ------------------------------------------- | ------------------------------------------------- | ------------------------------------------------ |
-| ![big widget set up](static/big-set-up.png) | ![medium widget set up](static/medium-set-up.png) | h6 — Set up your {Name Tool}; p — {Hint message} |
+| Wide widget                                 | Medium widget                                     | Text                                                           |
+| ------------------------------------------- | ------------------------------------------------- | -------------------------------------------------------------- |
+| ![big widget set up](static/big-set-up.png) | ![medium widget set up](static/medium-set-up.png) | Title: "Set up your {Name Tool}". Description: {Hint message}. |
 
-If your widget has width of less than 300px, you may just insert the heading of the error as the text of `--fs-100` size into such “empty” state: 12px; `--lh-100: 1.5;` (12px). And you may hide the explanatory information into the icon `Info` of S size.
+If your widget has width less than 300px, you may leave just the title with styles of the description text. And hide the description into the Info icon with M size.
 
 ![small widget set up](static/small-set-up.png)
 
 @## Something went wrong
 
-We use this state, when something went wrong at the backend. And either we do not have any information, what exactly went wrong and where it will be repaired, or we know about the problem and inform the user about it in the most understandable form.
+Use this state, when something went wrong at the backend. And either product team does not have any information, what exactly went wrong and where it will be repaired, or product team know about the problem and inform the user about it.
 
 ### We know that there are problems at the backend
 
-We show the following instead of the data in this case:
+Show the following instead of the data in this case:
 
 - an image;
-- a text message specifying what you should set up;
+- text message specifying what user should set up;
 - an additional button.
 
-> 💡 We recommend always to show the button in this state. Use an additional button in order it did not intercept the main buttons of the report/tool by priority.
+> 💡 We recommend always to show the button in this state.
 
-| Wide widget                               | Medium widget                                   | Text                                                                                                                            |
-| ----------------------------------------- | ----------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
-| ![big widget error](static/big-error.png) | ![medium widget error](static/medium-error.png) | h6 — Something went wrong; p — Don't worry though, we are aware of the issue and are working to fix it. Please try again later. |
+| Wide widget                               | Medium widget                                   | Text                                                                                                                                           |
+| ----------------------------------------- | ----------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
+| ![big widget error](static/big-error.png) | ![medium widget error](static/medium-error.png) | Title: "Something went wrong". Description: "Don't worry though, we are aware of the issue and are working to fix it. Please try again later". |
 
-If your widget has width of less than 300px, you may just insert the heading of the error as the text of `--fs-100` size into such “empty” state: 12px; `--lh-100: 1.5;` (12px). And you may hide the explanatory information into the icon `Info` of S size.
+If your widget has width less than 300px, you may leave just the title with styles of the description text. And hide the description into the Info icon with M size.
 
 ![small widget error](static/small-error.png)
 
 ### We do not know that there are problems at the backend
 
-We show the following instead of the data in this case:
+Show the following instead of the data in this case:
 
 - an image;
-- a text message specifying what you should set up;
+- a text message specifying what user should set up;
 - an additional button.
 
-> 💡 We recommend always to show the button in this state. Use an additional button in order it did not intercept the main buttons of the report/tool by priority.
+> 💡 We recommend always to show the button in this state.
 
-| Wide widget                                 | Medium widget                                     | Text                                                                                                                    |
-| ------------------------------------------- | ------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
-| ![big widget error](static/big-error-2.png) | ![medium widget error](static/medium-error-2.png) | h6 — Something went wrong; p — Try to reload the widget. If the problem persists, please contact us at mail@semrush.com |
+| Wide widget                                 | Medium widget                                     | Text                                                                                                                                   |
+| ------------------------------------------- | ------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
+| ![big widget error](static/big-error-2.png) | ![medium widget error](static/medium-error-2.png) | Title: "Something went wrong". Description: "Try to reload the widget. If the problem persists, please contact us at mail@semrush.com" |
 
-If your widget has width of less than 300px, you may just insert the heading of the error as the text of `--fs-100` size into such “empty” state: 12px; `--lh-100: 1.5;` (12px). And you may hide the explanatory information into the icon In`fo of S size.
+If your widget has width less than 300px, you may leave just the title with styles of the description text. And hide the description into the Info icon with M size.
 
 ![small widget error](static/small-error-2.png)
 
