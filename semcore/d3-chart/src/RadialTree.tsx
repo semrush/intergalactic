@@ -9,6 +9,7 @@ import { shade } from '@semcore/utils/lib/color';
 import { measureText } from './utils';
 import assignProps from '@semcore/utils/lib/assignProps';
 import getOriginChildren from '@semcore/utils/lib/getOriginChildren';
+import { DataHintsHandler } from './a11y/hints';
 
 const baseAngle = -Math.PI / 2; // The top vertical line
 
@@ -125,6 +126,7 @@ type RootAsProps = IRadialTreeProps & {
   labelMargin: number;
   angleOffset: number;
   $rootProps: RootAsProps;
+  dataHintsHandler: DataHintsHandler;
 };
 
 class RadialTreeBase extends Component<RootAsProps> {
@@ -326,6 +328,7 @@ class RadialTreeBase extends Component<RootAsProps> {
   render() {
     const SRadialTree = this.Element;
     const { Children } = this.asProps;
+    this.asProps.dataHintsHandler.establishDataType('values-set');
 
     return sstyled(this.asProps.styles)(
       <SRadialTree render="g">
@@ -528,6 +531,8 @@ class RadialTreeRadian extends Component<RadianAsProps> {
       children = mergedProps.children;
       mergedProps.children = _child;
     }
+
+    this.asProps.dataHintsHandler.describeValueEntity(index, data.label, data.label);
 
     // hidden from publicly typed export
     const InteractiveArea = (RadialTree.Radian as any).InteractiveArea;
@@ -737,16 +742,22 @@ type RadialTreeTitleAsProps = IRadialTreeTitleProps & {
   Element: React.FC<{ render: string } & React.SVGProps<any>>;
   Children: React.FC;
   styles: React.CSSProperties;
+  dataHintsHandler: DataHintsHandler;
 };
 const Title: React.FC<RadialTreeTitleAsProps> = ({
   Element: STitle,
   Children,
+  children,
   styles,
   textSize,
   color,
   x,
   y,
+  dataHintsHandler,
 }) => {
+  if (typeof children === 'string') {
+    dataHintsHandler.setTitle('vertical', children);
+  }
   return sstyled(styles)(
     <STitle
       render="text"

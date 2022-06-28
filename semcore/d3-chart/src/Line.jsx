@@ -49,7 +49,11 @@ class LineRoot extends Component {
 
   render() {
     const SLine = this.Element;
-    const { styles, hide, color, uid, size, d3, data, duration } = this.asProps;
+    const { styles, hide, color, uid, size, d3, data, duration, x, y } = this.asProps;
+
+    this.asProps.dataHintsHandler.specifyDataRowFields(x, y);
+    this.asProps.dataHintsHandler.establishDataType('time-series');
+
     return sstyled(styles)(
       <>
         <SLine

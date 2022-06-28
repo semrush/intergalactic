@@ -78,6 +78,9 @@ class BarRoot extends Component {
       position: d[y] > 0 || Object.is(d[y], 0) ? 'top' : 'bottom',
     });
 
+    this.asProps.dataHintsHandler.describeValueEntity(`${d[x]} ${y}`, d[y]);
+    this.asProps.dataHintsHandler.labelKey(x, d[x]);
+
     return sstyled(styles)(
       <SBar
         key={`bar-${i}`}

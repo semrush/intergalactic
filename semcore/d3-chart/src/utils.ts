@@ -225,3 +225,6 @@ export const measureText = memoize((text: string, fontSize?: number) => {
   span.remove();
   return textWidth;
 });
+
+let idCounter = 0;
+export const uniqueId = (prefix = 'id-') => `${prefix}${idCounter++}`;
