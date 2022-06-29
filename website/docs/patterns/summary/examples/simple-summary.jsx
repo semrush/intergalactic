@@ -3,10 +3,11 @@ import { Box, Flex } from '@semcore/flex-box';
 import { Text } from '@semcore/typography';
 import Tooltip from '@semcore/tooltip';
 import styled from 'styled-components';
+import '@semcore/utils/style/var.css';
 
 const BoxBlock = styled(Box)`
   overflow: hidden;
-  border-left: 1px solid #c4c7cf;
+  border-left: 1px solid var(--gray-200);
   padding-left: 24px;
   &:first-child {
     border-left: none !important;
@@ -28,11 +29,11 @@ function detectWrap(node) {
     for (const child of container.children) {
       if (child.offsetTop > container.offsetTop) {
         child.style.borderLeft = 'none';
-        child.style.borderRight = '1px solid #c4c7cf';
+        child.style.borderRight = '1px solid var(--gray-200)';
         child.style.marginRight = '24px';
         child.style.paddingLeft = 0;
       } else {
-        child.style.borderLeft = '1px solid #c4c7cf';
+        child.style.borderLeft = '1px solid var(--gray-200)';
         child.style.borderRight = 'none';
         child.style.paddingLeft = '24px';
       }
@@ -102,24 +103,6 @@ const Demo = () => {
           </Text>
           <Text size={100} color="green-500" tag="p">
             ↑+12
-          </Text>
-        </Flex>
-      </BoxBlock>
-      <BoxBlock w={160} mb={4}>
-        <Tooltip title="Branded traffic" wMax="100%">
-          <Title size={200} tag="p" noWrap>
-            Branded traffic
-          </Title>
-        </Tooltip>
-        <Text size={100} color="gray-500" tag="p">
-          all time
-        </Text>
-        <Flex alignItems="baseline">
-          <Text size={500} fontWeight="bold" mr={2} tag="a">
-            145
-          </Text>
-          <Text size={100} color="green-500" tag="p">
-            ↑+13
           </Text>
         </Flex>
       </BoxBlock>
