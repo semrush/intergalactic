@@ -8,17 +8,12 @@ tabName: Design
 
 @## Description
 
-**Time picker** is a component for entering/selecting time.
-
-It is used when you need the following:
-
-- set the time (for example for posting);
-- specify the working hours of the company etc.
+**Time picker** is a component with comboboxes for entering/selecting time.
 
 @## Appearance
 
-- The component consists of two [comboboxes](/components/auto-tips/#a70085) inside the input.
-- If you need to choose the time in 12-hour format, then an additional button switching AM/PM is added to the input. It saves an extra click on the selector opening. _For example, when you need to specify the time for posting._
+- The component includes two [comboboxes](/components/auto-tips/#a70085) inside the input.
+- If user needs to choose the time in 12-hour format, then add button for switching AM/PM. It saves an extra click on the seelct opening.
 
 ### 24-hour format
 
@@ -30,12 +25,10 @@ It is used when you need the following:
 
 @## Sizes and paddings
 
-The paddings inside the input between the comboboxes are the same as in the [input](/components/input/).
-
-| Size     | Appearance                                                                          | Paddings                           |
-| -------- | ----------------------------------------------------------------------------------- | ---------------------------------- |
-| L (32px) | ![24 hours input](static/input-default-l.png) ![12 hours input](static/input-l.png) | ![paddings](static/paddings-l.png) |
-| M (26px) | ![24 hours input](static/input-default-m.png) ![12 hours input](static/input-m.png) | ![paddings](static/paddings-m.png) |
+| Input size | Appearance                                                                          | Paddings                           |
+| ---------- | ----------------------------------------------------------------------------------- | ---------------------------------- |
+| M          | ![24 hours input](static/input-default-m.png) ![12 hours input](static/input-m.png) | ![paddings](static/paddings-m.png) |
+| L          | ![24 hours input](static/input-default-l.png) ![12 hours input](static/input-l.png) | ![paddings](static/paddings-l.png) |
 
 @## Interaction
 
