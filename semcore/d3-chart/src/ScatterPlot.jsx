@@ -66,6 +66,7 @@ class ScatterPlotRoot extends Component {
       >
         <SScatterPlot
           id={`${uid}${i}`}
+          index={i}
           render="circle"
           clipPath={`url(#${uid})`}
           cx={xScale(d[x]) + offset[0]}
