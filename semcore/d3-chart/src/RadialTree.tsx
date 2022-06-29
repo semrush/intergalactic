@@ -538,7 +538,7 @@ class RadialTreeRadian extends Component<RadianAsProps> {
     const InteractiveArea = (RadialTree.Radian as any).InteractiveArea;
 
     return sstyled(styles)(
-      <SRadian key={key} onClick={onRadianClick(key)}>
+      <SRadian aria-hidden key={key} onClick={onRadianClick(key)}>
         <InteractiveArea />
         {children}
       </SRadian>,
@@ -700,6 +700,7 @@ const Label: React.FC<RadialTreeRadianLabelAsProps> = ({
 
   return (
     <SLabel
+      aria-hidden
       render="text"
       textAnchor="middle"
       dominantBaseline="central"
@@ -760,6 +761,7 @@ const Title: React.FC<RadialTreeTitleAsProps> = ({
   }
   return sstyled(styles)(
     <STitle
+      aria-hidden
       render="text"
       textAnchor="middle"
       dominantBaseline="central"

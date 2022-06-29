@@ -37,7 +37,7 @@ class ClipPath extends Component {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { id, transition, tag: Tag, style, className, ...other } = this.asProps;
     return (
-      <clipPath ref={this.refClipPath} id={id}>
+      <clipPath aria-hidden ref={this.refClipPath} id={id}>
         <Tag style={{ ...style, transition }} {...propsForElement(other, Tag)} />
       </clipPath>
     );

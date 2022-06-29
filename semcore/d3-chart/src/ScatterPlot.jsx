@@ -61,11 +61,13 @@ class ScatterPlotRoot extends Component {
 
     return sstyled(styles)(
       <g
+        aria-hidden
         key={`circle(#${i})`}
         onMouseMove={this.bindHandlerTooltip(true, { ...this.props, xIndex: i })}
         onMouseLeave={this.bindHandlerTooltip(false, { ...this.props, xIndex: i })}
       >
         <SScatterPlot
+          aria-hidden
           id={`${uid}${i}`}
           index={i}
           render="circle"
@@ -78,6 +80,7 @@ class ScatterPlotRoot extends Component {
         />
         {d[value] && (
           <SValue
+            aria-hidden
             x={xScale(d[x]) + offset[0]}
             y={yScale(d[y]) + offset[1]}
             dy=".3em"
@@ -105,7 +108,14 @@ class ScatterPlotRoot extends Component {
     return (
       <>
         {data.map(this.renderCircle.bind(this))}
-        <ClipPath id={uid} x={xMargin} y={yMargin} width={`${xSize}px`} height={`${ySize}px`} />
+        <ClipPath
+          aria-hidden
+          id={uid}
+          x={xMargin}
+          y={yMargin}
+          width={`${xSize}px`}
+          height={`${ySize}px`}
+        />
       </>
     );
   }
