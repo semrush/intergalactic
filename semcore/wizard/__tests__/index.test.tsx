@@ -165,6 +165,31 @@ describe('Wizard', () => {
     expect(spy).lastCalledWith(2, expect.any(Object));
   });
 
+  test('Should correctly rerender', async () => {
+    const spy = jest.fn();
+    const { getByTestId } = render(
+      <Wizard disablePortal visible step={1}>
+        <Wizard.Sidebar title="Header">
+          <Wizard.Stepper step={1} data-testid={'first-step'} onActive={spy}>
+            Step 1
+          </Wizard.Stepper>
+          <Wizard.Stepper step={2} data-testid={'second-step'} onActive={spy}>
+            Step 2
+          </Wizard.Stepper>
+        </Wizard.Sidebar>
+        <Wizard.Content>
+          <Wizard.Step step={1}>First page</Wizard.Step>
+          <Wizard.Step step={2}>Second page</Wizard.Step>
+        </Wizard.Content>
+      </Wizard>,
+    );
+
+    fireEvent.click(getByTestId('second-step'));
+    fireEvent.click(getByTestId('first-step'));
+    fireEvent.click(getByTestId('second-step'));
+    expect(spy).lastCalledWith(2, expect.any(Object));
+  });
+
   test('a11y', async () => {
     const { container } = render(
       <Wizard disablePortal visible step={1}>
