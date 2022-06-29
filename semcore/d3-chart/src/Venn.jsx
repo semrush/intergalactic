@@ -73,7 +73,7 @@ class VennRoot extends Component {
   }
 
   renderElement = React.forwardRef((props, ref) => {
-    return <FadeInOut ref={ref} tag="g" visible {...props} />;
+    return <FadeInOut aria-hidden ref={ref} tag="g" visible {...props} />;
   });
 
   render() {
@@ -81,7 +81,12 @@ class VennRoot extends Component {
     this.asProps.dataHintsHandler.establishDataType('values-set');
     this.vennData = this.getVennData();
     return (
-      <Element render={this.renderElement} childrenPosition="inside" vennData={this.vennData} />
+      <Element
+        aria-hidden
+        render={this.renderElement}
+        childrenPosition="inside"
+        vennData={this.vennData}
+      />
     );
   }
 }
@@ -101,6 +106,7 @@ function Circle({
 
   return sstyled(styles)(
     <SCircle
+      aria-hidden
       render="circle"
       color={color}
       cx={data.x}
@@ -125,12 +131,12 @@ function Intersection(props) {
 
   const renderIntersection = React.useCallback(
     React.forwardRef((props, ref) => {
-      return <FadeInOut ref={ref} tag="path" visible {...props} />;
+      return <FadeInOut aria-hidden ref={ref} tag="path" visible {...props} />;
     }),
     [props],
   );
   return sstyled(styles)(
-    <SIntersection render={renderIntersection} d={intersectionAreaPath(data)} />,
+    <SIntersection aria-hidden render={renderIntersection} d={intersectionAreaPath(data)} />,
   );
 }
 

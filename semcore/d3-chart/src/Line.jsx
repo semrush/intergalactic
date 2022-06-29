@@ -57,6 +57,7 @@ class LineRoot extends Component {
     return sstyled(styles)(
       <>
         <SLine
+          aria-hidden
           clipPath={`url(#${uid})`}
           render="path"
           hide={hide}
@@ -66,6 +67,7 @@ class LineRoot extends Component {
         />
         {duration && (
           <ClipPath
+            aria-hidden
             setAttributeTag={(rect) => {
               rect.setAttribute('width', size[0]);
             }}

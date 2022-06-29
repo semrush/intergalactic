@@ -1,0 +1,13 @@
+@import '@semcore/utils/style/var.css';
+@import '@semcore/d3-chart/src/style/var.css';
+
+SPlotA11yModule {
+  user-select: none;
+  pointer-events: none;
+  opacity: 0;
+}
+SPlotA11yModule:focus {
+  user-select: all;
+  pointer-events: all;
+  opacity: 1;
+}
