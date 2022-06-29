@@ -56,7 +56,7 @@ class StackedAreaRoot extends Component {
   render() {
     const Element = this.Element;
     this.series = this.getSeries();
-    return <Element render="g" series={this.series} />;
+    return <Element aria-hidden render="g" series={this.series} />;
   }
 }
 

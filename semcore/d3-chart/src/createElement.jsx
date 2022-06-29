@@ -61,6 +61,7 @@ function createElementRender() {
         {childrenPosition === 'above' ? children : null}
       </React.Fragment>,
       <Tag
+        aria-hidden
         {...propsForElement(
           {
             __excludeProps: EXCLUDE_PROPS,

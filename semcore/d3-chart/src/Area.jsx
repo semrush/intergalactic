@@ -82,6 +82,7 @@ class AreaRoot extends Component {
       <>
         {!advanceMode && (
           <SAreaLine
+            aria-hidden
             clipPath={`url(#${uid})`}
             d={d3Line(data)}
             color={color}
@@ -89,6 +90,7 @@ class AreaRoot extends Component {
           />
         )}
         <SArea
+          aria-hidden
           clipPath={`url(#${uid})`}
           render="path"
           d={d3(data)}
@@ -98,6 +100,7 @@ class AreaRoot extends Component {
         />
         {duration && (
           <ClipPath
+            aria-hidden
             setAttributeTag={(rect) => {
               rect.setAttribute('width', size[0]);
             }}

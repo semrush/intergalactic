@@ -2,7 +2,8 @@ import React from 'react';
 import { heavyFindNextFocusableElement } from './focus';
 import { makeDataSummarizationConfig } from './hints';
 import type { A11yViewProps } from './PlotA11yModule';
-import { formatValue, getIntl } from './serialize';
+import { formatValue } from './serialize';
+import { getIntl } from './intl';
 import { summarize } from './summarize';
 import { Root, sstyled } from '@semcore/core';
 import styles from '../style/plotA11yView.shadow.css';
@@ -14,10 +15,9 @@ export const PlotA11yView: React.FC<A11yViewProps> = ({
   plotLabel,
   plotRef,
   config: providedConfig,
-  locale: providedLocale,
+  locale,
 }) => {
   const SPlotA11yView = Root;
-  const locale = React.useMemo(() => providedLocale ?? navigator.language ?? 'en', []);
   const intl = React.useMemo(() => getIntl(locale), [locale]);
   const config = React.useMemo(() => makeDataSummarizationConfig(providedConfig), [providedConfig]);
   const data = React.useMemo(
@@ -140,19 +140,15 @@ export const PlotA11yView: React.FC<A11yViewProps> = ({
 
   return sstyled(styles)(
     <SPlotA11yView render="div" tabIndex={0} aria-label={texts.label}>
-      <em aria-hidden onClick={handleSkip}>
+      <a aria-hidden onClick={handleSkip}>
         {texts.close}
-      </em>
-      <em>
-        <div tabIndex={0} onKeyDown={handleSkipKeyboard} onClick={handleSkip}>
-          {texts.skipPlot}
-        </div>
-      </em>
-      <em>
-        <div tabIndex={0} onKeyDown={handleGoToTableKeyboard} onClick={handleGoToTable}>
-          {texts.goToTable}
-        </div>
-      </em>
+      </a>
+      <a role="link" tabIndex={0} onKeyDown={handleSkipKeyboard} onClick={handleSkip}>
+        {texts.skipPlot}
+      </a>
+      <a role="link" tabIndex={0} onKeyDown={handleGoToTableKeyboard} onClick={handleGoToTable}>
+        {texts.goToTable}
+      </a>
       <strong>
         <label htmlFor={`${id}-data-summary`}>{texts.summary}</label>
       </strong>
