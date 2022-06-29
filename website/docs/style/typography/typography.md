@@ -24,7 +24,7 @@ Besides, both paragraphs headings and text can be colored in our main semantic c
 
 @## Font variables
 
-| px  | em   | Variables | Font family            |
+| px  | em   | Variables | Font family            |          |
 | --- | ---- | --------- | ---------------------- | -------- |
 |     | 48px | 3em       | `--fs-800`, `--lh-800` | Factor A |
 |     | 36px | 2.25em    | `--fs-700; --lh-700;`  | Factor A |
@@ -94,6 +94,8 @@ There are three text sizes we use in our products.
 
 ![12px text](static/p-12.png)
 
+@example paragraph
+
 @## Paragraph margins
 
 Paragraphs have a margin-bottom, and each of the three paragraph sizes has its own margin. A paragraph of 16px has a margin-bottom of 16px, a paragraph of 14px — 12px, a paragraph of 12px text — 8px.
@@ -113,6 +115,8 @@ Use these styles for highlighting metrics in your interface.
 | 20px | `--fs-400; --lh-400;` | ![metric 400](static/metric-400.png) |
 | 16px | `--fs-300; --lh-300;` | ![metric 300](static/metric-300.png) |
 | 14px | `--fs-200; --lh-200;` | ![metric 200](static/metric-200.png) |
+
+@example metric
 
 @## Text styles
 
