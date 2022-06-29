@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Box, Flex } from '@semcore/flex-box';
 import { Text } from '@semcore/typography';
 import Tooltip from '@semcore/tooltip';
@@ -57,14 +57,14 @@ const Demo = () => {
             Keyword
           </Title>
         </Tooltip>
-        <Text size={100} color="#6C6E79" tag="p">
+        <Text size={100} color="gray-500" tag="p">
           last 30 days
         </Text>
         <Flex alignItems="baseline">
-          <Text size={500} color="#008FF8" fontWeight="bold" mr={2} tag="a">
+          <Text size={500} color="blue-400" fontWeight="bold" mr={2} tag="a">
             42
           </Text>
-          <Text size={100} color="#6C6E79" tag="p">
+          <Text size={100} color="gray-500" tag="p">
             no change
           </Text>
         </Flex>
@@ -75,14 +75,14 @@ const Demo = () => {
             Traffic
           </Title>
         </Tooltip>
-        <Text size={100} color="#6C6E79" tag="p">
+        <Text size={100} color="gray-500" tag="p">
           last 30 days
         </Text>
         <Flex alignItems="baseline">
-          <Text size={500} color="#008FF8" fontWeight="bold" mr={2} tag="a">
+          <Text size={500} color="blue-400" fontWeight="bold" mr={2} tag="a">
             66.6K
           </Text>
-          <Text size={100} color="#6C6E79" tag="p">
+          <Text size={100} color="gray-500" tag="p">
             no change
           </Text>
         </Flex>
@@ -93,14 +93,14 @@ const Demo = () => {
             Traffic cost
           </Title>
         </Tooltip>
-        <Text size={100} color="#6C6E79" tag="p">
+        <Text size={100} color="gray-500" tag="p">
           last 30 days
         </Text>
         <Flex alignItems="baseline">
-          <Text size={500} color="#008FF8" fontWeight="bold" mr={2} tag="a">
+          <Text size={500} color="blue-400" fontWeight="bold" mr={2} tag="a">
             27K
           </Text>
-          <Text size={100} color="#007C65" tag="p">
+          <Text size={100} color="green-500" tag="p">
             ↑+12
           </Text>
         </Flex>
@@ -111,14 +111,14 @@ const Demo = () => {
             Branded traffic
           </Title>
         </Tooltip>
-        <Text size={100} color="#6C6E79" tag="p">
+        <Text size={100} color="gray-500" tag="p">
           all time
         </Text>
         <Flex alignItems="baseline">
           <Text size={500} fontWeight="bold" mr={2} tag="a">
             145
           </Text>
-          <Text size={100} color="#007C65" tag="p">
+          <Text size={100} color="green-500" tag="p">
             ↑+13
           </Text>
         </Flex>
@@ -129,17 +129,17 @@ const Demo = () => {
             Non-branded traffic
           </Title>
         </Tooltip>
-        <Text size={100} color="#6C6E79" tag="p">
+        <Text size={100} color="gray-500" tag="p">
           all time
         </Text>
         <Flex alignItems="baseline">
           <Text size={500} fontWeight="bold" mr={2} tag="a">
             145
           </Text>
-          <Text size={100} color="#007C65" mr={2} tag="p">
+          <Text size={100} color="green-500" mr={2} tag="p">
             ↑+13
           </Text>
-          <Text size={100} color="#D1002F" tag="p">
+          <Text size={100} color="red-500" tag="p">
             ↓-12
           </Text>
         </Flex>
