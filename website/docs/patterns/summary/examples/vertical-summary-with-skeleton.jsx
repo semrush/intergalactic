@@ -4,11 +4,12 @@ import { Text } from '@semcore/typography';
 import Tooltip from '@semcore/tooltip';
 import Skeleton from '@semcore/skeleton';
 import styled from 'styled-components';
+import '@semcore/utils/style/var.css';
 
 const BoxBlock = styled(Box)`
   overflow: hidden;
   margin-bottom: 24px;
-  border-bottom: 1px solid #c4c7cf;
+  border-bottom: 1px solid var(--gray-200);
   &:last-child {
     border-bottom: none !important;
   }
