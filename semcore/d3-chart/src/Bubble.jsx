@@ -106,6 +106,7 @@ class BubbleRoot extends Component {
       >
         {markedCross && (
           <SCenter
+            aria-hidden
             x={xScale(d[x]) + offset[0]}
             y={yScale(d[y]) + offset[1]}
             dy=".3em"
@@ -116,6 +117,7 @@ class BubbleRoot extends Component {
           </SCenter>
         )}
         <SBubble
+          aria-hidden
           id={`${uid}${uid}`}
           index={i}
           render="circle"
@@ -128,6 +130,7 @@ class BubbleRoot extends Component {
         />
         {d[label] && (
           <SLabel
+            aria-hidden
             x={labelDistance}
             y={yScale(d[y]) + offset[1]}
             dy=".3em"
@@ -157,7 +160,14 @@ class BubbleRoot extends Component {
       <>
         {data.map(this.renderCircle.bind(this))}
         {data.map(this.animationCircle.bind(this))}
-        <ClipPath id={uid} x={xMargin} y={yMargin} width={`${xSize}px`} height={`${ySize}px`} />
+        <ClipPath
+          aria-hidden
+          id={uid}
+          x={xMargin}
+          y={yMargin}
+          width={`${xSize}px`}
+          height={`${ySize}px`}
+        />
       </>
     );
   }

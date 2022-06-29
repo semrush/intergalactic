@@ -73,6 +73,7 @@ function Dots(props) {
     acc.push(
       sstyled(styles)(
         <SDot
+          aria-hidden
           key={i}
           render="circle"
           visible={visible}

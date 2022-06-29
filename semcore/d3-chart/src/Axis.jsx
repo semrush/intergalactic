@@ -241,6 +241,7 @@ function Ticks(props) {
   return ticks.map((value, i) => {
     return sstyled(styles)(
       <STick
+        aria-hidden
         key={i}
         render="text"
         childrenPosition="inside"
@@ -293,6 +294,7 @@ function Title(props) {
 
   return sstyled(styles)(
     <STitle
+      aria-hidden
       render="text"
       childrenPosition="inside"
       position={position}

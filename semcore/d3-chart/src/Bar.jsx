@@ -83,6 +83,7 @@ class BarRoot extends Component {
 
     return sstyled(styles)(
       <SBar
+        aria-hidden
         key={`bar-${i}`}
         render="path"
         clipPath={`url(#${uid})`}
@@ -108,6 +109,7 @@ class BarRoot extends Component {
         {data.map(this.renderBar.bind(this))}
         {duration && (
           <ClipPath
+            aria-hidden
             key={`${uid}-animation`}
             id={uid}
             x="0"
@@ -129,6 +131,7 @@ function Background(props) {
 
   return sstyled(styles)(
     <SBackground
+      aria-hidden
       render="rect"
       childrenPosition="above"
       width={xScale.bandwidth()}
