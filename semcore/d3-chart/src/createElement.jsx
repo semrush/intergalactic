@@ -7,6 +7,8 @@ import propsForElement from '@semcore/utils/lib/propsForElement';
 import getOriginChildren from '@semcore/utils/lib/getOriginChildren';
 import hoistNonReactStatics from 'hoist-non-react-statics';
 
+const EXCLUDE_PROPS = ['data', 'scale'];
+
 function createElementRender() {
   const Element = React.forwardRef(function (
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -61,7 +63,7 @@ function createElementRender() {
       <Tag
         {...propsForElement(
           {
-            __excludeProps: ['data', 'scale'],
+            __excludeProps: EXCLUDE_PROPS,
             ...mergedProps,
           },
           Tag,

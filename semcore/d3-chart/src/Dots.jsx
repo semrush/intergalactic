@@ -7,6 +7,8 @@ import trottle from '@semcore/utils/lib/rafTrottle';
 
 import style from './style/dot.shadow.css';
 
+const EXCLUDE_PROPS = ['data', 'scale', 'value', 'display'];
+
 function Dots(props) {
   const {
     Element: SDot,
@@ -23,6 +25,7 @@ function Dots(props) {
     scale,
     duration = 500,
   } = props;
+  const SDots = 'g';
   const bisect = bisector((d) => d[x]).center;
   const [activeIndex, setActiveIndex] = useState(null);
 
@@ -60,7 +63,7 @@ function Dots(props) {
     };
   }, [eventEmitter, scale, data, x, y]);
 
-  return data.reduce((acc, d, i) => {
+  const dots = data.reduce((acc, d, i) => {
     const isPrev = d3.defined()(data[i - 1] || {});
     const isNext = d3.defined()(data[i + 1] || {});
     const active = i === activeIndex;
@@ -73,7 +76,7 @@ function Dots(props) {
           key={i}
           render="circle"
           visible={visible}
-          __excludeProps={['data', 'scale', 'value']}
+          __excludeProps={EXCLUDE_PROPS}
           value={d}
           index={i}
           cx={d3.x()(d)}
@@ -81,12 +84,12 @@ function Dots(props) {
           active={active}
           hide={hide}
           color={color}
-          use:duration={`${duration}ms`}
         />,
       ),
     );
     return acc;
   }, []);
+  return sstyled(styles)(<SDots use:duration={`${duration}ms`}>{dots}</SDots>);
 }
 
 Dots.style = style;

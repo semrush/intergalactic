@@ -12,9 +12,9 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- exclude props from html for `Tooltip.Dot`
-- recalculate position for `Dot` after update scale
-- render with animation `Dot`
+- Exclude props from html for `Tooltip.Dot`
+- Recalculate position for `Dot` after update scale
+- Optimization render `Dot`
 
 ## [2.1.0] - 2022-06-01
 

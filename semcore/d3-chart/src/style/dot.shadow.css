@@ -1,23 +1,19 @@
 @import '@semcore/utils/style/var.css';
 @import '@semcore/d3-chart/src/style/var.css';
 
+SDots {
+  & SDot {
+    transition-duration: var(--duration);
+  }
+}
+
 SDot {
   stroke-width: 2px;
   stroke: #fff;
   r: 6px;
   fill: var(--blue-03);
   transition-property: cx, cy;
-  transition-duration: var(--duration);
   transition-timing-function: ease-in-out;
-  animation-fill-mode: both;
-  animation-timing-function: ease-out;
-  animation-duration: 300ms;
-  animation-delay: 0ms;
-  animation-name: exit;
-}
-
-SDot[color] {
-  fill: var(--color);
 }
 
 SDot[hide] {
@@ -28,24 +24,6 @@ SDot[active] {
   r: 8px;
 }
 
-SDot[visible] {
-  animation-name: enter;
-}
-
-@keyframes enter {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes exit {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
-  }
+SDot[color] {
+  fill: var(--color);
 }
