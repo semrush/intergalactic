@@ -21,10 +21,10 @@ export default () => (
     <Text size={300} tag="h6" mb={1} mt={0}>
       16px / --fs-300,--lh-300 / 1em
     </Text>
-    <Text size={200} tag="h6" mb={1} mt={0}>
+    <Text size={200} tag="p" mb={1} mt={0}>
       14px / --fs-200,--lh-200 / 0.875em
     </Text>
-    <Text size={100} tag="h6" mb={1} mt={0}>
+    <Text size={100} tag="p" mb={1} mt={0}>
       12px / --fs-100,--lh-100 / 0.75em
     </Text>
   </div>
