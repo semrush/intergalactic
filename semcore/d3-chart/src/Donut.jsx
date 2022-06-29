@@ -264,6 +264,7 @@ class DonutRoot extends Component {
     this.arcs = this.getArcs();
     return (
       <Element
+        aria-hidden
         id={this.id}
         render="g"
         childrenPosition="inside"
@@ -318,7 +319,7 @@ function Label({ Element: SLabel, styles, Children, children, dataHintsHandler }
   dataHintsHandler.setTitle('vertical', children);
 
   return sstyled(styles)(
-    <SLabel render="text" x="0" y="0">
+    <SLabel render="text" x="0" y="0" aria-hidden>
       <Children />
     </SLabel>,
   );

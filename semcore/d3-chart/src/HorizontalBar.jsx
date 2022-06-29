@@ -63,6 +63,7 @@ class HorizontalBarRoot extends Component {
 
     return sstyled(styles)(
       <SBar
+        aria-hidden
         key={`horizontal-bar-${i}`}
         render="path"
         clipPath={`url(#${uid})`}
@@ -92,6 +93,7 @@ class HorizontalBarRoot extends Component {
         {data.map(this.renderBar.bind(this))}
         {duration && (
           <ClipPath
+            aria-hidden
             setAttributeTag={(rect) => {
               rect.setAttribute('width', size[0]);
             }}
@@ -115,6 +117,7 @@ function Background(props) {
 
   return sstyled(styles)(
     <SBackground
+      aria-hidden
       render="rect"
       childrenPosition="above"
       width={xRange[1] - xRange[0]}
