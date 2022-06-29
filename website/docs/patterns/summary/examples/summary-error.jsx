@@ -60,10 +60,10 @@ const Demo = () => {
           </Title>
         </Tooltip>
         <Flex alignItems="baseline">
-          <Text size={500} color="#333333" fontWeight="bold" mr={2} tag="a">
+          <Text size={500} color="gray-800" fontWeight="bold" mr={2} tag="a">
             145
           </Text>
-          <Text size={100} color="#007C65" tag="p">
+          <Text size={100} color="green-500" tag="p">
             ↑+12
           </Text>
         </Flex>
@@ -75,8 +75,8 @@ const Demo = () => {
           </Title>
         </Tooltip>
         <Flex mt={2} alignItems="center">
-          <WarningM color="#A9ABB6" />
-          <Title size={100} color="#006DCA" ml={2} tag="a">
+          <WarningM color="gray-300" />
+          <Title size={100} color="blue-500" ml={2} tag="a">
             Reload
           </Title>
         </Flex>
@@ -88,8 +88,8 @@ const Demo = () => {
           </Title>
         </Tooltip>
         <Flex mt={2} alignItems="center">
-          <WarningM color="#A9ABB6" />
-          <Title size={100} color="#006DCA" ml={2} tag="a">
+          <WarningM color="gray-300" />
+          <Title size={100} color="blue-500" ml={2} tag="a">
             Reload
           </Title>
         </Flex>
@@ -101,8 +101,8 @@ const Demo = () => {
           </Title>
         </Tooltip>
         <Flex mt={2} alignItems="center">
-          <WarningM color="#A9ABB6" />
-          <Title size={100} color="#006DCA" ml={2} tag="a">
+          <WarningM color="gray-300" />
+          <Title size={100} color="blue-500" ml={2} tag="a">
             Reload
           </Title>
         </Flex>
