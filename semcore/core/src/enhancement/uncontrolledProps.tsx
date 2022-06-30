@@ -81,7 +81,7 @@ function uncontrolledUniversal(props, config, uncontrolledProp) {
       propHandler,
       chainHandler,
     );
-    // TODO: предупреждение из-за циклических вызовов
+    // TODO: need to warn about recursion (by lsroman)
     handlerProps[propName] = handler;
 
     return {
@@ -124,7 +124,7 @@ function Enhancement() {
       };
     },
     asProps: function (props) {
-      // TODO возвращать только нужные свойства
+      // TODO: need to omit unneccessary props (by lsroman)
       const [uncontrolledProps] = uncontrolled(this, props, this.uncontrolledProps());
       return uncontrolledProps;
     },

@@ -1,0 +1,87 @@
+@import '@semcore/utils/style/var.css';
+
+SWizard {
+  max-width: 980px;
+  max-height: 700px;
+  display: flex;
+  padding: 0;
+}
+
+SSidebar {
+  background: var(--violet-600);
+  color: #fff;
+  font-weight: 700;
+  font-size: var(--fs-300);
+  line-height: var(--lh-300);
+  padding: 40px 8px 34px;
+  max-width: 220px;
+  flex-shrink: 0;
+  box-sizing: border-box;
+  border-radius: var(--rounded-l) 0 0 var(--rounded-l);
+  @media (max-width: 1060px) {
+    width: 44px;
+  }
+}
+
+SSidebarHeader {
+  margin: 0 20px 16px;
+  @media (max-width: 1060px) {
+    display: none;
+  }
+}
+
+SStepper {
+  display: flex;
+  font-size: var(--fs-200);
+  border-radius: var(--rounded-m);
+  padding: 8px 12px;
+  cursor: pointer;
+  position: relative;
+  &:hover {
+    background: var(--violet-700);
+    z-index: 1;
+  }
+  &[active] {
+    background: var(--violet-500);
+  }
+  &:disabled,
+  &[disabled] {
+    opacity: var(--disabled-opacity);
+    cursor: default;
+    pointer-events: none; /* Disable interactions */
+  }
+
+  @media (max-width: 1060px) {
+    padding: 8px 4px;
+    &:hover {
+      width: fit-content;
+      max-width: 220px;
+    }
+    &:hover SStepDescription {
+      display: block;
+      border-radius: var(--rounded-m);
+      white-space: nowrap;
+      overflow: auto;
+    }
+    &[active]:hover SStepDescription {
+      background: var(--violet-500);
+    }
+  }
+}
+
+SStepNumber {
+  display: inline-block;
+  min-width: 24px;
+}
+
+SStepDescription {
+  @media (max-width: 1060px) {
+    display: none;
+  }
+}
+
+SContent {
+  padding: 40px;
+  width: 100%;
+  border-radius: 0 var(--rounded-l) var(--rounded-l) 0;
+}

@@ -49,7 +49,7 @@ function Text(props) {
   const { children, styles, empty, placeholder } = props;
 
   return sstyled(styles)(
-    /* что бы не ломать обратную совместимость пришлось юзать use */
+    /* "use:" prefix was used for backward compatibility (by lsroman) */
     <SText render={Box} use:placeholder={empty}>
       {empty ? placeholder : children}
     </SText>,

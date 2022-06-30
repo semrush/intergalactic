@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styles from './Color.module.css';
 import Copy from '../components/Copy';
 
 import cssVariableFile from '!!raw-loader!@semcore/utils/style/var.css';
@@ -9,17 +9,12 @@ const cssVariable = Object.fromEntries(
     .split('\n')
     .map((line) => line.trim())
     .filter((line) => line.startsWith('--') && line.endsWith(';'))
-    .map((line) => line.split(': ')),
+    .map((line) => {
+      const [name, value] = line.split(': ');
+      // remove ";"
+      return [name, value.slice(0, -1)];
+    }),
 );
-
-const PaintedElement = styled.span`
-  display: inline-block;
-  width: 16px;
-  height: 16px;
-  background-color: ${({ value }) => value && value};
-  border-radius: 6px;
-  vertical-align: middle;
-`;
 
 const Color = ({ name, ...other }) => {
   const varValue = cssVariable[name];
@@ -28,9 +23,20 @@ const Color = ({ name, ...other }) => {
   return (
     <Copy
       text={varValue ? `${name}: ${value}` : value}
-      textTooltip={`Click to copy "${varValue ? `${name}: ${value}` : value}"`}
+      textTooltip={
+        <span>
+          Click to copy:
+          <br />
+          {varValue ? `${name}: "${value}"` : value}
+        </span>
+      }
     >
-      <PaintedElement {...other} value={value} />
+      <span
+        className={styles.paintedElement}
+        {...other}
+        value={value}
+        style={{ ...(other.style ?? {}), backgroundColor: value }}
+      />
     </Copy>
   );
 };

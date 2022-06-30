@@ -42,6 +42,7 @@ export interface IAreaNullProps extends IContext {
 declare const Area: (<T>(props: CProps<IAreaProps & T>) => ReturnEl) & {
   Dots: <T>(props: CProps<IAreaDotsProps & T, IAreaDotsContext>) => ReturnEl;
   Null: <T>(props: CProps<IAreaNullProps & T>) => ReturnEl;
+  Line: <T>(props: CProps<IContext & T>) => ReturnEl;
 };
 
 export default Area;

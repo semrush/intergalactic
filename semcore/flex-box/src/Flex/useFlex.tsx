@@ -84,7 +84,6 @@ export default function useFlex<T extends IFlexProps>(
     {
       'data-ui-name': 'Flex',
       ...props,
-      // inline есть в боксе
       inline: false,
     },
     ref,

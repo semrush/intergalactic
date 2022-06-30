@@ -1,9 +1,5 @@
 import { useContext } from 'react';
-import { Context as ContextI18n } from './WithI18n';
-
-export type LocaleKeys = 'de' | 'en' | 'es' | 'fr' | 'it' | 'ja' | 'ru' | 'zh' | 'pt' | 'ko' | 'vi';
-export type DictionaryItem = { [key: string]: string };
-export type Dictionary = { [K in LocaleKeys]: DictionaryItem };
+import { Context as ContextI18n, LocaleKeys, Dictionary } from './WithI18n';
 
 const REGEX = {
   TEMPLATE_VAR: /{{(.*?)}}/g,
@@ -41,7 +37,7 @@ const getText = (dictionary: Dictionary, locale: LocaleKeys) => {
         ? interpolate(dictionary[locale][key], variables)
         : interpolate(dictionary['en'][key], variables);
     }
-    // TODO: убрать эту возможность
+    // TODO: remove that fallaback
     return dictionary[locale] || dictionary['en'];
   };
 };

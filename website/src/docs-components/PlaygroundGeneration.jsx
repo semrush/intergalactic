@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
 import Button from '@semcore/button';
 import { Flex } from '@semcore/flex-box';
 import Checkbox from '@semcore/checkbox';
@@ -12,19 +11,7 @@ import Pills from '@semcore/pills';
 import { createPlayground, Playground } from '../components/playground';
 import Code from '../components/Code';
 import Copy from '../components/Copy';
-
-const Field = styled.label`
-  display: flex;
-  margin-bottom: 16px;
-  align-items: center;
-  width: 100%;
-`;
-const Label = styled.div`
-  flex: 0 0 70px;
-`;
-const Control = styled.div`
-  margin-left: 10px;
-`;
+import styles from './PlaygroundGeneration.module.css';
 
 Playground.createWidget('empty', () => {
   return null;
@@ -34,13 +21,13 @@ Playground.createWidget(
   'boolBtn',
   ({ value, onChange, label, positiveLabel, negativeLabel, ...others }) => {
     return (
-      <Field>
-        <Control>
+      <label className={styles.field}>
+        <div className={styles.control}>
           <Button w="100%" onClick={() => onChange(!value)} theme="hollow" type="muted" {...others}>
             {(value ? positiveLabel : negativeLabel) || label}
           </Button>
-        </Control>
-      </Field>
+        </div>
+      </label>
     );
   },
 );
@@ -49,14 +36,14 @@ Playground.createWidget(
   'bool',
   ({ value, onChange, label, positiveLabel, negativeLabel, ...others }) => {
     return (
-      <Field>
-        <Label>{(value ? positiveLabel : negativeLabel) || label}</Label>
-        <Control>
+      <label className={styles.field}>
+        <div className={styles.label}>{(value ? positiveLabel : negativeLabel) || label}</div>
+        <div className={styles.control}>
           <Checkbox>
             <Checkbox.Value checked={value} onChange={() => onChange(!value)} {...others} />
           </Checkbox>
-        </Control>
-      </Field>
+        </div>
+      </label>
     );
   },
 );
@@ -65,14 +52,14 @@ Playground.createWidget(
   'text',
   ({ value, onChange, label, positiveLabel, negativeLabel, ...others }) => {
     return (
-      <Field>
-        <Label>{(value ? positiveLabel : negativeLabel) || label}</Label>
-        <Control>
+      <label className={styles.field}>
+        <div className={styles.label}>{(value ? positiveLabel : negativeLabel) || label}</div>
+        <div className={styles.control}>
           <Input>
             <Input.Value checked={value} value={value} onChange={(v) => onChange(v)} {...others} />
           </Input>
-        </Control>
-      </Field>
+        </div>
+      </label>
     );
   },
 );
@@ -81,9 +68,9 @@ Playground.createWidget(
   'select',
   ({ value, onChange, label, options, positiveLabel, negativeLabel, ...others }) => {
     return (
-      <Field>
-        <Label>{(value ? positiveLabel : negativeLabel) || label}</Label>
-        <Control>
+      <label className={styles.field}>
+        <div className={styles.label}>{(value ? positiveLabel : negativeLabel) || label}</div>
+        <div className={styles.control}>
           <Select value={value} onChange={(value) => onChange(value)} {...others}>
             <Select.Trigger />
             <Select.Menu>
@@ -94,8 +81,8 @@ Playground.createWidget(
               ))}
             </Select.Menu>
           </Select>
-        </Control>
-      </Field>
+        </div>
+      </label>
     );
   },
 );
@@ -104,9 +91,9 @@ Playground.createWidget(
   'radio',
   ({ value, onChange, label, options, positiveLabel, negativeLabel, ...others }) => {
     return (
-      <Field htmlFor="">
-        <Label>{(value ? positiveLabel : negativeLabel) || label}</Label>
-        <Control>
+      <label className={styles.field} htmlFor="">
+        <div className={styles.label}>{(value ? positiveLabel : negativeLabel) || label}</div>
+        <div className={styles.control}>
           <Pills
             style={{ background: '#fff' }}
             value={value}
@@ -119,111 +106,11 @@ Playground.createWidget(
               </Pills.Item>
             ))}
           </Pills>
-        </Control>
-      </Field>
+        </div>
+      </label>
     );
   },
 );
-
-const WrapperPlayground = styled.div`
-  display: flex;
-  border: 1px solid #dee3e5;
-  border-radius: 6px;
-  height: auto;
-  margin-bottom: 32px;
-  & p {
-    margin: 0;
-  }
-  @media (max-width: 767px) {
-    display: none;
-  }
-`;
-
-const ResultView = styled.div`
-  display: flex;
-  flex: 1 0 auto;
-  align-items: center;
-  justify-content: center;
-  min-height: 200px;
-  width: 100%;
-  padding: 16px;
-  box-sizing: border-box;
-  background-size: 20px 20px;
-  background-color: ${({ backgroundColor }) => backgroundColor};
-  background-position: center center;
-  border-bottom: 1px solid #dee3e5;
-  overflow-y: auto;
-  position: relative;
-  font-size: 12px;
-`;
-
-const ResultCode = styled.div`
-  position: relative;
-  overflow-y: auto;
-`;
-
-const SourceView = styled(Code)`
-  height: 100%;
-  margin: 0 !important;
-  border-bottom-right-radius: 0 !important;
-  border-top-right-radius: 0 !important;
-  border-top-left-radius: 0 !important;
-`;
-
-const WorkArea = styled.div`
-  display: flex;
-  justify-content: space-between;
-  flex-direction: column;
-  position: relative;
-  width: ${({ full }) => (full ? '100%' : '70%')};
-`;
-
-const WidgetsBar = styled.div`
-  position: relative;
-  width: 30%;
-  padding: 32px;
-  font-size: 14px;
-  background-color: #f9f9f9;
-  border-left: 1px solid #dee3e5;
-  overflow-y: auto;
-`;
-
-const WidgetGroup = styled.div`
-  padding-bottom: 15px;
-`;
-
-const IconCopy = styled.div`
-  position: absolute;
-  right: 16px;
-  top: 16px;
-  cursor: pointer;
-
-  & > span {
-    display: inline-block;
-  }
-
-  & svg {
-    width: 22px;
-    height: 22px;
-    fill: #999;
-
-    &:hover {
-      opacity: 0.8;
-    }
-  }
-`;
-
-const ChooseBackgroundColor = styled.div`
-  width: 25px;
-  height: 25px;
-  background-color: ${({ color }) => color};
-  border-style: solid;
-  border-width: 3px;
-  border-color: ${({ active }) => (active ? '#2595e4' : '#e3e3e3')};
-  border-radius: 50%;
-  cursor: pointer;
-  transition: all 0.25s ease-in-out;
-`;
 
 const PaintPlaygroundView = ({ backgroundColor, onChange, ...other }) => {
   const [color, changeColor] = useState(backgroundColor || 'white');
@@ -243,11 +130,23 @@ const PaintPlaygroundView = ({ backgroundColor, onChange, ...other }) => {
       >
         <Radio mr={2}>
           <Radio.Value style={{ display: 'none' }} value="white" checked={color === 'white'} />
-          <ChooseBackgroundColor color="white" active={color === 'white'} />
+          <div
+            className={styles.chooseBackgroundColor}
+            style={{
+              backgroundColor: 'white',
+              borderColor: color === 'white' ? '#2595e4' : '#e3e3e3',
+            }}
+          />
         </Radio>
         <Radio>
           <Radio.Value style={{ display: 'none' }} value="#333" checked={color === '#333'} />
-          <ChooseBackgroundColor color="#333" active={color === '#333'} />
+          <div
+            className={styles.chooseBackgroundColor}
+            style={{
+              backgroundColor: '#333',
+              borderColor: color === '#333' ? '#2595e4' : '#e3e3e3',
+            }}
+          />
         </Radio>
       </Flex>
     </RadioGroup>
@@ -276,34 +175,38 @@ class PlaygroundView extends React.Component {
     const hasWidget = !!widgetControls.length;
 
     return (
-      <WrapperPlayground>
-        <WorkArea full={!hasWidget}>
-          <ResultView backgroundColor={backgroundColor}>
+      <div className={styles.wrapperPlayground}>
+        <div className={styles.workArea} style={{ width: !hasWidget ? '100%' : '70%' }}>
+          <div className={styles.resultView} style={{ backgroundColor }}>
             <LayoutPreview>{result}</LayoutPreview>
             <PaintPlaygroundView
               backgroundColor={backgroundColor}
               onChange={this.onChangeBackground}
             />
-          </ResultView>
-          <ResultCode>
-            <SourceView lang="jsx" copy={false} block>
+          </div>
+          <div className={styles.resultCode}>
+            <Code className={styles.sourceView} lang="jsx" copy={false} block>
               {source}
-            </SourceView>
-            <IconCopy>
+            </Code>
+            <div className={styles.iconCopy}>
               <Copy text={source} textTooltip="Click to copy code">
                 <CopyS />
               </Copy>
-            </IconCopy>
-          </ResultCode>
-        </WorkArea>
+            </div>
+          </div>
+        </div>
         {hasWidget ? (
-          <WidgetsBar ref={(node) => (this.container = node)}>
+          <div className={styles.widgetsBar} ref={(node) => (this.container = node)}>
             {widgetControls.map((control, i) => {
-              return <WidgetGroup key={i}>{control.widgets}</WidgetGroup>;
+              return (
+                <div className={styles.widgetGroup} key={i}>
+                  {control.widgets}
+                </div>
+              );
             })}
-          </WidgetsBar>
+          </div>
         ) : null}
-      </WrapperPlayground>
+      </div>
     );
   }
 }

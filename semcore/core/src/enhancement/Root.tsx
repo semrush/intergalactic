@@ -28,7 +28,7 @@ function createRootRender() {
     }, {});
 
     const child = {};
-    // TODO: разобраться как то иначе
+    // TODO: need to find better check solution (by lsroman)
     if (typeof Children.origin !== 'undefined') {
       // @ts-ignore
       child.children = <Children />;

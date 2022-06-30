@@ -43,6 +43,7 @@ Icon[
 .creds/
 
 # Icon
+semcore/icon/**/*.mjs
 semcore/icon/**/*.js
 !semcore/icon/src/**/*.js
 !semcore/icon/**/*.config.js

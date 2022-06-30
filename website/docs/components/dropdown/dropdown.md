@@ -50,6 +50,7 @@ The margin between trigger and dropdown is always 4px.
 - when input-trigger loses the `focus` state.
 
 @## Position
+
 The dropdown from the trigger drops down by default (unless otherwise is required by the context of use). If there is not enough space under the trigger, dropdown drops out in the opposite direction ([this is how popper.js works](https://popper.js.org/)).
 
 ![dropdown directions](static/dropdown-directions.png)

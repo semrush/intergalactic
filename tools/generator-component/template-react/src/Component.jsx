@@ -1,5 +1,5 @@
 import React from 'react';
-import createComponent, { Component, styled } from '@semcore/core';
+import createComponent, { Component, sstyled } from '@semcore/core';
 
 import style from './style/{{ dashCase name }}.shadow.css';
 
@@ -12,7 +12,7 @@ class {{ properCase name }} extends Component {
     const S{{ properCase name }} = this.Root;
     const { styles } = this.asProps;
 
-    return styled(styles)(
+    return sstyled(styles)(
       <S{{ properCase name }} render="div">
         GENERATE TEMPLATE
       </S{{ properCase name }}>
@@ -20,4 +20,4 @@ class {{ properCase name }} extends Component {
   }
 }
 
-export default createComponent({{ properCase name }});
+export default createComponent({{ properCase name }})

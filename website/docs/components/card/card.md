@@ -31,7 +31,7 @@ The component consists of:
 
 ### Title and description
 
-For the card title use 16px text (`--fs-300`, `--lh-300`) with `font-weight: 700`.
+For the card title use 16px text (`--fs-300; --lh-300;`) with `font-weight: 700`.
 
 The card may have a description. It usually contains an explanation of what the data is based on, interesting insight/advice on the visualized data, etc.
 

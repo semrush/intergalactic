@@ -47,7 +47,7 @@ function OutsideClick(props: IFunctionProps<IOutsideClickProps>) {
   useEffect(() => {
     const outsideRoot = root ? getNodeByRef(root) : ownerDocument(nodeRef.current);
 
-    // true стоит, чтобы перехватить событие быстрее всех, так как, если таргет, по которому кликнули, будет удален из дома, то сработает OutsideClick, даже если елемент был в exclude
+    // Using capture to handle event faster than OutsideClick handler
     outsideRoot.addEventListener('mouseup', handleOutsideClick, true);
     outsideRoot.addEventListener('mousedown', handleMouseDown, true);
 

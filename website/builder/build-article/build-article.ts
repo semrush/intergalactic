@@ -84,7 +84,6 @@ export const getRepoTyping = async (typingName: string, debuggingPosition: strin
   return { declaration, dependencies, dependencyFiles, filepath };
 };
 
-const startSlashRE = /^\//;
 let uniqueId = 0;
 const normalizeMarkdown = (ast: MarkdownRoot, relativePath: string) => {
   const imagesUrls: { [id: string]: string } = {};
@@ -102,7 +101,7 @@ const normalizeMarkdown = (ast: MarkdownRoot, relativePath: string) => {
     }
     if (token.type === 'link') {
       if (token.url.startsWith('/')) {
-        token.url = token.url.replace(startSlashRE, process.env.PUBLIC_PATH);
+        token.url = (process.env.PUBLIC_PATH || '/') + token.url.substring(1);
       }
     }
     if ('children' in token) {
@@ -293,10 +292,11 @@ export const buildArticle = async (docsDir: string, fullPath: string, relativePa
                 type: 'example',
                 raw: fileContent,
                 relativePath: [
-                  relativePath.replace(/\/[\w-]+\..+/, ''), // remove name file
+                  relativePath.replace(/\/[\w-]+\..+/, ''),
                   'examples',
                   fileName + '.jsx',
                 ].join('/'),
+                filePath,
                 load: `~~~%%%${filePath}%%%~~~`,
               };
             }
@@ -315,6 +315,7 @@ export const buildArticle = async (docsDir: string, fullPath: string, relativePa
               return {
                 type: 'import',
                 props,
+                filePath,
                 load: `~~~%%%${filePath}%%%~~~`,
               };
             }

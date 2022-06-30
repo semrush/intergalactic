@@ -2,6 +2,24 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.1.1] - 2022-06-28
+
+### Fixed
+
+- Fixed feedback image.
+
+## [5.1.0] - 2022-06-21
+
+### Changed
+
+- Updated `react-final-form` to `6.5.2` to support React 17.
+
+## [5.0.8] - 2022-06-02
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.32.2 ~> 3.33.0], `@semcore/button` [4.0.5 ~> 4.0.6]).
+
 ## [5.0.7] - 2022-05-31
 
 ### Changed

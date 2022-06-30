@@ -27,13 +27,7 @@ class Demo extends React.PureComponent {
   render() {
     const { message } = this.state;
     return (
-      <NoticeSmart
-        use="secondary"
-        closable
-        label={<QuestionAltS />}
-        onClose={this.close}
-        hidden={!message}
-      >
+      <NoticeSmart closable label={<QuestionAltS />} onClose={this.close} hidden={!message}>
         {message}
       </NoticeSmart>
     );

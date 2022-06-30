@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
-import styled from 'styled-components';
-import { useParams, Link } from 'react-router-dom';
+import styles from './Page.module.css';
+import { Link } from 'react-router-dom';
 import Helmet from 'react-helmet';
 import { scroller } from 'react-scroll';
 import { Col, Row } from '@semcore/grid';
@@ -22,89 +22,15 @@ import {
   navigationTree,
 } from '@navigation';
 import { useRouting, usePageData } from '../components/routing';
-
-const DocumentationWrapper = styled.div`
-  padding: 56px 32px 64px;
-  position: relative;
-  color: #191b23;
-  @media (max-width: 767px) {
-    padding: 96px 32px 64px;
-  }
-  @media (max-width: 415px) {
-    padding: 80px 20px 32px;
-  }
-`;
-
-const NextGuide = styled.div`
-  display: flex;
-  justify-content: space-between;
-  margin: 0 32px 96px;
-  @media (max-width: 415px) {
-    margin: 0 32px 80px;
-  }
-
-  a {
-    color: #171a22;
-    text-decoration: none;
-
-    &:hover {
-      text-decoration: underline;
-    }
-  }
-`;
-
-const SideBar = styled.div`
-  position: sticky;
-  top: 80px;
-  height: calc(100vh - 80px);
-  background: #f5f5f5;
-  max-width: 260px;
-  @media (max-width: 767px) {
-    display: none;
-  }
-`;
-
-const MobileSelect = styled(Select)`
-  display: none;
-  @media (max-width: 767px) {
-    display: block;
-    position: fixed;
-    z-index: 998;
-    width: 100%;
-    margin-bottom: 32px;
-    border-radius: 0 !important;
-    top: 80px;
-    background-color: #fff !important;
-    border: 1px solid #d1d4db;
-    border-style: solid none solid none;
-    div div {
-      margin: 0 32px !important;
-    }
-    @media (max-width: 415px) {
-      div div {
-        margin: 0 20px !important;
-      }
-    }
-
-    &:hover,
-    &:active {
-      border: 1px solid #171a22;
-      border-style: solid none solid none;
-    }
-  }
-`;
-
-const HomePage = styled(Row)`
-  padding-top: 80px;
-`;
+import scrollToHash from '../utils/scrollToHash';
 
 const getHeadingOptions = (headings) => {
   return headings.map((option) => ({
-    value: option.route,
-    label: option.title,
+    value: option.id,
+    label: option.html,
     children: (
       <Text mx={5} color={'#171a22'}>
-        {option.title}
+        {option.html}
       </Text>
     ),
   }));
@@ -115,16 +41,12 @@ const useLegacyPageHashes = (oldHashToNewHash) => {
     let hash = String(window.location.hash);
     if (hash.startsWith('#')) hash = hash.substring(1);
     if (oldHashToNewHash[hash]) {
-      window.location.hash = oldHashToNewHash[hash];
+      scrollToHash(oldHashToNewHash[hash]);
     }
   }, [oldHashToNewHash]);
 };
 
 const PageView = ({ route, page }) => {
-  useEffect(() => {
-    if (!window.location.hash) window.scrollTo(0, 0);
-  });
-
   const tabs = [];
 
   const routeDepth = route.split('/').length;
@@ -134,14 +56,15 @@ const PageView = ({ route, page }) => {
     tabs.push(routeParents[route], ...routeParents[route].children);
   }
 
+  const currentHeading = typeof window !== 'undefined' ? window.location.hash.substring(1) : '';
   const headingOptions = getHeadingOptions(page.headings);
 
-  const title = routes[route].title ?? routeParents[route].title;
+  const title = routeDepth === 3 ? routeParents[route].title : page.title;
   const category = routeParents[routeParents[route].route].title ?? routeParents[route].title;
 
   const htmlTitle = routeParents[route].title
-    ? `${routes[route].title} | ${routeParents[route].title}`
-    : `${routes[route].title}`;
+    ? `${page.title} | ${routeParents[route].title}`
+    : `${page.title}`;
 
   useLegacyPageHashes(page.legacyHeaderHashes);
 
@@ -151,8 +74,10 @@ const PageView = ({ route, page }) => {
         <title>{htmlTitle}</title>
       </Helmet>
       {!!headingOptions.length && (
-        <MobileSelect
+        <Select
+          className={styles.mobileSelect}
           options={headingOptions}
+          {...(currentHeading ? { defaultValue: currentHeading } : {})}
           onChange={(value) => {
             scroller.scrollTo(value, {
               smooth: true,
@@ -165,14 +90,14 @@ const PageView = ({ route, page }) => {
           id="select"
         />
       )}
-      <HomePage>
+      <Row className={styles.homePage}>
         <Col sm={12} md={4} span={3}>
-          <SideBar>
+          <div className={styles.sideBar}>
             <SideBarNavigation navigation={navigationTree.filter((nav) => !nav.metadata.hide)} />
-          </SideBar>
+          </div>
         </Col>
         <Col sm={12} md={8} span={7} id="main-content">
-          <DocumentationWrapper>
+          <div className={styles.documentationWrapper}>
             <DocsHeader
               title={title}
               category={category}
@@ -181,10 +106,10 @@ const PageView = ({ route, page }) => {
               beta={page.beta}
             />
             <Docs tokens={page.tokens} tabs={tabs} />
-          </DocumentationWrapper>
-          <NextGuide>
+          </div>
+          <div className={styles.nextGuide}>
             {routePrevSiblings[route] && (
-              <div>
+              <div className={styles.navigationButton}>
                 <ArrowLeftXS mr={2} />
                 <Link to={'/' + routePrevSiblings[route].route} rel="noopener noreferrer">
                   {routePrevSiblings[route].title}
@@ -192,27 +117,39 @@ const PageView = ({ route, page }) => {
               </div>
             )}
             {routeNextSiblings[route] && (
-              <div>
+              <div className={styles.navigationButton}>
                 <Link to={'/' + routeNextSiblings[route].route} rel="noopener noreferrer">
                   {routeNextSiblings[route].title}
                 </Link>
                 <ArrowRightXS ml={2} />
               </div>
             )}
-          </NextGuide>
+          </div>
         </Col>
         <Col md={0} span={2}>
           <SideBarHeading headings={page.headings} />
         </Col>
-      </HomePage>
+      </Row>
     </>
   );
 };
 
+let lastPage = null;
+
 const DynamicPage = ({ route }) => {
   const { loading, error, page } = usePageData(route);
+  React.useEffect(() => {
+    if (!route || !page) return;
 
-  if (loading) return <LoadingPage />;
+    lastPage = { route, page };
+  }, [route, page]);
+
+  if (loading) {
+    if (lastPage) {
+      return <PageView route={lastPage.route} page={lastPage.page} />;
+    }
+    return <LoadingPage />;
+  }
   if (error) return <ErrorView title={`Oh no! ${error.message}`} />;
 
   return <PageView route={route} page={page} />;
@@ -230,7 +167,8 @@ const Page = () => {
     return <PageView route={route} page={page} />;
   }
   if (globalThis.__ssr_preloaded_page_route === route) {
-    page = globalThis.__ssr_preloaded_page_data;
+    const page = globalThis.__ssr_preloaded_page_data;
+    lastPage = { route, page };
 
     return <PageView route={route} page={page} />;
   }

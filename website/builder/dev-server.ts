@@ -21,6 +21,7 @@ const startServer = () => {
           headers: req.headers,
         },
         (proxyRes) => {
+          // console.log(proxyReq.path);
           if (proxyRes.statusCode === 404) {
             res.writeHead(200, { 'Content-Type': 'text/html' });
             res.end('<h1>404</h1>');
@@ -45,7 +46,22 @@ esbuild
       servedir: './src/public',
       port: internalPort,
     },
-    websiteEsbuildConfig,
+    {
+      ...websiteEsbuildConfig,
+      outdir: './src/public',
+      splitting: false,
+
+      // plugins: [
+      //   ...websiteEsbuildConfig.plugins,
+      // cssModulesPlugin({
+      //   inject: true,
+      //   v2: true,
+      //   cssModulesOption: {
+      //     generateScopedName: '[path][name]__[local]___[hash:base64:8]',
+      //   },
+      // }),
+      // ],
+    },
   )
   .then(() => {
     startServer();

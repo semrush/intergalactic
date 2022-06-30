@@ -5,58 +5,73 @@ tabName: Design
 
 @## Description
 
-**Global errors** are pages blocking the user from working with the site, and informing why we can't display the content. They may also be related to server errors, limitations, etc.
+**Global errors** is a pattern for pages blocking the user from working with the website, and informing why the system can't display the content. They may also be related to server errors, limitations, etc.
 
 @## Appearance
 
-Composition, styles, and margins inside the error block:
+Composition, styles, and margins of the message:
 
-- an image in svg format, `width: 240px; height: 240px; margin-right: 80px;`;
-- the heading state, `h2 [--fs-700],$gray20`, `margin-bottom: 16px`;
-- state description, `p — 14px [--fs-200], $gray20`, `margin-bottom: 24px;`;
-- controls of size L (optional for some states);
-- captcha (optional for some states).
+- For an image in svg format use `width: 240px; height: 240px; margin-right: 40px;`.
+- For title use text with 36px size (`--fs-700; --lh-700;`), `--gray-800` color and `margin-bottom: 16px`.
+- For message text use text with 14px size (`--fs-200`,`--lh-200`), `--gray-800` color and `margin-bottom: 24px`.
+- For CTA use buttons with L size (optional).
+- Captcha (optional).
 
-![global errors block margins](static/ge_margins.png)
+![global errors margins](static/ge_margins.png)
 
-> 💡 Be brief. Don't write too much text in the state description. Two or three small sentences are enough.
+> 💡 Be brief. Don't write too long message in the state description. Two or three small sentences usually are enough.
 
-### Spacing
+### Margins
 
-- Padding between the illustration and the block with the content is 80px;
-- The block width is not less than 320px, not more than 640px. There is a fixed spacing from the top edge of the box – 32px.
+- Margin between the illustration and the message is 40px.
+- Maximum width of the message is 640px. Top margin of the container with the message is 32px.
 
-![global errors block margins](static/ge_margins-2.png)
+![global errors margins](static/ge_margins-2.png)
 
 ### Positioning on the page
 
-The block with an error is centered horizontally and vertically. A block that includes an error block is given a relative height — `height: height: 70vh;`.
+The message is centered horizontally and vertically. Give a container with an error message a relative height — `height: height: 70vh;`.
 
-![global errors block margins](static/ge_page-not-found.png)
+![global errors positioning](static/ge_page-not-found.png)
+
+### Apperance on small screens
+
+For screens less than 768px:
+
+- change layout of the message to vertical;
+- change illustration's size to 200px \* 200px;
+- change margin between the illustration and a message from 40px to 8px;
+- stretch controls to the width of the content.
+
+![global errors on mobile screen](static/mobile.png)
 
 @## Page not found
 
 ![page not found error](static/ge_not-found.png)
 
-[Image source](https://drive.google.com/drive/folders/1hXKRAyq23ETAVc3Y4a4h1fFOpJv6qqMb)
+Illustration you can find in the [inner Figma library](https://www.figma.com/file/EWdX1ly5KsoNu8sywYJdKk/?node-id=2482%3A102726).
 
-**Heading** — We got lost
+**Title**
+
+We got lost
 
 **Message**
 
 It looks like this page doesn't exist. Try going back or click the button below and we'll take you home.
 
-**Button**
+**Controls**
 
-- Go to homepage (if not logged in, it leads you to the main Semrush; if logged in, it leads you to the Dashboard).
+Go to homepage (if not logged in, it leads you to the main Semrush; if logged in, it leads you to the Dashboard).
 
 @## Project not found
 
 ![connection timed out error](static/ge_project-not-found.png)
 
-[Image source](https://drive.google.com/drive/folders/1hXKRAyq23ETAVc3Y4a4h1fFOpJv6qqMb)
+Illustration you can find in the [inner Figma library](https://www.figma.com/file/EWdX1ly5KsoNu8sywYJdKk/?node-id=2482%3A105405).
 
-**Heading** — Project not found
+**Title**
+
+Project not found
 
 **Message**
 
@@ -80,25 +95,29 @@ If you have any other problems with access to the project, please contact our [S
 
 ![something went wrong error](static/ge_smthng.png)
 
-[Image source](https://drive.google.com/drive/folders/1hXKRAyq23ETAVc3Y4a4h1fFOpJv6qqMb)
+Illustration you can find in the [inner Figma library](https://www.figma.com/file/EWdX1ly5KsoNu8sywYJdKk/?node-id=2484%3A102761).
 
-**Heading** — Something went wrong
+**Title**
+
+Something went wrong
 
 **Message**
 
 We are aware of the issue and are working to fix it. Please try again later or contact the [Support Team](mailto:semrush-email@semrush.com).
 
-**Button**
+**Controls**
 
-- Reload page (refreshes the page).
+Reload page (refreshes the page).
 
 ### When you know, what the problem is
 
 ![something went wrong error](static/ge_smthng-we-know.png)
 
-[Image source](https://drive.google.com/drive/folders/1hXKRAyq23ETAVc3Y4a4h1fFOpJv6qqMb)
+Illustration you can find in the [inner Figma library](https://www.figma.com/file/EWdX1ly5KsoNu8sywYJdKk/?node-id=2484%3A105950).
 
-**Heading** — Something went wrong
+**Title**
+
+Something went wrong
 
 **Message**
 
@@ -106,33 +125,37 @@ Don't worry though, we are aware of the issue and are working to fix it.
 
 Please try again later.
 
-**Button**
+**Controls**
 
-- Try again (refreshes the page).
+Try again (refreshes the page).
 
 @## Under maintenance
 
 ![connection timed out error](static/ge_under-maintenance-2.png)
 
-[Image source](https://drive.google.com/drive/folders/1hXKRAyq23ETAVc3Y4a4h1fFOpJv6qqMb)
+Illustration you can find in the [inner Figma library](https://www.figma.com/file/EWdX1ly5KsoNu8sywYJdKk/?node-id=2484%3A107925).
 
-**Heading** — {name tool} is under maintenance
+**Title**
+
+{name tool} is under maintenance
 
 **Message**
 
 We are doing our best to fix it as soon as possible. Please come back later.
 
-**Button**
+**Controls**
 
-- Go to homepage (if not logged in, it leads you to the main Semrush; if logged in, it leads you to the Dashboard).
+Go to homepage (if not logged in, it leads you to the main Semrush; if logged in, it leads you to the Dashboard).
 
 @## Log in to access
 
 ![access request error](static/ge_access-login.png)
 
-[Image source](https://drive.google.com/drive/folders/1hXKRAyq23ETAVc3Y4a4h1fFOpJv6qqMb)
+Illustration you can find in the [inner Figma library](https://www.figma.com/file/EWdX1ly5KsoNu8sywYJdKk/?node-id=2484%3A115802).
 
-**Heading** — Log in to view the page
+**Title**
+
+Log in to view the page
 
 **Message**
 
@@ -140,33 +163,37 @@ It seems that you were lost in space. Please log in or sign up to view the page.
 
 **Controls**
 
-- The `Log in` button leads to a page with a login form.
-- The `Sign up` button leads to the same page,but with the registration form.
+- The "Log in" button leads to a page with a login form.
+- The "Sign up" button leads to the same page, but with the registration form.
 
 @## Access denied
 
 ![access denied error](static/ge_access-denied.png)
 
-[Image source](https://drive.google.com/drive/folders/1hXKRAyq23ETAVc3Y4a4h1fFOpJv6qqMb)
+Illustration you can find in the [inner Figma library](https://www.figma.com/file/EWdX1ly5KsoNu8sywYJdKk/?node-id=2484%3A118562).
 
-**Heading** — You’ve found the secret page
+**Title**
+
+You’ve found the secret page
 
 **Message**
 
 You’re missing the administrator permissions to access this page.
 Go back to the previous page or visit our homepage.
 
-**Button**
+**Controls**
 
-- Go to homepage (if not logged in, it leads you to the main Semrush; if logged in, it leads you to the Dashboard).
+Go to homepage (if not logged in, it leads you to the main Semrush; if logged in, it leads you to the Dashboard).
 
 @## Connection was lost
 
 ![connection lost error](static/ge_connection-was-lost.png)
 
-[Image source](https://drive.google.com/drive/folders/1hXKRAyq23ETAVc3Y4a4h1fFOpJv6qqMb)
+Illustration you can find in the [inner Figma library](https://www.figma.com/file/EWdX1ly5KsoNu8sywYJdKk/?node-id=2484%3A110472).
 
-**Heading** — Connection was lost
+**Title**
+
+Connection was lost
 
 **Message**
 
@@ -174,7 +201,7 @@ There seems to be a problem with your internet connection.
 
 Reconnect and reload the page.
 
-**Button**
+**Controls**
 
 - Reload page (refreshes the page).
 - or wait {XX}s
@@ -183,9 +210,11 @@ Reconnect and reload the page.
 
 ![connection timed out error](static/ge_connection-timed-out.png)
 
-[Image source](https://drive.google.com/drive/folders/1hXKRAyq23ETAVc3Y4a4h1fFOpJv6qqMb)
+Illustration you can find in the [inner Figma library](https://www.figma.com/file/EWdX1ly5KsoNu8sywYJdKk/?node-id=2484%3A113086).
 
-**Heading** — Connection timed out
+**Title**
+
+Connection timed out
 
 **Message**
 
@@ -196,19 +225,27 @@ The initial connection between Cloudflare’s network and the origin web server 
 - Error reference number: 522
 - Cloudflare Location POP: {undef}
 
-@## Blocked request
+@## Blocked (Bad) request
 
 ![connection timed out error](static/ge_blocked-request.png)
 
-[Image source](https://drive.google.com/drive/folders/1hXKRAyq23ETAVc3Y4a4h1fFOpJv6qqMb)
+Illustration you can find in the [inner Figma library](https://www.figma.com/file/EWdX1ly5KsoNu8sywYJdKk/?node-id=2842%3A114910).
 
-**Heading** — Blocked request
+**Title**
+
+The request feels... off
 
 **Message**
 
-Our security system has detected suspicious activity on your account and blocked this request. If you think we made a mistake, please contact us at security@semrush.com and provide us with all the necessary details: the requested URL and your email account.
+This is the 400 error page. Try one of the following:
 
-Your IP: {84.52.114.132}
+1. Make sure the URL is correct.
+2. Clear cookies or turn off your browser extensions.
+
+**Controls**
+
+- Go to homepage (if not logged in, it leads you to the main Semrush; if logged in, it leads you to the Dashboard).
+- Contact support.
 
 @## Confirmation
 
@@ -216,9 +253,11 @@ Your IP: {84.52.114.132}
 
 ![connection timed out error](static/ge_confirmation-captcha.png)
 
-[Image source](https://drive.google.com/drive/folders/1hXKRAyq23ETAVc3Y4a4h1fFOpJv6qqMb)
+Illustration you can find in the [inner Figma library](https://www.figma.com/file/EWdX1ly5KsoNu8sywYJdKk/?node-id=2484%3A123668).
 
-**Heading** — Confirm you are a real person
+**Title**
+
+Confirm you are a real person
 
 **Message**
 
@@ -235,25 +274,29 @@ Please complete the security check, and we’ll be out of your way.
 
 ![connection timed out error](static/ge_no-payment.png)
 
-[Image source](https://drive.google.com/drive/folders/1hXKRAyq23ETAVc3Y4a4h1fFOpJv6qqMb)
+Illustration you can find in the [inner Figma library](https://www.figma.com/file/EWdX1ly5KsoNu8sywYJdKk/?node-id=2484%3A128860).
 
-**Heading** — Your payment cannot be accepted
+**Title**
+
+Your payment cannot be accepted
 
 **Message**
 
 Unfortunately, we do not accept payments from {Russian Federation}.
 
-**Button**
+**Controls**
 
-- Go to Dashboard (leads user to the Dashboard)..
+Go to Dashboard (leads user to the Dashboard)..
 
 @## DNS Resolution Error
 
 ![dns resolution error](static/ge_dns-resolution.png)
 
-[Image source](https://drive.google.com/drive/folders/1hXKRAyq23ETAVc3Y4a4h1fFOpJv6qqMb)
+Illustration you can find in the [inner Figma library](https://www.figma.com/file/EWdX1ly5KsoNu8sywYJdKk/?node-id=2482%3A94736).
 
-**Heading** — DNS resolution error
+**Title**
+
+DNS resolution error
 
 **Message**
 
@@ -277,7 +320,7 @@ You've requested a page on a website ([cloudflarepreview.com](http://cloudflarep
 
   - User-Agent: {Example}
 
-@## Use of global errors
+@## Global errors usage
 
 **When do we use it?**
 
@@ -304,24 +347,24 @@ Additional situations where the state blocks all content and restricts access to
 
 ### Use cases
 
-Pages with global errors assume 2 options of use:
+There are two possible cases of the pattern's use:
 
-- As a full-page placeholder (leaving only the top menu and footer).
-- As a placeholder on the product (leaving the top and left menus + footer). Used for products if only they have the error.
+- As a full-page for the whole website.
+- As a state of the product.
 
-| On the full page                                     | On the product                                             |
+> 💡 The location is the same in both cases: the placeholder is centered vertically and horizontally on the page.
+
+| For the whole website                                | In the product                                             |
 | ---------------------------------------------------- | ---------------------------------------------------------- |
 | ![global errors all page](static/ge_page-smthng.png) | ![global errors all page](static/ge_under-maintenance.png) |
-
-> 💡 The location is the same in both cases: the placeholder is centered vertically and horizontally in the area.
 
 ### Controls
 
 1. If the error is processed by Cloudflare, we don't add buttons.
 2. In other cases, it is recommended to add controls allowing the user:
-   2.1 to leave the page: `Go to homepage`;
-   2.2 to take some actions to get rid of this state and load the page: `Reload page`/`Try again`/`Submit`.
-3. The `Contact us` button is only used for unexpected error states. In order that the user could contact support and notify us that something is not working. In cases where we anticipated an error here and know that this state is being displayed, the button is not needed.
+   2.1 to leave the page:" Go to homepage";
+   2.2 to take some actions to get rid of this state and load the page: "Reload page" / "Try again" / "Submit".
+3. The "Contact us" button is only used for unexpected error states. In order that the user could contact support and report that something is not working.
 
 @page global-errors-api
 @page global-errors-code

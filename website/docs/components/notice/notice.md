@@ -6,6 +6,8 @@ tabName: Design
 
 @import playground
 
+> In the last update instead of using `use=primary/secondary` component was divided into two - Notice and [NoticeGlobal](/components/notice-global/). This was done to make it easier to use.
+
 @## Description
 
 **Notice** is a component for messages about events related to the user's work in the products and on the website.

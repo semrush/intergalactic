@@ -9,7 +9,6 @@ import Button from '@semcore/button';
 import QuestionAltS from '@semcore/icon/Question/m';
 
 const THEME = ['danger', 'warning', 'success', 'info'];
-const USE = ['primary', 'secondary'];
 
 const LayoutPreview = (props) => (
   <Box wMin={200} wMax={500}>
@@ -18,14 +17,7 @@ const LayoutPreview = (props) => (
 );
 
 const Preview = (preview) => {
-  const { bool, select, radio, text, empty, onChange } = preview('Notice');
-
-  const use = radio({
-    key: 'use',
-    defaultValue: 'secondary',
-    label: 'Use',
-    options: Object.values(USE),
-  });
+  const { bool, select, text, empty, onChange } = preview('Notice');
 
   const theme = select({
     key: 'theme',
@@ -74,7 +66,7 @@ const Preview = (preview) => {
   }
 
   return (
-    <Notice use={use} theme={theme} hidden={hidden}>
+    <Notice theme={theme} hidden={hidden}>
       {label && (
         <Notice.Label>
           <QuestionAltS />

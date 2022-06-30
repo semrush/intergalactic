@@ -61,7 +61,7 @@ class ResponsiveContainerRoot extends Component {
 
   componentDidMount() {
     if (this.$container) {
-      // TODO ускорить можно?
+      // TODO: may be we can increase perfomance here? (by lsroman)
       this.observer.observe(this.$container);
     }
   }

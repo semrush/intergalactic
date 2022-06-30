@@ -105,7 +105,7 @@ Here you will find the states for some specific cases. All other "empty states" 
 
 ![histogram with n/a](static/na.png)
 
-![histogram with n/a](static/no-more.png)
+![histogram with n/a](static/no-more-histogram-chart.png)
 
 ### Null values
 
@@ -113,7 +113,7 @@ If all the values on the chart are zero, then show 0 for them in the tooltip.
 
 > **Zero is also data. 0 ≠ `n/a`.**
 
-![histogram with null](static/null.png)
+![histogram with null](static/null-histogram-chart.png)
 
 ![histogram with null](static/null-horizontal.png)
 

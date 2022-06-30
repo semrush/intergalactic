@@ -1,0 +1,31 @@
+.componentTitle {
+  text-transform: capitalize;
+  margin-right: 10px;
+}
+.componentTitle small {
+  color: gray;
+}
+
+.list {
+  padding: 0;
+  list-style: none;
+  margin: 0 0 0 20px;
+}
+
+.listItem {
+  display: flex;
+  align-items: center;
+}
+.listItem + .listItem {
+  margin-top: 10px;
+}
+.listItem p {
+  margin: 0;
+}
+
+.tagStyled {
+  margin-right: 16px;
+  margin-top: 4px;
+  width: 80px;
+  flex-shrink: 0;
+}

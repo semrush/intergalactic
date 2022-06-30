@@ -4,11 +4,12 @@ import { Text } from '@semcore/typography';
 import Tooltip from '@semcore/tooltip';
 import Skeleton from '@semcore/skeleton';
 import styled from 'styled-components';
+import '@semcore/utils/style/var.css';
 
 const BoxBlock = styled(Box)`
   overflow: hidden;
   margin-bottom: 24px;
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid var(--gray-200);
   &:last-child {
     border-bottom: none !important;
   }
@@ -43,14 +44,14 @@ const Demo = () => {
         </Tooltip>
         {!loading && (
           <>
-            <Text size={100} color="#757575" tag="p">
+            <Text size={100} color="gray-500" tag="p">
               last 30 days
             </Text>
             <Flex alignItems="baseline">
-              <Text size={500} color="#0071BC" fontWeight="bold" mr={2} tag="a">
+              <Text size={500} color="blue-400" fontWeight="bold" mr={2} tag="a">
                 42
               </Text>
-              <Text size={100} color="#757575" tag="p">
+              <Text size={100} color="gray-500" tag="p">
                 no change
               </Text>
             </Flex>
@@ -68,14 +69,14 @@ const Demo = () => {
         </Tooltip>
         {!loading && (
           <>
-            <Text size={100} color="#757575" tag="p">
+            <Text size={100} color="gray-500" tag="p">
               last 30 days
             </Text>
             <Flex alignItems="baseline">
-              <Text size={500} color="#0071BC" fontWeight="bold" mr={2} tag="a">
+              <Text size={500} color="blue-400" fontWeight="bold" mr={2} tag="a">
                 66.6K
               </Text>
-              <Text size={100} color="#757575" tag="p">
+              <Text size={100} color="gray-500" tag="p">
                 no change
               </Text>
             </Flex>
@@ -93,15 +94,15 @@ const Demo = () => {
         </Tooltip>
         {!loading && (
           <>
-            <Text size={100} color="#757575" tag="p">
+            <Text size={100} color="gray-500" tag="p">
               last 30 days
             </Text>
             <Flex alignItems="baseline">
-              <Text size={500} color="#0071BC" fontWeight="bold" mr={2} tag="a">
+              <Text size={500} color="blue-400" fontWeight="bold" mr={2} tag="a">
                 27K
               </Text>
-              <Text size={100} color="#4FAE33" tag="p">
-                +12
+              <Text size={100} color="green-500" tag="p">
+                ↑+12
               </Text>
             </Flex>
           </>
@@ -118,15 +119,15 @@ const Demo = () => {
         </Tooltip>
         {!loading && (
           <>
-            <Text size={100} color="#757575" tag="p">
+            <Text size={100} color="gray-500" tag="p">
               all time
             </Text>
             <Flex alignItems="baseline">
               <Text size={500} fontWeight="bold" mr={2} tag="a">
                 145
               </Text>
-              <Text size={100} color="#4FAE33" tag="p">
-                +13
+              <Text size={100} color="green-500" tag="p">
+                ↑+13
               </Text>
             </Flex>
           </>
@@ -143,18 +144,18 @@ const Demo = () => {
         </Tooltip>
         {!loading && (
           <>
-            <Text size={100} color="#757575" tag="p">
+            <Text size={100} color="gray-500" tag="p">
               all time
             </Text>
             <Flex alignItems="baseline">
               <Text size={500} fontWeight="bold" mr={2} tag="a">
                 145
               </Text>
-              <Text size={100} color="#4FAE33" mr={2} tag="p">
-                +13
+              <Text size={100} color="green-500" mr={2} tag="p">
+                ↑+13
               </Text>
-              <Text size={100} color="#ED2D2D" tag="p">
-                -12
+              <Text size={100} color="red-500" tag="p">
+                ↓-12
               </Text>
             </Flex>
           </>

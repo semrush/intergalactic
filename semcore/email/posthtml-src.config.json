@@ -1,7 +1,7 @@
 {
   "root": "src",
   "input": "**/*.html",
-  "output": ".tmp-src",
+  "output": ".tmp",
   "plugins": {
     "posthtml-extend": {
       "encoding": "utf8",

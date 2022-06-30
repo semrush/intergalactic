@@ -2,7 +2,7 @@
 import React, { Component, createContext, useContext, useMemo } from 'react';
 import createHoc from '../createHoc';
 
-export type LocaleKeys = 'de' | 'en' | 'es' | 'fr' | 'it' | 'ja' | 'ru' | 'zh' | 'pt';
+export type LocaleKeys = 'de' | 'en' | 'es' | 'fr' | 'it' | 'ja' | 'ru' | 'zh' | 'pt' | 'ko' | 'vi';
 export type DictionaryItem = { [key: string]: string };
 export type Dictionary = { [K in LocaleKeys]: DictionaryItem };
 export const Context = createContext<LocaleKeys>('en');

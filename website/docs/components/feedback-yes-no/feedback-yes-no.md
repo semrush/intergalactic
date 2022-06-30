@@ -6,33 +6,30 @@ tabName: Design
 
 @## Description
 
-**Feedback collection [notice](/components/notice/)** describes the feature and containing a simple question on its work. _For example, “Meet our new Dashboard! Is it working well for you?”._
+**Feedback collection notice** is a pattern that consists of [Notice](/components/notice/) and [Feedback form](/components/feedback/). It helps to introduce the feature to the user and contains a simple question on its work. _For example, “Meet our new Dashboard! Is it working well for you?”._
 
 @## Component appearing
 
 ### Two variants are possible for the notice appearing
 
 1. The notice is shown simultaneously with the product or report loading.
-2. The notice is shown for the first time in the second session (recommended). Further it is shown until closing or clicking the `Ask me later` button.
+2. The notice is shown for the first time in the second session (recommended). Further it is shown until closing or clicking the "Ask me later" button.
 
-> 💡 The session concept is determined by the PO or UX of the product. It may be a time interval, the next loading of the page or an update of the company data.
+> 💡 The session time is determined by the PO or UX of the product. It may be a time interval, the next loading of the page or an update of the company data.
 
 @## Location
 
-This component is always located near the top border of the report or product.
+This component is always located on the top of the report or product.
 
-Upon that, if there is the global search line, place the notice under it.
+![feedback notice location](static/send-feedback-yes-no-notice.png)
 
-![feedback notice location](static/send-feedback-notice.png)
-
-@## Appearance
+@## Styles
 
 ![feedback appearance](static/feedback-yes-no.png)
 
 - Height of the notice — 72px.
-- In front of the text place the [image](static/feedback.svg). The image size is 40px х 40px.
-- The button `Ask me later` is a `button` with `use="tertiary"`and `theme="info"`. Not a link.
-- Optionally you may add a cross icon for closing the plate — `CloseAlt` icon, S size, `$mist` color. Upon hover the cross icon changes its color into `$wall`.
+- Before the text place the [image](static/feedback.svg). The image size is 40px х 40px.
+- The button "Ask me later" is a button with `use="tertiary"`and `theme="info"`. Not a link.
 
 @## Margins and paddings
 
@@ -79,7 +76,7 @@ Show this element if the report or product has an alternative form for sending f
 - The first variant: it is always in the notice.
 - The second variant (**recommended**): when you click on `Ask me later`, the Close icon appears upon opening in the second session (may appear in the second or the third or the n-session).
 
-1. We use the M sized `Close` icon and. `--blue-400` color. While hovering it changes its color to `--blue-500`.
+1. We use the Close icon with M size and `--blue-400` color. While hovering it changes its color to `--blue-500`.
 2. After clicking the icon the notice will close.
 
 @## Remembering states

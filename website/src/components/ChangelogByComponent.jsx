@@ -1,108 +1,77 @@
 import React from 'react';
-import styled from 'styled-components';
+import styles from './ChangelogByComponent.module.css';
 import Tag from '@semcore/tag';
 import { Link } from 'react-router-dom';
 import { Text } from '@semcore/typography';
 import { getLabel } from './Changelog';
-
-const ComponentTitle = styled.span`
-  text-transform: capitalize;
-  margin-right: 10px;
-  small {
-    color: gray;
-  }
-`;
-
-const List = styled.ul`
-  padding: 0;
-  list-style: none;
-  margin: 0 0 0 20px;
-`;
-
-const ListItem = styled.li`
-  display: flex;
-  align-items: center;
-  & + & {
-    margin-top: 10px;
-  }
-  p {
-    margin: 0;
-  }
-`;
-
-const TagStyled = styled(Tag)`
-  margin-right: 16px;
-  margin-top: 4px;
-  width: 80px;
-  flex-shrink: 0;
-`;
+import formatTextStyles from './FormatText.module.css';
 
 const ChangelogByComponent = ({ blocks }) => {
   return blocks.map(({ title, components }) => (
-    <React.Fragment key={title}>
+    <span key={title} className={formatTextStyles.formatText}>
       <Text tag="h3">
         <Text>{title}</Text>
       </Text>
       {components.map(({ title, component, changes }) => (
         <div key={component}>
           <Text tag="h4">
-            <ComponentTitle>{title}</ComponentTitle>
+            <span className={styles.componentTitle}>{title}</span>
             <small>({component})</small>
           </Text>
-          <List>
+          <ul className={styles.list}>
             {changes.map(({ type, text }) => (
-              <ListItem key={`${type}-${text}`}>
+              <li className={styles.listItem} key={`${type}-${text}`}>
                 {getLabel(type)} <Text dangerouslySetInnerHTML={{ __html: text }} />
-              </ListItem>
+              </li>
             ))}
-          </List>
+          </ul>
         </div>
       ))}
-    </React.Fragment>
+    </span>
   ));
   let section;
   return {
-    list: (props) => <List {...props} />,
+    list: (props) => <ul className={styles.list} {...props} />,
     listItem: function ({ children }) {
       let label = null;
       if (!section) return null;
       switch (section.props.children) {
         case 'Added':
           label = (
-            <TagStyled size="l" color="green-500">
+            <Tag className={styles.tagStyled} size="l" color="green-500">
               {section}
-            </TagStyled>
+            </Tag>
           );
           break;
         case 'Fixed':
           label = (
-            <TagStyled size="l" color="blue-500">
+            <Tag className={styles.tagStyled} size="l" color="blue-500">
               {section}
-            </TagStyled>
+            </Tag>
           );
           break;
         case 'Changed':
         case 'Removed':
         case 'Deprecated':
           label = (
-            <TagStyled size="l" color="orange-500">
+            <Tag className={styles.tagStyled} size="l" color="orange-500">
               {section}
-            </TagStyled>
+            </Tag>
           );
           break;
         case 'BREAK':
         case 'Security':
           label = (
-            <TagStyled size="l" color="red-500">
+            <Tag className={styles.tagStyled} size="l" color="red-500">
               {section}
-            </TagStyled>
+            </Tag>
           );
       }
       return (
-        <ListItem>
+        <li classItem={styles.listItem}>
           {label}
           <div>{children}</div>
-        </ListItem>
+        </li>
       );
     },
     heading: function ({ level, children }) {

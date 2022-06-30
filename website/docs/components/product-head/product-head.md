@@ -26,13 +26,13 @@ The report header is always placed under the global heading Semrush and Searchba
 
 @## Margins
 
-If there is [Notice](/components/notice/) in the header, its margins to the heading elements are 8px (`my={2}`).
+If there is [Notice](/components/notice/) in the header, its margins to the heading elements are 8px.
 
 ![product-head notice-margins](static/notice-margins.png)
 
 @## Margins between the header blocks
 
-Margins from the left and the right edge - 30px.
+Margins from the left and the right edge - 32px.
 
 ![product-head element sizes](static/margins.png)
 
@@ -43,13 +43,13 @@ Margins from the left and the right edge - 30px.
 ### Line with the breadcrumbs and additional links
 
 - The [breadcrumbs](/components/breadcrumbs/) and the links are aligned center.
-- [M size links](/components/link/).
-- The distance between the links — 20 px (`mr={5}`).
+- [14px size link text](/components/link/).
+- The distance between the links — 20 px.
 
 ### Line with the headings and controls
 
 - The heading, buttons and labels are aligned center with regard to each other.
-- [The size of the heading is always h3](/style/typography/).
+- [The size of the heading is always h5](/style/typography/).
 - The main text color - `var(--gray-800)`, projects – `var(--gray-500)`.
 - The size of the nearby icons — M. The icon’s color corresponds to the element near it.
 - The icons are aligned by the heading’s basic line.
@@ -57,12 +57,11 @@ Margins from the left and the right edge - 30px.
 
 ### Line with filters and/or additional information
 
+- Line with filters and/or additional information
 - The line with additional information is centered.
-- Block height — 18px.
-- `font-size: var(--fs-100); line-height 18px;`.
-- The used icons size — XS.
-- The dividers height is 18px, the color is `var(--gray-200)`.
-- The dividers’ paddings — 12px (`mx={3}`) at the right and at the left.
+- Block height — 20px.
+- Font-size: 14px; color var `(--gray-800)`;
+- The used icons size — M.
 
 @## Report header variants
 
@@ -70,7 +69,7 @@ Margins from the left and the right edge - 30px.
 
 ![max element product-head](static/max-info.png)
 
-> 💡 When the names of the domain and/or project are very long and do not fit the space of the screen, they are put into `ellipsis`. If there are controls at the right, they must have a “protective” left padding of 24px (`ml={6}`) in order the text did not stick together with the controls.
+> 💡 When the names of the domain and/or project are very long and do not fit the space of the screen, they are put into `ellipsis`. If there are controls at the right, they must have a “protective” left padding of 24px in order the text did not stick together with the controls.
 
 ![hame in ellipsis and controls margin](static/ellipsis-and-margin.png)
 
@@ -80,7 +79,7 @@ Margins from the left and the right edge - 30px.
 
 ### No global filters / additional information / tabs
 
-In these cases the padding between the block with the heading and the buttons and the tabs/divider – 16px (`mb={4}`).
+In these cases the padding between the block with the heading and the buttons and the tabs/divider – 16px.
 
 ![product-head without filters](static/without-filters.png)
 

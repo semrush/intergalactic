@@ -1,0 +1,97 @@
+.updateWrapper {
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 3fr 1fr;
+}
+@media (max-width: 767px) {
+  .updateWrapper {
+    grid-template-columns: 1fr;
+    margin-left: 0;
+    padding: 0 0 56px;
+  }
+}
+@media (max-width: 415px) {
+  .updateWrapper {
+    padding: 0;
+  }
+}
+
+.info {
+  grid-row: 1;
+  grid-column: 1;
+  font-size: 18px;
+  line-height: 150%;
+  margin-right: 40px;
+}
+@media (max-width: 767px) {
+  .info {
+    grid-column: 1;
+  }
+}
+
+.header {
+  font-size: 40px;
+  line-height: 120%;
+  margin: 48px 0 16px;
+}
+@media (max-width: 767px) {
+  .header {
+    font-size: 30px;
+    line-height: 120%;
+  }
+}
+
+.terms {
+  font-size: 16px;
+  color: #898d9a;
+}
+.terms a {
+  color: #1a55ed;
+  text-decoration: none;
+  margin-left: 5px;
+}
+.terms a:hover {
+  text-decoration: underline;
+}
+
+.updatesImg {
+  grid-row: 1;
+  grid-column: 2;
+  margin-right: 56px;
+}
+@media (max-width: 767px) {
+  .updatesImg {
+    display: none;
+  }
+}
+
+.inputSubscribe {
+  height: 56px !important;
+  font-size: 18px !important;
+  width: 296px;
+  margin: 0 16px 16px 0;
+}
+@media (max-width: 767px) {
+  .inputSubscribe {
+    width: 100%;
+    margin: 0 0 16px;
+  }
+}
+
+.inputHidden {
+  position: absolute;
+  top: -100px;
+  left: -100px;
+}
+
+.subscribed {
+  display: flex;
+  align-items: center;
+  font-size: 21px;
+  color: #575c66;
+  line-height: 150%;
+}
+.subscribed svg {
+  width: 38px;
+  margin-right: 19px;
+}

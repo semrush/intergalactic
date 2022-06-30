@@ -1,59 +1,37 @@
 import React from 'react';
-import styled from 'styled-components';
+import styles from './Changelog.module.css';
+import formatTextStyles from './FormatText.module.css';
 import Tag from '@semcore/tag';
 import { Text } from '@semcore/typography';
-
-const List = styled.ul`
-  padding: 0;
-  list-style: none;
-  margin: 0 0 0 20px;
-`;
-
-const ListItem = styled.li`
-  display: flex;
-  align-items: center;
-  & + & {
-    margin-top: 10px;
-  }
-  p {
-    margin: 0;
-  }
-`;
-
-const TagStyled = styled(Tag)`
-  margin-right: 16px;
-  width: 80px;
-  flex-shrink: 0;
-`;
 
 export const getLabel = (type) => {
   switch (type) {
     case 'Added':
       return (
-        <TagStyled size="l" color="green-500">
+        <Tag className={styles.tagStyled} size="l" color="green-500">
           {type}
-        </TagStyled>
+        </Tag>
       );
     case 'Fixed':
       return (
-        <TagStyled size="l" color="blue-500">
+        <Tag className={styles.tagStyled} size="l" color="blue-500">
           {type}
-        </TagStyled>
+        </Tag>
       );
     case 'Changed':
     case 'Removed':
     case 'Deprecated':
       return (
-        <TagStyled size="l" color="orange-500">
+        <Tag className={styles.tagStyled} size="l" color="orange-500">
           {type}
-        </TagStyled>
+        </Tag>
       );
     case 'BREAK':
     case 'Security':
       return (
-        <TagStyled size="l" color="red-500">
+        <Tag className={styles.tagStyled} size="l" color="red-500">
           {type}
-        </TagStyled>
+        </Tag>
       );
     default:
       return <strong>{type}</strong>;
@@ -62,18 +40,18 @@ export const getLabel = (type) => {
 
 const Changelog = ({ blocks }) => {
   return blocks.map(({ title, changes }) => (
-    <React.Fragment key={title}>
+    <span key={title} className={formatTextStyles.formatText}>
       <Text tag="h3">
         <Text>{title}</Text>
       </Text>
-      <List>
+      <ul className={styles.list}>
         {changes.map(({ type, text }) => (
-          <ListItem key={`${type}-${text}`}>
+          <li className={styles.listItem} key={`${type}-${text}`}>
             {getLabel(type)} <Text dangerouslySetInnerHTML={{ __html: text }} />
-          </ListItem>
+          </li>
         ))}
-      </List>
-    </React.Fragment>
+      </ul>
+    </span>
   ));
 };
 

@@ -39,7 +39,6 @@ class TooltipRoot extends Component {
       (visible, data, node) => {
         this.setState(
           {
-            // TODO: тут бага если одно поля нету,то оно не перезапишет стейт
             ...data,
             $visible: visible,
           },
@@ -124,8 +123,8 @@ function Dot(props) {
   const SDotGroup = Root;
   const SDot = Box;
   return sstyled(styles)(
-    <SDotGroup render={Box}>
-      <SDot __excludeProps={['data', 'scale']} color={resolveColor(color)} />
+    <SDotGroup render={Box} __excludeProps={['data', 'scale']}>
+      <SDot color={resolveColor(color)} />
       <Children />
     </SDotGroup>,
   );

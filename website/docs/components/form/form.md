@@ -33,10 +33,10 @@ The input may be marked as optional for completing.
 
 | Input size | Vertical label. The name is attached at the left, optional - at the right of the input. | Horizontal label. The name is centered in the input, optional - always under the name. | Font size                            |
 | ---------- | --------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | ------------------------------------ |
-| L          | ![vertical label with margin to input](static/input-l.png)                              | ![horizontal label with margin to input](static/input-left-l.png)                      | `font-size: 14px; line-height: 1.4;` |
+| L          | ![vertical label with margin to input](static/input-l.png)                              | ![horizontal label with margin to input](static/input-left-l.png)                      | `font-size: 16px; line-height: 300;` |
 |            | ![vertical label with margin to checkbox](static/checkbox-l.png)                        | ![horizontal label with margin to checkbox](static/checkbox-left-l.png)                |                                      |
 |            | ![vertical label with margin to textarea](static/textarea-l.png)                        | ![horizontal label with margin to checkbox](static/textarea-left-l.png)                |                                      |
-| M          | ![vertical label with margin to input](static/input-m.png)                              | ![horizontal label with margin to input](static/input-left-m.png)                      | `font-size: 12px; line-height: 1.5;` |
+| M          | ![vertical label with margin to input](static/input-m.png)                              | ![horizontal label with margin to input](static/input-left-m.png)                      | `font-size: 14px; line-height: 200;` |
 |            | ![vertical label with margin to checkbox](static/checkbox-m.png)                        | ![horizontal label with margin to checkbox](static/checkbox-left-m.png)                |                                      |
 |            | ![vertical label with margin to textarea](static/textarea-m.png)                        | ![horizontal label with margin to checkbox](static/textarea-left-m.png)                |                                      |
 
@@ -68,7 +68,7 @@ The form may contain any controls and inputs from our design system.
 
 Below there are recommendations with regard to the paddings between the inputs in the form. You may use other ones, 4-fold, paddings, if necessary.
 
-| L (32px)                                          | M (26px)                                          |
+| L (40px)                                          | M (28px)                                          |
 | ------------------------------------------------- | ------------------------------------------------- |
 | ![paddings between input in a form](static/l.png) | ![paddings between input in a form](static/m.png) |
 

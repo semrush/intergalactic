@@ -1,4 +1,4 @@
-module.exports = {
+const iconsList = {
   icons: [
     {
       name: 'GitLab',
@@ -3886,3 +3886,5 @@ module.exports = {
     },
   ],
 };
+
+export default iconsList;

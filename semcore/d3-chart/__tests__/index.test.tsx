@@ -24,6 +24,7 @@ import {
   minMax,
   Area,
   StackedArea,
+  ReferenceLine,
 } from '../src';
 import { getIndexFromData } from '../src/utils';
 // eslint-disable-next-line import/no-extraneous-dependencies
@@ -368,6 +369,38 @@ describe('Bar chart', () => {
     expect(await snapshot(component)).toMatchImageSnapshot();
   });
 
+  test('should Bar support minimal height for empty value', async () => {
+    const component = (
+      <Plot
+        data={data.map((item) => {
+          item.stack1 = 0;
+          item.stack2 = 0;
+          item.stack3 = -0;
+          return item;
+        })}
+        scale={[xScale, yScale]}
+        width={width}
+        height={height}
+      >
+        <YAxis>
+          <YAxis.Ticks />
+          <YAxis.Grid />
+        </YAxis>
+        <XAxis>
+          <XAxis.Ticks />
+        </XAxis>
+        <GroupBar x="time">
+          <GroupBar.Bar y="stack1" duration={0} />
+          <GroupBar.Bar y="stack2" hMin={10} duration={0} color="orange" />
+          <GroupBar.Bar y="stack3" duration={0} color="green" />
+        </GroupBar>
+        <XAxis position={0} />
+      </Plot>
+    );
+
+    expect(await snapshot(component)).toMatchImageSnapshot();
+  });
+
   test('should not cut content on right with left margin', async () => {
     const width = 500;
     const height = 300;
@@ -520,8 +553,50 @@ describe('d3 charts visual regression', () => {
               })}
             </XAxis.Ticks>
           </XAxis>
-          <Area x="time" y="line" curve={curveCardinal}>
+          <Area x="time" y="line" curve={curveCardinal} duration={0}>
             <Area.Dots display />
+          </Area>
+        </Plot>
+      );
+    };
+
+    expect(await snapshot(<Component />)).toMatchImageSnapshot();
+  });
+
+  test('should support custom line in area chart', async () => {
+    const data = Array(10)
+      .fill({})
+      .map((d, i) => {
+        return {
+          x: i,
+          y: i % 2 ? i / 2 : i,
+        };
+      });
+    const customLineStyles = { strokeWidth: 1, stroke: 'orange' };
+
+    const Component: React.FC = () => {
+      const MARGIN = 40;
+      const width = 500;
+      const height = 300;
+
+      const xScale = scaleLinear()
+        .range([MARGIN, width - MARGIN])
+        .domain(minMax(data, 'x'));
+
+      const yScale = scaleLinear()
+        .range([height - MARGIN, MARGIN])
+        .domain([0, 10]);
+
+      return (
+        <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
+          <YAxis>
+            <YAxis.Ticks />
+          </YAxis>
+          <XAxis>
+            <XAxis.Ticks />
+          </XAxis>
+          <Area x="x" y="y" curve={curveCardinal} duration={0}>
+            <Area.Line style={customLineStyles} />
           </Area>
         </Plot>
       );
@@ -1190,7 +1265,53 @@ describe('d3 charts visual regression', () => {
             <XAxis.Title>XAxis title</XAxis.Title>
             <XAxis.Title position="bottom">XAxis title</XAxis.Title>
           </XAxis>
-          <Bar x="category" y="bar" />
+        </Plot>
+      );
+    };
+
+    expect(await snapshot(<Component />)).toMatchImageSnapshot();
+  });
+
+  test('should render reference line', async () => {
+    const data = Array(5)
+      .fill({})
+      .map((d, i) => ({
+        category: `Category ${i}`,
+        bar: Math.abs(Math.sin(Math.exp(i))) * 1000000,
+      }));
+
+    const Component: React.FC = () => {
+      const width = 500;
+      const height = 300;
+      const xScale = scaleBand()
+        .range([90, width - 60])
+        .domain(data.map((d) => d.category))
+        .paddingInner(0.4)
+        .paddingOuter(0.2);
+      const yScale = scaleLinear()
+        .range([height - 40, 40])
+        .domain([0, 1000000]);
+      return (
+        <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
+          <YAxis>
+            <YAxis.Ticks />
+          </YAxis>
+          <XAxis>
+            <XAxis.Ticks />
+          </XAxis>
+          <ReferenceLine title="Left data" value={data[0].category} />
+          <ReferenceLine title="Right data" position="right" value={data[1].category} />
+          <ReferenceLine title="Top data" position="top" value={900000} />
+          <ReferenceLine title="Bottom data" position="bottom" value={300000} />
+          <ReferenceLine
+            value={data[3].category}
+            strokeDasharray="3 3"
+            strokeWidth="0.5"
+            title="Mobile data"
+            width="100"
+          >
+            <ReferenceLine.Background width="100" />
+          </ReferenceLine>
         </Plot>
       );
     };
@@ -1600,6 +1721,28 @@ describe('d3 charts visual regression', () => {
               };
             }}
           </Tooltip>
+        </Plot>
+      );
+    };
+
+    expect(await snapshot(<Component />)).toMatchImageSnapshot();
+  });
+
+  test('should support active sector in donut chart', async () => {
+    const data = {
+      a: 3,
+      b: 1,
+      c: 2,
+    };
+
+    const Component: React.FC = () => {
+      return (
+        <Plot width={300} height={300} data={data}>
+          <Donut innerRadius={100}>
+            <Donut.Pie dataKey="a" name="Pie 1" active />
+            <Donut.Pie dataKey="b" color={colors['green-02']} name="Pie 2" />
+            <Donut.Pie dataKey="c" color={colors['violet-04']} name="Pie 3" />
+          </Donut>
         </Plot>
       );
     };

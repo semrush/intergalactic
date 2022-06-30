@@ -4,14 +4,14 @@ import { CProps, PropGetterFn, ReturnEl } from '@semcore/core';
 import { IBoxProps } from '@semcore/flex-box';
 import IContext from './context';
 
-export interface ITooltipProps extends IPopperProps, IPopperTriggerProps, IContext {
+export interface ITooltipChartProps extends IPopperProps, IPopperTriggerProps, IContext {
   /** Field from data for XAxis */
   x?: string;
   /** Field from data for YAxis */
   y?: string;
 }
 
-export interface ITooltipContext {
+export interface ITooltipChartContext {
   getTriggerProps: PropGetterFn;
   getPopperProps: PropGetterFn;
   /** Index active value for Axis x */
@@ -20,7 +20,9 @@ export interface ITooltipContext {
   yIndex: number | null;
 }
 
-declare const Tooltip: (<T>(props: CProps<ITooltipProps & T, ITooltipContext>) => ReturnEl) & {
+declare const Tooltip: (<T>(
+  props: CProps<ITooltipChartProps & T, ITooltipChartContext>,
+) => ReturnEl) & {
   Trigger: <T>(props: CProps<ComponentProps<typeof Popper.Trigger> & T>) => ReturnEl;
   Popper: <T>(props: CProps<ComponentProps<typeof Popper.Popper> & T>) => ReturnEl;
   Title: <T>(props: CProps<IBoxProps & T>) => ReturnEl;

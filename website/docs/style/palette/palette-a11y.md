@@ -2,6 +2,8 @@
 title: A11y
 ---
 
+Our palette takes into account [WCAG 2.0 Accessibility guidelines](https://www.w3.org/TR/WCAG20/) and Advanced Perceptual Contrast Algorithm (APCA) which is a working draft for the WCAG3.
+
 @## Contrast
 
 ![contrast](/core-principles/a11y/static/contrast.png)

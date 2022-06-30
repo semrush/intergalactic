@@ -9,41 +9,12 @@ import { RenderMarkdown } from './Markdown';
 import { SideBar, SidebarWrapper } from './SideBar';
 import NavLink from './NavLink';
 import ImageFromModal from './ImageFromModal';
-import styled from 'styled-components';
 import { css } from '@semcore/core';
 import { routes } from '@navigation';
+import styles from './Docs.module.css';
+import scrollToHash from '../utils/scrollToHash';
 
-const Tab = styled.div`
-  position: relative;
-  overflow: auto;
-  & > div:first-child > div {
-    background-color: #ff622d;
-    height: 2px;
-  }
-`;
-
-const Main = styled.main`
-  h2 {
-    font-size: 24px;
-    line-height: 120%;
-    margin: 40px 0 16px;
-    &:first-child {
-      margin: 0 0 16px;
-    }
-  }
-  h3 {
-    font-size: 18px;
-    line-height: 110%;
-    margin: 24px 0 16px 0;
-  }
-  h4 {
-    font-size: 16px;
-    line-height: 150%;
-    margin: 16px 0;
-  }
-`;
-
-const styles = css`
+const tabLineStyles = css`
   STabLineItem {
     min-width: inherit !important;
     justify-content: flex-start;
@@ -74,15 +45,7 @@ function useScrollHash(options = {}) {
     }, []);
   });
   return () => {
-    readyStateComplete.then(() => {
-      if (window.location.hash) {
-        scroller.scrollTo(window.location.hash.replace('#', ''), {
-          smooth: 'easeInOutQuint',
-          offset: -150,
-          ...options,
-        });
-      }
-    });
+    readyStateComplete.then(() => scrollToHash());
   };
 }
 
@@ -112,8 +75,15 @@ export const Docs = ({ tokens, tabs }) => {
   return (
     <SidebarWrapper>
       {Boolean(tabs.length) && (
-        <Tab>
-          <TabLine value={match.url} size="l" styles={styles} underlined={false} mb={6}>
+        <div className={styles.tab}>
+          <TabLine
+            value={match.url}
+            size="l"
+            styles={tabLineStyles}
+            underlined={false}
+            mb={6}
+            className={styles.tabLine}
+          >
             {tabs.map((tab) => {
               const { route } = tab;
               return (
@@ -123,17 +93,18 @@ export const Docs = ({ tokens, tabs }) => {
                   to={`/${route}`}
                   value={`/${route}/`}
                   onMouseEnter={() => prefetch(route)}
+                  type="tab"
                 >
                   <Text>{tab.metadata.tabName || tab.title}</Text>
                 </TabLine.Item>
               );
             })}
           </TabLine>
-        </Tab>
+        </div>
       )}
-      <Main ref={contentRef} onClick={handleClick}>
+      <main className={styles.main} ref={contentRef} onClick={handleClick}>
         <RenderMarkdown tokens={tokens} onRender={scrollCallback} />
-      </Main>
+      </main>
       <SideBar />
       <ImageFromModal content={contentModal} onClose={handleModalClose} />
     </SidebarWrapper>

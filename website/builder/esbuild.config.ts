@@ -7,25 +7,26 @@ import esbuildPluginAlias from 'esbuild-plugin-alias';
 import { resolve as resolvePath } from 'path';
 import { esbuildPluginDocs } from './esbuild-plugin-docs';
 import { esbuildPluginStatic } from './esbuild-plugin-static';
-import cssModulesPlugin from 'esbuild-plugin-css-modules';
 import { esbuildPluginIcons } from './esbuild-plugin-icons';
+import { esbuildPluginCssModules } from './esbuild-plugin-css-modules';
+import { esbuildPluginCrutches } from './esbuild-intergalactic-crutches';
 
 export const websiteEsbuildConfig: esbuild.BuildOptions = {
-  entryPoints: ['./src/main-render.jsx', './src/main.css'],
+  entryPoints: ['./src/main-render.jsx'],
   bundle: true,
   sourcemap: true,
-  outdir: './src/public',
   publicPath: process.env.PUBLIC_PATH || '/',
-  assetNames: (process.env.PUBLIC_PATH || '') + 'assets/[dir]/[name]-[hash]',
+  format: 'esm',
+  splitting: true,
+  treeShaking: true,
   plugins: [
-    cssModulesPlugin({
-      localIdentName: '[local]-[hash:8:md5:hex]',
-    }),
     esbuildPluginSemcoreSourcesResolve(),
     esbuildPluginSemcore(/semcore|tools/),
     esbuildPluginDocs(),
     esbuildPluginStatic(),
     esbuildPluginIcons(),
+    esbuildPluginCrutches(),
+    esbuildPluginCssModules(),
     process.env.NODE_ENV !== 'production'
       ? esbuildPluginAlias({
           react: resolvePath('./node_modules/react/index.js'),
@@ -46,7 +47,4 @@ export const websiteEsbuildConfig: esbuild.BuildOptions = {
     ['.svg']: 'file',
     ['.png']: 'file',
   },
-  external: [
-    '../WindowScroller.js', // https://github.com/bvaughn/react-virtualized/issues/1632
-  ],
 };

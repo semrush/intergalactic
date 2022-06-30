@@ -20,12 +20,8 @@ title: Charts
 
 @page bubble-chart
 
-<!-- @page combined-chart -->
-
 @page donut-chart
 @page histogram-chart
-
-<!-- @page stacked-histogram -->
 
 @page line-chart
 @page radial-tree-chart

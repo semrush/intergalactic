@@ -83,8 +83,8 @@ SProgressBar[animation] {
 }
 
 SProgressBar[theme='custom'] {
-  background-color: var(--сolorBg);
-  background-image: var(--сolorBg);
+  background-color: var(--colorBg);
+  background-image: var(--colorBg);
 }
 SProgressBar[animation] {
   animation-duration: var(--duration);
@@ -95,8 +95,8 @@ SValue {
   animation-duration: var(--duration);
 }
 SValue[theme] {
-  background-color: var(--сolorBg);
-  background-image: var(--сolorBg);
+  background-color: var(--colorBg);
+  background-image: var(--colorBg);
 }
 
 @media (prefers-reduced-motion) {

@@ -18,10 +18,10 @@ const dataToLzCompressedJson = (data) => {
 };
 
 export default ({ raw: { code: ExampleRawComponent, path } }) => {
-  let dependencies = ExampleRawComponent.match(/from.+/g);
+  let dependencies = ExampleRawComponent.match(/[from\s](["|'].*["|'])/g);
   if (!dependencies) return null;
   dependencies = dependencies
-    .map((str) => str.match(/'.+'/g))
+    .map((str) => str.trim().match(/'.+'/g))
     .flat()
     .map((str) => str && str.slice(1, -1))
     .reduce((acc, str) => {

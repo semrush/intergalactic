@@ -133,7 +133,6 @@ class ScrollBarRoot extends Component {
       } else if (orientation === 'vertical') {
         this.$slider.style.height = `${this.sliderStyle.height}px`;
       }
-      // Пересчитать позицию скролл при изменении размера контейнера
       this.handleScroll();
     });
   };

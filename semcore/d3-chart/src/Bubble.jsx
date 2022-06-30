@@ -117,6 +117,7 @@ class BubbleRoot extends Component {
         )}
         <SBubble
           id={`${uid}${uid}`}
+          index={i}
           render="circle"
           clipPath={`url(#${uid})`}
           cx={xScale(d[x]) + offset[0]}

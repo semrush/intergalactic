@@ -104,7 +104,7 @@ Here you will find the states for some specific cases. All other "empty states" 
 
 Display message: "No more results" — below the values with a 32px margin.
 
-![one category](static/no-more.png)
+![one category](static/no-more-bar-horizontal.png)
 
 ![more categories](static/no-more-2.png)
 
@@ -114,7 +114,7 @@ If all the values on the chart are zero, then in the tooltip we shall display nu
 
 > 💡 **Zero is also data. 0 ≠ `n/a`.**
 
-![null](static/null.png)
+![null](static/null-bar-horizontal.png)
 
 ![null](static/null-2.png)
 

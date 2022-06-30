@@ -6,7 +6,7 @@ tabName: Design
 
 @## Description
 
-**Feedback form** is the form for sending feedback or suggestions to the product team. In most cases it drops from the "Send feedback" link at the upper right of the page.
+**Feedback** is the form for sending feedback or suggestions to the product team. In most cases it drops from the "Send feedback" link at the upper right of the page.
 
 > When the link for feedback is in the [ProductHead](/components/product-head/), it should be always the far right. Learn more in the [Links order in ProductHead](/patterns/links-order/).
 
@@ -30,9 +30,9 @@ tabName: Design
 
 @## Styles
 
-- Dropdown has 4px paddings.
+- Dropdown has `padding: 16px;`.
 - All inputs in this form has one size — M.
-- For bottom message use secondary colored text (`--gray-500`) with 14px size (`--fs-200`, `--lh-200`).
+- For bottom message use secondary colored text (`--gray-500`) with 14px size (`--fs-200; --lh-200;`).
 
 ![feedback paddings](static/send-feedback-sizes.png)
 

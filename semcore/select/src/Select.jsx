@@ -10,6 +10,7 @@ import resolveColor from '@semcore/utils/lib/color';
 import addonTextChildren from '@semcore/utils/lib/addonTextChildren';
 import InputSearch from './InputSearch';
 import { useBox } from '@semcore/flex-box';
+import { selectContext } from './context';
 
 import style from './style/select.shadow.css';
 
@@ -171,12 +172,9 @@ class RootSelect extends Component {
 
   componentDidUpdate(prevProps, prevState) {
     const { visible } = this.asProps;
-    //  TODO: вынести в хелпер
-    // Если открыли
     if (visible) {
       this.isScrolledToFirstOption = false;
 
-      // Если uncontroll
       if (prevProps.visible === undefined) {
         if (prevState.visible !== visible) this.scrollToSelectedOption();
       } else {
@@ -287,7 +285,7 @@ const Select = createComponent(
     InputSearch: InputSearchWrapper,
     Input: InputSearchWrapper,
   },
-  { parent: DropdownMenu },
+  { parent: DropdownMenu, context: selectContext },
 );
 
 export default Select;

@@ -53,26 +53,30 @@ const traverse = async (node, parentNode?) => {
   const articlePath = resolvePath(docsDir, node.filePath);
   const article = await buildArticle(docsDir, articlePath, node.filePath);
 
-  objects.push({
-    objectID: objectId++,
-    pageTitle: node.title,
-    title: node.title,
-    slug: `/${node.route}/`,
-    disabled: node.metadata.disabled ?? false,
-    heading: false,
-    category: parentNode?.title,
-  });
-
-  for (const heading of article.headings) {
+  if (node.hasContent && node.title) {
     objects.push({
       objectID: objectId++,
       pageTitle: node.title,
-      title: heading.html,
-      slug: `/${node.route}/#${heading.id}`,
+      title: node.title,
+      slug: `/${node.route}/`,
       disabled: node.metadata.disabled ?? false,
-      heading: true,
+      heading: false,
       category: parentNode?.title,
     });
+  }
+
+  for (const heading of article.headings) {
+    if (heading.html) {
+      objects.push({
+        objectID: objectId++,
+        pageTitle: node.title,
+        title: heading.html,
+        slug: `/${node.route}/#${heading.id}`,
+        disabled: node.metadata.disabled ?? false,
+        heading: true,
+        category: parentNode?.title,
+      });
+    }
   }
 
   if (node.children) {
