@@ -8,154 +8,112 @@ tabName: Design
 
 @## Description
 
-**Tag** is a word or phrase for thematic grouping of information in the interface (in tables, filters, cards, etc.).
+**Tag** is a component for thematic grouping of information in the interface (in tables, filters, cards, etc.).
 
-It is usually set by the system or by the user himself.
+Tag is usually set by the system or by the user.
 
-@## Appearance
+@## Component composition
 
-### Component composition
+Component consists of:
 
-- container;
 - text;
-- icon or any other element in front of the text (optional);
-- Close icon (optional);
-- label mask (optional).
+- icon or any other addon before the text (optional);
+- Close icon (optional).
 
-> 💡 Do not misuse the optional element before the tag text. Do not complicate it.
+@## Sizes and paddings
 
-![tag scheme](static/tag-scheme.png)
-
-@## Sizes and indents
-
-|     | Appearance and indents                                      |
-| --- | ----------------------------------------------------------- |
-| L   | ![size L](static/tag-L.png) ![size L](static/@1xtag2-L.png) |
-| M   | ![size M](static/tag-M.png) ![size M](static/@1xtag2-M.png) |
-| S   | ![size S](static/tag-S.png) ![size S](static/@1xtag2-S.png) |
+|     | Paddings                                                     |
+| --- | ------------------------------------------------------------ |
+| XL  | ![size XL](static/tag-XL.png) ![size XL](static/tag2-XL.png) |
+| L   | ![size L](static/tag-L.png) ![size L](static/tag2-L.png)     |
+| M   | ![size M](static/tag-M.png) ![size M](static/tag2-M.png)     |
 
 @## Types
 
-Several types of tags can be used in our tools depending on the context.
+There are several types of tags.
 
-### Primary
-
-![primary](static/primary.png)
-
-This is the main type of tag for use on a light background.
-
-> 💡 Any color of our [color palette](/style/palette/) can be set as a tag color, the default color is `$asphalt`.
-
-### Secondary
-
-![secondary](static/secondary.png)
-
-A secondary tag type for use on a light background is needed for cases when you need the contrast between the main tag and additional tags.
-
-### Primary Invert
-
-![invert](static/primary-invert.png)
-
-This tag type is an inversion of the main view for use on dark or colored background.
-
-### Secondary Invert
-
-![invert](static/secondary-invert.png)
-
-This tag type is an inversion of a secondary view for use on a dark or colored background.
+| Tag type         | Appearance example                     | Description                                                                                                                                                                                                                           |
+| ---------------- | -------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Primary          | ![primary](static/primary.png)         | The main type of tag for using on a light background. 💡 Any color from our [color palette](/style/palette/) can be set as a tag color, the default color is `--gray-500` (background gets color with 100 shade — e.g. `--gray-100`). |
+| Secondary        | ![secondary](static/secondary.png)     | The secondary tag type for using on a light background when it is necessary to make the contrast between the promary and secondary tags.                                                                                              |
+| Primary Invert   | ![invert](static/primary-invert.png)   | It is an inversion of the primary tag for using on dark or colored background.                                                                                                                                                        |
+| Secondary Invert | ![invert](static/secondary-invert.png) | It is an inversion of the secondary tag for using on dark or colored background.                                                                                                                                                      |
 
 @## Interaction
 
-The main tag type has the same `hover` and `active` styles.
-
-| Tag type         | States                                                |
-| ---------------- | ----------------------------------------------------- |
-| Primary          | ![state-color](static/@1xdefault-color-example.png)   |
-| Primary invert   | ![state-color](static/@1xinvert-states.png)           |
-| Secondary        | ![state-color](static/@1xsecondary-states.png)        |
-| Secondary invert | ![state-color](static/@1xsecondary-invert-states.png) |
-
-### Tag put by the system
-
-If the tag is put by the system:
-
-- the color is determined and chosen by the system from [basic color palette](/style/palette/) or from the additional palette if necessary.
-- The tag can be clickable. In this case, only filtering takes place.
-- Tag cannot be edited.
-
-> 💡 **You should mainly use the same color for the tags of the same meaning.** For example, we made green `New` tags, and `You` tags are blue.
+| Tag type         | States                                             |
+| ---------------- | -------------------------------------------------- |
+| Primary          | ![state-color](static/default-color-example.png)   |
+| Primary invert   | ![state-color](static/invert-states.png)           |
+| Secondary        | ![state-color](static/secondary-states.png)        |
+| Secondary invert | ![state-color](static/secondary-invert-states.png) |
 
 @## Tag creation
 
-The user can create a tag using a special tag with the following styles.
+User can create a tag using a tag with the additional theme.
 
-| State  | Appearance                          | Styles                                                                 |
-| ------ | ----------------------------------- | ---------------------------------------------------------------------- |
-| normal | ![add tag state](static/normal.png) | `color: $gray40; background-color: $white; border: 1px dotted $stone;` |
-| hover  | ![add tag state](static/hover.png)  | `color: $gray20; background-color: $white;`                            |
-| active | ![add tag state](static/active.png) | `color: $gray40; background-color: $gray94;`                           |
+| State  | Appearance                          | Styles                                                                                       |
+| ------ | ----------------------------------- | -------------------------------------------------------------------------------------------- |
+| normal | ![add tag state](static/normal.png) | `color: var(--gray-500); background-color: var(--white); border: 1px dotted var(--gray200);` |
+| hover  | ![add tag state](static/hover.png)  | `background-color: var(--gray-50);`                                                          |
+| active | ![add tag state](static/active.png) | `background-color: var(--gray-50);`                                                          |
 
-Clicking such a tag opens the input. You can prescribe a mask label in the input to keep the user in the context of what he needs to type into the new input.
-
-Input with a long tag text inside does not increase its width, but behaves the same way as input with a large amount of text, so the text goes to the left inside the input.
+This tag opens [InlineInput](/components/inline-input/). You can add a [mask label](/components/input-mask/) to keep the user in the context of what he needs to type into the input.
 
 ![add tag](static/add-input-L.png)
 
-By clicking on the icon or `Enter`, the value in the input is saved and turns into a tag.
+By clicking on the Check icon or `Enter`, the value in the input is saved and wraps into a tag.
 
 ![add tag](static/add-loading-L.png)
 
-If the space for tag placement is limited, then we reduce the text into the `ellipsis` after a certain width of the tag is reached when wrapping the text into it.
-
-The component has an option to set the maximum width of the tag for such cases. When hovering over a tag with the `ellipsis`, it is necessary to show the tooltip with the full tag label.
+If the space for tag placement is limited, then reduce the text into the `ellipsis`. When hovering over a tag with the `ellipsis`, show the tooltip with the full tag label.
 
 @## Tag editing
 
-If the user has the ability to add tags to the data in the interface, it should always be possible to edit them. Clicking such a tag opens the input. The logic is the same as when adding a tag.
+If the user has the ability to edit tags. If tag is clickable it opens [InlineInput](/components/inline-input/). The logic is the same as tag creation has.
 
-@## Long text in tag
+@## Long text
 
-You can set the maximum width of the tag. This is an optional feature as it is not always necessary when using a component.
+You can set the maximum width of the tag.
 
-If the text of a tag exceeds the specified width, it will hide in the `ellipsis`. A tooltip with a full tag label must appear when hovering over such tag.
+If the text of a tag exceeds the maximum width, collapse it into `ellipsis` and show a tooltip with a full tag label while hovering over such tag.
 
 ![tag ellipsis](static/ellipsis.png)
 
-@## How to minimize tags if there are too many of them
+<!-- @## Minimizing number of tags
 
-In case you have a huge number of tags and do not need to show them all at once to the user, minimize them to a tag with three dots. When you click on it, all hidden tags will be opened.
+In case you have a huge number of tags and do not need to show them all at once, minimize them to a tag with three dots. When you click on it, all hidden tags will be opened.
 
 > 💡 Unfortunately, this solution can be found in several places so far.
 
-![more tags example](static/more-tags.png)
+![more tags example](static/more-tags.png) -->
 
-@## Location
+@## Margins between tags
 
-The tags always have margins multiple of 4 towards each other.
+|     | Margins                               |
+| --- | ------------------------------------- |
+| XL  | ![size XL](static/tag-margins-XL.png) |
+| L   | ![size L](static/tag-margins-L.png)   |
+| M   | ![size M](static/tag-margins-M.png)   |
 
-|     | Margins                                |
-| --- | -------------------------------------- |
-| L   | ![size L](static/@1xtag-margins-L.png) |
-| M   | ![size M](static/@1xtag-margins-M.png) |
-| S   | ![size S](static/@1xtag-margins-S.png) |
+<!-- @## Tag and other components
 
 Recommendations on positioning of tags in relation to other components:
 
-- In most cases, the tag is located to the right of the element.
-- In the card, it is typically placed at the bottom.
+- In most cases, place tag to the right of the component.
+- In the card, place tag at the bottom. -->
 
 @## Use in UX/UI
 
 Use tags for visual marking of objects, fast recognition and navigation.
 
-### Example of use in a card (any essence within a frame of content)
+### Example of use in a card
 
-![card #nomargin](static/@1xtag-card.png)
-![card](static/@1xtag-card-2-pic.png)
+![card #nomargin](static/tag-card.png)
 
 ### Example of use in the table
 
-![table](static/@1xtag-table-pic.png)
+![table](static/tag-table-pic.png)
 
 @page tag-a11y
 @page tag-api
