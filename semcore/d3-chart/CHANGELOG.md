@@ -2,6 +2,20 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.2.0] - 2022-06-30
+
+### Added
+
+- Added index to Bubble chart
+- Added property minimal height `hMin` for Bar (`<Bar hMin={...}/>`)
+- Added property `active` for `Donut.Pie`
+
+### Fixed
+
+- Exclude props from html for `Tooltip.Dot`
+- Recalculate position for `Dot` after update scale
+- Optimization render `Dot`
+
 ## [2.1.0] - 2022-06-01
 
 ### Changed

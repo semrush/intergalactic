@@ -27,12 +27,13 @@ class LineRoot extends Component {
   };
 
   getDotsProps() {
-    const { x, y, d3, color } = this.asProps;
+    const { x, y, d3, color, duration } = this.asProps;
     return {
       x,
       y,
       d3,
       color,
+      duration,
     };
   }
 

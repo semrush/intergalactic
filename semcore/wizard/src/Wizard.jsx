@@ -1,7 +1,7 @@
-import React, { useMemo } from 'react';
+import React, { useCallback } from 'react';
 import createComponent, { Component, Root, sstyled } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
-import { Text } from '@semcore/typography';
+import Modal from '@semcore/modal';
 import CheckM from '@semcore/icon/Check/m';
 import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 
@@ -11,43 +11,29 @@ class WizardRoot extends Component {
   static displayName = 'Wizard';
   static style = style;
   static defaultProps = {
-    currentStep: 1,
-    defaultStep: 1,
+    step: null,
   };
 
-  uncontrolledProps() {
-    return {
-      step: null,
-    };
-  }
+  _steps = new Map();
 
   getStepProps(props) {
-    const { currentStep } = this.asProps;
-    const active = props.step === currentStep;
     return {
-      currentStep,
-      active,
+      steps: this._steps,
+      active: props.step === this.asProps.step,
     };
   }
 
-  getStepperProps(props) {
-    const { currentStep, steps } = this.asProps;
-    const active = props.step === currentStep;
-    const currentStepObject = useMemo(
-      () => steps.find((s) => s.step && s.step === props.step),
-      [props.step],
-    );
-    const title = currentStepObject.title;
-    const disabled = currentStepObject ? !!currentStepObject.disabled : false;
-
+  getStepperProps(props, i) {
+    let number = i + 1;
+    if (this._steps.has(props.step)) {
+      const step = this._steps.get(props.step);
+      number = step.number;
+    } else {
+      this._steps.set(props.step, { number, ...props });
+    }
     return {
-      currentStep,
-      steps,
-      disabled,
-      active,
-      title,
-      'aria-disabled': disabled,
-      'aria-current': active,
+      active: props.step === this.asProps.step,
+      number,
     };
   }
 
@@ -55,8 +41,10 @@ class WizardRoot extends Component {
     const SWizard = this.Root;
     const { Children, styles } = this.asProps;
 
+    this._steps.clear();
+
     return sstyled(styles)(
-      <SWizard render={Box}>
+      <SWizard render={Modal}>
         <Children />
       </SWizard>,
     );
@@ -66,10 +54,10 @@ class WizardRoot extends Component {
 function Sidebar(props) {
   const { Children, styles, title } = props;
   const SSidebar = Root;
-  const SSidebarHeader = Text;
+  const SSidebarHeader = 'div';
   return sstyled(styles)(
     <SSidebar render={Box} role="menu">
-      {title && <SSidebarHeader tag="div">{title}</SSidebarHeader>}
+      {title && <SSidebarHeader>{title}</SSidebarHeader>}
       <Children />
     </SSidebar>,
   );
@@ -77,24 +65,50 @@ function Sidebar(props) {
 
 function Step(props) {
   const SStep = Root;
-  const { styles, active } = props;
+  const { Children, styles, active } = props;
   if (active) {
-    return sstyled(styles)(<SStep render={Box} />);
+    return sstyled(styles)(
+      <SStep render={Box}>
+        <Children />
+      </SStep>,
+    );
   }
   return null;
 }
 
 function Stepper(props) {
-  const { Children, styles, currentStep, step, active, disabled, title } = props;
+  const { Children, styles, step, active, onActive, completed, disabled, number } = props;
   const SStepper = Root;
-  const SStepNumber = Text;
-  const SStepDescription = Box;
+  const SStepNumber = 'span';
+  const SStepDescription = 'span';
+
+  const handlerClick = useCallback(
+    (e) => {
+      if (onActive) onActive(step, e);
+    },
+    [step, onActive],
+  );
+
+  const handlerKeyPress = useCallback(
+    (e) => {
+      if (onActive && e.key === 'Enter') {
+        onActive(step, e);
+      }
+    },
+    [step, onActive],
+  );
 
   return sstyled(styles)(
-    <SStepper active={active} disabled={disabled} render={Box} role="menuitem">
-      <SStepNumber>{step < currentStep ? <CheckM /> : step}</SStepNumber>
-      <SStepDescription tag="span">
-        {title}
+    <SStepper
+      render={Box}
+      role="menuitem"
+      aria-disabled={disabled}
+      aria-current={active}
+      onClick={handlerClick}
+      onKeyPress={handlerKeyPress}
+    >
+      <SStepNumber>{completed ? <CheckM /> : number}</SStepNumber>
+      <SStepDescription>
         <Children />
       </SStepDescription>
     </SStepper>,

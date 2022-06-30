@@ -123,8 +123,8 @@ function Dot(props) {
   const SDotGroup = Root;
   const SDot = Box;
   return sstyled(styles)(
-    <SDotGroup render={Box}>
-      <SDot __excludeProps={['data', 'scale']} color={resolveColor(color)} />
+    <SDotGroup render={Box} __excludeProps={['data', 'scale']}>
+      <SDot color={resolveColor(color)} />
       <Children />
     </SDotGroup>,
   );

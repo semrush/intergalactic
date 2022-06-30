@@ -1,18 +1,19 @@
 @import '@semcore/utils/style/var.css';
 @import '@semcore/d3-chart/src/style/var.css';
 
+SDots {
+  & SDot {
+    transition-duration: var(--duration);
+  }
+}
+
 SDot {
   stroke-width: 2px;
   stroke: #fff;
   r: 6px;
   fill: var(--blue-03);
   transition-property: cx, cy;
-  transition-duration: var(--duration);
   transition-timing-function: ease-in-out;
-}
-
-SDot[color] {
-  fill: var(--color);
 }
 
 SDot[hide] {
@@ -21,4 +22,8 @@ SDot[hide] {
 
 SDot[active] {
   r: 8px;
+}
+
+SDot[color] {
+  fill: var(--color);
 }
