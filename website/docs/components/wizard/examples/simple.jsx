@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Wizard from '@semcore/wizard';
 import Button from '@semcore/button';
-import { Flex, Box } from '@semcore/flex-box';
+import { Flex } from '@semcore/flex-box';
 import ArrowRight from '@semcore/icon/ArrowRight/m';
 import ArrowLeft from '@semcore/icon/ArrowLeft/m';
 
@@ -21,7 +21,7 @@ export default function () {
       <Wizard visible={visible} step={step} w={600} onClose={handleClose}>
         <Wizard.Sidebar title="Header">
           <Wizard.Stepper step={1} onActive={setStep} completed>
-            <Box mb={1}>Step 1</Box>
+            Step 1
           </Wizard.Stepper>
           <Wizard.Stepper step={2} onActive={setStep}>
             Step 2
