@@ -33,6 +33,7 @@
     "directory": "semcore/icon"
   },
   "devDependencies": {
-    "@semcore/jest-preset-ui": "1.0.0"
+    "@semcore/jest-preset-ui": "1.0.0",
+    "@semcore/icon-transform-svg": "1.0.0"
   }
 }

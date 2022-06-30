@@ -19,5 +19,13 @@
   "peerDependencies": {
     "@semcore/core": "^1.11",
     "react": "16.8 - 17"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/semrush/intergalactic.git",
+    "directory": "semcore/illustration"
+  },
+  "devDependencies": {
+    "@semcore/icon-transform-svg": "1.0.0"
   }
 }
