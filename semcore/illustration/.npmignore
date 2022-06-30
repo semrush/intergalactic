@@ -1,5 +1,3 @@
 node_modules
-*.log
-coverage
 __tests__
-.publishrc
+tsconfig.json

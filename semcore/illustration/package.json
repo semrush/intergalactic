@@ -1,10 +1,31 @@
 {
   "name": "@semcore/illustration",
   "description": "SEMRush Illustration Component",
-  "version": "1.0.0-0",
+  "version": "1.0.0",
   "main": "index.js",
   "module": "index.js",
   "sideEffects": false,
   "author": "Roman Lysov <r.lysov@semrush.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "transform": "icon-transform-svg",
+    "build": "npm run transform -- --configFile=transform-svg.config.js",
+    "prebuild": "ls -d */ | egrep -v \"__tests__|svg\" | xargs rm -rf && rm *.svg || true"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.17.9",
+    "@semcore/flex-box": "^4"
+  },
+  "peerDependencies": {
+    "@semcore/core": "^1.11",
+    "react": "16.8 - 17"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/semrush/intergalactic.git",
+    "directory": "semcore/illustration"
+  },
+  "devDependencies": {
+    "@semcore/icon-transform-svg": "1.0.0"
+  }
 }

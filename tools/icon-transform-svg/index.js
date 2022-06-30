@@ -2,12 +2,7 @@ const path = require('path');
 const fs = require('fs-extra');
 const glob = require('glob');
 const cheerio = require('cheerio');
-const {
-  lib = 'react',
-  sourceFolder = 'svg',
-  outputFolder = '.',
-  ...otherArgs
-} = require('mri')(process.argv.slice(2));
+const { configFile } = require('mri')(process.argv.slice(2));
 const util = require('util');
 const config = require('./config');
 const babel = require('@babel/core');
@@ -16,13 +11,20 @@ const outputFile = util.promisify(fs.outputFile);
 const readFile = util.promisify(fs.readFile);
 
 const rootDir = process.cwd();
-const { template, templateDTS = template, transformer } = config(lib, otherArgs);
-const converter = transformer();
+let customConfig = () => {};
 
-const BABEL_ENV_EXTENSIONS_MAP = {
-  commonjs: '.js',
-  es6: '.mjs',
-};
+if (configFile) {
+  customConfig = require(path.resolve(rootDir, configFile));
+}
+
+const {
+  template,
+  templateDTS = template,
+  transformer,
+  babelConfig: defaultBabelConfig,
+  tasks,
+} = { ...config(), ...customConfig() };
+const converter = transformer();
 
 function getDescriptionExternalIcons(iconPath, outLib) {
   const name = path.basename(iconPath, '.svg');
@@ -52,53 +54,50 @@ function getDescriptionIcons(iconPath, outLib) {
 }
 
 async function svgToReactComponent(iconPath, name, group) {
-  const svg = await readFile(iconPath, 'utf-8');
+  try {
+    const svg = await readFile(iconPath, 'utf-8');
 
-  const $ = cheerio.load(svg, { xmlMode: true });
-  const $svg = $('svg');
-  if ($svg.attr('viewBox') === undefined) {
-    throw new Error(`Icon "${iconPath}" hasn't viewBox attribute`);
+    const $ = cheerio.load(svg, { xmlMode: true });
+    const $svg = $('svg');
+    if ($svg.attr('viewBox') === undefined) {
+      throw new Error(`Icon "${iconPath}" hasn't viewBox attribute`);
+    }
+    $svg.find('path').attr('shape-rendering', 'geometricPrecision');
+    const iconSvg = converter
+      ? converter.convert(`<svg>${$svg.html()}</svg>`)
+      : `<svg>${$svg.html()}</svg>`;
+
+    const source = template({
+      ...$svg[0].attribs,
+      sourcePath: iconSvg.replace(/<(\/)?svg>(\n)?/g, ''),
+      dataName: name,
+      dataGroup: group.toLowerCase(),
+      name,
+    });
+
+    return source;
+  } catch (err) {
+    throw new Error(err);
   }
-  $svg.find('path').attr('shape-rendering', 'geometricPrecision');
-  const iconSvg = converter
-    ? converter.convert(`<svg>${$svg.html()}</svg>`)
-    : `<svg>${$svg.html()}</svg>`;
-  const viewBox = $svg.attr('viewBox');
-  const width = $svg.attr('width');
-  const height = $svg.attr('height');
-
-  const source = template({
-    NAME: name,
-    SOURCE_PATH: iconSvg.replace(/<(\/)?svg>(\n)?/g, ''),
-    VIEW_BOX: viewBox,
-    WIDTH: width,
-    HEIGHT: height,
-    DATA_NAME: name,
-    DATA_GROUP: group.toLowerCase(),
-  });
-
-  return source;
 }
 
-const generateIcons = (sourceLib, outLib, getDescriptionIcons, babelEnv) => {
+const generateIcons = (
+  sourceLib,
+  outLib,
+  getDescriptionIcons,
+  babelConfig = defaultBabelConfig,
+) => {
   return new Promise((resolve, reject) => {
     glob(`${rootDir}/${sourceLib}/**/*svg`, async (err, icons) => {
       if (err) reject(error);
       const results = icons.map(async (iconPath) => {
         const { name, location, group } = getDescriptionIcons(iconPath, outLib);
         const source = await svgToReactComponent(iconPath, name, group);
-        const { code } = await babel.transformAsync(source, {
-          filename: iconPath,
-          envName: babelEnv,
-          presets: ['@semcore/babel-preset-ui'],
-        });
-        const outPathParse = path.parse(path.join(rootDir, location));
-        outputFile(
-          path.format({ ...outPathParse, base: '', ext: BABEL_ENV_EXTENSIONS_MAP[babelEnv] }),
-          code,
-        );
+        const { code } = await babel.transformAsync(source, babelConfig);
+
+        outputFile(path.join(rootDir, location), code);
         // create d.ts files
-        outputFile(path.format({ ...outPathParse, base: '', ext: '.d.ts' }), templateDTS(name));
+        outputFile(path.join(rootDir, location.replace('.js', '.d.ts')), templateDTS(name));
         return { name, location, group };
       });
 
@@ -109,7 +108,6 @@ const generateIcons = (sourceLib, outLib, getDescriptionIcons, babelEnv) => {
 };
 
 function getDescriptionPayIcons(iconPath, outLib) {
-  if (sourceFolder === 'svg-new') return getDescriptionIcons(iconPath, outLib);
   const name = path.basename(iconPath, '.svg').replace(/('|\s)/g, '');
   const location = `${outLib}/${name}/index.js`;
 
@@ -121,32 +119,14 @@ function getDescriptionPayIcons(iconPath, outLib) {
 }
 
 module.exports = function () {
-  const icons = ['commonjs', 'es6'].reduce(
-    (icons, babelEnv) =>
-      icons.concat([
-        generateIcons(
-          `${sourceFolder}/color`,
-          `${outputFolder}/color`,
-          getDescriptionIcons,
-          babelEnv,
-        ),
-        generateIcons(
-          `${sourceFolder}/external`,
-          `${outputFolder}/external`,
-          getDescriptionExternalIcons,
-          babelEnv,
-        ),
-        generateIcons(
-          `${sourceFolder}/pay`,
-          `${outputFolder}/pay`,
-          getDescriptionPayIcons,
-          babelEnv,
-        ),
-        generateIcons(`${sourceFolder}/icon`, outputFolder, getDescriptionIcons, babelEnv),
-      ]),
-    [],
-  );
-  Promise.all(icons)
+  Promise.all(
+    tasks({
+      generateIcons,
+      getDescriptionIcons,
+      getDescriptionExternalIcons,
+      getDescriptionPayIcons,
+    }),
+  )
     .then(() => {
       console.log('Done! Wrote all icon files.');
     })

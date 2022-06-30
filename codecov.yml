@@ -1,3 +1,3 @@
 comment:
   branches:
-   - "!release/*"
+    - '!release/*'
