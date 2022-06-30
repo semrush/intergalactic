@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.2.0] - 2022-06-30
+
+### Changed
+
+- Updated svg images for all charts, nothing found and congratulations states.
+
 ## [3.1.0] - 2022-06-01
 
 ### Changed
