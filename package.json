@@ -67,7 +67,7 @@
     }
   },
   "lint-staged": {
-    "*.tsx": "./node_modules/.bin/eslint --fix"
+    "*.{ts,tsx,js,jsx}": "eslint --fix"
   },
   "workspaces": [
     "semcore/accordion",
