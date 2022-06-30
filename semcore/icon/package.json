@@ -10,10 +10,10 @@
   "license": "MIT",
   "scripts": {
     "parsing": "icon-transform-svg parsing",
-    "transform": "icon-transform-svg --sourceFolder=svg-new --outputFolder=.",
-    "transform:old-icon": "icon-transform-svg --sourceFolder=svg --outputFolder=lib --deprecated-warning",
-    "build": "build --source=js && npm run transform:old-icon && npm run transform",
-    "test": "jest"
+    "transform": "icon-transform-svg",
+    "build": "build --source=js && npm run transform -- --configFile=transform-svg-legacy.config.js && npm run transform -- --configFile=transform-svg.config.js",
+    "test": "jest",
+    "prebuild": "ls -d */ | egrep -v \"__tests__|src|svg|svg-new\" | xargs rm -rf"
   },
   "dependencies": {
     "@semcore/utils": "^3.15",
@@ -33,6 +33,7 @@
     "directory": "semcore/icon"
   },
   "devDependencies": {
-    "@semcore/jest-preset-ui": "1.0.0"
+    "@semcore/jest-preset-ui": "1.0.0",
+    "@semcore/icon-transform-svg": "1.0.0"
   }
 }

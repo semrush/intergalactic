@@ -78,7 +78,7 @@ const tryToResolveIndexFile = async (path: string) => {
 };
 
 const rootFiles = ['README.md', 'package.json'];
-const generatedComponents = ['icon', 'ui'];
+const generatedComponents = ['icon', 'ui', 'illustration'];
 const outOfSourceDirs = ['style'];
 
 export const esbuildPluginSemcoreSourcesResolve = (): Plugin => ({
