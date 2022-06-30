@@ -81,6 +81,7 @@ function Stepper(props) {
   const SStepper = Root;
   const SStepNumber = 'span';
   const SStepDescription = 'span';
+  const SCompleted = CheckM;
 
   const handlerClick = useCallback(
     (e) => {
@@ -107,7 +108,7 @@ function Stepper(props) {
       onClick={handlerClick}
       onKeyPress={handlerKeyPress}
     >
-      <SStepNumber>{completed ? <CheckM /> : number}</SStepNumber>
+      <SStepNumber>{completed ? <SCompleted /> : number}</SStepNumber>
       <SStepDescription>
         <Children />
       </SStepDescription>
