@@ -9,7 +9,7 @@
   "license": "MIT",
   "scripts": {
     "transform": "icon-transform-svg",
-    "build": "npm run transform -- --configFile=transform-svg.config.js && cp svg/* ./",
+    "build": "npm run transform -- --configFile=transform-svg.config.js",
     "prebuild": "ls -d */ | egrep -v \"__tests__|svg\" | xargs rm -rf && rm *.svg || true"
   },
   "dependencies": {
