@@ -27,18 +27,18 @@ const parsingSvg = async (filePath) => {
     normalizeWhitespace: false,
   });
 
-  const pathSvg = $('body').find('path').removeAttr('id');
+  const $body = $('body');
 
-  const polygonSvg = $('body').find('polygon').removeAttr('id');
+  const pathSvg = $body.find('path').removeAttr('id');
 
-  const svg = $('body').find('svg');
+  const polygonSvg = $body.find('polygon').removeAttr('id');
+
+  const svg = $body.find('svg');
 
   pathSvg.length && svg.empty().prepend(pathSvg);
   polygonSvg.length && svg.empty().prepend(polygonSvg);
 
-  const result = $('body').html();
-
-  return result;
+  return $body.html();
 };
 
 const createPublicPath = (filePath, publicPath) => {
