@@ -37,6 +37,9 @@ SStepper {
   padding: 8px 12px;
   cursor: pointer;
   position: relative;
+  overflow: auto;
+  line-height: var(--lh-200);
+
   &:hover {
     background: var(--violet-700);
     z-index: 1;
@@ -72,6 +75,10 @@ SStepper {
 SStepNumber {
   display: inline-block;
   min-width: 24px;
+}
+
+SCompleted {
+  margin-top: 1px;
 }
 
 SStepDescription {
