@@ -10,7 +10,7 @@ export default PlaygroundGeneration((createGroupWidgets) => {
     key: 'size',
     defaultValue: 'm',
     label: 'Size',
-    options: ['l', 'm'],
+    options: [`xl`, 'l', 'm'],
   });
 
   const COLORS = [
