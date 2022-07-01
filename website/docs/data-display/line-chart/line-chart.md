@@ -26,7 +26,7 @@ If you have an array of values for a certain period, you can use this chart type
 
 @## Appearance
 
-By default, we show a chart with straight lines. This view facilitates reading the trend; this is what most people look at the chart for.
+By default, we show a chart with straight lines. This view facilitates reading the exact values on the trend. This is what most people look at the chart for.
 
 > 💡 Add a possibility to select either straight or smooth line type in the widget settings.
 
