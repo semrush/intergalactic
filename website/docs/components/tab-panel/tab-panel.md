@@ -8,57 +8,57 @@ tabName: Design
 
 @## Description
 
-**TabPanel** is a component for navigating inside a report and grouping heterogeneous content. It is usually placed in the [ProductHead](/components/product-head) of the report.
+**TabPanel** is a component for grouping heterogeneous content.
 
-> 💡 **Do not use TabPanel for basic navigation.** For this purpose, use the left menu as it is more important in terms of visual hierarchy of the page. Do not use TabPanel for switching states, use [Switch](/components/switch/) and [Radio](/components/radio/) for it.
+> **Do not use this component:**
+>
+> - for basic navigation in your interface. For this purpose use the main menu instead as it is more apropriate in terms of visual hierarchy;
+> - for switching states. For these cases use [Switch](/components/switch/) or [Radio](/components/radio/) instead.
 
 @## Appearance
 
-The TabPanel component has one size, which is L (`height: 32px`). Addon padding before and after text is 8px. Right and left margins of the component are always 30px.
+### Sizes and paddings
 
-| Margins and paddins                        | Styles                                 |
-| ------------------------------------------ | -------------------------------------- |
-| ![tabs-paddings](static/tabs-paddings.png) | `font-size: 14px; line-height: 1.2em;` |
+For TabPanel of all sizes sizes:
 
-@## Addons
+- the right margin of TabPanel.Item is 16px (except for `last-child`);
+- margins of addons before and after the text is 8px.
 
-Addons in the TabPanel are optional. Their Paddings are the same as for addons in [Button](/components/button/) and other controls.
+![tab-m](static/tab-m.png)
 
-> 💡 Please note that **the icon cannot stand alone in the tab without any text**.
+### Addons
 
-|                                 | Indents                          |
-| ------------------------------- | -------------------------------- |
-| Icon of S size in front of text | ![icon-addon](static/icon.png)   |
-| Flag before text                | ![flag-addon](static/flag.png)   |
-| Badge with status               | ![badge-addon](static/badge.png) |
+Addon margins for TabPanel.Item correspond to addon margins in [Button](/components/button/) and other controls.
 
-> 💡 A flag and an icon cannot be placed in a tab at the same time.
+> 💡 Please do not place icon without a text inside TabPanel.Item.
+
+| Addon   | Appearance example               |
+| ------- | -------------------------------- |
+| Icon    | ![icon-addon](static/icon.png)   |
+| Flag    | ![flag-addon](static/flag.png)   |
+| Badge   | ![badge-addon](static/badge.png) |
+| Counter | ![counter](static/counter.png)   |
+
+> 💡 **A flag and an icon can not be placed in a tab at the same time**. If there are badge and counter inside the tab, then place badge after the counter.
 
 @## Interaction
 
-> 💡 It is recommended to make tabs with links, so that the user can open different tabs of the report in different tabs with the right mouse button if necessary.
+> 💡 We recommended to make tabs with links, so the user can open different tabs of the report in different tabs with the right mouse button if necessary.
 
-| State    | Appearance                                | Styles                                                                                                            |
-| -------- | ----------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
-| normal   | ![normal-state](static/normal-active.png) | `color: $gray40; icon-color: $gray40;`                                                                            |
-| hover    | ![hover-state](static/hover.png)          | `color: $gray20;`                                                                                                 |
-| active   | ![active-state](static/normal-active.png) | `color: $denim-blue; border: 1px solid $gray80; border-bottom: 1px solid #fff;`                                   |
-| disabled | ![disabled-state](static/disabled.png)    | `opacity: .3;` If the tab is in the disabled state, it is necessary to put a tooltip explaining the reason on it. |
+| State           | Appearance                                           | Styles                                                                                                                                                                                                                |
+| --------------- | ---------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| normal          | ![normal state](static/normal-active.png)            | `color: var(--gray-500);`                                                                                                                                                                                             |
+| hover           | ![hover state](static/hover.png)                     | `color: var(--gray-800);`                                                                                                                                                                                             |
+| active          | ![active state](static/normal-active.png)            | `color: var(--blue-500);`, `border-width: 1px 1px 0px 1px; border-style: solid; border-color: var(--gray-200); border-radius: 6px 6px 0px 0px`                                                                        |
+| disabled        | ![disabled state](static/disabled.png)               | `opacity: .3;`                                                                                                                                                                                                        |
+| initial loading | ![initial loading state](static/initial-loading.png) | When it is necessary to show that the data in the counter inside the TabPanel.Item is being loaded for the first time, use [Skeleton](/components/skeleton/) with the size of the text's line-height.                 |
+| loading         | ![loading state](static/loading.png)                 | When it is necessary to show that the data in the counter inside the TabPanel.Item is being loaded, use [Spin](/components/spin/) with the smallest size (the sizes are the same as in [Button](/components/button)). |
 
-@## Placement in the interface
+@## Long text
 
-TabPanel is always placed under the [ProductHead](/components/product-head/) of the report, after the title, additional controls and filters that affect the entire report.
+In cases when you have many tabs or there is not enough space for the tab text, collapse the text into the `ellipsis`.
 
-- **The margin between ProductHead and TabPanel is always 16px.**
-- The margin between TabPanel and title/widget below is always 24px.
-
-![tabs-margins](static/tabs_margins.png)
-
-@## Text shortening in the tab
-
-In cases when we have many tabs or there is not enough space for the tab text, we shorten the text into the `ellipsis`.
-
-> 💡 Be sure to put the full text tooltip on the tabs with the text shortened into the `ellipsis`.
+> 💡 Be sure to add the full text tooltip to such tabs.
 
 ![ellipsis](static/ellipsis.png)
 
