@@ -28,9 +28,9 @@ For TabPanel of all sizes sizes:
 
 ### Addons
 
-Addon margins for TabPanel.Item correspond to addon margins in [Button](/components/button/) and other controls.
+Addons inside TabLine.Item has the same margins addons inside the [Button](/components/button/) have.
 
-> 💡 Please do not place icon without a text inside TabPanel.Item.
+> 💡 Do not place icon without a text inside TabPanel.Item.
 
 | Addon   | Appearance example               |
 | ------- | -------------------------------- |
@@ -43,7 +43,7 @@ Addon margins for TabPanel.Item correspond to addon margins in [Button](/compone
 
 @## Interaction
 
-> 💡 We recommended to make tabs with links, so the user can open different tabs of the report in different tabs with the right mouse button if necessary.
+> 💡 We recommended to add links to tabs, so the user can open different tabs of the report in different tabs with the right mouse button if necessary.
 
 | State           | Appearance                                           | Styles                                                                                                                                                                                                                |
 | --------------- | ---------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

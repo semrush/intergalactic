@@ -31,7 +31,7 @@ For TabLine of all sizes sizes:
 
 ### Addons
 
-Addon margins for TabLine.Item correspond to addon margins in [Button](/components/button/) and other controls.
+Addons inside TabLine.Item has the same margins addons inside the [Button](/components/button/) have.
 
 > 💡 Please do not place icon without a text inside TabLine.Item.
 
