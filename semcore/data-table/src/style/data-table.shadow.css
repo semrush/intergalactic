@@ -290,4 +290,6 @@ SHeightHold {
   top: 0;
   width: 100%;
   pointer-events: none;
+  /* should be under other layers */
+  z-index: -1;
 }
