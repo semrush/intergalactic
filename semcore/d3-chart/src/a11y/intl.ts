@@ -1,11 +1,11 @@
 import { createIntl, createIntlCache, IntlShape } from '@formatjs/intl';
 import { normalizeLocale } from './locale';
-import { translations } from './translations/view/translations';
+import { translations as defaultTranslations } from './translations/view/translations';
 
-export type Intl = IntlShape<typeof translations[keyof typeof translations]>;
+export type Intl = IntlShape<typeof defaultTranslations[keyof typeof defaultTranslations]>;
 const messagesCache = createIntlCache();
 const intlCache: { [locale: string]: ReturnType<typeof createIntl> } = {};
-export const getIntl = (locale: string) => {
+export const getIntl = (locale: string, translations = defaultTranslations) => {
   locale = normalizeLocale(locale, translations) ?? 'en';
   intlCache[locale] = createIntl(
     {

@@ -4,11 +4,16 @@ import React from 'react';
 import { DataSummarizationConfig } from './hints';
 import { getIntl, Intl } from './intl';
 
-const formatLimitedSizeList = (items: unknown[], intl: Intl, maxFinalStringLength = 100) => {
+const formatLimitedSizeList = (
+  items: unknown[],
+  intl: Intl,
+  maxFinalStringLength = 100,
+  includeEllipsis = true,
+) => {
   let limit = items.length;
   const stringifyList = () => {
     const cutItems = items.slice(0, limit);
-    if (items.length > limit) {
+    if (items.length > limit && includeEllipsis) {
       cutItems.push(intl.formatMessage({ id: 'ellipsis' }, { leftCount: items.length - limit }));
     }
 
@@ -19,6 +24,7 @@ const formatLimitedSizeList = (items: unknown[], intl: Intl, maxFinalStringLengt
   if (formattedList.length <= maxFinalStringLength) {
     return formattedList;
   }
+  // TODO: optimize
   const initialLimit = limit;
   while (formattedList.length > maxFinalStringLength) {
     const newLimit = Math.round(limit / 2);
@@ -88,11 +94,14 @@ export const formatValue = (
 export const serialize = (
   { insights, dataType, dataRange, dataTitle }: AnalyzedData,
   { datesWithTime, maxListSymbols, clustersLimit, valuesLimit }: DataSummarizationConfig,
-  locale: string,
-) => {
+  {
+    locale,
+    translations,
+  }: { locale: string; translations?: { [locale: string]: { [messageId: string]: string } } },
+): string | null => {
   if (insights.length === 0) return null;
 
-  const intl = getIntl(locale);
+  const intl = getIntl(locale, translations);
 
   const from =
     dataRange &&
@@ -111,17 +120,17 @@ export const serialize = (
 
   if (dataType === 'time-series') {
     const trendsInsights = insights as (GeneralTrendNode | TrendNode)[];
-    const trendsByLabel: { [label: string]: (GeneralTrendNode | TrendNode)[] } = {};
+    const trendsByDataKey: { [label: string]: (GeneralTrendNode | TrendNode)[] } = {};
     for (const insight of trendsInsights) {
-      trendsByLabel[insight.label] = trendsByLabel[insight.label] ?? [];
-      trendsByLabel[insight.label].push(insight);
+      trendsByDataKey[insight.dataKey] = trendsByDataKey[insight.dataKey] ?? [];
+      trendsByDataKey[insight.dataKey].push(insight);
     }
 
     const entities = intl.formatMessage(
       { id: 'entity-type-time-series' },
-      { count: Object.keys(trendsByLabel).length },
+      { count: Object.keys(trendsByDataKey).length },
     );
-    const entitiesList = intl.formatList(Object.keys(trendsByLabel));
+    const entitiesList = intl.formatList(Object.keys(trendsByDataKey));
     const summaryHead = intl.formatMessage(
       { id: dataTitle ? 'chart-summary' : 'chart-summary-no-label' },
       { entities, entitiesList, label: dataTitle },
@@ -134,21 +143,23 @@ export const serialize = (
       );
       result.push(additionalAxe);
     }
-    const summaryBody = Object.entries(trendsByLabel).map(([label, insights]) => {
+    const summaryBody = Object.entries(trendsByDataKey).map(([dataKey, insights]) => {
       const generalTrend = insights.find((insight) => insight.type === 'general-trend');
       const localTrends = insights.filter((insight) => insight !== generalTrend);
-      const namedTrend = generalTrend ?? localTrends[0];
-      const unnamedTrends = insights.filter((insight) => insight !== namedTrend);
-      const mainSummary = intl.formatMessage(
+      const primaryTrend = generalTrend ?? localTrends[0];
+      const secondaryTrends: (TrendNode | GeneralTrendNode)[] = insights.filter(
+        (insight) => insight !== primaryTrend,
+      );
+      const mainSummary: string = intl.formatMessage(
         { id: 'time-series-general-trend' },
         {
-          label,
-          trend: intl.formatMessage({ id: `trend-${namedTrend.change.strength}` }),
-          from: intl.formatNumber(namedTrend.change.from),
-          to: intl.formatNumber(namedTrend.change.to),
+          dataKey,
+          trend: intl.formatMessage({ id: `trend-${primaryTrend.change.strength}` }),
+          from: intl.formatNumber(primaryTrend.change.from),
+          to: intl.formatNumber(primaryTrend.change.to),
         },
       );
-      const additionalSummaries = unnamedTrends.map((trend) =>
+      const secondarylSummaries = secondaryTrends.map((trend) =>
         intl.formatMessage(
           { id: 'time-series-local-trend' },
           {
@@ -167,7 +178,7 @@ export const serialize = (
         ),
       );
 
-      if (additionalSummaries.length === 0) {
+      if (secondarylSummaries.length === 0) {
         return mainSummary;
       }
 
@@ -177,7 +188,7 @@ export const serialize = (
         },
         {
           general: mainSummary,
-          locals: intl.formatList(additionalSummaries),
+          locals: formatLimitedSizeList(secondarylSummaries, intl, 500, false),
         },
       );
     });
@@ -261,4 +272,6 @@ export const serialize = (
     );
     return sumamry;
   }
+
+  return null;
 };
