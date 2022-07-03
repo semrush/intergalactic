@@ -10,6 +10,7 @@ export type DataStructureHints = {
   fields: {
     verticalAxes: Set<string>;
     horizontalAxes: Set<string>;
+    valueAxes: Set<string>;
     values: {
       [fieldName: string]: unknown;
     };
@@ -54,6 +55,7 @@ export const makeDataHintsContainer = (): DataStructureHints => ({
   fields: {
     verticalAxes: new Set(),
     horizontalAxes: new Set(),
+    valueAxes: new Set(),
     values: {},
   },
   title: {
@@ -70,9 +72,12 @@ export const makeDataHintsContainer = (): DataStructureHints => ({
 
 export const makeDataHintsHandlers = (mutableContainer: DataStructureHints) => {
   const handler = {
-    specifyDataRowFields: (x: string, y: string) => {
+    specifyDataRowFields: (x: string, y: string, value?: string) => {
       mutableContainer.fields.verticalAxes.add(y);
       mutableContainer.fields.horizontalAxes.add(x);
+      if (value) {
+        mutableContainer.fields.valueAxes.add(value);
+      }
     },
     setupGrid: (direction: 'vertical' | 'horizontal', size: number) => {
       if (direction === 'horizontal') {
@@ -117,7 +122,7 @@ export const makeDataHintsHandlers = (mutableContainer: DataStructureHints) => {
 export type DataHintsHandler = ReturnType<typeof makeDataHintsHandlers>;
 
 export const makeDataSummarizationConfig = (
-  config: PartialDataSummarizationConfig,
+  config?: PartialDataSummarizationConfig,
 ): DataSummarizationConfig => ({
   clustersGridSize: undefined,
   maxListSymbols: 100,
