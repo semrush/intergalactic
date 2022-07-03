@@ -1,3 +1,4 @@
+import { makeBezier } from './bezier';
 import { DataStructureHints, DataSummarizationConfig } from './hints';
 
 export type TrendNode = {
@@ -17,7 +18,7 @@ export type TrendNode = {
   };
   from: unknown;
   to: unknown;
-  label: string;
+  dataKey: string;
 };
 export type GeneralTrendNode = Omit<TrendNode, 'type'> & { type: 'general-trend' };
 export type ComparisonNode = {
@@ -29,6 +30,14 @@ export type ComparisonNode = {
   }[];
 };
 
+type ClusterRelativeSize =
+  | 'significantly-smaller'
+  | 'smaller'
+  | 'slightly-smaller'
+  | 'average'
+  | 'slightly-bigger'
+  | 'bigger'
+  | 'significantly-bigger';
 export type ClusterNode = {
   type: 'cluster';
   priority: number;
@@ -40,14 +49,7 @@ export type ClusterNode = {
     y: number;
     yLabel: string;
   };
-  relativeSize:
-    | 'significantly-smaller'
-    | 'smaller'
-    | 'slightly-smaller'
-    | 'average'
-    | 'slightly-bigger'
-    | 'bigger'
-    | 'significantly-bigger';
+  relativeSize: ClusterRelativeSize;
 };
 export type Insight = TrendNode | GeneralTrendNode | ComparisonNode | ClusterNode;
 
@@ -66,48 +68,19 @@ export type AnalyzedData = {
 
 const movingAverage = (data: number[], frame: number) => {
   const result: number[] = [];
-  let lastPivot: null | number = null;
-  let computedStart: null | number = null;
-  for (let i = frame / 2; i < data.length - frame / 2; i += frame) {
-    const startIndex = i - frame / 2;
-    const endIndex = i + frame / 2;
+  frame = Math.floor(frame) % 2 === data.length % 2 ? Math.floor(frame) : Math.ceil(frame);
 
-    const part = data.slice(Math.floor(startIndex), Math.ceil(endIndex));
+  for (let i = 0; i < data.length; i++) {
+    let startIndex = Math.max(0, i - Math.floor(frame / 2));
+    let endIndex = Math.min(data.length, i + Math.ceil(frame / 2));
+    startIndex = Math.min(startIndex, Math.max(0, endIndex - frame));
+    endIndex = Math.max(endIndex, Math.min(data.length, startIndex + frame));
+    const part = data.slice(startIndex, endIndex);
     const sum = part.reduce((sum, item) => sum + item, 0);
-    const pivot = sum / part.length;
-    if (lastPivot !== null) {
-      for (let i = startIndex; i < endIndex; i++) {
-        const base = lastPivot;
-        const diff = pivot - lastPivot;
-        const progress = (i - startIndex) / (endIndex - startIndex);
-        result[Math.floor(i)] = base + diff * progress;
-      }
-      if (computedStart === null) {
-        computedStart = Math.floor(startIndex);
-      }
-    }
-
-    lastPivot = pivot;
+    const value = sum / part.length;
+    result.push(value);
   }
-  const edgeFrame = Math.floor(frame / 2 + 1);
-  for (let i = 0; i <= edgeFrame; i++) {
-    if (result[i] !== undefined || computedStart === null) break;
-    const base = result[computedStart];
-    const diff = ((result[computedStart + 1] - result[computedStart]) / 2) * edgeFrame;
-    const progress = edgeFrame - i + 1; //1 - (edgeFrame - i) / edgeFrame;
-    result[i] = base - diff * progress;
-  }
-  const computedEnd = result.length - 1;
-  const tailFrame = data.length - computedEnd;
-  for (let i = computedEnd; i <= data.length + edgeFrame; i++) {
-    if (result[i] !== undefined) continue;
-    const base = result[computedEnd];
-    const diff = ((result[computedEnd] - result[computedEnd - 1]) / 2) * tailFrame;
-    const progress = i - computedEnd;
-    result[i] = base + diff * progress;
-  }
-
-  return result.slice(edgeFrame, edgeFrame + data.length);
+  return result;
 };
 
 export const extractDataInsights = (
@@ -118,25 +91,30 @@ export const extractDataInsights = (
   let insights: AnalyzedData['insights'] = [];
   let dataType: AnalyzedData['dataType'] | null = config.dataType ?? hints.dataType;
   let dataRange: AnalyzedData['dataRange'] | null = null;
-  let dataTitle: string | null = null;
+  const dataTitle: string | null = hints.title.verticalAxes ?? hints.title.horizontalAxes;
+
+  const keysMap = Object.fromEntries(
+    Object.keys(Array.isArray(data) ? data[0] : data).map((key) => [key, true]),
+  );
+
+  if (!dataType) {
+    if (
+      ((keysMap['y'] || keysMap['y1'] || keysMap['y2']) &&
+        keysMap['x'] &&
+        (keysMap['value'] || keysMap['label'])) ||
+      (hints.fields.horizontalAxes.size > 0 &&
+        hints.fields.verticalAxes.size > 0 &&
+        hints.fields.valueAxes.size > 0)
+    ) {
+      dataType = 'points-cloud';
+    } else if (Array.isArray(data) && data.length > 6) {
+      dataType = 'time-series';
+    } else {
+      dataType = 'values-set';
+    }
+  }
 
   if (Array.isArray(data)) {
-    const keysMap = Object.fromEntries(Object.keys(data[0]).map((key) => [key, true]));
-
-    if (!dataType) {
-      if (
-        (keysMap['y'] || keysMap['y1'] || keysMap['y2']) &&
-        keysMap['x'] &&
-        (keysMap['value'] || keysMap['label'])
-      ) {
-        dataType = 'points-cloud';
-      } else if (data.length > 6) {
-        dataType = 'time-series';
-      } else {
-        dataType = 'values-set';
-      }
-    }
-
     if (dataType === 'time-series') {
       const firstRow = data[0];
       const lastRow = data[data.length - 1];
@@ -149,9 +127,8 @@ export const extractDataInsights = (
       dataRange = {
         from: firstRow[labelsKey] as any,
         to: lastRow[labelsKey] as any,
-        label: hints.title.verticalAxes,
+        label: hints.title.verticalAxes ?? labelsKey[0],
       };
-      dataTitle = hints.title.verticalAxes ?? hints.title.horizontalAxes;
 
       for (const valueKey of valuesKeys) {
         const values = (data as Record<string, number>[]).map((row) => row[valueKey]);
@@ -164,11 +141,19 @@ export const extractDataInsights = (
         const trendStrengths = ['static', 'weak', 'medium', 'strong'] as const;
 
         const frameSize = Math.sqrt(values.length);
-        const longMovingAverage = movingAverage(values, config.movingAverage.longSize ?? frameSize);
-        const shortMovingAverage = movingAverage(
-          values,
-          config.movingAverage.shortSize ?? frameSize / 2,
-        );
+        const longMovingAverageSize = config.movingAverage.longSize ?? frameSize;
+        const shortMovingAverageSize = config.movingAverage.shortSize ?? Math.sqrt(frameSize);
+        const longMovingAverage = movingAverage(values, longMovingAverageSize);
+        const shortMovingAverage = movingAverage(values, shortMovingAverageSize);
+
+        const table = [];
+        for (const i in values) {
+          table.push({
+            value: values[i].toFixed(2),
+            long: (longMovingAverage[i] ?? NaN).toFixed(2),
+            short: (shortMovingAverage[i] ?? NaN).toFixed(2),
+          });
+        }
 
         const strengthsMap = {
           growth: {
@@ -193,13 +178,13 @@ export const extractDataInsights = (
         }: {
           value: { from: number; to: number };
           width: number;
-          label: { from: unknown; to: unknown; data: string };
+          label: { from: unknown; to: unknown; dataKey: string };
           type: 'general-trend' | 'trend';
         }): GeneralTrendNode | TrendNode | undefined => {
           for (let i = 0; i < trendStrengths.length; i++) {
             const tang = Math.abs(value.from - value.to) / width;
             const trendStrength = trendStrengths[i];
-            if (tang <= config.trendTangens[trendStrength]) {
+            if (tang <= config.trendTangens[trendStrength] || i === trendStrengths.length - 1) {
               const strength =
                 value.to > value.from
                   ? strengthsMap.growth[trendStrength]
@@ -215,7 +200,7 @@ export const extractDataInsights = (
                 },
                 from: label.from,
                 to: label.to,
-                label: label.data,
+                dataKey: label.dataKey,
               };
             }
           }
@@ -228,38 +213,62 @@ export const extractDataInsights = (
             to: longMovingAverage[longMovingAverage.length - 1],
           },
           width: longMovingAverage.length,
-          label: { from: firstRow[labelsKey], to: lastRow[labelsKey], data: valueKey },
+          label: { from: firstRow[labelsKey], to: lastRow[labelsKey], dataKey: valueKey },
         })!;
         const localTrends: Insight[] = [];
         {
+          const notableDiff = config.movingAverage.notableDiff ?? standardDeviation / 10;
           let lastSwitch = 0;
+          let lastSwitchValue = shortMovingAverage[lastSwitch];
           let shortWasAbove = shortMovingAverage[0] > longMovingAverage[0];
           for (let i = 1; i < data.length; i++) {
             const shortIsAbove = shortMovingAverage[i] > longMovingAverage[i];
             const diff = Math.abs(shortMovingAverage[i] - longMovingAverage[i]);
-            const notableDiff = config.movingAverage.notableDiff ?? standardDeviation / 10;
-            if (
-              (shortIsAbove !== shortWasAbove && diff > notableDiff) ||
-              (i === 0 && lastSwitch !== data.length)
-            ) {
-              i = Math.min(i + 2, data.length - 1);
+
+            if (shortIsAbove === shortWasAbove) continue;
+            if (diff < notableDiff) continue;
+            if (i === 0 && lastSwitch === data.length - 1) continue;
+            if (i === data.length - 1 && lastSwitch === 0) continue;
+            i = Math.min(i, data.length - 1);
+            localTrends.push(
+              recordTrend({
+                type: 'trend',
+                value: {
+                  from: lastSwitchValue,
+                  to: shortMovingAverage[i],
+                },
+                width: i - lastSwitch,
+                label: {
+                  from: data[lastSwitch][labelsKey],
+                  to: data[i][labelsKey],
+                  dataKey: valueKey,
+                },
+              })!,
+            );
+            lastSwitch = i;
+            lastSwitchValue = shortMovingAverage[lastSwitch];
+            shortWasAbove = shortIsAbove;
+          }
+
+          if (lastSwitch !== 0) {
+            const lastIndex = shortMovingAverage.length - 1;
+            const lastValue = shortMovingAverage[lastIndex];
+            if (Math.abs(lastSwitchValue - lastValue) > notableDiff) {
               localTrends.push(
                 recordTrend({
                   type: 'trend',
                   value: {
-                    from: shortMovingAverage[lastSwitch],
-                    to: shortMovingAverage[i],
+                    from: lastSwitchValue,
+                    to: lastValue,
                   },
-                  width: i - lastSwitch,
+                  width: lastIndex - lastSwitch,
                   label: {
                     from: data[lastSwitch][labelsKey],
-                    to: data[i][labelsKey],
-                    data: valueKey,
+                    to: data[lastIndex][labelsKey],
+                    dataKey: valueKey,
                   },
                 })!,
               );
-              lastSwitch = i;
-              shortWasAbove = shortIsAbove;
             }
           }
         }
@@ -269,7 +278,7 @@ export const extractDataInsights = (
     } else if (dataType === 'points-cloud') {
       const guessedXKey = [...hints.fields.horizontalAxes.values(), 'x'][0];
       const guessedYKey = [...hints.fields.verticalAxes.values(), 'y'][0];
-      const guessedValueKey = 'value';
+      const guessedValueKey = [...hints.fields.valueAxes.values(), 'value'][0];
       const guessedLabelKey = keysMap['label'] ? 'label' : guessedValueKey;
       const normalized = data.map((row) => ({
         x: row[guessedXKey] as number,
@@ -279,7 +288,7 @@ export const extractDataInsights = (
       }));
       let gridSize =
         config.clustersGridSize ?? hints.grid.verticalAxes ?? hints.grid.horizontalAxes;
-      if (gridSize === undefined) {
+      if (!gridSize) {
         const usedX = new Set<number>();
         const usedY = new Set<number>();
         for (const { x, y } of normalized) {
@@ -298,7 +307,16 @@ export const extractDataInsights = (
           belowAvgDistancesX.reduce((sum, x) => sum + x, 0) / belowAvgDistancesX.length;
         const betweenDistanceY =
           belowAvgDistancesY.reduce((sum, y) => sum + y, 0) / belowAvgDistancesY.length;
-        const avgDistance = (betweenDistanceX + betweenDistanceY) / 2;
+        let avgDistance = 0;
+        if (!Number.isNaN(betweenDistanceX) && !Number.isNaN(betweenDistanceY)) {
+          avgDistance = (betweenDistanceX + betweenDistanceY) / 2;
+        } else if (!Number.isNaN(betweenDistanceX)) {
+          avgDistance = betweenDistanceX;
+        } else if (!Number.isNaN(betweenDistanceY)) {
+          avgDistance = betweenDistanceY;
+        } else {
+          avgDistance = (avgDistanceX + avgDistanceY) / 2;
+        }
         gridSize = Math.sqrt(Math.sqrt(avgDistance));
       }
 
@@ -358,24 +376,61 @@ export const extractDataInsights = (
           center: {
             x,
             y,
-            xLabel: guessedXKey,
-            yLabel: guessedYKey,
+            xLabel: hints.title.horizontalAxes ?? guessedXKey,
+            yLabel: hints.title.verticalAxes ?? guessedYKey,
           },
         });
       }
       clustersInsights.sort((a, b) => b.size - a.size);
-      const relativeSizes = [
-        'significantly-bigger',
-        'bigger',
-        'slightly-bigger',
-        'average',
-        'slightly-smaller',
-        'smaller',
-        'significantly-smaller',
-      ] as const;
-      for (let i = 0; i < clustersInsights.length; i++) {
-        clustersInsights[i].relativeSize =
-          relativeSizes[Math.floor(relativeSizes.length * (i / clustersInsights.length))];
+
+      const relativeSizeDistrivution = {
+        ['significantly-bigger']: { max: Infinity, min: 0.85 },
+        ['bigger']: { min: 0.7, max: 0.85 },
+        ['slightly-bigger']: { min: 0.6, max: 0.7 },
+        ['average']: { min: 0.4, max: 0.6 },
+        ['slightly-smaller']: { max: 0.4, min: 0.3 },
+        ['smaller']: { min: 0.15, max: 0.3 },
+        ['significantly-smaller']: { min: -Infinity, max: 0.15 },
+      } as { [key in ClusterRelativeSize]: { min: number; max: number } };
+      const averageSize =
+        clustersInsights.reduce((sum, cluster) => sum + cluster.size, 0) / clustersInsights.length;
+      const smallerClusters = clustersInsights.filter((cluster) => cluster.size < averageSize);
+      const smallerSize =
+        smallerClusters.reduce((sum, cluster) => sum + cluster.size, 0) / smallerClusters.length;
+      const biggerClusters = clustersInsights.filter((cluster) => cluster.size > averageSize);
+      const biggerSize =
+        biggerClusters.reduce((sum, cluster) => sum + cluster.size, 0) / biggerClusters.length;
+
+      const normalizingSize = averageSize * 2;
+      let averageSizeNormalized = averageSize / normalizingSize;
+      let smallerSizeNormalized = smallerSize / normalizingSize;
+      let biggerSizeNormalized = biggerSize / normalizingSize;
+
+      smallerSizeNormalized = !Number.isNaN(smallerSizeNormalized) ? smallerSizeNormalized : 0.25;
+      averageSizeNormalized = !Number.isNaN(averageSizeNormalized) ? averageSizeNormalized : 0.5;
+      biggerSizeNormalized = !Number.isNaN(biggerSizeNormalized) ? biggerSizeNormalized : 0.75;
+
+      const sizeMapBezier = makeBezier(
+        [
+          { x: 0, y: 0 },
+          { x: 0.25, y: smallerSizeNormalized, weight: 10 },
+          { x: 0.5, y: averageSizeNormalized },
+          { x: 0.75, y: biggerSizeNormalized, weight: 10 },
+          { x: 1, y: 1 },
+        ],
+        { width: 1, height: 1 },
+      );
+
+      for (const clustersInsight of clustersInsights) {
+        const { size } = clustersInsight;
+        const mappedSize = sizeMapBezier(size / normalizingSize);
+        for (const relativeSize in relativeSizeDistrivution) {
+          const { min, max } = relativeSizeDistrivution[relativeSize as ClusterRelativeSize];
+          if (mappedSize > min && mappedSize <= max) {
+            clustersInsight.relativeSize = relativeSize as ClusterRelativeSize;
+            break;
+          }
+        }
       }
 
       insights.push(...clustersInsights);
@@ -386,7 +441,6 @@ export const extractDataInsights = (
         to: sortedX[sortedX.length - 1] as any,
         label: hints.title.horizontalAxes,
       };
-      dataTitle = hints.title.verticalAxes ?? hints.title.horizontalAxes;
     }
   }
   if (dataType === 'values-set') {
@@ -407,7 +461,6 @@ export const extractDataInsights = (
       values,
       priority: 1,
     });
-    dataTitle = hints.title.verticalAxes ?? hints.title.horizontalAxes;
   }
 
   const hasHighPriorityInsights = insights.some((insight) => insight.priority > 0);

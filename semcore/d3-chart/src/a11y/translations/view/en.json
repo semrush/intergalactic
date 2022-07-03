@@ -11,7 +11,7 @@
   "additional-axe": "{label} represented from {from} to {to}.",
   "additional-axe-no-label": "Data represented from {from} to {to}.",
   "time-series-detailed-trend": "{general}, also {locals}",
-  "time-series-general-trend": "{label} {trend} from {from} to {to}",
+  "time-series-general-trend": "{dataKey} {trend} from {from} to {to}",
   "time-series-local-trend": "{trend} from {from} to {to}",
   "trend-strong-reduction": "strongly declining",
   "trend-reduction": "declining",
