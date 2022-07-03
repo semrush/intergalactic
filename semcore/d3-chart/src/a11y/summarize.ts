@@ -9,6 +9,6 @@ export const summarize = (
   locale: NavigatorLanguage['language'],
 ) => {
   const analyzedData = extractDataInsights(data, hints, config);
-  const summary = serialize(analyzedData, config, locale);
+  const summary = serialize(analyzedData, config, { locale });
   return summary;
 };
