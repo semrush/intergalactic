@@ -18,12 +18,6 @@ export const buildTask = createTask('Building', async (opt) => {
       },
       stdio: 'inherit',
     });
-
-    try {
-      fs.accessSync(path.join(opt.root, 'lib'));
-    } catch (err) {
-      throw new Error('lib not found');
-    }
   }
 
   return opt;
