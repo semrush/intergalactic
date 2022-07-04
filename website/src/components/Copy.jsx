@@ -3,6 +3,7 @@ import Tooltip from '@semcore/tooltip';
 import styles from './Copy.module.css';
 import cx from 'classnames';
 
+const copiedText = 'Copied! You are awesome!';
 class Copy extends PureComponent {
   static defaultProps = {
     textTooltip: 'Click to copy',
@@ -21,13 +22,14 @@ class Copy extends PureComponent {
       this.props.onClick(e);
     }
 
-    this.setState({ textTooltip: 'Copied! You are awesome!' });
-  };
+    this.setState({ textTooltip: copiedText });
 
-  handlerAfterVisibleChange = (visible) => {
-    if (!visible) {
-      this.setState({ textTooltip: this.props.textTooltip });
-    }
+    setTimeout(() => {
+      this.setState((prevState) => {
+        if (prevState.textTooltip !== copiedText) return prevState;
+        return { textTooltip: this.props.textTooltip };
+      });
+    }, 2000);
   };
 
   render() {
@@ -40,7 +42,6 @@ class Copy extends PureComponent {
         className={cx(className, styles.tooltipStyle)}
         title={textTooltip}
         selfProps={{
-          afterVisibleChange: this.handlerAfterVisibleChange,
           popupTransitionName: 'popup-fade',
         }}
       >
