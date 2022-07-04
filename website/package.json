@@ -7,8 +7,9 @@
   "type": "module",
   "scripts": {
     "start": "yarn dev",
-    "dev": "WATCH_TYPES=true tsm ./builder/dev-server.ts",
+    "dev": "yarn build:ensure-icons && WATCH_TYPES=true tsm ./builder/dev-server.ts",
     "build": "PUBLIC_PATH=/intergalactic/ NODE_ENV=production tsm ./builder/ssr.ts --reset-cache",
+    "build:ensure-icons": "tsm ./builder/ensure-icons-built.ts",
     "upload-search-index": "tsm ./searchIndexUpload.ts"
   },
   "dependencies": {
@@ -51,6 +52,7 @@
     "convert-layout": "0.11.1",
     "esbuild": "0.14.29",
     "esbuild-plugin-alias": "0.2.1",
+    "execa": "6.1.0",
     "fast-glob": "3.2.11",
     "hast-util-to-html": "8.0.3",
     "mdast": "3.0.0",
