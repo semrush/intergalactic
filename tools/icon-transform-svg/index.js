@@ -93,10 +93,11 @@ const generateIcons = (
       const results = icons.map(async (iconPath) => {
         const { name, location, group } = getDescriptionIcons(iconPath, outLib);
         const source = await svgToReactComponent(iconPath, name, group);
-        const { code } = await babel.transformAsync(source, babelConfig);
+        const cjs = await babel.transformAsync(source, babelConfig);
+        const esm = await babel.transformAsync(source, { presets: ['@babel/preset-react'] });
 
-        outputFile(path.join(rootDir, location), code);
-        // create d.ts files
+        outputFile(path.join(rootDir, location), cjs.code);
+        outputFile(path.join(rootDir, location.replace('.js', '.mjs')), esm.code);
         outputFile(path.join(rootDir, location.replace('.js', '.d.ts')), templateDTS(name));
         return { name, location, group };
       });
