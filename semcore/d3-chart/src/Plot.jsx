@@ -6,6 +6,7 @@ import { eventToPoint, uniqueId } from './utils';
 import style from './style/plot.shadow.css';
 import { PlotA11yModule } from './a11y/PlotA11yModule';
 import { makeDataHintsHandlers, makeDataHintsContainer } from './a11y/hints';
+import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 
 class PlotRoot extends Component {
   static displayName = 'Plot';
@@ -20,6 +21,8 @@ class PlotRoot extends Component {
     width: 0,
     height: 0,
   });
+
+  static enhance = [keyboardFocusEnhance()];
 
   plotId = uniqueId();
 

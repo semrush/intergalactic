@@ -103,7 +103,7 @@ export const PlotA11yModule: React.FC<A11yViewProps> = (props) => {
         {preserveExplictelyEnableButton && <SPlotA11yModule render={'button'} />}
         <plotA11yView.Component {...props} />
       </div>,
-    );
+    ) as React.ReactElement;
   }
 
   if (error) {
@@ -111,14 +111,14 @@ export const PlotA11yModule: React.FC<A11yViewProps> = (props) => {
       <SPlotA11yModule render={'button'} tabIndex={0} aria-live="assertive">
         {texts.failed}
       </SPlotA11yModule>,
-    );
+    ) as React.ReactElement;
   }
   if (loading) {
     return sstyled(styles)(
       <SPlotA11yModule render={'button'} tabIndex={0} aria-live="polite">
         {texts.loading}
       </SPlotA11yModule>,
-    );
+    ) as React.ReactElement;
   }
 
   return sstyled(styles)(
@@ -130,5 +130,5 @@ export const PlotA11yModule: React.FC<A11yViewProps> = (props) => {
     >
       {texts.disabled}
     </SPlotA11yModule>,
-  );
+  ) as React.ReactElement;
 };
