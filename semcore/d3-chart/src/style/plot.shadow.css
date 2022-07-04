@@ -4,3 +4,13 @@
 SPlot {
   overflow: hidden;
 }
+SPlot:active,
+SPlot:focus {
+  outline: 0;
+  text-decoration: none;
+}
+
+SPlot[keyboardFocused] {
+  border: 1px solid var(--blue-400);
+  box-shadow: var(--keyboard-focus);
+}
