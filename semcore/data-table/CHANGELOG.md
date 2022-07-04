@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.0.9] - 2022-07-04
+
+### Fixed
+
+- Fixed scrolling of table when enable virtual scrolling.
+
 ## [3.0.8] - 2022-06-09
 
 ### Changed
