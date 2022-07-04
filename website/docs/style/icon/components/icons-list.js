@@ -631,6 +631,21 @@ const iconsList = {
       ],
     },
     {
+      name: 'AppsBlock',
+      size: ['l', 'm'],
+      group: 'Misc',
+      tags: [
+        'app',
+        'apps',
+        'application',
+        'applications',
+        'приложение',
+        'приложения',
+        'block',
+        'appsblock',
+      ],
+    },
+    {
       name: 'Archive',
       size: ['l', 'm'],
       group: 'Misc',
