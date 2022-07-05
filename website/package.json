@@ -10,7 +10,8 @@
     "dev": "yarn build:ensure-icons && WATCH_TYPES=true tsm ./builder/dev-server.ts",
     "build": "PUBLIC_PATH=/intergalactic/ NODE_ENV=production tsm ./builder/ssr.ts --reset-cache",
     "build:ensure-icons": "tsm ./builder/ensure-icons-built.ts",
-    "upload-search-index": "tsm ./searchIndexUpload.ts"
+    "upload-static": "DEPLOYMENT_DIR=static tsm ./upload-static.ts",
+    "upload-search-index": "tsm ./upload-search-index.ts"
   },
   "dependencies": {
     "algoliasearch": "4.8.4",
@@ -62,6 +63,8 @@
     "micromark-extension-gfm": "2.0.1",
     "node-watch": "0.7.3",
     "postcss": "8.4.14",
+    "semver": "7.3.7",
+    "simple-git": "3.10.0",
     "tsm": "2.2.1",
     "typescript": "4.1.3",
     "unified": "10.1.2"
