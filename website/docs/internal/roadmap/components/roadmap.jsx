@@ -210,6 +210,7 @@ const components = {
     { text: 'Limit message', size: { ui: '11/13' } },
     { text: 'Guides renewal', size: { ui: '1/13' } },
   ],
+  'Q3 2022': [{ text: 'ColorPicker', size: { ui: '1/13', kit: '1/13' } }],
 };
 
 function Gant(props) {
