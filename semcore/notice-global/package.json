@@ -5,7 +5,7 @@
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
-  "author": "Roman Lysov <r.lysov@semrush.com>",
+  "author": "UI-kit team <ui-kit-team@semrush.com>",
   "sideEffects": false,
   "license": "MIT",
   "scripts": {
