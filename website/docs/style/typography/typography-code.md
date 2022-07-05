@@ -16,7 +16,7 @@ With the example below, you can easily make any type of list.
 
 @## Typography and native tags
 
-To style native tags, use the `FormatText` from the `@semcore/format-text` package.
+To style native tags, use the `FormatText` from the `@semcore/ui/format-text` package.
 
 It's OK to style third party HTML. In other cases, we recommend using `Text`.
 

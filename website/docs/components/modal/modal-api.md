@@ -6,7 +6,7 @@ fileSource: modal
 @## Modal
 
 ```jsx
-import Modal from '@semcore/modal';
+import Modal from '@semcore/ui/modal';
 <Modal />;
 ```
 
@@ -17,7 +17,7 @@ import Modal from '@semcore/modal';
 Component which represents the background. Takes all properties of the `Box`.
 
 ```jsx
-import Modal from '@semcore/modal';
+import Modal from '@semcore/ui/modal';
 <Modal.Overlay />;
 ```
 
@@ -26,7 +26,7 @@ import Modal from '@semcore/modal';
 Component which represents the modal window itself. Takes all properties of the `Box`.
 
 ```jsx
-import Modal from '@semcore/modal';
+import Modal from '@semcore/ui/modal';
 <Modal.Window />;
 ```
 
@@ -35,6 +35,6 @@ import Modal from '@semcore/modal';
 Component which represents the closing icon. The component is the `CloseS` icon with the configured styles. It takes all `Box` and `Icon` properties.
 
 ```jsx
-import Modal from '@semcore/modal';
+import Modal from '@semcore/ui/modal';
 <Modal.Close />;
 ```

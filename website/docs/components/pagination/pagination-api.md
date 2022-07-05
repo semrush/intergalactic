@@ -6,7 +6,7 @@ fileSource: pagination
 @## Pagination
 
 ```jsx
-import Pagination from '@semcore/pagination';
+import Pagination from '@semcore/ui/pagination';
 <Pagination />;
 ```
 
@@ -17,7 +17,7 @@ import Pagination from '@semcore/pagination';
 Takes all the properties of the button.
 
 ```jsx
-import Pagination from '@semcore/pagination';
+import Pagination from '@semcore/ui/pagination';
 <Pagination.FirstPage />;
 ```
 
@@ -26,14 +26,14 @@ import Pagination from '@semcore/pagination';
 Takes all the properties of the button.
 
 ```jsx
-import Pagination from '@semcore/pagination';
+import Pagination from '@semcore/ui/pagination';
 <Pagination.NextPage />;
 ```
 
 @## Pagination.PageInput
 
 ```jsx
-import Pagination from '@semcore/pagination';
+import Pagination from '@semcore/ui/pagination';
 <Pagination.PageInput />;
 ```
 

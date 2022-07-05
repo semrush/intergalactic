@@ -8,7 +8,7 @@ fileSource: input
 Wrap over the input elements.
 
 ```jsx
-import Input from '@semcore/input';
+import Input from '@semcore/ui/input';
 <Input />;
 ```
 
@@ -19,7 +19,7 @@ import Input from '@semcore/input';
 This component represents the native `tag` `input` and accepts all its properties, such as `value` and `onChange`.
 
 ```jsx
-import Input from '@semcore/input';
+import Input from '@semcore/ui/input';
 <Input.Value />;
 ```
 
@@ -32,7 +32,7 @@ The addon inside the input (most often it is an icon) places the correct indent 
 When you click on Addon, the focus shifts to the input. You can cancel this by returning the `return false` in the `onClick` handler.
 
 ```jsx
-import Input from '@semcore/input';
+import Input from '@semcore/ui/input';
 <Input.Addon />;
 ```
 

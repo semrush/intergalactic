@@ -4,6 +4,12 @@
   margin: 0;
   margin-bottom: 4px;
 }
+
+.packageLogo {
+  width: 16px;
+  height: 16px;
+}
+
 @media (max-width: 415px) {
   .title {
     font-size: 30px;

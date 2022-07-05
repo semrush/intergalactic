@@ -8,7 +8,7 @@ fileSource: spin
 Note that Spin is built with SVG inside.
 
 ```jsx
-import Spin from '@semcore/spin';
+import Spin from '@semcore/ui/spin';
 <Spin />;
 ```
 

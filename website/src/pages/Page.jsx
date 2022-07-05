@@ -59,8 +59,8 @@ const PageView = ({ route, page }) => {
   const currentHeading = typeof window !== 'undefined' ? window.location.hash.substring(1) : '';
   const headingOptions = getHeadingOptions(page.headings);
 
-  const title = routeDepth === 3 ? routeParents[route].title : page.title;
-  const category = routeParents[routeParents[route].route].title ?? routeParents[route].title;
+  const rootRoute = routeDepth === 3 ? routeParents[route] : routes[route];
+  const category = routeDepth === 3 ? routeParents[rootRoute.route] : routeParents[route];
 
   const htmlTitle = routeParents[route].title
     ? `${page.title} | ${routeParents[route].title}`
@@ -99,11 +99,11 @@ const PageView = ({ route, page }) => {
         <Col sm={12} md={8} span={7} id="main-content">
           <div className={styles.documentationWrapper}>
             <DocsHeader
-              title={title}
-              category={category}
-              fileSource={page.fileSource}
+              title={rootRoute.title}
+              category={category.title}
+              fileSource={rootRoute.metadata?.fileSource}
+              beta={rootRoute.metadata?.beta}
               sourcePath={page.sourcePath}
-              beta={page.beta}
             />
             <Docs tokens={page.tokens} tabs={tabs} />
           </div>

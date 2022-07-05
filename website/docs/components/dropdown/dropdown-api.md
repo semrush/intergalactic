@@ -10,7 +10,7 @@ fileSource: dropdown
 The wrap over the `<Popper/>` component.
 
 ```jsx
-import Dropdown from '@semcore/dropdown';
+import Dropdown from '@semcore/ui/dropdown';
 <Dropdown />;
 ```
 
@@ -21,7 +21,7 @@ import Dropdown from '@semcore/dropdown';
 The wrap over the `<Popper.Trigger/>` component.
 
 ```jsx
-import Dropdown from '@semcore/dropdown';
+import Dropdown from '@semcore/ui/dropdown';
 <Dropdown.Trigger />;
 ```
 
@@ -32,7 +32,7 @@ import Dropdown from '@semcore/dropdown';
 The wrap over the `<Popper.Popper/>` component.
 
 ```jsx
-import Dropdown from '@semcore/dropdown';
+import Dropdown from '@semcore/ui/dropdown';
 <Dropdown.Popper />;
 ```
 

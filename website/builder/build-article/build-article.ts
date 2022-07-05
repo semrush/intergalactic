@@ -408,7 +408,12 @@ export const buildArticle = async (docsDir: string, fullPath: string, relativePa
     ? relativePath.substring('./'.length)
     : relativePath;
   const beta = meta.beta;
-
+  // let pkgName = undefined
+  // if (fileSource) {
+  //   const pkgFileData = await readFile(resolvePath(repoRoot, 'semcore', fileSource, 'package.json'), 'utf-8');
+  //   const pkgFile = JSON.parse(pkgFileData);
+  //   pkgName = pkgFile.name
+  // }
   return {
     tokens,
     title,

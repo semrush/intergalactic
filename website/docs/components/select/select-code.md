@@ -3,9 +3,9 @@ title: Example
 fileSource: select
 ---
 
-> ⚠️ If you need to customize work with the dropdown menu, please refer to the documentation [@semcore/popper](/utils/popper/)
+> ⚠️ If you need to customize work with the dropdown menu, please refer to the documentation [@semcore/ui/popper](/utils/popper/)
 
-The component is a wrap over [@semcore/dropdown-menu](/components/dropdown-menu) with the functionality of list item selection.
+The component is a wrap over [@semcore/ui/dropdown-menu](/components/dropdown-menu) with the functionality of list item selection.
 
 @## Basic use
 
@@ -35,7 +35,7 @@ In cases when you need deeper customization, "unfold" the component into constit
 
 @## Customizing the dropdown-menu
 
-As with [@semcore/dropdown-menu](/components/dropdown-menu), the dropdown menu can be implemented in two ways:
+As with [@semcore/ui/dropdown-menu](/components/dropdown-menu), the dropdown menu can be implemented in two ways:
 
 - `Select.Menu`
 - `Select.Popper` + `Select.List`

@@ -6,7 +6,7 @@ fileSource: divider
 @## Divider
 
 ```jsx
-import Divider from '@semcore/divider';
+import Divider from '@semcore/ui/divider';
 <Divider />;
 ```
 

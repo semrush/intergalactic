@@ -10,7 +10,7 @@ fileSource: sticky
 The component is a wrap over CSS `position: sticky;`.
 
 ```js
-import Sticky from '@semcore/sticky';
+import Sticky from '@semcore/ui/sticky';
 ```
 
 @typescript IStickyProps

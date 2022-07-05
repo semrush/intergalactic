@@ -8,7 +8,7 @@ fileSource: textarea
 Component represents native `textarea` tag and takes all its properties such as `value` and `defaultValue`.
 
 ```jsx
-import Textarea from '@semcore/textarea';
+import Textarea from '@semcore/ui/textarea';
 <Textarea />;
 ```
 

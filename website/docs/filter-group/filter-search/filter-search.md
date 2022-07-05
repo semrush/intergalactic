@@ -1,6 +1,5 @@
 ---
 title: Filter Search
-fileSource: filter-search
 tabName: Design
 ---
 

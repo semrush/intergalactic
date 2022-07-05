@@ -3,16 +3,16 @@ title: Example
 fileSource: tooltip
 ---
 
-> ⚠️ If you need to customize work with the tooltip, see the [@semcore/popper](/utils/popper/) documentation.
+> ⚠️ If you need to customize work with the tooltip, see the [@semcore/ui/popper](/utils/popper/) documentation.
 
-The component is a wrap over [@semcore/popper](/utils/popper/) with the following additions:
+The component is a wrap over [@semcore/ui/popper](/utils/popper/) with the following additions:
 
 - Stylization and themes for a dropdown window
 - Displaying the arrow of a dropdown window
 
 @## Basic use
 
-As mentioned above, tooltip is just a stylized wrap over the [@semcore/popper](/utils/popper/). It works exactly the same way.
+As mentioned above, tooltip is just a stylized wrap over the [@semcore/ui/popper](/utils/popper/). It works exactly the same way.
 
 @example tooltip
 

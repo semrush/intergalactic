@@ -6,7 +6,7 @@ fileSource: input-tags
 @## InputTags
 
 ```jsx
-import InputTags from '@semcore/input-tags';
+import InputTags from '@semcore/ui/input-tags';
 ```
 
 @typescript IInputTagsProps
@@ -14,7 +14,7 @@ import InputTags from '@semcore/input-tags';
 @## InputTags.Value
 
 ```jsx
-import InputTags from '@semcore/input-tags';
+import InputTags from '@semcore/ui/input-tags';
 <InputTags.Value />;
 ```
 
@@ -25,7 +25,7 @@ import InputTags from '@semcore/input-tags';
 Styled component [Tag](/components/tag/).
 
 ```jsx
-import InputTags from '@semcore/input-tags';
+import InputTags from '@semcore/ui/input-tags';
 <InputTags.Tag />;
 ```
 
@@ -34,7 +34,7 @@ import InputTags from '@semcore/input-tags';
 @## InputTags.Tag.Addon
 
 ```jsx
-import InputTags from '@semcore/input-tags';
+import InputTags from '@semcore/ui/input-tags';
 <InputTags.Tag.Addon />;
 ```
 

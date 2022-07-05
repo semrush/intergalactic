@@ -8,7 +8,7 @@ fileSource: utils
 It is a functional wrapper over your application giving access to the context.
 
 ```jsx
-import Breakpoints from '@semcore/breakpoints';
+import Breakpoints from '@semcore/ui/breakpoints';
 
 <Breakpoints />;
 ```
@@ -18,7 +18,7 @@ import Breakpoints from '@semcore/breakpoints';
 Is the React context.
 
 ```jsx
-import Breakpoints from '@semcore/breakpoints';
+import Breakpoints from '@semcore/ui/breakpoints';
 
 useContext(Breakpoints.Context);
 ```
@@ -28,7 +28,7 @@ useContext(Breakpoints.Context);
 It is an instance of the class for media queries.
 
 ```jsx
-import Breakpoints from '@semcore/breakpoints';
+import Breakpoints from '@semcore/ui/breakpoints';
 
 Breakpoints.mediaList.matches();
 Breakpoints.mediaList.addListener();

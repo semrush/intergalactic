@@ -8,7 +8,7 @@ fileSource: select
 @## Select
 
 ```jsx
-import Select from '@semcore/select';
+import Select from '@semcore/ui/select';
 <Select />;
 ```
 
@@ -19,14 +19,14 @@ import Select from '@semcore/select';
 It is a wrap over the `<DropdownMenu.Trigger/>` component with default tag [ButtonTrigger](/components/filter-trigger/filter-trigger-api/#a7d101).
 
 ```jsx
-import Select from '@semcore/select';
+import Select from '@semcore/ui/select';
 <Select.Trigger />;
 ```
 
 @## Select.Menu
 
 ```jsx
-import Select from '@semcore/select';
+import Select from '@semcore/ui/select';
 <Select.Menu />;
 ```
 
@@ -35,14 +35,14 @@ import Select from '@semcore/select';
 It is a wrap over the `<Input.Value/>`.
 
 ```jsx
-import { InputSearch } from '@semcore/select';
+import { InputSearch } from '@semcore/ui/select';
 <InputSearch />;
 ```
 
 @## Select.Option
 
 ```jsx
-import Select from '@semcore/select';
+import Select from '@semcore/ui/select';
 <Select.Option />;
 ```
 
@@ -51,21 +51,21 @@ import Select from '@semcore/select';
 @## Select.OptionHint
 
 ```jsx
-import Select from '@semcore/select';
+import Select from '@semcore/ui/select';
 <Select.OptionHint />;
 ```
 
 @## Select.OptionTitle
 
 ```jsx
-import Select from '@semcore/select';
+import Select from '@semcore/ui/select';
 <Select.OptionTitle />;
 ```
 
 @## Select.OptionCheckbox
 
 ```jsx
-import Select from '@semcore/select';
+import Select from '@semcore/ui/select';
 <Select.OptionCheckbox />;
 ```
 
@@ -74,7 +74,7 @@ import Select from '@semcore/select';
 @## Select.Option.Checkbox
 
 ```jsx
-import Select from '@semcore/select';
+import Select from '@semcore/ui/select';
 <Select.Option.Checkbox />;
 ```
 

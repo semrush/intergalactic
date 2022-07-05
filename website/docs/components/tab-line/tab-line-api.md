@@ -8,7 +8,7 @@ fileSource: tab-line
 Wrap over the tab elements.
 
 ```jsx
-import TabLine from '@semcore/tab-line';
+import TabLine from '@semcore/ui/tab-line';
 <TabLine />;
 ```
 
@@ -19,7 +19,7 @@ import TabLine from '@semcore/tab-line';
 This tab element may contain `Addon` and `Text`. The structure is similar to [Button](/components/button/). It takes some properties of the TabLine (for example, `size`, `disabled`) and can override them.
 
 ```jsx
-import TabLine from '@semcore/tab-line';
+import TabLine from '@semcore/ui/tab-line';
 <TabLine.Item />;
 ```
 
@@ -30,7 +30,7 @@ import TabLine from '@semcore/tab-line';
 The addon inside the tab (most commonly an icon) sets the correct indents depending on the size. It takes all the properties of the `Box`.
 
 ```jsx
-import TabLine from '@semcore/tab-line';
+import TabLine from '@semcore/ui/tab-line';
 <TabLine.Item.Addon />;
 ```
 
@@ -41,6 +41,6 @@ This ordinary text sets the appropriate indents depending on the size. If a simp
 It takes all the properties of the `Box`.
 
 ```jsx
-import TabLine from '@semcore/tab-line';
+import TabLine from '@semcore/ui/tab-line';
 <TabLine.Item.Text />;
 ```

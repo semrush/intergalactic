@@ -7,7 +7,7 @@ Our palette is built with [Huetone tool from Alexey Ardov](https://huetone.ardov
 
 @## Variables
 
-> To enable CSS variables, use `@import '~@semcore/utils/style/var.css';`
+> To enable CSS variables, use `@import '~@semcore/ui/utils/style/var.css';`
 
 Shades of the same color have a value from 50 to 800
 at the end (for example, for `css` files you should use `var(--gray-600)`, for our components you should use
