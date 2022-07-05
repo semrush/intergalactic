@@ -1,6 +1,5 @@
 ---
 title: Example
-fileSource: checkbox
 ---
 
 @## Partial selection

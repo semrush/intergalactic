@@ -1,6 +1,5 @@
 ---
 title: Example
-fileSource: filter-search
 ---
 
 @## Dynamic search

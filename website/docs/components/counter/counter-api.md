@@ -1,12 +1,11 @@
 ---
 title: API
-fileSource: counter
 ---
 
 @## Counter
 
 ```jsx
-import Counter from '@semcore/counter';
+import Counter from '@semcore/ui/counter';
 <Counter />;
 ```
 

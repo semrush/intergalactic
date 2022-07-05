@@ -1,5 +1,6 @@
 ---
 title: InlineEdit
+fileSource: inline-edit
 tabName: Design
 ---
 

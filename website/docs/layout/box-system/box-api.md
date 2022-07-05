@@ -8,7 +8,7 @@ fileSource: flex-box
 Component responsible for spacings and sizes 📐
 
 ```jsx
-import { Box } from '@semcore/flex-box';
+import { Box } from '@semcore/ui/flex-box';
 <Box />;
 ```
 
@@ -19,7 +19,7 @@ import { Box } from '@semcore/flex-box';
 The layout building component is a wrapper over CSS-flex. It inherits all properties from `Box`.
 
 ```jsx
-import { Flex } from '@semcore/flex-box';
+import { Flex } from '@semcore/ui/flex-box';
 <Flex />;
 ```
 

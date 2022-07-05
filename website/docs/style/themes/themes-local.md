@@ -9,7 +9,7 @@ If you need to change the style of a component in one specific case, then you sh
 You've installed our `component` and our plugin `@semcore/babel-plugin-styles` to properly transpile the code.
 
 ```bash
-npm i @semcore/button @semcore/babel-plugin-styles
+npm i @semcore/ui @semcore/babel-plugin-styles
 ```
 
 ### Step two
@@ -41,7 +41,7 @@ You wrote your own styles for our components using one of the following methods:
 - css-in-js
 
 ```jsx
-import { sstyled } from '@semcore/core';
+import { sstyled } from '@semcore/ui/core';
 const styles = sstyled.css`
   SWhatever {
     some-styles: 'Cool';
@@ -62,7 +62,7 @@ import styles from './custom.shadow.css';
 Pass the new styles to the `styles` property of our component:
 
 ```jsx
-import Button from '@semcore/Button';
+import Button from '@semcore/ui/Button';
 export default (props) => <Button styles={styles} {...props} />;
 ```
 
@@ -82,8 +82,8 @@ Look at the source of styles in GitHub, styles are written in the same format.
 **You can use variables as properties.**
 
 ```jsx
-import { sstyled } from '@semcore/core';
-import Button from '@semcore/button';
+import { sstyled } from '@semcore/ui/core';
+import Button from '@semcore/ui/button';
 
 const styles = sstyled.css`
   SButton {

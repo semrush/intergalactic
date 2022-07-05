@@ -1,6 +1,5 @@
 ---
 title: Example
-fileSource: card
 ---
 
 An example of the default styles of cards with the title.

@@ -14,7 +14,7 @@ The addon inside the tag (most commonly an icon) sets the correct indents depend
 It takes all the properties of the `Box`.
 
 ```jsx
-import Tag from '@semcore/tag';
+import Tag from '@semcore/ui/tag';
 <Tag.Addon />;
 ```
 
@@ -25,7 +25,7 @@ This ordinary text sets the appropriate indents depending on the size. If a simp
 It takes all the properties of the `Box`.
 
 ```jsx
-import Tag from '@semcore/tag';
+import Tag from '@semcore/ui/tag';
 <Tag.Text />;
 ```
 
@@ -36,7 +36,7 @@ Cross icon automatically adjusts to the selected theme and size.
 It accepts all `Box` properties.
 
 ```jsx
-import Tag from '@semcore/tag';
+import Tag from '@semcore/ui/tag';
 <Tag.Close />;
 ```
 
@@ -47,6 +47,6 @@ A special addon for round elements inside a tag (most often a picture) places th
 It accepts all `Box` properties.
 
 ```jsx
-import Tag from '@semcore/tag';
+import Tag from '@semcore/ui/tag';
 <Tag.Circle />;
 ```

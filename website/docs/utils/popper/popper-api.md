@@ -8,7 +8,7 @@ fileSource: popper
 This is a wrapper for creating a context, which does not create additional nodes in the house.
 
 ```jsx
-import Popper from '@semcore/popper';
+import Popper from '@semcore/ui/popper';
 <Popper />;
 ```
 
@@ -19,7 +19,7 @@ import Popper from '@semcore/popper';
 The element to which `<Popper.Popper/>` will be attached.
 
 ```jsx
-import Popper from '@semcore/popper';
+import Popper from '@semcore/ui/popper';
 <Popper.Trigger />;
 ```
 
@@ -30,7 +30,7 @@ import Popper from '@semcore/popper';
 The element which will be attached to `<Popper.Trigger/>`.
 
 ```jsx
-import Popper from '@semcore/popper';
+import Popper from '@semcore/ui/popper';
 <Popper.Popper />;
 ```
 

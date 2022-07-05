@@ -1,6 +1,5 @@
 ---
 title: Example
-fileSource: counter
 ---
 
 @## Counter in filters

@@ -6,7 +6,7 @@ fileSource: grid
 @## Row
 
 ```jsx
-import { Row } from '@semcore/grid';
+import { Row } from '@semcore/ui/grid';
 <Row />;
 ```
 
@@ -15,7 +15,7 @@ import { Row } from '@semcore/grid';
 @## Col
 
 ```jsx
-import { Col } from '@semcore/grid';
+import { Col } from '@semcore/ui/grid';
 <Col />;
 ```
 

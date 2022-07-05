@@ -15,9 +15,7 @@ The library supports two delivery systems:
 
 We recommend that you use the release system, since it's more convenient and it reduces the risk of bundle bloat due to package duplicates. With the release system, you can also install component packages separately if you need to.
 
-> When installing packages with npm or Yarn, be sure to use the `--flat` flag to minimize errors in dependencies.
-
-### Package system
+### Package system (not recommended)
 
 All components are located in the `@semcore` namespace in npm and are installed separately.
 
@@ -32,7 +30,7 @@ npm i @semcore/button @semcore/core
 - `@semcore/core` - _is the basic package by which we create our components, and it contains all of the common logic
   of the components that is discussed below. There should only be one version of the package in the project._
 
-### Release system
+### Release system (priority system)
 
 Components are installed in a single package.
 

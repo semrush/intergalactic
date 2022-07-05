@@ -1,6 +1,5 @@
 ---
 title: A11y
-fileSource: checkbox
 ---
 
 @## Keyboard support

@@ -1,6 +1,5 @@
 ---
 title: Example
-fileSource: carousel
 ---
 
 @## Image & video galleries on the page

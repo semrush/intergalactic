@@ -1,6 +1,5 @@
 ---
 title: Codemod
-fileSource: code-mod
 tabName: Design
 ---
 

@@ -1,16 +1,69 @@
-Компонент отображает плавающее содержимое рядом с целевым элементом.
+# @semcore/popper
 
-Popover построен поверх библиотеки Popper.js. Popper.js - небольшая (~ 6kb) библиотека, которая предлагает мощный, настраиваемый механизм позиционирования и работает на невероятной скорости (~ 60 кадров в секунду).
+[![version](https://img.shields.io/npm/v/@semcore/popper.svg)](https://www.npmjs.com/@semcore/popper)
+[![downloads](https://img.shields.io/npm/dt/@semcore/popper.svg)](https://www.npmjs.com/package/@semcore/popper)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/semrush/intergalactic/blob/master/LICENSE)
 
+> This component is part of the Intergalactic design system
+
+### 📖 [Component documentation](https://developer.semrush.com/intergalactic/utils/popper/)
+
+### 🏠 [Design system](https://developer.semrush.com/intergalactic/)
+
+## Install
+
+```sh
+npm install @semcore/ui
 ```
- import Popper from '@semcore/popper';
 
- <Popper>
-  <Popper.Trigger>
+## Usage
 
-  </Popper.Trigger>
-  <Popper.Popper>
-
-  </Popper.Popper>
- </Popper>
+```jsx
+import Popper from '@semcore/ui/popper';
 ```
+
+<details>
+  <summary>Alternative installation and use</summary>
+
+**We do not recommend this usage path due to possible dependency and update issues.**
+
+### Install
+
+You can only install one package from the design system
+
+```sh
+npm install @semcore/popper @semcore/core
+```
+
+`@semcore/core` - _is the basic package by which we create our components, and it contains all of the common logic
+of the components that is discussed below. There should only be one version of the package in the project._
+
+</details>
+
+### Usage
+
+You can use the package the same way but without `/ui/` in the import path.
+
+```jsx
+import Popper from '@semcore/popper';
+```
+
+## 👤 Author
+
+[UI-kit team](https://github.com/semrush/intergalactic/blob/master/MAINTAINERS)
+and [other ❤️](https://github.com/semrush/intergalactic/graphs/contributors)
+
+## 🤝 Contributing
+
+Contributions, issues and feature requests are welcome!
+
+Feel free to check [issues page](https://github.com/semrush/intergalactic/issues). You can also take a look at
+the [contributing guide](https://github.com/semrush/intergalactic/blob/master/CONTRIBUTING.md).
+
+## Show your support
+
+Give a ⭐️ if this project helped you!
+
+## 📝 License
+
+This project is [MIT](https://github.com/semrush/intergalactic/blob/master/LICENSE) licensed.

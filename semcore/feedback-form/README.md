@@ -1,82 +1,67 @@
-```js
-import React from 'react';
-import Link from '@semcore/link';
-import Input from '@semcore/input';
-import Textarea from '@semcore/textarea';
-import Checkbox from '@semcore/checkbox';
-import Chat from '@semcore/icon/Chat/m';
-import Dropdown from '@semcore/dropdown';
-import FeedbackForm from '@semcore/feedback-form';
-import { Box } from '@semcore/flex-box';
-import { Small } from '@semcore/typography';
+# @semcore/feedback-form
 
-import If from '@semcore/utils/lib/if';
+[![version](https://img.shields.io/npm/v/@semcore/feedback-form.svg)](https://www.npmjs.com/@semcore/feedback-form)
+[![downloads](https://img.shields.io/npm/dt/@semcore/feedback-form.svg)](https://www.npmjs.com/package/@semcore/feedback-form)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/semrush/intergalactic/blob/master/LICENSE)
 
-class MyFeedback extends React.PureComponent {
-  render() {
-    const validateDescription = FeedbackForm.validate.description(
-      `Your feedback must contain at least 3 words (10 characters).`,
-    );
-    const validateEmail = FeedbackForm.validate.email(`Please enter valid email.`);
+> This component is part of the Intergalactic design system
 
-    return (
-      <Dropdown>
-        <Dropdown.Trigger>
-          <Link before={<Chat />}>Send feedback</Link>
-        </Dropdown.Trigger>
-        <Dropdown.Popper>
-          {({ changeVisible }) => (
-            <FeedbackForm onSubmit={(data) => console.log(data)}>
-              {({ submitSucceeded }) => (
-                <React.Fragment>
-                  <If condition={submitSucceeded}>
-                    <FeedbackForm.Success>Thank you for your feedback!</FeedbackForm.Success>
-                  </If>
-                  <If condition={!submitSucceeded}>
-                    <FeedbackForm.Item
-                      name="feedback"
-                      tag={Textarea}
-                      validate={validateDescription}
-                      fullWidth
-                      autoFocus
-                      placeholder="Please tell us your suggestion or report an issue"
-                    />
-                    <FeedbackForm.Item
-                      name="email"
-                      tag={Input}
-                      type="email"
-                      validate={validateEmail}
-                      placeholder="Reply-to email"
-                    />
-                    <Box mt={-2} mb={4} mx={4}>
-                      <Small>
-                        We will only use this email to respond to you on your feedback.{' '}
-                        <Link href="#">Privacy Policy</Link>
-                      </Small>
-                    </Box>
-                    <FeedbackForm.Item name="needHelp" type="checkbox">
-                      {({ input }) => (
-                        <Checkbox {...input} size="s">
-                          I need help, please contact me
-                        </Checkbox>
-                      )}
-                    </FeedbackForm.Item>
-                    <Box m={4}>
-                      <FeedbackForm.Submit>Send feedback</FeedbackForm.Submit>
-                      <FeedbackForm.Cancel onClick={() => changeVisible(false)}>
-                        Cancel
-                      </FeedbackForm.Cancel>
-                    </Box>
-                  </If>
-                </React.Fragment>
-              )}
-            </FeedbackForm>
-          )}
-        </Dropdown.Popper>
-      </Dropdown>
-    );
-  }
-}
+### 📖 [Component documentation](https://developer.semrush.com/intergalactic/components/feedback-form/)
 
-export default MyFeedback;
+### 🏠 [Design system](https://developer.semrush.com/intergalactic/)
+
+## Install
+
+```sh
+npm install @semcore/ui
 ```
+
+## Usage
+
+```jsx
+import FeedbackForm from '@semcore/ui/feedback-form';
+```
+
+<details>
+  <summary>Alternative installation and use</summary>
+
+**We do not recommend this usage path due to possible dependency and update issues.**
+
+### Install
+
+You can only install one package from the design system
+
+```sh
+npm install @semcore/feedback-form @semcore/core
+```
+
+`@semcore/core` - _is the basic package by which we create our components, and it contains all of the common logic
+of the components that is discussed below. There should only be one version of the package in the project._
+
+</details>
+
+### Usage
+
+You can use the package the same way but without `/ui/` in the import path.
+
+```jsx
+import FeedbackForm from '@semcore/feedback-form';
+```
+
+## 👤 Author
+
+[UI-kit team](https://github.com/semrush/intergalactic/blob/master/MAINTAINERS) and [other ❤️](https://github.com/semrush/intergalactic/graphs/contributors)
+
+## 🤝 Contributing
+
+Contributions, issues and feature requests are welcome!
+
+Feel free to check [issues page](https://github.com/semrush/intergalactic/issues). You can also take a look at the [contributing guide](https://github.com/semrush/intergalactic/blob/master/CONTRIBUTING.md).
+
+## Show your support
+
+Give a ⭐️ if this project helped you!
+
+## 📝 License
+
+This project is [MIT](https://github.com/semrush/intergalactic/blob/master/LICENSE) licensed.

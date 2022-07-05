@@ -1,12 +1,11 @@
 ---
 title: API
-fileSource: badge
 ---
 
 @## Badge
 
 ```jsx
-import Badge from '@semcore/badge';
+import Badge from '@semcore/ui/badge';
 <Badge />;
 ```
 

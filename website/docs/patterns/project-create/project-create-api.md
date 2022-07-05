@@ -7,7 +7,7 @@ title: API
 This is a composed component.
 
 ```jsx
-import ProjectCreate from '@semcore/project-create';
+import ProjectCreate from '@semcore/ui/project-create';
 <ProjectCreate />;
 ```
 

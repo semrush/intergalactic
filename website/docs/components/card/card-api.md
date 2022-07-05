@@ -1,6 +1,5 @@
 ---
 title: API
-fileSource: card
 ---
 
 @## Card
@@ -8,7 +7,7 @@ fileSource: card
 It's just a `Box`.
 
 ```jsx
-import Card from '@semcore/card';
+import Card from '@semcore/ui/card';
 <Card />;
 ```
 
@@ -17,7 +16,7 @@ import Card from '@semcore/card';
 It's just a `Box`, with pre-installed paddings. Contains `Card.Title` and `Card.Description`.
 
 ```jsx
-import Card from '@semcore/card';
+import Card from '@semcore/ui/card';
 <Card.Header />;
 ```
 
@@ -26,7 +25,7 @@ import Card from '@semcore/card';
 It's just a `Box`, with pre-installed paddings.
 
 ```jsx
-import Card from '@semcore/card';
+import Card from '@semcore/ui/card';
 <Card.Body />;
 ```
 
@@ -35,7 +34,7 @@ import Card from '@semcore/card';
 The card title is able to display the tip.
 
 ```jsx
-import Card from '@semcore/card';
+import Card from '@semcore/ui/card';
 <Card.Title />;
 ```
 
@@ -46,6 +45,6 @@ import Card from '@semcore/card';
 Has all properties as the [Text](/style/typography/typography-api/#a9dffb).
 
 ```jsx
-import Card from '@semcore/card';
+import Card from '@semcore/ui/card';
 <Card.Description />;
 ```

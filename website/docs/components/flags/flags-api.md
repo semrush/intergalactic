@@ -6,7 +6,7 @@ fileSource: flags
 @## Flags
 
 ```js
-import Flags from '@semcore/flags';
+import Flags from '@semcore/ui/flags';
 ```
 
 @typescript IFlagsProps

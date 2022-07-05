@@ -13,7 +13,7 @@ Sometimes you need to get a node to set focus or apply a third-party plugin. In 
 
 ```jsx
 import React from 'react';
-import Input from '@semcore/input';
+import Input from '@semcore/ui/input';
 import RootRef from '@semcore/root-ref';
 
 const Demo = () => {

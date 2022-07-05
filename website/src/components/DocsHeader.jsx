@@ -10,6 +10,7 @@ import GitHubS from '@semcore/icon/color/GitHub/m';
 import EditS from '@semcore/icon/Edit/m';
 import { css } from '@semcore/core';
 import Tag from '@semcore/tag';
+
 import styles from './DocsHeader.module.css';
 
 const tooltipStyles = css`
@@ -45,22 +46,81 @@ export default function (props) {
           </Link>
         </Box>
         {!!fileSource && (
-          <Box mr={5}>
-            <Link
-              size={300}
-              color="#171A22"
-              target="_blank"
-              href={`https://github.com/semrush/intergalactic/tree/master/semcore/${fileSource}`}
-            >
-              <Link.Addon>
-                <GitHubS />
-              </Link.Addon>
-              <Link.Text>GitHub source</Link.Text>
-              <Link.Addon>
-                <LinkExternalXS color="#898D9A" />
-              </Link.Addon>
-            </Link>
-          </Box>
+          <>
+            <Box mr={5}>
+              <Link
+                size={300}
+                color="#171A22"
+                target="_blank"
+                href={`https://www.npmjs.com/package/@semcore/ui`}
+              >
+                <Link.Addon>
+                  <svg
+                    className={styles.packageLogo}
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 256 256"
+                  >
+                    <rect width="256" height="256" fill="none" />
+                    <path
+                      fill="none"
+                      stroke="#000"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="16"
+                      d="M224,177.32122V78.67878a8,8,0,0,0-4.07791-6.9726l-88-49.5a8,8,0,0,0-7.84418,0l-88,49.5A8,8,0,0,0,32,78.67878v98.64244a8,8,0,0,0,4.07791,6.9726l88,49.5a8,8,0,0,0,7.84418,0l88-49.5A8,8,0,0,0,224,177.32122Z"
+                    />
+                    <polyline
+                      fill="none"
+                      stroke="#000"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="16"
+                      points="177.022 152.511 177.022 100.511 80 47"
+                    />
+                    <polyline
+                      fill="none"
+                      stroke="#000"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="16"
+                      points="222.897 74.627 128.949 128 33.108 74.617"
+                    />
+                    <line
+                      x1="128.949"
+                      x2="128.01"
+                      y1="128"
+                      y2="234.821"
+                      fill="none"
+                      stroke="#000"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="16"
+                    />
+                  </svg>
+                </Link.Addon>
+                <Link.Text>NPM</Link.Text>
+                <Link.Addon>
+                  <LinkExternalXS color="#898D9A" />
+                </Link.Addon>
+              </Link>
+            </Box>
+            <Box mr={5}>
+              <Link
+                size={300}
+                color="#171A22"
+                target="_blank"
+                href={`https://github.com/semrush/intergalactic/tree/master/semcore/${fileSource}`}
+              >
+                <Link.Addon>
+                  <GitHubS />
+                </Link.Addon>
+                <Link.Text>GitHub source</Link.Text>
+                <Link.Addon>
+                  <LinkExternalXS color="#898D9A" />
+                </Link.Addon>
+              </Link>
+            </Box>
+          </>
         )}
         <Box mr={5}>
           <Divider h="20px" orientation="vertical" style={{ backgroundColor: '#D1D4DB' }} />

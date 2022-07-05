@@ -6,7 +6,7 @@ fileSource: switch
 @## Switch
 
 ```jsx
-import Switch from '@semcore/switch';
+import Switch from '@semcore/ui/switch';
 <Switch />;
 ```
 
@@ -15,7 +15,7 @@ import Switch from '@semcore/switch';
 @## Switch.Value
 
 ```jsx
-import Switch from '@semcore/switch';
+import Switch from '@semcore/ui/switch';
 <Switch.Value />;
 ```
 
@@ -24,7 +24,7 @@ import Switch from '@semcore/switch';
 @## Switch.Addon
 
 ```jsx
-import Switch from '@semcore/switch';
+import Switch from '@semcore/ui/switch';
 <Switch.Addon />;
 ```
 

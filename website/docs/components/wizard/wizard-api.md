@@ -5,7 +5,7 @@ title: API
 @## Wizard
 
 ```jsx
-import Wizard from '@semcore/wizard';
+import Wizard from '@semcore/ui/wizard';
 <Wizard />;
 ```
 
@@ -14,7 +14,7 @@ import Wizard from '@semcore/wizard';
 @## Wizard.Sidebar
 
 ```jsx
-import Wizard from '@semcore/wizard';
+import Wizard from '@semcore/ui/wizard';
 <Wizard.Sidebar />;
 ```
 
@@ -23,7 +23,7 @@ import Wizard from '@semcore/wizard';
 @## Wizard.Step
 
 ```jsx
-import Wizard from '@semcore/wizard';
+import Wizard from '@semcore/ui/wizard';
 <Wizard.Step />;
 ```
 
@@ -32,7 +32,7 @@ import Wizard from '@semcore/wizard';
 @## Wizard.Stepper
 
 ```jsx
-import Wizard from '@semcore/wizard';
+import Wizard from '@semcore/ui/wizard';
 <Wizard.Stepper />;
 ```
 
