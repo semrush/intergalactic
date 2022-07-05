@@ -210,7 +210,7 @@ const components = {
     { text: 'Limit message', size: { ui: '11/13' } },
     { text: 'Guides renewal', size: { ui: '1/13' } },
   ],
-  'Q3 2022': [{ text: 'ColorPicker', size: { ui: '1/13', kit: '1/13' } }],
+  'Q3 2022': [{ text: 'We are planning tasks now', size: { ui: '1/15' } }],
 };
 
 function Gant(props) {
@@ -262,7 +262,7 @@ function Gant(props) {
 }
 
 function Roadmap() {
-  const [value, setValue] = useState(9);
+  const [value, setValue] = useState(10);
   let TabContent = null;
 
   switch (value) {
@@ -294,10 +294,10 @@ function Roadmap() {
       TabContent = <Gant sprint={dateSprint.slice(53, 61)} components={components['Q1 2022']} />;
       break;
     case 9:
-      TabContent = <Gant sprint={dateSprint.slice(60, 67)} components={components['Q2 2022']} />;
+      TabContent = <Gant sprint={dateSprint.slice(60, 68)} components={components['Q2 2022']} />;
       break;
     case 10:
-      TabContent = <Gant sprint={dateSprint.slice(66, 73)} components={components['Q3 2022']} />;
+      TabContent = <Gant sprint={dateSprint.slice(67, 74)} components={components['Q3 2022']} />;
       break;
   }
   return (
