@@ -4,7 +4,7 @@
   "version": "3.33.0",
   "main": "lib/index.js",
   "sideEffects": false,
-  "author": "Roman Lysov <r.lysov@semrush.com>",
+  "author": "UI-kit team <ui-kit-team@semrush.com>",
   "license": "MIT",
   "scripts": {
     "build": "build --modules=cjs",

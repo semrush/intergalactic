@@ -5,7 +5,7 @@
   "main": "index.js",
   "module": "index.js",
   "sideEffects": false,
-  "author": "Roman Lysov <r.lysov@semrush.com>",
+  "author": "UI-kit team <ui-kit-team@semrush.com>",
   "license": "MIT",
   "scripts": {
     "transform": "icon-transform-svg",

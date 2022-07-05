@@ -17,7 +17,7 @@
     "serve": "npx http-server ./"
   },
   "keywords": [],
-  "author": "",
+  "author": "UI-kit team <ui-kit-team@semrush.com>",
   "license": "MIT",
   "dependencies": {},
   "devDependencies": {
