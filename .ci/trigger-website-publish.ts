@@ -17,7 +17,7 @@ const git = Git();
     {
       type: 'list',
       name: 'version',
-      message: `Next site versin?`,
+      message: `Next site version?`,
       choices: [
         `patch (${major}.${minor}.${patch + 1})`,
         `minor (${major}.${minor + 1}.${0})`,
