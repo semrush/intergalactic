@@ -52,5 +52,6 @@ semcore/icon/**/*.d.ts
 
 # Illustration
 semcore/illustration/**/*.js
+semcore/illustration/**/*.mjs
 !semcore/illustration/**/*.config.js
 semcore/illustration/**/*.d.ts
