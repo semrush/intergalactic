@@ -296,6 +296,9 @@ function Roadmap() {
     case 9:
       TabContent = <Gant sprint={dateSprint.slice(60, 67)} components={components['Q2 2022']} />;
       break;
+    case 10:
+      TabContent = <Gant sprint={dateSprint.slice(66, 73)} components={components['Q3 2022']} />;
+      break;
   }
   return (
     <>
