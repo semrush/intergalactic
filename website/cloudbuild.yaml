@@ -14,12 +14,6 @@ steps:
     entrypoint: yarn
     args: ['build']
     dir: 'website'
-  - name: node:16
-    entrypoint: yarn
-    args: ['upload-static']
-    dir: 'website'
-    env:
-      - 'GCLOUD_SECRET=$_GCLOUD_SECRET'
   - name: 'gcr.io/cloud-builders/docker'
     args:
       - 'build'

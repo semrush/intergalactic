@@ -8,5 +8,5 @@
     "rootDir": ".."
   },
   "exclude": [],
-  "include": ["../deploy.ts", "../upload-search-index.ts", "**/*"]
+  "include": ["../deploy.ts", "../searchIndexUpload.ts", "**/*"]
 }

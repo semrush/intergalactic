@@ -1,8 +1,3 @@
-/**
- * Api server is not currently included into docker images
- * go to Dockerfile and uncomment mentioned lines to enable it
- */
-
 /* eslint-disable no-console */
 const express = require('express');
 const app = express();
