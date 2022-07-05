@@ -43,11 +43,11 @@ npm install @semcore/date-picker @semcore/core
 `@semcore/core` - _is the basic package by which we create our components, and it contains all of the common logic
 of the components that is discussed below. There should only be one version of the package in the project._
 
-</details>
-
 ### Usage
 
 You can use the package the same way but without `/ui/` in the import path.
+
+ </details>
 
 ```jsx
 import { DatePicker, DateRangePicker, MonthPicker, MonthRangePicker } from '@semcore/date-picker';
