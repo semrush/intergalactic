@@ -13,9 +13,9 @@ fileSource: d3-chart
 
 @example donut
 
-@## Donut with checkbox
+@## Donut controlled highlight
 
-When you use checkbox with donut, you should use `active` property for highlight sector chart after hover on checkbox.
+Use `active` property to control segments highlight.
 
 @example donut-with-checkbox
 
