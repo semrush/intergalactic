@@ -2,7 +2,7 @@
 
 [![version](https://img.shields.io/npm/v/@semcore/ui.svg)](https://www.npmjs.com/@semcore/ui)
 [![downloads](https://img.shields.io/npm/dt/@semcore/ui.svg)](https://www.npmjs.com/package/@semcore/ui)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/semrush/intergalactic/blob/master/LICENSE)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://github.com/semrush/intergalactic/blob/master/LICENSE)
 
 > This is the design system package that reexports all other single component packages.
 
@@ -24,7 +24,7 @@ import ComponentName from '@semcore/ui/{{ component name }}';
 
 ## 👤 Author
 
-[UI-kit team](https://github.com/semrush/intergalactic/blob/master/MAINTAINERS) and [other ❤️](https://github.com/semrush/intergalactic/graphs/contributors)
+[UI-kit team](https://github.com/semrush/intergalactic/blob/master/MAINTAINERS) and [others ❤️](https://github.com/semrush/intergalactic/graphs/contributors)
 
 ## 🤝 Contributing
 

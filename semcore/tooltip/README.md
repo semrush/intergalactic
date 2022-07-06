@@ -2,7 +2,7 @@
 
 [![version](https://img.shields.io/npm/v/@semcore/tooltip.svg)](https://www.npmjs.com/@semcore/tooltip)
 [![downloads](https://img.shields.io/npm/dt/@semcore/tooltip.svg)](https://www.npmjs.com/package/@semcore/tooltip)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/semrush/intergalactic/blob/master/LICENSE)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://github.com/semrush/intergalactic/blob/master/LICENSE)
 
 > This component is part of the Intergalactic design system
 
@@ -50,7 +50,7 @@ import Tooltip from '@semcore/tooltip';
 
 ## 👤 Author
 
-[UI-kit team](https://github.com/semrush/intergalactic/blob/master/MAINTAINERS) and [other ❤️](https://github.com/semrush/intergalactic/graphs/contributors)
+[UI-kit team](https://github.com/semrush/intergalactic/blob/master/MAINTAINERS) and [others ❤️](https://github.com/semrush/intergalactic/graphs/contributors)
 
 ## 🤝 Contributing
 
