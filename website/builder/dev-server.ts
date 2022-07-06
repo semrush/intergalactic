@@ -2,6 +2,7 @@ import esbuild from 'esbuild';
 import dotenv from 'dotenv';
 import http from 'http';
 import { websiteEsbuildConfig } from './esbuild.config';
+import picocolros from 'picocolors';
 
 dotenv.config();
 
@@ -36,7 +37,7 @@ const startServer = () => {
     .listen(publicPort)
     .on('listening', () => {
       // eslint-disable-next-line no-console
-      console.info(`\nStarted on http://localhost:${publicPort}\n`);
+      console.info(picocolros.green(`\nStarted on http://localhost:${publicPort}\n`));
     });
 };
 
@@ -50,17 +51,6 @@ esbuild
       ...websiteEsbuildConfig,
       outdir: './src/public',
       splitting: false,
-
-      // plugins: [
-      //   ...websiteEsbuildConfig.plugins,
-      // cssModulesPlugin({
-      //   inject: true,
-      //   v2: true,
-      //   cssModulesOption: {
-      //     generateScopedName: '[path][name]__[local]___[hash:base64:8]',
-      //   },
-      // }),
-      // ],
     },
   )
   .then(() => {

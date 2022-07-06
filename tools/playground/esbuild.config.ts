@@ -2,6 +2,7 @@ import esbuild from 'esbuild';
 import { esbuildPluginSemcore } from './esbuild-plugin-semcore';
 import { esbuildPluginSemcoreSourcesResolve } from './esbuild-plugin-semcore-sources-resolve';
 import { esbuildPluginPlaygroundsLoader } from './esbuild-plugin-playgrounds-loader';
+import picocolros from 'picocolors';
 
 /* eslint-disable no-console */
 
@@ -30,7 +31,7 @@ esbuild
     },
   )
   .then(() => {
-    console.log(`\nStarted on http://localhost:${port}\n`);
+    console.log(picocolros.green(`\nStarted on http://localhost:${port}\n`));
   })
   .catch((err) => {
     console.error(err);
