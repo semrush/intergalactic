@@ -2,7 +2,7 @@
 
 [![version](https://img.shields.io/npm/v/@semcore/input-mask.svg)](https://www.npmjs.com/@semcore/input-mask)
 [![downloads](https://img.shields.io/npm/dt/@semcore/input-mask.svg)](https://www.npmjs.com/package/@semcore/input-mask)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/semrush/intergalactic/blob/master/LICENSE)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://github.com/semrush/intergalactic/blob/master/LICENSE)
 
 > This component is part of the Intergalactic design system
 
@@ -50,7 +50,7 @@ import InputMask from '@semcore/input-mask';
 
 ## 👤 Author
 
-[UI-kit team](https://github.com/semrush/intergalactic/blob/master/MAINTAINERS) and [other ❤️](https://github.com/semrush/intergalactic/graphs/contributors)
+[UI-kit team](https://github.com/semrush/intergalactic/blob/master/MAINTAINERS) and [others ❤️](https://github.com/semrush/intergalactic/graphs/contributors)
 
 ## 🤝 Contributing
 
