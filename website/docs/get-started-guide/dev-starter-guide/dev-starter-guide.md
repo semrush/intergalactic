@@ -15,7 +15,19 @@ The library supports two delivery systems:
 
 We recommend that you use the release system, since it's more convenient and it reduces the risk of bundle bloat due to package duplicates. With the release system, you can also install component packages separately if you need to.
 
-### Package system (not recommended)
+### Release system
+
+Components are installed in a single package.
+
+Example:
+
+```bash
+npm i @semcore/ui
+```
+
+After the installation, all components will be available at `@semcore/ui/{{ component name }}`.
+
+### Package system **(not recommended)**
 
 All components are located in the `@semcore` namespace in npm and are installed separately.
 
@@ -29,18 +41,6 @@ npm i @semcore/button @semcore/core
 
 - `@semcore/core` - _is the basic package by which we create our components, and it contains all of the common logic
   of the components that is discussed below. There should only be one version of the package in the project._
-
-### Release system (priority system)
-
-Components are installed in a single package.
-
-Example:
-
-```bash
-npm i @semcore/ui
-```
-
-After the installation, all components will be available at `@semcore/ui/{{ component name }}`.
 
 @## Flexbox as the basis of everything
 
