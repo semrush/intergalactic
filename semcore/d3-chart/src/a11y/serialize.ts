@@ -24,22 +24,28 @@ const formatLimitedSizeList = (
   if (formattedList.length <= maxFinalStringLength) {
     return formattedList;
   }
-  // TODO: optimize
-  const initialLimit = limit;
-  while (formattedList.length > maxFinalStringLength) {
-    const newLimit = Math.round(limit / 2);
-    if (newLimit === limit) return formattedList;
-    limit = newLimit;
-    formattedList = stringifyList();
+
+  const overflowRatio = formattedList.length / maxFinalStringLength;
+  limit = Math.floor(limit / overflowRatio);
+  if (limit === 0) {
+    limit = 1;
+    return stringifyList();
   }
-  const increaseStep = Math.round((limit - initialLimit) / 4);
-  if (increaseStep < 1) {
-    return formattedList;
+
+  formattedList = stringifyList();
+
+  const maxIncreaseAttempts = 4;
+  for (let i = 0; i < maxIncreaseAttempts; i++) {
+    limit++;
+    const newLimitFormattedList = stringifyList();
+
+    if (newLimitFormattedList.length > maxFinalStringLength) {
+      return formattedList;
+    }
+
+    formattedList = newLimitFormattedList;
   }
-  while (formattedList.length < maxFinalStringLength) {
-    limit += increaseStep;
-    formattedList = stringifyList();
-  }
+
   return formattedList;
 };
 
@@ -219,7 +225,7 @@ export const serialize = (
         },
         {
           general: mainSummary,
-          locals: formatLimitedSizeList(secondarylSummaries, intl, 500, false),
+          locals: formatLimitedSizeList(secondarylSummaries, intl, 400, false),
         },
       );
     });
