@@ -12,7 +12,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-- Added react component `MailSent` put on path ``@semcore/illustration/MailSent`
+- Added react component `MailSent` put on path `@semcore/illustration/MailSent`
 - Illustration `MailSent` put on path `@semcore/illustration/svg/MailSent`
 
 ## [1.0.0-0] - 2022-02-28
