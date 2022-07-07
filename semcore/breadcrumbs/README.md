@@ -42,11 +42,12 @@ of the components that is discussed below. There should only be one version of t
 
 You can use the package the same way but without `/ui/` in the import path.
 
- </details>
-
 ```jsx
 import Breadcrumbs from '@semcore/breadcrumbs';
 ```
+
+</details> 
+</details>
 
 ## 👤 Author
 
