@@ -155,7 +155,7 @@ const PaintPlaygroundView = ({ backgroundColor, onChange, ...other }) => {
 
 class PlaygroundView extends React.Component {
   static defaultProps = {
-    LayoutPreview: (props) => <div {...props} />,
+    LayoutPreview: (props) => <div tabIndex={0} {...props} />,
   };
 
   constructor(props) {

@@ -10,8 +10,8 @@ class Example extends React.PureComponent {
     const { raw, children } = this.props;
     return (
       <div className={`example ${styles.exampleWrapper}`}>
-        <div className={styles.view}>
-          <div style={{ width: '100%' }}>{children}</div>
+        <div className={styles.view} tabIndex={0}>
+          {children}
         </div>
         <div className={styles.codeView}>
           <div className={styles.codeViewControls}>
