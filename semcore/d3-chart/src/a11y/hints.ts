@@ -15,6 +15,14 @@ export type DataStructureHints = {
       [fieldName: string]: unknown;
     };
   };
+  groups: {
+    [groupKey: string | number]: {
+      groupName: string;
+      values: {
+        [valueKey: string]: unknown;
+      };
+    };
+  };
   title: {
     verticalAxes: string | null;
     horizontalAxes: string | null;
@@ -46,6 +54,7 @@ export type DataSummarizationConfig = {
   datesWithTime: boolean | undefined;
   clustersLimit: number;
   valuesLimit: number;
+  groupsLimit: number;
   disable: boolean;
   overrite: string | undefined;
 };
@@ -58,6 +67,7 @@ export const makeDataHintsContainer = (): DataStructureHints => ({
     valueAxes: new Set(),
     values: {},
   },
+  groups: {},
   title: {
     verticalAxes: null,
     horizontalAxes: null,
@@ -89,11 +99,21 @@ export const makeDataHintsHandlers = (mutableContainer: DataStructureHints) => {
     establishDataType: (dataType: SerializableDataType) => {
       mutableContainer.dataType = dataType;
     },
-    describeValueEntity: (dataKey: string | number, dataValue: unknown, readableName?: string) => {
+    describeValueEntity: (dataKey: string | number, dataValue: unknown, readableName: string) => {
       mutableContainer.fields.values[dataKey] = dataValue;
-      if (readableName !== undefined) {
-        handler.labelKey(dataKey, readableName);
-      }
+      handler.labelKey(dataKey, readableName);
+    },
+    describeGroupedValues: (
+      groupKey: string | number,
+      groupName: string,
+      dataKey: string | number,
+      dataValue: unknown,
+    ) => {
+      mutableContainer.groups[groupKey] = mutableContainer.groups[groupKey] ?? {
+        groupName,
+        values: {},
+      };
+      mutableContainer.groups[groupKey].values[dataKey] = dataValue;
     },
     labelKey: (dataKey: string | number, label: string) => {
       mutableContainer.title.values[dataKey] = label;
@@ -129,6 +149,7 @@ export const makeDataSummarizationConfig = (
   datesWithTime: undefined,
   clustersLimit: 5,
   valuesLimit: 5,
+  groupsLimit: 5,
   dataType: undefined,
   disable: false,
   overrite: undefined,
