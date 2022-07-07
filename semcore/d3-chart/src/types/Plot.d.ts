@@ -77,6 +77,10 @@ export interface IPlotProps extends IContext, IBoxProps {
      * @default false
      * **/
     valuesLimit?: number;
+    /** Described grouped value groups count before text "and X more"
+     * @default false
+     * **/
+    groupsLimit?: number;
   };
 }
 

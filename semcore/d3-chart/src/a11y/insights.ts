@@ -23,6 +23,7 @@ export type TrendNode = {
 export type GeneralTrendNode = Omit<TrendNode, 'type'> & { type: 'general-trend' };
 export type ComparisonNode = {
   type: 'comparison';
+  label?: string;
   priority: number;
   values: {
     value: unknown;
@@ -53,7 +54,7 @@ export type ClusterNode = {
 };
 export type Insight = TrendNode | GeneralTrendNode | ComparisonNode | ClusterNode;
 
-export type SerializableDataType = 'time-series' | 'points-cloud' | 'values-set';
+export type SerializableDataType = 'time-series' | 'points-cloud' | 'values-set' | 'grouped-values';
 
 export type AnalyzedData = {
   insights: Insight[];
@@ -94,7 +95,7 @@ export const extractDataInsights = (
   const dataTitle: string | null = hints.title.verticalAxes ?? hints.title.horizontalAxes;
 
   const keysMap = Object.fromEntries(
-    Object.keys(Array.isArray(data) ? data[0] : data).map((key) => [key, true]),
+    Object.keys((Array.isArray(data) ? data[0] : data) ?? {}).map((key) => [key, true]),
   );
 
   if (!dataType) {
@@ -461,6 +462,48 @@ export const extractDataInsights = (
       values,
       priority: 1,
     });
+  } else if (dataType === 'grouped-values') {
+    const groups = Object.entries(hints.groups).map(([groupKey, group]) => {
+      const values: { label: string; value: unknown }[] = Object.entries(group.values).map(
+        ([valueKey, value]) => ({
+          label: hints.title.values[valueKey] ?? valueKey,
+          value,
+        }),
+      );
+
+      values.sort((a, b) => {
+        if (typeof a.value !== 'number' || typeof b.value !== 'number') return 0;
+
+        return b.value - a.value;
+      });
+
+      const averageValue =
+        values.reduce((sum, { value }) => sum + (value as number), 0) / values.length;
+
+      return {
+        label: group.groupName ?? groupKey,
+        values,
+        averageValue: !Number.isNaN(averageValue) ? averageValue : undefined,
+      };
+    });
+
+    groups.sort((a, b) => {
+      if (typeof a.averageValue !== 'number' || typeof b.averageValue !== 'number') return 0;
+
+      return b.averageValue - a.averageValue;
+    });
+
+    insights.push(
+      ...groups.map(
+        (group) =>
+          ({
+            type: 'comparison',
+            label: group.label,
+            values: group.values,
+            priority: 1,
+          } as ComparisonNode),
+      ),
+    );
   }
 
   const hasHighPriorityInsights = insights.some((insight) => insight.priority > 0);

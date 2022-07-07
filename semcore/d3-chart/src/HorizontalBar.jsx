@@ -42,6 +42,7 @@ class HorizontalBarRoot extends Component {
       height: heightProps,
       onMouseMove,
       onMouseLeave,
+      groupKey,
     } = this.asProps;
 
     const [xScale, yScale] = scale;
@@ -58,8 +59,8 @@ class HorizontalBarRoot extends Component {
       position: d[x] > 0 ? 'right' : 'left',
     });
 
-    this.asProps.dataHintsHandler.describeValueEntity(`${d[y]} ${x}`, d[x]);
-    this.asProps.dataHintsHandler.labelKey(y, d[y]);
+    this.asProps.dataHintsHandler.describeGroupedValues(i, d[groupKey], x, d[x]);
+    this.asProps.dataHintsHandler.labelKey(y, groupKey ?? d[y]);
 
     return sstyled(styles)(
       <SBar
