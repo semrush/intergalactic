@@ -42,21 +42,23 @@ of the components that is discussed below. There should only be one version of t
 
 You can use the package the same way but without `/ui/` in the import path.
 
- </details>
-
 ```jsx
 import UtilName from '@semcore/utils/lib/{{ util name }}';
 ```
 
+</details>
+
 ## 👤 Author
 
-[UI-kit team](https://github.com/semrush/intergalactic/blob/master/MAINTAINERS) and [others ❤️](https://github.com/semrush/intergalactic/graphs/contributors)
+[UI-kit team](https://github.com/semrush/intergalactic/blob/master/MAINTAINERS)
+and [others ❤️](https://github.com/semrush/intergalactic/graphs/contributors)
 
 ## 🤝 Contributing
 
 Contributions, issues and feature requests are welcome!
 
-Feel free to check [issues page](https://github.com/semrush/intergalactic/issues). You can also take a look at the [contributing guide](https://github.com/semrush/intergalactic/blob/master/CONTRIBUTING.md).
+Feel free to check [issues page](https://github.com/semrush/intergalactic/issues). You can also take a look at
+the [contributing guide](https://github.com/semrush/intergalactic/blob/master/CONTRIBUTING.md).
 
 ## Show your support
 
