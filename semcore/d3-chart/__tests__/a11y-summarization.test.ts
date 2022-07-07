@@ -744,7 +744,7 @@ describe('Plot a11y summarization', () => {
       locale: 'en',
     });
 
-    const limit = 500;
+    const limit = 550;
     const length = text.length;
 
     if (length >= limit) {
