@@ -91,9 +91,40 @@ export const formatValue = (
   return String(value);
 };
 
+const formatValuesList = (
+  values: { label: string; value: unknown }[],
+  {
+    intl,
+    limit,
+    datesWithTime,
+    maxListSymbols,
+  }: { intl: Intl; limit: number; datesWithTime?: boolean; maxListSymbols: number },
+) => {
+  const result = values.slice(0, limit).map(({ value: rawValue, label }) => {
+    const value = formatValue(intl, rawValue, { datesWithTime, maxListSymbols });
+    return intl.formatMessage(
+      { id: value === label ? 'value' : 'value-labeled' },
+      { label, value },
+    );
+  });
+  if (values.length > limit) {
+    result.push(
+      intl.formatMessage({ id: 'ellipsis' }, { leftCount: values.values.length - limit }),
+    );
+  }
+
+  return intl.formatList(result);
+};
+
 export const serialize = (
   { insights, dataType, dataRange, dataTitle }: AnalyzedData,
-  { datesWithTime, maxListSymbols, clustersLimit, valuesLimit }: DataSummarizationConfig,
+  {
+    datesWithTime,
+    maxListSymbols,
+    clustersLimit,
+    valuesLimit,
+    groupsLimit,
+  }: DataSummarizationConfig,
   {
     locale,
     translations,
@@ -135,13 +166,13 @@ export const serialize = (
       { id: dataTitle ? 'chart-summary' : 'chart-summary-no-label' },
       { entities, entitiesList, label: dataTitle },
     );
-    const result = [summaryHead];
+    const summary = [summaryHead];
     if (dataRange) {
       const additionalAxe = intl.formatMessage(
         { id: dataRange.label ? 'additional-axe' : 'additional-axe-no-label' },
         { from, to, label: dataRange.label },
       );
-      result.push(additionalAxe);
+      summary.push(additionalAxe);
     }
     const summaryBody = Object.entries(trendsByDataKey).map(([dataKey, insights]) => {
       const generalTrend = insights.find((insight) => insight.type === 'general-trend');
@@ -192,9 +223,9 @@ export const serialize = (
         },
       );
     });
-    result.push(...summaryBody);
+    summary.push(...summaryBody);
 
-    return result.join('\n');
+    return summary.join('\n');
   } else if (dataType === 'points-cloud') {
     const clustersInsights = insights as ClusterNode[];
     const biggestClusters = clustersInsights.slice(0, clustersLimit);
@@ -231,7 +262,7 @@ export const serialize = (
       );
     }
 
-    const summaryHead = intl.formatMessage(
+    const summary = intl.formatMessage(
       { id: dataTitle ? 'chart-summary' : 'chart-summary-no-label' },
       { entities, entitiesList: intl.formatList(entitiesList), label: dataTitle },
     );
@@ -240,36 +271,65 @@ export const serialize = (
         { id: dataRange.label ? 'additional-axe' : 'additional-axe-no-label' },
         { from, to, label: dataRange.label },
       );
-      return [summaryHead, additionalAxe].join('\n');
+      return [summary, additionalAxe].join('\n');
     }
-    return summaryHead;
+
+    return summary;
   } else if (dataType === 'values-set') {
     const [valuesInsight] = insights as [ComparisonNode];
     const entities = intl.formatMessage(
       { id: 'entity-type-values' },
       { count: valuesInsight.values.length },
     );
-    const entitiesList = valuesInsight.values
-      .slice(0, valuesLimit)
-      .map(({ value: rawValue, label }) => {
-        const value = formatValue(intl, rawValue, { datesWithTime, maxListSymbols });
-        return intl.formatMessage(
-          { id: value === label ? 'value' : 'value-labeled' },
-          { label, value },
-        );
+    const entitiesList = formatValuesList(valuesInsight.values, {
+      intl,
+      limit: valuesLimit,
+      datesWithTime,
+      maxListSymbols,
+    });
+
+    const sumamry = intl.formatMessage(
+      { id: dataTitle ? 'chart-summary' : 'chart-summary-no-label' },
+      { entities, entitiesList: entitiesList, label: dataTitle },
+    );
+
+    return sumamry;
+  } else if (dataType === 'grouped-values') {
+    const groupInsights = insights as ComparisonNode[];
+    const valueCounts = groupInsights.map((group) => group.values.length);
+
+    const entities = intl.formatMessage(
+      { id: 'entity-type-grouped-values' },
+      {
+        groupsCount: groupInsights.length,
+        valuesCount: valueCounts[0],
+        minValuesCount: Math.min(...valueCounts),
+        maxValuesCount: Math.max(...valueCounts),
+      },
+    );
+    const entitiesList = groupInsights.slice(0, groupsLimit).map(({ label, values }) => {
+      const formattedValues = formatValuesList(values, {
+        intl,
+        limit: valuesLimit,
+        datesWithTime,
+        maxListSymbols,
       });
-    if (valuesInsight.values.length > valuesLimit) {
+      return intl.formatMessage({ id: 'values-group' }, { label, values: formattedValues });
+    });
+    if (groupInsights.values.length > groupsLimit) {
       entitiesList.push(
         intl.formatMessage(
           { id: 'ellipsis' },
-          { leftCount: valuesInsight.values.length - valuesLimit },
+          { leftCount: groupInsights.values.length - groupsLimit },
         ),
       );
     }
+
     const sumamry = intl.formatMessage(
       { id: dataTitle ? 'chart-summary' : 'chart-summary-no-label' },
       { entities, entitiesList: intl.formatList(entitiesList), label: dataTitle },
     );
+
     return sumamry;
   }
 

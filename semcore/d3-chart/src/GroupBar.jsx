@@ -48,6 +48,7 @@ class GroupBarRoot extends Component {
       offset: [this.scaleGroup(y), 0],
       width: this.scaleGroup.bandwidth(),
       x,
+      groupKey: x,
     };
   }
 
@@ -58,12 +59,16 @@ class GroupBarRoot extends Component {
       offset: [0, this.scaleGroup(x)],
       height: this.scaleGroup.bandwidth(),
       y,
+      groupKey: y,
     };
   }
 
   render() {
     const Element = this.Element;
     this.scaleGroup = this.getScaleGroup();
+
+    this.asProps.dataHintsHandler.establishDataType('grouped-values');
+
     return (
       <Element aria-hidden render="g" childrenPosition="inside" scaleGroup={this.scaleGroup} />
     );
