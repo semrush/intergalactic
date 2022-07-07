@@ -23,7 +23,7 @@
 
 ### @semcore/illustration
 
-- **Changed** Added react component `MailSent` put on path ``@semcore/illustration/MailSent`
+- **Changed** Added react component `MailSent` put on path `@semcore/illustration/MailSent`
 - **Changed** Illustration `MailSent` put on path `@semcore/illustration/svg/MailSent`
 
 ### @semcore/radio
