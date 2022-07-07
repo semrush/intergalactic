@@ -430,7 +430,8 @@ describe('Plot a11y summarization', () => {
   BBBBB
   CCAABB  DD
   EEE
-`);
+    `);
+
     const hints = {
       ...makeHints(),
       title: {
@@ -444,6 +445,63 @@ describe('Plot a11y summarization', () => {
     expect(
       (insights as ClusterNode[]).map((insight) => [insight.center.xLabel, insight.center.yLabel]),
     ).toEqual(Array(insights.length).fill(['horizontalAxes', 'verticalAxes']));
+  });
+
+  test('insights-extraction/grouped-values', () => {
+    const data = {};
+    const hints: DataStructureHints = {
+      ...makeHints(),
+      groups: {
+        a: {
+          groupName: 'My super group A',
+          values: {
+            c: 1,
+            d: 5,
+          },
+        },
+        b: {
+          groupName: 'My super group B',
+          values: {
+            c: 200,
+            d: 50,
+          },
+        },
+      },
+      dataType: 'grouped-values',
+    };
+    const { insights } = extractDataInsights(data, hints, makeConfig());
+    expect(insights).toEqual([
+      {
+        label: 'My super group B',
+        priority: (insights[0] as any).priority,
+        type: 'comparison',
+        values: [
+          {
+            label: 'c',
+            value: 200,
+          },
+          {
+            label: 'd',
+            value: 50,
+          },
+        ],
+      },
+      {
+        label: 'My super group A',
+        priority: (insights[1] as any).priority,
+        type: 'comparison',
+        values: [
+          {
+            label: 'd',
+            value: 5,
+          },
+          {
+            label: 'c',
+            value: 1,
+          },
+        ],
+      },
+    ]);
   });
 
   test('insights-extraction/titles/values-set', () => {
@@ -993,6 +1051,34 @@ describe('Plot a11y summarization', () => {
       makeConfig(),
       locale,
     );
+    serialize(
+      extractDataInsights(
+        [],
+        {
+          ...makeHints(),
+          groups: {
+            a: {
+              groupName: 'My super group A',
+              values: {
+                c: 1,
+                d: 5,
+              },
+            },
+            b: {
+              groupName: 'My super group B',
+              values: {
+                c: 200,
+                d: 50,
+              },
+            },
+          },
+          dataType: 'grouped-values',
+        },
+        makeConfig(),
+      ),
+      makeConfig(),
+      locale,
+    );
 
     const unusedMessages = translationsList.filter((messageId) => !usedMessages.has(messageId));
     const unusedMessagesCount = unusedMessages.length;
@@ -1001,10 +1087,10 @@ describe('Plot a11y summarization', () => {
     if (unusedMessagesCount !== 0) {
       // eslint-disable-next-line no-console
       console.log(
-        `Expected all non-view translations messages used (unused messages [${unusedMessagesCount}]: ${unusedMessagesJoin})`,
+        `Expected all non-view translations messages be used (unused messages [${unusedMessagesCount}]: ${unusedMessagesJoin})`,
       );
     }
-    expect(unusedMessagesCount).toHaveLength(0);
+    expect(unusedMessages).toHaveLength(0);
   });
 
   test('serialization/trends/no-ellipsis-on-too-much-trends', () => {

@@ -65,6 +65,7 @@ class StackBarRoot extends Component {
       y0: XY0,
       x,
       r: rBar,
+      groupKey: x,
     };
   }
 
@@ -87,12 +88,16 @@ class StackBarRoot extends Component {
       x0: XY0,
       y,
       r: rBar,
+      groupKey: y,
     };
   }
 
   render() {
     const Element = this.Element;
     this.series = this.getSeries();
+
+    this.asProps.dataHintsHandler.establishDataType('grouped-values');
+
     return <Element aria-hidden render="g" series={this.series} />;
   }
 }
