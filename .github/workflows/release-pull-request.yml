@@ -77,6 +77,9 @@ jobs:
         run: |
           git fetch --all
           git checkout "${{ env.release_branch_name }}"
+          git pull origin master --rebase
+          git push -f
+          git pull
           echo "firstCommitHash=$(git log origin/master..origin/${{ env.release_branch_name }} --pretty=format:"%H" | tail -1)" >> $GITHUB_ENV
           echo "secondCommitHash=$(git log origin/master..origin/${{ env.release_branch_name }} --pretty=format:"%H" | tail -2 | head -1)" >> $GITHUB_ENV
           echo "lastCommitHash=$(git log origin/master..origin/${{ env.release_branch_name }} --pretty=format:"%H" | head -1)" >> $GITHUB_ENV
