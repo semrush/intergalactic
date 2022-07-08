@@ -16,12 +16,12 @@ It should be used in cases when on/off should occur instantly, without reloading
 
 @## Sizes and margins
 
-Our interface uses three switch sizes, which are xl, l and m. You can sign either one or both of the switch states with the label. At the same time, the enabled option always has the main color `--gray20`, and the disabled option has the secondary color `--gray60`.
+Our interface uses three switch sizes, which are xl, l and m. You can sign either one or both of the switch states with the label. At the same time, the enabled option always has the main color `--gray-800`, and the disabled option has the secondary color `--gray-500`.
 
 |     | Appearance and margins                     | Styles                                                                         |
 | --- | ------------------------------------------ | ------------------------------------------------------------------------------ |
 | XL  | ![xl switch](static/switch-on-text-xl.png) | `width: 44px; height: 24px; circle: 20px; font-size: 16px; font-padding: 8px;` |
-| L   | ![l switch](static/switch-on-text-l.png)   | `width: 32px; height: 18px; circle: 14px; font-size: 14px; font-padding: 8px;` |
+| L   | ![l switch](static/switch-on-text-l.png)   | `width: 36px; height: 20px; circle: 16px; font-size: 14px; font-padding: 8px;` |
 | M   | ![m switch](static/switch-on-text-m.png)   | `width: 20px; height: 12px; circle: 8px; font-size: 12px; font-padding: 8px;`  |
 
 @## Themes
@@ -39,21 +39,22 @@ The Switch component has two themes, which are `info` and `success`. Themes affe
 
 An icon can be placed inside the two large switch sizes. It is recommended to use different icons for off and on states for greater state differentiation.
 
-For example, it is possible to use `ShowNo` and `ShowYes` icons inside the switches.
-
-![off](static/@1xswitch-off-icon-l.png)
-
-![on](static/@1xswitch-on-icon-l.png)
+For example, it is possible to use `ShowNo` and `ShowYes` icons inside switches XL size, and `Close` and `Check` icons inside switches L size.
+| XL | L |
+|---------------------------------------|-----------------------------------------|
+|![off](static/switch-off-icon-xl.png) | ![off](static/switch-off-icon-l.png) |
+|---------------------------------------|-----------------------------------------|
+|![on](static/switch-on-icon-xl.png) | ![on](static/switch-on-icon-l.png) |
 
 @## Interaction
 
 The switch can be in one of three main states: off, on, and disabled. To change the state, click either on the switch or on the text next to it.
 
-| State    | Appearance                                                                            | Styles                                                   |
-| -------- | ------------------------------------------------------------------------------------- | -------------------------------------------------------- |
-| off      | ![off switch](static/off.png)                                                         | `background: rgba(0, 0, 0, 0.4);`                        |
-| on       | ![on switch](static/on-green.png) ![on switch](static/on-blue.png)                    | `background:--green` или `background: --light-blue`      |
-| disabled | ![disabled switch](static/disabled.png) ![disabled switch](static/disabled-green.png) | The transparency of the entire component changes by 30%. |
+| State    | Appearance                                                                              | Styles                                                   |
+| -------- | --------------------------------------------------------------------------------------- | -------------------------------------------------------- |
+| off      | ![off switch](static/off.png)                                                           | `background:--gray-300`                                  |
+| on       | ![on switch](static/on-success.png) ![on switch](static/on-info.png)                    | `background:--green-400` или `background: --blue-400`    |
+| disabled | ![disabled switch](static/disabled.png) ![disabled switch](static/disabled-success.png) | The transparency of the entire component changes by 30%. |
 
 @## Use in UX/UI
 

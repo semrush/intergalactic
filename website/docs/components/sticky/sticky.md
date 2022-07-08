@@ -24,9 +24,9 @@ If there is a status bar or a line with quick steps for a table under the header
 
 In some cases, it is necessary to "pin" the first one or two columns in the table. At the same, they should always have a shadow when scrolling, so that the user can see that there is content under them.
 
-The style of the shadow is `background-image: linear-gradient(to left, rgba(0, 0, 0, 0.1), rgba(255, 255, 255, 0));`.
+The style of the shadow is `background-image: linear-gradient(to left, rgba(25, 27, 35, .1), rgba(255, 255, 255, 0));`.
 
-![sticky column](static/sticky-header.png)
+![sticky column](static/sticky-column.png)
 
 @## Pin of messages inside the block
 
