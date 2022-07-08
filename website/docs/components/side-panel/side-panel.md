@@ -47,10 +47,10 @@ Use this component when it is simultaneously needed:
 
 Default theme is `light`.
 
-| Theme                  | Appearance example                     | Styles                                                                                                            | When to use                                                                                                          |
-| ---------------------- | -------------------------------------- | ----------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
-| light, without overlay | ![light-theme](static/light-theme.png) | In these case the panel has the shadow: `box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.2);`. There is no overlay.       | This is a default theme if you need to show additional information for a report/tool/block.                          |
-| dark, without overlay  | ![dark-theme](static/dark-theme.png)   | In this theme panel has an overlay with styles – `opacity: 0.8;` `background: --var(black);`. There is no shadow. | If you need to concentrate the user on information inside SidePanel (by modal type), it is useful to enable overlay. |
+| Theme                  | Appearance example                     | Styles                                                                                                          | When to use                                                                                                          |
+| ---------------------- | -------------------------------------- | --------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| light, without overlay | ![light-theme](static/light-theme.png) | In these case the panel has the shadow: `box-shadow: 0px 1px 12px rgba(--gray-800, .15);`. There is no overlay. | This is a default theme if you need to show additional information for a report/tool/block.                          |
+| dark, without overlay  | ![dark-theme](static/dark-theme.png)   | In this theme panel has an overlay with styles – `rgba(--gray-800, .7);`. There is no shadow.                   | If you need to concentrate the user on information inside SidePanel (by modal type), it is useful to enable overlay. |
 
 @## Default sizes and indents
 
@@ -80,10 +80,10 @@ By default, total header is 16px (variables: `--fs-300; --lh-300`), `font-weight
 
 > 💡 The header is pinned when scrolling large content inside the SidePanel.
 
-| Appearance example                    | Styles                                                                                                       |
-| ------------------------------------- | ------------------------------------------------------------------------------------------------------------ |
-| ![header paddings](static/header.png) | `height: 56px; padding-bottom: 8px; align-items: center; border-bottom: 1px solid var(–gray80);`             |
-| ![close icon](static/closeIcon.png)   | Size of the `Close` icon is M, color of the icon is `--var(stone)`. Click area of the icon is `40px * 40px`. |
+| Appearance example                    | Styles                                                                                                     |
+| ------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
+| ![header paddings](static/header.png) | `height: 52px; padding-bottom: 4px; align-items: center; border-bottom: 1px solid var(–-gray-200);`        |
+| ![close icon](static/closeIcon.png)   | Size of the `Close` icon is L, color of the icon is `--gray-300`. Click area of the icon is `48px * 48px`. |
 
 ### Content
 
@@ -110,15 +110,15 @@ You can place common controls for SidePanel content in the footer.
 > 💡 A footer with controls is pinned when scrolling large content inside a SidePanel.
 
 - In case SidePanel content is separated and has separate CTAs and controls, it makes no sense to place them in the footer 🤷🏻‍♀️
-- The recommended size of controls in the panel on the desktop is M (26px height). Depending on the context, use M or L controls in the panel on small screens.
+- The recommended size of controls in the panel on the desktop is M (28px height). Depending on the context, use M or L controls in the panel on small screens.
 
 Footer styles:
 
 ```css
-height: 42px;
+height: 44px;
 padding: 8px 0;
 align-items: center;
-border-top: 1px solid var(–gray80);
+border-top: 1px solid var(–-gray-200);
 ```
 
 ![footer-height](static/footer.png)
@@ -180,7 +180,7 @@ When loading and reloading SidePanel content, we show an [XL size spinner](/comp
 
 ### Error
 
-If an error occurs during data loading, we show the error status in the center with the corresponding text and the `Reload` button to reload the SidePanel content.
+If an error occurs during data loading, we show the error status in the center with the corresponding text and the `Try again` button to reload the SidePanel content.
 
 ![error example](static/error.png)
 
