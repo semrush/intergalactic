@@ -24,10 +24,10 @@ The skeletons has [two themes](/components/skeleton/skeleton-api/), namely, `dar
 
 All skeleton “bones” have `border-radius of 4px;`.
 
-| Theme  | Appearance example                     | Styles                                                                                        |
-| ------ | -------------------------------------- | --------------------------------------------------------------------------------------------- |
-| dark   | ![theme-light](static/theme-light.png) | Main color is `#EDEFF0`. Color of the moving part is `#FAFBFB`.                               |
-| invert | ![theme-dark](static/theme-dark.png)   | Main color is `rgba(255,255,255,0.10)`. Color of the moving part is `rgba(255,255,255,0.30);` |
+| Theme  | Appearance example                     | Styles                              |
+| ------ | -------------------------------------- | ----------------------------------- |
+| dark   | ![theme-light](static/theme-light.png) | `background: rgba(--gray-100, .8)`. |
+| invert | ![theme-dark](static/theme-dark.png)   | `background: rgba(--white, .3)`.    |
 
 @## Animation
 
@@ -58,14 +58,13 @@ Each header is replaced by a "bone", the height of which is equal to the line-he
 - The header is always replaced by only one "bone", even if the header consists of two lines.
 - The width of "bones" is 150px. In rare cases, you can increase it, if it is necessary.
 
-| h#  | Appearance                    |
-| --- | ----------------------------- |
-| h1  | ![h1-skeleton](static/h1.png) |
-| h2  | ![h2-skeleton](static/h2.png) |
-| h3  | ![h3-skeleton](static/h3.png) |
-| h4  | ![h4-skeleton](static/h4.png) |
-| h5  | ![h5-skeleton](static/h5.png) |
-| h6  | ![h6-skeleton](static/h6.png) |
+| h#    | Appearance                       |
+| ----- | -------------------------------- |
+| h1    | ![h1-skeleton](static/h1.png)    |
+| h2-h3 | ![h2-skeleton](static/h2-h3.png) |
+| h4    | ![h3-skeleton](static/h4.png)    |
+| h5-h6 | ![h4-skeleton](static/h5-h6.png) |
+| h7    | ![h5-skeleton](static/h7.png)    |
 
 ### Images
 
@@ -244,7 +243,7 @@ At the initial loading of the page, the counters in the pills are skeletonized. 
 
 ![skeleton-pills](static/pills.png)
 
-#### Big pills 👑
+#### Advanced pills 👑
 
 They are skeletonized by analogy with the PanelSummury:
 

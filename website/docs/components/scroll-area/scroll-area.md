@@ -21,18 +21,12 @@ tabName: Design
 
 Scrollbar has the following styles:
 
-| Element                 | Styles                            |
-| ----------------------- | --------------------------------- |
-| `ScrollArea.Bar`        | `background: transparent;`        |
-| `ScrollArea.Bar.Slider` | `background: rgba(0, 0, 0, 0.2);` |
+| Element                 | Styles                           |
+| ----------------------- | -------------------------------- |
+| `ScrollArea.Bar`        | `background: transparent;`       |
+| `ScrollArea.Bar.Slider` | `background: rgba(0, 0, 0, .3);` |
 
-Width of the vertical `ScrollArea.Bar` is 8px.
-
-Height of the horizontal `ScrollArea.Bar` is 12px.
-
-> 💡 Different width and height of scrollbars for different orientation are made because the user is more likely to interact with a horizontal scrollbar with the mouse, because he needs to hold it to scroll the content. Therefore, it is larger in height.
->
-> The mouse wheel easily controls the vertical scroll, so users do not have to point and grasp it. In addition, vertical scroll saves useful width for lists and widgets 😊
+Width of `ScrollArea.Bar` is 8px.
 
 @## Interaction
 

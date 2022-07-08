@@ -14,9 +14,9 @@ tabName: Design
 
 The spinner is always placed in the center of the container. For larger blocks (e.g. you have a whole page loaded), wrap the spinner in [Sticky](/components/sticky/), so that it is centered on the user's viewport.
 
-Mask transparency in SpinContainer is 0.85
+Overlay transparency in SpinContainer is 0.85
 
-![spin-container-dropdown](static/@1xspincontainer-dropdown.png)
+![spin-container-dropdown](static/spincontainer-dropdown.png)
 
 @## Use in UX/UI
 

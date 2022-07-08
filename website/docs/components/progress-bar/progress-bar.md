@@ -90,7 +90,12 @@ Progress to a value is always animated with `ease-in`.
 
 > 💡 Sometimes you can use an animation without the green bar instead of the progress bar when launching the tool. This can be done when you don't know how long the collection will take. Or in this case, you can make a fake progress bar which will create the illusion of the user approaching the end of the process.
 
-#### Don't use it
+### Fixed progress bar
+
+When scrolling, the progress bar can be fixed at the upper margin. In this case, it is fixed above all components, including filters, table headers, etc.
+![progressbar sticky](static/progressbar-sticky.png)
+
+### Don't use it
 
 - if you need to show some short action (no more than 5 seconds), it is better to use [Spin](/components/spin/);
 - to display steps (for example, when filling out a form).
