@@ -52,6 +52,8 @@ const formatLimitedSizeList = (
 const isReactComponent = (obj: any) =>
   typeof obj === 'object' && obj && 'displayName' in obj && typeof obj.displayName === 'string';
 
+const guessNumberAsTimestampMinDate = new Date('1975').getTime();
+
 export const formatValue = (
   intl: Intl,
   value: unknown,
@@ -66,6 +68,13 @@ export const formatValue = (
   } = {},
 ): string => {
   if (typeof value === 'number') {
+    if (value >= guessNumberAsTimestampMinDate) {
+      return formatValue(intl, new Date(value), {
+        siblingsTimeMark,
+        maxListSymbols,
+        datesWithTime,
+      });
+    }
     return intl.formatNumber(value);
   }
   if (value instanceof Date) {
