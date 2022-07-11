@@ -1,3 +1,39 @@
+## [12.2.1] - 2022-07-11
+
+### @semcore/d3-chart
+
+- **Added** Added index to Bubble chart
+- **Added** Added property minimal height `hMin` for Bar (`<Bar hMin={...}/>`)
+- **Added** Added property `active` for `Donut.Pie`
+- **Fixed** Exclude props from html for `Tooltip.Dot`
+- **Fixed** Recalculate position for `Dot` after update scale
+- **Fixed** Optimization render `Dot`
+
+### @semcore/data-table
+
+- **Fixed** Fixed scrolling of table when enable virtual scrolling.
+
+### @semcore/feedback-form
+
+- **Fixed** Fixed feedback image.
+
+### @semcore/icon
+
+- **Added** Added icon `AppsBlock`.
+
+### @semcore/illustration
+
+- **Changed** Added react component `MailSent` put on path ``@semcore/illustration/MailSent`
+- **Changed** Illustration `MailSent` put on path `@semcore/illustration/svg/MailSent`
+
+### @semcore/radio
+
+- **Fixed** Change inherited TS type for Radio (IFlexProps -> IBoxProps)
+
+### @semcore/widget-empty
+
+- **Changed** Updated svg images for all charts, nothing found and congratulations states.
+
 ## [12.2.0] - 2022-06-24
 
 ### @semcore/breadcrumbs
