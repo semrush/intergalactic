@@ -210,7 +210,12 @@ const components = {
     { text: 'Limit message', size: { ui: '11/13' } },
     { text: 'Guides renewal', size: { ui: '1/13' } },
   ],
-  'Q3 2022': [{ text: 'We are planning tasks now', size: { ui: '1/15' } }],
+  'Q3 2022': [
+    { text: 'Illustration', size: { ui: '1/3' } },
+    { text: 'ColorPicker', size: { kit: '1/3' } },
+    { text: 'Ellipsis', size: { ui: '3/7', kit: '9/13' } },
+    { text: 'A11y components enhancement', size: { ui: '1/13', kit: '1/13' } },
+  ],
 };
 
 function Gant(props) {
