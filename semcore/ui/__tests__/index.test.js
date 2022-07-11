@@ -17,7 +17,12 @@ describe('@semcore/ui', () => {
     test.skip('release was not generated', () => {});
     return;
   }
-  const EXCLUDE_PACKAGE = ['@semcore/utils', '@semcore/email', '@semcore/chart'];
+  const EXCLUDE_PACKAGE = [
+    '@semcore/utils',
+    '@semcore/illustration',
+    '@semcore/email',
+    '@semcore/chart',
+  ];
   packages.forEach((pkg) => {
     if (EXCLUDE_PACKAGE.includes(pkg)) return;
 
