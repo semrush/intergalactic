@@ -40,14 +40,14 @@ function createElementRender() {
       },
     );
 
-    const Tag = typeof render === 'string' ? mergedProps.tag || render : render;
-
     if (typeof children === 'function') {
       const _child = mergedProps.children;
       mergedProps = assignProps(children(mergedProps), mergedProps);
       children = mergedProps.children;
       mergedProps.children = _child;
     }
+
+    const Tag = typeof render === 'string' ? mergedProps.tag || render : render;
 
     if (childrenPosition === 'inside') {
       mergedProps.children = children === undefined ? mergedProps.children : children;
