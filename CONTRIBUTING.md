@@ -4,7 +4,6 @@ First of all, thank you for your interest in the library. We'd love to accept yo
 
 We have templates for two types of issues: a Feature Request and a Bug. If you want to submit a bug please be patient and fill all required fields. This will help us to define the problem.
 
-
 Try to follow this advice to fill a great issue:
 
 - Check that issue tracker does not contain issues similar to your.
