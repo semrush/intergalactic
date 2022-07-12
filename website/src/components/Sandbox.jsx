@@ -18,18 +18,20 @@ const dataToLzCompressedJson = (data) => {
 };
 
 export default ({ raw: { code: ExampleRawComponent, path } }) => {
-  let dependencies = ExampleRawComponent.match(/[from\s](["|'].*["|'])/g);
-  if (!dependencies) return null;
-  dependencies = dependencies
-    .map((str) => str.trim().match(/'.+'/g))
-    .flat()
-    .map((str) => str && str.slice(1, -1))
-    .reduce((acc, str) => {
-      if (str) {
-        return { ...acc, [str.replace(/icon\/.+/g, 'icon')]: 'latest' };
-      }
-      return acc;
-    }, {});
+  const dependencies = {};
+  const lines = ExampleRawComponent.split('\n');
+  for (const line of lines) {
+    for (const quote of ["'", '"']) {
+      const importStatementStart = line.indexOf(`from ${quote}`);
+      if (importStatementStart === -1) continue;
+      if (line[importStatementStart - 1] !== ' ' && importStatementStart !== 0) continue;
+      const importStatementPart = line.substring(importStatementStart + `from ${quote}`.length);
+      const importStatementEnd = importStatementPart.indexOf(quote);
+      const dependency = importStatementPart.substring(0, importStatementEnd);
+      dependencies[dependency] = 'latest';
+      break;
+    }
+  }
 
   const parameters = dataToLzCompressedJson({
     files: {
@@ -37,9 +39,9 @@ export default ({ raw: { code: ExampleRawComponent, path } }) => {
         content: {
           dependencies: {
             ...dependencies,
-            'react-dom': 'latest',
+            react: '17',
+            'react-dom': '17',
             '@semcore/core': 'latest',
-            'react-scripts': 'latest',
           },
         },
       },
