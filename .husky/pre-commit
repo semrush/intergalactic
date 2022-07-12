@@ -1,4 +1,4 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-tsm ./.ci/verify-email.ts && yarn prettier:fix && yarn lint-staged
+yarn tsm ./.ci/verify-email.ts && yarn prettier:fix && yarn lint-staged
