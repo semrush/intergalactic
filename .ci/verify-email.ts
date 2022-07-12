@@ -78,7 +78,7 @@ if (!usedSignature) {
   const foundList = rsaSignatures.map(({ uid }) => uid).join(', ') ?? '<empty list>';
   console.log(
     pc.red(
-      `Unable to find GPG signature "${gitSignatureUid}". We found: ${foundList}. Run "gpg --list-secret-keys --keyid-format=long" to see which signatures are available.`,
+      `Unable to find GPG signature "${gitSignatureUid}". Found: ${foundList}. Run "gpg --list-secret-keys --keyid-format=long" to see which signatures are available.`,
     ),
   );
   process.exit(1);
