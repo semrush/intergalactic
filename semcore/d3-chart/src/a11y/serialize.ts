@@ -97,11 +97,9 @@ export const formatValue = (
     return formatLimitedSizeList(formattedValues, intl, maxListSymbols);
   }
 
-  if (isReactComponent(value))
-    return intl.formatMessage(
-      { id: 'react-component' },
-      { displayName: (value as React.FC).displayName! },
-    );
+  if (isReactComponent(value)) {
+    return String((value as React.FC).displayName);
+  }
 
   return String(value);
 };
@@ -117,10 +115,10 @@ const formatValuesList = (
 ) => {
   const result = values.slice(0, limit).map(({ value: rawValue, label }) => {
     const value = formatValue(intl, rawValue, { datesWithTime, maxListSymbols });
-    return intl.formatMessage(
-      { id: value === label ? 'value' : 'value-labeled' },
-      { label, value },
-    );
+
+    if (value === label) return value;
+
+    return intl.formatMessage({ id: 'value-labeled' }, { label, value });
   });
   if (values.length > limit) {
     result.push(
