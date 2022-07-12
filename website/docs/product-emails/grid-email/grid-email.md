@@ -3,6 +3,8 @@ title: Email templates & grid
 tabName: Design
 ---
 
+> 🚨 Current `@semcore/email` package is deprecated and not recommend for use. New major version is planned and will be released one day.
+
 > You can find all basic design components, blocks and styles for product emails in our **[Figma library](https://www.figma.com/file/uBxKSTlXSEDiKvFp6txzrr/NEW-%E2%80%A2-Product-emails?node-id=1%3A164) (available for Semrush designers only).**
 
 @## Typography and styles

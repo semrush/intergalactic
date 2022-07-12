@@ -3,6 +3,8 @@ title: Email button
 tabName: Example
 ---
 
+> 🚨 Current `@semcore/email` package is deprecated and not recommend for use. New major version is planned and will be released one day.
+
 @## Button themes
 
 @email_html compiled-examples/button-theme.html src/button/examples/theme.html
