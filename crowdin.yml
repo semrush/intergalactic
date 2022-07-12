@@ -1,10 +1,8 @@
 # https://support.crowdin.com/cli-tool ver.3
-# crowdin upload sources
-# crowdin download
-"project_id_env": "CROWDIN_PROJECT_ID"
+"project_id": "367533"
 # https://crowdin.com/settings#api-key
 "api_token_env": "CROWDIN_PERSONAL_TOKEN"
-"preserve_hierarchy" : "true"
+"preserve_hierarchy" : true
 "files": [
   {
     "source": "/semcore/project-create/src/translations/en.json",
@@ -39,11 +37,21 @@
     "translation": "/%original_path%/%two_letters_code%.json",
   },
   {
-      "source": "/semcore/date-picker/src/translations/en.json",
-      "translation": "/%original_path%/%two_letters_code%.json",
+    "source": "/semcore/date-picker/src/translations/en.json",
+    "translation": "/%original_path%/%two_letters_code%.json",
   },
   {
-      "source": "/semcore/pagination/src/translations/en.json",
-      "translation": "/%original_path%/%two_letters_code%.json",
+    "source": "/semcore/pagination/src/translations/en.json",
+    "translation": "/%original_path%/%two_letters_code%.json",
+  },
+  {
+    "source": "/semcore/d3-chart/src/a11y/translations/module/en.json",
+    "translation": "/%original_path%/%two_letters_code%.json",
+  },
+  {
+    "source": "semcore/d3-chart/src/a11y/translations/view/source.csv",
+    "first_line_contains_header": true,
+    "scheme" : "identifier,source_phrase,context,translation",
+    "translation": "/%original_path%/%two_letters_code%.json",
   },
 ]

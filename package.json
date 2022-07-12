@@ -18,7 +18,10 @@
     "prettier:fix": "pretty-quick --staged --ignore-path=./.prettierignore",
     "preinstall": "node ./.ci/update-workspaces-list",
     "publish:website": "tsm --require=./.ci/tsm-filter-warnings.js ./.ci/trigger-website-publish.ts",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "i18n:submit": "crowdin upload",
+    "i18n:status": "crowdin status",
+    "i18n:download": "crowdin download"
   },
   "private": true,
   "workspace-sources": {
@@ -37,6 +40,7 @@
     "@types/react": "17.0.19",
     "@typescript-eslint/eslint-plugin": "5.10.2",
     "@typescript-eslint/parser": "5.10.2",
+    "crowdin": "3.5.0",
     "dotenv": "8.2.0",
     "eslint": "8.14.0",
     "eslint-config-prettier": "8.3.0",
