@@ -74,7 +74,7 @@ export default () => (
         Branded traffic trend
       </Text>
     </Flex>
-    <ResponsiveContainer height={100}>
+    <ResponsiveContainer w="100%" height={100}>
       <BarChart data={data}>
         <CartesianGrid />
         <ChartTooltip
