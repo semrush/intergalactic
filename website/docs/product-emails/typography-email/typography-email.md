@@ -3,6 +3,8 @@ title: Email typography
 tabName: Example
 ---
 
+> 🚨 Current `@semcore/email` package is deprecated and not recommend for use. New major version is planned and will be released one day.
+
 @## Link example
 
 @email_html compiled-examples/typography-link.html src/typography/examples/link.html
