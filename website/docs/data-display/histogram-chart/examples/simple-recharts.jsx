@@ -33,7 +33,7 @@ const Demo = () => (
         <InfoXS color="gray-300" cursor="help" />
       </Tooltip>
     </Flex>
-    <ResponsiveContainer height={200}>
+    <ResponsiveContainer w="100%" height={200}>
       <HistogramChart data={data}>
         <CartesianGrid />
         <ChartTooltip

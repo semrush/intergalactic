@@ -40,7 +40,7 @@ export default () => (
         <InfoXS color="gray-300" cursor="help" />
       </Tooltip>
     </Flex>
-    <ResponsiveContainer height={100}>
+    <ResponsiveContainer w="100%" height={100}>
       <BarChart data={data}>
         <CartesianGrid />
         <ChartTooltip

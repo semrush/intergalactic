@@ -41,7 +41,7 @@ const data = [
 ];
 
 const Demo = () => (
-  <ResponsiveContainer height={200}>
+  <ResponsiveContainer w="100%" height={200}>
     <VennChart data={data}>
       <VennArea name="Good" fill={getColor('Good')} />
       <VennArea name="Fast" fill={getColor('Fast')} />
