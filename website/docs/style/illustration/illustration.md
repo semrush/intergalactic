@@ -19,3 +19,4 @@ We use illustrations of three sizes.
 | Small (40px \* 40px)   | ![example of a small illustration](static/small-size.png)                                                                | Use this size for secondary messages that should not draw much attention. |
 
 @page illustration-code
+@page illustration-changelog
