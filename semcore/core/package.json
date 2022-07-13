@@ -13,8 +13,8 @@
     "test": "jest"
   },
   "dependencies": {
-    "@semcore/utils": "^3.29",
     "@reshadow/core": "0.0.1-alpha.74",
+    "@semcore/utils": "^3.29",
     "hoist-non-react-statics": "3.3.2"
   },
   "peerDependencies": {

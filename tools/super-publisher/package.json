@@ -2,9 +2,7 @@
   "name": "@semcore/super-publisher",
   "version": "1.1.0",
   "main": "index.ts",
-  "bin": {
-    "super-publisher": "bin/cli.ts"
-  },
+  "bin": "bin/cli.ts",
   "license": "MIT",
   "dependencies": {
     "@semcore/changelog-handler": "^0.0.1",

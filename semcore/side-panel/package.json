@@ -13,13 +13,13 @@
     "test": "jest"
   },
   "dependencies": {
-    "@semcore/utils": "^3.31.2",
     "@semcore/animation": "^1",
     "@semcore/flex-box": "^4",
+    "@semcore/icon": "^2.16",
+    "@semcore/outside-click": "^2",
     "@semcore/portal": "^2",
     "@semcore/typography": "^4.0.1",
-    "@semcore/outside-click": "^2",
-    "@semcore/icon": "^2.16",
+    "@semcore/utils": "^3.31.2",
     "react-focus-lock": "2.5.1"
   },
   "peerDependencies": {

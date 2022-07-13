@@ -13,13 +13,13 @@
     "test": "jest"
   },
   "dependencies": {
-    "@semcore/utils": "^3.15",
-    "@semcore/icon": "^2.16",
     "@semcore/flex-box": "^4",
-    "@semcore/typography": "^4.0.1",
+    "@semcore/icon": "^2.16",
     "@semcore/scroll-area": "^4.0.0",
-    "resize-observer-polyfill": "1.5.1",
-    "classnames": "2.2.6"
+    "@semcore/typography": "^4.0.1",
+    "@semcore/utils": "^3.15",
+    "classnames": "2.2.6",
+    "resize-observer-polyfill": "1.5.1"
   },
   "peerDependencies": {
     "@semcore/core": "^1.11",

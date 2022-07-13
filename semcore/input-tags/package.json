@@ -13,10 +13,10 @@
     "test": "jest"
   },
   "dependencies": {
-    "@semcore/utils": "^3.21",
     "@semcore/input": "^3.0.0",
     "@semcore/scroll-area": "^4.0.0",
-    "@semcore/tag": "^4.0.0"
+    "@semcore/tag": "^4.0.0",
+    "@semcore/utils": "^3.21"
   },
   "peerDependencies": {
     "@semcore/core": "^1.11",
@@ -32,7 +32,7 @@
   },
   "devDependencies": {
     "@semcore/jest-preset-ui": "1.0.0",
-    "@semcore/tooltip": "*",
-    "@semcore/select": "*"
+    "@semcore/select": "*",
+    "@semcore/tooltip": "*"
   }
 }

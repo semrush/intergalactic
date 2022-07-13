@@ -13,8 +13,8 @@
     "test": "jest"
   },
   "dependencies": {
-    "@semcore/utils": "^3.15",
     "@semcore/input": "^3.0.0",
+    "@semcore/utils": "^3.15",
     "text-mask-core": "5.1.2"
   },
   "peerDependencies": {

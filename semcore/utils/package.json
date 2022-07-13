@@ -22,9 +22,9 @@
     "nano-css": "5.3.4"
   },
   "peerDependencies": {
+    "@semcore/core": "^1",
     "react": "16.8 - 17",
-    "react-dom": "16.8 - 17",
-    "@semcore/core": "^1"
+    "react-dom": "16.8 - 17"
   },
   "jest": {
     "preset": "@semcore/jest-preset-ui"

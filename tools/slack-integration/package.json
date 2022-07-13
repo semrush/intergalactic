@@ -3,7 +3,6 @@
   "version": "0.0.3",
   "main": "index.ts",
   "license": "MIT",
-  "private": false,
   "scripts": {
     "test": "echo \"no tests\""
   },
@@ -12,9 +11,9 @@
   },
   "dependencies": {
     "@semcore/changelog-handler": "0.0.1",
-    "dotenv": "16.0.0",
     "axios": "0.21.2",
     "dayjs": "1.8.17",
+    "dotenv": "16.0.0",
     "tsm": "2.2.1"
   },
   "jest": {

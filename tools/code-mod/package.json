@@ -2,9 +2,7 @@
   "name": "@semcore/code-mod",
   "version": "1.4.0",
   "description": "Code mod for @semcore components",
-  "bin": {
-    "code-mod": "./bin/code-mode.js"
-  },
+  "bin": "./bin/code-mode.js",
   "keywords": [
     "cli",
     "command"
@@ -21,8 +19,8 @@
     "recast": "0.18.1"
   },
   "devDependencies": {
-    "jest": "*",
-    "@semcore/jest-preset-ui": "1.0.0"
+    "@semcore/jest-preset-ui": "1.0.0",
+    "jest": "*"
   },
   "jest": {
     "preset": "@semcore/jest-preset-ui"

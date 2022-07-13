@@ -5,7 +5,6 @@
   "bin": {
     "update-release-changelog": "bin/update-release-changelog.ts"
   },
-  "private": false,
   "license": "MIT",
   "dependencies": {
     "dayjs": "1.10.7",

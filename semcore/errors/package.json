@@ -14,11 +14,11 @@
     "upload-static": "gcs-upload svg/*.svg"
   },
   "dependencies": {
-    "@semcore/utils": "^3.27",
     "@semcore/button": "^4",
     "@semcore/flex-box": "^4",
     "@semcore/format-text": "^3.0.0",
-    "@semcore/typography": "^4"
+    "@semcore/typography": "^4",
+    "@semcore/utils": "^3.27"
   },
   "peerDependencies": {
     "@semcore/core": "^1.11",

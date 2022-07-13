@@ -13,14 +13,14 @@
     "test": "jest"
   },
   "dependencies": {
-    "@semcore/utils": "^3.27",
     "@semcore/base-trigger": "^3.0.0",
-    "@semcore/flex-box": "^4",
     "@semcore/button": "^4",
     "@semcore/divider": "^3",
-    "@semcore/icon": "^2.16",
     "@semcore/dropdown": "^3",
+    "@semcore/flex-box": "^4",
+    "@semcore/icon": "^2.16",
     "@semcore/typography": "^4",
+    "@semcore/utils": "^3.27",
     "dayjs": "1.8.36"
   },
   "peerDependencies": {

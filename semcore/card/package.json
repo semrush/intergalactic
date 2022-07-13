@@ -13,11 +13,11 @@
     "test": "jest"
   },
   "dependencies": {
-    "@semcore/utils": "^3.31",
     "@semcore/flex-box": "^4",
-    "@semcore/typography": "^4",
+    "@semcore/icon": "^2.16",
     "@semcore/tooltip": "^5",
-    "@semcore/icon": "^2.16"
+    "@semcore/typography": "^4",
+    "@semcore/utils": "^3.31"
   },
   "peerDependencies": {
     "@semcore/core": "^1.11",
@@ -32,8 +32,8 @@
     "directory": "semcore/card"
   },
   "devDependencies": {
+    "@semcore/icon": "*",
     "@semcore/jest-preset-ui": "1.0.0",
-    "@semcore/typography": "*",
-    "@semcore/icon": "*"
+    "@semcore/typography": "*"
   }
 }

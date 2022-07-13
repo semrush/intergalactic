@@ -3,9 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "generate.ts",
-  "bin": {
-    "flags-sprite": "./bin/index.ts"
-  },
+  "bin": "./bin/index.ts",
   "keywords": [],
   "author": "",
   "license": "ISC",

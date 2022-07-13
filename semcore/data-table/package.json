@@ -20,12 +20,11 @@
     "resize-observer-polyfill": "^1.5"
   },
   "devDependencies": {
-    "@semcore/jest-preset-ui": "1.0.0",
-    "@semcore/base-trigger": "*",
-    "@semcore/dropdown-menu": "*",
-    "@semcore/typography": "*",
     "@semcore/accordion": "*",
+    "@semcore/base-trigger": "*",
     "@semcore/divider": "*",
+    "@semcore/dropdown-menu": "*",
+    "@semcore/jest-preset-ui": "1.0.0",
     "@semcore/link": "*",
     "@semcore/portal": "*",
     "@semcore/progress-bar": "*",
@@ -33,7 +32,8 @@
     "@semcore/spin": "^4",
     "@semcore/spin-container": "*",
     "@semcore/sticky": "*",
-    "@semcore/tooltip": "*"
+    "@semcore/tooltip": "*",
+    "@semcore/typography": "*"
   },
   "peerDependencies": {
     "@semcore/core": "^1.11",

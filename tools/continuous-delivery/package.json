@@ -2,9 +2,7 @@
   "name": "@semcore/continuous-delivery",
   "version": "0.0.1",
   "main": "index.ts",
-  "bin": {
-    "continuous-delivery": "bin/cli.ts"
-  },
+  "bin": "bin/cli.ts",
   "private": true,
   "license": "MIT",
   "dependencies": {

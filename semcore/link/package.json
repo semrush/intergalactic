@@ -13,9 +13,9 @@
     "test": "jest --no-cache"
   },
   "dependencies": {
-    "@semcore/utils": "^3.15",
+    "@semcore/flex-box": "^4",
     "@semcore/typography": "^4",
-    "@semcore/flex-box": "^4"
+    "@semcore/utils": "^3.15"
   },
   "peerDependencies": {
     "@semcore/core": "^1.11",
@@ -30,7 +30,7 @@
     "directory": "semcore/link"
   },
   "devDependencies": {
-    "@semcore/jest-preset-ui": "1.0.0",
-    "@semcore/icon": "*"
+    "@semcore/icon": "*",
+    "@semcore/jest-preset-ui": "1.0.0"
   }
 }

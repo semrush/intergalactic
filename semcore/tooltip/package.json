@@ -13,9 +13,9 @@
     "test": "jest --no-cache"
   },
   "dependencies": {
-    "@semcore/utils": "^3.31",
     "@semcore/flex-box": "^4",
-    "@semcore/popper": "^4.2"
+    "@semcore/popper": "^4.2",
+    "@semcore/utils": "^3.31"
   },
   "peerDependencies": {
     "@semcore/core": "^1.11",

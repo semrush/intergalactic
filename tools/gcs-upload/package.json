@@ -4,9 +4,7 @@
   "description": "package for uploading files to semrush.static",
   "main": "index.ts",
   "author": "SEMRush team",
-  "bin": {
-    "gcs-upload": "./bin/index.ts"
-  },
+  "bin": "./bin/index.ts",
   "license": "ISC",
   "private": true,
   "dependencies": {

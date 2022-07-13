@@ -13,11 +13,11 @@
     "test": "jest"
   },
   "dependencies": {
-    "@semcore/utils": "^3.24",
+    "@semcore/animation": "^1",
+    "@semcore/flex-box": "^4",
     "@semcore/icon": "^2.16",
     "@semcore/portal": "^2",
-    "@semcore/flex-box": "^4",
-    "@semcore/animation": "^1"
+    "@semcore/utils": "^3.24"
   },
   "peerDependencies": {
     "@semcore/core": "^1.11",

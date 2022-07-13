@@ -30,7 +30,7 @@
     "directory": "semcore/dot"
   },
   "devDependencies": {
-    "@semcore/jest-preset-ui": "1.0.0",
-    "@semcore/button": "*"
+    "@semcore/button": "*",
+    "@semcore/jest-preset-ui": "1.0.0"
   }
 }
