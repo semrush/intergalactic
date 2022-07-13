@@ -44,8 +44,8 @@ const Preview = (preview) => {
   return (
     <InputNumber size={size} state={state}>
       <InputNumber.Value
-        min={Number(min)}
-        max={Number(max)}
+        min={min ? Number(min) : undefined}
+        max={max ? Number(max) : undefined}
         step={Number(step)}
         disabled={disabled}
         value={value}
