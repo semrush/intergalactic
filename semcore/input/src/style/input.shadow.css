@@ -18,10 +18,6 @@ SInput {
       background-color: rgb(250, 255, 189);
     }
   }
-
-  & SOutline {
-    border-radius: var(--rounded-m);
-  }
 }
 
 SValue {
@@ -69,6 +65,7 @@ SOutline {
   bottom: 0;
   left: 0;
   border: 1px solid;
+  border-radius: var(--rounded-m);
   z-index: -1;
   background: #fff;
 }
