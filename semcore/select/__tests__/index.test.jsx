@@ -1,6 +1,7 @@
 import React from 'react';
 import { FilterTrigger } from '@semcore/base-trigger';
 import { testing, shared as testsShared, snapshot } from '@semcore/jest-preset-ui';
+
 const { cleanup, fireEvent, render, axe } = testing;
 
 const { shouldSupportClassName, shouldSupportRef } = testsShared;
@@ -244,7 +245,7 @@ describe('InputSearch', () => {
 
   test('should renders correctly', async () => {
     const component = (
-      <>
+      <div style={{ width: 200 }}>
         <Select>
           <InputSearch />
         </Select>
@@ -254,7 +255,7 @@ describe('InputSearch', () => {
         <Select size="l">
           <InputSearch />
         </Select>
-      </>
+      </div>
     );
 
     expect(await snapshot(component)).toMatchImageSnapshot();
@@ -263,11 +264,9 @@ describe('InputSearch', () => {
   test('should clear when click Close icon', async () => {
     const spy = jest.fn();
     const { getByRole } = render(
-      <>
-        <Select>
-          <InputSearch value="test" onChange={spy} />
-        </Select>
-      </>,
+      <Select>
+        <InputSearch value="test" onChange={spy} />
+      </Select>,
     );
 
     fireEvent.click(getByRole('button'));
