@@ -66,6 +66,7 @@ STitle {
   font-size: var(--fs-500);
   line-height: var(--lh-500);
   font-weight: 700;
+  font-family: FactorA-Bold, sans-serif;
   color: var(--gray-800);
 }
 
