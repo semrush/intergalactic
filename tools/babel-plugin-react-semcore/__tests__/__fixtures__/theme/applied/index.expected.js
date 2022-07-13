@@ -7,12 +7,12 @@ var _ref =
     /*__reshadow_css_start__*/
     (__css__(
       /*__inner_css_start__*/
-      '.___SButton_l32mw_gg_{padding:0 20px;background:purple}.___SButton_l32mw_gg_._theme_default_l32mw_gg_{background:red;background:#bada55;box-shadow:0 0 0 black}',
-      '1t3qwjm_gg_',
+      '.___SButton_aozfe_gg_{padding:0 20px;background:purple}.___SButton_aozfe_gg_._theme_default_aozfe_gg_{background:red;background:#bada55;box-shadow:0 0 0 black}',
+      'aozfe_gg_',
     ),
     {
-      __SButton: `___SButton_l32mw_gg_`,
-      _theme_default: `_theme_default_l32mw_gg_`,
+      __SButton: `___SButton_aozfe_gg_`,
+      _theme_default: `_theme_default_aozfe_gg_`,
     }),
   styles = _extends({}, _ref);
 
