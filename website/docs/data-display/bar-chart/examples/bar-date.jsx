@@ -24,7 +24,7 @@ export default () => {
     }).format(date);
 
   return (
-    <ResponsiveContainer w="100%" h={300} onResize={updateSize}>
+    <ResponsiveContainer h={300} onResize={updateSize}>
       <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
         <YAxis ticks={yScale.ticks(4)}>
           <YAxis.Ticks />

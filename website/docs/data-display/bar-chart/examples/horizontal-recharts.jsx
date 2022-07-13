@@ -28,7 +28,7 @@ function formatDate(time) {
 }
 
 export default () => (
-  <ResponsiveContainer w="100%" height={300}>
+  <ResponsiveContainer height={300}>
     <BarChart data={data} layout="vertical">
       <CartesianGrid />
       <Tooltip labelFormatter={formatDate} />

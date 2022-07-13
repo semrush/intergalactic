@@ -104,7 +104,7 @@ export default class Demo extends React.Component {
             {this.renderCheck('top100', '51-100')}
           </Flex>
         </Box>
-        <ResponsiveContainer w="100%" height={180}>
+        <ResponsiveContainer height={180}>
           <BarChart data={data}>
             <CartesianGrid />
             <ChartTooltip
