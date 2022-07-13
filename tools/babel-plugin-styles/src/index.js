@@ -3,18 +3,23 @@ const syntaxJsx = require('@babel/plugin-syntax-jsx').default;
 const { addNamed } = require('@babel/helper-module-imports');
 const fs = require('fs-extra');
 const finderPackageJson = require('find-package-json');
+const stringHash = require('string-hash');
 const postcss = require('./postcss');
 
 const DEFAULT_OPTS = {
   shadow: {},
 };
 
-function getVersionModule(filename) {
-  const packageJson = finderPackageJson(filename).next().value;
-  return packageJson.version;
-}
-
 function StylesPlugin({ types: t }, opts) {
+  let packageJson;
+
+  function getPackageJsonComponent(filename) {
+    if (packageJson && packageJson.filename === filename) {
+      return packageJson;
+    }
+    return (packageJson = finderPackageJson(filename).next());
+  }
+
   function getAttrKey(name) {
     if (t.isJSXNamespacedName(name)) {
       return name.namespace.name + ':' + name.name.name;
@@ -23,7 +28,7 @@ function StylesPlugin({ types: t }, opts) {
     }
   }
 
-  function importProcessing(p, ident, cssPath, version) {
+  function importProcessing(p, ident, cssPath) {
     const code = fs
       .readFileSync(cssPath)
       .toString()
@@ -52,14 +57,19 @@ function StylesPlugin({ types: t }, opts) {
 
     p.traverse({
       TaggedTemplateExpression(p) {
-        cssProcessing(p, p.node, cssPath, version);
+        cssProcessing(p, p.node, cssPath);
       },
     });
   }
 
-  function cssProcessing(p, tag, from, version) {
+  function cssProcessing(p, tag, from) {
     const optionsPostcss = Object.assign({}, DEFAULT_OPTS, opts);
-    optionsPostcss.shadow.version = version;
+    optionsPostcss.shadow.generateHash = (css, filename) => {
+      const relativeFilename = path.relative(packageJson.filename, filename);
+      return stringHash(css + relativeFilename + packageJson.value.version)
+        .toString(36)
+        .substring(0, 5);
+    };
 
     const { raw } = tag.quasi.quasis[0].value;
 
@@ -159,7 +169,7 @@ function StylesPlugin({ types: t }, opts) {
       ImportDeclaration(p, state) {
         const { source, specifiers } = p.node;
         if (source.value === '@semcore/core') {
-          const version = getVersionModule(state.filename);
+          packageJson = getPackageJsonComponent(state.filename);
           specifiers.forEach((specifier) => {
             if (specifier.imported?.name === 'sstyled') {
               INIT_SSTYLED = true;
@@ -174,18 +184,18 @@ function StylesPlugin({ types: t }, opts) {
                   const tagP = refP.find((p) => t.isTaggedTemplateExpression(p.container));
                   if (!tagP) return;
                   tagP.node.property = t.Identifier('insert');
-                  cssProcessing(tagP.parentPath, tagP.container, state.filename, version);
+                  cssProcessing(tagP.parentPath, tagP.container, state.filename);
                 }
               });
             }
           });
         }
         if (INIT_SSTYLED && source.value.endsWith('.shadow.css')) {
-          const version = getVersionModule(state.filename);
+          packageJson = getPackageJsonComponent(state.filename);
           specifiers.forEach((specifier) => {
             if (t.isImportDefaultSpecifier(specifier)) {
               const cssPath = path.resolve(path.dirname(state.filename), source.value);
-              importProcessing(p, specifier.local.name, cssPath, version);
+              importProcessing(p, specifier.local.name, cssPath);
               p.addComment('leading', `__reshadow-styles__:"${source.value}"`);
             }
           });
