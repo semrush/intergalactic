@@ -4,3 +4,4 @@ lib
 website
 semcore/icon/**/**/*.js
 semcore/icon/**/**/*.d.ts
+**/__fixtures__/**
