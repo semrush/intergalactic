@@ -5,10 +5,9 @@
 }
 
 .view {
-  display: flex;
+  width: 100%;
   padding: 24px;
-  justify-content: flex-start;
-  align-items: flex-start;
+  box-sizing: border-box;
   font-size: 12px;
 }
 
