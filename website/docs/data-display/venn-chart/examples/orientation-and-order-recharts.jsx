@@ -24,7 +24,7 @@ const Demo = () => {
   };
   return (
     <div>
-      <ResponsiveContainer w="100%" height={200}>
+      <ResponsiveContainer height={200}>
         <VennChart data={data} orientation={orientation} orientationOrder={orientations[order]}>
           <VennArea name="First set" fill={getColor('First set')} />
           <VennArea name="Second set" fill={getColor('Second set')} />
