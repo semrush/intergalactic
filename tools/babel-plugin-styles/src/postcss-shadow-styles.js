@@ -66,24 +66,14 @@ function walkAnimation(nodes, hash) {
 }
 
 const DEFAULT_OPTS = {
-  generateScopedName: function ([el, mod, value], filename, css) {
-    // const i = css.indexOf(`.${name}`);
-    // const lineNumber = css.substr(0, i).split(/[\r\n]/).length;
-    // const hash = stringHash(css + version + filename + lineNumber)
-    //   .toString(36)
-    //   .substr(0, 5);
-
-    const hash = makeStringHash(css + filename)
-      .toString(36)
-      .substring(0, 5);
-
+  generateScopedName: function ([el, mod, value], filename, css, hashFile) {
     if (value) {
-      return `_${mod}_${value}_${hash}${PLACEHOLDER_REPLACER}`;
+      return `_${mod}_${value}_${hashFile}${PLACEHOLDER_REPLACER}`;
     }
     if (mod) {
-      return `__${mod}_${hash}${PLACEHOLDER_REPLACER}`;
+      return `__${mod}_${hashFile}${PLACEHOLDER_REPLACER}`;
     }
-    return `___${el}_${hash}${PLACEHOLDER_REPLACER}`;
+    return `___${el}_${hashFile}${PLACEHOLDER_REPLACER}`;
   },
 };
 
@@ -99,9 +89,19 @@ module.exports = (opts) => {
       if (!result.root) {
         throw new Error(`Failed to process .shadow.css file ${result.opts.from}`);
       }
-      const hash = makeStringHash(result.root.source.input.css).toString(36);
+      const hash = makeStringHash(result.root.source.input.css + result.opts.from + options.version)
+        .toString(36)
+        .substring(0, 5);
+
       const generateScopedName = (classes) =>
-        options.generateScopedName(classes, result.opts.from, result.root.source.input.css);
+        options.generateScopedName(
+          classes,
+          result.opts.from,
+          result.root.source.input.css,
+          hash,
+          options.version,
+        );
+
       return {
         AtRule(AtRule) {
           if (!AtRule[processed] && AtRule.name.endsWith('keyframes')) {
