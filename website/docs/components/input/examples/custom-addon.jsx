@@ -7,7 +7,7 @@ const Demo = () => {
   const [value, setValue] = useState('heh');
 
   return (
-    <>
+    <div>
       <Input w={240}>
         <Input.Value
           placeholder="Count some words right here"
@@ -27,7 +27,7 @@ const Demo = () => {
           <Badge bg="green">new</Badge>
         </Input.Addon>
       </Input>
-    </>
+    </div>
   );
 };
 
