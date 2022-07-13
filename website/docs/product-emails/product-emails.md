@@ -2,8 +2,6 @@
 title: Product emails
 ---
 
-> 🚨 Current `@semcore/email` package is deprecated and not recommend for use. New major version is planned and will be released one day.
-
 @page grid-email
 @page core-email
 @page button-email
