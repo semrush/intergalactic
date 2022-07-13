@@ -2,15 +2,19 @@ const path = require('path');
 const syntaxJsx = require('@babel/plugin-syntax-jsx').default;
 const { addNamed } = require('@babel/helper-module-imports');
 const fs = require('fs-extra');
+const finderPackageJson = require('find-package-json');
 const postcss = require('./postcss');
 
-const DEFAULT_OPTS = {};
+const DEFAULT_OPTS = {
+  shadow: {},
+};
+
+function getVersionModule(filename) {
+  const packageJson = finderPackageJson(filename).next().value;
+  return packageJson.version;
+}
 
 function StylesPlugin({ types: t }, opts) {
-  const options = Object.assign({}, DEFAULT_OPTS, opts);
-
-  const processor = postcss(options);
-
   function getAttrKey(name) {
     if (t.isJSXNamespacedName(name)) {
       return name.namespace.name + ':' + name.name.name;
@@ -19,7 +23,7 @@ function StylesPlugin({ types: t }, opts) {
     }
   }
 
-  function importProcessing(p, ident, cssPath) {
+  function importProcessing(p, ident, cssPath, version) {
     const code = fs
       .readFileSync(cssPath)
       .toString()
@@ -48,14 +52,18 @@ function StylesPlugin({ types: t }, opts) {
 
     p.traverse({
       TaggedTemplateExpression(p) {
-        cssProcessing(p, p.node, cssPath);
+        cssProcessing(p, p.node, cssPath, version);
       },
     });
   }
 
-  function cssProcessing(p, tag, from) {
+  function cssProcessing(p, tag, from, version) {
+    const optionsPostcss = Object.assign({}, DEFAULT_OPTS, opts);
+    optionsPostcss.shadow.version = version;
+
     const { raw } = tag.quasi.quasis[0].value;
-    const { css, messages } = processor.process(raw, {
+
+    const { css, messages } = postcss(optionsPostcss).process(raw, {
       from,
       // to:
     });
@@ -142,17 +150,16 @@ function StylesPlugin({ types: t }, opts) {
 
   // TODO: that is hack (by lsroman)
   let INIT_SSTYLED = false;
-  let timer;
   return {
     inherits: syntaxJsx,
     pre() {
       INIT_SSTYLED = false;
-      clearTimeout(timer);
     },
     visitor: {
       ImportDeclaration(p, state) {
         const { source, specifiers } = p.node;
         if (source.value === '@semcore/core') {
+          const version = getVersionModule(state.filename);
           specifiers.forEach((specifier) => {
             if (specifier.imported?.name === 'sstyled') {
               INIT_SSTYLED = true;
@@ -167,17 +174,18 @@ function StylesPlugin({ types: t }, opts) {
                   const tagP = refP.find((p) => t.isTaggedTemplateExpression(p.container));
                   if (!tagP) return;
                   tagP.node.property = t.Identifier('insert');
-                  cssProcessing(tagP.parentPath, tagP.container, state.filename);
+                  cssProcessing(tagP.parentPath, tagP.container, state.filename, version);
                 }
               });
             }
           });
         }
         if (INIT_SSTYLED && source.value.endsWith('.shadow.css')) {
+          const version = getVersionModule(state.filename);
           specifiers.forEach((specifier) => {
             if (t.isImportDefaultSpecifier(specifier)) {
               const cssPath = path.resolve(path.dirname(state.filename), source.value);
-              importProcessing(p, specifier.local.name, cssPath);
+              importProcessing(p, specifier.local.name, cssPath, version);
               p.addComment('leading', `__reshadow-styles__:"${source.value}"`);
             }
           });
