@@ -3,7 +3,7 @@ import Dropdown, { IDropdownContext, IDropdownProps, IDropdownHandlers } from '@
 import { Box, IBoxProps, IFlexProps } from '@semcore/flex-box';
 import { IScrollAreaProps } from '@semcore/scroll-area';
 
-export type DropdownMenuSize = 'm' | 'l' | 'xl';
+export type DropdownMenuSize = 'm' | 'l';
 
 export interface IDropdownMenuProps extends IDropdownProps {
   /**

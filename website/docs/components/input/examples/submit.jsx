@@ -13,8 +13,8 @@ const Demo = () => {
         onFocus={() => setFocus(true)}
       />
       {focus && (
-        <Input.Addon>
-          <ActionReturnXS interactive />
+        <Input.Addon interactive>
+          <ActionReturnXS />
         </Input.Addon>
       )}
     </Input>

@@ -14,8 +14,8 @@ const Demo = () => {
   return (
     <Input w={240}>
       <Input.Value defaultValue="IlikeCATS" placeholder="Password" type={type} />
-      <Input.Addon onClick={() => setType(MAP_TYPES[type])}>
-        {type === 'password' ? <ShowYesXS interactive /> : <ShowNoXS interactive />}
+      <Input.Addon interactive onClick={() => setType(MAP_TYPES[type])}>
+        {type === 'password' ? <ShowYesXS /> : <ShowNoXS />}
       </Input.Addon>
     </Input>
   );
