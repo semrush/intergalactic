@@ -17,16 +17,14 @@ jobs:
           path: |
             node_modules
             */*/node_modules
-            .yarn/cache
             website/node_modules
           key: modules-${{ runner.os }}-${{ hashFiles('yarn.lock') }}-berry-${{ hashFiles('website/yarn.lock') }}
       - name: Install dependencies
         if: steps.cache-modules.outputs.cache-hit != 'true'
         run: |
-          yarn -v
-          yarn --immutable --immutable-cache
+          yarn --immutable 
           cd website
-          yarn --immutable --immutable-cache
+          yarn --immutable
   build:
     runs-on: ubuntu-latest
     needs: setup
@@ -39,7 +37,6 @@ jobs:
           path: |
             node_modules
             */*/node_modules
-            .yarn/cache
             website/node_modules
           key: modules-${{ runner.os }}-${{ hashFiles('yarn.lock') }}-berry-${{ hashFiles('website/yarn.lock') }}
       - name: Cache build
@@ -66,7 +63,6 @@ jobs:
           path: |
             node_modules
             */*/node_modules
-            .yarn/cache
             website/node_modules
           key: modules-${{ runner.os }}-${{ hashFiles('yarn.lock') }}-berry-${{ hashFiles('website/yarn.lock') }}
       - name: Restore cache build
@@ -91,7 +87,6 @@ jobs:
           path: |
             node_modules
             */*/node_modules
-            .yarn/cache
             website/node_modules
           key: modules-${{ runner.os }}-${{ hashFiles('yarn.lock') }}-berry-${{ hashFiles('website/yarn.lock') }}
       - name: Restore cache build

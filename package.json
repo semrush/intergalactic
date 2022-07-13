@@ -160,7 +160,8 @@
     "tools/playground",
     "tools/shadow-loader",
     "tools/slack-integration",
-    "tools/super-publisher"
+    "tools/super-publisher",
+    "website"
   ],
   "resolutions": {
     "@types/react/csstype": "3.0.8"

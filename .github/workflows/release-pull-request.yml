@@ -38,13 +38,12 @@ jobs:
           path: |
             node_modules
             */*/node_modules
-            .yarn/cache
             website/node_modules
           key: modules-${{ runner.os }}-${{ hashFiles('yarn.lock') }}-berry-${{ hashFiles('website/yarn.lock') }}
       - name: Install dependencies
         if: steps.cache-modules.outputs.cache-hit != 'true'
         run: |
-          yarn --immutable --immutable-cache
+          yarn --immutable
       - name: generate release pull request name
         run: |
           currentSemcoreUiVersion="$(cat semcore/ui/package.json | jq -r .version)"

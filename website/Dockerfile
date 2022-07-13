@@ -18,7 +18,7 @@ COPY ./dist ./dist
 
 COPY ./server/package.json ./package.json
 COPY ./server/yarn.lock ./yarn.lock
-RUN yarn install --production --silent --immutable --immutable-cache
+RUN yarn install --production --silent --immutable 
 
 COPY ./dist /app/static
 

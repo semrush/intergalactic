@@ -15,6 +15,7 @@ const workspaces = [
     .readdirSync(path.resolve(__dirname, '..', 'tools'))
     .filter((dirname) => !dirname.startsWith('.'))
     .map((dirname) => `tools/${dirname}`),
+  'website',
 ];
 packageFile.workspaces = workspaces
   .filter((workspace) => !excludeWorkspaces[workspace])

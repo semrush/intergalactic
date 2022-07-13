@@ -16,13 +16,12 @@ jobs:
           path: |
             node_modules
             */*/node_modules
-            .yarn/cache
             website/node_modules
           key: modules-${{ runner.os }}-${{ hashFiles('yarn.lock') }}-berry-${{ hashFiles('website/yarn.lock') }}
       - name: Install dependencies
         if: steps.cache-modules.outputs.cache-hit != 'true'
         run: |
-          yarn --immutable --immutable-cache
+          yarn --immutable
       - name: get release pull request name
         run: |
           echo "release_branch_name=${{ github.event.client_payload.pull_request.head.ref }}" >> $GITHUB_ENV
