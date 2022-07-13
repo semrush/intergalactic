@@ -1,7 +1,6 @@
 import React from 'react';
 import createComponent, { Component, sstyled, Root } from '@semcore/core';
 import Input from '@semcore/input';
-import round from 'lodash/round';
 import BUTTONS from './buttons';
 
 import style from './style/input-number.shadow.css';
@@ -78,7 +77,7 @@ class Value extends Component {
 
   handleValidation = (e) => {
     const { value, min, max, step } = this.asProps;
-    const roundCoefficient = (step < 1 && step.toString().split('.')[1].length) || 1;
+    const roundCoefficient = step < 1 ? step.toString().split('.')[1].length : 1;
     if (Number.isNaN(e.currentTarget.valueAsNumber)) {
       e.currentTarget.value = '';
       this.handlers.value('', e);
@@ -92,7 +91,8 @@ class Value extends Component {
           numberValue -= r;
         }
       }
-      this.handlers.value(String(round(numberValue, roundCoefficient)), e);
+      const numberValueRounded = Number(numberValue.toFixed(roundCoefficient));
+      this.handlers.value(String(numberValueRounded), e);
     }
   };
 
