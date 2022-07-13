@@ -1,11 +1,6 @@
 const Tokenizer = require('css-selector-tokenizer');
 const ValueParser = require('postcss-value-parser');
 const stringHash = require('string-hash');
-const path = require('path');
-const replaceAll = require('string.prototype.replaceall');
-
-const projectRoot = path.resolve(__dirname, '../../..');
-const makeStringHash = (str) => stringHash(replaceAll(str, projectRoot, '<rootDir>'));
 
 const PLACEHOLDER_REPLACER = '_gg_';
 
@@ -75,6 +70,11 @@ const DEFAULT_OPTS = {
     }
     return `___${el}_${hashFile}${PLACEHOLDER_REPLACER}`;
   },
+  generateHash: function (css, filename) {
+    return stringHash(css + filename)
+      .toString(36)
+      .substring(0, 5);
+  },
 };
 
 const processed = Symbol('processed');
@@ -89,17 +89,14 @@ module.exports = (opts) => {
       if (!result.root) {
         throw new Error(`Failed to process .shadow.css file ${result.opts.from}`);
       }
-      const hash = makeStringHash(result.root.source.input.css + result.opts.from + options.version)
-        .toString(36)
-        .substring(0, 5);
+      const hash = options.generateHash(result.root.source.input.css, result.opts.from);
 
       const generateScopedName = (classes) =>
         options.generateScopedName(
           classes,
-          result.opts.from,
+          result.root.source.input.file,
           result.root.source.input.css,
           hash,
-          options.version,
         );
 
       return {
