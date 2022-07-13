@@ -53,4 +53,18 @@ describe('Ui', () => {
     const { getByTestId } = render(<Test data-testid="test" />);
     expect(getByTestId('test').attributes['data-neighborlocation']).toBe(undefined);
   });
+
+  test('should correct work with other empty childrens', () => {
+    const { getByTestId } = render(
+      <NeighborLocation>
+        {[]}
+        {true}
+        {false}
+        {''}
+        <Test data-testid="1" />
+        <Test />
+      </NeighborLocation>,
+    );
+    expect(getByTestId('1').attributes['data-neighborlocation'].value).toBe('right');
+  });
 });

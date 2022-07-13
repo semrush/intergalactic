@@ -236,7 +236,7 @@ describe('InputSearch', () => {
   shouldSupportRef(Select.Option.Checkbox, Select);
 });
 
-describe('Select.Option.Checkbox', () => {
+describe('InputSearch', () => {
   afterEach(cleanup);
 
   shouldSupportClassName(InputSearch, Select);
@@ -258,5 +258,19 @@ describe('Select.Option.Checkbox', () => {
     );
 
     expect(await snapshot(component)).toMatchImageSnapshot();
+  });
+
+  test('should clear when click Close icon', async () => {
+    const spy = jest.fn();
+    const { getByRole } = render(
+      <>
+        <Select>
+          <InputSearch value="test" onChange={spy} />
+        </Select>
+      </>,
+    );
+
+    fireEvent.click(getByRole('button'));
+    expect(spy).toHaveBeenCalledWith('', expect.anything());
   });
 });
