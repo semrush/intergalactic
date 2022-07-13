@@ -1,9 +1,8 @@
 import React from 'react';
-import createComponent, { Component, sstyled } from '@semcore/core';
-import { Box } from '@semcore/flex-box';
-import Input from '@semcore/input';
+import createComponent, { Component, sstyled, Root } from '@semcore/core';
 import SearchM from '@semcore/icon/Search/m';
 import CloseM from '@semcore/icon/Close/m';
+import Input from '@semcore/input';
 import { selectContext } from './context';
 
 import style from './style/input-search.shadow.css';
@@ -35,22 +34,29 @@ class InputSearch extends Component {
   };
 
   render() {
-    const SInputSearch = Box;
-    const { size, value, forwardRef, styles } = this.asProps;
+    const Value = Root;
+    const SInputSearch = Input;
+    const SClose = Input.Addon;
+    const { size, value, styles } = this.asProps;
     const finalSize = size || this.context.size;
+    const IconClose = MAP_SIZE_TO_ICON[finalSize][1];
+    const IconSearch = MAP_SIZE_TO_ICON[finalSize][0];
 
     return sstyled(styles)(
-      <SInputSearch size={finalSize} use:filled={value}>
-        <Input size={finalSize}>
-          <Input.Addon tag={MAP_SIZE_TO_ICON[finalSize][0]} />
-          <Input.Value ref={forwardRef} autoFocus {...this.asProps} />
-          <Input.Addon
-            tag={MAP_SIZE_TO_ICON[finalSize][1]}
-            role="button"
-            interactive
-            onClick={this.handleClear}
-          />
-        </Input>
+      <SInputSearch size={finalSize} styles={styles}>
+        <Input.Addon>
+          <IconSearch />
+        </Input.Addon>
+        <Value render={Input.Value} autoFocus />
+        <SClose
+          role="button"
+          /* hide through css because the width of the input changes */
+          hide={!value}
+          interactive
+          onClick={this.handleClear}
+        >
+          <IconClose />
+        </SClose>
       </SInputSearch>,
     );
   }
