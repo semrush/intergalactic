@@ -24,15 +24,15 @@ const Demo = () => {
         onChange={(v) => setValue(v)}
       />
       {value && (
-        <Input.Addon pl={2} pr={1}>
-          <CloseXS interactive onClick={() => setValue('')} />
+        <Input.Addon pl={2} pr={1} interactive onClick={() => setValue('')}>
+          <CloseXS />
         </Input.Addon>
       )}
       <Input.Addon px={1}>
         <Link>Forget?</Link>
       </Input.Addon>
-      <Input.Addon pl={1} pr={2} onClick={() => setType(MAP_TYPES[type])}>
-        {type === 'password' ? <ShowYesXS interactive /> : <ShowNoXS interactive />}
+      <Input.Addon pl={1} pr={2} interactive onClick={() => setType(MAP_TYPES[type])}>
+        {type === 'password' ? <ShowYesXS /> : <ShowNoXS />}
       </Input.Addon>
     </Input>
   );

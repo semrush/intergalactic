@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import Select from '@semcore/select';
-import { InputSearch } from '@semcore/select';
+import Select, { InputSearch } from '@semcore/select';
 
 const options = Array(20)
   .fill('')
@@ -16,14 +15,7 @@ export default () => {
     <Select placeholder="Select value">
       <Select.Trigger />
       <Select.Popper>
-        <InputSearch
-          value={filter}
-          onChange={setFilter}
-          placeholder="Search"
-          onKeyDown={(e) => {
-            e.key === ' ' && e.stopPropagation();
-          }}
-        />
+        <InputSearch value={filter} onChange={setFilter} placeholder="Search" />
         <Select.List hMax={'224px'}>
           {filteredOptions.length ? (
             filteredOptions.map(({ value }) => (

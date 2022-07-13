@@ -13,8 +13,8 @@ const Demo = () => {
         onChange={(v) => setValue(v)}
       />
       {value && (
-        <Input.Addon>
-          <CloseXS interactive onClick={() => setValue('')} />
+        <Input.Addon interactive onClick={() => setValue('')}>
+          <CloseXS />
         </Input.Addon>
       )}
     </Input>
