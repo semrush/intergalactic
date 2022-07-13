@@ -63,9 +63,9 @@ The component has several variants of options layout:
 
 @## Options filtration
 
-`Select.InputSearch` is added to Select for filtration of elements of the list. This is a stylized wrap over the [Input](/components/input/) component.
+`InputSearch` is added to Select for filtration of elements of the list. This is a stylized wrap over the [Input](/components/input/) component.
 
-> The `Select.InputSearch` component is difficult to customize. All props will get to `Input.Value`. If this is not enough, you can collect yours 😇
+> The `InputSearch` component is difficult to customize. All props will get to `Input.Value`. If this is not enough, you can collect yours 😇
 
 The example below shows one of the ways to implement filtering.
 
