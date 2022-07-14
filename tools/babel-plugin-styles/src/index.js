@@ -11,15 +11,6 @@ const DEFAULT_OPTS = {
 };
 
 function StylesPlugin({ types: t }, opts) {
-  let packageJson;
-
-  function getPackageJsonComponent(filename) {
-    if (packageJson && packageJson.filename === filename) {
-      return packageJson;
-    }
-    return (packageJson = finderPackageJson(filename).next());
-  }
-
   function getAttrKey(name) {
     if (t.isJSXNamespacedName(name)) {
       return name.namespace.name + ':' + name.name.name;
@@ -65,6 +56,7 @@ function StylesPlugin({ types: t }, opts) {
   function cssProcessing(p, tag, from) {
     const optionsPostcss = Object.assign({}, DEFAULT_OPTS, opts);
     optionsPostcss.shadow.generateHash = (css, filename) => {
+      const packageJson = finderPackageJson(filename).next();
       const relativeFilename = path.relative(packageJson.filename, filename);
       return stringHash(css + relativeFilename + packageJson.value.version)
         .toString(36)
@@ -169,7 +161,6 @@ function StylesPlugin({ types: t }, opts) {
       ImportDeclaration(p, state) {
         const { source, specifiers } = p.node;
         if (source.value === '@semcore/core') {
-          packageJson = getPackageJsonComponent(state.filename);
           specifiers.forEach((specifier) => {
             if (specifier.imported?.name === 'sstyled') {
               INIT_SSTYLED = true;
@@ -191,7 +182,6 @@ function StylesPlugin({ types: t }, opts) {
           });
         }
         if (INIT_SSTYLED && source.value.endsWith('.shadow.css')) {
-          packageJson = getPackageJsonComponent(state.filename);
           specifiers.forEach((specifier) => {
             if (t.isImportDefaultSpecifier(specifier)) {
               const cssPath = path.resolve(path.dirname(state.filename), source.value);
