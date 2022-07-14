@@ -76,7 +76,11 @@ const DEFAULT_OPTS = {
     const packageJson = finderPackageJson(filename).next();
     const relativeFilename = path.relative(packageJson.filename, filename);
     // eslint-disable-next-line no-console
-    console.log(relativeFilename);
+    console.log('======');
+    // eslint-disable-next-line no-console
+    console.log(css);
+    // eslint-disable-next-line no-console
+    console.log('======');
     return stringHash(css + relativeFilename)
       .toString(36)
       .substring(0, 5);
