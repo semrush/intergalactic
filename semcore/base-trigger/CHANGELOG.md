@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.0.8] - 2022-07-14
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/neighbor-location` [2.3.9 ~> 2.3.10]).
+
 ## [3.0.7] - 2022-07-07
 
 ### Changed
