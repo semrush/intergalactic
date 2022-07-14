@@ -3,6 +3,7 @@ import createComponent, { Component, sstyled, Root } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
 import NeighborLocation, { neighborLocationEnhance } from '@semcore/neighbor-location';
 import autoFocusEnhance from '@semcore/utils/lib/enhances/autoFocusEnhance';
+import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 
 import style from './style/input.shadow.css';
 
@@ -69,7 +70,7 @@ class Value extends Component {
   static defaultProps = {
     defaultValue: '',
   };
-  static enhance = [autoFocusEnhance(), neighborLocationEnhance()];
+  static enhance = [keyboardFocusEnhance(), autoFocusEnhance(), neighborLocationEnhance()];
 
   uncontrolledProps() {
     return {
