@@ -31,6 +31,30 @@ describe('InputNumber', () => {
     expect(spy).toBeCalledWith('123.4', expect.anything());
   });
 
+  test('Should correct round float numbers with step less than 1', () => {
+    const spy = jest.fn();
+    const { getByTestId } = render(
+      <InputNumber>
+        <InputNumber.Value data-testid="input" value="0.26" onChange={spy} step={0.1} />
+      </InputNumber>,
+    );
+    const input = getByTestId('input');
+    fireEvent.blur(input);
+    expect(spy).toBeCalledWith('0.3', expect.anything());
+  });
+
+  test('Should correct round float numbers with step more than 1', () => {
+    const spy = jest.fn();
+    const { getByTestId } = render(
+      <InputNumber>
+        <InputNumber.Value data-testid="input" value="42.2" onChange={spy} step={5} />
+      </InputNumber>,
+    );
+    const input = getByTestId('input');
+    fireEvent.blur(input);
+    expect(spy).toBeCalledWith('40', expect.anything());
+  });
+
   test('Should not accept letters', () => {
     const spy = jest.fn();
     const { getByTestId } = render(
