@@ -75,6 +75,8 @@ const DEFAULT_OPTS = {
   generateHash: function (css, filename) {
     const packageJson = finderPackageJson(filename).next();
     const relativeFilename = path.relative(packageJson.filename, filename);
+    // eslint-disable-next-line no-console
+    console.log(relativeFilename);
     return stringHash(css + relativeFilename)
       .toString(36)
       .substring(0, 5);
