@@ -2,7 +2,11 @@ const fs = require('fs');
 const path = require('path');
 const { execFileSync } = require('child_process');
 const stringHash = require('string-hash');
+const replaceAll = require('string.prototype.replaceall');
 const { postcss } = require('@semcore/babel-plugin-styles');
+const finderPackageJson = require('find-package-json');
+
+const projectRoot = path.resolve(__dirname, '../../..');
 
 function Cache() {
   const PARSED_STYLES_MAP = new Map();
@@ -51,6 +55,20 @@ function execPurgeCss(styles, purgeCSSOptions) {
 const storage = new Cache();
 
 module.exports = function (baseImport, themeImports, pluginOptions) {
+  pluginOptions.postcss.shadow = Object.assign(
+    {},
+    {
+      generateHash: function (css, filename) {
+        const packageJson = finderPackageJson(filename).next();
+        const relativeFilename = path.relative(packageJson.filename, filename);
+        // replace for tests
+        return stringHash(replaceAll(css, projectRoot, '<rootDir>') + relativeFilename)
+          .toString(36)
+          .substring(0, 5);
+      },
+    },
+    pluginOptions.postcss.shadow,
+  );
   const processor = postcss(pluginOptions.postcss);
 
   const themeCss = themeImports.map((p) => fs.readFileSync(p, 'utf8')).join('');
