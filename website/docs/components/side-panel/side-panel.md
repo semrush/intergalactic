@@ -49,8 +49,8 @@ Default theme is `light`.
 
 | Theme                  | Appearance example                     | Styles                                                                                                          | When to use                                                                                                          |
 | ---------------------- | -------------------------------------- | --------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
-| light, without overlay | ![light-theme](static/light-theme.png) | In these case the panel has the shadow: `box-shadow: 0px 1px 12px rgba(--gray-800, .15);`. There is no overlay. | This is a default theme if you need to show additional information for a report/tool/block.                          |
-| dark, without overlay  | ![dark-theme](static/dark-theme.png)   | In this theme panel has an overlay with styles – `rgba(--gray-800, .7);`. There is no shadow.                   | If you need to concentrate the user on information inside SidePanel (by modal type), it is useful to enable overlay. |
+| light, without overlay | ![light-theme](static/light-theme.png) | In these case the panel has the shadow: `box-shadow: 0px 1px 12px var(--gray-800, 0.15);`. There is no overlay. | This is a default theme if you need to show additional information for a report/tool/block.                          |
+| dark, without overlay  | ![dark-theme](static/dark-theme.png)   | In this theme panel has an overlay with styles – `var(--gray-800, 0.7);`. There is no shadow.                   | If you need to concentrate the user on information inside SidePanel (by modal type), it is useful to enable overlay. |
 
 @## Default sizes and indents
 
