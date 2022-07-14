@@ -1,6 +1,8 @@
 const Tokenizer = require('css-selector-tokenizer');
 const ValueParser = require('postcss-value-parser');
 const stringHash = require('string-hash');
+const path = require('path');
+const finderPackageJson = require('find-package-json');
 
 const PLACEHOLDER_REPLACER = '_gg_';
 
@@ -71,7 +73,9 @@ const DEFAULT_OPTS = {
     return `___${el}_${hashFile}${PLACEHOLDER_REPLACER}`;
   },
   generateHash: function (css, filename) {
-    return stringHash(css + filename)
+    const packageJson = finderPackageJson(filename).next();
+    const relativeFilename = path.relative(packageJson.filename, filename);
+    return stringHash(css + relativeFilename)
       .toString(36)
       .substring(0, 5);
   },
@@ -89,7 +93,10 @@ module.exports = (opts) => {
       if (!result.root) {
         throw new Error(`Failed to process .shadow.css file ${result.opts.from}`);
       }
-      const hash = options.generateHash(result.root.source.input.css, result.opts.from);
+      const hash = options.generateHash(
+        result.root.source.input.css,
+        result.root.source.input.file,
+      );
 
       const generateScopedName = (classes) =>
         options.generateScopedName(

@@ -7,12 +7,12 @@ var _ref =
     /*__reshadow_css_start__*/
     (__css__(
       /*__inner_css_start__*/
-      '.___SButton_glwee_gg_{padding:0 20px;background:purple}.___SButton_glwee_gg_._theme_default_glwee_gg_{background:#bada55}',
-      'glwee_gg_',
+      '.___SButton_bc6hl_gg_{padding:0 20px;background:purple}.___SButton_bc6hl_gg_._theme_default_bc6hl_gg_{background:#bada55}',
+      'bc6hl_gg_',
     ),
     {
-      __SButton: `___SButton_glwee_gg_`,
-      _theme_default: `_theme_default_glwee_gg_`,
+      __SButton: `___SButton_bc6hl_gg_`,
+      _theme_default: `_theme_default_bc6hl_gg_`,
     }),
   styles = _extends({}, _ref);
 
