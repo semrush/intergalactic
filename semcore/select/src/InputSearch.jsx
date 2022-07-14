@@ -39,6 +39,7 @@ class InputSearch extends Component {
     const SClose = Input.Addon;
     const { size, value, styles } = this.asProps;
     const finalSize = size || this.context.size;
+    const hideClose = !value;
     const IconClose = MAP_SIZE_TO_ICON[finalSize][1];
     const IconSearch = MAP_SIZE_TO_ICON[finalSize][0];
 
@@ -51,7 +52,8 @@ class InputSearch extends Component {
         <SClose
           role="button"
           /* hide through css because the width of the input changes */
-          hide={!value}
+          hide={hideClose}
+          aria-hidden={hideClose}
           interactive
           onClick={this.handleClear}
         >
