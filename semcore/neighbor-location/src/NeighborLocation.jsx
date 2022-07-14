@@ -1,6 +1,7 @@
 import React, { useContext, useRef } from 'react';
 import createComponent, { Root, Component, register, CONTEXT_COMPONENT } from '@semcore/core';
 import getOriginChildren from '@semcore/utils/lib/getOriginChildren';
+import isNode from '@semcore/utils/lib/isNode';
 
 const CALCULATE_NEIGHBOR_LOCATION = Symbol('CALCULATE_NEIGHBOR_LOCATION');
 
@@ -49,7 +50,7 @@ class NeighborLocationRoot extends Component {
   setContext() {
     const {
       Children,
-      controlsLength = React.Children.toArray(getOriginChildren(Children)).length,
+      controlsLength = React.Children.toArray(getOriginChildren(Children)).filter(isNode).length,
     } = this.asProps;
 
     return {

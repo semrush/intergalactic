@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.0.7] - 2022-07-13
+
+### Fixed
+
+- Fixed applying style(border-radius) for outline.
+
 ## [3.0.6] - 2022-07-07
 
 ### Changed

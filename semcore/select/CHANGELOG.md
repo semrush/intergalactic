@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.0.11] - 2022-07-13
+
+### Fixed
+
+- Fixed color of Addon icons in `InputSearch`.
+
 ## [3.0.10] - 2022-07-13
 
 ### Changed
