@@ -69,6 +69,6 @@
     "unified": "10.1.2"
   },
   "resolutions": {
-    "esbuild-plugin-css-modules/rm/mocha/yargs/cliui/strip-ansi/ansi-regex": "5.0.1"
+    "ansi-regex": "5.0.1"
   }
 }
