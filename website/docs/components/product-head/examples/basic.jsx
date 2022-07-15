@@ -12,7 +12,7 @@ import SettingsM from '@semcore/icon/Settings/m';
 import InfoM from '@semcore/icon/Info/m';
 import Breadcrumbs from '@semcore/breadcrumbs';
 import { Box } from '@semcore/flex-box';
-import TabPanel from '@semcore/tab-panel';
+import TabLine from '@semcore/tab-line';
 import Select from '@semcore/select';
 
 import Header, { Info, Title } from '@semcore/product-head';
@@ -20,7 +20,7 @@ import Header, { Info, Title } from '@semcore/product-head';
 export default () => {
   return (
     <>
-      <Header>
+      <Header mx={8}>
         <Header.Row>
           <Breadcrumbs>
             <Breadcrumbs.Item>Dashboard</Breadcrumbs.Item>
@@ -122,13 +122,13 @@ export default () => {
         </Header.Row>
       </Header>
 
-      <TabPanel defaultValue="overview">
-        <Box px="15px" />
-        <TabPanel.Item value="overview">Overview</TabPanel.Item>
-        <TabPanel.Item value="issues">Issues</TabPanel.Item>
-        <TabPanel.Item value="linked_in">LinkedIn</TabPanel.Item>
-        <Box px="15px" />
-      </TabPanel>
+      <TabLine defaultValue="overview">
+        <Box px="16px" />
+        <TabLine.Item value="overview">Overview</TabLine.Item>
+        <TabLine.Item value="issues">Issues</TabLine.Item>
+        <TabLine.Item value="linked_in">LinkedIn</TabLine.Item>
+        <Box px="16px" />
+      </TabLine>
     </>
   );
 };
