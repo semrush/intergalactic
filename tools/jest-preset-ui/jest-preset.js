@@ -1,8 +1,10 @@
+const { resolve: resolvePath } = require('path');
+
 module.exports = {
   testMatch: ['**/(semcore|tools)/**/?(*.)+(spec|test).[jt]s?(x)'],
-  setupFilesAfterEnv: [`${__dirname}/src/setupTests.js`, 'jest-canvas-mock'],
+  setupFilesAfterEnv: [resolvePath(`${__dirname}/src/setupTests.js`), 'jest-canvas-mock'],
   transform: {
-    '^.+\\.(jsx?|tsx?)$': `${__dirname}/src/babel.config.js`,
+    '^.+\\.(jsx?|tsx?)$': resolvePath(`${__dirname}/src/babel.config.js`),
   },
   transformIgnorePatterns: ['node_modules/(?!@semcore/|@popperjs/|d3-|internmap)'],
   // collectCoverageFrom: ['**/semcore/*/src/**.*'],
@@ -16,6 +18,12 @@ module.exports = {
     '^@semcore/icon/(.*)/(.*)': '@semcore/icon/$1/$2',
     '^@semcore/(.*)': '@semcore/$1/src',
     '^disable-jest-mapper:(.*)': '$1',
+    '^d3-(.*)$': `d3-$1/dist/d3-$1`,
+    '^react$': resolvePath(__dirname, '../../node_modules/react/umd/react.production.min.js'),
+    '^react-dom$': resolvePath(
+      __dirname,
+      '../../node_modules/react-dom/umd/react-dom.production.min.js',
+    ),
   },
   modulePathIgnorePatterns: ['/generator-component/'],
   testEnvironment: 'jsdom',

@@ -13,7 +13,7 @@ describe('Playground sources resolving', () => {
     const examplesDir = resolvePath(__dirname, './examples');
 
     const realSetImmediate = global.setImmediate;
-    (global as any).setImmediate = (func: any) => new Promise(() => func());
+    global.setImmediate = (func) => new Promise(() => func());
 
     const docs = await glob('**/*.(j|t)s(x)?', { cwd: docsDir });
     const playgrounds = await glob('**/*.(j|t)s(x)?', { cwd: playgroundsDir });

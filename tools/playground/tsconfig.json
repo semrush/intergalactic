@@ -17,15 +17,7 @@
     "resolveJsonModule": true,
     "noImplicitAny": true,
     "baseUrl": "./semcore",
-    "plugins": [
-      {
-        "name": "typescript-plugin-css-modules",
-        "options": {
-          "customMatcher": "\\.shadow\\.css$"
-        }
-      }
-    ],
     "typeRoots": ["types"]
   },
-  "exclude": ["node_modules", "website", "website", "tools"]
+  "exclude": ["node_modules", "builder", "tools"]
 }

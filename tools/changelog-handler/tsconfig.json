@@ -3,6 +3,6 @@
   "include": ["src", "lib", "types"],
   "compilerOptions": {
     "strict": true,
-    "types": ["./types"]
+    "typeRoots": ["./types"]
   }
 }

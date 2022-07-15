@@ -7,6 +7,7 @@
   "license": "ISC",
   "private": true,
   "dependencies": {
+    "@babel/core": "7.0.0",
     "@semcore/babel-preset-ui": "*",
     "@testing-library/jest-dom": "5.16.5",
     "@testing-library/react": "12.1.5",
@@ -15,12 +16,12 @@
     "babel-plugin-transform-import-meta": "2.2.0",
     "dotenv": "16.0.1",
     "identity-obj-proxy": "3.0.0",
-    "jest-axe": "6.0.0",
+    "jest": "26.6.3",
+    "jest-axe": "4.1.0",
     "jest-canvas-mock": "2.4.0",
-    "jest-image-snapshot": "5.1.0",
-    "react": "17.0.1",
-    "react-dom": "17.0.1",
-    "request": "2.88.2"
+    "jest-image-snapshot": "2.9.0",
+    "react": "*",
+    "react-dom": "*"
   },
   "devDependencies": {
     "@types/jest-axe": "3.5.1"
