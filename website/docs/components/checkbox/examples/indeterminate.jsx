@@ -24,7 +24,7 @@ class Demo extends React.PureComponent {
   };
 
   indeterminate = (checked) => {
-    return !!(checked.includes(true) && checked.indexOf(false) >= 0);
+    return checked.includes(true) && checked.indexOf(false) >= 0;
   };
 
   render() {
