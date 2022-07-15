@@ -1,15 +1,16 @@
 import React from 'react';
 import Link from '@semcore/link';
-import YoutubeXS from '@semcore/icon/Youtube/m';
-import ChatXS from '@semcore/icon/Chat/m';
-import BookXS from '@semcore/icon/Book/m';
-import MuseumXS from '@semcore/icon/Museum/m';
-import MobileXS from '@semcore/icon/Mobile/m';
-import BracketsCodeXS from '@semcore/icon/BracketsCode/m';
-import MegaphoneXS from '@semcore/icon/Megaphone/m';
-import NewsXS from '@semcore/icon/News/m';
-import ChatQuestionXS from '@semcore/icon/ChatQuestion/m';
-import QuestionAltXS from '@semcore/icon/Question/m';
+import YoutubeM from '@semcore/icon/Youtube/m';
+import ChatM from '@semcore/icon/Chat/m';
+import BookM from '@semcore/icon/Book/m';
+import MuseumM from '@semcore/icon/Museum/m';
+import MobileM from '@semcore/icon/Mobile/m';
+import BracketsCodeM from '@semcore/icon/BracketsCode/m';
+import MegaphoneM from '@semcore/icon/Megaphone/m';
+import NewsM from '@semcore/icon/News/m';
+import ChatQuestionM from '@semcore/icon/ChatQuestion/m';
+import QuestionAltM from '@semcore/icon/Question/m';
+import EducationM from '@semcore/icon/Education/m';
 import styled from 'styled-components';
 
 import Header from '@semcore/product-head';
@@ -26,65 +27,71 @@ export default () => {
           <Header.Links>
             <Link>
               <Link.Addon>
-                <MuseumXS />
+                <MuseumM />
               </Link.Addon>
               <Link.Text>Old version</Link.Text>
             </Link>
             <Link>
               <Link.Addon>
-                <MobileXS />
+                <MobileM />
               </Link.Addon>
               <Link.Text>Position Tracking App</Link.Text>
             </Link>
             <Link>
               <Link.Addon>
-                <BracketsCodeXS />
+                <BracketsCodeM />
               </Link.Addon>
               <Link.Text>API</Link.Text>
             </Link>
             {/* <Link>
-              <Link.Addon tag={GobletXS} />
+              <Link.Addon tag={GobletM} />
               <Link.Text>Top 30 Advertisers & Publishers</Link.Text>
             </Link> */}
             <Link>
               <Link.Addon>
-                <MegaphoneXS />
+                <MegaphoneM />
               </Link.Addon>
               <Link.Text>Check out best tips</Link.Text>
             </Link>
             <Link>
               <Link.Addon>
-                <NewsXS />
+                <NewsM />
               </Link.Addon>
               <Link.Text>News</Link.Text>
             </Link>
             <Link>
               <Link.Addon>
-                <ChatQuestionXS />
+                <EducationM />
+              </Link.Addon>
+              <Link.Text>Semrush Academy</Link.Text>
+            </Link>
+            <Link>
+              <Link.Addon>
+                <ChatQuestionM />
               </Link.Addon>
               <Link.Text>FAQ</Link.Text>
             </Link>
             <Link>
               <Link.Addon>
-                <QuestionAltXS />
+                <QuestionAltM />
               </Link.Addon>
               <Link.Text>Product tour</Link.Text>
             </Link>
             <Link>
               <Link.Addon>
-                <YoutubeXS />
+                <YoutubeM />
               </Link.Addon>
               <Link.Text>Video tutorial</Link.Text>
             </Link>
             <Link>
               <Link.Addon>
-                <BookXS />
+                <BookM />
               </Link.Addon>
               <Link.Text>User manual</Link.Text>
             </Link>
             <Link>
               <Link.Addon>
-                <ChatXS />
+                <ChatM />
               </Link.Addon>
               <Link.Text>Send feedback</Link.Text>
             </Link>
