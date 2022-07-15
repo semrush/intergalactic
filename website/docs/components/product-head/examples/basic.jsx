@@ -9,7 +9,6 @@ import ChatM from '@semcore/icon/Chat/m';
 import BookM from '@semcore/icon/Book/m';
 import MathPlusM from '@semcore/icon/MathPlus/m';
 import SettingsM from '@semcore/icon/Settings/m';
-import DesktopM from '@semcore/icon/Desktop/m';
 import InfoM from '@semcore/icon/Info/m';
 import Breadcrumbs from '@semcore/breadcrumbs';
 import { Box } from '@semcore/flex-box';
@@ -79,13 +78,9 @@ export default () => {
           <Info>
             <Info.Item label="Location:">
               <Select value={['us']} placeholder="Select an option, sir 🧐" m="auto">
-                <Select.Trigger>
-                  <Link>
-                    United States
-                    <Link.Addon>
-                      <ChevronDownM />
-                    </Link.Addon>
-                  </Link>
+                <Select.Trigger tag={Link}>
+                  United States
+                  <Link.Addon tag={ChevronDownM} />
                 </Select.Trigger>
                 <Select.Popper>
                   <Select.Option value="us">United States</Select.Option>
@@ -101,16 +96,9 @@ export default () => {
             </Info.Item>
             <Info.Item label="Device:">
               <Select value={['desktop']} placeholder="Select an option, sir 🧐" m="auto">
-                <Select.Trigger>
-                  <Link>
-                    <Link.Addon>
-                      <DesktopM />
-                    </Link.Addon>
-                    Desktop
-                    <Link.Addon>
-                      <ChevronDownM />
-                    </Link.Addon>
-                  </Link>
+                <Select.Trigger tag={Link}>
+                  Desktop
+                  <Link.Addon tag={ChevronDownM} />
                 </Select.Trigger>
                 <Select.Popper>
                   <Select.Option value="desktop">Desktop</Select.Option>
