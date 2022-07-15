@@ -6,80 +6,74 @@ tabName: Design
 
 @## Description
 
-**ProductHead** is a composed component, where all the components of the report header, as well as the global filters for filtering data in the report, are collected.
+**ProductHead** is a composed component, which contains all common controls, CTA's and filters for filtering data in the product's reports.
 
-The report header is always placed under the global heading Semrush and Searchbar (if any).
+It's always placed under the main Semrush header and searchbar.
 
-@## Components consists of
+@## Component composition
 
-### The report header includes the following
+**The report header includes the following:**
 
 - [breadcrumbs](/components/breadcrumbs/);
 - [additional links](/patterns/links-order), placed at the top right of the header;
-- name of the tool and the project;
-- additional controls customizing the tool or making any additional actions (placed at - the right on the level of the tool name);
+- name of the product and the project;
+- additional controls customizing the product or making any additional actions (placed at - the right on the level of the product name);
 - line with global filters and/or additional information.
 
-@## Sizes
+@## Margins and paddings
 
-![product-head sizes](static/sizes.png)
+![product-head paddings](static/padding-left-right.png)
 
-@## Margins
+![product-head margins](static/margins.png)
 
-If there is [Notice](/components/notice/) in the header, its margins to the heading elements are 8px.
+If there is a [Notice](/components/notice/) in the header, it has 8px margin-bottom to the elements in ProductHead.
 
 ![product-head notice-margins](static/notice-margins.png)
 
-@## Margins between the header blocks
-
-Margins from the left and the right edge - 32px.
-
-![product-head element sizes](static/margins.png)
-
-@## Margins between the header elements
+### Margins between the elements
 
 ![product-head element sizes](static/elements-margins.png)
 
-### Line with the breadcrumbs and additional links
+@## Styles
 
-- The [breadcrumbs](/components/breadcrumbs/) and the links are aligned center.
-- [14px size link text](/components/link/).
-- The distance between the links — 20 px.
+### Breadcrumbs and additional links
 
-### Line with the headings and controls
+- [Breadcrumbs](/components/breadcrumbs/) and additional links are center aligned.
+- [Links](/components/link/) have 14px size.
+- The margin between the links is 20 px.
 
-- The heading, buttons and labels are aligned center with regard to each other.
-- [The size of the heading is always h5](/style/typography/).
-- The main text color - `var(--gray-800)`, projects – `var(--gray-500)`.
-- The size of the nearby icons — M. The icon’s color corresponds to the element near it.
-- The icons are aligned by the heading’s basic line.
-- The [buttons’ size is M](/components/button/), the color is determined by the control’s purpose.
+### Heading and main controls
 
-### Line with filters and/or additional information
+- Heading, buttons and labels are center aligned regard to each other.
+- For title use text with 20px size (`--fs-400; --lh-400`).
+- For the text color use `var(--gray-800)`, for project's name – `var(--gray-500)`.
+- The size of the nearby icons — M. Color icon into `var(--gray-300)`.
+- The icons are aligned by the title's basic line.
+- [Button](/components/button/) has M size.
 
-- Line with filters and/or additional information
-- The line with additional information is centered.
-- Block height — 20px.
-- Font-size: 14px; color var `(--gray-800)`;
-- The used icons size — M.
+### Filters and/or additional information
 
-@## Report header variants
+- All elements are center aligned.
+- For text use 14px size (`--fs-200; --lh-200`) and `var(--gray-800)` color.
+- Icons have M size.
 
-### Maximum possible set of components inside
+@## ProductHead variants
+
+### Maximum set of elements inside
 
 ![max element product-head](static/max-info.png)
 
-> 💡 When the names of the domain and/or project are very long and do not fit the space of the screen, they are put into `ellipsis`. If there are controls at the right, they must have a “protective” left padding of 24px in order the text did not stick together with the controls.
+> 💡 When the names of the domain and/or project are too long and don't fit in the intended place, collapse them into `ellipsis`. If you have controls on the right, add them a “protective” left margin of 24px.
 
-![hame in ellipsis and controls margin](static/ellipsis-and-margin.png)
+![title in ellipsis and controls margin](static/ellipsis-and-margin.png)
 
-### Small global filters / additional information
+### Global filters or additional information
 
 ![short product-head](static/short-info.png)
 
-### No global filters / additional information / tabs
+### No global filters, additional information or tabs
 
-In these cases the padding between the block with the heading and the buttons and the tabs/divider – 16px.
+In these cases the margin between the row with product's title and the TabLine/Divider is 16px.
 
 ![product-head without filters](static/without-filters.png)
 
