@@ -66,7 +66,7 @@ For this case enable the display of dots on the chart by default.
 
 **Example 1** is for the case when there is data for two non-near dates.
 
-![two-dots](static/two-dots1-stacked-area-chart.png)
+![two-dots](static/two-dots1.png)
 
 **Example 2** is when there is data for one after another dates.
 
