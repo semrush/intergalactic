@@ -386,15 +386,18 @@ class Popper extends Component {
   }
 }
 
-function Trigger() {
+function Trigger(props) {
   const STrigger = Root;
+  const { Children } = props;
   return (
     <STrigger
       render={Box}
       inline
       // Because the borders appear
       // tabIndex={interaction === 'focus' ? undefined : 0}
-    />
+    >
+      <Children />
+    </STrigger>
   );
 }
 
