@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.1.0] - 2022-07-18
+
+### Changed
+
+- Add `onScroll` callback for `<Body/>`.
+
 ## [3.0.10] - 2022-07-07
 
 ### Changed

@@ -1,17 +1,17 @@
 import React from 'react';
-import createComponent, { Component, sstyled, Root, PropGetterFn } from '@semcore/core';
+import createComponent, { Component, PropGetterFn, Root, sstyled } from '@semcore/core';
 import { Box, IBoxProps, IFlexProps } from '@semcore/flex-box';
 import syncScroll from '@semcore/utils/lib/syncScroll';
 import { callAllEventHandlers } from '@semcore/utils/lib/assignProps';
 import fire from '@semcore/utils/lib/fire';
 import { flattenColumns } from './utils';
 import type {
+  Column,
+  NestedCells,
+  PropsLayer,
+  PseudoChildPropsGetter,
   RowData,
   SortDirection,
-  PseudoChildPropsGetter,
-  PropsLayer,
-  NestedCells,
-  Column,
 } from './types';
 import Head from './Head';
 import Body from './Body';
@@ -117,6 +117,10 @@ export interface IDataTableBodyProps extends IBoxProps {
    * @default { tollerance: 2 }
    */
   virtualScroll?: boolean | { tollerance?: number; rowHeight?: number };
+  /**
+   * Called every time user scrolls area
+   */
+  onScroll?: (event: React.SyntheticEvent<HTMLElement>) => void;
 }
 
 export interface IDataTableRowProps extends IBoxProps {
@@ -230,7 +234,6 @@ class RootDefinitionTable extends Component<AsProps> {
       }
 
       const column = this.columns.find((column) => column.name === name);
-
       columnsChildren.push({
         get width() {
           return this.props.ref.current?.getBoundingClientRect().width || 0;
@@ -301,7 +304,7 @@ class RootDefinitionTable extends Component<AsProps> {
       }
     });
 
-    const result = {
+    return {
       columns: this.columns,
       rows: this.dataToRows(data, cellPropsLayers),
       uniqueKey,
@@ -309,8 +312,6 @@ class RootDefinitionTable extends Component<AsProps> {
       rowPropsLayers,
       $scrollRef: this.scrollBodyRef,
     };
-
-    return result;
   }
 
   dataToRows(data: RowData[], cellPropsLayers: { [columnName: string]: PropsLayer[] }) {
