@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.11.24] - 2022-07-18
+
+### Fixed
+
+- Fixed possibility to insert render function into `Popper.Trigger`.
+
 ## [4.11.23] - 2022-07-14
 
 ### Changed
