@@ -22,6 +22,7 @@ type AsProps = {
   columns: Column[];
   $scrollRef: ReturnType<ReturnType<typeof syncScroll>>;
   onResize: ResizeObserverCallback;
+  onScroll?: (event: React.SyntheticEvent<HTMLElement>) => void;
   rowPropsLayers: PropsLayer[];
   use: 'primary' | 'secondary';
   uniqueKey: string;
@@ -213,7 +214,8 @@ class Body extends Component<AsProps, State> {
     const SBodyWrapper = Box;
     const SScrollAreaBar = ScrollArea.Bar;
     const SHeightHold = Box;
-    const { Children, styles, rows, columns, $scrollRef, virtualScroll, onResize } = this.asProps;
+    const { Children, styles, rows, columns, $scrollRef, virtualScroll, onResize, onScroll } =
+      this.asProps;
 
     const columnsInitialized = columns.reduce((sum, { width }) => sum + width, 0) > 0 || testEnv;
 
@@ -236,7 +238,7 @@ class Body extends Component<AsProps, State> {
           use:left={`${offsetLeftSum}px`}
           use:right={`${offsetRightSum}px`}
           onResize={callAllEventHandlers(onResize, this.handleScrollAreaResize)}
-          onScroll={this.handleScrollAreaScroll}
+          onScroll={callAllEventHandlers(onScroll, this.handleScrollAreaScroll)}
         >
           <ScrollArea.Container ref={$scrollRef}>
             <SBody render={Box}>

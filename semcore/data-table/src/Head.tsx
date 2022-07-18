@@ -105,8 +105,8 @@ class Head extends Component<AsProps> {
 
   render() {
     const SHead = Root;
-    const { Children, styles, columnsChildren, onResize, $scrollRef, sticky } = this.asProps;
     const SHeadWrapper = Box;
+    const { Children, styles, columnsChildren, onResize, $scrollRef, sticky } = this.asProps;
 
     this.columns = flattenColumns(columnsChildren);
 
