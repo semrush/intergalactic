@@ -33,11 +33,11 @@ This section describes all the variable parameters and basic styles that we use 
 
 @## Component's size system
 
-| Size (height) | Description                                                                                                                                                                                                                                                   |
-| ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| L (40px)      | A large size of the components. For buttons and inputs, it is 28px. For other components such as tags, labels, input fields, etc., it is a size with 16px text size. Components (such as counters and tags) which is used inside the inputs use 14 text size. |
-| M (28px)      | **Default size of components**. For buttons and inputs, it is 28px. For other components such as tags, labels, input fields, etc., it is a size with 14px text size. Components (such as counters and tags) which is used inside the inputs use 12 text size. |
-| S (20px)      | A small size of the components. For components such as tags, labels, input fields, etc., it is a size with 12px text size. **When using this size, keep in mind that this size of text is difficult to read** 🙏                                              |
+| Size | Description                                                                                                                                                                                                                                                   |
+| ---- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| XL   | An extra large size of the components. It is a size with 16px text size. Components (such as counters and tags) which is used inside the inputs use 16 text size.                                                                                             |
+| L    | A large size of the components. For buttons and inputs, it is 40px. For other components such as tags, labels, input fields, etc., it is a size with 16px text size. Components (such as counters and tags) which is used inside the inputs use 14 text size. |
+| M    | **Default size of components**. For buttons and inputs, it is 28px. For other components such as tags, labels, input fields, etc., it is a size with 14px text size. Components (such as counters and tags) which is used inside the inputs use 12 text size. |
 
 @## States
 
