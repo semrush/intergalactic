@@ -14,7 +14,7 @@ tabName: Design
 
 @## Component composition
 
-![button's paddings and margins](static/paddings.png)
+![button's paddings and margins](static/margins.png)
 
 The button text has margins on the right and left. You can add addons before and after the text. As addons you can use:
 
@@ -29,8 +29,8 @@ Addons have margins on the right and left.
 
 | Button size  | Icon size | Appearance example             | Description                                                                                                              |
 | ------------ | --------- | ------------------------------ | ------------------------------------------------------------------------------------------------------------------------ |
-| **L (40px)** | M         | ![button L](static/size_l.png) | Use this size in modal windows for main actions, empty pages and page states that need to focus user on the main action. |
-| **M (28px)** | M         | ![button M](static/size_m.png) | This is the default size of the button. Use it freely in filters, dropdowns, tables, etc.                                |
+| **L (40px)** | M         | ![button L](static/size-l.png) | Use this size in modal windows for main actions, empty pages and page states that need to focus user on the main action. |
+| **M (28px)** | M         | ![button M](static/size-m.png) | This is the default size of the button. Use it freely in filters, dropdowns, tables, etc.                                |
 
 @## Button width
 
@@ -112,9 +112,9 @@ For the primary button you can use themes according to the visual hierarchy on t
 
 **The margin between buttons shall be [multiple of 4](/style/variables/#main_denominator)**. If there are several buttons next to each other, use the recommended margins shown in table below.
 
-| L (40px)                          | M (28px)                          |
-| :-------------------------------- | :-------------------------------- |
-| ![margin L](static/padding-1.png) | ![margin M](static/padding-2.png) |
+| L (40px)                         | M (28px)                         |
+| :------------------------------- | :------------------------------- |
+| ![margin L](static/margin-1.png) | ![margin M](static/margin-2.png) |
 
 @## Use in UX/UI
 
@@ -151,11 +151,11 @@ Button label always starts with a capital letter.
 
 **Button label shall not exceed three words.** Too wordy controls are difficult to read. Try to fit the desired meaning into the short label.
 
-![max length](static/max_length.png)
+![max length](static/max-length.png)
 
 The label of the button should clearly indicate what happens after user clicks on it.
 
-![action](static/define_action.png)
+![action](static/define-action.png)
 
 @## Branded buttons
 
