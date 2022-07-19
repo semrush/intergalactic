@@ -13,6 +13,7 @@ module.exports = function (babel, opts = {}) {
       '@babel/plugin-proposal-class-properties',
       'babel-plugin-preval',
       '@babel/plugin-transform-runtime',
+      '@babel/plugin-proposal-class-static-block',
       [
         '@semcore/babel-plugin-recharts',
         {

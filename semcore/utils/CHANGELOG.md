@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.35.0] - 2022-07-19
+
+### Fixed
+
+- Fixed pcakage compatibility with ES modules.
+
 ## [3.34.0] - 2022-06-16
 
 ### Fixed
