@@ -9,7 +9,7 @@ import CheckL from '@semcore/icon/Check/l';
 import ArrowRightM from '@semcore/icon/ArrowRight/m';
 import ArrowRightL from '@semcore/icon/ArrowRight/l';
 
-const SIZES = ['l', 'm'];
+const SIZES = ['m', 'l'];
 const USE = ['primary', 'secondary', 'tertiary'];
 const THEME = {
   primary: ['info', 'success', 'warning', 'danger', 'invert'],

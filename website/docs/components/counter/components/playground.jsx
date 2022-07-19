@@ -2,7 +2,7 @@ import React from 'react';
 import PlaygroundGeneration from '@components/PlaygroundGeneration';
 import Counter from '@semcore/counter';
 
-const SIZES = ['l', 'm'];
+const SIZES = ['m', 'l', 'xl'];
 
 const THEME = ['', 'warning', 'danger', 'light-blue', 'white'];
 
