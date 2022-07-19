@@ -8,36 +8,43 @@ tabName: Design
 
 @## Description
 
-**Button** is a control element that calls you to perform an action on the page. Compared to [links](/components/link/), this is an accent control or CTA required for performing the main actions on the page.
+**Button** is a control component that performs an action on the page. Compared to [Link](/components/link/), it's an accent control or CTA required for performing the main actions on the page.
 
-> 💡 In some cases, you can use the button as a link that leads to another page. Use this feature only in extreme cases, when the [Link](/components/link/) component is not suitable for you at all.
+> 💡 In extreme cases, you can use the button as a [Link](/components/link/) that leads to another page.
 
-@## Appearance
+@## Component composition
 
-**There are 2 button sizes in our interface.** The button content is always centered relative to the vertical and horizontal position of the button.
+![button's paddings and margins](static/paddings.png)
 
-You can add an [icon](/style/icon/), a [counter](/components/counter/), a [badge](/components/badge/), a ["mandarin"](/components/dot/) and a [flag](/components/flags/) to each of these buttons before and after the text.
+The button text has margins on the right and left. You can add addons before and after the text. As addons you can use:
 
-The button text has margins on the right and left, and Addons that can be inserted inside the button also have margins on the right and left 😎
+- [Icon](/style/icon/),
+- [Counter](/components/counter/),
+- [Badge](/components/badge/),
+- [Flag](/components/flags/).
 
-![paddings](static/paddings.png)
+Addons have margins on the right and left.
 
 @## Sizes
 
-| Button size  | Icon size | Appearance example             | Description                                                                                                                                                       |
-| ------------ | --------- | ------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **L (40px)** | M         | ![button L](static/size_l.png) | Used in: modal windows for main actions; empty pages and states that need to focus on the target action.                                                          |
-| **M (28px)** | M         | ![button M](static/size_m.png) | This is the standard size of buttons for everyday routine actions in tools. Used in: filters, dropdowns, tables, modal windows for secondary actions and filters. |
+| Button size  | Icon size | Appearance example             | Description                                                                                                              |
+| ------------ | --------- | ------------------------------ | ------------------------------------------------------------------------------------------------------------------------ |
+| **L (40px)** | M         | ![button L](static/size_l.png) | Use this size in modal windows for main actions, empty pages and page states that need to focus user on the main action. |
+| **M (28px)** | M         | ![button M](static/size_m.png) | This is the default size of the button. Use it freely in filters, dropdowns, tables, etc.                                |
 
 @## Button width
 
-The button width is determined by the width of the typed text/content. But it can also be stretched to a certain width (100%) - `w="100%"`.
+The button width is determined by its content. But it can also be stretched to a certain width:
 
-This is necessary when the button text is short, but the button is a CTA on the page/in a modal window or it performs an important action. Also, in terms of visual hierarchy, it is not good to make it small-sized in such cases. Use this opportunity thoughtfully and carefully.
+```
+w="100%"
+```
+
+This is necessary when the button text is short, but the button is a CTA on the page/in a modal window or it performs an important action. Also, in terms of visual hierarchy, it is not good to make it small-sized in such cases.
 
 ![button width example](static/button-width.png)
 
-It is important that the CTA is always visually more significant than the secondary button due to its color and size. So don't hesitate to make it wider if necessary.
+It is important that the CTA is always visually more significant than the secondary button due to its color and size. So don't hesitate to make button wider if necessary.
 
 ![button width example](static/button-width2.png)
 
@@ -47,7 +54,7 @@ If you need to use a single button with a very long label we recommend you to se
 
 @## Button types
 
-We have 3 main button types. All button types can be used on a white and gray background, as well as on a transparent colored background of notifications.
+We have three button types (they are called `use` in API). All button types can be used on a white and gray background, as well as on a transparent colored background.
 
 ### Primary
 
@@ -59,7 +66,7 @@ Main accent button for filters and basic actions on the page.
 
 ### Secondary
 
-Normal non-accent button for secondary/repetitive actions on the page.
+Default non-accent button for secondary/repetitive actions on the page.
 
 |             normal              |                hover                 |                 active                 |                 loading                  | disabled                                   |
 | :-----------------------------: | :----------------------------------: | :------------------------------------: | :--------------------------------------: | ------------------------------------------ |
@@ -75,7 +82,7 @@ Control for third-party actions on the page. The tertiary button, unlike link, c
 
 ### Invert primary
 
-It's recommended to use invert buttons on dark or colored background. For example in Tooltip, NoticeBubble etc.
+We recommended you to use invert buttons on dark or colored background. For example in [Tooltip](/components/tooltip/), [NoticeBubble](/components/notice-bubble/), etc.
 
 |               normal                |               hover               |               active                |                loading                | disabled                                |
 | :---------------------------------: | :-------------------------------: | :---------------------------------: | :-----------------------------------: | --------------------------------------- |
@@ -95,17 +102,15 @@ It's recommended to use invert buttons on dark or colored background. For exampl
 
 @## Themes
 
-For the primary button, use the themes that correspond to a particular situation. See the [visual loudness scale](/patterns/visual-loudness-scale) guide.
+For the primary button you can use themes according to the visual hierarchy on the page. See the [visual loudness scale](/patterns/visual-loudness-scale) guide.
 
 | Info                                 | Success                                    | Danger                                   |
 | ------------------------------------ | ------------------------------------------ | ---------------------------------------- |
 | ![info button](static/info-butt.png) | ![success button](static/success-butt.png) | ![danger button](static/danger-butt.png) |
 
-> 💡 You can also use the existing themes for the secondary and tertiary buttons, **but in very extreme cases**, when you can't do without a color for the secondary button.
-
 @## Margins between buttons
 
-**The margin shall be multiple of 4**. If there are several buttons next to each other, use the margins shown in table below for the appropriate button size.
+**The margin between buttons shall be [multiple of 4](/style/variables/#main_denominator)**. If there are several buttons next to each other, use the recommended margins shown in table below.
 
 | L (40px)                          | M (28px)                          |
 | :-------------------------------- | :-------------------------------- |
@@ -113,10 +118,10 @@ For the primary button, use the themes that correspond to a particular situation
 
 @## Use in UX/UI
 
-- Leave one CTA on the page and in the modal window. For example, one green `success` button.
-- We recommend that you do not disable CTA in the tools, even if something went wrong (especially in filters and modal windows with a single CTA). The user shall understand that the tool/service is still running. When you click on the button, tell the user in the simplest terms about the error or what they need to do in this case.
-- If you can't do without a button in the disabled state, be sure to add a tooltip on it with an explanation of why it is `disabled`.
-- If there are a lot of actions in your interface, first of all set your priorities in the correct way. Spread the controls in your interface according to the [visual loudness scale](/patterns/visual-loudness-scale) guide. First of all, use inactive "quiet" buttons in the interface. Don't "shout" at the user with your interface, let them work with our cool products in peace.
+- Leave one CTA on the page and in the modal window. _For example, one green button._
+- We recommend you do not disable CTA, even if something went wrong (especially in filters and modal windows with a single CTA). The user need to understand that the product/service is working. When user clicks on the button, add a message about the error or what user needs to do in this case.
+- If you can't do without a button in the disabled state, be sure to add a tooltip for it with an explanation of why main action is disabled.
+- If there are a lot of actions in your interface, first of all set your priorities. Place controls in your interface according to the [visual loudness scale](/patterns/visual-loudness-scale) guide. Use inactive "quiet" buttons in the interface. Don't "shout" at the user with your interface, let them work with your product in peace and comfort.
 
 @## Button variations
 
@@ -127,44 +132,43 @@ The **text button** is the main one in the Semrush interface. It is used when:
 
 We recommend using a **button with an icon and text** in cases where:
 
-- the button is a CTA, and it needs an additional visual accent in the form of an icon;
+- the button is a CTA, and it needs an additional visual accent (icon);
 - the interface has enough space for buttons;
-- the user is not yet familiar with the functionality of the button, and one icon/text may not be enough for them to understand.
+- user is not yet familiar with the functionality of the button, and icon or only text may not be enough for them to understand.
 
 We recommend using the **icon button** if:
 
 - space for controls is limited;
-- the user can easily understand from the context its function (purpose)/the user is already trained and understands the functionality of the button without a lettering or explanation.
+- user can easily understand from the context its function (purpose) / user understands the functionality of the button without an explanation.
 
-> 💡 **Attach a tooltip with information about its function to the icon button**. It can help the user understand functionality of the button if the icon provides ambiguous information.
+> 💡 **Add a tooltip with information about button's function to the icon-only button**. It helps user to understand functionality of the button if the icon is not the obvious one.
 
-@## Button name
+@## Button label
 
-The button name must start with a capital letter.
+Button label always starts with a capital letter.
 
 ![capitalize](static/capitalize.png)
 
-The button name shall not exceed 3 words. Such controls are difficult to read. Try to fit the desired meaning into the shortest possible name.
+**Button label shall not exceed three words.** Too wordy controls are difficult to read. Try to fit the desired meaning into the short label.
 
 ![max length](static/max_length.png)
 
-The name of the button should clearly indicate what happens after you click on it.
+The label of the button should clearly indicate what happens after user clicks on it.
 
 ![action](static/define_action.png)
 
 @## Branded buttons
 
-Sometimes you need to show that the button connects or links to some other service. In this case, you should use a branded color for the background or the corresponding color icon of the service.
+Sometimes you need to show that button connects or links to some other service. In this case, use a branded color for the background or the corresponding color icon of the service.
 
-It is better to completely paint the button in a branded color when you need to focus on it, and it will not violate the visual hierarchy of the product.
-
-> We recommend using the branded icon inside the secondary buttons. This is the safest option in relation to the visual hierarchy of the product.
+- You can completely color the button in a branded color when you need to focus user on it.
+- You can use secondary button with the branded icon inside. This is the safest option in relation to saving the visual hierarchy of the product.
 
 ![brand button](static/button-brand.png)
 
-@## Groups of buttons and other controls
+@## Groups of buttons
 
-To combine the components such as Button, Input, and Select, we have the [NeighborLocation](/utils/neighbor-location) component.
+To combine the components such as Button, Input, and Select, use the [NeighborLocation](/utils/neighbor-location) component.
 
 @page button-a11y
 @page button-api
