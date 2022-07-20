@@ -35,7 +35,7 @@ The use of a particular theme for a counter depends on the context and the compo
 
 @## Text counters
 
-The text counters size depends on the size of the typography used in the element in which you want to display the numeric value. These counters are usually placed next to the titles of widgets, tables, inside the text, and so on. And in the ["mandarin"](/components/dot/). See detailed examples in the Code tab.
+The text counters size depends on the size of the typography used in the element in which you want to display the numeric value. These counters are usually placed next to the titles of widgets, tables, inside the text, and so on. And in the [Dot](/components/dot/). See detailed examples in the Code tab.
 
 _For example, the counter in the table title has the same text size as the title itself._
 

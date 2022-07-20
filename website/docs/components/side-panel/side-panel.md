@@ -4,53 +4,51 @@ fileSource: side-panel
 tabName: Design
 ---
 
-> In the last update, component was divided into three parts: `Header`,`Body` and `Footer`. This was done to make it easier to use the restyling component. Also, got an optional `Back` button
+> In the [2.0.0 version](/components/side-panel/side-panel-changelog/), component was divided into three parts: `Header`,`Body` and `Footer`. This was done to make it easier to use the restyling component. Also, got an optional `Back` button.
 
 @## Description
 
-**SidePanel** is a component for displaying the sliding panel (from the right, from the bottom or from the left). Sometimes we call it "panel" or drawer.
+**SidePanel** is a component for displaying the sliding panel with content. It's also can be called just panel or drawer.
 
-Use this component when it is simultaneously needed:
+Use SidePanel when it is needed:
 
-- to show sub-tasks, additional support information and links that may be useful to the user when working with a separate report, a specific widget or the whole platform;
+- to show sub-tasks, additional support information and links that may be useful to the user when working with a report, a specific widget or the whole product;
 - to keep the user in the context of the page (even if SidePanel has an overlay).
 
-> [Modal windows](/components/modal/) are used in cases where we show important information or request a response from the user.
+> Use [Modal windows](/components/modal/) to show important information or request a response from the user.
 
-**For example, we are using SidePanel in:**
+**For example, you can use SidePanel as:**
 
-- Notification center for the whole Semrush platform;
-- Help Center and News in Tools;
+- Notification center for the whole website;
+- Help Center or News panel in products;
 - "panels" on mobile devices.
 
 @## Triggers
 
-- Special icon Notification in the main header of Semrush.
-- Auxiliary link in ProductHead.
+- News icon in the main header of the website.
+- Additional link in ProductHead.
 
 ![trigger example](static/trigger.png)
 
 - Controls inside the report that hide additional information.
-- Charts inside the report, which can be clicked on to see additional information.
-- On small screens where we can use the SidePanel moving from below, other interface controls can serve as a trigger.
+- Charts inside the report, which can be clicked to show additional information.
+- On small screens other controls can serve as a trigger to open SidePanel.
 
 @## Component composition
 
-- container;
-- content;
-- closure icon (optional);
-- overlay (optional).
+- Container.
+- Content.
+- Close icon (optional).
+- Overlay (optional).
 
 ![sidepanel scheme](static/sidepanel-scheme.png)
 
-@## Themes
+@## Overlay
 
-Default theme is `light`.
-
-| Theme                  | Appearance example                     | Styles                                                                                                          | When to use                                                                                                          |
-| ---------------------- | -------------------------------------- | --------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
-| light, without overlay | ![light-theme](static/light-theme.png) | In these case the panel has the shadow: `box-shadow: 0px 1px 12px var(--gray-800, 0.15);`. There is no overlay. | This is a default theme if you need to show additional information for a report/tool/block.                          |
-| dark, without overlay  | ![dark-theme](static/dark-theme.png)   | In this theme panel has an overlay with styles – `var(--gray-800, 0.7);`. There is no shadow.                   | If you need to concentrate the user on information inside SidePanel (by modal type), it is useful to enable overlay. |
+|                 | Appearance example                     | Styles                                                                                                         | When to use                                                                             |
+| --------------- | -------------------------------------- | -------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
+| Without overlay | ![light-theme](static/light-theme.png) | In this case the panel has the shadow: `box-shadow: 0px 1px 12px var(--gray-800, 0.15);`. There is no overlay. | Use this version if you need to show additional information for a report/product/block. |
+| With overlay    | ![dark-theme](static/dark-theme.png)   | In this case panel has an overlay with styles: `var(--gray-800, 0.7);`. There is no shadow.                    | If you need to focus the user on information inside SidePanel, enable overlay.          |
 
 @## Default sizes and indents
 
@@ -62,13 +60,13 @@ SidePanel has a fixed width that does not change when the browser window is resi
 
 **The component has a default padding.** It can be changed if necessary.
 
-_It can be changed, for example, when using SidePanel on a small screen where you want to reduce indents or if you need to enlarge them for the composition in a bigger window for the Notification center._
+_It can be changed, for example, when using SidePanel on a small screen where you want to reduce paddings._
 
 ![paddings](static/container-paddings.png)
 
-### Content indents
+### Content margins
 
-The main indent between title and content:
+The padding between title and content:
 
 ![content paddings ](static/content-paddings.png)
 
@@ -76,41 +74,33 @@ The main indent between title and content:
 
 ### Header
 
-By default, total header is 16px (variables: `--fs-300; --lh-300`), `font-weight: 700;`.
+For panel's title use 16px text (`--fs-300; --lh-300`) with `font-weight: 700;`.
 
-> 💡 The header is pinned when scrolling large content inside the SidePanel.
+> 💡 Pin header when scrolling large content inside the SidePanel.
 
-| Appearance example                    | Styles                                                                                                     |
-| ------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
-| ![header paddings](static/header.png) | `height: 52px; padding-bottom: 4px; align-items: center; border-bottom: 1px solid var(–-gray-200);`        |
-| ![close icon](static/closeIcon.png)   | Size of the `Close` icon is L, color of the icon is `--gray-300`. Click area of the icon is `48px * 48px`. |
+| Appearance example                    | Styles                                                                                              |
+| ------------------------------------- | --------------------------------------------------------------------------------------------------- |
+| ![header paddings](static/header.png) | `height: 52px; padding-bottom: 4px; align-items: center; border-bottom: 1px solid var(–-gray-200);` |
+| ![close icon](static/closeIcon.png)   | Close icon has L size and `--gray-300` color. Click zone of the icon is `48px * 48px`.              |
 
 ### Content
 
-General recommendations for SidePanel content styles are described below.
+General recommendations for SidePanel content styles:
 
-- Choose the text size for the panel in order to maintain a hierarchy of headers in the content within SidePanel (this is usually 16px, 14px and 12px text). If necessary, you can experiment and use your text size hierarchy within our [typogarphic scale](/style/typography/). Remember the font sizes that are already used on the product page ☝🏻
+- Choose the text size for the panel in order to maintain a hierarchy of headers in the content within SidePanel. If necessary, you can experiment and use your text size hierarchy within our [typogarphic scale](/style/typography/).
 
 ![headings](static/hierarchy.png)
 
-- If there is a lot of content in SidePanel, scroll will appear inside.
-
-> **We always pin the header and the bottom part with controls, if any, when scrolling the content.**.
+- Always pin the header and the footer, when scrolling the content of the SidePanel.
 
 ![scroll](static/scroll.png)
-
-> 💡 Detailed styles for each specific pattern (Help center, News, Notification center) can be found in the corresponding guides.
 
 ### Footer
 
 You can place common controls for SidePanel content in the footer.
 
 - Typically, any controls, CTA or other elements like [ProgressBar](/components/progress-bar) can be placed there.
-
-> 💡 A footer with controls is pinned when scrolling large content inside a SidePanel.
-
-- In case SidePanel content is separated and has separate CTAs and controls, it makes no sense to place them in the footer 🤷🏻‍♀️
-- The recommended size of controls in the panel on the desktop is M (28px height). Depending on the context, use M or L controls in the panel on small screens.
+- The recommended size of controls in the panel on the desktop is M. Depending on the context, use M or L controls in the panel on small screens.
 
 Footer styles:
 
@@ -129,25 +119,25 @@ border-top: 1px solid var(–-gray-200);
 
 ### Placement in the interface
 
-- You can customize whether the SidePanel should open in the tool area or over the entire Semrush (as modal windows do). If the SidePanel refers to a specific tool, it will be rendered in the tool under the main Semrush header. This is still a more common case. You can see the implementation in the [Code](/components/side-panel/side-panel-code/#aae13e) tab.
-- The focus remains inside the SidePanel and does not move to the page content. You can navigate through the controls using `Tab`.
+- You can customize whether the SidePanel should open in the product area or over the entire website (as modal windows do). If the SidePanel refers to a specific product, it should be rendered in the product under the main header.
+- The focus remains inside the SidePanel and does not move to the page content. You can navigate through the controls inside the SidePanel using `Tab`.
 
-### Scroll operation
+### Page scroll
 
-Page scroll is controlled. You can turn it on/off.
+You can enable or disable page scroll. It's disabled by default.
 
-For example, page scrolling should be enabled when SidePanel has some tips and additional things for the whole report.
+Page scrolling should be enabled when SidePanel has some tips and additional things for the page.
 
 > 💡 It is important to disable page scroll for SidePanel with overlay, otherwise it will look like a bug.
 
 ### SidePanel opening and closing
 
-You can close the panel with the help of ~~black magic~~:
+You can close the panel with:
 
-- `CTA`-control;
-- `Close` icon;
+- CTA control;
+- Close icon;
 - Clicking outside the area of the panel (at overlay), optional;
-- `Esc`.
+- `Esc` key.
 
 SidePanel can be opened either by user clicking on the corresponding trigger or by the system in special cases to draw attention to the information in the panel.
 
@@ -164,23 +154,23 @@ SidePanel opens and closes with the animation: `transition: all 350ms ease-in-ou
 
 @## Corner states
 
-> 💡 We keep the SidePanel header in all cases.
+SidePanel should have header in all cases.
 
 ### Initial load
 
-At the initial load of the SidePanel content, we show the structure with the help of the universal [Skeleton](/components/skeleton/).
+At the initial load of the SidePanel content, show the content structure with [Skeleton](/components/skeleton/).
 
 ![skeleton example](static/skeleton.png)
 
 ### Reloading
 
-When loading and reloading SidePanel content, we show an [XL size spinner](/components/spin/) in the center.
+When loading and reloading SidePanel content, show [Spin](/components/spin/) with XL size in the center.
 
 ![spin example](static/spin.png)
 
 ### Error
 
-If an error occurs during data loading, we show the error status in the center with the corresponding text and the `Try again` button to reload the SidePanel content.
+If an error occurs during data loading, show the the corresponding message and the "Try again" button to reload the SidePanel content.
 
 ![error example](static/error.png)
 

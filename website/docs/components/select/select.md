@@ -6,26 +6,26 @@ tabName: Design
 
 @## Description
 
-**Select** is a component for selecting one or more values from the list. Optionally, it may contain a search by values, titles, buttons, grouping and nesting.
+**Select** is a component for selecting one or more values from the list. Optionally, it may contain search input, titles, buttons, grouping and nesting.
 
 The component consists of:
 
-- trigger (which is described in this guide);
-- [dropdown](/components/dropdown-menu/) (which is described in another guide).
+- trigger (described in this guide);
+- [dropdown](/components/dropdown-menu/).
 
 @## Trigger
 
-There are two types of select triggers of different importance in our interface.
+There are two types of select triggers.
 
-**Button**. We use it in three sizes: M (28px in height, 14px text), L (40px in height, 16px text).
+**Button**. Has two sizes: M and L.
 
 ![primary-select](static/primary-default.png)
 
-**Link**. We use it in two sizes: M (14px text), L (16px text).
+**Link**. Use it in two sizes: 14px text and 16px text.
 
 ![secondary-select](static/inline-select-placeholder.png)
 
-**Link with the color of text**. We use it also in two sizes: M (14px text), L (16px text).
+**Link with the color of text**. Use it in two sizes: 14px text and 16px text.
 
 ![tertiary-select](static/tertiary.png)
 
@@ -33,6 +33,14 @@ There are two types of select triggers of different importance in our interface.
 | ---- | ----------------------------------------- | ------------------------------------------ | ------------------------------------------- |
 | L    | ![primary-l](static/primary-select-l.png) | ![secondary-l](static/inline-select-l.png) | ![tertiary-l](static/tertiary-select-l.png) |
 | M    | ![primary-m](static/primary-select-m.png) | ![secondary-m](static/inline-select-m.png) | ![tertiary-m](static/tertiary-select-m.png) |
+
+### Maximum width
+
+If trigger has a maximum width, then collapse long values into the ellipsis. When hovering, show the tooltip with the full value name.
+
+![content-sizes](static/content-sizes.png)
+
+![tooltip](static/tooltip.png)
 
 @## Trigger states
 
@@ -46,11 +54,13 @@ There are two types of select triggers of different importance in our interface.
 | invalid       | ![invalid](static/primary-invalid.png)           | ![secondary-invalid](static/inline-select-invalid.png)     | ![tertiary-invalid](static/inline-select-invalid.png)       |
 | disabled      | ![disabled](static/primary-disabled.png)         | ![secondary-disabled](static/inline-select-disabled.png)   | ![tertiary-disabled](static/tertiary-select-disabled.png)   |
 
-@## Content and sizes
+@## Trigger content
 
-The select may contain an icon, flag or user picture in front of the text. [Badge (micro label)](/components/badge/) may stand to the right of the trigger. For all sizes, the indent between the badge and the select is 8px.
+The select trigger can contain an icon, flag or other addon before the text.
 
-A [dot ("mandarinka")](/components/dot/) may be in the upper right corner of the trigger.
+[Badge](/components/badge/) should be placed to the right of the text. For all sizes, the margin between the badge and the text is 8px.
+
+[Dot](/components/dot/) should be placed in the upper right corner of the trigger.
 
 |        | Button                             | Link as Button                              | Link with the color of text                  |
 | ------ | ---------------------------------- | ------------------------------------------- | -------------------------------------------- |
@@ -59,44 +69,35 @@ A [dot ("mandarinka")](/components/dot/) may be in the upper right corner of the
 | Avatar | ![pic](static/pic-primary.png)     | ![pic-secondary](static/inline-pic.png)     | ![pic-tertiary](static/tertiary-pic.png)     |
 | Badge  | ![badge](static/badge-primary.png) | ![badge-secondary](static/inline-badge.png) | ![badge-tertiary](static/tertiary-badge.png) |
 
-### Content sizes
+@## Dropdown (dropdown list)
 
-If a fixed width of a multiselect trigger is specified, the selected values are added to the ellipsis. When hovering, the tooltip with the full name is shown. The minimum distance between the chevron and the trigger content is 8px.
-
-![content-sizes](static/content-sizes.png)
-
-![tooltip](static/tooltip.png)
-
-@## Dropdown and its states (dropdown list)
-
-> 💡 You can read about the dropdown list, its content and statuses in [Dropdown-menu](/components/dropdown-menu/).
+You can read about the dropdown list, its content and states in [Dropdown-menu](/components/dropdown-menu/).
 
 @## Multiselect
 
-**Multiselect** is a select with the ability to choose several items from a list. Options in such a list are represented by checkboxes and are not highlighted by color when hovering over them.
+**Multiselect** is a select with the functionality to choose several items from a list. Items in such a list are represented by checkboxes.
 
 ![multiselect default](static/multiselect-default.png)
 
-If the list includes more than 10 values, you should add an input with the search. Otherwise, it will be difficult for the user to navigate among all values.
+If the list includes more than 10 values, add a search input. Otherwise, it will be difficult for the user to navigate among all values.
 
-> 💡 Do not forget to put the search field in the focus state when opening the list. This helps the user to avoid extra clicks.
+> 💡 Search input should receive the focus state when user opens the list. It will help the user to avoid extra clicks.
 
 ![multiselect scroll](static/multiselect-scroll.png)
 
 ### Select all
 
-- If you have more than 3 values, you can add the `Select all` option at the beginning of the list.
-- When everything is selected, it changes to `Deselect all`.
+If you have more than 3 values, add the `Select all` option at the very beginning of the list. When everything is selected, change it to `Deselect all`.
 
 ![multiselect scroll](static/multiselect-all.png)
 
-@## How multiselect works
+@## Work of multiselect
 
-In long lists with values (for example, in the list of countries), the values selected by the user should be raised to the very top of the list. However, this should happen when the user has closed/opened the select.
+In long lists (for example, in the list of countries), the values selected by the user should be pinned to the very top of the list when the user has closed/opened the select.
 
-| The user opened the select and started selecting the values.                                          | The user closed the select.                        | The user has reopened the select, and the values he selected are fixed at the beginning of the list. When unchecking these values, they remain in the same place. |
-| ----------------------------------------------------------------------------------------------------- | -------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ![multiselect flow](static/multiselect-flow-1.png) ![multiselect flow](static/multiselect-flow-2.png) | ![multiselect flow](static/multiselect-flow-3.png) | ![multiselect flow](static/multiselect-flow-4.png)                                                                                                                |
+| User opened select and started selecting the values.                                                  | User closed select.                                | User has reopened select, and the values he selected are pinned at the very top of the list. When unchecking these values, they remain in the same place. |
+| ----------------------------------------------------------------------------------------------------- | -------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ![multiselect flow](static/multiselect-flow-1.png) ![multiselect flow](static/multiselect-flow-2.png) | ![multiselect flow](static/multiselect-flow-3.png) | ![multiselect flow](static/multiselect-flow-4.png)                                                                                                        |
 
 ### Displaying the selected values in the trigger
 
@@ -113,7 +114,7 @@ In long lists with values (for example, in the list of countries), the values se
 - Sometimes user selection can be limited by the number of required values.
 - In this case, once the user has selected the required number, all other values should receive the `disabled` status.
 
-> 💡 Do not forget to inform the user that the choice is limited. This can be done, for example, by putting a tip next to input. In addition, you can add a tooltip to the values in the `disabled` state that explains why they are in this state.
+> 💡 Do not forget to inform the user that the choice is limited. This can be done, for example, by putting a hint next to input. Also you can add a tooltip to the values in the `disabled` state that explains why they are in this state.
 
 ![multiselect limit](static/multiselect-limit.png)
 
