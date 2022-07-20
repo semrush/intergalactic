@@ -10,7 +10,7 @@ tabName: Design
 
 @## Description
 
-**ProgressBar** is a component for displaying a long process, usually more than 5 seconds. _For example, collecting keywords or updating mentions._
+**ProgressBar** is a component for displaying the loading status of a long process, usually more than 5 seconds. _For example, collecting keywords or updating mentions._
 
 As a rule, the progress bar does not block working with the product. The exception is the first launch of the product when the data is partially displayed or not displayed at all.
 
