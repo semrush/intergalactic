@@ -8,23 +8,18 @@ tabName: Design
 
 @## Description
 
-**SpinContainer** is a component for displaying [spinner](/components/spin/) around a component/widget/page.
+**SpinContainer** is a component for displaying [Spin](/components/spin/) around a component/widget/page.
 
 @## Appearance
 
-The spinner is always placed in the center of the container. For larger blocks (e.g. you have a whole page loaded), wrap the spinner in [Sticky](/components/sticky/), so that it is centered on the user's viewport.
-
-Overlay transparency in SpinContainer is 0.85
+- Spin is always placed in the center of the SpinContainer.
+- SpinContainer has overlay with transparency of 0.85.
 
 ![spin-container-dropdown](static/spincontainer-dropdown.png)
 
-@## Use in UX/UI
+@## Fixed Spin
 
-You can control the status of the [spinner](/components/spin/) and use it as a container.
-
-It is possible to use SpinContainer as a container for blocking the form interface.
-
-> 💡 See more about the spinner in [Spin](/components/spin/).
+For big blocks, widgets and pages, you can wrap Spin in [Sticky](/components/sticky/) component, so the loading message can be always seen in the user's viewport.
 
 @page spin-container-api
 @page spin-container-code
