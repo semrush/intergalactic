@@ -59,8 +59,11 @@ class HorizontalBarRoot extends Component {
       position: d[x] > 0 ? 'right' : 'left',
     });
 
-    this.asProps.dataHintsHandler.describeGroupedValues(i, d[groupKey], x, d[x]);
-    this.asProps.dataHintsHandler.labelKey(y, groupKey ?? d[y]);
+    if (groupKey) {
+      this.asProps.dataHintsHandler.describeGroupedValues(groupKey, x);
+    } else {
+      this.asProps.dataHintsHandler.describeValueEntity(`${i}.${x}`, groupKey ?? d[y]);
+    }
 
     return sstyled(styles)(
       <SBar

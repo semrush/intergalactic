@@ -79,8 +79,11 @@ class BarRoot extends Component {
       position: d[y] > 0 || Object.is(d[y], 0) ? 'top' : 'bottom',
     });
 
-    this.asProps.dataHintsHandler.describeGroupedValues(i, d[groupKey], y, d[y]);
-    this.asProps.dataHintsHandler.labelKey(x, groupKey ?? d[x]);
+    if (groupKey) {
+      this.asProps.dataHintsHandler.describeGroupedValues(groupKey, y);
+    } else {
+      this.asProps.dataHintsHandler.describeValueEntity(`${i}.${y}`, groupKey ?? d[x]);
+    }
 
     return sstyled(styles)(
       <SBar

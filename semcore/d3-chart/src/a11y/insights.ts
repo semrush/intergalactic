@@ -18,7 +18,7 @@ export type TrendNode = {
   };
   from: unknown;
   to: unknown;
-  dataKey: string;
+  dataKey: string | number;
 };
 export type GeneralTrendNode = Omit<TrendNode, 'type'> & { type: 'general-trend' };
 export type ComparisonNode = {
@@ -46,9 +46,9 @@ export type ClusterNode = {
   labels: unknown[];
   center: {
     x: number;
-    xLabel: string;
+    xLabel: string | number;
     y: number;
-    yLabel: string;
+    yLabel: string | number;
   };
   relativeSize: ClusterRelativeSize;
 };
@@ -62,9 +62,19 @@ export type AnalyzedData = {
   dataRange: {
     from: string | number | Date;
     to: string | number | Date;
-    label: string | null;
+    label: string | number | null;
   } | null;
   dataTitle: string | null;
+};
+
+const getPropByPath = (obj: any, path: number | string | string[]): unknown => {
+  if (typeof path === 'number') path = String(path);
+  if (typeof path === 'string') path = path.split('.');
+  for (let i = 0; i < path.length; i++) {
+    if (typeof obj !== 'object' || obj === null) return obj;
+    obj = obj[path[i]];
+  }
+  return obj;
 };
 
 const movingAverage = (data: number[], frame: number) => {
@@ -92,6 +102,7 @@ export const extractDataInsights = (
   let insights: AnalyzedData['insights'] = [];
   let dataType: AnalyzedData['dataType'] | null = config.dataType ?? hints.dataType;
   let dataRange: AnalyzedData['dataRange'] | null = null;
+  let groupKeys = [...hints.groups];
   const dataTitle: string | null = hints.title.verticalAxes ?? hints.title.horizontalAxes;
 
   const keysMap = Object.fromEntries(
@@ -110,9 +121,26 @@ export const extractDataInsights = (
       dataType = 'points-cloud';
     } else if (Array.isArray(data) && data.length > 6) {
       dataType = 'time-series';
+    } else if (Array.isArray(data) && Object.keys(keysMap).length >= 3) {
+      const possibleGroupKeys = Object.keys(keysMap)
+        .filter((key) => typeof data[0][key] === 'string')
+        .filter((key) => {
+          const allData = data.map((row) => row[key]);
+          return new Set(allData).size === allData.length;
+        });
+      if (possibleGroupKeys.length === 1) {
+        groupKeys = possibleGroupKeys;
+        dataType = 'grouped-values';
+      } else {
+        dataType = 'values-set';
+      }
     } else {
       dataType = 'values-set';
     }
+  }
+
+  if (dataType === 'grouped-values' && groupKeys.length === 0) {
+    dataType = 'values-set';
   }
 
   if (Array.isArray(data)) {
@@ -128,7 +156,7 @@ export const extractDataInsights = (
       dataRange = {
         from: firstRow[labelsKey] as any,
         to: lastRow[labelsKey] as any,
-        label: hints.title.verticalAxes ?? labelsKey[0],
+        label: hints.title.verticalAxes ?? labelsKey,
       };
 
       for (const valueKey of valuesKeys) {
@@ -179,7 +207,7 @@ export const extractDataInsights = (
         }: {
           value: { from: number; to: number };
           width: number;
-          label: { from: unknown; to: unknown; dataKey: string };
+          label: { from: unknown; to: unknown; dataKey: string | number };
           type: 'general-trend' | 'trend';
         }): GeneralTrendNode | TrendNode | undefined => {
           for (let i = 0; i < trendStrengths.length; i++) {
@@ -442,16 +470,78 @@ export const extractDataInsights = (
         to: sortedX[sortedX.length - 1] as any,
         label: hints.title.horizontalAxes,
       };
+    } else if (dataType === 'grouped-values') {
+      const makeRowKey = (row: Record<string, unknown>) =>
+        groupKeys.map((key, index) => `${index}-${getPropByPath(row, key)}`).join('-');
+      const allRowsIds = data.map(makeRowKey);
+      const groupedValues: {
+        [groupId: string]: { groupName: string; rows: Record<string, unknown>[] };
+      } = {};
+      for (let i = 0; i < data.length; i++) {
+        const row = data[i];
+        const key = allRowsIds[i];
+        groupedValues[key] = groupedValues[key] ?? {
+          groupName: getPropByPath(row, groupKeys[0]),
+          rows: [],
+        };
+        groupedValues[key].rows.push(row);
+      }
+
+      let fields = [...hints.fields.values];
+      const grouppingKeys = Object.fromEntries(groupKeys.map((key) => [key, true]));
+      if (fields.length === 0) {
+        fields.push(...Object.keys(keysMap));
+      }
+      fields = fields.filter((key) => !grouppingKeys[key]);
+      const groups = Object.entries(groupedValues).map(([groupKey, group]) => {
+        const values: { label: string; value: unknown }[] = [];
+        for (const row of group.rows) {
+          for (const field of fields) {
+            values.push({
+              label: hints.title.values[field] ?? field,
+              value: getPropByPath(row, field),
+            });
+          }
+        }
+
+        values.sort((a, b) => {
+          if (typeof a.value !== 'number' || typeof b.value !== 'number') return 0;
+          return b.value - a.value;
+        });
+        const averageValue =
+          values.reduce((sum, { value }) => sum + (value as number), 0) / values.length;
+        return {
+          label: group.groupName ?? groupKey,
+          values,
+          averageValue: !Number.isNaN(averageValue) ? averageValue : undefined,
+        };
+      });
+
+      groups.sort((a, b) => {
+        if (typeof a.averageValue !== 'number' || typeof b.averageValue !== 'number') return 0;
+        return b.averageValue - a.averageValue;
+      });
+      insights.push(
+        ...groups.map(
+          (group) =>
+            ({
+              type: 'comparison',
+              label: group.label,
+              values: group.values,
+              priority: 1,
+            } as ComparisonNode),
+        ),
+      );
     }
   }
   if (dataType === 'values-set') {
-    const fields = Object.keys(hints.fields.values);
+    const fields = [...hints.fields.values];
     if (fields.length === 0) {
-      fields.push(...Object.keys(data));
+      fields.push(...Object.keys(keysMap));
     }
     const values = fields.map((field) => ({
       label: hints.title.values[field] ?? field,
-      value: hints.fields.values[field] ?? (data as Record<string, unknown>)[field],
+      value: getPropByPath(data, field),
     }));
     values.sort((a, b) => {
       if (typeof a.value !== 'number' || typeof b.value !== 'number') return 0;
@@ -462,48 +552,6 @@ export const extractDataInsights = (
       values,
       priority: 1,
     });
-  } else if (dataType === 'grouped-values') {
-    const groups = Object.entries(hints.groups).map(([groupKey, group]) => {
-      const values: { label: string; value: unknown }[] = Object.entries(group.values).map(
-        ([valueKey, value]) => ({
-          label: hints.title.values[valueKey] ?? valueKey,
-          value,
-        }),
-      );
-
-      values.sort((a, b) => {
-        if (typeof a.value !== 'number' || typeof b.value !== 'number') return 0;
-
-        return b.value - a.value;
-      });
-
-      const averageValue =
-        values.reduce((sum, { value }) => sum + (value as number), 0) / values.length;
-
-      return {
-        label: group.groupName ?? groupKey,
-        values,
-        averageValue: !Number.isNaN(averageValue) ? averageValue : undefined,
-      };
-    });
-
-    groups.sort((a, b) => {
-      if (typeof a.averageValue !== 'number' || typeof b.averageValue !== 'number') return 0;
-
-      return b.averageValue - a.averageValue;
-    });
-
-    insights.push(
-      ...groups.map(
-        (group) =>
-          ({
-            type: 'comparison',
-            label: group.label,
-            values: group.values,
-            priority: 1,
-          } as ComparisonNode),
-      ),
-    );
   }
 
   const hasHighPriorityInsights = insights.some((insight) => insight.priority > 0);

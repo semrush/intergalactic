@@ -14,7 +14,7 @@ const formatLimitedSizeList = (
   const stringifyList = () => {
     const cutItems = items.slice(0, limit);
     if (items.length > limit && includeEllipsis) {
-      cutItems.push(intl.formatMessage({ id: 'ellipsis' }, { leftCount: items.length - limit }));
+      cutItems.push(intl.formatMessage({ id: 'ellipsis' }, { leftCount: limit - items.length }));
     }
 
     return intl.formatList(cutItems);
@@ -114,6 +114,8 @@ const formatValuesList = (
   }: { intl: Intl; limit: number; datesWithTime?: boolean; maxListSymbols: number },
 ) => {
   const result = values.slice(0, limit).map(({ value: rawValue, label }) => {
+    if (rawValue === undefined) return label;
+
     const value = formatValue(intl, rawValue, { datesWithTime, maxListSymbols });
 
     if (value === label) return value;
@@ -122,7 +124,7 @@ const formatValuesList = (
   });
   if (values.length > limit) {
     result.push(
-      intl.formatMessage({ id: 'ellipsis' }, { leftCount: values.values.length - limit }),
+      intl.formatMessage({ id: 'ellipsis' }, { leftCount: limit - values.values.length }),
     );
   }
 
