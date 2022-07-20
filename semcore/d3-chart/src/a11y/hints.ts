@@ -8,21 +8,12 @@ type DeepPartial<T> = T extends object
 
 export type DataStructureHints = {
   fields: {
-    verticalAxes: Set<string>;
-    horizontalAxes: Set<string>;
-    valueAxes: Set<string>;
-    values: {
-      [fieldName: string]: unknown;
-    };
+    verticalAxes: Set<string | number>;
+    horizontalAxes: Set<string | number>;
+    valueAxes: Set<string | number>;
+    values: Set<string | number>;
   };
-  groups: {
-    [groupKey: string | number]: {
-      groupName: string;
-      values: {
-        [valueKey: string]: unknown;
-      };
-    };
-  };
+  groups: Set<string | number>;
   title: {
     verticalAxes: string | null;
     horizontalAxes: string | null;
@@ -65,9 +56,9 @@ export const makeDataHintsContainer = (): DataStructureHints => ({
     verticalAxes: new Set(),
     horizontalAxes: new Set(),
     valueAxes: new Set(),
-    values: {},
+    values: new Set(),
   },
-  groups: {},
+  groups: new Set(),
   title: {
     verticalAxes: null,
     horizontalAxes: null,
@@ -99,21 +90,13 @@ export const makeDataHintsHandlers = (mutableContainer: DataStructureHints) => {
     establishDataType: (dataType: SerializableDataType) => {
       mutableContainer.dataType = dataType;
     },
-    describeValueEntity: (dataKey: string | number, dataValue: unknown, readableName: string) => {
-      mutableContainer.fields.values[dataKey] = dataValue;
+    describeValueEntity: (dataKey: string | number, readableName: string) => {
+      mutableContainer.fields.values.add(dataKey);
       handler.labelKey(dataKey, readableName);
     },
-    describeGroupedValues: (
-      groupKey: string | number,
-      groupName: string,
-      dataKey: string | number,
-      dataValue: unknown,
-    ) => {
-      mutableContainer.groups[groupKey] = mutableContainer.groups[groupKey] ?? {
-        groupName,
-        values: {},
-      };
-      mutableContainer.groups[groupKey].values[dataKey] = dataValue;
+    describeGroupedValues: (groupKey: string | number, dataKey: string | number) => {
+      mutableContainer.groups.add(groupKey);
+      mutableContainer.fields.values.add(dataKey);
     },
     labelKey: (dataKey: string | number, label: string) => {
       mutableContainer.title.values[dataKey] = label;
