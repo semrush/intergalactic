@@ -8,15 +8,17 @@ tabName: Design
 
 @## Description
 
-**Switch** is a control for instant switching between two options/states/functions.
+**Switch** is a control for instant switching between two options, states or functions.
 
-It should be used in cases when on/off should occur instantly, without reloading the page and clicking the confirmation button.
+Use it in cases when boolean operation submits user's choice instantly, without reloading the page and clicking the confirm button.
 
 ![scheme](static/check-or-toggle.png)
 
 @## Sizes and margins
 
-Our interface uses three switch sizes, which are xl, l and m. You can sign either one or both of the switch states with the label. At the same time, the enabled option always has the main color `--gray-800`, and the disabled option has the secondary color `--gray-500`.
+Our switch has three sizes: xl, l and m.
+
+You also can add a text label to switch input. The text of enabled option has `--gray-800` color, and the text of disabled option has `--gray-500` color.
 
 |     | Appearance and margins                     | Styles                                                                         |
 | --- | ------------------------------------------ | ------------------------------------------------------------------------------ |
@@ -26,49 +28,47 @@ Our interface uses three switch sizes, which are xl, l and m. You can sign eithe
 
 @## Themes
 
-The Switch component has two themes, which are `info` and `success`. Themes affect the component display in the `checked` state.
+Switch component has two themes: `info` and `success`.
 
-| Theme   | Usage                                                                                           |
-| ------- | ----------------------------------------------------------------------------------------------- |
-| Info    | Default color of the enabled switch state that is suitable for most common actions.             |
-| Success | Additional color for cases when you want to emphasize the enabled positive state of the switch. |
+| Theme   | Appearance example                            | Usage                                                                                                 |
+| ------- | --------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
+| Info    | ![switch with info theme](static/on-info.png) | Default theme for most common actions.                                                                |
+| Success | ![switch with success](static/on-success.png) | Additional theme for cases when it;s necessary to emphasize the enabled positive state of the switch. |
 
 > 💡 When the switch is used to enable/disable a social network account, you can use the appropriate brand color for the `active` state.
 
 @## Icon
 
-An icon can be placed inside the two large switch sizes. It is recommended to use different icons for off and on states for greater state differentiation.
+You can place an icon inside the switch with big sizes. We recommend you to use different icons for off and on states.
 
-For example, it is possible to use `ShowNo` and `ShowYes` icons inside switches XL size, and `Close` and `Check` icons inside switches L size.
-| XL | L |
-|---------------------------------------|-----------------------------------------|
-|![off](static/switch-off-icon-xl.png) | ![off](static/switch-off-icon-l.png) |
-|---------------------------------------|-----------------------------------------|
-|![on](static/switch-on-icon-xl.png) | ![on](static/switch-on-icon-l.png) |
+| Swith size | Off state                             | On state                            |
+| ---------- | ------------------------------------- | ----------------------------------- |
+| XL         | ![off](static/switch-off-icon-xl.png) | ![on](static/switch-on-icon-xl.png) |
+| L          | ![off](static/switch-off-icon-l.png)  | ![on](static/switch-on-icon-l.png)  |
 
 @## Interaction
 
-The switch can be in one of three main states: off, on, and disabled. To change the state, click either on the switch or on the text next to it.
+Switch has three possible states: off, on, and disabled. To change the state, user can click either on the switch itself or on the text label next to it.
 
-| State    | Appearance                                                                              | Styles                                                   |
-| -------- | --------------------------------------------------------------------------------------- | -------------------------------------------------------- |
-| off      | ![off switch](static/off.png)                                                           | `background:--gray-300`                                  |
-| on       | ![on switch](static/on-success.png) ![on switch](static/on-info.png)                    | `background:--green-400` или `background: --blue-400`    |
-| disabled | ![disabled switch](static/disabled.png) ![disabled switch](static/disabled-success.png) | The transparency of the entire component changes by 30%. |
+| State    | Appearance                                                                              | Styles                                                                                                            |
+| -------- | --------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| off      | ![off switch](static/off.png)                                                           | `background:--gray-300`                                                                                           |
+| on       | ![on switch](static/on-success.png) ![on switch](static/on-info.png)                    | `background:--green-400` или `background: --blue-400`                                                             |
+| disabled | ![disabled switch](static/disabled.png) ![disabled switch](static/disabled-success.png) | Transparency of the component changes to 30%. Use [`disabled` variable](/style/variables/#disabled_x26_loading/). |
 
 @## Use in UX/UI
 
-**Use positive language for switch labels** to make it clear what the interface will do if the user puts the toggle on.
+**Use positive language for text labels in the Switch** to make it clear what interface will do if user enables the toggle.
 
-Avoid negations such as **“Don't show trending subtopics”**, which would mean that the user would have to check the box so that something is not shown.
+Avoid negations such as: “Don't show trending subtopics”, — which would mean that the user would have to enable the switch so something will not be shown.
 
 ![switch with label](static/switchlabel_yes_no.png)
 
-Use the verb in the label of the switch. _For example, "Send by email"._
+> Use verbs for the labels. _For example, "Send by email"._
 
 You can use a label without a verb in cases when:
 
-- space is limited, therefore, a shorter option is needed (of course, not for clarity);
+- you have not enough space in the interface;
 - when the label belongs to a group of switches (for example, in the settings).
 
 @page switch-a11y
