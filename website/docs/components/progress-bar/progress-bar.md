@@ -8,36 +8,31 @@ tabName: Design
 
 @## Description
 
-**ProgressBar** is a component used to display a long process, usually more than 5 seconds. _For example, collecting keywords or updating mentions._
+**ProgressBar** is a component for displaying a long process, usually more than 5 seconds. _For example, collecting keywords or updating mentions._
 
-As a rule, the progress bar does not block working with the tool. The exception is the first launch of the tool when the data is partially displayed or not displayed at all.
+As a rule, the progress bar does not block working with the product. The exception is the first launch of the product when the data is partially displayed or not displayed at all.
 
 > 💡 This component is one of the components that displays the loading and response to user actions in the interface. For general recommendations for such components, see [Loading patterns](/patterns/loading-states/).
 
-@## Appearance
+@## Component composition
 
-### Components consists of
-
-The progress bar consists from (surprise!):
-
-- Bar
-- Progress
+ProgressBar consists from (surprise!) `ProgressBar` and `ProgressBar.Value`.
 
 ![progress bar scheme](static/progressbar-scheme.png)
 
-### Sizes
+@## Sizes
 
-In our interface, the progress bar is available in the following three sizes.
+Our ProgressBar has three sizes.
 
-| Size | Appearance                               | Styles                              | Example of use                                                                                                                                                               |
-| ---- | ---------------------------------------- | ----------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| L    | ![L sise progressbar](static/size-l.png) | `height: 12px; border-radius: 6px;` | In modal windows, on the start screen when launching the tool.                                                                                                               |
-| M    | ![M size progressbar](static/size-m.png) | `height: 8px; border-radius: 6px;`  | Inside the product.                                                                                                                                                          |
-| S    | ![S size progressbar](static/size-s.png) | `height: 4px; border-radius: 6px;`  | In widgets inside reports/tools. When they replace the button (for example, restart audit). When uploading multiple files, when you need to display the status of each file. |
+| Size | Appearance                               | Styles                              | Where to use                                                          |
+| ---- | ---------------------------------------- | ----------------------------------- | --------------------------------------------------------------------- |
+| L    | ![L sise progressbar](static/size-l.png) | `height: 12px; border-radius: 6px;` | Use in modal windows, on the start screen when launching the product. |
+| M    | ![M size progressbar](static/size-m.png) | `height: 8px; border-radius: 6px;`  | Use inside the product.                                               |
+| S    | ![S size progressbar](static/size-s.png) | `height: 4px; border-radius: 6px;`  | Use in widgets inside reports/products.                               |
 
-### Themes and styles
+@## Themes and styles
 
-The progress bar has two themes to use: light and dark background. Both themes use the color `--green-400` with a pattern to display progress.
+ProgressBar has two themes to use: for light and dark backgrounds. Both themes use the color `--green-400` with a pattern to display progress value.
 
 | Theme  | Appearance                                            | Styles                          |
 | ------ | ----------------------------------------------------- | ------------------------------- |
@@ -48,9 +43,9 @@ The progress bar has two themes to use: light and dark background. Both themes u
 
 ### States
 
-The progress bar has three states:
+ProgressBar has three states:
 
-- 0% – the progress bar is gray with animation.
+- 0% – the progress bar is colored in gray and has animation.
 
 ![progressbar without progress](static/loading-gray.png)
 
@@ -62,13 +57,13 @@ The progress bar has three states:
 
 ![progressbar with the loaded state](static/loaded.png)
 
-The progress bar shall not remain in the 100% state – once the process is completed, either a message about the success of the process shall be displayed, or you should offer the user further actions.
+The progress bar shall not remain in the 100% state – once the process is completed, either a message about the success of the process shall be displayed, or offer the user further actions.
 
-> 💡 If it is not possible to perform the action immediately, the success status shall be displayed and the user shall be told what to do next. For example, it is possible to use a dropdown with some text and CTA in this case.
+> 💡 If it is not possible to perform the action immediately, the success status shall be displayed and the user shall be told what to do next.
 
-There may be displayed a counter next to the progress bar to show how many of the files were loaded. If there is no data on the exact number of files, then nothing should be displayed, including percentages.
+Display a counter next to the progress bar to show how many of the files were loaded. If there is no data on the exact number of files, then display nothing.
 
-Depending on the usage context, the counter may be above or near the progress bar.
+Depending on the usage context, place a counter above or near the progress bar.
 
 **The margins between the counter and the progress bar shall be a multiple of 4**.
 
@@ -78,35 +73,36 @@ Depending on the usage context, the counter may be above or near the progress ba
 
 ### Animation
 
-Progress to a value is always animated with `ease-in`.
+Progress value is always animated with `ease-in`.
 
 @## Use in UX/UI
 
-### When and why it should be used
+### When to use ProgressBar
 
 - If you need to visualize a long process and it doesn't block working with data.
 - When you need to visualize a short process, but it is important to show how much is left until the end of the process. _For example, uploading multiple files._
 - If the process is long and blocks working with data, but it is necessary to let the user know when this process will end.
 
-> 💡 Sometimes you can use an animation without the green bar instead of the progress bar when launching the tool. This can be done when you don't know how long the collection will take. Or in this case, you can make a fake progress bar which will create the illusion of the user approaching the end of the process.
+> 💡 Sometimes you can use an animation without the green bar instead of the progress bar when launching the product. This can be done when you don't know how long the data collection will take. Or make a fake progress bar which will create the illusion of the user approaching the end of the process.
 
-### Fixed progress bar
+### Pinned ProgressBar
 
-When scrolling, the progress bar can be fixed at the upper margin. In this case, it is fixed above all components, including filters, table headers, etc.
+When scrolling, the progress bar can be pinned. In this case, pin it above all components, including filters, table headers, etc.
+
 ![progressbar sticky](static/progressbar-sticky.png)
 
-### Don't use it
+### Don't use ProgressBar
 
-- if you need to show some short action (no more than 5 seconds), it is better to use [Spin](/components/spin/);
-- to display steps (for example, when filling out a form).
+- If you need to show some short action (no more than 5 seconds). It is better to use [Spin](/components/spin/) in this case.
+- To display steps (for example, when filling out a form).
 
 ### Operation algorithm and time
 
 - If the download process is too long and we know about it in advance, the progress shall be visualized immediately.
 - If the exact or approximate loading time is not known, wait for 3 seconds and display the fake progress.
-- In cases when loading is very fast, set the minimum time for displaying the progress bar – 3 seconds. This is necessary to avoid "blinking" by the progress bar and the interface.
+- In cases when loading is very fast, set the minimum time for displaying the progress bar – 3 seconds. This is necessary to avoid "blinking" of the interface.
 
-> 💡 This component is one of the components that displays the loading and response to user actions in the interface. For general recommendations for such components, see [Loading patterns](/patterns/loading-states/).
+> 💡 This component is one of the components that displays response to user actions in the interface. For general recommendations for such components, see [Loading patterns](/patterns/loading-states/).
 
 @page progress-bar-api
 @page progress-bar-code
