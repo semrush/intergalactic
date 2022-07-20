@@ -6,6 +6,8 @@ tabName: Design
 
 @import playground
 
+> 💡 This component is one of the components that displays interface's reaction to user actions in the interface. For general rules on such components, see the [Loading patterns](/patterns/loading-states/).
+
 @## Description
 
 **ProgressBar** is a component for displaying a long process, usually more than 5 seconds. _For example, collecting keywords or updating mentions._
@@ -32,7 +34,9 @@ Our ProgressBar has three sizes.
 
 @## Themes and styles
 
-ProgressBar has two themes to use: for light and dark backgrounds. Both themes use the color `--green-400` with a pattern to display progress value.
+ProgressBar has two themes: `dark` and `invert` — for using on light and dark/colored backgrounds, respectively.
+
+Both themes use the color `--green-400` with a pattern to display progress value.
 
 | Theme  | Appearance                                            | Styles                          |
 | ------ | ----------------------------------------------------- | ------------------------------- |
@@ -102,7 +106,7 @@ When scrolling, the progress bar can be pinned. In this case, pin it above all c
 - If the exact or approximate loading time is not known, wait for 3 seconds and display the fake progress.
 - In cases when loading is very fast, set the minimum time for displaying the progress bar – 3 seconds. This is necessary to avoid "blinking" of the interface.
 
-> 💡 This component is one of the components that displays response to user actions in the interface. For general recommendations for such components, see [Loading patterns](/patterns/loading-states/).
+> 💡 This component is one of the components that displays interface's reaction to user actions in the interface. For general rules on such components, see the [Loading patterns](/patterns/loading-states/).
 
 @page progress-bar-api
 @page progress-bar-code
