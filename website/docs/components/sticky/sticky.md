@@ -6,47 +6,51 @@ tabName: Design
 
 @## Description
 
-**Sticky** is a component that can be used to "pin" a block towards a parent one when scrolling.
+**Sticky** is a component that can be used to pin a block towards a parent one when scrolling.
 
-The block can either be centered in relation to the height and width of the parent block or pinned with a certain indent on the top, bottom, left and right sides of the block.
+The block can either be centered in relation to the height and width of the parent block or pinned with a certain margin the top, bottom, left and right sides of the parent block.
 
-> 💡 "Pinned" messages allow the user not to lose sight of important messages about loading, data collection, limit on viewing and errors in work with data when scrolling a page.
+> 💡 Pinned messages allow user not to lose important messages about loading, data collection, limitations on viewing and errors in working with data when scrolling a page.
 
 @example limit
 
-@## Pin of a header and columns in a table
+@## Pinning of header and columns in table
 
-When scrolling a table its header should be pinned. At the same time, it does not have any shadows.
+When scrolling a table, pin its header. Do not add have any shadows to pinned table header.
 
-If there is a status bar or a line with quick steps for a table under the header, it is "pinned" under the header.
+If there is a status bar or a table row with quick actions, then pin them under the table header.
 
 ![sticky header](static/sticky-row.png)
 
-In some cases, it is necessary to "pin" the first one or two columns in the table. At the same, they should always have a shadow when scrolling, so that the user can see that there is content under them.
+In some cases, it is necessary to pin the first one or two columns in the table. Do not forget to add shadows to then when scrolling, so that the user can see that there is more content.
 
-The style of the shadow is `background-image: linear-gradient(to left, rgba(25, 27, 35, .1), rgba(255, 255, 255, 0));`.
+Shadow has the following styles:
+
+```
+background-image: linear-gradient(to left, rgba(25, 27, 35, .1), rgba(255, 255, 255, 0));
+```
 
 ![sticky column](static/sticky-column.png)
 
-@## Pin of messages inside the block
+@## Pinning of messages inside the block
 
-Inside the blocks, messages that are scrolled must be "pinned" towards the vertical and horizontal center of the parent block.
+Inside the big blocks and widgets, you can pin messages towards the vertical and horizontal center of the big parent block.
 
 ![sticky message](static/nothing-found-sticky.png)
 
 ![sticky spin block](static/sticky-loading-1.png)
 
-@## Pin of the progress bar
+@## Pinning of ProgressBar
 
-We can “pin” the [ProgressBar](/components/progress-bar/) to the top of the page or to any other block “pinned” above it (for example, to the table header).
+You can pin [ProgressBar](/components/progress-bar/) to the top of the page or to any other block pinned above it (for example, to the table header).
 
 ![sticky progress message](static/sticky-1.png)
 
 ![sticky progressbar](static/sticky-2.png)
 
-@## Pin of the content in blocks with limits
+@## Pinning of the content in blocks with limits
 
-If a limit appears in the block (an overlay overlaps the block), the message about it should be centered towards the block at scrolling.
+If a limit message appears in the block, center this message towards its parent block while scrolling.
 
 ![sticky limit message](static/table-limit-pro.png)
 
