@@ -122,6 +122,7 @@ type RootAsProps = IRadialTreeProps & {
   textSize: number;
   capSize: number;
   centralMargin: number;
+  labelMargin: number;
   angleOffset: number;
   $rootProps: RootAsProps;
 };
@@ -135,7 +136,7 @@ class RadialTreeBase extends Component<RootAsProps> {
     angleOffset: 0,
     duration: 300,
     centralMargin: 50,
-    labelMargin: 2,
+    labelMargin: 5,
     iconColor: '#fff',
     capSize: 8,
     iconSize: 8,
@@ -458,7 +459,8 @@ class RadialTreeRadian extends Component<RadianAsProps> {
   }
 
   computeRadianPosition(data: RadianData, index: number) {
-    const { centralMargin, angleOffset, activeKey, size, radiansCount, textWidth } = this.asProps;
+    const { centralMargin, labelMargin, angleOffset, activeKey, size, radiansCount, textWidth } =
+      this.asProps;
     const [width, height] = size;
     const key = this.getRadianKey(data, index);
     const isActive = activeKey === key;
@@ -466,7 +468,10 @@ class RadialTreeRadian extends Component<RadianAsProps> {
     const capSize = baseCapSize * (isActive ? 1 : 0.5);
 
     const minDemSize = Math.min(width, height) / 2;
-    const length = Math.max(minDemSize - textWidth - baseCapSize - centralMargin, 10);
+    const length = Math.max(
+      minDemSize - textWidth - baseCapSize - centralMargin - labelMargin * 2,
+      10,
+    );
 
     const angle = baseAngle + angleOffset + (index / radiansCount) * (Math.PI * 2);
     const isHorizontal =
@@ -489,8 +494,10 @@ class RadialTreeRadian extends Component<RadianAsProps> {
     const [xEnd, yEnd] = end;
 
     const labelCenter = [
-      xCenter + Math.cos(angle) * (centralMargin + length + baseCapSize + textWidth / 2),
-      yCenter + Math.sin(angle) * (centralMargin + length + baseCapSize + textWidth / 2),
+      xCenter +
+        Math.cos(angle) * (centralMargin + length + baseCapSize + textWidth / 2 + labelMargin),
+      yCenter +
+        Math.sin(angle) * (centralMargin + length + baseCapSize + textWidth / 2 + labelMargin),
     ];
     const [xLabelCenter, yLabelCenter] = labelCenter;
 
@@ -675,12 +682,15 @@ const Label: React.FC<RadialTreeRadianLabelAsProps> = ({
   const linesCount = lines.length;
   const SLabelLine = 'tspan';
 
+  const angleDegs = ((angle / Math.PI) * 180).toFixed(2);
+  const transformOrigin = [x.toFixed(2), y.toFixed(2)];
+  const transform = `rotate(${[angleDegs, ...transformOrigin].join(', ')})`;
+
   const sstyles = sstyled(styles);
   const sLabelStyles = sstyles.cn('SLabel', {
     color,
     'color-hovered': shade(color, -0.12),
     'text-cursor': isHorizontal ? 'text' : 'vertical-text',
-    'transform-origin': `${x.toFixed(2)}px ${y.toFixed(2)}px`,
   });
 
   return (
@@ -692,7 +702,7 @@ const Label: React.FC<RadialTreeRadianLabelAsProps> = ({
       style={sLabelStyles.style}
       x={x.toFixed(2)}
       y={y.toFixed(2)}
-      transform={`rotate(${((angle / Math.PI) * 180).toFixed(2)})`}
+      transform={transform}
     >
       {lines.map((lineText, lineIndex) => (
         <SLabelLine

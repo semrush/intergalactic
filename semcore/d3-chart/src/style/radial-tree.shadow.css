@@ -21,7 +21,6 @@ SCap {
 SLabel {
   fill: var(--color);
   cursor: var(--text-cursor);
-  transform-origin: var(--transform-origin);
 }
 SRadian:hover SLabel {
   fill: var(--color-hovered);
