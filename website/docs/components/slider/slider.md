@@ -16,27 +16,25 @@ In [practical point of view](https://www.nngroup.com/articles/sliders-knobs/), a
 - you need to additionally visualize the maximum range of the usual [InputNumber](/components/input-number/);
 - the user needs to specify an approximate value (for example, a change of the color brightness).
 
-@## Appearance
+@## Component composition
 
-Slider consists of:
-
-- slider knob;
-- bar;
-- progress bar;
-- value labels (optional).
+- Slider.Knob.
+- Slider.Bar.
+- Value.
+- Value labels (optional).
 
 ![slider scheme](static/scheme.png)
 
 > When designing such kind of an input, keep in mind the [Akkot-Tsai law](https://en.wikipedia.org/wiki/Steering_law). It describes the dependence of the time for performing an action on the thickness and width of the horizontal control with which this action can be performed. So the larger the slider knob and the larger the bar itself, the easier and faster it is to manipulate it.
 
-### Sizes
+@## Sizes
 
 Default component sizes:
 
 - `bar height — 4px`
 - `knob size — 20px * 20px`
 
-### Default styles
+@## Default styles
 
 Default component styles:
 
@@ -45,7 +43,7 @@ Default component styles:
 
 ![default slider styles](static/default.png)
 
-### Value labels
+@## Value labels
 
 You can show values under the input.
 
