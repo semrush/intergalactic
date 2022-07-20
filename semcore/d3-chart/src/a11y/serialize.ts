@@ -245,10 +245,16 @@ export const serialize = (
 
     const maxSize = clustersInsights[0].size;
     const minSize = clustersInsights[clustersInsights.length - 1].size;
-    const entities = intl.formatMessage(
-      { id: 'entity-type-clusters' },
-      { count: insights.length, maxSize, minSize },
-    );
+    const entities =
+      maxSize === minSize
+        ? intl.formatMessage(
+            { id: 'entity-type-clusters-single-size' },
+            { count: insights.length, size: maxSize },
+          )
+        : intl.formatMessage(
+            { id: 'entity-type-clusters-multiple-size' },
+            { count: insights.length, maxSize, minSize },
+          );
     const entitiesList = biggestClusters.map((clusterInsight) => {
       const labels = formatLimitedSizeList(clusterInsight.labels, intl, maxListSymbols);
       const anonymous =
@@ -310,16 +316,19 @@ export const serialize = (
   } else if (dataType === 'grouped-values') {
     const groupInsights = insights as ComparisonNode[];
     const valueCounts = groupInsights.map((group) => group.values.length);
+    const minValuesCount = Math.min(...valueCounts);
+    const maxValuesCount = Math.max(...valueCounts);
 
-    const entities = intl.formatMessage(
-      { id: 'entity-type-grouped-values' },
-      {
-        groupsCount: groupInsights.length,
-        valuesCount: valueCounts[0],
-        minValuesCount: Math.min(...valueCounts),
-        maxValuesCount: Math.max(...valueCounts),
-      },
-    );
+    const entities =
+      minValuesCount === maxValuesCount
+        ? intl.formatMessage(
+            { id: 'entity-type-grouped-values-single-size' },
+            { groupsCount: groupInsights.length, valuesCount: valueCounts[0] },
+          )
+        : intl.formatMessage(
+            { id: 'entity-type-grouped-values-multiple-size' },
+            { groupsCount: groupInsights.length, minValuesCount, maxValuesCount },
+          );
     const entitiesList = groupInsights.slice(0, groupsLimit).map(({ label, values }) => {
       const formattedValues = formatValuesList(values, {
         intl,
