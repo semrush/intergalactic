@@ -302,7 +302,7 @@ function Pie({
   }, [active]);
 
   dataHintsHandler.establishDataType('values-set');
-  dataHintsHandler.describeValueEntity(dataKey, data.data[1], name);
+  dataHintsHandler.describeValueEntity(dataKey, name);
 
   return sstyled(styles)(
     <SPie render="path" color={color} d={active ? d3ArcOut(data) : d3Arc(data)} />,

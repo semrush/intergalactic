@@ -111,8 +111,8 @@ describe('Plot a11y summarization', () => {
         type: 'general-trend',
         priority: (insights[0] as any).priority,
         change: {
-          from: (insights[0] as any).change.from,
-          to: (insights[0] as any).change.to,
+          from: (insights[0] as any)?.change?.from,
+          to: (insights[0] as any)?.change?.to,
           strength: 'strong-growth',
         },
         from: 0,
@@ -204,8 +204,8 @@ describe('Plot a11y summarization', () => {
         type: 'trend',
         priority: (insights[0] as any).priority,
         change: {
-          from: (insights[0] as any).change.from,
-          to: (insights[0] as any).change.to,
+          from: (insights[0] as any)?.change?.from,
+          to: (insights[0] as any)?.change?.to,
           strength: 'strong-growth',
         },
         from: 0,
@@ -216,8 +216,8 @@ describe('Plot a11y summarization', () => {
         type: 'trend',
         priority: (insights[1] as any).priority,
         change: {
-          from: (insights[1] as any).change.from,
-          to: (insights[1] as any).change.to,
+          from: (insights[1] as any)?.change?.from,
+          to: (insights[1] as any)?.change?.to,
           strength: 'strong-reduction',
         },
         from: 5,
@@ -316,10 +316,10 @@ describe('Plot a11y summarization', () => {
     ]);
   });
 
-  test('insights-extraction/values/base', () => {
+  test('insights-extraction/values-set/base', () => {
     const data = {
-      A: 100,
       B: 200,
+      A: 100,
       C: 300,
     };
     const { insights } = extractDataInsights(data, makeHints(), makeConfig());
@@ -345,7 +345,7 @@ describe('Plot a11y summarization', () => {
     ]);
   });
 
-  test('insights-extraction/titles/values-set', () => {
+  test('insights-extraction/values-set/deep-path', () => {
     const data = {
       some_deep_field: {
         with_real_data: {
@@ -359,11 +359,18 @@ describe('Plot a11y summarization', () => {
       ...makeHints(),
       fields: {
         ...makeHints().fields,
+        values: new Set([
+          'some_deep_field.with_real_data.A',
+          'some_deep_field.with_real_data.B',
+          'some_deep_field.with_real_data.C',
+        ]),
+      },
+      title: {
+        ...makeHints().title,
         values: {
-          A: 100,
-          B: 200,
-          C: 300,
-          D: 400,
+          'some_deep_field.with_real_data.A': 'A',
+          'some_deep_field.with_real_data.B': 'B',
+          'some_deep_field.with_real_data.C': 'C',
         },
       },
     };
@@ -372,10 +379,6 @@ describe('Plot a11y summarization', () => {
       {
         type: 'comparison',
         values: [
-          {
-            label: 'D',
-            value: 400,
-          },
           {
             label: 'C',
             value: 300,
@@ -448,56 +451,59 @@ describe('Plot a11y summarization', () => {
   });
 
   test('insights-extraction/grouped-values', () => {
-    const data = {};
+    const data = [
+      {
+        category: 'My super group A',
+        someValue: 10,
+        anotherValue: 20,
+      },
+      {
+        category: 'My super group B',
+        someValue: 30,
+        anotherValue: 40,
+      },
+    ];
     const hints: DataStructureHints = {
       ...makeHints(),
-      groups: {
-        a: {
-          groupName: 'My super group A',
-          values: {
-            c: 1,
-            d: 5,
-          },
-        },
-        b: {
-          groupName: 'My super group B',
-          values: {
-            c: 200,
-            d: 50,
-          },
+      groups: new Set(['category']),
+      dataType: 'grouped-values',
+      title: {
+        ...makeHints().title,
+        values: {
+          someValue: 'Some value',
+          anotherValue: 'Another value',
         },
       },
-      dataType: 'grouped-values',
     };
     const { insights } = extractDataInsights(data, hints, makeConfig());
     expect(insights).toEqual([
       {
         label: 'My super group B',
-        priority: (insights[0] as any).priority,
+        priority: (insights[0] as any)?.priority,
         type: 'comparison',
         values: [
           {
-            label: 'c',
-            value: 200,
+            label: 'Another value',
+            value: 40,
           },
           {
-            label: 'd',
-            value: 50,
+            label: 'Some value',
+            value: 30,
           },
         ],
       },
       {
         label: 'My super group A',
-        priority: (insights[1] as any).priority,
+        priority: (insights[1] as any)?.priority,
         type: 'comparison',
         values: [
           {
-            label: 'd',
-            value: 5,
+            label: 'Another value',
+            value: 20,
           },
           {
-            label: 'c',
-            value: 1,
+            label: 'Some value',
+            value: 10,
           },
         ],
       },
@@ -583,14 +589,36 @@ describe('Plot a11y summarization', () => {
     const hints: DataStructureHints = {
       ...makeHints(),
       fields: {
+        ...makeHints().fields,
         verticalAxes: new Set<string>(['x']),
         horizontalAxes: new Set<string>(['y']),
         valueAxes: new Set<string>(['value']),
-        values: {},
       },
     };
     const { dataType } = extractDataInsights(data, hints, makeConfig());
     expect(dataType).toBe('points-cloud');
+  });
+
+  test('insights-extraction/auto-data-type/grouped-values', () => {
+    const data = [
+      {
+        someGroupMarker: 'group 1',
+        someValue: 1,
+        anotherValue: 2,
+      },
+      {
+        someGroupMarker: 'group 2',
+        someValue: 3,
+        anotherValue: 4,
+      },
+      {
+        someGroupMarker: 'group 3',
+        someValue: 5,
+        anotherValue: 6,
+      },
+    ];
+    const { dataType } = extractDataInsights(data, makeHints(), makeConfig());
+    expect(dataType).toBe('grouped-values');
   });
 
   test('insights-extraction/data-range/time-series', () => {
@@ -1053,25 +1081,17 @@ describe('Plot a11y summarization', () => {
     );
     serialize(
       extractDataInsights(
-        [],
+        [
+          { groupKey: 'A', value: 1 },
+          { groupKey: 'A', value: 1 },
+          { groupKey: 'A', value: 1 },
+          { groupKey: 'B', value: 1 },
+          { groupKey: 'B', value: 1 },
+          { groupKey: 'C', value: 1 },
+        ],
         {
           ...makeHints(),
-          groups: {
-            a: {
-              groupName: 'My super group A',
-              values: {
-                c: 1,
-                d: 5,
-              },
-            },
-            b: {
-              groupName: 'My super group B',
-              values: {
-                c: 200,
-                d: 50,
-              },
-            },
-          },
+          groups: new Set(['groupKey']),
           dataType: 'grouped-values',
         },
         makeConfig(),
@@ -1081,26 +1101,10 @@ describe('Plot a11y summarization', () => {
     );
     serialize(
       extractDataInsights(
-        [],
+        [{ groupKey: 'A' }, { groupKey: 'B' }, { groupKey: 'C' }],
         {
           ...makeHints(),
-          groups: {
-            a: {
-              groupName: 'My super group A',
-              values: {
-                c: 1,
-                d: 5,
-                e: 8,
-              },
-            },
-            b: {
-              groupName: 'My super group B',
-              values: {
-                c: 200,
-                d: 50,
-              },
-            },
-          },
+          groups: new Set(['groupKey']),
           dataType: 'grouped-values',
         },
         makeConfig(),

@@ -532,7 +532,7 @@ class RadialTreeRadian extends Component<RadianAsProps> {
       mergedProps.children = _child;
     }
 
-    this.asProps.dataHintsHandler.describeValueEntity(index, data.label, data.label);
+    this.asProps.dataHintsHandler.describeValueEntity(`${index}.${data.label}`, data.label);
 
     // hidden from publicly typed export
     const InteractiveArea = (RadialTree.Radian as any).InteractiveArea;
