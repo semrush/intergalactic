@@ -99,10 +99,9 @@ function Circle({
   duration,
   name,
   dataKey,
-  originalData,
   dataHintsHandler,
 }) {
-  dataHintsHandler.describeValueEntity(dataKey, originalData, name);
+  dataHintsHandler.describeValueEntity(dataKey, name);
 
   return sstyled(styles)(
     <SCircle
@@ -118,16 +117,8 @@ function Circle({
 }
 
 function Intersection(props) {
-  const {
-    Element: SIntersection,
-    styles,
-    data,
-    name,
-    dataKey,
-    originalData,
-    dataHintsHandler,
-  } = props;
-  dataHintsHandler.describeValueEntity(dataKey, originalData, name);
+  const { Element: SIntersection, styles, data, name, dataKey, dataHintsHandler } = props;
+  dataHintsHandler.describeValueEntity(dataKey, name);
 
   const renderIntersection = React.useCallback(
     React.forwardRef((props, ref) => {
