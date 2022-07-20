@@ -2,11 +2,14 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [2.2.2] - unreleased
+## [2.2.2] - 2022-07-20
 
 ### Fixed
 
 - Fixed ability to change `tag` in render(prop) functions.
+- Fixed `RadialTree` typings.
+- Fixed `RadialTree` rendering in Safari.
+- Fixed `RadialTree` radian labels rendering.
 
 ## [2.2.1] - 2022-07-07
 
