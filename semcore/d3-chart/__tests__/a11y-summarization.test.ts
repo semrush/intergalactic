@@ -1079,6 +1079,35 @@ describe('Plot a11y summarization', () => {
       makeConfig(),
       locale,
     );
+    serialize(
+      extractDataInsights(
+        [],
+        {
+          ...makeHints(),
+          groups: {
+            a: {
+              groupName: 'My super group A',
+              values: {
+                c: 1,
+                d: 5,
+                e: 8,
+              },
+            },
+            b: {
+              groupName: 'My super group B',
+              values: {
+                c: 200,
+                d: 50,
+              },
+            },
+          },
+          dataType: 'grouped-values',
+        },
+        makeConfig(),
+      ),
+      makeConfig(),
+      locale,
+    );
 
     const unusedMessages = translationsList.filter((messageId) => !usedMessages.has(messageId));
     const unusedMessagesCount = unusedMessages.length;
