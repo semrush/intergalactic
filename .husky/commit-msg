@@ -1,4 +1,4 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-yarn tsm ./.ci/lint-commit-message.ts $1 
+yarn tsm --require=./.ci/tsm-filter-warnings.js ./.ci/lint-commit-message.ts $1 

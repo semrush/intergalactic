@@ -5,7 +5,7 @@
   "module": "./index.js",
   "sideEffects": false,
   "scripts": {
-    "generate": "tsm generate.ts",
+    "generate": "tsm --require=../../.ci/tsm-filter-warnings.js generate.ts",
     "test": "jest"
   },
   "dependencies": {
@@ -86,7 +86,7 @@
     "fast-glob": "3.2.11",
     "fs-extra": "9.0.1",
     "jest": "26.5.3",
-    "tsm": "2.2.1"
+    "tsm": "2.2.2"
   },
   "jest": {
     "preset": "@semcore/jest-preset-ui"

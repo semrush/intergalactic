@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "tsm ./esbuild.config.ts",
+    "start": "tsm --require=../../.ci/tsm-filter-warnings.js ./esbuild.config.ts",
     "test": "jest index.test.ts",
     "build": "echo \"No build\""
   },
@@ -23,7 +23,7 @@
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "styled-components": "5.3.5",
-    "tsm": "2.2.1"
+    "tsm": "2.2.2"
   },
   "devDependencies": {
     "@semcore/core": "*",

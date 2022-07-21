@@ -17971,10 +17971,10 @@ tslib@^2.0.3, tslib@^2.2.0:
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.3.1.tgz#e8a335add5ceae51aa261d32a490158ef042ef01"
   integrity sha512-77EbyPPpMz+FRFRuAFlWMtmgUWGe9UOG2Z25NqCwiIjRhOf5iKGuzSe5P2w1laq+FkRy4p+PCuVkJSGkzTEKVw==
 
-tsm@2.2.1:
-  version "2.2.1"
-  resolved "https://registry.yarnpkg.com/tsm/-/tsm-2.2.1.tgz#3e78e86a03b2f569c20cff4a9f66c4ec8fce65fc"
-  integrity sha512-qvJB0baPnxQJolZru11mRgGTdNlx17WqgJnle7eht3Vhb+VUR4/zFA5hFl6NqRe7m8BD9w/6yu0B2XciRrdoJA==
+tsm@2.2.2:
+  version "2.2.2"
+  resolved "https://registry.yarnpkg.com/tsm/-/tsm-2.2.2.tgz#0edacd62bbe53a87e8fc9c260ab65a7dbac5de06"
+  integrity sha512-bXkt675NbbqfwRHSSn8kSNEEHvoIUFDM9G6tUENkjEKpAEbrEzieO3PxUiRJylMw8fEGpcf5lSjadzzz12pc2A==
   dependencies:
     esbuild "^0.14.0"
 
