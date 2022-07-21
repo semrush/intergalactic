@@ -3874,6 +3874,12 @@ const iconsList = {
       tags: ['casual', 't-shirt', 't shirt', 'social', 'friendly'],
     },
     {
+      name: 'ClusteredList',
+      size: ['l', 'm'],
+      group: 'Misc',
+      tags: ['clustered', 'list', 'cluster', 'keyword'],
+    },
+    {
       name: 'QuestionSerp',
       size: ['l', 'm'],
       group: 'Status',
