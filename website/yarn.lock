@@ -3572,10 +3572,10 @@ trough@^2.0.0:
   resolved "https://registry.npmjs.org/trough/-/trough-2.1.0.tgz"
   integrity sha512-AqTiAOLcj85xS7vQ8QkAV41hPDIJ71XJB4RCUrzo/1GM2CQwhkJGaf9Hgr7BOugMRpgGUrqRg/DrBDl4H40+8g==
 
-tsm@2.2.1:
-  version "2.2.1"
-  resolved "https://registry.npmjs.org/tsm/-/tsm-2.2.1.tgz"
-  integrity sha512-qvJB0baPnxQJolZru11mRgGTdNlx17WqgJnle7eht3Vhb+VUR4/zFA5hFl6NqRe7m8BD9w/6yu0B2XciRrdoJA==
+tsm@2.2.2:
+  version "2.2.2"
+  resolved "https://registry.yarnpkg.com/tsm/-/tsm-2.2.2.tgz#0edacd62bbe53a87e8fc9c260ab65a7dbac5de06"
+  integrity sha512-bXkt675NbbqfwRHSSn8kSNEEHvoIUFDM9G6tUENkjEKpAEbrEzieO3PxUiRJylMw8fEGpcf5lSjadzzz12pc2A==
   dependencies:
     esbuild "^0.14.0"
 

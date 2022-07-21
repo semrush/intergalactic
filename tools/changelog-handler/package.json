@@ -15,10 +15,10 @@
     "marked-ast-markdown": "2.1.0",
     "semver": "5.6.0",
     "simple-git": "3.5.0",
-    "tsm": "2.2.1"
+    "tsm": "2.2.2"
   },
   "scripts": {
-    "start": "tsm index.ts"
+    "start": "tsm --require=../../.ci/tsm-filter-warnings.js index.ts"
   },
   "devDependencies": {
     "@types/fs-extra": "9.0.13",

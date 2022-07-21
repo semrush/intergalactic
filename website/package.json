@@ -7,10 +7,10 @@
   "type": "module",
   "scripts": {
     "start": "yarn dev",
-    "dev": "yarn build:ensure-icons && WATCH_TYPES=true tsm ./builder/dev-server.ts",
-    "build": "PUBLIC_PATH=/intergalactic/ NODE_ENV=production tsm ./builder/ssr.ts --reset-cache",
-    "build:ensure-icons": "tsm ./builder/ensure-icons-built.ts",
-    "upload-search-index": "tsm ./searchIndexUpload.ts"
+    "dev": "yarn build:ensure-icons && WATCH_TYPES=true tsm --require=../.ci/tsm-filter-warnings.js ./builder/dev-server.ts",
+    "build": "PUBLIC_PATH=/intergalactic/ NODE_ENV=production tsm --require=../.ci/tsm-filter-warnings.js ./builder/ssr.ts --reset-cache",
+    "build:ensure-icons": "tsm --require=../.ci/tsm-filter-warnings.js ./builder/ensure-icons-built.ts",
+    "upload-search-index": "tsm --require=../.ci/tsm-filter-warnings.js ./searchIndexUpload.ts"
   },
   "dependencies": {
     "algoliasearch": "4.8.4",
@@ -63,7 +63,7 @@
     "node-watch": "0.7.3",
     "picocolors": "1.0.0",
     "postcss": "8.4.14",
-    "tsm": "2.2.1",
+    "tsm": "2.2.2",
     "typescript": "4.1.3",
     "unified": "10.1.2"
   },

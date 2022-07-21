@@ -15,7 +15,7 @@
     "imagemin": "8.0.1",
     "imagemin-pngquant": "9.0.2",
     "pngjs": "6.0.0",
-    "tsm": "2.2.1"
+    "tsm": "2.2.2"
   },
   "devDependencies": {
     "@types/imagemin": "8.0.0",

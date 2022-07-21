@@ -12,10 +12,10 @@
   },
   "dependencies": {
     "@semcore/changelog-handler": "0.0.1",
-    "dotenv": "16.0.0",
     "axios": "0.21.2",
     "dayjs": "1.8.17",
-    "tsm": "2.2.1"
+    "dotenv": "16.0.0",
+    "tsm": "2.2.2"
   },
   "jest": {
     "preset": "@semcore/jest-preset-ui"
