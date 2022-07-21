@@ -249,7 +249,7 @@ Static information should be shown immediately. **It should not be disabled**.
 
 ![skeleton-color](static/color-yes-no.png)
 
-**Do not sekeleton icons separately from the text or links they belong to**. The exception is for the icons which represents main infromation.
+**Do not skeleton icons separately from the text or links they belong to**. The exception is for the icons which represents main infromation.
 
 ![skeleton-link](static/link-yes-no.png)
 
