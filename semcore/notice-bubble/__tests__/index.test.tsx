@@ -2,6 +2,7 @@ import React from 'react';
 import { testing, snapshot /*shared as testsShared*/ } from '@semcore/jest-preset-ui';
 
 const { render, fireEvent, cleanup, act } = testing;
+import { assert, expect, test, describe, afterEach } from 'vitest';
 
 import {
   NoticeBubbleContainer,

@@ -1,6 +1,7 @@
 import React from 'react';
 import { FilterTrigger } from '@semcore/base-trigger';
 import { testing, shared as testsShared, snapshot } from '@semcore/jest-preset-ui';
+import { assert, expect, test, describe, afterEach } from 'vitest';
 
 const { cleanup, fireEvent, render, axe, act } = testing;
 

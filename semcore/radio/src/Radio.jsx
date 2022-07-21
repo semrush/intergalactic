@@ -132,7 +132,7 @@ class Value extends Component {
     return sstyled(styles)(
       <>
         <SControl tag="input" type="radio" {...controlProps} />
-        <SValue ref={forwardRef} use:theme={resolveColor(theme)} {...boxProps} />
+        <SValue ref={forwardRef} use-theme={resolveColor(theme)} {...boxProps} />
       </>,
     );
   }

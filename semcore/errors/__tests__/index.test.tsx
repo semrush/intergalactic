@@ -1,5 +1,7 @@
 import React from 'react';
 import { testing, snapshot } from '@semcore/jest-preset-ui';
+import { assert, expect, test, describe, afterEach } from 'vitest';
+const { cleanup } = testing;
 
 const { axe, render, cleanup } = testing;
 

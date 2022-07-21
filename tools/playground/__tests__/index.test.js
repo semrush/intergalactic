@@ -5,6 +5,7 @@ import esbuild from 'esbuild';
 // @ts-ignore
 import { esbuildPluginSemcoreSourcesResolve } from 'disable-jest-mapper:@semcore/esbuild-plugin-semcore/esbuild-plugin-semcore-sources-resolve';
 /* eslint-enable import/no-unresolved */
+import { describe, test } from 'vitest';
 
 describe('Playground sources resolving', () => {
   test('resolve documentation, playground and local examples', async () => {

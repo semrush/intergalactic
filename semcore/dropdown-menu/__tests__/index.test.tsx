@@ -1,5 +1,6 @@
 import React from 'react';
 import { testing, snapshot } from '@semcore/jest-preset-ui';
+import { expect, test, describe, afterEach } from 'vitest';
 const { cleanup, axe, render, fireEvent, act } = testing;
 
 import DropdownMenu from '../src';

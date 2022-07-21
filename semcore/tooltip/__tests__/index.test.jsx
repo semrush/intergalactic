@@ -1,6 +1,7 @@
 import React from 'react';
 import { testing, snapshot } from '@semcore/jest-preset-ui';
 const { cleanup, fireEvent, render, axe, act } = testing;
+import { assert, expect, test, describe, afterEach } from 'vitest';
 
 import Tooltip from '../src';
 

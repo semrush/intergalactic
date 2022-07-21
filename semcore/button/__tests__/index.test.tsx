@@ -1,15 +1,18 @@
 import React from 'react';
+
 import { testing, snapshot } from '@semcore/jest-preset-ui';
+import { assert, expect, test, describe, afterEach } from 'vitest';
+const { cleanup, render } = testing;
+
 import NeighborLocation from '@semcore/neighbor-location';
 import { Flex } from '@semcore/flex-box';
 import CheckM from '@semcore/icon/Check/m';
 import propsForElement from '@semcore/utils/lib/propsForElement';
 import Button from '../src';
 
-const { cleanup, render } = testing;
 
 describe('Button', () => {
-  afterEach(cleanup);
+  // afterEach(cleanup);
 
   test('renders correctly', async () => {
     const component = <Button>Button</Button>;

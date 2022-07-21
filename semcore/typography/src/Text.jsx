@@ -26,8 +26,8 @@ function Text(props, ref) {
       tag="span"
       data-ui-name="Text"
       ref={ref}
-      use:decoration={textDecoration}
-      use:color={resolveColor(color)}
+      use-decoration={textDecoration}
+      use-color={resolveColor(color)}
     />,
   );
 }

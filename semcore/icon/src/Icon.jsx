@@ -34,7 +34,7 @@ function Icon(props, ref) {
   const sstyles = sstyled(styles);
   const { className, style } = sstyles.cn('SIcon', {
     'color-interactive': shade(color, -0.12),
-    'use:color': color,
+    'use-color': color,
     interactive: interactive,
     keyboardFocused: keyboardFocused,
   });

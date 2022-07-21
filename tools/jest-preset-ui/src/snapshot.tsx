@@ -1,13 +1,12 @@
-const request = require('request');
-const util = require('util');
-const path = require('path');
-const React = require('react');
-const { createRoot } = require('react-dom/client');
-// const ReactDOM = require('react-dom');
-import { act } from './testing';
+import * as request from 'request';
+import * as util from 'util';
+import * as path from 'path';
+import * as React from 'react';
+import { createRoot} from 'react-dom/client';
+import { act } from './testing'
 
 const post = util.promisify(request.post);
-const config = {};
+const config: { path?: string } = {};
 
 if (process.cwd().includes('semcore')) {
   config.path = path.resolve(process.cwd(), '../../.env');
@@ -17,7 +16,7 @@ require('dotenv').config(config);
 
 const DEFAULT_OPTIONS = { selector: '#root' };
 
-async function snapshot(Component, options) {
+export async function snapshot(Component, options) {
   options = Object.assign({}, DEFAULT_OPTIONS, options);
   const _tmp = document.createElement('div');
   const root = createRoot(_tmp);
@@ -126,5 +125,3 @@ snapshot.ProxyProps = function (props) {
 };
 
 snapshot.Row = (props) => <div {...props} />;
-
-module.exports = snapshot;

@@ -2,6 +2,7 @@ import React from 'react';
 import { testing, shared as testsShared } from '@semcore/jest-preset-ui';
 
 const { cleanup, fireEvent, render, act } = testing;
+import { assert, expect, test, describe, afterEach } from 'vitest';
 
 const { shouldSupportClassName, shouldSupportRef } = testsShared;
 import Popper from '../src';

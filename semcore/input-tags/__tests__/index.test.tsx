@@ -1,9 +1,11 @@
 import * as React from 'react';
 import { testing, snapshot } from '@semcore/jest-preset-ui';
-const { axe, render, cleanup, fireEvent, act } = testing;
+import { assert, expect, test, describe, afterEach } from 'vitest';
 import Tooltip from '@semcore/tooltip';
 
 import InputTags from '../src';
+
+const { axe, render, cleanup, fireEvent, act } = testing;
 
 describe('InputTags', () => {
   afterEach(cleanup);

@@ -52,7 +52,7 @@ class NoticeGlobalRoot extends Component {
       <SNoticeGlobal
         render={FadeInOut}
         visible={!hidden}
-        use:theme={useTheme}
+        use-theme={useTheme}
         backgroundColor={color}
         role="status"
         aria-live={isAssertive ? 'assertive' : 'polite'}

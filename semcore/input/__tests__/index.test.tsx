@@ -1,6 +1,7 @@
 import React from 'react';
 import Search from '@semcore/icon/Search/m';
 import { testing, snapshot, shared as testsShared } from '@semcore/jest-preset-ui';
+import { assert, expect, test, describe, afterEach } from 'vitest';
 import Input from '../src';
 
 const { cleanup, fireEvent, render } = testing;

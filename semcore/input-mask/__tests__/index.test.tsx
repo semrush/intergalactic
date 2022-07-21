@@ -2,6 +2,7 @@ import React from 'react';
 import InputMask from '../src';
 
 import { testing, shared as testsShared, snapshot } from '@semcore/jest-preset-ui';
+import { assert, expect, test, describe, afterEach } from 'vitest';
 const { cleanup, fireEvent, render, axe } = testing;
 
 const { shouldSupportClassName, shouldSupportRef } = testsShared;

@@ -2,6 +2,7 @@
 
 import * as React from 'react';
 import { testing, snapshot } from '@semcore/jest-preset-ui';
+import { assert, expect, test, describe, afterEach } from 'vitest';
 import WidgetEmpty, { NoData, Error, getIconPath } from '../src';
 
 const { cleanup } = testing;

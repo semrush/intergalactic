@@ -1,5 +1,6 @@
 import React from 'react';
 import { testing, snapshot } from '@semcore/jest-preset-ui';
+import { assert, expect, test, describe, afterEach } from 'vitest';
 const { render, fireEvent, cleanup } = testing;
 
 import SidePanel from '../src';

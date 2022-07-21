@@ -23,7 +23,7 @@ class Counter extends Component<{
     const colorBG = resolveColor(theme);
     const colorText = brightness(colorBG) > 200 ? resolveColor('gray-800') : '#fff';
 
-    return sstyled(styles)(<SCounter render={Box} use:theme={colorBG} colorText={colorText} />);
+    return sstyled(styles)(<SCounter render={Box} use-theme={colorBG} colorText={colorText} />);
   }
 }
 

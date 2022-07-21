@@ -1,4 +1,5 @@
 import { testing, shared as testsShared } from '@semcore/jest-preset-ui';
+import { assert, expect, test, describe, afterEach } from 'vitest';
 const { cleanup } = testing;
 
 const { shouldSupportClassName, shouldSupportRef } = testsShared;

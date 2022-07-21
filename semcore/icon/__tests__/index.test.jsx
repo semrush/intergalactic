@@ -1,5 +1,6 @@
 import React from 'react';
 import { snapshot, testing } from '@semcore/jest-preset-ui';
+import { assert, expect, test, describe, afterEach } from 'vitest';
 import Icon from '../src';
 
 const { render, cleanup, fireEvent, axe } = testing;

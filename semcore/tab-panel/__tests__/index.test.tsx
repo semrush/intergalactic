@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { testing, snapshot } from '@semcore/jest-preset-ui';
+import { assert, expect, test, describe, afterEach } from 'vitest';
 import propsForElement from '@semcore/utils/lib/propsForElement';
 import CheckM from '@semcore/icon/Check/m';
 import TabPanel from '../src';

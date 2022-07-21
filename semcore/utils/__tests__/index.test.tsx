@@ -1,6 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { testing, snapshot } from '@semcore/jest-preset-ui';
+import { assert, expect, test, describe, afterEach } from 'vitest';
+const { cleanup } = testing;
+
 import isNode from '../src/isNode';
 import compose from '../src/compose';
 import useCss from '../src/use/useCss';

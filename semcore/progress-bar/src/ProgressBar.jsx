@@ -36,9 +36,9 @@ class ProgressBarRoot extends Component {
     return sstyled(styles)(
       <SProgressBar
         render={Box}
-        use:theme={useTheme}
-        use:animation={!value}
-        use:duration={`${duration}ms`}
+        use-theme={useTheme}
+        use-animation={!value}
+        use-duration={`${duration}ms`}
         colorBg={resolveColor(theme)}
         role="progressbar"
         aria-valuenow={value}
@@ -57,8 +57,8 @@ function Value(props) {
   return sstyled(styles)(
     <SValue
       render={Box}
-      use:width={width}
-      use:duration={`${duration}ms`}
+      use-width={width}
+      use-duration={`${duration}ms`}
       colorBg={resolveColor(theme)}
     />,
   );

@@ -1,5 +1,6 @@
 import React from 'react';
 import { testing, shared as testsShared, snapshot } from '@semcore/jest-preset-ui';
+import { assert, expect, test, describe, afterEach } from 'vitest';
 import InlineInput from '../src/InlineInput';
 import SerpM from '@semcore/icon/Serp/m';
 

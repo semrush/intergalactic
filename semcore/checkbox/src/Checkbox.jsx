@@ -90,7 +90,7 @@ class Value extends Component {
         />
         <SCheckbox
           tag="span"
-          use:theme={resolveColor(theme)}
+          use-theme={resolveColor(theme)}
           size={size}
           state={state}
           keyboardFocused={keyboardFocused}

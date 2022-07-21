@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { testing, snapshot } from '@semcore/jest-preset-ui';
+import { assert, expect, test, describe, afterEach } from 'vitest';
 import Check from '@semcore/icon/Check/m';
 import Question from '@semcore/icon/Question/m';
 import { Blockquote, List, Text, Hint } from '../src';

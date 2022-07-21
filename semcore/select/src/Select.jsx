@@ -334,7 +334,7 @@ function Checkbox(props) {
 
   const { className, style } = styles.cn('SOptionCheckbox', {
     size,
-    'use:theme': resolveColor(theme),
+    'use-theme': resolveColor(theme),
     checked: selected,
   });
 

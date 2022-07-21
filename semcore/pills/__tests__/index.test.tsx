@@ -1,5 +1,6 @@
 import React from 'react';
 import { testing, snapshot } from '@semcore/jest-preset-ui';
+import { assert, expect, test, describe, afterEach } from 'vitest';
 import Globe from '@semcore/icon/Globe/m';
 import Badge from '@semcore/badge';
 

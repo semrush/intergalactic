@@ -66,7 +66,7 @@ class RootNotice extends Component {
       <SNotice
         render={FadeInOut}
         visible={!hidden}
-        use:theme={useTheme}
+        use-theme={useTheme}
         backgroundColor={color}
         role="status"
         aria-live={isAssertive ? 'assertive' : 'polite'}
@@ -81,7 +81,7 @@ function Label({ styles, theme }) {
   const SLabel = Root;
   const useTheme = isCustomTheme(theme) ? 'custom' : theme;
   const color = resolveColor(theme);
-  return sstyled(styles)(<SLabel render={Box} use:theme={useTheme} color={color} />);
+  return sstyled(styles)(<SLabel render={Box} use-theme={useTheme} color={color} />);
 }
 
 function Actions({ styles }) {
