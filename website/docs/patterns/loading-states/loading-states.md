@@ -6,9 +6,9 @@ title: Loading states
 
 Components that we use to work with user expectations:
 
-- [Spin](/components/spin)
-- [Skeleton](/components/skeleton)
-- [ProgressBar](/components/progress-bar)
+- [Spin](/components/spin/)
+- [Skeleton](/components/skeleton/)
+- [ProgressBar](/components/progress-bar/)
 
 **Use them for different cases.** For a detailed description of each component, see its guide.
 
