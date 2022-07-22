@@ -87,7 +87,12 @@ class Value extends Component {
 
 function Addon(props) {
   const SAddon = Root;
-  return sstyled(props.styles)(<SAddon render={Box} />);
+  const { Children } = props;
+  return sstyled(props.styles)(
+    <SAddon render={Box}>
+      <Children />
+    </SAddon>,
+  );
 }
 
 Addon.enhance = [neighborLocationEnhance()];
