@@ -145,4 +145,5 @@ You can pass a common `eventEmitter` to synchronize the charts.
 Use [Skeleton](/components/skeleton/) with the appropriate chart type for the initial loading of the charts. If a chart widget has a title, it should be displayed while the chart is loading.
 
 @page d3-chart-api
+@page d3-chart-a11y
 @page d3-chart-changelog
