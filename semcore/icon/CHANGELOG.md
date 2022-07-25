@@ -6,7 +6,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Fixed typo for `AppsBlock` icon name.
+- Renamed icon from `AppBlock` to `AppsBlock`. Old name is deprecated.
 
 ## [2.29.1] - 2022-07-22
 

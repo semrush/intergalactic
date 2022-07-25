@@ -24,7 +24,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Fixed the font in Title
+- Fixed font family in Title
 
 ## [2.0.8] - 2022-07-07
 
