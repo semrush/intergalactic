@@ -84,4 +84,5 @@ Here you will find the states for some specific cases. All other "empty states" 
 | **Initial loading.** Show the skeleton for this state. If the chart has a title, it should be displayed while the chart is loading. The user must understand what exactly is being loaded and whether they should wait for it. | ![radial tree with skeleton](static/skeleton.png)                 |
 
 @page radial-tree-chart-api
+@page radial-tree-chart-a11y
 @page radial-tree-chart-d3-examples
