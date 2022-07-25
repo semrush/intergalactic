@@ -12,7 +12,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Added more correct child element counting. Now the empty string is not considered.
+- Tuned up childildren elements counting (ignoring empty string).
 
 ## [2.3.9] - 2022-07-07
 
