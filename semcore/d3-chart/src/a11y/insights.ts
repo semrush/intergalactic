@@ -63,7 +63,7 @@ export type AnalyzedData = {
     from: string | number | Date;
     to: string | number | Date;
     label: string | number | null;
-  } | null;
+  }[];
   dataTitle: string | null;
 };
 
@@ -101,9 +101,9 @@ export const extractDataInsights = (
 ): AnalyzedData => {
   let insights: AnalyzedData['insights'] = [];
   let dataType: AnalyzedData['dataType'] | null = config.dataType ?? hints.dataType;
-  let dataRange: AnalyzedData['dataRange'] | null = null;
+  const dataRange: AnalyzedData['dataRange'] = [];
   let groupKeys = [...hints.groups];
-  const dataTitle: string | null = hints.title.verticalAxes ?? hints.title.horizontalAxes;
+  const dataTitle: string | null = hints.axesTitle.vertical ?? hints.axesTitle.horizontal;
 
   const keysMap = Object.fromEntries(
     Object.keys((Array.isArray(data) ? data[0] : data) ?? {}).map((key) => [key, true]),
@@ -152,12 +152,6 @@ export const extractDataInsights = (
 
       const possibleLabelKeys = ['label', 'x', ...hints.fields.horizontalAxes];
       const labelsKey = possibleLabelKeys.filter((key) => keysMap[key])[0];
-
-      dataRange = {
-        from: firstRow[labelsKey] as any,
-        to: lastRow[labelsKey] as any,
-        label: hints.title.verticalAxes ?? labelsKey,
-      };
 
       for (const valueKey of valuesKeys) {
         const values = (data as Record<string, number>[]).map((row) => row[valueKey]);
@@ -235,14 +229,25 @@ export const extractDataInsights = (
           }
         };
 
+        const fromKey = firstRow[labelsKey];
+        const toKey = lastRow[labelsKey];
+        const from =
+          hints.titles.getHorizontalAxesTitle?.(fromKey as string) ??
+          hints.titles.horizontalAxes[fromKey as string] ??
+          fromKey;
+        const to =
+          hints.titles.getHorizontalAxesTitle?.(toKey as string) ??
+          hints.titles.horizontalAxes[toKey as string] ??
+          toKey;
+        dataRange.push({ from, to, label: hints.axesTitle.vertical ?? labelsKey });
         const generalTrend = recordTrend({
           type: 'general-trend',
           value: {
-            from: longMovingAverage[0],
-            to: longMovingAverage[longMovingAverage.length - 1],
+            from: shortMovingAverage[0],
+            to: shortMovingAverage[shortMovingAverage.length - 1],
           },
-          width: longMovingAverage.length,
-          label: { from: firstRow[labelsKey], to: lastRow[labelsKey], dataKey: valueKey },
+          width: data.length,
+          label: { from, to, dataKey: valueKey },
         })!;
         const localTrends: Insight[] = [];
         {
@@ -259,6 +264,17 @@ export const extractDataInsights = (
             if (i === 0 && lastSwitch === data.length - 1) continue;
             if (i === data.length - 1 && lastSwitch === 0) continue;
             i = Math.min(i, data.length - 1);
+
+            const fromKey = data[lastSwitch][labelsKey];
+            const toKey = data[i][labelsKey];
+            const from =
+              hints.titles.getHorizontalAxesTitle?.(fromKey as string) ??
+              hints.titles.horizontalAxes[fromKey as string] ??
+              fromKey;
+            const to =
+              hints.titles.getHorizontalAxesTitle?.(toKey as string) ??
+              hints.titles.horizontalAxes[toKey as string] ??
+              toKey;
             localTrends.push(
               recordTrend({
                 type: 'trend',
@@ -267,11 +283,7 @@ export const extractDataInsights = (
                   to: shortMovingAverage[i],
                 },
                 width: i - lastSwitch,
-                label: {
-                  from: data[lastSwitch][labelsKey],
-                  to: data[i][labelsKey],
-                  dataKey: valueKey,
-                },
+                label: { from, to, dataKey: valueKey },
               })!,
             );
             lastSwitch = i;
@@ -358,7 +370,7 @@ export const extractDataInsights = (
         const { x, y } = normalized[i];
         const gridX = Math.round(x / gridSize!);
         const gridY = Math.round(y / gridSize!);
-        takenY.add(gridY);
+        takenY.add(y);
         takenX.add(x);
         grid[gridX] = grid[gridX] ?? {};
         grid[gridX][gridY] = grid[gridX][gridY] ?? { clusterId: `${gridX}_${gridY}`, members: [] };
@@ -405,8 +417,8 @@ export const extractDataInsights = (
           center: {
             x,
             y,
-            xLabel: hints.title.horizontalAxes ?? guessedXKey,
-            yLabel: hints.title.verticalAxes ?? guessedYKey,
+            xLabel: hints.axesTitle.horizontal ?? guessedXKey,
+            yLabel: hints.axesTitle.vertical ?? guessedYKey,
           },
         });
       }
@@ -464,12 +476,22 @@ export const extractDataInsights = (
 
       insights.push(...clustersInsights);
 
-      const sortedX = [...takenX].sort((a, b) => a - b);
-      dataRange = {
-        from: sortedX[0] as any,
-        to: sortedX[sortedX.length - 1] as any,
-        label: hints.title.horizontalAxes,
-      };
+      if (hints.axesTitle.horizontal) {
+        const sortedX = [...takenX].sort((a, b) => a - b);
+        dataRange.push({
+          from: sortedX[0] as any,
+          to: sortedX[sortedX.length - 1] as any,
+          label: hints.axesTitle.horizontal,
+        });
+      }
+      if (hints.axesTitle.vertical) {
+        const sortedY = [...takenY].sort((a, b) => a - b);
+        dataRange.push({
+          from: sortedY[0] as any,
+          to: sortedY[sortedY.length - 1] as any,
+          label: hints.axesTitle.vertical,
+        });
+      }
     } else if (dataType === 'grouped-values') {
       const makeRowKey = (row: Record<string, unknown>) =>
         groupKeys.map((key, index) => `${index}-${getPropByPath(row, key)}`).join('-');
@@ -498,7 +520,10 @@ export const extractDataInsights = (
         for (const row of group.rows) {
           for (const field of fields) {
             values.push({
-              label: hints.title.values[field] ?? field,
+              label:
+                hints.titles.getVerticalAxesTitle?.(field) ??
+                hints.titles.valuesAxes[field] ??
+                field,
               value: getPropByPath(row, field),
             });
           }
@@ -540,7 +565,7 @@ export const extractDataInsights = (
       fields.push(...Object.keys(keysMap));
     }
     const values = fields.map((field) => ({
-      label: hints.title.values[field] ?? field,
+      label: hints.titles.getValueAxesTitle?.(field) ?? hints.titles.valuesAxes[field] ?? field,
       value: getPropByPath(data, field),
     }));
     values.sort((a, b) => {

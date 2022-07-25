@@ -149,20 +149,25 @@ export const serialize = (
 
   const intl = getIntl(locale, translations);
 
-  const from =
-    dataRange &&
-    formatValue(intl, dataRange.from, {
-      siblingsTimeMark: dataRange.to,
-      datesWithTime,
-      maxListSymbols,
-    });
-  const to =
-    dataRange &&
-    formatValue(intl, dataRange.to, {
-      siblingsTimeMark: dataRange.from,
-      datesWithTime,
-      maxListSymbols,
-    });
+  const dataRnageSummary = intl.formatList(
+    dataRange.map((range) => {
+      const from = formatValue(intl, range.from, {
+        siblingsTimeMark: range.to,
+        datesWithTime,
+        maxListSymbols,
+      });
+      const to = formatValue(intl, range.to, {
+        siblingsTimeMark: range.from,
+        datesWithTime,
+        maxListSymbols,
+      });
+
+      return intl.formatMessage(
+        { id: range.label ? 'additional-axe' : 'additional-axe-no-label' },
+        { from, to, label: range.label },
+      );
+    }),
+  );
 
   if (dataType === 'time-series') {
     const trendsInsights = insights as (GeneralTrendNode | TrendNode)[];
@@ -172,24 +177,12 @@ export const serialize = (
       trendsByDataKey[insight.dataKey].push(insight);
     }
 
+    const entitiesCount = Object.keys(trendsByDataKey).length;
     const entities = intl.formatMessage(
       { id: 'entity-type-time-series' },
-      { count: Object.keys(trendsByDataKey).length },
+      { count: entitiesCount },
     );
-    const entitiesList = intl.formatList(Object.keys(trendsByDataKey));
-    const summaryHead = intl.formatMessage(
-      { id: dataTitle ? 'chart-summary' : 'chart-summary-no-label' },
-      { entities, entitiesList, label: dataTitle },
-    );
-    const summary = [summaryHead];
-    if (dataRange) {
-      const additionalAxe = intl.formatMessage(
-        { id: dataRange.label ? 'additional-axe' : 'additional-axe-no-label' },
-        { from, to, label: dataRange.label },
-      );
-      summary.push(additionalAxe);
-    }
-    const summaryBody = Object.entries(trendsByDataKey).map(([dataKey, insights]) => {
+    const entitiesList = Object.entries(trendsByDataKey).map(([dataKey, insights]) => {
       const generalTrend = insights.find((insight) => insight.type === 'general-trend');
       const localTrends = insights.filter((insight) => insight !== generalTrend);
       const primaryTrend = generalTrend ?? localTrends[0];
@@ -199,7 +192,7 @@ export const serialize = (
       const mainSummary: string = intl.formatMessage(
         { id: 'time-series-general-trend' },
         {
-          dataKey,
+          dataKey: entitiesCount !== 1 ? dataKey : '',
           trend: intl.formatMessage({ id: `trend-${primaryTrend.change.strength}` }),
           from: intl.formatNumber(primaryTrend.change.from),
           to: intl.formatNumber(primaryTrend.change.to),
@@ -238,9 +231,17 @@ export const serialize = (
         },
       );
     });
-    summary.push(...summaryBody);
 
-    return summary.join('\n');
+    const summary = intl.formatMessage(
+      { id: dataTitle ? 'chart-summary' : 'chart-summary-no-label' },
+      { entities, entitiesList: intl.formatList(entitiesList), label: dataTitle },
+    );
+
+    if (dataRnageSummary.length > 0) {
+      return `${summary}\n${dataRnageSummary}`;
+    }
+
+    return summary;
   } else if (dataType === 'points-cloud') {
     const clustersInsights = insights as ClusterNode[];
     const biggestClusters = clustersInsights.slice(0, clustersLimit);
@@ -287,12 +288,9 @@ export const serialize = (
       { id: dataTitle ? 'chart-summary' : 'chart-summary-no-label' },
       { entities, entitiesList: intl.formatList(entitiesList), label: dataTitle },
     );
-    if (dataRange) {
-      const additionalAxe = intl.formatMessage(
-        { id: dataRange.label ? 'additional-axe' : 'additional-axe-no-label' },
-        { from, to, label: dataRange.label },
-      );
-      return [summary, additionalAxe].join('\n');
+
+    if (dataRnageSummary.length > 0) {
+      return `${summary}\n${dataRnageSummary}`;
     }
 
     return summary;
