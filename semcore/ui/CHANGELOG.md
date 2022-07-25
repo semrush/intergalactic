@@ -1,3 +1,56 @@
+## [12.4.0] - 2022-07-25
+
+### @semcore/d3-chart
+
+- **Fixed** Fixed ability to change `tag` in render(prop) functions.
+- **Fixed** Fixed `RadialTree` typings.
+- **Fixed** Fixed `RadialTree` rendering in Safari.
+- **Fixed** Fixed `RadialTree` radian labels rendering.
+
+### @semcore/data-table
+
+- **Changed** Add `onScroll` callback for `<Body/>`.
+
+### @semcore/dropdown-menu
+
+- **Fixed** Remove deprecated size(xl) type.
+
+### @semcore/fullscreen-modal
+
+- **Fixed** Fixed the font in Title
+
+### @semcore/icon
+
+- **Fixed** Fixed typo for `AppsBlock` icon name.
+- **Added** Added icon `ClusteredList`.
+- **Added** Added icon `AppsBlock`.
+
+### @semcore/input
+
+- **Changed** Fixed `Input.Addon` css classes were missing during server-side rendering.
+- **Fixed** Fixed the reaction when interacting with the keyboard for the correct work of other components with keyboard support.
+- **Fixed** Fixed applying style(border-radius) for outline.
+
+### @semcore/input-number
+
+- **Fixed** Fixed rounding float numbers.
+
+### @semcore/neighbor-location
+
+- **Fixed** Added more correct child element counting. Now the empty string is not considered.
+
+### @semcore/popper
+
+- **Fixed** Fixed possibility to insert render function into `Popper.Trigger`.
+
+### @semcore/select
+
+- **Fixed** Fixed color of Addon icons in `InputSearch`.
+
+### @semcore/utils
+
+- **Fixed** Fixed pcakage compatibility with ES modules.
+
 ## [12.3.0] - 2022-07-07
 
 ### @semcore/d3-chart
