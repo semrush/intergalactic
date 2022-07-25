@@ -30,7 +30,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Fixed rounding float numbers.
+- Fixed rounding of float numbers.
 
 ## [4.0.6] - 2022-07-07
 

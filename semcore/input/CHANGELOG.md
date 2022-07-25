@@ -24,7 +24,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Fixed applying style(border-radius) for outline.
+- Fixed applying `border-radius` for outline.
 
 ## [3.0.6] - 2022-07-07
 

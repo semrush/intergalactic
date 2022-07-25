@@ -13,15 +13,15 @@
 
 ### @semcore/dropdown-menu
 
-- **Fixed** Remove deprecated size(xl) type.
+- **Fixed** Remove deprecated size (`xl`).
 
 ### @semcore/fullscreen-modal
 
-- **Fixed** Fixed the font in Title
+- **Fixed** Fixed font family in Title
 
 ### @semcore/icon
 
-- **Fixed** Fixed typo for `AppsBlock` icon name.
+- **Fixed** Renamed icon from `AppBlock` to `AppsBlock`. Old name is deprecated.
 - **Added** Added icon `ClusteredList`.
 - **Added** Added icon `AppsBlock`.
 
@@ -29,15 +29,15 @@
 
 - **Changed** Fixed `Input.Addon` css classes were missing during server-side rendering.
 - **Fixed** Fixed the reaction when interacting with the keyboard for the correct work of other components with keyboard support.
-- **Fixed** Fixed applying style(border-radius) for outline.
+- **Fixed** Fixed applying `border-radius` for outline.
 
 ### @semcore/input-number
 
-- **Fixed** Fixed rounding float numbers.
+- **Fixed** Fixed rounding of float numbers.
 
 ### @semcore/neighbor-location
 
-- **Fixed** Added more correct child element counting. Now the empty string is not considered.
+- **Fixed** Tuned up childildren elements counting (ignoring empty string).
 
 ### @semcore/popper
 

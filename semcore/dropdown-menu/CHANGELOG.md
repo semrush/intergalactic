@@ -18,7 +18,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Remove deprecated size(xl) type.
+- Remove deprecated size (`xl`) type.
 
 ## [3.0.5] - 2022-07-07
 
