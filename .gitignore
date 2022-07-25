@@ -44,11 +44,14 @@ Icon[
 
 # Icon
 semcore/icon/**/*.mjs
+!semcore/icon/AppBlock/**/*.mjs
 semcore/icon/**/*.js
 !semcore/icon/src/**/*.js
 !semcore/icon/**/*.config.js
+!semcore/icon/AppBlock/**/*.js
 semcore/icon/**/*.d.ts
 !semcore/icon/src/**/*.d.ts
+!semcore/icon/AppBlock/**/*.d.ts
 
 # Illustration
 semcore/illustration/**/*.js
