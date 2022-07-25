@@ -14,12 +14,23 @@ export type DataStructureHints = {
     values: Set<string | number>;
   };
   groups: Set<string | number>;
-  title: {
-    verticalAxes: string | null;
-    horizontalAxes: string | null;
-    values: {
-      [valueDataKey: string]: string;
+  axesTitle: {
+    vertical: string | null;
+    horizontal: string | null;
+  };
+  titles: {
+    verticalAxes: {
+      [dataKey: string | number]: string;
     };
+    getVerticalAxesTitle: null | ((dataKey: string | number) => string);
+    horizontalAxes: {
+      [dataKey: string | number]: string;
+    };
+    getHorizontalAxesTitle: null | ((dataKey: string | number) => string);
+    valuesAxes: {
+      [dataKey: string | number]: string;
+    };
+    getValueAxesTitle: null | ((dataKey: string | number) => string);
   };
   grid: {
     verticalAxes: number | null;
@@ -47,7 +58,7 @@ export type DataSummarizationConfig = {
   valuesLimit: number;
   groupsLimit: number;
   disable: boolean;
-  overrite: string | undefined;
+  override: string | undefined;
 };
 export type PartialDataSummarizationConfig = DeepPartial<DataSummarizationConfig>;
 
@@ -59,10 +70,17 @@ export const makeDataHintsContainer = (): DataStructureHints => ({
     values: new Set(),
   },
   groups: new Set(),
-  title: {
-    verticalAxes: null,
-    horizontalAxes: null,
-    values: {},
+  axesTitle: {
+    vertical: null,
+    horizontal: null,
+  },
+  titles: {
+    verticalAxes: {},
+    getVerticalAxesTitle: null,
+    horizontalAxes: {},
+    getHorizontalAxesTitle: null,
+    valuesAxes: {},
+    getValueAxesTitle: null,
   },
   grid: {
     verticalAxes: null,
@@ -73,12 +91,10 @@ export const makeDataHintsContainer = (): DataStructureHints => ({
 
 export const makeDataHintsHandlers = (mutableContainer: DataStructureHints) => {
   const handler = {
-    specifyDataRowFields: (x: string, y: string, value?: string) => {
-      mutableContainer.fields.verticalAxes.add(y);
-      mutableContainer.fields.horizontalAxes.add(x);
-      if (value) {
-        mutableContainer.fields.valueAxes.add(value);
-      }
+    specifyDataRowFields: (x?: string, y?: string, value?: string) => {
+      if (y) mutableContainer.fields.verticalAxes.add(y);
+      if (x) mutableContainer.fields.horizontalAxes.add(x);
+      if (value) mutableContainer.fields.valueAxes.add(value);
     },
     setupGrid: (direction: 'vertical' | 'horizontal', size: number) => {
       if (direction === 'horizontal') {
@@ -92,14 +108,28 @@ export const makeDataHintsHandlers = (mutableContainer: DataStructureHints) => {
     },
     describeValueEntity: (dataKey: string | number, readableName: string) => {
       mutableContainer.fields.values.add(dataKey);
-      handler.labelKey(dataKey, readableName);
+      handler.labelKey('value', dataKey, readableName);
     },
     describeGroupedValues: (groupKey: string | number, dataKey: string | number) => {
       mutableContainer.groups.add(groupKey);
       mutableContainer.fields.values.add(dataKey);
     },
-    labelKey: (dataKey: string | number, label: string) => {
-      mutableContainer.title.values[dataKey] = label;
+    labelKey: (
+      axes: 'vertical' | 'horizontal' | 'value',
+      dataKey: string | number,
+      label: string,
+    ) => {
+      if (axes === 'vertical') mutableContainer.titles.verticalAxes[dataKey] = label;
+      if (axes === 'horizontal') mutableContainer.titles.horizontalAxes[dataKey] = label;
+      if (axes === 'value') mutableContainer.titles.valuesAxes[dataKey] = label;
+    },
+    addKeyLabelGetter: (
+      axes: 'vertical' | 'horizontal' | 'value',
+      getter: (dataKey: string | number) => string,
+    ) => {
+      if (axes === 'vertical') mutableContainer.titles.getValueAxesTitle = getter;
+      if (axes === 'horizontal') mutableContainer.titles.getHorizontalAxesTitle = getter;
+      if (axes === 'value') mutableContainer.titles.getValueAxesTitle = getter;
     },
     setTitle: (describedDataAxes: 'vertical' | 'horizontal', title: string) => {
       if (
@@ -113,9 +143,9 @@ export const makeDataHintsHandlers = (mutableContainer: DataStructureHints) => {
         return;
       }
       if (describedDataAxes === 'horizontal') {
-        mutableContainer.title.horizontalAxes = title;
+        mutableContainer.axesTitle.horizontal = title;
       } else if (describedDataAxes === 'vertical') {
-        mutableContainer.title.verticalAxes = title;
+        mutableContainer.axesTitle.vertical = title;
       }
     },
   };
@@ -135,7 +165,7 @@ export const makeDataSummarizationConfig = (
   groupsLimit: 5,
   dataType: undefined,
   disable: false,
-  overrite: undefined,
+  override: undefined,
   ...(config ?? {}),
   trendTangens: {
     static: 1 / 15,

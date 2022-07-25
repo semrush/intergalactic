@@ -25,7 +25,7 @@ export const PlotA11yView: React.FC<A11yViewProps> = ({
     [providedData],
   );
   const keys = React.useMemo(() => {
-    let fromHints: string[] = [];
+    let fromHints: (string | number)[] = [];
     fromHints.push(...hints.fields.verticalAxes);
     fromHints.push(...hints.fields.horizontalAxes);
     fromHints.push(...hints.fields.valueAxes);
@@ -41,17 +41,17 @@ export const PlotA11yView: React.FC<A11yViewProps> = ({
   }, [data, hints]);
   const duplicatedBaseKeys = React.useMemo(() => {
     const baseKeys = keys
-      .filter((key) => !hints.title.values[key])
+      .filter((key) => !hints.titles.valuesAxes[key])
       .map((key) => {
-        if (hints.fields.verticalAxes.has(key) && hints.title.verticalAxes)
-          return [key, hints.title.verticalAxes];
-        if (hints.fields.horizontalAxes.has(key) && hints.title.horizontalAxes)
-          return [key, hints.title.horizontalAxes];
+        if (hints.fields.verticalAxes.has(key) && hints.axesTitle.vertical)
+          return [key, hints.axesTitle.vertical];
+        if (hints.fields.horizontalAxes.has(key) && hints.axesTitle.horizontal)
+          return [key, hints.axesTitle.horizontal];
       })
       .filter((entry) => entry !== undefined)
       .map((entry) => entry!);
     const doublicated: Record<string, true> = {};
-    const handled: Record<string, string> = {};
+    const handled: Record<string, string | number> = {};
     for (const [key, label] of baseKeys) {
       if (handled[label]) {
         doublicated[key] = true;
@@ -62,13 +62,13 @@ export const PlotA11yView: React.FC<A11yViewProps> = ({
     return doublicated;
   }, [keys, hints]);
   const renderTitle = React.useCallback(
-    (dataKey: string) => {
-      if (hints.title.values[dataKey]) return hints.title.values[dataKey];
+    (dataKey: string | number) => {
+      if (hints.titles.valuesAxes[dataKey]) return hints.titles.valuesAxes[dataKey];
       if (!duplicatedBaseKeys[dataKey]) {
-        if (hints.fields.verticalAxes.has(dataKey) && hints.title.verticalAxes)
-          return hints.title.verticalAxes;
-        if (hints.fields.horizontalAxes.has(dataKey) && hints.title.horizontalAxes)
-          return hints.title.horizontalAxes;
+        if (hints.fields.verticalAxes.has(dataKey) && hints.axesTitle.vertical)
+          return hints.axesTitle.vertical;
+        if (hints.fields.horizontalAxes.has(dataKey) && hints.axesTitle.horizontal)
+          return hints.axesTitle.horizontal;
       }
 
       return dataKey;
@@ -85,8 +85,8 @@ export const PlotA11yView: React.FC<A11yViewProps> = ({
       setGeneratingSummary(false);
       return;
     }
-    if (config.overrite) {
-      setSummary(config.overrite);
+    if (config.override) {
+      setSummary(config.override);
       setGeneratingSummary(false);
       return;
     }
@@ -162,16 +162,16 @@ export const PlotA11yView: React.FC<A11yViewProps> = ({
       <table id={`${id}-data-table`} tabIndex={0} ref={dataTableRef}>
         <thead>
           <tr>
-            {keys.map((key) => (
-              <th key={key}>{renderTitle(key)}</th>
+            {keys.map((key, index) => (
+              <th key={`${key}-${index}`}>{renderTitle(key)}</th>
             ))}
           </tr>
         </thead>
         <tbody>
-          {data.map((row) => (
-            <tr key={Object.values(row).join('-')}>
-              {keys.map((key) => (
-                <td key={key}>{formatValue(intl, row[key])}</td>
+          {data.map((row, index) => (
+            <tr key={Object.values(row).join('-') + '-' + index}>
+              {keys.map((key, index) => (
+                <td key={`${key}-${index}`}>{formatValue(intl, row[key])}</td>
               ))}
             </tr>
           ))}
