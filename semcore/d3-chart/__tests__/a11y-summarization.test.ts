@@ -355,7 +355,7 @@ describe('Plot a11y summarization', () => {
         },
       },
     };
-    const hints = {
+    const hints: DataStructureHints = {
       ...makeHints(),
       fields: {
         ...makeHints().fields,
@@ -365,9 +365,9 @@ describe('Plot a11y summarization', () => {
           'some_deep_field.with_real_data.C',
         ]),
       },
-      title: {
-        ...makeHints().title,
-        values: {
+      titles: {
+        ...makeHints().titles,
+        valuesAxes: {
           'some_deep_field.with_real_data.A': 'A',
           'some_deep_field.with_real_data.B': 'B',
           'some_deep_field.with_real_data.C': 'C',
@@ -413,7 +413,7 @@ describe('Plot a11y summarization', () => {
   CCAABB  DD
   EEE
 `);
-    const hints = {
+    const hints: DataStructureHints = {
       ...makeHints(),
       grid: {
         verticalAxes: 5,
@@ -435,12 +435,11 @@ describe('Plot a11y summarization', () => {
   EEE
     `);
 
-    const hints = {
+    const hints: DataStructureHints = {
       ...makeHints(),
-      title: {
-        ...makeHints().title,
-        horizontalAxes: 'horizontalAxes',
-        verticalAxes: 'verticalAxes',
+      axesTitle: {
+        horizontal: 'horizontalAxes',
+        vertical: 'verticalAxes',
       },
     };
     const { insights } = extractDataInsights(data, hints, makeConfig());
@@ -467,9 +466,9 @@ describe('Plot a11y summarization', () => {
       ...makeHints(),
       groups: new Set(['category']),
       dataType: 'grouped-values',
-      title: {
-        ...makeHints().title,
-        values: {
+      titles: {
+        ...makeHints().titles,
+        valuesAxes: {
           someValue: 'Some value',
           anotherValue: 'Another value',
         },
@@ -516,11 +515,11 @@ describe('Plot a11y summarization', () => {
       B: 200,
       C: 300,
     };
-    const hints = {
+    const hints: DataStructureHints = {
       ...makeHints(),
-      title: {
-        ...makeHints().title,
-        values: {
+      titles: {
+        ...makeHints().titles,
+        valuesAxes: {
           A: 'a-haha',
           B: 'b-anana',
           C: 'C-onan Doyle',
@@ -659,9 +658,9 @@ describe('Plot a11y summarization', () => {
 
   test('insights-extraction/data-title/from-horizaontal-title', () => {
     const data = [{}];
-    const hints = {
+    const hints: DataStructureHints = {
       ...makeHints(),
-      title: { ...makeHints().title, horizontalAxes: 'Hello world' },
+      axesTitle: { ...makeHints().axesTitle, horizontal: 'Hello world' },
     };
 
     const { dataTitle } = extractDataInsights(data, hints, makeConfig());
@@ -669,19 +668,21 @@ describe('Plot a11y summarization', () => {
   });
   test('insights-extraction/data-title/from-vertical-title', () => {
     const data = [{}];
-    const hints = { ...makeHints(), title: { ...makeHints().title, verticalAxes: 'Hello world' } };
+    const hints: DataStructureHints = {
+      ...makeHints(),
+      axesTitle: { ...makeHints().axesTitle, vertical: 'Hello world' },
+    };
 
     const { dataTitle } = extractDataInsights(data, hints, makeConfig());
     expect(dataTitle).toBe('Hello world');
   });
   test('insights-extraction/data-title/vertical-priority', () => {
     const data = [{}];
-    const hints = {
+    const hints: DataStructureHints = {
       ...makeHints(),
-      title: {
-        ...makeHints().title,
-        horizontalAxes: 'horizontalAxes',
-        verticalAxes: 'verticalAxes',
+      axesTitle: {
+        horizontal: 'horizontalAxes',
+        vertical: 'verticalAxes',
       },
     };
 
@@ -691,12 +692,11 @@ describe('Plot a11y summarization', () => {
 
   test('insights-extraction/data-title/vertical-priority', () => {
     const data = [{}];
-    const hints = {
+    const hints: DataStructureHints = {
       ...makeHints(),
-      title: {
-        ...makeHints().title,
-        horizontalAxes: 'horizontalAxes',
-        verticalAxes: 'verticalAxes',
+      axesTitle: {
+        horizontal: 'horizontalAxes',
+        vertical: 'verticalAxes',
       },
     };
 
@@ -751,7 +751,6 @@ describe('Plot a11y summarization', () => {
     expect(text.includes('Awesome data')).toBeTruthy();
     expect(text.includes('grow')).toBeTruthy();
     expect(text.includes('x')).toBeTruthy();
-    expect(text.includes('y')).toBeTruthy();
   });
 
   test('serizalizetion/insights-cut', () => {
@@ -806,7 +805,6 @@ describe('Plot a11y summarization', () => {
     expect(text.includes('Awesome data')).toBeTruthy();
     expect(text.includes('grow')).toBeTruthy();
     expect(text.includes('x')).toBeTruthy();
-    expect(text.includes('y')).toBeTruthy();
   });
 
   test('serizalizetion/locale-switch', () => {
@@ -873,40 +871,98 @@ describe('Plot a11y summarization', () => {
           { x: 14, y: 1.1 },
           { x: 15, y: 1.11 },
           { x: 16, y: 0 },
-          { x: 16, y: 0 },
-          { x: 16, y: 0 },
-          { x: 16, y: 0 },
-          { x: 16, y: 0 },
-          { x: 16, y: 0 },
-          { x: 16, y: 0 },
-          { x: 16, y: 0 },
-          { x: 17, y: -1 },
-          { x: 18, y: -2 },
-          { x: 19, y: -3 },
-          { x: 20, y: -4 },
-          { x: 21, y: -5 },
+          { x: 17, y: 0 },
+          { x: 18, y: 0 },
+          { x: 19, y: 0 },
+          { x: 20, y: 0 },
+          { x: 21, y: 0 },
           { x: 22, y: 0 },
           { x: 23, y: 0 },
-          { x: 24, y: 0 },
-          { x: 24, y: 0 },
-          { x: 24, y: 0 },
-          { x: 24, y: 0 },
-          { x: 24, y: 0 },
-          { x: 24, y: 0 },
-          { x: 25, y: -0.1 },
-          { x: 26, y: -0.2 },
-          { x: 27, y: -0.3 },
-          { x: 28, y: -0.4 },
-          { x: 29, y: -0.5 },
-          { x: 30, y: -0.6 },
+          { x: 24, y: -1 },
+          { x: 25, y: -2 },
+          { x: 26, y: -3 },
+          { x: 27, y: -4 },
+          { x: 28, y: -5 },
+          { x: 29, y: 0 },
+          { x: 30, y: 0 },
+          { x: 31, y: 0 },
+          { x: 32, y: 0 },
+          { x: 33, y: 0 },
+          { x: 34, y: 0 },
+          { x: 35, y: 0 },
+          { x: 36, y: 0 },
+          { x: 37, y: -0.1 },
+          { x: 38, y: -0.2 },
+          { x: 39, y: -0.3 },
+          { x: 40, y: -0.4 },
+          { x: 41, y: -0.5 },
+          { x: 42, y: -0.6 },
         ],
-        { ...makeHints(), title: { ...makeHints().title, horizontalAxes: 'Awesome chart' } },
+        { ...makeHints(), axesTitle: { ...makeHints().axesTitle, horizontal: 'Awesome chart' } },
         makeConfig(),
       ),
       makeConfig(),
       locale,
     );
 
+    serialize(
+      extractDataInsights(
+        [
+          { x: 0, y: 0 },
+          { x: 1, y: -0.25 },
+          { x: 2, y: -0.5 },
+          { x: 3, y: -0.75 },
+          { x: 4, y: -1 },
+        ],
+        {
+          ...makeHints(),
+          dataType: 'time-series',
+          axesTitle: { ...makeHints().axesTitle, horizontal: 'Awesome chart' },
+        },
+        makeConfig(),
+      ),
+      makeConfig(),
+      locale,
+    );
+
+    serialize(
+      extractDataInsights(
+        [
+          { x: 0, y: 0 },
+          { x: 1, y: 0.1 },
+          { x: 2, y: 0.2 },
+          { x: 3, y: 0.3 },
+          { x: 4, y: 0.4 },
+        ],
+        {
+          ...makeHints(),
+          dataType: 'time-series',
+          axesTitle: { ...makeHints().axesTitle, horizontal: 'Awesome chart' },
+        },
+        makeConfig(),
+      ),
+      makeConfig(),
+      locale,
+    );
+    serialize(
+      extractDataInsights(
+        [
+          { x: 0, y: 0 },
+          { x: 1, y: -1 },
+          { x: 2, y: -2 },
+          { x: 3, y: -3 },
+          { x: 4, y: -4 },
+        ],
+        {
+          ...makeHints(),
+          dataType: 'time-series',
+          axesTitle: { ...makeHints().axesTitle, horizontal: 'Awesome chart' },
+        },
+        makeConfig(),
+      ),
+      makeConfig(),
+      locale,
+    );
     serialize(
       extractDataInsights(
         [
@@ -919,7 +975,7 @@ describe('Plot a11y summarization', () => {
         {
           ...makeHints(),
           dataType: 'time-series',
-          title: { ...makeHints().title, horizontalAxes: 'Awesome chart' },
+          axesTitle: { ...makeHints().axesTitle, horizontal: 'Awesome chart' },
         },
         makeConfig(),
       ),
@@ -938,7 +994,7 @@ describe('Plot a11y summarization', () => {
         {
           ...makeHints(),
           dataType: 'time-series',
-          title: { ...makeHints().title, horizontalAxes: 'Awesome chart' },
+          axesTitle: { ...makeHints().axesTitle, horizontal: 'Awesome chart' },
         },
         makeConfig(),
       ),
@@ -957,7 +1013,7 @@ describe('Plot a11y summarization', () => {
         {
           ...makeHints(),
           dataType: 'time-series',
-          title: { ...makeHints().title, horizontalAxes: 'Awesome chart' },
+          axesTitle: { ...makeHints().axesTitle, horizontal: 'Awesome chart' },
         },
         makeConfig(),
       ),
@@ -976,7 +1032,7 @@ describe('Plot a11y summarization', () => {
         {
           ...makeHints(),
           dataType: 'time-series',
-          title: { ...makeHints().title, horizontalAxes: 'Awesome chart' },
+          axesTitle: { ...makeHints().axesTitle, horizontal: 'Awesome chart' },
         },
         makeConfig(),
       ),

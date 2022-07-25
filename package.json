@@ -19,9 +19,9 @@
     "preinstall": "node ./.ci/update-workspaces-list",
     "publish:website": "tsm --require=./.ci/tsm-filter-warnings.js ./.ci/trigger-website-publish.ts",
     "prepare": "husky install",
-    "i18n:submit": "crowdin upload",
-    "i18n:status": "crowdin status",
-    "i18n:download": "crowdin download"
+    "i18n:submit": "yarn crowdin upload",
+    "i18n:status": "yarn crowdin status",
+    "i18n:download": "yarn crowdin download"
   },
   "private": true,
   "workspace-sources": {

@@ -233,12 +233,36 @@ class AxisRoot extends Component {
 }
 
 function Ticks(props) {
-  const { Element: STick, styles, scale, ticks, position, hide, indexScale } = props;
+  const {
+    Element: STick,
+    styles,
+    scale,
+    ticks,
+    position,
+    hide,
+    indexScale,
+    dataHintsHandler,
+    children,
+  } = props;
 
   const pos = MAP_POSITION_TICK[position] ?? MAP_POSITION_TICK[MAP_INDEX_SCALE_SYMBOL[indexScale]];
   const positionClass = MAP_POSITION_TICK[position] ? position : 'custom_' + indexScale;
 
+  if (typeof children === 'function') {
+    const labelGetter = (value) => {
+      const result = children({ value });
+      return result.value ?? result.children;
+    };
+    if (position === 'left' || position === 'right') {
+      dataHintsHandler.addKeyLabelGetter('vertical', labelGetter);
+    } else if (position === 'top' || position === 'bottom') {
+      dataHintsHandler.addKeyLabelGetter('horizontal', labelGetter);
+    }
+  }
+
   return ticks.map((value, i) => {
+    const displayValue = renderValue(value);
+
     return sstyled(styles)(
       <STick
         aria-hidden
@@ -252,7 +276,7 @@ function Ticks(props) {
         hide={hide}
         {...pos(scale, value, position)}
       >
-        {renderValue(value)}
+        {displayValue}
       </STick>,
     );
   });
