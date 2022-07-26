@@ -3,7 +3,7 @@
 # docker build -t intergalactic-site . &&  docker rm intergalactic-site ; docker run -p 8080:8080 --name intergalactic-site intergalactic-site
 # ###
 
-FROM node AS builder
+FROM node:16-alpine AS builder
 
 WORKDIR /app
 
