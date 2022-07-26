@@ -132,7 +132,7 @@ export const makeDataHintsHandlers = (mutableContainer: DataStructureHints) => {
       axes: 'vertical' | 'horizontal' | 'value',
       getter: (dataKey: string | number) => string,
     ) => {
-      if (axes === 'vertical') mutableContainer.titles.getValueAxesTitle = getter;
+      if (axes === 'vertical') mutableContainer.titles.getVerticalAxesTitle = getter;
       if (axes === 'horizontal') mutableContainer.titles.getHorizontalAxesTitle = getter;
       if (axes === 'value') mutableContainer.titles.getValueAxesTitle = getter;
     },
