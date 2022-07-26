@@ -36,6 +36,10 @@ export type DataStructureHints = {
     verticalAxes: number | null;
     horizontalAxes: number | null;
   };
+  pointsDensity: {
+    verticalAxes: number;
+    horizontalAxes: number;
+  } | null;
   dataType: SerializableDataType | null;
 };
 export type DataSummarizationConfig = {
@@ -87,6 +91,7 @@ export const makeDataHintsContainer = (): DataStructureHints => ({
     horizontalAxes: null,
   },
   dataType: null,
+  pointsDensity: null,
 });
 
 export const makeDataHintsHandlers = (mutableContainer: DataStructureHints) => {
@@ -147,6 +152,9 @@ export const makeDataHintsHandlers = (mutableContainer: DataStructureHints) => {
       } else if (describedDataAxes === 'vertical') {
         mutableContainer.axesTitle.vertical = title;
       }
+    },
+    setPointsDensity: (horizontalAxes: number, verticalAxes: number) => {
+      mutableContainer.pointsDensity = { verticalAxes, horizontalAxes };
     },
   };
   return handler;
