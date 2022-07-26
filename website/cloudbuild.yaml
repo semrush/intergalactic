@@ -7,7 +7,7 @@ steps:
   - name: gcr.io/cloud-builders/docker
     args:
       - build
-      - --t=$_GCR_HOSTNAME/$PROJECT_ID/$REPO_NAME/$_SERVICE_NAME:$COMMIT_SHA
+      - --tag=$_GCR_HOSTNAME/$PROJECT_ID/$REPO_NAME/$_SERVICE_NAME:$COMMIT_SHA
       - --file=website/Dockerfile
       - .
   - name: gcr.io/cloud-builders/docker
