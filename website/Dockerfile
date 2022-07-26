@@ -9,9 +9,9 @@ WORKDIR /app
 
 COPY ./ ./
 
-RUN yarn install --production --silent --non-interactive --frozen-lockfile
+RUN yarn install --silent --non-interactive --frozen-lockfile
 RUN yarn build:icons
-RUN yarn install --production --silent --non-interactive --frozen-lockfile --cwd website
+RUN yarn install --silent --non-interactive --frozen-lockfile --cwd website
 RUN yarn build --cwd website
 
 FROM nginx:alpine
