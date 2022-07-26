@@ -7,6 +7,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### Added
 
 - Introduced charts accessibility module.
+
 ## [2.2.7] - 2022-08-18
 
 ### Changed
