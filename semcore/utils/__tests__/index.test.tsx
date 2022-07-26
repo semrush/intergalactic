@@ -209,15 +209,35 @@ describe('Utils CSS in JS', () => {
       },
     );
 
+    const spy4 = jest.fn();
+    const spy5 = jest.fn();
+    const result4 = assignProps(
+      {
+        onClick: spy4,
+      },
+      {
+        onClick: spy5,
+      },
+    );
+
     result1.onClick();
     result2.onClick();
     result3.onClick();
-    expect(result1.onClick).not.toEqual(spy1);
-    expect(spy1).toBeCalledTimes(2);
+    result4.onClick();
+
+    expect(spy1).toBeCalledTimes(1);
+    expect(result1.onClick).toEqual(spy1);
+
     expect(spy2).toBeCalledTimes(1);
     expect(result2.onClick).toEqual(spy2);
+
     expect(spy3).toBeCalledTimes(1);
     expect(result3.onClick).toEqual(spy3);
+
+    expect(spy4).toBeCalledTimes(1);
+    expect(spy5).toBeCalledTimes(1);
+    expect(result1.onClick).not.toEqual(spy4);
+    expect(result1.onClick).not.toEqual(spy5);
   });
 
   test('Utils assignHandlers', () => {
