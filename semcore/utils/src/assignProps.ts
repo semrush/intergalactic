@@ -2,6 +2,8 @@ import { CSSProperties, Ref } from 'react';
 import cn from 'classnames';
 import { forkRef } from './ref';
 
+const handlerRex = new RegExp(/^on[A-Z]+/);
+
 export function callAllEventHandlers(...fns) {
   return (...args) =>
     !fns.some((fn) => {
@@ -15,7 +17,7 @@ export function callAllEventHandlers(...fns) {
 
 export function assignHandlers(props, source) {
   return Object.keys(source).reduce((proxySource, propName) => {
-    if (typeof source[propName] === 'function' && propName.startsWith('on')) {
+    if (typeof source[propName] === 'function' && handlerRex.test(propName)) {
       proxySource[propName] = callAllEventHandlers(props[propName], source[propName]);
     }
     return proxySource;
@@ -28,7 +30,8 @@ function assignHandlersInner(props, source) {
       propName !== 'ref' &&
       typeof source[propName] === 'function' &&
       typeof props[propName] === 'function' &&
-      propName.startsWith('on')
+      handlerRex.test(propName) &&
+      props[propName] !== source[propName]
     ) {
       proxySource[propName] = callAllEventHandlers(props[propName], source[propName]);
     }
