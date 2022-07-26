@@ -1,75 +1,66 @@
 substitutions:
-  _APP_VERSION: 0.0.2
+  _SERVICE_NAME: intergalactic
+  _DEPLOY_REGION: us-central1
+  _GCR_HOSTNAME: us.gcr.io
+
 steps:
-  - name: node:16
-    entrypoint: yarn
-    args: ['--non-interactive', '--frozen-lockfile']
-  - name: node:16
-    entrypoint: yarn
-    args: ['build:icons']
-  - name: node:16
-    entrypoint: yarn
-    args: ['--non-interactive', '--frozen-lockfile', '--cwd', 'website']
-  - name: node:16
-    entrypoint: yarn
-    args: ['build']
-    dir: 'website'
-  - name: 'gcr.io/cloud-builders/docker'
+  - name: gcr.io/cloud-builders/docker
     args:
-      - 'build'
-      - '--build-arg'
-      - 'APP_VERSION=${_APP_VERSION}'
-      - '-t'
-      - 'us-east4-docker.pkg.dev/intergalactic-prod-tf/intergalactic-docker/intergalactic:${_APP_VERSION}'
-      - '-f'
-      - 'website/Dockerfile'
-      - 'website/'
-  - name: 'gcr.io/cloud-builders/docker'
+      - build
+      - -t
+      - $_GCR_HOSTNAME/$PROJECT_ID/$REPO_NAME/$_SERVICE_NAME:$COMMIT_SHA
+      - -f
+      - website/Dockerfile
+      - .
+  - name: gcr.io/cloud-builders/docker
     args:
-      - 'build'
-      - '--build-arg'
-      - 'APP_VERSION=${_APP_VERSION}'
-      - '-t'
-      - 'us-east4-docker.pkg.dev/intergalactic-prod-tf/intergalactic-docker/intergalactic:${_APP_VERSION}-${SHORT_SHA}'
-      - '-f'
-      - 'website/Dockerfile'
-      - 'website/'
-  - name: 'gcr.io/cloud-builders/docker'
+      - push
+      - $_GCR_HOSTNAME/$PROJECT_ID/$REPO_NAME/$_SERVICE_NAME:$COMMIT_SHA
+  - name: gcr.io/google.com/cloudsdktool/cloud-sdk:slim
     args:
-      - 'push'
-      - 'us-east4-docker.pkg.dev/intergalactic-prod-tf/intergalactic-docker/intergalactic:${_APP_VERSION}'
-  - name: 'gcr.io/cloud-builders/docker'
-    args:
-      - 'push'
-      - 'us-east4-docker.pkg.dev/intergalactic-prod-tf/intergalactic-docker/intergalactic:${_APP_VERSION}-${SHORT_SHA}'
-  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
-    entrypoint: gcloud
-    args:
-      [
-        'beta',
-        'run',
-        'deploy',
-        'intergalactic-docker',
-        '--image',
-        'us-east4-docker.pkg.dev/intergalactic-prod-tf/intergalactic-docker/intergalactic:${_APP_VERSION}-${SHORT_SHA}',
-        '--region',
-        'us-east4',
-        '--platform',
-        'managed',
-        '--min-instances',
-        '1',
-        '--max-instances',
-        '5',
-        '--ingress',
-        'internal-and-cloud-load-balancing',
-      ]
-  - name: node:16
-    entrypoint: yarn
-    args: ['upload-search-index']
-    dir: 'website'
-    env:
-      - 'ALGOLIA_SECRET_KEY=$_ALGOLIA_SECRET_KEY'
+      - run
+      - services
+      - update
+      - $_SERVICE_NAME
+      - --platform=managed
+      - --image=$_GCR_HOSTNAME/$PROJECT_ID/$REPO_NAME/$_SERVICE_NAME:$COMMIT_SHA
+      - --region=$_DEPLOY_REGION
+      - --quiet
+
+#  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+#    entrypoint: gcloud
+#    args:
+#      [
+#        'beta',
+#        'run',
+#        'deploy',
+#        'intergalactic-docker',
+#        '--image',
+#        'us-east4-docker.pkg.dev/intergalactic-prod-tf/intergalactic-docker/intergalactic:${_APP_VERSION}-${SHORT_SHA}',
+#        '--region',
+#        'us-east4',
+#        '--platform',
+#        'managed',
+#        '--min-instances',
+#        '1',
+#        '--max-instances',
+#        '5',
+#        '--ingress',
+#        'internal-and-cloud-load-balancing',
+#      ]
+#  - name: node:16
+#    entrypoint: yarn
+#    args: ['upload-search-index']
+#    dir: 'website'
+#    env:
+#      - 'ALGOLIA_SECRET_KEY=$_ALGOLIA_SECRET_KEY'
 
 timeout: 3600s
-options:
-  machineType: 'N1_HIGHCPU_8'
+#options:
+#  machineType: 'N1_HIGHCPU_8'
+
+#steps:
+#
+#
+#    id: Deploy
+#    entrypoint: gcloud
