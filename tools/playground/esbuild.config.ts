@@ -6,7 +6,7 @@ import picocolros from 'picocolors';
 
 /* eslint-disable no-console */
 
-const port = 8080;
+const port = 2077;
 
 esbuild
   .serve(
@@ -31,7 +31,7 @@ esbuild
     },
   )
   .then(() => {
-    console.log(picocolros.green(`\nStarted on http://localhost:${port}\n`));
+    console.log('\nStrarted on ' + picocolros.yellow(`http://localhost:${port}` + '\n'));
   })
   .catch((err) => {
     console.error(err);
