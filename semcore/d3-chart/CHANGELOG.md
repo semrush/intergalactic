@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.3.0-beta.0] - unreleased
+
+### Added
+
+- Introduced charts accessibility module.
+
 ## [2.2.3] - 2022-07-22
 
 ### Changed
