@@ -31,3 +31,9 @@ SPlotA11yView a {
   margin-bottom: 8px;
   display: block;
 }
+
+SPlotA11yView table,
+SPlotA11yView td,
+SPlotA11yView th {
+  border: 1px solid black;
+}
