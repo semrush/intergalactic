@@ -56,6 +56,15 @@ class PlotRoot extends Component {
 
   setContext() {
     const { scale, data, width, height } = this.asProps;
+
+    const yScaleDomain = scale?.[1]?.domain?.();
+    if (yScaleDomain) {
+      this.dataHintsHandler.setPointsDensity(
+        data.length / width,
+        Math.abs(yScaleDomain[1] - yScaleDomain[0]) / height,
+      );
+    }
+
     return {
       $rootProps: {
         size: [width, height],
