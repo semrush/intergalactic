@@ -3,27 +3,25 @@
 # docker build -t intergalactic-site . &&  docker rm intergalactic-site ; docker run -p 8080:8080 --name intergalactic-site intergalactic-site
 # ###
 
-FROM nginx:stable-alpine
-RUN apk add --no-cache bash
-RUN apk add --no-cache python3 g++ make
-RUN apk add --update npm yarn
+FROM node AS builder
 
 WORKDIR /app
 
-COPY ./docker-entrypoint.sh ./docker-entrypoint.sh
-RUN chmod +x ./docker-entrypoint.sh
+COPY ./ ./
 
-COPY ./server ./server
-COPY ./dist ./dist
-
-COPY ./server/package.json ./package.json
-COPY ./server/yarn.lock ./yarn.lock
 RUN yarn install --production --silent --non-interactive --frozen-lockfile
+RUN yarn build:icons
+RUN yarn install --production --silent --non-interactive --frozen-lockfile --cwd website
+RUN yarn build --cwd website
 
-COPY ./dist /app/static
+FROM nginx:alpine
 
-COPY ./nginx.conf /etc/nginx/nginx.conf
+WORKDIR /app
+
+COPY ./website/nginx.conf /etc/nginx/nginx.conf
+
+COPY --from=builder /app/website/dist ./static
 
 EXPOSE 8080
 
-CMD ["./docker-entrypoint.sh"]
+CMD ["nginx", "-g", "daemon off;"]
