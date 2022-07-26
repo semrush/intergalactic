@@ -2,7 +2,7 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [2.3.0-beta.0] - unreleased
+## [2.3.0-0] - unreleased
 
 ### Added
 
