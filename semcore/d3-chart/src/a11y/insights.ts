@@ -167,7 +167,8 @@ export const extractDataInsights = (
         const longMovingAverageSize = config.movingAverage.longSize ?? frameSize;
         const shortMovingAverageSize = config.movingAverage.shortSize ?? Math.sqrt(frameSize);
         const longMovingAverage = movingAverage(values, longMovingAverageSize);
-        const shortMovingAverage = movingAverage(values, shortMovingAverageSize);
+        const shortMovingAverage =
+          values.length < 8 ? values : movingAverage(values, shortMovingAverageSize);
 
         const table = [];
         for (const i in values) {
@@ -205,7 +206,10 @@ export const extractDataInsights = (
           type: 'general-trend' | 'trend';
         }): GeneralTrendNode | TrendNode | undefined => {
           for (let i = 0; i < trendStrengths.length; i++) {
-            const tang = Math.abs(value.from - value.to) / width;
+            const normalizedHeight =
+              Math.abs(value.from - value.to) / (hints.pointsDensity?.verticalAxes ?? 1);
+            const normalizedWidth = width / (hints.pointsDensity?.horizontalAxes ?? 1);
+            const tang = normalizedHeight / normalizedWidth;
             const trendStrength = trendStrengths[i];
             if (tang <= config.trendTangens[trendStrength] || i === trendStrengths.length - 1) {
               const strength =
