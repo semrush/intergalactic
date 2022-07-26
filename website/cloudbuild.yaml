@@ -7,26 +7,33 @@ steps:
   - name: gcr.io/cloud-builders/docker
     args:
       - build
-      - -t
-      - $_GCR_HOSTNAME/$PROJECT_ID/$REPO_NAME/$_SERVICE_NAME:$COMMIT_SHA
-      - -f
-      - website/Dockerfile
+      - --t=$_GCR_HOSTNAME/$PROJECT_ID/$REPO_NAME/$_SERVICE_NAME:$COMMIT_SHA
+      - --file=website/Dockerfile
       - .
   - name: gcr.io/cloud-builders/docker
     args:
       - push
       - $_GCR_HOSTNAME/$PROJECT_ID/$REPO_NAME/$_SERVICE_NAME:$COMMIT_SHA
-  - name: gcr.io/google.com/cloudsdktool/cloud-sdk:slim
+  - name: gcr.io/cloud-builders/gcloud
     args:
       - run
-      - services
-      - update
+      - deploy
       - $_SERVICE_NAME
-      - --platform=managed
       - --image=$_GCR_HOSTNAME/$PROJECT_ID/$REPO_NAME/$_SERVICE_NAME:$COMMIT_SHA
       - --region=$_DEPLOY_REGION
-      - --quiet
-
+#  - name: gcr.io/google.com/cloudsdktool/cloud-sdk:slim
+#    args:
+#      - run
+#      - services
+#      - update
+#      - $_SERVICE_NAME
+#      - --platform=managed
+#      - --image=$_GCR_HOSTNAME/$PROJECT_ID/$REPO_NAME/$_SERVICE_NAME:$COMMIT_SHA
+#      - --region=$_DEPLOY_REGION
+#      - --quiet
+#    entrypoint: gcloud
+images:
+  - $_GCR_HOSTNAME/$PROJECT_ID/$REPO_NAME/$_SERVICE_NAME:$COMMIT_SHA
 #  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
 #    entrypoint: gcloud
 #    args:
@@ -56,9 +63,8 @@ steps:
 #      - 'ALGOLIA_SECRET_KEY=$_ALGOLIA_SECRET_KEY'
 
 timeout: 3600s
-#options:
-#  machineType: 'N1_HIGHCPU_8'
-
+options:
+  machineType: 'N1_HIGHCPU_8'
 #steps:
 #
 #
