@@ -635,11 +635,13 @@ describe('Plot a11y summarization', () => {
       { x: 10, y: 1 },
     ];
     const { dataRange } = extractDataInsights(data, makeHints(), makeConfig());
-    expect(dataRange).toEqual({
-      from: 0,
-      to: 10,
-      label: 'x',
-    });
+    expect(dataRange).toEqual([
+      {
+        from: 0,
+        to: 10,
+        label: 'x',
+      },
+    ]);
   });
 
   test('insights-extraction/data-range/cloud-points', () => {
@@ -648,12 +650,7 @@ describe('Plot a11y summarization', () => {
   `);
 
     const { dataRange } = extractDataInsights(data, makeHints(), makeConfig());
-    expect(dataRange).toEqual({
-      // not sure data range from and to is needed
-      from: 4,
-      to: 20,
-      label: null,
-    });
+    expect(dataRange).toEqual([]);
   });
 
   test('insights-extraction/data-title/from-horizaontal-title', () => {
@@ -741,7 +738,7 @@ describe('Plot a11y summarization', () => {
     ];
     const dataTitle = 'Awesome data';
     const dataType = 'time-series';
-    const dataRange: AnalyzedData['dataRange'] = { from: 0, to: 10, label: 'x' };
+    const dataRange: AnalyzedData['dataRange'] = [{ from: 0, to: 10, label: 'x' }];
     const text = serialize({ insights, dataType, dataRange, dataTitle }, makeConfig(), {
       locale: 'en',
     });
@@ -766,7 +763,7 @@ describe('Plot a11y summarization', () => {
       }));
     const dataTitle = 'Awesome data';
     const dataType = 'time-series';
-    const dataRange: AnalyzedData['dataRange'] = { from: 0, to: 120, label: 'x' };
+    const dataRange: AnalyzedData['dataRange'] = [{ from: 0, to: 120, label: 'x' }];
     const text = serialize({ insights, dataType, dataRange, dataTitle }, makeConfig(), {
       locale: 'en',
     });
@@ -796,7 +793,7 @@ describe('Plot a11y summarization', () => {
     ];
     const dataTitle = 'Awesome data';
     const dataType = 'time-series';
-    const dataRange: AnalyzedData['dataRange'] = { from: 0, to: 10, label: 'x' };
+    const dataRange: AnalyzedData['dataRange'] = [{ from: 0, to: 10, label: 'x' }];
     const locale = { locale: 'en' };
     const text = serialize({ insights, dataType, dataRange, dataTitle }, makeConfig(), locale);
 
@@ -820,7 +817,7 @@ describe('Plot a11y summarization', () => {
     ];
     const dataTitle = 'Awesome data';
     const dataType = 'time-series';
-    const dataRange: AnalyzedData['dataRange'] = { from: 0, to: 10, label: 'x' };
+    const dataRange: AnalyzedData['dataRange'] = [{ from: 0, to: 10, label: 'x' }];
 
     const locale = { locale: 'ES', translations: { ES: {} } };
     for (const messageId in translations.en) {
@@ -1118,6 +1115,24 @@ describe('Plot a11y summarization', () => {
       locale,
     );
 
+    serialize(
+      extractDataInsights(
+        [
+          { y: 1, b: 1 },
+          { y: 1, b: 2 },
+          { y: 1, b: 3 },
+          { y: 1, b: 4 },
+          { y: 1, b: 5 },
+          { y: 1, b: 6 },
+          { y: 1, b: 7 },
+          { y: 1, b: 8 },
+        ],
+        makeHints(),
+        makeConfig(),
+      ),
+      makeConfig(),
+      locale,
+    );
     serialize(
       extractDataInsights(
         {
