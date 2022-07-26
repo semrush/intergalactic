@@ -132,7 +132,7 @@ const formatValuesList = (
 };
 
 export const serialize = (
-  { insights, dataType, dataRange, dataTitle }: AnalyzedData,
+  { insights, dataType, dataRange, dataTitle, entitiesCount }: AnalyzedData,
   {
     datesWithTime,
     maxListSymbols,
@@ -177,7 +177,6 @@ export const serialize = (
       trendsByDataKey[insight.dataKey].push(insight);
     }
 
-    const entitiesCount = Object.keys(trendsByDataKey).length;
     const entities = intl.formatMessage(
       { id: 'entity-type-time-series' },
       { count: entitiesCount },
@@ -252,11 +251,11 @@ export const serialize = (
       maxSize === minSize
         ? intl.formatMessage(
             { id: 'entity-type-clusters-single-size' },
-            { count: insights.length, size: maxSize },
+            { count: entitiesCount, size: maxSize },
           )
         : intl.formatMessage(
             { id: 'entity-type-clusters-multiple-size' },
-            { count: insights.length, maxSize, minSize },
+            { count: entitiesCount, maxSize, minSize },
           );
     const entitiesList = biggestClusters.map((clusterInsight) => {
       const labels = formatLimitedSizeList(clusterInsight.labels, intl, maxListSymbols);
@@ -296,10 +295,7 @@ export const serialize = (
     return summary;
   } else if (dataType === 'values-set') {
     const [valuesInsight] = insights as [ComparisonNode];
-    const entities = intl.formatMessage(
-      { id: 'entity-type-values' },
-      { count: valuesInsight.values.length },
-    );
+    const entities = intl.formatMessage({ id: 'entity-type-values' }, { count: entitiesCount });
     const entitiesList = formatValuesList(valuesInsight.values, {
       intl,
       limit: valuesLimit,
