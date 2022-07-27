@@ -1,6 +1,7 @@
 # ###
 # Dev instance start:
-# docker build -t intergalactic-site . &&  docker rm intergalactic-site ; docker run -p 8080:8080 --name intergalactic-site intergalactic-site
+# > call from project root
+### docker build -t intergalactic-site -f website/Dockerfile . &&  docker rm intergalactic-site ; docker run -p 8080:8080 --name intergalactic-site intergalactic-site
 # ###
 
 FROM node:16-alpine AS builder
