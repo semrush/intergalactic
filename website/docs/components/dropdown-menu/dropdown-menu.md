@@ -8,32 +8,32 @@ tabName: Design
 
 > 💡 See description of trigger and examples in [Select/Multiselect](/components/select/).
 
-**DropdownMenu** is a component for displaying the dropdown list and its nested items.
+**DropdownMenu** is a component for displaying the list of options and their nested items.
 
-@## Sizes of the list
+@## Sizes
 
-The list has two sizes.
+DropdownMenu has two sizes.
 
-| L                                                  | M                                                  |
-| -------------------------------------------------- | -------------------------------------------------- |
-| ![dropdown-paddings-l-size](static/dropdown-l.png) | ![dropdown-paddings-m-size](static/dropdown-m.png) |
+| Size | Appearance example                                 |
+| ---- | -------------------------------------------------- |
+| M    | ![DropdownMenu with M size](static/dropdown-m.png) |
+| L    | ![DropdownMenu with L size](static/dropdown-l.png) |
 
-@## Container width and height
+### Width and height
 
-- The width of the dropdown list may be defined by the maximum width of the trigger or it can be extended to match the longest item in the list.
-- The recommended maximum height of the dropdown list with search is seven items. **If there are more items in the list, the dropdown must have a scroll.**
-- You should not limit the list height in dropdown with a list of different links and controls. In this case, it is important to show all possible options to the user.
+| Case                       | Example                                                                                           | Description                                                                                                                                                                      |
+| -------------------------- | ------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Trigger width              | ![Dropdown has width of the trigger](static/trigger-dropdown.png)                                 | The width of the dropdown can be defined by the maximum width of the trigger.                                                                                                    |
+| Width of the longest item  | ![Dropdown's width is defined by the longest item in the list](static/trigger-dropdown-width.png) | The width of the dropdown can be defined by the longest item in the list.                                                                                                        |
+| Maximum height of the list | ![DropdownMenu gets scroll with more than seven items in the list](static/dropdown-height.png)    | The recommended maximum height of the dropdown list with search is seven items. **If there are more items in the list, the dropdown gets scroll and a fader for the last item.** |
 
-|                           | Example                                                           |
-| ------------------------- | ----------------------------------------------------------------- |
-| Trigger width             | ![trigger-dropdown-width](static/trigger-dropdown.png)            |
-| Width of the longest item | ![trigger-dropdown-item-width](static/trigger-dropdown-width.png) |
+If you use DropdownMenu for a list of links and controls (like menu), do not limit the dropdown's height. It is important for such cases to show all possible options to the user.
 
-@## Container positioning
+@## DropdownMenu position
 
-The list of selects always drops down, regardless of whether there is space or not. This behavior is necessary, for example, for a clear control of the select from the keyboard.
+The list always drops down, regardless of whether there is space or not under its trigger. This behavior is necessary, for example, for a understandible control of the select from the keyboard.
 
-@## States of the list
+@## States
 
 One of the items in the dropdown list may be input with search. **When you open the list, the focus is immediately placed to the input.**
 
