@@ -59,14 +59,11 @@ function RootPlugin({ types: t }, opts) {
               id: propsIdent,
               init: propsVal,
             });
-
+            const nameJSX = refP.container.id?.name || refP.container.name?.name;
             refP.scope.path.traverse({
               JSXElement(p) {
-                if (
-                  (refP.container.id?.name || refP.container.name?.name) !==
-                  p.node.openingElement.name.name
-                )
-                  return;
+                if (nameJSX !== p.node.openingElement.name.name) return;
+
                 let name = t.StringLiteral('div');
 
                 p.node.openingElement.attributes = [
