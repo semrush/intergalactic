@@ -1,6 +1,6 @@
 substitutions:
   _SERVICE_NAME: intergalactic
-  _GCR_HOSTNAME: us.gcr.io
+  _GCR_HOSTNAME: us-east4-docker.pkg.dev
 
 steps:
   - id: 'Build docker'
