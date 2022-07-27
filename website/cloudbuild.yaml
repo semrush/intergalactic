@@ -21,6 +21,7 @@ steps:
       - $_SERVICE_NAME
       - --image=$_GCR_HOSTNAME/$PROJECT_ID/$REPO_NAME/$_SERVICE_NAME:$COMMIT_SHA
       - --region=$_DEPLOY_REGION
+      - --labels=gcb-trigger-id=$_TRIGGER_ID
 #  - name: gcr.io/google.com/cloudsdktool/cloud-sdk:slim
 #    args:
 #      - run
