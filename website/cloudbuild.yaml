@@ -24,6 +24,10 @@ steps:
       - --image=$_GCR_HOSTNAME/$PROJECT_ID/$REPO_NAME/$_SERVICE_NAME:$COMMIT_SHA
       - --region=$_DEPLOY_REGION
       - --labels=gcb-trigger-id=$_TRIGGER_ID
+  - id: 'Install dependency'
+    name: node:16
+    entrypoint: yarn
+    dir: website
   - id: 'Update search'
     name: node:16
     entrypoint: yarn
