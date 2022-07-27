@@ -3,19 +3,19 @@ substitutions:
   _GCR_HOSTNAME: us.gcr.io
 
 steps:
-  - id: 'Build'
+  - id: 'Build docker'
     name: gcr.io/cloud-builders/docker
     args:
       - build
       - --tag=$_GCR_HOSTNAME/$PROJECT_ID/$REPO_NAME/$_SERVICE_NAME:$COMMIT_SHA
       - --file=website/Dockerfile
       - .
-  - id: 'Push'
+  - id: 'Push docker'
     name: gcr.io/cloud-builders/docker
     args:
       - push
       - $_GCR_HOSTNAME/$PROJECT_ID/$REPO_NAME/$_SERVICE_NAME:$COMMIT_SHA
-  - id: 'Deploy'
+  - id: 'Deploy docker'
     name: gcr.io/cloud-builders/gcloud
     args:
       - run
@@ -24,6 +24,13 @@ steps:
       - --image=$_GCR_HOSTNAME/$PROJECT_ID/$REPO_NAME/$_SERVICE_NAME:$COMMIT_SHA
       - --region=$_DEPLOY_REGION
       - --labels=gcb-trigger-id=$_TRIGGER_ID
+  - id: 'Update search'
+    name: node:16
+    entrypoint: yarn
+    args: ['upload-search-index']
+    dir: website
+    env:
+      - ALGOLIA_SECRET_KEY=$_ALGOLIA_SECRET_KEY
 images:
   - $_GCR_HOSTNAME/$PROJECT_ID/$REPO_NAME/$_SERVICE_NAME:$COMMIT_SHA
 timeout: 3600s
