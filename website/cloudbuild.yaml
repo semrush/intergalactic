@@ -4,17 +4,20 @@ substitutions:
   _GCR_HOSTNAME: us.gcr.io
 
 steps:
-  - name: gcr.io/cloud-builders/docker
+  - id: 'Build'
+    name: gcr.io/cloud-builders/docker
     args:
       - build
       - --tag=$_GCR_HOSTNAME/$PROJECT_ID/$REPO_NAME/$_SERVICE_NAME:$COMMIT_SHA
       - --file=website/Dockerfile
       - .
-  - name: gcr.io/cloud-builders/docker
+  - id: 'Push'
+    name: gcr.io/cloud-builders/docker
     args:
       - push
       - $_GCR_HOSTNAME/$PROJECT_ID/$REPO_NAME/$_SERVICE_NAME:$COMMIT_SHA
-  - name: gcr.io/cloud-builders/gcloud
+  - id: 'Deploy'
+    name: gcr.io/cloud-builders/gcloud
     args:
       - run
       - deploy
@@ -22,52 +25,8 @@ steps:
       - --image=$_GCR_HOSTNAME/$PROJECT_ID/$REPO_NAME/$_SERVICE_NAME:$COMMIT_SHA
       - --region=$_DEPLOY_REGION
       - --labels=gcb-trigger-id=$_TRIGGER_ID
-#  - name: gcr.io/google.com/cloudsdktool/cloud-sdk:slim
-#    args:
-#      - run
-#      - services
-#      - update
-#      - $_SERVICE_NAME
-#      - --platform=managed
-#      - --image=$_GCR_HOSTNAME/$PROJECT_ID/$REPO_NAME/$_SERVICE_NAME:$COMMIT_SHA
-#      - --region=$_DEPLOY_REGION
-#      - --quiet
-#    entrypoint: gcloud
 images:
   - $_GCR_HOSTNAME/$PROJECT_ID/$REPO_NAME/$_SERVICE_NAME:$COMMIT_SHA
-#  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
-#    entrypoint: gcloud
-#    args:
-#      [
-#        'beta',
-#        'run',
-#        'deploy',
-#        'intergalactic-docker',
-#        '--image',
-#        'us-east4-docker.pkg.dev/intergalactic-prod-tf/intergalactic-docker/intergalactic:${_APP_VERSION}-${SHORT_SHA}',
-#        '--region',
-#        'us-east4',
-#        '--platform',
-#        'managed',
-#        '--min-instances',
-#        '1',
-#        '--max-instances',
-#        '5',
-#        '--ingress',
-#        'internal-and-cloud-load-balancing',
-#      ]
-#  - name: node:16
-#    entrypoint: yarn
-#    args: ['upload-search-index']
-#    dir: 'website'
-#    env:
-#      - 'ALGOLIA_SECRET_KEY=$_ALGOLIA_SECRET_KEY'
-
 timeout: 3600s
 options:
   machineType: 'N1_HIGHCPU_8'
-#steps:
-#
-#
-#    id: Deploy
-#    entrypoint: gcloud
