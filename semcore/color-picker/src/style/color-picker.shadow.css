@@ -1,11 +1,146 @@
 @import '@semcore/utils/style/var.css';
 
-SColorPicker {
-  position: relative;
-  background-color: #fff;
-  border-radius: var(--rounded-m);
-  box-sizing: border-box;
+SColorPickerPopper {
+  display: flex;
+  flex-wrap: wrap;
+  width: 225px;
+  margin-top: 4px;
+  padding: 16px;
   border: 1px solid var(--gray-100);
-  white-space: normal;
   box-shadow: var(--box-shadow-popper);
+  border-radius: 6px;
+}
+
+SItemContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  margin: 4px;
+  border-radius: 50%;
+  border: 1px solid transparent;
+
+  &:hover {
+    cursor: pointer;
+    border: 1px solid var(--gray-100);
+  }
+}
+
+SItemContainer[selected] {
+  border: 1px solid var(--blue-300);
+}
+
+SItem {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--value);
+}
+
+SItem[needBorder] {
+  border: 1px solid var(--gray-100);
+}
+
+SColors {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+SPaletteManager {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+SPlusButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  margin-left: 4px;
+  border-radius: 50% !important;
+}
+
+SDefaultTrigger {
+  display: flex;
+  align-items: center;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+STriggerCircle {
+  width: 12px;
+  height: 12px;
+  margin-right: 5px;
+  border-radius: 50%;
+  background-color: var(--value);
+  border: 1px solid transparent;
+}
+
+STriggerCircle[needBorder] {
+  border: 1px solid var(--gray-100);
+}
+
+SCrossIcon {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  /* right: 180px;
+  bottom: 70px; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 1px solid red;
+  background-color: var(--gray-100);
+  opacity: 0%;
+
+  &:hover {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 100%;
+  }
+}
+
+SWihthoutColorItemContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  margin: 4px;
+  border-radius: 50%;
+  border: 1px solid transparent;
+
+  &:hover {
+    cursor: pointer;
+    border: 1px solid var(--gray-100);
+  }
+}
+
+SWihthoutColorItemContainer[selected] {
+  border: 1px solid var(--blue-300);
+}
+
+SWihthoutColorItem {
+  width: 21px;
+  height: 21px;
+  border-radius: 50%;
+  border: 1px solid var(--gray-100);
+}
+
+SLine {
+  position: absolute;
+  top: 35px;
+  width: 22px;
+  height: 1px;
+  background: var(--gray-200);
+  transform: rotate(130deg);
 }
