@@ -9,7 +9,8 @@ const options = Array(12)
 
 const noticeStyle = {
   border: 'none',
-  borderRadius: 0,
+  borderRadius: '0 0 6px 6px',
+  padding: '12px 8px',
 };
 
 export default () => (
