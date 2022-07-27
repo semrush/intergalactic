@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [1.1.2] - 2022-07-27
+
+### Fixed
+
+- Fixed duplication of work when used without a variable
+
 ## [1.1.1] - 2022-04-01
 
 ### Fixed
