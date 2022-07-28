@@ -23,7 +23,7 @@ Make sure that it's possible to interact with the interface using a keyboard onl
 > - **↓** inside the dropdown moves `focus` to the next `menuItem`. From the last `menuItem`, the `focus` moves to the first `menuItem`. The same logic applies to the **↑** key, but backwards 🙃
 > - **Esc** closes the dropdown. If the `focus` was on the control inside the dropdown, `Esc` removes the `focus` from the interactive element and closes the dropdown.
 
-keyboard control should be performed sequentially across all interactive elements (which have focus) on the page.
+Keyboard control should be performed sequentially across all interactive elements (which have focus) on the page.
 
 - The focus state for all controls appears by pressing the `Tab` key.
 - For inputs and text fields, focus also appears by `onClick`.
