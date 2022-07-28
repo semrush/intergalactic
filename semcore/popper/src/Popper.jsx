@@ -307,7 +307,7 @@ class Popper extends Component {
   };
 
   getTriggerProps() {
-    const { visible, interaction, uid } = this.asProps;
+    const { visible, interaction } = this.asProps;
     // @ts-ignore
     const { onKeyDown, ...interactionProps } = this.handlersFromInteraction(
       interaction,
@@ -318,7 +318,6 @@ class Popper extends Component {
       ref: this.createTriggerRef,
       active: visible,
       // interaction,
-      'aria-describedby': uid,
       ...interactionProps,
       onKeyDown: this.bindHandlerKeyDown(onKeyDown),
     };
@@ -388,11 +387,14 @@ class Popper extends Component {
 
 function Trigger(props) {
   const STrigger = Root;
-  const { Children } = props;
+  const { Children, active } = props;
   return (
     <STrigger
       render={Box}
       inline
+      role="button"
+      aria-haspopup={true}
+      aria-expanded={active}
       // Because the borders appear
       // tabIndex={interaction === 'focus' ? undefined : 0}
     >
@@ -471,7 +473,7 @@ function PopperPopper(props) {
           returnFocus={interaction === 'click'}
           returnFocusRef={triggerRef}
           autoFocus={false}
-          tabIndex={-1}
+          tabIndex={0}
           onClick={handlerStopPropagation}
           onContextMenu={handlerStopPropagation}
           onDoubleClick={handlerStopPropagation}

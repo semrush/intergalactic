@@ -69,12 +69,13 @@ class DropdownMenuRoot extends Component {
     const { size } = this.asProps;
     return {
       size,
+      index: this.asProps.highlightedIndex,
     };
   }
 
   getPopperProps() {
     return {
-      tabIndex: 0,
+      // tabIndex: 0,
       onKeyDown: this.handlerKeyDown,
     };
   }
@@ -176,8 +177,16 @@ class DropdownMenuRoot extends Component {
 
 function List(props) {
   const SDropdownMenuList = Root;
+
   return sstyled(props.styles)(
-    <SDropdownMenuList render={Box} tag={ScrollAreaComponent} role="menu" />,
+    <SDropdownMenuList
+      render={Box}
+      tag={ScrollAreaComponent}
+      role="menu"
+      id="dropdown-menu-list"
+      aria-labelledby="dropdown-menu-trigger"
+      aria-activedescendant={props.index}
+    />,
   );
 }
 
@@ -195,7 +204,8 @@ function Item(props) {
   return (
     <SDropdownMenuItem
       role="menuitem"
-      tabIndex={-1}
+      tabIndex={0}
+      id={props.label}
       className={
         cn(
           styles.cn('SDropdownMenuItem', {
@@ -223,18 +233,35 @@ function Addon(props) {
 
 function Hint(props) {
   const SDropdownMenuItem = Root;
-  return sstyled(props.styles)(<SDropdownMenuItem render={Flex} variant="hint" />);
+  return sstyled(props.styles)(
+    <SDropdownMenuItem render={Flex} variant="hint" role="menuitem" tabIndex={0} />,
+  );
 }
 
 function Title(props) {
   const SDropdownMenuItem = Root;
-  return sstyled(props.styles)(<SDropdownMenuItem render={Flex} variant="title" />);
+  return sstyled(props.styles)(
+    <SDropdownMenuItem render={Flex} variant="title" role="menuitem" tabIndex={0} />,
+  );
+}
+
+function Trigger() {
+  return (
+    <Root
+      render={Dropdown.Trigger}
+      id="dropdown-menu-trigger"
+      tanIndex={-1}
+      type="button"
+      aria-controls="dropdown-menu-list"
+      aria-haspopup="true"
+    />
+  );
 }
 
 const DropdownMenu = createComponent(
   DropdownMenuRoot,
   {
-    Trigger: Dropdown.Trigger,
+    Trigger,
     Popper: Dropdown.Popper,
     List,
     Menu,

@@ -83,6 +83,7 @@ class Value extends Component {
         <SControl
           tag="input"
           type="checkbox"
+          aria-checked={other.indeterminate ? 'mixed' : other.checked ? 'true' : 'false'}
           ref={forkRef(forwardRef, this.inputRef)}
           {...controlProps}
           onClick={callAllEventHandlers(controlProps.onClick, this.handleClick)}

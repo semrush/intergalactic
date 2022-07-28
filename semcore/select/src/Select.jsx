@@ -184,7 +184,7 @@ class RootSelect extends Component {
   }
 
   render() {
-    const { Children, options, multiselect, ...other } = this.asProps;
+    const { Children, options, multiselect, value, ...other } = this.asProps;
     const advanceMode = findComponent(Children, [
       Select.Trigger.displayName,
       Select.Popper.displayName,
@@ -199,11 +199,24 @@ class RootSelect extends Component {
     if (options) {
       return (
         <Root render={DropdownMenu}>
-          <Select.Trigger {...other} />
-          <Select.Menu>
+          <Select.Trigger
+            {...other}
+            id="select-trigger"
+            tanIndex={-1}
+            role="combobox"
+            aria-controls="select-menu"
+            aria-haspopup="listbox"
+          />
+          <Select.Menu role="listbox" id="select-menu">
             {options.map((option, i) => {
               return (
-                <Select.Option key={i} {...option}>
+                <Select.Option
+                  key={i}
+                  id={option.value}
+                  aria-selected={value === i}
+                  {...option}
+                  role="option"
+                >
                   {multiselect && <Select.Option.Checkbox />}
                   {option.children}
                 </Select.Option>
@@ -251,6 +264,9 @@ function Checkbox(props) {
       {...componentProps}
       className={cn(className, componentProps.className) || undefined}
       style={{ ...style, ...componentProps.style }}
+      role="checkbox"
+      tabIndex={0}
+      aria-checked={selected}
     />
   );
 }
