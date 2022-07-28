@@ -18,7 +18,7 @@ tabName: Design
 
 ### InputNumber has several features
 
-- by default, you can enter the following numeric characters: numbers, period, comma, minus (all other non-numeric values such as slash, dash/hyphen, letters, etc. can not be entered);
+- by default, you can enter the following numeric characters: numbers, period, comma, minus (all other non-numeric values such as slash, dash/hyphen, letters, etc. cannot be entered);
 - in the input, you can enable the constant display of stepper buttons to change the value up or down;
 - in this input, you can set the minimum and maximum values that the user can enter;
 - you can also set the change step for the value using the stepper buttons/keyboard arrows/Shift + keyboard arrows `up`, `down`.
@@ -117,7 +117,7 @@ You can use a dot to enter a fractional value in the input.
 
 ### Negative value
 
-If only positive values are allowed in the input, then you can not be able to enter a minus.
+If only positive values are allowed in the input, then you cannot be able to enter a minus.
 
 ### Zero value
 
