@@ -35,6 +35,7 @@ function getEndDate(value) {
 class RangePickerAbstract extends Component {
   static displayName = 'DatePicker';
   static style = style;
+
   static defaultProps({ value, defaultValue }) {
     return {
       i18n,
@@ -48,6 +49,7 @@ class RangePickerAbstract extends Component {
       size: 'm',
     };
   }
+
   static enhance = [i18nEnhance()];
 
   static add = (date, amount, unit) => {
@@ -193,25 +195,12 @@ class RangePickerAbstract extends Component {
 
   getPopperProps() {
     const Picker = this[CORE_INSTANCE];
-    const { value, periods = this.getDefaultPeriods(), unclearable, getI18nText } = this.asProps;
-    const { dirtyValue } = this.state;
+    const { periods = this.getDefaultPeriods(), unclearable } = this.asProps;
 
     const buttons = (
       <>
-        <Button
-          use="primary"
-          children={getI18nText('apply')}
-          onClick={() => this.handlerApply(dirtyValue.length ? dirtyValue : value)}
-        />
-        {!unclearable && (
-          <Button
-            ml={2}
-            use="tertiary"
-            theme="muted"
-            children={getI18nText('reset')}
-            onClick={() => this.handlerApply([])}
-          />
-        )}
+        <Picker.Apply />
+        {!unclearable && <Picker.Reset />}
       </>
     );
 
@@ -235,7 +224,7 @@ class RangePickerAbstract extends Component {
               </Picker.Header>
               <Picker.Calendar />
             </Box>
-            {Boolean(periods.length) && (
+            {Boolean(periods.length) ? (
               <>
                 <Divider m="-16px 16px" orientation="vertical" h="auto" />
                 <Flex direction="column">
@@ -243,9 +232,10 @@ class RangePickerAbstract extends Component {
                   <Flex mt="auto">{buttons}</Flex>
                 </Flex>
               </>
+            ) : (
+              <Flex mt={4}>{buttons}</Flex>
             )}
           </Flex>
-          {!Boolean(periods.length) && <Flex mt={4}>{buttons}</Flex>}
         </>
       ),
     };
@@ -286,14 +276,8 @@ class RangePickerAbstract extends Component {
   }
 
   getCalendarProps(props, index) {
-    const {
-      locale,
-      displayedPeriod,
-      disabled,
-      value,
-      highlighted,
-      onHighlightedChange,
-    } = this.asProps;
+    const { locale, displayedPeriod, disabled, value, highlighted, onHighlightedChange } =
+      this.asProps;
     const { dirtyValue } = this.state;
 
     return {
@@ -327,6 +311,23 @@ class RangePickerAbstract extends Component {
     };
   }
 
+  getApplyProps() {
+    const { value, getI18nText } = this.asProps;
+    const { dirtyValue } = this.state;
+    return {
+      getI18nText,
+      onClick: () => this.handlerApply(dirtyValue.length ? dirtyValue : value),
+    };
+  }
+
+  getResetProps() {
+    const { getI18nText } = this.asProps;
+    return {
+      getI18nText,
+      onClick: () => this.handlerApply([]),
+    };
+  }
+
   render() {
     const { Children, styles } = this.asProps;
     return sstyled(styles)(
@@ -336,5 +337,19 @@ class RangePickerAbstract extends Component {
     );
   }
 }
+
+function Apply(props) {
+  const { getI18nText } = props;
+  return <Root render={Button} use="primary" children={getI18nText('apply')} />;
+}
+
+function Reset(props) {
+  const { getI18nText } = props;
+  return (
+    <Root render={Button} ml={2} use="tertiary" theme="muted" children={getI18nText('reset')} />
+  );
+}
+
+export { Apply, Reset };
 
 export default RangePickerAbstract;
