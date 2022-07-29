@@ -200,7 +200,7 @@ class RangePickerAbstract extends Component {
     const buttons = (
       <>
         <Picker.Apply />
-        {!unclearable && <Picker.Reset />}
+        {!unclearable && <Picker.Reset ml={2} />}
       </>
     );
 
@@ -345,9 +345,7 @@ function Apply(props) {
 
 function Reset(props) {
   const { getI18nText } = props;
-  return (
-    <Root render={Button} ml={2} use="tertiary" theme="muted" children={getI18nText('reset')} />
-  );
+  return <Root render={Button} use="tertiary" theme="muted" children={getI18nText('reset')} />;
 }
 
 export { Apply, Reset };
