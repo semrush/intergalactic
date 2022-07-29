@@ -278,6 +278,8 @@ declare const DateRangePicker: ((
   Next: typeof Button;
   Calendar: typeof Calendar;
   Period: <T>(props: IDateRangePickerPeriodProps & T) => ReturnEl;
+  Apply: typeof Button;
+  Reset: typeof Button;
   add: (date: number | Date, amount: number, unit: dayjs.OpUnitType) => Date;
   subtract: (date: number | Date, amount: number, unit: dayjs.OpUnitType) => Date;
 };
@@ -348,6 +350,8 @@ declare const MonthRangePicker: ((
   Next: typeof Button;
   Calendar: typeof Calendar;
   Period: <T>(props: IDateRangePickerPeriodProps & T) => ReturnEl;
+  Apply: typeof Button;
+  Reset: typeof Button;
   add: (date: number | Date, amount: number, unit: dayjs.OpUnitType) => Date;
   subtract: (date: number | Date, amount: number, unit: dayjs.OpUnitType) => Date;
 };

@@ -4,7 +4,7 @@ import createComponent from '@semcore/core';
 import shortDateRangeFormat from './utils/shortDateRangeFormat';
 import { Header, Next, Period, Popper, Prev, Title, Trigger } from './components';
 import { CalendarMonths as Calendar } from './components/Calendar';
-import RangePickerAbstract from './components/RangePickerAbstract';
+import RangePickerAbstract, { Apply, Reset } from './components/RangePickerAbstract';
 
 class MonthRangePickerRoot extends RangePickerAbstract {
   static displayName = 'MonthRangePicker';
@@ -99,6 +99,8 @@ const MonthRangePicker = createComponent(
     Next,
     Calendar,
     Period,
+    Apply,
+    Reset,
   },
   {
     parent: Calendar,
