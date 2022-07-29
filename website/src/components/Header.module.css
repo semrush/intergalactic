@@ -13,9 +13,7 @@
   box-shadow: 0 2px 16px 0 rgba(0, 0, 0, 0.1);
   z-index: 999;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  column-gap: 50px;
+  column-gap: 32px;
 }
 .header a {
   color: #171a22;
@@ -25,8 +23,8 @@
 .headerMain {
   display: flex;
   align-items: center;
-  column-gap: 50px;
-  flex: 1;
+  column-gap: 32px;
+  flex: 2;
 }
 
 .nav {
@@ -34,11 +32,10 @@
   align-items: center;
   justify-content: flex-end;
   flex-wrap: nowrap;
-  column-gap: 12px;
-  flex-shrink: 0;
+  column-gap: 24px;
+  flex: 1;
 }
 .item {
-  padding: 10px 0;
   font-size: 16px;
 }
 .item:hover {
@@ -54,7 +51,7 @@
   font-weight: 700;
 }
 .semrushLogo {
-  margin-right: 6px;
+  margin-right: 4px;
   width: 30px;
   height: 30px;
 }
@@ -62,14 +59,26 @@
   display: flex;
   align-items: center;
 }
+.devportalLink:hover,
+.intergalacticLink:hover {
+  text-decoration: underline;
+}
 .intergalacticLink {
   color: #ff642d !important;
-  margin-left: 6px;
+}
+
+.headerTooltip {
+  font-size: 12px;
+  border: 1px solid #d1d4db;
+  box-shadow: 5px 8px 25px rgba(137, 141, 154, 0.2);
+  z-index: 1000;
+}
+.linkDivider {
+  align-self: center;
 }
 .searchWrapper {
   flex: 1;
   max-width: 350px;
-  margin-right: 20px;
 }
 .searchField {
   flex: 1;
@@ -119,36 +128,35 @@
   display: none;
 }
 
-@media (max-width: 1200px) {
-  .header,
-  .headerMain {
-    column-gap: 10px;
+@media (max-width: 970px) {
+  .nav {
+    display: none;
   }
 }
-@media (max-width: 970px) {
+
+@media (max-width: 768px) {
+  .headerMain {
+    column-gap: 0;
+  }
   .header {
     padding: 0;
     padding-right: 20px;
+  }
+  .searchWrapper {
+    max-width: 100%;
+    margin-left: 32px;
+  }
+  .mobileMenu {
+    display: block;
   }
   .menuIcon {
     display: block;
     padding-left: 30px;
     padding-right: 30px;
   }
-  .nav,
-  .devportalTitle,
-  .intergalacticLink {
+  .semrushLogo {
     display: none;
   }
-  .searchWrapper {
-    max-width: 100%;
-    margin-left: 50px;
-  }
-  .mobileMenu {
-    display: block;
-  }
-}
-@media (max-width: 767px) {
   .mobileMenuDivider {
     display: block;
   }
@@ -156,7 +164,21 @@
     display: block;
   }
 }
-@media (max-width: 415px) {
+@media (max-width: 320px) {
+  .headerMain {
+    column-gap: 0;
+  }
+  .devportalLink__mobile {
+    display: none;
+  }
+  .semrushLogo {
+    display: block;
+  }
+  .menuIcon {
+    padding-right: 20px;
+    padding-left: 20px;
+    margin-right: 0;
+  }
   .mobileSearchHidden {
     display: none;
   }
@@ -167,7 +189,7 @@
   .searchIcon {
     display: flex;
     position: absolute;
-    right: 30px;
+    right: 20px;
   }
   .searchWrapper input::placeholder {
     color: white;

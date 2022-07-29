@@ -13,6 +13,7 @@ import OutsideClick from '@semcore/outside-click';
 import { navigationTree } from '@navigation';
 import styles from './Header.module.css';
 import cx from 'classnames';
+import Tooltip from '@semcore/tooltip';
 
 function Header(props) {
   const [menuVisible, setMenuVisible] = useState(false);
@@ -36,8 +37,16 @@ function Header(props) {
         <div className={cx(styles.logo, searchVisible && styles.activeSearch)}>
           <a className={styles.devportalLink} href="/">
             <img src={mobileLogo} className={styles.semrushLogo} alt="Logo" />
-            <span className={styles.devportalTitle}>Developer</span>
+            <Tooltip>
+              <Tooltip.Trigger className={styles.devportalLink__mobile}>
+                <span className={styles.devportalTitle}>Developer</span>
+              </Tooltip.Trigger>
+              <Tooltip.Popper className={styles.headerTooltip}>Go to start page</Tooltip.Popper>
+            </Tooltip>
           </a>
+          <div className={styles.linkDivider}>
+            <Divider mx={2} h={20} orientation="vertical" />
+          </div>
           <Link className={styles.intergalacticLink} to="/">
             Intergalactic
           </Link>
@@ -57,20 +66,21 @@ function Header(props) {
         )}
       </div>
       <nav className={styles.nav}>
+        <Tooltip>
+          <Tooltip.Trigger>
+            <span className={styles.item}>
+              <NavLink to="/internal/extension/">Extension</NavLink>
+            </span>
+          </Tooltip.Trigger>
+          <Tooltip.Popper className={styles.headerTooltip}>
+            Chrome extension is available only for users registered in the corporate mail
+          </Tooltip.Popper>
+        </Tooltip>
         <span className={styles.item}>
-          <NavLink activeStyle={{ textDecoration: 'underline' }} to="/internal/extension/">
-            Extension ✨
-          </NavLink>
+          <NavLink to="/internal/roadmap/">Roadmap</NavLink>
         </span>
         <span className={styles.item}>
-          <NavLink activeStyle={{ textDecoration: 'underline' }} to="/internal/roadmap/">
-            Roadmap
-          </NavLink>
-        </span>
-        <span className={styles.item}>
-          <NavLink activeStyle={{ textDecoration: 'underline' }} to="/internal/release/">
-            Releases
-          </NavLink>
+          <NavLink to="/internal/release/">Releases</NavLink>
         </span>
         <span className={styles.item}>
           <LinkKit
