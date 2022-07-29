@@ -3,8 +3,7 @@
 SColorPickerPopper {
   display: flex;
   flex-wrap: wrap;
-  width: 225px;
-  margin-top: 4px;
+  width: 240px;
   padding: 16px;
   border: 1px solid var(--gray-100);
   box-shadow: var(--box-shadow-popper);
@@ -12,12 +11,13 @@ SColorPickerPopper {
 }
 
 SItemContainer {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
   width: 28px;
   height: 28px;
-  margin: 4px;
+  margin: 2px;
   border-radius: 50%;
   border: 1px solid transparent;
 
@@ -27,11 +27,21 @@ SItemContainer {
   }
 }
 
+SItemContainer[withoutHover] {
+  &:hover {
+    cursor: default;
+    border: 1px solid transparent;
+  }
+}
+
 SItemContainer[selected] {
   border: 1px solid var(--blue-300);
 }
 
 SItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   width: 22px;
   height: 22px;
   border-radius: 50%;
@@ -40,6 +50,10 @@ SItem {
 
 SItem[needBorder] {
   border: 1px solid var(--gray-100);
+}
+
+SItem[displayLabel] {
+  background: var(--lightBackground);
 }
 
 SColors {
@@ -53,6 +67,7 @@ SPaletteManager {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-top: 12px;
 }
 
 SPlusButton {
@@ -61,7 +76,7 @@ SPlusButton {
   justify-content: center;
   width: 28px;
   height: 28px;
-  margin-left: 4px;
+  margin-left: 2px;
   border-radius: 50% !important;
 }
 
@@ -91,13 +106,9 @@ SCrossIcon {
   position: absolute;
   width: 12px;
   height: 12px;
-  /* right: 180px;
-  bottom: 70px; */
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  top: 0px;
+  right: 0px;
   border-radius: 50%;
-  border: 1px solid red;
   background-color: var(--gray-100);
   opacity: 0%;
 
@@ -115,7 +126,7 @@ SWihthoutColorItemContainer {
   justify-content: center;
   width: 28px;
   height: 28px;
-  margin: 4px;
+  margin: 2px;
   border-radius: 50%;
   border: 1px solid transparent;
 
@@ -143,4 +154,9 @@ SLine {
   height: 1px;
   background: var(--gray-200);
   transform: rotate(130deg);
+}
+
+SLabel {
+  display: flex;
+  margin: auto;
 }

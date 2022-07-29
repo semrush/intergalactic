@@ -29,10 +29,10 @@ class PaletteManagerRoot extends Component {
   }
 
   getColorsProps() {
-    const { value, colors, onChange, onColorsChange } = this.asProps;
+    const { value, colors, onValueChange, onColorsChange, displayLabel } = this.asProps;
 
     return {
-      onValueChange: onChange,
+      onValueChange: onValueChange,
       selectedValue: value,
       colors,
       editable: true,
@@ -40,6 +40,7 @@ class PaletteManagerRoot extends Component {
         this.refInput.current.focus();
       },
       onColorsChange,
+      displayLabel,
     };
   }
 
@@ -72,8 +73,10 @@ class PaletteManagerRoot extends Component {
         <PaletteManager.Divider mt={4} mb={4} />
         <PaletteManager.Colors />
         <SPaletteManager render={Box}>
-          <PaletteManager.Item value={`#${inputValue}`} needBorder={true} />
-          # <PaletteManager.InputColor ref={this.refInput} />
+          <PaletteManager.Item value={`#${inputValue}`} needBorder={true} withoutHover={true} />
+          <div style={{ display: 'flex', alignItems: 'center' }}>
+            #<PaletteManager.InputColor ref={this.refInput} />
+          </div>
         </SPaletteManager>
       </>,
     );
@@ -89,11 +92,5 @@ const PaletteManager = createComponent(PaletteManagerRoot, {
 
 export default PaletteManager;
 
-// if choose color from PaletteManager, then close and open again - empty colors in PaletteManager
-// change size and position of CrossIcon
-// if enter already existing color - what happens? 1) input with invalid state; 2) without error, but nothing happens
-// display label
 // fix styles
-
-// adjust padding for Check icon in input
 // everywhere add types

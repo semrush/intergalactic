@@ -16,15 +16,17 @@ class ColorPickerRoot extends Component {
   static defaultProps = () => ({
     defaultValue: null,
     defaultColors: [
-      '#a474cd',
-      '#8a8bff',
-      'pink',
-      'violet',
-      '#82b7ff',
-      '#6ad0de',
-      'aqua',
-      '#78debd',
-      '#dbdcff',
+      '#2BB3FF',
+      '#8649E1',
+      '#C695FF',
+      '#F67CF2',
+      '#FFA9FA',
+      '#FF8786',
+      '#FF8C43',
+      '#FDC23C',
+      '#66C030',
+      '#9BD85D',
+      '#C7EE96',
     ],
     children: (
       <>
@@ -38,15 +40,17 @@ class ColorPickerRoot extends Component {
     return {
       value: null,
       colors: [
-        '#a474cd',
-        '#8a8bff',
-        'pink',
-        'violet',
-        '#82b7ff',
-        '#6ad0de',
-        'aqua',
-        '#78debd',
-        '#dbdcff',
+        '#2BB3FF',
+        '#8649E1',
+        '#C695FF',
+        '#F67CF2',
+        '#FFA9FA',
+        '#FF8786',
+        '#FF8C43',
+        '#FDC23C',
+        '#66C030',
+        '#9BD85D',
+        '#C7EE96',
       ],
     };
   }
@@ -61,13 +65,14 @@ class ColorPickerRoot extends Component {
   }
 
   getPopperProps() {
-    const { styles, colors, onChange, value } = this.asProps;
+    const { styles, colors, onValueChange, value, displayLabel } = this.asProps;
 
     return {
       colors,
-      onValueChange: onChange,
+      onValueChange,
       selectedValue: value,
       styles,
+      displayLabel,
     };
   }
 
@@ -83,21 +88,22 @@ class ColorPickerRoot extends Component {
   }
 
   getColorsProps() {
-    const { value, colors, onChange } = this.asProps;
+    const { value, colors, onValueChange, displayLabel } = this.asProps;
 
     return {
-      onValueChange: onChange,
+      onValueChange,
       selectedValue: value,
       colors,
+      displayLabel,
     };
   }
 
   getPaletteManagerProps() {
-    const { value, onChange } = this.asProps;
+    const { value, onValueChange } = this.asProps;
 
     return {
       value,
-      onChange,
+      onValueChange,
     };
   }
 
