@@ -47,12 +47,6 @@ Periods may be customized or switched off at all, by transferring `periods={[]}`
 
 @example periods
 
-@## Custom RangePicker
-
-To customize the range picker template, it is important to use the same markup.
-
-@example custom-range
-
 @## Week picker
 
 Sometimes you need to select only custom period and you can do it by taking all the control in manual mode.

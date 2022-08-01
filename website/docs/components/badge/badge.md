@@ -33,7 +33,7 @@ We use the following badges in the interface of our products depending on the st
 
 - You can't delete or add a badge, because it is added by the service according to the rules described above.
 - Badges are not clickable controls.
-- Badges can not be used for filtering.
+- Badges cannot be used for filtering.
 
 @## Examples in our interface
 

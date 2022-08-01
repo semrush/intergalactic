@@ -140,13 +140,13 @@ You can "hide" more detailed information (a whole widget with a full chart, for 
 
 @## Edge cases
 
-| State                                                                                                                                                                                | Appearance example                         |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------ |
-| Show [Skeleton](/components/skeleton) while the first page load.                                                                                                                     | ![skeleton](static/skeleton.png)           |
-| Show [Spin](/components/spin) after reloading the data, applying filters on the page, etc.                                                                                           | ![spin](static/spin.png)                   |
-| Show `n/a` message if data is missing.                                                                                                                                               | ![not available](static/not-available.png) |
-| If you can not show metric because of the error, show `Warning` icon with M size and the reload link. While hovering over the icon show tooltip with `Something went wrong` message. | ![error](static/error2.png)                |
-| Show `Something went wrong` message for metrics with errors. _The entire widget or individual metrics are covered by a white overlay with 80% transparency._                         | ![error](static/error.png)                 |
+| State                                                                                                                                                                               | Appearance example                         |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------ |
+| Show [Skeleton](/components/skeleton) while the first page load.                                                                                                                    | ![skeleton](static/skeleton.png)           |
+| Show [Spin](/components/spin) after reloading the data, applying filters on the page, etc.                                                                                          | ![spin](static/spin.png)                   |
+| Show `n/a` message if data is missing.                                                                                                                                              | ![not available](static/not-available.png) |
+| If you cannot show metric because of the error, show `Warning` icon with M size and the reload link. While hovering over the icon show tooltip with `Something went wrong` message. | ![error](static/error2.png)                |
+| Show `Something went wrong` message for metrics with errors. _The entire widget or individual metrics are covered by a white overlay with 80% transparency._                        | ![error](static/error.png)                 |
 
 @## Adaptivity
 

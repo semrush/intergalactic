@@ -5,84 +5,103 @@ tabName: Design
 
 @## Description
 
-**AutoSuggest**, **AutoComplete** and **Combobox** are different patterns for as-you-type suggestions for search with values filtering from the list.
+**AutoSuggest** as **Combobox** and **AutoComplete** are varieties of search with selection of values from the list.
 
-For illustrative purposes we have collected the table of differences between these search patterns.
+To assemble any implementation of search with selection of values from the list you need the [Input](/components/input/) and [Select](/components/select/) components. And a little bit of magic ✨
 
-| Pattern      | List is shown while focusing | List filtering while entering the value | Upon search the options menu is scrolled | User can enter data different from the list |
-| ------------ | ---------------------------- | --------------------------------------- | ---------------------------------------- | ------------------------------------------- |
-| Combobox     | ✅                           | ❌                                      | ✅                                       | ❌                                          |
-| AutoComplete | ❌                           | ✅                                      | ✅                                       | ✅                                          |
-| AutoSuggest  | ❌                           | ✅                                      | ❌                                       | ✅                                          |
+For illustrative purposes we have collected the table of differences between such suggestion lists.
 
-> If your search behavior differs from those described in the table, do not hesitate to drop us a line so we can update the guide.
+| Pattern      | The list is shown while focusing (if the input box is empty) | List filtering while entering the value | Option is highlighted, when the value is selected | Upon search the options menu is scrolled | It's possible to input data different from the list |
+| ------------ | ------------------------------------------------------------ | --------------------------------------- | ------------------------------------------------- | ---------------------------------------- | --------------------------------------------------- |
+| Combobox     | ✅                                                           | ❌                                      | ✅                                                | ✅                                       | ❌                                                  |
+| AutoComplete | ❌                                                           | ✅                                      | ✅                                                | ✅                                       | ✅                                                  |
+| AutoSuggest  | ❌                                                           | ✅                                      | ❌                                                | ❌                                       | ✅                                                  |
 
-@## Pattern composition
+> If your search behavior is different from those presented in the table, it is possible that you discovered a new pattern 🕺🏻 (or we did not take something into account).
 
-These patterns use:
+@## Appearance
+
+All these patterns consist of:
 
 - [Input](/components/input/);
-- [DropdownMenu](/components/dropdown-menu/).
+- [Dropdown-menu](/components/dropdown-menu/).
 
 @## Combobox
 
-**Combobox** is a combination of input and select. In other words it's a select with the possibility to enter the value only from the list.
+**Combobox** is a combination of input and select. In other words it's a select with the possibility to enter the value manually or from the list.
 
 > 💡 The user cannot enter the data not corresponding to the options list.
 
-You should use it when usual input, select or autocomplete are not appropriate. For example, we use it in [TimePicker](/components/time-picker/).
+You should use it when usual input, select or autocomplete are not appropriate — for example, in [Time picker](/components/time-picker/).
 
 ### Interaction
 
-The list with options opens as soon as input gets `focus`.
+The options list opens in combobox when input become focused.
 
 ![combobox](static/combobox-example.png)
 
-> 💡 Unlike the autocomplete, combobox has no items filtration. If user have entered `abc` into the input, all items should remain in the list, but the list should be scrolled up to the first item, which starts with `abc`.
+### Keyboard support
 
-If user entered the exact match for one of the items and pressed `Enter`, the item will be selected. If user entered the item absent in the dropdown and pressed `Enter`, show the tooltip with the message that it is necessary to select something from the list.
+- `Tab` shifts between the page interactive elements, including comboboxes;
+- `Arrows` shifts between the items.
+
+> 💡 Unlike the autocomplete, there is no filtration in the combobox. If user entered `abc` into the field, all the items will remain in the dropdown, but the list will be scrolled up to the first item, which starts with `abc`.
+
+If user entered the exact match for one of the items and pressed `Enter`, the item will be selected. If the user entered the item absent in the dropdown and pressed `Enter`, it is recommended to show the tooltip with the message that it is necessary to select something from the list.
 
 ### Validation
 
-Combobox validation works similarly to other forms. See detailed infromation in [Validation](/patterns/validation-form/).
+[Validation](/patterns/validation-form/) works similarly to inputs.
 
 ### Long loading
 
-If you need more time to load the list items, show [Spin](/components/spin/) in the input.
+If we need more time to load the proper results, we show a [Spin](/components/spin/) in the input.
 
 ![combobox with spinner](static/spinner.png)
 
 @## AutoComplete, AutoSuggest
 
-**AutoComplete, AutoSuggest** are combination of input and select. As user enters information into the input, the corresponding results are displayed in a DropdownMenu.
+**AutoComplete, AutoSuggest** – combination of input and select. In the course of the user’s entering the information into the input the corresponding results are shown in the dropdown-menu.
 
-> 💡 User may enter the data not corresponding to any results of the options list.
+> 💡 The user may enter the data not corresponding to any results of the options list.
 
-The difference between these types of search is conceptual. In AutoComplete search is performed as the final list of names and symbols. In AutoSuggest it is performed as the open list of terms and phrases. We recommend you [this good article on that subject](https://uxmag.com/articles/designing-search-as-you-type-suggestions).
+The difference between these types of search is conceptual. In AutoComplete the search is performed in the final list of names and symbols. In AutoSuggest — in the open list of terms and phrases. [Good material on that subject](https://uxmag.com/articles/designing-search-as-you-type-suggestions).
 
 ### Interaction
 
-While user enters information into the input, the items list is filtered, and only the results matching the entered data remain in the list.
+While entering the information into the input, the dropdown-menu is filtered by the list, and only the results matching with the entered information remain in the dropdown-menu.
 
-Clicking an item in the list selects it and DropdownMenu closes.
+After clicking on an option in the dropdown-menu, the selected option is inserted into the input. The dropdown-menu closes.
 
 |                      | Appearance example                                         |
 | -------------------- | ---------------------------------------------------------- |
-| Default              | ![default state](static/default.png)                       |
-| Start typing         | ![typing state](static/start.png)                          |
-| Loading results      | ![loading state](static/loading-1.png)                     |
-| Something went wrong | ![error state](static/error.png)                           |
-| Results              | ![results state](static/results.png)                       |
-| Loading results      | ![loading state](static/loading-2.png)                     |
-| Nothing found        | ![nothing found state](static/nothing-found-auto-tips.png) |
+| default              | ![default state](static/default.png)                       |
+| start typing         | ![typing state](static/start.png)                          |
+| loading results      | ![loading state](static/loading-1.png)                     |
+| something went wrong | ![error state](static/error.png)                           |
+| results              | ![results state](static/results.png)                       |
+| loading results      | ![loading state](static/loading-2.png)                     |
+| nothing found        | ![nothing found state](static/nothing-found-auto-tips.png) |
+
+### Adding and deleting a line
+
+Some cases may require the feature “Add content”. Other user can may add a line (for example, through the modal window) by using it.
+
+![add option](static/auto-tips-add.png)
+
+As well, you may add the control for deleting a line.
+
+![delete option](static/auto-tips-delete.png)
 
 @## Use examples
 
-Example of using Combobox in [TimePicker](/components/time-picker/).
+Example of using `Combobox` in [Time picker](/components/time-picker/).
 
 ![combobox](static/combobox.png)
 
-Example of using AutoComplete.
+Example of using `AutoComplete` (domain input, country selection etc.).
+
+![autocomplete](static/autocomplete-2.png)
 
 ![autocomplete](static/autocomplete.png)
 

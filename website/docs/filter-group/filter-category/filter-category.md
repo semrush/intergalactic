@@ -17,7 +17,7 @@ When working with the category filter, the user should:
 
 For trigger use [Select](/components/select/) with `min-width: 102px;` and [FilterTrigger](/components/filter-trigger/) with `min-width: 160px;`.
 
-It's better not to make the controls smaller than recommended min-widths, otherwise the user may not read the filter's name or can not understand what category is selected.
+It's better not to make the controls smaller than recommended min-widths, otherwise the user may not read the filter's name or cannot understand what category is selected.
 
 | Input size | Inactive filter (Select)               | Active filter (FilterTrigger)              |
 | ---------- | -------------------------------------- | ------------------------------------------ |

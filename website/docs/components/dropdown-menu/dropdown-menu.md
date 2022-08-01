@@ -8,242 +8,217 @@ tabName: Design
 
 > 💡 See description of trigger and examples in [Select/Multiselect](/components/select/).
 
-**DropdownMenu** is a component for displaying the dropdown list and its nested items.
+**DropdownMenu** is a component for displaying the list of options and their nested items.
 
-@## Sizes of the list
+@## Sizes
 
-The list has two sizes.
+DropdownMenu has two sizes.
 
-| L                                                  | M                                                  |
-| -------------------------------------------------- | -------------------------------------------------- |
-| ![dropdown-paddings-l-size](static/dropdown-l.png) | ![dropdown-paddings-m-size](static/dropdown-m.png) |
+| Size | Appearance example                                 |
+| ---- | -------------------------------------------------- |
+| M    | ![DropdownMenu with M size](static/dropdown-m.png) |
+| L    | ![DropdownMenu with L size](static/dropdown-l.png) |
 
-@## Container width and height
+### Width and height
 
-- The width of the dropdown list may be defined by the maximum width of the trigger or it can be extended to match the longest item in the list.
-- The recommended maximum height of the dropdown list with search is seven items. **If there are more items in the list, the dropdown must have a scroll.**
-- You should not limit the list height in dropdown with a list of different links and controls. In this case, it is important to show all possible options to the user.
+| Case                       | Example                                                                                               | Description                                                                                                                                                                      |
+| -------------------------- | ----------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Trigger width              | ![DropdownMenu has width of the trigger](static/trigger-dropdown.png)                                 | The width of the dropdown can be defined by the maximum width of the trigger.                                                                                                    |
+| Width of the longest item  | ![DropdownMenu's width is defined by the longest item in the list](static/trigger-dropdown-width.png) | The width of the dropdown can be defined by the longest item in the list.                                                                                                        |
+| Maximum height of the list | ![DropdownMenu gets scroll with more than seven items in the list](static/dropdown-height.png)        | The recommended maximum height of the dropdown list with search is seven items. **If there are more items in the list, the dropdown gets scroll and a fader for the last item.** |
 
-|                           | Example                                                           |
-| ------------------------- | ----------------------------------------------------------------- |
-| Trigger width             | ![trigger-dropdown-width](static/trigger-dropdown.png)            |
-| Width of the longest item | ![trigger-dropdown-item-width](static/trigger-dropdown-width.png) |
+If you use DropdownMenu for a list of links and controls (like menu), do not limit the dropdown's height. It is important for such cases to show all possible options to the user.
 
-@## Container positioning
+@## DropdownMenu placement
 
-The list of selects always drops down, regardless of whether there is space or not. This behavior is necessary, for example, for a clear control of the select from the keyboard.
+The list always drops down, regardless of whether there is enough space under its trigger. This behavior is necessary, for example, for a understandable accessible control of the list from the keyboard.
 
-@## States of the list
+@## States
 
-One of the items in the dropdown list may be input with search. **When you open the list, the focus is immediately placed to the input.**
+- If for some reason the list is being loaded for a long time or the results are being filtered out for a long time (for example, because of a very slow connection), the dropdown must show the text: **"Loading..."**.
+- If user entered value that list does not have, show the text: **"Nothing found"**.
+- To show backend errors, use a warning message with the text: **"Something went wrong. Please try again later."**
 
-When typing in the input, only those items that match the entered request remain in the list. **In this case, the items are not highlighted in any way.**
+![DropdownMenu states](static/loading-flow.png)
 
-- If for some reason the list is being loaded for a long time at opening or the results are being filtered out for a long time (for example, because of a very slow connection), the dropdown must display the following text: **Loading...**.
-- If you type something that is not in the list, we show the following text: **Nothing found**.
-- To display backend errors, use a warning message with the corresponding text: **Something went wrong. Please try again later.**
+![DropdownMenu loading error](static/loading-error.png)
 
-![loading flow](static/loading-flow.png)
+@## Data loading
 
-![loading error](static/loading-error.png)
+If the list needs time to show all items (system cannot load it at once, or is searching for data somewhere else, etc.), then change the Chevron icon in the trigger to a spinner with XS size. In this case, the trigger is not clickable and remains in the `default` state.
 
-@## Data Loading
+To know more about all trigger states, see [Select / Multiselect](/components/select/#a24650).
 
-If after clicking on the trigger of the select we cannot show the list at once (we cannot load it at once, or we are searching for data somewhere else, etc.), then the chevron of the trigger must be changed to a spinner of `XS` size. In this case, the trigger remains in the `default` state and it is not clickable.
+![DropdownMenu trigger in loading state](static/select-loading-trigger.png)
 
-See all states of the trigger in [Select/Multiselect](/components/select/#a24650).
+@## DropdownMenu with search input
 
-![select-loading](static/select-loading-trigger.png)
+If the list has a search input, then the input should get the focus when user opens dropdown.
 
-@## Items of the List
+When user enters value in the input, only those items that match the entered value should remain in the list. **Do not highlight these items in this case.**
+
+@## List item
 
 ### States
 
-|          | Appearance                                 | Styles                           |
-| -------- | ------------------------------------------ | -------------------------------- |
-| Default  | ![item-default](static/item-default.png)   |                                  |
-| Hover    | ![item-hover](static/item-hover.png)       | `background: rgba(gray-50)`      |
-| Active   | ![item-active](static/item-active.png)     | `background: rgba(blue-100, .7)` |
-| Disabled | ![item-disabled](static/item-disabled.png) | `opacity: .3`                    |
+|                     | Appearance                                                                           | Styles                             |
+| ------------------- | ------------------------------------------------------------------------------------ | ---------------------------------- |
+| Default             | ![Default DropdownMenu list item](static/item-default.png)                           |                                    |
+| Hover               | ![DropdownMenu list item with hover state](static/item-hover.png)                    | `background: var(--gray-50)`       |
+| Selected            | ![DropdownMenu list item with selected state](static/item-active.png)                | `background: var(--blue-100, .7)`  |
+| Selected with hover | ![DropdownMenu list item in selected state with hover](static/item-active-hover.png) | `background: var(--blue-100)`      |
+| Disabled            | ![DropdownMenu list item with disabled state](static/item-disabled.png)              | Use `--disabled-opacity` variable. |
 
-### Dividers
+### Divider
 
-The dropdown list may have sections, each of which is separated by a divider.
+The dropdown list can be separated by [Divider](/components/divider/).
 
 ![dividers](static/dividers.png)
 
-### Titles
+### Title
 
-An item in a list can be a title so that it cannot be selected. It does not have `hover` or `active` state and it is not clickable. Cursor `default`. The text is typed in the `bold` style of the same size as the list items.
+List item can be a title. It does not have `hover` or `active` state and it is not clickable. The title always has `font-weight: 700;` and the same size as the list items have.
 
 ![headings](static/headings.png)
 
-### Button inside the list
+### Button
 
-You can add a button in any list. The color of the icon should coincide with the color of the text.
+You can add a button in any list.
 
-**An action button** that opens another dropdown takes the user to a new page or settings page or performs any other action on the page.
+#### Action button
+
+Such button opens another dropdown, takes user to a new page or performs any other action on the page.
 
 ![list-button](static/list-button-1.png)
 
-The item has the same hover as a regular item in the list.
+The item with button should have the same hover as a regular item in the list.
 
 ![list-button-hover](static/list-button-hover.png)
 
-**The button that adds a new item has two states:**
+#### Addition button
 
-- Trigger that looks like a regular item. It coincides with a regular item in height, styles and hovers.
+Thie item with such a button adds a new item and has the following states:
 
-![button-default](static/button-1.png)
+| State                  | Appearance example                      | Description                                                                                                                                                                                                                                                   |
+| ---------------------- | --------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Default trigger button | ![button-default](static/button-1.png)  | Trigger has the same styles as a regular item.                                                                                                                                                                                                                |
+| Active input           | ![button-focus](static/button-2.png)    | Clicking on button opens an input the `focus` state. The item has no `hover`.                                                                                                                                                                                 |
+| Entering value         | ![button-paddings](static/button-3.png) | Clicking on the submit icon adds an item to the list. Clicking on `Esc` or the item’s space outside the input closes the input. If user entered something inside the input and then closed the input without submitting the data then save the entered value. |
+| Loading                | ![button-loading](static/button-4.png)  | For loading state change submit icon to [Spin](/components/spin/) with XS size. Input gets the `disabled` state.                                                                                                                                              |
+| Error                  | ![button-invalid](static/button-5.png)  | If there was an error when adding, we highlight the input and write the text of the error in the tooltip.                                                                                                                                                     |
 
-- An item with an input that appears when you click on the trigger. It is higher (the height of the Input is bigger than the height of the item line), the paddings coincide with the regular item. There is no `hover`. Cursor is `default`. When clicking, the input gets the `focus` state.
+#### Button inside the item
 
-![button-focus](static/button-2.png)
+You can add an icon for an additional action on the right of the item.
 
-Clicking on the `Enter/Return` icon adds an item to the list upwards. After adding, the item becomes a trigger again. Clicking on `Esc` or the item’s space outside the input cancels the state.
+| Case          | Appearance example                        | Description                                                                                                                                                                                                                        |
+| ------------- | ----------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Delete item   | ![delete-item](static/item-delete.png)    | If a list item can be deleted, use the Trash icon.                                                                                                                                                                                 |
+| Drag and drop | ![dragging](static/dragging-dropdown.png) | For list items drag and drop use MoveAlt icon with `--gray-300` color. Show it while hovering the item and change the cursor to `move`. Read more about drag and drop of the items in [Drag and drop](/componrnts/drag-and-drop/). |
 
-![button-paddings](static/button-3.png)
+### Reset button
 
-Clicking on an existing list item selects that item and minimizes the list. At the next opening of the list, the item has a trigger state. The text previously typed by the user will be displayed when clicking on the trigger. If adding is not instantaneous, we show the spinner instead of the `Return` icon. **The input is not visually disabled, but the actions with it are unavailable.**
-
-![button-loading](static/button-4.png)
-
-If there was an error when adding, we highlight the input and write the text of the error in the tooltip.
-
-![button-invalid](static/button-5.png)
-
-### Button inside the item
-
-An icon performing a separate action may appear on the right of the item.
-
-**Item deleting.** If an item can be deleted, the basket icon is shown on the right.
-
-![delete-item](static/item-delete.png)
-
-**Drag and drop of the list items.** Lines can be swapped by dragging them up or down. A special icon is used for this purpose. When you click on it, the cursor turns to `move`.
-
-You can drag while holding the cursor over a button and moving the item down/up. A shadow appears below an item when you hold the cursor over it.
-
-The color below the item is `rgba(gray-50)`.
-
-![dragging](static/dragging-dropdown.png)
-
-@## Selected item resetting
-
-The list may contain a link-button to reset the selected value. It is always placed at the top of the list.
+You can add reset button to the list to reset the selected value or values. Place it at the top of the list.
 
 ![reset](static/reset.png)
 
-The Reset button appears only if an item from the list is selected. After you click on the item, the button disappears and the trigger is replaced by the `default` state with the placeholder.
+The reset button appears only if any item from the list is selected. After user clicks on the item, the button should hide and the trigger gets the the default value with placeholder.
 
 ![reset-scheme](static/reset-scheme.png)
 
-@## Content of the item
+@## List item content
 
-You can insert addons such as an icon, flag, label, user picture or some kind of control to the left and right of the item text.
+You can put addon before and after the text inside the list item:
 
-### Addon placed to the left
+- [Icon](/components/icon/),
+- [Flag](/components/flag/),
+- [Badge](/components/badge/),
+- user picture or avatar,
+- or even control such as [Link](/components/link/) or [Button](/components/button/).
 
-An icon, flag or user picture may be placed on the left side of the item. The icon always has the color of the text.
+### Addon before the text
 
-> 💡 Please add an icon and text to the list item in exceptional cases. For example, when it is necessary to show a colored icon of a social network, but the text should not be painted in its color.
+Before the text you can place an icon, flag or image. In this case icon always has the color of the text.
 
-![icon-addon](static/icon-addon.png)
+| Addon        | Appearance example                   |
+| ------------ | ------------------------------------ |
+| icon         | ![icon-addon](static/icon-addon.png) |
+| flag         | ![flag-addon](static/flag-addon.png) |
+| image/avatar | ![pic-addon](static/pic-addon.png)   |
 
-![flag-addon](static/flag-addon.png)
+### Addon after the text
 
-![pic-addon](static/pic-addon.png)
-
-### Addon placed to the right
-
-An addon (an icon, a link or a button) may also be placed on the right side of the item. Usually we put clickable elements to the right.
+After the text you can place either non-interactive and interactive addons: an icon, badge, switch, link or button.
 
 ![pic-addon](static/pic-addon-right1.png)
 
-When an icon indicates some additional information to the item, it is recommended to place it next to the text.
+If an icon shows additional information to the item, we recommend you placing it next to the text.
 
 ![pic-addon](static/pic-addon-right.png)
 
-### The “Info” icon
+### Info icon
 
-Informer is the `Info` icon, which follows the text of the list item. It calls a tooltip when hovering it and the cursor always changes to `help` in such cases (see examples in [Informer](/patterns/informer/)). The click zone shall be larger than the icon itself. The indent between the icon and the text is always 4px.
+Info icon shows a tooltip when hovering it (see examples in [Informer](/patterns/informer/)). We recommend you to make the icon's hover zone bigger than the icon's size. The margin between the icon and the text is always 4px.
 
 ![info-icon](static/info-icon.png)
 
 ![info-icon](static/info-icon-tooltip.png)
 
-### Value
+### Counter
 
-A numeric value may be placed to the right of the list item text. It is attached to the right edge, and its size coincides with the size of the text in the item.
+You can place a text counter after the text. It should have the same size that item's text has.
 
 ![number](static/number.png)
 
 ### Badge
 
-A badge (micro label) such as `new`, `beta`, `alpha` and others can be placed to the right of the text. The distance from the text to it is 4px. If the item with badge is selected, the badge in the trigger is not shown.
+Badge can be placed after the text. The margin between the text and the badge is always 4px. If item with badge is selected, then do not show badge in the trigger.
 
 ![badge](static/badge.png)
 
-### The secondary text
+### Secondary text
 
-Tiny additional text of color `--gray-500` may be under the item.
+You can add additional text with `--gray-500` color under the main text of the item.
 
-| Size of the list | Appearance                                  | Styles             |
+| Size of the list | Appearance example                          | Styles             |
 | ---------------- | ------------------------------------------- | ------------------ |
-| L                | ![secondary-text-l](static/secondary-l.png) | `font-size: 16px;` |
 | M                | ![secondary-text-m](static/secondary-m.png) | `font-size: 14px;` |
+| L                | ![secondary-text-l](static/secondary-l.png) | `font-size: 16px;` |
 
 @## Scroll in the dropdown
 
-Within the list of uniform options scroll appears after seven items. It is the same for all list sizes. It is also recommended to add search to such list.
-
-> 💡 It is important for the user to see all available options in the dropdowns with menu (usually there are links and different controls), and **it is not recommended to show scroll after 7 items there.**
+If DropdownMenu has more than seven items show scroll. We also recommend adding search input to such lists.
 
 ![list-scroll](static/scroll-1.png)
 
+> 💡 If you use DropdownMenu for menu then show all the items even if there more than seven items. It is important for the user in such cases to see all available options (especially if there are links and different controls). And we do not recommend to show scroll in such menus.
+
 ### Fixed item
 
-An item with a title, input, notice or a button can be fixed at the top or at the bottom. The pinned item is separated by a divider and should be fixed at scrolling.
+You can fix an item with a title, input, notice or a button on the top or at the bottom of the list. Such item should be separated by a [Divider](/components/divider/) and fixed while scrolling.
 
-**Title**. Fixed title refers to the entire Select. In this case, it is placed on top, and it necessarily has a [divider](/components/divider/).
-
-![fixed-heading](static/fixed-heading.png)
-
-**Input with search**. If the list contains more than 10 items, it is necessary to add the input with search to it. When you open the list, the input with search immediately gets the `focus` state. The text of a placeholder for this type of input is **“Start typing {parameter}”**. In this case, the search should not be performed by titles and it should work fast without submission.
-
-![fixed-input](static/fixed-input.png)
-
-**Notice**. The notice item has the divider, the color of which coincides with the style of an ordinary notice.
-
-![fixed-notice](static/fixed-notice.png)
-
-The title should be typed with the same point size as in the usual item, but in boldface. The paragraph shall be typed with the style for the secondary text.
-
-![fixed-notice-paddings](static/notice-paddings.png)
-
-**Button**. The action button or the button of the list item adding can also be pinned.
-
-![fixed-button](static/fixed-button.png)
+| Item content      | Appearance example                                                                            | Description                                                                                                                                                                           |
+| ----------------- | --------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Title             | ![fixed-heading](static/fixed-heading.png)                                                    | Fixed title refers to the entire list and it should have a [Divider](/components/divider/).                                                                                           |
+| Input with search | ![fixed-input](static/fixed-input.png)                                                        | If the list has more than 10 items, add the search input. When user opens the list, the input gets the `focus` state. For a placeholder use the text: **“Start typing {parameter}”**. |
+| Notice            | ![fixed-notice](static/fixed-notice.png) ![fixed-notice-paddings](static/notice-paddings.png) | The notice title should have the same size as the text has and `font-weight: 700;`.                                                                                                   |
+| Button            | ![fixed-button](static/fixed-button.png)                                                      |                                                                                                                                                                                       |
 
 @## Nested item
 
-The item of the list can be a folder for an embedded list. In this case, it has a chevron icon on the right (always visible).
+The item of the list can have a list of items inside. In this case, it has a ChevronRight icon after the text.
 
 ![second-level](static/second-level.png)
 
-Inside the second-level list, there may be the same elements (title, dividers and buttons) as in the parent item. It is impossible to select a folder item. However, if an item is selected inside a folder, this folder is highlighted as a selected item. Nothing happens when clicking on it. Cursor `pointer`.
-
-**The maximum level of lists nesting is three (but try to avoid nesting at all, as it is not very convenient to work with such lists)**. If you have enough space, the nested list opens to the right. If available space is not enough, it opens to the left.
-
-The nested list is shown when the user hovers over a line, then it disappears when the user hovers over another line, or when the user moves the cursor out of the zone of the entire nested list.
+**Maximum number of nesting levels is three (but try to avoid nesting at all, as it is not very comfortable to work with such lists)**. If you have enough space, the nested list drops to the right. If there is not enough space, it drops to the left.
 
 Nested groups are hidden with a delay of 0.3 seconds:
 
-- when you hover over another item of the top level;
-- when the mouse cursor is moved beyond the dropdown list;
-- when the entire select is hidden (e.g. by pressing the `Esc` button).
+- when user hovers over another item of the parent list with items;
+- when the mouse cursor is moved away from the dropdown;
+- when the entire dropdown closes (e.g. by pressing the `Esc` button).
 
-If you select a nested item, the trigger contains only its name, not the name of the parent item.
+If you select a nested item, the trigger will get only its name without the name of the parent item.
 
 @page dropdown-menu-a11y
 @page dropdown-menu-api

@@ -70,11 +70,3 @@ import { DatePicker, MonthPicker } from '@semcore/date-picker';
 ```
 
 @typescript ICalendarUnitProps
-
-@## DateRangePicker/MonthRangePicker.Apply
-
-This is a customized reset button.
-
-@## DateRangePicker/MonthRangePicker.Reset
-
-This is a customized submit button.
