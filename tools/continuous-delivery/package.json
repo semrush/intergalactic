@@ -15,6 +15,7 @@
     "fs-extra": "9.0.1",
     "marked-ast": "0.3.0",
     "marked-ast-markdown": "2.1.0",
+    "p-limit": "4.0.0",
     "semver": "5.6.0",
     "simple-git": "3.5.0",
     "tsm": "2.2.2"
