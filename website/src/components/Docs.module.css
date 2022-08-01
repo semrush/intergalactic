@@ -18,11 +18,13 @@
   font-size: 18px;
   line-height: 110%;
   margin: 24px 0 16px 0;
+  font-weight: 700;
 }
 .main h4 {
   font-size: 16px;
   line-height: 150%;
   margin: 16px 0;
+  font-weight: 700;
 }
 .tabLine {
   font-weight: 700;
