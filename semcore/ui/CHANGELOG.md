@@ -1,3 +1,17 @@
+## [12.4.1] - 2022-08-01
+
+### @semcore/date-picker
+
+- **Added** Added new button components `Apply` and `Reset` for `DateRangePicker` and `MonthRangePicker`.
+
+### @semcore/icon
+
+- **Fixed** Renamed icon from `AppBlock` to `AppsBlock`. Old name is deprecated.
+
+### @semcore/utils
+
+- **Fixed** Fixed package `.mjs` artifacts cross-imports to support modern js bundlers.
+
 ## [12.4.0] - 2022-07-25
 
 ### @semcore/d3-chart
