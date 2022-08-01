@@ -50,7 +50,7 @@ Our input has two sizes.
 | valid   | ![input-valid no-margin](static/input-valid.png)     | ![input-valid-focus no-margin](static/input-valid-focus.png)     | ![input-valid-disabled no-margin](static/input-valid-disabled.png)     |                                                        |
 | invalid | ![input-invalid no-margin](static/input-invalid.png) | ![input-invalid-focus no-margin](static/input-invalid-focus.png) | ![input-invalid-disabled no-margin](static/input-invalid-disabled.png) |                                                        |
 
-> 💡 Use `read-only` state for component that can not be interacted with, except for copy its value. Also use it for links which might be copied.
+> 💡 Use `read-only` state for component that cannot be interacted with, except for copy its value. Also use it for links which might be copied.
 >
 > Use `disabled` state if you need to show affect of one component to another.
 

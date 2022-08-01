@@ -21,7 +21,7 @@ tabName: Design
 
 You can enable the resize control for the textarea to change its size. So user can stretch only horizontally, only vertically, or both vertically and horizontally.
 
-When textarea can not be stretched, show scrollbar after a certain number of lines. **The minimum number of lines after which we recommended to use scroll is 4-5.**
+When textarea cannot be stretched, show scrollbar after a certain number of lines. **The minimum number of lines after which we recommended to use scroll is 4-5.**
 
 > 💡 **Do not make the textarea smaller than 160-200px in width and 3-4 lines in height**. It is very difficult to work with large amounts of data in sizes smaller than these are. This is especially important when such an input is basic input in a form.
 

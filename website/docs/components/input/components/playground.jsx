@@ -5,7 +5,7 @@ import PlaygroundGeneration from '@components/PlaygroundGeneration';
 import CheckM from '@semcore/icon/Check/m';
 import ArrowRightM from '@semcore/icon/ArrowRight/m';
 
-const SIZES = ['m', 'l'];
+const SIZES = ['s', 'm', 'l'];
 const STATES = ['normal', 'invalid', 'valid'];
 
 const Preview = (preview) => {
@@ -55,10 +55,12 @@ const Preview = (preview) => {
   const beforeIconMap = {
     l: <CheckM />,
     m: <CheckM />,
+    s: <CheckM />,
   };
   const afterIconMap = {
     l: <ArrowRightM />,
     m: <ArrowRightM />,
+    s: <ArrowRightM />,
   };
 
   const renderIcon = (position, size) => {
