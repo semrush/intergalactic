@@ -8,7 +8,7 @@ tabName: Design
 
 @## Description
 
-**Dropdown** is a component for displying content (form, message, et.c) dropping out of a clickable item (trigger). [Select](/components/select/), [Button](/components/button/), [Input](/components/input/) or any other component can be a trigger for dropdown.
+**Dropdown** is a component for displying content (form, message, etc.) dropping out of a clickable item (trigger). [Select](/components/select/), [Button](/components/button/), [Input](/components/input/) or any other component can be a trigger for dropdown.
 
 @## Component composition
 
@@ -59,7 +59,7 @@ Dropdown drops to the bottom position from the trigger by default (unless otherw
 @## Usage in UX/UI
 
 - Do not use dropdown inside dropdown.
-- When dropdown is opened, the trigger should be in the `active` state.
+- When dropdown is opened, the trigger should get the `active` state.
 
 ![When dropdown is opened, the trigger should be in the `active` state ](static/dropdown-trigger-yes-no.png)
 
