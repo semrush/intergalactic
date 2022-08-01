@@ -2,11 +2,17 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.35.1] - 2022-08-01
+
+### Fixed
+
+- Fixed package `.mjs` artifacts cross-imports to support modern js bundlers.
+
 ## [3.35.0] - 2022-07-19
 
 ### Fixed
 
-- Fixed pcakage compatibility with ES modules.
+- Fixed package compatibility with ES modules.
 
 ## [3.34.0] - 2022-06-16
 
