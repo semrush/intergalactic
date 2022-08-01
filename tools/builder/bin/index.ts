@@ -2,6 +2,8 @@
 
 import execa from 'execa';
 import mri from 'mri';
+import { resolve as resolvePath } from 'path';
+import { fileURLToPath } from 'url';
 
 const argv = mri<{
   source: string;
@@ -50,10 +52,14 @@ if (argv.modules) {
     `--extensions .ts,.tsx,.js,.jsx --ignore **/*.d.ts --presets @semcore/babel-preset-ui --no-babelrc --source-maps --copy-files --env-name=${envName}`,
   );
   if (argv.modules === 'cjs') {
+    const mjsImportsBabelrc = resolvePath(
+      fileURLToPath(import.meta.url),
+      '../../mjs-imports-babelrc.js',
+    );
     await runCommand(
       'BABEL',
       '',
-      `--extensions .ts,.tsx,.js,.jsx --ignore **/*.d.ts --presets @semcore/babel-preset-ui --no-babelrc --source-maps --copy-files --out-file-extension .mjs --env-name=es6`,
+      `--extensions .ts,.tsx,.js,.jsx --ignore **/*.d.ts --presets @semcore/babel-preset-ui,${mjsImportsBabelrc} --no-babelrc --source-maps --copy-files --out-file-extension .mjs --env-name=es6`,
     );
   }
   if (source.includes('jsx') || source.includes('js')) await runCommand('COPY_TYPES', '');
