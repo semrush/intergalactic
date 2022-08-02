@@ -54,3 +54,6 @@ export * from './Bubble';
 
 export { default as ReferenceLine } from './ReferenceLine';
 export * from './ReferenceLine';
+
+export { default as Venn } from './Venn';
+export * from './Venn';

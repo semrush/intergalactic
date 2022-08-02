@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.2.4] - 2022-08-02
+
+### Fix
+
+- `Venn` chart was not mentioned in exported types.
+
 ## [2.2.3] - 2022-07-22
 
 ### Changed
