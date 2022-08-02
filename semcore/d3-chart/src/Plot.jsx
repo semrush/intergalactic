@@ -58,7 +58,7 @@ class PlotRoot extends Component {
     const { scale, data, width, height } = this.asProps;
 
     const yScaleDomain = scale?.[1]?.domain?.();
-    if (yScaleDomain) {
+    if (yScaleDomain?.length && data?.length) {
       this.dataHintsHandler.setPointsDensity(
         data.length / width,
         Math.abs(yScaleDomain[1] - yScaleDomain[0]) / height,
