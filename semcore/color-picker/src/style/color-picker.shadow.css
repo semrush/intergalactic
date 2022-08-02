@@ -1,13 +1,10 @@
 @import '@semcore/utils/style/var.css';
 
 SColorPickerPopper {
-  display: flex;
-  flex-wrap: wrap;
-  width: 240px;
+  /*display: flex;
+  flex-wrap: wrap;*/
+  max-width: 240px;
   padding: 16px;
-  border: 1px solid var(--gray-100);
-  box-shadow: var(--box-shadow-popper);
-  border-radius: 6px;
 }
 
 SItemContainer {
@@ -42,13 +39,14 @@ SItem {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: relative;
   width: 22px;
   height: 22px;
   border-radius: 50%;
   background: var(--value);
 }
 
-SItem[value='#'] {
+SItem:not([value]) {
   border: 1px solid var(--gray-100);
 }
 
@@ -120,7 +118,7 @@ SCrossIcon {
   }
 }
 
-SWihthoutColorItemContainer {
+/*SWihthoutColorItemContainer {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -145,11 +143,11 @@ SWihthoutColorItem {
   height: 21px;
   border-radius: 50%;
   border: 1px solid var(--gray-100);
-}
+}*/
 
 SLine {
   position: absolute;
-  top: 35px;
+  top: 10px;
   width: 22px;
   height: 1px;
   background: var(--gray-200);

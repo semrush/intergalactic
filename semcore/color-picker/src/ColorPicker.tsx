@@ -3,8 +3,8 @@ import createComponent, { Component, sstyled, Root } from '@semcore/core';
 import Dropdown from '@semcore/dropdown';
 import { Box } from '@semcore/flex-box';
 import ChevronDownM from '@semcore/icon/ChevronDown/m';
-import PaletteManager from './PaletteManager';
-import { Item, Colors } from './components';
+import PaletteManagerRoot, { InputColor } from './PaletteManager';
+import { Item, Colors, ColorsCustom } from './components';
 
 import style from './style/color-picker.shadow.css';
 
@@ -16,6 +16,7 @@ class ColorPickerRoot extends Component {
   static defaultProps = () => ({
     defaultValue: null,
     colors: [
+      null,
       '#2BB3FF',
       '#8649E1',
       '#C695FF',
@@ -46,52 +47,28 @@ class ColorPickerRoot extends Component {
     this.handlers.value(value, e);
 
   getTriggerProps() {
-    const { value, styles } = this.asProps;
-
-    return {
-      value,
-      styles,
-    };
-  }
-
-  getPopperProps() {
-    const { styles, colors, onValueChange, value, displayLabel } = this.asProps;
-
-    return {
-      colors,
-      onValueChange,
-      selectedValue: value,
-      styles,
-      displayLabel,
-    };
-  }
-
-  getItemProps(props) {
     const { value } = this.asProps;
 
     return {
-      onClick: this.bindHandlerItemClick(props.value),
-      selected: value === props.value,
+      value,
     };
   }
 
   getColorsProps() {
-    const { value, colors, onValueChange, displayLabel } = this.asProps;
+    const { colors } = this.asProps;
 
     return {
-      onValueChange,
-      selectedValue: value,
       colors,
-      displayLabel,
     };
   }
 
-  getPaletteManagerProps() {
-    const { value, onValueChange } = this.asProps;
+  getItemProps(props) {
+    const { value, displayLabel } = this.asProps;
 
     return {
-      value,
-      onValueChange,
+      displayLabel,
+      onClick: this.bindHandlerItemClick(props.value),
+      selected: value === props.value,
     };
   }
 
@@ -118,17 +95,17 @@ export function Trigger(props) {
   );
 }
 
-function DefaultTrigger(props) {
+const DefaultTrigger = React.forwardRef(function (props, ref) {
   const SDefaultTrigger = Root;
   const STriggerCircle = Box;
 
   return sstyled(props.styles)(
-    <SDefaultTrigger render={Box}>
+    <SDefaultTrigger render={Box} ref={ref}>
       <STriggerCircle value={props.value} />
       <ChevronDownM />
     </SDefaultTrigger>,
   ) as React.ReactElement;
-}
+});
 
 export function Popper(props) {
   const { styles, Children } = props;
@@ -141,9 +118,9 @@ export function Popper(props) {
   );
 }
 
-Popper.defaultProps = (props) => {
+Popper.defaultProps = () => {
   return {
-    children: <Colors {...props} />,
+    children: <ColorPicker.Colors />,
   };
 };
 
@@ -152,7 +129,14 @@ const ColorPicker = createComponent(ColorPickerRoot, {
   Popper,
   Item,
   Colors,
-  PaletteManager,
 });
 
+const PaletteManager = createComponent(PaletteManagerRoot, {
+  // Divider,
+  Item: ColorPicker.Item,
+  Colors: ColorsCustom,
+  InputColor,
+});
+
+export { PaletteManager };
 export default ColorPicker;

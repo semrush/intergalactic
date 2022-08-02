@@ -1,39 +1,26 @@
 import React from 'react';
-import { Root, sstyled } from '@semcore/core';
+import { Root, sstyled, CORE_INSTANCE } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
 import { opacity } from '@semcore/utils/lib/color';
 import MathPlusM from '@semcore/icon/MathPlus/m';
-import CloseM from '@semcore/icon/Close/m';
-import CheckM from '@semcore/icon/Check/m';
 import Button from '@semcore/button';
-import Input from '@semcore/input';
-import { IItemProps, IColorsProps, IPlusButtonProps, IInputColorProps } from '..';
-
-function isValidHex(hex: string) {
-  const reg = /^#([0-9a-f]{3}){1,2}$/i;
-  return reg.test('#' + hex);
-}
+import ColorPicker, {
+  PaletteManager,
+  IItemProps,
+  IColorsProps,
+  IPlusButtonProps,
+  IInputColorProps,
+} from '..';
 
 export function Item(props: IItemProps) {
-  const { styles, value, onColorsChange, colors, displayLabel, editable, selected } = props;
+  const { Children, children, styles, value, displayLabel, editable, selected, onRemove } = props;
   const SItemContainer = Root;
   const SItem = Box;
-  const SLabel = Box;
+  const SLabel = 'div';
+  const SLine = 'div';
 
   return sstyled(styles)(
     <SItemContainer render={Box} selected={selected}>
-      {editable && (
-        <CrossIcon
-          styles={styles}
-          /** TODO: получать функцию onClick сверху */
-          onClick={(event: React.SyntheticEvent) => {
-            const newColors = colors.filter((color) => color !== value);
-            onColorsChange(newColors, event);
-            event.stopPropagation();
-            event.preventDefault();
-          }}
-        />
-      )}
       <SItem
         render={Box}
         value={value}
@@ -56,10 +43,14 @@ export function Item(props: IItemProps) {
             </svg>
           </SLabel>
         )}
+        {!value && <SLine />}
+        {Children ? <Children /> : children}
       </SItem>
+      {editable && <CrossIcon styles={styles} onClick={onRemove} />}
     </SItemContainer>,
   ) as React.ReactElement;
 }
+
 /** TODO: удалить компонент, перенести в Item */
 function CrossIcon(props) {
   const { styles } = props;
@@ -85,65 +76,50 @@ function CrossIcon(props) {
 }
 
 export function Colors(props: IColorsProps) {
-  const {
-    styles,
-    editable,
-    selectedValue,
-    onValueChange,
-    value,
-    colors,
-    onColorsChange,
-    displayLabel,
-    onPlusButtonClick,
-  } = props;
+  const { Children, styles, colors } = props;
   const SColors = Root;
 
   return sstyled(styles)(
     <SColors render={Box}>
-      {!editable && (
-        <WihthoutColorItem
-          styles={styles}
-          selectedValue={selectedValue}
-          onClick={(event: React.SyntheticEvent) => {
-            onValueChange(null, event);
-          }}
-          value={value}
-        />
+      {Children.origin ? (
+        <Children />
+      ) : (
+        colors.map((color) => <ColorPicker.Item value={color} key={color} />)
       )}
-      {colors.map((color) => (
-        <Item
-          {...props}
-          value={color}
-          key={color}
-          onClick={(event: React.SyntheticEvent) => {
-            onValueChange(color, event);
-          }}
-          editable={editable}
-          onColorsChange={onColorsChange}
-          colors={colors}
-          displayLabel={displayLabel}
-          selected={selectedValue === color}
-        />
-      ))}
-      {editable && <PlusButton styles={styles} onClick={onPlusButtonClick} />}
+    </SColors>,
+  ) as React.ReactElement;
+}
+
+export function ColorsCustom(props: IColorsProps) {
+  const { Children, styles, colors, onPlusButtonClick } = props;
+  const SColors = Root;
+
+  return sstyled(styles)(
+    <SColors render={Box}>
+      {Children.origin ? (
+        <Children />
+      ) : (
+        colors.map((color) => <PaletteManager.Item value={color} key={color} />)
+      )}
+      <PlusButton styles={styles} onClick={onPlusButtonClick} />
     </SColors>,
   ) as React.ReactElement;
 }
 
 /** TODO: удалить компонент, перенести в Colors */
-function WihthoutColorItem(props) {
-  const { selectedValue, styles } = props;
-  const SWihthoutColorItemContainer = Root;
-  const SWihthoutColorItem = Box;
-  const SLine = Box;
-
-  return sstyled(styles)(
-    <SWihthoutColorItemContainer render={Box} selected={!selectedValue}>
-      <SWihthoutColorItem render={Box} />
-      <SLine render={Box} />
-    </SWihthoutColorItemContainer>,
-  ) as React.ReactElement;
-}
+// function WihthoutColorItem(props) {
+//   const { selectedValue, styles } = props;
+//   const SWihthoutColorItemContainer = Root;
+//   const SWihthoutColorItem = Box;
+//   const SLine = Box;
+//
+//   return sstyled(styles)(
+//     <SWihthoutColorItemContainer render={Box} selected={!selectedValue}>
+//       <SWihthoutColorItem render={Box} />
+//       <SLine render={Box} />
+//     </SWihthoutColorItemContainer>,
+//   ) as React.ReactElement;
+// }
 
 export function PlusButton(props: IPlusButtonProps) {
   const SPlusButton = Root;
@@ -152,63 +128,5 @@ export function PlusButton(props: IPlusButtonProps) {
     <SPlusButton render={Button} theme="muted" use="tertiary">
       <MathPlusM color="#6C6E79" />
     </SPlusButton>,
-  ) as React.ReactElement;
-}
-
-export function InputColor(props: IInputColorProps) {
-  const { inputValue, onInputValueChange, styles, colors, onColorsChange } = props;
-  const [validState, setValidState] = React.useState<'normal' | 'valid' | 'invalid'>('normal');
-
-  const SInputValue = Root;
-  const SInput = Box;
-
-  return sstyled(styles)(
-    <SInput>
-      <Input ml={1} w={135} state={validState}>
-        <SInputValue
-          render={Input.Value}
-          value={inputValue}
-          placeholder="FFFFFF"
-          onChange={(value: string, event: React.SyntheticEvent) => {
-            if (value.length !== 0) {
-              if (isValidHex(value)) {
-                setValidState('normal');
-              } else {
-                setValidState('invalid');
-              }
-            } else {
-              setValidState('normal');
-            }
-            onInputValueChange(value, event);
-          }}
-          maxLength={6}
-        />
-        <Input.Addon
-          role="button"
-          interactive
-          onClick={(event: React.SyntheticEvent) => {
-            if (inputValue.length != 0 && validState === 'normal') {
-              onColorsChange(
-                Array.from(new Set([...colors, `#${inputValue.toLowerCase()}`])),
-                event,
-              );
-              onInputValueChange('', event);
-            }
-          }}
-          p="0"
-        >
-          <CheckM color="#00C192" />
-        </Input.Addon>
-        <Input.Addon
-          role="button"
-          interactive
-          onClick={(event: React.SyntheticEvent) => {
-            onInputValueChange('', event);
-          }}
-        >
-          <CloseM />
-        </Input.Addon>
-      </Input>
-    </SInput>,
   ) as React.ReactElement;
 }
