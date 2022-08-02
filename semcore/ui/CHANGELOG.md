@@ -1,3 +1,13 @@
+## [12.4.2] - 2022-08-02
+
+### @semcore/d3-chart
+
+- **Fix** `Venn` chart was not mentioned in exported types.
+
+### @semcore/utils
+
+- **Fixed** Fixed package `.mjs` artifacts cross-imports to support modern js bundlers.
+
 ## [12.4.1] - 2022-08-01
 
 ### @semcore/date-picker
