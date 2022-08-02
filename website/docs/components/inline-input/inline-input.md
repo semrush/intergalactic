@@ -22,7 +22,7 @@ tabName: Design
 
 ### Sizes
 
-You can set height and font size for the InlineInput component. So the component itself does not have a set sizes.
+InlineInput itself does not have a set sizes. You can set its height and font size that suit your use case.
 
 ### Styles
 
