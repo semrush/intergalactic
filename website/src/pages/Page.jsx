@@ -102,6 +102,7 @@ const PageView = ({ route, page }) => {
               title={rootRoute.title}
               category={category.title}
               fileSource={rootRoute.metadata?.fileSource}
+              componentPkg={rootRoute.metadata?.componentPkg}
               beta={rootRoute.metadata?.beta}
               sourcePath={page.sourcePath}
             />
