@@ -57,8 +57,8 @@ class PaletteManagerRoot extends Component {
   }
 
   render() {
-    const SPaletteManager = Root;
     const { inputValue, children, Children } = this.asProps;
+    const SPaletteManager = Root;
 
     if (children) {
       return sstyled(this.asProps.styles)(
@@ -73,7 +73,7 @@ class PaletteManagerRoot extends Component {
         <PaletteManager.Divider mt={4} mb={4} />
         <PaletteManager.Colors />
         <SPaletteManager render={Box}>
-          <PaletteManager.Item value={`#${inputValue}`} needBorder={true} withoutHover={true} />
+          <PaletteManager.Item value={`#${inputValue}`} withoutHover={true} />
           <div style={{ display: 'flex', alignItems: 'center' }}>
             #<PaletteManager.InputColor ref={this.refInput} />
           </div>
@@ -92,5 +92,9 @@ const PaletteManager = createComponent(PaletteManagerRoot, {
 
 export default PaletteManager;
 
+// displayLabel for Colors in PaletteManager
+// unit tests
+// examples
+// a11y
 // fix styles
 // everywhere add types

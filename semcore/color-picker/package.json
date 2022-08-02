@@ -1,12 +1,12 @@
 {
   "name": "@semcore/color-picker",
   "description": "SEMRush ColorPicker Component",
-  "version": "1.0.0-0",
+  "version": "1.0.0",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
   "sideEffects": false,
-  "author": "Roman Lysov <r.lysov@semrush.com>",
+  "author": "UI-kit team <ui-kit-team@semrush.com>",
   "license": "MIT",
   "scripts": {
     "build": "build --source=js",
@@ -19,6 +19,7 @@
     "@semcore/flex-box": "^4",
     "@semcore/icon": "^2.19.3",
     "@semcore/input": "^3.0.0",
+    "@semcore/popper": "^4",
     "@semcore/utils": "^3.15"
   },
   "peerDependencies": {

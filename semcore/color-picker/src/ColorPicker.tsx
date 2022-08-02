@@ -15,7 +15,7 @@ class ColorPickerRoot extends Component {
 
   static defaultProps = () => ({
     defaultValue: null,
-    defaultColors: [
+    colors: [
       '#2BB3FF',
       '#8649E1',
       '#C695FF',
@@ -39,21 +39,11 @@ class ColorPickerRoot extends Component {
   uncontrolledProps() {
     return {
       value: null,
-      colors: [
-        '#2BB3FF',
-        '#8649E1',
-        '#C695FF',
-        '#F67CF2',
-        '#FFA9FA',
-        '#FF8786',
-        '#FF8C43',
-        '#FDC23C',
-        '#66C030',
-        '#9BD85D',
-        '#C7EE96',
-      ],
     };
   }
+
+  bindHandlerItemClick = (value: string) => (e: React.SyntheticEvent) =>
+    this.handlers.value(value, e);
 
   getTriggerProps() {
     const { value, styles } = this.asProps;
@@ -80,9 +70,7 @@ class ColorPickerRoot extends Component {
     const { value } = this.asProps;
 
     return {
-      onClick: (e) => {
-        this.handlers.value(props.value, e);
-      },
+      onClick: this.bindHandlerItemClick(props.value),
       selected: value === props.value,
     };
   }
@@ -111,6 +99,8 @@ class ColorPickerRoot extends Component {
     const { styles, Children } = this.asProps;
 
     return sstyled(styles)(
+      // maybe it is better to delete stretch from here, then users can themselve choose width and different
+      // amount of colors will look good because of flex wrap. parent component will provide width
       <Root render={Dropdown} stretch={false}>
         <Children />
       </Root>,
@@ -122,33 +112,33 @@ export function Trigger(props) {
   const { Children } = props;
 
   return (
-    <Root render={Dropdown.Trigger} tag="div">
+    <Root render={Dropdown.Trigger} tag={DefaultTrigger}>
       <Children />
     </Root>
   );
 }
 
-Trigger.defaultProps = (props) => {
-  return {
-    children: <DefaultTrigger {...props} />,
-  };
-};
-
 function DefaultTrigger(props) {
   const SDefaultTrigger = Root;
-  const STriggerCircle = Root;
+  const STriggerCircle = Box;
 
   return sstyled(props.styles)(
     <SDefaultTrigger render={Box}>
-      <STriggerCircle value={props.value} needBorder={props.value ? false : true} />
+      <STriggerCircle value={props.value} />
       <ChevronDownM />
     </SDefaultTrigger>,
   ) as React.ReactElement;
 }
 
 export function Popper(props) {
+  const { styles, Children } = props;
   const SColorPickerPopper = Root;
-  return sstyled(props.styles)(<SColorPickerPopper render={Dropdown.Popper} />);
+
+  return sstyled(styles)(
+    <SColorPickerPopper render={Dropdown.Popper}>
+      <Children />
+    </SColorPickerPopper>,
+  );
 }
 
 Popper.defaultProps = (props) => {

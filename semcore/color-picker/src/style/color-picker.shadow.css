@@ -48,7 +48,7 @@ SItem {
   background: var(--value);
 }
 
-SItem[needBorder] {
+SItem[value='#'] {
   border: 1px solid var(--gray-100);
 }
 
@@ -98,7 +98,7 @@ STriggerCircle {
   border: 1px solid transparent;
 }
 
-STriggerCircle[needBorder] {
+STriggerCircle:not([value]) {
   border: 1px solid var(--gray-100);
 }
 

@@ -7,60 +7,25 @@ import CloseM from '@semcore/icon/Close/m';
 import CheckM from '@semcore/icon/Check/m';
 import Button from '@semcore/button';
 import Input from '@semcore/input';
+import { IItemProps, IColorsProps, IPlusButtonProps, IInputColorProps } from '..';
 
 function isValidHex(hex: string) {
   const reg = /^#([0-9a-f]{3}){1,2}$/i;
   return reg.test('#' + hex);
 }
 
-export interface IItemProps {
-  value: string;
-  selectedValue: null | string;
-  styles: Record<string, string>;
-  onClick: (event: React.SyntheticEvent) => void;
-  editable?: boolean;
-  colors?: string[];
-  displayLabel?: boolean;
-  onColorsChange?: (value: string[], event: React.SyntheticEvent) => void;
-}
-
-export interface IColorsProps {
-  value: string;
-  selectedValue: null | string;
-  styles: Record<string, string>;
-  colors: string[];
-  onValueChange: (value: string, event: React.SyntheticEvent) => void;
-  editable: boolean;
-  displayLabel: boolean;
-  onPlusButtonClick?: (event: React.SyntheticEvent) => void;
-  onColorsChange?: (value: string[], event: React.SyntheticEvent) => void;
-}
-
-export interface IPlusButtonProps {
-  styles: Record<string, string>;
-  onClick: (event: React.SyntheticEvent) => void;
-}
-
-export interface IInputColorProps {
-  styles: Record<string, string>;
-  inputValue: string;
-  onClick: (event: React.SyntheticEvent) => void;
-  onInputValueChange: (value: string, event: React.SyntheticEvent) => void;
-  colors: string[];
-  onColorsChange: (value: string[], event: React.SyntheticEvent) => void;
-}
-
 export function Item(props: IItemProps) {
-  const { styles, selectedValue, value, onColorsChange, colors, displayLabel, editable } = props;
-  const SItem = Root;
+  const { styles, value, onColorsChange, colors, displayLabel, editable, selected } = props;
   const SItemContainer = Root;
-  const SLabel = Root;
+  const SItem = Box;
+  const SLabel = Box;
 
   return sstyled(styles)(
-    <SItemContainer render={Box} selected={selectedValue === value}>
+    <SItemContainer render={Box} selected={selected}>
       {editable && (
         <CrossIcon
           styles={styles}
+          /** TODO: получать функцию onClick сверху */
           onClick={(event: React.SyntheticEvent) => {
             const newColors = colors.filter((color) => color !== value);
             onColorsChange(newColors, event);
@@ -95,7 +60,7 @@ export function Item(props: IItemProps) {
     </SItemContainer>,
   ) as React.ReactElement;
 }
-
+/** TODO: удалить компонент, перенести в Item */
 function CrossIcon(props) {
   const { styles } = props;
   const SCrossIcon = Root;
@@ -157,6 +122,7 @@ export function Colors(props: IColorsProps) {
           onColorsChange={onColorsChange}
           colors={colors}
           displayLabel={displayLabel}
+          selected={selectedValue === color}
         />
       ))}
       {editable && <PlusButton styles={styles} onClick={onPlusButtonClick} />}
@@ -164,11 +130,12 @@ export function Colors(props: IColorsProps) {
   ) as React.ReactElement;
 }
 
+/** TODO: удалить компонент, перенести в Colors */
 function WihthoutColorItem(props) {
   const { selectedValue, styles } = props;
   const SWihthoutColorItemContainer = Root;
-  const SWihthoutColorItem = Root;
-  const SLine = Root;
+  const SWihthoutColorItem = Box;
+  const SLine = Box;
 
   return sstyled(styles)(
     <SWihthoutColorItemContainer render={Box} selected={!selectedValue}>
@@ -202,7 +169,7 @@ export function InputColor(props: IInputColorProps) {
           render={Input.Value}
           value={inputValue}
           placeholder="FFFFFF"
-          onChange={(value, event) => {
+          onChange={(value: string, event: React.SyntheticEvent) => {
             if (value.length !== 0) {
               if (isValidHex(value)) {
                 setValidState('normal');
@@ -219,7 +186,7 @@ export function InputColor(props: IInputColorProps) {
         <Input.Addon
           role="button"
           interactive
-          onClick={(event) => {
+          onClick={(event: React.SyntheticEvent) => {
             if (inputValue.length != 0 && validState === 'normal') {
               onColorsChange(
                 Array.from(new Set([...colors, `#${inputValue.toLowerCase()}`])),
@@ -235,7 +202,7 @@ export function InputColor(props: IInputColorProps) {
         <Input.Addon
           role="button"
           interactive
-          onClick={(event) => {
+          onClick={(event: React.SyntheticEvent) => {
             onInputValueChange('', event);
           }}
         >
