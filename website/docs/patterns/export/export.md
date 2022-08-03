@@ -22,7 +22,7 @@ To export data, use a button that the user can click to set up export and/or dow
 
 ![compact export trigger](static/short-export.png)
 
-- Use compact version if there's not enough space for the default version.
+- Use compact version if there's not enough space for the default version. Do not forget to add tooltip with its label so the user will know what this button does.
 - Export button opens a dropdown menu with the form.
 
 ### Expanded version
