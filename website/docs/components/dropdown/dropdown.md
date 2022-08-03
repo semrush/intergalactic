@@ -8,7 +8,7 @@ tabName: Design
 
 @## Description
 
-**Dropdown** is a component for displying content (form, message, etc.) dropping out of a clickable item (trigger). [Select](/components/select/), [Button](/components/button/), [Input](/components/input/) or any other component can be a trigger for dropdown.
+**Dropdown** is a component for displaying content (form, message, etc.) dropping out of a clickable item (trigger). [Select](/components/select/), [Button](/components/button/), [Input](/components/input/) or any other component can be a trigger for dropdown.
 
 @## Component composition
 
