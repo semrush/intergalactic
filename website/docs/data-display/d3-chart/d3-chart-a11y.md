@@ -62,7 +62,7 @@ To make sure your users get a meaningful data summary, provide a `locale` proper
 ### Best practices
 
 1. Make sure to add both the `<XAxis.Title>...<XAxis.Title>` and the `<YAxis.Title>...</YAxis.Title>` component. These components help the summarizer generate a better chart summary.
-2. Check that the generated summary is present using the `Tab` key.
+2. Check that the generated summary describes your chart correctly. To do that, press Tab to see the text and review it.
 3. Make sure that all the information in the tooltips is also provided in the `data` property of `<Plot />`.
 4. If you are redefining children rendering of the `<XAxis.Ticks>` or `<YAxis.Ticks>` component, return both the `children` and the `value` properties. More on this below.
 5. Only use chart interactivity for visual, unimportant effects.
@@ -120,4 +120,4 @@ Data summarization is performed on the client side in linear time, linear memory
 
 ## How to contribute to the chart accessibility module
 
-If you are interested in expanding the charts accessibility module for your needs or in ejecting the accessibility module into a separated package, feel free to open a pull request (link to repo). We will react to it sooner.
+If you are interested in expanding the charts accessibility module for your needs or in ejecting the accessibility module into a separated package, feel free to [open a pull request](https://github.com/semrush/intergalactic/tree/master/semcore/d3-chart/src/a11y). We will react to it sooner.
