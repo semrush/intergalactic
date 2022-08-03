@@ -1,19 +1,7 @@
 import glob from 'fast-glob';
 import { readFile } from 'fs/promises';
-import { dirname as resolveDirname, resolve as resolvePath } from 'path';
+import { resolve as resolvePath } from 'path';
 import { parseMarkdownMeta, removeMarkdownMeta } from './utils';
-import { fileURLToPath } from 'url';
-
-const __dirname = resolveDirname(fileURLToPath(import.meta.url));
-const repoRoot = resolvePath(__dirname, '../../');
-
-const getPackageData = async (fileSource) => {
-  const pkgFileData = await readFile(
-    resolvePath(repoRoot, 'semcore', fileSource, 'package.json'),
-    'utf-8',
-  );
-  return JSON.parse(pkgFileData);
-};
 
 const serializeRoutes = (routes: { [route: string]: number[] }) => {
   const serializedRoutes = Object.entries(routes).map(
@@ -45,21 +33,11 @@ export const buildNavigation = async (docsDir: string) => {
 
     return lines.filter((line) => line.length > 0 && !line.startsWith('@page ')).length > 0;
   });
-  const metas = await Promise.all(
-    fileMetasList.map(async (meta) => {
-      let pkg = meta.fileSource ? await getPackageData(meta.fileSource) : undefined;
-
-      return {
-        ...meta,
-        componentPkg: pkg,
-      };
-    }),
-  );
   const navigationMap = Object.fromEntries(
     filesList.map((path, index) => [
       path,
       {
-        meta: metas[index],
+        meta: fileMetasList[index],
         subPages: fileSubPagesList[index],
         dir: dirsList[index],
         hasContent: hasContentMap[index],

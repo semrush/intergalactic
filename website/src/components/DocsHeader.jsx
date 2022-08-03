@@ -23,8 +23,8 @@ const tooltipStyles = css`
 `;
 
 export default function (props) {
-  const { title, category, fileSource, componentPkg, sourcePath, beta } = props;
-  console.log(componentPkg.version);
+  const { title, category, fileSource, sourcePath, beta } = props;
+
   return (
     <Box tag="header" mb={10}>
       <h2 className={styles.title}>
