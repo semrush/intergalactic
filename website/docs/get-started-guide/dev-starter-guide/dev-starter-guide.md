@@ -2,7 +2,7 @@
 title: For developers
 ---
 
-@## Semcore
+@## @semcore/ui
 
 Here you will find a collection of the main principles and ideas that our library is based on. The documentation is divided into sections that range from simple and fundamental concepts (for the library) to more complex and advanced stuff.
 

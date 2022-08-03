@@ -41,7 +41,7 @@ module.exports = {
             options: {
               babelrc: false, // is u use .babelrc
               configFile: false, // if u use babel.config.js, doesnt affect babelrc option https://babeljs.io/docs/en/options#configfile
-              plugins: [['@semcore/babel-plugin-react-semcore', { media: true }]],
+              plugins: ['@semcore/babel-plugin-react-semcore'],
             },
           },
         ],
