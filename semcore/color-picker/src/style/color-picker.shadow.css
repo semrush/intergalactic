@@ -1,8 +1,6 @@
 @import '@semcore/utils/style/var.css';
 
 SColorPickerPopper {
-  /*display: flex;
-  flex-wrap: wrap;*/
   max-width: 240px;
   padding: 16px;
 }
@@ -21,13 +19,6 @@ SItemContainer {
   &:hover {
     cursor: pointer;
     border: 1px solid var(--gray-100);
-  }
-}
-
-SItemContainer[withoutHover] {
-  &:hover {
-    cursor: default;
-    border: 1px solid transparent;
   }
 }
 
@@ -50,6 +41,10 @@ SItem:not([value]) {
   border: 1px solid var(--gray-100);
 }
 
+SItem[value='#'] {
+  border: 1px solid var(--gray-100);
+}
+
 SItem[displayLabel] {
   background: var(--lightBackground);
 }
@@ -68,6 +63,11 @@ SPaletteManager {
   margin-top: 12px;
 }
 
+SInputContainer {
+  display: flex;
+  align-items: center;
+}
+
 SPlusButton {
   display: flex;
   align-items: center;
@@ -76,6 +76,11 @@ SPlusButton {
   height: 28px;
   margin-left: 2px;
   border-radius: 50% !important;
+
+  &:hover {
+    background-color: var(--gray-100);
+    cursor: pointer;
+  }
 }
 
 SDefaultTrigger {
@@ -100,7 +105,7 @@ STriggerCircle:not([value]) {
   border: 1px solid var(--gray-100);
 }
 
-SCrossIcon {
+SCloseIcon {
   position: absolute;
   width: 12px;
   height: 12px;
@@ -117,33 +122,6 @@ SCrossIcon {
     opacity: 100%;
   }
 }
-
-/*SWihthoutColorItemContainer {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 28px;
-  height: 28px;
-  margin: 2px;
-  border-radius: 50%;
-  border: 1px solid transparent;
-
-  &:hover {
-    cursor: pointer;
-    border: 1px solid var(--gray-100);
-  }
-}
-
-SWihthoutColorItemContainer[selected] {
-  border: 1px solid var(--blue-300);
-}
-
-SWihthoutColorItem {
-  width: 21px;
-  height: 21px;
-  border-radius: 50%;
-  border: 1px solid var(--gray-100);
-}*/
 
 SLine {
   position: absolute;

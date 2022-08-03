@@ -1,8 +1,8 @@
 import { CProps, ReturnEl } from '@semcore/core';
-// import { Box, IBoxProps } from '@semcore/flex-box';
+import { IBoxProps } from '@semcore/flex-box';
 import Popper, { IPopperContext, IPopperHandlers } from '@semcore/popper';
 
-export interface IItemProps {
+export interface IItemProps extends IBoxProps {
   value: string;
   selected?: boolean;
   styles?: Record<string, string>;
@@ -11,9 +11,11 @@ export interface IItemProps {
   colors?: string[];
   displayLabel?: boolean;
   onColorsChange?: (value: string[], event: React.SyntheticEvent) => void;
+  onRemove?: () => void;
+  // Children?: React.FC;
 }
 
-export interface IColorsProps {
+export interface IColorsProps extends IBoxProps {
   value?: string;
   selectedValue?: null | string;
   styles?: Record<string, string>;
@@ -23,6 +25,7 @@ export interface IColorsProps {
   displayLabel?: boolean;
   onPlusButtonClick?: (event: React.SyntheticEvent) => void;
   onColorsChange?: (value: string[], event: React.SyntheticEvent) => void;
+  // Children?: React.FC;
 }
 
 export interface IPlusButtonProps {
@@ -41,7 +44,7 @@ export interface IInputColorProps {
 
 export interface IColorPickerProps {
   value: string;
-  onValueChange: (value: string, event: React.SyntheticEvent) => void;
+  onChange: (value: string, event: React.SyntheticEvent) => void;
   displayLabel?: boolean;
 }
 

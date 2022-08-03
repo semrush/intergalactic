@@ -3,8 +3,8 @@ import createComponent, { Component, sstyled, Root } from '@semcore/core';
 import Dropdown from '@semcore/dropdown';
 import { Box } from '@semcore/flex-box';
 import ChevronDownM from '@semcore/icon/ChevronDown/m';
-import PaletteManagerRoot, { InputColor } from './PaletteManager';
-import { Item, Colors, ColorsCustom } from './components';
+import PaletteManagerRoot from './PaletteManager';
+import { Item, Colors, ColorsCustom, InputColor } from './components';
 
 import style from './style/color-picker.shadow.css';
 
@@ -76,8 +76,6 @@ class ColorPickerRoot extends Component {
     const { styles, Children } = this.asProps;
 
     return sstyled(styles)(
-      // maybe it is better to delete stretch from here, then users can themselve choose width and different
-      // amount of colors will look good because of flex wrap. parent component will provide width
       <Root render={Dropdown} stretch={false}>
         <Children />
       </Root>,
@@ -102,7 +100,7 @@ const DefaultTrigger = React.forwardRef(function (props, ref) {
   return sstyled(props.styles)(
     <SDefaultTrigger render={Box} ref={ref}>
       <STriggerCircle value={props.value} />
-      <ChevronDownM />
+      <ChevronDownM color="#191B23" />
     </SDefaultTrigger>,
   ) as React.ReactElement;
 });
@@ -132,7 +130,6 @@ const ColorPicker = createComponent(ColorPickerRoot, {
 });
 
 const PaletteManager = createComponent(PaletteManagerRoot, {
-  // Divider,
   Item: ColorPicker.Item,
   Colors: ColorsCustom,
   InputColor,
