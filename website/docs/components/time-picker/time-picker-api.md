@@ -6,7 +6,7 @@ fileSource: time-picker
 @## Time picker
 
 ```jsx
-import Timepicker from '@semcore/time-picker';
+import Timepicker from '@semcore/ui/time-picker';
 ```
 
 @typescript ITimePickerProps
@@ -16,7 +16,7 @@ import Timepicker from '@semcore/time-picker';
 @typescript ITimePickerItemProps
 
 ```jsx
-import Timepicker from '@semcore/time-picker';
+import Timepicker from '@semcore/ui/time-picker';
 <Timepicker>
   <Timepicker.Hours />
   <Timepicker.Minutes />
@@ -28,7 +28,7 @@ import Timepicker from '@semcore/time-picker';
 @typescript ITimePickerFormatProps
 
 ```jsx
-import Timepicker from '@semcore/time-picker';
+import Timepicker from '@semcore/ui/time-picker';
 <Timepicker.Format />;
 ```
 
@@ -37,6 +37,6 @@ import Timepicker from '@semcore/time-picker';
 It is a usual `span`-element, it takes the HTML-attributes available for it.
 
 ```jsx
-import Timepicker from '@semcore/time-picker';
+import Timepicker from '@semcore/ui/time-picker';
 <Timepicker.Separator />;
 ```

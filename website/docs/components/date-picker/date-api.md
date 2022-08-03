@@ -8,7 +8,7 @@ fileSource: date-picker
 Widget for selecting the date/month.
 
 ```jsx
-import { DatePicker, MonthPicker } from '@semcore/date-picker';
+import { DatePicker, MonthPicker } from '@semcore/ui/date-picker';
 <DatePicker />;
 <MonthPicker />;
 ```
@@ -20,7 +20,7 @@ import { DatePicker, MonthPicker } from '@semcore/date-picker';
 Widget for selecting the range of dates/months.
 
 ```jsx
-import { DateRangePicker, MonthRangePicker } from '@semcore/date-picker';
+import { DateRangePicker, MonthRangePicker } from '@semcore/ui/date-picker';
 <DateRangePicker />;
 <MonthRangePicker />;
 ```
@@ -32,7 +32,7 @@ import { DateRangePicker, MonthRangePicker } from '@semcore/date-picker';
 Trigger button, exists by default. `DateRangePicker` has the same interface.
 
 ```jsx
-import { DatePicker } from '@semcore/date-picker';
+import { DatePicker } from '@semcore/ui/date-picker';
 <DatePicker.Trigger />;
 ```
 
@@ -41,7 +41,7 @@ import { DatePicker } from '@semcore/date-picker';
 Component for rendering the configurable periods.
 
 ```jsx
-import { DateRangePicker } from '@semcore/date-picker';
+import { DateRangePicker } from '@semcore/ui/date-picker';
 <DateRangePicker.Period />;
 ```
 
@@ -52,7 +52,7 @@ import { DateRangePicker } from '@semcore/date-picker';
 Calendar component 📅
 
 ```jsx
-import { DatePicker, MonthPicker } from '@semcore/date-picker';
+import { DatePicker, MonthPicker } from '@semcore/ui/date-picker';
 <DatePicker.Calendar />;
 <MonthPicker.Calendar />;
 ```
@@ -64,7 +64,7 @@ import { DatePicker, MonthPicker } from '@semcore/date-picker';
 The unit inside the calendar.
 
 ```jsx
-import { DatePicker, MonthPicker } from '@semcore/date-picker';
+import { DatePicker, MonthPicker } from '@semcore/ui/date-picker';
 <DatePicker.Calendar.Unit />;
 <MonthPicker.Calendar.Unit />;
 ```

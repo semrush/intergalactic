@@ -6,7 +6,7 @@ fileSource: scroll-area
 @## ScrollArea
 
 ```jsx
-import ScrollArea from '@semcore/scroll-area';
+import ScrollArea from '@semcore/ui/scroll-area';
 <ScrollArea />;
 ```
 
@@ -17,14 +17,14 @@ import ScrollArea from '@semcore/scroll-area';
 This is a wrap over the content to calculate its size. It takes all properties of `Box`.
 
 ```jsx
-import ScrollArea from '@semcore/scroll-area';
+import ScrollArea from '@semcore/ui/scroll-area';
 <ScrollArea.Container />;
 ```
 
 @## ScrollArea.Bar
 
 ```jsx
-import ScrollArea from '@semcore/scroll-area';
+import ScrollArea from '@semcore/ui/scroll-area';
 <ScrollArea.Bar />;
 ```
 
@@ -35,6 +35,6 @@ import ScrollArea from '@semcore/scroll-area';
 Stylized div. It takes all properties of `Box`.
 
 ```jsx
-import ScrollArea from '@semcore/scroll-area';
+import ScrollArea from '@semcore/ui/scroll-area';
 <ScrollArea.Bar.Slider />;
 ```

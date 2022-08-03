@@ -8,7 +8,7 @@ fileSource: d3-chart
 Chart Bar.
 
 ```js
-import { Bar } from '@semcore/d3-chart';
+import { Bar } from '@semcore/ui/d3-chart';
 ```
 
 @typescript IBarProps
@@ -16,7 +16,7 @@ import { Bar } from '@semcore/d3-chart';
 @## Recharts API
 
 ```js
-import { BarChart } from '@semcore/chart';
+import { BarChart } from '@semcore/ui/chart';
 ```
 
 We used [recharts](http://recharts.org) and styled it. All exports are recharts exports. Please refer to [recharts API](http://recharts.org/en-US/api) for detailed documentation and examples.

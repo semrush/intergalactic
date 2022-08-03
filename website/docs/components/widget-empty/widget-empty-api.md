@@ -8,7 +8,7 @@ fileSource: widget-empty
 The component, using which you may accumulate any display of errors in the widgets.
 
 ```jsx
-import WidgetEmpty from '@semcore/widget-empty';
+import WidgetEmpty from '@semcore/ui/widget-empty';
 <WidgetEmpty />;
 ```
 
@@ -19,7 +19,7 @@ import WidgetEmpty from '@semcore/widget-empty';
 State when there is no data.
 
 ```jsx
-import { NoData } from '@semcore/widget-empty';
+import { NoData } from '@semcore/ui/widget-empty';
 <NoData />;
 ```
 
@@ -30,7 +30,7 @@ import { NoData } from '@semcore/widget-empty';
 State of the error in the widget 🤷‍♂️
 
 ```jsx
-import { Error } from '@semcore/widget-empty';
+import { Error } from '@semcore/ui/widget-empty';
 <Error />;
 ```
 

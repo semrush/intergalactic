@@ -10,7 +10,7 @@ fileSource: dropdown-menu
 DropdownMenu is a wrap over `<Dropdown/>`, which is a wrap over `<Popper/>`.
 
 ```jsx
-import DropdownMenu from '@semcore/dropdown';
+import DropdownMenu from '@semcore/ui/dropdown';
 <DropdownMenu />;
 ```
 
@@ -21,7 +21,7 @@ import DropdownMenu from '@semcore/dropdown';
 DropdownMenu.Trigger is a wrap over `<Dropdown.Trigger/>` component, which is a wrap over `<Popper.Trigger/>`.
 
 ```jsx
-import DropdownMenu from '@semcore/dropdown-menu';
+import DropdownMenu from '@semcore/ui/dropdown-menu';
 <DropdownMenu.Trigger />;
 ```
 
@@ -30,7 +30,7 @@ import DropdownMenu from '@semcore/dropdown-menu';
 DropdownMenu.Popper is a wrap over `<Dropdown.Popper/>` component, which is a wrap over `<Popper.Popper/>`.
 
 ```jsx
-import DropdownMenu from '@semcore/dropdown-menu';
+import DropdownMenu from '@semcore/ui/dropdown-menu';
 <DropdownMenu.Popper />;
 ```
 
@@ -39,7 +39,7 @@ import DropdownMenu from '@semcore/dropdown-menu';
 DropdownMenu.List is a container component for the list items with the `<ScrollArea/>` inside it.
 
 ```jsx
-import DropdownMenu from '@semcore/dropdown-menu';
+import DropdownMenu from '@semcore/ui/dropdown-menu';
 <DropdownMenu.List />;
 ```
 
@@ -50,7 +50,7 @@ import DropdownMenu from '@semcore/dropdown-menu';
 DropdownMenu.Menu is a wrap over the `<Dropdown.Popper/>` + `<DropdownMenu.List/>` component. In fact, it is syntactic sugar when no direct access to the `Popper` node is needed.
 
 ```jsx
-import DropdownMenu from '@semcore/dropdown-menu';
+import DropdownMenu from '@semcore/ui/dropdown-menu';
 <DropdownMenu.Menu />;
 ```
 
@@ -61,7 +61,7 @@ import DropdownMenu from '@semcore/dropdown-menu';
 Interactive menu items that are available for selection and switching from the keyboard.
 
 ```jsx
-import DropdownMenu from '@semcore/dropdown-menu';
+import DropdownMenu from '@semcore/ui/dropdown-menu';
 <DropdownMenu.Item />;
 ```
 
@@ -72,7 +72,7 @@ import DropdownMenu from '@semcore/dropdown-menu';
 This non-interactive menu item is used to display the titles in the list. It is a wrap over the `Flex` component.
 
 ```jsx
-import DropdownMenu from '@semcore/dropdown-menu';
+import DropdownMenu from '@semcore/ui/dropdown-menu';
 <DropdownMenu.ItemTitle />;
 ```
 
@@ -83,7 +83,7 @@ import DropdownMenu from '@semcore/dropdown-menu';
 This non-interactive menu item is used to display tips in the list. It is a wrap over the `Flex` component.
 
 ```jsx
-import DropdownMenu from '@semcore/dropdown-menu';
+import DropdownMenu from '@semcore/ui/dropdown-menu';
 <DropdownMenu.ItemHint />;
 ```
 

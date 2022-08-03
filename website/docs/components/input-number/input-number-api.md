@@ -6,7 +6,7 @@ fileSource: input-number
 @## InputNumber
 
 ```js
-import InputNumber from '@semcore/input-number';
+import InputNumber from '@semcore/ui/input-number';
 ```
 
 @typescript IInputNumberProps
@@ -14,7 +14,7 @@ import InputNumber from '@semcore/input-number';
 @## InputNumber.Value
 
 ```jsx
-import InputNumber from '@semcore/input-number';
+import InputNumber from '@semcore/ui/input-number';
 <InputNumber.Value />;
 ```
 
@@ -23,7 +23,7 @@ import InputNumber from '@semcore/input-number';
 @## InputNumber.Controls
 
 ```jsx
-import InputNumber from '@semcore/input-number';
+import InputNumber from '@semcore/ui/input-number';
 <InputNumber.Controls />;
 ```
 
@@ -32,7 +32,7 @@ import InputNumber from '@semcore/input-number';
 @## InputNumber.Addon
 
 ```jsx
-import InputNumber from '@semcore/input-number';
+import InputNumber from '@semcore/ui/input-number';
 <InputNumber.Addon />;
 ```
 

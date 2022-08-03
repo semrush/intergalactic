@@ -8,7 +8,7 @@ fileSource: d3-chart
 It have children components `Pie`, `Label`, `EmptyData`.
 
 ```js
-import { Donut } from '@semcore/d3-chart';
+import { Donut } from '@semcore/ui/d3-chart';
 
 <Donut>
   <Donut.EmptyData />
@@ -22,7 +22,7 @@ import { Donut } from '@semcore/d3-chart';
 @## Recharts API
 
 ```js
-import { PieChart } from '@semcore/chart';
+import { PieChart } from '@semcore/ui/chart';
 ```
 
 We used [recharts](http://recharts.org) and styled it. All exports are recharts exports. Please refer to [recharts API](http://recharts.org/en-US/api) for detailed documentation and examples.

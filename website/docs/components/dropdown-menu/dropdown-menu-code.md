@@ -3,9 +3,9 @@ title: Example
 fileSource: dropdown-menu
 ---
 
-> ⚠️ If you need to customize your work with the dropdown menu, please refer to the documentation [@semcore/popper](/utils/popper/)
+> ⚠️ If you need to customize your work with the dropdown menu, please refer to the documentation [@semcore/ui/popper](/utils/popper/)
 
-The component is a wrap over [@semcore/dropdown](/components/dropdown) with the following logic:
+The component is a wrap over [@semcore/ui/dropdown](/components/dropdown) with the following logic:
 
 - Display of the list of options in a dropdown window
 - Scrolling the list of options using the keyboard

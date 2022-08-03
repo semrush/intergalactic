@@ -20,21 +20,21 @@ A short instruction on how to achieve the desired result:
 - `activeIndex` is responsible for allocating the active sector.
 
 ```jsx
-import { Pie } from '@semcore/charts';
+import { Pie } from '@semcore/ui/charts';
 <Pie activeIndex={0} />;
 ```
 
 - `activeShape` displays active sector by default. _The active sector size is `outerRadius + 8`._
 
 ```jsx
-import {Pie, Sector} from '@semcore/charts'
+import {Pie, Sector} from '@semcore/ui/charts'
 <Pie outerRadius={40} activeShape={(props) => <Sector {...props}/>}>
 ```
 
 - To ensure correct operation, you need to prepare data for `donut`. _This item is needed if your data does not have an `id` for sectors._
 
 ```jsx
-import {Pie} from '@semcore/charts'
+import {Pie} from '@semcore/ui/charts'
 const data = [{ domain: 'tut.by', value: 35844 }, ...]
 let  id = 0
 const dataPie = data.reduce((acc, entry) => {
@@ -50,7 +50,7 @@ const dataPie = data.reduce((acc, entry) => {
 - Add events to the sector. _List of events is specified in [API](http://recharts.org/en-US/api/Pie)._
 
 ```jsx
-import {Pie} from '@semcore/charts'
+import {Pie} from '@semcore/ui/charts'
 <Pie onClick={...} />
 ```
 

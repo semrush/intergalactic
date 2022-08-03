@@ -6,7 +6,7 @@ fileSource: table
 @## Table
 
 ```jsx
-import Table from '@semcore/table';
+import Table from '@semcore/ui/table';
 <Table />;
 ```
 
@@ -15,7 +15,7 @@ import Table from '@semcore/table';
 @## Table.Row
 
 ```jsx
-import Table from '@semcore/table';
+import Table from '@semcore/ui/table';
 <Table.Row />;
 ```
 
@@ -24,7 +24,7 @@ import Table from '@semcore/table';
 @## Table.Cell
 
 ```jsx
-import Table from '@semcore/table';
+import Table from '@semcore/ui/table';
 <Table.Cell />;
 ```
 
@@ -33,7 +33,7 @@ import Table from '@semcore/table';
 @## Table.CellHead
 
 ```jsx
-import Table from '@semcore/table';
+import Table from '@semcore/ui/table';
 <Table.CellHead />;
 ```
 
@@ -42,7 +42,7 @@ import Table from '@semcore/table';
 @## Table.StickyHead
 
 ```jsx
-import Table from '@semcore/table';
+import Table from '@semcore/ui/table';
 <Table>
   <Table.StickyHead />
   <Table.Head />

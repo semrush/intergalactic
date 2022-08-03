@@ -6,7 +6,7 @@ fileSource: spin-container
 @## SpinContainer
 
 ```jsx
-import SpinContainer from '@semcore/spin-container';
+import SpinContainer from '@semcore/ui/spin-container';
 <SpinContainer />;
 ```
 
@@ -17,7 +17,7 @@ import SpinContainer from '@semcore/spin-container';
 Content wrapper with proper `position` and `z-index`.
 
 ```jsx
-import SpinContainer from '@semcore/spin-container';
+import SpinContainer from '@semcore/ui/spin-container';
 <SpinContainer.Content />;
 ```
 
@@ -26,6 +26,6 @@ import SpinContainer from '@semcore/spin-container';
 By default, it is a UI component and a base that closes the content under `Spin`.
 
 ```jsx
-import SpinContainer from '@semcore/spin-container';
+import SpinContainer from '@semcore/ui/spin-container';
 <SpinContainer.Overlay />;
 ```

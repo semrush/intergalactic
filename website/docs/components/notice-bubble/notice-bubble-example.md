@@ -23,7 +23,7 @@ This inserts a component into the render via JSX. For example, `<NoticeBubble vi
 
 ```jsx
 import React from 'react';
-import NoticeBubbleManager, { NoticeBubbleContainer } from '@semcore/notice-bubble';
+import NoticeBubbleManager, { NoticeBubbleContainer } from '@semcore/ui/notice-bubble';
 
 class DemoManager extends React.Component {
   componentDidMount() {
@@ -51,7 +51,7 @@ class DemoManager extends React.Component {
 
 ```jsx
 import React from 'react';
-import { NoticeBubbleContainer, NoticeBubble } from '@semcore/notice-bubble';
+import { NoticeBubbleContainer, NoticeBubble } from '@semcore/ui/notice-bubble';
 
 class DemoManager extends React.Component {
   state = {
@@ -77,7 +77,7 @@ You can control the visibility of the notification yourself. Both through the ma
 
 ```jsx
 import React from 'react';
-import { NoticeBubbleContainer, NoticeBubble } from '@semcore/notice-bubble';
+import { NoticeBubbleContainer, NoticeBubble } from '@semcore/ui/notice-bubble';
 
 class DemoManager extends React.Component {
   state = {
@@ -109,7 +109,7 @@ class DemoManager extends React.Component {
 
 ```jsx
 import React from 'react';
-import NoticeBubbleManager, { NoticeBubbleContainer } from '@semcore/notice-bubble';
+import NoticeBubbleManager, { NoticeBubbleContainer } from '@semcore/ui/notice-bubble';
 
 class DemoManager extends React.Component {
   componentDidMount() {

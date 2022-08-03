@@ -120,7 +120,7 @@ When adding custom components to `<DataTable.Body/>` they will be inserted at th
 
 @## Accordion in the table
 
-We use the `@semcore/accordion` component to extend the functionality of the string.
+We use the `@semcore/ui/accordion` component to extend the functionality of the string.
 
 1. Wrapping the table in the `Accordion` control component;
 2. Replacing the tag in `DataTable.Row` with our extended tag with `Accordion.Item`;

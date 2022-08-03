@@ -8,7 +8,7 @@ fileSource: d3-chart
 It have children components `Circle`, `Intersection`.
 
 ```js
-import { Venn } from '@semcore/d3-chart';
+import { Venn } from '@semcore/ui/d3-chart';
 
 <Venn>
   <Venn.Circle />
@@ -25,7 +25,7 @@ We used [recharts](http://recharts.org) and styled it. All exports are recharts 
 We tried to keep API as consistent as possible with respect to other charts.
 
 ```js
-import { VennChart } from '@semcore/chart';
+import { VennChart } from '@semcore/ui/chart';
 ```
 
 @typescript IVennChartProps
@@ -41,7 +41,7 @@ Data unit for the chart. In the data, the `name` key is required for the set, bu
 Component for displaying a set in the chart.
 
 ```js
-import { VennArea } from '@semcore/chart';
+import { VennArea } from '@semcore/ui/chart';
 ```
 
 @typescript IVennChildProps

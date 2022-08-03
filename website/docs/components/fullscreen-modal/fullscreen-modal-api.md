@@ -6,7 +6,7 @@ fileSource: fullscreen-modal
 @## FullscreenModal
 
 ```js
-import FullscreenModal from '@semcore/fullscreen-modal';
+import FullscreenModal from '@semcore/ui/fullscreen-modal';
 ```
 
 @typescript IFullscreenModalProps
