@@ -8,7 +8,7 @@ fileSource: d3-chart
 It have children component `Title`.
 
 ```js
-import { RadialTree } from '@semcore/d3-chart';
+import { RadialTree } from '@semcore/ui/d3-chart';
 
 <RadialTree>
   <RadialTree.Radian>

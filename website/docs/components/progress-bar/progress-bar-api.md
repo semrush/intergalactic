@@ -8,7 +8,7 @@ fileSource: progress-bar
 The component responsible for the background under the progress bar value.
 
 ```jsx
-import ProgressBar from '@semcore/progress-bar';
+import ProgressBar from '@semcore/ui/progress-bar';
 <ProgressBar />;
 ```
 
@@ -19,7 +19,7 @@ import ProgressBar from '@semcore/progress-bar';
 The component responsible for the progress bar value.
 
 ```jsx
-import ProgressBar from '@semcore/progress-bar';
+import ProgressBar from '@semcore/ui/progress-bar';
 <ProgressBar.Value />;
 ```
 

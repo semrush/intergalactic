@@ -8,7 +8,7 @@ fileSource: base-trigger
 Basic trigger-button for all dropdowns.
 
 ```js
-import { BaseTrigger } from '@semcore/base-trigger';
+import { BaseTrigger } from '@semcore/ui/base-trigger';
 ```
 
 @typescript IBaseTriggerProps
@@ -18,7 +18,7 @@ import { BaseTrigger } from '@semcore/base-trigger';
 Button-trigger with the `ChevronDownXS` icon.
 
 ```js
-import { ButtonTrigger } from '@semcore/base-trigger';
+import { ButtonTrigger } from '@semcore/ui/base-trigger';
 ```
 
 @typescript IButtonTriggerProps
@@ -28,7 +28,7 @@ import { ButtonTrigger } from '@semcore/base-trigger';
 This trigger looks like a link with the `ChevronDownXS` icon.
 
 ```js
-import { LinkTrigger } from '@semcore/base-trigger';
+import { LinkTrigger } from '@semcore/ui/base-trigger';
 ```
 
 @typescript ILinkTriggerProps
@@ -38,7 +38,7 @@ import { LinkTrigger } from '@semcore/base-trigger';
 Trigger for filters.
 
 ```js
-import { FilterTrigger } from '@semcore/base-trigger';
+import { FilterTrigger } from '@semcore/ui/base-trigger';
 ```
 
 @typescript IFilterTriggerProps

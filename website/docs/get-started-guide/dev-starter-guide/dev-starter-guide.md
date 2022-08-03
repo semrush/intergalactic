@@ -47,7 +47,6 @@ npm i @semcore/button @semcore/core
 Our entire library is based on [flexbox](/layout/box-system/) that forms over 90% of all of our components. It consists of two elements: `Flex` and `Box`:
 
 ```jsx
-import { Flex, Box } from '@semcore/flex-box';
 import { Flex, Box } from '@semcore/ui/flex-box';
 ```
 

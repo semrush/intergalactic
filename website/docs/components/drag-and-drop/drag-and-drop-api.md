@@ -8,7 +8,7 @@ fileSource: drag-and-drop
 Drag control component.
 
 ```jsx
-import DnD from '@semcore/drag-and-drop;
+import DnD from '@semcore/ui/drag-and-drop;
 <DnD />;
 ```
 
@@ -19,7 +19,7 @@ import DnD from '@semcore/drag-and-drop;
 The element, which will be dragged.
 
 ```jsx
-import DnD from '@semcore/drag-and-drop;
+import DnD from '@semcore/ui/drag-and-drop;
 <DnD>
   <DnD.Draggable />
 </DnD>
@@ -32,7 +32,7 @@ import DnD from '@semcore/drag-and-drop;
 The area, to which the dragged element will be placed.
 
 ```jsx
-import DnD from '@semcore/drag-and-drop;
+import DnD from '@semcore/ui/drag-and-drop;
 <DnD>
   <DnD.Droppable />
 </DnD>

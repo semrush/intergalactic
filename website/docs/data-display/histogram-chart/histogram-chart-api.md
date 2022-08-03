@@ -14,7 +14,7 @@ All properties for the histogram chart developed with D3 you can find in the [ba
 @## Recharts API
 
 ```js
-import { HistogramChart } from '@semcore/chart';
+import { HistogramChart } from '@semcore/ui/chart';
 ```
 
 We used [recharts](http://recharts.org) and styled it. All exports are recharts exports. Please refer to [recharts API](http://recharts.org/en-US/api) for detailed documentation and examples.

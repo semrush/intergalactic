@@ -42,7 +42,7 @@ import Pagination from '@semcore/ui/pagination';
 @## Pagination.PageInput.Value
 
 ```jsx
-import Pagination from '@semcore/pagination';
+import Pagination from '@semcore/ui/pagination';
 <Pagination.PageInput.Value />;
 ```
 
@@ -53,14 +53,14 @@ import Pagination from '@semcore/pagination';
 Takes all the properties of the button.
 
 ```jsx
-import Pagination from '@semcore/pagination';
+import Pagination from '@semcore/ui/pagination';
 <Pagination.PrevPage />;
 ```
 
 @## Pagination.TotalPages
 
 ```jsx
-import Pagination from '@semcore/pagination';
+import Pagination from '@semcore/ui/pagination';
 <Pagination.TotalPages />;
 ```
 

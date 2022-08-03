@@ -8,7 +8,7 @@ fileSource: feature-popover
 This is a wrap component, which is completely inherited from `<Popper/>`.
 
 ```jsx
-import FeaturePopover from '@semcore/feature-popover';
+import FeaturePopover from '@semcore/ui/feature-popover';
 <FeaturePopover />;
 ```
 
@@ -19,7 +19,7 @@ import FeaturePopover from '@semcore/feature-popover';
 This is the element, to which `<FeaturePopover.Popper/>` will be attached. It is fully inherited from `<Popper.Trigger/>`.
 
 ```jsx
-import FeaturePopover from '@semcore/feature-popover';
+import FeaturePopover from '@semcore/ui/feature-popover';
 <FeaturePopover.Trigger />;
 ```
 
@@ -30,7 +30,7 @@ import FeaturePopover from '@semcore/feature-popover';
 This is the element, to which `<FeaturePopover.Trigger/>` will be attached. It is fully inherited from `<Popper.Popper/>`.
 
 ```jsx
-import FeaturePopover from '@semcore/feature-popover';
+import FeaturePopover from '@semcore/ui/feature-popover';
 <FeaturePopover.Popper />;
 ```
 
@@ -41,6 +41,6 @@ import FeaturePopover from '@semcore/feature-popover';
 This blinking circle is inherited from `<Box>`.
 
 ```jsx
-import FeaturePopover from '@semcore/feature-popover';
+import FeaturePopover from '@semcore/ui/feature-popover';
 <FeaturePopover.Spot />;
 ```

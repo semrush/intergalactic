@@ -6,7 +6,7 @@ fileSource: side-panel
 @## SidePanel
 
 ```jsx
-import SidePanel from '@semcore/side-panel';
+import SidePanel from '@semcore/ui/side-panel';
 <SidePanel />;
 ```
 
@@ -15,7 +15,7 @@ import SidePanel from '@semcore/side-panel';
 @## SidePanel.Overlay
 
 ```jsx
-import SidePanel from '@semcore/side-panel';
+import SidePanel from '@semcore/ui/side-panel';
 <SidePanel.Overlay />;
 ```
 
@@ -24,7 +24,7 @@ This is a wrap over the [Box](/layout/box-system/box-api/#a3cfce) component.
 @## SidePanel.Panel
 
 ```jsx
-import SidePanel from '@semcore/side-panel';
+import SidePanel from '@semcore/ui/side-panel';
 <SidePanel.Panel />;
 ```
 
@@ -35,7 +35,7 @@ This is a wrap over the [Box](/layout/box-system/box-api/#a3cfce) and [FocusLock
 @## SidePanel.Close
 
 ```jsx
-import SidePanel from '@semcore/side-panel';
+import SidePanel from '@semcore/ui/side-panel';
 <SidePanel.Close />;
 ```
 

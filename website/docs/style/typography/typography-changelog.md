@@ -2,10 +2,10 @@
 title: Changelog
 ---
 
-### @semcore/typography
+### @semcore/ui/typography
 
 @changelog typography
 
-### @semcore/format-text
+### @semcore/ui/format-text
 
 @changelog format-text

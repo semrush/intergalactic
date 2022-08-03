@@ -8,7 +8,7 @@ fileSource: d3-chart
 Root element for all charts.
 
 ```js
-import { Plot } from '@semcore/d3-chart';
+import { Plot } from '@semcore/ui/d3-chart';
 ```
 
 @typescript IPlotProps
@@ -18,7 +18,7 @@ import { Plot } from '@semcore/d3-chart';
 It have children components `Ticks, Grid`.
 
 ```js
-import { XAxis, YAxis } from '@semcore/d3-chart';
+import { XAxis, YAxis } from '@semcore/ui/d3-chart';
 
 <XAxis>
   <XAxis.Ticks />
@@ -35,7 +35,7 @@ import { XAxis, YAxis } from '@semcore/d3-chart';
 Container watch to size block.
 
 ```js
-import { ResponsiveContainer } from '@semcore/d3-chart';
+import { ResponsiveContainer } from '@semcore/ui/d3-chart';
 ```
 
 @typescript IResponsiveContainerProps
@@ -45,7 +45,7 @@ import { ResponsiveContainer } from '@semcore/d3-chart';
 It have children components `Trigger, Popper, Title, Dot`.
 
 ```js
-import { Tooltip } from '@semcore/d3-chart';
+import { Tooltip } from '@semcore/ui/d3-chart';
 
 <Tooltip>
   <Tooltip.Title />
@@ -60,7 +60,7 @@ import { Tooltip } from '@semcore/d3-chart';
 Component for show line after hover on chart.
 
 ```js
-import { HoverLine } from '@semcore/d3-chart';
+import { HoverLine } from '@semcore/ui/d3-chart';
 ```
 
 @typescript IHoverProps
@@ -70,7 +70,7 @@ import { HoverLine } from '@semcore/d3-chart';
 Component for show sector after hover on chart.
 
 ```js
-import { HoverRect } from '@semcore/d3-chart';
+import { HoverRect } from '@semcore/ui/d3-chart';
 ```
 
 @typescript IHoverProps
