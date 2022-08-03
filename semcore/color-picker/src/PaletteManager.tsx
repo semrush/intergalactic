@@ -47,11 +47,11 @@ class PaletteManagerRoot extends Component {
   }
 
   getItemProps({ value }) {
-    const { displayLabel } = this.asProps;
+    // const { displayLabel } = this.asProps;
     this._colors.push(value);
 
     return {
-      displayLabel,
+      // displayLabel,
       editable: true,
       onRemove: this.bindHandlerItemRemove(value),
     };

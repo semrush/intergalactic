@@ -3,6 +3,18 @@ import { Root, sstyled } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
 import { opacity } from '@semcore/utils/lib/color';
 import { IItemProps } from '..';
+// import a11yEnhance from '@semcore/utils/lib/enhances/a11yEnhance';
+//
+// const optionsA11yEnhance = {
+//   onNeighborChange: (neighborElement) => {
+//     console.log('test');
+//     if (neighborElement) {
+//       neighborElement.focus();
+//       neighborElement.click();
+//     }
+//   },
+//   childSelector: ['role', 'tab'],
+// };
 
 export function Item(props: IItemProps) {
   const { Children, children, styles, value, displayLabel, editable, selected, onRemove } = props;
@@ -13,7 +25,7 @@ export function Item(props: IItemProps) {
   const SCloseIcon = 'div';
 
   return sstyled(styles)(
-    <SItemContainer render={Box} selected={selected}>
+    <SItemContainer render={Box} selected={selected} role="tab">
       <SItem
         render={Box}
         value={value}
@@ -21,6 +33,7 @@ export function Item(props: IItemProps) {
         lightBackground={opacity(value, 0.15)}
       >
         {displayLabel && (
+          /* TODO:   */
           <SLabel>
             <svg
               width="10"
@@ -37,7 +50,7 @@ export function Item(props: IItemProps) {
           </SLabel>
         )}
         {!value && <SLine />}
-        {Children ? <Children /> : children}
+        <Children />
       </SItem>
       {editable && (
         <SCloseIcon onClick={onRemove}>
@@ -59,3 +72,5 @@ export function Item(props: IItemProps) {
     </SItemContainer>,
   ) as React.ReactElement;
 }
+//
+// Item.enhance = [a11yEnhance(optionsA11yEnhance)]

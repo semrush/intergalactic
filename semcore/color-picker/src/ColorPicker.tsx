@@ -3,6 +3,7 @@ import createComponent, { Component, sstyled, Root } from '@semcore/core';
 import Dropdown from '@semcore/dropdown';
 import { Box } from '@semcore/flex-box';
 import ChevronDownM from '@semcore/icon/ChevronDown/m';
+import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 import PaletteManagerRoot from './PaletteManager';
 import { Item, Colors, ColorsCustom, InputColor } from './components';
 
@@ -14,6 +15,7 @@ class ColorPickerRoot extends Component {
   static style = style;
 
   static defaultProps = () => ({
+    defaultVisible: false,
     defaultValue: null,
     colors: [
       null,
@@ -40,11 +42,14 @@ class ColorPickerRoot extends Component {
   uncontrolledProps() {
     return {
       value: null,
+      visible: null,
     };
   }
 
-  bindHandlerItemClick = (value: string) => (e: React.SyntheticEvent) =>
+  bindHandlerItemClick = (value: string) => (e: React.SyntheticEvent) => {
     this.handlers.value(value, e);
+    this.handlers.visible(false, e);
+  };
 
   getTriggerProps() {
     const { value } = this.asProps;
@@ -84,7 +89,8 @@ class ColorPickerRoot extends Component {
 }
 
 export function Trigger(props) {
-  const { Children } = props;
+  const { Children, keyboardFocused } = props;
+  console.log(keyboardFocused);
 
   return (
     <Root render={Dropdown.Trigger} tag={DefaultTrigger}>
@@ -92,6 +98,8 @@ export function Trigger(props) {
     </Root>
   );
 }
+
+Trigger.enhance = [keyboardFocusEnhance()];
 
 const DefaultTrigger = React.forwardRef(function (props, ref) {
   const SDefaultTrigger = Root;
