@@ -1,5 +1,5 @@
 {
-  "title": "Page non trouvée",
-  "text": "Nous ne pouvons pas trouver la page que vous recherchez. Vous pouvez revenir à la page précédente ou consulter notre page d'accueil.",
-  "btnHome": "Vers la page d’accueil"
+  "title": "Une erreur est survenue",
+  "text": "Il semble que cette page n'existe pas. Retournez à la page précédente ou cliquez sur le bouton ci-dessous pour revenir à la page d'accueil.",
+  "btnHome": "Vers la page d'accueil"
 }

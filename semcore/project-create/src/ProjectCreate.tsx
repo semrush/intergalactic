@@ -32,10 +32,11 @@ import zh from './translations/zh.json';
 import pt from './translations/pt.json';
 import ko from './translations/ko.json';
 import vi from './translations/vi.json';
+import tr from './translations/tr.json';
 
 import style from './style/project-create.shadow.css';
 
-const i18n = { de, en, es, fr, it, ja, ru, zh, pt, ko, vi };
+const i18n = { de, en, es, fr, it, ja, ru, zh, pt, ko, vi, tr };
 
 export interface IProjectCreateValues {
   url: string;

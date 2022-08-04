@@ -1,0 +1,14 @@
+{
+  "title": "Yeni proje ekle",
+  "inputDomainLabel": "Proje Alan Adı",
+  "inputDomainError": "Lütfen geçerli bir alan adı girin",
+  "inputDomainPlaceholder": "Proje alan adını girin",
+  "inputNameLabel": "Proje adı",
+  "inputNameErrorLength": "Uzunluk 256 karakterden az olmalıdır.",
+  "inputNameErrorCharacters": "Sadece harfler, sayılar ve noktalara izin verilir.",
+  "inputNamePlaceholder": "Proje adını girin",
+  "description": "Projeyi oluşturduğunuzda, bu domaini artık değiştiremezsiniz. Sadece subdomainler değiştirilebilir.",
+  "buttonCreate": "Proje Yarat",
+  "buttonCancel": "İptal et",
+  "sharingCheckboxLegend": "Oluşturduktan sonra projeyi paylaşın"
+}

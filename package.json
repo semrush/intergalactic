@@ -21,7 +21,7 @@
     "prepare": "husky install",
     "i18n:submit": "yarn crowdin upload",
     "i18n:status": "yarn crowdin status",
-    "i18n:download": "yarn crowdin download"
+    "i18n:download": "yarn crowdin download && tsm --require=./.ci/tsm-filter-warnings.js .ci/i18n-csv-2-json.ts"
   },
   "private": true,
   "workspace-sources": {
@@ -33,6 +33,7 @@
     ]
   },
   "devDependencies": {
+    "@crowdin/cli": "3.7.9",
     "@mailchimp/mailchimp_marketing": "3.0.30",
     "@semcore/theme-redesign": "1.5.12",
     "@types/jest": "26.0.23",
@@ -40,7 +41,7 @@
     "@types/react": "17.0.19",
     "@typescript-eslint/eslint-plugin": "5.10.2",
     "@typescript-eslint/parser": "5.10.2",
-    "crowdin": "3.5.0",
+    "csv": "6.2.0",
     "dotenv": "8.2.0",
     "eslint": "8.14.0",
     "eslint-config-prettier": "8.3.0",
@@ -62,7 +63,8 @@
     "tsm": "2.2.2",
     "typescript": "4.5.5",
     "typescript-plugin-css-modules": "2.2.0",
-    "typescript-workspace-plugin": "2.0.1"
+    "typescript-workspace-plugin": "2.0.1",
+    "yaml": "2.1.1"
   },
   "jest": {
     "preset": "@semcore/jest-preset-ui"

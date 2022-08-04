@@ -12,7 +12,7 @@
   "value-labeled": "{label} of value {value}",
   "values-group": "group {label} contains {values}",
   "additional-axe": "{label} represented from {from} to {to}",
-  "additional-axe-no-label": "Data represented from {from} to {to}",
+  "additional-axe-no-label": "data represented from {from} to {to}",
   "time-series-detailed-trend": "{general}, also {locals}",
   "time-series-general-trend": "{dataKey} {trend} from {from} to {to}",
   "time-series-local-trend": "{trend} from {from} to {to}",
