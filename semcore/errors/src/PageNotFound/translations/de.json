@@ -1,5 +1,5 @@
 {
-  "title": "Seite nicht gefunden",
-  "text": "Die gesuchte Seite wurde nicht gefunden. Sie können zur vorherigen Seite zurückkehren oder unsere Homepage besuchen.",
-  "btnHome": "Homepage besuchen"
+  "title": "Fehler",
+  "text": "Diese Seite ist nicht vorhanden. Versuchen Sie zurückzugehen oder klicken Sie auf die Schaltfläche unten, um zur Startseite zu gelangen.",
+  "btnHome": "Zur Homepage"
 }

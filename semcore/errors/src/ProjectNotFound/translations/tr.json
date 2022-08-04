@@ -1,0 +1,6 @@
+{
+  "title": "Proje bulunamadı",
+  "text": "<p>Erişmeye çalıştığınız projeyi bulamıyoruz.</p><p>Şu sorunlardan birinin mevcut olup olmadığını kontrol edin:</p><ul><li>Proje silinmiş veya girilen URL hatalı olabilir.</li><li>Belki de projeyi görme izniniz olmayabilir. Lütfen proje sahibinden erişim izni isteyin.</li></ul><p>Tüm projelerinizi, Projeler sayfasında bulabilirsiniz.</p><p>Projeye erişimle ilgili başka sorunlarınız olursa, lütfen <a href=\"{{url}}\">Destek Ekibimizle</a></p> iletişime geçin.",
+  "btnProjects": "Projelere git",
+  "btnContacts": "Bizimle iletişime geçin"
+}
