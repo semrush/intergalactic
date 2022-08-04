@@ -74,7 +74,7 @@ SPlusButton {
   justify-content: center;
   width: 28px;
   height: 28px;
-  margin-left: 2px;
+  margin: 2px;
   border-radius: 50% !important;
 
   &:hover {
@@ -84,7 +84,7 @@ SPlusButton {
 }
 
 SDefaultTrigger {
-  display: flex;
+  display: inline-flex;
   align-items: center;
 
   &:hover {
@@ -135,4 +135,5 @@ SLine {
 SLabel {
   display: flex;
   margin: auto;
+  z-index: 1;
 }

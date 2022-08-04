@@ -4,15 +4,25 @@ import { Box } from '@semcore/flex-box';
 import Input from '@semcore/input';
 import CheckM from '@semcore/icon/Check/m';
 import CloseM from '@semcore/icon/Close/m';
-
 import style from '../style/color-picker.shadow.css';
+
+type InputColorAsProps = {
+  styles?: React.CSSProperties;
+  defaultValue?: string;
+  defaultState?: string;
+  value?: string;
+  state?: 'normal' | 'valid' | 'invalid';
+  colors?: string[];
+  onAdd?: (value: string, event: React.MouseEvent | React.KeyboardEvent) => void;
+  Children: any;
+};
 
 function isValidHex(hex: string) {
   const reg = /^#([0-9a-f]{3}){1,2}$/i;
   return reg.test('#' + hex);
 }
 
-class InputColorRoot extends Component {
+class InputColorRoot extends Component<InputColorAsProps> {
   static displayName = 'InputColor';
 
   static style = style;
@@ -29,19 +39,20 @@ class InputColorRoot extends Component {
     };
   }
 
-  handlerAdd = (e) => {
+  handlerAdd = (event: React.MouseEvent | React.KeyboardEvent) => {
     const { value, state } = this.asProps;
+
     if (value.length !== 0 && state === 'normal') {
-      this.asProps?.onAdd(`#${value.toLowerCase()}`, e);
-      this.handlers.value('', e);
+      this.asProps?.onAdd(`#${value.toLowerCase()}`, event);
+      this.handlers.value('', event);
     }
   };
 
-  handlerCancel = (e) => {
-    this.handlers.value('', e);
+  handlerCancel = (event: React.MouseEvent) => {
+    this.handlers.value('', event);
   };
 
-  handlerChange = (value) => {
+  handlerChange = (value: string) => {
     if (value.length !== 0) {
       if (isValidHex(value)) {
         this.handlers.state('normal');
@@ -50,6 +61,13 @@ class InputColorRoot extends Component {
       }
     } else {
       this.handlers.state('normal');
+    }
+  };
+
+  handlekeyDown = (event: React.KeyboardEvent) => {
+    if (event.code === 'Enter') {
+      event.preventDefault();
+      this.handlerAdd(event);
     }
   };
 
@@ -68,7 +86,7 @@ class InputColorRoot extends Component {
         <SInputContainer>
           #
           <SInput>
-            <Input ml={1} w={135} state={state}>
+            <Input ml={1} w={135} state={state} onKeyDown={this.handlekeyDown}>
               <SInputValue
                 render={Input.Value}
                 placeholder="FFFFFF"

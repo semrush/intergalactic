@@ -4,7 +4,14 @@ import Divider from '@semcore/divider';
 
 import style from './style/color-picker.shadow.css';
 
-class PaletteManagerRoot extends Component {
+type RootAsProps = {
+  defaultColors?: string[];
+  colors?: string[];
+  styles?: React.CSSProperties;
+  Children: React.FC;
+};
+
+class PaletteManagerRoot extends Component<RootAsProps> {
   static displayName = 'PaletteManager';
 
   static style = style;
@@ -13,8 +20,8 @@ class PaletteManagerRoot extends Component {
     defaultColors: [],
   };
 
-  _colors = [];
-  refInput = React.createRef();
+  _colors: string[] = [];
+  refInput = React.createRef<HTMLInputElement>();
 
   uncontrolledProps() {
     return {
@@ -22,17 +29,25 @@ class PaletteManagerRoot extends Component {
     };
   }
 
-  get colors() {
+  get colors(): string[] {
     return this.props.colors !== undefined ? this.asProps.colors : this._colors;
   }
 
-  bindHandlerItemRemove = (value: string) => (e: React.SyntheticEvent) => {
-    e.stopPropagation();
+  bindHandlerItemRemove = (value: string) => (event: React.MouseEvent) => {
+    event.stopPropagation();
     this.handlers.colors(
       this.colors.filter((color: string) => color !== value),
-      e,
+      event,
     );
   };
+
+  bindHandlerItemAdd = () => (value: string, event: React.MouseEvent) => {
+    if (!this.colors.includes(value)) {
+      this.handlers.colors(this.colors.concat(value), event);
+    }
+  };
+
+  bindHandlerButtonClick = () => () => this.refInput.current?.focus();
 
   getColorsProps() {
     const { colors } = this.asProps;
@@ -40,29 +55,24 @@ class PaletteManagerRoot extends Component {
     return {
       colors,
       editable: true,
-      onPlusButtonClick: () => {
-        this.refInput.current?.focus();
-      },
+      onPlusButtonClick: this.bindHandlerButtonClick(),
     };
   }
 
   getItemProps({ value }) {
-    // const { displayLabel } = this.asProps;
     this._colors.push(value);
 
     return {
-      // displayLabel,
       editable: true,
       onRemove: this.bindHandlerItemRemove(value),
+      // TODO: need to add tabIndex and checking selected value
     };
   }
 
   getInputColorProps() {
     return {
       ref: this.refInput,
-      onAdd: (value, e) => {
-        this.handlers.colors(this.colors.concat(value), e);
-      },
+      onAdd: this.bindHandlerItemAdd(),
     };
   }
 
@@ -94,5 +104,4 @@ export default PaletteManagerRoot;
 // unit tests
 // examples
 // a11y
-// fix styles
-// everywhere add types
+// change colors to variable

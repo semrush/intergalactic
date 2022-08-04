@@ -9,7 +9,30 @@ import { Item, Colors, ColorsCustom, InputColor } from './components';
 
 import style from './style/color-picker.shadow.css';
 
-class ColorPickerRoot extends Component {
+type RootAsProps = {
+  defaultVisible?: boolean;
+  visible?: boolean;
+  defaultValue?: string;
+  value?: string;
+  onChange?: (value: string, event: React.ChangeEvent) => void;
+  colors?: string[];
+  displayLabel?: boolean;
+  styles?: React.CSSProperties;
+  Children: React.FC;
+};
+
+type TriggerAsProps = {
+  styles?: React.CSSProperties;
+  value?: string;
+  Children: React.FC;
+};
+
+type PopperAsProps = {
+  styles?: React.CSSProperties;
+  Children: React.FC;
+};
+
+class ColorPickerRoot extends Component<RootAsProps> {
   static displayName = 'ColorPicker';
 
   static style = style;
@@ -46,7 +69,7 @@ class ColorPickerRoot extends Component {
     };
   }
 
-  bindHandlerItemClick = (value: string) => (e: React.SyntheticEvent) => {
+  bindHandlerItemClick = (value: string) => (e: React.MouseEvent) => {
     this.handlers.value(value, e);
     this.handlers.visible(false, e);
   };
@@ -69,11 +92,13 @@ class ColorPickerRoot extends Component {
 
   getItemProps(props) {
     const { value, displayLabel } = this.asProps;
+    const isSelected = value === props.value;
 
     return {
       displayLabel,
       onClick: this.bindHandlerItemClick(props.value),
-      selected: value === props.value,
+      selected: isSelected,
+      tabIndex: isSelected ? 0 : -1,
     };
   }
 
@@ -88,9 +113,8 @@ class ColorPickerRoot extends Component {
   }
 }
 
-export function Trigger(props) {
-  const { Children, keyboardFocused } = props;
-  console.log(keyboardFocused);
+export function Trigger(props: TriggerAsProps) {
+  const { Children } = props;
 
   return (
     <Root render={Dropdown.Trigger} tag={DefaultTrigger}>
@@ -101,19 +125,20 @@ export function Trigger(props) {
 
 Trigger.enhance = [keyboardFocusEnhance()];
 
-const DefaultTrigger = React.forwardRef(function (props, ref) {
+const DefaultTrigger = React.forwardRef(function (props: TriggerAsProps, ref) {
+  const { styles, value } = props;
   const SDefaultTrigger = Root;
   const STriggerCircle = Box;
 
-  return sstyled(props.styles)(
+  return sstyled(styles)(
     <SDefaultTrigger render={Box} ref={ref}>
-      <STriggerCircle value={props.value} />
+      <STriggerCircle value={value} />
       <ChevronDownM color="#191B23" />
     </SDefaultTrigger>,
   ) as React.ReactElement;
 });
 
-export function Popper(props) {
+export function Popper(props: PopperAsProps) {
   const { styles, Children } = props;
   const SColorPickerPopper = Root;
 
@@ -135,13 +160,13 @@ const ColorPicker = createComponent(ColorPickerRoot, {
   Popper,
   Item,
   Colors,
-});
+}) as any;
 
 const PaletteManager = createComponent(PaletteManagerRoot, {
   Item: ColorPicker.Item,
   Colors: ColorsCustom,
   InputColor,
-});
+}) as any;
 
 export { PaletteManager };
 export default ColorPicker;
