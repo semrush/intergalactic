@@ -24,6 +24,9 @@ class ResponsiveContainerRoot extends Component {
 
   handleResize = trottle((entries) => {
     const { Children, aspect } = this.asProps;
+
+    if (!this.$container) return;
+
     let { clientWidth: width, clientHeight: height } = this.$container;
 
     if (aspect) {
