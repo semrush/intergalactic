@@ -66,6 +66,7 @@ class Head extends Component<AsProps> {
 
     return sstyled(styles)(
       <SColumn
+        role={isGroup ? undefined : 'columnheader'}
         key={column.name}
         use={use}
         fixed={column.fixed}
@@ -88,7 +89,7 @@ class Head extends Component<AsProps> {
       >
         {isGroup ? (
           <>
-            <SColumn groupHead use={use}>
+            <SColumn role="columnheader" groupHead use={use}>
               <div>{column.props.children}</div>
             </SColumn>
             <SHead>{this.renderColumns(column.columns, 100 / cSize)}</SHead>
@@ -119,7 +120,7 @@ class Head extends Component<AsProps> {
     );
 
     return sstyled(styles)(
-      <SHeadWrapper sticky={sticky}>
+      <SHeadWrapper sticky={sticky} role="rowgroup">
         <ScrollArea
           styles={scrollStyles}
           use:left={`${offsetLeftSum}px`}
@@ -128,7 +129,7 @@ class Head extends Component<AsProps> {
           onResize={onResize}
         >
           <ScrollArea.Container ref={$scrollRef}>
-            <SHead render={Box}>
+            <SHead render={Box} role="row">
               {this.renderColumns(columnsChildren, 100 / this.columns.length)}
             </SHead>
           </ScrollArea.Container>
