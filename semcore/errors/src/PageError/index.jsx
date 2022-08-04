@@ -17,8 +17,9 @@ import ru from './translations/ru.json';
 import zh from './translations/zh.json';
 import ko from './translations/ko.json';
 import vi from './translations/vi.json';
+import tr from './translations/tr.json';
 
-const i18n = { de, en, es, fr, it, ja, ru, zh, pt, ko, vi };
+const i18n = { de, en, es, fr, it, ja, ru, zh, pt, ko, vi, tr };
 
 class RootPageError extends Component {
   static displayName = 'PageError';

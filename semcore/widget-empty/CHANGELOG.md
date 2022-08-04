@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.3.0] - unreleased
+
+### Added
+
+- Added Turkish langauge support.
+
 ## [3.2.3] - 2022-08-18
 
 ### Changed
