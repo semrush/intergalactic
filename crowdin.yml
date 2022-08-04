@@ -49,9 +49,9 @@
     "translation": "/%original_path%/%two_letters_code%.json",
   },
   {
-    "source": "semcore/d3-chart/src/a11y/translations/view/source.csv",
+    "source": "semcore/d3-chart/src/a11y/translations/view/en.csv",
     "first_line_contains_header": true,
     "scheme" : "identifier,source_phrase,context,translation",
-    "translation": "/%original_path%/%two_letters_code%.json",
+    "translation": "/%original_path%/%two_letters_code%.csv",
   },
 ]
