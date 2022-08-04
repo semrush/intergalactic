@@ -58,7 +58,7 @@ class Body extends Component<AsProps, State> {
       if (Array.isArray(cell)) {
         const SGroupCell = 'div';
         return sstyled(styles)(
-          <SGroupCell data-ui-name="group-cell">
+          <SGroupCell role="rowgroup" data-ui-name="group-cell">
             {this.renderRows(cell as NestedCells[])}
           </SGroupCell>,
         );
@@ -93,7 +93,14 @@ class Body extends Component<AsProps, State> {
         }
 
         return sstyled(styles)(
-          <SCell key={cell.name} {...props} fixed={cell.fixed} theme={props.theme} use={use} />,
+          <SCell
+            key={cell.name}
+            role="cell"
+            {...props}
+            fixed={cell.fixed}
+            theme={props.theme}
+            use={use}
+          />,
         ) as React.ReactElement;
       }
     }, [] as React.ReactElement[]);
@@ -127,7 +134,7 @@ class Body extends Component<AsProps, State> {
       props = assignProps(childrenPropsGetter(propsRow, rowData, dataIndex), propsRow);
     }
 
-    return sstyled(styles)(<SRow {...props} />);
+    return sstyled(styles)(<SRow role="row" {...props} />);
   }
 
   renderRows(rows: NestedCells[]) {
@@ -241,7 +248,7 @@ class Body extends Component<AsProps, State> {
           onScroll={callAllEventHandlers(onScroll, this.handleScrollAreaScroll)}
         >
           <ScrollArea.Container ref={$scrollRef}>
-            <SBody render={Box}>
+            <SBody render={Box} role="rowgroup">
               {holdHeight && <SHeightHold hMin={holdHeight} aria-hidden={true} />}
               {columnsInitialized && !virtualScroll ? this.renderRows(rows) : null}
               {columnsInitialized && virtualScroll ? this.renderVirtualizedRows(rows) : null}

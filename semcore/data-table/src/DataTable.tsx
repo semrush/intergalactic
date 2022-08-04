@@ -406,7 +406,7 @@ class RootDefinitionTable extends Component<AsProps> {
     const { Children, styles } = this.asProps;
 
     return sstyled(styles)(
-      <SDataTable render={Box} __excludeProps={['data']} ref={this.tableRef}>
+      <SDataTable render={Box} __excludeProps={['data']} ref={this.tableRef} role="table">
         <Children />
       </SDataTable>,
     );
