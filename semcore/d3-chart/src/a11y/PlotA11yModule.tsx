@@ -2,7 +2,6 @@ import React from 'react';
 import { DataStructureHints, PartialDataSummarizationConfig } from './hints';
 import { normalizeLocale } from './locale';
 import { translations } from './translations/module/translations';
-import { useLocalStorage } from './useLocalStorage';
 import { Root, sstyled } from '@semcore/core';
 import styles from '../style/plotA11yModule.shadow.css';
 
@@ -20,8 +19,6 @@ export type A11yViewProps = {
   plotRef: React.RefObject<Element>;
 };
 
-const localStorageKey = 'intergalactic-components-enable-charts-a11y-module';
-
 export const PlotA11yModule: React.FC<A11yViewProps> = (props) => {
   const SPlotA11yModule = Root;
   const [wasFocused, setWasFocused] = React.useState(globalWasFocused);
@@ -30,15 +27,13 @@ export const PlotA11yModule: React.FC<A11yViewProps> = (props) => {
     Component: React.FC<A11yViewProps>;
   } | null>(null);
 
+  const hadnleHiddenElementsFocus = React.useCallback(() => {
+    setWasFocused(true);
+    setNavWithKeyboard(true);
+  }, []);
+
   const [loading, setLoading] = React.useState(false);
   const [error, setError] = React.useState<Error | null>(null);
-
-  const [preserveExplictelyEnableButton, setPreserveExplictelyEnableButton] = React.useState(false);
-  const [explictelyEnabled, setExplictelyEnabled] = useLocalStorage<true>(localStorageKey);
-  const explictelyEnable = React.useCallback(() => {
-    setPreserveExplictelyEnableButton(true);
-    setExplictelyEnabled(true);
-  }, [setExplictelyEnabled]);
 
   const locale = React.useMemo(() => normalizeLocale(props.locale, translations), [props.locale]);
   const texts = React.useMemo(() => (locale ? translations[locale] : {}), [locale]);
@@ -74,7 +69,7 @@ export const PlotA11yModule: React.FC<A11yViewProps> = (props) => {
     return () => document.body?.removeEventListener('keydown', keyboardListener);
   }, [navWithKeyboard]);
 
-  const shouldDisplayView = explictelyEnabled || (wasFocused && navWithKeyboard);
+  const shouldDisplayView = wasFocused && navWithKeyboard;
 
   React.useEffect(() => {
     if (!shouldDisplayView) return;
@@ -97,37 +92,26 @@ export const PlotA11yModule: React.FC<A11yViewProps> = (props) => {
   }, [plotA11yView, shouldDisplayView, loading, setLoading]);
 
   if (plotA11yView) {
-    return sstyled(styles)(
-      <div>
-        {/* Preserving button in to preserve Screenreader "focus" on element before a11y view */}
-        {preserveExplictelyEnableButton && <SPlotA11yModule render={'button'} />}
-        <plotA11yView.Component {...props} />
-      </div>,
-    ) as React.ReactElement;
+    return sstyled(styles)(<plotA11yView.Component {...props} />) as React.ReactElement;
   }
 
   if (error) {
     return sstyled(styles)(
-      <SPlotA11yModule render={'button'} tabIndex={0} aria-live="assertive">
+      <SPlotA11yModule render={'div'} tabIndex={0} aria-live="assertive">
         {texts.failed}
       </SPlotA11yModule>,
     ) as React.ReactElement;
   }
   if (loading) {
     return sstyled(styles)(
-      <SPlotA11yModule render={'button'} tabIndex={0} aria-live="polite">
+      <SPlotA11yModule render={'div'} tabIndex={0} aria-live="polite">
         {texts.loading}
       </SPlotA11yModule>,
     ) as React.ReactElement;
   }
 
   return sstyled(styles)(
-    <SPlotA11yModule
-      render={'button'}
-      tabIndex={0}
-      onClick={explictelyEnable}
-      aria-live="assertive"
-    >
+    <SPlotA11yModule render={'div'} tabIndex={0} onFocus={hadnleHiddenElementsFocus}>
       {texts.disabled}
     </SPlotA11yModule>,
   ) as React.ReactElement;
