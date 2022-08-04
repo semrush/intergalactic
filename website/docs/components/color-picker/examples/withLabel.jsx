@@ -1,4 +1,5 @@
 import React from 'react';
+import ColorPicker from '@semcore/color-picker';
 
 const Demo = () => {
   const [value, setValue] = React.useState(null);

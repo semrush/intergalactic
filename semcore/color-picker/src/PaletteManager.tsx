@@ -100,8 +100,3 @@ class PaletteManagerRoot extends Component<RootAsProps> {
 }
 
 export default PaletteManagerRoot;
-
-// unit tests
-// examples
-// a11y
-// change colors to variable
