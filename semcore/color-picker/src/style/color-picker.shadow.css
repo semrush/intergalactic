@@ -15,11 +15,16 @@ SItemContainer {
   margin: 2px;
   border-radius: 50%;
   border: 1px solid transparent;
+  outline: none;
 
   &:hover {
     cursor: pointer;
     border: 1px solid var(--gray-100);
   }
+}
+
+SItemContainer[keyboardFocused] {
+  box-shadow: var(--keyboard-focus);
 }
 
 SItemContainer[selected] {
@@ -86,10 +91,15 @@ SPlusButton {
 SDefaultTrigger {
   display: inline-flex;
   align-items: center;
+  outline: none;
 
   &:hover {
     cursor: pointer;
   }
+}
+
+SDefaultTrigger[keyboardFocused] {
+  box-shadow: var(--keyboard-focus);
 }
 
 STriggerCircle {

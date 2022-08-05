@@ -97,8 +97,13 @@ class ColorPickerRoot extends Component<RootAsProps> {
     return {
       displayLabel,
       onClick: this.bindHandlerItemClick(props.value),
+      onKeyDown: (e) => {
+        if (e.keyCode === 13) {
+          this.bindHandlerItemClick(props.value)(e);
+        }
+      },
       selected: isSelected,
-      tabIndex: isSelected ? 0 : -1,
+      // tabIndex: isSelected ? 0 : -1,
     };
   }
 

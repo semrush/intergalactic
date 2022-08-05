@@ -53,10 +53,10 @@ const a11yEnhance = (options: { [key: string]: any } = {}) => {
         throw `no children found querySelectorAll([${childAttrName}="${childAttrValue}"] a11yEnhance for ${props['data-ui-name']}`;
 
       switch (e.keyCode) {
-        case 13:
-          onNeighborClick(selectedElement);
-          e.preventDefault();
-          break;
+        // case 13:
+        //   onNeighborClick(selectedElement);
+        //   e.preventDefault();
+        //   break;
         case 37:
           onNeighborChange(getNeighbor(listSelectors, selectedElement, 'left'));
           e.preventDefault();

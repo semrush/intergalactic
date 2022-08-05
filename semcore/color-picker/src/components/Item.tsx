@@ -2,7 +2,7 @@ import React from 'react';
 import { Root, sstyled } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
 import { opacity } from '@semcore/utils/lib/color';
-import { neighborLocationEnhance } from '@semcore/neighbor-location';
+// import { neighborLocationEnhance } from '@semcore/neighbor-location';
 import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 
 type ItemAsProps = {
@@ -24,7 +24,7 @@ export function Item(props: ItemAsProps) {
   const SLine = 'div';
 
   return sstyled(styles)(
-    <SItemContainer render={Box} selected={selected}>
+    <SItemContainer render={Box} selected={selected} aria-selected={selected}>
       <SItem
         render={Box}
         value={value}
@@ -68,4 +68,4 @@ export function Item(props: ItemAsProps) {
   ) as React.ReactElement;
 }
 
-Item.enhance = [keyboardFocusEnhance(), neighborLocationEnhance()];
+Item.enhance = [keyboardFocusEnhance()];
