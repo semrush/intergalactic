@@ -2,8 +2,6 @@ import React from 'react';
 import { Root, sstyled } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
 import MathPlusM from '@semcore/icon/MathPlus/m';
-// import a11yEnhance from '@semcore/utils/lib/enhances/a11yEnhance';
-// import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 import ColorPicker, { PaletteManager } from '../index';
 
 type ColorsAsProps = {
@@ -14,23 +12,6 @@ type ColorsAsProps = {
 
 type ColorsCustomAsProps = ColorsAsProps & {
   onPlusButtonClick?: React.MouseEventHandler;
-};
-
-const optionsA11yEnhance = {
-  childSelector: ['role', 'tab'],
-  findSelectedItem: (e) => {
-    return (
-      e.currentTarget.querySelector('[data-keyboard-focus="true"]') ||
-      e.currentTarget.querySelector('[aria-selected="true"]')
-    );
-  },
-  onNeighborChange: (neighborElement) => {
-    console.log(neighborElement);
-    // if (neighborElement) {
-    //   neighborElement.focus();
-    //   neighborElement.click();
-    // }
-  },
 };
 
 export function Colors(props: ColorsAsProps) {
@@ -47,8 +28,6 @@ export function Colors(props: ColorsAsProps) {
     </SColors>,
   ) as React.ReactElement;
 }
-
-// Colors.enhance = [a11yEnhance(optionsA11yEnhance), keyboardFocusEnhance()];
 
 export function ColorsCustom(props: ColorsCustomAsProps) {
   const { Children, styles, colors, onPlusButtonClick } = props;
@@ -68,5 +47,3 @@ export function ColorsCustom(props: ColorsCustomAsProps) {
     </SColors>,
   ) as React.ReactElement;
 }
-
-// ColorsCustom.enhance = [a11yEnhance(optionsA11yEnhance), keyboardFocusEnhance()];

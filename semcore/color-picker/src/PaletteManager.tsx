@@ -7,6 +7,7 @@ import style from './style/color-picker.shadow.css';
 type RootAsProps = {
   defaultColors?: string[];
   colors?: string[];
+  onColorsChange?: (value: string, event: React.ChangeEvent) => void;
   styles?: React.CSSProperties;
   Children: React.FC;
 };
@@ -65,7 +66,6 @@ class PaletteManagerRoot extends Component<RootAsProps> {
     return {
       editable: true,
       onRemove: this.bindHandlerItemRemove(value),
-      // TODO: need to add tabIndex and checking selected value
     };
   }
 

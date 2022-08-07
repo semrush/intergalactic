@@ -4,10 +4,6 @@ const defaultOnNeighborChange = (neighborElement: HTMLElement) => {
   neighborElement?.focus();
 };
 
-const defaultOnNeighborClick = (neighborElement: HTMLElement) => {
-  neighborElement?.click();
-};
-
 const defaultFindNeighbor = (
   listSelectors: HTMLElement[],
   element: HTMLElement,
@@ -27,7 +23,6 @@ const defaultFindNeighbor = (
 const a11yEnhance = (options: { [key: string]: any } = {}) => {
   const findNeighbor = options.findNeighbor || defaultFindNeighbor;
   const onNeighborChange = options.onNeighborChange || defaultOnNeighborChange;
-  const onNeighborClick = options.onNeighborClick || defaultOnNeighborClick;
   const { childSelector } = options;
 
   return (props) => {
@@ -53,10 +48,6 @@ const a11yEnhance = (options: { [key: string]: any } = {}) => {
         throw `no children found querySelectorAll([${childAttrName}="${childAttrValue}"] a11yEnhance for ${props['data-ui-name']}`;
 
       switch (e.keyCode) {
-        // case 13:
-        //   onNeighborClick(selectedElement);
-        //   e.preventDefault();
-        //   break;
         case 37:
           onNeighborChange(getNeighbor(listSelectors, selectedElement, 'left'));
           e.preventDefault();

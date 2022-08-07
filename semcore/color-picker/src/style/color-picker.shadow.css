@@ -1,7 +1,7 @@
 @import '@semcore/utils/style/var.css';
 
 SColorPickerPopper {
-  max-width: 240px;
+  max-width: 234px;
   padding: 16px;
 }
 
@@ -12,7 +12,6 @@ SItemContainer {
   justify-content: center;
   width: 28px;
   height: 28px;
-  margin: 2px;
   border-radius: 50%;
   border: 1px solid transparent;
   outline: none;
@@ -20,6 +19,15 @@ SItemContainer {
   &:hover {
     cursor: pointer;
     border: 1px solid var(--gray-100);
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: var(--value);
   }
 }
 
@@ -31,41 +39,31 @@ SItemContainer[selected] {
   border: 1px solid var(--blue-300);
 }
 
-SItem {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  position: relative;
-  width: 22px;
-  height: 22px;
-  border-radius: 50%;
-  background: var(--value);
+SItemContainer[displayLabel] {
+  &::after {
+    background: var(--lightBackground);
+  }
 }
 
-SItem:not([value]) {
-  border: 1px solid var(--gray-100);
-}
-
-SItem[value='#'] {
-  border: 1px solid var(--gray-100);
-}
-
-SItem[displayLabel] {
-  background: var(--lightBackground);
+SItemContainer:not([value]) {
+  &::after {
+    border: 1px solid var(--gray-100);
+  }
 }
 
 SColors {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  gap: 4px;
 }
 
 SPaletteManager {
-  width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-top: 12px;
+  margin-left: 3px;
 }
 
 SInputContainer {
@@ -135,7 +133,7 @@ SCloseIcon {
 
 SLine {
   position: absolute;
-  top: 10px;
+  top: 14px;
   width: 22px;
   height: 1px;
   background: var(--gray-200);
@@ -146,4 +144,12 @@ SLabel {
   display: flex;
   margin: auto;
   z-index: 1;
+}
+
+SItemColor {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 1px solid var(--gray-100);
+  background: var(--value);
 }

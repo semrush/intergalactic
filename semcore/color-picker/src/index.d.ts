@@ -15,7 +15,7 @@ export interface IItemProps extends IBoxProps {
 export interface IColorsProps extends IBoxProps {
   styles?: React.CSSProperties;
   colors?: string[];
-  Children: any;
+  Children?: any;
 }
 
 export interface IColorsCustomProps extends IColorsProps, IBoxProps {
@@ -30,7 +30,7 @@ export interface IInputColorProps {
   state?: 'normal' | 'valid' | 'invalid';
   colors?: string[];
   onAdd?: (value: string, event: React.MouseEvent | React.KeyboardEvent) => void;
-  Children: any;
+  Children?: any;
 }
 
 export interface IColorPickerProps extends IDropdownProps {
@@ -40,16 +40,18 @@ export interface IColorPickerProps extends IDropdownProps {
   value?: string;
   onChange?: (value: string, event: React.ChangeEvent) => void;
   colors?: string[];
+  onColorsChange?: (value: string, event: React.ChangeEvent) => void;
   displayLabel?: boolean;
   styles?: React.CSSProperties;
-  Children: React.FC;
+  Children?: React.FC;
 }
 
 export interface IPaletteManagerProps extends IBoxProps {
   defaultColors?: string[];
   colors?: string[];
+  onColorsChange?: (value: string, event: React.ChangeEvent) => void;
   styles?: React.CSSProperties;
-  Children: React.FC;
+  Children?: React.FC;
 }
 
 export interface IColorPickerHandlers extends IDropdownHandlers {}

@@ -16,6 +16,7 @@ type RootAsProps = {
   value?: string;
   onChange?: (value: string, event: React.ChangeEvent) => void;
   colors?: string[];
+  onColorsChange?: (value: string, event: React.ChangeEvent) => void;
   displayLabel?: boolean;
   styles?: React.CSSProperties;
   Children: React.FC;
@@ -103,7 +104,6 @@ class ColorPickerRoot extends Component<RootAsProps> {
         }
       },
       selected: isSelected,
-      // tabIndex: isSelected ? 0 : -1,
     };
   }
 

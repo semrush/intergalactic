@@ -78,11 +78,11 @@ class InputColorRoot extends Component<InputColorAsProps> {
     const SInputValue = Root;
     const SInput = 'div';
     const SInputContainer = 'div';
-    const SItem = Box;
+    const SItemColor = Box;
 
     return sstyled(styles)(
       <SPaletteManager>
-        <SItem value={`#${value}`} />
+        <SItemColor value={value ? `#${value}` : null} />
         <SInputContainer>
           #
           <SInput>
