@@ -19,8 +19,6 @@ describe('ColorPicker', () => {
           <ColorPicker.Trigger />
           <ColorPicker.Popper>
             <ColorPicker.Colors />
-            <ColorPicker.Item value="#8649E1" data-testid="item1" />
-            <ColorPicker.Item value="#2BB3FF" />
             <PaletteManager>
               <PaletteManager.Colors>
                 <PaletteManager.Item value="#8649E6" />

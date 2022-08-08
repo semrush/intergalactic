@@ -45,7 +45,6 @@ export function Item(props: ItemAsProps) {
           />
         </SLabel>
       )}
-
       <Children />
       {editable && (
         <SCloseIcon

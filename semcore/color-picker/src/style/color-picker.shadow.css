@@ -132,6 +132,7 @@ SCloseIcon {
   border-radius: 50%;
   background-color: var(--gray-100);
   opacity: 0%;
+  z-index: 1;
 
   &:hover {
     display: flex;
