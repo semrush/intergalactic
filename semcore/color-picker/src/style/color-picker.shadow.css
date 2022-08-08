@@ -101,6 +101,7 @@ SDefaultTrigger[keyboardFocused] {
 }
 
 STriggerCircle {
+  position: relative;
   width: 12px;
   height: 12px;
   margin-right: 5px;
@@ -111,6 +112,15 @@ STriggerCircle {
 
 STriggerCircle:not([value]) {
   border: 1px solid var(--gray-100);
+}
+
+STriggerCircleLine {
+  position: absolute;
+  top: 6px;
+  width: 12px;
+  height: 1px;
+  background: var(--gray-200);
+  transform: rotate(130deg);
 }
 
 SCloseIcon {

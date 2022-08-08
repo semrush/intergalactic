@@ -1,57 +1,115 @@
 import { CProps, ReturnEl, PropGetterFn } from '@semcore/core';
 import { IBoxProps } from '@semcore/flex-box';
 import Dropdown, { IDropdownProps, IDropdownHandlers } from '@semcore/dropdown';
+import { IInputProps } from '@semcore/input';
 
 export interface IItemProps extends IBoxProps {
-  styles?: React.CSSProperties;
+  /**
+   * Color item in HEX format.
+   */
   value?: string;
+  /**
+   * Shows label `A` as text color icon inside all color items
+   */
   displayLabel?: boolean;
+  /**
+   * Property enabling the ability to remove a color item on click
+   */
   editable?: boolean;
+  /**
+   * Shows if color item is selected
+   */
   selected?: boolean;
+  /**
+   * Fired with color item when user clicks on the close icon`
+   */
   onRemove?: React.MouseEventHandler;
-  Children?: React.FC;
 }
 
 export interface IColorsProps extends IBoxProps {
-  styles?: React.CSSProperties;
+  /**
+   * Array of color items
+   */
   colors?: string[];
-  Children?: any;
 }
 
 export interface IColorsCustomProps extends IColorsProps, IBoxProps {
+  /**
+   * Fired when user clicks on the plus icon in Palette Manager - focuses the input component`
+   */
   onPlusButtonClick?: React.MouseEventHandler;
 }
 
-export interface IInputColorProps {
-  styles?: React.CSSProperties;
-  defaultValue?: string;
-  defaultState?: string;
+export interface IInputColorProps extends IInputProps {
+  /**
+   * Text value of input
+   */
   value?: string;
+  /**
+   * Default value if `value` property is not provided
+   * @default null
+   */
+  defaultValue?: string | null;
+  /**
+   * Uncontrolled visual state of input
+   * @default normal
+   */
   state?: 'normal' | 'valid' | 'invalid';
+  /**
+   * Array of color items
+   */
   colors?: string[];
+  /**
+   * Fired with entered value when user clicks on the check icon or hits `Enter` or `Space`
+   */
   onAdd?: (value: string, event: React.MouseEvent | React.KeyboardEvent) => void;
-  Children?: any;
 }
 
 export interface IColorPickerProps extends IDropdownProps {
-  defaultVisible?: boolean;
-  visible?: boolean;
-  defaultValue?: string;
-  value?: string;
+  /**
+   * Selected color item. Should be used with `onChange` property together
+   */
+  value?: string | null;
+  /**
+   * Fired when user selects color item. Should be used with `value` property together
+   */
   onChange?: (value: string, event: React.ChangeEvent) => void;
+  /**
+   * Default value if `value` property is not provided
+   * @default null
+   */
+  defaultValue?: string | null;
+  /**
+   * Array of color items. Should be used with `onColorsChange` property together
+   * @default DEFAULT_COLORS
+   */
   colors?: string[];
+  /**
+   * Fired when user changes color items. Should be used with `colors` property together
+   */
   onColorsChange?: (value: string, event: React.ChangeEvent) => void;
+  /**
+   * Shows label `A` as text color icon inside all color items
+   * @default false
+   */
   displayLabel?: boolean;
-  styles?: React.CSSProperties;
-  Children?: React.FC;
 }
 
 export interface IPaletteManagerProps extends IBoxProps {
-  defaultColors?: string[];
+  /**
+   * Array of color items. Should be used with `onColorsChange` property together
+   * @default []
+   */
   colors?: string[];
+  /**
+   * Default value if `colors` property is not provided
+   * @default []
+   */
+  defaultColors?: string[];
+  /**
+   * Fired when user adds or removes color items. Should be used with `colors` property together
+   */
   onColorsChange?: (value: string, event: React.ChangeEvent) => void;
-  styles?: React.CSSProperties;
-  Children?: React.FC;
 }
 
 export interface IColorPickerHandlers extends IDropdownHandlers {}
@@ -70,6 +128,8 @@ interface IPaletteManagerContext {
   getItemProps: PropGetterFn;
 }
 
+declare const DEFAULT_COLORS: string[];
+
 declare const PaletteManager: (<T>(
   props: CProps<IPaletteManagerProps & T, IPaletteManagerContext, IPaletteManagerHandlers>,
 ) => ReturnEl) & {
@@ -87,5 +147,5 @@ declare const ColorPicker: (<T>(
   Colors: <T>(props: IColorsProps & T) => ReturnEl;
 };
 
-export { PaletteManager };
+export { PaletteManager, DEFAULT_COLORS };
 export default ColorPicker;

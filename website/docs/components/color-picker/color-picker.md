@@ -3,6 +3,8 @@ title: ColorPicker
 tabName: Design
 ---
 
+@import playground
+
 @## Description
 
 **ColorPicker** is a component that allows the user to select the color of another component from the pre-defined palette or specify a custom color via its hexadecimal value.
@@ -158,3 +160,7 @@ You can place the color marker in the following components:
 - [Option](/components/dropdown-menu/#a66af9)
 
 ![Color picker places](static/color-picker-places.png)
+
+@page color-picker-api
+@page color-picker-code
+@page color-picker-changelog

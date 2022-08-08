@@ -8,14 +8,14 @@ describe('ColorPicker', () => {
   afterEach(cleanup);
 
   test('Should render trigger correctly', async () => {
-    const component = <ColorPicker value="#232456" onChange={() => {}} />;
+    const component = <ColorPicker value="#232456" />;
     expect(await snapshot(component)).toMatchImageSnapshot();
   });
 
   test('Should render popper correctly', async () => {
     const component = (
       <div style={{ width: 250, height: 250 }}>
-        <ColorPicker value="#232456" onChange={() => {}} disablePortal visible>
+        <ColorPicker value="#232456" disablePortal visible>
           <ColorPicker.Trigger />
           <ColorPicker.Popper>
             <ColorPicker.Colors />

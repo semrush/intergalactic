@@ -3,6 +3,7 @@ import ColorPicker, { PaletteManager } from '@semcore/color-picker';
 
 const Demo = () => {
   const [value, setValue] = React.useState('#FDC23C');
+  const [customColors, setCustomColors] = React.useState(['#8649E6', '#8649E7', '#8649E8']);
 
   return (
     <ColorPicker value={value} onChange={setValue}>
@@ -24,8 +25,8 @@ const Demo = () => {
             '#C7EE96',
           ]}
         />
-        <PaletteManager>
-          <PaletteManager.Colors colors={['#8649E6', '#2BB1FF']} />
+        <PaletteManager colors={customColors} onColorsChange={setCustomColors}>
+          <PaletteManager.Colors />
           <PaletteManager.InputColor />
         </PaletteManager>
       </ColorPicker.Popper>

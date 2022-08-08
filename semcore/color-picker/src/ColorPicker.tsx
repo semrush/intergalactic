@@ -9,6 +9,21 @@ import { Item, Colors, ColorsCustom, InputColor } from './components';
 
 import style from './style/color-picker.shadow.css';
 
+const DEFAULT_COLORS = [
+  null,
+  '#2BB3FF',
+  '#8649E1',
+  '#C695FF',
+  '#F67CF2',
+  '#FFA9FA',
+  '#FF8786',
+  '#FF8C43',
+  '#FDC23C',
+  '#66C030',
+  '#9BD85D',
+  '#C7EE96',
+];
+
 type RootAsProps = {
   defaultVisible?: boolean;
   visible?: boolean;
@@ -33,6 +48,10 @@ type PopperAsProps = {
   Children: React.FC;
 };
 
+type ItemAsProps = {
+  value: string;
+};
+
 class ColorPickerRoot extends Component<RootAsProps> {
   static displayName = 'ColorPicker';
 
@@ -41,20 +60,7 @@ class ColorPickerRoot extends Component<RootAsProps> {
   static defaultProps = () => ({
     defaultVisible: false,
     defaultValue: null,
-    colors: [
-      null,
-      '#2BB3FF',
-      '#8649E1',
-      '#C695FF',
-      '#F67CF2',
-      '#FFA9FA',
-      '#FF8786',
-      '#FF8C43',
-      '#FDC23C',
-      '#66C030',
-      '#9BD85D',
-      '#C7EE96',
-    ],
+    colors: DEFAULT_COLORS,
     children: (
       <>
         <ColorPicker.Trigger />
@@ -66,7 +72,7 @@ class ColorPickerRoot extends Component<RootAsProps> {
   uncontrolledProps() {
     return {
       value: null,
-      visible: null,
+      visible: false,
     };
   }
 
@@ -91,7 +97,7 @@ class ColorPickerRoot extends Component<RootAsProps> {
     };
   }
 
-  getItemProps(props) {
+  getItemProps(props: ItemAsProps) {
     const { value, displayLabel } = this.asProps;
     const isSelected = value === props.value;
 
@@ -99,7 +105,7 @@ class ColorPickerRoot extends Component<RootAsProps> {
       displayLabel,
       onClick: this.bindHandlerItemClick(props.value),
       onKeyDown: (e) => {
-        if (e.keyCode === 13) {
+        if (e.keyCode === 13 || e.keyCode === 32) {
           this.bindHandlerItemClick(props.value)(e);
         }
       },
@@ -134,10 +140,11 @@ const DefaultTrigger = React.forwardRef(function (props: TriggerAsProps, ref) {
   const { styles, value } = props;
   const SDefaultTrigger = Root;
   const STriggerCircle = Box;
+  const STriggerCircleLine = Box;
 
   return sstyled(styles)(
     <SDefaultTrigger render={Box} ref={ref}>
-      <STriggerCircle value={value} />
+      <STriggerCircle value={value}>{!value && <STriggerCircleLine />}</STriggerCircle>
       <ChevronDownM color="#191B23" />
     </SDefaultTrigger>,
   ) as React.ReactElement;
@@ -173,5 +180,5 @@ const PaletteManager = createComponent(PaletteManagerRoot, {
   InputColor,
 }) as any;
 
-export { PaletteManager };
+export { PaletteManager, DEFAULT_COLORS };
 export default ColorPicker;
