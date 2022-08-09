@@ -19,7 +19,7 @@ type InputColorAsProps = {
 };
 
 function isValidHex(hex: string) {
-  const reg = /^#([0-9a-f]{3}){1,2}$/i;
+  const reg = /^#([0-9a-f]{3,4}){1,2}$/i;
   return reg.test('#' + hex);
 }
 
@@ -104,10 +104,10 @@ class InputColorRoot extends Component<InputColorAsProps> {
               {focus && (
                 <>
                   <Input.Addon role="button" interactive onClick={this.handlerAdd} p="0">
-                    <CheckM color="#00C192" />
+                    <CheckM color="green-300" />
                   </Input.Addon>
                   <Input.Addon role="button" interactive onClick={this.handlerCancel}>
-                    <CloseM color="#A9ABB6" />
+                    <CloseM color="gray-300" />
                   </Input.Addon>
                 </>
               )}

@@ -4,13 +4,13 @@ title: Example
 
 @## ColorPicker
 
-Widget allows the user to select the color of another component from the pre-defined palette or specify a custom color via its hexadecimal value.
+The component allows users to select a color of another component from the pre-defined palette or specify a custom color via its hexadecimal value.
 
 @example defaultExtended
 
 @## PaletteManager
 
-Using PaletteManager you can add custom colors by entering color in HEX format in input and after this clicking on check icon inside input or pressing Enter on keyboard. In addition, you can remove custom colors by clicking on close icon on each item.
+Using PaletteManager you can add custom colors by entering color in hexadecimal format in input and after this clicking on check icon inside input or pressing Enter on keyboard. In addition, you can remove custom colors by clicking on close icon on each item.
 
 @example defaultExtended
 

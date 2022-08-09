@@ -81,7 +81,7 @@ import { PaletteManager } from '@semcore/color-picker';
 
 @## ColorPicker.InputColor
 
-Input for adding colors in HEX format.
+Input for adding colors in hexadecimal format.
 
 ```jsx
 import { PaletteManager } from '@semcore/color-picker';

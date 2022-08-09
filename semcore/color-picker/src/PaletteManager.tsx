@@ -26,12 +26,9 @@ class PaletteManagerRoot extends Component<RootAsProps, State> {
   _colors: string[] = [];
   refInput = React.createRef<HTMLInputElement>();
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      focus: false,
-    } as State;
-  }
+  state: State = {
+    focus: false,
+  };
 
   uncontrolledProps() {
     return {

@@ -42,7 +42,7 @@ export function ColorsCustom(props: ColorsCustomAsProps) {
         colors.map((color) => <PaletteManager.Item value={color} key={color} role="tab" />)
       )}
       <SPlusButton onClick={onPlusButtonClick}>
-        <MathPlusM color="#6C6E79" />
+        <MathPlusM color="gray-500" />
       </SPlusButton>
     </SColors>,
   ) as React.ReactElement;

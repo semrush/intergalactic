@@ -5,7 +5,7 @@ import { IInputProps } from '@semcore/input';
 
 export interface IItemProps extends IBoxProps {
   /**
-   * Color item in HEX format.
+   * Color item in hexadecimal format.
    */
   value?: string;
   /**
@@ -81,7 +81,7 @@ export interface IColorPickerProps extends IDropdownProps {
   defaultValue?: string | null;
   /**
    * Array of color items. Should be used with `onColorsChange` property together
-   * @default DEFAULT_COLORS
+   * @default defaultColors
    */
   colors?: string[];
   /**
@@ -128,7 +128,7 @@ interface IPaletteManagerContext {
   getItemProps: PropGetterFn;
 }
 
-declare const DEFAULT_COLORS: string[];
+declare const defaultColors: string[];
 
 declare const PaletteManager: (<T>(
   props: CProps<IPaletteManagerProps & T, IPaletteManagerContext, IPaletteManagerHandlers>,
@@ -147,5 +147,5 @@ declare const ColorPicker: (<T>(
   Colors: <T>(props: IColorsProps & T) => ReturnEl;
 };
 
-export { PaletteManager, DEFAULT_COLORS };
+export { PaletteManager, defaultColors };
 export default ColorPicker;

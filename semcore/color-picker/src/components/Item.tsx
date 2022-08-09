@@ -19,7 +19,7 @@ export function Item(props: ItemAsProps) {
   const SItemContainer = Root;
   const SLabel = 'svg';
   const SCloseIcon = 'svg';
-  const SLine = 'div';
+  const SLine = 'svg';
 
   return sstyled(styles)(
     <SItemContainer
@@ -30,13 +30,28 @@ export function Item(props: ItemAsProps) {
       displayLabel={displayLabel}
       lightBackground={opacity(value, 0.15)}
     >
-      {!value && <SLine />}
+      {!value && (
+        <SLine
+          width="17"
+          height="17"
+          viewBox="0 0 17 17"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <rect
+            width="1"
+            height="23"
+            transform="matrix(-0.707107 -0.707107 -0.707107 0.707107 16.4854 0.928925)"
+            fill="#c4c7cf"
+          />
+        </SLine>
+      )}
       {displayLabel && (
         <SLabel
           width="10"
           height="10"
           viewBox="0 0 10 10"
-          fill={value || '#6C6E79'}
+          fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
           <path

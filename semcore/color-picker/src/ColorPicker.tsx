@@ -9,7 +9,7 @@ import { Item, Colors, ColorsCustom, InputColor } from './components';
 
 import style from './style/color-picker.shadow.css';
 
-const DEFAULT_COLORS = [
+const defaultColors = [
   null,
   '#2BB3FF',
   '#8649E1',
@@ -60,7 +60,7 @@ class ColorPickerRoot extends Component<RootAsProps> {
   static defaultProps = () => ({
     defaultVisible: false,
     defaultValue: null,
-    colors: DEFAULT_COLORS,
+    colors: defaultColors,
     children: (
       <>
         <ColorPicker.Trigger />
@@ -76,9 +76,10 @@ class ColorPickerRoot extends Component<RootAsProps> {
     };
   }
 
-  bindHandlerItemClick = (value: string) => (e: React.MouseEvent) => {
-    this.handlers.value(value, e);
-    this.handlers.visible(false, e);
+  bindHandlerItemClick = (value: string) => (event: React.MouseEvent | React.KeyboardEvent) => {
+    this.handlers.value(value, event);
+    this.handlers.visible(false, event);
+    event.preventDefault();
   };
 
   getTriggerProps() {
@@ -104,9 +105,9 @@ class ColorPickerRoot extends Component<RootAsProps> {
     return {
       displayLabel,
       onClick: this.bindHandlerItemClick(props.value),
-      onKeyDown: (e) => {
-        if (e.keyCode === 13 || e.keyCode === 32) {
-          this.bindHandlerItemClick(props.value)(e);
+      onKeyDown: (event: React.KeyboardEvent) => {
+        if (event.code === 'Enter' || event.code === 'Space') {
+          this.bindHandlerItemClick(props.value)(event);
         }
       },
       selected: isSelected,
@@ -145,7 +146,7 @@ const DefaultTrigger = React.forwardRef(function (props: TriggerAsProps, ref) {
   return sstyled(styles)(
     <SDefaultTrigger render={Box} ref={ref}>
       <STriggerCircle value={value}>{!value && <STriggerCircleLine />}</STriggerCircle>
-      <ChevronDownM color="#191B23" />
+      <ChevronDownM color="gray-800" />
     </SDefaultTrigger>,
   ) as React.ReactElement;
 });
@@ -180,5 +181,5 @@ const PaletteManager = createComponent(PaletteManagerRoot, {
   InputColor,
 }) as any;
 
-export { PaletteManager, DEFAULT_COLORS };
+export { PaletteManager, defaultColors };
 export default ColorPicker;

@@ -15,9 +15,9 @@ SItemContainer {
   border-radius: 50%;
   border: 1px solid transparent;
   outline: none;
+  cursor: pointer;
 
   &:hover {
-    cursor: pointer;
     border: 1px solid var(--gray-100);
   }
 
@@ -29,6 +29,10 @@ SItemContainer {
     border-radius: 50%;
     background: var(--value);
   }
+}
+
+SItemContainer:hover > SCloseIcon {
+  opacity: 1;
 }
 
 SItemContainer[keyboardFocused] {
@@ -79,10 +83,10 @@ SPlusButton {
   height: 28px;
   margin: 2px;
   border-radius: 50% !important;
+  cursor: pointer;
 
   &:hover {
     background-color: var(--gray-100);
-    cursor: pointer;
   }
 }
 
@@ -90,10 +94,7 @@ SDefaultTrigger {
   display: inline-flex;
   align-items: center;
   outline: none;
-
-  &:hover {
-    cursor: pointer;
-  }
+  cursor: pointer;
 }
 
 SDefaultTrigger[keyboardFocused] {
@@ -134,21 +135,13 @@ SCloseIcon {
   height: 12px;
   border-radius: 50%;
   background-color: var(--gray-100);
-  opacity: 0%;
+  opacity: 0;
   z-index: 1;
-
-  &:hover {
-    opacity: 100%;
-  }
 }
 
 SLine {
   position: absolute;
-  top: 14px;
-  width: 22px;
-  height: 1px;
-  background: var(--gray-200);
-  transform: rotate(130deg);
+  left: 6px;
 }
 
 SLabel {
