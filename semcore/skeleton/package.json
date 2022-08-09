@@ -1,6 +1,6 @@
 {
   "name": "@semcore/skeleton",
-  "description": "SEMRush Skeleton Component",
+  "description": "Semrush Skeleton Component",
   "version": "4.0.5",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",

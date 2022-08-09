@@ -1,6 +1,6 @@
 {
   "name": "@semcore/widget-empty",
-  "description": "SEMRush WidgetEmpty Component",
+  "description": "Semrush WidgetEmpty Component",
   "version": "3.2.1",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",

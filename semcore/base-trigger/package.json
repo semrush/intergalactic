@@ -1,6 +1,6 @@
 {
   "name": "@semcore/base-trigger",
-  "description": "SEMRush BaseTrigger Component",
+  "description": "Semrush BaseTrigger Component",
   "version": "3.0.12",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",

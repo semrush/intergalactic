@@ -1,6 +1,6 @@
 {
   "name": "@semcore/drag-and-drop",
-  "description": "SEMRush DragAndDrop Component",
+  "description": "Semrush DragAndDrop Component",
   "version": "2.0.10",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",

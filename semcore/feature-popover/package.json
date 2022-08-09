@@ -1,6 +1,6 @@
 {
   "name": "@semcore/feature-popover",
-  "description": "SEMRush FeaturePopover Component",
+  "description": "Semrush FeaturePopover Component",
   "version": "3.0.11",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",

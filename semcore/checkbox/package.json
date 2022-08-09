@@ -1,6 +1,6 @@
 {
   "name": "@semcore/checkbox",
-  "description": "SEMRush Checkbox Component",
+  "description": "Semrush Checkbox Component",
   "version": "6.0.8",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",

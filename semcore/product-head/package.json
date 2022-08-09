@@ -1,6 +1,6 @@
 {
   "name": "@semcore/product-head",
-  "description": "SEMRush ProductHead Component",
+  "description": "Semrush ProductHead Component",
   "version": "3.0.5",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",

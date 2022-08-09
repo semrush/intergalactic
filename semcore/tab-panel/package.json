@@ -1,6 +1,6 @@
 {
   "name": "@semcore/tab-panel",
-  "description": "SEMRush TabPanel Component",
+  "description": "Semrush TabPanel Component",
   "version": "3.0.4",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",

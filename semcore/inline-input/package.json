@@ -1,6 +1,6 @@
 {
   "name": "@semcore/inline-input",
-  "description": "SEMRush Input Component",
+  "description": "Semrush Input Component",
   "version": "3.0.13",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",

@@ -1,6 +1,6 @@
 {
   "name": "@semcore/link",
-  "description": "SEMRush Link Component",
+  "description": "Semrush Link Component",
   "version": "4.0.9",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",

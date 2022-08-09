@@ -1,6 +1,6 @@
 {
   "name": "@semcore/badge",
-  "description": "SEMRush Badge Component",
+  "description": "Semrush Badge Component",
   "version": "3.0.5",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",

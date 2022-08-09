@@ -1,6 +1,6 @@
 {
   "name": "@semcore/side-panel",
-  "description": "SEMRush SidePanel Component",
+  "description": "Semrush SidePanel Component",
   "version": "2.0.10",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",

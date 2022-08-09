@@ -1,6 +1,6 @@
 {
   "name": "@semcore/outside-click",
-  "description": "SEMRush OutsideClick Component",
+  "description": "Semrush OutsideClick Component",
   "version": "2.4.10",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",

@@ -1,6 +1,6 @@
 {
   "name": "@semcore/illustration",
-  "description": "SEMRush Illustration Component",
+  "description": "Semrush Illustration Component",
   "version": "1.0.2",
   "main": "index.js",
   "module": "index.js",

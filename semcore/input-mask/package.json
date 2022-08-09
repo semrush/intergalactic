@@ -1,6 +1,6 @@
 {
   "name": "@semcore/input-mask",
-  "description": "SEMRush InputMask Component",
+  "description": "Semrush InputMask Component",
   "version": "4.0.10",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",

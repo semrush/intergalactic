@@ -1,6 +1,6 @@
 {
   "name": "@semcore/popper",
-  "description": "SEMRush Popper Component",
+  "description": "Semrush Popper Component",
   "version": "4.11.26",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",

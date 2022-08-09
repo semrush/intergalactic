@@ -1,6 +1,6 @@
 {
   "name": "@semcore/icon",
-  "description": "SEMRush Icon Component",
+  "description": "Semrush Icon Component",
   "version": "2.29.3",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",

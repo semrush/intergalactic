@@ -1,6 +1,6 @@
 {
   "name": "@semcore/pagination",
-  "description": "SEMRush Pagination Component",
+  "description": "Semrush Pagination Component",
   "version": "3.0.15",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",

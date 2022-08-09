@@ -1,6 +1,6 @@
 {
   "name": "@semcore/dot",
-  "description": "SEMRush Dot Component",
+  "description": "Semrush Dot Component",
   "version": "4.0.9",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
