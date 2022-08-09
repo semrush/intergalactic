@@ -1,6 +1,6 @@
 {
   "name": "@semcore/neighbor-location",
-  "description": "SEMRush NeighborLocation Component",
+  "description": "Semrush NeighborLocation Component",
   "version": "2.3.12",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",

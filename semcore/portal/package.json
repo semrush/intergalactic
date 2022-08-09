@@ -1,6 +1,6 @@
 {
   "name": "@semcore/portal",
-  "description": "SEMRush Portal Component",
+  "description": "Semrush Portal Component",
   "version": "2.3.9",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",

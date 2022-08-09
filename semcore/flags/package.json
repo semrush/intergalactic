@@ -1,6 +1,6 @@
 {
   "name": "@semcore/flags",
-  "description": "SEMRush Flags Component",
+  "description": "Semrush Flags Component",
   "version": "3.0.5",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",

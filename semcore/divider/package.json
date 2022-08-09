@@ -1,6 +1,6 @@
 {
   "name": "@semcore/divider",
-  "description": "SEMRush Divider Component",
+  "description": "Semrush Divider Component",
   "version": "3.0.6",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",

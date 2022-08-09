@@ -1,6 +1,6 @@
 {
   "name": "@semcore/breakpoints",
-  "description": "SEMRush Breakpoints Component",
+  "description": "Semrush Breakpoints Component",
   "version": "1.1.9",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",

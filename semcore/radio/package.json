@@ -1,6 +1,6 @@
 {
   "name": "@semcore/radio",
-  "description": "SEMRush Radio Component",
+  "description": "Semrush Radio Component",
   "version": "5.0.6",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",

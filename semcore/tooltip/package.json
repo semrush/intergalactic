@@ -1,6 +1,6 @@
 {
   "name": "@semcore/tooltip",
-  "description": "SEMRush Tooltip Component",
+  "description": "Semrush Tooltip Component",
   "version": "5.0.9",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",

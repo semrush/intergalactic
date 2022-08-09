@@ -1,6 +1,6 @@
 {
   "name": "@semcore/dropdown",
-  "description": "SEMRush Dropdown Component",
+  "description": "Semrush Dropdown Component",
   "version": "3.0.8",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",

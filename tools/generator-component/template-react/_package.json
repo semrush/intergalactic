@@ -1,6 +1,6 @@
 {
   "name": "@semcore/{{ dashCase name }}",
-  "description": "SEMRush {{ properCase name }} Component",
+  "description": "Semrush {{ properCase name }} Component",
   "version": "1.0.0-0",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",

@@ -1,6 +1,6 @@
 {
   "name": "@semcore/utils",
-  "description": "SEMRush Utils Component",
+  "description": "Semrush Utils Component",
   "version": "3.35.1",
   "main": "lib/index.js",
   "sideEffects": false,

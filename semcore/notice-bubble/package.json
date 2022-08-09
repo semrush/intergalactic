@@ -1,6 +1,6 @@
 {
   "name": "@semcore/notice-bubble",
-  "description": "SEMRush NoticeBubble Component",
+  "description": "Semrush NoticeBubble Component",
   "version": "4.0.9",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",

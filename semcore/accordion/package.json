@@ -1,6 +1,6 @@
 {
   "name": "@semcore/accordion",
-  "description": "SEMRush Accordion Component",
+  "description": "Semrush Accordion Component",
   "version": "4.0.9",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",

@@ -1,6 +1,6 @@
 {
   "name": "@semcore/sticky",
-  "description": "SEMRush Sticky Component",
+  "description": "Semrush Sticky Component",
   "version": "2.2.8",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",

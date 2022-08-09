@@ -1,6 +1,6 @@
 {
   "name": "@semcore/tab-line",
-  "description": "SEMRush TabLine Component",
+  "description": "Semrush TabLine Component",
   "version": "3.0.5",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",

@@ -1,6 +1,6 @@
 {
   "name": "@semcore/modal",
-  "description": "SEMRush Modal Component",
+  "description": "Semrush Modal Component",
   "version": "3.0.11",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",

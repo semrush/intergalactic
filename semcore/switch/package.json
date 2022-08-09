@@ -1,6 +1,6 @@
 {
   "name": "@semcore/switch",
-  "description": "SEMRush Switch Component",
+  "description": "Semrush Switch Component",
   "version": "4.0.5",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",

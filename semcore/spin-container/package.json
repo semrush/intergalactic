@@ -1,6 +1,6 @@
 {
   "name": "@semcore/spin-container",
-  "description": "SEMRush SpinContainer Component",
+  "description": "Semrush SpinContainer Component",
   "version": "6.0.6",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",

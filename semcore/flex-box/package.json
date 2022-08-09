@@ -1,6 +1,6 @@
 {
   "name": "@semcore/flex-box",
-  "description": "SEMRush FlexBox Component",
+  "description": "Semrush FlexBox Component",
   "version": "4.5.8",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
