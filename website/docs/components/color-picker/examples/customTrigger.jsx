@@ -4,7 +4,7 @@ import Input from '@semcore/input';
 import { Box } from '@semcore/flex-box';
 
 const Demo = () => {
-  const [value, setValue] = React.useState('#98848D');
+  const [value, setValue] = React.useState('#C695FF');
 
   return (
     <ColorPicker value={value} onChange={setValue}>
@@ -16,7 +16,7 @@ const Demo = () => {
                 width: '12px',
                 height: '12px',
                 borderRadius: '50%',
-                border: '1px solid #6c67e7',
+                border: '1px solid #C4C7CF',
                 backgroundColor: value,
               }}
             ></div>

@@ -12,7 +12,9 @@ type RootAsProps = {
   Children: React.FC;
 };
 
-class PaletteManagerRoot extends Component<RootAsProps> {
+type State = { focus: boolean };
+
+class PaletteManagerRoot extends Component<RootAsProps, State> {
   static displayName = 'PaletteManager';
 
   static style = style;
@@ -23,6 +25,13 @@ class PaletteManagerRoot extends Component<RootAsProps> {
 
   _colors: string[] = [];
   refInput = React.createRef<HTMLInputElement>();
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      focus: false,
+    } as State;
+  }
 
   uncontrolledProps() {
     return {
@@ -48,7 +57,10 @@ class PaletteManagerRoot extends Component<RootAsProps> {
     }
   };
 
-  bindHandlerButtonClick = () => () => this.refInput.current?.focus();
+  bindHandlerButtonClick = () => () => {
+    this.refInput.current?.focus();
+    this.onFocus();
+  };
 
   getColorsProps() {
     const { colors } = this.asProps;
@@ -69,10 +81,17 @@ class PaletteManagerRoot extends Component<RootAsProps> {
     };
   }
 
+  onFocus = () => this.setState({ focus: true });
+
+  onBlur = () => this.setState({ focus: false });
+
   getInputColorProps() {
     return {
       ref: this.refInput,
       onAdd: this.bindHandlerItemAdd(),
+      focus: this.state.focus,
+      onFocus: this.onFocus,
+      onBlur: this.onBlur,
     };
   }
 

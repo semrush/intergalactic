@@ -28,7 +28,7 @@ You can customize all parts of ColorPicker by yourself including trigger.
 
 @## Ways how to use
 
-There are several ways how you can add colors. First one is using prop `colors` on `ColorPicker.Colors` for default colors and on `PaletteManager` for custom colors which you can edit (add and remove). The second way is using `ColorPicker.Item` and `PalatteManagerItem`. By the second way you can use your own components instead of default items. Next two examples are the same.
+There are several ways how you can add colors. First one is using prop `colors` on `ColorPicker.Colors` for default colors and on `PaletteManager` for custom colors which you can edit (add and remove). The second way is using `ColorPicker.Item` and `PaletteManager.Item`. By the second way you can use your own components instead of default items. Next two examples are the same.
 
 @example howToUse
 

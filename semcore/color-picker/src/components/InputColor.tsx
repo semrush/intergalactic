@@ -14,6 +14,7 @@ type InputColorAsProps = {
   state?: 'normal' | 'valid' | 'invalid';
   colors?: string[];
   onAdd?: (value: string, event: React.MouseEvent | React.KeyboardEvent) => void;
+  focus?: boolean;
   Children: any;
 };
 
@@ -72,7 +73,7 @@ class InputColorRoot extends Component<InputColorAsProps> {
   };
 
   render() {
-    const { styles, state, value } = this.asProps;
+    const { styles, state, value, onFocus, onBlur, focus } = this.asProps;
 
     const SPaletteManager = Box;
     const SInputValue = Root;
@@ -86,19 +87,30 @@ class InputColorRoot extends Component<InputColorAsProps> {
         <SInputContainer>
           #
           <SInput>
-            <Input ml={1} w={135} state={state} onKeyDown={this.handlekeyDown}>
+            <Input
+              ml={1}
+              w={135}
+              state={state}
+              onKeyDown={this.handlekeyDown}
+              onFocus={onFocus}
+              onBlur={onBlur}
+            >
               <SInputValue
                 render={Input.Value}
                 placeholder="FFFFFF"
                 onChange={this.handlerChange}
                 maxLength={6}
               />
-              <Input.Addon role="button" interactive onClick={this.handlerAdd} p="0">
-                <CheckM color="#00C192" />
-              </Input.Addon>
-              <Input.Addon role="button" interactive onClick={this.handlerCancel}>
-                <CloseM />
-              </Input.Addon>
+              {focus && (
+                <>
+                  <Input.Addon role="button" interactive onClick={this.handlerAdd} p="0">
+                    <CheckM color="#00C192" />
+                  </Input.Addon>
+                  <Input.Addon role="button" interactive onClick={this.handlerCancel}>
+                    <CloseM color="#A9ABB6" />
+                  </Input.Addon>
+                </>
+              )}
             </Input>
           </SInput>
         </SInputContainer>
