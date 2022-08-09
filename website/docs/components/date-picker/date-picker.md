@@ -8,9 +8,9 @@ tabName: Design
 
 @## Description
 
-**Date picker** is a component for selection/input of the date and, in some cases, the time.
+**Date picker** is a component for selecting or inputting the date or date range.
 
-The component exists in 4 types:
+The component has 4 types:
 
 - Date picker — selection of one day;
 - Date range picker — selection of a range of days/weeks;
@@ -19,99 +19,102 @@ The component exists in 4 types:
 
 @## Trigger
 
-Trigger, as a rule, is in the form of select trigger, only without the chevron icon.
+Trigger has styles of [Select](/components/select/).
 
-> 💡 Use the en dash to indicate range of dates. Don't add a space on either side of the en dash for numbers.  
-> For example: Mar 4–10, 2022
+> Use the **en dash** to indicate range of dates. Don’t add a space on either side of the **en dash**.
+> _For example: "Mar 4–10, 2022"._
 
-| Description                        | Appearance example                    |
+| State or case                      | Appearance example                    |
 | ---------------------------------- | ------------------------------------- |
 | Placeholder                        | ![trigger](static/placeholder.png)    |
-| Day                                | ![trigger](static/date_trigger_1.png) |
-| Range of days in one month         | ![trigger](static/date_trigger_2.png) |
-| Range of days in one year          | ![trigger](static/date_trigger_3.png) |
-| Range of days in different years   | ![trigger](static/date_trigger_4.png) |
-| Month                              | ![trigger](static/date_trigger_5.png) |
-| Range of months in one year        | ![trigger](static/date_trigger_6.png) |
-| Range of months in different years | ![trigger](static/date_trigger_7.png) |
+| Day                                | ![trigger](static/date-trigger-1.png) |
+| Range of days in one month         | ![trigger](static/date-trigger-2.png) |
+| Range of days in one year          | ![trigger](static/date-trigger-3.png) |
+| Range of days in different years   | ![trigger](static/date-trigger-4.png) |
+| Month                              | ![trigger](static/date-trigger-5.png) |
+| Range of months in one year        | ![trigger](static/date-trigger-6.png) |
+| Range of months in different years | ![trigger](static/date-trigger-7.png) |
+
+@## "Apply" button
+
+Selected date can be submitted:
+
+- after clicking the date
+- or after clicking the "Apply" button (if there is one).
+
+"Apply" button is usually added to the dropdown when user needs to select date range or if the choice of the date affects some limitations in the interface.
 
 @## Date picker
 
-You may select only one day. Select the day by clicking the box with the date. Upon clicking the available day of another month this day is selected, the current month is not scrolled. Upon clicking the day the dropdown is closed, the date in the trigger is updated to become the selected one. If the dropdown has the **Apply** button, the date is selected, and the dropdown is closed by clicking this button.
+Date picker selects only one day. After selecting the day the dropdown closes and the date in the trigger updates.
 
-> 💡 If the calendar has `disabled` dates, nothing happens by clicking them.
+> If date has `disabled` state, then nothing should happen after user clicks it.
 
-![datepicker opened](static/timepicker_norma_opened.png)
+![datepicker opened](static/timepicker-norma-opened.png)
 
-**The dropdown width is formed according to 7 days width (32\*7=224px + paddings)**. Paginator at the top of the component has two buttons and designation of the month stretched to the remaining width between them.
+@## Date picker + "Today" button
 
-@## Date picker + Today
+You can add "Today" button that selects the present date. After clicking the button the present date is selected and the calendar is scrolled up to the current month, if another one was selected.
 
-Optionally there may be the button for selecting the present date in the date picker component. After clicking the **Today** button the present date is selected and the calendar is scrolled up to the current month, it another one was selected.
+![datepicker with today button opened](static/timepicker-today-style.png)
 
-![datepicker with today button opened](static/timepicker_today_style.png)
+@## Date picker + progressbar
 
-@## Date picker + metric
+You can add a small progressbar under the date to show the progress of some metrics.
 
-Calendar days may have some metrics. It is optional and is displayed as a small [horizontal bar chart](/data-display/bar-chart/) under the date.
-
-![datepicker with metric charts opened](static/timepicker_metric_normal.png)
+![datepicker with metric charts opened](static/timepicker-metric-normal.png)
 
 @## Date picker + time picker
 
-[Timepicker](/components/time-picker/) may be inside the dropdown with dates.
+[Timepicker](/components/time-picker/) can be placed inside the dropdown.
 
-![datepicker with timepicker](static/datepicker_timepicker_normal.png)
+![datepicker with timepicker](static/datepicker-timepicker-normal.png)
 
-Depending on the selected region (account settings) **12-hour or 24-hour format** of time is displayed.
+You can show 12-hour or 24-hour format of time for TimePicker, depending on the selected region (e.g., user account settings).
 
-![datepicker with timepicker](static/datepicker_timepicker_12h_24h.png)
+![datepicker with timepicker](static/datepicker-timepicker-12h-24h.png)
 
 @## Month picker
 
-Yo may select only one month in such calendar. Standard form - one year. Variant with displaying two calendar blocks at once is possible, but more often such variant is required for range selection (see further).
+Month picker selects only one month. After selecting the month the dropdown closes and the value in the trigger updates.
 
-![datepicker with months](static/monthpicker_normal_2sizes.png)
+You can show calendar with two month blocks, but more often such variant is used for range selection (see further).
 
-![datepicker with months](static/monthpicker_paddings_row.png)
+![datepicker with months](static/monthpicker-normal-2sizes.png)
 
-@## Range picker
+![datepicker with months](static/monthpicker-paddings-row.png)
 
-### Date range picker
+@## Date range picker
 
-By default such date selection has two calendar blocks. The selected date is applied after clicking **Apply**. Click outside the dropdown deselects and closes it. Dates outside this month are not shown in the calendar block.
+By default date range picker has two month blocks in calendar. The dropdown closes and the value in the trigger updates only after clicking on the "Apply" button.
 
-![daterangepicker opened](static/daterangepicker_normal.png)
+![daterangepicker opened](static/daterangepicker-normal.png)
 
-Upon selecting the first date of the range only one day is highlighted. Upon selecting the last one all the dates inside the range are highlighted.
+You can add presets for date ranges. Presets and their names may be customized. The selected preset gets `active` status.
 
-![daterangepicker opened](static/daterangepicker_celdnar_grid_states.png)
+![daterangepicker opened](static/daterangepicker-custom-presets.png)
 
-Optionally you may add period presets. The presets and their names may be customized. The selected preset has the status `active`.
+You also can add the "Reset" button for deselecting the selected values. In this case the trigger changes its value to a placeholder.
 
-![daterangepicker opened](static/daterangepicker_custom_presets.png)
-
-Upon hovering over the preset, the dates corresponding to the preset are highlighted. Upon that the selected (current) range of days / day does not lose its highlighting.
-
-Optionallyly there may be the **Reset** button for deselecting. The trigger text in this case is changed into a placeholder.
-
-![daterangepicker opened](static/daterangepicker_reset_buttons.png)
+![daterangepicker opened](static/daterangepicker-reset-buttons.png)
 
 ### Week picker
 
-The calendar variant, where you may select the dates only in the form of weeks, is possible. It is a usual date range picker, but with one calendar block and possibility to select only by weeks. Selection is made by clicking any day of the week.
+Week picker selects only one week. It is a usual date range picker, but with one month block inside the dropdown.
 
 ![weekpicker opened](static/weekpicker.png)
 
 @## Month range picker
 
-By default such date selection has two calendar blocks. The selected range is applied either at once or by clicking **Apply**, if there is such a button.
+Month range picker selects several weeks. By default such picker has two month blocks inside the dropdown.
 
-![month range picker](static/monthrangepicker_normal.png)
+The dropdown closes and the value in the trigger updates only after clicking on the "Apply" button.
 
-You may also use the variant with period presets for such calendar.
+![month range picker](static/monthrangepicker-normal.png)
 
-![month range picker](static/monthrangepicker_presets.png)
+You can also add the presets of date ranges for such picker.
+
+![month range picker](static/monthrangepicker-presets.png)
 
 @page date-a11y
 @page date-api
