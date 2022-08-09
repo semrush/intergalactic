@@ -6,7 +6,8 @@ import imageminPngquant from 'imagemin-pngquant';
 
 const normalizeName = (name: string) => {
   const noExtensions = name.includes('.') ? name.split('.').slice(0, -1).join('.') : name;
-  const noSpaces = noExtensions.split(' ').join('-');
+  const noApostrophe = noExtensions.split("'").join('');
+  const noSpaces = noApostrophe.split(' ').join('-');
   return pascalCase(noSpaces);
 };
 
