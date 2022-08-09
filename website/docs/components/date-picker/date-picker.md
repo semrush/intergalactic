@@ -10,7 +10,7 @@ tabName: Design
 
 **Date picker** is a component for selecting or inputting the date or date range.
 
-The component has 4 types:
+This component has 4 types:
 
 - Date picker — selection of one day;
 - Date range picker — selection of a range of days/weeks;
@@ -42,7 +42,7 @@ Selected date can be submitted:
 - after clicking the date
 - or after clicking the "Apply" button (if there is one).
 
-"Apply" button is usually added to the dropdown when user needs to select date range or if the choice of the date affects some limitations in the interface.
+"Apply" button is usually added to the dropdown when user needs to select the range of dates or if the choice of the date affects some limitations in the interface. So you can add it to every type of date picker if needed.
 
 @## Date picker
 
@@ -66,11 +66,11 @@ You can add a small progressbar under the date to show the progress of some metr
 
 @## Date picker + time picker
 
-[Timepicker](/components/time-picker/) can be placed inside the dropdown.
+You can place [TimePicker](/components/time-picker/) inside the dropdown.
 
 ![datepicker with timepicker](static/datepicker-timepicker-normal.png)
 
-You can show 12-hour or 24-hour format of time for TimePicker, depending on the selected region (e.g., user account settings).
+And you can show 12-hour or 24-hour format of time for TimePicker, depending on the selected region (e.g., user account settings).
 
 ![datepicker with timepicker](static/datepicker-timepicker-12h-24h.png)
 
@@ -86,7 +86,7 @@ You can show calendar with two month blocks, but more often such variant is used
 
 @## Date range picker
 
-By default date range picker has two month blocks in calendar. The dropdown closes and the value in the trigger updates only after clicking on the "Apply" button.
+By default date range picker has two month blocks in calendar. The dropdown closes and the value in the trigger updates only after clicking the "Apply" button.
 
 ![daterangepicker opened](static/daterangepicker-normal.png)
 
@@ -108,7 +108,7 @@ Week picker selects only one week. It is a usual date range picker, but with one
 
 Month range picker selects several weeks. By default such picker has two month blocks inside the dropdown.
 
-The dropdown closes and the value in the trigger updates only after clicking on the "Apply" button.
+The dropdown closes and the value in the trigger updates only after clicking the "Apply" button.
 
 ![month range picker](static/monthrangepicker-normal.png)
 
