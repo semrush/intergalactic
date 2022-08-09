@@ -2,6 +2,13 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.0.5] - 2022-08-09
+
+### Fixed
+
+- Fixed broken display of Cote d'Ivoire's flag.
+- Fixed broken display of United States Minor Outlying Islands' flag.
+
 ## [3.0.5] - 2022-07-22
 
 ### Changed
