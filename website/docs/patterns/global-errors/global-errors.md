@@ -1,12 +1,12 @@
 ---
-title: Global errors
+title: Error message
 fileSource: errors
 tabName: Design
 ---
 
 @## Description
 
-**Global errors** is a pattern for pages blocking the user from working with the website, and informing why the system can't display the content. They may also be related to server errors, limitations, etc.
+**Error message** is a component for displaying error message on the page. Use it for global error messages. Global errors is a pattern for pages blocking the user from working with the website, and informing why the system can't display the content. This pattern is also related to server errors, limitations, etc.
 
 @## Appearance
 
