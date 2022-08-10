@@ -4,8 +4,8 @@ title: UX patterns
 
 @page modal-content
 @page empty-page
-@page export
 @page global-errors
+@page export
 @page informer
 @page links-order
 @page loading-states
