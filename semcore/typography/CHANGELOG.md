@@ -6,7 +6,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-- Added esstntial `aria-\*` attributes for Typography lists.
+- Added essential `aria-\*` attributes for Typography lists.
 
 ## [4.0.11] - 2022-08-01
 

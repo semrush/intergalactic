@@ -24,7 +24,9 @@ class Breadcrumbs extends Component {
   render() {
     const SBreadcrumbs = Root;
     const { styles } = this.asProps;
-    return sstyled(styles)(<SBreadcrumbs render={Box} aria-label="breadcrumbs" />);
+    return sstyled(styles)(
+      <SBreadcrumbs render={Box} aria-label="breadcrumbs" aria-role="group" />,
+    );
   }
 }
 
@@ -40,13 +42,13 @@ class Item extends Component {
 
   render() {
     const SBreadcrumbsItem = Root;
-    const { styles, separator } = this.asProps;
+    const { styles, separator, active } = this.asProps;
     const SSeparator = 'div';
 
     return sstyled(styles)(
       <>
-        <SBreadcrumbsItem render={Box} />
-        <SSeparator>{separator}</SSeparator>
+        <SBreadcrumbsItem render={Box} aria-current={active ? 'page' : undefined} />
+        <SSeparator aria-hidden="true">{separator}</SSeparator>
       </>,
     );
   }
