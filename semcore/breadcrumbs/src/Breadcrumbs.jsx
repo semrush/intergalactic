@@ -24,9 +24,7 @@ class Breadcrumbs extends Component {
   render() {
     const SBreadcrumbs = Root;
     const { styles } = this.asProps;
-    return sstyled(styles)(
-      <SBreadcrumbs render={Box} aria-label="breadcrumbs" aria-role="group" />,
-    );
+    return sstyled(styles)(<SBreadcrumbs render={Box} aria-label="breadcrumbs" role="group" />);
   }
 }
 
