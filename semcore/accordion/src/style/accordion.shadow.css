@@ -12,7 +12,6 @@ SItemToggle[keyboardFocused] {
 SItemToggle[disabled] {
   opacity: var(--disabled-opacity);
   cursor: default;
-  pointer-events: none;
 }
 
 SItemChevron {

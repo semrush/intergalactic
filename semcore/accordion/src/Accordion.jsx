@@ -66,7 +66,7 @@ export class RootItem extends Component {
     const { value, selected, disabled } = this.asProps;
     return {
       disabled,
-      onClick: this.handleClick,
+      onClick: disabled ? undefined : this.handleClick,
       id: `trigger-${value}`,
       role: 'button',
       'aria-expanded': selected,
@@ -111,10 +111,16 @@ class Toggle extends Component {
   }
 
   render() {
-    const { styles } = this.asProps;
+    const { styles, disabled } = this.asProps;
     const SItemToggle = Root;
 
-    return sstyled(styles)(<SItemToggle render={Box} onKeyDown={this.handleKeyDown} />);
+    return sstyled(styles)(
+      <SItemToggle
+        render={Box}
+        onKeyDown={this.handleKeyDown}
+        aria-disabled={disabled ? 'true' : undefined}
+      />,
+    );
   }
 }
 
