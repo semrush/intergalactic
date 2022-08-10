@@ -3,7 +3,7 @@ title: API
 fileSource: date-picker
 ---
 
-@## DatePicker/MonthPicker
+@## DatePicker and MonthPicker
 
 Widget for selecting the date/month.
 
@@ -27,7 +27,7 @@ import { DateRangePicker, MonthRangePicker } from '@semcore/ui/date-picker';
 
 @typescript IDateRangePickerProps
 
-@## DatePicker.Trigger/DateRangePicker.Trigger
+@## DatePicker.Trigger and DateRangePicker.Trigger
 
 Trigger button, exists by default. `DateRangePicker` has the same interface.
 
