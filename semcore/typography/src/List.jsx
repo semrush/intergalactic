@@ -23,7 +23,7 @@ class List extends Component {
   render() {
     const SList = Root;
     const { styles } = this.asProps;
-    return sstyled(styles)(<SList render={Text} tag="ul" />);
+    return sstyled(styles)(<SList render={Text} tag="ul" aria-role="list" />);
   }
 }
 
@@ -34,8 +34,8 @@ function Item(props) {
   const SContent = 'div';
 
   return sstyled(styles)(
-    <SItem render={Text} tag="li">
-      {isNode(markerNode) && <SMarker>{markerNode}</SMarker>}
+    <SItem render={Text} tag="li" aria-role="listitem">
+      {isNode(markerNode) && <SMarker aria-hidden="true">{markerNode}</SMarker>}
       <SContent>{children}</SContent>
     </SItem>,
   );

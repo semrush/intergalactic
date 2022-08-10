@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.1.0] - 2022-08-10
+
+### Changed
+
+- Added esstntial `aria-\*` attributes for Typography lists.
+
 ## [4.0.11] - 2022-08-01
 
 ### Changed
