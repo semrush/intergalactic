@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.0.10] - 2022-08-10
+
+### Fixed
+
+- Fixed disabled items handling to improve component accessibility.
+
 ## [4.0.9] - 2022-07-25
 
 ### Changed
