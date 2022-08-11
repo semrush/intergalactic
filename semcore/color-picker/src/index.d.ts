@@ -21,7 +21,7 @@ export interface IItemProps extends IBoxProps {
    */
   selected?: boolean;
   /**
-   * Fired with color item when user clicks on the close icon`
+   * Fired with color item when user clicks on the close icon
    */
   onRemove?: React.MouseEventHandler;
 }
@@ -35,7 +35,7 @@ export interface IColorsProps extends IBoxProps {
 
 export interface IColorsCustomProps extends IColorsProps, IBoxProps {
   /**
-   * Fired when user clicks on the plus icon in Palette Manager - focuses the input component`
+   * Fired when user clicks on the plus icon in Palette Manager - focuses the input component
    */
   onPlusButtonClick?: React.MouseEventHandler;
 }
