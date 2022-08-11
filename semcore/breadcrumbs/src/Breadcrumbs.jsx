@@ -11,7 +11,7 @@ class Breadcrumbs extends Component {
   static style = style;
   static defaultProps = {
     separator: <SSeparator />,
-    tag: 'nav',
+    tag: 'div',
   };
 
   getItemProps() {
