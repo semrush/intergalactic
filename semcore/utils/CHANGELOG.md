@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.36.0] - 2022-08-11
+
+### Added
+
+- Added support of `elementtiming` attribute passing on all components.
+
 ## [3.35.1] - 2022-08-01
 
 ### Fixed
