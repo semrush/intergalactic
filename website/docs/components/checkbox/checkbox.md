@@ -8,60 +8,60 @@ tabName: Design
 
 @## Description
 
-**Checkbox** is a control for selecting one or more values/options.
+**Checkbox** is a component for selecting one or more values/options.
 
-The checkbox clearly shows the status of the user's choice. It's mainly used for group settings, when there is a list of parameters/options and other things, and the user can choose any number of options, including zero, one or several.
+The checkbox shows the status of the user's choice. It's mainly used for group settings, when there is a list of parameters or options, and the user can choose any number of options: one, several, or none.
 
 ![selection-scheme](static/check-or-toggle.png)
 
 The exception to the image above is multi-selection (for example, in filters).
 
-@## Dimensions and margins
+@## Sizes and margins
 
 ### Sizes
 
-**Our interface uses 2 control sizes — L and M**. The text label is placed to the right of the checkbox.
+**Our checkbox has two sizes: L and M**. The text is always placed to the right of the checkbox.
 
-|    L (20px \* 20px)     |    M (16px \* 16px)     |
-| :---------------------: | :---------------------: |
-| ![l](static/size-l.png) | ![m](static/size-m.png) |
+| Size (px)        | Appearance example      |
+| ---------------- | ----------------------- |
+| M (16px \* 16px) | ![m](static/size-m.png) |
+| L (20px \* 20px) | ![l](static/size-l.png) |
 
 ### Margins
 
-Make the margins between the checkboxes so the options will be easy to read.
+Margins between the options may vary depending on the usage context. Make margins multiples of 4. Default recommended margins are shown below.
 
-The margins may vary depending on the usage context. Make margins multiples of 4. Default recommended margins are shown below.
-
-|    L (20px \* 20px)     |    M (16px \* 16px)     |
-| :---------------------: | :---------------------: |
-| ![l](static/vert-l.png) | ![m](static/vert-m.png) |
+| Size (px)        | Appearance example      |
+| ---------------- | ----------------------- |
+| M (16px \* 16px) | ![m](static/vert-m.png) |
+| L (20px \* 20px) | ![l](static/vert-l.png) |
 
 @## Checkbox with a paragraph
 
 All checkbox sizes can be used with the corresponding text paragraphs.
 
-| Checkbox size    | Paragraph size       | Appearance example                     |
-| ---------------- | -------------------- | -------------------------------------- |
-| L (20px \* 20px) | L, `font-size: 16px` | ![l paragraph](static/paragraph-l.png) |
-| M (16px \* 16px) | M, `font-size: 14px` | ![m paragraph](static/paragraph-m.png) |
+| Checkbox size    | Paragraph size                            | Appearance example (px)                |
+| ---------------- | ----------------------------------------- | -------------------------------------- |
+| M (16px \* 16px) | 14px (use variables `--fs-200, --lh-200`) | ![m paragraph](static/paragraph-m.png) |
+| L (20px \* 20px) | 16px (use variables `--fs-300, --lh-300`) | ![l paragraph](static/paragraph-l.png) |
 
 @## Checkbox with Info icon
 
-You can place the `Info` icon next to the checkbox label. By hovering over the icon, a tooltip with additional information shall be displayed. It shall help the user understand the purpose of this checkbox option 😏
+To help the user understand the purpose of the checkbox option, place Info icon next to the checkbox text. By hovering over the icon, show a tooltip with additional information.
 
 ![checkbox with info icon](static/info-icon.png)
 
-> 💡 The `Info` icon should have a margin of 8px on the left.
+> 💡 Info icon should have a margin of 4px on the left.
 
 ![checkbox with info icon](static/info-icon-margin.png)
 
 @## Checkbox with a link inside
 
-The checkbox label may contain a [link](/components/link).
+The checkbox text may contain a [Link](/components/link).
 
 ![checkbox with info icon](static/link.png)
 
-> 💡 The checkbox label hover area shouldn't include a link.
+> 💡 The checkbox text hover zone shouldn't include a link.
 
 ![checkbox with info icon](static/link-hover-zone.png)
 
@@ -71,7 +71,7 @@ The checkbox label may contain a [link](/components/link).
 
 | State                 | Appearance                                                       |
 | --------------------- | ---------------------------------------------------------------- |
-| unchecked             | ![unchecked](static/state-unchecked.png)                         |
+| normal                | ![unchecked](static/state-unchecked.png)                         |
 | checked               | ![checked](static/state-checked.png)                             |
 | indeterminate         | ![indeterminate](static/state-indetermenate.png)                 |
 | indeterminate invalid | ![invalid-indeterminate](static/state-indetermenate-invalid.png) |
@@ -81,58 +81,57 @@ The checkbox label may contain a [link](/components/link).
 
 ### Behavior
 
-- When you hover over the "Checkbox + label" area, the cursor changes to pointer.
-- The checkbox switches by clicking on the entire area of the component, label, or related words.
-- The text label of the checkbox may contain a link or pseudo-link. In this case, the checkbox switches by clicking on the entire text label area, except for the link area. A link in a text label opens the URL in a new window.
-- If the checkbox is disabled, the text label and related words shall also be `disabled`. In such cases, it is recommended to place a tooltip with an explanation of why the checkbox is disabled.
+- When user hovers over the "Checkbox + text" area, the cursor changes to pointer.
+- The checkbox changes its state by clicking on the entire area of the component that includes checkbox and text.
+- The checkbox text may contain a link or pseudo-link. In this case, the checkbox changes its state by clicking on the entire text area, except for the link area.
+- If the checkbox is disabled, the text and related words shall also be `disabled`. In such cases, we recommended you to place a tooltip with an explanation of why the checkbox is disabled.
 
 @## Working with a checkbox group
 
-If a group of checkboxes exceeds 6-7 positions, use the `Select all` and `Deselect all` options to save the user time. The mechanics of the `Select all`/`Deselect all` buttons:
+If a group of checkboxes has more than 6-7 options, use the `Select all` and `Deselect all` options to save the user's time. `Select all`/`Deselect all` buttons have the following behavior:
 
-- `Select all` selects all checkboxes, and `Select all` changes to `Deselect all`;
-- `Deselect all` deselects all checkboxes at all levels;
+- `Select all` selects all checkboxes, and `Select all` changes to `Deselect all`.
+- `Deselect all` deselects all checkboxes at all levels.
 - If at least one checkbox is checked at any level, `Deselect all` changes to `Select all`.
 
 ![checkbox group](static/group-1.png) ![checkbox group](static/group-2.png) ![checkbox group](static/group-3.png)
 
-If you use a checkbox tree, the top-level checkbox has three statuses:
+If you use a checkbox tree, the top-level checkbox has three states:
 
-- `active`;
-- `inactive`;
-- `indeterminate` - intermediate state when not all elements of the tree are selected.
+- `normal`;
+- `checked`;
+- `indeterminate` - this state shows that some options of the tree are selected.
 
-> 💡 If you click the checkbox in the `indeterminate` state, all the lower-level checkboxes will be highlighted.
+> 💡 If user clicks the checkbox in the `indeterminate` state, all the lower-level checkboxes get `checked` state.
 
 ![checkbox tree](static/tree.png)
 
-If you use a combination of the checkbox tree and `Select all`/`Deselect all` buttons, the mechanics are as follows:
+If you use a combination of the checkbox tree and `Select all`/`Deselect all` buttons, the behavior is the following:
 
 - `Select all` selects all checkboxes in the tree at all levels. `Select all` changes to `Deselect all`.
 - `Deselect all` deselects all checkboxes at all levels.
 - If at least one checkbox is checked at any level, `Deselect all` changes to `Select all`.
-- If at least one checkbox is checked on the sublevel, the root checkbox changes to the `indeterminate` state, and `Deselect all` changes to `Select all`.
+- If at least one checkbox is checked on the sublevel, the root checkbox changes its state to `indeterminate`, and `Deselect all` changes to `Select all`.
 
-When you click on a checkbox with the `indeterminate` status, all sub-level checkboxes are selected.
+When user clicks on a checkbox with the `indeterminate` state, all sub-level checkboxes get `checked` state.
 
 ![select and deselect](static/select-all.png) ![select and deselect](static/deselect-all.png)
 
 @## Use in UX/UI
 
-- **Build lists of options vertically with left alignment**, one option per line. If you have to use a horizontal layout, make sure that the margins between elements are correct.
+- **Make lists of options vertically and left aligned**, one option per line. If you have to use a horizontal layout, make sure that margins between the options are enough to distinguish them.
 
 ![vertical-align-only](static/checkboxes_yes_no.png)
 
-- **Use positive wording for checkbox labels** to make it clear what happens if the user turns on the checkbox. Avoid negatives like _"Don't send me more email"_, which would mean that the user would need to check the box to prevent something from happening 🤯
+- **Use positive wording for checkbox texts** to make it clear what happens if the user enables the checkbox. Avoid negative phrases like: "Don't send me more email", — which would mean that the user would need to check the box to prevent something from happening.
 
 ![be-positive ;)](static/checkboxelabel_yes_no.png)
 
-- Use checkboxes only to change settings and then apply them, do not use them as action buttons. For binary selection, the main difference between the checkbox and the [Switch](/components/switch/) is that the Checkbox has a status, while the Switch performs an action. For binary settings, it is better to use the Switch or [Radiobutton](/components/radio/).
-- Use checkboxes for suspended actions, and radiobuttons for immediate actions. If the action is applied instantly, it is better to use the [Switch](/components/switch/) or [Radiobutton](/components/radio/). Use checkboxes when the user needs to check their settings before applying them, or when the user needs to perform additional steps in order for the changes to become effective.
-  If there are more than six options in the checkbox group, add the `Select all` and `Deselect all` controls to save the user time.
-- If the checkbox is in the table to select the entire row, make clickable the entire cell (increase the click zone) where the checkbox is located.
-
-> 💡 Specify in the prototype or technical documentation what happens to the checkbox after refreshing the page: reset or save.
+- Use checkboxes only to change settings and then apply them, do not use them as action buttons.
+- The main difference between the checkbox and the [switch](/components/switch/) is that the checkbox has a status, while the switch performs an action. For binary settings, it is better to use the switch or [radiobutton](/components/radio/).
+- Use checkboxes for suspended actions, and radiobuttons for immediate actions. If the action is applied instantly, use [switch](/components/switch/) or [radiobutton](/components/radio/). Use checkboxes when the user needs to check their settings before applying them, or when the user needs to perform additional steps in order for the changes to happen.
+- If there are more than six options in the checkbox group, add the `Select all` and `Deselect all` controls to save the user's time.
+- If the checkbox is used in the table to select the entire row, make clickable the entire table cell (increase the click zone) where the checkbox is located.
 
 @page checkbox-a11y
 @page checkbox-api
