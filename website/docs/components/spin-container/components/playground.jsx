@@ -39,7 +39,7 @@ const playground = (createGroupWidgets) => {
   });
 
   return (
-    <SpinContainer loading={loading} theme={theme} background={background}>
+    <SpinContainer loading={loading} theme={theme} background={background} p="3px">
       <Box w={150}>
         <h4>User form:</h4>
         <Input mb={2}>
