@@ -2,6 +2,7 @@ import React from 'react';
 import createComponent, { Component, Root, sstyled } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
 import resolveColor from '@semcore/utils/lib/color';
+import reactToText from '@semcore/utils/lib/reactToText';
 
 import style from './style/badge.shadow.css';
 
@@ -15,10 +16,16 @@ class RootBadge extends Component {
 
   render() {
     const SBadge = Root;
-    const { styles, color, bg } = this.asProps;
+    const { styles, color, bg, children } = this.asProps;
 
     return sstyled(styles)(
-      <SBadge render={Box} tag="span" use:color={resolveColor(color)} use:bg={resolveColor(bg)} />,
+      <SBadge
+        render={Box}
+        tag="span"
+        aria-label={`badge: ${reactToText(children)}`}
+        use:color={resolveColor(color)}
+        use:bg={resolveColor(bg)}
+      />,
     );
   }
 }

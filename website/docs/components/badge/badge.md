@@ -78,6 +78,7 @@ The feature status can be shown inside most of our controls. Please note the rel
 
 The `Badge` is usually located to the right outside of the element and to the right inside the element. As an exception, in the [Notice](/components/notice/) component, it is positioned to the left relative to the text. `Margins` to budge are always multiples of 4.
 
+@page badge-a11y
 @page badge-api
 @page badge-code
 @page badge-changelog
