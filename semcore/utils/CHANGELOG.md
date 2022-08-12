@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.37.0] - 2022-08-12
+
+### Added
+
+- Added util function `reactToText` to convert react component to text.
+
 ## [3.36.0] - 2022-08-11
 
 ### Added

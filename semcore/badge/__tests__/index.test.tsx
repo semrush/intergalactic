@@ -2,7 +2,7 @@ import * as React from 'react';
 import { testing, snapshot } from '@semcore/jest-preset-ui';
 import Badge from '../src';
 
-const { cleanup } = testing;
+const { cleanup, axe, render } = testing;
 
 describe('Badge', () => {
   afterEach(cleanup);
@@ -33,5 +33,13 @@ describe('Badge', () => {
       </>
     );
     expect(await snapshot(component)).toMatchImageSnapshot();
+  });
+
+  test('a11y', async () => {
+    const { container } = render(<Badge bg="green">new</Badge>);
+
+    const results = await axe(container);
+
+    expect(results).toHaveNoViolations();
   });
 });
