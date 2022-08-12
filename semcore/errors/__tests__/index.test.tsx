@@ -1,8 +1,9 @@
 import React from 'react';
 import { testing, snapshot } from '@semcore/jest-preset-ui';
-const { cleanup } = testing;
 
-import Error from '../src';
+const { axe, render, cleanup } = testing;
+
+import Error, { AccessDenied, Maintenance, PageError, PageNotFound, ProjectNotFound } from '../src';
 import Button from '@semcore/button';
 
 describe('Error', () => {
@@ -28,7 +29,7 @@ describe('Error', () => {
 
   test('Render correctly with icon', async () => {
     const component = (
-      <Error icon="https://static.semrush.com/ui-kit/errors/1.3.0/page_not_found.svg">
+      <Error icon="https://static.semrush.com/ui-kit/errors/3.0.0/page_not_found.svg">
         <Error.Title>Horrible error</Error.Title>
         <Error.Description>
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur dicta, dignissimos
@@ -61,7 +62,7 @@ describe('Error', () => {
 
   test('Render correctly on small screen', async () => {
     const component = (
-      <Error icon="https://static.semrush.com/ui-kit/errors/1.3.0/page_not_found.svg">
+      <Error icon="https://static.semrush.com/ui-kit/errors/3.0.0/page_not_found.svg">
         <Error.Title>Horrible error</Error.Title>
         <Error.Description>
           Lorem ipsum dolor sit amet, consectetur adipisicing elit.
@@ -75,5 +76,43 @@ describe('Error', () => {
         height: 100,
       }),
     ).toMatchImageSnapshot();
+  });
+
+  test('Render correctly AccessDenied', async () => {
+    const component = <AccessDenied />;
+    expect(await snapshot(component)).toMatchImageSnapshot();
+  });
+
+  test('Render correctly Maintenance', async () => {
+    const component = <Maintenance toolName="Intergalactic" />;
+    expect(await snapshot(component)).toMatchImageSnapshot();
+  });
+
+  test('Render correctly PageError', async () => {
+    const component = <PageError />;
+    expect(await snapshot(component)).toMatchImageSnapshot();
+  });
+
+  test('Render correctly PageNotFound', async () => {
+    const component = <PageNotFound />;
+    expect(await snapshot(component)).toMatchImageSnapshot();
+  });
+
+  test('Render correctly ProjectNotFound', async () => {
+    const component = <ProjectNotFound />;
+    expect(await snapshot(component)).toMatchImageSnapshot();
+  });
+
+  test('Render correctly on small screen', async () => {
+    const { container } = render(
+      <Error icon="https://static.semrush.com/ui-kit/errors/3.0.0/page_not_found.svg">
+        <Error.Title>Horrible error</Error.Title>
+        <Error.Description>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+        </Error.Description>
+      </Error>,
+    );
+    const results = await axe(container);
+    expect(results).toHaveNoViolations();
   });
 });

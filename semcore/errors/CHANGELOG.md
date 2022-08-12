@@ -2,6 +2,16 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.2.0] - 2022-08-12
+
+### Added
+
+- Added support a11y.
+
+### Changed
+
+- Added secure schema for link with illustrations.
+
 ## [3.1.4] - 2022-08-11
 
 ### Changed
