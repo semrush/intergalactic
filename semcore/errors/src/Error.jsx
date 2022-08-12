@@ -5,11 +5,7 @@ import style from './style/errors.shadow.css';
 
 const testEnv = process.env.NODE_ENV === 'test';
 
-const version = testEnv
-  ? '3.0.0'
-  : preval`
-  module.exports = require('../package.json').version
-`;
+const version = testEnv ? '3.0.0' : preval`module.exports = require('../package.json').version`;
 
 export const getIconPath = (name) =>
   `https://static.semrush.com/ui-kit/errors/${version}/${name}.svg`;
