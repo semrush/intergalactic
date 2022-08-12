@@ -31,7 +31,7 @@ The list below will help you to keep in mind the necessary roles and attributes 
 
 @## Resources
 
-- [W3 button examples](https://www.w3.org/TR/wai-aria-practices-1.1/examples/button/button.html) has detailed information about the accordion accessible behavior.
+- [W3 button examples](https://www.w3.org/TR/wai-aria-practices-1.1/examples/button/button.html) has detailed information about the button accessible behavior.
 - [A11y style guide](https://a11y-style-guide.com/style-guide/section-general.html) gives core recommendations for the accessible components.
 
 @## Other recommendations
