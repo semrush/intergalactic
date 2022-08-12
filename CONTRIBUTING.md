@@ -58,5 +58,6 @@ It can contain:
 - HOC component extending functionality, for example keyboard control (WithKeyboardFocus)
 - meta package, for example a list of CSS variables with colors
 
-##Conduct
+## Conduct
+
 All code in this repository is under the MIT License. By sending a pull request you agree to the terms of contributing under the [MIT license](https://github.com/semrush/intergalactic/blob/master/LICENSE)
