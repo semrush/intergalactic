@@ -2,7 +2,7 @@
 title: A11y
 ---
 
-@## General recommendations
+@## Considerations for developers
 
 - Make sure you have tabbing focus indicators for all elements that should be controlled.
 - Every `<img>` needs an `alt` attribute. If the image is informational, set the `alt` text as a descriptive alternative for the image.

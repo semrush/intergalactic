@@ -20,7 +20,7 @@ The exception to the image above is multi-selection (for example, in filters).
 
 ### Sizes
 
-**Our checkbox has two sizes: L and M**. The text is always placed to the right of the checkbox.
+**Our checkbox has two sizes: M and L**. The text is always placed to the right of the checkbox.
 
 | Size (px)        | Appearance example      |
 | ---------------- | ----------------------- |
@@ -40,10 +40,10 @@ Margins between the options may vary depending on the usage context. Make margin
 
 All checkbox sizes can be used with the corresponding text paragraphs.
 
-| Checkbox size    | Paragraph size                            | Appearance example (px)                |
-| ---------------- | ----------------------------------------- | -------------------------------------- |
-| M (16px \* 16px) | 14px (use variables `--fs-200, --lh-200`) | ![m paragraph](static/paragraph-m.png) |
-| L (20px \* 20px) | 16px (use variables `--fs-300, --lh-300`) | ![l paragraph](static/paragraph-l.png) |
+| Checkbox size (px) | Paragraph size                            | Appearance example (px)                |
+| ------------------ | ----------------------------------------- | -------------------------------------- |
+| M (16px \* 16px)   | 14px (use variables `--fs-200, --lh-200`) | ![m paragraph](static/paragraph-m.png) |
+| L (20px \* 20px)   | 16px (use variables `--fs-300, --lh-300`) | ![l paragraph](static/paragraph-l.png) |
 
 @## Checkbox with Info icon
 
@@ -67,6 +67,11 @@ The checkbox text may contain a [Link](/components/link).
 
 @## Interaction
 
+- When user hovers over the "Checkbox + text" area, the cursor changes to pointer.
+- The checkbox changes its state by clicking on the entire area of the component that includes checkbox and text.
+- The checkbox text may contain a link or pseudo-link. In this case, the checkbox changes its state by clicking on the entire text area, except for the link area.
+- If the checkbox is disabled, the text and related words shall also be `disabled`. In such cases, we recommended you to place a tooltip with an explanation of why the checkbox is disabled.
+
 ### States
 
 | State                 | Appearance                                                       |
@@ -78,13 +83,6 @@ The checkbox text may contain a [Link](/components/link).
 | checked invalid       | ![invalid-checked](static/state-checked-invalid.png)             |
 | disabled              | ![disabled](static/state-disabled.png)                           |
 | invalid               | ![invalid](static/state-invalid.png)                             |
-
-### Behavior
-
-- When user hovers over the "Checkbox + text" area, the cursor changes to pointer.
-- The checkbox changes its state by clicking on the entire area of the component that includes checkbox and text.
-- The checkbox text may contain a link or pseudo-link. In this case, the checkbox changes its state by clicking on the entire text area, except for the link area.
-- If the checkbox is disabled, the text and related words shall also be `disabled`. In such cases, we recommended you to place a tooltip with an explanation of why the checkbox is disabled.
 
 @## Working with a checkbox group
 
