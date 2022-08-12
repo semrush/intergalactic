@@ -2,6 +2,7 @@ import React from 'react';
 
 function reactToText(node: React.ReactNode): string {
   if (typeof node === 'string' || typeof node === 'number' || typeof node === 'boolean') {
+    if (Number.isNaN(node)) return '';
     return node.toString();
   }
   if (!node) {
