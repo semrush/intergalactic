@@ -367,6 +367,7 @@ There are two possible cases of the pattern's use:
    2.2 to take some actions to get rid of this state and load the page: "Reload page" / "Try again" / "Submit".
 3. The "Contact us" button is only used for unexpected error states. In order that the user could contact support and report that something is not working.
 
+@page global-errors-a11y
 @page global-errors-api
 @page global-errors-code
 @page global-errors-changelog

@@ -3,11 +3,16 @@ import { Box, Flex } from '@semcore/flex-box';
 import createComponent, { Root, Component, sstyled } from '@semcore/core';
 import style from './style/errors.shadow.css';
 
-const version = preval`
+const testEnv = process.env.NODE_ENV === 'test';
+
+const version = testEnv
+  ? '3.0.0'
+  : preval`
   module.exports = require('../package.json').version
 `;
 
-export const getIconPath = (name) => `//static.semrush.com/ui-kit/errors/${version}/${name}.svg`;
+export const getIconPath = (name) =>
+  `https://static.semrush.com/ui-kit/errors/${version}/${name}.svg`;
 
 class RootError extends Component {
   static displayName = 'Error';
@@ -21,11 +26,15 @@ class RootError extends Component {
     const SWrapper = 'div';
     const SImage = 'img';
     return sstyled(styles)(
-      <SError render={Flex}>
+      <SError render={Flex} role="alert">
         <SInner>
           {icon && (
             <SImageWrapper>
-              {typeof icon === 'string' ? <SImage src={icon} alt="error icon" /> : icon}
+              {typeof icon === 'string' ? (
+                <SImage src={icon} alt="error image" aria-hidden="true" />
+              ) : (
+                icon
+              )}
             </SImageWrapper>
           )}
           <SWrapper>
