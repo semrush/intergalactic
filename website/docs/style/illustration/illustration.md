@@ -4,6 +4,8 @@ fileSource: illustration
 tabName: Design
 ---
 
+> Note that this component has only one illustration (`MailSent`) so far. We plan to add more illustrations later.
+
 @## Description
 
 **Illustration** is a component for importing illustrations from our library to your project.
