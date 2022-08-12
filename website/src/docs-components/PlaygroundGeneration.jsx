@@ -74,11 +74,14 @@ Playground.createWidget(
           <Select value={value} onChange={(value) => onChange(value)} {...others}>
             <Select.Trigger />
             <Select.Menu>
-              {options.map((o, i) => (
-                <Select.Option key={i} value={o.value}>
-                  {o.name}
-                </Select.Option>
-              ))}
+              {options.map((o, i) => {
+                const option = typeof o === 'string' ? { value: o, name: o } : o;
+                return (
+                  <Select.Option key={i} value={option.value}>
+                    {option.name}
+                  </Select.Option>
+                );
+              })}
             </Select.Menu>
           </Select>
         </div>
@@ -100,11 +103,14 @@ Playground.createWidget(
             onChange={(value) => onChange(value)}
             {...others}
           >
-            {options.map((o) => (
-              <Pills.Item key={o} value={o}>
-                {o}
-              </Pills.Item>
-            ))}
+            {options.map((o, i) => {
+              const option = typeof o === 'string' ? { value: o, name: o } : o;
+              return (
+                <Pills.Item key={i} value={option.value}>
+                  {option.name}
+                </Pills.Item>
+              );
+            })}
           </Pills>
         </div>
       </label>

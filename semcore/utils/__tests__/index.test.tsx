@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { testing, snapshot } from '@semcore/jest-preset-ui';
+
 const { cleanup } = testing;
 
 import isNode from '../src/isNode';
@@ -9,6 +10,7 @@ import useCss from '../src/use/useCss';
 import resolveColor, { shade, opacity } from '../src/color';
 import { interpolate } from '../src/enhances/i18nEnhance';
 import assignProps, { assignHandlers } from '../src/assignProps';
+import reactToText from '../src/reactToText';
 
 describe('Utils CSS in JS', () => {
   afterEach(cleanup);
@@ -377,5 +379,45 @@ describe('Utils interpolate', () => {
     expect(interpolate(Template, { name: `<script>console.log('oh my!')</script>` })).toBe(
       `&lt;script&gt;console.log('oh my!')&lt;/script&gt;`,
     );
+  });
+});
+
+describe('Utils reactToText', () => {
+  afterEach(cleanup);
+
+  test('support string', () => {
+    expect(reactToText('string')).toBe('string');
+  });
+
+  test('support number', () => {
+    expect(reactToText(0)).toBe('0');
+    expect(reactToText(1)).toBe('1');
+  });
+
+  test('support boolean', () => {
+    expect(reactToText(false)).toBe('false');
+    expect(reactToText(true)).toBe('true');
+  });
+
+  test('support undefined types', () => {
+    expect(reactToText(undefined)).toBe('');
+    expect(reactToText(null)).toBe('');
+    expect(reactToText(NaN)).toBe('');
+  });
+
+  test('support array and obj', () => {
+    expect(reactToText(['arr', '-', 'arr'])).toBe('arr-arr');
+    expect(reactToText({})).toBe('');
+  });
+
+  test('support react component', () => {
+    expect(reactToText(<div>component</div>)).toBe('component');
+    expect(
+      reactToText(
+        <>
+          <span>multi</span> <span>component</span>
+        </>,
+      ),
+    ).toBe('multi component');
   });
 });
