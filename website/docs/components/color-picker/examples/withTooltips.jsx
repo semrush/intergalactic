@@ -2,7 +2,7 @@ import React from 'react';
 import ColorPicker from '@semcore/color-picker';
 import Tooltip from '@semcore/tooltip';
 
-const COLORS = [
+const colors = [
   '#A7AB38',
   '#229229',
   '#36E341',
@@ -21,7 +21,7 @@ const Demo = () => {
       <ColorPicker.Trigger />
       <ColorPicker.Popper>
         <ColorPicker.Colors>
-          {COLORS.map((color) => (
+          {colors.map((color) => (
             <Tooltip title={color}>
               <ColorPicker.Item value={color} />
             </Tooltip>

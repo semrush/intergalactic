@@ -141,11 +141,28 @@ const DefaultTrigger = React.forwardRef(function (props: TriggerAsProps, ref) {
   const { styles, value } = props;
   const SDefaultTrigger = Root;
   const STriggerCircle = Box;
-  const STriggerCircleLine = Box;
+  const STriggerCircleLine = 'svg';
 
   return sstyled(styles)(
     <SDefaultTrigger render={Box} ref={ref}>
-      <STriggerCircle value={value}>{!value && <STriggerCircleLine />}</STriggerCircle>
+      <STriggerCircle value={value}>
+        {!value && (
+          <STriggerCircleLine
+            width="10"
+            height="10"
+            viewBox="0 0 10 10"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <rect
+              width="1"
+              height="14"
+              transform="matrix(-0.707107 -0.707107 -0.707107 0.707107 10 1)"
+              fill="#E0E1E9"
+            />
+          </STriggerCircleLine>
+        )}
+      </STriggerCircle>
       <ChevronDownM color="gray-800" />
     </SDefaultTrigger>,
   ) as React.ReactElement;
