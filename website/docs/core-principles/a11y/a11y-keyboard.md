@@ -48,7 +48,7 @@ Keyboard control should be performed sequentially across all interactive element
 ### Input и textarea
 
 - Input fields get focus by pressing the `Tab` key.
-- When focused, the fields are highlighted with a blue outline. For fields that have been validated, the outline corresponds to the border color (e.g., orange).
+- When focused, the fields are highlighted with a `--keyboard-focus` (see [Variables](/style/variables/#focus)).
 - The target action is performed by pressing `Enter` (saving, applying a filter, etc.).
 
 ### Checkbox, radio и switch

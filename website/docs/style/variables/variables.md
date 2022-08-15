@@ -39,9 +39,9 @@ This section describes all the variable parameters and basic styles that we use 
 | L    | A large size of the components. For buttons and inputs, it is 40px. For other components such as tags, labels, input fields, etc., it is a size with 16px text size. Components (such as counters and tags) which is used inside the inputs use 14 text size. |
 | M    | **Default size of components**. For buttons and inputs, it is 28px. For other components such as tags, labels, input fields, etc., it is a size with 14px text size. Components (such as counters and tags) which is used inside the inputs use 12 text size. |
 
-@## States
+@## Hover and active states
 
-### Hover and active state style rules for components with a nontransparent background
+### Components with a nontransparent background
 
 ![nontransparent controls](static/nontransparent.png)
 
@@ -50,7 +50,7 @@ This section describes all the variable parameters and basic styles that we use 
 | **Hover**  | Use next color shade from the [main palette](/style/palette). _E.g. if element has `--blue-400` as a color in normal state, then use `--gray-500` for it's hover state._                |
 | **Active** | Use next to the hover's color shade from the [main palette](/style/palette). _E.g. if element has `--blue-500` as a color in hover state, then use `--blue-600` for it's active state._ |
 
-### Hover and active state style rules for components with a transparent background
+### Components with a transparent background
 
 In normal state controls with transparent background has opacity of 0 – 15%.
 
@@ -65,24 +65,24 @@ In normal state controls with transparent background has opacity of 0 – 15%.
 
 ![valid and invalid controls](static/valid-invalid.png)
 
-|             | Styles and variables              |
+|             | Styles                            |
 | ----------- | --------------------------------- |
 | **Invalid** | `border-color: var(--red-400);`   |
 | **Valid**   | `border-color: var(--green-400);` |
 
-### Focus
+@## Focus
 
 ![focused controls](static/focus.png)
 
-|                   | Styles and variables                                                                                                                                                            |
-| ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Focus**         | `--keyboard-focus`. It's `0 0 0 3px rgba(blue-400, .3);`. For `normal` and `active` states, the focus color is `--blue-400`. For `invalid` and `valid` states see colors below. |
-| **Invalid focus** | `border-color: 0 0 0 3px rgba(red-400, .3);`                                                                                                                                    |
-| **Valid focus**   | `border-color: 0 0 0 3px rgba(green-400, .3);`                                                                                                                                  |
+|                   | Variable                   | Styles                                         |
+| ----------------- | -------------------------- | ---------------------------------------------- |
+| **Focus**         | `--keyboard-focus`         | `border-color: 0 0 0 3px rgba(blue-400, .3);`  |
+| **Invalid focus** | `--keyboard-focus-invalid` | `border-color: 0 0 0 3px rgba(red-400, .2);`   |
+| **Valid focus**   | `--keyboard-focus-valid`   | `border-color: 0 0 0 3px rgba(green-400, .2);` |
 
-### Disabled & loading
+@## Disabled & loading
 
-|              | Styles and variables                                    |
+|              | Variable and styles                                     |
 | ------------ | ------------------------------------------------------- |
 | **Disabled** | `--disabled-opacity: 0.3;`                              |
 | **Loading**  | Use [Spinner](/components/spin) for marking this state. |
@@ -110,11 +110,11 @@ In normal state controls with transparent background has opacity of 0 – 15%.
 
 These are rules for the rounding radius of controls, fields, dropdowns, etc.
 
-| Variable             | Usage                                           |
-| -------------------- | ----------------------------------------------- |
-| `--rounded-l: 12px;` | Use only for Modal window.                      |
-| `--rounded-m: 6px;`  | Use for all inputs, controls and widgets.       |
-| `--rounded-s: 4px;`  | Use only for checkboxes and placeholder addons. |
+|                                   | Variable             |
+| --------------------------------- | -------------------- |
+| Modal windows                     | `--rounded-l: 12px;` |
+| Inputs, controls and widgets      | `--rounded-m: 6px;`  |
+| Checkboxes and placeholder addons | `--rounded-s: 4px;`  |
 
 @## Mask, overlay
 
