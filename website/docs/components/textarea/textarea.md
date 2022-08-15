@@ -8,7 +8,7 @@ tabName: Design
 
 @## Description
 
-**Textarea** is an input for entering multiline text: comment, description, link list, etc.
+**Textarea** is a multiline text field. This component is useful for adding large amount of data: comment, description, link list, etc.
 
 @## Sizes
 
