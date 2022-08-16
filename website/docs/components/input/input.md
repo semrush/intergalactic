@@ -8,7 +8,7 @@ tabName: Design
 
 @## Description
 
-**Input** is a single-line text input field. It's one of the basic components for all kinds of forms, search fields, etc.
+**Input** is a single-line text field. It's one of the basic components for all kinds of forms, search fields, etc.
 
 Other input types for entering certain data:
 
@@ -16,6 +16,9 @@ Other input types for entering certain data:
 - [InputNumber](/components/input-number/)
 - [InputPhone](/components/input-phone/)
 - [InputTags](/components/input-tags/)
+- [DatePicker](/components/date-picker)
+- [TimePicker](/components/time-picker)
+- [ColorPicker](/components/color-picker)
 
 @## Sizes
 

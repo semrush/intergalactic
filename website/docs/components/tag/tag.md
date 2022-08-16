@@ -22,41 +22,43 @@ Component consists of:
 
 @## Sizes and paddings
 
-|     | Paddings                                                     |
-| --- | ------------------------------------------------------------ |
-| XL  | ![size XL](static/tag-XL.png) ![size XL](static/tag2-XL.png) |
-| L   | ![size L](static/tag-L.png) ![size L](static/tag2-L.png)     |
-| M   | ![size M](static/tag-M.png) ![size M](static/tag2-M.png)     |
+| Size (px) | Paddings                                                     |
+| --------- | ------------------------------------------------------------ |
+| M (20px)  | ![size M](static/tag-M.png) ![size M](static/tag2-M.png)     |
+| L (28px)  | ![size L](static/tag-L.png) ![size L](static/tag2-L.png)     |
+| XL (40px) | ![size XL](static/tag-XL.png) ![size XL](static/tag2-XL.png) |
 
-@## Types
+@## Themes
 
-There are several types of tags.
+There are several themes of tags.
 
-| Tag type         | Appearance example                     | Description                                                                                                                                                                                                                           |
-| ---------------- | -------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Primary          | ![primary](static/primary.png)         | The main type of tag for using on a light background. 💡 Any color from our [color palette](/style/palette/) can be set as a tag color, the default color is `--gray-500` (background gets color with 100 shade — e.g. `--gray-100`). |
-| Secondary        | ![secondary](static/secondary.png)     | The secondary tag type for using on a light background when it is necessary to make the contrast between the promary and secondary tags.                                                                                              |
-| Primary Invert   | ![invert](static/primary-invert.png)   | It is an inversion of the primary tag for using on dark or colored background.                                                                                                                                                        |
-| Secondary Invert | ![invert](static/secondary-invert.png) | It is an inversion of the secondary tag for using on dark or colored background.                                                                                                                                                      |
+| Tag theme                         | Appearance example                                           | Description                                                                                                                                                                                                                           |
+| --------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `primary`                         | ![primary tag example](static/primary.png)                   | The main type of tag for using on a light background. 💡 Any color from our [color palette](/style/palette/) can be set as a tag color, the default color is `--gray-500` (background gets color with 100 shade — e.g. `--gray-100`). |
+| `secondary`                       | ![secondary tag example](static/secondary.png)               | The secondary tag type for using on a light background when it is necessary to make the contrast between the promary and secondary tags.                                                                                              |
+| `primary` with `color:"white"`    | ![primary invert tag example](static/primary-invert.png)     | It is an inversion of the primary tag for using on dark or colored background.                                                                                                                                                        |
+| `secondary` with `color:"white"`  | ![secondary invert tag example](static/secondary-invert.png) | It is an inversion of the secondary tag for using on dark or colored background.                                                                                                                                                      |
+| `additional`                      | ![additional tag example](static/additional.png)             | The additional type for special tag that adds other tag.                                                                                                                                                                              |
+| `additional` with `color:"white"` | ![additional tag example](static/additional-invert.png)      | It is an inversion of the additional type for special tag that adds other tag.                                                                                                                                                        |
 
 @## Interaction
 
-| Tag type         | States                                             |
-| ---------------- | -------------------------------------------------- |
-| Primary          | ![state-color](static/default-color-example.png)   |
-| Primary invert   | ![state-color](static/invert-states.png)           |
-| Secondary        | ![state-color](static/secondary-states.png)        |
-| Secondary invert | ![state-color](static/secondary-invert-states.png) |
+| Tag theme                        | States                                                                |
+| -------------------------------- | --------------------------------------------------------------------- |
+| `primary`                        | ![states of primary tag](static/default-color-example.png)            |
+| `primary` with `color:"white"`   | ![states of primary invert tag](static/invert-states.png)             |
+| `secondary`                      | ![states of secondary tag](static/secondary-states.png)               |
+| `secondary` with `color:"white"` | ![states of secondary invert tag](static/secondary-invert-states.png) |
 
-@## Tag creation
+@## Adding tag
 
-User can create a tag using a tag with the additional theme.
+User can create a tag using a tag with the `additional` theme.
 
 | State  | Appearance                          | Styles                                                                                       |
 | ------ | ----------------------------------- | -------------------------------------------------------------------------------------------- |
-| normal | ![add tag state](static/normal.png) | `color: var(--gray-500); background-color: var(--white); border: 1px dotted var(--gray200);` |
-| hover  | ![add tag state](static/hover.png)  | `background-color: var(--gray-50);`                                                          |
-| active | ![add tag state](static/active.png) | `background-color: var(--gray-50);`                                                          |
+| Normal | ![add tag state](static/normal.png) | `color: var(--gray-500); background-color: var(--white); border: 1px dotted var(--gray200);` |
+| Hover  | ![add tag state](static/hover.png)  | `background-color: var(--gray-50);`                                                          |
+| Active | ![add tag state](static/active.png) | `background-color: var(--gray-50);`                                                          |
 
 This tag opens [InlineInput](/components/inline-input/). You can add a [mask label](/components/input-mask/) to keep the user in the context of what he needs to type into the input.
 
@@ -68,15 +70,15 @@ By clicking on the Check icon or `Enter`, the value in the input is saved and wr
 
 If the space for tag placement is limited, then reduce the text into the `ellipsis`. When hovering over a tag with the `ellipsis`, show the tooltip with the full tag label.
 
-@## Tag editing
+@## Editing tag
 
-If the user has the ability to edit tags. If tag is clickable it opens [InlineInput](/components/inline-input/). The logic is the same as tag creation has.
+For editable tags use [InlineInput](/components/inline-input/) component as for the adding tag case. [See live example](/components/tag/tag-code/#editing_tag).
 
 @## Long text
 
-You can set the maximum width of the tag.
+You can set the maximum width for the tag.
 
-If the text of a tag exceeds the maximum width, collapse it into `ellipsis` and show a tooltip with a full tag label while hovering over such tag.
+If the text of a tag exceeds the maximum width, collapse it into `ellipsis` and show a tooltip with a full tag label while hovering over such a tag.
 
 ![tag ellipsis](static/ellipsis.png)
 
@@ -90,11 +92,11 @@ In case you have a huge number of tags and do not need to show them all at once,
 
 @## Margins between tags
 
-|     | Margins                               |
-| --- | ------------------------------------- |
-| XL  | ![size XL](static/tag-margins-XL.png) |
-| L   | ![size L](static/tag-margins-L.png)   |
-| M   | ![size M](static/tag-margins-M.png)   |
+| Size (px) | Margins                               |
+| --------- | ------------------------------------- |
+| M (20px)  | ![size M](static/tag-margins-M.png)   |
+| L (28px)  | ![size L](static/tag-margins-L.png)   |
+| XL (40px) | ![size XL](static/tag-margins-XL.png) |
 
 <!-- @## Tag and other components
 

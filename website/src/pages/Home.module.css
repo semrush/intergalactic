@@ -16,7 +16,7 @@
 
 .promoWrapper {
   display: grid;
-  grid-template-rows: 0.8fr 0.7fr 1.5fr;
+  grid-template-rows: 0.7fr 0.7fr 1.5fr;
   grid-template-columns: repeat(4, 1fr);
   padding: 48px 0 12px;
 }
@@ -255,6 +255,7 @@
   position: absolute;
   right: 88px;
   top: 20px;
+  width: 320px;
 }
 @media (max-width: 1140px) {
   .whaleImg {
