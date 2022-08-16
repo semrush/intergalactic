@@ -6,7 +6,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Added
 
-- Added support a11y.
+- Added aria-hidden because component "badge" is not the main functionality and will only confuse the blind user.
 
 ## [3.0.6] - 2022-08-11
 
