@@ -4,7 +4,6 @@ import Link from '@semcore/link';
 import Button from '@semcore/button';
 import Tooltip from '@semcore/tooltip';
 import ChevronDownM from '@semcore/icon/ChevronDown/m';
-import VideoM from '@semcore/icon/Video/m';
 import ChatM from '@semcore/icon/Chat/m';
 import BookM from '@semcore/icon/Book/m';
 import MathPlusM from '@semcore/icon/MathPlus/m';
@@ -25,17 +24,10 @@ export default () => {
           <Breadcrumbs>
             <Breadcrumbs.Item>Dashboard</Breadcrumbs.Item>
             <Breadcrumbs.Item>Projects</Breadcrumbs.Item>
-            <Breadcrumbs.Item>Project Name</Breadcrumbs.Item>
-            <Breadcrumbs.Item active>Tool Name</Breadcrumbs.Item>
+            <Breadcrumbs.Item active>Project Name</Breadcrumbs.Item>
           </Breadcrumbs>
 
           <Header.Links>
-            <Link>
-              <Link.Addon>
-                <VideoM />
-              </Link.Addon>
-              <Link.Text>Video tutorial</Link.Text>
-            </Link>
             <Link>
               <Link.Addon>
                 <BookM />
