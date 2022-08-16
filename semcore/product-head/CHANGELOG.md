@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.0.7] - 2022-08-16
+
+### Fixed
+
+- Remove `overflow='auto'` because the component should not scroll, its content should adapt to the desired size.
+
 ## [3.0.6] - 2022-08-11
 
 ### Changed
