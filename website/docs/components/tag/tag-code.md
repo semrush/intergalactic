@@ -3,7 +3,7 @@ title: Example
 fileSource: tag
 ---
 
-@## Addon for tag
+@## Tag addon
 
 Addons can be set by passing the desired tag to the `addonLeft`/`addonRight` property or rendering `Tag.Addon`/`Tag.Text` into the component body. The examples below are the same.
 
@@ -15,10 +15,12 @@ Tag colors can be set by yourself
 
 @example custom-color
 
-@## Example of addition tag
+@## Adding tag
 
 @example add-tag
 
-@## Example of a tag with the ability to edit
+@## Editing tag
+
+Use [InlineEdit](/components/inline-edit/) for this case.
 
 @example edit-tag
