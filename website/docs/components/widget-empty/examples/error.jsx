@@ -7,7 +7,6 @@ import Card from '@semcore/card';
 import { Text } from '@semcore/typography';
 import Button from '@semcore/button';
 import Link from '@semcore/link';
-import ReloadM from '@semcore/icon/Reload/m';
 import Divider from '@semcore/divider';
 
 const options = ['de', 'en', 'es', 'fr', 'it', 'ja', 'pt', 'ru', 'zh', 'ko', 'vi'].map((o) => ({
@@ -41,17 +40,14 @@ export default () => {
           <Error
             description={
               <>
-                Try to reload widget. If the problem persists, please contact us at{' '}
+                Try filtering data again. If the problem persists, please contact us at{' '}
                 <Link href="mailto:mail@semrush.com">mail@semrush.com</Link>
               </>
             }
           >
             <Box mt={4}>
               <Button>
-                <Button.Addon>
-                  <ReloadM />
-                </Button.Addon>
-                <Button.Text>Reload</Button.Text>
+                <Button.Text>Try again</Button.Text>
               </Button>
             </Box>
           </Error>
