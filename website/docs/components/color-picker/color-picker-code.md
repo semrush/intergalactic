@@ -16,7 +16,7 @@ Using PaletteManager you can add custom colors by entering color in hexadecimal 
 
 @## Validation input
 
-You can use your own validation function for entered value in input instead of default validation function. For this purpose please use `onChange` prop from `PaletteManager.InputColor` like in the next example.
+Let's say you want to disable the ability to enter a white color. You can use your own validation function for entered value in input instead of default validation function. For this purpose please use `onChange` prop from `PaletteManager.InputColor` like in the next example.
 
 @example inputValidation
 

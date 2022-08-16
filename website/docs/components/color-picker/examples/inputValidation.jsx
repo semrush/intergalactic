@@ -1,14 +1,17 @@
 import React from 'react';
 import ColorPicker, { PaletteManager } from '@semcore/color-picker';
 
-const onChange = (v, e) => {
-  console.log('value', v);
-  console.log('event', e);
-
-  return false;
-};
-
 const Demo = () => {
+  const [state, setState] = React.useState('normal');
+
+  const onChange = (value, event) => {
+    if (value.toLowerCase() === 'ffffff') {
+      setState('invalid');
+    }
+
+    return false;
+  };
+
   return (
     <ColorPicker>
       <ColorPicker.Trigger />
@@ -16,7 +19,7 @@ const Demo = () => {
         <ColorPicker.Colors />
         <PaletteManager>
           <PaletteManager.Colors />
-          <PaletteManager.InputColor onChange={onChange} />
+          <PaletteManager.InputColor state={state} onChange={onChange} />
         </PaletteManager>
       </ColorPicker.Popper>
     </ColorPicker>

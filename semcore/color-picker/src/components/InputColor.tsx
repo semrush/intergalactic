@@ -87,19 +87,14 @@ class InputColorRoot extends Component<InputColorAsProps> {
         <SInputContainer>
           #
           <SInput>
-            <Input
-              ml={1}
-              w={135}
-              state={state}
-              onKeyDown={this.handlekeyDown}
-              onFocus={onFocus}
-              onBlur={onBlur}
-            >
+            <Input ml={1} w={135} state={state} onKeyDown={this.handlekeyDown}>
               <SInputValue
                 render={Input.Value}
                 placeholder="FFFFFF"
                 onChange={this.handlerChange}
                 maxLength={6}
+                onFocus={onFocus}
+                onBlur={onBlur}
               />
               {focus && (
                 <>
