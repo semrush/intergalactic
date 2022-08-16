@@ -2,7 +2,9 @@
 title: Content in modal window
 ---
 
-> 💡 Standard description of modal windows can be found in the [Modal](/components/modal/) component. And here we have compiled recommendations for content styles in modal windows.
+> Description of the component for modal windows can be found in the [Modal](/components/modal/).
+
+Here we have compiled recommendations for content styles in modal windows.
 
 @## Margins
 
