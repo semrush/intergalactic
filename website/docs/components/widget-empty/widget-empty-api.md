@@ -5,7 +5,7 @@ fileSource: widget-empty
 
 @## WidgetEmpty
 
-The component, using which you may accumulate any display of errors in the widgets.
+This component is used for displaying message for different "empty" states in the widget.
 
 ```jsx
 import WidgetEmpty from '@semcore/ui/widget-empty';
@@ -16,7 +16,7 @@ import WidgetEmpty from '@semcore/ui/widget-empty';
 
 @## NoData
 
-State when there is no data.
+Use this state to display "No data" message.
 
 ```jsx
 import { NoData } from '@semcore/ui/widget-empty';
@@ -27,7 +27,7 @@ import { NoData } from '@semcore/ui/widget-empty';
 
 @## Error
 
-State of the error in the widget 🤷‍♂️
+Use this state to display error message.
 
 ```jsx
 import { Error } from '@semcore/ui/widget-empty';
@@ -38,4 +38,4 @@ import { Error } from '@semcore/ui/widget-empty';
 
 @## Images
 
-All the possible images for the widget are located on `https://static.semrush.com/ui-kit/widget-empty/${version}/${name}.svg`.
+All possible images for the component can be found in `https://static.semrush.com/ui-kit/widget-empty/${version}/${name}.svg`.
