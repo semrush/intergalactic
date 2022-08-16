@@ -4,11 +4,13 @@ fileSource: widget-empty
 tabName: Design
 ---
 
+**WidgetEmpty** is a component for displaying messages in the widgets.
+
 Widgets have “empty” states, which should properly inform user, why there is no data and how to remedy the situation.
 
 @## Composition and styles
 
-The widget’s “empty” state includes the following:
+Widget’s “empty” state usually includes the following:
 
 - image in svg format;
 - title;
@@ -47,6 +49,12 @@ There are cases when it is required to reduce the height of the widget with “e
 ![widget extra empty](static/big-extra-empty.png)
 
 ![widget extra empty](static/medium-extra-empty.png)
+
+@## Button names
+
+1. If the WidgetEmpty's description starts with "Try" and only the problem area should be updated, then call the button "Try again".
+2. If the whole page should be refreshed, then call the button "Reload page".
+3. If the widget should be refreshed, then call the button "Reload".
 
 @## State types
 
@@ -156,9 +164,9 @@ Show the following instead of the data in this case:
 
 > 💡 We recommend always to show the button in this state.
 
-| Wide widget                                 | Medium widget                                     | Text                                                                                                                                   |
-| ------------------------------------------- | ------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
-| ![big widget error](static/big-error-2.png) | ![medium widget error](static/medium-error-2.png) | Title: "Something went wrong". Description: "Try to reload the widget. If the problem persists, please contact us at mail@semrush.com" |
+| Wide widget                                 | Medium widget                                     | Text                                                                                                                                              |
+| ------------------------------------------- | ------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ![big widget error](static/big-error-2.png) | ![medium widget error](static/medium-error-2.png) | Title: "Something went wrong". Description: "Try {filtering/searching/sorting} data again. If the problem persists, please contact us at {email}" |
 
 If your widget has width less than 300px, you may leave just the title with styles of the description text. And hide the description into the Info icon with M size.
 
