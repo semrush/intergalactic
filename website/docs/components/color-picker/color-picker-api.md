@@ -16,7 +16,7 @@ import ColorPicker from '@semcore/color-picker';
 
 @## ColorPicker.Trigger
 
-This is the element, to which <ColorPicker.Popper/> will be attached. It is fully inherited from <Dropdown.Trigger/>.
+The wrap over the `<Dropdown.Trigger/>` component.
 
 ```jsx
 import ColorPicker from '@semcore/color-picker';
@@ -25,7 +25,7 @@ import ColorPicker from '@semcore/color-picker';
 
 @## ColorPicker.Popper
 
-This is the element, to which <ColorPicker.Trigger/> will be attached. It is fully inherited from <Dropdown.Popper/>.
+The wrap over the `<Dropdown.Popper/>` component.
 
 ```jsx
 import ColorPicker from '@semcore/color-picker';
@@ -45,7 +45,7 @@ import ColorPicker from '@semcore/color-picker';
 
 @## ColorPicker.Item
 
-One unit of <ColorPicker.Colors />. ColorPicker.Item is a swatch preview that allows a user to see what color is currently selected.
+One unit of `<ColorPicker.Colors />`. ColorPicker.Item is a swatch preview that allows a user to see what color is currently selected.
 
 ```jsx
 import ColorPicker from '@semcore/color-picker';
@@ -78,7 +78,7 @@ import { PaletteManager } from '@semcore/color-picker';
 
 @## PaletteManager.Item
 
-One unit of <PaletteManager.Colors />. PaletteManager.Item is a swatch preview that allows a user to see what color is currently selected.
+One unit of `<PaletteManager.Colors />`. PaletteManager.Item is a swatch preview that allows a user to see what color is currently selected.
 
 ```jsx
 import { PaletteManager } from '@semcore/color-picker';
