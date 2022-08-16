@@ -6,11 +6,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Added
 
-- Added support a11y.
-
-### Changed
-
-- Added secure schema for link with illustrations.
+- Added `role="alert"` attributes to increase support for a11y.
 
 ## [3.1.4] - 2022-08-11
 
