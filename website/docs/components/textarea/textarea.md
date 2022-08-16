@@ -8,14 +8,14 @@ tabName: Design
 
 @## Description
 
-**Textarea** is an input for entering multiline text: comment, description, link list, etc.
+**Textarea** is a multiline text field. This component is useful for adding large amount of data: comment, description, link list, etc.
 
 @## Sizes
 
-| Input size | Appearance example                 |
-| ---------- | ---------------------------------- |
-| M          | ![input with M size](static/m.png) |
-| L          | ![input with L size](static/l.png) |
+| Size (height in px) | Appearance example                 |
+| ------------------- | ---------------------------------- |
+| M (28px)            | ![input with M size](static/m.png) |
+| L (40px)            | ![input with L size](static/l.png) |
 
 ### Resize control
 
@@ -31,25 +31,25 @@ Textarea may contain a counter showing the number of entered and/or available ch
 
 The counter can be placed either next to the text label or near the textarea itself.
 
-| Input size | Input with label                                       | Input without label                                          |
-| ---------- | ------------------------------------------------------ | ------------------------------------------------------------ |
-| M          | ![input with M size and counter](static/counter-M.png) | ![input with M size and counter](static/counter-inner-M.png) |
-| L          | ![input with L size and counter](static/counter-L.png) | ![input with L size and counter](static/counter-inner-L.png) |
+| Size (height in px) | Input with label                                       | Input without label                                          |
+| ------------------- | ------------------------------------------------------ | ------------------------------------------------------------ |
+| M (28px)            | ![input with M size and counter](static/counter-M.png) | ![input with M size and counter](static/counter-inner-M.png) |
+| L (40px)            | ![input with L size and counter](static/counter-L.png) | ![input with L size and counter](static/counter-inner-L.png) |
 
 @## Interaction
 
 Styles of the textarea in different states correspond to the styles of the [Input](/components/input/) for such states.
 
-| State   | normal                                 | focus                                                     | disabled                                 | read-only                                |
+| State   | Normal                                 | Focus                                                     | Disabled                                 | Read-only                                |
 | ------- | -------------------------------------- | --------------------------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| normal  | ![default input](static/m.png)         | ![default focus](static/m-focus.png)                      | ![disabled input](static/m-disabled.png) | ![readonly input](static/m-readonly.png) |
-| valid   | ![valid input](static/m-valid.png)     | ![input with valid focus](static/m-valid-focus.png)       |                                          |                                          |
-| invalid | ![invalid input](static/m-invalid.png) | ![ininput with invalid focus](static/m-invalid-focus.png) |                                          |                                          |
+| Normal  | ![default input](static/m.png)         | ![default focus](static/m-focus.png)                      | ![disabled input](static/m-disabled.png) | ![readonly input](static/m-readonly.png) |
+| Valid   | ![valid input](static/m-valid.png)     | ![input with valid focus](static/m-valid-focus.png)       |                                          |                                          |
+| Invalid | ![invalid input](static/m-invalid.png) | ![ininput with invalid focus](static/m-invalid-focus.png) |                                          |                                          |
 
 @## Use in UX/UI
 
-- Textarea is suitable when user needs to enter a large amount of data into a single area. If user needs to enter 1-3 words, use [Input](/components/input/).
-- Name the textarea in such a way that user understands what data should be entered at a first glance.
+- Textarea is useful when user needs to enter a large amount of data. If user needs to enter 1-3 words, use [Input](/components/input/) instead.
+- Name the textarea in such a way that user understands what data should be entered.
 
 @page textarea-a11y
 @page textarea-api

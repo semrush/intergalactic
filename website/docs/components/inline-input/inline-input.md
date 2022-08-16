@@ -4,8 +4,6 @@ fileSource: inline-input
 tabName: Design
 ---
 
-<!-- @import playground -->
-
 @## Description
 
 **InlineInput** is a single-line text field for input and edit. In edit mode, it always has buttons to save or cancel entered value.
@@ -150,6 +148,7 @@ For a tag that adds another tag, use InlineInput instead of [normal input](/comp
 
 ![case with tags](static/inline-tag-yes-no.png)
 
+@page inline-input-a11y
 @page inline-input-api
 @page inline-input-example
 @page inline-input-changelog
