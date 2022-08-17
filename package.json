@@ -20,7 +20,6 @@
     "lint:ts": "tsc --project tsconfig.json --noEmit",
     "lint": "pnpm lint:ts && pnpm lint:es",
     "prettier:fix": "pretty-quick --staged --ignore-path=./.prettierignore",
-    "preinstall": "node ./.ci/update-workspaces-list",
     "publish:website": "tsm --require=./.ci/tsm-filter-warnings.js ./.ci/trigger-website-publish.ts",
     "prepare": "husky install",
     "i18n:submit": "yarn crowdin upload",
