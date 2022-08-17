@@ -7,6 +7,7 @@ import { Text } from '@semcore/typography';
 import Button from '@semcore/button';
 import Return from '@semcore/icon/Return/m';
 import ChevronDoubleLeft from '@semcore/icon/ChevronDoubleLeft/m';
+import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
 import de from './translations/de.json';
 import en from './translations/en.json';
@@ -143,6 +144,7 @@ class PaginationRoot extends Component {
     const { currentPage, getI18nText } = this.asProps;
     const disabled = currentPage <= 1;
     return {
+      currentPage,
       disabled,
       onClick: () => this.handlePageChange(currentPage - 1),
       getI18nText,
@@ -153,6 +155,7 @@ class PaginationRoot extends Component {
     const { currentPage, totalPages, getI18nText } = this.asProps;
     const disabled = !(currentPage < totalPages);
     return {
+      currentPage,
       disabled,
       onClick: () => this.handlePageChange(currentPage + 1),
       getI18nText,
@@ -189,6 +192,7 @@ class PaginationRoot extends Component {
   getTotalPagesProps = () => {
     const { currentPage, totalPages, getI18nText } = this.asProps;
     return {
+      totalPages,
       children: formatThousands(totalPages),
       disabled: currentPage === totalPages,
       onClick: () => this.handlePageChange(totalPages),
@@ -224,7 +228,15 @@ class NextPage extends Component {
 
   render() {
     const SNextPage = Root;
-    return sstyled(this.asProps.styles)(<SNextPage render={Button} use="primary" theme="info" />);
+    const { currentPage } = this.asProps;
+    return sstyled(this.asProps.styles)(
+      <SNextPage
+        render={Button}
+        use="primary"
+        theme="info"
+        aria-label={`Page ${currentPage + 1}`}
+      />,
+    );
   }
 }
 
@@ -235,7 +247,10 @@ class PrevPage extends Component {
 
   render() {
     const SPrevPage = Root;
-    return sstyled(this.asProps.styles)(<SPrevPage render={Button} />);
+    const { currentPage } = this.asProps;
+    return sstyled(this.asProps.styles)(
+      <SPrevPage render={Button} aria-label={`Page ${currentPage - 1}`} />,
+    );
   }
 }
 
@@ -243,12 +258,17 @@ class TotalPages extends Component {
   render() {
     const STotalPages = Root;
     const STotalPagesLabel = Text;
-    const { styles, getI18nText } = this.asProps;
+    const { styles, getI18nText, totalPages } = this.asProps;
 
     return sstyled(styles)(
       <>
         <STotalPagesLabel>{getI18nText('totalPagesLabel')}</STotalPagesLabel>
-        <STotalPages render={Link} tag="button" type="button" />
+        <STotalPages
+          render={Link}
+          tag="button"
+          type="button"
+          aria-label={`Last page ${totalPages}`}
+        />
       </>,
     );
   }
@@ -256,7 +276,9 @@ class TotalPages extends Component {
 
 const PageInputValue = (props) => {
   const SPageInputValue = Root;
-  return sstyled(props.styles)(<SPageInputValue render={Input.Value} aria-label="Current page" />);
+  return sstyled(props.styles)(
+    <SPageInputValue render={Input.Value} aria-label="Current page" aria-current="Page" />,
+  );
 };
 
 const PageInputAddon = (props) => {
@@ -265,20 +287,24 @@ const PageInputAddon = (props) => {
 };
 
 class PageInput extends Component {
+  static enhance = [uniqueIDEnhancement()];
+
   render() {
     const SPageInput = Root;
     const SLabel = Text;
-    const { Children, getI18nText, styles } = this.asProps;
+    const { Children, getI18nText, styles, uid } = this.asProps;
 
     return sstyled(styles)(
       <>
-        <SLabel>{getI18nText('pageInputLabel')}</SLabel>
+        <SLabel tag="label" htmlFor={`pagination-input-${uid}`}>
+          {getI18nText('pageInputLabel')}
+        </SLabel>
         <SPageInput render={Input} controlsLength={Children.origin ? undefined : 2}>
           {Children.origin ? (
             <Children />
           ) : (
             <>
-              <Pagination.PageInput.Value />
+              <Pagination.PageInput.Value id={`pagination-input-${uid}`} />
               <Pagination.PageInput.Addon interactive>
                 <Return />
               </Pagination.PageInput.Addon>
