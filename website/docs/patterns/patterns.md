@@ -6,6 +6,7 @@ title: UX patterns
 @page empty-page
 @page global-errors
 @page export
+@page form
 @page informer
 @page links-order
 @page loading-states
