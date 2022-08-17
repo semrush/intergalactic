@@ -1,18 +1,26 @@
 {
-  "name": "@semcore/{{ dashCase name }}",
-  "description": "Semrush {{ properCase name }} Component",
-  "version": "1.0.0-0",
+  "name": "@semcore/color-picker",
+  "description": "SEMRush ColorPicker Component",
+  "version": "1.0.0",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
   "sideEffects": false,
-  "author": "UI-KIT team <ui-kit-team@semrush.com>",
+  "author": "UI-kit team <ui-kit-team@semrush.com>",
   "license": "MIT",
   "scripts": {
     "build": "build --source=js",
     "test": "jest"
   },
   "dependencies": {
+    "@semcore/button": "^4",
+    "@semcore/divider": "^3",
+    "@semcore/dropdown": "^3",
+    "@semcore/flex-box": "^4",
+    "@semcore/icon": "^2.19.3",
+    "@semcore/input": "^3.0.0",
+    "@semcore/neighbor-location": "^2",
+    "@semcore/popper": "^4",
     "@semcore/utils": "^3.15"
   },
   "peerDependencies": {

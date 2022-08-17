@@ -78,6 +78,7 @@
     "semcore/carousel",
     "semcore/chart",
     "semcore/checkbox",
+    "semcore/color-picker",
     "semcore/core",
     "semcore/counter",
     "semcore/d3-chart",
