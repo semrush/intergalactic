@@ -61,7 +61,7 @@ const Demo = () => {
   return (
     <Flex tag="form" onSubmit={handleSubmit(onSubmit)} direction="column" alignItems="flex-start">
       <Flex direction="column" mb={4}>
-        <Text size={200} tag="label" mb={4}>
+        <Text size={300} tag="label" mb={4}>
           Export data
         </Text>
         <Controller

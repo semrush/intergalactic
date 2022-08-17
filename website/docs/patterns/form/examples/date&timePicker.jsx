@@ -35,7 +35,7 @@ const Demo = () => {
     <Flex tag="form" onSubmit={handleSubmit(onSubmit)} direction="column" alignItems="flex-start">
       <Flex mb={4}>
         <Flex direction="column">
-          <Text size={200} tag="label" mb={1}>
+          <Text size={300} tag="label" mb={1}>
             Start date
           </Text>
           <Controller
@@ -45,7 +45,7 @@ const Demo = () => {
           />
         </Flex>
         <Flex direction="column" ml={2}>
-          <Text size={200} tag="label" mb={1}>
+          <Text size={300} tag="label" mb={1}>
             Time
           </Text>
           <Controller
@@ -71,7 +71,7 @@ const Demo = () => {
       {period && (
         <Flex mb={4}>
           <Flex direction="column">
-            <Text size={200} tag="label" mb={1}>
+            <Text size={300} tag="label" mb={1}>
               Due date
             </Text>
             <Controller
@@ -81,7 +81,7 @@ const Demo = () => {
             />
           </Flex>
           <Flex direction="column" ml={2}>
-            <Text size={200} tag="label" mb={1}>
+            <Text size={300} tag="label" mb={1}>
               Time
             </Text>
             <Controller
