@@ -10,7 +10,7 @@ This section describes all the variable parameters and basic styles that we use 
 
 @## Main denominator
 
-**The main denominator of our interface is 4**. All margins between the components and widgets shall be a multiple of this denominator. All paddings and margins in the widgets shall also be a multiple of 4. These rules help to keep consistency.
+**The main denominator in the design system is 4.** All margins between the components and widgets shall be a multiple of this denominator. All paddings and margins in the widgets shall also be a multiple of 4. These rules help to keep consistency.
 
 > 💡 Paddings inside some atomic components (icons, labels, etc.) may differ from multiples of 4, as they depend on other variable values.
 >
