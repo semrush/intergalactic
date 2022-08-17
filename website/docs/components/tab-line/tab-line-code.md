@@ -9,7 +9,7 @@ Try to reduce the page and see how tabs are compressed. If the text inside a tab
 
 @example base
 
-@## TabLine occupying the entire space of a block with indents
+@## Custom indents and occupying the entire space
 
 As you may notice, the **TabLine** does not have indents at the edges. To make the **TabLine** occupy the entire width of the parent block (which has indents), you need to set the desired `padding` and `margin` for it.
 
@@ -19,6 +19,6 @@ As you may notice, the **TabLine** does not have indents at the edges. To make t
 </Box>
 ```
 
-@## Example accessibility
+@## Example of accessible TabLine
 
-The same example for [TabPanel](/components/tab-panel/tab-panel-code/#a21784)
+@example a11y
