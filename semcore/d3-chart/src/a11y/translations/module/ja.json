@@ -1,5 +1,5 @@
 {
-  "disabled": "Press \"Tab\" to enable graphical charts accessibility module.",
-  "loading": "Loading accessibility module.",
-  "failed": "Failed to load accessibility module. Contact service user support to help us resolve issue faster."
+  "disabled": "アクセシビリティモジュールのグラフィカルチャートを有効化するには「Tab」キーを押してください。",
+  "loading": "アクセシビリティモジュールのロード中。",
+  "failed": "アクセシビリティモジュールの読み込みに失敗しました。サービスユーザーサポートに連絡し、問題を迅速に解決します。"
 }
