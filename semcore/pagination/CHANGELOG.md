@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.1.0] - 2022-08-17
+
+### Added
+
+- Added the necessary labels for improved accessibility work.
+
 ## [3.0.19] - 2022-08-18
 
 ### Changed
