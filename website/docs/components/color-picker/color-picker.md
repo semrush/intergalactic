@@ -1,105 +1,153 @@
 ---
 title: ColorPicker
 tabName: Design
+beta: true
 ---
+
+@import playground
 
 @## Description
 
-**Color picker** is a component that allows the user to select the color of another component from the pre-defined palette.
+**ColorPicker** allows a user to select the color of another component from a predefined palette or specify a custom color using its hexadecimal (HEX) value.
 
-@## Appearance
+**ColorPicker consists of the following elements:**
 
-The color picker appearance varies depending on the usage context.
+- **Trigger;**
+- **List of ColorPicker.Items;**
+- **Input (optional).**
 
-### Color picker types
+@## Trigger
 
-We have two types of color picker that can be used:
+The trigger for a ColorPicker is a Select with a circle as the leading add-on.
+![Color picker trigger](static/trigger.png)
 
-- Color picker in a [dropdown](/components/dropdown/)
-- Inline color picker
+### Sizes
 
-| Color picker in a dropdown                            | Inline color picker                              |
-| ----------------------------------------------------- | ------------------------------------------------ |
-| ![Color picker dropdown](static/cp-type-dropdown.png) | ![Color picker inline](static/cp-type-plain.png) |
+![Color picker trigger size](static/trigger-size.png)
 
-A picker can have two different content types:
+@## ColorPicker.Item
+**The item can be one ColorPicker.Item or a list of them.**
 
-- Background color
-- Text color
+ColorPicker.Item is a swatch preview that allows a user to see what color is currently selected.
 
-| Background color                                      | Text color                                             |
-| ----------------------------------------------------- | ------------------------------------------------------ |
-| ![Color picker dropdown](static/cp-type-dropdown.png) | ![Color picker inline](static/cp-type-dropdown-ct.png) |
-| ![Color picker dropdown](static/cp-type-plain.png)    | ![Color picker inline](static/cp-type-plain-ct.png)    |
+| ColorPicker.Item                                             | List of ColorPicker.Items                             |
+| ------------------------------------------------------------ | ----------------------------------------------------- |
+| ![Color picker item](static/colorpicker-item-bg-default.png) | ![Color picker inline](static/colorpicker-inline.png) |
 
-Each type can be expanded with an additional set of colors. There are two sets in total:
+@## Size
 
-- standard comprising 10 colors;
-- additional - also 10 colors.
+We use only one size of ColorPicker.Item which is 28\*28px.
+![Color picker item size](static/colorpicker-item-size.png)
 
-| Set of background colors + "More" button                           | Set of background colors + "Less" button                           |
-| ------------------------------------------------------------------ | ------------------------------------------------------------------ |
-| ![Color dropdown with more button](static/cp-type-dropdown+bm.png) | ![Color dropdown with less button](static/cp-type-dropdown+bl.png) |
+@## Margins
 
-| Set of text colors + "More" button                                         | Set of text colors + "Less" button                                         |
-| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| ![Color-text dropdown with more button](static/cp-type-dropdown-ct+bm.png) | ![Color-text dropdown with less button](static/cp-type-dropdown-ct+bl.png) |
+All margins must be multiples of 4. The default recommended margins are 4px:
+![ColorPicker margins](static/colorpicker-margins.png)
 
-The set of colors in inline color picker can be expanded in two ways:
+@## Types
 
-- add an additional set to the main one as a separate row of colors;
-- show via select dropdown with all the sets.
+An item can have two different content types:  
+| Type | Appearance example | Description |
+| --------------- | ------------------------------------------------------------ | --------------------------- |
+| Bakground color | ![Color picker item bakground default](static/colorpicker-item-bg-default.png) | Use for changing the background color. For example, a user can pick distinct colors to visually separate their competitors. |
+| Text color | ![Color picker item text default](static/colorpicker-item-text-default.png) | Use for changing the Tag color. |
 
-| Set of background colors in 2 rows                     | Set of text colors in 2 rows                                 |
-| ------------------------------------------------------ | ------------------------------------------------------------ |
-| ![Inline color 2 rows](static/cp-type-plain-ext-c.png) | ![Inline color-text 2 rows](static/cp-type-plain-ext-ct.png) |
+@## Interaction
 
-| Set of background colors + Select + Dropdown              | Set of text colors + Select + Dropdown                          |
-| --------------------------------------------------------- | --------------------------------------------------------------- |
-| ![Inline color + dropdown](static/cp-type-plain+dd-c.png) | ![Inline color-text + dropdown](static/cp-type-plain+dd-ct.png) |
+In the hover state, a trigger has a border: 1px solid `var (--gray-200);`  
+In the active state, a trigger changes its border color to `var (--blue-300)`
 
-@## Content
+**ColorPicker.Item**  
+| | Normal | Hover | Active | Description |
+| ------------------- | ------------------------------- | -------------------------- | ----------------------- | -------------------- |
+| Background color | ![Color picker item bakground default](static/colorpicker-item-bg-default.png) | ![Color picker item bakground hover](static/colorpicker-item-bg-hover.png) | ![Color picker item bakground active](static/colorpicker-item-bg-active.png)| Use for changing the background color of other components.|
+| Text color | ![Color picker item text default](static/colorpicker-item-text-default.png) | ![Color picker item text hover](static/colorpicker-item-text-hover.png) | ![Color picker item text active](static/colorpicker-item-text-active.png)| Use for changing text and background colors of other components.|
+| No background color | ![Color picker item  no color bakground default](static/colorpicker-item-nocolor-default.png) | ![Color picker item no color bakground hover](static/colorpicker-item-nocolor-hover.png) | ![Color picker item no color bakground active](static/colorpicker-item-nocolor-active.png)| Use when no color is selected.|
+| No text color | ![Color picker item bakground default](static/colorpicker-item-text-nocolor-default.png) | ![Color picker item bakground hover](static/colorpicker-item-text-nocolor-hover.png) | ![Color picker item bakground active](static/colorpicker-item-text-nocolor-active.png)| Use when no color is selected.|
 
-### What a color picker in dropdown can consist of
+**ColorPicker.Item for custom colors**  
+| | Normal | Hover | Active | Description |
+| ------------------- | ------------------------------- | -------------------------- | ----------------------- | -------------------- |
+| Background color | ![Color picker item bakground default](static/colorpicker-item-bg-default.png) | ![Color picker item bakground hover](static/colorpicker-item-custom-hover.png) | ![Color picker item bakground active](static/colorpicker-item-bg-active.png)| Use for changing the background color of other components.|
+| Text color | ![Color picker item text default](static/colorpicker-item-text-default.png) | ![Color picker item text hover](static/colorpicker-item-custom-text-hover.png) | ![Color picker item text active](static/colorpicker-item-text-active.png)| Use for changing the text and background colors of other components.|
 
-|                                                                |                                                                      |
-| -------------------------------------------------------------- | -------------------------------------------------------------------- |
-| ![Color dropdown states](static/cp-type-dropdown-c-states.png) | ![Color-text dropdown states](static/cp-type-dropdown-ct-states.png) |
+**ColorPicker.Item for adding colors**  
+| | Normal | Hover | Active | Description |
+| ------------------- | ------------------------------- | -------------------------- | ----------------------- | -------------------- |
+| Add color button | ![Button add default](static/btn-add-default.png) | ![Button add hover](static/btn-add-hover.png) | ![Button add active](static/btn-add-active.png)| Use Button with icon and increase border-radius to 14px.|
 
-**Default**
+@## Dropdown
 
-- Trigger
-- Dropdown that has:
-  - Title
-  - Set of 10 colors in 2 rows for the background (or for the background and text)
+### Width and height
 
-**Optional**
+**The recommended width of a dropdown is 188px.**  
+The height of a dropdown list depends on its content.
 
-- Master expand/hide button
-- Additional set of 10 colors in 2 rows
+It is important for the user to see all available colors in the dropdown menu, but if a user added more than 20 custom colors, show a scrollbar.
+| Dropdown menu | Dropdown menu with scroll |
+| ------------------------------------------------------------ | ----------------------------------------------------- |
+| ![Dropdown menu](static/dropdown-menu.png) | ![Dropdown menu with scroll](static/scroll.png) |
 
-### What inline color picker can consist of
+### Margins and paddings
 
-|                                                          |                                                                |
-| -------------------------------------------------------- | -------------------------------------------------------------- |
-| ![Color plain states](static/cp-type-plain-c-states.png) | ![Color-text plain states](static/cp-type-plain-ct-states.png) |
+![Dropdown menu margins and paddings](static/colorpicker-margins-paddings.png)
 
-**Default** has 1 row of 10 colors.
+@## Input (optional)
 
-**Optional**
+If a ColorPicker allows adding custom colors, add an input to it.
+The input accepts only HEX values. For details, refer to the [Validation section](/components/color-picker/#validation).
 
-- 2 rows of 10 colors
-- Select that opens a dropdown with all colors
+### Size, margins and paddings
 
-@## Triggers
+**Use a size M input.**  
+![Color picker input and margins](static/colorpicker-input-margins.png)
 
-Components that can be a trigger for the color picker:
+@## Value
+
+The color value is always a 6-character string that specifies the color in the HEX format.
+
+> 💡 A user can enter both upper-case and lower-case characters, but the input will save them as upper-case.
+
+@## Interaction
+
+A user can add or remove custom colors, but they can't change default and custom colors.
+
+**Adding a custom color**
+
+> 💡 We recommend that you sync and save the user's custom palette in different parts of the product's interface.
+
+Colors are added by either clicking on the button with `MathPlus`, or through the input field.  
+A user can add a color value to the custom palette by clicking `Check`, and remove a color by clicking `Close`.
+![Add custom color](static/add-custom-color.png)
+
+**Removing custom color**  
+![Remove custom color](static/remove-custom-color.png)
+
+@## Validation
+
+The input field accepts only six characters, including numbers and letters.  
+If a user enters fewer or more characters, or characters which can't be converted to a 6-character HEX value, the input state changes to invalid.
+
+**To help users fix the invalid input, add the following message to the tooltip: "Please enter 6 latin letters and/or digits."**
+![Validation](static/validation.png)
+
+@## Keyboard support
+
+- The component is focused using `Tab`.
+- A user can navigate inside the color palettes with the keyboard arrows. The color transition occurs sequentially—from top to bottom and from left to right. If a component has two palettes, when tabbed, the focus of the last element of the main palette skips to the first element of the additional palette.
+- The color is selected by pressing `Enter` or `Space`.
+- A user can close the dropdown using `Esc`.
+- When the dropdown is closed, the focus returns to the trigger.
+
+@## Use in UX/UI
+
+Components that can be a trigger for a ColorPicker:
 
 - [Input](/components/input/)
 - [Link](/components/link/)
 - [Select](/components/select/)
 
-![Color picker triggers](static/cp-triggers.png)
+![Color picker triggers](static/color-picker-triggers.png)
 
 You can place the color marker in the following components:
 
@@ -112,57 +160,8 @@ You can place the color marker in the following components:
 - [Tag](/components/tag/)
 - [Option](/components/dropdown-menu/#a66af9)
 
-![Color picker places](static/cp-places.png)
+![Color picker places](static/color-picker-places.png)
 
-@## Interaction
-
-- When you hover over an unselected marker, an outline appears around it with color `--gray-200`, and the cursor changes to pointer. When hovering over unselected markers, the selected marker still has the outline.
-
-![qwdqwd](static/cp-plaint+dd-trigger.png)
-
-- Standard marker color in the trigger if a color is selected in the range from 1 to 8: `--gray-200`.
-
-  - If you select a color in the dropdown from the range of colors from 9 to 20, the color of the marker in the trigger is equal to the selected color. In the trigger, the marker has a stroke with the same color.
-    ![Color plain dropdown select event](static/cp-plain-select-e.png)
-  - If a dropdown color is selected from the range of colors from 1 to 8, the marker of the selected color is duplicated in both the dropdown and plain component.
-
-    ![Selected color in the plain picker](static/cp-plain-select-states.png)
-
-- If the `Inline` type is used with a select, the title is not used inside the dropdown with the palette. However, the `Inline` component itself may have an optional title. If a title is used, we recommend using the name: "Select a color".
-- Dropdown closes when you click outside of its area, or when you click the trigger again.
-
-@## Keyboard support
-
-- When the component is focused via `Tab`, the color transition occurs sequentially — from top to bottom and from left to right. If 2 palettes are used, then when tabbed, the focus of the last element of the main palette skips to the first element of the additional palette.
-- Inside the color palettes, you can navigate using the keyboard arrows.
-- The color is selected by pressing `Enter`, `Space`.
-- You can close the dropdown with colors using `Esc`.
-- When the dropdown is closed, the focus returns to the trigger.
-
-@## Use in UX/UI
-
-### Color picker in a dropdown
-
-Use it when **there is not enough space** and you need to change the color of the object/element, and:
-
-- it doesn't have an alpha channel (non-transparent);
-- it is not a background for the text;
-- if you need to change the color of a text that has a white background color.
-
-### Inline color picker
-
-Use it when **there is enough space**. Or color selection is a priority for the user.
-
-### Text color picker in a dropdown
-
-Use it when **there is not enough space** and you need to change the color of the object/element, and:
-
-- it is the background for the text;
-- it has an alpha channel (transparency);
-- the text over it also changes color.
-
-The text color and background color are based on the same color.
-
-### Inline text color picker
-
-Use it when **there is enough space**. Or color selection is a priority for the user.
+@page color-picker-api
+@page color-picker-code
+@page color-picker-changelog
