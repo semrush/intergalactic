@@ -77,9 +77,7 @@ function Content({ styles }) {
 function CloseIcon({ styles }) {
   const SCloseIcon = Root;
   return sstyled(styles)(
-    <SCloseIcon render={Box} tag="button" interactive aria-label="Close alert">
-      <Close />
-    </SCloseIcon>,
+    <SCloseIcon render={Box} tag={Close} interactive aria-label="Close alert" />,
   );
 }
 

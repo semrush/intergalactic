@@ -35,11 +35,23 @@ function Icon(props, ref) {
     keyboardFocused: keyboardFocused,
   });
 
+  function onKeyDown(event) {
+    if (props.onKeyDown) {
+      props.onKeyDown();
+      return;
+    }
+
+    if (event.code === 'Enter' && interactive) {
+      props.onClick && props.onClick();
+    }
+  }
+
   return (
     <SIcon
       {...propsForElement(propsWithKeyboardEnhance)}
       style={Object.assign({}, style, propsWithKeyboardEnhance.style, props.style)}
       className={cn(className, propsWithKeyboardEnhance.className, props.className) || undefined}
+      onKeyDown={onKeyDown}
     />
   );
 }
