@@ -1,6 +1,7 @@
 ---
 title: ColorPicker
 tabName: Design
+beta: true
 ---
 
 @import playground
@@ -25,7 +26,7 @@ The trigger for a ColorPicker is a Select with a circle as the leading add-on.
 ![Color picker trigger size](static/trigger-size.png)
 
 @## ColorPicker.Item
-**The trigger can be one ColorPicker.Item or a list of them.**
+**The item can be one ColorPicker.Item or a list of them.**
 
 ColorPicker.Item is a swatch preview that allows a user to see what color is currently selected.
 
@@ -45,7 +46,7 @@ All margins must be multiples of 4. The default recommended margins are 4px:
 
 @## Types
 
-A trigger can have two different content types:  
+An item can have two different content types:  
 | Type | Appearance example | Description |
 | --------------- | ------------------------------------------------------------ | --------------------------- |
 | Bakground color | ![Color picker item bakground default](static/colorpicker-item-bg-default.png) | Use for changing the background color. For example, a user can pick distinct colors to visually separate their competitors. |
