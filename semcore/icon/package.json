@@ -11,7 +11,7 @@
   "scripts": {
     "parsing": "icon-transform-svg parsing",
     "transform": "icon-transform-svg",
-    "build": "build --source=js && npm run transform -- --configFile=transform-svg-legacy.config.js && npm run transform -- --configFile=transform-svg.config.js",
+    "build": "pnpm semcore-builder --source=js && pnpm transform -- --configFile=transform-svg-legacy.config.js && pnpm transform -- --configFile=transform-svg.config.js",
     "test": "jest",
     "prebuild": "ls -d */ | egrep -v \"__tests__|src|svg|svg-new|AppBlock\" | xargs rm -rf"
   },

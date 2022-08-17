@@ -2,7 +2,7 @@
   "name": "@semcore/builder",
   "version": "2.0.0",
   "bin": {
-    "build": "bin/index.ts"
+    "semcore-builder": "bin/index.ts"
   },
   "license": "MIT",
   "private": true,

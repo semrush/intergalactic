@@ -9,7 +9,7 @@
   "sideEffects": false,
   "license": "MIT",
   "scripts": {
-    "build": "build --source=js",
+    "build": "pnpm semcore-builder--source=js",
     "test": "jest"
   },
   "dependencies": {

@@ -9,7 +9,7 @@
   "author": "UI-kit team <ui-kit-team@semrush.com>",
   "license": "MIT",
   "scripts": {
-    "build": "build --source=js && flags-sprite",
+    "build": "pnpm semcore-builder--source=js && flags-sprite",
     "upload-static": "gcs-upload lib/sprites/*",
     "test": "jest"
   },
