@@ -23,7 +23,6 @@ title: Components
 @page feedback-yes-no
 @page flags
 @page filter-trigger
-@page form
 @page fullscreen-modal
 @page inline-edit
 @page inline-input
