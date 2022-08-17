@@ -1,5 +1,5 @@
 {
-  "disabled": "Press \"Tab\" to enable graphical charts accessibility module.",
-  "loading": "Loading accessibility module.",
-  "failed": "Failed to load accessibility module. Contact service user support to help us resolve issue faster."
+  "disabled": "Grafik çizelgeleri erişilebilirlik modülünü etkinleştirmek için \"Sekme\" tuşuna basın.",
+  "loading": "Erişilebilirlik modülü yükleniyor.",
+  "failed": "Erişilebilirlik modülü yüklenemedi. Sorunu daha hızlı çözmemize yardımcı olmak için kullanıcı destek hizmeti ile iletişime geçin."
 }

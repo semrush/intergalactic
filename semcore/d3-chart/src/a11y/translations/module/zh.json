@@ -1,5 +1,5 @@
 {
-  "disabled": "Press \"Tab\" to enable graphical charts accessibility module.",
-  "loading": "Loading accessibility module.",
-  "failed": "Failed to load accessibility module. Contact service user support to help us resolve issue faster."
+  "disabled": "按“Tab”启用图形图表访问模块。",
+  "loading": "加载访问模块。",
+  "failed": "无法加载访问模块。联系服务用户支持，以帮助我们更快地解决问题。"
 }
