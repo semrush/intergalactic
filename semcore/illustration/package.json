@@ -9,8 +9,8 @@
   "author": "UI-kit team <ui-kit-team@semrush.com>",
   "license": "MIT",
   "scripts": {
-    "transform": "icon-transform-svg",
-    "build": "build --source=js && npm run transform -- --configFile=transform-svg.config.js",
+    "transform": "pnpm icon-transform-svg",
+    "build": "pnpm semcore-builder --source=js && pnpm run transform -- --configFile=transform-svg.config.js",
     "prebuild": "ls -d */ | egrep -v \"__tests__|svg|src\" | xargs rm -rf && rm *.svg || true",
     "upload-static": "gcs-upload svg/*.svg"
   },

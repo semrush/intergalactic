@@ -2,7 +2,7 @@
   "compilerOptions": {
     "module": "esnext",
     "target": "esnext",
-    "lib": ["dom", "es6", "es7"],
+    "lib": ["dom", "es2019"],
     "jsx": "react",
     "declaration": true,
     "esModuleInterop": true,
@@ -16,7 +16,7 @@
     "experimentalDecorators": true,
     "resolveJsonModule": true,
     "baseUrl": "./semcore",
-    "typeRoots": ["node_modules/@types", "tools/@types"]
+    "typeRoots": ["node_modules/@types", "semcore/data-table/node_modules/@types", "tools/@types"]
   },
   "paths": {
     "@semcore/*": ["semcore/*"],

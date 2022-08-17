@@ -8,19 +8,28 @@ import { fileURLToPath } from 'url';
 const argv = mri<{
   source: string;
   modules: string;
+  dir: string;
 }>(process.argv.slice(2), {
   default: {
     source: 'ts',
   },
 });
 
+const babelPresetPackagePath = resolvePath(
+  fileURLToPath(import.meta.url),
+  '../../../babel-preset-ui',
+);
+const workingDir = process.cwd();
+process.chdir(babelPresetPackagePath);
+
 const makeCommand = {
-  CLEANUP: () => 'rm -rf ./lib',
-  TYPES: (output: string) => `tsc --emitDeclarationOnly --baseUrl ./src --outDir ./lib/${output}`,
+  CLEANUP: () => `rm -rf ${workingDir}/lib`,
+  TYPES: (output: string) =>
+    `tsc --emitDeclarationOnly --baseUrl ${workingDir}/src --project ${workingDir}/tsconfig.json --outDir ${workingDir}/lib/${output}`,
   COPY_TYPES: (output: string) =>
-    `mkdir -p ./lib/${output} && find ./src -type f -name "*.d.ts" -exec cp {} ./lib/${output} ";"`,
+    `mkdir -p ${workingDir}/lib/${output} && find ${workingDir}/src -type f -name "*.d.ts" -exec cp {} ${workingDir}/lib/${output} ";"`,
   BABEL: (output: string, babelArgs: string) =>
-    `babel ./src --out-dir ./lib/${output} ${babelArgs}`,
+    `pnpm babel ${workingDir}/src --out-dir ${workingDir}/lib/${output} ${babelArgs}`,
 } as const;
 
 type ArgumentTypes<F extends Function> = F extends (...args: infer A) => any ? A : never;

@@ -9,7 +9,7 @@
   "author": "UI-kit team <ui-kit-team@semrush.com>",
   "license": "MIT",
   "scripts": {
-    "build": "pnpm semcore-builder--source=js,ts",
+    "build": "pnpm semcore-builder --source=js,ts",
     "test": "jest"
   },
   "dependencies": {
@@ -18,6 +18,7 @@
     "@semcore/flex-box": "^4",
     "@semcore/popper": "^4.9",
     "@semcore/utils": "^3.15",
+    "@types/d3-shape": "^3.1.0",
     "@upsetjs/venn.js": "1.4.1",
     "d3-array": "3.1.6",
     "d3-interpolate": "3.0.1",
@@ -40,6 +41,7 @@
     "directory": "semcore/d3-chart"
   },
   "devDependencies": {
+    "@semcore/babel-plugin-react-semcore": "^4.2.1",
     "@semcore/button": "*",
     "@semcore/checkbox": "*",
     "@semcore/dropdown-menu": "*",

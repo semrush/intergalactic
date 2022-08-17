@@ -1,5 +1,4 @@
 packages:
   - 'semcore/*'
-  - '!semcore/ui'
   - 'tools/*'
   - '!tools/@types'

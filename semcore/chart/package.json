@@ -23,7 +23,7 @@
   "author": "UI-kit team <ui-kit-team@semrush.com>",
   "license": "MIT",
   "scripts": {
-    "build": "build",
+    "build": "pnpm semcore-builder",
     "test": "jest"
   },
   "dependencies": {
@@ -31,8 +31,12 @@
     "@semcore/utils": "^3.17",
     "@types/recharts": "1.8.14",
     "@upsetjs/venn.js": "1.4.1",
+    "classnames": "2.2.6",
     "events": "3.3.0",
     "hoist-non-react-statics": "3.3.2",
+    "lodash": "^4.17.21",
+    "prop-types": "^15.8.1",
+    "react-smooth": "^2.0.1",
     "recharts": "1.8.5"
   },
   "peerDependencies": {
@@ -48,6 +52,7 @@
     "directory": "semcore/chart"
   },
   "devDependencies": {
+    "@semcore/babel-plugin-react-semcore": "^4.2.1",
     "@semcore/jest-preset-ui": "1.0.0"
   }
 }

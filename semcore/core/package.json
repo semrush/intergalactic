@@ -9,12 +9,13 @@
   "author": "UI-kit team <ui-kit-team@semrush.com>",
   "license": "MIT",
   "scripts": {
-    "build": "build",
+    "build": "pnpm semcore-builder",
     "test": "jest"
   },
   "dependencies": {
-    "@semcore/utils": "^3.29",
     "@reshadow/core": "0.0.1-alpha.74",
+    "@semcore/utils": "^3.29",
+    "classnames": "2.2.6",
     "hoist-non-react-statics": "3.3.2"
   },
   "peerDependencies": {

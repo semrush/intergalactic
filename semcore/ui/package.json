@@ -5,7 +5,8 @@
   "module": "./index.js",
   "sideEffects": false,
   "scripts": {
-    "generate": "tsm --require=../../.ci/tsm-filter-warnings.js generate.ts",
+    "clear": "tsm --require=../../.ci/tsm-filter-warnings.js clear.ts",
+    "generate": "pnpm run clear && tsm --require=../../.ci/tsm-filter-warnings.js generate.ts",
     "test": "jest"
   },
   "dependencies": {

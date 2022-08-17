@@ -9,7 +9,7 @@
   "author": "UI-kit team <ui-kit-team@semrush.com>",
   "license": "MIT",
   "scripts": {
-    "build": "pnpm semcore-builder--source=ts",
+    "build": "pnpm semcore-builder --source=ts",
     "test": "jest"
   },
   "dependencies": {
@@ -35,7 +35,8 @@
     "@semcore/spin": "^4",
     "@semcore/spin-container": "*",
     "@semcore/sticky": "*",
-    "@semcore/tooltip": "*"
+    "@semcore/tooltip": "*",
+    "@types/node": "^17.0.45"
   },
   "peerDependencies": {
     "@semcore/core": "^1.11",

@@ -9,13 +9,14 @@
   "author": "UI-kit team <ui-kit-team@semrush.com>",
   "license": "MIT",
   "scripts": {
-    "build": "pnpm semcore-builder--source=js && flags-sprite",
+    "build": "pnpm semcore-builder --source=js && pnpm flags-sprite",
     "upload-static": "gcs-upload lib/sprites/*",
     "test": "jest"
   },
   "dependencies": {
+    "@semcore/flex-box": "^4",
     "@semcore/utils": "^3.15",
-    "@semcore/flex-box": "^4"
+    "classnames": "2.2.6"
   },
   "peerDependencies": {
     "@semcore/core": "^1.11",
@@ -30,6 +31,7 @@
     "directory": "semcore/flags"
   },
   "devDependencies": {
+    "@semcore/flags-sprite": "1.0.0",
     "@semcore/jest-preset-ui": "1.0.0"
   }
 }

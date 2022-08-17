@@ -11,6 +11,7 @@ const outputFile = util.promisify(fs.outputFile);
 const readFile = util.promisify(fs.readFile);
 
 const rootDir = process.cwd();
+process.chdir(__dirname);
 let customConfig = () => {};
 
 if (configFile) {
@@ -129,6 +130,7 @@ module.exports = function () {
     }),
   )
     .then(() => {
+      // eslint-disable-next-line no-console
       console.log('Done! Wrote all icon files.');
     })
     .catch((err) => {

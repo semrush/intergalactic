@@ -13,13 +13,6 @@ const components = fs.readJSONSync(path.resolve(dirname, './components.json'));
 const REGISTRY_URL = 'https://registry.npmjs.org/';
 const EXPORT_DEFAULT_REG = /export ({ default }|default)/gm;
 
-const removeDirectory = async () => {
-  const toRemove = [...glob.sync('!(*.*|__tests__)', { onlyDirectories: true }), 'pnpm-lock.yaml'];
-  try {
-    await Promise.all(toRemove.map((filePath) => fs.remove(path.resolve(dirname, filePath))));
-  } catch (e) {}
-};
-
 const installComponents = (packages: string[]) => {
   execSync(`npm_config_registry=${REGISTRY_URL} pnpm add ${packages.join(' ')} --exact`, {
     stdio: 'inherit',
@@ -221,7 +214,6 @@ const generateFiles = async (packages: string[]) => {
   }
 };
 
-await removeDirectory();
 await installComponents(components.packages);
 await generateFiles(components.packages);
 
