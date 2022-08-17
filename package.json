@@ -22,9 +22,10 @@
     "prettier:fix": "pretty-quick --staged --ignore-path=./.prettierignore",
     "publish:website": "tsm --require=./.ci/tsm-filter-warnings.js ./.ci/trigger-website-publish.ts",
     "prepare": "husky install",
-    "i18n:submit": "yarn crowdin upload",
-    "i18n:status": "yarn crowdin status",
-    "i18n:download": "yarn crowdin download && tsm --require=./.ci/tsm-filter-warnings.js .ci/i18n-csv-2-json.ts"
+    "semcore-builder": "tsm --require=./.ci/tsm-filter-warnings.js ./tools/builder/bin/index.ts",
+    "i18n:submit": "pnpm crowdin upload",
+    "i18n:status": "pnpm crowdin status",
+    "i18n:download": "pnpm crowdin download && tsm --require=./.ci/tsm-filter-warnings.js .ci/i18n-csv-2-json.ts"
   },
   "private": true,
   "devDependencies": {
