@@ -71,7 +71,7 @@ const Demo = () => {
 
   return (
     <Flex tag="form" onSubmit={handleSubmit(onSubmit)} direction="column" alignItems="flex-start">
-      <Text size={200} tag="label" mb={1}>
+      <Text size={300} tag="label" mb={1}>
         Email frequency
       </Text>
 
@@ -91,7 +91,7 @@ const Demo = () => {
       <Controller
         render={({ value: tags = [] }) => (
           <>
-            <Text size={200} tag="label" mb={1}>
+            <Text size={300} tag="label" mb={1}>
               Emails
               <Counter ml={1} size="l">{`${tags.length}/5`}</Counter>
             </Text>

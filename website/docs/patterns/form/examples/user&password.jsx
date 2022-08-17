@@ -20,7 +20,7 @@ const Demo = () => {
   return (
     <>
       <Flex tag="form" onSubmit={handleSubmit(onSubmit)} direction="column">
-        <Text size={200} tag="label" mb={1} htmlFor="email">
+        <Text size={300} tag="label" mb={1} htmlFor="email">
           Email
         </Text>
         <Tooltip interaction={errors['email'] ? 'focus' : 'none'} placement="right" theme="warning">
@@ -49,7 +49,7 @@ const Demo = () => {
           </Tooltip.Trigger>
           {errors['email'] && <Tooltip.Popper>{errors['email']?.message}</Tooltip.Popper>}
         </Tooltip>
-        <Text size={200} tag="label" mb={1} htmlFor="password">
+        <Text size={300} tag="label" mb={1} htmlFor="password">
           Password
         </Text>
         <Tooltip
