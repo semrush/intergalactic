@@ -1,5 +1,5 @@
 {
-  "disabled": "Press \"Tab\" to enable graphical charts accessibility module.",
-  "loading": "Loading accessibility module.",
-  "failed": "Failed to load accessibility module. Contact service user support to help us resolve issue faster."
+  "disabled": "Appuyez sur « Onglet » pour activer le module d’accessibilité aux diagrammes.",
+  "loading": "Chargement du module d’accessibilité en cours.",
+  "failed": "Impossible de charger le module d’accessibilité. Contactez le service d’assistance aux utilisateurs pour nous permettre de résoudre le problème plus rapidement."
 }
