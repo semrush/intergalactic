@@ -1,18 +1,11 @@
 ---
 title: A11y
-fileSource: tab-panel
+fileSource: tab-line
 ---
 
-> ### General recommendations
->
-> - Be mindful of using tabs, as they are less discoverable by design.
-> - Once a tab button is focused, other tabs can be selected with the arrow keys.
-> - A tab's contents can be accessed via `Tab` (if there are focusable elements in the tab well) or `PgDn` (if there are no focusable elements in the tab well).
-> - Be sure to update the values of the `aria-posinset` and `aria-setsize` attributes if you have more than three tabs.
->
-> [A11y style guide](https://a11y-style-guide.com/style-guide/section-structure.html#kssref-structure-tabs)
+@## What component has
 
-@## Keyboard support
+### Keyboard support
 
 | Key           | Function                                                                                                                                                                                                    |
 | ------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -20,7 +13,16 @@ fileSource: tab-panel
 | `Right` arrow | Moves focus to the next tab. If focus is on the last tab, moves focus to the first tab. Activates the newly focused tab.                                                                                    |
 | `Left` arrow  | Moves focus to the previous tab. If focus is on the first tab, moves focus to the last tab. Activates the newly focused tab.                                                                                |
 
-@## Roles & attributes
+@## Considerations for developers
+
+- Be mindful of using tabs, as they are less discoverable by design.
+- Once a tab button is focused, other tabs can be selected with the arrow keys.
+- A tab's contents can be accessed via `Tab` (if there are focusable elements in the tab well) or `PgDn` (if there are no focusable elements in the tab well).
+- Be sure to update the values of the `aria-posinset` and `aria-setsize` attributes if you have more than three tabs.
+
+Find live examples in [A11y style guide](https://a11y-style-guide.com/style-guide/section-structure.html#kssref-structure-tabs).
+
+### Roles & attributes
 
 The list below will help you to keep in mind the necessary roles and attributes to make our components fully accessible in your interfaces.
 
