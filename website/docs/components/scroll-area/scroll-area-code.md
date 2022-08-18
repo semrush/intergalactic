@@ -5,23 +5,23 @@ fileSource: scroll-area
 
 @## Basic use
 
-In basic mode of use it is enough just to wrap your content into `ScrollArea`. This will create a couple of wraps (`div`) and make the necessary calculations. The height or width should be set at the scroll itself or somewhere higher, `max-height` and `max-width` are also supported.
+For basic use it is enough just to wrap your content into `ScrollArea`. It will create a couple of wraps (`div`) and make the necessary calculations. The height or width should be set at the scroll itself or somewhere higher, `max-height` and `max-width` are also supported.
 
 @example basic
 
-@## Example of main-dependent work
+@## Synchronized scroll on two different screens
 
 @example master-slave
 
-@## Example of reverse scroll operation
+@## Synchronized reverse scroll on two different screens
 
 @example reverse
 
-@## An example of taking a scrollbar out of a container
+@## Scrollbar out of container
 
 @example bar
 
-@## An example with a dynamic virtual list
+@## Dynamic virtual list
 
 [React-virtualized](https://github.com/bvaughn/react-virtualized) is responsible for work of the virtual list ✨
 
