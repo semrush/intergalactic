@@ -16,6 +16,8 @@ function Icon(props, ref) {
       width: 16,
       height: 16,
       viewBox: '0 0 16 16',
+      'aria-hidden': true,
+      focusable: props.interactive,
       ...props,
     },
     ref,
@@ -37,11 +39,11 @@ function Icon(props, ref) {
 
   function onKeyDown(event) {
     if (props.onKeyDown) {
-      return;
+      return props.onKeyDown(event);
     }
 
-    if (event.code === 'Enter' && interactive) {
-      props.onClick && props.onClick();
+    if (interactive && event.code === 'Enter') {
+      props.onClick && props.onClick(event);
     }
   }
 
