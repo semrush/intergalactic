@@ -23,18 +23,9 @@ const style = sstyled.css`
   }
 `;
 
-function Collapse({ onAnimationStart, onAnimationEnd, visible, ...props }, ref) {
+function Collapse({ onAnimationStart, onAnimationEnd, ...props }, ref) {
   const SCollapse = Animation;
   const [height, setHeightVar] = useState('auto');
-
-  const [wasCollapsed, setWasCollapsed] = React.useState(!visible);
-  React.useEffect(() => {
-    if (!visible) setWasCollapsed(!visible);
-  }, [visible]);
-  const keyframes = React.useMemo(
-    () => (wasCollapsed ? [style['@enter'], style['@exit']] : [undefined, style['@exit']]),
-    [wasCollapsed, style],
-  );
 
   const handlerAnimationStart = useCallback((e) => {
     if (e.currentTarget !== e.target) return;
@@ -54,11 +45,10 @@ function Collapse({ onAnimationStart, onAnimationEnd, visible, ...props }, ref) 
     <SCollapse
       ref={ref}
       {...props}
-      visible={visible}
       onAnimationStart={handlerAnimationStart}
       onAnimationEnd={handlerAnimationEnd}
       height={height}
-      keyframes={keyframes}
+      keyframes={[style['@enter'], style['@exit']]}
     />,
   );
 }
