@@ -12,13 +12,13 @@ It's always placed under the main Semrush header and searchbar.
 
 @## Component composition
 
-**The report header includes the following:**
+**The report header may include the following:**
 
 - [breadcrumbs](/components/breadcrumbs/);
 - [additional links](/patterns/links-order), placed at the top right of the header;
 - name of the product and the project;
-- additional controls customizing the product or making any additional actions (placed at - the right on the level of the product name);
-- line with global filters and/or additional information.
+- additional controls customizing the product or making any additional actions (placed at the right to the product name);
+- filters and/or additional information.
 
 @## Margins and paddings
 
@@ -26,11 +26,11 @@ It's always placed under the main Semrush header and searchbar.
 
 ![product-head margins](static/margins.png)
 
-If there is a [Notice](/components/notice/) in the header, it has 8px margin-bottom to the elements in ProductHead.
+If there is a [Notice](/components/notice/) in the header, it has `margin-bottom: 8px`.
 
 ![product-head notice-margins](static/notice-margins.png)
 
-### Margins between the elements
+### Margins between elements
 
 ![product-head element sizes](static/elements-margins.png)
 
@@ -39,22 +39,22 @@ If there is a [Notice](/components/notice/) in the header, it has 8px margin-bot
 ### Breadcrumbs and additional links
 
 - [Breadcrumbs](/components/breadcrumbs/) and additional links are center aligned.
-- [Links](/components/link/) have 14px size.
-- The margin between the links is 20 px.
+- [Links](/components/link/) have 14px size. Use variables `--fs-200`, `--lh-200`.
+- The margin between the links is 20px.
 
-### Heading and main controls
+### Title and main controls
 
-- Heading, buttons and labels are center aligned regard to each other.
-- For title use text with 20px size (`--fs-400; --lh-400`).
-- For the text color use `var(--gray-800)`, for project's name – `var(--gray-500)`.
-- The size of the nearby icons — M. Color icon into `var(--gray-300)`.
+- Title, buttons and labels are center aligned regard to each other.
+- For title use text with 20px size (`--fs-400`, `--lh-400`).
+- For the text color use `--gray-800`, for project's name – `--gray-500`.
+- The size of the nearby icons — M. Color icon with `--gray-300`.
 - The icons are aligned by the title's basic line.
 - [Button](/components/button/) has M size.
 
 ### Filters and/or additional information
 
 - All elements are center aligned.
-- For text use 14px size (`--fs-200; --lh-200`) and `var(--gray-800)` color.
+- For text use text with 14px size (`--fs-200`, `--lh-200`) and `--gray-800` color.
 - Icons have M size.
 
 @## ProductHead variants
@@ -63,7 +63,7 @@ If there is a [Notice](/components/notice/) in the header, it has 8px margin-bot
 
 ![max element product-head](static/max-info.png)
 
-> 💡 When the names of the domain and/or project are too long and don't fit in the intended place, collapse them into `ellipsis`. If you have controls on the right, add them a “protective” left margin of 24px.
+> When the names of the domain and/or project are too long and don't fit in the intended place, collapse them into `ellipsis`. If you have controls on the right, add them a “protective” left margin of 24px.
 
 ![title in ellipsis and controls margin](static/ellipsis-and-margin.png)
 
