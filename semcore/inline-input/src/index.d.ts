@@ -142,7 +142,7 @@ export interface IInlineInputCancelControlProps extends IBoxProps {
 }
 
 interface IInlineInputCtx {
-  geAddonProps: PropGetterFn;
+  getAddonProps: PropGetterFn;
   getConfirmControlProps: PropGetterFn;
   getCancelControlProps: PropGetterFn;
   getValueProps: PropGetterFn;
