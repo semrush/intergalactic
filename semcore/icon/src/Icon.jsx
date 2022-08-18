@@ -37,7 +37,6 @@ function Icon(props, ref) {
 
   function onKeyDown(event) {
     if (props.onKeyDown) {
-      props.onKeyDown();
       return;
     }
 
