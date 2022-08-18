@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [1.5.9] - 2022-08-29
+
+### Fixed
+
+- Fixed playing entering animation if init animation state is already reached.
+
 ## [1.5.8] - 2022-08-18
 
 ### Changed
