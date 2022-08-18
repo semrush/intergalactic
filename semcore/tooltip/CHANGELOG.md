@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.0.11] - 2022-08-18
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.36.0 ~> 3.37.0], `@semcore/flex-box` [4.5.9 ~> 4.5.10], `@semcore/popper` [4.11.27 ~> 4.11.28]).
+
 ## [5.0.10] - 2022-08-11
 
 ### Changed
