@@ -19,8 +19,6 @@ tabName: Design
 
 ### Styles
 
-Scrollbar has the following styles.
-
 | Element                 | Styles                           |
 | ----------------------- | -------------------------------- |
 | `ScrollArea.Bar`        | `background: transparent;`       |
@@ -31,7 +29,7 @@ Scrollbar has the following styles.
 The scroll inside the block can be controlled by:
 
 - mouse wheel;
-- the arrow key while focusing on an element;
+- arrow keys while focusing on an element;
 - touchpad gestures;
 - elements of a scrollbar like sliders and buttons.
 
