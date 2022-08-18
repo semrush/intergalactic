@@ -6,7 +6,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Added
 
-- Added `onKeyDown` functionality.
+- Added call `onClick` when pressing enter if the icon is `interactive`.
 
 ## [2.29.5] - 2022-08-18
 
