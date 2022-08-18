@@ -2,7 +2,7 @@ import React from 'react';
 import { snapshot, testing } from '@semcore/jest-preset-ui';
 import Icon from '../src';
 
-const { render, cleanup, axe } = testing;
+const { render, cleanup, fireEvent, axe } = testing;
 
 describe('Icon', () => {
   afterEach(cleanup);
@@ -72,6 +72,26 @@ describe('Icon', () => {
     );
 
     expect(await snapshot(component)).toMatchImageSnapshot();
+  });
+
+  test('should support call onClick', async () => {
+    const onClick = jest.fn();
+    const { getByTestId } = render(<Icon data-testid="icon" interactive />);
+
+    fireEvent.keyDown(getByTestId('icon'), { code: 'Enter' });
+    expect(onClick).toHaveBeenCalledTimes(0);
+  });
+
+  test('should not call onClick with onKeydown', async () => {
+    const onKeyDown = jest.fn();
+    const onClick = jest.fn();
+    const { getByTestId } = render(
+      <Icon data-testid="icon" onClick={onClick} onKeyDown={onKeyDown} interactive />,
+    );
+
+    fireEvent.keyDown(getByTestId('icon'), { code: 'Enter' });
+    expect(onKeyDown).toHaveBeenCalledTimes(1);
+    expect(onClick).toHaveBeenCalledTimes(0);
   });
 
   test('a11y', async () => {
