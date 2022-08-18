@@ -41,6 +41,7 @@ With infinite scrolling content is loaded in portions. This type of scrolling is
 >
 > (c) Roma Lysov 🤪 -->
 
+@page scroll-area-a11y
 @page scroll-area-api
 @page scroll-area-code
 @page scroll-area-changelog
