@@ -33,14 +33,14 @@ export default function shortDateRangeFormat(dates, { locale = 'en-US', ...optio
         }
         return `${new Intl.DateTimeFormat(locale, { month: options.month }).format(
           normalizeDates[0],
-        )} ${normalizeDates[0].getDate()} - ${normalizeDates[1].getDate()}, ${normalizeDates[0].getFullYear()}`;
+        )} ${normalizeDates[0].getDate()}-${normalizeDates[1].getDate()}, ${normalizeDates[0].getFullYear()}`;
       }
       if (isSimilarDay) {
         return `${normalizeDates[0].getDate()} ${new Intl.DateTimeFormat(locale, {
           month: options.month,
         }).format(normalizeDates[0])} ${normalizeDates[0].getFullYear()}`;
       }
-      return `${normalizeDates[0].getDate()} - ${normalizeDates[1].getDate()} ${new Intl.DateTimeFormat(
+      return `${normalizeDates[0].getDate()}-${normalizeDates[1].getDate()} ${new Intl.DateTimeFormat(
         locale,
         { month: options.month },
       ).format(normalizeDates[0])} ${normalizeDates[0].getFullYear()}`;
@@ -52,18 +52,18 @@ export default function shortDateRangeFormat(dates, { locale = 'en-US', ...optio
       if (getDayJSLocale(locale) === 'en') {
         return `${new Intl.DateTimeFormat(locale, newOptions).format(
           normalizeDates[0],
-        )} - ${new Intl.DateTimeFormat(locale, newOptions).format(
+        )}-${new Intl.DateTimeFormat(locale, newOptions).format(
           normalizeDates[1],
         )}, ${normalizeDates[0].getFullYear()}`;
       }
       return `${new Intl.DateTimeFormat(locale, newOptions).format(
         normalizeDates[0],
-      )} - ${new Intl.DateTimeFormat(locale, newOptions).format(
+      )}-${new Intl.DateTimeFormat(locale, newOptions).format(
         normalizeDates[1],
       )} ${normalizeDates[0].getFullYear()}`;
     }
 
-    return `${format(normalizeDates[0])} - ${format(normalizeDates[1])}`;
+    return `${format(normalizeDates[0])}-${format(normalizeDates[1])}`;
   }
 
   return format(normalizeDates[0]);

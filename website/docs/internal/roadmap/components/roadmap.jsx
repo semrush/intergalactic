@@ -228,7 +228,7 @@ function Gant(props) {
         {sprint.map((date, index) => {
           if (index === lengthSprint) return null;
           return (
-            <span key={date}>{`${date.format('D MMM')} - ${sprint[index + 1]
+            <span key={date}>{`${date.format('D MMM')}-${sprint[index + 1]
               .subtract(1, 'day')
               .format('D MMM')}`}</span>
           );

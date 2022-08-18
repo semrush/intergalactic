@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.2.0] - 2022-08-18
+
+### Changed
+
+- Removed spaces around dash in formatted date.
+
 ## [3.1.4] - 2022-08-18
 
 ### Changed
