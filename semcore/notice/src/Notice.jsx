@@ -50,6 +50,7 @@ class RootNotice extends Component {
         use:theme={useTheme}
         backgroundColor={color}
         role="alert"
+        aria-live="assertive"
       >
         <Children />
       </SNotice>,

@@ -35,6 +35,7 @@ class NoticeGlobalRoot extends Component {
         use:theme={useTheme}
         backgroundColor={color}
         role="alert"
+        aria-live="assertive"
       >
         {advanceMode ? (
           <Children />

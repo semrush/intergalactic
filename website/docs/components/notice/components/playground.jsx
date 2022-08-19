@@ -68,7 +68,7 @@ const Preview = (preview) => {
   return (
     <Notice theme={theme} hidden={hidden}>
       {label && (
-        <Notice.Label>
+        <Notice.Label aria-hidden={true}>
           <QuestionAltS />
         </Notice.Label>
       )}
