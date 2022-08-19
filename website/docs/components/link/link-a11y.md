@@ -20,6 +20,7 @@ fileSource: link
 > - Add `tabindex=”0”` so that the link becomes keyboard focusable
 > - Add `role=”link”` so that assistive technology recognizes the element as a link
 > - Add the styling `cursor: pointer` so that mouse users will recognize the element as a link.
+> - If there is no text in the link, it is necessary to use aria-label with a link description.
 >
 > [Yale University article about the accessible links](https://usability.yale.edu/web-accessibility/articles/links#combine-adjacent-links).
 
