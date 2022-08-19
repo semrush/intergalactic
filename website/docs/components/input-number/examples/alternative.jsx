@@ -18,7 +18,7 @@ function Demo() {
   return (
     <Flex w={100}>
       <NeighborLocation>
-        <Button onClick={handlerControls(-1)} label="Decrease">
+        <Button onClick={handlerControls(-1)} aria-label="Decrease">
           -
         </Button>
         <InputNumber>
@@ -30,7 +30,7 @@ function Demo() {
             onChange={setValue}
           />
         </InputNumber>
-        <Button onClick={handlerControls(1)} label="Increase">
+        <Button onClick={handlerControls(1)} aria-label="Increase">
           +
         </Button>
       </NeighborLocation>

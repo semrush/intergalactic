@@ -9,6 +9,7 @@ title: A11y
 > - If a button contains an `<img>` element, make sure to set its alt attribute. If it contains an icon, use aria-label to describe the icon instead.
 > - You can use `<input type="image">` to make a graphical button. It takes a `src` and `alt` attribute just like traditional images.
 > - Button states are important, not just button styling! If you are only toggling classes to visually manage state of your components, you are likely not appropriately conveying that state to users of assistive technologies.
+> - If there is no text in the button, it is necessary to add aria-label with a button description.
 >
 > [A11y style guide](https://a11y-style-guide.com/style-guide/section-general.html)
 
