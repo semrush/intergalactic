@@ -5,6 +5,8 @@ import { Box } from '@semcore/flex-box';
 import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 import addonTextChildren from '@semcore/utils/lib/addonTextChildren';
 import resolveColor, { shade } from '@semcore/utils/lib/color';
+import reactToText from '@semcore/utils/lib/reactToText';
+import logger from '@semcore/utils/lib/logger';
 
 import style from './style/link.shadow.css';
 
@@ -18,11 +20,30 @@ class RootLink extends Component {
 
   render() {
     const SLink = Root;
-    const { Children, styles, noWrap, addonLeft, addonRight, color } = this.asProps;
+    const {
+      Children,
+      styles,
+      noWrap,
+      addonLeft,
+      addonRight,
+      color,
+      disabled,
+      'aria-label': ariaLabel,
+    } = this.asProps;
     const colorHoverText = shade(resolveColor(color), -0.12);
+    const linkText = reactToText(Children);
+
+    logger.warn(
+      linkText === '' && ariaLabel === undefined,
+      'aria-label is required',
+      this.asProps['data-ui-name'] || Link.displayName,
+    );
 
     return sstyled(styles)(
       <SLink
+        role="link"
+        tabIndex={0}
+        aria-disabled={!!disabled}
         render={Text}
         tag="a"
         colorHoverText={colorHoverText}
