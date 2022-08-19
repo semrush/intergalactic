@@ -38,7 +38,7 @@ const Demo = () => {
           </Input.Addon>
         )}
       </Input>
-      <Button label="Search">
+      <Button aria-label="Search">
         <Button.Addon>
           <Search />
         </Button.Addon>

@@ -29,8 +29,6 @@ export interface IButtonProps extends IBoxProps, INeighborItemProps, IKeyboardFo
   addonLeft?: React.ElementType;
   /** Tag for the right Addon */
   addonRight?: React.ElementType;
-  /** Accessible label */
-  label?: string;
 }
 
 export interface IButtonTextProps extends IBoxProps {
