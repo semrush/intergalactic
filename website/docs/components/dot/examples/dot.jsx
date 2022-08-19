@@ -20,7 +20,7 @@ const Demo = () => {
   };
 
   return (
-    <Button onClick={handleClick}>
+    <Button onClick={handleClick} label="Remove updates">
       <TrashS />
       <Dot up hidden={hidden} size="l" />
     </Button>

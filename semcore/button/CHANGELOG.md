@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.0.13] - 2022-08-19
+
+### Added
+
+- Added `label` prop for better accessibility.
+
 ## [4.0.12] - 2022-08-18
 
 ### Changed
