@@ -6,7 +6,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Added
 
-- Added `label` prop for better accessibility.
+- Added empty button aria-label check.
 
 ## [4.0.12] - 2022-08-18
 

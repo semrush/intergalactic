@@ -4,6 +4,8 @@ import { Box } from '@semcore/flex-box';
 import { neighborLocationEnhance } from '@semcore/neighbor-location';
 import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 import addonTextChildren from '@semcore/utils/lib/addonTextChildren';
+import logger from '@semcore/utils/lib/logger';
+import reactToText from '@semcore/utils/lib/reactToText';
 import SpinButton from './SpinButton';
 
 import style from './style/button.shadow.css';
@@ -51,10 +53,19 @@ class RootButton extends Component {
       size,
       addonLeft,
       addonRight,
-      label,
+      'aria-label': ariaLabel,
     } = this.asProps;
 
     const useTheme = use && theme ? `${use}-${theme}` : false;
+
+    const isTextInside = reactToText(Children);
+
+    logger.warn(
+      !isTextInside && !ariaLabel,
+      "Please add the 'aria-label' property",
+      this.asProps['data-ui-name'] || Button.displayName,
+    );
+
     return sstyled(styles)(
       <SButton
         render={Box}
@@ -62,7 +73,6 @@ class RootButton extends Component {
         tag="button"
         disabled={disabled}
         use:theme={useTheme}
-        aria-label={label}
         role="button"
       >
         <SInner tag="span" loading={loading}>
