@@ -62,7 +62,7 @@ class RootButton extends Component {
 
     logger.warn(
       !isTextInside && !ariaLabel,
-      "Please add the 'aria-label' property",
+      'aria-label is required',
       this.asProps['data-ui-name'] || Button.displayName,
     );
 
