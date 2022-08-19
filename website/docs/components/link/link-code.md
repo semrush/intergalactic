@@ -31,3 +31,9 @@ This have two problem:
 - text `overflow:hidden` moves to vertical `Addon` (wrap content in Flex with vertical align)
 
 @example ellipsis
+
+@## Link accessibility
+
+If there is no text in the link, it is necessary to add aria-label with a link description
+
+@example a11y

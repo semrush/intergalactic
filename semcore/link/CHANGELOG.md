@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.1.0] - 2022-08-19
+
+### Added
+
+- Added screen reader support and empty link aria-label check
+
 ## [4.0.11] - 2022-08-18
 
 ### Changed
