@@ -51,11 +51,20 @@ class RootButton extends Component {
       size,
       addonLeft,
       addonRight,
+      label,
     } = this.asProps;
 
     const useTheme = use && theme ? `${use}-${theme}` : false;
     return sstyled(styles)(
-      <SButton render={Box} type="button" tag="button" disabled={disabled} use:theme={useTheme}>
+      <SButton
+        render={Box}
+        type="button"
+        tag="button"
+        disabled={disabled}
+        use:theme={useTheme}
+        aria-label={label}
+        role="button"
+      >
         <SInner tag="span" loading={loading}>
           {addonLeft ? <Button.Addon tag={addonLeft} /> : null}
           {addonTextChildren(Children, Button.Text, Button.Addon)}
