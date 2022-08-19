@@ -42,7 +42,7 @@ class RootLink extends Component {
     return sstyled(styles)(
       <SLink
         role="link"
-        tabIndex={0}
+        tabIndex={disabled ? -1 : 0}
         aria-disabled={!!disabled}
         render={Text}
         tag="a"
