@@ -3,7 +3,7 @@ import { testing, snapshot } from '@semcore/jest-preset-ui';
 import propsForElement from '@semcore/utils/lib/propsForElement';
 import Tag from '../src';
 
-const { cleanup } = testing;
+const { axe, render, cleanup } = testing;
 
 describe('Tag', () => {
   afterEach(cleanup);
@@ -146,5 +146,20 @@ describe('Tag', () => {
   test('should display ellipsis if text is too long', async () => {
     const component = <Tag w={80}>Lorem ipsum dolor sit amet</Tag>;
     expect(await snapshot(component)).toMatchImageSnapshot();
+  });
+
+  test('a11y', async () => {
+    const { container } = render(
+      <>
+        <Tag theme="green-500">
+          <Tag.Text>green-500</Tag.Text>
+          <Tag.Close />
+        </Tag>
+        <Tag>Test</Tag>
+      </>,
+    );
+
+    const results = await axe(container);
+    expect(results).toHaveNoViolations();
   });
 });

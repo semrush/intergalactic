@@ -129,7 +129,13 @@ class InputTags extends Component<IInputTagsProps> {
     const { Children, styles } = this.asProps;
 
     return sstyled(styles)(
-      <SInputTags render={Input} tag={ScrollArea} onMouseDown={this.setFocusInput}>
+      <SInputTags
+        render={Input}
+        tag={ScrollArea}
+        onMouseDown={this.setFocusInput}
+        role="list"
+        tabIndex={0}
+      >
         <Children />
       </SInputTags>,
     );
@@ -194,7 +200,7 @@ class Value extends Component<IInputTagsValueProps> {
 
 function InputTag(props) {
   const STag = Root;
-  return sstyled(props.styles)(<STag data-value={props.value} render={Tag} />);
+  return sstyled(props.styles)(<STag data-value={props.value} render={Tag} role="listitem" />);
 }
 
 export default createComponent<
