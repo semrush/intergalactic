@@ -5,6 +5,7 @@ import { translations } from './translations/module/translations';
 import { Root, sstyled } from '@semcore/core';
 import styles from '../style/plotA11yModule.shadow.css';
 import { Context as I18nContext } from '@semcore/utils/lib/enhances/WithI18n';
+import { Box } from '@semcore/flex-box';
 
 let globalWasFocused = false;
 let globalNavWithKeyboard = false;
@@ -104,21 +105,21 @@ export const PlotA11yModule: React.FC<A11yViewProps> = (props) => {
 
   if (error) {
     return sstyled(styles)(
-      <SPlotA11yModule render={'div'} tabIndex={0} aria-live="assertive">
+      <SPlotA11yModule render={Box} tabIndex={0} aria-live="assertive">
         {texts.failed}
       </SPlotA11yModule>,
     ) as React.ReactElement;
   }
   if (loading) {
     return sstyled(styles)(
-      <SPlotA11yModule render={'div'} tabIndex={0} aria-live="polite">
+      <SPlotA11yModule render={Box} tabIndex={0} aria-live="polite">
         {texts.loading}
       </SPlotA11yModule>,
     ) as React.ReactElement;
   }
 
   return sstyled(styles)(
-    <SPlotA11yModule render={'div'} tabIndex={0} onFocus={hadnleHiddenElementsFocus}>
+    <SPlotA11yModule render={Box} tabIndex={0} onFocus={hadnleHiddenElementsFocus}>
       {texts.disabled}
     </SPlotA11yModule>,
   ) as React.ReactElement;
