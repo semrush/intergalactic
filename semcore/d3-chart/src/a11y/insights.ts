@@ -162,11 +162,11 @@ export const extractDataInsights = (
       const from =
         hints.titles.getHorizontalAxesTitle?.(fromKey as string) ??
         hints.titles.horizontalAxes[fromKey as string] ??
-        fromKey;
+        (fromKey as string);
       const to =
         hints.titles.getHorizontalAxesTitle?.(toKey as string) ??
         hints.titles.horizontalAxes[toKey as string] ??
-        toKey;
+        (toKey as string);
 
       if (entitiesCount > 0) {
         dataRange.push({ from, to, label: hints.axesTitle.vertical ?? labelsKey });
@@ -516,7 +516,7 @@ export const extractDataInsights = (
         const row = data[i];
         const key = allRowsIds[i];
         groupedValues[key] = groupedValues[key] ?? {
-          groupName: getPropByPath(row, groupKeys[0]),
+          groupName: getPropByPath(row, groupKeys[0]) as string,
           rows: [],
         };
         groupedValues[key].rows.push(row);
@@ -536,7 +536,7 @@ export const extractDataInsights = (
               label:
                 hints.titles.getVerticalAxesTitle?.(field) ??
                 hints.titles.valuesAxes[field] ??
-                field,
+                (field as string),
               value: getPropByPath(row, field),
             });
           }
@@ -579,7 +579,10 @@ export const extractDataInsights = (
       fields.push(...Object.keys(keysMap));
     }
     const values = fields.map((field) => ({
-      label: hints.titles.getValueAxesTitle?.(field) ?? hints.titles.valuesAxes[field] ?? field,
+      label:
+        hints.titles.getValueAxesTitle?.(field) ??
+        hints.titles.valuesAxes[field] ??
+        (field as string),
       value: getPropByPath(data, field),
     }));
     entitiesCount = values.length;

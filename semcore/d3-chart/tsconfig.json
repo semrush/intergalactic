@@ -1,7 +1,4 @@
 {
   "extends": "../../tsconfig.json",
-  "include": ["src", "lib"],
-  "compilerOptions": {
-    "strict": true
-  }
+  "include": ["src", "lib"]
 }
