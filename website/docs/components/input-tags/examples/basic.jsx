@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import InputTags from '@semcore/input-tags';
-import Tag from '@semcore/tag';
 import Tooltip from '@semcore/tooltip';
 
 const Demo = () => {
@@ -20,6 +19,13 @@ const Demo = () => {
 
   const handleCloseTag = (e) => {
     e.preventDefault();
+  };
+
+  const handleKey = (e) => {
+    if (e.code === 'Enter' || e.code === 'Space') {
+      handleEditTag(e);
+      handleCloseTag(e);
+    }
   };
 
   const handleEditTag = (e) => {
@@ -50,6 +56,7 @@ const Demo = () => {
             editable
             data-id={idx}
             onClick={handleEditTag}
+            onKeyDown={handleKey}
           >
             <InputTags.Tag.Text>{tag}</InputTags.Tag.Text>
             <InputTags.Tag.Close onClick={handleCloseTag} />
@@ -57,7 +64,12 @@ const Demo = () => {
           <Tooltip.Popper>tag</Tooltip.Popper>
         </Tooltip>
       ))}
-      <InputTags.Value value={value} onChange={updateValue} onBlur={handleBlurInput} />
+      <InputTags.Value
+        value={value}
+        onChange={updateValue}
+        onBlur={handleBlurInput}
+        aria-label="input with tags"
+      />
     </InputTags>
   );
 };

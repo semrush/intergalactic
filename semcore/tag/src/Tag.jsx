@@ -106,6 +106,7 @@ class RootTag extends Component {
 
     return sstyled(styles)(
       <STag
+        tabIndex={-1}
         render={Box}
         use:interactive={!disabled && interactive}
         colorBg={colors.colorBg}
@@ -124,14 +125,22 @@ class RootTag extends Component {
 function Text(props) {
   const SText = Root;
   const { styles } = props;
-  return sstyled(styles)(<SText render={Box} tag="span" />);
+  return sstyled(styles)(<SText render={Box} tag="span" tabIndex={0} />);
 }
 
 function Close(props) {
   const SClose = Root;
   const { styles } = props;
 
-  return sstyled(styles)(<SClose render={Box} tag={CloseM} interactive />);
+  return sstyled(styles)(
+    <SClose
+      render={Box}
+      tag={CloseM}
+      interactive
+      aria-label="press space or enter to remove it from the list"
+      tabIndex={0}
+    />,
+  );
 }
 
 function Addon(props) {
