@@ -7,6 +7,7 @@ import { getIntl } from './intl';
 import { summarize } from './summarize';
 import { Root, sstyled } from '@semcore/core';
 import styles from '../style/plotA11yView.shadow.css';
+import { Box } from '../../../flex-box/src';
 
 export const PlotA11yView: React.FC<A11yViewProps> = ({
   id,
@@ -140,7 +141,7 @@ export const PlotA11yView: React.FC<A11yViewProps> = ({
   const dataTableRef = React.useRef<HTMLTableElement>(null);
 
   return sstyled(styles)(
-    <SPlotA11yView render="div" tabIndex={0} aria-label={texts.label}>
+    <SPlotA11yView render={Box} tabIndex={0} aria-label={texts.label}>
       <a aria-hidden onClick={handleSkip}>
         {texts.close}
       </a>

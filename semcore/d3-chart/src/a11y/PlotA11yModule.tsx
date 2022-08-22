@@ -4,6 +4,7 @@ import { normalizeLocale } from './locale';
 import { translations } from './translations/module/translations';
 import { Root, sstyled } from '@semcore/core';
 import styles from '../style/plotA11yModule.shadow.css';
+import { Context as I18nContext } from '@semcore/utils/lib/enhances/WithI18n';
 
 let globalWasFocused = false;
 let globalNavWithKeyboard = false;
@@ -35,7 +36,11 @@ export const PlotA11yModule: React.FC<A11yViewProps> = (props) => {
   const [loading, setLoading] = React.useState(false);
   const [error, setError] = React.useState<Error | null>(null);
 
-  const locale = React.useMemo(() => normalizeLocale(props.locale, translations), [props.locale]);
+  const contextLocale = React.useContext(I18nContext);
+  const locale = React.useMemo(
+    () => normalizeLocale(props.locale ?? contextLocale, translations),
+    [props.locale],
+  );
   const texts = React.useMemo(() => (locale ? translations[locale] : {}), [locale]);
 
   React.useEffect(() => {
@@ -92,7 +97,9 @@ export const PlotA11yModule: React.FC<A11yViewProps> = (props) => {
   }, [plotA11yView, shouldDisplayView, loading, setLoading]);
 
   if (plotA11yView) {
-    return sstyled(styles)(<plotA11yView.Component {...props} />) as React.ReactElement;
+    return sstyled(styles)(
+      <plotA11yView.Component {...props} locale={locale!} />,
+    ) as React.ReactElement;
   }
 
   if (error) {
