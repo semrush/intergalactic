@@ -132,15 +132,12 @@ const getComponents = (titles) => {
     const pic = getTooltip(child.elem.title);
     return (
       <Tooltip styles={stylesTooltip} placement="left" w={'fit-content'} key={child.elem.title}>
-        <Tooltip.Trigger tag={Flex} alignContent="center" className={styles.component}>
+        <Tooltip.Trigger tag={Flex} alignItems="center" className={styles.component}>
           <Link className={styles.linkStyled} to={`/${child.elem.route}/`}>
             {child.elem.title}
           </Link>
           {child.elem.metadata.beta && (
-            <>
-              {' '}
-              <Tag size="s" theme="warning" use="primary" children="beta" />
-            </>
+            <Tag size="l" theme="warning" use="primary" children="beta" ml={1} />
           )}
         </Tooltip.Trigger>
         {pic && <Tooltip.Popper children={pic} />}
