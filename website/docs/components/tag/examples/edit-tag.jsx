@@ -19,7 +19,6 @@ const Demo = () => {
         <InlineEdit.View>
           <Tag interactive>
             <Tag.Text>{value}</Tag.Text>
-            <Tag.Close onClick={(e) => e.stopPropagation()} />
           </Tag>
         </InlineEdit.View>
         <InlineEdit.Edit>
