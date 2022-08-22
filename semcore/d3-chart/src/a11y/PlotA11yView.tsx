@@ -7,7 +7,7 @@ import { getIntl } from './intl';
 import { summarize } from './summarize';
 import { Root, sstyled } from '@semcore/core';
 import styles from '../style/plotA11yView.shadow.css';
-import { Box } from '../../../flex-box/src';
+import { Box } from '@semcore/flex-box';
 
 export const PlotA11yView: React.FC<A11yViewProps> = ({
   id,
