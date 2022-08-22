@@ -17,10 +17,12 @@ export const normalizeLocale = (
   locale = translationNames[locale] ? translationNames[locale] : locale;
   if (!translations[locale]) {
     const availableLocales = Object.keys(translations).join(', ');
-    // eslint-disable-next-line no-console
-    console.error(
-      `[Intergalactic @semcore/d3-charts a11y module]: No locale "${providedLocale}" available. Available locales: ${availableLocales}`,
-    );
+    if (process.env.NODE_ENV !== 'production') {
+      // eslint-disable-next-line no-console
+      console.error(
+        `[Intergalactic @semcore/d3-charts a11y module]: No locale "${providedLocale}" available. Available locales: ${availableLocales}`,
+      );
+    }
     return null;
   }
   return locale;
