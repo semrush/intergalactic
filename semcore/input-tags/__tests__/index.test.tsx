@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { testing, snapshot } from '@semcore/jest-preset-ui';
 const { axe, render, cleanup } = testing;
-
 import Tooltip from '@semcore/tooltip';
 
 import InputTags from '../src';
