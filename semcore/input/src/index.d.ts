@@ -39,6 +39,10 @@ export interface IInputValueProps
    */
   value?: string;
   /**
+   * Default value if `value` property is not provided
+   */
+  defaultValue?: string;
+  /**
    * Handler for changing the value
    */
   onChange?: (value: string, event: React.SyntheticEvent<HTMLInputElement>) => void;

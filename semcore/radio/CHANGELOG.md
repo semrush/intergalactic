@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.0.9] - 2022-08-23
+
+### Added
+
+- Added missing type `defaultValue` in `index.d.ts`.
+
 ## [5.0.8] - 2022-08-18
 
 ### Changed

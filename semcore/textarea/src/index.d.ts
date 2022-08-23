@@ -5,6 +5,14 @@ import { ReturnEl, Merge } from '@semcore/core';
 import { IWithAutoFocusEnhanceProps } from '@semcore/utils/lib/enhances/autoFocusEnhance';
 
 export interface ITextareaProps extends IBoxProps, IWithAutoFocusEnhanceProps {
+  /**
+   * Text value of textarea
+   */
+  value?: string;
+  /**
+   * Default value if `value` property is not provided
+   */
+  defaultValue?: string;
   /** Textarea size
    * @default m
    */
