@@ -98,7 +98,7 @@ class NoticeBubbleContainerRoot extends Component {
 
     return sstyled(styles)(
       <Portal disablePortal={disablePortal}>
-        <SNoticeBubble render={Box}>
+        <SNoticeBubble render={Box} role="alert" aria-live="assertive">
           <Children />
           <Notices styles={styles} data={warnings} tag={ViewWarning} />
           <Notices styles={styles} data={notices} tag={ViewInfo} />

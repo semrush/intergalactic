@@ -23,6 +23,7 @@ class NoticeGlobalRoot extends Component {
   render() {
     const SNoticeGlobal = Root;
     const { Children, styles, hidden, theme, closable, onClose } = this.asProps;
+    const isAssertive = theme === 'danger' || theme === 'warning';
     const color = resolveColor(theme);
     const useTheme = isCustomTheme(theme) ? 'custom' : theme;
 
@@ -34,8 +35,8 @@ class NoticeGlobalRoot extends Component {
         visible={!hidden}
         use:theme={useTheme}
         backgroundColor={color}
-        role="alert"
-        aria-live="assertive"
+        role="status"
+        aria-live={isAssertive ? 'assertive' : 'polite'}
       >
         {advanceMode ? (
           <Children />
