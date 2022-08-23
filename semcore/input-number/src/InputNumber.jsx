@@ -98,7 +98,7 @@ class Value extends Component {
 
   render() {
     const SValue = Root;
-    const { styles, $inputHandlers } = this.asProps;
+    const { styles, $inputHandlers, value, min, max } = this.asProps;
 
     // 🐒 не делайте так
     $inputHandlers.current = this.handlers;
@@ -110,6 +110,9 @@ class Value extends Component {
         autoComplete="off"
         onBlur={this.handleValidation}
         onInvalid={this.handleValidation}
+        aria-valuenow={value}
+        aria-valuemin={min}
+        aria-valuemax={max}
       />,
     );
   }
