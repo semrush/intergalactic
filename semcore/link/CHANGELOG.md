@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.1.1] - 2022-08-23
+
+### Fixed
+
+- Change tag for `Input.Addon` from `div` to `span`
+
 ## [4.1.0] - 2022-08-19
 
 ### Added
