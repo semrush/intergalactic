@@ -106,7 +106,7 @@ class RootTag extends Component {
 
     return sstyled(styles)(
       <STag
-        tabIndex={-1}
+        tabIndex={0}
         render={Box}
         use:interactive={!disabled && interactive}
         colorBg={colors.colorBg}
@@ -125,7 +125,7 @@ class RootTag extends Component {
 function Text(props) {
   const SText = Root;
   const { styles } = props;
-  return sstyled(styles)(<SText render={Box} tag="span" tabIndex={0} />);
+  return sstyled(styles)(<SText render={Box} tag="span" />);
 }
 
 function Close(props) {
