@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [1.1.10] - 2022-08-23
+
+### Added
+
+- Added aria-live attribute for better accessibility.
+
 ## [1.1.9] - 2022-08-18
 
 ### Changed
