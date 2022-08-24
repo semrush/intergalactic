@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.0.16] - 2022-08-24
+
+### Fixed
+
+- Update version `@semcore/utils` to use additional color changing functions.
+
 ## [4.0.15] - 2022-08-18
 
 ### Changed
