@@ -26,7 +26,7 @@ Widget’s “empty” state usually includes the following:
 | Button (optional)   | Button with M size and `margin-top: 16px;`                                                 |
 | Select (optional)   | Select with M size and `margin-bottom: 4px;`                                               |
 
-> 💡 If widget has a title, it should be displayed in the “empty” state, too.
+> If widget has a title, it should be displayed in the “empty” state, too.
 
 ![margins scheme](static/margins-scheme.png)
 
@@ -60,10 +60,11 @@ There are cases when it is required to reduce the height of the widget with “e
 
 The list of “empty” states in the widgets:
 
+- No data
 - Nothing found
 - No more results
 - Product is not set up
-- Something went wrong
+- Something went wrong (has also specific version: "Cannot filter data")
 
 @## No data
 
@@ -79,7 +80,7 @@ Use this state, when for some reason there is no data or system cannot show it. 
 | ![big widget empty](static/big-empty.png)         | ![medium widget empty](static/medium-empty.png)         | Title: "We have no data to show". Description: {Hint message}. |
 | ![big widget empty](static/big-empty-filters.png) | ![medium widget empty](static/medium-empty-filters.png) | Title: "We have no data to show". Description: {Hint message}. |
 
-> 💡 **Be brief**. Do not write too much text in these states. Two or three short sentences are enough.
+> **Be brief**. Do not write too much text in these states. Two or three short sentences are enough.
 
 If your widget has width less than 300px, you may leave just the title with styles of the description text. And hide the description into the Info icon with M size.
 
@@ -116,7 +117,7 @@ Use this state, when the data is absent because user needs to connect something.
 - In some cases the product may be set up at once by clicking the corresponding button.
 - In other cases user should write to the specified email address for setting up the product.
 
-> 💡 **Important!** Title and description must be written in a positive form. _For example, write: “Set up the service” instead of “The service is not set up”._
+> Title and description must be written in a positive form. _For example, write: “Set up the service” instead of “The service is not set up”._
 
 Show the following instead of the data in this state:
 
@@ -141,10 +142,10 @@ Use this state, when something went wrong at the backend. And either product tea
 Show the following instead of the data in this case:
 
 - an image;
-- text message specifying what user should set up;
+- text message specifying what user should do;
 - an additional button.
 
-> 💡 We recommend always to show the button in this state.
+> We recommend to show the button in this state.
 
 | Wide widget                               | Medium widget                                   | Text                                                                                                                                           |
 | ----------------------------------------- | ----------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -154,6 +155,23 @@ If your widget has width less than 300px, you may leave just the title with styl
 
 ![small widget error](static/small-error.png)
 
+### User has done something wrong
+
+It's a version of the "Something went wrong" state for the cases when user did something wrong and we need to help him/her deal with the situation.
+
+Show the following instead of the data in this case:
+
+- an image;
+- text message specifying what user should do.
+
+| Wide widget                                      | Medium widget                                          | Text                                                                                                                             |
+| ------------------------------------------------ | ------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------- |
+| ![big widget error](static/big-error-filter.png) | ![medium widget error](static/medium-error-filter.png) | Title: "Cannot {filter/search/sort} data". Description: "{Provide helpful information for the user to deal with the situation}". |
+
+If your widget has width less than 300px, you may leave just the title with styles of the description text. And hide the description into the Info icon with M size.
+
+![small widget error](static/small-error-filter.png)
+
 ### We do not know that there are problems at the backend
 
 Show the following instead of the data in this case:
@@ -162,7 +180,7 @@ Show the following instead of the data in this case:
 - a text message specifying what user should set up;
 - an additional button.
 
-> 💡 We recommend always to show the button in this state.
+> We recommend to show the button in this state.
 
 | Wide widget                                 | Medium widget                                     | Text                                                                                                                                              |
 | ------------------------------------------- | ------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
