@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.0.15] - 2022-07-25
+
+### Added
+
+- Added screen reader notification of input value and aria attributes for better a11y.
+
 ## [4.0.14] - 2022-08-23
 
 ### Changed

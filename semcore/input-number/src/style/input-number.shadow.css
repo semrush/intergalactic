@@ -69,3 +69,12 @@ SValue[disabled] ~ SControls {
   cursor: default;
   pointer-events: none;
 }
+
+SValueHidden {
+  position: absolute;
+  top: 0;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+}
