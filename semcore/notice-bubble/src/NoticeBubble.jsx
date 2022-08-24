@@ -12,26 +12,6 @@ import { Timer } from './utils';
 
 import style from './style/notice-bubble.shadow.css';
 
-const animationNotice = sstyled.css`
-  @keyframes enter {
-    from {
-      transform: translate(100%, 0);
-    }
-    to {
-      transform: translate(0, 0);
-    }
-  }
-
-  @keyframes exit {
-    from {
-      opacity: 1;
-    }
-    to {
-      opacity: 0;
-    }
-  }
-`;
-
 const Notices = (props) => {
   const { styles, data = [], tag: SView = ViewInfo } = props;
 
@@ -41,7 +21,7 @@ const Notices = (props) => {
         key={notice.uid}
         visible={notice.visible === undefined ? true : notice.visible}
         duration={250}
-        keyframes={[animationNotice['@enter'], animationNotice['@exit']]}
+        keyframes={[styles['@enter'], styles['@exit']]}
       >
         <SView {...notice} styles={notice.styles || styles} />
       </Animation>,
