@@ -6,7 +6,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Change tag for `Input.Addon` from `div` to `span`
+- Change tag for `Link.Addon` from `div` to `span`
 
 ## [4.1.0] - 2022-08-19
 
