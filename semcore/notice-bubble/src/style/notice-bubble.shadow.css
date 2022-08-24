@@ -55,3 +55,21 @@ SNoticeBubble {
     width: calc(100% - 24px);
   }
 }
+
+@keyframes enter {
+  from {
+    transform: translate(100%, 0);
+  }
+  to {
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes exit {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
