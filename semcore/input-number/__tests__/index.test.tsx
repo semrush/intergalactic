@@ -196,7 +196,7 @@ describe('InputNumber', () => {
   test('a11y', async () => {
     const { container } = render(
       <InputNumber>
-        <InputNumber.Value aria-label="input-number" />
+        <InputNumber.Value aria-label="input-number" value="23" />
         <InputNumber.Controls showControls />
       </InputNumber>,
     );
