@@ -4,13 +4,13 @@ fileSource: d3-chart
 tabName: Design
 ---
 
-> 💡 Basic data visualization rules are described in the [Chart principles](/data-display/chart/).
+> Basic data visualization rules are described in the [Chart principles](/data-display/chart/).
 
 @## Description
 
 **Bar chart** visualizes distribution of values by category for value comparison. A bar chart can be [vertical](/data-display/bar-chart/) or horizontal.
 
-> 💡 **Difference from histogram chart**
+> **Difference from histogram chart**
 >
 > Bar chart displays distribution of data sets by quality categories.
 >
@@ -49,7 +49,7 @@ Important points to keep in mind when presenting data as a bar chart:
 | One category   | ![bar-chart one value](static/one-cat.png)  | `border-radius: 2px;`                  |
 | Two categories | ![bar-chart two values](static/two-cat.png) | The margin between two columns is 4px. |
 
-> 💡 If there are more than 3-4 categories, use a [Stacked horizontal bar chart](/data-display/stacked-horizontal-bar/) or try to present the data using a different type of chart.
+> If there are more than 3-4 categories, use a [Stacked horizontal bar chart](/data-display/stacked-horizontal-bar/) or try to present the data using a different type of chart.
 >
 > It is also a good solution to allow users to switch the chart type in the widget settings.
 
@@ -75,7 +75,7 @@ If you do not need to present the ratio of values to 100%, but just to display t
 
 ![bar-chart grid](static/grid.png)
 
-> 💡 Don't forget to provide space for category values in the right and left parts of the chart.
+> Don't forget to provide space for category values in the right and left parts of the chart.
 
 @## Labels of categories
 
@@ -112,7 +112,7 @@ Display message: "No more results" — below the values with a 32px margin.
 
 If all the values on the chart are zero, then in the tooltip we shall display null all of them in the tooltips.
 
-> 💡 **Zero is also data. 0 ≠ `n/a`.**
+> **Zero is also data. 0 ≠ `n/a`.**
 
 ![null](static/null-bar-horizontal.png)
 

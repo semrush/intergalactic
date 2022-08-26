@@ -4,7 +4,7 @@ fileSource: d3-chart
 tabName: Design
 ---
 
-> 💡 Basic data visualization rules are described in the [Chart principles](/data-display/chart/).
+> Basic data visualization rules are described in the [Chart principles](/data-display/chart/).
 
 @## Description
 
@@ -19,7 +19,7 @@ Use histogram when you need to display the distribution of data sets by groups (
 - Don't use too many colors to represent categories. One color or shades of one color is enough. However, you can always highlight a category if necessary.
 - You can place histogram bars horizontally if the range names are long and there are many ranges.
 
-> 💡 Difference from bar chart
+> Difference from bar chart
 >
 > - Histogram chart are used to display distribution of data sets: how often values fall into quantitative ranges.
 > - Bar chart displays the distribution of data sets by quality categories for comparison.
@@ -70,7 +70,7 @@ As a rule, a histogram does not need a legend. You only need to clearly name the
 
 Don't forget to use a reasonable order of values to distribute your data sets. For example, from the largest value to the smallest one, and if they represent months - from January to December, etc.
 
-> 💡 You can't change the order of the bars on the histogram, depending on the size of bars on the `Y-axis`. This will make it harder to read the data.
+> You can't change the order of the bars on the histogram, depending on the size of bars on the `Y-axis`. This will make it harder to read the data.
 
 ![sorting in histogram](static/sort-yes-no.png)
 
@@ -80,7 +80,7 @@ In some cases some of the values in our data are very different from the majorit
 
 If you show this picture as it is, with a zero value on the `Y-axis`, then large values will draw all the attention to themselves, while the rest of the data will appear to be zero.
 
-> 💡 **The bar has a minimum height of 2px.** It is necessary so that the column does not "disappear" if there are extremely large values next to it.
+> **The bar has a minimum height of 2px.** It is necessary so that the column does not "disappear" if there are extremely large values next to it.
 
 ![outliers in histogram](static/outliers.png)
 

@@ -4,13 +4,13 @@ fileSource: d3-chart
 tabName: Design
 ---
 
-> 💡 Basic data visualization rules are described in the [Chart principles](/data-display/chart/).
+> Basic data visualization rules are described in the [Chart principles](/data-display/chart/).
 
 @## Description
 
 **Bar chart** visualizes distribution of values by category for value comparison. A bar chart can be [vertical](/data-display/bar-chart/) or horizontal.
 
-> 💡 **Difference from histogram chart**
+> **Difference from histogram chart**
 >
 > Bar chart displays distribution of data sets by quality categories.
 >

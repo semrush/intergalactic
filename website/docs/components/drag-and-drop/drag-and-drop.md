@@ -25,7 +25,7 @@ The component is meant for imitating physical dragging of objects, so the follow
 
 @## Common styles
 
-> 💡 Styles for dark background are constructed on the basis of white color with transparency. It is required for using this theme both on the background and on the colored background.
+> Styles for dark background are constructed on the basis of white color with transparency. It is required for using this theme both on the background and on the colored background.
 
 ### Icon for identification of the possibility to drag the object
 

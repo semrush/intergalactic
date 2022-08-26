@@ -34,7 +34,7 @@ For the header of the fullscreen window use the following styles:
 - for return button use button with M size.
 - for window closing icon use Close icon with M size.
 
-> 💡 Fix the header, while user scrolls the content of the window.
+> Fix the header, while user scrolls the content of the window.
 
 ### Sizes, margins and paddings
 
@@ -98,7 +98,7 @@ border-top: 1px solid var(--gray-200);
 
 Use buttons with M size.
 
-> 💡 Note that the example below shows a default composition of the content. For example, buttons may not be center aligned.
+> Note that the example below shows a default composition of the content. For example, buttons may not be center aligned.
 
 ![fullscreem modal](static/footer-fixed2.png)
 
@@ -111,7 +111,7 @@ You can close the fullscreen modal window:
 - With the "Esc" button;
 - With the back button in the browser (nothing changes on the parent page in this case).
 
-> 💡 When the fullscreen modal window is closed, focus returns to its trigger.
+> When the fullscreen modal window is closed, focus returns to its trigger.
 
 @## Changing the browser window size
 

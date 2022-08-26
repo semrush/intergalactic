@@ -15,7 +15,7 @@ Make sure that it's possible to interact with the interface using a keyboard onl
 
 @## Basic rules
 
-> 💡 **Brief guide to keyboard control**
+> **Brief guide to keyboard control**
 >
 > - **Tab** moves `focus` between the interactive elements on the page / in the dropdown / modal window, etc.
 > - **Shift** + **Tab** returns `focus` to the previous interactive element. If dropdown is open, it closes.

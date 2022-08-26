@@ -27,7 +27,7 @@ Each area on the page needs a `role` attribute, so screen readers can tell the u
 
 > If there are multiple zones with `role` equal to `navigation` or `complementary` on the same page, use the `aria-label` attribute to describe their purpose in a text caption.
 >
-> 💡 Note that there's no point adding `aria-label` attributes to non-semantic elements (for example, `&ltspan&gt`).
+> Note that there's no point adding `aria-label` attributes to non-semantic elements (for example, `&ltspan&gt`).
 
 @## Controls and inputs
 
