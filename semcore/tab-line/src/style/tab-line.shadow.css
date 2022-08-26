@@ -115,12 +115,14 @@ STabLineItem[size='m'] {
   height: 28px;
   min-width: 18px;
   font-size: var(--fs-200);
+  lihe-height: var(--lh-200);
 }
 
 STabLineItem[size='l'] {
   height: 40px;
   min-width: 26px;
   font-size: var(--fs-300);
+  lihe-height: var(--lh-300);
 }
 
 STabLineItem[neighborLocation='left'] {
