@@ -8,7 +8,7 @@ tabName: Design
 
 **FilterTrigger** is a component we use as a trigger in filters above tables or any other data.
 
-> 💡 The component is used exclusively as a filter. It is not used anywhere else in the interface.
+> The component is used exclusively as a filter. It is not used anywhere else in the interface.
 >
 > [Selecting a date](/components/date-picker/) usually refers to global report settings, so you should not use FilterTrigger for it.
 
@@ -21,7 +21,7 @@ It is important for filters:
 
 The filter button has two sizes. In the inactive state, the filter is similar to a select; in the active state, it is a highlighted split-button.
 
-> 💡 Please note that all sizes use `Close` and `ChevronDown` M size.
+> Please note that all sizes use `Close` and `ChevronDown` M size.
 
 In the active filter, the selected value/values are completely displayed or hidden in the ellipsis.
 
@@ -46,7 +46,7 @@ The indents duplicate the [indents between the buttons](/components/button/).
 
 ### Filter trigger with value
 
-> 💡 There were doubts that if there is no chevron in the active state of the filter, the user will not understand how to change the filter. However, **corridor tests** and user’s work with the filter at the production did not confirm the doubts.
+> There were doubts that if there is no chevron in the active state of the filter, the user will not understand how to change the filter. However, **corridor tests** and user’s work with the filter at the production did not confirm the doubts.
 
 | State                                    | Description                                                                                                                                                                                                                                                                                                                                                                                                                            | Appearance example                  |
 | ---------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------- |

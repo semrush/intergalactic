@@ -61,7 +61,7 @@ Notice internal paddings repeat the internal paddings of the component the notic
 
 Do not stretch the text to the full width of the notice, especially if the notice extends to the entire width of the screen. In this form, the text is inconvenient to read.
 
-> 💡 The maximum width of the text in the notice shall be no more than 650-800px.
+> The maximum width of the text in the notice shall be no more than 650-800px.
 
 ![notice-component-2](static/notice-text-yes-no.png)
 
@@ -160,7 +160,7 @@ The advertising notice differs from the regular one by advertising illustrations
 ![notice-advertising-pic](static/notice-advertising-pic.png)
 ![notice-advertising-pic-button](static/notice-advertising-pic-button.png)
 
-> 💡 Do not use an advertising notice for an "empty" state on a page or inside a component.
+> Do not use an advertising notice for an "empty" state on a page or inside a component.
 
 ![notice-no](static/notice-no.png)
 

@@ -13,7 +13,7 @@ tabName: Design
 - **You have a large amount of data and don't want to show it all at once**. By hiding a part of the content, we help users focus on their task. _For example, you can use the Accordion in a table with large bulk of data or in large widgets with additional information._
 - **When the screen area is limited (for example, on a mobile device)**. According to [NNG](https://www.nngroup.com/articles/accordions-complex-content/), users are very reluctant to scroll on mobile devices in contrast to the desktop. Therefore, using the accordion on small screens helps reduce the scroll area, simplify the structure of content and navigation through it.
 
-> 💡 **Don't confuse hiding content in accordion with hiding content and functionality in dropdown**. These components have different tasks.
+> **Don't confuse hiding content in accordion with hiding content and functionality in dropdown**. These components have different tasks.
 >
 > We always use the accordion to collapse additional information (sometimes functions) in order to save space and time for the user.
 >
@@ -30,7 +30,7 @@ The `ChevronRight` icon always has M size and has a `margin-right: 8px;` with al
 
 ![accordion chevron margin](static/margins.png)
 
-> 💡 Please note that you can use different styles for the trigger and collapsed content than the standard ones described below.
+> Please note that you can use different styles for the trigger and collapsed content than the standard ones described below.
 
 @## Sizes
 
@@ -40,7 +40,7 @@ You can set the width of the accordion that is appropriate for the context and s
 
 @## Trigger
 
-> 💡 The accordion trigger can be text, link or button of any size you need.
+> The accordion trigger can be text, link or button of any size you need.
 
 |                           | Appearance example                          | Description and styles                                                                                                      |
 | ------------------------- | ------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
@@ -63,7 +63,7 @@ You can use this component to hide almost any content. This can be a text conten
 
 @## Interaction
 
-> 💡 **By default, when opening a section of the accordion, the sections that have already been opened should not be hidden**.
+> **By default, when opening a section of the accordion, the sections that have already been opened should not be hidden**.
 >
 > The user expects this behavior when working with the desktop device interface.
 >

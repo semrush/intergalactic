@@ -14,7 +14,7 @@ tabName: Design
 
 ![breakpoints-scheme](static/scheme.png)
 
-> 💡 On 1200px left menu with width of 250px appears and "eats away" space of the product page.
+> On 1200px left menu with width of 250px appears and "eats away" space of the product page.
 
 @## Values and grid behavior
 

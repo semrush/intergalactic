@@ -15,7 +15,7 @@ tabName: Design
 1. The notice is shown simultaneously with the product or report loading.
 2. The notice is shown for the first time in the second session (recommended). Further it is shown until closing or clicking the "Ask me later" button.
 
-> 💡 The session time is determined by the PO or UX of the product. It may be a time interval, the next loading of the page or an update of the company data.
+> The session time is determined by the PO or UX of the product. It may be a time interval, the next loading of the page or an update of the company data.
 
 @## Location
 
@@ -69,7 +69,7 @@ See the detailed description of behavior of the feedback dropdown in [Feedback](
 
 ### Close icon
 
-> 💡 It's an optional element.
+> It's an optional element.
 
 Show this element if the report or product has an alternative form for sending feedback (`Send Feedback` link next to the settings).
 

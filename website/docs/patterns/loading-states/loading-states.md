@@ -12,7 +12,7 @@ Components that we use to work with user expectations:
 
 **Use them for different cases.** For a detailed description of each component, see its guide.
 
-> 💡 The container that contains the loading message should have margins, so in edge cases (e.g., when the user changes the size of the viewport), the container does not "stick" to other elements on the page. The margins depend on the component where the loading message is used. They are usually multiple of 4 (e.g., for spinner we recommend to use `margin: 40px;`).
+> The container that contains the loading message should have margins, so in edge cases (e.g., when the user changes the size of the viewport), the container does not "stick" to other elements on the page. The margins depend on the component where the loading message is used. They are usually multiple of 4 (e.g., for spinner we recommend to use `margin: 40px;`).
 
 @## Response from the system
 
@@ -52,7 +52,7 @@ All products should have a delay of `0.6ms` before the skeleton appears. This is
 - sorting a large amount of data in a widget/table/page;
 - searching the data.
 
-> 💡 If the download is fast, you can do without this state.
+> If the download is fast, you can do without this state.
 
 ![spin example](static/spin.png)
 

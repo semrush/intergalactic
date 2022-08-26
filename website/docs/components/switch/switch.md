@@ -35,7 +35,7 @@ Switch component has two themes: `info` and `success`.
 | Info    | ![switch with info theme](static/on-info.png) | Default theme for most common actions.                                                                |
 | Success | ![switch with success](static/on-success.png) | Additional theme for cases when it;s necessary to emphasize the enabled positive state of the switch. |
 
-> 💡 When the switch is used to enable/disable a social network account, you can use the appropriate brand color for the `active` state.
+> When the switch is used to enable/disable a social network account, you can use the appropriate brand color for the `active` state.
 
 @## Icon
 

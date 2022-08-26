@@ -7,7 +7,7 @@ fileSource: widget-empty
 
 The template already has the title. You should only transfer the data type and description.
 
-> 💡 The locale may be either transferred to the component itself, or wrap your application in `I18nProvider` from the `@react-semocre/utils` package, as in the example below.
+> The locale may be either transferred to the component itself, or wrap your application in `I18nProvider` from the `@react-semocre/utils` package, as in the example below.
 
 @example no-data
 

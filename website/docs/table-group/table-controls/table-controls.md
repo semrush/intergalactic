@@ -2,7 +2,7 @@
 title: Table controls
 ---
 
-> 💡 For all the main table styles and principles, see [Table](/table-group/table/).
+> For all the main table styles and principles, see [Table](/table-group/table/).
 
 Here we describe all the elements and controls that are important when working with our tables.
 
@@ -22,7 +22,7 @@ Here we describe all the elements and controls that are important when working w
 
 A table row can be expanded as an [Accordion](/components/accordion/). As a rule such row has more detailed information on row data - chart, text, links, etc.
 
-> 💡 If you have too much data inside a row with accordion, you may need to think about a separate page for it.
+> If you have too much data inside a row with accordion, you may need to think about a separate page for it.
 
 - The accordion row must have the `ChevronRight` icon in the leftmost column. It indicates that this line can be expanded. Icon has M size and `--gray-300` color.
 - The row that opened additional data from must remain highlighted. The `active` state of a row has `background-color: color-mod(var(--gray-100) a(80%));`.
@@ -74,7 +74,7 @@ The area that you can grab and change the size of the column includes not only t
 
 ![table with column resize](static/resize-click-zone.png)
 
-> 💡 Changing the size of one column should not change the size of other columns.
+> Changing the size of one column should not change the size of other columns.
 
 @## Editing and adding content
 
@@ -141,7 +141,7 @@ If the table has more than one page, it must have [Pagination](/components/pagin
 
 If the table contains a small amount of data, we show the pagination for one page.
 
-> 💡 When you navigate through the pages in the table, **scroll the table to the first row**. Otherwise, the user have to scroll on their own.
+> When you navigate through the pages in the table, **scroll the table to the first row**. Otherwise, the user have to scroll on their own.
 >
 > Applying filters to a table always takes the user to the first page of the table.
 
@@ -170,7 +170,7 @@ If table has only one column with sorting, usually its sorting icon is unclickab
 
 ### Rules for sorting
 
-> 💡 If the data in the column should not be sorted, there should be no sorting icon.
+> If the data in the column should not be sorted, there should be no sorting icon.
 
 - The sort icon should always be displayed on columns that can be sorted. **The icon shows not the current state, but how the column will be sorted if sorting is activated.**
 - The default sorting must be set for each column to be sorted. Descending order is used by default (use `SortDesc` icon).
@@ -178,7 +178,7 @@ If table has only one column with sorting, usually its sorting icon is unclickab
 - **When you select a different column**, the icon on the selected column becomes active. Icons on other columns go to the inactive state and do not change their direction.
 - When you reload data in a table where data was sorted in one of the columns, the header of the sorted column remains highlighted.
 
-> 💡 When you click on the sorting icon in the header, the table should be reloaded and always return the user to the top of the first row.
+> When you click on the sorting icon in the header, the table should be reloaded and always return the user to the top of the first row.
 
 ### Sort direction
 
@@ -211,4 +211,4 @@ When scrolling a table, this row should be pinned to the table header. In this c
 
 Use no more than 3-5 actions, which are the most popular among actions on the table rows.
 
-> 💡 For all the main table styles and principles, see [Table](/table-group/table/).
+> For all the main table styles and principles, see [Table](/table-group/table/).

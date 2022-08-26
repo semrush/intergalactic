@@ -12,7 +12,7 @@ tabName: Design
 - use preset values for the phone code (country code, or the flag along with the country code for clarity);
 - use the mask to display the number dialing format (so that the user does not have to type brackets, hyphens, and other characters).
 
-> 💡 In its testing [Baymard Research](https://baymard.com/blog/input-masking-form-field) stated the following about the masks:
+> In its testing [Baymard Research](https://baymard.com/blog/input-masking-form-field) stated the following about the masks:
 >
 > Our large-scale Checkout usability testing reveals that 89% of users are likely to enter numerical inputs in several different ways — evenwhen formatting examples are provided that display the site’s desired input format. Furthermore, during testing, a proportion of test subjects hesitated before they entered their data, as they worried that they would type it in a format the site wouldn’t validate — even on sites that accepted all formatting.
 
@@ -25,13 +25,13 @@ The input for entering the phone number has several display options depending on
 
 When we know the user's country, it is important to display flag of the country in the input – this helps us visually navigate through the entered data faster. _For example, in [Form](/components/form/) guide._
 
-> 💡 Be sure to add the `Phone number` label to the input if it doesn't have any visual indication of the mask type, country code, or format.
+> Be sure to add the `Phone number` label to the input if it doesn't have any visual indication of the mask type, country code, or format.
 
 For actual examples of inputs for entering a phone number, see the [Code tab](/components/input-phone/input-phone-code).
 
 @## Interaction
 
-> 💡 If the input contains some entered characters, the icon for the "clear all" operation appears.
+> If the input contains some entered characters, the icon for the "clear all" operation appears.
 
 ### Important points for cases when we can determine the user's country and phone format
 
@@ -42,7 +42,7 @@ For actual examples of inputs for entering a phone number, see the [Code tab](/c
 - **When we know the phone format, the input must have a mask for it, depending on the country**. if you DON't know the format, [it is recommend removing the format mask altogether](https://baymard.com/blog/input-masking-form-field) (leave only the + country code at the beginning of the input).
 - The country code, if it is known, shall represent a value preset in the input. The user can delete it.
 
-> 💡 In its testing [Baymard Research](https://baymard.com/blog/input-masking-form-field) stated the following about the masks:
+> In its testing [Baymard Research](https://baymard.com/blog/input-masking-form-field) stated the following about the masks:
 >
 > If not absolutely sure of the correct regional formatting, or if the target audience for the input mask is deemed to simply be too small, then the input mask should be disabled completely for all users in unverified or unsupported countries, and a traditional form field without any input restrictions should instead be the default.
 

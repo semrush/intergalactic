@@ -4,13 +4,13 @@ fileSource: d3-chart
 tabName: Design
 ---
 
-> 💡 Basic data visualization rules are described in the [Chart principles](/data-display/chart/).
+> Basic data visualization rules are described in the [Chart principles](/data-display/chart/).
 
 @## Description
 
 **Bar chart** visualizes distribution of values by category for value comparison. A bar chart can be [vertical (like columns)](../bar-chart/bar-chart-vertical/) or [horizontal](/data-display/bar-horizontal/).
 
-> 💡 **Difference from histogram chart**
+> **Difference from histogram chart**
 >
 > Bar chart displays distribution of data sets by quality categories.
 >
@@ -26,7 +26,7 @@ Important points to keep in mind when presenting data as a bar chart:
 
 If you have two categories of values, you can place them next to each other — this makes it easier to track the trend of each of them. If there are more than two categories of values, represent the data as a different chart type (e.g., a stacked bar chart).
 
-> 💡 It is recommended to make a minimum 20% margin between a group of columns. This is necessary so that the data does not turn into mess.
+> It is recommended to make a minimum 20% margin between a group of columns. This is necessary so that the data does not turn into mess.
 
 ### Chart colors
 
@@ -105,7 +105,7 @@ Keep in mind a reasonable order of values on the axes. For example, from the lar
 
 In some cases some of the values in our data are very different from the majority of values. If you show this picture as it is, with a zero value on the Y-axis, then large values will draw all the attention to themselves, while the rest of the data will appear to be zero.
 
-> 💡 **The bar has a min-height of 2px.** It is necessary so that the column does not "disappear" if there are extremely large values next to it.
+> **The bar has a min-height of 2px.** It is necessary so that the column does not "disappear" if there are extremely large values next to it.
 
 ![bar chart with outlier](static/outlier.png)
 

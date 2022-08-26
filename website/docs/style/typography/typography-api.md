@@ -64,7 +64,7 @@ import { Hint } from '@semcore/ui/typography';
 
 A wrapper component required to add styles to native tags.
 
-> 💡 Note that the component is in another package `@semcore/ui/format-text`.
+> Note that the component is in another package `@semcore/ui/format-text`.
 
 ```jsx
 import FormatText from '@semcore/ui/format-text';

@@ -10,7 +10,7 @@ tabName: Design
 
 **Button** is a control component that performs an action on the page. Compared to [Link](/components/link/), it's an accent control or CTA required for performing the main actions on the page.
 
-> 💡 In extreme cases, you can use the button as a [Link](/components/link/) that leads to another page.
+> In extreme cases, you can use the button as a [Link](/components/link/) that leads to another page.
 
 @## Component composition
 
@@ -141,7 +141,7 @@ We recommend using the **icon button** if:
 - space for controls is limited;
 - user can easily understand from the context its function (purpose) / user understands the functionality of the button without an explanation.
 
-> 💡 **Add a tooltip with information about button's function to the icon-only button**. It helps user to understand functionality of the button if the icon is not the obvious one.
+> **Add a tooltip with information about button's function to the icon-only button**. It helps user to understand functionality of the button if the icon is not the obvious one.
 
 @## Button label
 

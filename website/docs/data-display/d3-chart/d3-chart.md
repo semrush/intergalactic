@@ -5,7 +5,7 @@ tabName: Concept and code
 docs: true
 ---
 
-> 💡 Basic data visualization rules are described in the [Chart principles](/data-display/chart/).
+> Basic data visualization rules are described in the [Chart principles](/data-display/chart/).
 
 These components serve as the base for building charts from your data in the product.
 

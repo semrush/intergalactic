@@ -98,7 +98,7 @@ function Header(props) {
           <nav className={styles.mobileMenu}>
             <div className={styles.mobileMenuLinks}>
               <Link to="/internal/extension/" onClick={() => setMenuVisible(false)}>
-                Extension ✨
+                Extension
               </Link>
               <Link to="/internal/roadmap/" onClick={() => setMenuVisible(false)}>
                 Roadmap

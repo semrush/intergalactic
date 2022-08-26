@@ -2,15 +2,15 @@
 title: Bug reporting
 ---
 
-Have you found a bug in the one of our components and don't know where or to whom to write? 🤷🏻‍♀️ We have some ways to report bugs.
+Have you found a bug in the one of our components and don't know where or to whom to write? We have some ways to report bugs.
 
-@## Report with Github issues
+@## Report with GitHub issues
 
-Submit a bug/request for an improvement in the [Github through issues](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests).
+Submit a bug/request for an improvement in the [GitHub through issues](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests).
 
 - Convenient for the developers and maintainers of the design system.
 - Saves the history of changes and discussions of all components.
-- Maybe inconvenient for designers and other departments, since not everyone has a Github account.
+- Maybe inconvenient for designers and other departments, since not everyone has a GitHub account.
 
 @## Report with internal Slack chat
 

@@ -20,7 +20,7 @@ Composition, styles, and margins of the message:
 
 ![global errors margins](static/ge_margins.png)
 
-> 💡 Be brief. Don't write too long message in the state description. Two or three small sentences usually are enough.
+> Be brief. Don't write too long message in the state description. Two or three small sentences usually are enough.
 
 ### Margins
 
@@ -353,7 +353,7 @@ There are two possible cases of the pattern's use:
 - As a full-page for the whole website.
 - As a state of the product.
 
-> 💡 The location is the same in both cases: the placeholder is centered vertically and horizontally on the page.
+> The location is the same in both cases: the placeholder is centered vertically and horizontally on the page.
 
 | For the whole website                                | In the product                                             |
 | ---------------------------------------------------- | ---------------------------------------------------------- |

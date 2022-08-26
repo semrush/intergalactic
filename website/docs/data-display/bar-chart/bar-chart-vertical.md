@@ -10,7 +10,7 @@ fileSource: d3-chart
 - Time change shall be used when you need to focus on the value of each point, rather than on the trend. _For example, achieving a goal in a specific month, or increasing or decreasing the audience on a specific day._
 - Compare different categories with each other.
 
-> 💡 Important! Consider [horizontal bar chart](data-display/bar-horizontal/) for this task first. It is easier to fit the category names in the columns.
+> Important! Consider [horizontal bar chart](data-display/bar-horizontal/) for this task first. It is easier to fit the category names in the columns.
 
 ![bar chart example](/data-display/bar-chart/static/example-2.png)
 
@@ -23,7 +23,7 @@ fileSource: d3-chart
 | One                  | ![bar chart with one category of values](/data-display/bar-chart/static/bar-chart.png)     | The upper part of the column shall have `border-radius: 2px;`. |
 | Two                  | ![bar chart with two categories of values](/data-display/bar-chart/static/bar-chart-2.png) | The margin between two columns is 4px.                         |
 
-> 💡 If there are more than 3-4 categories, use a [stacked bar chart](/data-display/stacked-bar-chart/) or try to present the data using a different type of chart.
+> If there are more than 3-4 categories, use a [stacked bar chart](/data-display/stacked-bar-chart/) or try to present the data using a different type of chart.
 >
 > It is also a good solution to allow users to switch the chart type in the widget settings.
 
@@ -49,7 +49,7 @@ Here you will find the states for some specific cases. All other "empty states" 
 
 If all the values on the chart are zero, then in the tooltip we shall display null all of them in the tooltips.
 
-> 💡 **Zero is also data. 0 ≠ `n/a`.**
+> **Zero is also data. 0 ≠ `n/a`.**
 
 ![null data](/data-display/bar-chart/static/null-bar-chart.png)
 

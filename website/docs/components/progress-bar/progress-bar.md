@@ -6,7 +6,7 @@ tabName: Design
 
 @import playground
 
-> 💡 This component is one of the components that displays interface's reaction to user actions in the interface. For general rules on such components, see the [Loading patterns](/patterns/loading-states/).
+> This component is one of the components that displays interface's reaction to user actions in the interface. For general rules on such components, see the [Loading patterns](/patterns/loading-states/).
 
 @## Description
 
@@ -14,7 +14,7 @@ tabName: Design
 
 As a rule, the progress bar does not block working with the product. The exception is the first launch of the product when the data is partially displayed or not displayed at all.
 
-> 💡 This component is one of the components that displays the loading and response to user actions in the interface. For general recommendations for such components, see [Loading patterns](/patterns/loading-states/).
+> This component is one of the components that displays the loading and response to user actions in the interface. For general recommendations for such components, see [Loading patterns](/patterns/loading-states/).
 
 @## Component composition
 
@@ -63,7 +63,7 @@ ProgressBar has three states:
 
 The progress bar shall not remain in the 100% state – once the process is completed, either a message about the success of the process shall be displayed, or offer the user further actions.
 
-> 💡 If it is not possible to perform the action immediately, the success status shall be displayed and the user shall be told what to do next.
+> If it is not possible to perform the action immediately, the success status shall be displayed and the user shall be told what to do next.
 
 Display a counter next to the progress bar to show how many of the files were loaded. If there is no data on the exact number of files, then display nothing.
 
@@ -87,7 +87,7 @@ Progress value is always animated with `ease-in`.
 - When you need to visualize a short process, but it is important to show how much is left until the end of the process. _For example, uploading multiple files._
 - If the process is long and blocks working with data, but it is necessary to let the user know when this process will end.
 
-> 💡 Sometimes you can use an animation without the green bar instead of the progress bar when launching the product. This can be done when you don't know how long the data collection will take. Or make a fake progress bar which will create the illusion of the user approaching the end of the process.
+> Sometimes you can use an animation without the green bar instead of the progress bar when launching the product. This can be done when you don't know how long the data collection will take. Or make a fake progress bar which will create the illusion of the user approaching the end of the process.
 
 ### Pinned ProgressBar
 
@@ -106,7 +106,7 @@ When scrolling, the progress bar can be pinned. In this case, pin it above all c
 - If the exact or approximate loading time is not known, wait for 3 seconds and display the fake progress.
 - In cases when loading is very fast, set the minimum time for displaying the progress bar – 3 seconds. This is necessary to avoid "blinking" of the interface.
 
-> 💡 This component is one of the components that displays interface's reaction to user actions in the interface. For general rules on such components, see the [Loading patterns](/patterns/loading-states/).
+> This component is one of the components that displays interface's reaction to user actions in the interface. For general rules on such components, see the [Loading patterns](/patterns/loading-states/).
 
 @page progress-bar-api
 @page progress-bar-code
