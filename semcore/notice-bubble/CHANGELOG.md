@@ -2,6 +2,18 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.1.0] - 2022-08-24
+
+### Changed
+
+- Animation styles moved to css file and now available for theming.
+
+## [4.0.14] - 2022-08-23
+
+### Added
+
+- Added role and aria-live attribute for better accessibility.
+
 ## [4.0.13] - 2022-08-18
 
 ### Changed

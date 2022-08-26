@@ -7,6 +7,8 @@ import { IKeyboardFocusProps } from '@semcore/utils/lib/enhances/keyboardFocusEn
 export interface ITimePickerProps extends Omit<IInputProps, 'size'> {
   /** Time in the hh:mm format */
   value?: string;
+  /** Default value if `value` property is not provided */
+  defaultValue?: string;
   /** The event responses upon time changing */
   onChange?: (time: string, event?: React.SyntheticEvent) => void;
   /** In charge of the component blocking */

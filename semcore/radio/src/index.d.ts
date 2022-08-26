@@ -53,6 +53,8 @@ export interface IRadioValueProps extends IBoxProps, IKeyboardFocusProps {
   size?: RadioSize;
   /** The element value is required for RadioGroup */
   value?: RadioValue;
+  /** Default value if `value` property is not provided */
+  defaultValue?: RadioValue;
   /** Called when the value changes */
   onChange?: (value: boolean, e?: React.SyntheticEvent<HTMLInputElement>) => void;
   /** Blocks access and changes to the form field */

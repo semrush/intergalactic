@@ -212,8 +212,8 @@ const components = {
   ],
   'Q3 2022': [
     { text: 'Illustration', size: { ui: '1/3' } },
-    { text: 'ColorPicker', size: { kit: '1/3' } },
-    { text: 'Ellipsis', size: { ui: '3/7', kit: '9/13' } },
+    { text: 'ColorPicker', size: { kit: '1/9' } },
+    { text: 'Ellipsis', size: { ui: '3/9', kit: '9/13' } },
     { text: 'A11y components enhancement', size: { ui: '1/13', kit: '1/13' } },
   ],
 };

@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.0.14] - 2022-08-24
+
+### Fixed
+
+- Update version `@semcore/utils` to use additional functions.
+
 ## [4.0.13] - 2022-08-19
 
 ### Added
