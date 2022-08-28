@@ -140,7 +140,7 @@ function Success(props) {
 
   return sstyled(styles)(
     <SSuccess render={Box}>
-      <SEmail />
+      <SEmail aria-hidden={true} />
       <span>
         <Children />
       </span>
