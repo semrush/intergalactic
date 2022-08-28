@@ -56,6 +56,7 @@ class FeedbackForm extends Component {
             <SpinContainer size="xl" loading={loading === undefined ? api.submitting : loading}>
               <SFeedbackForm
                 tag="form"
+                role="form"
                 noValidate
                 method="POST"
                 ref={forwardRef}
@@ -103,6 +104,8 @@ function Item({ Children, tag, ...props }) {
         const inputProps = {
           ...input,
           state: invalid ? 'invalid' : 'normal',
+          'aria-invalid': invalid ? true : false,
+          'aria-errormessage': meta.error,
         };
         return (
           <Tooltip
