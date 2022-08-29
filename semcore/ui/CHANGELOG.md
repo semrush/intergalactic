@@ -1,3 +1,113 @@
+## [12.5.0] - 2022-08-29
+
+### @semcore/accordion
+
+- **Fixed** Fixed disabled items handling to improve component accessibility.
+
+### @semcore/animation
+
+- **Fixed** Fixed playing entering animation if init animation state is already reached.
+
+### @semcore/badge
+
+- **Added** Added aria-hidden because component "badge" is not the main functionality and will only confuse the blind user.
+
+### @semcore/breadcrumbs
+
+- **Changed** Added essential `aria-\*` attributes.
+
+### @semcore/button
+
+- **Fixed** Update version `@semcore/utils` to use additional functions.
+- **Added** Added empty button aria-label check.
+
+### @semcore/d3-chart
+
+- **Added** Introduced charts accessibility module.
+- **Fix** Fixed `ResponsiveContainer` memory leak on unmount.
+- **Fix** `Venn` chart was not mentioned in exported types.
+
+### @semcore/date-picker
+
+- **Added** Added Turkish langauge support.
+- **Changed** Removed spaces around dash in formatted date.
+
+### @semcore/errors
+
+- **Changed** Updated translations.
+- **Added** Added Turkish langauge support.
+- **Added** Added `role="alert"` attributes to increase support for a11y.
+
+### @semcore/flags
+
+- **Fixed** Fixed broken display of Cote d'Ivoire's flag.
+- **Fixed** Fixed broken display of United States Minor Outlying Islands' flag.
+
+### @semcore/icon
+
+- **Added** Added call `onClick` when pressing enter if the icon is `interactive`.
+
+### @semcore/input
+
+- **Added** Added missing type `defaultValue` in `index.d.ts`.
+
+### @semcore/input-number
+
+- **Added** Added screen reader notification of input value and aria attributes for better a11y.
+
+### @semcore/link
+
+- **Fixed** Change tag for `Link.Addon` from `div` to `span`
+- **Fixed** Update version `@semcore/utils` to use additional functions.
+- **Added** Added screen reader support and empty link aria-label check
+
+### @semcore/notice
+
+- **Added** Added aria-live attribute for better accessibility.
+
+### @semcore/notice-bubble
+
+- **Changed** Animation styles moved to css file and now available for theming.
+- **Added** Added role and aria-live attribute for better accessibility.
+
+### @semcore/notice-global
+
+- **Added** Added aria-live attribute for better accessibility.
+
+### @semcore/pagination
+
+- **Added** Added Turkish langauge support.
+- **Added** Added the necessary labels for improved accessibility work.
+
+### @semcore/product-head
+
+- **Fixed** Remove `overflow='auto'` because the component should not scroll, its content should adapt to the desired size.
+
+### @semcore/radio
+
+- **Added** Added missing type `defaultValue` in `index.d.ts`.
+
+### @semcore/tag
+
+- **Fixed** Update version `@semcore/utils` to use additional color changing functions.
+
+### @semcore/textarea
+
+- **Added** Added missing types `value` and `defaultValue` in `index.d.ts`.
+
+### @semcore/time-picker
+
+- **Added** Added missing type `defaultValue` in `index.d.ts`.
+
+### @semcore/typography
+
+- **Changed** Added essential `aria-\*` attributes for Typography lists.
+
+### @semcore/utils
+
+- **Added** Added util function `reactToText` to convert react component to text.
+- **Added** Added support of `elementtiming` attribute passing on all components.
+
 ## [12.4.2] - 2022-08-02
 
 ### @semcore/d3-chart
