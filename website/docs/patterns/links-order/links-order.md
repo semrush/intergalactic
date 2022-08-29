@@ -21,4 +21,4 @@ Place additional links in the upper right corner of [ProductHead](/components/pr
 | **User manual**                                             | Opens page with manual in the Knowledge Base.                                       | ![links order](static/link11.png) |
 | **Send feedback**                                           | Opens dropdown with feedback form.                                                  | ![links order](static/link12.png) |
 
-> 💡 For more information about link styles, check the guide for [Link](/components/link/).
+> For more information about link styles, check the guide for [Link](/components/link/).

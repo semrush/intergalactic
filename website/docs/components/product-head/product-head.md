@@ -63,7 +63,7 @@ If there is a [Notice](/components/notice/) in the header, it has 8px margin-bot
 
 ![max element product-head](static/max-info.png)
 
-> 💡 When the names of the domain and/or project are too long and don't fit in the intended place, collapse them into `ellipsis`. If you have controls on the right, add them a “protective” left margin of 24px.
+> When the names of the domain and/or project are too long and don't fit in the intended place, collapse them into `ellipsis`. If you have controls on the right, add them a “protective” left margin of 24px.
 
 ![title in ellipsis and controls margin](static/ellipsis-and-margin.png)
 

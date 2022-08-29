@@ -20,7 +20,7 @@ tabName: Design
 
 The component doesn't have any fixed sizes since they are defined by the content inside it.
 
-> 💡 If dropdown changes its state while user interacts with it, do not change the dropdown size (width and height).
+> If dropdown changes its state while user interacts with it, do not change the dropdown size (width and height).
 
 ### Indents
 
@@ -54,7 +54,7 @@ Dropdown drops to the bottom position from the trigger by default (unless otherw
 
 ![All possible positions for Dropdown component based on popper.js properties](static/dropdown-directions.png)
 
-> 💡 **Dropdown should not change its position when user scroll a page.** _For example, dropdown was opened upwards, but when user started scrolling the page dropdown cannot be at the edge of the browser and move downwards._
+> **Dropdown should not change its position when user scroll a page.** _For example, dropdown was opened upwards, but when user started scrolling the page dropdown cannot be at the edge of the browser and move downwards._
 
 @## Usage in UX/UI
 

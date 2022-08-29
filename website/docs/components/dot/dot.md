@@ -10,14 +10,14 @@ tabName: Design
 
 **Dot 🍊** is a component that marks updates in the interface. _For example, it shows that a new item has appeared in the button, select, tab, filter or dropdown-menu._
 
-> 💡 Keep in mind that dot is not used to display the status of the feature, new data types or tabs in the report. It cannot be green, red, blue or other colors. **It can only be orange**.
+> Keep in mind that dot is not used to display the status of the feature, new data types or tabs in the report. It cannot be green, red, blue or other colors. **It can only be orange**.
 
 **You can use it in order to:**
 
 - draw the user’s attention to the controls and menu items, within which any update has been implemented. _In other words, by clicking an item with Dot, the user will find an item also marked with Dot (it's graphical rhyme for user experience 🕺🏻)._
 - show new notifications to the user. _For example, this pattern works in a blog._
 
-> 💡 Dot must disappear after the user clicks/hovers over an item with a dot. The details of these cases are below.
+> Dot must disappear after the user clicks/hovers over an item with a dot. The details of these cases are below.
 
 @## Appearance
 
@@ -46,7 +46,7 @@ The component has two sizes. In cases where a dot is above the component, it is 
 @## Counter
 There may be a counter with the number of notifications inside the dot. See [Counter](/components/counter/) for more information about this case.
 
-> 💡 If the dot contains a counter, it grows in size, respectively.
+> If the dot contains a counter, it grows in size, respectively.
 
 |                   | Appearance                                |
 | ----------------- | ----------------------------------------- |
@@ -59,7 +59,7 @@ If there is one update, we show a dot without a counter inside.
 
 If there are more than nine updates, shorten the value displayed in the counter to 9+.
 
-> 💡 Note that this feature is not yet implemented in the component.
+> Note that this feature is not yet implemented in the component.
 
 ![overflown-counter](static/counter-2.png)
 

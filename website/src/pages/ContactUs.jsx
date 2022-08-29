@@ -62,7 +62,7 @@ const Contacts = () => (
         .
         <div className={styles.text}>
           <div className={styles.subtitle}>Bug reporting & Improvements</div>
-          Found a bug? Good job! ✨
+          Found a bug? Good job!
           <ul>
             <li>
               Make sure that issue tracker doesn't contain the similar issue and create one with the

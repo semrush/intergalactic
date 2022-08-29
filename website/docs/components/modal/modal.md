@@ -26,11 +26,11 @@ tabName: Design
 - To notify of an error.
 - For content required for the user to complete the main task in the interface.
 
-> 💡 If you want to hide a lot of information in the modal window, this component is not the best solution. Consider using [FullscreenModal](/components/fullscreen-modal/) or even a separate page.
+> If you want to hide a lot of information in the modal window, this component is not the best solution. Consider using [FullscreenModal](/components/fullscreen-modal/) or even a separate page.
 
 Do not open windows without prior action by the user. **Limit modal windows are the exception in this case.**
 
-> 💡 For general recommendations for content styles in modal windows see [Modal content styles](/patterns/modal-content/).
+> For general recommendations for content styles in modal windows see [Modal content styles](/patterns/modal-content/).
 
 @## Component composition
 
@@ -74,7 +74,7 @@ We have several modal window types:
 | `opacity: 0.7; background: --gray-800;`                                                                         | ![modal overlay](static/modal-overlay.png)  |
 | Overlay style when opening a modal window inside another modal window – `opacity: 0.4; background: --gray-800;` | ![modal in  modal](static/second-modal.png) |
 
-> 💡 Use a modal window inside another modal window (Xzibit triggers 😁) only when necessary – if nothing at all fits. Look through an [amazing Manifesto](https://modalzmodalzmodalz.com/) against the ubiquitous use of modal windows. Meditate.
+> Use a modal window inside another modal window (Xzibit triggers 😁) only when necessary – if nothing at all fits. Look through an [amazing Manifesto](https://modalzmodalzmodalz.com/) against the ubiquitous use of modal windows. Meditate.
 
 @## Window size
 
@@ -86,7 +86,7 @@ The modal window must be at least 320px and no larger than 720px for the desktop
 
 ### Opening a window
 
-> 💡 **Important**. When you open the window, `keyboard focus` should automatically go to the content of the modal window.
+> **Important**. When you open the window, `keyboard focus` should automatically go to the content of the modal window.
 
 If the modal window contains input fields, the focus must go to the first field.
 
@@ -106,7 +106,7 @@ You can close the modal window by:
 - `ESC` button;
 - click `Back` in the browser (nothing changes on the parent page).
 
-> 💡 When the modal window is closed, the focus should return to the trigger.
+> When the modal window is closed, the focus should return to the trigger.
 
 **If the weight of the error of the accidental closing of the window is too high, then warn the user about the loss of information.**
 
@@ -115,7 +115,7 @@ For example, data entered or changed without AutoSave in:
 - in the project settings pag;
 - in the form (payment, subscription, profile editing, etc.).
 
-> 💡 **Important**. It is recommended to save the information entered by the user when closing and re-opening the modal window.
+> **Important**. It is recommended to save the information entered by the user when closing and re-opening the modal window.
 >
 > If this cannot be done, do not allow the user to close the modal window by clicking outside the window area.
 
@@ -158,7 +158,7 @@ Now, when the browser width is reduced to 320px, the modal window is proportiona
 
 See [examples](/components/modal/modal-code/) of resizing a modal window to fit the screen.
 
-> 💡 It is recommended to avoid using modal windows on mobile devices. However, if you use modal windows on mobile devices, leave a link to the parent page. If scrolling in modal window appears due to the amount of content, then it is recommend placing the window close button both at the top and at the end of such window, or fixing it in the header when scrolling.
+> It is recommended to avoid using modal windows on mobile devices. However, if you use modal windows on mobile devices, leave a link to the parent page. If scrolling in modal window appears due to the amount of content, then it is recommend placing the window close button both at the top and at the end of such window, or fixing it in the header when scrolling.
 >
 > [10 guidelines to consider when using overlays/modals](http://www.uxforthemasses.com/overlays/)
 
@@ -168,7 +168,7 @@ See [examples](/components/modal/modal-code/) of resizing a modal window to fit 
 
 When the modal window height does not fit the browser window, it shall be positioned with a 40px indent from the upper border.
 
-> 💡 The content under the overlay should not be scrolled.
+> The content under the overlay should not be scrolled.
 
 ![modal scroll](static/scroll-1.png)
 ![modal scroll](static/scroll-2.png)

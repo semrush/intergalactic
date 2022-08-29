@@ -32,7 +32,7 @@ The indent system helps maintain a vertical and horizontal rhythms in the interf
 
 In addition, vertical and horizontal rhythms help maintain visual hierarchy on the page, structure components and blocks according their importance to the user.
 
-> 💡 **Use 4 as the multiple of all the indents**. It is a main denominator of our design system (`scaleIndent` property in API), see [Variables](/style/variables/).
+> **Use 4 as the multiple of all the indents**. It is a main denominator of our design system (`scaleIndent` property in API), see [Variables](/style/variables/).
 
 Here is a table with a scale of indents we use in our design system.
 

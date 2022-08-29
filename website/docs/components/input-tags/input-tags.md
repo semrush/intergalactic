@@ -23,7 +23,7 @@ When tags overflow, the input increases in height by 1 text line.
 
 @## Tag colors
 
-> 💡 You can read more about tags in [Tag](/components/tag).
+> You can read more about tags in [Tag](/components/tag).
 
 In most cases, we recommend using a tag with the `primary` type and the `muted` theme to enter homogeneous information in such inputs. We don't recommend using the [Secondary tag](/components/tag/) inside the input since it creates more visual noise due to the presence of `border`.
 
@@ -59,7 +59,7 @@ The text entered by the user is wrapped in a tag inside InputTags:
 - with a double space;
 - if there is a tab (when inserting data).
 
-> 💡 When wrapping, spaces before and after are cut.
+> When wrapping, spaces before and after are cut.
 
 @## Text insertion
 

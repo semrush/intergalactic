@@ -156,7 +156,7 @@ Show an error in the dropdown with the ability to update the filter if an error 
 1. The last part of the category name is the most important, so show it by all means.
 2. Therefore, collapse the category name so that the last part is read in full and the collapsed part starts with >.
 
-> 💡 When hovering over the collapsed category name, always show the tooltip with category's full name.
+> When hovering over the collapsed category name, always show the tooltip with category's full name.
 
 ![category ellipsis](static/name-ellipsis.png)
 

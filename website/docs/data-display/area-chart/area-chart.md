@@ -4,7 +4,7 @@ fileSource: d3-chart
 tabName: Design
 ---
 
-> 💡 Basic data visualization rules are described in the [Chart principles](/data-display/chart/).
+> Basic data visualization rules are described in the [Chart principles](/data-display/chart/).
 
 @## Description
 
@@ -17,7 +17,7 @@ tabName: Design
 - Don't forget to clearly name the chart so that the axes are understandable enough.
 - Use [Stacked area chart](/data-display/stacked-area-chart/) when, in addition to data amount, you need to display the part to the whole data.
 
-> 💡 Useful materials about line chart vs. area chart:
+> Useful materials about line chart vs. area chart:
 >
 > - [Choosing the right chart type: Line charts vs Area charts](https://www.fusioncharts.com/blog/line-charts-vs-area-charts/)
 > - [The Fine Line In a Gray Area: When to Use Line vs Area Charts](https://visual.ly/blog/line-vs-area-charts/)
@@ -26,7 +26,7 @@ tabName: Design
 
 By default, we show a chart with straight lines. This view facilitates reading the exact values on the trend. This is what most people look at the chart for.
 
-> 💡 Add a possibility to select either straight or smooth line type in the widget settings.
+> Add a possibility to select either straight or smooth line type in the widget settings.
 
 | Example                                             | Styles                                                                                                     |
 | --------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |

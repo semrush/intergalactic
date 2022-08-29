@@ -27,7 +27,7 @@ There are two types of tables in our interface – [primary](../table-primary/) 
 
 @## Sorting
 
-> 💡 For detailed information about sorting columns in the table, see [Working with table](/table-group/table-controls/).
+> For detailed information about sorting columns in the table, see [Working with table](/table-group/table-controls/).
 
 @## Tooltip
 
@@ -45,7 +45,7 @@ If the column has additional (explanatory) information.
 
 @## Table row states
 
-> 💡 **Hover on a row is required for all types of tables.**
+> **Hover on a row is required for all types of tables.**
 
 Hover is needed to "highlight" information in vast volumes of data, with which you would like to perform some action (read, delete, open, etc.).
 
@@ -142,7 +142,7 @@ See the detailed recommendations in the [Table controls](/table-group/table-cont
 
 @## Table states
 
-About table states you can read in a particular notable document [Table states](/table-group/table-states/) ✨
+About table states you can read in a particular notable document [Table states](/table-group/table-states/).
 
 @page table-a11y
 @page table-code

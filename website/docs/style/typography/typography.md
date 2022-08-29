@@ -10,7 +10,7 @@ We use two font families in our interface:
 1. The main font is [Inter](https://fonts.google.com/specimen/Inter?query=inter).
 2. The accent font is [Factor A](https://type.today/en/factor_a).
 
-> 💡 For a clearer rendering of the font and its color, use `-webkit-font-smoothing: antialiased;` (see cross-browser compatibility at [caniuse.com](https://caniuse.com/#search=-webkit-font-smoothing)).
+> For a clearer rendering of the font and its color, use `-webkit-font-smoothing: antialiased;` (see cross-browser compatibility at [caniuse.com](https://caniuse.com/#search=-webkit-font-smoothing)).
 
 @## Basic text colors
 
@@ -20,7 +20,7 @@ The color used for secondary text is `--gray-500`.
 
 Besides, both paragraphs headings and text can be colored in our main semantic colors. Depending on the situation, they are green, red, and orange.
 
-> 💡 Use this opportunity thoughtfully, and do not abuse the text coloring, as it can reduce it's readability. **Don't forget to check the text for contrast against its background**.
+> Use this opportunity thoughtfully, and do not abuse the text coloring, as it can reduce it's readability. **Don't forget to check the text for contrast against its background**.
 
 @## Font variables
 

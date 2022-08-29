@@ -6,7 +6,7 @@ tabName: Design
 
 @## Description
 
-> 💡 See description of trigger and examples in [Select/Multiselect](/components/select/).
+> See description of trigger and examples in [Select/Multiselect](/components/select/).
 
 **DropdownMenu** is a component for displaying the list of options and their nested items.
 
@@ -191,7 +191,7 @@ If DropdownMenu has more than seven items show scroll. We also recommend adding 
 
 ![list-scroll](static/scroll-1.png)
 
-> 💡 If you use DropdownMenu for menu then show all the items even if there more than seven items. It is important for the user in such cases to see all available options (especially if there are links and different controls). And we do not recommend to show scroll in such menus.
+> If you use DropdownMenu for menu then show all the items even if there more than seven items. It is important for the user in such cases to see all available options (especially if there are links and different controls). And we do not recommend to show scroll in such menus.
 
 ### Fixed item
 

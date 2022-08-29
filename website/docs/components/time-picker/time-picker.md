@@ -36,7 +36,7 @@ The first combobox is hours selection, the second one is minutes selection.
 
 Upon focus on the combobox, the list with all the possible variants is opened. Upon focus on this group of controls, at first the input is highlighted.
 
-> 💡 The dropdown with the list is shifted to the left by 9px in order to put the list items accurately under the combobox figures.
+> The dropdown with the list is shifted to the left by 9px in order to put the list items accurately under the combobox figures.
 
 ![12 hours format focus](static/focus-1.png)
 
@@ -56,7 +56,7 @@ Upon moving to the button using Tab, the button is highlighted with `focus`.
 
 > Comboboxes content may be both exact, up to a minute, and with the preset step.
 
-- In the first case the combobox step is equal to a minute. The user can set, for example, 13:13 🤷🏻‍♀️
+- In the first case the combobox step is equal to a minute. The user can set, for example, 13:13
 - In the second case the combobox step can range depending on the required time pre-settings. For example, 00, 15, 30, 45 etc. are rather popular for minutes.
 
 @## Validation
