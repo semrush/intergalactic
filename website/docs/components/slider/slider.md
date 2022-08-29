@@ -51,7 +51,7 @@ You can show values under the input.
 
 ![slider value labels](static/value-labels2.png)
 
-> 💡 For mobile devices, show values or tooltips with values **OVER the input**. When using this component on touch devices, the values will fall under the finger when manipulating the slider knob.
+> For mobile devices, show values or tooltips with values **OVER the input**. When using this component on touch devices, the values will fall under the finger when manipulating the slider knob.
 
 @## Interaction
 

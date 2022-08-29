@@ -10,7 +10,7 @@ tabName: Design
 
 The block can either be centered in relation to the height and width of the parent block or pinned with a certain margin the top, bottom, left and right sides of the parent block.
 
-> 💡 Pinned messages allow user not to lose important messages about loading, data collection, limitations on viewing and errors in working with data when scrolling a page.
+> Pinned messages allow user not to lose important messages about loading, data collection, limitations on viewing and errors in working with data when scrolling a page.
 
 @example limit
 

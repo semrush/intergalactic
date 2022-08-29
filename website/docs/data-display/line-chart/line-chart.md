@@ -4,7 +4,7 @@ fileSource: d3-chart
 tabName: Design
 ---
 
-> 💡 Basic data visualization rules in widgets with charts are described in [Data vizualization](/data-display/chart/).
+> Basic data visualization rules in widgets with charts are described in [Data vizualization](/data-display/chart/).
 
 @## Description
 
@@ -19,7 +19,7 @@ If you have an array of values for a certain period, you can use this chart type
 - If the data doesn't start from zero, in some cases you can zoom the chart to the `Y-axis`. This can make your data more readable and easier to understand.
 - **Try not to compare more than 5-7 categories on a line chart**. The chart may become unreadable and confusing.
 
-> 💡 Useful materials about line chart vs. area chart:
+> Useful materials about line chart vs. area chart:
 >
 > - [Choosing the right chart type: Line charts vs Area charts](https://www.fusioncharts.com/blog/line-charts-vs-area-charts/)
 > - [The Fine Line In a Gray Area: When to Use Line vs Area Charts](https://visual.ly/blog/line-vs-area-charts/)
@@ -28,7 +28,7 @@ If you have an array of values for a certain period, you can use this chart type
 
 By default, we show a chart with straight lines. This view facilitates reading the exact values on the trend. This is what most people look at the chart for.
 
-> 💡 Add a possibility to select either straight or smooth line type in the widget settings.
+> Add a possibility to select either straight or smooth line type in the widget settings.
 
 | Example                                       | Styles                 |
 | --------------------------------------------- | ---------------------- |

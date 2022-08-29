@@ -16,7 +16,7 @@ tabName: Design
 - they help you link to other pages on the site (useful for SEO);
 - they allow you to move between higher/lower nesting levels without clicking the Forward/Backward buttons in the browser.
 
-> 💡 Breadcrumbs are not used on the main pages.
+> Breadcrumbs are not used on the main pages.
 
 @## Appearance & styles
 
@@ -29,7 +29,7 @@ Links inside this component are custom style links.
 | Link                | `font-size: 14px; color: --gray-500; cursor: pointer;`, there is no `line-height` |
 | `ChevronRight` icon | `color: --gray-300`; `cursor: default;`                                           |
 
-> 💡 **Pay attention**. The last item in the breadcrumbs is always non-clickable.
+> **Pay attention**. The last item in the breadcrumbs is always non-clickable.
 
 ### Margins
 

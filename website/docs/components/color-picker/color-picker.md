@@ -106,7 +106,7 @@ The input accepts only HEX values. For details, refer to the [Validation section
 
 The color value is always a 6-character string that specifies the color in the HEX format.
 
-> 💡 A user can enter both upper-case and lower-case characters, but the input will save them as upper-case.
+> A user can enter both upper-case and lower-case characters, but the input will save them as upper-case.
 
 @## Interaction
 
@@ -114,7 +114,7 @@ A user can add or remove custom colors, but they can't change default and custom
 
 **Adding a custom color**
 
-> 💡 We recommend that you sync and save the user's custom palette in different parts of the product's interface.
+> We recommend that you sync and save the user's custom palette in different parts of the product's interface.
 
 Colors are added by either clicking on the button with `MathPlus`, or through the input field.  
 A user can add a color value to the custom palette by clicking `Check`, and remove a color by clicking `Close`.

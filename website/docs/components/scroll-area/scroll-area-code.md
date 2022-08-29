@@ -23,6 +23,6 @@ For basic use it is enough just to wrap your content into `ScrollArea`. It will 
 
 @## Dynamic virtual list
 
-[React-virtualized](https://github.com/bvaughn/react-virtualized) is responsible for work of the virtual list ✨
+[React-virtualized](https://github.com/bvaughn/react-virtualized) is responsible for work of the virtual list.
 
 @example virtual-list

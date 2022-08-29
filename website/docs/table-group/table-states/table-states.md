@@ -4,7 +4,7 @@ title: Table states
 
 @## Basic rules for table states
 
-> 💡 The message inside the table must get the `sticky` property when scrolling and be centered relative to the parent table and the user's viewport.
+> The message inside the table must get the `sticky` property when scrolling and be centered relative to the parent table and the user's viewport.
 >
 > Thus the user will always see what is happening with the table, and won't need to scroll to the top of it.
 
@@ -15,7 +15,7 @@ Message with a loading or error state must have `margin-top: 40px`, so that when
 | Example with [Progressbar](/components/progress-bar/) | ![table with sticky progressbar](static/sticky-1.png)     | ![table with sticky progressbar](static/sticky-2.png)     |
 | Example with [Spin](/components/spin/)                | ![table with sticky spinner](static/sticky-loading-1.png) | ![table with sticky spinner](static/sticky-loading-2.png) |
 
-> 💡 It is also not recommended to change the table height when switching between states.
+> It is also not recommended to change the table height when switching between states.
 
 @## Skeleton
 
@@ -29,7 +29,7 @@ When loading data for the first time, show the structure of the loaded page and 
 
 We recommend using the skeleton to show only the first three rows, not the entire table.
 
-> 💡 Don't show [Pagination](/components/pagination/) when loading the table for the first time.
+> Don't show [Pagination](/components/pagination/) when loading the table for the first time.
 
 ![table with skeleton](static/skeleton.png)
 
@@ -80,7 +80,7 @@ See more information in the [Empty page](/patterns/empty-page/).
 
 ![empty table](static/empty.png)
 
-> 💡 Note that illustrations for these cases are usually unique. Designers create them for each specific case or product if needed.
+> Note that illustrations for these cases are usually unique. Designers create them for each specific case or product if needed.
 
 @## No data
 
@@ -93,19 +93,19 @@ See more information in the [Empty page](/patterns/empty-page/).
 
 ![table with no data](static/no-data-button.png)
 
-> 💡 The svg illustration for this state can be found in the [library for empty states](https://static.semrush.com/ui-kit/widget-empty/1.4.0/table.svg). All other illustrations and their names can be found in the [documentation for empty states](/components/widget-empty/widget-empty-code/).
+> The svg illustration for this state can be found in the [library for empty states](https://static.semrush.com/ui-kit/widget-empty/1.4.0/table.svg). All other illustrations and their names can be found in the [documentation for empty states](/components/widget-empty/widget-empty-code/).
 
 @## Nothing found
 
 Show this state when user has been searching or applying a filter in the table, and we didn't find anything.
 
-> 💡 In this state, save the active state of the sorted column.
+> In this state, save the active state of the sorted column.
 
 In this state, we recommend adding a control that will help user correct the situation. For example, you can add a "Clear filters" button.
 
 ![table with nothing found](static/nothing-found-button.png)
 
-> 💡 The svg illustration for this state can be found in the [library for empty states](https://static.semrush.com/ui-kit/widget-empty/1.4.0/nothing-found.svg). All other illustrations and their names can be found in the [documentation for empty states](/components/widget-empty/widget-empty-code/).
+> The svg illustration for this state can be found in the [library for empty states](https://static.semrush.com/ui-kit/widget-empty/1.4.0/nothing-found.svg). All other illustrations and their names can be found in the [documentation for empty states](/components/widget-empty/widget-empty-code/).
 
 @## Something went wrong
 
@@ -122,7 +122,7 @@ Show this state when there was an error in the product on the backend, so we can
 | We are aware of the problem, and report it | ![table with known error](static/error-known.png)         |
 | We don't know about the problem            | ![table with not known error](static/error-not-known.png) |
 
-> 💡 The svg illustration for this state can be found in the [library for empty states](https://static.semrush.com/ui-kit/widget-empty/1.4.0/warning.svg). All other illustrations and their names can be found in the [documentation for empty states](/components/widget-empty/widget-empty-code/).
+> The svg illustration for this state can be found in the [library for empty states](https://static.semrush.com/ui-kit/widget-empty/1.4.0/warning.svg). All other illustrations and their names can be found in the [documentation for empty states](/components/widget-empty/widget-empty-code/).
 
 @## Message text
 
@@ -152,7 +152,7 @@ For all empty states of the table, keep the header. If it has sorting icons, als
 
 ### Data uploading in the cell
 
-> 💡 Use [Skeleton](/components/skeleton/) when loading the table for the first time.
+> Use [Skeleton](/components/skeleton/) when loading the table for the first time.
 
 When loading content in one or more cells, show the [Spin](/components/spin/) of XS size.
 
@@ -165,7 +165,7 @@ This is the state when something broke in a particular cell and we can't show th
 - Use `Warning` icon with M size and `--orange-400` color.
 - On the hover, always show a tooltip with an explanation that something went wrong.
 
-> 💡 We recommend giving the user the opportunity to change the situation. In this case, you can display the control in a cell for reloading data, for example.
+> We recommend giving the user the opportunity to change the situation. In this case, you can display the control in a cell for reloading data, for example.
 
 ![table cell with warning](static/cell-danger.png)
 
@@ -182,4 +182,4 @@ A cell in a table may be blocked by a limit or by the need to take some action t
 
 ![locked table cell](static/cell-locked-tooltip.png)
 
-> 💡 For all the main table styles and principles, see [Table](/table-group/table/). For all svg illustrations for different states and their names, see the [empty states documentation](/components/widget-empty/widget-empty-code/).
+> For all the main table styles and principles, see [Table](/table-group/table/). For all svg illustrations for different states and their names, see the [empty states documentation](/components/widget-empty/widget-empty-code/).

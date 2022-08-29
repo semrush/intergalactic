@@ -37,7 +37,7 @@ Addons inside TabLine.Item has the same margins as addons inside the [Button](/c
 | Badge   | ![badge-addon](static/badge.png) |
 | Counter | ![counter](static/counter.png)   |
 
-> 💡 **A flag and an icon cannot be placed in a tab at the same time**. If there are badge and counter inside the tab, then place badge after the counter.
+> **A flag and an icon cannot be placed in a tab at the same time**. If there are badge and counter inside the tab, then place badge after the counter.
 
 @## Interaction
 

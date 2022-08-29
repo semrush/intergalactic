@@ -67,7 +67,7 @@ The legend can work as a filter or be unclickable representation of the data. Fo
 
 **Axes** help user navigate the data and relate values to each other.
 
-> 💡 Please don't make the additional lines bright and colored — the emphasis should be on the data, not on the grid.
+> Please don't make the additional lines bright and colored — the emphasis should be on the data, not on the grid.
 
 ![axes-scheme](static/axes-scheme.png)
 
@@ -83,7 +83,7 @@ The legend can work as a filter or be unclickable representation of the data. Fo
 
 To make it easier to track changes, use 3-5 additional horizontal guides. Round the values on the axes, like _25K − 20K − 15K − 10K_, instead of using exact values like _24.8K − 20.0K − 15.2K − 10.2K_.
 
-> 💡 **The recommended minimum height of the chart is 118px.** For such a chart, it is recommended to display 3 additional horizontal guides. Keep in mind that it can be difficult to read changes on the charts that has such small height.
+> **The recommended minimum height of the chart is 118px.** For such a chart, it is recommended to display 3 additional horizontal guides. Keep in mind that it can be difficult to read changes on the charts that has such small height.
 
 Minimum (small) chart height has 3 additional horizontal guides.
 
@@ -143,7 +143,7 @@ During initial data loading, the widget displays the [Skeleton](/components/skel
 
 If the chart has a title, it should be displayed during the initial loading. The user shall have an idea of what is being loaded and whether they need to wait for the loading process to complete.
 
-> 💡 Note that every chart has it's own skeleton. For more information see guides for every chart type.
+> Note that every chart has it's own skeleton. For more information see guides for every chart type.
 
 @## Edge cases
 

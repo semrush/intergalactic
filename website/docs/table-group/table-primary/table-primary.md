@@ -14,7 +14,7 @@ The cell in the primary table, whether it is a header or a row, has 12px padding
 
 @## Styles
 
-> 💡 Content inside header cells and rows is aligned to the top.
+> Content inside header cells and rows is aligned to the top.
 
 | Description                     | Appearance                                | Styles                                                                                                                  |
 | ------------------------------- | ----------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |

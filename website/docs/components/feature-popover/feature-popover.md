@@ -10,7 +10,7 @@ tabName: Design
 
 **FeaturePopover** is a component that draws users’ attention to the interface element. _For example, it may point to a new function or suggest the next step to the user._
 
-> 💡 FeaturePopover contains only simple reference/promotional information. The purpose of this component is to point to a specific feature and offer to use it.
+> FeaturePopover contains only simple reference/promotional information. The purpose of this component is to point to a specific feature and offer to use it.
 
 ### It is used when
 
@@ -43,7 +43,7 @@ The illustration should help the user to understand the basic idea of the functi
 
 Closing icon is placed strictly in the upper right corner of the notification. It must close FeaturePopover forever.
 
-> 💡 If you need to use FeaturePopover without a crisscross, please discuss it with the UX and UI team.
+> If you need to use FeaturePopover without a crisscross, please discuss it with the UX and UI team.
 
 ### Buttons
 
@@ -52,7 +52,7 @@ Two buttons are always placed under the text of the message.
 - By clicking the `Got it` button FeaturePopover is closed forever.
 - By clicking the `Remind me later` button FeaturePopover is closed until the next user session.
 
-> 💡 If you want to use FeaturePopover without one of the buttons or without them at all, please discuss it with the UX/UI team.
+> If you want to use FeaturePopover without one of the buttons or without them at all, please discuss it with the UX/UI team.
 
 ### Container
 
@@ -118,7 +118,7 @@ The element appears according to the timings you prescribe. It is hidden only by
 
 @## Usage in UX/UI
 
-> 💡 Important! Before using FeaturePopover ask yourself whether your new feature is so good that you want to focus on it. 😏
+> Important! Before using FeaturePopover ask yourself whether your new feature is so good that you want to focus on it. 😏
 
 ### General recommendations
 
@@ -152,7 +152,7 @@ The element appears according to the timings you prescribe. It is hidden only by
 
 @## FeaturePopover as part of onboarding.
 
-> 💡 **Important!** Show onboarding only to new users who have never seen it. If the user has already seen onboarding once, IT IS NOT NECESSARY to show it again.
+> **Important!** Show onboarding only to new users who have never seen it. If the user has already seen onboarding once, IT IS NOT NECESSARY to show it again.
 >
 > _It is important to provide a Help/Product Tour (another name?) link on the report, by clicking on which you can view it again._
 

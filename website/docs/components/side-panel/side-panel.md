@@ -76,7 +76,7 @@ The padding between title and content:
 
 For panel's title use 16px text (`--fs-300; --lh-300`) with `font-weight: 700;`.
 
-> 💡 Pin header when scrolling large content inside the SidePanel.
+> Pin header when scrolling large content inside the SidePanel.
 
 | Appearance example                    | Styles                                                                                              |
 | ------------------------------------- | --------------------------------------------------------------------------------------------------- |
@@ -128,7 +128,7 @@ You can enable or disable page scroll. It's disabled by default.
 
 Page scrolling should be enabled when SidePanel has some tips and additional things for the page.
 
-> 💡 It is important to disable page scroll for SidePanel with overlay, otherwise it will look like a bug.
+> It is important to disable page scroll for SidePanel with overlay, otherwise it will look like a bug.
 
 ### SidePanel opening and closing
 
@@ -143,7 +143,7 @@ SidePanel can be opened either by user clicking on the corresponding trigger or 
 
 ### Animation of appearance and hiding
 
-SidePanel opens and closes with the animation: `transition: all 350ms ease-in-out;` ✨
+SidePanel opens and closes with the animation: `transition: all 350ms ease-in-out;`.
 
 ### What happens when the browser window size changes
 

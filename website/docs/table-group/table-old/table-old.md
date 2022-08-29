@@ -18,7 +18,7 @@ Example of a table with an [accordion](/components/accordion) 😎
 
 @## Table with dynamic column width
 
-Example of a table where you can change the width of columns using the [react-resizable library](https://github.com/STRML/react-resizable) ✨
+Example of a table where you can change the width of columns using the [react-resizable library](https://github.com/STRML/react-resizable).
 
 @example resize
 

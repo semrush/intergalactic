@@ -34,7 +34,7 @@ Dynamic search applies entered value as soon as at least one character is entere
 
 **Suitable for filters that are not limited, and there is little data**.
 
-> 💡 Set a delay for sending the entered value. So you'll not burden the search engine and it will show the results more smoothly and predictably.
+> Set a delay for sending the entered value. So you'll not burden the search engine and it will show the results more smoothly and predictably.
 
 | State       | Appearance example                                 | Description                                                                                                                                                                                                                                        |
 | ----------- | -------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -44,7 +44,7 @@ Dynamic search applies entered value as soon as at least one character is entere
 
 > **Why not "Search"**
 >
-> 💡 This search filter works exactly like a filter. In order to make it obvious by what parameter it searches, indicate it in the placeholder. Leave "Search" only for simple search inputs, or when there is an additional functionality for choosing by which parameter to search.
+> This search filter works exactly like a filter. In order to make it obvious by what parameter it searches, indicate it in the placeholder. Leave "Search" only for simple search inputs, or when there is an additional functionality for choosing by which parameter to search.
 
 @## Search by button
 

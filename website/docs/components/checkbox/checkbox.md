@@ -51,7 +51,7 @@ To help the user understand the purpose of the checkbox option, place Info icon 
 
 ![checkbox with info icon](static/info-icon.png)
 
-> 💡 Info icon should have a margin of 4px on the left.
+> Info icon should have a margin of 4px on the left.
 
 ![checkbox with info icon](static/info-icon-margin.png)
 
@@ -61,7 +61,7 @@ The checkbox text may contain a [Link](/components/link).
 
 ![checkbox with info icon](static/link.png)
 
-> 💡 The checkbox text hover zone shouldn't include a link.
+> The checkbox text hover zone shouldn't include a link.
 
 ![checkbox with info icon](static/link-hover-zone.png)
 
@@ -100,7 +100,7 @@ If you use a checkbox tree, the top-level checkbox has three states:
 - `checked`;
 - `indeterminate` - this state shows that some options of the tree are selected.
 
-> 💡 If user clicks the checkbox in the `indeterminate` state, all the lower-level checkboxes get `checked` state.
+> If user clicks the checkbox in the `indeterminate` state, all the lower-level checkboxes get `checked` state.
 
 ![checkbox tree](static/tree.png)
 

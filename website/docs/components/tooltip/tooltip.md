@@ -20,7 +20,7 @@ Tooltip's differences from [Dropdown](/components/dropdown/):
 
 Tooltip has themes: `default`, `invert` for using on a dark background and `warning` for validation messages. In both cases, the text color changes to `--white` and the background color changes to the corresponding one.
 
-> 💡 In [3.1.0 version](/components/tooltip/tooltip-changelog/), you can set your own theme and change background color to custom.
+> In [3.1.0 version](/components/tooltip/tooltip-changelog/), you can set your own theme and change background color to custom.
 
 | Theme   | Appearance                                 | Styles                                                                                                                 |
 | ------- | ------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------- |
@@ -48,9 +48,9 @@ The content area has defaul padding — 12px.
 
 ![content-button](static/tooltip-button.png)
 
-> 💡 Note that it is better to use 14px for the title for the non-advertising messages.
+> Note that it is better to use 14px for the title for the non-advertising messages.
 
-Image has size 130px * 130px.
+Image has size 130px \* 130px.
 
 ![pic-paddings](static/tooltip-pic-paddings.png)
 
@@ -119,7 +119,7 @@ Main recommendations:
 - Use the tooltip to show hints and additional information. It can be a text, a formatted text with lists, links, buttons and small images.
 - Make sure that the tooltip does not overlap the information important for the user.
 
-> 💡 For complex content and forms, use [Dropdown-menu](/components/dropdown-menu/).
+> For complex content and forms, use [Dropdown-menu](/components/dropdown-menu/).
 
 **If the tooltip trigger tells about the new feature, the tooltip title should not duplicate the trigger text.** The title may not be used if the trigger text already explains the tooltip content.
 
