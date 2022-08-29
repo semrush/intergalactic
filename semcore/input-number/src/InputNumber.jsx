@@ -98,22 +98,31 @@ class Value extends Component {
 
   render() {
     const SValue = Root;
+    const SValueHidden = 'div';
     const { styles, $inputHandlers, value, min, max } = this.asProps;
 
     // 🐒 не делайте так
     $inputHandlers.current = this.handlers;
 
     return sstyled(styles)(
-      <SValue
-        render={Input.Value}
-        type="number"
-        autoComplete="off"
-        onBlur={this.handleValidation}
-        onInvalid={this.handleValidation}
-        aria-valuenow={value}
-        aria-valuemin={min}
-        aria-valuemax={max}
-      />,
+      <>
+        <SValue
+          render={Input.Value}
+          type="number"
+          autoComplete="off"
+          onBlur={this.handleValidation}
+          onInvalid={this.handleValidation}
+          aria-valuenow={value}
+          aria-valuemin={min}
+          aria-valuemax={max}
+        />
+        {/* the next hidden div is necessary for the screen reader to report the value 
+        in the input, because after validation the value can change to the `min` or `max` 
+        if entered less than `min` or more than `max` */}
+        <SValueHidden aria-live="polite" aria-atomic={true}>
+          {value}
+        </SValueHidden>
+      </>,
     );
   }
 }
