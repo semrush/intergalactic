@@ -1,6 +1,6 @@
 import React from 'react';
 import { testing, snapshot } from '@semcore/jest-preset-ui';
-const { render, cleanup } = testing;
+const { render, cleanup, axe } = testing;
 import Flags from '../src';
 
 describe('Flags', () => {
@@ -49,5 +49,13 @@ describe('Flags', () => {
     );
 
     expect(await snapshot(component)).toMatchImageSnapshot();
+  });
+
+  test('a11y', async () => {
+    const { container } = render(<Flags />);
+
+    const results = await axe(container);
+
+    expect(results).toHaveNoViolations();
   });
 });
