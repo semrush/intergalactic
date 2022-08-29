@@ -81,7 +81,7 @@ You can read about the dropdown list, its content and states in [Dropdown-menu](
 
 If the list includes more than 10 values, add a search input. Otherwise, it will be difficult for the user to navigate among all values.
 
-> 💡 Search input should receive the focus state when user opens the list. It will help the user to avoid extra clicks.
+> Search input should receive the focus state when user opens the list. It will help the user to avoid extra clicks.
 
 ![multiselect scroll](static/multiselect-scroll.png)
 
@@ -114,7 +114,7 @@ In long lists (for example, in the list of countries), the values selected by th
 - Sometimes user selection can be limited by the number of required values.
 - In this case, once the user has selected the required number, all other values should receive the `disabled` status.
 
-> 💡 Do not forget to inform the user that the choice is limited. This can be done, for example, by putting a hint next to input. Also you can add a tooltip to the values in the `disabled` state that explains why they are in this state.
+> Do not forget to inform the user that the choice is limited. This can be done, for example, by putting a hint next to input. Also you can add a tooltip to the values in the `disabled` state that explains why they are in this state.
 
 ![multiselect limit](static/multiselect-limit.png)
 

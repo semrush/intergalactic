@@ -37,7 +37,7 @@ To change the value in InputNumber, use:
 - keys `Up`, `Down` on the keyboard;
 - `Shift` + `Up`, `Down` keys.
 
-> 💡 **Interesting fact**
+> **Interesting fact**
 >
 > Number inputs have little stepper buttons, which let users increase or decrease the input’s value by a constant amount. Luke Wroblewski’s usability testing shows that users prefer them to dropdown menus:
 >
@@ -52,7 +52,7 @@ To change the value in InputNumber, use:
 | L (40px) | ![l input size](static/l-sizes.png) |
 | M (28px) | ![m input size](static/m-sizes.png) |
 
-> 💡 If necessary, you can use a number as a placeholder inside this kind of input.
+> If necessary, you can use a number as a placeholder inside this kind of input.
 
 | State      | L (40px)                                     | M (28px)                                     | Styles                    |
 | ---------- | -------------------------------------------- | -------------------------------------------- | ------------------------- |
@@ -82,7 +82,7 @@ In order for the user to enter the correct data and pass validation, in InputNum
 
 To enter a range of numbers, we need two Inputnumber grouped together, and a bit of magic ✨
 
-> 💡 You can use **"From"** and **"To"** as placeholders in such inputs.
+> You can use **"From"** and **"To"** as placeholders in such inputs.
 
 | State   | L (40px)                                                 | M (28px)                                                 |
 | ------- | -------------------------------------------------------- | -------------------------------------------------------- |
@@ -113,7 +113,7 @@ If the user enters an invalid value (less than min, more than max), such value w
 
 You can use a dot to enter a fractional value in the input.
 
-> 💡 **The dot and comma are interchangeable characters depending on the locale**. For example, if the user entered a value with a dot, and fractional values are used with a comma in the respective locale, then the originally entered dot shall be changed to the comma. And vice versa.
+> **The dot and comma are interchangeable characters depending on the locale**. For example, if the user entered a value with a dot, and fractional values are used with a comma in the respective locale, then the originally entered dot shall be changed to the comma. And vice versa.
 
 ### Negative value
 
@@ -126,13 +126,13 @@ We treat a zero value like any other number:
 - if 0 is a valid value, then we will keep this entered value;
 - if 0 is less than the minimum value, we reset the input value to the minimum value.
 
-> 💡 **If the input is already set to 0**, then when the focus is in the field, the user enters the value after 0. By `onBlur`, the entire value in the input is formatted, and 0, which was before the number entered by the user, is removed. For example, `001` is formatted to `1`.
+> **If the input is already set to 0**, then when the focus is in the field, the user enters the value after 0. By `onBlur`, the entire value in the input is formatted, and 0, which was before the number entered by the user, is removed. For example, `001` is formatted to `1`.
 
 @## Use in UX/UI
 
 ### When used
 
-> 💡 **InputNumber is not used for every numeric value.**
+> **InputNumber is not used for every numeric value.**
 
 A numeric value can represent the quantity of something:
 

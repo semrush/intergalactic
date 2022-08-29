@@ -18,7 +18,7 @@ It is used inside a large number of components:
 - table headers,
 - etc.
 
-> 💡 Counters can't be clickable.
+> Counters can't be clickable.
 
 @## Themes
 

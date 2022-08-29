@@ -48,7 +48,7 @@ Size of the page where the pagination is required shall be at the discretion of 
 | ![next page button](static/primary-button.png)     | Moving to the next page by click                                                                                                                       |
 | ![pagination staps](static/steps.png)              | When the input is in focus, the clickable icon `Return` M size appears inside it. By clicking it or pressing Enter the user moves to the entered page. |
 
-> 💡 The current page, where the user is now, should be always displayed in the input.
+> The current page, where the user is now, should be always displayed in the input.
 
 - When the input is unfocused, we show the current page, even if the user changed this value, but did not press Enter or clicked the icon inside the input.
 - If the input is empty (for example the user cleared it himself/herself) or 0 is entered, then the user will move to the first page by clicking the icon or pressing Enter.
@@ -77,7 +77,7 @@ By clicking the icon or pressing `Enter` on the keyboard the user moves to the l
 
 We use this status only if there is some data and there may be more data.
 
-> 💡 If there is no data or the filter is applied, then there should not be any pagination. The table should contain a message that data is absent.
+> If there is no data or the filter is applied, then there should not be any pagination. The table should contain a message that data is absent.
 
 ![one page](static/one-page.png)
 

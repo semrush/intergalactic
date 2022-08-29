@@ -15,7 +15,7 @@ We use it for sequential viewing of single-level information within one componen
 - When there is a group of content on the same level (for example, images or modals with data opened from table rows). In this case, the carousel will save the user one click.
 - When there is insufficient content space, it can be used to save space in the interface.
 
-> 💡 Carousels are great to enable more than one piece of content to have the same page space. Note, that carousels on the homepages are typically ignored by users, don’t engage users, and frustrate users. Go to [funny explanation website about usage of a Carousel component](http://shouldiuseacarousel.com/).
+> Carousels are great to enable more than one piece of content to have the same page space. Note, that carousels on the homepages are typically ignored by users, don’t engage users, and frustrate users. Go to [funny explanation website about usage of a Carousel component](http://shouldiuseacarousel.com/).
 
 Use the carousel as an additional highlight of important website features and information, never as the only path to important content.
 
@@ -35,7 +35,7 @@ Use the carousel as an additional highlight of important website features and in
 
 @## Appearance and styles
 
-> 💡 Component has default styles, but you can change them depending on your task.
+> Component has default styles, but you can change them depending on your task.
 
 ### Margins
 

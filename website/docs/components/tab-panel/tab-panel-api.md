@@ -18,7 +18,7 @@ import TabPanel from '@semcore/ui/tab-panel';
 
 The tab element may contain `Addon` and `Text`, its structure is similar to [Button](/components/button/). It takes some properties from TabLine (for example, `size`, `disabled`) and may override them.
 
-> 💡 It is recommended to make tabs with links, so that the user can open a separate tab with the report with the right mouse button if necessary.
+> It is recommended to make tabs with links, so that the user can open a separate tab with the report with the right mouse button if necessary.
 
 ```jsx
 import TabPanel from '@semcore/ui/tab-panel';

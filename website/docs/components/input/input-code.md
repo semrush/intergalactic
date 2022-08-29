@@ -25,7 +25,7 @@ Inside the input with the typed text, there can be a clickable `Close` icon to c
 
 A clickable send/confirm icon can be placed inside the input with the typed text. It is only visible in the `focused` state.
 
-> 💡 Please note that this is an outdated pattern. Now we use it only in the input inside the [pagination](/components/pagination/).
+> Please note that this is an outdated pattern. Now we use it only in the input inside the [pagination](/components/pagination/).
 
 @example submit
 

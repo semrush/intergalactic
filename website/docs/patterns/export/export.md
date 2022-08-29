@@ -32,7 +32,7 @@ To export data, use a button that the user can click to set up export and/or dow
 - Use this version if export is possible to the only one format and there are no additional settings.
 - Export button opens a dropdown menu with the form.
 
-> 💡 If there is nothing to download, the file is anyway downloaded with the table headers. The file shouldn't be empty, because it is important to show the user that the export is working.
+> If there is nothing to download, the file is anyway downloaded with the table headers. The file shouldn't be empty, because it is important to show the user that the export is working.
 >
 > If the process is time consuming, the button gets loading state. The recommended time for showing spinner is `300ms`.
 
@@ -62,7 +62,7 @@ If you can export at least in two formats, and no additional settings are needed
 - If the data can be exported to three formats, it is better to shorten the button names to the format name. _For example, you can use `CSV` instead of `Export to CSV`._
 - If there is no data for all export parameters and settings, don't change button's state to the disabled.
 
-> 💡 Additionally, you can add other necessary controls in the dropdown.
+> Additionally, you can add other necessary controls in the dropdown.
 
 ### Postponed export
 

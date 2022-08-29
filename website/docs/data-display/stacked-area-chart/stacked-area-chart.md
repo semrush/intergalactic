@@ -4,7 +4,7 @@ fileSource: d3-chart
 tabName: Design
 ---
 
-> 💡 Basic data visualization rules are described in the [Chart principles](/data-display/chart/).
+> Basic data visualization rules are described in the [Chart principles](/data-display/chart/).
 
 @## Description
 
@@ -18,7 +18,7 @@ Use stacked area chart when, in addition to data amount, you need to display the
 - Try not to use too many categories (**it is not recommended to use more than 4 categories**). In such cases, it is better to use a line chart as it provides a cleaner and clearer data reading.
 - Don't forget to clearly name the chart so that the axes are understandable enough.
 
-> 💡 Useful materials about line chart vs. area chart:
+> Useful materials about line chart vs. area chart:
 >
 > - [Choosing the right chart type: Line charts vs Area charts](https://www.fusioncharts.com/blog/line-charts-vs-area-charts/)
 > - [The Fine Line In a Gray Area: When to Use Line vs Area Charts](https://visual.ly/blog/line-vs-area-charts/)
@@ -27,7 +27,7 @@ Use stacked area chart when, in addition to data amount, you need to display the
 
 By default, we show a chart with straight lines. This view facilitates reading the trend; this is what most people look at the chart for.
 
-> 💡 Add a possibility to select either straight or smooth line type in the widget settings.
+> Add a possibility to select either straight or smooth line type in the widget settings.
 
 | Example                                             | Styles                                                                                                     |
 | --------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |

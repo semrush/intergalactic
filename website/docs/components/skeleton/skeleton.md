@@ -6,7 +6,7 @@ tabName: Design
 
 @## Description
 
-> 💡 This component is one of the components that displays interface's reaction to user actions in the interface. For general rules on such components, see the [Loading patterns](/patterns/loading-states/).
+> This component is one of the components that displays interface's reaction to user actions in the interface. For general rules on such components, see the [Loading patterns](/patterns/loading-states/).
 
 **Skeleton** is a component for displaying the structure of a widget and/or a page during their initial loading. Skeleton is needed to form user's mental map about the data being loaded.
 
@@ -36,7 +36,7 @@ Animation is added per data block (widgets, tables, charts). There is no need to
 
 Content appearance animation is 300ms with `ease-out`. Skeleton gradient animation has 2000ms duration by default.
 
-> 💡 In case you do not need animation in the Skeleton, you can stop the animation using the property `duration="0"` 🕺🏻
+> In case you do not need animation in the Skeleton, you can stop the animation using the property `duration="0"` 🕺🏻
 
 @## How to skeleton different components and elements on a page?
 
@@ -81,7 +81,7 @@ Skeleton of images depends on their size:
 
 **Images of big size** are shown as follows:
 
-> 💡 In cases when it is possible from the technical point of view, skip the first step of the next scheme for large images.
+> In cases when it is possible from the technical point of view, skip the first step of the next scheme for large images.
 
 | Step                                                                                                  | Пример                                        |
 | ----------------------------------------------------------------------------------------------------- | --------------------------------------------- |
@@ -111,7 +111,7 @@ For a detailed guide, see the [Chart principles](/data-display/chart/).
 | 1. Buttons or link takes the user to another page.        | While initial loading of the page/widget, leave such buttons and links as is. |
 | 2. Buttons or link submits data or confirm user's action. | When loading such controls, **set such buttons and links to disabled state**. |
 
-> 💡 When you do not know what type (primary or secondary) of the button should be loaded (depends on different extreme cases of UX script), skeleton the button.
+> When you do not know what type (primary or secondary) of the button should be loaded (depends on different extreme cases of UX script), skeleton the button.
 
 @## When to use
 
@@ -123,7 +123,7 @@ Skeleton is recommended for using while/when:
 - the whole page is loading;
 - complex component is loading.
 
-> 💡 It is not recommended to use Skeleton for pages that are indexed by Google (for example, blog pages).
+> It is not recommended to use Skeleton for pages that are indexed by Google (for example, blog pages).
 
 @## Loaded data
 
@@ -133,7 +133,7 @@ Data is more important than skeletons, animations and everything else. As soon a
 - It is better to load the data in tables either at once or sequentially so that the lines do not change their places.
 - In some cases, it is better to load data in groups: panel summary group, select group, etc.
 
-> 💡 If the loading takes more than 5 seconds, but it is necessary to show the already loaded data, it is recommended to use Skeleton paired with the [ProgressBar](/components/progress-bar/).
+> If the loading takes more than 5 seconds, but it is necessary to show the already loaded data, it is recommended to use Skeleton paired with the [ProgressBar](/components/progress-bar/).
 
 @## What should be skeletonized?
 
@@ -269,7 +269,7 @@ Show dropdowns and selects immediately while initial loading.
 
 ![skeleton-count](static/count-yes-no.png)
 
-> 💡 This component is one of the components that displays interface's reaction to user actions in the interface. For general rules on such components, see the [Loading patterns](/patterns/loading-states/).
+> This component is one of the components that displays interface's reaction to user actions in the interface. For general rules on such components, see the [Loading patterns](/patterns/loading-states/).
 
 @page skeleton-api
 @page skeleton-code

@@ -19,7 +19,7 @@ SSO from the design point of view consists of:
 
 @## The main recommendations on styles
 
-> 💡 All variables are taken from a common file with variables in `semcore` 😏
+> All variables are taken from a common file with variables in `semcore` 😏
 
 - `L` size inputs (pills, input fields, checkboxes, buttons, links).
 - Modal window has H4 heading (25px, `--fs-500`). Page with a form has H2 heading (36px, `--fs-700`).
@@ -86,7 +86,7 @@ If the system processes data with a delay, then we hang a [SpinContainer](/compo
 
 If the email that the user entered matches a user that already exists in the system, you will see a message about this: `This user is already registered`.
 
-> For some reason, all Semrush forms now use the danger notification. Although, following the logic of using notifications, there should be a warning notification 🤷🏻‍♀️
+> For some reason, all Semrush forms now use the danger notification. Although, following the logic of using notifications, there should be a warning notification.
 
 ![form with error](static/error.png)
 

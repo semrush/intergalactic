@@ -4,7 +4,7 @@ fileSource: d3-chart
 tabName: Design
 ---
 
-> 💡 Basic data visualization rules are described in the [Chart principles](/data-display/chart/).
+> Basic data visualization rules are described in the [Chart principles](/data-display/chart/).
 
 @## Description
 
@@ -19,7 +19,7 @@ As the documentation for [Microsoft Office](https://en.wikipedia.org/wiki/Micros
 - patterns between data categories.
 - the third or fourth dimension of the data (the size and color of the bubbles, respectively).
 
-> 💡 A bubble chart is a variation of a scatterplot chart, but with one or two additional dimensions added to the data (the size and color of the circles, respectively).
+> A bubble chart is a variation of a scatterplot chart, but with one or two additional dimensions added to the data (the size and color of the circles, respectively).
 >
 > **Note that the more colors you use for the categories, the harder it will be to read the chart.**
 
@@ -31,7 +31,7 @@ As the documentation for [Microsoft Office](https://en.wikipedia.org/wiki/Micros
 - labels for the X and Y axes (don't color them, as this makes the chart harder to read);
 - a legend if the dataset has different categories, each with a different color.
 
-> 💡 Make sure to add information on what the bubble size means.
+> Make sure to add information on what the bubble size means.
 
 | Case             | Appearance example                                     | Styles                             |
 | ---------------- | ------------------------------------------------------ | ---------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -99,7 +99,7 @@ Here you will find the states for some specific cases. All other "empty states" 
 
 ### Subheading with additional information
 
-> 💡 Accompany the bubble chart with additional information on what determines the size of the circles.
+> Accompany the bubble chart with additional information on what determines the size of the circles.
 
 ![bubble chart's example](static/ux-1.png)
 
@@ -120,7 +120,7 @@ The data will be difficult to read and compare.
 
 ### Number of datasets
 
-> 💡 The more datasets you cram into your scatterplot chart, the harder it is to read.
+> The more datasets you cram into your scatterplot chart, the harder it is to read.
 
 ![bubble chart's datasets](static/categories-yes-no.png)
 

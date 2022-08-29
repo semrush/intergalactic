@@ -32,14 +32,14 @@ Component consists of:
 
 There are several themes of tags.
 
-| Tag theme                         | Appearance example                                           | Description                                                                                                                                                                                                                           |
-| --------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `primary`                         | ![primary tag example](static/primary.png)                   | The main type of tag for using on a light background. 💡 Any color from our [color palette](/style/palette/) can be set as a tag color, the default color is `--gray-500` (background gets color with 100 shade — e.g. `--gray-100`). |
-| `secondary`                       | ![secondary tag example](static/secondary.png)               | The secondary tag type for using on a light background when it is necessary to make the contrast between the promary and secondary tags.                                                                                              |
-| `primary` with `color:"white"`    | ![primary invert tag example](static/primary-invert.png)     | It is an inversion of the primary tag for using on dark or colored background.                                                                                                                                                        |
-| `secondary` with `color:"white"`  | ![secondary invert tag example](static/secondary-invert.png) | It is an inversion of the secondary tag for using on dark or colored background.                                                                                                                                                      |
-| `additional`                      | ![additional tag example](static/additional.png)             | The additional type for special tag that adds other tag.                                                                                                                                                                              |
-| `additional` with `color:"white"` | ![additional tag example](static/additional-invert.png)      | It is an inversion of the additional type for special tag that adds other tag.                                                                                                                                                        |
+| Tag theme                         | Appearance example                                           | Description                                                                                                                                                                                                                        |
+| --------------------------------- | ------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `primary`                         | ![primary tag example](static/primary.png)                   | The main type of tag for using on a light background. Any color from our [color palette](/style/palette/) can be set as a tag color, the default color is `--gray-500` (background gets color with 100 shade — e.g. `--gray-100`). |
+| `secondary`                       | ![secondary tag example](static/secondary.png)               | The secondary tag type for using on a light background when it is necessary to make the contrast between the promary and secondary tags.                                                                                           |
+| `primary` with `color:"white"`    | ![primary invert tag example](static/primary-invert.png)     | It is an inversion of the primary tag for using on dark or colored background.                                                                                                                                                     |
+| `secondary` with `color:"white"`  | ![secondary invert tag example](static/secondary-invert.png) | It is an inversion of the secondary tag for using on dark or colored background.                                                                                                                                                   |
+| `additional`                      | ![additional tag example](static/additional.png)             | The additional type for special tag that adds other tag.                                                                                                                                                                           |
+| `additional` with `color:"white"` | ![additional tag example](static/additional-invert.png)      | It is an inversion of the additional type for special tag that adds other tag.                                                                                                                                                     |
 
 @## Interaction
 
@@ -86,7 +86,7 @@ If the text of a tag exceeds the maximum width, collapse it into `ellipsis` and 
 
 In case you have a huge number of tags and do not need to show them all at once, minimize them to a tag with three dots. When you click on it, all hidden tags will be opened.
 
-> 💡 Unfortunately, this solution can be found in several places so far.
+> Unfortunately, this solution can be found in several places so far.
 
 ![more tags example](static/more-tags.png) -->
 

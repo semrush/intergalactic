@@ -4,7 +4,7 @@ fileSource: d3-chart
 tabName: Design
 ---
 
-> 💡 Basic data visualization rules are described in the [Chart principles](/data-display/chart/).
+> Basic data visualization rules are described in the [Chart principles](/data-display/chart/).
 
 @## Description
 
@@ -26,7 +26,7 @@ Use a scatterplot chart when you need to show the correlation between two variab
 | If the line runs from top left to bottom right, there is likely a negative correlation between the two variables.                    | ![negative correlation](static/negative-correlation.png) |
 | If the overall trend doesn't form a clear straight line, there is probably no correlation.                                           | ![no correlation](static/no-correlation.png)             |
 
-> 💡 Note that correlation isn't always equal to causation. Other unnoticed variables can influence the data in the chart.
+> Note that correlation isn't always equal to causation. Other unnoticed variables can influence the data in the chart.
 
 @## Appearance
 
@@ -119,7 +119,7 @@ Otherwise, it can visually distort the presence of a correlation between the dat
 
 ### Number of datasets
 
-> 💡 The more datasets you cram into your scatterplot chart, the harder it is to read.
+> The more datasets you cram into your scatterplot chart, the harder it is to read.
 
 ![scatterplot with several datasets](static/categories-yes-no.png)
 

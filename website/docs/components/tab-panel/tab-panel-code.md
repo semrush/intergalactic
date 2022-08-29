@@ -7,7 +7,7 @@ fileSource: tab-panel
 
 Try to reduce the page and see how tabs are compressed. You can also wrap the `<TabPanel.Item />` in other components.
 
-> 💡 Be sure to put the full text tooltip on the tabs with the text shortened into the `ellipsis`.
+> Be sure to put the full text tooltip on the tabs with the text shortened into the `ellipsis`.
 
 @example base
 
