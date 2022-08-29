@@ -24,16 +24,16 @@ Besides, both paragraphs headings and text can be colored in our main semantic c
 
 @## Font variables
 
-| px  | em   | Variables | Font family            |          |
-| --- | ---- | --------- | ---------------------- | -------- |
-|     | 48px | 3em       | `--fs-800`, `--lh-800` | Factor A |
-|     | 36px | 2.25em    | `--fs-700; --lh-700;`  | Factor A |
-|     | 32px | 2em       | `--fs-600; --lh-600;`  | Factor A |
-|     | 24px | 1.5em     | `--fs-500; --lh-500;`  | Factor A |
-|     | 20px | 1.25em    | `--fs-400; --lh-400;`  | Inter    |
-|     | 16px | 1em       | `--fs-300; --lh-300;`  | Inter    |
-|     | 14px | 0.875em   | `--fs-200; --lh-200;`  | Inter    |
-|     | 12px | 0.75em    | `--fs-100; --lh-100;`  | Inter    |
+| px   | em        | Variables | Font family           |
+| ---- | --------- | --------- | --------------------- |
+| 48px | 3em       | `--fs-800`, `--lh-800` | Factor A |
+| 36px | 2.25em    | `--fs-700; --lh-700;`  | Factor A |
+| 32px | 2em       | `--fs-600; --lh-600;`  | Factor A |
+| 24px | 1.5em     | `--fs-500; --lh-500;`  | Factor A |
+| 20px | 1.25em    | `--fs-400; --lh-400;`  | Inter    |
+| 16px | 1em       | `--fs-300; --lh-300;`  | Inter    |
+| 14px | 0.875em   | `--fs-200; --lh-200;`  | Inter    |
+| 12px | 0.75em    | `--fs-100; --lh-100;`  | Inter    |
 
 @example text-variables
 
