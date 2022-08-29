@@ -67,7 +67,7 @@ function LinkText(props) {
 function Addon(props) {
   const SAddon = Root;
   const { styles } = props;
-  return sstyled(styles)(<SAddon render={Box} />);
+  return sstyled(styles)(<SAddon render={Box} tag="span" />);
 }
 
 const Link = createComponent(RootLink, {
