@@ -4,9 +4,14 @@ const { cleanup, axe, render } = testing;
 
 import InlineEdit from '../src';
 
-const InstantFadeInOut: React.FC<{ children: React.ReactNode; visible: boolean }> = (props) => {
-  return <div style={{ opacity: props.visible ? 1 : 0 }}>{props.children}</div>;
-};
+const InstantFadeInOut: React.FC<{ children: React.ReactNode; visible: boolean }> =
+  React.forwardRef((props, ref) => {
+    return (
+      <div ref={ref} style={{ opacity: props.visible ? 1 : 0 }}>
+        {props.children}
+      </div>
+    );
+  });
 
 describe('InlineEdit', () => {
   afterEach(cleanup);

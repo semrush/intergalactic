@@ -1,6 +1,6 @@
 import React from 'react';
 import { testing, snapshot } from '@semcore/jest-preset-ui';
-const { axe, cleanup, render, fireEvent } = testing;
+const { axe, cleanup, render, fireEvent, act } = testing;
 
 import { DatePicker, DateRangePicker, MonthRangePicker } from '../src';
 
@@ -33,7 +33,7 @@ describe('DatePicker', () => {
 
     const { getByText } = render(<DatePicker onChange={spy} visible />);
 
-    getByText('Today').click();
+    fireEvent.click(getByText('Today'));
     expect(spy).toBeCalledWith(new Date(new Date().setHours(0, 0, 0, 0)));
   });
 
@@ -55,9 +55,9 @@ describe('DatePicker', () => {
     fireEvent.click(getByLabelText('Next period'));
     // change visible
     fireEvent.click(getByText('Select date'));
-    jest.runAllTimers();
+    act(() => jest.runAllTimers());
     fireEvent.click(getByText('Select date'));
-    jest.runAllTimers();
+    act(() => jest.runAllTimers());
     expect(getByText('March 2020')).toBeTruthy();
     jest.useRealTimers();
   });
@@ -71,10 +71,10 @@ describe('DatePicker', () => {
     fireEvent.click(getByLabelText('Prev period'));
     // change visible
     fireEvent.click(getByText('15'));
-    jest.runAllTimers();
+    act(() => jest.runAllTimers());
     // change visible
     fireEvent.click(getByText('Aug 15, 2021'));
-    jest.runAllTimers();
+    act(() => jest.runAllTimers());
     expect(getByText('August 2021')).toBeTruthy();
     jest.useRealTimers();
   });
@@ -99,8 +99,8 @@ describe('DateRangePicker', () => {
 
     const { getByText } = render(<DateRangePicker onChange={spy} visible />);
 
-    getByText('Last 2 days').click();
-    getByText('Apply').click();
+    fireEvent.click(getByText('Last 2 days'));
+    fireEvent.click(getByText('Apply'));
     const today = new Date(new Date().setHours(0, 0, 0, 0));
     expect(spy).toBeCalledWith([DateRangePicker.subtract(today, 1, 'day'), today]);
   });
@@ -223,9 +223,9 @@ describe('DateRangePicker', () => {
     fireEvent.click(getByLabelText('Next period'));
     // change visible
     fireEvent.click(getByText('Select date period'));
-    jest.runAllTimers();
+    act(() => jest.runAllTimers());
     fireEvent.click(getByText('Select date period'));
-    jest.runAllTimers();
+    act(() => jest.runAllTimers());
     expect(getByText('March 2020')).toBeTruthy();
     jest.useRealTimers();
   });
@@ -240,10 +240,10 @@ describe('DateRangePicker', () => {
     // change visible
     fireEvent.click(getByText('31'));
     fireEvent.click(getByText('Apply'));
-    jest.runAllTimers();
+    act(() => jest.runAllTimers());
     // trigger
     fireEvent.click(getByText('Aug 31, 2021'));
-    jest.runAllTimers();
+    act(() => jest.runAllTimers());
     expect(getByText('August 2021')).toBeTruthy();
     jest.useRealTimers();
   });
