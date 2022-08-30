@@ -6,6 +6,7 @@ import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhan
 import addonTextChildren from '@semcore/utils/lib/addonTextChildren';
 import logger from '@semcore/utils/lib/logger';
 import reactToText from '@semcore/utils/lib/reactToText';
+import getOriginChildren from '@semcore/utils/lib/getOriginChildren';
 import SpinButton from './SpinButton';
 
 import style from './style/button.shadow.css';
@@ -55,10 +56,8 @@ class RootButton extends Component {
       addonRight,
       'aria-label': ariaLabel,
     } = this.asProps;
-
     const useTheme = use && theme ? `${use}-${theme}` : false;
-
-    const isTextInside = reactToText(Children);
+    const isTextInside = reactToText(getOriginChildren(Children));
 
     logger.warn(
       !isTextInside && !ariaLabel,

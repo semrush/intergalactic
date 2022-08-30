@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.1.3] - 2022-08-29
+
+### Fixed
+
+- Fixed aria warning detection.
+
 ## [4.1.2] - 2022-08-26
 
 ### Fixed
