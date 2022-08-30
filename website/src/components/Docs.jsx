@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useCallback, useState } from 'react';
 import { useRouteMatch } from 'react-router-dom';
-import { scroller } from 'react-scroll';
 import Prismjs from 'prismjs';
 import 'prismjs/components/prism-jsx';
 import TabLine from '@semcore/tab-line';
