@@ -6,6 +6,7 @@ import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhan
 import addonTextChildren from '@semcore/utils/lib/addonTextChildren';
 import resolveColor, { shade } from '@semcore/utils/lib/color';
 import reactToText from '@semcore/utils/lib/reactToText';
+import getOriginChildren from '@semcore/utils/lib/getOriginChildren';
 import logger from '@semcore/utils/lib/logger';
 
 import style from './style/link.shadow.css';
@@ -31,7 +32,7 @@ class RootLink extends Component {
       'aria-label': ariaLabel,
     } = this.asProps;
     const colorHoverText = shade(resolveColor(color), -0.12);
-    const linkText = reactToText(Children);
+    const linkText = reactToText(getOriginChildren(Children));
 
     logger.warn(
       linkText === '' && ariaLabel === undefined,
