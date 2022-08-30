@@ -200,7 +200,16 @@ class Value extends Component<IInputTagsValueProps> {
 
 function InputTag(props) {
   const STag = Root;
-  return sstyled(props.styles)(<STag data-value={props.value} render={Tag} role="listitem" />);
+
+  const onKeyDown = (event) => {
+    if (event.code === 'Enter') {
+      props.onClick && props.onClick(event);
+    }
+  };
+
+  return sstyled(props.styles)(
+    <STag data-value={props.value} render={Tag} role="listitem" onKeyDown={onKeyDown} />,
+  );
 }
 
 export default createComponent<
