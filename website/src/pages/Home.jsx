@@ -95,9 +95,9 @@ const getTabByTitle = (titles, className) => {
           getComponents(titles[0])
         )
       ) : (
-        titles.map((title) => {
+        titles.map((title, i) => {
           return (
-            <Box mr={7.5}>
+            <Box mr={7.5} key={i}>
               <h2>{title}</h2>
               {getComponents(title)}
             </Box>
@@ -137,7 +137,7 @@ const getComponents = (titles) => {
             {child.elem.title}
           </Link>
           {child.elem.metadata.beta && (
-            <Tag size="l" theme="warning" use="primary" children="beta" ml={1} />
+            <Tag size="l" theme="primary" color="orange-500" children="beta" ml={1} />
           )}
         </Tooltip.Trigger>
         {pic && <Tooltip.Popper children={pic} />}

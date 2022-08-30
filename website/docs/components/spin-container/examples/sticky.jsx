@@ -7,7 +7,7 @@ import { ScrollArea } from '@semcore/scroll-area';
 
 const Demo = () => (
   <ScrollArea h={300}>
-    <SpinContainer h={500} w={150} loading>
+    <SpinContainer h={500} w={150} loading style={{ overflow: 'initial' }}>
       <SpinContainer.Content>
         <Text size={100}>
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam aperiam atque beatae
@@ -19,7 +19,9 @@ const Demo = () => (
         </Text>
       </SpinContainer.Content>
       <SpinContainer.Overlay style={{ alignItems: 'flex-start' }}>
-        <Spin tag={Sticky} top="100px" size="xxl" />
+        <Sticky top="100px">
+          <Spin size="xxl" />
+        </Sticky>
       </SpinContainer.Overlay>
     </SpinContainer>
   </ScrollArea>

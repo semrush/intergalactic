@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { InstantSearch } from 'react-instantsearch/dom';
 import { connectAutoComplete } from 'react-instantsearch/connectors';
@@ -41,7 +41,9 @@ const SuggestSearch = connectAutoComplete(
       onChangeValue(value);
       return refine(value);
     };
-    filteredIcons(hits);
+    useEffect(() => {
+      filteredIcons(hits);
+    });
 
     return (
       <Search size="l" mb={4}>

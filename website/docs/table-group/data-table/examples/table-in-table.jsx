@@ -3,14 +3,14 @@ import DataTable from '@semcore/data-table';
 import Accordion from '@semcore/accordion';
 import { Box, Flex } from '@semcore/flex-box';
 
-function RowAccordion({ value, collapse = {}, ...props }) {
+const RowAccordion = React.forwardRef(function ({ value, collapse = {}, ...props }, ref) {
   return (
-    <Accordion.Item value={value}>
+    <Accordion.Item value={value} ref={ref}>
       <Accordion.Item.Toggle {...props} />
       <Accordion.Item.Collapse {...collapse} />
     </Accordion.Item>
   );
-}
+});
 
 export default () => {
   const [value, setValue] = useState([]);

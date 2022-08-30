@@ -27,10 +27,10 @@ function SideBarHeading({ headings }) {
   return (
     <>
       <div className={styles.sideBarWrapper}>
-        {headings.map((heading) => (
+        {headings.map((heading, i) => (
           <Link
             className={cx(styles.navLink, heading.id === activeId && styles.navLinkActive)}
-            key={heading.html}
+            key={heading.html + i}
             to={heading.id}
             smooth={true}
             offset={-140}

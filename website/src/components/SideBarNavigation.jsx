@@ -51,7 +51,6 @@ const SideBarNavigation = ({ navigation = [], onNavigate, className }) => {
                       p.route === `${category}/${page}` && styles.categoryItemActive,
                     )}
                     onClick={onNavigate}
-                    active={p.route === `${category}/${page}`}
                     to={`/${p.route}/`}
                     key={`page-${i}`}
                     dangerouslySetInnerHTML={{ __html: p.title }}

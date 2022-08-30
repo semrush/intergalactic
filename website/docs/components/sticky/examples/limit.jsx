@@ -52,7 +52,7 @@ let data = [
 
 data.forEach((d) => (data = shuffle(data.concat(data))));
 
-const Loader = styled.div`
+const Loader = styled.tr`
   position: absolute;
   top: 0;
   left: 0;
@@ -85,17 +85,19 @@ const Demo = () => (
           </Table.Row>
         ))}
         <Loader>
-          <Sticky top={150} style={{ textAlign: 'center' }}>
-            <Text size={500} medium tag="h4" mb="16px">
-              Want to view more results?
-            </Text>
-            <Text size={300} tag="p" mb="24px">
-              To view more data, upgrade to a Guru or Business subscription plan.
-            </Text>
-            <Button use="primary" theme="success" size="l">
-              See plans and pricing
-            </Button>
-          </Sticky>
+          <td>
+            <Sticky top={150} style={{ textAlign: 'center' }}>
+              <Text size={500} medium tag="h4" mb="16px">
+                Want to view more results?
+              </Text>
+              <Text size={300} tag="p" mb="24px">
+                To view more data, upgrade to a Guru or Business subscription plan.
+              </Text>
+              <Button use="primary" theme="success" size="l">
+                See plans and pricing
+              </Button>
+            </Sticky>
+          </td>
         </Loader>
       </Table.Body>
     </Table>
