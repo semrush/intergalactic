@@ -121,7 +121,7 @@ For the primary button you can use themes according to the visual hierarchy on t
 - Leave one CTA on the page and in the modal window. _For example, one green button._
 - We recommend you do not disable CTA, even if something went wrong (especially in filters and modal windows with a single CTA). The user need to understand that the product/service is working. When user clicks on the button, add a message about the error or what user needs to do in this case.
 - If you can't do without a button in the disabled state, be sure to add a tooltip for it with an explanation of why main action is disabled.
-- If there are a lot of actions in your interface, first of all set your priorities. Place controls in your interface according to the [visual loudness scale](/patterns/visual-loudness-scale) guide. Use inactive "quiet" buttons in the interface. Don't "shout" at the user with your interface, let them work with your product in peace and comfort.
+- If there are a lot of actions in your interface, first of all set your priorities. Place controls in your interface according to the [visual loudness scale](/patterns/visual-loudness-scale/) guide. Use inactive "quiet" buttons in the interface. Don't "shout" at the user with your interface, let them work with your product in peace and comfort.
 
 @## Button variations
 
@@ -168,7 +168,7 @@ Sometimes you need to show that button connects or links to some other service. 
 
 @## Groups of buttons
 
-To combine the components such as Button, Input, and Select, use the [NeighborLocation](/utils/neighbor-location) component.
+To combine the components such as Button, Input, and Select, use the [NeighborLocation](/utils/neighbor-location/) component.
 
 @page button-a11y
 @page button-api

@@ -6,53 +6,53 @@ tabName: Design
 
 @## Description
 
-**NeighborLocation** is a common component for grouping components. It indicates where the component is in relation to its neighbors.
+**NeighborLocation** is a component for grouping components. It indicates where the component is in relation to its neighbors.
 
 > 🙃 This violates many principles of building components, but the beautiful API and the necessary functionality outweighed the valuations.
 
-For example, we can group together:
+For example, you can group together:
 
 - [Button](/components/button/)
 - [Input](/components/input/)
 - [Select](/components/select)
 
-You may also need a `flex-box` to align the components. For more information, see the [Spacing system](/layout/box-system/).
+You may also need a `flex-box` to align the components. For more information, see the [Flex-box and indent system](/layout/box-system/).
 
-@## Grouping buttons
+@## Grouped buttons
 
-The buttons can be adhered to each other. In this case, a 1px separator appears between them. The color of the separator matches the color of the button border if secondary buttons are adhered. If primary buttons are adhered together, the separator between them is white.
+Buttons can be grouped.
 
-You can "adhere" a button with a text and a button with an icon only for the `primary` and `secondary` types.
+If you group primary buttons, the right one will have a 1px white border.
 
-![buttons group](static/buttons-group.png)
+![buttons group](static/primary-buttons-group.png)
+
+If you group secondary buttons, the left one will hide it's right border.
+
+![buttons group](static/secondary-buttons-group.png)
+
+> Do not group tertiary buttons this way.
 
 @example neighbor-location
 
-@## Grouping the input and button
-
-You can "adhere" the input field with a button.
-
-![input & button](static/input-button-group.png)
+@## Grouped input and button
 
 @example neighbor-location-input
 
-@## Adhering the input and select
-
-You can "adhere" the input field with a selector.
-
-![input & select](static/input-select-group.png)
+@## Grouped input and select
 
 @example neighbor-location-input-select
 
-@## Grouping the input, select, and button
+@## Grouped input, select, and button
 
-You can also make a combo — "adhere" the entire input field, selector, and button. In such cases, use the primary button.
+You can group input, select, and button.
 
-![KILL ME PLS](static/combo.png)
+![combo case](static/combo.png)
+
+@example neighbor-location-combo
 
 @## Adding a wrapper
 
-By default, a `<NeighborLocation/>` does not create an HTML wrapper, but you can pass the component tag you want to it.
+By default, `<NeighborLocation/>` does not create an HTML wrapper, but you can pass the component tag you want.
 
 > For the correct type mapping in the TC, you must also pass the interface.
 > `<NeighborLocation<IFlexProps> tag={Flex} w={200}/>`
