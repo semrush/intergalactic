@@ -2,11 +2,21 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.4.0] - unreleased
+
+### Changed
+
+- Updated svg images for: `coffee`, `duplicates`, `good`, `nexttime`, `other-data`, `processing`, `radial-tree-chart`, `suggestion`, `suggestions`, `table`, `text-links-etc`, `under-construction`, `warning` .
+
+### Added
+
+- Added new svg images — `collection` and `waiting`.
+
 ## [3.3.0] - unreleased
 
 ### Added
 
-- Added Turkish langauge support.
+- Added Turkish language support.
 
 ## [3.2.3] - 2022-08-18
 
