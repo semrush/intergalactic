@@ -2441,9 +2441,7 @@ describe('d3 charts visual regression', () => {
       );
     };
 
-    expect(await snapshot(<Component />)).toMatchImageSnapshot({
-      // failureThreshold: 0.0001,
-    });
+    expect(await snapshot(<Component />)).toMatchImageSnapshot();
   });
 
   test('should render venn-orientation', async () => {
@@ -2511,23 +2509,12 @@ describe('d3 charts visual regression', () => {
             <Venn.Intersection dataKey="F/C" name="Fast & Cheap" />
             <Venn.Intersection dataKey="G/F/C" name="Good & Fast & Cheap" />
           </Venn>
-          <Tooltip>
-            {({ name, dataKey }) => {
-              return {
-                children: (
-                  <>
-                    <Tooltip.Title>{name}</Tooltip.Title>
-                    <Text bold>{data[dataKey]}</Text>
-                  </>
-                ),
-              };
-            }}
-          </Tooltip>
         </Plot>
       );
     };
 
     expect(await snapshot(<Component />)).toMatchImageSnapshot({
+      // because 0.00012044219843687642% different from snapshot 😬
       failureThreshold: 0.0001,
     });
   });
