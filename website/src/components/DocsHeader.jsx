@@ -28,7 +28,7 @@ export default function (props) {
   return (
     <Box tag="header" mb={10}>
       <h2 className={styles.title}>
-        {title} {beta && <Tag size="l" theme="warning" use="primary" children="beta" />}
+        {title} {beta && <Tag size="l" theme="primary" color="orange-500" children="beta" />}
       </h2>
       <Text tag="p" color="#898D9A" mb={3} size={300}>
         {category}
@@ -64,25 +64,25 @@ export default function (props) {
                     <path
                       fill="none"
                       stroke="#000"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="16"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="16"
                       d="M224,177.32122V78.67878a8,8,0,0,0-4.07791-6.9726l-88-49.5a8,8,0,0,0-7.84418,0l-88,49.5A8,8,0,0,0,32,78.67878v98.64244a8,8,0,0,0,4.07791,6.9726l88,49.5a8,8,0,0,0,7.84418,0l88-49.5A8,8,0,0,0,224,177.32122Z"
                     />
                     <polyline
                       fill="none"
                       stroke="#000"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="16"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="16"
                       points="177.022 152.511 177.022 100.511 80 47"
                     />
                     <polyline
                       fill="none"
                       stroke="#000"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="16"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="16"
                       points="222.897 74.627 128.949 128 33.108 74.617"
                     />
                     <line
@@ -92,9 +92,9 @@ export default function (props) {
                       y2="234.821"
                       fill="none"
                       stroke="#000"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="16"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="16"
                     />
                   </svg>
                 </Link.Addon>

@@ -26,7 +26,7 @@ class Example extends React.PureComponent {
               </div>
             </div>
           </div>
-          <Code lang="jsx" block copy={false}>
+          <Code lang="jsx" block>
             {raw.code}
           </Code>
         </div>

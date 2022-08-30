@@ -10,14 +10,14 @@ const StyledAccordionContent = styled(Box)`
   border-bottom: 1px solid ${resolveColor('stone')};
 `;
 
-function RowAccordion({ value, collapse = {}, ...props }) {
+const RowAccordion = React.forwardRef(function ({ value, collapse = {}, ...props }, ref) {
   return (
     <Accordion.Item value={value}>
       <Accordion.Item.Toggle {...props} />
-      <Accordion.Item.Collapse {...collapse} />
+      <Accordion.Item.Collapse ref={ref} {...collapse} />
     </Accordion.Item>
   );
-}
+});
 
 export default () => {
   const [value, setValue] = useState([]);
