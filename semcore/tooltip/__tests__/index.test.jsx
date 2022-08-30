@@ -1,6 +1,6 @@
 import React from 'react';
 import { testing, snapshot } from '@semcore/jest-preset-ui';
-const { cleanup, fireEvent, render, axe } = testing;
+const { cleanup, fireEvent, render, axe, act } = testing;
 
 import Tooltip from '../src';
 
@@ -147,7 +147,7 @@ describe('Tooltip.Popper', () => {
     render(
       <Tooltip visible>
         <Tooltip.Trigger />
-        <Tooltip.Popper tag="div" ref={ref} />
+        <Tooltip.Popper ref={ref} />
       </Tooltip>,
     );
     expect(ref.current.nodeName).toBe('DIV');
@@ -203,10 +203,10 @@ describe('TooltipBase', () => {
     );
 
     fireEvent.mouseEnter(getByTestId('trigger'));
-    jest.runAllTimers();
+    act(() => jest.runAllTimers());
     expect(spy).toHaveBeenCalledTimes(1);
     fireEvent.mouseLeave(getByTestId('trigger'));
-    jest.runAllTimers();
+    act(() => jest.runAllTimers());
     expect(spy).toHaveBeenCalledTimes(2);
     jest.useRealTimers();
   });

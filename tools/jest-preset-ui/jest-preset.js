@@ -18,4 +18,6 @@ module.exports = {
     '^disable-jest-mapper:(.*)': '$1',
   },
   modulePathIgnorePatterns: ['/generator-component/'],
+  testEnvironment: 'jsdom',
+  // testEnvironmentOptions: {}
 };

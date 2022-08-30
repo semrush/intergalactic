@@ -26,7 +26,7 @@ describe('InputMask', () => {
 
     const { getByTestId } = render(<Component />);
     const input = getByTestId('input');
-    input.focus();
+    fireEvent.focus(input);
     fireEvent.change(input, { target: { value: '999' } });
 
     expect(input.value).toBe('99 9_');

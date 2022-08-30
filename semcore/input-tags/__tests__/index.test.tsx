@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { testing, snapshot } from '@semcore/jest-preset-ui';
-const { cleanup } = testing;
 import Tooltip from '@semcore/tooltip';
-import Select from '@semcore/select';
+
+const { cleanup } = testing;
 
 import InputTags from '../src';
 
@@ -91,34 +91,20 @@ describe('InputTags', () => {
   test("renders url's example", async () => {
     const isValidEmail = (value) => /.+@.+\..+/i.test(value.toLowerCase());
 
-    const defaultTags = ['bob_vk.com', 'wolf@instagram.dot'];
-
-    const Component = () => {
-      const [tags] = React.useState(defaultTags);
-      const [value] = React.useState('');
-
-      return (
-        <Select interaction="focus">
-          <Select.Trigger tag={InputTags} size="l">
-            {tags.map((tag, idx) => (
-              <InputTags.Tag
-                key={idx}
-                style={{ textDecoration: !isValidEmail(tag) ? 'line-through' : 'none' }}
-              >
-                <InputTags.Tag.Text>{tag}</InputTags.Tag.Text>
-                <InputTags.Tag.Close data-id={idx} />
-              </InputTags.Tag>
-            ))}
-            <InputTags.Value value={value} />
-          </Select.Trigger>
-          {value && (
-            <Select.Menu>
-              <Select.Option value={value}>{value}</Select.Option>
-            </Select.Menu>
-          )}
-        </Select>
-      );
-    };
-    expect(await snapshot(<Component />)).toMatchImageSnapshot();
+    const component = (
+      <InputTags size="l">
+        {['bob_vk.com', 'wolf@instagram.dot'].map((tag, idx) => (
+          <InputTags.Tag
+            key={idx}
+            style={{ textDecoration: !isValidEmail(tag) ? 'line-through' : 'none' }}
+          >
+            <InputTags.Tag.Text>{tag}</InputTags.Tag.Text>
+            <InputTags.Tag.Close data-id={idx} />
+          </InputTags.Tag>
+        ))}
+        <InputTags.Value />
+      </InputTags>
+    );
+    expect(await snapshot(component)).toMatchImageSnapshot();
   });
 });

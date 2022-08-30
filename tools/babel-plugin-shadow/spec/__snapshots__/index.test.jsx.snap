@@ -4,7 +4,7 @@ exports[`babel postcss should inline styles from file but ignore them 1`] = `
 "import React from 'react';
 import { styled, css, __css__, set, create, use, map } from '@semcore/core';
 
-/*__reshadow-styles__:\\"./styles.css\\"*/
+/*__reshadow-styles__:"./styles.css"*/
 const { ...styles
 } = (
 /*__reshadow_css_start__*/
@@ -15,7 +15,7 @@ __css__(
 }
 \`
 /*__inner_css_end__*/
-, \\"13e4rxs_gg_\\")
+, "13e4rxs_gg_")
 /*__reshadow_css_end__*/
 , {});
 const styled_c8 = create([styles]);
@@ -23,12 +23,12 @@ const styled_c8 = create([styles]);
 const App = ({
   disabled,
   type
-}) => styled((set([styled_c8]), /*#__PURE__*/React.createElement(\\"button\\", map(\\"button\\", {
+}) => styled((set([styled_c8]), /*#__PURE__*/React.createElement("button", map("button", {
   type: type,
   disabled: disabled
 }, use({
-  theme: \\"normal\\"
-})), \\"content\\")));
+  theme: "normal"
+})), "content")));
 
 export default App;"
 `;
@@ -44,21 +44,21 @@ __css__(
     color: red;
 }\`
 /*__inner_css_end__*/
-, \\"kzz4i_gg_\\")
+, "kzz4i_gg_")
 /*__reshadow_css_end__*/
 , {
-  \\"__button\\": \`___button_d2nb2_1\`
+  "__button": \`___button_d2nb2_1\`
 })]);
 
 const App = ({
   disabled,
   type
-}) => styled((set([styled_c8]), /*#__PURE__*/React.createElement(\\"button\\", map(\\"button\\", {
+}) => styled((set([styled_c8]), /*#__PURE__*/React.createElement("button", map("button", {
   type: type,
   disabled: disabled
 }, use({
-  theme: \\"normal\\"
-})), \\"content\\")));
+  theme: "normal"
+})), "content")));
 
 export default App;"
 `;
@@ -67,7 +67,7 @@ exports[`babel postcss should process styles from file 1`] = `
 "import React from 'react';
 import { styled, css, __css__, set, create, use, map } from '@semcore/core';
 
-/*__reshadow-styles__:\\"./styles.css\\"*/
+/*__reshadow-styles__:"./styles.css"*/
 const { ...styles
 } = (
 /*__reshadow_css_start__*/
@@ -78,22 +78,22 @@ __css__(
 }
 \`
 /*__inner_css_end__*/
-, \\"p2ap2p_gg_\\")
+, "p2ap2p_gg_")
 /*__reshadow_css_end__*/
 , {
-  \\"__button\\": \`___button_13e4r_1\`
+  "__button": \`___button_13e4r_1\`
 });
 const styled_c8 = create([styles]);
 
 const App = ({
   disabled,
   type
-}) => styled((set([styled_c8]), /*#__PURE__*/React.createElement(\\"button\\", map(\\"button\\", {
+}) => styled((set([styled_c8]), /*#__PURE__*/React.createElement("button", map("button", {
   type: type,
   disabled: disabled
 }, use({
-  theme: \\"normal\\"
-})), \\"content\\")));
+  theme: "normal"
+})), "content")));
 
 export default App;"
 `;
@@ -111,22 +111,22 @@ __css__(
     }
 \`
 /*__inner_css_end__*/
-, \\"opgh5j_gg_\\")
+, "opgh5j_gg_")
 /*__reshadow_css_end__*/
 , {
-  \\"__button\\": \`___button_1cx4s_1\`
+  "__button": \`___button_1cx4s_1\`
 });
 const styled_c8 = create([styles]);
 
 const App = ({
   disabled,
   type
-}) => styled((set([styled_c8]), /*#__PURE__*/React.createElement(\\"button\\", map(\\"button\\", {
+}) => styled((set([styled_c8]), /*#__PURE__*/React.createElement("button", map("button", {
   type: type,
   disabled: disabled
 }, use({
-  theme: \\"normal\\"
-})), \\"content\\")));
+  theme: "normal"
+})), "content")));
 
 export default App;"
 `;
@@ -144,22 +144,22 @@ __css__(
     }
 \`
 /*__inner_css_end__*/
-, \\"opgh5j_gg_\\")
+, "opgh5j_gg_")
 /*__reshadow_css_end__*/
 , {
-  \\"__button\\": \`___button_1cx4s_1\`
+  "__button": \`___button_1cx4s_1\`
 });
 const styled_c8 = create([styles]);
 
 const App = ({
   disabled,
   type
-}) => styled((set([styled_c8]), /*#__PURE__*/React.createElement(\\"button\\", map(\\"button\\", {
+}) => styled((set([styled_c8]), /*#__PURE__*/React.createElement("button", map("button", {
   type: type,
   disabled: disabled
 }, use({
-  theme: \\"normal\\"
-})), \\"content\\")));
+  theme: "normal"
+})), "content")));
 
 export default App;"
 `;
@@ -173,19 +173,19 @@ __css__(
 /*__inner_css_start__*/
 \`.___button_1n8fw_1{display:grid}\`
 /*__inner_css_end__*/
-, \\"e4ti1n_gg_\\")
+, "e4ti1n_gg_")
 /*__reshadow_css_end__*/
 , {
-  \\"__button\\": \`___button_1n8fw_1\`
+  "__button": \`___button_1n8fw_1\`
 })]);
 
 const App = ({
   disabled,
   type
-}) => styled((set([styled_c8]), /*#__PURE__*/React.createElement(\\"button\\", map(\\"button\\", {
+}) => styled((set([styled_c8]), /*#__PURE__*/React.createElement("button", map("button", {
   type: type,
   disabled: disabled
-}), \\"content\\")));
+}), "content")));
 
 export default App;"
 `;
@@ -202,19 +202,19 @@ __css__(
     transition: 1s;
 }\`
 /*__inner_css_end__*/
-, \\"1d59gvr_gg_\\")
+, "1d59gvr_gg_")
 /*__reshadow_css_end__*/
 , {
-  \\"__button\\": \`___button_ltzzv_1\`
+  "__button": \`___button_ltzzv_1\`
 })]);
 
 const App = ({
   disabled,
   type
-}) => styled((set([styled_c8]), /*#__PURE__*/React.createElement(\\"button\\", map(\\"button\\", {
+}) => styled((set([styled_c8]), /*#__PURE__*/React.createElement("button", map("button", {
   type: type,
   disabled: disabled
-}), \\"content\\")));
+}), "content")));
 
 export default App;"
 `;
@@ -231,22 +231,22 @@ __css__(
     color: red;
 }\`
 /*__inner_css_end__*/
-, \\"1s3e96t_gg_\\")
+, "1s3e96t_gg_")
 /*__reshadow_css_end__*/
 , {
-  \\"title\\": \`_title_oivlx_1\`,
-  \\"__button\\": \`___button_1vljt_1 _title_oivlx_1\`
+  "title": \`_title_oivlx_1\`,
+  "__button": \`___button_1vljt_1 _title_oivlx_1\`
 })]);
 
 const App = ({
   disabled,
   type
-}) => styled((set([styled_c8]), /*#__PURE__*/React.createElement(\\"button\\", map(\\"button\\", {
+}) => styled((set([styled_c8]), /*#__PURE__*/React.createElement("button", map("button", {
   type: type,
   disabled: disabled
 }, use({
-  theme: \\"normal\\"
-})), \\"content\\")));
+  theme: "normal"
+})), "content")));
 
 export default App;"
 `;
@@ -263,7 +263,7 @@ __css__(
     color: red;
 }\`
 /*__inner_css_end__*/
-, \\"d2nb2y_gg_\\")
+, "d2nb2y_gg_")
 /*__reshadow_css_end__*/
 ]);
 
@@ -273,12 +273,12 @@ const App = ({
   type,
   color,
   bgcolor
-}) => styled((set([styled_c8, styles]), /*#__PURE__*/React.createElement(\\"button\\", map(\\"button\\", {
+}) => styled((set([styled_c8, styles]), /*#__PURE__*/React.createElement("button", map("button", {
   type: type,
   disabled: disabled
 }, use({
-  theme: \\"normal\\"
-})), \\"content\\")));
+  theme: "normal"
+})), "content")));
 
 export default App;"
 `;
@@ -293,17 +293,17 @@ const App = ({
   disabled,
   type,
   ...props
-}) => styled((set([styled_c8]), /*#__PURE__*/React.createElement(\\"button\\", map(\\"button\\", {
+}) => styled((set([styled_c8]), /*#__PURE__*/React.createElement("button", map("button", {
   disabled: true,
-  name: \\"button\\"
+  name: "button"
 }, props, {
-  type: \\"submit\\",
+  type: "submit",
   autofocus: true,
-  \\"aria-hidden\\": true
+  "aria-hidden": true
 }, use({
   size: 's',
-  theme: \\"normal\\"
-})), \\"content\\")));
+  theme: "normal"
+})), "content")));
 
 export default App;"
 `;
@@ -317,12 +317,12 @@ const styled_c8 = create([styles]);
 const App = ({
   disabled,
   type
-}) => styled((set([styled_c8]), /*#__PURE__*/React.createElement(components.button, map(\\"components.button\\", {
+}) => styled((set([styled_c8]), /*#__PURE__*/React.createElement(components.button, map("components.button", {
   type: type,
   disabled: disabled
-}), /*#__PURE__*/React.createElement(\\"span\\", {
-  className: styled.styles[\\"__content\\"]
-}, \\"content\\"))));
+}), /*#__PURE__*/React.createElement("span", {
+  className: styled.styles["__content"]
+}, "content"))));
 
 export default App;"
 `;
@@ -336,12 +336,12 @@ const styled_c8 = create([styles]);
 const App = ({
   disabled,
   type
-}) => styled((set([styled_c8]), /*#__PURE__*/React.createElement(\\"div\\", map(\\"use--button\\", {
+}) => styled((set([styled_c8]), /*#__PURE__*/React.createElement("div", map("use--button", {
   type: type,
   disabled: disabled
-}), /*#__PURE__*/React.createElement(\\"span\\", {
-  className: styled.styles[\\"__use--content\\"]
-}, \\"content\\"))));
+}), /*#__PURE__*/React.createElement("span", {
+  className: styled.styles["__use--content"]
+}, "content"))));
 
 export default App;"
 `;
@@ -355,12 +355,12 @@ const styled_c8 = create([styles]);
 const App = ({
   disabled,
   type
-}) => styled((set([styled_c8]), /*#__PURE__*/React.createElement(\\"button\\", map(\\"button\\", {
+}) => styled((set([styled_c8]), /*#__PURE__*/React.createElement("button", map("button", {
   type: type,
   disabled: disabled
-}), /*#__PURE__*/React.createElement(\\"span\\", {
-  className: styled.styles[\\"__content\\"]
-}, \\"content\\"))));
+}), /*#__PURE__*/React.createElement("span", {
+  className: styled.styles["__content"]
+}, "content"))));
 
 export default App;"
 `;
@@ -374,12 +374,12 @@ const styled_c8 = create([styles]);
 const App = ({
   disabled,
   type
-}) => styled((set([styled_c8]), /*#__PURE__*/React.createElement(\\"div\\", map(\\"use--button\\", {
+}) => styled((set([styled_c8]), /*#__PURE__*/React.createElement("div", map("use--button", {
   type: type,
   disabled: disabled
-}), /*#__PURE__*/React.createElement(\\"span\\", {
-  className: styled.styles[\\"__use--content\\"]
-}, \\"content\\"))));
+}), /*#__PURE__*/React.createElement("span", {
+  className: styled.styles["__use--content"]
+}, "content"))));
 
 export default App;"
 `;
@@ -393,12 +393,12 @@ const styled_c8 = create([styles]);
 const App = ({
   disabled,
   type
-}) => styled((set([styled_c8]), /*#__PURE__*/React.createElement(\\"button\\", map(\\"button\\", {
+}) => styled((set([styled_c8]), /*#__PURE__*/React.createElement("button", map("button", {
   type: type,
   disabled: disabled
 }, use({
-  theme: \\"normal\\"
-})), \\"content\\")));
+  theme: "normal"
+})), "content")));
 
 export default App;"
 `;
@@ -414,16 +414,16 @@ const styled_12c = create([styles2]);
 const App = ({
   disabled,
   type
-}) => styled((set([styled_c8]), /*#__PURE__*/React.createElement(\\"button\\", map(\\"button\\", {
+}) => styled((set([styled_c8]), /*#__PURE__*/React.createElement("button", map("button", {
   type: type,
   disabled: disabled
 }, use({
-  theme: \\"normal\\"
-})), styled((set([styled_12c]), /*#__PURE__*/React.createElement(\\"div\\", {
-  className: styled.styles[\\"__content\\"]
-}, \\"content\\"))), /*#__PURE__*/React.createElement(\\"button\\", {
-  className: styled.styles[\\"__button\\"]
-}, \\"click\\"))));
+  theme: "normal"
+})), styled((set([styled_12c]), /*#__PURE__*/React.createElement("div", {
+  className: styled.styles["__content"]
+}, "content"))), /*#__PURE__*/React.createElement("button", {
+  className: styled.styles["__button"]
+}, "click"))));
 
 export default App;"
 `;
@@ -439,19 +439,19 @@ __css__(
     color: red;
 }\`
 /*__inner_css_end__*/
-, \\"r6bn3g_gg_\\")
+, "r6bn3g_gg_")
 /*__reshadow_css_end__*/
 ]);
 
 const App = ({
   disabled,
   type
-}) => styled((set([styled_c8]), /*#__PURE__*/React.createElement(\\"button\\", map(\\"button\\", {
+}) => styled((set([styled_c8]), /*#__PURE__*/React.createElement("button", map("button", {
   type: type,
   disabled: disabled
 }, use({
-  theme: \\"normal\\"
-})), \\"content\\")));
+  theme: "normal"
+})), "content")));
 
 export default App;"
 `;
@@ -468,19 +468,19 @@ __css__(
     color: red;
 }\`
 /*__inner_css_end__*/
-, \\"r6bn3g_gg_\\")
+, "r6bn3g_gg_")
 /*__reshadow_css_end__*/
 ]);
 
 const App = ({
   disabled,
   type
-}) => styled((set([styled_c8]), /*#__PURE__*/React.createElement(\\"button\\", map(\\"button\\", {
+}) => styled((set([styled_c8]), /*#__PURE__*/React.createElement("button", map("button", {
   type: type,
   disabled: disabled
 }, use({
-  theme: \\"normal\\"
-})), \\"content\\")));
+  theme: "normal"
+})), "content")));
 
 export default App;"
 `;
@@ -498,7 +498,7 @@ __css__(
     background-color: var(--i5lz0e_1);
 }\`
 /*__inner_css_end__*/
-, \\"4ascwb_gg_\\")
+, "4ascwb_gg_")
 /*__reshadow_css_end__*/
 ]);
 
@@ -508,15 +508,15 @@ const App = ({
   color,
   bgcolor
 }) => styled((set([styled_c8], {
-  \\"--i5lz0e_0\\": color,
-  \\"--i5lz0e_1\\": bgcolor
-}), /*#__PURE__*/React.createElement(\\"button\\", map(\\"button\\", {
+  "--i5lz0e_0": color,
+  "--i5lz0e_1": bgcolor
+}), /*#__PURE__*/React.createElement("button", map("button", {
   type: type,
   disabled: disabled,
   $$style: styled.$$style
 }, use({
-  theme: \\"normal\\"
-})), \\"content\\")));
+  theme: "normal"
+})), "content")));
 
 export default App;"
 `;
@@ -534,18 +534,18 @@ __css__(
     background-color: var(--i5lz0e_0);
 }\`
 /*__inner_css_end__*/
-, \\"1mij4zg_gg_\\")
+, "1mij4zg_gg_")
 /*__reshadow_css_end__*/
 ]);
 
 const App = ({
   color
 }) => styled((set([styled_c8], {
-  \\"--i5lz0e_0\\": color
-}), /*#__PURE__*/React.createElement(\\"button\\", {
-  className: styled.styles[\\"__button\\"],
+  "--i5lz0e_0": color
+}), /*#__PURE__*/React.createElement("button", {
+  className: styled.styles["__button"],
   style: styled.$$style
-}, \\"content\\")));
+}, "content")));
 
 export default App;"
 `;
@@ -562,7 +562,7 @@ __css__(
     padding: 10px;
 }\`
 /*__inner_css_end__*/
-, \\"54eajl_gg_\\")
+, "54eajl_gg_")
 /*__reshadow_css_end__*/
 ]);
 const styled_12c = create([
@@ -574,7 +574,7 @@ __css__(
     background-color: var(--i5lz0e_1);
 }\`
 /*__inner_css_end__*/
-, \\"4ascwb_gg_\\")
+, "4ascwb_gg_")
 /*__reshadow_css_end__*/
 ]);
 
@@ -583,16 +583,16 @@ const App = ({
   type,
   color,
   bgcolor
-}) => styled((set([styled_c8]), /*#__PURE__*/React.createElement(\\"div\\", {
-  className: styled.styles[\\"__div\\"]
+}) => styled((set([styled_c8]), /*#__PURE__*/React.createElement("div", {
+  className: styled.styles["__div"]
 }, styled((set([styled_12c], {
-  \\"--i5lz0e_0\\": color,
-  \\"--i5lz0e_1\\": bgcolor
-}), /*#__PURE__*/React.createElement(\\"button\\", map(\\"button\\", {
+  "--i5lz0e_0": color,
+  "--i5lz0e_1": bgcolor
+}), /*#__PURE__*/React.createElement("button", map("button", {
   type: type,
   disabled: disabled,
   $$style: styled.$$style
-}), \\"content\\"))))));
+}), "content"))))));
 
 export default App;"
 `;
@@ -610,7 +610,7 @@ __css__(
     background-color: var(--i5lz0e_1);
 }\`
 /*__inner_css_end__*/
-, \\"4ascwb_gg_\\")
+, "4ascwb_gg_")
 /*__reshadow_css_end__*/
 ]);
 
@@ -620,21 +620,21 @@ const App = ({
   color,
   bgcolor
 }) => styled((set([styled_c8], {
-  \\"--i5lz0e_0\\": color,
-  \\"--i5lz0e_1\\": bgcolor
-}), /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(\\"button\\", map(\\"button\\", {
+  "--i5lz0e_0": color,
+  "--i5lz0e_1": bgcolor
+}), /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("button", map("button", {
   type: type,
   disabled: disabled,
   $$style: styled.$$style
 }, use({
-  theme: \\"normal\\"
-})), \\"content\\"), /*#__PURE__*/React.createElement(\\"button\\", map(\\"button\\", {
+  theme: "normal"
+})), "content"), /*#__PURE__*/React.createElement("button", map("button", {
   type: type,
   disabled: disabled,
   $$style: styled.$$style
 }, use({
-  theme: \\"action\\"
-})), \\"content 2\\"))));
+  theme: "action"
+})), "content 2"))));
 
 export default App;"
 `;
@@ -652,7 +652,7 @@ __css__(
     background-color: var(--i5lz0e_1);
 }\`
 /*__inner_css_end__*/
-, \\"4ascwb_gg_\\")
+, "4ascwb_gg_")
 /*__reshadow_css_end__*/
 ]);
 
@@ -661,13 +661,13 @@ const App = ({
   type,
   color,
   bgcolor
-}) => styled((set([styled_c8], \`--i5lz0e_0:\${color};--i5lz0e_1:\${bgcolor};\`), /*#__PURE__*/React.createElement(\\"button\\", map(\\"button\\", {
+}) => styled((set([styled_c8], \`--i5lz0e_0:\${color};--i5lz0e_1:\${bgcolor};\`), /*#__PURE__*/React.createElement("button", map("button", {
   type: type,
   disabled: disabled,
   $$style: styled.$$style
 }, use({
-  theme: \\"normal\\"
-})), \\"content\\")));
+  theme: "normal"
+})), "content")));
 
 export default App;"
 `;
@@ -685,7 +685,7 @@ __css__(
     background-color: var(--i5lz0e_0);
 }\`
 /*__inner_css_end__*/
-, \\"r2jfpm_gg_\\")
+, "r2jfpm_gg_")
 /*__reshadow_css_end__*/
 ]);
 
@@ -693,13 +693,13 @@ const App = ({
   disabled,
   type,
   color
-}) => styled((set([styled_c8], \`--i5lz0e_0:\${color};\`), /*#__PURE__*/React.createElement(\\"button\\", map(\\"button\\", {
+}) => styled((set([styled_c8], \`--i5lz0e_0:\${color};\`), /*#__PURE__*/React.createElement("button", map("button", {
   type: type,
   disabled: disabled,
   $$style: styled.$$style
 }, use({
-  theme: \\"normal\\"
-})), \\"content\\")));
+  theme: "normal"
+})), "content")));
 
 export default App;"
 `;
@@ -717,7 +717,7 @@ __css__(
     background-color: var(--i5lz0e_1);
 }\`
 /*__inner_css_end__*/
-, \\"9fzzi5_gg_\\")
+, "9fzzi5_gg_")
 /*__reshadow_css_end__*/
 ]);
 
@@ -725,12 +725,12 @@ const App = ({
   color,
   bgcolor
 }) => styled((set([styled_c8], {
-  \\"--i5lz0e_0\\": color,
-  \\"--i5lz0e_1\\": bgcolor
-}), /*#__PURE__*/React.createElement(\\"button\\", {
-  className: styled.styles[\\"__button\\"],
+  "--i5lz0e_0": color,
+  "--i5lz0e_1": bgcolor
+}), /*#__PURE__*/React.createElement("button", {
+  className: styled.styles["__button"],
   style: styled.$$style
-}, \\"content\\")));
+}, "content")));
 
 export default App;"
 `;
@@ -744,12 +744,12 @@ const styled_c8 = create([styles]);
 const App = ({
   disabled,
   type
-}) => styled((set([styled_c8]), /*#__PURE__*/React.createElement(\\"button\\", map(\\"button\\", {
+}) => styled((set([styled_c8]), /*#__PURE__*/React.createElement("button", map("button", {
   type: type,
   disabled: disabled
-}), /*#__PURE__*/React.createElement(\\"span\\", {
-  className: styled.styles[\\"__content\\"]
-}, \\"content\\"))));
+}), /*#__PURE__*/React.createElement("span", {
+  className: styled.styles["__content"]
+}, "content"))));
 
 export default App;"
 `;
@@ -765,11 +765,11 @@ __css__(
     padding: 5px 10px;
 }\`
 /*__inner_css_end__*/
-, \\"hfcxht_gg_\\")
+, "hfcxht_gg_")
 /*__reshadow_css_end__*/
 ]);
 
-const Button = props => styled((set([styled_c8]), /*#__PURE__*/React.createElement(\\"button\\", map(\\"button\\", props))));
+const Button = props => styled((set([styled_c8]), /*#__PURE__*/React.createElement("button", map("button", props))));
 
 export default Button;"
 `;

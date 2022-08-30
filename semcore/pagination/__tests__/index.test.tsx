@@ -1,10 +1,10 @@
 import React from 'react';
 import { testing, snapshot, shared as testsShared } from '@semcore/jest-preset-ui';
-const { render, fireEvent, cleanup, axe } = testing;
 import Return from '@semcore/icon/Return/m';
-
-const { shouldSupportClassName, shouldSupportRef } = testsShared;
 import Pagination from '../src';
+
+const { render, fireEvent, cleanup, axe } = testing;
+const { shouldSupportClassName, shouldSupportRef } = testsShared;
 
 describe('Pagination', () => {
   afterEach(cleanup);

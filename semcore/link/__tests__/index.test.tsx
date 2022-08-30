@@ -1,6 +1,7 @@
 import React from 'react';
 import { testing, snapshot, shared as testsShared } from '@semcore/jest-preset-ui';
 import Calendar from '@semcore/icon/Calendar/m';
+
 const { cleanup, render, axe } = testing;
 const { shouldSupportClassName, shouldSupportRef } = testsShared;
 import Link from '../src';
@@ -8,11 +9,15 @@ import Link from '../src';
 describe('Link', () => {
   afterEach(cleanup);
 
-  shouldSupportClassName(Link);
-  shouldSupportRef(Link);
+  shouldSupportClassName(Link, React.Fragment, { children: 'Link' });
+  shouldSupportRef(Link, React.Fragment, { children: 'Link' });
 
   test('Should support custom attributes', () => {
-    const { getByTestId } = render(<Link data-testid="link" name="test" />);
+    const { getByTestId } = render(
+      <Link data-testid="link" name="test">
+        Link
+      </Link>,
+    );
     expect(getByTestId('link').attributes['name'].value).toBe('test');
   });
 
@@ -52,7 +57,11 @@ describe('Link', () => {
   });
 
   test('Should support change tag name', () => {
-    const { getByTestId } = render(<Link data-testid="link" tag="span" />);
+    const { getByTestId } = render(
+      <Link data-testid="link" tag="span">
+        Link
+      </Link>,
+    );
     expect(getByTestId('link').tagName).toBe('SPAN');
   });
 
@@ -76,16 +85,24 @@ describe('Link', () => {
   });
 
   test('Should support inline property', () => {
-    const { rerender, getByTestId } = render(<Link data-testid="link" />);
+    const { rerender, getByTestId } = render(<Link data-testid="link">Link</Link>);
     expect(getComputedStyle(getByTestId('link')).display).toBe('inline-block');
-    rerender(<Link data-testid="link" inline />);
+    rerender(
+      <Link data-testid="link" inline>
+        Link
+      </Link>,
+    );
     expect(getComputedStyle(getByTestId('link')).display).toBe('inline');
   });
 
   test('Should support noWrap property', () => {
-    const { rerender, getByTestId } = render(<Link data-testid="link" />);
+    const { rerender, getByTestId } = render(<Link data-testid="link">Link</Link>);
     expect(getComputedStyle(getByTestId('link'))['white-space']).toBe('nowrap');
-    rerender(<Link data-testid="link" noWrap={false} />);
+    rerender(
+      <Link data-testid="link" noWrap={false}>
+        Link
+      </Link>,
+    );
     expect(getComputedStyle(getByTestId('link'))['white-space']).toBe('');
   });
 

@@ -13,7 +13,7 @@
   "private": true,
   "dependencies": {
     "@babel/core": "7.17.8",
-    "@semcore/babel-plugin-react-semcore": "^4.2.1",
+    "@semcore/babel-plugin-react-semcore": "*",
     "@semcore/babel-preset-ui": "*",
     "@types/node": "^17.0.23",
     "esbuild": "0.14.29",
@@ -29,11 +29,10 @@
     "@semcore/core": "*",
     "@semcore/errors": "*",
     "@semcore/icon": "*",
-    "@semcore/jest-preset-ui": "1.0.0",
-    "@types/jest": "27.4.1",
+    "@semcore/jest-preset-ui": "*",
     "babel-plugin-tester": "7.0.1",
     "fast-glob": "3.2.11",
-    "jest": "26.6.3"
+    "jest": "29.0.1"
   },
   "jest": {
     "preset": "@semcore/jest-preset-ui"

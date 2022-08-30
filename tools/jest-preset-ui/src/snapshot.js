@@ -1,9 +1,11 @@
 const request = require('request');
 const util = require('util');
-const fs = require('fs');
+// const fs = require('fs');
 const path = require('path');
 const React = require('react');
+// const { createRoot } = require('react-dom/client');
 const ReactDOM = require('react-dom');
+// import { act } from './testing';
 
 const post = util.promisify(request.post);
 const config = {};
@@ -23,16 +25,16 @@ const DEFAULT_OPTIONS = { selector: '#root' };
 async function snapshot(Component, options) {
   options = Object.assign({}, DEFAULT_OPTIONS, options);
   const _tmp = document.createElement('div');
-
+  // const root = createRoot(_tmp);
+  // act(() => root.render(Component));
   ReactDOM.render(Component, _tmp);
-
-  const requestBody = _tmp.innerHTML;
-  const style = document.head.innerHTML;
+  const componentHtml = _tmp.innerHTML;
+  const componentStyle = document.head.innerHTML;
   const html = `
     <!DOCTYPE html>
     <html lang='en'>
         <head>
-          <meta charset="UTF-8" />
+          <meta charset='UTF-8' />
           <link href='https://fonts.googleapis.com/css2?family=Inter:slnt,wght@-10..0,100..900&amp;family=Ubuntu:wght@300;400;500;700&amp;display=swap' rel='stylesheet'>
           <style>
             html {
@@ -69,12 +71,12 @@ async function snapshot(Component, options) {
               transition: none !important;
               transition-delay: 0ms !important;
             }
-          </style>${style}
+          </style>${componentStyle}
         </head>
         <body>
             <div id='wrap'>
                 <div id='root'>
-                    ${requestBody}
+                    ${componentHtml}
                 </div>
             </div>
         </body>
@@ -90,6 +92,7 @@ async function snapshot(Component, options) {
       html,
     },
   });
+  // act(() => root.unmount());
   ReactDOM.unmountComponentAtNode(_tmp);
   return body;
 }

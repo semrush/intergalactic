@@ -2,7 +2,8 @@ import React from 'react';
 import { testing, shared as testsShared, snapshot } from '@semcore/jest-preset-ui';
 import InlineInput from '../src/InlineInput';
 import SerpM from '@semcore/icon/Serp/m';
-const { cleanup, fireEvent, render, axe } = testing;
+
+const { cleanup, fireEvent, render, axe, act } = testing;
 
 const { shouldSupportClassName, shouldSupportRef } = testsShared;
 import Input from '../src';
@@ -152,10 +153,10 @@ describe('InlineInput', () => {
 
     /** bubbling doesn't work in jest? */
     fireEvent.blur(getByTestId('behavior-cancel'));
-    jest.runAllTimers();
+    act(() => jest.runAllTimers());
     expect(spyCancel).toHaveBeenCalledTimes(1);
     fireEvent.blur(getByTestId('behavior-confirm'));
-    jest.runAllTimers();
+    act(() => jest.runAllTimers());
     expect(spyConfirm).toHaveBeenCalledTimes(1);
     jest.useRealTimers();
   });
