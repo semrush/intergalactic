@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.0.17] - 2022-08-30
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.37.0 ~> 3.37.1], `@semcore/animation` [1.5.9 ~> 1.5.10]).
+
 ## [3.0.16] - 2022-08-29
 
 ### Changed
