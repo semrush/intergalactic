@@ -1,7 +1,7 @@
 {
   "name": "@semcore/utils",
   "description": "Semrush Utils Component",
-  "version": "3.37.0",
+  "version": "3.37.1",
   "main": "lib/index.js",
   "sideEffects": false,
   "author": "UI-kit team <ui-kit-team@semrush.com>",
