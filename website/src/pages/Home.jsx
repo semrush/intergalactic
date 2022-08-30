@@ -238,7 +238,7 @@ const Table = ({ titles }) => {
               type="table"
               image={getImageName(heading.html)}
               text={heading.html}
-              href={heading.route}
+              href={`${heading.route}#${heading.id}`}
             />
           ))}
         </div>
@@ -252,7 +252,7 @@ const Table = ({ titles }) => {
               type="table"
               image={getImageName(heading.html)}
               text={heading.html}
-              href={heading.route}
+              href={`${heading.route}#${heading.id}`}
             />
           ))}
         </div>
