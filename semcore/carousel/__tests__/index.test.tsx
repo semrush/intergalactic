@@ -19,12 +19,7 @@ const Indicators = () => (
     {({ items }) => (
       <>
         {items.map((item, ind) => (
-          <div
-            {...item}
-            active={item.active.toString()}
-            key={ind}
-            data-testid={`indicator-${ind}`}
-          />
+          <Box {...item} key={ind} data-testid={`indicator-${ind}`} />
         ))}
       </>
     )}

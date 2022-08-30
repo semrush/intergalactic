@@ -1,11 +1,11 @@
 import React from 'react';
 import { testing, snapshot } from '@semcore/jest-preset-ui';
-const { cleanup, render } = testing;
-
 import NeighborLocation from '@semcore/neighbor-location';
 import { Flex } from '@semcore/flex-box';
-import Button from '../src';
 import propsForElement from '@semcore/utils/lib/propsForElement';
+import Button from '../src';
+
+const { cleanup, render } = testing;
 
 describe('Button', () => {
   afterEach(cleanup);
@@ -45,9 +45,18 @@ describe('Button', () => {
   });
 
   test('should support loading', () => {
-    const { queryByTestId } = render(<Button data-testid="button" loading />);
+    const { queryByTestId } = render(
+      <Button data-testid="button" loading>
+        Text
+      </Button>,
+    );
     expect(queryByTestId('button').attributes['disabled']).toBeTruthy();
     expect(queryByTestId('button').querySelectorAll('[data-ui-name="Spin"]')).toHaveLength(1);
+  });
+
+  test('should support save width at loading', async () => {
+    const Component = <Button loading>Text long Text long</Button>;
+    expect(await snapshot(Component)).toMatchImageSnapshot();
   });
 
   test('should support "active" prop', async () => {

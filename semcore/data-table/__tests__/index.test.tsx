@@ -77,6 +77,7 @@ describe('DataTable', () => {
     );
     expect(await snapshot(component)).toMatchImageSnapshot();
   });
+
   test('Customizing the header', async () => {
     const component = (
       <div style={{ width: 800 }}>
@@ -117,6 +118,7 @@ describe('DataTable', () => {
     );
     expect(await snapshot(component)).toMatchImageSnapshot();
   });
+
   test('The size of the columns', async () => {
     const component = (
       <div style={{ width: 800 }}>
@@ -133,6 +135,7 @@ describe('DataTable', () => {
     );
     expect(await snapshot(component)).toMatchImageSnapshot();
   });
+
   test('The alignment of the columns', async () => {
     const component = (
       <div style={{ width: 800 }}>
@@ -149,6 +152,7 @@ describe('DataTable', () => {
     );
     expect(await snapshot(component)).toMatchImageSnapshot();
   });
+
   test('Sorting', async () => {
     const component = (
       <div style={{ width: 800 }}>
@@ -167,7 +171,7 @@ describe('DataTable', () => {
   });
 
   /** Currently has no difference from DataTable without Sticky */
-  test.skip('Fixed header', async () => {
+  xtest('Fixed header', async () => {
     const component = (
       <div style={{ width: 800 }}>
         <DataTable data={data}>
@@ -187,7 +191,7 @@ describe('DataTable', () => {
   });
 
   /** Currenty screenshot service unable to execute js and scroll area shadows needs to run js for containers measuring */
-  test.skip('Fixed columns', async () => {
+  xtest('Fixed columns', async () => {
     const component = (
       <div style={{ width: 500 }}>
         <DataTable data={data}>
@@ -223,6 +227,7 @@ describe('DataTable', () => {
     );
     expect(await snapshot(component)).toMatchImageSnapshot();
   });
+
   test('Adding additional elements to the header', async () => {
     const component = (
       <div style={{ width: 800 }}>
@@ -244,7 +249,7 @@ describe('DataTable', () => {
   });
 
   /** Currenty screenshot service unable to execute js and portals needs to run js for dom manipulations */
-  test.skip('Header separation', async () => {
+  xtest('Header separation', async () => {
     const Component = () => {
       const portalRef = React.useRef(null);
       return (
@@ -269,6 +274,7 @@ describe('DataTable', () => {
     };
     expect(await snapshot(<Component />)).toMatchImageSnapshot();
   });
+
   test('Access to Row', async () => {
     const component = (
       <div style={{ width: 800 }}>
@@ -308,6 +314,7 @@ describe('DataTable', () => {
     );
     expect(await snapshot(component)).toMatchImageSnapshot();
   });
+
   test('Access to Cell', async () => {
     const component = (
       <div style={{ width: 800 }}>
@@ -347,6 +354,7 @@ describe('DataTable', () => {
     );
     expect(await snapshot(component)).toMatchImageSnapshot();
   });
+
   test('Access to a set of cells', async () => {
     const component = (
       <div style={{ width: 800 }}>
@@ -375,6 +383,7 @@ describe('DataTable', () => {
     );
     expect(await snapshot(component)).toMatchImageSnapshot();
   });
+
   test('Adding additional elements to the table body', async () => {
     const component = (
       <div style={{ width: 800 }}>
@@ -403,15 +412,16 @@ describe('DataTable', () => {
     );
     expect(await snapshot(component)).toMatchImageSnapshot();
   });
+
   test('Accordion in the table', async () => {
-    function RowAccordion({ value, collapse = {}, ...props }) {
+    const RowAccordion = React.forwardRef(function ({ value, collapse = {}, ...props }, ref) {
       return (
-        <Accordion.Item value={value}>
+        <Accordion.Item value={value} ref={ref}>
           <Accordion.Item.Toggle {...props} />
           <Accordion.Item.Collapse {...collapse} />
         </Accordion.Item>
       );
-    }
+    });
 
     const component = (
       <div style={{ width: 800 }}>
@@ -463,15 +473,16 @@ describe('DataTable', () => {
     );
     expect(await snapshot(component)).toMatchImageSnapshot();
   });
+
   test('Table in table', async () => {
-    function RowAccordion({ value, collapse = {}, ...props }) {
+    const RowAccordion = React.forwardRef(function ({ value, collapse = {}, ...props }, ref) {
       return (
-        <Accordion.Item value={value}>
+        <Accordion.Item value={value} ref={ref}>
           <Accordion.Item.Toggle {...props} />
           <Accordion.Item.Collapse {...collapse} />
         </Accordion.Item>
       );
-    }
+    });
 
     const component = (
       <div style={{ width: 800 }}>
@@ -524,6 +535,7 @@ describe('DataTable', () => {
     );
     expect(await snapshot(component)).toMatchImageSnapshot();
   });
+
   test('Download status', async () => {
     const component = (
       <div style={{ width: 800 }}>
@@ -540,6 +552,7 @@ describe('DataTable', () => {
     );
     expect(await snapshot(component)).toMatchImageSnapshot();
   });
+
   test('Skeleton in the table', async () => {
     function getSkeleton() {
       return ['keyword', 'kd', 'cpc', 'vol'].map((c) => ({
@@ -567,6 +580,7 @@ describe('DataTable', () => {
     );
     expect(await snapshot(component)).toMatchImageSnapshot();
   });
+
   test('Merging columns', async () => {
     const data = [
       {
@@ -614,6 +628,7 @@ describe('DataTable', () => {
     );
     expect(await snapshot(component)).toMatchImageSnapshot();
   });
+
   test('Row merging', async () => {
     const data = [
       {
@@ -668,6 +683,7 @@ describe('DataTable', () => {
     );
     expect(await snapshot(component)).toMatchImageSnapshot();
   });
+
   test('Secondary table', async () => {
     const component = (
       <div style={{ width: 800 }}>

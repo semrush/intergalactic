@@ -8,18 +8,26 @@
   "private": true,
   "dependencies": {
     "@semcore/babel-preset-ui": "*",
-    "@testing-library/jest-dom": "5.11.3",
-    "@testing-library/react": "11.2.2",
-    "babel-jest": "24.8.0",
-    "babel-plugin-transform-import-meta": "2.1.1",
-    "dotenv": "8.2.0",
+    "@testing-library/jest-dom": "5.16.5",
+    "@testing-library/react": "12.1.5",
+    "@types/jest-image-snapshot": "5.1.0",
+    "babel-jest": "29.0.1",
+    "babel-plugin-transform-import-meta": "2.2.0",
+    "dotenv": "16.0.1",
     "identity-obj-proxy": "3.0.0",
-    "jest-axe": "4.1.0",
+    "jest-axe": "6.0.0",
     "jest-canvas-mock": "2.4.0",
-    "jest-image-snapshot": "2.9.0"
+    "jest-image-snapshot": "5.1.0",
+    "react": "17.0.1",
+    "react-dom": "17.0.1",
+    "request": "2.88.2"
   },
   "devDependencies": {
     "@types/jest-axe": "3.5.1"
+  },
+  "peerDependencies": {
+    "jest": "29.0.1",
+    "jest-environment-jsdom": "29.0.1"
   },
   "jest": {
     "preset": "@semcore/jest-preset-ui"

@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.37.1] - 2022-08-30
+
+### Fixed
+
+- Added dependency `@types/react-dom` and fix type for `getNodeByRef` function.
+
 ## [3.37.0] - 2022-08-12
 
 ### Added

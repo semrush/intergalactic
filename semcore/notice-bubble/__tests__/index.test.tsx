@@ -1,6 +1,7 @@
 import React from 'react';
 import { testing, snapshot, shared as testsShared } from '@semcore/jest-preset-ui';
-const { render, fireEvent, cleanup } = testing;
+
+const { render, fireEvent, cleanup, act } = testing;
 
 import {
   NoticeBubbleContainer,
@@ -22,8 +23,6 @@ const NoticeBubbleWarning = React.forwardRef((props, ref) => (
     <NoticeBubbleWarningImport ref={ref} style={{ marginBottom: 0 }} {...props} />
   </NoticeBubbleContainer>
 ));
-
-jest.useFakeTimers();
 
 describe('NoticeBubbleContainer', () => {
   afterEach(cleanup);
@@ -48,17 +47,19 @@ describe('NoticeBubbleContainer', () => {
 describe('NoticeBubble Timer', () => {
   afterEach(cleanup);
   test('should support pause timer at mouse enter', () => {
+    jest.useFakeTimers();
     const spy = jest.fn();
     const { getByTestId } = render(<NoticeBubble data-testid="notice" onClose={spy} />);
     fireEvent.mouseEnter(getByTestId('notice'));
-    jest.runAllTimers();
+    act(() => jest.runAllTimers());
 
     expect(spy).not.toBeCalled();
 
     fireEvent.mouseLeave(getByTestId('notice'));
-    jest.runAllTimers();
+    act(() => jest.runAllTimers());
 
     expect(spy).toBeCalled();
+    jest.useRealTimers();
   });
 });
 
@@ -76,21 +77,25 @@ describe('NoticeBubble', () => {
   });
 
   test('should support closing after some time', () => {
+    jest.useFakeTimers();
     const spy = jest.fn();
     render(<NoticeBubble duration={300} onClose={spy} />);
 
-    jest.runAllTimers();
+    act(() => jest.runAllTimers());
 
     expect(spy).toBeCalled();
+    jest.useRealTimers();
   });
 
   test('should support the possibility of not closing', () => {
+    jest.useFakeTimers();
     const spy = jest.fn();
     render(<NoticeBubble duration={0} onClose={spy} />);
 
-    jest.runAllTimers();
+    act(() => jest.runAllTimers());
 
     expect(spy).not.toBeCalled();
+    jest.useRealTimers();
   });
 
   test('should support hover for icon close', async () => {

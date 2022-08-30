@@ -42,4 +42,12 @@ if (global.window) {
   window.getComputedStyle = (elt) => getComputedStyle(elt);
 }
 
-jest.setTimeout(10000);
+if (global.requestAnimationFrame) {
+  global.requestAnimationFrame = function (callback) {
+    setTimeout(() => {
+      callback();
+    }, 0);
+  };
+}
+
+jest.setTimeout(20000);
