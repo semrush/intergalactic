@@ -1,9 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { testing, snapshot } from '@semcore/jest-preset-ui';
-
-const { cleanup } = testing;
-
 import isNode from '../src/isNode';
 import compose from '../src/compose';
 import useCss from '../src/use/useCss';
@@ -11,6 +8,9 @@ import resolveColor, { shade, opacity } from '../src/color';
 import { interpolate } from '../src/enhances/i18nEnhance';
 import assignProps, { assignHandlers } from '../src/assignProps';
 import reactToText from '../src/reactToText';
+import { getRef, setRef, getNodeByRef } from '../src/ref';
+
+const { cleanup } = testing;
 
 describe('Utils CSS in JS', () => {
   afterEach(cleanup);
@@ -419,5 +419,55 @@ describe('Utils reactToText', () => {
         </>,
       ),
     ).toBe('multi component');
+  });
+});
+
+describe('Utils ref', () => {
+  afterEach(cleanup);
+
+  test('[getRef] support element', () => {
+    const div = document.createElement('div');
+    expect(getRef(div)).toBe(div);
+  });
+
+  test('[getRef] support ref function', () => {
+    const div = document.createElement('div');
+    const ref = React.createRef<HTMLDivElement>();
+    // @ts-ignore
+    ref.current = div;
+    expect(getRef(ref)).toBe(div);
+  });
+
+  test('[getRef] support unknown', () => {
+    expect(getRef(undefined)).toBe(null);
+  });
+
+  test('[setRef] support ref', () => {
+    const ref = React.createRef<HTMLDivElement>();
+    const div = document.createElement('div');
+    setRef(ref, div);
+    expect(ref.current).toBe(div);
+  });
+
+  test('[setRef] support function', () => {
+    const fn = jest.fn();
+    const div = document.createElement('div');
+    setRef(fn, div);
+    expect(fn).toHaveBeenCalledWith(div);
+  });
+
+  test('[getNodeByRef] support function', () => {
+    const div = document.createElement('div');
+    const fn = jest.fn(() => div);
+    // setRef(fn, div)
+    expect(getNodeByRef(fn)).toBe(div);
+  });
+
+  test('[getNodeByRef] support ref', () => {
+    const div = document.createElement('div');
+    const ref = React.createRef<HTMLDivElement>();
+    // @ts-ignore
+    ref.current = div;
+    expect(getNodeByRef(ref)).toBe(div);
   });
 });
