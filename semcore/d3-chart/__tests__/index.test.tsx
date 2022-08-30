@@ -349,7 +349,7 @@ describe('Bar chart', () => {
     expect(await snapshot(component)).toMatchImageSnapshot();
   });
 
-  test('should render Bar chart correctly', async () => {
+  test('should render StackBar chart correctly', async () => {
     const component = (
       <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
         <YAxis>
@@ -2441,7 +2441,9 @@ describe('d3 charts visual regression', () => {
       );
     };
 
-    expect(await snapshot(<Component />)).toMatchImageSnapshot();
+    expect(await snapshot(<Component />)).toMatchImageSnapshot({
+      // failureThreshold: 0.0001,
+    });
   });
 
   test('should render venn-orientation', async () => {
@@ -2525,6 +2527,8 @@ describe('d3 charts visual regression', () => {
       );
     };
 
-    expect(await snapshot(<Component />)).toMatchImageSnapshot();
+    expect(await snapshot(<Component />)).toMatchImageSnapshot({
+      failureThreshold: 0.0001,
+    });
   });
 });

@@ -229,6 +229,7 @@ describe('PillGroup', () => {
             <Pills.Item.Addon tag={Globe} />
           </Pills.Item>
         </Pills>
+        <br />
         <Pills size={size}>
           <Pills.Item value={1}>Pill</Pills.Item>
         </Pills>

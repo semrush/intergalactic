@@ -1,6 +1,7 @@
 import React from 'react';
 import { testing, shared as testsShared } from '@semcore/jest-preset-ui';
-const { cleanup, fireEvent, render } = testing;
+
+const { cleanup, fireEvent, render, act } = testing;
 
 const { shouldSupportClassName, shouldSupportRef } = testsShared;
 import Popper from '../src';
@@ -17,7 +18,6 @@ jest.mock('@popperjs/core', () => {
 
 describe('Popper', () => {
   afterEach(cleanup);
-  jest.useFakeTimers();
   test('should render popper to outside container', () => {
     const { getByTestId } = render(
       <Popper visible>
@@ -31,6 +31,7 @@ describe('Popper', () => {
   });
 
   test('should support a custom handler a reference', () => {
+    jest.useFakeTimers();
     const spy = jest.fn();
     const { getByTestId } = render(
       <Popper onVisibleChange={spy} interaction="hover">
@@ -40,32 +41,36 @@ describe('Popper', () => {
     );
 
     fireEvent.mouseEnter(getByTestId('reference'));
-    jest.runAllTimers();
+    // because wait call onVisibleChange
+    act(() => jest.runAllTimers());
     expect(spy).toBeCalledWith(true, expect.anything());
 
     fireEvent.mouseLeave(getByTestId('reference'));
-    jest.runAllTimers();
+    // because wait call onVisibleChange
+    act(() => jest.runAllTimers());
     expect(spy).toBeCalledWith(false, expect.anything());
+
+    jest.useRealTimers();
   });
 
   test('should support timeout for change visible', () => {
+    jest.useFakeTimers();
     const spy = jest.fn();
     const { getByTestId } = render(
-      <Popper onVisibleChange={spy} timeout={100} interaction="hover">
+      <Popper onVisibleChange={spy} timeout={100}>
         <Popper.Trigger data-testid="reference" />
         <Popper.Popper data-testid="popper" />
       </Popper>,
     );
 
-    fireEvent.mouseEnter(getByTestId('reference'));
+    fireEvent.click(getByTestId('reference'));
+    // because wait call onVisibleChange
+    act(() => jest.advanceTimersByTime(50));
     expect(spy).not.toBeCalledWith(true, expect.anything());
-    jest.runAllTimers();
-    expect(spy).toBeCalledWith(true, expect.anything());
 
-    fireEvent.mouseLeave(getByTestId('reference'));
-    expect(spy).not.toBeCalledWith(false, expect.anything());
-    jest.runAllTimers();
-    expect(spy).toBeCalledWith(false, expect.anything());
+    // because wait call onVisibleChange
+    act(() => jest.advanceTimersByTime(100));
+    expect(spy).toBeCalledWith(true, expect.anything());
 
     jest.useRealTimers();
   });
