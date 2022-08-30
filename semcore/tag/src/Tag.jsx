@@ -132,13 +132,23 @@ function Close(props) {
   const SClose = Root;
   const { styles } = props;
 
+  function onKeyDown(event) {
+    if (props.onKeyDown) {
+      return props.onKeyDown(event);
+    }
+
+    if (event.code === 'Enter') {
+      props.onClick && props.onClick(event);
+    }
+  }
+
   return sstyled(styles)(
     <SClose
       render={Box}
       tag={CloseM}
       interactive
       aria-label="press space or enter to remove it from the list"
-      tabIndex={0}
+      onKeyDown={onKeyDown}
     />,
   );
 }

@@ -21,13 +21,6 @@ const Demo = () => {
     e.preventDefault();
   };
 
-  const handleKey = (e) => {
-    if (e.code === 'Enter' || e.code === 'Space') {
-      handleEditTag(e);
-      handleCloseTag(e);
-    }
-  };
-
   const handleEditTag = (e) => {
     const { dataset } = e.currentTarget;
     let allTags = [...tags];
@@ -56,7 +49,6 @@ const Demo = () => {
             editable
             data-id={idx}
             onClick={handleEditTag}
-            onKeyDown={handleKey}
           >
             <InputTags.Tag.Text>{tag}</InputTags.Tag.Text>
             <InputTags.Tag.Close onClick={handleCloseTag} />
@@ -68,7 +60,7 @@ const Demo = () => {
         value={value}
         onChange={updateValue}
         onBlur={handleBlurInput}
-        aria-label="input with tags"
+        aria-label="Input with tags"
       />
     </InputTags>
   );
