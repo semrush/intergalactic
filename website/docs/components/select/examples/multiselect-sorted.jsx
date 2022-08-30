@@ -26,7 +26,7 @@ export default () => {
 
   const renderOptions = () => {
     if (!prevSelected.length) {
-      return options.map((option) => <Option {...option} />);
+      return options.map((props) => <Option key={props.value} {...props} />);
     }
     const [checked, unchecked] = options.reduce(
       (acc, o) => {
@@ -36,9 +36,9 @@ export default () => {
       [[], []],
     );
     return [
-      ...checked.map((props) => <Option {...props} />),
+      ...checked.map((props) => <Option key={props.value} {...props} />),
       <Select.Divider />,
-      ...unchecked.map((props) => <Option {...props} />),
+      ...unchecked.map((props) => <Option key={props.value} {...props} />),
     ];
   };
 

@@ -12,10 +12,10 @@ export default () => {
 
   return (
     <React.Fragment>
-      <Text size={200} tag="p" mb={2}>
-        <span>Placement: </span>
-        <Select value={placement} options={arrToOptions(placements)} onChange={setPlacement} />
+      <Text size={200} tag="div" mb={2}>
+        Placement:
       </Text>
+      <Select value={placement} options={arrToOptions(placements)} onChange={setPlacement} />
       <Button onClick={() => setVisible(true)} use="primary" theme="success" size="l">
         Show SidePanel
       </Button>

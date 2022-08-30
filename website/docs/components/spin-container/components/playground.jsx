@@ -6,7 +6,7 @@ import { Box } from '@semcore/flex-box';
 
 let backgroundPreview = { color: 'white' };
 
-const MAP_THEME_SPINER = {
+const MAP_THEME_SPINNER = {
   white: 'dark',
   '#333': 'invert',
 };
@@ -29,17 +29,22 @@ const playground = (createGroupWidgets) => {
     key: 'theme',
     defaultValue: 'dark',
     label: 'Theme',
-    options: Object.values(MAP_THEME_SPINER),
+    options: Object.values(MAP_THEME_SPINNER),
   });
 
   const background = text({
     key: 'background',
-    defaultValue: null,
+    defaultValue: '',
     label: 'Background',
   });
 
   return (
-    <SpinContainer loading={loading} theme={theme} background={background} p="3px">
+    <SpinContainer
+      loading={loading}
+      theme={theme}
+      background={background ? background : undefined}
+      p="3px"
+    >
       <Box w={150}>
         <h4>User form:</h4>
         <Input mb={2}>

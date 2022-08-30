@@ -1,9 +1,8 @@
 import React from 'react';
 import styles from './EmailsBanner.module.css';
-import { Link } from 'react-router-dom';
+import RouterLink from './RouterLink.jsx';
 import emailImg from '../static/illustration/email-library-pic.svg';
 import { Box } from '@semcore/flex-box';
-import LinkUI from '@semcore/link';
 import ArrowRightXS from '@semcore/icon/ArrowRight/m';
 
 function BannerBlock() {
@@ -18,12 +17,12 @@ function BannerBlock() {
           All you need for making your product newsletter cool, consistent and adaptive.
         </Box>
         <Box mt={2} mb={8}>
-          <LinkUI tag={Link} size={300} color="#171A22" to="/product-emails/grid-email/">
-            <LinkUI.Text>Dive into examples</LinkUI.Text>
-            <LinkUI.Addon>
+          <RouterLink size={300} color="#171A22" to="/product-emails/grid-email/">
+            <RouterLink.Text>Dive into examples</RouterLink.Text>
+            <RouterLink.Addon>
               <ArrowRightXS color="#171A22" />
-            </LinkUI.Addon>
-          </LinkUI>
+            </RouterLink.Addon>
+          </RouterLink>
         </Box>
       </div>
     </div>

@@ -5,13 +5,15 @@ function scrollToHash(hash = undefined, options = {}) {
     history.pushState(null, null, `#${hash}`);
   }
   const elementID = window.location.hash.replace('#', '');
-  scroller.scrollTo(elementID, {
-    smooth: 'easeInOutQuint',
-    offset: -150,
-    delay: 0,
-    duration: 200,
-    ...options,
-  });
+  if (elementID) {
+    scroller.scrollTo(elementID, {
+      smooth: 'easeInOutQuint',
+      offset: -150,
+      delay: 0,
+      duration: 200,
+      ...options,
+    });
+  }
 }
 
 export default scrollToHash;

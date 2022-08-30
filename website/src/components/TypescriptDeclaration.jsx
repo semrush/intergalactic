@@ -51,7 +51,7 @@ export const TypescriptDeclarationView = ({
   for (let i = 0; i < inheritance?.length; i++) {
     if (i !== 0) inheritanceList.push(', ');
     inheritanceList.push(
-      <TypeView typeParts={inheritance.slice(i, i + 1)} dependencies={dependencies} />,
+      <TypeView key={i} typeParts={inheritance.slice(i, i + 1)} dependencies={dependencies} />,
     );
   }
   return (
@@ -76,7 +76,7 @@ export const TypescriptDeclarationView = ({
             </tr>
           </thead>
           <tbody>
-            {properties.map((property) => {
+            {properties.map((property, i) => {
               const otherParams = Object.keys(property.params).filter(
                 (param) =>
                   param !== 'default' &&
@@ -87,7 +87,7 @@ export const TypescriptDeclarationView = ({
               );
 
               return (
-                <tr>
+                <tr key={i}>
                   <td className={styles.propertyCell}>
                     <PropertyName parentName={name} name={property.name}>
                       {property.name}

@@ -191,7 +191,7 @@ class PlaygroundView extends React.Component {
             />
           </div>
           <div className={styles.resultCode}>
-            <Code className={styles.sourceView} lang="jsx" copy={false} block>
+            <Code lang="jsx" block>
               {source}
             </Code>
             <div className={styles.iconCopy}>
