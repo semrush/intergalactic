@@ -56,12 +56,12 @@ class FeedbackForm extends Component {
             <SpinContainer size="xl" loading={loading === undefined ? api.submitting : loading}>
               <SFeedbackForm
                 tag="form"
-                role="form"
                 noValidate
                 method="POST"
                 ref={forwardRef}
                 {...other}
                 onSubmit={api.handleSubmit}
+                title="This is feedback"
               >
                 {typeof Children.origin === 'function' ? Children.origin(api) : <Children />}
               </SFeedbackForm>

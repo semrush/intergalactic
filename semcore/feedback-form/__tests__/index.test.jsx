@@ -1,6 +1,6 @@
 import React from 'react';
 import { testing, shared as testsShared, snapshot } from '@semcore/jest-preset-ui';
-const { render, fireEvent, cleanup } = testing;
+const { render, fireEvent, cleanup, axe } = testing;
 
 const { shouldSupportClassName, shouldSupportRef } = testsShared;
 
@@ -71,6 +71,22 @@ describe('FeedbackForm', () => {
     const component = <FeedbackForm.Success>Thank you for your feedback!</FeedbackForm.Success>;
 
     expect(await snapshot(component)).toMatchImageSnapshot();
+  });
+
+  test('a11y', async () => {
+    const { container } = render(
+      <FeedbackForm>
+        <label for="suggestions">Tell us your suggestion or report an issue</label>
+        <FeedbackForm.Item name="input">
+          {({ input }) => <input id="suggestions" {...input} />}
+        </FeedbackForm.Item>
+        <FeedbackForm.Submit data-testid="submit">Send feedback</FeedbackForm.Submit>
+      </FeedbackForm>,
+    );
+
+    const results = await axe(container);
+
+    expect(results).toHaveNoViolations();
   });
 });
 
