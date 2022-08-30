@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.0.8] - 2022-08-30
+
+### Fixed
+
+- Fixed font height so that the letter "g" would not be cut off.
+
 ## [3.0.7] - 2022-08-18
 
 ### Changed

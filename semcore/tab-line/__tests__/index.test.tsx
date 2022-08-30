@@ -174,6 +174,19 @@ describe('TabLine', () => {
     expect(await snapshot(component)).toMatchImageSnapshot();
   });
 
+  test('Letters must not be cut off', async () => {
+    const component = (
+      <TabLine value={1}>
+        <TabLine.Item value={1} selected>
+          [g I j q]
+        </TabLine.Item>
+        <TabLine.Item value={2}>[g I j q]</TabLine.Item>
+      </TabLine>
+    );
+
+    expect(await snapshot(component)).toMatchImageSnapshot();
+  });
+
   // js-dom not supported element.click
   xtest('Should support navigation with keyboard', async () => {
     const spy = jest.fn();
