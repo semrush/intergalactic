@@ -110,7 +110,8 @@ const Search = ({
   searchResults,
   wrapperClassName,
   onItemSelect,
-  ...other
+  placeholder,
+  className,
 }) => {
   const pages = hits.filter((el) => !el.heading);
   const content = hits.filter((el) => el.heading);
@@ -150,12 +151,12 @@ const Search = ({
                 onKeyDown={(e) => {
                   e.key === ' ' && e.stopPropagation();
                 }}
-                {...other}
+                placeholder={placeholder}
                 className={cx(
                   styles.input,
                   styles.desktopInput,
                   !!currentRefinement && visible && styles.inputOpen,
-                  other.className,
+                  className,
                 )}
               />
               <input
@@ -165,12 +166,12 @@ const Search = ({
                   action.visible(true);
                   action.highlightedIndex(0);
                 }}
-                {...other}
+                placeholder={placeholder}
                 className={cx(
                   styles.input,
                   styles.mobileInput,
                   !!currentRefinement && visible && styles.inputOpen,
-                  other.className,
+                  className,
                 )}
               />
               <div className={styles.iconSearchWrapper}>

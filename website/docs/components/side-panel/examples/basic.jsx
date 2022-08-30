@@ -12,11 +12,11 @@ export default () => {
       <Button onClick={() => setVisible(true)}>Show SidePanel</Button>
       <SidePanel visible={visible} onClose={() => setVisible(false)}>
         <List size={400} marker={null}>
-          {['Features', 'Pricing', 'Resources', 'Company', 'Extra tools'].map((name, ind, arr) => (
-            <>
+          {['Features', 'Pricing', 'Resources', 'Company', 'Extra tools'].map((name, i, arr) => (
+            <React.Fragment key={i}>
               <List.Item>{name}</List.Item>
-              {ind < arr.length - 1 && <Divider my={2} />}
-            </>
+              {i < arr.length - 1 && <Divider my={2} />}
+            </React.Fragment>
           ))}
         </List>
       </SidePanel>

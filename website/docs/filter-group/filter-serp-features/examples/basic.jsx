@@ -82,18 +82,20 @@ export default () => {
           ) : null}
           {filteredOptions.length ? (
             filteredOptions.map((value) => (
-              <Select.OptionCheckbox key={value} value={value} onClick={optionClick(value)}>
+              <Select.Option key={value} value={value} onClick={optionClick(value)}>
+                <Select.Option.Checkbox />
                 {value}
-              </Select.OptionCheckbox>
+              </Select.Option>
             ))
           ) : (
             <Select.OptionHint mt={1}>Nothing found</Select.OptionHint>
           )}
         </Select.List>
         <Select.Divider />
-        <Select.OptionCheckbox value="None" onClick={optionClick('None')}>
+        <Select.Option value="None" onClick={optionClick('None')}>
+          <Select.Option.Checkbox />
           None
-        </Select.OptionCheckbox>
+        </Select.Option>
         <Button use="primary" w="calc(100% - 16px)" onClick={applyFilters} m="8px 8px 16px">
           Apply
         </Button>

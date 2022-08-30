@@ -39,22 +39,19 @@ export default ({ raw: { code: ExampleRawComponent, path } }) => {
         content: {
           dependencies: {
             ...dependencies,
-            react: '17',
-            'react-dom': '17',
+            react: '18',
+            'react-dom': '18',
             '@semcore/core': 'latest',
           },
         },
       },
       'src/index.js': {
         content: `import React from "react";
-import ReactDOM from "react-dom";
+import { createRoot } from "react-dom/client";
 import App from "./App";
 
-const rootElement = document.getElementById("root");
-ReactDOM.render(
-    <App />,
-  rootElement
-);
+const root = createRoot(document.getElementById("root"));
+root.render(<App />);
 `,
       },
       'src/App.js': {

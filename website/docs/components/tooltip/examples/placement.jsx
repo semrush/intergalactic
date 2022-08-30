@@ -28,9 +28,9 @@ function Demo() {
   ];
   return (
     <Box style={styleBox}>
-      {placements.map((placement) => {
+      {placements.map((placement, i) => {
         return (
-          <>
+          <React.Fragment key={i}>
             {['right', 'right-start', 'right-end'].includes(placement) && <div />}
             <Tooltip placement={placement}>
               <Tooltip.Trigger tag={Button} w="100px">
@@ -38,7 +38,7 @@ function Demo() {
               </Tooltip.Trigger>
               <Tooltip.Popper>Attached content</Tooltip.Popper>
             </Tooltip>
-          </>
+          </React.Fragment>
         );
       })}
     </Box>

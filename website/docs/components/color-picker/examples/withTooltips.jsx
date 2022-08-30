@@ -22,7 +22,7 @@ const Demo = () => {
       <ColorPicker.Popper>
         <ColorPicker.Colors>
           {colors.map((color) => (
-            <Tooltip title={color}>
+            <Tooltip title={color} key={color}>
               <ColorPicker.Item value={color} />
             </Tooltip>
           ))}
