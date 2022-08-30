@@ -125,6 +125,13 @@ export default () => {
         </Card>
         <Card my={5} pt={4}>
           <Text size={300} bold>
+            Radial Tree chart
+          </Text>
+          <Divider orientation="horizontal" m={'8px 0 12px -20px'} w={'calc(100% + 40px)'} />
+          <NoData type="radial-tree-chart" />
+        </Card>
+        <Card my={5} pt={4}>
+          <Text size={300} bold>
             Table
           </Text>
           <Divider orientation="horizontal" m={'8px 0 12px -20px'} w={'calc(100% + 40px)'} />
@@ -143,13 +150,6 @@ export default () => {
           </Text>
           <Divider orientation="horizontal" m={'8px 0 12px -20px'} w={'calc(100% + 40px)'} />
           <NoData type="other-data" />
-        </Card>
-        <Card my={5} pt={4}>
-          <Text size={300} bold>
-            Deleted page
-          </Text>
-          <Divider orientation="horizontal" m={'8px 0 12px -20px'} w={'calc(100% + 40px)'} />
-          <NoData type="deleted-page" description="Some text about deleted page ¯\_(ツ)_/¯" />
         </Card>
         <Card my={5} pt={4}>
           <Text size={300} bold>
