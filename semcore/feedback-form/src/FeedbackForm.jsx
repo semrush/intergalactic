@@ -61,6 +61,7 @@ class FeedbackForm extends Component {
                 ref={forwardRef}
                 {...other}
                 onSubmit={api.handleSubmit}
+                title="This is feedback"
               >
                 {typeof Children.origin === 'function' ? Children.origin(api) : <Children />}
               </SFeedbackForm>
@@ -103,6 +104,8 @@ function Item({ Children, tag, ...props }) {
         const inputProps = {
           ...input,
           state: invalid ? 'invalid' : 'normal',
+          'aria-invalid': invalid ? true : false,
+          'aria-errormessage': meta.error,
         };
         return (
           <Tooltip
@@ -137,7 +140,7 @@ function Success(props) {
 
   return sstyled(styles)(
     <SSuccess render={Box}>
-      <SEmail />
+      <SEmail aria-hidden={true} />
       <span>
         <Children />
       </span>

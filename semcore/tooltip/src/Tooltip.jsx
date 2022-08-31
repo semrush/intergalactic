@@ -76,7 +76,12 @@ function TooltipPopper(props) {
   const SArrow = Box;
 
   return sstyled(styles)(
-    <STooltip render={Popper.Popper} role="tooltip" use:theme={resolveColor(theme)}>
+    <STooltip
+      render={Popper.Popper}
+      role="tooltip"
+      use:theme={resolveColor(theme)}
+      aria-live={theme === 'warning' ? 'assertive' : 'polite'}
+    >
       <Children />
       <SArrow data-popper-arrow use:theme={resolveColor(theme)} />
     </STooltip>,
