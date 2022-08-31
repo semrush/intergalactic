@@ -48,7 +48,7 @@ class Feedback extends React.PureComponent {
     return (
       <FeedbackForm onSubmit={onSubmit} loading={status === 'loading'}>
         <Box p={4}>
-          <Flex tag="label" direction="column">
+          <Flex tag="label" direction="column" htmlFor="suggestions">
             <Text mb={2} size={200}>
               Tell us your suggestion or report an issue
             </Text>
@@ -59,18 +59,23 @@ class Feedback extends React.PureComponent {
                   autoFocus
                   h={80}
                   onChange={this.handleChange(input.onChange, 'description')}
+                  id="suggestions"
                 />
               )}
             </FeedbackForm.Item>
           </Flex>
-          <Flex tag="label" mt={4} direction="column">
+          <Flex tag="label" mt={4} direction="column" htmlFor="email">
             <Text mb={2} size={200}>
               Reply-to email
             </Text>
             <FeedbackForm.Item name="email" validate={validate.email}>
               {({ input }) => (
                 <Input state={input.state}>
-                  <Input.Value {...input} onChange={this.handleChange(input.onChange, 'email')} />
+                  <Input.Value
+                    {...input}
+                    onChange={this.handleChange(input.onChange, 'email')}
+                    id="email"
+                  />
                 </Input>
               )}
             </FeedbackForm.Item>
