@@ -1,7 +1,12 @@
 import glob from 'fast-glob';
 import { readFile } from 'fs/promises';
-import { resolve as resolvePath } from 'path';
+import finderPackageJson from 'find-package-json';
+import { dirname as resolveDirname, resolve as resolvePath } from 'path';
+import { fileURLToPath } from 'url';
 import { parseMarkdownMeta, removeMarkdownMeta } from './utils';
+
+const __dirname = resolveDirname(fileURLToPath(import.meta.url));
+const repoRoot = resolvePath(__dirname, '../..');
 
 const serializeRoutes = (routes: { [route: string]: number[] }) => {
   const serializedRoutes = Object.entries(routes).map(
@@ -18,7 +23,18 @@ export const buildNavigation = async (docsDir: string) => {
   const fileContentsList = await Promise.all(
     filesList.map((path) => readFile(resolvePath(docsDir, path), 'utf-8')),
   );
-  const fileMetasList = fileContentsList.map(parseMarkdownMeta);
+  const fileMetasList = fileContentsList.map(parseMarkdownMeta).map((meta) => {
+    if (meta.fileSource) {
+      const packageJson = finderPackageJson(
+        resolvePath(repoRoot, 'semcore', meta.fileSource),
+      ).next().value;
+      meta.packageJson = {
+        name: packageJson.name,
+        version: packageJson.version,
+      };
+    }
+    return meta;
+  });
   const fileSubPagesList = fileContentsList.map((contents, index) => {
     const lines = contents.split('\n');
     const dir = dirsList[index];

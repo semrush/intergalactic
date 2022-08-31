@@ -80,7 +80,6 @@ export const Docs = ({ tokens, tabs }) => {
             size="l"
             styles={tabLineStyles}
             underlined={false}
-            mb={6}
             className={styles.tabLine}
           >
             {tabs.map((tab) => {
