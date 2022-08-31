@@ -76,7 +76,7 @@ describe('FeedbackForm', () => {
   test('a11y', async () => {
     const { container } = render(
       <FeedbackForm>
-        <label for="suggestions">Tell us your suggestion or report an issue</label>
+        <label htmlFor="suggestions">Tell us your suggestion or report an issue</label>
         <FeedbackForm.Item name="input">
           {({ input }) => <input id="suggestions" {...input} />}
         </FeedbackForm.Item>

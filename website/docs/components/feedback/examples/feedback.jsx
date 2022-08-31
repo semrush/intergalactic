@@ -45,7 +45,7 @@ class Feedback extends React.PureComponent {
     return (
       <FeedbackForm onSubmit={onSubmit} loading={status === 'loading'}>
         <Box p={4}>
-          <Flex tag="label" direction="column" for="suggestions">
+          <Flex tag="label" direction="column" htmlFor="suggestions">
             <Text mb={2} size={200}>
               Tell us your suggestion or report an issue
             </Text>
@@ -69,7 +69,7 @@ class Feedback extends React.PureComponent {
               )}
             </FeedbackForm.Item>
           </Flex>
-          <Flex tag="label" mt={4} direction="column" for="email">
+          <Flex tag="label" mt={4} direction="column" htmlFor="email">
             <Text mb={2} size={200}>
               Reply-to email
             </Text>
