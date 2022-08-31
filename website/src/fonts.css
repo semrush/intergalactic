@@ -18,3 +18,17 @@
   font-weight: 700;
   src: url('./fonts/Inter-Bold.ttf');
 }
+
+@font-face {
+  font-family: 'Factor A';
+  font-style: normal;
+  font-weight: 500;
+  src: url('./fonts/FactorA-Regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Factor A';
+  font-style: normal;
+  font-weight: 700;
+  src: url('./fonts/FactorA-Bold.woff2') format('woff2');
+}

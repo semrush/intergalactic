@@ -5,13 +5,14 @@ import { Link } from 'react-router-dom';
 import { Text } from '@semcore/typography';
 import { getLabel } from './Changelog';
 import formatTextStyles from './FormatText.module.css';
+import HeadingLink from './HeadingLink.jsx';
 
 const ChangelogByComponent = ({ blocks }) => {
-  return blocks.map(({ title, components }) => (
+  return blocks.map(({ title, version, components }) => (
     <span key={title} className={formatTextStyles.formatText}>
-      <Text tag="h3">
-        <Text>{title}</Text>
-      </Text>
+      <HeadingLink level={3} id={version}>
+        <Text bold>{title}</Text>
+      </HeadingLink>
       {components.map(({ title, component, changes }) => (
         <div key={component}>
           <Text tag="h4">
