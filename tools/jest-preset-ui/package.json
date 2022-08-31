@@ -26,6 +26,8 @@
     "@types/jest-axe": "3.5.1"
   },
   "peerDependencies": {
+    "esbuild": "*",
+    "@semcore/esbuild-plugin-semcore": "*",
     "jest": "29.0.1",
     "jest-environment-jsdom": "29.0.1"
   },

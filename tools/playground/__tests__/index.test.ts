@@ -1,7 +1,7 @@
 import { resolve as resolvePath } from 'path';
 import glob from 'fast-glob';
 import esbuild from 'esbuild';
-import { esbuildPluginSemcoreSourcesResolve } from '../esbuild-plugin-semcore-sources-resolve';
+import { esbuildPluginSemcoreSourcesResolve } from '@semcore/esbuild-plugin-semcore/esbuild-plugin-semcore-sources-resolve';
 
 describe('Playground sources resolving', () => {
   test('resolve documentation, playground and local examples', async () => {
@@ -25,7 +25,7 @@ describe('Playground sources resolving', () => {
         ...examples.map((path) => resolvePath(examplesDir, path)),
       ],
       bundle: true,
-      plugins: [esbuildPluginSemcoreSourcesResolve()],
+      plugins: [esbuildPluginSemcoreSourcesResolve(resolvePath(__dirname, '../../..'))],
       loader: {
         '.svg': 'file',
         '.md': 'file',

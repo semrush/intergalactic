@@ -18,7 +18,7 @@ import { readFile } from 'fs/promises';
 import { fileURLToPath } from 'url';
 import { resolveRepoTypings } from '../typings/resolveRepoTypings';
 // @ts-ignore
-import { makeCacheManager } from '../../../tools/playground/cache-manager';
+import { makeCacheManager } from '../../../tools/esbuild-plugin-semcore/cache-manager';
 import watch from 'node-watch';
 
 const __dirname = resolveDirname(fileURLToPath(import.meta.url));

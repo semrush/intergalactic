@@ -111,3 +111,43 @@ jobs:
         run: yarn coverage
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v2
+  vo-setup:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+      - name: Cache node modules
+        uses: actions/cache@v2
+        id: cache-modules
+        with:
+          path: |
+            node_modules
+            */*/node_modules
+            website/node_modules
+          key: modules-${{ runner.os }}-${{ hashFiles('yarn.lock') }}--${{ hashFiles('website/yarn.lock') }}
+      - name: Install dependencies
+        if: steps.cache-modules.outputs.cache-hit != 'true'
+        run: |
+          yarn --non-interactive --frozen-lockfile
+          cd website
+          yarn --non-interactive --frozen-lockfile
+  vo-test:
+    runs-on: macos-latest
+    needs: vo-setup
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+      - name: Restore cache node modules
+        uses: actions/cache@v2
+        with:
+          path: |
+            node_modules
+            */*/node_modules
+            website/node_modules
+          key: modules-${{ runner.os }}-${{ hashFiles('yarn.lock') }}--${{ hashFiles('website/yarn.lock') }}
+      - name: Install Headless Browser
+        run: npx playwright install
+      - name: Enable VoiceOver Automation
+        uses: guidepup/setup-action@0.1.3
+      - name: Voice Over testing
+        run: yarn vo-test
