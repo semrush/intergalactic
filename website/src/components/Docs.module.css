@@ -1,15 +1,18 @@
 .tab {
   position: relative;
   overflow: auto;
+  margin-bottom: 32px;
 }
 .tab > div:first-child > div {
   background-color: #ff622d;
   height: 2px;
 }
 .main h2 {
+  font-family: 'Factor A';
+  font-weight: 500;
   font-size: 24px;
   line-height: 120%;
-  margin: 40px 0 16px;
+  margin: 32px 0 16px;
 }
 .main h2:first-child {
   margin: 0 0 16px;
@@ -17,7 +20,7 @@
 .main h3 {
   font-size: 18px;
   line-height: 110%;
-  margin: 24px 0 16px 0;
+  margin: 32px 0 16px 0;
   font-weight: 700;
 }
 .main h4 {

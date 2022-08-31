@@ -85,6 +85,7 @@ export const getRepoTyping = async (typingName: string, debuggingPosition: strin
 };
 
 let uniqueId = 0;
+const mathVersionRegx = /\[(.*)\]/;
 const normalizeMarkdown = (ast: MarkdownRoot, relativePath: string) => {
   const imagesUrls: { [id: string]: string } = {};
   const traverseTokens = (token: MarkdownToken | MarkdownRoot) => {
@@ -123,6 +124,7 @@ const stringifyTokenPosition = (fullPath: string, token: MarkdownToken, metaHeig
 const makeChangelog = (markdownAst: MarkdownRoot, fullPath: string, metaHeight: number) => {
   type ChangelogBlock = {
     title: string;
+    version: string;
     changes: { type: string; text: string }[];
   };
   const blocks: ChangelogBlock[] = [];
@@ -131,8 +133,12 @@ const makeChangelog = (markdownAst: MarkdownRoot, fullPath: string, metaHeight: 
 
   for (const token of markdownAst.children) {
     if (token.type === 'heading' && token.depth === 2) {
+      const title = markdownTokenToHtml(token.children[0]);
+      const matchVersion = title.match(mathVersionRegx);
+      const version = (matchVersion && matchVersion[1]) ?? '';
       currentBlock = {
-        title: markdownTokenToHtml(token.children[0]),
+        title,
+        version,
         changes: [],
       };
       blocks.push(currentBlock);
@@ -167,6 +173,7 @@ const makeChangelogByComponent = (
 ) => {
   type ChangelogBlock = {
     title: string;
+    version: string;
     components: {
       title: string;
       component: string;
@@ -182,8 +189,12 @@ const makeChangelogByComponent = (
 
   for (const token of markdownAst.children) {
     if (token.type === 'heading' && token.depth === 2) {
+      const title = markdownTokenToHtml(token.children[0]);
+      const matchVersion = title.match(mathVersionRegx);
+      const version = (matchVersion && matchVersion[1]) ?? '';
       currentBlock = {
-        title: markdownTokenToHtml(token.children[0]),
+        title,
+        version,
         components: [],
       };
       blocks.push(currentBlock);
@@ -408,12 +419,6 @@ export const buildArticle = async (docsDir: string, fullPath: string, relativePa
     ? relativePath.substring('./'.length)
     : relativePath;
   const beta = meta.beta;
-  // let pkgName = undefined
-  // if (fileSource) {
-  //   const pkgFileData = await readFile(resolvePath(repoRoot, 'semcore', fileSource, 'package.json'), 'utf-8');
-  //   const pkgFile = JSON.parse(pkgFileData);
-  //   pkgName = pkgFile.name
-  // }
   return {
     tokens,
     title,

@@ -1,6 +1,7 @@
 ---
 title: ColorPicker
 tabName: Design
+fileSource: color-picker
 beta: true
 ---
 
