@@ -54,6 +54,7 @@
     "esbuild-plugin-alias": "0.2.1",
     "execa": "6.1.0",
     "fast-glob": "3.2.11",
+    "find-package-json": "1.2.0",
     "hast-util-to-html": "8.0.3",
     "mdast": "3.0.0",
     "mdast-util-from-markdown": "1.2.0",
