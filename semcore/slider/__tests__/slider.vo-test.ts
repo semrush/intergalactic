@@ -2,11 +2,25 @@ import { expect } from '@playwright/test';
 import { voTest as test } from '@guidepup/playwright';
 import { e2eStandToHtml } from '@semcore/jest-preset-ui/e2e-stand';
 import { resolve as resolvePath } from 'path';
+import { writeFile } from 'fs/promises';
+import { getReportHeader, makeVoiceOverReporter } from '@semcore/jest-preset-ui/vo-reporter';
 
-test('Users can interact with Slider via VoiceOver', async ({ page, voiceOver }) => {
-  const htmlContent = await e2eStandToHtml(resolvePath(__dirname, 'slider.vo-stand.tsx'), 'en');
+getReportHeader();
+
+test('Users can interact with Slider via VoiceOver', async ({ page, voiceOver: pureVoiceOver }) => {
+  const standPath = resolvePath(
+    __dirname,
+    '../../../website/docs/components/slider/examples/slider.jsx',
+  );
+  const reportPath = resolvePath(
+    __dirname,
+    '../../../website/docs/components/slider/slider-a11y-report.md',
+  );
+  const { voiceOver, getReport } = await makeVoiceOverReporter(pureVoiceOver);
+  const htmlContent = await e2eStandToHtml(standPath, 'en');
   await page.setContent(htmlContent);
   await voiceOver.interact();
+
   expect(await voiceOver.itemText()).toBe('2 slider');
   await voiceOver.interact();
   expect(await voiceOver.lastSpokenPhrase()).toBe('In slider');
@@ -18,4 +32,8 @@ test('Users can interact with Slider via VoiceOver', async ({ page, voiceOver })
   await voiceOver.stopInteracting();
   expect(await voiceOver.itemText()).toBe('3 slider');
   expect(await voiceOver.lastSpokenPhrase()).toBe('Out of slider');
+
+  const report = (await getReportHeader()) + '\n\n' + (await getReport(standPath));
+
+  await writeFile(reportPath, report);
 });

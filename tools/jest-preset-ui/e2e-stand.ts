@@ -1,9 +1,8 @@
 import esbuild from 'esbuild';
+import os from 'os';
 import { esbuildPluginSemcore } from '@semcore/esbuild-plugin-semcore';
 import { esbuildPluginSemcoreSourcesResolve } from '@semcore/esbuild-plugin-semcore/esbuild-plugin-semcore-sources-resolve';
 import { dirname as resolveDirname, resolve as resolvePath } from 'path';
-
-const resolveFilename = (path: string) => path.split('/').pop();
 
 export const e2eStandToHtml = async (standFilePath: string, locale: string) => {
   const standBundle = await esbuild.build({
@@ -20,7 +19,7 @@ export const e2eStandToHtml = async (standFilePath: string, locale: string) => {
             const contents = `
               import React from 'react';
               import ReactDOM from 'react-dom';
-              import App from './${resolveFilename(standFilePath)}';
+              import App from '${resolvePath(standFilePath)}';
               import { I18nProvider } from '@semcore/utils/lib/enhances/WithI18n';
 
               ReactDOM.render(
@@ -35,12 +34,25 @@ export const e2eStandToHtml = async (standFilePath: string, locale: string) => {
           });
         },
       },
+      {
+        name: 'persistent-react',
+        setup(build) {
+          build.onResolve({ filter: /^react$/ }, () => ({
+            path: require.resolve('react'),
+            namespace: 'file',
+          }));
+          build.onResolve({ filter: /^react-dom$/ }, () => ({
+            path: require.resolve('react-dom'),
+            namespace: 'file',
+          }));
+        },
+      },
       esbuildPluginSemcoreSourcesResolve(resolvePath(__dirname, '../..')),
       esbuildPluginSemcore(/semcore|tools/, /(tools\/playground)|node_modules/),
     ],
     bundle: true,
     write: false,
-    outdir: 'dev/null',
+    outdir: os.devNull,
   });
 
   const cssFiles = standBundle.outputFiles
