@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.1.2] - 2022-09-01
+
+### Fixed
+
+- Change line-height to correctly display uppercase letters.
+
 ## [3.1.1] - 2022-08-30
 
 ### Changed
