@@ -2,7 +2,7 @@
 title: A11y
 ---
 
-> ### General recommendations
+> #### General recommendations
 >
 > - The `<fieldset>` surrounds the entire grouping of checkboxes or radio buttons. The `<legend>` provides a description for the grouping.
 > - Some assistive technology reads the legend text for each fieldset, so it should be brief and descriptive. This helps someone using assistive technology to understand the question they are answering with the group of radio buttons.

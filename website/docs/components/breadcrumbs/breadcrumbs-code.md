@@ -1,6 +1,5 @@
 ---
 title: Example
-fileSource: breadcrumbs
 ---
 
 @## Use example

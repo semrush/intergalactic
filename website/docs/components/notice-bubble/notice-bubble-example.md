@@ -1,6 +1,5 @@
 ---
 title: Example
-fileSource: notice-bubble
 ---
 
 @## Type of use

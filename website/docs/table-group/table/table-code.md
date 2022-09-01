@@ -1,6 +1,5 @@
 ---
 title: Example
-fileSource: table
 ---
 
 Our library has two components for tables:
