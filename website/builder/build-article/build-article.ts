@@ -413,18 +413,16 @@ export const buildArticle = async (docsDir: string, fullPath: string, relativePa
     .filter(({ type }) => type === 'heading')
     .filter(({ level }) => level === 2);
 
-  const title = meta.title;
-  const fileSource = meta.fileSource;
   const sourcePath = relativePath.startsWith('./')
     ? relativePath.substring('./'.length)
     : relativePath;
-  const beta = meta.beta;
+
   return {
     tokens,
-    title,
-    fileSource,
+    title: meta.title,
+    fileSource: meta.fileSource,
     sourcePath,
-    beta,
+    beta: meta.beta,
     imagesUrls,
     legacyHeaderHashes,
     dependencies,

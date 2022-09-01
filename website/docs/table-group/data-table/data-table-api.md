@@ -1,6 +1,5 @@
 ---
 title: API
-fileSource: data-table
 ---
 
 @## DataTable

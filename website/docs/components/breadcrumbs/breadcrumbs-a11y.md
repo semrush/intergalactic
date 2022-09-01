@@ -1,6 +1,6 @@
 ---
 title: A11y
-fileSource: breadcrumbs
+a11y: AA
 ---
 
 @## Keyboard support

@@ -1,6 +1,5 @@
 ---
 title: Example
-fileSource: data-table
 ---
 
 Our library has two components for tables:

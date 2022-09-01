@@ -1,6 +1,5 @@
 ---
 title: API
-fileSource: pagination
 ---
 
 @## Pagination

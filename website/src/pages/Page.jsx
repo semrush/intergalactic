@@ -115,7 +115,7 @@ const PageView = ({ route, page }) => {
               sourcePath={page.sourcePath}
               changelogUrl={changelogRoute?.route}
             />
-            <Docs tokens={page.tokens} tabs={tabs} />
+            <Docs tokens={page.tokens} tabs={tabs} route={page.route} />
           </div>
           <div className={styles.nextGuide}>
             {routePrevSiblings[route] && (

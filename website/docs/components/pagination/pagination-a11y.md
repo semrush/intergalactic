@@ -1,6 +1,6 @@
 ---
 title: A11y
-fileSource: pagination
+a11y: AA
 ---
 
 @## Keyboard support

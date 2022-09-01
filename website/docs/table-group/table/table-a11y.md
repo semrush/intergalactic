@@ -1,9 +1,9 @@
 ---
 title: A11y
-fileSource: table
+a11y: AA
 ---
 
-> ### General recommendations
+> #### General recommendations
 >
 > - Tables with one header and simple data are fairly accessible out of the box and may not need additional accessibility updates. Always use the simplest table configuration possible.
 >

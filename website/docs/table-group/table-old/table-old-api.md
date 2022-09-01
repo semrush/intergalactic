@@ -1,6 +1,5 @@
 ---
 title: API
-fileSource: table
 ---
 
 @## Table

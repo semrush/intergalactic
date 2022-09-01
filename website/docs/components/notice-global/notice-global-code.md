@@ -1,6 +1,5 @@
 ---
 title: Example
-fileSource: notice-global
 ---
 
 @## Base

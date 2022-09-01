@@ -1,8 +1,9 @@
 ---
 title: A11y
+a11y: AA
 ---
 
-> ### General recommendations
+> #### General recommendations
 >
 > - A `<button>` tag does not need anything special to work. Use `<button>` when you can, but it is possible to use other elements as long as you add role="button" and add JavaScript to replicate the button functionality.
 > - Just like links, you can add `class="visuallyhidden"` with descriptive text to give more context to the button's purpose.

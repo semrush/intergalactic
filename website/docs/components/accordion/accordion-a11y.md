@@ -1,9 +1,9 @@
 ---
 title: A11y
-fileSource: accordion
+a11y: AA
 ---
 
-> ### General recommendations
+> #### General recommendations
 >
 > - Buttons are used as the accordions so that they are tab-able by keyboard users and accessible to screen readers.
 > - Each accordion button and realted content has a unique `id` associated with its aria-controls.

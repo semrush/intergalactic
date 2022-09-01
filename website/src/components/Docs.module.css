@@ -32,3 +32,8 @@
 .tabLine {
   font-weight: 700;
 }
+
+/* crunch */
+.main > div:first-child > blockquote {
+  margin-top: 0;
+}
