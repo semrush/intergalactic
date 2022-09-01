@@ -133,7 +133,9 @@ jobs:
           yarn --non-interactive --frozen-lockfile
   vo-test:
     runs-on: macos-latest
-    needs: vo-setup
+    needs:
+      - build
+      - vo-setup
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
@@ -145,6 +147,14 @@ jobs:
             */*/node_modules
             website/node_modules
           key: modules-${{ runner.os }}-${{ hashFiles('yarn.lock') }}--${{ hashFiles('website/yarn.lock') }}
+      - name: Restore cache build
+        uses: actions/cache@v2
+        with:
+          path: |
+            **/lib
+            semcore/icon/**/*.js
+            semcore/icon/**/*.d.ts
+          key: build-${{ hashFiles('semcore/**', 'tools/**', 'tsconfig.json', 'yarn.lock') }}
       - name: Install Headless Browser
         run: npx playwright install
       - name: Enable VoiceOver Automation
