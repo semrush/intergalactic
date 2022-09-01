@@ -51,11 +51,11 @@ export const makeVoiceOverReporter = async (baseVoiceOver: VoiceOver) => {
     const spokenPhrase = await baseVoiceOver.lastSpokenPhrase();
     const itemTextLog = await baseVoiceOver.itemTextLog();
     if (prevSpokenPhrase !== spokenPhrase) {
-      actionsLog.push(`Scren reader says "${spokenPhrase}".`);
+      actionsLog.push(`Screen reader says "${spokenPhrase}".`);
       prevSpokenPhrase = spokenPhrase;
     }
     if (prevItemTextLog !== itemTextLog) {
-      actionsLog.push(`Scren reader see element "${itemTextLog}".`);
+      actionsLog.push(`Screen reader see element "${itemTextLog}".`);
       prevItemTextLog = itemTextLog;
     }
   };
