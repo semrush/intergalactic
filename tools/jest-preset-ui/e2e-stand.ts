@@ -3,6 +3,7 @@ import os from 'os';
 import { esbuildPluginSemcore } from '@semcore/esbuild-plugin-semcore';
 import { esbuildPluginSemcoreSourcesResolve } from '@semcore/esbuild-plugin-semcore/esbuild-plugin-semcore-sources-resolve';
 import { dirname as resolveDirname, resolve as resolvePath } from 'path';
+import { VoiceOver } from '@guidepup/guidepup/lib/macOS/VoiceOver/VoiceOver';
 
 export const e2eStandToHtml = async (standFilePath: string, locale: string) => {
   const standBundle = await esbuild.build({
@@ -74,4 +75,18 @@ export const e2eStandToHtml = async (standFilePath: string, locale: string) => {
         </body>
       </html>
     `;
+};
+
+export const waitForWebContentAnnouncement = async (voiceOver: VoiceOver) => {
+  for (let i = 0; i < 10; i++) {
+    const itemText = await voiceOver.itemText();
+
+    if (itemText?.includes('web content')) {
+      return;
+    }
+
+    await new Promise((resolve) => setTimeout(resolve, 50));
+  }
+
+  throw new Error('web content could not be found');
 };

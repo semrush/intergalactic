@@ -170,7 +170,7 @@ export const makeVoiceOverReporter = async (baseVoiceOver: VoiceOver) => {
     const actionsList = actionsLog.map((log, index) => `${index + 1}. ${log}`).join('\n');
 
     return `**Running screen reader against [this file](${standUrl}).**
-    
+
 ${actionsList}
     `;
   };

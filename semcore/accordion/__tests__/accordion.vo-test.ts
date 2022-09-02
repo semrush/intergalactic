@@ -1,11 +1,9 @@
 import { expect } from '@playwright/test';
 import { voTest as test } from '@guidepup/playwright';
-import { e2eStandToHtml } from '@semcore/jest-preset-ui/e2e-stand';
+import { e2eStandToHtml, waitForWebContentAnnouncement } from '@semcore/jest-preset-ui/e2e-stand';
 import { resolve as resolvePath } from 'path';
 import { writeFile } from 'fs/promises';
 import { getReportHeader, makeVoiceOverReporter } from '@semcore/jest-preset-ui/vo-reporter';
-
-getReportHeader();
 
 test('Users can interact with Accodrion via VoiceOver', async ({
   page,
@@ -19,9 +17,10 @@ test('Users can interact with Accodrion via VoiceOver', async ({
     __dirname,
     '../../../website/docs/components/accordion/accordion-a11y-report.md',
   );
-  const { voiceOver, getReport } = await makeVoiceOverReporter(pureVoiceOver);
   const htmlContent = await e2eStandToHtml(standPath, 'en');
   await page.setContent(htmlContent);
+  await waitForWebContentAnnouncement(pureVoiceOver);
+  const { voiceOver, getReport } = await makeVoiceOverReporter(pureVoiceOver);
   await voiceOver.interact();
 
   expect(await voiceOver.itemText()).toBe('Section 1 collapsed button');
