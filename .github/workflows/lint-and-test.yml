@@ -46,7 +46,11 @@ jobs:
           path: |
             **/lib
             semcore/icon/**/*.js
+            semcore/icon/**/*.mjs
             semcore/icon/**/*.d.ts
+            semcore/illustration/**/*.js
+            semcore/illustration/**/*.mjs
+            semcore/illustration/**/*.d.ts
           key: build-${{ hashFiles('semcore/**', 'tools/**', 'tsconfig.json', 'yarn.lock') }}
       - name: Build
         if: steps.cache-build.outputs.cache-hit != 'true'
@@ -95,7 +99,11 @@ jobs:
           path: |
             **/lib
             semcore/icon/**/*.js
+            semcore/icon/**/*.mjs
             semcore/icon/**/*.d.ts
+            semcore/illustration/**/*.js
+            semcore/illustration/**/*.mjs
+            semcore/illustration/**/*.d.ts
           key: build-${{ hashFiles('semcore/**', 'tools/**', 'tsconfig.json', 'yarn.lock') }}
       - name: Test
         env:
