@@ -1,6 +1,6 @@
 import { expect } from '@playwright/test';
 import { voTest as test } from '@guidepup/playwright';
-import { e2eStandToHtml, waitForWebContentAnnouncement } from '@semcore/jest-preset-ui/e2e-stand';
+import { e2eStandToHtml } from '@semcore/jest-preset-ui/e2e-stand';
 import { resolve as resolvePath } from 'path';
 import { writeFile } from 'fs/promises';
 import { getReportHeader, makeVoiceOverReporter } from '@semcore/jest-preset-ui/vo-reporter';
@@ -19,7 +19,6 @@ test('Users can interact with Accodrion via VoiceOver', async ({
   );
   const htmlContent = await e2eStandToHtml(standPath, 'en');
   await page.setContent(htmlContent);
-  await waitForWebContentAnnouncement(pureVoiceOver);
   const { voiceOver, getReport } = await makeVoiceOverReporter(pureVoiceOver);
   await voiceOver.interact();
 

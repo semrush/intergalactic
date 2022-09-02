@@ -15,11 +15,12 @@ test('Users can interact with Slider via VoiceOver', async ({ page, voiceOver: p
     '../../../website/docs/components/slider/slider-a11y-report.md',
   );
   const htmlContent = await e2eStandToHtml(standPath, 'en');
-  await page.setContent(htmlContent);
-  await new Promise((resolve) => setTimeout(resolve, 10 * 1000));
-  const { voiceOver, getReport } = await makeVoiceOverReporter(pureVoiceOver);
 
+  await page.setContent(htmlContent);
+  await new Promise((resolve) => setTimeout(resolve, 10000));
+  const { voiceOver, getReport } = await makeVoiceOverReporter(pureVoiceOver);
   await voiceOver.interact();
+
   expect(await voiceOver.itemText()).toBe('2 slider');
   await voiceOver.interact();
   expect(await voiceOver.lastSpokenPhrase()).toBe('In slider');

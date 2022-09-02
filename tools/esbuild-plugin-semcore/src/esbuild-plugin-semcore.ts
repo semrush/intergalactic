@@ -3,6 +3,7 @@ import { readFile, access } from 'fs/promises';
 import { dirname as resolveDirname } from 'path';
 import { makeCacheManager } from './cache-manager';
 import { extractSemcoreImplicitDependencies } from './semcore-implicit-dependncies-resolver';
+export { esbuildPluginSemcoreSourcesResolve } from './esbuild-plugin-semcore-sources-resolve';
 
 const babelTransform = async (contents: string, path: string) => {
   // eslint-disable-next-line import/extensions

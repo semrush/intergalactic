@@ -185,13 +185,6 @@ jobs:
         uses: guidepup/setup-action@0.1.3
       - name: Voice Over testing
         run: yarn vo-test
-      - name: \[DEBUG] send failed tests video to telegram test channel
-        if: always()
-        run: |
-          for video in test-results/**/*.webm
-          do
-            curl -F document="@$video" https://api.telegram.org/bot5435145351:AAFIzxB0Bm_uvfq9cWEj9GlI9iMskAkEwZA/sendDocument\?chat_id\=156646228
-          done
       - name: Github GPG Auth
         uses: crazy-max/ghaction-import-gpg@v4.4.0
         with:

@@ -1,7 +1,10 @@
 import { resolve as resolvePath } from 'path';
 import glob from 'fast-glob';
 import esbuild from 'esbuild';
-import { esbuildPluginSemcoreSourcesResolve } from '@semcore/esbuild-plugin-semcore/esbuild-plugin-semcore-sources-resolve';
+/* eslint-disable import/no-unresolved */
+// @ts-ignore
+import { esbuildPluginSemcoreSourcesResolve } from 'disable-jest-mapper:@semcore/esbuild-plugin-semcore/esbuild-plugin-semcore-sources-resolve';
+/* eslint-enable import/no-unresolved */
 
 describe('Playground sources resolving', () => {
   test('resolve documentation, playground and local examples', async () => {

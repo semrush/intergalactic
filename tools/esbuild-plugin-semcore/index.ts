@@ -1,1 +1,1 @@
-export * from './src/esbuild-plugin-semcore';
+export * from './src';
