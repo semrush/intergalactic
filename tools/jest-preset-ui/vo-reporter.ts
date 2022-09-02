@@ -1,7 +1,6 @@
 import { voiceOver } from '@guidepup/guidepup';
 import { readFile } from 'fs/promises';
 import { relative as resolveRelativePath, resolve as resolvePath } from 'path';
-import { CommanderCommands } from '@guidepup/guidepup/lib/macOS/VoiceOver/CommanderCommands';
 import os from 'os';
 type VoiceOver = typeof voiceOver;
 
@@ -137,9 +136,8 @@ export const makeVoiceOverReporter = async (baseVoiceOver: VoiceOver) => {
         }
         actionsLog.push(`Screen reader performs "${command.description}".`);
       } else {
-        actionsLog.push(
-          `Screen reader performs "${CommanderCommands[command as CommanderCommands]}".`,
-        );
+        const commandName = baseVoiceOver.commander.commands[command as any];
+        actionsLog.push(`Screen reader performs "${commandName}".`);
       }
 
       const result = await baseVoiceOver.perform(command, options);
