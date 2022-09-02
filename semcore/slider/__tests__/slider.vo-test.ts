@@ -1,6 +1,6 @@
 import { expect } from '@playwright/test';
 import { voTest as test } from '@guidepup/playwright';
-import { e2eStandToHtml, waitForWebContentAnnouncement } from '@semcore/jest-preset-ui/e2e-stand';
+import { e2eStandToHtml } from '@semcore/jest-preset-ui/e2e-stand';
 import { resolve as resolvePath } from 'path';
 import { writeFile } from 'fs/promises';
 import { getReportHeader, makeVoiceOverReporter } from '@semcore/jest-preset-ui/vo-reporter';
@@ -16,11 +16,13 @@ test('Users can interact with Slider via VoiceOver', async ({ page, voiceOver: p
   );
   const htmlContent = await e2eStandToHtml(standPath, 'en');
   await page.setContent(htmlContent);
-  await waitForWebContentAnnouncement(pureVoiceOver);
+  await new Promise((resolve) => setTimeout(resolve, 10 * 1000));
   const { voiceOver, getReport } = await makeVoiceOverReporter(pureVoiceOver);
 
   await voiceOver.interact();
   expect(await voiceOver.itemText()).toBe('2 slider');
+  await voiceOver.interact();
+  expect(await voiceOver.lastSpokenPhrase()).toBe('In slider');
   await voiceOver.press('Control+Option+ArrowLeft');
   expect(await voiceOver.itemText()).toBe('1 slider');
   await voiceOver.press('Control+Option+ArrowRight');
