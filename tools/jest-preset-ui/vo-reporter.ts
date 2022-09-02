@@ -58,6 +58,8 @@ export const makeVoiceOverReporter = async (baseVoiceOver: VoiceOver) => {
       actionsLog.push(`Screen reader see element "${itemTextLog}".`);
       prevItemTextLog = itemTextLog;
     }
+    // eslint-disable-next-line no-console
+    console.log(actionsLog.join(', '));
   };
 
   const voiceOverWrapper: Omit<VoiceOver, 'mouse' | 'keyboard' | 'cursor' | 'caption'> = {

@@ -5,8 +5,6 @@ import { resolve as resolvePath } from 'path';
 import { writeFile } from 'fs/promises';
 import { getReportHeader, makeVoiceOverReporter } from '@semcore/jest-preset-ui/vo-reporter';
 
-getReportHeader();
-
 test('Users can interact with Slider via VoiceOver', async ({ page, voiceOver: pureVoiceOver }) => {
   const standPath = resolvePath(
     __dirname,
@@ -24,7 +22,36 @@ test('Users can interact with Slider via VoiceOver', async ({ page, voiceOver: p
 
   expect(await voiceOver.itemText()).toBe('2 slider');
   await voiceOver.interact();
+  expect(await voiceOver.lastSpokenPhrase()).toBe(
+    'In text To use Dictation, you need to select a microphone or connect an external microphone.',
+  );
+  await voiceOver.stopInteracting();
+  expect(await voiceOver.lastSpokenPhrase()).toBe('Out of text');
+  await voiceOver.next();
+  expect(await voiceOver.lastSpokenPhrase()).toBe(
+    'You can configure your microphone in Dictation preferences.',
+  );
+  await voiceOver.next();
+  expect(await voiceOver.lastSpokenPhrase()).toBe('image');
+  await voiceOver.next();
+  expect(await voiceOver.lastSpokenPhrase()).toBe('Don’t Ask Again button');
+  await voiceOver.next();
+  expect(await voiceOver.lastSpokenPhrase()).toBe('Not Now button');
+  await voiceOver.act();
+  await voiceOver.perform(voiceOver.commander.commands.OPEN_WINDOW_CHOOSER);
+  await voiceOver.interact();
+  await voiceOver.next();
+  await voiceOver.next();
+  await voiceOver.next();
+  await voiceOver.next();
+  await voiceOver.interact();
+  await voiceOver.next();
+  await voiceOver.next();
+  await voiceOver.next();
+  await voiceOver.next();
+
   expect(await voiceOver.lastSpokenPhrase()).toBe('In slider');
+
   await voiceOver.press('Control+Option+ArrowLeft');
   expect(await voiceOver.itemText()).toBe('1 slider');
   await voiceOver.press('Control+Option+ArrowRight');
