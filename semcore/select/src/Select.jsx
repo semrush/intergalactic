@@ -11,6 +11,7 @@ import addonTextChildren from '@semcore/utils/lib/addonTextChildren';
 import InputSearch from './InputSearch';
 import { useBox } from '@semcore/flex-box';
 import { selectContext } from './context';
+import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 
 import style from './style/select.shadow.css';
 
@@ -30,6 +31,7 @@ class RootSelect extends Component {
   static displayName = 'Select';
 
   static style = style;
+  static enhance = [uniqueIDEnhancement()];
 
   static defaultProps = (props) => ({
     placeholder: props.multiselect ? 'Select options' : 'Select option',
@@ -61,9 +63,13 @@ class RootSelect extends Component {
       forwardRef,
       name,
       multiselect,
+      uid,
     } = this.asProps;
 
     return {
+      id: `select-${uid}-trigger`,
+      'aria-controls': `select-${uid}-menu`,
+      'aria-flowto': `select-${uid}-menu`,
       empty: isEmptyValue(value),
       size,
       value,
@@ -76,6 +82,15 @@ class RootSelect extends Component {
       active: visible,
       onClear: this.handlerClear,
       children: this.renderChildrenTrigger(value, options),
+    };
+  }
+
+  getMenuProps() {
+    const { uid } = this.asProps;
+
+    return {
+      id: `select-${uid}-menu`,
+      'aria-flowto': `select-${uid}-trigger`,
     };
   }
 
@@ -199,15 +214,8 @@ class RootSelect extends Component {
     if (options) {
       return (
         <Root render={DropdownMenu}>
-          <Select.Trigger
-            {...other}
-            id="select-trigger"
-            tanIndex={-1}
-            role="combobox"
-            aria-controls="select-menu"
-            aria-haspopup="listbox"
-          />
-          <Select.Menu role="listbox" id="select-menu">
+          <Select.Trigger {...other} tanIndex={-1} role="button" aria-haspopup="listbox" />
+          <Select.Menu role="listbox">
             {options.map((option, i) => {
               return (
                 <Select.Option
