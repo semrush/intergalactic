@@ -1,9 +1,7 @@
 import { Plugin } from 'esbuild';
-import { resolve as resolvePath, dirname as resolveDirname } from 'path';
+import { resolve as resolvePath } from 'path';
 import { access as fsAccess, stat as fsStat, readFile } from 'fs/promises';
-import { fileURLToPath } from 'url';
 
-const __dirname = resolveDirname(fileURLToPath(import.meta.url));
 const fsExists = async (path: string) => {
   try {
     await fsAccess(path);
@@ -17,21 +15,21 @@ const isFile = async (path: string) => {
   return (await fsStat(path)).isFile();
 };
 
-const getRepoPackageFile = async () => {
-  const packageFilePath = resolvePath(__dirname, '../../package.json');
+const getRepoPackageFile = async (rootDir: string) => {
+  const packageFilePath = resolvePath(rootDir, 'package.json');
   const packageFileText = await readFile(packageFilePath, 'utf-8');
   return JSON.parse(packageFileText) as {
     workspaces: string[];
   };
 };
 
-const tryToResolveWorkspacePath = async (path: string) => {
+const tryToResolveWorkspacePath = async (path: string, rootDir: string) => {
   if (!path.startsWith('@semcore/')) {
     throw new Error(
       `Unable to resolve workspace for non @semcore package (trying to resolve "${path}")`,
     );
   }
-  const { workspaces } = await getRepoPackageFile();
+  const { workspaces } = await getRepoPackageFile(rootDir);
   {
     const destinationDirs = workspaces.map((workspacePath) => workspacePath.split('/').pop());
     if (destinationDirs.length !== [...new Set(destinationDirs)].length) {
@@ -49,7 +47,7 @@ const tryToResolveWorkspacePath = async (path: string) => {
   for (const workspace of workspaces) {
     const workspaceDestination = workspace.split('/').pop();
     if (workspaceDestination === componentName) {
-      return resolvePath(__dirname, '../..', workspace);
+      return resolvePath(rootDir, workspace);
     }
   }
 
@@ -81,13 +79,13 @@ const rootFiles = ['README.md', 'package.json'];
 const generatedComponents = ['icon', 'ui', 'illustration'];
 const outOfSourceDirs = ['style'];
 
-export const esbuildPluginSemcoreSourcesResolve = (): Plugin => ({
+export const esbuildPluginSemcoreSourcesResolve = (rootDir: string): Plugin => ({
   name: 'esbuild-plugin-semcore-sources-resolve',
   setup(build) {
     build.onResolve({ filter: /^(!!raw-loader!)?@semcore\// }, async ({ path }) => {
       const namespace = path.startsWith('!!raw-loader!') ? 'rawFile' : 'file';
       if (namespace === 'rawFile') path = path.substring('!!raw-loader!'.length);
-      const workspacePath = await tryToResolveWorkspacePath(path);
+      const workspacePath = await tryToResolveWorkspacePath(path, rootDir);
       const componentName = path.split('/')[1];
       let subPath = path.split('/').slice(2).join('/');
 

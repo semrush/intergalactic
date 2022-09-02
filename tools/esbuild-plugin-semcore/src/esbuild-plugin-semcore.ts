@@ -1,12 +1,14 @@
 import { Loader, Plugin } from 'esbuild';
-import babel from '@babel/core';
 import { readFile, access } from 'fs/promises';
 import { dirname as resolveDirname } from 'path';
 import { makeCacheManager } from './cache-manager';
 import { extractSemcoreImplicitDependencies } from './semcore-implicit-dependncies-resolver';
+export { esbuildPluginSemcoreSourcesResolve } from './esbuild-plugin-semcore-sources-resolve';
 
 const babelTransform = async (contents: string, path: string) => {
+  // eslint-disable-next-line import/extensions
   const { default: babelConfig } = await import('@semcore/babel-preset-ui/.babelrc.js');
+  const babel = await import('@babel/core');
 
   const code = await new Promise((resolve, reject) =>
     babel.transform(
@@ -30,15 +32,16 @@ const loaderOfExtension: { [key: string]: Loader } = { md: 'text', mjs: 'js' };
 const prioritizedExtensionFallback: { [key: string]: string } = { js: 'mjs' };
 
 const cacheManager = makeCacheManager('esbuild_plugin_semcore');
-await cacheManager.init();
-
-if (process.argv.includes('--reset-cache')) {
-  await cacheManager.reset();
-}
 
 export const esbuildPluginSemcore = (filter: RegExp, excludeFilter?: RegExp): Plugin => ({
   name: 'esbuild-plugin-semcore',
-  setup(build) {
+  async setup(build) {
+    await cacheManager.init();
+
+    if (process.argv.includes('--reset-cache')) {
+      await cacheManager.reset();
+    }
+
     build.onLoad({ filter }, async ({ path, namespace }) => {
       {
         const extension = path.split('.').pop()! as Loader;

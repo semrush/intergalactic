@@ -4,7 +4,11 @@ import {
   Root as MarkdownRoot,
   Paragraph as MarkdownParagraph,
 } from 'mdast';
-import { resolve as resolvePath, dirname as resolveDirname } from 'path';
+import {
+  resolve as resolvePath,
+  dirname as resolveDirname,
+  relative as resolveRealtivePath,
+} from 'path';
 import {
   fsExists,
   generateHeadingId,
@@ -18,7 +22,7 @@ import { readFile } from 'fs/promises';
 import { fileURLToPath } from 'url';
 import { resolveRepoTypings } from '../typings/resolveRepoTypings';
 // @ts-ignore
-import { makeCacheManager } from '../../../tools/playground/cache-manager';
+import { makeCacheManager } from '../../../tools/esbuild-plugin-semcore/cache-manager';
 import watch from 'node-watch';
 
 const __dirname = resolveDirname(fileURLToPath(import.meta.url));
@@ -121,14 +125,14 @@ const stringifyTokenPosition = (fullPath: string, token: MarkdownToken, metaHeig
   return `${fullPath}:${line}:${column}`;
 };
 
+type ComponentChangelogBlock = {
+  title: string;
+  version: string;
+  changes: { type: string; text: string }[];
+};
 const makeChangelog = (markdownAst: MarkdownRoot, fullPath: string, metaHeight: number) => {
-  type ChangelogBlock = {
-    title: string;
-    version: string;
-    changes: { type: string; text: string }[];
-  };
-  const blocks: ChangelogBlock[] = [];
-  let currentBlock: ChangelogBlock | null = null;
+  const blocks: ComponentChangelogBlock[] = [];
+  let currentBlock: ComponentChangelogBlock | null = null;
   let currentType: string = 'Unknown';
 
   for (const token of markdownAst.children) {
@@ -166,26 +170,27 @@ const makeChangelog = (markdownAst: MarkdownRoot, fullPath: string, metaHeight: 
   return blocks;
 };
 
+type GlobalChangelogBlock = {
+  title: string;
+  version: string;
+  components: {
+    title: string;
+    component: string;
+    changes: {
+      type: string;
+      text: string;
+    }[];
+  }[];
+};
+
 const makeChangelogByComponent = (
   markdownAst: MarkdownRoot,
   fullPath: string,
   metaHeight: number,
 ) => {
-  type ChangelogBlock = {
-    title: string;
-    version: string;
-    components: {
-      title: string;
-      component: string;
-      changes: {
-        type: string;
-        text: string;
-      }[];
-    }[];
-  };
-  const blocks: ChangelogBlock[] = [];
-  let currentBlock: ChangelogBlock | null = null;
-  let currentComponent: ChangelogBlock['components'][0] | null = null;
+  const blocks: GlobalChangelogBlock[] = [];
+  let currentBlock: GlobalChangelogBlock | null = null;
+  let currentComponent: GlobalChangelogBlock['components'][0] | null = null;
 
   for (const token of markdownAst.children) {
     if (token.type === 'heading' && token.depth === 2) {
@@ -238,7 +243,66 @@ if (process.argv.includes('--reset-cache')) {
   await cacheManager.reset();
 }
 
-export const buildArticle = async (docsDir: string, fullPath: string, relativePath: string) => {
+type Token =
+  | MarkdownToken
+  | {
+      type: 'heading';
+      level: number;
+      route: string;
+      id: string;
+      html: string;
+    }
+  | {
+      type: 'example';
+      raw: string;
+      relativePath: string;
+      filePath: string;
+      load: string;
+    }
+  | {
+      type: 'import';
+      props: { [propName: string]: unknown };
+      filePath: string;
+      load: string;
+    }
+  | {
+      type: 'email_html';
+      raw: string;
+      compiled: string;
+    }
+  | {
+      type: 'changelogByComponent';
+      blocks: GlobalChangelogBlock[];
+    }
+  | {
+      type: 'changelog';
+      blocks: ComponentChangelogBlock[];
+    }
+  | {
+      type: 'typescriptDeclaration';
+      declaration: unknown;
+      dependencies: { [dependantName: string]: unknown };
+    }
+  | {
+      type: 'text';
+      html: string;
+    };
+
+export const buildArticle = async (
+  docsDir: string,
+  fullPath: string,
+  relativePath: string,
+): Promise<{
+  tokens: Token[];
+  title: string;
+  fileSource: string;
+  sourcePath: string;
+  beta: boolean;
+  imagesUrls: { [id: string]: string };
+  legacyHeaderHashes: { [legacyHash: string]: string };
+  dependencies: string[];
+  headings: Token[];
+}> => {
   const text = await readFile(fullPath, 'utf-8');
   const meta = parseMarkdownMeta(text);
   const textWithoutMeta = removeMarkdownMeta(text);
@@ -252,7 +316,7 @@ export const buildArticle = async (docsDir: string, fullPath: string, relativePa
 
   const tokens = (
     await Promise.all(
-      markdownAst.children.map(async (token) => {
+      markdownAst.children.map(async (token): Promise<Token | Token[]> => {
         const position = stringifyTokenPosition(fullPath, token, metaHeight);
         if (token.type === 'heading') {
           if (!token.children[0]) {
@@ -329,6 +393,24 @@ export const buildArticle = async (docsDir: string, fullPath: string, relativePa
                 filePath,
                 load: `~~~%%%${filePath}%%%~~~`,
               };
+            }
+            if (text.startsWith('@include ')) {
+              const fileName = text.substring('@include '.length);
+              const documentDir = resolveDirname(fullPath);
+              const filePath = resolvePath(documentDir, fileName + '.md');
+              if (!(await fsExists(filePath))) {
+                throw new Error(`Unable to find "${fileName}" as ${filePath} from ${position}`);
+              }
+
+              const subArticle = await buildArticle(
+                docsDir,
+                filePath,
+                resolveRealtivePath(docsDir, filePath),
+              );
+
+              dependencies.push(filePath, ...subArticle.dependencies);
+
+              return subArticle.tokens;
             }
             if (text.startsWith('@email_html ')) {
               const paths = text.substring('@email_html '.length);
@@ -407,22 +489,25 @@ export const buildArticle = async (docsDir: string, fullPath: string, relativePa
         };
       }),
     )
-  ).filter((token) => token !== null);
+  )
+    .filter((token) => token !== null)
+    .flat();
 
   const headings = tokens
     .filter(({ type }) => type === 'heading')
-    .filter(({ level }) => level === 2);
+    .filter((token) => 'level' in token && token.level === 2);
 
   const sourcePath = relativePath.startsWith('./')
     ? relativePath.substring('./'.length)
     : relativePath;
+  const beta = Boolean(meta.beta);
 
   return {
     tokens,
     title: meta.title,
     fileSource: meta.fileSource,
     sourcePath,
-    beta: meta.beta,
+    beta,
     imagesUrls,
     legacyHeaderHashes,
     dependencies,

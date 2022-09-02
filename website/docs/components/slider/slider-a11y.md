@@ -30,3 +30,5 @@ The list below will help you to keep in mind the necessary roles and attributes 
 @## Other recommendations
 
 See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/).
+
+@include slider-a11y-report

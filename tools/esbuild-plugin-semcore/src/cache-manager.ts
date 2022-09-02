@@ -147,6 +147,7 @@ export const makeCacheManager = (id: string, cwd = '.', cacheTtl = 1000 * 60 * 6
 
       if (hashSum !== cachedHashSum) {
         if (verbose) {
+          // eslint-disable-next-line no-console
           console.log(`Cache invalidated for ${filePath}`);
         }
         return null;
