@@ -10,6 +10,7 @@ export default () => {
         mask="99xxxx"
         value={value}
         onChange={changeValue}
+        title="4-digit number"
       />
     </InputMask>
   );

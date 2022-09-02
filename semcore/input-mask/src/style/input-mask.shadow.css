@@ -4,3 +4,12 @@ SValue {
   letter-spacing: 0.1em;
   text-overflow: inherit;
 }
+
+SValueAccessible {
+  width: 100%;
+  position: absolute;
+  left: 9px;
+  top: 6px;
+  pointer-events: none;
+  letter-spacing: 0.1em;
+}

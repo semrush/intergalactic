@@ -4,6 +4,7 @@ import { createTextMaskInputElement } from 'text-mask-core';
 import createComponent, { Component, Merge, sstyled, Root } from '@semcore/core';
 import Input, { IInputProps, IInputValueProps } from '@semcore/input';
 import fire from '@semcore/utils/lib/fire';
+import logger from '@semcore/utils/lib/logger';
 
 import style from './style/input-mask.shadow.css';
 
@@ -177,9 +178,32 @@ class Value extends Component<IInputMaskValueProps> {
 
   render() {
     const SValue = Root;
+    const SValueAccessible = 'span';
+    const { placeholder, title } = this.asProps;
+
+    logger.warn(
+      !title,
+      'title is required for describing mask format',
+      this.asProps['data-ui-name'] || InputMask.displayName,
+    );
+
+    const visibleValue = this.textMask?.state.previousConformedValue
+      .split('')
+      .filter((v) => !Number.isNaN(Number(v)))
+      .join('');
 
     return sstyled(this.asProps.styles)(
-      <SValue render={Input.Value} ref={this.setRef('_input')} onFocus={this.onFocus} />,
+      <>
+        <SValueAccessible role="alert">
+          {visibleValue ? visibleValue : placeholder}
+        </SValueAccessible>
+        <SValue
+          render={Input.Value}
+          ref={this.setRef('_input')}
+          onFocus={this.onFocus}
+          __excludeProps={['placeholder']}
+        />
+      </>,
     );
   }
 }
