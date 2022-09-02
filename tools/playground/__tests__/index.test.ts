@@ -4,7 +4,7 @@ import esbuild from 'esbuild';
 import { esbuildPluginSemcoreSourcesResolve } from '../esbuild-plugin-semcore-sources-resolve';
 
 describe('Playground sources resolving', () => {
-  xtest('resolve documentation, playground and local examples', async () => {
+  test('resolve documentation, playground and local examples', async () => {
     const docsDir = resolvePath(__dirname, '../../../website/docs');
     const playgroundsDir = resolvePath(__dirname, '../examples');
     const examplesDir = resolvePath(__dirname, './examples');
