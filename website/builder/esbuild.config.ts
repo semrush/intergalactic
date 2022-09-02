@@ -1,7 +1,7 @@
 // @ts-ignore
-import { esbuildPluginSemcore } from '../../tools/playground/esbuild-plugin-semcore';
+import { esbuildPluginSemcore } from '../../tools/esbuild-plugin-semcore/src/esbuild-plugin-semcore';
 // @ts-ignore
-import { esbuildPluginSemcoreSourcesResolve } from '../../tools/playground/esbuild-plugin-semcore-sources-resolve';
+import { esbuildPluginSemcoreSourcesResolve } from '../../tools/esbuild-plugin-semcore/src/esbuild-plugin-semcore-sources-resolve';
 import esbuild from 'esbuild';
 import esbuildPluginAlias from 'esbuild-plugin-alias';
 import { resolve as resolvePath } from 'path';
@@ -10,6 +10,7 @@ import { esbuildPluginStatic } from './esbuild-plugin-static';
 import { esbuildPluginIcons } from './esbuild-plugin-icons';
 import { esbuildPluginCssModules } from './esbuild-plugin-css-modules';
 import { esbuildPluginCrutches } from './esbuild-intergalactic-crutches';
+import { fileURLToPath } from 'url';
 
 export const websiteEsbuildConfig: esbuild.BuildOptions = {
   entryPoints: ['./src/main-render.jsx'],
@@ -20,7 +21,7 @@ export const websiteEsbuildConfig: esbuild.BuildOptions = {
   splitting: true,
   treeShaking: true,
   plugins: [
-    esbuildPluginSemcoreSourcesResolve(),
+    esbuildPluginSemcoreSourcesResolve(resolvePath(fileURLToPath(import.meta.url), '../../..')),
     esbuildPluginSemcore(/semcore|tools/),
     esbuildPluginDocs(),
     esbuildPluginStatic(),
