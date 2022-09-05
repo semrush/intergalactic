@@ -67,9 +67,9 @@ class RootSelect extends Component {
     } = this.asProps;
 
     return {
-      id: `select-${uid}-trigger`,
-      'aria-controls': `select-${uid}-menu`,
-      'aria-flowto': `select-${uid}-menu`,
+      id: `igc-select-${uid}-trigger`,
+      'aria-controls': `igc-select-${uid}-menu`,
+      'aria-flowto': `igc-select-${uid}-menu`,
       empty: isEmptyValue(value),
       size,
       value,
@@ -89,8 +89,8 @@ class RootSelect extends Component {
     const { uid } = this.asProps;
 
     return {
-      id: `select-${uid}-menu`,
-      'aria-flowto': `select-${uid}-trigger`,
+      id: `igc-select-${uid}-menu`,
+      'aria-flowto': `igc-select-${uid}-trigger`,
     };
   }
 
