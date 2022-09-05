@@ -76,6 +76,11 @@
     left: 0;
   }
 }
+@media (max-width: 540px) {
+  .iconSearchWrapper {
+    top: -9px;
+  }
+}
 
 .searchIcon {
   cursor: default;
