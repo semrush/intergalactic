@@ -36,6 +36,10 @@ export interface IBaseTriggerProps extends IBoxProps, INeighborItemProps, IKeybo
    * @use IBaseTriggerProps.state
    * */
   theme?: 'normal' | 'valid' | 'invalid' | false;
+  /**
+   * `id` of element (e.g. of popup) that screen readers and other a11y tools should take as the next element.
+   */
+  'aria-flowto'?: string;
 }
 
 export interface IButtonTriggerProps extends Omit<IBaseTriggerProps, 'theme'> {
