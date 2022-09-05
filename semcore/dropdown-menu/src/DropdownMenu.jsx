@@ -4,6 +4,7 @@ import createComponent, { Component, sstyled, Root } from '@semcore/core';
 import Dropdown from '@semcore/dropdown';
 import { Box, Flex, useBox, useFlex } from '@semcore/flex-box';
 import ScrollAreaComponent from '@semcore/scroll-area';
+import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 
 import style from './style/dropdown-menu.shadow.css';
 
@@ -13,6 +14,7 @@ const INTERACTION_TAGS = ['INPUT', 'TEXTAREA'];
 class DropdownMenuRoot extends Component {
   static displayName = 'DropdownMenu';
   static style = style;
+  static enhance = [uniqueIDEnhancement()];
 
   static defaultProps = {
     size: 'm',
@@ -58,10 +60,22 @@ class DropdownMenuRoot extends Component {
   };
 
   getTriggerProps() {
-    const { size } = this.asProps;
+    const { size, uid } = this.asProps;
+
     return {
       size,
+      id: `igc-dropdown-menu-${uid}-trigger`,
+      'aria-flowto': `igc-dropdown-menu-${uid}-menu`,
       onKeyDown: this.handlerKeyDown,
+    };
+  }
+
+  getMenuProps() {
+    const { uid } = this.asProps;
+
+    return {
+      id: `igc-dropdown-menu-${uid}-menu`,
+      'aria-flowto': `igc-dropdown-menu-${uid}-trigger`,
     };
   }
 
@@ -75,7 +89,7 @@ class DropdownMenuRoot extends Component {
 
   getPopperProps() {
     return {
-      // tabIndex: 0,
+      tabIndex: 0,
       onKeyDown: this.handlerKeyDown,
     };
   }
@@ -183,8 +197,6 @@ function List(props) {
       render={Box}
       tag={ScrollAreaComponent}
       role="menu"
-      id="dropdown-menu-list"
-      aria-labelledby="dropdown-menu-trigger"
       aria-activedescendant={props.index}
     />,
   );
@@ -249,7 +261,6 @@ function Trigger() {
   return (
     <Root
       render={Dropdown.Trigger}
-      id="dropdown-menu-trigger"
       tanIndex={-1}
       type="button"
       aria-controls="dropdown-menu-list"
