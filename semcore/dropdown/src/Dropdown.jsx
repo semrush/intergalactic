@@ -69,8 +69,8 @@ class Dropdown extends Component {
 
     return {
       id: `igc-dropdown-${uid}-trigger`,
-      'aria-controls': `igc-dropdown-${uid}-popper`,
-      'aria-flowto': !disablePortal ? `igc-dropdown-${uid}-popper` : undefined,
+      'aria-controls': visible ? `igc-dropdown-${uid}-popper` : undefined,
+      'aria-flowto': visible && !disablePortal ? `igc-dropdown-${uid}-popper` : undefined,
       'aria-label': visible && !disablePortal ? `Press Tab to go to popover` : undefined,
       onKeyDown: this.handlerTriggerKeyDown,
     };

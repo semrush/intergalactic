@@ -65,8 +65,8 @@ class DropdownMenuRoot extends Component {
     return {
       size,
       id: `igc-dropdown-menu-${uid}-trigger`,
-      'aria-controls': `igc-dropdown-menu-${uid}-popper`,
-      'aria-flowto': !disablePortal ? `igc-dropdown-menu-${uid}-popper` : undefined,
+      'aria-controls': visible ? `igc-dropdown-menu-${uid}-popper` : undefined,
+      'aria-flowto': visible && !disablePortal ? `igc-dropdown-menu-${uid}-popper` : undefined,
       'aria-label': visible && !disablePortal ? `Press Tab to go to popover` : undefined,
       onKeyDown: this.handlerKeyDown,
     };

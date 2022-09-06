@@ -69,8 +69,8 @@ class RootSelect extends Component {
 
     return {
       id: `igc-select-${uid}-trigger`,
-      'aria-controls': `igc-select-${uid}-list`,
-      'aria-flowto': !disablePortal ? `igc-select-${uid}-list` : undefined,
+      'aria-controls': visible ? `igc-select-${uid}-list` : undefined,
+      'aria-flowto': visible && !disablePortal ? `igc-select-${uid}-list` : undefined,
       'aria-label': visible && !disablePortal ? `Press Tab to go to popover` : undefined,
       'aria-haspopup': 'listbox',
       empty: isEmptyValue(value),
