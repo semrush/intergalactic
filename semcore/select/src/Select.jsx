@@ -270,7 +270,9 @@ function Trigger({ Children, name, uid, value, $hiddenRef, tag: Tag = ButtonTrig
       placeholder="Select option"
       aria-autocomplete={hasInputTrigger && 'list'}
       role={hasInputTrigger && 'combobox'}
-      aria-activedescendant={hasInputTrigger && value && `igc-select-${uid}-option-${value}`}
+      aria-activedescendant={
+        (hasInputTrigger && value && `igc-select-${uid}-option-${value}`) || undefined
+      }
     >
       {addonTextChildren(
         Children,

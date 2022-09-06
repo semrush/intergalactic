@@ -37,7 +37,7 @@ export const e2eStandToHtml = async (standFilePath: string, locale: string) => {
                 standReadyMarker.setAttribute('id', 'AppStandReadyMarker');
                 standReadyMarker.setAttribute('hidden', true);
                 document.body.appendChild(standReadyMarker);
-              }, 0);
+              }, 15000);
             `;
 
             return { contents, loader: 'tsx', resolveDir: resolveDirname(standFilePath) };
