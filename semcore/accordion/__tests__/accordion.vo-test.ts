@@ -17,8 +17,10 @@ test('Users can interact with Accodrion via VoiceOver', async ({
     __dirname,
     '../../../website/docs/components/accordion/accordion-a11y-report.md',
   );
-  const { htmlContent } = await e2eStandToHtml(standPath, 'en');
+  const { htmlContent, awaitJsEvaluation } = await e2eStandToHtml(standPath, 'en');
   await page.setContent(htmlContent);
+  await awaitJsEvaluation(page);
+
   const { voiceOver, getReport } = await makeVoiceOverReporter(pureVoiceOver);
   await voiceOver.interact();
 
