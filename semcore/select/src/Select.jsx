@@ -64,12 +64,15 @@ class RootSelect extends Component {
       name,
       multiselect,
       uid,
+      disablePortal,
     } = this.asProps;
 
     return {
       id: `igc-select-${uid}-trigger`,
-      'aria-controls': `igc-select-${uid}-menu`,
-      'aria-flowto': `igc-select-${uid}-menu`,
+      'aria-controls': `igc-select-${uid}-list`,
+      'aria-flowto': !disablePortal ? `igc-select-${uid}-list` : undefined,
+      'aria-label': visible && !disablePortal ? `Press Tab to go to popover` : undefined,
+      'aria-haspopup': 'listbox',
       empty: isEmptyValue(value),
       size,
       value,
@@ -85,17 +88,25 @@ class RootSelect extends Component {
     };
   }
 
+  getListProps() {
+    const { multiselect } = this.asProps;
+    return {
+      'aria-multiselectable': multiselect ? 'true' : undefined,
+    };
+  }
+
   getMenuProps() {
     const { uid } = this.asProps;
 
     return {
-      id: `igc-select-${uid}-menu`,
+      id: `igc-select-${uid}-list`,
+      role: 'listbox',
       'aria-flowto': `igc-select-${uid}-trigger`,
     };
   }
 
   getOptionProps(props) {
-    const { value } = this.asProps;
+    const { value, uid } = this.asProps;
     const selected = isSelectedOption(value, props.value);
     const other = {};
     this._optionSelected = selected;
@@ -107,6 +118,9 @@ class RootSelect extends Component {
 
     return {
       selected,
+      'aria-selected': selected ? 'true' : 'false',
+      id: `igc-select-${uid}-option-${value}`,
+      role: 'option',
       onClick: this.bindHandlerOptionClick(props.value),
       ...other,
     };
@@ -214,17 +228,11 @@ class RootSelect extends Component {
     if (options) {
       return (
         <Root render={DropdownMenu}>
-          <Select.Trigger {...other} tanIndex={-1} role="button" aria-haspopup="listbox" />
-          <Select.Menu role="listbox">
+          <Select.Trigger {...other} tanIndex={-1} role="button" />
+          <Select.Menu>
             {options.map((option, i) => {
               return (
-                <Select.Option
-                  key={i}
-                  id={option.value}
-                  aria-selected={value === i}
-                  {...option}
-                  role="option"
-                >
+                <Select.Option key={i} id={option.value} aria-selected={value === i} {...option}>
                   {multiselect && <Select.Option.Checkbox />}
                   {option.children}
                 </Select.Option>
@@ -243,9 +251,27 @@ class RootSelect extends Component {
   }
 }
 
-function Trigger({ Children, name, value, $hiddenRef, tag: Tag = ButtonTrigger }) {
+const isInputTriggerTag = (tag) => {
+  if (typeof tag === 'string') return tag.toLowerCase().includes('input');
+  if (typeof tag === 'object' && tag !== null && typeof tag.displayName)
+    return tag.displayName.toLowerCase().includes('input');
+  if (typeof tag === 'object' && tag !== null && typeof tag.render?.displayName)
+    return tag.render.displayName.toLowerCase().includes('input');
+  return false;
+};
+
+function Trigger({ Children, name, uid, value, $hiddenRef, tag: Tag = ButtonTrigger }) {
+  const hasInputTrigger = isInputTriggerTag(Tag);
+
   return (
-    <Root render={DropdownMenu.Trigger} tag={Tag} placeholder="Select option">
+    <Root
+      render={DropdownMenu.Trigger}
+      tag={Tag}
+      placeholder="Select option"
+      aria-autocomplete={hasInputTrigger && 'list'}
+      role={hasInputTrigger && 'combobox'}
+      aria-activedescendant={hasInputTrigger && value && `igc-select-${uid}-option-${value}`}
+    >
       {addonTextChildren(
         Children,
         Tag.Text || ButtonTrigger.Text,

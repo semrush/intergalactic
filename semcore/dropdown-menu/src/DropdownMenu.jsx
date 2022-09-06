@@ -60,22 +60,15 @@ class DropdownMenuRoot extends Component {
   };
 
   getTriggerProps() {
-    const { size, uid } = this.asProps;
+    const { size, uid, disablePortal, visible } = this.asProps;
 
     return {
       size,
       id: `igc-dropdown-menu-${uid}-trigger`,
-      'aria-flowto': `igc-dropdown-menu-${uid}-menu`,
+      'aria-controls': `igc-dropdown-menu-${uid}-popper`,
+      'aria-flowto': !disablePortal ? `igc-dropdown-menu-${uid}-popper` : undefined,
+      'aria-label': visible && !disablePortal ? `Press Tab to go to popover` : undefined,
       onKeyDown: this.handlerKeyDown,
-    };
-  }
-
-  getMenuProps() {
-    const { uid } = this.asProps;
-
-    return {
-      id: `igc-dropdown-menu-${uid}-menu`,
-      'aria-flowto': `igc-dropdown-menu-${uid}-trigger`,
     };
   }
 
@@ -88,9 +81,13 @@ class DropdownMenuRoot extends Component {
   }
 
   getPopperProps() {
+    const { uid, disablePortal } = this.asProps;
+
     return {
       tabIndex: 0,
       onKeyDown: this.handlerKeyDown,
+      id: `igc-dropdown-menu-${uid}-popper`,
+      'aria-flowto': !disablePortal ? `igc-dropdown-menu-${uid}-trigger` : undefined,
     };
   }
 
@@ -258,15 +255,7 @@ function Title(props) {
 }
 
 function Trigger() {
-  return (
-    <Root
-      render={Dropdown.Trigger}
-      tanIndex={-1}
-      type="button"
-      aria-controls="dropdown-menu-list"
-      aria-haspopup="true"
-    />
-  );
+  return <Root render={Dropdown.Trigger} type="button" aria-haspopup="true" />;
 }
 
 const DropdownMenu = createComponent(

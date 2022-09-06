@@ -49,14 +49,14 @@ export const makeVoiceOverReporter = async (baseVoiceOver: VoiceOver) => {
   const reportStateChange = async () => {
     const spokenPhrase = await baseVoiceOver.lastSpokenPhrase();
     const itemTextLog = await baseVoiceOver.itemTextLog();
-    if (prevSpokenPhrase !== spokenPhrase) {
+    if (spokenPhrase && spokenPhrase !== prevSpokenPhrase) {
       actionsLog.push(`Screen reader says "${spokenPhrase}".`);
-      prevSpokenPhrase = spokenPhrase;
     }
-    if (prevItemTextLog !== itemTextLog) {
+    if (itemTextLog && itemTextLog !== prevItemTextLog) {
       actionsLog.push(`Screen reader see element "${itemTextLog}".`);
-      prevItemTextLog = itemTextLog;
     }
+    prevSpokenPhrase = spokenPhrase;
+    prevItemTextLog = itemTextLog;
   };
 
   const voiceOverWrapper: Omit<VoiceOver, 'mouse' | 'keyboard' | 'cursor' | 'caption'> = {

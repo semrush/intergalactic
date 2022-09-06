@@ -34,11 +34,6 @@ class RootBaseTrigger extends Component {
       "The 'theme' property is deprecated, use 'state'",
       this.asProps['data-ui-name'] || BaseTrigger.displayName,
     );
-    logger.warn(
-      !this.asProps['aria-flowto'],
-      "The 'aria-flowto' should be defined. It will be required property in the next major release.",
-      this.asProps['data-ui-name'] || BaseTrigger.displayName,
-    );
 
     // TODO: add aria
     return sstyled(styles)(
