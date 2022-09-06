@@ -5,6 +5,7 @@ import {
   esbuildPluginSemcoreSourcesResolve,
 } from '@semcore/esbuild-plugin-semcore';
 import { dirname as resolveDirname, resolve as resolvePath } from 'path';
+import type { Page } from '@playwright/test';
 
 export const e2eStandToHtml = async (standFilePath: string, locale: string) => {
   const standBundle = await esbuild.build({
@@ -30,6 +31,13 @@ export const e2eStandToHtml = async (standFilePath: string, locale: string) => {
                 </I18nProvider>,
                 document.querySelector('#root')
               );
+              
+              setTimeout(() => {
+                const standReadyMarker = document.createElement('div');
+                standReadyMarker.setAttribute('id', 'AppStandReadyMarker');
+                standReadyMarker.setAttribute('hidden', true);
+                document.body.appendChild(standReadyMarker);
+              }, 0);
             `;
 
             return { contents, loader: 'tsx', resolveDir: resolveDirname(standFilePath) };
@@ -64,7 +72,10 @@ export const e2eStandToHtml = async (standFilePath: string, locale: string) => {
     .filter((file) => file.path.endsWith('.js'))
     .map((file) => file.text);
 
-  return `
+  const awaitJsEvaluation = (page: Page) =>
+    page.waitForSelector('#AppStandReadyMarker', { state: 'attached' });
+
+  const htmlContent = `
       <!DOCTYPE html>
       <html lang="${locale}">
         <head>
@@ -76,4 +87,6 @@ export const e2eStandToHtml = async (standFilePath: string, locale: string) => {
         </body>
       </html>
     `;
+
+  return { htmlContent, awaitJsEvaluation };
 };
