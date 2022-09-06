@@ -253,9 +253,9 @@ class RootSelect extends Component {
 
 const isInputTriggerTag = (tag) => {
   if (typeof tag === 'string') return tag.toLowerCase().includes('input');
-  if (typeof tag === 'object' && tag !== null && typeof tag.displayName)
+  if (typeof tag === 'object' && tag !== null && typeof tag.displayName === 'string')
     return tag.displayName.toLowerCase().includes('input');
-  if (typeof tag === 'object' && tag !== null && typeof tag.render?.displayName)
+  if (typeof tag === 'object' && tag !== null && typeof tag.render?.displayName === 'string')
     return tag.render.displayName.toLowerCase().includes('input');
   return false;
 };
