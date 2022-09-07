@@ -1,8 +1,9 @@
 {
   "scripts": {
     "start": "yarn playground",
-    "build": "yarn build:icons && lerna run build --scope @semcore/* --ignore @semcore/icon,@semcore/ui",
+    "build": "yarn build:icons && yarn build:illustration && lerna run build --scope @semcore/* --ignore @semcore/icon,@semcore/ui",
     "build:icons": "yarn workspace @semcore/icon build",
+    "build:illustration": "yarn workspace @semcore/illustration build",
     "typecheck": "lerna exec --scope @semcore/* -- tsc --noEmit",
     "prebuild": "rm -rf semcore/**/lib && yarn prebuild:icon && yarn prebuild:illustration",
     "prebuild:icon": "yarn workspace @semcore/icon prebuild",

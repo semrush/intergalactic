@@ -7,9 +7,9 @@
   "type": "module",
   "scripts": {
     "start": "yarn dev",
-    "dev": "yarn build:ensure-icons && WATCH_TYPES=true tsm --require=../.ci/tsm-filter-warnings.js ./builder/dev-server.ts",
+    "dev": "yarn build:ensure && WATCH_TYPES=true tsm --require=../.ci/tsm-filter-warnings.js ./builder/dev-server.ts",
     "build": "PUBLIC_PATH=/intergalactic/ NODE_ENV=production tsm --require=../.ci/tsm-filter-warnings.js ./builder/ssr.ts --reset-cache",
-    "build:ensure-icons": "tsm --require=../.ci/tsm-filter-warnings.js ./builder/ensure-icons-built.ts",
+    "build:ensure": "tsm --require=../.ci/tsm-filter-warnings.js ./builder/ensure-pre-built.ts",
     "upload-search-index": "tsm --require=../.ci/tsm-filter-warnings.js ./searchIndexUpload.ts"
   },
   "dependencies": {
