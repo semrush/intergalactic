@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.1.1] - 2022-09-07
+
+### Fixed
+
+- Enforced inner text font line height to prevent possible bottom cut.
+
 ## [4.1.0] - 2022-09-05
 
 ### Added

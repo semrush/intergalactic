@@ -37,7 +37,6 @@ STag[interactive] {
 STag[size='m'] {
   height: 20px;
   min-width: 20px;
-  font-size: var(--fs-100);
 
   & SCircle:first-child {
     margin-left: -2px;
@@ -46,18 +45,31 @@ STag[size='m'] {
   & SCircle:last-child {
     margin-right: -2px;
   }
+
+  & SText {
+    font-size: var(--fs-100);
+    line-height: var(--lh-100);
+  }
 }
 
 STag[size='l'] {
   height: 28px;
   min-width: 28px;
-  font-size: var(--fs-200);
+
+  & SText {
+    font-size: var(--fs-200);
+    line-height: var(--lh-200);
+  }
 }
 
 STag[size='xl'] {
   height: 40px;
   min-width: 40px;
-  font-size: var(--fs-300);
+
+  & SText {
+    font-size: var(--fs-300);
+    line-height: var(--lh-300);
+  }
 }
 
 STag[theme='primary'] {
