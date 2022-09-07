@@ -33,3 +33,5 @@
 - [ ] My code follows the code style of this project.
 - [ ] My change requires a change to the documentation.
 - [ ] I have updated the documentation accordingly.
+
+# If appropriate sections above is not fulfilled properly do not even review my pull request and never approve it!
