@@ -6,8 +6,12 @@ import { IIconProps } from '@semcore/icon';
 import { Text } from '@semcore/typography';
 
 export interface IFullscreenModalProps extends IModalProps {
-  /** This property is responsible for the visibility of the modal window */
+  /** This property is responsible for the visibility of the modal window
+   * @deprecated use `visible` instead
+   * */
   hidden?: boolean;
+  /** This property is responsible for the visibility of the modal window */
+  visible?: boolean;
   /** Function that is invoked when hiding a component */
   onClose?: (
     trigger: 'onBackClick' | 'onCloseClick' | 'onEscape' | 'onOutsideClick',
