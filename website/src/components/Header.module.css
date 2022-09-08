@@ -44,6 +44,8 @@
 .logo {
   display: flex;
   align-items: center;
+  margin-top: 4px;
+  font-family: 'Factor A';
   text-align: center;
   font-size: 22px;
   line-height: 130%;
@@ -51,7 +53,8 @@
   font-weight: 700;
 }
 .semrushLogo {
-  margin-right: 4px;
+  margin-right: 8px;
+  margin-bottom: 6px;
   width: 30px;
   height: 30px;
 }
@@ -162,6 +165,11 @@
   }
   .mobileMenuNavigation {
     display: block;
+  }
+}
+@media (max-width: 540px) {
+  .searchField {
+    display: none;
   }
 }
 @media (max-width: 320px) {
