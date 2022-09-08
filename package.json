@@ -99,6 +99,7 @@
     "semcore/drag-and-drop",
     "semcore/dropdown",
     "semcore/dropdown-menu",
+    "semcore/ellipsis",
     "semcore/email",
     "semcore/errors",
     "semcore/feature-popover",

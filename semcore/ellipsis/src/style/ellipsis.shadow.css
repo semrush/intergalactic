@@ -1,0 +1,20 @@
+@import '@semcore/utils/style/var.css';
+
+SBeginning {
+  overflow: hidden;
+  display: inline-block;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+SEllipsis[maxline] {
+  display: -webkit-box;
+  -webkit-line-clamp: var(--maxline);
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  white-space: normal;
+}
+
+STail {
+  white-space: nowrap;
+}

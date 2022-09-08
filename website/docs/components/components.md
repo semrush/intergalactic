@@ -18,6 +18,7 @@ title: Components
 @page drag-and-drop
 @page dropdown
 @page dropdown-menu
+@page ellipsis
 @page feature-popover
 @page feedback
 @page feedback-yes-no

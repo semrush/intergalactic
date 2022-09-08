@@ -45,7 +45,7 @@ export const PlaygroundWrapper: React.FC = () => {
     console.log({ Playground });
     return (
       <div>
-        Playgorund <strong>{playground}</strong> has no function in default export (what we got see
+        Playground <strong>{playground}</strong> has no function in default export (what we got see
         in developer console)
       </div>
     );
