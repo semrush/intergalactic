@@ -6,7 +6,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-- Deprecated `hidden` property in favor of `visible`.
+- Removed unused `hidden` property from types.
 
 ## [2.0.17] - 2022-08-30
 
