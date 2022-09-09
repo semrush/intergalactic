@@ -167,12 +167,33 @@
     display: block;
   }
 }
-@media (max-width: 540px) {
-  .searchField {
+@media (max-width: 674px) {
+  .headerMain {
+    column-gap: 0;
+  }
+  .mobileSearchHidden {
+    display: none;
+  }
+  .searchWrapper {
+    margin-left: 20px;
+    margin-right: 0;
+  }
+  .searchIcon {
+    display: flex;
+    position: absolute;
+    right: 20px;
+  }
+  .iconSearchWrapper {
+    display: none !important;
+  }
+  .searchIcon {
+    margin-right: 20px;
+  }
+  .activeSearch {
     display: none;
   }
 }
-@media (max-width: 320px) {
+@media (max-width: 420px) {
   .headerMain {
     column-gap: 0;
   }
