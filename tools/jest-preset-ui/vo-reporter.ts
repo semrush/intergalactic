@@ -46,6 +46,33 @@ export const makeVoiceOverReporter = async (baseVoiceOver: VoiceOver) => {
 
   let prevSpokenPhrase = await baseVoiceOver.lastSpokenPhrase();
   let prevItemTextLog = await baseVoiceOver.itemTextLog();
+  const healthCheck = async () => {
+    const spokenPhrase = await baseVoiceOver.lastSpokenPhrase();
+    const itemTextLog = await baseVoiceOver.itemTextLog();
+    if (
+      actionsLog.includes('You can configure your microphone in Dictation preferences.') ||
+      actionsLog.includes(
+        'Dictation system dialog To use Dictation, you need to select a microphone or connect an external microphone. You can configure your microphone in Dictation preferences. To use Dictation, you need to select a microphone or connect an external microphone.',
+      )
+    ) {
+      const screenshotPath = await baseVoiceOver.cursor.takeScreenshot();
+      const screenshotBinary = await readFile(screenshotPath);
+      const screenshotBase64 = screenshotBinary.toString('base64');
+      /* eslint-disable no-console */
+      console.log('Screenshot base64:\n===');
+      console.log(screenshotBase64);
+      console.log('===');
+      console.log({
+        spokenPhrase,
+        itemTextLog,
+        actionsLog,
+        detect: await baseVoiceOver.detect(),
+        default: await baseVoiceOver.default(),
+      });
+      /* eslint-enable no-console */
+      throw new Error(`Unexpected settings window detected. Debug logs are available above.`);
+    }
+  };
   const reportStateChange = async () => {
     const spokenPhrase = await baseVoiceOver.lastSpokenPhrase();
     const itemTextLog = await baseVoiceOver.itemTextLog();
@@ -67,62 +94,78 @@ export const makeVoiceOverReporter = async (baseVoiceOver: VoiceOver) => {
       actionsLog.push(
         `Screen reader checked is it supported on current os (${getOsName()}): ${resultString}.`,
       );
+      if (result) {
+        await healthCheck();
+      }
       return result;
     },
     default: async () => {
       const result = await baseVoiceOver.default();
       const resultString = result ? 'it is' : "it's not";
       actionsLog.push(`Screen reader checked is it default system screen reader: ${resultString}.`);
+      if (result) {
+        await healthCheck();
+      }
       return result;
     },
-    start: (options) => {
-      actionsLog.push(`Screen reader was turned on.`);
-      return baseVoiceOver.start(options);
+    start: async (options) => {
+      actionsLog.push(`Screen reader is turning on.`);
+      const result = await baseVoiceOver.start(options);
+      await healthCheck();
+      return result;
     },
-    stop: (options) => {
-      actionsLog.push(`Screen reader was turned off.`);
+    stop: async (options) => {
+      await healthCheck();
+      actionsLog.push(`Screen reader is turning off.`);
       return baseVoiceOver.stop(options);
     },
     previous: async (options) => {
       actionsLog.push(`Screen reader goes to the previous element.`);
       const result = await baseVoiceOver.previous(options);
       await reportStateChange();
+      await healthCheck();
       return result;
     },
     next: async (options) => {
       actionsLog.push(`Screen reader goes to the next element.`);
       const result = await baseVoiceOver.next(options);
       await reportStateChange();
+      await healthCheck();
       return result;
     },
     act: async (options) => {
       actionsLog.push(`Screen reader triggers element default action.`);
       const result = await baseVoiceOver.act(options);
       await reportStateChange();
+      await healthCheck();
       return result;
     },
     interact: async (options) => {
       actionsLog.push(`Screen reader goes into the active element.`);
       const result = await baseVoiceOver.interact(options);
       await reportStateChange();
+      await healthCheck();
       return result;
     },
     stopInteracting: async (options) => {
       actionsLog.push(`Screen reader goes out of active element.`);
       const result = await baseVoiceOver.stopInteracting(options);
       await reportStateChange();
+      await healthCheck();
       return result;
     },
     press: async (key, options) => {
       actionsLog.push(`Screen reader presses the "${key}" button.`);
       const result = await baseVoiceOver.press(key, options);
       await reportStateChange();
+      await healthCheck();
       return result;
     },
     type: async (text, options) => {
       actionsLog.push(`Screen reader types "${text}".`);
       const result = await baseVoiceOver.type(text, options);
       await reportStateChange();
+      await healthCheck();
       return result;
     },
     perform: async (command, options) => {
@@ -140,6 +183,7 @@ export const makeVoiceOverReporter = async (baseVoiceOver: VoiceOver) => {
 
       const result = await baseVoiceOver.perform(command, options);
       await reportStateChange();
+      await healthCheck();
       return result;
     },
     click: async (options) => {
@@ -151,12 +195,29 @@ export const makeVoiceOverReporter = async (baseVoiceOver: VoiceOver) => {
 
       const result = await baseVoiceOver.click(options);
       await reportStateChange();
+      await healthCheck();
       return result;
     },
-    lastSpokenPhrase: (options) => baseVoiceOver.lastSpokenPhrase(options),
-    itemText: (options) => baseVoiceOver.itemText(options),
-    spokenPhraseLog: () => baseVoiceOver.spokenPhraseLog(),
-    itemTextLog: () => baseVoiceOver.itemTextLog(),
+    lastSpokenPhrase: async (options) => {
+      const result = await baseVoiceOver.lastSpokenPhrase(options);
+      await healthCheck();
+      return result;
+    },
+    itemText: async (options) => {
+      const result = await baseVoiceOver.itemText(options);
+      await healthCheck();
+      return result;
+    },
+    spokenPhraseLog: () => {
+      const result = baseVoiceOver.spokenPhraseLog();
+      healthCheck();
+      return result;
+    },
+    itemTextLog: () => {
+      const result = baseVoiceOver.itemTextLog();
+      healthCheck();
+      return result;
+    },
   };
 
   const getReport = async (standFilePath: string) => {
