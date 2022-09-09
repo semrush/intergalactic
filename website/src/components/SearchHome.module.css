@@ -76,9 +76,9 @@
     left: 0;
   }
 }
-@media (max-width: 540px) {
+@media (max-width: 674px) {
   .iconSearchWrapper {
-    top: -9px;
+    display: none;
   }
 }
 
