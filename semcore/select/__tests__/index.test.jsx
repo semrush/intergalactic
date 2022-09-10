@@ -214,14 +214,14 @@ describe('Select Trigger', () => {
     ).toMatchImageSnapshot();
   });
 
-  test('a11y', async () => {
+  test.only('a11y', async () => {
     const { container } = render(
-      <Select visible value={['2']}>
+      <Select visible value={['2']} disablePortal>
         <Select.Trigger />
-        <Select.Popper>
+        <Select.Menu visible>
           <Select.Option value="1">Option 1</Select.Option>
           <Select.Option value="2">Option 2</Select.Option>
-        </Select.Popper>
+        </Select.Menu>
       </Select>,
     );
 

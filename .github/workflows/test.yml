@@ -185,6 +185,8 @@ jobs:
           key: build-icons-${{ hashFiles('semcore/icon', 'tsconfig.json', 'yarn.lock') }}
       - name: Install Browser
         run: npx playwright install webkit
+      - name: Disable dictation auto enable
+        run: defaults write com.apple.HIToolbox AppleDictationAutoEnable -bool false
       - name: Enable VoiceOver Automation
         uses: guidepup/setup-action@0.4.0
       - name: Voice Over testing

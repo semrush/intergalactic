@@ -18,6 +18,7 @@ test('Users can interact with DropdownMenu via VoiceOver', async ({
     '../../../website/docs/components/dropdown-menu/dropdown-menu-a11y-report.md',
   );
   const { htmlContent, awaitJsEvaluation } = await e2eStandToHtml(standPath, 'en');
+  await page.reload();
   await page.setContent(htmlContent);
   await awaitJsEvaluation(page);
 
@@ -27,12 +28,13 @@ test('Users can interact with DropdownMenu via VoiceOver', async ({
   await voiceOver.press('Control+Option+Space');
   await voiceOver.press('Tab', { application: 'Playwright' });
   await voiceOver.next();
+  await voiceOver.interact();
   await voiceOver.next();
   expect(await voiceOver.itemText()).toBe('Item 1 menu item');
   await voiceOver.next();
   expect(await voiceOver.itemText()).toBe('Item 2 menu item');
   await voiceOver.press('Escape');
-  expect(await voiceOver.lastSpokenPhrase()).toBe('Click me menu pop up button');
+  expect(await voiceOver.itemText()).toBe('Click me menu pop up button');
 
   const report = (await getReportHeader()) + '\n\n' + (await getReport(standPath));
 

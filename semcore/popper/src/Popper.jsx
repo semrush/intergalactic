@@ -387,17 +387,9 @@ class Popper extends Component {
 
 function Trigger(props) {
   const STrigger = Root;
-  const { Children, active } = props;
+  const { Children } = props;
   return (
-    <STrigger
-      render={Box}
-      inline
-      role="button"
-      aria-haspopup={true}
-      aria-expanded={active}
-      // Because the borders appear
-      // tabIndex={interaction === 'focus' ? undefined : 0}
-    >
+    <STrigger render={Box} inline role="button" aria-haspopup={true}>
       <Children />
     </STrigger>
   );

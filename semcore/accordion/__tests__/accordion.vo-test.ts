@@ -18,20 +18,21 @@ test('Users can interact with Accodrion via VoiceOver', async ({
     '../../../website/docs/components/accordion/accordion-a11y-report.md',
   );
   const { htmlContent, awaitJsEvaluation } = await e2eStandToHtml(standPath, 'en');
+  await page.reload();
   await page.setContent(htmlContent);
   await awaitJsEvaluation(page);
 
   const { voiceOver, getReport } = await makeVoiceOverReporter(pureVoiceOver);
   await voiceOver.interact();
 
-  expect(await voiceOver.itemText()).toBe('Section 1 collapsed button');
+  expect(await voiceOver.itemText()).toBe('Section 1 button');
   await voiceOver.next();
-  expect(await voiceOver.itemText()).toBe('Section 2 collapsed button');
+  expect(await voiceOver.itemText()).toBe('Section 2 button');
   await voiceOver.next();
-  expect(await voiceOver.itemText()).toBe('Section 3 dimmed collapsed button');
+  expect(await voiceOver.itemText()).toBe('Section 3 dimmed button');
   await voiceOver.previous();
   await voiceOver.previous();
-  expect(await voiceOver.itemText()).toBe('Section 1 collapsed button');
+  expect(await voiceOver.itemText()).toBe('Section 1 button');
   await voiceOver.act();
   await voiceOver.next();
   await voiceOver.interact();
@@ -40,11 +41,11 @@ test('Users can interact with Accodrion via VoiceOver', async ({
   await voiceOver.previous();
   await voiceOver.act();
   await voiceOver.next();
-  expect(await voiceOver.itemText()).toBe('Section 2 collapsed button');
+  expect(await voiceOver.itemText()).toBe('Section 2 button');
   await voiceOver.next();
-  expect(await voiceOver.itemText()).toBe('Section 3 dimmed collapsed button');
+  expect(await voiceOver.itemText()).toBe('Section 3 dimmed button');
   await voiceOver.act();
-  expect(await voiceOver.itemText()).toBe('Section 3 dimmed collapsed button');
+  expect(await voiceOver.itemText()).toBe('Section 3 dimmed button');
 
   const report = (await getReportHeader()) + '\n\n' + (await getReport(standPath));
 

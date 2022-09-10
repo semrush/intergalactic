@@ -68,9 +68,9 @@ class RootSelect extends Component {
     } = this.asProps;
 
     return {
-      id: `igc-select-${uid}-trigger`,
-      'aria-controls': visible ? `igc-select-${uid}-list` : undefined,
-      'aria-flowto': visible && !disablePortal ? `igc-select-${uid}-list` : undefined,
+      id: `igc-${uid}-trigger`,
+      'aria-controls': visible ? `igc-${uid}-list` : undefined,
+      'aria-flowto': visible && !disablePortal ? `igc-${uid}-list` : undefined,
       'aria-label': visible && !disablePortal ? `Press Tab to go to popover` : undefined,
       'aria-haspopup': 'listbox',
       empty: isEmptyValue(value),
@@ -99,9 +99,10 @@ class RootSelect extends Component {
     const { uid } = this.asProps;
 
     return {
-      id: `igc-select-${uid}-list`,
+      id: `igc-${uid}-list`,
       role: 'listbox',
-      'aria-flowto': `igc-select-${uid}-trigger`,
+      'aria-label': 'List of options',
+      'aria-flowto': `igc-${uid}-trigger`,
     };
   }
 
@@ -119,7 +120,7 @@ class RootSelect extends Component {
     return {
       selected,
       'aria-selected': selected ? 'true' : 'false',
-      id: `igc-select-${uid}-option-${value}`,
+      id: `igc-${uid}-option-${props.value}`,
       role: 'option',
       onClick: this.bindHandlerOptionClick(props.value),
       ...other,
@@ -268,10 +269,10 @@ function Trigger({ Children, name, uid, value, $hiddenRef, tag: Tag = ButtonTrig
       render={DropdownMenu.Trigger}
       tag={Tag}
       placeholder="Select option"
-      aria-autocomplete={hasInputTrigger && 'list'}
+      aria-autocomplete={(hasInputTrigger && 'list') || undefined}
       role={hasInputTrigger && 'combobox'}
       aria-activedescendant={
-        (hasInputTrigger && value && `igc-select-${uid}-option-${value}`) || undefined
+        (hasInputTrigger && value && `igc-${uid}-option-${value}`) || undefined
       }
     >
       {addonTextChildren(

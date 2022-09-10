@@ -1,8 +1,9 @@
-import { voiceOver } from '@guidepup/guidepup';
 import { readFile } from 'fs/promises';
 import { relative as resolveRelativePath, resolve as resolvePath } from 'path';
 import os from 'os';
-type VoiceOver = typeof voiceOver;
+import { VoiceOver } from '@guidepup/guidepup/lib/macOS/VoiceOver/VoiceOver';
+import { CommandOptions } from '@guidepup/guidepup';
+import { execSync } from 'child_process';
 
 const darwin2macos = {
   22: 'Ventura 13',
@@ -42,26 +43,35 @@ const getOsName = () => {
 };
 
 export const makeVoiceOverReporter = async (baseVoiceOver: VoiceOver) => {
+  const verboseLogging = false;
   const actionsLog: string[] = [];
+  const actionsHistory: { actionName: keyof VoiceOver; args: any[] }[] = [];
+
+  // const repeatLastAction = async () => {
+  //   const lastAction = actionsHistory[actionsHistory.length - 1];
+  //   if (lastAction) {
+  //     // eslint-disable-next-line no-console
+  //     console.log(`Repeating last action "${lastAction.actionName}"`);
+  //     if (typeof baseVoiceOver[lastAction.actionName] === 'function') {
+  //       return await (baseVoiceOver[lastAction.actionName] as any)(...lastAction.args);
+  //     } else {
+  //       return baseVoiceOver[lastAction.actionName];
+  //     }
+  //   }
+  // };
 
   let prevSpokenPhrase = await baseVoiceOver.lastSpokenPhrase();
   let prevItemTextLog = await baseVoiceOver.itemTextLog();
   const healthCheck = async () => {
+    /* eslint-disable no-console */
     const spokenPhrase = await baseVoiceOver.lastSpokenPhrase();
     const itemTextLog = await baseVoiceOver.itemTextLog();
     if (
-      actionsLog.includes('You can configure your microphone in Dictation preferences.') ||
-      actionsLog.includes(
-        'Dictation system dialog To use Dictation, you need to select a microphone or connect an external microphone. You can configure your microphone in Dictation preferences. To use Dictation, you need to select a microphone or connect an external microphone.',
-      )
+      spokenPhrase === 'Dictation Preferences… default button' ||
+      spokenPhrase === 'You can configure your microphone in Dictation preferences.' ||
+      spokenPhrase ===
+        'Dictation system dialog To use Dictation, you need to select a microphone or connect an external microphone. You can configure your microphone in Dictation preferences. To use Dictation, you need to select a microphone or connect an external microphone.'
     ) {
-      const screenshotPath = await baseVoiceOver.cursor.takeScreenshot();
-      const screenshotBinary = await readFile(screenshotPath);
-      const screenshotBase64 = screenshotBinary.toString('base64');
-      /* eslint-disable no-console */
-      console.log('Screenshot base64:\n===');
-      console.log(screenshotBase64);
-      console.log('===');
       console.log({
         spokenPhrase,
         itemTextLog,
@@ -69,8 +79,56 @@ export const makeVoiceOverReporter = async (baseVoiceOver: VoiceOver) => {
         detect: await baseVoiceOver.detect(),
         default: await baseVoiceOver.default(),
       });
+      console.log(`Unexpected settings window detected. Debug logs are available above.`);
+      console.log('System settings:');
+      console.log(execSync('defaults read', { encoding: 'utf8' }));
+      await baseVoiceOver.next();
+      console.log(
+        `Next was performed, now item text is "${await baseVoiceOver.itemText()}" and last spoken phrase is "${await baseVoiceOver.lastSpokenPhrase()}"`,
+      );
+      await baseVoiceOver.next();
+      console.log(
+        `Next was performed, now item text is "${await baseVoiceOver.itemText()}" and last spoken phrase is "${await baseVoiceOver.lastSpokenPhrase()}"`,
+      );
+      await baseVoiceOver.next();
+      console.log(
+        `Next was performed, now item text is "${await baseVoiceOver.itemText()}" and last spoken phrase is "${await baseVoiceOver.lastSpokenPhrase()}"`,
+      );
+      await baseVoiceOver.act();
+      console.log(
+        `Act was performed, now item text is "${await baseVoiceOver.itemText()}" and last spoken phrase is "${await baseVoiceOver.lastSpokenPhrase()}"`,
+      );
+      console.log('System settings:');
+      console.log(execSync('defaults read', { encoding: 'utf8' }));
+
+      throw new Error(`This all is not ok, use debug logs to resolve the issue`);
+      // console.log(
+      //   `Removing last action log from report, pressing Escape and trying to repeat last action`,
+      // );
+
+      // actionsLog.pop();
+      // await baseVoiceOver.press('Escape', { application: 'Playwright' });
+
+      // console.log(
+      //   `Escaped was pressed, now item text is "${await baseVoiceOver.itemText()}" and last spoken phrase is "${await baseVoiceOver.lastSpokenPhrase()}"`,
+      // );
+
+      // if ((await baseVoiceOver.lastSpokenPhrase()).includes('about:blank')) {
+      //   console.log(
+      //     `Focus switched to tab itself, performing .interact() to put focus back into tab`,
+      //   );
+      //   await baseVoiceOver.interact();
+
+      //   console.log(
+      //     `.interact() was performed, now item text is "${await baseVoiceOver.itemText()}" and last spoken phrase is "${await baseVoiceOver.lastSpokenPhrase()}"`,
+      //   );
+      // }
+
+      // verboseLogging = true;
+      // console.log(`Verbose logging was enabled`);
+
+      // return await repeatLastAction();
       /* eslint-enable no-console */
-      throw new Error(`Unexpected settings window detected. Debug logs are available above.`);
     }
   };
   const reportStateChange = async () => {
@@ -82,93 +140,130 @@ export const makeVoiceOverReporter = async (baseVoiceOver: VoiceOver) => {
     if (itemTextLog && itemTextLog !== prevItemTextLog) {
       actionsLog.push(`Screen reader see element "${itemTextLog}".`);
     }
+    if (verboseLogging) {
+      // eslint-disable-next-line no-console
+      console.log(`Verbose log`, {
+        spokenPhrase,
+        itemTextLog,
+        actionsLog,
+      });
+    }
     prevSpokenPhrase = spokenPhrase;
     prevItemTextLog = itemTextLog;
   };
 
-  const voiceOverWrapper: Omit<VoiceOver, 'mouse' | 'keyboard' | 'cursor' | 'caption'> = {
+  const voiceOverWrapper: Omit<
+    VoiceOver,
+    'mouse' | 'keyboard' | 'cursor' | 'caption' | 'lastSpokenPhrase' | 'itemText'
+  > & {
+    lastSpokenPhrase: (options?: CommandOptions) => Promise<string>;
+    itemText: (options?: CommandOptions) => Promise<string>;
+  } = {
     commander: baseVoiceOver.commander,
     detect: async () => {
+      actionsHistory.push({ actionName: 'detect', args: [] });
       const result = await baseVoiceOver.detect();
       const resultString = result ? 'it is supported' : 'it is not supported';
       actionsLog.push(
         `Screen reader checked is it supported on current os (${getOsName()}): ${resultString}.`,
       );
       if (result) {
-        await healthCheck();
+        const repeatedResult = await healthCheck();
+        if (repeatedResult) return repeatedResult;
       }
       return result;
     },
     default: async () => {
+      actionsHistory.push({ actionName: 'default', args: [] });
       const result = await baseVoiceOver.default();
       const resultString = result ? 'it is' : "it's not";
       actionsLog.push(`Screen reader checked is it default system screen reader: ${resultString}.`);
       if (result) {
-        await healthCheck();
+        const repeatedResult = await healthCheck();
+        if (repeatedResult) return repeatedResult;
       }
       return result;
     },
     start: async (options) => {
+      actionsHistory.push({ actionName: 'start', args: [options] });
       actionsLog.push(`Screen reader is turning on.`);
       const result = await baseVoiceOver.start(options);
-      await healthCheck();
+      const repeatedResult = await healthCheck();
+      if (repeatedResult) return repeatedResult;
       return result;
     },
     stop: async (options) => {
-      await healthCheck();
+      actionsHistory.push({ actionName: 'stop', args: [options] });
+      const repeatedResult = await healthCheck();
+      if (repeatedResult) return repeatedResult;
       actionsLog.push(`Screen reader is turning off.`);
       return baseVoiceOver.stop(options);
     },
     previous: async (options) => {
+      actionsHistory.push({ actionName: 'previous', args: [options] });
       actionsLog.push(`Screen reader goes to the previous element.`);
       const result = await baseVoiceOver.previous(options);
       await reportStateChange();
-      await healthCheck();
+      const repeatedResult = await healthCheck();
+      if (repeatedResult) return repeatedResult;
       return result;
     },
     next: async (options) => {
+      actionsHistory.push({ actionName: 'next', args: [options] });
       actionsLog.push(`Screen reader goes to the next element.`);
       const result = await baseVoiceOver.next(options);
       await reportStateChange();
-      await healthCheck();
+      const repeatedResult = await healthCheck();
+      if (repeatedResult) return repeatedResult;
       return result;
     },
     act: async (options) => {
+      actionsHistory.push({ actionName: 'act', args: [options] });
       actionsLog.push(`Screen reader triggers element default action.`);
       const result = await baseVoiceOver.act(options);
       await reportStateChange();
-      await healthCheck();
+      const repeatedResult = await healthCheck();
+      if (repeatedResult) return repeatedResult;
       return result;
     },
     interact: async (options) => {
+      actionsHistory.push({ actionName: 'interact', args: [options] });
       actionsLog.push(`Screen reader goes into the active element.`);
       const result = await baseVoiceOver.interact(options);
       await reportStateChange();
-      await healthCheck();
+      const repeatedResult = await healthCheck();
+      if (repeatedResult) return repeatedResult;
       return result;
     },
     stopInteracting: async (options) => {
+      actionsHistory.push({ actionName: 'stopInteracting', args: [options] });
       actionsLog.push(`Screen reader goes out of active element.`);
       const result = await baseVoiceOver.stopInteracting(options);
       await reportStateChange();
-      await healthCheck();
+      const repeatedResult = await healthCheck();
+      if (repeatedResult) return repeatedResult;
       return result;
     },
     press: async (key, options) => {
+      actionsHistory.push({ actionName: 'press', args: [key, options] });
       actionsLog.push(`Screen reader presses the "${key}" button.`);
       const result = await baseVoiceOver.press(key, options);
       await reportStateChange();
-      await healthCheck();
+      const repeatedResult = await healthCheck();
+      if (repeatedResult) return repeatedResult;
       return result;
     },
     type: async (text, options) => {
+      actionsHistory.push({ actionName: 'type', args: [text, options] });
       actionsLog.push(`Screen reader types "${text}".`);
       const result = await baseVoiceOver.type(text, options);
       await reportStateChange();
-      await healthCheck();
+      const repeatedResult = await healthCheck();
+      if (repeatedResult) return repeatedResult;
       return result;
     },
     perform: async (command, options) => {
+      actionsHistory.push({ actionName: 'perform', args: [command, options] });
       if (typeof command === 'object' && 'description' in command) {
         if (!command.description) {
           throw new Error(
@@ -183,10 +278,12 @@ export const makeVoiceOverReporter = async (baseVoiceOver: VoiceOver) => {
 
       const result = await baseVoiceOver.perform(command, options);
       await reportStateChange();
-      await healthCheck();
+      const repeatedResult = await healthCheck();
+      if (repeatedResult) return repeatedResult;
       return result;
     },
     click: async (options) => {
+      actionsHistory.push({ actionName: 'click', args: [options] });
       let action = `Screen reader clicks with ${options.button ?? 'left'} mouse button.`;
       if (options.clickCount > 1) {
         action += ` ${options.clickCount} times`;
@@ -195,29 +292,28 @@ export const makeVoiceOverReporter = async (baseVoiceOver: VoiceOver) => {
 
       const result = await baseVoiceOver.click(options);
       await reportStateChange();
-      await healthCheck();
+      const repeatedResult = await healthCheck();
+      if (repeatedResult) return repeatedResult;
       return result;
     },
     lastSpokenPhrase: async (options) => {
+      actionsHistory.push({ actionName: 'lastSpokenPhrase', args: [options] });
       const result = await baseVoiceOver.lastSpokenPhrase(options);
-      await healthCheck();
+      await reportStateChange();
+      const repeatedResult = await healthCheck();
+      if (repeatedResult) return repeatedResult;
       return result;
     },
     itemText: async (options) => {
+      actionsHistory.push({ actionName: 'itemText', args: [options] });
       const result = await baseVoiceOver.itemText(options);
-      await healthCheck();
+      await reportStateChange();
+      const repeatedResult = await healthCheck();
+      if (repeatedResult) return repeatedResult;
       return result;
     },
-    spokenPhraseLog: () => {
-      const result = baseVoiceOver.spokenPhraseLog();
-      healthCheck();
-      return result;
-    },
-    itemTextLog: () => {
-      const result = baseVoiceOver.itemTextLog();
-      healthCheck();
-      return result;
-    },
+    spokenPhraseLog: baseVoiceOver.spokenPhraseLog,
+    itemTextLog: baseVoiceOver.itemTextLog,
   };
 
   const getReport = async (standFilePath: string) => {

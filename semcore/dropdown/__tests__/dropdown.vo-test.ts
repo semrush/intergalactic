@@ -18,20 +18,21 @@ test('Users can interact with Dropdown via VoiceOver', async ({
     '../../../website/docs/components/dropdown/dropdown-a11y-report.md',
   );
   const { htmlContent, awaitJsEvaluation } = await e2eStandToHtml(standPath, 'en');
+  await page.reload();
   await page.setContent(htmlContent);
   await awaitJsEvaluation(page);
 
   const { voiceOver, getReport } = await makeVoiceOverReporter(pureVoiceOver);
   await voiceOver.interact();
 
-  expect(await voiceOver.lastSpokenPhrase()).toBe('Trigger menu pop up button');
+  expect(await voiceOver.itemText()).toBe('Trigger menu pop up button');
   await voiceOver.press('Control+Option+Space');
   expect(await voiceOver.lastSpokenPhrase()).toContain('Press Tab to go to popover');
   await voiceOver.press('Tab', { application: 'Playwright' });
   await voiceOver.next();
   expect(await voiceOver.itemText()).toBe('Content  clickable');
   await voiceOver.press('Escape', { application: 'Playwright' });
-  expect(await voiceOver.lastSpokenPhrase()).toBe('Trigger menu pop up button');
+  expect(await voiceOver.itemText()).toBe('Trigger menu pop up button');
 
   const report = (await getReportHeader()) + '\n\n' + (await getReport(standPath));
 

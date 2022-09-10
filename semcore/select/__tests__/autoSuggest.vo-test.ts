@@ -18,6 +18,7 @@ test('Users can interact with AutoSuggest via VoiceOver', async ({
     '../../../website/docs/components/auto-tips/auto-tips-a11y-report.md',
   );
   const { htmlContent, awaitJsEvaluation } = await e2eStandToHtml(standPath, 'en');
+  await page.reload();
   await page.setContent(htmlContent);
   await awaitJsEvaluation(page);
 
@@ -33,14 +34,15 @@ test('Users can interact with AutoSuggest via VoiceOver', async ({
   await voiceOver.stopInteracting();
   await voiceOver.stopInteracting();
   await voiceOver.press('Tab', { application: 'Playwright' });
+  await voiceOver.interact();
   await voiceOver.next();
   await voiceOver.next();
   const option = await voiceOver.itemText();
   await voiceOver.press('Control+Option+Space');
-  await voiceOver.stopInteracting();
-  await voiceOver.previous();
-  await voiceOver.interact();
-  await voiceOver.interact();
+  await voiceOver.press('Shift+Tab', { application: 'Playwright' });
+  await voiceOver.press('Shift+Tab', { application: 'Playwright' });
+  await voiceOver.press('Shift+Tab', { application: 'Playwright' });
+  await voiceOver.press('Shift+Tab', { application: 'Playwright' });
   await voiceOver.type('Some_new_text_after', { application: 'Playwright' });
   expect(await voiceOver.lastSpokenPhrase()).toBe(option + 'Some_new_text_after');
 

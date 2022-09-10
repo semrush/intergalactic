@@ -68,9 +68,9 @@ class Dropdown extends Component {
     const { uid, visible, disablePortal } = this.asProps;
 
     return {
-      id: `igc-dropdown-${uid}-trigger`,
-      'aria-controls': visible ? `igc-dropdown-${uid}-popper` : undefined,
-      'aria-flowto': visible && !disablePortal ? `igc-dropdown-${uid}-popper` : undefined,
+      id: `igc-${uid}-trigger`,
+      'aria-controls': visible ? `igc-${uid}-popper` : undefined,
+      'aria-flowto': visible && !disablePortal ? `igc-${uid}-popper` : undefined,
       'aria-label': visible && !disablePortal ? `Press Tab to go to popover` : undefined,
       onKeyDown: this.handlerTriggerKeyDown,
     };
@@ -80,8 +80,8 @@ class Dropdown extends Component {
     const { uid, disablePortal } = this.asProps;
 
     return {
-      id: `igc-dropdown-${uid}-popper`,
-      'aria-flowto': !disablePortal ? `igc-dropdown-${uid}-trigger` : undefined,
+      id: `igc-${uid}-popper`,
+      'aria-flowto': !disablePortal ? `igc-${uid}-trigger` : undefined,
       tabIndex: 0,
     };
   }

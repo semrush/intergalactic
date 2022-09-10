@@ -16,6 +16,7 @@ test('Users can interact with Select via VoiceOver', async ({ page, voiceOver: p
   );
   const { htmlContent, awaitJsEvaluation } = await e2eStandToHtml(standPath, 'en');
 
+  await page.reload();
   await page.setContent(htmlContent);
   await awaitJsEvaluation(page);
 
@@ -28,6 +29,8 @@ test('Users can interact with Select via VoiceOver', async ({ page, voiceOver: p
   await voiceOver.press('Control+Option+Space');
   expect(await voiceOver.lastSpokenPhrase()).toContain('Press Tab to go to popover');
   await voiceOver.press('Tab', { application: 'Playwright' });
+  expect(await voiceOver.itemText()).toBe('List of options list box');
+  await voiceOver.interact();
   expect(await voiceOver.itemText()).toBe('Option 0');
   await voiceOver.next();
   expect(await voiceOver.itemText()).toBe('Option 1');

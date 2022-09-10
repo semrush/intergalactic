@@ -64,9 +64,9 @@ class DropdownMenuRoot extends Component {
 
     return {
       size,
-      id: `igc-dropdown-menu-${uid}-trigger`,
-      'aria-controls': visible ? `igc-dropdown-menu-${uid}-popper` : undefined,
-      'aria-flowto': visible && !disablePortal ? `igc-dropdown-menu-${uid}-popper` : undefined,
+      id: `igc-${uid}-trigger`,
+      'aria-controls': visible ? `igc-${uid}-popper` : undefined,
+      'aria-flowto': visible && !disablePortal ? `igc-${uid}-popper` : undefined,
       'aria-label': visible && !disablePortal ? `Press Tab to go to popover` : undefined,
       onKeyDown: this.handlerKeyDown,
     };
@@ -86,8 +86,8 @@ class DropdownMenuRoot extends Component {
     return {
       tabIndex: 0,
       onKeyDown: this.handlerKeyDown,
-      id: `igc-dropdown-menu-${uid}-popper`,
-      'aria-flowto': !disablePortal ? `igc-dropdown-menu-${uid}-trigger` : undefined,
+      id: `igc-${uid}-popper`,
+      'aria-flowto': !disablePortal ? `igc-${uid}-trigger` : undefined,
     };
   }
 

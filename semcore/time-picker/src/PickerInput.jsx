@@ -113,6 +113,8 @@ class ItemPicker extends Component {
           interaction="focus"
           render={Select.Trigger}
           tag={Input.Value}
+          role="button"
+          aria-autocomplete={undefined}
           ref={this.$input}
           size={size}
           disabled={disabled}

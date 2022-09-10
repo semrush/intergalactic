@@ -4,6 +4,7 @@ import { Box } from '@semcore/flex-box';
 import { Collapse as CollapseAnimate } from '@semcore/animation';
 import ChevronRight from '@semcore/icon/ChevronRight/m';
 import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
+import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 
 import style from './style/accordion.shadow.css';
 
@@ -55,6 +56,7 @@ class RootAccordion extends Component {
 export class RootItem extends Component {
   static displayName = 'Item';
   static style = style;
+  static enhance = [uniqueIDEnhancement()];
 
   handleClick = () => {
     const { value, $handleInteraction } = this.asProps;
@@ -63,25 +65,25 @@ export class RootItem extends Component {
   };
 
   getToggleProps() {
-    const { value, selected, disabled } = this.asProps;
+    const { value, uid, selected, disabled } = this.asProps;
     return {
       disabled,
       onClick: disabled ? undefined : this.handleClick,
-      id: `trigger-${value}`,
+      id: `igc-${uid}-${value}-toggle`,
       role: 'button',
-      'aria-expanded': selected,
-      'aria-controls': `content-${value}`,
+      'aria-expanded': selected || undefined,
+      'aria-controls': selected ? `igc-${uid}-${value}-collapse` : undefined,
     };
   }
 
   getCollapseProps() {
-    const { selected, duration, value } = this.asProps;
+    const { selected, uid, duration, value } = this.asProps;
     return {
       selected,
       duration,
-      id: `content-${value}`,
+      id: `igc-${uid}-${value}-collapse`,
       role: 'region',
-      'aria-labelledby': `trigger-${value}`,
+      'aria-labelledby': `igc-${uid}-${value}-toggle`,
     };
   }
 
