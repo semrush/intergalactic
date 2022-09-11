@@ -1,0 +1,4 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+yarn tsm --require=./.ci/tsm-filter-warnings.js ./.ci/verify-email.ts && yarn tsm --require=./.ci/tsm-filter-warnings.js ./.ci/append-commit-message-signature-id.ts -- $1
