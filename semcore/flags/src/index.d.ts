@@ -1011,8 +1011,59 @@ export declare enum iso3Name {
   zwe,
 }
 
+/** Countries and union of countries that don't have ISO code:
+ * Abkhazia,
+ * Basque Country,
+ * British Antarctic Territory,
+ * Canary Islands,
+ * Common Wealth,
+ * England,
+ * Mars,
+ * Nagorno Karabakh,
+ * NATO,
+ * Northern Cyprus,
+ * Northern Ireland,
+ * Scotland,
+ * South Ossetia,
+ * United Nations,
+ * Wales.
+ */
+export declare enum nameWithoutIso {
+  abk,
+  bco,
+  bat,
+  cis,
+  cwe,
+  eng,
+  mars,
+  nka,
+  nato,
+  ncy,
+  nir,
+  sco,
+  oss,
+  una,
+  wal,
+  ABK,
+  BCO,
+  BAT,
+  CIS,
+  CWE,
+  ENG,
+  MARS,
+  NKA,
+  NATO,
+  NCY,
+  NIR,
+  SCO,
+  OSS,
+  UNA,
+  WAL,
+}
+
 type iso2 = keyof typeof iso2Name;
 type iso3 = keyof typeof iso3Name;
+type name = keyof typeof nameWithoutIso;
 
 export interface IFlagsProps extends IBoxProps {
   /** URL before css file with a sprite
@@ -1023,6 +1074,8 @@ export interface IFlagsProps extends IBoxProps {
   iso2?: iso2;
   /** Country code in three-letter format */
   iso3?: iso3;
+  /** Country code in two-letter or three-letter format or country/union of countries without ISO code */
+  name?: name | iso2 | iso3;
 }
 
 declare const Flags: <T>(props: IFlagsProps & T) => ReturnEl;
