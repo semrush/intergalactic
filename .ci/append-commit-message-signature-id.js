@@ -22,7 +22,13 @@ const lastLine = commitMessage
   .filter((line) => line[0] !== '#' && line.replace(/\s+/g, '').length > 0)
   .pop();
 
-if (!lastLine.startsWith('<!--- Commit was signed off by')) {
-  const newCommitMessage = commitMessage + '\n\n' + appendix;
+const hasOtherSignNote = commitMessage
+  .split('\n')
+  .find((line) => line.startsWith('<!--- Commit was signed off by'));
+if (lastLine !== appendix) {
+  let newCommitMessage = commitMessage;
+  if (hasOtherSignNote) newCommitMessage += '\n';
+  else newCommitMessage += '\n\n';
+  newCommitMessage += appendix;
   writeFileSync(commitMessageFilePath, newCommitMessage);
 }
