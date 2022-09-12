@@ -25,6 +25,16 @@ function isValidHex(hex: string) {
   return hex[0] === '#' ? reg.test(hex) : reg.test('#' + hex);
 }
 
+function debounce(func: (...args: any[]) => void, timeout: number) {
+  let timer: any;
+  return (...args: any[]) => {
+    clearTimeout(timer);
+    timer = setTimeout(() => {
+      func.apply(this, args);
+    }, timeout);
+  };
+}
+
 class InputColorRoot extends Component<InputColorAsProps> {
   static displayName = 'InputColor';
 
@@ -59,7 +69,7 @@ class InputColorRoot extends Component<InputColorAsProps> {
     this.handlers.value('', event);
   };
 
-  handlerChange = (value: string) => {
+  handlerChange = debounce((value: string) => {
     if (value.length !== 0) {
       if (isValidHex(value)) {
         this.handlers.state('normal');
@@ -69,7 +79,7 @@ class InputColorRoot extends Component<InputColorAsProps> {
     } else {
       this.handlers.state('normal');
     }
-  };
+  }, 300);
 
   handlekeyDown = (event: React.KeyboardEvent) => {
     if (event.code === 'Enter') {
