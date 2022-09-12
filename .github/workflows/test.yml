@@ -186,7 +186,7 @@ jobs:
       - name: Install Browser
         run: npx playwright install webkit
       - name: Enable VoiceOver Automation
-        uses: guidepup/setup-action@0.1.3
+        uses: guidepup/setup-action@0.1.5
       - name: Voice Over testing
         run: yarn vo-test
       - name: Github GPG Auth
