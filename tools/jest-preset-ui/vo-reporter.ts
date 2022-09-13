@@ -170,7 +170,7 @@ export const makeVoiceOverReporter = async (baseVoiceOver: VoiceOver) => {
     return `**Running screen reader against [this file](${standUrl}).**
 
 ${actionsList}
-    `;
+`;
   };
   return {
     voiceOver: voiceOverWrapper,
