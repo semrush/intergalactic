@@ -101,6 +101,7 @@ function Window(props) {
       tabIndex={-1}
       autoFocus={true}
       role="dialog"
+      aria-label="Modal window"
       aria-modal={true}
     >
       <PortalProvider value={windowRef}>
