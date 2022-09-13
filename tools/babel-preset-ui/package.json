@@ -1,6 +1,6 @@
 {
   "name": "@semcore/babel-preset-ui",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "The babel preset for all packages of the mono-repo.",
   "main": "./.babelrc.js",
   "author": "",
@@ -16,7 +16,6 @@
     "@babel/preset-env": "7.12.0",
     "@babel/preset-react": "7.12.1",
     "@babel/preset-typescript": "7.12.0",
-    "@semcore/babel-plugin-shadow": "*",
     "@semcore/babel-plugin-root": "*",
     "babel-plugin-preval": "3.0.1"
   }

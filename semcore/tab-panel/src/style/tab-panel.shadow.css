@@ -13,7 +13,6 @@ STabPanelItem {
   display: inline-flex;
   min-width: 0;
   height: 32px;
-  font-size: var(--fs-200);
   color: var(--gray-500);
   border: 1px solid transparent;
   border-radius: 6px 6px 0 0;
@@ -34,6 +33,11 @@ STabPanelItem {
   vertical-align: middle;
   font-family: inherit;
   cursor: pointer;
+
+  & SText {
+    font-size: var(--fs-200);
+    line-height: var(--lh-200);
+  }
 
   &::-moz-focus-inner {
     border: none;

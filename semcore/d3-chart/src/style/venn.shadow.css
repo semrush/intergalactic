@@ -1,4 +1,4 @@
-@import '@semcore/d3-chart/src/style/var.css';
+@import './var.css';
 
 SCircle {
   fill: var(--green-02);

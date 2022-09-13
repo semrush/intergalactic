@@ -114,15 +114,19 @@ SAddon {
 STabLineItem[size='m'] {
   height: 28px;
   min-width: 18px;
-  font-size: var(--fs-200);
-  line-height: var(--lh-200);
+  & SText {
+    font-size: var(--fs-200);
+    line-height: var(--lh-200);
+  }
 }
 
 STabLineItem[size='l'] {
   height: 40px;
   min-width: 26px;
-  font-size: var(--fs-300);
-  line-height: var(--lh-300);
+  & SText {
+    font-size: var(--fs-300);
+    line-height: var(--lh-300);
+  }
 }
 
 STabLineItem[neighborLocation='left'] {
