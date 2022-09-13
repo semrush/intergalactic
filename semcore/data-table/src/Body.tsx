@@ -126,6 +126,7 @@ class Body extends Component<AsProps, State> {
       top: topOffset,
       ref: needToMeasureHeight ? this.firstRowRef : undefined,
       key,
+      'aria-rowindex': dataIndex + 1,
     };
 
     for (const rowPropsLayer of rowPropsLayers) {

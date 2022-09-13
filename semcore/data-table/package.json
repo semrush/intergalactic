@@ -21,6 +21,8 @@
   },
   "devDependencies": {
     "@semcore/jest-preset-ui": "1.0.0",
+    "@guidepup/playwright": "0.6.1",
+    "@playwright/test": "1.25.1",
     "@semcore/base-trigger": "*",
     "@semcore/dropdown-menu": "*",
     "@semcore/typography": "*",

@@ -403,10 +403,16 @@ class RootDefinitionTable extends Component<AsProps> {
 
   render() {
     const SDataTable = Root;
-    const { Children, styles } = this.asProps;
+    const { Children, styles, data } = this.asProps;
 
     return sstyled(styles)(
-      <SDataTable render={Box} __excludeProps={['data']} ref={this.tableRef} role="table">
+      <SDataTable
+        render={Box}
+        __excludeProps={['data']}
+        ref={this.tableRef}
+        role="table"
+        aria-rowcount={(data ?? []).length}
+      >
         <Children />
       </SDataTable>,
     );

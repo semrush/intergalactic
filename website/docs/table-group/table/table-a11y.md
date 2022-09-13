@@ -16,3 +16,5 @@ a11y: AA
 @## Other recommendations
 
 See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/).
+
+@include data-table-a11y-report.md
