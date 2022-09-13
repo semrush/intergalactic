@@ -31,7 +31,7 @@ test('Users can interact with DataTable via VoiceOver', async ({
   await voiceOver.press('Control+Option+ArrowRight');
   expect(await voiceOver.lastSpokenPhrase()).toContain('column 3 of');
   await voiceOver.press('Control+Option+ArrowDown');
-  expect(await voiceOver.lastSpokenPhrase()).toContain('row 4 of');
+  expect(await voiceOver.lastSpokenPhrase()).toContain('row 3 of');
 
   const report = (await getReportHeader()) + '\n\n' + (await getReport(standPath));
 
