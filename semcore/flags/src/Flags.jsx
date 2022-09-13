@@ -53,7 +53,10 @@ export const addLinkStyleSprite = (patch) => {
 let _addedStyle = false;
 
 function calculateName(iso2, iso3, name) {
-  const allNames = { ...iso2Name, ...nameWithoutIso };
+  const iso3Name = Object.fromEntries(
+    Object.entries(iso3iso2).map((pair) => [pair[0], iso2Name[pair[1]]]),
+  );
+  const allNames = { ...iso2Name, ...iso3Name, ...nameWithoutIso };
   if (name) return setCountryName(allNames[name.toUpperCase()]);
   if (iso2) return setCountryName(iso2Name[iso2.toUpperCase()]);
   if (iso3) return setCountryName(iso2Name[iso3iso2[iso3.toUpperCase()]]);
