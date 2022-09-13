@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.2.3] - 2022-09-13
+
+### Fixed
+
+- Remove unused plugin '@semcore/babel-plugin-shadow'.
+
 ## [4.2.2] - 2022-07-14
 
 ### Changed

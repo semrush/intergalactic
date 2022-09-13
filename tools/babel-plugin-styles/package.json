@@ -1,6 +1,6 @@
 {
   "name": "@semcore/babel-plugin-styles",
-  "version": "1.3.0",
+  "version": "1.3.1",
   "main": "src/index.js",
   "scripts": {
     "test": "echo 'no test =('"
@@ -17,7 +17,7 @@
     "fs-extra": "9.1.0",
     "postcss": "8.2.8",
     "postcss-color-mod-function": "3.0.3",
-    "postcss-import-sync2": "1.1.0",
+    "postcss-import-sync2": "1.2.0",
     "postcss-preset-env": "6.7.0",
     "postcss-value-parser": "4.1.0",
     "string-hash": "1.1.3",
