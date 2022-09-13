@@ -17,4 +17,4 @@ a11y: AA
 
 See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/).
 
-@include data-table-a11y-report.md
+@include data-table-a11y-report
