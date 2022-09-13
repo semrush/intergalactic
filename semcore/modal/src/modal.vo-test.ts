@@ -22,7 +22,9 @@ test('Users can interact with Modal via VoiceOver', async ({ page, voiceOver: pu
 
   expect(await voiceOver.itemText()).toBe('Open modal button');
   await voiceOver.act();
-  expect(await voiceOver.lastSpokenPhrase()).toBe('Close and 4 more items web dialog Close button');
+  expect(await voiceOver.lastSpokenPhrase()).toBe(
+    'Modal window web dialog with 6 items Close button',
+  );
   await voiceOver.next();
   expect(await voiceOver.itemText()).toBe('Do you want to save your changes? heading level 2');
   await voiceOver.next();
