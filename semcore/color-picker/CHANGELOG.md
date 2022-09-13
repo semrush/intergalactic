@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [1.1.0] - 2022-09-12
+
+### Changed
+
+- Changed the logic of entering color format. From this version it is possible to enter hex code in both formats: with `#` sign - `#123123` and without `#` sign - `123123`.
+
 ## [1.0.8] - 2022-08-30
 
 ### Changed
