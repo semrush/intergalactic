@@ -13,12 +13,12 @@
     "test": "jest"
   },
   "dependencies": {
-    "@semcore/utils": "^3.31.2",
     "@semcore/animation": "^1",
-    "@semcore/portal": "^2",
     "@semcore/flex-box": "^4",
     "@semcore/icon": "^2.16",
     "@semcore/outside-click": "^2",
+    "@semcore/portal": "^2",
+    "@semcore/utils": "^3.31.2",
     "react-focus-lock": "2.5.1"
   },
   "peerDependencies": {
@@ -34,6 +34,8 @@
     "directory": "semcore/modal"
   },
   "devDependencies": {
+    "@guidepup/playwright": "0.6.1",
+    "@playwright/test": "1.25.1",
     "@semcore/jest-preset-ui": "1.0.0"
   }
 }

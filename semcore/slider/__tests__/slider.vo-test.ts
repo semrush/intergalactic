@@ -17,7 +17,6 @@ test('Users can interact with Slider via VoiceOver', async ({ page, voiceOver: p
   const htmlContent = await e2eStandToHtml(standPath, 'en');
 
   await page.setContent(htmlContent);
-  await new Promise((resolve) => setTimeout(resolve, 10000));
   const { voiceOver, getReport } = await makeVoiceOverReporter(pureVoiceOver);
   await voiceOver.interact();
 
