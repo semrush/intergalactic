@@ -21,5 +21,5 @@ test('Users can interact with DataTable virtual scroll via VoiceOver', async ({
   for (let i = 0; i < 5; i++) {
     await voiceOver.press('Control+Option+ArrowDown');
   }
-  expect(await voiceOver.lastSpokenPhrase()).toBe('row 5 of 10 000 #5');
+  expect(await voiceOver.lastSpokenPhrase()).toBe('row 5 of 10,000 #5');
 });
