@@ -33,4 +33,3 @@ Guidepup v0.13.0, MacOS Big Sur 11._
 26. Screen reader says "Section 3 dimmed collapsed button".
 27. Screen reader triggers element default action.
 28. Screen reader says "dimmed".
-    

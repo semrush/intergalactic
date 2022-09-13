@@ -17,4 +17,3 @@ Guidepup v0.13.0, MacOS Big Sur 11._
 10. Screen reader says "3".
 11. Screen reader goes out of active element.
 12. Screen reader says "Out of slider".
-    
