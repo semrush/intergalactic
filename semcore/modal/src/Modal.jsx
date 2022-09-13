@@ -102,7 +102,6 @@ function Window(props) {
       autoFocus={true}
       role="dialog"
       aria-modal={true}
-      aria-label="Modal window"
     >
       <PortalProvider value={windowRef}>
         {closable && <Modal.Close />}
