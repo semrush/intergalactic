@@ -2,6 +2,9 @@ import { Bar, BarChart as BarChartRecharts } from 'recharts';
 import copyChart from '../../copyChart';
 import { colors } from '../../utils/colors';
 
+/**
+ * @deprecated use package `@semcore/d3-chart` instead
+ */
 const BarChart = copyChart(BarChartRecharts);
 
 // @ts-ignore

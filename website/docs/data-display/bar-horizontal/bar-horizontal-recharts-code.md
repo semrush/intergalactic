@@ -3,7 +3,7 @@ title: Legacy examples
 fileSource: d3-chart
 ---
 
-> 🎉 Try out [new chart library](/data-display/area-chart/area-chart-d3-code/) developed entirely with the D3.
+> 🚨 Library `@semcore/chart` is deprecated. Use new chart library [`@semcore/d3-chart`](/data-display/area-chart/area-chart-d3-code/) instead.
 
 @## Horizontal bar chart
 

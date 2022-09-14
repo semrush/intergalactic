@@ -2,6 +2,8 @@
 title: Example
 ---
 
+> 🚨 `Table` component is deprecated. Use [DataTable](/table-group/data-table/) instead.
+
 Our library has two components for tables:
 
 - `Table` component is the old one.
