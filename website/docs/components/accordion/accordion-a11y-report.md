@@ -26,7 +26,7 @@ Guidepup v0.13.0, MacOS Big Sur 11._
 19. Screen reader goes to the previous element.
 20. Screen reader says "Section 1 expanded button".
 21. Screen reader triggers element default action.
-22. Screen reader says "".
+22. Screen reader says "Section 1 collapsed button".
 23. Screen reader goes to the next element.
 24. Screen reader says "Section 2 collapsed button".
 25. Screen reader goes to the next element.
