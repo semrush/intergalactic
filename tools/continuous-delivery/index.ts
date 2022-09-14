@@ -7,6 +7,8 @@ import { runPublisher } from './src/runPublisher';
 // import { runTests } from './src/runTests';
 import { syncCheck } from './src/syncCheck';
 
+export { fetchVersionsFromNpm } from './src/fetchVersionsFromNpm';
+
 const inNpmVersions = await fetchVersionsFromNpm();
 const packages = await collectPackages(inNpmVersions);
 
