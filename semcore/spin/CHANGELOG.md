@@ -2,6 +2,16 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.0.9] - 2022-09-13
+
+### Changed
+
+- Changed icon `Archive`
+
+### Added
+
+- Added icon `Unarchive`
+
 ## [4.0.9] - 2022-08-30
 
 ### Changed
