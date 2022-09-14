@@ -15,7 +15,8 @@
     "marked-ast-markdown": "2.1.0",
     "semver": "5.6.0",
     "simple-git": "3.5.0",
-    "tsm": "2.2.2"
+    "tsm": "2.2.2",
+    "@semcore/continuous-delivery": "*"
   },
   "scripts": {
     "start": "tsm --require=../../.ci/tsm-filter-warnings.js index.ts"
