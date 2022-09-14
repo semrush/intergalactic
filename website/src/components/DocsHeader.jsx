@@ -10,6 +10,7 @@ import GitHubS from '@semcore/icon/color/GitHub/m';
 import EditS from '@semcore/icon/Edit/m';
 import { css } from '@semcore/core';
 import Tag from '@semcore/tag';
+import RouterLink from './RouterLink.jsx';
 
 import styles from './DocsHeader.module.css';
 
@@ -22,18 +23,31 @@ const tooltipStyles = css`
   }
 `;
 
+function VersionLink({ to, version }) {
+  return (
+    <RouterLink to={to} mx={1}>
+      {version}
+    </RouterLink>
+  );
+}
+
 export default function (props) {
-  const { title, category, fileSource, sourcePath, beta } = props;
+  const { title, category, fileSource, sourcePath, beta, version, changelogUrl } = props;
 
   return (
-    <Box tag="header" mb={10}>
-      <h2 className={styles.title}>
-        {title} {beta && <Tag size="l" theme="primary" color="orange-500" children="beta" />}
-      </h2>
-      <Text tag="p" color="#898D9A" mb={3} size={300}>
+    <Box tag="header" mb={8}>
+      <h2 className={styles.title}>{title}</h2>
+      <Text tag={Flex} alignItems={'center'} color="#898D9A" mb={3} size={300}>
         {category}
+        {version && (
+          <>
+            {' '}
+            |<VersionLink to={`/${changelogUrl}/#${version}`} version={version} />
+          </>
+        )}
+        {beta && <Tag size="m" theme="primary" color="orange-500" children="beta" />}
       </Text>
-      <Flex className={styles.overlay} mb={3}>
+      <Flex className={styles.overlay} mb={4}>
         <Box mr={5}>
           <Link size={300} color="#171A22" target="_blank" href="https://www.figma.com/@semrush">
             <Link.Addon>

@@ -1,17 +1,17 @@
 ---
 title: A11y
-fileSource: link
+a11y: AA
 ---
 
 @## General recommendations
 
-> ### Combine adjacent links into a single link
+> #### Combine adjacent links into a single link
 >
 > It’s common for pages to present multiple links to the same location next to one another. For example, a news listing may present an image, heading, and “more” text each as links to the same story. This can create a bad experience for assistive technology users.
 >
 > Instead, wrap all elements within the same anchor tag. Doing so provides a larger clickable area, a single tab stop for keyboard-only users, and a single entry for screen reader users. A screen reader will read all content within the a tag. So, images contained in this kind of anchor should have a null alt attribute.
 >
-> ### Emulating link
+> #### Emulating link
 >
 > The `<a>` tag has important accessibility features built in by default. It is keyboard focusable, and screen reader will announce the link as a link. By default, the hover mouse cursor style is set to a pointer, instead of the default arrow.
 >

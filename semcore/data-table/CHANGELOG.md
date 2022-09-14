@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.1.9] - 2022-09-13
+
+### Changed
+
+- Improved component accessibility in cases of virtual scroll and columns sorting.
+
 ## [3.1.8] - 2022-08-30
 
 ### Changed

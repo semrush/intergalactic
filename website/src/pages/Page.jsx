@@ -24,6 +24,13 @@ import {
 import { useRouting, usePageData } from '../components/routing';
 import scrollToHash from '../utils/scrollToHash';
 
+const getChangelogByRoute = (currentRoute, routes) => {
+  const changelogRoute = Object.keys(routes).find((route) => {
+    return route.startsWith(currentRoute.route) && /changelog/.test(route);
+  });
+  return changelogRoute ? routes[changelogRoute] : undefined;
+};
+
 const getHeadingOptions = (headings) => {
   return headings.map((option) => ({
     value: option.id,
@@ -61,6 +68,7 @@ const PageView = ({ route, page }) => {
 
   const rootRoute = routeDepth === 3 ? routeParents[route] : routes[route];
   const category = routeDepth === 3 ? routeParents[rootRoute.route] : routeParents[route];
+  const changelogRoute = getChangelogByRoute(rootRoute, routes);
 
   const htmlTitle = routeParents[route].title
     ? `${page.title} | ${routeParents[route].title}`
@@ -103,9 +111,11 @@ const PageView = ({ route, page }) => {
               category={category.title}
               fileSource={rootRoute.metadata?.fileSource}
               beta={rootRoute.metadata?.beta}
+              version={rootRoute.metadata?.packageJson?.version}
               sourcePath={page.sourcePath}
+              changelogUrl={changelogRoute?.route}
             />
-            <Docs tokens={page.tokens} tabs={tabs} />
+            <Docs tokens={page.tokens} tabs={tabs} route={page.route} />
           </div>
           <div className={styles.nextGuide}>
             {routePrevSiblings[route] && (

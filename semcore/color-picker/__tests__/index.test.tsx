@@ -2,7 +2,7 @@ import React from 'react';
 import { testing, snapshot } from '@semcore/jest-preset-ui';
 import ColorPicker, { PaletteManager } from '../src';
 
-const { cleanup, fireEvent, render } = testing;
+const { cleanup, fireEvent, render, axe, act } = testing;
 
 describe('ColorPicker', () => {
   afterEach(cleanup);
@@ -140,5 +140,58 @@ describe('ColorPicker', () => {
     expect(input.value).toBe('');
     expect(spy).toBeCalledTimes(1);
     expect(spy).toBeCalledWith(['#635472'], expect.anything());
+  });
+
+  test('Should add color with "#" sign in the code color', async () => {
+    jest.useFakeTimers();
+    const spy = jest.fn();
+
+    const { getByTestId } = render(
+      <div style={{ width: 250, height: 100 }}>
+        <ColorPicker disablePortal visible>
+          <ColorPicker.Trigger />
+          <ColorPicker.Popper>
+            <ColorPicker.Colors />
+            <PaletteManager onColorsChange={spy}>
+              <PaletteManager.Colors />
+              <PaletteManager.InputColor data-testid="inputColor" />
+            </PaletteManager>
+          </ColorPicker.Popper>
+        </ColorPicker>
+      </div>,
+    );
+
+    const input = getByTestId('inputColor');
+    fireEvent.change(input, { target: { value: '#635472' } });
+    act(() => jest.runAllTimers());
+
+    expect(input.value).toBe('#635472');
+
+    fireEvent.focus(input);
+    fireEvent.keyDown(input, { code: 'Enter', keyCode: 13 });
+
+    expect(spy).toBeCalledTimes(1);
+    expect(spy).toBeCalledWith(['#635472'], expect.anything());
+    jest.useRealTimers();
+  });
+
+  test('a11y', async () => {
+    const { container } = render(
+      <div style={{ width: 250, height: 100 }}>
+        <ColorPicker disablePortal visible>
+          <ColorPicker.Trigger />
+          <ColorPicker.Popper>
+            <ColorPicker.Colors />
+            <PaletteManager>
+              <PaletteManager.Colors colors={['#123123', '#112233']} />
+              <PaletteManager.InputColor />
+            </PaletteManager>
+          </ColorPicker.Popper>
+        </ColorPicker>
+      </div>,
+    );
+
+    const results = await axe(container);
+    expect(results).toHaveNoViolations();
   });
 });

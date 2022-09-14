@@ -1,7 +1,7 @@
 ---
 title: ColorPicker
 tabName: Design
-beta: true
+fileSource: color-picker
 ---
 
 @import playground

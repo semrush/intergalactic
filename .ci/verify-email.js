@@ -2,11 +2,11 @@
 
 /* eslint-disable no-console */
 
-import { execa } from 'execa';
-import pc from 'picocolors';
+const { execSync } = require('child_process');
+const pc = require('picocolors');
 
 try {
-  await execa('which', ['gpg']);
+  execSync('which gpg', { encoding: 'utf-8' });
 } catch (error) {
   console.log(
     pc.red(
@@ -16,9 +16,8 @@ try {
   process.exit(1);
 }
 
-const { stdout: gitSignatureEnabled } = await execa('git', ['config', 'commit.gpgsign']);
-
-if (gitSignatureEnabled !== 'true') {
+const gitSignatureEnabled = execSync('git config commit.gpgsign', { encoding: 'utf-8' });
+if (gitSignatureEnabled !== 'true\n') {
   console.log(
     pc.red(`Seems like you have't enabled signing of all your commits in git. How to fix it:`),
   );
@@ -32,7 +31,7 @@ if (gitSignatureEnabled !== 'true') {
   process.exit(1);
 }
 
-const { stdout: gitEmail } = await execa('git', ['config', 'user.email']);
+const gitEmail = execSync('git config user.email', { encoding: 'utf-8' }).replace('\n', '');
 
 if (!gitEmail) {
   console.log(
@@ -43,7 +42,9 @@ if (!gitEmail) {
   process.exit(1);
 }
 
-const { stdout: gitSignatureUid } = await execa('git', ['config', 'user.signingkey']);
+const gitSignatureUid = execSync('git config user.signingkey', {
+  encoding: 'utf-8',
+}).replace('\n', '');
 
 if (!gitSignatureUid) {
   console.log(pc.red(`Seems like your git is not configurated to sign commits. How to fix it:`));
@@ -57,10 +58,9 @@ if (!gitSignatureUid) {
   process.exit(1);
 }
 
-const { stdout: signaturesRawText } = await execa('gpg', [
-  '--list-secret-keys',
-  '--keyid-format=long',
-]);
+const signaturesRawText = execSync('gpg --list-secret-keys --keyid-format=long', {
+  encoding: 'utf-8',
+});
 const signaturesRawTexts = signaturesRawText.split('sec   ');
 const rsaSignatures = signaturesRawTexts
   .filter((rawText) => rawText.startsWith('rsa'))

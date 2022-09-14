@@ -1,15 +1,15 @@
 {
   "name": "intergalactic-documentation",
-  "version": "1.5.2",
+  "version": "1.7.6",
   "description": "",
   "author": "",
   "license": "MIT",
   "type": "module",
   "scripts": {
     "start": "yarn dev",
-    "dev": "yarn build:ensure-icons && WATCH_TYPES=true tsm --require=../.ci/tsm-filter-warnings.js ./builder/dev-server.ts",
+    "dev": "yarn build:ensure && WATCH_TYPES=true tsm --require=../.ci/tsm-filter-warnings.js ./builder/dev-server.ts",
     "build": "PUBLIC_PATH=/intergalactic/ NODE_ENV=production tsm --require=../.ci/tsm-filter-warnings.js ./builder/ssr.ts --reset-cache",
-    "build:ensure-icons": "tsm --require=../.ci/tsm-filter-warnings.js ./builder/ensure-icons-built.ts",
+    "build:ensure": "tsm --require=../.ci/tsm-filter-warnings.js ./builder/ensure-pre-built.ts",
     "upload-search-index": "tsm --require=../.ci/tsm-filter-warnings.js ./searchIndexUpload.ts"
   },
   "dependencies": {
@@ -54,6 +54,7 @@
     "esbuild-plugin-alias": "0.2.1",
     "execa": "6.1.0",
     "fast-glob": "3.2.11",
+    "find-package-json": "1.2.0",
     "hast-util-to-html": "8.0.3",
     "mdast": "3.0.0",
     "mdast-util-from-markdown": "1.2.0",

@@ -3,7 +3,7 @@ title: A11y
 fileSource: switch
 ---
 
-> ### General recommendations
+> #### General recommendations
 >
 > - You can add optional labels to your toggles, just make sure the label element includes an `id` and the toggle button includes an `aria-labelledby` tag that match.
 > - Make sure you include `aria-checked` on toggles, with JavaScript changing the state on click from true to false (or the reverse).

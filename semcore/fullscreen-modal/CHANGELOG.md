@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.0.18] - 2022-09-08
+
+### Changed
+
+- Removed unused `hidden` property from types.
+
 ## [2.0.17] - 2022-08-30
 
 ### Changed

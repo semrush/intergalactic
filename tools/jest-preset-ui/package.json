@@ -26,6 +26,9 @@
     "@types/jest-axe": "3.5.1"
   },
   "peerDependencies": {
+    "@guidepup/guidepup": "*",
+    "@semcore/esbuild-plugin-semcore": "*",
+    "esbuild": "*",
     "jest": "29.0.1",
     "jest-environment-jsdom": "29.0.1"
   },

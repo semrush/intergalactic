@@ -1,8 +1,10 @@
 import React from 'react';
-import styles from './Changelog.module.css';
-import formatTextStyles from './FormatText.module.css';
 import Tag from '@semcore/tag';
 import { Text } from '@semcore/typography';
+import HeadingLink from './HeadingLink.jsx';
+
+import formatTextStyles from './FormatText.module.css';
+import styles from './Changelog.module.css';
 
 export const getLabel = (type) => {
   switch (type) {
@@ -39,11 +41,11 @@ export const getLabel = (type) => {
 };
 
 const Changelog = ({ blocks }) => {
-  return blocks.map(({ title, changes }) => (
+  return blocks.map(({ title, changes, version }) => (
     <span key={title} className={formatTextStyles.formatText}>
-      <Text tag="h3">
-        <Text>{title}</Text>
-      </Text>
+      <HeadingLink level={3} id={version}>
+        <Text bold>{title}</Text>
+      </HeadingLink>
       <ul className={styles.list}>
         {changes.map(({ type, text }) => (
           <li className={styles.listItem} key={`${type}-${text}`}>

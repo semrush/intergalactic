@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import InputTags from '@semcore/input-tags';
-import Tag from '@semcore/tag';
 import Tooltip from '@semcore/tooltip';
 
 const Demo = () => {
@@ -57,7 +56,12 @@ const Demo = () => {
           <Tooltip.Popper>tag</Tooltip.Popper>
         </Tooltip>
       ))}
-      <InputTags.Value value={value} onChange={updateValue} onBlur={handleBlurInput} />
+      <InputTags.Value
+        value={value}
+        onChange={updateValue}
+        onBlur={handleBlurInput}
+        aria-label="Input with tags"
+      />
     </InputTags>
   );
 };

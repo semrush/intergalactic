@@ -62,9 +62,9 @@ export const App: React.FC = () => {
   return (
     <div>
       <Nav />
-      <div className="intergalactic-playground_playground-view">
+      <main className="intergalactic-playground_playground-view">
         <PlaygroundWrapper />
-      </div>
+      </main>
     </div>
   );
 };

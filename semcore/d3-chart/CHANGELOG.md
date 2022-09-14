@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.3.3] - 2022-09-13
+
+### Fixed
+
+- Changed paths in css files to relative.
+
 ## [2.3.2] - 2022-08-30
 
 ### Changed

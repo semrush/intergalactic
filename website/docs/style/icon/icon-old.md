@@ -1,6 +1,5 @@
 ---
 title: Old icons
-fileSource: icon
 ---
 
 > For automatically update to new icons, use the [code-mode](/utils/code-mod/) utility.

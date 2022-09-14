@@ -3,7 +3,7 @@ title: A11y
 fileSource: tooltip
 ---
 
-> ### General recommendations
+> #### General recommendations
 >
 > - Tooltips should not receive focus. The focus should remain on the field, button, or link the tooltip is about.
 > - Tooltips should not be revealed until a short time has passed (~1-5 seconds).

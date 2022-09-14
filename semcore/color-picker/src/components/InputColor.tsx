@@ -19,8 +19,20 @@ type InputColorAsProps = {
 };
 
 function isValidHex(hex: string) {
+  if (hex[0] !== '#' && hex.length === 7) return false;
+
   const reg = /^#([0-9a-f]{3,4}){1,2}$/i;
-  return reg.test('#' + hex);
+  return hex[0] === '#' ? reg.test(hex) : reg.test('#' + hex);
+}
+
+function debounce(func: (...args: any[]) => void, timeout: number) {
+  let timer: any;
+  return (...args: any[]) => {
+    clearTimeout(timer);
+    timer = setTimeout(() => {
+      func.apply(this, args);
+    }, timeout);
+  };
 }
 
 class InputColorRoot extends Component<InputColorAsProps> {
@@ -44,7 +56,11 @@ class InputColorRoot extends Component<InputColorAsProps> {
     const { value, state } = this.asProps;
 
     if (value.length !== 0 && state === 'normal') {
-      this.asProps?.onAdd(`#${value.toLowerCase()}`, event);
+      if (value[0] === '#') {
+        this.asProps?.onAdd(value.toLowerCase(), event);
+      } else {
+        this.asProps?.onAdd(`#${value.toLowerCase()}`, event);
+      }
       this.handlers.value('', event);
     }
   };
@@ -53,7 +69,7 @@ class InputColorRoot extends Component<InputColorAsProps> {
     this.handlers.value('', event);
   };
 
-  handlerChange = (value: string) => {
+  handlerChange = debounce((value: string) => {
     if (value.length !== 0) {
       if (isValidHex(value)) {
         this.handlers.state('normal');
@@ -63,7 +79,7 @@ class InputColorRoot extends Component<InputColorAsProps> {
     } else {
       this.handlers.state('normal');
     }
-  };
+  }, 300);
 
   handlekeyDown = (event: React.KeyboardEvent) => {
     if (event.code === 'Enter') {
@@ -80,10 +96,11 @@ class InputColorRoot extends Component<InputColorAsProps> {
     const SInput = 'div';
     const SInputContainer = 'div';
     const SItemColor = Box;
+    const valueColor = value[0] === '#' ? value : value ? `#${value}` : null;
 
     return sstyled(styles)(
       <SPaletteManager>
-        <SItemColor value={value ? `#${value}` : null} />
+        <SItemColor value={valueColor} />
         <SInputContainer>
           #
           <SInput>
@@ -92,7 +109,7 @@ class InputColorRoot extends Component<InputColorAsProps> {
                 render={Input.Value}
                 placeholder="FFFFFF"
                 onChange={this.handlerChange}
-                maxLength={6}
+                maxLength={7}
                 onFocus={onFocus}
                 onBlur={onBlur}
               />

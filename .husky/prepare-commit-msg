@@ -1,0 +1,4 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+node ./.ci/verify-email.js && node ./.ci/append-commit-message-signature-id.js $1

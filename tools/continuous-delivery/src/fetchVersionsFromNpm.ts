@@ -1,7 +1,7 @@
 import axios from 'axios';
 import pLimit from 'p-limit';
 
-export const fetchVersionsFromNpm = async () => {
+export const fetchVersionsFromNpm = async (filter?: string[]) => {
   const { data: npmSearchResult } = await axios.get<
     {},
     {
@@ -29,10 +29,13 @@ export const fetchVersionsFromNpm = async () => {
   }
 
   const currentVersions: { [packageName: string]: string } = {};
+  const objectsToFetch = npmSearchResult.objects.filter(
+    (object) => !filter || filter.includes(object.package.name),
+  );
 
   const limit = pLimit(5);
   await Promise.all(
-    npmSearchResult.objects.map(
+    objectsToFetch.map(
       async ({ package: { name } }) =>
         await limit(async () => {
           const npmResponse = await axios.get<{ 'dist-tags': { latest: string } }>(

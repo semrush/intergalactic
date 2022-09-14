@@ -1,6 +1,6 @@
 ---
 title: A11y
-fileSource: notice
+a11y: AA
 ---
 
 @## Keyboard support

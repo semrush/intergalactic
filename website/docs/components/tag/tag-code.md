@@ -24,3 +24,7 @@ Tag colors can be set by yourself
 Use [InlineEdit](/components/inline-edit/) for this case.
 
 @example edit-tag
+
+@## Removing tag
+
+@example remove-tag

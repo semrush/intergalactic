@@ -1,4 +1,5 @@
 import React from 'react';
+import cx from 'classnames';
 import styles from './Color.module.css';
 import Copy from '../components/Copy';
 
@@ -16,7 +17,7 @@ const cssVariable = Object.fromEntries(
     }),
 );
 
-const Color = ({ name, ...other }) => {
+const Color = ({ name, className, ...other }) => {
   const varValue = cssVariable[name];
   const value = varValue || name;
 
@@ -32,7 +33,7 @@ const Color = ({ name, ...other }) => {
       }
     >
       <span
-        className={styles.paintedElement}
+        className={cx(styles.paintedElement, className)}
         {...other}
         value={value}
         style={{ ...(other.style ?? {}), backgroundColor: value }}

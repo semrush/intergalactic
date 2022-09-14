@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.1.12] - 2022-08-30
+
+### Added
+
+- Added aria attributes for better a11y.
+
 ## [5.1.11] - 2022-08-30
 
 ### Changed

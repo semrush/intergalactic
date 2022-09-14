@@ -1,6 +1,6 @@
 ---
 title: A11y
-fileSource: notice-bubble
+a11y: AA
 ---
 
 @ General recommendations

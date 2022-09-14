@@ -16,6 +16,10 @@ const SORTING_ICON = {
   desc: SortDesc,
   asc: SortAsc,
 } as const;
+const ariaSort = {
+  desc: 'descending',
+  asc: 'ascending',
+} as const;
 
 type AsProps = {
   $onSortClick: (name: string, event: React.MouseEvent | React.KeyboardEvent) => void;
@@ -51,6 +55,8 @@ class Head extends Component<AsProps> {
     const SColumn = Flex;
     const SHead = Box;
     const SSortIcon = SORTING_ICON[column.sortDirection];
+    const ariaSortValue =
+      column.sortable && column.active ? ariaSort[column.sortDirection] : undefined;
     const isGroup = column.columns?.length > 0;
     const cSize = isGroup ? flattenColumns(column.columns).length : 1;
     const [name, value] = getFixedStyle(column, this.columns);
@@ -86,6 +92,7 @@ class Head extends Component<AsProps> {
         )}
         style={style}
         hidden={hidden}
+        aria-sort={ariaSortValue}
       >
         {isGroup ? (
           <>

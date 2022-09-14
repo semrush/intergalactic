@@ -1,8 +1,7 @@
 import * as React from 'react';
 import { testing, snapshot } from '@semcore/jest-preset-ui';
+const { axe, render, cleanup, fireEvent } = testing;
 import Tooltip from '@semcore/tooltip';
-
-const { cleanup } = testing;
 
 import InputTags from '../src';
 
@@ -106,5 +105,38 @@ describe('InputTags', () => {
       </InputTags>
     );
     expect(await snapshot(component)).toMatchImageSnapshot();
+  });
+
+  test('should call onClick', async () => {
+    const onClick = jest.fn();
+    const { getByTestId } = render(
+      <InputTags>
+        <InputTags.Tag theme="primary" editable data-testid="tag" onClick={onClick}>
+          <InputTags.Tag.Text>tag</InputTags.Tag.Text>
+          <InputTags.Tag.Close />
+        </InputTags.Tag>
+        <InputTags.Value aria-label="input with tags" />
+      </InputTags>,
+    );
+
+    fireEvent.keyDown(getByTestId('tag'), { code: 'Enter' });
+    expect(onClick).toHaveBeenCalledTimes(1);
+  });
+
+  test('a11y', async () => {
+    const { container } = render(
+      <InputTags size="l">
+        {['vk', 'fk', 'twitter', 'instagram'].map((tag, idx) => (
+          <InputTags.Tag theme="primary" editable data-id={idx}>
+            <InputTags.Tag.Text>{tag}</InputTags.Tag.Text>
+            <InputTags.Tag.Close />
+          </InputTags.Tag>
+        ))}
+        <InputTags.Value aria-label="input with tags" />
+      </InputTags>,
+    );
+
+    const results = await axe(container);
+    expect(results).toHaveNoViolations();
   });
 });

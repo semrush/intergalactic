@@ -106,6 +106,7 @@ class RootTag extends Component {
 
     return sstyled(styles)(
       <STag
+        tabIndex={0}
         render={Box}
         use:interactive={!disabled && interactive}
         colorBg={colors.colorBg}
@@ -131,7 +132,25 @@ function Close(props) {
   const SClose = Root;
   const { styles } = props;
 
-  return sstyled(styles)(<SClose render={Box} tag={CloseM} interactive />);
+  function onKeyDown(event) {
+    if (props.onKeyDown) {
+      return props.onKeyDown(event);
+    }
+
+    if (event.code === 'Enter') {
+      props.onClick && props.onClick(event);
+    }
+  }
+
+  return sstyled(styles)(
+    <SClose
+      render={Box}
+      tag={CloseM}
+      interactive
+      aria-label="press space or enter to remove it from the list"
+      onKeyDown={onKeyDown}
+    />,
+  );
 }
 
 function Addon(props) {

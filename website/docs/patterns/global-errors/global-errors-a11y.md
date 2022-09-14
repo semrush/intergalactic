@@ -1,5 +1,6 @@
 ---
 title: A11y
+a11y: AA
 ---
 
 @## Roles and attributes

@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import InputTags from '@semcore/input-tags';
-import Tag from '@semcore/tag';
 import DropdownMenu from '@semcore/dropdown-menu';
 
 const tagsSelect = ['vk', 'fk', 'twitter', 'instagram'];
@@ -49,7 +48,11 @@ export default function () {
                 <InputTags.Tag.Close onClick={onRemoveTag.bind(this, i)} />
               </InputTags.Tag>
             ))}
-            <InputTags.Value value={valueInput} onChange={onChangeValue} />
+            <InputTags.Value
+              value={valueInput}
+              onChange={onChangeValue}
+              aria-label="input with tags"
+            />
           </InputTags>
         )}
       </DropdownMenu.Trigger>

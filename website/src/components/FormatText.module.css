@@ -154,8 +154,18 @@
   border-left: 12px solid #b880ff;
   border-radius: 6px;
 }
+
+.formatText blockquote.--info {
+  background: #e9f7ff;
+  border-color: #8ecdff;
+}
+
 .formatText blockquote *:last-child {
   margin-bottom: 0;
+}
+
+.formatText blockquote h3 {
+  margin-top: 0;
 }
 
 .formatText form {

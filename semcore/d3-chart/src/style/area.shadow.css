@@ -1,4 +1,4 @@
-@import '@semcore/d3-chart/src/style/var.css';
+@import './var.css';
 
 SArea {
   fill: var(--blue-03);

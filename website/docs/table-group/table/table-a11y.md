@@ -1,9 +1,9 @@
 ---
 title: A11y
-fileSource: table
+a11y: AA
 ---
 
-> ### General recommendations
+> #### General recommendations
 >
 > - Tables with one header and simple data are fairly accessible out of the box and may not need additional accessibility updates. Always use the simplest table configuration possible.
 >
@@ -16,3 +16,5 @@ fileSource: table
 @## Other recommendations
 
 See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/).
+
+@include data-table-a11y-report

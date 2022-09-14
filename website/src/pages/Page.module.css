@@ -1,5 +1,5 @@
 .documentationWrapper {
-  padding: 56px 32px 64px;
+  padding: 56px 32px 56px;
   position: relative;
   color: #191b23;
 }
@@ -84,4 +84,5 @@
 .navigationButton {
   display: flex;
   align-items: center;
+  color: #575c66;
 }

@@ -44,6 +44,8 @@
 .logo {
   display: flex;
   align-items: center;
+  margin-top: 4px;
+  font-family: 'Factor A';
   text-align: center;
   font-size: 22px;
   line-height: 130%;
@@ -51,7 +53,8 @@
   font-weight: 700;
 }
 .semrushLogo {
-  margin-right: 4px;
+  margin-right: 8px;
+  margin-bottom: 6px;
   width: 30px;
   height: 30px;
 }
@@ -164,7 +167,33 @@
     display: block;
   }
 }
-@media (max-width: 320px) {
+@media (max-width: 674px) {
+  .headerMain {
+    column-gap: 0;
+  }
+  .mobileSearchHidden {
+    display: none;
+  }
+  .searchWrapper {
+    margin-left: 20px;
+    margin-right: 0;
+  }
+  .searchIcon {
+    display: flex;
+    position: absolute;
+    right: 20px;
+  }
+  .iconSearchWrapper {
+    display: none !important;
+  }
+  .searchIcon {
+    margin-right: 20px;
+  }
+  .activeSearch {
+    display: none;
+  }
+}
+@media (max-width: 420px) {
   .headerMain {
     column-gap: 0;
   }
