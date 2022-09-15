@@ -285,19 +285,8 @@ Line.prototype.renderDots = function (needClip, clipPathId) {
 
 // @ts-ignore
 Line.prototype.render = function () {
-  const {
-    hide,
-    points,
-    className,
-    xAxis,
-    yAxis,
-    top,
-    left,
-    width,
-    height,
-    isAnimationActive,
-    id,
-  } = this.props;
+  const { hide, points, className, xAxis, yAxis, top, left, width, height, isAnimationActive, id } =
+    this.props;
 
   if (hide || !points || !points.length) {
     return null;
@@ -341,4 +330,7 @@ Line.defaultProps.activeDot = { r: 8, strokeWidth: 2, stroke: colors['white'] };
 // @ts-ignore
 Line.defaultProps.type = 'monotone';
 
+/**
+ * @deprecated Please, use package `@semcore/d3-chart` instead. Package `@semcore/chart` will be removed in the next major release
+ */
 export default Line;

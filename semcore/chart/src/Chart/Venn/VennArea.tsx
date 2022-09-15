@@ -4,7 +4,7 @@ import { colors } from '../../utils/colors';
 import { IVennChildProps } from './interface/VennChart';
 
 /**
- * @deprecated use package `@semcore/d3-chart` instead
+ * @deprecated Please, use package `@semcore/d3-chart` instead. Package `@semcore/chart` will be removed in the next major release
  */
 export default class VennArea extends React.PureComponent<IVennChildProps<SVGCircleElement>> {
   static displayName = 'VennArea';

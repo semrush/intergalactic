@@ -7,7 +7,7 @@ import { IVennChildProps } from './interface/VennChart';
 import { colors } from '../../utils/colors';
 
 /**
- * @deprecated use package `@semcore/d3-chart` instead
+ * @deprecated Please, use package `@semcore/d3-chart` instead. Package `@semcore/chart` will be removed in the next major release
  */
 export default class VennIntersection extends React.PureComponent<IVennChildProps<SVGPathElement>> {
   static displayName = 'VennIntersection';
