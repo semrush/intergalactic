@@ -17,9 +17,8 @@ export interface IInputTagsProps extends Omit<IInputProps, 'size'>, IScrollAreaP
    * @default m
    */
   size?: InputTagsSize;
-  /** Event is called when tag needs to be added
-   * @deprecated use `onAppend` instead
-   */
+  /** @deprecated use `onAppend` instead */
+  /** Event is called when tag needs to be added */
   onAdd?: (value: string, event: React.KeyboardEvent | React.ClipboardEvent) => void;
   /** Event is called when tags need to be added */
   onAppend?: (values: string[], event: React.KeyboardEvent | React.ClipboardEvent) => void;
