@@ -14,7 +14,7 @@ const List = ({ navigation = [] }) => {
     <Masonry options={options}>
       {navigation.map((category, i) => (
         <div key={i}>
-          <div className={styles.title}>{category.title}</div>
+          <h2 className={styles.title}>{category.title}</h2>
           <div className={styles.categoryPageList}>
             {category.children.map((page, i) => (
               <div className={styles.categoryItem} key={i}>

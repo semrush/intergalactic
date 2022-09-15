@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import styles from './Page.module.css';
-import { Link } from 'react-router-dom';
 import Helmet from 'react-helmet';
 import { scroller } from 'react-scroll';
 import { Col, Row } from '@semcore/grid';
@@ -11,16 +10,8 @@ import { Docs } from '../components/Docs';
 import DocsHeader from '../components/DocsHeader';
 import SideBarHeading from '../components/SideBarHeading';
 import ErrorView from '../components/Error';
-import ArrowRightXS from '@semcore/icon/ArrowRight/m';
-import ArrowLeftXS from '@semcore/icon/ArrowLeft/m';
 import Select from '@semcore/select';
-import {
-  routes,
-  routeParents,
-  routePrevSiblings,
-  routeNextSiblings,
-  navigationTree,
-} from '@navigation';
+import { routes, routeParents, navigationTree } from '@navigation';
 import { useRouting, usePageData } from '../components/routing';
 import scrollToHash from '../utils/scrollToHash';
 
@@ -116,24 +107,6 @@ const PageView = ({ route, page }) => {
               changelogUrl={changelogRoute?.route}
             />
             <Docs tokens={page.tokens} tabs={tabs} route={page.route} />
-          </div>
-          <div className={styles.nextGuide}>
-            {routePrevSiblings[route] && (
-              <div className={styles.navigationButton}>
-                <ArrowLeftXS mr={2} />
-                <Link to={'/' + routePrevSiblings[route].route} rel="noopener noreferrer">
-                  {routePrevSiblings[route].title}
-                </Link>
-              </div>
-            )}
-            {routeNextSiblings[route] && (
-              <div className={styles.navigationButton}>
-                <Link to={'/' + routeNextSiblings[route].route} rel="noopener noreferrer">
-                  {routeNextSiblings[route].title}
-                </Link>
-                <ArrowRightXS ml={2} />
-              </div>
-            )}
           </div>
         </Col>
         <Col md={0} span={2}>

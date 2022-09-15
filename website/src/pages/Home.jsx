@@ -40,23 +40,35 @@ const mappingTableToImg = {
     imgClassName: styles.principlesImg,
     img: principles,
     tag: 'Principles',
+    attr: {
+      role: 'region',
+      'aria-label': 'Principles links',
+    },
   },
   styles: {
     className: `${styles.initialPrinciples} ${styles.styles}`,
     imgClassName: styles.stylesImg,
     img: style,
     tag: 'Style',
+    attr: {
+      role: 'region',
+      'aria-label': 'Style links',
+    },
   },
   layout: {
     className: `${styles.initialPrinciples} ${styles.layout}`,
     imgClassName: styles.layoutImg,
     img: layout,
     tag: 'Layout',
+    attr: {
+      role: 'region',
+      'aria-label': 'Layout links',
+    },
   },
 };
 
 const getCustomPage = (table) => (
-  <div className={table.className}>
+  <div className={table.className} {...table.attr}>
     <AllComponents
       navigation={navigationTree.filter((nav) => !nav.metadata.hide && nav.title === table.tag)}
     />
@@ -98,7 +110,7 @@ const getTabByTitle = (titles, className) => {
         titles.map((title, i) => {
           return (
             <Box mr={7.5} key={i}>
-              <h2>{title}</h2>
+              <h3 size={300}>{title}</h3>
               {getComponents(title)}
             </Box>
           );
@@ -200,11 +212,15 @@ const getChart = (titles) => {
   return (
     <>
       <Box mr={12}>
-        <Text tag="strong">Common docs</Text>
+        <Text tag="h3" size={300}>
+          Common docs
+        </Text>
         <div className={cx(styles.docs, styles.cards)}>{listDocs}</div>
       </Box>
       <Box w="100%">
-        <Text tag="strong">Types</Text>
+        <Text tag="h3" size={300}>
+          Types
+        </Text>
         <div className={styles.cards}>{listItems}</div>
       </Box>
     </>
@@ -226,11 +242,15 @@ const Table = ({ titles }) => {
   return (
     <>
       <Box mr={12}>
-        <Text tag="strong">Common docs</Text>
+        <Text tag="h3" size={300}>
+          Common docs
+        </Text>
         <div className={cx(styles.docs, styles.cards)}>{getDocs}</div>
       </Box>
       <Box w="100%">
-        <Text tag="strong">Controls and use cases</Text>
+        <Text tag="h3" size={300}>
+          Controls and use cases
+        </Text>
         <div className={styles.cards}>
           {tableControls.page.headings.map((heading) => (
             <ComponentCard
@@ -242,7 +262,7 @@ const Table = ({ titles }) => {
             />
           ))}
         </div>
-        <Text tag="strong" inline mt={8}>
+        <Text tag="h3" size={300} inline mt={8}>
           States
         </Text>
         <div className={styles.cards}>
@@ -298,7 +318,7 @@ function Home() {
         <div className={styles.sideBar}>
           <SideBarNavigation navigation={navigationTree.filter((nav) => !nav.metadata.hide)} />
         </div>
-        <div className={styles.overlay}>
+        <div className={styles.overlay} role="main">
           <div className={styles.promoWrapper}>
             <h1 className={styles.title}>Intergalactic Design System</h1>
             <div className={styles.desc}>
@@ -306,8 +326,8 @@ function Home() {
               patterns. With all these tools you can build your own product.
             </div>
             <img className={styles.whaleImg} src={whale} alt="Whale" />
-            <div className={styles.started}>
-              Get started
+            <div className={styles.started} role="region" aria-label="Get started links">
+              <h2>Get started</h2>
               <Link to="/get-started-guide/dev-starter-guide/" rel="noopener noreferrer">
                 For developers <ArrowXS />
               </Link>
@@ -352,7 +372,9 @@ function Home() {
               </TabLine>
             </div>
             <tableDataContext.Provider value={tableContext}>
-              <div className={styles.border}>{renderSwitch(value)}</div>
+              <div className={styles.border} role="region" aria-label="Components links">
+                {renderSwitch(value)}
+              </div>
             </tableDataContext.Provider>
           </div>
           <EmailsBanner />

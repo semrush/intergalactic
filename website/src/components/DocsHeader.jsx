@@ -35,8 +35,8 @@ export default function (props) {
   const { title, category, fileSource, sourcePath, beta, version, changelogUrl } = props;
 
   return (
-    <Box tag="header" mb={8}>
-      <h2 className={styles.title}>{title}</h2>
+    <Box mb={8}>
+      <h1 className={styles.title}>{title}</h1>
       <Text tag={Flex} alignItems={'center'} color="#898D9A" mb={3} size={300}>
         {category}
         {version && (
@@ -47,7 +47,7 @@ export default function (props) {
         )}
         {beta && <Tag size="m" theme="primary" color="orange-500" children="beta" />}
       </Text>
-      <Flex className={styles.overlay} mb={4}>
+      <Flex className={styles.overlay} mb={4} tag="nav" aria-label="External links">
         <Box mr={5}>
           <Link size={300} color="#171A22" target="_blank" href="https://www.figma.com/@semrush">
             <Link.Addon>

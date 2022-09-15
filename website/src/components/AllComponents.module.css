@@ -15,6 +15,7 @@
 }
 
 .title {
+  margin: 0;
   font-size: 24px;
   margin-bottom: 8px;
   font-weight: 700;

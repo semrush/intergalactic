@@ -6,14 +6,14 @@ import styles from './Footer.module.css';
 function Footer() {
   return (
     <footer className={styles.footerWrapper}>
-      <div className={styles.links}>
+      <nav className={styles.links} aria-label="Additional links">
         <NavLink to="/terms/terms-of-use/">Terms of Use</NavLink>
         <NavLink to="/terms/privacy/">Privacy Policy</NavLink>
         <a href="https://www.semrush.com/company/careers" target="_blank" rel="noopener noreferrer">
           Careers
         </a>
         <NavLink to="/contacts/contact-info/">Contact Us</NavLink>
-      </div>
+      </nav>
 
       <div className={styles.logo}>
         Powered by <img src={logo} alt="Logo" />

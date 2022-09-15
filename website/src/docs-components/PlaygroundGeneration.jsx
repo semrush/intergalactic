@@ -202,7 +202,12 @@ class PlaygroundView extends React.Component {
           </div>
         </div>
         {hasWidget ? (
-          <div className={styles.widgetsBar} ref={(node) => (this.container = node)}>
+          <div
+            className={styles.widgetsBar}
+            ref={(node) => (this.container = node)}
+            role="form"
+            aria-label="Playground component form"
+          >
             {widgetControls.map((control, i) => {
               return (
                 <div className={styles.widgetGroup} key={i}>

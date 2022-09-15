@@ -7,11 +7,16 @@ import ArrowRightXS from '@semcore/icon/ArrowRight/m';
 
 function BannerBlock() {
   return (
-    <div className={styles.emailsWrapper} id="bannerBlock">
+    <div
+      className={styles.emailsWrapper}
+      id="bannerBlock"
+      role="region"
+      aria-label="Product emails library"
+    >
       <img className={styles.emailImg} src={emailImg} />
       <div className={styles.info}>
         <Box>
-          <h3 className={styles.header}>Product emails library</h3>
+          <h2 className={styles.header}>Product emails library</h2>
         </Box>
         <Box mt={2}>
           All you need for making your product newsletter cool, consistent and adaptive.

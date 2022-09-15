@@ -141,6 +141,7 @@ const Search = ({
           return (
             <>
               <input
+                role="search"
                 autoFocus
                 value={ru.toEn(currentRefinement)}
                 onChange={(e) => {
