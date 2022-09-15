@@ -85,7 +85,7 @@
   "devDependencies": {
     "fast-glob": "3.2.11",
     "fs-extra": "9.0.1",
-    "jest": "26.5.3",
+    "jest": "29.0.1",
     "tsm": "2.2.2"
   },
   "jest": {
