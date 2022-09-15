@@ -1,3 +1,68 @@
+## [12.5.1] - 2022-09-15
+
+### @semcore/animation
+
+- **Fixed** Fixed playing entering animation if init animation state is already reached.
+
+### @semcore/badge
+
+- **Fixed** Change line-height to correctly display uppercase letters.
+
+### @semcore/button
+
+- **Fixed** Fixed aria warning detection.
+
+### @semcore/color-picker
+
+- **Changed** Changed the logic of entering color format. From this version it is possible to enter hex code in both formats: with `#` sign - `#123123` and without `#` sign - `123123`.
+
+### @semcore/d3-chart
+
+- **Fixed** Changed paths in css files to relative.
+
+### @semcore/data-table
+
+- **Changed** Improved component accessibility in cases of virtual scroll and columns sorting.
+
+### @semcore/feedback-form
+
+- **Added** Added aria attributes for better a11y.
+
+### @semcore/fullscreen-modal
+
+- **Changed** Removed unused `hidden` property from types.
+
+### @semcore/input-tags
+
+- **Added** Added screen reader support
+
+### @semcore/link
+
+- **Fixed** Fixed aria warning detection.
+
+### @semcore/tab-line
+
+- **Fixed** Enforced inner text font line height to prevent possible bottom cut.
+- **Fixed** Fixed typos in styles: `lihe-height` -> `line-height`.
+- **Fixed** Fixed font height so that the letter "g" would not be cut off.
+
+### @semcore/tab-panel
+
+- **Fixed** Enforced inner text font line height to prevent possible bottom cut.
+
+### @semcore/tag
+
+- **Fixed** Enforced inner text font line height to prevent possible bottom cut.
+- **Added** Added screen reader support
+
+### @semcore/tooltip
+
+- **Added** Added `aria-live` attribute for better a11y.
+
+### @semcore/utils
+
+- **Fixed** Added dependency `@types/react-dom` and fix type for `getNodeByRef` function.
+
 ## [12.5.0] - 2022-08-29
 
 ### @semcore/accordion
