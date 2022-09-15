@@ -23,11 +23,13 @@ describe('Flags', () => {
       <>
         <Flags data-testid="flags" iso2="af" />
         <Flags data-testid="flags2" iso3="afg" />
+        <Flags data-testid="flags3" name="afg" />
       </>,
     );
 
     expect(getByTestId('flags').classList[1]).toMatch('Afghanistan');
     expect(getByTestId('flags2').classList[1]).toMatch('Afghanistan');
+    expect(getByTestId('flags3').classList[1]).toMatch('Afghanistan');
   });
 
   test('Should set styles', () => {
