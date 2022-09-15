@@ -1,3 +1,6 @@
+/**
+ * @deprecated Please, use package `@semcore/d3-chart` instead. Package `@semcore/chart` will be removed in the next major release
+ */
 export function timeFormat(options?: {}, local = 'en-US') {
   const defaultOptions = {
     month: 'short',

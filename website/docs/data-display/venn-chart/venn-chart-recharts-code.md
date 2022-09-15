@@ -3,7 +3,7 @@ title: Legacy examples
 fileSource: d3-chart
 ---
 
-> 🎉 Try out [new chart library](/data-display/area-chart/area-chart-d3-code/) developed entirely with the D3.
+> 🚨 Library `@semcore/chart` is deprecated and will be removed in the next major release. Please, use new chart library [`@semcore/d3-chart`](/data-display/area-chart/area-chart-d3-code/) instead.
 
 @## Basic venn chart example
 

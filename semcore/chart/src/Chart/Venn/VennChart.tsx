@@ -33,6 +33,9 @@ import cn from 'classnames';
 import styles from './style/venn-tooltip-label.shadow.css';
 import chartStyles from '../../style/chart.shadow.css';
 
+/**
+ * @deprecated Please, use package `@semcore/d3-chart` instead. Package `@semcore/chart` will be removed in the next major release
+ */
 export default class VennChart extends React.PureComponent<IVennChartProps, IVennChartState> {
   static displayName = 'VennChart';
   static defaultProps = {
