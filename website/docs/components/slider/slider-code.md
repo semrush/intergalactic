@@ -3,11 +3,15 @@ title: Example
 fileSource: slider
 ---
 
-@## Slider with value labels
+@## Slider with options
 
 @example slider
 
-@## Slider with InputNumber
+@## Customized options view
+
+@example slider-styled-options
+
+@## Numeric slider
 
 The slider can be used in combination with [InputNumber](/components/input-number/). Also, if you enter too large or too small value into the [InputNumber](/components/input-number/), an error is shown.
 

@@ -25,3 +25,12 @@ import Slider from '@semcore/ui/slider';
 import Slider from '@semcore/ui/slider';
 <Slider.Knob />;
 ```
+
+@## Slider.Options & Slider.Item
+
+```jsx
+import Slider from '@semcore/ui/slider';
+<Slider.Options>
+  <Slider.Item />
+</Slider.Options>;
+```

@@ -1,7 +1,8 @@
 import React from 'react';
 import createComponent, { Component, sstyled, Root } from '@semcore/core';
-import { Box } from '@semcore/flex-box';
+import { Flex, Box } from '@semcore/flex-box';
 import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
+import reactToText from '@semcore/utils/lib/reactToText';
 
 import style from './style/slider.shadow.css';
 
@@ -14,7 +15,8 @@ function convertValueToPercent(value, min, max) {
 class SliderRoot extends Component {
   static displayName = 'Slider';
   static style = style;
-  $slider;
+
+  sliderRef = React.createRef(null);
 
   static enhance = [keyboardFocusEnhance()];
 
@@ -27,11 +29,14 @@ class SliderRoot extends Component {
       <>
         <Slider.Bar />
         <Slider.Knob />
+        <Slider.Options>
+          <Slider.Item />
+        </Slider.Options>
       </>
     ),
   });
 
-  refSlider = (node) => (this.$slider = node);
+  handleRef = (node) => (this.sliderRef.current = node);
 
   uncontrolledProps() {
     return {
@@ -40,22 +45,43 @@ class SliderRoot extends Component {
   }
 
   getKnobProps() {
-    const { value, min, max, disabled } = this.asProps;
+    const { min, max, disabled, options } = this.asProps;
+
     return {
-      value,
+      value: this.resolveNumbericValue(),
       min,
       max,
       disabled,
+      options,
     };
   }
 
   getBarProps() {
-    const { value, min, max, disabled } = this.asProps;
+    const { min, max, disabled, options } = this.asProps;
+
     return {
-      value,
+      value: this.resolveNumbericValue(),
       min,
       max,
       disabled,
+      options,
+    };
+  }
+
+  getOptionsProps() {
+    const { options } = this.asProps;
+
+    return { options };
+  }
+
+  getItemProps(_, index) {
+    const { options } = this.asProps;
+    const option = options[index];
+
+    return {
+      key: option.value,
+      value: option.value,
+      children: option.label,
     };
   }
 
@@ -76,26 +102,31 @@ class SliderRoot extends Component {
     document.addEventListener('mouseup', this.handleMouseEnd);
     document.addEventListener('touchend', this.handleMouseEnd);
 
-    const { min, max, step } = this.asProps;
+    const { min, max, step, options } = this.asProps;
 
-    const slider = this.$slider;
-    const sliderSize = slider.offsetWidth;
+    const sliderSize = this.sliderRef.current.offsetWidth;
     const clientX = e.clientX ?? e.touches[0].clientX;
-    const newLeft = clientX - slider.getBoundingClientRect().left;
+    const newLeft = clientX - this.sliderRef.current.getBoundingClientRect().left;
 
     if (newLeft <= 0) {
-      this.handlers.value(min, e);
+      const resolvedMin = options ? options[0]?.value : min;
+      this.handlers.value(resolvedMin, e);
     } else if (newLeft >= sliderSize) {
-      this.handlers.value(max, e);
+      const lastOption = options?.[options?.length - 1];
+      const resolvedMax = options ? lastOption?.value : max;
+      this.handlers.value(resolvedMax, e);
     } else {
       const relativeValue = newLeft / sliderSize;
       const relativeStep = step / (max - min);
       const countSteps = Math.round(relativeValue / relativeStep);
-      const currentValue = countSteps * step + min;
+      const numbericValue = countSteps * step + min;
+      const resovledValue = options ? options[countSteps * step]?.value : numbericValue;
 
-      this.handlers.value(currentValue, e);
+      this.handlers.value(resovledValue, e);
     }
   };
+
+  handleDragStart = () => false;
 
   onKeyPressed = (e) => {
     const { value, min, max, step } = this.asProps;
@@ -114,30 +145,58 @@ class SliderRoot extends Component {
     }
   };
 
+  resolveNumbericValue = () => {
+    const { value, options, min, max, defaultValue } = this.asProps;
+    const resolvedIndex = options ? options.findIndex((option) => option.value === value) : value;
+    if (options && resolvedIndex === -1) return defaultValue;
+    if (resolvedIndex < min) return min;
+    if (min === undefined) {
+      if (resolvedIndex + min > max) return max;
+    } else {
+      if (resolvedIndex > max) return max;
+    }
+
+    return resolvedIndex + (min ?? 0);
+  };
+
+  resolveLabel = (numericValue) => {
+    const { min, options } = this.asProps;
+    if (!options) return numericValue;
+    const option = options[numericValue - (min ?? 0)];
+
+    return reactToText(option?.label);
+  };
+
   render() {
     const SSlider = Root;
     const SInput = Box;
-    const { Children, styles, value, min, max, name } = this.asProps;
+    const { Children, styles, value, min, max, name, options } = this.asProps;
+
+    const defaultMin = options ? 0 : undefined;
+    const defaultMax = options ? options.length : undefined;
+    const numbericValue = this.resolveNumbericValue();
+    const label = this.resolveLabel(numbericValue);
 
     return sstyled(styles)(
       <>
         <SSlider
           render={Box}
-          ref={this.refSlider}
+          ref={this.handleRef}
           onMouseDown={this.handleMouseMove}
           onTouchMove={this.handleMouseMove}
           onMouseUp={this.handleMouseEnd}
           onTouchEnd={this.handleMouseEnd}
-          onDragStart={() => false}
+          onDragStart={this.handleDragStart}
           onKeyDown={this.onKeyPressed}
           role="slider"
           aria-orientation="horizontal"
-          aria-valuemax={max}
-          aria-valuemin={min}
-          aria-valuenow={value}
+          aria-valuemin={min ?? defaultMin}
+          aria-valuemax={max ?? defaultMax}
+          aria-valuetext={label}
+          aria-valuenow={numbericValue}
         >
           <Children />
-          <SInput tag="input" type="hidden" value={value} name={name} aria-hidden />
+          <SInput tag="input" type="hidden" value={value ?? ''} name={name} aria-hidden />
         </SSlider>
       </>,
     );
@@ -154,10 +213,40 @@ function Bar(props) {
 function Knob(props) {
   const SKnob = Root;
   const { styles, value, min, max } = props;
+
   return sstyled(styles)(
     <SKnob render={Box} left={`${convertValueToPercent(value, min, max)}%`} />,
   );
 }
 
-const Slider = createComponent(SliderRoot, { Bar, Knob });
+function Options({ styles, options, Children }) {
+  const SSliderOptions = Root;
+
+  return sstyled(styles)(
+    <SSliderOptions render={Flex} justifyContent="space-between">
+      {options.map((option) => (
+        <Children key={option.value} x={option.value}>
+          {option.label}
+        </Children>
+      ))}
+    </SSliderOptions>,
+  );
+}
+
+function Item({ styles, Children }) {
+  const SSliderOption = Root;
+
+  return sstyled(styles)(
+    <SSliderOption render={Box}>
+      <Children />
+    </SSliderOption>,
+  );
+}
+
+const Slider = createComponent(SliderRoot, {
+  Bar,
+  Knob,
+  Options,
+  Item,
+});
 export default Slider;
