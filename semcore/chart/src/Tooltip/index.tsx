@@ -24,6 +24,9 @@ export interface IDefaultTooltip {
   title?: string;
 }
 
+/**
+ * @deprecated Please, use package `@semcore/d3-chart` instead. Package `@semcore/chart` will be removed in the next major release
+ */
 class DefaultTooltipContent extends PureComponent<IDefaultTooltip> {
   static displayName = 'DefaultTooltipContent';
 

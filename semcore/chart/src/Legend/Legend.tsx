@@ -174,6 +174,9 @@ LegendRecharts.prototype.render = function () {
   );
 };
 
+/**
+ * @deprecated Please, use package `@semcore/d3-chart` instead. Package `@semcore/chart` will be removed in the next major release
+ */
 const Legend = copyComponent(LegendRecharts, {
   render() {
     const { forwardedRef, ...other } = this.props;

@@ -74,6 +74,9 @@ export interface ITableRowProps extends IBoxProps {
   theme?: RowTheme;
 }
 
+/**
+ * @deprecated Please, use package `@semcore/data-table` instead. Package `@semcore/table` will be removed in the next major release
+ */
 declare const Table: (<T>(props: CProps<ITableProps & T, ITableCtx>) => ReturnEl) & {
   Head: typeof Box;
   Body: typeof Box;
@@ -83,6 +86,9 @@ declare const Table: (<T>(props: CProps<ITableProps & T, ITableCtx>) => ReturnEl
   CellHead: <T>(props: ITableCellHeadProps & T) => ReturnEl;
 };
 
+/**
+ * @deprecated Please, use package `@semcore/data-table` instead. Package `@semcore/table` will be removed in the next major release
+ */
 declare const Consumer: React.Consumer<ITableCtx>;
 
 export default Table;

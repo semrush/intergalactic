@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.1.6] - 2022-09-15
+
+### Changed
+
+- Mark exported functions as deprecated with recommendation to use `@semcore/d3-chart`.
+
 ## [5.1.5] - 2022-08-30
 
 ### Changed

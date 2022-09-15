@@ -27,6 +27,9 @@ const fallbackColors: Colors = {
   'gray-02': 'gray-blue',
 };
 
+/**
+ * @deprecated Please, use package `@semcore/d3-chart` instead. Package `@semcore/chart` will be removed in the next major release
+ */
 const colorsProxy = new Proxy(colors, {
   get: (_obj, prop) => {
     if (typeof prop === 'string' && Object.keys(fallbackColors).includes(prop)) {
@@ -43,6 +46,9 @@ const colorsProxy = new Proxy(colors, {
 
 export { colorsProxy as colors };
 
+/**
+ * @deprecated Please, use package `@semcore/d3-chart` instead. Package `@semcore/chart` will be removed in the next major release
+ */
 export const getColor = (key: string) => {
   if (cache[key]) {
     return cache[key];

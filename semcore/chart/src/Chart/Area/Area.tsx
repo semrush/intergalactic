@@ -24,18 +24,8 @@ import React from 'react';
 
 // @ts-ignore
 AreaRecharts.prototype.renderAreaStatically = function (points, baseLine, needClip, clipPathId) {
-  const {
-    layout,
-    type,
-    stroke,
-    connectNulls,
-    isRange,
-    height,
-    top,
-    bottom,
-    dataKey,
-    stackId,
-  } = this.props;
+  const { layout, type, stroke, connectNulls, isRange, height, top, bottom, dataKey, stackId } =
+    this.props;
 
   let drawClipPath = true;
   let normalizedPoints = normalizeCurvePoints(points, dataKey);
@@ -162,19 +152,8 @@ AreaRecharts.prototype.renderDots = function (needClip, clipPathId) {
 
 // @ts-ignore
 AreaRecharts.prototype.render = function () {
-  const {
-    hide,
-    points,
-    className,
-    top,
-    left,
-    xAxis,
-    yAxis,
-    width,
-    height,
-    isAnimationActive,
-    id,
-  } = this.props;
+  const { hide, points, className, top, left, xAxis, yAxis, width, height, isAnimationActive, id } =
+    this.props;
 
   if (hide || !points || !points.length) {
     return null;
@@ -217,4 +196,7 @@ AreaRecharts.defaultProps.dot = false;
 // @ts-ignore
 AreaRecharts.defaultProps.activeDot = { r: 8, strokeWidth: 2, stroke: colors['white'] };
 
+/**
+ * @deprecated Please, use package `@semcore/d3-chart` instead. Package `@semcore/chart` will be removed in the next major release
+ */
 export default AreaRecharts;

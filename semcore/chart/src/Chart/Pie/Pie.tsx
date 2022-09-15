@@ -97,6 +97,9 @@ Pie.prototype.renderSectorsStatically = function (sectors) {
   });
 };
 
+/**
+ * @deprecated Please, use package `@semcore/d3-chart` instead. Package `@semcore/chart` will be removed in the next major release
+ */
 export default copyComponent(Pie, {
   defaultProps: {
     fill: colors['blue-01'],
