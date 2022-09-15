@@ -3,10 +3,10 @@ import Popper, { IPopperContext, IPopperProps, IPopperHandlers } from '@semcore/
 
 export interface IDropdownProps extends IPopperProps {
   /**
-   * Modifier responsible for the size of the pop-up window
-   * `fixed` - a pop-up window of the same size as trigger
-   * `min` - pop-up window not less than the size of the trigger
-   * `false` - the pop-up window depends on the content within it
+   * Modifier responsible for the size of the pop-up window:
+   * `fixed` - a pop-up window of the same size as trigger;
+   * `min` - pop-up window not less than the size of the trigger;
+   * `false` - the pop-up window depends on the content within it.
    * @default 'min'
    * */
   stretch?: 'min' | 'fixed' | false;
