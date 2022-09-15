@@ -112,6 +112,11 @@
   font-size: 24px;
   font-weight: 700;
 }
+.started h2 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 700;
+}
 .started a {
   margin-top: 16px;
   color: #ff622d;

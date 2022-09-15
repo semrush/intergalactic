@@ -40,13 +40,13 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ## [2.2.5] - 2022-08-04
 
-### Fix
+### Fixed
 
 - Fixed `ResponsiveContainer` memory leak on unmount.
 
 ## [2.2.4] - 2022-08-02
 
-### Fix
+### Fixed
 
 - `Venn` chart was not mentioned in exported types.
 

@@ -10,12 +10,28 @@ import HeadingLink from './HeadingLink.jsx';
 const ChangelogByComponent = ({ blocks }) => {
   return blocks.map(({ title, version, components }) => (
     <span key={title} className={formatTextStyles.formatText}>
-      <HeadingLink level={3} id={version}>
+      <HeadingLink
+        level={2}
+        id={version}
+        style={{
+          fontSize: '18px',
+          lineHeight: '110%',
+          margin: '32px 0 16px 0',
+        }}
+      >
         <Text bold>{title}</Text>
       </HeadingLink>
       {components.map(({ title, component, changes }) => (
         <div key={component}>
-          <Text tag="h4">
+          <Text
+            tag="h3"
+            style={{
+              fontSize: '16px',
+              lineHeight: '150%',
+              margin: '16px 0',
+              fontWeight: 700,
+            }}
+          >
             <span className={styles.componentTitle}>{title}</span>
             <small>({component})</small>
           </Text>
@@ -69,7 +85,7 @@ const ChangelogByComponent = ({ blocks }) => {
           );
       }
       return (
-        <li classItem={styles.listItem}>
+        <li className={styles.listItem}>
           {label}
           <div>{children}</div>
         </li>

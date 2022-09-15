@@ -14,24 +14,6 @@
   }
 }
 
-.nextGuide {
-  display: flex;
-  justify-content: space-between;
-  margin: 0 32px 96px;
-}
-@media (max-width: 415px) {
-  .nextGuide {
-    margin: 0 32px 80px;
-  }
-}
-.nextGuide a {
-  color: #171a22;
-  text-decoration: none;
-}
-.nextGuide a:hover {
-  text-decoration: underline;
-}
-
 .sideBar {
   position: sticky;
   top: 80px;

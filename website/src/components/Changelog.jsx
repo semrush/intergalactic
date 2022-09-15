@@ -43,7 +43,15 @@ export const getLabel = (type) => {
 const Changelog = ({ blocks }) => {
   return blocks.map(({ title, changes, version }) => (
     <span key={title} className={formatTextStyles.formatText}>
-      <HeadingLink level={3} id={version}>
+      <HeadingLink
+        level={2}
+        id={version}
+        style={{
+          fontSize: '18px',
+          lineHeight: '110%',
+          margin: '32px 0 16px 0',
+        }}
+      >
         <Text bold>{title}</Text>
       </HeadingLink>
       <ul className={styles.list}>

@@ -11,7 +11,7 @@ const SideBarNavigation = ({ navigation = [], onNavigate, className }) => {
   const [collapseCategories, setCollapseCategories] = useState([category]);
 
   return (
-    <div className={cx(styles.navigationView, className)}>
+    <nav className={cx(styles.navigationView, className)} aria-label="Main links">
       {navigation.map((currentCategory, i) => {
         const isOpen = collapseCategories.includes(currentCategory.route);
         return (
@@ -61,7 +61,7 @@ const SideBarNavigation = ({ navigation = [], onNavigate, className }) => {
           </React.Fragment>
         );
       })}
-    </div>
+    </nav>
   );
 };
 

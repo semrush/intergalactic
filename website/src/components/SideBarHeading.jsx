@@ -26,7 +26,7 @@ function SideBarHeading({ headings }) {
 
   return (
     <>
-      <div className={styles.sideBarWrapper}>
+      <nav className={styles.sideBarWrapper} aria-label="Guide headings">
         {headings.map((heading, i) => (
           <Link
             className={cx(styles.navLink, heading.id === activeId && styles.navLinkActive)}
@@ -40,7 +40,7 @@ function SideBarHeading({ headings }) {
             {heading.html}
           </Link>
         ))}
-      </div>
+      </nav>
       <span className={styles.buttonUp} onClick={() => animateScroll.scrollToTop({ smooth: true })}>
         <ArrowUpM interactive />
       </span>

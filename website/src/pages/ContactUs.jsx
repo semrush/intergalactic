@@ -13,21 +13,21 @@ const Contacts = () => (
     </Helmet>
     <div className={styles.content}>
       <div className={styles.header}>
-        <h2>Contact Us</h2>
+        <h1>Contact Us</h1>
         Have any questions? We’d love to hear from you.
       </div>
       <div className={styles.email}>
-        <div className={styles.title}>
+        <h2 className={styles.title}>
           <MailM mr={2} />
           Email
-        </div>
+        </h2>
         Feel free to drop us a line at
         <a href="mailto:ui-kit-team@semrush.com" target="_blank">
           ui-kit-team@semrush.com
         </a>{' '}
         in case:
         <div className={styles.text}>
-          <div className={styles.subtitle}>Send a request to develop a new component</div>
+          <h3 className={styles.subtitle}>Send a request to develop a new component</h3>
           Before sending email, check our
           <Link to="/internal/roadmap/" rel="noopener noreferrer">
             Roadmap
@@ -38,19 +38,19 @@ const Contacts = () => (
             <li>Guide and mockups</li>
             <li>Interactive prototype if there is an animation (any format: gif, axure, etc.)</li>
           </ul>
-          <div className={styles.subtitle}>Leave feedback</div>
+          <h3 className={styles.subtitle}>Leave feedback</h3>
           We care about usability and will be happy to receive feedback on both the site and the
           experience with our components.
-          <div className={styles.subtitle}>Ask a question</div>
+          <h3 className={styles.subtitle}>Ask a question</h3>
           Just write your message 🙂 Your email won't be lost. We'll get back to you as soon as we
           can.
         </div>
       </div>
       <div className={styles.github}>
-        <div className={styles.title}>
+        <h2 className={styles.title}>
           <GitHubM mr={2} />
           GitHub
-        </div>
+        </h2>
         Any developer can contribute via pull-request and
         <a
           href="https://github.com/semrush/intergalactic"
@@ -61,7 +61,7 @@ const Contacts = () => (
         </a>
         .
         <div className={styles.text}>
-          <div className={styles.subtitle}>Bug reporting & Improvements</div>
+          <h3 className={styles.subtitle}>Bug reporting & Improvements</h3>
           Found a bug? Good job!
           <ul>
             <li>

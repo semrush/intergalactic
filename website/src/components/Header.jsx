@@ -65,7 +65,7 @@ function Header(props) {
           <SearchL onClick={() => setSearchVisible(true)} />
         )}
       </div>
-      <nav className={styles.nav}>
+      <nav className={styles.nav} aria-label="Relevant links">
         <Tooltip>
           <Tooltip.Trigger>
             <span className={styles.item}>
