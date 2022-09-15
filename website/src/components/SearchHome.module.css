@@ -47,24 +47,6 @@
   text-overflow: ellipsis;
 }
 
-.desktopInput {
-  display: none;
-}
-@media (min-width: 768px) {
-  .desktopInput {
-    display: flex;
-  }
-}
-
-.mobileInput {
-  display: none;
-}
-@media (max-width: 767px) {
-  .mobileInput {
-    display: flex;
-  }
-}
-
 .iconSearchWrapper {
   position: absolute;
   right: 15px;

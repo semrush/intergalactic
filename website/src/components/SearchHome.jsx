@@ -148,28 +148,9 @@ const Search = ({
                   action.visible(true);
                   action.highlightedIndex(0);
                 }}
-                onKeyDown={(e) => {
-                  e.key === ' ' && e.stopPropagation();
-                }}
                 placeholder={placeholder}
                 className={cx(
                   styles.input,
-                  styles.desktopInput,
-                  !!currentRefinement && visible && styles.inputOpen,
-                  className,
-                )}
-              />
-              <input
-                value={ru.toEn(currentRefinement)}
-                onChange={(e) => {
-                  refine(ru.toEn(e.currentTarget.value));
-                  action.visible(true);
-                  action.highlightedIndex(0);
-                }}
-                placeholder={placeholder}
-                className={cx(
-                  styles.input,
-                  styles.mobileInput,
                   !!currentRefinement && visible && styles.inputOpen,
                   className,
                 )}
@@ -181,13 +162,13 @@ const Search = ({
           );
         }}
       </Select.Trigger>
-      <Select.Popper className={cx(styles.popper, styles.selectPopper)}>
-        <IF condition={!!currentRefinement && searchResults}>
+      <IF condition={!!currentRefinement && searchResults}>
+        <Select.Popper className={cx(styles.popper, styles.selectPopper)}>
           <Select.List m={0} style={{ overflow: 'hidden' }}>
             {showList(hits, pages, content)}
           </Select.List>
-        </IF>
-      </Select.Popper>
+        </Select.Popper>
+      </IF>
     </Select>
   );
 };
