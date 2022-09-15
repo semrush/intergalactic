@@ -48,7 +48,7 @@ class SliderRoot extends Component {
     const { min, max, disabled, options } = this.asProps;
 
     return {
-      value: this.resolveNumbericValue(),
+      value: this.getNumericValue(),
       min,
       max,
       disabled,
@@ -60,7 +60,7 @@ class SliderRoot extends Component {
     const { min, max, disabled, options } = this.asProps;
 
     return {
-      value: this.resolveNumbericValue(),
+      value: this.getNumericValue(),
       min,
       max,
       disabled,
@@ -93,8 +93,8 @@ class SliderRoot extends Component {
     document.removeEventListener('touchend', this.handleMouseEnd);
   };
 
-  handleMouseMove = (e) => {
-    e.preventDefault();
+  handleMouseMove = (event) => {
+    event.preventDefault();
 
     document.addEventListener('touchmove', this.handleMouseMove);
     document.addEventListener('mousemove', this.handleMouseMove);
@@ -105,52 +105,53 @@ class SliderRoot extends Component {
     const { min, max, step, options } = this.asProps;
 
     const sliderSize = this.sliderRef.current.offsetWidth;
-    const clientX = e.clientX ?? e.touches[0].clientX;
+    const clientX = event.clientX ?? event.touches[0].clientX;
     const newLeft = clientX - this.sliderRef.current.getBoundingClientRect().left;
 
     if (newLeft <= 0) {
       const resolvedMin = options ? options[0]?.value : min;
-      this.handlers.value(resolvedMin, e);
+      this.handlers.value(resolvedMin, event);
     } else if (newLeft >= sliderSize) {
       const lastOption = options?.[options?.length - 1];
       const resolvedMax = options ? lastOption?.value : max;
-      this.handlers.value(resolvedMax, e);
+      this.handlers.value(resolvedMax, event);
     } else {
       const relativeValue = newLeft / sliderSize;
       const relativeStep = step / (max - min);
       const countSteps = Math.round(relativeValue / relativeStep);
-      const numbericValue = countSteps * step + min;
-      const resovledValue = options ? options[countSteps * step]?.value : numbericValue;
+      const NumericValue = countSteps * step + min;
+      const resolvedValue = options ? options[countSteps * step]?.value : NumericValue;
 
-      this.handlers.value(resovledValue, e);
+      this.handlers.value(resolvedValue, event);
     }
   };
 
   handleDragStart = () => false;
 
-  onKeyPressed = (e) => {
-    const { value, min, max, step } = this.asProps;
+  handleKeyDown = (event) => {
+    if (!['ArrowLeft', 'ArrowUp', 'ArrowRight', 'ArrowDown'].includes(event.key)) return;
+    event.preventDefault();
 
-    switch (e.keyCode) {
-      case 39:
-      case 38:
-        e.preventDefault();
-        this.handlers.value(Math.min(value + step, max), e);
-        break;
-      case 37:
-      case 40:
-        e.preventDefault();
-        this.handlers.value(Math.max(value - step, min), e);
-        break;
+    const { min, max, step, options } = this.asProps;
+    const direction = event.key === 'ArrowLeft' || event.key === 'ArrowDown' ? -1 : 1;
+    let value = this.getNumericValue() + step * direction;
+
+    if (value > max) value = max;
+    if (value < min) value = min;
+    if (options) {
+      const option = options[value - (min ?? 0)];
+      this.handlers.value(option.value, event);
+    } else {
+      this.handlers.value(value, event);
     }
   };
 
-  resolveNumbericValue = () => {
+  getNumericValue = () => {
     const { value, options, min, max, defaultValue } = this.asProps;
     const resolvedIndex = options ? options.findIndex((option) => option.value === value) : value;
     if (options && resolvedIndex === -1) return defaultValue;
     if (resolvedIndex < min) return min;
-    if (min === undefined) {
+    if (min !== undefined) {
       if (resolvedIndex + min > max) return max;
     } else {
       if (resolvedIndex > max) return max;
@@ -161,7 +162,7 @@ class SliderRoot extends Component {
 
   resolveLabel = (numericValue) => {
     const { min, options } = this.asProps;
-    if (!options) return numericValue;
+    if (!options) return undefined;
     const option = options[numericValue - (min ?? 0)];
 
     return reactToText(option?.label);
@@ -174,8 +175,8 @@ class SliderRoot extends Component {
 
     const defaultMin = options ? 0 : undefined;
     const defaultMax = options ? options.length : undefined;
-    const numbericValue = this.resolveNumbericValue();
-    const label = this.resolveLabel(numbericValue);
+    const NumericValue = this.getNumericValue();
+    const label = this.resolveLabel(NumericValue);
 
     return sstyled(styles)(
       <>
@@ -187,13 +188,13 @@ class SliderRoot extends Component {
           onMouseUp={this.handleMouseEnd}
           onTouchEnd={this.handleMouseEnd}
           onDragStart={this.handleDragStart}
-          onKeyDown={this.onKeyPressed}
+          onKeyDown={this.handleKeyDown}
           role="slider"
           aria-orientation="horizontal"
           aria-valuemin={min ?? defaultMin}
           aria-valuemax={max ?? defaultMax}
           aria-valuetext={label}
-          aria-valuenow={numbericValue}
+          aria-valuenow={NumericValue}
         >
           <Children />
           <SInput tag="input" type="hidden" value={value ?? ''} name={name} aria-hidden />
@@ -224,7 +225,7 @@ function Options({ styles, options, Children }) {
 
   return sstyled(styles)(
     <SSliderOptions render={Flex} justifyContent="space-between">
-      {options.map((option) => (
+      {(options ?? []).map((option) => (
         <Children key={option.value} x={option.value}>
           {option.label}
         </Children>
