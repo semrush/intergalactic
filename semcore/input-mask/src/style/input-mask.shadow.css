@@ -5,11 +5,14 @@ SValue {
   text-overflow: inherit;
 }
 
-SValueAccessible {
+SMask {
   width: 100%;
   position: absolute;
-  left: 9px;
+  left: 0.8em;
   pointer-events: none;
   letter-spacing: 0.1em;
   text-overflow: inherit;
+}
+SMaskHidden {
+  opacity: 0;
 }

@@ -29,7 +29,7 @@ describe('InputMask', () => {
     fireEvent.focus(input);
     fireEvent.change(input, { target: { value: '999' } });
 
-    expect(input.value).toBe('99 9_');
+    expect(input.value).toBe('99 9');
     expect(await snapshot(<Component value={input.value} />)).toMatchImageSnapshot();
   });
 
