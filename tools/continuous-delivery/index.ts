@@ -9,19 +9,21 @@ import { syncCheck } from './src/syncCheck';
 
 export { fetchVersionsFromNpm } from './src/fetchVersionsFromNpm';
 
-const inNpmVersions = await fetchVersionsFromNpm();
-const packages = await collectPackages(inNpmVersions);
+export const runContinuousDelivery = async () => {
+  const inNpmVersions = await fetchVersionsFromNpm();
+  const packages = await collectPackages(inNpmVersions);
 
-if (process.argv.includes('--check')) {
-  await syncCheck(packages);
-  process.exit();
-}
+  if (process.argv.includes('--check')) {
+    await syncCheck(packages);
+    process.exit();
+  }
 
-const versionPatches = await makeVersionPatches(packages);
+  const versionPatches = await makeVersionPatches(packages);
 
-if (versionPatches.length > 0) {
-  await updateVersions(versionPatches);
-  await updateChangelogs(versionPatches);
-  // await runTests();
-  await runPublisher(versionPatches);
-}
+  if (versionPatches.length > 0) {
+    await updateVersions(versionPatches);
+    await updateChangelogs(versionPatches);
+    // await runTests();
+    await runPublisher(versionPatches);
+  }
+};

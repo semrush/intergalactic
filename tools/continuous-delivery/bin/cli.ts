@@ -5,4 +5,6 @@
  *   --check
  *   --dry-run
  */
-import '../index';
+import { runContinuousDelivery } from '../index';
+
+await runContinuousDelivery();
