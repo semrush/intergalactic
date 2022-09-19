@@ -1,7 +1,7 @@
 {
   "name": "@semcore/chart",
   "description": "Semrush Chart Component",
-  "version": "5.1.5",
+  "version": "5.1.6",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
