@@ -2,11 +2,12 @@ import * as ReactDOM from 'react-dom';
 import React, { PureComponent } from 'react';
 import styled from 'styled-components';
 
-import Tooltip from '@semcore/tooltip';
-import { Col, Row } from '@semcore/grid';
-import Pills from '@semcore/pills';
+import { Row } from '@semcore/grid';
 import OutsideClick from '@semcore/outside-click';
 import Copy from '@components/Copy';
+import Button from '@semcore/button';
+import FileDownloadM from '@semcore/icon/FileDownload/m';
+import CopyM from '@semcore/icon/Copy/m';
 
 const Section = styled.div`
   margin-top: ${({ mt }) => mt && `${mt}px`};
@@ -23,7 +24,7 @@ const List = styled.div`
   border: solid 1px #d1d4db;
 `;
 
-const PreviewIcon = styled.div`
+const PreviewIllustration = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -57,7 +58,7 @@ const PreviewIcon = styled.div`
   }
 `;
 
-const PanelIcon = styled.div`
+const PanelIllustration = styled.div`
   position: fixed;
   bottom: 0;
   left: 0;
@@ -71,40 +72,11 @@ const PanelIcon = styled.div`
   box-sizing: border-box;
 `;
 
-const PreviewChangeIcon = styled.div`
-  position: relative;
-  display: flex;
-  padding: 0 16px;
-  justify-content: center;
-  align-items: center;
-  height: 60px;
-  border-radius: 6px;
-  background-color: #e9ebef;
-  font-size: 13px;
-  cursor: pointer;
-
-  &:hover {
-    background-color: rgba(0, 112, 204, 0.15);
-  }
+const NameIllustration = styled.span`
+  font-weight: bold;
+  margin-right: 40px;
 `;
 
-const PanelIconList = styled.div`
-  display: flex;
-
-  & div {
-    margin-right: 12px;
-  }
-`;
-
-const AreaLink = styled.a`
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-`;
-
-// 😩
 function modalLayout() {
   if (!document) return false;
   let node = document.getElementById('modal-layout');
@@ -116,81 +88,14 @@ function modalLayout() {
   return node;
 }
 
-// TODO: need to change for illustration logic
-class PanelChangeIcon extends PureComponent {
-  state = { action: 'copy' };
-  get SIZE() {
-    return this.props.old
-      ? { L: 44, M: 22, S: 16, XS: 12, XXS: 8, 32: 32, 20: 20 }
-      : { L: 24, M: 16 };
-  }
-
-  renderIconSize = (size, index) => {
-    const { name, old, json: dataIcons, icon: Icon } = this.props;
-    const { action } = this.state;
-
-    const iconSize = this.SIZE[size.toUpperCase()] || '';
-    let nameSvg = `${name}/${size}`;
-
-    const filterIcons = dataIcons.icons.filter((icon) => icon.name === name)[0];
-    const groupName = filterIcons.group.toLowerCase();
-    const haveGroupName = ['pay', 'external', 'color'].includes(groupName);
-    let includeGroupName = haveGroupName ? `/${groupName}` : '';
-
-    if (action === 'download') {
-      includeGroupName = haveGroupName ? `${groupName}` : 'icon';
-      // external
-      if (Number(size) === 20) {
-        nameSvg = name.replace(/([A-Z])/g, '/$1').slice(1);
-      }
-
-      const url = `semcore/icon/${old ? 'svg' : 'svg-new'}/${includeGroupName}/${nameSvg}.svg`;
-      return (
-        <Tooltip title="Download!" key={index}>
-          <PreviewChangeIcon>
-            <AreaLink
-              rel="noopener noreferrer"
-              download={url}
-              target="_blank"
-              href={`https://github.com/semrush/intergalactic/raw/master/${url}?inline=false`}
-              data-container="body"
-              data-original-title="Download"
-            />
-            <Icon width={20} height={20} />
-            <span style={{ marginLeft: 8, color: '#898D9A' }}>
-              <span style={{ color: '#171A22' }}>{size.toUpperCase()}</span>
-              {` (${iconSize}x${iconSize}px)`}
-            </span>
-          </PreviewChangeIcon>
-        </Tooltip>
-      );
-    }
-
-    const haveSizeIcon = filterIcons.size.length > 1;
-    const includeName = haveSizeIcon ? `${name}${size.toUpperCase()}` : name;
-    const includeSize = haveSizeIcon ? `/${size}` : '';
-    const includeLib = old ? `/lib` : '';
-    const importText = `import ${includeName} from '@semcore/icon${includeLib}${includeGroupName}/${name}${includeSize}'`;
-
-    return (
-      <Copy title="Copied!" text={importText} key={index} trigger="click">
-        <PreviewChangeIcon>
-          <Icon width={20} height={20} />
-          <span style={{ marginLeft: 8, color: '#898D9A' }}>
-            <span style={{ color: '#171A22' }}>{size.toUpperCase()}</span>
-            {` (${iconSize}x${iconSize}px)`}
-          </span>
-        </PreviewChangeIcon>
-      </Copy>
-    );
-  };
-
+class PanelChangeIllustration extends PureComponent {
   render() {
-    const { name, json: dataIcons } = this.props;
-    const { action } = this.state;
+    const { name } = this.props;
+    const importText = `import ${name} from '@semcore/illustration/${name}'`;
+    const url = `semcore/illustration/svg/${name}.svg`;
 
     return (
-      <PanelIcon>
+      <PanelIllustration>
         <OutsideClick
           onOutsideClick={() => {
             const node = modalLayout();
@@ -199,33 +104,33 @@ class PanelChangeIcon extends PureComponent {
           }}
           excludeRefs={modalLayout() ? [modalLayout()] : []}
         />
-        <Row>
-          <Col
-            style={{
-              display: 'flex',
-              flexDirection: 'column',
-              marginRight: 40,
-            }}
+        <Row alignItems="center">
+          <NameIllustration>{name}</NameIllustration>
+          <Copy title="Copied" text={importText} trigger="click">
+            <Button size="m" theme="muted" use="tertiary" mr={4}>
+              <Button.Addon>
+                <CopyM />
+              </Button.Addon>
+              <Button.Text>Copy import</Button.Text>
+            </Button>
+          </Copy>
+          <Button
+            size="m"
+            theme="muted"
+            use="tertiary"
+            tag="a"
+            rel="noopener noreferrer"
+            download={url}
+            target="_blank"
+            href={`https://github.com/semrush/intergalactic/raw/master/${url}?inline=false`}
           >
-            <b>{name}</b>
-            <Pills
-              value={action}
-              style={{ marginTop: 13 }}
-              onChange={(value) => this.setState({ action: value })}
-            >
-              <Pills.Item value="copy">Copy import</Pills.Item>
-              <Pills.Item value="download">Download SVG</Pills.Item>
-            </Pills>
-          </Col>
-          <Col>
-            <PanelIconList>
-              {dataIcons.icons
-                .filter((icon) => icon.name === name)[0]
-                .size.map(this.renderIconSize)}
-            </PanelIconList>
-          </Col>
+            <Button.Addon>
+              <FileDownloadM />
+            </Button.Addon>
+            <Button.Text>Download SVG</Button.Text>
+          </Button>
         </Row>
-      </PanelIcon>
+      </PanelIllustration>
     );
   }
 }
@@ -235,21 +140,22 @@ export const ListIllustrations = ({ data, illustrations, json }) => (
     {data.map((illustration, index) => {
       const Illustration = illustrations[illustration.name];
       if (!Illustration) {
-        new Error(`Icon ${illustration.name} was not founded in import from @illustrations`);
+        new Error(
+          `Illustration ${illustration.name} was not founded in import from @illustrations`,
+        );
         return null;
       }
 
       return (
-        <PreviewIcon
+        <PreviewIllustration
           tabIndex={0}
-          // active={this.state.activeIcon === icon.name}
           key={index}
           data-name={illustration.name}
           onClick={() => {
             const node = modalLayout();
             if (!node) return;
             ReactDOM.render(
-              <PanelChangeIcon
+              <PanelChangeIllustration
                 name={illustration.name}
                 icon={illustrations[illustration.name]}
                 json={json}
@@ -260,7 +166,7 @@ export const ListIllustrations = ({ data, illustrations, json }) => (
         >
           <Illustration width={20} height={20} />
           <span>{illustration.name}</span>
-        </PreviewIcon>
+        </PreviewIllustration>
       );
     })}
   </List>
