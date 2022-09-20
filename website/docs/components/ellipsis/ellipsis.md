@@ -79,8 +79,3 @@ To show more data in a limited space you can truncate the [Card](/components/car
 To show more data in a limited space you can truncate paragraphs at the end. In this case, a tooltip with the full paragraph on hover is unnecessary.
 
 ![ellipsis in the pharagraph](static/ellipsis-pharagraph.png)
-
-<!-- @page ellipsis-a11y
-@page ellipsis-api
-@page ellipsis-code
-@page ellipsis-changelog -->
