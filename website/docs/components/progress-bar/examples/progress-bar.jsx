@@ -22,10 +22,10 @@ const Demo = () => {
 
   return (
     <div>
-      <Box mb={1}>
+      <ProgressBar value={value} />
+      <Box mt={1}>
         <Text>{value ? `${20 * value}/2000` : 'progress...'}</Text>
       </Box>
-      <ProgressBar value={value} />
     </div>
   );
 };
