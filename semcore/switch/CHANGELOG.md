@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.1.0] - 2022-09-22
+
+### Changed
+
+- Improved accessibility with labeling switch by currently picked option.
+
 ## [4.0.8] - 2022-08-30
 
 ### Changed
