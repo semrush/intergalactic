@@ -68,8 +68,10 @@ const SuggestSearch = connectAutoComplete(
 
 function SearchIllustrations(props) {
   return (
-    // TODO: need to change algoliaConfig
-    <InstantSearch searchClient={searchClient} indexName={algoliaConfig.ALGOLIA_INDEX_ICONS}>
+    <InstantSearch
+      searchClient={searchClient}
+      indexName={algoliaConfig.ALGOLIA_INDEX_ILLUSTRATIONS}
+    >
       <SuggestSearch {...props} />
     </InstantSearch>
   );
