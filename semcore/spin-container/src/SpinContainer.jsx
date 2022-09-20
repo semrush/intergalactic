@@ -32,7 +32,7 @@ class SpinContainerRoot extends Component {
 
   render() {
     const SSpinContainer = Root;
-    const { styles, Children } = this.asProps;
+    const { styles, Children, loading } = this.asProps;
 
     const advanceMode = isAdvanceMode(Children, [
       SpinContainer.Content.displayName,
@@ -40,7 +40,7 @@ class SpinContainerRoot extends Component {
     ]);
 
     return sstyled(styles)(
-      <SSpinContainer render={Box}>
+      <SSpinContainer render={Box} aria-busy={loading}>
         {advanceMode ? (
           <Children />
         ) : (
