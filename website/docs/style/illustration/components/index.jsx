@@ -89,7 +89,7 @@ export default function ({ illustrations, json }) {
       }
 
       {inputValue.length ? (
-        filterIcons.length ? (
+        filterIllustrations.length ? (
           <ListIllustrations data={filterIllustrations} illustrations={illustrations} json={json} />
         ) : (
           <NotFound>
@@ -104,6 +104,7 @@ export default function ({ illustrations, json }) {
           <IllustrationGroup title="States" />
           <IllustrationGroup title="Chart types" />
           <IllustrationGroup title="Data types" />
+          <IllustrationGroup title="Errors" />
         </IllustrationGroups>
       )}
     </>

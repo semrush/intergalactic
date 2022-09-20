@@ -31,7 +31,7 @@ const PreviewIllustration = styled.div`
   align-items: center;
   padding: 0 10px 14px;
   width: 118px;
-  height: 82px;
+  height: 140px;
   border-radius: 6px;
   border: 2px solid transparent;
   box-sizing: border-box;
@@ -164,7 +164,7 @@ export const ListIllustrations = ({ data, illustrations, json }) => (
             );
           }}
         >
-          <Illustration width={20} height={20} />
+          <Illustration width={80} height={80} />
           <span>{illustration.name}</span>
         </PreviewIllustration>
       );

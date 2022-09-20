@@ -31,10 +31,13 @@ const parsingSvg = async (filePath) => {
 
   const polygonSvg = $('body').find('polygon').removeAttr('id');
 
+  // const maskSvg = $('body').find('mask').removeAttr('id').removeAttr('style');
+
   const svg = $('body').find('svg');
 
   pathSvg.length && svg.empty().prepend(pathSvg);
   polygonSvg.length && svg.empty().prepend(polygonSvg);
+  // maskSvg.length && svg.empty().prepend(maskSvg);
 
   const result = $('body').html();
 
