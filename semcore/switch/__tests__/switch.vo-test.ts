@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { expect } from '@playwright/test';
 import { voTest as test } from '@guidepup/playwright';
 import { e2eStandToHtml } from '@semcore/jest-preset-ui/e2e-stand';
