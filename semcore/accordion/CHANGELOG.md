@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.0.16] - 2022-09-30
+
+### Fixed
+
+- Fixed elements id uniqueness.
+
 ## [4.0.15] - 2022-08-30
 
 ### Changed

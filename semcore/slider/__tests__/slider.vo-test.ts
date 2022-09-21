@@ -14,8 +14,9 @@ test('Users can interact with Slider via VoiceOver', async ({ page, voiceOver: p
     __dirname,
     '../../../website/docs/components/slider/slider-a11y-report.md',
   );
-  const htmlContent = await e2eStandToHtml(standPath, 'en');
 
+  const htmlContent = await e2eStandToHtml(standPath, 'en');
+  await page.reload();
   await page.setContent(htmlContent);
   const { voiceOver, getReport } = await makeVoiceOverReporter(pureVoiceOver);
   await voiceOver.interact();
@@ -29,7 +30,6 @@ test('Users can interact with Slider via VoiceOver', async ({ page, voiceOver: p
   await voiceOver.press('Control+Option+ArrowRight');
   expect(await voiceOver.itemText()).toBe('3 slider');
   await voiceOver.stopInteracting();
-  expect(await voiceOver.itemText()).toBe('3 slider');
   expect(await voiceOver.lastSpokenPhrase()).toBe('Out of slider');
 
   const report = (await getReportHeader()) + '\n\n' + (await getReport(standPath));

@@ -2,6 +2,7 @@ import React from 'react';
 import createComponent, { Root, Component, sstyled } from '@semcore/core';
 import Popper from '@semcore/popper';
 import capitalizeFirstLetter from '@semcore/utils/lib/capitalizeFirstLetter';
+import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 
 import style from './style/dropdown.shadow.css';
 
@@ -17,6 +18,7 @@ class Dropdown extends Component {
     stretch: 'min',
     defaultVisible: false,
   };
+  static enhance = [uniqueIDEnhancement()];
 
   uncontrolledProps() {
     return {
@@ -63,8 +65,24 @@ class Dropdown extends Component {
   };
 
   getTriggerProps() {
+    const { uid, visible, disablePortal } = this.asProps;
+
     return {
+      id: `igc-${uid}-trigger`,
+      'aria-controls': visible ? `igc-${uid}-popper` : undefined,
+      'aria-flowto': visible && !disablePortal ? `igc-${uid}-popper` : undefined,
+      'aria-label': visible && !disablePortal ? `Press Tab to go to popover` : undefined,
       onKeyDown: this.handlerTriggerKeyDown,
+    };
+  }
+
+  getPopperProps() {
+    const { uid, disablePortal } = this.asProps;
+
+    return {
+      id: `igc-${uid}-popper`,
+      'aria-flowto': !disablePortal ? `igc-${uid}-trigger` : undefined,
+      tabIndex: 0,
     };
   }
 

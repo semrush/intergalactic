@@ -1,27 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Button from '@semcore/button';
 import Modal from '@semcore/modal';
 import { Text } from '@semcore/typography';
-import SpinContainer from '@semcore/spin-container';
 
 const Demo = () => {
-  const [visible, changeVisible] = useState(false);
-  const [loading, changeLoding] = useState(false);
-  const handleOpen = () => changeVisible(true);
-  const handleClose = () => changeVisible(false);
-
-  useEffect(() => {
-    let timeOut = null;
-    if (visible) {
-      changeLoding(true);
-      timeOut = setTimeout(() => {
-        changeLoding(false);
-      }, 1000);
-    }
-    return () => {
-      clearTimeout(timeOut);
-    };
-  }, [visible]);
+  const [visible, setVisible] = React.useState(false);
+  const handleOpen = React.useCallback(() => setVisible(true), []);
+  const handleClose = React.useCallback(() => setVisible(false), []);
 
   return (
     <React.Fragment>
@@ -32,17 +17,15 @@ const Demo = () => {
         <Text tag="h2" size={400} mb={2}>
           Do you want to save your changes?
         </Text>
-        <SpinContainer loading={loading}>
-          <Text size={200} mb={4} tag="p">
-            Your changes will be lost if you don't save them.
-          </Text>
-          <Button use="primary" theme="success" size="l" onClick={handleClose}>
-            Save changes
-          </Button>
-          <Button size="l" ml={2} onClick={handleClose}>
-            Don't save
-          </Button>
-        </SpinContainer>
+        <Text size={200} mb={4} tag="p">
+          Your changes will be lost if you don't save them.
+        </Text>
+        <Button use="primary" theme="success" size="l" onClick={handleClose}>
+          Save changes
+        </Button>
+        <Button size="l" ml={2} onClick={handleClose}>
+          Don't save
+        </Button>
       </Modal>
     </React.Fragment>
   );

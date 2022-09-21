@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [6.0.12] - 2022-09-30
+
+### Fixed
+
+- Added missing `aria-checked` a11y attribute.
+
 ## [6.0.11] - 2022-08-30
 
 ### Changed

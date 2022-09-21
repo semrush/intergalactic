@@ -36,6 +36,8 @@ import { DatePicker } from '@semcore/ui/date-picker';
 <DatePicker.Trigger />;
 ```
 
+@typescript IBaseTriggerProps
+
 @## DateRangePicker.Period
 
 Component for rendering the configurable periods.
