@@ -113,8 +113,7 @@ jobs:
         env:
           SCREENSHOT_URL: ${{ secrets.SCREENSHOT_URL }}
         run: yarn coverage
-      - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v2
+
   vo-setup:
     runs-on: macos-latest
     steps:
