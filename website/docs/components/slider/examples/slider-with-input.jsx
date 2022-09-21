@@ -10,13 +10,9 @@ const Demo = () => {
   const min = 10;
   const max = 100;
 
-  const handleChange = (value) => {
-    setValue(value);
-  };
-
   const handleInput = (value) => {
     if (!!value && (value > max || value < min)) {
-      setError(`Please enter a valid value`);
+      setError('Please enter a valid value');
       setValue(value);
     } else {
       setError('');
@@ -27,7 +23,7 @@ const Demo = () => {
   return (
     <>
       <Box w={140}>
-        <Slider mb={3} value={value} onChange={handleChange} step={1} min={min} max={max}>
+        <Slider mb={3} value={value} onChange={setValue} step={1} min={min} max={max}>
           <Slider.Bar />
           <Slider.Knob />
         </Slider>
