@@ -10,7 +10,7 @@ title: A11y
 - Avoid using generic strings like photo, image, or icon as `alt` values, as they don’t communicate valuable content to the user. Be as descriptive as possible.
 - You can add `class="visuallyhidden"` with descriptive text to give more context to a button or link's purpose.
 
-Find live examples in [A11y style guide](https://a11y-style-guide.com/style-guide/section-cards.html).
+Find live examples in the [A11y style guide](https://a11y-style-guide.com/style-guide/section-cards.html).
 
 @## Resources
 

@@ -20,7 +20,7 @@ fileSource: tab-line
 - A tab's contents can be accessed via `Tab` (if there are focusable elements in the tab well) or `PgDn` (if there are no focusable elements in the tab well).
 - Be sure to update the values of the `aria-posinset` and `aria-setsize` attributes if you have more than three tabs.
 
-Find live examples in [A11y style guide](https://a11y-style-guide.com/style-guide/section-structure.html#kssref-structure-tabs).
+Find live examples in the [A11y style guide](https://a11y-style-guide.com/style-guide/section-structure.html#kssref-structure-tabs).
 
 ### Roles & attributes
 

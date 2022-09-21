@@ -1,16 +1,16 @@
 .documentationWrapper {
-  padding: 56px 32px 56px;
+  padding: 56px 32px 96px;
   position: relative;
   color: #191b23;
 }
 @media (max-width: 767px) {
   .documentationWrapper {
-    padding: 96px 32px 64px;
+    padding: 96px 32px 96px;
   }
 }
 @media (max-width: 415px) {
   .documentationWrapper {
-    padding: 80px 20px 32px;
+    padding: 80px 20px 80px;
   }
 }
 
