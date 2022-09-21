@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.30.4] - 2022-09-15
+
+### Fixed
+
+- Fixed icon Toxic.
+
 ## [2.30.3] - 2022-09-14
 
 ### Changed
