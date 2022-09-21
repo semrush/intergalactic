@@ -10,3 +10,5 @@ See detailed information for various cases in the [Keyboard control guide](/core
 @## Other recommendations
 
 See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/).
+
+@include dropdown-menu-a11y-report

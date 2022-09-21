@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.1.0] - 2022-09-07
+
+### Added
+
+- Screen readers support.
+
 ## [3.0.11] - 2022-08-30
 
 ### Changed
