@@ -24,22 +24,21 @@ export const gitTask = createTask('GIT fixation', async (opt) => {
       opt.log('Not running `git commit -S --no-verify` as far as --dry-run flag passed');
     } else {
       opt.log('Running `git commit -S --no-verify`');
-
       const { stdout: gitSignatureUid } = await execa('git', ['config', 'user.signingkey']);
       const { stdout: gitEmail } = await execa('git', ['config', 'user.email']);
       const commitDescription = `<!--- Commit was signed off by ${gitEmail} with GPG key ID ${gitSignatureUid} -->`;
-
       await git.commit(`[${name}] upgrade to ${version}\n\n${commitDescription}`, undefined, {
         '-S': null,
         '--no-verify': null,
       });
 
-      opt.log(`Running \`git tag -f ${tag}\``);
+      opt.log(`Running \`git pull --rebase\``);
+      await git.pull('origin', 'master', { '--rebase': null });
 
+      opt.log(`Running \`git tag -f ${tag}\``);
       await git.tag(['-f', tag]);
 
       opt.log('Running `git push origin master --no-verify --follow-tags`');
-
       await git.push('origin', 'master', {
         '--no-verify': null,
         // '--tags': null,
