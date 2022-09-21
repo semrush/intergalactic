@@ -1,8 +1,8 @@
-import { voiceOver } from '@guidepup/guidepup';
 import { readFile } from 'fs/promises';
 import { relative as resolveRelativePath, resolve as resolvePath } from 'path';
 import os from 'os';
-type VoiceOver = typeof voiceOver;
+import { VoiceOver } from '@guidepup/guidepup/lib/macOS/VoiceOver/VoiceOver';
+import { CommandOptions } from '@guidepup/guidepup';
 
 const darwin2macos = {
   22: 'Ventura 13',
@@ -49,17 +49,23 @@ export const makeVoiceOverReporter = async (baseVoiceOver: VoiceOver) => {
   const reportStateChange = async () => {
     const spokenPhrase = await baseVoiceOver.lastSpokenPhrase();
     const itemTextLog = await baseVoiceOver.itemTextLog();
-    if (prevSpokenPhrase !== spokenPhrase) {
+    if (spokenPhrase && spokenPhrase !== prevSpokenPhrase) {
       actionsLog.push(`Screen reader says "${spokenPhrase}".`);
-      prevSpokenPhrase = spokenPhrase;
     }
-    if (prevItemTextLog !== itemTextLog) {
+    if (itemTextLog && itemTextLog !== prevItemTextLog) {
       actionsLog.push(`Screen reader see element "${itemTextLog}".`);
-      prevItemTextLog = itemTextLog;
     }
+    prevSpokenPhrase = spokenPhrase;
+    prevItemTextLog = itemTextLog;
   };
 
-  const voiceOverWrapper: Omit<VoiceOver, 'mouse' | 'keyboard' | 'cursor' | 'caption'> = {
+  const voiceOverWrapper: Omit<
+    VoiceOver,
+    'mouse' | 'keyboard' | 'cursor' | 'caption' | 'lastSpokenPhrase' | 'itemText'
+  > & {
+    lastSpokenPhrase: (options?: CommandOptions) => Promise<string>;
+    itemText: (options?: CommandOptions) => Promise<string>;
+  } = {
     commander: baseVoiceOver.commander,
     detect: async () => {
       const result = await baseVoiceOver.detect();
@@ -73,14 +79,16 @@ export const makeVoiceOverReporter = async (baseVoiceOver: VoiceOver) => {
       const result = await baseVoiceOver.default();
       const resultString = result ? 'it is' : "it's not";
       actionsLog.push(`Screen reader checked is it default system screen reader: ${resultString}.`);
+
       return result;
     },
-    start: (options) => {
-      actionsLog.push(`Screen reader was turned on.`);
-      return baseVoiceOver.start(options);
+    start: async (options) => {
+      actionsLog.push(`Screen reader is turning on.`);
+      const result = await baseVoiceOver.start(options);
+      return result;
     },
-    stop: (options) => {
-      actionsLog.push(`Screen reader was turned off.`);
+    stop: async (options) => {
+      actionsLog.push(`Screen reader is turning off.`);
       return baseVoiceOver.stop(options);
     },
     previous: async (options) => {
@@ -153,10 +161,18 @@ export const makeVoiceOverReporter = async (baseVoiceOver: VoiceOver) => {
       await reportStateChange();
       return result;
     },
-    lastSpokenPhrase: (options) => baseVoiceOver.lastSpokenPhrase(options),
-    itemText: (options) => baseVoiceOver.itemText(options),
-    spokenPhraseLog: () => baseVoiceOver.spokenPhraseLog(),
-    itemTextLog: () => baseVoiceOver.itemTextLog(),
+    lastSpokenPhrase: async (options) => {
+      const result = await baseVoiceOver.lastSpokenPhrase(options);
+      await reportStateChange();
+      return result;
+    },
+    itemText: async (options) => {
+      const result = await baseVoiceOver.itemText(options);
+      await reportStateChange();
+      return result;
+    },
+    spokenPhraseLog: baseVoiceOver.spokenPhraseLog,
+    itemTextLog: baseVoiceOver.itemTextLog,
   };
 
   const getReport = async (standFilePath: string) => {

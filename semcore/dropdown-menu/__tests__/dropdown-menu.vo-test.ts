@@ -5,32 +5,35 @@ import { resolve as resolvePath } from 'path';
 import { writeFile } from 'fs/promises';
 import { getReportHeader, makeVoiceOverReporter } from '@semcore/jest-preset-ui/vo-reporter';
 
-test('Users can interact with Slider via VoiceOver', async ({ page, voiceOver: pureVoiceOver }) => {
+test('Users can interact with DropdownMenu via VoiceOver', async ({
+  page,
+  voiceOver: pureVoiceOver,
+}) => {
   const standPath = resolvePath(
     __dirname,
-    '../../../website/docs/components/slider/examples/slider.jsx',
+    '../../../website/docs/components/dropdown-menu/examples/basic.jsx',
   );
   const reportPath = resolvePath(
     __dirname,
-    '../../../website/docs/components/slider/slider-a11y-report.md',
+    '../../../website/docs/components/dropdown-menu/dropdown-menu-a11y-report.md',
   );
-
   const htmlContent = await e2eStandToHtml(standPath, 'en');
   await page.reload();
   await page.setContent(htmlContent);
-  const { voiceOver, getReport } = await makeVoiceOverReporter(pureVoiceOver);
-  await voiceOver.interact();
 
-  expect(await voiceOver.itemText()).toBe('2 slider');
+  const { voiceOver, getReport } = await makeVoiceOverReporter(pureVoiceOver);
+  await voiceOver.press('Tab', { application: 'Playwright' });
+
+  await voiceOver.press('Control+Option+Space');
+  await voiceOver.press('Tab', { application: 'Playwright' });
+  await voiceOver.next();
   await voiceOver.interact();
-  expect(await voiceOver.lastSpokenPhrase()).toBe('In slider');
-  await voiceOver.press('Control+Option+ArrowLeft');
-  expect(await voiceOver.itemText()).toBe('1 slider');
-  await voiceOver.press('Control+Option+ArrowRight');
-  await voiceOver.press('Control+Option+ArrowRight');
-  expect(await voiceOver.itemText()).toBe('3 slider');
-  await voiceOver.stopInteracting();
-  expect(await voiceOver.lastSpokenPhrase()).toBe('Out of slider');
+  await voiceOver.next();
+  expect(await voiceOver.itemText()).toBe('Item 1 menu item');
+  await voiceOver.next();
+  expect(await voiceOver.itemText()).toBe('Item 2 menu item');
+  await voiceOver.press('Escape');
+  expect(await voiceOver.itemText()).toBe('Click me menu pop up button');
 
   const report = (await getReportHeader()) + '\n\n' + (await getReport(standPath));
 

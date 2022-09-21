@@ -5,6 +5,7 @@ import { Box } from '@semcore/flex-box';
 import resolveColor from '@semcore/utils/lib/color';
 import { isAdvanceMode } from '@semcore/utils/lib/findComponent';
 import logger from '@semcore/utils/lib/logger';
+import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 
 import style from './style/tooltip.shadow.css';
 
@@ -13,6 +14,7 @@ const Popper = PopperOrigin[CREATE_COMPONENT]();
 class TooltipRoot extends Component {
   static displayName = 'Tooltip';
   static style = style;
+  static enhance = [uniqueIDEnhancement()];
   static defaultProps = {
     theme: 'default',
     placement: 'top',
@@ -26,14 +28,18 @@ class TooltipRoot extends Component {
   };
 
   getTriggerProps() {
+    const { uid, visible } = this.asProps;
+
     return {
       active: false,
+      'aria-labelledby': visible ? `igc-${uid}-popper` : undefined,
     };
   }
 
   getPopperProps() {
-    const { theme } = this.asProps;
+    const { theme, uid } = this.asProps;
     return {
+      id: `igc-${uid}-popper`,
       theme,
     };
   }
@@ -70,6 +76,17 @@ class TooltipRoot extends Component {
   }
 }
 
+function TooltipTrigger(props) {
+  const { Children, styles } = props;
+  const STrigger = Root;
+
+  return sstyled(styles)(
+    <STrigger render={Popper.Trigger} active={false} role={undefined}>
+      <Children />
+    </STrigger>,
+  );
+}
+
 function TooltipPopper(props) {
   const { Children, styles, theme } = props;
   const STooltip = Root;
@@ -91,7 +108,7 @@ function TooltipPopper(props) {
 const Tooltip = createComponent(
   TooltipRoot,
   {
-    Trigger: Popper.Trigger,
+    Trigger: TooltipTrigger,
     Popper: TooltipPopper,
   },
   {

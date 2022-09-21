@@ -4,6 +4,7 @@ import createComponent, { Component, sstyled, Root } from '@semcore/core';
 import Dropdown from '@semcore/dropdown';
 import { Box, Flex, useBox, useFlex } from '@semcore/flex-box';
 import ScrollAreaComponent from '@semcore/scroll-area';
+import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 
 import style from './style/dropdown-menu.shadow.css';
 
@@ -13,6 +14,7 @@ const INTERACTION_TAGS = ['INPUT', 'TEXTAREA'];
 class DropdownMenuRoot extends Component {
   static displayName = 'DropdownMenu';
   static style = style;
+  static enhance = [uniqueIDEnhancement()];
 
   static defaultProps = {
     size: 'm',
@@ -58,9 +60,14 @@ class DropdownMenuRoot extends Component {
   };
 
   getTriggerProps() {
-    const { size } = this.asProps;
+    const { size, uid, disablePortal, visible } = this.asProps;
+
     return {
       size,
+      id: `igc-${uid}-trigger`,
+      'aria-controls': visible ? `igc-${uid}-popper` : undefined,
+      'aria-flowto': visible && !disablePortal ? `igc-${uid}-popper` : undefined,
+      'aria-label': visible && !disablePortal ? `Press Tab to go to popover` : undefined,
       onKeyDown: this.handlerKeyDown,
     };
   }
@@ -69,13 +76,18 @@ class DropdownMenuRoot extends Component {
     const { size } = this.asProps;
     return {
       size,
+      index: this.asProps.highlightedIndex,
     };
   }
 
   getPopperProps() {
+    const { uid, disablePortal } = this.asProps;
+
     return {
       tabIndex: 0,
       onKeyDown: this.handlerKeyDown,
+      id: `igc-${uid}-popper`,
+      'aria-flowto': !disablePortal ? `igc-${uid}-trigger` : undefined,
     };
   }
 
@@ -176,8 +188,14 @@ class DropdownMenuRoot extends Component {
 
 function List(props) {
   const SDropdownMenuList = Root;
+
   return sstyled(props.styles)(
-    <SDropdownMenuList render={Box} tag={ScrollAreaComponent} role="menu" />,
+    <SDropdownMenuList
+      render={Box}
+      tag={ScrollAreaComponent}
+      role="menu"
+      aria-activedescendant={props.index}
+    />,
   );
 }
 
@@ -195,7 +213,8 @@ function Item(props) {
   return (
     <SDropdownMenuItem
       role="menuitem"
-      tabIndex={-1}
+      tabIndex={0}
+      id={props.label}
       className={
         cn(
           styles.cn('SDropdownMenuItem', {
@@ -223,18 +242,26 @@ function Addon(props) {
 
 function Hint(props) {
   const SDropdownMenuItem = Root;
-  return sstyled(props.styles)(<SDropdownMenuItem render={Flex} variant="hint" />);
+  return sstyled(props.styles)(
+    <SDropdownMenuItem render={Flex} variant="hint" role="menuitem" tabIndex={0} />,
+  );
 }
 
 function Title(props) {
   const SDropdownMenuItem = Root;
-  return sstyled(props.styles)(<SDropdownMenuItem render={Flex} variant="title" />);
+  return sstyled(props.styles)(
+    <SDropdownMenuItem render={Flex} variant="title" role="menuitem" tabIndex={0} />,
+  );
+}
+
+function Trigger() {
+  return <Root render={Dropdown.Trigger} type="button" aria-haspopup="true" />;
 }
 
 const DropdownMenu = createComponent(
   DropdownMenuRoot,
   {
-    Trigger: Dropdown.Trigger,
+    Trigger,
     Popper: Dropdown.Popper,
     List,
     Menu,

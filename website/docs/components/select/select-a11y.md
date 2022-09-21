@@ -45,3 +45,5 @@ fileSource: select
 @## Other recommendations
 
 See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/).
+
+@include select-a11y-report

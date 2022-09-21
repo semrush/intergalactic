@@ -33,3 +33,5 @@ title: A11y
 @## Other recommendations
 
 See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/).
+
+@include auto-tips-a11y-report
