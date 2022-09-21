@@ -16,7 +16,7 @@ Guidepup v0.13.0, MacOS Big Sur 11._
 9. Screen reader goes out of active element.
 10. Screen reader says "Out of edit text".
 11. Screen reader goes out of active element.
-12. Screen reader says "You are currently on a text field, inside of a Menu pop-up combo box. To enter text in this field, type. To exit this combo box, press Control-Option-Shift-Up Arrow.".
+12. Screen reader says "You are currently on a Menu pop-up combo box, inside of web content. Type text or, to display a list of choices, press Control-Option-Space. To exit this web area, press Control-Option-Shift-Up Arrow.".
 13. Screen reader presses the "Tab" button.
 14. Screen reader says "Entering List of options list box. List of options group".
 15. Screen reader goes into the active element.
