@@ -32,9 +32,6 @@ export const gitTask = createTask('GIT fixation', async (opt) => {
         '--no-verify': null,
       });
 
-      opt.log(`Running \`git pull --rebase\``);
-      await git.pull('origin', 'master', { '--rebase': null });
-
       opt.log(`Running \`git tag -f ${tag}\``);
       await git.tag(['-f', tag]);
 
