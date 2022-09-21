@@ -78,14 +78,14 @@ describe('Slider', () => {
     const spy = jest.fn();
     const { getByTestId } = render(<Slider value={10} data-testid="slider" onChange={spy} />);
     // up
-    fireEvent.keyDown(getByTestId('slider'), { keyCode: 38 });
+    fireEvent.keyDown(getByTestId('slider'), { key: 'ArrowUp' });
     expect(spy).lastCalledWith(11, expect.any(Object));
-    fireEvent.keyDown(getByTestId('slider'), { keyCode: 39 });
+    fireEvent.keyDown(getByTestId('slider'), { key: 'ArrowRight' });
     expect(spy).lastCalledWith(11, expect.any(Object));
     // down
-    fireEvent.keyDown(getByTestId('slider'), { keyCode: 37 });
+    fireEvent.keyDown(getByTestId('slider'), { key: 'ArrowLeft' });
     expect(spy).lastCalledWith(9, expect.any(Object));
-    fireEvent.keyDown(getByTestId('slider'), { keyCode: 40 });
+    fireEvent.keyDown(getByTestId('slider'), { key: 'ArrowDown' });
     expect(spy).lastCalledWith(9, expect.any(Object));
   });
 
@@ -93,12 +93,12 @@ describe('Slider', () => {
     const spy = jest.fn();
     const { getByTestId } = render(<Slider min={0} max={1} data-testid="slider" onChange={spy} />);
     // up
-    fireEvent.keyDown(getByTestId('slider'), { keyCode: 38 });
-    fireEvent.keyDown(getByTestId('slider'), { keyCode: 38 });
+    fireEvent.keyDown(getByTestId('slider'), { key: 'ArrowUp' });
+    fireEvent.keyDown(getByTestId('slider'), { key: 'ArrowUp' });
     expect(spy).lastCalledWith(1, expect.any(Object));
     // down
-    fireEvent.keyDown(getByTestId('slider'), { keyCode: 37 });
-    fireEvent.keyDown(getByTestId('slider'), { keyCode: 37 });
+    fireEvent.keyDown(getByTestId('slider'), { key: 'ArrowLeft' });
+    fireEvent.keyDown(getByTestId('slider'), { key: 'ArrowLeft' });
     expect(spy).lastCalledWith(0, expect.any(Object));
   });
 

@@ -1,22 +1,22 @@
 import React, { useState } from 'react';
 import Slider from '@semcore/slider';
-import { Box, Flex } from '@semcore/flex-box';
 
 const Demo = () => {
-  const [value, setValue] = useState(2);
-  const handleChange = (value) => {
-    setValue(value);
-  };
+  const [value, setValue] = useState('medium');
 
   return (
-    <Box w={140} color="#757575">
-      <Slider mb={3} value={value} onChange={handleChange} step={1} min={1} max={3} />
-      <Flex justifyContent="space-between">
-        <Box>Small</Box>
-        <Box>Medium</Box>
-        <Box>Big</Box>
-      </Flex>
-    </Box>
+    <Slider
+      value={value}
+      onChange={setValue}
+      step={1}
+      min={1}
+      max={3}
+      options={[
+        { value: 'small', label: 'Small' },
+        { value: 'medium', label: 'Medium' },
+        { value: 'big', label: 'Big' },
+      ]}
+    />
   );
 };
 
