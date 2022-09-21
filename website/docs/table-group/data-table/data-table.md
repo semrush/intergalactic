@@ -6,8 +6,6 @@ tabName: Example
 
 The DataTable component is needed to simplify the construction of tabular data. The table is based on `CSS-flex` technology and does not use native tables.
 
-> **The component is currently in beta**. In the future, we plan to make it the main component for tables.
-
 @## A simple use example
 
 To build a table, we must provide columns with titles `<DataTable.Column name={name}/>` and data `data={data}`.
