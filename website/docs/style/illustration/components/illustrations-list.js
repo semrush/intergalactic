@@ -28,10 +28,10 @@ const illustartionsList = {
       name: 'UnderConstruction',
       group: 'States',
     },
-    // {
-    //   name: 'FunnelChart',
-    //   group: 'Chart types',
-    // },
+    {
+      name: 'FunnelChart',
+      group: 'Chart types',
+    },
     {
       name: 'AreaChart',
       group: 'Chart types',
@@ -44,10 +44,10 @@ const illustartionsList = {
       name: 'BarChartVertical',
       group: 'Chart types',
     },
-    // {
-    //   name: 'CombinedChart',
-    //   group: 'Chart types',
-    // },
+    {
+      name: 'CombinedChart',
+      group: 'Chart types',
+    },
     {
       name: 'ChoroplethMap',
       group: 'Chart types',
@@ -56,18 +56,18 @@ const illustartionsList = {
       name: 'DonutChart',
       group: 'Chart types',
     },
-    // {
-    //   name: 'ScatterPlotChart',
-    //   group: 'Chart types',
-    // },
+    {
+      name: 'ScatterPlotChart',
+      group: 'Chart types',
+    },
     {
       name: 'StackedAreaChart',
       group: 'Chart types',
     },
-    // {
-    //   name: 'HeatMapChart',
-    //   group: 'Chart types',
-    // },
+    {
+      name: 'HeatMapChart',
+      group: 'Chart types',
+    },
     {
       name: 'Linechart',
       group: 'Chart types',
@@ -84,14 +84,14 @@ const illustartionsList = {
       name: 'SankeyChart',
       group: 'Chart types',
     },
-    // {
-    //   name: 'RadarChart',
-    //   group: 'Chart types',
-    // },
-    // {
-    //   name: 'VennChart',
-    //   group: 'Chart types',
-    // },
+    {
+      name: 'RadarChart',
+      group: 'Chart types',
+    },
+    {
+      name: 'VennChart',
+      group: 'Chart types',
+    },
     {
       name: 'Table',
       group: 'Data types',
@@ -108,14 +108,14 @@ const illustartionsList = {
       name: 'Good',
       group: 'Data types',
     },
-    // {
-    //   name: 'NextTime',
-    //   group: 'Data types',
-    // },
-    // {
-    //   name: 'Suggestion',
-    //   group: 'Data types',
-    // },
+    {
+      name: 'NextTime',
+      group: 'Data types',
+    },
+    {
+      name: 'Suggestion',
+      group: 'Data types',
+    },
     {
       name: 'Suggestions',
       group: 'Data types',
@@ -124,54 +124,54 @@ const illustartionsList = {
       name: 'TextLinks',
       group: 'Data types',
     },
-    // {
-    //   name: 'AccessDenied',
-    //   group: 'Errors',
-    // },
-    // {
-    //   name: 'Blocked',
-    //   group: 'Errors',
-    // },
-    // {
-    //   name: 'Confirmation',
-    //   group: 'Errors',
-    // },
-    // {
-    //   name: 'ConnectionLost',
-    //   group: 'Errors',
-    // },
-    // {
-    //   name: 'DeletedAccount',
-    //   group: 'Errors',
-    // },
-    // {
-    //   name: 'Dns',
-    //   group: 'Errors',
-    // },
-    // {
-    //   name: 'Maintenance',
-    //   group: 'Errors',
-    // },
-    // {
-    //   name: 'NoPayment',
-    //   group: 'Errors',
-    // },
-    // {
-    //   name: 'PageError',
-    //   group: 'Errors',
-    // },
-    // {
-    //   name: 'PageNotFound',
-    //   group: 'Errors',
-    // },
+    {
+      name: 'AccessDenied',
+      group: 'Errors',
+    },
+    {
+      name: 'Blocked',
+      group: 'Errors',
+    },
+    {
+      name: 'Confirmation',
+      group: 'Errors',
+    },
+    {
+      name: 'ConnectionLost',
+      group: 'Errors',
+    },
+    {
+      name: 'DeletedAccount',
+      group: 'Errors',
+    },
+    {
+      name: 'Dns',
+      group: 'Errors',
+    },
+    {
+      name: 'Maintenance',
+      group: 'Errors',
+    },
+    {
+      name: 'NoPayment',
+      group: 'Errors',
+    },
+    {
+      name: 'PageError',
+      group: 'Errors',
+    },
+    {
+      name: 'PageNotFound',
+      group: 'Errors',
+    },
     {
       name: 'ProjectNotFound',
       group: 'Errors',
     },
-    // {
-    //   name: 'Timeout',
-    //   group: 'Errors',
-    // },
+    {
+      name: 'Timeout',
+      group: 'Errors',
+    },
   ],
 };
 
