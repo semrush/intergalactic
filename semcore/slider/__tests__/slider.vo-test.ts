@@ -15,7 +15,7 @@ test('Users can interact with Slider via VoiceOver', async ({ page, voiceOver: p
     '../../../website/docs/components/slider/slider-a11y-report.md',
   );
 
-  const { htmlContent, awaitJsEvaluation } = await e2eStandToHtml(standPath, 'en');
+  const htmlContent = await e2eStandToHtml(standPath, 'en');
   await page.reload();
   await page.setContent(htmlContent);
   const { voiceOver, getReport } = await makeVoiceOverReporter(pureVoiceOver);

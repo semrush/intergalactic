@@ -17,10 +17,9 @@ test('Users can interact with DropdownMenu via VoiceOver', async ({
     __dirname,
     '../../../website/docs/components/dropdown-menu/dropdown-menu-a11y-report.md',
   );
-  const { htmlContent, awaitJsEvaluation } = await e2eStandToHtml(standPath, 'en');
+  const htmlContent = await e2eStandToHtml(standPath, 'en');
   await page.reload();
   await page.setContent(htmlContent);
-  await awaitJsEvaluation(page);
 
   const { voiceOver, getReport } = await makeVoiceOverReporter(pureVoiceOver);
   await voiceOver.press('Tab', { application: 'Playwright' });

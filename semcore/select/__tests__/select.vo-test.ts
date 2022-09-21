@@ -14,11 +14,10 @@ test('Users can interact with Select via VoiceOver', async ({ page, voiceOver: p
     __dirname,
     '../../../website/docs/components/select/select-a11y-report.md',
   );
-  const { htmlContent, awaitJsEvaluation } = await e2eStandToHtml(standPath, 'en');
+  const htmlContent = await e2eStandToHtml(standPath, 'en');
 
   await page.reload();
   await page.setContent(htmlContent);
-  await awaitJsEvaluation(page);
 
   const { voiceOver, getReport } = await makeVoiceOverReporter(pureVoiceOver);
   await voiceOver.interact();
