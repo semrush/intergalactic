@@ -33,4 +33,3 @@ Guidepup v0.13.0, MacOS Big Sur 11._
 26. Screen reader says "Section 3 dimmed button".
 27. Screen reader triggers element default action.
 28. Screen reader says "dimmed".
-29. Screen reader says "You are currently on a button, inside of web content. This item is dimmed. To exit this web area, press Control-Option-Shift-Up Arrow.".
