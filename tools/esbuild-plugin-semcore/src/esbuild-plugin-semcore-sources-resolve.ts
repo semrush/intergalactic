@@ -1,12 +1,6 @@
 import { Plugin } from 'esbuild';
-<<<<<<< HEAD:tools/esbuild-plugin-semcore/src/esbuild-plugin-semcore-sources-resolve.ts
 import { resolve as resolvePath } from 'path';
-import { access as fsAccess, stat as fsStat, readFile } from 'fs/promises';
-=======
-import { resolve as resolvePath, dirname as resolveDirname } from 'path';
 import { access as fsAccess, stat as fsStat, readFile, readdir } from 'fs/promises';
-import { fileURLToPath } from 'url';
->>>>>>> f44a61bc ([chore] adopted pnpm workspaces):tools/playground/builder/esbuild-plugin-semcore-sources-resolve.ts
 
 const fsExists = async (path: string) => {
   try {
@@ -21,27 +15,12 @@ const isFile = async (path: string) => {
   return (await fsStat(path)).isFile();
 };
 
-<<<<<<< HEAD:tools/esbuild-plugin-semcore/src/esbuild-plugin-semcore-sources-resolve.ts
-const getRepoPackageFile = async (rootDir: string) => {
-  const packageFilePath = resolvePath(rootDir, 'package.json');
-  const packageFileText = await readFile(packageFilePath, 'utf-8');
-  return JSON.parse(packageFileText) as {
-    workspaces: string[];
-  };
-};
-
-const tryToResolveWorkspacePath = async (path: string, rootDir: string) => {
-=======
 const tryToResolveWorkspacePath = async (path: string) => {
->>>>>>> f44a61bc ([chore] adopted pnpm workspaces):tools/playground/builder/esbuild-plugin-semcore-sources-resolve.ts
   if (!path.startsWith('@semcore/')) {
     throw new Error(
       `Unable to resolve workspace for non @semcore package (trying to resolve "${path}")`,
     );
   }
-<<<<<<< HEAD:tools/esbuild-plugin-semcore/src/esbuild-plugin-semcore-sources-resolve.ts
-  const { workspaces } = await getRepoPackageFile(rootDir);
-=======
   const [semcoreDirItems, toolsDirItems] = await Promise.all([
     readdir(resolvePath(__dirname, '../../../semcore')),
     readdir(resolvePath(__dirname, '../../../tools')),
@@ -49,7 +28,6 @@ const tryToResolveWorkspacePath = async (path: string) => {
   const workspaces: string[] = [];
   for (const item of semcoreDirItems) workspaces.push(`semcore/${item}`);
   for (const item of toolsDirItems) workspaces.push(`tools/${item}`);
->>>>>>> f44a61bc ([chore] adopted pnpm workspaces):tools/playground/builder/esbuild-plugin-semcore-sources-resolve.ts
   {
     const destinationDirs = workspaces.map((workspacePath) => workspacePath.split('/').pop());
     if (destinationDirs.length !== [...new Set(destinationDirs)].length) {
@@ -67,11 +45,7 @@ const tryToResolveWorkspacePath = async (path: string) => {
   for (const workspace of workspaces) {
     const workspaceDestination = workspace.split('/').pop();
     if (workspaceDestination === componentName) {
-<<<<<<< HEAD:tools/esbuild-plugin-semcore/src/esbuild-plugin-semcore-sources-resolve.ts
-      return resolvePath(rootDir, workspace);
-=======
       return resolvePath(__dirname, '../../..', workspace);
->>>>>>> f44a61bc ([chore] adopted pnpm workspaces):tools/playground/builder/esbuild-plugin-semcore-sources-resolve.ts
     }
   }
 

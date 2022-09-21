@@ -4,7 +4,7 @@
     "start": "pnpm playground",
     "build": "pnpm build:icons && pnpm build:illustration && pnpm --filter @semcore/* --filter !@semcore/icon --filter !@semcore/ui run build",
     "build:icons": "pnpm --filter @semcore/icon run build",
-    "build:illustration": "pnpm workspace @semcore/illustration build",
+    "build:illustration": "pnpm --filter @semcore/illustration run build",
     "typecheck": "pnpm --filter @semcore/* --filter !@semcore/babel-plugin-root --filter !@semcore/babel-plugin-styles --filter !@semcore/babel-plugin-react-semcore --filter !@semcore/babel-preset-ui --filter !@semcore/jest-preset-ui --filter !@semcore/babel-plugin-recharts --filter !@semcore/email --filter !@semcore/dep-checker --filter !@semcore/code-mod --filter !@semcore/icon-transform-svg --filter !@semcore/shadow-loader --filter !@semcore/generator-component exec tsc --noEmit",
     "prebuild": "rm -rf semcore/**/lib && pnpm prebuild:icon && pnpm prebuild:illustration",
     "prebuild:icon": "pnpm --filter @semcore/icon run prebuild",
