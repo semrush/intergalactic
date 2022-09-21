@@ -324,7 +324,7 @@ class Popper extends Component {
   }
 
   getPopperProps() {
-    const { visible, disablePortal, interaction, popperZIndex, uid, ...other } = this.asProps;
+    const { visible, disablePortal, interaction, popperZIndex, ...other } = this.asProps;
     // @ts-ignore
     const { onKeyDown, ...interactionProps } = this.handlersFromInteraction(
       interaction,
@@ -343,7 +343,6 @@ class Popper extends Component {
     return {
       ref: this.createPopperRef,
       triggerRef: this.triggerRef,
-      id: uid,
       visible,
       interaction,
       disablePortal,

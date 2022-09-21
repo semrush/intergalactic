@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.11.30] - 2022-09-30
+
+### Fixed
+
+- Removed aria attributes that were breaking components a11y.
+
 ## [4.11.29] - 2022-08-30
 
 ### Changed

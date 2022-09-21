@@ -129,7 +129,7 @@ export function Trigger(props: TriggerAsProps) {
   const { Children } = props;
 
   return (
-    <Root render={Dropdown.Trigger} tag={DefaultTrigger}>
+    <Root render={Dropdown.Trigger} tag={DefaultTrigger} aria-label="Pick a color">
       <Children />
     </Root>
   );
