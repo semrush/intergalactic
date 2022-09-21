@@ -67,4 +67,4 @@ jobs:
       - name: merge pull request
         run: |
           gh pr ready "${{ env.release_branch_name }}"
-          gh pr merge "${{ env.release_branch_name }}" --rebase
+          gh pr merge "${{ env.release_branch_name }}" --squash
