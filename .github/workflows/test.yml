@@ -196,5 +196,5 @@ jobs:
           git_commit_gpgsign: true
           git_committer_name: semrush-ci-whale
           git_committer_email: semrush-ci-whale@users.noreply.github.com
-      - name: Push changed a11y reports
-        run: git add . && git commit -m "[chore] automatically updated accessibility reports" && git push || echo "noting to commit"
+      # - name: Push changed a11y reports
+      #   run: git add . && git commit -m "[chore] automatically updated accessibility reports" && git push || echo "noting to commit"
