@@ -4,6 +4,7 @@ import { createTextMaskInputElement } from 'text-mask-core';
 import createComponent, { Component, Merge, sstyled, Root } from '@semcore/core';
 import Input, { IInputProps, IInputValueProps } from '@semcore/input';
 import fire from '@semcore/utils/lib/fire';
+import logger from '@semcore/utils/lib/logger';
 
 import style from './style/input-mask.shadow.css';
 
@@ -26,7 +27,7 @@ export interface IInputMaskValueProps extends IInputValueProps {
   /**
    * This function allows you to change the input value before it is displayed on the screen.
    */
-  pipe?: (conformedValue: string, config: {}) => false | string | {}; //TODO: needs good description;
+  pipe?: (conformedValue: string, config: {}) => string;
   /**
    * @ignore
    */
@@ -83,6 +84,7 @@ class Value extends Component<IInputMaskValueProps> {
 
   _input: HTMLInputElement;
   textMask = undefined;
+  lastConformed: { all: string; userInput: string; maskOnly: string } = undefined;
 
   componentDidMount() {
     this.initTextMask();
@@ -127,9 +129,10 @@ class Value extends Component<IInputMaskValueProps> {
   }
 
   initTextMask = () => {
-    const { mask, value, hideMask, placeholder } = this.asProps;
+    const { mask, value, hideMask, pipe: userPipe } = this.asProps;
     if (mask === undefined) return;
 
+    this.lastConformed = undefined;
     this.textMask = createTextMaskInputElement({
       ...this.asProps,
       inputElement: this._input,
@@ -137,15 +140,27 @@ class Value extends Component<IInputMaskValueProps> {
       guide: !hideMask,
       showMask: !hideMask,
       placeholderChar: '_',
+      pipe: (conformedValue: string, pipeConfigs) => {
+        if (userPipe) conformedValue = userPipe(conformedValue, pipeConfigs);
+
+        let lastNonMaskCharPosition = 0;
+        for (let i = 0; i < conformedValue.length; i++) {
+          if (conformedValue[i] !== '_' && /\w/.test(conformedValue[i]))
+            lastNonMaskCharPosition = i + 1;
+        }
+        const userInput = conformedValue.substring(0, lastNonMaskCharPosition);
+        const maskOnly = conformedValue.substring(lastNonMaskCharPosition);
+        this.lastConformed = userInput ? { all: conformedValue, userInput, maskOnly } : undefined;
+
+        return userInput;
+      },
     });
 
-    if (!placeholder) {
-      this.textMask.update(value);
-      const {
-        state: { previousConformedValue },
-      } = this.textMask;
-      this.handlers.value(previousConformedValue);
-    }
+    this.textMask.update(value);
+    const {
+      state: { previousConformedValue },
+    } = this.textMask;
+    this.handlers.value(previousConformedValue);
   };
 
   onFocus = () => {
@@ -177,9 +192,33 @@ class Value extends Component<IInputMaskValueProps> {
 
   render() {
     const SValue = Root;
+    const SMask = 'span';
+    const SPlaceholder = 'span';
+    const SMaskHidden = 'span';
+    const { title, placeholder, mask } = this.asProps;
+    const isValid = this.lastConformed && !this.lastConformed.all.includes('_');
+
+    logger.warn(
+      !title,
+      'title is required for describing mask format',
+      this.asProps['data-ui-name'] || InputMask.displayName,
+    );
 
     return sstyled(this.asProps.styles)(
-      <SValue render={Input.Value} ref={this.setRef('_input')} onFocus={this.onFocus} />,
+      <>
+        <SMask aria-hidden="true">
+          {this.lastConformed && <SMaskHidden>{this.lastConformed.userInput}</SMaskHidden>}
+          {this.lastConformed?.maskOnly ?? <SPlaceholder>{placeholder}</SPlaceholder>}
+        </SMask>
+        <SValue
+          render={Input.Value}
+          ref={this.setRef('_input')}
+          onFocus={this.onFocus}
+          aria-invalid={!isValid}
+          pattern={mask}
+          __excludeProps={['placeholder']}
+        />
+      </>,
     );
   }
 }
