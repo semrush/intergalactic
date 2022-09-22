@@ -1,3 +1,54 @@
+## [12.6.0] - 2022-09-22
+
+### @semcore/chart
+
+- **Changed** Mark exported functions as deprecated with recommendation to use `@semcore/d3-chart`.
+
+### @semcore/flags
+
+- **Added** Added access to flags that don't have ISO code.
+- **Fixed** Fixed flag name return type.
+
+### @semcore/icon
+
+- **Fixed** Fixed icon Toxic.
+
+### @semcore/progress-bar
+
+- **Fixed** Added essential accessibility attributes.
+
+### @semcore/radio
+
+- **Fixed** Fixed arrangement of internal and external circles in `checked` state.
+
+### @semcore/skeleton
+
+- **Changed** All skeletons are `aria-busy` from now.
+
+### @semcore/slider
+
+- **Added** Out of the box support for multiple choice options.
+
+### @semcore/spin
+
+- **Fixed** Added essential accessibility attributes.
+
+### @semcore/spin-container
+
+- **Fixed** Added essential accessibility attributes.
+
+### @semcore/table
+
+- **Changed** Mark exported functions as deprecated with recommendation to use `@semcore/data-table`.
+
+### @semcore/widget-empty
+
+- **Added** Added Turkish language support.
+
+### @semcore/wizard
+
+- **Added** Added new components.
+
 ## [12.5.1] - 2022-09-15
 
 ### @semcore/animation
@@ -94,13 +145,13 @@
 
 ### @semcore/date-picker
 
-- **Added** Added Turkish langauge support.
+- **Added** Added Turkish language support.
 - **Changed** Removed spaces around dash in formatted date.
 
 ### @semcore/errors
 
 - **Changed** Updated translations.
-- **Added** Added Turkish langauge support.
+- **Added** Added Turkish language support.
 - **Added** Added `role="alert"` attributes to increase support for a11y.
 
 ### @semcore/flags
@@ -141,7 +192,7 @@
 
 ### @semcore/pagination
 
-- **Added** Added Turkish langauge support.
+- **Added** Added Turkish language support.
 - **Added** Added the necessary labels for improved accessibility work.
 
 ### @semcore/product-head
@@ -348,7 +399,6 @@
 ### @semcore/utils
 
 - **Changed** Changed type names from 'ChildrenType' to 'IfChildrenType' so that there are no intersections with other components.
-  HEAD
 - **Changed** Update version dependency `@babel/runtime`.
 
 ### @semcore/widget-empty
@@ -2250,8 +2300,7 @@
 
 ### @semcore/divider
 
-- **Added** Added Divider auto size height for vertical orientation, this fixed show <Divider orientation="vertical" in
-  flex
+- **Added** Added Divider auto size height for vertical orientation, this fixed show <Divider orientation="vertical"/> in flex
 
 ### @semcore/errors
 
@@ -2328,8 +2377,7 @@
 
 ### @semcore/table
 
-- **Fixed** убрали возможность отображения ScrollArea.Bar по вертикали для Table.StickyHead. Это поведение считается
-  недопустимым для шапки таблицы.
+- **Fixed** убрали возможность отображения ScrollArea.Bar по вертикали для Table.StickyHead. Это поведение считается недопустимым для шапки таблицы.
 
 ### @semcore/widget-empty
 
@@ -2379,13 +2427,11 @@
 
 ### @semcore/side-panel
 
-- **Added** SidePanel — компонент для отображения выезжающей панели (справа, снизу или слева). Иногда зовем его "
-  шторкой"
+- **Added** SidePanel — компонент для отображения выезжающей панели (справа, снизу или слева). Иногда зовем его " шторкой"
 
 ### @semcore/table
 
-- **Added** Добавили box-sizing: border-box для таблицы, это решило проблему отображения скролла, когда контента не
-  много
+- **Added** Добавили box-sizing: border-box для таблицы, это решило проблему отображения скролла, когда контента не много
 - **Fixed** Исправили отображение активной ячейки th
 - **Fixed** Исправили выравнивание контента в ячейках через свойство textAlign
 - **Changed** Переписали стили со встраиваемого CSS in JS на новый синтаксис, такой же как у всех компонентов
