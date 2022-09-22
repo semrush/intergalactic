@@ -150,7 +150,7 @@ class Value extends Component<IInputMaskValueProps> {
         }
         const userInput = conformedValue.substring(0, lastNonMaskCharPosition);
         const maskOnly = conformedValue.substring(lastNonMaskCharPosition);
-        this.lastConformed = { all: conformedValue, userInput, maskOnly };
+        this.lastConformed = userInput ? { all: conformedValue, userInput, maskOnly } : undefined;
 
         return userInput;
       },
@@ -193,6 +193,7 @@ class Value extends Component<IInputMaskValueProps> {
   render() {
     const SValue = Root;
     const SMask = 'span';
+    const SPlaceholder = 'span';
     const SMaskHidden = 'span';
     const { title, placeholder, mask } = this.asProps;
     const isValid = this.lastConformed && !this.lastConformed.all.includes('_');
@@ -207,7 +208,7 @@ class Value extends Component<IInputMaskValueProps> {
       <>
         <SMask aria-hidden="true">
           {this.lastConformed && <SMaskHidden>{this.lastConformed.userInput}</SMaskHidden>}
-          {this.lastConformed?.maskOnly ?? placeholder}
+          {this.lastConformed?.maskOnly ?? <SPlaceholder>{placeholder}</SPlaceholder>}
         </SMask>
         <SValue
           render={Input.Value}

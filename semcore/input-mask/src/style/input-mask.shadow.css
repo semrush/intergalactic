@@ -16,3 +16,6 @@ SMask {
 SMaskHidden {
   opacity: 0;
 }
+SPlaceholder {
+  opacity: 0.5;
+}
