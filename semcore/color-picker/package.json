@@ -30,6 +30,11 @@
   "devDependencies": {
     "@semcore/jest-preset-ui": "1.0.0"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/semrush/intergalactic.git",
+    "directory": "semcore/color-picker"
+  },
   "jest": {
     "preset": "@semcore/jest-preset-ui"
   }
