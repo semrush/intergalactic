@@ -5,7 +5,7 @@ import { createBaseComponent, sstyled } from '@semcore/core';
 import { useBox } from '@semcore/flex-box';
 import canUseDOM from '@semcore/utils/lib/canUseDOM';
 import isRetina from '@semcore/utils/lib/isRetina';
-import { iso2Name, iso3iso2 } from './countries';
+import { iso2Name, iso3iso2, nameWithoutIso } from './countries';
 
 import styles from './style/flags.shadow.css';
 
@@ -21,7 +21,10 @@ function setCountryName(countryName) {
   return name.charAt(0).toUpperCase() + name.slice(1);
 }
 
-function getCapitalLetters(iso2, iso3) {
+function getCapitalLetters(iso2, iso3, name) {
+  if (name) {
+    return name;
+  }
   if (iso2) {
     return iso2;
   }
@@ -49,7 +52,12 @@ export const addLinkStyleSprite = (patch) => {
 
 let _addedStyle = false;
 
-function calculateName(iso2, iso3) {
+function calculateName(iso2, iso3, name) {
+  const iso3Name = Object.fromEntries(
+    Object.entries(iso3iso2).map((pair) => [pair[0], iso2Name[pair[1]]]),
+  );
+  const allNames = { ...iso2Name, ...iso3Name, ...nameWithoutIso };
+  if (name) return setCountryName(allNames[name.toUpperCase()]);
   if (iso2) return setCountryName(iso2Name[iso2.toUpperCase()]);
   if (iso3) return setCountryName(iso2Name[iso3iso2[iso3.toUpperCase()]]);
   return false;
@@ -64,15 +72,15 @@ function Flags(props, ref) {
     },
     ref,
   );
-  const { iso2, iso3, staticPath = `//static.semrush.com/ui-kit/flags/${version}` } = props;
+  const { iso2, iso3, name, staticPath = `//static.semrush.com/ui-kit/flags/${version}` } = props;
 
   if (!_addedStyle) {
     _addedStyle = addLinkStyleSprite(staticPath);
   }
 
-  const countryName = calculateName(iso2, iso3);
+  const countryName = calculateName(iso2, iso3, name);
 
-  const capitalLetters = countryName ? undefined : getCapitalLetters(iso2, iso3);
+  const capitalLetters = countryName ? undefined : getCapitalLetters(iso2, iso3, name);
 
   return sstyled(styles)(
     <SFlags
@@ -92,5 +100,5 @@ function Flags(props, ref) {
 
 Flags.displayName = 'Flags';
 
-export { iso2Name, iso3iso2 };
+export { iso2Name, iso3iso2, nameWithoutIso };
 export default createBaseComponent(Flags);

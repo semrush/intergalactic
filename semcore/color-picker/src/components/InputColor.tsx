@@ -115,10 +115,21 @@ class InputColorRoot extends Component<InputColorAsProps> {
               />
               {focus && (
                 <>
-                  <Input.Addon role="button" interactive onClick={this.handlerAdd} p="0">
+                  <Input.Addon
+                    aria-label="Confirm color"
+                    role="button"
+                    interactive
+                    onClick={this.handlerAdd}
+                    p="0"
+                  >
                     <CheckM color="green-300" />
                   </Input.Addon>
-                  <Input.Addon role="button" interactive onClick={this.handlerCancel}>
+                  <Input.Addon
+                    aria-label="Clear color"
+                    role="button"
+                    interactive
+                    onClick={this.handlerCancel}
+                  >
                     <CloseM color="gray-300" />
                   </Input.Addon>
                 </>

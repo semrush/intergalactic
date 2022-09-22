@@ -11,6 +11,7 @@ import addonTextChildren from '@semcore/utils/lib/addonTextChildren';
 import InputSearch from './InputSearch';
 import { useBox } from '@semcore/flex-box';
 import { selectContext } from './context';
+import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 
 import style from './style/select.shadow.css';
 
@@ -30,6 +31,7 @@ class RootSelect extends Component {
   static displayName = 'Select';
 
   static style = style;
+  static enhance = [uniqueIDEnhancement()];
 
   static defaultProps = (props) => ({
     placeholder: props.multiselect ? 'Select options' : 'Select option',
@@ -61,9 +63,16 @@ class RootSelect extends Component {
       forwardRef,
       name,
       multiselect,
+      uid,
+      disablePortal,
     } = this.asProps;
 
     return {
+      id: `igc-${uid}-trigger`,
+      'aria-controls': visible ? `igc-${uid}-list` : undefined,
+      'aria-flowto': visible && !disablePortal ? `igc-${uid}-list` : undefined,
+      'aria-label': visible && !disablePortal ? `Press Tab to go to popover` : undefined,
+      'aria-haspopup': 'listbox',
       empty: isEmptyValue(value),
       size,
       value,
@@ -79,8 +88,26 @@ class RootSelect extends Component {
     };
   }
 
+  getListProps() {
+    const { multiselect } = this.asProps;
+    return {
+      'aria-multiselectable': multiselect ? 'true' : undefined,
+    };
+  }
+
+  getMenuProps() {
+    const { uid } = this.asProps;
+
+    return {
+      id: `igc-${uid}-list`,
+      role: 'listbox',
+      'aria-label': 'List of options',
+      'aria-flowto': `igc-${uid}-trigger`,
+    };
+  }
+
   getOptionProps(props) {
-    const { value } = this.asProps;
+    const { value, uid } = this.asProps;
     const selected = isSelectedOption(value, props.value);
     const other = {};
     this._optionSelected = selected;
@@ -92,6 +119,9 @@ class RootSelect extends Component {
 
     return {
       selected,
+      'aria-selected': selected ? 'true' : 'false',
+      id: `igc-${uid}-option-${props.value}`,
+      role: 'option',
       onClick: this.bindHandlerOptionClick(props.value),
       ...other,
     };
@@ -184,7 +214,7 @@ class RootSelect extends Component {
   }
 
   render() {
-    const { Children, options, multiselect, ...other } = this.asProps;
+    const { Children, options, multiselect, value, ...other } = this.asProps;
     const advanceMode = findComponent(Children, [
       Select.Trigger.displayName,
       Select.Popper.displayName,
@@ -199,11 +229,11 @@ class RootSelect extends Component {
     if (options) {
       return (
         <Root render={DropdownMenu}>
-          <Select.Trigger {...other} />
+          <Select.Trigger {...other} tanIndex={-1} role="button" />
           <Select.Menu>
             {options.map((option, i) => {
               return (
-                <Select.Option key={i} {...option}>
+                <Select.Option key={i} id={option.value} aria-selected={value === i} {...option}>
                   {multiselect && <Select.Option.Checkbox />}
                   {option.children}
                 </Select.Option>
@@ -222,9 +252,29 @@ class RootSelect extends Component {
   }
 }
 
-function Trigger({ Children, name, value, $hiddenRef, tag: Tag = ButtonTrigger }) {
+const isInputTriggerTag = (tag) => {
+  if (typeof tag === 'string') return tag.toLowerCase().includes('input');
+  if (typeof tag === 'object' && tag !== null && typeof tag.displayName === 'string')
+    return tag.displayName.toLowerCase().includes('input');
+  if (typeof tag === 'object' && tag !== null && typeof tag.render?.displayName === 'string')
+    return tag.render.displayName.toLowerCase().includes('input');
+  return false;
+};
+
+function Trigger({ Children, name, uid, value, $hiddenRef, tag: Tag = ButtonTrigger }) {
+  const hasInputTrigger = isInputTriggerTag(Tag);
+
   return (
-    <Root render={DropdownMenu.Trigger} tag={Tag} placeholder="Select option">
+    <Root
+      render={DropdownMenu.Trigger}
+      tag={Tag}
+      placeholder="Select option"
+      aria-autocomplete={(hasInputTrigger && 'list') || undefined}
+      role={hasInputTrigger && 'combobox'}
+      aria-activedescendant={
+        (hasInputTrigger && value && `igc-${uid}-option-${value}`) || undefined
+      }
+    >
       {addonTextChildren(
         Children,
         Tag.Text || ButtonTrigger.Text,
@@ -251,6 +301,9 @@ function Checkbox(props) {
       {...componentProps}
       className={cn(className, componentProps.className) || undefined}
       style={{ ...style, ...componentProps.style }}
+      role="checkbox"
+      tabIndex={0}
+      aria-checked={selected}
     />
   );
 }

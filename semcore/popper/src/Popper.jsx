@@ -307,7 +307,7 @@ class Popper extends Component {
   };
 
   getTriggerProps() {
-    const { visible, interaction, uid } = this.asProps;
+    const { visible, interaction } = this.asProps;
     // @ts-ignore
     const { onKeyDown, ...interactionProps } = this.handlersFromInteraction(
       interaction,
@@ -318,14 +318,13 @@ class Popper extends Component {
       ref: this.createTriggerRef,
       active: visible,
       // interaction,
-      'aria-describedby': uid,
       ...interactionProps,
       onKeyDown: this.bindHandlerKeyDown(onKeyDown),
     };
   }
 
   getPopperProps() {
-    const { visible, disablePortal, interaction, popperZIndex, uid, ...other } = this.asProps;
+    const { visible, disablePortal, interaction, popperZIndex, ...other } = this.asProps;
     // @ts-ignore
     const { onKeyDown, ...interactionProps } = this.handlersFromInteraction(
       interaction,
@@ -344,7 +343,6 @@ class Popper extends Component {
     return {
       ref: this.createPopperRef,
       triggerRef: this.triggerRef,
-      id: uid,
       visible,
       interaction,
       disablePortal,
@@ -390,12 +388,7 @@ function Trigger(props) {
   const STrigger = Root;
   const { Children } = props;
   return (
-    <STrigger
-      render={Box}
-      inline
-      // Because the borders appear
-      // tabIndex={interaction === 'focus' ? undefined : 0}
-    >
+    <STrigger render={Box} inline role="button" aria-haspopup={true}>
       <Children />
     </STrigger>
   );
@@ -471,7 +464,7 @@ function PopperPopper(props) {
           returnFocus={interaction === 'click'}
           returnFocusRef={triggerRef}
           autoFocus={false}
-          tabIndex={-1}
+          tabIndex={0}
           onClick={handlerStopPropagation}
           onContextMenu={handlerStopPropagation}
           onDoubleClick={handlerStopPropagation}

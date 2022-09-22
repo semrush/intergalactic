@@ -505,3 +505,21 @@ export const iso3iso2 = {
   ZMB: 'ZM',
   ZWE: 'ZW',
 };
+
+export const nameWithoutIso = {
+  ABKHAZIA: 'Abkhazia',
+  BASQUE_COUNTRY: 'Basque Country',
+  BRITISH_ANTARCTIC_TERRITORY: 'British Antarctic Territory',
+  CANARY_ISLANDS: 'Canary Islands',
+  COMMON_WEALTH: 'Common Wealth',
+  ENGLAND: 'England',
+  MARS: 'Mars',
+  NAGORNO_KARABAKH: 'Nagorno Karabakh',
+  NATO: 'NATO',
+  NORTHERN_CYPRUS: 'Northern Cyprus',
+  NORTHERN_IRELAND: 'Northern Ireland',
+  SCOTLAND: 'Scotland',
+  SOUTH_OSSETIA: 'South Ossetia',
+  UNITED_NATIONS: 'United Nations',
+  WALES: 'Wales',
+};

@@ -3902,7 +3902,6 @@ const iconsList = {
         'хранение',
         'хранилище',
         'document',
-        'papers',
       ],
     },
     {

@@ -86,7 +86,7 @@ describe('ColorPicker', () => {
   test('Should add colort when click on confirm icon inside input', async () => {
     const spy = jest.fn();
 
-    const { getByTestId, getAllByRole } = render(
+    const { getByTestId, getByLabelText } = render(
       <div style={{ width: 250, height: 100 }}>
         <ColorPicker disablePortal visible>
           <ColorPicker.Trigger />
@@ -106,7 +106,7 @@ describe('ColorPicker', () => {
     expect(input.value).toBe('635472');
 
     fireEvent.focus(input);
-    const confirm = getAllByRole('button')[0];
+    const confirm = getByLabelText('Confirm color');
     fireEvent.click(confirm);
 
     expect(input.value).toBe('');

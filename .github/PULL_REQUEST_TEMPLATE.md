@@ -34,4 +34,4 @@
 - [ ] My change requires a change to the documentation.
 - [ ] I have updated the documentation accordingly.
 
-# If appropriate sections above is not fulfilled properly do not even review my pull request and never approve it! Only after fulfilling sections above I will also remove this note.
+# If appropriate sections above are not fulfilled properly do not even review my pull request and never approve it! Only after fulfilling sections above I will also remove this note.

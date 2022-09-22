@@ -2,6 +2,16 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.0.11] - 2022-09-15
+
+### Added
+
+- Added access to flags that don't have ISO code.
+
+### Fixed
+
+- Fixed flag name return type.
+
 ## [3.0.10] - 2022-08-30
 
 ### Changed

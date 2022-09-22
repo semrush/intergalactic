@@ -42,9 +42,7 @@ describe('Dropdown', () => {
   test('a11y', async () => {
     const { container } = render(
       <Dropdown visible disablePortal>
-        <Dropdown.Trigger>
-          <button>default dropdown</button>
-        </Dropdown.Trigger>
+        <Dropdown.Trigger tag="button">default dropdown</Dropdown.Trigger>
         <Dropdown.Popper>
           <div>text</div>
         </Dropdown.Popper>

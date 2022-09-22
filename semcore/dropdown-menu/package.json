@@ -1,7 +1,7 @@
 {
   "name": "@semcore/dropdown-menu",
   "description": "Semrush DropdownMenu Component",
-  "version": "3.0.12",
+  "version": "3.1.0",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -13,10 +13,10 @@
     "test": "jest"
   },
   "dependencies": {
-    "@semcore/utils": "^3.15",
     "@semcore/dropdown": "^3",
     "@semcore/flex-box": "^4",
     "@semcore/scroll-area": "^4.0.0",
+    "@semcore/utils": "^3.15",
     "classnames": "2.2.6"
   },
   "peerDependencies": {
@@ -32,6 +32,8 @@
     "directory": "semcore/dropdown-menu"
   },
   "devDependencies": {
+    "@guidepup/playwright": "0.6.1",
+    "@playwright/test": "1.25.1",
     "@semcore/jest-preset-ui": "1.0.0"
   }
 }
