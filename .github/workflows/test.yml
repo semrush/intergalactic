@@ -187,7 +187,7 @@ jobs:
       - name: Enable VoiceOver Automation
         uses: guidepup/setup-action@0.4.0
       - name: Voice Over testing
-        run: yarn vo-test
+        run: CI_RUN=true yarn vo-test
       - name: Github GPG Auth
         uses: crazy-max/ghaction-import-gpg@v4.4.0
         with:
