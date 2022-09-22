@@ -24,9 +24,14 @@ const Demo = () => {
         onChange={(v) => setValue(v)}
       />
       {value && (
-        <Input.Addon pl={2} pr={1} interactive onClick={() => setValue('')}>
-          <CloseXS />
-        </Input.Addon>
+        <Input.Addon
+          tag={CloseXS}
+          pl={2}
+          pr={1}
+          interactive
+          aria-label="Clear password field"
+          onClick={() => setValue('')}
+        />
       )}
       <Input.Addon px={1}>
         <Link>Forget?</Link>

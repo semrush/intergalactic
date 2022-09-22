@@ -12,9 +12,12 @@ const Demo = () => {
       </Input.Addon>
       <Input.Value value={value} onChange={(v) => updateValue(v)} />
       {value > 2 && (
-        <Input.Addon>
-          <CloseXS interactive onClick={() => updateValue('+1')} />
-        </Input.Addon>
+        <Input.Addon
+          tag={CloseXS}
+          interactive
+          aria-label="Clear field"
+          onClick={() => updateValue('+1')}
+        />
       )}
     </Input>
   );

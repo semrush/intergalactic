@@ -57,9 +57,12 @@ const SuggestSearch = connectAutoComplete(
           placeholder="Fill this field with 'happy smile' text :)"
         />
         {!!currentRefinement && (
-          <Input.Addon>
-            <CloseXS interactive onClick={() => handleChangeValue('')} />
-          </Input.Addon>
+          <Input.Addon
+            tag={CloseXS}
+            interactive
+            onClick={() => handleChangeValue('')}
+            aria-label="Clear field"
+          />
         )}
       </Search>
     );

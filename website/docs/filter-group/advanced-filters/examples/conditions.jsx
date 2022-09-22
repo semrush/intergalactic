@@ -21,7 +21,16 @@ const Filter = ({ closable, onClose, ...props }) => (
     <Input>
       <Input.Value />
     </Input>
-    {closable ? <TrashXS color="stone" interactive ml={2} py={2} onClick={onClose} /> : null}
+    {closable ? (
+      <TrashXS
+        color="stone"
+        interactive
+        aria-label="Clear filters"
+        ml={2}
+        py={2}
+        onClick={onClose}
+      />
+    ) : null}
   </Flex>
 );
 

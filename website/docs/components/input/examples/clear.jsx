@@ -13,9 +13,12 @@ const Demo = () => {
         onChange={(v) => setValue(v)}
       />
       {value && (
-        <Input.Addon interactive onClick={() => setValue('')}>
-          <CloseXS />
-        </Input.Addon>
+        <Input.Addon
+          tag={CloseXS}
+          interactive
+          aria-label="Clear field"
+          onClick={() => setValue('')}
+        />
       )}
     </Input>
   );
