@@ -493,6 +493,8 @@ importers:
 
   semcore/dropdown:
     specifiers:
+      '@guidepup/playwright': 0.6.1
+      '@playwright/test': 1.25.1
       '@semcore/flex-box': ^4
       '@semcore/jest-preset-ui': 1.0.0
       '@semcore/popper': ^4
@@ -502,10 +504,14 @@ importers:
       '@semcore/popper': link:../popper
       '@semcore/utils': link:../utils
     devDependencies:
+      '@guidepup/playwright': 0.6.1_@playwright+test@1.25.1
+      '@playwright/test': 1.25.1
       '@semcore/jest-preset-ui': link:../../tools/jest-preset-ui
 
   semcore/dropdown-menu:
     specifiers:
+      '@guidepup/playwright': 0.6.1
+      '@playwright/test': 1.25.1
       '@semcore/dropdown': ^3
       '@semcore/flex-box': ^4
       '@semcore/jest-preset-ui': 1.0.0
@@ -519,6 +525,8 @@ importers:
       '@semcore/utils': link:../utils
       classnames: 2.2.6
     devDependencies:
+      '@guidepup/playwright': 0.6.1_@playwright+test@1.25.1
+      '@playwright/test': 1.25.1
       '@semcore/jest-preset-ui': link:../../tools/jest-preset-ui
 
   semcore/email:
@@ -1069,6 +1077,8 @@ importers:
 
   semcore/select:
     specifiers:
+      '@guidepup/playwright': 0.6.1
+      '@playwright/test': 1.25.1
       '@semcore/base-trigger': ^3.0.0
       '@semcore/checkbox': ^6
       '@semcore/divider': ^3
@@ -1090,6 +1100,8 @@ importers:
       '@semcore/utils': link:../utils
       classnames: 2.2.6
     devDependencies:
+      '@guidepup/playwright': 0.6.1_@playwright+test@1.25.1
+      '@playwright/test': 1.25.1
       '@semcore/jest-preset-ui': link:../../tools/jest-preset-ui
 
   semcore/side-panel:
