@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.4.1] - 2022-09-30
+
+### Fixed
+
+- Widget illustration is aria-hidden now.
+
 ## [3.4.0] - 2022-09-16
 
 ### Added
