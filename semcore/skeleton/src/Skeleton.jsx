@@ -35,7 +35,14 @@ class Skeleton extends Component {
     if (hidden) return null;
 
     return sstyled(styles)(
-      <SSkeleton render={Box} tag="svg" preserveAspectRatio="none" durationAnim={`${duration}ms`}>
+      <SSkeleton
+        render={Box}
+        tag="svg"
+        preserveAspectRatio="none"
+        durationAnim={`${duration}ms`}
+        aria-busy="true"
+        aria-atomic="true"
+      >
         <defs>
           <mask id={uid}>
             <Children />
