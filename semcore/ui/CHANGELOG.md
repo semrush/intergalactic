@@ -1,4 +1,4 @@
-## [12.5.2] - 2022-09-22
+## [12.6.0] - 2022-09-22
 
 ### @semcore/chart
 
@@ -43,7 +43,7 @@
 
 ### @semcore/widget-empty
 
-- **Added** Added Turkish langauge support.
+- **Added** Added Turkish language support.
 
 ### @semcore/wizard
 
