@@ -1,3 +1,50 @@
+## [12.5.2] - 2022-09-22
+
+### @semcore/chart
+
+- **Changed** Mark exported functions as deprecated with recommendation to use `@semcore/d3-chart`.
+
+### @semcore/flags
+
+- **Added** Added access to flags that don't have ISO code.
+- **Fixed** Fixed flag name return type.
+
+### @semcore/icon
+
+- **Fixed** Fixed icon Toxic.
+
+### @semcore/progress-bar
+
+- **Fixed** Added essential accessibility attributes.
+
+### @semcore/radio
+
+- **Fixed** Fixed arrangement of internal and external circles in `checked` state.
+
+### @semcore/skeleton
+
+- **Changed** All skeletons are `aria-busy` from now.
+
+### @semcore/slider
+
+- **Added** Out of the box support for multiple choice options.
+
+### @semcore/spin
+
+- **Fixed** Added essential accessibility attributes.
+
+### @semcore/spin-container
+
+- **Fixed** Added essential accessibility attributes.
+
+### @semcore/table
+
+- **Changed** Mark exported functions as deprecated with recommendation to use `@semcore/data-table`.
+
+### @semcore/widget-empty
+
+- **Added** Added Turkish langauge support.
+
 ## [12.5.1] - 2022-09-15
 
 ### @semcore/animation
