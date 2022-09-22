@@ -65,8 +65,7 @@
 
 ### @semcore/color-picker
 
-- **Changed** Changed the logic of entering color format. From this version it is possible to enter hex code in both
-  formats: with `#` sign - `#123123` and without `#` sign - `123123`.
+- **Changed** Changed the logic of entering color format. From this version it is possible to enter hex code in both formats: with `#` sign - `#123123` and without `#` sign - `123123`.
 
 ### @semcore/d3-chart
 
@@ -127,8 +126,7 @@
 
 ### @semcore/badge
 
-- **Added** Added aria-hidden because component "badge" is not the main functionality and will only confuse the blind
-  user.
+- **Added** Added aria-hidden because component "badge" is not the main functionality and will only confuse the blind user.
 
 ### @semcore/breadcrumbs
 
@@ -147,13 +145,13 @@
 
 ### @semcore/date-picker
 
-- **Added** Added Turkish langauge support.
+- **Added** Added Turkish language support.
 - **Changed** Removed spaces around dash in formatted date.
 
 ### @semcore/errors
 
 - **Changed** Updated translations.
-- **Added** Added Turkish langauge support.
+- **Added** Added Turkish language support.
 - **Added** Added `role="alert"` attributes to increase support for a11y.
 
 ### @semcore/flags
@@ -194,13 +192,12 @@
 
 ### @semcore/pagination
 
-- **Added** Added Turkish langauge support.
+- **Added** Added Turkish language support.
 - **Added** Added the necessary labels for improved accessibility work.
 
 ### @semcore/product-head
 
-- **Fixed** Remove `overflow='auto'` because the component should not scroll, its content should adapt to the desired
-  size.
+- **Fixed** Remove `overflow='auto'` because the component should not scroll, its content should adapt to the desired size.
 
 ### @semcore/radio
 
@@ -281,8 +278,7 @@
 ### @semcore/input
 
 - **Changed** Fixed `Input.Addon` css classes were missing during server-side rendering.
-- **Fixed** Fixed the reaction when interacting with the keyboard for the correct work of other components with keyboard
-  support.
+- **Fixed** Fixed the reaction when interacting with the keyboard for the correct work of other components with keyboard support.
 - **Fixed** Fixed applying `border-radius` for outline.
 
 ### @semcore/input-number
@@ -349,8 +345,7 @@
 
 ### @semcore/chart
 
-- **Changed** Changed type names from 'IPieProps' to 'IRechartsPieProps' so that there are no intersections with other
-  components.
+- **Changed** Changed type names from 'IPieProps' to 'IRechartsPieProps' so that there are no intersections with other components.
 
 ### @semcore/checkbox
 
@@ -358,15 +353,12 @@
 
 ### @semcore/d3-chart
 
-- **Changed** Changed type names from 'ITooltipProps' to 'ITooltipChartProps' so that there are no intersections with
-  other components.
-- **Changed** Changed type names from 'ITooltipContext' to 'ITooltipChartContext' so that there are no intersections
-  with other components.
+- **Changed** Changed type names from 'ITooltipProps' to 'ITooltipChartProps' so that there are no intersections with other components.
+- **Changed** Changed type names from 'ITooltipContext' to 'ITooltipChartContext' so that there are no intersections with other components.
 
 ### @semcore/errors
 
-- **Changed** Changed type names from 'iconNames' to 'iconNamesErrors' so that there are no intersections with other
-  components.
+- **Changed** Changed type names from 'iconNames' to 'iconNamesErrors' so that there are no intersections with other components.
 
 ### @semcore/feedback-form
 
@@ -382,13 +374,11 @@
 
 ### @semcore/notice-global
 
-- **Changed** Changed type names from 'NoticeTheme' to 'NoticeGlobalTheme' so that there are no intersections with other
-  components.
+- **Changed** Changed type names from 'NoticeTheme' to 'NoticeGlobalTheme' so that there are no intersections with other components.
 
 ### @semcore/pills
 
-- **Changed** Changed type names from 'IPopperHandlers' to 'IPillsHandlers' so that there are no intersections with
-  other components.
+- **Changed** Changed type names from 'IPopperHandlers' to 'IPillsHandlers' so that there are no intersections with other components.
 
 ### @semcore/progress-bar
 
@@ -408,15 +398,12 @@
 
 ### @semcore/utils
 
-- **Changed** Changed type names from 'ChildrenType' to 'IfChildrenType' so that there are no intersections with other
-  components.
-  HEAD
+- **Changed** Changed type names from 'ChildrenType' to 'IfChildrenType' so that there are no intersections with other components.
 - **Changed** Update version dependency `@babel/runtime`.
 
 ### @semcore/widget-empty
 
-- **Changed** Changed type names from 'iconNames' to 'iconNamesWidgetEmpty' so that there are no intersections with
-  other components.
+- **Changed** Changed type names from 'iconNames' to 'iconNamesWidgetEmpty' so that there are no intersections with other components.
 
 ## [12.1.0] - 2022-05-31
 
@@ -589,8 +576,7 @@
 
 ### @semcore/widget-empty
 
-- **Added** Added `coffee`/`heat-map-chart`/`kagi-chart`/`radial-tree-chart`/`suggestion`/`under-construction`
-  illustrations.
+- **Added** Added `coffee`/`heat-map-chart`/`kagi-chart`/`radial-tree-chart`/`suggestion`/`under-construction` illustrations.
 
 ## [11.2.0] - 2022-04-26
 
@@ -736,8 +722,7 @@
 
 ### @semcore/utils
 
-- **Fixed** Fixed set property in body (when window inside window and body don't have `box-sizing`)
-  in `usePreventScroll`.
+- **Fixed** Fixed set property in body (when window inside window and body don't have `box-sizing`) in `usePreventScroll`.
 
 ## [11.0.0] - 2022-02-25
 
@@ -757,8 +742,7 @@
 
 ### @semcore/spin-container
 
-- **BREAK** Add new children components `SpinContainer.Content` when using advanced mode along
-  with `SpinContainer.Overlay`.
+- **BREAK** Add new children components `SpinContainer.Content` when using advanced mode along with `SpinContainer.Overlay`.
 
 ### @semcore/base-trigger
 
@@ -849,8 +833,7 @@
 
 ### @semcore/data-table
 
-- **Changed** Changed background-color from transparent to #fff for use="secondary" `DataTable.Column`
-  and `DataTable.Cell`.
+- **Changed** Changed background-color from transparent to #fff for use="secondary" `DataTable.Column` and `DataTable.Cell`.
 
 ### @semcore/divider
 
@@ -1624,8 +1607,7 @@
 
 ### @semcore/switch
 
-- **Changed** [A11y] added role="switch" and support the Enter or Space key for used to toggle between a checked or
-  unchecked
+- **Changed** [A11y] added role="switch" and support the Enter or Space key for used to toggle between a checked or unchecked
 - **Changed** [TS] Rewrite code from TS to JS.
 
 ### @semcore/tab-line
@@ -2318,8 +2300,7 @@
 
 ### @semcore/divider
 
-- **Added** Added Divider auto size height for vertical orientation, this fixed show <Divider orientation="vertical" in
-  flex
+- **Added** Added Divider auto size height for vertical orientation, this fixed show <Divider orientation="vertical"/> in flex
 
 ### @semcore/errors
 
@@ -2396,8 +2377,7 @@
 
 ### @semcore/table
 
-- **Fixed** убрали возможность отображения ScrollArea.Bar по вертикали для Table.StickyHead. Это поведение считается
-  недопустимым для шапки таблицы.
+- **Fixed** убрали возможность отображения ScrollArea.Bar по вертикали для Table.StickyHead. Это поведение считается недопустимым для шапки таблицы.
 
 ### @semcore/widget-empty
 
@@ -2447,13 +2427,11 @@
 
 ### @semcore/side-panel
 
-- **Added** SidePanel — компонент для отображения выезжающей панели (справа, снизу или слева). Иногда зовем его "
-  шторкой"
+- **Added** SidePanel — компонент для отображения выезжающей панели (справа, снизу или слева). Иногда зовем его " шторкой"
 
 ### @semcore/table
 
-- **Added** Добавили box-sizing: border-box для таблицы, это решило проблему отображения скролла, когда контента не
-  много
+- **Added** Добавили box-sizing: border-box для таблицы, это решило проблему отображения скролла, когда контента не много
 - **Fixed** Исправили отображение активной ячейки th
 - **Fixed** Исправили выравнивание контента в ячейках через свойство textAlign
 - **Changed** Переписали стили со встраиваемого CSS in JS на новый синтаксис, такой же как у всех компонентов
