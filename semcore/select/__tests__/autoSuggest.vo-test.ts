@@ -24,9 +24,10 @@ test('Users can interact with AutoSuggest via VoiceOver', async ({
   const { voiceOver, getReport } = await makeVoiceOverReporter(pureVoiceOver);
   await voiceOver.interact();
 
-  expect(await voiceOver.lastSpokenPhrase()).toBe(
-    'Press Tab to go to popover Select option list box pop up Menu pop-up combo box',
+  expect(await voiceOver.lastSpokenPhrase()).toContain(
+    'Press Tab to go to popover Select option list box',
   );
+  expect(await voiceOver.lastSpokenPhrase()).toContain('Menu pop-up combo box');
   await voiceOver.interact();
   await voiceOver.interact();
   await voiceOver.type('semrush', { application: 'Playwright' });
@@ -42,8 +43,8 @@ test('Users can interact with AutoSuggest via VoiceOver', async ({
   await voiceOver.press('Shift+Tab', { application: 'Playwright' });
   await voiceOver.press('Shift+Tab', { application: 'Playwright' });
   await voiceOver.press('Shift+Tab', { application: 'Playwright' });
-  await voiceOver.type('Some_new_text_after', { application: 'Playwright' });
-  expect(await voiceOver.lastSpokenPhrase()).toBe(option + 'Some_new_text_after');
+  await voiceOver.act();
+  expect((await voiceOver.lastSpokenPhrase()).toLowerCase()).toContain(option.toLowerCase());
 
   const report = (await getReportHeader()) + '\n\n' + (await getReport(standPath));
 

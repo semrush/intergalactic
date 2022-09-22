@@ -2,7 +2,7 @@ import React from 'react';
 import InputMask from '../src';
 
 import { testing, shared as testsShared, snapshot } from '@semcore/jest-preset-ui';
-const { cleanup, fireEvent, render } = testing;
+const { cleanup, fireEvent, render, axe } = testing;
 
 const { shouldSupportClassName, shouldSupportRef } = testsShared;
 
@@ -29,8 +29,27 @@ describe('InputMask', () => {
     fireEvent.focus(input);
     fireEvent.change(input, { target: { value: '999' } });
 
-    expect(input.value).toBe('99 9_');
+    expect(input.value).toBe('99 9');
     expect(await snapshot(<Component value={input.value} />)).toMatchImageSnapshot();
+  });
+
+  test('a11y', async () => {
+    const { container } = render(
+      <>
+        <label htmlFor="input_mask">Expire date</label>
+        <InputMask size="l" mb={4}>
+          <InputMask.Value
+            mask="99 99"
+            placeholder="__ __"
+            id="input_mask"
+            title="4-digit number"
+          />
+        </InputMask>
+      </>,
+    );
+
+    const results = await axe(container);
+    expect(results).toHaveNoViolations();
   });
 });
 

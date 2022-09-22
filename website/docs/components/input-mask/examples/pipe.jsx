@@ -8,7 +8,14 @@ export default () => {
   const handleSuccess = () => expireDateInput.current.focus();
   return (
     <Box wMax={240} p={8} m="0 auto" style={{ borderRadius: '12px', background: '#dee3e5' }}>
-      <Text tag="p" size={300} medium mb={2}>
+      <Text
+        tag="label"
+        size={300}
+        medium
+        mb={2}
+        htmlFor="card_number"
+        style={{ display: 'inline-block' }}
+      >
         Card number
       </Text>
       <InputMask size="l" mb={4}>
@@ -16,14 +23,23 @@ export default () => {
           mask="9999 9999 9999 9999"
           placeholder="____ ____ ____ ____"
           onSuccess={handleSuccess}
+          title="16-digit number"
+          id="card_number"
         />
       </InputMask>
       <Flex alignItems="center" justifyContent="flex-end">
-        <Text tag="p" my={0} size={100} wMax={40}>
+        <Text tag="label" my={0} size={100} wMax={40} htmlFor="expire_date">
           Expire date
         </Text>
         <InputMask size="l" wMax={65}>
-          <InputMask.Value ref={expireDateInput} mask="99/99" placeholder="__/__" pipe={datePipe} />
+          <InputMask.Value
+            ref={expireDateInput}
+            mask="99/99"
+            placeholder="__/__"
+            pipe={datePipe}
+            title="4-digit number"
+            id="expire_date"
+          />
         </InputMask>
       </Flex>
     </Box>

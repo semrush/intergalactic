@@ -4,3 +4,18 @@ SValue {
   letter-spacing: 0.1em;
   text-overflow: inherit;
 }
+
+SMask {
+  width: 100%;
+  position: absolute;
+  left: 0.8em;
+  pointer-events: none;
+  letter-spacing: 0.1em;
+  text-overflow: inherit;
+}
+SMaskHidden {
+  opacity: 0;
+}
+SPlaceholder {
+  opacity: 0.5;
+}
