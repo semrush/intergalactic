@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import styled from 'styled-components';
 import { InstantSearch } from 'react-instantsearch/dom';
 import { connectAutoComplete } from 'react-instantsearch/connectors';
 import algoliasearch from 'algoliasearch/lite';
@@ -11,29 +10,9 @@ import SearchS from '@semcore/icon/Search/m';
 import CloseXS from '@semcore/icon/Close/m';
 import staticFiles from '@static';
 import algoliaConfig from '@components/algolia-config';
+import styles from './styles.module.css';
 
 const searchClient = algoliasearch(algoliaConfig.ALGOLIA_APP, algoliaConfig.ALGOLIA_OPEN_KEY);
-
-const NotFound = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 40px;
-  margin: auto;
-  border-radius: 6px;
-  border: solid 1px #d1d4db;
-`;
-
-const Search = styled(Input)`
-  border-radius: 6px;
-  border: solid 1px #d1d4db;
-  color: #171a22;
-  input {
-    ::placeholder {
-      color: #898d9a;
-    }
-  }
-`;
 
 const SuggestSearch = connectAutoComplete(
   ({ currentRefinement, refine, hits, filteredIllustrations, onChangeValue, ...others }) => {
@@ -46,7 +25,7 @@ const SuggestSearch = connectAutoComplete(
     });
 
     return (
-      <Search size="l" mb={4}>
+      <Input size="l" mb={4} className={styles.search}>
         <Input.Addon>
           <SearchS />
         </Input.Addon>
@@ -61,7 +40,7 @@ const SuggestSearch = connectAutoComplete(
             <CloseXS interactive onClick={() => handleChangeValue('')} />
           </Input.Addon>
         )}
-      </Search>
+      </Input>
     );
   },
 );
@@ -94,12 +73,12 @@ export default function ({ illustrations, json }) {
         filterIllustrations.length ? (
           <ListIllustrations data={filterIllustrations} illustrations={illustrations} json={json} />
         ) : (
-          <NotFound>
+          <div className={styles.notFound}>
             <img src={staticFiles['search/observatory.svg']} alt="observatory" />
             <Text size={300} mt={2}>
               We found something… it's nothing
             </Text>
-          </NotFound>
+          </div>
         )
       ) : (
         <IllustrationGroups illustrations={illustrations} json={json}>
