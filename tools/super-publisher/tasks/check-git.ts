@@ -15,6 +15,8 @@ export const checkGitTask = createTask('GIT check', async (opt) => {
   const fetch = await git.fetch(['--dry-run']);
 
   if (fetch.remote) {
+    // eslint-disable-next-line no-console
+    console.log(fetch);
     throw new Error(
       'Your local VCS branch head is behind the remote one. Run `git pull` to be up to date.',
     );
