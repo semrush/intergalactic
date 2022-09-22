@@ -28,6 +28,7 @@
     "directory": "semcore/illustration"
   },
   "devDependencies": {
+    "@types/react": "16.8 - 17",
     "@semcore/icon-transform-svg": "1.0.0"
   }
 }

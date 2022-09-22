@@ -29,6 +29,7 @@
     "directory": "semcore/spin"
   },
   "devDependencies": {
+    "@types/react": "16.8 - 17",
     "@semcore/jest-preset-ui": "1.0.0"
   }
 }

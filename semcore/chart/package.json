@@ -52,6 +52,7 @@
     "directory": "semcore/chart"
   },
   "devDependencies": {
+    "@types/react": "16.8 - 17",
     "@semcore/babel-plugin-react-semcore": "^4.2.1",
     "@semcore/jest-preset-ui": "1.0.0"
   }

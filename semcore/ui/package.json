@@ -84,6 +84,7 @@
     "@semcore/widget-empty": "3.2.0"
   },
   "devDependencies": {
+    "@types/react": "16.8 - 17",
     "fast-glob": "3.2.11",
     "fs-extra": "9.0.1",
     "jest": "29.0.1",

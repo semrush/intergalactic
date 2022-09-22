@@ -20,6 +20,7 @@
     "@semcore/utils": "^3.31.1"
   },
   "devDependencies": {
+    "@types/react": "16.8 - 17",
     "@semcore/button": "*",
     "@semcore/jest-preset-ui": "*",
     "@semcore/spin": "*",

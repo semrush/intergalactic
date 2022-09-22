@@ -20,6 +20,7 @@
     "resize-observer-polyfill": "^1.5"
   },
   "devDependencies": {
+    "@types/react": "16.8 - 17",
     "@semcore/jest-preset-ui": "1.0.0",
     "@guidepup/playwright": "0.6.1",
     "@playwright/test": "1.25.1",

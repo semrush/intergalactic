@@ -41,6 +41,7 @@
     "directory": "semcore/d3-chart"
   },
   "devDependencies": {
+    "@types/react": "16.8 - 17",
     "@semcore/babel-plugin-react-semcore": "^4.2.1",
     "@semcore/button": "*",
     "@semcore/checkbox": "*",

@@ -21,6 +21,7 @@
   "license": "MIT",
   "dependencies": {},
   "devDependencies": {
+    "@types/react": "16.8 - 17",
     "autoprefixer": "10.3.1",
     "cssnano": "5.0.7",
     "inky-cli": "1.0.1",
