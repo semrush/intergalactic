@@ -108,4 +108,5 @@ One item in the pills can't be used:
 
 @page pills-a11y
 @page pills-api
+@page pills-code
 @page pills-changelog
