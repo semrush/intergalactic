@@ -52,21 +52,17 @@ class NeighborLocationRoot extends Component {
   static displayName = 'NeighborLocation';
 
   render() {
-    const { Children, tag: Tag, controlsLength } = this.asProps;
+    const { Children, tag: Tag, controlsLength: _controlsLength } = this.asProps;
     const OriginChildren = getOriginChildren(Children);
+    const controlsLength = _controlsLength ?? getControlsLength(OriginChildren);
     const children =
       controlsLength === 1
         ? OriginChildren
-        : getChildrenWithNeighborLocation(
-            OriginChildren,
-            controlsLength ?? getControlsLength(OriginChildren),
-          );
+        : getChildrenWithNeighborLocation(OriginChildren, controlsLength);
 
-    if (Tag) {
-      return <Root render={Tag}>{children}</Root>;
-    }
+    if (Tag) return <Root render={Tag}>{children}</Root>;
 
-    return children;
+    return children ?? null;
   }
 }
 
