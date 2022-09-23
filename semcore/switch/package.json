@@ -13,9 +13,9 @@
     "test": "jest"
   },
   "dependencies": {
-    "@semcore/utils": "^3.21",
     "@semcore/flex-box": "^4",
-    "@semcore/neighbor-location": "^2"
+    "@semcore/neighbor-location": "^2",
+    "@semcore/utils": "^3.21"
   },
   "peerDependencies": {
     "@semcore/core": "^1.11",
@@ -30,6 +30,8 @@
     "directory": "semcore/switch"
   },
   "devDependencies": {
+    "@guidepup/playwright": "0.6.1",
+    "@playwright/test": "1.25.1",
     "@semcore/jest-preset-ui": "1.0.0"
   }
 }
