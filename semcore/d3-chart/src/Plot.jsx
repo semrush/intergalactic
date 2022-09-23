@@ -2,11 +2,12 @@ import React from 'react';
 import createComponent, { Component, Root, sstyled } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
 import EventEmitter from '@semcore/utils/lib/eventEmitter';
+import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 import { eventToPoint, uniqueId } from './utils';
-import style from './style/plot.shadow.css';
 import { PlotA11yModule } from './a11y/PlotA11yModule';
 import { makeDataHintsHandlers, makeDataHintsContainer } from './a11y/hints';
-import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
+
+import style from './style/plot.shadow.css';
 
 class PlotRoot extends Component {
   static displayName = 'Plot';

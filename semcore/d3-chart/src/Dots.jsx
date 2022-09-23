@@ -1,9 +1,9 @@
 import { bisector } from 'd3-array';
 import React, { useCallback, useEffect, useState } from 'react';
 import { sstyled } from '@semcore/core';
-import { eventToPoint, invert } from './utils';
-import createElement from './createElement';
 import trottle from '@semcore/utils/lib/rafTrottle';
+import createElement from './createElement';
+import { eventToPoint, invert } from './utils';
 
 import style from './style/dot.shadow.css';
 

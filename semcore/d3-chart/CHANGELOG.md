@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.3.5] - 2022-09-23
+
+### Fixed
+
+- Fixed issue with uninitialized styles in some charts.
+
 ## [2.3.4] - 2022-09-21
 
 ### Changed

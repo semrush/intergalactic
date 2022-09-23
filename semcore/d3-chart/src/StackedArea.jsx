@@ -5,15 +5,11 @@ import getOriginChildren from '@semcore/utils/lib/getOriginChildren';
 import createElement from './createElement';
 import Area from './Area';
 
-import style from './style/area.shadow.css';
-
 const DEFAULT_INSTANCE = Symbol('DEFAULT_INSTANCE');
 const Y0 = Symbol('Y0');
 
 class StackedAreaRoot extends Component {
   static displayName = 'StackedArea';
-
-  static style = style;
 
   static defaultProps = () => {
     const stack = d3Stack();

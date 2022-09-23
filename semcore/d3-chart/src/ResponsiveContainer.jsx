@@ -1,6 +1,5 @@
 import React from 'react';
 import ResizeObserver from 'resize-observer-polyfill';
-
 import createComponent, { Component, Root, sstyled } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
 import trottle from '@semcore/utils/lib/rafTrottle';
