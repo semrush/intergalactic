@@ -6,6 +6,7 @@ import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhan
 import resolveColor from '@semcore/utils/lib/color';
 import getInputProps, { inputProps } from '@semcore/utils/lib/inputProps';
 import { callAllEventHandlers } from '@semcore/utils/lib/assignProps';
+import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 
 import style from './style/switch.shadow.css';
 
@@ -16,6 +17,7 @@ function isCustomTheme(theme) {
 class Switch extends Component {
   static displayName = 'Switch';
   static style = style;
+  static enhance = [uniqueIDEnhancement()];
   static defaultProps = {
     theme: 'info',
     size: 'm',
@@ -29,20 +31,29 @@ class Switch extends Component {
   }
 
   getValueProps() {
-    const { theme } = this.asProps;
+    const { theme, uid } = this.asProps;
+
     return {
       theme,
       ref: this.inputRef,
       $rootForceUpdate: this.forceUpdate,
+      uid,
     };
+  }
+
+  getAddonProps() {
+    const { uid } = this.asProps;
+
+    return { uid };
   }
 
   render() {
     const SSwitch = Root;
     const { Children, styles, controlsLength } = this.asProps;
+    const checked = this.inputRef.current?.checked;
 
     return sstyled(styles)(
-      <SSwitch render={Box} tag="label" checked={this.inputRef.current?.checked}>
+      <SSwitch render={Box} tag="label" checked={checked}>
         <NeighborLocation controlsLength={controlsLength}>
           <Children />
         </NeighborLocation>
@@ -56,7 +67,7 @@ class Value extends Component {
     includeInputProps: inputProps,
     defaultChecked: false,
   };
-  static hoistProps = ['disabled'];
+  static hoistProps = ['checked', 'disabled'];
   static enhance = [keyboardFocusEnhance(), neighborLocationEnhance()];
 
   timer = null;
@@ -108,12 +119,17 @@ class Value extends Component {
       keyboardFocused,
       neighborLocation,
       theme,
+      uid,
       ...other
     } = this.asProps;
 
     const [inputProps, toggleProps] = getInputProps(other, includeInputProps);
     const useTheme = isCustomTheme(theme) ? 'custom' : theme;
     const color = resolveColor(theme);
+
+    const labelledBy = inputProps.checked
+      ? `igc-${uid}-switch-addon-left`
+      : `igc-${uid}-switch-addon-right`;
 
     return sstyled(styles)(
       <SToggle
@@ -129,7 +145,9 @@ class Value extends Component {
           type="checkbox"
           ref={forwardRef}
           role="switch"
+          aria-labelledby={labelledBy}
           aria-checked={inputProps.checked}
+          aria-readonly={inputProps.disabled}
           {...inputProps}
           onKeyDown={callAllEventHandlers(this.handleKeyDown, inputProps.onKeyDown)}
         />
@@ -143,8 +161,16 @@ class Value extends Component {
 
 function Addon(props) {
   const SAddon = Root;
-  const { styles } = props;
-  return sstyled(styles)(<SAddon render={Box} tag="span" />);
+  const { styles, neighborLocation, uid } = props;
+
+  return sstyled(styles)(
+    <SAddon
+      render={Box}
+      tag="span"
+      aria-hidden="true"
+      id={`igc-${uid}-switch-addon-${neighborLocation}`}
+    />,
+  );
 }
 
 Addon.enhance = [neighborLocationEnhance()];
