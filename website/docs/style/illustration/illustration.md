@@ -4,7 +4,7 @@ fileSource: illustration
 tabName: Design
 ---
 
-> Note that this component has only one illustration (`MailSent`) so far. We plan to add more illustrations later.
+@import illustrations
 
 @## Description
 
