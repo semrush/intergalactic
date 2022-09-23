@@ -61,7 +61,7 @@ jobs:
           key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
-      - name: Сache build
+      - name: Cache build
         uses: actions/cache@v2
         id: cache-build
         with:
@@ -69,8 +69,12 @@ jobs:
             semcore/*/lib
             tools/*/lib
             semcore/icon/**/*.js
+            semcore/icon/**/*.mjs
             semcore/icon/**/*.d.ts
-          key: build-${{ hashFiles('semcore/**', 'tools/**', 'tsconfig.json', 'pnpm-lock.yaml') }}
+            semcore/illustration/**/*.js
+            semcore/illustration/**/*.mjs
+            semcore/illustration/**/*.d.ts
+          key: build-${{ hashFiles('semcore/*', 'tools/*', 'tsconfig.json', 'pnpm-lock.yaml') }}
       - name: Install dependencies
         run: |
           pnpm install --frozen-lockfile
@@ -111,13 +115,15 @@ jobs:
         id: cache-build
         with:
           path: |
+            semcore/*/lib
+            tools/*/lib
             semcore/icon/**/*.js
             semcore/icon/**/*.mjs
             semcore/icon/**/*.d.ts
             semcore/illustration/**/*.js
             semcore/illustration/**/*.mjs
             semcore/illustration/**/*.d.ts
-          key: build-${{ hashFiles('semcore/**', 'tools/**', 'tsconfig.json', 'pnpm-lock.yaml') }}
+          key: build-${{ hashFiles('semcore/*', 'tools/*', 'tsconfig.json', 'pnpm-lock.yaml') }}
       - name: Install dependencies
         run: |
           pnpm install --frozen-lockfile
@@ -154,13 +160,15 @@ jobs:
         uses: actions/cache@v2
         with:
           path: |
+            semcore/*/lib
+            tools/*/lib
             semcore/icon/**/*.js
             semcore/icon/**/*.mjs
             semcore/icon/**/*.d.ts
             semcore/illustration/**/*.js
             semcore/illustration/**/*.mjs
             semcore/illustration/**/*.d.ts
-          key: build-${{ hashFiles('semcore/**', 'tools/**', 'tsconfig.json', 'pnpm-lock.yaml') }}
+          key: build-${{ hashFiles('semcore/*', 'tools/*', 'tsconfig.json', 'pnpm-lock.yaml') }}
       - name: Install dependencies
         run: |
           pnpm install --frozen-lockfile
@@ -188,7 +196,7 @@ jobs:
             node_modules
             */*/node_modules
             website/node_modules
-          key: modules-${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml') }}--${{ hashFiles('website/pnpm-lock.yaml') }}
+          key: modules-${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml') }} }}
       - name: Install dependencies
         if: steps.cache-modules.outputs.cache-hit != 'true'
         run: |
@@ -215,7 +223,7 @@ jobs:
             node_modules
             */*/node_modules
             website/node_modules
-          key: modules--${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml') }}--${{ hashFiles('website/pnpm-lock.yaml') }}
+          key: modules-${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml') }} }}
       - name: Cache build
         uses: actions/cache@v2
         id: cache-build
@@ -253,7 +261,7 @@ jobs:
             node_modules
             */*/node_modules
             website/node_modules
-          key: modules--${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml') }}--${{ hashFiles('website/pnpm-lock.yaml') }}
+          key: modules-${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml') }} }}
       - name: Restore icons build cache
         uses: actions/cache@v2
         with:
