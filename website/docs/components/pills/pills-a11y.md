@@ -16,3 +16,5 @@ See detailed information about the keyboard support for the buttons, links, etc.
 @## Other recommendations
 
 See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/).
+
+@include pills-a11y-report
