@@ -1,12 +1,13 @@
 import React from 'react';
+import { transition } from 'd3-transition';
 import { Component, sstyled } from '@semcore/core';
 import canUseDOM from '@semcore/utils/lib/canUseDOM';
-import { CONSTANT } from './utils';
-import createElement from './createElement';
 import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
-import { transition } from 'd3-transition';
-import style from './style/scatterplot.shadow.css';
+import createElement from './createElement';
+import { CONSTANT } from './utils';
 import ClipPath from './ClipPath';
+
+import style from './style/scatterplot.shadow.css';
 
 class ScatterPlotRoot extends Component {
   static displayName = 'ScatterPlot';

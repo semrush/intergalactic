@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [1.4.1] - 2022-09-23
+
+### Fixed
+
+- Fixed the problem of not initializing styles without using them.
+
 ## [1.4.0] - 2022-09-13
 
 ### Changed

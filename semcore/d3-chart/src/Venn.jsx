@@ -3,7 +3,6 @@ import { venn, normalizeSolution, scaleSolution, intersectionAreaPath } from '@u
 import { Component, sstyled } from '@semcore/core';
 import canUseDOM from '@semcore/utils/lib/canUseDOM';
 import { FadeInOut } from '@semcore/animation';
-
 import createElement from './createElement';
 import { CONSTANT } from './utils';
 

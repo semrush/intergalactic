@@ -3,9 +3,9 @@ import { Component, Root, sstyled } from '@semcore/core';
 import Popper from '@semcore/popper';
 import { Box } from '@semcore/flex-box';
 import findComponent from '@semcore/utils/lib/findComponent';
-import { CONSTANT } from './utils';
-import createElement from './createElement';
 import resolveColor from '@semcore/utils/lib/color';
+import createElement from './createElement';
+import { CONSTANT } from './utils';
 
 import style from './style/tooltip.shadow.css';
 

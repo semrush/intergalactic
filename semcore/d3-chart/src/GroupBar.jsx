@@ -5,16 +5,12 @@ import createElement from './createElement';
 import Bar from './Bar';
 import HorizontalBar from './HorizontalBar';
 
-import style from './style/bar.shadow.css';
-
 class GroupBarRoot extends Component {
   static displayName = 'GroupBar';
 
-  static style = style;
-
   getScaleGroup() {
     const { Children, scale, scaleGroup, x } = this.asProps;
-    // TODO: love that hack (by lsroman)
+    // TODO: love that hack (by lsroman) ❤️
     const xyScale = x ? scale[0] : scale[1];
 
     if (scaleGroup) return scaleGroup;
