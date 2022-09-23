@@ -33,8 +33,6 @@ jobs:
       - name: Install dependencies
         run: |
           pnpm install --frozen-lockfile
-          cd website
-          pnpm install --frozen-lockfile
       - name: get release pull request name
         run: |
           echo "release_branch_name=${{ github.event.client_payload.pull_request.head.ref }}" >> $GITHUB_ENV

@@ -1,6 +1,8 @@
 import { Plugin } from 'esbuild';
 import { resolve as resolvePath } from 'path';
+import { fileURLToPath } from 'url';
 import { access as fsAccess, stat as fsStat, readFile, readdir } from 'fs/promises';
+const dirname = resolvePath(fileURLToPath(import.meta.url), '..');
 
 const fsExists = async (path: string) => {
   try {
@@ -22,8 +24,8 @@ const tryToResolveWorkspacePath = async (path: string) => {
     );
   }
   const [semcoreDirItems, toolsDirItems] = await Promise.all([
-    readdir(resolvePath(__dirname, '../../../semcore')),
-    readdir(resolvePath(__dirname, '../../../tools')),
+    readdir(resolvePath(dirname, '../../../semcore')),
+    readdir(resolvePath(dirname, '../../../tools')),
   ]);
   const workspaces: string[] = [];
   for (const item of semcoreDirItems) workspaces.push(`semcore/${item}`);
@@ -45,7 +47,7 @@ const tryToResolveWorkspacePath = async (path: string) => {
   for (const workspace of workspaces) {
     const workspaceDestination = workspace.split('/').pop();
     if (workspaceDestination === componentName) {
-      return resolvePath(__dirname, '../../..', workspace);
+      return resolvePath(dirname, '../../..', workspace);
     }
   }
 
@@ -77,13 +79,13 @@ const rootFiles = ['README.md', 'package.json'];
 const generatedComponents = ['icon', 'ui', 'illustration'];
 const outOfSourceDirs = ['style'];
 
-export const esbuildPluginSemcoreSourcesResolve = (rootDir: string): Plugin => ({
+export const esbuildPluginSemcoreSourcesResolve = (): Plugin => ({
   name: 'esbuild-plugin-semcore-sources-resolve',
   setup(build) {
     build.onResolve({ filter: /^(!!raw-loader!)?@semcore\// }, async ({ path }) => {
       const namespace = path.startsWith('!!raw-loader!') ? 'rawFile' : 'file';
       if (namespace === 'rawFile') path = path.substring('!!raw-loader!'.length);
-      const workspacePath = await tryToResolveWorkspacePath(path, rootDir);
+      const workspacePath = await tryToResolveWorkspacePath(path);
       const componentName = path.split('/')[1];
       let subPath = path.split('/').slice(2).join('/');
 

@@ -35,8 +35,6 @@ jobs:
       - name: Install dependencies
         run: |
           pnpm install --frozen-lockfile
-          cd website
-          pnpm install --frozen-lockfile
       - name: Install dependencies
         if: steps.cache-modules.outputs.cache-hit != 'true'
         run: pnpm install --frozen-lockfile
@@ -70,8 +68,6 @@ jobs:
             ${{ runner.os }}-pnpm-store-
       - name: Install dependencies
         run: |
-          pnpm install --frozen-lockfile
-          cd website
           pnpm install --frozen-lockfile
       - name: Notification
         env:

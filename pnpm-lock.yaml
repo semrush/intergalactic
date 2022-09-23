@@ -1908,10 +1908,13 @@ importers:
       '@babel/core': 7.19.1
       '@semcore/babel-plugin-react-semcore': '*'
       '@semcore/babel-preset-ui': '*'
+      esbuild: 0.14.29
     dependencies:
       '@babel/core': 7.19.1
       '@semcore/babel-plugin-react-semcore': link:../babel-plugin-react-semcore
       '@semcore/babel-preset-ui': link:../babel-preset-ui
+    devDependencies:
+      esbuild: 0.14.29
 
   tools/flags-sprite:
     specifiers:
@@ -1989,6 +1992,7 @@ importers:
   tools/jest-preset-ui:
     specifiers:
       '@babel/core': 7.19.1
+      '@guidepup/guidepup': 0.13.1
       '@semcore/babel-preset-ui': '*'
       '@testing-library/jest-dom': 5.16.5
       '@testing-library/react': 12.1.5
@@ -1997,6 +2001,7 @@ importers:
       babel-jest: 29.0.1
       babel-plugin-transform-import-meta: 2.2.0
       dotenv: 16.0.1
+      esbuild: 0.14.29
       identity-obj-proxy: 3.0.0
       jest-axe: 4.1.0
       jest-canvas-mock: 2.4.0
@@ -2019,7 +2024,9 @@ importers:
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
     devDependencies:
+      '@guidepup/guidepup': 0.13.1
       '@types/jest-axe': 3.5.1
+      esbuild: 0.14.29
 
   tools/mailer:
     specifiers:

@@ -23,7 +23,9 @@
     "react-dom": "*"
   },
   "devDependencies": {
-    "@types/jest-axe": "3.5.1"
+    "@types/jest-axe": "3.5.1",
+    "@guidepup/guidepup": "0.13.1",
+    "esbuild": "0.14.29"
   },
   "peerDependencies": {
     "@guidepup/guidepup": "*",

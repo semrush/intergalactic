@@ -38,8 +38,6 @@ jobs:
       - name: Install dependencies
         run: |
           pnpm install --frozen-lockfile
-          cd website
-          pnpm install --frozen-lockfile
       - name: print latest_commit
         run: echo ${{ github.sha }}
 
@@ -79,8 +77,6 @@ jobs:
             ${{ runner.os }}-pnpm-store-
       - name: Install dependencies
         run: |
-          pnpm install --frozen-lockfile
-          cd website
           pnpm install --frozen-lockfile
       - name: generate release pull request name
         run: |

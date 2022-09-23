@@ -56,7 +56,7 @@ export const e2eStandToHtml = async (standFilePath: string, locale: string) => {
           }));
         },
       },
-      esbuildPluginSemcoreSourcesResolve(resolvePath(__dirname, '../..')),
+      esbuildPluginSemcoreSourcesResolve(),
       esbuildPluginSemcore(/semcore|tools/, /(tools\/playground)|node_modules/),
     ],
     bundle: true,

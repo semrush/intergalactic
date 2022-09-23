@@ -10,11 +10,11 @@ WORKDIR /app
 
 COPY ./ ./
 
-RUN yarn install --silent --non-interactive --frozen-lockfile
-RUN yarn build:icons
-RUN yarn build:illustration
-RUN yarn --cwd website install --silent --non-interactive --frozen-lockfile
-RUN yarn --cwd website build
+RUN npm install --global pnpm
+RUN pnpm install --frozen-lockfile
+RUN pnpm build:icons
+RUN pnpm build:illustration
+RUN pnpm --filter intergalactic-documentation run build
 
 FROM nginx:alpine
 

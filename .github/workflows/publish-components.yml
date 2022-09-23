@@ -32,8 +32,6 @@ jobs:
       - name: Install dependencies
         run: |
           pnpm install --frozen-lockfile
-          cd website
-          pnpm install --frozen-lockfile
   publish-components:
     runs-on: ubuntu-latest
     needs: setup

@@ -11,6 +11,9 @@
   "scripts": {
     "test": "jest"
   },
+  "devDependencies": {
+    "esbuild": "0.14.29"
+  },
   "peerDependencies": {
     "esbuild": "*"
   },
