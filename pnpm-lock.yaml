@@ -622,6 +622,7 @@ importers:
       '@semcore/button': ^4
       '@semcore/flex-box': ^4
       '@semcore/format-text': ^3.0.0
+      '@semcore/illustration': 1.1.0
       '@semcore/jest-preset-ui': 1.0.0
       '@semcore/typography': ^4
       '@semcore/utils': ^3.27
@@ -631,6 +632,7 @@ importers:
       '@semcore/button': link:../button
       '@semcore/flex-box': link:../flex-box
       '@semcore/format-text': link:../format-text
+      '@semcore/illustration': 1.1.0
       '@semcore/typography': link:../typography
       '@semcore/utils': link:../utils
     devDependencies:
@@ -1666,11 +1668,13 @@ importers:
   semcore/widget-empty:
     specifiers:
       '@semcore/flex-box': ^4
+      '@semcore/illustration': 1.1.0
       '@semcore/jest-preset-ui': 1.0.0
       '@semcore/utils': ^3.27
       '@types/react': 16.8 - 17
     dependencies:
       '@semcore/flex-box': link:../flex-box
+      '@semcore/illustration': 1.1.0
       '@semcore/utils': link:../utils
     devDependencies:
       '@semcore/jest-preset-ui': link:../../tools/jest-preset-ui
@@ -5523,6 +5527,21 @@ packages:
       - react-dom
     dev: false
 
+  /@semcore/flex-box/4.5.6:
+    resolution:
+      {
+        integrity: sha512-HQRFSwws/xeQoKOsrf9km25uMqTtFVmkuLLo3QFKUcjEOm20TuhjRCL/2UfUcdEnEHkqt4pQJPazrFTdxgbt2w==,
+      }
+    peerDependencies:
+      '@semcore/core': ^1.11
+      react: 16.8 - 17
+    dependencies:
+      '@semcore/utils': 3.34.0
+      csstype: 3.0.8
+    transitivePeerDependencies:
+      - react-dom
+    dev: false
+
   /@semcore/flex-box/4.5.6_@semcore+core@1.11.8:
     resolution:
       {
@@ -5620,6 +5639,21 @@ packages:
       '@babel/runtime': 7.19.0
       '@semcore/core': 1.11.8
       '@semcore/flex-box': 4.5.6_@semcore+core@1.11.8
+    transitivePeerDependencies:
+      - react-dom
+    dev: false
+
+  /@semcore/illustration/1.1.0:
+    resolution:
+      {
+        integrity: sha512-WF0QXE3cZZUa+0sej3K6+w8hwnfw3kH23zjgIRgKcImlZAlZFzozHdRYHb/QCWYN1yuCE7CNF7HfI+UXmU7zJA==,
+      }
+    peerDependencies:
+      '@semcore/core': ^1.11
+      react: 16.8 - 17
+    dependencies:
+      '@babel/runtime': 7.19.0
+      '@semcore/flex-box': 4.5.6
     transitivePeerDependencies:
       - react-dom
     dev: false
@@ -6318,6 +6352,23 @@ packages:
       csstype: 3.0.8
     transitivePeerDependencies:
       - react-dom
+    dev: false
+
+  /@semcore/utils/3.34.0:
+    resolution:
+      {
+        integrity: sha512-y1XIP/ANL8Ud7GDXX9cGzIrO3ayqY6w9PxcK9wzjcyb2JH8n+SIakLOb9NC4UeSGyUBg3gYj2vFohbYYDzPdyw==,
+      }
+    peerDependencies:
+      '@semcore/core': ^1
+      react: 16.8 - 17
+      react-dom: 16.8 - 17
+    dependencies:
+      '@babel/runtime': 7.19.0
+      '@types/react': 17.0.50
+      classnames: 2.2.6
+      hoist-non-react-statics: 3.3.2
+      nano-css: 5.3.4
     dev: false
 
   /@semcore/utils/3.34.0_@semcore+core@1.11.8:
