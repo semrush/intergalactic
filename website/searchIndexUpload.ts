@@ -4,6 +4,7 @@ import dotenv from 'dotenv';
 import CONFIG from './src/algolia.js';
 // eslint-disable-next-line import/extensions
 import dataIcons from './docs/style/icon/components/icons-list.js';
+import dataIllustrations from './docs/style/illustration/components/illustrations-list.js';
 
 import algoliasearch from 'algoliasearch';
 import { buildNavigation } from './builder/navigation';
@@ -34,6 +35,7 @@ if (!process.env.ALGOLIA_SECRET_KEY) {
 const client = algoliasearch(CONFIG.ALGOLIA_APP, process.env.ALGOLIA_SECRET_KEY);
 const index = client.initIndex(CONFIG.ALGOLIA_INDEX);
 const indexIcons = client.initIndex(CONFIG.ALGOLIA_INDEX_ICONS);
+const indexIllustrations = client.initIndex(CONFIG.ALGOLIA_INDEX_ILLUSTRATIONS);
 
 const { navigationTree } = await buildNavigation(docsDir);
 
@@ -86,12 +88,14 @@ const traverse = async (node, parentNode?) => {
 await Promise.all(navigationTree.map((node) => traverse(node)));
 
 const objectIcons = dataIcons.icons.map((o, i) => ({ objectID: i, ...o }));
+const objectIllustrations = dataIllustrations.illustrations.map((o, i) => ({ objectID: i, ...o }));
 
-if (!objects.length || !objectIcons.length) {
+if (!objects.length || !objectIcons.length || !objectIllustrations.length) {
   // eslint-disable-next-line no-console
   console.info({
     objects,
     objectIcons,
+    objectIllustrations,
   });
   throw new Error(`Empty index was going to be sent to algolia, see above`);
 }
@@ -103,5 +107,10 @@ await index.partialUpdateObjects(objects, {
 
 await indexIcons.clearObjects();
 await indexIcons.partialUpdateObjects(objectIcons, {
+  createIfNotExists: true,
+});
+
+await indexIllustrations.clearObjects();
+await indexIllustrations.partialUpdateObjects(objectIllustrations, {
   createIfNotExists: true,
 });

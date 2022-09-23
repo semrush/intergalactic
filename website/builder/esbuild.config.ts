@@ -8,6 +8,7 @@ import { resolve as resolvePath } from 'path';
 import { esbuildPluginDocs } from './esbuild-plugin-docs';
 import { esbuildPluginStatic } from './esbuild-plugin-static';
 import { esbuildPluginIcons } from './esbuild-plugin-icons';
+import { esbuildPluginIllustrations } from './esbuild-plugin-illustrations';
 import { esbuildPluginCssModules } from './esbuild-plugin-css-modules';
 import { esbuildPluginCrutches } from './esbuild-intergalactic-crutches';
 import { fileURLToPath } from 'url';
@@ -26,6 +27,7 @@ export const websiteEsbuildConfig: esbuild.BuildOptions = {
     esbuildPluginDocs(),
     esbuildPluginStatic(),
     esbuildPluginIcons(),
+    esbuildPluginIllustrations(),
     esbuildPluginCrutches(),
     esbuildPluginCssModules(),
     process.env.NODE_ENV !== 'production'
