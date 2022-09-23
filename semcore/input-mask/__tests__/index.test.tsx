@@ -17,6 +17,7 @@ describe('InputMask', () => {
       <InputMask size="l" mb={4}>
         <InputMask.Value
           mask="99 99"
+          title="4-digit number"
           placeholder="__ __"
           data-testid="input"
           defaultValue={value}
@@ -40,6 +41,7 @@ describe('InputMask', () => {
         <InputMask size="l" mb={4}>
           <InputMask.Value
             mask="99 99"
+            title="4-digit number"
             placeholder="__ __"
             id="input_mask"
             title="4-digit number"
