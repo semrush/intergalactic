@@ -169,7 +169,7 @@ class PanelChangeIcon extends PureComponent {
     const includeName = haveSizeIcon ? `${name}${size.toUpperCase()}` : name;
     const includeSize = haveSizeIcon ? `/${size}` : '';
     const includeLib = old ? `/lib` : '';
-    const importText = `import ${includeName} from '@semcore/icon${includeLib}${includeGroupName}/${name}${includeSize}'`;
+    const importText = `import ${includeName} from '@semcore/ui/icon${includeLib}${includeGroupName}/${name}${includeSize}'`;
 
     return (
       <Copy title="Copied!" text={importText} key={index} trigger="click">

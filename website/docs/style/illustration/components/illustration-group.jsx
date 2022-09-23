@@ -23,7 +23,7 @@ function modalLayout() {
 class PanelChangeIllustration extends PureComponent {
   render() {
     const { name } = this.props;
-    const importText = `import ${name} from '@semcore/illustration/${name}'`;
+    const importText = `import ${name} from '@semcore/ui/illustration/${name}'`;
     const url = `semcore/illustration/svg/${name}.svg`;
 
     return (
