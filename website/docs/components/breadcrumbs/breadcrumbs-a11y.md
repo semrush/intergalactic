@@ -3,7 +3,9 @@ title: A11y
 a11y: AA
 ---
 
-@## Keyboard support
+@## What component has
+
+### Keyboard support
 
 | Key              | Function                                         |
 | ---------------- | ------------------------------------------------ |
@@ -11,13 +13,13 @@ a11y: AA
 | `Tab`            | Moves focus to the next focusable element.       |
 | `Shift + Tab`    | Moves focus to the previous focusable element.   |
 
-@## Roles & attributes
+### Roles & attributes
 
-The list below will help you to keep in mind the necessary roles and attributes to make our components fully accessible in your interfaces.
+The list below describes roles and attributes that component already has.
 
 | Role | Attribute                 | Element | Usage                                                                                 |
 | ---- | ------------------------- | ------- | ------------------------------------------------------------------------------------- |
-|      | `aria-label="Breadcrumb"` | `nav`   | Provides a label that describes the type of navigation provided in the `nav` element. |
+|      | `aria-label="Breadcrumb"` | `div`   | Provides a label that describes the type of navigation provided in the `nav` element. |
 |      | `aria-current="page"`     | `a`     | Applied to the last link in the set to indicate that it represents the current page.  |
 
 @## Resources
