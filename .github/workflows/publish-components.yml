@@ -57,7 +57,8 @@ jobs:
         id: cache-build
         with:
           path: |
-            **/lib
+            semcore/*/lib
+            tools/*/lib
             semcore/icon/**/*.js
             semcore/icon/**/*.mjs
             semcore/icon/**/*.d.ts

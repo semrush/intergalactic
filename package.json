@@ -6,7 +6,7 @@
     "build:icons": "pnpm --filter @semcore/icon run build",
     "build:illustration": "pnpm --filter @semcore/illustration run build",
     "typecheck": "pnpm --filter @semcore/* --filter !@semcore/babel-plugin-root --filter !@semcore/babel-plugin-styles --filter !@semcore/babel-plugin-react-semcore --filter !@semcore/babel-preset-ui --filter !@semcore/jest-preset-ui --filter !@semcore/babel-plugin-recharts --filter !@semcore/email --filter !@semcore/dep-checker --filter !@semcore/code-mod --filter !@semcore/icon-transform-svg --filter !@semcore/shadow-loader --filter !@semcore/generator-component exec tsc --noEmit",
-    "prebuild": "rm -rf semcore/**/lib && pnpm prebuild:icon && pnpm prebuild:illustration",
+    "prebuild": "rm -rf semcore/*/lib && pnpm prebuild:icon && pnpm prebuild:illustration",
     "prebuild:icon": "pnpm --filter @semcore/icon run prebuild",
     "prebuild:illustration": "pnpm --filter @semcore/illustration run prebuild",
     "test": "jest --no-cache",
