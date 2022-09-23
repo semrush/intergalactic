@@ -1,7 +1,7 @@
 import React from 'react';
 import createComponent, { Component, sstyled, Root } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
-import { neighborLocationEnhance } from '@semcore/neighbor-location';
+import { NEIGHBOR_LOCATION_AUTO_DETECT } from '@semcore/neighbor-location';
 import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 import addonTextChildren from '@semcore/utils/lib/addonTextChildren';
 import logger from '@semcore/utils/lib/logger';
@@ -19,7 +19,8 @@ export const MAP_USE_DEFAULT_THEME = {
 
 class RootButton extends Component {
   static displayName = 'Button';
-  static enhance = [keyboardFocusEnhance(), neighborLocationEnhance()];
+  static enhance = [keyboardFocusEnhance()];
+  static [NEIGHBOR_LOCATION_AUTO_DETECT] = true;
   static style = style;
   static defaultProps = {
     use: 'secondary',

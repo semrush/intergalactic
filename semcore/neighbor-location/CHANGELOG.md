@@ -2,6 +2,13 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.0.0] - 2022-09-23
+
+### BREAK
+
+- The approach to determining neighbors has been changed. Now the neighbors are determined by enumeration of children
+  and not by context.
+
 ## [2.3.15] - 2022-08-30
 
 ### Changed

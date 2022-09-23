@@ -1,7 +1,7 @@
 import React from 'react';
 import createComponent, { Component, sstyled, Root } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
-import NeighborLocation, { neighborLocationEnhance } from '@semcore/neighbor-location';
+import NeighborLocation, { NEIGHBOR_LOCATION_AUTO_DETECT } from '@semcore/neighbor-location';
 import autoFocusEnhance from '@semcore/utils/lib/enhances/autoFocusEnhance';
 import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 
@@ -9,13 +9,12 @@ import style from './style/input.shadow.css';
 
 class Input extends Component {
   static displayName = 'Input';
-
+  static [NEIGHBOR_LOCATION_AUTO_DETECT] = true;
+  static style = style;
   static defaultProps = {
     size: 'm',
     state: 'normal',
   };
-  static style = style;
-  static enhance = [neighborLocationEnhance()];
 
   state = {
     focused: false,
@@ -67,10 +66,11 @@ class Input extends Component {
 }
 
 class Value extends Component {
+  static enhance = [keyboardFocusEnhance(), autoFocusEnhance()];
+  static [NEIGHBOR_LOCATION_AUTO_DETECT] = true;
   static defaultProps = {
     defaultValue: '',
   };
-  static enhance = [keyboardFocusEnhance(), autoFocusEnhance(), neighborLocationEnhance()];
 
   uncontrolledProps() {
     return {
@@ -95,7 +95,7 @@ function Addon(props) {
   );
 }
 
-Addon.enhance = [neighborLocationEnhance()];
+Addon[NEIGHBOR_LOCATION_AUTO_DETECT] = true;
 
 export default createComponent(Input, {
   Addon,

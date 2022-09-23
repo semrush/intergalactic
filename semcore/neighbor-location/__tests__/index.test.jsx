@@ -2,10 +2,10 @@ import React from 'react';
 import { testing } from '@semcore/jest-preset-ui';
 const { cleanup, render } = testing;
 import createComponent, { Component } from '@semcore/core';
-import NeighborLocation, { neighborLocationEnhance } from '../src';
+import NeighborLocation, { NEIGHBOR_LOCATION_AUTO_DETECT } from '../src';
 
 class TestRoot extends Component {
-  static enhance = [neighborLocationEnhance()];
+  static [NEIGHBOR_LOCATION_AUTO_DETECT] = true;
 
   render() {
     const { neighborLocation } = this.asProps;

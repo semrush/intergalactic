@@ -17,7 +17,7 @@
     "@semcore/dot": "^4.0.0",
     "@semcore/flex-box": "^4",
     "@semcore/icon": "^2.16",
-    "@semcore/neighbor-location": "^2",
+    "@semcore/neighbor-location": "^3",
     "@semcore/spin": "^4"
   },
   "peerDependencies": {

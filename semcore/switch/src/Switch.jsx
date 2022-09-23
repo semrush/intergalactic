@@ -1,7 +1,7 @@
 import React from 'react';
 import createComponent, { Component, sstyled, Root } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
-import NeighborLocation, { neighborLocationEnhance } from '@semcore/neighbor-location';
+import NeighborLocation, { NEIGHBOR_LOCATION_AUTO_DETECT } from '@semcore/neighbor-location';
 import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 import resolveColor from '@semcore/utils/lib/color';
 import getInputProps, { inputProps } from '@semcore/utils/lib/inputProps';
@@ -52,12 +52,13 @@ class Switch extends Component {
 }
 
 class Value extends Component {
+  static hoistProps = ['disabled'];
+  static enhance = [keyboardFocusEnhance()];
+  static [NEIGHBOR_LOCATION_AUTO_DETECT] = true;
   static defaultProps = {
     includeInputProps: inputProps,
     defaultChecked: false,
   };
-  static hoistProps = ['disabled'];
-  static enhance = [keyboardFocusEnhance(), neighborLocationEnhance()];
 
   timer = null;
 
@@ -147,7 +148,7 @@ function Addon(props) {
   return sstyled(styles)(<SAddon render={Box} tag="span" />);
 }
 
-Addon.enhance = [neighborLocationEnhance()];
+Addon[NEIGHBOR_LOCATION_AUTO_DETECT] = true;
 
 export { inputProps };
 export default createComponent(Switch, {

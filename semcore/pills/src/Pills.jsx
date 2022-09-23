@@ -1,7 +1,7 @@
 import React from 'react';
 import createComponent, { Component, sstyled, Root } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
-import NeighborLocation, { neighborLocationEnhance } from '@semcore/neighbor-location';
+import NeighborLocation, { NEIGHBOR_LOCATION_AUTO_DETECT } from '@semcore/neighbor-location';
 import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 import addonTextChildren from '@semcore/utils/lib/addonTextChildren';
 
@@ -62,7 +62,8 @@ function Pill(props) {
   );
 }
 
-Pill.enhance = [keyboardFocusEnhance(), neighborLocationEnhance()];
+Pill.enhance = [keyboardFocusEnhance()];
+Pill[NEIGHBOR_LOCATION_AUTO_DETECT] = true;
 
 function Text(props) {
   const SText = Root;

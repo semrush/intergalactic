@@ -6,9 +6,11 @@ tabName: Design
 
 @## Description
 
-**NeighborLocation** is a component for grouping components. It indicates where the component is in relation to its neighbors.
+**NeighborLocation** is a component for grouping components. It indicates where the component is in relation to its
+neighbors.
 
-> 🙃 This violates many principles of building components, but the beautiful API and the necessary functionality outweighed the valuations.
+> 🙃 This violates many principles of building components, but the beautiful API and the necessary functionality
+> outweighed the valuations.
 
 For example, you can group together:
 
@@ -16,7 +18,8 @@ For example, you can group together:
 - [Input](/components/input/)
 - [Select](/components/select)
 
-You may also need a `flex-box` to align the components. For more information, see the [Flex-box and indent system](/layout/box-system/).
+You may also need a `flex-box` to align the components. For more information, see
+the [Flex-box and indent system](/layout/box-system/).
 
 @## Grouped buttons
 
@@ -58,6 +61,13 @@ By default, `<NeighborLocation/>` does not create an HTML wrapper, but you can p
 > `<NeighborLocation<IFlexProps> tag={Flex} w={200}/>`
 
 @example neighbor-location-with-tag
+
+@## Using a custom component
+
+You can apply <NeighborLocation/> to your components. You need to add a static field `NEIGHBOR_LOCATION_AUTO_DETECT` and
+then the `neighborLocation` prop will come to your component.
+
+@example neighbor-location-with-custom
 
 @page neighbor-location-api
 @page neighbor-location-changelog

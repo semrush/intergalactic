@@ -1,5 +1,5 @@
 import React from 'react';
-import { PropGetterFn, ReturnEl } from '@semcore/core';
+import { ReturnEl } from '@semcore/core';
 
 export interface INeighborLocationProps {
   /**
@@ -16,8 +16,8 @@ export interface INeighborItemProps {
   neighborLocation?: 'right' | 'both' | 'left' | false;
 }
 
-declare const neighborLocationEnhance: () => PropGetterFn;
+declare const NEIGHBOR_LOCATION_AUTO_DETECT: unique symbol;
 declare const NeighborLocation: <T>(props: INeighborLocationProps & T) => ReturnEl;
 
-export { neighborLocationEnhance };
+export { NEIGHBOR_LOCATION_AUTO_DETECT };
 export default NeighborLocation;

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { StrictMode } from 'react';
 
 // eslint-disable-next-line import/no-unresolved
 import { playgrounds } from '@playgrounds';
@@ -60,11 +60,13 @@ export const PlaygroundWrapper: React.FC = () => {
 
 export const App: React.FC = () => {
   return (
-    <div>
-      <Nav />
-      <main className="intergalactic-playground_playground-view">
-        <PlaygroundWrapper />
-      </main>
-    </div>
+    <StrictMode>
+      <div>
+        <Nav />
+        <main className="intergalactic-playground_playground-view">
+          <PlaygroundWrapper />
+        </main>
+      </div>
+    </StrictMode>
   );
 };

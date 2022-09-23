@@ -1,100 +1,82 @@
-import React, { useContext, useRef } from 'react';
-import createComponent, { Root, Component, register, CONTEXT_COMPONENT } from '@semcore/core';
+import React from 'react';
+import createComponent, { Root, Component, register } from '@semcore/core';
 import getOriginChildren from '@semcore/utils/lib/getOriginChildren';
-import isNode from '@semcore/utils/lib/isNode';
 
-const CALCULATE_NEIGHBOR_LOCATION = Symbol('CALCULATE_NEIGHBOR_LOCATION');
+function getControlsLength(children, controlsLength = 0) {
+  React.Children.forEach(children, function (child) {
+    if (!React.isValidElement(child)) return;
+    if (child.props.neighborLocation === false) return child;
+
+    if (child.props.neighborLocation || child.type[NEIGHBOR_LOCATION_AUTO_DETECT]) {
+      controlsLength += 1;
+    } else if (child.props.children) {
+      controlsLength = getControlsLength(child.props.children, controlsLength);
+    }
+  });
+  return controlsLength;
+}
+
+function getChildrenWithNeighborLocation(children, controlsLength) {
+  let controlsIndex = 0;
+  const recursiveNeighborLocation = function (children) {
+    return React.Children.map(children, (child) => {
+      if (!React.isValidElement(child)) return child;
+      if (child.props.neighborLocation === false) return child;
+
+      if (child.props.neighborLocation || child.type[NEIGHBOR_LOCATION_AUTO_DETECT]) {
+        if (!child.props.neighborLocation) {
+          let neighborLocation = 'both';
+          if (controlsIndex === 0) {
+            neighborLocation = 'right';
+          }
+          if (controlsIndex === controlsLength - 1) {
+            neighborLocation = 'left';
+          }
+          child = React.cloneElement(child, { neighborLocation });
+        }
+        controlsIndex += 1;
+        return child;
+      } else if (child.props.children) {
+        return React.cloneElement(child, {
+          children: recursiveNeighborLocation(child.props.children),
+        });
+      }
+      return child;
+    });
+  };
+
+  return recursiveNeighborLocation(children, controlsLength);
+}
 
 class NeighborLocationRoot extends Component {
   static displayName = 'NeighborLocation';
 
-  _currentIndex = null;
-
-  calculateNeighborLocation(controlsLength, prevNeighborLocation) {
-    // default state
-    let neighborLocation = 'both';
-
-    if (this._currentIndex === null) {
-      // for re-render component
-      if (prevNeighborLocation) {
-        // return prev state
-        return prevNeighborLocation;
-      } else {
-        // for not context component
-        return undefined;
-      }
-    }
-    // if one children
-    if (controlsLength === 1) {
-      return undefined;
-    }
-    // if first children
-    if (this._currentIndex === 0) {
-      neighborLocation = 'right';
-    }
-    // if last children
-    if (this._currentIndex === controlsLength - 1) {
-      neighborLocation = 'left';
-    }
-    // increment index children
-    this._currentIndex = this._currentIndex + 1;
-    // if finished render all children
-    if (this._currentIndex === controlsLength) {
-      // reset index
-      this._currentIndex = null;
-    }
-    // return default state
-    return neighborLocation;
-  }
-
-  setContext() {
-    const {
-      Children,
-      controlsLength = React.Children.toArray(getOriginChildren(Children)).filter(isNode).length,
-    } = this.asProps;
-
-    return {
-      [CALCULATE_NEIGHBOR_LOCATION]: this.calculateNeighborLocation.bind(this, controlsLength),
-    };
-  }
-
   render() {
-    const { Children, tag: Tag } = this.asProps;
-    this._currentIndex = 0;
+    const { Children, tag: Tag, controlsLength } = this.asProps;
+    const OriginChildren = getOriginChildren(Children);
+    const children =
+      controlsLength === 1
+        ? OriginChildren
+        : getChildrenWithNeighborLocation(
+            OriginChildren,
+            controlsLength ?? getControlsLength(OriginChildren),
+          );
 
     if (Tag) {
-      return <Root render={Tag}>{Children.origin}</Root>;
+      return <Root render={Tag}>{children}</Root>;
     }
 
-    return Children.origin;
+    return children;
   }
 }
 
-function neighborLocationEnhance() {
-  return (props) => {
-    const prevNeighborLocationRef = useRef(undefined);
-    const ctx = useContext(NeighborLocation[CONTEXT_COMPONENT]);
-    if (ctx[CALCULATE_NEIGHBOR_LOCATION]) {
-      prevNeighborLocationRef['current'] = ctx[CALCULATE_NEIGHBOR_LOCATION](
-        prevNeighborLocationRef['current'],
-      );
-    }
-    return {
-      neighborLocation: prevNeighborLocationRef['current'],
-      ...props,
-    };
-  };
-}
-
-const Context = register.get('neighbor-location-context', React.createContext({}));
-const NeighborLocation = createComponent(
-  NeighborLocationRoot,
-  {},
-  {
-    context: Context,
-  },
+const NEIGHBOR_LOCATION_AUTO_DETECT = register.get(
+  'neighbor-location-detect',
+  Symbol('NEIGHBOR_LOCATION_AUTO_DETECT'),
 );
 
-export { neighborLocationEnhance };
+const NeighborLocation = createComponent(NeighborLocationRoot);
+
+export { NEIGHBOR_LOCATION_AUTO_DETECT };
 
 export default NeighborLocation;

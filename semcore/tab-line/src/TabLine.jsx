@@ -4,7 +4,7 @@ import { Box } from '@semcore/flex-box';
 import addonTextChildren from '@semcore/utils/lib/addonTextChildren';
 import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 import a11yEnhance from '@semcore/utils/lib/enhances/a11yEnhance';
-import NeighborLocation, { neighborLocationEnhance } from '@semcore/neighbor-location';
+import NeighborLocation, { NEIGHBOR_LOCATION_AUTO_DETECT } from '@semcore/neighbor-location';
 import ResizeObserver from 'resize-observer-polyfill';
 
 import style from './style/tab-line.shadow.css';
@@ -125,7 +125,8 @@ function TabLineItem(props) {
   );
 }
 
-TabLineItem.enhance = [keyboardFocusEnhance(), neighborLocationEnhance()];
+TabLineItem.enhance = [keyboardFocusEnhance()];
+TabLineItem[NEIGHBOR_LOCATION_AUTO_DETECT] = true;
 
 function Text(props) {
   const { styles } = props;
