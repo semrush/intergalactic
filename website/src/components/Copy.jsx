@@ -22,7 +22,7 @@ class Copy extends PureComponent {
       this.props.onClick(e);
     }
 
-    this.setState({ textTooltip: copiedText });
+    this.setState({ textTooltip: this.props.title || copiedText });
 
     setTimeout(() => {
       this.setState((prevState) => {

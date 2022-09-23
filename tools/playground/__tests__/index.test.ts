@@ -51,6 +51,7 @@ describe('Playground sources resolving', () => {
         '@components/algolia-config',
         '@icons/lib',
         '@icons',
+        '@illustrations',
       ],
       outdir: './output-is-disabled-with-write-false-option',
       write: false,

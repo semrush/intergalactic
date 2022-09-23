@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [1.1.0] - 2022-09-21
+
+### Added
+
+- Added svg illustrations (they were moved from `widget-empty` and `errors` components).
+
 ## [1.0.5] - 2022-08-30
 
 ### Changed
