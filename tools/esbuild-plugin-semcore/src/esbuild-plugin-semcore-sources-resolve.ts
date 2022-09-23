@@ -1,8 +1,6 @@
 import { Plugin } from 'esbuild';
 import { resolve as resolvePath } from 'path';
-import { fileURLToPath } from 'url';
 import { access as fsAccess, stat as fsStat, readFile, readdir } from 'fs/promises';
-const dirname = resolvePath(fileURLToPath(import.meta.url), '..');
 
 const fsExists = async (path: string) => {
   try {
@@ -17,15 +15,15 @@ const isFile = async (path: string) => {
   return (await fsStat(path)).isFile();
 };
 
-const tryToResolveWorkspacePath = async (path: string) => {
+const tryToResolveWorkspacePath = async (path: string, rootPath: string) => {
   if (!path.startsWith('@semcore/')) {
     throw new Error(
       `Unable to resolve workspace for non @semcore package (trying to resolve "${path}")`,
     );
   }
   const [semcoreDirItems, toolsDirItems] = await Promise.all([
-    readdir(resolvePath(dirname, '../../../semcore')),
-    readdir(resolvePath(dirname, '../../../tools')),
+    readdir(resolvePath(rootPath, 'semcore')),
+    readdir(resolvePath(rootPath, 'tools')),
   ]);
   const workspaces: string[] = [];
   for (const item of semcoreDirItems) workspaces.push(`semcore/${item}`);
@@ -47,7 +45,7 @@ const tryToResolveWorkspacePath = async (path: string) => {
   for (const workspace of workspaces) {
     const workspaceDestination = workspace.split('/').pop();
     if (workspaceDestination === componentName) {
-      return resolvePath(dirname, '../../..', workspace);
+      return resolvePath(rootPath, workspace);
     }
   }
 
@@ -79,13 +77,13 @@ const rootFiles = ['README.md', 'package.json'];
 const generatedComponents = ['icon', 'ui', 'illustration'];
 const outOfSourceDirs = ['style'];
 
-export const esbuildPluginSemcoreSourcesResolve = (): Plugin => ({
+export const esbuildPluginSemcoreSourcesResolve = (rootPath: string): Plugin => ({
   name: 'esbuild-plugin-semcore-sources-resolve',
   setup(build) {
     build.onResolve({ filter: /^(!!raw-loader!)?@semcore\// }, async ({ path }) => {
       const namespace = path.startsWith('!!raw-loader!') ? 'rawFile' : 'file';
       if (namespace === 'rawFile') path = path.substring('!!raw-loader!'.length);
-      const workspacePath = await tryToResolveWorkspacePath(path);
+      const workspacePath = await tryToResolveWorkspacePath(path, rootPath);
       const componentName = path.split('/')[1];
       let subPath = path.split('/').slice(2).join('/');
 
