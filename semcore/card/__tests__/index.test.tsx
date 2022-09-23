@@ -84,7 +84,7 @@ describe('Card', () => {
             style={{ float: 'right' }}
             color="stone"
             interactive
-            aria-label="Open setting"
+            aria-label="Open settings"
           />
           <Card.Description>This is card additional information or insights.</Card.Description>
         </Card.Header>
