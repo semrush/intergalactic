@@ -239,7 +239,7 @@ jobs:
           key: build-icons-${{ hashFiles('semcore/icon', 'tsconfig.json', 'pnpm-lock.yaml') }}
       - name: Build
         if: steps.cache-build.outputs.cache-hit != 'true'
-        run: pnpm run build:icons
+        run: pnpm i && pnpm run build:icons
   vo-test:
     runs-on: macos-latest
     needs:

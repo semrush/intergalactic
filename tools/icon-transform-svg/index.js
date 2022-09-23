@@ -90,7 +90,7 @@ const generateIcons = (
 ) => {
   return new Promise((resolve, reject) => {
     glob(`${rootDir}/${sourceLib}/**/*svg`, async (err, icons) => {
-      if (err) reject(error);
+      if (err) reject(err);
       const results = icons.map(async (iconPath) => {
         const { name, location, group } = getDescriptionIcons(iconPath, outLib);
         const source = await svgToReactComponent(iconPath, name, group);

@@ -56,5 +56,5 @@ describe('Playground sources resolving', () => {
       outdir: './output-is-disabled-with-write-false-option',
       write: false,
     });
-  }, 20000);
+  }, 30000);
 });

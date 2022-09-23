@@ -41,6 +41,7 @@
     "@semcore/core": "workspace:*",
     "@semcore/d3-chart": "workspace:*",
     "@semcore/jest-preset-ui": "workspace:*",
+    "@semcore/babel-plugin-react-semcore": "workspace:*",
     "@semcore/theme-redesign": "1.5.12",
     "@types/jest": "29.0.0",
     "@typescript-eslint/eslint-plugin": "5.10.2",
@@ -56,11 +57,11 @@
     "eslint-plugin-prettier": "3.1.2",
     "eslint-plugin-react": "7.29.4",
     "eslint-plugin-ssr-friendly": "1.1.0",
+    "@babel/runtime": "7.17.9",
     "execa": "6.1.0",
     "husky": "8.0.0",
     "jest": "29.0.1",
     "jest-environment-jsdom": "29.0.1",
-    "lerna": "4.0.0",
     "lint-staged": "10.2.9",
     "picocolors": "1.0.0",
     "playwright": "1.25.1",
@@ -88,6 +89,6 @@
     "trim-newlines": "3.0.1",
     "glob-parent": "6.0.2",
     "braces": "3.0.2",
-    "@babel/runtime": "7.17.9"
+    "@babel/runtime": "7"
   }
 }

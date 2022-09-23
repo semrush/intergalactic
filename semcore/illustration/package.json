@@ -10,7 +10,7 @@
   "license": "MIT",
   "scripts": {
     "transform": "pnpm icon-transform-svg",
-    "build": "pnpm semcore-builder --source=js && pnpm run transform -- --configFile=transform-svg.config.js",
+    "build": "pnpm semcore-builder --source=js && pnpm run transform --configFile=transform-svg.config.js",
     "prebuild": "ls -d */ | egrep -v \"__tests__|svg|src\" | xargs rm -rf && rm *.svg || true",
     "upload-static": "gcs-upload svg/*.svg"
   },

@@ -6,7 +6,7 @@ module.exports = {
   transform: {
     '^.+\\.(jsx?|tsx?)$': resolvePath(`${__dirname}/src/babel.config.js`),
   },
-  transformIgnorePatterns: ['node_modules/(?!@semcore/|@popperjs/|d3-|internmap)'],
+  transformIgnorePatterns: ['node_modules/.pnpm/(?!@semcore+|@popperjs+|d3-|internmap)'],
   // collectCoverageFrom: ['**/semcore/*/src/**.*'],
   coveragePathIgnorePatterns: ['/style/', 'src/index.tsx'],
   moduleFileExtensions: ['js', 'jsx', 'json', 'ts', 'tsx'],
@@ -18,7 +18,6 @@ module.exports = {
     '^@semcore/icon/(.*)/(.*)': '@semcore/icon/$1/$2',
     '^@semcore/(.*)': '@semcore/$1/src',
     '^disable-jest-mapper:(.*)': '$1',
-    '^d3-(.*)$': `d3-$1/dist/d3-$1`,
     '^react$': resolvePath(__dirname, '../../node_modules/react/umd/react.production.min.js'),
     '^react-dom$': resolvePath(
       __dirname,
@@ -27,5 +26,4 @@ module.exports = {
   },
   modulePathIgnorePatterns: ['/generator-component/'],
   testEnvironment: 'jsdom',
-  // testEnvironmentOptions: {}
 };
