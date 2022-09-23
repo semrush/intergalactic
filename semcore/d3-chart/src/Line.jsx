@@ -1,11 +1,11 @@
 import React from 'react';
 import { curveLinear, line as d3Line } from 'd3-shape';
 import { Component, sstyled } from '@semcore/core';
+import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 import createElement from './createElement';
 import { definedData, definedNullData, scaleOfBandwidth, getNullData } from './utils';
 import Dots from './Dots';
 import ClipPath from './ClipPath';
-import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 
 import style from './style/line.shadow.css';
 

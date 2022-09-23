@@ -150,20 +150,14 @@ function StylesPlugin({ types: t }, opts) {
     });
   }
 
-  // TODO: that is hack (by lsroman)
-  let INIT_SSTYLED = false;
   return {
     inherits: syntaxJsx,
-    pre() {
-      INIT_SSTYLED = false;
-    },
     visitor: {
       ImportDeclaration(p, state) {
         const { source, specifiers } = p.node;
         if (source.value === '@semcore/core') {
           specifiers.forEach((specifier) => {
             if (specifier.imported?.name === 'sstyled') {
-              INIT_SSTYLED = true;
               p.scope.getBinding(specifier.local.name)?.referencePaths.forEach((refP) => {
                 if (t.isCallExpression(refP.container)) {
                   styledProcessing(refP, specifier.local.name);
@@ -181,7 +175,7 @@ function StylesPlugin({ types: t }, opts) {
             }
           });
         }
-        if (INIT_SSTYLED && source.value.endsWith('.shadow.css')) {
+        if (source.value.endsWith('.shadow.css')) {
           specifiers.forEach((specifier) => {
             if (t.isImportDefaultSpecifier(specifier)) {
               const cssPath = path.resolve(path.dirname(state.filename), source.value);

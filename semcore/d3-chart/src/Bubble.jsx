@@ -1,13 +1,14 @@
 import React from 'react';
+import { scaleSqrt } from 'd3-scale';
+import { transition } from 'd3-transition';
 import { Component, sstyled } from '@semcore/core';
 import canUseDOM from '@semcore/utils/lib/canUseDOM';
-import { CONSTANT, measureText } from './utils';
-import createElement from './createElement';
 import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
-import { transition } from 'd3-transition';
-import style from './style/bubble.shadow.css';
+import createElement from './createElement';
 import ClipPath from './ClipPath';
-import { scaleSqrt } from 'd3-scale';
+import { CONSTANT, measureText } from './utils';
+
+import style from './style/bubble.shadow.css';
 
 class BubbleRoot extends Component {
   static displayName = 'Bubble';

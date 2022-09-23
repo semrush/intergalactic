@@ -6,15 +6,11 @@ import createElement from './createElement';
 import Bar from './Bar';
 import HorizontalBar from './HorizontalBar';
 
-import style from './style/bar.shadow.css';
-
 const DEFAULT_INSTANCE = Symbol('DEFAULT_INSTANCE');
 const XY0 = Symbol('XY0');
 
 class StackBarRoot extends Component {
   static displayName = 'StackBar';
-
-  static style = style;
 
   static defaultProps = () => {
     const stack = d3Stack();

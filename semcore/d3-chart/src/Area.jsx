@@ -1,12 +1,12 @@
 import React from 'react';
 import { area, curveLinear, line } from 'd3-shape';
-import Dots from './Dots';
 import { Component, sstyled } from '@semcore/core';
+import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
+import findComponent from '@semcore/utils/lib/findComponent';
+import Dots from './Dots';
 import createElement from './createElement';
 import { definedData, scaleOfBandwidth, getNullData, definedNullData } from './utils';
 import ClipPath from './ClipPath';
-import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
-import findComponent from '@semcore/utils/lib/findComponent';
 
 import style from './style/area.shadow.css';
 
