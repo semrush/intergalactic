@@ -36,6 +36,7 @@
     "@semcore/babel-plugin-root": "workspace:*",
     "@semcore/babel-plugin-styles": "workspace:*",
     "@semcore/babel-preset-ui": "workspace:*",
+    "@semcore/esbuild-plugin-semcore": "workspace:*",
     "@semcore/builder": "workspace:*",
     "@semcore/core": "workspace:*",
     "@semcore/d3-chart": "workspace:*",
