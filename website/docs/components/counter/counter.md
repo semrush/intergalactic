@@ -73,6 +73,7 @@ In a table, a text counter can be used inside a tag to mark information.
 
 The counter shall be always located right relative to other interface elements.
 
+@page counter-a11y
 @page counter-api
 @page counter-code
 @page counter-changelog
