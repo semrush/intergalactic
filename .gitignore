@@ -58,3 +58,5 @@ semcore/illustration/**/*.js
 semcore/illustration/**/*.mjs
 !semcore/illustration/**/*.config.js
 semcore/illustration/**/*.d.ts
+!semcore/illustration/src/**/*.js
+!semcore/illustration/src/**/*.d.ts

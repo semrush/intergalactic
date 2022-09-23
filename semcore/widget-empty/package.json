@@ -10,12 +10,12 @@
   "license": "MIT",
   "scripts": {
     "build": "build --source=js",
-    "test": "jest",
-    "upload-static": "gcs-upload svg/*.svg"
+    "test": "jest"
   },
   "dependencies": {
-    "@semcore/utils": "^3.27",
-    "@semcore/flex-box": "^4"
+    "@semcore/flex-box": "^4",
+    "@semcore/illustration": "1.1.0",
+    "@semcore/utils": "^3.27"
   },
   "peerDependencies": {
     "@semcore/core": "^1.11",

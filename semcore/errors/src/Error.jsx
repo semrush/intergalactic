@@ -1,14 +1,14 @@
 import React from 'react';
 import { Box, Flex } from '@semcore/flex-box';
 import createComponent, { Root, Component, sstyled } from '@semcore/core';
+import { getIllustrationPath } from '@semcore/illustration';
 import style from './style/errors.shadow.css';
 
 const testEnv = process.env.NODE_ENV === 'test';
 
 const version = testEnv ? '3.0.0' : preval`module.exports = require('../package.json').version`;
 
-export const getIconPath = (name) =>
-  `https://static.semrush.com/ui-kit/errors/${version}/${name}.svg`;
+export const getIconPath = (name) => getIllustrationPath(name, 'errors', version);
 
 class RootError extends Component {
   static displayName = 'Error';

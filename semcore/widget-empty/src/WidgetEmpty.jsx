@@ -1,5 +1,6 @@
 import React from 'react';
 import createComponent, { Component, sstyled, Root } from '@semcore/core';
+import { getIllustrationPath } from '@semcore/illustration';
 import { Box, Flex } from '@semcore/flex-box';
 import isNode from '@semcore/utils/lib/isNode';
 
@@ -9,9 +10,7 @@ const version = preval`
   module.exports = require('../package.json').version
 `;
 
-export const getIconPath = (name) => {
-  return `https://static.semrush.com/ui-kit/widget-empty/${version}/${name}.svg`;
-};
+export const getIconPath = (name) => getIllustrationPath(name, 'widget-empty', version);
 
 class WidgetEmpty extends Component {
   static displayName = 'WidgetEmpty';
