@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.2.0] - unreleased
+
+### Changed
+
+- Color for label with theme `info` was changed from `--gray-400` to `--blue-400`.
+
 ## [4.1.16] - 2022-09-21
 
 ### Changed
