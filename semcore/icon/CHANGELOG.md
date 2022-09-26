@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.31.1] - 2022-09-30
+
+### Added
+
+- Added `Charge`, `CardUpdate`, `ChargebackWin`, `ChargebackLoss` icons.
+
 ## [2.31.0] - 2022-09-30
 
 ### Changed
