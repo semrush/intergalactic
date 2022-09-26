@@ -1,9 +1,9 @@
 import React from 'react';
 import { Component, sstyled } from '@semcore/core';
-import createElement from './createElement';
 import canUseDOM from '@semcore/utils/lib/canUseDOM';
-import { scaleOfBandwidth, getIndexFromData, eventToPoint, invert, CONSTANT } from './utils';
 import trottle from '@semcore/utils/lib/rafTrottle';
+import createElement from './createElement';
+import { scaleOfBandwidth, getIndexFromData, eventToPoint, invert, CONSTANT } from './utils';
 
 import style from './style/hover.shadow.css';
 

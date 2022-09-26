@@ -10,7 +10,7 @@
   <path d="m39.1 36.06-11.81 2.8-1.7-5.96 11.95-2.72a.8.8 0 0 1 .94.56l1.21 4.34a.8.8 0 0 1-.58.99v-.01Z" stroke="#6C6E79" stroke-width=".7" stroke-linecap="round" stroke-linejoin="round"/>
   <path d="m62.38 40.3-32.4 8.1-1.67-5.91 32.57-7.87a.8.8 0 0 1 .95.56l1.12 4.14a.79.79 0 0 1-.57.97Z" fill="#6C6E79" stroke="#6C6E79" stroke-width=".7" stroke-linecap="round" stroke-linejoin="round"/>
   <path d="M57.24 51.4 32.7 57.88l-1.66-5.87 24.68-6.31a.8.8 0 0 1 .96.55l1.14 4.16a.8.8 0 0 1-.57.97Z" fill="#E0E1E9" stroke="#6C6E79" stroke-width=".7" stroke-linecap="round" stroke-linejoin="round"/>
-  <mask id="a" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="25" y="29" width="16" height="11">
+  <mask maskUnits="userSpaceOnUse" x="25" y="29" width="16" height="11">
     <path d="m39.1 36.06-11.81 2.8-1.7-5.96 11.95-2.72a.8.8 0 0 1 .94.56l1.21 4.34a.8.8 0 0 1-.58.99v-.01Z" fill="#D9D9D9" stroke="#000" stroke-width=".7" stroke-linecap="round" stroke-linejoin="round"/>
   </mask>
   <g mask="url(#a)" stroke="#6C6E79" stroke-width=".7" stroke-miterlimit="10">

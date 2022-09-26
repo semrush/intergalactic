@@ -1,7 +1,7 @@
 {
   "name": "@semcore/illustration",
   "description": "Semrush Illustration Component",
-  "version": "1.0.5",
+  "version": "1.1.1",
   "main": "index.js",
   "module": "index.js",
   "sideEffects": false,
@@ -10,7 +10,8 @@
   "scripts": {
     "transform": "icon-transform-svg",
     "build": "npm run transform -- --configFile=transform-svg.config.js",
-    "prebuild": "ls -d */ | egrep -v \"__tests__|svg\" | xargs rm -rf && rm *.svg || true"
+    "prebuild": "ls -d */ | egrep -v \"__tests__|svg|src\" | xargs rm -rf && rm *.svg || true",
+    "upload-static": "gcs-upload svg/*.svg"
   },
   "dependencies": {
     "@babel/runtime": "^7.17.9",

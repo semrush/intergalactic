@@ -1,15 +1,15 @@
 import React from 'react';
-import { Component, sstyled, CProps, ReturnEl } from '@semcore/core';
-// @ts-ignore
-import createElement from './createElement';
-import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 import { transition } from 'd3-transition';
-import style from './style/radial-tree.shadow.css';
+import { Component, sstyled, CProps, ReturnEl } from '@semcore/core';
+import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 import { shade } from '@semcore/utils/lib/color';
-import { measureText } from './utils';
 import assignProps from '@semcore/utils/lib/assignProps';
 import getOriginChildren from '@semcore/utils/lib/getOriginChildren';
+import createElement from './createElement';
+import { measureText } from './utils';
 import { DataHintsHandler } from './a11y/hints';
+
+import style from './style/radial-tree.shadow.css';
 
 const baseAngle = -Math.PI / 2; // The top vertical line
 

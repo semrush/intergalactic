@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { arc, pie } from 'd3-shape';
+import { interpolate } from 'd3-interpolate';
+import { transition } from 'd3-transition';
 import { Component, sstyled } from '@semcore/core';
 import canUseDOM from '@semcore/utils/lib/canUseDOM';
 import getOriginChildren from '@semcore/utils/lib/getOriginChildren';
-import { CONSTANT } from './utils';
-import createElement from './createElement';
 import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
-import { interpolate } from 'd3-interpolate';
-import { transition } from 'd3-transition';
+import createElement from './createElement';
+import { CONSTANT } from './utils';
 
 import style from './style/donut.shadow.css';
 

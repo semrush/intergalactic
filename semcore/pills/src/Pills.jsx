@@ -37,10 +37,10 @@ class RootPills extends Component {
 
   render() {
     const SPills = Root;
-    const { Children, styles, controlsLength } = this.asProps;
+    const { Children, styles, controlsLength, disabled } = this.asProps;
 
     return sstyled(styles)(
-      <SPills render={Box}>
+      <SPills render={Box} role="radiogroup" aria-disabled={disabled}>
         <NeighborLocation controlsLength={controlsLength}>
           <Children />
         </NeighborLocation>
@@ -51,10 +51,17 @@ class RootPills extends Component {
 
 function Pill(props) {
   const SPill = Root;
-  const { Children, styles, addonLeft, addonRight } = props;
+  const { Children, styles, addonLeft, addonRight, selected, disabled } = props;
 
   return sstyled(styles)(
-    <SPill render={Box} type="button" tag="button">
+    <SPill
+      render={Box}
+      type="button"
+      tag="button"
+      role="radio"
+      aria-checked={selected}
+      aria-disabled={disabled}
+    >
       {addonLeft ? <Pills.Item.Addon tag={addonLeft} /> : null}
       {addonTextChildren(Children, Pills.Item.Text, Pills.Item.Addon)}
       {addonRight ? <Pills.Item.Addon tag={addonRight} /> : null}

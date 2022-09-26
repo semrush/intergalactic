@@ -1,7 +1,7 @@
 {
   "name": "@semcore/pills",
   "description": "Semrush Pills Component",
-  "version": "4.1.6",
+  "version": "4.2.0",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -13,9 +13,9 @@
     "test": "jest"
   },
   "dependencies": {
-    "@semcore/utils": "^3.15",
     "@semcore/flex-box": "^4",
-    "@semcore/neighbor-location": "^3"
+    "@semcore/neighbor-location": "^3",
+    "@semcore/utils": "^3.15"
   },
   "peerDependencies": {
     "@semcore/core": "^1.11",
@@ -30,8 +30,10 @@
     "directory": "semcore/pills"
   },
   "devDependencies": {
-    "@semcore/jest-preset-ui": "1.0.0",
+    "@guidepup/playwright": "0.6.1",
+    "@playwright/test": "1.25.1",
+    "@semcore/badge": "*",
     "@semcore/icon": "*",
-    "@semcore/badge": "*"
+    "@semcore/jest-preset-ui": "1.0.0"
   }
 }
