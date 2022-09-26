@@ -14,4 +14,4 @@ It's an example of how NoticeSmart works.
 
 @## Custom notice
 
-You can build any notice from its components. As an example see [FeedbackYesNo](/components/feedback-yes-no/feedback-yes-no-code/#a414bd).
+You can build any notice from its components. As an example see [FeedbackYesNo](/patterns/feedback-yes-no/feedback-yes-no-code/#a414bd).
