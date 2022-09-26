@@ -40,6 +40,8 @@ import { Accordion } from '@semcore/ui/accordion';
 <Accordion.Item.Collapse />;
 ```
 
+@typescript ICollapseProps
+
 Has all properties as [IBoxProps](/layout/box-system/box-api/) prop does.
 
 @## Accordion.Item.Chevron
