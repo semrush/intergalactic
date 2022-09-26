@@ -14,6 +14,7 @@
   },
   "dependencies": {
     "@semcore/input": "^3.0.0",
+    "@semcore/neighbor-location": "^3",
     "@semcore/utils": "^3.15",
     "text-mask-core": "5.1.2"
   },

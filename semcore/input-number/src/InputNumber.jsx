@@ -1,6 +1,7 @@
 import React from 'react';
 import createComponent, { Component, sstyled, Root } from '@semcore/core';
 import Input from '@semcore/input';
+import { NEIGHBOR_LOCATION_AUTO_DETECT } from '@semcore/neighbor-location';
 import BUTTONS from './buttons';
 
 import style from './style/input-number.shadow.css';
@@ -57,6 +58,7 @@ class InputNumber extends Component {
 }
 
 class Value extends Component {
+  static [NEIGHBOR_LOCATION_AUTO_DETECT] = true;
   static defaultProps = {
     defaultValue: '',
     step: 1,
@@ -145,6 +147,8 @@ function Controls(props) {
     </SControls>,
   );
 }
+
+Controls[NEIGHBOR_LOCATION_AUTO_DETECT] = true;
 
 export default createComponent(InputNumber, {
   Value,

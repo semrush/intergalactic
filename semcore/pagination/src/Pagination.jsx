@@ -5,6 +5,7 @@ import Input from '@semcore/input';
 import Link from '@semcore/link';
 import { Text } from '@semcore/typography';
 import Button from '@semcore/button';
+import { NEIGHBOR_LOCATION_AUTO_DETECT } from '@semcore/neighbor-location';
 import Return from '@semcore/icon/Return/m';
 import ChevronDoubleLeft from '@semcore/icon/ChevronDoubleLeft/m';
 import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
@@ -281,11 +282,13 @@ const PageInputValue = (props) => {
     <SPageInputValue render={Input.Value} aria-label="Current page" aria-current="Page" />,
   );
 };
+PageInputValue[NEIGHBOR_LOCATION_AUTO_DETECT] = true;
 
 const PageInputAddon = (props) => {
   const SPageInputAddon = Root;
   return sstyled(props.styles)(<SPageInputAddon render={Input.Addon} />);
 };
+PageInputAddon[NEIGHBOR_LOCATION_AUTO_DETECT] = true;
 
 class PageInput extends Component {
   static enhance = [uniqueIDEnhancement()];
