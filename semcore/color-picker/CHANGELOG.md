@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [1.1.5] - 2022-09-27
+
+### Fixed
+
+- Fixed paddings of addons in input.
+
 ## [1.1.4] - 2022-09-21
 
 ### Changed

@@ -120,7 +120,7 @@ class InputColorRoot extends Component<InputColorAsProps> {
                     role="button"
                     interactive
                     onClick={this.handlerAdd}
-                    p="0"
+                    pr="4px"
                   >
                     <CheckM color="green-300" />
                   </Input.Addon>
@@ -129,6 +129,7 @@ class InputColorRoot extends Component<InputColorAsProps> {
                     role="button"
                     interactive
                     onClick={this.handlerCancel}
+                    pl="4px"
                   >
                     <CloseM color="gray-300" />
                   </Input.Addon>
