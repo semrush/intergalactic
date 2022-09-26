@@ -3856,6 +3856,14 @@
     string-hash "^1.1.3"
     svg-tag-names "^2.0.1"
 
+"@semcore/illustration@1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@semcore/illustration/-/illustration-1.1.0.tgz#41e7d7ae568d87644f5bd924d3e28730063866a2"
+  integrity sha512-WF0QXE3cZZUa+0sej3K6+w8hwnfw3kH23zjgIRgKcImlZAlZFzozHdRYHb/QCWYN1yuCE7CNF7HfI+UXmU7zJA==
+  dependencies:
+    "@babel/runtime" "^7.17.9"
+    "@semcore/flex-box" "^4"
+
 "@semcore/neighbor-location@^2":
   version "2.3.15"
   resolved "https://registry.yarnpkg.com/@semcore/neighbor-location/-/neighbor-location-2.3.15.tgz#37b1839a853ce752ba4f846ad68ff5e49bbb9d6a"

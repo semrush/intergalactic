@@ -127,7 +127,7 @@ describe('InputTags', () => {
     const { container } = render(
       <InputTags size="l">
         {['vk', 'fk', 'twitter', 'instagram'].map((tag, idx) => (
-          <InputTags.Tag theme="primary" editable data-id={idx}>
+          <InputTags.Tag theme="primary" editable data-id={idx} key={idx}>
             <InputTags.Tag.Text>{tag}</InputTags.Tag.Text>
             <InputTags.Tag.Close />
           </InputTags.Tag>
