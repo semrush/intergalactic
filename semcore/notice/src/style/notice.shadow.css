@@ -80,7 +80,7 @@ SLabel {
 }
 
 SLabel[theme='info'] {
-  color: var(--gray-400);
+  color: var(--blue-400);
 }
 
 SLabel[theme='danger'] {
