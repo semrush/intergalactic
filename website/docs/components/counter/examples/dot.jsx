@@ -7,7 +7,9 @@ export default () => (
   <Button aria-label="3 notifications">
     <Button.Addon>
       <NotificationXS />
-      <Dot up>3</Dot>
+      <Dot up aria-label="You have unread notifications">
+        3
+      </Dot>
     </Button.Addon>
   </Button>
 );

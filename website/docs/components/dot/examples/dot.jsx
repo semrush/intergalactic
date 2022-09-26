@@ -22,7 +22,7 @@ const Demo = () => {
   return (
     <Button onClick={handleClick} aria-label="Remove updates">
       <TrashS />
-      <Dot up hidden={hidden} size="l" />
+      <Dot up hidden={hidden} size="l" aria-label="You can remove updates" />
     </Button>
   );
 };

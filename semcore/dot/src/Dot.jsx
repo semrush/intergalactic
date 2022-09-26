@@ -1,5 +1,6 @@
 import React from 'react';
 import createComponent, { Component, Root, sstyled } from '@semcore/core';
+import logger from '@semcore/utils/lib/logger';
 
 import { Animation } from '@semcore/animation';
 import getOriginChildren from '@semcore/utils/lib/getOriginChildren';
@@ -38,8 +39,26 @@ class Dot extends Component {
   render() {
     const SDot = Root;
 
-    let { Children, styles, size, hidden, duration, keyframes } = this.asProps;
-    size = React.Children.toArray(getOriginChildren(Children)).length === 0 ? size : 'xl';
+    let {
+      Children,
+      styles,
+      size,
+      hidden,
+      duration,
+      keyframes,
+      'aria-label': ariaLabel,
+      'aria-labelledby': ariaLabelledBy,
+    } = this.asProps;
+    const hasChildren = React.Children.toArray(getOriginChildren(Children)).length !== 0;
+    size = hasChildren ? 'xl' : size;
+
+    const hasLabel = Boolean(ariaLabel || ariaLabelledBy);
+
+    logger.warn(
+      !hasLabel,
+      "'aria-label' or 'aria-labelledby' are required for Dot component",
+      this.asProps['data-ui-name'] || Dot.displayName,
+    );
 
     return sstyled(styles)(
       <SDot
@@ -49,6 +68,8 @@ class Dot extends Component {
         visible={!hidden}
         duration={duration}
         keyframes={keyframes}
+        role={hasLabel ? 'alert' : undefined}
+        aria-live={hasLabel ? 'polite' : undefined}
       />,
     );
   }
