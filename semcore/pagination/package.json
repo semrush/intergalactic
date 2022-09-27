@@ -18,7 +18,6 @@
     "@semcore/icon": "^2.16",
     "@semcore/input": "^3.0.0",
     "@semcore/link": "^4.0.0",
-    "@semcore/neighbor-location": "^3",
     "@semcore/typography": "^4",
     "@semcore/utils": "^3.27"
   },

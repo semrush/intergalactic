@@ -3,7 +3,6 @@ import { createTextMaskInputElement } from 'text-mask-core';
 
 import createComponent, { Component, Merge, sstyled, Root } from '@semcore/core';
 import Input, { IInputProps, IInputValueProps } from '@semcore/input';
-import { NEIGHBOR_LOCATION_AUTO_DETECT } from '@semcore/neighbor-location';
 import fire from '@semcore/utils/lib/fire';
 import logger from '@semcore/utils/lib/logger';
 
@@ -72,7 +71,6 @@ class InputMask extends Component<IInputProps> {
 }
 
 class Value extends Component<IInputMaskValueProps> {
-  static [NEIGHBOR_LOCATION_AUTO_DETECT] = true;
   static defaultProps = {
     defaultValue: '',
     hideMask: false,
