@@ -3,7 +3,14 @@ import { testing, snapshot } from '@semcore/jest-preset-ui';
 
 const { axe, render, cleanup } = testing;
 
-import Error, { AccessDenied, Maintenance, PageError, PageNotFound, ProjectNotFound } from '../src';
+import Error, {
+  AccessDenied,
+  getIconPath,
+  Maintenance,
+  PageError,
+  PageNotFound,
+  ProjectNotFound,
+} from '../src';
 import Button from '@semcore/button';
 
 describe('Error', () => {
@@ -28,8 +35,9 @@ describe('Error', () => {
   });
 
   test('Render correctly with icon', async () => {
+    const iconUrl = getIconPath('PageNotFound');
     const component = (
-      <Error icon="https://static.semrush.com/ui-kit/errors/3.0.0/page_not_found.svg">
+      <Error icon={iconUrl}>
         <Error.Title>Horrible error</Error.Title>
         <Error.Description>
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur dicta, dignissimos
@@ -61,8 +69,9 @@ describe('Error', () => {
   });
 
   test('Render correctly on small screen', async () => {
+    const iconUrl = getIconPath('PageNotFound');
     const component = (
-      <Error icon="https://static.semrush.com/ui-kit/illustration/1.1.0/PageNotFound.svg">
+      <Error icon={iconUrl}>
         <Error.Title>Horrible error</Error.Title>
         <Error.Description>
           Lorem ipsum dolor sit amet, consectetur adipisicing elit.
