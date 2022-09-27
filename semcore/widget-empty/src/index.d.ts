@@ -1,43 +1,10 @@
 import { ComponentProps } from 'react';
 import { CProps, ReturnEl } from '@semcore/core';
 import { Box, IFlexProps } from '@semcore/flex-box';
+import { TIllustrationNamesWidgetEmpty } from '@semcore/illustration';
 import { IWithI18nEnhanceProps } from '@semcore/utils/lib/enhances/i18nEnhance';
 
-export type iconNamesWidgetEmpty =
-  | 'area-chart'
-  | 'choropleth-map-chart'
-  | 'coffee'
-  | 'combined-chart'
-  | 'congrats'
-  | 'deleted-page'
-  | 'donut-chart'
-  | 'duplicates'
-  | 'funnel-chart'
-  | 'good'
-  | 'heat-map-chart'
-  | 'horizontal-bar-chart'
-  | 'kagi-chart'
-  | 'line-chart'
-  | 'lollipop-chart'
-  | 'nexttime'
-  | 'nothing-found'
-  | 'other-data'
-  | 'pie-chart'
-  | 'processing'
-  | 'radar-chart'
-  | 'radial-tree-chart'
-  | 'sankey-chart'
-  | 'scatter-plot-chart'
-  | 'stacked-area-chart'
-  | 'suggestion'
-  | 'suggestions'
-  | 'table'
-  | 'tag-cloud'
-  | 'text-links-etc'
-  | 'under-construction'
-  | 'venn-chart'
-  | 'vertical-bar-chart'
-  | 'warning';
+export type iconNamesWidgetEmpty = TIllustrationNamesWidgetEmpty;
 
 export interface IWidgetEmptyProps extends IFlexProps {
   /**

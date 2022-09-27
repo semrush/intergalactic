@@ -2,7 +2,13 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [3.4.1] - 2022-09-30
+## [3.4.2] - 2022-09-27
+
+### Changed
+
+- Moved svg illustrations to `@semcore/illustration` component.
+
+## [3.4.1] - 2022-09-20
 
 ### Fixed
 

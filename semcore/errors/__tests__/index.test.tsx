@@ -62,7 +62,7 @@ describe('Error', () => {
 
   test('Render correctly on small screen', async () => {
     const component = (
-      <Error icon="https://static.semrush.com/ui-kit/errors/3.0.0/page_not_found.svg">
+      <Error icon="https://static.semrush.com/ui-kit/illustration/1.1.0/PageNotFound.svg">
         <Error.Title>Horrible error</Error.Title>
         <Error.Description>
           Lorem ipsum dolor sit amet, consectetur adipisicing elit.
@@ -105,7 +105,7 @@ describe('Error', () => {
 
   test('Render correctly on small screen', async () => {
     const { container } = render(
-      <Error icon="https://static.semrush.com/ui-kit/errors/3.0.0/page_not_found.svg">
+      <Error icon="https://static.semrush.com/ui-kit/illustration/1.1.0/PageNotFound.svg">
         <Error.Title>Horrible error</Error.Title>
         <Error.Description>
           Lorem ipsum dolor sit amet, consectetur adipisicing elit.
