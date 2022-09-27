@@ -1,21 +1,10 @@
 import React from 'react';
 import { Box, IFlexProps } from '@semcore/flex-box';
 import { CProps, PropGetterFn, ReturnEl } from '@semcore/core';
+import { TIllustrationNamesErrors } from '@semcore/illustration';
 import { IWithI18nEnhanceProps } from '@semcore/utils/lib/enhances/i18nEnhance';
 
-export type iconNamesErrors =
-  | 'access_denied'
-  | 'blocked'
-  | 'confirmation'
-  | 'connection_lost'
-  | 'deleted_account'
-  | 'dns'
-  | 'maintenance'
-  | 'no_payment'
-  | 'page_error'
-  | 'page_not_found'
-  | 'project_not_found'
-  | 'timeout';
+export type iconNamesErrors = TIllustrationNamesErrors;
 
 export interface IErrorsProps extends IFlexProps {
   /**
