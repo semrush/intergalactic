@@ -6,11 +6,7 @@ import isNode from '@semcore/utils/lib/isNode';
 
 import style from './style/widget-empty.shadow.css';
 
-const version = preval`
-  module.exports = require('../package.json').version
-`;
-
-export const getIconPath = (name) => getIllustrationPath(name, 'widget-empty', version);
+export const getIconPath = (name) => getIllustrationPath(name);
 
 class WidgetEmpty extends Component {
   static displayName = 'WidgetEmpty';
