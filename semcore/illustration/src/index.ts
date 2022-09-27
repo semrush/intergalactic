@@ -1,6 +1,4 @@
-const testEnv = process.env.NODE_ENV === 'test';
-
-const version = testEnv ? '1.1.0' : preval`module.exports = require('../package.json').version`;
+const version = preval`module.exports = require('../package.json').version`;
 
 /**
  * Formats string from `access_denied` or `access-denied` to `AccessDenied`
