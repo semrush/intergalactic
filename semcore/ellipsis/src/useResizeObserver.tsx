@@ -7,8 +7,15 @@ export const useResizeObserver = (ref: RefObject<HTMLElement>, custom) => {
     height: 0,
   });
 
+  const collectObs = [];
+
   const handleResize = (entries: ResizeObserverEntry[]) => {
     setSize({ width: entries[0].contentRect.width, height: entries[0].contentRect.height });
+  };
+
+  const subscribe = (cur) => {
+    collectObs.push(cur);
+    return collectObs;
   };
 
   useEnhancedEffect(() => {
@@ -31,5 +38,5 @@ export const useResizeObserver = (ref: RefObject<HTMLElement>, custom) => {
     };
   }, [ref]);
 
-  return { size };
+  return { size, subscribe };
 };
