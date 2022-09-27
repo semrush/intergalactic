@@ -1,7 +1,7 @@
 {
   "name": "@semcore/widget-empty",
   "description": "Semrush WidgetEmpty Component",
-  "version": "3.4.1",
+  "version": "3.4.2",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "@semcore/flex-box": "^4",
-    "@semcore/illustration": "1.1.0",
+    "@semcore/illustration": "1.1.2",
     "@semcore/utils": "^3.27"
   },
   "peerDependencies": {
