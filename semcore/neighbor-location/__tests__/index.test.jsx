@@ -1,24 +1,17 @@
 import React from 'react';
 import { testing } from '@semcore/jest-preset-ui';
+import NeighborLocation from '../src';
 const { cleanup, render } = testing;
-import createComponent, { Component } from '@semcore/core';
-import NeighborLocation, { NEIGHBOR_LOCATION_AUTO_DETECT } from '../src';
 
-class TestRoot extends Component {
-  static [NEIGHBOR_LOCATION_AUTO_DETECT] = true;
+const Test = function ({ neighborlocation, ...other }) {
+  return (
+    <NeighborLocation.Detect neighborlocation={neighborlocation}>
+      {(neighborLocation) => <div {...other} data-neighborlocation={neighborLocation} />}
+    </NeighborLocation.Detect>
+  );
+};
 
-  render() {
-    const { neighborLocation } = this.asProps;
-
-    return (
-      <div data-testid={this.asProps['data-testid']} data-neighborlocation={neighborLocation} />
-    );
-  }
-}
-
-const Test = createComponent(TestRoot);
-
-describe('Ui', () => {
+describe('neighbor-location', () => {
   afterEach(cleanup);
 
   test('should must work', () => {

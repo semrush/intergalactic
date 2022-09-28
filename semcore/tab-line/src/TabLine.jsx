@@ -4,7 +4,7 @@ import { Box } from '@semcore/flex-box';
 import addonTextChildren from '@semcore/utils/lib/addonTextChildren';
 import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 import a11yEnhance from '@semcore/utils/lib/enhances/a11yEnhance';
-import NeighborLocation, { NEIGHBOR_LOCATION_AUTO_DETECT } from '@semcore/neighbor-location';
+import NeighborLocation from '@semcore/neighbor-location';
 import ResizeObserver from 'resize-observer-polyfill';
 
 import style from './style/tab-line.shadow.css';
@@ -114,19 +114,30 @@ class TabLineRoot extends Component {
 
 function TabLineItem(props) {
   const STabLineItem = Root;
-  const { Children, styles, addonLeft, addonRight } = props;
+  const { Children, styles, addonLeft, addonRight, neighborLocation } = props;
 
-  return sstyled(styles)(
-    <STabLineItem render={Box} type="button" tag="button" role="tab">
-      {addonLeft ? <TabLine.Item.Addon tag={addonLeft} /> : null}
-      {addonTextChildren(Children, TabLine.Item.Text, TabLine.Item.Addon)}
-      {addonRight ? <TabLine.Item.Addon tag={addonRight} /> : null}
-    </STabLineItem>,
+  return (
+    <NeighborLocation.Detect neighborLocation={neighborLocation}>
+      {(neighborLocation) =>
+        sstyled(styles)(
+          <STabLineItem
+            render={Box}
+            tag="button"
+            neighborLocation={neighborLocation}
+            type="button"
+            role="tab"
+          >
+            {addonLeft ? <TabLine.Item.Addon tag={addonLeft} /> : null}
+            {addonTextChildren(Children, TabLine.Item.Text, TabLine.Item.Addon)}
+            {addonRight ? <TabLine.Item.Addon tag={addonRight} /> : null}
+          </STabLineItem>,
+        )
+      }
+    </NeighborLocation.Detect>
   );
 }
 
 TabLineItem.enhance = [keyboardFocusEnhance()];
-TabLineItem[NEIGHBOR_LOCATION_AUTO_DETECT] = true;
 
 function Text(props) {
   const { styles } = props;

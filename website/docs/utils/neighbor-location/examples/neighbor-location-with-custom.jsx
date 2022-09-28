@@ -1,18 +1,22 @@
 import React from 'react';
-import NeighborLocation, { NEIGHBOR_LOCATION_AUTO_DETECT } from '@semcore/neighbor-location';
+import NeighborLocation from '@semcore/neighbor-location';
 
 function CustomComponent({ neighborLocation }) {
-  return neighborLocation;
+  return <div>{neighborLocation}</div>;
 }
-
-CustomComponent[NEIGHBOR_LOCATION_AUTO_DETECT] = true;
 
 const Demo = () => {
   return (
     <NeighborLocation>
-      <CustomComponent />
-      <CustomComponent />
-      <CustomComponent />
+      <NeighborLocation.Detect>
+        {(neighborLocation) => <div>{neighborLocation}</div>}
+      </NeighborLocation.Detect>
+      <NeighborLocation.Detect>
+        {(neighborLocation) => <div>{neighborLocation}</div>}
+      </NeighborLocation.Detect>
+      <NeighborLocation.Detect>
+        <CustomComponent />
+      </NeighborLocation.Detect>
     </NeighborLocation>
   );
 };

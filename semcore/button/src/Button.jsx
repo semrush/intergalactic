@@ -1,7 +1,7 @@
 import React from 'react';
 import createComponent, { Component, sstyled, Root } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
-import { NEIGHBOR_LOCATION_AUTO_DETECT } from '@semcore/neighbor-location';
+import NeighborLocation from '@semcore/neighbor-location';
 import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 import addonTextChildren from '@semcore/utils/lib/addonTextChildren';
 import logger from '@semcore/utils/lib/logger';
@@ -20,7 +20,6 @@ export const MAP_USE_DEFAULT_THEME = {
 class RootButton extends Component {
   static displayName = 'Button';
   static enhance = [keyboardFocusEnhance()];
-  static [NEIGHBOR_LOCATION_AUTO_DETECT] = true;
   static style = style;
   static defaultProps = {
     use: 'secondary',
@@ -53,6 +52,7 @@ class RootButton extends Component {
       loading,
       disabled = loading,
       size,
+      neighborLocation,
       addonLeft,
       addonRight,
       'aria-label': ariaLabel,
@@ -65,27 +65,33 @@ class RootButton extends Component {
       'aria-label is required',
       this.asProps['data-ui-name'] || Button.displayName,
     );
-
-    return sstyled(styles)(
-      <SButton
-        render={Box}
-        type="button"
-        tag="button"
-        disabled={disabled}
-        use:theme={useTheme}
-        role="button"
-      >
-        <SInner tag="span" loading={loading}>
-          {addonLeft ? <Button.Addon tag={addonLeft} /> : null}
-          {addonTextChildren(Children, Button.Text, Button.Addon)}
-          {addonRight ? <Button.Addon tag={addonRight} /> : null}
-        </SInner>
-        {loading && (
-          <SSpin tag="span">
-            <SpinButton centered size={size} theme={useTheme} />
-          </SSpin>
-        )}
-      </SButton>,
+    return (
+      <NeighborLocation.Detect neighborLocation={neighborLocation}>
+        {(neighborLocation) =>
+          sstyled(styles)(
+            <SButton
+              render={Box}
+              type="button"
+              tag="button"
+              disabled={disabled}
+              neighborLocation={neighborLocation}
+              use:theme={useTheme}
+              role="button"
+            >
+              <SInner tag="span" loading={loading}>
+                {addonLeft ? <Button.Addon tag={addonLeft} /> : null}
+                {addonTextChildren(Children, Button.Text, Button.Addon)}
+                {addonRight ? <Button.Addon tag={addonRight} /> : null}
+              </SInner>
+              {loading && (
+                <SSpin tag="span">
+                  <SpinButton centered size={size} theme={useTheme} />
+                </SSpin>
+              )}
+            </SButton>,
+          )
+        }
+      </NeighborLocation.Detect>
     );
   }
 }

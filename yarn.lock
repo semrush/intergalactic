@@ -3864,13 +3864,6 @@
     "@babel/runtime" "^7.17.9"
     "@semcore/flex-box" "^4"
 
-"@semcore/neighbor-location@^2":
-  version "2.3.15"
-  resolved "https://registry.yarnpkg.com/@semcore/neighbor-location/-/neighbor-location-2.3.15.tgz#37b1839a853ce752ba4f846ad68ff5e49bbb9d6a"
-  integrity sha512-2DTWLQCcLStvo/JlK0V8n8Ey2dES0YmcqlOnzyltFIArCcjAK96dIO7aezTMNH42INe4Elu4zUwGwLreMpTEnA==
-  dependencies:
-    "@semcore/utils" "^3.15"
-
 "@semcore/theme-redesign@1.5.12":
   version "1.5.12"
   resolved "https://registry.yarnpkg.com/@semcore/theme-redesign/-/theme-redesign-1.5.12.tgz#d97d7be2dfcaaac2cb8a58ef35b20e4ac0215761"

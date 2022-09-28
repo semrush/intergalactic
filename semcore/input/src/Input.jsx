@@ -1,7 +1,7 @@
 import React from 'react';
 import createComponent, { Component, sstyled, Root } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
-import NeighborLocation, { NEIGHBOR_LOCATION_AUTO_DETECT } from '@semcore/neighbor-location';
+import NeighborLocation from '@semcore/neighbor-location';
 import autoFocusEnhance from '@semcore/utils/lib/enhances/autoFocusEnhance';
 import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 
@@ -9,12 +9,12 @@ import style from './style/input.shadow.css';
 
 class Input extends Component {
   static displayName = 'Input';
-  static [NEIGHBOR_LOCATION_AUTO_DETECT] = true;
-  static style = style;
+
   static defaultProps = {
     size: 'm',
     state: 'normal',
   };
+  static style = style;
 
   state = {
     focused: false,
@@ -51,26 +51,30 @@ class Input extends Component {
   render() {
     const SInput = Root;
     const SOutline = 'div';
-    const { Children, styles, controlsLength } = this.asProps;
+    const { Children, styles, neighborLocation, controlsLength } = this.asProps;
     const { focused } = this.state;
-
-    return sstyled(styles)(
-      <SInput render={Box} focused={focused}>
-        <NeighborLocation controlsLength={controlsLength}>
-          <Children />
-        </NeighborLocation>
-        <SOutline />
-      </SInput>,
+    return (
+      <NeighborLocation.Detect neighborLocation={neighborLocation}>
+        {(neighborLocation) =>
+          sstyled(styles)(
+            <SInput render={Box} focused={focused} neighborLocation={neighborLocation}>
+              <NeighborLocation controlsLength={controlsLength}>
+                <Children />
+              </NeighborLocation>
+              <SOutline />
+            </SInput>,
+          )
+        }
+      </NeighborLocation.Detect>
     );
   }
 }
 
 class Value extends Component {
-  static enhance = [keyboardFocusEnhance(), autoFocusEnhance()];
-  static [NEIGHBOR_LOCATION_AUTO_DETECT] = true;
   static defaultProps = {
     defaultValue: '',
   };
+  static enhance = [keyboardFocusEnhance(), autoFocusEnhance()];
 
   uncontrolledProps() {
     return {
@@ -80,22 +84,35 @@ class Value extends Component {
 
   render() {
     const SValue = Root;
+    const { styles, neighborLocation } = this.asProps;
 
-    return sstyled(this.asProps.styles)(<SValue render={Box} tag="input" type="text" />);
+    return (
+      <NeighborLocation.Detect neighborLocation={neighborLocation}>
+        {(neighborLocation) =>
+          sstyled(styles)(
+            <SValue render={Box} neighborLocation={neighborLocation} tag="input" type="text" />,
+          )
+        }
+      </NeighborLocation.Detect>
+    );
   }
 }
 
 function Addon(props) {
   const SAddon = Root;
-  const { Children } = props;
-  return sstyled(props.styles)(
-    <SAddon render={Box}>
-      <Children />
-    </SAddon>,
+  const { Children, styles, neighborLocation } = props;
+  return (
+    <NeighborLocation.Detect neighborLocation={neighborLocation}>
+      {(neighborLocation) =>
+        sstyled(styles)(
+          <SAddon render={Box} neighborLocation={neighborLocation}>
+            <Children />
+          </SAddon>,
+        )
+      }
+    </NeighborLocation.Detect>
   );
 }
-
-Addon[NEIGHBOR_LOCATION_AUTO_DETECT] = true;
 
 export default createComponent(Input, {
   Addon,

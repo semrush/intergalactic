@@ -64,8 +64,10 @@ By default, `<NeighborLocation/>` does not create an HTML wrapper, but you can p
 
 @## Using a custom component
 
-You can apply <NeighborLocation/> to your components. You need to add a static field `NEIGHBOR_LOCATION_AUTO_DETECT` and
+You can apply <NeighborLocation/> to your components. You will need to use the component `<NeighborLocation.Detect/>` and
 then the `neighborLocation` prop will come to your component.
+
+> You can use the render function or the element will be cloned.
 
 @example neighbor-location-with-custom
 

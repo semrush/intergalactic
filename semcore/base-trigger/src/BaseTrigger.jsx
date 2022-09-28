@@ -1,7 +1,7 @@
 import React from 'react';
 import createComponent, { Component, Root, sstyled } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
-import { NEIGHBOR_LOCATION_AUTO_DETECT } from '@semcore/neighbor-location';
+import NeighborLocation from '@semcore/neighbor-location';
 import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 import addonTextChildren from '@semcore/utils/lib/addonTextChildren';
 import logger from '@semcore/utils/lib/logger';
@@ -11,7 +11,6 @@ import style from './style/base-trigger.shadow.css';
 class RootBaseTrigger extends Component {
   static displayName = 'BaseTrigger';
   static enhance = [keyboardFocusEnhance()];
-  static [NEIGHBOR_LOCATION_AUTO_DETECT] = true;
   static style = style;
   static defaultProps = {
     size: 'm',
@@ -28,7 +27,7 @@ class RootBaseTrigger extends Component {
   render() {
     const SBaseTrigger = Root;
     const SInner = 'div';
-    const { Children, styles, theme } = this.asProps;
+    const { Children, styles, theme, neighborLocation } = this.asProps;
 
     logger.warn(
       theme !== undefined,
@@ -37,10 +36,16 @@ class RootBaseTrigger extends Component {
     );
 
     // TODO: add aria
-    return sstyled(styles)(
-      <SBaseTrigger render={Box} state={theme}>
-        <SInner>{addonTextChildren(Children, BaseTrigger.Text, BaseTrigger.Addon)}</SInner>
-      </SBaseTrigger>,
+    return (
+      <NeighborLocation.Detect neighborLocation={neighborLocation}>
+        {(neighborLocation) =>
+          sstyled(styles)(
+            <SBaseTrigger render={Box} neighborLocation={neighborLocation} state={theme}>
+              <SInner>{addonTextChildren(Children, BaseTrigger.Text, BaseTrigger.Addon)}</SInner>
+            </SBaseTrigger>,
+          )
+        }
+      </NeighborLocation.Detect>
     );
   }
 }

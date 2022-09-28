@@ -1,7 +1,7 @@
 import React from 'react';
 import createComponent, { Component, sstyled, Root } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
-import NeighborLocation, { NEIGHBOR_LOCATION_AUTO_DETECT } from '@semcore/neighbor-location';
+import NeighborLocation from '@semcore/neighbor-location';
 import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 import addonTextChildren from '@semcore/utils/lib/addonTextChildren';
 
@@ -51,26 +51,31 @@ class RootPills extends Component {
 
 function Pill(props) {
   const SPill = Root;
-  const { Children, styles, addonLeft, addonRight, selected, disabled } = props;
-
-  return sstyled(styles)(
-    <SPill
-      render={Box}
-      type="button"
-      tag="button"
-      role="radio"
-      aria-checked={selected}
-      aria-disabled={disabled}
-    >
-      {addonLeft ? <Pills.Item.Addon tag={addonLeft} /> : null}
-      {addonTextChildren(Children, Pills.Item.Text, Pills.Item.Addon)}
-      {addonRight ? <Pills.Item.Addon tag={addonRight} /> : null}
-    </SPill>,
+  const { Children, styles, addonLeft, addonRight, selected, disabled, neighborLocation } = props;
+  return (
+    <NeighborLocation.Detect neighborLocation={neighborLocation}>
+      {(neighborLocation) =>
+        sstyled(styles)(
+          <SPill
+            render={Box}
+            tag="button"
+            neighborLocation={neighborLocation}
+            type="button"
+            role="radio"
+            aria-checked={selected}
+            aria-disabled={disabled}
+          >
+            {addonLeft ? <Pills.Item.Addon tag={addonLeft} /> : null}
+            {addonTextChildren(Children, Pills.Item.Text, Pills.Item.Addon)}
+            {addonRight ? <Pills.Item.Addon tag={addonRight} /> : null}
+          </SPill>,
+        )
+      }
+    </NeighborLocation.Detect>
   );
 }
 
 Pill.enhance = [keyboardFocusEnhance()];
-Pill[NEIGHBOR_LOCATION_AUTO_DETECT] = true;
 
 function Text(props) {
   const SText = Root;
