@@ -3,7 +3,6 @@ import createComponent, { Root, Component, register } from '@semcore/core';
 import getOriginChildren from '@semcore/utils/lib/getOriginChildren';
 import isNode from '@semcore/utils/lib/isNode';
 
-const CALCULATE_NEIGHBOR_LOCATION = Symbol('CALCULATE_NEIGHBOR_LOCATION');
 const Context = register.get('neighbor-location-context', React.createContext({}));
 
 class NeighborLocationRoot extends Component {
@@ -38,7 +37,7 @@ class NeighborLocationRoot extends Component {
 
   getDetectProps() {
     return {
-      calculateNeighborLocation: this.calculateNeighborLocation.bind(this, this.controlsLength),
+      getNeighborLocation: this.calculateNeighborLocation.bind(this, this.controlsLength),
     };
   }
 
@@ -60,11 +59,9 @@ class NeighborLocationRoot extends Component {
 
 class Detect extends Component {
   render() {
-    const { children, neighborLocation: _neighborLocation } = this.asProps;
-    const calculateNeighborLocation = this.context[CALCULATE_NEIGHBOR_LOCATION]
-      ? this.context[CALCULATE_NEIGHBOR_LOCATION](this)
-      : undefined;
-    const neighborLocation = _neighborLocation ?? calculateNeighborLocation;
+    const { children, neighborLocation: selfNeighborLocation, getNeighborLocation } = this.asProps;
+    const calculateNeighborLocation = getNeighborLocation ? getNeighborLocation(this) : undefined;
+    const neighborLocation = selfNeighborLocation ?? calculateNeighborLocation;
 
     if (!children) return;
     if (typeof children === 'function') return children(neighborLocation);

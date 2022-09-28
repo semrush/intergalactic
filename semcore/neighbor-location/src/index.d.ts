@@ -14,13 +14,16 @@ export interface INeighborLocationProps {
 export interface INeighborItemProps {
   /** Determines from which side the component has neighbors */
   neighborLocation?: 'right' | 'both' | 'left' | false;
+}
+
+export interface INeighborLocationDetectProps extends INeighborItemProps {
   children?:
     | React.ReactElement
     | ((neighborLocation: 'right' | 'both' | 'left' | undefined) => ReturnEl);
 }
 
 declare const NeighborLocation: (<T>(props: INeighborLocationProps & T) => ReturnEl) & {
-  Detect: <T>(props: INeighborItemProps & T) => ReturnEl;
+  Detect: <T>(props: INeighborLocationDetectProps & T) => ReturnEl;
 };
 
 export default NeighborLocation;

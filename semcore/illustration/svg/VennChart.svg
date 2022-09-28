@@ -11,7 +11,7 @@
   <path d="M50.83 41.06c1.36 5-2.14 10.26-7.9 11.77-5.85 1.53-11.8-1.35-13.22-6.48-1.43-5.13 2.26-10.47 8.17-11.87 5.82-1.39 11.59 1.58 12.95 6.58Z" fill="#6C6E79" stroke="#6C6E79" stroke-width=".7" stroke-linecap="round" stroke-linejoin="round"/>
   <path d="M57.36 31.9c1.03 3.82-1.61 7.77-5.96 8.86-4.39 1.1-8.85-1.15-9.9-5.04-1.08-3.9 1.68-7.91 6.1-8.94 4.37-1.02 8.73 1.28 9.76 5.11Z" fill="#fff" stroke="#6C6E79" stroke-width=".7" stroke-linecap="round" stroke-linejoin="round"/>
   <path d="M41.26 34.15c.01.52.08 1.04.23 1.57 1.02 3.7 5.11 5.92 9.28 5.18-1.16-3.94-5.04-6.56-9.5-6.74v0Z" fill="#E0E1E9" stroke="#6C6E79" stroke-width=".7" stroke-linecap="round" stroke-linejoin="round"/>
-  <mask maskUnits="userSpaceOnUse" x="40" y="33" width="12" height="9">
+  <mask id="a" maskUnits="userSpaceOnUse" x="40" y="33" width="12" height="9">
     <path d="M41.26 34.15c.01.52.08 1.04.23 1.57 1.02 3.7 5.11 5.92 9.28 5.18-1.16-3.94-5.04-6.56-9.5-6.74v0Z" fill="#45DFA7" stroke="#000" stroke-width=".7" stroke-linecap="round" stroke-linejoin="round"/>
   </mask>
   <g mask="url(#a)" stroke="#6C6E79" stroke-width=".7" stroke-miterlimit="10">

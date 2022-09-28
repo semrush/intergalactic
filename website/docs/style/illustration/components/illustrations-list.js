@@ -9,6 +9,10 @@ const illustartionsList = {
       group: 'States',
     },
     {
+      name: 'Collection',
+      group: 'States',
+    },
+    {
       name: 'NothingFound',
       group: 'States',
     },
@@ -25,6 +29,10 @@ const illustartionsList = {
       group: 'States',
     },
     {
+      name: 'Congrats',
+      group: 'States',
+    },
+    {
       name: 'UnderConstruction',
       group: 'States',
     },
@@ -37,11 +45,11 @@ const illustartionsList = {
       group: 'Chart types',
     },
     {
-      name: 'BarChartHorizontal',
+      name: 'HorizontalBarChart',
       group: 'Chart types',
     },
     {
-      name: 'BarChartVertical',
+      name: 'VerticalBarChart',
       group: 'Chart types',
     },
     {
@@ -49,7 +57,7 @@ const illustartionsList = {
       group: 'Chart types',
     },
     {
-      name: 'ChoroplethMap',
+      name: 'ChoroplethMapChart',
       group: 'Chart types',
     },
     {
@@ -69,7 +77,11 @@ const illustartionsList = {
       group: 'Chart types',
     },
     {
-      name: 'Linechart',
+      name: 'KagiChart',
+      group: 'Chart types',
+    },
+    {
+      name: 'LineChart',
       group: 'Chart types',
     },
     {
@@ -89,6 +101,14 @@ const illustartionsList = {
       group: 'Chart types',
     },
     {
+      name: 'RadialTreeChart',
+      group: 'Chart types',
+    },
+    {
+      name: 'TagCloud',
+      group: 'Chart types',
+    },
+    {
       name: 'VennChart',
       group: 'Chart types',
     },
@@ -101,6 +121,10 @@ const illustartionsList = {
       group: 'Data types',
     },
     {
+      name: 'DeletedPage',
+      group: 'Data types',
+    },
+    {
       name: 'Duplicates',
       group: 'Data types',
     },
@@ -110,6 +134,10 @@ const illustartionsList = {
     },
     {
       name: 'NextTime',
+      group: 'Data types',
+    },
+    {
+      name: 'OtherData',
       group: 'Data types',
     },
     {

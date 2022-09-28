@@ -54,7 +54,7 @@ const SuggestSearch = connectAutoComplete(
           {...others}
           onChange={handleChangeValue}
           value={currentRefinement}
-          placeholder="Fill this field with 'happy smile' text :)"
+          placeholder="What icon are you looking for?"
         />
         {!!currentRefinement && (
           <Input.Addon>

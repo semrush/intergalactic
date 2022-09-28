@@ -12,13 +12,13 @@
   <path d="m38.86 54.75-9.18 2.41a.8.8 0 0 1-.97-.55l-2.17-7.76a.8.8 0 0 1 .57-.98l9.26-2.3c.4-.11.83.13.95.55l2.1 7.65a.8.8 0 0 1-.56.97v.01Z" fill="#6C6E79" stroke="#6C6E79" stroke-width=".7" stroke-linecap="round" stroke-linejoin="round"/>
   <path d="m52.42 51.2-8.78 2.3a.8.8 0 0 1-.96-.55l-2.09-7.59a.78.78 0 0 1 .58-.97L50 42.2c.42-.1.84.15.95.57l2.02 7.48a.8.8 0 0 1-.56.97v0Z" fill="#E0E1E9" stroke="#6C6E79" stroke-width=".7" stroke-linecap="round" stroke-linejoin="round"/>
   <path d="m35.61 43.04-9.28 2.27a.8.8 0 0 1-.95-.55l-2.2-7.85a.8.8 0 0 1 .59-.98l9.34-2.15a.8.8 0 0 1 .94.56l2.13 7.73a.78.78 0 0 1-.57.97v0ZM65.59 47.74l-8.39 2.2a.79.79 0 0 1-.96-.56l-2-7.43a.79.79 0 0 1 .57-.97l8.44-2.1c.43-.1.85.16.96.57l1.93 7.31c.1.43-.14.86-.56.97h0Z" stroke="#6C6E79" stroke-width=".7" stroke-linecap="round" stroke-linejoin="round"/>
-  <mask maskUnits="userSpaceOnUse" x="23" y="33" width="14" height="13">
+  <mask id="a" maskUnits="userSpaceOnUse" x="23" y="33" width="14" height="13">
     <path d="m35.61 43.04-9.28 2.27a.8.8 0 0 1-.95-.55l-2.2-7.85a.8.8 0 0 1 .59-.98l9.34-2.15a.8.8 0 0 1 .94.56l2.13 7.73a.78.78 0 0 1-.57.97Z" fill="#D9D9D9"/>
   </mask>
   <g mask="url(#a)" stroke="#6C6E79" stroke-width=".7" stroke-miterlimit="10">
     <path d="M29.86 31.42 21.43 43.7M33.47 33.9l-8.43 12.28M37.08 36.37l-9.59 13.98M40.69 38.84l-9.25 13.49"/>
   </g>
-  <mask maskUnits="userSpaceOnUse" x="54" y="38" width="13" height="12">
+  <mask id="b" maskUnits="userSpaceOnUse" x="54" y="38" width="13" height="12">
     <path d="m65.59 47.74-8.39 2.2a.79.79 0 0 1-.96-.56l-2-7.43a.79.79 0 0 1 .57-.97l8.44-2.1c.43-.1.85.16.96.57l1.93 7.31c.1.43-.14.86-.56.97Z" fill="#D9D9D9"/>
   </mask>
   <g mask="url(#b)" stroke="#6C6E79" stroke-width=".7" stroke-miterlimit="10">
