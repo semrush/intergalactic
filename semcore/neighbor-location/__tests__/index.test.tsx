@@ -1,14 +1,19 @@
 import React from 'react';
 import { testing } from '@semcore/jest-preset-ui';
 import NeighborLocation from '../src';
+
 const { cleanup, render } = testing;
 
-const Test: any = function ({ neighborlocation, ...other }) {
+const NeighborLocationItem: any = function ({ neighborlocation, ...other }) {
   return (
     <NeighborLocation.Detect neighborlocation={neighborlocation}>
-      {(neighborLocation) => <div {...other} data-neighborlocation={neighborLocation} />}
+      {(neighborLocation) => <CustomComponent {...other} neighborLocation={neighborLocation} />}
     </NeighborLocation.Detect>
   );
+};
+
+const CustomComponent: any = function ({ neighborLocation, ...other }) {
+  return <div {...other} data-neighborlocation={neighborLocation} />;
 };
 
 describe('neighbor-location', () => {
@@ -17,11 +22,31 @@ describe('neighbor-location', () => {
   test('should must work', () => {
     const { getByTestId } = render(
       <NeighborLocation>
-        <Test data-testid="1" />
-        <Test data-testid="2" />
-        <Test data-testid="3" />
+        <NeighborLocationItem data-testid="1" />
+        <NeighborLocationItem data-testid="2" />
+        <NeighborLocationItem data-testid="3" />
       </NeighborLocation>,
     );
+    expect(getByTestId('1').attributes['data-neighborlocation'].value).toBe('right');
+    expect(getByTestId('2').attributes['data-neighborlocation'].value).toBe('both');
+    expect(getByTestId('3').attributes['data-neighborlocation'].value).toBe('left');
+  });
+
+  test('should must work with component', () => {
+    const { getByTestId } = render(
+      <NeighborLocation>
+        <NeighborLocation.Detect>
+          <CustomComponent data-testid="1" />
+        </NeighborLocation.Detect>
+        <NeighborLocation.Detect>
+          <CustomComponent data-testid="2" />
+        </NeighborLocation.Detect>
+        <NeighborLocation.Detect>
+          <CustomComponent data-testid="3" />
+        </NeighborLocation.Detect>
+      </NeighborLocation>,
+    );
+
     expect(getByTestId('1').attributes['data-neighborlocation'].value).toBe('right');
     expect(getByTestId('2').attributes['data-neighborlocation'].value).toBe('both');
     expect(getByTestId('3').attributes['data-neighborlocation'].value).toBe('left');
@@ -31,10 +56,10 @@ describe('neighbor-location', () => {
     const { getByTestId } = render(
       <NeighborLocation controlsLength={3}>
         <div />
-        <Test data-testid="1" />
-        <Test data-testid="2" />
+        <NeighborLocationItem data-testid="1" />
+        <NeighborLocationItem data-testid="2" />
         <div />
-        <Test data-testid="3" />
+        <NeighborLocationItem data-testid="3" />
       </NeighborLocation>,
     );
     expect(getByTestId('1').attributes['data-neighborlocation'].value).toBe('right');
@@ -43,7 +68,7 @@ describe('neighbor-location', () => {
   });
 
   test('should must work without NeighborLocation', () => {
-    const { getByTestId } = render(<Test data-testid="test" />);
+    const { getByTestId } = render(<NeighborLocationItem data-testid="test" />);
     expect(getByTestId('test').attributes['data-neighborlocation']).toBe(undefined);
   });
 
@@ -54,8 +79,8 @@ describe('neighbor-location', () => {
         {true}
         {false}
         {''}
-        <Test data-testid="1" />
-        <Test />
+        <NeighborLocationItem data-testid="1" />
+        <NeighborLocationItem />
       </NeighborLocation>,
     );
     expect(getByTestId('1').attributes['data-neighborlocation'].value).toBe('right');
