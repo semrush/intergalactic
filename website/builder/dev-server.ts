@@ -15,7 +15,7 @@ const startServer = () => {
       const fileRequested = req.url.includes('.');
       const proxyReq = http.request(
         {
-          hostname: 'localhost',
+          hostname: '127.0.0.1',
           port: internalPort,
           path: fileRequested ? req.url : '/',
           method: req.method,
