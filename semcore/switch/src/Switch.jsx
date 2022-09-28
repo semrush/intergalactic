@@ -176,6 +176,7 @@ function Addon(props) {
           <SAddon
             render={Box}
             tag="span"
+            neighborLocation={neighborLocation}
             aria-hidden="true"
             id={`igc-${uid}-switch-addon-${neighborLocation}`}
           />,

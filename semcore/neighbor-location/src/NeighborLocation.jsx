@@ -42,8 +42,9 @@ class NeighborLocationRoot extends Component {
   }
 
   render() {
-    const { Children, tag: Tag } = this.asProps;
-    this.controlsLength = React.Children.toArray(getOriginChildren(Children)).filter(isNode).length;
+    const { Children, tag: Tag, controlsLength } = this.asProps;
+    this.controlsLength =
+      controlsLength ?? React.Children.toArray(getOriginChildren(Children)).filter(isNode).length;
     this.cacheChild.clear();
 
     if (Tag)

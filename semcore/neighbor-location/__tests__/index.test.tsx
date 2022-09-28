@@ -3,7 +3,7 @@ import { testing } from '@semcore/jest-preset-ui';
 import NeighborLocation from '../src';
 const { cleanup, render } = testing;
 
-const Test = function ({ neighborlocation, ...other }) {
+const Test: any = function ({ neighborlocation, ...other }) {
   return (
     <NeighborLocation.Detect neighborlocation={neighborlocation}>
       {(neighborLocation) => <div {...other} data-neighborlocation={neighborLocation} />}
