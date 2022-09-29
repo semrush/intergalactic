@@ -25,7 +25,7 @@ export const runPublisher = async (versionPatches: VersionPatch[]) => {
     console.log(`Running publisher with following args: ${args}`);
 
     if (!process.argv.includes('--dry-run')) {
-      execSync(`yarn pub ${args}`, {
+      execSync(`pnpm pub ${args}`, {
         stdio: 'inherit',
       });
     }

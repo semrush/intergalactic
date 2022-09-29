@@ -9,7 +9,7 @@
   "author": "UI-kit team <ui-kit-team@semrush.com>",
   "license": "MIT",
   "scripts": {
-    "build": "build",
+    "build": "pnpm semcore-builder",
     "test": "jest"
   },
   "dependencies": {
@@ -29,6 +29,7 @@
     "directory": "semcore/portal"
   },
   "devDependencies": {
+    "@types/react": "16.8 - 17",
     "@semcore/jest-preset-ui": "1.0.0"
   }
 }

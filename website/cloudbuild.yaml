@@ -26,11 +26,11 @@ steps:
       - --labels=gcb-trigger-id=$_TRIGGER_ID
   - id: 'Install dependency'
     name: node:16
-    entrypoint: yarn
+    entrypoint: pnpm
     dir: website
   - id: 'Update search'
     name: node:16
-    entrypoint: yarn
+    entrypoint: pnpm
     args: ['upload-search-index']
     dir: website
     env:
