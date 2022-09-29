@@ -328,14 +328,12 @@ const Demo = () => {
           mask={valueMask.replace(/_/g, '9')}
         />
         {value !== valueMask && (
-          <Input.Addon>
-            <CloseXS
-              interactive
-              onClick={() => {
-                updateValue(valueMask);
-              }}
-            />
-          </Input.Addon>
+          <Input.Addon
+            tag={CloseXS}
+            aria-label="Clear value"
+            interactive
+            onClick={() => updateValue(valueMask)}
+          />
         )}
       </InputMask>
     </NeighborLocation>

@@ -57,9 +57,12 @@ const SuggestSearch = connectAutoComplete(
           placeholder="What icon are you looking for?"
         />
         {!!currentRefinement && (
-          <Input.Addon>
-            <CloseXS interactive onClick={() => handleChangeValue('')} />
-          </Input.Addon>
+          <Input.Addon
+            tag={CloseXS}
+            interactive
+            onClick={() => handleChangeValue('')}
+            aria-label="Clear field"
+          />
         )}
       </Search>
     );

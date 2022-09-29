@@ -9,7 +9,7 @@ export default () => (
   <Card>
     <Card.Header>
       <Card.Title hint={tooltipContent}>Card heading</Card.Title>
-      <SettingsM style={{ float: 'right' }} color="stone" interactive />
+      <SettingsM style={{ float: 'right' }} color="stone" interactive aria-label="Open settings" />
       <Card.Description>This is card additional information or insights.</Card.Description>
     </Card.Header>
     <Card.Body>
