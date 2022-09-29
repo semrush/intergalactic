@@ -98,3 +98,8 @@ SAddon:not(:only-child):first-child {
 SAddon:not(:only-child):last-child {
   margin-right: 8px;
 }
+
+SAddon:only-child {
+  margin-right: 8px;
+  margin-left: 8px;
+}
