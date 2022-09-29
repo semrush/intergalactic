@@ -9,7 +9,7 @@
   "sideEffects": false,
   "license": "MIT",
   "scripts": {
-    "build": "build --source=js",
+    "build": "pnpm semcore-builder --source=js",
     "test": "jest"
   },
   "dependencies": {
@@ -32,6 +32,7 @@
     "directory": "semcore/notice-bubble"
   },
   "devDependencies": {
+    "@types/react": "16.8 - 17",
     "@semcore/jest-preset-ui": "1.0.0"
   }
 }

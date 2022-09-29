@@ -41,7 +41,7 @@ const hashFiles = async (paths: string[]) => {
 };
 
 export const makeCacheManager = (id: string, cwd = '.', cacheTtl = 1000 * 60 * 60 * 24 * 30) => {
-  const cacheDir = resolvePath(cwd, `./.cache/${id.replace(/\W+/, '_')}`);
+  const cacheDir = resolvePath(cwd, `../.cache/${id.replace(/\W+/, '_')}`);
 
   return {
     hashString,

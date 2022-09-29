@@ -11,6 +11,7 @@ const outputFile = util.promisify(fs.outputFile);
 const readFile = util.promisify(fs.readFile);
 
 const rootDir = process.cwd();
+process.chdir(__dirname);
 let customConfig = () => {};
 
 if (configFile) {
@@ -89,7 +90,7 @@ const generateIcons = (
 ) => {
   return new Promise((resolve, reject) => {
     glob(`${rootDir}/${sourceLib}/**/*svg`, async (err, icons) => {
-      if (err) reject(error);
+      if (err) reject(err);
       const results = icons.map(async (iconPath) => {
         const { name, location, group } = getDescriptionIcons(iconPath, outLib);
         const source = await svgToReactComponent(iconPath, name, group);
@@ -129,6 +130,7 @@ module.exports = function () {
     }),
   )
     .then(() => {
+      // eslint-disable-next-line no-console
       console.log('Done! Wrote all icon files.');
     })
     .catch((err) => {

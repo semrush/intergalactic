@@ -4,7 +4,7 @@ export const runTests = async () => {
   // eslint-disable-next-line no-console
   console.log(`Running tests`);
 
-  execSync(`yarn jest --no-cache`, {
+  execSync(`pnpm jest --no-cache`, {
     stdio: 'inherit',
   });
 };

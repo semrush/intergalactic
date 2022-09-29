@@ -6,11 +6,11 @@ Package is purposed to make monorepo publishing easer.
 
 ### Installing
 
-`yarn add -D super-publisher`
+`pnpm add -D super-publisher`
 
 ### Usage
 
-`yarn super-publisher`
+`pnpm super-publisher`
 
 ### Конфигурация
 

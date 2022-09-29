@@ -200,15 +200,15 @@ export const getReportHeader = async () => {
     'utf-8',
   );
   const reactPackageFile = await readFile(
-    resolvePath('./node_modules/react/package.json'),
+    resolvePath(require.resolve('react'), '../package.json'),
     'utf-8',
   );
   const playwrightPacakgeFile = await readFile(
-    resolvePath('./node_modules/playwright/package.json'),
+    resolvePath(require.resolve('playwright'), '../package.json'),
     'utf-8',
   );
   const guidepupPacakgeFile = await readFile(
-    resolvePath('./node_modules/@guidepup/guidepup/package.json'),
+    resolvePath(require.resolve('@guidepup/guidepup'), '../../package.json'),
     'utf-8',
   );
 

@@ -9,5 +9,5 @@ module.exports = function (code, { fileName }) {
     filepath: fileName,
     parser: 'babel',
     ...config,
-  });
+  }).replace(/function \(props\)/g, 'function(props)');
 };
