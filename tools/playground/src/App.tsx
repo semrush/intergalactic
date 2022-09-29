@@ -32,7 +32,7 @@ export const PlaygroundWrapper: React.FC = () => {
   if (!playgrounds[playground]) {
     return (
       <div>
-        Playgorund <strong>{playground}</strong> not found. Pick one in the list above or{' '}
+        Playground <strong>{playground}</strong> not found. Pick one in the list above or{' '}
         <a href="#">create new</a>
       </div>
     );
@@ -45,7 +45,7 @@ export const PlaygroundWrapper: React.FC = () => {
     console.log({ Playground });
     return (
       <div>
-        Playgorund <strong>{playground}</strong> has no function in default export (what we got see
+        Playground <strong>{playground}</strong> has no function in default export (what we got see
         in developer console)
       </div>
     );

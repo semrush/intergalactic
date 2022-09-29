@@ -18,5 +18,4 @@
     }
   },
   "exclude": ["node_modules", "dist", "builder", "deploy.ts", "searchIndexUpload.ts"]
-  // "references": [{ "path": "./builder" }]
 }

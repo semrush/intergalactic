@@ -11,11 +11,14 @@
   "scripts": {
     "test": "jest"
   },
+  "devDependencies": {
+    "esbuild": "0.14.29"
+  },
   "peerDependencies": {
     "esbuild": "*"
   },
   "dependencies": {
-    "@babel/core": "7.17.8",
+    "@babel/core": "7.19.1",
     "@semcore/babel-preset-ui": "*",
     "@semcore/babel-plugin-react-semcore": "*"
   }

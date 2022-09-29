@@ -9,7 +9,7 @@
   "author": "UI-kit team <ui-kit-team@semrush.com>",
   "license": "MIT",
   "scripts": {
-    "build": "build --source=js",
+    "build": "pnpm semcore-builder --source=js",
     "test": "jest"
   },
   "dependencies": {
@@ -32,6 +32,7 @@
   "devDependencies": {
     "@guidepup/playwright": "0.6.1",
     "@playwright/test": "1.25.1",
+    "@types/react": "16.8 - 17",
     "@semcore/jest-preset-ui": "1.0.0"
   }
 }

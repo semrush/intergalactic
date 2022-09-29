@@ -1,7 +1,7 @@
 {
   "name": "@semcore/pagination",
   "description": "Semrush Pagination Component",
-  "version": "3.2.8",
+  "version": "3.2.9",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -9,7 +9,7 @@
   "author": "UI-kit team <ui-kit-team@semrush.com>",
   "license": "MIT",
   "scripts": {
-    "build": "build --source=js",
+    "build": "pnpm semcore-builder --source=js",
     "test": "jest"
   },
   "dependencies": {
@@ -34,6 +34,7 @@
     "directory": "semcore/pagination"
   },
   "devDependencies": {
+    "@types/react": "16.8 - 17",
     "@semcore/jest-preset-ui": "1.0.0"
   }
 }

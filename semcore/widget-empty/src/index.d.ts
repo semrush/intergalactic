@@ -30,9 +30,8 @@ declare const WidgetEmpty: (<T>(props: CProps<IWidgetEmptyProps> & T) => ReturnE
   Description: <T>(props: ComponentProps<typeof Box> & T) => ReturnEl;
 };
 
-declare const NoData: <T>(props: CProps<IWidgetNoDataProps> & T) => ReturnEl;
-declare const Error: <T>(props: CProps<IWidgetErrorProps> & T) => ReturnEl;
-declare const getIconPath: (name: string) => string;
+export declare const NoData: <T>(props: CProps<IWidgetNoDataProps> & T) => ReturnEl;
+export declare const Error: <T>(props: CProps<IWidgetErrorProps> & T) => ReturnEl;
+export declare const getIconPath: (name: string) => string;
 
 export default WidgetEmpty;
-export { getIconPath, NoData, Error };

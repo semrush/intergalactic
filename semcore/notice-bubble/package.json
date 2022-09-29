@@ -1,7 +1,7 @@
 {
   "name": "@semcore/notice-bubble",
   "description": "Semrush NoticeBubble Component",
-  "version": "4.1.4",
+  "version": "4.1.5",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -9,7 +9,7 @@
   "sideEffects": false,
   "license": "MIT",
   "scripts": {
-    "build": "build --source=js",
+    "build": "pnpm semcore-builder --source=js",
     "test": "jest"
   },
   "dependencies": {
@@ -32,6 +32,7 @@
     "directory": "semcore/notice-bubble"
   },
   "devDependencies": {
+    "@types/react": "16.8 - 17",
     "@semcore/jest-preset-ui": "1.0.0"
   }
 }

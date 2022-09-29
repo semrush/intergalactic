@@ -41,8 +41,12 @@ function SideBarHeading({ headings }) {
           </Link>
         ))}
       </nav>
-      <span className={styles.buttonUp} onClick={() => animateScroll.scrollToTop({ smooth: true })}>
-        <ArrowUpM interactive />
+      <span
+        aria-hidden="true"
+        className={styles.buttonUp}
+        onClick={() => animateScroll.scrollToTop({ smooth: true })}
+      >
+        <ArrowUpM interactive aria-label="Scroll page to the top" />
       </span>
     </>
   );

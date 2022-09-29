@@ -8,7 +8,7 @@ import Checkbox from '@semcore/checkbox';
 import InfoXS from '@semcore/icon/Info/m';
 import SettingsS from '@semcore/icon/Settings/m';
 
-let data = [
+const data = [
   { domain: 'tut.by', value: 35844 },
   { domain: 'onliner.by', value: 17239 },
   { domain: 'roga&kopita.ru', value: 13186 },
@@ -64,7 +64,7 @@ class Demo extends PureComponent {
               <InfoXS ml="4px" color="gray-300" cursor="help" />
             </Tooltip>
           </Text>
-          <SettingsS color="gray-300" interactive />
+          <SettingsS color="gray-300" interactive aria-label="Open settings" />
         </Flex>
         <Flex mt={3} alignItems="flex-start" flexWrap="wrap">
           <PieChart height={80} width={80} style={{ margin: '0 28px 24px 0' }}>
@@ -109,7 +109,7 @@ class Demo extends PureComponent {
             onMouseLeave={this.handleMouseLeave}
           >
             {domains.map((name, id) => {
-              let { domain, value } = data[id];
+              const { domain, value } = data[id];
 
               return (
                 <tr>

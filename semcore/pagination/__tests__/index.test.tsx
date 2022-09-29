@@ -214,13 +214,13 @@ describe('Pagination.PageInput', () => {
         <Pagination currentPage={1} totalPages={1234}>
           <Pagination.PageInput>
             <Pagination.PageInput.Value />
-            <Pagination.PageInput.Addon tag={Return} interactive />
+            <Pagination.PageInput.Addon tag={Return} interactive aria-label="Confirm page number" />
           </Pagination.PageInput>
         </Pagination>
         <Pagination currentPage={1} totalPages={1234}>
           <Pagination.PageInput>
             <Pagination.PageInput.Value id="page-number" />
-            <Pagination.PageInput.Addon tag={Return} interactive />
+            <Pagination.PageInput.Addon tag={Return} interactive aria-label="Confirm page number" />
           </Pagination.PageInput>
         </Pagination>
       </snapshot.ProxyProps>
@@ -240,7 +240,7 @@ describe('Pagination.PageInput', () => {
         <Pagination currentPage={1234} totalPages={1234}>
           <Pagination.PageInput>
             <Pagination.PageInput.Value id="page-number" />
-            <Pagination.PageInput.Addon tag={Return} interactive />
+            <Pagination.PageInput.Addon tag={Return} interactive aria-label="Confirm page number" />
           </Pagination.PageInput>
         </Pagination>
       </snapshot.ProxyProps>

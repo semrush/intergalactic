@@ -1,7 +1,7 @@
 {
   "name": "@semcore/accordion",
   "description": "Semrush Accordion Component",
-  "version": "4.0.18",
+  "version": "4.0.19",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -9,7 +9,7 @@
   "author": "UI-kit team <ui-kit-team@semrush.com>",
   "license": "MIT",
   "scripts": {
-    "build": "build --source=js",
+    "build": "pnpm semcore-builder --source=js",
     "test": "jest"
   },
   "dependencies": {
@@ -31,6 +31,7 @@
     "directory": "semcore/accordion"
   },
   "devDependencies": {
+    "@types/react": "16.8 - 17",
     "@guidepup/playwright": "0.6.1",
     "@playwright/test": "1.25.1",
     "@semcore/jest-preset-ui": "1.0.0"

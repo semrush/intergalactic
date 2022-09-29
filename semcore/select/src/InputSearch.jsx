@@ -55,6 +55,7 @@ class InputSearch extends Component {
           hide={hideClose}
           aria-hidden={hideClose}
           interactive
+          aria-label="Clear search field"
           onClick={this.handleClear}
         >
           <IconClose />

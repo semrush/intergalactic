@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.31.0] - 2022-09-30
+
+### Changed
+
+- When `interactive` prop is provided, `aria-label` or `aria-labelledby` props from now are required. If required props are not provided a warning is logged to developer console.
+
 ## [2.30.4] - 2022-09-15
 
 ### Fixed

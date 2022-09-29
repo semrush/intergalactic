@@ -1,7 +1,7 @@
 {
   "name": "@semcore/icon",
   "description": "Semrush Icon Component",
-  "version": "2.30.4",
+  "version": "2.31.0",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -11,7 +11,7 @@
   "scripts": {
     "parsing": "icon-transform-svg parsing",
     "transform": "icon-transform-svg",
-    "build": "build --source=js && npm run transform -- --configFile=transform-svg-legacy.config.js && npm run transform -- --configFile=transform-svg.config.js",
+    "build": "pnpm semcore-builder --source=js && pnpm icon-transform-svg --configFile=./transform-svg-legacy.config.js && pnpm icon-transform-svg --configFile=./transform-svg.config.js",
     "test": "jest",
     "prebuild": "ls -d */ | egrep -v \"__tests__|src|svg|svg-new|AppBlock\" | xargs rm -rf"
   },
@@ -33,6 +33,7 @@
     "directory": "semcore/icon"
   },
   "devDependencies": {
+    "@types/react": "16.8 - 17",
     "@semcore/jest-preset-ui": "1.0.0",
     "@semcore/icon-transform-svg": "1.0.0"
   }

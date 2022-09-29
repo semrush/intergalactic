@@ -264,14 +264,12 @@ export default function App() {
                     mask={valueMask.replace(/_/g, '9')}
                   />
                   {value !== valueMask && (
-                    <Input.Addon>
-                      <CloseXS
-                        interactive
-                        onClick={() => {
-                          updateValue(valueMask);
-                        }}
-                      />
-                    </Input.Addon>
+                    <Input.Addon
+                      tag={CloseXS}
+                      interactive
+                      onClick={() => updateValue(valueMask)}
+                      aria-label="Clear field"
+                    />
                   )}
                 </InputMask>
               }
