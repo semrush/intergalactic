@@ -20,7 +20,7 @@ var _ref =
   styles = _extends({}, _ref);
 
 var styled_c8 = create([styles]);
-export default function (props) {
+export default function(props) {
   var SButton = 'div';
   return styled(
     (set([styled_c8]),

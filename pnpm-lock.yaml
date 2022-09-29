@@ -8,12 +8,13 @@ overrides:
   trim-newlines: 3.0.1
   glob-parent: 6.0.2
   braces: 3.0.2
-  '@babel/runtime': '7'
+  '@babel/runtime': 7.19.0
+  '@babel/core': 7.19.1
 
 importers:
   .:
     specifiers:
-      '@babel/runtime': '7'
+      '@babel/runtime': 7.19.0
       '@crowdin/cli': 3.7.9
       '@guidepup/playwright': 0.6.1
       '@mailchimp/mailchimp_marketing': 3.0.30
@@ -782,7 +783,7 @@ importers:
 
   semcore/illustration:
     specifiers:
-      '@babel/runtime': '7'
+      '@babel/runtime': 7.19.0
       '@semcore/flex-box': ^4
       '@semcore/icon-transform-svg': 1.0.0
       '@types/react': 16.8 - 17
@@ -1642,7 +1643,7 @@ importers:
 
   semcore/utils:
     specifiers:
-      '@babel/runtime': '7'
+      '@babel/runtime': 7.19.0
       '@semcore/babel-plugin-react-semcore': ^4.2.1
       '@semcore/core': ^1
       '@semcore/jest-preset-ui': 1.0.0
