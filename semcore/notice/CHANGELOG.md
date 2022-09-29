@@ -6,7 +6,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-- Color for label with theme `info` was changed from `--gray-400` to `--blue-400`.
+- Color for Close icon with theme `info` was changed from `--blue-400` to `--gray-400`.
 
 ## [4.1.16] - 2022-09-21
 
