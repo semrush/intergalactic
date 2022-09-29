@@ -38,6 +38,7 @@
     "@semcore/babel-preset-ui": "workspace:*",
     "@semcore/esbuild-plugin-semcore": "workspace:*",
     "@semcore/builder": "workspace:*",
+    "@semcore/continuous-delivery": "workspace:*",
     "@semcore/core": "workspace:*",
     "@semcore/d3-chart": "workspace:*",
     "@semcore/jest-preset-ui": "workspace:*",
