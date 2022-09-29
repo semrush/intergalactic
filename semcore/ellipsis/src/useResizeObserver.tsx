@@ -1,29 +1,19 @@
-import { RefObject, useState } from 'react';
+import { RefObject, useCallback, useState } from 'react';
 import useEnhancedEffect from '@semcore/utils/src/use/useEnhancedEffect';
 
-export const useResizeObserver = (ref: RefObject<HTMLElement>, custom) => {
-  const [size, setSize] = useState<{ width: number; height: number }>({
-    width: 0,
-    height: 0,
-  });
+export const useResizeObserver = (ref: RefObject<HTMLElement>, hookOverride?) => {
+  const [width, setWidth] = useState<number>(0);
 
-  const collectObs = [];
-
-  const handleResize = (entries: ResizeObserverEntry[]) => {
-    setSize({ width: entries[0].contentRect.width, height: entries[0].contentRect.height });
-  };
-
-  const subscribe = (cur) => {
-    collectObs.push(cur);
-    return collectObs;
-  };
+  const handleResize = useCallback((entries: ResizeObserverEntry[]) => {
+    setWidth(entries[0].contentRect.width);
+  }, []);
 
   useEnhancedEffect(() => {
     if (!ref.current) {
       return;
     }
 
-    if (custom) {
+    if (hookOverride) {
       return;
     }
 
@@ -36,7 +26,10 @@ export const useResizeObserver = (ref: RefObject<HTMLElement>, custom) => {
     return () => {
       ro.disconnect();
     };
-  }, [ref]);
+  }, [hookOverride]);
 
-  return { size, subscribe };
+  if (hookOverride) {
+    return hookOverride;
+  }
+  return { width };
 };

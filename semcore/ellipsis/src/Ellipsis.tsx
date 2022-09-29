@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { RefObject, useRef } from 'react';
 import createComponent, { Component, sstyled } from '@semcore/core';
 import Tooltip from '@semcore/tooltip';
 import { Flex } from '@semcore/flex-box';
@@ -13,23 +13,29 @@ type AsProps = {
   trim?: string;
   tooltip?: string;
   styles?: React.CSSProperties;
-  resizeObserver: () => void;
+  resizeObserver?: { width: number };
+  // containerRef?: RefObject<HTMLElement>;
 };
 
 type AsPropsMiddle = {
   text?: string;
   tooltip?: string;
   styles?: React.CSSProperties;
-  resizeObserver: () => void;
+  resizeObserver?: { width: number };
+  // containerRef?: RefObject<HTMLElement>;
 };
 
-const gotSize = () => {
+const gotSize = (ref: RefObject<HTMLElement>) => {
+  if (ref.current) {
+    // const compStyles = window.getComputedStyle(ref.current, null).getPropertyValue('font-size');
+  }
+
   const dateSpan = document.createElement('span');
   dateSpan.innerHTML = 'a';
   document.body.appendChild(dateSpan);
   const rect = dateSpan.getBoundingClientRect();
   dateSpan.remove();
-  return rect.width;
+  return rect.width; //check with binary and font-size(getComputedStyle) memo
 };
 
 class RootEllipsis extends Component<AsProps> {
@@ -76,32 +82,9 @@ class RootEllipsis extends Component<AsProps> {
 const EllipsisMiddle: React.FC<AsPropsMiddle> = (props) => {
   const { styles, text, tooltip, resizeObserver, containerRef } = props;
   const resizeElement = useRef(null);
-  const size = gotSize();
-  const [blockWidth, setBlockWidth] = useState(null);
 
-  if (!resizeObserver) {
-    const width = useResizeObserver(resizeElement, null).size.width;
-    setBlockWidth(width);
-  }
-
-  useEffect(() => {
-    if (resizeObserver) {
-      const ro = new ResizeObserver((entries: ResizeObserverEntry[]) => {
-        setBlockWidth(entries[0].contentRect.width);
-      });
-      if (containerRef) {
-        resizeObserver.subscribe(containerRef.current);
-        ro.observe(containerRef.current);
-      }
-      if (resizeElement && resizeElement.current) {
-        resizeObserver.subscribe(resizeElement?.current);
-        ro.observe(resizeElement?.current);
-      }
-
-      return () => ro.disconnect();
-    }
-  }, []);
-
+  const blockWidth = useResizeObserver(resizeElement, resizeObserver).width;
+  const size = gotSize(containerRef ?? resizeElement);
   const STail = 'span';
   const SBeginning = 'span';
   const symbolAmount = Math.round(blockWidth / size);
@@ -112,14 +95,14 @@ const EllipsisMiddle: React.FC<AsPropsMiddle> = (props) => {
         <SBeginning>{text.slice(0, text.length - symbolAmount / 2 - 1)}</SBeginning>
         <STail>{text.slice(text.length - symbolAmount / 2 - 1)}</STail>
       </Tooltip>,
-    );
+    ) as any;
   } else {
     return sstyled(styles)(
       <Flex tag="span" ref={containerRef ?? resizeElement}>
         <SBeginning>{text.slice(0, text.length - symbolAmount / 2 - 1)}</SBeginning>
         <STail>{text.slice(text.length - symbolAmount / 2 - 1)}</STail>
       </Flex>,
-    );
+    ) as any;
   }
 };
 
