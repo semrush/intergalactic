@@ -14,9 +14,12 @@ const Demo = () => {
   return (
     <Input w={240}>
       <Input.Value defaultValue="IlikeCATS" placeholder="Password" type={type} />
-      <Input.Addon interactive onClick={() => setType(MAP_TYPES[type])}>
-        {type === 'password' ? <ShowYesXS /> : <ShowNoXS />}
-      </Input.Addon>
+      <Input.Addon
+        tag={type === 'password' ? <ShowYesXS /> : <ShowNoXS />}
+        aria-label={type === 'password' ? 'View password' : 'Hide password'}
+        interactive
+        onClick={() => setType(MAP_TYPES[type])}
+      />
     </Input>
   );
 };

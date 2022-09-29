@@ -12,11 +12,7 @@ const Demo = () => {
         onBlur={() => setFocus(false)}
         onFocus={() => setFocus(true)}
       />
-      {focus && (
-        <Input.Addon interactive>
-          <ActionReturnXS />
-        </Input.Addon>
-      )}
+      {focus && <Input.Addon interactive tag={ActionReturnXS} aria-label="Submit field value" />}
     </Input>
   );
 };

@@ -5,6 +5,7 @@ import { useBox } from '@semcore/flex-box';
 import resolveColor, { shade } from '@semcore/utils/lib/color';
 import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 import propsForElement from '@semcore/utils/lib/propsForElement';
+import logger from '@semcore/utils/lib/logger';
 
 import styles from './style/icon.shadow.css';
 
@@ -23,7 +24,12 @@ function Icon(props, ref) {
     ref,
   );
 
-  const { interactive, color: colorProps } = props;
+  const {
+    interactive,
+    color: colorProps,
+    'aria-label': ariaLabel,
+    'aria-labelledby': ariaLabelledby,
+  } = props;
   const color = resolveColor(colorProps);
   const { keyboardFocused, ...propsWithKeyboardEnhance } = keyboardFocusEnhance()({
     disabled: !interactive,
@@ -47,12 +53,20 @@ function Icon(props, ref) {
     }
   }
 
+  logger.warn(
+    interactive && !ariaLabel && !ariaLabelledby,
+    "'aria-label' or 'aria-labelledby' are required props for interactive icons",
+    props['data-ui-name'] || Icon.displayName,
+  );
+
   return (
     <SIcon
       {...propsForElement(propsWithKeyboardEnhance)}
       style={Object.assign({}, style, propsWithKeyboardEnhance.style, props.style)}
       className={cn(className, propsWithKeyboardEnhance.className, props.className) || undefined}
       onKeyDown={onKeyDown}
+      role={interactive ? 'button' : undefined}
+      aria-hidden={interactive ? undefined : 'true'}
     />
   );
 }

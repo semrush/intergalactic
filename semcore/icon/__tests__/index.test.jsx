@@ -76,7 +76,7 @@ describe('Icon', () => {
 
   test('should support call onClick', async () => {
     const onClick = jest.fn();
-    const { getByTestId } = render(<Icon data-testid="icon" interactive />);
+    const { getByTestId } = render(<Icon data-testid="icon" interactive aria-label="Test icon" />);
 
     fireEvent.keyDown(getByTestId('icon'), { code: 'Enter' });
     expect(onClick).toHaveBeenCalledTimes(0);
@@ -86,7 +86,13 @@ describe('Icon', () => {
     const onKeyDown = jest.fn();
     const onClick = jest.fn();
     const { getByTestId } = render(
-      <Icon data-testid="icon" onClick={onClick} onKeyDown={onKeyDown} interactive />,
+      <Icon
+        data-testid="icon"
+        onClick={onClick}
+        onKeyDown={onKeyDown}
+        interactive
+        aria-label="test icon"
+      />,
     );
 
     fireEvent.keyDown(getByTestId('icon'), { code: 'Enter' });
