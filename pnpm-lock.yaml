@@ -24,6 +24,7 @@ importers:
       '@semcore/babel-plugin-styles': workspace:*
       '@semcore/babel-preset-ui': workspace:*
       '@semcore/builder': workspace:*
+      '@semcore/continuous-delivery': workspace:*
       '@semcore/core': workspace:*
       '@semcore/d3-chart': workspace:*
       '@semcore/esbuild-plugin-semcore': workspace:*
@@ -70,6 +71,7 @@ importers:
       '@semcore/babel-plugin-styles': link:tools/babel-plugin-styles
       '@semcore/babel-preset-ui': link:tools/babel-preset-ui
       '@semcore/builder': link:tools/builder
+      '@semcore/continuous-delivery': link:tools/continuous-delivery
       '@semcore/core': link:semcore/core
       '@semcore/d3-chart': link:semcore/d3-chart
       '@semcore/esbuild-plugin-semcore': link:tools/esbuild-plugin-semcore
