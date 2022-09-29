@@ -1,0 +1,29 @@
+{
+  "name": "nextjs",
+  "description": "Semrush Next.js Example",
+  "version": "1.0.0",
+  "sideEffects": false,
+  "author": "UI-kit team <ui-kit-team@semrush.com>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "export": "next export"
+  },
+  "dependencies": {
+    "@semcore/ui": "latest",
+    "d3-scale": "4.0.2",
+    "next": "latest",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
+  "devDependencies": {
+    "@semcore/babel-plugin-react-semcore": "^4.2.1",
+    "@semcore/shadow-loader": "^1.0.4",
+    "babel-loader": "^8.2.5",
+    "css-loader": "^6.7.1",
+    "next-transpile-modules": "9.0.0",
+    "mini-css-extract-plugin": "^2.6.0"
+  }
+}
