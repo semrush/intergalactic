@@ -2,11 +2,18 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.2.0] - unreleased
+
+### Changed
+
+- Color for Close icon with theme `info` was changed from `--blue-400` to `--gray-400`.
+
 ## [4.1.17] - 2022-09-29
 
 ### Changed
 
 - Version patch update due to children dependencies update (`@semcore/icon` [2.30.4 ~> 2.31.0]).
+
 
 ## [4.1.16] - 2022-09-21
 
