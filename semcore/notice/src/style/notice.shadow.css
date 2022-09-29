@@ -16,10 +16,10 @@ SNotice[theme='info'] {
   border-color: var(--blue-200);
 
   & SCloseIcon {
-    color: var(--blue-400);
+    color: var(--gray-400);
 
     &:hover {
-      color: var(--blue-500);
+      color: var(--gray-500);
     }
   }
 }
