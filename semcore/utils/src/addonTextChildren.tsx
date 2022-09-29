@@ -12,6 +12,9 @@ function addonTextChildren(
   if (typeof children === 'function') {
     return <Children />;
   }
+  if (!children) {
+    return null;
+  }
   return React.Children.toArray(children).some((element) => {
     if (!React.isValidElement(element)) return false;
     if (element.type === React.Fragment) return true;

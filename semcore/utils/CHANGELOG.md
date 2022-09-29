@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.37.2] - 2022-09-29
+
+### Fixed
+
+- Added a check for empty children for `addonTextChildren` function.
+
 ## [3.37.1] - 2022-08-30
 
 ### Fixed
