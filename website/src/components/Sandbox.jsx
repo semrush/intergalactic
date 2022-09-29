@@ -27,7 +27,12 @@ export default ({ raw: { code: ExampleRawComponent, path } }) => {
       if (line[importStatementStart - 1] !== ' ' && importStatementStart !== 0) continue;
       const importStatementPart = line.substring(importStatementStart + `from ${quote}`.length);
       const importStatementEnd = importStatementPart.indexOf(quote);
-      const dependency = importStatementPart.substring(0, importStatementEnd);
+      let dependency = importStatementPart.substring(0, importStatementEnd);
+      if (dependency.startsWith('@')) {
+        dependency = dependency.split('/').slice(0, 2).join('/');
+      } else {
+        dependency = dependency.split('/')[0];
+      }
       dependencies[dependency] = 'latest';
       break;
     }
