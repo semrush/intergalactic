@@ -58,6 +58,6 @@ describe('InputMask', () => {
 describe('InputMask.Value', () => {
   afterEach(cleanup);
 
-  shouldSupportClassName(InputMask.Value, InputMask);
-  shouldSupportRef(InputMask.Value, InputMask);
+  shouldSupportClassName(InputMask.Value, InputMask, { title: 'test mask' });
+  shouldSupportRef(InputMask.Value, InputMask, { title: 'test mask' });
 });
