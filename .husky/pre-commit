@@ -1,4 +1,4 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-pnpm run prettier:fix && pnpm lint-staged 
+pnpm run prettier:fix && pnpm lint-staged && [ ! -e yarn.lock ]
