@@ -47,6 +47,7 @@ class RootEllipsis extends Component<AsProps> {
 
   render() {
     const SEllipsis = this.Root;
+    const SContainer = Flex;
     const { styles, Children, maxline, tooltip, trim, resizeObserver, containerRef } = this.asProps;
     const text = reactToText(getOriginChildren(Children));
 
@@ -63,11 +64,11 @@ class RootEllipsis extends Component<AsProps> {
     }
     if (tooltip) {
       return sstyled(styles)(
-        <Tooltip interaction="hover" title={text} tag={Flex}>
+        <SContainer interaction="hover" title={text} tag={Tooltip}>
           <SEllipsis use:maxline={maxline} render="div" tag="div">
             <Children />
           </SEllipsis>
-        </Tooltip>,
+        </SContainer>,
       );
     }
     return sstyled(styles)(
@@ -89,21 +90,27 @@ const EllipsisMiddle: React.FC<AsPropsMiddle> = (props) => {
   const size = useMemo(() => gotSize(fontSize), [fontSize]);
   const STail = 'span';
   const SBeginning = 'span';
+  const SContainerMiddle = Flex;
   const symbolAmount = Math.round(blockWidth / size);
 
   if (tooltip) {
     return sstyled(styles)(
-      <Tooltip interaction="hover" title={text} ref={containerRef ?? resizeElement} tag={Flex}>
+      <SContainerMiddle
+        interaction="hover"
+        title={text}
+        ref={containerRef ?? resizeElement}
+        tag={Tooltip}
+      >
         <SBeginning>{text.slice(0, text.length - symbolAmount / 2 - 1)}</SBeginning>
         <STail>{text.slice(text.length - symbolAmount / 2 - 1)}</STail>
-      </Tooltip>,
+      </SContainerMiddle>,
     ) as any;
   } else {
     return sstyled(styles)(
-      <Flex tag="span" ref={containerRef ?? resizeElement}>
+      <SContainerMiddle ref={containerRef ?? resizeElement}>
         <SBeginning>{text.slice(0, text.length - symbolAmount / 2 - 1)}</SBeginning>
         <STail>{text.slice(text.length - symbolAmount / 2 - 1)}</STail>
-      </Flex>,
+      </SContainerMiddle>,
     ) as any;
   }
 };

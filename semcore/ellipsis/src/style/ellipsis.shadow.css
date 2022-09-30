@@ -1,5 +1,10 @@
 @import '@semcore/utils/style/var.css';
 
+SContainer,
+SContainerMiddle {
+  overflow: hidden;
+}
+
 SBeginning,
 SEllipsis {
   overflow: hidden;
