@@ -28,6 +28,12 @@ export interface IEllipsisProps {
   resizeObserver?: { width: number };
 }
 
+declare const useResizeObserver: (
+  ref: RefObject<HTMLElement>,
+  hookOverride?: { width: number },
+) => { width: number };
+
 declare const Ellipsis: <T>(props: CProps<IEllipsisProps & T>) => ReturnEl;
 
+export { useResizeObserver };
 export default Ellipsis;
