@@ -1,4 +1,4 @@
-import React, { RefObject, useRef } from 'react';
+import React, { RefObject, useRef, useMemo } from 'react';
 import createComponent, { Component, sstyled } from '@semcore/core';
 import Tooltip from '@semcore/tooltip';
 import { Flex } from '@semcore/flex-box';
@@ -10,24 +10,26 @@ import getOriginChildren from '@semcore/utils/lib/getOriginChildren';
 
 type AsProps = {
   maxline?: number;
-  trim?: string;
+  trim?: 'end' | 'middle';
   tooltip?: string;
   styles?: React.CSSProperties;
   resizeObserver?: { width: number };
+  // eslint-disable-next-line ssr-friendly/no-dom-globals-in-module-scope
+  containerRef?: RefObject<HTMLElement | null>;
 };
 
 type AsPropsMiddle = {
-  text?: string;
+  text: string;
   tooltip?: string;
   styles?: React.CSSProperties;
   resizeObserver?: { width: number };
+  // eslint-disable-next-line ssr-friendly/no-dom-globals-in-module-scope
+  containerRef?: RefObject<HTMLElement | null>;
 };
 
-const gotSize = (ref: RefObject<HTMLElement>) => {
-  if (ref.current) {
-  }
-
+const gotSize = (fontSize: string) => {
   const dateSpan = document.createElement('span');
+  dateSpan.setAttribute('style', `fontSize: ${fontSize}px`);
   dateSpan.innerHTML = 'a';
   document.body.appendChild(dateSpan);
   const rect = dateSpan.getBoundingClientRect();
@@ -79,9 +81,12 @@ class RootEllipsis extends Component<AsProps> {
 const EllipsisMiddle: React.FC<AsPropsMiddle> = (props) => {
   const { styles, text, tooltip, resizeObserver, containerRef } = props;
   const resizeElement = useRef(null);
-
   const blockWidth = useResizeObserver(resizeElement, resizeObserver).width;
-  const size = gotSize(containerRef ?? resizeElement);
+  const element = containerRef?.current ?? resizeElement.current;
+  const fontSize = element
+    ? window.getComputedStyle(element, null).getPropertyValue('font-size')
+    : '14';
+  const size = useMemo(() => gotSize(fontSize), [fontSize]);
   const STail = 'span';
   const SBeginning = 'span';
   const symbolAmount = Math.round(blockWidth / size);
