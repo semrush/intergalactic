@@ -14,7 +14,6 @@ type AsProps = {
   tooltip?: string;
   styles?: React.CSSProperties;
   resizeObserver?: { width: number };
-  // containerRef?: RefObject<HTMLElement>;
 };
 
 type AsPropsMiddle = {
@@ -22,12 +21,10 @@ type AsPropsMiddle = {
   tooltip?: string;
   styles?: React.CSSProperties;
   resizeObserver?: { width: number };
-  // containerRef?: RefObject<HTMLElement>;
 };
 
 const gotSize = (ref: RefObject<HTMLElement>) => {
   if (ref.current) {
-    // const compStyles = window.getComputedStyle(ref.current, null).getPropertyValue('font-size');
   }
 
   const dateSpan = document.createElement('span');
@@ -35,7 +32,7 @@ const gotSize = (ref: RefObject<HTMLElement>) => {
   document.body.appendChild(dateSpan);
   const rect = dateSpan.getBoundingClientRect();
   dateSpan.remove();
-  return rect.width; //check with binary and font-size(getComputedStyle) memo
+  return rect.width;
 };
 
 class RootEllipsis extends Component<AsProps> {
