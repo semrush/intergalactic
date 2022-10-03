@@ -44,28 +44,20 @@ jobs:
         with:
           version: 7.0.0
       - uses: actions/setup-node@v2
-      - name: Restore cache node modules
-        uses: actions/cache@v2
+      - name: Get pnpm store directory
+        id: pnpm-cache
+        run: |
+          echo "::set-output name=pnpm_cache_dir::$(pnpm store path)"
+      - uses: actions/cache@v3
+        name: Restore pnpm cache
         with:
-          path: |
-            node_modules
-            */*/node_modules
-            website/node_modules
-          key: modules-${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml') }}--${{ hashFiles('website/pnpm-lock.yaml') }}
-      - name: Сache build
-        uses: actions/cache@v2
-        id: cache-build
-        with:
-          path: |
-            semcore/*/lib
-            tools/*/lib
-            semcore/icon/**/*.js
-            semcore/icon/**/*.mjs
-            semcore/icon/**/*.d.ts
-            semcore/illustration/**/*.js
-            semcore/illustration/**/*.mjs
-            semcore/illustration/**/*.d.ts
-          key: build-${{ hashFiles('semcore/**', 'tools/**', 'tsconfig.json', 'pnpm-lock.yaml') }}
+          path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+      - name: Install restored dependencies
+        run: |
+          pnpm install --frozen-lockfile
       - name: Build
         if: steps.cache-build.outputs.cache-hit != 'true'
         run: |
