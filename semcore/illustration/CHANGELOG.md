@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [1.1.3] - 2022-10-03
+
+### Added
+
+- Added and changed fields `main`, `module` and `typings` in `package.json`.
+
 ## [1.1.2] - 2022-09-27
 
 ### Added
