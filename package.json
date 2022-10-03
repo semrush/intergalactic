@@ -44,6 +44,7 @@
     "@semcore/jest-preset-ui": "workspace:*",
     "@semcore/babel-plugin-react-semcore": "workspace:*",
     "@semcore/super-publisher": "workspace:*",
+    "@semcore/gcs-upload": "workspace:*",
     "@semcore/theme-redesign": "1.5.12",
     "@types/jest": "29.0.0",
     "@typescript-eslint/eslint-plugin": "5.10.2",
