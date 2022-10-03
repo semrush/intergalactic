@@ -29,6 +29,7 @@ importers:
       '@semcore/d3-chart': workspace:*
       '@semcore/esbuild-plugin-semcore': workspace:*
       '@semcore/jest-preset-ui': workspace:*
+      '@semcore/super-publisher': workspace:*
       '@semcore/theme-redesign': 1.5.12
       '@types/jest': 29.0.0
       '@typescript-eslint/eslint-plugin': 5.10.2
@@ -76,6 +77,7 @@ importers:
       '@semcore/d3-chart': link:semcore/d3-chart
       '@semcore/esbuild-plugin-semcore': link:tools/esbuild-plugin-semcore
       '@semcore/jest-preset-ui': link:tools/jest-preset-ui
+      '@semcore/super-publisher': link:tools/super-publisher
       '@semcore/theme-redesign': 1.5.12
       '@types/jest': 29.0.0
       '@typescript-eslint/eslint-plugin': 5.10.2_lfj7r23v4xwv2enpxl5p6t5erq
