@@ -64,6 +64,7 @@ SCalendarUnit {
   position: relative;
   transition: color 0.15s, background 0.15s;
   outline: none;
+  margin: 0;
 
   &:hover {
     color: var(--gray-800);
