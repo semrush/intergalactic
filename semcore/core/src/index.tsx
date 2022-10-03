@@ -14,7 +14,11 @@ import childrenEnhancement, { CHILDREN_COMPONENT } from './enhancement/Children'
 import rootEnhancement from './enhancement/Root';
 import uncontrolledPropsEnhancement from './enhancement/uncontrolledProps';
 import functionDefaultPropsEnhancement from './enhancement/functionDefaultProps';
-import staticChildrenEnhancement, { STATIC_COMPONENT } from './enhancement/staticChildren';
+import staticChildrenEnhancement, {
+  STATIC_COMPONENT,
+  ROOT_COMPONENT,
+  getterMethodNameByDisplayName,
+} from './enhancement/staticChildren';
 import inheritedNameEnhancement, { INHERITED_NAME } from './enhancement/inheritedName';
 import hoistPropsEnhancement from './enhancement/hoistProps';
 import dataNameEnhancement from './enhancement/dataName';
@@ -58,16 +62,38 @@ function createGetField(enhancements, Component, isFunction) {
 }
 
 function createForwardWrapper(Component, wrapperProps, statics, isFunction) {
-  // @ts-ignore
-  const WrapperComponent = React.forwardRef(function ({ forwardRef = null, ...other }, ref) {
-    // WRAPPER PROPS
-    const { ref: enhancementRef = null, ...props } = wrapperProps.reduce(
-      (acc, enhancement) => enhancement(acc, WrapperComponent, isFunction),
-      other,
-    );
-    // @ts-ignore
+  const RootComponent = Component[ROOT_COMPONENT];
+  const getterMethodName = getterMethodNameByDisplayName(Component?.displayName);
+  const getterMethod = RootComponent?.prototype
+    ? RootComponent.prototype[getterMethodName]
+    : undefined;
+  const useGetterIndex = getterMethod?.length >= 2;
+
+  function WrapperForwardRefWithBind({ forwardRef = null, ...other }, ref) {
+    return <BindingWrapper {...other} forwardRef={useForkRef(ref, forwardRef)} />;
+  }
+
+  function WrapperForwardRef({ forwardRef = null, __WRAPPER_PROPS_BIND__, ...other }, ref) {
+    const { ref: enhancementRef = null, ...props } = (
+      __WRAPPER_PROPS_BIND__ || wrapperProps
+    ).reduce((acc, enhancement) => enhancement(acc, WrapperComponent, isFunction), other);
     return <Component {...props} forwardRef={useForkRef(enhancementRef, ref, forwardRef)} />;
-  });
+  }
+
+  class BindingWrapper extends React.Component<any> {
+    render() {
+      return (
+        <WrapperForwardRef
+          {...this.props}
+          __WRAPPER_PROPS_BIND__={wrapperProps.map((fn) => fn.bind(this))}
+        />
+      );
+    }
+  }
+
+  const WrapperComponent = React.forwardRef(
+    useGetterIndex ? WrapperForwardRefWithBind : WrapperForwardRef,
+  );
 
   hoistNonReactStatics(WrapperComponent, Component);
 
@@ -76,7 +102,7 @@ function createForwardWrapper(Component, wrapperProps, statics, isFunction) {
   WrapperComponent.defaultProps = Component.defaultProps;
   // STATIC
   statics.forEach((enhancement) =>
-    Object.assign(WrapperComponent, enhancement(WrapperComponent, isFunction)),
+    Object.assign(WrapperComponent, enhancement(WrapperComponent, Component, isFunction)),
   );
 
   return WrapperComponent;
@@ -376,6 +402,7 @@ export {
   INHERITED_NAME,
   CORE_COMPONENT,
   STATIC_COMPONENT,
+  ROOT_COMPONENT,
   assignProps,
 };
 export default createComponent;
