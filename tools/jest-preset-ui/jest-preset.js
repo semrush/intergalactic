@@ -16,7 +16,6 @@ module.exports = {
     '^@semcore/utils/lib/(.*)': '@semcore/utils/src/$1',
     '^@semcore/(.*)/lib/(.*)': '@semcore/$1/lib/$2',
     '^@semcore/icon/(.*)/(.*)': '@semcore/icon/$1/$2',
-    '^@semcore/illustration/(.*)': '@semcore/illustration/$1',
     '^@semcore/(.*)': '@semcore/$1/src',
     '^disable-jest-mapper:(.*)': '$1',
     '^react$': resolvePath(__dirname, '../../node_modules/react/umd/react.production.min.js'),
