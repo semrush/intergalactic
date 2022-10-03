@@ -10,8 +10,7 @@
   "license": "MIT",
   "scripts": {
     "build": "pnpm semcore-builder --source=js",
-    "test": "jest",
-    "upload-static": "gcs-upload svg/*.svg"
+    "test": "jest"
   },
   "dependencies": {
     "@semcore/button": "^4",
