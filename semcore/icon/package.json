@@ -11,9 +11,9 @@
   "scripts": {
     "parsing": "icon-transform-svg parsing",
     "transform": "icon-transform-svg",
-    "build": "pnpm semcore-builder --source=js && pnpm icon-transform-svg --configFile=./transform-svg-legacy.config.js && pnpm icon-transform-svg --configFile=./transform-svg.config.js",
+    "build": "pnpm run clean && pnpm semcore-builder --source=js && pnpm icon-transform-svg --configFile=./transform-svg-legacy.config.js && pnpm icon-transform-svg --configFile=./transform-svg.config.js",
     "test": "jest",
-    "prebuild": "ls -d */ | egrep -v \"__tests__|src|svg|svg-new|AppBlock\" | xargs rm -rf"
+    "clean": "ls -d */ | egrep -v \"__tests__|src|svg|svg-new|node_modules|AppBlock\" | xargs rm -rf"
   },
   "dependencies": {
     "@semcore/utils": "^3.15",
