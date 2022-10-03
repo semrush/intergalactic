@@ -1,7 +1,7 @@
 .header {
   position: fixed;
   top: 0;
-  width: 100vw;
+  width: 100%;
   padding: 0 40px;
   flex-wrap: nowrap;
   justify-content: space-between;
@@ -81,7 +81,7 @@
 }
 .searchWrapper {
   flex: 1;
-  max-width: 350px;
+  max-width: 354px;
 }
 .searchField {
   flex: 1;
@@ -91,10 +91,10 @@
   cursor: pointer;
   display: none;
   margin-right: 6px;
+  margin-bottom: 4px;
   width: 20px;
   height: 20px;
   padding: 30px 0;
-  padding-left: 0;
 }
 .activeMenuIcon {
   background-color: #f6f7f8;
@@ -181,7 +181,7 @@
   .searchIcon {
     display: flex;
     position: absolute;
-    right: 20px;
+    right: 12px;
   }
   .iconSearchWrapper {
     display: none !important;

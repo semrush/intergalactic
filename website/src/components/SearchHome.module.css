@@ -26,7 +26,7 @@
 .input {
   height: 46px;
   width: 100%;
-  padding-left: 24px;
+  padding-left: 12px;
   padding-right: 35px;
   box-sizing: border-box;
   font-size: 16px;
@@ -49,7 +49,7 @@
 
 .iconSearchWrapper {
   position: absolute;
-  right: 15px;
+  right: 12px;
   top: 14px;
   color: #171a22;
 }
@@ -98,6 +98,7 @@
 }
 
 .optionText {
+  padding-left: 4px;
   font-size: 14px;
   text-decoration: none;
 }
@@ -105,12 +106,13 @@
 .optionPlace {
   display: flex;
   align-items: center;
+  padding-left: 4px;
   font-size: 12px;
   color: #575c66;
 }
 
 .optionHeader {
-  padding: 8px;
+  padding: 8px 12px;
   height: 21px;
   font-weight: bold;
   font-size: 14px;
