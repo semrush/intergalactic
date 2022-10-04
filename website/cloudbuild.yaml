@@ -27,6 +27,7 @@ steps:
   - id: 'Install dependency'
     name: node:16
     entrypoint: pnpm
+    args: ['install']
     dir: website
   - id: 'Update search'
     name: node:16

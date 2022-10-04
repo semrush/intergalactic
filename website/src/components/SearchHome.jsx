@@ -164,7 +164,7 @@ const Search = ({
         }}
       </Select.Trigger>
       <IF condition={!!currentRefinement && searchResults}>
-        <Select.Popper className={cx(styles.popper, styles.selectPopper)}>
+        <Select.Popper className={styles.popper}>
           <Select.List m={0} style={{ overflow: 'hidden' }}>
             {showList(hits, pages, content)}
           </Select.List>

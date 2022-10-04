@@ -3905,6 +3905,30 @@ const iconsList = {
       ],
     },
     {
+      name: 'Charge',
+      size: ['l', 'm'],
+      group: 'Action',
+      tags: ['charge', 'arrow', 'стрелка'],
+    },
+    {
+      name: 'CardUpdate',
+      size: ['l', 'm'],
+      group: 'Misc',
+      tags: ['card', 'update', 'карта', 'кард', 'апдейт'],
+    },
+    {
+      name: 'ChargebackWin',
+      size: ['l', 'm'],
+      group: 'Misc',
+      tags: ['chargeback', 'charge', 'back', 'win', 'arrow', 'wallet', 'purse', 'чарджбек'],
+    },
+    {
+      name: 'ChargebackLoss',
+      size: ['l', 'm'],
+      group: 'Misc',
+      tags: ['chargeback', 'charge', 'back', 'loss', 'arrow', 'wallet', 'purse', 'чарджбек'],
+    },
+    {
       name: 'MathMinusAlt',
       size: ['l', 'm'],
       group: 'Action',
