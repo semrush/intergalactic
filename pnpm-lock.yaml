@@ -217,6 +217,7 @@ importers:
   semcore/button:
     specifiers:
       '@semcore/flex-box': ^4
+      '@semcore/icon': ^2.16
       '@semcore/jest-preset-ui': 1.0.0
       '@semcore/neighbor-location': ^3
       '@semcore/spin': ^4
@@ -228,6 +229,7 @@ importers:
       '@semcore/spin': link:../spin
       '@semcore/utils': link:../utils
     devDependencies:
+      '@semcore/icon': link:../icon
       '@semcore/jest-preset-ui': link:../../tools/jest-preset-ui
       '@types/react': 17.0.50
 
@@ -633,7 +635,7 @@ importers:
       '@semcore/button': ^4
       '@semcore/flex-box': ^4
       '@semcore/format-text': ^3.0.0
-      '@semcore/illustration': 1.1.4
+      '@semcore/illustration': 1.1.5
       '@semcore/jest-preset-ui': 1.0.0
       '@semcore/typography': ^4
       '@semcore/utils': ^3.27
@@ -1378,6 +1380,7 @@ importers:
   semcore/tab-panel:
     specifiers:
       '@semcore/flex-box': ^4
+      '@semcore/icon': ^2.16
       '@semcore/jest-preset-ui': 1.0.0
       '@semcore/utils': ^3.30
       '@types/react': 16.8 - 17
@@ -1385,6 +1388,7 @@ importers:
       '@semcore/flex-box': link:../flex-box
       '@semcore/utils': link:../utils
     devDependencies:
+      '@semcore/icon': link:../icon
       '@semcore/jest-preset-ui': link:../../tools/jest-preset-ui
       '@types/react': 17.0.50
 
@@ -1679,7 +1683,7 @@ importers:
   semcore/widget-empty:
     specifiers:
       '@semcore/flex-box': ^4
-      '@semcore/illustration': 1.1.4
+      '@semcore/illustration': 1.1.5
       '@semcore/jest-preset-ui': 1.0.0
       '@semcore/utils': ^3.27
       '@types/react': 16.8 - 17

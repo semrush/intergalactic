@@ -2,6 +2,7 @@ import React from 'react';
 import { testing, snapshot } from '@semcore/jest-preset-ui';
 import NeighborLocation from '@semcore/neighbor-location';
 import { Flex } from '@semcore/flex-box';
+import CheckM from '@semcore/icon/Check/m';
 import propsForElement from '@semcore/utils/lib/propsForElement';
 import Button from '../src';
 
@@ -40,6 +41,12 @@ describe('Button', () => {
         Text
       </Button>
     );
+
+    expect(await snapshot(component)).toMatchImageSnapshot();
+  });
+
+  test('Renders correctly with one Addon as props', async () => {
+    const component = <Button addonLeft={CheckM} aria-label="Check" />;
 
     expect(await snapshot(component)).toMatchImageSnapshot();
   });

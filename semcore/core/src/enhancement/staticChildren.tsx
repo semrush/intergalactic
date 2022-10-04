@@ -16,11 +16,11 @@ function assign(target, source) {
   );
 }
 
-function getterMethodName(name) {
+export function getterMethodName(name) {
   return `get${name}Props`;
 }
 
-function getterMethodNameByDisplayName(displayName) {
+export function getterMethodNameByDisplayName(displayName = '') {
   const displayNames = displayName.split('.');
   const name = displayNames.slice(-(displayNames.length - 1)).join('');
   return getterMethodName(name);
@@ -38,6 +38,7 @@ function flatGetterMethodNames(childComponents, parentName?: string) {
 }
 
 export const STATIC_COMPONENT = Symbol('STATIC_COMPONENT');
+export const ROOT_COMPONENT = Symbol('ROOT_COMPONENT');
 const SELF_GETTER_METHOD = Symbol('SELF_GETTER_METHOD');
 
 function Enhancement(childComponents, createComponent, options) {
@@ -63,15 +64,15 @@ function Enhancement(childComponents, createComponent, options) {
           if (!getterMethod) return acc;
           acc[name] = (childrenProps = {}) => {
             const getterProps = getterMethod.call(this, childrenProps, acc[name].index);
-            acc[name].index++;
             return assignProps(childrenProps, getterProps);
           };
-          acc[name].index = 0;
+          acc[name].index = -1;
+          acc[name].cache = new Set();
           return acc;
         }, {}),
       );
     },
-    static: function (WrapperComponent) {
+    static: function (WrapperComponent, Component) {
       if (Object.keys(childComponents).length && !WrapperComponent.displayName) {
         throw new Error('"displayName" is not defined');
       }
@@ -89,6 +90,7 @@ function Enhancement(childComponents, createComponent, options) {
         // @ts-ignore
         value.displayName = WrapperComponent.displayName + '.' + name;
         value[STATIC_COMPONENT] = true;
+        value[ROOT_COMPONENT] = Component[ROOT_COMPONENT] || Component;
         acc[name] = createComponent(value, childComponents, options);
         // @ts-ignore
         value.displayName = prevDisplayName;
@@ -98,7 +100,6 @@ function Enhancement(childComponents, createComponent, options) {
     },
     context: function (context /*, WrapperComponent*/) {
       // const getterMethod = getterMethodNameByDisplayName(WrapperComponent.displayName);
-
       return {
         ...context,
         // [getterMethod]: this[SELF_GETTER_METHOD],
@@ -107,10 +108,13 @@ function Enhancement(childComponents, createComponent, options) {
     },
     wrapperProps: function (props, WrapperComponent) {
       if (!WrapperComponent[STATIC_COMPONENT]) return props;
-
       const context = useContext(options.context);
       const getterMethod = context[getterMethodNameByDisplayName(WrapperComponent.displayName)];
       if (getterMethod) {
+        if (!getterMethod.cache.has(this)) {
+          getterMethod.cache.add(this);
+          getterMethod.index++;
+        }
         return getterMethod(props);
       }
       return props;
@@ -118,7 +122,8 @@ function Enhancement(childComponents, createComponent, options) {
     render: function (render) {
       getterMethodNames.forEach((name) => {
         if (this[name] === undefined) return;
-        this[name].index = 0;
+        this[name].index = -1;
+        this[name].cache.clear();
       });
       return render;
     },

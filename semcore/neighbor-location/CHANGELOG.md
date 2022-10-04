@@ -2,12 +2,18 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [3.0.0] - 2022-09-23
+## [3.0.0] - 2022-10-05
 
 ### BREAK
 
 - The approach to determining neighbors has been changed. Now the neighbors are determined by enumeration of children
   and not by context.
+
+## [2.3.16] - 2022-10-04
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.37.1 ~> 3.37.2]).
 
 ## [2.3.15] - 2022-08-30
 

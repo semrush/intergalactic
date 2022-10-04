@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { testing, snapshot } from '@semcore/jest-preset-ui';
 import propsForElement from '@semcore/utils/lib/propsForElement';
+import CheckM from '@semcore/icon/Check/m';
 import TabPanel from '../src';
 
 const { render, fireEvent, cleanup, axe } = testing;
@@ -33,6 +34,21 @@ describe('TabPanel', () => {
           <TabPanel.Item value={4}>Item 4</TabPanel.Item>
         </TabPanel>
       </>
+    );
+
+    expect(await snapshot(component)).toMatchImageSnapshot();
+  });
+
+  test('Should render correctly with one Addon', async () => {
+    const component = (
+      <TabPanel value={1}>
+        <TabPanel.Item value={1} addonLeft={CheckM} selected />
+        <TabPanel.Item value={2}>
+          <TabPanel.Item.Addon>Addon</TabPanel.Item.Addon>
+          <TabPanel.Item.Text>Item 2</TabPanel.Item.Text>
+          <TabPanel.Item.Addon>Addon</TabPanel.Item.Addon>
+        </TabPanel.Item>
+      </TabPanel>
     );
 
     expect(await snapshot(component)).toMatchImageSnapshot();
