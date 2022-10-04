@@ -5,10 +5,12 @@ import Calendar from '@semcore/icon/Calendar/m';
 import createComponent, { Root } from '@semcore/core';
 
 const ButtonTriggerRoot = ({ Children }) => {
+  const childrenAddon = addonTextChildren(Children, ButtonTrigger.Text, ButtonTrigger.Addon);
+
   return (
     <Root render={BaseTrigger}>
       <ButtonTrigger.Addon tag={Calendar} />
-      {addonTextChildren(Children, ButtonTrigger.Text, ButtonTrigger.Addon)}
+      {!childrenAddon ? <ButtonTrigger.Text /> : childrenAddon}
     </Root>
   );
 };
