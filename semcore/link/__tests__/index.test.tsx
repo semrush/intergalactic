@@ -5,6 +5,7 @@ import Calendar from '@semcore/icon/Calendar/m';
 const { cleanup, render, axe } = testing;
 const { shouldSupportClassName, shouldSupportRef } = testsShared;
 import Link from '../src';
+import CheckM from '@semcore/icon/Check/m';
 
 describe('Link', () => {
   afterEach(cleanup);
@@ -152,6 +153,12 @@ describe('Link', () => {
         },
       }),
     ).toMatchImageSnapshot();
+  });
+
+  test('Renders correctly with one Addon as props', async () => {
+    const component = <Link addonLeft={CheckM} aria-label="Check" />;
+
+    expect(await snapshot(component)).toMatchImageSnapshot();
   });
 
   test('a11y', async () => {

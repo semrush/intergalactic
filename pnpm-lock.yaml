@@ -217,6 +217,7 @@ importers:
   semcore/button:
     specifiers:
       '@semcore/flex-box': ^4
+      '@semcore/icon': ^2.16
       '@semcore/jest-preset-ui': 1.0.0
       '@semcore/neighbor-location': ^2
       '@semcore/spin': ^4
@@ -228,6 +229,7 @@ importers:
       '@semcore/spin': link:../spin
       '@semcore/utils': link:../utils
     devDependencies:
+      '@semcore/icon': link:../icon
       '@semcore/jest-preset-ui': link:../../tools/jest-preset-ui
       '@types/react': 17.0.50
 
@@ -637,7 +639,7 @@ importers:
       '@semcore/button': ^4
       '@semcore/flex-box': ^4
       '@semcore/format-text': ^3.0.0
-      '@semcore/illustration': 1.1.4
+      '@semcore/illustration': 1.1.5
       '@semcore/jest-preset-ui': 1.0.0
       '@semcore/typography': ^4
       '@semcore/utils': ^3.27
@@ -1382,6 +1384,7 @@ importers:
   semcore/tab-panel:
     specifiers:
       '@semcore/flex-box': ^4
+      '@semcore/icon': ^2.16
       '@semcore/jest-preset-ui': 1.0.0
       '@semcore/utils': ^3.30
       '@types/react': 16.8 - 17
@@ -1389,6 +1392,7 @@ importers:
       '@semcore/flex-box': link:../flex-box
       '@semcore/utils': link:../utils
     devDependencies:
+      '@semcore/icon': link:../icon
       '@semcore/jest-preset-ui': link:../../tools/jest-preset-ui
       '@types/react': 17.0.50
 
@@ -1683,7 +1687,7 @@ importers:
   semcore/widget-empty:
     specifiers:
       '@semcore/flex-box': ^4
-      '@semcore/illustration': 1.1.4
+      '@semcore/illustration': 1.1.5
       '@semcore/jest-preset-ui': 1.0.0
       '@semcore/utils': ^3.27
       '@types/react': 16.8 - 17
@@ -22939,13 +22943,12 @@ packages:
       react-instantsearch-core: 6.35.0_q22wp6cnvb4o6snvzt5zk5ltgu
     dev: false
 
-  /react-instantsearch-native/6.35.0_q22wp6cnvb4o6snvzt5zk5ltgu:
+  /react-instantsearch-native/6.35.0_react@17.0.1:
     resolution:
       {
         integrity: sha512-ggJvseTvrC5EQAGmUiuckXIYlxZxDWgKHsDxoyw9g+ceOTSr1NwZbU3SmXWRhL/FF/DsqRyOCpKN8RShym7/LQ==,
       }
     peerDependencies:
-      algoliasearch: '>= 3.1 < 5'
       react: '>= 16.3.0 < 19'
       react-native: '>= 0.54.0'
     dependencies:
@@ -22964,7 +22967,7 @@ packages:
       '@babel/runtime': 7.19.0
       react-instantsearch-core: 6.35.0_q22wp6cnvb4o6snvzt5zk5ltgu
       react-instantsearch-dom: 6.35.0_oarvqnd7qschj76tdawhnvtrkq
-      react-instantsearch-native: 6.35.0_q22wp6cnvb4o6snvzt5zk5ltgu
+      react-instantsearch-native: 6.35.0_react@17.0.1
     transitivePeerDependencies:
       - algoliasearch
       - react
