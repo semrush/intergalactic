@@ -24,9 +24,7 @@ const Demo = () => {
       </Input.Addon>
       <Input.Value placeholder="Filter by keyword" value={value} onChange={handleChange} />
       {value && (
-        <Input.Addon>
-          <CloseXS interactive onClick={handleClick} />
-        </Input.Addon>
+        <Input.Addon tag={CloseXS} interactive onClick={handleClick} aria-label="Clear filters" />
       )}
     </Input>
   );

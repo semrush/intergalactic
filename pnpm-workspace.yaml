@@ -1,0 +1,5 @@
+packages:
+  - 'semcore/*'
+  - 'tools/*'
+  - '!tools/@types'
+  - 'website'

@@ -9,14 +9,14 @@ dotenv.config();
 const publicPort = 3000;
 const internalPort = 9998;
 
-const startServer = () => {
+const startServer = (host: string, port: number) => {
   http
     .createServer((req, res) => {
       const fileRequested = req.url.includes('.');
       const proxyReq = http.request(
         {
-          hostname: '127.0.0.1',
-          port: internalPort,
+          hostname: host,
+          port,
           path: fileRequested ? req.url : '/',
           method: req.method,
           headers: req.headers,
@@ -53,11 +53,11 @@ esbuild
       splitting: false,
     },
   )
-  .then(() => {
-    startServer();
+  .then(async ({ host, port }) => {
+    startServer(host, port);
   })
   .catch((err) => {
     // eslint-disable-next-line no-console
     console.error(err);
-    process.exit(1);
+    // process.exit(1);
   });

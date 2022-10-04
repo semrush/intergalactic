@@ -1,7 +1,7 @@
 {
   "name": "@semcore/data-table",
   "description": "Semrush DataTable Component",
-  "version": "3.1.11",
+  "version": "3.1.13",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -9,7 +9,7 @@
   "author": "UI-kit team <ui-kit-team@semrush.com>",
   "license": "MIT",
   "scripts": {
-    "build": "build --source=ts",
+    "build": "pnpm semcore-builder --source=ts",
     "test": "jest"
   },
   "dependencies": {
@@ -20,6 +20,7 @@
     "resize-observer-polyfill": "^1.5"
   },
   "devDependencies": {
+    "@types/react": "16.8 - 17",
     "@semcore/jest-preset-ui": "1.0.0",
     "@guidepup/playwright": "0.6.1",
     "@playwright/test": "1.25.1",
@@ -35,7 +36,8 @@
     "@semcore/spin": "^4",
     "@semcore/spin-container": "*",
     "@semcore/sticky": "*",
-    "@semcore/tooltip": "*"
+    "@semcore/tooltip": "*",
+    "@types/node": "^17.0.45"
   },
   "peerDependencies": {
     "@semcore/core": "^1.11",

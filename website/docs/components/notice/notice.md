@@ -149,7 +149,7 @@ These are the notices that have their own rules and their styles differ from pre
 
 ### Feedback notice
 
-It differs from the regular one – it is attached to the header and stretched to the full width of the report's content section. It has no indents at the top, right, or left. You can see an example in the [FeedbackYesNo](/components/feedback-yes-no) guide.
+It differs from the regular one – it is attached to the header and stretched to the full width of the report's content section. It has no indents at the top, right, or left. You can see an example in the [FeedbackYesNo](/patterns/feedback-yes-no) guide.
 
 ### Advertising
 

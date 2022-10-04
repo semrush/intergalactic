@@ -6,7 +6,7 @@ tabName: Design
 
 @## Description
 
-**Feedback collection notice** is a pattern that consists of [Notice](/components/notice/) and [Feedback form](/components/feedback/). It helps to introduce the feature to the user and contains a simple question on its work. _For example, “Meet our new Dashboard! Is it working well for you?”._
+**FeedbackYesNo** is a pattern for collecting of the feedback. It that consists of [Notice](/components/notice/) and [Feedback form](/components/feedback/). This pattern helps to introduce the feature to the user and contains a simple question about the work of the product. _For example, “Meet our new Dashboard! Is it working well for you?”._
 
 @## Component appearing
 

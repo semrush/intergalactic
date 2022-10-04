@@ -306,9 +306,11 @@ class PageInput extends Component {
           ) : (
             <>
               <Pagination.PageInput.Value id={`pagination-input-${uid}`} />
-              <Pagination.PageInput.Addon interactive>
-                <Return />
-              </Pagination.PageInput.Addon>
+              <Pagination.PageInput.Addon
+                tag={Return}
+                interactive
+                aria-label="Confirm page number"
+              />
             </>
           )}
         </SPageInput>

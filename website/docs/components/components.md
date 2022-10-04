@@ -20,7 +20,6 @@ title: Components
 @page dropdown-menu
 @page feature-popover
 @page feedback
-@page feedback-yes-no
 @page flags
 @page filter-trigger
 @page fullscreen-modal

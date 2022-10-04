@@ -5,7 +5,8 @@
   "module": "./index.js",
   "sideEffects": false,
   "scripts": {
-    "generate": "tsm --require=../../.ci/tsm-filter-warnings.js generate.ts",
+    "clear": "tsm --require=../../.ci/tsm-filter-warnings.js clear.ts",
+    "generate": "pnpm run clear && tsm --require=../../.ci/tsm-filter-warnings.js generate.ts",
     "test": "jest"
   },
   "dependencies": {
@@ -83,6 +84,7 @@
     "@semcore/widget-empty": "3.2.0"
   },
   "devDependencies": {
+    "@types/react": "16.8 - 17",
     "fast-glob": "3.2.11",
     "fs-extra": "9.0.1",
     "jest": "29.0.1",

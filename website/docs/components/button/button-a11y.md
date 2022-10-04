@@ -3,26 +3,17 @@ title: A11y
 a11y: AA
 ---
 
-> #### General recommendations
->
-> - A `<button>` tag does not need anything special to work. Use `<button>` when you can, but it is possible to use other elements as long as you add role="button" and add JavaScript to replicate the button functionality.
-> - Just like links, you can add `class="visuallyhidden"` with descriptive text to give more context to the button's purpose.
-> - If a button contains an `<img>` element, make sure to set its alt attribute. If it contains an icon, use aria-label to describe the icon instead.
-> - You can use `<input type="image">` to make a graphical button. It takes a `src` and `alt` attribute just like traditional images.
-> - Button states are important, not just button styling! If you are only toggling classes to visually manage state of your components, you are likely not appropriately conveying that state to users of assistive technologies.
-> - If there is no text in the button, it is necessary to add aria-label with a button description.
->
-> [A11y style guide](https://a11y-style-guide.com/style-guide/section-general.html)
+@## What component has
 
-@## Keyboard support
+### Keyboard support
 
 | Key              | Function              |
 | ---------------- | --------------------- |
 | `Space`, `Enter` | Activates the button. |
 
-@## Roles & attributes
+### Roles & attributes
 
-The list below will help you to keep in mind the necessary roles and attributes to make our components fully accessible in your interfaces.
+The list below describes roles and attributes that component already has.
 
 | Role   | Attribute              | Element    | Usage                                                                                                                    |
 | ------ | ---------------------- | ---------- | ------------------------------------------------------------------------------------------------------------------------ |
@@ -30,6 +21,17 @@ The list below will help you to keep in mind the necessary roles and attributes 
 |        | `tabindex="0"`         | `div`, `a` | Includes the element in the `Tab` sequence. Needed on the `a` element because it does not have a `href` attribute.       |
 |        | `aria-pressed="false"` | `a`        | Identifies the button as a toggle button. Indicates the toggle button is not pressed.                                    |
 |        | `aria-pressed="true"`  | `a`        | Identifies the button as a toggle button. Indicates the toggle button is pressed.                                        |
+
+@## Considerations for developers
+
+- A `<button>` tag does not need anything special to work. Use `<button>` when you can, but it is possible to use other elements as long as you add role="button" and add JavaScript to replicate the button functionality.
+- Just like links, you can add `class="visuallyhidden"` with descriptive text to give more context to the button's purpose.
+- If a button contains an `<img>` element, make sure to set its alt attribute. If it contains an icon, use aria-label to describe the icon instead.
+- You can use `<input type="image">` to make a graphical button. It takes a `src` and `alt` attribute just like traditional images.
+- Button states are important, not just button styling! If you are only toggling classes to visually manage state of your components, you are likely not appropriately conveying that state to users of assistive technologies.
+- If there is no text in the button, it is necessary to add aria-label with a button description.
+
+Find live examples in the [A11y style guide](https://a11y-style-guide.com/style-guide/section-general.html).
 
 @## Resources
 

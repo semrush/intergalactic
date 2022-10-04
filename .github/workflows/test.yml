@@ -8,146 +8,228 @@ jobs:
   setup:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
-      - name: Cache node modules
-        uses: actions/cache@v2
-        id: cache-modules
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Install Node.js
+        uses: actions/setup-node@v3
         with:
-          path: |
-            node_modules
-            */*/node_modules
-            website/node_modules
-          key: modules-${{ runner.os }}-${{ hashFiles('yarn.lock') }}--${{ hashFiles('website/yarn.lock') }}
-      - name: Install dependencies
-        if: steps.cache-modules.outputs.cache-hit != 'true'
+          node-version: 16
+      - uses: pnpm/action-setup@v2.0.1
+        name: Install pnpm
+        id: pnpm-install
+        with:
+          version: 7
+          run_install: false
+      - name: Get pnpm store directory
+        id: pnpm-cache
         run: |
-          yarn --non-interactive --frozen-lockfile
-          cd website
-          yarn --non-interactive --frozen-lockfile
+          echo "::set-output name=pnpm_cache_dir::$(pnpm store path)"
+      - uses: actions/cache@v3
+        name: Setup pnpm cache
+        with:
+          path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+      - name: Install dependencies
+        run: |
+          pnpm install --frozen-lockfile
   build:
     runs-on: ubuntu-latest
     needs: setup
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
-      - name: Restore cache node modules
-        uses: actions/cache@v2
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Install Node.js
+        uses: actions/setup-node@v3
         with:
-          path: |
-            node_modules
-            */*/node_modules
-            website/node_modules
-          key: modules-${{ runner.os }}-${{ hashFiles('yarn.lock') }}--${{ hashFiles('website/yarn.lock') }}
+          node-version: 16
+      - uses: pnpm/action-setup@v2.0.1
+        name: Install pnpm
+        id: pnpm-install
+        with:
+          version: 7
+          run_install: false
+      - name: Get pnpm store directory
+        id: pnpm-cache
+        run: |
+          echo "::set-output name=pnpm_cache_dir::$(pnpm store path)"
+      - uses: actions/cache@v3
+        name: Setup pnpm cache
+        with:
+          path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
       - name: Cache build
         uses: actions/cache@v2
         id: cache-build
         with:
           path: |
-            **/lib
+            semcore/*/lib
+            tools/*/lib
             semcore/icon/**/*.js
             semcore/icon/**/*.mjs
             semcore/icon/**/*.d.ts
             semcore/illustration/**/*.js
             semcore/illustration/**/*.mjs
             semcore/illustration/**/*.d.ts
-          key: build-${{ hashFiles('semcore/**', 'tools/**', 'tsconfig.json', 'yarn.lock') }}
+          key: build-${{ hashFiles('semcore/*', 'tools/*', 'tsconfig.json', 'pnpm-lock.yaml') }}
+      - name: Install dependencies
+        run: |
+          pnpm install --frozen-lockfile
       - name: Build
         if: steps.cache-build.outputs.cache-hit != 'true'
-        run: yarn build
+        run: |
+          pnpm build
   lint:
     runs-on: ubuntu-latest
     needs: build
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
-      - name: Restore cache node modules
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - uses: pnpm/action-setup@v2.0.1
+        name: Install pnpm
+        id: pnpm-install
+        with:
+          version: 7
+          run_install: false
+      - name: Get pnpm store directory
+        id: pnpm-cache
+        run: |
+          echo "::set-output name=pnpm_cache_dir::$(pnpm store path)"
+      - uses: actions/cache@v3
+        name: Setup pnpm cache
+        with:
+          path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+      - name: Restore cached build
         uses: actions/cache@v2
+        id: cache-build
         with:
           path: |
-            node_modules
-            */*/node_modules
-            website/node_modules
-          key: modules-${{ runner.os }}-${{ hashFiles('yarn.lock') }}--${{ hashFiles('website/yarn.lock') }}
-      - name: Restore cache build
-        uses: actions/cache@v2
-        with:
-          path: |
-            **/lib
+            semcore/*/lib
+            tools/*/lib
             semcore/icon/**/*.js
             semcore/icon/**/*.mjs
             semcore/icon/**/*.d.ts
             semcore/illustration/**/*.js
             semcore/illustration/**/*.mjs
             semcore/illustration/**/*.d.ts
-          key: build-${{ hashFiles('semcore/**', 'tools/**', 'tsconfig.json', 'yarn.lock') }}
+          key: build-${{ hashFiles('semcore/*', 'tools/*', 'tsconfig.json', 'pnpm-lock.yaml') }}
+      - name: Install dependencies
+        run: |
+          pnpm install --frozen-lockfile
       - name: Lint
-        run: yarn lint
+        run: pnpm lint
   test:
     runs-on: ubuntu-latest
     needs: build
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
-      - name: Restore cache node modules
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - uses: pnpm/action-setup@v2.0.1
+        name: Install pnpm
+        id: pnpm-install
+        with:
+          version: 7
+          run_install: false
+      - name: Get pnpm store directory
+        id: pnpm-cache
+        run: |
+          echo "::set-output name=pnpm_cache_dir::$(pnpm store path)"
+      - uses: actions/cache@v3
+        name: Setup pnpm cache
+        with:
+          path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+      - name: Restore cached build
         uses: actions/cache@v2
         with:
           path: |
-            node_modules
-            */*/node_modules
-            website/node_modules
-          key: modules-${{ runner.os }}-${{ hashFiles('yarn.lock') }}--${{ hashFiles('website/yarn.lock') }}
-      - name: Restore cache build
-        uses: actions/cache@v2
-        with:
-          path: |
-            **/lib
+            semcore/*/lib
+            tools/*/lib
             semcore/icon/**/*.js
             semcore/icon/**/*.mjs
             semcore/icon/**/*.d.ts
             semcore/illustration/**/*.js
             semcore/illustration/**/*.mjs
             semcore/illustration/**/*.d.ts
-          key: build-${{ hashFiles('semcore/**', 'tools/**', 'tsconfig.json', 'yarn.lock') }}
+          key: build-${{ hashFiles('semcore/*', 'tools/*', 'tsconfig.json', 'pnpm-lock.yaml') }}
+      - name: Install restored dependencies
+        run: |
+          pnpm install --frozen-lockfile
       - name: Test
         env:
           SCREENSHOT_URL: ${{ secrets.SCREENSHOT_URL }}
-        run: yarn coverage
+        run: pnpm coverage
 
   vo-setup:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
-      - name: Cache node modules
-        uses: actions/cache@v2
-        id: cache-modules
+      - uses: pnpm/action-setup@v2.0.1
+        name: Install pnpm
+        id: pnpm-install
         with:
-          path: |
-            node_modules
-            */*/node_modules
-            website/node_modules
-          key: modules-${{ runner.os }}-${{ hashFiles('yarn.lock') }}--${{ hashFiles('website/yarn.lock') }}
-      - name: Install dependencies
-        if: steps.cache-modules.outputs.cache-hit != 'true'
+          version: 7
+          run_install: false
+      - name: Get pnpm store directory
+        id: pnpm-cache
         run: |
-          yarn --non-interactive --frozen-lockfile
-          cd website
-          yarn --non-interactive --frozen-lockfile
+          echo "::set-output name=pnpm_cache_dir::$(pnpm store path)"
+      - uses: actions/cache@v3
+        name: Setup pnpm cache
+        with:
+          path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+      - name: Install dependencies
+        run: |
+          pnpm install --frozen-lockfile
   vo-build-icons:
     runs-on: macos-latest
     needs: vo-setup
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
-      - name: Restore cache node modules
-        uses: actions/cache@v2
+      - uses: pnpm/action-setup@v2.1.0
         with:
-          path: |
-            node_modules
-            */*/node_modules
-            website/node_modules
-          key: modules--${{ runner.os }}-${{ hashFiles('yarn.lock') }}--${{ hashFiles('website/yarn.lock') }}
+          version: 7.0.0
+      - uses: actions/setup-node@v2
+      - uses: pnpm/action-setup@v2.0.1
+        name: Install pnpm
+        id: pnpm-install
+        with:
+          version: 7
+          run_install: false
+      - name: Get pnpm store directory
+        id: pnpm-cache
+        run: |
+          echo "::set-output name=pnpm_cache_dir::$(pnpm store path)"
+      - uses: actions/cache@v3
+        name: Restore pnpm cache
+        with:
+          path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+      - name: Install restored dependencies
+        run: |
+          pnpm install --frozen-lockfile
       - name: Cache build
         uses: actions/cache@v2
         id: cache-build
@@ -159,10 +241,13 @@ jobs:
             semcore/illustration/**/*.js
             semcore/illustration/**/*.mjs
             semcore/illustration/**/*.d.ts
-          key: build-icons-${{ hashFiles('semcore/icon', 'tsconfig.json', 'yarn.lock') }}
+          key: build-icons-${{ hashFiles('semcore/icon', 'tsconfig.json', 'pnpm-lock.yaml') }}
+      - name: Install dependencies
+        run: |
+          pnpm install --frozen-lockfile
       - name: Build
         if: steps.cache-build.outputs.cache-hit != 'true'
-        run: yarn && yarn build:icons
+        run: pnpm run build:icons
   vo-test:
     runs-on: macos-latest
     needs:
@@ -170,15 +255,24 @@ jobs:
       - vo-build-icons
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
-      - name: Restore cache node modules
-        uses: actions/cache@v2
+      - uses: pnpm/action-setup@v2.1.0
         with:
-          path: |
-            node_modules
-            */*/node_modules
-            website/node_modules
-          key: modules--${{ runner.os }}-${{ hashFiles('yarn.lock') }}--${{ hashFiles('website/yarn.lock') }}
+          version: 7.0.0
+      - uses: actions/setup-node@v2
+      - name: Get pnpm store directory
+        id: pnpm-cache
+        run: |
+          echo "::set-output name=pnpm_cache_dir::$(pnpm store path)"
+      - uses: actions/cache@v3
+        name: Restore pnpm cache
+        with:
+          path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+      - name: Install restored dependencies
+        run: |
+          pnpm install --frozen-lockfile
       - name: Restore icons build cache
         uses: actions/cache@v2
         with:
@@ -189,13 +283,13 @@ jobs:
             semcore/illustration/**/*.js
             semcore/illustration/**/*.mjs
             semcore/illustration/**/*.d.ts
-          key: build-icons-${{ hashFiles('semcore/icon', 'tsconfig.json', 'yarn.lock') }}
+          key: build-icons-${{ hashFiles('semcore/icon', 'tsconfig.json', 'pnpm-lock.yaml') }}
       - name: Install Browser
         run: npx playwright install webkit
       - name: Enable VoiceOver Automation
         uses: guidepup/setup-action@0.4.0
       - name: Voice Over testing
-        run: CI_RUN=true yarn vo-test
+        run: CI_RUN=true pnpm run vo-test
       - name: Github GPG Auth
         uses: crazy-max/ghaction-import-gpg@v4.4.0
         with:

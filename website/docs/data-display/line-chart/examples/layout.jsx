@@ -21,7 +21,13 @@ class Demo extends Component {
               <InfoM ml={1} color="gray-300" cursor="help" />
             </TooltipUI>
             <Dropdown placement="bottom-end">
-              <Dropdown.Trigger tag={SettingsS} ml="auto" color="gray-300" interactive />
+              <Dropdown.Trigger
+                tag={SettingsS}
+                ml="auto"
+                color="gray-300"
+                interactive
+                aria-label="Open settings"
+              />
               <Dropdown.Popper>
                 <Box p={3}>
                   <Text size={100} bold mb={3}>

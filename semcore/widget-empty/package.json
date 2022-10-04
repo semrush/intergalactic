@@ -9,12 +9,12 @@
   "author": "UI-kit team <ui-kit-team@semrush.com>",
   "license": "MIT",
   "scripts": {
-    "build": "build --source=js",
+    "build": "pnpm semcore-builder --source=js",
     "test": "jest"
   },
   "dependencies": {
     "@semcore/flex-box": "^4",
-    "@semcore/illustration": "1.1.2",
+    "@semcore/illustration": "1.1.4",
     "@semcore/utils": "^3.27"
   },
   "peerDependencies": {
@@ -30,6 +30,7 @@
     "directory": "semcore/widget-empty"
   },
   "devDependencies": {
+    "@types/react": "16.8 - 17",
     "@semcore/jest-preset-ui": "1.0.0"
   }
 }
