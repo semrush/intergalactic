@@ -524,6 +524,34 @@ describe('Getter props function', () => {
     expect(spyRef.mock.calls[0][0].nodeName).toBe('DIV');
     expect(spyRef.mock.calls[1][0].nodeName).toBe('DIV');
   });
+
+  test('should support index in getter', () => {
+    class RootTestClass extends Component {
+      static displayName = 'Test';
+
+      getItemProps(props, i) {
+        spy(i);
+      }
+
+      render() {
+        const { Root } = this;
+        return <Root render="div" />;
+      }
+    }
+
+    const spy = jest.fn();
+
+    const Test = createComponent<CompType, ItemType>(RootTestClass, { Item: ChildrenTestFunc });
+    render(
+      <Test>
+        <Test.Item />
+        <Test.Item />
+      </Test>,
+    );
+    expect(spy).toHaveBeenCalledTimes(2);
+    expect(spy.mock.calls[0][0]).toBe(0);
+    expect(spy.mock.calls[1][0]).toBe(1);
+  });
 });
 
 describe('Hoist props', () => {
@@ -896,7 +924,7 @@ describe('createBaseComponent', () => {
 
   test('should support ref', () => {
     const Test = createBaseComponent(TestFuncWithRef);
-    const ref = React.createRef();
+    const ref = React.createRef<HTMLDivElement>();
     render(<Test ref={ref} />);
     expect(ref.current.nodeName).toBe('DIV');
   });
