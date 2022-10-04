@@ -2,7 +2,13 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [3.3.11] - 2022-09-30
+## [3.3.12] - 2022-10-04
+
+### Changed
+
+- Changed the way to check the contents of the trigger for `ButtonTrigger`
+
+## [3.3.11] - 2022-10-04
 
 ### Changed
 
