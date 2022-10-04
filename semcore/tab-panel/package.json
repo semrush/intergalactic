@@ -14,8 +14,7 @@
   },
   "dependencies": {
     "@semcore/utils": "^3.30",
-    "@semcore/flex-box": "^4",
-    "@semcore/icon": "^2.16"
+    "@semcore/flex-box": "^4"
   },
   "peerDependencies": {
     "@semcore/core": "^1.11",
@@ -31,6 +30,7 @@
   },
   "devDependencies": {
     "@types/react": "16.8 - 17",
-    "@semcore/jest-preset-ui": "1.0.0"
+    "@semcore/jest-preset-ui": "1.0.0",
+    "@semcore/icon": "^2.16"
   }
 }
