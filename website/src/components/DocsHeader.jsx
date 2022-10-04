@@ -54,9 +54,6 @@ export default function (props) {
               <FigmaS />
             </Link.Addon>
             <Link.Text>Figma libraries</Link.Text>
-            <Link.Addon>
-              <LinkExternalXS color="#898D9A" />
-            </Link.Addon>
           </Link>
         </Box>
         {!!fileSource && (
@@ -113,9 +110,6 @@ export default function (props) {
                   </svg>
                 </Link.Addon>
                 <Link.Text>NPM</Link.Text>
-                <Link.Addon>
-                  <LinkExternalXS color="#898D9A" />
-                </Link.Addon>
               </Link>
             </Box>
             <Box mr={5}>
@@ -129,9 +123,6 @@ export default function (props) {
                   <GitHubS />
                 </Link.Addon>
                 <Link.Text>GitHub source</Link.Text>
-                <Link.Addon>
-                  <LinkExternalXS color="#898D9A" />
-                </Link.Addon>
               </Link>
             </Box>
           </>
