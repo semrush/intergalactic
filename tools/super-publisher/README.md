@@ -1,4 +1,4 @@
-# super-publisher
+# legacy-publisher
 
 Package is purposed to make monorepo publishing easer.
 
@@ -6,26 +6,26 @@ Package is purposed to make monorepo publishing easer.
 
 ### Installing
 
-`pnpm add -D super-publisher`
+`pnpm add -D legacy-publisher`
 
 ### Usage
 
-`pnpm super-publisher`
+`pnpm legacy-publisher`
 
 ### Конфигурация
 
-`.publisher.ts`
+`.legacy-publisher.ts`
 
 ```ts
-import { chosePackagesTask } from './node_modules/super-publisher/tasks/chosePackages';
-import { lintTask } from './node_modules/super-publisher/tasks/prettier';
-import { testTask } from './node_modules/super-publisher/tasks/jest';
-import { showGitDiffTask } from './node_modules/super-publisher/tasks/showGitDiff';
-import { choseNextVersionTask } from './node_modules/super-publisher/tasks/choseNextVersion';
-import { npmVersionTask } from './node_modules/super-publisher/tasks/npmVersion';
-import { gitCommitTask } from './node_modules/super-publisher/tasks/gitCommit';
-import { gitPushTask } from './node_modules/super-publisher/tasks/gitPush';
-import { npmPublishTask } from './node_modules/super-publisher/tasks/npmPublish';
+import { chosePackagesTask } from './node_modules/legacy-publisher/tasks/chosePackages';
+import { lintTask } from './node_modules/legacy-publisher/tasks/prettier';
+import { testTask } from './node_modules/legacy-publisher/tasks/jest';
+import { showGitDiffTask } from './node_modules/legacy-publisher/tasks/showGitDiff';
+import { choseNextVersionTask } from './node_modules/legacy-publisher/tasks/choseNextVersion';
+import { npmVersionTask } from './node_modules/legacy-publisher/tasks/npmVersion';
+import { gitCommitTask } from './node_modules/legacy-publisher/tasks/gitCommit';
+import { gitPushTask } from './node_modules/legacy-publisher/tasks/gitPush';
+import { npmPublishTask } from './node_modules/legacy-publisher/tasks/npmPublish';
 
 export const publisherConfigFactory = async (args) => {
   const cwd = await chosePackages(args.root);

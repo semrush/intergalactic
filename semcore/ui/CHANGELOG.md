@@ -711,7 +711,7 @@
 - **Changed** Rewrite the component to svg.
 - **Added** Rounded corners.
 
-### @semcore/super-publisher
+### @semcore/legacy-publisher
 
 - **Changed** Added slack notifications.
 - **Changed** Rewritten to typescript.

@@ -70,7 +70,7 @@ jobs:
           SLACK_API_ENDPOINTS: ${{ secrets.SLACK_WEBHOOK_URLS }}
           SCREENSHOT_URL: ${{ secrets.SCREENSHOT_URL }}
         run: |
-          pnpm pub --package ui --release current
+          pnpm legacy-publish --package ui --release current
       - name: add github release record
         run: |
           version="$(cat semcore/ui/package.json | jq -r .version)"
