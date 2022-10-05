@@ -27,7 +27,7 @@ type AsPropsMiddle = {
   containerRef?: RefObject<HTMLElement | null>;
 };
 
-const gotSize = (fontSize: string) => {
+const getSymbolWidth = (fontSize: string) => {
   const dateSpan = document.createElement('span');
   dateSpan.setAttribute('style', `fontSize: ${fontSize}px`);
   dateSpan.innerHTML = 'a';
@@ -36,6 +36,12 @@ const gotSize = (fontSize: string) => {
   dateSpan.remove();
   return rect.width;
 };
+
+const getFontSize = (element: HTMLElement | null) =>
+  element ? window.getComputedStyle(element, null).getPropertyValue('font-size') : '14';
+
+const getSymbolAmount = (blockWidth: number, symbolWidth: number) =>
+  Math.round(blockWidth / symbolWidth);
 
 class RootEllipsis extends Component<AsProps> {
   static displayName = 'Ellipsis';
@@ -84,14 +90,12 @@ const EllipsisMiddle: React.FC<AsPropsMiddle> = (props) => {
   const resizeElement = useRef(null);
   const blockWidth = useResizeObserver(resizeElement, resizeObserver).width;
   const element = containerRef?.current ?? resizeElement.current;
-  const fontSize = element
-    ? window.getComputedStyle(element, null).getPropertyValue('font-size')
-    : '14';
-  const size = useMemo(() => gotSize(fontSize), [fontSize]);
+  const fontSize = useMemo(() => getFontSize(element), [element]);
+  const size = useMemo(() => getSymbolWidth(fontSize), [fontSize]);
   const STail = 'span';
   const SBeginning = 'span';
   const SContainerMiddle = Flex;
-  const symbolAmount = Math.round(blockWidth / size);
+  const symbolAmount = useMemo(() => getSymbolAmount(blockWidth, size), [blockWidth, size]);
 
   if (tooltip) {
     return sstyled(styles)(
@@ -101,15 +105,15 @@ const EllipsisMiddle: React.FC<AsPropsMiddle> = (props) => {
         ref={containerRef ?? resizeElement}
         tag={Tooltip}
       >
-        <SBeginning>{text.slice(0, text.length - symbolAmount / 2 - 1)}</SBeginning>
-        <STail>{text.slice(text.length - symbolAmount / 2 - 1)}</STail>
+        <SBeginning>{text.substring(0, text.length - symbolAmount / 2 - 1)}</SBeginning>
+        <STail>{text.substring(text.length - symbolAmount / 2 - 1)}</STail>
       </SContainerMiddle>,
     ) as any;
   } else {
     return sstyled(styles)(
       <SContainerMiddle ref={containerRef ?? resizeElement}>
-        <SBeginning>{text.slice(0, text.length - symbolAmount / 2 - 1)}</SBeginning>
-        <STail>{text.slice(text.length - symbolAmount / 2 - 1)}</STail>
+        <SBeginning>{text.substring(0, text.length - symbolAmount / 2 - 1)}</SBeginning>
+        <STail>{text.substring(text.length - symbolAmount / 2 - 1)}</STail>
       </SContainerMiddle>,
     ) as any;
   }
