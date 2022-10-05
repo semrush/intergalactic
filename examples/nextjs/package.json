@@ -12,6 +12,7 @@
     "export": "next export"
   },
   "dependencies": {
+    "@babel/core": "7.19.1",
     "@semcore/ui": "latest",
     "d3-scale": "4.0.2",
     "next": "latest",
@@ -21,9 +22,10 @@
   "devDependencies": {
     "@semcore/babel-plugin-react-semcore": "^4.2.1",
     "@semcore/shadow-loader": "^1.0.4",
+    "@types/node": "18.8.2",
     "babel-loader": "^8.2.5",
     "css-loader": "^6.7.1",
-    "next-transpile-modules": "9.0.0",
-    "mini-css-extract-plugin": "^2.6.0"
+    "mini-css-extract-plugin": "^2.6.0",
+    "next-transpile-modules": "9.0.0"
   }
 }
