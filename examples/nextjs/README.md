@@ -1,12 +1,12 @@
 ## Start project
 
 ```bash
-npm run dev
+yarn dev
 ```
 
 ## Build project
 
 ```bash
-npm run build
-npm run start
+yarn build
+yarn start
 ```
