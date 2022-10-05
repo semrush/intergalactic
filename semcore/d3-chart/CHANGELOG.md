@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.3.7] - 2022-10-05
+
+### Fixed
+
+- Ensured a11y module do not break mouse interactions.
+
 ## [2.3.6] - 2022-10-04
 
 ### Changed
