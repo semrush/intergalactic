@@ -25,16 +25,12 @@ export const runPublisher = async (versionPatches: VersionPatch[]) => {
 
   await git.add('.');
   if (!process.argv.includes('--dry-run')) {
-    await git.commit(commitMessage, [], { S: null });
+    await git.commit(commitMessage, []);
     for (const tag of gitTags) {
       await git.tag(['-f', tag]);
     }
   }
   execSync(`pnpm ${pnpmFilter} run build`, {
-    encoding: 'utf-8',
-    stdio: ['inherit', 'inherit', 'inherit'],
-  });
-  execSync(`pnpm ${pnpmFilter} run test`, {
     encoding: 'utf-8',
     stdio: ['inherit', 'inherit', 'inherit'],
   });
