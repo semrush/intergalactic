@@ -10,6 +10,7 @@ export type VersionPatch = {
   to: string;
   changes: ChangelogChange[];
   changelogUpdated: boolean;
+  needPublish: boolean;
 };
 
 const orderedReleaseType: semver.ReleaseType[] = [
@@ -30,9 +31,10 @@ export const makeVersionPatches = (packages: Package[]) => {
   const versionPatches: VersionPatch[] = [];
   const versionPatchesMap = new Map<string, VersionPatch>();
 
+  // patching packages that are locally (by changelog) ahead of npm registry
   const toCheck = [...packages];
   while (toCheck.length > 0) {
-    const packageFile = toCheck.pop();
+    const packageFile = toCheck.pop()!;
 
     if (versionPatchesMap.has(packageFile.name)) continue;
 
@@ -56,11 +58,13 @@ export const makeVersionPatches = (packages: Package[]) => {
       to: lastChangelog.version,
       changes: lastChangelog.changes,
       changelogUpdated: true,
+      needPublish: true,
     };
     versionPatchesMap.set(packageFile.name, versionPatch);
     versionPatches.push(versionPatch);
   }
 
+  // patching packages that are locally (by dependencies) ahead of npm registry
   let recursiveChildrenUpdateCompleted = false;
   while (!recursiveChildrenUpdateCompleted) {
     recursiveChildrenUpdateCompleted = true;
@@ -73,8 +77,8 @@ export const makeVersionPatches = (packages: Package[]) => {
       let needUpdate = false;
       const updatedDependencies: { name: string; from: string; to: string }[] = [];
 
-      for (const dependenciesType of ['dependencies', 'devDependencies']) {
-        for (const dependency in packageFile[dependenciesType]) {
+      for (const dependenciesType of ['dependencies']) {
+        for (const dependency in packageFile[dependenciesType as 'dependencies']) {
           const dependencyVersionPatch = versionPatchesMap.get(dependency);
           if (!dependencyVersionPatch) continue;
           needUpdate = true;
@@ -93,16 +97,19 @@ export const makeVersionPatches = (packages: Package[]) => {
           }
 
           if (
-            !semver.satisfies(dependencyVersionPatch.to, packageFile[dependenciesType][dependency])
+            !semver.satisfies(
+              dependencyVersionPatch.to,
+              packageFile[dependenciesType as 'dependencies'][dependency],
+            )
           ) {
             const diffType = semver.diff(
-              normalizeSemver(packageFile[dependenciesType][dependency]),
+              normalizeSemver(packageFile[dependenciesType as 'dependencies'][dependency]),
               normalizeSemver(dependencyVersionPatch.to),
             );
 
             if (
               updateType === null ||
-              orderedReleaseType.indexOf(updateType) < orderedReleaseType.indexOf(diffType)
+              orderedReleaseType.indexOf(updateType) < orderedReleaseType.indexOf(diffType!)
             ) {
               updateType = diffType;
             }
@@ -132,11 +139,11 @@ export const makeVersionPatches = (packages: Package[]) => {
         const versionPatch: VersionPatch = {
           package: packageFile,
           from: packageFile.currentVersion,
-          to: version,
+          to: version!,
           changes: [
             {
               component: packageFile.name,
-              version,
+              version: version!,
               isAutomatic: true,
               label: 'Changed',
               description: description,
@@ -144,10 +151,29 @@ export const makeVersionPatches = (packages: Package[]) => {
             },
           ],
           changelogUpdated: false,
+          needPublish: true,
         };
         versionPatchesMap.set(packageFile.name, versionPatch);
         versionPatches.push(versionPatch);
       }
+    }
+  }
+
+  // patching packages that are locally (by package.json) behind the npm registry
+  for (const packageFile of packages) {
+    if (versionPatchesMap.has(packageFile.name)) continue;
+    if (packageFile.lastPublishedVersion === null) continue;
+    if (semver.compare(packageFile.currentVersion, packageFile.lastPublishedVersion) === -1) {
+      const versionPatch: VersionPatch = {
+        package: packageFile,
+        from: packageFile.currentVersion,
+        to: packageFile.lastPublishedVersion,
+        changes: [],
+        changelogUpdated: false,
+        needPublish: false,
+      };
+      versionPatchesMap.set(packageFile.name, versionPatch);
+      versionPatches.push(versionPatch);
     }
   }
 
@@ -164,7 +190,7 @@ const reversedTopologicalSort = (patches: VersionPatch[]) => {
   }
   for (const patch of patches) {
     for (const dependency in patch.package.dependencies) {
-      rootPatches.delete(patchesMap.get(dependency));
+      rootPatches.delete(patchesMap.get(dependency)!);
     }
   }
   const sumPatchPriority = new Map<VersionPatch, number>();
@@ -194,12 +220,12 @@ const reversedTopologicalSort = (patches: VersionPatch[]) => {
           strongconnect(dependantPatch);
           patchLowLink.set(
             patch,
-            Math.min(patchLowLink.get(patch), patchLowLink.get(dependantPatch)),
+            Math.min(patchLowLink.get(patch)!, patchLowLink.get(dependantPatch)!),
           );
         } else if (onStack.get(dependantPatch)) {
           patchLowLink.set(
             patch,
-            Math.min(patchLowLink.get(patch), patchIndex.get(dependantPatch)),
+            Math.min(patchLowLink.get(patch)!, patchIndex.get(dependantPatch)!),
           );
         }
       }
@@ -208,11 +234,11 @@ const reversedTopologicalSort = (patches: VersionPatch[]) => {
         let dependantPatch: VersionPatch | null = null;
         let priority = 0;
         while (stack.length > 0) {
-          dependantPatch = stack.pop();
+          dependantPatch = stack.pop()!;
           onStack.set(dependantPatch, false);
-          priority += patchLowLink.get(dependantPatch);
+          priority += patchLowLink.get(dependantPatch)!;
         }
-        priority += patchLowLink.get(patch);
+        priority += patchLowLink.get(patch)!;
         patchPriority.set(patch, priority);
       }
     };
@@ -227,5 +253,5 @@ const reversedTopologicalSort = (patches: VersionPatch[]) => {
     }
   }
 
-  return [...patches].sort((a, b) => sumPatchPriority.get(b) - sumPatchPriority.get(a));
+  return [...patches].sort((a, b) => sumPatchPriority.get(b)! - sumPatchPriority.get(a)!);
 };
