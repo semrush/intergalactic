@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [1.2.0] - 2022-10-06
+
+### Changed
+
+- Remove masks from all svg illustrations for WidgetEmpty component.
+
 ## [1.1.5] - 2022-10-04
 
 ### Changed
