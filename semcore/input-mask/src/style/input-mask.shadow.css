@@ -13,6 +13,10 @@ SMask {
   letter-spacing: 0.1em;
   text-overflow: inherit;
 }
+SMask[neighborLocation='left'] {
+  left: 0;
+}
+
 SMaskHidden {
   opacity: 0;
 }
