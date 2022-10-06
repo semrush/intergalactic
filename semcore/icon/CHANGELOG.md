@@ -2,6 +2,16 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.31.5] - 2022-10-06
+
+### Added
+
+- Added icon Stoller
+
+### Changed
+
+- Changed icons-list.js in alphabet order
+
 ## [2.30.5] - 2022-09-26
 
 ### Added
