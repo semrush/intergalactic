@@ -41,7 +41,6 @@ const git = Git();
   if (!gitChanges.includes('[M] website/package.json')) {
     gitChanges.push('[M] website/package.json');
   }
-  const allChangedFiles = status.files.map((file) => file.path);
 
   console.log('Commit will be created with following changes:\n');
   console.log(gitChanges.join('\n') + '\n');
@@ -67,7 +66,7 @@ const git = Git();
       '\nStashing changes before rebase. If rebase will fail your changes will be available in stash.\n',
     );
     stashed = true;
-    await git.add(allChangedFiles);
+    await git.add(['.']);
     await git.stash();
   }
 
@@ -83,7 +82,7 @@ const git = Git();
   if (stashed) {
     await git.stash({ pop: null });
     console.log(picocolors.green(`popped stash successfully\n`));
-    await git.add(allChangedFiles);
+    await git.add(['.']);
   }
 
   const { all: tags } = await git.tags();
@@ -137,7 +136,7 @@ const git = Git();
   await fs.writeJSON(websitePackageFilePath, websitePackageFile, { spaces: 2 });
   console.log(picocolors.green(`\nupdated package version in webiste/package.json to ${version}`));
 
-  await git.add(allChangedFiles);
+  await git.add(['.']);
 
   await git.commit(commitMessage);
   console.log(picocolors.green(`added commit "${commitMessage}"`));
