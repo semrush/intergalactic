@@ -2,35 +2,11 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [3.1.14] - 2022-10-04
+## [3.1.15] - 2022-10-06
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/utils` [3.37.1 ~> 3.37.2]).
-
-## [3.1.13] - 2022-10-03
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/icon` [2.32.0 ~> 2.32.1]).
-
-## [3.1.12] - 2022-09-29
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/icon` [2.30.4 ~> 2.31.0]).
-
-## [3.1.11] - 2022-09-21
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/icon` [2.30.3 ~> 2.30.4]).
-
-## [3.1.10] - 2022-09-21
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/icon` [2.30.2 ~> 2.30.3]).
+- Version patch update due to children dependencies update (`@semcore/icon` [2.32.2 ~> 2.33.0]).
 
 ## [3.1.9] - 2022-09-13
 
@@ -43,48 +19,6 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### Changed
 
 - Version patch update due to children dependencies update (`@semcore/utils` [3.37.0 ~> 3.37.1]).
-
-## [3.1.7] - 2022-08-18
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/icon` [2.30.0 ~> 2.30.1]).
-
-## [3.1.6] - 2022-08-18
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/icon` [2.29.5 ~> 2.30.0]).
-
-## [3.1.5] - 2022-08-18
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/utils` [3.36.0 ~> 3.37.0]).
-
-## [3.1.4] - 2022-08-11
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/utils` [3.35.1 ~> 3.36.0]).
-
-## [3.1.3] - 2022-07-25
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/icon` [2.29.1 ~> 2.29.2]).
-
-## [3.1.2] - 2022-07-22
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/utils` [3.34.0 ~> 3.35.0]).
-
-## [3.1.1] - 2022-07-21
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/icon` [2.28.0 ~> 2.29.0]).
 
 ## [3.1.0] - 2022-07-18
 
@@ -110,42 +44,6 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Version patch update due to children dependencies update (`@semcore/progress-bar` [3.0.3 ~> 3.0.4]).
 
-## [3.0.7] - 2022-06-02
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/icon` [2.26.1 ~> 2.27.0], `@semcore/utils` [3.32.2 ~> 3.33.0], `@semcore/base-trigger` [3.0.5 ~> 3.0.6], `@semcore/accordion` [4.0.4 ~> 4.0.5]).
-
-## [3.0.6] - 2022-05-31
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/utils` [3.32.1 ~> 3.32.2], `@semcore/base-trigger` [3.0.4 ~> 3.0.5], `@semcore/accordion` [4.0.3 ~> 4.0.4]).
-
-## [3.0.5] - 2022-05-23
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/icon` [2.25.1 ~> 2.26.0], `@semcore/base-trigger` [3.0.3 ~> 3.0.4], `@semcore/accordion` [4.0.2 ~> 4.0.3]).
-
-## [3.0.4] - 2022-05-19
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/flex-box` [4.5.1 ~> 4.5.3], `@semcore/utils` [3.32.0 ~> 3.32.1], `@semcore/base-trigger` [3.0.2 ~> 3.0.3], `@semcore/typography` [4.0.1 ~> 4.0.3], `@semcore/accordion` [4.0.1 ~> 4.0.2]).
-
-## [3.0.3] - 2022-05-18
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/base-trigger` [3.0.1 ~> 3.0.2], `@semcore/link` [4.0.1 ~> 4.0.2]).
-
-## [3.0.2] - 2022-05-18
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/icon` [2.24.0 ~> 2.25.0], `@semcore/base-trigger` [3.0.0 ~> 3.0.1], `@semcore/accordion` [4.0.0 ~> 4.0.1]).
-
 ## [3.0.1] - 2022-05-17
 
 ### Fixed
@@ -163,18 +61,6 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### Changed
 
 - Version patch update due to children dependencies update (`@semcore/skeleton` [3.2.1 ~> 3.3.0]).
-
-## [2.2.8] - 2022-05-16
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/icon` [2.21.0 ~> 2.24.0], `@semcore/base-trigger` [2.6.4 ~> 2.6.5], `@semcore/accordion` [3.5.5 ~> 3.5.6]).
-
-## [2.2.7] - 2022-04-28
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/icon` [2.20.0 ~> 2.21.0], `@semcore/base-trigger` [2.6.3 ~> 2.6.4], `@semcore/accordion` [3.5.4 ~> 3.5.5]).
 
 ## [2.2.6] - 2022-04-27
 
@@ -200,18 +86,6 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Version patch update due to children dependencies update (`@semcore/scroll-area` [3.7.0 ~> 3.7.1]).
 
-## [2.2.2] - 2022-04-25
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/spin-container` [5.0.5 ~> 5.1.0]).
-
-## [2.2.1] - 2022-04-21
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/scroll-area` [3.6.4 ~> 3.7.0]).
-
 ## [2.2.0] - 2022-04-14
 
 ### Added
@@ -235,12 +109,6 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### Changed
 
 - Version patch update due to children dependencies update (`@semcore/icon` [2.19.4 ~> 2.20.0]).
-
-## [1.5.3] - 2022-03-14
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/utils` [3.31.2 ~> 3.31.2]).
 
 ## [1.5.2] - 2022-02-24
 
