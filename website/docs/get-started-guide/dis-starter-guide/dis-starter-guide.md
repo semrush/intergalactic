@@ -4,9 +4,23 @@ title: For designers
 
 @## Intergalactic Design System
 
-Here you will find a series of quick and handy guides for prototyping and building product designs for the Semrush suite.
+Here you will find a series of quick and handy guides for starting your product designs with Intergalactic Design System.
+
+### Intergalactic Design System — what's it?
+
+[![Intergalactic Design System — Intro, part 1](static/intro-1.png)](https://www.loom.com/share/573d5e8c9f4444ffaef34fd02b0b848e 'Intergalactic Design System — Intro, part 1')
+
+### Intergalactic Design System principles
+
+[![Intergalactic Design System principles](static/principles.png)](https://www.loom.com/share/0e14e413ea314afda211d3845cc845f2 'Intergalactic Design System principles')
+
+@## How to contribute?
+
+[Link to the video](https://www.loom.com/share/2d935c96e823486384cf22142418a72b)
 
 @## Principles
+
+[![Design principles](static/design-principles.png)](https://www.loom.com/share/7fe17765621346ddbbf0b32c7d57d6bb 'Design principles')
 
 > **TL;DR or main thoughts**: great data visualization is the cornerstone of our UI. So be sure to take extra care when working with our charts and tables ❤️
 
