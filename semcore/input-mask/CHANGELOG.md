@@ -2,6 +2,13 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.1.2] - 2022-10-06
+
+### Fixed
+
+- Fixed addon placed before input value may be overlayed by input value.
+- Fixed previously broken in previous version backward compatibility of piping api.
+
 ## [4.1.1] - 2022-10-04
 
 ### Changed

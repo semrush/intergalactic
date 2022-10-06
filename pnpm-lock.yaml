@@ -486,6 +486,7 @@ importers:
       '@semcore/dropdown': ^3
       '@semcore/flex-box': ^4
       '@semcore/icon': ^2.16
+      '@semcore/input': 3.0.15
       '@semcore/jest-preset-ui': 1.0.0
       '@semcore/typography': ^4
       '@semcore/utils': ^3.27
@@ -498,6 +499,7 @@ importers:
       '@semcore/dropdown': link:../dropdown
       '@semcore/flex-box': link:../flex-box
       '@semcore/icon': link:../icon
+      '@semcore/input': 3.0.15
       '@semcore/typography': link:../typography
       '@semcore/utils': link:../utils
       dayjs: 1.8.36
@@ -867,13 +869,17 @@ importers:
     specifiers:
       '@guidepup/playwright': 0.6.1
       '@playwright/test': 1.25.1
+      '@semcore/flex-box': ^4
       '@semcore/input': ^3.0.0
       '@semcore/jest-preset-ui': 1.0.0
+      '@semcore/neighbor-location': ^2
       '@semcore/utils': ^3.15
       '@types/react': 16.8 - 17
       text-mask-core: 5.1.2
     dependencies:
+      '@semcore/flex-box': link:../flex-box
       '@semcore/input': link:../input
+      '@semcore/neighbor-location': link:../neighbor-location
       '@semcore/utils': link:../utils
       text-mask-core: 5.1.2
     devDependencies:
@@ -5635,6 +5641,21 @@ packages:
       - react-dom
     dev: false
 
+  /@semcore/flex-box/4.5.11:
+    resolution:
+      {
+        integrity: sha512-9jztYpwk2fyZJaMFeKbMhIpP/uarb9lSkth4smIZP/uVfJOCUCGCgV9DTjbm789Bi9nm1rWIDPRMCSBUxaJcXQ==,
+      }
+    peerDependencies:
+      '@semcore/core': ^1.11
+      react: 16.8 - 17
+    dependencies:
+      '@semcore/utils': 3.37.1
+      csstype: 3.0.8
+    transitivePeerDependencies:
+      - react-dom
+    dev: false
+
   /@semcore/flex-box/4.5.11_@semcore+core@1.11.8:
     resolution:
       {
@@ -5840,6 +5861,22 @@ packages:
       - react-dom
     dev: false
 
+  /@semcore/input/3.0.15:
+    resolution:
+      {
+        integrity: sha512-eYZ5yLweesDT3W+sx/968weXaLGCsECW0/hJMakaIJY+GH9NnRg912NI0Fs6+BueZnITfNqLhctQpcNktVeHYQ==,
+      }
+    peerDependencies:
+      '@semcore/core': ^1.11
+      react: 16.8 - 17
+    dependencies:
+      '@semcore/flex-box': 4.5.11
+      '@semcore/neighbor-location': 2.3.9
+      '@semcore/utils': 3.37.1
+    transitivePeerDependencies:
+      - react-dom
+    dev: false
+
   /@semcore/input/3.0.6_@semcore+core@1.11.8:
     resolution:
       {
@@ -5893,6 +5930,20 @@ packages:
       react-focus-lock: 2.5.1_@types+react@17.0.50
     transitivePeerDependencies:
       - '@types/react'
+      - react-dom
+    dev: false
+
+  /@semcore/neighbor-location/2.3.9:
+    resolution:
+      {
+        integrity: sha512-gKtnR6JMqUVM4/IZwf+xrNNA4jSkfWYNW/928h4S/89ApYY/5VM3aUqVbKaaq5fnZu9n0DX9NwsZcwkMMXlK0g==,
+      }
+    peerDependencies:
+      '@semcore/core': ^1.11
+      react: 16.8 - 17
+    dependencies:
+      '@semcore/utils': 3.37.1
+    transitivePeerDependencies:
       - react-dom
     dev: false
 
@@ -6461,6 +6512,24 @@ packages:
       '@babel/runtime': 7.19.0
       '@semcore/core': 1.11.8
       '@types/react': 17.0.50
+      classnames: 2.2.6
+      hoist-non-react-statics: 3.3.2
+      nano-css: 5.3.4
+    dev: false
+
+  /@semcore/utils/3.37.1:
+    resolution:
+      {
+        integrity: sha512-gZC7va8Zo3ojfuzIiTKB3lTep3y2n7XZyZRcvsX8FwQOa28+YQz0xAVgZdglkrClXJDzYNPLgPR06Z+2YxCzmQ==,
+      }
+    peerDependencies:
+      '@semcore/core': ^1
+      react: 16.8 - 17
+      react-dom: 16.8 - 17
+    dependencies:
+      '@babel/runtime': 7.19.0
+      '@types/react': 17.0.50
+      '@types/react-dom': 17.0.17
       classnames: 2.2.6
       hoist-non-react-statics: 3.3.2
       nano-css: 5.3.4
