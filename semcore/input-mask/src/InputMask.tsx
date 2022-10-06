@@ -252,7 +252,7 @@ class Value extends Component<IInputMaskValueProps> {
       this.asProps['data-ui-name'] || InputMask.displayName,
     );
 
-    const [controlProps, boxProps] = getInputProps(otherProps, includeInputProps);
+    const [controlProps, boxProps] = getInputProps(otherProps, includeInputProps as string[]);
 
     return sstyled(this.asProps.styles)(
       <Flex position="relative" {...boxProps} __excludeProps={['onFocus', 'onChange']}>
