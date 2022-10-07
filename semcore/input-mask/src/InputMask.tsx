@@ -277,7 +277,7 @@ class Value extends Component<IInputMaskValueProps> {
                 __excludeProps={['placeholder']}
               />
             </Flex>,
-          )
+          ) as React.ReactElement
         }
       </NeighborLocation.Detect>
     );
