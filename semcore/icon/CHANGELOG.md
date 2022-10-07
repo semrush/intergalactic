@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.33.1] - 2022-10-07
+
+### Fixed
+
+- Fixed icons-list.js
+
 ## [2.33.0] - 2022-10-06
 
 ### Added
