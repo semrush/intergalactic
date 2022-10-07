@@ -6,8 +6,8 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### BREAK
 
-- The approach to determining neighbors has been changed. Now the neighbors are determined by enumeration of children
-  and not by context.
+- The approach to determining neighbors has been changed.
+- React strict mode support.
 
 ## [2.3.16] - 2022-10-04
 
