@@ -26,4 +26,8 @@ declare const NeighborLocation: (<T>(props: INeighborLocationProps & T) => Retur
   Detect: <T>(props: INeighborLocationDetectProps & T) => ReturnEl;
 };
 
+declare const useNeighborLocationDetect: (index: number) => 'right' | 'both' | 'left' | false;
+
+export { useNeighborLocationDetect };
+
 export default NeighborLocation;

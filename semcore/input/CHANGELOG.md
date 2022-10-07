@@ -7,6 +7,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### Changed
 
 - Updated major dependency `@semcore/neighbor-location` [2.3.15 ~> 3.0.0]
+- Remove useless styles for Addons.
 
 ## [3.0.16] - 2022-10-04
 

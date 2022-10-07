@@ -1,33 +1,49 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import createComponent, { Root, Component, register } from '@semcore/core';
 import getOriginChildren from '@semcore/utils/lib/getOriginChildren';
 import isNode from '@semcore/utils/lib/isNode';
 
 const Context = register.get('neighbor-location-context', React.createContext({}));
 
+function childrenWithoutFragment(children) {
+  return React.Children.toArray(children).reduce((acc, node) => {
+    if (React.isValidElement(node) && node.type === React.Fragment) {
+      acc.push.apply(acc, childrenWithoutFragment(node.props.children));
+    } else {
+      acc.push(node);
+    }
+    return acc;
+  }, []);
+}
+
+function calculateNeighborLocation(length, i) {
+  // default state
+  let neighborLocation = 'both';
+  // if one child
+  if (length === 1) {
+    return undefined;
+  }
+  // if first child
+  if (i === 0) {
+    neighborLocation = 'right';
+  }
+  // if last child
+  if (i === length - 1) {
+    neighborLocation = 'left';
+  }
+  return neighborLocation;
+}
+
 class NeighborLocationRoot extends Component {
   static displayName = 'NeighborLocation';
 
-  controlsLength = 0;
+  controlsLengthRef = React.createRef();
   cacheChild = new Map();
 
-  calculateNeighborLocation(controlsLength, component) {
+  calculateNeighborLocation(controlsLength = 0, component) {
     // for not re-render component
     if (!this.cacheChild.has(component)) {
-      // default state
-      let neighborLocation = 'both';
-      // if one child
-      if (controlsLength === 1) {
-        return undefined;
-      }
-      // if first child
-      if (this.cacheChild.size === 0) {
-        neighborLocation = 'right';
-      }
-      // if last child
-      if (this.cacheChild.size === controlsLength - 1) {
-        neighborLocation = 'left';
-      }
+      const neighborLocation = calculateNeighborLocation(controlsLength, this.cacheChild.size);
       // set cache
       this.cacheChild.set(component, neighborLocation);
     }
@@ -37,14 +53,23 @@ class NeighborLocationRoot extends Component {
 
   getDetectProps() {
     return {
-      getNeighborLocation: this.calculateNeighborLocation.bind(this, this.controlsLength),
+      getNeighborLocation: this.calculateNeighborLocation.bind(
+        this,
+        this.controlsLengthRef.current,
+      ),
+    };
+  }
+
+  setContext() {
+    return {
+      controlsLengthRef: this.controlsLengthRef,
     };
   }
 
   render() {
     const { Children, tag: Tag, controlsLength } = this.asProps;
-    this.controlsLength =
-      controlsLength ?? React.Children.toArray(getOriginChildren(Children)).filter(isNode).length;
+    this.controlsLengthRef.current =
+      controlsLength ?? childrenWithoutFragment(getOriginChildren(Children)).filter(isNode).length;
     this.cacheChild.clear();
 
     if (Tag)
@@ -72,6 +97,12 @@ class Detect extends Component {
   }
 }
 
+function useNeighborLocationDetect(index) {
+  const { controlsLengthRef } = useContext(Context);
+  if (controlsLengthRef.current === undefined) return false;
+  return calculateNeighborLocation(controlsLengthRef.current, index);
+}
+
 const NeighborLocation = createComponent(
   NeighborLocationRoot,
   {
@@ -81,5 +112,7 @@ const NeighborLocation = createComponent(
     context: Context,
   },
 );
+
+export { useNeighborLocationDetect };
 
 export default NeighborLocation;

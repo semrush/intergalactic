@@ -166,14 +166,6 @@ SInput[neighborLocation='left'] {
   }
 }
 
-SAddon[neighborLocation='right'] {
-  padding-right: 8px;
-}
-
-SAddon[neighborLocation='left'] {
-  padding-left: 8px;
-}
-
 SValue[neighborLocation='right'] {
   padding-right: 0;
 }

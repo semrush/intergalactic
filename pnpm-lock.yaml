@@ -1067,6 +1067,7 @@ importers:
       '@semcore/neighbor-location': ^3
       '@semcore/utils': ^3.15
       '@types/react': 16.8 - 17
+      jest: 29.0.1
     dependencies:
       '@semcore/flex-box': link:../flex-box
       '@semcore/neighbor-location': link:../neighbor-location
@@ -1078,6 +1079,7 @@ importers:
       '@semcore/icon': link:../icon
       '@semcore/jest-preset-ui': link:../../tools/jest-preset-ui
       '@types/react': 17.0.50
+      jest: 29.0.1
 
   semcore/popper:
     specifiers:
@@ -22940,12 +22942,13 @@ packages:
       react-instantsearch-core: 6.35.0_q22wp6cnvb4o6snvzt5zk5ltgu
     dev: false
 
-  /react-instantsearch-native/6.35.0_react@17.0.1:
+  /react-instantsearch-native/6.35.0_q22wp6cnvb4o6snvzt5zk5ltgu:
     resolution:
       {
         integrity: sha512-ggJvseTvrC5EQAGmUiuckXIYlxZxDWgKHsDxoyw9g+ceOTSr1NwZbU3SmXWRhL/FF/DsqRyOCpKN8RShym7/LQ==,
       }
     peerDependencies:
+      algoliasearch: '>= 3.1 < 5'
       react: '>= 16.3.0 < 19'
       react-native: '>= 0.54.0'
     dependencies:
@@ -22964,7 +22967,7 @@ packages:
       '@babel/runtime': 7.19.0
       react-instantsearch-core: 6.35.0_q22wp6cnvb4o6snvzt5zk5ltgu
       react-instantsearch-dom: 6.35.0_oarvqnd7qschj76tdawhnvtrkq
-      react-instantsearch-native: 6.35.0_react@17.0.1
+      react-instantsearch-native: 6.35.0_q22wp6cnvb4o6snvzt5zk5ltgu
     transitivePeerDependencies:
       - algoliasearch
       - react
