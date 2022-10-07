@@ -8,6 +8,7 @@ import { callAllEventHandlers } from '@semcore/utils/lib/assignProps';
 import { flattenColumns, getFixedStyle, getScrollOffsetValue } from './utils';
 import type { Column } from './types';
 import logger from '@semcore/utils/lib/logger';
+import { setRef } from '@semcore/utils/lib/ref';
 import 'resize-observer-polyfill';
 
 import scrollStyles from './style/scroll-area.shadow.css';
@@ -43,6 +44,13 @@ class Head extends Component<AsProps> {
   bindHandlerKeyDown = (name: string) => (event: React.KeyboardEvent) => {
     if (event.code === 'Enter') {
       this.asProps.$onSortClick(name, event);
+    }
+  };
+
+  refColumn = (props: Column['props']) => (ref: HTMLElement) => {
+    setRef(props.ref, ref);
+    if (props.forwardRef) {
+      setRef(props.forwardRef, ref);
     }
   };
 
@@ -82,6 +90,7 @@ class Head extends Component<AsProps> {
         group={isGroup}
         tabIndex={column.sortable && 0}
         {...column.props}
+        ref={this.refColumn(column.props)}
         onClick={callAllEventHandlers(
           column.props.onClick,
           column.sortable ? this.bindHandlerSortClick(column.name) : undefined,

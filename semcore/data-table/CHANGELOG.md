@@ -2,7 +2,11 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [3.1.15] - 2022-10-06
+## [3.2.0] - 2022-10-07
+
+### Added
+
+- Added support `ref` for `DataTable.Column` and `DataTable.Cell`.
 
 ### Changed
 
