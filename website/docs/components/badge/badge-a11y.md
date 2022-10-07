@@ -3,13 +3,15 @@ title: A11y
 a11y: AA
 ---
 
-@## Roles & attributes
+@## What component has
 
-The list below will help you to keep in mind the necessary roles and attributes to make our components fully accessible in your interfaces.
+### Roles & attributes
 
-| Role | Attribute            | Element | Usage                                                                                          |
-| ---- | -------------------- | ------- | ---------------------------------------------------------------------------------------------- |
-|      | `aria-hidden="true"` | `span`  | This element is auxiliary and should not be played by a screen reader so as not to interfere.. |
+The list below describes roles and attributes that component already has.
+
+| Role | Attribute            | Element | Usage                                                                  |
+| ---- | -------------------- | ------- | ---------------------------------------------------------------------- |
+|      | `aria-hidden="true"` | `span`  | This element is auxiliary and should not be played by a screen reader. |
 
 @## Resources
 
