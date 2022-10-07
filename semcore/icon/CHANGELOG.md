@@ -2,6 +2,16 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.33.0] - 2022-10-06
+
+### Added
+
+- Added icon Stoller
+
+### Changed
+
+- Changed icons-list.js in alphabet order
+
 ## [2.32.2] - 2022-10-04
 
 ### Changed
@@ -53,18 +63,6 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### Changed
 
 - Version patch update due to children dependencies update (`@semcore/utils` [3.36.0 ~> 3.37.0], `@semcore/flex-box` [4.5.9 ~> 4.5.10]).
-
-## [2.29.4] - 2022-08-11
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/utils` [3.35.1 ~> 3.36.0], `@semcore/flex-box` [4.5.8 ~> 4.5.9]).
-
-## [2.29.3] - 2022-08-01
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/utils` [3.35.0 ~> 3.35.1], `@semcore/flex-box` [4.5.7 ~> 4.5.8]).
 
 ## [2.29.2] - 2022-07-25
 

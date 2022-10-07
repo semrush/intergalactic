@@ -30,7 +30,7 @@ importers:
       '@semcore/esbuild-plugin-semcore': workspace:*
       '@semcore/gcs-upload': workspace:*
       '@semcore/jest-preset-ui': workspace:*
-      '@semcore/super-publisher': workspace:*
+      '@semcore/legacy-publisher': workspace:*
       '@semcore/theme-redesign': 1.5.12
       '@types/jest': 29.0.0
       '@typescript-eslint/eslint-plugin': 5.10.2
@@ -83,7 +83,7 @@ importers:
       '@semcore/esbuild-plugin-semcore': link:tools/esbuild-plugin-semcore
       '@semcore/gcs-upload': link:tools/gcs-upload
       '@semcore/jest-preset-ui': link:tools/jest-preset-ui
-      '@semcore/super-publisher': link:tools/super-publisher
+      '@semcore/legacy-publisher': link:tools/super-publisher
       '@semcore/theme-redesign': 1.5.12
       '@types/jest': 29.0.0
       '@typescript-eslint/eslint-plugin': 5.10.2_lfj7r23v4xwv2enpxl5p6t5erq
@@ -635,7 +635,7 @@ importers:
       '@semcore/button': ^4
       '@semcore/flex-box': ^4
       '@semcore/format-text': ^3.0.0
-      '@semcore/illustration': 1.1.5
+      '@semcore/illustration': 1.2.0
       '@semcore/jest-preset-ui': 1.0.0
       '@semcore/typography': ^4
       '@semcore/utils': ^3.27
@@ -863,13 +863,17 @@ importers:
     specifiers:
       '@guidepup/playwright': 0.6.1
       '@playwright/test': 1.25.1
+      '@semcore/flex-box': ^4
       '@semcore/input': ^3.0.0
       '@semcore/jest-preset-ui': 1.0.0
+      '@semcore/neighbor-location': ^2
       '@semcore/utils': ^3.15
       '@types/react': 16.8 - 17
       text-mask-core: 5.1.2
     dependencies:
+      '@semcore/flex-box': link:../flex-box
       '@semcore/input': link:../input
+      '@semcore/neighbor-location': link:../neighbor-location
       '@semcore/utils': link:../utils
       text-mask-core: 5.1.2
     devDependencies:
@@ -1685,7 +1689,7 @@ importers:
   semcore/widget-empty:
     specifiers:
       '@semcore/flex-box': ^4
-      '@semcore/illustration': 1.1.5
+      '@semcore/illustration': 1.2.0
       '@semcore/jest-preset-ui': 1.0.0
       '@semcore/utils': ^3.27
       '@types/react': 16.8 - 17
@@ -5807,7 +5811,7 @@ packages:
       react: 16.8 - 17
     dependencies:
       '@semcore/core': 1.11.8
-      '@semcore/input': 3.0.6_@semcore+core@1.11.8
+      '@semcore/input': 3.0.15_@semcore+core@1.11.8
       '@semcore/utils': 3.37.1_@semcore+core@1.11.8
       text-mask-core: 5.1.2
     transitivePeerDependencies:
@@ -5824,7 +5828,7 @@ packages:
       react: 16.8 - 17
     dependencies:
       '@semcore/core': 1.11.8
-      '@semcore/input': 3.0.6_@semcore+core@1.11.8
+      '@semcore/input': 3.0.15_@semcore+core@1.11.8
       '@semcore/utils': 3.37.1_@semcore+core@1.11.8
     transitivePeerDependencies:
       - react-dom
@@ -5840,9 +5844,26 @@ packages:
       react: 16.8 - 17
     dependencies:
       '@semcore/core': 1.11.8
-      '@semcore/input': 3.0.6_@semcore+core@1.11.8
+      '@semcore/input': 3.0.15_@semcore+core@1.11.8
       '@semcore/scroll-area': 4.0.4_@semcore+core@1.11.8
       '@semcore/tag': 4.0.7_@semcore+core@1.11.8
+      '@semcore/utils': 3.37.1_@semcore+core@1.11.8
+    transitivePeerDependencies:
+      - react-dom
+    dev: false
+
+  /@semcore/input/3.0.15_@semcore+core@1.11.8:
+    resolution:
+      {
+        integrity: sha512-eYZ5yLweesDT3W+sx/968weXaLGCsECW0/hJMakaIJY+GH9NnRg912NI0Fs6+BueZnITfNqLhctQpcNktVeHYQ==,
+      }
+    peerDependencies:
+      '@semcore/core': ^1.11
+      react: 16.8 - 17
+    dependencies:
+      '@semcore/core': 1.11.8
+      '@semcore/flex-box': 4.5.11_@semcore+core@1.11.8
+      '@semcore/neighbor-location': 2.3.9_@semcore+core@1.11.8
       '@semcore/utils': 3.37.1_@semcore+core@1.11.8
     transitivePeerDependencies:
       - react-dom
@@ -6002,7 +6023,7 @@ packages:
       '@semcore/core': 1.11.8
       '@semcore/flex-box': 4.5.11_@semcore+core@1.11.8
       '@semcore/icon': 2.28.0_@semcore+core@1.11.8
-      '@semcore/input': 3.0.6_@semcore+core@1.11.8
+      '@semcore/input': 3.0.15_@semcore+core@1.11.8
       '@semcore/link': 4.0.7_@semcore+core@1.11.8
       '@semcore/typography': 4.0.7_@semcore+core@1.11.8
       '@semcore/utils': 3.37.1_@semcore+core@1.11.8
@@ -6111,7 +6132,7 @@ packages:
       '@semcore/core': 1.11.8
       '@semcore/flex-box': 4.5.11_@semcore+core@1.11.8
       '@semcore/icon': 2.28.0_@semcore+core@1.11.8
-      '@semcore/input': 3.0.6_@semcore+core@1.11.8
+      '@semcore/input': 3.0.15_@semcore+core@1.11.8
       '@semcore/modal': 3.0.7_mrowd7hujiiixgrtsq5o75xe5q
       '@semcore/spin-container': 6.0.4_@semcore+core@1.11.8
       '@semcore/tooltip': 5.0.5_mrowd7hujiiixgrtsq5o75xe5q
@@ -6174,7 +6195,7 @@ packages:
       '@semcore/dropdown-menu': 3.0.5_mrowd7hujiiixgrtsq5o75xe5q
       '@semcore/flex-box': 4.5.11_@semcore+core@1.11.8
       '@semcore/icon': 2.28.0_@semcore+core@1.11.8
-      '@semcore/input': 3.0.6_@semcore+core@1.11.8
+      '@semcore/input': 3.0.15_@semcore+core@1.11.8
       '@semcore/utils': 3.37.1_@semcore+core@1.11.8
       classnames: 2.2.6
     transitivePeerDependencies:
@@ -6412,7 +6433,7 @@ packages:
       '@semcore/button': 4.0.7_@semcore+core@1.11.8
       '@semcore/core': 1.11.8
       '@semcore/flex-box': 4.5.11_@semcore+core@1.11.8
-      '@semcore/input': 3.0.6_@semcore+core@1.11.8
+      '@semcore/input': 3.0.15_@semcore+core@1.11.8
       '@semcore/select': 3.0.9_mrowd7hujiiixgrtsq5o75xe5q
       '@semcore/utils': 3.37.1_@semcore+core@1.11.8
     transitivePeerDependencies:

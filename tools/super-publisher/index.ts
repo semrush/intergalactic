@@ -9,7 +9,7 @@ export const runPublisherTasks = async function (options: PublisherOptions) {
       pc.gray(` with following options: ${JSON.stringify(options)}\n`),
   );
 
-  const { publisherConfigFactory } = await import(path.join(process.cwd(), '.publisher'));
+  const { publisherConfigFactory } = await import(path.join(process.cwd(), '.legacy-publisher'));
   const tasks = await publisherConfigFactory(options);
 
   return tasks.reduce(async (prev, next, index) => {

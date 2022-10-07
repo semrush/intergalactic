@@ -5,8 +5,11 @@ import createComponent, { Component, Merge, sstyled, Root } from '@semcore/core'
 import Input, { IInputProps, IInputValueProps } from '@semcore/input';
 import fire from '@semcore/utils/lib/fire';
 import logger from '@semcore/utils/lib/logger';
+import { neighborLocationEnhance } from '@semcore/neighbor-location';
+import getInputProps, { inputProps } from '@semcore/utils/lib/inputProps';
 
 import style from './style/input-mask.shadow.css';
+import { Flex } from '@semcore/flex-box';
 
 export type IInputMaskAsFn = (rawValue?: string) => string | RegExp[];
 
@@ -27,7 +30,10 @@ export interface IInputMaskValueProps extends IInputValueProps {
   /**
    * This function allows you to change the input value before it is displayed on the screen.
    */
-  pipe?: (conformedValue: string, config: {}) => string;
+  pipe?: (
+    conformedValue: string,
+    config: {},
+  ) => string | false | { value: string; indexesOfPipedChars: number[] };
   /**
    * @ignore
    */
@@ -65,13 +71,27 @@ class InputMask extends Component<IInputProps> {
   static displayName = 'InputMask';
   static style = style;
 
+  inputRef = React.createRef<HTMLInputElement>();
+
+  getValueProps() {
+    return {
+      ref: this.inputRef,
+    };
+  }
+
+  handleClick = () => {
+    const value = this.inputRef.current.value;
+    this.inputRef.current.focus();
+    this.inputRef.current.setSelectionRange(value.length, value.length);
+  };
+
   render() {
-    return <Root render={Input} />;
+    return <Root render={Input} onClick={this.handleClick} ref={Input} />;
   }
 }
-
 class Value extends Component<IInputMaskValueProps> {
   static defaultProps = {
+    includeInputProps: inputProps,
     defaultValue: '',
     hideMask: false,
     keepCharPositions: false,
@@ -81,19 +101,27 @@ class Value extends Component<IInputMaskValueProps> {
       '*': /[\da-zA-Zа-яА-Я]/,
     },
   };
+  static enhance = [neighborLocationEnhance()];
 
-  _input: HTMLInputElement;
-  textMask = undefined;
-  lastConformed: { all: string; userInput: string; maskOnly: string } = undefined;
+  inputRef = React.createRef<HTMLInputElement>();
+  textMaskCoreInstance = undefined;
+  usedMask = undefined;
+  prevConfirmedValue = undefined;
+  state: { lastConformed: { all: string; userInput: string; maskOnly: string } | undefined } = {
+    lastConformed: undefined,
+  };
 
   componentDidMount() {
-    this.initTextMask();
+    this.initTextMaskCore();
   }
 
   componentDidUpdate(prevProps) {
     const configProps = ['mask', 'hideMask', 'pipe', 'keepCharPositions'];
     if (configProps.some((prop) => this.asProps[prop] !== prevProps[prop])) {
-      this.initTextMask();
+      this.initTextMaskCore();
+    }
+    if (prevProps.value !== this.props.value) {
+      this.textMaskCoreInstance.update(this.props.value);
     }
   }
 
@@ -102,14 +130,14 @@ class Value extends Component<IInputMaskValueProps> {
       value: [
         (value) => {
           const {
-            textMask,
+            textMaskCoreInstance,
             asProps: { placeholder },
           } = this;
-          if (!textMask) {
+          if (!textMaskCoreInstance) {
             return value;
           }
-          textMask.update(value);
-          const { previousConformedValue, previousPlaceholder } = textMask.state;
+          textMaskCoreInstance.update(value);
+          const { previousConformedValue, previousPlaceholder } = textMaskCoreInstance.state;
           const afterPositionValue = getAfterPositionValue(
             previousConformedValue,
             previousPlaceholder,
@@ -117,9 +145,9 @@ class Value extends Component<IInputMaskValueProps> {
           return afterPositionValue === 0 && placeholder ? '' : previousConformedValue;
         },
         (value) => {
-          const { textMask } = this;
-          if (!textMask) return;
-          const { previousPlaceholder } = textMask.state;
+          const { textMaskCoreInstance } = this;
+          if (!textMaskCoreInstance) return;
+          const { previousPlaceholder } = textMaskCoreInstance.state;
           if (value.length === previousPlaceholder.length && value.indexOf('_') === -1) {
             fire(this, 'onSuccess', value);
           }
@@ -128,51 +156,74 @@ class Value extends Component<IInputMaskValueProps> {
     };
   }
 
-  initTextMask = () => {
+  initTextMaskCore = () => {
     const { mask, value, hideMask, pipe: userPipe } = this.asProps;
     if (mask === undefined) return;
+    this.usedMask = mask;
 
-    this.lastConformed = undefined;
-    this.textMask = createTextMaskInputElement({
+    this.setState({ lastConformed: undefined });
+    this.textMaskCoreInstance = createTextMaskInputElement({
       ...this.asProps,
-      inputElement: this._input,
+      inputElement: this.inputRef.current,
       mask: this.maskStrToRegexArray(mask),
       guide: !hideMask,
       showMask: !hideMask,
       placeholderChar: '_',
-      pipe: (conformedValue: string, pipeConfigs) => {
-        if (userPipe) conformedValue = userPipe(conformedValue, pipeConfigs);
+      pipe: (conformedValue, pipeConfigs) => {
+        let indexesOfPipedChars = null;
+        if (userPipe) {
+          const piped = userPipe(conformedValue, pipeConfigs);
+          if (typeof piped === 'object' && piped) {
+            conformedValue = piped.value;
+            indexesOfPipedChars = piped.indexesOfPipedChars;
+          } else {
+            conformedValue = piped;
+          }
+        }
 
         let lastNonMaskCharPosition = 0;
-        for (let i = 0; i < conformedValue.length; i++) {
+        for (let i = 0; i < conformedValue?.length; i++) {
           if (conformedValue[i] !== '_' && /\w/.test(conformedValue[i]))
             lastNonMaskCharPosition = i + 1;
         }
+
+        if (conformedValue === false) {
+          this.setState({ lastConformed: this.prevConfirmedValue });
+          if (indexesOfPipedChars !== null) {
+            return { value: conformedValue, indexesOfPipedChars };
+          } else {
+            return conformedValue;
+          }
+        }
+
         const userInput = conformedValue.substring(0, lastNonMaskCharPosition);
         const maskOnly = conformedValue.substring(lastNonMaskCharPosition);
-        this.lastConformed = userInput ? { all: conformedValue, userInput, maskOnly } : undefined;
+        const lastConformed = userInput ? { all: conformedValue, userInput, maskOnly } : undefined;
+        this.prevConfirmedValue = lastConformed;
+        this.setState({ lastConformed });
 
-        return userInput;
+        if (indexesOfPipedChars !== null) {
+          return { value: userInput, indexesOfPipedChars };
+        } else {
+          return userInput;
+        }
       },
     });
 
-    this.textMask.update(value);
+    this.textMaskCoreInstance.update(value);
     const {
       state: { previousConformedValue },
-    } = this.textMask;
+    } = this.textMaskCoreInstance;
     this.handlers.value(previousConformedValue);
   };
 
   onFocus = () => {
-    setTimeout(
-      (input) => {
-        const { value } = input;
-        const afterPotionValue = getAfterPositionValue(value);
-        input.setSelectionRange(afterPotionValue, afterPotionValue);
-      },
-      0,
-      this._input,
-    );
+    setTimeout(() => {
+      if (!this.inputRef.current) return;
+      const { value } = this.inputRef.current;
+      const afterPotionValue = getAfterPositionValue(value);
+      this.inputRef.current.setSelectionRange(afterPotionValue, afterPotionValue);
+    }, 0);
   };
 
   maskStrToRegexArray = (mask) => {
@@ -181,22 +232,19 @@ class Value extends Component<IInputMaskValueProps> {
     return mask.split('').map((symbol) => aliases[symbol] || symbol);
   };
 
-  setRef = (name) => (node) => {
-    this[name] = node;
-  };
-
   handleMouseDownPlaceholder = (e) => {
     e.preventDefault();
-    this._input.focus();
+    this.inputRef.current.focus();
   };
 
   render() {
     const SValue = Root;
-    const SMask = 'span';
+    const SMask = 'span' as any;
     const SPlaceholder = 'span';
     const SMaskHidden = 'span';
-    const { title, placeholder, mask } = this.asProps;
-    const isValid = this.lastConformed && !this.lastConformed.all.includes('_');
+    const { title, placeholder, mask, neighborLocation, value, includeInputProps, ...otherProps } =
+      this.asProps;
+    const isValid = this.state.lastConformed && !this.state.lastConformed.all.includes('_');
 
     logger.warn(
       !title,
@@ -204,24 +252,38 @@ class Value extends Component<IInputMaskValueProps> {
       this.asProps['data-ui-name'] || InputMask.displayName,
     );
 
+    const [controlProps, boxProps] = getInputProps(otherProps, includeInputProps as string[]);
+
     return sstyled(this.asProps.styles)(
-      <>
-        <SMask aria-hidden="true">
-          {this.lastConformed && <SMaskHidden>{this.lastConformed.userInput}</SMaskHidden>}
-          {this.lastConformed?.maskOnly ?? <SPlaceholder>{placeholder}</SPlaceholder>}
+      <Flex position="relative" {...boxProps} __excludeProps={['onFocus', 'onChange']}>
+        <SMask aria-hidden="true" neighborLocation={neighborLocation}>
+          {this.state.lastConformed && (
+            <SMaskHidden>{this.state.lastConformed.userInput}</SMaskHidden>
+          )}
+          {this.state.lastConformed?.maskOnly ?? <SPlaceholder>{placeholder}</SPlaceholder>}
         </SMask>
         <SValue
           render={Input.Value}
-          ref={this.setRef('_input')}
+          ref={this.inputRef}
           onFocus={this.onFocus}
           aria-invalid={!isValid}
           pattern={mask}
+          value={value}
+          {...controlProps}
           __excludeProps={['placeholder']}
         />
-      </>,
+      </Flex>,
     );
   }
 }
+
+const Addon = (props) => {
+  const SAddon = Root;
+
+  return sstyled(props.styles)(<SAddon render={Input.Addon} />);
+};
+
+Addon.enhances = [neighborLocationEnhance()];
 
 export default createComponent<
   IInputProps,
@@ -232,5 +294,5 @@ export default createComponent<
   }
 >(InputMask, {
   Value,
-  Addon: Input.Addon,
+  Addon,
 });

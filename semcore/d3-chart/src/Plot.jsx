@@ -98,7 +98,7 @@ class PlotRoot extends Component {
           tabIndex={0}
         >
           <Children />
-          <foreignObject width="100%" height="100%">
+          <foreignObject width="100%" height="100%" data-aria-only>
             <PlotA11yModule
               id={this.plotId}
               data={data}

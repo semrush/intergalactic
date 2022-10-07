@@ -1,33 +1,52 @@
 import { execSync } from 'child_process';
+import { execa } from 'execa';
 import { VersionPatch } from './makeVersionPatches';
+import Git from 'simple-git';
+
+const git = Git();
 
 export const runPublisher = async (versionPatches: VersionPatch[]) => {
-  const byRoot: { [root: string]: VersionPatch[] } = {};
+  if (versionPatches.length === 0) return;
 
-  for (const patch of versionPatches) {
-    const pathParts = patch.package.path.split('/');
-    const root = pathParts[pathParts.length - 2];
-    byRoot[root] = byRoot[root] || [];
-    byRoot[root].push(patch);
+  let commitMessage = '[chore] bumped';
+  if (versionPatches.length === 1) {
+    commitMessage += ` version of `;
+  } else {
+    commitMessage += `versions of `;
   }
+  commitMessage += versionPatches.map((patch) => `${patch.package.name}@${patch.to}`).join(', ');
+  const { stdout: gitSignatureUid } = await execa('git', ['config', 'user.signingkey']);
+  const { stdout: gitEmail } = await execa('git', ['config', 'user.email']);
+  const commitDescription = `<!--- Commit was signed off by ${gitEmail} with GPG key ID ${gitSignatureUid} -->`;
+  commitMessage += '\n\n' + commitDescription;
+  const pnpmOptions = process.argv.includes('--dry-run') ? '--dry-run' : '';
+  const gitTags = versionPatches.map((patch) => `${patch.package.name}@${patch.to}`);
+  const toPublish = versionPatches.filter((patch) => patch.needPublish);
+  const pnpmFilter = toPublish.map((patch) => `--filter ${patch.package.name}`).join(' ');
 
-  for (const root in byRoot) {
-    const packageArg = byRoot[root]
-      .map((patch) => {
-        const [, name] = patch.package.name.split('/');
-        return name.replace(/[^@\/\-\w_]/, '_');
-      })
-      .join(',');
-
-    const args = `--no-check-git --release current --no-check-changelog --no-test --root ./${root} --package ${packageArg}`;
-
-    // eslint-disable-next-line no-console
-    console.log(`Running publisher with following args: ${args}`);
-
-    if (!process.argv.includes('--dry-run')) {
-      execSync(`pnpm pub ${args}`, {
-        stdio: 'inherit',
-      });
+  await git.add('.');
+  if (!process.argv.includes('--dry-run')) {
+    await git.commit(commitMessage, []);
+    for (const tag of gitTags) {
+      await git.tag(['-f', tag]);
     }
+  }
+  if (toPublish.length !== 0) {
+    execSync(`pnpm ${pnpmFilter} run build`, {
+      encoding: 'utf-8',
+      stdio: ['inherit', 'inherit', 'inherit'],
+    });
+    execSync(`pnpm ${pnpmFilter} run upload-static`, {
+      encoding: 'utf-8',
+      stdio: ['inherit', 'inherit', 'inherit'],
+    });
+    execSync(`pnpm ${pnpmFilter} publish ${pnpmOptions}`, {
+      encoding: 'utf-8',
+      stdio: ['inherit', 'inherit', 'inherit'],
+    });
+  }
+  if (!process.argv.includes('--dry-run')) {
+    await git.pull('origin', 'master', { '--rebase': 'true' });
+    await git.push('origin', 'master', { '--follow-tags': null });
   }
 };

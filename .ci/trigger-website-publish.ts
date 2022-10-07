@@ -34,15 +34,40 @@ const git = Git();
     );
     process.exit(1);
   }
+
+  const gitChanges = status.files.map(
+    ({ path, working_dir, index }) => `[${working_dir && index}] ${path}`,
+  );
+  if (!gitChanges.includes('[M] website/package.json')) {
+    gitChanges.push('[M] website/package.json');
+  }
+
+  console.log('Commit will be created with following changes:\n');
+  console.log(gitChanges.join('\n') + '\n');
+
+  const { confirmation } = await inquirer.prompt([
+    {
+      type: 'list',
+      name: 'confirmation',
+      choices: [`Confirm (continue)`, `Abort (cancel publishing)`],
+    },
+  ]);
+
+  if (!confirmation.startsWith('Confirm')) {
+    console.log('Aborted, nothing was affected');
+    process.exit(0);
+  }
+
+  let stashed = false;
+
   if (!status.isClean()) {
     console.log(
-      '\n',
-      picocolors.bgRed(picocolors.black(` website publish failed `)),
-      '\n',
-      'Git working tree must be clean before publishing site. Commit all your changes, push them and run publish command again.',
-      '\n',
+      '\n' + picocolors.bgBlue(picocolors.black(` website publish pending stash `)),
+      '\nStashing changes before rebase. If rebase will fail your changes will be available in stash.\n',
     );
-    process.exit(1);
+    stashed = true;
+    await git.add(['.']);
+    await git.stash();
   }
 
   console.log(
@@ -53,6 +78,12 @@ const git = Git();
   await git.pull('origin', 'master', { '--rebase': 'true' });
 
   console.log(picocolors.green(`\nrebased successfully\n`));
+
+  if (stashed) {
+    await git.stash({ pop: null });
+    console.log(picocolors.green(`popped stash successfully\n`));
+    await git.add(['.']);
+  }
 
   const { all: tags } = await git.tags();
   const docsTags = tags.filter((tag) => tag.startsWith('docs/v'));
@@ -105,8 +136,9 @@ const git = Git();
   await fs.writeJSON(websitePackageFilePath, websitePackageFile, { spaces: 2 });
   console.log(picocolors.green(`\nupdated package version in webiste/package.json to ${version}`));
 
-  await git.add([websitePackageFilePath]);
-  await git.commit(commitMessage, [websitePackageFilePath]);
+  await git.add(['.']);
+
+  await git.commit(commitMessage);
   console.log(picocolors.green(`added commit "${commitMessage}"`));
 
   await git.push('origin');

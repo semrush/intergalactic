@@ -1,7 +1,7 @@
 ## Automated screen reader testing
 
-_Intergalactic v12.5.1, React v17.0.1, Playwright v1.25.1,
-Guidepup v0.13.0, MacOS Big Sur 11._
+_Intergalactic v12.6.0, React v18.2.0, Playwright v1.25.1,
+Guidepup v0.13.1, MacOS Big Sur 11._
 
 **Running screen reader against [this file](https://github.com/semrush/intergalactic/blob/master/website/docs/components/dropdown/examples/dropdown.jsx).**
 
@@ -12,6 +12,6 @@ Guidepup v0.13.0, MacOS Big Sur 11._
 5. Screen reader presses the "Tab" button.
 6. Screen reader says "Content group".
 7. Screen reader goes to the next element.
-8. Screen reader says "Content  clickable".
+8. Screen reader says "Content clickable".
 9. Screen reader presses the "Escape" button.
 10. Screen reader says "Trigger menu pop up button".

@@ -26,12 +26,12 @@ steps:
       - --labels=gcb-trigger-id=$_TRIGGER_ID
   - id: 'Install dependency'
     name: node:16
-    entrypoint: npm
+    entrypoint: yarn
     args: ['install']
     dir: website
   - id: 'Update search'
     name: node:16
-    entrypoint: npm
+    entrypoint: yarn
     args: ['run', 'upload-search-index']
     dir: website
     env:

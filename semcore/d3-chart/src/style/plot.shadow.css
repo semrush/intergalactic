@@ -10,6 +10,10 @@ SPlot:focus {
   text-decoration: none;
 }
 
+foreignObject[data-aria-only] {
+  pointer-events: none;
+}
+
 SPlot[keyboardFocused] {
   border: 1px solid var(--blue-400);
   box-shadow: var(--keyboard-focus);

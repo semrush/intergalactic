@@ -2,35 +2,11 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [4.0.21] - 2022-10-04
+## [4.0.22] - 2022-10-06
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/utils` [3.37.1 ~> 3.37.2]).
-
-## [4.0.20] - 2022-10-03
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/icon` [2.32.0 ~> 2.32.1]).
-
-## [4.0.19] - 2022-09-29
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/icon` [2.30.4 ~> 2.31.0]).
-
-## [4.0.18] - 2022-09-21
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/icon` [2.30.3 ~> 2.30.4]).
-
-## [4.0.17] - 2022-09-21
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/icon` [2.30.2 ~> 2.30.3]).
+- Version patch update due to children dependencies update (`@semcore/icon` [2.32.2 ~> 2.33.0]).
 
 ## [4.0.16] - 2022-09-30
 
@@ -44,30 +20,6 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Version patch update due to children dependencies update (`@semcore/utils` [3.37.0 ~> 3.37.1]).
 
-## [4.0.14] - 2022-08-29
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/animation` [1.5.8 ~> 1.5.9]).
-
-## [4.0.13] - 2022-08-18
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/icon` [2.30.0 ~> 2.30.1]).
-
-## [4.0.12] - 2022-08-18
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/icon` [2.29.5 ~> 2.30.0]).
-
-## [4.0.11] - 2022-08-18
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/utils` [3.36.0 ~> 3.37.0]).
-
 ## [4.0.10] - 2022-08-10
 
 ### Fixed
@@ -80,54 +32,6 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Version patch update due to children dependencies update (`@semcore/icon` [2.29.1 ~> 2.29.2]).
 
-## [4.0.8] - 2022-07-22
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/utils` [3.34.0 ~> 3.35.0]).
-
-## [4.0.7] - 2022-07-21
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/icon` [2.28.0 ~> 2.29.0]).
-
-## [4.0.6] - 2022-07-07
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/utils` [3.33.0 ~> 3.34.0], `@semcore/icon` [2.27.0 ~> 2.28.0]).
-
-## [4.0.5] - 2022-06-02
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/utils` [3.32.2 ~> 3.33.0], `@semcore/icon` [2.26.1 ~> 2.27.0]).
-
-## [4.0.4] - 2022-05-31
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/utils` [3.32.1 ~> 3.32.2]).
-
-## [4.0.3] - 2022-05-23
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/icon` [2.25.1 ~> 2.26.0]).
-
-## [4.0.2] - 2022-05-19
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/utils` [3.32.0 ~> 3.32.1], `@semcore/flex-box` [4.5.1 ~> 4.5.3]).
-
-## [4.0.1] - 2022-05-18
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/icon` [2.24.0 ~> 2.25.0]).
-
 ## [4.0.0] - 2022-05-17
 
 ### BREAK
@@ -139,36 +43,6 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### Changed
 
 - Version patch update due to children dependencies update (`@semcore/icon` [2.21.0 ~> 2.24.0]).
-
-## [3.5.5] - 2022-04-28
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/icon` [2.20.0 ~> 2.21.0]).
-
-## [3.5.4] - 2022-04-03
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/animation` [1.5.0 ~> 1.5.0]).
-
-## [3.5.3] - 2022-03-21
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/icon` [2.19.4 ~> 2.20.0]).
-
-## [3.5.2] - 2022-03-14
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/utils` [3.31.2 ~> 3.31.2]).
-
-## [3.5.1] - 2022-03-05
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/animation` [1.4.0 ~> 1.4.1]).
 
 ## [3.5.0] - 2021-03-04
 
