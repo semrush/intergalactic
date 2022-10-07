@@ -9,8 +9,7 @@ tabName: Design
 **NeighborLocation** is a component for grouping components. It indicates where the component is in relation to its
 neighbors.
 
-> 🙃 This violates many principles of building components, but the beautiful API and the necessary functionality
-> outweighed the valuations.
+> This component counts the number of its children and if you have a complex layout this can cause errors.
 
 For example, you can group together:
 
