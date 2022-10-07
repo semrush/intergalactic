@@ -100,11 +100,17 @@ class Value extends Component {
 
 function Addon(props) {
   const SAddon = Root;
-  const { Children, styles } = props;
-  return sstyled(styles)(
-    <SAddon render={Box}>
-      <Children />
-    </SAddon>,
+  const { Children, styles, neighborLocation } = props;
+  return (
+    <NeighborLocation.Detect neighborLocation={neighborLocation}>
+      {(neighborLocation) =>
+        sstyled(styles)(
+          <SAddon render={Box} neighborLocation={neighborLocation}>
+            <Children />
+          </SAddon>,
+        )
+      }
+    </NeighborLocation.Detect>
   );
 }
 
