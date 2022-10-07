@@ -88,7 +88,6 @@ class RangePickerAbstract extends Component {
       value: [
         null,
         (value) => {
-          // TODO: работает только из-за new Date() !== new Date()
           this.handlers.visible(false);
           this.handlers.displayedPeriod(getEndDate(value));
         },
@@ -277,8 +276,15 @@ class RangePickerAbstract extends Component {
   }
 
   getCalendarProps(props, index) {
-    const { locale, displayedPeriod, disabled, value, highlighted, onHighlightedChange } =
-      this.asProps;
+    const {
+      locale,
+      displayedPeriod,
+      disabled,
+      value,
+      highlighted,
+      onHighlightedChange,
+      onVisibleChange,
+    } = this.asProps;
     const { dirtyValue } = this.state;
 
     return {
@@ -290,6 +296,7 @@ class RangePickerAbstract extends Component {
       disabled,
       highlighted,
       onHighlightedChange,
+      onVisibleChange,
       value: dirtyValue.length ? dirtyValue : value,
       onChange: this.handlerChange,
     };
@@ -330,9 +337,15 @@ class RangePickerAbstract extends Component {
   }
 
   render() {
-    const { Children, styles } = this.asProps;
+    const { Children, styles, 'aria-label': providedAriaLabel } = this.asProps;
+
     return sstyled(styles)(
-      <Root render={Dropdown}>
+      <Root
+        render={Dropdown}
+        use:aria-label={providedAriaLabel}
+        interaction="focus"
+        __excludeProps={['onChange']}
+      >
         <Children />
       </Root>,
     );

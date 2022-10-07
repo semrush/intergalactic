@@ -122,6 +122,7 @@ class CalendarAbstract extends Component {
 
         fire(this, 'onHighlightedChange', highlighted);
         fire(this, 'onChange', date.toDate());
+        // fire(this, 'onVisibleChange', false);
       },
       onMouseEnter: () => {
         const { value, highlighted: _highlighted } = this.asProps;
@@ -219,7 +220,7 @@ class CalendarDaysRoot extends CalendarAbstract {
     const { Children, styles, locale } = this.asProps;
 
     return sstyled(styles)(
-      <SCalendar render={Box}>
+      <SCalendar render={Box} aria-hidden="true">
         <CalendarWeekDays locale={locale} />
         <SGridDays onMouseLeave={this.handleMouseLeave}>
           <Children />

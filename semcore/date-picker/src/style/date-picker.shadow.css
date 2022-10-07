@@ -47,3 +47,12 @@ SPeriod {
   flex-direction: column;
   margin-bottom: 8px;
 }
+
+SValue[type='date'] {
+  line-height: 2em; /* Hack for Safari */
+}
+
+SValue[type='date']::-webkit-calendar-picker-indicator {
+  display: none;
+  -webkit-appearance: none;
+}

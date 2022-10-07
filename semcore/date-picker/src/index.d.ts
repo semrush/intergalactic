@@ -6,6 +6,7 @@ import { CProps, Merge, PropGetterFn, ReturnEl } from '@semcore/core';
 import Dropdown, { IDropdownProps } from '@semcore/dropdown';
 import { IWithI18nEnhanceProps } from '@semcore/utils/lib/enhances/i18nEnhance';
 import BaseTrigger from '@semcore/base-trigger';
+import Input from '@semcore/input';
 
 export type DateConstructorParams = string | number | Date;
 
@@ -228,11 +229,18 @@ export interface IDatePickerHandlers {
 declare const DatePicker: ((
   props: CProps<IDatePickerProps, IDatePickerContext & ICalendarDaysContext, IDatePickerHandlers>,
 ) => ReturnEl) & {
+  /** @deprecated `DatePicker.Trigger` is deprecated, consider migrating to `DatePicker.InputTrigger` instead */
   Trigger: (<T>(
     props: Merge<ComponentProps<typeof Dropdown.Trigger>, ComponentProps<typeof BaseTrigger>> & T,
   ) => ReturnEl) & {
     Addon: typeof BaseTrigger.Addon;
     Text: typeof BaseTrigger.Text;
+  };
+  InputTrigger: (<T>(
+    props: Merge<ComponentProps<typeof Dropdown.Trigger>, ComponentProps<typeof Input>> & T,
+  ) => ReturnEl) & {
+    Addon: typeof Input.Addon;
+    Value: typeof Input.Value;
   };
   Popper: typeof Dropdown.Popper;
   Header: typeof Box;
@@ -263,11 +271,18 @@ declare const DateRangePicker: ((
     IDatePickerHandlers
   >,
 ) => ReturnEl) & {
+  /** @deprecated `DatePicker.Trigger` is deprecated, consider migrating to `DatePicker.InputTrigger` instead */
   Trigger: (<T>(
     props: Merge<ComponentProps<typeof Dropdown.Trigger>, ComponentProps<typeof BaseTrigger>> & T,
   ) => ReturnEl) & {
     Addon: typeof BaseTrigger.Addon;
     Text: typeof BaseTrigger.Text;
+  };
+  InputTrigger: (<T>(
+    props: Merge<ComponentProps<typeof Dropdown.Trigger>, ComponentProps<typeof Input>> & T,
+  ) => ReturnEl) & {
+    Addon: typeof Input.Addon;
+    Value: typeof Input.Value;
   };
   Popper: <T>(props: ComponentProps<typeof Dropdown.Popper> & T) => ReturnEl;
   Header: typeof Box;
@@ -301,11 +316,18 @@ declare const MonthPicker: ((
     IDatePickerHandlers
   >,
 ) => ReturnEl) & {
+  /** @deprecated `DatePicker.Trigger` is deprecated, consider migrating to `DatePicker.InputTrigger` instead */
   Trigger: (<T>(
     props: Merge<ComponentProps<typeof Dropdown.Trigger>, ComponentProps<typeof BaseTrigger>> & T,
   ) => ReturnEl) & {
     Addon: typeof BaseTrigger.Addon;
     Text: typeof BaseTrigger.Text;
+  };
+  InputTrigger: (<T>(
+    props: Merge<ComponentProps<typeof Dropdown.Trigger>, ComponentProps<typeof Input>> & T,
+  ) => ReturnEl) & {
+    Addon: typeof Input.Addon;
+    Value: typeof Input.Value;
   };
   Popper: typeof Dropdown.Popper;
   Header: typeof Box;
@@ -335,11 +357,18 @@ declare const MonthRangePicker: ((
     IDatePickerHandlers
   >,
 ) => ReturnEl) & {
+  /** @deprecated `DatePicker.Trigger` is deprecated, consider migrating to `DatePicker.InputTrigger` instead */
   Trigger: (<T>(
     props: Merge<ComponentProps<typeof Dropdown.Trigger>, ComponentProps<typeof BaseTrigger>> & T,
   ) => ReturnEl) & {
     Addon: typeof BaseTrigger.Addon;
     Text: typeof BaseTrigger.Text;
+  };
+  InputTrigger: (<T>(
+    props: Merge<ComponentProps<typeof Dropdown.Trigger>, ComponentProps<typeof Input>> & T,
+  ) => ReturnEl) & {
+    Addon: typeof Input.Addon;
+    Value: typeof Input.Value;
   };
   Popper: typeof Dropdown.Popper;
   Header: typeof Box;

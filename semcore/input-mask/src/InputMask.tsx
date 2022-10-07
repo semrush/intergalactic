@@ -71,22 +71,8 @@ class InputMask extends Component<IInputProps> {
   static displayName = 'InputMask';
   static style = style;
 
-  inputRef = React.createRef<HTMLInputElement>();
-
-  getValueProps() {
-    return {
-      ref: this.inputRef,
-    };
-  }
-
-  handleClick = () => {
-    const value = this.inputRef.current.value;
-    this.inputRef.current.focus();
-    this.inputRef.current.setSelectionRange(value.length, value.length);
-  };
-
   render() {
-    return <Root render={Input} onClick={this.handleClick} ref={Input} />;
+    return <Root render={Input} ref={Input} />;
   }
 }
 
@@ -101,6 +87,9 @@ class Value extends Component<IInputMaskValueProps> {
       a: /[a-zA-Zа-яА-Я]/,
       '*': /[\da-zA-Zа-яА-Я]/,
     },
+    maskOnlySymbols: {
+      _: true,
+    },
   };
 
   inputRef = React.createRef<HTMLInputElement>();
@@ -110,17 +99,17 @@ class Value extends Component<IInputMaskValueProps> {
   prevConfirmedValue = undefined;
   state: {
     lastConformed:
-      | {
-          all: string;
-          userInput: string;
-          maskOnly: string;
-        }
-      | undefined;
+    | {
+      all: string;
+      userInput: string;
+      maskOnly: string;
+    }
+    | undefined;
     maskWidth: number | undefined;
   } = {
-    lastConformed: undefined,
-    maskWidth: undefined,
-  };
+      lastConformed: undefined,
+      maskWidth: undefined,
+    };
 
   componentDidMount() {
     this.initTextMaskCore();
@@ -209,7 +198,7 @@ class Value extends Component<IInputMaskValueProps> {
 
         let lastNonMaskCharPosition = 0;
         for (let i = 0; i < conformedValue?.length; i++) {
-          if (conformedValue[i] !== '_' && /\w/.test(conformedValue[i]))
+          if (!this.asProps.maskOnlySymbols[conformedValue[i]] && /\w/.test(conformedValue[i]))
             lastNonMaskCharPosition = i + 1;
         }
 

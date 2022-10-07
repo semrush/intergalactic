@@ -55,7 +55,12 @@ class PickerAbstract extends Component {
 
   uncontrolledProps() {
     return {
-      displayedPeriod: null,
+      displayedPeriod: [
+        null,
+        () => {
+          this.handlers.visible(true);
+        },
+      ],
       visible: [
         null,
         (visible) => {
@@ -69,8 +74,9 @@ class PickerAbstract extends Component {
       value: [
         null,
         (value) => {
-          // TODO: работает только из-за new Date() !== new Date()
-          this.handlers.visible(false);
+          if (value) {
+            this.handlers.visible(false);
+          }
           this.handlers.displayedPeriod(value);
         },
       ],
@@ -174,7 +180,8 @@ class PickerAbstract extends Component {
   }
 
   getCalendarProps() {
-    const { locale, displayedPeriod, disabled, value, onChange, highlighted } = this.asProps;
+    const { locale, displayedPeriod, disabled, value, onChange, highlighted, onVisibleChange } =
+      this.asProps;
     return {
       locale,
       displayedPeriod,
@@ -183,13 +190,20 @@ class PickerAbstract extends Component {
       highlighted,
       value: [value, value],
       renderOutdated: true,
+      onVisibleChange,
     };
   }
 
   render() {
-    const { styles, Children } = this.asProps;
+    const { styles, Children, 'aria-label': providedAriaLabel } = this.asProps;
+
     return sstyled(styles)(
-      <Root render={Dropdown}>
+      <Root
+        render={Dropdown}
+        use:aria-label={providedAriaLabel}
+        interaction="focus"
+        __excludeProps={['onChange']}
+      >
         <Children />
       </Root>,
     );

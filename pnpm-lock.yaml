@@ -517,6 +517,7 @@ importers:
       '@semcore/dropdown': link:../dropdown
       '@semcore/flex-box': link:../flex-box
       '@semcore/icon': link:../icon
+      '@semcore/input': 3.0.15
       '@semcore/typography': link:../typography
       '@semcore/utils': link:../utils
       dayjs: 1.8.36

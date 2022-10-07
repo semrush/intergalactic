@@ -8,9 +8,15 @@ import ChevronLeft from '@semcore/icon/ChevronLeft/m';
 import ChevronRight from '@semcore/icon/ChevronRight/m';
 import { callAllEventHandlers } from '@semcore/utils/lib/assignProps';
 import ButtonTrigger from './ButtonTrigger';
+import InputTriggerBase from './InputTrigger';
 
+/** @deprecated `DatePicker.Trigger` is deprecated, consider migrating to `DatePicker.InputTrigger` instead */
 export function Trigger() {
   return <Root render={Dropdown.Trigger} tag={ButtonTrigger} />;
+}
+
+export function InputTrigger() {
+  return <Root render={Dropdown.Trigger} tag={InputTriggerBase} />;
 }
 
 export function Popper(props) {

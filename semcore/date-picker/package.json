@@ -15,11 +15,12 @@
   "dependencies": {
     "@semcore/utils": "^3.29",
     "@semcore/base-trigger": "^3.0.0",
-    "@semcore/flex-box": "^4",
     "@semcore/button": "^4",
     "@semcore/divider": "^3",
     "@semcore/icon": "2.16 - 3",
     "@semcore/dropdown": "^3",
+    "@semcore/flex-box": "^4",
+    "@semcore/input": "3.0.15",
     "@semcore/typography": "^4",
     "dayjs": "1.8.36"
   },

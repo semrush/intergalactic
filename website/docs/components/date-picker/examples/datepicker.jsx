@@ -9,10 +9,16 @@ function Demo() {
   return (
     <Flex>
       <Box>
-        <DatePicker value={value} onChange={(date) => setValue(date)} />
+        <DatePicker value={value} onChange={(date) => setValue(date)}>
+          <DatePicker.InputTrigger />
+          <DatePicker.Popper />
+        </DatePicker>
       </Box>
       <Box ml={5}>
-        <DateRangePicker value={valueRange} onChange={(date) => setValueRange(date)} />
+        <DateRangePicker value={valueRange} onChange={(date) => setValueRange(date)}>
+          <DateRangePicker.InputTrigger />
+          <DateRangePicker.Popper />
+        </DateRangePicker>
       </Box>
     </Flex>
   );
