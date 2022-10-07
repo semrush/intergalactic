@@ -252,9 +252,11 @@ class RootDefinitionTable extends Component<AsProps> {
         columns,
         props: {
           name,
-          ref: column?.props?.ref || React.createRef(),
-          children,
           ...props,
+          // @ts-ignore
+          forwardRef: child.ref,
+          children,
+          ref: column?.props?.ref || React.createRef(),
         },
       });
     });
