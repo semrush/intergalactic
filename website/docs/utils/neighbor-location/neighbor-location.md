@@ -4,12 +4,16 @@ fileSource: neighbor-location
 tabName: Design
 ---
 
+> 🚨 `NeighborLocation` component is deprecated and will be removed in the next releases.
+> Use property `neighborLocation` specification on components.
+
+> We did this because of the unreliability of the API and the unpredictability of neighbor detection, especially in
+> React 18's parallel render.
+
 @## Description
 
 **NeighborLocation** is a component for grouping components. It indicates where the component is in relation to its
 neighbors.
-
-> This component counts the number of its children and if you have a complex layout this can cause errors.
 
 For example, you can group together:
 
@@ -63,7 +67,8 @@ By default, `<NeighborLocation/>` does not create an HTML wrapper, but you can p
 
 @## Using a custom component
 
-You can apply <NeighborLocation/> to your components. You will need to use the component `<NeighborLocation.Detect/>` and
+You can apply <NeighborLocation/> to your components. You will need to use the component `<NeighborLocation.Detect/>`
+and
 then the `neighborLocation` prop will come to your component.
 
 > You can use the render function or the element will be cloned.
