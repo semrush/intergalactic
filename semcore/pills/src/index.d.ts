@@ -4,7 +4,7 @@ import { Box, IBoxProps } from '@semcore/flex-box';
 import { INeighborItemProps, INeighborLocationProps } from '@semcore/neighbor-location';
 import { IKeyboardFocusProps } from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 
-export type PillsValue = string | number | boolean;
+export type PillsValue = string | number | boolean | null;
 
 export interface IPillsProps<T extends PillsValue = PillsValue> extends INeighborLocationProps {
   /** Pills size */

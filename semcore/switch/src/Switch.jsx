@@ -1,7 +1,7 @@
 import React from 'react';
 import createComponent, { Component, sstyled, Root } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
-import NeighborLocation, { neighborLocationEnhance } from '@semcore/neighbor-location';
+import NeighborLocation from '@semcore/neighbor-location';
 import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 import resolveColor from '@semcore/utils/lib/color';
 import getInputProps, { inputProps } from '@semcore/utils/lib/inputProps';
@@ -63,12 +63,12 @@ class Switch extends Component {
 }
 
 class Value extends Component {
+  static hoistProps = ['checked', 'disabled'];
+  static enhance = [keyboardFocusEnhance()];
   static defaultProps = {
     includeInputProps: inputProps,
     defaultChecked: false,
   };
-  static hoistProps = ['checked', 'disabled'];
-  static enhance = [keyboardFocusEnhance(), neighborLocationEnhance()];
 
   timer = null;
 
@@ -131,30 +131,36 @@ class Value extends Component {
       ? `igc-${uid}-switch-addon-left`
       : `igc-${uid}-switch-addon-right`;
 
-    return sstyled(styles)(
-      <SToggle
-        keyboardFocused={keyboardFocused}
-        neighborLocation={neighborLocation}
-        checked={inputProps.checked}
-        use:theme={useTheme}
-        use:color={color}
-        {...toggleProps}
-      >
-        <SInput
-          tag="input"
-          type="checkbox"
-          ref={forwardRef}
-          role="switch"
-          aria-labelledby={labelledBy}
-          aria-checked={inputProps.checked}
-          aria-readonly={inputProps.disabled}
-          {...inputProps}
-          onKeyDown={callAllEventHandlers(this.handleKeyDown, inputProps.onKeyDown)}
-        />
-        <SSlider checked={inputProps.checked}>
-          <Children />
-        </SSlider>
-      </SToggle>,
+    return (
+      <NeighborLocation.Detect neighborLocation={neighborLocation}>
+        {(neighborLocation) =>
+          sstyled(styles)(
+            <SToggle
+              keyboardFocused={keyboardFocused}
+              neighborLocation={neighborLocation}
+              checked={inputProps.checked}
+              use:theme={useTheme}
+              use:color={color}
+              {...toggleProps}
+            >
+              <SInput
+                tag="input"
+                type="checkbox"
+                ref={forwardRef}
+                role="switch"
+                aria-labelledby={labelledBy}
+                aria-checked={inputProps.checked}
+                aria-readonly={inputProps.disabled}
+                {...inputProps}
+                onKeyDown={callAllEventHandlers(this.handleKeyDown, inputProps.onKeyDown)}
+              />
+              <SSlider checked={inputProps.checked}>
+                <Children />
+              </SSlider>
+            </SToggle>,
+          )
+        }
+      </NeighborLocation.Detect>
     );
   }
 }
@@ -163,17 +169,22 @@ function Addon(props) {
   const SAddon = Root;
   const { styles, neighborLocation, uid } = props;
 
-  return sstyled(styles)(
-    <SAddon
-      render={Box}
-      tag="span"
-      aria-hidden="true"
-      id={`igc-${uid}-switch-addon-${neighborLocation}`}
-    />,
+  return (
+    <NeighborLocation.Detect neighborLocation={neighborLocation}>
+      {(neighborLocation) =>
+        sstyled(styles)(
+          <SAddon
+            render={Box}
+            tag="span"
+            neighborLocation={neighborLocation}
+            aria-hidden="true"
+            id={`igc-${uid}-switch-addon-${neighborLocation}`}
+          />,
+        )
+      }
+    </NeighborLocation.Detect>
   );
 }
-
-Addon.enhance = [neighborLocationEnhance()];
 
 export { inputProps };
 export default createComponent(Switch, {

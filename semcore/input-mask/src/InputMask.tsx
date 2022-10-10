@@ -5,11 +5,11 @@ import createComponent, { Component, Merge, sstyled, Root } from '@semcore/core'
 import Input, { IInputProps, IInputValueProps } from '@semcore/input';
 import fire from '@semcore/utils/lib/fire';
 import logger from '@semcore/utils/lib/logger';
-import { neighborLocationEnhance } from '@semcore/neighbor-location';
+import NeighborLocation from '@semcore/neighbor-location';
 import getInputProps, { inputProps } from '@semcore/utils/lib/inputProps';
+import { Flex } from '@semcore/flex-box';
 
 import style from './style/input-mask.shadow.css';
-import { Flex } from '@semcore/flex-box';
 
 export type IInputMaskAsFn = (rawValue?: string) => string | RegExp[];
 
@@ -89,6 +89,7 @@ class InputMask extends Component<IInputProps> {
     return <Root render={Input} onClick={this.handleClick} ref={Input} />;
   }
 }
+
 class Value extends Component<IInputMaskValueProps> {
   static defaultProps = {
     includeInputProps: inputProps,
@@ -101,7 +102,6 @@ class Value extends Component<IInputMaskValueProps> {
       '*': /[\da-zA-Zа-яА-Я]/,
     },
   };
-  static enhance = [neighborLocationEnhance()];
 
   inputRef = React.createRef<HTMLInputElement>();
   textMaskCoreInstance = undefined;
@@ -254,36 +254,35 @@ class Value extends Component<IInputMaskValueProps> {
 
     const [controlProps, boxProps] = getInputProps(otherProps, includeInputProps as string[]);
 
-    return sstyled(this.asProps.styles)(
-      <Flex position="relative" {...boxProps} __excludeProps={['onFocus', 'onChange']}>
-        <SMask aria-hidden="true" neighborLocation={neighborLocation}>
-          {this.state.lastConformed && (
-            <SMaskHidden>{this.state.lastConformed.userInput}</SMaskHidden>
-          )}
-          {this.state.lastConformed?.maskOnly ?? <SPlaceholder>{placeholder}</SPlaceholder>}
-        </SMask>
-        <SValue
-          render={Input.Value}
-          ref={this.inputRef}
-          onFocus={this.onFocus}
-          aria-invalid={!isValid}
-          pattern={mask}
-          value={value}
-          {...controlProps}
-          __excludeProps={['placeholder']}
-        />
-      </Flex>,
+    return (
+      <NeighborLocation.Detect neighborLocation={neighborLocation}>
+        {(neighborLocation) =>
+          sstyled(this.asProps.styles)(
+            <Flex position="relative" {...boxProps} __excludeProps={['onFocus', 'onChange']}>
+              <SMask aria-hidden="true" neighborLocation={neighborLocation}>
+                {this.state.lastConformed && (
+                  <SMaskHidden>{this.state.lastConformed.userInput}</SMaskHidden>
+                )}
+                {this.state.lastConformed?.maskOnly ?? <SPlaceholder>{placeholder}</SPlaceholder>}
+              </SMask>
+              <SValue
+                render={Input.Value}
+                neighborLocation={neighborLocation}
+                ref={this.inputRef}
+                onFocus={this.onFocus}
+                aria-invalid={!isValid}
+                pattern={mask}
+                value={value}
+                {...controlProps}
+                __excludeProps={['placeholder']}
+              />
+            </Flex>,
+          ) as React.ReactElement
+        }
+      </NeighborLocation.Detect>
     );
   }
 }
-
-const Addon = (props) => {
-  const SAddon = Root;
-
-  return sstyled(props.styles)(<SAddon render={Input.Addon} />);
-};
-
-Addon.enhances = [neighborLocationEnhance()];
 
 export default createComponent<
   IInputProps,
@@ -294,5 +293,5 @@ export default createComponent<
   }
 >(InputMask, {
   Value,
-  Addon,
+  Addon: Input.Addon,
 });
