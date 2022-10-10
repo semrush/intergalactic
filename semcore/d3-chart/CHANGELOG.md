@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.3.8] - 2022-10-10
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/popper` [4.11.31 ~> 4.12.0]).
+
 ## [2.3.7] - 2022-10-05
 
 ### Fixed
@@ -38,12 +44,6 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Version patch update due to children dependencies update (`@semcore/animation` [1.5.9 ~> 1.5.10], `@semcore/utils` [3.37.0 ~> 3.37.1]).
 
-## [2.3.1] - 2022-08-29
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/animation` [1.5.8 ~> 1.5.9]).
-
 ## [2.3.0] - 2022-08-22
 
 ### Added
@@ -55,12 +55,6 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### Changed
 
 - Version patch update due to children dependencies update (`@semcore/animation` [1.5.7 ~> 1.5.8], `@semcore/utils` [3.36.0 ~> 3.37.0]).
-
-## [2.2.6] - 2022-08-11
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/animation` [1.5.6 ~> 1.5.7], `@semcore/utils` [3.35.1 ~> 3.36.0]).
 
 ## [2.2.5] - 2022-08-04
 
@@ -122,18 +116,6 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Version patch update due to children dependencies update (`@semcore/animation` [1.5.1 ~> 1.5.2], `@semcore/utils` [3.32.1 ~> 3.32.2], `@semcore/button` [4.0.4 ~> 4.0.5], `@semcore/checkbox` [6.0.3 ~> 6.0.4]).
 
-## [2.0.9] - 2022-05-31
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/checkbox` [6.0.2 ~> 6.0.3]).
-
-## [2.0.8] - 2022-05-27
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/button` [4.0.3 ~> 4.0.4]).
-
 ## [2.0.7] - 2022-05-25
 
 ### Fixed
@@ -145,36 +127,6 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### Changed
 
 - Version patch update due to children dependencies update (`@semcore/icon` [2.25.1 ~> 2.26.0]).
-
-## [2.0.5] - 2022-05-23
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/button` [4.0.2 ~> 4.0.3]).
-
-## [2.0.4] - 2022-05-19
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/popper` [4.11.18 ~> 4.11.19]).
-
-## [2.0.3] - 2022-05-19
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/animation` [1.5.0 ~> 1.5.1], `@semcore/flex-box` [4.5.1 ~> 4.5.3], `@semcore/popper` [4.11.17 ~> 4.11.18], `@semcore/utils` [3.32.0 ~> 3.32.1], `@semcore/typography` [4.0.1 ~> 4.0.3], `@semcore/button` [4.0.1 ~> 4.0.2], `@semcore/checkbox` [6.0.1 ~> 6.0.2]).
-
-## [2.0.2] - 2022-05-18
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/button` [4.0.0 ~> 4.0.1], `@semcore/checkbox` [6.0.0 ~> 6.0.1]).
-
-## [2.0.1] - 2022-05-18
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/icon` [2.24.0 ~> 2.25.0]).
 
 ## [2.0.0] - 2022-05-17
 
@@ -223,12 +175,6 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### Changed
 
 - Version patch update due to children dependencies update (`@semcore/animation` [1.4.0 ~> 1.4.1]).
-
-## [1.6.6] - 2022-03-04
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/animation` [1.3.3 ~> 1.4.0]).
 
 ## [1.6.5] - 2022-02-24
 
