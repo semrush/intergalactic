@@ -24,7 +24,7 @@
   },
   "peerDependencies": {
     "@semcore/core": "^1.11",
-    "react": "16.8 - 17"
+    "react": "16.8 - 18"
   },
   "jest": {
     "preset": "@semcore/jest-preset-ui"
@@ -35,7 +35,7 @@
     "directory": "semcore/side-panel"
   },
   "devDependencies": {
-    "@types/react": "16.8 - 17",
+    "@types/react": "16.8 - 18",
     "@semcore/jest-preset-ui": "1.0.0"
   }
 }

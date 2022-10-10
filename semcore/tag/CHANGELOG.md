@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.2.0] - 2022-10-10
+
+### Changed
+
+- Added support for React 18 🔥
+
 ## [4.1.6] - 2022-10-06
 
 ### Changed

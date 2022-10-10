@@ -20,7 +20,7 @@
   },
   "peerDependencies": {
     "@semcore/core": "^1.11",
-    "react": "16.8 - 17"
+    "react": "16.8 - 18"
   },
   "repository": {
     "type": "git",
@@ -28,7 +28,7 @@
     "directory": "semcore/illustration"
   },
   "devDependencies": {
-    "@types/react": "16.8 - 17",
+    "@types/react": "16.8 - 18",
     "@semcore/icon-transform-svg": "1.0.0"
   }
 }

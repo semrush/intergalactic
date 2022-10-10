@@ -308,9 +308,6 @@ describe('Carousel.Next', () => {
 });
 
 describe('Carousel visual regression', () => {
-  /*
-    Indicators are not displayed due to props hoisting architecture.
-  */
   test('image indicators', async () => {
     const images = [
       `https://picsum.photos/id/1023/600/400`,

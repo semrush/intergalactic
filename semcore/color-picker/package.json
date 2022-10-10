@@ -23,10 +23,10 @@
   },
   "peerDependencies": {
     "@semcore/core": "^1.8.3",
-    "react": "16.8 - 17"
+    "react": "16.8 - 18"
   },
   "devDependencies": {
-    "@types/react": "16.8 - 17",
+    "@types/react": "16.8 - 18",
     "@semcore/jest-preset-ui": "1.0.0"
   },
   "repository": {

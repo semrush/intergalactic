@@ -52,7 +52,6 @@
     "@semcore/portal",
     "@semcore/product-head",
     "@semcore/progress-bar",
-    "@semcore/project-create",
     "@semcore/radio",
     "@semcore/scroll-area",
     "@semcore/select",

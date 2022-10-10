@@ -57,8 +57,8 @@ importers:
       playwright: 1.25.1
       prettier: 2.6.2
       pretty-quick: 1.11.1
-      react: 17.0.1
-      react-dom: 17.0.1
+      react: 18.2.0
+      react-dom: 18.2.0
       semver: 5.6.0
       simple-git: 3.5.0
       tsm: 2.2.2
@@ -110,8 +110,8 @@ importers:
       playwright: 1.25.1
       prettier: 2.6.2
       pretty-quick: 1.11.1_prettier@2.6.2
-      react: 17.0.1
-      react-dom: 17.0.1_react@17.0.1
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
       semver: 5.6.0
       simple-git: 3.5.0
       tsm: 2.2.2
@@ -129,7 +129,7 @@ importers:
       '@semcore/icon': ^2.16
       '@semcore/jest-preset-ui': 1.0.0
       '@semcore/utils': ^3.17
-      '@types/react': 16.8 - 17
+      '@types/react': 16.8 - 18
     dependencies:
       '@semcore/animation': link:../animation
       '@semcore/flex-box': link:../flex-box
@@ -146,7 +146,7 @@ importers:
       '@semcore/flex-box': ^4
       '@semcore/jest-preset-ui': 1.0.0
       '@semcore/utils': ^3.15
-      '@types/react': 16.8 - 17
+      '@types/react': 16.8 - 18
     dependencies:
       '@semcore/flex-box': link:../flex-box
       '@semcore/utils': link:../utils
@@ -159,7 +159,7 @@ importers:
       '@semcore/flex-box': ^4
       '@semcore/jest-preset-ui': 1.0.0
       '@semcore/utils': ^3.15
-      '@types/react': 16.8 - 17
+      '@types/react': 16.8 - 18
     dependencies:
       '@semcore/flex-box': link:../flex-box
       '@semcore/utils': link:../utils
@@ -176,7 +176,7 @@ importers:
       '@semcore/neighbor-location': ^3
       '@semcore/spin': ^4
       '@semcore/utils': ^3.15
-      '@types/react': 16.8 - 17
+      '@types/react': 16.8 - 18
     dependencies:
       '@semcore/dot': link:../dot
       '@semcore/flex-box': link:../flex-box
@@ -194,7 +194,7 @@ importers:
       '@semcore/icon': ^2.16
       '@semcore/jest-preset-ui': 1.0.0
       '@semcore/utils': ^3.15
-      '@types/react': 16.8 - 17
+      '@types/react': 16.8 - 18
     dependencies:
       '@semcore/flex-box': link:../flex-box
       '@semcore/icon': link:../icon
@@ -207,7 +207,7 @@ importers:
     specifiers:
       '@semcore/jest-preset-ui': 1.0.0
       '@semcore/utils': ^3.15
-      '@types/react': 16.8 - 17
+      '@types/react': 16.8 - 18
     dependencies:
       '@semcore/utils': link:../utils
     devDependencies:
@@ -222,7 +222,7 @@ importers:
       '@semcore/neighbor-location': ^3
       '@semcore/spin': ^4
       '@semcore/utils': ^3.37
-      '@types/react': 16.8 - 17
+      '@types/react': 16.8 - 18
     dependencies:
       '@semcore/flex-box': link:../flex-box
       '@semcore/neighbor-location': link:../neighbor-location
@@ -241,7 +241,7 @@ importers:
       '@semcore/tooltip': ^5
       '@semcore/typography': ^4
       '@semcore/utils': ^3.31
-      '@types/react': 16.8 - 17
+      '@types/react': 16.8 - 18
     dependencies:
       '@semcore/flex-box': link:../flex-box
       '@semcore/icon': link:../icon
@@ -258,7 +258,8 @@ importers:
       '@semcore/icon': ^2.16
       '@semcore/jest-preset-ui': 1.0.0
       '@semcore/utils': ^3.15
-      '@types/react': 16.8 - 17
+      '@types/react': 16.8 - 18
+      jest: 29.0.1
     dependencies:
       '@semcore/flex-box': link:../flex-box
       '@semcore/icon': link:../icon
@@ -266,6 +267,7 @@ importers:
     devDependencies:
       '@semcore/jest-preset-ui': link:../../tools/jest-preset-ui
       '@types/react': 17.0.50
+      jest: 29.0.1
 
   semcore/chart:
     specifiers:
@@ -306,7 +308,7 @@ importers:
       '@semcore/jest-preset-ui': 1.0.0
       '@semcore/typography': ^4
       '@semcore/utils': ^3.15
-      '@types/react': 16.8 - 17
+      '@types/react': 16.8 - 18
     dependencies:
       '@semcore/flex-box': link:../flex-box
       '@semcore/typography': link:../typography
@@ -325,7 +327,7 @@ importers:
       '@semcore/input': ^3.0.0
       '@semcore/jest-preset-ui': 1.0.0
       '@semcore/utils': ^3.15
-      '@types/react': 16.8 - 17
+      '@types/react': 16.8 - 18
     dependencies:
       '@semcore/button': link:../button
       '@semcore/divider': link:../divider
@@ -343,7 +345,7 @@ importers:
       '@reshadow/core': 0.0.1-alpha.74
       '@semcore/jest-preset-ui': 1.0.0
       '@semcore/utils': ^3.29
-      '@types/react': 16.8 - 17
+      '@types/react': 16.8 - 18
       classnames: 2.2.6
       hoist-non-react-statics: 3.3.2
     dependencies:
@@ -360,7 +362,7 @@ importers:
       '@semcore/flex-box': ^4
       '@semcore/jest-preset-ui': 1.0.0
       '@semcore/utils': ^3.21
-      '@types/react': 16.8 - 17
+      '@types/react': 16.8 - 18
     dependencies:
       '@semcore/flex-box': link:../flex-box
       '@semcore/utils': link:../utils
@@ -386,7 +388,7 @@ importers:
       '@types/d3-scale': ^4.0.2
       '@types/d3-shape': ^3.1.0
       '@types/d3-transition': ^3.0.1
-      '@types/react': 16.8 - 17
+      '@types/react': 16.8 - 18
       '@upsetjs/venn.js': 1.4.1
       d3-array: 3.1.6
       d3-interpolate: 3.0.1
@@ -394,6 +396,7 @@ importers:
       d3-shape: 3.1.0
       d3-transition: 3.0.1
       hoist-non-react-statics: 3.3.2
+      jest: 29.0.1
       resize-observer-polyfill: 1.5.1
     dependencies:
       '@formatjs/intl': 2.3.0
@@ -422,6 +425,7 @@ importers:
       '@types/d3-scale': 4.0.2
       '@types/d3-transition': 3.0.2
       '@types/react': 17.0.50
+      jest: 29.0.1
 
   semcore/data-table:
     specifiers:
@@ -446,7 +450,7 @@ importers:
       '@semcore/typography': '*'
       '@semcore/utils': ^3.22
       '@types/node': ^17.0.45
-      '@types/react': 16.8 - 17
+      '@types/react': 16.8 - 18
       jest: 29.0.1
       resize-observer-polyfill: ^1.5
     dependencies:
@@ -487,7 +491,7 @@ importers:
       '@semcore/jest-preset-ui': 1.0.0
       '@semcore/typography': ^4
       '@semcore/utils': ^3.27
-      '@types/react': 16.8 - 17
+      '@types/react': 16.8 - 18
       dayjs: 1.8.36
     dependencies:
       '@semcore/base-trigger': link:../base-trigger
@@ -508,7 +512,7 @@ importers:
       '@semcore/flex-box': ^4
       '@semcore/jest-preset-ui': 1.0.0
       '@semcore/utils': ^3.15
-      '@types/react': 16.8 - 17
+      '@types/react': 16.8 - 18
     dependencies:
       '@semcore/flex-box': link:../flex-box
       '@semcore/utils': link:../utils
@@ -523,7 +527,7 @@ importers:
       '@semcore/flex-box': ^4
       '@semcore/jest-preset-ui': 1.0.0
       '@semcore/utils': ^3.15
-      '@types/react': 16.8 - 17
+      '@types/react': 16.8 - 18
     dependencies:
       '@semcore/animation': link:../animation
       '@semcore/flex-box': link:../flex-box
@@ -540,7 +544,7 @@ importers:
       '@semcore/grid': ^4.1.4
       '@semcore/jest-preset-ui': 1.0.0
       '@semcore/utils': ^3.21
-      '@types/react': 16.8 - 17
+      '@types/react': 16.8 - 18
     dependencies:
       '@semcore/card': link:../card
       '@semcore/flex-box': link:../flex-box
@@ -558,7 +562,7 @@ importers:
       '@semcore/jest-preset-ui': 1.0.0
       '@semcore/popper': ^4
       '@semcore/utils': ^3.15
-      '@types/react': 16.8 - 17
+      '@types/react': 16.8 - 18
     dependencies:
       '@semcore/flex-box': link:../flex-box
       '@semcore/popper': link:../popper
@@ -578,7 +582,7 @@ importers:
       '@semcore/jest-preset-ui': 1.0.0
       '@semcore/scroll-area': ^4.0.0
       '@semcore/utils': ^3.15
-      '@types/react': 16.8 - 17
+      '@types/react': 16.8 - 18
       classnames: 2.2.6
     dependencies:
       '@semcore/dropdown': link:../dropdown
@@ -594,7 +598,6 @@ importers:
 
   semcore/email:
     specifiers:
-      '@types/react': 16.8 - 17
       autoprefixer: 10.3.1
       cssnano: 5.0.7
       inky-cli: 1.0.1
@@ -613,7 +616,6 @@ importers:
       posthtml-inline-assets: 3.1.0
       posthtml-inline-css: 1.2.3
     devDependencies:
-      '@types/react': 17.0.50
       autoprefixer: 10.3.1_postcss@8.2.13
       cssnano: 5.0.7_postcss@8.2.13
       inky-cli: 1.0.1
@@ -642,7 +644,7 @@ importers:
       '@semcore/typography': ^4
       '@semcore/utils': ^3.27
       '@types/node': ^17.0.45
-      '@types/react': 16.8 - 17
+      '@types/react': 16.8 - 18
     dependencies:
       '@semcore/button': link:../button
       '@semcore/flex-box': link:../flex-box
@@ -663,7 +665,7 @@ importers:
       '@semcore/jest-preset-ui': 1.0.0
       '@semcore/popper': ^4.2
       '@semcore/utils': ^3.15
-      '@types/react': 16.8 - 17
+      '@types/react': 16.8 - 18
     dependencies:
       '@semcore/animation': link:../animation
       '@semcore/flex-box': link:../flex-box
@@ -683,7 +685,7 @@ importers:
       '@semcore/spin-container': ^6.0.0
       '@semcore/tooltip': ^5
       '@semcore/utils': ^3.15
-      '@types/react': 16.8 - 17
+      '@types/react': 16.8 - 18
       final-form: 4.19.1
       final-form-focus: 1.1.2
       react-final-form: 6.5.2
@@ -707,7 +709,7 @@ importers:
       '@semcore/flex-box': ^4
       '@semcore/jest-preset-ui': 1.0.0
       '@semcore/utils': ^3.15
-      '@types/react': 16.8 - 17
+      '@types/react': 16.8 - 18
       classnames: 2.2.6
     dependencies:
       '@semcore/flex-box': link:../flex-box
@@ -722,7 +724,7 @@ importers:
     specifiers:
       '@semcore/jest-preset-ui': 1.0.0
       '@semcore/utils': ^3.15
-      '@types/react': 16.8 - 17
+      '@types/react': 16.8 - 18
       classnames: 2.2.6
       csstype: 3.0.8
     dependencies:
@@ -738,7 +740,7 @@ importers:
       '@semcore/flex-box': ^4.0.0
       '@semcore/jest-preset-ui': 1.0.0
       '@semcore/utils': ^3.15
-      '@types/react': 16.8 - 17
+      '@types/react': 16.8 - 18
     dependencies:
       '@semcore/flex-box': link:../flex-box
       '@semcore/utils': link:../utils
@@ -754,7 +756,7 @@ importers:
       '@semcore/modal': ^3.0.1
       '@semcore/typography': ^4
       '@semcore/utils': ^3.21
-      '@types/react': 16.8 - 17
+      '@types/react': 16.8 - 18
     dependencies:
       '@semcore/flex-box': link:../flex-box
       '@semcore/icon': link:../icon
@@ -770,7 +772,7 @@ importers:
       '@semcore/flex-box': ^4
       '@semcore/jest-preset-ui': 1.0.0
       '@semcore/utils': ^3.15
-      '@types/react': 16.8 - 17
+      '@types/react': 16.8 - 18
     dependencies:
       '@semcore/flex-box': link:../flex-box
       '@semcore/utils': link:../utils
@@ -784,7 +786,7 @@ importers:
       '@semcore/icon-transform-svg': 1.0.0
       '@semcore/jest-preset-ui': 1.0.0
       '@semcore/utils': ^3.15
-      '@types/react': 16.8 - 17
+      '@types/react': 16.8 - 18
       classnames: 2.2.6
     dependencies:
       '@semcore/flex-box': link:../flex-box
@@ -800,7 +802,7 @@ importers:
       '@babel/runtime': 7.19.0
       '@semcore/flex-box': ^4
       '@semcore/icon-transform-svg': 1.0.0
-      '@types/react': 16.8 - 17
+      '@types/react': 16.8 - 18
     dependencies:
       '@babel/runtime': 7.19.0
       '@semcore/flex-box': link:../flex-box
@@ -814,7 +816,7 @@ importers:
       '@semcore/flex-box': ^4
       '@semcore/jest-preset-ui': 1.0.0
       '@semcore/utils': ^3.15
-      '@types/react': 16.8 - 17
+      '@types/react': 16.8 - 18
     dependencies:
       '@semcore/animation': link:../animation
       '@semcore/flex-box': link:../flex-box
@@ -832,7 +834,7 @@ importers:
       '@semcore/spin': ^4
       '@semcore/tooltip': ^5
       '@semcore/utils': ^3.31.1
-      '@types/react': 16.8 - 17
+      '@types/react': 16.8 - 18
     dependencies:
       '@semcore/flex-box': link:../flex-box
       '@semcore/icon': link:../icon
@@ -851,7 +853,7 @@ importers:
       '@semcore/jest-preset-ui': 1.0.0
       '@semcore/neighbor-location': ^3
       '@semcore/utils': ^3.15
-      '@types/react': 16.8 - 17
+      '@types/react': 16.8 - 18
     dependencies:
       '@semcore/flex-box': link:../flex-box
       '@semcore/neighbor-location': link:../neighbor-location
@@ -870,7 +872,7 @@ importers:
       '@semcore/jest-preset-ui': 1.0.0
       '@semcore/neighbor-location': ^3
       '@semcore/utils': ^3.15
-      '@types/react': 16.8 - 17
+      '@types/react': 16.8 - 18
       text-mask-core: 5.1.2
     dependencies:
       '@semcore/flex-box': link:../flex-box
@@ -889,7 +891,7 @@ importers:
       '@semcore/input': ^3.0.0
       '@semcore/jest-preset-ui': 1.0.0
       '@semcore/utils': ^3.15
-      '@types/react': 16.8 - 17
+      '@types/react': 16.8 - 18
     dependencies:
       '@semcore/input': link:../input
       '@semcore/utils': link:../utils
@@ -906,7 +908,7 @@ importers:
       '@semcore/tag': ^4.0.0
       '@semcore/tooltip': '*'
       '@semcore/utils': ^3.21
-      '@types/react': 16.8 - 17
+      '@types/react': 16.8 - 18
     dependencies:
       '@semcore/input': link:../input
       '@semcore/scroll-area': link:../scroll-area
@@ -925,7 +927,7 @@ importers:
       '@semcore/jest-preset-ui': 1.0.0
       '@semcore/typography': ^4
       '@semcore/utils': ^3.37
-      '@types/react': 16.8 - 17
+      '@types/react': 16.8 - 18
     dependencies:
       '@semcore/flex-box': link:../flex-box
       '@semcore/typography': link:../typography
@@ -946,7 +948,7 @@ importers:
       '@semcore/outside-click': ^2
       '@semcore/portal': ^2
       '@semcore/utils': ^3.31.2
-      '@types/react': 16.8 - 17
+      '@types/react': 16.8 - 18
       react-focus-lock: 2.5.1
     dependencies:
       '@semcore/animation': link:../animation
@@ -966,7 +968,7 @@ importers:
     specifiers:
       '@semcore/jest-preset-ui': 1.0.0
       '@semcore/utils': ^3.15
-      '@types/react': 16.8 - 17
+      '@types/react': 16.8 - 18
     dependencies:
       '@semcore/utils': link:../utils
     devDependencies:
@@ -981,7 +983,7 @@ importers:
       '@semcore/jest-preset-ui': 1.0.0
       '@semcore/notice-global': ^1
       '@semcore/utils': ^3.15
-      '@types/react': 16.8 - 17
+      '@types/react': 16.8 - 18
     dependencies:
       '@semcore/animation': link:../animation
       '@semcore/flex-box': link:../flex-box
@@ -1000,7 +1002,7 @@ importers:
       '@semcore/jest-preset-ui': 1.0.0
       '@semcore/portal': ^2
       '@semcore/utils': ^3.24
-      '@types/react': 16.8 - 17
+      '@types/react': 16.8 - 18
     dependencies:
       '@semcore/animation': link:../animation
       '@semcore/flex-box': link:../flex-box
@@ -1018,7 +1020,7 @@ importers:
       '@semcore/icon': ^2.16
       '@semcore/jest-preset-ui': 1.0.0
       '@semcore/utils': ^3.24
-      '@types/react': 16.8 - 17
+      '@types/react': 16.8 - 18
     dependencies:
       '@semcore/animation': link:../animation
       '@semcore/flex-box': link:../flex-box
@@ -1032,7 +1034,7 @@ importers:
     specifiers:
       '@semcore/jest-preset-ui': 1.0.0
       '@semcore/utils': ^3.15
-      '@types/react': 16.8 - 17
+      '@types/react': 16.8 - 18
     dependencies:
       '@semcore/utils': link:../utils
     devDependencies:
@@ -1049,7 +1051,7 @@ importers:
       '@semcore/link': ^4.0.0
       '@semcore/typography': ^4
       '@semcore/utils': ^3.27
-      '@types/react': 16.8 - 17
+      '@types/react': 16.8 - 18
     dependencies:
       '@semcore/button': link:../button
       '@semcore/flex-box': link:../flex-box
@@ -1072,7 +1074,7 @@ importers:
       '@semcore/jest-preset-ui': 1.0.0
       '@semcore/neighbor-location': ^3
       '@semcore/utils': ^3.15
-      '@types/react': 16.8 - 17
+      '@types/react': 16.8 - 18
       jest: 29.0.1
     dependencies:
       '@semcore/flex-box': link:../flex-box
@@ -1096,7 +1098,7 @@ importers:
       '@semcore/outside-click': ^2
       '@semcore/portal': ^2
       '@semcore/utils': ^3.24
-      '@types/react': 16.8 - 17
+      '@types/react': 16.8 - 18
       focus-lock: 0.9.2
       react-focus-lock: 2.5.1
       resize-observer-polyfill: 1.5.1
@@ -1118,7 +1120,7 @@ importers:
     specifiers:
       '@semcore/jest-preset-ui': 1.0.0
       '@semcore/utils': ^3.15
-      '@types/react': 16.8 - 17
+      '@types/react': 16.8 - 18
     dependencies:
       '@semcore/utils': link:../utils
     devDependencies:
@@ -1130,7 +1132,7 @@ importers:
       '@semcore/flex-box': ^4
       '@semcore/jest-preset-ui': 1.0.0
       '@semcore/utils': ^3.15
-      '@types/react': 16.8 - 17
+      '@types/react': 16.8 - 18
     dependencies:
       '@semcore/flex-box': link:../flex-box
       '@semcore/utils': link:../utils
@@ -1145,7 +1147,7 @@ importers:
       '@semcore/flex-box': ^4
       '@semcore/jest-preset-ui': 1.0.0
       '@semcore/utils': ^3.15
-      '@types/react': 16.8 - 17
+      '@types/react': 16.8 - 18
     dependencies:
       '@semcore/flex-box': link:../flex-box
       '@semcore/utils': link:../utils
@@ -1155,48 +1157,13 @@ importers:
       '@semcore/jest-preset-ui': link:../../tools/jest-preset-ui
       '@types/react': 17.0.50
 
-  semcore/project-create:
-    specifiers:
-      '@semcore/button': ^4
-      '@semcore/checkbox': ^6
-      '@semcore/flex-box': ^4
-      '@semcore/icon': ^2.16
-      '@semcore/input': ^3.0.0
-      '@semcore/jest-preset-ui': 1.0.0
-      '@semcore/modal': ^3
-      '@semcore/spin-container': ^6.0.0
-      '@semcore/tooltip': ^5
-      '@semcore/typography': ^4
-      '@semcore/utils': ^3.27
-      '@types/react': 16.8 - 17
-      final-form: 4.18.7
-      final-form-focus: 1.1.2
-      react-final-form: 6.5.2
-    dependencies:
-      '@semcore/button': link:../button
-      '@semcore/checkbox': link:../checkbox
-      '@semcore/flex-box': link:../flex-box
-      '@semcore/icon': link:../icon
-      '@semcore/input': link:../input
-      '@semcore/modal': link:../modal
-      '@semcore/spin-container': link:../spin-container
-      '@semcore/tooltip': link:../tooltip
-      '@semcore/typography': link:../typography
-      '@semcore/utils': link:../utils
-      final-form: 4.18.7
-      final-form-focus: 1.1.2_final-form@4.18.7
-      react-final-form: 6.5.2_final-form@4.18.7
-    devDependencies:
-      '@semcore/jest-preset-ui': link:../../tools/jest-preset-ui
-      '@types/react': 17.0.50
-
   semcore/radio:
     specifiers:
       '@semcore/flex-box': ^4
       '@semcore/jest-preset-ui': 1.0.0
       '@semcore/typography': ^4
       '@semcore/utils': ^3.15
-      '@types/react': 16.8 - 17
+      '@types/react': 16.8 - 18
     dependencies:
       '@semcore/flex-box': link:../flex-box
       '@semcore/typography': link:../typography
@@ -1210,7 +1177,7 @@ importers:
       '@semcore/flex-box': ^4
       '@semcore/jest-preset-ui': 1.0.0
       '@semcore/utils': ^3.31
-      '@types/react': 16.8 - 17
+      '@types/react': 16.8 - 18
       resize-observer-polyfill: 1.5.1
     dependencies:
       '@semcore/flex-box': link:../flex-box
@@ -1233,7 +1200,7 @@ importers:
       '@semcore/input': ^3.0.0
       '@semcore/jest-preset-ui': 1.0.0
       '@semcore/utils': ^3.15
-      '@types/react': 16.8 - 17
+      '@types/react': 16.8 - 18
       classnames: 2.2.6
     dependencies:
       '@semcore/base-trigger': link:../base-trigger
@@ -1261,7 +1228,7 @@ importers:
       '@semcore/portal': ^2
       '@semcore/typography': ^4.0.1
       '@semcore/utils': ^3.31.2
-      '@types/react': 16.8 - 17
+      '@types/react': 16.8 - 18
       react-focus-lock: 2.5.1
     dependencies:
       '@semcore/animation': link:../animation
@@ -1281,7 +1248,7 @@ importers:
       '@semcore/flex-box': ^4
       '@semcore/jest-preset-ui': 1.0.0
       '@semcore/utils': ^3.24
-      '@types/react': 16.8 - 17
+      '@types/react': 16.8 - 18
     dependencies:
       '@semcore/flex-box': link:../flex-box
       '@semcore/utils': link:../utils
@@ -1296,7 +1263,7 @@ importers:
       '@semcore/flex-box': ^4
       '@semcore/jest-preset-ui': 1.0.0
       '@semcore/utils': ^3.15
-      '@types/react': 16.8 - 17
+      '@types/react': 16.8 - 18
     dependencies:
       '@semcore/flex-box': link:../flex-box
       '@semcore/utils': link:../utils
@@ -1311,7 +1278,7 @@ importers:
       '@semcore/flex-box': ^4
       '@semcore/jest-preset-ui': 1.0.0
       '@semcore/utils': ^3.16
-      '@types/react': 16.8 - 17
+      '@types/react': 16.8 - 18
     dependencies:
       '@semcore/flex-box': link:../flex-box
       '@semcore/utils': link:../utils
@@ -1326,7 +1293,7 @@ importers:
       '@semcore/jest-preset-ui': 1.0.0
       '@semcore/spin': ^4
       '@semcore/utils': ^3.31
-      '@types/react': 16.8 - 17
+      '@types/react': 16.8 - 18
     dependencies:
       '@semcore/animation': link:../animation
       '@semcore/flex-box': link:../flex-box
@@ -1341,7 +1308,7 @@ importers:
       '@semcore/flex-box': ^4
       '@semcore/jest-preset-ui': 1.0.0
       '@semcore/utils': ^3.15
-      '@types/react': 16.8 - 17
+      '@types/react': 16.8 - 18
     dependencies:
       '@semcore/flex-box': link:../flex-box
       '@semcore/utils': link:../utils
@@ -1357,7 +1324,7 @@ importers:
       '@semcore/jest-preset-ui': 1.0.0
       '@semcore/neighbor-location': ^3
       '@semcore/utils': ^3.21
-      '@types/react': 16.8 - 17
+      '@types/react': 16.8 - 18
     dependencies:
       '@semcore/flex-box': link:../flex-box
       '@semcore/neighbor-location': link:../neighbor-location
@@ -1374,7 +1341,7 @@ importers:
       '@semcore/jest-preset-ui': 1.0.0
       '@semcore/neighbor-location': ^3
       '@semcore/utils': ^3.30
-      '@types/react': 16.8 - 17
+      '@types/react': 16.8 - 18
       resize-observer-polyfill: 1.5.1
     dependencies:
       '@semcore/flex-box': link:../flex-box
@@ -1391,7 +1358,7 @@ importers:
       '@semcore/icon': ^2.16
       '@semcore/jest-preset-ui': 1.0.0
       '@semcore/utils': ^3.30
-      '@types/react': 16.8 - 17
+      '@types/react': 16.8 - 18
     dependencies:
       '@semcore/flex-box': link:../flex-box
       '@semcore/utils': link:../utils
@@ -1408,7 +1375,7 @@ importers:
       '@semcore/scroll-area': ^4.0.0
       '@semcore/typography': ^4.0.1
       '@semcore/utils': ^3.15
-      '@types/react': 16.8 - 17
+      '@types/react': 16.8 - 18
       classnames: 2.2.6
       resize-observer-polyfill: 1.5.1
     dependencies:
@@ -1429,7 +1396,7 @@ importers:
       '@semcore/icon': ^2.16
       '@semcore/jest-preset-ui': 1.0.0
       '@semcore/utils': ^3.37
-      '@types/react': 16.8 - 17
+      '@types/react': 16.8 - 18
     dependencies:
       '@semcore/flex-box': link:../flex-box
       '@semcore/icon': link:../icon
@@ -1443,7 +1410,7 @@ importers:
       '@semcore/flex-box': ^4
       '@semcore/jest-preset-ui': 1.0.0
       '@semcore/utils': ^3.15
-      '@types/react': 16.8 - 17
+      '@types/react': 16.8 - 18
       csstype: 3.0.8
     dependencies:
       '@semcore/flex-box': link:../flex-box
@@ -1461,7 +1428,7 @@ importers:
       '@semcore/jest-preset-ui': 1.0.0
       '@semcore/select': ^3.0.0
       '@semcore/utils': ^3.15
-      '@types/react': 16.8 - 17
+      '@types/react': 16.8 - 18
     dependencies:
       '@semcore/button': link:../button
       '@semcore/flex-box': link:../flex-box
@@ -1478,7 +1445,7 @@ importers:
       '@semcore/jest-preset-ui': 1.0.0
       '@semcore/popper': ^4.2
       '@semcore/utils': ^3.31
-      '@types/react': 16.8 - 17
+      '@types/react': 16.8 - 18
     dependencies:
       '@semcore/flex-box': link:../flex-box
       '@semcore/popper': link:../popper
@@ -1493,7 +1460,7 @@ importers:
       '@semcore/icon': ^2.16
       '@semcore/jest-preset-ui': 1.0.0
       '@semcore/utils': ^3.15
-      '@types/react': 16.8 - 17
+      '@types/react': 16.8 - 18
       csstype: 3.0.8
     dependencies:
       '@semcore/flex-box': link:../flex-box
@@ -1578,7 +1545,7 @@ importers:
       '@semcore/typography': 4.0.7
       '@semcore/utils': 3.34.0
       '@semcore/widget-empty': 3.2.0
-      '@types/react': 16.8 - 17
+      '@types/react': 16.8 - 18
       fast-glob: 3.2.11
       fs-extra: 9.0.1
       jest: 29.0.1
@@ -1670,8 +1637,8 @@ importers:
       '@semcore/core': ^1
       '@semcore/jest-preset-ui': 1.0.0
       '@types/node': ^17.0.45
-      '@types/react': 16.8 - 17
-      '@types/react-dom': 16.8 - 17
+      '@types/react': 16.8 - 18
+      '@types/react-dom': 16.8 - 18
       classnames: 2.2.6
       hoist-non-react-statics: 3.3.2
       nano-css: 5.3.4
@@ -1694,7 +1661,7 @@ importers:
       '@semcore/illustration': 1.2.0
       '@semcore/jest-preset-ui': 1.0.0
       '@semcore/utils': ^3.27
-      '@types/react': 16.8 - 17
+      '@types/react': 16.8 - 18
     dependencies:
       '@semcore/flex-box': link:../flex-box
       '@semcore/illustration': link:../illustration
@@ -1710,7 +1677,7 @@ importers:
       '@semcore/jest-preset-ui': 1.0.0
       '@semcore/modal': ^3
       '@semcore/utils': ^3.15
-      '@types/react': 16.8 - 17
+      '@types/react': 16.8 - 18
     dependencies:
       '@semcore/flex-box': link:../flex-box
       '@semcore/icon': link:../icon
@@ -2024,7 +1991,7 @@ importers:
       '@guidepup/guidepup': 0.13.1
       '@semcore/babel-preset-ui': '*'
       '@testing-library/jest-dom': 5.16.5
-      '@testing-library/react': 12.1.5
+      '@testing-library/react': 13.4.0
       '@types/jest-axe': 3.5.1
       '@types/jest-image-snapshot': 5.1.0
       babel-jest: 29.0.1
@@ -2041,7 +2008,7 @@ importers:
       '@babel/core': 7.19.1
       '@semcore/babel-preset-ui': link:../babel-preset-ui
       '@testing-library/jest-dom': 5.16.5
-      '@testing-library/react': 12.1.5_biqbaboplfbrettd7655fr4n2y
+      '@testing-library/react': 13.4.0_biqbaboplfbrettd7655fr4n2y
       '@types/jest-image-snapshot': 5.1.0
       babel-jest: 29.0.1_@babel+core@7.19.1
       babel-plugin-transform-import-meta: 2.2.0_@babel+core@7.19.1
@@ -2126,7 +2093,6 @@ importers:
       '@semcore/portal': workspace:*
       '@semcore/product-head': workspace:*
       '@semcore/progress-bar': workspace:*
-      '@semcore/project-create': workspace:*
       '@semcore/radio': workspace:*
       '@semcore/scroll-area': workspace:*
       '@semcore/select': workspace:*
@@ -2154,7 +2120,7 @@ importers:
       '@types/d3-transition': ^3.0.1
       '@types/jest': 27.4.1
       '@types/node': ^17.0.23
-      '@types/react': 17.0.1
+      '@types/react': 18.0.21
       '@types/react-dom': 17.0.1
       babel-plugin-tester: 7.0.1
       d3-array: 3.1.6
@@ -2168,8 +2134,8 @@ importers:
       fps-emitter: 1.0.0
       jest: 29.0.1
       picocolors: 1.0.0
-      react: 17.0.1
-      react-dom: 17.0.1
+      react: 18.2.0
+      react-dom: 18.2.0
       react-is: 17.0.1
       styled-components: 5.3.5
       tsm: 2.2.2
@@ -2226,7 +2192,6 @@ importers:
       '@semcore/portal': link:../../semcore/portal
       '@semcore/product-head': link:../../semcore/product-head
       '@semcore/progress-bar': link:../../semcore/progress-bar
-      '@semcore/project-create': link:../../semcore/project-create
       '@semcore/radio': link:../../semcore/radio
       '@semcore/scroll-area': link:../../semcore/scroll-area
       '@semcore/select': link:../../semcore/select
@@ -2259,10 +2224,10 @@ importers:
       fast-glob: 3.2.11
       fps-emitter: 1.0.0
       picocolors: 1.0.0
-      react: 17.0.1
-      react-dom: 17.0.1_react@17.0.1
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
       react-is: 17.0.1
-      styled-components: 5.3.5_kvcjbccuyytl2e6ypfoy6dforu
+      styled-components: 5.3.5_ohkie2yri6he6ogke3veue6jsq
       tsm: 2.2.2
     devDependencies:
       '@semcore/jest-preset-ui': link:../jest-preset-ui
@@ -2271,7 +2236,7 @@ importers:
       '@types/d3-selection': 2.0.1
       '@types/d3-transition': 3.0.2
       '@types/jest': 27.4.1
-      '@types/react': 17.0.1
+      '@types/react': 18.0.21
       '@types/react-dom': 17.0.1
       babel-plugin-tester: 7.0.1
       jest: 29.0.1_@types+node@17.0.45
@@ -2357,7 +2322,7 @@ importers:
       '@types/express': 4.17.1
       '@types/mdast': 3.0.10
       '@types/node': 14.14.22
-      '@types/react': 17.0.0
+      '@types/react': 18.0.21
       '@types/supertest': 2.0.8
       algoliasearch: 4.8.4
       classnames: 2.2.6
@@ -2371,6 +2336,7 @@ importers:
       execa: 6.1.0
       express: 4.18.1
       fast-glob: 3.2.11
+      final-form: 4.20.7
       final-form-focus: 1.1.2
       find-package-json: 1.2.0
       hast-util-to-html: 8.0.3
@@ -2386,21 +2352,21 @@ importers:
       postcss: 8.4.13
       prism-react-renderer: 1.0.2
       prismjs: 1.27.0
-      react: 17.0.1
-      react-dom: 17.0.1
-      react-element-to-jsx-string: 14.3.1
-      react-final-form: 6.5.2
+      react: 18.2.0
+      react-dom: 18.2.0
+      react-element-to-jsx-string: 15.0.0
+      react-final-form: 6.5.9
       react-helmet: 6.1.0
       react-hook-form: 6.10.1
       react-instantsearch: 6.8.3
       react-loadable: 5.5.0
-      react-masonry-component: 6.2.1
-      react-resizable: 1.10.1
-      react-router-dom: 5.1.2
-      react-scroll: 1.7.14
-      react-virtualized: 9.21.2
+      react-masonry-component: 6.3.0
+      react-resizable: 3.0.4
+      react-router-dom: 5.3.4
+      react-scroll: 1.8.7
+      react-virtualized: 9.22.3
       reflect-metadata: 0.1.13
-      styled-components: 5.0.0
+      styled-components: 5.0.1
       tsm: 2.2.2
       typescript: 4.1.3
       unified: 10.1.2
@@ -2412,26 +2378,27 @@ importers:
       dayjs: 1.10.4
       dotenv: 8.2.0
       express: 4.18.1
-      final-form-focus: 1.1.2
+      final-form: 4.20.7
+      final-form-focus: 1.1.2_final-form@4.20.7
       lz-string: 1.4.4
       normalize.css: 8.0.1
-      prism-react-renderer: 1.0.2_react@17.0.1
+      prism-react-renderer: 1.0.2_react@18.2.0
       prismjs: 1.27.0
-      react: 17.0.1
-      react-dom: 17.0.1_react@17.0.1
-      react-element-to-jsx-string: 14.3.1_w7o5yyljkiidx2s2nzb26ottzu
-      react-final-form: 6.5.2_react@17.0.1
-      react-helmet: 6.1.0_react@17.0.1
-      react-hook-form: 6.10.1_react@17.0.1
-      react-instantsearch: 6.8.3_oarvqnd7qschj76tdawhnvtrkq
-      react-loadable: 5.5.0_react@17.0.1
-      react-masonry-component: 6.2.1_react@17.0.1
-      react-resizable: 1.10.1_w7o5yyljkiidx2s2nzb26ottzu
-      react-router-dom: 5.1.2_react@17.0.1
-      react-scroll: 1.7.14_w7o5yyljkiidx2s2nzb26ottzu
-      react-virtualized: 9.21.2_w7o5yyljkiidx2s2nzb26ottzu
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+      react-element-to-jsx-string: 15.0.0_biqbaboplfbrettd7655fr4n2y
+      react-final-form: 6.5.9_b76tjmhm4bpbaoui6lan2hu4pm
+      react-helmet: 6.1.0_react@18.2.0
+      react-hook-form: 6.10.1_react@18.2.0
+      react-instantsearch: 6.8.3_2jcwevs35ru34jgausncc4whxu
+      react-loadable: 5.5.0_react@18.2.0
+      react-masonry-component: 6.3.0_react@18.2.0
+      react-resizable: 3.0.4_biqbaboplfbrettd7655fr4n2y
+      react-router-dom: 5.3.4_react@18.2.0
+      react-scroll: 1.8.7_biqbaboplfbrettd7655fr4n2y
+      react-virtualized: 9.22.3_biqbaboplfbrettd7655fr4n2y
       reflect-metadata: 0.1.13
-      styled-components: 5.0.0_w7o5yyljkiidx2s2nzb26ottzu
+      styled-components: 5.0.1_biqbaboplfbrettd7655fr4n2y
     devDependencies:
       '@babel/core': 7.19.1
       '@babel/plugin-proposal-class-properties': 7.18.6_@babel+core@7.19.1
@@ -2441,7 +2408,7 @@ importers:
       '@types/express': 4.17.1
       '@types/mdast': 3.0.10
       '@types/node': 14.14.22
-      '@types/react': 17.0.0
+      '@types/react': 18.0.21
       '@types/supertest': 2.0.8
       convert-layout: 0.11.1
       esbuild: 0.14.29
@@ -4406,10 +4373,10 @@ packages:
       '@babel/helper-validator-identifier': 7.19.1
       to-fast-properties: 2.0.0
 
-  /@base2/pretty-print-object/1.0.0:
+  /@base2/pretty-print-object/1.0.1:
     resolution:
       {
-        integrity: sha512-4Th98KlMHr5+JkxfcoDT//6vY8vM+iSPrLNpHhRyLx2CFYi8e2RfqPLdpbnpo0Q5lQC5hNB79yes07zb02fvCw==,
+        integrity: sha512-4iri8i1AqYHJE2DstZYkyEprg6Pq6sKx3xn5FpySk9sNhH7qN2LLlHJCfDTZRILNwQNPD7mATWM0TBui7uC1pA==,
       }
     dev: false
 
@@ -6617,19 +6584,19 @@ packages:
       redent: 3.0.0
     dev: false
 
-  /@testing-library/react/12.1.5_biqbaboplfbrettd7655fr4n2y:
+  /@testing-library/react/13.4.0_biqbaboplfbrettd7655fr4n2y:
     resolution:
       {
-        integrity: sha512-OfTXCJUFgjd/digLUuPxa0+/3ZxsQmE7ub9kcbW/wi96Bh3o/p5vrETcBGfP17NWPGqeYYl5LTRpwyGoMC4ysg==,
+        integrity: sha512-sXOGON+WNTh3MLE9rve97ftaZukN3oNf2KjDy7YTx6hcTO2uuLHuCGynMDhFwGw/jYf4OJ2Qk0i4i79qMNNkyw==,
       }
     engines: { node: '>=12' }
     peerDependencies:
-      react: <18.0.0
-      react-dom: <18.0.0
+      react: ^18.0.0
+      react-dom: ^18.0.0
     dependencies:
       '@babel/runtime': 7.19.0
       '@testing-library/dom': 8.18.1
-      '@types/react-dom': 17.0.17
+      '@types/react-dom': 18.0.6
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
     dev: false
@@ -7101,7 +7068,7 @@ packages:
         integrity: sha512-yIVyopxQb8IDZ7SOHeTovurFq+fXiPICa+GV3gp0Xedsl+MwQlMLKmvrnEjFbQxjliH5YVAEWFh975eVNmKj7Q==,
       }
     dependencies:
-      '@types/react': 17.0.1
+      '@types/react': 18.0.21
     dev: true
 
   /@types/react-dom/17.0.17:
@@ -7113,30 +7080,29 @@ packages:
       '@types/react': 17.0.50
     dev: false
 
-  /@types/react/17.0.0:
+  /@types/react-dom/18.0.6:
     resolution:
       {
-        integrity: sha512-aj/L7RIMsRlWML3YB6KZiXB3fV2t41+5RBGYF8z+tAKU43Px8C3cYUZsDvf1/+Bm4FK21QWBrDutu8ZJ/70qOw==,
+        integrity: sha512-/5OFZgfIPSwy+YuIBP/FgJnQnsxhZhjjrnxudMddeblOouIodEQ75X14Rr4wGSG/bknL+Omy9iWlLo1u/9GzAA==,
       }
     dependencies:
-      '@types/prop-types': 15.7.5
-      csstype: 3.0.8
-    dev: true
-
-  /@types/react/17.0.1:
-    resolution:
-      {
-        integrity: sha512-w8t9f53B2ei4jeOqf/gxtc2Sswnc3LBK5s0DyJcg5xd10tMHXts2N31cKjWfH9IC/JvEPa/YF1U4YeP1t4R6HQ==,
-      }
-    dependencies:
-      '@types/prop-types': 15.7.5
-      csstype: 3.0.8
-    dev: true
+      '@types/react': 18.0.21
+    dev: false
 
   /@types/react/17.0.50:
     resolution:
       {
         integrity: sha512-ZCBHzpDb5skMnc1zFXAXnL3l1FAdi+xZvwxK+PkglMmBrwjpp9nKaWuEvrGnSifCJmBFGxZOOFuwC6KH/s0NuA==,
+      }
+    dependencies:
+      '@types/prop-types': 15.7.5
+      '@types/scheduler': 0.16.2
+      csstype: 3.0.8
+
+  /@types/react/18.0.21:
+    resolution:
+      {
+        integrity: sha512-7QUCOxvFgnD5Jk8ZKlUAhVcRj7GuJRjnjjiY/IUBWKgOlnvDvTMLD4RTF7NPyVmbRhNrbomZiOepg7M/2Kj1mA==,
       }
     dependencies:
       '@types/prop-types': 15.7.5
@@ -7150,7 +7116,7 @@ packages:
       }
     dependencies:
       '@types/d3-shape': 3.1.0
-      '@types/react': 17.0.50
+      '@types/react': 18.0.21
     dev: false
 
   /@types/responselike/1.0.0:
@@ -8352,7 +8318,7 @@ packages:
       }
     dev: false
 
-  /babel-plugin-styled-components/2.0.7_styled-components@5.0.0:
+  /babel-plugin-styled-components/2.0.7_styled-components@5.0.1:
     resolution:
       {
         integrity: sha512-i7YhvPgVqRKfoQ66toiZ06jPNA3p6ierpfUuEWxNF+fV27Uv5gxBkf8KZLHUCc1nFA9j6+80pYoIpqCeyW3/bA==,
@@ -8365,7 +8331,7 @@ packages:
       babel-plugin-syntax-jsx: 6.18.0
       lodash: 4.17.21
       picomatch: 2.3.1
-      styled-components: 5.0.0_w7o5yyljkiidx2s2nzb26ottzu
+      styled-components: 5.0.1_biqbaboplfbrettd7655fr4n2y
     dev: false
 
   /babel-plugin-styled-components/2.0.7_styled-components@5.3.5:
@@ -8381,7 +8347,7 @@ packages:
       babel-plugin-syntax-jsx: 6.18.0
       lodash: 4.17.21
       picomatch: 2.3.1
-      styled-components: 5.3.5_kvcjbccuyytl2e6ypfoy6dforu
+      styled-components: 5.3.5_ohkie2yri6he6ogke3veue6jsq
     dev: false
 
   /babel-plugin-syntax-jsx/6.18.0:
@@ -8485,16 +8451,6 @@ packages:
       '@babel/core': 7.19.1
       babel-plugin-jest-hoist: 29.0.2
       babel-preset-current-node-syntax: 1.0.1_@babel+core@7.19.1
-
-  /babel-runtime/6.26.0:
-    resolution:
-      {
-        integrity: sha512-ITKNuq2wKlW1fJg9sSW52eepoYgZBggvOAHC0u/CYu/qxQ9EVzThCgR69BnSXLHjy2f7SY5zaQ4yt7H9ZVxY2g==,
-      }
-    dependencies:
-      core-js: 2.6.12
-      regenerator-runtime: 0.11.1
-    dev: false
 
   /bail/2.0.2:
     resolution:
@@ -13661,15 +13617,6 @@ packages:
     dependencies:
       to-regex-range: 5.0.1
 
-  /final-form-focus/1.1.2:
-    resolution:
-      {
-        integrity: sha512-Gd+Bd2Ll7ijo3/sd6kJ/bwLkhc2bUJPxTON6fIqee/008EJpACWhT+zoWCm9q6NcfMcWRS+Sp5ikRX8iqdXeGQ==,
-      }
-    peerDependencies:
-      final-form: '>=1.3.0'
-    dev: false
-
   /final-form-focus/1.1.2_final-form@4.18.7:
     resolution:
       {
@@ -13692,6 +13639,17 @@ packages:
       final-form: 4.19.1
     dev: false
 
+  /final-form-focus/1.1.2_final-form@4.20.7:
+    resolution:
+      {
+        integrity: sha512-Gd+Bd2Ll7ijo3/sd6kJ/bwLkhc2bUJPxTON6fIqee/008EJpACWhT+zoWCm9q6NcfMcWRS+Sp5ikRX8iqdXeGQ==,
+      }
+    peerDependencies:
+      final-form: '>=1.3.0'
+    dependencies:
+      final-form: 4.20.7
+    dev: false
+
   /final-form/4.18.7:
     resolution:
       {
@@ -13705,6 +13663,15 @@ packages:
     resolution:
       {
         integrity: sha512-C4RldRCUs8YZod91ydtrsT+TOeG3fwU4ip9oBDXhvbWdQ6iXl4cIrTAQkqpWijbnI3XFVA0akV7YTjSFJMJ2uw==,
+      }
+    dependencies:
+      '@babel/runtime': 7.19.0
+    dev: false
+
+  /final-form/4.20.7:
+    resolution:
+      {
+        integrity: sha512-ii3X9wNfyBYFnDPunYN5jh1/HAvtOZ9aJI/TVk0MB86hZuOeYkb+W5L3icgwW9WWNztZR6MDU3En6eoZTUoFPg==,
       }
     dependencies:
       '@babel/runtime': 7.19.0
@@ -16308,14 +16275,12 @@ packages:
     dependencies:
       isobject: 3.0.1
 
-  /is-plain-object/3.0.0:
+  /is-plain-object/5.0.0:
     resolution:
       {
-        integrity: sha512-tZIpofR+P05k8Aocp7UI/2UTa9lTJSebCXpFFoR9aibpokDj/uXBsJ8luUu0tTVYKkMU6URDUuOfJZ7koewXvg==,
+        integrity: sha512-VRSzKkbMm5jMDoKLbltAkFQ5Qr7VDiTFGXxYFXXowVj387GeGNOCsOH6Msy00SGZ3Fp84b1Naa1psqgcCIEP5Q==,
       }
     engines: { node: '>=0.10.0' }
-    dependencies:
-      isobject: 4.0.0
     dev: false
 
   /is-png/2.0.0:
@@ -16573,14 +16538,6 @@ packages:
         integrity: sha512-WhB9zCku7EGTj/HQQRz5aUQEUeoQZH2bWcltRErOpymJ4boYE6wL9Tbr23krRPSZ+C5zqNSrSw+Cc7sZZ4b7vg==,
       }
     engines: { node: '>=0.10.0' }
-
-  /isobject/4.0.0:
-    resolution:
-      {
-        integrity: sha512-S/2fF5wH8SJA/kmwr6HYhK/RI/OkhD84k8ntalo0iJjZikgq1XFvR5M8NPT1x5F7fBwCG3qHfnzeP/Vh/ZxCUA==,
-      }
-    engines: { node: '>=0.10.0' }
-    dev: false
 
   /isstream/0.1.2:
     resolution:
@@ -19165,22 +19122,6 @@ packages:
         integrity: sha512-I9jwMn07Sy/IwOj3zVkVik2JTvgpaykDZEigL6Rx6N9LbMywwUSMtxET+7lVoDLLd3O3IXwJwvuuns8UB/HeAg==,
       }
     engines: { node: '>=4' }
-
-  /mini-create-react-context/0.3.3_nyes33adziqptxgkj4xhvcqtc4:
-    resolution:
-      {
-        integrity: sha512-TtF6hZE59SGmS4U8529qB+jJFeW6asTLDIpPgvPLSCsooAwJS7QprHIFTqv9/Qh3NdLwQxFYgiHX5lqb6jqzPA==,
-      }
-    deprecated: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
-    peerDependencies:
-      prop-types: ^15.0.0
-      react: ^0.14.0 || ^15.0.0 || ^16.0.0 || ^17.0.0
-    dependencies:
-      '@babel/runtime': 7.19.0
-      prop-types: 15.8.1
-      react: 17.0.1
-      tiny-warning: 1.0.3
-    dev: false
 
   /minimatch/3.1.2:
     resolution:
@@ -22458,7 +22399,7 @@ packages:
     dependencies:
       ansi-regex: 5.0.1
       ansi-styles: 5.2.0
-      react-is: 17.0.1
+      react-is: 17.0.2
 
   /pretty-format/29.1.2:
     resolution:
@@ -22496,7 +22437,7 @@ packages:
       prettier: 2.6.2
     dev: true
 
-  /prism-react-renderer/1.0.2_react@17.0.1:
+  /prism-react-renderer/1.0.2_react@18.2.0:
     resolution:
       {
         integrity: sha512-0++pJyRfu4v2OxI/Us/5RLui9ESDkTiLkVCtKuPZYdpB8UQWJpnJQhPrWab053XtsKW3oM0sD69uJ6N9exm1Ag==,
@@ -22504,7 +22445,7 @@ packages:
     peerDependencies:
       react: '>=0.14.9'
     dependencies:
-      react: 17.0.1
+      react: 18.2.0
     dev: false
 
   /prismjs/1.27.0:
@@ -22781,19 +22722,6 @@ packages:
       '@babel/runtime': 7.19.0
     dev: false
 
-  /react-dom/17.0.1_react@17.0.1:
-    resolution:
-      {
-        integrity: sha512-6eV150oJZ9U2t9svnsspTMrWNyHc6chX0KzDeAOXftRa8bNeOKTTfCJ7KorIwenkHd2xqVTBTCZd79yk/lx/Ug==,
-      }
-    peerDependencies:
-      react: 17.0.1
-    dependencies:
-      loose-envify: 1.4.0
-      object-assign: 4.1.1
-      react: 17.0.1
-      scheduler: 0.20.2
-
   /react-dom/18.2.0_react@18.2.0:
     resolution:
       {
@@ -22805,9 +22733,8 @@ packages:
       loose-envify: 1.4.0
       react: 18.2.0
       scheduler: 0.23.0
-    dev: false
 
-  /react-draggable/4.4.5_w7o5yyljkiidx2s2nzb26ottzu:
+  /react-draggable/4.4.5_biqbaboplfbrettd7655fr4n2y:
     resolution:
       {
         integrity: sha512-OMHzJdyJbYTZo4uQE393fHcqqPYsEtkjfMgvCHr6rejT+Ezn4OZbNyGH50vv+SunC1RMvwOTSWkEODQLzw1M9g==,
@@ -22818,23 +22745,24 @@ packages:
     dependencies:
       clsx: 1.2.1
       prop-types: 15.8.1
-      react: 17.0.1
-      react-dom: 17.0.1_react@17.0.1
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
     dev: false
 
-  /react-element-to-jsx-string/14.3.1_w7o5yyljkiidx2s2nzb26ottzu:
+  /react-element-to-jsx-string/15.0.0_biqbaboplfbrettd7655fr4n2y:
     resolution:
       {
-        integrity: sha512-LRdQWRB+xcVPOL4PU4RYuTg6dUJ/FNmaQ8ls6w38YbzkbV6Yr5tFNESroub9GiSghtnMq8dQg2LcNN5aMIDzVg==,
+        integrity: sha512-UDg4lXB6BzlobN60P8fHWVPX3Kyw8ORrTeBtClmIlGdkOOE+GYQSFvmEU5iLLpwp/6v42DINwNcwOhOLfQ//FQ==,
       }
     peerDependencies:
-      react: ^0.14.8 || ^15.0.1 || ^16.0.0
-      react-dom: ^0.14.8 || ^15.0.1 || ^16.0.0
+      react: ^0.14.8 || ^15.0.1 || ^16.0.0 || ^17.0.1 || ^18.0.0
+      react-dom: ^0.14.8 || ^15.0.1 || ^16.0.0 || ^17.0.1 || ^18.0.0
     dependencies:
-      '@base2/pretty-print-object': 1.0.0
-      is-plain-object: 3.0.0
-      react: 17.0.1
-      react-dom: 17.0.1_react@17.0.1
+      '@base2/pretty-print-object': 1.0.1
+      is-plain-object: 5.0.0
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+      react-is: 18.1.0
     dev: false
 
   /react-fast-compare/3.2.0:
@@ -22870,17 +22798,18 @@ packages:
       final-form: 4.19.1
     dev: false
 
-  /react-final-form/6.5.2_react@17.0.1:
+  /react-final-form/6.5.9_b76tjmhm4bpbaoui6lan2hu4pm:
     resolution:
       {
-        integrity: sha512-c5l45FYOoxtfpvsvMFh3w2WW8KNxbuebBUrM16rUrooQkewTs0Zahmv0TuKFX5jsC9BKn5Fo84j3ZVXQdURS4w==,
+        integrity: sha512-x3XYvozolECp3nIjly+4QqxdjSSWfcnpGEL5K8OBT6xmGrq5kBqbA6+/tOqoom9NwqIPPbxPNsOViFlbKgowbA==,
       }
     peerDependencies:
-      final-form: ^4.20.0
-      react: ^16.8.0 || ^17.0.0
+      final-form: ^4.20.4
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0
     dependencies:
       '@babel/runtime': 7.19.0
-      react: 17.0.1
+      final-form: 4.20.7
+      react: 18.2.0
     dev: false
 
   /react-focus-lock/2.5.1_@types+react@17.0.50:
@@ -22901,7 +22830,7 @@ packages:
       - '@types/react'
     dev: false
 
-  /react-helmet/6.1.0_react@17.0.1:
+  /react-helmet/6.1.0_react@18.2.0:
     resolution:
       {
         integrity: sha512-4uMzEY9nlDlgxr61NL3XbKRy1hEkXmKNXhjbAIOVw5vcFrsdYbH2FEwcNyWvWinl103nXgzYNlns9ca+8kFiWw==,
@@ -22911,12 +22840,12 @@ packages:
     dependencies:
       object-assign: 4.1.1
       prop-types: 15.8.1
-      react: 17.0.1
+      react: 18.2.0
       react-fast-compare: 3.2.0
-      react-side-effect: 2.1.2_react@17.0.1
+      react-side-effect: 2.1.2_react@18.2.0
     dev: false
 
-  /react-hook-form/6.10.1_react@17.0.1:
+  /react-hook-form/6.10.1_react@18.2.0:
     resolution:
       {
         integrity: sha512-tPfNu2q8HUUKL4gOsJzzoBX8+3y2brJk+61TO+RO9GtpLnWPptLrAIupMtyPeENMpLmLfBKHhT9nfezHLTW2mA==,
@@ -22924,10 +22853,10 @@ packages:
     peerDependencies:
       react: ^16.8.0 || ^17
     dependencies:
-      react: 17.0.1
+      react: 18.2.0
     dev: false
 
-  /react-instantsearch-core/6.35.0_q22wp6cnvb4o6snvzt5zk5ltgu:
+  /react-instantsearch-core/6.35.0_npc63xaus6igy2ygmd3t37sxzu:
     resolution:
       {
         integrity: sha512-ccMMbDmXNNqeS1olOx8mCMkVamoSG5S4HlXsqTLb3iHbluuinE8UE7LQGcG0N4UKWW4MkDJ0iB4rYQ1bd1pa3g==,
@@ -22940,11 +22869,11 @@ packages:
       algoliasearch: 4.8.4
       algoliasearch-helper: 3.11.1_algoliasearch@4.8.4
       prop-types: 15.8.1
-      react: 17.0.1
+      react: 18.2.0
       react-fast-compare: 3.2.0
     dev: false
 
-  /react-instantsearch-dom/6.35.0_oarvqnd7qschj76tdawhnvtrkq:
+  /react-instantsearch-dom/6.35.0_2jcwevs35ru34jgausncc4whxu:
     resolution:
       {
         integrity: sha512-RYtcL0QkIS86VWfTFP7KpxY73g36dLlo++Ijn63N+jpqSQaDMV1JibM7Rg8mTxsvZSTNkO6P46gg2XZ4WxQtvw==,
@@ -22959,13 +22888,13 @@ packages:
       algoliasearch-helper: 3.11.1_algoliasearch@4.8.4
       classnames: 2.2.6
       prop-types: 15.8.1
-      react: 17.0.1
-      react-dom: 17.0.1_react@17.0.1
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
       react-fast-compare: 3.2.0
-      react-instantsearch-core: 6.35.0_q22wp6cnvb4o6snvzt5zk5ltgu
+      react-instantsearch-core: 6.35.0_npc63xaus6igy2ygmd3t37sxzu
     dev: false
 
-  /react-instantsearch-native/6.35.0_q22wp6cnvb4o6snvzt5zk5ltgu:
+  /react-instantsearch-native/6.35.0_npc63xaus6igy2ygmd3t37sxzu:
     resolution:
       {
         integrity: sha512-ggJvseTvrC5EQAGmUiuckXIYlxZxDWgKHsDxoyw9g+ceOTSr1NwZbU3SmXWRhL/FF/DsqRyOCpKN8RShym7/LQ==,
@@ -22977,20 +22906,20 @@ packages:
     dependencies:
       '@babel/runtime': 7.19.0
       algoliasearch: 4.8.4
-      react: 17.0.1
-      react-instantsearch-core: 6.35.0_q22wp6cnvb4o6snvzt5zk5ltgu
+      react: 18.2.0
+      react-instantsearch-core: 6.35.0_npc63xaus6igy2ygmd3t37sxzu
     dev: false
 
-  /react-instantsearch/6.8.3_oarvqnd7qschj76tdawhnvtrkq:
+  /react-instantsearch/6.8.3_2jcwevs35ru34jgausncc4whxu:
     resolution:
       {
         integrity: sha512-oZ1J4cyVkF4v9QXbCqz1t8BVyXBff1YNgwpKlNtoKkGh5clbdnQ4HE7bfPMdde2oI5HIf/dzLTmA8EjI6Ps2pA==,
       }
     dependencies:
       '@babel/runtime': 7.19.0
-      react-instantsearch-core: 6.35.0_q22wp6cnvb4o6snvzt5zk5ltgu
-      react-instantsearch-dom: 6.35.0_oarvqnd7qschj76tdawhnvtrkq
-      react-instantsearch-native: 6.35.0_q22wp6cnvb4o6snvzt5zk5ltgu
+      react-instantsearch-core: 6.35.0_npc63xaus6igy2ygmd3t37sxzu
+      react-instantsearch-dom: 6.35.0_2jcwevs35ru34jgausncc4whxu
+      react-instantsearch-native: 6.35.0_npc63xaus6igy2ygmd3t37sxzu
     transitivePeerDependencies:
       - algoliasearch
       - react
@@ -23009,11 +22938,18 @@ packages:
       {
         integrity: sha512-NAnt2iGDXohE5LI7uBnLnqvLQMtzhkiAOLXTmv+qnF9Ky7xAPcX8Up/xWIhxvLVGJvuLiNc4xQLtuqDRzb4fSA==,
       }
+    dev: false
 
   /react-is/17.0.2:
     resolution:
       {
         integrity: sha512-w2GsyukL62IJnlaff/nRegPQR94C/XXamvMWmSHRJ4y7Ts/4ocGRmTHvOs8PSE6pB3dWOrD/nueuU5sduBsQ4w==,
+      }
+
+  /react-is/18.1.0:
+    resolution:
+      {
+        integrity: sha512-Fl7FuabXsJnV5Q1qIOQwx/sagGF18kogb4gpfcG4gjLBWO0WDiiz1ko/ExayuxE7InyQkBLkxRFG5oxY6Uu3Kg==,
       }
     dev: false
 
@@ -23030,7 +22966,7 @@ packages:
       }
     dev: false
 
-  /react-loadable/5.5.0_react@17.0.1:
+  /react-loadable/5.5.0_react@18.2.0:
     resolution:
       {
         integrity: sha512-C8Aui0ZpMd4KokxRdVAm2bQtI03k2RMRNzOB+IipV3yxFTSVICv7WoUr5L9ALB5BmKO1iHgZtWM8EvYG83otdg==,
@@ -23039,16 +22975,16 @@ packages:
       react: '*'
     dependencies:
       prop-types: 15.8.1
-      react: 17.0.1
+      react: 18.2.0
     dev: false
 
-  /react-masonry-component/6.2.1_react@17.0.1:
+  /react-masonry-component/6.3.0_react@18.2.0:
     resolution:
       {
-        integrity: sha512-xoNdw/gOp0nkCXqvF8QDcRInFEVtbCBzT8QbxmRnCEzsOgDKtKlG/x6SoxXWivPCxdyr1PGdyngiA7TsqANHKA==,
+        integrity: sha512-4ZI78nxMfCpU5yQiS6Rup07Ju++YzcOGAyvbMcl2GfpZTw8GRwT548lkKr0PJarNicRV1qE2D/NiT26UPg1T7A==,
       }
     peerDependencies:
-      react: ^0.14.0 || ^15.0.0-0 || ^16.0.0-0
+      react: ^0.14.0 || ^15.0.0-0 || ^16.0.0-0 || ^17.0.0
     dependencies:
       create-react-class: 15.7.0
       element-resize-detector: 1.2.4
@@ -23056,22 +22992,22 @@ packages:
       lodash: 4.17.21
       masonry-layout: 4.2.2
       prop-types: 15.8.1
-      react: 17.0.1
+      react: 18.2.0
     dev: false
 
-  /react-resizable/1.10.1_w7o5yyljkiidx2s2nzb26ottzu:
+  /react-resizable/3.0.4_biqbaboplfbrettd7655fr4n2y:
     resolution:
       {
-        integrity: sha512-Jd/bKOKx6+19NwC4/aMLRu/J9/krfxlDnElP41Oc+oLiUWs/zwV1S9yBfBZRnqAwQb6vQ/HRSk3bsSWGSgVbpw==,
+        integrity: sha512-StnwmiESiamNzdRHbSSvA65b0ZQJ7eVQpPusrSmcpyGKzC0gojhtO62xxH6YOBmepk9dQTBi9yxidL3W4s3EBA==,
       }
     peerDependencies:
-      react: 0.14.x || 15.x || 16.x
-      react-dom: 0.14.x || 15.x || 16.x
+      react: '>= 16.3'
     dependencies:
       prop-types: 15.8.1
-      react: 17.0.1
-      react-dom: 17.0.1_react@17.0.1
-      react-draggable: 4.4.5_w7o5yyljkiidx2s2nzb26ottzu
+      react: 18.2.0
+      react-draggable: 4.4.5_biqbaboplfbrettd7655fr4n2y
+    transitivePeerDependencies:
+      - react-dom
     dev: false
 
   /react-resize-detector/2.3.0:
@@ -23088,10 +23024,10 @@ packages:
       resize-observer-polyfill: 1.5.1
     dev: false
 
-  /react-router-dom/5.1.2_react@17.0.1:
+  /react-router-dom/5.3.4_react@18.2.0:
     resolution:
       {
-        integrity: sha512-7BPHAaIwWpZS074UKaw1FjVdZBSVWEk8IuDXdB+OkLb8vd/WRQIpA4ag9WQk61aEfQs47wHyjWUoUGGZxpQXew==,
+        integrity: sha512-m4EqFMHv/Ih4kpcBCONHbkT68KoAeHN4p3lAGoNryfHi0dMy0kCzEZakiKRsvg5wHZ/JLrLW8o8KomWiz/qbYQ==,
       }
     peerDependencies:
       react: '>=15'
@@ -23100,16 +23036,16 @@ packages:
       history: 4.10.1
       loose-envify: 1.4.0
       prop-types: 15.8.1
-      react: 17.0.1
-      react-router: 5.1.2_react@17.0.1
+      react: 18.2.0
+      react-router: 5.3.4_react@18.2.0
       tiny-invariant: 1.3.1
       tiny-warning: 1.0.3
     dev: false
 
-  /react-router/5.1.2_react@17.0.1:
+  /react-router/5.3.4_react@18.2.0:
     resolution:
       {
-        integrity: sha512-yjEuMFy1ONK246B+rsa0cUam5OeAQ8pyclRDgpxuSCrAlJ1qN9uZ5IgyKC7gQg0w8OM50NXHEegPh/ks9YuR2A==,
+        integrity: sha512-Ys9K+ppnJah3QuaRiLxk+jDWOR1MekYQrlytiXxC1RyfbdsZkS5pvKAzCCr031xHixZwpnsYNT5xysdFHQaYsA==,
       }
     peerDependencies:
       react: '>=15'
@@ -23118,31 +23054,30 @@ packages:
       history: 4.10.1
       hoist-non-react-statics: 3.3.2
       loose-envify: 1.4.0
-      mini-create-react-context: 0.3.3_nyes33adziqptxgkj4xhvcqtc4
       path-to-regexp: 1.8.0
       prop-types: 15.8.1
-      react: 17.0.1
+      react: 18.2.0
       react-is: 16.13.1
       tiny-invariant: 1.3.1
       tiny-warning: 1.0.3
     dev: false
 
-  /react-scroll/1.7.14_w7o5yyljkiidx2s2nzb26ottzu:
+  /react-scroll/1.8.7_biqbaboplfbrettd7655fr4n2y:
     resolution:
       {
-        integrity: sha512-zQ2/8+TaEBctA9RSQspP5GWMffA6g7u+AB9gMWB42btZZTBcGEyomvxnm52UVVELjqXOpD9U1/tHhVTNXyntbQ==,
+        integrity: sha512-fBOIwweAlhicx8RqP9tQXn/Uhd+DTtVRjw+0VBsIn1Z+MjRYLhTZ0tMoTAU1vOD3dce8mI6copexI4yWII+Luw==,
       }
     peerDependencies:
-      react: ^15.5.4 || ^16.0.0
-      react-dom: ^15.5.4 || ^16.0.0
+      react: ^15.5.4 || ^16.0.0 || ^17.0.0 || ^18.0.0
+      react-dom: ^15.5.4 || ^16.0.0 || ^17.0.0 || ^18.0.0
     dependencies:
       lodash.throttle: 4.1.1
       prop-types: 15.8.1
-      react: 17.0.1
-      react-dom: 17.0.1_react@17.0.1
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
     dev: false
 
-  /react-side-effect/2.1.2_react@17.0.1:
+  /react-side-effect/2.1.2_react@18.2.0:
     resolution:
       {
         integrity: sha512-PVjOcvVOyIILrYoyGEpDN3vmYNLdy1CajSFNt4TDsVQC5KpTijDvWVoR+/7Rz2xT978D8/ZtFceXxzsPwZEDvw==,
@@ -23150,7 +23085,7 @@ packages:
     peerDependencies:
       react: ^16.3.0 || ^17.0.0 || ^18.0.0
     dependencies:
-      react: 17.0.1
+      react: 18.2.0
     dev: false
 
   /react-smooth/1.0.6:
@@ -23198,34 +23133,24 @@ packages:
       react-lifecycles-compat: 3.0.4
     dev: false
 
-  /react-virtualized/9.21.2_w7o5yyljkiidx2s2nzb26ottzu:
+  /react-virtualized/9.22.3_biqbaboplfbrettd7655fr4n2y:
     resolution:
       {
-        integrity: sha512-oX7I7KYiUM7lVXQzmhtF4Xg/4UA5duSA+/ZcAvdWlTLFCoFYq1SbauJT5gZK9cZS/wdYR6TPGpX/dqzvTqQeBA==,
+        integrity: sha512-MKovKMxWTcwPSxE1kK1HcheQTWfuCxAuBoSTf2gwyMM21NdX/PXUhnoP8Uc5dRKd+nKm8v41R36OellhdCpkrw==,
       }
     peerDependencies:
       react: ^15.3.0 || ^16.0.0-alpha
       react-dom: ^15.3.0 || ^16.0.0-alpha
     dependencies:
-      babel-runtime: 6.26.0
+      '@babel/runtime': 7.19.0
       clsx: 1.2.1
       dom-helpers: 5.2.1
       loose-envify: 1.4.0
       prop-types: 15.8.1
-      react: 17.0.1
-      react-dom: 17.0.1_react@17.0.1
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
       react-lifecycles-compat: 3.0.4
     dev: false
-
-  /react/17.0.1:
-    resolution:
-      {
-        integrity: sha512-lG9c9UuMHdcAexXtigOZLX8exLWkW0Ku29qPRU8uhF2R9BN96dLCt0psvzPLlHc5OWkgymP3qwTRgbnw5BKx3w==,
-      }
-    engines: { node: '>=0.10.0' }
-    dependencies:
-      loose-envify: 1.4.0
-      object-assign: 4.1.1
 
   /react/18.2.0:
     resolution:
@@ -23235,7 +23160,6 @@ packages:
     engines: { node: '>=0.10.0' }
     dependencies:
       loose-envify: 1.4.0
-    dev: false
 
   /read-cache/1.0.0:
     resolution:
@@ -23502,13 +23426,6 @@ packages:
       {
         integrity: sha512-zrceR/XhGYU/d/opr2EKO7aRHUeiBI8qjtfHqADTwZd6Szfy16la6kqD0MIUs5z5hx6AaKa+PixpPrR289+I0A==,
       }
-
-  /regenerator-runtime/0.11.1:
-    resolution:
-      {
-        integrity: sha512-MguG95oij0fC3QV3URf4V2SDYGJhJnJGqvIIgdECeODCT98wSWDAJ94SSuVpYQUoTcGUIL6L4yNB7j1DFFHSBg==,
-      }
-    dev: false
 
   /regenerator-runtime/0.13.9:
     resolution:
@@ -24153,15 +24070,6 @@ packages:
       xmlchars: 2.2.0
     dev: true
 
-  /scheduler/0.20.2:
-    resolution:
-      {
-        integrity: sha512-2eWfGgAqqWFGqtdMmcL5zCMK1U8KlXv8SQFGglL3CEtd0aDVDWgeF/YoCmvln55m5zSk3J/20hTaSBeSObsQDQ==,
-      }
-    dependencies:
-      loose-envify: 1.4.0
-      object-assign: 4.1.1
-
   /scheduler/0.23.0:
     resolution:
       {
@@ -24169,7 +24077,6 @@ packages:
       }
     dependencies:
       loose-envify: 1.4.0
-    dev: false
 
   /seek-bzip/1.0.6:
     resolution:
@@ -25175,10 +25082,10 @@ packages:
       }
     dev: false
 
-  /styled-components/5.0.0_w7o5yyljkiidx2s2nzb26ottzu:
+  /styled-components/5.0.1_biqbaboplfbrettd7655fr4n2y:
     resolution:
       {
-        integrity: sha512-F7VhIXIbUXJ8KO3pU9wap2Hxdtqa6PZ1uHrx+YXTgRjyxGlwvBHb8LULXPabmDA+uEliTXRJM5WcZntJnKNn3g==,
+        integrity: sha512-E0xKTRIjTs4DyvC1MHu/EcCXIj6+ENCP8hP01koyoADF++WdBUOrSGwU1scJRw7/YaYOhDvvoad6VlMG+0j53A==,
       }
     peerDependencies:
       react: '>= 16.8.0'
@@ -25190,16 +25097,16 @@ packages:
       '@emotion/is-prop-valid': 0.8.8
       '@emotion/stylis': 0.8.5
       '@emotion/unitless': 0.7.5
-      babel-plugin-styled-components: 2.0.7_styled-components@5.0.0
+      babel-plugin-styled-components: 2.0.7_styled-components@5.0.1
       css-to-react-native: 3.0.0
       hoist-non-react-statics: 3.3.2
-      react: 17.0.1
-      react-dom: 17.0.1_react@17.0.1
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
       shallowequal: 1.1.0
       supports-color: 5.5.0
     dev: false
 
-  /styled-components/5.3.5_kvcjbccuyytl2e6ypfoy6dforu:
+  /styled-components/5.3.5_ohkie2yri6he6ogke3veue6jsq:
     resolution:
       {
         integrity: sha512-ndETJ9RKaaL6q41B69WudeqLzOpY1A/ET/glXkNZ2T7dPjPqpPCXXQjDFYZWwNnE5co0wX+gTCqx9mfxTmSIPg==,
@@ -25219,8 +25126,8 @@ packages:
       babel-plugin-styled-components: 2.0.7_styled-components@5.3.5
       css-to-react-native: 3.0.0
       hoist-non-react-statics: 3.3.2
-      react: 17.0.1
-      react-dom: 17.0.1_react@17.0.1
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
       react-is: 17.0.1
       shallowequal: 1.1.0
       supports-color: 5.5.0
