@@ -216,6 +216,12 @@ const components = {
     { text: 'Ellipsis', size: { ui: '3/9', kit: '9/13' } },
     { text: 'A11y components enhancement', size: { ui: '1/13', kit: '1/13' } },
   ],
+  'Q4 2022': [
+    { text: 'Ellipsis', size: { kit: '1/5' } },
+    { text: 'Table enhancement', size: { ui: '3/5', kit: '5/9' } },
+    { text: 'Components animation', size: { ui: '7/15', kit: '11/15' } },
+    { text: 'A11y components enhancement', size: { ui: '1/15', kit: '1/7' } },
+  ],
 };
 
 function Gant(props) {
@@ -267,7 +273,7 @@ function Gant(props) {
 }
 
 function Roadmap() {
-  const [value, setValue] = useState(10);
+  const [value, setValue] = useState(11);
   let TabContent = null;
 
   switch (value) {
@@ -303,6 +309,9 @@ function Roadmap() {
       break;
     case 10:
       TabContent = <Gant sprint={dateSprint.slice(66, 73)} components={components['Q3 2022']} />;
+      break;
+    case 11:
+      TabContent = <Gant sprint={dateSprint.slice(72, 80)} components={components['Q4 2022']} />;
       break;
   }
   return (
