@@ -104,24 +104,50 @@ class Value extends Component<IInputMaskValueProps> {
   };
 
   inputRef = React.createRef<HTMLInputElement>();
+  maskRef = React.createRef<HTMLDivElement>();
   textMaskCoreInstance = undefined;
   usedMask = undefined;
   prevConfirmedValue = undefined;
-  state: { lastConformed: { all: string; userInput: string; maskOnly: string } | undefined } = {
+  state: {
+    lastConformed:
+      | {
+          all: string;
+          userInput: string;
+          maskOnly: string;
+        }
+      | undefined;
+    maskWidth: number | undefined;
+  } = {
     lastConformed: undefined,
+    maskWidth: undefined,
   };
 
   componentDidMount() {
     this.initTextMaskCore();
+    this.setState({
+      maskWidth: this.maskRef.current ? this.maskRef.current.offsetWidth : undefined,
+    });
   }
 
   componentDidUpdate(prevProps) {
-    const configProps = ['mask', 'hideMask', 'pipe', 'keepCharPositions'];
-    if (configProps.some((prop) => this.asProps[prop] !== prevProps[prop])) {
+    const maskConfigProps = ['mask', 'hideMask', 'pipe', 'keepCharPositions'];
+    const maskConfigChanged = maskConfigProps.some(
+      (prop) => this.asProps[prop] !== prevProps[prop],
+    );
+    if (maskConfigChanged) {
       this.initTextMaskCore();
     }
     if (prevProps.value !== this.props.value) {
       this.textMaskCoreInstance.update(this.props.value);
+    }
+    if (maskConfigChanged || prevProps.value !== this.props.value) {
+      this.setState((prevState) => {
+        const maskWidth = this.maskRef.current && this.maskRef.current.offsetWidth;
+        if (maskWidth !== (prevState as any).maskWidth) {
+          return { maskWidth };
+        }
+        return prevState;
+      });
     }
   }
 
@@ -242,6 +268,7 @@ class Value extends Component<IInputMaskValueProps> {
     const SMask = 'span' as any;
     const SPlaceholder = 'span';
     const SMaskHidden = 'span';
+    const SMaskVisible = 'span';
     const { title, placeholder, mask, neighborLocation, value, includeInputProps, ...otherProps } =
       this.asProps;
     const isValid = this.state.lastConformed && !this.state.lastConformed.all.includes('_');
@@ -258,12 +285,21 @@ class Value extends Component<IInputMaskValueProps> {
       <NeighborLocation.Detect neighborLocation={neighborLocation}>
         {(neighborLocation) =>
           sstyled(this.asProps.styles)(
-            <Flex position="relative" {...boxProps} __excludeProps={['onFocus', 'onChange']}>
-              <SMask aria-hidden="true" neighborLocation={neighborLocation}>
+            <Flex
+              position="relative"
+              flex={1}
+              {...boxProps}
+              __excludeProps={['onFocus', 'onChange']}
+            >
+              <SMask aria-hidden="true" neighborLocation={neighborLocation} ref={this.maskRef}>
                 {this.state.lastConformed && (
-                  <SMaskHidden>{this.state.lastConformed.userInput}</SMaskHidden>
+                  <SMaskHidden data-content={this.state.lastConformed.userInput} />
                 )}
-                {this.state.lastConformed?.maskOnly ?? <SPlaceholder>{placeholder}</SPlaceholder>}
+                {this.state.lastConformed ? (
+                  <SMaskVisible data-content={this.state.lastConformed.maskOnly} />
+                ) : (
+                  <SPlaceholder data-content={placeholder} />
+                )}
               </SMask>
               <SValue
                 render={Input.Value}
@@ -273,6 +309,7 @@ class Value extends Component<IInputMaskValueProps> {
                 aria-invalid={!isValid}
                 pattern={mask}
                 value={value}
+                wMin={this.state.maskWidth}
                 {...controlProps}
                 __excludeProps={['placeholder']}
               />
