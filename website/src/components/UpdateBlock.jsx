@@ -150,7 +150,7 @@ function UpdateBlock() {
           </>
         )}
       </div>
-      <img className={styles.updatesImg} src={updatesImg} />
+      <img className={styles.updatesImg} src={updatesImg} role="img" aria-hidden="true" />
     </div>
   );
 }

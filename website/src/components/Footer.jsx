@@ -16,15 +16,19 @@ function Footer() {
       </nav>
 
       <div className={styles.logo}>
-        Powered by <img src={logo} alt="Logo" />
+        Powered by <img src={logo} alt="Logo" role="img" aria-hidden="true" />
       </div>
       <div className={styles.description}>
         © 2008 - {new Date().getFullYear()} Semrush. All rights reserved.
       </div>
 
-      <div className={styles.contacts}>
+      <div className={styles.contacts} aria-label="Contact info">
         If you want to ask something, drop us a line at
-        <a href="mailto:ui-kit-team@semrush.com" target="_blank">
+        <a
+          href="mailto:ui-kit-team@semrush.com"
+          target="_blank"
+          aria-label="Drop a line at ui-kit-team@semrush.com"
+        >
           ui-kit-team@semrush.com
         </a>
         or open an
@@ -32,6 +36,7 @@ function Footer() {
           href="https://github.com/semrush/intergalactic"
           target="_blank"
           rel="noopener noreferrer"
+          aria-label="Create an issue on GitHub"
         >
           issue on GitHub
         </a>

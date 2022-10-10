@@ -13,7 +13,7 @@ function BannerBlock() {
       role="region"
       aria-label="Product emails library"
     >
-      <img className={styles.emailImg} src={emailImg} />
+      <img className={styles.emailImg} src={emailImg} role="img" aria-hidden="true" />
       <div className={styles.info}>
         <Box>
           <h2 className={styles.header}>Product emails library</h2>

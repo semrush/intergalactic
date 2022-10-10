@@ -80,6 +80,7 @@ ${ExampleRawComponent}`,
   return (
     <Tooltip
       title="Open in CodeSandbox"
+      aria-label="Open in CodeSandbox"
       tag="a"
       rel="noopener noreferrer nofollow"
       target="__blank"

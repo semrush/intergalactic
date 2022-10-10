@@ -18,3 +18,17 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
+
+.skip-to-content-link {
+  background: #ffffff;
+  top: 12px;
+  left: 12px;
+  padding: 16px;
+  color: var(--blue-600);
+  position: absolute;
+  transition: transform 0.3s;
+}
+
+.skip-to-content-link:focus {
+  z-index: 9999;
+}

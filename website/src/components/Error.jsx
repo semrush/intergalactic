@@ -17,9 +17,9 @@ export default (props) => {
     throw new Error('Got an error during ssr');
   }
   return (
-    <div className={styles.content}>
-      <img className={styles.spaceman} src={spaceman} />
-      <div className={styles.info}>
+    <main className={styles.content}>
+      <img className={styles.spaceman} src={spaceman} role="img" aria-hidden="true" />
+      <section className={styles.info}>
         <h1>{props.title}</h1>
         <p>
           Huston, we have problems. <br /> Try to return to the <Link to="/">Main page.</Link>
@@ -37,7 +37,7 @@ export default (props) => {
           </a>{' '}
           <br /> We'll do something about it 😛
         </p>
-      </div>
-    </div>
+      </section>
+    </main>
   );
 };

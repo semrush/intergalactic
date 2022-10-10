@@ -94,7 +94,13 @@ const showList = (hits, pages, content) => {
   if (!hits.length)
     options.push(
       <div className={styles.notFound} key={'_nothing_'}>
-        <img className={styles.notFoundImg} src={observatory} alt="observatory" />
+        <img
+          className={styles.notFoundImg}
+          src={observatory}
+          alt="observatory"
+          role="img"
+          aria-hidden="true"
+        />
         <div className={styles.notFoundText}>We found something… it's nothing</div>
       </div>,
     );
@@ -142,7 +148,7 @@ const Search = ({
             <>
               <input
                 role="search"
-                autoFocus
+                aria-label="What brings you here, Sole Survivor?"
                 value={ru.toEn(currentRefinement)}
                 onChange={(e) => {
                   refine(ru.toEn(e.currentTarget.value));

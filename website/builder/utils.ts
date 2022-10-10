@@ -120,6 +120,10 @@ export const markdownTokenToHtml = (token: MarkdownToken | MarkdownRoot) => {
 
         return h(node, 'a', props, [{ type: 'text', value: text }]);
       },
+      image: (h, node) => {
+        const props = { role: 'img', src: node.url, alt: node.alt };
+        return h(node, 'img', props);
+      },
     },
   });
   const html = toHtml(hast, { allowDangerousHtml: true });

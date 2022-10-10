@@ -36,7 +36,13 @@ function Header(props) {
         </div>
         <div className={cx(styles.logo, searchVisible && styles.activeSearch)}>
           <a className={styles.devportalLink} href="/">
-            <img src={mobileLogo} className={styles.semrushLogo} alt="Logo" />
+            <img
+              src={mobileLogo}
+              className={styles.semrushLogo}
+              alt="Logo"
+              role="img"
+              aria-hidden="true"
+            />
             <Tooltip>
               <Tooltip.Trigger className={styles.devportalLink__mobile}>
                 <span className={styles.devportalTitle}>Developer</span>

@@ -122,6 +122,7 @@ const PaintPlaygroundView = ({ backgroundColor, onChange, ...other }) => {
   const [color, changeColor] = useState(backgroundColor || 'white');
   return (
     <RadioGroup
+      aria-hidden="true"
       name="background-color"
       value={color}
       onChange={(color) => {
@@ -161,7 +162,7 @@ const PaintPlaygroundView = ({ backgroundColor, onChange, ...other }) => {
 
 class PlaygroundView extends React.Component {
   static defaultProps = {
-    LayoutPreview: (props) => <div tabIndex={0} {...props} />,
+    LayoutPreview: (props) => <div {...props} />,
   };
 
   constructor(props) {
@@ -181,7 +182,7 @@ class PlaygroundView extends React.Component {
     const hasWidget = !!widgetControls.length;
 
     return (
-      <div className={styles.wrapperPlayground}>
+      <div className={styles.wrapperPlayground} aria-hidden="true">
         <div className={styles.workArea} style={{ width: !hasWidget ? '100%' : '70%' }}>
           <div className={styles.resultView} style={{ backgroundColor }}>
             <LayoutPreview>{result}</LayoutPreview>
@@ -202,12 +203,7 @@ class PlaygroundView extends React.Component {
           </div>
         </div>
         {hasWidget ? (
-          <div
-            className={styles.widgetsBar}
-            ref={(node) => (this.container = node)}
-            role="form"
-            aria-label="Playground component form"
-          >
+          <div className={styles.widgetsBar} ref={(node) => (this.container = node)}>
             {widgetControls.map((control, i) => {
               return (
                 <div className={styles.widgetGroup} key={i}>
