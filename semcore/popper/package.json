@@ -15,7 +15,7 @@
   "dependencies": {
     "@popperjs/core": "2.9.2",
     "@semcore/flex-box": "^4",
-    "@semcore/neighbor-location": "^2",
+    "@semcore/neighbor-location": "^3",
     "@semcore/outside-click": "^2",
     "@semcore/portal": "^2",
     "@semcore/utils": "^3.24",

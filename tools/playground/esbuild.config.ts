@@ -21,7 +21,7 @@ esbuild
       bundle: true,
       sourcemap: true,
       outdir: './public/dist',
-      publicPath: 'dist',
+      publicPath: '/dist',
       plugins: [
         esbuildPluginPlaygroundsLoader('./examples'),
         esbuildPluginSemcoreSourcesResolve(resolvePath(fileURLToPath(import.meta.url), '../../..')),
