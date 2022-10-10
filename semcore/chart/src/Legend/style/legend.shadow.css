@@ -1,0 +1,24 @@
+@import '@semcore/utils/style/var.css';
+
+SLegend {
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+}
+
+SList {
+  padding: 0;
+  margin: 0;
+}
+
+SItem {
+  opacity: 1;
+
+  &[use|opacity] {
+    opacity: 0.3;
+  }
+}
+
+SControl {
+  cursor: pointer;
+}

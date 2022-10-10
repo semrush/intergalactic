@@ -1,0 +1,59 @@
+{
+  "name": "@semcore/chart",
+  "description": "Semrush Chart Component",
+  "version": "5.1.8",
+  "main": "lib/cjs/index.js",
+  "module": "lib/es6/index.js",
+  "typings": "lib/types/index.d.ts",
+  "sideEffects": [
+    "lib/*/Axis/XAxis.js",
+    "lib/*/Axis/YAxis.js",
+    "lib/*/Chart/Area/Area.js",
+    "lib/*/Chart/Bar/index.js",
+    "lib/*/Chart/Histogram/index.js",
+    "lib/*/Chart/Line/Line.js",
+    "lib/*/Chart/Venn/VennChart.js",
+    "lib/*/Legend/Legend.js",
+    "lib/*/Reference/CartesianGrid.js",
+    "lib/*/Reference/ReferenceArea.js",
+    "lib/*/Reference/ReferenceLine.js",
+    "lib/*/Tooltip/index.js",
+    "lib/*/copyChart.js"
+  ],
+  "author": "UI-kit team <ui-kit-team@semrush.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "pnpm semcore-builder",
+    "test": "jest"
+  },
+  "dependencies": {
+    "@semcore/checkbox": "^6",
+    "@semcore/utils": "^3.17",
+    "@types/recharts": "1.8.14",
+    "@upsetjs/venn.js": "1.4.1",
+    "classnames": "2.2.6",
+    "events": "3.3.0",
+    "hoist-non-react-statics": "3.3.2",
+    "lodash": "^4.17.21",
+    "prop-types": "^15.8.1",
+    "react-smooth": "^2.0.1",
+    "recharts": "1.8.5"
+  },
+  "peerDependencies": {
+    "@semcore/core": "^1",
+    "react": "16.8 - 17"
+  },
+  "jest": {
+    "preset": "@semcore/jest-preset-ui"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/semrush/intergalactic.git",
+    "directory": "semcore/chart"
+  },
+  "devDependencies": {
+    "@types/react": "16.8 - 17",
+    "@semcore/babel-plugin-react-semcore": "^4.2.1",
+    "@semcore/jest-preset-ui": "1.0.0"
+  }
+}
