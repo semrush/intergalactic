@@ -22,3 +22,9 @@ It's possible to truncate the middle of the text string.
 It's possible to specify after what text line apply truncating
 
 @example multiline
+
+@## Multiple use
+
+in case of multiple use of a component for optimization you can use one observer for all components
+
+@example observer
