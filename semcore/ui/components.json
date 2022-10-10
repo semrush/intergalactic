@@ -64,7 +64,6 @@
     "@semcore/switch",
     "@semcore/tab-line",
     "@semcore/tab-panel",
-    "@semcore/table",
     "@semcore/tag",
     "@semcore/textarea",
     "@semcore/time-picker",
