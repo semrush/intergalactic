@@ -5,7 +5,7 @@ import getOriginChildren from './getOriginChildren';
 
 function addonTextChildren(
   Children: any,
-  Text: React.ComponentType,
+  Text: React.ComponentType<any>,
   Addon: React.ComponentType | React.ComponentType[],
 ) {
   const children = getOriginChildren(Children);

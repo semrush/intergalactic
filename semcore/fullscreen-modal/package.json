@@ -32,7 +32,7 @@
     "directory": "semcore/fullscreen-modal"
   },
   "devDependencies": {
-    "@types/react": "16.8 - 18",
+    "@types/react": "18.0.21",
     "@semcore/jest-preset-ui": "1.0.0"
   }
 }

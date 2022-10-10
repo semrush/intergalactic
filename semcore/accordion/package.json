@@ -31,7 +31,7 @@
     "directory": "semcore/accordion"
   },
   "devDependencies": {
-    "@types/react": "16.8 - 18",
+    "@types/react": "18.0.21",
     "@guidepup/playwright": "0.6.1",
     "@playwright/test": "1.25.1",
     "@semcore/jest-preset-ui": "1.0.0"
