@@ -56,5 +56,6 @@ Remember that the page loading indicator should help user to estimate the interf
 
 > This component is one of the components that displays interface's reaction to user actions in the interface. For general rules on such components, see the [Loading patterns](/patterns/loading-states/).
 
+@page spin-a11y
 @page spin-api
 @page spin-changelog
