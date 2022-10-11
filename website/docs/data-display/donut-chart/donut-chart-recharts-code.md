@@ -3,7 +3,7 @@ title: Legacy examples
 fileSource: d3-chart
 ---
 
-> 🚨 Library `@semcore/chart` is deprecated and will be removed in the next major release. Please, use new chart library [`@semcore/d3-chart`](/data-display/area-chart/area-chart-d3-code/) instead.
+> 🚨 Library `@semcore/chart` is deprecated. Please, use new chart library [`@semcore/d3-chart`](/data-display/area-chart/area-chart-d3-code/) instead.
 
 @## An example of a simple use
 
@@ -20,21 +20,21 @@ A short instruction on how to achieve the desired result:
 - `activeIndex` is responsible for allocating the active sector.
 
 ```jsx
-import { Pie } from '@semcore/ui/charts';
+import { Pie } from '@semcore/charts';
 <Pie activeIndex={0} />;
 ```
 
 - `activeShape` displays active sector by default. _The active sector size is `outerRadius + 8`._
 
 ```jsx
-import {Pie, Sector} from '@semcore/ui/charts'
+import {Pie, Sector} from '@semcore/charts'
 <Pie outerRadius={40} activeShape={(props) => <Sector {...props}/>}>
 ```
 
 - To ensure correct operation, you need to prepare data for `donut`. _This item is needed if your data does not have an `id` for sectors._
 
 ```jsx
-import {Pie} from '@semcore/ui/charts'
+import {Pie} from '@semcore/charts'
 const data = [{ domain: 'tut.by', value: 35844 }, ...]
 let  id = 0
 const dataPie = data.reduce((acc, entry) => {
@@ -50,7 +50,7 @@ const dataPie = data.reduce((acc, entry) => {
 - Add events to the sector. _List of events is specified in [API](http://recharts.org/en-US/api/Pie)._
 
 ```jsx
-import {Pie} from '@semcore/ui/charts'
+import {Pie} from '@semcore/charts'
 <Pie onClick={...} />
 ```
 

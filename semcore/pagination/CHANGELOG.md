@@ -2,6 +2,13 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.3.0] - 2022-10-10
+
+### Changed
+
+- Added support for React 18 🔥
+- Extended version range for dependency `@semcore/icons`.
+
 ## [3.2.12] - 2022-10-10
 
 ### Changed

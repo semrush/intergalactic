@@ -3,9 +3,9 @@ const util = require('util');
 // const fs = require('fs');
 const path = require('path');
 const React = require('react');
-// const { createRoot } = require('react-dom/client');
-const ReactDOM = require('react-dom');
-// import { act } from './testing';
+const { createRoot } = require('react-dom/client');
+// const ReactDOM = require('react-dom');
+import { act } from './testing';
 
 const post = util.promisify(request.post);
 const config = {};
@@ -25,9 +25,9 @@ const DEFAULT_OPTIONS = { selector: '#root' };
 async function snapshot(Component, options) {
   options = Object.assign({}, DEFAULT_OPTIONS, options);
   const _tmp = document.createElement('div');
-  // const root = createRoot(_tmp);
-  // act(() => root.render(Component));
-  ReactDOM.render(Component, _tmp);
+  const root = createRoot(_tmp);
+  act(() => root.render(Component));
+  // ReactDOM.render(Component, _tmp);
   const componentHtml = _tmp.innerHTML;
   const componentStyle = document.head.innerHTML;
   const html = `
@@ -92,8 +92,7 @@ async function snapshot(Component, options) {
       html,
     },
   });
-  // act(() => root.unmount());
-  ReactDOM.unmountComponentAtNode(_tmp);
+  act(() => root.unmount());
   return body;
 }
 
