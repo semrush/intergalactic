@@ -39,6 +39,7 @@
     "@semcore/esbuild-plugin-semcore": "workspace:*",
     "@semcore/builder": "workspace:*",
     "@semcore/continuous-delivery": "workspace:*",
+    "@semcore/changelog-handler": "workspace:*",
     "@semcore/core": "workspace:*",
     "@semcore/d3-chart": "workspace:*",
     "@semcore/jest-preset-ui": "workspace:*",
