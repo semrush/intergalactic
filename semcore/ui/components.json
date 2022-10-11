@@ -9,7 +9,6 @@
     "@semcore/button",
     "@semcore/card",
     "@semcore/carousel",
-    "@semcore/chart",
     "@semcore/checkbox",
     "@semcore/color-picker",
     "@semcore/core",
