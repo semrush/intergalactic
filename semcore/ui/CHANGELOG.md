@@ -711,11 +711,6 @@
 - **Changed** Rewrite the component to svg.
 - **Added** Rounded corners.
 
-### @semcore/legacy-publisher
-
-- **Changed** Added slack notifications.
-- **Changed** Rewritten to typescript.
-
 ### @semcore/tag
 
 - **Fixed** Fixed previously lost overflowed text ellipsis.
