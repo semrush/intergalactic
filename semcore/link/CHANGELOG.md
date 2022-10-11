@@ -14,12 +14,6 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Version patch update due to children dependencies update (`@semcore/utils` [3.37.1 ~> 3.37.2], `@semcore/flex-box` [4.5.11 ~> 4.5.12]).
 
-## [4.1.4] - 2022-08-30
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/utils` [3.37.0 ~> 3.37.1], `@semcore/flex-box` [4.5.10 ~> 4.5.11]).
-
 ## [4.1.3] - 2022-08-29
 
 ### Fixed
@@ -50,54 +44,6 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Version patch update due to children dependencies update (`@semcore/utils` [3.36.0 ~> 3.37.0], `@semcore/flex-box` [4.5.9 ~> 4.5.10]).
 
-## [4.0.10] - 2022-08-11
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/utils` [3.35.1 ~> 3.36.0], `@semcore/typography` [4.0.11 ~> 4.1.0], `@semcore/flex-box` [4.5.8 ~> 4.5.9]).
-
-## [4.0.9] - 2022-08-01
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/utils` [3.35.0 ~> 3.35.1], `@semcore/flex-box` [4.5.7 ~> 4.5.8]).
-
-## [4.0.8] - 2022-07-22
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/utils` [3.34.0 ~> 3.35.0], `@semcore/flex-box` [4.5.6 ~> 4.5.7]).
-
-## [4.0.7] - 2022-07-07
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/utils` [3.33.0 ~> 3.34.0], `@semcore/flex-box` [4.5.5 ~> 4.5.6]).
-
-## [4.0.6] - 2022-06-02
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/utils` [3.32.2 ~> 3.33.0], `@semcore/flex-box` [4.5.4 ~> 4.5.5], `@semcore/icon` [2.26.1 ~> 2.27.0]).
-
-## [4.0.5] - 2022-05-31
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/utils` [3.32.1 ~> 3.32.2], `@semcore/flex-box` [4.5.3 ~> 4.5.4], `@semcore/icon` [2.26.0 ~> 2.26.1]).
-
-## [4.0.4] - 2022-05-23
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/icon` [2.25.1 ~> 2.26.0]).
-
-## [4.0.3] - 2022-05-19
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/utils` [3.32.0 ~> 3.32.1], `@semcore/typography` [4.0.1 ~> 4.0.3], `@semcore/flex-box` [4.5.1 ~> 4.5.3], `@semcore/icon` [2.25.0 ~> 2.25.1]).
-
 ## [4.0.2] - 2022-05-19
 
 ### Fixed
@@ -121,12 +67,6 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### Changed
 
 - Version patch update due to children dependencies update (`@semcore/typography` [3.4.1 ~> 3.4.2]).
-
-## [3.5.1] - 2022-03-14
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/utils` [3.31.2 ~> 3.31.2], `@semcore/flex-box` [4.5.0 ~> 4.5.1]).
 
 ## [3.5.0] - 2021-03-04
 
