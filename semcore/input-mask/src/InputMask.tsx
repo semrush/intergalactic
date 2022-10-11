@@ -263,7 +263,9 @@ class Value extends Component<IInputMaskValueProps> {
                 {this.state.lastConformed && (
                   <SMaskHidden>{this.state.lastConformed.userInput}</SMaskHidden>
                 )}
-                {this.state.lastConformed?.maskOnly ?? <SPlaceholder>{placeholder}</SPlaceholder>}
+                {this.state.lastConformed?.maskOnly ?? (
+                  <SPlaceholder>{placeholder as string}</SPlaceholder>
+                )}
               </SMask>
               <SValue
                 render={Input.Value}

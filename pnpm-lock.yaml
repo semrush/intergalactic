@@ -275,7 +275,7 @@ importers:
       '@semcore/checkbox': ^6
       '@semcore/jest-preset-ui': 1.0.0
       '@semcore/utils': ^3.17
-      '@types/react': 16.8 - 17
+      '@types/react': 16.8 - 18
       '@types/recharts': 1.8.14
       '@upsetjs/venn.js': 1.4.1
       classnames: 2.2.6
@@ -300,7 +300,7 @@ importers:
     devDependencies:
       '@semcore/babel-plugin-react-semcore': link:../../tools/babel-plugin-react-semcore
       '@semcore/jest-preset-ui': link:../../tools/jest-preset-ui
-      '@types/react': 17.0.50
+      '@types/react': 18.0.21
 
   semcore/checkbox:
     specifiers:
@@ -7088,6 +7088,7 @@ packages:
       '@types/prop-types': 15.7.5
       '@types/scheduler': 0.16.2
       csstype: 3.0.8
+    dev: false
 
   /@types/react/18.0.21:
     resolution:
