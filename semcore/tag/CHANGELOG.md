@@ -7,6 +7,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### Changed
 
 - Added support for React 18 🔥
+- Extended version range for dependency `@semcore/icons`.
 
 ## [4.1.6] - 2022-10-06
 

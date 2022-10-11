@@ -31,6 +31,6 @@
   "devDependencies": {
     "@types/react": "18.0.21",
     "@semcore/jest-preset-ui": "1.0.0",
-    "@semcore/icon": "^2.16"
+    "@semcore/icon": "*"
   }
 }

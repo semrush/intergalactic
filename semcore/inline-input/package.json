@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "@semcore/flex-box": "^4.5.0",
-    "@semcore/icon": "^2.19.3",
+    "@semcore/icon": "^2.19.3 - 3",
     "@semcore/spin": "^4",
     "@semcore/tooltip": "^5",
     "@semcore/utils": "^3.31.1"
@@ -22,7 +22,7 @@
   "devDependencies": {
     "@types/react": "18.0.21",
     "@semcore/button": "*",
-    "@semcore/jest-preset-ui": "*",
+    "@semcore/jest-preset-ui": "1.0.0",
     "@semcore/spin": "*",
     "@semcore/tooltip": "*"
   },

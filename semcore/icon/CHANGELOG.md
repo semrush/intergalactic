@@ -2,7 +2,11 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [2.34.0] - 2022-10-10
+## [3.0.0] - 2022-10-10
+
+### BREAK
+
+- Remove `AppBlock` icon, use `AppsBlock` instead.
 
 ### Changed
 
