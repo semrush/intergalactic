@@ -443,7 +443,7 @@ importers:
       '@semcore/progress-bar': '*'
       '@semcore/scroll-area': ^4.0.0
       '@semcore/skeleton': '*'
-      '@semcore/spin': ^4
+      '@semcore/spin': '*'
       '@semcore/spin-container': '*'
       '@semcore/sticky': '*'
       '@semcore/tooltip': '*'
@@ -643,7 +643,6 @@ importers:
       '@semcore/jest-preset-ui': 1.0.0
       '@semcore/typography': ^4
       '@semcore/utils': ^3.27
-      '@types/node': ^17.0.45
       '@types/react': 18.0.21
     dependencies:
       '@semcore/button': link:../button
@@ -654,7 +653,6 @@ importers:
       '@semcore/utils': link:../utils
     devDependencies:
       '@semcore/jest-preset-ui': link:../../tools/jest-preset-ui
-      '@types/node': 17.0.45
       '@types/react': 18.0.21
 
   semcore/feature-popover:
