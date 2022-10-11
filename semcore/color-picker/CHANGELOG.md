@@ -8,7 +8,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Added support for React 18 🔥
 
-## [1.1.9] - 2022-10-07
+## [1.1.10] - 2022-10-07
 
 ### Changed
 

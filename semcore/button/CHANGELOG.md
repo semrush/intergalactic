@@ -20,18 +20,6 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Version patch update due to children dependencies update (`@semcore/utils` [3.37.1 ~> 3.37.2]).
 
-## [4.0.17] - 2022-09-20
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/spin` [4.0.9 ~> 4.0.10]).
-
-## [4.0.16] - 2022-08-30
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/utils` [3.37.0 ~> 3.37.1]).
-
 ## [4.0.15] - 2022-08-29
 
 ### Fixed
@@ -55,48 +43,6 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### Changed
 
 - Version patch update due to children dependencies update (`@semcore/utils` [3.36.0 ~> 3.37.0]).
-
-## [4.0.11] - 2022-08-11
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/utils` [3.35.1 ~> 3.36.0]).
-
-## [4.0.10] - 2022-08-01
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/utils` [3.35.0 ~> 3.35.1]).
-
-## [4.0.9] - 2022-07-22
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/utils` [3.34.0 ~> 3.35.0]).
-
-## [4.0.8] - 2022-07-14
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/neighbor-location` [2.3.9 ~> 2.3.10]).
-
-## [4.0.7] - 2022-07-07
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/utils` [3.33.0 ~> 3.34.0]).
-
-## [4.0.6] - 2022-06-02
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/utils` [3.32.2 ~> 3.33.0]).
-
-## [4.0.5] - 2022-05-31
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/utils` [3.32.1 ~> 3.32.2]).
 
 ## [4.0.4] - 2022-05-27
 
@@ -135,12 +81,6 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### Changed
 
 - Version patch update due to children dependencies update (`@semcore/utils` [3.31.2 ~> 3.31.2]).
-
-## [3.3.6] - 2022-03-04
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/spin` [3.3.0 ~> 3.4.0]).
 
 ## [3.3.5] - 2022-02-24
 
