@@ -146,7 +146,7 @@ class RadialTreeBase extends Component<RootAsProps> {
     defaultActiveKey: null,
   };
 
-  Element!: React.FC<{ render: string }>;
+  Element!: React.FC<{ children?: React.ReactNode; render: string }>;
 
   constructor(props: any) {
     super(props);
@@ -742,6 +742,7 @@ export interface IRadialTreeTitleProps {
 type RadialTreeTitleAsProps = IRadialTreeTitleProps & {
   Element: React.FC<{ render: string } & React.SVGProps<any>>;
   Children: React.FC;
+  children: React.ReactNode;
   styles: React.CSSProperties;
   dataHintsHandler: DataHintsHandler;
 };
