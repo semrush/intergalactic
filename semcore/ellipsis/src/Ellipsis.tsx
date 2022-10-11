@@ -1,4 +1,4 @@
-import React, { RefObject, useRef, useMemo } from 'react';
+import React, { RefObject, useRef, useMemo, useState, useLayoutEffect } from 'react';
 import createComponent, { Component, sstyled } from '@semcore/core';
 import Tooltip from '@semcore/tooltip';
 import { Flex } from '@semcore/flex-box';
@@ -26,19 +26,6 @@ type AsPropsMiddle = {
   // eslint-disable-next-line ssr-friendly/no-dom-globals-in-module-scope
   containerRef?: RefObject<HTMLElement | null>;
 };
-
-const getSymbolWidth = (fontSize: string) => {
-  const dateSpan = document.createElement('span');
-  dateSpan.setAttribute('style', `fontSize: ${fontSize}px`);
-  dateSpan.innerHTML = 'a';
-  document.body.appendChild(dateSpan);
-  const rect = dateSpan.getBoundingClientRect();
-  dateSpan.remove();
-  return rect.width;
-};
-
-const getFontSize = (element: HTMLElement | null) =>
-  element ? window.getComputedStyle(element, null).getPropertyValue('font-size') : '14';
 
 const getSymbolAmount = (blockWidth: number, symbolWidth: number) =>
   Math.round(blockWidth / symbolWidth);
@@ -87,15 +74,36 @@ class RootEllipsis extends Component<AsProps> {
 
 const EllipsisMiddle: React.FC<AsPropsMiddle> = (props) => {
   const { styles, text, tooltip, resizeObserver, containerRef } = props;
-  const resizeElement = useRef(null);
+  const resizeElement = useRef<RefObject<HTMLElement | null>>(null);
+  const [dimension, setDimension] = useState<{ fontSize: string; symbolWidth: number }>({
+    fontSize: '14',
+    symbolWidth: 0,
+  });
   const blockWidth = useResizeObserver(resizeElement, resizeObserver).width;
-  const element = containerRef?.current ?? resizeElement.current;
-  const fontSize = useMemo(() => getFontSize(element), [element]);
-  const size = useMemo(() => getSymbolWidth(fontSize), [fontSize]);
+
+  useLayoutEffect(() => {
+    const dateSpan = document.createElement('temporary-block');
+    dateSpan.setAttribute('style', `fontSize: ${dimension.fontSize}px`);
+    dateSpan.innerHTML = 'a';
+    document.body.appendChild(dateSpan);
+    const rect = dateSpan.getBoundingClientRect();
+    dateSpan.remove();
+
+    setDimension({
+      fontSize: window
+        .getComputedStyle(containerRef?.current ?? resizeElement.current, null)
+        .getPropertyValue('font-size'),
+      symbolWidth: rect.width,
+    });
+  }, []);
+
   const STail = 'span';
   const SBeginning = 'span';
   const SContainerMiddle = Flex;
-  const symbolAmount = useMemo(() => getSymbolAmount(blockWidth, size), [blockWidth, size]);
+  const symbolAmount = useMemo(
+    () => getSymbolAmount(blockWidth, dimension.symbolWidth),
+    [blockWidth, dimension.symbolWidth],
+  );
 
   if (tooltip) {
     return sstyled(styles)(
