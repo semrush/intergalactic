@@ -22,12 +22,12 @@ We have six sizes of Spin.
 
 | Size    | Text below                                  | Text on the right                            |
 | ------- | ------------------------------------------- | -------------------------------------------- |
-| **XXL** | ![center-xxl](static/text-vertical-xxl.png) | ![right-xxl](static/text-horizontal-xxl.png) |
-| **XL**  | ![center-xl](static/text-vertical-xl.png)   | ![right-xl](static/text-horizontal-xl.png)   |
-| **L**   | ![center-l](static/text-vertical-l.png)     | ![right-l](static/text-horizontal-l.png)     |
-| **M**   | ![center-m](static/text-vertical-m.png)     | ![right-m](static/text-horizontal-m.png)     |
-| **S**   | ![center-s](static/text-vertical-s.png)     | ![right-s](static/text-horizontal-s.png)     |
 | **XS**  | ![center-xs](static/text-vertical-xs.png)   | ![right-s](static/text-horizontal-xs.png)    |
+| **S**   | ![center-s](static/text-vertical-s.png)     | ![right-s](static/text-horizontal-s.png)     |
+| **M**   | ![center-m](static/text-vertical-m.png)     | ![right-m](static/text-horizontal-m.png)     |
+| **L**   | ![center-l](static/text-vertical-l.png)     | ![right-l](static/text-horizontal-l.png)     |
+| **XL**  | ![center-xl](static/text-vertical-xl.png)   | ![right-xl](static/text-horizontal-xl.png)   |
+| **XXL** | ![center-xxl](static/text-vertical-xxl.png) | ![right-xxl](static/text-horizontal-xxl.png) |
 
 @## Styles
 
