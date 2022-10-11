@@ -21,8 +21,6 @@ const installComponents = (packages: string[]) => {
 
   const nestedNodeModulesAllowList = {
     // remove after external theme update (https://github.com/semrush/intergalactic/tree/feature/restyling) will be merged (approx may 10 2022)
-    './node_modules/@semcore/project-create/node_modules/final-form': '4.18.7',
-    './node_modules/@semcore/project-create/node_modules/react-final-form': '6.3.5',
     './node_modules/@semcore/utils/node_modules/classnames': '2.3.1',
     './node_modules/@semcore/chart/node_modules/@upsetjs/venn.js': '1.4.2',
     // Exclude @semcore/chart from @semcore/ui and remove followings
