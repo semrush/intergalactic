@@ -8,18 +8,13 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Added support for React 18 🔥
 - Extended version range for dependency `@semcore/icons`.
+- Color for Close icon with theme `info` was changed from `--blue-400` to `--gray-400`.
 
 ## [4.1.19] - 2022-10-06
 
 ### Changed
 
 - Version patch update due to children dependencies update (`@semcore/icon` [2.32.2 ~> 2.33.0]).
-
-## [4.2.0] - unreleased
-
-### Changed
-
-- Color for Close icon with theme `info` was changed from `--blue-400` to `--gray-400`.
 
 ## [4.1.17] - 2022-09-29
 
