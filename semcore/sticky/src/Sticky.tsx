@@ -11,7 +11,7 @@ export interface IStickyProps extends IBoxProps {
   top?: string | number;
 }
 
-class Sticky extends Component<IStickyProps> {
+class StickyRoot extends Component<IStickyProps> {
   static displayName = 'Sticky';
   static defaultProps = {
     top: 0,
@@ -27,4 +27,8 @@ class Sticky extends Component<IStickyProps> {
 }
 
 // eslint-disable-next-line ssr-friendly/no-dom-globals-in-module-scope
-export default createComponent<Merge<IStickyProps, HTMLAttributes<HTMLDivElement>>>(Sticky);
+const Sticky = createComponent<Merge<IStickyProps, HTMLAttributes<HTMLDivElement>>>(StickyRoot);
+/**
+ * @deprecated Please, use package `@semcore/ui/flex-box` instead. Package `@semcore/sticky` will be removed in the next major release
+ */
+export default Sticky;

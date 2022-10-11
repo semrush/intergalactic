@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "@semcore/utils": "^3.21",
-    "@semcore/icon": "^2.16 - 3",
+    "@semcore/icon": "2.16 - 3",
     "@semcore/modal": "^3.0.1",
     "@semcore/typography": "^4",
     "@semcore/flex-box": "^4"

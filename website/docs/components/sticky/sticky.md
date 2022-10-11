@@ -4,6 +4,8 @@ fileSource: sticky
 tabName: Design
 ---
 
+> 🚨 Library `@semcore/sticky` is deprecated. Please, use [`@semcore/flex-box`](/layout/box-system/) instead.
+
 @## Description
 
 **Sticky** is a component that can be used to pin a block towards a parent one when scrolling.

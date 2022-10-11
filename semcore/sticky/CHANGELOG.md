@@ -7,6 +7,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### Changed
 
 - Added support for React 18 🔥
+- This component has been deprecated. Added a message about it.
 
 ## [2.2.12] - 2022-10-04
 

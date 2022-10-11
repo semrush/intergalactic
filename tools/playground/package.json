@@ -12,7 +12,6 @@
   "private": true,
   "dependencies": {
     "@semcore/esbuild-plugin-semcore": "*",
-    "@types/node": "^17.0.23",
     "esbuild": "0.14.29",
     "fast-glob": "3.2.11",
     "fps-emitter": "1.0.0",
