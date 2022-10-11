@@ -18,10 +18,6 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Added icon Stoller
 
-### Changed
-
-- Changed icons-list.js in alphabet order
-
 ## [2.32.2] - 2022-10-04
 
 ### Changed
