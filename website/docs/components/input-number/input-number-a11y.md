@@ -18,11 +18,14 @@ See detailed information about the keyboard support for the input fileds in the 
 
 ### Roles & attributes
 
-"The implicit role for the `<input type="number">` element is spinbutton. If spinbutton is not an important feature for your form control, consider not using type="number". Instead, use `inputmode="numeric"` along with a pattern attribute that limits the characters to numbers and associated characters. With `<input type="number">`, there is a risk of users accidentally incrementing a number when they're trying to do something else. Additionally, if users try to enter something that's not a number, there's no explicit feedback about what they're doing wrong."
+"The implicit role for the `<input type="number">` element is `spinbutton`. If `spinbutton` is not an important feature for your form control, consider not using type="number". Instead, use `inputmode="numeric"` along with a pattern attribute that limits the characters to numbers and associated characters. With `<input type="number">`, there is a risk of users accidentally incrementing a number when they're trying to do something else. Additionally, if users try to enter something that's not a number, there's no explicit feedback about what they're doing wrong."
 
-Find more in [MDN guides](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/number#accessibility).
+Find more in MDN guides:
 
-InputNumber has the same accessibility recommendations as [Input](/components/input/input-a11y/) has.
+- [input type="number"](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/number#accessibility)
+- [spinbutton role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/spinbutton_role)
+
+InputNumber also has the same accessibility recommendations as [Input](/components/input/input-a11y/) has.
 
 @## Considerations for designers
 
