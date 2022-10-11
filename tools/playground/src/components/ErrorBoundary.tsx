@@ -1,7 +1,7 @@
 import React from 'react';
 import './error-boundary.css';
 
-type Props = { id: string };
+type Props = { id: string; children: React.ReactNode };
 type State = { id: string; error: Error | null; errorInfo: React.ErrorInfo | null };
 
 export class ErrorBoundary extends React.Component<Props, State> {

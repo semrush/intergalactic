@@ -18,7 +18,7 @@
   },
   "peerDependencies": {
     "@semcore/core": "^1.11",
-    "react": "16.8 - 17"
+    "react": "16.8 - 18"
   },
   "jest": {
     "preset": "@semcore/jest-preset-ui"
@@ -29,7 +29,7 @@
     "directory": "semcore/progress-bar"
   },
   "devDependencies": {
-    "@types/react": "16.8 - 17",
+    "@types/react": "18.0.21",
     "@guidepup/playwright": "0.6.1",
     "@playwright/test": "1.25.1",
     "@semcore/jest-preset-ui": "1.0.0"

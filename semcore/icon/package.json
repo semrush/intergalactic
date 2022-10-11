@@ -13,7 +13,7 @@
     "transform": "icon-transform-svg",
     "build": "pnpm run clean && pnpm semcore-builder --source=js && pnpm icon-transform-svg --configFile=./transform-svg-legacy.config.js && pnpm icon-transform-svg --configFile=./transform-svg.config.js",
     "test": "jest",
-    "clean": "ls -d */ | egrep -v \"__tests__|src|svg|svg-new|node_modules|AppBlock\" | xargs rm -rf"
+    "clean": "ls -d */ | egrep -v \"__tests__|src|svg|svg-new|node_modules\" | xargs rm -rf"
   },
   "dependencies": {
     "@semcore/utils": "^3.15",
@@ -22,7 +22,7 @@
   },
   "peerDependencies": {
     "@semcore/core": "^1.11",
-    "react": "16.8 - 17"
+    "react": "16.8 - 18"
   },
   "jest": {
     "preset": "@semcore/jest-preset-ui"
@@ -33,7 +33,7 @@
     "directory": "semcore/icon"
   },
   "devDependencies": {
-    "@types/react": "16.8 - 17",
+    "@types/react": "18.0.21",
     "@semcore/jest-preset-ui": "1.0.0",
     "@semcore/icon-transform-svg": "1.0.0"
   }

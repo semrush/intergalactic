@@ -14,13 +14,13 @@
   },
   "dependencies": {
     "@semcore/flex-box": "^4",
-    "@semcore/icon": "^2.16",
+    "@semcore/icon": "2.16 - 3",
     "@semcore/scroll-area": "^4.0.0",
     "@semcore/utils": "^3.22",
     "resize-observer-polyfill": "^1.5"
   },
   "devDependencies": {
-    "@types/react": "16.8 - 17",
+    "@types/react": "18.0.21",
     "@semcore/jest-preset-ui": "1.0.0",
     "@guidepup/playwright": "0.6.1",
     "@playwright/test": "1.25.1",
@@ -33,7 +33,7 @@
     "@semcore/portal": "*",
     "@semcore/progress-bar": "*",
     "@semcore/skeleton": "*",
-    "@semcore/spin": "^4",
+    "@semcore/spin": "*",
     "@semcore/spin-container": "*",
     "@semcore/sticky": "*",
     "@semcore/tooltip": "*",
@@ -42,7 +42,7 @@
   },
   "peerDependencies": {
     "@semcore/core": "^1.11",
-    "react": "16.8 - 17"
+    "react": "16.8 - 18"
   },
   "jest": {
     "preset": "@semcore/jest-preset-ui"

@@ -197,6 +197,6 @@ AreaRecharts.defaultProps.dot = false;
 AreaRecharts.defaultProps.activeDot = { r: 8, strokeWidth: 2, stroke: colors['white'] };
 
 /**
- * @deprecated Please, use package `@semcore/d3-chart` instead. Package `@semcore/chart` will be removed in the next major release
+ * @deprecated Please, use package `@semcore/ui/d3-chart` instead. Package `@semcore/chart` is deprecated.
  */
 export default AreaRecharts;

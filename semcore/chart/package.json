@@ -41,7 +41,7 @@
   },
   "peerDependencies": {
     "@semcore/core": "^1",
-    "react": "16.8 - 17"
+    "react": "16.8 - 18"
   },
   "jest": {
     "preset": "@semcore/jest-preset-ui"
@@ -52,7 +52,7 @@
     "directory": "semcore/chart"
   },
   "devDependencies": {
-    "@types/react": "16.8 - 17",
+    "@types/react": "16.8 - 18",
     "@semcore/babel-plugin-react-semcore": "^4.2.1",
     "@semcore/jest-preset-ui": "1.0.0"
   }
