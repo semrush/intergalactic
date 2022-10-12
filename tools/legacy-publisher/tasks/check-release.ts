@@ -1,7 +1,6 @@
 import { createTask } from '../task';
 import fse from 'fs-extra';
 import path from 'path';
-import { validateMailerEnv } from '@semcore/mailer';
 import { validateSlackIntegrationEnv } from '@semcore/slack-integration';
 import { fileURLToPath } from 'url';
 const filename = fileURLToPath(import.meta.url);
