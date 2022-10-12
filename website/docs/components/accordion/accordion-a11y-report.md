@@ -26,9 +26,10 @@ Guidepup v0.13.1, MacOS Big Sur 11._
 19. Screen reader goes to the previous element.
 20. Screen reader says "Section 1 expanded button".
 21. Screen reader triggers element default action.
-22. Screen reader goes to the next element.
-23. Screen reader says "Section 2 button".
-24. Screen reader goes to the next element.
-25. Screen reader says "Section 3 dimmed button".
-26. Screen reader triggers element default action.
-27. Screen reader says "dimmed".
+22. Screen reader says "Section 1 button".
+23. Screen reader goes to the next element.
+24. Screen reader says "Section 2 button".
+25. Screen reader goes to the next element.
+26. Screen reader says "Section 3 dimmed button".
+27. Screen reader triggers element default action.
+28. Screen reader says "dimmed".
