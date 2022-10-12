@@ -18,10 +18,16 @@ function Demo() {
   return (
     <Flex>
       <Box mr={5} mb={5}>
-        <DateRangePicker periods={periods} />
+        <DateRangePicker periods={periods}>
+          <DateRangePicker.InputTrigger />
+          <DateRangePicker.Popper />
+        </DateRangePicker>
       </Box>
       <Box>
-        <DateRangePicker />
+        <DateRangePicker>
+          <DateRangePicker.InputTrigger />
+          <DateRangePicker.Popper />
+        </DateRangePicker>
       </Box>
     </Flex>
   );

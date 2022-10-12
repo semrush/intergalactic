@@ -9,10 +9,16 @@ function Demo() {
   return (
     <Flex>
       <Box>
-        <MonthPicker value={value} onChange={(date) => setValue(date)} />
+        <MonthPicker value={value} onChange={(date) => setValue(date)}>
+          <MonthPicker.InputTrigger />
+          <MonthPicker.Popper />
+        </MonthPicker>
       </Box>
       <Box ml={5}>
-        <MonthRangePicker value={valueRange} onChange={(date) => setValueRange(date)} />
+        <MonthRangePicker value={valueRange} onChange={(date) => setValueRange(date)}>
+          <MonthRangePicker.InputTrigger />
+          <MonthRangePicker.Popper />
+        </MonthRangePicker>
       </Box>
     </Flex>
   );

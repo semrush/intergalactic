@@ -5,7 +5,6 @@ import shortDateRangeFormat from './utils/shortDateRangeFormat';
 import { Header, Next, Period, Popper, Prev, Title, Trigger, InputTrigger } from './components';
 import { CalendarMonths as Calendar } from './components/Calendar';
 import RangePickerAbstract, { Apply, Reset } from './components/RangePickerAbstract';
-import InputTriggerBase from './components/InputTrigger';
 
 const inputTriggerParts = { day: false, month: true, year: true };
 
@@ -83,7 +82,7 @@ class MonthRangePickerRoot extends RangePickerAbstract {
   getInputTriggerProps() {
     const { value, onChange, onDisplayedPeriodChange, locale, disabled } = this.asProps;
 
-    const props = {
+    return {
       ...super.getTriggerProps(),
       value,
       onChange,
@@ -92,10 +91,7 @@ class MonthRangePickerRoot extends RangePickerAbstract {
       w: 310,
       parts: inputTriggerParts,
       disabledDates: disabled,
-    };
-
-    return {
-      children: () => <InputTriggerBase.DateRange {...props} />,
+      children: () => <InputTrigger.DateRange />,
     };
   }
 

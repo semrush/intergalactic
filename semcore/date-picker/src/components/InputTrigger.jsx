@@ -3,7 +3,7 @@ import BaseTrigger from '@semcore/base-trigger';
 import InputMask from '@semcore/input-mask';
 import { Flex, Box } from '@semcore/flex-box';
 import Calendar from '@semcore/icon/Calendar/m';
-import createComponent, { Root, sstyled } from '@semcore/core';
+import createComponent, { Root, sstyled, Component } from '@semcore/core';
 import NeighborLocation from '@semcore/neighbor-location';
 import includesDate from '../utils/includesDate';
 import dayjs from 'dayjs';
@@ -12,166 +12,190 @@ import style from '../style/calendar.shadow.css';
 
 const defaultAllowedParts = { year: true, month: true, day: true };
 
-const InputTriggerRoot = (props) => {
-  const SInputTriggerRoot = Root;
-  const { Children } = props;
-  return sstyled(style)(
-    <SInputTriggerRoot render={Box} __excludeProps={['onChange', 'value']}>
-      <Children />
-    </SInputTriggerRoot>,
-  );
-};
+class InputTriggerRoot extends Component {
+  static displayName = 'InputTrigger';
+  static style = style;
 
-const SingleDateInput = (props) => {
-  const {
-    hasChildren,
-    Children,
-    value,
-    onChange,
-    onDisplayedPeriodChange,
-    locale,
-    forwardRef,
-    styles,
-    w,
-    ...otherProps
-  } = props;
-  const SSingleDateInput = Root;
+  getSingleDateInputProps() {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const { children, ...otherProps } = this.asProps;
+    return otherProps;
+  }
+  getDateRangeProps() {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const { children, ...otherProps } = this.asProps;
+    return otherProps;
+  }
 
-  return sstyled(styles)(
-    <SSingleDateInput
-      render={InputMask}
-      ref={forwardRef}
-      __excludeProps={['onChange', 'value']}
-      w={w}
-    >
-      {hasChildren ? (
+  render() {
+    const SInputTriggerRoot = Root;
+    const { Children, style } = this.asProps;
+
+    return sstyled(style)(
+      <SInputTriggerRoot render={Box} __excludeProps={['onChange', 'value']}>
+        <Children />
+      </SInputTriggerRoot>,
+    );
+  }
+}
+
+class SingleDateInputRoot extends Component {
+  static displayName = 'SingleDateInput';
+  static style = style;
+  static defaultProps = {
+    children: () => (
+      <>
+        <SingleDateInput.Indicator />
+        <SingleDateInput.MaskedInput />
+      </>
+    ),
+  };
+
+  getMaskedInputProps() {
+    const { value, onChange, onDisplayedPeriodChange, locale, ...otherProps } = this.asProps;
+
+    return {
+      date: value,
+      onDateChange: onChange,
+      onDisplayedPeriodChange,
+      locale,
+      otherProps,
+    };
+  }
+
+  render() {
+    const { Children, forwardRef, styles, w } = this.asProps;
+    const SSingleDateInput = Root;
+
+    return sstyled(styles)(
+      <SSingleDateInput
+        render={InputMask}
+        ref={forwardRef}
+        __excludeProps={['onChange', 'value']}
+        w={w}
+      >
         <NeighborLocation>
           <Children />
         </NeighborLocation>
-      ) : (
-        <NeighborLocation>
-          <InputTrigger.Indicator />
-          <InputTrigger.MaskedInput
-            date={value}
-            onDateChange={onChange}
-            onDisplayedPeriodChange={onDisplayedPeriodChange}
-            locale={locale}
-            {...otherProps}
-          />
-        </NeighborLocation>
-      )}
-    </SSingleDateInput>,
-  );
-};
+      </SSingleDateInput>,
+    );
+  }
+}
+class DateRangeRoot extends Component {
+  static displayName = 'DateRange';
+  static style = style;
+  static defaultProps = {
+    children: () => (
+      <>
+        <DateRange.Indicator />
+        <DateRange.FromMaskedInput />
+        <DateRange.RangeSep />
+        <DateRange.ToMaskedInput />
+      </>
+    ),
+  };
 
-const DateRange = ({
-  value,
-  onChange,
-  locale,
-  onDisplayedPeriodChange,
-  styles,
-  w,
-  ...otherProps
-}) => {
-  const SDateRange = Root;
-  const [from, to] = value ?? [undefined, undefined];
-  const currentValueRef = React.useRef(value);
-  currentValueRef.current = value;
+  fromRef = React.createRef();
+  toRef = React.createRef();
 
-  const fromRef = React.useRef(null);
-  const toRef = React.useRef(null);
-
-  const [onFromChange, onToChange] = React.useMemo(() => {
-    return [
-      (value, event) => {
-        const prevValue = currentValueRef.current ?? [undefined, undefined];
-        onChange([value, prevValue[1]], event);
-        if (value) {
-          toRef.current.focus();
-          setTimeout(() => {
-            toRef.current.setSelectionRange(0, 0);
-          }, 0);
-        }
-      },
-      (value, event) => {
-        const prevValue = currentValueRef.current ?? [undefined, undefined];
-        onChange([prevValue[0], value], event);
-      },
-    ];
-  }, [onChange]);
-  const handleFromKeydown = React.useCallback((event) => {
-    if (
-      event.code === 'ArrowRight' &&
-      fromRef.current.selectionStart === fromRef.current.value.length &&
-      fromRef.current.selectionEnd === fromRef.current.value.length
-    ) {
-      toRef.current.focus();
+  handleFromChange = (value, event) => {
+    const { onChange } = this.asProps;
+    const prevValue = this.asProps.value ?? [undefined, undefined];
+    onChange([value, prevValue[1]], event);
+    if (value) {
+      this.toRef.current.focus();
       setTimeout(() => {
-        toRef.current.setSelectionRange(0, 0);
+        this.toRef.current.setSelectionRange(0, 0);
       }, 0);
     }
-  }, []);
-  const handleToKeydown = React.useCallback((event) => {
-    if (event.code === 'Backspace' && !toRef.current.value) {
-      const value = fromRef.current.value;
-      fromRef.current.focus();
+  };
+  handleToChange = (value, event) => {
+    const { onChange } = this.asProps;
+    const prevValue = this.asProps.value ?? [undefined, undefined];
+    onChange([prevValue[0], value], event);
+  };
+  handleFromKeydown = (event) => {
+    if (
+      event.code === 'ArrowRight' &&
+      this.fromRef.current.selectionStart === this.fromRef.current.value.length &&
+      this.fromRef.current.selectionEnd === this.fromRef.current.value.length
+    ) {
+      this.toRef.current.focus();
       setTimeout(() => {
-        fromRef.current.setSelectionRange(value.length, value.length);
+        this.toRef.current.setSelectionRange(0, 0);
+      }, 0);
+    }
+  };
+  handleToKeydown = (event) => {
+    if (event.code === 'Backspace' && !this.toRef.current.value) {
+      const value = this.fromRef.current.value;
+      this.fromRef.current.focus();
+      setTimeout(() => {
+        this.fromRef.current.setSelectionRange(value.length, value.length);
       }, 0);
     }
     if (
       event.code === 'ArrowLeft' &&
-      toRef.current.selectionStart === 0 &&
-      toRef.current.selectionEnd === 0
+      this.toRef.current.selectionStart === 0 &&
+      this.toRef.current.selectionEnd === 0
     ) {
-      const value = fromRef.current.value;
-      fromRef.current.focus();
+      const value = this.fromRef.current.value;
+      this.fromRef.current.focus();
       setTimeout(() => {
-        fromRef.current.setSelectionRange(value.length, value.length);
+        this.fromRef.current.setSelectionRange(value.length, value.length);
       }, 0);
     }
-  }, []);
+  };
 
-  return sstyled(styles)(
-    <SDateRange render={InputMask} __excludeProps={['onChange', 'value']} w={w}>
-      <InputTrigger.Indicator />
-      <InputTrigger.MaskedInput
-        ref={fromRef}
-        date={from}
-        onDateChange={onFromChange}
-        onDisplayedPeriodChange={onDisplayedPeriodChange}
-        locale={locale}
-        flex="1"
-        {...otherProps}
-        onKeyDown={handleFromKeydown}
-      />
-      <Flex alignItems="center" justifyContent="center" flex="0" pr={4}>
-        –
-      </Flex>
-      <InputTrigger.MaskedInput
-        ref={toRef}
-        date={to}
-        onDateChange={onToChange}
-        onDisplayedPeriodChange={onDisplayedPeriodChange}
-        locale={locale}
-        flex="1"
-        {...otherProps}
-        onKeyDown={handleToKeydown}
-      />
-    </SDateRange>,
-  );
+  getFromMaskedInputProps() {
+    const { value, locale, onDisplayedPeriodChange } = this.asProps;
+
+    return {
+      ref: this.fromRef,
+      date: value?.[0],
+      onDateChange: this.handleFromChange,
+      onKeyDown: this.handleFromKeydown,
+      locale,
+      flex: 1,
+      onDisplayedPeriodChange,
+    };
+  }
+  getToMaskedInputProps() {
+    const { value, locale, onDisplayedPeriodChange } = this.asProps;
+
+    return {
+      ref: this.toRef,
+      date: value?.[1],
+      onDateChange: this.handleToChange,
+      onKeyDown: this.handleToKeydown,
+      locale,
+      flex: 1,
+      onDisplayedPeriodChange,
+    };
+  }
+
+  render() {
+    const SDateRange = Root;
+    const { Children, styles, w } = this.asProps;
+
+    return sstyled(styles)(
+      <SDateRange render={InputMask} __excludeProps={['onChange', 'value']} w={w}>
+        <Children />
+      </SDateRange>,
+    );
+  }
+}
+
+const FromMaskedInput = (props) => {
+  const SFromMaskedInput = Root;
+
+  return sstyled(props.styles)(<SFromMaskedInput render={MaskedInput} />);
 };
 
-const DateRangeFromInput = (props) => {
-  const SDateRangeFromInput = Root;
+const ToMaskedInput = (props) => {
+  const SToMaskedInput = Root;
 
-  return sstyled(props.styles)(<SDateRangeFromInput>xxx</SDateRangeFromInput>);
-};
-
-const DateRangeToInput = (props) => {
-  const SDateRangeToInput = Root;
-
-  return sstyled(props.styles)(<SDateRangeToInput />);
+  return sstyled(props.styles)(<SToMaskedInput render={MaskedInput} />);
 };
 
 const Indicator = (props) => {
@@ -179,6 +203,23 @@ const Indicator = (props) => {
 
   return sstyled(props.styles)(
     <SIndicator render={InputMask.Addon} tag={Calendar} aria-hidden="true" />,
+  );
+};
+
+const RangeSep = (props) => {
+  const SRangeSep = Root;
+
+  return sstyled(props.styles)(
+    <SRangeSep
+      render={InputMask.Addon}
+      tag={Flex}
+      alignItems="center"
+      justifyContent="center"
+      flex="0"
+      mr={4}
+    >
+      -
+    </SRangeSep>,
   );
 };
 
@@ -449,16 +490,23 @@ const MaskedInput = ({
   );
 };
 
-InputTriggerRoot.displayName = 'InputTrigger';
+const SingleDateInput = createComponent(SingleDateInputRoot, {
+  Indicator,
+  MaskedInput,
+});
+const DateRange = createComponent(DateRangeRoot, {
+  Indicator,
+  FromMaskedInput,
+  RangeSep,
+  ToMaskedInput,
+});
 
 const InputTrigger = createComponent(InputTriggerRoot, {
   Indicator,
-  MaskedInput,
+  RangeSep,
   Addon: BaseTrigger.Addon,
   SingleDateInput,
   DateRange,
-  DateRangeFromInput,
-  DateRangeToInput,
 });
 
 export default InputTrigger;

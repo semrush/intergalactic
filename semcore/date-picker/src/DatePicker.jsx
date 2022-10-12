@@ -9,7 +9,6 @@ import { Header, Next, Popper, Prev, Title, Trigger, InputTrigger } from './comp
 import { CalendarDays as Calendar } from './components/Calendar';
 import PickerAbstract from './components/PickerAbstract';
 import { getLocaleDate } from './utils/formatDate';
-import InputTriggerBase from './components/InputTrigger';
 
 export class DatePickerRoot extends PickerAbstract {
   static displayName = 'DatePicker';
@@ -49,17 +48,14 @@ export class DatePickerRoot extends PickerAbstract {
   getInputTriggerProps() {
     const { value, onChange, onDisplayedPeriodChange, locale, disabled } = this.asProps;
 
-    const props = {
+    return {
       ...super.getTriggerProps(),
       value,
       onChange,
       onDisplayedPeriodChange,
       locale,
       disabledDates: disabled,
-    };
-
-    return {
-      children: () => <InputTriggerBase.SingleDateInput {...props} />,
+      children: () => <InputTrigger.SingleDateInput />,
     };
   }
 

@@ -18,6 +18,13 @@ export function Trigger() {
 export function InputTrigger() {
   return <Root render={Dropdown.Trigger} tag={InputTriggerBase} />;
 }
+InputTrigger.Indicator = InputTriggerBase.Indicator;
+InputTrigger.MaskedInput = InputTriggerBase.MaskedInput;
+InputTrigger.Addon = InputTriggerBase.Addon;
+InputTrigger.SingleDateInput = InputTriggerBase.SingleDateInput;
+InputTrigger.DateRange = InputTriggerBase.DateRange;
+InputTrigger.DateRangeFromInput = InputTriggerBase.DateRangeFromInput;
+InputTrigger.DateRangeToInput = InputTriggerBase.DateRangeToInput;
 
 export function Popper(props) {
   const SPopper = Root;

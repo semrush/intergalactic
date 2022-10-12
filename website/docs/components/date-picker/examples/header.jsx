@@ -5,7 +5,7 @@ import Tooltip from '@semcore/tooltip';
 function Demo() {
   return (
     <DatePicker>
-      <DatePicker.Trigger />
+      <DatePicker.InputTrigger />
       <DatePicker.Popper>
         <DatePicker.Header>
           <Tooltip title="Click for display previous month">

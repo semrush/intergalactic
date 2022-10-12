@@ -4,7 +4,6 @@ import createComponent from '@semcore/core';
 import { Header, Next, Popper, Prev, Title, Trigger, InputTrigger } from './components';
 import { CalendarMonths as Calendar } from './components/Calendar';
 import PickerAbstract from './components/PickerAbstract';
-import InputTriggerBase from './components/InputTrigger';
 
 const inputTriggerParts = { day: false, month: true, year: true };
 
@@ -47,7 +46,7 @@ class MonthPickerRoot extends PickerAbstract {
   getInputTriggerProps() {
     const { value, onChange, onDisplayedPeriodChange, locale, disabled } = this.asProps;
 
-    const props = {
+    return {
       ...super.getTriggerProps(),
       value,
       onChange,
@@ -55,10 +54,7 @@ class MonthPickerRoot extends PickerAbstract {
       locale,
       parts: inputTriggerParts,
       disabledDates: disabled,
-    };
-
-    return {
-      children: () => <InputTriggerBase.SingleDateInput {...props} />,
+      children: () => <InputTrigger.SingleDateInput />,
     };
   }
 
