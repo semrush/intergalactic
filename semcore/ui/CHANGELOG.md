@@ -19,7 +19,6 @@
 ### @semcore/chart
 
 - **BREAK** The component has been removed from the release system. Use `@semcore/d3-chart`.
--
 
 ### @semcore/table
 
