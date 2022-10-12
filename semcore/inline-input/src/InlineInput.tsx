@@ -54,6 +54,7 @@ type AddonAsProps = {
 
 type ControlAsProps = {
   Children: React.FC;
+  children: React.ReactNode;
   styles?: React.CSSProperties;
   title?: string;
   $tooltipsProps?: ITooltipProps;

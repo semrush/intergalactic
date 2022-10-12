@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [6.1.0] - 2022-10-10
+
+### Changed
+
+- Added support for React 18 🔥
+
 ## [6.0.13] - 2022-10-04
 
 ### Changed
@@ -19,48 +25,6 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### Changed
 
 - Version patch update due to children dependencies update (`@semcore/utils` [3.37.0 ~> 3.37.1]).
-
-## [6.0.10] - 2022-08-18
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/utils` [3.36.0 ~> 3.37.0]).
-
-## [6.0.9] - 2022-08-11
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/utils` [3.35.1 ~> 3.36.0], `@semcore/typography` [4.0.11 ~> 4.1.0]).
-
-## [6.0.8] - 2022-08-01
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/utils` [3.35.0 ~> 3.35.1]).
-
-## [6.0.7] - 2022-07-22
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/utils` [3.34.0 ~> 3.35.0]).
-
-## [6.0.6] - 2022-07-07
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/utils` [3.33.0 ~> 3.34.0]).
-
-## [6.0.5] - 2022-06-02
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/utils` [3.32.2 ~> 3.33.0]).
-
-## [6.0.4] - 2022-05-31
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/utils` [3.32.1 ~> 3.32.2]).
 
 ## [6.0.3] - 2022-05-31
 
@@ -92,18 +56,6 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### Changed
 
 - Version patch update due to children dependencies update (`@semcore/typography` [3.4.1 ~> 3.4.2]).
-
-## [5.2.7] - 2022-03-14
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/utils` [3.31.2 ~> 3.31.2]).
-
-## [5.2.6] - 2022-03-04
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/typography` [3.3.2 ~> 3.4.0]).
 
 ## [5.2.4] - 2022-02-24
 

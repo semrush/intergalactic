@@ -19,7 +19,6 @@
     "@semcore/button": "4.0.7",
     "@semcore/card": "4.0.7",
     "@semcore/carousel": "2.0.6",
-    "@semcore/chart": "5.1.1",
     "@semcore/checkbox": "6.0.6",
     "@semcore/core": "1.11.8",
     "@semcore/counter": "2.0.4",
@@ -61,7 +60,6 @@
     "@semcore/portal": "2.3.7",
     "@semcore/product-head": "3.0.4",
     "@semcore/progress-bar": "3.0.5",
-    "@semcore/project-create": "5.1.1",
     "@semcore/radio": "5.0.5",
     "@semcore/scroll-area": "4.0.4",
     "@semcore/select": "3.0.9",
@@ -74,7 +72,6 @@
     "@semcore/switch": "4.0.3",
     "@semcore/tab-line": "3.0.3",
     "@semcore/tab-panel": "3.0.3",
-    "@semcore/table": "3.0.7",
     "@semcore/tag": "4.0.7",
     "@semcore/textarea": "4.0.5",
     "@semcore/time-picker": "3.0.11",
@@ -84,7 +81,7 @@
     "@semcore/widget-empty": "3.2.0"
   },
   "devDependencies": {
-    "@types/react": "16.8 - 17",
+    "@types/react": "18.0.21",
     "fast-glob": "3.2.11",
     "fs-extra": "9.0.1",
     "jest": "29.0.1",

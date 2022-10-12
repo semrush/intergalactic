@@ -1,7 +1,7 @@
 {
   "name": "@semcore/modal",
   "description": "Semrush Modal Component",
-  "version": "3.0.24",
+  "version": "3.1.0",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -15,7 +15,7 @@
   "dependencies": {
     "@semcore/animation": "^1",
     "@semcore/flex-box": "^4",
-    "@semcore/icon": "^2.16",
+    "@semcore/icon": "2.16 - 3",
     "@semcore/outside-click": "^2",
     "@semcore/portal": "^2",
     "@semcore/utils": "^3.31.2",
@@ -23,7 +23,7 @@
   },
   "peerDependencies": {
     "@semcore/core": "^1.11",
-    "react": "16.8 - 17"
+    "react": "16.8 - 18"
   },
   "jest": {
     "preset": "@semcore/jest-preset-ui"
@@ -34,7 +34,7 @@
     "directory": "semcore/modal"
   },
   "devDependencies": {
-    "@types/react": "16.8 - 17",
+    "@types/react": "18.0.21",
     "@guidepup/playwright": "0.6.1",
     "@playwright/test": "1.25.1",
     "@semcore/jest-preset-ui": "1.0.0"

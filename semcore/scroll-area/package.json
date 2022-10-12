@@ -1,7 +1,7 @@
 {
   "name": "@semcore/scroll-area",
   "description": "Semrush ScrollArea Component",
-  "version": "4.0.10",
+  "version": "4.1.0",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -19,8 +19,8 @@
   },
   "peerDependencies": {
     "@semcore/core": "^1.11",
-    "react": "16.8 - 17",
-    "react-dom": "16.8 - 17"
+    "react": "16.8 - 18",
+    "react-dom": "16.8 - 18"
   },
   "jest": {
     "preset": "@semcore/jest-preset-ui"
@@ -31,7 +31,7 @@
     "directory": "semcore/scroll-area"
   },
   "devDependencies": {
-    "@types/react": "16.8 - 17",
+    "@types/react": "18.0.21",
     "@semcore/jest-preset-ui": "1.0.0"
   }
 }

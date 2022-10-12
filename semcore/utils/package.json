@@ -1,7 +1,7 @@
 {
   "name": "@semcore/utils",
   "description": "Semrush Utils Component",
-  "version": "3.37.2",
+  "version": "3.38.0",
   "main": "lib/index.js",
   "sideEffects": false,
   "author": "UI-kit team <ui-kit-team@semrush.com>",
@@ -11,7 +11,6 @@
     "test": "jest"
   },
   "devDependencies": {
-    "@types/react": "16.8 - 17",
     "@semcore/babel-plugin-react-semcore": "^4.2.1",
     "@semcore/core": "^1",
     "@semcore/jest-preset-ui": "1.0.0",
@@ -19,8 +18,8 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.17.9",
-    "@types/react": "16.8 - 17",
-    "@types/react-dom": "16.8 - 17",
+    "@types/react": "18.0.21",
+    "@types/react-dom": "18.0.6",
     "classnames": "2.2.6",
     "hoist-non-react-statics": "3.3.2",
     "nano-css": "5.3.4",
@@ -28,8 +27,8 @@
   },
   "peerDependencies": {
     "@semcore/core": "^1",
-    "react": "16.8 - 17",
-    "react-dom": "16.8 - 17"
+    "react": "16.8 - 18",
+    "react-dom": "16.8 - 18"
   },
   "jest": {
     "preset": "@semcore/jest-preset-ui"

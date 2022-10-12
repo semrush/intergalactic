@@ -1,7 +1,7 @@
 {
   "name": "@semcore/flex-box",
   "description": "Semrush FlexBox Component",
-  "version": "4.5.12",
+  "version": "4.6.0",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -19,7 +19,7 @@
   },
   "peerDependencies": {
     "@semcore/core": "^1.11",
-    "react": "16.8 - 17"
+    "react": "16.8 - 18"
   },
   "jest": {
     "preset": "@semcore/jest-preset-ui"
@@ -30,7 +30,7 @@
     "directory": "semcore/flex-box"
   },
   "devDependencies": {
-    "@types/react": "16.8 - 17",
+    "@types/react": "18.0.21",
     "@semcore/jest-preset-ui": "1.0.0"
   }
 }

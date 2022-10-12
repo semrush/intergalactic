@@ -18,11 +18,11 @@ module.exports = {
     '^@semcore/icon/(.*)/(.*)': '@semcore/icon/$1/$2',
     '^@semcore/(.*)': '@semcore/$1/src',
     '^disable-jest-mapper:(.*)': '$1',
-    '^react$': resolvePath(__dirname, '../../node_modules/react/umd/react.production.min.js'),
-    '^react-dom$': resolvePath(
-      __dirname,
-      '../../node_modules/react-dom/umd/react-dom.production.min.js',
-    ),
+    // '^react$': resolvePath(__dirname, '../../node_modules/react/umd/react.production.min.js'),
+    // '^react-dom$': resolvePath(
+    //   __dirname,
+    //   '../../node_modules/react-dom/umd/react-dom.production.min.js',
+    // ),
   },
   modulePathIgnorePatterns: ['/generator-component/'],
   testEnvironment: 'jsdom',
