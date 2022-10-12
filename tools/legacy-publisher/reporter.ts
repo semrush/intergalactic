@@ -34,7 +34,7 @@ export class Reporter extends EventEmitter {
       console.log(`${pc.red(`${taskName}`)}: ${message}`);
     });
 
-    this.on('done', (taskName) => {
+    this.on('done', () => {
       // if (this.progressStatus) {
       //   this.progressStatus.succeed('Success');
       // }
@@ -48,7 +48,7 @@ export class Reporter extends EventEmitter {
     });
   }
 
-  progress(message) {
+  progress() {
     // Hack 😞
     // if (this.progressStatus) console.log('');
     // this.progressStatus = ora(message);

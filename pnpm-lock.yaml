@@ -85,7 +85,7 @@ importers:
       '@semcore/esbuild-plugin-semcore': link:tools/esbuild-plugin-semcore
       '@semcore/gcs-upload': link:tools/gcs-upload
       '@semcore/jest-preset-ui': link:tools/jest-preset-ui
-      '@semcore/legacy-publisher': link:tools/super-publisher
+      '@semcore/legacy-publisher': link:tools/legacy-publisher
       '@semcore/theme-redesign': 1.5.12
       '@types/jest': 29.0.0
       '@typescript-eslint/eslint-plugin': 5.10.2_lfj7r23v4xwv2enpxl5p6t5erq
@@ -2022,6 +2022,49 @@ importers:
       '@types/jest-axe': 3.5.1
       esbuild: 0.14.29
 
+  tools/legacy-publisher:
+    specifiers:
+      '@semcore/changelog-handler': ^0.0.1
+      '@semcore/mailer': ^0.0.1
+      '@semcore/slack-integration': ^0.0.3
+      '@types/fs-extra': 9.0.13
+      axios: 0.21.2
+      changelog-parser: 2.6.0
+      commander: 2.19.0
+      dotenv: 16.0.0
+      execa: 4.0.3
+      fs-extra: 9.0.1
+      glob: 7.1.3
+      inquirer: 6.2.2
+      open: 8.4.0
+      ora: 3.1.0
+      picocolors: 1.0.0
+      pretty-error: 2.1.1
+      semver: 5.6.0
+      simple-git: 3.5.0
+      tempy: 2.0.0
+    dependencies:
+      '@semcore/changelog-handler': link:../changelog-handler
+      '@semcore/mailer': link:../mailer
+      '@semcore/slack-integration': link:../slack-integration
+      axios: 0.21.2
+      changelog-parser: 2.6.0
+      commander: 2.19.0
+      dotenv: 16.0.0
+      execa: 4.0.3
+      fs-extra: 9.0.1
+      glob: 7.1.3
+      inquirer: 6.2.2
+      open: 8.4.0
+      ora: 3.1.0
+      picocolors: 1.0.0
+      pretty-error: 2.1.1
+      semver: 5.6.0
+      simple-git: 3.5.0
+      tempy: 2.0.0
+    devDependencies:
+      '@types/fs-extra': 9.0.13
+
   tools/mailer:
     specifiers:
       '@mailchimp/mailchimp_marketing': 3.0.74
@@ -2266,49 +2309,6 @@ importers:
       dayjs: 1.8.17
       dotenv: 16.0.0
       tsm: 2.2.2
-
-  tools/super-publisher:
-    specifiers:
-      '@semcore/changelog-handler': ^0.0.1
-      '@semcore/mailer': ^0.0.1
-      '@semcore/slack-integration': ^0.0.3
-      '@types/fs-extra': 9.0.13
-      axios: 0.21.2
-      changelog-parser: 2.6.0
-      commander: 2.19.0
-      dotenv: 16.0.0
-      execa: 4.0.3
-      fs-extra: 9.0.1
-      glob: 7.1.3
-      inquirer: 6.2.2
-      open: 8.4.0
-      ora: 3.1.0
-      picocolors: 1.0.0
-      pretty-error: 2.1.1
-      semver: 5.6.0
-      simple-git: 3.5.0
-      tempy: 2.0.0
-    dependencies:
-      '@semcore/changelog-handler': link:../changelog-handler
-      '@semcore/mailer': link:../mailer
-      '@semcore/slack-integration': link:../slack-integration
-      axios: 0.21.2
-      changelog-parser: 2.6.0
-      commander: 2.19.0
-      dotenv: 16.0.0
-      execa: 4.0.3
-      fs-extra: 9.0.1
-      glob: 7.1.3
-      inquirer: 6.2.2
-      open: 8.4.0
-      ora: 3.1.0
-      picocolors: 1.0.0
-      pretty-error: 2.1.1
-      semver: 5.6.0
-      simple-git: 3.5.0
-      tempy: 2.0.0
-    devDependencies:
-      '@types/fs-extra': 9.0.13
 
   website:
     specifiers:
@@ -5046,7 +5046,7 @@ packages:
         integrity: sha512-BUaEMXwa0zrao2L0x+R+0YNW92Kx6Y4uiV1DBN1aWcH2U+A8faQft/iy7rYL/28jd+7mWbpzK+M5kJRlRX0j4g==,
       }
     dependencies:
-      dotenv: 8.2.0
+      dotenv: 8.6.0
       superagent: 3.7.0
     transitivePeerDependencies:
       - supports-color
@@ -10306,7 +10306,6 @@ packages:
         integrity: sha512-IrPdXQsk2BbzvCBGBOTmmSH5SodmqZNt4ERAZDmW4CT+tL8VtvinqywuANaFu4bOMWki16nqf0e4oC0QIaDr/g==,
       }
     engines: { node: '>=10' }
-    dev: false
 
   /dotignore/0.1.2:
     resolution:
@@ -13080,6 +13079,7 @@ packages:
       minimatch: 3.1.2
       once: 1.4.0
       path-is-absolute: 1.0.1
+    dev: false
 
   /glob/7.1.4:
     resolution:
@@ -22539,7 +22539,7 @@ packages:
       }
     hasBin: true
     dependencies:
-      glob: 7.1.3
+      glob: 7.2.3
 
   /rollup/0.25.8:
     resolution:
@@ -24615,7 +24615,7 @@ packages:
     peerDependencies:
       typescript: ^3.0.0
     dependencies:
-      dotenv: 8.2.0
+      dotenv: 8.6.0
       icss-utils: 4.1.1
       less: 3.13.1
       lodash.camelcase: 4.3.0
