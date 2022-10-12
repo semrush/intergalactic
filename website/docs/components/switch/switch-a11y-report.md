@@ -10,6 +10,6 @@ Guidepup v0.13.1, MacOS Big Sur 11._
 3. Screen reader triggers element default action.
 4. Screen reader says "off Disabled switch".
 5. Screen reader goes out of active element.
-6. Screen reader says "Out of web content".
+6. Screen reader says "You are currently on web content. To enter the web area, press Control-Option-Shift-Down Arrow.".
 7. Screen reader goes into the active element.
 8. Screen reader says "Disabled off switch".
