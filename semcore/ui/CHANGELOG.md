@@ -16,6 +16,15 @@
 
 - **BREAK** The approach to determining neighbors has been changed.
 
+### @semcore/chart
+
+- **BREAK** The component has been removed from the release system. Use `@semcore/d3-chart`.
+-
+
+### @semcore/table
+
+- **BREAK** The component has been removed from the release system. Use `@semcore/data-table`.
+
 ### @semcore/accordion
 
 - **Fixed** Fixed elements id uniqueness.
