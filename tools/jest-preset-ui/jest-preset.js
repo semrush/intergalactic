@@ -17,7 +17,7 @@ module.exports = {
     '^@semcore/(.*)/lib/(.*)': '@semcore/$1/lib/$2',
     '^@semcore/icon/(.*)/(.*)': '@semcore/icon/$1/$2',
     // TODO: this is temporary crunch
-    '^@semcore/icon$': '<rootDir>/../icon/src',
+    '^@semcore/icon$': resolvePath(`${__dirname}/../../semcore/icon/src`),
     '^@semcore/(.*)': '@semcore/$1/src',
     '^disable-jest-mapper:(.*)': '$1',
     // '^react$': resolvePath(__dirname, '../../node_modules/react/umd/react.production.min.js'),
