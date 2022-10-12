@@ -1,3 +1,357 @@
+## [13.0.0] - 2022-10-12
+
+### @semcore/icon
+
+- **BREAK** Remove `AppBlock` icon, use `AppsBlock` instead.
+- **Changed** Added support for React 18 🔥
+- **Added** Added icon Stoller
+- **Added** Added `Charge`, `CardUpdate`, `ChargebackWin`, `ChargebackLoss` icons.
+- **Changed** When `interactive` prop is provided, `aria-label` or `aria-labelledby` props from now are required. If required props are not provided a warning is logged to developer console.
+
+### @semcore/neighbor-location
+
+- **BREAK** The approach to determining neighbors has been changed.
+- **Changed** Added support for React 18 🔥
+- **Changed** React strict mode support.
+
+### @semcore/accordion
+
+- **Changed** Added support for React 18 🔥
+- **Changed** Extended version range for dependency `@semcore/icons`.
+- **Fixed** Fixed elements id uniqueness.
+
+### @semcore/animation
+
+- **Changed** Added support for React 18 🔥
+
+### @semcore/badge
+
+- **Changed** Added support for React 18 🔥
+
+### @semcore/base-trigger
+
+- **Changed** Added support for React 18 🔥
+- **Changed** Extended version range for dependency `@semcore/icons`.
+- **Changed** Updated major dependency `@semcore/neighbor-location` [2.3.15 ~> 3.0.0]
+
+### @semcore/breadcrumbs
+
+- **Changed** Added support for React 18 🔥
+- **Changed** Extended version range for dependency `@semcore/icons`.
+
+### @semcore/breakpoints
+
+- **Changed** Added support for React 18 🔥
+
+### @semcore/button
+
+- **Changed** Added support for React 18 🔥
+- **Changed** Updated major dependency `@semcore/neighbor-location` [2.3.15 ~> 3.0.0]
+
+### @semcore/card
+
+- **Changed** Added support for React 18 🔥
+- **Changed** Extended version range for dependency `@semcore/icons`.
+
+### @semcore/carousel
+
+- **Changed** Added support for React 18 🔥
+- **Changed** Extended version range for dependency `@semcore/icons`.
+
+### @semcore/checkbox
+
+- **Changed** Added support for React 18 🔥
+- **Fixed** Added missing `aria-checked` a11y attribute.
+
+### @semcore/color-picker
+
+- **Changed** Added support for React 18 🔥
+- **Changed** Extended version range for dependency `@semcore/icons`.
+- **Changed** Remove unused dependency.
+- **Fixed** Fixed paddings of addons in input.
+
+### @semcore/core
+
+- **Changed** Added support for React 18 🔥
+- **Changed** Changed approach to children index calculation with React parallel rendering.
+
+### @semcore/counter
+
+- **Changed** Added support for React 18 🔥
+
+### @semcore/d3-chart
+
+- **Changed** Added support for React 18 🔥
+- **Fixed** Ensured a11y module do not break mouse interactions.
+- **Fixed** Fixed issue with uninitialized styles in some charts.
+
+### @semcore/data-table
+
+- **Changed** Added support for React 18 🔥
+- **Changed** Extended version range for dependency `@semcore/icons`.
+- **Added** Added support `ref` for `DataTable.Column` and `DataTable.Cell`.
+
+### @semcore/date-picker
+
+- **Changed** Added support for React 18 🔥
+- **Changed** Extended version range for dependency `@semcore/icons`.
+- **Changed** Changed the way to check the contents of the trigger for `ButtonTrigger`
+- **Changed** Changed utils function for `ButtonTrigger`
+- **Fixed** Fixed unexpected margin of calendar grid cells in Safari browser.
+
+### @semcore/divider
+
+- **Changed** Added support for React 18 🔥
+
+### @semcore/dot
+
+- **Changed** Added support for React 18 🔥
+
+### @semcore/drag-and-drop
+
+- **Changed** Added support for React 18 🔥
+
+### @semcore/dropdown
+
+- **Changed** Added support for React 18 🔥
+
+### @semcore/dropdown-menu
+
+- **Changed** Added support for React 18 🔥
+
+### @semcore/email
+
+- **Changed** Remove unused dependency.
+
+### @semcore/errors
+
+- **Changed** Added support for React 18 🔥
+- **Changed** Moved svg illustrations to `@semcore/illustration` component.
+
+### @semcore/feature-popover
+
+- **Changed** Added support for React 18 🔥
+- **Changed** Extended version range for dependency `@semcore/icons`.
+
+### @semcore/feedback-form
+
+- **Changed** Added support for React 18 🔥
+
+### @semcore/flags
+
+- **Changed** Added support for React 18 🔥
+
+### @semcore/flex-box
+
+- **Changed** Added support for React 18 🔥
+
+### @semcore/format-text
+
+- **Changed** Added support for React 18 🔥
+
+### @semcore/fullscreen-modal
+
+- **Changed** Added support for React 18 🔥
+- **Changed** Extended version range for dependency `@semcore/icons`.
+
+### @semcore/grid
+
+- **Changed** Added support for React 18 🔥
+
+### @semcore/illustration
+
+- **Changed** Added support for React 18 🔥
+- **Changed** Remove masks from all svg illustrations for WidgetEmpty component.
+- **Added** Added and changed fields `main`, `module` and `typings` in `package.json`.
+- **Added** Added missed illustrations and added missed id attribute for some illustrations.
+- **Added** Added available for export function `getIllustrationPath` to get url of illustrations.
+
+### @semcore/inline-edit
+
+- **Changed** Added support for React 18 🔥
+
+### @semcore/inline-input
+
+- **Changed** Added support for React 18 🔥
+
+### @semcore/input
+
+- **Changed** Added support for React 18 🔥
+- **Changed** Updated major dependency `@semcore/neighbor-location` [2.3.15 ~> 3.0.0]
+- **Changed** Remove useless styles for Addons.
+
+### @semcore/input-mask
+
+- **Changed** Added support for React 18 🔥
+- **Fixed** Fixed displaying of addons placed on the end (right in ltr languages) of input.
+- **Fixed** Fixed mask underlay position desynchronization with html input content;
+- **Fixed** Hidden placeholders and mask from real DOM to exclude it from copied content.
+- **Changed** Updated major dependency `@semcore/neighbor-location` [2.3.15 ~> 3.0.0]
+- **Fixed** Fixed addon placed before input value may be overlayed by input value.
+- **Fixed** Fixed previously broken in previous version backward compatibility of piping api.
+
+### @semcore/input-number
+
+- **Changed** Added support for React 18 🔥
+
+### @semcore/input-tags
+
+- **Changed** Added support for React 18 🔥
+
+### @semcore/link
+
+- **Changed** Added support for React 18 🔥
+
+### @semcore/modal
+
+- **Changed** Added support for React 18 🔥
+- **Changed** Extended version range for dependency `@semcore/icons`.
+
+### @semcore/notice
+
+- **Changed** Added support for React 18 🔥
+- **Changed** Extended version range for dependency `@semcore/icons`.
+- **Changed** Color for Close icon with theme `info` was changed from `--blue-400` to `--gray-400`.
+
+### @semcore/notice-bubble
+
+- **Changed** Added support for React 18 🔥
+
+### @semcore/notice-global
+
+- **Changed** Added support for React 18 🔥
+- **Changed** Extended version range for dependency `@semcore/icons`.
+
+### @semcore/outside-click
+
+- **Changed** Added support for React 18 🔥
+
+### @semcore/pagination
+
+- **Changed** Added support for React 18 🔥
+- **Changed** Extended version range for dependency `@semcore/icons`.
+
+### @semcore/pills
+
+- **Changed** Added support for React 18 🔥
+- **Changed** Updated major dependency `@semcore/neighbor-location` [2.3.15 ~> 3.0.0]
+- **Fixed** Added essential accessibility attributes.
+
+### @semcore/popper
+
+- **Changed** Added support for React 18 🔥
+- **Changed** Updated major dependency `@semcore/neighbor-location` [2.3.15 ~> 3.0.0]
+- **Fixed** Removed aria attributes that were breaking components a11y.
+
+### @semcore/portal
+
+- **Changed** Added support for React 18 🔥
+
+### @semcore/product-head
+
+- **Changed** Added support for React 18 🔥
+
+### @semcore/progress-bar
+
+- **Changed** Added support for React 18 🔥
+
+### @semcore/radio
+
+- **Changed** Added support for React 18 🔥
+- **Fixed** Fixed arrangement of internal and external circles in `checked` state.
+
+### @semcore/scroll-area
+
+- **Changed** Added support for React 18 🔥
+
+### @semcore/select
+
+- **Changed** Added support for React 18 🔥
+- **Changed** Extended version range for dependency `@semcore/icons`.
+- **Added** Screen readers support.
+
+### @semcore/side-panel
+
+- **Changed** Added support for React 18 🔥
+- **Changed** Extended version range for dependency `@semcore/icons`.
+
+### @semcore/skeleton
+
+- **Changed** Added support for React 18 🔥
+- **Changed** All skeletons are `aria-busy` from now.
+
+### @semcore/slider
+
+- **Changed** Added support for React 18 🔥
+- **Changed** Stable release
+- **Added** Added box-sizing
+
+### @semcore/spin
+
+- **Changed** Added support for React 18 🔥
+
+### @semcore/spin-container
+
+- **Changed** Added support for React 18 🔥
+
+### @semcore/sticky
+
+- **Changed** Added support for React 18 🔥
+- **Changed** This component has been deprecated. Added a message about it.
+
+### @semcore/switch
+
+- **Changed** Added support for React 18 🔥
+- **Changed** Updated major dependency `@semcore/neighbor-location` [2.3.15 ~> 3.0.0]
+- **Changed** Improved accessibility with labeling switch by currently picked option.
+
+### @semcore/tab-line
+
+- **Changed** Added support for React 18 🔥
+- **Changed** Updated major dependency `@semcore/neighbor-location` [2.3.15 ~> 3.0.0]
+
+### @semcore/tab-panel
+
+- **Changed** Added support for React 18 🔥
+- **Added** Added styles for panel consisting only of an icon.
+
+### @semcore/tag
+
+- **Changed** Added support for React 18 🔥
+- **Changed** Extended version range for dependency `@semcore/icons`.
+
+### @semcore/textarea
+
+- **Changed** Added support for React 18 🔥
+
+### @semcore/time-picker
+
+- **Changed** Added support for React 18 🔥
+
+### @semcore/tooltip
+
+- **Changed** Added support for React 18 🔥
+
+### @semcore/typography
+
+- **Changed** Added support for React 18 🔥
+- **Changed** Extended version range for dependency `@semcore/icons`.
+
+### @semcore/utils
+
+- **Changed** Added support for React 18 🔥
+- **Fixed** Added a check for empty children for `addonTextChildren` function.
+
+### @semcore/widget-empty
+
+- **Changed** Added support for React 18 🔥
+- **Changed** Moved svg illustrations to `@semcore/illustration` component.
+
+### @semcore/wizard
+
+- **Changed** Added support for React 18 🔥
+- **Changed** Extended version range for dependency `@semcore/icons`.
+
 ## [12.6.0] - 2022-09-22
 
 ### @semcore/chart
