@@ -4,19 +4,19 @@ title: Figma libraries
 
 @## What Figma libraries do we have?
 
-[Link to the video](https://www.loom.com/share/32ac37f7d13046308cab7095d05bcdcb)
+@embedded_video https://www.loom.com/share/32ac37f7d13046308cab7095d05bcdcb
 
 ### Detaching and updating components
 
-[Link to the video](https://www.loom.com/share/5733829ef80f415d828f3e0d045249d6)
+@embedded_video https://www.loom.com/share/5733829ef80f415d828f3e0d045249d6
 
 @## Core libraries
 
-[Core Libraries, part 1](https://www.loom.com/share/593126f16b494b719949649d1d7fa331)
+@embedded_video https://www.loom.com/share/593126f16b494b719949649d1d7fa331
 
-[Core Libraries, part 2](https://www.loom.com/share/f31be4be9b9649899661b6139b31b3d7)
+@embedded_video https://www.loom.com/share/f31be4be9b9649899661b6139b31b3d7
 
-[Core Libraries, part 3](https://www.loom.com/share/d2b51d7b370f4a7cabcca1b09b7910e6)
+@embedded_video https://www.loom.com/share/d2b51d7b370f4a7cabcca1b09b7910e6
 
 Feel free to use our Figma libraries:
 
@@ -28,13 +28,13 @@ Feel free to use our Figma libraries:
 
 @## How to start designing with Figma libraries? Where you should start from?
 
-[Link to the video](https://www.loom.com/share/f63d948f2a6543e89d7b980033216098)
+@embedded_video https://www.loom.com/share/f63d948f2a6543e89d7b980033216098
 
-[Link to the video for Semrush designers](https://www.loom.com/share/91042725e5f3425a80b62c1e82cab152)
+@embedded_video https://www.loom.com/share/91042725e5f3425a80b62c1e82cab152
 
 ### Getting started with Charts library. How to choose the right visualization for your task?
 
-[Getting started with Charts](https://www.loom.com/share/0793a430c4bb4784ad0bb6cec9199af5)
+@embedded_video https://www.loom.com/share/0793a430c4bb4784ad0bb6cec9199af5
 
 @## Additional libraries
 

@@ -8,19 +8,19 @@ Here you will find a series of quick and handy guides for starting your product 
 
 ### Intergalactic Design System — what's it?
 
-[![Intergalactic Design System — Intro, part 1](static/intro-1.png)](https://www.loom.com/share/573d5e8c9f4444ffaef34fd02b0b848e 'Intergalactic Design System — Intro, part 1')
+@embedded_video https://www.loom.com/share/573d5e8c9f4444ffaef34fd02b0b848e
 
 ### Intergalactic Design System principles
 
-[![Intergalactic Design System principles](static/principles.png)](https://www.loom.com/share/0e14e413ea314afda211d3845cc845f2 'Intergalactic Design System principles')
+@embedded_video https://www.loom.com/share/0e14e413ea314afda211d3845cc845f2
 
 @## How to contribute?
 
-[Link to the video](https://www.loom.com/share/2d935c96e823486384cf22142418a72b)
+@embedded_video https://www.loom.com/share/2d935c96e823486384cf22142418a72b
 
 @## Principles
 
-[![Design principles](static/design-principles.png)](https://www.loom.com/share/7fe17765621346ddbbf0b32c7d57d6bb 'Design principles')
+@embedded_video https://www.loom.com/share/7fe17765621346ddbbf0b32c7d57d6bb
 
 > **TL;DR or main thoughts**: great data visualization is the cornerstone of our UI. So be sure to take extra care when working with our charts and tables ❤️
 
