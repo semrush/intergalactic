@@ -47,7 +47,7 @@ export const checkDependenciesTask = createTask('Dependency check', async (opt) 
 
   const warnings = await Promise.all(
     Object.keys(dependencies).map(async (name) => {
-      const selfVersion = dependencies[name];
+      const selfVersion = dependencies[name].replace('workspace:');
       opt.log(`[${name}@${selfVersion}] calling npm to checkout published version`);
       const depNpm = await fetchNpm(name);
       const isPublished = isValidRange(selfVersion, Object.keys(depNpm.versions));
