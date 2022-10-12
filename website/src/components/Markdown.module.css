@@ -1,0 +1,12 @@
+.embeddedVideoContainer {
+  position: relative;
+  padding-bottom: 60.70826306913997%; /* aspect ratio 16x9 hack */
+  height: 0;
+}
+.embeddedVideoIframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
