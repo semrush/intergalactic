@@ -266,6 +266,10 @@ type Token =
       load: string;
     }
   | {
+      type: 'embedded_video';
+      url: string;
+    }
+  | {
       type: 'email_html';
       raw: string;
       compiled: string;
@@ -411,6 +415,29 @@ export const buildArticle = async (
               dependencies.push(filePath, ...subArticle.dependencies);
 
               return subArticle.tokens;
+            }
+            if (text.startsWith('@embedded_video ')) {
+              const link = token.children[1];
+              if (link && link.type === 'link') {
+                let { url } = link;
+
+                if (url.startsWith('https://www.loom.com/share/')) {
+                  url =
+                    `https://www.loom.com/embed/` +
+                    url.substring('https://www.loom.com/share/'.length);
+                }
+                if (url.startsWith('https://www.youtube.com/watch?v=')) {
+                  const urlParams = new URLSearchParams(
+                    url.substring('https://www.youtube.com/watch?'.length),
+                  );
+                  url = `https://www.youtube.com/embed/` + urlParams.get('v');
+                }
+
+                return {
+                  type: 'embedded_video',
+                  url,
+                };
+              }
             }
             if (text.startsWith('@email_html ')) {
               const paths = text.substring('@email_html '.length);

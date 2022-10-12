@@ -9,6 +9,7 @@ import Example from './Example';
 import { TypescriptDeclarationView } from './TypescriptDeclaration';
 import Link from '@semcore/link';
 import { usePromise } from '../utils/usePromise';
+import styles from './Markdown.module.css';
 
 import emailCSS from '!!raw-loader!@semcore/email/lib/core/index.css';
 
@@ -87,6 +88,20 @@ const tokenHandlers = {
           </Accordion.Item>
         </Accordion>
       </>
+    );
+  },
+  embedded_video: ({ url, ...other }) => {
+    return (
+      <div className={styles.embeddedVideoContainer}>
+        <iframe
+          src={url}
+          frameborder="0"
+          webkitAllowFullScreen
+          mozAllowFullScreen
+          allowFullScreen
+          className={styles.embeddedVideoIframe}
+        ></iframe>
+      </div>
     );
   },
   typescriptDeclaration: ({ declaration, dependencies }) => {
