@@ -60,7 +60,6 @@ jobs:
       - name: build @semcore/ui
         run: |
           cd semcore/ui
-          pnpm install
           pnpm generate
       - name: NPM setup
         run: |
