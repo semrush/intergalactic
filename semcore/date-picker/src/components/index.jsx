@@ -16,7 +16,7 @@ export function Trigger() {
 }
 
 export function InputTrigger() {
-  return <Root render={Dropdown.Trigger} tag={InputTriggerBase} />;
+  return <Root render={Dropdown.Trigger} tag={InputTriggerBase} __excludeProps={['role']} />;
 }
 InputTrigger.Indicator = InputTriggerBase.Indicator;
 InputTrigger.MaskedInput = InputTriggerBase.MaskedInput;

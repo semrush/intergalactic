@@ -21,6 +21,8 @@
     "@semcore/dropdown": "^3",
     "@semcore/flex-box": "^4",
     "@semcore/input": "3.0.15",
+    "@semcore/input-mask": "4.3.0",
+    "@semcore/neighbor-location": "^3",
     "@semcore/typography": "^4",
     "dayjs": "1.8.36"
   },

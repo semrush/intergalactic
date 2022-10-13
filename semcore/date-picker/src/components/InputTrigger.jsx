@@ -18,12 +18,12 @@ class InputTriggerRoot extends Component {
 
   getSingleDateInputProps() {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const { children, ...otherProps } = this.asProps;
+    const { children, id, ...otherProps } = this.asProps;
     return otherProps;
   }
   getDateRangeProps() {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const { children, ...otherProps } = this.asProps;
+    const { children, id, ...otherProps } = this.asProps;
     return otherProps;
   }
 
@@ -32,7 +32,7 @@ class InputTriggerRoot extends Component {
     const { Children, style } = this.asProps;
 
     return sstyled(style)(
-      <SInputTriggerRoot render={Box} __excludeProps={['onChange', 'value', 'id', 'className']}>
+      <SInputTriggerRoot render={Box} __excludeProps={['onChange', 'value', 'className', 'role']}>
         <Children />
       </SInputTriggerRoot>,
     );
@@ -59,7 +59,7 @@ class SingleDateInputRoot extends Component {
       onDateChange: onChange,
       onDisplayedPeriodChange,
       locale,
-      otherProps,
+      ...otherProps,
     };
   }
 
@@ -189,13 +189,13 @@ class DateRangeRoot extends Component {
 const FromMaskedInput = (props) => {
   const SFromMaskedInput = Root;
 
-  return sstyled(props.styles)(<SFromMaskedInput render={MaskedInput} />);
+  return sstyled(props.styles)(<SFromMaskedInput aria-label="from date" render={MaskedInput} />);
 };
 
 const ToMaskedInput = (props) => {
   const SToMaskedInput = Root;
 
-  return sstyled(props.styles)(<SToMaskedInput render={MaskedInput} />);
+  return sstyled(props.styles)(<SToMaskedInput aria-label="to date" render={MaskedInput} />);
 };
 
 const Indicator = (props) => {
