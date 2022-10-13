@@ -504,6 +504,7 @@ importers:
       '@semcore/dropdown': ^3
       '@semcore/flex-box': ^4
       '@semcore/icon': 2.16 - 3
+      '@semcore/input': 3.0.15
       '@semcore/jest-preset-ui': 1.0.0
       '@semcore/typography': ^4
       '@semcore/utils': ^3.29

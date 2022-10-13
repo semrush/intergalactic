@@ -1,4 +1,4 @@
-import React, { ComponentProps } from 'react';
+import React, { ChangeEvent, ComponentProps } from 'react';
 import dayjs from 'dayjs';
 import { Box, IBoxProps } from '@semcore/flex-box';
 import Button from '@semcore/button';
@@ -7,6 +7,7 @@ import Dropdown, { IDropdownProps } from '@semcore/dropdown';
 import { IWithI18nEnhanceProps } from '@semcore/utils/lib/enhances/i18nEnhance';
 import BaseTrigger from '@semcore/base-trigger';
 import Input from '@semcore/input';
+import InputMask from '@semcore/input-mask';
 
 export type DateConstructorParams = string | number | Date;
 
@@ -18,7 +19,7 @@ export interface ICalendarProps extends IBoxProps {
   locale?: NavigatorLanguage['language'];
   /**
    * Array of dates blocked for selection
-   * Accepts the date, the range of dates or `falsICalendarPropse` for specifying infinity ([Date | false, Date | false]), crontab( 6,7)
+   * Accepts the date or the range of dates for specifying infinity ([Date | false, Date | false]), crontab(6,7)
    * */
   disabled?: (Date | (Date | false)[] | string)[];
   /**
@@ -226,6 +227,53 @@ export interface IDatePickerHandlers {
   visible: (index: boolean) => void;
 }
 
+export interface IInputTriggerProps {
+  value: Date;
+  onChange: (date: Date, event: ChangeEvent) => void;
+  locale: string;
+  onDisplayedPeriodChange: (date: Date) => void;
+}
+
+export interface ISingleDateInputProps extends IInputTriggerProps {}
+
+export interface IDateRangeProps extends IInputTriggerProps {}
+
+export interface IDatePickerMaskedInputProps {
+  date: Date;
+  onDateChange: (date: Date, event: ChangeEvent) => void;
+  onDisplayedPeriodChange: (date: Date) => void;
+  locale: string;
+  parts: { year: Boolean; month: Boolean; day: Boolean };
+  disabledDates: (Date | (Date | false)[] | string)[];
+}
+
+declare const InputTrigger: (<T>(
+  props: Merge<ComponentProps<typeof Dropdown.Trigger>, IInputTriggerProps> & T,
+) => ReturnEl) & {
+  Addon: typeof Input.Addon;
+  Value: typeof Input.Value;
+  SingleDateInput: (<T>(
+    props: Merge<ComponentProps<typeof InputMask>, ISingleDateInputProps> & T,
+  ) => ReturnEl) & {
+    Indicator: typeof Input.Addon;
+    MaskedInput: <T>(
+      props: Merge<ComponentProps<typeof InputMask.Value>, IDatePickerMaskedInputProps> & T,
+    ) => ReturnEl;
+  };
+  DateRange: (<T>(
+    props: Merge<ComponentProps<typeof InputMask>, IDateRangeProps> & T,
+  ) => ReturnEl) & {
+    Indicator: typeof Input.Addon;
+    RangeSep: typeof Input.Addon;
+    FromMaskedInput: <T>(
+      props: Merge<ComponentProps<typeof InputMask.Value>, IDatePickerMaskedInputProps> & T,
+    ) => ReturnEl;
+    ToMaskedInput: <T>(
+      props: Merge<ComponentProps<typeof InputMask.Value>, IDatePickerMaskedInputProps> & T,
+    ) => ReturnEl;
+  };
+};
+
 declare const DatePicker: ((
   props: CProps<IDatePickerProps, IDatePickerContext & ICalendarDaysContext, IDatePickerHandlers>,
 ) => ReturnEl) & {
@@ -236,12 +284,7 @@ declare const DatePicker: ((
     Addon: typeof BaseTrigger.Addon;
     Text: typeof BaseTrigger.Text;
   };
-  InputTrigger: (<T>(
-    props: Merge<ComponentProps<typeof Dropdown.Trigger>, ComponentProps<typeof Input>> & T,
-  ) => ReturnEl) & {
-    Addon: typeof Input.Addon;
-    Value: typeof Input.Value;
-  };
+  InputTrigger: InputTrigger;
   Popper: typeof Dropdown.Popper;
   Header: typeof Box;
   Title: <T>(props: CProps<IDatePickerProps & IBoxProps & T, IDatePickerContext>) => ReturnEl;
@@ -278,12 +321,7 @@ declare const DateRangePicker: ((
     Addon: typeof BaseTrigger.Addon;
     Text: typeof BaseTrigger.Text;
   };
-  InputTrigger: (<T>(
-    props: Merge<ComponentProps<typeof Dropdown.Trigger>, ComponentProps<typeof Input>> & T,
-  ) => ReturnEl) & {
-    Addon: typeof Input.Addon;
-    Value: typeof Input.Value;
-  };
+  InputTrigger: InputTrigger;
   Popper: <T>(props: ComponentProps<typeof Dropdown.Popper> & T) => ReturnEl;
   Header: typeof Box;
   Title: <T>(
@@ -323,12 +361,7 @@ declare const MonthPicker: ((
     Addon: typeof BaseTrigger.Addon;
     Text: typeof BaseTrigger.Text;
   };
-  InputTrigger: (<T>(
-    props: Merge<ComponentProps<typeof Dropdown.Trigger>, ComponentProps<typeof Input>> & T,
-  ) => ReturnEl) & {
-    Addon: typeof Input.Addon;
-    Value: typeof Input.Value;
-  };
+  InputTrigger: InputTrigger;
   Popper: typeof Dropdown.Popper;
   Header: typeof Box;
   Title: <T>(props: CProps<IDatePickerProps & IBoxProps & T, IMonthPickerContext>) => ReturnEl;
@@ -364,12 +397,7 @@ declare const MonthRangePicker: ((
     Addon: typeof BaseTrigger.Addon;
     Text: typeof BaseTrigger.Text;
   };
-  InputTrigger: (<T>(
-    props: Merge<ComponentProps<typeof Dropdown.Trigger>, ComponentProps<typeof Input>> & T,
-  ) => ReturnEl) & {
-    Addon: typeof Input.Addon;
-    Value: typeof Input.Value;
-  };
+  InputTrigger: InputTrigger;
   Popper: typeof Dropdown.Popper;
   Header: typeof Box;
   Title: <T>(

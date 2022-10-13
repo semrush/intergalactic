@@ -32,7 +32,7 @@ class InputTriggerRoot extends Component {
     const { Children, style } = this.asProps;
 
     return sstyled(style)(
-      <SInputTriggerRoot render={Box} __excludeProps={['onChange', 'value']}>
+      <SInputTriggerRoot render={Box} __excludeProps={['onChange', 'value', 'id', 'className']}>
         <Children />
       </SInputTriggerRoot>,
     );
@@ -496,14 +496,12 @@ const SingleDateInput = createComponent(SingleDateInputRoot, {
 });
 const DateRange = createComponent(DateRangeRoot, {
   Indicator,
-  FromMaskedInput,
   RangeSep,
+  FromMaskedInput,
   ToMaskedInput,
 });
 
 const InputTrigger = createComponent(InputTriggerRoot, {
-  Indicator,
-  RangeSep,
   Addon: BaseTrigger.Addon,
   SingleDateInput,
   DateRange,

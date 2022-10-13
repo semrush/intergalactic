@@ -21,7 +21,7 @@ function Demo() {
     if (!value[1] || week[0].getTime() !== value[0].getTime()) {
       setValue(week);
     }
-  }, [value]);
+  }, [value[0]?.getTime()]);
 
   return (
     <DateRangePicker
@@ -31,7 +31,14 @@ function Demo() {
       onChange={setValue}
       highlighted={highlighted}
     >
-      <DateRangePicker.InputTrigger />
+      <DateRangePicker.InputTrigger>
+        <DateRangePicker.InputTrigger.DateRange>
+          <DateRangePicker.InputTrigger.DateRange.Indicator />
+          <DateRangePicker.InputTrigger.DateRange.FromMaskedInput />
+          <DateRangePicker.InputTrigger.DateRange.RangeSep />
+          <DateRangePicker.InputTrigger.DateRange.ToMaskedInput disabled />
+        </DateRangePicker.InputTrigger.DateRange>
+      </DateRangePicker.InputTrigger>
       <DateRangePicker.Popper>
         <DateRangePicker.Header />
         <DateRangePicker.Calendar
