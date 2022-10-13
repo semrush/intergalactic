@@ -29,6 +29,7 @@ type AsProps = {
   columnsChildren: Column[];
   onResize: ResizeObserverCallback;
   sticky: boolean;
+  disabledScroll?: boolean;
   ['data-ui-name']: string;
 };
 
@@ -123,7 +124,8 @@ class Head extends Component<AsProps> {
   render() {
     const SHead = Root;
     const SHeadWrapper = Box;
-    const { Children, styles, columnsChildren, onResize, $scrollRef, sticky } = this.asProps;
+    const { Children, styles, columnsChildren, onResize, $scrollRef, sticky, disabledScroll } =
+      this.asProps;
 
     this.columns = flattenColumns(columnsChildren);
 
@@ -144,7 +146,7 @@ class Head extends Component<AsProps> {
           shadow
           onResize={onResize}
         >
-          <ScrollArea.Container ref={$scrollRef}>
+          <ScrollArea.Container ref={$scrollRef} disabledScroll={disabledScroll}>
             <SHead render={Box} role="row">
               {this.renderColumns(columnsChildren, 100 / this.columns.length)}
             </SHead>

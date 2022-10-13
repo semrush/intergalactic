@@ -23,21 +23,25 @@ const style = sstyled.css`
   }
 `;
 
-function Collapse({ onAnimationStart, onAnimationEnd, ...props }, ref) {
+function Collapse({ onAnimationStart, onAnimationEnd, overflowHidden = true, ...props }, ref) {
   const SCollapse = Animation;
   const [height, setHeightVar] = useState('auto');
 
   const handlerAnimationStart = useCallback((e) => {
     if (e.currentTarget !== e.target) return;
     if (onAnimationStart) onAnimationStart(e);
-    e.currentTarget.style.overflow = 'hidden';
+    if (overflowHidden) {
+      e.currentTarget.style.overflow = 'hidden';
+    }
     setHeightVar(e.currentTarget.scrollHeight + 'px');
   }, []);
 
   const handlerAnimationEnd = useCallback((e) => {
     if (e.currentTarget !== e.target) return;
     if (onAnimationEnd) onAnimationEnd(e);
-    e.currentTarget.style.overflow = 'initial';
+    if (overflowHidden) {
+      e.currentTarget.style.overflow = 'initial';
+    }
     setHeightVar('auto');
   }, []);
 

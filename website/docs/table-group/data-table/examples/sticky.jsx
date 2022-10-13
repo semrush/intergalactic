@@ -28,7 +28,7 @@ export default () => {
       </DataTable>
       <h3>with Scroll.Bar in Header</h3>
       <DataTable data={data}>
-        <Sticky zIndex={2} top={top}>
+        <Box zIndex={2} position="sticky" top={top}>
           <DataTable.Head wMin={1000} ref={containerRef}>
             <DataTable.Column name="keyword" children="Keyword" />
             <DataTable.Column name="kd" children="KD,%" />
@@ -36,7 +36,7 @@ export default () => {
             <DataTable.Column name="vol" children="Vol." />
           </DataTable.Head>
           {container && <ScrollArea.Bar container={container} />}
-        </Sticky>
+        </Box>
         <DataTable.Body />
       </DataTable>
     </>

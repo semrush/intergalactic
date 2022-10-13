@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [1.7.0] - 2022-10-14
+
+### Added
+
+- Added a property that removes the `overflow=hidden` setting.
+
 ## [1.6.0] - 2022-10-10
 
 ### Changed

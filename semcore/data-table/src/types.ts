@@ -22,7 +22,8 @@ export type Column<
   resizable?: boolean;
   sortable?: boolean | SortDirection;
   sortDirection: SortDirection;
-  cssVar: string | string[];
+  varWidth: string;
+  setVar: boolean;
   data?: unknown;
   props: {
     name: string;
@@ -41,7 +42,8 @@ export type Column<
     Props;
   columns: Column[];
 };
-export type Cell = Pick<Column, 'name' | 'cssVar' | 'fixed' | 'data'> & {
+export type Cell = Pick<Column, 'name' | 'fixed' | 'data'> & {
+  cssVar: string | string[];
   cellPropsLayers: PropsLayer[];
 };
 export type RowData<

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import DataTable from '@semcore/data-table';
 import Accordion from '@semcore/accordion';
-import { Box, Flex } from '@semcore/flex-box';
+import { Flex } from '@semcore/flex-box';
 
 const RowAccordion = React.forwardRef(function ({ value, collapse = {}, ...props }, ref) {
   return (
@@ -17,8 +17,8 @@ export default () => {
   return (
     <Accordion value={value} onChange={setValue}>
       <DataTable data={data}>
-        <DataTable.Head wMin={800}>
-          <DataTable.Column name="keyword" children="Keyword" fixed="left" />
+        <DataTable.Head>
+          <DataTable.Column name="keyword" children="Keyword" />
           <DataTable.Column name="kd" children="KD,%" />
           <DataTable.Column name="cpc" children="CPC" />
           <DataTable.Column name="vol" children="Vol." />
@@ -30,16 +30,15 @@ export default () => {
                 value: index,
                 active: value.includes(index),
                 collapse: {
-                  /* [1] Render the table to accordion content */
                   children: (
-                    /* [2] Set the desired z-index */
-                    <DataTable data={data} zIndex={2}>
-                      {/* [3] Hide the table header */}
+                    <DataTable data={data}>
+                      {/* [1] Hide the table header */}
                       <DataTable.Head hidden>
-                        <DataTable.Column name="keyword" fixed="left" />
-                        <DataTable.Column name="kd" />
-                        <DataTable.Column name="cpc" />
-                        <DataTable.Column name="vol" />
+                        {/* [2] Set the width variable from the top table for each column */}
+                        <DataTable.Column name="keyword" varWidth="inhered" />
+                        <DataTable.Column name="kd" varWidth="inhered" />
+                        <DataTable.Column name="cpc" varWidth="inhered" />
+                        <DataTable.Column name="vol" varWidth="inhered" />
                       </DataTable.Head>
                       <DataTable.Body />
                     </DataTable>
