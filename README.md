@@ -1,13 +1,28 @@
-# Intergalactic 🐳
+
+<img src="https://github.com/semrush/intergalactic/blob/master/.github/images/semrush-hero.jpg" alt="альтернативный текст">
 
 [![codecov](https://codecov.io/gh/semrush/intergalactic/branch/master/graph/badge.svg?token=OILALW3YQE)](https://codecov.io/gh/semrush/intergalactic)
 [![version](https://img.shields.io/npm/v/@semcore/ui.svg)](https://www.npmjs.com/package/@semcore/ui)
 [![downloads](https://img.shields.io/npm/dt/@semcore/ui.svg)](https://www.npmjs.com/package/@semcore/ui)
 
-Intergalactic is a [React](https://reactjs.org/) component library for developing interfaces.
+Intergalactic is a constantly developing system of [React](https://reactjs.org/) component, guidelines and UX patterns for developing interfaces.
 You can see components in action on our [documentation website](https://i.semrush.com).
 
 ---
+
+## Features ✨ 
+
+- 80+ components for your design
+- High-quality React components out of the box
+- Written in TypeScript with predictable static types
+- Whole package of design resources and development tools
+- Powerful collection of charts
+- Theme customization in every detail (coming soon)
+
+## Browser Support
+
+- Google Chrome, Mozilla Firefox, Opera, Microsoft Edge
+- Safari (two last versions)
 
 ## Before you start
 
@@ -15,10 +30,56 @@ This repository is a single development point for all library components. Each c
 
 You can add our components to your project using any package manager.
 
+## Installation 🛠
+
+The library supports two delivery systems:
+
+- Package system where each individual component is a separate package
+- Release system where all components are combined in a single package
+
+We recommend that you use the release system, since it's more convenient and it reduces the risk of bundle bloat due to package duplicates. With the release system, you can also install component packages separately if you need to.
+
+### Release system
+Components are installed in a single package.
+
+Example:
+
+```
+npm i @semcore/ui
+```
+
+After the installation, all components will be available at `@semcore/ui/{{ component name }}`.
+
+### Package system
+
+All components are located in the `@semcore` namespace in npm and are installed separately.
+
+If the selected component is running, you must install the `@semcore/core package`.
+
+Example:
+
+```
+npm i @semcore/button @semcore/core
+```
+
+`@semcore/core` - is the basic package by which we create our components, and it contains all of the common logic of the components that is discussed below. There should only be one version of the package in the project.
+
 ## How to contribute to the project
 
 All changes, including changes by the project participants, must go through a code review. We do that in pull
 requests on GitHub. [Learn more about contributing ›](https://github.com/semrush/intergalactic/blob/master/CONTRIBUTING.md)
+
+### Contributors
+Thanks to all contributors, we so awesome and that won't be possible without you! ❤️
+
+- [Roman Lysov](https://github.com/lsroman)
+- [Michael Sereniti](https://github.com/phytonmk)
+- [Julia Mnizhek](https://github.com/j-mnizhek)
+- [Elena Krasnopolskaia](https://github.com/ekrasnopolskaia)
+- [Ruslan Gaiazov](https://github.com/freeyoungstrong)
+- [Elena Khaas](https://github.com/elenakhaas)
+- [Dmitry Sokolov](https://github.com/Evalon)
+- and many other on Semrush team
 
 ## I found a bug! 🕵️‍
 
