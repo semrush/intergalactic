@@ -222,7 +222,7 @@ const RangeSep = (props) => {
       alignItems="center"
       justifyContent="center"
       flex="0"
-      mr={4}
+      mr={1}
     >
       -
     </SRangeSep>,

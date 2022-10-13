@@ -240,12 +240,7 @@ describe('DateRangePicker', () => {
   });
 
   test('a11y', async () => {
-    const { container } = render(
-      <DateRangePicker visible disablePortal>
-        <DateRangePicker.InputTrigger />
-        <DateRangePicker.Popper />
-      </DateRangePicker>,
-    );
+    const { container } = render(<DateRangePicker visible disablePortal />);
 
     const results = await axe(container);
     expect(results).toHaveNoViolations();

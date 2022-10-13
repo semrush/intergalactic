@@ -54,6 +54,7 @@ export class DatePickerRoot extends PickerAbstract {
       onChange,
       onDisplayedPeriodChange,
       locale,
+      w: 145,
       disabledDates: disabled,
       children: () => <InputTrigger.SingleDateInput />,
     };
