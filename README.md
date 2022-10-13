@@ -1,5 +1,5 @@
 
-<img src="https://github.com/semrush/intergalactic/blob/master/.github/images/semrush-hero.png" alt="альтернативный текст">
+<img src="https://github.com/semrush/intergalactic/blob/master/.github/images/semrush-hero.png" alt="team's picture">
 
 [![codecov](https://codecov.io/gh/semrush/intergalactic/branch/master/graph/badge.svg?token=OILALW3YQE)](https://codecov.io/gh/semrush/intergalactic)
 [![version](https://img.shields.io/npm/v/@semcore/ui.svg)](https://www.npmjs.com/package/@semcore/ui)
