@@ -3,29 +3,29 @@ import { RefObject } from 'react';
 
 export interface IEllipsisProps {
   /**
-   * Row count in multiline Ellipsis
+   * Rows count in multiline Ellipsis
    * @default 1
    */
-  maxline?: number;
+  maxLine?: number;
   /**
    * Trimming type
-   * @default right
+   * @default end
    */
   trim?: 'end' | 'middle';
   /**
-   * Shows tooltip
-   * @default visible
+   * Show tooltip
+   * @default true
    */
-  tooltip?: string;
+  tooltip?: boolean;
   /**
-   * ref to the item that will be observed by ResizeObserver
+   * Ref to the item that will be observed by ResizeObserver
    */
   // eslint-disable-next-line ssr-friendly/no-dom-globals-in-module-scope
   containerRef?: RefObject<HTMLElement | null>;
   /**
-   * Subscribes elements to ResizeObserver
-   */
-  resizeObserver?: { width: number };
+   * Explicit sizes of container text should be trimmed in
+   **/
+  containerRect?: { width: number };
 }
 
 declare const useResizeObserver: (

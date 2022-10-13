@@ -13,9 +13,9 @@ SEllipsis {
   white-space: nowrap;
 }
 
-SEllipsis[maxline] {
+SEllipsis[maxLine] {
   display: -webkit-box;
-  -webkit-line-clamp: var(--maxline);
+  -webkit-line-clamp: var(--maxLine);
   -webkit-box-orient: vertical;
   overflow: hidden;
   white-space: normal;

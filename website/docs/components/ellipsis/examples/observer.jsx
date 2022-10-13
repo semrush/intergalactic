@@ -5,7 +5,7 @@ import Ellipsis, { useResizeObserver } from '@semcore/ellipsis';
 export default () => {
   const containerRef = useRef(null);
 
-  const resizeObserver = useResizeObserver(containerRef);
+  const containerRect = useResizeObserver(containerRef);
 
   return (
     <DataTable data={data}>
@@ -20,7 +20,7 @@ export default () => {
           {(props, row) => {
             return {
               children: (
-                <Ellipsis trim="middle" resizeObserver={resizeObserver} containerRef={containerRef}>
+                <Ellipsis trim="middle" containerRect={containerRect} containerRef={containerRef}>
                   {row[props.name]}
                 </Ellipsis>
               ),

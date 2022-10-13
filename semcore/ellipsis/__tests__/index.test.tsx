@@ -2,7 +2,6 @@ import React from 'react';
 import { snapshot, testing } from '@semcore/jest-preset-ui';
 import Ellipsis from '../src';
 import { Box } from '@semcore/flex-box';
-// global.ResizeObserver = require('resize-observer-polyfill')
 
 const { render, axe, cleanup } = testing;
 
@@ -25,7 +24,7 @@ describe('Ellipsis', () => {
   test('Renders correctly with multiline', async () => {
     const component = (
       <Box w={200}>
-        <Ellipsis maxline={3}>
+        <Ellipsis maxLine={3}>
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores atque autem commodi,
           doloribus ex harum inventore modi praesentium quam ratione reprehenderit rerum tempore
           voluptas. Aliquam eos expedita illo quasi unde!

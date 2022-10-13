@@ -9,39 +9,36 @@ import reactToText from '@semcore/utils/lib/reactToText';
 import getOriginChildren from '@semcore/utils/lib/getOriginChildren';
 
 type AsProps = {
-  maxline?: number;
+  maxLine?: number;
   trim?: 'end' | 'middle';
-  tooltip?: string;
+  tooltip?: boolean;
   styles?: React.CSSProperties;
-  resizeObserver?: { width: number };
+  containerRect?: { width: number };
   // eslint-disable-next-line ssr-friendly/no-dom-globals-in-module-scope
   containerRef?: RefObject<HTMLElement | null>;
 };
 
 type AsPropsMiddle = {
   text: string;
-  tooltip?: string;
+  tooltip?: boolean;
   styles?: React.CSSProperties;
-  resizeObserver?: { width: number };
+  containerRect?: { width: number };
   // eslint-disable-next-line ssr-friendly/no-dom-globals-in-module-scope
   containerRef?: RefObject<HTMLElement | null>;
 };
-
-const getSymbolAmount = (blockWidth: number, symbolWidth: number) =>
-  Math.round(blockWidth / symbolWidth);
 
 class RootEllipsis extends Component<AsProps> {
   static displayName = 'Ellipsis';
   static style = style;
   static defaultProps: AsProps = {
     trim: 'end',
-    tooltip: 'visible',
+    tooltip: true,
   };
 
   render() {
     const SEllipsis = this.Root;
     const SContainer = Flex;
-    const { styles, Children, maxline, tooltip, trim, resizeObserver, containerRef } = this.asProps;
+    const { styles, Children, maxLine, tooltip, trim, containerRect, containerRef } = this.asProps;
     const text = reactToText(getOriginChildren(Children));
 
     if (trim === 'middle') {
@@ -50,7 +47,7 @@ class RootEllipsis extends Component<AsProps> {
           text={text}
           styles={styles}
           tooltip={tooltip}
-          resizeObserver={resizeObserver}
+          containerRect={containerRect}
           containerRef={containerRef}
         />,
       );
@@ -58,14 +55,14 @@ class RootEllipsis extends Component<AsProps> {
     if (tooltip) {
       return sstyled(styles)(
         <SContainer interaction="hover" title={text} tag={Tooltip}>
-          <SEllipsis use:maxline={maxline} render="div" tag="div">
+          <SEllipsis use:maxLine={maxLine} render="div" tag="div">
             <Children />
           </SEllipsis>
         </SContainer>,
       );
     }
     return sstyled(styles)(
-      <SEllipsis use:maxline={maxline} render="div" tag="div">
+      <SEllipsis use:maxLine={maxLine} render="div" tag="div">
         <Children />
       </SEllipsis>,
     );
@@ -73,13 +70,13 @@ class RootEllipsis extends Component<AsProps> {
 }
 
 const EllipsisMiddle: React.FC<AsPropsMiddle> = (props) => {
-  const { styles, text, tooltip, resizeObserver, containerRef } = props;
+  const { styles, text, tooltip, containerRect, containerRef } = props;
   const resizeElement = useRef<RefObject<HTMLElement | null>>(null);
   const [dimension, setDimension] = useState<{ fontSize: string; symbolWidth: number }>({
     fontSize: '14',
     symbolWidth: 0,
   });
-  const blockWidth = useResizeObserver(resizeElement, resizeObserver).width;
+  const blockWidth = useResizeObserver(resizeElement, containerRect).width;
 
   useLayoutEffect(() => {
     const dateSpan = document.createElement('temporary-block');
@@ -100,8 +97,8 @@ const EllipsisMiddle: React.FC<AsPropsMiddle> = (props) => {
   const STail = 'span';
   const SBeginning = 'span';
   const SContainerMiddle = Flex;
-  const symbolAmount = useMemo(
-    () => getSymbolAmount(blockWidth, dimension.symbolWidth),
+  const displayedSymbols = useMemo(
+    () => Math.round(blockWidth / dimension.symbolWidth),
     [blockWidth, dimension.symbolWidth],
   );
 
@@ -113,15 +110,15 @@ const EllipsisMiddle: React.FC<AsPropsMiddle> = (props) => {
         ref={containerRef ?? resizeElement}
         tag={Tooltip}
       >
-        <SBeginning>{text.substring(0, text.length - symbolAmount / 2 - 1)}</SBeginning>
-        <STail>{text.substring(text.length - symbolAmount / 2 - 1)}</STail>
+        <SBeginning>{text.substring(0, text.length - displayedSymbols / 2 - 1)}</SBeginning>
+        <STail>{text.substring(text.length - displayedSymbols / 2 - 1)}</STail>
       </SContainerMiddle>,
     ) as any;
   } else {
     return sstyled(styles)(
       <SContainerMiddle ref={containerRef ?? resizeElement}>
-        <SBeginning>{text.substring(0, text.length - symbolAmount / 2 - 1)}</SBeginning>
-        <STail>{text.substring(text.length - symbolAmount / 2 - 1)}</STail>
+        <SBeginning>{text.substring(0, text.length - displayedSymbols / 2 - 1)}</SBeginning>
+        <STail>{text.substring(text.length - displayedSymbols / 2 - 1)}</STail>
       </SContainerMiddle>,
     ) as any;
   }

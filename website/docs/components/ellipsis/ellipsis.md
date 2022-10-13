@@ -4,6 +4,8 @@ fileSource: ellipsis
 tabName: Design
 ---
 
+@import playground
+
 @## Description
 
 **Ellipsis** is a component that truncates a single line of text or paragraph with an ellipsis (…).

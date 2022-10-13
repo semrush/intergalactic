@@ -9,7 +9,7 @@ export default function () {
       <Card.Header>
         <Card.Title>Card heading</Card.Title>
         <Card.Description tag="div">
-          <Ellipsis maxline={3}>
+          <Ellipsis maxLine={3}>
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi hic nemo tenetur
             voluptatem! A aliquid assumenda dolore ducimus impedit numquam ratione recusandae sed
             ullam voluptate? Aperiam distinctio minus possimus quasi.
