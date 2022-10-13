@@ -33,7 +33,7 @@ esbuild
     },
   )
   .then(() => {
-    console.log('\nStrarted on ' + picocolros.yellow(`http://localhost:${port}` + '\n'));
+    console.log('\nStarted on ' + picocolros.yellow(`http://localhost:${port}` + '\n'));
   })
   .catch((err) => {
     console.error(err);
