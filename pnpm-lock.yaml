@@ -598,6 +598,21 @@ importers:
       '@semcore/jest-preset-ui': link:../../tools/jest-preset-ui
       '@types/react': 18.0.21
 
+  semcore/ellipsis:
+    specifiers:
+      '@semcore/flex-box': ^4
+      '@semcore/jest-preset-ui': 1.0.0
+      '@semcore/tooltip': ^5
+      '@semcore/utils': ^3.15
+      resize-observer-polyfill: 1.5.1
+    dependencies:
+      '@semcore/flex-box': link:../flex-box
+      '@semcore/tooltip': link:../tooltip
+      '@semcore/utils': link:../utils
+      resize-observer-polyfill: 1.5.1
+    devDependencies:
+      '@semcore/jest-preset-ui': link:../../tools/jest-preset-ui
+
   semcore/email:
     specifiers:
       autoprefixer: 10.3.1
@@ -21491,14 +21506,12 @@ packages:
       react-fast-compare: 3.2.0
       react-instantsearch-core: 6.35.0_npc63xaus6igy2ygmd3t37sxzu
     dev: false
-
   /react-instantsearch-native/6.35.0_npc63xaus6igy2ygmd3t37sxzu:
     resolution:
       {
         integrity: sha512-ggJvseTvrC5EQAGmUiuckXIYlxZxDWgKHsDxoyw9g+ceOTSr1NwZbU3SmXWRhL/FF/DsqRyOCpKN8RShym7/LQ==,
       }
     peerDependencies:
-      algoliasearch: '>= 3.1 < 5'
       react: '>= 16.3.0 < 19'
       react-native: '>= 0.54.0'
     dependencies:
