@@ -6,7 +6,8 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Added
 
-- Added property that disables scrolling in tables.
+- Added `disabledScroll` property that disables scrolling in tables.
+- Added `varWidth` property to directly set css variable column width.
 
 ## [3.3.0] - 2022-10-10
 

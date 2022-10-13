@@ -242,7 +242,7 @@ class RootDefinitionTable extends Component<AsProps> {
           return this.props.ref.current?.getBoundingClientRect().width || 0;
         },
         name,
-        varWidth: createCssVarForWidth(name),
+        varWidth: !varWidth || varWidth === 'inhered' ? createCssVarForWidth(name) : varWidth,
         setVar: varWidth !== 'inhered',
         fixed,
         resizable,
