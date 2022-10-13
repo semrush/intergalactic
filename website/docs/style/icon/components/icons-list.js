@@ -3367,11 +3367,11 @@ const iconsList = {
       ],
     },
     {
-      name: 'Stoller',
+      name: 'Stroller',
       size: ['l', 'm'],
       group: 'Misc',
       tags: [
-        'sstoller',
+        'stroller',
         'demography',
         'parental',
         'leave',
