@@ -344,7 +344,7 @@ class RangePickerAbstract extends Component {
         render={Dropdown}
         use:aria-label={providedAriaLabel}
         interaction="focus"
-        __excludeProps={['onChange']}
+        __excludeProps={['onChange', 'value']}
       >
         <Children />
       </Root>,

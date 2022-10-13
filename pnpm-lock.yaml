@@ -498,6 +498,8 @@ importers:
 
   semcore/date-picker:
     specifiers:
+      '@guidepup/playwright': 0.6.1
+      '@playwright/test': 1.25.1
       '@semcore/base-trigger': ^3.0.0
       '@semcore/button': ^4
       '@semcore/divider': ^3
@@ -527,6 +529,8 @@ importers:
       '@semcore/utils': link:../utils
       dayjs: 1.8.36
     devDependencies:
+      '@guidepup/playwright': 0.6.1_@playwright+test@1.25.1
+      '@playwright/test': 1.25.1
       '@semcore/jest-preset-ui': link:../../tools/jest-preset-ui
       '@types/react': 18.0.21
       jest: 29.0.1
@@ -2048,7 +2052,7 @@ importers:
       dotenv: 16.0.1
       esbuild: 0.14.29
       identity-obj-proxy: 3.0.0
-      jest-axe: '6'
+      jest-axe: 6.0.0
       jest-canvas-mock: 2.4.0
       jest-image-snapshot: 2.9.0
       react: '*'

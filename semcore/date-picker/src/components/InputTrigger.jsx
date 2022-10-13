@@ -18,12 +18,12 @@ class InputTriggerRoot extends Component {
 
   getSingleDateInputProps() {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const { children, id, ...otherProps } = this.asProps;
+    const { children, id, role, 'aria-haspopup': ariaHasPopup, ...otherProps } = this.asProps;
     return otherProps;
   }
   getDateRangeProps() {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const { children, id, ...otherProps } = this.asProps;
+    const { children, id, role, 'aria-haspopup': ariaHasPopup, ...otherProps } = this.asProps;
     return otherProps;
   }
 
@@ -71,7 +71,7 @@ class SingleDateInputRoot extends Component {
       <SSingleDateInput
         render={InputMask}
         ref={forwardRef}
-        __excludeProps={['onChange', 'value']}
+        __excludeProps={['value', 'onChange']}
         w={w}
       >
         <NeighborLocation>
@@ -115,6 +115,9 @@ class DateRangeRoot extends Component {
     onChange([prevValue[0], value], event);
   };
   handleFromKeydown = (event) => {
+    if (!this.toRef.current) return;
+    if (!this.fromRef.current) return;
+
     if (
       event.code === 'ArrowRight' &&
       this.fromRef.current.selectionStart === this.fromRef.current.value.length &&
@@ -127,6 +130,9 @@ class DateRangeRoot extends Component {
     }
   };
   handleToKeydown = (event) => {
+    if (!this.toRef.current) return;
+    if (!this.fromRef.current) return;
+
     if (event.code === 'Backspace' && !this.toRef.current.value) {
       const value = this.fromRef.current.value;
       this.fromRef.current.focus();
@@ -189,20 +195,20 @@ class DateRangeRoot extends Component {
 const FromMaskedInput = (props) => {
   const SFromMaskedInput = Root;
 
-  return sstyled(props.styles)(<SFromMaskedInput aria-label="from date" render={MaskedInput} />);
+  return sstyled(props.styles)(<SFromMaskedInput labelPrefix="from date" render={MaskedInput} />);
 };
 
 const ToMaskedInput = (props) => {
   const SToMaskedInput = Root;
 
-  return sstyled(props.styles)(<SToMaskedInput aria-label="to date" render={MaskedInput} />);
+  return sstyled(props.styles)(<SToMaskedInput labelPrefix="to date" render={MaskedInput} />);
 };
 
 const Indicator = (props) => {
   const SIndicator = Root;
 
   return sstyled(props.styles)(
-    <SIndicator render={InputMask.Addon} tag={Calendar} aria-hidden="true" />,
+    <SIndicator render={InputMask.Addon} tag={Calendar} aria-hidden="true" tabIndex={-1} />,
   );
 };
 
@@ -231,9 +237,13 @@ const MaskedInput = ({
   styles,
   parts: allowedParts = defaultAllowedParts,
   disabledDates,
+  labelPrefix = 'Date',
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  __excludeProps,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  Root,
   ...otherProps
 }) => {
-  const SMaskedInput = Root;
   const { sep, order } = React.useMemo(() => {
     const exampleDate = new Date(2000, 4, 29);
     const options = { year: 'numeric', month: '2-digit', day: '2-digit' };
@@ -332,8 +342,9 @@ const MaskedInput = ({
       const parsed = { ...placeholders };
       const parts = value.split(sep);
       for (let i = 0; i < order.length; i++) {
-        parsed[order[i]] = parts[i];
+        parsed[order[i]] = parts[i] ?? parsed[order[i]];
       }
+
       let { year, month, day } = parsed;
 
       if (allowedParts.month) {
@@ -475,9 +486,8 @@ const MaskedInput = ({
   );
 
   return sstyled(styles)(
-    <SMaskedInput
-      render={InputMask.Value}
-      title="Date"
+    <InputMask.Value
+      title={`${labelPrefix} ${mask}`}
       mask={mask}
       aliases={aliases}
       maskOnlySymbols={maskOnlySymbols}

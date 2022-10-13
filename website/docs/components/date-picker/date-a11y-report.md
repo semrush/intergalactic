@@ -1,0 +1,56 @@
+## Automated screen reader testing
+
+_Intergalactic v13.0.0, React v18.2.0, Playwright v1.25.1,
+Guidepup v0.13.1, MacOS Big Sur 11._
+
+**Running screen reader against [this file](https://github.com/semrush/intergalactic/blob/master/website/docs/components/date-picker/examples/datepicker.jsx).**
+
+1. Screen reader goes into the active element.
+2. Screen reader says "In web content 10/14/2022 Insertion at end of text. Date MM/DD/YYYY edit text 10/14/2022 Insertion at end of text. Date MM/DD/YYYY edit text".
+3. Screen reader goes into the active element.
+4. Screen reader says "In edit text 10/14/2022".
+5. Screen reader presses the "Backspace" button.
+6. Screen reader says "2".
+7. Screen reader presses the "Backspace" button.
+8. Screen reader presses the "Backspace" button.
+9. Screen reader says "0".
+10. Screen reader presses the "Backspace" button.
+11. Screen reader says "10/14".
+12. Screen reader presses the "Backspace" button.
+13. Screen reader says "4".
+14. Screen reader presses the "Backspace" button.
+15. Screen reader says "10".
+16. Screen reader presses the "Backspace" button.
+17. Screen reader says "0".
+18. Screen reader presses the "Backspace" button.
+19. Screen reader says "1".
+20. Screen reader types "05".
+21. Screen reader says "0".
+22. Screen reader types "29".
+23. Screen reader says "2".
+24. Screen reader goes out of active element.
+25. Screen reader says "Out of edit text".
+26. Screen reader goes into the active element.
+27. Screen reader says "In edit text 05/29".
+28. Screen reader types "2000".
+29. Screen reader says "0".
+30. Screen reader goes out of active element.
+31. Screen reader says "2000".
+32. Screen reader goes to the next element.
+33. Screen reader says "from date MM/DD/YYYY invalid data edit text".
+34. Screen reader goes into the active element.
+35. Screen reader says "In edit text".
+36. Screen reader types "05".
+37. Screen reader says "05".
+38. Screen reader types "29".
+39. Screen reader says "29".
+40. Screen reader types "2000".
+41. Screen reader says "to date MM/DD/YYYY invalid data edit text menu pop-up group".
+42. Screen reader types "05".
+43. Screen reader says "05".
+44. Screen reader types "29".
+45. Screen reader says "29".
+46. Screen reader types "2000".
+47. Screen reader says "0".
+48. Screen reader goes out of active element.
+49. Screen reader says "2000".
