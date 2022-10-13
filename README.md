@@ -5,8 +5,8 @@
 [![version](https://img.shields.io/npm/v/@semcore/ui.svg)](https://www.npmjs.com/package/@semcore/ui)
 [![downloads](https://img.shields.io/npm/dt/@semcore/ui.svg)](https://www.npmjs.com/package/@semcore/ui)
 
-Intergalactic is a constantly developing system of [React](https://reactjs.org/) component, guidelines and UX patterns for developing interfaces.
-You can see components in action on our [documentation website](https://i.semrush.com).
+Intergalactic is a constantly developing design system of [React](https://reactjs.org/) component, guidelines and UX patterns for developing interfaces.
+You can explore components in our [documentation website](https://i.semrush.com).
 
 ---
 
@@ -70,7 +70,7 @@ All changes, including changes by the project participants, must go through a co
 requests on GitHub. [Learn more about contributing ›](https://github.com/semrush/intergalactic/blob/master/CONTRIBUTING.md)
 
 ### Contributors
-Thanks to all contributors, we so awesome and that won't be possible without you! ❤️
+Thanks to all contributors, you are so awesome and that won't be possible without you! ❤️
 
 - [Roman Lysov](https://github.com/lsroman)
 - [Michael Sereniti](https://github.com/phytonmk)
@@ -78,8 +78,8 @@ Thanks to all contributors, we so awesome and that won't be possible without you
 - [Elena Krasnopolskaia](https://github.com/ekrasnopolskaia)
 - [Ruslan Gaiazov](https://github.com/freeyoungstrong)
 - [Elena Khaas](https://github.com/elenakhaas)
-- [Dmitry Sokolov](https://github.com/Evalon)
-- and many other on Semrush team
+- [Tatana Iliukhina](https://github.com/tatana-I)
+- and many other from Semrush team
 
 ## I found a bug! 🕵️‍
 
