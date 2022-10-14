@@ -16,7 +16,7 @@ const RowAccordion = React.forwardRef(function ({ value, collapse = {}, ...props
 export default () => {
   const [value, setValue] = useState([]);
   return (
-    <Accordion value={value} onChange={setValue} duration={2000}>
+    <Accordion value={value} onChange={setValue}>
       <DataTable data={data}>
         <DataTable.Head wMin={1000}>
           <DataTable.Column name="keyword" children="Keyword" fixed="left" />
