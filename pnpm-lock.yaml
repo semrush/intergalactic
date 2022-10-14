@@ -32,6 +32,7 @@ importers:
       '@semcore/gcs-upload': workspace:*
       '@semcore/jest-preset-ui': workspace:*
       '@semcore/legacy-publisher': workspace:*
+      '@semcore/slack-integration': workspace:*
       '@semcore/theme-redesign': 1.5.12
       '@types/jest': 29.0.0
       '@typescript-eslint/eslint-plugin': 5.10.2
@@ -86,6 +87,7 @@ importers:
       '@semcore/gcs-upload': link:tools/gcs-upload
       '@semcore/jest-preset-ui': link:tools/jest-preset-ui
       '@semcore/legacy-publisher': link:tools/legacy-publisher
+      '@semcore/slack-integration': link:tools/slack-integration
       '@semcore/theme-redesign': 1.5.12
       '@types/jest': 29.0.0
       '@typescript-eslint/eslint-plugin': 5.10.2_lfj7r23v4xwv2enpxl5p6t5erq
