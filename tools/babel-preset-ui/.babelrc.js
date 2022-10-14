@@ -2,22 +2,7 @@ module.exports = function (babel, opts = {}) {
   return {
     presets: [
       '@babel/preset-typescript',
-      [
-        '@babel/preset-env',
-        {
-          modules: false,
-          targets: {
-            esmodules: true,
-            // browsers: [
-            //   'last 0.5 year',
-            //   'last 2 safari versions',
-            //   'last 2 iOS versions',
-            // ],
-          },
-          shippedProposals: true,
-          ...opts.env,
-        },
-      ],
+      ['@babel/preset-env', { modules: false, ...opts.env }],
       '@babel/preset-react',
     ],
     plugins: [
@@ -26,13 +11,7 @@ module.exports = function (babel, opts = {}) {
       '@babel/plugin-proposal-export-default-from',
       '@babel/plugin-proposal-class-properties',
       'babel-plugin-preval',
-      [
-        '@babel/plugin-transform-runtime',
-        {
-          // https://github.com/babel/babel/issues/10261
-          version: require('@babel/helpers/package.json').version,
-        },
-      ],
+      '@babel/plugin-transform-runtime',
       [
         '@semcore/babel-plugin-recharts',
         {
@@ -43,19 +22,7 @@ module.exports = function (babel, opts = {}) {
     ],
     env: {
       commonjs: {
-        presets: [
-          [
-            '@babel/preset-env',
-            {
-              targets: {
-                // esmodules: true,
-                browsers: ['last 0.5 year', 'last 2 safari versions', 'last 2 iOS versions'],
-              },
-              shippedProposals: true,
-              ...opts.env,
-            },
-          ],
-        ],
+        presets: [['@babel/preset-env', opts.env]],
         plugins: [
           [
             '@babel/plugin-transform-modules-commonjs',
