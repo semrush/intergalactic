@@ -105,3 +105,4 @@ More information about this state see in the guide for [Skeleton](/components/sk
 @page stacked-area-chart-api
 @page stacked-area-chart-d3-code
 @page stacked-area-chart-recharts-code
+@page d3-chart-changelog

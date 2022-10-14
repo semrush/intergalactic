@@ -124,3 +124,4 @@ More information about this state see in the guide for [Skeleton](/components/sk
 @page line-chart-api
 @page line-chart-d3-code
 @page line-chart-recharts-code
+@page d3-chart-changelog

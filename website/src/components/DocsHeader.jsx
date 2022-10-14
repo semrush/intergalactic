@@ -39,7 +39,7 @@ export default function (props) {
       <h1 className={styles.title}>{title}</h1>
       <Text tag={Flex} alignItems={'center'} color="#898D9A" mb={3} size={300}>
         {category}
-        {version && (
+        {version && changelogUrl && (
           <>
             {' '}
             |<VersionLink to={`/${changelogUrl}/#${version}`} version={version} />

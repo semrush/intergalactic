@@ -149,3 +149,4 @@ Check out the charts below. In the wrong case, the scale does not start from zer
 
 @page histogram-chart-api
 @page histogram-chart-code
+@page d3-chart-changelog

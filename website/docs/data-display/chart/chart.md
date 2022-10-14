@@ -152,3 +152,4 @@ The particular edge cases differ for different chart types, so see them in the d
 General recommendations of "empty" states for widgets with charts are described in [Error & n/a widget states](/components/widget-empty/).
 
 @page chart-code
+@page d3-chart-changelog
