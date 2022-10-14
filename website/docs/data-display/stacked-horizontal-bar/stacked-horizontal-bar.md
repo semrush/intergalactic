@@ -62,3 +62,4 @@ See detailed information in the section about data loading in the [Horizontal ba
 @page stacked-horizontal-bar-api
 @page stacked-horizontal-bar-d3-code
 @page stacked-horizontal-bar-recharts-code
+@page d3-chart-changelog

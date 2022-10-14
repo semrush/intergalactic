@@ -126,3 +126,4 @@ The data will be difficult to read and compare.
 
 @page bubble-chart-api
 @page bubble-chart-d3-code
+@page d3-chart-changelog
