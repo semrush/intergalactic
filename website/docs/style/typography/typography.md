@@ -5,10 +5,7 @@ tabName: Design
 
 @## Font
 
-We use two font families in our interface:
-
-1. The main font is [Inter](https://fonts.google.com/specimen/Inter?query=inter).
-2. The accent font is [Factor A](https://type.today/en/factor_a).
+We use the [Inter](https://fonts.google.com/specimen/Inter?query=inter) font family in our interfaces.
 
 > For a clearer rendering of the font and its color, use `-webkit-font-smoothing: antialiased;` (see cross-browser compatibility at [caniuse.com](https://caniuse.com/#search=-webkit-font-smoothing)).
 
@@ -24,24 +21,24 @@ Besides, both paragraphs headings and text can be colored in our main semantic c
 
 @## Font variables
 
-| px   | em        | Variables | Font family           |
-| ---- | --------- | --------- | --------------------- |
-| 48px | 3em       | `--fs-800`, `--lh-800` | Factor A |
-| 36px | 2.25em    | `--fs-700; --lh-700;`  | Factor A |
-| 32px | 2em       | `--fs-600; --lh-600;`  | Factor A |
-| 24px | 1.5em     | `--fs-500; --lh-500;`  | Factor A |
-| 20px | 1.25em    | `--fs-400; --lh-400;`  | Inter    |
-| 16px | 1em       | `--fs-300; --lh-300;`  | Inter    |
-| 14px | 0.875em   | `--fs-200; --lh-200;`  | Inter    |
-| 12px | 0.75em    | `--fs-100; --lh-100;`  | Inter    |
+| px   | em      | Variables              | Font family |
+| ---- | ------- | ---------------------- | ----------- |
+| 48px | 3em     | `--fs-800`, `--lh-800` | Inter       |
+| 36px | 2.25em  | `--fs-700; --lh-700;`  | Inter       |
+| 32px | 2em     | `--fs-600; --lh-600;`  | Inter       |
+| 24px | 1.5em   | `--fs-500; --lh-500;`  | Inter       |
+| 20px | 1.25em  | `--fs-400; --lh-400;`  | Inter       |
+| 16px | 1em     | `--fs-300; --lh-300;`  | Inter       |
+| 14px | 0.875em | `--fs-200; --lh-200;`  | Inter       |
+| 12px | 0.75em  | `--fs-100; --lh-100;`  | Inter       |
 
 @example text-variables
 
 @## Heading
 
-In our interface, we use headings of 6 sizes. All of them has `bold (700)` font-weight.
+In our interface, we use headings of 6 sizes. All of them has `semibold (600)` font-weight.
 
-**The first 4 headings use Factor A as font-family. They are usually used in hero blocks, large ad screens, banners and landing pages**.
+**The first 4 headings are usually used in hero blocks, large ad screens, banners and landing pages**.
 
 |     | Appearance           | Styles                                                   | Variables              |
 | --- | -------------------- | -------------------------------------------------------- | ---------------------- |
