@@ -1,5 +1,7 @@
 ## [13.0.1] - 2022-10-14
 
+- **Fixed** Fixed reexports of `@semcore/ui` package.
+
 ## [13.0.0] - 2022-10-12
 
 ### Global
