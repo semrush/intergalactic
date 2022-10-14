@@ -1,9 +1,19 @@
+## [13.0.1] - 2022-10-14
+
+### Global
+
+- **Fixed** Fixed reexports of `@semcore/ui` package.
+
 ## [13.0.0] - 2022-10-12
 
 ### Global
 
 - **Added** Added support for React 18 🔥
 - **Fixed** Fixed problems in working with react strict mode.
+
+### @semcore/chart
+
+- **BREAK** The component has been removed from the release system. Use `@semcore/d3-chart`.
 
 ### @semcore/icon
 
@@ -15,10 +25,6 @@
 ### @semcore/neighbor-location
 
 - **BREAK** The approach to determining neighbors has been changed.
-
-### @semcore/chart
-
-- **BREAK** The component has been removed from the release system. Use `@semcore/d3-chart`.
 
 ### @semcore/table
 
