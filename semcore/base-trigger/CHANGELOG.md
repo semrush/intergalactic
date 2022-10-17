@@ -4,9 +4,9 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ## [3.2.1] - 2022-10-17
 
-### Changed
+### Fixed
 
-- Changed utils function for `BaseTrigger`
+- Fixed the problem of not showing the placeholder when the body of the `FilterTrigger` is empty.
 
 ## [3.2.0] - 2022-10-10
 
