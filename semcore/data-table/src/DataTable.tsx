@@ -243,7 +243,7 @@ class RootDefinitionTable extends Component<AsProps> {
         },
         name,
         varWidth: !varWidth || varWidth === 'inhered' ? createCssVarForWidth(name) : varWidth,
-        setVar: varWidth !== 'inhered',
+        setVar: !varWidth,
         fixed,
         resizable,
         active: sort[0] === name,

@@ -74,6 +74,9 @@ class Head extends Component<AsProps> {
       flexBasis: column.props.flex === undefined && `${width * cSize}%`,
       ...column.props.style,
     };
+    if (!column.setVar) {
+      style['flexBasis'] = `var(${column.varWidth})`;
+    }
 
     if (name !== undefined && value !== undefined) {
       style[name] = value;
