@@ -185,3 +185,4 @@ The starting angle for displaying values is always `90 degrees`.
 @page donut-chart-api
 @page donut-chart-d3-code
 @page donut-chart-recharts-code
+@page d3-chart-changelog

@@ -25,7 +25,7 @@ export const createTask = (
       const result = await taskFn(
         {
           ...opt,
-          progress: (message) => reporter.progress(message),
+          progress: (message) => (reporter.progress as any)(message),
           skip: () => reporter.emit('skip', name),
           log: (message) => reporter.emit('message', name, message),
           warn: (message) => reporter.emit('warning', name, message),

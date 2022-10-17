@@ -86,3 +86,4 @@ Here you will find the states for some specific cases. All other "empty states" 
 @page radial-tree-chart-api
 @page radial-tree-chart-a11y
 @page radial-tree-chart-d3-examples
+@page d3-chart-changelog
