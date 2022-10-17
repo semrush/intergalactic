@@ -13,7 +13,8 @@ function addonTextChildren(
   if (typeof children === 'function') {
     return <Children />;
   }
-  if (isTextWrapIfEmptyChildren && !children) {
+
+  if (!isTextWrapIfEmptyChildren && !children) {
     return null;
   }
   return React.Children.toArray(children).some((element) => {

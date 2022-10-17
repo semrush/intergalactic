@@ -6,7 +6,7 @@ export default function addonText(
   Addon: React.ComponentType,
   isTextWrapIfEmptyChildren: boolean = false,
 ) {
-  if (isTextWrapIfEmptyChildren && !children) {
+  if (!isTextWrapIfEmptyChildren && !children) {
     return false;
   }
   return React.Children.toArray(children).some(
