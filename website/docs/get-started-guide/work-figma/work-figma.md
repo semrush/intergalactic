@@ -2,15 +2,39 @@
 title: Figma libraries
 ---
 
+@## What Figma libraries do we have?
+
+@embedded_video https://www.loom.com/share/32ac37f7d13046308cab7095d05bcdcb
+
+### Detaching and updating components
+
+@embedded_video https://www.loom.com/share/5733829ef80f415d828f3e0d045249d6
+
 @## Core libraries
 
-If you're building an interface inside the Semrush suite, feel free to use our Figma libraries:
+@embedded_video https://www.loom.com/share/593126f16b494b719949649d1d7fa331
+
+@embedded_video https://www.loom.com/share/f31be4be9b9649899661b6139b31b3d7
+
+@embedded_video https://www.loom.com/share/d2b51d7b370f4a7cabcca1b09b7910e6
+
+Feel free to use our Figma libraries:
 
 - **Core components libraries: [Inner](https://www.figma.com/file/pird5k22HfjGRUzZUfW1Qf/%E2%9D%96-New-Components), [Public](https://www.figma.com/community/file/1085155066176261708)**
 - **Interface icons libraries: [Inner](https://www.figma.com/file/lVX2dKnVFtcSTQV7eSS5j1/%F0%9F%94%8D-Icons), [Public](https://www.figma.com/community/file/1104055318873511031)**
 - **Charts libraries: [Inner](https://www.figma.com/file/eODzGSSSlI8fl0x5fsv9cf/%E2%9C%A8-Charts), [Public](https://www.figma.com/community/file/1104055641569356920)**
 
 ![all libraries](static/figma-libraries.png)
+
+@## How to start designing with Figma libraries? Where you should start from?
+
+@embedded_video https://www.loom.com/share/f63d948f2a6543e89d7b980033216098
+
+@embedded_video https://www.loom.com/share/91042725e5f3425a80b62c1e82cab152
+
+### Getting started with Charts library. How to choose the right visualization for your task?
+
+@embedded_video https://www.loom.com/share/0793a430c4bb4784ad0bb6cec9199af5
 
 @## Additional libraries
 

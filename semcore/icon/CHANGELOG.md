@@ -2,15 +2,21 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.0.0] - 2022-10-10
+
+### BREAK
+
+- Remove `AppBlock` icon, use `AppsBlock` instead.
+
+### Changed
+
+- Added support for React 18 🔥
+
 ## [2.33.0] - 2022-10-06
 
 ### Added
 
 - Added icon Stoller
-
-### Changed
-
-- Changed icons-list.js in alphabet order
 
 ## [2.32.2] - 2022-10-04
 

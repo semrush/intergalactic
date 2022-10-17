@@ -1,6 +1,6 @@
 ## Automated screen reader testing
 
-_Intergalactic v12.6.0, React v18.2.0, Playwright v1.25.1,
+_Intergalactic v13.0.1, React v18.2.0, Playwright v1.25.1,
 Guidepup v0.13.1, MacOS Big Sur 11._
 
 **Running screen reader against [this file](https://github.com/semrush/intergalactic/blob/master/website/docs/components/auto-tips/examples/autosuggest.jsx).**
@@ -26,9 +26,11 @@ Guidepup v0.13.1, MacOS Big Sur 11._
 19. Screen reader presses the "Control+Option+Space" button.
 20. Screen reader says "semrush".
 21. Screen reader presses the "Shift+Tab" button.
-22. Screen reader presses the "Shift+Tab" button.
+22. Screen reader says "You are currently on a text element, inside of a list box.".
 23. Screen reader presses the "Shift+Tab" button.
-24. Screen reader says "Entering List of options list box. semrush text (1 of 1)".
+24. Screen reader says "semrush".
 25. Screen reader presses the "Shift+Tab" button.
-26. Screen reader triggers element default action.
-27. Screen reader says "semrush text (1 of 1)".
+26. Screen reader says "Entering List of options list box. semrush text (1 of 1)".
+27. Screen reader presses the "Shift+Tab" button.
+28. Screen reader triggers element default action.
+29. Screen reader says "semrush text (1 of 1)".

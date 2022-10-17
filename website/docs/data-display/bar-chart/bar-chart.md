@@ -147,3 +147,4 @@ When you hover over a clickable date, it changes background `--gray-200` color w
 @page bar-chart-api
 @page bar-chart-d3-code
 @page bar-chart-recharts-code
+@page d3-chart-changelog

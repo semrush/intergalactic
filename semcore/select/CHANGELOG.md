@@ -2,11 +2,18 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [3.1.6] - 2022-10-06
+## [3.2.0] - 2022-10-10
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/base-trigger` [3.0.23 ~> 3.0.24], `@semcore/icon` [2.32.2 ~> 2.33.0]).
+- Added support for React 18 🔥
+- Extended version range for dependency `@semcore/icons`.
+
+## [3.1.7] - 2022-10-10
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/base-trigger` [3.0.24 ~> 3.1.0], `@semcore/dropdown-menu` [3.1.1 ~> 3.1.2], `@semcore/input` [3.0.16 ~> 3.1.0]).
 
 ## [3.1.0] - 2022-09-25
 

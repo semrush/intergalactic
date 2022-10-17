@@ -2,6 +2,7 @@ export { getReleaseChangelog } from './src/getReleaseChangelog';
 export { collectComponentChangelogs } from './src/collectComponentChangelogs';
 export { validateChangelogs } from './src/validateChangelogs';
 export { updateReleaseChangelog } from './src/updateReleaseChangelog';
+export { lintChangelogs } from './src/lintChangelogs';
 export { componentChangelogParser } from './src/parsers/componentChangelogParser';
 export { serializeComponentChangelog } from './src/serializers/serializeComponentChangelog';
 export { serializeReleaseChangelog } from './src/serializers/serializeReleaseChangelog';

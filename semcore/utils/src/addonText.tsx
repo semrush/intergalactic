@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function addonText(
   children: React.ReactNode,
-  Text: React.ComponentType,
+  Text: React.ComponentType<any>,
   Addon: React.ComponentType,
 ) {
   return React.Children.toArray(children).some(

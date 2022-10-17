@@ -190,7 +190,7 @@ describe('DataTable', () => {
     expect(await snapshot(component)).toMatchImageSnapshot();
   });
 
-  /** Currenty screenshot service unable to execute js and scroll area shadows needs to run js for containers measuring */
+  /** Currently screenshot service unable to execute js and scroll area shadows needs to run js for containers measuring */
   xtest('Fixed columns', async () => {
     const component = (
       <div style={{ width: 500 }}>
@@ -248,7 +248,7 @@ describe('DataTable', () => {
     expect(await snapshot(component)).toMatchImageSnapshot();
   });
 
-  /** Currenty screenshot service unable to execute js and portals needs to run js for dom manipulations */
+  /** Currently screenshot service unable to execute js and portals needs to run js for dom manipulations */
   xtest('Header separation', async () => {
     const Component = () => {
       const portalRef = React.useRef(null);
@@ -782,5 +782,18 @@ describe('DataTable.Column', () => {
       </DataTable>,
     );
     expect(getByTestId('column').style.flex).toBe('0 0px');
+  });
+
+  test('Should support ref', () => {
+    const spy = jest.fn();
+    render(
+      <DataTable data={[]}>
+        <DataTable.Head>
+          <DataTable.Column name="keyword" ref={spy} />
+          <DataTable.Column name="kd" />
+        </DataTable.Head>
+      </DataTable>,
+    );
+    expect(spy).toBeCalled();
   });
 });

@@ -1,7 +1,7 @@
 {
   "name": "@semcore/breakpoints",
   "description": "Semrush Breakpoints Component",
-  "version": "1.1.13",
+  "version": "1.2.0",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -16,7 +16,7 @@
     "@semcore/utils": "^3.15"
   },
   "peerDependencies": {
-    "react": "16.8 - 17"
+    "react": "16.8 - 18"
   },
   "jest": {
     "preset": "@semcore/jest-preset-ui"
@@ -27,7 +27,7 @@
     "directory": "semcore/breakpoints"
   },
   "devDependencies": {
-    "@types/react": "16.8 - 17",
+    "@types/react": "18.0.21",
     "@semcore/jest-preset-ui": "1.0.0"
   }
 }

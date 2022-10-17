@@ -3,7 +3,7 @@ import copyChart from '../../copyChart';
 import { colors } from '../../utils/colors';
 
 /**
- * @deprecated Please, use package `@semcore/d3-chart` instead. Package `@semcore/chart` will be removed in the next major release
+ * @deprecated Please, use package `@semcore/ui/d3-chart` instead. Package `@semcore/chart` is deprecated.
  */
 const BarChart = copyChart(BarChartRecharts);
 

@@ -2,11 +2,24 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [3.0.25] - 2022-10-17
+## [3.2.1] - 2022-10-17
 
 ### Changed
 
 - Changed utils function for `BaseTrigger`
+
+## [3.2.0] - 2022-10-10
+
+### Changed
+
+- Added support for React 18 🔥
+- Extended version range for dependency `@semcore/icons`.
+
+## [3.1.0] - 2022-10-07
+
+### Changed
+
+- Updated major dependency `@semcore/neighbor-location` [2.3.15 ~> 3.0.0]
 
 ## [3.0.24] - 2022-10-06
 

@@ -17,6 +17,7 @@ export default function copyChart<T extends React.ComponentClass>(SChart: T): T 
     render() {
       const { className, forwardedRef, children, ...other } = this.props;
       return sstyled(styles)(
+        // @ts-ignore
         <SChart {...other} ref={forwardedRef} className={className}>
           <defs>
             <pattern

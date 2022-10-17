@@ -1,2 +1,2 @@
-export { default } from './NeighborLocation';
 export * from './NeighborLocation';
+export { default } from './NeighborLocation';

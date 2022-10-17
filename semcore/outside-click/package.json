@@ -1,7 +1,7 @@
 {
   "name": "@semcore/outside-click",
   "description": "Semrush OutsideClick Component",
-  "version": "2.4.14",
+  "version": "2.5.0",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -17,8 +17,8 @@
   },
   "peerDependencies": {
     "@semcore/core": "^1",
-    "react": "16.8 - 17",
-    "react-dom": "16.8 - 17"
+    "react": "16.8 - 18",
+    "react-dom": "16.8 - 18"
   },
   "jest": {
     "preset": "@semcore/jest-preset-ui"
@@ -29,7 +29,7 @@
     "directory": "semcore/outside-click"
   },
   "devDependencies": {
-    "@types/react": "16.8 - 17",
+    "@types/react": "18.0.21",
     "@semcore/jest-preset-ui": "1.0.0"
   }
 }

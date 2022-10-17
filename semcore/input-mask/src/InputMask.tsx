@@ -5,11 +5,11 @@ import createComponent, { Component, Merge, sstyled, Root } from '@semcore/core'
 import Input, { IInputProps, IInputValueProps } from '@semcore/input';
 import fire from '@semcore/utils/lib/fire';
 import logger from '@semcore/utils/lib/logger';
-import { neighborLocationEnhance } from '@semcore/neighbor-location';
+import NeighborLocation from '@semcore/neighbor-location';
 import getInputProps, { inputProps } from '@semcore/utils/lib/inputProps';
+import { Flex } from '@semcore/flex-box';
 
 import style from './style/input-mask.shadow.css';
-import { Flex } from '@semcore/flex-box';
 
 export type IInputMaskAsFn = (rawValue?: string) => string | RegExp[];
 
@@ -89,6 +89,7 @@ class InputMask extends Component<IInputProps> {
     return <Root render={Input} onClick={this.handleClick} ref={Input} />;
   }
 }
+
 class Value extends Component<IInputMaskValueProps> {
   static defaultProps = {
     includeInputProps: inputProps,
@@ -101,27 +102,52 @@ class Value extends Component<IInputMaskValueProps> {
       '*': /[\da-zA-Zа-яА-Я]/,
     },
   };
-  static enhance = [neighborLocationEnhance()];
 
   inputRef = React.createRef<HTMLInputElement>();
+  maskRef = React.createRef<HTMLDivElement>();
   textMaskCoreInstance = undefined;
   usedMask = undefined;
   prevConfirmedValue = undefined;
-  state: { lastConformed: { all: string; userInput: string; maskOnly: string } | undefined } = {
+  state: {
+    lastConformed:
+      | {
+          all: string;
+          userInput: string;
+          maskOnly: string;
+        }
+      | undefined;
+    maskWidth: number | undefined;
+  } = {
     lastConformed: undefined,
+    maskWidth: undefined,
   };
 
   componentDidMount() {
     this.initTextMaskCore();
+    this.setState({
+      maskWidth: this.maskRef.current ? this.maskRef.current.offsetWidth : undefined,
+    });
   }
 
   componentDidUpdate(prevProps) {
-    const configProps = ['mask', 'hideMask', 'pipe', 'keepCharPositions'];
-    if (configProps.some((prop) => this.asProps[prop] !== prevProps[prop])) {
+    const maskConfigProps = ['mask', 'hideMask', 'pipe', 'keepCharPositions'];
+    const maskConfigChanged = maskConfigProps.some(
+      (prop) => this.asProps[prop] !== prevProps[prop],
+    );
+    if (maskConfigChanged) {
       this.initTextMaskCore();
     }
     if (prevProps.value !== this.props.value) {
       this.textMaskCoreInstance.update(this.props.value);
+    }
+    if (maskConfigChanged || prevProps.value !== this.props.value) {
+      this.setState((prevState) => {
+        const maskWidth = this.maskRef.current && this.maskRef.current.offsetWidth;
+        if (maskWidth !== (prevState as any).maskWidth) {
+          return { maskWidth };
+        }
+        return prevState;
+      });
     }
   }
 
@@ -242,6 +268,7 @@ class Value extends Component<IInputMaskValueProps> {
     const SMask = 'span' as any;
     const SPlaceholder = 'span';
     const SMaskHidden = 'span';
+    const SMaskVisible = 'span';
     const { title, placeholder, mask, neighborLocation, value, includeInputProps, ...otherProps } =
       this.asProps;
     const isValid = this.state.lastConformed && !this.state.lastConformed.all.includes('_');
@@ -254,36 +281,45 @@ class Value extends Component<IInputMaskValueProps> {
 
     const [controlProps, boxProps] = getInputProps(otherProps, includeInputProps as string[]);
 
-    return sstyled(this.asProps.styles)(
-      <Flex position="relative" {...boxProps} __excludeProps={['onFocus', 'onChange']}>
-        <SMask aria-hidden="true" neighborLocation={neighborLocation}>
-          {this.state.lastConformed && (
-            <SMaskHidden>{this.state.lastConformed.userInput}</SMaskHidden>
-          )}
-          {this.state.lastConformed?.maskOnly ?? <SPlaceholder>{placeholder}</SPlaceholder>}
-        </SMask>
-        <SValue
-          render={Input.Value}
-          ref={this.inputRef}
-          onFocus={this.onFocus}
-          aria-invalid={!isValid}
-          pattern={mask}
-          value={value}
-          {...controlProps}
-          __excludeProps={['placeholder']}
-        />
-      </Flex>,
+    return (
+      <NeighborLocation.Detect neighborLocation={neighborLocation}>
+        {(neighborLocation) =>
+          sstyled(this.asProps.styles)(
+            <Flex
+              position="relative"
+              flex={1}
+              {...boxProps}
+              __excludeProps={['onFocus', 'onChange']}
+            >
+              <SMask aria-hidden="true" neighborLocation={neighborLocation} ref={this.maskRef}>
+                {this.state.lastConformed && (
+                  <SMaskHidden data-content={this.state.lastConformed.userInput} />
+                )}
+                {this.state.lastConformed ? (
+                  <SMaskVisible data-content={this.state.lastConformed.maskOnly} />
+                ) : (
+                  <SPlaceholder data-content={placeholder} />
+                )}
+              </SMask>
+              <SValue
+                render={Input.Value}
+                neighborLocation={neighborLocation}
+                ref={this.inputRef}
+                onFocus={this.onFocus}
+                aria-invalid={!isValid}
+                pattern={mask}
+                value={value}
+                wMin={this.state.maskWidth}
+                {...controlProps}
+                __excludeProps={['placeholder']}
+              />
+            </Flex>,
+          ) as React.ReactElement
+        }
+      </NeighborLocation.Detect>
     );
   }
 }
-
-const Addon = (props) => {
-  const SAddon = Root;
-
-  return sstyled(props.styles)(<SAddon render={Input.Addon} />);
-};
-
-Addon.enhances = [neighborLocationEnhance()];
 
 export default createComponent<
   IInputProps,
@@ -294,5 +330,5 @@ export default createComponent<
   }
 >(InputMask, {
   Value,
-  Addon,
+  Addon: Input.Addon,
 });

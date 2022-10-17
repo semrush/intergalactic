@@ -2,6 +2,26 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.3.0] - 2022-10-10
+
+### Changed
+
+- Added support for React 18 🔥
+
+## [4.2.1] - 2022-10-10
+
+### Fixed
+
+- Fixed displaying of addons placed on the end (right in ltr languages) of input.
+- Fixed mask underlay position desynchronization with html input content;
+- Hidden placeholders and mask from real DOM to exclude it from copied content.
+
+## [4.2.0] - 2022-10-07
+
+### Changed
+
+- Updated major dependency `@semcore/neighbor-location` [2.3.15 ~> 3.0.0]
+
 ## [4.1.2] - 2022-10-06
 
 ### Fixed

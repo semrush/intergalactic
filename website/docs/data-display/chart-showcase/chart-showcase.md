@@ -76,3 +76,5 @@ Use a map to show the values associated with geographical areas.
 _For example: Show website audience by country or region on a map._
 
 @import chart-group {"group": ["choroplethMap"]}
+
+@page d3-chart-changelog

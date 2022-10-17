@@ -1163,12 +1163,6 @@ const iconsList = {
       tags: ['news', 'paper', 'новости', 'газета', 'banner', 'document'],
     },
     {
-      name: 'UserDemo',
-      size: ['l', 'm'],
-      group: 'Status',
-      tags: ['notebook', 'demo', 'laptop', 'ноутбук', 'лэптоп', 'play', 'демо', 'video', 'видео'],
-    },
-    {
       name: 'Notification',
       size: ['l', 'm'],
       group: 'Status',
@@ -1304,6 +1298,12 @@ const iconsList = {
       size: ['l', 'm'],
       group: 'Status',
       tags: ['user', 'пользователь', 'human', 'male', 'личный', 'кабинет'],
+    },
+    {
+      name: 'UserDemo',
+      size: ['l', 'm'],
+      group: 'Status',
+      tags: ['notebook', 'demo', 'laptop', 'ноутбук', 'лэптоп', 'play', 'демо', 'video', 'видео'],
     },
     {
       name: 'UserGroup',
@@ -1759,16 +1759,16 @@ const iconsList = {
       ],
     },
     {
-      name: 'Mobile',
-      size: ['l', 'm'],
-      group: 'Hardware',
-      tags: ['mobile', 'cell', 'iphone', 'android', 'телефон', 'мобильный', 'device'],
-    },
-    {
       name: 'Laptop',
       size: ['l', 'm'],
       group: 'Hardware',
       tags: ['notebook', 'demo', 'laptop', 'ноутбук', 'лэптоп', 'play', 'демо', 'video', 'видео'],
+    },
+    {
+      name: 'Mobile',
+      size: ['l', 'm'],
+      group: 'Hardware',
+      tags: ['mobile', 'cell', 'iphone', 'android', 'телефон', 'мобильный', 'device'],
     },
     {
       name: 'Tablet',

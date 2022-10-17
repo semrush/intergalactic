@@ -30,9 +30,8 @@ const validate = {
 };
 
 class Feedback extends React.PureComponent {
-  handleChange = (fn, trigger) => (value, e) => {
+  handleChange = (fn) => (value, e) => {
     fn(e);
-    this.props.onChange(e, trigger);
   };
 
   render() {
@@ -63,7 +62,7 @@ class Feedback extends React.PureComponent {
                   {...input}
                   autoFocus
                   h={80}
-                  onChange={this.handleChange(input.onChange, 'description')}
+                  onChange={this.handleChange(input.onChange)}
                   id="suggestions"
                 />
               )}
@@ -76,11 +75,7 @@ class Feedback extends React.PureComponent {
             <FeedbackForm.Item name="email" validate={validate.email} initialValue={value.email}>
               {({ input }) => (
                 <Input state={input.state}>
-                  <Input.Value
-                    {...input}
-                    onChange={this.handleChange(input.onChange, 'email')}
-                    id="email"
-                  />
+                  <Input.Value {...input} onChange={this.handleChange(input.onChange)} id="email" />
                 </Input>
               )}
             </FeedbackForm.Item>

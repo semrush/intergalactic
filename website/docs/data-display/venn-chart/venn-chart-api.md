@@ -25,7 +25,7 @@ We used [recharts](http://recharts.org) and styled it. All exports are recharts 
 We tried to keep API as consistent as possible with respect to other charts.
 
 ```js
-import { VennChart } from '@semcore/ui/chart';
+import { VennChart } from '@semcore/chart';
 ```
 
 @typescript IVennChartProps
@@ -41,7 +41,7 @@ Data unit for the chart. In the data, the `name` key is required for the set, bu
 Component for displaying a set in the chart.
 
 ```js
-import { VennArea } from '@semcore/ui/chart';
+import { VennArea } from '@semcore/chart';
 ```
 
 @typescript IVennChildProps

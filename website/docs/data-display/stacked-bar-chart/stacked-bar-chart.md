@@ -62,3 +62,4 @@ See detailed information in the [Bar chart guide](/data-display/bar-chart/#a1d83
 @page stacked-bar-chart-api
 @page stacked-bar-chart-d3-code
 @page stacked-bar-chart-recharts-code
+@page d3-chart-changelog

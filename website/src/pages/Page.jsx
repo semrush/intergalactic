@@ -17,7 +17,7 @@ import scrollToHash from '../utils/scrollToHash';
 
 const getChangelogByRoute = (currentRoute, routes) => {
   const changelogRoute = Object.keys(routes).find((route) => {
-    return route.startsWith(currentRoute.route) && /changelog/.test(route);
+    return route.startsWith(`${currentRoute.route}/`) && /changelog/.test(route);
   });
   return changelogRoute ? routes[changelogRoute] : undefined;
 };

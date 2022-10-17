@@ -98,3 +98,4 @@ Divide different controls or groups of controls with [Divider](/components/divid
 ![chart widget](static/widget-yes-no.png)
 
 @page chart-control-code
+@page d3-chart-changelog

@@ -26,10 +26,11 @@ export type Column<
   data?: unknown;
   props: {
     name: string;
+    ref: React.RefObject<HTMLElement>;
   } & Partial<{
     onClick: (event: React.MouseEvent) => void;
     onKeyDown: (event: React.KeyboardEvent) => void;
-    ref: React.RefObject<HTMLElement>;
+    forwardRef: React.Ref<HTMLElement>;
     style: React.CSSProperties;
     fixed: 'left' | 'right';
     children: React.ReactNode[];

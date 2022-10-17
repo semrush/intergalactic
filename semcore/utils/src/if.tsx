@@ -1,8 +1,8 @@
-/* eslint-disable */
-import React, { FC } from 'react';
+import { FC, ReactNode } from 'react';
 
 export interface IIfProps {
   condition: boolean;
+  children?: ReactNode;
 }
 
 const If: FC<IIfProps> = (props) => {

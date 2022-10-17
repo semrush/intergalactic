@@ -110,6 +110,8 @@ jobs:
         if: env.release_branch_already_exists != 'true'
       - name: checkout release branch
         run: |
+          git checkout master
+          git pull
           git fetch --all
           git checkout "${{ env.release_branch_name }}"
           git pull origin master --rebase
