@@ -1,8 +1,11 @@
 import React from 'react';
 import createComponent, { Component, Root, sstyled } from '@semcore/core';
 import logger from '@semcore/utils/lib/logger';
+import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 
 import { Animation } from '@semcore/animation';
+import { Box } from '@semcore/flex-box';
+import Portal from '@semcore/portal';
 import getOriginChildren from '@semcore/utils/lib/getOriginChildren';
 
 import style from './style/dot.shadow.css';
@@ -35,9 +38,11 @@ class Dot extends Component {
     duration: 300,
     keyframes: [styleDot['@enter'], styleDot['@exit']],
   };
+  static enhance = [uniqueIDEnhancement()];
 
   render() {
     const SDot = Root;
+    const SA11yAlert = 'div';
 
     let {
       Children,
@@ -46,6 +51,7 @@ class Dot extends Component {
       hidden,
       duration,
       keyframes,
+      uid,
       'aria-label': ariaLabel,
       'aria-labelledby': ariaLabelledBy,
     } = this.asProps;
@@ -68,9 +74,24 @@ class Dot extends Component {
         visible={!hidden}
         duration={duration}
         keyframes={keyframes}
-        role={hasLabel ? 'alert' : undefined}
-        aria-live={hasLabel ? 'polite' : undefined}
-      />,
+        id={`igc-${uid}-dot`}
+      >
+        <Children />
+        {!hidden && (
+          <Portal>
+            <SA11yAlert
+              render={Box}
+              role={hasLabel && !hidden ? 'alert' : undefined}
+              aria-live={hasLabel && !hidden ? 'polite' : undefined}
+              aria-label={ariaLabel}
+              aria-labelledby={ariaLabelledBy}
+              aria-flowto={`igc-${uid}-dot`}
+            >
+              <Children />
+            </SA11yAlert>
+          </Portal>
+        )}
+      </SDot>,
     );
   }
 }

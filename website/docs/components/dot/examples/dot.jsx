@@ -1,28 +1,22 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import TrashS from '@semcore/icon/Trash/m';
 import Button from '@semcore/button';
 import Dot from '@semcore/dot';
 
 const Demo = () => {
-  const [hidden, updateHidden] = useState(true);
-  let timer = null;
+  const [dotVisible, setDotVisible] = React.useState(true);
 
-  useEffect(() => {
-    updateHidden(false);
-    return () => {
-      clearTimeout(timer);
-    };
-  }, []);
-
-  const handleClick = () => {
-    updateHidden(true);
-    timer = setTimeout(() => updateHidden(false), 5000);
-  };
+  React.useEffect(() => {
+    if (dotVisible) return;
+    const timeoutId = setTimeout(() => setDotVisible(true), 3000);
+    return () => clearTimeout(timeoutId);
+  }, [dotVisible]);
+  const handleClick = React.useCallback(() => setDotVisible(false), []);
 
   return (
     <Button onClick={handleClick} aria-label="Remove updates">
       <TrashS />
-      <Dot up hidden={hidden} size="l" aria-label="You can remove updates" />
+      <Dot up hidden={!dotVisible} size="l" aria-label="You can remove updates" />
     </Button>
   );
 };
