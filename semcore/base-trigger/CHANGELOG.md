@@ -2,11 +2,11 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [3.0.25] - 2022-10-07
+## [3.0.25] - 2022-10-17
 
 ### Changed
 
-- Changed utils function for `FilterTrigger`
+- Changed utils function for `BaseTrigger`
 
 ## [3.0.24] - 2022-10-06
 
