@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.4.1] - 2022-10-17
+
+### Changed
+
+- Reverting changes from version `3.3.12` as these changes are implemented in the `utils/lib/addonTextChildren`.
+
 ## [3.4.0] - 2022-10-10
 
 ### Changed
