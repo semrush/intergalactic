@@ -6,7 +6,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-- Reverting changes from version `3.3.12` as these changes are implemented in the `ButtonTrigger`.
+- Reverting changes from version `3.3.12` as these changes are implemented in the `utils/lib/addonTextChildren`.
 
 ## [3.4.0] - 2022-10-10
 

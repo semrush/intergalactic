@@ -27,7 +27,7 @@ class RootBaseTrigger extends Component {
   render() {
     const SBaseTrigger = Root;
     const SInner = 'div';
-    const { Children, styles, theme, neighborLocation, empty } = this.asProps;
+    const { Children, styles, theme, neighborLocation } = this.asProps;
 
     logger.warn(
       theme !== undefined,
@@ -35,15 +35,13 @@ class RootBaseTrigger extends Component {
       this.asProps['data-ui-name'] || BaseTrigger.displayName,
     );
 
-    const childrenWithText = addonTextChildren(Children, BaseTrigger.Text, BaseTrigger.Addon);
-
     // TODO: add aria
     return (
       <NeighborLocation.Detect neighborLocation={neighborLocation}>
         {(neighborLocation) =>
           sstyled(styles)(
             <SBaseTrigger render={Box} neighborLocation={neighborLocation} state={theme}>
-              <SInner>{childrenWithText ? childrenWithText : empty ? <BaseTrigger.Text /> : null}</SInner>
+              <SInner>{addonTextChildren(Children, BaseTrigger.Text, BaseTrigger.Addon)}</SInner>
             </SBaseTrigger>,
           )
         }

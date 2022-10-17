@@ -8,7 +8,7 @@ const ButtonTriggerRoot = ({ Children }) => {
   return (
     <Root render={BaseTrigger}>
       <ButtonTrigger.Addon tag={Calendar} />
-      {addonTextChildren(Children, ButtonTrigger.Text, ButtonTrigger.Addon)}
+      {addonTextChildren(Children, ButtonTrigger.Text, ButtonTrigger.Addon, true)}
     </Root>
   );
 };

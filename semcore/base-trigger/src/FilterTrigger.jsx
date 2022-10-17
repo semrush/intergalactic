@@ -34,13 +34,11 @@ class RootFilterTrigger extends Component {
             active={active}
             disabled={disabled}
           >
-            {empty ? (
-              <FilterTrigger.Text />
-            ) : (
-              addonTextChildren(Children, FilterTrigger.Text, [
-                FilterTrigger.Addon,
-                FilterTrigger.Counter,
-              ])
+            {addonTextChildren(
+              Children,
+              FilterTrigger.Text,
+              [FilterTrigger.Addon, FilterTrigger.Counter],
+              empty,
             )}
             {empty && <FilterTrigger.Addon tag={ChevronDown} />}
           </SFilterTrigger>
