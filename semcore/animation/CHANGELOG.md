@@ -4,6 +4,8 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ## [1.6.1] - 2022-10-17
 
+- Version patch update due to children dependencies update.
+
 ## [1.6.0] - 2022-10-10
 
 ### Changed
