@@ -5,7 +5,7 @@ tabName: Design
 
 @## Font
 
-We use the [Inter](https://fonts.google.com/specimen/Inter?query=inter) font family in our interfaces.
+We use the [Inter](https://fonts.google.com/specimen/Inter?query=inter) font family in our design system.
 
 > For a clearer rendering of the font and its color, use `-webkit-font-smoothing: antialiased;` (see cross-browser compatibility at [caniuse.com](https://caniuse.com/#search=-webkit-font-smoothing)).
 
