@@ -114,7 +114,9 @@ function Enhancement(childComponents, createComponent, options) {
         if (!getterMethod.cache.has(this)) {
           getterMethod.cache.add(this);
           getterMethod.index++;
+          if (this) this.index = getterMethod.index;
         }
+        if (this) getterMethod.index = this.index;
         return getterMethod(props);
       }
       return props;

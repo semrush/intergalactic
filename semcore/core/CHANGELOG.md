@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [1.13.2] - 2022-10-18
+
+### Fixed
+
+- Fixed calculation children index.
+
 ## [1.13.1] - 2022-10-17
 
 - Version patch update due to children dependencies update.
