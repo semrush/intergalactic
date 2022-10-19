@@ -29,10 +29,10 @@ Here we have compiled recommendations for content styles in modal windows.
 
 ![modal button margins](static/margins.png)
 
-@## Title
+@## Title and text
 
 - For title in confirm windows use text with 20px size (`--fs-400; --lh-400;`). For title in all other window types use text with 24px size (`--fs-500; --lh-500;`).
-- For paragraph text use 14px size (`--fs-300; --lh-300;`). For buttons - M size.
+- For paragraph text use 14px size (`--fs-300; --lh-300;`).
 
 ![modal title and buttons](static/s-confirm.png)
 
@@ -41,6 +41,8 @@ Here we have compiled recommendations for content styles in modal windows.
 @## Buttons
 
 Modal window must have a CTA or main button. The "Cancel" button and "Close" icon are optional, but recommended.
+
+We also recommend you to use controls with L size in modal windows.
 
 @## Dual-zone modal window
 
