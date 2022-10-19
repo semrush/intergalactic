@@ -147,6 +147,7 @@ Check out the charts below. In the wrong case, the scale does not start from zer
 
 ![histogram start](static/deception-yes-no.png)
 
+@page histogram-chart-a11y
 @page histogram-chart-api
 @page histogram-chart-code
 @page d3-chart-changelog

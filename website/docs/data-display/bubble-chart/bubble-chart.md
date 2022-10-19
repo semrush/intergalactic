@@ -124,6 +124,7 @@ The data will be difficult to read and compare.
 
 ![bubble chart's datasets](static/categories-yes-no.png)
 
+@page bubble-chart-a11y
 @page bubble-chart-api
 @page bubble-chart-d3-code
 @page d3-chart-changelog
