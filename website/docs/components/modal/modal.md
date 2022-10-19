@@ -203,7 +203,7 @@ It is not recommended to use more than two main buttons inside the modal window.
 
 ![modal buttons](static/buttons-yes-no.png)
 
-**Avoid calling the main button `Ok`**. The user will need more time to understand what they need to do if there are no clear designation of buttons and their functions.
+**Avoid naming the main button "Ok"**. The user will need more time to understand what they need to do if there are no clear designation of buttons and their functions.
 
 ![modal buttons](static/button-yes-no.png)
 

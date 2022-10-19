@@ -96,7 +96,7 @@ border-top: 1px solid var(--gray-200);
 
 @## CTA buttons
 
-Use buttons with M size.
+You can use buttons either M or L size depending on the context of the problem you are solving in such a modal window.
 
 > Note that the example below shows a default composition of the content. For example, buttons may not be center aligned.
 
