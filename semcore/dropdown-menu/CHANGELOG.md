@@ -2,6 +2,10 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.3.0] - 2022-10-17
+
+- Fixed wrong setting of `type=button` attribute for every `DropdownMenu.Trigger` based component.
+
 ## [3.2.1] - 2022-10-17
 
 - Version patch update due to children dependencies update.
