@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useState, useRef } from 'react';
 import { createBaseComponent, sstyled } from '@semcore/core';
 import Animation from './Animation';
 
@@ -26,11 +26,13 @@ const style = sstyled.css`
 function Collapse({ onAnimationStart, onAnimationEnd, overflowHidden = true, ...props }, ref) {
   const SCollapse = Animation;
   const [height, setHeightVar] = useState('auto');
+  const overflowRef = useRef('initial');
 
   const handlerAnimationStart = useCallback((e) => {
     if (e.currentTarget !== e.target) return;
     if (onAnimationStart) onAnimationStart(e);
     if (overflowHidden) {
+      overflowRef.current = window.getComputedStyle(e.currentTarget).overflow;
       e.currentTarget.style.overflow = 'hidden';
     }
     setHeightVar(e.currentTarget.scrollHeight + 'px');
@@ -40,7 +42,7 @@ function Collapse({ onAnimationStart, onAnimationEnd, overflowHidden = true, ...
     if (e.currentTarget !== e.target) return;
     if (onAnimationEnd) onAnimationEnd(e);
     if (overflowHidden) {
-      e.currentTarget.style.overflow = 'initial';
+      e.currentTarget.style.overflow = overflowRef.current;
     }
     setHeightVar('auto');
   }, []);
