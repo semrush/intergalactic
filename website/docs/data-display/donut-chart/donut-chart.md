@@ -182,6 +182,7 @@ The starting angle for displaying values is always `90 degrees`.
 
 ![start angle for donut chart](static/start-yes-no.png)
 
+@page donut-chart-a11y
 @page donut-chart-api
 @page donut-chart-d3-code
 @page donut-chart-recharts-code
