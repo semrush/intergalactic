@@ -35,10 +35,10 @@ export default () => {
                       {/* [1] Hide the table header */}
                       <DataTable.Head hidden>
                         {/* [2] Set the width variable from the top table for each column */}
-                        <DataTable.Column name="keyword" varWidth="inhered" />
-                        <DataTable.Column name="kd" varWidth="inhered" />
-                        <DataTable.Column name="cpc" varWidth="inhered" />
-                        <DataTable.Column name="vol" varWidth="inhered" />
+                        <DataTable.Column name="keyword" varWidth="inherit" />
+                        <DataTable.Column name="kd" varWidth="inherit" />
+                        <DataTable.Column name="cpc" varWidth="inherit" />
+                        <DataTable.Column name="vol" varWidth="inherit" />
                       </DataTable.Head>
                       <DataTable.Body />
                     </DataTable>

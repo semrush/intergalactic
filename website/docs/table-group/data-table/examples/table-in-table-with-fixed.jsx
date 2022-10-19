@@ -35,10 +35,10 @@ export default () => {
                     <DataTable data={data}>
                       {/* [1] Set the desired z-index */}
                       <DataTable.Head hidden z-index={1}>
-                        <DataTable.Column name="keyword" varWidth="inhered" fixed="left" />
-                        <DataTable.Column name="kd" varWidth="inhered" />
-                        <DataTable.Column name="cpc" varWidth="inhered" />
-                        <DataTable.Column name="vol" varWidth="inhered" />
+                        <DataTable.Column name="keyword" varWidth="inherit" fixed="left" />
+                        <DataTable.Column name="kd" varWidth="inherit" />
+                        <DataTable.Column name="cpc" varWidth="inherit" />
+                        <DataTable.Column name="vol" varWidth="inherit" />
                       </DataTable.Head>
                       {/* [2] Set a variable to block the scroll */}
                       <DataTable.Body disabledScroll />
