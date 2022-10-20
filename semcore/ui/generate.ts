@@ -21,7 +21,7 @@ const installComponents = async (packages: string[]) => {
     packageFile.dependencies[packageName] = latestVersions[packageName];
   }
   await fs.writeJSON(path.resolve(dirname, './package.json'), packageFile, { spaces: 2 });
-  execSync(`pnpm install`, {
+  execSync(`pnpm install --frozen-lockfile false`, {
     stdio: 'inherit',
     cwd: dirname,
   });
