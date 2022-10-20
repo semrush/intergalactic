@@ -10,8 +10,10 @@ class TimePickerFormat extends Component {
     const { Children, meridiem, styles } = this.asProps;
     const SPickerFormatText = 'span';
 
+    const label = `Time format ${meridiem}`;
+
     return sstyled(styles)(
-      <SPickerFormat render={Box} type="button" tag="button">
+      <SPickerFormat render={Box} type="button" tag="button" role="switch" aria-label={label}>
         {Children.origin ? <Children /> : <SPickerFormatText>{meridiem}</SPickerFormatText>}
       </SPickerFormat>,
     );
