@@ -142,7 +142,7 @@ If the data for any category is zero, then do not disable the legend. Show 0 as 
 
 ![donut with null value](static/donut-null.png)
 
-### Value less than 1%
+### Value less than or equal 1%
 
 In this case, display 1% of the sector.
 
