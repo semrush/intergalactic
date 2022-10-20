@@ -1,3 +1,33 @@
+## [13.0.2] - 2022-10-20
+
+### @semcore/base-trigger
+
+- **Fixed** Fixed the problem of not showing the placeholder when the body of the `FilterTrigger` is empty.
+
+### @semcore/core
+
+- **Fixed** Fixed calculation children index.
+
+### @semcore/date-picker
+
+- **Changed** Reverting changes from version `3.3.12` as these changes are implemented in the `utils/lib/addonTextChildren`.
+
+### @semcore/dropdown-menu
+
+- **Fixed** Fixed wrong setting of `type=button` attribute for every `DropdownMenu.Trigger` based component.
+
+### @semcore/select
+
+- **Fixed** Fixed unexpected verbose console warnings.
+
+### @semcore/time-picker
+
+- **Fixed** Fixed support of Safari.
+
+### @semcore/utils
+
+- **Fixed** Removed `@types/react`, `@types/react-dom` and `@types/node` from package direct dependencies.
+
 ## [13.0.1] - 2022-10-14
 
 ### Global
