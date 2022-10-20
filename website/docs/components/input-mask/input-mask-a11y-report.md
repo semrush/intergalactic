@@ -13,3 +13,4 @@ Guidepup v0.13.1, MacOS Big Sur 11._
 6. Screen reader says "5544".
 7. Screen reader goes out of active element.
 8. Screen reader says "Out of edit text".
+9. Screen reader says "You are currently on a text field, inside of web content. To enter text in this field, type. To exit this web area, press Control-Option-Shift-Up Arrow.".
