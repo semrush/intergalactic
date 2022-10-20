@@ -205,7 +205,12 @@ class TimePickerRoot extends Component {
       : `Time input, no time entered`;
 
     return sstyled(styles)(
-      <STimePicker render={Input} aria-label={label} aria-valuenow={value} tabIndex={0}>
+      <STimePicker
+        render={Input}
+        aria-label={label}
+        aria-valuenow={value || undefined}
+        tabIndex={0}
+      >
         <Children />
       </STimePicker>,
     );

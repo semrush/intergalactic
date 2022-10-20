@@ -117,13 +117,15 @@ class ItemPicker extends Component {
           disabled={disabled}
           neighborLocation={false}
           value={value}
-          role="input"
           aria-label={`${this.field} field`}
-          aria-autocomplete=""
-          aria-expanded=""
-          aria-flowto=""
-          aria-controls=""
-          aria-haspopup=""
+          __excludeProps={[
+            'aria-haspopup',
+            'aria-controls',
+            'aria-flowto',
+            'aria-expanded',
+            'aria-autocomplete',
+            'role',
+          ]}
           onChange={this.handleChange}
           onBlur={this.handleBlur}
           onFocus={this.handleFocus}
