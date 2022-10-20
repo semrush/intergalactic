@@ -54,7 +54,7 @@ export function App() {
         <ScrollToTop />
         <Tracking />
         <div className={styles.body}>
-          <a className="skip-to-content-link" href="#main-content">
+          <a className={styles.skipToContent} href="#main-content">
             Skip to content
           </a>
           <Header />

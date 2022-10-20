@@ -121,7 +121,7 @@ export const markdownTokenToHtml = (token: MarkdownToken | MarkdownRoot) => {
         return h(node, 'a', props, [{ type: 'text', value: text }]);
       },
       image: (h, node) => {
-        const props = { role: 'img', src: node.url, alt: node.alt };
+        const props = { src: node.url, alt: node.alt, 'aria-hidden': 'true' };
         return h(node, 'img', props);
       },
     },

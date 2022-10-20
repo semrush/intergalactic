@@ -18,7 +18,7 @@ export default (props) => {
   }
   return (
     <main className={styles.content}>
-      <img className={styles.spaceman} src={spaceman} role="img" aria-hidden="true" />
+      <img className={styles.spaceman} src={spaceman} aria-hidden="true" />
       <section className={styles.info}>
         <h1>{props.title}</h1>
         <p>

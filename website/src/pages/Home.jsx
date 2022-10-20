@@ -72,13 +72,7 @@ const getCustomPage = (table) => (
     <AllComponents
       navigation={navigationTree.filter((nav) => !nav.metadata.hide && nav.title === table.tag)}
     />
-    <img
-      className={table.imgClassName}
-      src={table.img}
-      alt={table.tag}
-      role="img"
-      aria-hidden="true"
-    />
+    <img className={table.imgClassName} src={table.img} alt={table.tag} aria-hidden="true" />
   </section>
 );
 
@@ -136,7 +130,7 @@ export const getImageName = (title) => {
 const getTooltip = (title) => {
   const url = staticFiles[`tooltip/${getImageName(title)}.svg`];
 
-  return url ? <img src={url} role="img" alt={title} /> : undefined;
+  return url ? <img src={url} alt={title} /> : undefined;
 };
 
 const getComponents = (titles) => {
@@ -327,19 +321,13 @@ function Home() {
           <SideBarNavigation navigation={navigationTree.filter((nav) => !nav.metadata.hide)} />
         </div>
         <main className={styles.overlay}>
-          <div className={styles.promoWrapper}>
+          <div className={styles.promoWrapper} id="main-content">
             <h1 className={styles.title}>Intergalactic Design System</h1>
             <section className={styles.desc}>
               Intergalactic is a constantly developing system of UI components, guidelines and UX
               patterns. With all these tools you can build your own product.
             </section>
-            <img
-              className={styles.whaleImg}
-              src={whale}
-              alt="Whale"
-              role="img"
-              aria-hidden="true"
-            />
+            <img className={styles.whaleImg} src={whale} alt="Whale" aria-hidden="true" />
             <section className={styles.started} role="region" aria-label="Get started links">
               <h2>Get started</h2>
               <Link to="/get-started-guide/dev-starter-guide/" rel="noopener noreferrer">
@@ -396,7 +384,7 @@ function Home() {
         </main>
         {/* <LinkScroll className={styles.updatesButton} activeClass="active" to="updBlock" spy={true} smooth={true}>
            Updates?
-           <img src={updatesButton} alt="Updates button" role='img' aria-hidden='true'/>
+           <img src={updatesButton} alt="Updates button" aria-hidden='true'/>
          </LinkScroll> */}
       </div>
     </>

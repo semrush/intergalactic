@@ -98,7 +98,6 @@ const showList = (hits, pages, content) => {
           className={styles.notFoundImg}
           src={observatory}
           alt="observatory"
-          role="img"
           aria-hidden="true"
         />
         <div className={styles.notFoundText}>We found something… it's nothing</div>

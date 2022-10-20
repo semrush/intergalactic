@@ -83,7 +83,7 @@ const Contacts = () => (
           </ul>
         </div>
       </div>
-      <img className={styles.postman} src={postman} role="img" aria-hidden="true" />
+      <img className={styles.postman} src={postman} aria-hidden="true" />
     </div>
   </>
 );

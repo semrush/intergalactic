@@ -16,7 +16,7 @@ function Footer() {
       </nav>
 
       <div className={styles.logo}>
-        Powered by <img src={logo} alt="Logo" role="img" aria-hidden="true" />
+        Powered by <img src={logo} alt="Logo" aria-hidden="true" />
       </div>
       <div className={styles.description}>
         © 2008 - {new Date().getFullYear()} Semrush. All rights reserved.
