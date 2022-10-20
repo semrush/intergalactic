@@ -109,6 +109,8 @@ export interface IDataTableColumnProps extends IFlexProps {
   resizable?: boolean;
   /** Fixed column on the left/right */
   fixed?: 'left' | 'right';
+  /** Property for setting the name of the css variable responsible for the width of the column  */
+  varWidth?: string | 'inherit';
 }
 
 export interface IDataTableBodyProps extends IBoxProps {
