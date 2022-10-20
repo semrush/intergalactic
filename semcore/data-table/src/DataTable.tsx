@@ -222,7 +222,7 @@ class RootDefinitionTable extends Component<AsProps> {
         ...props
       } = child.props as Column['props'];
       const isGroup = !name;
-      let columns: Column[];
+      let columns: Column[] | undefined;
 
       if (isGroup) {
         columns = this.childrenToColumns(children, { fixed });
@@ -263,7 +263,6 @@ class RootDefinitionTable extends Component<AsProps> {
         },
       } as Column;
 
-      // @ts-ignore
       if (columns) {
         columnChildren.columns = columns;
       }
