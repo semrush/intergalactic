@@ -1,8 +1,8 @@
-name: slack-updates-pre-broadcast
+name: team-standup
 
 on:
   schedule:
-    - cron: '0 14 * * 5'
+    - cron: '0 9 * * 1-5'
   workflow_dispatch:
 jobs:
   setup:

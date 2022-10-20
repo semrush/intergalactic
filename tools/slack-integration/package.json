@@ -8,7 +8,8 @@
     "test": "echo \"no tests\""
   },
   "bin": {
-    "slack-updates-broadcast": "bin/broadcast-updates.ts"
+    "slack-updates-broadcast": "bin/broadcast-updates.ts",
+    "team-standup": "bin/team-standup.ts"
   },
   "dependencies": {
     "@semcore/changelog-handler": "0.0.1",
