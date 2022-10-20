@@ -15,7 +15,7 @@ export const notifyTeamAboutStandup = async ({ dryRun }: { dryRun: boolean }) =>
 
   return await sendMessage({
     title: 'Daily standup!',
-    body: `Write what you have done the previous working day and your plans for today in the thread :point-down:\n_${pickedOne.title}_`,
+    body: `Write what you have done the previous working day and your plans for today in the thread\n_${pickedOne.title}_`,
     dryRun,
     image: { thumb, full },
   });
