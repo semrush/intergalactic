@@ -35,7 +35,7 @@ jobs:
         run: |
           pnpm install --frozen-lockfile
 
-  slack-updates-pre-broadcast:
+  notify-team-about-standup:
     runs-on: ubuntu-latest
     needs: setup
     steps:
@@ -69,4 +69,4 @@ jobs:
         env:
           SLACK_API_ENDPOINTS: ${{ secrets.SLACK_WEBHOOK_URL_DEV }}
         run: |
-          pnpm slack-updates-broadcast
+          pnpm team-standup
