@@ -5,6 +5,7 @@
   width: 100%;
   box-sizing: border-box;
 }
+
 .noticeTheme {
   position: fixed;
   top: 0;
@@ -19,4 +20,22 @@
   text-overflow: ellipsis;
   overflow: hidden;
   z-index: 999;
+}
+
+.skipToContent {
+  background: #ffffff;
+  top: 12px;
+  left: 12px;
+  padding: 16px;
+  color: var(--blue-600);
+  position: absolute;
+  transition: transform 0.3s;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.skipToContent:focus {
+  z-index: 9999;
+  opacity: 1;
+  pointer-events: auto;
 }
