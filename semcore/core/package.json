@@ -1,7 +1,7 @@
 {
   "name": "@semcore/core",
   "description": "Semrush Core Component",
-  "version": "1.13.0",
+  "version": "1.13.3",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -31,6 +31,7 @@
   },
   "devDependencies": {
     "@types/react": "18.0.21",
-    "@semcore/jest-preset-ui": "1.0.0"
+    "@semcore/jest-preset-ui": "1.0.0",
+    "jest": "29.0.1"
   }
 }

@@ -142,7 +142,7 @@ If the data for any category is zero, then do not disable the legend. Show 0 as 
 
 ![donut with null value](static/donut-null.png)
 
-### Value less than 1%
+### Value less than or equal 1%
 
 In this case, display 1% of the sector.
 
@@ -182,6 +182,7 @@ The starting angle for displaying values is always `90 degrees`.
 
 ![start angle for donut chart](static/start-yes-no.png)
 
+@page donut-chart-a11y
 @page donut-chart-api
 @page donut-chart-d3-code
 @page donut-chart-recharts-code

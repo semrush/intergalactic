@@ -2,7 +2,7 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [1.7.0] - 2022-10-14
+## [1.7.0] - 2022-10-21
 
 ### Added
 
@@ -11,6 +11,12 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### Changed
 
 - Returning the original `overflow` after the animation has passed.
+
+## [1.6.2] - 2022-10-20
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.39.0 ~> 3.39.1]).
 
 ## [1.6.0] - 2022-10-10
 

@@ -2,6 +2,18 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.2.2] - 2022-10-20
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.39.0 ~> 3.39.1]).
+
+## [3.2.1] - 2022-10-17
+
+### Fixed
+
+- Fixed the problem of not showing the placeholder when the body of the `FilterTrigger` is empty.
+
 ## [3.2.0] - 2022-10-10
 
 ### Changed

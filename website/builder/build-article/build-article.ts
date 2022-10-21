@@ -318,9 +318,11 @@ export const buildArticle = async (
   const dependencies: string[] = [];
   const legacyHeaderHashes: { [legacyHash: string]: string } = {};
 
+  const tokensMetadata = new Map<Token, { caption: string }>();
+
   const tokens = (
     await Promise.all(
-      markdownAst.children.map(async (token): Promise<Token | Token[]> => {
+      markdownAst.children.map(async (token, index): Promise<Token | Token[]> => {
         const position = stringifyTokenPosition(fullPath, token, metaHeight);
         if (token.type === 'heading') {
           if (!token.children[0]) {
@@ -507,12 +509,26 @@ export const buildArticle = async (
                 dependencies: typing.dependencies,
               };
             }
+            if (text.startsWith('@table-caption ')) {
+              const nextToken = markdownAst.children[index + 1];
+              if (nextToken.type !== 'table') {
+                // eslint-disable-next-line no-console
+                console.log(nextToken);
+                throw new Error(
+                  `@table-caption at-rule is only allowed right before tables, what was found see above`,
+                );
+              }
+              const caption = text.substring('@table-caption '.length);
+              tokensMetadata.set(nextToken, { caption });
+
+              return null;
+            }
           }
         }
 
         return {
           type: 'text',
-          html: markdownTokenToHtml(token),
+          html: markdownTokenToHtml(token, tokensMetadata.get(token)),
         };
       }),
     )

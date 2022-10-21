@@ -7,10 +7,15 @@ export const sendMessage = async ({
   title,
   body,
   dryRun,
+  image,
 }: {
   title: string;
   body: string;
   dryRun: boolean;
+  image?: {
+    full: string;
+    thumb: string;
+  };
 }) => {
   if (!title || !body) {
     throw new Error(
@@ -26,10 +31,12 @@ export const sendMessage = async ({
 
   return Promise.all(
     endpoints.map((endpointUrl) => {
+      let log = `Sending message to Slack\n===\nTitle: ${title}\nApi endpoint: ${endpointUrl}\n===\nMessage body is below:\n${body}\n===`;
+      if (image) {
+        log += `\nImage: ${image.full} (thumb ${image.thumb})\n===`;
+      }
       // eslint-disable-next-line no-console
-      console.log(
-        `Sending message to Slack\n===\nTitle: ${title}\nApi endpoint: ${endpointUrl}\n===\nMessage body is below:\n${body}\n===`,
-      );
+      console.log(log);
 
       if (dryRun) {
         // eslint-disable-next-line no-console
@@ -37,18 +44,27 @@ export const sendMessage = async ({
         return null;
       }
 
+      const attachment: {
+        mrkdwn: true;
+        title: string;
+        text: string;
+        image_url?: string;
+        thumb_url?: string;
+      } = {
+        mrkdwn: true,
+        title: title,
+        text: body,
+      };
+
+      if (image) {
+        attachment.image_url = image.full;
+        attachment.thumb_url = image.thumb;
+      }
+
       return axios({
         method: 'post',
         headers: { 'Content-type': 'application/json' },
-        data: {
-          attachments: [
-            {
-              mrkdwn: true,
-              title: title,
-              text: body,
-            },
-          ],
-        },
+        data: { attachments: [attachment] },
         url: endpointUrl,
       });
     }),

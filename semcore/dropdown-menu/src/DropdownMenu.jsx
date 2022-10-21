@@ -255,7 +255,7 @@ function Title(props) {
 }
 
 function Trigger() {
-  return <Root render={Dropdown.Trigger} type="button" aria-haspopup="true" />;
+  return <Root render={Dropdown.Trigger} aria-haspopup="true" />;
 }
 
 const DropdownMenu = createComponent(

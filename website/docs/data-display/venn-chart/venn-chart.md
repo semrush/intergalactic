@@ -137,6 +137,7 @@ More information about this state see in the guide for [Skeleton](/components/sk
 
 ![venn chart skeleton](static/venn-skeleton.png)
 
+@page venn-chart-a11y
 @page venn-chart-api
 @page venn-chart-d3-code
 @page venn-chart-recharts-code

@@ -2,6 +2,24 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.2.1] - 2022-10-20
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.39.0 ~> 3.39.1], `@semcore/flex-box` [4.6.1 ~> 4.6.2], `@semcore/button` [4.2.1 ~> 4.2.2], `@semcore/input` [3.2.1 ~> 3.2.2], `@semcore/select` [3.2.2 ~> 3.2.3]).
+
+## [3.2.0] - 2022-10-17
+
+### Fixed
+
+- Fixed support of Safari.
+
+## [3.1.1] - 2022-10-17
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/select` [3.2.0 ~> 3.2.1]).
+
 ## [3.1.0] - 2022-10-10
 
 ### Changed

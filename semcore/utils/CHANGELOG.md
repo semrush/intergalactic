@@ -2,6 +2,18 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.39.1] - 2022-10-20
+
+### Fixed
+
+- Removed `@types/react`, `@types/react-dom` and `@types/node` from package direct dependencies.
+
+## [3.39.0] - 2022-10-10
+
+### Added
+
+- Added new property for `utils/lib/addonTextChildren` to be able to control how children are wrapped in `Text`.
+
 ## [3.38.0] - 2022-10-10
 
 ### Changed

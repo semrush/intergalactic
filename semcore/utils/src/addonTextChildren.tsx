@@ -7,12 +7,14 @@ function addonTextChildren(
   Children: any,
   Text: React.ComponentType<any>,
   Addon: React.ComponentType | React.ComponentType[],
+  isTextWrapIfEmptyChildren: boolean = false,
 ) {
   const children = getOriginChildren(Children);
   if (typeof children === 'function') {
     return <Children />;
   }
-  if (!children) {
+
+  if (!isTextWrapIfEmptyChildren && !children) {
     return null;
   }
   return React.Children.toArray(children).some((element) => {
