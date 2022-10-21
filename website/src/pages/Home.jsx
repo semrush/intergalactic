@@ -68,12 +68,12 @@ const mappingTableToImg = {
 };
 
 const getCustomPage = (table) => (
-  <div className={table.className} {...table.attr}>
+  <section className={table.className} {...table.attr}>
     <AllComponents
       navigation={navigationTree.filter((nav) => !nav.metadata.hide && nav.title === table.tag)}
     />
-    <img className={table.imgClassName} src={table.img} alt={table.tag} />
-  </div>
+    <img className={table.imgClassName} src={table.img} alt={table.tag} aria-hidden="true" />
+  </section>
 );
 
 const renderSwitch = (value) => {
@@ -89,7 +89,7 @@ const renderSwitch = (value) => {
     case 'filters':
       return getTabByTitle(['Filters'], styles.filters);
     case 'documentation':
-      return getTabByTitle(['Utils 🛠', 'Docs', 'Bugs and requests']);
+      return getTabByTitle(['Utils 🛠', 'Docs', 'Bugs and requests'], styles.devDocs);
     default:
       return null;
   }
@@ -110,7 +110,9 @@ const getTabByTitle = (titles, className) => {
         titles.map((title, i) => {
           return (
             <Box mr={7.5} key={i}>
-              <h3 size={300}>{title}</h3>
+              <Text tag="h3" size={300}>
+                {title}
+              </Text>
               {getComponents(title)}
             </Box>
           );
@@ -128,7 +130,7 @@ export const getImageName = (title) => {
 const getTooltip = (title) => {
   const url = staticFiles[`tooltip/${getImageName(title)}.svg`];
 
-  return url ? <img src={url} /> : undefined;
+  return url ? <img src={url} alt={title} /> : undefined;
 };
 
 const getComponents = (titles) => {
@@ -318,15 +320,15 @@ function Home() {
         <div className={styles.sideBar}>
           <SideBarNavigation navigation={navigationTree.filter((nav) => !nav.metadata.hide)} />
         </div>
-        <div className={styles.overlay} role="main">
-          <div className={styles.promoWrapper}>
+        <main className={styles.overlay}>
+          <div className={styles.promoWrapper} id="main-content">
             <h1 className={styles.title}>Intergalactic Design System</h1>
-            <div className={styles.desc}>
+            <section className={styles.desc}>
               Intergalactic is a constantly developing system of UI components, guidelines and UX
               patterns. With all these tools you can build your own product.
-            </div>
-            <img className={styles.whaleImg} src={whale} alt="Whale" />
-            <div className={styles.started} role="region" aria-label="Get started links">
+            </section>
+            <img className={styles.whaleImg} src={whale} alt="Whale" aria-hidden="true" />
+            <section className={styles.started} role="region" aria-label="Get started links">
               <h2>Get started</h2>
               <Link to="/get-started-guide/dev-starter-guide/" rel="noopener noreferrer">
                 For developers <ArrowXS />
@@ -337,12 +339,12 @@ function Home() {
               <Link to="/get-started-guide/work-figma/" rel="noopener noreferrer">
                 Figma libraries <ArrowXS />
               </Link>
-            </div>
+            </section>
             {getCustomPage(mappingTableToImg.principles)}
             {getCustomPage(mappingTableToImg.styles)}
             {getCustomPage(mappingTableToImg.layout)}
           </div>
-          <div className={styles.mainWrapper}>
+          <section className={styles.mainWrapper}>
             <div className={styles.tabsWrapper}>
               <TabLine
                 underlined={false}
@@ -351,38 +353,38 @@ function Home() {
                 value={value}
                 size="l"
               >
-                <TabLine.Item className={styles.tab} value={'components'}>
+                <TabLine.Item className={styles.tab} value={'components'} size={100}>
                   Components
                 </TabLine.Item>
-                <TabLine.Item className={styles.tab} value={'charts'}>
+                <TabLine.Item className={styles.tab} value={'charts'} size={100}>
                   Charts
                 </TabLine.Item>
-                <TabLine.Item className={styles.tab} value={'table'}>
+                <TabLine.Item className={styles.tab} value={'table'} size={100}>
                   Table
                 </TabLine.Item>
-                <TabLine.Item className={styles.tab} value={'ux'}>
+                <TabLine.Item className={styles.tab} value={'ux'} size={100}>
                   UX Patterns
                 </TabLine.Item>
-                <TabLine.Item className={styles.tab} value={'filters'}>
+                <TabLine.Item className={styles.tab} value={'filters'} size={100}>
                   Filters
                 </TabLine.Item>
-                <TabLine.Item className={styles.tab} value={'documentation'}>
+                <TabLine.Item className={styles.tab} value={'documentation'} size={100}>
                   Developer Docs
                 </TabLine.Item>
               </TabLine>
             </div>
             <tableDataContext.Provider value={tableContext}>
-              <div className={styles.border} role="region" aria-label="Components links">
+              <div className={styles.border} aria-label="Components links">
                 {renderSwitch(value)}
               </div>
             </tableDataContext.Provider>
-          </div>
+          </section>
           <EmailsBanner />
           {/* <UpdateBlock /> */}
-        </div>
-        {/* <LinkScroll classNmae={styles.updatesButton} activeClass="active" to="updBlock" spy={true} smooth={true}>
+        </main>
+        {/* <LinkScroll className={styles.updatesButton} activeClass="active" to="updBlock" spy={true} smooth={true}>
            Updates?
-           <img src={updatesButton} alt="Updates button" />
+           <img src={updatesButton} alt="Updates button" aria-hidden='true'/>
          </LinkScroll> */}
       </div>
     </>
