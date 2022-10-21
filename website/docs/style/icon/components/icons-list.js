@@ -3326,6 +3326,12 @@ const iconsList = {
       tags: ['git', 'lab', 'гитлаб', 'гитхаб', 'гит', 'repo', 'logo', 'лого'],
     },
     {
+      name: 'GoogleAds',
+      size: ['l', 'm'],
+      group: 'Color',
+      tags: ['google', 'ads', 'ad', 'advertising', 'advertisement', 'гугл', 'logo', 'лого'],
+    },
+    {
       name: 'GoogleAnalytics',
       size: ['l', 'm'],
       group: 'Color',

@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.1.0] - 2022-10-20
+
+### Added
+
+- Added icon `GoogleAds`
+
 ## [3.0.2] - 2022-10-20
 
 ### Changed
