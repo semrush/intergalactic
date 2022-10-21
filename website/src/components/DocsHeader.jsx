@@ -25,7 +25,7 @@ const tooltipStyles = css`
 
 function VersionLink({ to, version }) {
   return (
-    <RouterLink to={to} mx={1}>
+    <RouterLink to={to} mx={1} aria-label={`Component version ${version}`}>
       {version}
     </RouterLink>
   );

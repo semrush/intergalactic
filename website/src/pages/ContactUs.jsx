@@ -11,7 +11,7 @@ const Contacts = () => (
     <Helmet>
       <title>Contact Us | Contacts</title>
     </Helmet>
-    <div className={styles.content}>
+    <div className={styles.content} id="main-content">
       <div className={styles.header}>
         <h1>Contact Us</h1>
         Have any questions? We’d love to hear from you.
