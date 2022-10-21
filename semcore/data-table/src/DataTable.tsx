@@ -52,7 +52,12 @@ type CProps<Props, Ctx = {}, UCProps = {}> = Props & {
 };
 type ReturnEl = React.ReactElement | null;
 type ChildRenderFn<Props> = Props & {
-  children?: (props: Props, column: DataTableData, index: number) => { [key: string]: unknown };
+  children?: (
+    props: Props,
+    column: DataTableData,
+    index: number,
+    columns: Column[],
+  ) => { [key: string]: unknown };
 };
 /* utils type */
 
@@ -109,8 +114,6 @@ export interface IDataTableColumnProps extends IFlexProps {
   resizable?: boolean;
   /** Fixed column on the left/right */
   fixed?: 'left' | 'right';
-  /** Property for setting the name of the css variable responsible for the width of the column  */
-  varWidth?: string | 'inherit';
 }
 
 export interface IDataTableBodyProps extends IBoxProps {
@@ -198,9 +201,7 @@ class RootDefinitionTable extends Component<AsProps> {
 
   setVarStyle(columns: Column[]) {
     for (const column of columns) {
-      if (column.setVar) {
-        this.tableRef.current?.style.setProperty(column.varWidth, `${column.width}px`);
-      }
+      this.tableRef.current?.style.setProperty(column.varWidth, `${column.width}px`);
     }
   }
 
@@ -220,7 +221,6 @@ class RootDefinitionTable extends Component<AsProps> {
         fixed = options.fixed,
         resizable,
         sortable,
-        varWidth,
         ...props
       } = child.props as Column['props'];
       const isGroup = !name;
@@ -244,8 +244,7 @@ class RootDefinitionTable extends Component<AsProps> {
           return this.props.ref.current?.getBoundingClientRect().width || 0;
         },
         name,
-        varWidth: !varWidth || varWidth === 'inherit' ? createCssVarForWidth(name) : varWidth,
-        setVar: !varWidth,
+        varWidth: createCssVarForWidth(name),
         fixed,
         resizable,
         active: sort[0] === name,

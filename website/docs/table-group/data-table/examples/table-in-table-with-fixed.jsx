@@ -26,7 +26,7 @@ export default () => {
         </DataTable.Head>
         <DataTable.Body>
           <DataTable.Row tag={RowAccordion}>
-            {(props, row, index) => {
+            {(props, row, index, columns) => {
               return {
                 value: index,
                 active: value.includes(index),
@@ -35,10 +35,14 @@ export default () => {
                     <DataTable data={data}>
                       {/* [1] Set the desired z-index */}
                       <DataTable.Head hidden z-index={1}>
-                        <DataTable.Column name="keyword" varWidth="inherit" fixed="left" />
-                        <DataTable.Column name="kd" varWidth="inherit" />
-                        <DataTable.Column name="cpc" varWidth="inherit" />
-                        <DataTable.Column name="vol" varWidth="inherit" />
+                        <DataTable.Column
+                          name="keyword"
+                          flex={`0 0 ${columns[0].width}px`}
+                          fixed="left"
+                        />
+                        <DataTable.Column name="kd" flex={`0 0 ${columns[1].width}px`} />
+                        <DataTable.Column name="cpc" flex={`0 0 ${columns[2].width}px`} />
+                        <DataTable.Column name="vol" flex={`0 0 ${columns[3].width}px`} />
                       </DataTable.Head>
                       {/* [2] Set a variable to block the scroll */}
                       <DataTable.Body disabledScroll />
@@ -49,7 +53,7 @@ export default () => {
             }}
           </DataTable.Row>
           <DataTable.Cell name="keyword">
-            {(props, row, index) => {
+            {(props, row, index, columns) => {
               return {
                 children: (
                   <Flex alignItems="center">

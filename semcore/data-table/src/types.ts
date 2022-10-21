@@ -5,6 +5,7 @@ export type PseudoChildPropsGetter = (
   props: { [propName: string]: unknown },
   rowData: { [columnName: string]: unknown },
   index: number,
+  columns: Column[],
 ) => { [propName: string]: unknown };
 export type PropsLayer = {
   childrenPropsGetter?: PseudoChildPropsGetter;
@@ -23,7 +24,6 @@ export type Column<
   sortable?: boolean | SortDirection;
   sortDirection: SortDirection;
   varWidth: string;
-  setVar: boolean;
   data?: unknown;
   props: {
     name: string;

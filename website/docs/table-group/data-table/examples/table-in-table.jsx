@@ -25,7 +25,7 @@ export default () => {
         </DataTable.Head>
         <DataTable.Body>
           <DataTable.Row tag={RowAccordion}>
-            {(props, row, index) => {
+            {(props, row, index, columns) => {
               return {
                 value: index,
                 active: value.includes(index),
@@ -34,11 +34,11 @@ export default () => {
                     <DataTable data={data}>
                       {/* [1] Hide the table header */}
                       <DataTable.Head hidden>
-                        {/* [2] Set the width variable from the top table for each column */}
-                        <DataTable.Column name="keyword" varWidth="inherit" />
-                        <DataTable.Column name="kd" varWidth="inherit" />
-                        <DataTable.Column name="cpc" varWidth="inherit" />
-                        <DataTable.Column name="vol" varWidth="inherit" />
+                        {/* [2] Set the width from the top table for each column */}
+                        <DataTable.Column name="keyword" flex={`0 0 ${columns[0].width}px`} />
+                        <DataTable.Column name="kd" flex={`0 0 ${columns[1].width}px`} />
+                        <DataTable.Column name="cpc" flex={`0 0 ${columns[2].width}px`} />
+                        <DataTable.Column name="vol" flex={`0 0 ${columns[3].width}px`} />
                       </DataTable.Head>
                       <DataTable.Body />
                     </DataTable>
@@ -48,7 +48,7 @@ export default () => {
             }}
           </DataTable.Row>
           <DataTable.Cell name="keyword">
-            {(props, row, index) => {
+            {(props, row, index, columns) => {
               return {
                 children: (
                   <Flex alignItems="center">

@@ -90,7 +90,7 @@ class Body extends Component<AsProps, State> {
         for (const cellPropLayer of cell.cellPropsLayers || []) {
           const { childrenPropsGetter = (p) => p, ...other } = cellPropLayer;
           const propsCell = assignProps(other, props);
-          props = assignProps(childrenPropsGetter(propsCell, rowData, index), propsCell);
+          props = assignProps(childrenPropsGetter(propsCell, rowData, index, columns), propsCell);
         }
 
         return sstyled(styles)(
@@ -112,7 +112,7 @@ class Body extends Component<AsProps, State> {
     { dataIndex, topOffset, nested }: { dataIndex: number; topOffset?: number; nested: boolean },
   ) {
     const SRow = Box;
-    const { styles, rowPropsLayers, uniqueKey, virtualScroll } = this.asProps;
+    const { styles, rowPropsLayers, uniqueKey, virtualScroll, columns } = this.asProps;
     const rowHeightFromProps = typeof virtualScroll === 'object' && virtualScroll?.rowHeight;
 
     const rowData = cells.flatRowData || getCellsByColumn(cells);
@@ -133,7 +133,7 @@ class Body extends Component<AsProps, State> {
     for (const rowPropsLayer of rowPropsLayers) {
       const { childrenPropsGetter = (p) => p, ...other } = rowPropsLayer;
       const propsRow = assignProps(other, props);
-      props = assignProps(childrenPropsGetter(propsRow, rowData, dataIndex), propsRow);
+      props = assignProps(childrenPropsGetter(propsRow, rowData, dataIndex, columns), propsRow);
     }
 
     return sstyled(styles)(<SRow role="row" {...props} />);
