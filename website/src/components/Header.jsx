@@ -39,7 +39,9 @@ function Header(props) {
             <img src={mobileLogo} className={styles.semrushLogo} alt="Logo" aria-hidden="true" />
             <Tooltip>
               <Tooltip.Trigger className={styles.devportalLink__mobile}>
-                <span className={styles.devportalTitle}>Developer</span>
+                <span className={styles.devportalTitle} aria-label="Go to Semrush Developer Portal">
+                  Developer
+                </span>
               </Tooltip.Trigger>
               <Tooltip.Popper className={styles.headerTooltip}>Go to start page</Tooltip.Popper>
             </Tooltip>
@@ -47,7 +49,11 @@ function Header(props) {
           <div className={styles.linkDivider}>
             <Divider mx={2} h={20} orientation="vertical" />
           </div>
-          <Link className={styles.intergalacticLink} to="/">
+          <Link
+            className={styles.intergalacticLink}
+            aria-label="Go to Intergalactic Design System main page"
+            to="/"
+          >
             Intergalactic
           </Link>
         </div>

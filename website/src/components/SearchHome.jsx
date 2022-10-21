@@ -147,7 +147,7 @@ const Search = ({
             <>
               <input
                 role="search"
-                aria-label="What brings you here, Sole Survivor?"
+                aria-label="Search for a component"
                 value={ru.toEn(currentRefinement)}
                 onChange={(e) => {
                   refine(ru.toEn(e.currentTarget.value));
