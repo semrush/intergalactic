@@ -16,7 +16,7 @@ Guidepup v0.13.1, MacOS Big Sur 11._
 9. Screen reader goes out of active element.
 10. Screen reader says "Out of edit text".
 11. Screen reader goes out of active element.
-12. Screen reader says "You are currently on a text field, inside of a Menu pop-up combo box. To enter text in this field, type. To exit this combo box, press Control-Option-Shift-Up Arrow.".
+12. Screen reader says "You are currently on a Menu pop-up combo box, inside of web content. Type text or, to display a list of choices, press Control-Option-Space. To exit this web area, press Control-Option-Shift-Up Arrow.".
 13. Screen reader presses the "Tab" button.
 14. Screen reader says "Entering List of options list box. List of options group".
 15. Screen reader goes into the active element.
@@ -27,11 +27,9 @@ Guidepup v0.13.1, MacOS Big Sur 11._
 20. Screen reader presses the "Control+Option+Space" button.
 21. Screen reader says "semrush".
 22. Screen reader presses the "Shift+Tab" button.
-23. Screen reader says "You are currently on a text element, inside of a list box.".
+23. Screen reader presses the "Shift+Tab" button.
 24. Screen reader presses the "Shift+Tab" button.
-25. Screen reader says "semrush".
+25. Screen reader says "Entering List of options list box. semrush text (1 of 1)".
 26. Screen reader presses the "Shift+Tab" button.
-27. Screen reader says "Entering List of options list box. semrush text (1 of 1)".
-28. Screen reader presses the "Shift+Tab" button.
-29. Screen reader triggers element default action.
-30. Screen reader says "semrush text (1 of 1)".
+27. Screen reader triggers element default action.
+28. Screen reader says "semrush text (1 of 1)".
