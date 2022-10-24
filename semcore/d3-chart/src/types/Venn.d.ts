@@ -1,4 +1,5 @@
-import { CProps, ReturnEl } from '@semcore/core';
+import { ReturnEl } from '@semcore/core';
+import { MapProps } from './Plot';
 import IContext from './context';
 import { IFadeInOutProps } from '@semcore/animation';
 
@@ -37,9 +38,9 @@ export interface IIntersectionProps extends IContext, IFadeInOutProps {
   dataKey: string;
 }
 
-declare const Venn: (<T>(props: CProps<IVennProps & T>) => ReturnEl) & {
-  Circle: <T>(props: CProps<ICircleProps & T>) => ReturnEl;
-  Intersection: <T>(props: CProps<IIntersectionProps & T>) => ReturnEl;
+declare const Venn: (<T>(props: MapProps<IVennProps & T>) => ReturnEl) & {
+  Circle: <T>(props: MapProps<ICircleProps & T>) => ReturnEl;
+  Intersection: <T>(props: MapProps<IIntersectionProps & T>) => ReturnEl;
 };
 
 export default Venn;

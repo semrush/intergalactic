@@ -1,4 +1,5 @@
-import { CProps, ReturnEl } from '@semcore/core';
+import { ReturnEl } from '@semcore/core';
+import { MapProps } from './Plot';
 import IContext from './context';
 
 export interface IReferenceLineProps extends IContext {
@@ -23,9 +24,9 @@ export interface IReferenceLineBackgroundProps extends IContext {
   value: any;
 }
 
-declare const ReferenceLine: (<T>(props: CProps<IReferenceLineProps & T>) => ReturnEl) & {
-  Title: <T>(props: CProps<IReferenceLineTitleProps & T>) => ReturnEl;
-  Background: <T>(props: CProps<IReferenceLineBackgroundProps & T>) => ReturnEl;
+declare const ReferenceLine: (<T>(props: MapProps<IReferenceLineProps & T>) => ReturnEl) & {
+  Title: <T>(props: MapProps<IReferenceLineTitleProps & T>) => ReturnEl;
+  Background: <T>(props: MapProps<IReferenceLineBackgroundProps & T>) => ReturnEl;
 };
 
 export default ReferenceLine;

@@ -1,4 +1,5 @@
-import { CProps, ReturnEl } from '@semcore/core';
+import { ReturnEl } from '@semcore/core';
+import { MapProps } from './Plot';
 import IContext from './context';
 import { CurveFactory } from 'd3-shape';
 
@@ -39,10 +40,10 @@ export interface IAreaNullProps extends IContext {
   hide?: boolean;
 }
 
-declare const Area: (<T>(props: CProps<IAreaProps & T>) => ReturnEl) & {
-  Dots: <T>(props: CProps<IAreaDotsProps & T, IAreaDotsContext>) => ReturnEl;
-  Null: <T>(props: CProps<IAreaNullProps & T>) => ReturnEl;
-  Line: <T>(props: CProps<IContext & T>) => ReturnEl;
+declare const Area: (<T>(props: MapProps<IAreaProps & T>) => ReturnEl) & {
+  Dots: <T>(props: MapProps<IAreaDotsProps & T, IAreaDotsContext>) => ReturnEl;
+  Null: <T>(props: MapProps<IAreaNullProps & T>) => ReturnEl;
+  Line: <T>(props: MapProps<IContext & T>) => ReturnEl;
 };
 
 export default Area;
