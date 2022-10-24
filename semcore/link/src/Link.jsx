@@ -5,9 +5,8 @@ import { Box } from '@semcore/flex-box';
 import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 import addonTextChildren from '@semcore/utils/lib/addonTextChildren';
 import resolveColor, { shade } from '@semcore/utils/lib/color';
-import reactToText from '@semcore/utils/lib/reactToText';
-import getOriginChildren from '@semcore/utils/lib/getOriginChildren';
 import logger from '@semcore/utils/lib/logger';
+import hasLabels from '@semcore/utils/src/hasLabels';
 
 import style from './style/link.shadow.css';
 
@@ -18,27 +17,22 @@ class RootLink extends Component {
   };
   static style = style;
   static enhance = [keyboardFocusEnhance()];
+  containerRef = React.createRef();
+
+  componentDidMount() {
+    if (process.env.NODE_ENV !== 'production') {
+      logger.warn(
+        !hasLabels(this.containerRef.current),
+        `'aria-label' or 'aria-labelledby' are required props for links without text content`,
+        this.asProps['data-ui-name'] || Button.displayName,
+      );
+    }
+  }
 
   render() {
     const SLink = Root;
-    const {
-      Children,
-      styles,
-      noWrap,
-      addonLeft,
-      addonRight,
-      color,
-      disabled,
-      'aria-label': ariaLabel,
-    } = this.asProps;
+    const { Children, styles, noWrap, addonLeft, addonRight, color, disabled } = this.asProps;
     const colorHoverText = shade(resolveColor(color), -0.12);
-    const linkText = reactToText(getOriginChildren(Children));
-
-    logger.warn(
-      linkText === '' && ariaLabel === undefined,
-      'aria-label is required',
-      this.asProps['data-ui-name'] || Link.displayName,
-    );
 
     return sstyled(styles)(
       <SLink
@@ -50,6 +44,7 @@ class RootLink extends Component {
         colorHoverText={colorHoverText}
         noWrapText={noWrap}
         use:noWrap={false}
+        ref={this.containerRef}
       >
         {addonLeft ? <Link.Addon tag={addonLeft} /> : null}
         {addonTextChildren(Children, Link.Text, Link.Addon)}
