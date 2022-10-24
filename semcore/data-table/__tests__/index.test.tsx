@@ -61,7 +61,7 @@ describe('DataTable', () => {
   shouldSupportClassName(DataTable);
   shouldSupportRef(DataTable);
 
-  xtest('base render', async () => {
+  test('renders correctly', async () => {
     const component = (
       <div style={{ width: 800 }}>
         <DataTable data={data}>
