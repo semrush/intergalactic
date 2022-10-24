@@ -1,4 +1,5 @@
-import { CProps, ReturnEl } from '@semcore/core';
+import { ReturnEl } from '@semcore/core';
+import { MapProps } from './Plot';
 import { IBarContext, IBarProps } from './Bar';
 import { IHorizontalBarProps } from './HorizontalBar';
 import IContext from './context';
@@ -12,9 +13,9 @@ export interface IGroupBarProps extends IContext {
   scaleGroup?: any;
 }
 
-declare const GroupBar: (<T>(props: CProps<IGroupBarProps & T>) => ReturnEl) & {
-  Bar: <T>(props: CProps<IBarProps & T, IBarContext>) => ReturnEl;
-  HorizontalBar: <T>(props: CProps<IHorizontalBarProps & T, IBarContext>) => ReturnEl;
+declare const GroupBar: (<T>(props: MapProps<IGroupBarProps & T>) => ReturnEl) & {
+  Bar: <T>(props: MapProps<IBarProps & T, IBarContext>) => ReturnEl;
+  HorizontalBar: <T>(props: MapProps<IHorizontalBarProps & T, IBarContext>) => ReturnEl;
 };
 
 export default GroupBar;

@@ -1,5 +1,6 @@
 import React from 'react';
-import { CProps, ReturnEl } from '@semcore/core';
+import { MapProps } from './Plot';
+import { ReturnEl } from '@semcore/core';
 
 export interface IClipPath {
   /**
@@ -21,6 +22,6 @@ export interface IClipPath {
   setAttributeTag?: (rect: React.ReactNode) => void;
 }
 
-declare const ClipPath: <T>(props: CProps<IClipPath & T>) => ReturnEl;
+declare const ClipPath: <T>(props: MapProps<IClipPath & T>) => ReturnEl;
 
 export default ClipPath;

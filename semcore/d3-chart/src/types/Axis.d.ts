@@ -1,4 +1,5 @@
-import { CProps, ReturnEl } from '@semcore/core';
+import { ReturnEl } from '@semcore/core';
+import { MapProps } from './Plot';
 import IContext from './context';
 
 export interface IXAxisProps extends IContext {
@@ -49,16 +50,16 @@ export interface IAxisTicksContext {
   index: number;
 }
 
-declare const XAxis: (<T>(props: CProps<IXAxisProps & T>) => ReturnEl) & {
-  Ticks: <T>(props: CProps<IAxisTicksProps & T, IAxisTicksContext>) => ReturnEl;
-  Grid: <T>(props: CProps<IAxisGridProps & T>) => ReturnEl;
-  Title: <T>(props: CProps<IAxisTitleProps & T>) => ReturnEl;
+declare const XAxis: (<T>(props: MapProps<IXAxisProps & T>) => ReturnEl) & {
+  Ticks: <T>(props: MapProps<IAxisTicksProps & T, IAxisTicksContext>) => ReturnEl;
+  Grid: <T>(props: MapProps<IAxisGridProps & T>) => ReturnEl;
+  Title: <T>(props: MapProps<IAxisTitleProps & T>) => ReturnEl;
 };
 
-declare const YAxis: (<T>(props: CProps<IYAxisProps & T>) => ReturnEl) & {
-  Ticks: <T>(props: CProps<IAxisTicksProps & T, IAxisTicksContext>) => ReturnEl;
-  Grid: <T>(props: CProps<IAxisGridProps & T>) => ReturnEl;
-  Title: <T>(props: CProps<IAxisTitleProps & T>) => ReturnEl;
+declare const YAxis: (<T>(props: MapProps<IYAxisProps & T>) => ReturnEl) & {
+  Ticks: <T>(props: MapProps<IAxisTicksProps & T, IAxisTicksContext>) => ReturnEl;
+  Grid: <T>(props: MapProps<IAxisGridProps & T>) => ReturnEl;
+  Title: <T>(props: MapProps<IAxisTitleProps & T>) => ReturnEl;
 };
 
 export { XAxis, YAxis };

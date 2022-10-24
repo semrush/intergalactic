@@ -1,4 +1,5 @@
-import { CProps, ReturnEl } from '@semcore/core';
+import { ReturnEl } from '@semcore/core';
+import { MapProps } from './Plot';
 import IContext from './context';
 
 export interface IBarProps extends IContext {
@@ -45,8 +46,8 @@ export interface IBackgroundProps extends IContext {
   height?: number | string;
 }
 
-declare const Bar: (<T>(props: CProps<IBarProps & T, IBarContext>) => ReturnEl) & {
-  Background: <T>(props: CProps<IBackgroundProps & T>) => ReturnEl;
+declare const Bar: (<T>(props: MapProps<IBarProps & T, IBarContext>) => ReturnEl) & {
+  Background: <T>(props: MapProps<IBackgroundProps & T>) => ReturnEl;
 };
 
 export default Bar;
