@@ -1,4 +1,5 @@
-import { CProps, ReturnEl } from '@semcore/core';
+import { ReturnEl } from '@semcore/core';
+import { MapProps } from './Plot';
 import IContext from './context';
 
 export interface IScatterPlotProps extends IContext {
@@ -22,6 +23,6 @@ export interface IScatterPlotProps extends IContext {
   r?: number;
 }
 
-declare const ScatterPlot: <T>(props: CProps<IScatterPlotProps & T>) => ReturnEl;
+declare const ScatterPlot: <T>(props: MapProps<IScatterPlotProps & T>) => ReturnEl;
 
 export default ScatterPlot;

@@ -1,4 +1,5 @@
-import { CProps, ReturnEl } from '@semcore/core';
+import { ReturnEl } from '@semcore/core';
+import { MapProps } from './Plot';
 import IContext from './context';
 import { IBarContext, IBarProps } from './Bar';
 import { IHorizontalBarProps } from './HorizontalBar';
@@ -18,9 +19,9 @@ export interface IStackBarContext {
   series: any[];
 }
 
-declare const StackBar: (<T>(props: CProps<IStackBarProps & T, IStackBarContext>) => ReturnEl) & {
-  Bar: <T>(props: CProps<IBarProps & T, IBarContext>) => ReturnEl;
-  HorizontalBar: <T>(props: CProps<IHorizontalBarProps & T, IBarContext>) => ReturnEl;
+declare const StackBar: (<T>(props: MapProps<IStackBarProps & T, IStackBarContext>) => ReturnEl) & {
+  Bar: <T>(props: MapProps<IBarProps & T, IBarContext>) => ReturnEl;
+  HorizontalBar: <T>(props: MapProps<IHorizontalBarProps & T, IBarContext>) => ReturnEl;
 };
 
 export default StackBar;

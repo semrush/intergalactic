@@ -9,6 +9,13 @@ import styles from './SideBarNavigation.module.css';
 const SideBarNavigation = ({ navigation = [], onNavigate, className }) => {
   const { category, page } = useParams();
   const [collapseCategories, setCollapseCategories] = useState([category]);
+  const handleClick = (currentCategory) => {
+    if (collapseCategories.includes(currentCategory.route)) {
+      setCollapseCategories(collapseCategories.filter((route) => route !== currentCategory.route));
+    } else {
+      setCollapseCategories(collapseCategories.concat(currentCategory.route));
+    }
+  };
 
   return (
     <nav className={cx(styles.navigationView, className)} aria-label="Main links">
@@ -19,13 +26,11 @@ const SideBarNavigation = ({ navigation = [], onNavigate, className }) => {
             <div
               className={styles.categoryTitle}
               key={`category-${i}`}
-              onClick={() => {
-                if (collapseCategories.includes(currentCategory.route)) {
-                  setCollapseCategories(
-                    collapseCategories.filter((route) => route !== currentCategory.route),
-                  );
-                } else {
-                  setCollapseCategories(collapseCategories.concat(currentCategory.route));
+              tabIndex={0}
+              onClick={() => handleClick(currentCategory)}
+              onKeyDown={() => {
+                if (event.code === 'Enter' || event.code === 'Space') {
+                  handleClick(currentCategory);
                 }
               }}
             >
@@ -53,6 +58,7 @@ const SideBarNavigation = ({ navigation = [], onNavigate, className }) => {
                     onClick={onNavigate}
                     to={`/${p.route}/`}
                     key={`page-${i}`}
+                    aria-disabled={!!p.metadata.disabled}
                     dangerouslySetInnerHTML={{ __html: p.title }}
                   />
                 );

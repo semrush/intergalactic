@@ -1,5 +1,6 @@
 import { IBoxProps } from '@semcore/flex-box';
-import { CProps, ReturnEl } from '@semcore/core';
+import { ReturnEl } from '@semcore/core';
+import { MapProps } from './Plot';
 import IContext from './context';
 
 export interface IPlotProps extends IContext, IBoxProps {
@@ -86,6 +87,12 @@ export type PlotSummarizerConfig = {
   groupsLimit?: number;
 };
 
-declare const Plot: <T>(props: CProps<IPlotProps & T>) => ReturnEl;
+export type MapProps<Props, Ctx = {}, UCProps = {}> = Props & {
+  children?:
+    | ((props: Props & Ctx, handlers: UCProps) => Props | React.PropsWithChildren)
+    | React.ReactNode;
+};
+
+declare const Plot: <T>(props: MapProps<IPlotProps & T>) => ReturnEl;
 
 export default Plot;

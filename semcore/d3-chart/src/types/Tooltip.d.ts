@@ -1,6 +1,7 @@
 import { ComponentProps } from 'react';
 import Popper, { IPopperProps, IPopperTriggerProps } from '@semcore/popper';
-import { CProps, PropGetterFn, ReturnEl } from '@semcore/core';
+import { PropGetterFn, ReturnEl } from '@semcore/core';
+import { MapProps } from './Plot';
 import { IBoxProps } from '@semcore/flex-box';
 import IContext from './context';
 
@@ -21,13 +22,13 @@ export interface ITooltipChartContext {
 }
 
 declare const Tooltip: (<T>(
-  props: CProps<ITooltipChartProps & T, ITooltipChartContext>,
+  props: MapProps<ITooltipChartProps & T, ITooltipChartContext>,
 ) => ReturnEl) & {
-  Trigger: <T>(props: CProps<ComponentProps<typeof Popper.Trigger> & T>) => ReturnEl;
-  Popper: <T>(props: CProps<ComponentProps<typeof Popper.Popper> & T>) => ReturnEl;
-  Title: <T>(props: CProps<IBoxProps & T>) => ReturnEl;
-  Dot: <T>(props: CProps<IBoxProps & { color?: string } & T>) => ReturnEl;
-  Footer: <T>(props: CProps<T>) => null;
+  Trigger: <T>(props: MapProps<ComponentProps<typeof Popper.Trigger> & T>) => ReturnEl;
+  Popper: <T>(props: MapProps<ComponentProps<typeof Popper.Popper> & T>) => ReturnEl;
+  Title: <T>(props: MapProps<IBoxProps & T>) => ReturnEl;
+  Dot: <T>(props: MapProps<IBoxProps & { color?: string } & T>) => ReturnEl;
+  Footer: <T>(props: MapProps<T>) => null;
 };
 
 export default Tooltip;

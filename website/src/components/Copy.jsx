@@ -41,6 +41,7 @@ class Copy extends PureComponent {
         {...other}
         className={cx(className, styles.tooltipStyle)}
         title={textTooltip}
+        aria-label="Click to copy code"
         selfProps={{
           popupTransitionName: 'popup-fade',
         }}

@@ -1,4 +1,5 @@
-import { CProps, ReturnEl } from '@semcore/core';
+import { ReturnEl } from '@semcore/core';
+import { MapProps } from './Plot';
 import IContext from './context';
 
 export interface IDonutProps extends IContext {
@@ -37,10 +38,10 @@ export interface IEmptyDataProps extends IContext {}
 
 export interface ILabelProps extends IContext {}
 
-declare const Donut: (<T>(props: CProps<IDonutProps & T>) => ReturnEl) & {
-  Pie: <T>(props: CProps<IPieProps & T>) => ReturnEl;
-  EmptyData: <T>(props: CProps<IEmptyDataProps & T>) => ReturnEl;
-  Label: <T>(props: CProps<ILabelProps & T>) => ReturnEl;
+declare const Donut: (<T>(props: MapProps<IDonutProps & T>) => ReturnEl) & {
+  Pie: <T>(props: MapProps<IPieProps & T>) => ReturnEl;
+  EmptyData: <T>(props: MapProps<IEmptyDataProps & T>) => ReturnEl;
+  Label: <T>(props: MapProps<ILabelProps & T>) => ReturnEl;
 };
 
 export default Donut;

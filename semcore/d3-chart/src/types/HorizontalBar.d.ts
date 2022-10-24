@@ -1,4 +1,5 @@
-import { CProps, ReturnEl } from '@semcore/core';
+import { ReturnEl } from '@semcore/core';
+import { MapProps } from './Plot';
 import IContext from './context';
 import { IBarContext, IBackgroundProps } from './Bar';
 
@@ -21,9 +22,9 @@ export interface IHorizontalBarProps extends IContext {
 }
 
 declare const HorizontalBar: (<T>(
-  props: CProps<IHorizontalBarProps & T, IBarContext>,
+  props: MapProps<IHorizontalBarProps & T, IBarContext>,
 ) => ReturnEl) & {
-  Background: <T>(props: CProps<IBackgroundProps & T>) => ReturnEl;
+  Background: <T>(props: MapProps<IBackgroundProps & T>) => ReturnEl;
 };
 
 export default HorizontalBar;
