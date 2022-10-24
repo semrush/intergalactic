@@ -1,5 +1,6 @@
 import { IBoxProps } from '@semcore/flex-box';
-import { CProps, ReturnEl } from '@semcore/core';
+import { ReturnEl } from '@semcore/core';
+import { MapProps } from './Plot';
 
 export interface IResponsiveContainerProps extends IBoxProps {
   /** Relation between height and width dimensions block */
@@ -14,7 +15,7 @@ export interface IResponsiveContainerContext {
 }
 
 declare const ResponsiveContainer: <T>(
-  props: CProps<IResponsiveContainerProps & T, IResponsiveContainerContext>,
+  props: MapProps<IResponsiveContainerProps & T, IResponsiveContainerContext>,
 ) => ReturnEl;
 
 export default ResponsiveContainer;

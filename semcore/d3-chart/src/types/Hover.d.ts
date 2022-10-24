@@ -1,4 +1,5 @@
-import { CProps, ReturnEl } from '@semcore/core';
+import { ReturnEl } from '@semcore/core';
+import { MapProps } from './Plot';
 import IContext from './context';
 
 export interface IHoverProps extends IContext {
@@ -8,8 +9,8 @@ export interface IHoverProps extends IContext {
   y?: string;
 }
 
-declare const HoverLine: <T>(props: CProps<IHoverProps & T>) => ReturnEl;
+declare const HoverLine: <T>(props: MapProps<IHoverProps & T>) => ReturnEl;
 
-declare const HoverRect: <T>(props: CProps<IHoverProps & T>) => ReturnEl;
+declare const HoverRect: <T>(props: MapProps<IHoverProps & T>) => ReturnEl;
 
 export { HoverLine, HoverRect };
