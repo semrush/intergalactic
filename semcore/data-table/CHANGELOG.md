@@ -7,7 +7,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### Added
 
 - Added `disabledScroll` property that disables scrolling in tables.
-- Added a fourth argument to the render function to access the columns state.
+- Added the ability(`flex="inherit"`) to inherit the size from the top table.
 
 ## [3.3.2] - 2022-10-20
 

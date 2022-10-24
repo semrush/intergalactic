@@ -1,4 +1,5 @@
 import React from 'react';
+import { Property } from 'csstype';
 import createComponent, { Component, PropGetterFn, Root, sstyled } from '@semcore/core';
 import { Box, IBoxProps, IFlexProps } from '@semcore/flex-box';
 import syncScroll from '@semcore/utils/lib/syncScroll';
@@ -52,12 +53,7 @@ type CProps<Props, Ctx = {}, UCProps = {}> = Props & {
 };
 type ReturnEl = React.ReactElement | null;
 type ChildRenderFn<Props> = Props & {
-  children?: (
-    props: Props,
-    column: DataTableData,
-    index: number,
-    columns: Column[],
-  ) => { [key: string]: unknown };
+  children?: (props: Props, column: DataTableData, index: number) => { [key: string]: unknown };
 };
 /* utils type */
 
@@ -114,6 +110,8 @@ export interface IDataTableColumnProps extends IFlexProps {
   resizable?: boolean;
   /** Fixed column on the left/right */
   fixed?: 'left' | 'right';
+  /** Fields to control the size of the column. */
+  flex?: Property.Flex | 'inherit';
 }
 
 export interface IDataTableBodyProps extends IBoxProps {
@@ -201,7 +199,9 @@ class RootDefinitionTable extends Component<AsProps> {
 
   setVarStyle(columns: Column[]) {
     for (const column of columns) {
-      this.tableRef.current?.style.setProperty(column.varWidth, `${column.width}px`);
+      if (column.setVar) {
+        this.tableRef.current?.style.setProperty(column.varWidth, `${column.width}px`);
+      }
     }
   }
 
@@ -221,6 +221,7 @@ class RootDefinitionTable extends Component<AsProps> {
         fixed = options.fixed,
         resizable,
         sortable,
+        flex,
         ...props
       } = child.props as Column['props'];
       const isGroup = !name;
@@ -245,6 +246,7 @@ class RootDefinitionTable extends Component<AsProps> {
         },
         name,
         varWidth: createCssVarForWidth(name),
+        setVar: flex !== 'inherit',
         fixed,
         resizable,
         active: sort[0] === name,
@@ -256,6 +258,7 @@ class RootDefinitionTable extends Component<AsProps> {
               (typeof sortable == 'string' ? sortable : DEFAULT_SORT_DIRECTION),
         props: {
           name,
+          flex: flex === 'inherit' ? undefined : flex,
           ...props,
           // @ts-ignore
           forwardRef: child.ref,

@@ -1,11 +1,11 @@
 import React from 'react';
 import { ROW_GROUP } from './DataTable';
+import { Property } from 'csstype';
 
 export type PseudoChildPropsGetter = (
   props: { [propName: string]: unknown },
   rowData: { [columnName: string]: unknown },
   index: number,
-  columns: Column[],
 ) => { [propName: string]: unknown };
 export type PropsLayer = {
   childrenPropsGetter?: PseudoChildPropsGetter;
@@ -24,11 +24,13 @@ export type Column<
   sortable?: boolean | SortDirection;
   sortDirection: SortDirection;
   varWidth: string;
+  setVar: boolean;
   data?: unknown;
   props: {
     name: string;
     ref: React.RefObject<HTMLElement>;
   } & Partial<{
+    flex: Property.Flex;
     onClick: (event: React.MouseEvent) => void;
     onKeyDown: (event: React.KeyboardEvent) => void;
     forwardRef: React.Ref<HTMLElement>;

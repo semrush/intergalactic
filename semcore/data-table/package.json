@@ -38,6 +38,7 @@
     "@semcore/sticky": "*",
     "@semcore/tooltip": "*",
     "@types/node": "^17.0.45",
+    "csstype": "3.0.8",
     "jest": "29.0.1"
   },
   "peerDependencies": {

@@ -79,6 +79,10 @@ class Head extends Component<AsProps> {
       style[name] = value;
     }
 
+    if (!column.setVar) {
+      style['flexBasis'] = `var(${column.varWidth})`;
+    }
+
     return sstyled(styles)(
       <SColumn
         role={isGroup ? undefined : 'columnheader'}

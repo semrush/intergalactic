@@ -134,7 +134,7 @@ We use the `@semcore/ui/accordion` component to extend the functionality of the 
 We use the example with [the accordion above](/table-group/data-table/#accordion_in_the_table).
 
 1. Hide the table header;
-2. Set the width from the top table for each column;
+2. Set "inherit" to use the size from the top table for each column;
 
 @example table-in-table
 
