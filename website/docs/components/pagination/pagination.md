@@ -8,76 +8,84 @@ tabName: Design
 
 @## Description
 
-**Pagination** is a group of controls for navigation through the long list of paginated data.
+**Pagination** is a component with a group of controls for navigation through the long list of data.
 
-@## Appearance
+### When to use
 
-### Component composition
+It is recommended to use pagination in tables, as well as in a long list of data which is comfortable to be looked page by page.
 
-- `primary` и `secondary` buttons;
-- [input](/components/input/);
-- [text](/style/typography/).
+@## Component composition
+
+**Pagination consists of:**
+
+- [Buttons](/components/button/);
+- [Input](/components/input/);
+- [Link](/components/link/)
+- [Text](/style/typography/).
 
 ![default styles](static/default.png)
 
-### Margins
+@## Margins
+
+- Margins between the buttons are always 8px.
+- Margin between the different controls are 16px: between the buttons and the input for current page, between the input for current page and the select.
 
 ![margins berween buttons](static/margins.png)
 
-Margin from the pagination to the table is always 16px.
+Margin from the table to the pagination is always 16px.
 
 ![margin between table and paginationp](static/margin-top.png)
 
-@## When it should be used?
+@## Number of the rows
 
-It is recommended to use pagination in tables, as well as when there is a long list of data which is comfortable to be looked through gradually, page by page.
+We have some recommendations for the table size:
+
+- Use minimum two user screens (± 2000 px) for the table.
+- Show maximum 100 lines (if the lines are two-line, then 50 lines etc.).
 
 @## Interaction
 
-Size of the page where the pagination is required shall be at the discretion of the UX and UI. There are some recommendations based on the statistics:
+- The table should be scrolled up to the beginning when user moves between pages.
+- After sorting and filtration pagination always returns user to the first page.
 
-- Minimum two user screens (± 2000 px).
-- Maximum 100 lines of the table (if the lines are two-line, then 50 lines etc.).
-- The table is scrolled up to the beginning upon moving to pages.
-- Upon sorting and filtration pagination always returns to the first page.
+| Appearance                                         | Action                                                                                                                                            |
+| -------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ![first page button](static/secondary-button.png)  | Opens the first page                                                                                                                              |
+| ![prev page button](static/secondary-button-2.png) | Opens the previous page                                                                                                                           |
+| ![next page button](static/primary-button.png)     | Opens the next page                                                                                                                               |
+| ![pagination staps](static/steps.png)              | When the input is in focus, the clickable `Return` icon with M size appears. By clicking it or pressing Enter the user moves to the entered page. |
 
-| Appearance                                         | Action                                                                                                                                                 |
-| -------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| ![first page button](static/secondary-button.png)  | Moving to the first page by click                                                                                                                      |
-| ![prev page button](static/secondary-button-2.png) | Moving to the previous page by click                                                                                                                   |
-| ![next page button](static/primary-button.png)     | Moving to the next page by click                                                                                                                       |
-| ![pagination staps](static/steps.png)              | When the input is in focus, the clickable icon `Return` M size appears inside it. By clicking it or pressing Enter the user moves to the entered page. |
+The current page should be always displayed in the input:
 
-> The current page, where the user is now, should be always displayed in the input.
-
-- When the input is unfocused, we show the current page, even if the user changed this value, but did not press Enter or clicked the icon inside the input.
-- If the input is empty (for example the user cleared it himself/herself) or 0 is entered, then the user will move to the first page by clicking the icon or pressing Enter.
+- When the input is unfocused, show the current page, even if the user have changed this value, but did not press `Enter` or clicked the icon inside the input.
+- If the input is empty (for example the user cleared it) or 0 is entered, then the user will move to the first page by clicking the icon or pressing `Enter`.
 - Such input should have limitation for entering any symbols except for numerical ones.
-- The link at the end of the component shows the total number of pages. The user moves to the last page by clicking.
 
-@## States
+The link at the end of the pagination shows the total number of pages. User moves to the last page by clicking it.
 
-### The user is on the first page
+@## States and cases
 
-The button with the icon and the button `Prev` are `disabled`.
+### User is on the first page
+
+The "First page" button and the "Prev" button are `disabled` in this case.
 
 ![first page](static/first-page.png)
 
-### The user is on the last page
+### User is on the last page
 
-The button `Next` gets the state `disabled`, and the link to the last page becomes plain text.
+The "Next page" button gets the `disabled` state, and the link to the last page becomes plain text.
 
 ![last page](static/last-page.png)
 
-### The user enters the value exceeding the number of the existing pages
+### User enters the value that is more than the number of the pages
 
-By clicking the icon or pressing `Enter` on the keyboard the user moves to the last page. Do not show the error.
+Do not show the error in this case, just move the user to the last page.
 
-### One page of the report
+### One page
 
-We use this status only if there is some data and there may be more data.
+Use this state only if there is some data and there might be more data.
 
-> If there is no data or the filter is applied, then there should not be any pagination. The table should contain a message that data is absent.
+> If there is no data or the filter is applied, then there should not be any pagination. The table should contain a message that there is no data.
 
 ![one page](static/one-page.png)
 
@@ -85,21 +93,21 @@ We use this status only if there is some data and there may be more data.
 
 ### Page loading
 
-We do not show pagination while loading, because the reply from the backend regarding the number of pages has not been received yet. It is also related to [skeletons](/components/skeleton/) and [spinners](/components/spin/).
+Do not show pagination while loading.
 
 @## Optional states
 
-#### Select for choosing the lines in the table
+#### Select for choosing the number of rows
 
-Upon choosing the value in the select the page is refreshed and the value of the lines from the select is applied.
+After user changes the value in the select, the page should be refreshed and the value of the table rows from the select should be applied.
 
-You must use the values shown on the screenshot below in the select. We do not use other values.
+Use only these values for the select: 10, 20, 50, 100.
 
 ![page select](static/page-select.png)
 
 ### It is impossible to calculate the exact number of pages
 
-In this case we add the `tilde (≈)` to the number of pages, and they become unclickable.
+In this case add the `tilde (≈)` to the number of pages, and change the link with the number of all pages to the plain text.
 
 ![unknown pages](static/undefined-number.png)
 

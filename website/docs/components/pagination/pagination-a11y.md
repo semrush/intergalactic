@@ -3,7 +3,9 @@ title: A11y
 a11y: AA
 ---
 
-@## Keyboard support
+@## What component has
+
+### Keyboard support
 
 | Key           | Function                                       |
 | ------------- | ---------------------------------------------- |
@@ -12,19 +14,18 @@ a11y: AA
 
 See detailed information about the keyboard support for the buttons, links, inputs, etc., in the [Keyboard control guide](/core-principles/a11y/a11y-keyboard/).
 
-@## Roles & attributes
+### Roles & attributes
 
-The list below will help you to keep in mind the necessary roles and attributes to make our components fully accessible in your interfaces.
+The list below describes roles and attributes that component already has.
 
-| Role | Attribute                         | Element  | Usage                                                                                                         |
-| ---- | --------------------------------- | -------- | ------------------------------------------------------------------------------------------------------------- |
-|      |                                   | `nav`    | In order to let AT users recognize that there is a pagination, we should wrap the links in a `<nav>` element. |
-|      | `aria-label="pagination"`         | `nav`    | Describes the type of navigation.                                                                             |
-|      | `aria-current="page"`             | `input`  | Points to the current page. This will tell AT that the focused input is pointing to the current page.         |
-|      | `aria-label="Page {number}"`      | `button` | Describes the meaning of the "Prev" button.                                                                   |
-|      | `aria-label="Page {number}"`      | `button` | Describes the meaning of the "Next" button.                                                                   |
-|      | `aria-label="First page"`         | `button` | Describes the meaning of the "<<" button.                                                                     |
-|      | `aria-label="Last page {number}"` | `button` | Describes the meaning of the "{number}" link.                                                                 |
+| Attribute                         | Element  | Usage                                                                                                         |
+| --------------------------------- | -------- | ------------------------------------------------------------------------------------------------------------- |
+|                                   | `nav`    | In order to let AT users recognize that there is a pagination, we should wrap the links in a `<nav>` element. |
+| `aria-label="pagination"`         | `nav`    | Describes the type of navigation.                                                                             |
+| `aria-current="page"`             | `input`  | Points to the current page. This will tell AT that the focused input is pointing to the current page.         |
+| `aria-label="Page {number}"`      | `button` | Describes the meaning of the "Prev" and "Next" buttons.                                                       |
+| `aria-label="First page"`         | `button` | Describes the meaning of the "<<" button.                                                                     |
+| `aria-label="Last page {number}"` | `button` | Describes the meaning of the "{number}" link.                                                                 |
 
 @## Resources
 
