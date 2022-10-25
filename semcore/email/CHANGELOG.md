@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.0.0] - 2022-10-27
+
+### Changed
+
+- The logic of the package has been changed. Now you do not need to download the package to get responsive html for email.
+
 ## [1.0.2] - 2022-10-10
 
 ### Changed

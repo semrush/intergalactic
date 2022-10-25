@@ -1,8 +1,12 @@
 {
   "name": "@semcore/email",
   "version": "1.0.2",
-  "description": "",
-  "module": "index.js",
+  "description": "Semcore tool for responsive emails",
+  "author": "UI-kit team <ui-kit-team@semrush.com>",
+  "license": "MIT",
+  "bin": {
+    "semcore-email": "bin/index.ts"
+  },
   "scripts": {
     "test": "echo 'no test'",
     "clean": "rm -rf lib & rm -rf .tmp",
@@ -16,13 +20,11 @@
     "watch": "npm run watch:html & npm run watch:css && npm run build:html-lib",
     "serve": "npx http-server ./"
   },
-  "keywords": [],
-  "author": "UI-kit team <ui-kit-team@semrush.com>",
-  "license": "MIT",
-  "dependencies": {},
   "devDependencies": {
+    "@types/node": "18.11.4",
     "autoprefixer": "10.3.1",
     "cssnano": "5.0.7",
+    "inky": "1.4.2",
     "inky-cli": "1.0.1",
     "nodemon": "2.0.12",
     "postcss": "8.2.13",
