@@ -19,7 +19,7 @@ import Header, { Info, Title } from '@semcore/product-head';
 export default () => {
   return (
     <>
-      <Header mx={8}>
+      <Header mx={6}>
         <Header.Row>
           <Breadcrumbs>
             <Breadcrumbs.Item>Dashboard</Breadcrumbs.Item>
