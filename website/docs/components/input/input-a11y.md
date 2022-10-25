@@ -7,7 +7,12 @@ fileSource: input
 
 ### Keyboard support
 
-See detailed information about the keyboard support for the Input in the [Keyboard control guide](/core-principles/a11y/a11y-keyboard/#input_i_textarea).
+| Key     | Function                           |
+| ------- | ---------------------------------- |
+| `Tab`   | Moves keyboard focus to the input. |
+| `Enter` | Submits the entered value.         |
+
+See detailed information about the keyboard support for the input fileds in the [Keyboard control guide](/core-principles/a11y/a11y-keyboard/#input_i_textarea).
 
 @## Considerations for developers
 
@@ -16,6 +21,11 @@ See detailed information about the keyboard support for the Input in the [Keyboa
 - Fields with error validation should have `aria-describedby` to insure that the associated field level error message is read by assistive technology. If the error message has an `id="my-error-message"`, then the input should have `aria-describedby="my-error-message"`.
 
 Find live examples in the [A11y style guide](https://a11y-style-guide.com/style-guide/section-forms.html#kssref-forms-text-fields).
+
+@## Considerations for designers
+
+- Focus must be visible.
+- Don’t hide the input label on focus.
 
 @## Resources
 
