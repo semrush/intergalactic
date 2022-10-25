@@ -9,11 +9,11 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 - Added `disabledScroll` property that disables scrolling in tables.
 - Added the ability(`flex="inherit"`) to inherit the size from the top table.
 
-## [3.3.3] - 2022-10-24
+## [3.3.4] - 2022-10-24
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/icon` [3.0.2 ~> 3.1.0]).
+- Version patch update due to children dependencies update (`@semcore/icon` [3.1.0 ~> 3.1.1]).
 
 ## [3.3.0] - 2022-10-10
 
