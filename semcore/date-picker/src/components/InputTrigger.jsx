@@ -24,6 +24,7 @@ class InputTriggerRoot extends Component {
       id,
       role,
       'aria-haspopup': ariaHasPopup,
+      'aria-label': ariaLabel,
       style,
       ...otherProps
     } = this.asProps;
@@ -35,6 +36,7 @@ class InputTriggerRoot extends Component {
       id,
       role,
       'aria-haspopup': ariaHasPopup,
+      'aria-label': ariaLabel,
       style,
       ...otherProps
     } = this.asProps;
@@ -47,7 +49,11 @@ class InputTriggerRoot extends Component {
     const { Children, style } = this.asProps;
 
     return sstyled(style)(
-      <SInputTrigger render={Box} __excludeProps={['onChange', 'value', 'role']}>
+      <SInputTrigger
+        render={Box}
+        aria-label="Date field"
+        __excludeProps={['onChange', 'value', 'role']}
+      >
         <Children />
       </SInputTrigger>,
     );

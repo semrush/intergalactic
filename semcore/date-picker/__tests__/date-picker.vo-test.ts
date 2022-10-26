@@ -24,8 +24,9 @@ test('Users can interact with DatePicker and DateRangePicker via VoiceOver', asy
   const { voiceOver, getReport } = await makeVoiceOverReporter(pureVoiceOver);
   await voiceOver.interact();
 
-  expect(await voiceOver.lastSpokenPhrase()).toContain('Date MM/DD/YYYY edit text');
+  expect(await voiceOver.lastSpokenPhrase()).toContain('Date field');
   await voiceOver.interact();
+  expect(await voiceOver.lastSpokenPhrase()).toBe(new Date().getFullYear().toString());
   for (let i = 0; i < 8; i++) {
     await voiceOver.press('Backspace', { application: 'Playwright' });
   }
