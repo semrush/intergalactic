@@ -27,8 +27,9 @@ Guidepup v0.13.1, MacOS Big Sur 11._
 20. Screen reader says "semrush".
 21. Screen reader presses the "Shift+Tab" button.
 22. Screen reader presses the "Shift+Tab" button.
-23. Screen reader presses the "Shift+Tab" button.
-24. Screen reader says "Entering List of options list box. semrush text (1 of 1)".
-25. Screen reader presses the "Shift+Tab" button.
-26. Screen reader triggers element default action.
-27. Screen reader says "semrush text (1 of 1)".
+23. Screen reader says "Leaving List of options. semrush Insertion at end of text. Press Tab to go to popover edit text".
+24. Screen reader presses the "Shift+Tab" button.
+25. Screen reader says "Entering List of options list box. semrush text (1 of 1)".
+26. Screen reader presses the "Shift+Tab" button.
+27. Screen reader triggers element default action.
+28. Screen reader says "semrush text (1 of 1)".
