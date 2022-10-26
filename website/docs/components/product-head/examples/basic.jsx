@@ -114,12 +114,10 @@ export default () => {
         </Header.Row>
       </Header>
 
-      <TabLine defaultValue="overview">
-        <Box px="16px" />
+      <TabLine defaultValue="overview" px={6}>
         <TabLine.Item value="overview">Overview</TabLine.Item>
         <TabLine.Item value="issues">Issues</TabLine.Item>
         <TabLine.Item value="linked_in">LinkedIn</TabLine.Item>
-        <Box px="16px" />
       </TabLine>
     </>
   );
