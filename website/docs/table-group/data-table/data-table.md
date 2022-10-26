@@ -54,7 +54,7 @@ If you can sort by column, then:
 
 @## Fixed header
 
-To fix the table header, use the `<Sticky/>` component.
+To fix the table header, use the `<Box position="sticky" top={top} />` component.
 
 > Set `zIndex=2` for correct display.
 
