@@ -8,7 +8,8 @@ import NeighborLocation from '@semcore/neighbor-location';
 import includesDate from '../utils/includesDate';
 import dayjs from 'dayjs';
 
-import style from '../style/calendar.shadow.css';
+import style from '../style/date-picker.shadow.css';
+import assignProps from '@semcore/utils/lib/assignProps';
 
 const defaultAllowedParts = { year: true, month: true, day: true };
 
@@ -17,24 +18,38 @@ class InputTriggerRoot extends Component {
   static style = style;
 
   getSingleDateInputProps() {
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const { children, id, role, 'aria-haspopup': ariaHasPopup, ...otherProps } = this.asProps;
+    /* eslint-disable @typescript-eslint/no-unused-vars */
+    const {
+      children,
+      id,
+      role,
+      'aria-haspopup': ariaHasPopup,
+      style,
+      ...otherProps
+    } = this.asProps;
     return otherProps;
   }
   getDateRangeProps() {
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const { children, id, role, 'aria-haspopup': ariaHasPopup, ...otherProps } = this.asProps;
+    const {
+      children,
+      id,
+      role,
+      'aria-haspopup': ariaHasPopup,
+      style,
+      ...otherProps
+    } = this.asProps;
+    /* eslint-enable @typescript-eslint/no-unused-vars */
     return otherProps;
   }
 
   render() {
-    const SInputTriggerRoot = Root;
+    const SInputTrigger = Root;
     const { Children, style } = this.asProps;
 
     return sstyled(style)(
-      <SInputTriggerRoot render={Box} __excludeProps={['onChange', 'value', 'className', 'role']}>
+      <SInputTrigger render={Box} __excludeProps={['onChange', 'value', 'role']}>
         <Children />
-      </SInputTriggerRoot>,
+      </SInputTrigger>,
     );
   }
 }
@@ -52,7 +67,8 @@ class SingleDateInputRoot extends Component {
   };
 
   getMaskedInputProps() {
-    const { value, onChange, onDisplayedPeriodChange, locale, ...otherProps } = this.asProps;
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const { value, onChange, onDisplayedPeriodChange, locale, w, ...otherProps } = this.asProps;
 
     return {
       date: value,
@@ -64,16 +80,11 @@ class SingleDateInputRoot extends Component {
   }
 
   render() {
-    const { Children, forwardRef, styles, w } = this.asProps;
+    const { Children, forwardRef, styles } = this.asProps;
     const SSingleDateInput = Root;
 
     return sstyled(styles)(
-      <SSingleDateInput
-        render={InputMask}
-        ref={forwardRef}
-        __excludeProps={['value', 'onChange']}
-        w={w}
-      >
+      <SSingleDateInput render={InputMask} ref={forwardRef} __excludeProps={['onChange', 'style']}>
         <NeighborLocation>
           <Children />
         </NeighborLocation>
@@ -103,8 +114,10 @@ class DateRangeRoot extends Component {
     const prevValue = this.asProps.value ?? [undefined, undefined];
     onChange([value, prevValue[1]], event);
     if (value) {
+      if (!this.toRef.current) return;
       this.toRef.current.focus();
       setTimeout(() => {
+        if (!this.toRef.current) return;
         this.toRef.current.setSelectionRange(0, 0);
       }, 0);
     }
@@ -154,30 +167,36 @@ class DateRangeRoot extends Component {
   };
 
   getFromMaskedInputProps() {
-    const { value, locale, onDisplayedPeriodChange } = this.asProps;
+    const { value, locale, onDisplayedPeriodChange, ...otherProps } = this.asProps;
 
-    return {
-      ref: this.fromRef,
-      date: value?.[0],
-      onDateChange: this.handleFromChange,
-      onKeyDown: this.handleFromKeydown,
-      locale,
-      flex: 1,
-      onDisplayedPeriodChange,
-    };
+    return assignProps(
+      {
+        ref: this.fromRef,
+        date: value?.[0],
+        onDateChange: this.handleFromChange,
+        onKeyDown: this.handleFromKeydown,
+        locale,
+        flex: 1,
+        onDisplayedPeriodChange,
+      },
+      otherProps,
+    );
   }
   getToMaskedInputProps() {
-    const { value, locale, onDisplayedPeriodChange } = this.asProps;
+    const { value, locale, onDisplayedPeriodChange, ...otherProps } = this.asProps;
 
-    return {
-      ref: this.toRef,
-      date: value?.[1],
-      onDateChange: this.handleToChange,
-      onKeyDown: this.handleToKeydown,
-      locale,
-      flex: 1,
-      onDisplayedPeriodChange,
-    };
+    return assignProps(
+      {
+        ref: this.toRef,
+        date: value?.[1],
+        onDateChange: this.handleToChange,
+        onKeyDown: this.handleToKeydown,
+        locale,
+        flex: 1,
+        onDisplayedPeriodChange,
+      },
+      otherProps,
+    );
   }
 
   render() {
@@ -221,8 +240,8 @@ const RangeSep = (props) => {
       tag={Flex}
       alignItems="center"
       justifyContent="center"
+      pl={0}
       flex="0"
-      mr={1}
     >
       -
     </SRangeSep>,
@@ -237,11 +256,12 @@ const MaskedInput = ({
   styles,
   parts: allowedParts = defaultAllowedParts,
   disabledDates,
+  forwardRef,
   labelPrefix = 'Date',
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   __excludeProps,
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  Root,
+  Root: _root,
   ...otherProps
 }) => {
   const { sep, order } = React.useMemo(() => {
@@ -339,10 +359,13 @@ const MaskedInput = ({
       };
 
       const indexesOfPipedChars = [];
-      const parsed = { ...placeholders };
+      const parsed = {};
       const parts = value.split(sep);
+      for (const partName in placeholders) {
+        parsed[partName] = placeholders[partName];
+      }
       for (let i = 0; i < order.length; i++) {
-        parsed[order[i]] = parts[i] ?? parsed[order[i]];
+        parsed[order[i]] = parts[i];
       }
 
       let { year, month, day } = parsed;
@@ -400,22 +423,24 @@ const MaskedInput = ({
         }
       }
 
-      const textParts = [];
+      const result = [];
       for (const part of order) {
-        if (part === 'year') textParts.push(year);
-        if (part === 'month') textParts.push(month);
-        if (part === 'day') textParts.push(day);
+        if (part === 'year') result.push(year);
+        if (part === 'month') result.push(month);
+        if (part === 'day') result.push(day);
       }
-      const text = textParts.join(sep);
 
-      return { value: text, indexesOfPipedChars };
+      return { value: result.join(sep), indexesOfPipedChars };
     },
     [placeholders, sep, order, allowedParts, disabledDates],
   );
 
   const handleChange = React.useCallback(
     (value) => {
-      const parsed = { ...placeholders };
+      const parsed = {};
+      for (const partName in placeholders) {
+        parsed[partName] = placeholders[partName];
+      }
       const parts = value.split(sep);
       for (let i = 0; i < order.length; i++) {
         parsed[order[i]] = parts[i];
@@ -484,6 +509,27 @@ const MaskedInput = ({
     }),
     [sep],
   );
+  const humanizedDate = React.useMemo(() => {
+    const validDate =
+      outerValue && outerValue instanceof Date && !Number.isNaN(outerValue.getTime());
+    if (!validDate) return null;
+
+    return new Intl.DateTimeFormat(locale, {
+      year: allowedParts.year ? 'numeric' : undefined,
+      month: allowedParts.month ? 'short' : undefined,
+      day: allowedParts.day ? '2-digit' : undefined,
+    }).format(outerValue);
+  }, [outerValue, locale, allowedParts]);
+
+  const SHumanizedDate = 'div';
+  const handleInputRef = React.useCallback(
+    (node) => {
+      if (!node || node.tagName !== 'INPUT') return;
+      if (typeof forwardRef === 'function') forwardRef(node);
+      else forwardRef.current = node;
+    },
+    [forwardRef],
+  );
 
   return sstyled(styles)(
     <InputMask.Value
@@ -493,10 +539,14 @@ const MaskedInput = ({
       maskOnlySymbols={maskOnlySymbols}
       placeholder={mask}
       {...otherProps}
+      ref={handleInputRef}
       pipe={pipeMask}
       value={value}
       onChange={handleChange}
-    />,
+      noHumanizedDate={!humanizedDate}
+    >
+      {humanizedDate && <SHumanizedDate>{humanizedDate}</SHumanizedDate>}
+    </InputMask.Value>,
   );
 };
 

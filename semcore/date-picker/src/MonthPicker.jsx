@@ -52,6 +52,7 @@ class MonthPickerRoot extends PickerAbstract {
       onChange,
       onDisplayedPeriodChange,
       locale,
+      w: 135,
       parts: inputTriggerParts,
       disabledDates: disabled,
       children: () => <InputTrigger.SingleDateInput />,

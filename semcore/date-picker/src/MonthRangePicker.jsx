@@ -88,7 +88,7 @@ class MonthRangePickerRoot extends RangePickerAbstract {
       onChange,
       onDisplayedPeriodChange,
       locale,
-      w: 310,
+      w: 235,
       parts: inputTriggerParts,
       disabledDates: disabled,
       children: () => <InputTrigger.DateRange />,

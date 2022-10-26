@@ -6,6 +6,7 @@ SValue {
 }
 
 SMask {
+  line-height: 1.25;
   position: absolute;
   left: 0.8em;
   pointer-events: none;

@@ -122,7 +122,6 @@ class CalendarAbstract extends Component {
 
         fire(this, 'onHighlightedChange', highlighted);
         fire(this, 'onChange', date.toDate());
-        // fire(this, 'onVisibleChange', false);
       },
       onMouseEnter: () => {
         const { value, highlighted: _highlighted } = this.asProps;

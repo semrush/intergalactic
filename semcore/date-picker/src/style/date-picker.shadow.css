@@ -48,11 +48,55 @@ SPeriod {
   margin-bottom: 8px;
 }
 
-SValue[type='date'] {
-  line-height: 2em; /* Hack for Safari */
+SSingleDateInput:hover SOutline,
+SSingleDateInput:focus-within SOutline,
+SSingleDateInput:active SOutline,
+SSingleDateInput[active] SOutline,
+SDateRange:hover SOutline,
+SDateRange:focus-within SOutline,
+SDateRange:active SOutline,
+SDateRange[active] SOutline {
+  background-color: color-mod(var(--gray-400) a(30%));
 }
 
-SValue[type='date']::-webkit-calendar-picker-indicator {
-  display: none;
-  -webkit-appearance: none;
+SIndicator {
+  color: var(--gray-500);
+}
+SHumanizedDate {
+  position: absolute;
+}
+SSingleDateInput SValue,
+SDateRange SMask,
+SSingleDateInput SMask,
+SDateRange SValue {
+  opacity: 0;
+}
+SSingleDateInput:hover SHumanizedDate,
+SSingleDateInput:focus-within SHumanizedDate {
+  opacity: 0;
+  z-index: -1000;
+}
+SSingleDateInput:hover SValue,
+SSingleDateInput:hover SMask,
+SSingleDateInput:focus-within SValue,
+SSingleDateInput:focus-within SMask {
+  opacity: 1;
+}
+SDateRange SValue {
+  opacity: 0;
+}
+SDateRange:hover SHumanizedDate,
+SDateRange:focus-within SHumanizedDate {
+  opacity: 0;
+  z-index: -1000;
+}
+SDateRange:hover SValue,
+SDateRange:hover SMask,
+SDateRange:focus-within SValue,
+SDateRange:focus-within SMask {
+  opacity: 1;
+}
+SInputMask[noHumanizedDate] SValue,
+SInputMask[noHumanizedDate] SMask {
+  opacity: 1;
 }
