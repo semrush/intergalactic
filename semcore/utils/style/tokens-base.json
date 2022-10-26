@@ -3,11 +3,12 @@
     "50": {
       "value": "#f4f5f9",
       "type": "color",
-      "description": "- Подходит только для фонов.\n- Может быть полностью невидимым для пользователей с плохим монитором или зрением"
+      "description": "Only suitable for backgrounds. Can be completely invisible to users with low-contrast monitor or poor vision."
     },
     "100": {
       "value": "#e0e1e9",
-      "type": "color"
+      "type": "color",
+      "description": "Use only for light strokes and active backgrounds. Suitable for minimally visible elements."
     },
     "200": {
       "value": "#c4c7cf",
@@ -46,12 +47,12 @@
     "50": {
       "value": "#e9f7ff",
       "type": "color",
-      "description": "- Подходит только для фонов.\n- Может быть полностью невидимым для пользователей с плохим монитором или зрением"
+      "description": "Only suitable for backgrounds. Can be completely invisible to users with low-contrast monitor or poor vision."
     },
     "100": {
       "value": "#c4e5fe",
       "type": "color",
-      "description": "– Лёгкие обводки\n– Активные фоны\n– Минимально видимые элементы"
+      "description": "Use only for light strokes and active backgrounds. Suitable for minimally visible elements."
     },
     "200": {
       "value": "#8ecdff",
@@ -86,12 +87,12 @@
     "50": {
       "value": "#dbfee8",
       "type": "color",
-      "description": "- Подходит только для фонов.\n- Может быть полностью невидимым для пользователей с плохим монитором или зрением"
+      "description": "Only suitable for backgrounds. Can be completely invisible to users with low-contrast monitor or poor vision."
     },
     "100": {
       "value": "#9ef2c9",
       "type": "color",
-      "description": "– Лёгкие обводки\n– Активные фоны\n– Минимально видимые элементы"
+      "description": "Use only for light strokes and active backgrounds. Suitable for minimally visible elements."
     },
     "200": {
       "value": "#59ddaa",
@@ -126,12 +127,12 @@
     "50": {
       "value": "#fff0f7",
       "type": "color",
-      "description": "- Подходит только для фонов.\n- Может быть полностью невидимым для пользователей с плохим монитором или зрением"
+      "description": "Only suitable for backgrounds. Can be completely invisible to users with low-contrast monitor or poor vision."
     },
     "100": {
       "value": "#ffd7df",
       "type": "color",
-      "description": "– Лёгкие обводки\n– Активные фоны\n– Минимально видимые элементы"
+      "description": "Use only for light strokes and active backgrounds. Suitable for minimally visible elements."
     },
     "200": {
       "value": "#ffaeb5",
@@ -166,12 +167,12 @@
     "50": {
       "value": "#fff3d9",
       "type": "color",
-      "description": "- Подходит только для фонов.\n- Может быть полностью невидимым для пользователей с плохим монитором или зрением"
+      "description": "Only suitable for backgrounds. Can be completely invisible to users with low-contrast monitor or poor vision."
     },
     "100": {
       "value": "#ffdca2",
       "type": "color",
-      "description": "– Лёгкие обводки\n– Активные фоны\n– Минимально видимые элементы"
+      "description": "Use only for light strokes and active backgrounds. Suitable for minimally visible elements."
     },
     "200": {
       "value": "#ffb26e",
@@ -205,11 +206,13 @@
   "yellow": {
     "50": {
       "value": "#fdf7c8",
-      "type": "color"
+      "type": "color",
+      "description": "Only suitable for backgrounds. Can be completely invisible to users with low-contrast monitor or poor vision."
     },
     "100": {
       "value": "#fce081",
-      "type": "color"
+      "type": "color",
+      "description": "Use only for light strokes and active backgrounds. Suitable for minimally visible elements."
     },
     "200": {
       "value": "#fdc23c",
@@ -243,11 +246,13 @@
   "violet": {
     "50": {
       "value": "#f9f2ff",
-      "type": "color"
+      "type": "color",
+      "description": "Only suitable for backgrounds. Can be completely invisible to users with low-contrast monitor or poor vision."
     },
     "100": {
       "value": "#edd9ff",
-      "type": "color"
+      "type": "color",
+      "description": "Use only for light strokes and active backgrounds. Suitable for minimally visible elements."
     },
     "200": {
       "value": "#dcb8ff",
@@ -281,11 +286,13 @@
   "pink": {
     "50": {
       "value": "#fff0ff",
-      "type": "color"
+      "type": "color",
+      "description": "Only suitable for backgrounds. Can be completely invisible to users with low-contrast monitor or poor vision."
     },
     "100": {
       "value": "#ffd3ff",
-      "type": "color"
+      "type": "color",
+      "description": "Use only for light strokes and active backgrounds. Suitable for minimally visible elements."
     },
     "200": {
       "value": "#ffa9fa",
@@ -319,11 +326,13 @@
   "salad": {
     "50": {
       "value": "#ecfbcd",
-      "type": "color"
+      "type": "color",
+      "description": "Only suitable for backgrounds. Can be completely invisible to users with low-contrast monitor or poor vision."
     },
     "100": {
       "value": "#c7ee96",
-      "type": "color"
+      "type": "color",
+      "description": "Use only for light strokes and active backgrounds. Suitable for minimally visible elements."
     },
     "200": {
       "value": "#9bd85d",
