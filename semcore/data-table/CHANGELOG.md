@@ -2,6 +2,13 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.4.0] - 2022-10-25
+
+### Added
+
+- Added `disabledScroll` property that disables scrolling in tables.
+- Added the ability(`flex="inherit"`) to inherit the size from the top table.
+
 ## [3.3.4] - 2022-10-24
 
 ### Changed

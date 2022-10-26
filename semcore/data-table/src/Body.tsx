@@ -27,6 +27,7 @@ type AsProps = {
   use: 'primary' | 'secondary';
   uniqueKey: string;
   virtualScroll?: boolean | { tollerance?: number; rowHeight?: number };
+  disabledScroll?: boolean;
 };
 
 type State = {
@@ -222,8 +223,17 @@ class Body extends Component<AsProps, State> {
     const SBodyWrapper = Box;
     const SScrollAreaBar = ScrollArea.Bar;
     const SHeightHold = Box;
-    const { Children, styles, rows, columns, $scrollRef, virtualScroll, onResize, onScroll } =
-      this.asProps;
+    const {
+      Children,
+      styles,
+      rows,
+      columns,
+      $scrollRef,
+      virtualScroll,
+      onResize,
+      onScroll,
+      disabledScroll,
+    } = this.asProps;
 
     const columnsInitialized = columns.reduce((sum, { width }) => sum + width, 0) > 0 || testEnv;
 
@@ -248,7 +258,7 @@ class Body extends Component<AsProps, State> {
           onResize={callAllEventHandlers(onResize, this.handleScrollAreaResize)}
           onScroll={callAllEventHandlers(onScroll, this.handleScrollAreaScroll)}
         >
-          <ScrollArea.Container ref={$scrollRef}>
+          <ScrollArea.Container ref={$scrollRef} disabledScroll={disabledScroll}>
             <SBody render={Box} role="rowgroup">
               {holdHeight && <SHeightHold hMin={holdHeight} aria-hidden={true} />}
               {columnsInitialized && !virtualScroll ? this.renderRows(rows) : null}

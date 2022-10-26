@@ -1,4 +1,5 @@
 import React from 'react';
+import { Property } from 'csstype';
 import createComponent, { Component, PropGetterFn, Root, sstyled } from '@semcore/core';
 import { Box, IBoxProps, IFlexProps } from '@semcore/flex-box';
 import syncScroll from '@semcore/utils/lib/syncScroll';
@@ -94,6 +95,9 @@ export interface IDataTableHeadProps extends IBoxProps {
 
   /** Hidden header */
   hidden?: boolean;
+
+  /** Disabled scroll */
+  disabledScroll?: boolean;
 }
 
 export interface IDataTableColumnProps extends IFlexProps {
@@ -106,6 +110,8 @@ export interface IDataTableColumnProps extends IFlexProps {
   resizable?: boolean;
   /** Fixed column on the left/right */
   fixed?: 'left' | 'right';
+  /** Fields to control the size of the column. */
+  flex?: Property.Flex | 'inherit';
 }
 
 export interface IDataTableBodyProps extends IBoxProps {
@@ -121,6 +127,8 @@ export interface IDataTableBodyProps extends IBoxProps {
    * Called every time user scrolls area
    */
   onScroll?: (event: React.SyntheticEvent<HTMLElement>) => void;
+  /** Disabled scroll */
+  disabledScroll?: boolean;
 }
 
 export interface IDataTableRowProps extends IBoxProps {
@@ -191,12 +199,8 @@ class RootDefinitionTable extends Component<AsProps> {
 
   setVarStyle(columns: Column[]) {
     for (const column of columns) {
-      if (Array.isArray(column.cssVar)) {
-        for (const cssVar of column.cssVar) {
-          this.tableRef.current?.style.setProperty(cssVar, `${column.width}px`);
-        }
-      } else {
-        this.tableRef.current?.style.setProperty(column.cssVar, `${column.width}px`);
+      if (column.setVar) {
+        this.tableRef.current?.style.setProperty(column.varWidth, `${column.width}px`);
       }
     }
   }
@@ -217,10 +221,11 @@ class RootDefinitionTable extends Component<AsProps> {
         fixed = options.fixed,
         resizable,
         sortable,
+        flex,
         ...props
       } = child.props as Column['props'];
       const isGroup = !name;
-      let columns: Column[] = [];
+      let columns: Column[] | undefined;
 
       if (isGroup) {
         columns = this.childrenToColumns(children, { fixed });
@@ -234,12 +239,14 @@ class RootDefinitionTable extends Component<AsProps> {
       }
 
       const column = this.columns.find((column) => column.name === name);
-      columnsChildren.push({
+
+      const columnChildren = {
         get width() {
           return this.props.ref.current?.getBoundingClientRect().width || 0;
         },
         name,
-        cssVar: createCssVarForWidth(name),
+        varWidth: createCssVarForWidth(name),
+        setVar: flex !== 'inherit',
         fixed,
         resizable,
         active: sort[0] === name,
@@ -249,16 +256,21 @@ class RootDefinitionTable extends Component<AsProps> {
             ? sort[1]
             : column?.sortDirection ||
               (typeof sortable == 'string' ? sortable : DEFAULT_SORT_DIRECTION),
-        columns,
         props: {
           name,
+          flex: flex === 'inherit' ? undefined : flex,
           ...props,
           // @ts-ignore
           forwardRef: child.ref,
           children,
           ref: column?.props?.ref || React.createRef(),
         },
-      });
+      } as Column;
+
+      if (columns) {
+        columnChildren.columns = columns;
+      }
+      columnsChildren.push(columnChildren);
     });
     return columnsChildren;
   }
@@ -367,7 +379,7 @@ class RootDefinitionTable extends Component<AsProps> {
             } else if (column.name in row) {
               return {
                 name: column.name,
-                cssVar: column.cssVar,
+                cssVar: column.varWidth,
                 fixed: column.fixed,
                 data: row[column.name],
                 cellPropsLayers: cellPropsLayers[column.name] || [],
@@ -382,7 +394,7 @@ class RootDefinitionTable extends Component<AsProps> {
             } else if (!exclude[column.name] && !rowsGroupedNames[column.name]) {
               return {
                 name: column.name,
-                cssVar: column.cssVar,
+                cssVar: column.varWidth,
                 fixed: column.fixed,
                 data: null,
                 cellPropsLayers: cellPropsLayers[column.name] || [],

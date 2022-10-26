@@ -2,6 +2,16 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [1.7.0] - 2022-10-21
+
+### Added
+
+- Added a property that removes the `overflow=hidden` setting.
+
+### Changed
+
+- Returning the original `overflow` after the animation has passed.
+
 ## [1.6.2] - 2022-10-20
 
 ### Changed
