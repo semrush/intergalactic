@@ -16,7 +16,7 @@ export default () => {
   return (
     <>
       <DataTable data={data}>
-        <Box position="sticky" zIndex={2} top={top}>
+        <Box position="sticky" top={top} zIndex={2}>
           <DataTable.Head wMin={1000}>
             <DataTable.Column name="keyword" children="Keyword" />
             <DataTable.Column name="kd" children="KD,%" />
@@ -28,7 +28,7 @@ export default () => {
       </DataTable>
       <h3>with Scroll.Bar in Header</h3>
       <DataTable data={data}>
-        <Box position="sticky" zIndex={2} top={top}>
+        <Box position="sticky" top={top} zIndex={2}>
           <DataTable.Head wMin={1000} ref={containerRef}>
             <DataTable.Column name="keyword" children="Keyword" />
             <DataTable.Column name="kd" children="KD,%" />

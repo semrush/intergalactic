@@ -4,3 +4,7 @@ SShadowHorizontal:before {
 SShadowHorizontal:after {
   right: var(--right) !important;
 }
+
+SContainer[disabledScroll] {
+  overflow: visible;
+}
