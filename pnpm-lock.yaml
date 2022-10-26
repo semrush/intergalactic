@@ -507,7 +507,7 @@ importers:
       '@semcore/flex-box': ^4
       '@semcore/icon': 2.16 - 3
       '@semcore/input': 3.0.15
-      '@semcore/input-mask': 4.3.0
+      '@semcore/input-mask': ^4.3.2
       '@semcore/jest-preset-ui': 1.0.0
       '@semcore/neighbor-location': ^3
       '@semcore/typography': ^4
@@ -523,7 +523,7 @@ importers:
       '@semcore/flex-box': link:../flex-box
       '@semcore/icon': link:../icon
       '@semcore/input': 3.0.15
-      '@semcore/input-mask': 4.3.0
+      '@semcore/input-mask': link:../input-mask
       '@semcore/neighbor-location': link:../neighbor-location
       '@semcore/typography': link:../typography
       '@semcore/utils': link:../utils
@@ -5817,24 +5817,6 @@ packages:
       - react-dom
     dev: false
 
-  /@semcore/input-mask/4.3.0:
-    resolution:
-      {
-        integrity: sha512-90SrX3d0VvAFeELJpzmYRKG8TQcd2Nk6igPC6r23go3x7UjveHPacN2HPhoHyCKnlFr6S7TLWUWc7/I+HVxFdw==,
-      }
-    peerDependencies:
-      '@semcore/core': ^1.11
-      react: 16.8 - 18
-    dependencies:
-      '@semcore/flex-box': 4.6.0
-      '@semcore/input': 3.2.0
-      '@semcore/neighbor-location': 3.1.0
-      '@semcore/utils': 3.38.0
-      text-mask-core: 5.1.2
-    transitivePeerDependencies:
-      - react-dom
-    dev: false
-
   /@semcore/input-mask/4.3.0_@semcore+core@1.13.0:
     resolution:
       {
@@ -5904,22 +5886,6 @@ packages:
       - react-dom
     dev: false
 
-  /@semcore/input/3.2.0:
-    resolution:
-      {
-        integrity: sha512-DZvBUE3dGEQw3jeZfyZLwsjKGClOCLW7PFRFmhnPMpHD8ybcBeJkHR1pg+1indbhUTHUiqQaSXAWKY77VdFXGA==,
-      }
-    peerDependencies:
-      '@semcore/core': ^1.11
-      react: 16.8 - 18
-    dependencies:
-      '@semcore/flex-box': 4.6.0
-      '@semcore/neighbor-location': 3.1.0
-      '@semcore/utils': 3.38.0
-    transitivePeerDependencies:
-      - react-dom
-    dev: false
-
   /@semcore/input/3.2.0_@semcore+core@1.13.0:
     resolution:
       {
@@ -5984,20 +5950,6 @@ packages:
     peerDependencies:
       '@semcore/core': ^1.11
       react: 16.8 - 17
-    dependencies:
-      '@semcore/utils': 3.38.0
-    transitivePeerDependencies:
-      - react-dom
-    dev: false
-
-  /@semcore/neighbor-location/3.1.0:
-    resolution:
-      {
-        integrity: sha512-H0qdTwm87eXj1Htt+39uY/CGdD33PDDX53Yw/ptk5JCw1AczIGSVDPoNInvw9ABVxzNlAmUWqYv+QmklsDldLQ==,
-      }
-    peerDependencies:
-      '@semcore/core': ^1.11
-      react: 16.8 - 18
     dependencies:
       '@semcore/utils': 3.38.0
     transitivePeerDependencies:

@@ -254,8 +254,8 @@ class Value extends Component<IInputMaskValueProps> {
   };
 
   render() {
-    const SInputMask = Root;
-    const SValue = Input.Value;
+    const SInputMask = Flex;
+    const SValue = Root;
     const SMask = 'span' as any;
     const SPlaceholder = 'span';
     const SMaskHidden = 'span';
@@ -287,7 +287,6 @@ class Value extends Component<IInputMaskValueProps> {
         {(neighborLocation) =>
           sstyled(this.asProps.styles)(
             <SInputMask
-              render={Flex}
               position="relative"
               flex={1}
               {...boxProps}
@@ -304,6 +303,7 @@ class Value extends Component<IInputMaskValueProps> {
                 )}
               </SMask>
               <SValue
+                render={Input.Value}
                 neighborLocation={neighborLocation}
                 ref={ref}
                 onFocus={this.onFocus}
