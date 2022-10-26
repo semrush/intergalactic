@@ -38,12 +38,12 @@ const Preview = (preview) => {
     <Button>
       <Button.Text alignItems="center">Notification</Button.Text>
       {up ? (
-        <Dot up={up} size={size} hidden={hidden}>
+        <Dot up={up} size={size} hidden={hidden} aria-label="You have unread notification">
           {value ? value : null}
         </Dot>
       ) : (
         <Button.Addon>
-          <Dot size={size} hidden={hidden}>
+          <Dot size={size} hidden={hidden} aria-label="You have unread notification">
             {value ? value : null}
           </Dot>
         </Button.Addon>

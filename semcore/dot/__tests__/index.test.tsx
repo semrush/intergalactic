@@ -16,7 +16,7 @@ describe('Dot', () => {
     const component = (
       <button>
         Button
-        <Dot />
+        <Dot aria-label="Our brand new button!" />
       </button>
     );
     expect(await snapshot(component)).toMatchImageSnapshot();
@@ -26,7 +26,7 @@ describe('Dot', () => {
     const component = (
       <button>
         Button
-        <Dot up />
+        <Dot up aria-label="Our brand new button!" />
       </button>
     );
     expect(await snapshot(component)).toMatchImageSnapshot();
@@ -37,11 +37,13 @@ describe('Dot', () => {
       <>
         <Button>
           Button
-          <Dot up>12</Dot>
+          <Dot up aria-label="Our brand new button!">
+            12
+          </Dot>
         </Button>
         <Button>
           Button
-          <Dot>12</Dot>
+          <Dot aria-label="Our brand new button!">12</Dot>
         </Button>
       </>
     );
@@ -52,22 +54,22 @@ describe('Dot', () => {
     const component = (
       <snapshot.ProxyProps style={{ margin: '3px', position: 'relative' }}>
         <button>
-          Button <Dot size="xl" />
+          Button <Dot size="xl" aria-label="Our brand new button!" />
         </button>
         <button>
-          Button <Dot size="l" />
+          Button <Dot size="l" aria-label="Our brand new button!" />
         </button>
         <button>
-          Button <Dot size="m" />
+          Button <Dot size="m" aria-label="Our brand new button!" />
         </button>
         <button>
-          Button <Dot up size="xl" />
+          Button <Dot up size="xl" aria-label="Our brand new button!" />
         </button>
         <button>
-          Button <Dot up size="l" />
+          Button <Dot up size="l" aria-label="Our brand new button!" />
         </button>
         <button>
-          Button <Dot up size="m" />
+          Button <Dot up size="m" aria-label="Our brand new button!" />
         </button>
       </snapshot.ProxyProps>
     );
@@ -79,7 +81,7 @@ describe('Dot', () => {
     const { queryByTestId } = render(
       <Button>
         Button
-        <Dot hidden size="m" data-testid="dot" />
+        <Dot hidden size="m" data-testid="dot" aria-label="Our brand new button!" />
       </Button>,
     );
     expect(queryByTestId('dot')).toBeFalsy();

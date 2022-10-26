@@ -40,3 +40,12 @@ SDot[up] {
   margin-top: -3px;
   margin-right: -3px;
 }
+
+SA11yAlert {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
