@@ -28,7 +28,7 @@ STooltip[theme='invert'] {
 
 STooltip[theme='warning'] {
   background-color: var(--red-100);
-  border: 1px solid var(--red-400);
+  border: 1px solid var(--red-500);
 }
 
 STooltip[data-popper-reference-hidden] {
