@@ -64,7 +64,7 @@ SArrow[theme='invert'] {
 }
 
 SArrow[theme='warning'] {
-  border-color: var(--red-400);
+  border-color: var(--red-500);
 
   &::before {
     border-color: var(--red-100);
