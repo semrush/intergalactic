@@ -175,7 +175,13 @@ class InlineInputBase extends Component<RootAsProps> {
     const { focused } = this.state;
 
     return sstyled(styles)(
-      <SInlineInput render={Box} ref={this.rootRef} focused={focused} onBlur={this.handleBlur}>
+      <SInlineInput
+        render={Box}
+        ref={this.rootRef}
+        focused={focused}
+        onBlur={this.handleBlur}
+        aria-label="Press Enter to apply value, press Escape to discard changes"
+      >
         <SUnderline>
           <Children />
         </SUnderline>

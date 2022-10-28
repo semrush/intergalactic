@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.1.1] - 2022-10-28
+
+### Added
+
+- Added accessability needed aria label.
+
 ## [3.1.4] - 2022-10-24
 
 ### Changed
