@@ -77,10 +77,6 @@ class ItemPicker extends Component {
 
   handleBlur = (e) => this.submitChanges(e);
 
-  handleFocus = () => {
-    // this.inputRef?.current.select();
-  };
-
   /* rewrite method */
   handleKeyDown = () => {};
 
@@ -128,7 +124,6 @@ class ItemPicker extends Component {
           ]}
           onChange={this.handleChange}
           onBlur={this.handleBlur}
-          onFocus={this.handleFocus}
           onKeyDown={this.handleKeyDown}
         />
         <Select.Menu aria-hidden="true" hMax={180}>
