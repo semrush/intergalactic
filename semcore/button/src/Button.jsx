@@ -8,7 +8,7 @@ import logger from '@semcore/utils/lib/logger';
 import SpinButton from './SpinButton';
 
 import style from './style/button.shadow.css';
-import hasLabels from '@semcore/utils/src/hasLabels';
+import hasLabels from '@semcore/utils/lib/hasLabels';
 
 export const MAP_USE_DEFAULT_THEME = {
   primary: 'info',

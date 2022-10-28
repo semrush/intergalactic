@@ -7,7 +7,7 @@ import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhan
 import propsForElement from '@semcore/utils/lib/propsForElement';
 import logger from '@semcore/utils/lib/logger';
 import { useForkRef } from '@semcore/utils/lib/ref';
-import hasLabels from '@semcore/utils/src/hasLabels';
+import hasLabels from '@semcore/utils/lib/hasLabels';
 
 import styles from './style/icon.shadow.css';
 

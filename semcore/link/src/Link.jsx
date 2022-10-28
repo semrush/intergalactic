@@ -6,7 +6,7 @@ import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhan
 import addonTextChildren from '@semcore/utils/lib/addonTextChildren';
 import resolveColor, { shade } from '@semcore/utils/lib/color';
 import logger from '@semcore/utils/lib/logger';
-import hasLabels from '@semcore/utils/src/hasLabels';
+import hasLabels from '@semcore/utils/lib/hasLabels';
 
 import style from './style/link.shadow.css';
 
