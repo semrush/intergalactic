@@ -147,8 +147,8 @@ If the table contains a small amount of data, we show the pagination for one pag
 
 @## Sorting
 
-- **If you can sort by column, show the `SortDesc`/`SortAsc` icon while hovering. By default, use `SortDesc`.**
-- If you can't sort data in the column, but you need to show which column it is sorted by (it is usually necessary in secondary tables), then add sorting icon in active state with `--gray-400` color.
+- **If you can sort by column, it must have the `SortDesc`/`SortAsc` icon. By default, use `SortDesc`.**
+- If you can't sort data in the column, but you need to show which column it is sorted by (it is usually necessary in secondary tables), then add sorting icon while hovering with `--gray-400` color.
 
 ### Click zone for sorting
 
