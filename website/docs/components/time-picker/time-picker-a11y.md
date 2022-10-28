@@ -21,3 +21,5 @@ fileSource: time-picker
 @## Other recommendations
 
 See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/).
+
+@include time-picker-a11y-report
