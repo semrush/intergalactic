@@ -180,7 +180,10 @@ If table has only one column with sorting, usually its sorting icon is unclickab
 
 - The sort icon should be displayed while hovering on columns that can be sorted. **The icon shows not the current state, but how the column will be sorted if sorting is activated.**
 - The default sorting must be set for each column to be sorted. Descending order is used by default (use `SortDesc` icon).
-- If sorting on a column is active, the icon has an `active` state and shows the corresponding sorting direction.
+  <<<<<<< HEAD
+- # If sorting on a column is active, the icon has an `active` state and shows the corresponding sorting direction.
+- If sorting on a column is active, the icon has the `active` state and shows the corresponding sorting direction.
+  > > > > > > > 0b8099741 ([table] update guide sorting)
 - **When you select a different column**, the icon on the selected column becomes active. Icons on other columns do not change their direction.
 - When you reload data in a table where data was sorted in one of the columns, the header of the sorted column remains highlighted.
 
@@ -204,8 +207,8 @@ We recommend using the status row when the table has multi-row selection and pag
 
 When scrolling a table, this row should be pinned to the table header. In this case, it does not have a shadow, as well as a pinned header.
 
-| Appearance                                         | Styles                                                                              |
-| -------------------------------------------------- | ----------------------------------------------------------------------------------- |
+| Appearance                                         | Styles                                                                                                              |
+| -------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
 | ![action row scroll](static/action-row-scroll.png) | `background-color: var(--table-td-cell-actions-accordion);` and `border-bottom: 1px solid var(--border-secondary);` |
 
 ### The actions and rules of use
