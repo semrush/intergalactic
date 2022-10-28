@@ -289,7 +289,11 @@ jobs:
       - name: Enable VoiceOver Automation
         uses: guidepup/setup-action@0.4.0
       - name: Voice Over testing
-        run: CI_RUN=true pnpm run vo-test
+        uses: nick-fields/retry@v2
+        with:
+          timeout_minutes: 40
+          max_attempts: 2
+          command: pnpm run vo-test
       - name: Github GPG Auth
         uses: crazy-max/ghaction-import-gpg@v4.4.0
         with:
