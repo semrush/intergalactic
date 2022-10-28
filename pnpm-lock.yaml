@@ -841,6 +841,8 @@ importers:
 
   semcore/inline-edit:
     specifiers:
+      '@guidepup/playwright': 0.6.1
+      '@playwright/test': 1.25.1
       '@semcore/animation': ^1.5.0
       '@semcore/flex-box': ^4
       '@semcore/jest-preset-ui': 1.0.0
@@ -851,6 +853,8 @@ importers:
       '@semcore/flex-box': link:../flex-box
       '@semcore/utils': link:../utils
     devDependencies:
+      '@guidepup/playwright': 0.6.1_@playwright+test@1.25.1
+      '@playwright/test': 1.25.1
       '@semcore/jest-preset-ui': link:../../tools/jest-preset-ui
       '@types/react': 18.0.21
 
