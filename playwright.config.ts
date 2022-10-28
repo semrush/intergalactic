@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/no-unresolved
 import { devices, PlaywrightTestConfig } from '@playwright/test';
 import { voConfig } from '@guidepup/playwright';
 
@@ -7,7 +8,6 @@ const config: PlaywrightTestConfig = {
   workers: 1,
   timeout: 2 * 60 * 1000,
   testMatch: /\.vo-test.ts(x){0,1}$/,
-  retries: process.env['CI_RUN'] ? 2 : undefined,
   projects: [
     {
       name: 'webkit',
