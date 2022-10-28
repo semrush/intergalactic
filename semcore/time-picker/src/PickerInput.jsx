@@ -1,7 +1,7 @@
 import React from 'react';
 import Input from '@semcore/input';
 import Select from '@semcore/select';
-import { intOrDefault, nextInput, prevInput, withLeadingZero } from './TimePicker';
+import { intOrDefault, withLeadingZero } from './TimePicker';
 import { Component, sstyled, Root } from '@semcore/core';
 import { callAllEventHandlers } from '@semcore/utils/lib/assignProps';
 
@@ -35,7 +35,7 @@ class ItemPicker extends Component {
     placeholder: '00',
   };
 
-  $input = React.createRef();
+  inputRef = React.createRef();
 
   minMax() {
     return [];
@@ -77,10 +77,6 @@ class ItemPicker extends Component {
 
   handleBlur = (e) => this.submitChanges(e);
 
-  handleFocus = () => {
-    this.$input?.current.select();
-  };
-
   /* rewrite method */
   handleKeyDown = () => {};
 
@@ -110,23 +106,29 @@ class ItemPicker extends Component {
         value={timeValue}
       >
         <SPickerInput
-          interaction="focus"
           render={Select.Trigger}
           tag={Input.Value}
-          aria-autocomplete={undefined}
-          aria-expanded={visible}
-          ref={this.$input}
+          ref={this.inputRef}
           size={size}
           disabled={disabled}
           neighborLocation={false}
           value={value}
-          aria-label={`Search ${this.field}`}
+          aria-label={`${this.field} field`}
+          __excludeProps={[
+            'aria-haspopup',
+            'aria-controls',
+            'aria-flowto',
+            'aria-expanded',
+            'aria-autocomplete',
+            'role',
+          ]}
           onChange={this.handleChange}
           onBlur={this.handleBlur}
-          onFocus={this.handleFocus}
           onKeyDown={this.handleKeyDown}
         />
-        <Select.Menu hMax={180}>{getOptions(min, max, step)}</Select.Menu>
+        <Select.Menu aria-hidden="true" hMax={180}>
+          {getOptions(min, max, step)}
+        </Select.Menu>
       </Select>,
     );
   }
@@ -145,12 +147,9 @@ class Hours extends ItemPicker {
   }
 
   nextInput() {
-    if (this.$input.current) {
-      const $input = nextInput(this.$input.current);
-      if ($input) {
-        this.setState({ visible: false });
-        $input.focus();
-      }
+    if (this.asProps.minutesInputRef.current) {
+      this.setState({ visible: false });
+      this.asProps.minutesInputRef.current.focus();
     }
   }
 
@@ -186,12 +185,9 @@ class Minutes extends ItemPicker {
   }
 
   prevFocus() {
-    if (this.$input.current) {
-      const $input = prevInput(this.$input.current);
-      if ($input) {
-        this.setState({ visible: false });
-        $input.focus();
-      }
+    if (this.asProps.hoursInputRef.current) {
+      this.setState({ visible: false });
+      this.asProps.hoursInputRef.current.focus();
     }
   }
 

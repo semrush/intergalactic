@@ -2,6 +2,13 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.2.4] - 2022-10-30
+
+### Fixed
+
+- Fixed that some secret combination of arrows pressing was causing infinite focus call and temporary freeze of browser.
+- Fixed Screen readers support.
+
 ## [3.2.3] - 2022-10-24
 
 ### Changed
