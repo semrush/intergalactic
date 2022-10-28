@@ -46,7 +46,7 @@ export class DatePickerRoot extends PickerAbstract {
   }
 
   getInputTriggerProps() {
-    const { value, onChange, onDisplayedPeriodChange, locale, disabled } = this.asProps;
+    const { value, onChange, onDisplayedPeriodChange, locale, disabled, size } = this.asProps;
 
     return {
       ...super.getTriggerProps(),
@@ -54,7 +54,7 @@ export class DatePickerRoot extends PickerAbstract {
       onChange,
       onDisplayedPeriodChange,
       locale,
-      w: 160,
+      w: size === 'm' ? 145 : 160,
       disabledDates: disabled,
       children: () => <InputTrigger.SingleDateInput />,
     };

@@ -6,7 +6,7 @@ import { Header, Next, Period, Popper, Prev, Title, Trigger, InputTrigger } from
 import { CalendarMonths as Calendar } from './components/Calendar';
 import RangePickerAbstract, { Apply, Reset } from './components/RangePickerAbstract';
 
-const inputTriggerParts = { day: false, month: true, year: true };
+const dateParts = { day: false, month: true, year: true };
 
 class MonthRangePickerRoot extends RangePickerAbstract {
   static displayName = 'MonthRangePicker';
@@ -80,7 +80,7 @@ class MonthRangePickerRoot extends RangePickerAbstract {
   }
 
   getInputTriggerProps() {
-    const { value, onChange, onDisplayedPeriodChange, locale, disabled } = this.asProps;
+    const { value, onChange, onDisplayedPeriodChange, locale, disabled, size } = this.asProps;
 
     return {
       ...super.getTriggerProps(),
@@ -88,8 +88,8 @@ class MonthRangePickerRoot extends RangePickerAbstract {
       onChange,
       onDisplayedPeriodChange,
       locale,
-      w: 235,
-      parts: inputTriggerParts,
+      w: size === 'm' ? 215 : 235,
+      parts: dateParts,
       disabledDates: disabled,
       children: () => <InputTrigger.DateRange />,
     };

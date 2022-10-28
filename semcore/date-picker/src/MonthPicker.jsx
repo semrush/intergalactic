@@ -5,7 +5,7 @@ import { Header, Next, Popper, Prev, Title, Trigger, InputTrigger } from './comp
 import { CalendarMonths as Calendar } from './components/Calendar';
 import PickerAbstract from './components/PickerAbstract';
 
-const inputTriggerParts = { day: false, month: true, year: true };
+const dateParts = { day: false, month: true, year: true };
 
 class MonthPickerRoot extends PickerAbstract {
   static displayName = 'MonthPicker';
@@ -44,7 +44,7 @@ class MonthPickerRoot extends PickerAbstract {
   }
 
   getInputTriggerProps() {
-    const { value, onChange, onDisplayedPeriodChange, locale, disabled } = this.asProps;
+    const { value, onChange, onDisplayedPeriodChange, locale, disabled, size } = this.asProps;
 
     return {
       ...super.getTriggerProps(),
@@ -52,8 +52,8 @@ class MonthPickerRoot extends PickerAbstract {
       onChange,
       onDisplayedPeriodChange,
       locale,
-      w: 135,
-      parts: inputTriggerParts,
+      w: size === 'm' ? 120 : 135,
+      parts: dateParts,
       disabledDates: disabled,
       children: () => <InputTrigger.SingleDateInput />,
     };
