@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.2.3] - 2022-10-26
+
+### Fixed
+
+- Lazy checks for necessity of `aria-label` in non production environment.
+
 ## [4.2.2] - 2022-10-20
 
 ### Changed
