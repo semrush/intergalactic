@@ -6,6 +6,8 @@ import resolveColor, { shade } from '@semcore/utils/lib/color';
 import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 import propsForElement from '@semcore/utils/lib/propsForElement';
 import logger from '@semcore/utils/lib/logger';
+import { useForkRef } from '@semcore/utils/lib/ref';
+import hasLabels from '@semcore/utils/lib/hasLabels';
 
 import styles from './style/icon.shadow.css';
 
@@ -24,12 +26,7 @@ function Icon(props, ref) {
     ref,
   );
 
-  const {
-    interactive,
-    color: colorProps,
-    'aria-label': ariaLabel,
-    'aria-labelledby': ariaLabelledby,
-  } = props;
+  const { interactive, color: colorProps } = props;
   const color = resolveColor(colorProps);
   const { keyboardFocused, ...propsWithKeyboardEnhance } = keyboardFocusEnhance()({
     disabled: !interactive,
@@ -53,11 +50,18 @@ function Icon(props, ref) {
     }
   }
 
-  logger.warn(
-    interactive && !ariaLabel && !ariaLabelledby,
-    "'aria-label' or 'aria-labelledby' are required props for interactive icons",
-    props['data-ui-name'] || Icon.displayName,
-  );
+  const labelCheckRef = React.useRef();
+  React.useEffect(() => {
+    if (!interactive) return;
+    if (process.env.NODE_ENV !== 'production') {
+      logger.warn(
+        !hasLabels(labelCheckRef.current),
+        `'aria-label' or 'aria-labelledby' are required props for interactive icons`,
+        props['data-ui-name'] || Icon.displayName,
+      );
+    }
+  }, [interactive]);
+  const forkedRef = useForkRef(ref, labelCheckRef);
 
   return (
     <SIcon
@@ -67,6 +71,7 @@ function Icon(props, ref) {
       onKeyDown={onKeyDown}
       role={interactive ? 'button' : undefined}
       aria-hidden={interactive ? undefined : 'true'}
+      ref={forkedRef}
     />
   );
 }
