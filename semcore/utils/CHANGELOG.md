@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.40.0] - 2022-10-26
+
+### Added
+
+- Added `hasLabels` utility.
+
 ## [3.39.1] - 2022-10-20
 
 ### Fixed
