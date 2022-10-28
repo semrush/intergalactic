@@ -28,11 +28,14 @@ Guidepup v0.13.1, MacOS Big Sur 11._
 21. Screen reader says "r".
 22. Screen reader presses the "Backspace" button.
 23. Screen reader presses the "Backspace" button.
-24. Screen reader says "You are currently on a text field. To enter text in this field, type.".
-25. Screen reader presses the "Backspace" button.
-26. Screen reader types "Algernon".
-27. Screen reader says "Algernon".
-28. Screen reader presses the "Enter" button.
-29. Screen reader triggers element default action.
+24. Screen reader presses the "Backspace" button.
+25. Screen reader types "Algernon".
+26. Screen reader says "Algernon".
+27. Screen reader presses the "Enter" button.
+28. Screen reader triggers element default action.
+29. Screen reader says "Algernon Insertion at end of text. edit text Press Enter to apply value, press Escape to discard changes group".
 30. Screen reader types "Hello world?".
-31. Screen reader presses the "Escape" button.
+31. Screen reader says "world ?".
+32. Screen reader presses the "Escape" button.
+33. Screen reader says "Algernon".
+34. Screen reader says "You are currently on a group, inside of web content. To exit this group, press Control-Option-Shift-Up Arrow.".
