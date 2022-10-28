@@ -20,14 +20,14 @@ Guidepup v0.13.1, MacOS Big Sur 11._
 13. Screen reader presses the "Tab" button.
 14. Screen reader says "Entering List of options list box. List of options group".
 15. Screen reader goes into the active element.
-16. Screen reader says "In List of options list box Semrush text (1 of 1)".
+16. Screen reader says "In List of options list box semrush text (1 of 1)".
 17. Screen reader goes to the next element.
-18. Screen reader says "Semrush text (1 of 1)".
+18. Screen reader says "semrush text (1 of 1)".
 19. Screen reader goes to the next element.
 20. Screen reader presses the "Control+Option+Space" button.
-21. Screen reader says "semrush".
+21. Screen reader presses the "Shift+Tab" button.
 22. Screen reader presses the "Shift+Tab" button.
-23. Screen reader presses the "Shift+Tab" button.
+23. Screen reader says "semrush".
 24. Screen reader presses the "Shift+Tab" button.
 25. Screen reader says "Entering List of options list box. semrush text (1 of 1)".
 26. Screen reader presses the "Shift+Tab" button.
