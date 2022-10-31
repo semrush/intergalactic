@@ -40,23 +40,16 @@ module.exports = function (options) {
     inlineCssVariables(),
     syncPlugin(postcssColorMod()),
     shadowStyles(options.shadow),
-  ];
-  if (options.cssnano || (options.cssnano !== null && process.env.NODE_ENV === 'production')) {
-    /**
-     * `preset` option is required to force `cssnano` use `preset` instead of config search
-     */
-    // set mergeLonghand: false because the problem of the ratio Api components and styles (see: NoticeBubble)
-    processorPlugins.push(
-      syncPlugin(
-        cssnano(
-          Object.assign(
-            { preset: ['default', { mergeLonghand: false, mergeRules: false }] },
-            options.cssnano,
-          ),
+    syncPlugin(
+      cssnano(
+        Object.assign(
+          // set mergeLonghand: false because the problem of the ratio Api components and styles (see: NoticeBubble)
+          { preset: ['default', { mergeLonghand: false, mergeRules: false }] },
+          options.cssnano,
         ),
       ),
-    );
-  }
+    ),
+  ];
   return postcss(processorPlugins);
 };
 module.exports.PLACEHOLDER_REPLACER = shadowStyles.PLACEHOLDER_REPLACER;

@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [1.5.0] - 2022-09-31
+
+### Changed
+
+- Enable cssnano by default.
+
 ## [1.4.1] - 2022-09-23
 
 ### Fixed

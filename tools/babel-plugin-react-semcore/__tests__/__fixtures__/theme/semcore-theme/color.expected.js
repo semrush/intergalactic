@@ -13,8 +13,8 @@ var _slicedToArray2 = _interopRequireDefault(require('@babel/runtime/helpers/sli
 /* @ts-ignore */
 
 var COLORS = {
-  cyan: `#00b0ed`,
   green: `#4fae33`,
+  cyan: `#00b0ed`,
 };
 
 function resolveColor(color) {

@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.3.0] - 2022-09-31
+
+### Added
+
+- Added support for npm aliases
+
 ## [4.2.4] - 2022-09-23
 
 ### Changed
