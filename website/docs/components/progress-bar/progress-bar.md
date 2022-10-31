@@ -53,7 +53,7 @@ ProgressBar has three states:
 
 ![progressbar without progress](static/loading-gray.png)
 
-- 11-99% – the progress bar is partially filled and the pattern is animated.
+- 1-99% – the progress bar is partially filled and the pattern is animated.
 
 ![progressbar with the "in progress" state](static/size-l.png)
 
