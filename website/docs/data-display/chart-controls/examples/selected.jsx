@@ -86,7 +86,7 @@ export default () => (
           }
         />
         <XAxis dataKey="date" domain={['auto', 'auto']} tick={<Tick />} />
-        <YAxis dataKey="traffic" />¬
+        <YAxis dataKey="traffic" />
         <Bar name="ebay.com" dataKey="traffic" />
       </BarChart>
     </ResponsiveContainer>
