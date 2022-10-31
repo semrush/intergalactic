@@ -258,6 +258,8 @@ importers:
 
   semcore/carousel:
     specifiers:
+      '@guidepup/playwright': 0.6.1
+      '@playwright/test': 1.25.1
       '@semcore/flex-box': ^4
       '@semcore/icon': 2.16 - 3
       '@semcore/jest-preset-ui': 1.0.0
@@ -269,6 +271,8 @@ importers:
       '@semcore/icon': link:../icon
       '@semcore/utils': link:../utils
     devDependencies:
+      '@guidepup/playwright': 0.6.1_@playwright+test@1.25.1
+      '@playwright/test': 1.25.1
       '@semcore/jest-preset-ui': link:../../tools/jest-preset-ui
       '@types/react': 18.0.21
       jest: 29.0.1
