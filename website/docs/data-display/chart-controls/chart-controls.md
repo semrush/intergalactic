@@ -14,7 +14,7 @@ Controls in the widget can be divided into the following types:
 - general controls and filters;
 - chart controls.
 
-@## General controls and filters¬
+@## General controls and filters
 
 General controls and filters are always placed on the same level as the title. For example they include:
 
