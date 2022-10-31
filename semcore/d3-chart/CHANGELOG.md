@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.4.6] - 2022-10-31
+
+### Fixed
+
+- Fixed reference lines were missing dashed style.
+
 ## [2.4.5] - 2022-10-28
 
 ### Changed
