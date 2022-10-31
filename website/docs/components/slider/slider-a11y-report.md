@@ -11,9 +11,10 @@ Guidepup v0.13.1, MacOS Big Sur 11._
 4. Screen reader says "In slider".
 5. Screen reader presses the "Control+Option+ArrowLeft" button.
 6. Screen reader says "Small".
-7. Screen reader presses the "Control+Option+ArrowRight" button.
-8. Screen reader says "Medium".
-9. Screen reader presses the "Control+Option+ArrowRight" button.
-10. Screen reader says "Big".
-11. Screen reader goes out of active element.
-12. Screen reader says "Out of slider".
+7. Screen reader says "You are currently on a slider, inside of web content. To change the value, press @VOModifier() and then Left Arrow or Right Arrow. To stop interacting with the slider, press Control-Option-Shift-Up Arrow.".
+8. Screen reader presses the "Control+Option+ArrowRight" button.
+9. Screen reader says "Medium".
+10. Screen reader presses the "Control+Option+ArrowRight" button.
+11. Screen reader says "Big".
+12. Screen reader goes out of active element.
+13. Screen reader says "Out of slider".
