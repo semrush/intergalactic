@@ -4,6 +4,7 @@ import createComponent, { Component, sstyled, Root } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
 import ChevronRight from '@semcore/icon/ChevronRight/l';
 import ChevronLeft from '@semcore/icon/ChevronLeft/l';
+import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 
 import style from './style/carousel.shadow.css';
 
@@ -49,6 +50,7 @@ class CarouselRoot extends Component {
   };
 
   static style = style;
+  static enhance = [uniqueIDEnhancement()];
 
   refContainer = React.createRef();
   transform = 0;
@@ -86,7 +88,7 @@ class CarouselRoot extends Component {
     }
   };
 
-  toogleItem = (item, removeItem = false) => {
+  toggleItem = (item, removeItem = false) => {
     const { index } = this.asProps;
     const { items } = this.state;
     if (removeItem) {
@@ -281,9 +283,11 @@ class CarouselRoot extends Component {
     };
   }
 
-  getItemProps() {
+  getItemProps(_, index) {
     return {
-      $toogleItem: this.toogleItem,
+      toggleItem: this.toggleItem,
+      uid: this.asProps.uid,
+      index,
     };
   }
 
@@ -338,7 +342,7 @@ class CarouselRoot extends Component {
 
   render() {
     const SCarousel = Root;
-    const { styles, Children } = this.asProps;
+    const { styles, Children, index, uid } = this.asProps;
 
     return sstyled(styles)(
       <SCarousel
@@ -347,6 +351,8 @@ class CarouselRoot extends Component {
         tabIndex={0}
         onTouchStart={this.handlerTouchStart}
         onTouchEnd={this.handlerTouchEnd}
+        role="list"
+        aria-activedescendant={`igc-${uid}-carousel-item-${index}`}
       >
         <Children />
       </SCarousel>,
@@ -362,54 +368,42 @@ const Container = (props) => {
 };
 
 const Item = (props) => {
-  const { styles, $toogleItem } = props;
+  const { styles, toggleItem, index, uid } = props;
   const SItem = Root;
   const refItem = React.createRef();
   useEffect(() => {
     // add item
-    $toogleItem({ node: refItem.current });
+    toggleItem({ node: refItem.current });
     return () => {
       // remove item
-      $toogleItem({ node: refItem.current }, true);
+      toggleItem({ node: refItem.current }, true);
     };
   }, []);
 
-  return sstyled(styles)(<SItem render={Box} ref={refItem} />);
+  return sstyled(styles)(
+    <SItem render={Box} ref={refItem} role="listitem" id={`igc-${uid}-carousel-item-${index}`} />,
+  );
 };
 
 const Prev = (props) => {
   const { styles } = props;
   const SPrev = Root;
-  return sstyled(styles)(<SPrev render={Box} />);
+  return sstyled(styles)(<SPrev render={Box} aria-hidden="true" />);
 };
 
 Prev.defaultProps = () => ({
-  children: (
-    <ChevronLeft
-      interactive
-      color="gray-300"
-      aria-hidden={true}
-      aria-label="Go to the previous item"
-    />
-  ),
+  children: <ChevronLeft interactive color="gray-300" aria-label="Go to the previous item" />,
   top: 0,
 });
 
 const Next = (props) => {
   const { styles } = props;
   const SNext = Root;
-  return sstyled(styles)(<SNext render={Box} />);
+  return sstyled(styles)(<SNext render={Box} aria-hidden="true" />);
 };
 
 Next.defaultProps = () => ({
-  children: (
-    <ChevronRight
-      interactive
-      color="gray-300"
-      aria-hidden={true}
-      aria-label="Go to the next item"
-    />
-  ),
+  children: <ChevronRight interactive color="gray-300" aria-label="Go to the next item" />,
   top: 0,
 });
 
@@ -417,13 +411,13 @@ const Indicators = ({ items, styles, Children }) => {
   const SIndicators = Root;
   if (Children.origin) {
     return sstyled(styles)(
-      <SIndicators render={Box}>
+      <SIndicators render={Box} aria-hidden="true">
         <Children />
       </SIndicators>,
     );
   }
   return sstyled(styles)(
-    <SIndicators render={Box}>
+    <SIndicators render={Box} aria-hidden="true">
       {items.map((item, index) => (
         <Carousel.Indicator key={index} {...item} />
       ))}
