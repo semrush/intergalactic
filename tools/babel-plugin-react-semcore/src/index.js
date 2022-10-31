@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const semver = require('semver');
+const finderPackageJson = require('find-package-json');
 const parse = require('./process');
 const getColorVars = require('./utils/vars');
 
@@ -14,20 +15,6 @@ const SEMCORE_MAGIC_COMMENTS = {
 };
 
 const RESOLVED_THEMES_MAP = new Map();
-
-function getPkgNameFromFilePath(filepath, scope) {
-  const reg = new RegExp(`/${scope}/(.+?)/`, 'g');
-  const match = filepath.match(reg);
-  if (!match) return;
-  return match[match.length - 1].replace(reg, '$1');
-}
-
-function getPkgJsonFromPkgName(filepath, pkgName, scope) {
-  const reg = new RegExp(`/${scope}/${pkgName}/`);
-  const match = filepath.match(reg);
-  if (!match) return;
-  return filepath.substr(0, match.index + match[0].length) + 'package.json';
-}
 
 function resolveTheme(theme) {
   if (!theme) return;
@@ -89,18 +76,18 @@ function createThemeMeta(themeAbsolutePath) {
 }
 
 function getThemeCssPathsList(theme) {
-  const { themeMeta, pkgName, pkgJsonPath, cssFileName } = theme;
+  const { themeMeta, pkgName, pkgVersion, cssFileName, scope } = theme;
+  const name = pkgName.replace(new RegExp(`^${scope}/`), '');
 
   const themeCssPaths = themeMeta.reduce((acc, meta) => {
-    if (!meta[pkgName]) return acc;
-    if (meta[pkgName]['*']) {
-      if (meta[pkgName]['*'][cssFileName]) {
-        acc.push(meta[pkgName]['*'][cssFileName]);
+    if (!meta[name]) return acc;
+    if (meta[name]['*']) {
+      if (meta[name]['*'][cssFileName]) {
+        acc.push(meta[name]['*'][cssFileName]);
       }
     } else {
-      const { version } = require(pkgJsonPath);
-      Object.entries(meta[pkgName]).forEach(([v, css]) => {
-        if (css[cssFileName] && semver.satisfies(version, v)) {
+      Object.entries(meta[name]).forEach(([v, css]) => {
+        if (css[cssFileName] && semver.satisfies(pkgVersion, v)) {
           acc.push(css[cssFileName]);
         }
       });
@@ -124,6 +111,9 @@ const DEFAULT_OPTIONS = {
   scope: '@semcore',
   postcss: {},
   purgeCSS: {},
+  findPackage: (filename) => {
+    return finderPackageJson(filename).next().value;
+  },
 };
 
 module.exports = function ({ types: t }, opts) {
@@ -131,6 +121,7 @@ module.exports = function ({ types: t }, opts) {
 
   function log(msg, level = 'info') {
     if (options.verbose) {
+      // eslint-disable-next-line no-console
       console[level]('[@semcore/babel-plugin-react-semcore] ' + msg);
     }
   }
@@ -230,22 +221,20 @@ module.exports = function ({ types: t }, opts) {
         if (!this.themeMeta.length || !options.theme) return;
 
         const getThemeCssPaths = () => {
-          const pkgName =
-            options.pkgName || getPkgNameFromFilePath(state.file.opts.filename, options.scope);
-          const pkgJsonPath = getPkgJsonFromPkgName(
-            state.file.opts.filename,
-            pkgName,
-            options.scope,
-          );
-          const cssPath = getBaseCssPath(node, state.file.opts.filename);
-          if (!cssPath || !pkgName) return [null, null];
-          const cssFileName = path.basename(cssPath);
+          const filename = state.file.opts.filename;
+
+          const packageJson = options.findPackage(filename);
+          if (!packageJson) return [null, null];
+
+          const cssPath = getBaseCssPath(node, filename);
+          if (!cssPath) return [null, null];
 
           const themeCssPaths = getThemeCssPathsList({
             themeMeta: this.themeMeta,
-            pkgJsonPath,
-            pkgName,
-            cssFileName,
+            scope: options.scope,
+            pkgVersion: packageJson.version,
+            pkgName: packageJson.name,
+            cssFileName: path.basename(cssPath),
           });
 
           return [cssPath, themeCssPaths];
