@@ -1,5 +1,5 @@
 import React from 'react';
-import TrashS from '@semcore/icon/Trash/m';
+import NotificationM from '@semcore/icon/Notification/m';
 import Button from '@semcore/button';
 import Dot from '@semcore/dot';
 
@@ -14,9 +14,9 @@ const Demo = () => {
   const handleClick = React.useCallback(() => setDotVisible(false), []);
 
   return (
-    <Button onClick={handleClick} aria-label="Remove updates">
-      <TrashS />
-      <Dot up hidden={!dotVisible} size="l" aria-label="You can remove updates" />
+    <Button onClick={handleClick} aria-label="Read notifications">
+      <NotificationM />
+      <Dot up hidden={!dotVisible} size="l" aria-label="You have notifications to read" />
     </Button>
   );
 };

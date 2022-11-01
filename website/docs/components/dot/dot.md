@@ -90,6 +90,7 @@ We have two scenarios of how the dot disappears from a component or an item in t
 | The dot disappears from an item in the list | after the user **has hovered** a new item of the list.        |
 |                                             | after the user **has clicked** on a new item of the list.     |
 
+@page dot-a11y
 @page dot-api
 @page dot-code
 @page dot-changelog
