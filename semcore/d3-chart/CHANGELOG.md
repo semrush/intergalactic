@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.4.7] - 2022-11-01
+
+### Fixed
+
+- Fixed inner radius for `Donut` chart. It began to equal what is indicated in the `innerRadius` prop.
+
 ## [2.4.6] - 2022-10-31
 
 ### Fixed
