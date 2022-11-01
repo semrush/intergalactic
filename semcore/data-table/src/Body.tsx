@@ -79,6 +79,7 @@ class Body extends Component<AsProps, State> {
           name: cell.name,
           children: <>{cell.data}</>,
           justifyContent: column?.props?.justifyContent,
+          alignItems: column?.props?.alignItems,
           style: {
             width: vars.length === 1 ? vars[0] : `calc(${vars.join(' + ')})`,
           },
