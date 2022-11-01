@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.5.0] - 2022-11-01
+
+### Added
+
+- Support for inheritance of `alignItems` prop from header to cells.
+
 ## [3.4.1] - 2022-10-28
 
 ### Changed

@@ -141,12 +141,35 @@ describe('DataTable', () => {
       <div style={{ width: 800 }}>
         <DataTable data={data}>
           <DataTable.Head>
-            <DataTable.Column name="keyword" children="Keyword" />
+            <DataTable.Column name="keyword">
+              Keyword
+              <br />
+              Keyword
+            </DataTable.Column>
             <DataTable.Column name="kd" children="KD,%" justifyContent="flex-end" />
             <DataTable.Column name="cpc" children="CPC" justifyContent="flex-end" />
-            <DataTable.Column name="vol" children="Vol." justifyContent="flex-end" />
+            <DataTable.Column
+              name="vol"
+              children="Vol."
+              justifyContent="flex-end"
+              alignItems="flex-end"
+            />
           </DataTable.Head>
-          <DataTable.Body />
+          <DataTable.Body>
+            <DataTable.Cell name="keyword">
+              {(props, row) => {
+                return {
+                  children: (
+                    <>
+                      {row[props.name]}
+                      <br />
+                      {row[props.name]}
+                    </>
+                  ),
+                };
+              }}
+            </DataTable.Cell>
+          </DataTable.Body>
         </DataTable>
       </div>
     );

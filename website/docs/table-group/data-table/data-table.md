@@ -36,7 +36,7 @@ Columns are inherited from the `Flex` component and accept all its parameters. W
 
 @## The alignment of the columns
 
-Since columns and cells are inherited from the `Flex` component, you can use `justifyContent` to align the column to the desired edge. This property is automatically applied to table cells.
+Since columns and cells are inherited from the `Flex` component, you can use `justifyContent/alignItems` to align the column to the desired edge. This property is automatically applied to table cells.
 
 @example align-header
 
