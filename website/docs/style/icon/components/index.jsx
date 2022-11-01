@@ -24,17 +24,6 @@ const NotFound = styled.div`
   border: solid 1px #d1d4db;
 `;
 
-const Search = styled(Input)`
-  border-radius: 6px;
-  border: solid 1px #d1d4db;
-  color: #171a22;
-  input {
-    ::placeholder {
-      color: #898d9a;
-    }
-  }
-`;
-
 const SuggestSearch = connectAutoComplete(
   ({ currentRefinement, refine, hits, filteredIcons, onChangeValue, ...others }) => {
     const handleChangeValue = (value) => {
@@ -46,7 +35,7 @@ const SuggestSearch = connectAutoComplete(
     });
 
     return (
-      <Search size="l" mb={4}>
+      <Input size="l" mb={4}>
         <Input.Addon>
           <SearchS />
         </Input.Addon>
@@ -64,7 +53,7 @@ const SuggestSearch = connectAutoComplete(
             aria-label="Clear field"
           />
         )}
-      </Search>
+      </Input>
     );
   },
 );
