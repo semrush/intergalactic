@@ -229,6 +229,11 @@ export interface IDatePickerHandlers {
 
 export interface IInputTriggerProps {
   value: Date;
+  /**
+   * Date input placeholder characters
+   * @default { year: 'Y'; month: 'M'; day: 'D' }
+   */
+  placeholders: { year: string; month: string; day: string };
   onChange: (date: Date, event: ChangeEvent) => void;
   locale: string;
   onDisplayedPeriodChange: (date: Date) => void;

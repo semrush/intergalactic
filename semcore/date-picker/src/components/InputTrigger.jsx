@@ -12,6 +12,7 @@ import style from '../style/date-picker.shadow.css';
 import assignProps from '@semcore/utils/lib/assignProps';
 
 const defaultAllowedParts = { year: true, month: true, day: true };
+const defaultPlaceholders = { year: 'Y', month: 'M', day: 'D' };
 
 class InputTriggerRoot extends Component {
   static displayName = 'InputTrigger';
@@ -263,6 +264,7 @@ const MaskedInput = ({
   parts: allowedParts = defaultAllowedParts,
   disabledDates,
   forwardRef,
+  placeholders = defaultPlaceholders,
   labelPrefix = 'Date',
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   __excludeProps,
@@ -270,6 +272,19 @@ const MaskedInput = ({
   Root: _root,
   ...otherProps
 }) => {
+  if (
+    placeholders.year.length !== 1 ||
+    placeholders.month.length !== 1 ||
+    placeholders.day.length !== 1
+  ) {
+    // eslint-disable-next-line no-console
+    console.error({ placeholders });
+    throw new Error(
+      `InputTrigger placeholder prop should contain fields year, month and day each one with string value of single character length. [see above what was received] (${placeholders})`,
+      placeholders,
+    );
+  }
+
   const { sep, order } = React.useMemo(() => {
     const exampleDate = new Date(2000, 4, 29);
     const options = { year: 'numeric', month: '2-digit', day: '2-digit' };
@@ -295,7 +310,6 @@ const MaskedInput = ({
     return { sep, order };
   }, [locale, allowedParts]);
 
-  const placeholders = React.useMemo(() => ({ year: 'Y', month: 'M', day: 'D' }), []);
   const outer = React.useMemo(() => {
     const validDate =
       outerValue && outerValue instanceof Date && !Number.isNaN(outerValue.getTime());
@@ -492,28 +506,29 @@ const MaskedInput = ({
   const mask = React.useMemo(() => {
     const result = [];
     for (const part of order) {
-      if (part === 'year') result.push('YYYY');
-      if (part === 'month') result.push('MM');
-      if (part === 'day') result.push('DD');
+      if (part === 'year')
+        result.push(placeholders.year + placeholders.year + placeholders.year + placeholders.year);
+      if (part === 'month') result.push(placeholders.month + placeholders.month);
+      if (part === 'day') result.push(placeholders.day + placeholders.day);
     }
     return result.join(sep);
-  }, [sep, order]);
+  }, [sep, order, placeholders]);
   const aliases = React.useMemo(
     () => ({
-      Y: /\d/,
-      M: /\d/,
-      D: /\d/,
+      [placeholders.year]: /\d/,
+      [placeholders.month]: /\d/,
+      [placeholders.day]: /\d/,
     }),
-    [],
+    [placeholders],
   );
   const maskOnlySymbols = React.useMemo(
     () => ({
-      Y: true,
-      M: true,
-      D: true,
+      [placeholders.year]: true,
+      [placeholders.month]: true,
+      [placeholders.day]: true,
       [sep]: true,
     }),
-    [sep],
+    [sep, placeholders],
   );
   const humanizedDate = React.useMemo(() => {
     const validDate =
