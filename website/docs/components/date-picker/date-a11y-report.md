@@ -8,24 +8,24 @@ Guidepup v0.13.1, MacOS Big Sur 11._
 1. Screen reader goes into the active element.
 2. Screen reader says "In web content Date field group".
 3. Screen reader goes into the active element.
-4. Screen reader says "2022".
+4. Screen reader says "2020".
 5. Screen reader presses the "Backspace" button.
-6. Screen reader says "2".
+6. Screen reader says "0".
 7. Screen reader presses the "Backspace" button.
-8. Screen reader presses the "Backspace" button.
-9. Screen reader says "0".
-10. Screen reader presses the "Backspace" button.
-11. Screen reader says "10/26".
-12. Screen reader presses the "Backspace" button.
-13. Screen reader says "6".
-14. Screen reader presses the "Backspace" button.
-15. Screen reader says "10".
-16. Screen reader presses the "Backspace" button.
-17. Screen reader says "0".
-18. Screen reader presses the "Backspace" button.
-19. Screen reader says "1".
-20. Screen reader types "05".
-21. Screen reader says "0".
+8. Screen reader says "2".
+9. Screen reader presses the "Backspace" button.
+10. Screen reader says "0".
+11. Screen reader presses the "Backspace" button.
+12. Screen reader says "06/29".
+13. Screen reader presses the "Backspace" button.
+14. Screen reader says "9".
+15. Screen reader presses the "Backspace" button.
+16. Screen reader says "06".
+17. Screen reader presses the "Backspace" button.
+18. Screen reader says "6".
+19. Screen reader presses the "Backspace" button.
+20. Screen reader says "0".
+21. Screen reader types "05".
 22. Screen reader types "29".
 23. Screen reader says "2".
 24. Screen reader goes out of active element.
@@ -52,4 +52,4 @@ Guidepup v0.13.1, MacOS Big Sur 11._
 45. Screen reader types "2000".
 46. Screen reader says "0".
 47. Screen reader goes out of active element.
-48. Screen reader says "Date field group".
+48. Screen reader says "2000".

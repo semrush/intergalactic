@@ -64,6 +64,7 @@ SIndicator {
 }
 SHumanizedDate {
   position: absolute;
+  pointer-events: none;
 }
 SSingleDateInput SValue,
 SDateRange SMask,
@@ -71,13 +72,10 @@ SSingleDateInput SMask,
 SDateRange SValue {
   opacity: 0;
 }
-SSingleDateInput:hover SHumanizedDate,
 SSingleDateInput:focus-within SHumanizedDate {
   opacity: 0;
   z-index: -1000;
 }
-SSingleDateInput:hover SValue,
-SSingleDateInput:hover SMask,
 SSingleDateInput:focus-within SValue,
 SSingleDateInput:focus-within SMask {
   opacity: 1;
@@ -85,13 +83,10 @@ SSingleDateInput:focus-within SMask {
 SDateRange SValue {
   opacity: 0;
 }
-SDateRange:hover SHumanizedDate,
 SDateRange:focus-within SHumanizedDate {
   opacity: 0;
   z-index: -1000;
 }
-SDateRange:hover SValue,
-SDateRange:hover SMask,
 SDateRange:focus-within SValue,
 SDateRange:focus-within SMask {
   opacity: 1;

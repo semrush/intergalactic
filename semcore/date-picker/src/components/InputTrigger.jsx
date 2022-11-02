@@ -118,7 +118,7 @@ class DateRangeRoot extends Component {
 
   handleFromChange = (value, event) => {
     const { onChange } = this.asProps;
-    const prevValue = this.asProps.value ?? [null, null];
+    const prevValue = [this.asProps.value?.[0] ?? null, this.asProps.value?.[1] ?? null];
     onChange([value, prevValue[1]], event);
     if (value) {
       if (!this.toRef.current) return;
@@ -131,7 +131,7 @@ class DateRangeRoot extends Component {
   };
   handleToChange = (value, event) => {
     const { onChange } = this.asProps;
-    const prevValue = this.asProps.value ?? [null, null];
+    const prevValue = [this.asProps.value?.[0] ?? null, this.asProps.value?.[1] ?? null];
     onChange([prevValue[0], value], event);
   };
   handleFromKeydown = (event) => {

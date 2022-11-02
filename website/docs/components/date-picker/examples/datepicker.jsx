@@ -3,7 +3,7 @@ import { DatePicker, DateRangePicker } from '@semcore/date-picker';
 import { Box, Flex } from '@semcore/flex-box';
 
 function Demo() {
-  const [value, setValue] = useState(new Date());
+  const [value, setValue] = useState(new Date('06/29/2020'));
   const [valueRange, setValueRange] = useState([]);
 
   return (
