@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [6.1.4] - 2022-11-03
+
+### Fixed
+
+- Fixed displaying in unchecked and disabled state.
+
 ## [6.1.3] - 2022-10-28
 
 ### Changed
