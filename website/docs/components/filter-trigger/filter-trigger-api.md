@@ -15,7 +15,7 @@ import { BaseTrigger } from '@semcore/ui/base-trigger';
 
 @## ButtonTrigger
 
-Button-trigger with the `ChevronDownXS` icon.
+Button-trigger with the `ChevronDownM` icon.
 
 ```js
 import { ButtonTrigger } from '@semcore/ui/base-trigger';
@@ -25,7 +25,7 @@ import { ButtonTrigger } from '@semcore/ui/base-trigger';
 
 @## LinkTrigger
 
-This trigger looks like a link with the `ChevronDownXS` icon.
+This trigger looks like a link with the `ChevronDownM` icon.
 
 ```js
 import { LinkTrigger } from '@semcore/ui/base-trigger';
