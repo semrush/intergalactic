@@ -327,6 +327,8 @@ importers:
 
   semcore/color-picker:
     specifiers:
+      '@guidepup/playwright': 0.6.1
+      '@playwright/test': 1.25.1
       '@semcore/button': ^4
       '@semcore/divider': ^3
       '@semcore/dropdown': ^3
@@ -345,6 +347,8 @@ importers:
       '@semcore/input': link:../input
       '@semcore/utils': link:../utils
     devDependencies:
+      '@guidepup/playwright': 0.6.1_@playwright+test@1.25.1
+      '@playwright/test': 1.25.1
       '@semcore/jest-preset-ui': link:../../tools/jest-preset-ui
       '@types/react': 18.0.21
 

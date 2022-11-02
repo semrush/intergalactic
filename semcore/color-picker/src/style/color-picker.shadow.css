@@ -155,3 +155,8 @@ SItemColor {
   border: 1px solid var(--gray-100);
   background: var(--value);
 }
+
+SConfirmColor[hidden],
+SClearConfirm[hidden] {
+  display: none;
+}
