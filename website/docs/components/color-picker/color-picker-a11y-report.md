@@ -5,6 +5,7 @@ Guidepup v0.13.1, MacOS Big Sur 11._
 
 **Running screen reader against [this file](https://github.com/semrush/intergalactic/blob/master/website/docs/components/color-picker/examples/defaultExtended.jsx).**
 
+```
 1. Screen reader goes into the active element.
 2. Screen reader says "Color field, empty menu pop-up button".
 3. Screen reader triggers element default action.
@@ -73,3 +74,4 @@ Guidepup v0.13.1, MacOS Big Sur 11._
 66. Screen reader says "Color #0088ff group".
 67. Screen reader triggers element default action.
 68. Screen reader says "Color field, current color is #0088ff menu pop-up button".
+```
