@@ -342,7 +342,7 @@ class CarouselRoot extends Component {
 
   render() {
     const SCarousel = Root;
-    const { styles, Children, index, uid } = this.asProps;
+    const { styles, Children } = this.asProps;
 
     return sstyled(styles)(
       <SCarousel
@@ -352,7 +352,6 @@ class CarouselRoot extends Component {
         onTouchStart={this.handlerTouchStart}
         onTouchEnd={this.handlerTouchEnd}
         role="list"
-        aria-activedescendant={`igc-${uid}-carousel-item-${index}`}
       >
         <Children />
       </SCarousel>,

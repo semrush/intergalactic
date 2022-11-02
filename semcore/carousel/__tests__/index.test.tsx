@@ -286,8 +286,7 @@ describe('Carousel.Next', () => {
     expect(spy).toHaveBeenCalledWith(0);
   });
 
-  // TODO: ENABLE ME
-  xtest('a11y', async () => {
+  test('a11y', async () => {
     const { getByTestId, container } = render(
       <Carousel>
         <Container />
