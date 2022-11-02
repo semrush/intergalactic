@@ -3,7 +3,9 @@ title: A11y
 fileSource: fullscreen-modal
 ---
 
-@## Keyboard support
+@## What component has
+
+### Keyboard support
 
 | Key           | Function                                       |
 | ------------- | ---------------------------------------------- |
@@ -11,7 +13,8 @@ fileSource: fullscreen-modal
 | `Shift + Tab` | Moves focus to the previous focusable element. |
 | `Esc`         | Closes the modal window.                       |
 
-See detailed information about the keyboard support for the all buttons, input, etc., in the [Keyboard control guide](/core-principles/a11y/a11y-keyboard/).
+- See detailed information about the keyboard support for the all buttons, input, etc., in the [Keyboard control guide](/core-principles/a11y/a11y-keyboard/).
+- Don't forget to check recommendations on accessibility for [Form](/patterns/form/form-a11y).
 
 @## Resources
 
