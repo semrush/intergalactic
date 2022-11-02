@@ -5,6 +5,7 @@ Guidepup v0.13.1, MacOS Big Sur 11._
 
 **Running screen reader against [this file](https://github.com/semrush/intergalactic/blob/master/website/docs/components/inline-edit/examples/simple-text.jsx).**
 
+```
 1. Screen reader goes into the active element.
 2. Screen reader says "Tap to edit group".
 3. Screen reader triggers element default action.
@@ -38,3 +39,4 @@ Guidepup v0.13.1, MacOS Big Sur 11._
 31. Screen reader says "world ?".
 32. Screen reader presses the "Escape" button.
 33. Screen reader says "Algernon".
+```

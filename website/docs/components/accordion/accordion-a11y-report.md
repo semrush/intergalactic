@@ -5,6 +5,7 @@ Guidepup v0.13.1, MacOS Big Sur 11._
 
 **Running screen reader against [this file](https://github.com/semrush/intergalactic/blob/master/website/docs/components/accordion/examples/base.jsx).**
 
+```
 1. Screen reader goes into the active element.
 2. Screen reader says "Section 1 button".
 3. Screen reader goes to the next element.
@@ -33,3 +34,4 @@ Guidepup v0.13.1, MacOS Big Sur 11._
 26. Screen reader says "Section 3 dimmed button".
 27. Screen reader triggers element default action.
 28. Screen reader says "dimmed".
+```

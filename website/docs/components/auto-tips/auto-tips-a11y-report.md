@@ -5,6 +5,7 @@ Guidepup v0.13.1, MacOS Big Sur 11._
 
 **Running screen reader against [this file](https://github.com/semrush/intergalactic/blob/master/website/docs/components/auto-tips/examples/autosuggest.jsx).**
 
+```
 1. Screen reader goes into the active element.
 2. Screen reader says "Press Tab to go to popover Select option list box pop up Menu pop-up combo box".
 3. Screen reader goes into the active element.
@@ -32,3 +33,4 @@ Guidepup v0.13.1, MacOS Big Sur 11._
 25. Screen reader presses the "Shift+Tab" button.
 26. Screen reader triggers element default action.
 27. Screen reader says "semrush text (1 of 1)".
+```

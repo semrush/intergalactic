@@ -5,6 +5,7 @@ Guidepup v0.13.1, MacOS Big Sur 11._
 
 **Running screen reader against [this file](https://github.com/semrush/intergalactic/blob/master/website/docs/components/time-picker/examples/expanded.jsx).**
 
+```
 1. Screen reader goes into the active element.
 2. Screen reader says "Time input, no time entered group".
 3. Screen reader goes into the active element.
@@ -27,3 +28,4 @@ Guidepup v0.13.1, MacOS Big Sur 11._
 20. Screen reader says "04 Insertion at end of text. hours field edit text".
 21. Screen reader goes out of active element.
 22. Screen reader says "Time input, entered time is 4:20 AM group".
+```

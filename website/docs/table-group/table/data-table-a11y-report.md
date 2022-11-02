@@ -5,6 +5,7 @@ Guidepup v0.13.1, MacOS Big Sur 11._
 
 **Running screen reader against [this file](https://github.com/semrush/intergalactic/blob/master/website/docs/table-group/data-table/examples/base.jsx).**
 
+```
 1. Screen reader goes into the active element.
 2. Screen reader says "In web content table 4 columns, 6 rows".
 3. Screen reader goes into the active element.
@@ -19,3 +20,4 @@ Guidepup v0.13.1, MacOS Big Sur 11._
 12. Screen reader says "CPC $3.4 column 3 of 4".
 13. Screen reader presses the "Control+Option+ArrowDown" button.
 14. Screen reader says "row 3 of 0 $0.65".
+```
