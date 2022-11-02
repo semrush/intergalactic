@@ -163,5 +163,6 @@ You can place the color marker in the following components:
 ![Color picker places](static/color-picker-places.png)
 
 @page color-picker-api
+@page color-picker-a11y
 @page color-picker-code
 @page color-picker-changelog

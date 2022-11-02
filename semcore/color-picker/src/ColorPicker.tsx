@@ -40,6 +40,7 @@ type RootAsProps = {
 type TriggerAsProps = {
   styles?: React.CSSProperties;
   value?: string;
+  popperVisible: boolean;
   Children: React.FC;
 };
 
@@ -83,10 +84,11 @@ class ColorPickerRoot extends Component<RootAsProps> {
   };
 
   getTriggerProps() {
-    const { value } = this.asProps;
+    const { value, visible } = this.asProps;
 
     return {
       value,
+      popperVisible: visible,
     };
   }
 
@@ -126,10 +128,17 @@ class ColorPickerRoot extends Component<RootAsProps> {
 }
 
 export function Trigger(props: TriggerAsProps) {
-  const { Children } = props;
+  const { Children, value, popperVisible } = props;
+  const label = React.useMemo(() => {
+    const base = value ? `Color field, current color is ${value}` : 'Color field, empty';
+    if (popperVisible) {
+      return base + ', press Tab to go to palette or click to hide palette';
+    }
+    return base;
+  }, [value, popperVisible]);
 
   return (
-    <Root render={Dropdown.Trigger} tag={DefaultTrigger} aria-label="Pick a color">
+    <Root render={Dropdown.Trigger} tag={DefaultTrigger} aria-label={label}>
       <Children />
     </Root>
   );
@@ -173,7 +182,10 @@ export function Popper(props: PopperAsProps) {
   const SColorPickerPopper = Root;
 
   return sstyled(styles)(
-    <SColorPickerPopper render={Dropdown.Popper}>
+    <SColorPickerPopper
+      render={Dropdown.Popper}
+      aria-label="Colors palette, press Tab+Shift to go back to color field"
+    >
       <Children />
     </SColorPickerPopper>,
   );

@@ -95,6 +95,8 @@ class InputColorRoot extends Component<InputColorAsProps> {
     const SInputValue = Root;
     const SInput = 'div';
     const SInputContainer = 'div';
+    const SConfirmColor = Input.Addon;
+    const SClearConfirm = Input.Addon;
     const SItemColor = Box;
     const valueColor = value[0] === '#' ? value : value ? `#${value}` : null;
 
@@ -102,39 +104,38 @@ class InputColorRoot extends Component<InputColorAsProps> {
       <SPaletteManager>
         <SItemColor value={valueColor} />
         <SInputContainer>
-          #
+          <span aria-hidden="true">#</span>
           <SInput>
             <Input ml={1} w={135} state={state} onKeyDown={this.handlekeyDown}>
               <SInputValue
                 render={Input.Value}
                 placeholder="FFFFFF"
+                aria-label="Custom color field, HEX format"
                 onChange={this.handlerChange}
                 maxLength={7}
                 onFocus={onFocus}
                 onBlur={onBlur}
               />
-              {focus && (
-                <>
-                  <Input.Addon
-                    aria-label="Confirm color"
-                    role="button"
-                    interactive
-                    onClick={this.handlerAdd}
-                    pr="4px"
-                  >
-                    <CheckM color="green-300" />
-                  </Input.Addon>
-                  <Input.Addon
-                    aria-label="Clear color"
-                    role="button"
-                    interactive
-                    onClick={this.handlerCancel}
-                    pl="4px"
-                  >
-                    <CloseM color="gray-300" />
-                  </Input.Addon>
-                </>
-              )}
+              <SConfirmColor
+                aria-label="Add color to the list of custom colors"
+                role="button"
+                interactive
+                onClick={this.handlerAdd}
+                pr="4px"
+                hidden={!focus}
+              >
+                <CheckM color="green-300" />
+              </SConfirmColor>
+              <SClearConfirm
+                aria-label="Clear custom color field"
+                role="button"
+                interactive
+                onClick={this.handlerCancel}
+                pl="4px"
+                hidden={!focus}
+              >
+                <CloseM color="gray-300" />
+              </SClearConfirm>
             </Input>
           </SInput>
         </SInputContainer>
