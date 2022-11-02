@@ -77,7 +77,7 @@ class PickerAbstract extends Component {
           if (value) {
             this.handlers.visible(false);
           }
-          this.handlers.displayedPeriod(value);
+          this.handlers.displayedPeriod(value ?? undefined);
         },
       ],
     };

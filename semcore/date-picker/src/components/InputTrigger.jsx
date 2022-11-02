@@ -118,7 +118,7 @@ class DateRangeRoot extends Component {
 
   handleFromChange = (value, event) => {
     const { onChange } = this.asProps;
-    const prevValue = this.asProps.value ?? [undefined, undefined];
+    const prevValue = this.asProps.value ?? [null, null];
     onChange([value, prevValue[1]], event);
     if (value) {
       if (!this.toRef.current) return;
@@ -131,7 +131,7 @@ class DateRangeRoot extends Component {
   };
   handleToChange = (value, event) => {
     const { onChange } = this.asProps;
-    const prevValue = this.asProps.value ?? [undefined, undefined];
+    const prevValue = this.asProps.value ?? [null, null];
     onChange([prevValue[0], value], event);
   };
   handleFromKeydown = (event) => {
@@ -487,7 +487,7 @@ const MaskedInput = ({
       }
 
       if (lastKnownOuterValue.current !== null) {
-        onDateChange(undefined);
+        onDateChange(null);
         lastKnownOuterValue.current = null;
       }
 
