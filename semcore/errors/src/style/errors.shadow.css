@@ -1,9 +1,15 @@
 @import '@semcore/utils/style/var.css';
 
 SError {
-  padding: 96px 0;
+  padding: 80px 0;
   margin: 0 auto;
   max-width: 960px;
+  @media (max-width: 768px) {
+    padding: 80px 32px;
+  }
+  @media (max-width: 320px) {
+    padding: 40px 20px 80px;
+  }
 }
 
 SInner {
