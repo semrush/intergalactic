@@ -15,9 +15,9 @@ Widgets for selecting a month and a range of months. API analogous to `DatePicke
 
 @example monthpicker
 
-@## Trigger/Popper
+@## InputTrigger/Popper
 
-To obtain access to internal components you need to explode the component. `Trigger` and `Popper` are wrapped `Dropdown`.Trigger and `Dropdown.Popper`. [All the properties/examples](/components/dropdown/) also work in `DatePicker`.
+To obtain access to internal components you need to explode the component. `InputTrigger` and `Popper` are wrapped `Dropdown.Trigger` and `Dropdown.Popper`. [All the properties/examples](/components/dropdown/) also work in `DatePicker`.
 
 @example trigger-popper
 
