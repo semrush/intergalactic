@@ -63,7 +63,7 @@ Guidepup v0.13.1, MacOS Big Sur 11._
 55. Screen reader types "0088FF".
 56. Screen reader says "F".
 57. Screen reader goes out of active element.
-58. Screen reader says "0088FF".
+58. Screen reader says "Out of edit text".
 59. Screen reader goes to the next element.
 60. Screen reader says "Add color to the list of custom colors button".
 61. Screen reader triggers element default action.
