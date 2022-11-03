@@ -24,7 +24,7 @@ test('Users can interact with ColorPicker via VoiceOver', async ({
   const { voiceOver, getReport } = await makeVoiceOverReporter(pureVoiceOver);
   await voiceOver.interact();
 
-  expect(await voiceOver.lastSpokenPhrase()).toBe('Color field, empty menu pop-up button');
+  expect(await voiceOver.lastSpokenPhrase()).toBe('Color field, empty menu pop up button');
   await voiceOver.act();
   expect(await voiceOver.lastSpokenPhrase()).toBe(
     'Color field, empty, press Tab to go to palette or click to hide palette',
@@ -43,7 +43,7 @@ test('Users can interact with ColorPicker via VoiceOver', async ({
   expect(await voiceOver.lastSpokenPhrase()).toBe('Color #8649E1 group 3 of 12');
   await voiceOver.act();
   expect(await voiceOver.lastSpokenPhrase()).toBe(
-    'Color field, current color is #8649E1 menu pop-up button',
+    'Color field, current color is #8649E1 menu pop up button',
   );
   await voiceOver.act();
   expect(await voiceOver.lastSpokenPhrase()).toBe(
@@ -77,7 +77,7 @@ test('Users can interact with ColorPicker via VoiceOver', async ({
   expect(await voiceOver.lastSpokenPhrase()).toBe('Color #0088ff group');
   await voiceOver.act();
   expect(await voiceOver.lastSpokenPhrase()).toBe(
-    'Color field, current color is #0088ff menu pop-up button',
+    'Color field, current color is #0088ff menu pop up button',
   );
 
   const report = (await getReportHeader()) + '\n\n' + (await getReport(standPath));
