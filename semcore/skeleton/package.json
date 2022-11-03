@@ -13,11 +13,11 @@
     "test": "jest"
   },
   "dependencies": {
-    "@semcore/utils": "^3.24",
-    "@semcore/flex-box": "^4"
+    "@semcore/utils": "^3.40.0",
+    "@semcore/flex-box": "^4.6.3"
   },
   "peerDependencies": {
-    "@semcore/core": "^1.11",
+    "@semcore/core": "^1.13.4",
     "react": "16.8 - 18"
   },
   "jest": {
@@ -30,6 +30,6 @@
   },
   "devDependencies": {
     "@types/react": "18.0.21",
-    "@semcore/jest-preset-ui": "1.0.0"
+    "@semcore/jest-preset-ui": "^1.0.0"
   }
 }

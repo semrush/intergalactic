@@ -8,7 +8,7 @@
   "private": true,
   "dependencies": {
     "@babel/core": "7.19.1",
-    "@semcore/babel-preset-ui": "*",
+    "@semcore/babel-preset-ui": "^1.0.1",
     "@testing-library/jest-dom": "5.16.5",
     "@testing-library/react": "13.4.0",
     "@types/jest-image-snapshot": "5.1.0",
@@ -29,7 +29,7 @@
   },
   "peerDependencies": {
     "@guidepup/guidepup": "*",
-    "@semcore/esbuild-plugin-semcore": "*",
+    "@semcore/esbuild-plugin-semcore": "^1.0.0",
     "esbuild": "*",
     "jest": "29.0.1",
     "jest-environment-jsdom": "29.0.1"

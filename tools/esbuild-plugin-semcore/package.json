@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "@babel/core": "7.19.1",
-    "@semcore/babel-preset-ui": "*",
-    "@semcore/babel-plugin-react-semcore": "*"
+    "@semcore/babel-preset-ui": "^1.0.1",
+    "@semcore/babel-plugin-react-semcore": "^4.3.0"
   }
 }

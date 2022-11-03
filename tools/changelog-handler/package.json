@@ -17,7 +17,7 @@
     "semver": "5.6.0",
     "simple-git": "3.5.0",
     "tsm": "2.2.2",
-    "@semcore/continuous-delivery": "*"
+    "@semcore/continuous-delivery": "^0.0.1"
   },
   "scripts": {
     "start": "tsm --require=../../.ci/tsm-filter-warnings.js index.ts"

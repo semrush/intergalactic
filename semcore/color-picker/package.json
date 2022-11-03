@@ -13,22 +13,22 @@
     "test": "jest"
   },
   "dependencies": {
-    "@semcore/button": "^4",
-    "@semcore/divider": "^3",
-    "@semcore/dropdown": "^3",
-    "@semcore/flex-box": "^4",
-    "@semcore/icon": "2.19.3 - 3",
-    "@semcore/input": "^3.0.0",
-    "@semcore/utils": "^3.15"
+    "@semcore/button": "^4.2.3",
+    "@semcore/divider": "^3.1.3",
+    "@semcore/dropdown": "^3.2.4",
+    "@semcore/flex-box": "^4.6.3",
+    "@semcore/icon": "^3.1.2",
+    "@semcore/input": "^3.2.3",
+    "@semcore/utils": "^3.40.0"
   },
   "peerDependencies": {
-    "@semcore/core": "^1.8.3",
+    "@semcore/core": "^1.13.4",
     "react": "16.8 - 18"
   },
   "devDependencies": {
     "@guidepup/playwright": "0.6.1",
     "@playwright/test": "1.25.1",
-    "@semcore/jest-preset-ui": "1.0.0",
+    "@semcore/jest-preset-ui": "^1.0.0",
     "@types/react": "18.0.21"
   },
   "repository": {

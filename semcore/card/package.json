@@ -13,14 +13,14 @@
     "test": "jest"
   },
   "dependencies": {
-    "@semcore/utils": "^3.31",
-    "@semcore/flex-box": "^4",
-    "@semcore/typography": "^4",
-    "@semcore/tooltip": "^5",
-    "@semcore/icon": "2.16 - 3"
+    "@semcore/utils": "^3.40.0",
+    "@semcore/flex-box": "^4.6.3",
+    "@semcore/typography": "^4.2.5",
+    "@semcore/tooltip": "^5.1.4",
+    "@semcore/icon": "^3.1.2"
   },
   "peerDependencies": {
-    "@semcore/core": "^1.11",
+    "@semcore/core": "^1.13.4",
     "react": "16.8 - 18"
   },
   "jest": {
@@ -33,8 +33,8 @@
   },
   "devDependencies": {
     "@types/react": "18.0.21",
-    "@semcore/jest-preset-ui": "1.0.0",
-    "@semcore/typography": "*",
-    "@semcore/icon": "*"
+    "@semcore/jest-preset-ui": "^1.0.0",
+    "@semcore/typography": "^4.2.5",
+    "@semcore/icon": "^3.1.2"
   }
 }

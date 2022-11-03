@@ -14,10 +14,10 @@
   },
   "dependencies": {
     "@formatjs/intl": "2.3.0",
-    "@semcore/animation": "^1",
-    "@semcore/flex-box": "^4",
-    "@semcore/popper": "^4.9",
-    "@semcore/utils": "^3.15",
+    "@semcore/animation": "^1.7.1",
+    "@semcore/flex-box": "^4.6.3",
+    "@semcore/popper": "^4.13.4",
+    "@semcore/utils": "^3.40.0",
     "@types/d3-shape": "^3.1.0",
     "@upsetjs/venn.js": "1.4.1",
     "d3-array": "3.1.6",
@@ -29,7 +29,7 @@
     "resize-observer-polyfill": "1.5.1"
   },
   "peerDependencies": {
-    "@semcore/core": "^1.12",
+    "@semcore/core": "^1.13.4",
     "react": "16.8 - 18"
   },
   "jest": {
@@ -42,13 +42,13 @@
   },
   "devDependencies": {
     "@types/react": "18.0.21",
-    "@semcore/babel-plugin-react-semcore": "^4.2.1",
-    "@semcore/button": "*",
-    "@semcore/checkbox": "*",
-    "@semcore/dropdown-menu": "*",
-    "@semcore/icon": "*",
-    "@semcore/jest-preset-ui": "1.0.0",
-    "@semcore/typography": "*",
+    "@semcore/babel-plugin-react-semcore": "^4.3.0",
+    "@semcore/button": "^4.2.3",
+    "@semcore/checkbox": "^6.1.4",
+    "@semcore/dropdown-menu": "^3.3.3",
+    "@semcore/icon": "^3.1.2",
+    "@semcore/jest-preset-ui": "^1.0.0",
+    "@semcore/typography": "^4.2.5",
     "@types/d3-array": "^3.0.2",
     "@types/d3-scale": "^4.0.2",
     "@types/d3-transition": "^3.0.1",

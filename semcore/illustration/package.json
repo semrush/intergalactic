@@ -16,10 +16,10 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.17.9",
-    "@semcore/flex-box": "^4"
+    "@semcore/flex-box": "^4.6.3"
   },
   "peerDependencies": {
-    "@semcore/core": "^1.11",
+    "@semcore/core": "^1.13.4",
     "react": "16.8 - 18"
   },
   "repository": {
@@ -29,6 +29,6 @@
   },
   "devDependencies": {
     "@types/react": "18.0.21",
-    "@semcore/icon-transform-svg": "1.0.0"
+    "@semcore/icon-transform-svg": "^1.0.0"
   }
 }

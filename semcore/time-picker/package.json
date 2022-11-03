@@ -13,14 +13,14 @@
     "test": "jest --no-cache"
   },
   "dependencies": {
-    "@semcore/button": "^4",
-    "@semcore/flex-box": "^4",
-    "@semcore/input": "^3.0.0",
-    "@semcore/select": "^3.0.0",
-    "@semcore/utils": "^3.15"
+    "@semcore/button": "^4.2.3",
+    "@semcore/flex-box": "^4.6.3",
+    "@semcore/input": "^3.2.3",
+    "@semcore/select": "^3.2.8",
+    "@semcore/utils": "^3.40.0"
   },
   "peerDependencies": {
-    "@semcore/core": "^1.11",
+    "@semcore/core": "^1.13.4",
     "react": "16.8 - 18"
   },
   "jest": {
@@ -34,7 +34,7 @@
   "devDependencies": {
     "@guidepup/playwright": "0.6.1",
     "@playwright/test": "1.25.1",
-    "@semcore/jest-preset-ui": "1.0.0",
+    "@semcore/jest-preset-ui": "^1.0.0",
     "@types/react": "18.0.21"
   }
 }

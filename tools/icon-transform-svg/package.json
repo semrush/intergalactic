@@ -27,7 +27,7 @@
   "devDependencies": {
     "jest": "29.0.1",
     "babel-plugin-tester": "7.0.1",
-    "@semcore/jest-preset-ui": "*",
+    "@semcore/jest-preset-ui": "^1.0.0",
     "prettier": "2.6.2"
   },
   "jest": {

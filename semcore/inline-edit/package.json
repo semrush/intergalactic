@@ -13,18 +13,18 @@
     "test": "jest"
   },
   "dependencies": {
-    "@semcore/animation": "^1.5.0",
-    "@semcore/flex-box": "^4",
-    "@semcore/utils": "^3.15"
+    "@semcore/animation": "^1.7.1",
+    "@semcore/flex-box": "^4.6.3",
+    "@semcore/utils": "^3.40.0"
   },
   "devDependencies": {
     "@guidepup/playwright": "0.6.1",
     "@playwright/test": "1.25.1",
-    "@semcore/jest-preset-ui": "1.0.0",
+    "@semcore/jest-preset-ui": "^1.0.0",
     "@types/react": "18.0.21"
   },
   "peerDependencies": {
-    "@semcore/core": "^1.11",
+    "@semcore/core": "^1.13.4",
     "react": "16.8 - 18"
   },
   "jest": {
