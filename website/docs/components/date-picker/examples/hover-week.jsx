@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { DateRangePicker } from '@semcore/date-picker';
 
-function getWeek(date) {
+function dateToClosestWeek(date) {
   const startWeek = new Date(date);
   const endWeek = new Date(date);
 
@@ -15,14 +15,30 @@ function Demo() {
   const [value, setValue] = useState([]);
   const [highlighted, setHighlighted] = useState([]);
 
+  React.useEffect(() => {
+    if (!value[0]) return;
+    const week = dateToClosestWeek(value[0]);
+    if (!value[1] || week[0].getTime() !== value[0].getTime()) {
+      setValue(week);
+    }
+  }, [value[0]?.getTime()]);
+
   return (
     <DateRangePicker
       visible={visible}
       onVisibleChange={(visible) => setVisible(visible)}
       value={value}
+      onChange={setValue}
       highlighted={highlighted}
     >
-      <DateRangePicker.Trigger />
+      <DateRangePicker.InputTrigger>
+        <DateRangePicker.InputTrigger.DateRange>
+          <DateRangePicker.InputTrigger.DateRange.Indicator />
+          <DateRangePicker.InputTrigger.DateRange.FromMaskedInput />
+          <DateRangePicker.InputTrigger.DateRange.RangeSep />
+          <DateRangePicker.InputTrigger.DateRange.ToMaskedInput disabled />
+        </DateRangePicker.InputTrigger.DateRange>
+      </DateRangePicker.InputTrigger>
       <DateRangePicker.Popper>
         <DateRangePicker.Header />
         <DateRangePicker.Calendar
@@ -37,10 +53,10 @@ function Demo() {
                 {...data}
                 key={i}
                 onMouseEnter={() => {
-                  setHighlighted(getWeek(data.date));
+                  setHighlighted(dateToClosestWeek(data.date));
                 }}
                 onClick={() => {
-                  setValue(getWeek(data.date));
+                  setValue(dateToClosestWeek(data.date));
                   setVisible(false);
                   return false;
                 }}

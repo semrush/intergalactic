@@ -1,9 +1,11 @@
 import React from 'react';
 import dayjs from 'dayjs';
 import createComponent from '@semcore/core';
-import { Header, Next, Popper, Prev, Title, Trigger } from './components';
+import { Header, Next, Popper, Prev, Title, Trigger, InputTrigger } from './components';
 import { CalendarMonths as Calendar } from './components/Calendar';
 import PickerAbstract from './components/PickerAbstract';
+
+const dateParts = { day: false, month: true, year: true };
 
 class MonthPickerRoot extends PickerAbstract {
   static displayName = 'MonthPicker';
@@ -41,6 +43,22 @@ class MonthPickerRoot extends PickerAbstract {
     };
   }
 
+  getInputTriggerProps() {
+    const { value, onChange, onDisplayedPeriodChange, locale, disabled, size } = this.asProps;
+
+    return {
+      ...super.getTriggerProps(),
+      value,
+      onChange,
+      onDisplayedPeriodChange,
+      locale,
+      w: size === 'm' ? 120 : 135,
+      parts: dateParts,
+      disabledDates: disabled,
+      children: () => <InputTrigger.SingleDateInput />,
+    };
+  }
+
   getTitleProps() {
     const { displayedPeriod, locale } = this.asProps;
     return {
@@ -56,6 +74,7 @@ const MonthPicker = createComponent(
   MonthPickerRoot,
   {
     Trigger,
+    InputTrigger,
     Popper,
     Header,
     Title,

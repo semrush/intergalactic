@@ -47,3 +47,51 @@ SPeriod {
   flex-direction: column;
   margin-bottom: 8px;
 }
+
+SSingleDateInput:hover SOutline,
+SSingleDateInput:focus-within SOutline,
+SSingleDateInput:active SOutline,
+SSingleDateInput[active] SOutline,
+SDateRange:hover SOutline,
+SDateRange:focus-within SOutline,
+SDateRange:active SOutline,
+SDateRange[active] SOutline {
+  background-color: color-mod(var(--gray-400) a(30%));
+}
+
+SIndicator {
+  color: var(--gray-500);
+}
+SHumanizedDate {
+  position: absolute;
+  pointer-events: none;
+}
+SSingleDateInput SValue,
+SDateRange SMask,
+SSingleDateInput SMask,
+SDateRange SValue {
+  opacity: 0;
+}
+SSingleDateInput:focus-within SHumanizedDate {
+  opacity: 0;
+  z-index: -1000;
+}
+SSingleDateInput:focus-within SValue,
+SSingleDateInput:focus-within SMask {
+  opacity: 1;
+}
+SDateRange SValue {
+  opacity: 0;
+}
+SDateRange:focus-within SHumanizedDate {
+  opacity: 0;
+  z-index: -1000;
+}
+SDateRange:focus-within SValue,
+SDateRange:focus-within SMask {
+  opacity: 1;
+}
+SInputMask[noHumanizedDate] SValue,
+SInputMask[noHumanizedDate] SMask {
+  opacity: 1;
+}

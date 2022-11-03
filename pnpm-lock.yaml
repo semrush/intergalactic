@@ -498,13 +498,18 @@ importers:
 
   semcore/date-picker:
     specifiers:
+      '@guidepup/playwright': 0.6.1
+      '@playwright/test': 1.25.1
       '@semcore/base-trigger': ^3.0.0
       '@semcore/button': ^4
       '@semcore/divider': ^3
       '@semcore/dropdown': ^3
       '@semcore/flex-box': ^4
       '@semcore/icon': 2.16 - 3
+      '@semcore/input': 3.0.15
+      '@semcore/input-mask': ^4.3.2
       '@semcore/jest-preset-ui': 1.0.0
+      '@semcore/neighbor-location': ^3
       '@semcore/typography': ^4
       '@semcore/utils': ^3.29
       '@types/react': 18.0.21
@@ -517,10 +522,15 @@ importers:
       '@semcore/dropdown': link:../dropdown
       '@semcore/flex-box': link:../flex-box
       '@semcore/icon': link:../icon
+      '@semcore/input': 3.0.15
+      '@semcore/input-mask': link:../input-mask
+      '@semcore/neighbor-location': link:../neighbor-location
       '@semcore/typography': link:../typography
       '@semcore/utils': link:../utils
       dayjs: 1.8.36
     devDependencies:
+      '@guidepup/playwright': 0.6.1_@playwright+test@1.25.1
+      '@playwright/test': 1.25.1
       '@semcore/jest-preset-ui': link:../../tools/jest-preset-ui
       '@types/react': 18.0.21
       jest: 29.0.1
@@ -2042,7 +2052,7 @@ importers:
       dotenv: 16.0.1
       esbuild: 0.14.29
       identity-obj-proxy: 3.0.0
-      jest-axe: 4.1.0
+      jest-axe: 6.0.0
       jest-canvas-mock: 2.4.0
       jest-image-snapshot: 2.9.0
       react: '*'
@@ -2057,7 +2067,7 @@ importers:
       babel-plugin-transform-import-meta: 2.2.0_@babel+core@7.19.1
       dotenv: 16.0.1
       identity-obj-proxy: 3.0.0
-      jest-axe: 4.1.0
+      jest-axe: 6.0.0
       jest-canvas-mock: 2.4.0
       jest-image-snapshot: 2.9.0
       react: 18.2.0
@@ -4991,20 +5001,6 @@ packages:
     transitivePeerDependencies:
       - supports-color
 
-  /@jest/types/26.6.2:
-    resolution:
-      {
-        integrity: sha512-fC6QCp7Sc5sX6g8Tvbmj4XUTbyrik0akgRy03yjXbQaBWWNWGE7SGtJk98m0N8nzegD/7SggrUlivxo5ax4KWQ==,
-      }
-    engines: { node: '>= 10.14.2' }
-    dependencies:
-      '@types/istanbul-lib-coverage': 2.0.4
-      '@types/istanbul-reports': 3.0.1
-      '@types/node': 18.8.0
-      '@types/yargs': 15.0.14
-      chalk: 4.1.2
-    dev: false
-
   /@jest/types/29.1.2:
     resolution:
       {
@@ -5666,6 +5662,22 @@ packages:
       - react-dom
     dev: false
 
+  /@semcore/flex-box/4.6.0:
+    resolution:
+      {
+        integrity: sha512-jkMt4M57x7oGiC3o6Zc66SGgerD+EeWssmIWawbmkbR0Kf/mOKZ+G2NB47J2nP4CNX++0Fpt7XcqNIdLc4RvRA==,
+      }
+    peerDependencies:
+      '@semcore/core': ^1.11
+      react: 16.8 - 18
+    dependencies:
+      '@semcore/utils': 3.38.0
+      classnames: 2.2.6
+      csstype: 3.0.8
+    transitivePeerDependencies:
+      - react-dom
+    dev: false
+
   /@semcore/flex-box/4.6.0_@semcore+core@1.13.0:
     resolution:
       {
@@ -5858,6 +5870,22 @@ packages:
       - react-dom
     dev: false
 
+  /@semcore/input/3.0.15:
+    resolution:
+      {
+        integrity: sha512-eYZ5yLweesDT3W+sx/968weXaLGCsECW0/hJMakaIJY+GH9NnRg912NI0Fs6+BueZnITfNqLhctQpcNktVeHYQ==,
+      }
+    peerDependencies:
+      '@semcore/core': ^1.11
+      react: 16.8 - 17
+    dependencies:
+      '@semcore/flex-box': 4.6.0
+      '@semcore/neighbor-location': 2.3.16
+      '@semcore/utils': 3.38.0
+    transitivePeerDependencies:
+      - react-dom
+    dev: false
+
   /@semcore/input/3.2.0_@semcore+core@1.13.0:
     resolution:
       {
@@ -5911,6 +5939,20 @@ packages:
       react-focus-lock: 2.5.1_@types+react@18.0.21
     transitivePeerDependencies:
       - '@types/react'
+      - react-dom
+    dev: false
+
+  /@semcore/neighbor-location/2.3.16:
+    resolution:
+      {
+        integrity: sha512-Jr9DcwYVm2qdkVj4UGFppkymiPB7mr19FUFPo1I2753U7U/8E3m7vK5I+WSli5GN51T9d6J0ZrYMLi8GlgqEbQ==,
+      }
+    peerDependencies:
+      '@semcore/core': ^1.11
+      react: 16.8 - 17
+    dependencies:
+      '@semcore/utils': 3.38.0
+    transitivePeerDependencies:
       - react-dom
     dev: false
 
@@ -6415,6 +6457,25 @@ packages:
       csstype: 3.0.8
     transitivePeerDependencies:
       - react-dom
+    dev: false
+
+  /@semcore/utils/3.38.0:
+    resolution:
+      {
+        integrity: sha512-yyzhKTMmJsus1x9t3NDVY4iCnHN2ZNOnCyi6cgsVB8MmTgcgO3jRyAhPNdnffz9NlSY/bcUcIRdgQrxMOYdRSA==,
+      }
+    peerDependencies:
+      '@semcore/core': ^1
+      react: 16.8 - 18
+      react-dom: 16.8 - 18
+    dependencies:
+      '@babel/runtime': 7.19.0
+      '@types/node': 17.0.45
+      '@types/react': 18.0.21
+      '@types/react-dom': 18.0.6
+      classnames: 2.2.6
+      hoist-non-react-statics: 3.3.2
+      nano-css: 5.3.4
     dev: false
 
   /@semcore/utils/3.38.0_@semcore+core@1.13.0:
@@ -7148,15 +7209,6 @@ packages:
       {
         integrity: sha512-iO9ZQHkZxHn4mSakYV0vFHAVDyEOIJQrV2uZ06HxEPcx+mt8swXoZHIbaaJ2crJYFfErySgktuTZ3BeLz+XmFA==,
       }
-
-  /@types/yargs/15.0.14:
-    resolution:
-      {
-        integrity: sha512-yEJzHoxf6SyQGhBhIYGXQDSCkJjB6HohDShto7m8vaKg9Yp0Yn8+71J9eakh2bnPg6BfsH9PRMhiRTZnd4eXGQ==,
-      }
-    dependencies:
-      '@types/yargs-parser': 21.0.0
-    dev: false
 
   /@types/yargs/17.0.13:
     resolution:
@@ -8074,10 +8126,10 @@ packages:
     engines: { node: '>=4' }
     dev: true
 
-  /axe-core/4.4.3:
+  /axe-core/4.4.1:
     resolution:
       {
-        integrity: sha512-32+ub6kkdhhWick/UjvEwRchgoetXqTK14INLqbGm5U2TzBkBNF3nQtLYm8ovxSkQWArjEQvftCKryjZaATu3w==,
+        integrity: sha512-gd1kmb21kwNuWr6BQz8fv6GNECPBnUasepcoLbekws23NVBLODdsClRZ+bQ8+9Uomf3Sm3+Vwn0oYG9NvwnJCw==,
       }
     engines: { node: '>=4' }
     dev: false
@@ -9024,6 +9076,17 @@ packages:
     dependencies:
       ansi-styles: 4.3.0
       supports-color: 7.2.0
+
+  /chalk/4.1.0:
+    resolution:
+      {
+        integrity: sha512-qwx12AxXe2Q5xQ43Ac//I6v5aXTipYrSESdOgzrN+9XjgEpyjpKuvSGaN4qE93f7TQTlerQQ8S+EQ0EyDoVL1A==,
+      }
+    engines: { node: '>=10' }
+    dependencies:
+      ansi-styles: 4.3.0
+      supports-color: 7.2.0
+    dev: false
 
   /chalk/4.1.2:
     resolution:
@@ -11313,21 +11376,12 @@ packages:
       }
     dev: false
 
-  /diff-sequences/26.6.2:
-    resolution:
-      {
-        integrity: sha512-Mv/TDa3nZ9sbc5soK+OoA74BsS3mL37yixCvUAQkiuA4Wz6YtwP/K47n2rv2ovzHZvoiQeA5FTQOschKkEwB0Q==,
-      }
-    engines: { node: '>= 10.14.2' }
-    dev: false
-
   /diff-sequences/27.5.1:
     resolution:
       {
         integrity: sha512-k1gCAXAsNgLwEL+Y8Wvl+M6oEFj5bgazfZULpS5CneoPPXRaCCW7dm+q21Ky2VEE5X+VeRDBVg1Pcvvsr4TtNQ==,
       }
     engines: { node: ^10.13.0 || ^12.13.0 || ^14.15.0 || >=15.0.0 }
-    dev: true
 
   /diff-sequences/29.0.0:
     resolution:
@@ -16543,16 +16597,16 @@ packages:
       is-object: 1.0.2
     dev: false
 
-  /jest-axe/4.1.0:
+  /jest-axe/6.0.0:
     resolution:
       {
-        integrity: sha512-TPWRbwQYwdt1jtvM0DRi//0e51omWirMkyf99paeY7kYS5XsUZ9IcyP4omrqPKJ46xHDxs1AYqIwVz/minBoFw==,
+        integrity: sha512-gAh/2zoWii4Rbhe6IUIo5TTiseGJDCitFnDFwBNpIuaOciyQgVZue6jtd4W7oMoKHewKoRSuIol7t/MuGx+mqg==,
       }
     engines: { node: '>= 10.0.0' }
     dependencies:
-      axe-core: 4.4.3
-      chalk: 4.1.2
-      jest-matcher-utils: 26.6.2
+      axe-core: 4.4.1
+      chalk: 4.1.0
+      jest-matcher-utils: 27.0.2
       lodash.merge: 4.6.2
     dev: false
 
@@ -16794,19 +16848,6 @@ packages:
       - supports-color
     dev: true
 
-  /jest-diff/26.6.2:
-    resolution:
-      {
-        integrity: sha512-6m+9Z3Gv9wN0WFVasqjCL/06+EFCMTqDEUl/b87HYK2rAPTyfz4ZIuSlPhY51PIQRWx5TaxeF1qmXKe9gfN3sA==,
-      }
-    engines: { node: '>= 10.14.2' }
-    dependencies:
-      chalk: 4.1.2
-      diff-sequences: 26.6.2
-      jest-get-type: 26.3.0
-      pretty-format: 26.6.2
-    dev: false
-
   /jest-diff/27.5.1:
     resolution:
       {
@@ -16818,7 +16859,6 @@ packages:
       diff-sequences: 27.5.1
       jest-get-type: 27.5.1
       pretty-format: 27.5.1
-    dev: true
 
   /jest-diff/29.1.2:
     resolution:
@@ -16893,21 +16933,12 @@ packages:
       jest-util: 29.1.2
     dev: true
 
-  /jest-get-type/26.3.0:
-    resolution:
-      {
-        integrity: sha512-TpfaviN1R2pQWkIihlfEanwOXK0zcxrKEE4MlU6Tn7keoXdN6/3gK/xl0yEh8DOunn5pOVGKf8hB4R9gVh04ig==,
-      }
-    engines: { node: '>= 10.14.2' }
-    dev: false
-
   /jest-get-type/27.5.1:
     resolution:
       {
         integrity: sha512-2KY95ksYSaK7DMBWQn6dQz3kqAf3BB64y2udeG+hv4KfSOb9qwcYQstTJc1KCbsix+wLZWZYN8t7nwX3GOBLRw==,
       }
     engines: { node: ^10.13.0 || ^12.13.0 || ^14.15.0 || >=15.0.0 }
-    dev: true
 
   /jest-get-type/29.0.0:
     resolution:
@@ -16966,17 +16997,17 @@ packages:
       pretty-format: 29.1.2
     dev: true
 
-  /jest-matcher-utils/26.6.2:
+  /jest-matcher-utils/27.0.2:
     resolution:
       {
-        integrity: sha512-llnc8vQgYcNqDrqRDXWwMr9i7rS5XFiCwvh6DTP7Jqa2mqpcCBBlpCbn+trkG0KNhPu/h8rzyBkriOtBstvWhw==,
+        integrity: sha512-Qczi5xnTNjkhcIB0Yy75Txt+Ez51xdhOxsukN7awzq2auZQGPHcQrJ623PZj0ECDEMOk2soxWx05EXdXGd1CbA==,
       }
-    engines: { node: '>= 10.14.2' }
+    engines: { node: ^10.13.0 || ^12.13.0 || ^14.15.0 || >=15.0.0 }
     dependencies:
       chalk: 4.1.2
-      jest-diff: 26.6.2
-      jest-get-type: 26.3.0
-      pretty-format: 26.6.2
+      jest-diff: 27.5.1
+      jest-get-type: 27.5.1
+      pretty-format: 27.5.1
     dev: false
 
   /jest-matcher-utils/27.5.1:
@@ -22304,19 +22335,6 @@ packages:
     dependencies:
       renderkid: 2.0.7
       utila: 0.4.0
-    dev: false
-
-  /pretty-format/26.6.2:
-    resolution:
-      {
-        integrity: sha512-7AeGuCYNGmycyQbCqd/3PWH4eOoX/OiCa0uphp57NVTeAGdJGaAliecxwBDHYQCIvrW7aDBZCYeNTP/WX69mkg==,
-      }
-    engines: { node: '>= 10' }
-    dependencies:
-      '@jest/types': 26.6.2
-      ansi-regex: 5.0.1
-      ansi-styles: 4.3.0
-      react-is: 17.0.2
     dev: false
 
   /pretty-format/27.5.1:

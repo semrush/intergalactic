@@ -2,7 +2,19 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.3.4] - 2022-11-03
+
+### Fixed
+
+- Fixed mask and text line-height mismatch.
+
 ## [4.3.3] - 2022-10-28
+
+### Added
+
+- Allowed to pass children.
+
+## [4.3.2] - 2022-10-20
 
 ### Changed
 

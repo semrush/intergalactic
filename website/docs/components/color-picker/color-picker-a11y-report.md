@@ -7,7 +7,7 @@ Guidepup v0.13.1, MacOS Big Sur 11._
 
 ```
 1. Screen reader goes into the active element.
-2. Screen reader says "Color field, empty menu pop-up button".
+2. Screen reader says "Color field, empty menu pop up button".
 3. Screen reader triggers element default action.
 4. Screen reader says "Color field, empty, press Tab to go to palette or click to hide palette".
 5. Screen reader presses the "Tab" button.
@@ -21,7 +21,7 @@ Guidepup v0.13.1, MacOS Big Sur 11._
 13. Screen reader goes to the next element.
 14. Screen reader says "Color #8649E1 group 3 of 12".
 15. Screen reader triggers element default action.
-16. Screen reader says "Color field, current color is #8649E1 menu pop-up button".
+16. Screen reader says "Color field, current color is #8649E1 menu pop up button".
 17. Screen reader triggers element default action.
 18. Screen reader says "Color field, current color is #8649E1, press Tab to go to palette or click to hide palette".
 19. Screen reader presses the "Tab" button.
@@ -73,5 +73,5 @@ Guidepup v0.13.1, MacOS Big Sur 11._
 65. Screen reader goes to the previous element.
 66. Screen reader says "Color #0088ff group".
 67. Screen reader triggers element default action.
-68. Screen reader says "Color field, current color is #0088ff menu pop-up button".
+68. Screen reader says "Color field, current color is #0088ff menu pop up button".
 ```
