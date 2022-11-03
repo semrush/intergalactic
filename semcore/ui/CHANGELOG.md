@@ -1,3 +1,94 @@
+## [13.1.0] - 2022-11-03
+
+### @semcore/animation
+
+- **Added** Added a property that removes the `overflow=hidden` setting.
+- **Changed** Returning the original `overflow` after the animation has passed.
+
+### @semcore/button
+
+- **Fixed** Lazy checks for necessity of `aria-label` in non production environment.
+
+### @semcore/carousel
+
+- **Fixed** Fixed screen readers support.
+
+### @semcore/checkbox
+
+- **Fixed** Fixed displaying in unchecked and disabled state.
+
+### @semcore/color-picker
+
+- **Fixed** Fixed screen readers support.
+
+### @semcore/d3-chart
+
+- **Fixed** Fixed hover and active animated for `Donut` chart.
+- **Fixed** Fixed display of minimum bar size in `StackBar`.
+- **Added** Added display of minimum bar size in `HorizontalBar`.
+- **Fixed** Fixed inner radius for `Donut` chart. It began to equal what is indicated in the `innerRadius` prop.
+- **Fixed** Fixed reference lines were missing dashed style.
+- **Fixed** Fixed typings of render functions.
+
+### @semcore/data-table
+
+- **Added** Support for inheritance of `alignItems` prop from header to cells.
+- **Added** Added `disabledScroll` property that disables scrolling in tables.
+- **Added** Added the ability(`flex="inherit"`) to inherit the size from the top table.
+
+### @semcore/date-picker
+
+- **Fixed** Removed lock on fixed version of `@semcore/input`.
+
+### @semcore/errors
+
+- **Fixed** Fixed paddings.
+
+### @semcore/icon
+
+- **Fixed** Lazy checks for necessity of `aria-label` in non production environment.
+- **Changed** Updated `Text` icon.
+- **Added** Added icon `GoogleAds`
+
+### @semcore/inline-edit
+
+- **Fixed** Removed wrong aria role and added needed aria label.
+
+### @semcore/inline-input
+
+- **Added** Added accessability needed aria label.
+
+### @semcore/input-mask
+
+- **Fixed** Fixed mask and text line-height mismatch.
+- **Added** Allowed to pass children.
+
+### @semcore/link
+
+- **Fixed** Lazy checks for necessity of `aria-label` in non production environment.
+
+### @semcore/modal
+
+- **Changed** Updated `focus-lock`.
+
+### @semcore/popper
+
+- **Changed** Updated `focus-lock`.
+
+### @semcore/side-panel
+
+- **Changed** Updated `focus-lock`.
+
+### @semcore/time-picker
+
+- **Fixed** Fixed that some secret combination of arrows pressing was causing infinite focus call and temporary freeze of browser.
+- **Fixed** Fixed Screen readers support.
+
+### @semcore/utils
+
+- **Added** Added `hasLabels` utility.
+- **Fixed** Removed `@types/react`, `@types/react-dom` and `@types/node` from package direct dependencies.
+
 ## [13.0.2] - 2022-10-20
 
 ### @semcore/base-trigger
