@@ -43,7 +43,7 @@ test('Users can interact with AutoSuggest via VoiceOver', async ({
   await voiceOver.press('Shift+Tab', { application: 'Playwright' });
   await voiceOver.press('Shift+Tab', { application: 'Playwright' });
   await voiceOver.press('Shift+Tab', { application: 'Playwright' });
-  await voiceOver.act();
+  await voiceOver.interact();
   expect((await voiceOver.lastSpokenPhrase()).toLowerCase()).toContain(option.toLowerCase());
 
   const report = (await getReportHeader()) + '\n\n' + (await getReport(standPath));
