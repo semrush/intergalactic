@@ -36,7 +36,7 @@ Guidepup v0.13.1, MacOS Big Sur 11._
 28. Screen reader triggers element default action.
 29. Screen reader says "Algernon Insertion at end of text. edit text Press Enter to apply value, press Escape to discard changes group".
 30. Screen reader types "Hello world?".
-31. Screen reader says "?".
+31. Screen reader says "world ?".
 32. Screen reader presses the "Escape" button.
 33. Screen reader says "Algernon".
 ```
