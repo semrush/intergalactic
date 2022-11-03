@@ -28,3 +28,5 @@ fileSource: date-picker
 @## Other recommendations
 
 See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/).
+
+@include date-a11y-report

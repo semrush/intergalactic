@@ -8,6 +8,7 @@ import logger from '@semcore/utils/lib/logger';
 import NeighborLocation from '@semcore/neighbor-location';
 import getInputProps, { inputProps } from '@semcore/utils/lib/inputProps';
 import { Flex } from '@semcore/flex-box';
+import { forkRef } from '@semcore/utils/lib/ref';
 
 import style from './style/input-mask.shadow.css';
 
@@ -71,22 +72,8 @@ class InputMask extends Component<IInputProps> {
   static displayName = 'InputMask';
   static style = style;
 
-  inputRef = React.createRef<HTMLInputElement>();
-
-  getValueProps() {
-    return {
-      ref: this.inputRef,
-    };
-  }
-
-  handleClick = () => {
-    const value = this.inputRef.current.value;
-    this.inputRef.current.focus();
-    this.inputRef.current.setSelectionRange(value.length, value.length);
-  };
-
   render() {
-    return <Root render={Input} onClick={this.handleClick} ref={Input} />;
+    return <Root render={Input} ref={Input} />;
   }
 }
 
@@ -100,6 +87,9 @@ class Value extends Component<IInputMaskValueProps> {
       '9': /\d/,
       a: /[a-zA-Zа-яА-Я]/,
       '*': /[\da-zA-Zа-яА-Я]/,
+    },
+    maskOnlySymbols: {
+      _: true,
     },
   };
 
@@ -209,7 +199,7 @@ class Value extends Component<IInputMaskValueProps> {
 
         let lastNonMaskCharPosition = 0;
         for (let i = 0; i < conformedValue?.length; i++) {
-          if (conformedValue[i] !== '_' && /\w/.test(conformedValue[i]))
+          if (!this.asProps.maskOnlySymbols[conformedValue[i]] && /\w/.test(conformedValue[i]))
             lastNonMaskCharPosition = i + 1;
         }
 
@@ -264,13 +254,23 @@ class Value extends Component<IInputMaskValueProps> {
   };
 
   render() {
+    const SInputMask = Flex;
     const SValue = Root;
     const SMask = 'span' as any;
     const SPlaceholder = 'span';
     const SMaskHidden = 'span';
     const SMaskVisible = 'span';
-    const { title, placeholder, mask, neighborLocation, value, includeInputProps, ...otherProps } =
-      this.asProps;
+    const {
+      title,
+      placeholder,
+      mask,
+      neighborLocation,
+      value,
+      includeInputProps,
+      Children,
+      forwardRef,
+      ...otherProps
+    } = this.asProps;
     const isValid = this.state.lastConformed && !this.state.lastConformed.all.includes('_');
 
     logger.warn(
@@ -280,16 +280,17 @@ class Value extends Component<IInputMaskValueProps> {
     );
 
     const [controlProps, boxProps] = getInputProps(otherProps, includeInputProps as string[]);
+    const ref = forkRef(this.inputRef, forwardRef);
 
     return (
       <NeighborLocation.Detect neighborLocation={neighborLocation}>
         {(neighborLocation) =>
           sstyled(this.asProps.styles)(
-            <Flex
+            <SInputMask
               position="relative"
               flex={1}
               {...boxProps}
-              __excludeProps={['onFocus', 'onChange']}
+              __excludeProps={['onFocus', 'onChange', 'forwardRef', 'ref']}
             >
               <SMask aria-hidden="true" neighborLocation={neighborLocation} ref={this.maskRef}>
                 {this.state.lastConformed && (
@@ -304,7 +305,7 @@ class Value extends Component<IInputMaskValueProps> {
               <SValue
                 render={Input.Value}
                 neighborLocation={neighborLocation}
-                ref={this.inputRef}
+                ref={ref}
                 onFocus={this.onFocus}
                 aria-invalid={!isValid}
                 pattern={mask}
@@ -313,7 +314,8 @@ class Value extends Component<IInputMaskValueProps> {
                 {...controlProps}
                 __excludeProps={['placeholder']}
               />
-            </Flex>,
+              <Children />
+            </SInputMask>,
           ) as React.ReactElement
         }
       </NeighborLocation.Detect>

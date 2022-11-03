@@ -6,6 +6,7 @@ SValue {
 }
 
 SMask {
+  line-height: 1.25;
   position: absolute;
   left: 0.8em;
   pointer-events: none;
@@ -20,6 +21,9 @@ SMask[neighborLocation='both'] {
 
 SMaskHidden {
   opacity: 0;
+}
+SMaskHidden:before {
+  content: attr(data-content);
 }
 SPlaceholder {
   opacity: 0.5;

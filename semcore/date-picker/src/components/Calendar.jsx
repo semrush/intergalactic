@@ -219,7 +219,7 @@ class CalendarDaysRoot extends CalendarAbstract {
     const { Children, styles, locale } = this.asProps;
 
     return sstyled(styles)(
-      <SCalendar render={Box}>
+      <SCalendar render={Box} aria-hidden="true">
         <CalendarWeekDays locale={locale} />
         <SGridDays onMouseLeave={this.handleMouseLeave}>
           <Children />
