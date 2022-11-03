@@ -13,7 +13,7 @@ Guidepup v0.13.1, MacOS Big Sur 11._
 5. Screen reader presses the "Tab" button.
 6. Screen reader says "Content group".
 7. Screen reader goes to the next element.
-8. Screen reader says "Content clickable".
+8. Screen reader says "Content  clickable".
 9. Screen reader presses the "Escape" button.
 10. Screen reader says "Trigger menu pop up button".
 ```

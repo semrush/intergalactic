@@ -5,6 +5,7 @@ Guidepup v0.13.1, MacOS Big Sur 11._
 
 **Running screen reader against [this file](https://github.com/semrush/intergalactic/blob/master/website/docs/components/date-picker/examples/datepicker.jsx).**
 
+```
 1. Screen reader goes into the active element.
 2. Screen reader says "In web content Date field group".
 3. Screen reader goes into the active element.
@@ -40,7 +41,7 @@ Guidepup v0.13.1, MacOS Big Sur 11._
 33. Screen reader goes into the active element.
 34. Screen reader says "from date MM/DD/YYYY invalid data edit text".
 35. Screen reader types "05".
-36. Screen reader says "0".
+36. Screen reader says "5".
 37. Screen reader types "29".
 38. Screen reader says "2".
 39. Screen reader types "2000".
@@ -48,8 +49,9 @@ Guidepup v0.13.1, MacOS Big Sur 11._
 41. Screen reader types "05".
 42. Screen reader says "05".
 43. Screen reader types "29".
-44. Screen reader says "29".
+44. Screen reader says "You are currently on a text field. To enter text in this field, type.".
 45. Screen reader types "2000".
 46. Screen reader says "0".
 47. Screen reader goes out of active element.
-48. Screen reader says "2000".
+48. Screen reader says "Date field group".
+```
