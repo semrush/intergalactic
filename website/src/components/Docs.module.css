@@ -27,15 +27,21 @@
 .tabLine {
   font-weight: 700;
   margin-bottom: 32px;
+  overflow-x: auto;
+  overflow-y: hidden;
 }
 
-.tabLineItem > span {
-  overflow: scroll;
-  text-overflow: initial;
+.tabLine .tabLineItem {
+  min-width: auto;
 }
 
 .tabLine > div {
   background-color: #ff622d;
+  bottom: 0;
+}
+
+.tabLineItem:hover::after {
+  bottom: 0;
 }
 
 /* crunch */
