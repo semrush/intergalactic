@@ -154,9 +154,8 @@ class DonutRoot extends Component {
     };
 
   animationActivePie = (props) => {
-    let { duration, innerRadius } = this.asProps;
+    const { duration, innerRadius } = this.asProps;
     const { active, data, selector } = props;
-    innerRadius = innerRadius > increaseFactor ? innerRadius - increaseFactor : innerRadius;
     const outerRadius = getOuterRadius(this.asProps);
     active
       ? animationHoverPie({
