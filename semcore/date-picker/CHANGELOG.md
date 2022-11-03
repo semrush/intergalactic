@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.4.7] - 2022-11-03
+
+### Fixed
+
+- Removed lock on fixed version of `@semcore/input`.
+
 ## [3.4.6] - 2022-11-03
 
 ### Changed
