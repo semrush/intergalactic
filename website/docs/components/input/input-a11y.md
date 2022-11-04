@@ -1,6 +1,7 @@
 ---
 title: A11y
 fileSource: input
+a11y: AA
 ---
 
 @## What component has
@@ -29,7 +30,8 @@ Find live examples in the [A11y style guide](https://a11y-style-guide.com/style-
 
 @## Resources
 
-[A11y style guide](https://a11y-style-guide.com/style-guide/section-forms.html#kssref-forms-text-fields) describes core principles for the accessible inputs and textarea.
+- [A11y style guide](https://a11y-style-guide.com/style-guide/section-forms.html#kssref-forms-text-fields) describes core principles for the accessible inputs and textarea.
+- [Forms tutorial](https://www.w3.org/WAI/tutorials/forms/) from W3C helps you understand common methods for creating accessible forms.
 
 @## Other recommendations
 
