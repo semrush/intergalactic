@@ -1,14 +1,15 @@
 ---
 title: A11y
 fileSource: date-picker
+a11y: AA
 ---
 
-@## Accessibility recommendations
+@## What component has
 
-- When the dropdown with the calendar grid opens a current date receives focus.
-- When a date is chosen, the accessible name of the Choose Date button is updated to include the selected date.
+- If the dropdown with the calendar grid opens, then a current date gets the focus.
+- If a date is selected, the accessible name of the "Select date" button is updated to include the selected date.
 
-@## Keyboard support
+### Keyboard support
 
 | Key              | Function                                                                                                                                                                           |
 | ---------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
