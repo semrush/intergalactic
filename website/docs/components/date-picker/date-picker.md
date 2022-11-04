@@ -19,7 +19,7 @@ This component has 4 types:
 
 @## Trigger
 
-Trigger has styles of [Select](/components/select/).
+Trigger has styles of [Input](/components/input/).
 
 > Use the **en dash** to indicate range of dates. Don’t add a space on either side of the **en dash**.
 > _For example: "Mar 4–10, 2022"._
