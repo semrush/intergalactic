@@ -205,6 +205,13 @@ class DateRangeRoot extends Component {
       otherProps,
     );
   }
+  getRangeSepProps() {
+    const { value } = this.asProps;
+
+    return {
+      fulfilled: !!(value && (value[0] || value[1])),
+    };
+  }
 
   render() {
     const SDateRange = Root;

@@ -48,17 +48,6 @@ SPeriod {
   margin-bottom: 8px;
 }
 
-SSingleDateInput:hover SOutline,
-SSingleDateInput:focus-within SOutline,
-SSingleDateInput:active SOutline,
-SSingleDateInput[active] SOutline,
-SDateRange:hover SOutline,
-SDateRange:focus-within SOutline,
-SDateRange:active SOutline,
-SDateRange[active] SOutline {
-  background-color: color-mod(var(--gray-400) a(30%));
-}
-
 SIndicator {
   color: var(--gray-500);
 }
@@ -94,4 +83,11 @@ SDateRange:focus-within SMask {
 SInputMask[noHumanizedDate] SValue,
 SInputMask[noHumanizedDate] SMask {
   opacity: 1;
+}
+SDateRange SInputMask:focus-within SMask {
+  background-color: color-mod(var(--blue-400) a(20%));
+}
+SRangeSep[fulfilled],
+SDateRange:focus-within SRangeSep {
+  color: var(--gray-800);
 }
