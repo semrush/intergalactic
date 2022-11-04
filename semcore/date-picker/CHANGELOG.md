@@ -6,7 +6,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Fixed visual divergence from initial design.
+- Fixed input trigger visual divergence from initial design.
 
 ## [3.4.7] - 2022-11-03
 
