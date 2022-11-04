@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import Select from '@semcore/select';
-import { I18nProvider } from '@semcore/utils/lib/enhances/WithI18n';
-import { NoData } from '@semcore/widget-empty';
-import Card from '@semcore/card';
-import { Text } from '@semcore/typography';
-import Divider from '@semcore/divider';
+import Select from '@semcore/ui/select';
+import { I18nProvider } from '@semcore/ui/utils/lib/enhances/WithI18n';
+import { NoData } from '@semcore/ui/widget-empty';
+import Card from '@semcore/ui/card';
+import { Text } from '@semcore/ui/typography';
+import Divider from '@semcore/ui/divider';
 
 const options = ['de', 'en', 'es', 'fr', 'it', 'ja', 'pt', 'ru', 'zh', 'ko', 'vi'].map((o) => ({
   value: o,

@@ -1,6 +1,6 @@
 import React from 'react';
-import { FilterTrigger } from '@semcore/base-trigger';
-import Select from '@semcore/select';
+import { FilterTrigger } from '@semcore/ui/base-trigger';
+import Select from '@semcore/ui/select';
 
 const options = Array(6)
   .fill()

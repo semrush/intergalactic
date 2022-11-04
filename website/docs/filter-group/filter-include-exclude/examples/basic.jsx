@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import Dropdown from '@semcore/dropdown';
-import { Flex } from '@semcore/flex-box';
-import Button from '@semcore/button';
-import { FilterTrigger } from '@semcore/base-trigger';
-import { Text } from '@semcore/typography';
-import Radio, { RadioGroup } from '@semcore/radio';
-import Textarea from '@semcore/textarea';
+import Dropdown from '@semcore/ui/dropdown';
+import { Flex } from '@semcore/ui/flex-box';
+import Button from '@semcore/ui/button';
+import { FilterTrigger } from '@semcore/ui/base-trigger';
+import { Text } from '@semcore/ui/typography';
+import Radio, { RadioGroup } from '@semcore/ui/radio';
+import Textarea from '@semcore/ui/textarea';
 
 export default () => {
   const [filters, setFilters] = useState(false);

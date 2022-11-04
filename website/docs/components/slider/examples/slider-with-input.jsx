@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import Slider from '@semcore/slider';
-import InputNumber from '@semcore/input-number';
-import Tooltip from '@semcore/tooltip';
-import { Box } from '@semcore/flex-box';
+import Slider from '@semcore/ui/slider';
+import InputNumber from '@semcore/ui/input-number';
+import Tooltip from '@semcore/ui/tooltip';
+import { Box } from '@semcore/ui/flex-box';
 
 const Demo = () => {
   const [value, setValue] = useState(51);

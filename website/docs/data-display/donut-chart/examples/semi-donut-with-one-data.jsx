@@ -1,6 +1,6 @@
 import React from 'react';
-import { Plot, Donut } from '@semcore/d3-chart';
-import { Text } from '@semcore/typography';
+import { Plot, Donut } from '@semcore/ui/d3-chart';
+import { Text } from '@semcore/ui/typography';
 
 export default () => {
   return (

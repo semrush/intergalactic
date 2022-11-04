@@ -1,8 +1,8 @@
 import React from 'react';
-import Checkbox from '@semcore/checkbox';
-import Tooltip from '@semcore/tooltip';
-import InfoXS from '@semcore/icon/Info/m';
-import Link from '@semcore/link';
+import Checkbox from '@semcore/ui/checkbox';
+import Tooltip from '@semcore/ui/tooltip';
+import InfoXS from '@semcore/ui/icon/Info/m';
+import Link from '@semcore/ui/link';
 
 function noop(e) {
   e.preventDefault();

@@ -1,7 +1,7 @@
 import React from 'react';
-import { Box, Flex } from '@semcore/flex-box';
-import { Text } from '@semcore/typography';
-import InputMask from '@semcore/input-mask';
+import { Box, Flex } from '@semcore/ui/flex-box';
+import { Text } from '@semcore/ui/typography';
+import InputMask from '@semcore/ui/input-mask';
 
 export default () => {
   const expireDateInput = React.useRef(null);

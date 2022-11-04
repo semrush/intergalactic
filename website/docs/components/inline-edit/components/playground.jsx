@@ -1,10 +1,10 @@
 import React from 'react';
-import InlineEdit from '@semcore/inline-edit';
-import InlineInput from '@semcore/inline-input';
+import InlineEdit from '@semcore/ui/inline-edit';
+import InlineInput from '@semcore/ui/inline-input';
 import PlaygroundGeneration from '@components/PlaygroundGeneration';
 
-import EditM from '@semcore/icon/Edit/m';
-import { Flex } from '@semcore/flex-box';
+import EditM from '@semcore/ui/icon/Edit/m';
+import { Flex } from '@semcore/ui/flex-box';
 
 const Preview = (preview) => {
   const { radio, text: textControl, onChange } = preview('InlineEdit');

@@ -1,6 +1,6 @@
 import React from 'react';
 import PlaygroundGeneration from '@components/PlaygroundGeneration';
-import ColorPicker from '@semcore/color-picker';
+import ColorPicker from '@semcore/ui/color-picker';
 
 const Preview = (preview) => {
   const { bool } = preview('ColorPicker');

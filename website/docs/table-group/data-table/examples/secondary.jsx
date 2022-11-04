@@ -1,5 +1,5 @@
 import React from 'react';
-import DataTable from '@semcore/data-table';
+import DataTable from '@semcore/ui/data-table';
 
 export default () => {
   return (

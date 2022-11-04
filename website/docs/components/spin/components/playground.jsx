@@ -1,7 +1,7 @@
 import React from 'react';
-import Spin from '@semcore/spin';
-import { Flex } from '@semcore/flex-box';
-import { Text } from '@semcore/typography';
+import Spin from '@semcore/ui/spin';
+import { Flex } from '@semcore/ui/flex-box';
+import { Text } from '@semcore/ui/typography';
 import PlaygroundGeneration from '@components/PlaygroundGeneration';
 
 const SIZES = ['xxs', 'xs', 's', 'm', 'l', 'xl', 'xxl'];

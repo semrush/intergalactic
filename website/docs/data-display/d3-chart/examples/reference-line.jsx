@@ -1,6 +1,6 @@
 import React from 'react';
 import { scaleLinear, scaleBand } from 'd3-scale';
-import { Plot, ReferenceLine, XAxis, YAxis } from '@semcore/d3-chart';
+import { Plot, ReferenceLine, XAxis, YAxis } from '@semcore/ui/d3-chart';
 
 export default () => {
   const MARGIN = 40;

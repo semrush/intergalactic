@@ -1,7 +1,7 @@
 import React from 'react';
-import Button from '@semcore/button';
-import NotificationXS from '@semcore/icon/Notification/m';
-import Dot from '@semcore/dot';
+import Button from '@semcore/ui/button';
+import NotificationXS from '@semcore/ui/icon/Notification/m';
+import Dot from '@semcore/ui/dot';
 
 export default () => (
   <Button aria-label="3 notifications">

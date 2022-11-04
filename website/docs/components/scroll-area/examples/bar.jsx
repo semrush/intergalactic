@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import styled from 'styled-components';
-import { Box, Flex } from '@semcore/flex-box';
-import ScrollArea from '@semcore/scroll-area';
+import { Box, Flex } from '@semcore/ui/flex-box';
+import ScrollArea from '@semcore/ui/scroll-area';
 
 function getRandomColor() {
   const letters = '0123456789ABCDEF';

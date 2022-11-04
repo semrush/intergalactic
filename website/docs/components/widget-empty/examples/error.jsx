@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
-import Select from '@semcore/select';
-import { Box } from '@semcore/flex-box';
-import { I18nProvider } from '@semcore/utils/lib/enhances/WithI18n';
-import { Error } from '@semcore/widget-empty';
-import Card from '@semcore/card';
-import { Text } from '@semcore/typography';
-import Button from '@semcore/button';
-import Link from '@semcore/link';
-import Divider from '@semcore/divider';
+import Select from '@semcore/ui/select';
+import { Box } from '@semcore/ui/flex-box';
+import { I18nProvider } from '@semcore/ui/utils/lib/enhances/WithI18n';
+import { Error } from '@semcore/ui/widget-empty';
+import Card from '@semcore/ui/card';
+import { Text } from '@semcore/ui/typography';
+import Button from '@semcore/ui/button';
+import Link from '@semcore/ui/link';
+import Divider from '@semcore/ui/divider';
 
 const options = ['de', 'en', 'es', 'fr', 'it', 'ja', 'pt', 'ru', 'zh', 'ko', 'vi'].map((o) => ({
   value: o,

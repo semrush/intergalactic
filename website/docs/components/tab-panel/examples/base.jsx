@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import TabPanel from '@semcore/tab-panel';
-import Badge from '@semcore/badge';
-import Tooltip from '@semcore/tooltip';
-import LinkedInS from '@semcore/icon/LinkedIn/m';
+import TabPanel from '@semcore/ui/tab-panel';
+import Badge from '@semcore/ui/badge';
+import Tooltip from '@semcore/ui/tooltip';
+import LinkedInS from '@semcore/ui/icon/LinkedIn/m';
 
 const Demo = () => {
   const [value, updateValue] = useState(0);

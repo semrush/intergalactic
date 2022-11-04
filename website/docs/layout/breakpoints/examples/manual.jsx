@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import Breakpoints from '@semcore/breakpoints';
-import Button from '@semcore/button';
+import Breakpoints from '@semcore/ui/breakpoints';
+import Button from '@semcore/ui/button';
 
 export default () => {
   const [index, updateIndex] = useState(Breakpoints.mediaList.matches());

@@ -1,6 +1,6 @@
 import React from 'react';
-import { Plot, Bar, Line, HoverRect, HoverLine, YAxis, XAxis, minMax } from '@semcore/d3-chart';
-import resolveColor from '@semcore/utils/lib/color';
+import { Plot, Bar, Line, HoverRect, HoverLine, YAxis, XAxis, minMax } from '@semcore/ui/d3-chart';
+import resolveColor from '@semcore/ui/utils/lib/color';
 import { scaleLinear, scaleBand } from 'd3-scale';
 
 export default () => {

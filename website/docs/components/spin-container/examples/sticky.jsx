@@ -1,9 +1,9 @@
 import React from 'react';
-import { Box } from '@semcore/flex-box';
-import SpinContainer from '@semcore/spin-container';
-import { Text } from '@semcore/typography';
-import Spin from '@semcore/spin';
-import { ScrollArea } from '@semcore/scroll-area';
+import { Box } from '@semcore/ui/flex-box';
+import SpinContainer from '@semcore/ui/spin-container';
+import { Text } from '@semcore/ui/typography';
+import Spin from '@semcore/ui/spin';
+import { ScrollArea } from '@semcore/ui/scroll-area';
 
 const Demo = () => (
   <ScrollArea h={300}>

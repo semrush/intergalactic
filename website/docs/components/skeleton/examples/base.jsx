@@ -1,6 +1,6 @@
 import React from 'react';
-import { Text } from '@semcore/typography';
-import Skeleton from '@semcore/skeleton';
+import { Text } from '@semcore/ui/typography';
+import Skeleton from '@semcore/ui/skeleton';
 
 class Demo extends React.PureComponent {
   constructor(props) {

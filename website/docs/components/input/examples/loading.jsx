@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import Input from '@semcore/input';
-import Spin from '@semcore/spin';
+import Input from '@semcore/ui/input';
+import Spin from '@semcore/ui/spin';
 
 const Demo = () => {
   const [value, setValue] = useState('');

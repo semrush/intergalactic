@@ -1,6 +1,6 @@
 import React from 'react';
-import Select from '@semcore/select';
-import DnD from '@semcore/drag-and-drop';
+import Select from '@semcore/ui/select';
+import DnD from '@semcore/ui/drag-and-drop';
 
 function Demo() {
   const options = Array(6)

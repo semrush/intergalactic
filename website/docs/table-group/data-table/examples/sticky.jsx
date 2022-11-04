@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
-import DataTable from '@semcore/data-table';
-import { Box } from '@semcore/flex-box';
-import ScrollArea from '@semcore/scroll-area';
+import DataTable from '@semcore/ui/data-table';
+import { Box } from '@semcore/ui/flex-box';
+import ScrollArea from '@semcore/ui/scroll-area';
 
 export default () => {
   const containerRef = useRef();

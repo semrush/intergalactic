@@ -1,6 +1,6 @@
 import React from 'react';
-import Select from '@semcore/select';
-import Input from '@semcore/input';
+import Select from '@semcore/ui/select';
+import Input from '@semcore/ui/input';
 
 const options = Array(6)
   .fill()

@@ -1,9 +1,9 @@
 import React from 'react';
-import Input from '@semcore/input';
+import Input from '@semcore/ui/input';
 import PlaygroundGeneration from '@components/PlaygroundGeneration';
 
-import CheckM from '@semcore/icon/Check/m';
-import ArrowRightM from '@semcore/icon/ArrowRight/m';
+import CheckM from '@semcore/ui/icon/Check/m';
+import ArrowRightM from '@semcore/ui/icon/ArrowRight/m';
 
 const SIZES = ['m', 'l'];
 const STATES = ['normal', 'invalid', 'valid'];

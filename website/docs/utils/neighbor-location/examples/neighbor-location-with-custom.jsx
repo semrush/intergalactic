@@ -1,5 +1,5 @@
 import React from 'react';
-import NeighborLocation from '@semcore/neighbor-location';
+import NeighborLocation from '@semcore/ui/neighbor-location';
 
 function CustomComponent({ neighborLocation }) {
   return <span>{neighborLocation}</span>;

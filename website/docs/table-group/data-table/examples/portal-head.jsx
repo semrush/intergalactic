@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
-import DataTable from '@semcore/data-table';
-import Divider from '@semcore/divider';
-import Portal, { PortalProvider } from '@semcore/portal';
+import DataTable from '@semcore/ui/data-table';
+import Divider from '@semcore/ui/divider';
+import Portal, { PortalProvider } from '@semcore/ui/portal';
 
 export default () => {
   const portalRef = useRef(null);

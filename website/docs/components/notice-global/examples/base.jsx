@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import Portal from '@semcore/portal';
-import NoticeGlobal from '@semcore/notice-global';
-import { Text } from '@semcore/typography';
-import Button from '@semcore/button';
-import { Flex } from '@semcore/flex-box';
+import Portal from '@semcore/ui/portal';
+import NoticeGlobal from '@semcore/ui/notice-global';
+import { Text } from '@semcore/ui/typography';
+import Button from '@semcore/ui/button';
+import { Flex } from '@semcore/ui/flex-box';
 
 export default () => {
   const [visible, updateVisible] = useState(false);

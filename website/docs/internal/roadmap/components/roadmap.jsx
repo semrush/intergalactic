@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import Tabs from '@semcore/tab-panel';
+import Tabs from '@semcore/ui/tab-panel';
 
 import dayjs from 'dayjs';
 import 'dayjs/locale/en';
-import { css } from '@semcore/core';
+import { css } from '@semcore/ui/core';
 
 const styles = css`
   STabPanelItem {

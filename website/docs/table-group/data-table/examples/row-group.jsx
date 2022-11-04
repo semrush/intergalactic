@@ -1,5 +1,5 @@
 import React from 'react';
-import DataTable, { ROW_GROUP } from '@semcore/data-table';
+import DataTable, { ROW_GROUP } from '@semcore/ui/data-table';
 
 const data = [
   {

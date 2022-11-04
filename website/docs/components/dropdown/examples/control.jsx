@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Dropdown from '@semcore/dropdown';
+import Dropdown from '@semcore/ui/dropdown';
 
 function Demo() {
   const [visible, setVisible] = useState(false);

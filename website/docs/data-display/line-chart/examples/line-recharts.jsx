@@ -14,13 +14,13 @@ import {
   timeFormat,
   getColor,
 } from '@semcore/chart';
-import { Box, Flex } from '@semcore/flex-box';
-import { Text } from '@semcore/typography';
-import TabLine from '@semcore/tab-line';
-import Card from '@semcore/card';
-import Dropdown from '@semcore/dropdown';
-import Switch from '@semcore/switch';
-import SettingsS from '@semcore/icon/Settings/m';
+import { Box, Flex } from '@semcore/ui/flex-box';
+import { Text } from '@semcore/ui/typography';
+import TabLine from '@semcore/ui/tab-line';
+import Card from '@semcore/ui/card';
+import Dropdown from '@semcore/ui/dropdown';
+import Switch from '@semcore/ui/switch';
+import SettingsS from '@semcore/ui/icon/Settings/m';
 
 let date = Date.now();
 const data = Array(200)

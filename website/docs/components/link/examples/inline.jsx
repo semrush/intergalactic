@@ -1,7 +1,7 @@
 import React from 'react';
-import FormatText from '@semcore/format-text';
-import Link from '@semcore/link';
-import EditXS from '@semcore/icon/Edit/m';
+import FormatText from '@semcore/ui/format-text';
+import Link from '@semcore/ui/link';
+import EditXS from '@semcore/ui/icon/Edit/m';
 
 class Demo extends React.PureComponent {
   render() {

@@ -1,7 +1,7 @@
 import React from 'react';
-import { colors, Donut, Plot } from '@semcore/d3-chart';
-import { Flex } from '@semcore/flex-box';
-import Checkbox from '@semcore/checkbox';
+import { colors, Donut, Plot } from '@semcore/ui/d3-chart';
+import { Flex } from '@semcore/ui/flex-box';
+import Checkbox from '@semcore/ui/checkbox';
 
 const data = { a: 3, b: 1, c: 2 };
 const pieColors = [colors['blue-03'], colors['green-02'], colors['violet-04']];

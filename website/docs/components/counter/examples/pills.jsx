@@ -1,6 +1,6 @@
 import React from 'react';
 import Pills from '@semcore/pills';
-import { Text } from '@semcore/typography';
+import { Text } from '@semcore/ui/typography';
 
 export default () => (
   <Pills defaultValue="all">

@@ -1,20 +1,20 @@
 import React from 'react';
-import { Text } from '@semcore/typography';
-import Link from '@semcore/link';
-import Button from '@semcore/button';
-import Tooltip from '@semcore/tooltip';
-import ChevronDownM from '@semcore/icon/ChevronDown/m';
-import ChatM from '@semcore/icon/Chat/m';
-import BookM from '@semcore/icon/Book/m';
-import MathPlusM from '@semcore/icon/MathPlus/m';
-import SettingsM from '@semcore/icon/Settings/m';
-import InfoM from '@semcore/icon/Info/m';
-import Breadcrumbs from '@semcore/breadcrumbs';
-import { Box } from '@semcore/flex-box';
-import TabLine from '@semcore/tab-line';
-import Select from '@semcore/select';
+import { Text } from '@semcore/ui/typography';
+import Link from '@semcore/ui/link';
+import Button from '@semcore/ui/button';
+import Tooltip from '@semcore/ui/tooltip';
+import ChevronDownM from '@semcore/ui/icon/ChevronDown/m';
+import ChatM from '@semcore/ui/icon/Chat/m';
+import BookM from '@semcore/ui/icon/Book/m';
+import MathPlusM from '@semcore/ui/icon/MathPlus/m';
+import SettingsM from '@semcore/ui/icon/Settings/m';
+import InfoM from '@semcore/ui/icon/Info/m';
+import Breadcrumbs from '@semcore/ui/breadcrumbs';
+import { Box } from '@semcore/ui/flex-box';
+import TabLine from '@semcore/ui/tab-line';
+import Select from '@semcore/ui/select';
 
-import Header, { Info, Title } from '@semcore/product-head';
+import Header, { Info, Title } from '@semcore/ui/product-head';
 
 export default () => {
   return (

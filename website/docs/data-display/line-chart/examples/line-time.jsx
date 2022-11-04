@@ -1,7 +1,7 @@
 import React from 'react';
-import { Plot, Line, XAxis, YAxis, HoverLine, Tooltip, minMax } from '@semcore/d3-chart';
-import { Flex } from '@semcore/flex-box';
-import { Text } from '@semcore/typography';
+import { Plot, Line, XAxis, YAxis, HoverLine, Tooltip, minMax } from '@semcore/ui/d3-chart';
+import { Flex } from '@semcore/ui/flex-box';
+import { Text } from '@semcore/ui/typography';
 import { scaleLinear, scaleTime } from 'd3-scale';
 
 function formatDate(value, options) {

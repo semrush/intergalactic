@@ -1,7 +1,7 @@
 import React from 'react';
-import { DatePicker } from '@semcore/date-picker';
-import ProgressBar from '@semcore/progress-bar';
-import { Flex } from '@semcore/flex-box';
+import { DatePicker } from '@semcore/ui/date-picker';
+import ProgressBar from '@semcore/ui/progress-bar';
+import { Flex } from '@semcore/ui/flex-box';
 
 function randomInteger(min, max) {
   let rand = min - 0.5 + Math.random() * (max - min + 1);

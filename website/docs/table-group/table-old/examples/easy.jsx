@@ -1,13 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 import Table from '@semcore/table';
-import Checkbox from '@semcore/checkbox';
-import Tooltip from '@semcore/tooltip';
-import Link from '@semcore/link';
-import Spin from '@semcore/spin';
-import { Text } from '@semcore/typography';
+import Checkbox from '@semcore/ui/checkbox';
+import Tooltip from '@semcore/ui/tooltip';
+import Link from '@semcore/ui/link';
+import Spin from '@semcore/ui/spin';
+import { Text } from '@semcore/ui/typography';
 
-let data = [
+const data = [
   {
     keyword: 'ebay buy',
     kd: '77.8',
@@ -94,7 +94,7 @@ class Demo extends React.Component {
       loading: true,
     });
     this._timer = setTimeout(() => {
-      let { active, order } = this.state;
+      const { active, order } = this.state;
       if (active === key) {
         order[active] = MAP_ORDER[order[active]];
       }

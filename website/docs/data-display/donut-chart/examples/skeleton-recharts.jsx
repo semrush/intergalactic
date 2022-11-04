@@ -1,6 +1,6 @@
 import React from 'react';
-import { PieChartSkeleton } from '@semcore/skeleton';
-import { Box, Flex } from '@semcore/flex-box';
+import { PieChartSkeleton } from '@semcore/ui/skeleton';
+import { Box, Flex } from '@semcore/ui/flex-box';
 
 export default () => (
   <Flex>

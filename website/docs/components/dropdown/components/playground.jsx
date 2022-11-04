@@ -1,6 +1,6 @@
 import React from 'react';
-import { ButtonTrigger } from '@semcore/base-trigger';
-import Dropdown from '@semcore/dropdown';
+import { ButtonTrigger } from '@semcore/ui/base-trigger';
+import Dropdown from '@semcore/ui/dropdown';
 import PlaygroundGeneration from '@components/PlaygroundGeneration';
 
 const PLACEMENT = [
