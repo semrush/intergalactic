@@ -1,16 +1,12 @@
 import React from 'react';
-import { testing, snapshot, shared as testsShared } from '@semcore/jest-preset-ui';
+import { testing, snapshot } from '@semcore/jest-preset-ui';
 import Return from '@semcore/icon/Return/m';
 import Pagination from '../src';
 
 const { render, fireEvent, cleanup, axe } = testing;
-const { shouldSupportClassName, shouldSupportRef } = testsShared;
 
 describe('Pagination', () => {
   afterEach(cleanup);
-
-  shouldSupportRef(Pagination);
-  shouldSupportClassName(Pagination);
 
   test('Renders correctly', async () => {
     const component = <Pagination currentPage={1} totalPages={100} />;
@@ -19,6 +15,11 @@ describe('Pagination', () => {
 
   test('Should support not render button if totalPage 1', async () => {
     const component = <Pagination currentPage={1} totalPages={1} />;
+    expect(await snapshot(component)).toMatchImageSnapshot();
+  });
+
+  test('Should render correctly if current page is last page', async () => {
+    const component = <Pagination currentPage={10} totalPages={10} />;
     expect(await snapshot(component)).toMatchImageSnapshot();
   });
 
@@ -32,10 +33,6 @@ describe('Pagination', () => {
 
 describe('Pagination.FirstPage', () => {
   afterEach(cleanup);
-
-  shouldSupportRef(Pagination.FirstPage, Pagination);
-
-  shouldSupportClassName(Pagination.FirstPage, Pagination);
 
   test('should be disabled if currentPage = 1', () => {
     const { getByTestId } = render(
@@ -74,10 +71,6 @@ describe('Pagination.FirstPage', () => {
 describe('Pagination.PrevPage', () => {
   afterEach(cleanup);
 
-  shouldSupportRef(Pagination.PrevPage, Pagination);
-
-  shouldSupportClassName(Pagination.PrevPage, Pagination);
-
   test('should be disabled if currentPage = 1', () => {
     const { getByTestId } = render(
       <Pagination currentPage={1} totalPages={100}>
@@ -115,10 +108,6 @@ describe('Pagination.PrevPage', () => {
 
 describe('Pagination.NextPage', () => {
   afterEach(cleanup);
-
-  shouldSupportRef(Pagination.PrevPage, Pagination);
-
-  shouldSupportClassName(Pagination.PrevPage, Pagination);
 
   test('should be disabled if currentPage = totalPages', () => {
     const PAGES = 100;
@@ -159,19 +148,6 @@ describe('Pagination.NextPage', () => {
 describe('Pagination.TotalPages', () => {
   afterEach(cleanup);
 
-  shouldSupportRef(Pagination.TotalPages, Pagination);
-
-  shouldSupportClassName(Pagination.TotalPages, Pagination);
-
-  test('should be disabled if currentPage = totalPages', () => {
-    const { getByTestId } = render(
-      <Pagination currentPage={100} totalPages={100}>
-        <Pagination.TotalPages data-testid="totalPages" />
-      </Pagination>,
-    );
-    expect(getByTestId('totalPages').attributes.disabled).toBeDefined();
-  });
-
   test('should call onCurrentPageChange(totalPages) on click', () => {
     const spy = jest.fn();
     const TOTAL_PAGES = 100;
@@ -189,8 +165,6 @@ describe('Pagination.TotalPages', () => {
 
 describe('Pagination.PageInput', () => {
   afterEach(cleanup);
-  shouldSupportRef(Pagination.PageInput, Pagination);
-  shouldSupportClassName(Pagination.PageInput, Pagination);
 
   test('Should correctly render', async () => {
     const component = (
@@ -257,10 +231,6 @@ describe('Pagination.PageInput', () => {
 
 describe('Pagination.PageInput.Value', () => {
   afterEach(cleanup);
-
-  shouldSupportRef(Pagination.PageInput.Value, Pagination);
-
-  shouldSupportClassName(Pagination.PageInput.Value, Pagination);
 
   test('should display currentPage value and update on property change', () => {
     const CURRENT_PAGE = {

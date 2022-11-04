@@ -195,7 +195,7 @@ class PaginationRoot extends Component {
     return {
       totalPages,
       children: formatThousands(totalPages),
-      disabled: currentPage === totalPages,
+      isLastOrSingle: currentPage === totalPages,
       onClick: () => this.handlePageChange(totalPages),
       getI18nText,
     };
@@ -259,17 +259,22 @@ class TotalPages extends Component {
   render() {
     const STotalPages = Root;
     const STotalPagesLabel = Text;
-    const { styles, getI18nText, totalPages } = this.asProps;
+    const STotalLastPages = Text;
+    const { styles, getI18nText, totalPages, isLastOrSingle } = this.asProps;
 
     return sstyled(styles)(
       <>
         <STotalPagesLabel>{getI18nText('totalPagesLabel')}</STotalPagesLabel>
-        <STotalPages
-          render={Link}
-          tag="button"
-          type="button"
-          aria-label={`Last page ${totalPages}`}
-        />
+        {isLastOrSingle ? (
+          <STotalLastPages aria-label={`Last page ${totalPages}`}>{totalPages}</STotalLastPages>
+        ) : (
+          <STotalPages
+            render={Link}
+            tag="button"
+            type="button"
+            aria-label={`Last page ${totalPages}`}
+          />
+        )}
       </>,
     );
   }
