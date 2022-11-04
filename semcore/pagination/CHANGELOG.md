@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.3.6] - 2022-11-04
+
+### Fixed
+
+- Fixed styles for last and single pages
+
 ## [3.3.5] - 2022-10-28
 
 ### Changed

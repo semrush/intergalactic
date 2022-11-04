@@ -26,6 +26,11 @@ STotalPagesLabel {
   margin-right: 4px;
 }
 
+STotalLastPages {
+  font-size: var(--fs-200);
+  color: var(--gray-800);
+}
+
 SPageInput {
   max-width: 68px;
   margin-left: 4px;
