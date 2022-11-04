@@ -1,5 +1,5 @@
 import React from 'react';
-import { DatePicker } from '@semcore/date-picker';
+import { DatePicker } from '@semcore/ui/date-picker';
 
 function Demo() {
   const today = new Date();

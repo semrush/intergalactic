@@ -1,12 +1,12 @@
 import React, { PureComponent } from 'react';
 import { PieChart, Pie, Cell, Tooltip as TooltipChart, getColor } from '@semcore/chart';
-import Card from '@semcore/card';
-import { Text } from '@semcore/typography';
-import { Flex, Box } from '@semcore/flex-box';
-import Tooltip from '@semcore/tooltip';
-import Checkbox from '@semcore/checkbox';
-import InfoXS from '@semcore/icon/Info/m';
-import SettingsS from '@semcore/icon/Settings/m';
+import Card from '@semcore/ui/card';
+import { Text } from '@semcore/ui/typography';
+import { Flex, Box } from '@semcore/ui/flex-box';
+import Tooltip from '@semcore/ui/tooltip';
+import Checkbox from '@semcore/ui/checkbox';
+import InfoXS from '@semcore/ui/icon/Info/m';
+import SettingsS from '@semcore/ui/icon/Settings/m';
 
 const data = [
   { domain: 'tut.by', value: 35844 },

@@ -1,5 +1,5 @@
 import React from 'react';
-import Checkbox from '@semcore/checkbox';
+import Checkbox from '@semcore/ui/checkbox';
 import PlaygroundGeneration from '@components/PlaygroundGeneration';
 
 export default PlaygroundGeneration(

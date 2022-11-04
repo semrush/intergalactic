@@ -1,7 +1,7 @@
 import React from 'react';
-import Ellipsis from '@semcore/ellipsis';
-import Card from '@semcore/card';
-import { Text } from '@semcore/typography';
+import Ellipsis from '@semcore/ui/ellipsis';
+import Card from '@semcore/ui/card';
+import { Text } from '@semcore/ui/typography';
 
 export default function () {
   return (

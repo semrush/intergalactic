@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import FullscreenModal from '@semcore/fullscreen-modal';
-import Button from '@semcore/button';
+import FullscreenModal from '@semcore/ui/fullscreen-modal';
+import Button from '@semcore/ui/button';
 
 const Demo = () => {
   const [visible, updateVisible] = useState(false);

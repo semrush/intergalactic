@@ -1,7 +1,7 @@
 import React, { useCallback, useState } from 'react';
-import Input from '@semcore/input';
-import CloseXS from '@semcore/icon/Close/m';
-import Search from '@semcore/icon/Search/m';
+import Input from '@semcore/ui/input';
+import CloseXS from '@semcore/ui/icon/Close/m';
+import Search from '@semcore/ui/icon/Search/m';
 
 const Demo = () => {
   const [value, setValue] = useState('');

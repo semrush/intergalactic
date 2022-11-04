@@ -14,7 +14,13 @@
       "jsx": true
     }
   },
-  "plugins": ["@typescript-eslint", "react", "ssr-friendly", "eslint-plugin-no-cyrillic-string"],
+  "plugins": [
+    "@typescript-eslint",
+    "react",
+    "ssr-friendly",
+    "eslint-plugin-no-cyrillic-string",
+    "eslint-plugin-import"
+  ],
   "settings": {
     "import/parsers": {
       "@typescript-eslint/parser": [".ts", ".tsx"]
@@ -26,6 +32,10 @@
       },
       "workspaces": {
         "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      },
+      "alias": {
+        "extensions": [".js", ".jsx", ".ts", ".tsx"],
+        "map": [["@semcore/ui", "/Users/phytonmk/projects/intergalactic/semcore"]]
       }
     },
     "react": {
@@ -65,7 +75,7 @@
   },
   "overrides": [
     {
-      "files": "tools/playground/examples/**/*",
+      "files": ["tools/playground/examples/**/*", "website/docs/**/*"],
       "rules": {
         "import/no-extraneous-dependencies": "off"
       }

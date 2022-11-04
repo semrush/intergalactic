@@ -1,6 +1,11 @@
 import React from 'react';
 
-import { DatePicker, DateRangePicker, MonthPicker, MonthRangePicker } from '@semcore/date-picker';
+import {
+  DatePicker,
+  DateRangePicker,
+  MonthPicker,
+  MonthRangePicker,
+} from '@semcore/ui/date-picker';
 import PlaygroundGeneration from '@components/PlaygroundGeneration';
 
 const d = new Date();

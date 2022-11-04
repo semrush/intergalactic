@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { Line, minMax, XAxis, Plot, YAxis } from '@semcore/d3-chart';
+import { Line, minMax, XAxis, Plot, YAxis } from '@semcore/ui/d3-chart';
 import { scaleLinear } from 'd3-scale';
-import { Box } from '@semcore/flex-box';
-import Checkbox from '@semcore/checkbox';
+import { Box } from '@semcore/ui/flex-box';
+import Checkbox from '@semcore/ui/checkbox';
 
 export default () => {
   const [dataLegend, updateDataLegend] = useState(

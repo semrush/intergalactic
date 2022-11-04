@@ -1,6 +1,6 @@
 import React from 'react';
-import Tag from '@semcore/tag';
-import EditXS from '@semcore/icon/Edit/m';
+import Tag from '@semcore/ui/tag';
+import EditXS from '@semcore/ui/icon/Edit/m';
 
 export default function () {
   return (

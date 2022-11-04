@@ -9,9 +9,9 @@ import {
   XAxis,
   YAxis,
 } from '@semcore/chart';
-import Card from '@semcore/card';
-import { Flex } from '@semcore/flex-box';
-import { Text } from '@semcore/typography';
+import Card from '@semcore/ui/card';
+import { Flex } from '@semcore/ui/flex-box';
+import { Text } from '@semcore/ui/typography';
 
 const UI = styled.g`
   fill: ${({ selected }) => (selected ? 'rgba(196, 199, 207, 0.3)' : 'rgba(0, 0, 0, 0)')};

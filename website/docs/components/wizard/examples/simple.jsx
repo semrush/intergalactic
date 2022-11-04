@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import Wizard from '@semcore/wizard';
-import Button from '@semcore/button';
-import { Flex } from '@semcore/flex-box';
-import ArrowRight from '@semcore/icon/ArrowRight/m';
-import ArrowLeft from '@semcore/icon/ArrowLeft/m';
+import Wizard from '@semcore/ui/wizard';
+import Button from '@semcore/ui/button';
+import { Flex } from '@semcore/ui/flex-box';
+import ArrowRight from '@semcore/ui/icon/ArrowRight/m';
+import ArrowLeft from '@semcore/ui/icon/ArrowLeft/m';
 
 const steps = [{ title: 'Step 1' }, { title: 'Step 2' }, { title: 'Step 3' }];
 

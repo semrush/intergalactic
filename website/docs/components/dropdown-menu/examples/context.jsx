@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import DropdownMenu from '@semcore/dropdown-menu';
-import { ButtonTrigger } from '@semcore/base-trigger';
+import DropdownMenu from '@semcore/ui/dropdown-menu';
+import { ButtonTrigger } from '@semcore/ui/base-trigger';
 
 const Popper = styled.div`
   display: ${(props) => (props.visible ? 'block' : 'none')};

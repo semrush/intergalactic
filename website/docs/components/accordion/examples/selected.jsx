@@ -1,7 +1,7 @@
 import React from 'react';
-import Accordion from '@semcore/accordion';
-import { Text } from '@semcore/typography';
-import { Box } from '@semcore/flex-box';
+import Accordion from '@semcore/ui/accordion';
+import { Text } from '@semcore/ui/typography';
+import { Box } from '@semcore/ui/flex-box';
 
 const styles = `
   .accordion-selected-toggle {

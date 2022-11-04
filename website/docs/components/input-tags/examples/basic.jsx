@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import InputTags from '@semcore/input-tags';
-import Tooltip from '@semcore/tooltip';
+import InputTags from '@semcore/ui/input-tags';
+import Tooltip from '@semcore/ui/tooltip';
 
 const Demo = () => {
   const [tags, updateTags] = useState(['vk', 'fk', 'twitter', 'instagram']);

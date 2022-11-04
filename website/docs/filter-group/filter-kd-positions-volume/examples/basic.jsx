@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { Flex } from '@semcore/flex-box';
-import Button from '@semcore/button';
-import { FilterTrigger } from '@semcore/base-trigger';
-import { Text } from '@semcore/typography';
-import Select from '@semcore/select';
-import Divider from '@semcore/divider';
-import NeighborLocation from '@semcore/neighbor-location';
-import InputNumber from '@semcore/input-number';
+import { Flex } from '@semcore/ui/flex-box';
+import Button from '@semcore/ui/button';
+import { FilterTrigger } from '@semcore/ui/base-trigger';
+import { Text } from '@semcore/ui/typography';
+import Select from '@semcore/ui/select';
+import Divider from '@semcore/ui/divider';
+import NeighborLocation from '@semcore/ui/neighbor-location';
+import InputNumber from '@semcore/ui/input-number';
 
 const InputRange = ({ value: valueState, changeValue, ...other }) => {
   const minRange = 0;

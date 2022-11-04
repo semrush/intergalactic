@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import DataTable from '@semcore/data-table';
-import Accordion from '@semcore/accordion';
-import { Flex } from '@semcore/flex-box';
+import DataTable from '@semcore/ui/data-table';
+import Accordion from '@semcore/ui/accordion';
+import { Flex } from '@semcore/ui/flex-box';
 
 const RowAccordion = React.forwardRef(function ({ value, collapse = {}, ...props }, ref) {
   return (

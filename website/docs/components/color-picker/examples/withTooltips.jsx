@@ -1,6 +1,6 @@
 import React from 'react';
-import ColorPicker from '@semcore/color-picker';
-import Tooltip from '@semcore/tooltip';
+import ColorPicker from '@semcore/ui/color-picker';
+import Tooltip from '@semcore/ui/tooltip';
 
 const colors = [
   '#A7AB38',

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import Input from '@semcore/input';
-import ShowYesXS from '@semcore/icon/ShowYes/m';
-import ShowNoXS from '@semcore/icon/ShowNo/m';
+import Input from '@semcore/ui/input';
+import ShowYesXS from '@semcore/ui/icon/ShowYes/m';
+import ShowNoXS from '@semcore/ui/icon/ShowNo/m';
 
 const MAP_TYPES = {
   password: 'text',

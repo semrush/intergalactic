@@ -1,7 +1,7 @@
 import React from 'react';
-import Accordion from '@semcore/accordion';
-import Link from '@semcore/link';
-import { Box } from '@semcore/flex-box';
+import Accordion from '@semcore/ui/accordion';
+import Link from '@semcore/ui/link';
+import { Box } from '@semcore/ui/flex-box';
 
 const Demo = () => (
   <Accordion>

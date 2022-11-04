@@ -1,7 +1,7 @@
 import React from 'react';
-import Button from '@semcore/button';
-import CheckM from '@semcore/icon/Check/m';
-import CloseM from '@semcore/icon/Close/m';
+import Button from '@semcore/ui/button';
+import CheckM from '@semcore/ui/icon/Check/m';
+import CloseM from '@semcore/ui/icon/Close/m';
 
 export default function () {
   return (

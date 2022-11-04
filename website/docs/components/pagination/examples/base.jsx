@@ -1,5 +1,5 @@
 import React from 'react';
-import Pagination from '@semcore/pagination';
+import Pagination from '@semcore/ui/pagination';
 
 const TOTAL_PAGE_COUNT = 122360;
 

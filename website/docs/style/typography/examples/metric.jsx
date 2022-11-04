@@ -1,6 +1,6 @@
 import React from 'react';
-import { Text } from '@semcore/typography';
-import { Box } from '@semcore/flex-box';
+import { Text } from '@semcore/ui/typography';
+import { Box } from '@semcore/ui/flex-box';
 
 export default () => (
   <div>

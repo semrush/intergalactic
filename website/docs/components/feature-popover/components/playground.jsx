@@ -1,7 +1,7 @@
 import React from 'react';
 
-import Button from '@semcore/button';
-import FeaturePopover from '@semcore/feature-popover';
+import Button from '@semcore/ui/button';
+import FeaturePopover from '@semcore/ui/feature-popover';
 import PlaygroundGeneration from '@components/PlaygroundGeneration';
 
 const PLACEMENT = [

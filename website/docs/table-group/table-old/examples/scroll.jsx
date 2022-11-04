@@ -1,14 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
-import Spin from '@semcore/spin';
-import ScrollArea from '@semcore/scroll-area';
-import { Text } from '@semcore/typography';
+import Spin from '@semcore/ui/spin';
+import ScrollArea from '@semcore/ui/scroll-area';
+import { Text } from '@semcore/ui/typography';
 import Table from '@semcore/table';
-import Tooltip from '@semcore/tooltip';
-import Checkbox from '@semcore/checkbox';
-import Link from '@semcore/link';
+import Tooltip from '@semcore/ui/tooltip';
+import Checkbox from '@semcore/ui/checkbox';
+import Link from '@semcore/ui/link';
 
-let data = [
+const data = [
   {
     keyword: 'ebay buy',
     kd: '77.8',

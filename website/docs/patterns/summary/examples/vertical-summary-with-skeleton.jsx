@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { Box, Flex } from '@semcore/flex-box';
-import { Text } from '@semcore/typography';
-import Tooltip from '@semcore/tooltip';
-import Skeleton from '@semcore/skeleton';
+import { Box, Flex } from '@semcore/ui/flex-box';
+import { Text } from '@semcore/ui/typography';
+import Tooltip from '@semcore/ui/tooltip';
+import Skeleton from '@semcore/ui/skeleton';
 import styled from 'styled-components';
-import '@semcore/utils/style/var.css';
+import '@semcore/ui/utils/style/var.css';
 
 const BoxBlock = styled(Box)`
   overflow: hidden;

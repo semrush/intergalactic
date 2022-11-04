@@ -1,6 +1,6 @@
 import React from 'react';
 
-import TextareaReact from '@semcore/textarea';
+import TextareaReact from '@semcore/ui/textarea';
 import PlaygroundGeneration from '@components/PlaygroundGeneration';
 
 const SIZES = ['m', 'l'];

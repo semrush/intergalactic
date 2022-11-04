@@ -1,5 +1,5 @@
 import React from 'react';
-import Breadcrumbs from '@semcore/breadcrumbs';
+import Breadcrumbs from '@semcore/ui/breadcrumbs';
 
 function Link(props) {
   return <a {...props} />;

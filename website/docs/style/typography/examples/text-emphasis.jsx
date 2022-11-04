@@ -1,5 +1,5 @@
 import React from 'react';
-import { Hint, Text } from '@semcore/typography';
+import { Hint, Text } from '@semcore/ui/typography';
 
 export default () => (
   <div>

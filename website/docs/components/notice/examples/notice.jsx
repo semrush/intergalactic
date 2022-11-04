@@ -1,11 +1,11 @@
 import React from 'react';
-import Notice from '@semcore/notice';
-import CloseAltS from '@semcore/icon/Close/m';
-import ThumbUpS from '@semcore/icon/ThumbUp/m';
-import ThumbDownS from '@semcore/icon/ThumbDown/m';
-import Question from '@semcore/icon/Question/m';
-import Button from '@semcore/button';
-import { Text } from '@semcore/typography';
+import Notice from '@semcore/ui/notice';
+import CloseAltS from '@semcore/ui/icon/Close/m';
+import ThumbUpS from '@semcore/ui/icon/ThumbUp/m';
+import ThumbDownS from '@semcore/ui/icon/ThumbDown/m';
+import Question from '@semcore/ui/icon/Question/m';
+import Button from '@semcore/ui/button';
+import { Text } from '@semcore/ui/typography';
 
 export default () => (
   <Notice>

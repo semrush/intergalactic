@@ -1,5 +1,5 @@
 import React from 'react';
-import InputNumber from '@semcore/input-number';
+import InputNumber from '@semcore/ui/input-number';
 import PlaygroundGeneration from '@components/PlaygroundGeneration';
 
 const STATES = ['normal', 'invalid', 'valid'];

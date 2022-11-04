@@ -1,8 +1,8 @@
 //https://github.com/semrush/intergalactic/tree/master/website/docs/utils/neighbor-location/examples/neighbor-location-input.jsx
 import React from 'react';
-import Input from '@semcore/input';
-import Button from '@semcore/button';
-import { Flex } from '@semcore/flex-box';
+import Input from '@semcore/ui/input';
+import Button from '@semcore/ui/button';
+import { Flex } from '@semcore/ui/flex-box';
 
 const Demo = () => {
   return (

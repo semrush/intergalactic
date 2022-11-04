@@ -1,9 +1,9 @@
 import React from 'react';
-import DataTable from '@semcore/data-table';
-import Tooltip from '@semcore/tooltip';
-import { Text } from '@semcore/typography';
-import DropdownMenu from '@semcore/dropdown-menu';
-import { LinkTrigger } from '@semcore/base-trigger';
+import DataTable from '@semcore/ui/data-table';
+import Tooltip from '@semcore/ui/tooltip';
+import { Text } from '@semcore/ui/typography';
+import DropdownMenu from '@semcore/ui/dropdown-menu';
+import { LinkTrigger } from '@semcore/ui/base-trigger';
 
 export default () => {
   return (

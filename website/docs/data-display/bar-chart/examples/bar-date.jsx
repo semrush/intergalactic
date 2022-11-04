@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { scaleLinear, scaleBand } from 'd3-scale';
-import { Bar, ResponsiveContainer, XAxis, Plot, YAxis } from '@semcore/d3-chart';
+import { Bar, ResponsiveContainer, XAxis, Plot, YAxis } from '@semcore/ui/d3-chart';
 
 export default () => {
   const [[width, height], updateSize] = useState([0, 0]);

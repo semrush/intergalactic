@@ -1,7 +1,7 @@
 import React from 'react';
-import DnD from '@semcore/drag-and-drop';
-import Card from '@semcore/card';
-import { Row, Col } from '@semcore/grid';
+import DnD from '@semcore/ui/drag-and-drop';
+import Card from '@semcore/ui/card';
+import { Row, Col } from '@semcore/ui/grid';
 
 function Demo() {
   return (

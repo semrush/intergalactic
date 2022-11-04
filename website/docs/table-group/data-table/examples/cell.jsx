@@ -1,6 +1,6 @@
 import React from 'react';
-import DataTable from '@semcore/data-table';
-import Link from '@semcore/link';
+import DataTable from '@semcore/ui/data-table';
+import Link from '@semcore/ui/link';
 
 export default () => {
   return (

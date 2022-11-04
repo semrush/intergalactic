@@ -1,8 +1,8 @@
 import React from 'react';
-import DnD from '@semcore/drag-and-drop';
-import Badge from '@semcore/badge';
-import LinkedInS from '@semcore/icon/LinkedIn/m';
-import TabPanel from '@semcore/tab-panel';
+import DnD from '@semcore/ui/drag-and-drop';
+import Badge from '@semcore/ui/badge';
+import LinkedInS from '@semcore/ui/icon/LinkedIn/m';
+import TabPanel from '@semcore/ui/tab-panel';
 
 function Demo() {
   return (

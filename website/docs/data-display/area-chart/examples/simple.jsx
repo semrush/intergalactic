@@ -1,10 +1,10 @@
 import React from 'react';
 import { Area, AreaChart, ResponsiveContainer, Tooltip as ChartTooltip } from '@semcore/chart';
-import { Box, Flex } from '@semcore/flex-box';
-import { Text } from '@semcore/typography';
-import Tooltip from '@semcore/tooltip';
-import Link from '@semcore/link';
-import InfoXS from '@semcore/icon/Info/m';
+import { Box, Flex } from '@semcore/ui/flex-box';
+import { Text } from '@semcore/ui/typography';
+import Tooltip from '@semcore/ui/tooltip';
+import Link from '@semcore/ui/link';
+import InfoXS from '@semcore/ui/icon/Info/m';
 
 let date = Date.now();
 

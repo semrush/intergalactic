@@ -1,5 +1,5 @@
 import React from 'react';
-import InputMask from '@semcore/input-mask';
+import InputMask from '@semcore/ui/input-mask';
 
 export default () => {
   return (

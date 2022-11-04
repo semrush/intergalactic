@@ -1,10 +1,10 @@
 import React from 'react';
-import Card from '@semcore/card';
-import { Text } from '@semcore/typography';
-import { Flex } from '@semcore/flex-box';
-import Close from '@semcore/icon/Close/m';
-import Select from '@semcore/select';
-import { LinkTrigger } from '@semcore/base-trigger';
+import Card from '@semcore/ui/card';
+import { Text } from '@semcore/ui/typography';
+import { Flex } from '@semcore/ui/flex-box';
+import Close from '@semcore/ui/icon/Close/m';
+import Select from '@semcore/ui/select';
+import { LinkTrigger } from '@semcore/ui/base-trigger';
 
 const tooltipContent = `Hey! Don't forget to place some useful info here 😏`;
 const options = Array(6)

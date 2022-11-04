@@ -1,12 +1,12 @@
 import React from 'react';
-import Modal from '@semcore/modal';
-import Button from '@semcore/button';
-import { Flex } from '@semcore/flex-box';
-import { Text } from '@semcore/typography';
-import CloseS from '@semcore/icon/Close/m';
-import CheckS from '@semcore/icon/Check/m';
-import ChevronRightS from '@semcore/icon/ChevronRight/m';
-import ChevronLeftS from '@semcore/icon/ChevronLeft/m';
+import Modal from '@semcore/ui/modal';
+import Button from '@semcore/ui/button';
+import { Flex } from '@semcore/ui/flex-box';
+import { Text } from '@semcore/ui/typography';
+import CloseS from '@semcore/ui/icon/Close/m';
+import CheckS from '@semcore/ui/icon/Check/m';
+import ChevronRightS from '@semcore/ui/icon/ChevronRight/m';
+import ChevronLeftS from '@semcore/ui/icon/ChevronLeft/m';
 import styled from 'styled-components';
 
 const MAP_NAVIGATION = {

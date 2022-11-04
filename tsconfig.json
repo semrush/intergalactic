@@ -19,6 +19,7 @@
     "typeRoots": ["node_modules/@types", "semcore/data-table/node_modules/@types", "tools/@types"]
   },
   "paths": {
+    "@semcore/ui/*": ["semcore/*"],
     "@semcore/*": ["semcore/*"],
     "@tools/*": ["tools/*"]
   },

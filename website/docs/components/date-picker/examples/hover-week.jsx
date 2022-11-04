@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { DateRangePicker } from '@semcore/date-picker';
+import { DateRangePicker } from '@semcore/ui/date-picker';
 
 function dateToClosestWeek(date) {
   const startWeek = new Date(date);

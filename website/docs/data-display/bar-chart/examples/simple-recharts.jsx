@@ -8,11 +8,11 @@ import {
   XAxis,
   YAxis,
 } from '@semcore/chart';
-import Card from '@semcore/card';
-import { Flex } from '@semcore/flex-box';
-import { Text } from '@semcore/typography';
-import Tooltip from '@semcore/tooltip';
-import InfoXS from '@semcore/icon/Info/m';
+import Card from '@semcore/ui/card';
+import { Flex } from '@semcore/ui/flex-box';
+import { Text } from '@semcore/ui/typography';
+import Tooltip from '@semcore/ui/tooltip';
+import InfoXS from '@semcore/ui/icon/Info/m';
 
 let date = Date.now();
 

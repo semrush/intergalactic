@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import InputMask from '@semcore/input-mask';
+import InputMask from '@semcore/ui/input-mask';
 
 export default () => {
   const [value, changeValue] = useState('99');

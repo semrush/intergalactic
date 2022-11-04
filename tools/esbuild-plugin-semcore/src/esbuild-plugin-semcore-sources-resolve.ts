@@ -83,6 +83,8 @@ export const esbuildPluginSemcoreSourcesResolve = (rootPath: string): Plugin => 
     build.onResolve({ filter: /^(!!raw-loader!)?@semcore\// }, async ({ path }) => {
       const namespace = path.startsWith('!!raw-loader!') ? 'rawFile' : 'file';
       if (namespace === 'rawFile') path = path.substring('!!raw-loader!'.length);
+      if (path.startsWith(`@semcore/ui/`))
+        path = `@semcore/` + path.substring(`@semcore/ui/`.length);
       const workspacePath = await tryToResolveWorkspacePath(path, rootPath);
       const componentName = path.split('/')[1];
       let subPath = path.split('/').slice(2).join('/');

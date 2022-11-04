@@ -1,7 +1,7 @@
 import React from 'react';
-import Flags, { iso2Name, nameWithoutIso } from '@semcore/flags';
-import { Text } from '@semcore/typography';
-import { Flex } from '@semcore/flex-box';
+import Flags, { iso2Name, nameWithoutIso } from '@semcore/ui/flags';
+import { Text } from '@semcore/ui/typography';
+import { Flex } from '@semcore/ui/flex-box';
 
 const allNames = { ...iso2Name, ...nameWithoutIso };
 

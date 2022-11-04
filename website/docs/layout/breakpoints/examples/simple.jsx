@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
-import Breakpoints from '@semcore/breakpoints';
-import Button from '@semcore/button';
+import Breakpoints from '@semcore/ui/breakpoints';
+import Button from '@semcore/ui/button';
 
 function Demo() {
   const index = useContext(Breakpoints.Context);

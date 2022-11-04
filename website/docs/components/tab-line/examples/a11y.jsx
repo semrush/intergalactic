@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import TabLine from '@semcore/tab-line';
+import TabLine from '@semcore/ui/tab-line';
 
 export default () => {
   const [value, onChange] = useState(1);

@@ -1,6 +1,6 @@
 import React from 'react';
-import Breadcrumbs from '@semcore/breadcrumbs';
-import Tooltip from '@semcore/tooltip';
+import Breadcrumbs from '@semcore/ui/breadcrumbs';
+import Tooltip from '@semcore/ui/tooltip';
 
 export default () => (
   <Breadcrumbs>

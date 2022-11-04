@@ -1,6 +1,6 @@
 import React from 'react';
-import DataTable from '@semcore/data-table';
-import Spin from '@semcore/spin';
+import DataTable from '@semcore/ui/data-table';
+import Spin from '@semcore/ui/spin';
 
 export default () => {
   return (

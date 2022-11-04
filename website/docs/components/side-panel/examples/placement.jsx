@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import Button from '@semcore/button';
-import { Text } from '@semcore/typography';
-import Select from '@semcore/select';
+import Button from '@semcore/ui/button';
+import { Text } from '@semcore/ui/typography';
+import Select from '@semcore/ui/select';
 import SidePanel from '@semcore/side-panel';
 
 const placements = ['left', 'right', 'bottom'];

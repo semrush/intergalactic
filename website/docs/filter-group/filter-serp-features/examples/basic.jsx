@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import Button from '@semcore/button';
-import { FilterTrigger } from '@semcore/base-trigger';
-import Select, { InputSearch } from '@semcore/select';
-import Link from '@semcore/link';
+import Button from '@semcore/ui/button';
+import { FilterTrigger } from '@semcore/ui/base-trigger';
+import Select, { InputSearch } from '@semcore/ui/select';
+import Link from '@semcore/ui/link';
 
 export default () => {
   const [filters, setFilters] = useState(false);

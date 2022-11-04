@@ -1,11 +1,11 @@
 import React from 'react';
-import FeedbackForm from '@semcore/feedback-form';
-import Input from '@semcore/input';
-import Checkbox from '@semcore/checkbox';
-import InputNumber from '@semcore/input-number';
-import Radio from '@semcore/radio';
-import Select from '@semcore/select';
-import { Text } from '@semcore/typography';
+import FeedbackForm from '@semcore/ui/feedback-form';
+import Input from '@semcore/ui/input';
+import Checkbox from '@semcore/ui/checkbox';
+import InputNumber from '@semcore/ui/input-number';
+import Radio from '@semcore/ui/radio';
+import Select from '@semcore/ui/select';
+import { Text } from '@semcore/ui/typography';
 
 const validate = (values) => {
   const errors = {};

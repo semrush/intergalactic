@@ -1,6 +1,6 @@
 import React from 'react';
-import Ellipsis from '@semcore/ellipsis';
-import { Box } from '@semcore/flex-box';
+import Ellipsis from '@semcore/ui/ellipsis';
+import { Box } from '@semcore/ui/flex-box';
 
 export default function () {
   return (

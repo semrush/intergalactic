@@ -1,10 +1,10 @@
 import React, { useRef, useState } from 'react';
 import { findDOMNode } from 'react-dom';
 import styled from 'styled-components';
-import ScrollArea from '@semcore/scroll-area';
-import { Box, Flex } from '@semcore/flex-box';
-import { Text } from '@semcore/typography';
-import Button from '@semcore/button';
+import ScrollArea from '@semcore/ui/scroll-area';
+import { Box, Flex } from '@semcore/ui/flex-box';
+import { Text } from '@semcore/ui/typography';
+import Button from '@semcore/ui/button';
 import { List } from 'react-virtualized';
 
 const Block = styled.div`

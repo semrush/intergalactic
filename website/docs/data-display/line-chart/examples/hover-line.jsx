@@ -1,5 +1,5 @@
 import React from 'react';
-import { Plot, XAxis, YAxis, HoverLine, minMax } from '@semcore/d3-chart';
+import { Plot, XAxis, YAxis, HoverLine, minMax } from '@semcore/ui/d3-chart';
 import { scaleLinear } from 'd3-scale';
 
 export default () => {

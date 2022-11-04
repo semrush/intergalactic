@@ -1,7 +1,7 @@
 import React from 'react';
-import Link from '@semcore/link';
-import HomeM from '@semcore/icon/Home/m';
-import ArrowRightM from '@semcore/icon/ArrowRight/m';
+import Link from '@semcore/ui/link';
+import HomeM from '@semcore/ui/icon/Home/m';
+import ArrowRightM from '@semcore/ui/icon/ArrowRight/m';
 
 export default function () {
   return (

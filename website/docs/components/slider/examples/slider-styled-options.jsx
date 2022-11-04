@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Slider from '@semcore/slider';
+import Slider from '@semcore/ui/slider';
 
 const Demo = () => {
   const [value, setValue] = useState('medium');
