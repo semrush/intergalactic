@@ -104,19 +104,22 @@ const GENERATOR = {
   UTILS: async (dependency: string, name: string) => {
     const require = createRequire(import.meta.url);
     const utilsMain = require.resolve(dependency);
-    const utilsPath = path.join(utilsMain, '..');
-    const utils = glob.sync('**/*.+(js|ts)', { cwd: utilsPath });
+    const utilsDistPath = path.join(utilsMain, '..');
+    const utilsPath = path.join(utilsDistPath, '..');
+    const utils = glob.sync('**/*.+(js|ts)', { cwd: utilsDistPath });
     for (const util of utils) {
       const utilNameWithoutExtention = util.replace(/\.(d\.)?(t|j)s$/, '');
 
       // index.js of utils throws & useless, so we copy it
       if (utilNameWithoutExtention === 'index') {
-        await fs.copy(`${utilsPath}/${util}`, `./${name}/lib/${util}`);
+        await fs.copy(`${utilsDistPath}/${util}`, `./${name}/lib/${util}`);
         continue;
       }
 
       for (const extension of exportExtensions) {
-        const defaultExport = await hasExportDefault(`${utilsPath}/${utilNameWithoutExtention}`);
+        const defaultExport = await hasExportDefault(
+          `${utilsDistPath}/${utilNameWithoutExtention}`,
+        );
         const template = defaultExport
           ? EXPORT_TEMPLATES[extension].LIB_DEFAULT
           : EXPORT_TEMPLATES[extension].LIB_NAMED;
@@ -127,6 +130,7 @@ const GENERATOR = {
         );
       }
     }
+    await fs.copy(`${utilsPath}/style`, `./${name}/style`);
   },
   ICONS: async (dependency: string, name: string) => {
     const require = createRequire(import.meta.url);
