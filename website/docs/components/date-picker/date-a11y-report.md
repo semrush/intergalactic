@@ -1,6 +1,6 @@
 ## Automated screen reader testing
 
-_Intergalactic v13.0.2, React v18.2.0, Playwright v1.25.1,
+_Intergalactic v13.1.0, React v18.2.0, Playwright v1.25.1,
 Guidepup v0.13.1, MacOS Big Sur 11._
 
 **Running screen reader against [this file](https://github.com/semrush/intergalactic/blob/master/website/docs/components/date-picker/examples/datepicker.jsx).**
@@ -28,7 +28,7 @@ Guidepup v0.13.1, MacOS Big Sur 11._
 20. Screen reader says "0".
 21. Screen reader types "05".
 22. Screen reader types "29".
-23. Screen reader says "9".
+23. Screen reader says "2".
 24. Screen reader goes out of active element.
 25. Screen reader says "Press Tab to go to popover group".
 26. Screen reader goes into the active element.
