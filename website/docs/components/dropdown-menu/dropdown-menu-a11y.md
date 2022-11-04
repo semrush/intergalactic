@@ -1,11 +1,12 @@
 ---
 title: A11y
 fileSource: dropdown-menu
+a11y: AA
 ---
 
 @## Keyboard support
 
-See detailed information for various cases in the [Keyboard control guide](/core-principles/a11y/a11y-keyboard/).
+See detailed information for various cases in the [Keyboard control guide](/core-principles/a11y/a11y-keyboard/#keyboard_support_for_dropdown).
 
 @## Other recommendations
 

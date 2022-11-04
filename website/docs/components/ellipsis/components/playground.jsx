@@ -28,9 +28,11 @@ export default PlaygroundGeneration((preview) => {
   return (
     <Box w={400}>
       <Ellipsis trim={trim} tooltip={tooltip} maxLine={maxLine}>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi hic nemo tenetur
-        voluptatem! A aliquid assumenda dolore ducimus impedit numquam ratione recusandae sed ullam
-        voluptate? Aperiam distinctio minus possimus quasi.
+        Intergalactic, planetary, planetary, intergalactic Intergalactic, planetary, planetary,
+        intergalactic Intergalactic, planetary, planetary, intergalactic Intergalactic, planetary,
+        planetary, intergalactic Another dimension, another dimension Another dimension, another
+        dimension Another dimension, another dimension Another dimension, another dimension Another
+        dimension, another dimension Another dimension
       </Ellipsis>
     </Box>
   );

@@ -82,6 +82,7 @@ To show more data in a limited space you can truncate paragraphs at the end. In 
 
 ![ellipsis in the pharagraph](static/ellipsis-pharagraph.png)
 
+@page ellipsis-a11y
 @page ellipsis-api
 @page ellipsis-code
 @page ellipsis-changelog
