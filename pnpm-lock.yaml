@@ -2343,20 +2343,6 @@ importers:
       babel-plugin-tester: 7.0.1
       jest: 29.0.1_@types+node@17.0.45
 
-  tools/shadow-loader:
-    specifiers:
-      '@reshadow/utils': 0.0.1-alpha.75
-      find-cache-dir: 3.3.1
-      loader-utils: 2.0.0
-      mkdirp: 1.0.4
-      webpack-virtual-modules: 0.3.2
-    dependencies:
-      '@reshadow/utils': 0.0.1-alpha.75
-      find-cache-dir: 3.3.1
-      loader-utils: 2.0.0
-      mkdirp: 1.0.4
-      webpack-virtual-modules: 0.3.2
-
   tools/slack-integration:
     specifiers:
       '@semcore/changelog-handler': 0.0.1
@@ -5174,18 +5160,6 @@ packages:
       {
         integrity: sha512-oYATyZXe0gLbOnqDa01T5HeivUiEY7LxyfbTYVX6Q8pIWvfBJE0ftrrJkeKA2PW5HilE7qWxn7tmlX2YQFowSg==,
       }
-    dev: false
-
-  /@reshadow/utils/0.0.1-alpha.75:
-    resolution:
-      {
-        integrity: sha512-9YerWUjSae8RVLacGh6XUhUIhfAG9K5CgvOjAa5t4HgTZ/ris4Wz1Yxj06wBKu8QacFBpY+D4YiJCAyEqnGBXA==,
-      }
-    dependencies:
-      html-tags: 3.2.0
-      resolve: 1.22.1
-      string-hash: 1.1.3
-      svg-tag-names: 2.0.1
     dev: false
 
   /@semcore/accordion/4.1.0_@semcore+core@1.13.0:
@@ -8443,13 +8417,6 @@ packages:
         integrity: sha512-+hN/Zh2D08Mx65pZ/4g5bsmNiZUuChDiQfTUQ7qJr4/kuopCr88xZsAXv6mBoZEsUI4OuGHlX59qE94K2mMW8Q==,
       }
     dev: true
-
-  /big.js/5.2.2:
-    resolution:
-      {
-        integrity: sha512-vyL2OymJxmarO8gxMr0mhChsO9QGwhynfuu4+MHTAW6czfq9humCB7rKpUjDd9YUiDPU4mzpyupFSvOClAwbmQ==,
-      }
-    dev: false
 
   /bignumber.js/9.1.0:
     resolution:
@@ -11718,14 +11685,6 @@ packages:
     engines: { node: '>= 0.10' }
     dev: true
 
-  /emojis-list/3.0.0:
-    resolution:
-      {
-        integrity: sha512-/kyM18EfinwXZbno9FyUGeFh87KC8HRQBQGildHZbEuRyWFOmv1U10o9BBp8XVZDVNNuQKyIGIu5ZYAAXJ0V2Q==,
-      }
-    engines: { node: '>= 4' }
-    dev: false
-
   /encodeurl/1.0.2:
     resolution:
       {
@@ -13557,18 +13516,6 @@ packages:
       pkg-dir: 3.0.0
     dev: false
 
-  /find-cache-dir/3.3.1:
-    resolution:
-      {
-        integrity: sha512-t2GDMt3oGC/v+BMwzmllWDuJF/xcDtE5j/fCGbqDD7OLuJkj0cfh1YSA5VKPvwMeLFLNDBkwOKZ2X85jGLVftQ==,
-      }
-    engines: { node: '>=8' }
-    dependencies:
-      commondir: 1.0.1
-      make-dir: 3.1.0
-      pkg-dir: 4.2.0
-    dev: false
-
   /find-package-json/1.2.0:
     resolution:
       {
@@ -14965,14 +14912,6 @@ packages:
         integrity: sha512-H2iMtd0I4Mt5eYiapRdIDjp+XzelXQ0tFE4JS7YFwFevXXMmOp9myNrUvCg0D6ws8iqkRPBfKHgbwig1SmlLfg==,
       }
     dev: true
-
-  /html-tags/3.2.0:
-    resolution:
-      {
-        integrity: sha512-vy7ClnArOZwCnqZgvv+ddgHgJiAFXe3Ge9ML5/mBctVJoUoYPCdxVucOywjDARn6CVoh3dRSFdPHy2sX80L0Wg==,
-      }
-    engines: { node: '>=8' }
-    dev: false
 
   /html-to-react/1.5.0:
     resolution:
@@ -17829,18 +17768,6 @@ packages:
       object-assign: 4.1.1
     dev: true
 
-  /loader-utils/2.0.0:
-    resolution:
-      {
-        integrity: sha512-rP4F0h2RaWSvPEkD7BLDFQnvSf+nK+wr3ESUjNTyAGobqrijmW92zc+SO6d4p4B1wh7+B/Jg1mkQe5NYUEHtHQ==,
-      }
-    engines: { node: '>=8.9.0' }
-    dependencies:
-      big.js: 5.2.2
-      emojis-list: 3.0.0
-      json5: 2.2.1
-    dev: false
-
   /locate-path/2.0.0:
     resolution:
       {
@@ -19010,15 +18937,6 @@ packages:
     hasBin: true
     dependencies:
       minimist: 1.2.6
-
-  /mkdirp/1.0.4:
-    resolution:
-      {
-        integrity: sha512-vVqVZQyf3WLx2Shd0qJ9xuvqgAyKPLAiqITEtqW0oIUjzo3PePDd6fW9iFz30ef7Ysp/oiWqbhszeGWW2T6Gzw==,
-      }
-    engines: { node: '>=10' }
-    hasBin: true
-    dev: false
 
   /moo-color/1.0.3:
     resolution:
@@ -20467,6 +20385,7 @@ packages:
     engines: { node: '>=8' }
     dependencies:
       find-up: 4.1.0
+    dev: true
 
   /pkg-up/3.1.0:
     resolution:
@@ -25072,13 +24991,6 @@ packages:
       }
     engines: { node: '>= 0.4' }
 
-  /svg-tag-names/2.0.1:
-    resolution:
-      {
-        integrity: sha512-BEZ508oR+X/b5sh7bT0RqDJ7GhTpezjj3P1D4kugrOaPs6HijviWksoQ63PS81vZn0QCjZmVKjHDBniTo+Domg==,
-      }
-    dev: false
-
   /svgo/1.3.2:
     resolution:
       {
@@ -26641,15 +26553,6 @@ packages:
       }
     engines: { node: '>=12' }
     dev: true
-
-  /webpack-virtual-modules/0.3.2:
-    resolution:
-      {
-        integrity: sha512-RXQXioY6MhzM4CNQwmBwKXYgBs6ulaiQ8bkNQEl2J6Z+V+s7lgl/wGvaI/I0dLnYKB8cKsxQc17QOAVIphPLDw==,
-      }
-    dependencies:
-      debug: 3.2.7
-    dev: false
 
   /whatwg-encoding/1.0.5:
     resolution:
