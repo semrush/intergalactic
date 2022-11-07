@@ -1,6 +1,6 @@
 ---
 title: A11y
-fileSource: pills
+a11y: AA
 ---
 
 @## Keyboard support

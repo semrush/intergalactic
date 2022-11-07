@@ -1,6 +1,6 @@
 ---
 title: A11y
-fileSource: input
+a11y: AA
 ---
 
 @## Resources

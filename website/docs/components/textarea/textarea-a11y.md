@@ -1,6 +1,7 @@
 ---
 title: A11y
 fileSource: textarea
+a11y: AA
 ---
 
 @## What component has

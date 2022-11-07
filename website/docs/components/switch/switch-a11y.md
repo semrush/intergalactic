@@ -1,6 +1,7 @@
 ---
 title: A11y
 fileSource: switch
+a11y: AA
 ---
 
 > #### General recommendations

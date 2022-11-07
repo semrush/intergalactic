@@ -1,6 +1,7 @@
 ---
 title: A11y
 fileSource: tooltip
+a11y: AA
 ---
 
 > #### General recommendations
