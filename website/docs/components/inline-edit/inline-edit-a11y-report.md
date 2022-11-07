@@ -39,5 +39,4 @@ Guidepup v0.13.1, MacOS Big Sur 11._
 31. Screen reader says "world ?".
 32. Screen reader presses the "Escape" button.
 33. Screen reader says "Algernon".
-34. Screen reader says "You are currently on a group, inside of web content.  To exit this group, press Control-Option-Shift-Up Arrow.".
 ```

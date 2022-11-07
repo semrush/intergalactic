@@ -21,7 +21,7 @@ Guidepup v0.13.1, MacOS Big Sur 11._
 13. Screen reader goes into the active element.
 14. Screen reader says "In edit text".
 15. Screen reader types "20".
-16. Screen reader says "0".
+16. Screen reader says "20".
 17. Screen reader goes out of active element.
 18. Screen reader says "Out of edit text".
 19. Screen reader goes to the previous element.
