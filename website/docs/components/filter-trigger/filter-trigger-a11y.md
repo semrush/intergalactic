@@ -9,3 +9,5 @@ See detailed information about the keyboard support for the FilterTrigger in the
 @## Other recommendations
 
 See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/).
+
+@include filter-trigger-a11y-report

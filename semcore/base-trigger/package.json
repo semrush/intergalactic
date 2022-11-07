@@ -13,12 +13,12 @@
     "test": "jest"
   },
   "dependencies": {
-    "@semcore/utils": "^3.29",
     "@semcore/dot": "^4.0.0",
     "@semcore/flex-box": "^4",
     "@semcore/icon": "2.16 - 3",
     "@semcore/neighbor-location": "^3",
-    "@semcore/spin": "^4"
+    "@semcore/spin": "^4",
+    "@semcore/utils": "^3.29"
   },
   "peerDependencies": {
     "@semcore/core": "^1.11",
@@ -33,7 +33,9 @@
     "directory": "semcore/base-trigger"
   },
   "devDependencies": {
-    "@types/react": "18.0.21",
-    "@semcore/jest-preset-ui": "1.0.0"
+    "@guidepup/playwright": "0.6.1",
+    "@playwright/test": "1.25.1",
+    "@semcore/jest-preset-ui": "1.0.0",
+    "@types/react": "18.0.21"
   }
 }
