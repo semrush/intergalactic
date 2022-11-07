@@ -129,13 +129,11 @@ class FeedbackLink extends React.PureComponent {
     const { status, value } = this.state;
     return (
       <Dropdown>
-        <Dropdown.Trigger>
-          <Link>
-            <Link.Addon>
-              <ChatXS />
-            </Link.Addon>
-            <Link.Text>Send feedback</Link.Text>
-          </Link>
+        <Dropdown.Trigger tag={Link}>
+          <Link.Addon>
+            <ChatXS />
+          </Link.Addon>
+          <Link.Text>Send feedback</Link.Text>
         </Dropdown.Trigger>
         <Dropdown.Popper>
           {(props, { visible }) => (
