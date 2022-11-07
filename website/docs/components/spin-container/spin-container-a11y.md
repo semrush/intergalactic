@@ -1,6 +1,7 @@
 ---
 title: A11y
 fileSource: spin-container
+a11y: AA
 ---
 
 @## What component has

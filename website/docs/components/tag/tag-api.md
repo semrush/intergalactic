@@ -1,6 +1,7 @@
 ---
 title: API
 fileSource: tag
+a11y: AA
 ---
 
 @## Tag

@@ -1,5 +1,6 @@
 ---
 title: A11y
+a11y: AA
 ---
 
 Flags is a straight-forward component that does not require special compliance for accessibility.

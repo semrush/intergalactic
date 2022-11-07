@@ -1,6 +1,7 @@
 ---
 title: A11y
 fileSource: select
+a11y: AA
 ---
 
 > #### General recommendations

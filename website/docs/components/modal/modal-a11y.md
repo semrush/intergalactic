@@ -1,6 +1,6 @@
 ---
 title: A11y
-fileSource: modal
+a11y: AA
 ---
 
 @## Keyboard support

@@ -1,6 +1,5 @@
 ---
 title: A11y
-fileSource: base-trigger
 ---
 
 @## Keyboard support

@@ -1,6 +1,7 @@
 ---
 title: A11y
 fileSource: time-picker
+a11y: AA
 ---
 
 @## Keyboard support

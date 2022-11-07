@@ -1,6 +1,7 @@
 ---
 title: A11y
 fileSource: slider
+a11y: AA
 ---
 
 @## Keyboard support

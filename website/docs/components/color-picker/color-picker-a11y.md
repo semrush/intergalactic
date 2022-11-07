@@ -1,6 +1,6 @@
 ---
 title: A11y
-fileSource: color-picker
+a11y: AA
 ---
 
 Color picker component provides basic support for keyboard and screen readers.

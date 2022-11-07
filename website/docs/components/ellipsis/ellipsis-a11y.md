@@ -1,5 +1,6 @@
 ---
 title: A11y
+a11y: AA
 ---
 
 Ellipsis is a straight-forward component that does not require special compliance for accessibility.

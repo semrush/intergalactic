@@ -1,6 +1,7 @@
 ---
 title: A11y
 fileSource: side-panel
+a11y: AA
 ---
 
 @## Keyboard support

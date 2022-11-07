@@ -1,6 +1,7 @@
 ---
 title: API
 fileSource: tab-panel
+a11y: AA
 ---
 
 @## TabPanel

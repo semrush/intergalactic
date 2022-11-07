@@ -1,6 +1,6 @@
 ---
 title: A11y
-fileSource: fullscreen-modal
+a11y: AA
 ---
 
 @## What component has
