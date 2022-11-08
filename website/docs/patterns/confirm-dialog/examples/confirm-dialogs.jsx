@@ -19,12 +19,15 @@ const WarningBlock = styled(Flex)`
 const Demo = () => {
   const [value, setValue] = React.useState('');
   const [visible, setVisible] = React.useState(false);
+  const [focused, setFocused] = React.useState(false);
+  const [state, setState] = React.useState('normal');
+  const isValid = value === 'тест';
   const handleOpen = React.useCallback(() => setVisible(true), []);
   const handleClose = React.useCallback(() => setVisible(false), []);
-  const handleDelete = React.useCallback(() => setFocused(true), []);
-  const isValid = value === 'тест';
-
-  const [focused, setFocused] = React.useState(false);
+  const handleDelete = React.useCallback(() => {
+    setFocused(true);
+    setState(isValid ? 'normal' : 'invalid');
+  }, [value]);
 
   function handlerInput(v) {
     setValue(v);
@@ -62,14 +65,17 @@ const Demo = () => {
             theme="warning"
             placement="right"
           >
-            <Input size="m" state={isValid ? 'normal' : 'invalid'} w={'100%'}>
+            <Input size="m" state={state} w={'100%'}>
               <Input.Value
                 id="project"
                 placeholder="Enter project name"
                 value={value}
                 onChange={handlerInput}
                 onBlur={() => setFocused(false)}
-                onFocus={() => setFocused(true)}
+                onFocus={() => {
+                  setFocused(true);
+                  setState(isValid ? 'normal' : 'invalid');
+                }}
               />
             </Input>
           </Tooltip>
