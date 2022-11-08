@@ -2,6 +2,7 @@
 title: UX patterns
 ---
 
+@page confirm-dialog
 @page modal-content
 @page confirm-dialogs
 @page empty-page
