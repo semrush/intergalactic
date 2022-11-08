@@ -6,13 +6,11 @@ tabName: Design
 
 @## Description
 
-A **confirmation dialog** asks users whether they are sure that they want to proceed with a command that they have just issued to a system. It that consists of [Modal] (components/modal/).
+A **confirmation dialog** asks users whether they are sure that they want to proceed with a command that they have just issued to a system. It's that consists of [Modal] (components/modal/).
 
-Basically it’s a second chanse for user to predict issues, but it wouldnt be one if users automate their response to the conformation and simply click Yes without thinking further.
+It’s a second chanse for user to predict issues, but it wouldnt be one if users automate their response to the conformation and simply click Yes without thinking further.
 
 Having a clear and descriptive message will explain the window’s usage. Users should be able to read the text and understand the message you’re trying to tell them and possible actions.
-
-[Article](https://uxdesign.cc/delete-models-in-products-because-sometimes-cats-walk-on-keyboards-6f886b767f6d) how to predict such unthinkable mistackes.
 
 @## Component appearing
 
@@ -31,3 +29,17 @@ When users are about to take an action that will result in complex consequences,
 <!-- pic 3 -->
 
 Try to avoid situations when the content in a modal window requires a scrollbar.
+
+@## Margin and paddings
+
+<!-- pic 4 -->
+<!-- pic 5 -->
+
+@## Buttons behavior
+
+"Delete" and "Cancel" buttons
+
+- Focus is at the textarea. Placeholder says: Enter project name;
+- The Delete button becomes active.
+
+@page confirm-dialogs-code
