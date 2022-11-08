@@ -292,7 +292,7 @@ jobs:
         uses: nick-fields/retry@v2
         with:
           timeout_minutes: 40
-          max_attempts: 2
+          max_attempts: 3
           command: pnpm run vo-test
       - name: Github GPG Auth
         uses: crazy-max/ghaction-import-gpg@v4.4.0
