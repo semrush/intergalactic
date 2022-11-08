@@ -1,5 +1,5 @@
 ---
-title: ConfirmDialog
+title: Confirm Dialog
 fileSource: confirm-dialog
 tabName: Design
 ---
@@ -31,5 +31,3 @@ When users are about to take an action that will result in complex consequences,
 <!-- pic 3 -->
 
 Try to avoid situations when the content in a modal window requires a scrollbar.
-
-@page confirm-dialog-code
