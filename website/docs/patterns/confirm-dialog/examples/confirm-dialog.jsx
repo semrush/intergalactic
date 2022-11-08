@@ -71,7 +71,10 @@ const Demo = () => {
                 placeholder="Enter project name"
                 value={value}
                 onChange={handlerInput}
-                onBlur={() => setFocused(false)}
+                onBlur={() => {
+                  setFocused(false);
+                  setState(isValid ? 'normal' : 'invalid');
+                }}
                 onFocus={() => {
                   setFocused(true);
                   setState(isValid ? 'normal' : 'invalid');
