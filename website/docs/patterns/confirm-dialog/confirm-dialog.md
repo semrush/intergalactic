@@ -6,7 +6,7 @@ tabName: Design
 
 @## Description
 
-A **confirmation dialog** asks users whether they are sure that they want to proceed with a command that they have just issued to a system. It's that consists of [Modal] (components/modal/).
+A **confirmation dialog** asks users whether they are sure that they want to proceed with a command that they have just issued to a system. It's that consists of [Modal](components/modal/).
 
 It’s a second chanse for user to predict issues, but it wouldnt be one if users automate their response to the conformation and simply click Yes without thinking further.
 
@@ -14,32 +14,28 @@ Having a clear and descriptive message will explain the window’s usage. Users 
 
 @## Component appearing
 
-> Description of the component for modal windows can be found in the [Modal] (components/modal/).
+> Description of the component for modal windows can be found in the [Modal](components/modal/).
 
 When users are about to take an irreversible action, like permanently deleting an item or they can lost unsaved data, we should ask them in advance if they understand what’s about to happen.
 
-<!-- pic 1
-     pic 2  -->
+![confirm dialog save appearance](static/confirm-dialog-save.png)
+![confirm dialog delete appearance](static/confirm-dialog-delete.png)
 
 When users are about to take an action that will result in complex consequences, for example, affecting the configuration of the data:
 
-- It must be explained exactly what will change
-- The user has to confirm the action by entering a name
+- it must be explained exactly what will change;
+- the user has to confirm the action by entering a name.
 
-<!-- pic 3 -->
+![confirm dialog large appearance](static/confirm-dialog-large.png)
 
 Try to avoid situations when the content in a modal window requires a scrollbar.
 
-@## Margin and paddings
+@## Paddings
 
-<!-- pic 4 -->
-<!-- pic 5 -->
+![confirm dialog paddings](static/confirm-dialog-paddings.png)
 
-@## Buttons behavior
+@## Other recommendations
 
-"Delete" and "Cancel" buttons
+See more recommendations in the [article](https://www.nngroup.com/articles/confirmation-dialog/) from Nielsen Norman Group.
 
-- Focus is at the textarea. Placeholder says: Enter project name;
-- The Delete button becomes active.
-
-@page confirm-dialogs-code
+@page confirm-dialog-code

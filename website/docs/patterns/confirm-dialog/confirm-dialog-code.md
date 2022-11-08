@@ -4,4 +4,4 @@ title: Example
 
 @## ConfirmDialog example
 
-@example confirm-dialogs
+@example confirm-dialog
