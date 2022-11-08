@@ -1,5 +1,5 @@
 ---
-title: Confirm Dialog
+title: Confirmation Dialog
 fileSource: confirm-dialog
 tabName: Design
 ---
@@ -14,7 +14,7 @@ Having a clear and descriptive message will explain the window’s usage. Users 
 
 @## Component appearing
 
-> Description of the component for modal windows can be found in the [Modal](components/modal/).
+> Description of the component for modal windows can be found in the [Modal](components/modal/), for cancell actions in the [NoticeBubble](/components/notice-bubble/).
 
 When users are about to take an irreversible action, like permanently deleting an item or they can lost unsaved data, we should ask them in advance if they understand what’s about to happen.
 
