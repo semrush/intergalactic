@@ -38,25 +38,25 @@ const Demo = () => {
       <Button use="primary" onClick={handleOpen}>
         Open modal
       </Button>
-      <Modal visible={visible} onClose={handleClose}>
+      <Modal visible={visible} onClose={handleClose} w={536}>
         <Text tag="h2" size={500} mb={4}>
           Delete project?
         </Text>
-        <Text size={200} mb={4} tag="p">
+        <Text size={300} mb={4} tag="p">
           This will <Text tag="strong">delete</Text> the following campaigns set up for{' '}
           <Text tag="strong">test.com</Text> with all their data:
         </Text>
-        <List size={200} mb={4}>
+        <List size={300} mb={4}>
           <List.Item>Position Tracking</List.Item>
           <List.Item>Social Media Poster</List.Item>
           <List.Item>Backlink Audit</List.Item>
           <List.Item>Content Analyzer</List.Item>
         </List>
         <WarningBlock tag="label" direction="column" htmlFor="project">
-          <Text size={200} mb={1} tag="p">
+          <Text size={300} mb={2} tag="p">
             Confirm deletion by typing the project name{' '}
             <Text tag="strong" color="red-500">
-              тест
+              Test
             </Text>
           </Text>
           <Tooltip
@@ -65,7 +65,7 @@ const Demo = () => {
             theme="warning"
             placement="right"
           >
-            <Input size="m" state={state} w={'100%'}>
+            <Input size="l" state={state} w={'100%'}>
               <Input.Value
                 id="project"
                 placeholder="Enter project name"
