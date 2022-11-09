@@ -18,6 +18,7 @@ a11y: AA
 
 ### Roles and attributes
 
+- `tabindex="0"` includes the element in the `Tab` sequence.
 - For more information about the radio or checkbox list see [Radiobutton](/components/radio/radio-a11y/) and [Checkbox](/components/checkbox/checkbox-a11y/) guides.
 - For information about the dropdown behavior see [Keyboard support for dropdown](/core-principles/a11y/a11y-keyboard/#keyboard_support_for_dropdown).
 
