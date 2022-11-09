@@ -15,12 +15,12 @@ a11y: AA
 
 The list below describes roles and attributes that component already has.
 
-| Role   | Attribute              | Element    | Usage                                                                                                                    |
-| ------ | ---------------------- | ---------- | ------------------------------------------------------------------------------------------------------------------------ |
-| button |                        | `div`, `a` | Identifies the element as a button widget. Accessible name for the button is defined by the text content of the element. |
-|        | `tabindex="0"`         | `div`, `a` | Includes the element in the `Tab` sequence. Needed on the `a` element because it does not have a `href` attribute.       |
-|        | `aria-pressed="false"` | `a`        | Identifies the button as a toggle button. Indicates the toggle button is not pressed.                                    |
-|        | `aria-pressed="true"`  | `a`        | Identifies the button as a toggle button. Indicates the toggle button is pressed.                                        |
+| Role     | Attribute              | Element    | Usage                                                                                                              |
+| -------- | ---------------------- | ---------- | ------------------------------------------------------------------------------------------------------------------ |
+| `button` |                        | `div`, `a` | Identifies the element as a button. Accessible name for the button is defined by the text content of the element.  |
+|          | `tabindex="0"`         | `div`, `a` | Includes the element in the `Tab` sequence. Needed on the `a` element because it does not have a `href` attribute. |
+|          | `aria-pressed="false"` | `a`        | Identifies the button as a toggle button. Indicates the toggle button is not pressed.                              |
+|          | `aria-pressed="true"`  | `a`        | Identifies the button as a toggle button. Indicates the toggle button is pressed.                                  |
 
 @## Considerations for developers
 
@@ -32,6 +32,15 @@ The list below describes roles and attributes that component already has.
 - If there is no text in the button, it is necessary to add aria-label with a button description.
 
 Find live examples in the [A11y style guide](https://a11y-style-guide.com/style-guide/section-general.html).
+
+### Roles and attributes
+
+The list below will help you to keep in mind the necessary roles and attributes to make our components fully accessible in the particular cases in your interfaces.
+
+| Attribute         | Element  | Usage                                                                                                                                                                 |
+| ----------------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `aria-label`      | `button` | The `aria-label` attribute defines a string value that labels an interactive element. It is required props for buttons without text content.                          |
+| `aria-labelledby` | `button` | The `aria-labelledby` attribute identifies the element (or elements) that labels the element it is applied to. It is required props for buttons without text content. |
 
 @## Resources
 
