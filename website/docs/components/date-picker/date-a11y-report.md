@@ -28,7 +28,7 @@ Guidepup v0.13.1, MacOS Big Sur 11._
 20. Screen reader says "0".
 21. Screen reader types "05".
 22. Screen reader types "29".
-23. Screen reader says "2".
+23. Screen reader says "9".
 24. Screen reader goes out of active element.
 25. Screen reader says "Press Tab to go to popover group".
 26. Screen reader goes into the active element.
@@ -47,7 +47,7 @@ Guidepup v0.13.1, MacOS Big Sur 11._
 39. Screen reader types "2000".
 40. Screen reader says "to date MM/DD/YYYY invalid data edit text".
 41. Screen reader types "05".
-42. Screen reader says "05".
+42. Screen reader says "5".
 43. Screen reader types "29".
 44. Screen reader says "9".
 45. Screen reader types "2000".
