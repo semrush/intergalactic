@@ -17,10 +17,11 @@ a11y: AA
 
 The list below describes roles and attributes that component already has.
 
-| Role | Attribute                 | Element | Usage                                                                                 |
-| ---- | ------------------------- | ------- | ------------------------------------------------------------------------------------- |
-|      | `aria-label="Breadcrumb"` | `div`   | Provides a label that describes the type of navigation provided in the `nav` element. |
-|      | `aria-current="page"`     | `a`     | Applied to the last link in the set to indicate that it represents the current page.  |
+| Role    | Attribute                 | Element | Usage                                                                                                                                                             |
+| ------- | ------------------------- | ------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|         | `aria-label="Breadcrumb"` | `div`   | Provides a label that describes the type of navigation provided in the `nav` element.                                                                             |
+|         | `aria-current="page"`     | `a`     | Applied to the last link in the set to indicate that it represents the current page.                                                                              |
+| `group` |                           |         | The `group` role identifies a set of user interface objects that is not intended to be included in a page summary or table of contents by assistive technologies. |
 
 @## Resources
 
