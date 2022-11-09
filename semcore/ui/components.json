@@ -21,6 +21,7 @@
     "@semcore/dropdown",
     "@semcore/dropdown-menu",
     "@semcore/d3-chart",
+    "@semcore/ellipsis",
     "@semcore/email",
     "@semcore/errors",
     "@semcore/feature-popover",
