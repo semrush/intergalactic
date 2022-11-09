@@ -1,6 +1,6 @@
 ## Automated screen reader testing
 
-_Intergalactic v13.1.0, React v18.2.0, Playwright v1.25.1,
+_Intergalactic v13.1.1, React v18.2.0, Playwright v1.25.1,
 Guidepup v0.13.1, MacOS Big Sur 11._
 
 **Running screen reader against [this file](https://github.com/semrush/intergalactic/blob/master/website/docs/components/inline-edit/examples/simple-text.jsx).**
@@ -11,7 +11,7 @@ Guidepup v0.13.1, MacOS Big Sur 11._
 3. Screen reader triggers element default action.
 4. Screen reader says "Martin Eden Insertion at end of text. edit text Press Enter to apply value, press Escape to discard changes group".
 5. Screen reader presses the "Backspace" button.
-6. Screen reader says "You are currently on a text field. To enter text in this field, type.".
+6. Screen reader says "n".
 7. Screen reader presses the "Backspace" button.
 8. Screen reader says "e".
 9. Screen reader presses the "Backspace" button.
@@ -36,7 +36,7 @@ Guidepup v0.13.1, MacOS Big Sur 11._
 28. Screen reader triggers element default action.
 29. Screen reader says "Algernon Insertion at end of text. edit text Press Enter to apply value, press Escape to discard changes group".
 30. Screen reader types "Hello world?".
-31. Screen reader says "You are currently on a text field. To enter text in this field, type.".
+31. Screen reader says "world ?".
 32. Screen reader presses the "Escape" button.
 33. Screen reader says "Algernon".
 ```
