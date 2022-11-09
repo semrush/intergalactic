@@ -1,3 +1,34 @@
+## [13.1.1] - 2022-11-09
+
+### @semcore/base-trigger
+
+- **Fixed** Fixed `FilterTrigger` accessability.
+
+### @semcore/checkbox
+
+- **Fixed** Fixed displaying in unchecked and disabled state.
+
+### @semcore/d3-chart
+
+- **Fixed** Fixed hover and active animated for `Donut` chart.
+
+### @semcore/date-picker
+
+- **Fixed** Fixed input trigger visual divergence from initial design.
+- **Fixed** Removed lock on fixed version of `@semcore/input`.
+
+### @semcore/icon
+
+- **Added** Added `LookerStudio` icon.
+
+### @semcore/input-mask
+
+- **Fixed** Fixed mask and text line-height mismatch.
+
+### @semcore/pagination
+
+- **Fixed** Fixed styles for last and single pages
+
 ## [13.1.0] - 2022-11-03
 
 ### @semcore/animation
