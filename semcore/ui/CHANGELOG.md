@@ -4,6 +4,10 @@
 
 - **Fixed** Fixed `FilterTrigger` accessability.
 
+### @semcore/ellipsis
+
+- **Added** Component was added to export of `@semcore/ui`.
+
 ### @semcore/checkbox
 
 - **Fixed** Fixed displaying in unchecked and disabled state.
