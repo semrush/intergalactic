@@ -24,16 +24,21 @@ export const eventToPoint = (event: React.MouseEvent<HTMLElement>, svgRoot: SVGE
 
 type InvertableScale =
   | ScaleIdentity
+  | ScaleBand<unknown>
   | ScaleTime<unknown, unknown>
   | ScaleContinuousNumeric<unknown, unknown>;
 export const invert = <Scale extends InvertableScale = InvertableScale>(
   scale: Scale,
   value: number,
 ) => {
-  if (scale.invert) return scale.invert(value);
+  if ('invert' in scale && scale.invert) return scale.invert(value);
 
-  const range = scale.range() as number[];
+  const range = scale.range() as [number, number];
   const domain = scale.domain();
+  if ('paddingOuter' in scale) {
+    range[0] += scale.paddingOuter() * scale.step();
+    range[1] -= scale.paddingOuter() * scale.step();
+  }
 
   return scaleQuantize()
     .domain((range[0] <= range[1] ? range : range.slice().reverse()) as NumberValue[])
@@ -134,6 +139,7 @@ export const getIndexFromData = <
   }
   // detect bar chart
   else if ('step' in scale && typeof scale.step !== 'undefined') {
+    // console.log({ key, scale, value });
     const index = data.findIndex((d) => d[key] === value);
     return index >= 0 ? index : null;
   } else {
