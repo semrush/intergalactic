@@ -87,12 +87,12 @@ class DragAndDropRoot extends Component {
     });
   };
 
-  draggable = (e) => {
+  draggable = (event) => {
     const { draggable, offsets } = this.state;
     if (draggable.active) {
       const { initial } = draggable;
-      const currentX = e.clientX - initial.x;
-      const currentY = e.clientY - initial.y;
+      const currentX = event.clientX - initial.x;
+      const currentY = event.clientY - initial.y;
 
       this.setState(() => {
         const newOffsets = offsets;
@@ -119,9 +119,9 @@ class DragAndDropRoot extends Component {
     }));
   };
 
-  activeDraggable = (e) => {
+  activeDraggable = (event) => {
     const { offsets } = this.state;
-    const { target, clientX, clientY } = e;
+    const { target, clientX, clientY } = event;
     const indexItem = getChildNumber(target);
     if (indexItem >= 0) {
       const offset = offsets[indexItem];
@@ -143,9 +143,9 @@ class DragAndDropRoot extends Component {
     }
   };
 
-  changePlaceholderDroppable = (e, isAction) => {
+  changePlaceholderDroppable = (event, isAction) => {
     const { theme } = this.asProps;
-    const droppableNode = e.currentTarget;
+    const droppableNode = event.currentTarget;
     if (droppableNode && theme) {
       droppableNode.classList.toggle(`dnd-placeholder-${theme}`, isAction);
     }
@@ -172,27 +172,27 @@ class DragAndDropRoot extends Component {
     );
   };
 
-  droppableDragOver = (e) => {
-    e.preventDefault();
-    this.changePlaceholderDroppable(e, true);
+  droppableDragOver = (event) => {
+    event.preventDefault();
+    this.changePlaceholderDroppable(event, true);
   };
 
-  droppableDragLeave = (e) => {
-    e.preventDefault();
-    this.changePlaceholderDroppable(e, false);
+  droppableDragLeave = (event) => {
+    event.preventDefault();
+    this.changePlaceholderDroppable(event, false);
   };
 
-  dragOver = (e) => {
-    e.preventDefault();
+  dragOver = (event) => {
+    event.preventDefault();
   };
 
-  dragEnd = (e) => {
-    e.preventDefault();
-    const { currentTarget, dataTransfer } = e;
+  dragEnd = (event) => {
+    event.preventDefault();
+    const { currentTarget, dataTransfer } = event;
     const { draggable } = this.state;
 
     this.unActiveDraggable();
-    this.changePlaceholderDroppable(e, false);
+    this.changePlaceholderDroppable(event, false);
     currentTarget.style.cursor = '';
 
     // cancel drop
@@ -201,36 +201,36 @@ class DragAndDropRoot extends Component {
     }
   };
 
-  dragEnter = (e) => {
-    e.preventDefault();
+  dragEnter = (event) => {
+    event.preventDefault();
     const { draggable } = this.state;
     const draggableNode = draggable.item;
-    const droppableNode = e.currentTarget;
+    const droppableNode = event.currentTarget;
 
     if (droppableNode.draggable) {
-      e.stopPropagation();
+      event.stopPropagation();
       draggableNode.style.cursor = 'move';
-      this.changePlaceholderDroppable(e, true);
+      this.changePlaceholderDroppable(event, true);
       this.swapDraggable(draggableNode, droppableNode);
     } else {
       draggableNode.style.cursor = 'no-drop';
     }
   };
 
-  dragLeave = (e) => {
-    e.preventDefault();
-    this.changePlaceholderDroppable(e, false);
+  dragLeave = (event) => {
+    event.preventDefault();
+    this.changePlaceholderDroppable(event, false);
   };
 
-  drop = (e) => {
-    e.preventDefault();
+  drop = (event) => {
+    event.preventDefault();
     const { draggable } = this.state;
-    const droppableNode = e.currentTarget;
+    const droppableNode = event.currentTarget;
     const draggableNode = draggable.item;
 
-    this.draggable(e);
+    this.draggable(event);
     this.insertNodeInDroppableZone(draggableNode, droppableNode);
-    this.changePlaceholderDroppable(e, false);
+    this.changePlaceholderDroppable(event, false);
   };
 
   getDraggableProps(_, index) {
@@ -254,51 +254,44 @@ class DragAndDropRoot extends Component {
     };
   }
 
-  handleKeyDown = (e) => {
+  handleKeyDown = (event) => {
     const {
       draggable: { active },
       droppable,
     } = this.state;
 
-    const { target } = e;
+    const { target } = event;
     const callFunction = droppable ? this.insertNodeInDroppableZone : this.swapDraggable;
-
-    // Escape || Tab
-    if ((e.keyCode === 27 || e.keyCode === 9) && active) {
-      e.preventDefault();
+    if ((event.code === 'Escape' || event.code === 'Tab') && active) {
+      event.preventDefault();
       this.unActiveDraggable();
     }
-    //Space
-    if (e.keyCode === 32) {
-      e.preventDefault();
+    if (event.code === 'Space') {
+      event.preventDefault();
       if (!active) {
-        this.activeDraggable(e);
+        this.activeDraggable(event);
       } else {
         this.unActiveDraggable();
       }
     }
-    // Arrow left
-    if (e.keyCode === 37 && active) {
-      e.preventDefault();
+    if (event.code === 'ArrowLeft' && active) {
+      event.preventDefault();
       callFunction(target, droppable || target.previousElementSibling);
-      e.target.focus();
+      event.target.focus();
       this.unActiveDraggable();
     }
-    // Arrow Up
-    if (e.keyCode === 38 && active) {
-      e.preventDefault();
+    if (event.code === 'ArrowUp' && active) {
+      event.preventDefault();
       callFunction(target, droppable || target.previousElementSibling);
       target.focus();
     }
-    // Arrow right
-    if (e.keyCode === 39 && active) {
-      e.preventDefault();
+    if (event.code === 'ArrowRight' && active) {
+      event.preventDefault();
       callFunction(target, droppable || target.nextElementSibling);
       target.focus();
     }
-    // Arrow Down
-    if (e.keyCode === 40 && active) {
-      e.preventDefault();
+    if (event.code === 'ArrowDown' && active) {
+      event.preventDefault();
       callFunction(target, droppable || target.nextElementSibling);
       target.focus();
     }
@@ -315,6 +308,8 @@ class Draggable extends Component {
     noDrag: false,
   };
 
+  ref = React.createRef();
+
   componentDidMount() {
     const { $eventEmitter } = this.asProps;
     $eventEmitter && $eventEmitter.emit('draggable');
@@ -329,7 +324,13 @@ class Draggable extends Component {
     const SDraggable = Root;
     const { styles, placement, noDrag } = this.asProps;
     return sstyled(styles)(
-      <SDraggable render={Box} draggable={!noDrag} tabIndex={0} placement={placement} />,
+      <SDraggable
+        render={Box}
+        ref={this.ref}
+        draggable={!noDrag}
+        tabIndex={0}
+        placement={placement}
+      />,
     );
   }
 }
