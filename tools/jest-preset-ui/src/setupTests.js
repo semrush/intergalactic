@@ -1,6 +1,7 @@
 const { configureToMatchImageSnapshot } = require('jest-image-snapshot');
 const { toHaveStyle } = require('@testing-library/jest-dom/matchers');
 const { toHaveNoViolations } = require('jest-axe');
+const { TextEncoder, TextDecoder } = require('util');
 
 const toMatchImageSnapshot = configureToMatchImageSnapshot({
   comparisonMethod: 'ssim',
@@ -49,5 +50,8 @@ if (global.requestAnimationFrame) {
     }, 0);
   };
 }
+
+global.TextEncoder = TextEncoder;
+global.TextDecoder = TextDecoder;
 
 jest.setTimeout(20000);
