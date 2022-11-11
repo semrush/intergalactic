@@ -8,12 +8,13 @@ a11y: AA
 
 ### Keyboard support
 
-| Key                              | Function                           |
-| -------------------------------- | ---------------------------------- |
-| `Tab`                            | Moves keyboard focus to the input. |
-| `Up` arrow or `Shift` + `Up`     | Increases the value.               |
-| `Down` arrow or `Shift` + `Down` | Decreases the value.               |
-| `Enter`                          | Submits the entered value.         |
+| Key                              | Function                                       |
+| -------------------------------- | ---------------------------------------------- |
+| `Tab`                            | Moves focus to the next focusable element.     |
+| `Shift + Tab`                    | Moves focus to the previous focusable element. |
+| `Up` arrow or `Shift` + `Up`     | Increases the value.                           |
+| `Down` arrow or `Shift` + `Down` | Decreases the value.                           |
+| `Enter`                          | Submits the entered value.                     |
 
 See detailed information about the keyboard support for the input fileds in the [Keyboard control guide](/core-principles/a11y/a11y-keyboard/#input_i_textarea).
 

@@ -7,10 +7,11 @@ a11y: AA
 
 ### Keyboard support
 
-| Key     | Function                                               |
-| ------- | ------------------------------------------------------ |
-| `Tab`   | Moves keyboard focus to the checkbox.                  |
-| `Space` | Toggles checkbox between checked and unchecked states. |
+| Key           | Function                                               |
+| ------------- | ------------------------------------------------------ |
+| `Tab`         | Moves focus to the next focusable element.             |
+| `Shift + Tab` | Moves focus to the previous focusable element.         |
+| `Space`       | Toggles checkbox between checked and unchecked states. |
 
 ### Roles and attributes
 
