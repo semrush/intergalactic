@@ -36,7 +36,7 @@ export default () => {
           style={{ zIndex: '9999' }}
         >
           <NoticeGlobal.Content tag={Flex} justifyContent="center">
-            <Text size={100} tag="span" color="white">
+            <Text size={300} tag="span" color="white">
               Look at this cool notice!
             </Text>
           </NoticeGlobal.Content>
