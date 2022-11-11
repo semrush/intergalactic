@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.5.1] - 2022-11-11
+
+### Fixed
+
+- Fixed `Bar` click handler typings.
+
 ## [2.5.0] - 2022-11-10
 
 ### Fixed
