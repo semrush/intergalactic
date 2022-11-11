@@ -39,13 +39,13 @@ The component consists of:
 
 Below you can see an example of how such a component works with one of the possible triggers.
 
-| State                   | Appearance example                              | Styles                                                                                                                                                                                                                      |
-| ----------------------- | ----------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Normal                  | ![appearance example](static/normal.png)        | The color of the placeholder is the same as a regular input has - `--gray-300`.                                                                                                                                             |
-| Hover                   | ![appearance example](static/hover.png)         | Cursor changes to `pointer`. The icon changes color to `--gray-400`.                                                                                                                                                        |
-| Focus                   | ![appearance example](static/opened.png)        | Show the input you need for data entry ([normal](/components/input/), [textarea]/components/textarea/), [select]/components/select), [color-picker]/components/color-picker), [time-picker]/components/time-picker), etc.). |
-| Entered data            | ![appearance example](static/success.png)       | Text color is `--gray-800`.                                                                                                                                                                                                 |
-| Entered data with hover | ![appearance example](static/success-hover.png) | Cursor changes to `pointer`. The interactive trailing addon changes color to `--gray-400`.                                                                                                                                  |
+| State                   | Appearance example                              | Styles                                                                                                                                                                                                                          |
+| ----------------------- | ----------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Normal                  | ![appearance example](static/normal.png)        | The color of the placeholder is the same as a regular input has - `--gray-300`.                                                                                                                                                 |
+| Hover                   | ![appearance example](static/hover.png)         | Cursor changes to `pointer`. The icon changes color to `--gray-400`.                                                                                                                                                            |
+| Focus                   | ![appearance example](static/opened.png)        | Show the input you need for data entry ([normal](/components/input/), [textarea](/components/textarea/), [select](/components/select), [color-picker](/components/color-picker), [time-picker](/components/time-picker), etc.). |
+| Entered data            | ![appearance example](static/success.png)       | Text color is `--gray-800`.                                                                                                                                                                                                     |
+| Entered data with hover | ![appearance example](static/success-hover.png) | Cursor changes to `pointer`. The interactive trailing addon changes color to `--gray-400`.                                                                                                                                      |
 
 @## Animation
 
@@ -59,7 +59,7 @@ _For example, if the heading you need to edit has 24px font-size, then it should
 
 ![case with input size](static/inline-edit-yes-no.png)
 
-@page inline-edit-api
 @page inline-edit-a11y
+@page inline-edit-api
 @page inline-edit-example
 @page inline-edit-changelog

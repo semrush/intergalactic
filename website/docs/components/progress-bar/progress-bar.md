@@ -108,6 +108,7 @@ When scrolling, the progress bar can be pinned. In this case, pin it above all c
 
 > This component is one of the components that displays interface's reaction to user actions in the interface. For general rules on such components, see the [Loading patterns](/patterns/loading-states/).
 
+@page progress-bar-a11y
 @page progress-bar-api
 @page progress-bar-code
 @page progress-bar-changelog

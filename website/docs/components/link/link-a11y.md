@@ -7,9 +7,11 @@ a11y: AA
 
 ### Keyboard support
 
-| Key     | Function            |
-| ------- | ------------------- |
-| `Enter` | Activates the link. |
+| Key           | Function                                       |
+| ------------- | ---------------------------------------------- |
+| `Tab`         | Moves focus to the next focusable element.     |
+| `Shift + Tab` | Moves focus to the previous focusable element. |
+| `Enter`       | Activates the link.                            |
 
 @## Considerations for developers
 

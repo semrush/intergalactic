@@ -1,6 +1,5 @@
 ---
 title: A11y
-fileSource: input
 a11y: AA
 ---
 
@@ -8,13 +7,16 @@ a11y: AA
 
 ### Keyboard support
 
-| Key           | Function                                       |
-| ------------- | ---------------------------------------------- |
-| `Tab`         | Moves focus to the next focusable element.     |
-| `Shift + Tab` | Moves focus to the previous focusable element. |
-| `Enter`       | Submits the entered value.                     |
+| Key                                  | Function                                                                          |
+| ------------------------------------ | --------------------------------------------------------------------------------- |
+| `Tab`                                | Moves focus to the next focusable element.                                        |
+| `Shift + Tab`                        | Moves focus to the previous focusable element.                                    |
+| `Enter`                              | Wraps the entered value into `Tag`.                                               |
+| `Enter` on `Close` icon inside a Tag | Toggles `active` state for interactive tag or removes tag by `Close` icon button. |
 
 See detailed information about the keyboard support for the input fileds in the [Keyboard control guide](/core-principles/a11y/a11y-keyboard/#input_i_textarea).
+
+All additional information about tag's accessibility you can find in the [Tag](/components/tag/tag-a11y/).
 
 @## Considerations for developers
 
@@ -31,8 +33,7 @@ Find live examples in the [A11y style guide](https://a11y-style-guide.com/style-
 
 @## Resources
 
-- [A11y style guide](https://a11y-style-guide.com/style-guide/section-forms.html#kssref-forms-text-fields) describes core principles for the accessible inputs and textarea.
-- [Forms tutorial](https://www.w3.org/WAI/tutorials/forms/) from W3C helps you understand common methods for creating accessible forms.
+[A11y style guide](https://a11y-style-guide.com/style-guide/section-forms.html#kssref-forms-text-fields) describes core principles for the accessible inputs and textarea.
 
 @## Other recommendations
 
