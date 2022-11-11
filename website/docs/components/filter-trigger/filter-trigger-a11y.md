@@ -7,7 +7,7 @@ a11y: AA
 
 ### Keyboard support
 
-See detailed information about the keyboard support for the FilterTrigger in the [Keyboard control guide](/core-principles/a11y/a11y-keyboard/#ae2a0e).
+See detailed information about the keyboard support for the FilterTrigger in the [Keyboard control guide](/core-principles/a11y/a11y-keyboard/#any_other_controls_filtertrigger_pills_tabline_i_pr).
 
 ### Roles and attributes
 

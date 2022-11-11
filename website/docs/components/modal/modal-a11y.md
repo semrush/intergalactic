@@ -3,7 +3,9 @@ title: A11y
 a11y: AA
 ---
 
-@## Keyboard support
+@## What component has
+
+### Keyboard support
 
 | Key           | Function                                       |
 | ------------- | ---------------------------------------------- |

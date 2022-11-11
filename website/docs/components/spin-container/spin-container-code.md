@@ -13,8 +13,8 @@ This example shows how you can resize and display everything in the SpinContaine
 
 @example other
 
-@## Flexible use
+@## Use with Sticky (deprecated)
 
-We fix the spinner when scrolling the page with the help of the [Sticky](/components/sticky/) component. Everything you want can be the content, for example, text, table, etc.
+You can fix the spinner when scrolling the page with the [Sticky](/components/sticky/) component.
 
 @example sticky

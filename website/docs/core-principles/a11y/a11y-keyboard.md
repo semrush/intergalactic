@@ -88,7 +88,7 @@ Particular cases about focus behavior when working with dropdown are described b
 3. If the trigger opens the select, you can also use the arrow down `↓` to move to dropdown.
 4. Pressing `Esc` key closes the dropdown, and focus remains on the trigger.
 
-`Shift + Tab` moves focus to the previous control, and popper` closes.
+`Shift + Tab` moves focus to the previous control, and popper closes.
 
 ![keyboard control example](/core-principles/a11y/static/keyboard-nav1.png)
 
@@ -96,7 +96,7 @@ Particular cases about focus behavior when working with dropdown are described b
 
 1. By hovering over / pressing `Tab`, the focus falls on the trigger — popper opens immediately.
 2. The dropdown closes by pressing `Esc`, and **focus remains on the trigger**.
-3. `Shift + Tab` moves focus to the previous control, and popper` closes.
+3. `Shift + Tab` moves focus to the previous control, and popper closes.
 
 ![keyboard control example](/core-principles/a11y/static/keyboard-nav2.png)
 

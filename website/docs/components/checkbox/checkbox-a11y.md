@@ -7,10 +7,11 @@ a11y: AA
 
 ### Keyboard support
 
-| Key     | Function                                               |
-| ------- | ------------------------------------------------------ |
-| `Tab`   | Moves keyboard focus to the checkbox.                  |
-| `Space` | Toggles checkbox between checked and unchecked states. |
+| Key           | Function                                               |
+| ------------- | ------------------------------------------------------ |
+| `Tab`         | Moves focus to the next focusable element.             |
+| `Shift + Tab` | Moves focus to the previous focusable element.         |
+| `Space`       | Toggles checkbox between checked and unchecked states. |
 
 ### Roles and attributes
 
@@ -20,8 +21,8 @@ The list below describes roles and attributes that component already has.
 | ---------- | ---------------------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `checkbox` |                        | `div`   | Identifies the div element as a checkbox. The child text content of this `div` provides the accessible name of the checkbox.                                                                                                                                                                                                                                                          |
 |            | `tabindex="0"`         | `div`   | Includes the checkbox in the page `Tab` sequence.                                                                                                                                                                                                                                                                                                                                     |
-|            | `aria-checked="false"` | `div`   | Indicates the `checkbox` is not checked. CSS attribute selectors (e.g. [`aria-checked="false"`]) are used to synchronize the visual states with the value of the `aria-checked` attribute. To support operating system and browser high contrast settings, the CSS `::before` pseudo element and `content` property are used to generate the visual indicators of the checkbox state. |
 |            | `aria-checked="true"`  | `div`   | Indicates the `checkbox` is checked. CSS attribute selectors (e.g. [`aria-checked="true"`]) are used to synchronize the visual states with the value of the `aria-checked` attribute. To support operating system and browser high contrast settings, the CSS `::before` pseudo element and `content` property are used to generate the visual indicators of the checkbox state.      |
+|            | `aria-checked="false"` | `div`   | Indicates the `checkbox` is not checked. CSS attribute selectors (e.g. [`aria-checked="false"`]) are used to synchronize the visual states with the value of the `aria-checked` attribute. To support operating system and browser high contrast settings, the CSS `::before` pseudo element and `content` property are used to generate the visual indicators of the checkbox state. |
 
 @## Considerations for developers
 
