@@ -40,6 +40,6 @@ Find live examples of accessible inputs with different types in [DigitalA11y pro
 
 @## Other recommendations
 
-- See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/).
+See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/).
 
 @include time-picker-a11y-report
