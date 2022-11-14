@@ -32,7 +32,8 @@ The list below describes roles and attributes that component already has.
 
 @## Resources
 
-[W3 slider documentation](https://www.w3.org/WAI/ARIA/apg/patterns/slider/) has information about the slider accessible behavior and its different versions.
+- [W3 slider documentation](https://www.w3.org/WAI/ARIA/apg/patterns/slider/) has information about the slider accessible behavior and its different versions.
+- Find live examples of accessible inputs with different types in [DigitalA11y project](https://www.digitala11y.com/demos/accessibility-of-html-input-types-examples/).
 
 @## Other recommendations
 
