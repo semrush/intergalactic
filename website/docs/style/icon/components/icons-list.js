@@ -395,6 +395,12 @@ const iconsList = {
       ],
     },
     {
+      name: 'ExpandText',
+      size: ['l', 'm'],
+      group: 'Action',
+      tags: ['expand', 'enlarge', 'расширить', 'увеличить', 'big', 'размер', 'size'],
+    },
+    {
       name: 'LikeFilled',
       size: ['l', 'm'],
       group: 'Action',
@@ -631,6 +637,22 @@ const iconsList = {
       tags: ['action', 'reply', 'ответ', 'стрелка', 'arrow', 'mail', 'left', 'лево', 'налево'],
     },
     {
+      name: 'Rephrase',
+      size: ['l', 'm'],
+      group: 'Action',
+      tags: [
+        'edit',
+        'write',
+        'rewrite',
+        'rephrase',
+        'написать',
+        'переписать',
+        'перефразировать',
+        'редактировать',
+        'arrow',
+      ],
+    },
+    {
       name: 'Return',
       size: ['l', 'm'],
       group: 'Action',
@@ -735,6 +757,12 @@ const iconsList = {
         'transparency',
         'visibility',
       ],
+    },
+    {
+      name: 'SimplifyText',
+      size: ['l', 'm'],
+      group: 'Action',
+      tags: ['simplify', 'minimize', 'уменьшить', 'упростить', 'упрощать', 'размер', 'size'],
     },
     {
       name: 'TagFilled',
