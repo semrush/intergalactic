@@ -37,6 +37,7 @@ STabPanelItem {
   & SText {
     font-size: var(--fs-200);
     line-height: var(--lh-200);
+    font-weight: 500;
   }
 
   &::-moz-focus-inner {
