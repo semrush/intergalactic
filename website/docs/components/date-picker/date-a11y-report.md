@@ -13,7 +13,7 @@ Guidepup v0.13.1, MacOS Big Sur 11._
 5. Screen reader presses the "Backspace" button.
 6. Screen reader says "0".
 7. Screen reader presses the "Backspace" button.
-8. Screen reader says "You are currently on a text field. To enter text in this field, type.".
+8. Screen reader says "2".
 9. Screen reader presses the "Backspace" button.
 10. Screen reader says "0".
 11. Screen reader presses the "Backspace" button.
