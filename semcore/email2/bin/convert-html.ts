@@ -45,7 +45,7 @@ const values = Object.values(argv);
     customConfig = imported.default;
   }
 
-  const convertedHtml = convertHtml(initialHtml, customConfig);
+  const convertedHtml = await convertHtml(initialHtml, customConfig);
 
   console.log(convertedHtml);
 })();

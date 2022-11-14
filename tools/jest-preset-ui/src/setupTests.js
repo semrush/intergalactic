@@ -53,5 +53,7 @@ if (global.requestAnimationFrame) {
 
 global.TextEncoder = TextEncoder;
 global.TextDecoder = TextDecoder;
+global.setImmediate = jest.useRealTimers;
+global.clearImmediate = jest.useRealTimers;
 
 jest.setTimeout(20000);

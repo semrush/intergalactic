@@ -1,10 +1,21 @@
 import jsdom from 'jsdom';
+import inlineCss from 'inline-css';
 import { componentsConfig } from '../src/componentsConfig';
 
-export function convertHtml(html: string, customConfig?: {}) {
-  const commonConfig = { ...componentsConfig, ...customConfig };
+export async function convertHtml(html: string, customConfig?: {}) {
+  const options = {
+    url: '/',
+    // extraCss: css,
+    preserveMediaQueries: true,
+    applyStyleTags: true,
+    applyLinkTags: false,
+  };
+  const inlinedHtml = await inlineCss(html, options).then(function (html) {
+    return html;
+  });
   const { JSDOM } = jsdom;
-  const dom = new JSDOM(html);
+  const dom = new JSDOM(inlinedHtml.toString());
+  const commonConfig = { ...componentsConfig, ...customConfig };
   const tags = Object.keys(commonConfig);
   const isNeedBaseHtml = html.includes('<html>');
 
