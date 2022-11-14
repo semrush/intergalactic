@@ -43,7 +43,8 @@ The list below describes roles and attributes that component already has.
 |            | `aria-expanded="false"`         | `div`   | Indicates that the popup element is not displayed.                                                                                                                                                                                                                                                                                    |
 |            | `aria-expanded="true"`          | `div`   | Indicates that the popup element is displayed.                                                                                                                                                                                                                                                                                        |
 |            | `aria-activedescendant="IDREF"` | `div`   | When an option in the listbox is visually indicated as having keyboard focus, refers to that option. When navigation keys, such as `Down` arrow, are pressed, the JavaScript changes the value. Enables assistive technologies to know which element the application regards as focused while DOM focus remains on the input element. |
-|            | `aria-autocomplete`             | `div`   | Indicates whether inputting text could trigger display of one or more predictions of the user's intended value for a combobox, searchbox, or textbox and specifies how predictions will be presented if they are made.                                                                                                                |
+|            | `aria-autocomplete`             | `div`   | Indicates whether inputting text could trigger display of one or more predictions of the user's intended value for a `combobox`, `searchbox`, or `textbox` and specifies how predictions will be presented if they are made.                                                                                                          |
+|            | `aria-haspopup`                 | `div`   | Indicates the availability and type of interactive popup element that can be triggered by the element on which the attribute is set.                                                                                                                                                                                                  |
 
 - Find more information in [ARIA Authoring Practices Guide from W3C](https://www.w3.org/WAI/ARIA/apg/example-index/combobox/combobox-select-only.html).
 - For more information about the radio or checkbox list see [Radiobutton](/components/radio/radio-a11y/) and [Checkbox](/components/checkbox/checkbox-a11y/) guides.
@@ -67,7 +68,8 @@ The list below will help you to keep in mind the necessary roles and attributes 
 
 @## Resources
 
-[A11y style guide](https://a11y-style-guide.com/style-guide/section-forms.html#kssref-forms-select-lists) gives core recommendations for the accessible select lists.
+- [A11y style guide](https://a11y-style-guide.com/style-guide/section-forms.html#kssref-forms-select-lists) gives core recommendations for the accessible select lists.
+- Find live examples of accessible inputs with different types in [DigitalA11y project](https://www.digitala11y.com/demos/accessibility-of-html-input-types-examples/).
 
 @## Other recommendations
 

@@ -29,6 +29,10 @@ The list below will help you to keep in mind the necessary roles and attributes 
 | `aria-valuemax`                   | text    | Defines the maximum allowed value for a range widget. Set to a decimal value representing the maximum value, and greater than `aria-valuemin`. If not present, the default value is 100.                                                                             |
 | `aria-label` or `aria-labelledby` | `div`   | Defines the string value or identifies the element (or elements) that label the progressbar element providing an accessible name. An accessible name is required.                                                                                                    |
 
+@## Resources
+
+Find live examples of accessible inputs with different types in [DigitalA11y project](https://www.digitala11y.com/demos/accessibility-of-html-input-types-examples/).
+
 @## Other recommendations
 
 See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/).
