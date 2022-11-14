@@ -11,7 +11,6 @@ const optionsA11yEnhance = {
   onNeighborChange: (neighborElement) => {
     if (neighborElement) {
       neighborElement.focus();
-      neighborElement.click();
     }
   },
   childSelector: ['role', 'tab'],
@@ -31,8 +30,14 @@ class TabPanelRoot extends Component {
     };
   }
 
-  bindHandlerClick = (value) => (e) => {
-    this.handlers.value(value, e);
+  handleClick = (value) => (event) => {
+    this.handlers.value(value, event);
+  };
+
+  handleKeyDown = (value) => (event) => {
+    if (event.code === 'Enter' || event.code === 'Space') {
+      this.handlers.value(value, event);
+    }
   };
 
   getItemProps(props) {
@@ -40,7 +45,8 @@ class TabPanelRoot extends Component {
     const isSelected = value === props.value;
     return {
       selected: isSelected,
-      onClick: this.bindHandlerClick(props.value),
+      onClick: this.handleClick(props.value),
+      onKeyDown: this.handleKeyDown(props.value),
       tabIndex: isSelected ? 0 : -1,
       'aria-posinset': value,
       'aria-selected': isSelected,

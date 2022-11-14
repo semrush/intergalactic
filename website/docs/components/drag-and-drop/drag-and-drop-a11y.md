@@ -5,12 +5,13 @@ fileSource: drag-and-drop
 
 @## Keyboard support
 
-| Key                                  | Function                                                              |
-| ------------------------------------ | --------------------------------------------------------------------- |
-| `Space`                              | Selects the focused object and starts dragging.                       |
-| Repeated pressing of `Space`         | Terminates dragging.                                                  |
-| `Up`, `Down`, `Left`, `Right` arrows | Move the selected object down/up and right/left in the dropping area. |
+| Key                      | Function                                      |
+| ------------------------ | --------------------------------------------- |
+| `Space`                  | Select the focused object and start dragging. |
+| `Space` (while dragging) | Stop dragging.                                |
 
 @## Other recommendations
 
 See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/).
+
+@include drag-and-drop-a11y-report
