@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.2.7] - 2022-11-15
+
+### Added
+
+- Added hover styles for close icon.
+
 ## [4.2.6] - 2022-11-08
 
 ## [4.2.5] - 2022-10-28
