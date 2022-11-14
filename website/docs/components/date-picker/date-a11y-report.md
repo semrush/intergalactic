@@ -13,7 +13,7 @@ Guidepup v0.13.1, MacOS Big Sur 11._
 5. Screen reader presses the "Backspace" button.
 6. Screen reader says "0".
 7. Screen reader presses the "Backspace" button.
-8. Screen reader says "2".
+8. Screen reader says "You are currently on a text field. To enter text in this field, type.".
 9. Screen reader presses the "Backspace" button.
 10. Screen reader says "0".
 11. Screen reader presses the "Backspace" button.
@@ -47,9 +47,9 @@ Guidepup v0.13.1, MacOS Big Sur 11._
 39. Screen reader types "2000".
 40. Screen reader says "to date MM/DD/YYYY invalid data edit text".
 41. Screen reader types "05".
-42. Screen reader says "5".
+42. Screen reader says "05".
 43. Screen reader types "29".
-44. Screen reader says "9".
+44. Screen reader says "29".
 45. Screen reader types "2000".
 46. Screen reader says "0".
 47. Screen reader goes out of active element.
