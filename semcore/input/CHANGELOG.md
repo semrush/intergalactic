@@ -2,15 +2,13 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [3.3.0] - 2022-10-28
+## [3.3.0] - 2022-11-15
 
 ### Changed
 
 - Updated border-color in focus state from `--blue-400` to `--blue-500`, `--red-400` to `--red-500`, `--green-400` to `--green-500`.
 
 ## [3.2.3] - 2022-10-28
-
-## [3.2.2] - 2022-10-20
 
 ### Changed
 
