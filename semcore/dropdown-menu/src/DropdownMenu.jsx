@@ -198,6 +198,7 @@ function List(props) {
       tag={ScrollAreaComponent}
       role="menu"
       aria-activedescendant={props.index}
+      shadow={true}
     />,
   );
 }
