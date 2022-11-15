@@ -4,6 +4,8 @@ fileSource: utils
 tabName: Design
 ---
 
+> ✨ Soon there will be a description of the tokens! We are currently in the process of implementing them.
+
 @## Description
 
 This section describes all the variable parameters and basic styles that we use in our components.
