@@ -23,7 +23,7 @@ The list below describes roles and attributes that component already has.
 
 @## Resources
 
-[W3 modal alert example](https://www.w3.org/TR/wai-aria-practices-1.1/examples/alert/alert.html) and [W3 modal alert dialog example](https://www.w3.org/TR/wai-aria-practices-1.1/examples/dialog-modal/alertdialog.html) have detailed information about the alerts accessible behavior.
+[W3 modal alert example](https://www.w3.org/TR/wai-aria-practices-1.1/examples/alert/alert.html) and [W3 modal alert dialog example](https://www.w3.org/TR/wai-aria-practices-1.1/examples/dialog-modal/alertdialog.html) have detailed information about the `alert` accessible behavior.
 
 @## Other recommendations
 

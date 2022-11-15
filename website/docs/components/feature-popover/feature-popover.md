@@ -156,6 +156,7 @@ The element appears according to the timings you prescribe. It is hidden only by
 >
 > _It is important to provide a Help/Product Tour (another name?) link on the report, by clicking on which you can view it again._
 
+@page feature-popover-a11y
 @page feature-popover-api
 @page feature-popover-code
 @page feature-popover-changelog
