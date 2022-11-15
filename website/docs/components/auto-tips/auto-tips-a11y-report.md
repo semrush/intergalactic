@@ -1,6 +1,6 @@
 ## Automated screen reader testing
 
-_Intergalactic v13.1.0, React v18.2.0, Playwright v1.25.1,
+_Intergalactic v13.1.1, React v18.2.0, Playwright v1.25.1,
 Guidepup v0.13.1, MacOS Big Sur 11._
 
 **Running screen reader against [this file](https://github.com/semrush/intergalactic/blob/master/website/docs/components/auto-tips/examples/autosuggest.jsx).**
@@ -27,12 +27,10 @@ Guidepup v0.13.1, MacOS Big Sur 11._
 19. Screen reader presses the "Control+Option+Space" button.
 20. Screen reader says "semrush".
 21. Screen reader presses the "Shift+Tab" button.
-22. Screen reader says "You are currently on a text element, inside of a list box.".
+22. Screen reader presses the "Shift+Tab" button.
 23. Screen reader presses the "Shift+Tab" button.
-24. Screen reader says "semrush".
+24. Screen reader says "You are currently on a text field, inside of a Menu pop-up combo box. To enter text in this field, type. To exit this combo box, press Control-Option-Shift-Up Arrow.".
 25. Screen reader presses the "Shift+Tab" button.
-26. Screen reader says "You are currently on a text field, inside of a Menu pop-up combo box. To enter text in this field, type. To exit this combo box, press Control-Option-Shift-Up Arrow.".
-27. Screen reader presses the "Shift+Tab" button.
-28. Screen reader goes into the active element.
-29. Screen reader says "In edit text semrush".
+26. Screen reader goes into the active element.
+27. Screen reader says "In edit text semrush".
 ```

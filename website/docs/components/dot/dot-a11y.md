@@ -9,10 +9,10 @@ a11y: AA
 
 The list below describes roles and attributes that component already has.
 
-| Role  | Attribute            | Element           | Usage                                                                                                                                                                                                            |
-| ----- | -------------------- | ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| alert |                      | `div`             | Identifies the element as the container where alert content will be added or updated.                                                                                                                            |
-|       | `aria-live="polite"` | Implicit on `div` | Any region which receives updates that are important for the user to receive, but not so rapid as to be annoying, should receive this attribute. The screen reader will speak changes whenever the user is idle. |
+| Role    | Attribute            | Element           | Usage                                                                                                                                                                                                            |
+| ------- | -------------------- | ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `alert` |                      | `div`             | Identifies the element as the container where alert content will be added or updated.                                                                                                                            |
+|         | `aria-live="polite"` | Implicit on `div` | Any region which receives updates that are important for the user to receive, but not so rapid as to be annoying, should receive this attribute. The screen reader will speak changes whenever the user is idle. |
 
 @## Considerations for developers
 

@@ -2,6 +2,28 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.5.2] - 2022-11-11
+
+### Fixed
+
+- Allowed to pass any svg attributes.
+
+## [2.5.1] - 2022-11-11
+
+### Fixed
+
+- Fixed `Bar` click handler typings.
+
+## [2.5.0] - 2022-11-10
+
+### Fixed
+
+- Fixed support handling of bars event handling with `paddingOuter`.
+
+### Added
+
+- `Bar` component now supports `onClick` handler with bar data in callback.
+
 ## [2.4.10] - 2022-11-03
 
 ### Changed

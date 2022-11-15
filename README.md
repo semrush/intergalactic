@@ -1,16 +1,14 @@
-
-<img src="https://github.com/semrush/intergalactic/blob/master/.github/images/semrush-hero.png" alt="team's picture">
+<img src=".github/images/semrush-hero.png" alt="team's picture">
 
 [![codecov](https://codecov.io/gh/semrush/intergalactic/branch/master/graph/badge.svg?token=OILALW3YQE)](https://codecov.io/gh/semrush/intergalactic)
 [![version](https://img.shields.io/npm/v/@semcore/ui.svg)](https://www.npmjs.com/package/@semcore/ui)
 [![downloads](https://img.shields.io/npm/dt/@semcore/ui.svg)](https://www.npmjs.com/package/@semcore/ui)
 
-Intergalactic is a constantly developing design system of [React](https://reactjs.org/) component, guidelines and UX patterns for developing interfaces.
-You can explore components in our [documentation website](https://i.semrush.com).
+Intergalactic is a constantly developing design system of [React](https://reactjs.org/) component, guidelines and UX patterns for buiding interfaces. You can explore components in our [documentation website](https://i.semrush.com).
 
 ---
 
-## Features ✨ 
+## Features ✨
 
 - 80+ components for your design
 - High-quality React components out of the box
@@ -21,7 +19,10 @@ You can explore components in our [documentation website](https://i.semrush.com)
 
 ## Browser Support
 
-- Google Chrome, Mozilla Firefox, Opera, Microsoft Edge
+- Google Chrome
+- Mozilla Firefox
+- Opera
+- Microsoft Edge
 - Safari (two last versions)
 
 ## Before you start
@@ -37,9 +38,10 @@ The library supports two delivery systems:
 - Package system where each individual component is a separate package
 - Release system where all components are combined in a single package
 
-We recommend that you use the release system, since it's more convenient and it reduces the risk of bundle bloat due to package duplicates. With the release system, you can also install component packages separately if you need to.
+We recommend you using the release system, since it's more convenient and it reduces the risk of bundle bloat due to package duplicates. With the release system, you can also install component packages separately if you need to.
 
 ### Release system
+
 Components are installed in a single package.
 
 Example:
@@ -62,15 +64,15 @@ Example:
 npm i @semcore/button @semcore/core
 ```
 
-`@semcore/core` - is the basic package by which we create our components, and it contains all of the common logic of the components that is discussed below. There should only be one version of the package in the project.
+`@semcore/core` is the basic package with which we create our components, and it contains all of the common logic of the components that is discussed below. There should be only one version of the package in the project.
 
 ## How to contribute to the project
 
-All changes, including changes by the project participants, must go through a code review. We do that in pull
-requests on GitHub. [Learn more about contributing ›](https://github.com/semrush/intergalactic/blob/master/CONTRIBUTING.md)
+All changes, including changes by the project members, must go through a code review. We use pull requests on GitHub for this purpose. [Learn more about contributing ›](https://github.com/semrush/intergalactic/blob/master/CONTRIBUTING.md)
 
 ### Contributors
-Thanks to all contributors, you are so awesome and that won't be possible without you! ❤️
+
+Thanks to all contributors, you are so awesome! ❤️
 
 - [Roman Lysov](https://github.com/lsroman)
 - [Michael Sereniti](https://github.com/phytonmk)
@@ -79,9 +81,10 @@ Thanks to all contributors, you are so awesome and that won't be possible withou
 - [Ruslan Gaiazov](https://github.com/freeyoungstrong)
 - [Elena Khaas](https://github.com/elenakhaas)
 - [Tatana Iliukhina](https://github.com/tatana-I)
-- and many other from Semrush team
+- and many others from Semrush team
 
-## I found a bug! 🕵️‍
+### I found a bug! 🕵️‍
 
-Great job, colleague :)
-You can always open an [issue in the repository](https://github.com/semrush/intergalactic/issues/new?issue). We'll be glad to help!
+Great job!
+
+You always can open an [issue in the repository](https://github.com/semrush/intergalactic/issues/new?issue). We'll be glad to help!

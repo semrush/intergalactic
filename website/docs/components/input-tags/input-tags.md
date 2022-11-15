@@ -77,6 +77,7 @@ In this case, if the tag text is larger than the specified width, it will collap
 
 ![tag ellipsis](static/ellipsis.png)
 
+@page input-tags-a11y
 @page input-tags-api
 @page input-tags-code
 @page input-tags-changelog

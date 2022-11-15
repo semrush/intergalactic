@@ -180,4 +180,9 @@ SClose {
   align-items: center;
   justify-content: center;
   padding: 4px;
+  opacity: 0.5;
+
+  &:hover {
+    opacity: 1;
+  }
 }

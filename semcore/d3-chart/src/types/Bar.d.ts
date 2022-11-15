@@ -24,6 +24,10 @@ export interface IBarProps extends IContext {
    * @default 4
    */
   hMin?: number;
+  /**
+   * Bar click handler
+   */
+  onClick?: (data: { [key: string]: string | number }, event: Event) => void;
 }
 
 export interface IBarContext {
