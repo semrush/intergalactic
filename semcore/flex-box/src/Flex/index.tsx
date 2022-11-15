@@ -1,5 +1,5 @@
-import React, { HTMLAttributes } from 'react';
-import { createBaseComponent, Merge } from '@semcore/core';
+import React from 'react';
+import { createBaseComponent } from '@semcore/core';
 import useFlex, { IFlexProps } from './useFlex';
 
 function Flex(props, ref) {
@@ -9,5 +9,4 @@ function Flex(props, ref) {
 
 Flex.displayName = 'Flex';
 
-// eslint-disable-next-line ssr-friendly/no-dom-globals-in-module-scope
-export default createBaseComponent<Merge<IFlexProps, HTMLAttributes<HTMLDivElement>>>(Flex);
+export default createBaseComponent(Flex) as <T>(props: IFlexProps & T) => React.ReactElement;

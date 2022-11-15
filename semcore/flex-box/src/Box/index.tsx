@@ -1,5 +1,5 @@
-import React, { HTMLAttributes } from 'react';
-import { createBaseComponent, Merge } from '@semcore/core';
+import React from 'react';
+import { createBaseComponent } from '@semcore/core';
 import useBox, { IBoxProps } from './useBox';
 
 function Box(props, ref) {
@@ -9,5 +9,4 @@ function Box(props, ref) {
 
 Box.displayName = 'Box';
 
-// eslint-disable-next-line ssr-friendly/no-dom-globals-in-module-scope
-export default createBaseComponent<Merge<IBoxProps, HTMLAttributes<HTMLDivElement>>>(Box);
+export default createBaseComponent(Box) as <T>(props: IBoxProps & T) => React.ReactElement;
