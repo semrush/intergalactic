@@ -6,7 +6,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-- Updated border-color in focus state from `--blue-400` to `--blue-500`, `--red-400` to `--red-500`, `--green-400` to `--green-500`.
+- Updated border-color in focus state from `--blue-400` to `--blue-500`, `--red-400` to `--red-500`.
 
 ## [5.1.3] - 2022-10-28
 
