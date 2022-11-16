@@ -11,7 +11,7 @@ Guidepup v0.13.1, MacOS Big Sur 11._
 3. Screen reader triggers element default action.
 4. Screen reader says "Martin Eden Insertion at end of text. edit text Press Enter to apply value, press Escape to discard changes group".
 5. Screen reader presses the "Backspace" button.
-6. Screen reader says "You are currently on a text field. To enter text in this field, type.".
+6. Screen reader says "n".
 7. Screen reader presses the "Backspace" button.
 8. Screen reader says "e".
 9. Screen reader presses the "Backspace" button.
@@ -39,4 +39,5 @@ Guidepup v0.13.1, MacOS Big Sur 11._
 31. Screen reader says "world ?".
 32. Screen reader presses the "Escape" button.
 33. Screen reader says "Algernon".
+34. Screen reader says "You are currently on a group, inside of web content.  To exit this group, press Control-Option-Shift-Up Arrow.".
 ```
