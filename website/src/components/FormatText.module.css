@@ -21,6 +21,7 @@
   padding: 0;
   margin: 0 0 1.5rem;
   cursor: pointer;
+  border-radius: 6px;
 }
 .formatText img [alt$='#center'] {
   display: block;
@@ -271,17 +272,7 @@
   vertical-align: top;
   text-align: left;
   border-bottom: 1px solid #d1d4db;
-  padding: 0.75rem 1rem calc(0.75rem - 1px);
-}
-
-.formatText th:first-child,
-.formatText td:first-child {
-  padding-left: 0;
-}
-
-.formatText th:last-child,
-.formatText td:last-child {
-  padding-right: 0;
+  padding: 0.75rem 0.5rem calc(0.75rem - 1px);
 }
 
 .formatText code {
