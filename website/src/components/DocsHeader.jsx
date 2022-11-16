@@ -78,7 +78,7 @@ export default function (props) {
                 href={`https://github.com/semrush/intergalactic/tree/master/semcore/${fileSource}`}
               >
                 <Link.Addon>
-                  <GitHubM />
+                  <GitHubM width={18} height={18} />
                 </Link.Addon>
               </Link>
             </Box>
