@@ -1,0 +1,23 @@
+SShadowHorizontal::before {
+  width: 10px;
+  border-radius: 6px;
+  background: linear-gradient(to right, #ffffff 34.38%, rgba(255, 255, 255, 0.0001) 100%);
+}
+
+SShadowHorizontal::after {
+  width: 10px;
+  border-radius: 6px;
+  background: linear-gradient(to left, #ffffff 34.38%, rgba(255, 255, 255, 0.0001) 100%);
+}
+
+SShadowVertical::before {
+  height: 10px;
+  border-radius: 6px;
+  background: linear-gradient(to bottom, #ffffff 34.38%, rgba(255, 255, 255, 0.0001) 100%);
+}
+
+SShadowVertical::after {
+  height: 10px;
+  border-radius: 6px;
+  background: linear-gradient(to top, #ffffff 34.38%, rgba(255, 255, 255, 0.0001) 100%);
+}

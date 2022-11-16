@@ -7,6 +7,7 @@ import ScrollAreaComponent from '@semcore/scroll-area';
 import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 
 import style from './style/dropdown-menu.shadow.css';
+import scrollStyles from './style/scroll-area.shadow.css';
 
 const KEYS = ['ArrowDown', 'ArrowUp', 'Enter', ' '];
 const INTERACTION_TAGS = ['INPUT', 'TEXTAREA'];
@@ -199,6 +200,7 @@ function List(props) {
       role="menu"
       aria-activedescendant={props.index}
       shadow={true}
+      styles={scrollStyles}
     />,
   );
 }
