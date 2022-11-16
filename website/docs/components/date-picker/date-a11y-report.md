@@ -34,12 +34,12 @@ Guidepup v0.13.1, MacOS Big Sur 11._
 26. Screen reader goes into the active element.
 27. Screen reader says "05/29 Insertion at end of text. Date MM/DD/YYYY edit text".
 28. Screen reader types "2000".
-29. Screen reader says "05/29/2".
+29. Screen reader says "0".
 30. Screen reader goes out of active element.
 31. Screen reader says "Date field group".
 32. Screen reader goes to the next element.
 33. Screen reader goes into the active element.
-34. Screen reader says "You are currently on a text field. To enter text in this field, type.".
+34. Screen reader says "from date MM/DD/YYYY invalid data edit text".
 35. Screen reader types "05".
 36. Screen reader says "0".
 37. Screen reader types "29".
@@ -49,7 +49,7 @@ Guidepup v0.13.1, MacOS Big Sur 11._
 41. Screen reader types "05".
 42. Screen reader says "5".
 43. Screen reader types "29".
-44. Screen reader says "29".
+44. Screen reader says "9".
 45. Screen reader types "2000".
 46. Screen reader says "0".
 47. Screen reader goes out of active element.
