@@ -47,9 +47,7 @@ export interface INoticeBubbleManager {
    * Takes the props properties of NoticeBubble.
    *  Returns an object with the uid and the update, remove functions.
    * */
-  add: (
-    props: object,
-  ) => {
+  add: (props: object) => {
     uid: string;
     update: (props: object) => boolean;
     remove: () => boolean;
@@ -77,7 +75,7 @@ declare const NoticeBubbleContainer: (<T>(
   Warning: typeof NoticeBubbleWarning;
 };
 
-declare const manager: INoticeBubbleManager;
+declare const NoticeBubbleManager: INoticeBubbleManager;
 
-export { NoticeBubbleContainer, NoticeBubble, NoticeBubbleWarning };
-export default manager;
+export { NoticeBubbleContainer, NoticeBubble, NoticeBubbleWarning, NoticeBubbleManager };
+export default NoticeBubbleManager;
