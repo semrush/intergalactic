@@ -92,7 +92,7 @@ In cases when you have many tabs or there is not enough space for the tab text, 
 
 ![ellipsis](static/ellipsis.png)
 
-Also you can collapse the last tabs into a tab with an ellipsis.
+Also you can collapse the last tabs into a tab with an `Ellipsis` icon.
 
 > By clicking on the last tab with an ellipsis in the dropdown, it is possible to display a list of items that did not fit. The item selected from this list put before tab with ellipsis.
 
