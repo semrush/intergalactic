@@ -1,8 +1,11 @@
 {
-  "compilerOptions": {
-    "module": "esnext",
-    "target": "esnext"
-  },
   "extends": "../../tsconfig.json",
-  "include": ["src", "bin"]
+  "include": ["src"],
+  "compilerOptions": {
+    "plugins": [
+      {
+        "name": "typescript-plugin-css-modules"
+      }
+    ]
+  }
 }
