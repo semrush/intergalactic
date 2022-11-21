@@ -181,6 +181,7 @@ If table has only one column with sorting, usually its sorting icon is unclickab
 The active sorting column become larger and the other column smaller at the same time.
 
 ![example sort by sep14 column](static/optional-example-sep.png)
+
 ![example sort by volume column](static/optional-example-volume.png)
 
 > When you click on the sorting icon in the header, the table should be reloaded and always return the user to the top of the first row.
