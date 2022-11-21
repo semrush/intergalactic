@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.2.0] - 2022-11-18
+
+### Changed
+
+- Changed margin-bottom from 16px to 24px.
+
 ## [3.1.3] - 2022-10-28
 
 ### Changed
