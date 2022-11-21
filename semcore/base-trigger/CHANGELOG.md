@@ -2,6 +2,18 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.2.8] - 2022-11-15
+
+### Added
+
+- Added support text ellipsis in `LinkTrigger.Text`.
+
+## [3.2.7] - 2022-11-14
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/icon` [3.2.0 ~> 3.3.0]).
+
 ## [3.2.6] - 2022-11-07
 
 ### Fixed
