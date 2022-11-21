@@ -147,8 +147,8 @@ If the table contains a small amount of data, we show the pagination for one pag
 
 @## Sorting
 
-- **If you can sort by column, it must have the `SortDesc`/`SortAsc` icon. By default, use `SortDesc`.**
-- If you can't sort data in the column, but you need to show which column it is sorted by (it is usually necessary in secondary tables), then add sorting icon while hovering with `--gray-400` color.
+- **If you can sort by column, show the `SortDesc`/`SortAsc` icon while hovering. By default, use `SortDesc`.**
+- If you can't sort data in the column, but you need to show which column it is sorted by (it is usually necessary in secondary tables), then add sorting icon in active state with `--gray-400` color.
 
 ### Click zone for sorting
 
@@ -159,8 +159,7 @@ If the table contains a small amount of data, we show the pagination for one pag
 
 ### Sorting icon styles
 
-- The default color for the sorting icon is `--gray-300`.
-- If column sorting is active, the icon changes color to `--gray-400`.
+The default color for the sorting icon is always `--gray-400` (same for active and hover states).
 
 ![sorting icon](static/sorting1.png)
 
@@ -177,6 +176,12 @@ If table has only one column with sorting, usually its sorting icon is unclickab
 - If sorting on a column is active, the icon has the `active` state and shows the corresponding sorting direction.
 - **When you select a different column**, the icon on the selected column becomes active. Icons on other columns do not change their direction.
 - When you reload data in a table where data was sorted in one of the columns, the header of the sorted column remains highlighted.
+
+**Optional.** If a column doesn't have enough space for a sort icon, but it's important to show the full name and keep the width of the table you can dynamically change the width of the columns.
+The active sorting column become larger and the other column smaller at the same time.
+
+![example sort by sep14 column](static/optional-example-sep.png)
+![example sort by volume column](static/optional-example-volume.png)
 
 > When you click on the sorting icon in the header, the table should be reloaded and always return the user to the top of the first row.
 
