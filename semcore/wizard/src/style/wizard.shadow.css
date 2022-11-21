@@ -8,7 +8,7 @@ SWizard {
 }
 
 SSidebar {
-  background: var(--violet-600);
+  background: var(--violet-700);
   color: #fff;
   font-weight: 700;
   font-size: var(--fs-300);

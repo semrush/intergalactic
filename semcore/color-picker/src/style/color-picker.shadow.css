@@ -41,7 +41,7 @@ SItemContainer[keyboardFocused] {
 }
 
 SItemContainer[selected] {
-  border: 1px solid var(--blue-300);
+  border: 1px solid var(--blue-500);
 }
 
 SItemContainer[displayLabel] {

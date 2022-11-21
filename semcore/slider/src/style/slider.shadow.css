@@ -22,13 +22,17 @@ SSlider {
     background-color: var(--gray-200);
   }
 
+  &:hover SKnob {
+    border: 5px solid var(--blue-500);
+  }
+
   &:active SKnob {
-    box-shadow: 0 0 0 5px color-mod(var(--blue-400) a(30%));
+    box-shadow: 0 0 0 3px color-mod(var(--blue-400) a(30%));
   }
 }
 
 SSlider[keyboardFocused] SKnob {
-  box-shadow: 0 0 0 5px color-mod(var(--blue-400) a(30%));
+  box-shadow: 0 0 0 3px color-mod(var(--blue-400) a(30%));
 }
 
 SSlider[disabled] {
