@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.1.4] - 2022-11-21
+
+### Changed
+
+- Changed `font-weight` of tab's text and `height` of underline.
+
 ## [3.1.3] - 2022-10-28
 
 ### Changed
