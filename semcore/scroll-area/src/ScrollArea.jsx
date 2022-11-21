@@ -176,15 +176,16 @@ class ScrollAreaRoot extends Component {
     const SScrollArea = Root;
     const SShadowVertical = BoxWithoutPosition;
     const SShadowHorizontal = BoxWithoutPosition;
-    const { Children, styles, orientation } = this.asProps;
+    const { Children, styles, orientation, customStyle } = this.asProps;
     const { shadowVertical, shadowHorizontal } = this.state;
+    const commonStyles = { ...styles, ...customStyle };
 
     const advanceMode = isAdvanceMode(Children, [
       ScrollArea.Container.displayName,
       ScrollArea.Bar.displayName,
     ]);
 
-    return sstyled(styles)(
+    return sstyled(commonStyles)(
       <SScrollArea render={Box} ref={this.refWrapper} onScroll={this.handleScroll}>
         {shadowVertical && <SShadowVertical position={shadowVertical} />}
         {shadowHorizontal && <SShadowHorizontal position={shadowHorizontal} />}

@@ -1,23 +1,93 @@
-SShadowHorizontal::before {
-  width: 10px;
-  border-radius: 6px;
-  background: linear-gradient(to right, #ffffff 34.38%, rgba(255, 255, 255, 0.0001) 100%);
+@import '@semcore/utils/style/var.css';
+
+SScrollArea {
+  position: relative;
+  width: 100%;
+  height: 100%;
 }
 
-SShadowHorizontal::after {
-  width: 10px;
-  border-radius: 6px;
-  background: linear-gradient(to left, #ffffff 34.38%, rgba(255, 255, 255, 0.0001) 100%);
+SShadowHorizontal,
+SShadowVertical {
+  &:before,
+  &:after {
+    content: '';
+    position: absolute;
+    display: none;
+    pointer-events: none;
+    z-index: 1;
+  }
 }
 
-SShadowVertical::before {
-  height: 10px;
-  border-radius: 6px;
-  background: linear-gradient(to bottom, #ffffff 34.38%, rgba(255, 255, 255, 0.0001) 100%);
+SShadowHorizontal {
+  &:before,
+  &:after {
+    top: 0;
+    display: block;
+    width: 9px;
+    height: 100%;
+    border-radius: 6px;
+  }
 }
 
-SShadowVertical::after {
-  height: 10px;
-  border-radius: 6px;
-  background: linear-gradient(to top, #ffffff 34.38%, rgba(255, 255, 255, 0.0001) 100%);
+SShadowHorizontal[position='median'] {
+  &:before {
+    left: 0;
+    background: linear-gradient(to right, #ffffff 34.38%, rgba(255, 255, 255, 0) 100%);
+  }
+
+  &:after {
+    right: 0;
+    background: linear-gradient(to left, #ffffff 34.38%, rgba(255, 255, 255, 0) 100%);
+  }
+}
+
+SShadowHorizontal[position='start'] {
+  &:before {
+    left: 0;
+    background: linear-gradient(to right, #ffffff 34.38%, rgba(255, 255, 255, 0) 100%);
+  }
+}
+
+SShadowHorizontal[position='end'] {
+  &:after {
+    right: 0;
+    background: linear-gradient(to left, #ffffff 34.38%, rgba(255, 255, 255, 0) 100%);
+  }
+}
+
+SShadowVertical {
+  &:before,
+  &:after {
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 9px;
+    border-radius: 6px;
+  }
+}
+
+SShadowVertical[position='median'] {
+  &:before {
+    top: 0;
+    background: linear-gradient(to bottom, #ffffff 34.38%, rgba(255, 255, 255, 0) 100%);
+  }
+
+  &:after {
+    bottom: 0;
+    background: linear-gradient(to top, #ffffff 34.38%, rgba(255, 255, 255, 0) 100%);
+  }
+}
+
+SShadowVertical[position='start'] {
+  &:before {
+    top: 0;
+    background: linear-gradient(to bottom, #ffffff 34.38%, rgba(255, 255, 255, 0) 100%);
+  }
+}
+
+SShadowVertical[position='end'] {
+  &:after {
+    bottom: 0;
+    background: linear-gradient(to top, #ffffff 34.38%, rgba(255, 255, 255, 0) 100%);
+  }
 }

@@ -200,7 +200,7 @@ function List(props) {
       role="menu"
       aria-activedescendant={props.index}
       shadow={true}
-      styles={scrollStyles}
+      customStyle={scrollStyles}
     />,
   );
 }
