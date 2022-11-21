@@ -55,7 +55,7 @@ An item can have two different content types:
 @## Interaction
 
 In the hover state, a trigger has a border: 1px solid `var (--gray-200);`  
-In the active state, a trigger changes its border color to `var (--blue-300)`
+In the active state, a trigger changes its border color to `var (--blue-500)`
 
 **ColorPicker.Item**  
 | | Normal | Hover | Active | Description |

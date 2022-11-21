@@ -41,7 +41,7 @@ SStepper {
   line-height: var(--lh-200);
 
   &:hover {
-    background: var(--violet-700);
+    background: var(--violet-800);
     z-index: 1;
   }
   &[active] {
