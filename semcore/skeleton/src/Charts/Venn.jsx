@@ -2,14 +2,7 @@ import React from 'react';
 import Skeleton from '../Skeleton';
 
 const VennChartSkeleton = (props) => (
-  <Skeleton
-    visible
-    viewBox="0 0 200 123"
-    width={180}
-    height={180}
-    preserveAspectRatio="xMidYMid meet"
-    {...props}
-  >
+  <Skeleton visible viewBox="0 0 200 123" preserveAspectRatio="xMidYMid meet" {...props}>
     {({ gradientUrl }) => (
       <>
         <g>
