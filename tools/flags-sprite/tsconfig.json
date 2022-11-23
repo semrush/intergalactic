@@ -1,8 +1,0 @@
-{
-  "extends": "../../tsconfig.json",
-  "include": ["generate.ts", "bin"],
-  "complierOptions": {
-    "strict": true,
-    "target": "esnext"
-  }
-}
