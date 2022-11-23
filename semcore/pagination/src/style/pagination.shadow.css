@@ -28,6 +28,7 @@ STotalPagesLabel {
 
 STotalLastPages {
   font-size: var(--fs-200);
+  line-height: var(--lh-200);
   color: var(--gray-800);
 }
 
