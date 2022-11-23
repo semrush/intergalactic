@@ -1,7 +1,7 @@
 {
-  "France": ["Reunion", "French Guiana", "Guadeloupe", "Saint Pierre and Miquelon"],
-  "Norway": ["Bouvet Island", "Svalbard and Jan Mayen"],
-  "Australia": ["Heard Island and McDonald Islands"],
-  "UnitedStates": ["United States Minor Outlying Islands"],
-  "Netherlands": ["Bonaire, Sint Eustatius and Saba"]
+  "france": ["Reunion", "French Guiana", "Guadeloupe", "Saint Pierre and Miquelon"],
+  "norway": ["Bouvet Island", "Svalbard and Jan Mayen"],
+  "australia": ["Heard Island and McDonald Islands"],
+  "united-states": ["United States Minor Outlying Islands"],
+  "netherlands": ["Bonaire, Sint Eustatius and Saba"]
 }

@@ -5,7 +5,7 @@ import { createBaseComponent, sstyled } from '@semcore/core';
 import { useBox } from '@semcore/flex-box';
 import canUseDOM from '@semcore/utils/lib/canUseDOM';
 import isRetina from '@semcore/utils/lib/isRetina';
-import { iso2Name, iso3iso2, nameWithoutIso } from './countries';
+import { iso2Name, iso3iso2, nameWithoutIso } from './countries.json';
 
 import styles from './style/flags.shadow.css';
 
@@ -15,11 +15,13 @@ const version = preval`
 `;
 const versionForClassName = version.split('.').join('_');
 
-function setCountryName(countryName) {
-  if (typeof countryName !== 'string') return false;
-  const name = countryName.replace(/[\s,]/g, '');
-  return name.charAt(0).toUpperCase() + name.slice(1);
-}
+const normalizeName = (name) => {
+  const noExtensions = name.includes('.') ? name.split('.').slice(0, -1).join('.') : name;
+  const noApostrophe = noExtensions.split("'").join('');
+  const noSpaces = noApostrophe.split(' ').join('-');
+  const noComas = noSpaces.split(',').join('-');
+  return noComas.toLowerCase();
+};
 
 function getCapitalLetters(iso2, iso3, name) {
   if (name) {
@@ -57,9 +59,9 @@ function calculateName(iso2, iso3, name) {
     Object.entries(iso3iso2).map((pair) => [pair[0], iso2Name[pair[1]]]),
   );
   const allNames = { ...iso2Name, ...iso3Name, ...nameWithoutIso };
-  if (name) return setCountryName(allNames[name.toUpperCase()]);
-  if (iso2) return setCountryName(iso2Name[iso2.toUpperCase()]);
-  if (iso3) return setCountryName(iso2Name[iso3iso2[iso3.toUpperCase()]]);
+  if (name) return normalizeName(allNames[name.toUpperCase()]);
+  if (iso2) return normalizeName(iso2Name[iso2.toUpperCase()]);
+  if (iso3) return normalizeName(iso2Name[iso3iso2[iso3.toUpperCase()]]);
   return false;
 }
 
