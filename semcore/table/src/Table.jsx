@@ -17,12 +17,18 @@ import styles from './style/table.shadow.css';
 const Table = React.forwardRef((props, ref) => {
   const STable = Box;
   const refTable = useRef(null);
-  const { use = 'primary', style: styleProps = {}, className: classNameProps, ...other } = props;
+  const {
+    use = 'primary',
+    style: styleProps = {},
+    className: classNameProps,
+    compact,
+    ...other
+  } = props;
   const sstyles = sstyled(sstyled.merge(styles, other.styles));
   const { className, style } = sstyles.cn('STable', styleProps);
 
   return (
-    <Provider value={{ use, styles, self: { ref: refTable, props } }}>
+    <Provider value={{ use, styles, self: { ref: refTable, props }, compact }}>
       <STable
         ref={useForkRef(refTable, ref)}
         tag="table"

@@ -16,6 +16,8 @@ export interface ITableProps extends IBoxProps {
    * @default primary
    */
   use?: ITableCtx['use'];
+  /** Made paddings less */
+  compact?: boolean;
 }
 
 export interface ICellProps extends ITextProps {

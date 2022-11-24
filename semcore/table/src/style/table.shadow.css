@@ -41,6 +41,10 @@ SCell[use='primary'] {
   padding: 12px;
 }
 
+SCell[use='primary'][compact] {
+  padding: 8px;
+}
+
 SCell[use='secondary'] {
   padding: 8px;
 }
@@ -54,7 +58,7 @@ SCellHead {
   box-sizing: border-box;
   /* for fixed header */
   z-index: 1;
-  border: 1px solid;
+  border-bottom: 1px solid;
 
   &:focus {
     outline: none;
