@@ -1,6 +1,5 @@
 import path from 'path';
 import fs from 'fs-extra';
-import execa from 'execa';
 import Git from 'simple-git';
 import { createTask } from '../task';
 
@@ -24,10 +23,7 @@ export const gitTask = createTask('GIT fixation', async (opt) => {
       opt.log('Not running `git commit -S --no-verify` as far as --dry-run flag passed');
     } else {
       opt.log('Running `git commit -S --no-verify`');
-      const { stdout: gitSignatureUid } = await execa('git', ['config', 'user.signingkey']);
-      const { stdout: gitEmail } = await execa('git', ['config', 'user.email']);
-      const commitDescription = `<!--- Commit was signed off by ${gitEmail} with GPG key ID ${gitSignatureUid} -->`;
-      await git.commit(`[${name}] upgrade to ${version}\n\n${commitDescription}`, undefined, {
+      await git.commit(`[${name}] upgrade to ${version}`, undefined, {
         '-S': null,
         '--no-verify': null,
       });
