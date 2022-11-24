@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.3.4] - 2022-11-25
+
+### Added
+
+- Added css property `isolation` to container.
+
 ## [4.3.3] - 2022-10-28
 
 ### Changed

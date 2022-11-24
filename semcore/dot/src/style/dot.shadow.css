@@ -12,6 +12,7 @@ SDot {
   z-index: 1;
   border-radius: 100%;
   vertical-align: middle;
+  isolation: isolate;
 }
 
 SDot[size='xl'] {
