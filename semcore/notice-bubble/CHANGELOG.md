@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.2.10] - 2022-11-24
+
+### Fixed
+
+- Replaced `NoticeBubbleManager` instance typings with `NoticeBubbleManager` typing.
+
 ## [4.2.9] - 2022-11-17
 
 ### Fixed

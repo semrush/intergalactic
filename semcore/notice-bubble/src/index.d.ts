@@ -75,7 +75,7 @@ declare const NoticeBubbleContainer: (<T>(
   Warning: typeof NoticeBubbleWarning;
 };
 
-declare const NoticeBubbleManager: INoticeBubbleManager;
+declare class NoticeBubbleManager implements INoticeBubbleManager {}
 
 export { NoticeBubbleContainer, NoticeBubble, NoticeBubbleWarning, NoticeBubbleManager };
 export default NoticeBubbleManager;
