@@ -11,6 +11,7 @@ import { version } from './package.json';
 const __dirname = resolvePath(fileURLToPath(import.meta.url), '..');
 
 const normalizeName = (name: string) => {
+  if (!name) return name;
   const noExtensions = name.includes('.') ? name.split('.').slice(0, -1).join('.') : name;
   const noApostrophe = noExtensions.split("'").join('');
   const noSpaces = noApostrophe.split(' ').join('-');

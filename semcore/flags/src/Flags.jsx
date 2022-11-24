@@ -16,6 +16,7 @@ const version = preval`
 const versionForClassName = version.split('.').join('_');
 
 const normalizeName = (name) => {
+  if (!name) return name;
   const noExtensions = name.includes('.') ? name.split('.').slice(0, -1).join('.') : name;
   const noApostrophe = noExtensions.split("'").join('');
   const noSpaces = noApostrophe.split(' ').join('-');
