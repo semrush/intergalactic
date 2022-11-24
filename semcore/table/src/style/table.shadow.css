@@ -53,6 +53,10 @@ SCell[use='primary'][compact] {
   padding: var(--intergalactic-spacing-3x, 12px) var(--intergalactic-spacing-2x, 8px);
 }
 
+SCell[use='primary'][compact] {
+  padding: 8px;
+}
+
 SCell[use='secondary'] {
   padding: var(--intergalactic-spacing-2x, 8px);
 }
