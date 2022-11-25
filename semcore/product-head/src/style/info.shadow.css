@@ -4,11 +4,11 @@ SInfo {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  font-size: var(--intergalactic-fs-200);
-  line-height: var(--intergalactic-lh-200);
+  font-size: var(--intergalactic-fs-200, 14px);
+  line-height: var(--intergalactic-lh-200, 142%);
 
   & > SItem:not(:last-child) {
-    margin-right: var(--intergalactic-spacing-6x);
+    margin-right: var(--intergalactic-spacing-6x, 24px);
     position: relative;
   }
 }
@@ -20,14 +20,14 @@ SItem {
 }
 
 SLabel {
-  margin-right: var(--intergalactic-spacing-1x);
+  margin-right: var(--intergalactic-spacing-1x, 4px);
 }
 
 @media (max-width: 767px) {
   SInfo {
-    margin-bottom: calc(-1 * var(--intergalactic-spacing-spacing-1x));
+    margin-bottom: calc(-1 * var(--intergalactic-spacing-1x, 4px));
   }
   SItem {
-    margin-bottom: var(--intergalactic-spacing-1x);
+    margin-bottom: var(--intergalactic-spacing-1x, 4px);
   }
 }

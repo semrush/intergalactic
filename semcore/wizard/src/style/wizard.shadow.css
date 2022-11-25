@@ -9,24 +9,25 @@ SWizard {
 }
 
 SSidebar {
-  background: var(--intergalactic-control-primary-advertising);
-  color: var(--intergalactic-text-primary-invert);
-  font-weight: var(--intergalactic-bold-700);
-  font-size: var(--intergalactic-fs-300);
-  line-height: var(--intergalactic-lh-300);
-  padding: var(--intergalactic-spacing-10x) var(--intergalactic-spacing-2x)
-    calc(var(--intergalactic-spacing-spacing-8x) + var(--intergalactic-spacing-spacing-05x));
+  background: var(--intergalactic-control-primary-advertising, #5925ab);
+  color: var(--intergalactic-text-primary-invert, #ffffff);
+  font-weight: var(--intergalactic-bold-700, Bold);
+  font-size: var(--intergalactic-fs-300, 16px);
+  line-height: var(--intergalactic-lh-300, 150%);
+  padding: var(--intergalactic-spacing-10x, 40px) var(--intergalactic-spacing-2x, 8px)
+    calc(var(--intergalactic-spacing-8x, 32px) + var(--intergalactic-spacing-05x, 2px));
   max-width: 220px;
   flex-shrink: 0;
   box-sizing: border-box;
-  border-radius: var(--intergalactic-rounded-large) 0 0 var(--intergalactic-rounded-large);
+  border-radius: var(--intergalactic-rounded-large, 12px) 0 0
+    var(--intergalactic-rounded-large, 12px);
   @media (max-width: 1060px) {
     width: 44px;
   }
 }
 
 SSidebarHeader {
-  margin: 0 var(--intergalactic-spacing-5x) var(--intergalactic-spacing-4x);
+  margin: 0 var(--intergalactic-spacing-5x, 20px) var(--intergalactic-spacing-4x, 16px);
   @media (max-width: 1060px) {
     display: none;
   }
@@ -34,42 +35,42 @@ SSidebarHeader {
 
 SStepper {
   display: flex;
-  font-size: var(--intergalactic-fs-200);
-  border-radius: var(--intergalactic-rounded-medium);
-  padding: var(--intergalactic-spacing-2x) var(--intergalactic-spacing-3x);
+  font-size: var(--intergalactic-fs-200, 14px);
+  border-radius: var(--intergalactic-rounded-medium, 6px);
+  padding: var(--intergalactic-spacing-2x, 8px) var(--intergalactic-spacing-3x, 12px);
   cursor: pointer;
   position: relative;
   overflow: auto;
-  line-height: var(--intergalactic-lh-200);
+  line-height: var(--intergalactic-lh-200, 142%);
 
   &:hover {
-    background: var(--intergalactic-control-primary-advertising-hover);
+    background: var(--intergalactic-control-primary-advertising-hover, #421983);
     z-index: 1;
   }
   &[active] {
-    background: var(--intergalactic-control-primary-advertising-active);
+    background: var(--intergalactic-control-primary-advertising-active, #8649e1);
   }
   &:disabled,
   &[disabled] {
-    opacity: var(--intergalactic-disabled-opacity);
+    opacity: var(--intergalactic-disabled-opacity, 0.3);
     cursor: default;
     pointer-events: none; /* Disable interactions */
   }
 
   @media (max-width: 1060px) {
-    padding: var(--intergalactic-spacing-2x) var(--intergalactic-spacing-1x);
+    padding: var(--intergalactic-spacing-2x, 8px) var(--intergalactic-spacing-1x, 4px);
     &:hover {
       width: fit-content;
       max-width: 220px;
     }
     &:hover SStepDescription {
       display: block;
-      border-radius: var(--intergalactic-rounded-medium);
+      border-radius: var(--intergalactic-rounded-medium, 6px);
       white-space: nowrap;
       overflow: auto;
     }
     &[active]:hover SStepDescription {
-      background: var(--intergalactic-control-primary-advertising-active);
+      background: var(--intergalactic-control-primary-advertising-active, #8649e1);
     }
   }
 }
@@ -90,7 +91,7 @@ SStepDescription {
 }
 
 SContent {
-  padding: var(--intergalactic-spacing-10x);
+  padding: var(--intergalactic-spacing-10x, 40px);
   width: 100%;
   border-radius: 0 var(--intergalactic-rounded-large) var(--intergalactic-rounded-large) 0;
   background: var(--intergalactic-bg-primary-neutral);

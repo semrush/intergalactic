@@ -3,13 +3,13 @@
 SBadge {
   display: inline-block;
   box-sizing: border-box;
-  height: var(--intergalactic-fs-200);
-  line-height: var(--intergalactic-fs-200);
+  height: var(--intergalactic-fs-200, 14px);
+  line-height: var(--intergalactic-fs-200, 14px);
   padding: 0 4px;
-  border-radius: var(--intergalactic-rounded-medium);
+  border-radius: var(--intergalactic-rounded-medium, 6px);
   white-space: nowrap;
-  font-size: var(--intergalactic-fs-50);
-  font-weight: var(--intergalactic-medium-500);
+  font-size: var(--intergalactic-fs-50, 10px);
+  font-weight: var(--intergalactic-medium-500, Medium);
   letter-spacing: 0.3px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

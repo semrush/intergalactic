@@ -32,7 +32,7 @@
   color: var(--black);
 }
 .text-white {
-  color: var(--intergalactic-color-text-primary-invert);
+  color: var(--intergalactic-text-primary-invert);
 }
 .text-red-100 {
   color: var(--light-red);

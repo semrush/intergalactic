@@ -3,18 +3,18 @@
 STitle {
   align-items: center;
   display: flex;
-  font-size: var(--intergalactic-fs-400);
-  line-height: var(--intergalactic-lh-400);
-  font-weight: var(--intergalactic-semi-bold-600);
+  font-size: var(--intergalactic-fs-400, 20px);
+  line-height: var(--intergalactic-lh-400, 120%);
+  font-weight: var(--intergalactic-semi-bold-600, Semi Bold);
   min-width: 0;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  color: var(--intergalactic-text-primary);
+  color: var(--intergalactic-text-primary, #191b23);
 }
 
 STool {
-  margin-right: var(--intergalactic-spacing-1x);
+  margin-right: var(--intergalactic-spacing-1x, 4px);
 }
 
 SName {

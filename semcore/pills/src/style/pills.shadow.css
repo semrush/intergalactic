@@ -29,9 +29,9 @@ SPill {
   vertical-align: middle;
   font-family: inherit;
   cursor: pointer;
-  background: var(--intergalactic-bg-primary-neutral);
-  border: 1px solid var(--intergalactic-border-primary);
-  border-radius: var(--intergalactic-rounded-medium);
+  background: var(--intergalactic-bg-primary-neutral, #ffffff);
+  border: 1px solid var(--intergalactic-border-primary, #c4c7cf);
+  border-radius: var(--intergalactic-rounded-medium, 6px);
 
   &::-moz-focus-inner {
     border: none;
@@ -46,13 +46,13 @@ SPill {
   }
 
   &:hover {
-    background: var(--intergalactic-bg-primary-neutral-hover);
+    background: var(--intergalactic-bg-primary-neutral-hover, #f4f5f9);
   }
 }
 
 SPill[selected] {
-  background: var(--intergalactic-control-secondary-info-hover);
-  border-color: var(--intergalactic-border-info-active);
+  background: var(--intergalactic-control-secondary-info-hover, rgba(0, 143, 248, 0.2));
+  border-color: var(--intergalactic-border-info-active, #006dca);
   z-index: 1;
 }
 
@@ -61,79 +61,79 @@ SPill[disabled] {
   pointer-events: none; /* Disable link interactions */
 
   & > * {
-    opacity: var(--intergalactic-disabled-opacity);
+    opacity: var(--intergalactic-disabled-opacity, 0.3);
   }
 }
 
 SPill[keyboardFocused] {
-  box-shadow: var(--intergalactic-keyboard-focus);
+  box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.3));
 }
 
 SText {
-  color: var(--intergalactic-text-primary);
+  color: var(--intergalactic-text-primary, #191b23);
   display: inline-flex;
 }
 
 SAddon {
-  color: var(--intergalactic-text-secondary);
+  color: var(--intergalactic-text-secondary, #6c6e79);
   display: inline-flex;
   align-items: center;
   justify-content: center;
 }
 
 SPill[size='m'] {
-  height: var(--form-control-m);
-  min-width: var(--form-control-m);
-  font-size: var(--intergalactic-fs-200);
+  height: var(--intergalactic-form-control-m, 28px);
+  min-width: var(--intergalactic-form-control-m, 28px);
+  font-size: var(--intergalactic-fs-200, 14px);
 
   & SText {
-    margin-left: var(--intergalactic-spacing-2x);
-    margin-right: var(--intergalactic-spacing-2x);
+    margin-left: var(--intergalactic-spacing-2x, 8px);
+    margin-right: var(--intergalactic-spacing-2x, 8px);
   }
 
   & SAddon {
     &:not(:only-child):first-child {
-      margin-left: var(--intergalactic-spacing-2x);
+      margin-left: var(--intergalactic-spacing-2x, 8px);
     }
 
     &:not(:only-child):last-child {
-      margin-right: var(--intergalactic-spacing-2x);
+      margin-right: var(--intergalactic-spacing-2x, 8px);
     }
 
     &:only-child {
-      margin-left: var(--intergalactic-spacing-2x);
-      margin-right: var(--intergalactic-spacing-2x);
+      margin-left: var(--intergalactic-spacing-2x, 8px);
+      margin-right: var(--intergalactic-spacing-2x, 8px);
     }
   }
 }
 
 SPill[size='l'] {
-  height: var(--form-control-l);
-  min-width: var(--form-control-l);
-  font-size: var(--intergalactic-fs-300);
+  height: var(--intergalactic-form-control-l, 40px);
+  min-width: var(--intergalactic-form-control-l, 40px);
+  font-size: var(--intergalactic-fs-300, 16px);
 
   & SText {
-    margin-left: var(--intergalactic-spacing-2x);
-    margin-right: var(--intergalactic-spacing-2x);
+    margin-left: var(--intergalactic-spacing-2x, 8px);
+    margin-right: var(--intergalactic-spacing-2x, 8px);
 
     &:only-child {
-      margin-left: var(--intergalactic-spacing-3x);
-      margin-right: var(--intergalactic-spacing-3x);
+      margin-left: var(--intergalactic-spacing-3x, 12px);
+      margin-right: var(--intergalactic-spacing-3x, 12px);
     }
   }
 
   & SAddon {
     &:not(:only-child):first-child {
-      margin-left: var(--intergalactic-spacing-3x);
+      margin-left: var(--intergalactic-spacing-3x, 12px);
     }
 
     &:not(:only-child):last-child {
-      margin-right: var(--intergalactic-spacing-3x);
+      margin-right: var(--intergalactic-spacing-3x, 12px);
     }
 
     &:only-child {
-      margin-left: var(--intergalactic-spacing-3x);
-      margin-right: var(--intergalactic-spacing-3x);
+      margin-left: var(--intergalactic-spacing-3x, 12px);
+      margin-right: var(--intergalactic-spacing-3x, 12px);
     }
   }
 }

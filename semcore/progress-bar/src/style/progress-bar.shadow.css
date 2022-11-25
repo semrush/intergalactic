@@ -32,30 +32,34 @@ SValue {
 SProgressBar[size='s'],
 SValue[size='s'] {
   height: 4px;
-  border-radius: var(--intergalactic-rounded-medium);
+  border-radius: var(--intergalactic-rounded-medium, 6px);
   background-size: 8px 8px;
 }
 
 SProgressBar[size='m'],
 SValue[size='m'] {
   height: 8px;
-  border-radius: var(--intergalactic-rounded-medium);
+  border-radius: var(--intergalactic-rounded-medium, 6px);
   background-size: 12px 12px;
 }
 
 SProgressBar[size='l'],
 SValue[size='l'] {
   height: 12px;
-  border-radius: var(--intergalactic-rounded-medium);
+  border-radius: var(--intergalactic-rounded-medium, 6px);
   background-size: 16px 16px;
 }
 
+SProgressBar {
+  background-color: var(--intergalactic-progress-bar-bg);
+}
+
 SProgressBar[theme='dark'] {
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: var(--intergalactic-progress-bar-bg-invert);
 }
 
 SProgressBar[theme='invert'] {
-  background-color: var(--gray-100);
+  background-color: var(--intergalactic-progress-bar-bg-invert);
 }
 
 @keyframes loading {

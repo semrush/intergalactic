@@ -22,35 +22,35 @@
 }
 
 .button_addon-left {
-  margin-right: var(--intergalactic-spacing-spacing-4x);
+  margin-right: var(--intergalactic-spacing-4x);
 }
 .button_addon-right {
-  margin-left: var(--intergalactic-spacing-spacing-4x);
+  margin-left: var(--intergalactic-spacing-4x);
 }
 
 .button-theme-primary-info {
-  color: var(--intergalactic-color-text-primary-invert);
+  color: var(--intergalactic-text-primary-invert);
   background-color: var(--blue);
 }
 .button-theme-primary-info:hover {
   background-color: #005fb2 !important;
 }
 .button-theme-primary-success {
-  color: var(--intergalactic-color-text-primary-invert);
+  color: var(--intergalactic-text-primary-invert);
   background-color: var(--green);
 }
 .button-theme-primary-success:hover {
   background-color: var(--dark-green) !important;
 }
 .button-theme-primary-warning {
-  color: var(--intergalactic-color-text-primary-invert);
+  color: var(--intergalactic-text-primary-invert);
   background-color: var(--orange);
 }
 .button-theme-primary-warning:hover {
   background-color: var(--dark-orange) !important;
 }
 .button-theme-primary-danger {
-  color: var(--intergalactic-color-text-primary-invert);
+  color: var(--intergalactic-text-primary-invert);
   background-color: var(--red);
 }
 .button-theme-primary-danger:hover {
@@ -58,7 +58,7 @@
 }
 
 .button-theme-primary-invert {
-  background-color: var(--intergalactic-color-bg-primary-neutral);
+  background-color: var(--intergalactic-bg-primary-neutral);
 }
 .button-theme-primary-invert:hover {
   opacity: 0.6;
@@ -75,7 +75,7 @@
 
 .button-theme-secondary-invert {
   border-color: var(--white);
-  color: var(--intergalactic-color-text-primary-invert);
+  color: var(--intergalactic-text-primary-invert);
 }
 .button-theme-secondary-invert:hover {
   opacity: 0.6;

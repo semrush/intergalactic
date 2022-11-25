@@ -1,24 +1,24 @@
 @import '@semcore/utils/style/var.css';
 
 SFeaturePopover {
-  padding-top: var(--intergalactic-spacing-4x);
-  padding-right: var(--intergalactic-spacing-8x);
-  padding-bottom: var(--intergalactic-spacing-4x);
-  padding-left: var(--intergalactic-spacing-4x);
-  border-radius: var(--intergalactic-rounded-medium);
+  padding-top: var(--intergalactic-spacing-4x, 16px);
+  padding-right: var(--intergalactic-spacing-8x, 32px);
+  padding-bottom: var(--intergalactic-spacing-4x, 16px);
+  padding-left: var(--intergalactic-spacing-4x, 16px);
+  border-radius: var(--intergalactic-rounded-medium, 6px);
   box-sizing: border-box;
-  background-color: var(--intergalactic-bg-primary-highlight);
-  color: var(--intergalactic-text-primary);
-  box-shadow: var(--intergalactic-box-shadow-popper);
+  background-color: var(--intergalactic-bg-primary-highlight, #fce081);
+  color: var(--intergalactic-text-primary, #191b23);
+  box-shadow: var(--intergalactic-box-shadow-popper, 0px 1px 12px 0px rgba(25, 27, 35, 0.15));
 }
 
 SClose {
   position: absolute;
   right: 0;
   top: 0;
-  padding: var(--intergalactic-spacing-2x);
+  padding: var(--intergalactic-spacing-2x, 8px);
   cursor: pointer;
-  color: var(--intergalactic-text-primary);
+  color: var(--intergalactic-text-primary, #191b23);
   font-size: 0;
 }
 
@@ -44,8 +44,8 @@ SClose {
 
 SSpot {
   position: absolute;
-  bottom: calc(-1 * var(--intergalactic-spacing-spacing-1x));
-  right: calc(-1 * var(--intergalactic-spacing-spacing-1x));
+  bottom: calc(-1 * var(--intergalactic-spacing-1x, 4px));
+  right: calc(-1 * var(--intergalactic-spacing-1x, 4px));
   animation-name: showTrigger;
   animation-duration: 0.2s;
   animation-timing-function: ease-in;
@@ -65,7 +65,7 @@ SSpot {
     animation-iteration-count: infinite;
     animation-fill-mode: forwards;
     animation-delay: 0.5s;
-    background-color: var(--intergalactic-bg-primary-highlight);
+    background-color: var(--intergalactic-bg-primary-highlight, #fce081);
     border-radius: 50%;
     width: 12px;
     height: 12px;
@@ -79,7 +79,7 @@ SSpot {
     border-radius: 50%;
     width: 12px;
     height: 12px;
-    background-color: var(--intergalactic-bg-primary-highlight);
+    background-color: var(--intergalactic-bg-primary-highlight, #fce081);
   }
 }
 

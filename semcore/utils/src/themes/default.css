@@ -284,22 +284,22 @@
   /* Base denominator of the design system. */
   --intergalactic-scale-indent: 4px;
   /* Use for default size of the controls. */
-  --intergalactic-form-control-m: calc(4px * 7);
+  --intergalactic-form-control-m: 28px;
   /* Use for large size of the controls. */
-  --intergalactic-form-control-l: calc(4px * 10);
-  --intergalactic-spacing-05x: calc(4px * 0.5);
-  --intergalactic-spacing-1x: calc(4px * 1);
-  --intergalactic-spacing-2x: calc(4px * 2);
-  --intergalactic-spacing-3x: calc(4px * 3);
-  --intergalactic-spacing-4x: calc(4px * 4);
-  --intergalactic-spacing-5x: calc(4px * 5);
-  --intergalactic-spacing-6x: calc(4px * 6);
-  --intergalactic-spacing-8x: calc(4px * 8);
-  --intergalactic-spacing-10x: calc(4px * 10);
-  --intergalactic-spacing-14x: calc(4px * 14);
-  --intergalactic-spacing-20x: calc(4px * 20);
-  --intergalactic-spacing-24x: calc(4px * 24);
-  --intergalactic-spacing-30x: calc(4px * 30);
+  --intergalactic-form-control-l: 40px;
+  --intergalactic-spacing-05x: 2px;
+  --intergalactic-spacing-1x: 4px;
+  --intergalactic-spacing-2x: 8px;
+  --intergalactic-spacing-3x: 12px;
+  --intergalactic-spacing-4x: 16px;
+  --intergalactic-spacing-5x: 20px;
+  --intergalactic-spacing-6x: 24px;
+  --intergalactic-spacing-8x: 32px;
+  --intergalactic-spacing-10x: 40px;
+  --intergalactic-spacing-14x: 56px;
+  --intergalactic-spacing-20x: 80px;
+  --intergalactic-spacing-24x: 96px;
+  --intergalactic-spacing-30x: 120px;
   /* Use only for checkbox and placeholder addons. */
   --intergalactic-rounded-small: 4px;
   /* Use for all inputs and controls, widgets. */

@@ -10,9 +10,9 @@ STag {
   border-style: solid;
   border-color: transparent;
   border-radius: 24px;
-  padding-left: var(--intergalactic-spacing-1x);
-  padding-right: var(--intergalactic-spacing-1x);
-  font-weight: var(--intergalactic-medium-500);
+  padding-left: var(--intergalactic-spacing-1x, 4px);
+  padding-right: var(--intergalactic-spacing-1x, 4px);
+  font-weight: var(--intergalactic-medium-500, Medium);
   background-color: var(--colorBg);
   color: var(--colorText);
   border-color: var(--colorBorder);
@@ -25,7 +25,7 @@ STag {
 }
 
 STag[disabled] {
-  opacity: var(--intergalactic-disabled-opacity);
+  opacity: var(--intergalactic-disabled-opacity, 0.3);
   cursor: default;
   pointer-events: none; /* Disable link interactions */
 }
@@ -47,8 +47,8 @@ STag[size='m'] {
   }
 
   & SText {
-    font-size: var(--intergalactic-fs-100);
-    line-height: var(--intergalactic-lh-100);
+    font-size: var(--intergalactic-fs-100, 12px);
+    line-height: var(--intergalactic-lh-100, 133%);
   }
 }
 
@@ -57,8 +57,8 @@ STag[size='l'] {
   min-width: 28px;
 
   & SText {
-    font-size: var(--intergalactic-fs-200);
-    line-height: var(--intergalactic-lh-200);
+    font-size: var(--intergalactic-fs-200, 14px);
+    line-height: var(--intergalactic-lh-200, 142%);
   }
 }
 
@@ -67,8 +67,8 @@ STag[size='xl'] {
   min-width: 40px;
 
   & SText {
-    font-size: var(--intergalactic-fs-300);
-    line-height: var(--intergalactic-lh-300);
+    font-size: var(--intergalactic-fs-300, 16px);
+    line-height: var(--intergalactic-lh-300, 150%);
   }
 }
 
@@ -86,7 +86,7 @@ STag[theme='primary'] {
 
 STag[theme='primary-invert'] {
   background-color: rgba(255, 255, 255, 0.15);
-  color: var(--intergalactic-text-primary-invert);
+  color: var(--intergalactic-text-primary-invert, #ffffff);
 
   &[interactive]:hover,
   &[interactive]:active,
@@ -96,7 +96,7 @@ STag[theme='primary-invert'] {
 }
 STag[theme='secondary-invert'],
 STag[theme='additional-invert'] {
-  color: var(--intergalactic-text-primary-invert);
+  color: var(--intergalactic-text-primary-invert, #ffffff);
   border-color: color-mod(var(--white) a(30%));
 
   &[interactive]:hover,
@@ -137,8 +137,8 @@ SAddon {
   flex-shrink: 0;
   align-items: center;
   justify-content: center;
-  padding-left: var(--intergalactic-spacing-1x);
-  padding-right: var(--intergalactic-spacing-1x);
+  padding-left: var(--intergalactic-spacing-1x, 4px);
+  padding-right: var(--intergalactic-spacing-1x, 4px);
 }
 
 SCircle {
@@ -147,7 +147,7 @@ SCircle {
   justify-content: center;
   overflow: hidden;
   border-radius: 50%;
-  margin: 0 var(--intergalactic-spacing-1x);
+  margin: 0 var(--intergalactic-spacing-1x, 4px);
 
   &:first-child {
     margin-left: 0;
@@ -179,7 +179,7 @@ SClose {
   flex-shrink: 0;
   align-items: center;
   justify-content: center;
-  padding: var(--intergalactic-spacing-1x);
+  padding: var(--intergalactic-spacing-1x, 4px);
   opacity: 0.5;
 
   &:hover {

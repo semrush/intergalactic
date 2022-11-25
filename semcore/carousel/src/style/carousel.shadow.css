@@ -15,31 +15,31 @@ SItem {
   max-width: 100%;
   box-sizing: border-box;
   transform: var(--transform);
-  border-radius: var(--intergalactic-rounded-medium);
+  border-radius: var(--intergalactic-rounded-medium, 6px);
   overflow: hidden;
 }
 
 SIndicators {
   display: flex;
   justify-content: center;
-  margin-top: var(--intergalactic-spacing-4x);
+  margin-top: var(--intergalactic-spacing-4x, 16px);
 }
 
 SIndicator {
-  margin: 0 calc(0.5 * var(--intergalactic-spacing-spacing-3x));
+  margin: 0 calc(0.5 * var(--intergalactic-spacing-3x, 12px));
   cursor: pointer;
   display: block;
   width: 12px;
   height: 12px;
-  border-radius: var(--intergalactic-rounded-medium);
-  background-color: var(--intergalactic-icon-secondary-neutral);
-  opacity: var(--intergalactic-disabled-opacity);
+  border-radius: var(--intergalactic-rounded-medium, 6px);
+  background-color: var(--intergalactic-icon-secondary-neutral, #a9abb6);
+  opacity: var(--intergalactic-disabled-opacity, 0.3);
   object-fit: cover;
   transition: ease-in-out opacity 0.1s;
 }
 
 SIndicator:hover {
-  opacity: calc(2 * var(--intergalactic-opacity-disabled-opacity));
+  opacity: calc(2 * var(--intergalactic-disabled-opacity, 0.3));
 }
 
 SIndicator[active] {
@@ -55,15 +55,15 @@ SNext {
 }
 
 SPrev {
-  margin-right: var(--intergalactic-spacing-3x);
+  margin-right: var(--intergalactic-spacing-3x, 12px);
 }
 SNext {
-  margin-left: var(--intergalactic-spacing-3x);
+  margin-left: var(--intergalactic-spacing-3x, 12px);
 }
 
 SPrev[disabled],
 SNext[disabled] {
-  opacity: var(--intergalactic-disabled-opacity);
+  opacity: var(--intergalactic-disabled-opacity, 0.3);
   cursor: default;
   pointer-events: none;
 }

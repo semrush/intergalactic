@@ -9,8 +9,8 @@ SBreadcrumbs {
 }
 
 SSeparator {
-  margin: 0 var(--intergalactic-spacing-2x);
-  color: var(--intergalactic-icon-secondary-neutral);
+  margin: 0 var(--intergalactic-spacing-2x, 8px);
+  color: var(--intergalactic-icon-secondary-neutral, #a9abb6);
   display: flex;
 
   &:last-child {
@@ -20,10 +20,10 @@ SSeparator {
 
 SBreadcrumbsItem {
   position: relative;
-  font-size: var(--intergalactic-fs-200);
-  line-height: var(--intergalactic-lh-100);
-  font-family: var(--intergalactic-base), sans-serif;
-  color: var(--intergalactic-text-secondary);
+  font-size: var(--intergalactic-fs-200, 14px);
+  line-height: var(--intergalactic-lh-100, 133%);
+  font-family: var(--intergalactic-base, Inter), sans-serif;
+  color: var(--intergalactic-text-secondary, #6c6e79);
   text-decoration: none;
   box-sizing: border-box;
   outline: none;
@@ -34,16 +34,16 @@ SBreadcrumbsItem {
 
   &:hover {
     text-decoration: underline;
-    color: var(--intergalactic-text-hint-hover-active);
+    color: var(--intergalactic-text-hint-hover-active, #484a54);
   }
 }
 
 SBreadcrumbsItem[keyboardFocused] {
-  box-shadow: var(--intergalactic-keyboard-focus);
+  box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.3));
 }
 
 SBreadcrumbsItem[active] {
-  color: var(--intergalactic-text-primary);
+  color: var(--intergalactic-text-primary, #191b23);
   cursor: default;
   &:hover {
     text-decoration: none;

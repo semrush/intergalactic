@@ -6,23 +6,23 @@ SHint {
   text-decoration: none;
   outline: none;
   cursor: pointer;
-  color: var(--intergalactic-text-secondary);
+  color: var(--intergalactic-text-secondary, #6c6e79);
 }
 
 SHint {
   &[active],
   &:active,
   &:hover {
-    color: var(--intergalactic-text-hint-hover-active);
+    color: var(--intergalactic-text-hint-hover-active, #484a54);
   }
 }
 
 SHint[keyboardFocused] {
-  box-shadow: var(--intergalactic-keyboard-focus);
+  box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.3));
 }
 
 SHint[disabled] {
-  opacity: var(--intergalactic-disabled-opacity);
+  opacity: var(--intergalactic-disabled-opacity, 0.3);
   cursor: default;
   pointer-events: none; /* Disable hint interactions */
 }
@@ -34,11 +34,11 @@ SAddon {
 
 SHint SAddon {
   &:not(:only-child):first-child {
-    margin-right: var(--intergalactic-spacing-1x);
+    margin-right: var(--intergalactic-spacing-1x, 4px);
   }
 
   &:not(:only-child):last-child {
-    margin-left: var(--intergalactic-spacing-1x);
+    margin-left: var(--intergalactic-spacing-1x, 4px);
   }
 }
 

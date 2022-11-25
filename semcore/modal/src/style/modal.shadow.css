@@ -2,12 +2,12 @@
 
 SWindow {
   position: relative;
-  border-radius: var(--intergalactic-rounded-large);
-  background: var(--intergalactic-bg-primary-neutral);
+  border-radius: var(--intergalactic-rounded-large, 12px);
+  background: var(--intergalactic-bg-primary-neutral, #ffffff);
   box-sizing: border-box;
   margin: auto;
-  padding: var(--intergalactic-spacing-10x);
-  box-shadow: var(--intergalactic-box-shadow-modal);
+  padding: var(--intergalactic-spacing-10x, 40px);
+  box-shadow: var(--intergalactic-box-shadow-modal, 0px 3px 8px 0px rgba(25, 27, 35, 0.2));
 
   &:focus {
     outline: none;
@@ -24,14 +24,14 @@ SOverlay {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: var(--intergalactic-spacing-10x);
-  background: var(--intergalactic-overlay-primary);
+  padding: var(--intergalactic-spacing-10x, 40px);
+  background: var(--intergalactic-overlay-primary, rgba(25, 27, 35, 0.7));
   overflow: auto;
-  z-index: var(--intergalactic-z-index-modal);
+  z-index: var(--intergalactic-z-index-modal, 600);
   -webkit-overflow-scrolling: touch;
 
   & SOverlay {
-    background: var(--intergalactic-overlay-secondary);
+    background: var(--intergalactic-overlay-secondary, rgba(25, 27, 35, 0.4));
   }
 }
 
@@ -40,8 +40,8 @@ SClose {
   position: absolute;
   right: 0;
   top: 0;
-  padding: var(--intergalactic-spacing-3x);
-  color: var(--intergalactic-icon-secondary-neutral);
+  padding: var(--intergalactic-spacing-3x, 12px);
+  color: var(--intergalactic-icon-secondary-neutral, #a9abb6);
   cursor: pointer;
   z-index: 1;
   border: none;
@@ -49,12 +49,12 @@ SClose {
   outline: none;
 
   &:hover {
-    color: var(--intergalactic-icon-secondary-neutral-hover-active);
+    color: var(--intergalactic-icon-secondary-neutral-hover-active, #8a8e9b);
   }
 }
 
 SClose[keyboardFocused] {
-  box-shadow: var(--intergalactic-keyboard-focus);
+  box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.3));
 }
 
 @media (max-width: 767px) {
@@ -63,6 +63,6 @@ SClose[keyboardFocused] {
   }
 
   SOverlay {
-    padding: var(--intergalactic-spacing-3x);
+    padding: var(--intergalactic-spacing-3x, 12px);
   }
 }

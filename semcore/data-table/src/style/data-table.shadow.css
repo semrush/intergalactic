@@ -26,14 +26,14 @@ SColumn {
   display: flex;
   align-items: center;
   flex-grow: 1;
-  font-size: var(--intergalactic-fs-100);
-  color: var(--intergalactic-text-primary);
+  font-size: var(--intergalactic-fs-100, 12px);
+  color: var(--intergalactic-text-primary, #191b23);
   box-sizing: border-box;
   position: relative;
 
   &:focus {
     outline: none;
-    box-shadow: var(--intergalactic-keyboard-focus);
+    box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.3));
   }
 }
 
@@ -45,16 +45,16 @@ SColumn[hidden] {
 }
 
 SColumn[use='primary'] {
-  padding: var(--intergalactic-spacing-3x);
-  border-right: 1px solid var(--intergalactic-border-secondary);
-  border-bottom: 1px solid var(--intergalactic-border-secondary);
-  background-color: var(--intergalactic-table-TH-primary-cell);
+  padding: var(--intergalactic-spacing-3x, 12px);
+  border-right: 1px solid var(--intergalactic-border-secondary, #e0e1e9);
+  border-bottom: 1px solid var(--intergalactic-border-secondary, #e0e1e9);
+  background-color: var(--intergalactic-table-TH-primary-cell, #f4f5f9);
 }
 
 SColumn[use='secondary'] {
-  padding: var(--intergalactic-spacing-2x);
-  border-bottom: 1px solid var(--intergalactic-border-table-accent-border);
-  background-color: var(--intergalactic-table-TH-secondary-cell);
+  padding: var(--intergalactic-spacing-2x, 8px);
+  border-bottom: 1px solid var(--intergalactic-border-table-accent-border, #a9abb6);
+  background-color: var(--intergalactic-table-TH-secondary-cell, #ffffff);
 }
 
 SColumn[use]:last-child {
@@ -78,28 +78,28 @@ SColumn[groupHead][use] {
 }
 
 SColumn[groupHead][use='primary'] {
-  border-bottom: 1px solid var(--intergalactic-border-secondary);
+  border-bottom: 1px solid var(--intergalactic-border-secondary, #e0e1e9);
 }
 
 SColumn[groupHead][use='secondary'] {
-  border-bottom: 1px solid var(--intergalactic-border-table-accent-border);
+  border-bottom: 1px solid var(--intergalactic-border-table-accent-border, #a9abb6);
 }
 
 SColumn[sortable] {
   cursor: pointer;
 
   &[use='primary']:hover {
-    background-color: var(--intergalactic-table-TH-primary-cell-hover);
+    background-color: var(--intergalactic-table-TH-primary-cell-hover, #e0e1e9);
   }
 }
 
 SColumn[active][use='primary'] {
-  background-color: var(--intergalactic-table-TH-primary-cell-active);
+  background-color: var(--intergalactic-table-TH-primary-cell-active, #e0e1e9);
 }
 
 SColumn[resizable] {
   &:hover:after {
-    background: var(--intergalactic-table-TH-primary-cell-hover);
+    background: var(--intergalactic-table-TH-primary-cell-hover, #e0e1e9);
   }
 
   &:after {
@@ -121,14 +121,12 @@ SColumn[fixed] {
 }
 
 SSortIcon {
-  fill: var(--intergalactic-icon-secondary-neutral);
-  margin-left: calc(
-    var(--intergalactic-spacing-spacing-1x) + var(--intergalactic-spacing-spacing-05x)
-  );
+  fill: var(--intergalactic-icon-secondary-neutral, #a9abb6);
+  margin-left: calc(var(--intergalactic-spacing-1x, 4px) + var(--intergalactic-spacing-05x, 2px));
 }
 
 SSortIcon[active] {
-  fill: var(--intergalactic-icon-secondary-neutral-hover-active);
+  fill: var(--intergalactic-icon-secondary-neutral-hover-active, #8a8e9b);
 }
 
 SBodyWrapper {
@@ -152,67 +150,67 @@ SRow {
 SRow[active] > SCell:not([theme]),
 SRow:hover > SCell:not([theme]),
 SRow SCell:hover + SGroupCell SCell:not([theme]) {
-  background-color: var(--intergalactic-table-TD-cell-hover);
+  background-color: var(--intergalactic-table-TD-cell-hover, rgba(224, 225, 233, 0.5));
 }
 
 /* MUTED THEME */
 SRow[theme='muted'] SCell:not([theme]) {
-  background-color: var(--intergalactic-table-TD-cell-unread);
+  background-color: var(--intergalactic-table-TD-cell-unread, #f4f5f9);
 }
 
 SRow:hover > SCell[theme='muted'],
 SRow[theme='muted'][active] > SCell:not([theme]),
 SRow[theme='muted']:hover > SCell:not([theme]),
 SRow[theme='muted'] SCell:hover + SGroupCell SCell:not([theme]) {
-  background-color: var(--intergalactic-table-TD-cell-hover);
+  background-color: var(--intergalactic-table-TD-cell-hover, rgba(224, 225, 233, 0.5));
 }
 
 /* INFO THEME */
 SRow[theme='info'] SCell:not([theme]) {
-  background-color: var(--intergalactic-table-TD-cell-selected);
+  background-color: var(--intergalactic-table-TD-cell-selected, #e9f7ff);
 }
 
 SRow:hover > SCell[theme='info'],
 SRow[theme='info'][active] > SCell:not([theme]),
 SRow[theme='info']:hover > SCell:not([theme]),
 SRow[theme='info'] SCell:hover + SGroupCell SCell:not([theme]) {
-  background-color: var(--intergalactic-table-TD-cell-selected-hover);
+  background-color: var(--intergalactic-table-TD-cell-selected-hover, #c4e5fe);
 }
 
 /* SUCCESS THEME */
 SRow[theme='success'] SCell:not([theme]) {
-  background-color: var(--intergalactic-table-TD-cell-new);
+  background-color: var(--intergalactic-table-TD-cell-new, #dbfee8);
 }
 
 SRow:hover > SCell[theme='success'],
 SRow[theme='success'][active] > SCell:not([theme]),
 SRow[theme='success']:hover > SCell:not([theme]),
 SRow[theme='success'] SCell:hover + SGroupCell SCell:not([theme]) {
-  background-color: var(--intergalactic-table-TD-cell-new-hover);
+  background-color: var(--intergalactic-table-TD-cell-new-hover, #9ef2c9);
 }
 
 /* WARNING THEME */
 SRow[theme='warning'] SCell:not([theme]) {
-  background-color: var(--intergalactic-table-TD-cell-warning);
+  background-color: var(--intergalactic-table-TD-cell-warning, #fff3d9);
 }
 
 SRow:hover > SCell[theme='warning'],
 SRow[theme='warning'][active] > SCell:not([theme]),
 SRow[theme='warning']:hover > SCell:not([theme]),
 SRow[theme='warning'] SCell:hover + SGroupCell SCell:not([theme]) {
-  background-color: var(--intergalactic-table-TD-cell-warning-hover);
+  background-color: var(--intergalactic-table-TD-cell-warning-hover, #ffdca2);
 }
 
 /* DANGER THEME */
 SRow[theme='danger'] SCell:not([theme]) {
-  background-color: var(--intergalactic-table-TD-cell-critical);
+  background-color: var(--intergalactic-table-TD-cell-critical, #fff0f7);
 }
 
 SRow:hover > SCell[theme='danger'],
 SRow[theme='danger'][active] > SCell:not([theme]),
 SRow[theme='danger']:hover > SCell:not([theme]),
 SRow[theme='danger'] SCell:hover + SGroupCell SCell:not([theme]) {
-  background-color: var(--intergalactic-table-TD-cell-critical-hover);
+  background-color: var(--intergalactic-table-TD-cell-critical-hover, #ffd7df);
 }
 
 SRow[positioned] {
@@ -223,25 +221,25 @@ SCell {
   display: flex;
   flex: 1;
   flex-basis: auto;
-  font-size: var(--intergalactic-fs-200);
-  line-height: var(--intergalactic-lh-200);
-  color: var(--intergalactic-text-primary);
+  font-size: var(--intergalactic-fs-200, 14px);
+  line-height: var(--intergalactic-lh-200, 142%);
+  color: var(--intergalactic-text-primary, #191b23);
   box-sizing: border-box;
-  border-bottom: 1px solid var(--intergalactic-border-secondary);
+  border-bottom: 1px solid var(--intergalactic-border-secondary, #e0e1e9);
   overflow: hidden;
   white-space: nowrap;
 }
 
 SCell[use='primary'] {
-  padding: var(--intergalactic-spacing-3x);
+  padding: var(--intergalactic-spacing-3x, 12px);
   min-height: 45px;
-  background-color: var(--intergalactic-bg-primary-neutral);
+  background-color: var(--intergalactic-bg-primary-neutral, #ffffff);
 }
 
 SCell[use='secondary'] {
-  padding: var(--intergalactic-spacing-2x);
+  padding: var(--intergalactic-spacing-2x, 8px);
   min-height: 37px;
-  background-color: var(--intergalactic-bg-primary-neutral);
+  background-color: var(--intergalactic-bg-primary-neutral, #ffffff);
 }
 
 SCell[fixed] {
@@ -250,30 +248,30 @@ SCell[fixed] {
 }
 
 SCell[theme='muted'] {
-  background-color: var(--intergalactic-table-TD-cell-unread);
+  background-color: var(--intergalactic-table-TD-cell-unread, #f4f5f9);
 }
 
 SCell[theme='info'] {
-  background-color: var(--intergalactic-table-TD-cell-selected);
+  background-color: var(--intergalactic-table-TD-cell-selected, #e9f7ff);
 }
 
 SCell[theme='success'] {
-  background-color: var(--intergalactic-table-TD-cell-new);
+  background-color: var(--intergalactic-table-TD-cell-new, #dbfee8);
 }
 
 SCell[theme='warning'] {
-  background-color: var(--intergalactic-table-TD-cell-warning);
+  background-color: var(--intergalactic-table-TD-cell-warning, #fff3d9);
 }
 
 SCell[theme='danger'] {
-  background-color: var(--intergalactic-table-TD-cell-critical);
+  background-color: var(--intergalactic-table-TD-cell-critical, #fff0f7);
 }
 
 SScrollAreaBar[orientation='horizontal'] {
   position: sticky;
   bottom: 0;
   left: 0;
-  margin-top: calc(-1 * var(--intergalactic-spacing-spacing-3x));
+  margin-top: calc(-1 * var(--intergalactic-spacing-3x, 12px));
   z-index: 2;
 }
 
@@ -282,8 +280,8 @@ SScrollAreaBar[orientation='vertical'] {
 }
 
 SScrollAreaBar[orientation='horizontal'] {
-  margin-left: calc(var(--left) + var(--intergalactic-spacing-spacing-1x));
-  margin-right: calc(var(--right) + var(--intergalactic-spacing-spacing-1x));
+  margin-left: calc(var(--left) + var(--intergalactic-spacing-1x, 4px));
+  margin-right: calc(var(--right) + var(--intergalactic-spacing-1x, 4px));
   width: calc(100% - var(--offsetSum) - 8px);
 }
 

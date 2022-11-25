@@ -15,8 +15,8 @@ SSwitch[size] {
 }
 
 SSwitch[size='m'] {
-  font-size: var(--intergalactic-fs-100);
-  line-height: var(--intergalactic-lh-100);
+  font-size: var(--intergalactic-fs-100, 12px);
+  line-height: var(--intergalactic-lh-100, 133%);
 
   & SToggle {
     width: 20px;
@@ -30,8 +30,8 @@ SSwitch[size='m'] {
 }
 
 SSwitch[size='l'] {
-  font-size: var(--intergalactic-fs-200);
-  line-height: var(--intergalactic-lh-200);
+  font-size: var(--intergalactic-fs-200, 14px);
+  line-height: var(--intergalactic-lh-200, 142%);
 
   & SToggle {
     height: 20px;
@@ -45,8 +45,8 @@ SSwitch[size='l'] {
 }
 
 SSwitch[size='xl'] {
-  font-size: var(--intergalactic-fs-300);
-  line-height: var(--intergalactic-lh-300);
+  font-size: var(--intergalactic-fs-300, 16px);
+  line-height: var(--intergalactic-lh-300, 150%);
 
   & SToggle {
     width: 44px;
@@ -60,7 +60,7 @@ SSwitch[size='xl'] {
 }
 
 SSwitch[disabled] {
-  opacity: var(--intergalactic-disabled-opacity);
+  opacity: var(--intergalactic-disabled-opacity, 0.3);
 
   & SToggle {
     cursor: default;
@@ -69,11 +69,11 @@ SSwitch[disabled] {
 
 SSwitch[checked] {
   & SAddon[neighborLocation='right'] {
-    color: var(--intergalactic-text-secondary);
+    color: var(--intergalactic-text-secondary, #6c6e79);
   }
 
   & SAddon[neighborLocation='left'] {
-    color: var(--intergalactic-text-primary);
+    color: var(--intergalactic-text-primary, #191b23);
   }
 }
 
@@ -85,12 +85,12 @@ SToggle {
 }
 
 SToggle[checked][theme='info'] {
-  color: var(--blue-400);
-  background-color: var(--blue-400);
+  color: var(--intergalactic-control-primary-info, #008ff8);
+  background-color: var(--intergalactic-control-primary-info, #008ff8);
 }
 SToggle[checked][theme='success'] {
-  color: var(--green-400);
-  background-color: var(--green-400);
+  color: var(--intergalactic-control-primary-success, #009f81);
+  background-color: var(--intergalactic-control-primary-success, #009f81);
 }
 
 SToggle[checked][theme='custom'] {
@@ -99,28 +99,28 @@ SToggle[checked][theme='custom'] {
 }
 
 SToggle[keyboardFocused] {
-  box-shadow: var(--intergalactic-keyboard-focus);
+  box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.3));
 }
 
 SToggle[neighborLocation='left'] {
-  margin-left: var(--intergalactic-spacing-2x);
+  margin-left: var(--intergalactic-spacing-2x, 8px);
 }
 
 SToggle[neighborLocation='both'] {
-  margin-right: var(--intergalactic-spacing-2x);
-  margin-left: var(--intergalactic-spacing-2x);
+  margin-right: var(--intergalactic-spacing-2x, 8px);
+  margin-left: var(--intergalactic-spacing-2x, 8px);
 }
 
 SToggle[neighborLocation='right'] {
-  margin-right: var(--intergalactic-spacing-2x);
+  margin-right: var(--intergalactic-spacing-2x, 8px);
 }
 
 SSlider {
   border-radius: 50%;
   position: absolute;
   top: 50%;
-  margin: 0 var(--intergalactic-spacing-05x);
-  background: var(--intergalactic-bg-primary-neutral);
+  margin: 0 var(--intergalactic-spacing-05x, 2px);
+  background: var(--intergalactic-bg-primary-neutral, #ffffff);
   transform: translateX(0) translateY(-50%);
   transition: transform 0.3s;
   display: flex;
@@ -138,11 +138,11 @@ SInput {
 }
 
 SAddon[neighborLocation='right'] {
-  color: var(--intergalactic-text-primary);
+  color: var(--intergalactic-text-primary, #191b23);
 }
 
 SAddon[neighborLocation='left'] {
-  color: var(--intergalactic-text-secondary);
+  color: var(--intergalactic-text-secondary, #6c6e79);
 }
 
 @media (prefers-reduced-motion) {

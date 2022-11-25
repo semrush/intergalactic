@@ -3,32 +3,32 @@
 STooltip {
   position: relative;
   padding: 12px;
-  border-radius: var(--intergalactic-rounded-medium);
+  border-radius: var(--intergalactic-rounded-medium, 6px);
   box-sizing: border-box;
-  color: var(--intergalactic-text-primary);
-  font-size: var(--intergalactic-fs-200);
-  line-height: var(--intergalactic-lh-200);
+  color: var(--intergalactic-text-primary, #191b23);
+  font-size: var(--intergalactic-fs-200, 14px);
+  line-height: var(--intergalactic-lh-200, 142%);
   word-wrap: break-word;
   max-width: 250px;
   font-weight: normal;
   white-space: normal;
-  box-shadow: var(--intergalactic-box-shadow-popper);
+  box-shadow: var(--intergalactic-box-shadow-popper, 0px 1px 12px 0px rgba(25, 27, 35, 0.15));
 }
 
 STooltip[theme='default'] {
-  background-color: var(--intergalactic-tooltip-default);
-  border: 1px solid var(--intergalactic-border-secondary);
+  background-color: var(--intergalactic-tooltip-default, #ffffff);
+  border: 1px solid var(--intergalactic-border-secondary, #e0e1e9);
 }
 
 STooltip[theme='invert'] {
-  color: var(--intergalactic-text-primary-invert);
-  background-color: var(--intergalactic-tooltip-invert);
-  border: 1px solid var(--intergalactic-border-tooltip-invert);
+  color: var(--intergalactic-text-primary-invert, #ffffff);
+  background-color: var(--intergalactic-tooltip-invert, #191b23);
+  border: 1px solid var(--intergalactic-border-tooltip-invert, #6c6e79);
 }
 
 STooltip[theme='warning'] {
-  background-color: var(--intergalactic-tooltip-warning);
-  border: 1px solid var(--intergalactic-control-primary-critical);
+  background-color: var(--intergalactic-tooltip-warning, #ffd7df);
+  border: 1px solid var(--intergalactic-control-primary-critical, #ff4953);
 }
 
 STooltip[data-popper-reference-hidden] {
@@ -48,18 +48,18 @@ SArrow {
 }
 
 SArrow[theme='default'] {
-  border-color: var(--intergalactic-border-secondary);
+  border-color: var(--intergalactic-border-secondary, #e0e1e9);
 
   &:before {
-    border-color: var(--intergalactic-bg-primary-neutral);
+    border-color: var(--intergalactic-bg-primary-neutral, #ffffff);
   }
 }
 
 SArrow[theme='invert'] {
-  border-color: var(--intergalactic-border-tooltip-invert);
+  border-color: var(--intergalactic-border-tooltip-invert, #6c6e79);
 
   &::before {
-    border-color: var(--intergalactic-tooltip-invert);
+    border-color: var(--intergalactic-tooltip-invert, #191b23);
   }
 }
 
@@ -67,7 +67,7 @@ SArrow[theme='warning'] {
   border-color: var(--intergalactic-border-danger-active);
 
   &::before {
-    border-color: var(--intergalactic-tooltip-warning);
+    border-color: var(--intergalactic-tooltip-warning, #ffd7df);
   }
 }
 

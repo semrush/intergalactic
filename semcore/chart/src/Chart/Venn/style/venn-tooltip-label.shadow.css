@@ -4,22 +4,22 @@ STooltipLabel {
   display: inline-flex;
   justify-content: space-between;
   width: 100%;
-  padding-bottom: var(--intergalactic-spacing-2x);
-  border-bottom: 1px solid var(--intergalactic-border-primary);
-  color: var(--intergalactic-text-primary);
-  font-size: var(--intergalactic-fs-100);
-  line-height: var(--intergalactic-lh-100);
+  padding-bottom: var(--intergalactic-spacing-2x, 8px);
+  border-bottom: 1px solid var(--intergalactic-border-primary, #c4c7cf);
+  color: var(--intergalactic-text-primary, #191b23);
+  font-size: var(--intergalactic-fs-100, 12px);
+  line-height: var(--intergalactic-lh-100, 133%);
 }
 
 STooltipLabelTitle {
-  margin-right: var(--intergalactic-spacing-4x);
+  margin-right: var(--intergalactic-spacing-4x, 16px);
 }
 
 STooltipLabelPercentage {
-  margin-right: var(--intergalactic-spacing-3x);
-  color: var(--intergalactic-text-secondary);
+  margin-right: var(--intergalactic-spacing-3x, 12px);
+  color: var(--intergalactic-text-secondary, #6c6e79);
 }
 
 STooltipLabelValue {
-  font-weight: var(--intergalactic-bold-700);
+  font-weight: var(--intergalactic-bold-700, Bold);
 }

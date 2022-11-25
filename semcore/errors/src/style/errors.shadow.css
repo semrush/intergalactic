@@ -1,15 +1,15 @@
 @import '@semcore/utils/style/var.css';
 
 SError {
-  padding: var(--intergalactic-spacing-20x) 0;
+  padding: var(--intergalactic-spacing-20x, 80px) 0;
   margin: 0 auto;
   max-width: 960px;
   @media (max-width: 768px) {
-    padding: var(--intergalactic-spacing-20x) var(--intergalactic-spacing-8x);
+    padding: var(--intergalactic-spacing-20x, 80px) var(--intergalactic-spacing-8x, 32px);
   }
   @media (max-width: 320px) {
-    padding: var(--intergalactic-spacing-10x) var(--intergalactic-spacing-5x)
-      var(--intergalactic-spacing-20x);
+    padding: var(--intergalactic-spacing-10x, 40px) var(--intergalactic-spacing-5x, 20px)
+      var(--intergalactic-spacing-20x, 80px);
   }
 }
 
@@ -33,28 +33,28 @@ SImage {
 }
 
 SImageWrapper {
-  margin-right: var(--intergalactic-spacing-10x);
+  margin-right: var(--intergalactic-spacing-10x, 40px);
 }
 
 SWrapper {
   flex: 1 0 300px;
   max-width: 100%;
-  margin-top: var(--intergalactic-spacing-8x);
+  margin-top: var(--intergalactic-spacing-8x, 32px);
 }
 
 STitle {
-  font-size: var(--intergalactic-fs-700);
-  line-height: var(--intergalactic-lh-700);
-  color: var(--intergalactic-text-primary);
-  font-weight: var(--intergalactic-bold-700);
-  margin: 0 0 var(--intergalactic-spacing-4x) 0;
+  font-size: var(--intergalactic-fs-700, 36px);
+  line-height: var(--intergalactic-lh-700, 110%);
+  color: var(--intergalactic-text-primary, #191b23);
+  font-weight: var(--intergalactic-bold-700, Bold);
+  margin: 0 0 var(--intergalactic-spacing-4x, 16px) 0;
 }
 
 SDescription {
-  font-size: var(--intergalactic-fs-300);
-  line-height: var(--intergalactic-lh-300);
-  color: var(--intergalactic-text-primary);
-  margin: 0 0 var(--intergalactic-spacing-6x) 0;
+  font-size: var(--intergalactic-fs-300, 16px);
+  line-height: var(--intergalactic-lh-300, 150%);
+  color: var(--intergalactic-text-primary, #191b23);
+  margin: 0 0 var(--intergalactic-spacing-6x, 24px) 0;
 }
 
 SControls {
@@ -62,6 +62,6 @@ SControls {
   align-items: center;
 
   & > *:not(:last-child) {
-    margin-right: var(--intergalactic-spacing-3x);
+    margin-right: var(--intergalactic-spacing-3x, 12px);
   }
 }

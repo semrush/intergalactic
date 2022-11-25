@@ -6,7 +6,7 @@ STimePicker {
 }
 
 STimePicker[disabled] {
-  color: var(--intergalactic-text-secondary);
+  color: var(--intergalactic-text-secondary, #6c6e79);
   cursor: default;
 }
 
@@ -35,12 +35,13 @@ SPickerFormat {
   padding: 0;
   white-space: nowrap;
   font-family: inherit;
-  font-weight: var(--intergalactic-medium-500);
+  font-weight: var(--intergalactic-medium-500, Medium);
   line-height: normal;
   text-decoration: none;
   align-items: center;
-  border: 1px solid var(--intergalactic-border-primary);
-  border-radius: 0 var(--intergalactic-rounded-medium) var(--intergalactic-rounded-medium) 0;
+  border: 1px solid var(--intergalactic-border-primary, #c4c7cf);
+  border-radius: 0 var(--intergalactic-rounded-medium, 6px) var(--intergalactic-rounded-medium, 6px)
+    0;
   outline: 0;
   box-shadow: none;
   cursor: pointer;
@@ -49,50 +50,51 @@ SPickerFormat {
   user-select: none;
   touch-action: manipulation;
   -webkit-tap-highlight-color: transparent;
-  color: var(--intergalactic-text-secondary);
-  background-color: var(--intergalactic-bg-secondary-neutral);
+  color: var(--intergalactic-text-secondary, #6c6e79);
+  background-color: var(--intergalactic-bg-secondary-neutral, #f4f5f9);
 
   &:hover {
-    color: var(--intergalactic-text-secondary);
-    background-color: var(--intergalactic-bg-secondary-neutral-hover);
+    color: var(--intergalactic-text-secondary, #6c6e79);
+    background-color: var(--intergalactic-bg-secondary-neutral-hover, #e0e1e9);
   }
 
   &:active,
   &[active] {
-    color: var(--intergalactic-text-secondary);
-    background-color: var(--intergalactic-bg-secondary-neutral-active);
+    color: var(--intergalactic-text-secondary, #6c6e79);
+    background-color: var(--intergalactic-bg-secondary-neutral-active, #c4c7cf);
   }
 }
 
 SPickerFormat[size='m'] {
-  height: var(--form-control-m);
-  font-size: var(--intergalactic-fs-200);
+  height: var(--intergalactic-form-control-m, 28px);
+  font-size: var(--intergalactic-fs-200, 14px);
   margin: 0 -1px 0 0;
   & SPickerFormatText {
-    margin: 0 var(--intergalactic-spacing-2x);
+    margin: 0 var(--intergalactic-spacing-2x, 8px);
   }
 }
 
 SPickerFormat[size='l'] {
-  height: var(--form-control-l);
-  font-size: var(--intergalactic-fs-300);
-  margin: 0 calc(-1 * var(--intergalactic-spacing-spacing-1x)) 0 0 & SPickerFormatText {
-    margin: 0 var(--intergalactic-spacing-3x);
+  height: var(--intergalactic-form-control-l, 40px);
+  font-size: var(--intergalactic-fs-300, 16px);
+  margin: 0 calc(-1 * var(--intergalactic-spacing-1x, 4px)) 0 0;
+  & SPickerFormatText {
+    margin: 0 var(--intergalactic-spacing-3x, 12px);
   }
 }
 
 SPickerFormat[disabled] {
-  opacity: var(--intergalactic-disabled-opacity);
+  opacity: var(--intergalactic-disabled-opacity, 0.3);
   cursor: default;
   pointer-events: none;
-  border-color: transparent transparent transparent var(--intergalactic-border-primary);
+  border-color: transparent transparent transparent var(--intergalactic-border-primary, #c4c7cf);
 }
 
 SPickerFormat[keyboardFocused] {
-  box-shadow: var(--intergalactic-keyboard-focus);
+  box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.3));
 }
 
 STimePickerSeparator[disabled] {
-  opacity: var(--intergalactic-disabled-opacity);
+  opacity: var(--intergalactic-disabled-opacity, 0.3);
   pointer-events: none;
 }

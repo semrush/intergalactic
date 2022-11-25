@@ -5,19 +5,19 @@
   justify-content: space-between;
   width: 100%;
   padding-bottom: 8px;
-  border-bottom: 1px solid var(--intergalactic-color-border-primary);
-  color: var(--intergalactic-color-text-primary);
+  border-bottom: 1px solid var(--intergalactic-border-primary);
+  color: var(--intergalactic-text-primary);
   font-size: var(--intergalactic-fontSizes-fs-100);
   line-height: var(--intergalactic-lineHeights-lh-100);
 }
 
 .venn-tooltip-label__title {
-  margin-right: var(--intergalactic-spacing-spacing-4x);
+  margin-right: var(--intergalactic-spacing-4x);
 }
 
 .venn-tooltip-label__percentage {
-  margin-right: var(--intergalactic-spacing-spacing-3x);
-  color: var(--intergalactic-color-text-secondary);
+  margin-right: var(--intergalactic-spacing-3x);
+  color: var(--intergalactic-text-secondary);
 }
 
 .venn-tooltip-label__value {

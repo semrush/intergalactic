@@ -12,7 +12,7 @@ SIcon {
 }
 
 SIcon[keyboardFocused] {
-  box-shadow: var(--intergalactic-keyboard-focus);
+  box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.3));
 }
 
 SIcon[interactive] {

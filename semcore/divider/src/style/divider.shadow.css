@@ -4,20 +4,20 @@ SDivider {
 }
 
 SDivider[use='primary'] {
-  background-color: var(--theme, var(--intergalactic-color-border-primary));
+  background-color: var(--theme, var(--intergalactic-border-primary, #c4c7cf));
 }
 
 SDivider[use='primary']SDivider[theme='default'] {
-  background: var(--intergalactic-border-primary);
+  background: var(--intergalactic-border-primary, #c4c7cf);
 }
 SDivider[use='primary']SDivider[theme='invert'] {
-  background-color: var(--intergalactic-border-primary);
+  background-color: var(--intergalactic-border-primary, #c4c7cf);
 }
 
 SDivider[orientation='horizontal']SDivider[use='secondary'] {
   background-image: linear-gradient(
     to right,
-    var(--intergalactic-color-border-primary) 3px,
+    var(--intergalactic-border-primary, #c4c7cf) 3px,
     transparent 1px
   );
   background-size: 5px 1px;
@@ -26,7 +26,7 @@ SDivider[orientation='horizontal']SDivider[use='secondary'] {
 SDivider[orientation='horizontal']SDivider[use='secondary']SDivider[theme='default'] {
   background: linear-gradient(
     to right,
-    var(--intergalactic-color-border-primary) 3px,
+    var(--intergalactic-border-primary, #c4c7cf) 3px,
     transparent 1px
   );
   background-size: 5px 1px;
@@ -34,7 +34,7 @@ SDivider[orientation='horizontal']SDivider[use='secondary']SDivider[theme='defau
 SDivider[orientation='horizontal']SDivider[use='secondary']SDivider[theme='invert'] {
   background-image: linear-gradient(
     to right,
-    var(--intergalactic-color-border-primary) 3px,
+    var(--intergalactic-border-primary, #c4c7cf) 3px,
     transparent 1px
   );
   background-size: 5px 1px;
@@ -43,7 +43,7 @@ SDivider[orientation='horizontal']SDivider[use='secondary']SDivider[theme='inver
 SDivider[orientation='vertical']SDivider[use='secondary'] {
   background-image: linear-gradient(
     to bottom,
-    var(--intergalactic-color-border-primary) 3px,
+    var(--intergalactic-border-primary, #c4c7cf) 3px,
     transparent 1px
   );
   background-size: 1px 5px;
@@ -52,7 +52,7 @@ SDivider[orientation='vertical']SDivider[use='secondary'] {
 SDivider[orientation='vertical']SDivider[use='secondary']SDivider[theme='default'] {
   background-image: linear-gradient(
     to bottom,
-    var(--intergalactic-color-border-primary) 3px,
+    var(--intergalactic-border-primary, #c4c7cf) 3px,
     transparent 1px
   );
   background-size: 1px 5px;
@@ -60,7 +60,7 @@ SDivider[orientation='vertical']SDivider[use='secondary']SDivider[theme='default
 SDivider[orientation='vertical']SDivider[use='secondary']SDivider[theme='invert'] {
   background-image: linear-gradient(
     to bottom,
-    var(--intergalactic-color-border-primary) 3px,
+    var(--intergalactic-border-primary, #c4c7cf) 3px,
     transparent 1px
   );
   background-size: 1px 5px;

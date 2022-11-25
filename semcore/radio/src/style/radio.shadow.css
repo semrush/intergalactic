@@ -7,24 +7,24 @@ SRadio {
 }
 
 SRadio[disabled] {
-  opacity: var(--intergalactic-disabled-opacity);
+  opacity: var(--intergalactic-disabled-opacity, 0.3);
   cursor: default;
   pointer-events: none;
   user-select: none;
 }
 
 SText {
-  margin-left: var(--intergalactic-spacing-2x);
+  margin-left: var(--intergalactic-spacing-2x, 8px);
 }
 
 SText[size='m'] {
-  font-size: var(--intergalactic-fs-200);
-  line-height: var(--intergalactic-lh-200);
+  font-size: var(--intergalactic-fs-200, 14px);
+  line-height: var(--intergalactic-lh-200, 142%);
 }
 
 SText[size='l'] {
-  font-size: var(--intergalactic-fs-300);
-  line-height: var(--intergalactic-lh-300);
+  font-size: var(--intergalactic-fs-300, 16px);
+  line-height: var(--intergalactic-lh-300, 150%);
 }
 
 SValue {
@@ -34,7 +34,7 @@ SValue {
   outline: none;
   z-index: 0;
 
-  margin-top: var(--intergalactic-spacing-05x);
+  margin-top: var(--intergalactic-spacing-05x, 2px);
 
   &::before {
     content: '';
@@ -43,7 +43,7 @@ SValue {
     left: 0;
     right: 0;
     bottom: 0;
-    background: var(--intergalactic-bg-primary-neutral);
+    background: var(--intergalactic-bg-primary-neutral, #ffffff);
     border: 1px solid;
     border-radius: 50%;
   }
@@ -61,7 +61,7 @@ SValue {
     width: 0;
     height: 0;
     border-radius: 50%;
-    background: var(--intergalactic-bg-primary-neutral);
+    background: var(--intergalactic-bg-primary-neutral, #ffffff);
   }
 }
 
@@ -76,11 +76,11 @@ SValue[size='l'] {
 }
 
 SValue[state='normal']::before {
-  border-color: var(--intergalactic-border-primary);
+  border-color: var(--intergalactic-border-primary, #c4c7cf);
 }
 
 SValue[state='invalid']::before {
-  border-color: var(--intergalactic-border-danger-active);
+  border-color: var(--intergalactic-border-danger-active, #d1002f);
 }
 
 SControl {
@@ -89,8 +89,8 @@ SControl {
 }
 
 SControl:checked ~ SValue::before {
-  border-color: var(--intergalactic-control-primary-info);
-  background-color: var(--intergalactic-bg-primary-info);
+  border-color: var(--intergalactic-control-primary-info, #008ff8);
+  background-color: var(--intergalactic-bg-primary-info, #008ff8);
 }
 
 SControl:checked ~ SValue[size='m']::after {
@@ -109,7 +109,7 @@ SValue[state='normal'][keyboardFocused]::before {
 }
 
 SValue[state='invalid'][keyboardFocused]::before {
-  box-shadow: var(--intergalactic-keyboard-focus-invalid);
+  box-shadow: var(--intergalactic-keyboard-focus-invalid, 0px 0px 0px 3px rgba(255, 73, 83, 0.3));
 }
 
 SControl:checked ~ SValue[theme]::before {

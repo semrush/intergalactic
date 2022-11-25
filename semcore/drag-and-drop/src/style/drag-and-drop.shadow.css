@@ -93,7 +93,7 @@ SDraggable[placement='left']::after {
 
 SDropZone {
   border: 1px dashed var(--gray-200);
-  border-radius: var(--intergalactic-rounded-medium);
+  border-radius: var(--intergalactic-rounded-medium, 6px);
 }
 
 SDropZone[dropPreview],

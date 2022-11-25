@@ -7,35 +7,35 @@ SCounter {
   line-height: normal;
   box-sizing: border-box;
   vertical-align: middle;
-  border-radius: var(--intergalactic-rounded-large);
-  font-weight: var(--intergalactic-medium-500);
+  border-radius: var(--intergalactic-rounded-large, 12px);
+  font-weight: var(--intergalactic-medium-500, Medium);
 
-  color: var(--intergalactic-text-secondary);
-  background-color: var(--intergalactic-bg-primary-neutral);
-  border: 1px solid var(--intergalactic-border-primary);
+  color: var(--intergalactic-text-secondary, #6c6e79);
+  background-color: var(--intergalactic-bg-primary-neutral, #ffffff);
+  border: 1px solid var(--intergalactic-border-primary, #c4c7cf);
 }
 
 SCounter[size='m'] {
   height: 16px;
   min-width: 16px;
-  font-size: var(--intergalactic-fs-50);
-  padding: var(--intergalactic-spacing-1x);
+  font-size: var(--intergalactic-fs-50, 10px);
+  padding: var(--intergalactic-spacing-1x, 4px);
 }
 
 SCounter[size='l'] {
   height: 20px;
   min-width: 20px;
-  font-size: var(--intergalactic-fs-100);
-  padding: var(--intergalactic-spacing-05x)
-    calc(var(--intergalactic-spacing-spacing-05x) + var(--intergalactic-spacing-spacing-1x));
+  font-size: var(--intergalactic-fs-100, 12px);
+  padding: var(--intergalactic-spacing-05x, 2px)
+    calc(var(--intergalactic-spacing-05x, 2px) + var(--intergalactic-spacing-1x, 4px));
 }
 
 SCounter[size='xl'] {
   height: 24px;
   min-width: 24px;
-  font-size: var(--intergalactic-fs-200);
-  padding: var(--intergalactic-spacing-05x)
-    calc(var(--intergalactic-spacing-spacing-05x) + var(--intergalactic-spacing-spacing-1x));
+  font-size: var(--intergalactic-fs-200, 14px);
+  padding: var(--intergalactic-spacing-05x, 2px)
+    calc(var(--intergalactic-spacing-05x, 2px) + var(--intergalactic-spacing-1x, 4px));
 }
 
 SCounter[theme] {
@@ -46,12 +46,12 @@ SCounter[theme] {
 
 SCounter[theme='warning'] {
   border-color: transparent;
-  background: var(--intergalactic-bg-primary-warning);
-  color: var(--intergalactic-text-primary-invert);
+  background: var(--intergalactic-bg-primary-warning, #ff642d);
+  color: var(--intergalactic-text-primary-invert, #ffffff);
 }
 
 SCounter[theme='danger'] {
   border-color: transparent;
-  background: var(--intergalactic-bg-primary-critical);
-  color: var(--intergalactic-text-primary-invert);
+  background: var(--intergalactic-bg-primary-critical, #ff4953);
+  color: var(--intergalactic-text-primary-invert, #ffffff);
 }

@@ -77,7 +77,7 @@ a img {
 }
 
 .bg-white {
-  background-color: var(--intergalactic-color-bg-primary-neutral);
+  background-color: var(--intergalactic-bg-primary-neutral);
 }
 
 .bg-lime-100 {

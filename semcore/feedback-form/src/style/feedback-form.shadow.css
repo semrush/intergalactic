@@ -7,14 +7,15 @@ SFeedbackForm {
 SSubmit,
 SCancel {
   display: inline-flex;
-  margin-right: var(--intergalactic-spacing-2x);
+  margin-right: var(--intergalactic-spacing-2x, 8px);
 }
 
 SNotice {
-  padding: var(--intergalactic-spacing-3x) var(--intergalactic-spacing-4x);
+  padding: var(--intergalactic-spacing-3x, 12px) var(--intergalactic-spacing-4x, 16px);
   border-width: 1px 0 0;
   border-top-style: solid;
-  border-radius: 0 0 var(--intergalactic-rounded-medium) var(--intergalactic-rounded-medium);
+  border-radius: 0 0 var(--intergalactic-rounded-medium, 6px)
+    var(--intergalactic-rounded-medium, 6px);
 }
 
 SSuccess {
@@ -23,16 +24,16 @@ SSuccess {
   flex-direction: column;
   width: 320px;
   padding: calc(
-      var(--intergalactic-spacing-spacing-10x) + var(--intergalactic-spacing-spacing-2x) +
-        var(--intergalactic-spacing-spacing-05x)
+      var(--intergalactic-spacing-10x, 40px) + var(--intergalactic-spacing-2x, 8px) +
+        var(--intergalactic-spacing-05x, 2px)
     )
-    var(--intergalactic-spacing-8x) var(--intergalactic-spacing-8x);
+    var(--intergalactic-spacing-8x, 32px) var(--intergalactic-spacing-8x, 32px);
   box-sizing: border-box;
 }
 
 SEmail {
   margin-bottom: calc(
-    var(--intergalactic-spacing-spacing-4x) + var(--intergalactic-spacing-spacing-05x)
+    var(--intergalactic-spacing-4x, 16px) + var(--intergalactic-spacing-05x, 2px)
   );
   width: 80px;
   height: 80px;

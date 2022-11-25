@@ -27,7 +27,7 @@ SUp,
 SDown {
   padding: 0;
   width: 16px;
-  color: var(--intergalactic-icon-secondary-neutral);
+  color: var(--intergalactic-icon-secondary-neutral, #a9abb6);
   box-sizing: border-box;
   display: inline-flex;
   justify-content: center;
@@ -40,7 +40,7 @@ SDown {
   }
 
   &:hover {
-    color: var(--intergalactic-icon-secondary-neutral-hover-active);
+    color: var(--intergalactic-icon-secondary-neutral-hover-active, #8a8e9b);
   }
 }
 
@@ -65,7 +65,7 @@ SValue {
 }
 
 SValue[disabled] ~ SControls {
-  opacity: var(--intergalactic-disabled-opacity);
+  opacity: var(--intergalactic-disabled-opacity, 0.3);
   cursor: default;
   pointer-events: none;
 }

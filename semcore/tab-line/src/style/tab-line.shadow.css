@@ -8,7 +8,7 @@ STabLine {
 }
 
 STabLine[underlined] {
-  border-bottom: 1px solid var(--intergalactic-border-primary);
+  border-bottom: 1px solid var(--intergalactic-border-primary, #c4c7cf);
 }
 
 STabLineItem {
@@ -34,9 +34,9 @@ STabLineItem {
   cursor: pointer;
   border: none;
   background: transparent;
-  color: var(--intergalactic-text-primary);
-  margin-right: var(--intergalactic-spacing-4x);
-  font-weight: var(--intergalactic-medium-500);
+  color: var(--intergalactic-text-primary, #191b23);
+  margin-right: var(--intergalactic-spacing-4x, 16px);
+  font-weight: var(--intergalactic-medium-500, Medium);
 
   &::-moz-focus-inner {
     border: none;
@@ -59,15 +59,15 @@ STabLineItem {
   }
 
   &:hover::after {
-    background-color: var(--intergalactic-border-primary);
+    background-color: var(--intergalactic-border-primary, #c4c7cf);
   }
 
   & SText:not(:last-child) {
-    margin-right: var(--intergalactic-spacing-2x);
+    margin-right: var(--intergalactic-spacing-2x, 8px);
   }
 
   & SAddon:not(:last-child) {
-    margin-right: var(--intergalactic-spacing-2x);
+    margin-right: var(--intergalactic-spacing-2x, 8px);
   }
 }
 
@@ -90,13 +90,13 @@ STabLineItem[selected] {
 }
 
 STabLineItem[disabled] {
-  opacity: var(--intergalactic-disabled-opacity);
+  opacity: var(--intergalactic-disabled-opacity, 0.3);
   cursor: default;
   pointer-events: none; /* Disable link interactions */
 }
 
 STabLineItem[keyboardFocused] {
-  box-shadow: var(--intergalactic-keyboard-focus);
+  box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.3));
 }
 
 SText {
@@ -116,8 +116,8 @@ STabLineItem[size='m'] {
   height: 28px;
   min-width: 18px;
   & SText {
-    font-size: var(--intergalactic-fs-200);
-    line-height: var(--intergalactic-lh-200);
+    font-size: var(--intergalactic-fs-200, 14px);
+    line-height: var(--intergalactic-lh-200, 142%);
   }
 }
 
@@ -125,8 +125,8 @@ STabLineItem[size='l'] {
   height: 40px;
   min-width: 26px;
   & SText {
-    font-size: var(--intergalactic-fs-300);
-    line-height: var(--intergalactic-lh-300);
+    font-size: var(--intergalactic-fs-300, 16px);
+    line-height: var(--intergalactic-lh-300, 150%);
   }
 }
 
