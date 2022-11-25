@@ -1,7 +1,7 @@
 @import '@semcore/utils/style/var.css';
 
 SPopper {
-  padding: 16px;
+  padding: var(--intergalactic-spacing-spacing-4x);
   outline: 0;
 
   &::-moz-focus-inner {
@@ -85,7 +85,7 @@ SInputMask[noHumanizedDate] SMask {
   opacity: 1;
 }
 SDateRange SInputMask:focus-within SMask {
-  background-color: color-mod(var(--blue-400) a(20%));
+  background-color: var(--intergalactic-color-text-placeholder);
 }
 SRangeSep[fulfilled],
 SDateRange:focus-within SRangeSep {

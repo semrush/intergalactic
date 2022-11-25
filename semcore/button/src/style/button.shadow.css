@@ -49,15 +49,15 @@ SButton[keyboardFocused] {
   z-index: 1;
 }
 SButton[size='m'] {
-  height: var(--intergalactic-spacing-spacing-7x);
-  min-width: var(--intergalactic-spacing-spacing-7x);
+  height: 28px;
+  min-width: 28px;
   border-radius: var(--intergalactic-borderRadius-rounded-medium);
   font-size: var(--intergalactic-fontSizes-fs-200);
 }
 
 SButton[size='l'] {
-  height: var(--intergalactic-spacing-spacing-10x);
-  min-width: var(--intergalactic-spacing-spacing-10x);
+  height: 40px;
+  min-width: 40px;
   border-radius: var(--intergalactic-borderRadius-rounded-medium);
   font-size: var(--intergalactic-fontSizes-fs-300);
 }
@@ -180,7 +180,7 @@ SButton[theme='secondary-invert'] {
 }
 
 SButton[theme='tertiary-info'] {
-  color: var(--blue-500);
+  color: var(--intergalactic-color-text-link);
   background-color: var(--intergalactic-color-control-tertiary-info);
 
   &:hover {
@@ -236,11 +236,11 @@ SButton[neighborLocation='both'] {
   &[theme='primary-success'],
   &[theme='primary-warning'],
   &[theme='primary-danger'] {
-    border-left-color: rgba(255, 255, 255, 0.5);
+    border-left-color: var(--intergalactic-color-neighbor-location-neutral);
   }
 
   &[theme='primary-invert'] {
-    border-left-color: rgba(0, 0, 0, 0.5);
+    border-left-color: var(--intergalactic-color-neighbor-location-invert);
   }
 }
 
@@ -253,11 +253,11 @@ SButton[neighborLocation='left'] {
   &[theme='primary-success'],
   &[theme='primary-warning'],
   &[theme='primary-danger'] {
-    border-left-color: rgba(255, 255, 255, 0.5);
+    border-left-color: var(--intergalactic-color-neighbor-location-neutral);
   }
 
   &[theme='primary-invert'] {
-    border-left-color: rgba(0, 0, 0, 0.5);
+    border-left-color: var(--intergalactic-color-neighbor-location-invert);
   }
 }
 

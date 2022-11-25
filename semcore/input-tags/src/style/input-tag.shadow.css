@@ -18,14 +18,14 @@ SInputTags > div[data-ui-name='ScrollArea.Bar'][orientation='vertical'] {
 }
 
 SInputTags[size='m'] {
-  min-height: var(--intergalactic-spacing-spacing-7x);
+  min-height: 28px;
   height: auto;
   padding: var(--intergalactic-spacing-spacing-05x)
     calc(var(--intergalactic-spacing-spacing-1x) + var(--intergalactic-spacing-spacing-05x));
 }
 
 SInputTags[size='l'] {
-  min-height: var(--intergalactic-spacing-spacing-10x);
+  min-height: 40px;
   height: auto;
   padding: var(--intergalactic-spacing-spacing-05x)
     calc(var(--intergalactic-spacing-spacing-2x) + var(--intergalactic-spacing-spacing-05x));

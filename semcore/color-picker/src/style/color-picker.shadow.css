@@ -1,8 +1,8 @@
 @import '@semcore/utils/style/var.css';
 
 SColorPickerPopper {
-  max-width: calc(16px * 2 + 28px * 6 + 4px * 6);
-  padding: 16px;
+  max-width: calc(var(--intergalactic-spacing-spacing-4x) * 2 + 28px * 6 + 4px * 6);
+  padding: var(--intergalactic-spacing-spacing-4x);
 }
 
 SItemContainer {
@@ -41,7 +41,7 @@ SItemContainer[keyboardFocused] {
 }
 
 SItemContainer[selected] {
-  border: 1px solid var(--blue-300);
+  border: 1px solid var(--intergalactic-color-border-info-active);
 }
 
 SItemContainer[displayLabel] {
@@ -60,7 +60,7 @@ SColors {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 4px;
+  gap: var(--intergalactic-spacing-spacing-1x);
 }
 
 SPaletteManager {
@@ -68,7 +68,7 @@ SPaletteManager {
   align-items: center;
   justify-content: space-between;
   margin-top: var(--intergalactic-spacing-spacing-3x);
-  margin-left: 3px;
+  margin-left: calc(var(--intergalactic-spacing-spacing-1x) - 1px);
 }
 
 SInputContainer {
@@ -81,12 +81,12 @@ SPlusButton {
   align-items: center;
   justify-content: center;
   width: 28px;
-  height: var(--intergalactic-spacing-spacing-7x);
+  height: 28px;
   border-radius: 50%;
   cursor: pointer;
 
   &:hover {
-    background-color: var(--gray-100);
+    background-color: var(--intergalactic-color-bg-secondary-neutral-hover);
   }
 }
 

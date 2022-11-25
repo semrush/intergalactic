@@ -119,7 +119,7 @@ SSlider {
   border-radius: 50%;
   position: absolute;
   top: 50%;
-  margin: 0 2px;
+  margin: 0 var(--intergalactic-spacing-spacing-05x);
   background: var(--intergalactic-color-bg-primary-neutral);
   transform: translateX(0) translateY(-50%);
   transition: transform 0.3s;

@@ -2,7 +2,7 @@
 
 SButtonTrigger {
   border: 1px solid var(--intergalactic-color-border-primary);
-  background: #ffffff;
+  background: var(--intergalactic-color-bg-primary-neutral);
   color: var(--intergalactic-color-text-primary);
 
   &::-moz-focus-inner {
@@ -20,26 +20,26 @@ SButtonTrigger {
   &:active,
   &:hover,
   &[active] {
-    background-color: color-mod(var(--gray-400) a(20%));
+    background-color: var(--intergalactic-color-control-secondary-neutral-hover);
   }
 }
 
 SButtonTrigger[size='m'] {
   min-width: 26px;
-  height: var(--intergalactic-spacing-spacing-7x);
+  height: 28px;
   border-radius: var(--intergalactic-borderRadius-rounded-medium);
   font-size: var(--intergalactic-fontSizes-fs-200);
 }
 
 SButtonTrigger[size='l'] {
   min-width: 32px;
-  height: var(--intergalactic-spacing-spacing-10x);
+  height: 40px;
   border-radius: var(--intergalactic-borderRadius-rounded-medium);
   font-size: var(--intergalactic-fontSizes-fs-300);
 }
 
 SText[placeholder] {
-  color: var(--gray-300);
+  color: var(--intergalactic-color-text-placeholder);
 }
 
 SButtonTrigger[state='normal'] {
@@ -47,21 +47,21 @@ SButtonTrigger[state='normal'] {
 }
 
 SButtonTrigger[state='valid'] {
-  border-color: var(--green-200);
+  border-color: var(--intergalactic-color-border-success);
 }
 
 SButtonTrigger[state='invalid'] {
-  border-color: var(--red-200);
+  border-color: var(--intergalactic-color-border-danger);
 }
 
 SFilterTrigger[selected] {
-  border-color: var(--blue-400);
-  background-color: color-mod(var(--blue-400) a(20%));
+  border-color: var(--intergalactic-color-border-info-active);
+  background-color: var(--intergalactic-color-control-secondary-info-hover);
   color: var(--intergalactic-color-text-primary);
 
   &[active],
   &:hover {
-    background: color-mod(var(--blue-400) a(30%));
+    background-color: var(--intergalactic-color-control-secondary-info-active);
   }
 }
 
@@ -78,5 +78,5 @@ SWrapper[keyboardFocused] {
 }
 
 SCounter {
-  background-color: var(--blue-400);
+  background-color: var(--intergalactic-color-bg-primary-info);
 }

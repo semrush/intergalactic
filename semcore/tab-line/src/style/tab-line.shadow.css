@@ -59,7 +59,7 @@ STabLineItem {
   }
 
   &:hover::after {
-    background-color: var(--gray-200);
+    background-color: var(--intergalactic-color-border-primary);
   }
 
   & SText:not(:last-child) {
@@ -113,7 +113,7 @@ SAddon {
 }
 
 STabLineItem[size='m'] {
-  height: var(--intergalactic-spacing-spacing-7x);
+  height: 28px;
   min-width: 18px;
   & SText {
     font-size: var(--intergalactic-fontSizes-fs-200);
@@ -122,7 +122,7 @@ STabLineItem[size='m'] {
 }
 
 STabLineItem[size='l'] {
-  height: var(--intergalactic-spacing-spacing-10x);
+  height: 40px;
   min-width: 26px;
   & SText {
     font-size: var(--intergalactic-fontSizes-fs-300);

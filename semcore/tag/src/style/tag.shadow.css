@@ -10,8 +10,8 @@ STag {
   border-style: solid;
   border-color: transparent;
   border-radius: 24px;
-  padding-left: 4px;
-  padding-right: 4px;
+  padding-left: var(--intergalactic-spacing-spacing-1x);
+  padding-right: var(--intergalactic-spacing-spacing-1x);
   font-weight: var(--intergalactic-fontWeights-medium-500);
   background-color: var(--colorBg);
   color: var(--colorText);
@@ -53,7 +53,7 @@ STag[size='m'] {
 }
 
 STag[size='l'] {
-  height: var(--intergalactic-spacing-spacing-7x);
+  height: 28px;
   min-width: 28px;
 
   & SText {
@@ -63,7 +63,7 @@ STag[size='l'] {
 }
 
 STag[size='xl'] {
-  height: var(--intergalactic-spacing-spacing-10x);
+  height: 40px;
   min-width: 40px;
 
   & SText {
@@ -137,8 +137,8 @@ SAddon {
   flex-shrink: 0;
   align-items: center;
   justify-content: center;
-  padding-left: 4px;
-  padding-right: 4px;
+  padding-left: var(--intergalactic-spacing-spacing-1x);
+  padding-right: var(--intergalactic-spacing-spacing-1x);
 }
 
 SCircle {
@@ -179,7 +179,7 @@ SClose {
   flex-shrink: 0;
   align-items: center;
   justify-content: center;
-  padding: 4px;
+  padding: var(--intergalactic-spacing-spacing-1x);
   opacity: 0.5;
 
   &:hover {

@@ -33,7 +33,7 @@ SDismiss {
   position: absolute;
   right: 0;
   top: 0;
-  padding: 8px;
+  padding: var(--intergalactic-spacing-spacing-2x);
   color: var(--intergalactic-color-text-primary-invert);
 
   &:hover {

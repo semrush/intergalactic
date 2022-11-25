@@ -16,23 +16,23 @@ SCounter {
 }
 
 SCounter[size='m'] {
-  height: calc(4 * var(--intergalactic-spacing-scale-indent));
-  min-width: calc(4 * var(--intergalactic-spacing-scale-indent));
+  height: 16px;
+  min-width: 16px;
   font-size: var(--intergalactic-fontSizes-fs-50);
   padding: var(--intergalactic-spacing-spacing-1x);
 }
 
 SCounter[size='l'] {
-  height: calc(5 * var(--intergalactic-spacing-scale-indent));
-  min-width: calc(5 * var(--intergalactic-spacing-scale-indent));
+  height: 20px;
+  min-width: 20px;
   font-size: var(--intergalactic-fontSizes-fs-100);
   padding: var(--intergalactic-spacing-spacing-05x)
     calc(var(--intergalactic-spacing-spacing-05x) + var(--intergalactic-spacing-spacing-1x));
 }
 
 SCounter[size='xl'] {
-  height: calc(6 * var(--intergalactic-spacing-scale-indent));
-  min-width: calc(6 * var(--intergalactic-spacing-scale-indent));
+  height: 24px;
+  min-width: 24px;
   font-size: var(--intergalactic-fontSizes-fs-200);
   padding: var(--intergalactic-spacing-spacing-05x)
     calc(var(--intergalactic-spacing-spacing-05x) + var(--intergalactic-spacing-spacing-1x));

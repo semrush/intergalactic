@@ -69,7 +69,7 @@ SAddon {
   flex: 0 0 auto;
   height: 100%;
   color: var(--intergalactic-color-icon-secondary-neutral);
-  padding: 0 4px;
+  padding: 0 var(--intergalactic-spacing-spacing-1x);
 }
 
 SAddon[disabled] {

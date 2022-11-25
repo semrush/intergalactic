@@ -13,7 +13,7 @@ SGridDays {
 
 SGridMonths {
   display: grid;
-  grid-row-gap: 8px;
+  grid-row-gap: var(--intergalactic-spacing-spacing-2x);
   grid-template-columns: repeat(3, minmax(60px, auto));
   grid-template-rows: repeat(4, minmax(32px, auto));
 }
@@ -50,7 +50,7 @@ SCalendarUnit {
   user-select: none;
   touch-action: manipulation;
   -webkit-tap-highlight-color: transparent;
-  background: transparent;
+  background: var(--intergalactic-color-date-picker-cell);
 
   align-items: center;
   border-radius: var(--intergalactic-borderRadius-rounded-medium);
@@ -68,7 +68,7 @@ SCalendarUnit {
 
   &:hover {
     color: var(--intergalactic-color-text-primary);
-    background: var(--gray-100);
+    background: var(--intergalactic-color-date-picker-cell-hover);
   }
 
   &:focus-visible {
@@ -94,27 +94,27 @@ SCalendarUnit[today] {
 SCalendarUnit[today]SCalendarUnit[startSelected],
 SCalendarUnit[today]SCalendarUnit[endSelected] {
   &:before {
-    border-color: color-mod(white alpha(50%));
+    border-color: var(--intergalactic-color-border-secondary);
   }
 }
 
 SCalendarUnit[selected] {
-  background: var(--blue-100);
+  background: var(--intergalactic-color-date-picker-cell-active);
   border-radius: 0;
   color: var(--intergalactic-color-text-primary);
 
   &:hover {
-    background: var(--blue-400);
+    background: var(--intergalactic-color-date-picker-cell-active-hover);
   }
 }
 
 SCalendarUnit[highlighted] {
-  background: color-mod(var(--blue-400) alpha(20%));
+  background: var(--intergalactic-color-date-picker-cell-range);
   border-radius: 0;
   color: var(--intergalactic-color-text-primary);
 
   &:hover {
-    background: color-mod(var(--blue-400) alpha(30%));
+    background: var(--intergalactic-color-date-picker-cell-range-hover);
   }
 }
 
@@ -124,16 +124,16 @@ SCalendarUnit[startSelected] {
   border-top-left-radius: var(--intergalactic-borderRadius-rounded-medium);
   border-top-right-radius: 0;
   color: var(--intergalactic-color-text-primary-invert);
-  background: var(--blue-300);
+  background: var(--intergalactic-color-date-picker-cell-active);
 
   &:hover {
     color: var(--intergalactic-color-text-primary-invert);
-    background: var(--blue-400);
+    background: var(--intergalactic-color-date-picker-cell-active-hover);
   }
 }
 
 SCalendarUnit[endSelected] {
-  background: var(--blue-300);
+  background: var(--intergalactic-color-date-picker-cell-active);
   border-bottom-left-radius: 0;
   border-bottom-right-radius: var(--intergalactic-borderRadius-rounded-medium);
   border-top-left-radius: 0;
@@ -142,7 +142,7 @@ SCalendarUnit[endSelected] {
 
   &:hover {
     color: var(--intergalactic-color-text-primary-invert);
-    background: var(--blue-400);
+    background: var(--intergalactic-color-date-picker-cell-active-hover);
   }
 }
 

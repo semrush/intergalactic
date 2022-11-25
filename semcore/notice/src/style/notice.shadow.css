@@ -74,7 +74,7 @@ SActions {
 }
 
 SLabel {
-  margin-top: 2px;
+  margin-top: var(--intergalactic-spacing-spacing-05x);
   margin-right: var(--intergalactic-spacing-spacing-2x);
   display: inline-flex;
 }

@@ -15,7 +15,8 @@ STabPanelItem {
   height: 32px;
   color: var(--intergalactic-color-text-secondary);
   border: 1px solid transparent;
-  border-radius: 6px 6px 0 0;
+  border-radius: var(--intergalactic-borderRadius-rounded-medium)
+    var(--intergalactic-borderRadius-rounded-medium) 0 0;
   background: transparent;
   align-items: center;
   justify-content: center;
@@ -68,13 +69,13 @@ STabPanelItem[keyboardFocused] {
 }
 
 STabPanelItem[selected] {
-  color: var(--blue-500);
+  color: var(--intergalactic-color-text-link);
   border-color: var(--intergalactic-color-border-primary);
-  border-bottom-color: var(--white);
+  border-bottom-color: var(--intergalactic-color-border-primary-invert);
   flex-shrink: 0;
 
   &:hover {
-    color: var(--blue-500);
+    color: var(--intergalactic-color-text-link-hover-active);
   }
 }
 

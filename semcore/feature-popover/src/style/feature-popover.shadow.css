@@ -51,8 +51,8 @@ SSpot {
   animation-timing-function: ease-in;
   animation-delay: 0.4s;
   animation-fill-mode: forwards;
-  width: var(--intergalactic-spacing-spacing-3x);
-  height: var(--intergalactic-spacing-spacing-3x);
+  width: 12px;
+  height: 12px;
 
   &::before {
     content: '';

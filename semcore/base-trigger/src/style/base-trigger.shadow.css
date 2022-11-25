@@ -99,9 +99,9 @@ SBaseAddon {
 
 SBaseTrigger[size='m'] {
   min-width: 26px;
-  height: var(--intergalactic-spacing-spacing-7x);
+  height: 28px;
   border-radius: var(--intergalactic-borderRadius-rounded-medium);
-  padding: 0 8px;
+  padding: 0 var(--intergalactic-spacing-spacing-2x);
   font-size: var(--intergalactic-fontSizes-fs-200);
 
   & SAddon {
@@ -122,9 +122,9 @@ SBaseTrigger[size='m'] {
 
 SBaseTrigger[size='l'] {
   min-width: 32px;
-  height: var(--intergalactic-spacing-spacing-10x);
+  height: 40px;
   border-radius: var(--intergalactic-borderRadius-rounded-medium);
-  padding: 0 12px;
+  padding: 0 var(--intergalactic-spacing-spacing-3x);
   font-size: var(--intergalactic-fontSizes-fs-300);
 
   & SAddon {
@@ -168,14 +168,14 @@ SBaseTrigger[state='normal'] {
 }
 
 SBaseTrigger[state='valid'] {
-  border-color: var(--green-200);
+  border-color: var(--intergalactic-color-border-success);
 }
 
 SBaseTrigger[state='invalid'] {
-  border-color: var(--red-200);
+  border-color: var(--intergalactic-color-border-danger);
 
   &[keyboardFocused] {
-    border-color: var(--orange-400);
-    box-shadow: 0 0 0 3px color-mod(var(--orange-400) a(30%));
+    border-color: var(--intergalactic-color-border-danger-active);
+    box-shadow: var(--intergalactic-boxShadow-keyboard-focus-invalid);
   }
 }

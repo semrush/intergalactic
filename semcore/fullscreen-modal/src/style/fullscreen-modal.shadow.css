@@ -84,7 +84,7 @@ SDescription {
     display: block;
     margin-left: var(--intergalactic-spacing-spacing-3x);
     margin-right: var(--intergalactic-spacing-spacing-3x);
-    height: var(--intergalactic-spacing-spacing-6x);
+    height: 24px;
     width: 1px;
     background-color: var(--intergalactic-color-border-primary);
   }

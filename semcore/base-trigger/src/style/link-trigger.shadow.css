@@ -19,14 +19,14 @@ SLinkTrigger {
   vertical-align: middle;
   font-family: var(--intergalactic-fontFamilies-base), sans-serif;
   cursor: pointer;
-  color: var(--blue-500);
+  color: var(--intergalactic-color-text-link);
   background: none;
   transition: color 0.15s ease-in-out;
 
   &[active],
   &:hover,
   &:active {
-    color: var(--blue-600);
+    color: var(--intergalactic-color-text-link-hover-active);
 
     & SText {
       border-color: currentColor;
