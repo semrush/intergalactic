@@ -23,12 +23,12 @@ SSlider {
   }
 
   &:active SKnob {
-    box-shadow: 0 0 0 5px var(--intergalactic-boxShadow-keyboard-focus);
+    box-shadow: var(--intergalactic-boxShadow-keyboard-focus);
   }
 }
 
 SSlider[keyboardFocused] SKnob {
-  box-shadow: 0 0 0 5px var(--intergalactic-boxShadow-keyboard-focus);
+  box-shadow: var(--intergalactic-boxShadow-keyboard-focus);
 }
 
 SSlider[disabled] {

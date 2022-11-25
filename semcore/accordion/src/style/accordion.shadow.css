@@ -10,7 +10,7 @@ SItemToggle[keyboardFocused] {
 }
 
 SItemToggle[disabled] {
-  opacity: var(--intergalactic-opacity-disabled-opacity);
+  opacity: var(--intergalactic-opacity-disabled-opacity, 0.3);
   cursor: default;
 }
 

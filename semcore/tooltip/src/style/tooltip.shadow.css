@@ -12,7 +12,7 @@ STooltip {
   max-width: 250px;
   font-weight: normal;
   white-space: normal;
-  box-shadow: var(--box-shadow-popper);
+  box-shadow: var(--intergalactic-boxShadow-box-shadow-popper);
 }
 
 STooltip[theme='default'] {

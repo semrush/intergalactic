@@ -9,8 +9,8 @@ STooltip {
   border-radius: var(--intergalactic-borderRadius-rounded-medium);
   border: 1px solid var(--intergalactic-color-border-secondary);
   box-sizing: border-box;
-  box-shadow: var(--box-shadow-popper);
-  padding: 12px;
+  box-shadow: var(--intergalactic-boxShadow-box-shadow-popper);
+  padding: var(--intergalactic-spacing-spacing-3x);
 }
 
 STitle {

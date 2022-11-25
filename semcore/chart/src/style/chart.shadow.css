@@ -18,7 +18,7 @@ SChart {
     background-color: var(--intergalactic-color-bg-primary-neutral);
     white-space: nowrap;
     border: 1px solid var(--intergalactic-color-border-secondary);
-    box-shadow: var(--box-shadow-popper);
+    box-shadow: var(--intergalactic-boxShadow-box-shadow-popper);
     border-radius: var(--intergalactic-borderRadius-rounded-medium);
   }
 

@@ -7,7 +7,7 @@ SWindow {
   box-sizing: border-box;
   margin: auto;
   padding: var(--intergalactic-spacing-spacing-10x);
-  box-shadow: 0 3px 8px color-mod(var(--gray-800) a(20%));
+  box-shadow: var(--intergalactic-boxShadow-box-shadow-modal);
 
   &:focus {
     outline: none;

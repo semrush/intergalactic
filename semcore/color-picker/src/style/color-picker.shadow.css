@@ -27,7 +27,7 @@ SItemContainer {
     width: 22px;
     height: 22px;
     border-radius: 50%;
-    box-shadow: inset 0px 0px 1px rgba(0, 0, 0, 0.1);
+    box-shadow: inset 0px 0px 1px var(--intergalactic-color-border-secondary);
     background: var(--value);
   }
 }

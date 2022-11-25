@@ -9,7 +9,7 @@ SFeaturePopover {
   box-sizing: border-box;
   background-color: var(--intergalactic-color-bg-primary-highlight);
   color: var(--intergalactic-color-text-primary);
-  box-shadow: 0 1px 12px var(--intergalactic-boxShadow-box-shadow-popper);
+  box-shadow: var(--intergalactic-boxShadow-box-shadow-popper);
 }
 
 SClose {
