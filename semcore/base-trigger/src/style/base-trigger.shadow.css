@@ -20,14 +20,14 @@ SBaseTrigger {
   outline: 0;
   text-align: center;
   vertical-align: middle;
-  font-family: var(--intergalactic-fontFamilies-base), sans-serif;
+  font-family: var(--intergalactic-base), sans-serif;
   cursor: pointer;
 
-  background: var(--intergalactic-color-bg-primary-neutral);
+  background: var(--intergalactic-bg-primary-neutral);
 
-  font-weight: var(--intergalactic-fontWeights-regular-400);
-  border: 1px solid var(--intergalactic-color-border-primary);
-  color: var(--intergalactic-color-text-primary);
+  font-weight: var(--intergalactic-regular-400);
+  border: 1px solid var(--intergalactic-border-primary);
+  color: var(--intergalactic-text-primary);
 
   &::-moz-focus-inner {
     border: none;
@@ -42,8 +42,8 @@ SBaseTrigger {
   }
 
   &[keyboardFocused] {
-    border: 1px solid var(--intergalactic-color-border-info-active);
-    box-shadow: var(--intergalactic-boxShadow-keyboard-focus);
+    border: 1px solid var(--intergalactic-border-info-active);
+    box-shadow: var(--intergalactic-keyboard-focus);
   }
 
   &:hover {
@@ -57,7 +57,7 @@ SBaseTrigger {
 }
 
 SBaseTrigger[disabled] {
-  opacity: var(--intergalactic-opacity-disabled-opacity);
+  opacity: var(--intergalactic-disabled-opacity);
   cursor: default;
   pointer-events: none; /* Disable link interactions */
 }
@@ -80,7 +80,7 @@ SText {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-  line-height: var(--intergalactic-lineHeights-lh-200);
+  line-height: var(--intergalactic-lh-200);
   flex-grow: 1;
   text-align: left;
 }
@@ -100,17 +100,17 @@ SBaseAddon {
 SBaseTrigger[size='m'] {
   min-width: 26px;
   height: 28px;
-  border-radius: var(--intergalactic-borderRadius-rounded-medium);
-  padding: 0 var(--intergalactic-spacing-spacing-2x);
-  font-size: var(--intergalactic-fontSizes-fs-200);
+  border-radius: var(--intergalactic-rounded-medium);
+  padding: 0 var(--intergalactic-spacing-2x);
+  font-size: var(--intergalactic-fs-200);
 
   & SAddon {
     &:not(:only-child):first-child {
-      margin-right: var(--intergalactic-spacing-spacing-2x);
+      margin-right: var(--intergalactic-spacing-2x);
     }
 
     &:not(:only-child):last-child {
-      margin-left: var(--intergalactic-spacing-spacing-2x);
+      margin-left: var(--intergalactic-spacing-2x);
     }
 
     &:only-child {
@@ -123,17 +123,17 @@ SBaseTrigger[size='m'] {
 SBaseTrigger[size='l'] {
   min-width: 32px;
   height: 40px;
-  border-radius: var(--intergalactic-borderRadius-rounded-medium);
-  padding: 0 var(--intergalactic-spacing-spacing-3x);
-  font-size: var(--intergalactic-fontSizes-fs-300);
+  border-radius: var(--intergalactic-rounded-medium);
+  padding: 0 var(--intergalactic-spacing-3x);
+  font-size: var(--intergalactic-fs-300);
 
   & SAddon {
     &:not(:only-child):first-child {
-      margin-right: var(--intergalactic-spacing-spacing-2x);
+      margin-right: var(--intergalactic-spacing-2x);
     }
 
     &:not(:only-child):last-child {
-      margin-left: var(--intergalactic-spacing-spacing-2x);
+      margin-left: var(--intergalactic-spacing-2x);
     }
 
     &:only-child {
@@ -164,18 +164,18 @@ SText[placeholder] {
 }
 
 SBaseTrigger[state='normal'] {
-  border-color: var(--intergalactic-color-border-primary);
+  border-color: var(--intergalactic-border-primary);
 }
 
 SBaseTrigger[state='valid'] {
-  border-color: var(--intergalactic-color-border-success);
+  border-color: var(--intergalactic-border-success);
 }
 
 SBaseTrigger[state='invalid'] {
-  border-color: var(--intergalactic-color-border-danger);
+  border-color: var(--intergalactic-border-danger);
 
   &[keyboardFocused] {
-    border-color: var(--intergalactic-color-border-danger-active);
-    box-shadow: var(--intergalactic-boxShadow-keyboard-focus-invalid);
+    border-color: var(--intergalactic-border-danger-active);
+    box-shadow: var(--intergalactic-keyboard-focus-invalid);
   }
 }

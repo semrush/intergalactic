@@ -3,32 +3,32 @@
 STooltip {
   position: relative;
   padding: 12px;
-  border-radius: var(--intergalactic-borderRadius-rounded-medium);
+  border-radius: var(--intergalactic-rounded-medium);
   box-sizing: border-box;
-  color: var(--intergalactic-color-text-primary);
-  font-size: var(--intergalactic-fontSizes-fs-200);
-  line-height: var(--intergalactic-lineHeights-lh-200);
+  color: var(--intergalactic-text-primary);
+  font-size: var(--intergalactic-fs-200);
+  line-height: var(--intergalactic-lh-200);
   word-wrap: break-word;
   max-width: 250px;
   font-weight: normal;
   white-space: normal;
-  box-shadow: var(--intergalactic-boxShadow-box-shadow-popper);
+  box-shadow: var(--intergalactic-box-shadow-popper);
 }
 
 STooltip[theme='default'] {
-  background-color: var(--intergalactic-color-tooltip-default);
-  border: 1px solid var(--intergalactic-color-border-secondary);
+  background-color: var(--intergalactic-tooltip-default);
+  border: 1px solid var(--intergalactic-border-secondary);
 }
 
 STooltip[theme='invert'] {
-  color: var(--intergalactic-color-text-primary-invert);
-  background-color: var(--intergalactic-color-tooltip-invert);
-  border: 1px solid var(--intergalactic-color-border-tooltip-invert);
+  color: var(--intergalactic-text-primary-invert);
+  background-color: var(--intergalactic-tooltip-invert);
+  border: 1px solid var(--intergalactic-border-tooltip-invert);
 }
 
 STooltip[theme='warning'] {
-  background-color: var(--intergalactic-color-tooltip-warning);
-  border: 1px solid var(--intergalactic-color-border-danger-active);
+  background-color: var(--intergalactic-tooltip-warning);
+  border: 1px solid var(--intergalactic-control-primary-critical);
 }
 
 STooltip[data-popper-reference-hidden] {
@@ -48,26 +48,26 @@ SArrow {
 }
 
 SArrow[theme='default'] {
-  border-color: var(--intergalactic-color-border-secondary);
+  border-color: var(--intergalactic-border-secondary);
 
   &:before {
-    border-color: var(--intergalactic-color-bg-primary-neutral);
+    border-color: var(--intergalactic-bg-primary-neutral);
   }
 }
 
 SArrow[theme='invert'] {
-  border-color: var(--intergalactic-color-border-tooltip-invert);
+  border-color: var(--intergalactic-border-tooltip-invert);
 
   &::before {
-    border-color: var(--intergalactic-color-tooltip-invert);
+    border-color: var(--intergalactic-tooltip-invert);
   }
 }
 
 SArrow[theme='warning'] {
-  border-color: var(--intergalactic-color-border-danger-active);
+  border-color: var(--intergalactic-border-danger-active);
 
   &::before {
-    border-color: var(--intergalactic-color-tooltip-warning);
+    border-color: var(--intergalactic-tooltip-warning);
   }
 }
 

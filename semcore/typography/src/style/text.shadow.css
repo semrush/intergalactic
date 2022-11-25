@@ -6,43 +6,43 @@ SText {
 }
 
 SText[size='100'] {
-  font-size: var(--intergalactic-fontSizes-fs-100);
-  line-height: var(--intergalactic-lineHeights-lh-100);
+  font-size: var(--intergalactic-fs-100);
+  line-height: var(--intergalactic-lh-100);
 }
 
 SText[size='200'] {
-  font-size: var(--intergalactic-fontSizes-fs-200);
-  line-height: var(--intergalactic-lineHeights-lh-200);
+  font-size: var(--intergalactic-fs-200);
+  line-height: var(--intergalactic-lh-200);
 }
 
 SText[size='300'] {
-  font-size: var(--intergalactic-fontSizes-fs-300);
-  line-height: var(--intergalactic-lineHeights-lh-300);
+  font-size: var(--intergalactic-fs-300);
+  line-height: var(--intergalactic-lh-300);
 }
 
 SText[size='400'] {
-  font-size: var(--intergalactic-fontSizes-fs-400);
-  line-height: var(--intergalactic-lineHeights-lh-400);
+  font-size: var(--intergalactic-fs-400);
+  line-height: var(--intergalactic-lh-400);
 }
 
 SText[size='500'] {
-  font-size: var(--intergalactic-fontSizes-fs-500);
-  line-height: var(--intergalactic-lineHeights-lh-500);
+  font-size: var(--intergalactic-fs-500);
+  line-height: var(--intergalactic-lh-500);
 }
 
 SText[size='600'] {
-  font-size: var(--intergalactic-fontSizes-fs-600);
-  line-height: var(--intergalactic-lineHeights-lh-600);
+  font-size: var(--intergalactic-fs-600);
+  line-height: var(--intergalactic-lh-600);
 }
 
 SText[size='700'] {
-  font-size: var(--intergalactic-fontSizes-fs-700);
-  line-height: var(--intergalactic-lineHeights-lh-700);
+  font-size: var(--intergalactic-fs-700);
+  line-height: var(--intergalactic-lh-700);
 }
 
 SText[size='800'] {
-  font-size: var(--intergalactic-fontSizes-fs-800);
-  line-height: var(--intergalactic-lineHeights-lh-800);
+  font-size: var(--intergalactic-fs-800);
+  line-height: var(--intergalactic-lh-800);
 }
 
 SText[noWrap] {
@@ -52,11 +52,11 @@ SText[noWrap] {
 }
 
 SText[medium] {
-  font-weight: var(--intergalactic-fontWeights-medium-500);
+  font-weight: var(--intergalactic-medium-500);
 }
 
 SText[bold] {
-  font-weight: var(--intergalactic-fontWeights-bold-700);
+  font-weight: var(--intergalactic-bold-700);
 }
 
 SText[italic] {

@@ -8,7 +8,7 @@ SButton {
   padding: 0;
   margin: 0;
   white-space: nowrap;
-  font-family: var(--intergalactic-fontFamilies-base), sans-serif;
+  font-family: var(--intergalactic-base), sans-serif;
   line-height: normal;
   text-decoration: none;
   text-align: center;
@@ -22,8 +22,8 @@ SButton {
   user-select: none;
   touch-action: manipulation;
   -webkit-tap-highlight-color: transparent;
-  font-weight: var(--intergalactic-fontWeights-medium-500);
-  color: var(--intergalactic-color-text-secondary);
+  font-weight: var(--intergalactic-medium-500);
+  color: var(--intergalactic-text-secondary);
 
   &::-moz-focus-inner {
     padding: 0;
@@ -39,59 +39,59 @@ SButton {
 }
 
 SButton[disabled] {
-  opacity: var(--intergalactic-opacity-disabled-opacity);
+  opacity: var(--intergalactic-disabled-opacity);
   cursor: default;
   pointer-events: none;
 }
 
 SButton[keyboardFocused] {
-  box-shadow: var(--intergalactic-boxShadow-keyboard-focus);
+  box-shadow: var(--intergalactic-keyboard-focus);
   z-index: 1;
 }
 SButton[size='m'] {
   height: 28px;
   min-width: 28px;
-  border-radius: var(--intergalactic-borderRadius-rounded-medium);
-  font-size: var(--intergalactic-fontSizes-fs-200);
+  border-radius: var(--intergalactic-rounded-medium);
+  font-size: var(--intergalactic-fs-200);
 }
 
 SButton[size='l'] {
   height: 40px;
   min-width: 40px;
-  border-radius: var(--intergalactic-borderRadius-rounded-medium);
-  font-size: var(--intergalactic-fontSizes-fs-300);
+  border-radius: var(--intergalactic-rounded-medium);
+  font-size: var(--intergalactic-fs-300);
 }
 
 SButton[theme='primary-info'] {
-  color: var(--intergalactic-color-text-primary-invert);
-  background-color: var(--intergalactic-color-control-primary-info);
+  color: var(--intergalactic-text-primary-invert);
+  background-color: var(--intergalactic-control-primary-info);
 
   &:hover {
-    background-color: var(--intergalactic-color-control-primary-info-hover);
+    background-color: var(--intergalactic-control-primary-info-hover);
   }
 
   &:active,
   &[active] {
-    background-color: var(--intergalactic-color-control-primary-info-active);
+    background-color: var(--intergalactic-control-primary-info-active);
   }
 }
 
 SButton[theme='primary-success'] {
-  color: var(--intergalactic-color-text-primary-invert);
-  background-color: var(--intergalactic-color-control-primary-success);
+  color: var(--intergalactic-text-primary-invert);
+  background-color: var(--intergalactic-control-primary-success);
 
   &:hover {
-    background-color: var(--intergalactic-color-control-primary-success-hover);
+    background-color: var(--intergalactic-control-primary-success-hover);
   }
 
   &:active,
   &[active] {
-    background-color: var(--intergalactic-color-control-primary-success-active);
+    background-color: var(--intergalactic-control-primary-success-active);
   }
 }
 
 SButton[theme='primary-warning'] {
-  color: var(--intergalactic-color-text-primary-invert);
+  color: var(--intergalactic-text-primary-invert);
   background-color: var(--orange-400);
 
   &:hover {
@@ -105,47 +105,47 @@ SButton[theme='primary-warning'] {
 }
 
 SButton[theme='primary-danger'] {
-  color: var(--intergalactic-color-text-primary-invert);
-  background-color: var(--intergalactic-color-control-primary-critical);
+  color: var(--intergalactic-text-primary-invert);
+  background-color: var(--intergalactic-control-primary-critical);
 
   &:hover {
-    background-color: var(--intergalactic-color-control-primary-critical-hover);
+    background-color: var(--intergalactic-control-primary-critical-hover);
   }
 
   &:active,
   &[active] {
-    background-color: var(--intergalactic-color-control-primary-critical-active);
+    background-color: var(--intergalactic-control-primary-critical-active);
   }
 }
 
 SButton[theme='primary-invert'] {
-  color: var(--intergalactic-color-control-primary-invert);
-  background-color: var(--intergalactic-color-text-primary-invert);
+  color: var(--intergalactic-control-primary-invert);
+  background-color: var(--intergalactic-text-primary-invert);
 
   &:hover {
-    background-color: var(--intergalactic-color-control-primary-invert-hover);
+    background-color: var(--intergalactic-control-primary-invert-hover);
   }
 
   &:active,
   &[active] {
-    background-color: var(--intergalactic-color-control-primary-invert-active);
+    background-color: var(--intergalactic-control-primary-invert-active);
   }
 }
 
 SButton[theme='secondary-muted'] {
-  color: var(--intergalactic-color-text-secondary);
-  border-color: var(--intergalactic-color-border-primary);
-  background-color: var(--intergalactic-color-control-secondary-neutral);
+  color: var(--intergalactic-text-secondary);
+  border-color: var(--intergalactic-border-primary);
+  background-color: var(--intergalactic-control-secondary-neutral);
 
   &:hover {
-    background-color: var(--intergalactic-color-control-secondary-neutral-hover);
-    color: var(--intergalactic-color-text-primary);
+    background-color: var(--intergalactic-control-secondary-neutral-hover);
+    color: var(--intergalactic-text-primary);
   }
 
   &:active,
   &[active] {
-    background-color: var(--intergalactic-color-control-secondary-neutral-active);
-    color: var(--intergalactic-color-text-primary);
+    background-color: var(--intergalactic-control-secondary-neutral-active);
+    color: var(--intergalactic-text-primary);
   }
 }
 
@@ -165,61 +165,61 @@ SButton[theme='secondary-info'] {
 }
 
 SButton[theme='secondary-invert'] {
-  color: var(--intergalactic-color-text-primary-invert);
-  border-color: var(--intergalactic-color-border-primary-invert);
-  background-color: var(--intergalactic-color-control-secondary-invert);
+  color: var(--intergalactic-text-primary-invert);
+  border-color: var(--intergalactic-border-primary-invert);
+  background-color: var(--intergalactic-control-secondary-invert);
 
   &:hover {
-    background-color: var(--intergalactic-color-control-secondary-invert-hover);
+    background-color: var(--intergalactic-control-secondary-invert-hover);
   }
 
   &:active,
   &[active] {
-    background-color: var(--intergalactic-color-control-secondary-invert-active);
+    background-color: var(--intergalactic-control-secondary-invert-active);
   }
 }
 
 SButton[theme='tertiary-info'] {
-  color: var(--intergalactic-color-text-link);
-  background-color: var(--intergalactic-color-control-tertiary-info);
+  color: var(--intergalactic-text-link);
+  background-color: var(--intergalactic-control-tertiary-info);
 
   &:hover {
-    background-color: var(--intergalactic-color-control-tertiary-info-hover);
+    background-color: var(--intergalactic-control-tertiary-info-hover);
   }
 
   &:active,
   &[active] {
-    background-color: var(--intergalactic-color-control-tertiary-info-active);
+    background-color: var(--intergalactic-control-tertiary-info-active);
   }
 }
 
 SButton[theme='tertiary-muted'] {
-  color: var(--intergalactic-color-text-secondary);
-  background-color: var(--intergalactic-color-control-tertiary-neutral);
+  color: var(--intergalactic-text-secondary);
+  background-color: var(--intergalactic-control-tertiary-neutral);
 
   &:hover {
-    background-color: var(--intergalactic-color-control-tertiary-neutral-hover);
-    color: var(--intergalactic-color-text-primary);
+    background-color: var(--intergalactic-control-tertiary-neutral-hover);
+    color: var(--intergalactic-text-primary);
   }
 
   &:active,
   &[active] {
-    background-color: var(--intergalactic-color-control-tertiary-neutral-active);
-    color: var(--intergalactic-color-text-primary);
+    background-color: var(--intergalactic-control-tertiary-neutral-active);
+    color: var(--intergalactic-text-primary);
   }
 }
 
 SButton[theme='tertiary-invert'] {
-  color: var(--intergalactic-color-text-primary-invert);
-  background-color: var(--intergalactic-color-control-tertiary-invert);
+  color: var(--intergalactic-text-primary-invert);
+  background-color: var(--intergalactic-control-tertiary-invert);
 
   &:hover {
-    background-color: var(--intergalactic-color-control-tertiary-invert-hover);
+    background-color: var(--intergalactic-control-tertiary-invert-hover);
   }
 
   &:active,
   &[active] {
-    background-color: var(--intergalactic-color-control-tertiary-invert-active);
+    background-color: var(--intergalactic-control-tertiary-invert-active);
   }
 }
 
@@ -236,11 +236,11 @@ SButton[neighborLocation='both'] {
   &[theme='primary-success'],
   &[theme='primary-warning'],
   &[theme='primary-danger'] {
-    border-left-color: var(--intergalactic-color-neighbor-location-neutral);
+    border-left-color: var(--intergalactic-neighbor-location-neutral);
   }
 
   &[theme='primary-invert'] {
-    border-left-color: var(--intergalactic-color-neighbor-location-invert);
+    border-left-color: var(--intergalactic-neighbor-location-invert);
   }
 }
 
@@ -253,11 +253,11 @@ SButton[neighborLocation='left'] {
   &[theme='primary-success'],
   &[theme='primary-warning'],
   &[theme='primary-danger'] {
-    border-left-color: var(--intergalactic-color-neighbor-location-neutral);
+    border-left-color: var(--intergalactic-neighbor-location-neutral);
   }
 
   &[theme='primary-invert'] {
-    border-left-color: var(--intergalactic-color-neighbor-location-invert);
+    border-left-color: var(--intergalactic-neighbor-location-invert);
   }
 }
 
@@ -287,15 +287,15 @@ SText {
 }
 
 SText[size='m'] {
-  margin-left: var(--intergalactic-spacing-spacing-2x);
-  margin-right: var(--intergalactic-spacing-spacing-2x);
-  line-height: var(--intergalactic-lineHeights-lh-200);
+  margin-left: var(--intergalactic-spacing-2x);
+  margin-right: var(--intergalactic-spacing-2x);
+  line-height: var(--intergalactic-lh-200);
 }
 
 SText[size='l'] {
-  margin-left: var(--intergalactic-spacing-spacing-3x);
-  margin-right: var(--intergalactic-spacing-spacing-3x);
-  line-height: var(--intergalactic-lineHeights-lh-300);
+  margin-left: var(--intergalactic-spacing-3x);
+  margin-right: var(--intergalactic-spacing-3x);
+  line-height: var(--intergalactic-lh-300);
 }
 
 SAddon {
@@ -306,11 +306,11 @@ SAddon {
 
 SAddon[size='m'] {
   &:not(:only-child):first-child {
-    margin-left: var(--intergalactic-spacing-spacing-2x);
+    margin-left: var(--intergalactic-spacing-2x);
   }
 
   &:not(:only-child):last-child {
-    margin-right: var(--intergalactic-spacing-spacing-2x);
+    margin-right: var(--intergalactic-spacing-2x);
   }
 
   &:only-child {
@@ -321,11 +321,11 @@ SAddon[size='m'] {
 
 SAddon[size='l'] {
   &:not(:only-child):first-child {
-    margin-left: var(--intergalactic-spacing-spacing-2x);
+    margin-left: var(--intergalactic-spacing-2x);
   }
 
   &:not(:only-child):last-child {
-    margin-right: var(--intergalactic-spacing-spacing-2x);
+    margin-right: var(--intergalactic-spacing-2x);
   }
 
   &:only-child {

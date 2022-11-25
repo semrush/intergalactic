@@ -17,16 +17,16 @@ SLinkTrigger {
   overflow: visible;
   outline: 0;
   vertical-align: middle;
-  font-family: var(--intergalactic-fontFamilies-base), sans-serif;
+  font-family: var(--intergalactic-base), sans-serif;
   cursor: pointer;
-  color: var(--intergalactic-color-text-link);
+  color: var(--intergalactic-text-link);
   background: none;
   transition: color 0.15s ease-in-out;
 
   &[active],
   &:hover,
   &:active {
-    color: var(--intergalactic-color-text-link-hover-active);
+    color: var(--intergalactic-text-link-hover-active);
 
     & SText {
       border-color: currentColor;
@@ -38,7 +38,7 @@ SLinkTrigger {
     border-bottom-style: solid;
     border-color: transparent;
     transition: border-bottom-color 0.15s ease-in-out;
-    line-height: var(--intergalactic-lineHeights-lh-200);
+    line-height: var(--intergalactic-lh-200);
     text-overflow: ellipsis;
     overflow: hidden;
   }
@@ -53,13 +53,13 @@ SLinkTrigger[color] {
 }
 
 SLinkTrigger[disabled] {
-  opacity: var(--intergalactic-opacity-disabled-opacity);
+  opacity: var(--intergalactic-disabled-opacity);
   cursor: default;
   pointer-events: none;
 }
 
 SLinkTrigger[keyboardFocused] {
-  box-shadow: var(--intergalactic-boxShadow-keyboard-focus);
+  box-shadow: var(--intergalactic-keyboard-focus);
   z-index: 1;
 }
 
@@ -71,11 +71,11 @@ SLinkAddon {
   flex-shrink: 0;
 
   &:not(:only-child):first-child {
-    margin-right: var(--intergalactic-spacing-spacing-1x);
+    margin-right: var(--intergalactic-spacing-1x);
   }
 
   &:not(:only-child):last-child {
-    margin-left: var(--intergalactic-spacing-spacing-1x);
+    margin-left: var(--intergalactic-spacing-1x);
   }
 }
 
@@ -85,11 +85,11 @@ SLinkAddon {
 }
 
 SLinkTrigger[size='m'] {
-  font-size: var(--intergalactic-fontSizes-fs-200);
+  font-size: var(--intergalactic-fs-200);
 }
 
 SLinkTrigger[size='l'] {
-  font-size: var(--intergalactic-fontSizes-fs-300);
+  font-size: var(--intergalactic-fs-300);
 }
 
 @media (prefers-reduced-motion) {

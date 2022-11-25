@@ -18,7 +18,7 @@ SDraggable[draggable] {
   &:active {
     cursor: grabbing;
     box-shadow: 0 0 1px rgba(25, 27, 35, 0.16), 0 12px 40px rgba(25, 27, 35, 0.16);
-    background-color: var(--intergalactic-color-bg-primary-neutral);
+    background-color: var(--intergalactic-bg-primary-neutral);
   } */
 
   &:hover::after {
@@ -93,7 +93,7 @@ SDraggable[placement='left']::after {
 
 SDropZone {
   border: 1px dashed var(--gray-200);
-  border-radius: var(--intergalactic-borderRadius-rounded-medium);
+  border-radius: var(--intergalactic-rounded-medium);
 }
 
 SDropZone[dropPreview],

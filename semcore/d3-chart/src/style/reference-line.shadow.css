@@ -6,7 +6,7 @@ SReferenceLine {
 }
 
 STitle {
-  font-size: var(--intergalactic-fontSizes-fs-100);
+  font-size: var(--intergalactic-fs-100);
   fill: var(--gray-500);
   transform-origin: var(--transform-origin);
 }

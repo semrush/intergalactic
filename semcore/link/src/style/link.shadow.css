@@ -3,7 +3,7 @@
 SLink {
   display: inline-block;
   font-family: inherit;
-  color: var(--intergalactic-color-text-link);
+  color: var(--intergalactic-text-link);
   line-height: normal;
   position: relative;
   cursor: pointer;
@@ -35,7 +35,7 @@ SLink {
   &[active],
   &:hover,
   &:active {
-    color: var(--intergalactic-color-text-link-hover-active);
+    color: var(--intergalactic-text-link-hover-active);
 
     & SText {
       border-color: currentColor;
@@ -44,11 +44,11 @@ SLink {
 }
 
 SLink[keyboardFocused] {
-  box-shadow: var(--intergalactic-boxShadow-keyboard-focus);
+  box-shadow: var(--intergalactic-keyboard-focus);
 }
 
 SLink[disabled] {
-  opacity: var(--intergalactic-opacity-disabled-opacity);
+  opacity: var(--intergalactic-disabled-opacity);
   cursor: default;
   pointer-events: none; /* Disable link interactions */
 }
@@ -60,7 +60,7 @@ SLink[noWrapText] {
 SLink {
   &[enableVisited]:visited,
   &[enableVisited]:visited:hover {
-    color: var(--intergalactic-color-text-link-visited);
+    color: var(--intergalactic-text-link-visited);
   }
 }
 
@@ -77,11 +77,11 @@ SAddon {
 
 SLink SAddon {
   &:not(:only-child):first-child {
-    margin-right: var(--intergalactic-spacing-spacing-1x);
+    margin-right: var(--intergalactic-spacing-1x);
   }
 
   &:not(:only-child):last-child {
-    margin-left: var(--intergalactic-spacing-spacing-1x);
+    margin-left: var(--intergalactic-spacing-1x);
   }
 }
 

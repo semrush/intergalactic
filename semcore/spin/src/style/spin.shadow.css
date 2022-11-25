@@ -21,11 +21,11 @@ SSpin {
 }
 
 SSpin[theme='dark'] {
-  fill: var(--intergalactic-color-border-primary);
+  fill: var(--intergalactic-border-primary);
 }
 
 SSpin[theme='invert'] {
-  fill: var(--intergalactic-color-border-primary-invert);
+  fill: var(--intergalactic-border-primary-invert);
 }
 
 SSpin[centered] {

@@ -4,10 +4,10 @@ SDot {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-size: var(--intergalactic-fontSizes-fs-50);
+  font-size: var(--intergalactic-fs-50);
   line-height: normal;
   background-color: var(---intergalactic-color-icon-primary-warning);
-  color: var(--intergalactic-color-text-primary-invert);
+  color: var(--intergalactic-text-primary-invert);
   box-sizing: border-box;
   z-index: 1;
   border-radius: 100%;
@@ -25,7 +25,7 @@ SDot[size='xl'] {
 SDot[size='l'] {
   height: 12px;
   min-width: 12px;
-  border-radius: var(--intergalactic-borderRadius-rounded-medium);
+  border-radius: var(--intergalactic-rounded-medium);
 }
 
 SDot[size='m'] {

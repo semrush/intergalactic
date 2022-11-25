@@ -9,11 +9,11 @@ SPagination {
 SNextPage,
 SPrevPage {
   align-self: center;
-  margin-left: var(--intergalactic-spacing-spacing-2x);
+  margin-left: var(--intergalactic-spacing-2x);
 }
 
 SLabel:not(:first-child) {
-  margin-left: var(--intergalactic-spacing-spacing-4x);
+  margin-left: var(--intergalactic-spacing-4x);
 }
 
 STotalPages {
@@ -22,19 +22,19 @@ STotalPages {
 }
 
 STotalPagesLabel {
-  margin-left: var(--intergalactic-spacing-spacing-2x);
-  margin-right: var(--intergalactic-spacing-spacing-1x);
+  margin-left: var(--intergalactic-spacing-2x);
+  margin-right: var(--intergalactic-spacing-1x);
 }
 
 STotalLastPages {
-  font-size: var(--intergalactic-fontSizes-fs-200);
-  line-height: var(--intergalactic-lineHeights-lh-200);
-  color: var(--intergalactic-color-text-primary);
+  font-size: var(--intergalactic-fs-200);
+  line-height: var(--intergalactic-lh-200);
+  color: var(--intergalactic-text-primary);
 }
 
 SPageInput {
   max-width: 68px;
-  margin-left: var(--intergalactic-spacing-spacing-1x);
+  margin-left: var(--intergalactic-spacing-1x);
 }
 
 SPageInputValue:focus ~ SPageInputAddon {
@@ -52,6 +52,6 @@ SPageInputAddon {
 SLabel,
 STotalPages,
 STotalPagesLabel {
-  font-size: var(--intergalactic-fontSizes-fs-200);
-  line-height: var(--intergalactic-lineHeights-lh-200);
+  font-size: var(--intergalactic-fs-200);
+  line-height: var(--intergalactic-lh-200);
 }

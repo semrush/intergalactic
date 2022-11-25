@@ -20,23 +20,23 @@ SInputTags > div[data-ui-name='ScrollArea.Bar'][orientation='vertical'] {
 SInputTags[size='m'] {
   min-height: 28px;
   height: auto;
-  padding: var(--intergalactic-spacing-spacing-05x)
+  padding: var(--intergalactic-spacing-05x)
     calc(var(--intergalactic-spacing-spacing-1x) + var(--intergalactic-spacing-spacing-05x));
 }
 
 SInputTags[size='l'] {
   min-height: 40px;
   height: auto;
-  padding: var(--intergalactic-spacing-spacing-05x)
+  padding: var(--intergalactic-spacing-05x)
     calc(var(--intergalactic-spacing-spacing-2x) + var(--intergalactic-spacing-spacing-05x));
 }
 
 STag[size='m'] {
-  margin: var(--intergalactic-spacing-spacing-05x);
+  margin: var(--intergalactic-spacing-05x);
 }
 
 STag[size='l'] {
-  margin: var(--intergalactic-spacing-spacing-1x) var(--intergalactic-spacing-spacing-05x);
+  margin: var(--intergalactic-spacing-1x) var(--intergalactic-spacing-05x);
 }
 
 STag[editable] {
@@ -45,7 +45,7 @@ STag[editable] {
 
 SValue {
   padding: 0 !important;
-  margin: var(--intergalactic-spacing-spacing-05x);
+  margin: var(--intergalactic-spacing-05x);
 }
 
 SSpacer {

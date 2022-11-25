@@ -21,11 +21,11 @@ SSkeleton {
 }
 
 SSkeleton[theme='invert'] {
-  fill: var(--intergalactic-color-skeleton-bg);
+  fill: var(--intergalactic-skeleton-bg);
 }
 
 SSkeleton[theme='dark'] {
-  fill: var(--intergalactic-color-skeleton-bg-invert);
+  fill: var(--intergalactic-skeleton-bg-invert);
 }
 
 SText {

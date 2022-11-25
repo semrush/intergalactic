@@ -1,8 +1,8 @@
 @import '@semcore/utils/style/var.css';
 
 SOptionCheckbox {
-  margin-top: var(--intergalactic-spacing-spacing-05x);
-  margin-right: var(--intergalactic-spacing-spacing-2x);
+  margin-top: var(--intergalactic-spacing-05x);
+  margin-right: var(--intergalactic-spacing-2x);
   margin-bottom: auto;
   position: relative;
   flex-shrink: 0;
@@ -14,10 +14,10 @@ SOptionCheckbox {
     left: 0;
     right: 0;
     bottom: 0;
-    background: var(--intergalactic-color-bg-primary-neutral);
+    background: var(--intergalactic-bg-primary-neutral);
     border: 1px solid;
-    border-radius: var(--intergalactic-borderRadius-rounded-small);
-    border-color: var(--intergalactic-color-border-primary);
+    border-radius: var(--intergalactic-rounded-small);
+    border-color: var(--intergalactic-border-primary);
   }
 
   width: 16px;
@@ -30,7 +30,7 @@ SOptionCheckbox {
     left: 0;
     right: 0;
     bottom: 0;
-    margin: 0 var(--intergalactic-spacing-spacing-05x);
+    margin: 0 var(--intergalactic-spacing-05x);
     background-repeat: no-repeat;
     background-position: center center;
     background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAiIGhlaWdodD0iNyIgdmlld0JveD0iMCAwIDEwIDciIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxwYXRoIGQ9Ik04LjI1IDFMNCA1LjI1TDEuNzUgMyIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KPC9zdmc+Cg==');
@@ -46,8 +46,8 @@ SOptionCheckbox[size='l'] {
 }
 
 SOptionCheckbox[checked]:before {
-  background-color: var(--intergalactic-color-control-primary-info);
-  border-color: var(--intergalactic-color-control-primary-info);
+  background-color: var(--intergalactic-control-primary-info);
+  border-color: var(--intergalactic-control-primary-info);
 }
 
 SOptionCheckbox[theme]:before {
@@ -60,9 +60,9 @@ SOptionCheckbox[theme][checked]:before {
 }
 
 SOptionCheckbox[selected] {
-  background-color: var(--intergalactic-color-dropdown-menu-item-selected);
+  background-color: var(--intergalactic-dropdown-menu-item-selected);
 
   &:hover {
-    background-color: var(--intergalactic-color-dropdown-menu-item-selected-hover);
+    background-color: var(--intergalactic-dropdown-menu-item-selected-hover);
   }
 }

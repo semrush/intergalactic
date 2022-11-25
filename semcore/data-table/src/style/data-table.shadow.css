@@ -26,14 +26,14 @@ SColumn {
   display: flex;
   align-items: center;
   flex-grow: 1;
-  font-size: var(--intergalactic-fontSizes-fs-100);
-  color: var(--intergalactic-color-text-primary);
+  font-size: var(--intergalactic-fs-100);
+  color: var(--intergalactic-text-primary);
   box-sizing: border-box;
   position: relative;
 
   &:focus {
     outline: none;
-    box-shadow: var(--intergalactic-boxShadow-keyboard-focus);
+    box-shadow: var(--intergalactic-keyboard-focus);
   }
 }
 
@@ -45,16 +45,16 @@ SColumn[hidden] {
 }
 
 SColumn[use='primary'] {
-  padding: var(--intergalactic-spacing-spacing-3x);
-  border-right: 1px solid var(--intergalactic-color-border-secondary);
-  border-bottom: 1px solid var(--intergalactic-color-border-secondary);
-  background-color: var(--intergalactic-color-table-TH-primary-cell);
+  padding: var(--intergalactic-spacing-3x);
+  border-right: 1px solid var(--intergalactic-border-secondary);
+  border-bottom: 1px solid var(--intergalactic-border-secondary);
+  background-color: var(--intergalactic-table-TH-primary-cell);
 }
 
 SColumn[use='secondary'] {
-  padding: var(--intergalactic-spacing-spacing-2x);
-  border-bottom: 1px solid var(--intergalactic-color-border-table-accent-border);
-  background-color: var(--intergalactic-color-table-TH-secondary-cell);
+  padding: var(--intergalactic-spacing-2x);
+  border-bottom: 1px solid var(--intergalactic-border-table-accent-border);
+  background-color: var(--intergalactic-table-TH-secondary-cell);
 }
 
 SColumn[use]:last-child {
@@ -78,28 +78,28 @@ SColumn[groupHead][use] {
 }
 
 SColumn[groupHead][use='primary'] {
-  border-bottom: 1px solid var(--intergalactic-color-border-secondary);
+  border-bottom: 1px solid var(--intergalactic-border-secondary);
 }
 
 SColumn[groupHead][use='secondary'] {
-  border-bottom: 1px solid var(--intergalactic-color-border-table-accent-border);
+  border-bottom: 1px solid var(--intergalactic-border-table-accent-border);
 }
 
 SColumn[sortable] {
   cursor: pointer;
 
   &[use='primary']:hover {
-    background-color: var(--intergalactic-color-table-TH-primary-cell-hover);
+    background-color: var(--intergalactic-table-TH-primary-cell-hover);
   }
 }
 
 SColumn[active][use='primary'] {
-  background-color: var(--intergalactic-color-table-TH-primary-cell-active);
+  background-color: var(--intergalactic-table-TH-primary-cell-active);
 }
 
 SColumn[resizable] {
   &:hover:after {
-    background: var(--intergalactic-color-table-TH-primary-cell-hover);
+    background: var(--intergalactic-table-TH-primary-cell-hover);
   }
 
   &:after {
@@ -121,14 +121,14 @@ SColumn[fixed] {
 }
 
 SSortIcon {
-  fill: var(--intergalactic-color-icon-secondary-neutral);
+  fill: var(--intergalactic-icon-secondary-neutral);
   margin-left: calc(
     var(--intergalactic-spacing-spacing-1x) + var(--intergalactic-spacing-spacing-05x)
   );
 }
 
 SSortIcon[active] {
-  fill: var(--intergalactic-color-icon-secondary-neutral-hover-active);
+  fill: var(--intergalactic-icon-secondary-neutral-hover-active);
 }
 
 SBodyWrapper {
@@ -152,67 +152,67 @@ SRow {
 SRow[active] > SCell:not([theme]),
 SRow:hover > SCell:not([theme]),
 SRow SCell:hover + SGroupCell SCell:not([theme]) {
-  background-color: var(--intergalactic-color-table-TD-cell-hover);
+  background-color: var(--intergalactic-table-TD-cell-hover);
 }
 
 /* MUTED THEME */
 SRow[theme='muted'] SCell:not([theme]) {
-  background-color: var(--intergalactic-color-table-TD-cell-unread);
+  background-color: var(--intergalactic-table-TD-cell-unread);
 }
 
 SRow:hover > SCell[theme='muted'],
 SRow[theme='muted'][active] > SCell:not([theme]),
 SRow[theme='muted']:hover > SCell:not([theme]),
 SRow[theme='muted'] SCell:hover + SGroupCell SCell:not([theme]) {
-  background-color: var(--intergalactic-color-table-TD-cell-hover);
+  background-color: var(--intergalactic-table-TD-cell-hover);
 }
 
 /* INFO THEME */
 SRow[theme='info'] SCell:not([theme]) {
-  background-color: var(--intergalactic-color-table-TD-cell-selected);
+  background-color: var(--intergalactic-table-TD-cell-selected);
 }
 
 SRow:hover > SCell[theme='info'],
 SRow[theme='info'][active] > SCell:not([theme]),
 SRow[theme='info']:hover > SCell:not([theme]),
 SRow[theme='info'] SCell:hover + SGroupCell SCell:not([theme]) {
-  background-color: var(--intergalactic-color-table-TD-cell-selected-hover);
+  background-color: var(--intergalactic-table-TD-cell-selected-hover);
 }
 
 /* SUCCESS THEME */
 SRow[theme='success'] SCell:not([theme]) {
-  background-color: var(--intergalactic-color-table-TD-cell-new);
+  background-color: var(--intergalactic-table-TD-cell-new);
 }
 
 SRow:hover > SCell[theme='success'],
 SRow[theme='success'][active] > SCell:not([theme]),
 SRow[theme='success']:hover > SCell:not([theme]),
 SRow[theme='success'] SCell:hover + SGroupCell SCell:not([theme]) {
-  background-color: var(--intergalactic-color-table-TD-cell-new-hover);
+  background-color: var(--intergalactic-table-TD-cell-new-hover);
 }
 
 /* WARNING THEME */
 SRow[theme='warning'] SCell:not([theme]) {
-  background-color: var(--intergalactic-color-table-TD-cell-warning);
+  background-color: var(--intergalactic-table-TD-cell-warning);
 }
 
 SRow:hover > SCell[theme='warning'],
 SRow[theme='warning'][active] > SCell:not([theme]),
 SRow[theme='warning']:hover > SCell:not([theme]),
 SRow[theme='warning'] SCell:hover + SGroupCell SCell:not([theme]) {
-  background-color: var(--intergalactic-color-table-TD-cell-warning-hover);
+  background-color: var(--intergalactic-table-TD-cell-warning-hover);
 }
 
 /* DANGER THEME */
 SRow[theme='danger'] SCell:not([theme]) {
-  background-color: var(--intergalactic-color-table-TD-cell-critical);
+  background-color: var(--intergalactic-table-TD-cell-critical);
 }
 
 SRow:hover > SCell[theme='danger'],
 SRow[theme='danger'][active] > SCell:not([theme]),
 SRow[theme='danger']:hover > SCell:not([theme]),
 SRow[theme='danger'] SCell:hover + SGroupCell SCell:not([theme]) {
-  background-color: var(--intergalactic-color-table-TD-cell-critical-hover);
+  background-color: var(--intergalactic-table-TD-cell-critical-hover);
 }
 
 SRow[positioned] {
@@ -223,25 +223,25 @@ SCell {
   display: flex;
   flex: 1;
   flex-basis: auto;
-  font-size: var(--intergalactic-fontSizes-fs-200);
-  line-height: var(--intergalactic-lineHeights-lh-200);
-  color: var(--intergalactic-color-text-primary);
+  font-size: var(--intergalactic-fs-200);
+  line-height: var(--intergalactic-lh-200);
+  color: var(--intergalactic-text-primary);
   box-sizing: border-box;
-  border-bottom: 1px solid var(--intergalactic-color-border-secondary);
+  border-bottom: 1px solid var(--intergalactic-border-secondary);
   overflow: hidden;
   white-space: nowrap;
 }
 
 SCell[use='primary'] {
-  padding: var(--intergalactic-spacing-spacing-3x);
+  padding: var(--intergalactic-spacing-3x);
   min-height: 45px;
-  background-color: var(--intergalactic-color-bg-primary-neutral);
+  background-color: var(--intergalactic-bg-primary-neutral);
 }
 
 SCell[use='secondary'] {
-  padding: var(--intergalactic-spacing-spacing-2x);
+  padding: var(--intergalactic-spacing-2x);
   min-height: 37px;
-  background-color: var(--intergalactic-color-bg-primary-neutral);
+  background-color: var(--intergalactic-bg-primary-neutral);
 }
 
 SCell[fixed] {
@@ -250,23 +250,23 @@ SCell[fixed] {
 }
 
 SCell[theme='muted'] {
-  background-color: var(--intergalactic-color-table-TD-cell-unread);
+  background-color: var(--intergalactic-table-TD-cell-unread);
 }
 
 SCell[theme='info'] {
-  background-color: var(--intergalactic-color-table-TD-cell-selected);
+  background-color: var(--intergalactic-table-TD-cell-selected);
 }
 
 SCell[theme='success'] {
-  background-color: var(--intergalactic-color-table-TD-cell-new);
+  background-color: var(--intergalactic-table-TD-cell-new);
 }
 
 SCell[theme='warning'] {
-  background-color: var(--intergalactic-color-table-TD-cell-warning);
+  background-color: var(--intergalactic-table-TD-cell-warning);
 }
 
 SCell[theme='danger'] {
-  background-color: var(--intergalactic-color-table-TD-cell-critical);
+  background-color: var(--intergalactic-table-TD-cell-critical);
 }
 
 SScrollAreaBar[orientation='horizontal'] {

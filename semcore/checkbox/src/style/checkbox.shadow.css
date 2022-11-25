@@ -12,11 +12,11 @@ SLabel {
 }
 
 SText {
-  margin-left: var(--intergalactic-spacing-spacing-2x);
-  color: var(--intergalactic-color-text-primary);
+  margin-left: var(--intergalactic-spacing-2x);
+  color: var(--intergalactic-text-primary);
 
   &[disabled] {
-    opacity: var(--intergalactic-opacity-disabled-opacity);
+    opacity: var(--intergalactic-disabled-opacity);
   }
 }
 
@@ -42,9 +42,9 @@ SCheckbox {
     left: 0;
     right: 0;
     bottom: 0;
-    background: var(--intergalactic-color-bg-primary-neutral);
+    background: var(--intergalactic-bg-primary-neutral);
     border: 1px solid;
-    border-radius: var(--intergalactic-borderRadius-rounded-small);
+    border-radius: var(--intergalactic-rounded-small);
   }
 
   &::after {
@@ -54,14 +54,14 @@ SCheckbox {
     left: 0;
     right: 0;
     bottom: 0;
-    margin: 0 var(--intergalactic-spacing-spacing-05x);
+    margin: 0 var(--intergalactic-spacing-05x);
     background-repeat: no-repeat;
     background-position: center center;
   }
 }
 
 SCheckbox[size='l'] {
-  margin-top: var(--intergalactic-spacing-spacing-05x);
+  margin-top: var(--intergalactic-spacing-05x);
   width: 20px;
   height: 20px;
   &[checked]::after {
@@ -70,7 +70,7 @@ SCheckbox[size='l'] {
 }
 
 SCheckbox[size='m'] {
-  margin-top: var(--intergalactic-spacing-spacing-05x);
+  margin-top: var(--intergalactic-spacing-05x);
   width: 16px;
   height: 16px;
   &[checked]::after {
@@ -79,67 +79,67 @@ SCheckbox[size='m'] {
 }
 
 SText[size='l'] {
-  font-size: var(--intergalactic-fontSizes-fs-300);
-  line-height: var(--intergalactic-lineHeights-lh-300);
+  font-size: var(--intergalactic-fs-300);
+  line-height: var(--intergalactic-lh-300);
 }
 
 SText[size='m'] {
-  font-size: var(--intergalactic-fontSizes-fs-200);
-  line-height: var(--intergalactic-lineHeights-lh-200);
+  font-size: var(--intergalactic-fs-200);
+  line-height: var(--intergalactic-lh-200);
 }
 
 SCheckbox {
   &[state='normal']:before {
-    border-color: var(--intergalactic-color-border-primary);
+    border-color: var(--intergalactic-border-primary);
   }
 
   &[state='normal'][keyboardFocused]:before {
-    border-color: var(--intergalactic-color-control-primary-info-hover);
+    border-color: var(--intergalactic-control-primary-info-hover);
   }
 }
 
 SControl[checked] ~ SCheckbox[state='normal']:before,
 SControl[checked] ~ SCheckbox[state='invalid']:before {
-  background-color: var(--intergalactic-color-control-primary-info);
-  border-color: var(--intergalactic-color-control-primary-info);
+  background-color: var(--intergalactic-control-primary-info);
+  border-color: var(--intergalactic-control-primary-info);
 }
 
 SControl[indeterminate] ~ SCheckbox[state='normal']:before {
-  background-color: var(--intergalactic-color-control-primary-info);
-  border-color: var(--intergalactic-color-control-primary-info);
+  background-color: var(--intergalactic-control-primary-info);
+  border-color: var(--intergalactic-control-primary-info);
 }
 
 SCheckbox[state='invalid'] {
   &:before {
-    border-color: var(--intergalactic-color-control-primary-critical-hover);
+    border-color: var(--intergalactic-control-primary-critical-hover);
   }
 
   &[keyboardFocused]:before {
-    box-shadow: var(--intergalactic-boxShadow-keyboard-focus-invalid);
+    box-shadow: var(--intergalactic-keyboard-focus-invalid);
   }
 }
 
 SCheckbox[state='normal'],
 SControl[checked] ~ SCheckbox[state='invalid'] {
   &[keyboardFocused]:before {
-    box-shadow: var(--intergalactic-boxShadow-keyboard-focus);
+    box-shadow: var(--intergalactic-keyboard-focus);
   }
 }
 
 SControl[disabled] ~ SCheckbox:before {
-  opacity: var(--intergalactic-opacity-disabled-opacity);
+  opacity: var(--intergalactic-disabled-opacity);
   cursor: default;
 }
 
 SControl[checked] ~ SCheckbox {
   &[state='invalid']:before {
-    background-color: var(--intergalactic-color-control-primary-critical);
-    border-color: var(--intergalactic-color-control-primary-critical);
+    background-color: var(--intergalactic-control-primary-critical);
+    border-color: var(--intergalactic-control-primary-critical);
   }
 }
 
 SControl[indeterminate] ~ SCheckbox:after {
-  background-color: var(--intergalactic-color-bg-primary-neutral);
+  background-color: var(--intergalactic-bg-primary-neutral);
   margin: auto;
   border-radius: 1px;
 }
@@ -155,8 +155,8 @@ SControl[indeterminate] ~ SCheckbox[size='m']:after {
 }
 
 SControl[indeterminate] ~ SCheckbox[state='invalid']:before {
-  background-color: var(--intergalactic-color-control-primary-critical);
-  border-color: var(--intergalactic-color-control-primary-critical);
+  background-color: var(--intergalactic-control-primary-critical);
+  border-color: var(--intergalactic-control-primary-critical);
 }
 
 SCheckbox[theme][state='normal']:before {

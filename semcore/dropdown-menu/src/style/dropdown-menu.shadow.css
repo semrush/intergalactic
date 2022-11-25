@@ -2,7 +2,7 @@
 
 SDropdownMenuList {
   max-height: 240px;
-  padding: var(--intergalactic-spacing-spacing-1x) 0;
+  padding: var(--intergalactic-spacing-1x) 0;
   position: relative;
   min-height: 26px;
   min-width: 32px;
@@ -20,7 +20,7 @@ SDropdownMenuItem {
   line-height: normal;
 
   &:hover {
-    background-color: var(--intergalactic-color-bg-primary-neutral-hover);
+    background-color: var(--intergalactic-bg-primary-neutral-hover);
   }
 
   &:focus {
@@ -30,35 +30,35 @@ SDropdownMenuItem {
 
 SDropdownMenuItem[highlighted] {
   z-index: 1;
-  box-shadow: var(--intergalactic-boxShadow-keyboard-focus) inset;
+  box-shadow: var(--intergalactic-keyboard-focus) inset;
 }
 
 SDropdownMenuItem[selected] {
-  background-color: var(--intergalactic-color-dropdown-menu-item-selected);
+  background-color: var(--intergalactic-dropdown-menu-item-selected);
 
   &:hover {
-    background-color: var(--intergalactic-color-dropdown-menu-item-selected-hover);
+    background-color: var(--intergalactic-dropdown-menu-item-selected-hover);
   }
 }
 
 SDropdownMenuItem[disabled] {
-  opacity: var(--intergalactic-opacity-disabled-opacity);
+  opacity: var(--intergalactic-disabled-opacity);
   cursor: default;
   pointer-events: none;
 }
 
 SDropdownMenuItem[size='l'] {
-  font-size: var(--intergalactic-fontSizes-fs-300);
-  line-height: var(--intergalactic-lineHeights-lh-300);
-  padding: var(--intergalactic-spacing-spacing-2x) var(--intergalactic-spacing-spacing-3x);
+  font-size: var(--intergalactic-fs-300);
+  line-height: var(--intergalactic-lh-300);
+  padding: var(--intergalactic-spacing-2x) var(--intergalactic-spacing-3x);
   min-height: 40px;
 }
 
 SDropdownMenuItem[size='m'] {
-  font-size: var(--intergalactic-fontSizes-fs-200);
-  line-height: var(--intergalactic-lineHeights-lh-200);
+  font-size: var(--intergalactic-fs-200);
+  line-height: var(--intergalactic-lh-200);
   padding: calc(var(--intergalactic-spacing-spacing-1x) + var(--intergalactic-spacing-spacing-05x))
-    var(--intergalactic-spacing-spacing-2x);
+    var(--intergalactic-spacing-2x);
   min-height: 32px;
 }
 
@@ -71,7 +71,7 @@ SDropdownMenuItem[notInteractive] {
 }
 
 SDropdownMenuItem[variant='hint'] {
-  color: var(--intergalactic-color-text-secondary);
+  color: var(--intergalactic-text-secondary);
   cursor: default;
 
   &:hover {
@@ -80,7 +80,7 @@ SDropdownMenuItem[variant='hint'] {
 }
 
 SDropdownMenuItem[variant='title'] {
-  font-weight: var(--intergalactic-fontWeights-bold-700);
+  font-weight: var(--intergalactic-bold-700);
   cursor: default;
 
   &:hover {
@@ -90,8 +90,8 @@ SDropdownMenuItem[variant='title'] {
 
 SDropdownMenuItemAddon {
   display: inline-flex;
-  margin-left: var(--intergalactic-spacing-spacing-2x);
-  margin-right: var(--intergalactic-spacing-spacing-2x);
+  margin-left: var(--intergalactic-spacing-2x);
+  margin-right: var(--intergalactic-spacing-2x);
 
   &:first-child {
     margin-left: 0;
@@ -104,6 +104,6 @@ SDropdownMenuItemAddon {
 
 SPopper {
   &:focus {
-    box-shadow: var(--intergalactic-boxShadow-keyboard-focus);
+    box-shadow: var(--intergalactic-keyboard-focus);
   }
 }

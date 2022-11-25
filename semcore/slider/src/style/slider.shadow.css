@@ -6,47 +6,47 @@ SSlider {
   box-sizing: border-box;
   cursor: pointer;
   outline: none;
-  padding-top: var(--intergalactic-spacing-spacing-5x);
+  padding-top: var(--intergalactic-spacing-5x);
 
   &:before {
     content: '';
     position: absolute;
-    top: var(--intergalactic-spacing-spacing-2x);
+    top: var(--intergalactic-spacing-2x);
     left: 0;
     height: 4px;
     width: 100%;
-    border-radius: var(--intergalactic-borderRadius-rounded-medium);
-    background-color: var(--intergalactic-color-border-secondary);
+    border-radius: var(--intergalactic-rounded-medium);
+    background-color: var(--intergalactic-border-secondary);
   }
   &:hover:before {
-    background-color: var(--intergalactic-color-border-primary);
+    background-color: var(--intergalactic-border-primary);
   }
 
   &:active SKnob {
-    box-shadow: var(--intergalactic-boxShadow-keyboard-focus);
+    box-shadow: var(--intergalactic-keyboard-focus);
   }
 }
 
 SSlider[keyboardFocused] SKnob {
-  box-shadow: var(--intergalactic-boxShadow-keyboard-focus);
+  box-shadow: var(--intergalactic-keyboard-focus);
 }
 
 SSlider[disabled] {
-  opacity: var(--intergalactic-opacity-disabled-opacity);
+  opacity: var(--intergalactic-disabled-opacity);
   cursor: default;
   pointer-events: none;
 }
 
 SBar {
   position: absolute;
-  top: var(--intergalactic-spacing-spacing-2x);
+  top: var(--intergalactic-spacing-2x);
   left: 0;
   overflow: hidden;
   height: 4px;
-  border-radius: var(--intergalactic-borderRadius-rounded-medium);
+  border-radius: var(--intergalactic-rounded-medium);
   box-sizing: border-box;
   background-size: 12px;
-  background-color: var(--intergalactic-color-control-primary-info);
+  background-color: var(--intergalactic-control-primary-info);
   cursor: pointer;
 }
 
@@ -57,13 +57,13 @@ SKnob {
   width: 20px;
   border-radius: 50%;
   box-sizing: border-box;
-  background-color: var(--intergalactic-color-bg-primary-neutral);
-  border: 5px solid var(--intergalactic-color-border-info);
+  background-color: var(--intergalactic-bg-primary-neutral);
+  border: 5px solid var(--intergalactic-border-info);
   cursor: pointer;
   transform: translate(-50%, -50%);
 
   &:hover {
-    border-color: var(--intergalactic-color-border-info-active);
+    border-color: var(--intergalactic-border-info-active);
   }
 }
 

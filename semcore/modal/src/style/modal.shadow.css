@@ -2,12 +2,12 @@
 
 SWindow {
   position: relative;
-  border-radius: var(--intergalactic-borderRadius-rounded-large);
-  background: var(--intergalactic-color-bg-primary-neutral);
+  border-radius: var(--intergalactic-rounded-large);
+  background: var(--intergalactic-bg-primary-neutral);
   box-sizing: border-box;
   margin: auto;
-  padding: var(--intergalactic-spacing-spacing-10x);
-  box-shadow: var(--intergalactic-boxShadow-box-shadow-modal);
+  padding: var(--intergalactic-spacing-10x);
+  box-shadow: var(--intergalactic-box-shadow-modal);
 
   &:focus {
     outline: none;
@@ -24,14 +24,14 @@ SOverlay {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: var(--intergalactic-spacing-spacing-10x);
-  background: var(--intergalactic-color-overlay-primary);
+  padding: var(--intergalactic-spacing-10x);
+  background: var(--intergalactic-overlay-primary);
   overflow: auto;
-  z-index: var(--intergalactic-other-z-index-modal);
+  z-index: var(--intergalactic-z-index-modal);
   -webkit-overflow-scrolling: touch;
 
   & SOverlay {
-    background: var(--intergalactic-color-overlay-secondary);
+    background: var(--intergalactic-overlay-secondary);
   }
 }
 
@@ -40,8 +40,8 @@ SClose {
   position: absolute;
   right: 0;
   top: 0;
-  padding: var(--intergalactic-spacing-spacing-3x);
-  color: var(--intergalactic-color-icon-secondary-neutral);
+  padding: var(--intergalactic-spacing-3x);
+  color: var(--intergalactic-icon-secondary-neutral);
   cursor: pointer;
   z-index: 1;
   border: none;
@@ -49,12 +49,12 @@ SClose {
   outline: none;
 
   &:hover {
-    color: var(--intergalactic-color-icon-secondary-neutral-hover-active);
+    color: var(--intergalactic-icon-secondary-neutral-hover-active);
   }
 }
 
 SClose[keyboardFocused] {
-  box-shadow: var(--intergalactic-boxShadow-keyboard-focus);
+  box-shadow: var(--intergalactic-keyboard-focus);
 }
 
 @media (max-width: 767px) {
@@ -63,6 +63,6 @@ SClose[keyboardFocused] {
   }
 
   SOverlay {
-    padding: var(--intergalactic-spacing-spacing-3x);
+    padding: var(--intergalactic-spacing-3x);
   }
 }

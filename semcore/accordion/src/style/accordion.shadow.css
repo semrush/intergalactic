@@ -6,11 +6,11 @@ SItemToggle {
 }
 
 SItemToggle[keyboardFocused] {
-  box-shadow: var(--intergalactic-boxShadow-keyboard-focus);
+  box-shadow: var(--intergalactic-keyboard-focus);
 }
 
 SItemToggle[disabled] {
-  opacity: var(--intergalactic-opacity-disabled-opacity, 0.3);
+  opacity: var(--intergalactic-disabled-opacity);
   cursor: default;
 }
 

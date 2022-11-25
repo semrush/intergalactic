@@ -4,28 +4,28 @@ SInfo,
 SWarning,
 SView {
   position: relative;
-  margin-bottom: var(--intergalactic-spacing-spacing-3x);
-  padding: var(--intergalactic-spacing-spacing-3x) var(--intergalactic-spacing-spacing-7x)
-    var(--intergalactic-spacing-spacing-3x) var(--intergalactic-spacing-spacing-3x);
+  margin-bottom: var(--intergalactic-spacing-3x);
+  padding: var(--intergalactic-spacing-3x) var(--intergalactic-spacing-7x)
+    var(--intergalactic-spacing-3x) var(--intergalactic-spacing-3x);
   width: 100%;
   min-height: 44px;
-  border-radius: var(--intergalactic-borderRadius-rounded-medium);
+  border-radius: var(--intergalactic-rounded-medium);
   overflow: hidden;
   box-sizing: border-box;
 }
 
 SInfo {
-  background: var(--intergalactic-color-bg-primary-invert);
+  background: var(--intergalactic-bg-primary-invert);
 }
 
 SWarning {
-  background: var(--intergalactic-color-bg-primary-critical);
+  background: var(--intergalactic-bg-primary-critical);
 }
 
 SMessage {
-  font-size: var(--intergalactic-fontSizes-fs-200);
-  color: var(--intergalactic-color-text-primary-invert);
-  line-height: var(--intergalactic-lineHeights-lh-100);
+  font-size: var(--intergalactic-fs-200);
+  color: var(--intergalactic-text-primary-invert);
+  line-height: var(--intergalactic-lh-100);
 }
 
 SDismiss {
@@ -33,24 +33,24 @@ SDismiss {
   position: absolute;
   right: 0;
   top: 0;
-  padding: var(--intergalactic-spacing-spacing-2x);
-  color: var(--intergalactic-color-text-primary-invert);
+  padding: var(--intergalactic-spacing-2x);
+  color: var(--intergalactic-text-primary-invert);
 
   &:hover {
-    color: var(--intergalactic-color-control-primary-invert-active);
+    color: var(--intergalactic-control-primary-invert-active);
   }
 }
 
 SAction {
-  margin-top: var(--intergalactic-spacing-spacing-2x);
+  margin-top: var(--intergalactic-spacing-2x);
 }
 
 SNoticeBubble {
   width: 300px;
   position: fixed;
-  z-index: var(--intergalactic-other-z-index-notice-bubble);
-  right: var(--intergalactic-spacing-spacing-3x);
-  top: var(--intergalactic-spacing-spacing-3x);
+  z-index: var(--intergalactic-z-index-notice-bubble);
+  right: var(--intergalactic-spacing-3x);
+  top: var(--intergalactic-spacing-3x);
 
   @media (max-width: 767px) {
     width: calc(100% - var(--intergalactic-spacing-spacing-6x));

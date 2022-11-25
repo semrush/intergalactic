@@ -1,25 +1,25 @@
 @import '@semcore/utils/style/var.css';
 
 SProductHead {
-  margin-top: var(--intergalactic-spacing-spacing-4x);
-  margin-bottom: var(--intergalactic-spacing-spacing-6x);
+  margin-top: var(--intergalactic-spacing-4x);
+  margin-bottom: var(--intergalactic-spacing-6x);
 }
 
 SRow {
   display: flex;
   justify-content: space-between;
-  margin-top: var(--intergalactic-spacing-spacing-2x);
-  margin-bottom: var(--intergalactic-spacing-spacing-2x);
+  margin-top: var(--intergalactic-spacing-2x);
+  margin-bottom: var(--intergalactic-spacing-2x);
 }
 
 SButtons {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  margin-left: var(--intergalactic-spacing-spacing-2x);
+  margin-left: var(--intergalactic-spacing-2x);
 
   & > *:not(:last-child) {
-    margin-right: var(--intergalactic-spacing-spacing-2x);
+    margin-right: var(--intergalactic-spacing-2x);
   }
 }
 
@@ -27,12 +27,12 @@ SLinks {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  margin-left: var(--intergalactic-spacing-spacing-2x);
-  font-size: var(--intergalactic-fontSizes-fs-200);
-  line-height: var(--intergalactic-lineHeights-lh-200);
+  margin-left: var(--intergalactic-spacing-2x);
+  font-size: var(--intergalactic-fs-200);
+  line-height: var(--intergalactic-lh-200);
 
   & > *:not(:first-child) {
-    margin-left: var(--intergalactic-spacing-spacing-5x);
+    margin-left: var(--intergalactic-spacing-5x);
   }
 }
 
@@ -44,7 +44,7 @@ SLinks {
   SButtons {
     width: 100%;
     margin-left: 0;
-    margin-top: var(--intergalactic-spacing-spacing-2x);
+    margin-top: var(--intergalactic-spacing-2x);
     justify-content: flex-start;
     flex-wrap: wrap;
   }

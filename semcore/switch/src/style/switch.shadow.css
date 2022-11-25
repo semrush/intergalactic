@@ -15,8 +15,8 @@ SSwitch[size] {
 }
 
 SSwitch[size='m'] {
-  font-size: var(--intergalactic-fontSizes-fs-100);
-  line-height: var(--intergalactic-lineHeights-lh-100);
+  font-size: var(--intergalactic-fs-100);
+  line-height: var(--intergalactic-lh-100);
 
   & SToggle {
     width: 20px;
@@ -30,8 +30,8 @@ SSwitch[size='m'] {
 }
 
 SSwitch[size='l'] {
-  font-size: var(--intergalactic-fontSizes-fs-200);
-  line-height: var(--intergalactic-lineHeights-lh-200);
+  font-size: var(--intergalactic-fs-200);
+  line-height: var(--intergalactic-lh-200);
 
   & SToggle {
     height: 20px;
@@ -45,8 +45,8 @@ SSwitch[size='l'] {
 }
 
 SSwitch[size='xl'] {
-  font-size: var(--intergalactic-fontSizes-fs-300);
-  line-height: var(--intergalactic-lineHeights-lh-300);
+  font-size: var(--intergalactic-fs-300);
+  line-height: var(--intergalactic-lh-300);
 
   & SToggle {
     width: 44px;
@@ -60,7 +60,7 @@ SSwitch[size='xl'] {
 }
 
 SSwitch[disabled] {
-  opacity: var(--intergalactic-opacity-disabled-opacity);
+  opacity: var(--intergalactic-disabled-opacity);
 
   & SToggle {
     cursor: default;
@@ -69,11 +69,11 @@ SSwitch[disabled] {
 
 SSwitch[checked] {
   & SAddon[neighborLocation='right'] {
-    color: var(--intergalactic-color-text-secondary);
+    color: var(--intergalactic-text-secondary);
   }
 
   & SAddon[neighborLocation='left'] {
-    color: var(--intergalactic-color-text-primary);
+    color: var(--intergalactic-text-primary);
   }
 }
 
@@ -99,28 +99,28 @@ SToggle[checked][theme='custom'] {
 }
 
 SToggle[keyboardFocused] {
-  box-shadow: var(--intergalactic-boxShadow-keyboard-focus);
+  box-shadow: var(--intergalactic-keyboard-focus);
 }
 
 SToggle[neighborLocation='left'] {
-  margin-left: var(--intergalactic-spacing-spacing-2x);
+  margin-left: var(--intergalactic-spacing-2x);
 }
 
 SToggle[neighborLocation='both'] {
-  margin-right: var(--intergalactic-spacing-spacing-2x);
-  margin-left: var(--intergalactic-spacing-spacing-2x);
+  margin-right: var(--intergalactic-spacing-2x);
+  margin-left: var(--intergalactic-spacing-2x);
 }
 
 SToggle[neighborLocation='right'] {
-  margin-right: var(--intergalactic-spacing-spacing-2x);
+  margin-right: var(--intergalactic-spacing-2x);
 }
 
 SSlider {
   border-radius: 50%;
   position: absolute;
   top: 50%;
-  margin: 0 var(--intergalactic-spacing-spacing-05x);
-  background: var(--intergalactic-color-bg-primary-neutral);
+  margin: 0 var(--intergalactic-spacing-05x);
+  background: var(--intergalactic-bg-primary-neutral);
   transform: translateX(0) translateY(-50%);
   transition: transform 0.3s;
   display: flex;
@@ -138,11 +138,11 @@ SInput {
 }
 
 SAddon[neighborLocation='right'] {
-  color: var(--intergalactic-color-text-primary);
+  color: var(--intergalactic-text-primary);
 }
 
 SAddon[neighborLocation='left'] {
-  color: var(--intergalactic-color-text-secondary);
+  color: var(--intergalactic-text-secondary);
 }
 
 @media (prefers-reduced-motion) {

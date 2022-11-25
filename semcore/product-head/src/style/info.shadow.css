@@ -4,11 +4,11 @@ SInfo {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  font-size: var(--intergalactic-fontSizes-fs-200);
-  line-height: var(--intergalactic-lineHeights-lh-200);
+  font-size: var(--intergalactic-fs-200);
+  line-height: var(--intergalactic-lh-200);
 
   & > SItem:not(:last-child) {
-    margin-right: var(--intergalactic-spacing-spacing-6x);
+    margin-right: var(--intergalactic-spacing-6x);
     position: relative;
   }
 }
@@ -20,7 +20,7 @@ SItem {
 }
 
 SLabel {
-  margin-right: var(--intergalactic-spacing-spacing-1x);
+  margin-right: var(--intergalactic-spacing-1x);
 }
 
 @media (max-width: 767px) {
@@ -28,6 +28,6 @@ SLabel {
     margin-bottom: calc(-1 * var(--intergalactic-spacing-spacing-1x));
   }
   SItem {
-    margin-bottom: var(--intergalactic-spacing-spacing-1x);
+    margin-bottom: var(--intergalactic-spacing-1x);
   }
 }

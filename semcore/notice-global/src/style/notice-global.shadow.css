@@ -2,71 +2,71 @@
 
 SNoticeGlobal {
   display: flex;
-  font-size: var(--intergalactic-fontSizes-fs-200);
-  line-height: var(--intergalactic-lineHeights-lh-200);
+  font-size: var(--intergalactic-fs-200);
+  line-height: var(--intergalactic-lh-200);
   box-sizing: border-box;
-  padding: var(--intergalactic-spacing-spacing-2x) var(--intergalactic-spacing-spacing-8x);
+  padding: var(--intergalactic-spacing-2x) var(--intergalactic-spacing-8x);
 }
 
 SCloseIcon {
   flex-shrink: 0;
-  margin-top: var(--intergalactic-spacing-spacing-05x);
-  margin-left: var(--intergalactic-spacing-spacing-4x);
+  margin-top: var(--intergalactic-spacing-05x);
+  margin-left: var(--intergalactic-spacing-4x);
 }
 
 SNoticeGlobal[theme='neutral'] {
-  background-color: var(--intergalactic-color-bg-primary-muted);
-  color: var(--intergalactic-color-text-primary-invert);
+  background-color: var(--intergalactic-bg-primary-muted);
+  color: var(--intergalactic-text-primary-invert);
 }
 
 SNoticeGlobal[theme='info'] {
-  background-color: var(--intergalactic-color-bg-primary-info);
-  color: var(--intergalactic-color-text-primary-invert);
+  background-color: var(--intergalactic-bg-primary-info);
+  color: var(--intergalactic-text-primary-invert);
 
   & SCloseIcon {
-    color: var(--intergalactic-color-icon-primary-invert);
+    color: var(--intergalactic-icon-primary-invert);
 
     &:hover {
-      color: var(--intergalactic-color-icon-primary-invert-hover-active);
+      color: var(--intergalactic-icon-primary-invert-hover-active);
     }
   }
 }
 
 SNoticeGlobal[theme='danger'] {
-  background-color: var(--intergalactic-color-bg-primary-critical);
-  color: var(--intergalactic-color-text-primary-invert);
+  background-color: var(--intergalactic-bg-primary-critical);
+  color: var(--intergalactic-text-primary-invert);
 
   & SCloseIcon {
-    color: var(--intergalactic-color-icon-primary-invert);
+    color: var(--intergalactic-icon-primary-invert);
 
     &:hover {
-      color: var(--intergalactic-color-icon-primary-invert-hover-active);
+      color: var(--intergalactic-icon-primary-invert-hover-active);
     }
   }
 }
 
 SNoticeGlobal[theme='warning'] {
-  background-color: var(--intergalactic-color-bg-primary-warning);
-  color: var(--intergalactic-color-text-primary-invert);
+  background-color: var(--intergalactic-bg-primary-warning);
+  color: var(--intergalactic-text-primary-invert);
 
   & SCloseIcon {
-    color: var(--intergalactic-color-icon-primary-invert);
+    color: var(--intergalactic-icon-primary-invert);
 
     &:hover {
-      color: var(--intergalactic-color-icon-primary-invert-hover-active);
+      color: var(--intergalactic-icon-primary-invert-hover-active);
     }
   }
 }
 
 SNoticeGlobal[theme='success'] {
-  background-color: var(--intergalactic-color-bg-primary-success);
-  color: var(--intergalactic-color-text-primary-invert);
+  background-color: var(--intergalactic-bg-primary-success);
+  color: var(--intergalactic-text-primary-invert);
 
   & SCloseIcon {
-    color: var(--intergalactic-color-icon-primary-invert);
+    color: var(--intergalactic-icon-primary-invert);
 
     &:hover {
-      color: var(--intergalactic-color-icon-primary-invert-hover-active);
+      color: var(--intergalactic-icon-primary-invert-hover-active);
     }
   }
 }

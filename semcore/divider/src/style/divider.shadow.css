@@ -8,10 +8,10 @@ SDivider[use='primary'] {
 }
 
 SDivider[use='primary']SDivider[theme='default'] {
-  background: var(--intergalactic-color-border-primary);
+  background: var(--intergalactic-border-primary);
 }
 SDivider[use='primary']SDivider[theme='invert'] {
-  background-color: var(--intergalactic-color-border-primary);
+  background-color: var(--intergalactic-border-primary);
 }
 
 SDivider[orientation='horizontal']SDivider[use='secondary'] {

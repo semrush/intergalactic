@@ -7,15 +7,14 @@ SFeedbackForm {
 SSubmit,
 SCancel {
   display: inline-flex;
-  margin-right: var(--intergalactic-spacing-spacing-2x);
+  margin-right: var(--intergalactic-spacing-2x);
 }
 
 SNotice {
-  padding: var(--intergalactic-spacing-spacing-3x) var(--intergalactic-spacing-spacing-4x);
+  padding: var(--intergalactic-spacing-3x) var(--intergalactic-spacing-4x);
   border-width: 1px 0 0;
   border-top-style: solid;
-  border-radius: 0 0 var(--intergalactic-borderRadius-rounded-medium)
-    var(--intergalactic-borderRadius-rounded-medium);
+  border-radius: 0 0 var(--intergalactic-rounded-medium) var(--intergalactic-rounded-medium);
 }
 
 SSuccess {
@@ -27,7 +26,7 @@ SSuccess {
       var(--intergalactic-spacing-spacing-10x) + var(--intergalactic-spacing-spacing-2x) +
         var(--intergalactic-spacing-spacing-05x)
     )
-    var(--intergalactic-spacing-spacing-8x) var(--intergalactic-spacing-spacing-8x);
+    var(--intergalactic-spacing-8x) var(--intergalactic-spacing-8x);
   box-sizing: border-box;
 }
 

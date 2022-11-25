@@ -13,7 +13,7 @@ SGridDays {
 
 SGridMonths {
   display: grid;
-  grid-row-gap: var(--intergalactic-spacing-spacing-2x);
+  grid-row-gap: var(--intergalactic-spacing-2x);
   grid-template-columns: repeat(3, minmax(60px, auto));
   grid-template-rows: repeat(4, minmax(32px, auto));
 }
@@ -29,9 +29,9 @@ SWeekDay {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--intergalactic-color-text-secondary);
-  font-size: var(--intergalactic-fontSizes-fs-200);
-  font-weight: var(--intergalactic-fontWeights-regular-400);
+  color: var(--intergalactic-text-secondary);
+  font-size: var(--intergalactic-fs-200);
+  font-weight: var(--intergalactic-regular-400);
   overflow: hidden;
 }
 
@@ -43,21 +43,21 @@ SCalendarUnit {
   text-align: center;
   vertical-align: middle;
   border: 1px solid transparent;
-  color: var(--intergalactic-color-text-primary);
+  color: var(--intergalactic-text-primary);
   outline: 0;
   box-shadow: none;
   overflow: visible;
   user-select: none;
   touch-action: manipulation;
   -webkit-tap-highlight-color: transparent;
-  background: var(--intergalactic-color-date-picker-cell);
+  background: var(--intergalactic-date-picker-cell);
 
   align-items: center;
-  border-radius: var(--intergalactic-borderRadius-rounded-medium);
+  border-radius: var(--intergalactic-rounded-medium);
   box-sizing: border-box;
   cursor: pointer;
   display: flex;
-  font-size: var(--intergalactic-fontSizes-fs-200);
+  font-size: var(--intergalactic-fs-200);
   justify-content: center;
   min-height: 32px;
   min-width: 32px;
@@ -67,12 +67,12 @@ SCalendarUnit {
   margin: 0;
 
   &:hover {
-    color: var(--intergalactic-color-text-primary);
-    background: var(--intergalactic-color-date-picker-cell-hover);
+    color: var(--intergalactic-text-primary);
+    background: var(--intergalactic-date-picker-cell-hover);
   }
 
   &:focus-visible {
-    box-shadow: var(--intergalactic-boxShadow-keyboard-focus);
+    box-shadow: var(--intergalactic-keyboard-focus);
   }
 }
 
@@ -83,95 +83,95 @@ SCalendarUnit[today] {
     display: block;
     top: 1px;
     left: 1px;
-    border-radius: var(--intergalactic-borderRadius-rounded-medium);
+    border-radius: var(--intergalactic-rounded-medium);
     width: calc(100% - 2px);
     height: calc(100% - 2px);
     box-sizing: border-box;
-    border: 1px solid var(--intergalactic-color-border-primary);
+    border: 1px solid var(--intergalactic-border-primary);
   }
 }
 
 SCalendarUnit[today]SCalendarUnit[startSelected],
 SCalendarUnit[today]SCalendarUnit[endSelected] {
   &:before {
-    border-color: var(--intergalactic-color-border-secondary);
+    border-color: var(--intergalactic-border-secondary);
   }
 }
 
 SCalendarUnit[selected] {
-  background: var(--intergalactic-color-date-picker-cell-active);
+  background: var(--intergalactic-date-picker-cell-active);
   border-radius: 0;
-  color: var(--intergalactic-color-text-primary);
+  color: var(--intergalactic-text-primary);
 
   &:hover {
-    background: var(--intergalactic-color-date-picker-cell-active-hover);
+    background: var(--intergalactic-date-picker-cell-active-hover);
   }
 }
 
 SCalendarUnit[highlighted] {
-  background: var(--intergalactic-color-date-picker-cell-range);
+  background: var(--intergalactic-date-picker-cell-range);
   border-radius: 0;
-  color: var(--intergalactic-color-text-primary);
+  color: var(--intergalactic-text-primary);
 
   &:hover {
-    background: var(--intergalactic-color-date-picker-cell-range-hover);
+    background: var(--intergalactic-date-picker-cell-range-hover);
   }
 }
 
 SCalendarUnit[startSelected] {
-  border-bottom-left-radius: var(--intergalactic-borderRadius-rounded-medium);
+  border-bottom-left-radius: var(--intergalactic-rounded-medium);
   border-bottom-right-radius: 0;
-  border-top-left-radius: var(--intergalactic-borderRadius-rounded-medium);
+  border-top-left-radius: var(--intergalactic-rounded-medium);
   border-top-right-radius: 0;
-  color: var(--intergalactic-color-text-primary-invert);
-  background: var(--intergalactic-color-date-picker-cell-active);
+  color: var(--intergalactic-text-primary-invert);
+  background: var(--intergalactic-date-picker-cell-active);
 
   &:hover {
-    color: var(--intergalactic-color-text-primary-invert);
-    background: var(--intergalactic-color-date-picker-cell-active-hover);
+    color: var(--intergalactic-text-primary-invert);
+    background: var(--intergalactic-date-picker-cell-active-hover);
   }
 }
 
 SCalendarUnit[endSelected] {
-  background: var(--intergalactic-color-date-picker-cell-active);
+  background: var(--intergalactic-date-picker-cell-active);
   border-bottom-left-radius: 0;
-  border-bottom-right-radius: var(--intergalactic-borderRadius-rounded-medium);
+  border-bottom-right-radius: var(--intergalactic-rounded-medium);
   border-top-left-radius: 0;
-  border-top-right-radius: var(--intergalactic-borderRadius-rounded-medium);
-  color: var(--intergalactic-color-text-primary-invert);
+  border-top-right-radius: var(--intergalactic-rounded-medium);
+  color: var(--intergalactic-text-primary-invert);
 
   &:hover {
-    color: var(--intergalactic-color-text-primary-invert);
-    background: var(--intergalactic-color-date-picker-cell-active-hover);
+    color: var(--intergalactic-text-primary-invert);
+    background: var(--intergalactic-date-picker-cell-active-hover);
   }
 }
 
 SCalendarUnit[startHighlighted] {
-  border-bottom-left-radius: var(--intergalactic-borderRadius-rounded-medium);
+  border-bottom-left-radius: var(--intergalactic-rounded-medium);
   border-bottom-right-radius: 0;
-  border-top-left-radius: var(--intergalactic-borderRadius-rounded-medium);
+  border-top-left-radius: var(--intergalactic-rounded-medium);
   border-top-right-radius: 0;
 }
 
 SCalendarUnit[endHighlighted] {
   border-bottom-left-radius: 0;
-  border-bottom-right-radius: var(--intergalactic-borderRadius-rounded-medium);
+  border-bottom-right-radius: var(--intergalactic-rounded-medium);
   border-top-left-radius: 0;
-  border-top-right-radius: var(--intergalactic-borderRadius-rounded-medium);
+  border-top-right-radius: var(--intergalactic-rounded-medium);
 }
 
 SCalendarUnit[startHighlighted]SCalendarUnit[endHighlighted] {
-  border-bottom-left-radius: var(--intergalactic-borderRadius-rounded-medium);
-  border-bottom-right-radius: var(--intergalactic-borderRadius-rounded-medium);
-  border-top-left-radius: var(--intergalactic-borderRadius-rounded-medium);
-  border-top-right-radius: var(--intergalactic-borderRadius-rounded-medium);
+  border-bottom-left-radius: var(--intergalactic-rounded-medium);
+  border-bottom-right-radius: var(--intergalactic-rounded-medium);
+  border-top-left-radius: var(--intergalactic-rounded-medium);
+  border-top-right-radius: var(--intergalactic-rounded-medium);
 }
 
 SCalendarUnit[startSelected]SCalendarUnit[endSelected] {
-  border-bottom-left-radius: var(--intergalactic-borderRadius-rounded-medium);
-  border-bottom-right-radius: var(--intergalactic-borderRadius-rounded-medium);
-  border-top-left-radius: var(--intergalactic-borderRadius-rounded-medium);
-  border-top-right-radius: var(--intergalactic-borderRadius-rounded-medium);
+  border-bottom-left-radius: var(--intergalactic-rounded-medium);
+  border-bottom-right-radius: var(--intergalactic-rounded-medium);
+  border-top-left-radius: var(--intergalactic-rounded-medium);
+  border-top-right-radius: var(--intergalactic-rounded-medium);
 }
 
 SCalendarUnit[outdated] {

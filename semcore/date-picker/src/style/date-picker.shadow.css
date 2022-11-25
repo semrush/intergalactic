@@ -1,7 +1,7 @@
 @import '@semcore/utils/style/var.css';
 
 SPopper {
-  padding: var(--intergalactic-spacing-spacing-4x);
+  padding: var(--intergalactic-spacing-4x);
   outline: 0;
 
   &::-moz-focus-inner {
@@ -17,7 +17,7 @@ SPopper {
   }
 
   &:focus {
-    box-shadow: var(--intergalactic-boxShadow-keyboard-focus);
+    box-shadow: var(--intergalactic-keyboard-focus);
   }
 }
 
@@ -27,8 +27,8 @@ SHeader {
 }
 
 STitle {
-  font-size: var(--intergalactic-fontSizes-fs-200);
-  color: var(--intergalactic-color-text-primary);
+  font-size: var(--intergalactic-fs-200);
+  color: var(--intergalactic-text-primary);
   height: 32px;
   width: 100%;
   display: flex;
@@ -38,18 +38,18 @@ STitle {
 
 SToday {
   display: flex;
-  margin-top: var(--intergalactic-spacing-spacing-3x);
+  margin-top: var(--intergalactic-spacing-3x);
   justify-content: center;
 }
 
 SPeriod {
   display: flex;
   flex-direction: column;
-  margin-bottom: var(--intergalactic-spacing-spacing-2x);
+  margin-bottom: var(--intergalactic-spacing-2x);
 }
 
 SIndicator {
-  color: var(--intergalactic-color-text-secondary);
+  color: var(--intergalactic-text-secondary);
 }
 SHumanizedDate {
   position: absolute;
@@ -63,7 +63,7 @@ SDateRange SValue {
 }
 SSingleDateInput:focus-within SHumanizedDate {
   opacity: 0;
-  z-index: var(--intergalactic-other-z-index-deep);
+  z-index: var(--intergalactic-z-index-deep);
 }
 SSingleDateInput:focus-within SValue,
 SSingleDateInput:focus-within SMask {
@@ -74,7 +74,7 @@ SDateRange SValue {
 }
 SDateRange:focus-within SHumanizedDate {
   opacity: 0;
-  z-index: var(--intergalactic-other-z-index-deep);
+  z-index: var(--intergalactic-z-index-deep);
 }
 SDateRange:focus-within SValue,
 SDateRange:focus-within SMask {
@@ -85,9 +85,9 @@ SInputMask[noHumanizedDate] SMask {
   opacity: 1;
 }
 SDateRange SInputMask:focus-within SMask {
-  background-color: var(--intergalactic-color-text-placeholder);
+  background-color: var(--intergalactic-text-placeholder);
 }
 SRangeSep[fulfilled],
 SDateRange:focus-within SRangeSep {
-  color: var(--intergalactic-color-text-primary);
+  color: var(--intergalactic-text-primary);
 }

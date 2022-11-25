@@ -12,7 +12,7 @@ SContent {
 }
 
 SList SList {
-  margin-top: var(--intergalactic-spacing-spacing-2x);
+  margin-top: var(--intergalactic-spacing-2x);
 }
 
 SItem {
@@ -20,12 +20,12 @@ SItem {
 }
 
 SItem + SItem {
-  margin-top: var(--intergalactic-spacing-spacing-2x);
+  margin-top: var(--intergalactic-spacing-2x);
 }
 
 SMarker {
   margin-right: calc(
     var(--intergalactic-spacing-spacing-2x) + var(--intergalactic-spacing-spacing-05x)
   );
-  color: var(--intergalactic-color-text-secondary);
+  color: var(--intergalactic-text-secondary);
 }

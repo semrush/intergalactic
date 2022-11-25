@@ -9,8 +9,8 @@ SOverlay {
   margin: 0;
   display: flex;
   overflow: hidden;
-  z-index: var(--intergalactic-other-z-index-overlay);
-  background: var(--intergalactic-color-overlay-primary);
+  z-index: var(--intergalactic-z-index-overlay);
+  background: var(--intergalactic-overlay-primary);
   -webkit-overflow-scrolling: touch;
 }
 
@@ -19,16 +19,16 @@ SPanel {
   flex-direction: column;
   width: 260px;
   outline: none;
-  font-family: var(--intergalactic-fontFamilies-base), sans-serif;
+  font-family: var(--intergalactic-base), sans-serif;
   position: fixed;
   box-sizing: border-box;
   will-change: transform;
-  background: var(--intergalactic-color-bg-primary-neutral);
+  background: var(--intergalactic-bg-primary-neutral);
   z-index: 1;
 }
 
 SPanel[placement='top'] {
-  box-shadow: var(--intergalactic-boxShadow-box-shadow-popper);
+  box-shadow: var(--intergalactic-box-shadow-popper);
   width: 100%;
   margin-bottom: auto;
   top: 0;
@@ -36,7 +36,7 @@ SPanel[placement='top'] {
 }
 
 SPanel[placement='right'] {
-  box-shadow: var(--intergalactic-boxShadow-box-shadow-popper);
+  box-shadow: var(--intergalactic-box-shadow-popper);
   height: 100vh;
   margin-left: auto;
   top: 0;
@@ -44,14 +44,14 @@ SPanel[placement='right'] {
 }
 
 SPanel[placement='bottom'] {
-  box-shadow: var(--intergalactic-boxShadow-box-shadow-popper);
+  box-shadow: var(--intergalactic-box-shadow-popper);
   margin-top: auto;
   bottom: 0;
   left: 0;
 }
 
 SPanel[placement='left'] {
-  box-shadow: var(--intergalactic-boxShadow-box-shadow-popper);
+  box-shadow: var(--intergalactic-box-shadow-popper);
   height: 100vh;
   margin-right: auto;
   top: 0;
@@ -92,78 +92,78 @@ SClose {
   display: inline-flex;
   right: 0;
   top: 0;
-  padding: var(--intergalactic-spacing-spacing-3x) var(--intergalactic-spacing-spacing-3x)
-    var(--intergalactic-spacing-spacing-4x) var(--intergalactic-spacing-spacing-3x);
-  color: var(--intergalactic-color-icon-secondary-neutral);
+  padding: var(--intergalactic-spacing-3x) var(--intergalactic-spacing-3x)
+    var(--intergalactic-spacing-4x) var(--intergalactic-spacing-3x);
+  color: var(--intergalactic-icon-secondary-neutral);
   border: none;
   background: none;
   outline: none;
 
   &:hover {
-    color: var(--intergalactic-color-icon-secondary-neutral-hover-active);
+    color: var(--intergalactic-icon-secondary-neutral-hover-active);
   }
 }
 
 SClose[keyboardFocused] {
-  box-shadow: var(--intergalactic-boxShadow-keyboard-focus);
+  box-shadow: var(--intergalactic-keyboard-focus);
 }
 
 SBack {
   display: flex;
   align-items: center;
-  color: var(--intergalactic-color-text-secondary);
-  font-size: var(--intergalactic-fontSizes-fs-100);
-  line-height: var(--intergalactic-lineHeights-lh-100);
-  margin-bottom: var(--intergalactic-spacing-spacing-1x);
+  color: var(--intergalactic-text-secondary);
+  font-size: var(--intergalactic-fs-100);
+  line-height: var(--intergalactic-lh-100);
+  margin-bottom: var(--intergalactic-spacing-1x);
   cursor: pointer;
 
   &:hover {
-    color: var(--intergalactic-color-text-hint-hover-active);
+    color: var(--intergalactic-text-hint-hover-active);
   }
 }
 
 SBackText {
-  margin-left: var(--intergalactic-spacing-spacing-1x);
-  font-size: var(--intergalactic-fontSizes-fs-100);
-  line-height: var(--intergalactic-lineHeights-lh-200);
+  margin-left: var(--intergalactic-spacing-1x);
+  font-size: var(--intergalactic-fs-100);
+  line-height: var(--intergalactic-lh-200);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
 STitle {
-  font-size: var(--intergalactic-fontSizes-fs-300);
-  line-height: var(--intergalactic-lineHeights-lh-300);
-  font-weight: var(--intergalactic-fontWeights-bold-700);
-  color: var(--intergalactic-color-text-primary);
+  font-size: var(--intergalactic-fs-300);
+  line-height: var(--intergalactic-lh-300);
+  font-weight: var(--intergalactic-bold-700);
+  color: var(--intergalactic-text-primary);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
 SHeader {
-  padding-left: var(--intergalactic-spacing-spacing-6x);
-  padding-bottom: var(--intergalactic-spacing-spacing-1x);
-  padding-right: var(--intergalactic-spacing-spacing-14x);
-  padding-top: var(--intergalactic-spacing-spacing-1x);
+  padding-left: var(--intergalactic-spacing-6x);
+  padding-bottom: var(--intergalactic-spacing-1x);
+  padding-right: var(--intergalactic-spacing-14x);
+  padding-top: var(--intergalactic-spacing-1x);
   min-height: calc(
     var(--intergalactic-spacing-spacing-10x) + var(--intergalactic-spacing-spacing-3x)
   );
-  box-shadow: inset 0 -1px 0 var(--intergalactic-color-border-primary);
+  box-shadow: inset 0 -1px 0 var(--intergalactic-border-primary);
   box-sizing: border-box;
 }
 
 SFooter {
   min-height: 44px;
-  box-shadow: inset 0 1px 0 var(--intergalactic-color-border-primary);
+  box-shadow: inset 0 1px 0 var(--intergalactic-border-primary);
   box-sizing: border-box;
 }
 
 SBody {
   height: 100%;
   overflow: auto;
-  padding-left: var(--intergalactic-spacing-spacing-6x);
-  padding-bottom: var(--intergalactic-spacing-spacing-1x);
-  padding-right: var(--intergalactic-spacing-spacing-10x);
-  padding-top: var(--intergalactic-spacing-spacing-4x);
+  padding-left: var(--intergalactic-spacing-6x);
+  padding-bottom: var(--intergalactic-spacing-1x);
+  padding-right: var(--intergalactic-spacing-10x);
+  padding-top: var(--intergalactic-spacing-4x);
 }

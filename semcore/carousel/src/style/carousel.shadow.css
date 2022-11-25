@@ -15,14 +15,14 @@ SItem {
   max-width: 100%;
   box-sizing: border-box;
   transform: var(--transform);
-  border-radius: var(--intergalactic-borderRadius-rounded-medium);
+  border-radius: var(--intergalactic-rounded-medium);
   overflow: hidden;
 }
 
 SIndicators {
   display: flex;
   justify-content: center;
-  margin-top: var(--intergalactic-spacing-spacing-4x);
+  margin-top: var(--intergalactic-spacing-4x);
 }
 
 SIndicator {
@@ -31,9 +31,9 @@ SIndicator {
   display: block;
   width: 12px;
   height: 12px;
-  border-radius: var(--intergalactic-borderRadius-rounded-medium);
-  background-color: var(--intergalactic-color-icon-secondary-neutral);
-  opacity: var(--intergalactic-opacity-disabled-opacity);
+  border-radius: var(--intergalactic-rounded-medium);
+  background-color: var(--intergalactic-icon-secondary-neutral);
+  opacity: var(--intergalactic-disabled-opacity);
   object-fit: cover;
   transition: ease-in-out opacity 0.1s;
 }
@@ -55,15 +55,15 @@ SNext {
 }
 
 SPrev {
-  margin-right: var(--intergalactic-spacing-spacing-3x);
+  margin-right: var(--intergalactic-spacing-3x);
 }
 SNext {
-  margin-left: var(--intergalactic-spacing-spacing-3x);
+  margin-left: var(--intergalactic-spacing-3x);
 }
 
 SPrev[disabled],
 SNext[disabled] {
-  opacity: var(--intergalactic-opacity-disabled-opacity);
+  opacity: var(--intergalactic-disabled-opacity);
   cursor: default;
   pointer-events: none;
 }

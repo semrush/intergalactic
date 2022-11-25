@@ -23,6 +23,6 @@ SView {
   &:focus,
   &:active {
     outline: none;
-    box-shadow: var(--intergalactic-boxShadow-keyboard-focus);
+    box-shadow: var(--intergalactic-keyboard-focus);
   }
 }

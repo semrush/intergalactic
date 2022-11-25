@@ -6,7 +6,7 @@ STimePicker {
 }
 
 STimePicker[disabled] {
-  color: var(--intergalactic-color-text-secondary);
+  color: var(--intergalactic-text-secondary);
   cursor: default;
 }
 
@@ -35,13 +35,12 @@ SPickerFormat {
   padding: 0;
   white-space: nowrap;
   font-family: inherit;
-  font-weight: var(--intergalactic-fontWeights-medium-500);
+  font-weight: var(--intergalactic-medium-500);
   line-height: normal;
   text-decoration: none;
   align-items: center;
-  border: 1px solid var(--intergalactic-color-border-primary);
-  border-radius: 0 var(--intergalactic-borderRadius-rounded-medium)
-    var(--intergalactic-borderRadius-rounded-medium) 0;
+  border: 1px solid var(--intergalactic-border-primary);
+  border-radius: 0 var(--intergalactic-rounded-medium) var(--intergalactic-rounded-medium) 0;
   outline: 0;
   box-shadow: none;
   cursor: pointer;
@@ -50,50 +49,50 @@ SPickerFormat {
   user-select: none;
   touch-action: manipulation;
   -webkit-tap-highlight-color: transparent;
-  color: var(--intergalactic-color-text-secondary);
-  background-color: var(--intergalactic-color-bg-secondary-neutral);
+  color: var(--intergalactic-text-secondary);
+  background-color: var(--intergalactic-bg-secondary-neutral);
 
   &:hover {
-    color: var(--intergalactic-color-text-secondary);
-    background-color: var(--intergalactic-color-bg-secondary-neutral-hover);
+    color: var(--intergalactic-text-secondary);
+    background-color: var(--intergalactic-bg-secondary-neutral-hover);
   }
 
   &:active,
   &[active] {
-    color: var(--intergalactic-color-text-secondary);
-    background-color: var(--intergalactic-color-bg-secondary-neutral-active);
+    color: var(--intergalactic-text-secondary);
+    background-color: var(--intergalactic-bg-secondary-neutral-active);
   }
 }
 
 SPickerFormat[size='m'] {
   height: var(--form-control-m);
-  font-size: var(--intergalactic-fontSizes-fs-200);
+  font-size: var(--intergalactic-fs-200);
   margin: 0 -1px 0 0;
   & SPickerFormatText {
-    margin: 0 var(--intergalactic-spacing-spacing-2x);
+    margin: 0 var(--intergalactic-spacing-2x);
   }
 }
 
 SPickerFormat[size='l'] {
   height: var(--form-control-l);
-  font-size: var(--intergalactic-fontSizes-fs-300);
+  font-size: var(--intergalactic-fs-300);
   margin: 0 calc(-1 * var(--intergalactic-spacing-spacing-1x)) 0 0 & SPickerFormatText {
-    margin: 0 var(--intergalactic-spacing-spacing-3x);
+    margin: 0 var(--intergalactic-spacing-3x);
   }
 }
 
 SPickerFormat[disabled] {
-  opacity: var(--intergalactic-opacity-disabled-opacity);
+  opacity: var(--intergalactic-disabled-opacity);
   cursor: default;
   pointer-events: none;
-  border-color: transparent transparent transparent var(--intergalactic-color-border-primary);
+  border-color: transparent transparent transparent var(--intergalactic-border-primary);
 }
 
 SPickerFormat[keyboardFocused] {
-  box-shadow: var(--intergalactic-boxShadow-keyboard-focus);
+  box-shadow: var(--intergalactic-keyboard-focus);
 }
 
 STimePickerSeparator[disabled] {
-  opacity: var(--intergalactic-opacity-disabled-opacity);
+  opacity: var(--intergalactic-disabled-opacity);
   pointer-events: none;
 }

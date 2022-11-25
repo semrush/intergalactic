@@ -6,7 +6,7 @@ SScrollBar {
 }
 
 SScrollBar[orientation='vertical'] {
-  top: var(--intergalactic-spacing-spacing-1x);
+  top: var(--intergalactic-spacing-1x);
   right: 0;
   width: 8px;
   height: calc(100% - var(--intergalactic-spacing-spacing-2x));
@@ -15,7 +15,7 @@ SScrollBar[orientation='vertical'] {
 
 SScrollBar[orientation='horizontal'] {
   bottom: 0;
-  left: var(--intergalactic-spacing-spacing-1x);
+  left: var(--intergalactic-spacing-1x);
   height: 12px;
   width: calc(100% - var(--intergalactic-spacing-spacing-2x));
   align-items: center;

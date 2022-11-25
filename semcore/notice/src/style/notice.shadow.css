@@ -2,63 +2,63 @@
 
 SNotice {
   display: flex;
-  padding: var(--intergalactic-spacing-spacing-4x);
-  font-size: var(--intergalactic-fontSizes-fs-200);
-  line-height: var(--intergalactic-lineHeights-lh-200);
+  padding: var(--intergalactic-spacing-4x);
+  font-size: var(--intergalactic-fs-200);
+  line-height: var(--intergalactic-lh-200);
   box-sizing: border-box;
   border-style: solid;
   border-width: 1px;
-  border-radius: var(--intergalactic-borderRadius-rounded-medium);
+  border-radius: var(--intergalactic-rounded-medium);
 }
 
 SNotice[theme='info'] {
-  background-color: var(--intergalactic-color-bg-secondary-info);
-  border-color: var(--intergalactic-color-border-info);
+  background-color: var(--intergalactic-bg-secondary-info);
+  border-color: var(--intergalactic-border-info);
 
   & SCloseIcon {
-    color: var(--intergalactic-color-icon-primary-neutral);
+    color: var(--intergalactic-icon-primary-neutral);
 
     &:hover {
-      color: var(--intergalactic-color-icon-primary-neutral-hover-active);
+      color: var(--intergalactic-icon-primary-neutral-hover-active);
     }
   }
 }
 
 SNotice[theme='danger'] {
-  background-color: var(--intergalactic-color-bg-secondary-critical);
-  border-color: var(--intergalactic-color-border-danger);
+  background-color: var(--intergalactic-bg-secondary-critical);
+  border-color: var(--intergalactic-border-danger);
 
   & SCloseIcon {
-    color: var(--intergalactic-color-icon-primary-critical);
+    color: var(--intergalactic-icon-primary-critical);
 
     &:hover {
-      color: var(--intergalactic-color-icon-primary-critical-hover-active);
+      color: var(--intergalactic-icon-primary-critical-hover-active);
     }
   }
 }
 
 SNotice[theme='warning'] {
-  background-color: var(--intergalactic-color-bg-secondary-warning);
-  border-color: var(--intergalactic-color-border-warning);
+  background-color: var(--intergalactic-bg-secondary-warning);
+  border-color: var(--intergalactic-border-warning);
 
   & SCloseIcon {
-    color: var(--intergalactic-color-icon-primary-warning);
+    color: var(--intergalactic-icon-primary-warning);
 
     &:hover {
-      color: var(--intergalactic-color-icon-primary-warning-hover-active);
+      color: var(--intergalactic-icon-primary-warning-hover-active);
     }
   }
 }
 
 SNotice[theme='success'] {
-  background-color: var(--intergalactic-color-bg-secondary-success);
-  border-color: var(--intergalactic-color-border-success);
+  background-color: var(--intergalactic-bg-secondary-success);
+  border-color: var(--intergalactic-border-success);
 
   & SCloseIcon {
-    color: var(--intergalactic-color-icon-primary-success);
+    color: var(--intergalactic-icon-primary-success);
 
     &:hover {
-      color: var(--intergalactic-color-icon-primary-success-hover-active);
+      color: var(--intergalactic-icon-primary-success-hover-active);
     }
   }
 }
@@ -70,29 +70,29 @@ SContent {
 
 SActions {
   flex-shrink: 0;
-  margin-top: var(--intergalactic-spacing-spacing-3x);
+  margin-top: var(--intergalactic-spacing-3x);
 }
 
 SLabel {
-  margin-top: var(--intergalactic-spacing-spacing-05x);
-  margin-right: var(--intergalactic-spacing-spacing-2x);
+  margin-top: var(--intergalactic-spacing-05x);
+  margin-right: var(--intergalactic-spacing-2x);
   display: inline-flex;
 }
 
 SLabel[theme='info'] {
-  color: var(--intergalactic-color-icon-primary-neutral);
+  color: var(--intergalactic-icon-primary-neutral);
 }
 
 SLabel[theme='danger'] {
-  color: var(--intergalactic-color-icon-primary-critical);
+  color: var(--intergalactic-icon-primary-critical);
 }
 
 SLabel[theme='warning'] {
-  color: var(--intergalactic-color-icon-primary-warning);
+  color: var(--intergalactic-icon-primary-warning);
 }
 
 SLabel[theme='success'] {
-  color: var(--intergalactic-color-icon-primary-success);
+  color: var(--intergalactic-icon-primary-success);
 }
 
 SLabel[theme='custom'] {
@@ -101,7 +101,7 @@ SLabel[theme='custom'] {
 
 SCloseIcon {
   flex-shrink: 0;
-  margin-left: var(--intergalactic-spacing-spacing-4x);
+  margin-left: var(--intergalactic-spacing-4x);
 }
 
 SNotice[theme='custom'] {

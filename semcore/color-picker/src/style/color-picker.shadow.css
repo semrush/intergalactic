@@ -2,7 +2,7 @@
 
 SColorPickerPopper {
   max-width: calc(var(--intergalactic-spacing-spacing-4x) * 2 + 28px * 6 + 4px * 6);
-  padding: var(--intergalactic-spacing-spacing-4x);
+  padding: var(--intergalactic-spacing-4x);
 }
 
 SItemContainer {
@@ -18,7 +18,7 @@ SItemContainer {
   cursor: pointer;
 
   &:hover {
-    border: 1px solid var(--intergalactic-color-border-secondary);
+    border: 1px solid var(--intergalactic-border-secondary);
   }
 
   &::after {
@@ -27,7 +27,7 @@ SItemContainer {
     width: 22px;
     height: 22px;
     border-radius: 50%;
-    box-shadow: inset 0px 0px 1px var(--intergalactic-color-border-secondary);
+    box-shadow: inset 0px 0px 1px var(--intergalactic-border-secondary);
     background: var(--value);
   }
 }
@@ -37,11 +37,11 @@ SItemContainer:hover > SCloseIcon {
 }
 
 SItemContainer[keyboardFocused] {
-  box-shadow: var(--intergalactic-boxShadow-keyboard-focus);
+  box-shadow: var(--intergalactic-keyboard-focus);
 }
 
 SItemContainer[selected] {
-  border: 1px solid var(--intergalactic-color-border-info-active);
+  border: 1px solid var(--intergalactic-border-info-active);
 }
 
 SItemContainer[displayLabel] {
@@ -52,7 +52,7 @@ SItemContainer[displayLabel] {
 
 SItemContainer:not([value]) {
   &::after {
-    border: 0.9px solid var(--intergalactic-color-border-secondary);
+    border: 0.9px solid var(--intergalactic-border-secondary);
   }
 }
 
@@ -60,14 +60,14 @@ SColors {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: var(--intergalactic-spacing-spacing-1x);
+  gap: var(--intergalactic-spacing-1x);
 }
 
 SPaletteManager {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: var(--intergalactic-spacing-spacing-3x);
+  margin-top: var(--intergalactic-spacing-3x);
   margin-left: calc(var(--intergalactic-spacing-spacing-1x) - 1px);
 }
 
@@ -86,7 +86,7 @@ SPlusButton {
   cursor: pointer;
 
   &:hover {
-    background-color: var(--intergalactic-color-bg-secondary-neutral-hover);
+    background-color: var(--intergalactic-bg-secondary-neutral-hover);
   }
 }
 
@@ -98,7 +98,7 @@ SDefaultTrigger {
 }
 
 SDefaultTrigger[keyboardFocused] {
-  box-shadow: var(--intergalactic-boxShadow-keyboard-focus);
+  box-shadow: var(--intergalactic-keyboard-focus);
 }
 
 STriggerCircle {
@@ -112,7 +112,7 @@ STriggerCircle {
 }
 
 STriggerCircle:not([value]) {
-  border: 1px solid var(--intergalactic-color-border-secondary);
+  border: 1px solid var(--intergalactic-border-secondary);
 }
 
 STriggerCircleLine {
@@ -131,7 +131,7 @@ SCloseIcon {
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  background-color: var(--intergalactic-color-bg-primary-neutral);
+  background-color: var(--intergalactic-bg-primary-neutral);
   opacity: 0;
   z-index: 1;
 }
@@ -144,7 +144,7 @@ SLabel {
   z-index: 1;
   color: var(--value);
   font-size: 13px;
-  font-weight: var(--intergalactic-fontWeights-bold-700);
+  font-weight: var(--intergalactic-bold-700);
   font-family: FactorA-Bold, sans-serif;
 }
 
@@ -152,7 +152,7 @@ SItemColor {
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  border: 1px solid var(--intergalactic-color-border-secondary);
+  border: 1px solid var(--intergalactic-border-secondary);
   background: var(--value);
 }
 

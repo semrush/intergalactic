@@ -4,38 +4,38 @@ SWidgetEmpty {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-bottom: var(--intergalactic-spacing-spacing-4x);
+  margin-bottom: var(--intergalactic-spacing-4x);
 }
 
 SImage {
   display: flex;
   align-items: flex-end;
   justify-content: center;
-  margin-bottom: var(--intergalactic-spacing-spacing-3x);
+  margin-bottom: var(--intergalactic-spacing-3x);
 }
 
 STitle {
-  color: var(--intergalactic-color-text-secondary);
+  color: var(--intergalactic-text-secondary);
 }
 
 STitle {
-  font-size: var(--intergalactic-fontSizes-fs-300);
-  line-height: var(--intergalactic-lineHeights-lh-300);
-  font-weight: var(--intergalactic-fontWeights-bold-700);
+  font-size: var(--intergalactic-fs-300);
+  line-height: var(--intergalactic-lh-300);
+  font-weight: var(--intergalactic-bold-700);
 }
 
 SDescription {
   text-align: center;
-  font-size: var(--intergalactic-fontSizes-fs-200);
-  line-height: var(--intergalactic-lineHeights-lh-200);
-  color: var(--intergalactic-color-text-secondary);
+  font-size: var(--intergalactic-fs-200);
+  line-height: var(--intergalactic-lh-200);
+  color: var(--intergalactic-text-secondary);
   max-width: 400px;
 }
 
 STitle + SDescription {
-  margin-top: var(--intergalactic-spacing-spacing-1x);
+  margin-top: var(--intergalactic-spacing-1x);
 }
 
 SDescription + SDescription {
-  margin-top: var(--intergalactic-spacing-spacing-2x);
+  margin-top: var(--intergalactic-spacing-2x);
 }

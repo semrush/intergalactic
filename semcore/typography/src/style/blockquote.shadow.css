@@ -4,26 +4,26 @@ SBlockquote {
   position: relative;
   display: flex;
   font-style: italic;
-  font-size: var(--intergalactic-fontSizes-fs-400);
-  line-height: var(--intergalactic-lineHeights-lh-400);
-  color: var(--intergalactic-color-text-primary);
+  font-size: var(--intergalactic-fs-400);
+  line-height: var(--intergalactic-lh-400);
+  color: var(--intergalactic-text-primary);
 }
 
 SDoubleQuotation {
   position: relative;
-  margin-right: var(--intergalactic-spacing-spacing-5x);
+  margin-right: var(--intergalactic-spacing-5x);
   font-family: 'Times New Roman', serif;
   font-style: normal;
   font-size: 68px;
   line-height: 52px;
-  color: var(--intergalactic-color-text-large-secondary);
+  color: var(--intergalactic-text-large-secondary);
 }
 
 SAuthor {
   display: block;
-  margin-top: var(--intergalactic-spacing-spacing-4x);
-  color: var(--intergalactic-color-text-secondary);
+  margin-top: var(--intergalactic-spacing-4x);
+  color: var(--intergalactic-text-secondary);
   font-style: normal;
-  font-size: var(--intergalactic-fontSizes-fs-300);
-  line-height: var(--intergalactic-lineHeights-lh-300);
+  font-size: var(--intergalactic-fs-300);
+  line-height: var(--intergalactic-lh-300);
 }

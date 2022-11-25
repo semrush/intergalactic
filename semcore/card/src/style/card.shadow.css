@@ -2,26 +2,26 @@
 
 SCard {
   box-sizing: border-box;
-  background: var(--intergalactic-color-bg-primary-neutral);
+  background: var(--intergalactic-bg-primary-neutral);
   padding: 0;
   border: none;
-  border-radius: var(--intergalactic-borderRadius-rounded-medium);
-  box-shadow: var(--intergalactic-boxShadow-box-shadow-card);
-  font-family: var(--intergalactic-fontFamilies-base), sans-serif;
+  border-radius: var(--intergalactic-rounded-medium);
+  box-shadow: var(--intergalactic-box-shadow-card);
+  font-family: var(--intergalactic-base), sans-serif;
 }
 
 STitle {
-  color: var(--intergalactic-color-text-primary);
-  font-size: var(--intergalactic-fontSizes-fs-300);
-  line-height: var(--intergalactic-lineHeights-lh-300);
-  font-weight: var(--intergalactic-fontWeights-bold-700);
-  margin-right: var(--intergalactic-spacing-spacing-1x);
+  color: var(--intergalactic-text-primary);
+  font-size: var(--intergalactic-fs-300);
+  line-height: var(--intergalactic-lh-300);
+  font-weight: var(--intergalactic-bold-700);
+  margin-right: var(--intergalactic-spacing-1x);
 }
 
 SIcon {
   color: var(---intergalactic-color-icon-secondary-neutral);
   cursor: help;
-  margin-right: var(--intergalactic-spacing-spacing-1x);
+  margin-right: var(--intergalactic-spacing-1x);
 }
 STooltip {
   display: inline-flex;
@@ -30,23 +30,23 @@ STooltip {
 
 SDescription {
   margin-bottom: 0;
-  margin-top: var(--intergalactic-spacing-spacing-2x);
-  font-size: var(--intergalactic-fontSizes-fs-200);
-  color: var(--intergalactic-color-text-secondary);
+  margin-top: var(--intergalactic-spacing-2x);
+  font-size: var(--intergalactic-fs-200);
+  color: var(--intergalactic-text-secondary);
 }
 
 SHeader {
-  padding-top: var(--intergalactic-spacing-spacing-2x);
-  padding-bottom: var(--intergalactic-spacing-spacing-2x);
-  padding-left: var(--intergalactic-spacing-spacing-5x);
-  padding-right: var(--intergalactic-spacing-spacing-5x);
-  box-shadow: inset 0 -1px 0 var(--intergalactic-color-border-secondary);
+  padding-top: var(--intergalactic-spacing-2x);
+  padding-bottom: var(--intergalactic-spacing-2x);
+  padding-left: var(--intergalactic-spacing-5x);
+  padding-right: var(--intergalactic-spacing-5x);
+  box-shadow: inset 0 -1px 0 var(--intergalactic-border-secondary);
 }
 
 SBody {
-  color: var(--intergalactic-color-text-primary);
-  padding-bottom: var(--intergalactic-spacing-spacing-5x);
-  padding-left: var(--intergalactic-spacing-spacing-5x);
-  padding-right: var(--intergalactic-spacing-spacing-5x);
-  padding-top: var(--intergalactic-spacing-spacing-5x);
+  color: var(--intergalactic-text-primary);
+  padding-bottom: var(--intergalactic-spacing-5x);
+  padding-left: var(--intergalactic-spacing-5x);
+  padding-right: var(--intergalactic-spacing-5x);
+  padding-top: var(--intergalactic-spacing-5x);
 }

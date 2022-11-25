@@ -1,17 +1,17 @@
 @import '@semcore/utils/style/var.css';
 
 SFormatText {
-  color: var(--intergalactic-color-text-primary);
+  color: var(--intergalactic-text-primary);
   & abbr {
-    color: var(--intergalactic-color-text-secondary);
-    text-decoration: underline dashed var(--intergalactic-color-text-hint);
+    color: var(--intergalactic-text-secondary);
+    text-decoration: underline dashed var(--intergalactic-text-hint);
 
     &:active,
     &:hover,
     &:focus {
       outline: none;
-      color: var(--intergalactic-color-text-hint-hover-active);
-      text-decoration: underline dashed var(--intergalactic-color-text-hint-hover-active);
+      color: var(--intergalactic-text-hint-hover-active);
+      text-decoration: underline dashed var(--intergalactic-text-hint-hover-active);
     }
   }
 
@@ -20,7 +20,7 @@ SFormatText {
     background: none;
     outline: none;
     text-decoration: none;
-    color: var(--intergalactic-color-text-link);
+    color: var(--intergalactic-text-link);
     border-bottom-width: 1px;
     border-bottom-style: solid;
     border-color: transparent;
@@ -33,20 +33,20 @@ SFormatText {
     }
 
     &:hover {
-      color: var(--intergalactic-color-text-link-hover-active);
-      border-color: var(--intergalactic-color-text-link-hover-active);
+      color: var(--intergalactic-text-link-hover-active);
+      border-color: var(--intergalactic-text-link-hover-active);
     }
 
     &:focus {
-      box-shadow: var(--intergalactic-boxShadow-keyboard-focus);
+      box-shadow: var(--intergalactic-keyboard-focus);
     }
   }
 
   & blockquote {
     position: relative;
     padding-left: 51px;
-    font-size: var(--intergalactic-fontSizes-fs-400);
-    line-height: var(--intergalactic-lineHeights-lh-400);
+    font-size: var(--intergalactic-fs-400);
+    line-height: var(--intergalactic-lh-400);
     font-style: italic;
 
     &:before {
@@ -54,23 +54,23 @@ SFormatText {
       display: inline-block;
       position: absolute;
       left: 0;
-      color: var(--intergalactic-color-icon-secondary-neutral);
+      color: var(--intergalactic-icon-secondary-neutral);
       font-family: Georgia, Times, 'Times New Roman', serif;
     }
 
     & cite {
       display: block;
       font-style: normal;
-      margin-top: var(--intergalactic-spacing-spacing-4x);
-      color: var(--intergalactic-color-text-secondary);
-      font-size: var(--intergalactic-fontSizes-fs-300);
-      line-height: var(--intergalactic-lineHeights-lh-300);
+      margin-top: var(--intergalactic-spacing-4x);
+      color: var(--intergalactic-text-secondary);
+      font-size: var(--intergalactic-fs-300);
+      line-height: var(--intergalactic-lh-300);
     }
   }
 
   & ol,
   & ul {
-    margin: var(--intergalactic-spacing-spacing-2x) 0;
+    margin: var(--intergalactic-spacing-2x) 0;
     padding: 0;
     list-style: none;
     position: relative;
@@ -79,12 +79,12 @@ SFormatText {
       &:before {
         position: absolute;
         left: 0;
-        color: var(--intergalactic-color-text-secondary);
+        color: var(--intergalactic-text-secondary);
       }
     }
 
     & li + li {
-      margin: var(--intergalactic-spacing-spacing-2x) 0 0 0;
+      margin: var(--intergalactic-spacing-2x) 0 0 0;
     }
   }
 
@@ -99,14 +99,14 @@ SFormatText {
 
   & ul li:before {
     content: '';
-    background-color: var(--intergalactic-color-icon-primary-neutral);
+    background-color: var(--intergalactic-icon-primary-neutral);
   }
 
   & h1 {
-    font-size: var(--intergalactic-fontSizes-fs-800);
-    line-height: var(--intergalactic-lineHeights-lh-800);
-    font-weight: var(--intergalactic-fontWeights-bold-700);
-    margin: 0 0 var(--intergalactic-spacing-spacing-6x) 0;
+    font-size: var(--intergalactic-fs-800);
+    line-height: var(--intergalactic-lh-800);
+    font-weight: var(--intergalactic-bold-700);
+    margin: 0 0 var(--intergalactic-spacing-6x) 0;
 
     &:only-child {
       margin-bottom: 0;
@@ -114,10 +114,10 @@ SFormatText {
   }
 
   & h2 {
-    font-size: var(--intergalactic-fontSizes-fs-700);
-    line-height: var(--intergalactic-lineHeights-lh-700);
-    font-weight: var(--intergalactic-fontWeights-bold-700);
-    margin: 0 0 var(--intergalactic-spacing-spacing-4x) 0;
+    font-size: var(--intergalactic-fs-700);
+    line-height: var(--intergalactic-lh-700);
+    font-weight: var(--intergalactic-bold-700);
+    margin: 0 0 var(--intergalactic-spacing-4x) 0;
 
     &:only-child {
       margin-bottom: 0;
@@ -125,10 +125,10 @@ SFormatText {
   }
 
   & h3 {
-    font-size: var(--intergalactic-fontSizes-fs-600);
-    line-height: var(--intergalactic-lineHeights-lh-600);
-    font-weight: var(--intergalactic-fontWeights-medium-500);
-    margin: 0 0 var(--intergalactic-spacing-spacing-4x) 0;
+    font-size: var(--intergalactic-fs-600);
+    line-height: var(--intergalactic-lh-600);
+    font-weight: var(--intergalactic-medium-500);
+    margin: 0 0 var(--intergalactic-spacing-4x) 0;
 
     &:only-child {
       margin-bottom: 0;
@@ -136,10 +136,10 @@ SFormatText {
   }
 
   & h4 {
-    font-size: var(--intergalactic-fontSizes-fs-500);
-    line-height: var(--intergalactic-lineHeights-lh-500);
-    font-weight: var(--intergalactic-fontWeights-medium-500);
-    margin: 0 0 var(--intergalactic-spacing-spacing-3x) 0;
+    font-size: var(--intergalactic-fs-500);
+    line-height: var(--intergalactic-lh-500);
+    font-weight: var(--intergalactic-medium-500);
+    margin: 0 0 var(--intergalactic-spacing-3x) 0;
 
     &:only-child {
       margin-bottom: 0;
@@ -147,10 +147,10 @@ SFormatText {
   }
 
   & h5 {
-    font-size: var(--intergalactic-fontSizes-fs-400);
-    line-height: var(--intergalactic-lineHeights-lh-400);
-    font-weight: var(--intergalactic-fontWeights-medium-500);
-    margin: 0 0 var(--intergalactic-spacing-spacing-2x) 0;
+    font-size: var(--intergalactic-fs-400);
+    line-height: var(--intergalactic-lh-400);
+    font-weight: var(--intergalactic-medium-500);
+    margin: 0 0 var(--intergalactic-spacing-2x) 0;
 
     &:only-child {
       margin-bottom: 0;
@@ -158,10 +158,10 @@ SFormatText {
   }
 
   & h6 {
-    font-size: var(--intergalactic-fontSizes-fs-300);
-    line-height: var(--intergalactic-lineHeights-lh-300);
-    font-weight: var(--intergalactic-fontWeights-bold-700);
-    margin: 0 0 var(--intergalactic-spacing-spacing-1x) 0;
+    font-size: var(--intergalactic-fs-300);
+    line-height: var(--intergalactic-lh-300);
+    font-weight: var(--intergalactic-bold-700);
+    margin: 0 0 var(--intergalactic-spacing-1x) 0;
 
     &:only-child {
       margin-bottom: 0;
@@ -175,7 +175,7 @@ SFormatText {
   & h5,
   & h6 {
     & small {
-      color: var(--intergalactic-color-text-secondary);
+      color: var(--intergalactic-text-secondary);
       font-weight: 300;
       font-size: 100%;
     }
@@ -185,8 +185,8 @@ SFormatText {
 SFormatText[size='s'] {
   & p,
   & li {
-    font-size: var(--intergalactic-fontSizes-fs-100);
-    line-height: var(--intergalactic-lineHeights-lh-100);
+    font-size: var(--intergalactic-fs-100);
+    line-height: var(--intergalactic-lh-100);
   }
 
   & p {
@@ -220,20 +220,20 @@ SFormatText[size='s'] {
     width: 3px;
     height: 3px;
     border-radius: 50%;
-    margin-top: var(--intergalactic-spacing-spacing-2x);
-    margin-left: var(--intergalactic-spacing-spacing-05x);
+    margin-top: var(--intergalactic-spacing-2x);
+    margin-left: var(--intergalactic-spacing-05x);
   }
 }
 
 SFormatText[size='m'] {
   & p,
   & li {
-    font-size: var(--intergalactic-fontSizes-fs-200);
-    line-height: var(--intergalactic-lineHeights-lh-200);
+    font-size: var(--intergalactic-fs-200);
+    line-height: var(--intergalactic-lh-200);
   }
 
   & p {
-    margin: 0 0 var(--intergalactic-spacing-spacing-5x) 0;
+    margin: 0 0 var(--intergalactic-spacing-5x) 0;
 
     &:last-child {
       margin-bottom: 0;
@@ -263,15 +263,15 @@ SFormatText[size='m'] {
     height: 4px;
     border-radius: 50%;
     margin-top: calc(var(--intergalactic-spacing-spacing-2x) - 1px);
-    margin-left: var(--intergalactic-spacing-spacing-05x);
+    margin-left: var(--intergalactic-spacing-05x);
   }
 }
 
 SFormatText[size='l'] {
   & p,
   & li {
-    font-size: var(--intergalactic-fontSizes-fs-300);
-    line-height: var(--intergalactic-lineHeights-lh-300);
+    font-size: var(--intergalactic-fs-300);
+    line-height: var(--intergalactic-lh-300);
   }
 
   & p {
@@ -307,7 +307,7 @@ SFormatText[size='l'] {
     margin-top: calc(
       var(--intergalactic-spacing-spacing-2x) + var(--intergalactic-spacing-spacing-05x)
     );
-    margin-left: var(--intergalactic-spacing-spacing-05x);
+    margin-left: var(--intergalactic-spacing-05x);
   }
 }
 

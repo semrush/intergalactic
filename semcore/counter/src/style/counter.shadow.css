@@ -7,34 +7,34 @@ SCounter {
   line-height: normal;
   box-sizing: border-box;
   vertical-align: middle;
-  border-radius: var(--intergalactic-borderRadius-rounded-large);
-  font-weight: var(--intergalactic-fontWeights-medium-500);
+  border-radius: var(--intergalactic-rounded-large);
+  font-weight: var(--intergalactic-medium-500);
 
-  color: var(--intergalactic-color-text-secondary);
-  background-color: var(--intergalactic-color-bg-primary-neutral);
-  border: 1px solid var(--intergalactic-color-border-primary);
+  color: var(--intergalactic-text-secondary);
+  background-color: var(--intergalactic-bg-primary-neutral);
+  border: 1px solid var(--intergalactic-border-primary);
 }
 
 SCounter[size='m'] {
   height: 16px;
   min-width: 16px;
-  font-size: var(--intergalactic-fontSizes-fs-50);
-  padding: var(--intergalactic-spacing-spacing-1x);
+  font-size: var(--intergalactic-fs-50);
+  padding: var(--intergalactic-spacing-1x);
 }
 
 SCounter[size='l'] {
   height: 20px;
   min-width: 20px;
-  font-size: var(--intergalactic-fontSizes-fs-100);
-  padding: var(--intergalactic-spacing-spacing-05x)
+  font-size: var(--intergalactic-fs-100);
+  padding: var(--intergalactic-spacing-05x)
     calc(var(--intergalactic-spacing-spacing-05x) + var(--intergalactic-spacing-spacing-1x));
 }
 
 SCounter[size='xl'] {
   height: 24px;
   min-width: 24px;
-  font-size: var(--intergalactic-fontSizes-fs-200);
-  padding: var(--intergalactic-spacing-spacing-05x)
+  font-size: var(--intergalactic-fs-200);
+  padding: var(--intergalactic-spacing-05x)
     calc(var(--intergalactic-spacing-spacing-05x) + var(--intergalactic-spacing-spacing-1x));
 }
 
@@ -46,12 +46,12 @@ SCounter[theme] {
 
 SCounter[theme='warning'] {
   border-color: transparent;
-  background: var(--intergalactic-color-bg-primary-warning);
-  color: var(--intergalactic-color-text-primary-invert);
+  background: var(--intergalactic-bg-primary-warning);
+  color: var(--intergalactic-text-primary-invert);
 }
 
 SCounter[theme='danger'] {
   border-color: transparent;
-  background: var(--intergalactic-color-bg-primary-critical);
-  color: var(--intergalactic-color-text-primary-invert);
+  background: var(--intergalactic-bg-primary-critical);
+  color: var(--intergalactic-text-primary-invert);
 }
