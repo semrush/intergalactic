@@ -1,9 +1,9 @@
 @import '@semcore/utils/style/var.css';
 
 SButtonTrigger {
-  border: 1px solid var(--gray-200);
+  border: 1px solid var(--intergalactic-color-border-primary);
   background: #ffffff;
-  color: var(--gray-800);
+  color: var(--intergalactic-color-text-primary);
 
   &::-moz-focus-inner {
     border: none;
@@ -26,16 +26,16 @@ SButtonTrigger {
 
 SButtonTrigger[size='m'] {
   min-width: 26px;
-  height: 28px;
-  border-radius: var(--rounded-m);
-  font-size: var(--fs-200);
+  height: var(--intergalactic-spacing-spacing-7x);
+  border-radius: var(--intergalactic-borderRadius-rounded-medium);
+  font-size: var(--intergalactic-fontSizes-fs-200);
 }
 
 SButtonTrigger[size='l'] {
   min-width: 32px;
-  height: 40px;
-  border-radius: var(--rounded-m);
-  font-size: var(--fs-300);
+  height: var(--intergalactic-spacing-spacing-10x);
+  border-radius: var(--intergalactic-borderRadius-rounded-medium);
+  font-size: var(--intergalactic-fontSizes-fs-300);
 }
 
 SText[placeholder] {
@@ -43,7 +43,7 @@ SText[placeholder] {
 }
 
 SButtonTrigger[state='normal'] {
-  border-color: var(--gray-200);
+  border-color: var(--intergalactic-color-border-primary);
 }
 
 SButtonTrigger[state='valid'] {
@@ -57,7 +57,7 @@ SButtonTrigger[state='invalid'] {
 SFilterTrigger[selected] {
   border-color: var(--blue-400);
   background-color: color-mod(var(--blue-400) a(20%));
-  color: var(--gray-800);
+  color: var(--intergalactic-color-text-primary);
 
   &[active],
   &:hover {
@@ -74,7 +74,7 @@ SWrapper {
 }
 
 SWrapper[keyboardFocused] {
-  box-shadow: var(--keyboard-focus);
+  box-shadow: var(--intergalactic-boxShadow-keyboard-focus);
 }
 
 SCounter {

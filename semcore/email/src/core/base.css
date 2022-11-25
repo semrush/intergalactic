@@ -77,7 +77,7 @@ a img {
 }
 
 .bg-white {
-  background-color: var(--white);
+  background-color: var(--intergalactic-color-bg-primary-neutral);
 }
 
 .bg-lime-100 {
@@ -147,7 +147,7 @@ a img {
   background-color: var(--pink);
 }
 .bold {
-  font-weight: bold;
+  font-weight: var(--intergalactic-fontWeights-bold-700);
 }
 
 .nowrap {

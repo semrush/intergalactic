@@ -2,9 +2,9 @@
 
 STextarea {
   height: auto;
-  color: var(--gray-800);
-  border: 1px solid var(--gray-200);
-  border-radius: var(--rounded-m);
+  color: var(--intergalactic-color-text-primary);
+  border: 1px solid var(--intergalactic-color-border-primary);
+  border-radius: var(--intergalactic-borderRadius-rounded-medium);
   outline: none;
   width: 100%;
   box-sizing: border-box;
@@ -12,47 +12,48 @@ STextarea {
   resize: var(--resize);
 
   &:read-only {
-    background-color: var(--gray-50);
+    background-color: var(--intergalactic-color-bg-secondary-neutral);
   }
 
   &:disabled {
-    opacity: var(--disabled-opacity);
+    opacity: var(--intergalactic-opacity-disabled-opacity);
   }
 
   &::placeholder {
-    color: var(--gray-300);
+    color: var(--intergalactic-color-text-placeholder);
   }
 }
 
 STextarea[size='m'] {
-  padding: 4px 8px;
-  font-size: var(--fs-200);
-  line-height: var(--lh-200);
+  padding: var(--intergalactic-spacing-spacing-1x) var(--intergalactic-spacing-spacing-2x);
+  font-size: var(--intergalactic-fontSizes-fs-200);
+  line-height: var(--intergalactic-lineHeights-lh-200);
 }
 
 STextarea[size='l'] {
-  padding: 8px 8px 8px 12px;
-  font-size: var(--fs-300);
-  line-height: var(--lh-400);
+  padding: var(--intergalactic-spacing-spacing-2x) var(--intergalactic-spacing-spacing-2x)
+    var(--intergalactic-spacing-spacing-2x) var(--intergalactic-spacing-spacing-3x);
+  font-size: var(--intergalactic-fontSizes-fs-300);
+  line-height: var(--intergalactic-lineHeights-lh-400);
 }
 
 STextarea[state='normal'] {
   &:focus {
-    box-shadow: var(--keyboard-focus);
-    border-color: var(--blue-500);
+    box-shadow: var(--intergalactic-boxShadow-keyboard-focus);
+    border-color: var(--intergalactic-color-border-info-active);
   }
 }
 
 STextarea[state='valid'] {
-  border-color: var(--green-500);
+  border-color: var(--intergalactic-color-border-success-active);
   &:focus {
-    box-shadow: var(--keyboard-focus-valid);
+    box-shadow: var(--intergalactic-boxShadow-keyboard-focus-valid);
   }
 }
 
 STextarea[state='invalid'] {
-  border-color: var(--red-500);
+  border-color: var(--intergalactic-color-border-danger-active);
   &:focus {
-    box-shadow: var(--keyboard-focus-invalid);
+    box-shadow: var(--intergalactic-boxShadow-keyboard-focus-invalid);
   }
 }

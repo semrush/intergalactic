@@ -18,7 +18,7 @@ SScatterPlot[color] {
 
 SValue {
   text-anchor: middle;
-  font-size: 10px;
+  font-size: var(--intergalactic-fontSizes-fs-50);
   stroke: var(--blue-04);
 }
 

@@ -15,31 +15,31 @@ SItem {
   max-width: 100%;
   box-sizing: border-box;
   transform: var(--transform);
-  border-radius: 6px;
+  border-radius: var(--intergalactic-borderRadius-rounded-medium);
   overflow: hidden;
 }
 
 SIndicators {
   display: flex;
   justify-content: center;
-  margin-top: 16px;
+  margin-top: var(--intergalactic-spacing-spacing-4x);
 }
 
 SIndicator {
-  margin: 0 6px;
+  margin: 0 calc(0.5 * var(--intergalactic-spacing-spacing-3x));
   cursor: pointer;
   display: block;
-  width: 12px;
-  height: 12px;
-  border-radius: 6px;
-  background-color: var(--gray-300);
-  opacity: 0.3;
+  width: calc(3 * var(--intergalactic-spacing-scale-indent));
+  height: calc(3 * var(--intergalactic-spacing-scale-indent));
+  border-radius: var(--intergalactic-borderRadius-rounded-medium);
+  background-color: var(--intergalactic-color-icon-secondary-neutral);
+  opacity: var(--intergalactic-opacity-disabled-opacity);
   object-fit: cover;
   transition: ease-in-out opacity 0.1s;
 }
 
 SIndicator:hover {
-  opacity: 0.6;
+  opacity: calc(2 * var(--intergalactic-opacity-disabled-opacity));
 }
 
 SIndicator[active] {
@@ -55,15 +55,15 @@ SNext {
 }
 
 SPrev {
-  margin-right: 12px;
+  margin-right: var(--intergalactic-spacing-spacing-3x);
 }
 SNext {
-  margin-left: 12px;
+  margin-left: var(--intergalactic-spacing-spacing-3x);
 }
 
 SPrev[disabled],
 SNext[disabled] {
-  opacity: var(--disabled-opacity);
+  opacity: var(--intergalactic-opacity-disabled-opacity);
   cursor: default;
   pointer-events: none;
 }

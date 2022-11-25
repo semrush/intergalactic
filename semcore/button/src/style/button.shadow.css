@@ -8,7 +8,7 @@ SButton {
   padding: 0;
   margin: 0;
   white-space: nowrap;
-  font-family: Inter, sans-serif;
+  font-family: var(--intergalactic-fontFamilies-base), sans-serif;
   line-height: normal;
   text-decoration: none;
   text-align: center;
@@ -22,8 +22,8 @@ SButton {
   user-select: none;
   touch-action: manipulation;
   -webkit-tap-highlight-color: transparent;
-  font-weight: 500;
-  color: var(--gray-500);
+  font-weight: var(--intergalactic-fontWeights-medium-500);
+  color: var(--intergalactic-color-text-secondary);
 
   &::-moz-focus-inner {
     padding: 0;
@@ -39,61 +39,60 @@ SButton {
 }
 
 SButton[disabled] {
-  opacity: var(--disabled-opacity);
+  opacity: var(--intergalactic-opacity-disabled-opacity);
   cursor: default;
-  pointer-events: none; /* Disable link interactions */
+  pointer-events: none;
 }
 
 SButton[keyboardFocused] {
-  box-shadow: var(--keyboard-focus);
+  box-shadow: var(--intergalactic-boxShadow-keyboard-focus);
   z-index: 1;
 }
-
 SButton[size='m'] {
-  height: 28px;
-  min-width: 28px;
-  border-radius: var(--rounded-m);
-  font-size: 14px;
+  height: var(--intergalactic-spacing-spacing-7x);
+  min-width: var(--intergalactic-spacing-spacing-7x);
+  border-radius: var(--intergalactic-borderRadius-rounded-medium);
+  font-size: var(--intergalactic-fontSizes-fs-200);
 }
 
 SButton[size='l'] {
-  height: 40px;
-  min-width: 40px;
-  border-radius: var(--rounded-m);
-  font-size: 16px;
+  height: var(--intergalactic-spacing-spacing-10x);
+  min-width: var(--intergalactic-spacing-spacing-10x);
+  border-radius: var(--intergalactic-borderRadius-rounded-medium);
+  font-size: var(--intergalactic-fontSizes-fs-300);
 }
 
 SButton[theme='primary-info'] {
-  color: var(--white);
-  background-color: var(--blue-400);
+  color: var(--intergalactic-color-text-primary-invert);
+  background-color: var(--intergalactic-color-control-primary-info);
 
   &:hover {
-    background-color: var(--blue-500);
+    background-color: var(--intergalactic-color-control-primary-info-hover);
   }
 
   &:active,
   &[active] {
-    background-color: var(--blue-600);
+    background-color: var(--intergalactic-color-control-primary-info-active);
   }
 }
 
 SButton[theme='primary-success'] {
-  color: var(--white);
-  background-color: var(--green-400);
+  color: var(--intergalactic-color-text-primary-invert);
+  background-color: var(--intergalactic-color-control-primary-success);
 
   &:hover {
-    background-color: var(--green-500);
+    background-color: var(--intergalactic-color-control-primary-success-hover);
   }
 
   &:active,
   &[active] {
-    background-color: var(--green-600);
+    background-color: var(--intergalactic-color-control-primary-success-active);
   }
 }
 
 SButton[theme='primary-warning'] {
+  color: var(--intergalactic-color-text-primary-invert);
   background-color: var(--orange-400);
-  color: var(--white);
 
   &:hover {
     background-color: var(--orange-500);
@@ -106,47 +105,47 @@ SButton[theme='primary-warning'] {
 }
 
 SButton[theme='primary-danger'] {
-  background-color: var(--red-400);
-  color: var(--white);
+  color: var(--intergalactic-color-text-primary-invert);
+  background-color: var(--intergalactic-color-control-primary-critical);
 
   &:hover {
-    background-color: var(--red-500);
+    background-color: var(--intergalactic-color-control-primary-critical-hover);
   }
 
   &:active,
   &[active] {
-    background-color: var(--red-600);
+    background-color: var(--intergalactic-color-control-primary-critical-active);
   }
 }
 
 SButton[theme='primary-invert'] {
-  background-color: #fff;
-  color: var(--gray-800);
+  color: var(--intergalactic-color-control-primary-invert);
+  background-color: var(--intergalactic-color-text-primary-invert);
 
   &:hover {
-    background-color: var(--gray-50);
+    background-color: var(--intergalactic-color-control-primary-invert-hover);
   }
 
   &:active,
   &[active] {
-    background-color: var(--gray-100);
+    background-color: var(--intergalactic-color-control-primary-invert-active);
   }
 }
 
 SButton[theme='secondary-muted'] {
-  color: var(--gray-500);
-  border-color: var(--gray-200);
-  background-color: color-mod(var(--gray-400) a(10%));
+  color: var(--intergalactic-color-text-secondary);
+  border-color: var(--intergalactic-color-border-primary);
+  background-color: var(--intergalactic-color-control-secondary-neutral);
 
   &:hover {
-    background-color: color-mod(var(--gray-400) a(20%));
-    color: var(--gray-800);
+    background-color: var(--intergalactic-color-control-secondary-neutral-hover);
+    color: var(--intergalactic-color-text-primary);
   }
 
   &:active,
   &[active] {
-    background-color: color-mod(var(--gray-400) a(30%));
-    color: var(--gray-800);
+    background-color: var(--intergalactic-color-control-secondary-neutral-active);
+    color: var(--intergalactic-color-text-primary);
   }
 }
 
@@ -166,61 +165,61 @@ SButton[theme='secondary-info'] {
 }
 
 SButton[theme='secondary-invert'] {
-  background-color: color-mod(#fff a(5%));
-  color: #fff;
-  border-color: #fff;
+  color: var(--intergalactic-color-text-primary-invert);
+  border-color: var(--intergalactic-color-border-primary-invert);
+  background-color: var(--intergalactic-color-control-secondary-invert);
 
   &:hover {
-    background-color: color-mod(#fff a(10%));
+    background-color: var(--intergalactic-color-control-secondary-invert-hover);
   }
 
   &:active,
   &[active] {
-    background-color: color-mod(#fff a(30%));
+    background-color: var(--intergalactic-color-control-secondary-invert-active);
   }
 }
 
 SButton[theme='tertiary-info'] {
   color: var(--blue-500);
-  background-color: transparent;
+  background-color: var(--intergalactic-color-control-tertiary-info);
 
   &:hover {
-    background-color: color-mod(var(--blue-400) a(20%));
+    background-color: var(--intergalactic-color-control-tertiary-info-hover);
   }
 
   &:active,
   &[active] {
-    background-color: color-mod(var(--blue-400) a(30%));
+    background-color: var(--intergalactic-color-control-tertiary-info-active);
   }
 }
 
 SButton[theme='tertiary-muted'] {
-  color: var(--gray-500);
-  background-color: transparent;
+  color: var(--intergalactic-color-text-secondary);
+  background-color: var(--intergalactic-color-control-tertiary-neutral);
 
   &:hover {
-    background-color: color-mod(var(--gray-400) a(20%));
-    color: var(--gray-800);
+    background-color: var(--intergalactic-color-control-tertiary-neutral-hover);
+    color: var(--intergalactic-color-text-primary);
   }
 
   &:active,
   &[active] {
-    background-color: color-mod(var(--gray-400) a(30%));
-    color: var(--gray-800);
+    background-color: var(--intergalactic-color-control-tertiary-neutral-active);
+    color: var(--intergalactic-color-text-primary);
   }
 }
 
 SButton[theme='tertiary-invert'] {
-  color: #fff;
-  background-color: transparent;
+  color: var(--intergalactic-color-text-primary-invert);
+  background-color: var(--intergalactic-color-control-tertiary-invert);
 
   &:hover {
-    background-color: color-mod(#fff a(10%));
+    background-color: var(--intergalactic-color-control-tertiary-invert-hover);
   }
 
   &:active,
   &[active] {
-    background-color: color-mod(#fff a(30%));
+    background-color: var(--intergalactic-color-control-tertiary-invert-active);
   }
 }
 
@@ -288,15 +287,15 @@ SText {
 }
 
 SText[size='m'] {
-  margin-left: 8px;
-  margin-right: 8px;
-  line-height: var(--lh-200);
+  margin-left: var(--intergalactic-spacing-spacing-2x);
+  margin-right: var(--intergalactic-spacing-spacing-2x);
+  line-height: var(--intergalactic-lineHeights-lh-200);
 }
 
 SText[size='l'] {
-  margin-left: 12px;
-  margin-right: 12px;
-  line-height: var(--lh-300);
+  margin-left: var(--intergalactic-spacing-spacing-3x);
+  margin-right: var(--intergalactic-spacing-spacing-3x);
+  line-height: var(--intergalactic-lineHeights-lh-300);
 }
 
 SAddon {
@@ -307,30 +306,30 @@ SAddon {
 
 SAddon[size='m'] {
   &:not(:only-child):first-child {
-    margin-left: 8px;
+    margin-left: var(--intergalactic-spacing-spacing-2x);
   }
 
   &:not(:only-child):last-child {
-    margin-right: 8px;
+    margin-right: var(--intergalactic-spacing-spacing-2x);
   }
 
   &:only-child {
-    margin-left: -4px;
-    margin-right: -4px;
+    margin-left: calc(-1 * var(--intergalactic-spacing-spacing-1x));
+    margin-right: calc(-1 * var(--intergalactic-spacing-spacing-1x));
   }
 }
 
 SAddon[size='l'] {
   &:not(:only-child):first-child {
-    margin-left: 8px;
+    margin-left: var(--intergalactic-spacing-spacing-2x);
   }
 
   &:not(:only-child):last-child {
-    margin-right: 8px;
+    margin-right: var(--intergalactic-spacing-spacing-2x);
   }
 
   &:only-child {
-    margin-left: -4px;
-    margin-right: -4px;
+    margin-left: calc(-1 * var(--intergalactic-spacing-spacing-1x));
+    margin-right: calc(-1 * var(--intergalactic-spacing-spacing-1x));
   }
 }

@@ -12,7 +12,7 @@ STag {
   border-radius: 24px;
   padding-left: 4px;
   padding-right: 4px;
-  font-weight: 500;
+  font-weight: var(--intergalactic-fontWeights-medium-500);
   background-color: var(--colorBg);
   color: var(--colorText);
   border-color: var(--colorBorder);
@@ -25,7 +25,7 @@ STag {
 }
 
 STag[disabled] {
-  opacity: var(--disabled-opacity);
+  opacity: var(--intergalactic-opacity-disabled-opacity);
   cursor: default;
   pointer-events: none; /* Disable link interactions */
 }
@@ -47,28 +47,28 @@ STag[size='m'] {
   }
 
   & SText {
-    font-size: var(--fs-100);
-    line-height: var(--lh-100);
+    font-size: var(--intergalactic-fontSizes-fs-100);
+    line-height: var(--intergalactic-lineHeights-lh-100);
   }
 }
 
 STag[size='l'] {
-  height: 28px;
+  height: var(--intergalactic-spacing-spacing-7x);
   min-width: 28px;
 
   & SText {
-    font-size: var(--fs-200);
-    line-height: var(--lh-200);
+    font-size: var(--intergalactic-fontSizes-fs-200);
+    line-height: var(--intergalactic-lineHeights-lh-200);
   }
 }
 
 STag[size='xl'] {
-  height: 40px;
+  height: var(--intergalactic-spacing-spacing-10x);
   min-width: 40px;
 
   & SText {
-    font-size: var(--fs-300);
-    line-height: var(--lh-300);
+    font-size: var(--intergalactic-fontSizes-fs-300);
+    line-height: var(--intergalactic-lineHeights-lh-300);
   }
 }
 
@@ -86,7 +86,7 @@ STag[theme='primary'] {
 
 STag[theme='primary-invert'] {
   background-color: rgba(255, 255, 255, 0.15);
-  color: var(--white);
+  color: var(--intergalactic-color-text-primary-invert);
 
   &[interactive]:hover,
   &[interactive]:active,
@@ -96,7 +96,7 @@ STag[theme='primary-invert'] {
 }
 STag[theme='secondary-invert'],
 STag[theme='additional-invert'] {
-  color: var(--white);
+  color: var(--intergalactic-color-text-primary-invert);
   border-color: color-mod(var(--white) a(30%));
 
   &[interactive]:hover,
@@ -147,7 +147,7 @@ SCircle {
   justify-content: center;
   overflow: hidden;
   border-radius: 50%;
-  margin: 0 4px;
+  margin: 0 var(--intergalactic-spacing-spacing-1x);
 
   &:first-child {
     margin-left: 0;

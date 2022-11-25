@@ -2,63 +2,63 @@
 
 SNotice {
   display: flex;
-  padding: 16px;
-  font-size: var(--fs-200);
-  line-height: var(--lh-200);
+  padding: var(--intergalactic-spacing-spacing-4x);
+  font-size: var(--intergalactic-fontSizes-fs-200);
+  line-height: var(--intergalactic-lineHeights-lh-200);
   box-sizing: border-box;
   border-style: solid;
   border-width: 1px;
-  border-radius: var(--rounded-m);
+  border-radius: var(--intergalactic-borderRadius-rounded-medium);
 }
 
 SNotice[theme='info'] {
-  background-color: var(--blue-50);
-  border-color: var(--blue-200);
+  background-color: var(--intergalactic-color-bg-secondary-info);
+  border-color: var(--intergalactic-color-border-info);
 
   & SCloseIcon {
-    color: var(--gray-400);
+    color: var(--intergalactic-color-icon-primary-neutral);
 
     &:hover {
-      color: var(--gray-500);
+      color: var(--intergalactic-color-icon-primary-neutral-hover-active);
     }
   }
 }
 
 SNotice[theme='danger'] {
-  background-color: var(--red-50);
-  border-color: var(--red-200);
+  background-color: var(--intergalactic-color-bg-secondary-critical);
+  border-color: var(--intergalactic-color-border-danger);
 
   & SCloseIcon {
-    color: var(--red-400);
+    color: var(--intergalactic-color-icon-primary-critical);
 
     &:hover {
-      color: var(--red-500);
+      color: var(--intergalactic-color-icon-primary-critical-hover-active);
     }
   }
 }
 
 SNotice[theme='warning'] {
-  background-color: var(--orange-50);
-  border-color: var(--orange-200);
+  background-color: var(--intergalactic-color-bg-secondary-warning);
+  border-color: var(--intergalactic-color-border-warning);
 
   & SCloseIcon {
-    color: var(--orange-400);
+    color: var(--intergalactic-color-icon-primary-warning);
 
     &:hover {
-      color: var(--orange-500);
+      color: var(--intergalactic-color-icon-primary-warning-hover-active);
     }
   }
 }
 
 SNotice[theme='success'] {
-  background-color: var(--green-50);
-  border-color: var(--green-200);
+  background-color: var(--intergalactic-color-bg-secondary-success);
+  border-color: var(--intergalactic-color-border-success);
 
   & SCloseIcon {
-    color: var(--green-400);
+    color: var(--intergalactic-color-icon-primary-success);
 
     &:hover {
-      color: var(--green-500);
+      color: var(--intergalactic-color-icon-primary-success-hover-active);
     }
   }
 }
@@ -70,29 +70,29 @@ SContent {
 
 SActions {
   flex-shrink: 0;
-  margin-top: 12px;
+  margin-top: var(--intergalactic-spacing-spacing-3x);
 }
 
 SLabel {
   margin-top: 2px;
-  margin-right: 8px;
+  margin-right: var(--intergalactic-spacing-spacing-2x);
   display: inline-flex;
 }
 
 SLabel[theme='info'] {
-  color: var(--gray-400);
+  color: var(--intergalactic-color-icon-primary-neutral);
 }
 
 SLabel[theme='danger'] {
-  color: var(--red-400);
+  color: var(--intergalactic-color-icon-primary-critical);
 }
 
 SLabel[theme='warning'] {
-  color: var(--orange-400);
+  color: var(--intergalactic-color-icon-primary-warning);
 }
 
 SLabel[theme='success'] {
-  color: var(--green-400);
+  color: var(--intergalactic-color-icon-primary-success);
 }
 
 SLabel[theme='custom'] {
@@ -101,7 +101,7 @@ SLabel[theme='custom'] {
 
 SCloseIcon {
   flex-shrink: 0;
-  margin-left: 16px;
+  margin-left: var(--intergalactic-spacing-spacing-4x);
 }
 
 SNotice[theme='custom'] {

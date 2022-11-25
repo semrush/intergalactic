@@ -32,21 +32,21 @@ SValue {
 SProgressBar[size='s'],
 SValue[size='s'] {
   height: 4px;
-  border-radius: var(--rounded-m);
+  border-radius: var(--intergalactic-borderRadius-rounded-medium);
   background-size: 8px 8px;
 }
 
 SProgressBar[size='m'],
 SValue[size='m'] {
   height: 8px;
-  border-radius: var(--rounded-m);
+  border-radius: var(--intergalactic-borderRadius-rounded-medium);
   background-size: 12px 12px;
 }
 
 SProgressBar[size='l'],
 SValue[size='l'] {
   height: 12px;
-  border-radius: var(--rounded-m);
+  border-radius: var(--intergalactic-borderRadius-rounded-medium);
   background-size: 16px 16px;
 }
 

@@ -26,14 +26,14 @@ SColumn {
   display: flex;
   align-items: center;
   flex-grow: 1;
-  font-size: var(--fs-100);
-  color: var(--gray-800);
+  font-size: var(--intergalactic-fontSizes-fs-100);
+  color: var(--intergalactic-color-text-primary);
   box-sizing: border-box;
   position: relative;
 
   &:focus {
     outline: none;
-    box-shadow: var(--keyboard-focus);
+    box-shadow: var(--intergalactic-boxShadow-keyboard-focus);
   }
 }
 
@@ -46,15 +46,15 @@ SColumn[hidden] {
 
 SColumn[use='primary'] {
   padding: 12px;
-  border-right: 1px solid var(--gray-100);
-  border-bottom: 1px solid var(--gray-100);
-  background-color: var(--gray-50);
+  border-right: 1px solid var(--intergalactic-color-border-secondary);
+  border-bottom: 1px solid var(--intergalactic-color-border-secondary);
+  background-color: var(--intergalactic-color-table-TH-primary-cell);
 }
 
 SColumn[use='secondary'] {
   padding: 8px;
-  border-bottom: 1px solid var(--gray-300);
-  background-color: var(--white);
+  border-bottom: 1px solid var(--intergalactic-color-border-table-accent-border);
+  background-color: var(--intergalactic-color-bg-primary-neutral);
 }
 
 SColumn[use]:last-child {
@@ -78,18 +78,18 @@ SColumn[groupHead][use] {
 }
 
 SColumn[groupHead][use='primary'] {
-  border-bottom: 1px solid var(--gray-100);
+  border-bottom: 1px solid var(--intergalactic-color-border-secondary);
 }
 
 SColumn[groupHead][use='secondary'] {
-  border-bottom: 1px solid var(--gray-100);
+  border-bottom: 1px solid var(--intergalactic-color-border-secondary);
 }
 
 SColumn[sortable] {
   cursor: pointer;
 
   &[use='primary']:hover {
-    background-color: var(--gray-100);
+    background-color: var(--intergalactic-color-table-TH-secondary-cell-hover);
   }
 }
 
@@ -221,11 +221,11 @@ SCell {
   display: flex;
   flex: 1;
   flex-basis: auto;
-  font-size: var(--fs-200);
-  line-height: var(--lh-200);
-  color: var(--gray-800);
+  font-size: var(--intergalactic-fontSizes-fs-200);
+  line-height: var(--intergalactic-lineHeights-lh-200);
+  color: var(--intergalactic-color-text-primary);
   box-sizing: border-box;
-  border-bottom: 1px solid var(--gray-100);
+  border-bottom: 1px solid var(--intergalactic-color-border-secondary);
   overflow: hidden;
   white-space: nowrap;
 }
@@ -233,13 +233,13 @@ SCell {
 SCell[use='primary'] {
   padding: 12px;
   min-height: 45px;
-  background-color: var(--white);
+  background-color: var(--intergalactic-color-bg-primary-neutral);
 }
 
 SCell[use='secondary'] {
   padding: 8px;
   min-height: 37px;
-  background-color: var(--white);
+  background-color: var(--intergalactic-color-bg-primary-neutral);
 }
 
 SCell[fixed] {
@@ -271,17 +271,17 @@ SScrollAreaBar[orientation='horizontal'] {
   position: sticky;
   bottom: 0;
   left: 0;
-  margin-top: -12px;
+  margin-top: calc(-1 * var(--intergalactic-spacing-spacing-3x));
   z-index: 2;
 }
 
 SScrollAreaBar[orientation='vertical'] {
-  width: 12px;
+  width: calc(3 * var(--intergalactic-spacing-scale-indent));
 }
 
 SScrollAreaBar[orientation='horizontal'] {
-  margin-left: calc(var(--left) + 4px);
-  margin-right: calc(var(--right) + 4px);
+  margin-left: calc(var(--left) + var(--intergalactic-spacing-spacing-1x));
+  margin-right: calc(var(--right) + var(--intergalactic-spacing-spacing-1x));
   width: calc(100% - var(--offsetSum) - 8px);
 }
 

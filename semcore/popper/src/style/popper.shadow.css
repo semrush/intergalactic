@@ -2,5 +2,5 @@
 
 SPopper {
   outline: none;
-  z-index: 110;
+  z-index: var(--intergalactic-other-z-index-popper);
 }

@@ -4,38 +4,38 @@ SWidgetEmpty {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-bottom: 16px;
+  margin-bottom: var(--intergalactic-spacing-spacing-4x);
 }
 
 SImage {
   display: flex;
   align-items: flex-end;
   justify-content: center;
-  margin-bottom: 12px;
+  margin-bottom: var(--intergalactic-spacing-spacing-3x);
 }
 
 STitle {
-  color: var(--gray-500);
+  color: var(--intergalactic-color-text-secondary);
 }
 
 STitle {
-  font-size: var(--fs-300);
-  line-height: var(--lh-300);
-  font-weight: bold;
+  font-size: var(--intergalactic-fontSizes-fs-300);
+  line-height: var(--intergalactic-lineHeights-lh-300);
+  font-weight: var(--intergalactic-fontWeights-bold-700);
 }
 
 SDescription {
   text-align: center;
-  font-size: var(--fs-200);
-  line-height: var(--lh-200);
-  color: var(--gray-500);
+  font-size: var(--intergalactic-fontSizes-fs-200);
+  line-height: var(--intergalactic-lineHeights-lh-200);
+  color: var(--intergalactic-color-text-secondary);
   max-width: 400px;
 }
 
 STitle + SDescription {
-  margin-top: 4px;
+  margin-top: var(--intergalactic-spacing-spacing-1x);
 }
 
 SDescription + SDescription {
-  margin-top: 8px;
+  margin-top: var(--intergalactic-spacing-spacing-2x);
 }

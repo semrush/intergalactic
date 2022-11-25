@@ -4,41 +4,65 @@ SDivider {
 }
 
 SDivider[use='primary'] {
-  background-color: var(--theme, var(--gray-200));
+  background-color: var(--theme, var(--intergalactic-color-border-primary));
 }
 
 SDivider[use='primary']SDivider[theme='default'] {
-  background: var(--gray-200);
+  background: var(--intergalactic-color-border-primary);
 }
 SDivider[use='primary']SDivider[theme='invert'] {
-  background-color: var(--gray-200);
+  background-color: var(--intergalactic-color-border-primary);
 }
 
 SDivider[orientation='horizontal']SDivider[use='secondary'] {
-  background-image: linear-gradient(to right, var(--gray-200) 3px, transparent 1px);
+  background-image: linear-gradient(
+    to right,
+    var(--intergalactic-color-border-primary) 3px,
+    transparent 1px
+  );
   background-size: 5px 1px;
 }
 
 SDivider[orientation='horizontal']SDivider[use='secondary']SDivider[theme='default'] {
-  background: linear-gradient(to right, var(--gray-200) 3px, transparent 1px);
+  background: linear-gradient(
+    to right,
+    var(--intergalactic-color-border-primary) 3px,
+    transparent 1px
+  );
   background-size: 5px 1px;
 }
 SDivider[orientation='horizontal']SDivider[use='secondary']SDivider[theme='invert'] {
-  background-image: linear-gradient(to right, var(--gray-200) 3px, transparent 1px);
+  background-image: linear-gradient(
+    to right,
+    var(--intergalactic-color-border-primary) 3px,
+    transparent 1px
+  );
   background-size: 5px 1px;
 }
 
 SDivider[orientation='vertical']SDivider[use='secondary'] {
-  background-image: linear-gradient(to bottom, var(--gray-200) 3px, transparent 1px);
+  background-image: linear-gradient(
+    to bottom,
+    var(--intergalactic-color-border-primary) 3px,
+    transparent 1px
+  );
   background-size: 1px 5px;
 }
 
 SDivider[orientation='vertical']SDivider[use='secondary']SDivider[theme='default'] {
-  background-image: linear-gradient(to bottom, var(--gray-200) 3px, transparent 1px);
+  background-image: linear-gradient(
+    to bottom,
+    var(--intergalactic-color-border-primary) 3px,
+    transparent 1px
+  );
   background-size: 1px 5px;
 }
 SDivider[orientation='vertical']SDivider[use='secondary']SDivider[theme='invert'] {
-  background-image: linear-gradient(to bottom, var(--gray-200) 3px, transparent 1px);
+  background-image: linear-gradient(
+    to bottom,
+    var(--intergalactic-color-border-primary) 3px,
+    transparent 1px
+  );
   background-size: 1px 5px;
 }
 

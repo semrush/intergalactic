@@ -6,47 +6,47 @@ SSlider {
   box-sizing: border-box;
   cursor: pointer;
   outline: none;
-  padding-top: 20px;
+  padding-top: var(--intergalactic-spacing-spacing-5x);
 
   &:before {
     content: '';
     position: absolute;
-    top: 8px;
+    top: var(--intergalactic-spacing-spacing-2x);
     left: 0;
     height: 4px;
     width: 100%;
-    border-radius: var(--rounded-m);
-    background-color: var(--gray-100);
+    border-radius: var(--intergalactic-borderRadius-rounded-medium);
+    background-color: var(--intergalactic-color-border-secondary);
   }
   &:hover:before {
-    background-color: var(--gray-200);
+    background-color: var(--intergalactic-color-border-primary);
   }
 
   &:active SKnob {
-    box-shadow: 0 0 0 5px color-mod(var(--blue-400) a(30%));
+    box-shadow: 0 0 0 5px var(--intergalactic-boxShadow-keyboard-focus);
   }
 }
 
 SSlider[keyboardFocused] SKnob {
-  box-shadow: 0 0 0 5px color-mod(var(--blue-400) a(30%));
+  box-shadow: 0 0 0 5px var(--intergalactic-boxShadow-keyboard-focus);
 }
 
 SSlider[disabled] {
-  opacity: var(--disabled-opacity);
+  opacity: var(--intergalactic-opacity-disabled-opacity);
   cursor: default;
   pointer-events: none;
 }
 
 SBar {
   position: absolute;
-  top: 8px;
+  top: var(--intergalactic-spacing-spacing-2x);
   left: 0;
   overflow: hidden;
   height: 4px;
-  border-radius: var(--rounded-m);
+  border-radius: var(--intergalactic-borderRadius-rounded-medium);
   box-sizing: border-box;
   background-size: 12px;
-  background-color: var(--blue-400);
+  background-color: var(--intergalactic-color-control-primary-info);
   cursor: pointer;
 }
 
@@ -57,13 +57,13 @@ SKnob {
   width: 20px;
   border-radius: 50%;
   box-sizing: border-box;
-  background-color: #fff;
-  border: 5px solid var(--blue-400);
+  background-color: var(--intergalactic-color-bg-primary-neutral);
+  border: 5px solid var(--intergalactic-color-border-info);
   cursor: pointer;
   transform: translate(-50%, -50%);
 
   &:hover {
-    border-color: var(--blue-500);
+    border-color: var(--intergalactic-color-border-info-active);
   }
 }
 

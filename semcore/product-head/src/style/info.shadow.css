@@ -4,11 +4,11 @@ SInfo {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  font-size: var(--fs-200);
-  line-height: var(--lh-200);
+  font-size: var(--intergalactic-fontSizes-fs-200);
+  line-height: var(--intergalactic-lineHeights-lh-200);
 
   & > SItem:not(:last-child) {
-    margin-right: 24px;
+    margin-right: var(--intergalactic-spacing-spacing-6x);
     position: relative;
   }
 }
@@ -20,14 +20,14 @@ SItem {
 }
 
 SLabel {
-  margin-right: 4px;
+  margin-right: var(--intergalactic-spacing-spacing-1x);
 }
 
 @media (max-width: 767px) {
   SInfo {
-    margin-bottom: -4px;
+    margin-bottom: calc(-1 * var(--intergalactic-spacing-spacing-1x));
   }
   SItem {
-    margin-bottom: 4px;
+    margin-bottom: var(--intergalactic-spacing-spacing-1x);
   }
 }

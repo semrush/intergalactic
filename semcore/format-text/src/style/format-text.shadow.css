@@ -1,17 +1,17 @@
 @import '@semcore/utils/style/var.css';
 
 SFormatText {
-  color: var(--gray-800);
+  color: var(--intergalactic-color-text-primary);
   & abbr {
-    color: var(--gray-500);
-    text-decoration: underline dashed var(--gray-500);
+    color: var(--intergalactic-color-text-secondary);
+    text-decoration: underline dashed var(--intergalactic-color-text-hint);
 
     &:active,
     &:hover,
     &:focus {
       outline: none;
-      color: var(--gray-600);
-      text-decoration: underline dashed var(--gray-600);
+      color: var(--intergalactic-color-text-hint-hover-active);
+      text-decoration: underline dashed var(--intergalactic-color-text-hint-hover-active);
     }
   }
 
@@ -20,7 +20,7 @@ SFormatText {
     background: none;
     outline: none;
     text-decoration: none;
-    color: var(--blue-500);
+    color: var(--intergalactic-color-text-link);
     border-bottom-width: 1px;
     border-bottom-style: solid;
     border-color: transparent;
@@ -33,20 +33,20 @@ SFormatText {
     }
 
     &:hover {
-      color: var(--blue-600);
-      border-color: var(--blue-600);
+      color: var(--intergalactic-color-text-link-hover-active);
+      border-color: var(--intergalactic-color-text-link-hover-active);
     }
 
     &:focus {
-      box-shadow: var(--keyboard-focus);
+      box-shadow: var(--intergalactic-boxShadow-keyboard-focus);
     }
   }
 
   & blockquote {
     position: relative;
     padding-left: 51px;
-    font-size: var(--fs-400);
-    line-height: var(--lh-400);
+    font-size: var(--intergalactic-fontSizes-fs-400);
+    line-height: var(--intergalactic-lineHeights-lh-400);
     font-style: italic;
 
     &:before {
@@ -54,23 +54,23 @@ SFormatText {
       display: inline-block;
       position: absolute;
       left: 0;
-      color: var(--gray-300);
+      color: var(--intergalactic-color-icon-secondary-neutral);
       font-family: Georgia, Times, 'Times New Roman', serif;
     }
 
     & cite {
       display: block;
       font-style: normal;
-      margin-top: 16px;
-      color: var(--gray-500);
-      font-size: var(--fs-300);
-      line-height: var(--lh-300);
+      margin-top: var(--intergalactic-spacing-spacing-4x);
+      color: var(--intergalactic-color-text-secondary);
+      font-size: var(--intergalactic-fontSizes-fs-300);
+      line-height: var(--intergalactic-lineHeights-lh-300);
     }
   }
 
   & ol,
   & ul {
-    margin: 8px 0;
+    margin: var(--intergalactic-spacing-spacing-2x) 0;
     padding: 0;
     list-style: none;
     position: relative;
@@ -79,12 +79,12 @@ SFormatText {
       &:before {
         position: absolute;
         left: 0;
-        color: var(--gray-500);
+        color: var(--intergalactic-color-text-secondary);
       }
     }
 
     & li + li {
-      margin: 8px 0 0 0;
+      margin: var(--intergalactic-spacing-spacing-2x) 0 0 0;
     }
   }
 
@@ -99,14 +99,14 @@ SFormatText {
 
   & ul li:before {
     content: '';
-    background-color: var(--gray-500);
+    background-color: var(--intergalactic-color-icon-primary-neutral);
   }
 
   & h1 {
-    font-size: var(--fs-800);
-    line-height: var(--lh-800);
-    font-weight: 700;
-    margin: 0 0 24px 0;
+    font-size: var(--intergalactic-fontSizes-fs-800);
+    line-height: var(--intergalactic-lineHeights-lh-800);
+    font-weight: var(--intergalactic-fontWeights-bold-700);
+    margin: 0 0 var(--intergalactic-spacing-spacing-6x) 0;
 
     &:only-child {
       margin-bottom: 0;
@@ -114,10 +114,10 @@ SFormatText {
   }
 
   & h2 {
-    font-size: var(--fs-700);
-    line-height: var(--lh-700);
-    font-weight: 700;
-    margin: 0 0 16px 0;
+    font-size: var(--intergalactic-fontSizes-fs-700);
+    line-height: var(--intergalactic-lineHeights-lh-700);
+    font-weight: var(--intergalactic-fontWeights-bold-700);
+    margin: 0 0 var(--intergalactic-spacing-spacing-4x) 0;
 
     &:only-child {
       margin-bottom: 0;
@@ -125,10 +125,10 @@ SFormatText {
   }
 
   & h3 {
-    font-size: var(--fs-600);
-    line-height: var(--lh-600);
-    font-weight: 500;
-    margin: 0 0 16px 0;
+    font-size: var(--intergalactic-fontSizes-fs-600);
+    line-height: var(--intergalactic-lineHeights-lh-600);
+    font-weight: var(--intergalactic-fontWeights-medium-500);
+    margin: 0 0 var(--intergalactic-spacing-spacing-4x) 0;
 
     &:only-child {
       margin-bottom: 0;
@@ -136,10 +136,10 @@ SFormatText {
   }
 
   & h4 {
-    font-size: var(--fs-500);
-    line-height: var(--lh-500);
-    font-weight: 500;
-    margin: 0 0 12px 0;
+    font-size: var(--intergalactic-fontSizes-fs-500);
+    line-height: var(--intergalactic-lineHeights-lh-500);
+    font-weight: var(--intergalactic-fontWeights-medium-500);
+    margin: 0 0 var(--intergalactic-spacing-spacing-3x) 0;
 
     &:only-child {
       margin-bottom: 0;
@@ -147,10 +147,10 @@ SFormatText {
   }
 
   & h5 {
-    font-size: var(--fs-400);
-    line-height: var(--lh-400);
-    font-weight: 500;
-    margin: 0 0 8px 0;
+    font-size: var(--intergalactic-fontSizes-fs-400);
+    line-height: var(--intergalactic-lineHeights-lh-400);
+    font-weight: var(--intergalactic-fontWeights-medium-500);
+    margin: 0 0 var(--intergalactic-spacing-spacing-2x) 0;
 
     &:only-child {
       margin-bottom: 0;
@@ -158,10 +158,10 @@ SFormatText {
   }
 
   & h6 {
-    font-size: var(--fs-300);
-    line-height: var(--lh-300);
-    font-weight: 700;
-    margin: 0 0 4px 0;
+    font-size: var(--intergalactic-fontSizes-fs-300);
+    line-height: var(--intergalactic-lineHeights-lh-300);
+    font-weight: var(--intergalactic-fontWeights-bold-700);
+    margin: 0 0 var(--intergalactic-spacing-spacing-1x) 0;
 
     &:only-child {
       margin-bottom: 0;
@@ -175,7 +175,7 @@ SFormatText {
   & h5,
   & h6 {
     & small {
-      color: var(--gray-500);
+      color: var(--intergalactic-color-text-secondary);
       font-weight: 300;
       font-size: 100%;
     }
@@ -185,12 +185,13 @@ SFormatText {
 SFormatText[size='s'] {
   & p,
   & li {
-    font-size: var(--fs-100);
-    line-height: var(--lh-100);
+    font-size: var(--intergalactic-fontSizes-fs-100);
+    line-height: var(--intergalactic-lineHeights-lh-100);
   }
 
   & p {
-    margin: 0 0 18px 0;
+    margin: 0 0
+      calc(var(--intergalactic-spacing-spacing-4x) + var(--intergalactic-spacing-spacing-05x)) 0;
 
     &:last-child {
       margin-bottom: 0;
@@ -198,35 +199,41 @@ SFormatText[size='s'] {
   }
 
   & li {
-    padding-left: 18px;
+    padding-left: calc(
+      var(--intergalactic-spacing-spacing-4x) + var(--intergalactic-spacing-spacing-05x)
+    );
   }
 
   & ol ol li {
-    padding-left: 26px;
+    padding-left: calc(
+      var(--intergalactic-spacing-spacing-6x) + var(--intergalactic-spacing-spacing-05x)
+    );
   }
 
   & ol ol ol li {
-    padding-left: 38px;
+    padding-left: calc(
+      var(--intergalactic-spacing-spacing-9x) + var(--intergalactic-spacing-spacing-05x)
+    );
   }
 
   & ul li:before {
     width: 3px;
     height: 3px;
     border-radius: 50%;
-    margin-top: 8px;
-    margin-left: 2px;
+    margin-top: var(--intergalactic-spacing-spacing-2x);
+    margin-left: var(--intergalactic-spacing-spacing-05x);
   }
 }
 
 SFormatText[size='m'] {
   & p,
   & li {
-    font-size: var(--fs-200);
-    line-height: var(--lh-200);
+    font-size: var(--intergalactic-fontSizes-fs-200);
+    line-height: var(--intergalactic-lineHeights-lh-200);
   }
 
   & p {
-    margin: 0 0 20px 0;
+    margin: 0 0 var(--intergalactic-spacing-spacing-5x) 0;
 
     &:last-child {
       margin-bottom: 0;
@@ -234,35 +241,41 @@ SFormatText[size='m'] {
   }
 
   & li {
-    padding-left: 18px;
+    padding-left: calc(
+      var(--intergalactic-spacing-spacing-4x) + var(--intergalactic-spacing-spacing-05x)
+    );
   }
 
   & ol ol li {
-    padding-left: 26px;
+    padding-left: calc(
+      var(--intergalactic-spacing-spacing-6x) + var(--intergalactic-spacing-spacing-05x)
+    );
   }
 
   & ol ol ol li {
-    padding-left: 38px;
+    padding-left: calc(
+      var(--intergalactic-spacing-spacing-9x) + var(--intergalactic-spacing-spacing-05x)
+    );
   }
 
   & ul li:before {
     width: 4px;
     height: 4px;
     border-radius: 50%;
-    margin-top: 7px;
-    margin-left: 2px;
+    margin-top: calc(var(--intergalactic-spacing-spacing-2x) - 1px);
+    margin-left: var(--intergalactic-spacing-spacing-05x);
   }
 }
 
 SFormatText[size='l'] {
   & p,
   & li {
-    font-size: var(--fs-300);
-    line-height: var(--lh-300);
+    font-size: var(--intergalactic-fontSizes-fs-300);
+    line-height: var(--intergalactic-lineHeights-lh-300);
   }
 
   & p {
-    margin: 0 0 24px 0;
+    margin: 0 0 var(--intergalactic-spacing-spacing-6x) 0
 
     &:last-child {
       margin-bottom: 0;
@@ -270,23 +283,31 @@ SFormatText[size='l'] {
   }
 
   & li {
-    padding-left: 18px;
+    padding-left: calc(
+      var(--intergalactic-spacing-spacing-4x) + var(--intergalactic-spacing-spacing-05x)
+    );
   }
 
   & ol ol li {
-    padding-left: 26px;
+    padding-left: calc(
+      var(--intergalactic-spacing-spacing-6x) + var(--intergalactic-spacing-spacing-05x)
+    );
   }
 
   & ol ol ol li {
-    padding-left: 38px;
+    padding-left: calc(
+      var(--intergalactic-spacing-spacing-9x) + var(--intergalactic-spacing-spacing-05x)
+    );
   }
 
   & ul li:before {
     width: 5px;
     height: 5px;
     border-radius: 50%;
-    margin-top: 10px;
-    margin-left: 2px;
+    margin-top: calc(
+      var(--intergalactic-spacing-spacing-2x) + var(--intergalactic-spacing-spacing-05x)
+    );
+    margin-left: var(--intergalactic-spacing-spacing-05x);
   }
 }
 

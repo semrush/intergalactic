@@ -29,9 +29,9 @@ SWeekDay {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--gray-500);
-  font-size: var(--fs-200);
-  font-weight: 400;
+  color: var(--intergalactic-color-text-secondary);
+  font-size: var(--intergalactic-fontSizes-fs-200);
+  font-weight: var(--intergalactic-fontWeights-regular-400);
   overflow: hidden;
 }
 
@@ -43,7 +43,7 @@ SCalendarUnit {
   text-align: center;
   vertical-align: middle;
   border: 1px solid transparent;
-  color: var(--gray-800);
+  color: var(--intergalactic-color-text-primary);
   outline: 0;
   box-shadow: none;
   overflow: visible;
@@ -53,11 +53,11 @@ SCalendarUnit {
   background: transparent;
 
   align-items: center;
-  border-radius: var(--rounded-m);
+  border-radius: var(--intergalactic-borderRadius-rounded-medium);
   box-sizing: border-box;
   cursor: pointer;
   display: flex;
-  font-size: var(--fs-200);
+  font-size: var(--intergalactic-fontSizes-fs-200);
   justify-content: center;
   min-height: 32px;
   min-width: 32px;
@@ -67,12 +67,12 @@ SCalendarUnit {
   margin: 0;
 
   &:hover {
-    color: var(--gray-800);
+    color: var(--intergalactic-color-text-primary);
     background: var(--gray-100);
   }
 
   &:focus-visible {
-    box-shadow: var(--keyboard-focus);
+    box-shadow: var(--intergalactic-boxShadow-keyboard-focus);
   }
 }
 
@@ -83,11 +83,11 @@ SCalendarUnit[today] {
     display: block;
     top: 1px;
     left: 1px;
-    border-radius: var(--rounded-m);
+    border-radius: var(--intergalactic-borderRadius-rounded-medium);
     width: calc(100% - 2px);
     height: calc(100% - 2px);
     box-sizing: border-box;
-    border: 1px solid var(--gray-200);
+    border: 1px solid var(--intergalactic-color-border-primary);
   }
 }
 
@@ -101,7 +101,7 @@ SCalendarUnit[today]SCalendarUnit[endSelected] {
 SCalendarUnit[selected] {
   background: var(--blue-100);
   border-radius: 0;
-  color: var(--gray-800);
+  color: var(--intergalactic-color-text-primary);
 
   &:hover {
     background: var(--blue-400);
@@ -111,7 +111,7 @@ SCalendarUnit[selected] {
 SCalendarUnit[highlighted] {
   background: color-mod(var(--blue-400) alpha(20%));
   border-radius: 0;
-  color: var(--gray-800);
+  color: var(--intergalactic-color-text-primary);
 
   &:hover {
     background: color-mod(var(--blue-400) alpha(30%));
@@ -119,15 +119,15 @@ SCalendarUnit[highlighted] {
 }
 
 SCalendarUnit[startSelected] {
-  border-bottom-left-radius: var(--rounded-m);
+  border-bottom-left-radius: var(--intergalactic-borderRadius-rounded-medium);
   border-bottom-right-radius: 0;
-  border-top-left-radius: var(--rounded-m);
+  border-top-left-radius: var(--intergalactic-borderRadius-rounded-medium);
   border-top-right-radius: 0;
-  color: white;
+  color: var(--intergalactic-color-text-primary-invert);
   background: var(--blue-300);
 
   &:hover {
-    color: white;
+    color: var(--intergalactic-color-text-primary-invert);
     background: var(--blue-400);
   }
 }
@@ -135,43 +135,43 @@ SCalendarUnit[startSelected] {
 SCalendarUnit[endSelected] {
   background: var(--blue-300);
   border-bottom-left-radius: 0;
-  border-bottom-right-radius: var(--rounded-m);
+  border-bottom-right-radius: var(--intergalactic-borderRadius-rounded-medium);
   border-top-left-radius: 0;
-  border-top-right-radius: var(--rounded-m);
-  color: white;
+  border-top-right-radius: var(--intergalactic-borderRadius-rounded-medium);
+  color: var(--intergalactic-color-text-primary-invert);
 
   &:hover {
-    color: white;
+    color: var(--intergalactic-color-text-primary-invert);
     background: var(--blue-400);
   }
 }
 
 SCalendarUnit[startHighlighted] {
-  border-bottom-left-radius: var(--rounded-m);
+  border-bottom-left-radius: var(--intergalactic-borderRadius-rounded-medium);
   border-bottom-right-radius: 0;
-  border-top-left-radius: var(--rounded-m);
+  border-top-left-radius: var(--intergalactic-borderRadius-rounded-medium);
   border-top-right-radius: 0;
 }
 
 SCalendarUnit[endHighlighted] {
   border-bottom-left-radius: 0;
-  border-bottom-right-radius: var(--rounded-m);
+  border-bottom-right-radius: var(--intergalactic-borderRadius-rounded-medium);
   border-top-left-radius: 0;
-  border-top-right-radius: var(--rounded-m);
+  border-top-right-radius: var(--intergalactic-borderRadius-rounded-medium);
 }
 
 SCalendarUnit[startHighlighted]SCalendarUnit[endHighlighted] {
-  border-bottom-left-radius: var(--rounded-m);
-  border-bottom-right-radius: var(--rounded-m);
-  border-top-left-radius: var(--rounded-m);
-  border-top-right-radius: var(--rounded-m);
+  border-bottom-left-radius: var(--intergalactic-borderRadius-rounded-medium);
+  border-bottom-right-radius: var(--intergalactic-borderRadius-rounded-medium);
+  border-top-left-radius: var(--intergalactic-borderRadius-rounded-medium);
+  border-top-right-radius: var(--intergalactic-borderRadius-rounded-medium);
 }
 
 SCalendarUnit[startSelected]SCalendarUnit[endSelected] {
-  border-bottom-left-radius: var(--rounded-m);
-  border-bottom-right-radius: var(--rounded-m);
-  border-top-left-radius: var(--rounded-m);
-  border-top-right-radius: var(--rounded-m);
+  border-bottom-left-radius: var(--intergalactic-borderRadius-rounded-medium);
+  border-bottom-right-radius: var(--intergalactic-borderRadius-rounded-medium);
+  border-top-left-radius: var(--intergalactic-borderRadius-rounded-medium);
+  border-top-right-radius: var(--intergalactic-borderRadius-rounded-medium);
 }
 
 SCalendarUnit[outdated] {

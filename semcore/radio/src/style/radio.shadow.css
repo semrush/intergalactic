@@ -7,24 +7,24 @@ SRadio {
 }
 
 SRadio[disabled] {
-  opacity: var(--disabled-opacity);
+  opacity: var(--intergalactic-opacity-disabled-opacity);
   cursor: default;
   pointer-events: none;
   user-select: none;
 }
 
 SText {
-  margin-left: 8px;
+  margin-left: var(--intergalactic-spacing-spacing-2x);
 }
 
 SText[size='m'] {
-  font-size: var(--fs-200);
-  line-height: var(--lh-200);
+  font-size: var(--intergalactic-fontSizes-fs-200);
+  line-height: var(--intergalactic-lineHeights-lh-200);
 }
 
 SText[size='l'] {
-  font-size: var(--fs-300);
-  line-height: var(--lh-300);
+  font-size: var(--intergalactic-fontSizes-fs-300);
+  line-height: var(--intergalactic-lineHeights-lh-300);
 }
 
 SValue {
@@ -34,7 +34,7 @@ SValue {
   outline: none;
   z-index: 0;
 
-  margin-top: 2px;
+  margin-top: var(--intergalactic-spacing-spacing-05x);
 
   &::before {
     content: '';
@@ -43,7 +43,7 @@ SValue {
     left: 0;
     right: 0;
     bottom: 0;
-    background: #fff;
+    background: var(--intergalactic-color-bg-primary-neutral);
     border: 1px solid;
     border-radius: 50%;
   }
@@ -61,7 +61,7 @@ SValue {
     width: 0;
     height: 0;
     border-radius: 50%;
-    background: #fff;
+    background: var(--intergalactic-color-bg-primary-neutral);
   }
 }
 
@@ -76,11 +76,11 @@ SValue[size='l'] {
 }
 
 SValue[state='normal']::before {
-  border-color: var(--gray-200);
+  border-color: var(--intergalactic-color-border-primary);
 }
 
 SValue[state='invalid']::before {
-  border-color: var(--red-400);
+  border-color: var(--intergalactic-color-border-danger-active);
 }
 
 SControl {
@@ -89,8 +89,8 @@ SControl {
 }
 
 SControl:checked ~ SValue::before {
-  border-color: var(--blue-400);
-  background-color: var(--blue-400);
+  border-color: var(--intergalactic-color-control-primary-info);
+  background-color: var(--intergalactic-color-bg-primary-info);
 }
 
 SControl:checked ~ SValue[size='m']::after {
@@ -104,12 +104,12 @@ SControl:checked ~ SValue[size='l']::after {
 }
 
 SValue[state='normal'][keyboardFocused]::before {
-  box-shadow: var(--keyboard-focus);
-  border-color: var(--blue-500);
+  box-shadow: var(--intergalactic-boxShadow-keyboard-focus);
+  border-color: var(--intergalactic-color-border-info-active);
 }
 
 SValue[state='invalid'][keyboardFocused]::before {
-  box-shadow: var(--keyboard-focus-invalid);
+  box-shadow: var(--intergalactic-boxShadow-keyboard-focus-invalid);
 }
 
 SControl:checked ~ SValue[theme]::before {

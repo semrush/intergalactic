@@ -20,14 +20,14 @@ SBaseTrigger {
   outline: 0;
   text-align: center;
   vertical-align: middle;
-  font-family: Inter, sans-serif;
+  font-family: var(--intergalactic-fontFamilies-base), sans-serif;
   cursor: pointer;
 
-  background: #ffffff;
+  background: var(--intergalactic-color-bg-primary-neutral);
 
-  font-weight: 400;
-  border: 1px solid var(--gray-200);
-  color: var(--gray-800);
+  font-weight: var(--intergalactic-fontWeights-regular-400);
+  border: 1px solid var(--intergalactic-color-border-primary);
+  color: var(--intergalactic-color-text-primary);
 
   &::-moz-focus-inner {
     border: none;
@@ -42,8 +42,8 @@ SBaseTrigger {
   }
 
   &[keyboardFocused] {
-    border: 1px solid var(--blue-400);
-    box-shadow: var(--keyboard-focus);
+    border: 1px solid var(--intergalactic-color-border-info-active);
+    box-shadow: var(--intergalactic-boxShadow-keyboard-focus);
   }
 
   &:hover {
@@ -57,7 +57,7 @@ SBaseTrigger {
 }
 
 SBaseTrigger[disabled] {
-  opacity: var(--disabled-opacity);
+  opacity: var(--intergalactic-opacity-disabled-opacity);
   cursor: default;
   pointer-events: none; /* Disable link interactions */
 }
@@ -80,7 +80,7 @@ SText {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-  line-height: var(--lh-200);
+  line-height: var(--intergalactic-lineHeights-lh-200);
   flex-grow: 1;
   text-align: left;
 }
@@ -99,46 +99,46 @@ SBaseAddon {
 
 SBaseTrigger[size='m'] {
   min-width: 26px;
-  height: 28px;
-  border-radius: var(--rounded-m);
+  height: var(--intergalactic-spacing-spacing-7x);
+  border-radius: var(--intergalactic-borderRadius-rounded-medium);
   padding: 0 8px;
-  font-size: var(--fs-200);
+  font-size: var(--intergalactic-fontSizes-fs-200);
 
   & SAddon {
     &:not(:only-child):first-child {
-      margin-right: 8px;
+      margin-right: var(--intergalactic-spacing-spacing-2x);
     }
 
     &:not(:only-child):last-child {
-      margin-left: 8px;
+      margin-left: var(--intergalactic-spacing-spacing-2x);
     }
 
     &:only-child {
-      margin-left: -4px;
-      margin-right: -4px;
+      margin-left: calc(-1 * var(--intergalactic-spacing-spacing-1x));
+      margin-right: calc(-1 * var(--intergalactic-spacing-spacing-1x));
     }
   }
 }
 
 SBaseTrigger[size='l'] {
   min-width: 32px;
-  height: 40px;
-  border-radius: var(--rounded-m);
+  height: var(--intergalactic-spacing-spacing-10x);
+  border-radius: var(--intergalactic-borderRadius-rounded-medium);
   padding: 0 12px;
-  font-size: var(--fs-300);
+  font-size: var(--intergalactic-fontSizes-fs-300);
 
   & SAddon {
     &:not(:only-child):first-child {
-      margin-right: 8px;
+      margin-right: var(--intergalactic-spacing-spacing-2x);
     }
 
     &:not(:only-child):last-child {
-      margin-left: 8px;
+      margin-left: var(--intergalactic-spacing-spacing-2x);
     }
 
     &:only-child {
-      margin-left: -4px;
-      margin-right: -4px;
+      margin-left: calc(-1 * var(--intergalactic-spacing-spacing-1x));
+      margin-right: calc(-1 * var(--intergalactic-spacing-spacing-1x));
     }
   }
 }
@@ -164,7 +164,7 @@ SText[placeholder] {
 }
 
 SBaseTrigger[state='normal'] {
-  border-color: var(--gray-200);
+  border-color: var(--intergalactic-color-border-primary);
 }
 
 SBaseTrigger[state='valid'] {

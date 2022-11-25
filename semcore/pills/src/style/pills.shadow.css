@@ -29,9 +29,9 @@ SPill {
   vertical-align: middle;
   font-family: inherit;
   cursor: pointer;
-  background: var(--white);
-  border: 1px solid var(--gray-200);
-  border-radius: var(--rounded-m);
+  background: var(--intergalactic-color-bg-primary-neutral);
+  border: 1px solid var(--intergalactic-color-border-primary);
+  border-radius: var(--intergalactic-borderRadius-rounded-medium);
 
   &::-moz-focus-inner {
     border: none;
@@ -46,13 +46,13 @@ SPill {
   }
 
   &:hover {
-    background: color-mod(var(--gray-400) a(20%));
+    background: var(--intergalactic-color-bg-primary-neutral-hover);
   }
 }
 
 SPill[selected] {
-  background: color-mod(var(--blue-400) a(20%));
-  border-color: var(--blue-400);
+  background: var(--intergalactic-color-control-secondary-info-hover);
+  border-color: var(--intergalactic-color-border-info-active);
   z-index: 1;
 }
 
@@ -61,21 +61,21 @@ SPill[disabled] {
   pointer-events: none; /* Disable link interactions */
 
   & > * {
-    opacity: var(--disabled-opacity);
+    opacity: var(--intergalactic-opacity-disabled-opacity);
   }
 }
 
 SPill[keyboardFocused] {
-  box-shadow: var(--keyboard-focus);
+  box-shadow: var(--intergalactic-boxShadow-keyboard-focus);
 }
 
 SText {
-  color: var(--gray-800);
+  color: var(--intergalactic-color-text-primary);
   display: inline-flex;
 }
 
 SAddon {
-  color: var(--gray-500);
+  color: var(--intergalactic-color-text-secondary);
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -84,25 +84,25 @@ SAddon {
 SPill[size='m'] {
   height: var(--form-control-m);
   min-width: var(--form-control-m);
-  font-size: var(--fs-200);
+  font-size: var(--intergalactic-fontSizes-fs-200);
 
   & SText {
-    margin-left: 8px;
-    margin-right: 8px;
+    margin-left: var(--intergalactic-spacing-spacing-2x);
+    margin-right: var(--intergalactic-spacing-spacing-2x);
   }
 
   & SAddon {
     &:not(:only-child):first-child {
-      margin-left: 8px;
+      margin-left: var(--intergalactic-spacing-spacing-2x);
     }
 
     &:not(:only-child):last-child {
-      margin-right: 8px;
+      margin-right: var(--intergalactic-spacing-spacing-2x);
     }
 
     &:only-child {
-      margin-left: 8px;
-      margin-right: 8px;
+      margin-left: var(--intergalactic-spacing-spacing-2x);
+      margin-right: var(--intergalactic-spacing-spacing-2x);
     }
   }
 }
@@ -110,30 +110,30 @@ SPill[size='m'] {
 SPill[size='l'] {
   height: var(--form-control-l);
   min-width: var(--form-control-l);
-  font-size: var(--fs-300);
+  font-size: var(--intergalactic-fontSizes-fs-300);
 
   & SText {
-    margin-left: 8px;
-    margin-right: 8px;
+    margin-left: var(--intergalactic-spacing-spacing-2x);
+    margin-right: var(--intergalactic-spacing-spacing-2x);
 
     &:only-child {
-      margin-left: 12px;
-      margin-right: 12px;
+      margin-left: var(--intergalactic-spacing-spacing-3x);
+      margin-right: var(--intergalactic-spacing-spacing-3x);
     }
   }
 
   & SAddon {
     &:not(:only-child):first-child {
-      margin-left: 12px;
+      margin-left: var(--intergalactic-spacing-spacing-3x);
     }
 
     &:not(:only-child):last-child {
-      margin-right: 12px;
+      margin-right: var(--intergalactic-spacing-spacing-3x);
     }
 
     &:only-child {
-      margin-left: 12px;
-      margin-right: 12px;
+      margin-left: var(--intergalactic-spacing-spacing-3x);
+      margin-right: var(--intergalactic-spacing-spacing-3x);
     }
   }
 }

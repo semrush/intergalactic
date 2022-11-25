@@ -1,14 +1,15 @@
 @import '@semcore/utils/style/var.css';
 
 SError {
-  padding: 80px 0;
+  padding: var(--intergalactic-spacing-spacing-20x) 0;
   margin: 0 auto;
   max-width: 960px;
   @media (max-width: 768px) {
-    padding: 80px 32px;
+    padding: var(--intergalactic-spacing-spacing-20x) var(--intergalactic-spacing-spacing-8x);
   }
   @media (max-width: 320px) {
-    padding: 40px 20px 80px;
+    padding: var(--intergalactic-spacing-spacing-10x) var(--intergalactic-spacing-spacing-5x)
+      var(--intergalactic-spacing-spacing-20x);
   }
 }
 
@@ -32,28 +33,28 @@ SImage {
 }
 
 SImageWrapper {
-  margin-right: 40px;
+  margin-right: var(--intergalactic-spacing-spacing-10x);
 }
 
 SWrapper {
   flex: 1 0 300px;
   max-width: 100%;
-  margin-top: 32px;
+  margin-top: var(--intergalactic-spacing-spacing-8x);
 }
 
 STitle {
-  font-size: var(--fs-700);
-  line-height: var(--lh-700);
-  color: var(--gray-800);
-  font-weight: 700;
-  margin: 0 0 16px 0;
+  font-size: var(--intergalactic-fontSizes-fs-700);
+  line-height: var(--intergalactic-lineHeights-lh-700);
+  color: var(--intergalactic-color-text-primary);
+  font-weight: var(--intergalactic-fontWeights-bold-700);
+  margin: 0 0 var(--intergalactic-spacing-spacing-4x) 0;
 }
 
 SDescription {
-  font-size: var(--fs-300);
-  line-height: var(--lh-300);
-  color: var(--gray-800);
-  margin: 0 0 24px 0;
+  font-size: var(--intergalactic-fontSizes-fs-300);
+  line-height: var(--intergalactic-lineHeights-lh-300);
+  color: var(--intergalactic-color-text-primary);
+  margin: 0 0 var(--intergalactic-spacing-spacing-6x) 0;
 }
 
 SControls {
@@ -61,6 +62,6 @@ SControls {
   align-items: center;
 
   & > *:not(:last-child) {
-    margin-right: 12px;
+    margin-right: var(--intergalactic-spacing-spacing-3x);
   }
 }

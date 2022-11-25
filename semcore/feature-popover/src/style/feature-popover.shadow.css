@@ -1,24 +1,24 @@
 @import '@semcore/utils/style/var.css';
 
 SFeaturePopover {
-  padding-top: 16px;
-  padding-right: 32px;
-  padding-bottom: 16px;
-  padding-left: 16px;
-  border-radius: var(--rounded-m);
+  padding-top: var(--intergalactic-spacing-spacing-4x);
+  padding-right: var(--intergalactic-spacing-spacing-8x);
+  padding-bottom: var(--intergalactic-spacing-spacing-4x);
+  padding-left: var(--intergalactic-spacing-spacing-4x);
+  border-radius: var(--intergalactic-borderRadius-rounded-medium);
   box-sizing: border-box;
-  background-color: var(--yellow-100);
-  color: var(--gray-800);
-  box-shadow: 0 1px 12px rgba(25, 27, 35, 0.15);
+  background-color: var(--intergalactic-color-bg-primary-highlight);
+  color: var(--intergalactic-color-text-primary);
+  box-shadow: 0 1px 12px var(--intergalactic-boxShadow-box-shadow-popper);
 }
 
 SClose {
   position: absolute;
   right: 0;
   top: 0;
-  padding: 8px;
+  padding: var(--intergalactic-spacing-spacing-2x);
   cursor: pointer;
-  color: var(--gray-800);
+  color: var(--intergalactic-color-text-primary);
   font-size: 0;
 }
 
@@ -44,15 +44,15 @@ SClose {
 
 SSpot {
   position: absolute;
-  bottom: -4px;
-  right: -4px;
+  bottom: calc(-1 * var(--intergalactic-spacing-spacing-1x));
+  right: calc(-1 * var(--intergalactic-spacing-spacing-1x));
   animation-name: showTrigger;
   animation-duration: 0.2s;
   animation-timing-function: ease-in;
   animation-delay: 0.4s;
   animation-fill-mode: forwards;
-  width: 12px;
-  height: 12px;
+  width: var(--intergalactic-spacing-spacing-3x);
+  height: var(--intergalactic-spacing-spacing-3x);
 
   &::before {
     content: '';
@@ -65,7 +65,7 @@ SSpot {
     animation-iteration-count: infinite;
     animation-fill-mode: forwards;
     animation-delay: 0.5s;
-    background-color: var(--yellow-100);
+    background-color: var(--intergalactic-color-bg-primary-highlight);
     border-radius: 50%;
     width: 12px;
     height: 12px;
@@ -79,7 +79,7 @@ SSpot {
     border-radius: 50%;
     width: 12px;
     height: 12px;
-    background-color: var(--yellow-100);
+    background-color: var(--intergalactic-color-bg-primary-highlight);
   }
 }
 

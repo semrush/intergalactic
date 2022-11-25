@@ -2,20 +2,20 @@
 @import './var.css';
 
 STooltip {
-  font-size: var(--fs-100);
-  line-height: var(--lh-100);
+  font-size: var(--intergalactic-fontSizes-fs-100);
+  line-height: var(--intergalactic-lineHeights-lh-100);
   position: relative;
-  background-color: #fff;
-  border-radius: 6px;
-  border: 1px solid var(--gray-100);
+  background-color: var(--intergalactic-color-bg-primary-neutral);
+  border-radius: var(--intergalactic-borderRadius-rounded-medium);
+  border: 1px solid var(--intergalactic-color-border-secondary);
   box-sizing: border-box;
   box-shadow: var(--box-shadow-popper);
   padding: 12px;
 }
 
 STitle {
-  color: var(--gray-500);
-  margin-bottom: 8px;
+  color: var(--intergalactic-color-text-secondary);
+  margin-bottom: var(--intergalactic-spacing-spacing-2x);
 }
 
 SDotGroup {
@@ -27,7 +27,7 @@ SDot {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  margin-right: 8px;
+  margin-right: var(--intergalactic-spacing-spacing-2x);
   background: var(--blue-03);
 }
 

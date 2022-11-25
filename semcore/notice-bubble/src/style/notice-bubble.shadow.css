@@ -4,27 +4,28 @@ SInfo,
 SWarning,
 SView {
   position: relative;
-  margin-bottom: 12px;
-  padding: 12px 28px 12px 12px;
+  margin-bottom: var(--intergalactic-spacing-spacing-3x);
+  padding: var(--intergalactic-spacing-spacing-3x) var(--intergalactic-spacing-spacing-7x)
+    var(--intergalactic-spacing-spacing-3x) var(--intergalactic-spacing-spacing-3x);
   width: 100%;
   min-height: 44px;
-  border-radius: var(--rounded-m);
+  border-radius: var(--intergalactic-borderRadius-rounded-medium);
   overflow: hidden;
   box-sizing: border-box;
 }
 
 SInfo {
-  background: var(--gray-800);
+  background: var(--intergalactic-color-bg-primary-invert);
 }
 
 SWarning {
-  background: var(--red-400);
+  background: var(--intergalactic-color-bg-primary-critical);
 }
 
 SMessage {
-  font-size: var(--fs-200);
-  color: #fff;
-  line-height: var(--lh-100);
+  font-size: var(--intergalactic-fontSizes-fs-200);
+  color: var(--intergalactic-color-text-primary-invert);
+  line-height: var(--intergalactic-lineHeights-lh-100);
 }
 
 SDismiss {
@@ -33,26 +34,26 @@ SDismiss {
   right: 0;
   top: 0;
   padding: 8px;
-  color: var(--white);
+  color: var(--intergalactic-color-text-primary-invert);
 
   &:hover {
-    color: var(--gray-100);
+    color: var(--intergalactic-color-control-primary-invert-active);
   }
 }
 
 SAction {
-  margin-top: 8px;
+  margin-top: var(--intergalactic-spacing-spacing-2x);
 }
 
 SNoticeBubble {
   width: 300px;
   position: fixed;
-  z-index: 1010;
-  right: 12px;
-  top: 12px;
+  z-index: var(--intergalactic-other-z-index-notice-bubble);
+  right: var(--intergalactic-spacing-spacing-3x);
+  top: var(--intergalactic-spacing-spacing-3x);
 
   @media (max-width: 767px) {
-    width: calc(100% - 24px);
+    width: calc(100% - var(--intergalactic-spacing-spacing-6x));
   }
 }
 

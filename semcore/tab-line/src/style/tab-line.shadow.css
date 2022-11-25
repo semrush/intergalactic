@@ -8,7 +8,7 @@ STabLine {
 }
 
 STabLine[underlined] {
-  border-bottom: 1px solid var(--gray-200);
+  border-bottom: 1px solid var(--intergalactic-color-border-primary);
 }
 
 STabLineItem {
@@ -34,9 +34,9 @@ STabLineItem {
   cursor: pointer;
   border: none;
   background: transparent;
-  color: var(--gray-800);
-  margin-right: 16px;
-  font-weight: 500;
+  color: var(--intergalactic-color-text-primary);
+  margin-right: var(--intergalactic-spacing-spacing-4x);
+  font-weight: var(--intergalactic-fontWeights-medium-500);
 
   &::-moz-focus-inner {
     border: none;
@@ -63,11 +63,11 @@ STabLineItem {
   }
 
   & SText:not(:last-child) {
-    margin-right: 8px;
+    margin-right: var(--intergalactic-spacing-spacing-2x);
   }
 
   & SAddon:not(:last-child) {
-    margin-right: 8px;
+    margin-right: var(--intergalactic-spacing-spacing-2x);
   }
 }
 
@@ -90,13 +90,13 @@ STabLineItem[selected] {
 }
 
 STabLineItem[disabled] {
-  opacity: var(--disabled-opacity);
+  opacity: var(--intergalactic-opacity-disabled-opacity);
   cursor: default;
   pointer-events: none; /* Disable link interactions */
 }
 
 STabLineItem[keyboardFocused] {
-  box-shadow: var(--keyboard-focus);
+  box-shadow: var(--intergalactic-boxShadow-keyboard-focus);
 }
 
 SText {
@@ -113,20 +113,20 @@ SAddon {
 }
 
 STabLineItem[size='m'] {
-  height: 28px;
+  height: var(--intergalactic-spacing-spacing-7x);
   min-width: 18px;
   & SText {
-    font-size: var(--fs-200);
-    line-height: var(--lh-200);
+    font-size: var(--intergalactic-fontSizes-fs-200);
+    line-height: var(--intergalactic-lineHeights-lh-200);
   }
 }
 
 STabLineItem[size='l'] {
-  height: 40px;
+  height: var(--intergalactic-spacing-spacing-10x);
   min-width: 26px;
   & SText {
-    font-size: var(--fs-300);
-    line-height: var(--lh-300);
+    font-size: var(--intergalactic-fontSizes-fs-300);
+    line-height: var(--intergalactic-lineHeights-lh-300);
   }
 }
 

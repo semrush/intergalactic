@@ -14,7 +14,7 @@ SFlags {
     display: block;
     width: 14px;
     height: 11px;
-    background-color: var(--gray-200);
+    background-color: var(--intergalactic-color-bg-secondary-neutral-active);
     z-index: -1;
   }
 }
@@ -23,14 +23,14 @@ SFlags[data-capital-letters] {
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  background: var(--gray-100);
+  background: var(--intergalactic-color-bg-primary-neutral-active);
 
   &::before {
     content: attr(data-capital-letters);
     font-family: sans-serif;
     font-size: 8px;
     line-height: normal;
-    font-weight: bold;
-    color: var(--gray-500);
+    font-weight: var(--intergalactic-fontWeights-bold-700);
+    color: var(--intergalactic-color-text-secondary);
   }
 }

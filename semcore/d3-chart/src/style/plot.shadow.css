@@ -15,6 +15,6 @@ foreignObject[data-aria-only] {
 }
 
 SPlot[keyboardFocused] {
-  border: 1px solid var(--blue-400);
-  box-shadow: var(--keyboard-focus);
+  border: 1px solid var(--intergalactic-color-border-info-active);
+  box-shadow: var(--intergalactic-boxShadow-keyboard-focus);
 }

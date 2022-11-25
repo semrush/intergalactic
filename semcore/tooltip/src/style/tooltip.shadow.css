@@ -3,11 +3,11 @@
 STooltip {
   position: relative;
   padding: 12px;
-  border-radius: var(--rounded-m);
+  border-radius: var(--intergalactic-borderRadius-rounded-medium);
   box-sizing: border-box;
-  color: var(--gray-800);
-  font-size: var(--fs-200);
-  line-height: var(--lh-200);
+  color: var(--intergalactic-color-text-primary);
+  font-size: var(--intergalactic-fontSizes-fs-200);
+  line-height: var(--intergalactic-lineHeights-lh-200);
   word-wrap: break-word;
   max-width: 250px;
   font-weight: normal;
@@ -16,19 +16,19 @@ STooltip {
 }
 
 STooltip[theme='default'] {
-  background-color: var(--white);
-  border: 1px solid var(--gray-100);
+  background-color: var(--intergalactic-color-tooltip-default);
+  border: 1px solid var(--intergalactic-color-border-secondary);
 }
 
 STooltip[theme='invert'] {
-  color: var(--white);
-  background-color: var(--gray-800);
-  border: 1px solid var(--gray-500);
+  color: var(--intergalactic-color-text-primary-invert);
+  background-color: var(--intergalactic-color-tooltip-invert);
+  border: 1px solid var(--intergalactic-color-border-tooltip-invert);
 }
 
 STooltip[theme='warning'] {
-  background-color: var(--red-100);
-  border: 1px solid var(--red-500);
+  background-color: var(--intergalactic-color-tooltip-warning);
+  border: 1px solid var(--intergalactic-color-border-danger-active);
 }
 
 STooltip[data-popper-reference-hidden] {
@@ -48,26 +48,26 @@ SArrow {
 }
 
 SArrow[theme='default'] {
-  border-color: var(--gray-100);
+  border-color: var(--intergalactic-color-border-secondary);
 
   &:before {
-    border-color: var(--white);
+    border-color: var(--intergalactic-color-bg-primary-neutral);
   }
 }
 
 SArrow[theme='invert'] {
-  border-color: var(--gray-500);
+  border-color: var(--intergalactic-color-border-tooltip-invert);
 
   &::before {
-    border-color: var(--gray-800);
+    border-color: var(--intergalactic-color-tooltip-invert);
   }
 }
 
 SArrow[theme='warning'] {
-  border-color: var(--red-500);
+  border-color: var(--intergalactic-color-border-danger-active);
 
   &::before {
-    border-color: var(--red-100);
+    border-color: var(--intergalactic-color-tooltip-warning);
   }
 }
 

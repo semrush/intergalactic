@@ -6,18 +6,18 @@ SScrollBar {
 }
 
 SScrollBar[orientation='vertical'] {
-  top: 4px;
+  top: var(--intergalactic-spacing-spacing-1x);
   right: 0;
   width: 8px;
-  height: calc(100% - 8px);
+  height: calc(100% - var(--intergalactic-spacing-spacing-2x));
   justify-content: center;
 }
 
 SScrollBar[orientation='horizontal'] {
   bottom: 0;
-  left: 4px;
+  left: var(--intergalactic-spacing-spacing-1x);
   height: 12px;
-  width: calc(100% - 8px);
+  width: calc(100% - var(--intergalactic-spacing-spacing-2x));
   align-items: center;
 }
 

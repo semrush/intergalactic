@@ -1,5 +1,5 @@
 html {
-  font-family: Inter, sans-serif;
+  font-family: var(--intergalactic-fontFamilies-base), sans-serif;
   -webkit-font-smoothing: antialiased;
 }
 

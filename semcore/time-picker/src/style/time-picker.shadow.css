@@ -6,7 +6,7 @@ STimePicker {
 }
 
 STimePicker[disabled] {
-  color: color-mod(var(--gray-800) a(30%));
+  color: var(--intergalactic-color-text-secondary);
   cursor: default;
 }
 
@@ -35,12 +35,13 @@ SPickerFormat {
   padding: 0;
   white-space: nowrap;
   font-family: inherit;
-  font-weight: 500;
+  font-weight: var(--intergalactic-fontWeights-medium-500);
   line-height: normal;
   text-decoration: none;
   align-items: center;
-  border: 1px solid var(--gray-200);
-  border-radius: 0 var(--rounded-m) var(--rounded-m) 0;
+  border: 1px solid var(--intergalactic-color-border-primary);
+  border-radius: 0 var(--intergalactic-borderRadius-rounded-medium)
+    var(--intergalactic-borderRadius-rounded-medium) 0;
   outline: 0;
   box-shadow: none;
   cursor: pointer;
@@ -49,51 +50,50 @@ SPickerFormat {
   user-select: none;
   touch-action: manipulation;
   -webkit-tap-highlight-color: transparent;
-  color: var(--gray-500);
-  background-color: color-mod(var(--gray-400) a(10%));
+  color: var(--intergalactic-color-text-secondary);
+  background-color: var(--intergalactic-color-bg-secondary-neutral);
 
   &:hover {
-    color: var(--gray-500);
-    background-color: color-mod(var(--gray-400) a(20%));
+    color: var(--intergalactic-color-text-secondary);
+    background-color: var(--intergalactic-color-bg-secondary-neutral-hover);
   }
 
   &:active,
   &[active] {
-    color: var(--gray-500);
-    background-color: color-mod(var(--gray-400) a(30%));
+    color: var(--intergalactic-color-text-secondary);
+    background-color: var(--intergalactic-color-bg-secondary-neutral-active);
   }
 }
 
 SPickerFormat[size='m'] {
   height: var(--form-control-m);
-  font-size: var(--fs-200);
+  font-size: var(--intergalactic-fontSizes-fs-200);
   margin: 0 -1px 0 0;
   & SPickerFormatText {
-    margin: 0 8px;
+    margin: 0 var(--intergalactic-spacing-spacing-2x);
   }
 }
 
 SPickerFormat[size='l'] {
   height: var(--form-control-l);
-  font-size: var(--fs-300);
-  margin: 0 -4px 0 0;
-  & SPickerFormatText {
-    margin: 0 12px;
+  font-size: var(--intergalactic-fontSizes-fs-300);
+  margin: 0 calc(-1 * var(--intergalactic-spacing-spacing-1x)) 0 0 & SPickerFormatText {
+    margin: 0 var(--intergalactic-spacing-spacing-3x);
   }
 }
 
 SPickerFormat[disabled] {
-  opacity: var(--disabled-opacity);
+  opacity: var(--intergalactic-opacity-disabled-opacity);
   cursor: default;
   pointer-events: none;
-  border-color: transparent transparent transparent var(--gray-200);
+  border-color: transparent transparent transparent var(--intergalactic-color-border-primary);
 }
 
 SPickerFormat[keyboardFocused] {
-  box-shadow: var(--keyboard-focus);
+  box-shadow: var(--intergalactic-boxShadow-keyboard-focus);
 }
 
 STimePickerSeparator[disabled] {
-  opacity: var(--disabled-opacity);
+  opacity: var(--intergalactic-opacity-disabled-opacity);
   pointer-events: none;
 }

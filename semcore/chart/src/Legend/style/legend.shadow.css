@@ -15,7 +15,7 @@ SItem {
   opacity: 1;
 
   &[use|opacity] {
-    opacity: 0.3;
+    opacity: var(--intergalactic-opacity-disabled-opacity);
   }
 }
 

@@ -18,7 +18,7 @@ SItemContainer {
   cursor: pointer;
 
   &:hover {
-    border: 1px solid var(--gray-100);
+    border: 1px solid var(--intergalactic-color-border-secondary);
   }
 
   &::after {
@@ -37,7 +37,7 @@ SItemContainer:hover > SCloseIcon {
 }
 
 SItemContainer[keyboardFocused] {
-  box-shadow: var(--keyboard-focus);
+  box-shadow: var(--intergalactic-boxShadow-keyboard-focus);
 }
 
 SItemContainer[selected] {
@@ -52,7 +52,7 @@ SItemContainer[displayLabel] {
 
 SItemContainer:not([value]) {
   &::after {
-    border: 0.9px solid var(--gray-100);
+    border: 0.9px solid var(--intergalactic-color-border-secondary);
   }
 }
 
@@ -67,7 +67,7 @@ SPaletteManager {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: 12px;
+  margin-top: var(--intergalactic-spacing-spacing-3x);
   margin-left: 3px;
 }
 
@@ -81,7 +81,7 @@ SPlusButton {
   align-items: center;
   justify-content: center;
   width: 28px;
-  height: 28px;
+  height: var(--intergalactic-spacing-spacing-7x);
   border-radius: 50%;
   cursor: pointer;
 
@@ -98,7 +98,7 @@ SDefaultTrigger {
 }
 
 SDefaultTrigger[keyboardFocused] {
-  box-shadow: var(--keyboard-focus);
+  box-shadow: var(--intergalactic-boxShadow-keyboard-focus);
 }
 
 STriggerCircle {
@@ -112,7 +112,7 @@ STriggerCircle {
 }
 
 STriggerCircle:not([value]) {
-  border: 1px solid var(--gray-100);
+  border: 1px solid var(--intergalactic-color-border-secondary);
 }
 
 STriggerCircleLine {
@@ -131,7 +131,7 @@ SCloseIcon {
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  background-color: var(--white);
+  background-color: var(--intergalactic-color-bg-primary-neutral);
   opacity: 0;
   z-index: 1;
 }
@@ -144,7 +144,7 @@ SLabel {
   z-index: 1;
   color: var(--value);
   font-size: 13px;
-  font-weight: 700;
+  font-weight: var(--intergalactic-fontWeights-bold-700);
   font-family: FactorA-Bold, sans-serif;
 }
 
@@ -152,7 +152,7 @@ SItemColor {
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  border: 1px solid var(--gray-100);
+  border: 1px solid var(--intergalactic-color-border-secondary);
   background: var(--value);
 }
 

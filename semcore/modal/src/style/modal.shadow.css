@@ -2,11 +2,11 @@
 
 SWindow {
   position: relative;
-  border-radius: var(--rounded-l);
-  background: var(--white);
+  border-radius: var(--intergalactic-borderRadius-rounded-large);
+  background: var(--intergalactic-color-bg-primary-neutral);
   box-sizing: border-box;
   margin: auto;
-  padding: 40px;
+  padding: var(--intergalactic-spacing-spacing-10x);
   box-shadow: 0 3px 8px color-mod(var(--gray-800) a(20%));
 
   &:focus {
@@ -24,14 +24,14 @@ SOverlay {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 40px;
-  background: color-mod(var(--gray-800) a(70%));
+  padding: var(--intergalactic-spacing-spacing-10x);
+  background: var(--intergalactic-color-overlay-primary);
   overflow: auto;
-  z-index: 10005;
+  z-index: var(--intergalactic-other-z-index-modal);
   -webkit-overflow-scrolling: touch;
 
   & SOverlay {
-    background: color-mod(var(--gray-800) a(40%));
+    background: var(--intergalactic-color-overlay-secondary);
   }
 }
 
@@ -40,8 +40,8 @@ SClose {
   position: absolute;
   right: 0;
   top: 0;
-  padding: 12px;
-  color: var(--gray-300);
+  padding: var(--intergalactic-spacing-spacing-3x);
+  color: var(--intergalactic-color-icon-secondary-neutral);
   cursor: pointer;
   z-index: 1;
   border: none;
@@ -49,12 +49,12 @@ SClose {
   outline: none;
 
   &:hover {
-    color: var(--gray-400);
+    color: var(--intergalactic-color-icon-secondary-neutral-hover-active);
   }
 }
 
 SClose[keyboardFocused] {
-  box-shadow: var(--keyboard-focus);
+  box-shadow: var(--intergalactic-boxShadow-keyboard-focus);
 }
 
 @media (max-width: 767px) {
@@ -63,6 +63,6 @@ SClose[keyboardFocused] {
   }
 
   SOverlay {
-    padding: 12px;
+    padding: var(--intergalactic-spacing-spacing-3x);
   }
 }

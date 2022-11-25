@@ -4,7 +4,7 @@ STabPanel {
   display: flex;
   width: 100%;
   max-width: 100%;
-  border-bottom: 1px solid var(--gray-200);
+  border-bottom: 1px solid var(--intergalactic-color-border-primary);
 }
 
 STabPanelItem {
@@ -13,7 +13,7 @@ STabPanelItem {
   display: inline-flex;
   min-width: 0;
   height: 32px;
-  color: var(--gray-500);
+  color: var(--intergalactic-color-text-secondary);
   border: 1px solid transparent;
   border-radius: 6px 6px 0 0;
   background: transparent;
@@ -35,9 +35,9 @@ STabPanelItem {
   cursor: pointer;
 
   & SText {
-    font-size: var(--fs-200);
-    line-height: var(--lh-200);
-    font-weight: 500;
+    font-size: var(--intergalactic-fontSizes-fs-200);
+    line-height: var(--intergalactic-lineHeights-lh-200);
+    font-weight: var(--intergalactic-fontWeights-medium-500);
   }
 
   &::-moz-focus-inner {
@@ -53,23 +53,23 @@ STabPanelItem {
   }
 
   &:hover {
-    color: var(--gray-800);
+    color: var(--intergalactic-color-text-primary);
   }
 }
 
 STabPanelItem[disabled] {
-  opacity: var(--disabled-opacity);
+  opacity: var(--intergalactic-opacity-disabled-opacity);
   cursor: default;
   pointer-events: none; /* Disable link interactions */
 }
 
 STabPanelItem[keyboardFocused] {
-  box-shadow: var(--keyboard-focus);
+  box-shadow: var(--intergalactic-boxShadow-keyboard-focus);
 }
 
 STabPanelItem[selected] {
   color: var(--blue-500);
-  border-color: var(--gray-200);
+  border-color: var(--intergalactic-color-border-primary);
   border-bottom-color: var(--white);
   flex-shrink: 0;
 
@@ -80,7 +80,7 @@ STabPanelItem[selected] {
 
 SText {
   display: inline-block;
-  margin: auto 8px;
+  margin: auto var(--intergalactic-spacing-spacing-2x);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -93,14 +93,14 @@ SAddon {
 }
 
 SAddon:not(:only-child):first-child {
-  margin-left: 8px;
+  margin-left: var(--intergalactic-spacing-spacing-2x);
 }
 
 SAddon:not(:only-child):last-child {
-  margin-right: 8px;
+  margin-right: var(--intergalactic-spacing-spacing-2x);
 }
 
 SAddon:only-child {
-  margin-right: 8px;
-  margin-left: 8px;
+  margin-right: var(--intergalactic-spacing-spacing-2x);
+  margin-left: var(--intergalactic-spacing-spacing-2x);
 }

@@ -11,23 +11,23 @@
 }
 
 .notice_addon-left {
-  margin-right: 12px;
+  margin-right: var(--intergalactic-spacing-spacing-3x);
 }
 .notice_addon-right {
-  margin-left: 12px;
+  margin-left: var(--intergalactic-spacing-spacing-3x);
 }
 
 .notice-theme-primary-info {
   background-color: var(--blue);
-  color: var(--white);
+  color: var(--intergalactic-color-text-primary-invert);
 }
 .notice-theme-primary-success {
   background-color: var(--green);
-  color: var(--white);
+  color: var(--intergalactic-color-text-primary-invert);
 }
 .notice-theme-primary-warning {
   background-color: var(--orange);
-  color: var(--white);
+  color: var(--intergalactic-color-text-primary-invert);
 }
 
 .notice-theme-secondary-info {

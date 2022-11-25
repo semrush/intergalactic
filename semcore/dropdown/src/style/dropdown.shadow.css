@@ -2,10 +2,10 @@
 
 SDropdownPopper {
   position: relative;
-  background-color: #fff;
-  border-radius: var(--rounded-m);
+  background-color: var(--intergalactic-color-bg-primary-neutral);
+  border-radius: var(--intergalactic-borderRadius-rounded-medium);
   box-sizing: border-box;
-  border: 1px solid var(--gray-100);
+  border: 1px solid var(--intergalactic-color-border-secondary);
   white-space: normal;
   box-shadow: var(--box-shadow-popper);
 }

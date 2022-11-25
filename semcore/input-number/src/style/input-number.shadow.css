@@ -27,7 +27,7 @@ SUp,
 SDown {
   padding: 0;
   width: 16px;
-  color: var(--gray-300);
+  color: var(--intergalactic-color-icon-secondary-neutral);
   box-sizing: border-box;
   display: inline-flex;
   justify-content: center;
@@ -40,7 +40,7 @@ SDown {
   }
 
   &:hover {
-    color: var(--gray-600);
+    color: var(--intergalactic-color-icon-secondary-neutral-hover-active);
   }
 }
 
@@ -65,7 +65,7 @@ SValue {
 }
 
 SValue[disabled] ~ SControls {
-  opacity: var(--disabled-opacity);
+  opacity: var(--intergalactic-opacity-disabled-opacity);
   cursor: default;
   pointer-events: none;
 }

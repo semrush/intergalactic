@@ -2,7 +2,7 @@
 
 SDropdownMenuList {
   max-height: 240px;
-  padding: 4px 0;
+  padding: var(--intergalactic-spacing-spacing-1x) 0;
   position: relative;
   min-height: 26px;
   min-width: 32px;
@@ -30,7 +30,7 @@ SDropdownMenuItem {
 
 SDropdownMenuItem[highlighted] {
   z-index: 1;
-  box-shadow: var(--keyboard-focus) inset;
+  box-shadow: var(--intergalactic-boxShadow-keyboard-focus) inset;
 }
 
 SDropdownMenuItem[selected] {
@@ -42,21 +42,21 @@ SDropdownMenuItem[selected] {
 }
 
 SDropdownMenuItem[disabled] {
-  opacity: var(--disabled-opacity);
+  opacity: var(--intergalactic-opacity-disabled-opacity);
   cursor: default;
   pointer-events: none;
 }
 
 SDropdownMenuItem[size='l'] {
-  font-size: var(--fs-300);
-  line-height: var(--lh-300);
+  font-size: var(--intergalactic-fontSizes-fs-300);
+  line-height: var(--intergalactic-lineHeights-lh-300);
   padding: 8px 12px;
-  min-height: 40px;
+  min-height: var(--intergalactic-spacing-spacing-10x);
 }
 
 SDropdownMenuItem[size='m'] {
-  font-size: var(--fs-200);
-  line-height: var(--lh-200);
+  font-size: var(--intergalactic-fontSizes-fs-200);
+  line-height: var(--intergalactic-lineHeights-lh-200);
   padding: 6px 8px;
   min-height: 32px;
 }
@@ -70,7 +70,7 @@ SDropdownMenuItem[notInteractive] {
 }
 
 SDropdownMenuItem[variant='hint'] {
-  color: var(--gray-500);
+  color: var(--intergalactic-color-text-secondary);
   cursor: default;
 
   &:hover {
@@ -79,7 +79,7 @@ SDropdownMenuItem[variant='hint'] {
 }
 
 SDropdownMenuItem[variant='title'] {
-  font-weight: bold;
+  font-weight: var(--intergalactic-fontWeights-bold-700);
   cursor: default;
 
   &:hover {
@@ -89,8 +89,8 @@ SDropdownMenuItem[variant='title'] {
 
 SDropdownMenuItemAddon {
   display: inline-flex;
-  margin-left: 8px;
-  margin-right: 8px;
+  margin-left: var(--intergalactic-spacing-spacing-2x);
+  margin-right: var(--intergalactic-spacing-spacing-2x);
 
   &:first-child {
     margin-left: 0;
@@ -103,6 +103,6 @@ SDropdownMenuItemAddon {
 
 SPopper {
   &:focus {
-    box-shadow: var(--keyboard-focus);
+    box-shadow: var(--intergalactic-boxShadow-keyboard-focus);
   }
 }

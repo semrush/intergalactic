@@ -11,7 +11,7 @@ SInput {
   box-sizing: border-box;
 
   & input:-webkit-autofill {
-    border-radius: var(--rounded-m);
+    border-radius: var(--intergalactic-borderRadius-rounded-medium);
     -webkit-box-shadow: 0 0 0 30px rgb(250, 255, 189) inset;
 
     & ~ SOutline {
@@ -28,7 +28,7 @@ SValue {
   padding: 0;
   border: none;
   box-sizing: border-box;
-  color: var(--gray-800);
+  color: var(--intergalactic-color-text-primary);
   font-size: inherit;
   text-overflow: ellipsis;
   font-family: inherit;
@@ -48,10 +48,10 @@ SValue {
 
   &:disabled {
     user-select: none;
-    opacity: var(--disabled-opacity);
+    opacity: var(--intergalactic-opacity-disabled-opacity);
 
     & ~ SOutline {
-      opacity: var(--disabled-opacity);
+      opacity: var(--intergalactic-opacity-disabled-opacity);
       cursor: default;
       pointer-events: none;
     }
@@ -65,9 +65,9 @@ SOutline {
   bottom: 0;
   left: 0;
   border: 1px solid;
-  border-radius: var(--rounded-m);
+  border-radius: var(--intergalactic-borderRadius-rounded-medium);
   z-index: -1;
-  background: #fff;
+  background: var(--intergalactic-color-bg-primary-neutral);
 }
 
 SAddon {
@@ -89,13 +89,13 @@ SAddon[interactive] {
 }
 
 SAddon[disabled] {
-  opacity: var(--disabled-opacity);
+  opacity: var(--intergalactic-opacity-disabled-opacity);
   cursor: default;
   pointer-events: none;
 }
 
 SInput[size='m'] {
-  font-size: var(--fs-200);
+  font-size: var(--intergalactic-fontSizes-fs-200);
   height: var(--form-control-m);
 }
 
@@ -105,7 +105,7 @@ SValue[size='l'] {
 }
 
 SInput[size='l'] {
-  font-size: var(--fs-300);
+  font-size: var(--intergalactic-fontSizes-fs-300);
   height: var(--form-control-l);
   padding-left: 4px;
   padding-right: 4px;
@@ -117,32 +117,32 @@ SInput[focused] {
 
 SInput[state='normal'] {
   & SOutline {
-    border-color: var(--gray-200);
+    border-color: var(--intergalactic-color-border-info-active);
   }
 
   & SValue:focus ~ SOutline {
-    border-color: var(--blue-500);
-    box-shadow: var(--keyboard-focus);
+    border-color: var(--intergalactic-color-border-info-active);
+    box-shadow: var(--intergalactic-boxShadow-keyboard-focus);
   }
 }
 SInput[state='valid'] {
   & SOutline {
-    border-color: var(--green-200);
+    border-color: var(--intergalactic-color-border-success-active);
   }
 
   & SValue:focus ~ SOutline {
-    border-color: var(--green-500);
-    box-shadow: var(--keyboard-focus-valid);
+    border-color: var(--intergalactic-color-border-success-active);
+    box-shadow: var(--intergalactic-boxShadow-keyboard-focus-valid);
   }
 }
 SInput[state='invalid'] {
   & SOutline {
-    border-color: var(--red-200);
+    border-color: var(--intergalactic-color-border-danger-active);
   }
 
   & SValue:focus ~ SOutline {
-    border-color: var(--red-500);
-    box-shadow: var(--keyboard-focus-invalid);
+    border-color: var(--intergalactic-color-border-danger-active);
+    box-shadow: var(--intergalactic-boxShadow-keyboard-focus-invalid);
   }
 }
 
