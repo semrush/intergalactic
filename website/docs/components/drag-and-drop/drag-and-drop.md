@@ -17,8 +17,8 @@ The component is meant for imitating physical dragging of objects, so the follow
 
 ### Component composition
 
-`DroppableZone` is a container wrapping the required area for drag & drop operation.
-`Droppable` is the interface area, where the element can be dropped.
+`DragAndDrop` is a container wrapping the required area for drag & drop operation.
+`DropZone` is the interface area, where the element can be dropped.
 `Draggable` is the element you may drag.
 
 ![scheme](static/dragdrop-scheme.png)
