@@ -106,10 +106,16 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
         event.clientY > rect.y &&
         event.clientY < rect.y + rect.height,
     );
-    if (itemIndex === this.state.dragging?.index) this.setState({ previewSwap: null });
-    else this.setState({ previewSwap: itemIndex });
+    const itemText =
+      this.state.items[itemIndex]?.node?.getAttribute('aria-label') ??
+      this.state.items[itemIndex]?.node?.textContent;
+    const itemsCount = this.state.items.length;
+    const a11yHint = `Grabbing ${itemText}, drop position is ${itemIndex + 1} of ${itemsCount}`;
+
+    if (itemIndex === this.state.dragging?.index) this.setState({ previewSwap: null, a11yHint });
+    else this.setState({ previewSwap: itemIndex, a11yHint });
   };
-  getFakeChildren = (index) => {
+  getSwapPreview = (index: number) => {
     if (!this.state.dragging) return null;
     if (this.state.previewSwap === null) return null;
     if (this.state.items[this.state.previewSwap]?.draggingAllowed === false) return null;
@@ -150,7 +156,7 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
     if (!this.state.hideHoverEffect) return;
     this.setState({ hideHoverEffect: false });
   };
-  handleKeyDown = (index) => (event: KeyboardEvent) => {
+  handleKeyDown = (index: number) => (event: KeyboardEvent) => {
     if (event.code === 'Space') {
       event.preventDefault();
       event.stopPropagation();
@@ -173,7 +179,7 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
       return false;
     }
   };
-  handleFocus = (index) => () => {
+  handleFocus = (index: number) => () => {
     if (!this.state.dragging) return;
     this.setState({ previewSwap: index });
   };
@@ -191,7 +197,7 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
       onFocus: this.handleFocus(index),
       dropPreview: index === this.state.previewSwap,
       dark: this.asProps.theme === 'dark',
-      fakeChildren: this.getFakeChildren(index),
+      swapPreview: this.getSwapPreview(index),
       hideHoverEffect: this.state.hideHoverEffect,
     };
   }
@@ -249,7 +255,7 @@ const Draggable = (props) => {
   const SDraggable = Root;
   const ref = React.useRef();
   const { attach, detach } = React.useContext(DragAndDropContext);
-  const { styles, placement, noDrag, index, children, fakeChildren, Children, id } = props;
+  const { styles, placement, noDrag, index, children, swapPreview, Children, id } = props;
   const resolvedChildren = React.useMemo(
     () => (typeof children === 'function' ? children(props) : children),
     [children, props],
@@ -262,7 +268,7 @@ const Draggable = (props) => {
 
   return sstyled(styles)(
     <SDraggable render={Box} ref={ref} draggable={!noDrag} tabIndex={0} placement={placement}>
-      {fakeChildren ? fakeChildren : <Children />}
+      {swapPreview ? swapPreview : <Children />}
     </SDraggable>,
   );
 };
