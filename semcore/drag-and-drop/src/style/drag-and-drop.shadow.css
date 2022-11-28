@@ -14,15 +14,18 @@ SDraggable[draggable] {
     display: none;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23CCC' fill-rule='evenodd' d='M7,6 C7.55228475,6 8,6.44771525 8,7 C8,7.55228475 7.55228475,8 7,8 C6.44771525,8 6,7.55228475 6,7 C6,6.44771525 6.44771525,6 7,6 Z M1,6 C1.55228475,6 2,6.44771525 2,7 C2,7.55228475 1.55228475,8 1,8 C0.44771525,8 4.54747351e-13,7.55228475 4.54747351e-13,7 C4.54747351e-13,6.44771525 0.44771525,6 1,6 Z M7,0 C7.55228475,0 8,0.44771525 8,1 C8,1.55228475 7.55228475,2 7,2 C6.44771525,2 6,1.55228475 6,1 C6,0.44771525 6.44771525,0 7,0 Z M1,0 C1.55228475,0 2,0.44771525 2,1 C2,1.55228475 1.55228475,2 1,2 C0.44771525,2 0,1.55228475 0,1 C0,0.44771525 0.44771525,0 1,0 Z'/%3E%3C/svg%3E");
   }
-
+  /* 
   &:active {
     cursor: grabbing;
     box-shadow: 0 0 1px rgba(25, 27, 35, 0.16), 0 12px 40px rgba(25, 27, 35, 0.16);
     background-color: var(--white);
-  }
+  } */
 
   &:hover::after {
     display: block;
+  }
+  &[hideHoverEffect]::after {
+    display: none;
   }
 }
 
@@ -88,15 +91,24 @@ SDraggable[placement='left']::after {
   background-repeat: repeat-y;
 }
 
-SDroppable {
+SDropZone {
   border: 1px dashed var(--gray-200);
   border-radius: var(--rounded-m);
 }
 
-:global(.dnd-placeholder-default.dnd-placeholder-default) {
+SDropZone[dropPreview],
+SDraggable[dropPreview] {
   background-color: var(--gray-50);
 }
-
-:global(.dnd-placeholder-dark.dnd-placeholder-dark) {
+SDropZone[dark][dropPreview],
+SDraggable[dark][dropPreview] {
   background-color: rgba(255, 255, 255, 0.15);
+}
+
+SA11yHint {
+  position: absolute;
+  margin-top: -1px;
+  height: 1px;
+  width: 1px;
+  clip: rect(0 0 0 0);
 }

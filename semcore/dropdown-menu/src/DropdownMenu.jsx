@@ -22,9 +22,9 @@ class DropdownMenuRoot extends Component {
     defaultHighlightedIndex: null,
   };
 
-  _items = [];
+  itemProps = [];
 
-  _highlightedItem = null;
+  highlightedItemRef = React.createRef();
 
   prevHighlightedIndex = null;
 
@@ -54,7 +54,7 @@ class DropdownMenuRoot extends Component {
         break;
       case ' ':
       case 'Enter':
-        if (this._highlightedItem) this._highlightedItem.click();
+        if (this.highlightedItemRef.current) this.highlightedItemRef.current.click();
         break;
     }
   };
@@ -96,7 +96,7 @@ class DropdownMenuRoot extends Component {
     const highlighted = index === highlightedIndex;
     const extraProps = {};
 
-    this._items.push(props);
+    this.itemProps.push(props);
     if (highlighted) {
       extraProps.ref = this.scrollToNode;
     }
@@ -123,7 +123,7 @@ class DropdownMenuRoot extends Component {
   }
 
   scrollToNode = (node) => {
-    this._highlightedItem = node;
+    this.highlightedItemRef.current = node;
     if (node && node.scrollIntoView) {
       if (this.asProps.highlightedIndex !== this.prevHighlightedIndex) {
         this.prevHighlightedIndex = this.asProps.highlightedIndex;
@@ -137,8 +137,8 @@ class DropdownMenuRoot extends Component {
 
   moveHighlightedIndex(amount, e) {
     let { highlightedIndex } = this.asProps;
-    const itemsLastIndex = this._items.length - 1;
-    const selectedIndex = this._items.findIndex((item) => item.selected);
+    const itemsLastIndex = this.itemProps.length - 1;
+    const selectedIndex = this.itemProps.findIndex((item) => item.selected);
 
     if (itemsLastIndex < 0) return;
 
@@ -157,10 +157,13 @@ class DropdownMenuRoot extends Component {
       newIndex = newIndex - itemsLastIndex - 1;
     }
 
-    if (this._items[newIndex] && this._items[newIndex].disabled) {
+    if (this.itemProps[newIndex] && this.itemProps[newIndex].disabled) {
       this.moveHighlightedIndex(amount < 0 ? amount - 1 : amount + 1, e);
     } else {
       this.handlers.highlightedIndex(newIndex, e);
+      setTimeout(() => {
+        this.highlightedItemRef.current?.focus();
+      }, 0);
     }
   }
 
@@ -176,7 +179,7 @@ class DropdownMenuRoot extends Component {
     const { Children } = this.asProps;
     const props = {};
 
-    this._items = [];
+    this.itemProps = [];
 
     return (
       <Root render={Dropdown} {...props}>
