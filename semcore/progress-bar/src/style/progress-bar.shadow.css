@@ -51,15 +51,15 @@ SValue[size='l'] {
 }
 
 SProgressBar {
-  background-color: var(--intergalactic-progress-bar-bg);
+  background-color: var(--intergalactic-progress-bar-bg, #e0e1e9);
 }
 
 SProgressBar[theme='dark'] {
-  background-color: var(--intergalactic-progress-bar-bg-invert);
+  background-color: var(--intergalactic-progress-bar-bg-invert, rgba(255, 255, 255, 0.2));
 }
 
 SProgressBar[theme='invert'] {
-  background-color: var(--intergalactic-progress-bar-bg-invert);
+  background-color: var(--intergalactic-progress-bar-bg-invert, rgba(255, 255, 255, 0.2));
 }
 
 @keyframes loading {

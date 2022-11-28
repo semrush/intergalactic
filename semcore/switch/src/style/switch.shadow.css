@@ -78,9 +78,9 @@ SSwitch[checked] {
 }
 
 SToggle {
-  background: var(--gray-300);
+  background: var(--intergalactic-control-switch-bg, #a9abb6);
   position: relative;
-  color: var(--gray-300);
+  color: var(--intergalactic-icon-secondary-neutral, #a9abb6);
   cursor: pointer;
 }
 
