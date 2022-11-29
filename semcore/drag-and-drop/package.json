@@ -34,10 +34,10 @@
   "devDependencies": {
     "@guidepup/playwright": "0.6.1",
     "@playwright/test": "1.25.1",
-    "@semcore/badge": "workspace:^3.2.3",
-    "@semcore/icon": "workspace:^3.2.0",
+    "@semcore/badge": "workspace:3.2.3",
+    "@semcore/icon": "workspace:3.3.0",
     "@semcore/jest-preset-ui": "1.0.0",
-    "@semcore/tab-panel": "workspace:^3.1.3",
+    "@semcore/tab-panel": "workspace:3.1.4",
     "@types/react": "18.0.21"
   }
 }
