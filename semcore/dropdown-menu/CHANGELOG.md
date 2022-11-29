@@ -6,7 +6,8 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-- Added shadow style to `DropdownMenu.List`.
+- Due to the effect of cutting off the last line, it was decided to add a shadow to the container (`DropdownMenu.List`) when scrolling.
+- Changed `margin` to `padding` to make the scrollbar look better.
 
 ## [3.3.4] - 2022-11-28
 
