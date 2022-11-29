@@ -1,9 +1,10 @@
-import React, { ComponentProps, HTMLAttributes } from 'react';
-import createComponent, { Component, Merge, sstyled, Root } from '@semcore/core';
+import React from 'react';
+import createComponent, { Component, sstyled, Root } from '@semcore/core';
 import { Box, IBoxProps } from '@semcore/flex-box';
 import isNode from '@semcore/utils/lib/isNode';
 
 import style from './style/title.shadow.css';
+import { IInfoItemProps } from './Info';
 
 export interface IHeaderTitleProps extends IBoxProps {
   toolName?: React.ReactNode;
@@ -33,14 +34,10 @@ function Tool(props) {
   return sstyled(props.styles)(<STool render={Box} />);
 }
 
-const Title = createComponent<
-  // eslint-disable-next-line ssr-friendly/no-dom-globals-in-module-scope
-  Merge<IHeaderTitleProps, HTMLAttributes<HTMLDivElement>>,
-  {
-    Tool: ComponentProps<typeof Box>;
-  }
->(TitleRoot, {
+const Title = createComponent(TitleRoot, {
   Tool,
-});
+}) as (<T>(props: IInfoItemProps & T) => React.ReactElement) & {
+  Tool: typeof Box;
+};
 
 export default Title;

@@ -66,9 +66,8 @@ export default createBaseComponent(${obj.name})
       `,
     templateDTS: () => `
 import React from 'react';
-import { Merge } from '@semcore/core';
 import { IIconProps } from '@semcore/icon';
-declare const _default: import("@semcore/core").ComponentType<Merge<IIconProps, React.SVGAttributes<SVGElement>>, {}, {}>;
+declare const _default: <T>(props: IIconProps & T) => React.ReactElement;
 export default _default;
       `,
     transformer: () => {
