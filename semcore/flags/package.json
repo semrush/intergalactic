@@ -31,7 +31,6 @@
     "directory": "semcore/flags"
   },
   "devDependencies": {
-    "@semcore/flags-sprite": "1.0.0",
     "@semcore/jest-preset-ui": "1.0.0",
     "@types/react": "18.0.21",
     "imagemin": "8.0.1",
