@@ -1,7 +1,7 @@
 import React from 'react';
-import InputNumber from '@semcore/input-number';
-import NeighborLocation from '@semcore/neighbor-location';
-import { Flex } from '@semcore/flex-box';
+import InputNumber from '@semcore/ui/input-number';
+import NeighborLocation from '@semcore/ui/neighbor-location';
+import { Flex } from '@semcore/ui/flex-box';
 
 class Demo extends React.PureComponent {
   constructor(props) {

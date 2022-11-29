@@ -1,6 +1,6 @@
 import React from 'react';
-import { DateRangePicker } from '@semcore/date-picker';
-import { Flex, Box } from '@semcore/flex-box';
+import { DateRangePicker } from '@semcore/ui/date-picker';
+import { Flex, Box } from '@semcore/ui/flex-box';
 
 function Demo() {
   const pastYear = new Date();
@@ -18,10 +18,16 @@ function Demo() {
   return (
     <Flex>
       <Box mr={5} mb={5}>
-        <DateRangePicker periods={periods} />
+        <DateRangePicker periods={periods}>
+          <DateRangePicker.InputTrigger />
+          <DateRangePicker.Popper />
+        </DateRangePicker>
       </Box>
       <Box>
-        <DateRangePicker />
+        <DateRangePicker>
+          <DateRangePicker.InputTrigger />
+          <DateRangePicker.Popper />
+        </DateRangePicker>
       </Box>
     </Flex>
   );

@@ -1,7 +1,7 @@
 {
   "name": "@semcore/select",
   "description": "Semrush Select Component",
-  "version": "3.1.5",
+  "version": "3.2.13",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -17,14 +17,14 @@
     "@semcore/divider": "^3",
     "@semcore/dropdown-menu": "^3.0.0",
     "@semcore/flex-box": "^4",
-    "@semcore/icon": "^2.16",
+    "@semcore/icon": "2.16 - 3",
     "@semcore/input": "^3.0.0",
     "@semcore/utils": "^3.15",
     "classnames": "2.2.6"
   },
   "peerDependencies": {
     "@semcore/core": "^1.11",
-    "react": "16.8 - 17"
+    "react": "16.8 - 18"
   },
   "jest": {
     "preset": "@semcore/jest-preset-ui"
@@ -35,7 +35,7 @@
     "directory": "semcore/select"
   },
   "devDependencies": {
-    "@types/react": "16.8 - 17",
+    "@types/react": "18.0.21",
     "@guidepup/playwright": "0.6.1",
     "@playwright/test": "1.25.1",
     "@semcore/jest-preset-ui": "1.0.0"

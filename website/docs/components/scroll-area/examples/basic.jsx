@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import Scroll from '@semcore/scroll-area';
+import Scroll from '@semcore/ui/scroll-area';
 
 const Block = styled.div`
   display: inline-block;

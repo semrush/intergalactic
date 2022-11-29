@@ -190,6 +190,7 @@ If your widget has width less than 300px, you may leave just the title with styl
 
 ![small widget error](static/small-error-2.png)
 
+@page widget-empty-a11y
 @page widget-empty-api
 @page widget-empty-code
 @page widget-empty-changelog

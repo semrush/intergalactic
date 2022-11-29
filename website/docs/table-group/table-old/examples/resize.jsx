@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Resizable } from 'react-resizable';
 import Table from '@semcore/table';
-import ScrollArea from '@semcore/scroll-area';
+import ScrollArea from '@semcore/ui/scroll-area';
 
 const CustomCellHead = styled(Table.CellHead)`
   position: relative;

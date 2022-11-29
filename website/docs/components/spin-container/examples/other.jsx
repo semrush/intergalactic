@@ -1,8 +1,8 @@
 import React from 'react';
-import SpinContainer from '@semcore/spin-container';
-import { Text } from '@semcore/typography';
-import Dropdown from '@semcore/dropdown';
-import Button from '@semcore/button';
+import SpinContainer from '@semcore/ui/spin-container';
+import { Text } from '@semcore/ui/typography';
+import Dropdown from '@semcore/ui/dropdown';
+import Button from '@semcore/ui/button';
 
 class Demo extends React.PureComponent {
   state = { loading: true };
@@ -28,9 +28,7 @@ class Demo extends React.PureComponent {
 
     return (
       <Dropdown>
-        <Dropdown.Trigger>
-          <Button>Help me</Button>
-        </Dropdown.Trigger>
+        <Dropdown.Trigger tag={Button}>Help me</Dropdown.Trigger>
         <Dropdown.Popper tag={SpinContainer} p={4} size="l" loading={loading} w={290}>
           <Text size={100}>
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam aperiam atque beatae

@@ -1,5 +1,5 @@
 import React from 'react';
-import { PropGetterFn, ReturnEl } from '@semcore/core';
+import { ReturnEl } from '@semcore/core';
 
 export interface INeighborLocationProps {
   /**
@@ -16,8 +16,18 @@ export interface INeighborItemProps {
   neighborLocation?: 'right' | 'both' | 'left' | false;
 }
 
-declare const neighborLocationEnhance: () => PropGetterFn;
-declare const NeighborLocation: <T>(props: INeighborLocationProps & T) => ReturnEl;
+export interface INeighborLocationDetectProps extends INeighborItemProps {
+  children?:
+    | React.ReactElement
+    | ((neighborLocation: 'right' | 'both' | 'left' | undefined) => ReturnEl);
+}
 
-export { neighborLocationEnhance };
+declare const NeighborLocation: (<T>(props: INeighborLocationProps & T) => ReturnEl) & {
+  Detect: <T>(props: INeighborLocationDetectProps & T) => ReturnEl;
+};
+
+declare const useNeighborLocationDetect: (index: number) => 'right' | 'both' | 'left' | false;
+
+export { useNeighborLocationDetect };
+
 export default NeighborLocation;

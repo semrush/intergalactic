@@ -1,27 +1,47 @@
 import React from 'react';
-import DnD from '@semcore/drag-and-drop';
-import Badge from '@semcore/badge';
-import LinkedInS from '@semcore/icon/LinkedIn/m';
-import TabPanel from '@semcore/tab-panel';
+import DnD from '@semcore/ui/drag-and-drop';
+import Badge from '@semcore/ui/badge';
+import LinkedInS from '@semcore/ui/icon/LinkedIn/m';
+import TabPanel from '@semcore/ui/tab-panel';
+
+const icons = {
+  social: (
+    <TabPanel.Item.Addon>
+      <LinkedInS />
+    </TabPanel.Item.Addon>
+  ),
+  issues: (
+    <TabPanel.Item.Addon>
+      <Badge bg="red">new</Badge>
+    </TabPanel.Item.Addon>
+  ),
+};
+const titles = {
+  overview: 'Overview',
+  issues: 'Issues',
+  social: 'LinkedIn',
+};
 
 function Demo() {
+  const [tabs, setTabs] = React.useState(['overview', 'issues', 'social']);
+  const [currentTab, setCurrentTab] = React.useState('overview');
+  const handleDnD = React.useCallback(({ fromIndex, toIndex }) => {
+    setTabs((tabs) => {
+      const from = tabs[fromIndex];
+      tabs[fromIndex] = tabs[toIndex];
+      tabs[toIndex] = from;
+      return [...tabs];
+    });
+  }, []);
+
   return (
-    <DnD tag={TabPanel} defaultValue={0}>
-      <TabPanel.Item placement="bottom" tag={DnD.Draggable} value={0} pb={0}>
-        Overview
-      </TabPanel.Item>
-      <TabPanel.Item placement="bottom" tag={DnD.Draggable} value={1} pb={0}>
-        <TabPanel.Item.Addon>
-          <LinkedInS />
-        </TabPanel.Item.Addon>
-        <TabPanel.Item.Text>Issues</TabPanel.Item.Text>
-      </TabPanel.Item>
-      <TabPanel.Item placement="bottom" tag={DnD.Draggable} value={2} pb={0}>
-        <TabPanel.Item.Text>LinkedIn</TabPanel.Item.Text>
-        <TabPanel.Item.Addon>
-          <Badge bg="green">new</Badge>
-        </TabPanel.Item.Addon>
-      </TabPanel.Item>
+    <DnD tag={TabPanel} value={currentTab} onChange={setCurrentTab} onDnD={handleDnD}>
+      {tabs.map((tab) => (
+        <DnD.Draggable placement="bottom" tag={TabPanel.Item} value={tab} key={tab} pb={0}>
+          {icons[tab] ?? null}
+          <TabPanel.Item.Text>{titles[tab]}</TabPanel.Item.Text>
+        </DnD.Draggable>
+      ))}
     </DnD>
   );
 }

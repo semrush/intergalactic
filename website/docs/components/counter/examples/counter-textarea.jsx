@@ -1,8 +1,8 @@
 import React from 'react';
-import { Flex } from '@semcore/flex-box';
-import { Text } from '@semcore/typography';
-import Textarea from '@semcore/textarea';
-import Counter from '@semcore/counter';
+import { Flex } from '@semcore/ui/flex-box';
+import { Text } from '@semcore/ui/typography';
+import Textarea from '@semcore/ui/textarea';
+import Counter from '@semcore/ui/counter';
 
 export default () => (
   <Flex direction="column" w={350}>

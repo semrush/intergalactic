@@ -36,7 +36,7 @@ Columns are inherited from the `Flex` component and accept all its parameters. W
 
 @## The alignment of the columns
 
-Since columns and cells are inherited from the `Flex` component, you can use `justifyContent` to align the column to the desired edge. This property is automatically applied to table cells.
+Since columns and cells are inherited from the `Flex` component, you can use `justifyContent/alignItems` to align the column to the desired edge. This property is automatically applied to table cells.
 
 @example align-header
 
@@ -54,7 +54,7 @@ If you can sort by column, then:
 
 @## Fixed header
 
-To fix the table header, use the `<Sticky/>` component.
+To fix the table header, use the `<Box position="sticky" top={top} />` component.
 
 > Set `zIndex=2` for correct display.
 
@@ -124,19 +124,29 @@ We use the `@semcore/ui/accordion` component to extend the functionality of the 
 2. Replacing the tag in `DataTable.Row` with our extended tag with `Accordion.Item`;
 3. Setting the value for `Accordion.Item`;
 4. Calculating the active line to highlight it;
-5. Set the arrow (Chevron icon), if necessary.
+5. Render the children to accordion content;
+6. Set the arrow (Chevron icon), if necessary.
 
 @example accordion
 
 @## Table in table
 
-We use the example with [the accordion above](/table-group/data-table/#ab2a56).
+We use the example with [the accordion above](/table-group/data-table/#accordion_in_the_table).
 
-1. Render the table to accordion content;
-2. Set the desired z-index;
-3. Hide the table header;
+1. Hide the table header;
+2. Set "inherit" to use the size from the top table for each column;
 
 @example table-in-table
+
+@## Table in table with fixed column
+
+We use the example with [the table above](/table-group/data-table/#table_in_table).
+
+1. Set the desired z-index;
+2. Set the variable to block the scroll;
+3. Set the variable to remove overflow
+
+@example table-in-table-with-fixed
 
 @## Virtual scroll in the table
 

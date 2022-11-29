@@ -1,5 +1,5 @@
 import React from 'react';
-import { Blockquote, Hint, List, Text } from '@semcore/typography';
+import { Blockquote, Hint, List, Text } from '@semcore/ui/typography';
 
 export default () => (
   <div>

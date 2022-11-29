@@ -2,7 +2,7 @@ import React from 'react';
 import Skeleton from '../Skeleton';
 
 const PieChartSkeleton = (props) => (
-  <Skeleton viewBox="0 0 180 180" width={180} height={180} {...props}>
+  <Skeleton viewBox="0 0 180 180" {...props}>
     {({ gradientUrl }) => (
       <path
         fill={gradientUrl}

@@ -1,5 +1,5 @@
 import React from 'react';
-import Skeleton from '@semcore/skeleton';
+import Skeleton from '@semcore/ui/skeleton';
 
 const Demo = () => {
   return (

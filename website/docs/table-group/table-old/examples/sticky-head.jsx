@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import Spin from '@semcore/spin';
-import ScrollArea from '@semcore/scroll-area';
-import { Text } from '@semcore/typography';
+import Spin from '@semcore/ui/spin';
+import ScrollArea from '@semcore/ui/scroll-area';
+import { Text } from '@semcore/ui/typography';
 import Table from '@semcore/table';
-import Tooltip from '@semcore/tooltip';
-import Checkbox from '@semcore/checkbox';
-import Link from '@semcore/link';
+import Tooltip from '@semcore/ui/tooltip';
+import Checkbox from '@semcore/ui/checkbox';
+import Link from '@semcore/ui/link';
 
 function shuffle(a) {
   for (let i = a.length - 1; i > 0; i--) {

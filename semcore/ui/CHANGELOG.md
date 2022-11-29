@@ -1,3 +1,311 @@
+## [13.1.1] - 2022-11-09
+
+### @semcore/base-trigger
+
+- **Fixed** Fixed `FilterTrigger` accessability.
+
+### @semcore/ellipsis
+
+- **Added** Component was added to export of `@semcore/ui`.
+
+### @semcore/checkbox
+
+- **Fixed** Fixed displaying in unchecked and disabled state.
+
+### @semcore/d3-chart
+
+- **Fixed** Fixed hover and active animated for `Donut` chart.
+
+### @semcore/date-picker
+
+- **Fixed** Fixed input trigger visual divergence from initial design.
+- **Fixed** Removed lock on fixed version of `@semcore/input`.
+
+### @semcore/icon
+
+- **Added** Added `LookerStudio` icon.
+
+### @semcore/input-mask
+
+- **Fixed** Fixed mask and text line-height mismatch.
+
+### @semcore/pagination
+
+- **Fixed** Fixed styles for last and single pages
+
+## [13.1.0] - 2022-11-03
+
+### @semcore/animation
+
+- **Added** Added a property that removes the `overflow=hidden` setting.
+- **Changed** Returning the original `overflow` after the animation has passed.
+
+### @semcore/button
+
+- **Fixed** Lazy checks for necessity of `aria-label` in non production environment.
+
+### @semcore/carousel
+
+- **Fixed** Fixed screen readers support.
+
+### @semcore/checkbox
+
+- **Fixed** Fixed displaying in unchecked and disabled state.
+
+### @semcore/color-picker
+
+- **Fixed** Fixed screen readers support.
+
+### @semcore/d3-chart
+
+- **Fixed** Fixed hover and active animated for `Donut` chart.
+- **Fixed** Fixed display of minimum bar size in `StackBar`.
+- **Added** Added display of minimum bar size in `HorizontalBar`.
+- **Fixed** Fixed inner radius for `Donut` chart. It began to equal what is indicated in the `innerRadius` prop.
+- **Fixed** Fixed reference lines were missing dashed style.
+- **Fixed** Fixed typings of render functions.
+
+### @semcore/data-table
+
+- **Added** Support for inheritance of `alignItems` prop from header to cells.
+- **Added** Added `disabledScroll` property that disables scrolling in tables.
+- **Added** Added the ability(`flex="inherit"`) to inherit the size from the top table.
+
+### @semcore/date-picker
+
+- **Fixed** Removed lock on fixed version of `@semcore/input`.
+
+### @semcore/errors
+
+- **Fixed** Fixed paddings.
+
+### @semcore/icon
+
+- **Fixed** Lazy checks for necessity of `aria-label` in non production environment.
+- **Changed** Updated `Text` icon.
+- **Added** Added icon `GoogleAds`
+
+### @semcore/inline-edit
+
+- **Fixed** Removed wrong aria role and added needed aria label.
+
+### @semcore/inline-input
+
+- **Added** Added accessability needed aria label.
+
+### @semcore/input-mask
+
+- **Fixed** Fixed mask and text line-height mismatch.
+- **Added** Allowed to pass children.
+
+### @semcore/link
+
+- **Fixed** Lazy checks for necessity of `aria-label` in non production environment.
+
+### @semcore/modal
+
+- **Changed** Updated `focus-lock`.
+
+### @semcore/popper
+
+- **Changed** Updated `focus-lock`.
+
+### @semcore/side-panel
+
+- **Changed** Updated `focus-lock`.
+
+### @semcore/time-picker
+
+- **Fixed** Fixed that some secret combination of arrows pressing was causing infinite focus call and temporary freeze of browser.
+- **Fixed** Fixed Screen readers support.
+
+### @semcore/utils
+
+- **Added** Added `hasLabels` utility.
+- **Fixed** Removed `@types/react`, `@types/react-dom` and `@types/node` from package direct dependencies.
+
+## [13.0.2] - 2022-10-20
+
+### @semcore/base-trigger
+
+- **Fixed** Fixed the problem of not showing the placeholder when the body of the `FilterTrigger` is empty.
+
+### @semcore/core
+
+- **Fixed** Fixed calculation children index.
+
+### @semcore/date-picker
+
+- **Changed** Reverting changes from version `3.3.12` as these changes are implemented in the `utils/lib/addonTextChildren`.
+
+### @semcore/dropdown-menu
+
+- **Fixed** Fixed wrong setting of `type=button` attribute for every `DropdownMenu.Trigger` based component.
+
+### @semcore/select
+
+- **Fixed** Fixed unexpected verbose console warnings.
+
+### @semcore/time-picker
+
+- **Fixed** Fixed support of Safari.
+
+### @semcore/utils
+
+- **Fixed** Removed `@types/react`, `@types/react-dom` and `@types/node` from package direct dependencies.
+
+## [13.0.1] - 2022-10-14
+
+### Global
+
+- **Fixed** Fixed reexports of `@semcore/ui` package.
+
+## [13.0.0] - 2022-10-12
+
+### Global
+
+- **Added** Added support for React 18 🔥
+- **Fixed** Fixed problems in working with react strict mode.
+
+### @semcore/chart
+
+- **BREAK** The component has been removed from the release system. Use `@semcore/d3-chart`.
+
+### @semcore/icon
+
+- **BREAK** Remove `AppBlock` icon, use `AppsBlock` instead.
+- **Added** Added icon Stoller.
+- **Added** Added `Charge`, `CardUpdate`, `ChargebackWin`, `ChargebackLoss` icons.
+- **Changed** When `interactive` prop is provided, `aria-label` or `aria-labelledby` props from now are required. If required props are not provided a warning is logged to developer console.
+
+### @semcore/neighbor-location
+
+- **BREAK** The approach to determining neighbors has been changed.
+
+### @semcore/table
+
+- **BREAK** The component has been removed from the release system. Use `@semcore/data-table`.
+
+### @semcore/accordion
+
+- **Fixed** Fixed elements id uniqueness.
+
+### @semcore/base-trigger
+
+- **Changed** Updated major dependency `@semcore/neighbor-location` [2.3.15 ~> 3.0.0]
+
+### @semcore/button
+
+- **Changed** Updated major dependency `@semcore/neighbor-location` [2.3.15 ~> 3.0.0]
+
+### @semcore/checkbox
+
+- **Fixed** Added missing `aria-checked` a11y attribute.
+
+### @semcore/color-picker
+
+- **Fixed** Fixed paddings of addons in input.
+
+### @semcore/core
+
+- **Changed** Changed approach to children index calculation with React parallel rendering.
+
+### @semcore/d3-chart
+
+- **Fixed** Ensured a11y module do not break mouse interactions.
+- **Fixed** Fixed issue with uninitialized styles in some charts.
+
+### @semcore/data-table
+
+- **Added** Added support `ref` for `DataTable.Column` and `DataTable.Cell`.
+
+### @semcore/date-picker
+
+- **Changed** Changed the way to check the contents of the trigger for `ButtonTrigger`
+- **Changed** Changed utils function for `ButtonTrigger`
+- **Fixed** Fixed unexpected margin of calendar grid cells in Safari browser.
+
+### @semcore/errors
+
+- **Changed** Moved svg illustrations to `@semcore/illustration` component.
+
+### @semcore/illustration
+
+- **Changed** Remove masks from all svg illustrations for WidgetEmpty component.
+- **Added** Added and changed fields `main`, `module` and `typings` in `package.json`.
+- **Added** Added missed illustrations and added missed id attribute for some illustrations.
+- **Added** Added available for export function `getIllustrationPath` to get url of illustrations.
+
+### @semcore/input
+
+- **Changed** Updated major dependency `@semcore/neighbor-location` [2.3.15 ~> 3.0.0]
+- **Changed** Remove useless styles for Addons.
+
+### @semcore/input-mask
+
+- **Fixed** Fixed displaying of addons placed on the end (right in ltr languages) of input.
+- **Fixed** Fixed mask underlay position desynchronization with html input content;
+- **Fixed** Hidden placeholders and mask from real DOM to exclude it from copied content.
+- **Changed** Updated major dependency `@semcore/neighbor-location` [2.3.15 ~> 3.0.0]
+- **Fixed** Fixed addon placed before input value may be overlayed by input value.
+- **Fixed** Fixed previously broken in previous version backward compatibility of piping api.
+
+### @semcore/notice
+
+- **Changed** Color for Close icon with theme `info` was changed from `--blue-400` to `--gray-400`.
+
+### @semcore/pills
+
+- **Changed** Updated major dependency `@semcore/neighbor-location` [2.3.15 ~> 3.0.0]
+- **Fixed** Added essential accessibility attributes.
+
+### @semcore/popper
+
+- **Changed** Updated major dependency `@semcore/neighbor-location` [2.3.15 ~> 3.0.0]
+- **Fixed** Removed aria attributes that were breaking components a11y.
+
+### @semcore/radio
+
+- **Fixed** Fixed arrangement of internal and external circles in `checked` state.
+
+### @semcore/select
+
+- **Added** Screen readers support.
+
+### @semcore/skeleton
+
+- **Changed** All skeletons are `aria-busy` from now.
+
+### @semcore/slider
+
+- **Changed** Stable release
+- **Added** Added box-sizing
+
+### @semcore/sticky
+
+- **Changed** This component has been deprecated. Added a message about it.
+
+### @semcore/switch
+
+- **Changed** Updated major dependency `@semcore/neighbor-location` [2.3.15 ~> 3.0.0]
+- **Changed** Improved accessibility with labeling switch by currently picked option.
+
+### @semcore/tab-line
+
+- **Changed** Updated major dependency `@semcore/neighbor-location` [2.3.15 ~> 3.0.0]
+
+### @semcore/tab-panel
+
+- **Added** Added styles for panel consisting only of an icon.
+
+### @semcore/utils
+
+- **Fixed** Added a check for empty children for `addonTextChildren` function.
+
+### @semcore/widget-empty
+
+- **Changed** Moved svg illustrations to `@semcore/illustration` component.
+
 ## [12.6.0] - 2022-09-22
 
 ### @semcore/chart
@@ -710,11 +1018,6 @@
 
 - **Changed** Rewrite the component to svg.
 - **Added** Rounded corners.
-
-### @semcore/legacy-publisher
-
-- **Changed** Added slack notifications.
-- **Changed** Rewritten to typescript.
 
 ### @semcore/tag
 

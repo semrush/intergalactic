@@ -26,10 +26,12 @@ export function Item(props: ItemAsProps) {
     <SItemContainer
       render={Box}
       selected={selected}
-      aria-selected={selected}
       value={value}
       displayLabel={displayLabel}
       lightBackground={opacity(value, 0.15)}
+      role="listitem"
+      aria-atomic="true"
+      aria-label={value ? `Color ${value}` : 'Clear color'}
     >
       {!value && (
         <SLine

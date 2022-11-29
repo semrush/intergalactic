@@ -136,7 +136,7 @@ const View: React.FC<AsProps & { inlineEditContainerRef: React.RefObject<HTMLEle
       preserveNode
       tabIndex={0}
       aria-hidden={!visible}
-      role="button"
+      aria-label="Tap to edit"
       ref={containerRef}
       onClick={visible ? props.onEdit : undefined}
       onKeyDown={handlekeyDown}

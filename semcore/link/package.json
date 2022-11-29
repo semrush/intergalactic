@@ -1,7 +1,7 @@
 {
   "name": "@semcore/link",
   "description": "Semrush Link Component",
-  "version": "4.1.5",
+  "version": "4.2.3",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -13,13 +13,13 @@
     "test": "jest --no-cache"
   },
   "dependencies": {
-    "@semcore/utils": "^3.37",
+    "@semcore/utils": "^3.40.0",
     "@semcore/typography": "^4",
     "@semcore/flex-box": "^4"
   },
   "peerDependencies": {
     "@semcore/core": "^1.11",
-    "react": "16.8 - 17"
+    "react": "16.8 - 18"
   },
   "jest": {
     "preset": "@semcore/jest-preset-ui"
@@ -30,7 +30,7 @@
     "directory": "semcore/link"
   },
   "devDependencies": {
-    "@types/react": "16.8 - 17",
+    "@types/react": "18.0.21",
     "@semcore/jest-preset-ui": "1.0.0",
     "@semcore/icon": "*"
   }

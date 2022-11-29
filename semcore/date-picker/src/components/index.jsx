@@ -8,10 +8,29 @@ import ChevronLeft from '@semcore/icon/ChevronLeft/m';
 import ChevronRight from '@semcore/icon/ChevronRight/m';
 import { callAllEventHandlers } from '@semcore/utils/lib/assignProps';
 import ButtonTrigger from './ButtonTrigger';
+import InputTriggerBase from './InputTrigger';
 
+/** @deprecated `DatePicker.Trigger` is deprecated, consider migrating to `DatePicker.InputTrigger` instead */
 export function Trigger() {
   return <Root render={Dropdown.Trigger} tag={ButtonTrigger} />;
 }
+
+export function InputTrigger() {
+  return (
+    <Root
+      render={Dropdown.Trigger}
+      tag={InputTriggerBase}
+      __excludeProps={['role', 'aria-haspopup', 'onChange', 'value']}
+    />
+  );
+}
+InputTrigger.Indicator = InputTriggerBase.Indicator;
+InputTrigger.MaskedInput = InputTriggerBase.MaskedInput;
+InputTrigger.Addon = InputTriggerBase.Addon;
+InputTrigger.SingleDateInput = InputTriggerBase.SingleDateInput;
+InputTrigger.DateRange = InputTriggerBase.DateRange;
+InputTrigger.DateRangeFromInput = InputTriggerBase.DateRangeFromInput;
+InputTrigger.DateRangeToInput = InputTriggerBase.DateRangeToInput;
 
 export function Popper(props) {
   const SPopper = Root;

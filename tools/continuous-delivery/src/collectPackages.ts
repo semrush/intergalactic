@@ -49,7 +49,9 @@ export const collectPackages = async (inNpmVersions: { [packageName: string]: st
         };
       }),
     )
-  ).filter((file) => file !== null);
+  )
+    .filter((file) => file !== null)
+    .map((file) => file!);
 
   const knownPackages = Object.fromEntries(files.map(({ packageFile: { name } }) => [name, true]));
 
@@ -64,10 +66,10 @@ export const collectPackages = async (inNpmVersions: { [packageName: string]: st
 
     const dependencies: Package['dependencies'] = {};
     for (const dependenciesType of ['dependencies']) {
-      for (const dependency in packageFile[dependenciesType]) {
+      for (const dependency in packageFile[dependenciesType as 'dependencies']) {
         if (!knownPackages[dependency]) continue;
 
-        const version = packageFile[dependenciesType][dependency];
+        const version = packageFile[dependenciesType as 'dependencies'][dependency];
         if (!isValidSemver(version)) {
           throw new Error(
             `Invalid dependency "${dependency}" version "${version}" in ${packageFilePath}`,
@@ -92,7 +94,7 @@ export const collectPackages = async (inNpmVersions: { [packageName: string]: st
 
   for (const packageFile of packages) {
     const scope = packageFile.name.startsWith('@') ? packageFile.name.split('/')[0] : null;
-    scopes.add(scope);
+    if (scope) scopes.add(scope);
   }
 
   if (scopes.size > 1 && [...scopes][0] !== '@semcore') {

@@ -1,7 +1,7 @@
 import React from 'react';
-import Button from '@semcore/button';
-import Modal from '@semcore/modal';
-import { Text } from '@semcore/typography';
+import Button from '@semcore/ui/button';
+import Modal from '@semcore/ui/modal';
+import { Text } from '@semcore/ui/typography';
 
 const Demo = () => {
   const [visible, setVisible] = React.useState(false);

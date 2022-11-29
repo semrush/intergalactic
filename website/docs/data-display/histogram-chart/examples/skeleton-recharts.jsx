@@ -1,5 +1,5 @@
 import React from 'react';
-import { HistogramChartSkeleton } from '@semcore/skeleton';
+import { HistogramChartSkeleton } from '@semcore/ui/skeleton';
 
 export default () => (
   <React.Fragment>

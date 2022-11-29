@@ -2,59 +2,48 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [3.0.34] - 2022-10-04
+## [3.2.12] - 2022-11-28
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/utils` [3.37.1 ~> 3.37.2], `@semcore/flex-box` [4.5.11 ~> 4.5.12], `@semcore/button` [4.0.17 ~> 4.0.18], `@semcore/input` [3.0.15 ~> 3.0.16], `@semcore/select` [3.1.4 ~> 3.1.5]).
+- Version patch update due to children dependencies update (`@semcore/select` [3.2.12 ~> 3.2.13]).
 
-## [3.0.33] - 2022-09-29
+## [3.2.4] - 2022-10-30
 
-### Changed
+### Fixed
 
-- Version patch update due to children dependencies update (`@semcore/select` [3.1.2 ~> 3.1.3]).
+- Fixed that some secret combination of arrows pressing was causing infinite focus call and temporary freeze of browser.
+- Fixed Screen readers support.
 
-## [3.0.32] - 2022-09-21
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/select` [3.1.1 ~> 3.1.2]).
-
-## [3.0.31] - 2022-09-21
+## [3.2.3] - 2022-10-24
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/select` [3.1.0 ~> 3.1.1]).
+- Version patch update due to children dependencies update (`@semcore/select` [3.2.4 ~> 3.2.5]).
 
-## [3.0.30] - 2022-09-21
+## [3.2.0] - 2022-10-17
 
-### Changed
+### Fixed
 
-- Version patch update due to children dependencies update (`@semcore/select` [3.0.25 ~> 3.1.0]).
+- Fixed support of Safari.
 
-## [3.0.29] - 2022-09-20
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/button` [4.0.16 ~> 4.0.17], `@semcore/select` [3.0.24 ~> 3.0.25]).
-
-## [3.0.28] - 2022-08-30
+## [3.1.1] - 2022-10-17
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/utils` [3.37.0 ~> 3.37.1], `@semcore/flex-box` [4.5.10 ~> 4.5.11], `@semcore/button` [4.0.15 ~> 4.0.16], `@semcore/input` [3.0.14 ~> 3.0.15], `@semcore/select` [3.0.23 ~> 3.0.24]).
+- Version patch update due to children dependencies update (`@semcore/select` [3.2.0 ~> 3.2.1]).
 
-## [3.0.27] - 2022-08-30
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/button` [4.0.14 ~> 4.0.15]).
-
-## [3.0.26] - 2022-08-25
+## [3.1.0] - 2022-10-10
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/button` [4.0.13 ~> 4.0.14]).
+- Added support for React 18 🔥
+
+## [3.0.36] - 2022-10-10
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/button` [4.0.18 ~> 4.1.0], `@semcore/input` [3.0.16 ~> 3.1.0], `@semcore/select` [3.1.6 ~> 3.1.7]).
 
 ## [3.0.25] - 2022-08-23
 
@@ -68,96 +57,6 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Version patch update due to children dependencies update (`@semcore/button` [4.0.12 ~> 4.0.13]).
 
-## [3.0.23] - 2022-08-18
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/select` [3.0.21 ~> 3.0.22]).
-
-## [3.0.22] - 2022-08-18
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/select` [3.0.20 ~> 3.0.21]).
-
-## [3.0.21] - 2022-08-18
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/utils` [3.36.0 ~> 3.37.0], `@semcore/flex-box` [4.5.9 ~> 4.5.10], `@semcore/button` [4.0.11 ~> 4.0.12], `@semcore/input` [3.0.12 ~> 3.0.13], `@semcore/select` [3.0.19 ~> 3.0.20]).
-
-## [3.0.20] - 2022-08-11
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/utils` [3.35.1 ~> 3.36.0], `@semcore/flex-box` [4.5.8 ~> 4.5.9], `@semcore/button` [4.0.10 ~> 4.0.11], `@semcore/input` [3.0.11 ~> 3.0.12], `@semcore/select` [3.0.18 ~> 3.0.19]).
-
-## [3.0.19] - 2022-07-25
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/select` [3.0.16 ~> 3.0.17]).
-
-## [3.0.18] - 2022-07-25
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/input` [3.0.9 ~> 3.0.10], `@semcore/select` [3.0.15 ~> 3.0.16]).
-
-## [3.0.17] - 2022-07-22
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/utils` [3.34.0 ~> 3.35.0], `@semcore/flex-box` [4.5.6 ~> 4.5.7], `@semcore/button` [4.0.8 ~> 4.0.9], `@semcore/input` [3.0.8 ~> 3.0.9], `@semcore/select` [3.0.14 ~> 3.0.15]).
-
-## [3.0.16] - 2022-07-21
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/select` [3.0.13 ~> 3.0.14]).
-
-## [3.0.15] - 2022-07-18
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/select` [3.0.12 ~> 3.0.13]).
-
-## [3.0.14] - 2022-07-14
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/input` [3.0.7 ~> 3.0.8], `@semcore/select` [3.0.11 ~> 3.0.12]).
-
-## [3.0.13] - 2022-07-14
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/button` [4.0.7 ~> 4.0.8], `@semcore/input` [3.0.6 ~> 3.0.7], `@semcore/select` [3.0.10 ~> 3.0.11]).
-
-## [3.0.12] - 2022-07-13
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/select` [3.0.9 ~> 3.0.10]).
-
-## [3.0.11] - 2022-06-02
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/utils` [3.32.2 ~> 3.33.0], `@semcore/flex-box` [4.5.4 ~> 4.5.5], `@semcore/button` [4.0.5 ~> 4.0.6], `@semcore/input` [3.0.4 ~> 3.0.5], `@semcore/select` [3.0.7 ~> 3.0.8]).
-
-## [3.0.10] - 2022-05-31
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/utils` [3.32.1 ~> 3.32.2], `@semcore/flex-box` [4.5.3 ~> 4.5.4], `@semcore/button` [4.0.4 ~> 4.0.5], `@semcore/input` [3.0.3 ~> 3.0.4], `@semcore/select` [3.0.6 ~> 3.0.7]).
-
-## [3.0.9] - 2022-05-31
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/select` [3.0.5 ~> 3.0.6]).
-
 ## [3.0.8] - 2022-05-30
 
 ### Fixed
@@ -169,30 +68,6 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### Changed
 
 - Version patch update due to children dependencies update (`@semcore/button` [4.0.3 ~> 4.0.4]).
-
-## [3.0.6] - 2022-05-23
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/input` [3.0.2 ~> 3.0.3], `@semcore/select` [3.0.4 ~> 3.0.5]).
-
-## [3.0.5] - 2022-05-23
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/button` [4.0.2 ~> 4.0.3]).
-
-## [3.0.4] - 2022-05-19
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/select` [3.0.3 ~> 3.0.4]).
-
-## [3.0.3] - 2022-05-19
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/utils` [3.32.0 ~> 3.32.1], `@semcore/flex-box` [4.5.1 ~> 4.5.3], `@semcore/button` [4.0.1 ~> 4.0.2], `@semcore/input` [3.0.1 ~> 3.0.2], `@semcore/select` [3.0.2 ~> 3.0.3]).
 
 ## [3.0.2] - 2022-05-19
 
@@ -217,48 +92,6 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### Changed
 
 - Version patch update due to children dependencies update (`@semcore/select` [2.7.11 ~> 2.7.12]).
-
-## [2.4.15] - 2022-04-28
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/select` [2.7.10 ~> 2.7.11]).
-
-## [2.4.14] - 2022-04-25
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/select` [2.7.9 ~> 2.7.10]).
-
-## [2.4.13] - 2022-04-21
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/select` [2.7.8 ~> 2.7.9]).
-
-## [2.4.12] - 2022-03-21
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/select` [2.7.7 ~> 2.7.8]).
-
-## [2.4.11] - 2022-03-14
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/utils` [3.31.2 ~> 3.31.2], `@semcore/flex-box` [4.5.0 ~> 4.5.1], `@semcore/button` [3.3.6 ~> 3.3.7], `@semcore/input` [2.2.4 ~> 2.2.5], `@semcore/select` [2.7.6 ~> 2.7.7]).
-
-## [2.4.10] - 2022-03-10
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/select` [2.7.5 ~> 2.7.6]).
-
-## [2.4.9] - 2022-03-05
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/select` [2.7.4 ~> 2.7.5]).
 
 ## [2.4.6] - 2022-02-24
 

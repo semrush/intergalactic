@@ -1,5 +1,6 @@
 import React from 'react';
 import { ROW_GROUP } from './DataTable';
+import { Property } from 'csstype';
 
 export type PseudoChildPropsGetter = (
   props: { [propName: string]: unknown },
@@ -22,14 +23,17 @@ export type Column<
   resizable?: boolean;
   sortable?: boolean | SortDirection;
   sortDirection: SortDirection;
-  cssVar: string | string[];
+  varWidth: string;
+  setVar: boolean;
   data?: unknown;
   props: {
     name: string;
+    ref: React.RefObject<HTMLElement>;
   } & Partial<{
+    flex: Property.Flex;
     onClick: (event: React.MouseEvent) => void;
     onKeyDown: (event: React.KeyboardEvent) => void;
-    ref: React.RefObject<HTMLElement>;
+    forwardRef: React.Ref<HTMLElement>;
     style: React.CSSProperties;
     fixed: 'left' | 'right';
     children: React.ReactNode[];
@@ -40,7 +44,8 @@ export type Column<
     Props;
   columns: Column[];
 };
-export type Cell = Pick<Column, 'name' | 'cssVar' | 'fixed' | 'data'> & {
+export type Cell = Pick<Column, 'name' | 'fixed' | 'data'> & {
+  cssVar: string | string[];
   cellPropsLayers: PropsLayer[];
 };
 export type RowData<

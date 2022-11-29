@@ -19,11 +19,11 @@ export function Colors(props: ColorsAsProps) {
   const SColors = Root;
 
   return sstyled(styles)(
-    <SColors render={Box} role="tablist">
+    <SColors render={Box} role="list" aria-label="Preset colors">
       {Children.origin ? (
         <Children />
       ) : (
-        colors.map((color) => <ColorPicker.Item value={color} key={color} role="tab" />)
+        colors.map((color) => <ColorPicker.Item value={color} key={color} />)
       )}
     </SColors>,
   ) as React.ReactElement;
@@ -35,13 +35,13 @@ export function ColorsCustom(props: ColorsCustomAsProps) {
   const SPlusButton = 'div';
 
   return sstyled(styles)(
-    <SColors render={Box} role="tablist">
+    <SColors render={Box} role="list" aria-label="Custom color field container">
       {Children.origin ? (
         <Children />
       ) : (
-        colors.map((color) => <PaletteManager.Item value={color} key={color} role="tab" />)
+        colors.map((color) => <PaletteManager.Item value={color} key={color} />)
       )}
-      <SPlusButton onClick={onPlusButtonClick}>
+      <SPlusButton onClick={onPlusButtonClick} aria-hidden="true">
         <MathPlusM color="gray-500" />
       </SPlusButton>
     </SColors>,

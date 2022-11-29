@@ -59,6 +59,8 @@ See detailed information in the section about data loading in the [Bar chart gui
 
 See detailed information in the [Bar chart guide](/data-display/bar-chart/#a1d837).
 
+@page stacked-bar-chart-a11y
 @page stacked-bar-chart-api
 @page stacked-bar-chart-d3-code
 @page stacked-bar-chart-recharts-code
+@page d3-chart-changelog

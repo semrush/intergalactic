@@ -1,4 +1,5 @@
-import { CProps, ReturnEl } from '@semcore/core';
+import { ReturnEl } from '@semcore/core';
+import { MapProps } from './Plot';
 import IContext from './context';
 import Area from './Area';
 
@@ -18,7 +19,7 @@ export interface IStackedAreaContext {
 }
 
 declare const StackedArea: (<T>(
-  props: CProps<IStackedAreaProps & T, IStackedAreaContext>,
+  props: MapProps<IStackedAreaProps & T, IStackedAreaContext>,
 ) => ReturnEl) & {
   Area: typeof Area;
 };

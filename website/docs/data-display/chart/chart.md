@@ -130,6 +130,7 @@ The data tooltip shall always be displayed relative to the dot with an 8px margi
 | Start of data collecting | ![new-data](static/new-data-tooltip.png) | Solid line, color of the dot corresponds to the legend. In the tooltip, the text about the beginning of data collection is 12px and has `--gray-300` color. |
 
 @## Trend and average value
+
 To display the trend line or average value on the chart, use gray color with styles: `border: solid 2px var(--gray-400)`. Similarly, we can display total values.
 
 - Dots on the line are optional.
@@ -152,3 +153,4 @@ The particular edge cases differ for different chart types, so see them in the d
 General recommendations of "empty" states for widgets with charts are described in [Error & n/a widget states](/components/widget-empty/).
 
 @page chart-code
+@page d3-chart-changelog

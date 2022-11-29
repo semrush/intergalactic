@@ -39,6 +39,8 @@ SLinkTrigger {
     border-color: transparent;
     transition: border-bottom-color 0.15s ease-in-out;
     line-height: var(--lh-200);
+    text-overflow: ellipsis;
+    overflow: hidden;
   }
 }
 

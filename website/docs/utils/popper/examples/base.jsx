@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import Popper from '@semcore/popper';
-import { Flex } from '@semcore/flex-box';
+import Popper from '@semcore/ui/popper';
+import { Flex } from '@semcore/ui/flex-box';
 
 const style = { background: '#FFF', border: '1px solid black', padding: '10px' };
 

@@ -69,7 +69,7 @@ The Close icon has `margin-left: 12px;`.
 
 ### Paddings
 
-`padding: 24px 40px 40px;`
+`padding: 24px 32px;`
 
 | Single-zone modal window                 | Dual-zone modal window                     |
 | ---------------------------------------- | ------------------------------------------ |
@@ -78,7 +78,7 @@ The Close icon has `margin-left: 12px;`.
 ### Content alignment
 
 - If there are two columns / zones for content in the modal window, the content inside them is placed with `align: left`.
-- If there is only one zone for content in the modal window, it is necessary to center the content with `align:center` horizontally. **We recommend you to consider an ordinary modal window in this case** 😏
+- If there is only one zone for content in the modal window, it is necessary to center the content with `align:center` horizontally. **We recommend you to consider a [default modal window](components/modal) in this case**.
 
 | Single-zone modal window                  | Dual-zone modal window                    |
 | ----------------------------------------- | ----------------------------------------- |
@@ -96,7 +96,7 @@ border-top: 1px solid var(--gray-200);
 
 @## CTA buttons
 
-Use buttons with M size.
+You can use buttons either M or L size depending on the context of the problem you are solving in such a modal window.
 
 > Note that the example below shows a default composition of the content. For example, buttons may not be center aligned.
 

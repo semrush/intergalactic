@@ -12,7 +12,7 @@ tabName: Design
 
 ### Types
 
-There are two types of tables in our interface – [primary](../table-primary/) and [secondary](../table-secondary/). Colors of both are based on `gray` palette.
+There are two types of tables in our design system – [primary](../table-primary/) and [secondary](../table-secondary/). Colors of both are based on the `gray` palette.
 
 ### Common styles for the table content
 
@@ -35,13 +35,10 @@ The column header should not contain the `Info` icon. Show additional informatio
 
 ### Conditions for the tooltip appearance
 
-If the text is too long, and collapsed into an ellipsis.
-
-![tooltip](static/tooltip-1.png)
-
-If the column has additional (explanatory) information.
-
-![tooltip example](static/tooltip-2.png)
+|                                                          | Appearance example                       |
+| -------------------------------------------------------- | ---------------------------------------- |
+| If the text is too long, and collapsed into an ellipsis. | ![tooltip](static/tooltip-1.png)         |
+| If the column has additional (explanatory) information.  | ![tooltip example](static/tooltip-2.png) |
 
 @## Table row states
 
@@ -83,7 +80,7 @@ If the cell was colored, it remains colored when you hover over it. The user sho
 
 ![td styles hover](static/td-style-hover.png)
 
-@## Text alignment inside a cell
+@## Content alignment inside a cell
 
 The text inside the cells in the rows and in the header is aligned according to the following rules.
 

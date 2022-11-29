@@ -1,9 +1,9 @@
 import React from 'react';
 import PlaygroundGeneration from '@components/PlaygroundGeneration';
 
-import InputMask from '@semcore/input-mask';
+import InputMask from '@semcore/ui/input-mask';
 
-const SIZES = ['s', 'm', 'l'];
+const SIZES = ['m', 'l'];
 const STATES = ['normal', 'invalid', 'valid'];
 
 const Preview = (preview) => {

@@ -4,38 +4,32 @@ import fs from 'fs-extra';
 import glob from 'fast-glob';
 import { fileURLToPath } from 'url';
 import { createRequire } from 'module';
+import { fetchVersionsFromNpm } from '@semcore/continuous-delivery';
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.resolve(filename, '..');
 
 const components = fs.readJSONSync(path.resolve(dirname, './components.json'));
 
-const REGISTRY_URL = 'https://registry.npmjs.org/';
 const EXPORT_DEFAULT_REG = /export ({ default }|default)/gm;
 
-const installComponents = (packages: string[]) => {
-  execSync(`npm_config_registry=${REGISTRY_URL} pnpm add ${packages.join(' ')} --exact`, {
+const installComponents = async (packages: string[]) => {
+  const latestVersions = await fetchVersionsFromNpm(packages);
+  const packageFile = await fs.readJSON(path.resolve(dirname, './package.json'));
+  packageFile.dependencies = {};
+  for (const packageName of packages) {
+    packageFile.dependencies[packageName] = latestVersions[packageName];
+  }
+  await fs.writeJSON(path.resolve(dirname, './package.json'), packageFile, { spaces: 2 });
+  execSync(`pnpm install --frozen-lockfile false`, {
     stdio: 'inherit',
     cwd: dirname,
   });
 
-  const nestedNodeModulesAllowList = {
-    // remove after external theme update (https://github.com/semrush/intergalactic/tree/feature/restyling) will be merged (approx may 10 2022)
-    './node_modules/@semcore/project-create/node_modules/final-form': '4.18.7',
-    './node_modules/@semcore/project-create/node_modules/react-final-form': '6.3.5',
-    './node_modules/@semcore/utils/node_modules/classnames': '2.3.1',
-    './node_modules/@semcore/chart/node_modules/@upsetjs/venn.js': '1.4.2',
-    // Exclude @semcore/chart from @semcore/ui and remove followings
-    './node_modules/@semcore/chart/node_modules/d3-selection': '3.0.0',
-    './node_modules/@semcore/d3-chart/node_modules/d3-array': '3.1.6',
-    './node_modules/@semcore/d3-chart/node_modules/d3-color': '3.1.0',
-    './node_modules/@semcore/d3-chart/node_modules/d3-interpolate': '3.0.1',
-    './node_modules/@semcore/d3-chart/node_modules/internmap': '2.0.3',
-  };
-
   const nestedNodeModules = glob
     .sync('**/node_modules/**/package.json', {
       cwd: path.resolve(dirname, 'node_modules/@semcore'),
+      followSymbolicLinks: false,
     })
     .map(
       (packageFilePath) =>
@@ -46,11 +40,6 @@ const installComponents = (packages: string[]) => {
       const { version } = fs.readJsonSync(path.resolve(dirname, relativePath, 'package.json'));
 
       return `${relativePath} @${version}`;
-    })
-    .filter((dependency) => {
-      const [relativePath, version] = dependency.split(' @');
-      if (!nestedNodeModulesAllowList[relativePath]) return true;
-      return nestedNodeModulesAllowList[relativePath] !== version;
     });
 
   if (nestedNodeModules.length > 0) {
@@ -115,19 +104,22 @@ const GENERATOR = {
   UTILS: async (dependency: string, name: string) => {
     const require = createRequire(import.meta.url);
     const utilsMain = require.resolve(dependency);
-    const utilsPath = path.join(utilsMain, '..');
-    const utils = glob.sync('**/*.+(js|ts)', { cwd: utilsPath });
+    const utilsDistPath = path.join(utilsMain, '..');
+    const utilsPath = path.join(utilsDistPath, '..');
+    const utils = glob.sync('**/*.+(js|ts)', { cwd: utilsDistPath });
     for (const util of utils) {
       const utilNameWithoutExtention = util.replace(/\.(d\.)?(t|j)s$/, '');
 
       // index.js of utils throws & useless, so we copy it
       if (utilNameWithoutExtention === 'index') {
-        await fs.copy(`${utilsPath}/${util}`, `./${name}/lib/${util}`);
+        await fs.copy(`${utilsDistPath}/${util}`, `./${name}/lib/${util}`);
         continue;
       }
 
       for (const extension of exportExtensions) {
-        const defaultExport = await hasExportDefault(`${utilsPath}/${utilNameWithoutExtention}`);
+        const defaultExport = await hasExportDefault(
+          `${utilsDistPath}/${utilNameWithoutExtention}`,
+        );
         const template = defaultExport
           ? EXPORT_TEMPLATES[extension].LIB_DEFAULT
           : EXPORT_TEMPLATES[extension].LIB_NAMED;
@@ -138,6 +130,7 @@ const GENERATOR = {
         );
       }
     }
+    await fs.copy(`${utilsPath}/style`, `./${name}/style`);
   },
   ICONS: async (dependency: string, name: string) => {
     const require = createRequire(import.meta.url);

@@ -1,6 +1,6 @@
 import React from 'react';
-import DataTable from '@semcore/data-table';
-import ProgressBar from '@semcore/progress-bar';
+import DataTable from '@semcore/ui/data-table';
+import ProgressBar from '@semcore/ui/progress-bar';
 
 export default () => {
   return (

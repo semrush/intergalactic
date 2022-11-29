@@ -1,9 +1,9 @@
 import React from 'react';
-import Sticky from '@semcore/sticky';
-import SpinContainer from '@semcore/spin-container';
-import { Text } from '@semcore/typography';
-import Spin from '@semcore/spin';
-import { ScrollArea } from '@semcore/scroll-area';
+import { Box } from '@semcore/ui/flex-box';
+import SpinContainer from '@semcore/ui/spin-container';
+import { Text } from '@semcore/ui/typography';
+import Spin from '@semcore/ui/spin';
+import { ScrollArea } from '@semcore/ui/scroll-area';
 
 const Demo = () => (
   <ScrollArea h={300}>
@@ -19,9 +19,9 @@ const Demo = () => (
         </Text>
       </SpinContainer.Content>
       <SpinContainer.Overlay style={{ alignItems: 'flex-start' }}>
-        <Sticky top="100px">
+        <Box position="sticky" top="100px">
           <Spin size="xxl" />
-        </Sticky>
+        </Box>
       </SpinContainer.Overlay>
     </SpinContainer>
   </ScrollArea>

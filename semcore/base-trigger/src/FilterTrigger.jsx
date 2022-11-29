@@ -22,8 +22,12 @@ class RootFilterTrigger extends Component {
     const SFilterTrigger = BaseTrigger;
     const { Children, styles, empty, onClear, size, placeholder, active, disabled } = this.asProps;
 
+    if (this.asProps.role === 'button') {
+      this.asProps.role = 'group';
+    }
+
     return sstyled(styles)(
-      <SWrapper render={Box}>
+      <SWrapper render={Box} aria-label="Filter">
         <NeighborLocation>
           <SFilterTrigger
             w="100%"
@@ -34,15 +38,18 @@ class RootFilterTrigger extends Component {
             active={active}
             disabled={disabled}
           >
-            {addonTextChildren(Children, FilterTrigger.Text, [
-              FilterTrigger.Addon,
-              FilterTrigger.Counter,
-            ])}
+            {addonTextChildren(
+              Children,
+              FilterTrigger.Text,
+              [FilterTrigger.Addon, FilterTrigger.Counter],
+              empty,
+            )}
             {empty && <FilterTrigger.Addon tag={ChevronDown} />}
           </SFilterTrigger>
           {!empty && (
             <SFilterTrigger
               tag="button"
+              aria-label="Clear"
               size={size}
               empty={empty}
               selected

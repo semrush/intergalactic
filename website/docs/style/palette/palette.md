@@ -110,7 +110,7 @@ Use this for main text. Text colored in this shade can be placed on the backgrou
 
 @## Additional colors
 
-Brand colors of external services (the data can be found in Semrush interface).
+Brand colors of external services.
 
 @import color-group {"group": "additional"}
 

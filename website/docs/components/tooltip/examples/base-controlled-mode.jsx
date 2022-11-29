@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import Tooltip from '@semcore/tooltip';
-import Button from '@semcore/button';
-import { Flex } from '@semcore/flex-box';
-import Link from '@semcore/link';
+import Tooltip from '@semcore/ui/tooltip';
+import Button from '@semcore/ui/button';
+import { Flex } from '@semcore/ui/flex-box';
+import Link from '@semcore/ui/link';
 
 const Demo = () => {
   const [visible, changeVisible] = useState(false);

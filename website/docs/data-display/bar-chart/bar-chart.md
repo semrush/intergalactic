@@ -144,6 +144,8 @@ When you hover over a clickable date, it changes background `--gray-200` color w
 | ![clickable bar chart](static/interactive-2.png) | ![clickable bar chart](static/hor-widget-example.png) |
 
 @page bar-chart-vertical
+@page bar-chart-a11y
 @page bar-chart-api
 @page bar-chart-d3-code
 @page bar-chart-recharts-code
+@page d3-chart-changelog

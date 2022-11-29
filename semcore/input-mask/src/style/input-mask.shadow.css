@@ -6,16 +6,30 @@ SValue {
 }
 
 SMask {
-  width: 100%;
+  line-height: 1.25;
   position: absolute;
   left: 0.8em;
   pointer-events: none;
   letter-spacing: 0.1em;
   text-overflow: inherit;
+  white-space: nowrap;
 }
+SMask[neighborLocation='left'],
+SMask[neighborLocation='both'] {
+  left: 0;
+}
+
 SMaskHidden {
   opacity: 0;
 }
+SMaskHidden:before {
+  content: attr(data-content);
+}
 SPlaceholder {
   opacity: 0.5;
+}
+SMaskHidden:before,
+SMaskVisible::before,
+SPlaceholder:before {
+  content: attr(data-content);
 }

@@ -1,12 +1,12 @@
 import React from 'react';
-import FeedbackForm from '@semcore/feedback-form';
-import Input from '@semcore/input';
-import { Box, Flex } from '@semcore/flex-box';
-import Link from '@semcore/link';
-import Dropdown from '@semcore/dropdown';
-import ChatXS from '@semcore/icon/Chat/m';
-import Textarea from '@semcore/textarea';
-import { Text } from '@semcore/typography';
+import FeedbackForm from '@semcore/ui/feedback-form';
+import Input from '@semcore/ui/input';
+import { Box, Flex } from '@semcore/ui/flex-box';
+import Link from '@semcore/ui/link';
+import Dropdown from '@semcore/ui/dropdown';
+import ChatXS from '@semcore/ui/icon/Chat/m';
+import Textarea from '@semcore/ui/textarea';
+import { Text } from '@semcore/ui/typography';
 
 const validate = {
   description: (value = '') => {
@@ -30,9 +30,8 @@ const validate = {
 };
 
 class Feedback extends React.PureComponent {
-  handleChange = (fn, trigger) => (value, e) => {
+  handleChange = (fn) => (value, e) => {
     fn(e);
-    this.props.onChange(e, trigger);
   };
 
   render() {
@@ -63,7 +62,7 @@ class Feedback extends React.PureComponent {
                   {...input}
                   autoFocus
                   h={80}
-                  onChange={this.handleChange(input.onChange, 'description')}
+                  onChange={this.handleChange(input.onChange)}
                   id="suggestions"
                 />
               )}
@@ -76,11 +75,7 @@ class Feedback extends React.PureComponent {
             <FeedbackForm.Item name="email" validate={validate.email} initialValue={value.email}>
               {({ input }) => (
                 <Input state={input.state}>
-                  <Input.Value
-                    {...input}
-                    onChange={this.handleChange(input.onChange, 'email')}
-                    id="email"
-                  />
+                  <Input.Value {...input} onChange={this.handleChange(input.onChange)} id="email" />
                 </Input>
               )}
             </FeedbackForm.Item>
@@ -134,13 +129,11 @@ class FeedbackLink extends React.PureComponent {
     const { status, value } = this.state;
     return (
       <Dropdown>
-        <Dropdown.Trigger>
-          <Link>
-            <Link.Addon>
-              <ChatXS />
-            </Link.Addon>
-            <Link.Text>Send feedback</Link.Text>
-          </Link>
+        <Dropdown.Trigger tag={Link}>
+          <Link.Addon>
+            <ChatXS />
+          </Link.Addon>
+          <Link.Text>Send feedback</Link.Text>
         </Dropdown.Trigger>
         <Dropdown.Popper>
           {(props, { visible }) => (

@@ -101,6 +101,8 @@ More information about this state see in the guide for [Skeleton](/components/sk
 
 ![skeleton](static/skeleton.png)
 
+@page area-chart-a11y
 @page area-chart-api
 @page area-chart-d3-code
 @page area-chart-recharts-code
+@page d3-chart-changelog

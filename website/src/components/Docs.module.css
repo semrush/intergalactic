@@ -1,12 +1,3 @@
-.tab {
-  position: relative;
-  overflow: auto;
-  margin-bottom: 32px;
-}
-.tab > div:first-child > div {
-  background-color: #ff622d;
-  height: 2px;
-}
 .main h2 {
   font-family: 'Factor A';
   font-weight: 500;
@@ -14,23 +5,43 @@
   line-height: 120%;
   margin: 32px 0 16px;
 }
+
 .main h2:first-child {
   margin: 0 0 16px;
 }
+
 .main h3 {
   font-size: 18px;
   line-height: 110%;
   margin: 32px 0 16px 0;
   font-weight: 700;
 }
+
 .main h4 {
   font-size: 16px;
   line-height: 150%;
   margin: 16px 0;
   font-weight: 700;
 }
+
 .tabLine {
+  margin-bottom: 32px;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.tabLine .tabLineItem {
+  min-width: auto;
   font-weight: 700;
+}
+
+.tabLine > div {
+  background-color: #ff622d;
+  bottom: 0;
+}
+
+.tabLineItem:hover::after {
+  bottom: 0;
 }
 
 /* crunch */

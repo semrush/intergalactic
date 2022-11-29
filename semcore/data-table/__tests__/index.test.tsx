@@ -61,7 +61,7 @@ describe('DataTable', () => {
   shouldSupportClassName(DataTable);
   shouldSupportRef(DataTable);
 
-  test('base render', async () => {
+  test('renders correctly', async () => {
     const component = (
       <div style={{ width: 800 }}>
         <DataTable data={data}>
@@ -141,12 +141,35 @@ describe('DataTable', () => {
       <div style={{ width: 800 }}>
         <DataTable data={data}>
           <DataTable.Head>
-            <DataTable.Column name="keyword" children="Keyword" />
+            <DataTable.Column name="keyword">
+              Keyword
+              <br />
+              Keyword
+            </DataTable.Column>
             <DataTable.Column name="kd" children="KD,%" justifyContent="flex-end" />
             <DataTable.Column name="cpc" children="CPC" justifyContent="flex-end" />
-            <DataTable.Column name="vol" children="Vol." justifyContent="flex-end" />
+            <DataTable.Column
+              name="vol"
+              children="Vol."
+              justifyContent="flex-end"
+              alignItems="flex-end"
+            />
           </DataTable.Head>
-          <DataTable.Body />
+          <DataTable.Body>
+            <DataTable.Cell name="keyword">
+              {(props, row) => {
+                return {
+                  children: (
+                    <>
+                      {row[props.name]}
+                      <br />
+                      {row[props.name]}
+                    </>
+                  ),
+                };
+              }}
+            </DataTable.Cell>
+          </DataTable.Body>
         </DataTable>
       </div>
     );
@@ -190,7 +213,7 @@ describe('DataTable', () => {
     expect(await snapshot(component)).toMatchImageSnapshot();
   });
 
-  /** Currenty screenshot service unable to execute js and scroll area shadows needs to run js for containers measuring */
+  /** Currently screenshot service unable to execute js and scroll area shadows needs to run js for containers measuring */
   xtest('Fixed columns', async () => {
     const component = (
       <div style={{ width: 500 }}>
@@ -248,7 +271,7 @@ describe('DataTable', () => {
     expect(await snapshot(component)).toMatchImageSnapshot();
   });
 
-  /** Currenty screenshot service unable to execute js and portals needs to run js for dom manipulations */
+  /** Currently screenshot service unable to execute js and portals needs to run js for dom manipulations */
   xtest('Header separation', async () => {
     const Component = () => {
       const portalRef = React.useRef(null);
@@ -782,5 +805,18 @@ describe('DataTable.Column', () => {
       </DataTable>,
     );
     expect(getByTestId('column').style.flex).toBe('0 0px');
+  });
+
+  test('Should support ref', () => {
+    const spy = jest.fn();
+    render(
+      <DataTable data={[]}>
+        <DataTable.Head>
+          <DataTable.Column name="keyword" ref={spy} />
+          <DataTable.Column name="kd" />
+        </DataTable.Head>
+      </DataTable>,
+    );
+    expect(spy).toBeCalled();
   });
 });

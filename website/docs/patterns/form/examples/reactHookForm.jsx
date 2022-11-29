@@ -1,21 +1,21 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { useForm, Controller } from 'react-hook-form';
-import Select from '@semcore/select';
-import NeighborLocation from '@semcore/neighbor-location';
-import { Flex, Box } from '@semcore/flex-box';
-import { Text } from '@semcore/typography';
-import Input from '@semcore/input';
-import Tooltip from '@semcore/tooltip';
-import CloseXS from '@semcore/icon/Close/m';
-import CalendarM from '@semcore/icon/Calendar/m';
-import Flag, { iso2Name } from '@semcore/flags';
-import InputMask, { getAfterPositionValue } from '@semcore/input-mask';
+import Select from '@semcore/ui/select';
+import NeighborLocation from '@semcore/ui/neighbor-location';
+import { Flex, Box } from '@semcore/ui/flex-box';
+import { Text } from '@semcore/ui/typography';
+import Input from '@semcore/ui/input';
+import Tooltip from '@semcore/ui/tooltip';
+import CloseXS from '@semcore/ui/icon/Close/m';
+import CalendarM from '@semcore/ui/icon/Calendar/m';
+import Flag, { iso2Name } from '@semcore/ui/flags';
+import InputMask, { getAfterPositionValue } from '@semcore/ui/input-mask';
 import TimePicker from '@semcore/time-picker';
-import InputTags from '@semcore/input-tags';
-import Radio, { RadioGroup } from '@semcore/radio';
-import Checkbox from '@semcore/checkbox';
-import Textarea from '@semcore/textarea';
-import Button from '@semcore/button';
+import InputTags from '@semcore/ui/input-tags';
+import Radio, { RadioGroup } from '@semcore/ui/radio';
+import Checkbox from '@semcore/ui/checkbox';
+import Textarea from '@semcore/ui/textarea';
+import Button from '@semcore/ui/button';
 import dayjs from 'dayjs';
 
 const CountryCodes = {

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import Button from '@semcore/button';
-import { Text } from '@semcore/typography';
+import Button from '@semcore/ui/button';
+import { Text } from '@semcore/ui/typography';
 import SidePanel from '@semcore/side-panel';
 
 export default () => {

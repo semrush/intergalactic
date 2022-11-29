@@ -266,6 +266,10 @@ type Token =
       load: string;
     }
   | {
+      type: 'embedded_video';
+      url: string;
+    }
+  | {
       type: 'email_html';
       raw: string;
       compiled: string;
@@ -314,9 +318,11 @@ export const buildArticle = async (
   const dependencies: string[] = [];
   const legacyHeaderHashes: { [legacyHash: string]: string } = {};
 
+  const tokensMetadata = new Map<Token, { caption: string }>();
+
   const tokens = (
     await Promise.all(
-      markdownAst.children.map(async (token): Promise<Token | Token[]> => {
+      markdownAst.children.map(async (token, index): Promise<Token | Token[]> => {
         const position = stringifyTokenPosition(fullPath, token, metaHeight);
         if (token.type === 'heading') {
           if (!token.children[0]) {
@@ -412,6 +418,29 @@ export const buildArticle = async (
 
               return subArticle.tokens;
             }
+            if (text.startsWith('@embedded_video ')) {
+              const link = token.children[1];
+              if (link && link.type === 'link') {
+                let { url } = link;
+
+                if (url.startsWith('https://www.loom.com/share/')) {
+                  url =
+                    `https://www.loom.com/embed/` +
+                    url.substring('https://www.loom.com/share/'.length);
+                }
+                if (url.startsWith('https://www.youtube.com/watch?v=')) {
+                  const urlParams = new URLSearchParams(
+                    url.substring('https://www.youtube.com/watch?'.length),
+                  );
+                  url = `https://www.youtube.com/embed/` + urlParams.get('v');
+                }
+
+                return {
+                  type: 'embedded_video',
+                  url,
+                };
+              }
+            }
             if (text.startsWith('@email_html ')) {
               const paths = text.substring('@email_html '.length);
               const [compiledRelativePath, rawRelativePath] = paths.split(' ');
@@ -480,12 +509,26 @@ export const buildArticle = async (
                 dependencies: typing.dependencies,
               };
             }
+            if (text.startsWith('@table-caption ')) {
+              const nextToken = markdownAst.children[index + 1];
+              if (nextToken.type !== 'table') {
+                // eslint-disable-next-line no-console
+                console.log(nextToken);
+                throw new Error(
+                  `@table-caption at-rule is only allowed right before tables, what was found see above`,
+                );
+              }
+              const caption = text.substring('@table-caption '.length);
+              tokensMetadata.set(nextToken, { caption });
+
+              return null;
+            }
           }
         }
 
         return {
           type: 'text',
-          html: markdownTokenToHtml(token),
+          html: markdownTokenToHtml(token, tokensMetadata.get(token)),
         };
       }),
     )

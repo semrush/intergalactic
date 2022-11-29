@@ -94,6 +94,7 @@ class Value extends Component {
           size={size}
           state={state}
           keyboardFocused={keyboardFocused}
+          checked={controlProps.checked}
           {...boxProps}
         />
       </>,

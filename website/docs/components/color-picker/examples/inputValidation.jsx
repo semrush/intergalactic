@@ -1,5 +1,5 @@
 import React from 'react';
-import ColorPicker, { PaletteManager } from '@semcore/color-picker';
+import ColorPicker, { PaletteManager } from '@semcore/ui/color-picker';
 
 const Demo = () => {
   const [state, setState] = React.useState('normal');

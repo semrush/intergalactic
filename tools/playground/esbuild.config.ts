@@ -21,7 +21,7 @@ esbuild
       bundle: true,
       sourcemap: true,
       outdir: './public/dist',
-      publicPath: 'dist',
+      publicPath: '/dist',
       plugins: [
         esbuildPluginPlaygroundsLoader('./examples'),
         esbuildPluginSemcoreSourcesResolve(resolvePath(fileURLToPath(import.meta.url), '../../..')),
@@ -33,7 +33,7 @@ esbuild
     },
   )
   .then(() => {
-    console.log('\nStrarted on ' + picocolros.yellow(`http://localhost:${port}` + '\n'));
+    console.log('\nStarted on ' + picocolros.yellow(`http://localhost:${port}` + '\n'));
   })
   .catch((err) => {
     console.error(err);

@@ -123,5 +123,7 @@ Otherwise, it can visually distort the presence of a correlation between the dat
 
 ![scatterplot with several datasets](static/categories-yes-no.png)
 
+@page scatterplot-chart-a11y
 @page scatterplot-chart-api
 @page scatterplot-chart-d3-code
+@page d3-chart-changelog

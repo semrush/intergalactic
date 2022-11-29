@@ -1,10 +1,11 @@
 ## Automated screen reader testing
 
-_Intergalactic v12.6.0, React v18.2.0, Playwright v1.25.1,
+_Intergalactic v13.1.1, React v18.2.0, Playwright v1.25.1,
 Guidepup v0.13.1, MacOS Big Sur 11._
 
 **Running screen reader against [this file](https://github.com/semrush/intergalactic/blob/master/website/docs/components/select/examples/basic.jsx).**
 
+```
 1. Screen reader goes into the active element.
 2. Screen reader says "Select an option, sir 🧐 list box pop up button".
 3. Screen reader presses the "Control+Option+Space" button.
@@ -17,3 +18,4 @@ Guidepup v0.13.1, MacOS Big Sur 11._
 10. Screen reader says "Option 1 text (2 of 6)".
 11. Screen reader presses the "Control+Option+Space" button.
 12. Screen reader says "Label 1 Select an option, sir 🧐 list box pop up button".
+```

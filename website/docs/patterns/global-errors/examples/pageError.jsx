@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
-import Select from '@semcore/select';
-import { I18nProvider } from '@semcore/utils/lib/enhances/WithI18n';
+import Select from '@semcore/ui/select';
+import { I18nProvider } from '@semcore/ui/utils/lib/enhances/WithI18n';
 import {
   AccessDenied,
   Maintenance,
   PageError,
   PageNotFound,
   ProjectNotFound,
-} from '@semcore/errors';
+} from '@semcore/ui/errors';
 
 const options = ['de', 'en', 'es', 'fr', 'it', 'ja', 'pt', 'ru', 'zh', 'ko', 'vi'].map((o) => ({
   value: o,

@@ -1,6 +1,6 @@
 import React from 'react';
-import TabPanel from '@semcore/tab-panel';
-import Badge from '@semcore/badge';
+import TabPanel from '@semcore/ui/tab-panel';
+import Badge from '@semcore/ui/badge';
 import PlaygroundGeneration from '@components/PlaygroundGeneration';
 
 export default PlaygroundGeneration(

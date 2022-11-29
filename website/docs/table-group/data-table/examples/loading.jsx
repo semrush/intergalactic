@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import DataTable from '@semcore/data-table';
-import SpinContainer from '@semcore/spin-container';
+import DataTable from '@semcore/ui/data-table';
+import SpinContainer from '@semcore/ui/spin-container';
 
 export default () => {
   const [loading, setLoading] = useState(true);

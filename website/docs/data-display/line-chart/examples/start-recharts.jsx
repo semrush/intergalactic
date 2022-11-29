@@ -12,9 +12,9 @@ import {
   getColor,
   DefaultTooltipContent,
 } from '@semcore/chart';
-import { Box } from '@semcore/flex-box';
+import { Box } from '@semcore/ui/flex-box';
 
-let data = [
+const data = [
   { date: 1525132800000, 'onliner.by': 37588, 'semrush.com': 35396 },
   { date: 1530403200000, 'onliner.by': 35967, 'semrush.com': 35349 },
   { date: 1541030400000, 'onliner.by': 51681, 'semrush.com': 35380 },

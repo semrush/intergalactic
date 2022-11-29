@@ -81,6 +81,7 @@ function createForwardWrapper(Component, wrapperProps, statics, isFunction) {
   }
 
   class BindingWrapper extends React.Component<any> {
+    index = -1;
     render() {
       return (
         <WrapperForwardRef

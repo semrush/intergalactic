@@ -2,11 +2,11 @@
 title: Example
 ---
 
-@## Image & video galleries on the page
+@## Image & video galleries
 
 @example image
 
-@## Dots indicators
+@## Dot indicators
 
 @example dots
 
@@ -16,6 +16,9 @@ title: Example
 
 @## Hidden controls to move focus in hidden block
 
+- `ariaHidden` controls the visibility on the screens.
+- `tabIndex` controls the visibility of the focus.
+
 ```jsx
 <Carousel index={index} onIndexChange={handleChangeIndex}>
   <Carousel.Item key={ind} ariaHidden={ind === index}>
@@ -24,7 +27,3 @@ title: Example
   </Carousel.Item>
 </Carousel>
 ```
-
-`ariaHidden` - control the visibility on the screens
-
-`tabIndex` - control the visibility for the focus

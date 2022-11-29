@@ -1,6 +1,6 @@
 import React from 'react';
-import Counter from '@semcore/counter';
-import { FilterTrigger } from '@semcore/base-trigger';
+import Counter from '@semcore/ui/counter';
+import { FilterTrigger } from '@semcore/ui/base-trigger';
 
 export default () => (
   <FilterTrigger>

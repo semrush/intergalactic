@@ -1,6 +1,6 @@
 import React from 'react';
-import Tooltip from '@semcore/tooltip';
-import Button from '@semcore/button';
+import Tooltip from '@semcore/ui/tooltip';
+import Button from '@semcore/ui/button';
 
 const Demo = () => (
   <Tooltip>

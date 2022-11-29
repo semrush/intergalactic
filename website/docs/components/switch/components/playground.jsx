@@ -1,6 +1,6 @@
 import React from 'react';
-import Switch from '@semcore/switch';
-import CheckM from '@semcore/icon/Check/m';
+import Switch from '@semcore/ui/switch';
+import CheckM from '@semcore/ui/icon/Check/m';
 import PlaygroundGeneration from '@components/PlaygroundGeneration';
 
 export default PlaygroundGeneration(

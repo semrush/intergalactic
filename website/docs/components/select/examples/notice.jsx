@@ -1,7 +1,7 @@
 import React from 'react';
-import Select from '@semcore/select';
-import { Flex } from '@semcore/flex-box';
-import Notice from '@semcore/notice';
+import Select from '@semcore/ui/select';
+import { Flex } from '@semcore/ui/flex-box';
+import Notice from '@semcore/ui/notice';
 
 const options = Array(12)
   .fill('')

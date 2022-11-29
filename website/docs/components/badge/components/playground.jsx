@@ -1,6 +1,6 @@
 import React from 'react';
 import PlaygroundGeneration from '@components/PlaygroundGeneration';
-import Badge from '@semcore/badge';
+import Badge from '@semcore/ui/badge';
 
 const Preview = (preview) => {
   const { select, radio, text } = preview('Badge');

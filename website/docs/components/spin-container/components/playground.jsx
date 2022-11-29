@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import SpinContainer from '@semcore/spin-container';
+import SpinContainer from '@semcore/ui/spin-container';
 import PlaygroundGeneration from '@components/PlaygroundGeneration';
-import Input from '@semcore/input';
-import { Box } from '@semcore/flex-box';
+import Input from '@semcore/ui/input';
+import { Box } from '@semcore/ui/flex-box';
 
 let backgroundPreview = { color: 'white' };
 

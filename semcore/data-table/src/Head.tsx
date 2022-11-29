@@ -8,6 +8,7 @@ import { callAllEventHandlers } from '@semcore/utils/lib/assignProps';
 import { flattenColumns, getFixedStyle, getScrollOffsetValue } from './utils';
 import type { Column } from './types';
 import logger from '@semcore/utils/lib/logger';
+import { setRef } from '@semcore/utils/lib/ref';
 import 'resize-observer-polyfill';
 
 import scrollStyles from './style/scroll-area.shadow.css';
@@ -28,6 +29,7 @@ type AsProps = {
   columnsChildren: Column[];
   onResize: ResizeObserverCallback;
   sticky: boolean;
+  disabledScroll?: boolean;
   ['data-ui-name']: string;
 };
 
@@ -43,6 +45,13 @@ class Head extends Component<AsProps> {
   bindHandlerKeyDown = (name: string) => (event: React.KeyboardEvent) => {
     if (event.code === 'Enter') {
       this.asProps.$onSortClick(name, event);
+    }
+  };
+
+  refColumn = (props: Column['props']) => (ref: HTMLElement) => {
+    setRef(props.ref, ref);
+    if (props.forwardRef) {
+      setRef(props.forwardRef, ref);
     }
   };
 
@@ -70,6 +79,10 @@ class Head extends Component<AsProps> {
       style[name] = value;
     }
 
+    if (!column.setVar) {
+      style['flexBasis'] = `var(${column.varWidth})`;
+    }
+
     return sstyled(styles)(
       <SColumn
         role={isGroup ? undefined : 'columnheader'}
@@ -82,6 +95,7 @@ class Head extends Component<AsProps> {
         group={isGroup}
         tabIndex={column.sortable && 0}
         {...column.props}
+        ref={this.refColumn(column.props)}
         onClick={callAllEventHandlers(
           column.props.onClick,
           column.sortable ? this.bindHandlerSortClick(column.name) : undefined,
@@ -114,7 +128,8 @@ class Head extends Component<AsProps> {
   render() {
     const SHead = Root;
     const SHeadWrapper = Box;
-    const { Children, styles, columnsChildren, onResize, $scrollRef, sticky } = this.asProps;
+    const { Children, styles, columnsChildren, onResize, $scrollRef, sticky, disabledScroll } =
+      this.asProps;
 
     this.columns = flattenColumns(columnsChildren);
 
@@ -135,7 +150,7 @@ class Head extends Component<AsProps> {
           shadow
           onResize={onResize}
         >
-          <ScrollArea.Container ref={$scrollRef}>
+          <ScrollArea.Container ref={$scrollRef} disabledScroll={disabledScroll}>
             <SHead render={Box} role="row">
               {this.renderColumns(columnsChildren, 100 / this.columns.length)}
             </SHead>

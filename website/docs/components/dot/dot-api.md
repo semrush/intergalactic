@@ -7,7 +7,7 @@ fileSource: dot
 
 ```jsx
 import Dot from '@semcore/ui/dot';
-<Dot />;
+<Dot aria-label="..." />;
 ```
 
 @typescript IDotProps

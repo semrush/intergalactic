@@ -1,10 +1,15 @@
 import React from 'react';
-import { DatePicker } from '@semcore/date-picker';
+import { DatePicker } from '@semcore/ui/date-picker';
 
 function Demo() {
   return (
     <DatePicker>
-      <DatePicker.Trigger size="l" />
+      <DatePicker.InputTrigger>
+        <DatePicker.InputTrigger.SingleDateInput>
+          <DatePicker.InputTrigger.SingleDateInput.Indicator />
+          <DatePicker.InputTrigger.SingleDateInput.MaskedInput />
+        </DatePicker.InputTrigger.SingleDateInput>
+      </DatePicker.InputTrigger>
       <DatePicker.Popper />
     </DatePicker>
   );

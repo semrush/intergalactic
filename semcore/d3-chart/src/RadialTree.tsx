@@ -1,6 +1,6 @@
 import React from 'react';
 import { transition } from 'd3-transition';
-import { Component, sstyled, CProps, ReturnEl } from '@semcore/core';
+import { Component, sstyled, ReturnEl } from '@semcore/core';
 import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 import { shade } from '@semcore/utils/lib/color';
 import assignProps from '@semcore/utils/lib/assignProps';
@@ -10,6 +10,7 @@ import { measureText } from './utils';
 import { DataHintsHandler } from './a11y/hints';
 
 import style from './style/radial-tree.shadow.css';
+import type { MapProps } from './types';
 
 const baseAngle = -Math.PI / 2; // The top vertical line
 
@@ -146,7 +147,7 @@ class RadialTreeBase extends Component<RootAsProps> {
     defaultActiveKey: null,
   };
 
-  Element!: React.FC<{ render: string }>;
+  Element!: React.FC<{ children?: React.ReactNode; render: string }>;
 
   constructor(props: any) {
     super(props);
@@ -742,6 +743,7 @@ export interface IRadialTreeTitleProps {
 type RadialTreeTitleAsProps = IRadialTreeTitleProps & {
   Element: React.FC<{ render: string } & React.SVGProps<any>>;
   Children: React.FC;
+  children: React.ReactNode;
   styles: React.CSSProperties;
   dataHintsHandler: DataHintsHandler;
 };
@@ -776,14 +778,14 @@ const Title: React.FC<RadialTreeTitleAsProps> = ({
 };
 
 const RadialTree = createElement(RadialTreeBase, { Title, Radian }) as (<T>(
-  props: CProps<IRadialTreeProps & T>,
+  props: MapProps<IRadialTreeProps & T>,
 ) => ReturnEl) & {
-  Title: <T>(props: CProps<IRadialTreeTitleProps & T>) => ReturnEl;
-  Radian: (<T>(props: CProps<IRadialTreeRadianProps & T>) => ReturnEl) & {
-    Line: <T>(props: CProps<IRadialTreeRadianLineProps & T>) => ReturnEl;
-    Cap: <T>(props: CProps<IRadialTreeRadianCapProps & T>) => ReturnEl;
-    Icon: <T>(props: CProps<IRadialTreeRadianIconProps & T>) => ReturnEl;
-    Label: <T>(props: CProps<IRadialTreeRadianLabelProps & T>) => ReturnEl;
+  Title: <T>(props: MapProps<IRadialTreeTitleProps & T>) => ReturnEl;
+  Radian: (<T>(props: MapProps<IRadialTreeRadianProps & T>) => ReturnEl) & {
+    Line: <T>(props: MapProps<IRadialTreeRadianLineProps & T>) => ReturnEl;
+    Cap: <T>(props: MapProps<IRadialTreeRadianCapProps & T>) => ReturnEl;
+    Icon: <T>(props: MapProps<IRadialTreeRadianIconProps & T>) => ReturnEl;
+    Label: <T>(props: MapProps<IRadialTreeRadianLabelProps & T>) => ReturnEl;
   };
 };
 

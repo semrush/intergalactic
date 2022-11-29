@@ -22,14 +22,8 @@ const generateCategoricalChart = function (params) {
   const ReactComponent = generateCategoricalChartRecharts(params);
 
   ReactComponent.prototype.getFormatItems = function (props, currentState) {
-    const {
-      graphicalItems,
-      stackGroups,
-      offset,
-      updateId,
-      dataStartIndex,
-      dataEndIndex,
-    } = currentState;
+    const { graphicalItems, stackGroups, offset, updateId, dataStartIndex, dataEndIndex } =
+      currentState;
     const { barSize, layout, barGap, barCategoryGap, maxBarSize: globalMaxBarSize } = props;
     const { numericAxisName, cateAxisName } = this.constructor.getAxisNameByLayout(layout);
     const hasBar = this.constructor.hasBar(graphicalItems);

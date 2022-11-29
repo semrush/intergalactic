@@ -106,7 +106,7 @@ describe('ColorPicker', () => {
     expect(input.value).toBe('635472');
 
     fireEvent.focus(input);
-    const confirm = getByLabelText('Confirm color');
+    const confirm = getByLabelText('Add color to the list of custom colors');
     fireEvent.click(confirm);
 
     expect(input.value).toBe('');

@@ -2,131 +2,35 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [2.0.21] - 2022-10-04
+## [2.2.0] - 2022-11-28
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/utils` [3.37.1 ~> 3.37.2], `@semcore/card` [4.0.21 ~> 4.0.22]).
+- Component was fully rebuilt internally. Backward capability mostly preserved, legacy apis was marked as deprecated.
 
-## [2.0.20] - 2022-10-03
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/card` [4.0.20 ~> 4.0.21]).
-
-## [2.0.19] - 2022-09-29
+## [2.1.7] - 2022-11-14
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/card` [4.0.19 ~> 4.0.20]).
+- Version patch update due to children dependencies update (`@semcore/card` [4.1.6 ~> 4.1.7]).
 
-## [2.0.18] - 2022-09-21
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/card` [4.0.18 ~> 4.0.19]).
-
-## [2.0.17] - 2022-09-21
+## [2.1.5] - 2022-10-28
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/card` [4.0.17 ~> 4.0.18]).
+- Version patch update due to children dependencies update (`@semcore/utils` [3.40.0 ~> 3.40.0], `@semcore/card` [4.1.4 ~> 4.1.5]).
 
-## [2.0.16] - 2022-08-31
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/card` [4.0.16 ~> 4.0.17]).
-
-## [2.0.15] - 2022-08-30
+## [2.1.0] - 2022-10-10
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/utils` [3.37.0 ~> 3.37.1], `@semcore/card` [4.0.15 ~> 4.0.16]).
+- Added support for React 18 🔥
 
-## [2.0.14] - 2022-08-18
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/card` [4.0.14 ~> 4.0.15]).
-
-## [2.0.13] - 2022-08-18
+## [2.0.22] - 2022-10-06
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/card` [4.0.13 ~> 4.0.14]).
-
-## [2.0.12] - 2022-08-18
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/utils` [3.36.0 ~> 3.37.0], `@semcore/card` [4.0.12 ~> 4.0.13]).
-
-## [2.0.11] - 2022-08-11
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/utils` [3.35.1 ~> 3.36.0], `@semcore/card` [4.0.11 ~> 4.0.12]).
-
-## [2.0.10] - 2022-07-25
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/card` [4.0.9 ~> 4.0.10]).
-
-## [2.0.9] - 2022-07-22
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/utils` [3.34.0 ~> 3.35.0], `@semcore/card` [4.0.8 ~> 4.0.9]).
-
-## [2.0.8] - 2022-07-21
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/card` [4.0.7 ~> 4.0.8]).
-
-## [2.0.7] - 2022-07-07
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/utils` [3.33.0 ~> 3.34.0], `@semcore/card` [4.0.6 ~> 4.0.7]).
-
-## [2.0.6] - 2022-06-02
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/utils` [3.32.2 ~> 3.33.0], `@semcore/card` [4.0.5 ~> 4.0.6]).
-
-## [2.0.5] - 2022-05-31
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/utils` [3.32.1 ~> 3.32.2], `@semcore/card` [4.0.4 ~> 4.0.5]).
-
-## [2.0.4] - 2022-05-23
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/card` [4.0.3 ~> 4.0.4]).
-
-## [2.0.3] - 2022-05-19
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/flex-box` [4.5.1 ~> 4.5.3], `@semcore/utils` [3.32.0 ~> 3.32.1], `@semcore/card` [4.0.2 ~> 4.0.3]).
-
-## [2.0.2] - 2022-05-18
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/card` [4.0.1 ~> 4.0.2]).
-
-## [2.0.1] - 2022-05-18
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/card` [4.0.0 ~> 4.0.1]).
+- Version patch update due to children dependencies update (`@semcore/card` [4.0.22 ~> 4.0.23]).
 
 ## [2.0.0] - 2022-05-17
 

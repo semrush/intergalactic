@@ -1,6 +1,6 @@
 import React from 'react';
-import { Col, Row } from '@semcore/grid';
-import { Box } from '@semcore/flex-box';
+import { Col, Row } from '@semcore/ui/grid';
+import { Box } from '@semcore/ui/flex-box';
 
 const Demo = () => {
   const styleBox = {

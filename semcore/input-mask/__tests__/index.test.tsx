@@ -20,6 +20,7 @@ describe('InputMask', () => {
           title="4-digit number"
           placeholder="__ __"
           data-testid="input"
+          includeInputProps={['data-testid']}
           defaultValue={value}
         />
       </InputMask>
@@ -58,6 +59,9 @@ describe('InputMask', () => {
 describe('InputMask.Value', () => {
   afterEach(cleanup);
 
-  shouldSupportClassName(InputMask.Value, InputMask, { title: 'test mask' });
+  shouldSupportClassName(InputMask.Value, InputMask, {
+    title: 'test mask',
+    includeInputProps: ['data-testid'],
+  });
   shouldSupportRef(InputMask.Value, InputMask, { title: 'test mask' });
 });

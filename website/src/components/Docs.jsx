@@ -13,22 +13,10 @@ import ImageFromModal from './ImageFromModal';
 import scrollToHash from '../utils/scrollToHash';
 import styles from './Docs.module.css';
 
-const tabLineStyles = css`
-  STabLineItem {
-    min-width: inherit !important;
-    justify-content: flex-start;
-  }
-
-  SText {
-    font-size: 18px;
-    color: #171a22;
-  }
-`;
-
 const BLOCKQUOTE_A11Y_MAP = {
-  A: '<blockquote class="--info">\n<h4>WAI-A: Essential</h4>\n<p>This level defines the lowest or minimum level of accessibility. Assistive technology is able to read, understand, or fully operate the page or view.</p></blockquote>',
-  AA: '<blockquote class="--info">\n<h4>WAI-AA: Ideal Support</h4>\n<p>Component is usable and understandable for the majority of people with or without disabilities. The meaning conveyed and the functionality available is the same.</p></blockquote>',
-  AAA: '<blockquote class="--info">\n<h4>WAI-AAA: Specialized Support</h4>\n<p>The highest level of accessibility of a component that serve a specialized audience.</p></blockquote>',
+  A: '<blockquote class="--info">\n<h4>WCAG 2.1 A: Essential</h4>\n<p>This level defines the lowest or minimum level of accessibility. Assistive technology is able to read, understand, or fully operate the page or view.</p></blockquote>',
+  AA: '<blockquote class="--info">\n<h4>WCAG 2.1 AA: Ideal Support</h4>\n<p>Component is usable and understandable for the majority of people with or without disabilities. The meaning conveyed and the functionality available is the same.</p></blockquote>',
+  AAA: '<blockquote class="--info">\n<h4>WCAG 2.1 AAA: Specialized Support</h4>\n<p>The highest level of accessibility of a component that serve a specialized audience.</p></blockquote>',
 };
 
 function useScrollHash(options = {}) {
@@ -95,36 +83,29 @@ export const Docs = ({ route, tokens, tabs }) => {
   return (
     <SidebarWrapper>
       {Boolean(tabs.length) && (
-        <div className={styles.tab}>
-          <TabLine
-            value={match.url}
-            size="l"
-            styles={tabLineStyles}
-            underlined={false}
-            className={styles.tabLine}
-          >
-            {tabs.map((tab) => {
-              const { route } = tab;
-              return (
-                <TabLine.Item
-                  key={route}
-                  tag={NavLink}
-                  to={`/${route}/`}
-                  value={`/${route}/`}
-                  onMouseEnter={() => prefetch(route)}
-                  type="tab"
-                >
-                  <TabLine.Item.Text>{tab.metadata.tabName || tab.title}</TabLine.Item.Text>
-                  {tab.metadata.a11y && (
-                    <TabLine.Item.Addon>
-                      <Badge bg="blue-300">WAI-{tab.metadata.a11y}</Badge>
-                    </TabLine.Item.Addon>
-                  )}
-                </TabLine.Item>
-              );
-            })}
-          </TabLine>
-        </div>
+        <TabLine value={match.url} size="l" underlined={false} className={styles.tabLine}>
+          {tabs.map((tab) => {
+            const { route } = tab;
+            return (
+              <TabLine.Item
+                key={route}
+                tag={NavLink}
+                to={`/${route}/`}
+                value={`/${route}/`}
+                onMouseEnter={() => prefetch(route)}
+                type="tab"
+                className={styles.tabLineItem}
+              >
+                <TabLine.Item.Text>{tab.metadata.tabName || tab.title}</TabLine.Item.Text>
+                {tab.metadata.a11y && (
+                  <TabLine.Item.Addon>
+                    <Badge bg="blue-300">WCAG-{tab.metadata.a11y}</Badge>
+                  </TabLine.Item.Addon>
+                )}
+              </TabLine.Item>
+            );
+          })}
+        </TabLine>
       )}
       <main className={styles.main} ref={contentRef} onClick={handleClick}>
         <RenderMarkdown tokens={tokens} onRender={scrollCallback} />

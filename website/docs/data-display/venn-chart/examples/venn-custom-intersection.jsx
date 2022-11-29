@@ -1,5 +1,5 @@
 import React from 'react';
-import { colors, Plot, Venn } from '@semcore/d3-chart';
+import { colors, Plot, Venn } from '@semcore/ui/d3-chart';
 
 export default () => {
   return (

@@ -36,6 +36,7 @@ STabLineItem {
   background: transparent;
   color: var(--gray-800);
   margin-right: 16px;
+  font-weight: 500;
 
   &::-moz-focus-inner {
     border: none;
@@ -75,7 +76,7 @@ STabLineItem::after {
   position: absolute;
   display: block;
   bottom: -1px;
-  height: 2px;
+  height: 3px;
 }
 
 SIndicator {

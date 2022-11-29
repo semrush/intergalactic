@@ -1,6 +1,6 @@
 import React from 'react';
-import Badge from '@semcore/badge';
-import { Flex } from '@semcore/flex-box';
+import Badge from '@semcore/ui/badge';
+import { Flex } from '@semcore/ui/flex-box';
 
 export default () => {
   return (

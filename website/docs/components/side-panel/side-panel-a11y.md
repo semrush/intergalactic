@@ -1,9 +1,12 @@
 ---
 title: A11y
 fileSource: side-panel
+a11y: AA
 ---
 
-@## Keyboard support
+@## What component has
+
+### Keyboard support
 
 | Key           | Function                                       |
 | ------------- | ---------------------------------------------- |
@@ -11,11 +14,11 @@ fileSource: side-panel
 | `Shift + Tab` | Moves focus to the previous focusable element. |
 | `Esc`         | Closes the side panel.                         |
 
-See detailed information about the keyboard support for the all buttons, input, etc., in the [Keyboard control guide](/core-principles/a11y/a11y-keyboard/).
+See detailed information about the keyboard support for the clickable elements in the [Keyboard control guide](/core-principles/a11y/a11y-keyboard/#keyboard_support_for_button_link_input_etc).
 
 @## Resources
 
-[W3 modal dialog example](https://www.w3.org/TR/wai-aria-practices-1.1/examples/dialog-modal/dialog.html) has detailed information about the modal window accessible behavior.
+[W3 modal dialog example](https://www.w3.org/TR/wai-aria-practices-1.1/examples/dialog-modal/dialog.html) has detailed information about the modal dialogs accessible behavior.
 
 @## Other recommendations
 

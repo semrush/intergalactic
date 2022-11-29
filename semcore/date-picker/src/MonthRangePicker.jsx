@@ -2,9 +2,11 @@ import React from 'react';
 import dayjs from 'dayjs';
 import createComponent from '@semcore/core';
 import shortDateRangeFormat from './utils/shortDateRangeFormat';
-import { Header, Next, Period, Popper, Prev, Title, Trigger } from './components';
+import { Header, Next, Period, Popper, Prev, Title, Trigger, InputTrigger } from './components';
 import { CalendarMonths as Calendar } from './components/Calendar';
 import RangePickerAbstract, { Apply, Reset } from './components/RangePickerAbstract';
+
+const dateParts = { day: false, month: true, year: true };
 
 class MonthRangePickerRoot extends RangePickerAbstract {
   static displayName = 'MonthRangePicker';
@@ -77,6 +79,22 @@ class MonthRangePickerRoot extends RangePickerAbstract {
     };
   }
 
+  getInputTriggerProps() {
+    const { value, onChange, onDisplayedPeriodChange, locale, disabled, size } = this.asProps;
+
+    return {
+      ...super.getTriggerProps(),
+      value,
+      onChange,
+      onDisplayedPeriodChange,
+      locale,
+      w: size === 'm' ? 215 : 235,
+      parts: dateParts,
+      disabledDates: disabled,
+      children: () => <InputTrigger.DateRange />,
+    };
+  }
+
   getTitleProps(props, index) {
     const { displayedPeriod, locale } = this.asProps;
     return {
@@ -92,6 +110,7 @@ const MonthRangePicker = createComponent(
   MonthRangePickerRoot,
   {
     Trigger,
+    InputTrigger,
     Popper,
     Header,
     Title,

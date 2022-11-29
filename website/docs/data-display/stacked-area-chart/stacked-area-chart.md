@@ -102,6 +102,8 @@ More information about this state see in the guide for [Skeleton](/components/sk
 
 ![skeleton](static/skeleton.png)
 
+@page stacked-area-chart-a11y
 @page stacked-area-chart-api
 @page stacked-area-chart-d3-code
 @page stacked-area-chart-recharts-code
+@page d3-chart-changelog

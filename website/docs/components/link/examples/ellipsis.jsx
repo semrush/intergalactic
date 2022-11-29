@@ -1,9 +1,9 @@
 import React from 'react';
-import { Flex } from '@semcore/flex-box';
-import { Text } from '@semcore/typography';
-import Divider from '@semcore/divider';
-import Link from '@semcore/link';
-import EditXS from '@semcore/icon/Edit/m';
+import { Flex } from '@semcore/ui/flex-box';
+import { Text } from '@semcore/ui/typography';
+import Divider from '@semcore/ui/divider';
+import Link from '@semcore/ui/link';
+import EditXS from '@semcore/ui/icon/Edit/m';
 
 class Demo extends React.PureComponent {
   render() {

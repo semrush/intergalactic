@@ -1,16 +1,18 @@
 ---
 title: A11y
 fileSource: tag
+a11y: AA
 ---
 
 @## What component has
 
 ### Keyboard support
 
-| Key     | Function                                                                        |
-| ------- | ------------------------------------------------------------------------------- |
-| `Tab`   | Moves keyboard focus to the interactive tag and its Close icon button.          |
-| `Enter` | Toggles `active` state for interactive tag or removes tag by Close icon button. |
+| Key           | Function                                                                          |
+| ------------- | --------------------------------------------------------------------------------- |
+| `Tab`         | Moves keyboard focus to the interactive tag and its `Close` icon button.          |
+| `Shift + Tab` | Moves focus to the previous focusable element.                                    |
+| `Enter`       | Toggles `active` state for interactive tag or removes tag by `Close` icon button. |
 
 @## Considerations for developers
 

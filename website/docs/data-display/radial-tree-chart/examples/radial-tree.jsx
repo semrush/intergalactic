@@ -1,7 +1,7 @@
 import React from 'react';
-import { Plot, RadialTree } from '@semcore/d3-chart';
+import { Plot, RadialTree } from '@semcore/ui/d3-chart';
 import { scaleLinear } from 'd3-scale';
-import LikeM from '@semcore/icon/Like/m';
+import LikeM from '@semcore/ui/icon/Like/m';
 
 export default () => {
   const width = 500;

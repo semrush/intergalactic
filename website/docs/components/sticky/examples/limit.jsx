@@ -1,13 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
-import Sticky from '@semcore/sticky';
-import Checkbox from '@semcore/checkbox';
-import Link from '@semcore/link';
+import { Box } from '@semcore/ui/flex-box';
+import Checkbox from '@semcore/ui/checkbox';
+import Link from '@semcore/ui/link';
 import Table from '@semcore/table';
-import { Text } from '@semcore/typography';
-import Button from '@semcore/button';
-import Spin from '@semcore/spin';
-import ScrollArea from '@semcore/scroll-area';
+import { Text } from '@semcore/ui/typography';
+import Button from '@semcore/ui/button';
+import Spin from '@semcore/ui/spin';
+import ScrollArea from '@semcore/ui/scroll-area';
 
 function shuffle(a) {
   for (let i = a.length - 1; i > 0; i--) {
@@ -86,7 +86,7 @@ const Demo = () => (
         ))}
         <Loader>
           <td>
-            <Sticky top={150} style={{ textAlign: 'center' }}>
+            <Box position="sticky" top={150} style={{ textAlign: 'center' }}>
               <Text size={500} medium tag="h4" mb="16px">
                 Want to view more results?
               </Text>
@@ -96,7 +96,7 @@ const Demo = () => (
               <Button use="primary" theme="success" size="l">
                 See plans and pricing
               </Button>
-            </Sticky>
+            </Box>
           </td>
         </Loader>
       </Table.Body>

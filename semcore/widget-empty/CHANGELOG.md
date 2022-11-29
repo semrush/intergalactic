@@ -2,11 +2,23 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [3.4.3] - 2022-10-04
+## [3.6.3] - 2022-10-28
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/flex-box` [4.5.11 ~> 4.5.12], `@semcore/illustration` [1.1.4 ~> 1.1.5], `@semcore/utils` [3.37.1 ~> 3.37.2]).
+- Version patch update due to children dependencies update (`@semcore/flex-box` [4.6.2 ~> 4.6.3], `@semcore/illustration` [1.3.2 ~> 1.3.3], `@semcore/utils` [3.40.0 ~> 3.40.0]).
+
+## [3.6.0] - 2022-10-10
+
+### Changed
+
+- Added support for React 18 🔥
+
+## [3.5.0] - 2022-10-06
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/illustration` [1.1.5 ~> 1.2.0]).
 
 ## [3.4.2] - 2022-09-27
 
@@ -42,24 +54,6 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Version patch update due to children dependencies update (`@semcore/utils` [3.37.0 ~> 3.37.1], `@semcore/flex-box` [4.5.10 ~> 4.5.11]).
 
-## [3.2.3] - 2022-08-18
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/utils` [3.36.0 ~> 3.37.0], `@semcore/flex-box` [4.5.9 ~> 4.5.10]).
-
-## [3.2.2] - 2022-08-11
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/utils` [3.35.1 ~> 3.36.0], `@semcore/flex-box` [4.5.8 ~> 4.5.9]).
-
-## [3.2.1] - 2022-07-22
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/utils` [3.34.0 ~> 3.35.0], `@semcore/flex-box` [4.5.6 ~> 4.5.7]).
-
 ## [3.2.0] - 2022-06-30
 
 ### Changed
@@ -77,12 +71,6 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### Changed
 
 - Version patch update due to children dependencies update (`@semcore/utils` [3.32.1 ~> 3.32.2], `@semcore/flex-box` [4.5.3 ~> 4.5.4]).
-
-## [3.0.1] - 2022-05-19
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/utils` [3.32.0 ~> 3.32.1], `@semcore/flex-box` [4.5.1 ~> 4.5.3]).
 
 ## [3.0.0] - 2022-05-17
 

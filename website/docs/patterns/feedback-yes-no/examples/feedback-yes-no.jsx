@@ -1,15 +1,15 @@
 import React from 'react';
-import FeedbackForm from '@semcore/feedback-form';
-import Input from '@semcore/input';
-import { Box, Flex } from '@semcore/flex-box';
-import Link from '@semcore/link';
-import Dropdown from '@semcore/dropdown';
-import Textarea from '@semcore/textarea';
-import Notice from '@semcore/notice';
-import Button from '@semcore/button';
-import ThumbUpXS from '@semcore/icon/ThumbUp/m';
-import ThumbDownXS from '@semcore/icon/ThumbDown/m';
-import { Text } from '@semcore/typography';
+import FeedbackForm from '@semcore/ui/feedback-form';
+import Input from '@semcore/ui/input';
+import { Box, Flex } from '@semcore/ui/flex-box';
+import Link from '@semcore/ui/link';
+import Dropdown from '@semcore/ui/dropdown';
+import Textarea from '@semcore/ui/textarea';
+import Notice from '@semcore/ui/notice';
+import Button from '@semcore/ui/button';
+import ThumbUpXS from '@semcore/ui/icon/ThumbUp/m';
+import ThumbDownXS from '@semcore/ui/icon/ThumbDown/m';
+import { Text } from '@semcore/ui/typography';
 
 const validate = {
   description: (value = '') => {
@@ -33,9 +33,8 @@ const validate = {
 };
 
 class Feedback extends React.PureComponent {
-  handleChange = (fn, trigger) => (value, e) => {
+  handleChange = (fn) => (value, e) => {
     fn(e);
-    this.props.onChange(e, trigger);
   };
 
   render() {
@@ -58,7 +57,7 @@ class Feedback extends React.PureComponent {
                   {...input}
                   autoFocus
                   h={80}
-                  onChange={this.handleChange(input.onChange, 'description')}
+                  onChange={this.handleChange(input.onChange)}
                   id="suggestions"
                 />
               )}
@@ -71,11 +70,7 @@ class Feedback extends React.PureComponent {
             <FeedbackForm.Item name="email" validate={validate.email}>
               {({ input }) => (
                 <Input state={input.state}>
-                  <Input.Value
-                    {...input}
-                    onChange={this.handleChange(input.onChange, 'email')}
-                    id="email"
-                  />
+                  <Input.Value {...input} onChange={this.handleChange(input.onChange)} id="email" />
                 </Input>
               )}
             </FeedbackForm.Item>

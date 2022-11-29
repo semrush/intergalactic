@@ -1,5 +1,5 @@
 import React from 'react';
-import { LineChartSkeleton } from '@semcore/skeleton';
+import { LineChartSkeleton } from '@semcore/ui/skeleton';
 
 export default () => (
   <React.Fragment>

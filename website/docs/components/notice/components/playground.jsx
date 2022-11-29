@@ -2,11 +2,11 @@ import React from 'react';
 
 import PlaygroundGeneration from '@components/PlaygroundGeneration';
 
-import Notice from '@semcore/notice';
-import { Text } from '@semcore/typography';
-import { Box } from '@semcore/flex-box';
-import Button from '@semcore/button';
-import QuestionAltS from '@semcore/icon/Question/m';
+import Notice from '@semcore/ui/notice';
+import { Text } from '@semcore/ui/typography';
+import { Box } from '@semcore/ui/flex-box';
+import Button from '@semcore/ui/button';
+import QuestionAltS from '@semcore/ui/icon/Question/m';
 
 const THEME = ['danger', 'warning', 'success', 'info'];
 

@@ -44,5 +44,6 @@ The divider helps distinguish parts of content whether they are different or sim
 | Contact infromation needs to be visually separeted from the form                                                        | ![divider-use](static/use-1.png) |
 | Information about report's data should be visually separated from the form, but should save it's connection to the form | ![divider-use](static/use-2.png) |
 
+@page divider-a11y
 @page divider-api
 @page divider-changelog

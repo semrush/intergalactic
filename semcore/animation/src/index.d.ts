@@ -18,7 +18,13 @@ export interface IAnimationProps extends IBoxProps {
   preserveNode?: boolean;
 }
 
-export interface ICollapseProps extends IAnimationProps {}
+export interface ICollapseProps extends IAnimationProps {
+  /**
+   * Add overflow=hidden when passing animation
+   * @default true
+   * */
+  overflowHidden?: boolean;
+}
 
 export interface IFadeInOutProps extends IAnimationProps {}
 

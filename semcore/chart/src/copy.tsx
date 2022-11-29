@@ -24,6 +24,7 @@ function copyComponent(WrappedComponent, { defaultProps = {}, ...over }) {
   }
 
   function forwardRef(props, ref) {
+    // @ts-ignore
     return <CopyComponent {...props} forwardedRef={ref} />;
   }
 

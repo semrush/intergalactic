@@ -3,7 +3,8 @@
   "version": "0.0.1",
   "main": "index.ts",
   "bin": {
-    "update-release-changelog": "bin/update-release-changelog.ts"
+    "update-release-changelog": "bin/update-release-changelog.ts",
+    "lint-changelogs": "bin/lint-changelogs.ts"
   },
   "private": false,
   "license": "MIT",

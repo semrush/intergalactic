@@ -1,7 +1,7 @@
 import React from 'react';
-import { Donut, Plot, Tooltip, colors } from '@semcore/d3-chart';
-import { Flex } from '@semcore/flex-box';
-import { Text } from '@semcore/typography';
+import { Donut, Plot, Tooltip, colors } from '@semcore/ui/d3-chart';
+import { Flex } from '@semcore/ui/flex-box';
+import { Text } from '@semcore/ui/typography';
 
 export default () => {
   return (

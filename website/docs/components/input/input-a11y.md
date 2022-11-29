@@ -1,13 +1,20 @@
 ---
 title: A11y
 fileSource: input
+a11y: AA
 ---
 
 @## What component has
 
 ### Keyboard support
 
-See detailed information about the keyboard support for the Input in the [Keyboard control guide](/core-principles/a11y/a11y-keyboard/#input_i_textarea).
+| Key           | Function                                       |
+| ------------- | ---------------------------------------------- |
+| `Tab`         | Moves focus to the next focusable element.     |
+| `Shift + Tab` | Moves focus to the previous focusable element. |
+| `Enter`       | Submits the entered value.                     |
+
+See detailed information about the keyboard support for the input fileds in the [Keyboard control guide](/core-principles/a11y/a11y-keyboard/#input_i_textarea).
 
 @## Considerations for developers
 
@@ -17,9 +24,16 @@ See detailed information about the keyboard support for the Input in the [Keyboa
 
 Find live examples in the [A11y style guide](https://a11y-style-guide.com/style-guide/section-forms.html#kssref-forms-text-fields).
 
+@## Considerations for designers
+
+- Focus must be visible.
+- Don’t hide the input label on focus.
+
 @## Resources
 
-[A11y style guide](https://a11y-style-guide.com/style-guide/section-forms.html#kssref-forms-text-fields) describes core principles for the accessible inputs and textarea.
+- [A11y style guide](https://a11y-style-guide.com/style-guide/section-forms.html#kssref-forms-text-fields) describes core principles for the accessible inputs and textarea.
+- [Forms tutorial](https://www.w3.org/WAI/tutorials/forms/) from W3C helps you understand common methods for creating accessible forms.
+- Find live examples of accessible inputs with different types in [DigitalA11y project](https://www.digitala11y.com/demos/accessibility-of-html-input-types-examples/).
 
 @## Other recommendations
 

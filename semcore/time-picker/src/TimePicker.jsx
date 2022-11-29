@@ -16,20 +16,6 @@ const MAP_FIELD_TO_TIME = {
   minutes: 1,
 };
 
-export function nextInput(element) {
-  do {
-    element = element.nextElementSibling;
-  } while (element && element.tagName !== 'INPUT');
-  return element;
-}
-
-export function prevInput(element) {
-  do {
-    element = element.previousElementSibling;
-  } while (element && element.tagName !== 'INPUT');
-  return element;
-}
-
 export function intOrDefault(value, def = 0) {
   const number = Number.parseInt(value);
   return Number.isNaN(number) ? def : number;
@@ -87,6 +73,9 @@ class TimePickerRoot extends Component {
       </>
     ),
   });
+
+  hoursInputRef = React.createRef();
+  minutesInputRef = React.createRef();
 
   _lastMeridiem = 'AM'; // default AM
 
@@ -179,6 +168,8 @@ class TimePickerRoot extends Component {
       is12Hour,
       disabled,
       $onValueChange: this.handleValueChange,
+      minutesInputRef: this.minutesInputRef,
+      hoursInputRef: this.hoursInputRef,
     };
   };
 
@@ -188,15 +179,19 @@ class TimePickerRoot extends Component {
   getSeparatorProps() {
     return {
       disabled: this.asProps.disabled,
+      hoursInputRef: this.hoursInputRef,
     };
   }
 
   getFormatProps() {
-    const { size, disabled, disablePortal } = this.asProps;
+    const { size, disabled, disablePortal, value } = this.asProps;
+    const valueFulfilled = value?.split(':').every((chunk) => chunk.length > 0);
+
     return {
       size,
       disabled,
       disablePortal,
+      ['aria-hidden']: !valueFulfilled,
       meridiem: this.meridiem,
       onClick: this.handleMeridiemClick,
     };
@@ -204,10 +199,18 @@ class TimePickerRoot extends Component {
 
   render() {
     const STimePicker = Root;
-    const { styles, Children } = this.asProps;
+    const { styles, Children, value, is12Hour } = this.asProps;
+    const label = value
+      ? `Time input, entered time is ${value} ${is12Hour ? this.meridiem : ''}`
+      : `Time input, no time entered`;
 
     return sstyled(styles)(
-      <STimePicker render={Input}>
+      <STimePicker
+        render={Input}
+        aria-label={label}
+        aria-valuenow={value || undefined}
+        tabIndex={0}
+      >
         <Children />
       </STimePicker>,
     );
@@ -219,17 +222,15 @@ class Separator extends Component {
     children: ':',
   };
 
-  $el = React.createRef();
-
   handlerClick = () => {
-    if (this.$el.current) {
-      prevInput(this.$el.current)?.focus();
+    if (this.asProps.hoursInputRef.current) {
+      this.asProps.hoursInputRef.current?.focus();
     }
   };
 
   render() {
     const STimePickerSeparator = Root;
-    return <STimePickerSeparator render={Box} ref={this.$el} onClick={this.handlerClick} />;
+    return <STimePickerSeparator render={Box} onClick={this.handlerClick} aria-hidden="true" />;
   }
 }
 

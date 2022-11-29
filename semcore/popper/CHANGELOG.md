@@ -2,6 +2,30 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.13.4] - 2022-10-30
+
+### Changed
+
+- Updated `focus-lock`.
+
+## [4.13.3] - 2022-10-28
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/flex-box` [4.6.2 ~> 4.6.3], `@semcore/neighbor-location` [3.1.2 ~> 3.1.3], `@semcore/outside-click` [2.5.2 ~> 2.5.3], `@semcore/utils` [3.40.0 ~> 3.40.0]).
+
+## [4.13.0] - 2022-10-10
+
+### Changed
+
+- Added support for React 18 🔥
+
+## [4.12.0] - 2022-10-07
+
+### Changed
+
+- Updated major dependency `@semcore/neighbor-location` [2.3.15 ~> 3.0.0]
+
 ## [4.11.31] - 2022-10-04
 
 ### Changed
@@ -20,30 +44,6 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Version patch update due to children dependencies update (`@semcore/flex-box` [4.5.10 ~> 4.5.11], `@semcore/neighbor-location` [2.3.14 ~> 2.3.15], `@semcore/outside-click` [2.4.12 ~> 2.4.13], `@semcore/utils` [3.37.0 ~> 3.37.1]).
 
-## [4.11.28] - 2022-08-18
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/flex-box` [4.5.9 ~> 4.5.10], `@semcore/neighbor-location` [2.3.13 ~> 2.3.14], `@semcore/outside-click` [2.4.11 ~> 2.4.12], `@semcore/utils` [3.36.0 ~> 3.37.0]).
-
-## [4.11.27] - 2022-08-11
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/flex-box` [4.5.8 ~> 4.5.9], `@semcore/neighbor-location` [2.3.12 ~> 2.3.13], `@semcore/outside-click` [2.4.10 ~> 2.4.11], `@semcore/utils` [3.35.1 ~> 3.36.0]).
-
-## [4.11.26] - 2022-08-01
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/flex-box` [4.5.7 ~> 4.5.8], `@semcore/neighbor-location` [2.3.11 ~> 2.3.12], `@semcore/outside-click` [2.4.9 ~> 2.4.10], `@semcore/utils` [3.35.0 ~> 3.35.1]).
-
-## [4.11.25] - 2022-07-22
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/flex-box` [4.5.6 ~> 4.5.7], `@semcore/neighbor-location` [2.3.10 ~> 2.3.11], `@semcore/outside-click` [2.4.7 ~> 2.4.8], `@semcore/utils` [3.34.0 ~> 3.35.0]).
-
 ## [4.11.24] - 2022-07-18
 
 ### Fixed
@@ -55,24 +55,6 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### Changed
 
 - Version patch update due to children dependencies update (`@semcore/neighbor-location` [2.3.9 ~> 2.3.10]).
-
-## [4.11.22] - 2022-07-07
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/flex-box` [4.5.5 ~> 4.5.6], `@semcore/neighbor-location` [2.3.8 ~> 2.3.9], `@semcore/outside-click` [2.4.6 ~> 2.4.7], `@semcore/utils` [3.33.0 ~> 3.34.0]).
-
-## [4.11.21] - 2022-06-02
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/flex-box` [4.5.4 ~> 4.5.5], `@semcore/neighbor-location` [2.3.7 ~> 2.3.8], `@semcore/outside-click` [2.4.5 ~> 2.4.6], `@semcore/utils` [3.32.2 ~> 3.33.0]).
-
-## [4.11.20] - 2022-05-31
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/flex-box` [4.5.3 ~> 4.5.4], `@semcore/neighbor-location` [2.3.6 ~> 2.3.7], `@semcore/outside-click` [2.4.4 ~> 2.4.5], `@semcore/utils` [3.32.1 ~> 3.32.2]).
 
 ## [4.11.19] - 2022-05-19
 

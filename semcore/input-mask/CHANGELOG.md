@@ -2,6 +2,57 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.3.5] - 2022-11-17
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/input` [3.2.3 ~> 3.3.0]).
+
+## [4.3.4] - 2022-11-03
+
+### Fixed
+
+- Fixed mask and text line-height mismatch.
+
+## [4.3.3] - 2022-10-28
+
+### Added
+
+- Allowed to pass children.
+
+## [4.3.2] - 2022-10-20
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/input` [3.2.2 ~> 3.2.3], `@semcore/utils` [3.40.0 ~> 3.40.0], `@semcore/flex-box` [4.6.2 ~> 4.6.3]).
+
+## [4.3.0] - 2022-10-10
+
+### Changed
+
+- Added support for React 18 🔥
+
+## [4.2.1] - 2022-10-10
+
+### Fixed
+
+- Fixed displaying of addons placed on the end (right in ltr languages) of input.
+- Fixed mask underlay position desynchronization with html input content;
+- Hidden placeholders and mask from real DOM to exclude it from copied content.
+
+## [4.2.0] - 2022-10-07
+
+### Changed
+
+- Updated major dependency `@semcore/neighbor-location` [2.3.15 ~> 3.0.0]
+
+## [4.1.2] - 2022-10-06
+
+### Fixed
+
+- Fixed addon placed before input value may be overlayed by input value.
+- Fixed previously broken in previous version backward compatibility of piping api.
+
 ## [4.1.1] - 2022-10-04
 
 ### Changed
@@ -19,84 +70,6 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### Changed
 
 - Version patch update due to children dependencies update (`@semcore/utils` [3.37.0 ~> 3.37.1], `@semcore/input` [3.0.14 ~> 3.0.15]).
-
-## [4.0.13] - 2022-08-23
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/input` [3.0.13 ~> 3.0.14]).
-
-## [4.0.12] - 2022-08-18
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/utils` [3.36.0 ~> 3.37.0], `@semcore/input` [3.0.12 ~> 3.0.13]).
-
-## [4.0.11] - 2022-08-11
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/utils` [3.35.1 ~> 3.36.0], `@semcore/input` [3.0.11 ~> 3.0.12]).
-
-## [4.0.10] - 2022-07-25
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/input` [3.0.9 ~> 3.0.10]).
-
-## [4.0.9] - 2022-07-22
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/utils` [3.34.0 ~> 3.35.0], `@semcore/input` [3.0.8 ~> 3.0.9]).
-
-## [4.0.8] - 2022-07-14
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/input` [3.0.7 ~> 3.0.8]).
-
-## [4.0.7] - 2022-07-14
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/input` [3.0.6 ~> 3.0.7]).
-
-## [4.0.6] - 2022-07-07
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/utils` [3.33.0 ~> 3.34.0], `@semcore/input` [3.0.5 ~> 3.0.6]).
-
-## [4.0.5] - 2022-06-02
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/utils` [3.32.2 ~> 3.33.0], `@semcore/input` [3.0.4 ~> 3.0.5]).
-
-## [4.0.4] - 2022-05-31
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/utils` [3.32.1 ~> 3.32.2], `@semcore/input` [3.0.3 ~> 3.0.4]).
-
-## [4.0.3] - 2022-05-23
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/input` [3.0.2 ~> 3.0.3]).
-
-## [4.0.2] - 2022-05-19
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/utils` [3.32.0 ~> 3.32.1], `@semcore/input` [3.0.1 ~> 3.0.2]).
-
-## [4.0.1] - 2022-05-18
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/input` [3.0.0 ~> 3.0.1]).
 
 ## [4.0.0] - 2022-05-17
 

@@ -16,7 +16,9 @@
     "experimentalDecorators": true,
     "resolveJsonModule": true,
     "noImplicitAny": true,
-    "baseUrl": "./semcore",
+    "paths": {
+      "@semcore/ui/*": ["../../semcore/*"]
+    },
     "typeRoots": ["types"]
   },
   "exclude": ["node_modules", "builder", "tools"]

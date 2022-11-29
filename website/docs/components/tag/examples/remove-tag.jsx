@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import Tag from '@semcore/tag';
-import { Box } from '@semcore/flex-box';
+import Tag from '@semcore/ui/tag';
+import { Box } from '@semcore/ui/flex-box';
 
 const Demo = () => {
   const [tags, updateTags] = useState(['vk', 'fk', 'twitter', 'instagram']);

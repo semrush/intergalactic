@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text } from '@semcore/typography';
+import { Text } from '@semcore/ui/typography';
 
 export default () => (
   <>

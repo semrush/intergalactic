@@ -5,10 +5,10 @@ import { connectAutoComplete } from 'react-instantsearch/connectors';
 import algoliasearch from 'algoliasearch/lite';
 
 import IconGroup, { IconGroups, ListIcons } from './icon-group';
-import Input from '@semcore/input';
-import { Text } from '@semcore/typography';
-import SearchS from '@semcore/icon/Search/m';
-import CloseXS from '@semcore/icon/Close/m';
+import Input from '@semcore/ui/input';
+import { Text } from '@semcore/ui/typography';
+import SearchS from '@semcore/ui/icon/Search/m';
+import CloseXS from '@semcore/ui/icon/Close/m';
 import staticFiles from '@static';
 import algoliaConfig from '@components/algolia-config';
 
@@ -24,17 +24,6 @@ const NotFound = styled.div`
   border: solid 1px #d1d4db;
 `;
 
-const Search = styled(Input)`
-  border-radius: 6px;
-  border: solid 1px #d1d4db;
-  color: #171a22;
-  input {
-    ::placeholder {
-      color: #898d9a;
-    }
-  }
-`;
-
 const SuggestSearch = connectAutoComplete(
   ({ currentRefinement, refine, hits, filteredIcons, onChangeValue, ...others }) => {
     const handleChangeValue = (value) => {
@@ -46,7 +35,7 @@ const SuggestSearch = connectAutoComplete(
     });
 
     return (
-      <Search size="l" mb={4}>
+      <Input size="l" mb={4}>
         <Input.Addon>
           <SearchS />
         </Input.Addon>
@@ -64,7 +53,7 @@ const SuggestSearch = connectAutoComplete(
             aria-label="Clear field"
           />
         )}
-      </Search>
+      </Input>
     );
   },
 );
