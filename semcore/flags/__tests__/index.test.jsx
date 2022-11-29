@@ -9,13 +9,15 @@ describe('Flags', () => {
   test('Should support className with name country without space', () => {
     const { getByTestId } = render(<Flags data-testid="flags" iso2="EH" />);
 
-    expect(getByTestId('flags').classList[1]).toMatch('WesternSahara');
+    expect(getByTestId('flags').classList[1]).toMatch('flag-western-sahara-3_2_0');
   });
 
   test('Should support className with name country and ,', () => {
     const { getByTestId } = render(<Flags data-testid="flags" iso2="BQ" />);
 
-    expect(getByTestId('flags').classList[1]).toMatch('BonaireSintEustatiusAndSaba');
+    expect(getByTestId('flags').classList[1]).toMatch(
+      'flag-bonaire--sint-eustatius-and-saba-3_2_0',
+    );
   });
 
   test('Should correctly render', () => {
@@ -27,9 +29,9 @@ describe('Flags', () => {
       </>,
     );
 
-    expect(getByTestId('flags').classList[1]).toMatch('Afghanistan');
-    expect(getByTestId('flags2').classList[1]).toMatch('Afghanistan');
-    expect(getByTestId('flags3').classList[1]).toMatch('Afghanistan');
+    expect(getByTestId('flags').classList[1]).toMatch('flag-afghanistan-3_2_0');
+    expect(getByTestId('flags2').classList[1]).toMatch('flag-afghanistan-3_2_0');
+    expect(getByTestId('flags3').classList[1]).toMatch('flag-afghanistan-3_2_0');
   });
 
   test('Should set styles', () => {

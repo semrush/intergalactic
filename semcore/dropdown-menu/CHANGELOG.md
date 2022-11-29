@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.3.4] - 2022-11-28
+
+### Changed
+
+- Now highlighted tabs are also browser focused.
+
 ## [3.3.3] - 2022-11-03
 
 ### Changed

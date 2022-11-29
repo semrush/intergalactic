@@ -43,7 +43,7 @@ The informer consists of:
 | M         | `16px * 16px`                                          |
 |           | ![hover zone for m icon size](static/hover-zone-m.png) |
 
-@## The tooltip
+@## Tooltip
 
 See detailed infromation in the [Tooltip guide](/components/tooltip/).
 

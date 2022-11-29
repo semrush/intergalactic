@@ -38,11 +38,12 @@ class Input extends Component {
   }
 
   getValueProps() {
-    const { size, disabled } = this.asProps;
+    const { size, disabled, state } = this.asProps;
     return {
       ref: this.inputRef,
       size,
       disabled,
+      state,
       onFocus: this.bindHandlerValueFocused(true),
       onBlur: this.bindHandlerValueFocused(false),
     };
@@ -84,13 +85,19 @@ class Value extends Component {
 
   render() {
     const SValue = Root;
-    const { styles, neighborLocation } = this.asProps;
+    const { styles, neighborLocation, state } = this.asProps;
 
     return (
       <NeighborLocation.Detect neighborLocation={neighborLocation}>
         {(neighborLocation) =>
           sstyled(styles)(
-            <SValue render={Box} neighborLocation={neighborLocation} tag="input" type="text" />,
+            <SValue
+              render={Box}
+              neighborLocation={neighborLocation}
+              tag="input"
+              type="text"
+              aria-invalid={state === 'invalid'}
+            />,
           )
         }
       </NeighborLocation.Detect>

@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.3.0] - 2022-11-24
+
+### Changed
+
+- Removed `width` and `height` properties from `VennChartSkeleton` and `PieChartSkeleton`.
+
 ## [4.2.3] - 2022-10-28
 
 ### Changed

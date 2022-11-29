@@ -260,13 +260,15 @@ class TotalPages extends Component {
     const STotalPages = Root;
     const STotalPagesLabel = Text;
     const STotalLastPages = Text;
-    const { styles, getI18nText, totalPages, isLastOrSingle } = this.asProps;
+    const { styles, getI18nText, totalPages, isLastOrSingle, children, ...other } = this.asProps;
 
     return sstyled(styles)(
       <>
         <STotalPagesLabel>{getI18nText('totalPagesLabel')}</STotalPagesLabel>
         {isLastOrSingle ? (
-          <STotalLastPages aria-label={`Last page ${totalPages}`}>{totalPages}</STotalLastPages>
+          <STotalLastPages aria-label={`Last page ${totalPages}`} {...other}>
+            {children}
+          </STotalLastPages>
         ) : (
           <STotalPages
             render={Link}

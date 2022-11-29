@@ -79,12 +79,12 @@ While switching active tabs, the border-bottom moves with `ease` transition and 
 
 TabLine is always placed under the [ProductHead](/components/product-head/) of the report, after the title, additional controls and filters that affect the entire report.
 
-- **The margin between ProductHead and TabLine is always 16px.**
+- **The margin between ProductHead content and TabLine is always 24px.**
 - The margin between TabLine and title/widget below is always 16px.
 
 ![tabs-margins](static/tabs-margins.png)
 
-@## Long text
+@## Use in UX/UI
 
 In cases when you have many tabs or there is not enough space for the tab text, collapse the text into the `ellipsis`.
 
@@ -92,7 +92,11 @@ In cases when you have many tabs or there is not enough space for the tab text, 
 
 ![ellipsis](static/ellipsis.png)
 
-@## Use in UX/UI
+Also you can collapse the last tabs into a tab with an `Ellipsis` icon.
+
+> By clicking on the last tab with an ellipsis in the dropdown, it is possible to display a list of items that did not fit. The item selected from this list put before tab with ellipsis.
+
+![tabline-collapse](static/tabline-collapse.png)
 
 Use TabLine to group homogeneous content and navigate through the groups.
 
