@@ -2,7 +2,7 @@ import React from 'react';
 import cn from 'classnames';
 import createComponent, { Component, sstyled, Root } from '@semcore/core';
 import Dropdown from '@semcore/dropdown';
-import { Box, Flex, useBox, useFlex } from '@semcore/flex-box';
+import { Flex, useBox, useFlex } from '@semcore/flex-box';
 import ScrollAreaComponent from '@semcore/scroll-area';
 import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 
@@ -195,12 +195,11 @@ function List(props) {
 
   return sstyled(props.styles)(
     <SDropdownMenuList
-      render={Box}
-      tag={ScrollAreaComponent}
+      render={ScrollAreaComponent}
       role="menu"
       aria-activedescendant={props.index}
       shadow={true}
-      customStyle={scrollStyles}
+      styles={scrollStyles}
     />,
   );
 }

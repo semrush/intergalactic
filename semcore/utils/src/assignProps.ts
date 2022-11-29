@@ -1,5 +1,6 @@
 import { CSSProperties, Ref } from 'react';
 import cn from 'classnames';
+import { sstyled } from '@semcore/core';
 import { forkRef } from './ref';
 
 export function callAllEventHandlers(...fns) {
@@ -40,6 +41,7 @@ export interface AssignableProps {
   ref?: Ref<any>;
   style?: CSSProperties;
   className?: string;
+  styles?: { [key: string]: string };
 
   [key: string]: any;
 }
@@ -81,6 +83,10 @@ export default function assignProps<P extends AssignableProps, S extends Assigna
 
   if (source.className) {
     newProps.className = cn(props.className, source.className);
+  }
+
+  if (source.styles && props.styles) {
+    newProps.styles = sstyled.merge(source.styles, props.styles);
   }
 
   return newProps;
