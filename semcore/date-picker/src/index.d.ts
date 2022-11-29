@@ -289,7 +289,7 @@ declare const DatePicker: ((
     Addon: typeof BaseTrigger.Addon;
     Text: typeof BaseTrigger.Text;
   };
-  InputTrigger: InputTrigger;
+  InputTrigger: typeof InputTrigger;
   Popper: typeof Dropdown.Popper;
   Header: typeof Box;
   Title: <T>(props: CProps<IDatePickerProps & IBoxProps & T, IDatePickerContext>) => ReturnEl;
@@ -326,7 +326,7 @@ declare const DateRangePicker: ((
     Addon: typeof BaseTrigger.Addon;
     Text: typeof BaseTrigger.Text;
   };
-  InputTrigger: InputTrigger;
+  InputTrigger: typeof InputTrigger;
   Popper: <T>(props: ComponentProps<typeof Dropdown.Popper> & T) => ReturnEl;
   Header: typeof Box;
   Title: <T>(
@@ -366,7 +366,7 @@ declare const MonthPicker: ((
     Addon: typeof BaseTrigger.Addon;
     Text: typeof BaseTrigger.Text;
   };
-  InputTrigger: InputTrigger;
+  InputTrigger: typeof InputTrigger;
   Popper: typeof Dropdown.Popper;
   Header: typeof Box;
   Title: <T>(props: CProps<IDatePickerProps & IBoxProps & T, IMonthPickerContext>) => ReturnEl;
@@ -402,7 +402,7 @@ declare const MonthRangePicker: ((
     Addon: typeof BaseTrigger.Addon;
     Text: typeof BaseTrigger.Text;
   };
-  InputTrigger: InputTrigger;
+  InputTrigger: typeof InputTrigger;
   Popper: typeof Dropdown.Popper;
   Header: typeof Box;
   Title: <T>(

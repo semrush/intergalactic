@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.4.14] - 2022-11-29
+
+### Fixed
+
+- Fixed InputTrigger subcomponent types.
+
 ## [3.4.13] - 2022-11-28
 
 ### Changed
