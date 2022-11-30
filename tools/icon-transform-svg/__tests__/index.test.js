@@ -6,34 +6,6 @@ const pluginTester = require('babel-plugin-tester');
 
 const rootPath = path.resolve(__dirname);
 
-describe('Parsing svg', () => {
-  test('Files should compile', async () => {
-    const publicPath = `${rootPath}/svg`;
-    await fs.emptyDir(publicPath);
-    await cli(`${rootPath}/parsingSvg`, rootPath);
-    //TODO for support old icons pay
-    await fs.move(`${publicPath}/src/pay/polygon.svg`, `${publicPath}/pay/polygon.svg`);
-    await fs.remove(`${publicPath}/src`);
-    const dirFilesName = glob.sync(`${publicPath}/**/*.svg`);
-    const srcFilesName = glob.sync(`${rootPath}/src/**/*.svg`);
-
-    for (let i = 0; i < srcFilesName.length; i++) {
-      let dirFileName = dirFilesName[i].split('/').slice(-3).join('/');
-      let srcFileName = srcFilesName[i].split('/').slice(-3).join('/');
-      //TODO for old icons
-      if (srcFileName.includes('pay')) {
-        dirFileName = dirFileName.split('/').slice(-2).join('/');
-        srcFileName = srcFileName.split('/').slice(-2).join('/');
-      }
-
-      if (dirFileName !== srcFileName) {
-        expect(dirFileName).toBe(srcFileName);
-        throw Error(`File ${srcFileName} don't compile`);
-      }
-    }
-  });
-});
-
 describe('Transform svg', () => {
   test(
     'Files should compile',
