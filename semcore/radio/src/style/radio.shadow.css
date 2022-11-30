@@ -105,7 +105,7 @@ SControl:checked ~ SValue[size='l']::after {
 
 SValue[state='normal'][keyboardFocused]::before {
   box-shadow: var(--keyboard-focus);
-  border-color: var(--blue-400);
+  border-color: var(--blue-500);
 }
 
 SValue[state='invalid'][keyboardFocused]::before {
