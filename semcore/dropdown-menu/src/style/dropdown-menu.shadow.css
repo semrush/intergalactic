@@ -2,8 +2,7 @@
 
 SDropdownMenuList {
   max-height: 240px;
-  margin: 4px 0;
-  padding: 0;
+  padding: 4px 0;
   position: relative;
   min-height: 26px;
   min-width: 32px;
