@@ -42,7 +42,7 @@ SValue {
     color: var(--gray-300);
   }
 
-  &:read-only ~ SOutline {
+  &:not(:disabled):read-only ~ SOutline {
     background: var(--gray-50);
   }
 
