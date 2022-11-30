@@ -114,6 +114,7 @@ If you add new icons, make sure to put them in the appropriate group, use the Up
 Provide those tags to the UI Kit Team when adding those icons to Intergalactic.
 
 @page icon-old
+@page icon-a11y
 @page icon-api
 @page icon-code
 @page icon-changelog
