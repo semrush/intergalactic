@@ -6,36 +6,54 @@ const pluginTester = require('babel-plugin-tester');
 
 const rootPath = path.resolve(__dirname);
 
+function cli(scriptPath, cwd, args = []) {
+  return new Promise((resolve) => {
+    exec(
+      `node ${path.resolve(scriptPath)} ${args.join(' ')} && prettier ${rootPath}`,
+      { cwd },
+      (error, stdout, stderr) => {
+        if (error && error.code) {
+          throw Error(error);
+        }
+        resolve({
+          code: error && error.code ? error.code : 0,
+          error,
+          stdout,
+          stderr,
+        });
+      },
+    );
+  });
+}
+
+async function checkDistFiles(publicPath, familyIcons, opt, iconPath) {
+  try {
+    if (!iconPath) {
+      iconPath = glob.sync(`${publicPath}/${familyIcons}/**/*.svg`)[0];
+      iconPath = iconPath.replace('.svg', '').split('/').slice(opt.slice).join('/');
+    }
+    const isJSPathExists = await fs.pathExists(`${opt.rootPath || rootPath}/${iconPath}/index.js`);
+    const isDTSPathExists = await fs.pathExists(
+      `${opt.rootPath || rootPath}/${iconPath}/index.d.ts`,
+    );
+
+    expect(isJSPathExists).toBeTruthy();
+    expect(isDTSPathExists).toBeTruthy();
+  } catch (error) {
+    // eslint-disable-next-line no-console
+    console.error(error);
+    throw Error(
+      `Failed to compile ${familyIcons} images from ${publicPath
+        .split('/')
+        .slice(-1)}/${familyIcons}`,
+    );
+  }
+}
+
 describe('Transform svg', () => {
   test(
     'Files should compile',
     async () => {
-      async function checkDistFiles(publicPath, familyIcons, opt, iconPath) {
-        try {
-          if (!iconPath) {
-            iconPath = glob.sync(`${publicPath}/${familyIcons}/**/*.svg`)[0];
-            iconPath = iconPath.replace('.svg', '').split('/').slice(opt.slice).join('/');
-          }
-          const isJSPathExists = await fs.pathExists(
-            `${opt.rootPath || rootPath}/${iconPath}/index.js`,
-          );
-          const isDTSPathExists = await fs.pathExists(
-            `${opt.rootPath || rootPath}/${iconPath}/index.d.ts`,
-          );
-
-          expect(isJSPathExists).toBeTruthy();
-          expect(isDTSPathExists).toBeTruthy();
-        } catch (error) {
-          // eslint-disable-next-line no-console
-          console.error(error);
-          throw Error(
-            `Failed to compile ${familyIcons} images from ${publicPath
-              .split('/')
-              .slice(-1)}/${familyIcons}`,
-          );
-        }
-      }
-
       const publicSvgPath = `${rootPath}/svg`;
       const publicSvgNewPath = `${rootPath}/svg-new`;
       await cli(`${rootPath}/transformSvg --configFile=transform-svg-legacy.config.js`, rootPath);
@@ -97,23 +115,3 @@ pluginTester({
     })
     .flat(),
 });
-
-function cli(scriptPath, cwd, args = []) {
-  return new Promise((resolve) => {
-    exec(
-      `node ${path.resolve(scriptPath)} ${args.join(' ')} && prettier ${rootPath}`,
-      { cwd },
-      (error, stdout, stderr) => {
-        if (error && error.code) {
-          throw Error(error);
-        }
-        resolve({
-          code: error && error.code ? error.code : 0,
-          error,
-          stdout,
-          stderr,
-        });
-      },
-    );
-  });
-}
