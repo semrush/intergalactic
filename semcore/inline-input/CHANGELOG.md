@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.2.1] - 2022-11-30
+
+### Fixed
+
+- Disabled moving focus in tooltips.
+
 ## [3.2.0] - 2022-11-30
 
 ### Changed
