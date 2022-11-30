@@ -1,6 +1,6 @@
-import React, { HTMLAttributes } from 'react';
+import React from 'react';
 import { Box, IBoxProps } from '@semcore/flex-box';
-import createComponent, { Component, Merge, sstyled, Root } from '@semcore/core';
+import createComponent, { Component, sstyled, Root } from '@semcore/core';
 
 import style from './style/sticky.shadow.css';
 
@@ -27,7 +27,7 @@ class StickyRoot extends Component<IStickyProps> {
 }
 
 // eslint-disable-next-line ssr-friendly/no-dom-globals-in-module-scope
-const Sticky = createComponent<Merge<IStickyProps, HTMLAttributes<HTMLDivElement>>>(StickyRoot);
+const Sticky = createComponent(StickyRoot) as <T>(props: IStickyProps & T) => React.ReactElement;
 /**
  * @deprecated Please, use package `@semcore/ui/flex-box` instead. Package `@semcore/sticky` will be removed in the next major release
  */

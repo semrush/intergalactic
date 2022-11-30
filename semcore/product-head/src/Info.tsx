@@ -1,5 +1,5 @@
-import React, { ComponentProps, HTMLAttributes } from 'react';
-import createComponent, { Component, Merge, sstyled, Root } from '@semcore/core';
+import React from 'react';
+import createComponent, { Component, sstyled, Root } from '@semcore/core';
 import { Box, IBoxProps } from '@semcore/flex-box';
 import isNode from '@semcore/utils/lib/isNode';
 
@@ -35,24 +35,17 @@ function Label(props) {
   return sstyled(props.styles)(<SLabel render={Box} />);
 }
 
-const Info = createComponent<
-  ComponentProps<typeof Box>,
-  {
-    Item: [
-      // eslint-disable-next-line ssr-friendly/no-dom-globals-in-module-scope
-      Merge<IInfoItemProps, HTMLAttributes<HTMLDivElement>>,
-      {
-        Label: ComponentProps<typeof Box>;
-      },
-    ];
-  }
->(InfoRoot, {
+const Info = createComponent(InfoRoot, {
   Item: [
     Item,
     {
       Label,
     },
   ],
-});
+}) as typeof Box & {
+  Item: (<T>(props: IInfoItemProps & T) => React.ReactElement) & {
+    Label: typeof Box;
+  };
+};
 
 export default Info;

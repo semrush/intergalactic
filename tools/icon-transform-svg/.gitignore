@@ -1,4 +1,4 @@
-svg/
+lib/
 __tests__/external/
 __tests__/path/
 __tests__/pathNew/

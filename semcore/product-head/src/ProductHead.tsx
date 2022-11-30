@@ -1,4 +1,4 @@
-import React, { ComponentProps } from 'react';
+import React from 'react';
 import createComponent, { Component, sstyled, Root } from '@semcore/core';
 import { Box, IBoxProps } from '@semcore/flex-box';
 
@@ -29,16 +29,13 @@ function Row(props) {
   return sstyled(props.styles)(<SRow render={Box} />);
 }
 
-const Header = createComponent<
-  ComponentProps<typeof Box>,
-  {
-    Buttons: ComponentProps<typeof Box>;
-    Links: ComponentProps<typeof Box>;
-    Row: ComponentProps<typeof Box>;
-  }
->(HeaderRoot, {
+const Header = createComponent(HeaderRoot, {
   Buttons,
   Links,
   Row,
-});
+}) as typeof Box & {
+  Buttons: typeof Box;
+  Links: typeof Box;
+  Row: typeof Box;
+};
 export default Header;

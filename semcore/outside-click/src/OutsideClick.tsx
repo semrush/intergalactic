@@ -67,4 +67,6 @@ OutsideClick.defaultProps = {
   onOutsideClick: () => {},
 };
 
-export default createComponent<IOutsideClickProps>(OutsideClick);
+export default createComponent(OutsideClick) as <T>(
+  props: IOutsideClickProps & T,
+) => React.ReactElement;
