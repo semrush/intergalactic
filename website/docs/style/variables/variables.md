@@ -69,8 +69,8 @@ In normal state controls with transparent background has opacity of 0 – 15%.
 
 |             | Styles and variables              |
 | ----------- | --------------------------------- |
-| **Invalid** | `border-color: var(--red-400);`   |
-| **Valid**   | `border-color: var(--green-400);` |
+| **Invalid** | `border-color: var(--red-500);`   |
+| **Valid**   | `border-color: var(--green-500);` |
 
 ### Focus
 

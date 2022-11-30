@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.2.0] - 2022-11-30
+
+### Changed
+
+- Updated border-color for `warning` theme from `--red-400` to `--red-500`.
+
 ## [5.1.5] - 2022-11-30
 
 ### Changed

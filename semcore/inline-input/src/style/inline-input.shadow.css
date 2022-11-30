@@ -98,7 +98,7 @@ SInlineInput[focused] {
   z-index: 1;
 }
 SInlineInput[focused] SUnderline {
-  border-bottom-color: var(--blue-400);
+  border-bottom-color: var(--blue-500);
   box-shadow: var(--keyboard-focus);
 }
 
@@ -106,13 +106,13 @@ SInlineInput[state='valid'] SUnderline {
   border-bottom-color: var(--green-200);
 }
 SInlineInput[state='valid'][focused] SUnderline {
-  border-bottom-color: var(--green-400);
+  border-bottom-color: var(--green-500);
   box-shadow: var(--keyboard-focus-valid);
 }
 SInlineInput[state='invalid'] SUnderline {
   border-bottom-color: var(--red-200);
 }
 SInlineInput[state='invalid'][focused] SUnderline {
-  border-bottom-color: var(--red-400);
+  border-bottom-color: var(--red-500);
   box-shadow: var(--keyboard-focus-invalid);
 }
