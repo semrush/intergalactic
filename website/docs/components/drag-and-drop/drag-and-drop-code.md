@@ -11,6 +11,6 @@ fileSource: drag-and-drop
 
 @example tabs
 
-@## Example with use of the drop zone (Droppable)
+@## Example with use of the drop zone
 
 @example zone

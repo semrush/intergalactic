@@ -2,6 +2,19 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.4.0] - 2022-11-30
+
+### Changed
+
+- Due to the effect of cutting off the last line, it was decided to add a shadow to the container (`DropdownMenu.List`) when scrolling.
+- Changed `margin` to `padding` to make the scrollbar look better.
+
+## [3.3.4] - 2022-11-28
+
+### Changed
+
+- Now highlighted tabs are also browser focused.
+
 ## [3.3.3] - 2022-11-03
 
 ### Changed

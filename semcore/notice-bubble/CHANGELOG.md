@@ -2,19 +2,29 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.2.11] - 2022-11-30
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.40.0 ~> 3.41.0], `@semcore/icon` [3.3.0 ~> 3.3.1], `@semcore/flex-box` [4.6.3 ~> 4.6.4], `@semcore/animation` [1.7.1 ~> 1.7.2]).
+
+## [4.2.10] - 2022-11-24
+
+### Fixed
+
+- Replaced `NoticeBubbleManager` instance typings with `NoticeBubbleManager` typing.
+
+## [4.2.9] - 2022-11-17
+
+### Fixed
+
+- Export of `NoticeBubbleManager` was missing in typings.
+
 ## [4.2.8] - 2022-11-14
 
 ### Changed
 
 - Version patch update due to children dependencies update (`@semcore/icon` [3.2.0 ~> 3.3.0]).
-
-## [4.2.7] - 2022-11-08
-
-## [4.2.6] - 2022-10-28
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/utils` [3.40.0 ~> 3.40.0], `@semcore/icon` [3.1.1 ~> 3.1.2], `@semcore/flex-box` [4.6.2 ~> 4.6.3], `@semcore/animation` [1.7.0 ~> 1.7.1]).
 
 ## [4.2.0] - 2022-10-10
 

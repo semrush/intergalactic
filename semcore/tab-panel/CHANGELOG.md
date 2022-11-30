@@ -2,6 +2,25 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.2.4] - 2022-11-30
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.40.0 ~> 3.41.0], `@semcore/flex-box` [4.6.3 ~> 4.6.4]).
+
+## [3.2.3] - 2022-11-28
+
+### Changed
+
+- Tabs focus doesn't trigger tab select.
+- Pressing "Enter" and "Space" keys focuses current tab.
+
+## [3.1.4] - 2022-11-21
+
+### Changed
+
+- Changed `font-weight` of tab's text.
+
 ## [3.1.3] - 2022-10-28
 
 ### Changed

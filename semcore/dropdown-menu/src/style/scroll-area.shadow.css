@@ -1,0 +1,61 @@
+SShadowHorizontal {
+  &:before,
+  &:after {
+    width: 9px;
+    height: 100%;
+    border-radius: 6px;
+  }
+}
+
+SShadowHorizontal[position='median'] {
+  &:before {
+    background: linear-gradient(to right, #ffffff 34.38%, rgba(255, 255, 255, 0) 100%);
+  }
+
+  &:after {
+    background: linear-gradient(to left, #ffffff 34.38%, rgba(255, 255, 255, 0) 100%);
+  }
+}
+
+SShadowHorizontal[position='start'] {
+  &:before {
+    background: linear-gradient(to right, #ffffff 34.38%, rgba(255, 255, 255, 0) 100%);
+  }
+}
+
+SShadowHorizontal[position='end'] {
+  &:after {
+    background: linear-gradient(to left, #ffffff 34.38%, rgba(255, 255, 255, 0) 100%);
+  }
+}
+
+SShadowVertical {
+  &:before,
+  &:after {
+    width: 100%;
+    height: 9px;
+    border-radius: 6px;
+  }
+}
+
+SShadowVertical[position='median'] {
+  &:before {
+    background: linear-gradient(to bottom, #ffffff 34.38%, rgba(255, 255, 255, 0) 100%);
+  }
+
+  &:after {
+    background: linear-gradient(to top, #ffffff 34.38%, rgba(255, 255, 255, 0) 100%);
+  }
+}
+
+SShadowVertical[position='start'] {
+  &:before {
+    background: linear-gradient(to bottom, #ffffff 34.38%, rgba(255, 255, 255, 0) 100%);
+  }
+}
+
+SShadowVertical[position='end'] {
+  &:after {
+    background: linear-gradient(to top, #ffffff 34.38%, rgba(255, 255, 255, 0) 100%);
+  }
+}

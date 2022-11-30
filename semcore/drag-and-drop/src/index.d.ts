@@ -3,33 +3,36 @@ import { Box, IBoxProps } from '@semcore/flex-box';
 
 export interface IDragAndDropProps extends IBoxProps {
   /**
-   * DragAndDrop theme
-   * @default default
+   * @deprecated don't use this prop
    */
-  theme?: 'default' | 'dark';
+  theme?: 'dark' | 'default';
   /**
-   * The function is responsible for changing the location of the draggable elements upon hovering the elements over each other.
-   * @default (draggableNode, droppableNode) => void
+   * @deprecated use `onDnD` instead
    */
   onSwapDraggable?: (draggableNode: React.ReactNode, droppableNode: React.ReactNode) => void;
   /**
-   * The function is responsible for inserting the draggable element into the droppable zone
-   * @default (draggableNode, droppableNode) => void
+   * @deprecated use `onDnD` instead
    */
   onInsertDroppable?: (draggableNode: React.ReactNode, droppableNode: React.ReactNode) => void;
+  /**
+   * Controlled drag and drop handler
+   */
+  onDnD: (dndData: { fromIndex: number; fromId: string; toIndex: number; toId: string }) => void;
 }
 
 export interface IDraggableProps extends IBoxProps {
-  /** In charge of placement in relation to the content
+  /** Placement of visual drag-and-drop marker
    * @default right
    * */
   placement?: 'top' | 'right' | 'bottom' | 'left' | false;
-  /** In charge of the component’s ability to be dragged
+  /** Disabled DropZone abilities of component
    * @default false
    * */
   noDrop?: boolean;
-  /**@ignore*/
-  $eventEmitter?: EventEmitter;
+  /**
+   * Used as `fromId` or `toId` in `onDnD` handler.
+   */
+  id?: string;
 }
 
 export interface IDragAndDropContext {
@@ -41,6 +44,8 @@ declare const DragAndDrop: (<T>(
   props: CProps<IDragAndDropProps, IDragAndDropContext> & T,
 ) => ReturnEl) & {
   Draggable: <T>(props: CProps<IDraggableProps> & T) => ReturnEl;
+  DropZone: typeof Box;
+  /** @deprecated use `DragAndDrop.DropZone` instead */
   Droppable: typeof Box;
 };
 
