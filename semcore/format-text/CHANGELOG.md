@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.1.4] - 2022-11-30
+
+### Fixed
+
+- Fixed showing types in autocomplete IDE.
+
 ## [3.1.3] - 2022-10-28
 
 ### Changed
