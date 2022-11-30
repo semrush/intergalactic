@@ -850,7 +850,7 @@ importers:
   semcore/icon:
     specifiers:
       '@semcore/flex-box': ^4
-      '@semcore/icon-transform-svg': 1.0.0
+      '@semcore/icon-transform-svg': 1.1.0
       '@semcore/jest-preset-ui': 1.0.0
       '@semcore/utils': ^3.40.0
       '@types/react': 18.0.21
@@ -868,7 +868,7 @@ importers:
     specifiers:
       '@babel/runtime': 7.19.0
       '@semcore/flex-box': ^4
-      '@semcore/icon-transform-svg': 1.0.0
+      '@semcore/icon-transform-svg': 1.1.0
       '@types/react': 18.0.21
     dependencies:
       '@babel/runtime': 7.19.0
