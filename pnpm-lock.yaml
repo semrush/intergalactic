@@ -581,13 +581,13 @@ importers:
     specifiers:
       '@guidepup/playwright': 0.6.1
       '@playwright/test': 1.25.1
-      '@semcore/badge': workspace:3.2.3
+      '@semcore/badge': '*'
       '@semcore/card': ^4.0.0
       '@semcore/flex-box': ^4
       '@semcore/grid': ^4.1.4
-      '@semcore/icon': workspace:3.3.0
+      '@semcore/icon': '*'
       '@semcore/jest-preset-ui': 1.0.0
-      '@semcore/tab-panel': workspace:3.1.4
+      '@semcore/tab-panel': '*'
       '@semcore/utils': ^3.21
       '@types/react': 18.0.21
     dependencies:
@@ -22611,12 +22611,13 @@ packages:
       react-instantsearch-core: 6.35.0_npc63xaus6igy2ygmd3t37sxzu
     dev: false
 
-  /react-instantsearch-native/6.35.0_react@18.2.0:
+  /react-instantsearch-native/6.35.0_npc63xaus6igy2ygmd3t37sxzu:
     resolution:
       {
         integrity: sha512-ggJvseTvrC5EQAGmUiuckXIYlxZxDWgKHsDxoyw9g+ceOTSr1NwZbU3SmXWRhL/FF/DsqRyOCpKN8RShym7/LQ==,
       }
     peerDependencies:
+      algoliasearch: '>= 3.1 < 5'
       react: '>= 16.3.0 < 19'
       react-native: '>= 0.54.0'
     dependencies:
@@ -22635,7 +22636,7 @@ packages:
       '@babel/runtime': 7.19.0
       react-instantsearch-core: 6.35.0_npc63xaus6igy2ygmd3t37sxzu
       react-instantsearch-dom: 6.35.0_2jcwevs35ru34jgausncc4whxu
-      react-instantsearch-native: 6.35.0_react@18.2.0
+      react-instantsearch-native: 6.35.0_npc63xaus6igy2ygmd3t37sxzu
     transitivePeerDependencies:
       - algoliasearch
       - react
