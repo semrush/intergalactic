@@ -1,10 +1,11 @@
 /* eslint-disable */
-import React, { Component, createContext, useContext, useMemo } from 'react';
+import React, { Component, createContext } from 'react';
 import createHoc from '../createHoc';
+import { interpolate, useAsyncI18n } from './i18nEnhance';
 
-export type LocaleKeys = 'de' | 'en' | 'es' | 'fr' | 'it' | 'ja' | 'ru' | 'zh' | 'pt' | 'ko' | 'vi';
+export type LocaleKeys = string;
 export type DictionaryItem = { [key: string]: string };
-export type Dictionary = { [K in LocaleKeys]: DictionaryItem };
+export type Dictionary = { [locale: string]: DictionaryItem | (() => Promise<DictionaryItem>) };
 export const Context = createContext<LocaleKeys>('en');
 const { Provider: I18nProvider, Consumer: I18nConsumer } = Context;
 
@@ -25,6 +26,9 @@ export interface IWithI18nProps extends IWithI18nInjectedProps {
   children?(props: IWithI18nInjectedProps): React.ReactNode;
 }
 
+/**
+ * @deprecated use `useI18n` instead
+ */
 class WithI18n extends Component<IWithI18nProps> {
   /* @ts-ignore */
   context: LocaleKeys;
@@ -49,8 +53,12 @@ class WithI18n extends Component<IWithI18nProps> {
 }
 
 const useI18n = (dictionary: Dictionary, locale: LocaleKeys = 'en') => {
-  const lang = useContext(Context) || locale;
-  return useMemo(() => getText(dictionary, lang), [dictionary, lang]);
+  const lang = React.useContext(Context) || locale;
+  const resolvedDictionary = useAsyncI18n(dictionary, lang);
+  return React.useCallback(
+    (messageId, variables) => interpolate(resolvedDictionary[messageId], variables),
+    [resolvedDictionary, lang],
+  );
 };
 
 export default createHoc(WithI18n);

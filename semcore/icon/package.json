@@ -15,8 +15,9 @@
     "clean": "ls -d */ | egrep -v \"__tests__|src|svg|svg-new|node_modules\" | xargs rm -rf"
   },
   "dependencies": {
-    "@semcore/utils": "^3.40.0",
     "@semcore/flex-box": "^4",
+    "@semcore/icon": "^3.3.2",
+    "@semcore/utils": "^3.40.0",
     "classnames": "2.2.6"
   },
   "peerDependencies": {
@@ -33,8 +34,8 @@
     "directory": "semcore/icon"
   },
   "devDependencies": {
-    "@types/react": "18.0.21",
+    "@semcore/icon-transform-svg": "1.1.0",
     "@semcore/jest-preset-ui": "1.0.0",
-    "@semcore/icon-transform-svg": "1.1.0"
+    "@types/react": "18.0.21"
   }
 }

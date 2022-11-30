@@ -1,6 +1,8 @@
 import React from 'react';
 import { Component, sstyled, CORE_INSTANCE } from '@semcore/core';
 import Divider from '@semcore/divider';
+import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
+import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
 
 import style from './style/color-picker.shadow.css';
 
@@ -10,6 +12,7 @@ type RootAsProps = {
   onColorsChange?: (value: string, event: React.ChangeEvent) => void;
   styles?: React.CSSProperties;
   Children: React.FC;
+  getI18nText: (messageId: string, values?: { [key: string]: string }) => string;
 };
 
 type State = { focus: boolean };
@@ -18,9 +21,12 @@ class PaletteManagerRoot extends Component<RootAsProps, State> {
   static displayName = 'PaletteManager';
 
   static style = style;
+  static enhance = [i18nEnhance()];
 
   static defaultProps = {
     defaultColors: [],
+    i18n: localizedMessages,
+    locale: 'en',
   };
 
   _colors: string[] = [];
@@ -66,6 +72,7 @@ class PaletteManagerRoot extends Component<RootAsProps, State> {
       colors,
       editable: true,
       onPlusButtonClick: this.bindHandlerButtonClick(),
+      getI18nText: this.asProps.getI18nText,
     };
   }
 
@@ -75,6 +82,7 @@ class PaletteManagerRoot extends Component<RootAsProps, State> {
     return {
       editable: true,
       onRemove: this.bindHandlerItemRemove(value),
+      getI18nText: this.asProps.getI18nText,
     };
   }
 
@@ -89,6 +97,7 @@ class PaletteManagerRoot extends Component<RootAsProps, State> {
       focus: this.state.focus,
       onFocus: this.onFocus,
       onBlur: this.onBlur,
+      getI18nText: this.asProps.getI18nText,
     };
   }
 

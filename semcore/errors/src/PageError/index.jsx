@@ -5,27 +5,13 @@ import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
 import canUseDOM from '@semcore/utils/lib/canUseDOM';
 import { callAllEventHandlers } from '@semcore/utils/lib/assignProps';
 import Error, { getIconPath } from '../Error';
-
-import de from './translations/de.json';
-import en from './translations/en.json';
-import es from './translations/es.json';
-import fr from './translations/fr.json';
-import it from './translations/it.json';
-import ja from './translations/ja.json';
-import pt from './translations/pt.json';
-import ru from './translations/ru.json';
-import zh from './translations/zh.json';
-import ko from './translations/ko.json';
-import vi from './translations/vi.json';
-import tr from './translations/tr.json';
-
-const i18n = { de, en, es, fr, it, ja, ru, zh, pt, ko, vi, tr };
+import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 
 class RootPageError extends Component {
   static displayName = 'PageError';
   static enhance = [i18nEnhance()];
   static defaultProps = {
-    i18n,
+    i18n: localizedMessages,
     icon: getIconPath('page_error'),
   };
 

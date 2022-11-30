@@ -9,22 +9,9 @@ import Return from '@semcore/icon/Return/m';
 import ChevronDoubleLeft from '@semcore/icon/ChevronDoubleLeft/m';
 import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
-import de from './translations/de.json';
-import en from './translations/en.json';
-import es from './translations/es.json';
-import fr from './translations/fr.json';
-import it from './translations/it.json';
-import ja from './translations/ja.json';
-import ru from './translations/ru.json';
-import zh from './translations/zh.json';
-import pt from './translations/pt.json';
-import ko from './translations/ko.json';
-import vi from './translations/vi.json';
-import tr from './translations/tr.json';
+import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 
 import style from './style/pagination.shadow.css';
-
-const i18n = { de, en, es, fr, it, ja, ru, zh, pt, ko, vi, tr };
 
 const KEY_ENTER = 13;
 
@@ -53,7 +40,7 @@ class PaginationRoot extends Component {
     return {
       defaultCurrentPage: 1,
       defaultTotalPages: 1,
-      i18n,
+      i18n: localizedMessages,
       children: (
         <>
           {totalPages === 1 ? null : (

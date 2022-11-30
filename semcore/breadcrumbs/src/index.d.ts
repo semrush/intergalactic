@@ -7,11 +7,13 @@ export interface IBreadcrumbsProps extends IBoxProps {
    * Links divider
    * */
   separator?: React.ReactNode;
+  locale?: string;
 }
 
 export interface IBreadcrumbsItemProps extends IBoxProps, IKeyboardFocusProps {
   /** The property is responsible for the activity of the element */
   active?: boolean;
+  locale?: string;
 }
 
 export interface IBreadcrumbsContext extends IBreadcrumbsProps {

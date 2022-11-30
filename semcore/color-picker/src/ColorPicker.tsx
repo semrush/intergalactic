@@ -6,6 +6,8 @@ import ChevronDownM from '@semcore/icon/ChevronDown/m';
 import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 import PaletteManagerRoot from './PaletteManager';
 import { Item, Colors, ColorsCustom, InputColor } from './components';
+import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
+import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
 
 import style from './style/color-picker.shadow.css';
 
@@ -35,6 +37,7 @@ type RootAsProps = {
   displayLabel?: boolean;
   styles?: React.CSSProperties;
   Children: React.FC;
+  getI18nText: (messageId: string, values?: { [key: string]: string }) => string;
 };
 
 type TriggerAsProps = {
@@ -42,11 +45,13 @@ type TriggerAsProps = {
   value?: string;
   popperVisible: boolean;
   Children: React.FC;
+  getI18nText: (messageId: string, values?: { [key: string]: string }) => string;
 };
 
 type PopperAsProps = {
   styles?: React.CSSProperties;
   Children: React.FC;
+  getI18nText: (messageId: string, values?: { [key: string]: string }) => string;
 };
 
 type ItemAsProps = {
@@ -57,11 +62,14 @@ class ColorPickerRoot extends Component<RootAsProps> {
   static displayName = 'ColorPicker';
 
   static style = style;
+  static enhance = [i18nEnhance()];
 
   static defaultProps = () => ({
     defaultVisible: false,
     defaultValue: null,
     colors: defaultColors,
+    i18n: localizedMessages,
+    locale: 'en',
     children: (
       <>
         <ColorPicker.Trigger />
@@ -84,19 +92,21 @@ class ColorPickerRoot extends Component<RootAsProps> {
   };
 
   getTriggerProps() {
-    const { value, visible } = this.asProps;
+    const { value, visible, getI18nText } = this.asProps;
 
     return {
       value,
       popperVisible: visible,
+      getI18nText,
     };
   }
 
   getColorsProps() {
-    const { colors } = this.asProps;
+    const { colors, getI18nText } = this.asProps;
 
     return {
       colors,
+      getI18nText,
     };
   }
 
@@ -116,6 +126,12 @@ class ColorPickerRoot extends Component<RootAsProps> {
     };
   }
 
+  getPopperProps() {
+    const { getI18nText } = this.asProps;
+
+    return { getI18nText };
+  }
+
   render() {
     const { styles, Children } = this.asProps;
 
@@ -128,13 +144,15 @@ class ColorPickerRoot extends Component<RootAsProps> {
 }
 
 export function Trigger(props: TriggerAsProps) {
-  const { Children, value, popperVisible } = props;
+  const { Children, value, popperVisible, getI18nText } = props;
   const label = React.useMemo(() => {
-    const base = value ? `Color field, current color is ${value}` : 'Color field, empty';
+    const currentColor = value
+      ? getI18nText('currentColor', { color: value })
+      : getI18nText('emptyColor');
     if (popperVisible) {
-      return base + ', press Tab to go to palette or click to hide palette';
+      return getI18nText('goToPaletteHint', { currentColor });
     }
-    return base;
+    return currentColor;
   }, [value, popperVisible]);
 
   return (
@@ -178,24 +196,15 @@ const DefaultTrigger = React.forwardRef(function (props: TriggerAsProps, ref) {
 });
 
 export function Popper(props: PopperAsProps) {
-  const { styles, Children } = props;
+  const { styles, Children, getI18nText } = props;
   const SColorPickerPopper = Root;
 
   return sstyled(styles)(
-    <SColorPickerPopper
-      render={Dropdown.Popper}
-      aria-label="Colors palette, press Tab+Shift to go back to color field"
-    >
+    <SColorPickerPopper render={Dropdown.Popper} aria-label={getI18nText('palette')}>
       <Children />
     </SColorPickerPopper>,
   );
 }
-
-Popper.defaultProps = () => {
-  return {
-    children: <ColorPicker.Colors />,
-  };
-};
 
 const ColorPicker = createComponent(ColorPickerRoot, {
   Trigger,
