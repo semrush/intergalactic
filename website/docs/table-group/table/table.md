@@ -27,7 +27,7 @@ There are two types of tables in our design system – [primary](../table-primar
 
 @## Sorting
 
-> For detailed information about sorting columns in the table, see [Working with table](/table-group/table-controls/).
+> For detailed information about sorting columns in the table, see [Table controls](/table-group/table-controls/).
 
 @## Tooltip
 
