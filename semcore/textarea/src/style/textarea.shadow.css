@@ -39,19 +39,19 @@ STextarea[size='l'] {
 STextarea[state='normal'] {
   &:focus {
     box-shadow: var(--keyboard-focus);
-    border-color: var(--blue-400);
+    border-color: var(--blue-500);
   }
 }
 
 STextarea[state='valid'] {
-  border-color: var(--green-400);
+  border-color: var(--green-500);
   &:focus {
     box-shadow: var(--keyboard-focus-valid);
   }
 }
 
 STextarea[state='invalid'] {
-  border-color: var(--red-400);
+  border-color: var(--red-500);
   &:focus {
     box-shadow: var(--keyboard-focus-invalid);
   }

@@ -94,7 +94,7 @@ SCheckbox {
   }
 
   &[state='normal'][keyboardFocused]:before {
-    border-color: var(--blue-400);
+    border-color: var(--blue-500);
   }
 }
 
@@ -111,7 +111,7 @@ SControl[indeterminate] ~ SCheckbox[state='normal']:before {
 
 SCheckbox[state='invalid'] {
   &:before {
-    border-color: var(--red-400);
+    border-color: var(--red-500);
   }
 
   &[keyboardFocused]:before {
