@@ -40,7 +40,6 @@ function circle(_ref, ref) {
     height: height,
     viewBox: viewBox
   }, props), /*#__PURE__*/_react["default"].createElement("circle", {
-    id: "test",
     cx: "0",
     cy: "0",
     r: "16"

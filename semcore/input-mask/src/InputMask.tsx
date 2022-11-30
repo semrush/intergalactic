@@ -1,7 +1,7 @@
-import React, { ComponentProps, InputHTMLAttributes } from 'react';
+import React, { ComponentProps } from 'react';
 import { createTextMaskInputElement } from 'text-mask-core';
 
-import createComponent, { Component, Merge, sstyled, Root } from '@semcore/core';
+import createComponent, { Component, sstyled, Root, CProps, PropGetterFn } from '@semcore/core';
 import Input, { IInputProps, IInputValueProps } from '@semcore/input';
 import fire from '@semcore/utils/lib/fire';
 import logger from '@semcore/utils/lib/logger';
@@ -49,6 +49,11 @@ export interface IInputMaskValueProps extends IInputValueProps {
    * Event that is called when the input value fully matches the mask
    */
   onSuccess?: (value: string) => void;
+}
+
+interface IInputMaskCtx {
+  getInputProps: PropGetterFn;
+  getValueProps: PropGetterFn;
 }
 
 export function getAfterPositionValue(
@@ -323,14 +328,10 @@ class Value extends Component<IInputMaskValueProps> {
   }
 }
 
-export default createComponent<
-  IInputProps,
-  {
-    // eslint-disable-next-line ssr-friendly/no-dom-globals-in-module-scope
-    Value: Merge<IInputMaskValueProps, InputHTMLAttributes<HTMLInputElement>>;
-    Addon: ComponentProps<typeof Input.Addon>;
-  }
->(InputMask, {
+export default createComponent(InputMask, {
   Value,
   Addon: Input.Addon,
-});
+}) as (<T>(props: CProps<IInputProps & T, IInputMaskCtx>) => React.ReactElement) & {
+  Value: <T>(props: IInputMaskValueProps & T) => React.ReactElement;
+  Addon: ComponentProps<typeof Input.Addon>;
+};

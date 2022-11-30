@@ -39,8 +39,17 @@ function mixl(_ref, ref) {
     width: width,
     height: height,
     viewBox: viewBox
-  }, props), /*#__PURE__*/_react["default"].createElement("polygon", {
+  }, props), /*#__PURE__*/_react["default"].createElement("path", {
+    fillRule: "evenodd",
+    clipRule: "evenodd",
+    d: "M16 16",
+    shapeRendering: "geometricPrecision"
+  }), /*#__PURE__*/_react["default"].createElement("polygon", {
     points: "100,10 40,198 190,78 10,78 160,198"
+  }), /*#__PURE__*/_react["default"].createElement("circle", {
+    cx: "0",
+    cy: "0",
+    r: "16"
   }));
 }
 
