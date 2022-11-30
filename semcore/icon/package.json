@@ -9,7 +9,6 @@
   "author": "UI-kit team <ui-kit-team@semrush.com>",
   "license": "MIT",
   "scripts": {
-    "parsing": "pnpm icon-transform-svg parsing",
     "transform": "pnpm icon-transform-svg",
     "build": "pnpm run clean && pnpm semcore-builder --source=js && pnpm run transform --configFile=./transform-svg-legacy.config.js && pnpm run transform --configFile=./transform-svg.config.js",
     "test": "jest",
@@ -35,6 +34,6 @@
   "devDependencies": {
     "@types/react": "18.0.21",
     "@semcore/jest-preset-ui": "1.0.0",
-    "@semcore/icon-transform-svg": "1.0.0"
+    "@semcore/icon-transform-svg": "1.1.0"
   }
 }

@@ -37,4 +37,4 @@ Portal.displayName = 'Portal';
 
 const { Provider: PortalProvider } = PortalContext;
 export { PortalProvider };
-export default createComponent<IPortalProps>(Portal);
+export default createComponent(Portal) as <T>(props: IPortalProps & T) => React.ReactElement;

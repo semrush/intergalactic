@@ -2,11 +2,17 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [3.3.2] - 2022-11-30
+## [3.4.1] - 2022-11-30
 
 ### Fixed
 
 - Fix style for disabled state.
+
+## [3.4.0] - 2022-11-30
+
+### Changed
+
+- Updated border-color in focus state from `--blue-400` to `--blue-500`, `--red-400` to `--red-500`, `--green-400` to `--green-500`.
 
 ## [3.3.1] - 2022-11-30
 

@@ -1,6 +1,6 @@
-import React, { HTMLAttributes } from 'react';
+import React from 'react';
 import { Box, IBoxProps } from '@semcore/flex-box';
-import createComponent, { Component, Merge, sstyled, Root } from '@semcore/core';
+import createComponent, { Component, sstyled, Root } from '@semcore/core';
 
 import style from './style/format-text.shadow.css';
 
@@ -21,6 +21,6 @@ class FormatText extends Component<IFormatTextProps> {
     return sstyled(this.asProps.styles)(<SFormatText render={Box} />);
   }
 }
-
-// eslint-disable-next-line ssr-friendly/no-dom-globals-in-module-scope
-export default createComponent<Merge<IFormatTextProps, HTMLAttributes<HTMLDivElement>>>(FormatText);
+export default createComponent(FormatText) as <T>(
+  props: IFormatTextProps & T,
+) => React.ReactElement;
