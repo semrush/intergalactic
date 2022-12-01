@@ -1,15 +1,25 @@
+import de from './de.json';
 import en from './en.json';
+import es from './es.json';
+import fr from './fr.json';
+import it from './it.json';
+import ja from './ja.json';
+import ko from './ko.json';
+import pt from './pt.json';
+import tr from './tr.json';
+import vi from './vi.json';
+import zh from './zh.json';
 
 export const localizedMessages = {
-  de: () => import('./de.json'),
+  de,
   en,
-  es: () => import('./es.json'),
-  fr: () => import('./fr.json'),
-  it: () => import('./it.json'),
-  ja: () => import('./ja.json'),
-  ko: () => import('./ko.json'),
-  pt: () => import('./pt.json'),
-  tr: () => import('./tr.json'),
-  vi: () => import('./vi.json'),
-  zh: () => import('./zh.json'),
+  es,
+  fr,
+  it,
+  ja,
+  ko,
+  pt,
+  tr,
+  vi,
+  zh,
 };
