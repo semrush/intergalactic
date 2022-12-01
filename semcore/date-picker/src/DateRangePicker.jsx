@@ -71,7 +71,8 @@ class DateRangePickerRoot extends RangePickerAbstract {
   }
 
   getInputTriggerProps() {
-    const { value, onChange, onDisplayedPeriodChange, locale, disabled, size } = this.asProps;
+    const { value, onChange, onDisplayedPeriodChange, locale, disabled, size, getI18nText } =
+      this.asProps;
 
     return {
       ...super.getTriggerProps(),
@@ -82,6 +83,7 @@ class DateRangePickerRoot extends RangePickerAbstract {
       w: size === 'm' ? 270 : 300,
       disabledDates: disabled,
       children: () => <InputTrigger.DateRange />,
+      getI18nText,
     };
   }
 }

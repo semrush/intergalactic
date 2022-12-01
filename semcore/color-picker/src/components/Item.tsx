@@ -13,7 +13,7 @@ type ItemAsProps = {
   selected?: boolean;
   onRemove?: React.MouseEventHandler;
   Children?: React.FC;
-  getI18nText: (messageId: string, values?: { [key: string]: string }) => string;
+  getI18nText: (messageId: string, values?: { [key: string]: string | number }) => string;
 };
 
 export function Item(props: ItemAsProps) {

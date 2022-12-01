@@ -5,6 +5,7 @@ import { IBoxProps } from '@semcore/flex-box';
 export interface INoticeBubbleContainerProps extends IBoxProps, IPortalProps {
   /** Manager copy */
   manager?: INoticeBubbleManager;
+  locale?: string;
 }
 
 export interface INoticeBubbleInfoProps extends INoticeBubbleProps {

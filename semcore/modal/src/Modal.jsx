@@ -11,13 +11,18 @@ import usePreventScroll from '@semcore/utils/lib/use/usePreventScroll';
 import { isAdvanceMode } from '@semcore/utils/lib/findComponent';
 import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 import style from './style/modal.shadow.css';
+import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
+import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
 
 class ModalRoot extends Component {
   static displayName = 'Modal';
   static style = style;
+  static enhance = [i18nEnhance()];
   static defaultProps = {
     duration: 200,
     closable: true,
+    i18n: localizedMessages,
+    locale: 'en',
   };
 
   handleKeyDown = (e) => {
@@ -45,17 +50,21 @@ class ModalRoot extends Component {
   }
 
   getWindowProps() {
-    const { visible, closable } = this.asProps;
+    const { visible, closable, getI18nText } = this.asProps;
     return {
       visible,
       closable,
       onKeyDown: this.handleKeyDown,
+      getI18nText,
     };
   }
 
   getCloseProps() {
+    const { getI18nText } = this.asProps;
+
     return {
       onClick: this.handleIconCloseClick,
+      getI18nText,
     };
   }
 
@@ -87,7 +96,7 @@ const FocusLockWrapper = React.forwardRef(function ({ tag, ...other }, ref) {
 
 function Window(props) {
   const SWindow = Root;
-  const { Children, styles, visible, closable } = props;
+  const { Children, styles, visible, closable, getI18nText } = props;
   const windowRef = useRef(null);
 
   if (!visible) return null;
@@ -101,7 +110,7 @@ function Window(props) {
       tabIndex={-1}
       autoFocus={true}
       role="dialog"
-      aria-label="Modal window"
+      aria-label={getI18nText('title')}
       aria-modal={true}
     >
       <PortalProvider value={windowRef}>
@@ -129,14 +138,13 @@ function Overlay(props) {
 
 function Close(props) {
   const SClose = Root;
+  const { Children, children: hasChildren } = props;
   return sstyled(props.styles)(
-    <SClose render={Box} tag="button" tabIndex={0} aria-label="Close" />,
+    <SClose render={Box} tag="button" tabIndex={0} aria-label={getI18nText('close')}>
+      {hasChildren ? <Children /> : <CloseIcon title={getI18nText('close')} />}
+    </SClose>,
   );
 }
-
-Close.defaultProps = {
-  children: <CloseIcon title="Close" />,
-};
 
 Close.enhance = [keyboardFocusEnhance()];
 

@@ -5,6 +5,8 @@ import resolveColor, { opacity, light } from '@semcore/utils/lib/color';
 import addonTextChildren from '@semcore/utils/lib/addonTextChildren';
 import logger from '@semcore/utils/lib/logger';
 import CloseM from '@semcore/icon/Close/m';
+import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
+import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
 
 import style from './style/tag.shadow.css';
 
@@ -74,10 +76,13 @@ const legacyThemeRecommendedMigration = {
 class RootTag extends Component {
   static displayName = 'Tag';
   static style = style;
+  static enhance = [i18nEnhance()];
   static defaultProps = {
     theme: 'primary',
     color: 'gray-500',
     size: 'm',
+    i18n: localizedMessages,
+    locale: 'en',
   };
 
   constructor(props) {
@@ -95,6 +100,12 @@ class RootTag extends Component {
   getCircleProps() {
     const { size } = this.asProps;
     return { size };
+  }
+
+  getCloseProps() {
+    const { getI18nText } = this.asProps;
+
+    return { getI18nText };
   }
 
   render() {
@@ -130,7 +141,7 @@ function Text(props) {
 
 function Close(props) {
   const SClose = Root;
-  const { styles } = props;
+  const { styles, getI18nText } = props;
 
   function onKeyDown(event) {
     if (props.onKeyDown) {
@@ -147,7 +158,7 @@ function Close(props) {
       render={Box}
       tag={CloseM}
       interactive
-      aria-label="press space or enter to remove it from the list"
+      aria-label={getI18nText('remove')}
       onKeyDown={onKeyDown}
     />,
   );

@@ -16,7 +16,7 @@ type InputColorAsProps = {
   onAdd?: (value: string, event: React.MouseEvent | React.KeyboardEvent) => void;
   focus?: boolean;
   Children: any;
-  getI18nText: (messageId: string, values?: { [key: string]: string }) => string;
+  getI18nText: (messageId: string, values?: { [key: string]: string | number }) => string;
 };
 
 function isValidHex(hex: string) {

@@ -12,7 +12,7 @@ type RootAsProps = {
   onColorsChange?: (value: string, event: React.ChangeEvent) => void;
   styles?: React.CSSProperties;
   Children: React.FC;
-  getI18nText: (messageId: string, values?: { [key: string]: string }) => string;
+  getI18nText: (messageId: string, values?: { [key: string]: string | number }) => string;
 };
 
 type State = { focus: boolean };

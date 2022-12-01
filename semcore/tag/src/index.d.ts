@@ -38,6 +38,7 @@ export interface ITagProps extends IBoxProps {
   addonLeft?: React.ElementType;
   /** Right addon tag */
   addonRight?: React.ElementType;
+  locale?: string;
 }
 
 export interface ITagCloseProps extends IIconProps {

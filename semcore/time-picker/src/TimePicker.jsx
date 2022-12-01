@@ -4,6 +4,8 @@ import Input from '@semcore/input';
 import { Box } from '@semcore/flex-box';
 import { Hours, Minutes } from './PickerInput';
 import Format from './PickerFormat';
+import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
+import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
 
 import style from './style/time-picker.shadow.css';
 
@@ -61,6 +63,7 @@ export function formatHoursTo24(hours /* hours by 12 */, meridiem) {
 class TimePickerRoot extends Component {
   static displayName = 'TimePicker';
   static style = style;
+  static enhance = [i18nEnhance()];
   static defaultProps = ({ is12Hour }) => ({
     defaultValue: '',
     size: 'm',
@@ -72,6 +75,8 @@ class TimePickerRoot extends Component {
         {is12Hour && <TimePicker.Format />}
       </>
     ),
+    i18n: localizedMessages,
+    locale: 'en',
   });
 
   hoursInputRef = React.createRef();
@@ -159,7 +164,7 @@ class TimePickerRoot extends Component {
   };
 
   _getHoursAndMinutesProps = () => {
-    const { is12Hour, size, disabled } = this.asProps;
+    const { is12Hour, size, disabled, getI18nText } = this.asProps;
     const time = this.valueToTime(this.value);
 
     return {
@@ -170,6 +175,7 @@ class TimePickerRoot extends Component {
       $onValueChange: this.handleValueChange,
       minutesInputRef: this.minutesInputRef,
       hoursInputRef: this.hoursInputRef,
+      getI18nText,
     };
   };
 
@@ -184,7 +190,7 @@ class TimePickerRoot extends Component {
   }
 
   getFormatProps() {
-    const { size, disabled, disablePortal, value } = this.asProps;
+    const { size, disabled, disablePortal, value, getI18nText } = this.asProps;
     const valueFulfilled = value?.split(':').every((chunk) => chunk.length > 0);
 
     return {
@@ -194,15 +200,16 @@ class TimePickerRoot extends Component {
       ['aria-hidden']: !valueFulfilled,
       meridiem: this.meridiem,
       onClick: this.handleMeridiemClick,
+      getI18nText,
     };
   }
 
   render() {
     const STimePicker = Root;
-    const { styles, Children, value, is12Hour } = this.asProps;
+    const { styles, Children, value, is12Hour, getI18nText } = this.asProps;
     const label = value
-      ? `Time input, entered time is ${value} ${is12Hour ? this.meridiem : ''}`
-      : `Time input, no time entered`;
+      ? getI18nText('title', { time: value, meridiem: is12Hour ? this.meridiem : '' })
+      : getI18nText('titleEmpty');
 
     return sstyled(styles)(
       <STimePicker

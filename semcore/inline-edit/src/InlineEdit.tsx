@@ -2,6 +2,8 @@ import React from 'react';
 import createComponent, { Component, sstyled, Root } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
 import { FadeInOut } from '@semcore/animation';
+import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
+import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
 
 import style from './style/inline-edit.shadow.css';
 
@@ -17,15 +19,19 @@ type AsProps = {
   editable?: boolean;
   onEdit?: () => void;
   styles?: React.CSSProperties;
+  getI18nText: (messageId: string, values?: { [key: string]: string | number }) => string;
 };
 
 class InlineEdit extends Component<AsProps> {
   static displayName = 'InlineEdit';
 
   static style = style;
+  static enhance = [i18nEnhance()];
 
-  static defaultProps: AsProps = {
+  static defaultProps = {
     defaultEditable: false,
+    i18n: localizedMessages,
+    locale: 'en',
   };
 
   uncontrolledProps() {
@@ -40,12 +46,13 @@ class InlineEdit extends Component<AsProps> {
   }
 
   getViewProps() {
-    const { editable } = this.asProps;
+    const { editable, getI18nText } = this.asProps;
 
     return {
       editable,
       onEdit: this.handleOnEdit,
       inlineEditContainerRef: this.containerRef,
+      getI18nText,
     };
   }
 
@@ -136,7 +143,7 @@ const View: React.FC<AsProps & { inlineEditContainerRef: React.RefObject<HTMLEle
       preserveNode
       tabIndex={0}
       aria-hidden={!visible}
-      aria-label="Tap to edit"
+      aria-label={props.getI18nText('tapToEdit')}
       ref={containerRef}
       onClick={visible ? props.onEdit : undefined}
       onKeyDown={handlekeyDown}

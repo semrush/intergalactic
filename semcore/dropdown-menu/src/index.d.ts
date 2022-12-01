@@ -24,6 +24,7 @@ export interface IDropdownMenuProps extends IDropdownProps {
    * highlightedIndex -  Index of the selected item
    */
   onHighlightedIndexChange?: (highlightedIndex: number) => void;
+  locale?: string;
 }
 
 export interface IDropdownMenuListProps extends IBoxProps, IScrollAreaProps {

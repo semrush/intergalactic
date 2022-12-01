@@ -5,6 +5,8 @@ import Close from '@semcore/icon/Close/m';
 import resolveColor from '@semcore/utils/lib/color';
 import { FadeInOut } from '@semcore/animation';
 import { isAdvanceMode } from '@semcore/utils/lib/findComponent';
+import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
+import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
 
 import style from './style/notice-global.shadow.css';
 
@@ -15,10 +17,19 @@ function isCustomTheme(theme) {
 class NoticeGlobalRoot extends Component {
   static displayName = 'NoticeGlobal';
   static style = style;
+  static enhance = [i18nEnhance()];
   static defaultProps = {
     theme: 'neutral',
     duration: 250,
+    i18n: localizedMessages,
+    locale: 'en',
   };
+
+  getCloseIconProps() {
+    const { getI18nText } = this.asProps;
+
+    return { getI18nText };
+  }
 
   render() {
     const SNoticeGlobal = Root;
@@ -56,10 +67,10 @@ function Content({ styles }) {
   return sstyled(styles)(<SContent render={Flex} />);
 }
 
-function CloseIcon({ styles }) {
+function CloseIcon({ styles, getI18nText }) {
   const SCloseIcon = Root;
   return sstyled(styles)(
-    <SCloseIcon render={Box} tag={Close} interactive aria-label="Close alert" />,
+    <SCloseIcon render={Box} tag={Close} interactive aria-label={getI18nText('close')} />,
   );
 }
 

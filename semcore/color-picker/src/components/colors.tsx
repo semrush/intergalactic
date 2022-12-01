@@ -8,7 +8,7 @@ type ColorsAsProps = {
   styles?: React.CSSProperties;
   colors?: string[];
   Children: any;
-  getI18nText: (messageId: string, values?: { [key: string]: string }) => string;
+  getI18nText: (messageId: string, values?: { [key: string]: string | number }) => string;
 };
 
 type ColorsCustomAsProps = ColorsAsProps & {

@@ -120,11 +120,12 @@ class PaginationRoot extends Component {
   };
 
   getFirstPageProps = () => {
-    const { currentPage } = this.asProps;
+    const { currentPage, getI18nText } = this.asProps;
     const disabled = currentPage <= 1;
     return {
       disabled,
       onClick: () => this.handlePageChange(1),
+      getI18nText,
     };
   };
 
@@ -190,9 +191,9 @@ class PaginationRoot extends Component {
 
   render() {
     const SPagination = Root;
-    const { Children } = this.asProps;
+    const { Children, getI18nText } = this.asProps;
     return sstyled(this.asProps.styles)(
-      <SPagination render={Box} tag="nav" aria-label="pagination">
+      <SPagination render={Box} tag="nav" aria-label={getI18nText('pagination')}>
         <Children />
       </SPagination>,
     );
@@ -205,7 +206,9 @@ class FirstPage extends Component {
   });
 
   render() {
-    return <Root render={Button} aria-label="First page" />;
+    const { getI18nText } = this.asProps;
+
+    return <Root render={Button} aria-label={getI18nText('firstPage')} />;
   }
 }
 
@@ -216,13 +219,13 @@ class NextPage extends Component {
 
   render() {
     const SNextPage = Root;
-    const { currentPage } = this.asProps;
+    const { currentPage, getI18nText } = this.asProps;
     return sstyled(this.asProps.styles)(
       <SNextPage
         render={Button}
         use="primary"
         theme="info"
-        aria-label={`Page ${currentPage + 1}`}
+        aria-label={getI18nText('goToPage', { pageNumber: currentPage + 1 })}
       />,
     );
   }
@@ -235,9 +238,12 @@ class PrevPage extends Component {
 
   render() {
     const SPrevPage = Root;
-    const { currentPage } = this.asProps;
+    const { currentPage, getI18nText } = this.asProps;
     return sstyled(this.asProps.styles)(
-      <SPrevPage render={Button} aria-label={`Page ${currentPage - 1}`} />,
+      <SPrevPage
+        render={Button}
+        aria-label={getI18nText('goToPage', { pageNumber: currentPage - 1 })}
+      />,
     );
   }
 }
@@ -253,7 +259,10 @@ class TotalPages extends Component {
       <>
         <STotalPagesLabel>{getI18nText('totalPagesLabel')}</STotalPagesLabel>
         {isLastOrSingle ? (
-          <STotalLastPages aria-label={`Last page ${totalPages}`} {...other}>
+          <STotalLastPages
+            aria-label={getI18nText('lastPage', { lastPageNumber: totalPages })}
+            {...other}
+          >
             {children}
           </STotalLastPages>
         ) : (
@@ -261,7 +270,7 @@ class TotalPages extends Component {
             render={Link}
             tag="button"
             type="button"
-            aria-label={`Last page ${totalPages}`}
+            aria-label={getI18nText('lastPage', { lastPageNumber: totalPages })}
           />
         )}
       </>,
@@ -271,8 +280,13 @@ class TotalPages extends Component {
 
 const PageInputValue = (props) => {
   const SPageInputValue = Root;
+  const { getI18nText } = props;
   return sstyled(props.styles)(
-    <SPageInputValue render={Input.Value} aria-label="Current page" aria-current="Page" />,
+    <SPageInputValue
+      render={Input.Value}
+      aria-label={getI18nText('currentPage')}
+      aria-current="page"
+    />,
   );
 };
 
@@ -303,7 +317,7 @@ class PageInput extends Component {
               <Pagination.PageInput.Addon
                 tag={Return}
                 interactive
-                aria-label="Confirm page number"
+                aria-label={getI18nText('confirm')}
               />
             </>
           )}

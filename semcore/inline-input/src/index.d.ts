@@ -75,6 +75,7 @@ export interface IInlineInputProps extends IBoxProps {
    * Triggered after all previous macrotasks completed (internally called inside of `setTimeout`)
    */
   onBlurBehavior?: 'cancel' | 'confirm';
+  locale?: string;
 }
 
 export interface IInlineInputAddonProps extends IBoxProps {}

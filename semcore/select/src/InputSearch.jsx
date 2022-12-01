@@ -4,6 +4,8 @@ import SearchM from '@semcore/icon/Search/m';
 import CloseM from '@semcore/icon/Close/m';
 import Input from '@semcore/input';
 import { selectContext } from './context';
+import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
+import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 
 import style from './style/input-search.shadow.css';
 
@@ -16,9 +18,11 @@ class InputSearch extends Component {
   static displayName = 'InputSearch';
 
   static style = style;
-
+  static enhance = [i18nEnhance()];
   static defaultProps = {
     defaultValue: '',
+    i18n: localizedMessages,
+    locale: 'en',
   };
 
   static contextType = selectContext;
@@ -37,7 +41,7 @@ class InputSearch extends Component {
     const Value = Root;
     const SInputSearch = Input;
     const SClose = Input.Addon;
-    const { size, value, styles } = this.asProps;
+    const { size, value, styles, getI18nText } = this.asProps;
     const finalSize = size || this.context.size;
     const hideClose = !value;
     const IconClose = MAP_SIZE_TO_ICON[finalSize][1];
@@ -55,7 +59,7 @@ class InputSearch extends Component {
           hide={hideClose}
           aria-hidden={hideClose}
           interactive
-          aria-label="Clear search field"
+          aria-label={getI18nText('clearSearch')}
           onClick={this.handleClear}
         >
           <IconClose />

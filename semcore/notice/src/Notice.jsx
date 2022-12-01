@@ -6,6 +6,8 @@ import resolveColor from '@semcore/utils/lib/color';
 import { FadeInOut } from '@semcore/animation';
 import logger from '@semcore/utils/lib/logger';
 import NoticeGlobal from '@semcore/notice-global';
+import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
+import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
 
 import style from './style/notice.shadow.css';
 
@@ -16,16 +18,24 @@ function isCustomTheme(theme) {
 class RootNotice extends Component {
   static displayName = 'Notice';
   static style = style;
+  static enhance = [i18nEnhance()];
   static defaultProps = {
     theme: 'info',
     duration: 250,
+    i18n: localizedMessages,
+    locale: 'en',
   };
 
   getLabelProps() {
     const { theme } = this.asProps;
-    return {
-      theme,
-    };
+
+    return { theme };
+  }
+
+  getCloseIconProps() {
+    const { getI18nText } = this.asProps;
+
+    return { getI18nText };
   }
 
   render() {
@@ -38,7 +48,7 @@ class RootNotice extends Component {
     if (use === 'primary') {
       logger.warn(
         true,
-        `This deprecated property, you should use component <NoticeGlobal/>`,
+        `Deprecated property-value pair "use=primary", use component <NoticeGlobal/> instead`,
         RootNotice.displayName,
       );
       return <NoticeGlobal {...this.asProps} />;
@@ -76,10 +86,10 @@ function Content({ styles }) {
   return sstyled(styles)(<SContent render={Box} />);
 }
 
-function CloseIcon({ styles }) {
+function CloseIcon({ styles, getI18nText }) {
   const SCloseIcon = Root;
   return sstyled(styles)(
-    <SCloseIcon render={Box} tag={Close} interactive aria-label="Close alert" />,
+    <SCloseIcon render={Box} tag={Close} interactive aria-label={getI18nText('close')} />,
   );
 }
 

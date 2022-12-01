@@ -159,12 +159,14 @@ class PickerAbstract extends Component {
   getNextProps() {
     return {
       onClick: this.bindHandlerNavigateClick(1),
+      getI18nText: this.asProps.getI18nText,
     };
   }
 
   getPrevProps() {
     return {
       onClick: this.bindHandlerNavigateClick(-1),
+      getI18nText: this.asProps.getI18nText,
     };
   }
 

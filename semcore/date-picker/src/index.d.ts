@@ -235,7 +235,7 @@ export interface IInputTriggerProps {
    */
   placeholders: { year: string; month: string; day: string };
   onChange: (date: Date, event: ChangeEvent) => void;
-  locale: string;
+  locale?: string;
   onDisplayedPeriodChange: (date: Date) => void;
 }
 
@@ -247,7 +247,7 @@ export interface IDatePickerMaskedInputProps {
   date: Date;
   onDateChange: (date: Date, event: ChangeEvent) => void;
   onDisplayedPeriodChange: (date: Date) => void;
-  locale: string;
+  locale?: string;
   parts: { year: Boolean; month: Boolean; day: Boolean };
   disabledDates: (Date | (Date | false)[] | string)[];
 }

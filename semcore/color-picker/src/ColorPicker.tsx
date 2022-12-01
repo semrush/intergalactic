@@ -37,7 +37,7 @@ type RootAsProps = {
   displayLabel?: boolean;
   styles?: React.CSSProperties;
   Children: React.FC;
-  getI18nText: (messageId: string, values?: { [key: string]: string }) => string;
+  getI18nText: (messageId: string, values?: { [key: string]: string | number }) => string;
 };
 
 type TriggerAsProps = {
@@ -45,13 +45,13 @@ type TriggerAsProps = {
   value?: string;
   popperVisible: boolean;
   Children: React.FC;
-  getI18nText: (messageId: string, values?: { [key: string]: string }) => string;
+  getI18nText: (messageId: string, values?: { [key: string]: string | number }) => string;
 };
 
 type PopperAsProps = {
   styles?: React.CSSProperties;
   Children: React.FC;
-  getI18nText: (messageId: string, values?: { [key: string]: string }) => string;
+  getI18nText: (messageId: string, values?: { [key: string]: string | number }) => string;
 };
 
 type ItemAsProps = {

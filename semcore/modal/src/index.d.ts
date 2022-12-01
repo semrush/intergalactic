@@ -20,6 +20,7 @@ export interface IModalProps extends IPortalProps, IBoxProps, IFadeInOutProps {
    * @default true
    * */
   closable?: boolean;
+  locale?: string;
 }
 
 export interface IModalContext {

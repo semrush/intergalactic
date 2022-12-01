@@ -26,6 +26,7 @@ export interface IInlineEditProps extends IBoxProps {
    * Note: there not pair callback that expects switch to edit mode, you should be handled by yourself
    */
   onEdit?: () => void;
+  locale?: string;
 }
 
 export interface IInlineEditViewProps extends IBoxProps {}

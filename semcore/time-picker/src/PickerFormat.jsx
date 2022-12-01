@@ -7,10 +7,10 @@ class TimePickerFormat extends Component {
   static enhance = [keyboardFocusEnhance()];
   render() {
     const SPickerFormat = Root;
-    const { Children, meridiem, styles } = this.asProps;
+    const { Children, meridiem, styles, getI18nText } = this.asProps;
     const SPickerFormatText = 'span';
 
-    const label = `Time format ${meridiem}`;
+    const label = getI18nText('format', { meridiem });
 
     return sstyled(styles)(
       <SPickerFormat render={Box} type="button" tag="button" role="switch" aria-label={label}>

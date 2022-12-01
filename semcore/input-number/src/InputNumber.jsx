@@ -2,6 +2,8 @@ import React from 'react';
 import createComponent, { Component, sstyled, Root } from '@semcore/core';
 import Input from '@semcore/input';
 import BUTTONS from './buttons';
+import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
+import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
 
 import style from './style/input-number.shadow.css';
 
@@ -15,8 +17,11 @@ const IconDown = () => BUTTONS.down;
 class InputNumber extends Component {
   static displayName = 'InputNumber';
   static style = style;
+  static enhance = [i18nEnhance()];
   static defaultProps = {
     size: 'm',
+    i18n: localizedMessages,
+    locale: 'en',
   };
 
   inputRef = React.createRef();
@@ -128,17 +133,29 @@ class Value extends Component {
 }
 
 function Controls(props) {
-  const { Children, inc, dec, size, styles } = props;
+  const { Children, inc, dec, size, styles, getI18nText } = props;
   const SControls = Root;
   const SUp = 'button';
   const SDown = 'button';
 
   return sstyled(styles)(
     <SControls render={Input.Addon}>
-      <SUp onClick={inc} tabIndex={-1} type="button" size={size} aria-label="Increment number">
+      <SUp
+        onClick={inc}
+        tabIndex={-1}
+        type="button"
+        size={size}
+        aria-label={getI18nText('increment')}
+      >
         <IconUp />
       </SUp>
-      <SDown onClick={dec} tabIndex={-1} type="button" size={size} aria-label="Decrement number">
+      <SDown
+        onClick={dec}
+        tabIndex={-1}
+        type="button"
+        size={size}
+        aria-label={getI18nText('decrement')}
+      >
         <IconDown />
       </SDown>
       <Children />
