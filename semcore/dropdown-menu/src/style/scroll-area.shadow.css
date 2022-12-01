@@ -1,7 +1,7 @@
 SShadowHorizontal {
   &:before,
   &:after {
-    width: 9px;
+    width: 16px;
     height: 100%;
     border-radius: 6px;
   }
@@ -33,7 +33,7 @@ SShadowVertical {
   &:before,
   &:after {
     width: 100%;
-    height: 9px;
+    height: 16px;
     border-radius: 6px;
   }
 }
