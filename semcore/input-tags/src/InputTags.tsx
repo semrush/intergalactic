@@ -228,9 +228,9 @@ export default createComponent(InputTags, {
 }) as (<T>(props: CProps<IInputTagsProps & T, IInputTagsContext>) => React.ReactElement) & {
   Value: ComponentProps<typeof Input.Value>;
   Tag: (<T>(props: IInputTagsTagProps & T) => React.ReactElement) & {
-    Text: ComponentProps<typeof Tag.Text>;
-    Close: ComponentProps<typeof Tag.Close>;
-    Addon: ComponentProps<typeof Tag.Addon>;
-    Circle: ComponentProps<typeof Tag.Circle>;
+    Text: typeof Tag.Text;
+    Close: typeof Tag.Close;
+    Addon: typeof Tag.Addon;
+    Circle: typeof Tag.Circle;
   };
 };
