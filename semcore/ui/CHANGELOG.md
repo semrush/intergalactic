@@ -1,3 +1,79 @@
+## [13.3.0] - 2022-12-02
+
+### @semcore/checkbox
+
+- **Changed** Updated border-color in focus state from `--blue-400` to `--blue-500`, `--red-400` to `--red-500`.
+
+### @semcore/dropdown-menu
+
+- **Changed** Changed size of shadow in `DropdownMenu.List` from `9px` to `16px`.
+- **Changed** Due to the effect of cutting off the last line, it was decided to add a shadow to the container (`DropdownMenu.List`) when scrolling.
+- **Changed** Changed `margin` to `padding` to make the scrollbar look better.
+
+### @semcore/flags
+
+- **Added** Added missed object `iso3iso2` in `index.d.ts` for exporting.
+
+### @semcore/flex-box
+
+- **Fixed** Fixed showing types in autocomplete IDE.
+
+### @semcore/format-text
+
+- **Fixed** Fixed showing types in autocomplete IDE.
+
+### @semcore/inline-input
+
+- **Fixed** Disabled moving focus in tooltips.
+- **Changed** Updated border-color in focus state from `--blue-400` to `--blue-500`, `--red-400` to `--red-500`, `--green-400` to `--green-500`.
+
+### @semcore/input
+
+- **Fixed** Fix style for disabled state.
+- **Changed** Updated border-color in focus state from `--blue-400` to `--blue-500`, `--red-400` to `--red-500`, `--green-400` to `--green-500`.
+
+### @semcore/input-mask
+
+- **Fixed** Fixed showing types in autocomplete IDE.
+
+### @semcore/input-tags
+
+- **Fixed** Fixed exported types of components.
+- **Fixed** Fixed showing types in autocomplete IDE.
+
+### @semcore/outside-click
+
+- **Fixed** Fixed showing types in autocomplete IDE.
+
+### @semcore/portal
+
+- **Fixed** Fixed showing types in autocomplete IDE.
+
+### @semcore/product-head
+
+- **Fixed** Fixed showing types in autocomplete IDE.
+
+### @semcore/radio
+
+- **Changed** Updated border-color in focus state from `--blue-400` to `--blue-500`, `--red-400` to `--red-500`.
+
+### @semcore/sticky
+
+- **Fixed** Fixed showing types in autocomplete IDE.
+
+### @semcore/textarea
+
+- **Changed** Updated border-color in focus state from `--blue-400` to `--blue-500`, `--red-400` to `--red-500`, `--green-400` to `--green-500`.
+
+### @semcore/tooltip
+
+- **Changed** Updated border-color for `warning` theme from `--red-400` to `--red-500`.
+
+### @semcore/utils
+
+- **Changed** Changed `keyboard-focus` opacity
+- **Added** Added ability to merge `styles` field for `assignProps` function.
+
 ## [13.2.0] - 2022-11-30
 
 ### @semcore/base-trigger
