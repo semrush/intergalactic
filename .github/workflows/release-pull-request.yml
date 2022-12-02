@@ -124,7 +124,7 @@ jobs:
         if: env.release_branch_already_exists == 'true'
       - name: commit changelog change as a first commit in the release branch
         run: |
-          cd semcore/ui && pnpm run update-dependencies
+          cd semcore/ui && pnpm run update-dependencies && cd ../..
           pnpm update-release-changelog
           git add semcore/ui/CHANGELOG.md
           git add semcore/ui/package.json
@@ -135,7 +135,7 @@ jobs:
           git checkout "${{ env.firstCommitHash }}"
           git checkout HEAD^1
           git checkout -b "${{ env.temporaryBranch }}"
-          cd semcore/ui && pnpm run update-dependencies
+          cd semcore/ui && pnpm run update-dependencies && cd ../..
           pnpm update-release-changelog
           git add semcore/ui/CHANGELOG.md
           git add semcore/ui/package.json
