@@ -1,10 +1,8 @@
-import { execSync } from 'child_process';
 import path from 'path';
 import fs from 'fs-extra';
 import glob from 'fast-glob';
 import { fileURLToPath } from 'url';
 import { createRequire } from 'module';
-import { fetchVersionsFromNpm } from '@semcore/continuous-delivery';
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.resolve(filename, '..');
@@ -12,40 +10,6 @@ const dirname = path.resolve(filename, '..');
 const components = fs.readJSONSync(path.resolve(dirname, './components.json'));
 
 const EXPORT_DEFAULT_REG = /export ({ default }|default)/gm;
-
-const installComponents = async (packages: string[]) => {
-  const latestVersions = await fetchVersionsFromNpm(packages);
-  const packageFile = await fs.readJSON(path.resolve(dirname, './package.json'));
-  packageFile.dependencies = {};
-  for (const packageName of packages) {
-    packageFile.dependencies[packageName] = latestVersions[packageName];
-  }
-  await fs.writeJSON(path.resolve(dirname, './package.json'), packageFile, { spaces: 2 });
-  execSync(`pnpm install --frozen-lockfile false`, {
-    stdio: 'inherit',
-    cwd: dirname,
-  });
-
-  const nestedNodeModules = glob
-    .sync('**/node_modules/**/package.json', {
-      cwd: path.resolve(dirname, 'node_modules/@semcore'),
-      followSymbolicLinks: false,
-    })
-    .map(
-      (packageFilePath) =>
-        './node_modules/@semcore/' +
-        packageFilePath.substring(0, packageFilePath.length - '/package.json'.length),
-    )
-    .map((relativePath) => {
-      const { version } = fs.readJsonSync(path.resolve(dirname, relativePath, 'package.json'));
-
-      return `${relativePath} @${version}`;
-    });
-
-  if (nestedNodeModules.length > 0) {
-    throw new Error(`Nested node_modules found:\n- ${nestedNodeModules.join('\n- ')}\n`);
-  }
-};
 
 const hasExportDefault = async (dependency: string) => {
   const require = createRequire(import.meta.url);
@@ -207,10 +171,4 @@ const generateFiles = async (packages: string[]) => {
   }
 };
 
-await installComponents(components.packages);
 await generateFiles(components.packages);
-
-execSync('pnpm test', {
-  stdio: 'inherit',
-  cwd: dirname,
-});

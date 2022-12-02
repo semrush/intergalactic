@@ -60,7 +60,8 @@ jobs:
       - name: build @semcore/ui
         run: |
           cd semcore/ui
-          pnpm generate
+          pnpm generate-reexport
+          pnpm test
       - name: NPM setup
         run: |
           echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" >> ".npmrc"
