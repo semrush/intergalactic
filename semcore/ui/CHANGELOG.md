@@ -12,10 +12,6 @@
 
 - **Fixed** Fixed exported types of components.
 
-### @semcore/wizard
-
-- **Fixed** Fixed layout so that the white background in the rounded borders of the modal would not be visible.
-
 ## [13.2.0] - 2022-11-30
 
 ### @semcore/base-trigger
