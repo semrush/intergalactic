@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [1.1.12] - 2022-12-01
+
+### Fixed
+
+- Fixed layout so that the white background in the rounded borders of the modal would not be visible.
+
 ## [1.1.11] - 2022-11-30
 
 ### Changed

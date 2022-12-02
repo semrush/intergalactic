@@ -5,6 +5,7 @@ SWizard {
   max-height: 700px;
   display: flex;
   padding: 0;
+  background: transparent;
 }
 
 SSidebar {
@@ -91,4 +92,5 @@ SContent {
   padding: 40px;
   width: 100%;
   border-radius: 0 var(--rounded-l) var(--rounded-l) 0;
+  background: var(--white);
 }
