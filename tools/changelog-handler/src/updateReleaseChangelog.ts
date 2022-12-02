@@ -11,6 +11,8 @@ const filename = fileURLToPath(import.meta.url);
 const releasePackageDir = resolvePath(filename, '../../../../semcore/ui/');
 
 export const updateReleaseChangelog = async () => {
+  // eslint-disable-next-line no-console
+  console.log(releasePackageDir);
   const releasePackageFilePath = resolvePath(releasePackageDir, 'package.json');
   let releasePackageFile = await fs.readJson(releasePackageFilePath);
   const packagePublishedData = await fetchFromNpm(['@semcore/ui']);
