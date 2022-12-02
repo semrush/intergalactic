@@ -22,18 +22,10 @@ export const updateReleaseChangelog = async () => {
   const { changelogs: patchedReleaseChangelog, version: newVersion } = changelogPatch;
   const changelogMarkdownAst = serializeReleaseChangelog(patchedReleaseChangelog);
   const changelogText = toMarkdown(changelogMarkdownAst);
-  // eslint-disable-next-line no-console
-  console.log(releasePackageDir, '1');
   const changelogFilePath = resolvePath(releasePackageDir, 'CHANGELOG.md');
-  // eslint-disable-next-line no-console
-  console.log(changelogFilePath, '2');
   await fs.writeFile(changelogFilePath, changelogText);
-  // eslint-disable-next-line no-console
-  console.log(releasePackageFilePath, '3');
   await execa('prettier', ['--write', changelogFilePath]);
   releasePackageFile = await fs.readJson(releasePackageFilePath);
   releasePackageFile.version = newVersion;
-  // eslint-disable-next-line no-console
-  console.log(releasePackageFilePath, '4');
   await fs.writeJson(releasePackageFilePath, releasePackageFile, { spaces: 2 });
 };
