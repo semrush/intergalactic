@@ -108,8 +108,12 @@ export const collectPackages = async (inNpmVersions: {
   }
 
   for (const packageFile of packages) {
-    const { version } = inNpmVersions[packageFile.name];
-    packageFile.lastPublishedVersion = isValidSemver(version) ? version : null;
+    const component = inNpmVersions[packageFile.name];
+    if (component) {
+      packageFile.lastPublishedVersion = isValidSemver(component.version)
+        ? component.version
+        : null;
+    }
   }
 
   return packages;
