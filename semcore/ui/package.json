@@ -8,6 +8,7 @@
     "clear": "tsm --require=../../.ci/tsm-filter-warnings.js clear.ts",
     "generate-reexport": "pnpm run clear && tsm --require=../../.ci/tsm-filter-warnings.js generate-reexport.ts",
     "update-dependencies": "tsm --require=../../.ci/tsm-filter-warnings.js update-dependencies.ts",
+    "update-changelog": "pnpm update-release-changelog",
     "test": "jest"
   },
   "dependencies": {

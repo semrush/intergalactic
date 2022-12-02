@@ -1,3 +1,21 @@
+## [13.2.1] - 2022-12-02
+
+### @semcore/dropdown-menu
+
+- **Changed** Changed size of shadow in `DropdownMenu.List` from `9px` to `16px`.
+
+### @semcore/flags
+
+- **Added** Added missed object `iso3iso2` in `index.d.ts` for exporting.
+
+### @semcore/input-tags
+
+- **Fixed** Fixed exported types of components.
+
+### @semcore/wizard
+
+- **Fixed** Fixed layout so that the white background in the rounded borders of the modal would not be visible.
+
 ## [13.2.0] - 2022-11-30
 
 ### @semcore/base-trigger
