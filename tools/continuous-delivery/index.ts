@@ -1,17 +1,15 @@
 import { collectPackages } from './src/collectPackages';
 import { makeVersionPatches } from './src/makeVersionPatches';
-import { fetchVersionsFromNpm } from './src/fetchVersionsFromNpm';
+import { fetchFromNpm } from './src/fetchFromNpm';
 import { updateVersions } from './src/updateVersions';
 import { updateChangelogs } from './src/updateChangelogs';
 import { runPublisher } from './src/runPublisher';
 // import { runTests } from './src/runTests';
 import { syncCheck } from './src/syncCheck';
 
-export { fetchVersionsFromNpm } from './src/fetchVersionsFromNpm';
-
 export const runContinuousDelivery = async () => {
-  const inNpmVersions = await fetchVersionsFromNpm();
-  const packages = await collectPackages(inNpmVersions);
+  const inNpmData = await fetchFromNpm();
+  const packages = await collectPackages(inNpmData);
 
   if (process.argv.includes('--check')) {
     await syncCheck(packages);
@@ -27,3 +25,5 @@ export const runContinuousDelivery = async () => {
     await runPublisher(versionPatches);
   }
 };
+
+export { fetchFromNpm };

@@ -13,7 +13,9 @@ export type Package = {
   dependencies: { [dependencyName: string]: string };
 };
 
-export const collectPackages = async (inNpmVersions: { [packageName: string]: string }) => {
+export const collectPackages = async (inNpmVersions: {
+  [packageName: string]: { version: string };
+}) => {
   const packagePaths = [
     ...(await fs.readdir(resolvePath('./semcore'))).map((packageName) =>
       resolvePath('./semcore', packageName),
@@ -106,7 +108,7 @@ export const collectPackages = async (inNpmVersions: { [packageName: string]: st
   }
 
   for (const packageFile of packages) {
-    const version = inNpmVersions[packageFile.name];
+    const { version } = inNpmVersions[packageFile.name];
     packageFile.lastPublishedVersion = isValidSemver(version) ? version : null;
   }
 

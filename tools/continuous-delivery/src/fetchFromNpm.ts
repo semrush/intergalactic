@@ -1,7 +1,20 @@
 import axios from 'axios';
 import pLimit from 'p-limit';
 
-export const fetchVersionsFromNpm = async (filter?: string[]) => {
+type PackageNpmRegistry = {
+  dependencies: {
+    [name: string]: string;
+  };
+};
+
+type ResponseNpmRegistry = {
+  'dist-tags': { latest: string };
+  versions: {
+    [version: string]: PackageNpmRegistry;
+  };
+};
+
+export const fetchFromNpm = async (filter?: string[]) => {
   const { data: npmSearchResult } = await axios.get<
     {},
     {
@@ -28,7 +41,7 @@ export const fetchVersionsFromNpm = async (filter?: string[]) => {
     );
   }
 
-  const currentVersions: { [packageName: string]: string } = {};
+  const currentVersions: { [packageName: string]: { version: string } & PackageNpmRegistry } = {};
   const objectsToFetch = npmSearchResult.objects.filter(
     (object) => !filter || filter.includes(object.package.name),
   );
@@ -38,10 +51,14 @@ export const fetchVersionsFromNpm = async (filter?: string[]) => {
     objectsToFetch.map(
       async ({ package: { name } }) =>
         await limit(async () => {
-          const npmResponse = await axios.get<{ 'dist-tags': { latest: string } }>(
+          const npmResponse = await axios.get<ResponseNpmRegistry>(
             `https://registry.npmjs.org/${name}`,
           );
-          currentVersions[name] = npmResponse.data['dist-tags'].latest;
+          const lastVersions = npmResponse.data['dist-tags'].latest;
+          currentVersions[name] = {
+            version: lastVersions,
+            dependencies: npmResponse.data.versions[lastVersions].dependencies,
+          };
         }),
     ),
   );

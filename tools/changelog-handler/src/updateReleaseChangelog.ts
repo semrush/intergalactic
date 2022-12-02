@@ -5,7 +5,7 @@ import { patchReleaseChangelog } from './patchers/patchReleaseChangelog';
 import { toMarkdown } from 'marked-ast-markdown';
 import { serializeReleaseChangelog } from './serializers/serializeReleaseChangelog';
 import execa from 'execa';
-import { fetchVersionsFromNpm } from '@semcore/continuous-delivery';
+import { fetchFromNpm } from '@semcore/continuous-delivery';
 
 const filename = fileURLToPath(import.meta.url);
 const releasePackageDir = resolvePath(filename, '../../../../semcore/ui/');
@@ -13,9 +13,10 @@ const releasePackageDir = resolvePath(filename, '../../../../semcore/ui/');
 export const updateReleaseChangelog = async () => {
   const releasePackageFilePath = resolvePath(releasePackageDir, 'package.json');
   let releasePackageFile = await fs.readJson(releasePackageFilePath);
-  const packagePublishedData = await fetchVersionsFromNpm(['@semcore/ui']);
-  const currentVersion = packagePublishedData['@semcore/ui'];
-  const changelogPatch = await patchReleaseChangelog(currentVersion);
+  const packagePublishedData = await fetchFromNpm(['@semcore/ui']);
+  const currentVersion = packagePublishedData['@semcore/ui'].version;
+  const currentDependencies = packagePublishedData['@semcore/ui'].dependencies;
+  const changelogPatch = await patchReleaseChangelog(currentVersion, currentDependencies);
   const { changelogs: patchedReleaseChangelog, version: newVersion } = changelogPatch;
   const changelogMarkdownAst = serializeReleaseChangelog(patchedReleaseChangelog);
   const changelogText = toMarkdown(changelogMarkdownAst);

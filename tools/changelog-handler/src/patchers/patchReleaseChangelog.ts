@@ -7,6 +7,7 @@ import dayjs from 'dayjs';
 import semver from 'semver';
 import { fileURLToPath } from 'url';
 import isBetween from 'dayjs/plugin/isBetween.js';
+
 dayjs.extend(isBetween);
 
 const filename = fileURLToPath(import.meta.url);
@@ -21,7 +22,10 @@ const orderedVersionIncrement: semver.ReleaseType[] = [
   'prerelease',
 ];
 
-export const patchReleaseChangelog = async (previousVersionId: string) => {
+export const patchReleaseChangelog = async (
+  previousVersionId: string,
+  previousDependencies: { [name: string]: string },
+) => {
   const componentChangelogs = await collectComponentChangelogs();
   const releaseChangelog = await getReleaseChangelog();
 
@@ -35,19 +39,14 @@ export const patchReleaseChangelog = async (previousVersionId: string) => {
   const previousVersionIndex = releaseChangelog.changelogs.findIndex(
     (changelog) => changelog.version === previousVersionId,
   );
-  const previousVersion = releaseChangelog.changelogs[previousVersionIndex];
-  const previousVersionDate = previousVersion?.date;
-  const versionDate =
-    releaseChangelog.changelogs[previousVersionIndex - 1]?.date ||
-    dayjs().add(1, 'day').format('YYYY-MM-DD');
 
-  const componentChanges = componentChangelogs.map(({ changelogs }) =>
+  const componentChanges = componentChangelogs.map(({ changelogs, package: component }) =>
     changelogs
       .filter((changelog) => exportedPackagesMap[changelog.component])
       .filter(
-        ({ date }) =>
-          dayjs(date).isValid() &&
-          dayjs(date).isBetween(previousVersionDate, versionDate, 'd', '[)'),
+        ({ version }) =>
+          !previousDependencies[component.name] ||
+          semver.gt(version, previousDependencies[component.name]),
       )
       .map((changelog) => ({
         ...changelog,

@@ -6,7 +6,8 @@
   "sideEffects": false,
   "scripts": {
     "clear": "tsm --require=../../.ci/tsm-filter-warnings.js clear.ts",
-    "generate": "pnpm run clear && tsm --require=../../.ci/tsm-filter-warnings.js generate.ts",
+    "generate-reexport": "pnpm run clear && tsm --require=../../.ci/tsm-filter-warnings.js generate-reexport.ts",
+    "update-dependenciest": "tsm --require=../../.ci/tsm-filter-warnings.js update-dependencies.ts",
     "test": "jest"
   },
   "dependencies": {
