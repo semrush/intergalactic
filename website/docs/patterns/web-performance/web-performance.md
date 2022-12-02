@@ -3,7 +3,7 @@ title: Web-performance
 tabName: Design
 ---
 
-After adding new features to your product, check whether the loading time fits into the recommendations. Download speed can be checked with [Speedcurve](https://speedcurve.com/) or[tool from Google](https://developers.google.com/speed/pagespeed/insights/).
+After adding new features to your product, check whether the loading time fits into the recommendations. Download speed can be checked with [Speedcurve](https://speedcurve.com/) or [tool from Google](https://developers.google.com/speed/pagespeed/insights/).
 
 You can also read about the skeleton and spinner in the guides:
 
