@@ -11,8 +11,6 @@ const filename = fileURLToPath(import.meta.url);
 const releasePackageDir = resolvePath(filename, '../../../../semcore/ui/');
 
 export const updateReleaseChangelog = async () => {
-  // eslint-disable-next-line no-console
-  console.log(releasePackageDir);
   const releasePackageFilePath = resolvePath(releasePackageDir, 'package.json');
   let releasePackageFile = await fs.readJson(releasePackageFilePath);
   const packagePublishedData = await fetchFromNpm(['@semcore/ui']);
@@ -22,7 +20,11 @@ export const updateReleaseChangelog = async () => {
   const { changelogs: patchedReleaseChangelog, version: newVersion } = changelogPatch;
   const changelogMarkdownAst = serializeReleaseChangelog(patchedReleaseChangelog);
   const changelogText = toMarkdown(changelogMarkdownAst);
+  // eslint-disable-next-line no-console
+  console.log(releasePackageDir);
   const changelogFilePath = resolvePath(releasePackageDir, 'CHANGELOG.md');
+  // eslint-disable-next-line no-console
+  console.log(releasePackageDir, '1');
   await fs.writeFile(changelogFilePath, changelogText);
   await execa('prettier', ['--write', changelogFilePath]);
   releasePackageFile = await fs.readJson(releasePackageFilePath);
