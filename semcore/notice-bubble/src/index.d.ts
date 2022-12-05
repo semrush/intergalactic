@@ -4,7 +4,7 @@ import { IBoxProps } from '@semcore/flex-box';
 
 export interface INoticeBubbleContainerProps extends IBoxProps, IPortalProps {
   /** Manager copy */
-  manager?: INoticeBubbleManager;
+  manager?: NoticeBubbleManager;
 }
 
 export interface INoticeBubbleInfoProps extends INoticeBubbleProps {
@@ -29,7 +29,7 @@ export interface INoticeBubbleProps extends IBoxProps {
    * Manager instance
    * @default NoticeBubbleManager()
    */
-  manager?: INoticeBubbleManager;
+  manager?: NoticeBubbleManager;
   /**
    * Notice visibility
    */
@@ -41,7 +41,7 @@ export interface INoticeBubbleProps extends IBoxProps {
   onClose?: (e?: React.SyntheticEvent) => void;
 }
 
-export interface INoticeBubbleManager {
+declare class NoticeBubbleManager {
   /**
    * Adding a notice.
    * Takes the props properties of NoticeBubble.
@@ -69,13 +69,12 @@ export interface INoticeBubbleManager {
 declare const NoticeBubble: <T>(props: INoticeBubbleInfoProps & T) => ReturnEl;
 declare const NoticeBubbleWarning: <T>(props: INoticeBubbleWarningProps & T) => ReturnEl;
 declare const NoticeBubbleContainer: (<T>(
-  props: CProps<INoticeBubbleContainerProps & T>,
+    props: CProps<INoticeBubbleContainerProps & T>,
 ) => ReturnEl) & {
   Info: typeof NoticeBubble;
   Warning: typeof NoticeBubbleWarning;
 };
-
-declare class NoticeBubbleManager implements INoticeBubbleManager {}
+declare const NoticeBubbleManagerInstance: NoticeBubbleManager;
 
 export { NoticeBubbleContainer, NoticeBubble, NoticeBubbleWarning, NoticeBubbleManager };
-export default NoticeBubbleManager;
+export default NoticeBubbleManagerInstance;
