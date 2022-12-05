@@ -8,7 +8,7 @@ export const notifyTeamAboutStandup = async ({ dryRun }: { dryRun: boolean }) =>
     full: 'https://www.meme-arsenal.com/memes/b3c347c4c5fd766c336b2b6985d037c8.jpg',
   };
   try {
-    const { data } = await axios.get('https://meme-api.herokuapp.com/gimme/ProgrammerHumor/50');
+    const { data } = await axios.get('https://meme-api.com/gimme/ProgrammerHumor/50');
     const { memes } = data;
 
     memes.sort((memeA, memeB) => memeB.ups - memeA.ups);
