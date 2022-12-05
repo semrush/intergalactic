@@ -8,99 +8,99 @@
     "source": "/semcore/base-trigger/src/translations/en.json",
     "translation": "/%original_path%/%two_letters_code%.json",
   },
-{
+  {
     "source": "/semcore/breadcrumbs/src/translations/en.json",
     "translation": "/%original_path%/%two_letters_code%.json",
   },
-{
+  {
     "source": "/semcore/color-picker/src/translations/en.json",
     "translation": "/%original_path%/%two_letters_code%.json",
   },
-{
+  {
     "source": "/semcore/date-picker/src/translations/en.json",
     "translation": "/%original_path%/%two_letters_code%.json",
   },
-{
+  {
     "source": "/semcore/drag-and-drop/src/translations/en.json",
     "translation": "/%original_path%/%two_letters_code%.json",
   },
-{
+  {
     "source": "/semcore/dropdown/src/translations/en.json",
     "translation": "/%original_path%/%two_letters_code%.json",
   },
-{
+  {
     "source": "/semcore/dropdown-menu/src/translations/en.json",
     "translation": "/%original_path%/%two_letters_code%.json",
   },
-{
+  {
     "source": "/semcore/errors/src/AccessDenied/translations/en.json",
     "translation": "/%original_path%/%two_letters_code%.json",
   },
-{
+  {
     "source": "/semcore/errors/src/Maintenance/translations/en.json",
     "translation": "/%original_path%/%two_letters_code%.json",
   },
-{
+  {
     "source": "/semcore/errors/src/PageError/translations/en.json",
     "translation": "/%original_path%/%two_letters_code%.json",
   },
-{
+  {
     "source": "/semcore/errors/src/PageNotFound/translations/en.json",
     "translation": "/%original_path%/%two_letters_code%.json",
   },
-{
+  {
     "source": "/semcore/errors/src/ProjectNotFound/translations/en.json",
     "translation": "/%original_path%/%two_letters_code%.json",
   },
-{
+  {
     "source": "/semcore/inline-edit/src/translations/en.json",
     "translation": "/%original_path%/%two_letters_code%.json",
   },
-{
+  {
     "source": "/semcore/inline-input/src/translations/en.json",
     "translation": "/%original_path%/%two_letters_code%.json",
   },
-{
+  {
     "source": "/semcore/input-number/src/translations/en.json",
     "translation": "/%original_path%/%two_letters_code%.json",
   },
-{
+  {
     "source": "/semcore/modal/src/translations/en.json",
     "translation": "/%original_path%/%two_letters_code%.json",
   },
-{
+  {
     "source": "/semcore/notice/src/translations/en.json",
     "translation": "/%original_path%/%two_letters_code%.json",
   },
-{
+  {
     "source": "/semcore/notice-bubble/src/translations/en.json",
     "translation": "/%original_path%/%two_letters_code%.json",
   },
-{
+  {
     "source": "/semcore/notice-global/src/translations/en.json",
     "translation": "/%original_path%/%two_letters_code%.json",
   },
-{
+  {
     "source": "/semcore/pagination/src/translations/en.json",
     "translation": "/%original_path%/%two_letters_code%.json",
   },
-{
+  {
     "source": "/semcore/select/src/translations/en.json",
     "translation": "/%original_path%/%two_letters_code%.json",
   },
-{
+  {
     "source": "/semcore/tag/src/translations/en.json",
     "translation": "/%original_path%/%two_letters_code%.json",
   },
-{
+  {
     "source": "/semcore/time-picker/src/translations/en.json",
     "translation": "/%original_path%/%two_letters_code%.json",
   },
-{
+  {
     "source": "/semcore/widget-empty/src/Error/translations/en.json",
     "translation": "/%original_path%/%two_letters_code%.json",
   },
-{
+  {
     "source": "/semcore/widget-empty/src/NoData/translations/en.json",
     "translation": "/%original_path%/%two_letters_code%.json",
   },
