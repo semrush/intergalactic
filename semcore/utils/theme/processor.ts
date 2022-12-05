@@ -4,7 +4,7 @@ import postcss from 'postcss';
 import valuesParser from 'postcss-value-parser';
 
 const baseColors: { [colorName: string]: string } = JSON.parse(
-  await fs.readFile('./style/base.json', 'utf-8'),
+  await fs.readFile('./tokens-base.json', 'utf-8'),
 );
 
 const values = {};
