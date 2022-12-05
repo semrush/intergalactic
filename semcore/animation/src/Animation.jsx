@@ -16,14 +16,12 @@ class Animation extends Component {
     duration: 0,
     delay: 0,
     keyframes: [],
+    initialAnimation: false,
   };
 
   static getDerivedStateFromProps(props, state) {
     const wasInvisible = state.wasInvisible || !props.visible;
-    if (props.visible || props.preserveNode) {
-      return { render: true, wasInvisible };
-    }
-    if (state.wasInvisible !== wasInvisible) {
+    if (props.visible || props.preserveNode || state.wasInvisible !== wasInvisible) {
       return { render: true, wasInvisible };
     }
     return state;
@@ -43,7 +41,7 @@ class Animation extends Component {
 
   render() {
     const SAnimation = Root;
-    const { styles, keyframes } = this.asProps;
+    const { styles, keyframes, initialAnimation } = this.asProps;
     const duration = propToArray(this.asProps.duration);
     const delay = propToArray(this.asProps.delay);
     const { render, wasInvisible } = this.state;
@@ -58,7 +56,7 @@ class Animation extends Component {
         durationFinalize={`${duration[1]}ms`}
         delayInitialize={`${delay[0]}ms`}
         delayFinalize={`${delay[1]}ms`}
-        keyframesInitialize={wasInvisible ? keyframes[0] : undefined}
+        keyframesInitialize={wasInvisible || initialAnimation ? keyframes[0] : undefined}
         keyframesFinalize={keyframes[1]}
       />,
     );
