@@ -21,7 +21,7 @@ Make sure that it's possible to interact with the interface using a keyboard onl
 > - **Shift** + **Tab** returns `focus` to the previous interactive element. If dropdown is open, it closes.
 > - **Enter**, **Space** or **↓** **(for the select/menu trigger)** opens a dropdown. And if it has interactive elements inside, `focus` moves to the first one.
 > - **↓** inside the dropdown moves `focus` to the next `menuItem`. From the last `menuItem`, the `focus` moves to the first `menuItem`. The same logic applies to the **↑** key, but backwards 🙃
-> - **Esc** closes the dropdown. If the `focus` was on the control inside the dropdown, `Esc` removes the `focus` from the interactive element and closes the dropdown.
+> - **Esc** discardes choice or closes the dropdown. If the `focus` was on the control inside the dropdown, `Esc` removes the `focus` from the interactive element and closes the dropdown.
 
 Keyboard control should be performed sequentially across all interactive elements (which have focus) on the page.
 
@@ -29,7 +29,7 @@ Keyboard control should be performed sequentially across all interactive element
 - For inputs and text fields, focus also appears by `onClick`.
 - When navigating the keyboard all controls are highlighted with a blue border (see [Variables](/style/variables/#ab8464)). Exceptions are inputs and text fields when validating, that on focus have same border color (orange or green).
 - The focus inside groups of controls is consistent. After the last control in the group, the focus should move to the next control in the interface.
-- If the control has a tooltip in the `hover` state, it also appears on focus using `Tab`.
+- If the control has a tooltip in the `hover` state, it should appear on focus with `Tab`.
 
 @## Keyboard support for button, link, input, etc.
 
@@ -57,7 +57,7 @@ Keyboard control should be performed sequentially across all interactive element
 - When focused, the controls are highlighted with a blue outline. For controls that have been validated, the outline corresponds to the border color (e.g., orange).
 - When you press `Enter`, an element is enabled/disabled, depending on the initial state.
 
-### Any other controls (FilterTrigger, Pills, TabLine и пр.)
+### Any other controls (FilterTrigger, Pills, TabLine, etc.)
 
 - The control gets focus when you press `Tab`.
 - When focused, controls are highlighted with a blue outline, regardless of the color of the control.
@@ -79,7 +79,7 @@ Keyboard control should be performed sequentially across all interactive element
 
 @## Keyboard support for dropdown
 
-Particular cases about focus behavior when working with dropdown are described below. _If you see that some of them are missing, please drop us a line._
+Common cases about focus behavior when working with dropdown are described below.
 
 @## Focus, OnClick and dropdown
 
@@ -130,10 +130,10 @@ A dropdown inside another dropdown has the same situation as in the above case.
 
 @## Resources
 
-- [Meaningful Sequence ›](https://www.w3.org/TR/WCAG21/#meaningful-sequence)
-- [Keyboard Accessible ›](https://www.w3.org/TR/WCAG21/#keyboard-accessible)
-- [Keyboard ›](https://www.w3.org/TR/WCAG21/#keyboard)
-- [No Keyboard Trap ›](https://www.w3.org/TR/WCAG21/#no-keyboard-trap)
-- [Focus Order ›](https://www.w3.org/TR/WCAG21/#focus-order)
-- [Focus Visible ›](https://www.w3.org/TR/WCAG21/#focus-visible)
-- [On Focus ›](https://www.w3.org/TR/WCAG21/#on-focus)
+- [Meaningful Sequence](https://www.w3.org/TR/WCAG21/#meaningful-sequence)
+- [Keyboard Accessible](https://www.w3.org/TR/WCAG21/#keyboard-accessible)
+- [Keyboard](https://www.w3.org/TR/WCAG21/#keyboard)
+- [No Keyboard Trap](https://www.w3.org/TR/WCAG21/#no-keyboard-trap)
+- [Focus Order](https://www.w3.org/TR/WCAG21/#focus-order)
+- [Focus Visible](https://www.w3.org/TR/WCAG21/#focus-visible)
+- [On Focus](https://www.w3.org/TR/WCAG21/#on-focus)

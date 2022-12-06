@@ -4,7 +4,7 @@ title: UI/UX requirements
 
 @## General principles
 
-These principles were inspired by an [article from the Google design team](https://design.google/library/designers-guide-accessibility-research/) 🖤
+These principles were inspired by the [article from the Google design team](https://design.google/library/designers-guide-accessibility-research/) 🖤
 
 - Try accessibility technologies on yourself.
 - Develop your empathy and open-mindedness to new things.
@@ -24,9 +24,9 @@ This way you will both cover the needs of the visually impaired and ensure that 
 
 @## Layout and structure
 
-![headings](/core-principles/a11y/static/structure.png)
-
 Make sure that user can easily understand the meaning and structure of the page and complete the required task. The design should help the user find key information quickly and easily.
+
+![headings](/core-principles/a11y/static/structure.png)
 
 > **Why it's important**
 >
