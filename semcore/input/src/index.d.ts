@@ -77,7 +77,7 @@ export interface IInputAddonProps extends IBoxProps, INeighborItemProps {
   size?: InputSize;
 }
 
-interface IInputCtx {
+export interface IInputCtx {
   getValueProps: PropGetterFn;
   getAddonProps: PropGetterFn;
 }

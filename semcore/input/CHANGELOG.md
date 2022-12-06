@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.4.2] - 2022-12-06
+
+### Added
+
+- Added type `IInputCtx` for export.
+
 ## [3.4.1] - 2022-11-30
 
 ### Fixed
