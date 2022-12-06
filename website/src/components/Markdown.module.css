@@ -2,6 +2,7 @@
   position: relative;
   padding-bottom: 60.70826306913997%; /* aspect ratio 16x9 hack */
   height: 0;
+  margin-bottom: 40px;
 }
 .embeddedVideoIframe {
   position: absolute;

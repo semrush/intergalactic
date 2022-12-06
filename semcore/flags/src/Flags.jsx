@@ -5,7 +5,7 @@ import { createBaseComponent, sstyled } from '@semcore/core';
 import { useBox } from '@semcore/flex-box';
 import canUseDOM from '@semcore/utils/lib/canUseDOM';
 import isRetina from '@semcore/utils/lib/isRetina';
-import { iso2Name, iso3iso2, nameWithoutIso } from './countries.json';
+import countries from './countries.json';
 
 import styles from './style/flags.shadow.css';
 
@@ -103,5 +103,5 @@ function Flags(props, ref) {
 
 Flags.displayName = 'Flags';
 
-export { iso2Name, iso3iso2, nameWithoutIso };
+export const { iso2Name, iso3iso2, nameWithoutIso } = countries;
 export default createBaseComponent(Flags);

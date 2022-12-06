@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.2.4] - 2022-12-05
+
+### Fixed
+
+- Fixed exporting `iso2Name`, `iso3iso2` and `nameWithoutIso` because of linter warnings.
+
 ## [3.2.3] - 2022-12-02
 
 ### Added

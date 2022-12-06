@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [1.8.0] - 2022-12-05
+
+### Added
+
+- Added prop `initialAnimation` to run animation on the first rendering
+
 ## [1.7.3] - 2022-11-30
 
 ### Changed
