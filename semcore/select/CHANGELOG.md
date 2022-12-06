@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.2.18] - 2022-12-06
+
+### Fixed
+
+- Fixed screen readers support for `Select.List`
+
 ## [3.2.17] - 2022-12-01
 
 ### Changed
