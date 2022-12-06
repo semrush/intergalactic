@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.3.1] - 2022-12-06
+
+### Fixed
+
+- Fixed `NoticeBubbleManager` types
+
 ## [4.3.0] - 2022-12-05
 
 ### Added
