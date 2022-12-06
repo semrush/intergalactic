@@ -19,6 +19,7 @@ const Notices = (props) => {
     return sstyled(styles)(
       <Animation
         key={notice.uid}
+        initialAnimation={notice.initialAnimation}
         visible={notice.visible === undefined ? true : notice.visible}
         duration={250}
         keyframes={[styles['@enter'], styles['@exit']]}
