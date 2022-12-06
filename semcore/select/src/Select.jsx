@@ -89,9 +89,13 @@ class RootSelect extends Component {
   }
 
   getListProps() {
-    const { multiselect } = this.asProps;
+    const { multiselect, uid } = this.asProps;
     return {
       'aria-multiselectable': multiselect ? 'true' : undefined,
+      id: `igc-${uid}-list`,
+      role: 'listbox',
+      'aria-label': 'List of options',
+      'aria-flowto': `igc-${uid}-trigger`,
     };
   }
 
