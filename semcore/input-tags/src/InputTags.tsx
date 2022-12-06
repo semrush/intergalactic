@@ -1,4 +1,4 @@
-import React, { ComponentProps } from 'react';
+import React from 'react';
 import createComponent, { Component, sstyled, Root, PropGetterFn, CProps } from '@semcore/core';
 import Input, { IInputProps, IInputValueProps } from '@semcore/input';
 import ScrollArea, { IScrollAreaProps } from '@semcore/scroll-area';
@@ -226,7 +226,7 @@ export default createComponent(InputTags, {
     },
   ],
 }) as (<T>(props: CProps<IInputTagsProps & T, IInputTagsContext>) => React.ReactElement) & {
-  Value: ComponentProps<typeof Input.Value>;
+  Value: typeof Input.Value;
   Tag: (<T>(props: IInputTagsTagProps & T) => React.ReactElement) & {
     Text: typeof Tag.Text;
     Close: typeof Tag.Close;
