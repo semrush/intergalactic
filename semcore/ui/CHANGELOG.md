@@ -1,4 +1,35 @@
-## [13.3.0] - 2022-12-02
+## [13.2.2] - 2022-12-06
+
+### @semcore/animation
+
+- **Added** Added prop `initialAnimation` to run animation on the first rendering
+
+### @semcore/flags
+
+- **Fixed** Fixed exporting `iso2Name`, `iso3iso2` and `nameWithoutIso` because of linter warnings.
+
+### @semcore/input
+
+- **Added** Added type `IInputCtx` for export.
+
+### @semcore/input-tags
+
+- **Fixed** Fixed `Value` type
+
+### @semcore/notice-bubble
+
+- **Fixed** Fixed `NoticeBubbleManager` types
+- **Added** Added prop `initialAnimation` to run animation on the first rendering
+
+### @semcore/select
+
+- **Fixed** Fixed screen readers support for `Select.List`
+
+### @semcore/wizard
+
+- **Fixed** Fixed layout so that the white background in the rounded borders of the modal would not be visible.
+
+## [13.2.1] - 2022-12-02
 
 ### @semcore/dropdown-menu
 
