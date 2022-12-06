@@ -1,5 +1,3 @@
-@import '@semcore/utils/style/var.css';
-
 SButtonTrigger {
   border: 1px solid var(--intergalactic-border-primary, #c4c7cf);
   background: var(--intergalactic-bg-primary-neutral, #ffffff);

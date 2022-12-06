@@ -1,5 +1,3 @@
-@import '@semcore/utils/style/var.css';
-
 SBaseTrigger {
   display: inline-block;
   align-items: center;
@@ -76,6 +74,7 @@ SInner {
 
 SText {
   display: inline;
+  /* disable-tokens-validator */
   padding: 1px 0;
   overflow: hidden;
   white-space: nowrap;
@@ -150,12 +149,14 @@ SBaseTrigger[neighborLocation='right'] {
 
 SBaseTrigger[neighborLocation='both'] {
   border-radius: 0;
+  /* disable-tokens-validator */
   margin-left: -1px;
 }
 
 SBaseTrigger[neighborLocation='left'] {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
+  /* disable-tokens-validator */
   margin-left: -1px;
 }
 

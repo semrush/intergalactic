@@ -1659,7 +1659,7 @@ importers:
       '@semcore/errors': link:../errors
       '@semcore/feature-popover': link:../feature-popover
       '@semcore/feedback-form': link:../feedback-form
-      '@semcore/flags': link:../flags
+      '@semcore/flags': 3.2.3_@semcore+core@semcore+core
       '@semcore/flex-box': link:../flex-box
       '@semcore/format-text': link:../format-text
       '@semcore/fullscreen-modal': link:../fullscreen-modal

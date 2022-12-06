@@ -1,8 +1,6 @@
-@import '@semcore/utils/style/var.css';
-
 STooltip {
   position: relative;
-  padding: 12px;
+  padding: var(--intergalactic-spacing-3x, 12px);
   border-radius: var(--intergalactic-rounded-medium, 6px);
   box-sizing: border-box;
   color: var(--intergalactic-text-primary, #191b23);
@@ -64,7 +62,7 @@ SArrow[theme='invert'] {
 }
 
 SArrow[theme='warning'] {
-  border-color: var(--intergalactic-border-danger-active);
+  border-color: var(--intergalactic-border-danger-active, #d1002f);
 
   &::before {
     border-color: var(--intergalactic-tooltip-warning, #ffd7df);

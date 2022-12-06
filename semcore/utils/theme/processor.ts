@@ -2,9 +2,12 @@ import fs from 'fs/promises';
 import glob from 'fast-glob';
 import postcss from 'postcss';
 import valuesParser from 'postcss-value-parser';
+import { resolve as resolvePath } from 'path';
+import { fileURLToPath } from 'url';
 
-const baseColors: { [colorName: string]: string } = JSON.parse(
-  await fs.readFile('./tokens-base.json', 'utf-8'),
+const dirname = resolvePath(fileURLToPath(import.meta.url), '..');
+const baseColors = JSON.parse(
+  await fs.readFile(resolvePath(dirname, './tokens-base.json'), 'utf-8'),
 );
 
 const values = {};
@@ -50,8 +53,17 @@ const traverse = (node: DesignTokenNode, pathParts: string[] = []) => {
     traverse(node[key], [...pathParts, key]);
   }
 };
-traverse(JSON.parse(await fs.readFile('./style/tokens.json', 'utf-8')));
+const tokens = JSON.parse(await fs.readFile(resolvePath(dirname, './tokens.json'), 'utf-8'));
+const chartTokens = JSON.parse(
+  await fs.readFile(resolvePath(dirname, './tokens-chart.json'), 'utf-8'),
+);
+tokens.chart = chartTokens;
+
+traverse(tokens);
 const resolveColor = (color: string) => {
+  if (color.includes('linear-gradient')) {
+    return replaceColors(color);
+  }
   if (color.startsWith('rgba(') && color.endsWith(')')) {
     const lastComa = color.lastIndexOf(',');
     const alpha = parseFloat(color.substring(lastComa + 1, color.length - 1));
@@ -60,6 +72,7 @@ const resolveColor = (color: string) => {
     }
     let resolvedColor = color.substring('rgba('.length, lastComa);
     if (resolvedColor.startsWith('{')) resolvedColor = resolveColor(resolvedColor);
+    if (resolvedColor.startsWith('$')) resolvedColor = resolveColor(resolvedColor);
     if (resolvedColor.startsWith('#')) {
       if (resolvedColor.length === 1 + 3) {
         resolvedColor = [resolvedColor[1], resolvedColor[2], resolvedColor[3]]
@@ -98,13 +111,18 @@ const resolveColor = (color: string) => {
     return `rgba(${r}, ${g}, ${b}, ${a})`;
   }
   if (color.startsWith('{') && color.split('.').length === 2 && color.endsWith('}')) {
-    const baseColorsName = color
-      .substring(1, color.length - 1)
-      .split('.')
-      .join('-');
-    const resolvedColor = baseColors[baseColorsName];
+    const [group, index] = color.substring(1, color.length - 1).split('.');
+    const resolvedColor = baseColors[group][index].value;
     if (!resolvedColor) {
-      throw new Error(`Color ${baseColorsName} was not found in base palette`);
+      throw new Error(`Color ${color} was not found in base palette`);
+    }
+    return resolvedColor;
+  }
+  if (color.startsWith('$') && color.split('.').length === 2) {
+    const [group, index] = color.substring(1).split('.');
+    const resolvedColor = baseColors[group]?.[index]?.value ?? values[`${group}-${index}`];
+    if (!resolvedColor) {
+      throw new Error(`Color ${color} was not found`);
     }
     return resolvedColor;
   }
@@ -137,9 +155,7 @@ const replaceColors = (str: string) => {
     if (str.substring(i, i + 'rgba('.length) === 'rgba(') {
       const start = i;
       while (str[i] !== undefined && str[i] !== ')') i++;
-      i++;
-      const end = i;
-      result += resolveColor(str.substring(start, end));
+      result += resolveColor(str.substring(start, i + 1));
     } else {
       result += str[i];
     }
@@ -178,11 +194,7 @@ const projectCssPaths = (
     ignore: ['node_modules', 'lib'],
   })
 ).filter((path) => {
-  if (
-    path
-      .split('/')
-      .some((pathPart) => ['chart', 'd3-chart', 'email', 'tag', 'table'].includes(pathPart))
-  ) {
+  if (path.split('/').some((pathPart) => ['chart', 'email', 'table'].includes(pathPart))) {
     return false;
   }
   return true;
@@ -203,9 +215,10 @@ const legacyCssVariablesList = legacyCssVariablesFile
 const legacyCssVariables = Object.fromEntries(
   legacyCssVariablesList.map((variableName) => [variableName, 0]),
 );
+const colorLiterals: { path: string; name: string }[] = [];
 
 const processedCss = await Promise.all(
-  projectCssContents.map((cssContent) =>
+  projectCssContents.map((cssContent, fileIndex) =>
     postcss([
       {
         postcssPlugin: 'variables-explored',
@@ -217,9 +230,48 @@ const processedCss = await Promise.all(
               }
               if (node.value) {
                 const valueAst = valuesParser(node.value);
-                const traverseValueAst = (nodes) => {
+                const traverseValueAst = (nodes, parent) => {
                   for (const valueNode of nodes) {
-                    if (valueNode.nodes) traverseValueAst(valueNode.nodes);
+                    if (valueNode.nodes) traverseValueAst(valueNode.nodes, valueNode);
+                    if (valueNode.type === 'function' && valueNode.value === 'color-mod') {
+                      throw new Error(
+                        `Found restricted function color-mod in ${projectCssPaths[fileIndex]}`,
+                      );
+                    }
+
+                    const parentIsVariable = parent?.type === 'function' && parent?.value === 'var';
+                    if (!parentIsVariable) {
+                      const prevNode = node.parent.nodes[node.parent.nodes.indexOf(node) - 1];
+                      const skipNode =
+                        prevNode?.type === 'comment' &&
+                        prevNode.text.trim() === 'disable-tokens-validator';
+                      if (skipNode) continue;
+
+                      if (
+                        valueNode.type === 'word' &&
+                        (valueNode.value.startsWith('#') || valueNode.value.startsWith('rgb'))
+                      ) {
+                        const location = node.source.start.line + ':' + node.source.start.offset;
+                        colorLiterals.push({
+                          path: `${projectCssPaths[fileIndex]}:${location}`,
+                          name: valueNode.value,
+                        });
+                      }
+                      if (
+                        valueNode.type === 'word' &&
+                        valueNode.value.endsWith('px') &&
+                        (node.prop.includes('padding') ||
+                          node.prop.includes('margin') ||
+                          node.prop.includes('radius') ||
+                          node.prop.includes('font-size'))
+                      ) {
+                        const location = node.source.start.line + ':' + node.source.start.offset;
+                        colorLiterals.push({
+                          path: `${projectCssPaths[fileIndex]}:${location}`,
+                          name: valueNode.value,
+                        });
+                      }
+                    }
                     if (valueNode.type !== 'function' || valueNode.value !== 'var') continue;
                     const variableName = valueNode.nodes[0].value;
                     if (!variableName.startsWith(`--${prefix}`)) {
@@ -258,7 +310,7 @@ const processedCss = await Promise.all(
                     valueNode.nodes.length = 3;
                   }
                 };
-                traverseValueAst(valueAst.nodes);
+                traverseValueAst(valueAst.nodes, null);
                 node.value = valueAst.toString();
               }
             }
@@ -292,5 +344,11 @@ if (Object.values(legacyCssVariables).reduce((sum, item) => sum + item) > 0) {
     if (legacyCssVariables[variable] !== 0) {
       console.log(`${variable} (${legacyCssVariables[variable]})`);
     }
+  }
+}
+if (colorLiterals.length > 0) {
+  console.log(`Unexpected color literals:`);
+  for (const literal of colorLiterals) {
+    console.log(`${literal.name} in ${literal.path}`);
   }
 }

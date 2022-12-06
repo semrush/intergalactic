@@ -1,5 +1,3 @@
-@import '@semcore/utils/style/var.css';
-
 SColorPickerPopper {
   max-width: calc(var(--intergalactic-spacing-4x, 16px) * 2 + 28px * 6 + 4px * 6);
   padding: var(--intergalactic-spacing-4x, 16px);
@@ -68,6 +66,7 @@ SPaletteManager {
   align-items: center;
   justify-content: space-between;
   margin-top: var(--intergalactic-spacing-3x, 12px);
+  /* disable-tokens-validator */
   margin-left: calc(var(--intergalactic-spacing-1x, 4px) - 1px);
 }
 
@@ -105,7 +104,8 @@ STriggerCircle {
   position: relative;
   width: 12px;
   height: 12px;
-  margin-right: 5px;
+  /* disable-tokens-validator */
+  margin-right: calc(var(--intergalactic-spacing-1x, 4px) + 1px);
   border-radius: 50%;
   background-color: var(--value);
   border: 1px solid transparent;
@@ -143,7 +143,8 @@ SLine {
 SLabel {
   z-index: 1;
   color: var(--value);
-  font-size: 13px;
+  /* disable-tokens-validator */
+  font-size: calc(var(--intergalactic-fs-100, 12px) + 1px);
   font-weight: var(--intergalactic-bold-700, Bold);
   font-family: FactorA-Bold, sans-serif;
 }

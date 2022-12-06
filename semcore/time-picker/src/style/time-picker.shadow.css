@@ -1,5 +1,3 @@
-@import '@semcore/utils/style/var.css';
-
 STimePicker {
   position: relative;
   width: auto;
@@ -68,6 +66,7 @@ SPickerFormat {
 SPickerFormat[size='m'] {
   height: var(--intergalactic-form-control-m, 28px);
   font-size: var(--intergalactic-fs-200, 14px);
+  /* disable-tokens-validator */
   margin: 0 -1px 0 0;
   & SPickerFormatText {
     margin: 0 var(--intergalactic-spacing-2x, 8px);

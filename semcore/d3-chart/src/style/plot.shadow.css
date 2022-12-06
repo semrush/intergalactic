@@ -1,4 +1,3 @@
-@import '@semcore/utils/style/var.css';
 @import './var.css';
 
 SPlot {
@@ -15,6 +14,6 @@ foreignObject[data-aria-only] {
 }
 
 SPlot[keyboardFocused] {
-  border: 1px solid var(--intergalactic-border-info-active, #006dca);
+  border: 1px solid var(--intergalactic-chart-palette-order-blue-second-order, #008ff8);
   box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.3));
 }

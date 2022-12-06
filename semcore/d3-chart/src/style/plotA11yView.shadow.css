@@ -1,4 +1,3 @@
-@import '@semcore/utils/style/var.css';
 @import './var.css';
 
 SPlotA11yView {
@@ -9,6 +8,7 @@ SPlotA11yView {
   color: var(--intergalactic-text-primary, #191b23);
   border: 3px solid var(--intergalactic-border-primary, #c4c7cf);
   font-size: var(--intergalactic-fs-50, 10px);
+  /* disable-tokens-validator */
   padding: 2px;
   width: 200px;
   height: 200px;

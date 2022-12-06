@@ -1,5 +1,3 @@
-@import '@semcore/utils/style/var.css';
-
 SFormatText {
   color: var(--intergalactic-text-primary, #191b23);
   & abbr {
@@ -44,6 +42,7 @@ SFormatText {
 
   & blockquote {
     position: relative;
+    /* disable-tokens-validator */
     padding-left: 51px;
     font-size: var(--intergalactic-fs-400, 20px);
     line-height: var(--intergalactic-lh-400, 120%);
@@ -264,6 +263,7 @@ SFormatText[size='m'] {
     width: 4px;
     height: 4px;
     border-radius: 50%;
+    /* disable-tokens-validator */
     margin-top: calc(var(--intergalactic-spacing-2x, 8px) - 1px);
     margin-left: var(--intergalactic-spacing-05x, 2px);
   }

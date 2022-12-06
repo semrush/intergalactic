@@ -1,5 +1,3 @@
-@import '@semcore/utils/style/var.css';
-
 SProgressBar {
   position: relative;
   width: 100%;
@@ -10,14 +8,17 @@ SValue {
   position: absolute;
   top: 0;
   left: 0;
-  background-image: linear-gradient(
-    -45deg,
-    color-mod(var(--green-400) shade(10%)) 25%,
-    var(--green-400) 0,
-    var(--green-400) 50%,
-    color-mod(var(--green-400) shade(10%)) 0,
-    color-mod(var(--green-400) shade(10%)) 76%,
-    var(--green-400) 0
+  background-image: var(
+    --intergalactic-progress-bar-value-gradient,
+    linear-gradient(
+      -45deg,
+      rgba(0, 159, 129, 0.1) 25%,
+      rgba(0, 159, 129, 1) 0%,
+      rgba(0, 159, 129, 1) 50%,
+      rgba(0, 159, 129, 0.1) 0%,
+      rgba(0, 159, 129, 0.1) 76%,
+      rgba(0, 159, 129, 1) 0%
+    )
   );
   overflow: hidden;
 
@@ -72,14 +73,17 @@ SProgressBar[theme='invert'] {
 }
 
 SProgressBar[animation] {
-  background-image: linear-gradient(
-    -45deg,
-    color-mod(var(--gray-100) shade(10%)) 25%,
-    var(--gray-100) 0,
-    var(--gray-100) 50%,
-    color-mod(var(--gray-100) shade(10%)) 0,
-    color-mod(var(--gray-100) shade(10%)) 76%,
-    var(--gray-100) 0
+  background-image: var(
+    --intergalactic-progress-bar-pattern-gradient,
+    linear-gradient(
+      -45deg,
+      rgba(224, 225, 233, 0.1) 25%,
+      rgba(224, 225, 233, 1) 0%,
+      rgba(224, 225, 233, 1) 50%,
+      rgba(224, 225, 233, 0.1) 0%,
+      rgba(224, 225, 233, 0.1) 76%,
+      rgba(224, 225, 233, 1) 0%
+    )
   );
   animation-name: loading;
   animation-timing-function: linear;

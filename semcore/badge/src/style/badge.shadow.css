@@ -1,11 +1,9 @@
-@import '@semcore/utils/style/var.css';
-
 SBadge {
   display: inline-block;
   box-sizing: border-box;
   height: var(--intergalactic-fs-200, 14px);
   line-height: var(--intergalactic-fs-200, 14px);
-  padding: 0 4px;
+  padding: 0 var(--intergalactic-spacing-1x, 4px);
   border-radius: var(--intergalactic-rounded-medium, 6px);
   white-space: nowrap;
   font-size: var(--intergalactic-fs-50, 10px);

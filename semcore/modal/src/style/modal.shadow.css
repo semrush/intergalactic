@@ -1,5 +1,3 @@
-@import '@semcore/utils/style/var.css';
-
 SWindow {
   position: relative;
   border-radius: var(--intergalactic-rounded-large, 12px);

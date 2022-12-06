@@ -1,4 +1,3 @@
-@import '@semcore/utils/style/var.css';
 @import './var.css';
 
 SDots {
@@ -9,9 +8,9 @@ SDots {
 
 SDot {
   stroke-width: 2px;
-  stroke: #fff;
+  stroke: var(--intergalactic-chart-grid-border, #ffffff);
   r: 6px;
-  fill: var(--blue-03);
+  fill: var(--intergalactic-chart-palette-order-blue, #2bb3ff);
   transition-property: cx, cy;
   transition-timing-function: ease-in-out;
 }

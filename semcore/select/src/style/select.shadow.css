@@ -1,5 +1,3 @@
-@import '@semcore/utils/style/var.css';
-
 SOptionCheckbox {
   margin-top: var(--intergalactic-spacing-05x, 2px);
   margin-right: var(--intergalactic-spacing-2x, 8px);

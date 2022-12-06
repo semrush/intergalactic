@@ -1,5 +1,3 @@
-@import '@semcore/utils/style/var.css';
-
 SProductHead {
   margin-top: var(--intergalactic-spacing-4x, 16px);
   margin-bottom: var(--intergalactic-spacing-6x, 24px);

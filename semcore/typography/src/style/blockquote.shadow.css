@@ -1,5 +1,3 @@
-@import '@semcore/utils/style/var.css';
-
 SBlockquote {
   position: relative;
   display: flex;
@@ -14,6 +12,7 @@ SDoubleQuotation {
   margin-right: var(--intergalactic-spacing-5x, 20px);
   font-family: 'Times New Roman', serif;
   font-style: normal;
+  /* disable-tokens-validator */
   font-size: 68px;
   line-height: 52px;
   color: var(--intergalactic-text-large-secondary, #a9abb6);

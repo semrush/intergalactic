@@ -1,5 +1,3 @@
-@import '@semcore/utils/style/var.css';
-
 SInputNumber:hover {
   & SValue:not([disabled]) ~ SControls {
     visibility: visible;
@@ -45,10 +43,12 @@ SDown {
 }
 
 SUp {
+  /* disable-tokens-validator */
   padding-bottom: 1px;
 }
 
 SDown {
+  /* disable-tokens-validator */
   padding-top: 1px;
 }
 

@@ -1,4 +1,3 @@
-@import '@semcore/utils/style/var.css';
 @import './var.css';
 
 STooltip {
@@ -28,7 +27,7 @@ SDot {
   height: 8px;
   border-radius: 50%;
   margin-right: var(--intergalactic-spacing-2x, 8px);
-  background: var(--blue-03);
+  background: var(--intergalactic-icon-secondary-info, #2bb3ff);
 }
 
 SDot[color] {

@@ -1,5 +1,3 @@
-@import '@semcore/utils/style/var.css';
-
 SDot {
   display: inline-flex;
   align-items: center;
@@ -18,7 +16,9 @@ SDot {
 SDot[size='xl'] {
   height: 16px;
   min-width: 16px;
+  /* disable-tokens-validator */
   padding: 3px 4px;
+  /* disable-tokens-validator */
   border-radius: 8px;
 }
 
@@ -31,6 +31,7 @@ SDot[size='l'] {
 SDot[size='m'] {
   height: 6px;
   min-width: 6px;
+  /* disable-tokens-validator */
   border-radius: 3px;
 }
 
@@ -38,7 +39,9 @@ SDot[up] {
   position: absolute;
   top: 0;
   right: 0;
+  /* disable-tokens-validator */
   margin-top: -3px;
+  /* disable-tokens-validator */
   margin-right: -3px;
 }
 

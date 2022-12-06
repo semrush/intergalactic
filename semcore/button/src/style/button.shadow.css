@@ -1,5 +1,3 @@
-@import '@semcore/utils/style/var.css';
-
 SButton {
   position: relative;
   display: inline-block;
@@ -92,15 +90,15 @@ SButton[theme='primary-success'] {
 
 SButton[theme='primary-warning'] {
   color: var(--intergalactic-text-primary-invert, #ffffff);
-  background-color: var(--orange-400);
+  background-color: var(--intergalactic-icon-primary-warning, #ff642d);
 
   &:hover {
-    background-color: var(--orange-500);
+    background-color: var(--intergalactic-icon-primary-warning-hover-active, #c33909);
   }
 
   &:active,
   &[active] {
-    background-color: var(--orange-600);
+    background-color: var(--intergalactic-icon-primary-warning-hover-active, #c33909);
   }
 }
 
@@ -156,17 +154,17 @@ SButton[theme='secondary-muted'] {
 }
 
 SButton[theme='secondary-info'] {
-  background-color: color-mod(var(--blue-400) a(5%));
-  color: var(--blue-400);
-  border-color: var(--blue-400);
+  background-color: var(--intergalactic-control-secondary-info, rgba(0, 143, 248, 0.1));
+  color: var(--intergalactic-control-primary-info, #008ff8);
+  border-color: var(--intergalactic-control-primary-info, #008ff8);
 
   &:hover {
-    background-color: color-mod(var(--blue-500) a(20%));
+    background-color: var(--intergalactic-control-secondary-info-hover, rgba(0, 143, 248, 0.2));
   }
 
   &:active,
   &[active] {
-    background-color: color-mod(var(--blue-500) a(30%));
+    background-color: var(--intergalactic-control-secondary-info-active, rgba(0, 143, 248, 0.3));
   }
 }
 
@@ -242,6 +240,7 @@ SButton[neighborLocation='right'] {
 
 SButton[neighborLocation='both'] {
   border-radius: 0;
+  /* disable-tokens-validator */
   margin-left: -1px;
 
   &[theme='primary-info'],
@@ -259,6 +258,7 @@ SButton[neighborLocation='both'] {
 SButton[neighborLocation='left'] {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
+  /* disable-tokens-validator */
   margin-left: -1px;
 
   &[theme='primary-info'],

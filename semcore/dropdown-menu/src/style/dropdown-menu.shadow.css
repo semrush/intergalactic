@@ -1,8 +1,6 @@
-@import '@semcore/utils/style/var.css';
-
 SDropdownMenuList {
   max-height: 240px;
-  padding: var(--intergalactic-spacing-1x) 0;
+  padding: var(--intergalactic-spacing-1x, 4px) 0;
   position: relative;
   min-height: 26px;
   min-width: 32px;

@@ -1,5 +1,3 @@
-@import '@semcore/utils/style/var.css';
-
 SNoticeGlobal {
   display: flex;
   font-size: var(--intergalactic-fs-200, 14px);

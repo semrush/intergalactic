@@ -61,7 +61,7 @@
   background-color: var(--intergalactic-bg-primary-neutral);
 }
 .button-theme-primary-invert:hover {
-  opacity: 0.6;
+  opacity: calc(var(--intergalactic-disabled-opacity) * 2);
 }
 
 .button-theme-secondary-default {
@@ -74,9 +74,9 @@
 }
 
 .button-theme-secondary-invert {
-  border-color: var(--white);
+  border-color: var(--intergalactic-border-primary-invert);
   color: var(--intergalactic-text-primary-invert);
 }
 .button-theme-secondary-invert:hover {
-  opacity: 0.6;
+  opacity: calc(var(--intergalactic-disabled-opacity) * 2);
 }

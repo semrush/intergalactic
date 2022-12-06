@@ -1,5 +1,3 @@
-@import '@semcore/utils/style/var.css';
-
 SLabel {
   position: relative;
   display: inline-flex;
@@ -94,7 +92,7 @@ SCheckbox {
   }
 
   &[state='normal'][keyboardFocused]:before {
-    border-color: var(--intergalactic-control-primary-info-hover);
+    border-color: var(--intergalactic-control-primary-info-hover, #006dca);
   }
 }
 
@@ -111,7 +109,7 @@ SControl[indeterminate] ~ SCheckbox[state='normal']:before {
 
 SCheckbox[state='invalid'] {
   &:before {
-    border-color: var(--intergalactic-control-primary-critical-hover);
+    border-color: var(--intergalactic-control-primary-critical-hover, #d1002f);
   }
 
   &[keyboardFocused]:before {
@@ -141,6 +139,7 @@ SControl[checked] ~ SCheckbox {
 SControl[indeterminate] ~ SCheckbox:after {
   background-color: var(--intergalactic-bg-primary-neutral, #ffffff);
   margin: auto;
+  /* disable-tokens-validator */
   border-radius: 1px;
 }
 

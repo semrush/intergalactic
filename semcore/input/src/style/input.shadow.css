@@ -1,5 +1,3 @@
-@import '@semcore/utils/style/var.css';
-
 SInput {
   display: inline-flex;
   width: 100%;
@@ -7,6 +5,7 @@ SInput {
   position: relative;
   z-index: 0;
   vertical-align: middle;
+  /* disable-tokens-validator */
   padding: 1px;
   box-sizing: border-box;
 
@@ -43,7 +42,7 @@ SValue {
   }
 
   &:not(:disabled):read-only ~ SOutline {
-    background: var(--intergalactic-bg-secondary-neutral);
+    background: var(--intergalactic-bg-secondary-neutral, #f4f5f9);
   }
 
   &:disabled {
@@ -117,7 +116,7 @@ SInput[focused] {
 
 SInput[state='normal'] {
   & SOutline {
-    border-color: var(--intergalactic-border-info-active);
+    border-color: var(--intergalactic-border-info-active, #006dca);
   }
 
   & SValue:focus ~ SOutline {
@@ -127,7 +126,7 @@ SInput[state='normal'] {
 }
 SInput[state='valid'] {
   & SOutline {
-    border-color: var(--intergalactic-border-success-active);
+    border-color: var(--intergalactic-border-success-active, #007c65);
   }
 
   & SValue:focus ~ SOutline {
@@ -137,7 +136,7 @@ SInput[state='valid'] {
 }
 SInput[state='invalid'] {
   & SOutline {
-    border-color: var(--intergalactic-border-danger-active);
+    border-color: var(--intergalactic-border-danger-active, #d1002f);
   }
 
   & SValue:focus ~ SOutline {

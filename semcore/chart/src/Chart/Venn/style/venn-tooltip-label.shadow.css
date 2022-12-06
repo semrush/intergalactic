@@ -1,5 +1,3 @@
-@import '@semcore/utils/style/var.css';
-
 STooltipLabel {
   display: inline-flex;
   justify-content: space-between;

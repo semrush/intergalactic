@@ -1,5 +1,3 @@
-@import '@semcore/utils/style/var.css';
-
 SPopper {
   outline: none;
   z-index: var(--intergalactic-z-index-popper, 700);

@@ -1,5 +1,3 @@
-@import '@semcore/utils/style/var.css';
-
 STextarea {
   height: auto;
   color: var(--intergalactic-text-primary, #191b23);
@@ -39,20 +37,20 @@ STextarea[size='l'] {
 
 STextarea[state='normal'] {
   &:focus {
-    box-shadow: var(--intergalactic-keyboard-focus);
-    border-color: var(--intergalactic-border-info-active);
+    box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.3));
+    border-color: var(--intergalactic-border-info-active, #006dca);
   }
 }
 
 STextarea[state='valid'] {
-  border-color: var(--intergalactic-border-success-active);
+  border-color: var(--intergalactic-border-success-active, #007c65);
   &:focus {
     box-shadow: var(--intergalactic-keyboard-focus-valid, 0px 0px 0px 3px rgba(0, 159, 129, 0.3));
   }
 }
 
 STextarea[state='invalid'] {
-  border-color: var(--intergalactic-border-danger-active);
+  border-color: var(--intergalactic-border-danger-active, #d1002f);
   &:focus {
     box-shadow: var(--intergalactic-keyboard-focus-invalid, 0px 0px 0px 3px rgba(255, 73, 83, 0.3));
   }

@@ -1,5 +1,3 @@
-@import '@semcore/utils/style/var.css';
-
 SScrollBar {
   position: absolute;
   display: flex;
@@ -25,6 +23,7 @@ SSlider {
   cursor: pointer;
   width: 6px;
   height: 6px;
+  /* disable-tokens-validator */
   border-radius: 3px;
-  background-color: color-mod(var(--black) a(30%));
+  background-color: var(--intergalactic-scroll-bar-background, rgba(255, 255, 255, 0.3));
 }
