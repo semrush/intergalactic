@@ -29,10 +29,11 @@ describe('@semcore/ui', () => {
     test(`Package "${pkg}" provides correct exports to release system`, () => {
       const rscUiPkgPath = path.resolve(__dirname, pkg.replace('@semcore', '..'));
 
-      const source = require(require
+      const sourcePath = require
         .resolve(pkg)
         .replace('/src/', '/lib/cjs/')
-        .replace(/\.ts[x]{0,1}$/, '.js'));
+        .replace(/\.ts[x]{0,1}$/, '.js');
+      const source = require(sourcePath);
       const rscUi = require(rscUiPkgPath);
 
       expect(sortObjKeys(source)).toStrictEqual(sortObjKeys(rscUi));
