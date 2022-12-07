@@ -4,7 +4,6 @@ import { fetchFromNpm } from './src/fetchFromNpm';
 import { updateVersions } from './src/updateVersions';
 import { updateChangelogs } from './src/updateChangelogs';
 import { runPublisher } from './src/runPublisher';
-// import { runTests } from './src/runTests';
 import { syncCheck } from './src/syncCheck';
 
 export const runContinuousDelivery = async () => {
@@ -20,8 +19,7 @@ export const runContinuousDelivery = async () => {
 
   if (versionPatches.length > 0) {
     await updateVersions(versionPatches);
-    await updateChangelogs(versionPatches);
-    // await runTests();
+    await updateChangelogs(versionPatches.filter((patch) => patch.package.name !== '@semcore/ui'));
     await runPublisher(versionPatches);
   }
 };
