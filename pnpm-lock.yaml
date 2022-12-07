@@ -62,7 +62,7 @@ importers:
       react: 18.2.0
       react-dom: 18.2.0
       semver: 5.6.0
-      simple-git: 3.5.0
+      simple-git: 3.15.0
       tsm: 2.2.2
       typescript: 4.5.5
       typescript-plugin-css-modules: 2.2.0
@@ -117,7 +117,7 @@ importers:
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
       semver: 5.6.0
-      simple-git: 3.5.0
+      simple-git: 3.15.0
       tsm: 2.2.2
       typescript: 4.5.5
       typescript-plugin-css-modules: 2.2.0_typescript@4.5.5
@@ -1900,7 +1900,7 @@ importers:
       marked-ast: 0.3.0
       marked-ast-markdown: 2.1.0
       semver: 5.6.0
-      simple-git: 3.5.0
+      simple-git: 3.15.0
       tsm: 2.2.2
     dependencies:
       '@semcore/continuous-delivery': link:../continuous-delivery
@@ -1910,7 +1910,7 @@ importers:
       marked-ast: 0.3.0
       marked-ast-markdown: 2.1.0
       semver: 5.6.0
-      simple-git: 3.5.0
+      simple-git: 3.15.0
       tsm: 2.2.2
     devDependencies:
       '@types/fs-extra': 9.0.13
@@ -1944,7 +1944,7 @@ importers:
       marked-ast-markdown: 2.1.0
       p-limit: 4.0.0
       semver: 5.6.0
-      simple-git: 3.5.0
+      simple-git: 3.15.0
       tsm: 2.2.2
     dependencies:
       '@semcore/changelog-handler': link:../changelog-handler
@@ -1956,7 +1956,7 @@ importers:
       marked-ast-markdown: 2.1.0
       p-limit: 4.0.0
       semver: 5.6.0
-      simple-git: 3.5.0
+      simple-git: 3.15.0
       tsm: 2.2.2
     devDependencies:
       '@types/fs-extra': 9.0.13
@@ -22504,10 +22504,10 @@ packages:
         integrity: sha512-wnD2ZE+l+SPC/uoS0vXeE9L1+0wuaMqKlfz9AMUo38JsyLSBWSFcHR1Rri62LZc12vLr1gb3jl7iwQhgwpAbGQ==,
       }
 
-  /simple-git/3.5.0:
+  /simple-git/3.15.0:
     resolution:
       {
-        integrity: sha512-fZsaq5nzdxQRhMNs6ESGLpMUHoL5GRP+boWPhq9pMYMKwOGZV2jHOxi8AbFFA2Y/6u4kR99HoULizSbpzaODkA==,
+        integrity: sha512-FiWoMPlcYHQ+ApRihUsGjC/ZmIlWj62S6MBCwOunczvXcLQt+9ZdrysDrR6QVepkRQfEAaBXrN2QtJKrN6zbtg==,
       }
     dependencies:
       '@kwsites/file-exists': 1.1.1
