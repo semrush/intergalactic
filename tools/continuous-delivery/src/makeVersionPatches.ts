@@ -71,6 +71,7 @@ export const makeVersionPatches = (packages: Package[]) => {
     for (const packageFile of packages) {
       if (versionPatchesMap.has(packageFile.name)) continue;
       if (!packageFile.lastPublishedVersion) continue;
+      if (packageFile.name === '@semcore/ui') continue;
 
       let updateType: semver.ReleaseType | null = null;
       let updateTypeFallback: 'patch' | 'prerelease' = 'patch';

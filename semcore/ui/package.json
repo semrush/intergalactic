@@ -1,12 +1,12 @@
 {
   "name": "@semcore/ui",
-  "version": "13.2.1",
+  "version": "13.2.2",
   "license": "MIT",
   "module": "./index.js",
   "sideEffects": false,
   "scripts": {
     "clear": "tsm --require=../../.ci/tsm-filter-warnings.js clear.ts",
-    "generate-reexport": "pnpm run clear && tsm --require=../../.ci/tsm-filter-warnings.js generate-reexport.ts",
+    "build": "pnpm run clear && tsm --require=../../.ci/tsm-filter-warnings.js generate-reexport.ts && pnpm run test",
     "update-dependencies": "tsm --require=../../.ci/tsm-filter-warnings.js update-dependencies.ts",
     "update-changelog": "pnpm update-release-changelog",
     "test": "jest"
