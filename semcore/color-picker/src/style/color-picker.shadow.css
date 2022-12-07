@@ -145,7 +145,7 @@ SLabel {
   color: var(--value);
   /* disable-tokens-validator */
   font-size: calc(var(--intergalactic-fs-100, 12px) + 1px);
-  font-weight: var(--intergalactic-bold-700, Bold);
+  font-weight: var(--intergalactic-bold-700, 700);
   font-family: FactorA-Bold, sans-serif;
 }
 

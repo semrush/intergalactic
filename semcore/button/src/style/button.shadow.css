@@ -20,7 +20,7 @@ SButton {
   user-select: none;
   touch-action: manipulation;
   -webkit-tap-highlight-color: transparent;
-  font-weight: var(--intergalactic-medium-500, Medium);
+  font-weight: var(--intergalactic-medium-500, 500);
   color: var(--intergalactic-text-secondary, #6c6e79);
 
   &::-moz-focus-inner {

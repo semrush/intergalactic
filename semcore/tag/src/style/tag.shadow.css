@@ -10,7 +10,7 @@ STag {
   border-radius: var(--intergalactic-rounded-extra-large, 24px);
   padding-left: var(--intergalactic-spacing-1x, 4px);
   padding-right: var(--intergalactic-spacing-1x, 4px);
-  font-weight: var(--intergalactic-medium-500, Medium);
+  font-weight: var(--intergalactic-medium-500, 500);
   background-color: var(--colorBg);
   color: var(--colorText);
   border-color: var(--colorBorder);

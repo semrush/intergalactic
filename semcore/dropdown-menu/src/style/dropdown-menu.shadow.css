@@ -78,7 +78,7 @@ SDropdownMenuItem[variant='hint'] {
 }
 
 SDropdownMenuItem[variant='title'] {
-  font-weight: var(--intergalactic-bold-700, Bold);
+  font-weight: var(--intergalactic-bold-700, 700);
   cursor: default;
 
   &:hover {

@@ -34,7 +34,7 @@ STabLineItem {
   background: transparent;
   color: var(--intergalactic-text-primary, #191b23);
   margin-right: var(--intergalactic-spacing-4x, 16px);
-  font-weight: var(--intergalactic-medium-500, Medium);
+  font-weight: var(--intergalactic-medium-500, 500);
 
   &::-moz-focus-inner {
     border: none;

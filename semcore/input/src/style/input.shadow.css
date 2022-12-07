@@ -116,7 +116,7 @@ SInput[focused] {
 
 SInput[state='normal'] {
   & SOutline {
-    border-color: var(--intergalactic-border-primary, #006dca);
+    border-color: var(--intergalactic-border-primary, #c4c7cf);
   }
 
   & SValue:focus ~ SOutline {
@@ -126,7 +126,7 @@ SInput[state='normal'] {
 }
 SInput[state='valid'] {
   & SOutline {
-    border-color: var(--intergalactic-border-success, #007c65);
+    border-color: var(--intergalactic-border-success, #59ddaa);
   }
 
   & SValue:focus ~ SOutline {
@@ -136,7 +136,7 @@ SInput[state='valid'] {
 }
 SInput[state='invalid'] {
   & SOutline {
-    border-color: var(--intergalactic-border-danger, #d1002f);
+    border-color: var(--intergalactic-border-danger, #ffaeb5);
   }
 
   & SValue:focus ~ SOutline {

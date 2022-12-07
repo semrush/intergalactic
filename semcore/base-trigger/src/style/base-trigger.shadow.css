@@ -23,7 +23,7 @@ SBaseTrigger {
 
   background: var(--intergalactic-bg-primary-neutral, #ffffff);
 
-  font-weight: var(--intergalactic-regular-400, Regular);
+  font-weight: var(--intergalactic-regular-400, 400);
   border: 1px solid var(--intergalactic-border-primary, #c4c7cf);
   color: var(--intergalactic-text-primary, #191b23);
 

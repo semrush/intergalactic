@@ -36,7 +36,7 @@ STabPanelItem {
   & SText {
     font-size: var(--intergalactic-fs-200, 14px);
     line-height: var(--intergalactic-lh-200, 142%);
-    font-weight: var(--intergalactic-medium-500, Medium);
+    font-weight: var(--intergalactic-medium-500, 500);
   }
 
   &::-moz-focus-inner {

@@ -19,7 +19,7 @@ STitle {
 STitle {
   font-size: var(--intergalactic-fs-300, 16px);
   line-height: var(--intergalactic-lh-300, 150%);
-  font-weight: var(--intergalactic-bold-700, Bold);
+  font-weight: var(--intergalactic-bold-700, 700);
 }
 
 SDescription {

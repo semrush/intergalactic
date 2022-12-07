@@ -56,12 +56,12 @@ SKnob {
   border-radius: 50%;
   box-sizing: border-box;
   background-color: var(--intergalactic-bg-primary-neutral, #ffffff);
-  border: 5px solid var(--intergalactic-border-info, #8ecdff);
+  border: 5px solid var(--intergalactic-control-primary-info, #008ff8);
   cursor: pointer;
   transform: translate(-50%, -50%);
 
   &:hover {
-    border-color: var(--intergalactic-border-info-active, #006dca);
+    border-color: var(--intergalactic-control-primary-info, #008ff8);
   }
 }
 

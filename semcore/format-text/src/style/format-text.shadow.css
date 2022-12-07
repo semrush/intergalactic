@@ -104,7 +104,7 @@ SFormatText {
   & h1 {
     font-size: var(--intergalactic-fs-800, 48px);
     line-height: var(--intergalactic-lh-800, 117%);
-    font-weight: var(--intergalactic-bold-700, Bold);
+    font-weight: var(--intergalactic-bold-700, 700);
     margin: 0 0 var(--intergalactic-spacing-6x, 24px) 0;
 
     &:only-child {
@@ -115,7 +115,7 @@ SFormatText {
   & h2 {
     font-size: var(--intergalactic-fs-700, 36px);
     line-height: var(--intergalactic-lh-700, 110%);
-    font-weight: var(--intergalactic-bold-700, Bold);
+    font-weight: var(--intergalactic-bold-700, 700);
     margin: 0 0 var(--intergalactic-spacing-4x, 16px) 0;
 
     &:only-child {
@@ -126,7 +126,7 @@ SFormatText {
   & h3 {
     font-size: var(--intergalactic-fs-600, 32px);
     line-height: var(--intergalactic-lh-600, 125%);
-    font-weight: var(--intergalactic-medium-500, Medium);
+    font-weight: var(--intergalactic-medium-500, 500);
     margin: 0 0 var(--intergalactic-spacing-4x, 16px) 0;
 
     &:only-child {
@@ -137,7 +137,7 @@ SFormatText {
   & h4 {
     font-size: var(--intergalactic-fs-500, 24px);
     line-height: var(--intergalactic-lh-500, 117%);
-    font-weight: var(--intergalactic-medium-500, Medium);
+    font-weight: var(--intergalactic-medium-500, 500);
     margin: 0 0 var(--intergalactic-spacing-3x, 12px) 0;
 
     &:only-child {
@@ -148,7 +148,7 @@ SFormatText {
   & h5 {
     font-size: var(--intergalactic-fs-400, 20px);
     line-height: var(--intergalactic-lh-400, 120%);
-    font-weight: var(--intergalactic-medium-500, Medium);
+    font-weight: var(--intergalactic-medium-500, 500);
     margin: 0 0 var(--intergalactic-spacing-2x, 8px) 0;
 
     &:only-child {
@@ -159,7 +159,7 @@ SFormatText {
   & h6 {
     font-size: var(--intergalactic-fs-300, 16px);
     line-height: var(--intergalactic-lh-300, 150%);
-    font-weight: var(--intergalactic-bold-700, Bold);
+    font-weight: var(--intergalactic-bold-700, 700);
     margin: 0 0 var(--intergalactic-spacing-1x, 4px) 0;
 
     &:only-child {

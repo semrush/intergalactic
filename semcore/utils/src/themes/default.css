@@ -278,11 +278,11 @@
   --intergalactic-lh-200: 142%;
   /* Use with font-size-100. */
   --intergalactic-lh-100: 133%;
-  --intergalactic-semi-bold-600: Semi Bold;
-  --intergalactic-bold-700: Bold;
-  --intergalactic-regular-400: Regular;
-  --intergalactic-medium-500: Medium;
-  --intergalactic-italic-400: Italic;
+  --intergalactic-semi-bold-600: 600;
+  --intergalactic-bold-700: 700;
+  --intergalactic-regular-400: 400;
+  --intergalactic-medium-500: 500;
+  --intergalactic-italic-400: 400;
   /* Use only for text in Badge component. */
   --intergalactic-fs-50: 10px;
   /* Use with caution for text in additional messages. Always check its contrast and readability. */

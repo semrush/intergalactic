@@ -3,7 +3,7 @@
 }
 
 .intergalactic-playground_error-boundary .title {
-  font-weight: var(--intergalactic-fontWeights-bold-700);
+  font-weight: 700;
   font-size: 30px;
   color: #fe5252;
   margin-bottom: 30px;
