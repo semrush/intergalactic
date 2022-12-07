@@ -43,6 +43,7 @@ SPanel[placement='right'] {
 
 SPanel[placement='bottom'] {
   box-shadow: var(--intergalactic-box-shadow-popper, 0px 1px 12px 0px rgba(25, 27, 35, 0.15));
+  width: 100%;
   margin-top: auto;
   bottom: 0;
   left: 0;

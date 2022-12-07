@@ -95,7 +95,7 @@ SAddon[disabled] {
 
 SInput[size='m'] {
   font-size: var(--intergalactic-fs-200, 14px);
-  height: var(--fintergalactic-orm-control-m);
+  height: var(--intergalactic-form-control-m, 28px);
 }
 
 SValue[size='m'],
@@ -116,7 +116,7 @@ SInput[focused] {
 
 SInput[state='normal'] {
   & SOutline {
-    border-color: var(--intergalactic-border-info-active, #006dca);
+    border-color: var(--intergalactic-border-primary, #006dca);
   }
 
   & SValue:focus ~ SOutline {
@@ -126,7 +126,7 @@ SInput[state='normal'] {
 }
 SInput[state='valid'] {
   & SOutline {
-    border-color: var(--intergalactic-border-success-active, #007c65);
+    border-color: var(--intergalactic-border-success, #007c65);
   }
 
   & SValue:focus ~ SOutline {
@@ -136,7 +136,7 @@ SInput[state='valid'] {
 }
 SInput[state='invalid'] {
   & SOutline {
-    border-color: var(--intergalactic-border-danger-active, #d1002f);
+    border-color: var(--intergalactic-border-danger, #d1002f);
   }
 
   & SValue:focus ~ SOutline {

@@ -21,7 +21,7 @@ STitle {
 }
 
 SIcon {
-  color: var(---intergalactic-icon-secondary-neutral);
+  color: var(--intergalactic-icon-secondary-neutral, #a9abb6);
   cursor: help;
   margin-right: var(--intergalactic-spacing-1x, 4px);
 }

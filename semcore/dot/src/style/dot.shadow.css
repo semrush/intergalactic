@@ -4,7 +4,7 @@ SDot {
   justify-content: center;
   font-size: var(--intergalactic-fs-50, 10px);
   line-height: normal;
-  background-color: var(---intergalactic-icon-primary-warning);
+  background-color: var(--intergalactic-icon-primary-warning, #ff642d);
   color: var(--intergalactic-text-primary-invert, #ffffff);
   box-sizing: border-box;
   z-index: 1;
