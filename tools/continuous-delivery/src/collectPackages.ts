@@ -60,11 +60,10 @@ export const collectPackages = async (inNpmVersions: {
   const packages: Package[] = [];
 
   for (const { packageFile, changelogFile, changelogPath, packageFilePath, packagePath } of files) {
-    const changelogs: Changelog[] = componentChangelogParser(
-      packageFile.name,
-      changelogFile,
-      changelogPath,
-    );
+    const changelogs: Changelog[] =
+      packageFile.name === '@semcore/ui'
+        ? []
+        : componentChangelogParser(packageFile.name, changelogFile, changelogPath);
 
     const dependencies: Package['dependencies'] = {};
     for (const dependenciesType of ['dependencies']) {
