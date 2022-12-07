@@ -54,7 +54,7 @@ SCell[use='primary'][compact] {
 }
 
 SCell[use='primary'][compact] {
-  padding: 8px;
+  padding: 12px 8px;
 }
 
 SCell[use='secondary'] {
@@ -75,6 +75,11 @@ SCellHead {
     outline: none;
     box-shadow: inset var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.3));
   }
+}
+
+SCellHead:hover SCellHeadIconAsc,
+SCellHead:hover SCellHeadIconDesc {
+  opacity: 1;
 }
 
 SCellHeadContent {
