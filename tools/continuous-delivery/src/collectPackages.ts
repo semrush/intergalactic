@@ -24,7 +24,6 @@ export const collectPackages = async (inNpmVersions: {
       resolvePath('./tools', packageName),
     ),
   ];
-
   const files = (
     await Promise.all(
       packagePaths.map(async (packagePath) => {
