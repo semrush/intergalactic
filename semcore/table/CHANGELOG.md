@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.3.0] - 2022-12-08
+
+### Changed
+
+- Removed vertical borders from header cells. Added props `borderRight` and `borderLeft` to have possibility to render borders.
+
 ## [3.2.3] - 2022-12-19
 
 ### Changed

@@ -123,6 +123,7 @@ class Demo extends React.Component {
               active={active === 'keyword'}
               onClick={this.handleHeadClick('keyword')}
               onKeyDown={this.handleHeadKeyDown('keyword')}
+              borderRight
             >
               <Tooltip title="Jesus Christ, Joe, fucking forget about it. I'm Mr. Pink. Let's move on.">
                 <span>
@@ -130,7 +131,14 @@ class Demo extends React.Component {
                 </span>
               </Tooltip>
             </Table.CellHead>
-            <Table.CellHead colSpan={3} align="center">
+            <Table.CellHead
+              colSpan={3}
+              align="center"
+              active={active === 'cpc' || active === 'vol'}
+              // style={{
+              //   borderBottomColor: active === 'cpc' || active === 'vol' ? '#e0e1e9' : '#f4f5f9',
+              // }}
+            >
               <Tooltip title="Jesus Christ, Joe, fucking forget about it. I'm Mr. Pink. Let's move on.">
                 <span>Organic Sessions</span>
               </Tooltip>
@@ -172,7 +180,7 @@ class Demo extends React.Component {
                   <Checkbox.Value />
                 </Checkbox>
               </Table.Cell>
-              <Table.Cell>
+              <Table.Cell borderRight>
                 <Link>{row.keyword}</Link>
               </Table.Cell>
               <Table.Cell align="right">{row.kd}</Table.Cell>

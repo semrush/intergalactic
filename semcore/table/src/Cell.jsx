@@ -21,7 +21,16 @@ const Cell = createBaseComponent(RootCell);
 
 function CellRowInner(props, ref) {
   const SCellRow = Cell;
-  const { theme, highlighted, interactive, styles } = props;
+  const { theme, highlighted, interactive, borderRight, borderLeft, styles } = props;
+  const style = {};
+
+  if (borderRight) {
+    style.borderRight = '1px solid #e0e1e9';
+  }
+
+  if (borderLeft) {
+    style.borderLeft = '1px solid #e0e1e9';
+  }
 
   return sstyled(styles)(
     <SCellRow
@@ -30,6 +39,7 @@ function CellRowInner(props, ref) {
       theme={theme}
       highlighted={highlighted}
       interactive={interactive}
+      style={style}
       {...props}
     />,
   );
@@ -52,8 +62,17 @@ function CellHeadInner(props, ref) {
   const SCellHeadContent = 'div';
   const SCellHeadIconAsc = SortAsc;
   const SCellHeadIconDesc = SortDesc;
-  const { children, ...other } = props;
+  const { children, borderRight, borderLeft, ...other } = props;
   const { active, sorting, use, styles } = other;
+  const style = {};
+
+  if (borderRight) {
+    style.borderRight = '1px solid #e0e1e9';
+  }
+
+  if (borderLeft) {
+    style.borderLeft = '1px solid #e0e1e9';
+  }
 
   return sstyled(styles)(
     <SCellHead
@@ -64,6 +83,7 @@ function CellHeadInner(props, ref) {
       active={active}
       sorting={sorting}
       tabIndex={sorting && 0}
+      style={style}
       {...other}
     >
       <SCellHeadContent>
