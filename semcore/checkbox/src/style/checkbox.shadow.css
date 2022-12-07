@@ -144,12 +144,12 @@ SControl[indeterminate] ~ SCheckbox:after {
 }
 
 SControl[indeterminate] ~ SCheckbox[size='l']:after {
-  width: 2px;
+  width: 12px;
   height: 2px;
 }
 
 SControl[indeterminate] ~ SCheckbox[size='m']:after {
-  width: 2px;
+  width: 8px;
   height: 2px;
 }
 

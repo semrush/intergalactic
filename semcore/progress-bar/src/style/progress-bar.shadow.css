@@ -8,15 +8,16 @@ SValue {
   position: absolute;
   top: 0;
   left: 0;
+  background-color: var(--intergalactic-progress-bar-value-bg, #000);
   background-image: var(
     --intergalactic-progress-bar-value-gradient,
     linear-gradient(
       -45deg,
-      rgba(0, 159, 129, 0.1) 25%,
+      rgba(0, 159, 129, 0.9) 25%,
       rgba(0, 159, 129, 1) 0%,
       rgba(0, 159, 129, 1) 50%,
-      rgba(0, 159, 129, 0.1) 0%,
-      rgba(0, 159, 129, 0.1) 76%,
+      rgba(0, 159, 129, 0.9) 0%,
+      rgba(0, 159, 129, 0.9) 75%,
       rgba(0, 159, 129, 1) 0%
     )
   );
@@ -73,15 +74,16 @@ SProgressBar[theme='invert'] {
 }
 
 SProgressBar[animation] {
+  background-color: var(--intergalactic-progress-bar-value-bg, #000);
   background-image: var(
     --intergalactic-progress-bar-pattern-gradient,
     linear-gradient(
       -45deg,
-      rgba(224, 225, 233, 0.1) 25%,
+      rgba(224, 225, 233, 0.9) 25%,
       rgba(224, 225, 233, 1) 0%,
       rgba(224, 225, 233, 1) 50%,
-      rgba(224, 225, 233, 0.1) 0%,
-      rgba(224, 225, 233, 0.1) 76%,
+      rgba(224, 225, 233, 0.9) 0%,
+      rgba(224, 225, 233, 0.9) 75%,
       rgba(224, 225, 233, 1) 0%
     )
   );

@@ -117,8 +117,8 @@ SButton[theme='primary-danger'] {
 }
 
 SButton[theme='primary-invert'] {
-  color: var(--intergalactic-control-primary-invert, #ffffff);
-  background-color: var(--intergalactic-text-primary-invert, #ffffff);
+  color: var(--intergalactic-text-primary, #191b23);
+  background-color: var(--intergalactic-control-primary-invert, #ffffff);
 
   &:hover {
     background-color: var(--intergalactic-control-primary-invert-hover, #f4f5f9);

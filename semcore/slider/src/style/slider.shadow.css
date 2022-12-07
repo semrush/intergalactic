@@ -61,7 +61,7 @@ SKnob {
   transform: translate(-50%, -50%);
 
   &:hover {
-    border-color: var(--intergalactic-control-primary-info, #008ff8);
+    border-color: var(--intergalactic-control-primary-info-hover, #006dca);
   }
 }
 
