@@ -38,3 +38,7 @@ Use `scaleTime` for calculating intermediate date values. See the [d3 Time Scale
 To get smoothed lines, you need to transfer curve with the required rounding method to the chart. You can find all available methods in the [d3 Curves documentation](https://github.com/d3/d3-shape#curves).
 
 @example line-curve
+
+@## Legend
+
+@example legend

@@ -16,3 +16,7 @@ Use `scaleBand` and `scaleLinear` for creating bar charts. See [d3 Ordinal Scale
 To draw a stacked chart, use `<StackBar/>` and `<StackBar.Bar/>`.
 
 @example bar-stack
+
+@## Legend
+
+@example legend
