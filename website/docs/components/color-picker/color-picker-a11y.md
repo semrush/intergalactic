@@ -19,9 +19,18 @@ Color picker component provides basic support for keyboard and screen readers.
 | `Space`, `Enter` | Activates the selected color.                  |
 | `Esc`            | Closes the dropdown.                           |
 
+### Roles & attributes
+
+The list below describes roles and attributes that component already has.
+
+| Role | Attribute    | Element | Usage                                                                                                                                                   |
+| ---- | ------------ | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|      | `aria-label` | `div`   | The `aria-label` attribute defines a string value that labels an interactive element.                                                                   |
+|      | `tabIndex`   | `div`   | Makes the trigger focusable and includes it in the page `Tab` sequence. This approach to managing focus is described in the section on roving tabindex. |
+
 @## Resources
 
-[ColorPicker - Accessibility](https://www.htmlelements.com/docs/colorpicker-accessibility/) has detailed information about the colorpicker accessible behavior.
+[Type attribute in the Color state](https://w3c.github.io/html-aam/#el-input-color) has accessibility spec for input type color.
 
 @## Other recommendations
 

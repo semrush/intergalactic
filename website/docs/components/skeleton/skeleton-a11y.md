@@ -3,17 +3,21 @@ title: A11y
 a11y: AA
 ---
 
-@## Considerations for developers
+@## What component has
 
-- When a change occurs in the interface, like a loading state, it's a good practice to notify a user what is happening. While the skeleton visually indicates that a process is happening, it should also be announced by assistive technology through the use of `aria-live`.
-- See [WAI-ARIA `aria-live` documentation](https://www.w3.org/TR/wai-aria-1.1/#aria-live) for more details.
-- Add the `screenreaderText` prop and add a message for assistive technology (Example: `screenreaderText=”Loading contents”`.
-- If multiple skeletons exist on a screen, you only need to add the `screenreaderText` prop to one of them.
+### Roles and attributes
+
+The list below describes roles and attributes that component already has.
+
+| Attribute            | Element           | Usage                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| -------------------- | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `aria-busy="true"`   | Implicit on `svg` | The `aria-busy` state indicates an element is being modified and that assistive technologies may want to wait until the changes are complete before informing the user about the update. When multiple parts of a live region need to be loaded before changes are announced to the user, set `aria-busy="true"` until loading is complete. Then set to `aria-busy="false"`. This prevents assistive technologies from announcing changes before updates are done. |
+| `aria-atomic="true"` |                   | In ARIA live regions, the global `aria-atomic` attribute indicates whether assistive technologies such as a screen reader will present all, or only parts of.                                                                                                                                                                                                                                                                                                      |
 
 @## Resources
 
-- [Accessibility Principles](https://www.w3.org/WAI/fundamentals/accessibility-principles/) gives core recommendations for the accessible components.
-- [More Accessible Skeletons](https://adrianroselli.com/2020/11/more-accessible-skeletons.html) has detailed information about the skeleton accessible behavior.
+- Detailed information about `aria-busy` state you can find in the [W3's guide](https://www.w3.org/TR/wai-aria-1.1/#aria-busy).
+- [MDN's guide for aria-busy](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-busy) describes core information for this state.
 
 @## Other recommendations
 

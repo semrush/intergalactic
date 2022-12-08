@@ -5,34 +5,28 @@ a11y: AA
 
 @## What component has
 
-### Keyboard support
-
-| Key           | Function                                       |
-| ------------- | ---------------------------------------------- |
-| `Tab`         | Moves focus to the next focusable element.     |
-| `Shift + Tab` | Moves focus to the previous focusable element. |
-| `Enter`       | Activates the element.                         |
-
 ### Roles & attributes
 
 The list below describes roles and attributes that component already has.
 
-| Role | Attribute         | Element       | Usage                                                                                                                                                                 |
-| ---- | ----------------- | ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Icon | `button`          | `div`, `a`    | Identifies the element as a button. Accessible name for the button is defined by the text content of the element or by adding `aria-label`.                           |
-|      | `link`            | `span`, `img` | Identifies the `span`/`img` element as a link.                                                                                                                        |
-|      | `alt`             | `img`         | Defines the accessible name of the link.                                                                                                                              |
-|      | `aria-label`      | `div`         | Defines a string value that labels an interactive element. It is required props for icons without text content.                                                       |
-|      | `aria-labelledby` | `div`         | The `aria-labelledby` attribute identifies the element (or elements) that labels the element it is applied to. It is required props for buttons without text content. |
+| Role  | Attribute            | Element | Usage                                                                                                                        |
+| ----- | -------------------- | ------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| `Img` |                      | `div`   | `img` role can be used to identify multiple elements inside page content that should be considered as a single image.        |
+|       | `aria-hidden="true"` | `img`   | Hides images from the assistive technologies, because this element is auxiliary and should not be played by a screen reader. |
 
 @## Considerations for developers
 
-- The best way to make SVGs accessible to Assistive Technologies (AT) like screen readers and speech recognition tools is to put it directly into your HTML using the `<svg>` tag.
-- Avoid using `<embed>`, `<object>`, or `<img>` elements as they are not as supported by browsers as inline SVG.
-- Include a `<title>` and `<description>` in your SVG markup.
-- Use `aria-labelledby=""` and reference the id values of the title and description elements.
-- Give your SVGs a job with the `role=""` attribute.
-- To “hide” elements from a screen reader in an SVG add `role="presentation"` or `role="none"`.
+- The best way to make SVGs accessible to Assistive Technologies like screen readers and speech recognition tools is to put it directly into your HTML using the `<svg>` tag.
+- Icon also might be interactive, just use role `button` or `link`.
+
+### Roles and attributes
+
+The list below will help you to keep in mind the necessary roles and attributes to make our components fully accessible in the particular cases in your interfaces.
+
+| Attribute         | Element | Usage                                                                                                                                                                 |
+| ----------------- | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `aria-label`      | `div`   | Defines a string value that labels an interactive element. It is required props for buttons without text content.                                                     |
+| `aria-labelledby` | `div`   | The `aria-labelledby` attribute identifies the element (or elements) that labels the element it is applied to. It is required props for buttons without text content. |
 
 Find live examples in the [A11y style guide](https://a11y-style-guide.com/style-guide/section-media.html#kssref-media-svgs).
 
