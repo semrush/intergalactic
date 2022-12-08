@@ -17,5 +17,4 @@ title: UX patterns
 
 @page summary
 @page validation-form
-@page visual-loudness-scale
 @page web-performance
