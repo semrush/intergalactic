@@ -31,6 +31,7 @@ type AsProps = {
   sticky: boolean;
   disabledScroll?: boolean;
   ['data-ui-name']: string;
+  compact: boolean;
 };
 
 class Head extends Component<AsProps> {
@@ -60,9 +61,10 @@ class Head extends Component<AsProps> {
   }
 
   renderColumn(column: Column, width: number) {
-    const { styles, use, hidden } = this.asProps;
+    const { styles, use, hidden, compact } = this.asProps;
     const SColumn = Flex;
     const SHead = Box;
+    const SSortGradient = 'div';
     const SSortIcon = SORTING_ICON[column.sortDirection];
     const ariaSortValue =
       column.sortable && column.active ? ariaSort[column.sortDirection] : undefined;
@@ -83,6 +85,10 @@ class Head extends Component<AsProps> {
       style['flexBasis'] = `var(${column.varWidth})`;
     }
 
+    if (column.active) {
+      style.minWidth = 'min-content';
+    }
+
     return sstyled(styles)(
       <SColumn
         role={isGroup ? undefined : 'columnheader'}
@@ -91,6 +97,8 @@ class Head extends Component<AsProps> {
         fixed={column.fixed}
         resizable={column.resizable}
         sortable={column.sortable}
+        compact={compact}
+        vBorders={column.vBorders}
         active={column.active}
         group={isGroup}
         tabIndex={column.sortable && 0}
@@ -117,8 +125,15 @@ class Head extends Component<AsProps> {
           </>
         ) : (
           <>
-            <div>{column.props.children}</div>
-            {column.sortable ? <SSortIcon active={column.active} /> : null}
+            <div style={{ flexShrink: 1, overflow: 'hidden', paddingRight: '6px' }}>
+              {column.props.children}
+            </div>
+            {column.sortable ? (
+              <div>
+                <SSortIcon active={column.active} />
+                <SSortGradient />
+              </div>
+            ) : null}
           </>
         )}
       </SColumn>,

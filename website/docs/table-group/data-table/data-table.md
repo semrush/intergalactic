@@ -188,5 +188,23 @@ You can use secondary table for compact displaying small amount of data inside w
 
 @example export-to-pdf
 
+@## Compact
+
+To make the table with smaller indents you need to add `compact` property.
+
+@example compact
+
+@## Borders
+
+To add a border to a column, you need to pass `vBorders` properties to that column.
+
+@example borders
+
+@## Сolumn expand
+
+The active column will expand if there is not enough space. Fixed width columns will not change size.
+
+@example expanding-column
+
 @page data-table-api
 @page data-table-changelog

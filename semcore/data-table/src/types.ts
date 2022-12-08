@@ -26,6 +26,9 @@ export type Column<
   varWidth: string;
   setVar: boolean;
   data?: unknown;
+  vBorders?: boolean;
+  borderLeft?: boolean;
+  borderRight?: boolean;
   props: {
     name: string;
     ref: React.RefObject<HTMLElement>;
@@ -40,6 +43,9 @@ export type Column<
     resizable: boolean;
     sortable: boolean | SortDirection;
     sortDirection: SortDirection;
+    vBorders: boolean;
+    borderLeft: boolean;
+    borderRight: boolean;
   }> &
     Props;
   columns: Column[];

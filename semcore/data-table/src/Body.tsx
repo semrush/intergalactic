@@ -28,6 +28,7 @@ type AsProps = {
   uniqueKey: string;
   virtualScroll?: boolean | { tollerance?: number; rowHeight?: number };
   disabledScroll?: boolean;
+  compact?: boolean;
 };
 
 type State = {
@@ -54,7 +55,8 @@ class Body extends Component<AsProps, State> {
 
   renderCells(cells: NestedCells, rowData: RowData, index: number) {
     const SCell = Flex;
-    const { styles, columns, use } = this.asProps;
+    const { styles, columns, use, compact } = this.asProps;
+
     return cells.map((cell) => {
       if (Array.isArray(cell)) {
         const SGroupCell = 'div';
@@ -80,6 +82,9 @@ class Body extends Component<AsProps, State> {
           children: <>{cell.data}</>,
           justifyContent: column?.props?.justifyContent,
           alignItems: column?.props?.alignItems,
+          vBorders: column?.vBorders,
+          borderLeft: column?.borderLeft,
+          borderRight: column?.borderRight,
           style: {
             width: vars.length === 1 ? vars[0] : `calc(${vars.join(' + ')})`,
           },
@@ -102,6 +107,10 @@ class Body extends Component<AsProps, State> {
             fixed={cell.fixed}
             theme={props.theme}
             use={use}
+            compact={compact}
+            vBorders={props.vBorders}
+            borderLeft={props.borderLeft}
+            borderRight={props.borderRight}
           />,
         ) as React.ReactElement;
       }
