@@ -247,7 +247,7 @@ class RootDefinitionTable extends Component<AsProps> {
         );
       }
 
-      const column = this.columns.find((column) => column.name === name); //+index
+      const column = this.columns.find((column) => column.name === name);
 
       const columnChildren = {
         get width() {
@@ -262,7 +262,6 @@ class RootDefinitionTable extends Component<AsProps> {
         sortable,
         compact,
         vBorders,
-        widthText: 'width()',
         sortDirection:
           sort[0] === name
             ? sort[1]

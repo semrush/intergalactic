@@ -65,6 +65,7 @@ class Head extends Component<AsProps> {
     const SColumn = Flex;
     const SHead = Box;
     const SSortGradient = 'div';
+    const SSortWrapper = 'div';
     const SSortIcon = SORTING_ICON[column.sortDirection];
     const ariaSortValue =
       column.sortable && column.active ? ariaSort[column.sortDirection] : undefined;
@@ -125,9 +126,7 @@ class Head extends Component<AsProps> {
           </>
         ) : (
           <>
-            <div style={{ flexShrink: 1, overflow: 'hidden', paddingRight: '6px' }}>
-              {column.props.children}
-            </div>
+            <SSortWrapper>{column.props.children}</SSortWrapper>
             {column.sortable ? (
               <div>
                 <SSortIcon active={column.active} />

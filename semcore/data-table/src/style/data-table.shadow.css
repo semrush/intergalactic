@@ -184,6 +184,12 @@ SSortIcon[active] {
   background: linear-gradient(270deg, #e0e1e9 75%, rgba(224, 225, 233, 0) 105%);
 }
 
+SSortWrapper {
+  flex-shrink: 1;
+  overflow: hidden;
+  padding-right: 6px;
+}
+
 SBodyWrapper {
   position: relative;
 }
