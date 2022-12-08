@@ -20,7 +20,7 @@ This section describes all the variable parameters and basic styles that we use 
 
 @## Basic colors
 
-> See [Visual loudness scale](/patterns/visual-loudness-scale/) guide for more information about colors using and visual hierarchy.
+> See [Visual loudness scale](/core-principles/visual-loudness-scale/) guide for more information about colors using and visual hierarchy.
 
 |                                              | Example                                 | Variable        |
 | -------------------------------------------- | --------------------------------------- | --------------- |
