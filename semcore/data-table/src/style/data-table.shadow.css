@@ -55,6 +55,10 @@ SColumn[use='primary'] {
   background-color: var(--intergalactic-table-th-primary-cell, #f4f5f9);
 }
 
+SColumn[use='primary'][compact] {
+  padding: 12px 8px;
+}
+
 SColumn[use='secondary'] {
   padding: var(--intergalactic-spacing-2x, 8px);
   border-bottom: 1px solid var(--intergalactic-border-table-accent, #a9abb6);
@@ -298,6 +302,11 @@ SCell[use='primary'] {
   padding: var(--intergalactic-spacing-3x, 12px);
   min-height: 45px;
   background-color: var(--intergalactic-bg-primary-neutral, #ffffff);
+}
+
+SCell[use='primary'][compact] {
+  padding: 12px 8px;
+  min-height: 36px;
 }
 
 SCell[use='secondary'] {

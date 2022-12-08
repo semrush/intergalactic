@@ -31,6 +31,7 @@ type AsProps = {
   sticky: boolean;
   disabledScroll?: boolean;
   ['data-ui-name']: string;
+  compact: boolean;
 };
 
 class Head extends Component<AsProps> {
@@ -60,7 +61,7 @@ class Head extends Component<AsProps> {
   }
 
   renderColumn(column: Column, width: number) {
-    const { styles, use, hidden } = this.asProps;
+    const { styles, use, hidden, compact } = this.asProps;
     const SColumn = Flex;
     const SHead = Box;
     const SSortWrapper = 'div';
@@ -82,6 +83,10 @@ class Head extends Component<AsProps> {
 
     if (!column.setVar) {
       style['flexBasis'] = `var(${column.varWidth})`;
+    }
+
+    if (column.active) {
+      style.minWidth = 'min-content';
     }
 
     return sstyled(styles)(
