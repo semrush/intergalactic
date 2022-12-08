@@ -193,6 +193,12 @@ SColumn[use='secondary'] SSortWrapper:before {
   );
 }
 
+SSortWrapper {
+  flex-shrink: 1;
+  overflow: hidden;
+  padding-right: 6px;
+}
+
 SBodyWrapper {
   position: relative;
 }
