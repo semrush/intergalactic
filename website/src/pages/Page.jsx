@@ -134,7 +134,7 @@ const DynamicPage = ({ route }) => {
     return <LoadingPage />;
   }
   if (error) {
-    if (error.message.includes('Failed to fetch dynamically imported module:')) {
+    if (error.message.includes('dynamically imported module')) {
       window.location.reload();
       return <ErrorView title={`Reloading the page...`} />;
     } else {
