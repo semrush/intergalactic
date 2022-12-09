@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.1.6] - 2022-12-09
+
+### Fixed
+
+- Fixed calculation size when changing height of the container.
+
 ## [4.1.5] - 2022-11-30
 
 ### Changed

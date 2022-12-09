@@ -162,6 +162,9 @@ class ScrollAreaRoot extends Component {
     if (this.$inner) {
       this.observer.observe(this.$inner);
     }
+    if (this.$container) {
+      this.observer.observe(this.$container);
+    }
   }
 
   componentDidUpdate() {
