@@ -46,5 +46,12 @@ export const runPublisher = async (versionPatches: VersionPatch[]) => {
   if (!process.argv.includes('--dry-run')) {
     await git.pull('origin', 'master', { '--rebase': 'true' });
     await git.push('origin', 'master', { '--follow-tags': null });
+
+    if (toPublish.find((versionPatch) => versionPatch.package.name === '@semcore/ui')) {
+      execSync(`bash -e ./tools/continuous-delivery/src/gh-release`, {
+        encoding: 'utf-8',
+        stdio: ['inherit', 'inherit', 'inherit'],
+      });
+    }
   }
 };
