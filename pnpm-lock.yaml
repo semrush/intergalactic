@@ -18,6 +18,7 @@ importers:
       '@crowdin/cli': 3.7.9
       '@guidepup/playwright': 0.6.1
       '@mailchimp/mailchimp_marketing': 3.0.30
+      '@playwright/test': 1.25.1
       '@semcore/babel-plugin-react-semcore': workspace:*
       '@semcore/babel-plugin-recharts': workspace:*
       '@semcore/babel-plugin-root': workspace:*
@@ -38,6 +39,7 @@ importers:
       '@typescript-eslint/parser': 5.10.2
       csv: 6.2.0
       dotenv: 8.2.0
+      esbuild: 0.14.29
       eslint: 8.14.0
       eslint-config-prettier: 8.3.0
       eslint-import-resolver-alias: ^1.1.2
@@ -49,6 +51,8 @@ importers:
       eslint-plugin-react: 7.29.4
       eslint-plugin-ssr-friendly: 1.1.0
       execa: 6.1.0
+      fast-glob: 3.2.11
+      fast-hash-code: ^2.1.0
       fs-extra: 9.1.0
       husky: 8.0.0
       inquirer: 6.3.1
@@ -71,8 +75,9 @@ importers:
     devDependencies:
       '@babel/runtime': 7.19.0
       '@crowdin/cli': 3.7.9
-      '@guidepup/playwright': 0.6.1
+      '@guidepup/playwright': 0.6.1_@playwright+test@1.25.1
       '@mailchimp/mailchimp_marketing': 3.0.30
+      '@playwright/test': 1.25.1
       '@semcore/babel-plugin-react-semcore': link:tools/babel-plugin-react-semcore
       '@semcore/babel-plugin-recharts': link:tools/babel-plugin-recharts
       '@semcore/babel-plugin-root': link:tools/babel-plugin-root
@@ -93,6 +98,7 @@ importers:
       '@typescript-eslint/parser': 5.10.2_sdq423wcawycjzugemfabbjutq
       csv: 6.2.0
       dotenv: 8.2.0
+      esbuild: 0.14.29
       eslint: 8.14.0
       eslint-config-prettier: 8.3.0_eslint@8.14.0
       eslint-import-resolver-alias: 1.1.2_fkfqfehjtk7sk2efaqbgxsuasa
@@ -104,6 +110,8 @@ importers:
       eslint-plugin-react: 7.29.4_eslint@8.14.0
       eslint-plugin-ssr-friendly: 1.1.0_eslint@8.14.0
       execa: 6.1.0
+      fast-glob: 3.2.11
+      fast-hash-code: 2.1.0
       fs-extra: 9.1.0
       husky: 8.0.0
       inquirer: 6.3.1
@@ -4641,17 +4649,6 @@ packages:
       {
         integrity: sha512-FHeWY46tocHzFRXHr6J8X/EHIJJ3CPgtR9A0iS0ETL/GovsadpVo40934F2pvs40AINeGlRXzXD4rwadPsWUcg==,
       }
-    dev: true
-
-  /@guidepup/playwright/0.6.1:
-    resolution:
-      {
-        integrity: sha512-3nItcGdIPjO11j6KuvPbs5gsZqkp/LUFEYK/BRUcIUalxpZMw7KWPe9pNa40J9nKyi41T9qepxsq5Qx2Dbm1ZA==,
-      }
-    peerDependencies:
-      '@playwright/test': ^1.17.1
-    dependencies:
-      '@guidepup/guidepup': 0.13.1
     dev: true
 
   /@guidepup/playwright/0.6.1_@playwright+test@1.25.1:
@@ -12508,6 +12505,13 @@ packages:
       glob-parent: 6.0.2
       merge2: 1.4.1
       micromatch: 4.0.5
+
+  /fast-hash-code/2.1.0:
+    resolution:
+      {
+        integrity: sha512-hJ/kSGwlKevFdK7ff1wv6H5m5zINYnScp2/uX4G24OCvGvVM/3/UmIpdNkMW3x6T6CMSN1TG94nMSjiqHHVg8A==,
+      }
+    dev: true
 
   /fast-json-stable-stringify/2.1.0:
     resolution:
