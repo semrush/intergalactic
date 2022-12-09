@@ -33,7 +33,7 @@ SPickerFormat {
   padding: 0;
   white-space: nowrap;
   font-family: inherit;
-  font-weight: var(--intergalactic-medium-500, 500);
+  font-weight: var(--intergalactic-medium, 500);
   line-height: normal;
   text-decoration: none;
   align-items: center;

@@ -44,7 +44,7 @@ STitle {
   font-size: var(--intergalactic-fs-700, 36px);
   line-height: var(--intergalactic-lh-700, 110%);
   color: var(--intergalactic-text-primary, #191b23);
-  font-weight: var(--intergalactic-bold-700, 700);
+  font-weight: var(--intergalactic-bold, 700);
   margin: 0 0 var(--intergalactic-spacing-4x, 16px) 0;
 }
 

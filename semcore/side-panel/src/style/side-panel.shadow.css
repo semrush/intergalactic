@@ -133,7 +133,7 @@ SBackText {
 STitle {
   font-size: var(--intergalactic-fs-300, 16px);
   line-height: var(--intergalactic-lh-300, 150%);
-  font-weight: var(--intergalactic-bold-700, 700);
+  font-weight: var(--intergalactic-bold, 700);
   color: var(--intergalactic-text-primary, #191b23);
   white-space: nowrap;
   overflow: hidden;

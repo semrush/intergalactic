@@ -3,7 +3,7 @@ STitle {
   display: flex;
   font-size: var(--intergalactic-fs-400, 20px);
   line-height: var(--intergalactic-lh-400, 120%);
-  font-weight: var(--intergalactic-semi-bold-600, 600);
+  font-weight: var(--intergalactic-semi-bold, 600);
   min-width: 0;
   overflow: hidden;
   text-overflow: ellipsis;

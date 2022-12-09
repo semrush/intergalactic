@@ -6,7 +6,7 @@ SCounter {
   box-sizing: border-box;
   vertical-align: middle;
   border-radius: var(--intergalactic-rounded-large, 12px);
-  font-weight: var(--intergalactic-medium-500, 500);
+  font-weight: var(--intergalactic-medium, 500);
 
   color: var(--intergalactic-text-secondary, #6c6e79);
   background-color: var(--intergalactic-bg-primary-neutral, #ffffff);

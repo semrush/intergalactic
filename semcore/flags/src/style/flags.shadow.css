@@ -29,7 +29,7 @@ SFlags[data-capital-letters] {
     /* disable-tokens-validator */
     font-size: calc(var(--intergalactic-fs-50, 10px) - 2px);
     line-height: normal;
-    font-weight: var(--intergalactic-bold-700, 700);
+    font-weight: var(--intergalactic-bold, 700);
     color: var(--intergalactic-text-secondary, #6c6e79);
   }
 }

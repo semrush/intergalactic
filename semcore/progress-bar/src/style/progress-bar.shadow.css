@@ -8,7 +8,7 @@ SValue {
   position: absolute;
   top: 0;
   left: 0;
-  background-color: var(--intergalactic-progress-bar-value-bg, #000);
+  background-color: var(--intergalactic-progress-bar-value-bg, #000000);
   background-image: var(
     --intergalactic-progress-bar-value-gradient,
     linear-gradient(
@@ -74,7 +74,7 @@ SProgressBar[theme='invert'] {
 }
 
 SProgressBar[animation] {
-  background-color: var(--intergalactic-progress-bar-value-bg, #000);
+  background-color: var(--intergalactic-progress-bar-value-bg, #000000);
   background-image: var(
     --intergalactic-progress-bar-pattern-gradient,
     linear-gradient(

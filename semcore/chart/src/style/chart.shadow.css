@@ -48,7 +48,7 @@ SChart {
   }
 
   & :global(.recharts-tooltip-item-value) {
-    font-weight: var(--intergalactic-bold-700, Bold);
+    font-weight: var(--intergalactic-bold, Bold);
   }
 
   & :global(.recharts-tooltip-item-color) {

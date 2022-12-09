@@ -9,7 +9,7 @@ SWizard {
 SSidebar {
   background: var(--intergalactic-control-primary-advertising, #5925ab);
   color: var(--intergalactic-text-primary-invert, #ffffff);
-  font-weight: var(--intergalactic-bold-700, 700);
+  font-weight: var(--intergalactic-bold, 700);
   font-size: var(--intergalactic-fs-300, 16px);
   line-height: var(--intergalactic-lh-300, 150%);
   padding: var(--intergalactic-spacing-10x, 40px) var(--intergalactic-spacing-2x, 8px)

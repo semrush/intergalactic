@@ -29,7 +29,7 @@ SWeekDay {
   justify-content: center;
   color: var(--intergalactic-text-secondary, #6c6e79);
   font-size: var(--intergalactic-fs-200, 14px);
-  font-weight: var(--intergalactic-regular-400, 400);
+  font-weight: var(--intergalactic-regular, 400);
   overflow: hidden;
 }
 

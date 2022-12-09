@@ -175,7 +175,6 @@
   --intergalactic-progress-bar-bg-invert: rgba(255, 255, 255, 0.2);
   --intergalactic-progress-bar-bg-invert-hover: rgba(255, 255, 255, 0.4);
   --intergalactic-progress-bar-value: #009f81;
-  --intergalactic-progress-bar-value-bg: #000;
   --intergalactic-progress-bar-value-gradient: linear-gradient(
     -45deg,
     rgba(0, 159, 129, 0.9) 25%,
@@ -194,6 +193,7 @@
     rgba(224, 225, 233, 0.9) 75%,
     rgba(224, 225, 233, 1) 0%
   );
+  --intergalactic-progress-bar-value-bg: #000000;
   --intergalactic-skeleton-bg: rgba(224, 225, 233, 0.8);
   --intergalactic-skeleton-bg-invert: rgba(255, 255, 255, 0.3);
   --intergalactic-status-beta: #ff8c43;
@@ -202,34 +202,34 @@
   --intergalactic-status-alpha: #ff8786;
   --intergalactic-status-soon: #a9abb6;
   --intergalactic-status-invert: #ffffff;
-  --intergalactic-table-TH-primary-cell: #f4f5f9;
-  --intergalactic-table-TH-primary-cell-hover: #e0e1e9;
-  --intergalactic-table-TH-primary-cell-active: #e0e1e9;
-  --intergalactic-table-TH-secondary-cell: #ffffff;
-  --intergalactic-table-TH-secondary-cell-hover: #e0e1e9;
-  --intergalactic-table-TH-secondary-cell-active: #e0e1e9;
-  --intergalactic-table-TH-gradient: linear-gradient(
+  --intergalactic-table-th-primary-cell: #f4f5f9;
+  --intergalactic-table-th-primary-cell-hover: #e0e1e9;
+  --intergalactic-table-th-primary-cell-active: #e0e1e9;
+  --intergalactic-table-th-secondary-cell: #ffffff;
+  --intergalactic-table-th-secondary-cell-hover: #e0e1e9;
+  --intergalactic-table-th-secondary-cell-active: #e0e1e9;
+  --intergalactic-table-th-gradient: linear-gradient(
     to right,
     rgba(224, 225, 233, 0) 0%,
     rgba(224, 225, 233, 1) 100%
   );
-  --intergalactic-table-TD-cell: #ffffff;
-  --intergalactic-table-TD-cell-hover: rgba(224, 225, 233, 0.5);
-  --intergalactic-table-TD-cell-active: rgba(224, 225, 233, 0.8);
-  --intergalactic-table-TD-cell-unread: #f4f5f9;
-  --intergalactic-table-TD-cell-actions-accordion: #f4f5f9;
-  --intergalactic-table-TD-cell-selected: #e9f7ff;
-  --intergalactic-table-TD-cell-selected-hover: #c4e5fe;
-  --intergalactic-table-TD-cell-selected-active: #c4e5fe;
-  --intergalactic-table-TD-cell-new: #dbfee8;
-  --intergalactic-table-TD-cell-new-hover: #9ef2c9;
-  --intergalactic-table-TD-cell-new-active: #9ef2c9;
-  --intergalactic-table-TD-cell-critical: #fff0f7;
-  --intergalactic-table-TD-cell-critical-hover: #ffd7df;
-  --intergalactic-table-TD-cell-critical-active: #ffd7df;
-  --intergalactic-table-TD-cell-warning: #fff3d9;
-  --intergalactic-table-TD-cell-warning-hover: #ffdca2;
-  --intergalactic-table-TD-cell-warning-active: #ffdca2;
+  --intergalactic-table-td-cell: #ffffff;
+  --intergalactic-table-td-cell-hover: rgba(224, 225, 233, 0.5);
+  --intergalactic-table-td-cell-active: rgba(224, 225, 233, 0.8);
+  --intergalactic-table-td-cell-unread: #f4f5f9;
+  --intergalactic-table-td-cell-actions-accordion: #f4f5f9;
+  --intergalactic-table-td-cell-selected: #e9f7ff;
+  --intergalactic-table-td-cell-selected-hover: #c4e5fe;
+  --intergalactic-table-td-cell-selected-active: #c4e5fe;
+  --intergalactic-table-td-cell-new: #dbfee8;
+  --intergalactic-table-td-cell-new-hover: #9ef2c9;
+  --intergalactic-table-td-cell-new-active: #9ef2c9;
+  --intergalactic-table-td-cell-critical: #fff0f7;
+  --intergalactic-table-td-cell-critical-hover: #ffd7df;
+  --intergalactic-table-td-cell-critical-active: #ffd7df;
+  --intergalactic-table-td-cell-warning: #fff3d9;
+  --intergalactic-table-td-cell-warning-hover: #ffdca2;
+  --intergalactic-table-td-cell-warning-active: #ffdca2;
   --intergalactic-brand-primary: #ff642d;
   --intergalactic-brand-secondary: #421983;
   /* #BD081C */
@@ -279,11 +279,10 @@
   --intergalactic-lh-200: 142%;
   /* Use with font-size-100. */
   --intergalactic-lh-100: 133%;
-  --intergalactic-semi-bold-600: 600;
-  --intergalactic-bold-700: 700;
-  --intergalactic-regular-400: 400;
-  --intergalactic-medium-500: 500;
-  --intergalactic-italic-400: 400;
+  --intergalactic-semi-bold: 600;
+  --intergalactic-bold: 700;
+  --intergalactic-regular: 400;
+  --intergalactic-medium: 500;
   /* Use only for text in Badge component. */
   --intergalactic-fs-50: 10px;
   /* Use with caution for text in additional messages. Always check its contrast and readability. */
@@ -400,11 +399,11 @@
     rgba(255, 255, 255, 1) 34.38%,
     rgba(255, 255, 255, 0) 100%
   );
-  --intergalactic-scroll-bar-background: rgba(255, 255, 255, 0.3);
-  --intergalactic-tag-primary-muted-normal: rgba(224, 225, 233, 0.5);
-  --intergalactic-tag-primary-muted-hover-active: #e0e1e9;
-  --intergalactic-tag-primary-info-normal: rgba(196, 229, 254, 0.5);
-  --intergalactic-tag-primary-info-hover-active: #c4e5fe;
+  --intergalactic-scroll-bar-background: rgba(25, 27, 35, 0.3);
+  --intergalactic-tag-primary-gray-normal: rgba(224, 225, 233, 0.5);
+  --intergalactic-tag-primary-gray-hover-active: #e0e1e9;
+  --intergalactic-tag-primary-blue-normal: rgba(196, 229, 254, 0.5);
+  --intergalactic-tag-primary-blue-hover-active: #c4e5fe;
   --intergalactic-tag-primary-green-normal: rgba(158, 242, 201, 0.5);
   --intergalactic-tag-primary-green-hover-active: #9ef2c9;
   --intergalactic-tag-primary-orange-normal: rgba(255, 220, 162, 0.5);
@@ -415,14 +414,24 @@
   --intergalactic-tag-primary-violet-hover-active: #edd9ff;
   --intergalactic-tag-primary-yellow-normal: rgba(252, 224, 129, 0.5);
   --intergalactic-tag-primary-yellow-hover-active: #fce081;
-  --intergalactic-tag-primary-invert-normal: rgba(255, 255, 255, 0.15);
-  --intergalactic-tag-primary-invert-hover-active: rgba(255, 255, 255, 0.3);
+  --intergalactic-tag-primary-white-normal: rgba(255, 255, 255, 0.15);
+  --intergalactic-tag-primary-white-hover-active: rgba(255, 255, 255, 0.3);
+  --intergalactic-tag-primary-gray-text: #6c6e79;
+  --intergalactic-tag-primary-blue-text: #006dca;
+  --intergalactic-tag-primary-green-text: #007c65;
+  --intergalactic-tag-primary-orange-text: #c33909;
+  --intergalactic-tag-primary-red-text: #d1002f;
+  --intergalactic-tag-primary-violet-text: #8649e1;
+  --intergalactic-tag-primary-yellow-text: #a75800;
+  --intergalactic-tag-primary-white-text: #ffffff;
   --intergalactic-tag-secondary-normal: #ffffff;
   --intergalactic-tag-secondary-hover-active: #f4f5f9;
-  --intergalactic-tag-secondary-invert-normal: rgba(255, 255, 255, 0);
+  --intergalactic-tag-secondary-white-normal: rgba(255, 255, 255, 0);
   /* Only text color changes */
-  --intergalactic-tag-secondary-invert-hover: rgba(255, 255, 255, 0);
-  --intergalactic-tag-secondary-invert-active: rgba(255, 255, 255, 0.1);
+  --intergalactic-tag-secondary-white-hover: rgba(255, 255, 255, 0);
+  --intergalactic-tag-secondary-white-active: rgba(255, 255, 255, 0.1);
+  --intergalactic-tag-secondary-gray-text: #6c6e79;
+  --intergalactic-tag-secondary-white-text: #ffffff;
   --intergalactic-chart-palette-order-blue: #2bb3ff;
   --intergalactic-chart-palette-order-green: #59ddaa;
   --intergalactic-chart-palette-order-orange: #ff642d;

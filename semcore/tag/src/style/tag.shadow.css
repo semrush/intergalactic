@@ -10,7 +10,7 @@ STag {
   border-radius: var(--intergalactic-rounded-extra-large, 24px);
   padding-left: var(--intergalactic-spacing-1x, 4px);
   padding-right: var(--intergalactic-spacing-1x, 4px);
-  font-weight: var(--intergalactic-medium-500, 500);
+  font-weight: var(--intergalactic-medium, 500);
   background-color: var(--colorBg);
   color: var(--colorText);
   border-color: var(--colorBorder);
@@ -83,16 +83,13 @@ STag[theme='primary'] {
 }
 
 STag[theme='primary-invert'] {
-  background-color: var(--intergalactic-tag-primary-invert-normal, rgba(255, 255, 255, 0.15));
+  background-color: var(--intergalactic-tag-primary-white-normal, rgba(255, 255, 255, 0.15));
   color: var(--intergalactic-text-primary-invert, #ffffff);
 
   &[interactive]:hover,
   &[interactive]:active,
   &[active] {
-    background-color: var(
-      --intergalactic-tag-primary-invert-hover-active,
-      rgba(255, 255, 255, 0.3)
-    );
+    background-color: var(--intergalactic-tag-primary-white-hover-active, rgba(255, 255, 255, 0.3));
   }
 }
 STag[theme='secondary-invert'],

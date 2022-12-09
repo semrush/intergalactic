@@ -50,11 +50,11 @@ SText[noWrap] {
 }
 
 SText[medium] {
-  font-weight: var(--intergalactic-medium-500, 500);
+  font-weight: var(--intergalactic-medium, 500);
 }
 
 SText[bold] {
-  font-weight: var(--intergalactic-bold-700, 700);
+  font-weight: var(--intergalactic-bold, 700);
 }
 
 SText[italic] {

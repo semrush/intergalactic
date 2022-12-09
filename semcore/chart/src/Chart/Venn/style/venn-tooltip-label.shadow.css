@@ -19,5 +19,5 @@ STooltipLabelPercentage {
 }
 
 STooltipLabelValue {
-  font-weight: var(--intergalactic-bold-700, Bold);
+  font-weight: var(--intergalactic-bold, Bold);
 }
