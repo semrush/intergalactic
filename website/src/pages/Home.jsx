@@ -147,7 +147,7 @@ const getComponents = (titles) => {
     return (
       <Tooltip styles={stylesTooltip} placement="left" w={'fit-content'} key={child.elem.title}>
         <Tooltip.Trigger tag={Flex} alignItems="center" className={styles.component}>
-          <a className={styles.linkStyled} to={`/${child.elem.route}/`} style={{ marginBottom: 5 }}>
+          <a className={styles.linkStyled} to={`/${child.elem.route}/`}>
             {child.elem.title}
           </a>
           {child.elem.metadata.beta && (
