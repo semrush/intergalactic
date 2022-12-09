@@ -101,7 +101,7 @@ So you need to make designs for:
 - 768px — phones and tablets.
 - more than 1200px — big tablets and desktop devices.
 
-See [Adaptivity](/layout/adaptivity/) and [Grid and breakpoints system](/layout/grid-system/) for more information.
+See [Breakpoints](/layout/breakpoints/) and [Grid and breakpoints system](/layout/grid-system/) for more information.
 
 @## Charts
 

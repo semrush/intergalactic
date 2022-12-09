@@ -1,5 +1,5 @@
 ---
-title: Grid and breakpoints system
+title: Grid and page layout
 fileSource: grid
 tabName: Design
 ---
@@ -10,21 +10,11 @@ tabName: Design
 - Each range determines the number of columns, maximum content width and content wrapper margins.
 - You can set your own breakpoints, if it's necessary for the correct display of the interface in a particular case.
 
-@## Breakpoints system
-
-Here is a list of the main breakpoints we recommend using in the interfaces:
-
-| Variable               | Usage                                                |
-| ---------------------- | ---------------------------------------------------- |
-| `--xs-screen: 320px;`  | The smallest possible breakpoint for mobile devices. |
-| `--sm-screen: 768px;`  | The most common breakpoint for tablet devices.       |
-| `--md-screen: 1200px;` | Our main breakpoint for desktop devices.             |
+@## Page layout and grid behavior
 
 ![breakpoints-scheme](static/scheme.png)
 
 > On 1200px left menu with width of 250px appears and "eats away" space of the product page.
-
-@## Values and grid behavior
 
 | Breakpoint                      | Columns | Gutter | Max. content width                                    | Content wrapper margins                                                                  | Layout scheme                                                    | Description                                                                                                               |
 | ------------------------------- | ------- | ------ | ----------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
