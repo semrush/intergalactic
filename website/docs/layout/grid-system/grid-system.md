@@ -12,6 +12,14 @@ tabName: Design
 
 @## Breakpoints system
 
+Here is a list of the main breakpoints we recommend using in the interfaces:
+
+| Variable               | Usage                                                |
+| ---------------------- | ---------------------------------------------------- |
+| `--xs-screen: 320px;`  | The smallest possible breakpoint for mobile devices. |
+| `--sm-screen: 768px;`  | The most common breakpoint for tablet devices.       |
+| `--md-screen: 1200px;` | Our main breakpoint for desktop devices.             |
+
 ![breakpoints-scheme](static/scheme.png)
 
 > On 1200px left menu with width of 250px appears and "eats away" space of the product page.
@@ -27,7 +35,7 @@ tabName: Design
 | **min-width: 1200px** (1200-∞)  | 12      | 24px   | 980px for landing pages, **1920px for product pages** | `margin: 24px 24px 96px;` for landing pages, `margin: 16px 32px 96px;` for product pages | ![1200px breakpoint](static/breakpoints-1200-desktop.png)        | **Tablet & desktop devices**. The left menu is open. Rearrange the content as a three-column structure.                   |
 |                                 |         |        |                                                       |                                                                                          | ![1200 breakpoint](static/breakpoints-1200-tablet-landscape.png) | **Tablet (landscape mode)**. The left menu is open. Rearrange the content as a two-column structure.                      |
 
-@## Page max-width
+@## Content max-width
 
 Sizes in our grid system are based on the sizes of the left menu width (250px) and the maximum content width of our product pages.
 
