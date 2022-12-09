@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [1.8.1] - 2022-12-09
+
+### Changed
+
+- Changed prop `initialAnimation` to otional.
+
 ## [1.8.0] - 2022-12-05
 
 ### Added
