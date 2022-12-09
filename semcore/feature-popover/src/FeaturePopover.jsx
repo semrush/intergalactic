@@ -111,6 +111,7 @@ class FeaturePopoverPopper extends Component {
           visible={visible}
           duration={duration}
           keyframes={[stylePopper['@enter'], stylePopper['@exit']]}
+          initialAnimation
         >
           <SFeaturePopover render={Box}>
             {closeIcon ? <SClose onClick={$onCloseClick} /> : null}
