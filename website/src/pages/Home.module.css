@@ -324,6 +324,7 @@
 
 .category {
   columns: 6 160px;
+  line-height: 2;
 }
 
 .uxPatterns .category {
