@@ -1,3 +1,21 @@
+## [13.2.3] - 2022-12-09
+
+### @semcore/animation
+
+- **Changed** Changed prop `initialAnimation` to otional.
+
+### @semcore/feature-popover
+
+- **Fixed** Opening animation is working again.
+
+### @semcore/notice-bubble
+
+- **Changed** Changed prop `initialAnimation` to otional.
+
+### @semcore/scroll-area
+
+- **Fixed** Fixed calculation size when changing height of the container.
+
 ## [13.2.2] - 2022-12-07
 
 ### @semcore/animation
