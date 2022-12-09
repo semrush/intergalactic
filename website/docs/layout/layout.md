@@ -2,6 +2,6 @@
 title: Layout
 ---
 
-@page breakpoints
+@page adaptivity
 @page grid-system
 @page box-system
