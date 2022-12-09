@@ -16,7 +16,7 @@ export interface INoticeBubbleInfoProps extends INoticeBubbleProps {
   /** Enables animation on first rendering
    * @default false
    */
-  initialAnimation: boolean;
+  initialAnimation?: boolean;
 }
 
 export interface INoticeBubbleWarningProps extends INoticeBubbleProps {
@@ -29,7 +29,7 @@ export interface INoticeBubbleWarningProps extends INoticeBubbleProps {
   /** Enables animation on first rendering
    * @default false
    */
-  initialAnimation: boolean;
+  initialAnimation?: boolean;
 }
 
 export interface INoticeBubbleProps extends IBoxProps {

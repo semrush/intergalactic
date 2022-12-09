@@ -19,7 +19,7 @@ export interface IAnimationProps extends IBoxProps {
   /** Enables animation on first rendering
    * @default false
    */
-  initialAnimation: boolean;
+  initialAnimation?: boolean;
 }
 
 export interface ICollapseProps extends IAnimationProps {
