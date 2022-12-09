@@ -244,6 +244,7 @@ jobs:
           git_committer_email: semrush-ci-whale@users.noreply.github.com
       - name: Update website/release branch
         run: |
+          git fetch --all
           git checkout website/release
           git pull origin master --rebase
           git push
