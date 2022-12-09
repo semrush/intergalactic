@@ -87,7 +87,8 @@ export const esbuildPluginSemcoreSourcesResolve = (rootPath: string): Plugin => 
         path = `@semcore/` + path.substring(`@semcore/ui/`.length);
       const workspacePath = await tryToResolveWorkspacePath(path, rootPath);
       const componentName = path.split('/')[1];
-      let subPath = path.split('/').slice(2).join('/');
+      const subPath = path.split('/').slice(2).join('/');
+      let modifiedSubPath = subPath;
 
       if (
         !rootFiles.includes(subPath) &&
@@ -95,24 +96,29 @@ export const esbuildPluginSemcoreSourcesResolve = (rootPath: string): Plugin => 
         !outOfSourceDirs.some((dir) => subPath.startsWith(dir))
       ) {
         if (subPath.includes('lib')) {
-          subPath = subPath.replace('lib/', 'src/');
+          modifiedSubPath = subPath.replace('lib/', 'src/');
         } else if (!subPath.startsWith('src/')) {
-          subPath = 'src/' + subPath;
+          modifiedSubPath = 'src/' + subPath;
         }
       }
 
-      const absolutePath = resolvePath(workspacePath, subPath);
-
-      for (const tryToResolve of [
-        tryToResolveFile,
-        tryToResolveFileExtention,
-        tryToResolveIndexFile,
+      for (const absolutePath of [
+        resolvePath(workspacePath, modifiedSubPath),
+        resolvePath(workspacePath, subPath),
       ]) {
-        const resolved = await tryToResolve(absolutePath);
-        if (resolved) return { ...resolved, namespace };
+        for (const tryToResolve of [
+          tryToResolveFile,
+          tryToResolveFileExtention,
+          tryToResolveIndexFile,
+        ]) {
+          const resolved = await tryToResolve(absolutePath);
+          if (resolved) return { ...resolved, namespace };
+        }
       }
 
-      throw new Error(`Unable to resolve file in "${absolutePath}" (trying to resolve "${path}") `);
+      throw new Error(
+        `Unable to resolve file in "${modifiedSubPath}" (trying to resolve "${path}") `,
+      );
     });
     build.onLoad({ filter: /./, namespace: 'rawFile' }, async ({ path }) => {
       const contents = await readFile(path, 'utf-8');
