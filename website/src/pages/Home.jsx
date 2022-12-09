@@ -146,7 +146,7 @@ const getComponents = (titles) => {
     const pic = getTooltip(child.elem.title);
     return (
       <Tooltip styles={stylesTooltip} placement="left" w={'fit-content'} key={child.elem.title}>
-        <Tooltip.Trigger tag={Flex} alignItems="center" className={styles.component}>
+        <Tooltip.Trigger tag={Flex} alignItems="center" className={styles.component} mb={1}>
           <Link className={styles.linkStyled} to={`/${child.elem.route}/`}>
             {child.elem.title}
           </Link>
