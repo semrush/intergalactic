@@ -248,132 +248,145 @@ jobs:
           git checkout website/release
           git pull origin master --rebase
           git push
-  # vo-filter:
-  #   runs-on: ubuntu-latest
-  #   needs: setup
-  #   outputs:
-  #     run_rest_jobs: ${{ steps.set_output.outputs.run_vo }}
-  #   steps:
-  #     - name: Checkout
-  #       uses: actions/checkout@v3
-  #     - name: Install Node.js
-  #       uses: actions/setup-node@v3
-  #       with:
-  #         node-version: 16
-  #     - uses: pnpm/action-setup@v2.0.1
-  #       name: Install pnpm
-  #       id: pnpm-install
-  #       with:
-  #         version: 7
-  #         run_install: false
-  #     - name: Get pnpm store directory
-  #       id: pnpm-cache
-  #       run: |
-  #         echo "::set-output name=pnpm_cache_dir::$(pnpm store path)"
-  #     - uses: actions/cache@v3
-  #       name: Setup pnpm cache
-  #       with:
-  #         path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
-  #         key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-  #         restore-keys: |
-  #           ${{ runner.os }}-pnpm-store-
-  #     - name: Install restored dependencies
-  #       run: |
-  #         pnpm install --frozen-lockfile
-  #     - name: Generate VO tests hashes
-  #       run: |
-  #         pnpm tsm ./.ci/vo-tests-hash.ts
-  #     - name: Diff git and set output
-  #       id: set_output
-  #       run: |
-  #         if [[ $(git --no-pager diff .ci/.vo-test-hash.txt) ]]; then
-  #           echo "::set-output name=run_vo::true"
-  #         else
-  #           echo "::set-output name=run_vo::false"
-  #         fi
-  # vo-setup:
-  #   runs-on: macos-latest
-  #   if: needs.vo-filter.outputs.run_vo == 'true'
-  #   needs: vo-filter
-  #   steps:
-  #     - uses: actions/checkout@v2
-  #     - uses: actions/setup-node@v2
-  #     - uses: pnpm/action-setup@v2.0.1
-  #       name: Install pnpm
-  #       id: pnpm-install
-  #       with:
-  #         version: 7
-  #         run_install: false
-  #     - name: Get pnpm store directory
-  #       id: pnpm-cache
-  #       run: |
-  #         echo "::set-output name=pnpm_cache_dir::$(pnpm store path)"
-  #     - uses: actions/cache@v3
-  #       name: Setup pnpm cache
-  #       with:
-  #         path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
-  #         key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-  #         restore-keys: |
-  #           ${{ runner.os }}-pnpm-store-
-  #     - name: Install dependencies
-  #       run: |
-  #         pnpm install --frozen-lockfile
-  # vo-test:
-  #   runs-on: macos-latest
-  #   needs: [vo-setup, build]
-  #   steps:
-  #     - uses: actions/checkout@v2
-  #     - uses: pnpm/action-setup@v2.1.0
-  #       with:
-  #         version: 7.0.0
-  #     - uses: actions/setup-node@v2
-  #     - name: Get pnpm store directory
-  #       id: pnpm-cache
-  #       run: |
-  #         echo "::set-output name=pnpm_cache_dir::$(pnpm store path)"
-  #     - uses: actions/cache@v3
-  #       name: Restore pnpm cache
-  #       with:
-  #         path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
-  #         key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-  #         restore-keys: |
-  #           ${{ runner.os }}-pnpm-store-
-  #     - name: Install restored dependencies
-  #       run: |
-  #         pnpm install --frozen-lockfile
-  #     - name: Restore cached build
-  #       uses: actions/cache@v2
-  #       with:
-  #         path: |
-  #           semcore/*/lib
-  #           tools/*/lib
-  #           semcore/icon/**/*.js
-  #           semcore/icon/**/*.mjs
-  #           semcore/icon/**/*.d.ts
-  #           semcore/illustration/**/*.js
-  #           semcore/illustration/**/*.mjs
-  #           semcore/illustration/**/*.d.ts
-  #         key: build-${{ hashFiles('**/pnpm-lock.yaml', '**/CHANGELOG.md') }}
-  #     - name: Install Browser
-  #       run: npx playwright install webkit
-  #     - name: Enable VoiceOver Automation
-  #       uses: guidepup/setup-action@0.4.0
-  #     - name: Update VO tests hashes
-  #       run: |
-  #         pnpm tsm ./.ci/vo-tests-hash.ts
-  #     - name: Voice Over testing
-  #       uses: nick-fields/retry@v2
-  #       with:
-  #         timeout_minutes: 40
-  #         max_attempts: 3
-  #         command: pnpm run vo-test
-  #     - name: Github GPG Auth
-  #       uses: crazy-max/ghaction-import-gpg@v4.4.0
-  #       with:
-  #         gpg_private_key: ${{ secrets.BOT_ACCOUNT_GPG_PRIVATE_KEY }}
-  #         git_user_signingkey: true
-  #         git_commit_gpgsign: true
-  #         git_committer_name: semrush-ci-whale
-  #         git_committer_email: semrush-ci-whale@users.noreply.github.com
-  #     - name: Push changed a11y reports
-  #       run: git add . && git commit -m "[chore] a11y automatic check fixation" && git push || echo "nothing to commit"
+  vo-filter:
+    runs-on: ubuntu-latest
+    needs: setup
+    outputs:
+      run_rest_jobs: ${{ steps.set_output.outputs.run_vo }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - uses: pnpm/action-setup@v2.0.1
+        name: Install pnpm
+        id: pnpm-install
+        with:
+          version: 7
+          run_install: false
+      - name: Get pnpm store directory
+        id: pnpm-cache
+        run: |
+          echo "::set-output name=pnpm_cache_dir::$(pnpm store path)"
+      - uses: actions/cache@v3
+        name: Setup pnpm cache
+        with:
+          path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+      - name: Restore cached build
+        uses: actions/cache@v2
+        with:
+          path: |
+            semcore/*/lib
+            tools/*/lib
+            semcore/icon/**/*.js
+            semcore/icon/**/*.mjs
+            semcore/icon/**/*.d.ts
+            semcore/illustration/**/*.js
+            semcore/illustration/**/*.mjs
+            semcore/illustration/**/*.d.ts
+          key: build-${{ hashFiles('**/pnpm-lock.yaml', '**/CHANGELOG.md') }}
+      - name: Install restored dependencies
+        run: |
+          pnpm install --frozen-lockfile
+      - name: Generate VO tests hashes
+        run: |
+          pnpm tsm ./.ci/vo-tests-hash.ts
+      - name: Diff git and set output
+        id: set_output
+        run: |
+          if [[ $(git --no-pager diff .ci/.vo-test-hash.txt) ]]; then
+            echo "::set-output name=run_vo::true"
+          else
+            echo "::set-output name=run_vo::false"
+          fi
+  vo-setup:
+    runs-on: macos-latest
+    if: needs.vo-filter.outputs.run_vo == 'true'
+    needs: vo-filter
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+      - uses: pnpm/action-setup@v2.0.1
+        name: Install pnpm
+        id: pnpm-install
+        with:
+          version: 7
+          run_install: false
+      - name: Get pnpm store directory
+        id: pnpm-cache
+        run: |
+          echo "::set-output name=pnpm_cache_dir::$(pnpm store path)"
+      - uses: actions/cache@v3
+        name: Setup pnpm cache
+        with:
+          path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+      - name: Install dependencies
+        run: |
+          pnpm install --frozen-lockfile
+  vo-test:
+    runs-on: macos-latest
+    needs: [vo-setup, build]
+    steps:
+      - uses: actions/checkout@v2
+      - uses: pnpm/action-setup@v2.1.0
+        with:
+          version: 7.0.0
+      - uses: actions/setup-node@v2
+      - name: Get pnpm store directory
+        id: pnpm-cache
+        run: |
+          echo "::set-output name=pnpm_cache_dir::$(pnpm store path)"
+      - uses: actions/cache@v3
+        name: Restore pnpm cache
+        with:
+          path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+      - name: Install restored dependencies
+        run: |
+          pnpm install --frozen-lockfile
+      - name: Restore cached build
+        uses: actions/cache@v2
+        with:
+          path: |
+            semcore/*/lib
+            tools/*/lib
+            semcore/icon/**/*.js
+            semcore/icon/**/*.mjs
+            semcore/icon/**/*.d.ts
+            semcore/illustration/**/*.js
+            semcore/illustration/**/*.mjs
+            semcore/illustration/**/*.d.ts
+          key: build-${{ hashFiles('**/pnpm-lock.yaml', '**/CHANGELOG.md') }}
+      - name: Install Browser
+        run: npx playwright install webkit
+      - name: Enable VoiceOver Automation
+        uses: guidepup/setup-action@0.4.0
+      - name: Update VO tests hashes
+        run: |
+          pnpm tsm ./.ci/vo-tests-hash.ts
+      - name: Voice Over testing
+        uses: nick-fields/retry@v2
+        with:
+          timeout_minutes: 40
+          max_attempts: 3
+          command: pnpm run vo-test
+      - name: Github GPG Auth
+        uses: crazy-max/ghaction-import-gpg@v4.4.0
+        with:
+          gpg_private_key: ${{ secrets.BOT_ACCOUNT_GPG_PRIVATE_KEY }}
+          git_user_signingkey: true
+          git_commit_gpgsign: true
+          git_committer_name: semrush-ci-whale
+          git_committer_email: semrush-ci-whale@users.noreply.github.com
+      - name: Push changed a11y reports
+        run: git add . && git commit -m "[chore] a11y automatic check fixation" && git push || echo "nothing to commit"
