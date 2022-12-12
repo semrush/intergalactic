@@ -20,6 +20,12 @@ export const runPublisher = async (versionPatches: VersionPatch[]) => {
   const toPublish = versionPatches.filter((patch) => patch.needPublish);
   const pnpmFilter = toPublish.map((patch) => `--filter ${patch.package.name}`).join(' ');
 
+  versionPatches.sort((a, b) => {
+    if (a.package.name === '@semcore/ui') return 1;
+    if (b.package.name === '@semcore/ui') return -1;
+    return 0;
+  });
+
   if (status.files.length) {
     await git.add('.');
     if (!process.argv.includes('--dry-run')) {
