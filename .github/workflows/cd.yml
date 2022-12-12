@@ -261,7 +261,7 @@ jobs:
           git push --force --set-upstream origin website/release
   vo-filter:
     runs-on: ubuntu-latest
-    needs: setup
+    needs: build
     outputs:
       run_rest_jobs: ${{ steps.set_output.outputs.run_vo }}
     steps:
