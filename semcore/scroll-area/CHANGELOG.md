@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.2.0] - 2022-12-12
+
+### Added
+
+- Design tokens based theming.
+
 ## [4.1.6] - 2022-12-09
 
 ### Fixed
