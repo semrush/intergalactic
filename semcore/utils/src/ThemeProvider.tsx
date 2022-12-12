@@ -9,13 +9,12 @@ export type ThemeProviderProps = {
 
 export const useContextTheme = (ref: React.RefObject<HTMLElement>) => {
   const tokens = React.useContext(themeContext);
-  const tokensKey = React.useMemo(
-    () =>
-      Object.entries(tokens)
-        .map(([key, value]) => `${key}-${value}`)
-        .join('/'),
-    [tokens],
-  );
+  const tokensKey = React.useMemo(() => {
+    if (!tokens) return '';
+    return Object.entries(tokens)
+      .map(([key, value]) => `${key}-${value}`)
+      .join('/');
+  }, [tokens]);
   // const effectHook = React.useInsertionEffect || React.useLayoutEffect;
   const effectHook = React.useLayoutEffect;
   effectHook(() => {
