@@ -104,7 +104,7 @@ importers:
       eslint-import-resolver-alias: 1.1.2_fkfqfehjtk7sk2efaqbgxsuasa
       eslint-import-resolver-typescript: 2.0.0_myxbwluo6p3kuxjcyp342zygci
       eslint-import-resolver-workspaces: 1.0.9
-      eslint-plugin-import: 2.26.0_ltarx3mb3fncbeyjafrj7vwgky
+      eslint-plugin-import: 2.26.0_eslint@8.14.0
       eslint-plugin-no-cyrillic-string: 1.0.5_eslint@8.14.0
       eslint-plugin-prettier: 3.1.2_6w23y4twy4x3invpuc47pdc7dq
       eslint-plugin-react: 7.29.4_eslint@8.14.0
@@ -710,7 +710,7 @@ importers:
       '@semcore/button': ^4
       '@semcore/flex-box': ^4
       '@semcore/format-text': ^3.0.0
-      '@semcore/illustration': 1.3.5
+      '@semcore/illustration': 1.3.6
       '@semcore/jest-preset-ui': 1.0.0
       '@semcore/typography': ^4
       '@semcore/utils': ^3.27
@@ -1554,79 +1554,79 @@ importers:
 
   semcore/ui:
     specifiers:
-      '@semcore/accordion': 4.1.12
-      '@semcore/animation': 1.8.1
-      '@semcore/badge': 3.2.5
-      '@semcore/base-trigger': 3.2.11
-      '@semcore/breadcrumbs': 4.2.9
-      '@semcore/breakpoints': 1.2.5
-      '@semcore/button': 4.2.5
-      '@semcore/card': 4.1.9
-      '@semcore/carousel': 2.1.10
-      '@semcore/checkbox': 6.2.0
-      '@semcore/color-picker': 1.2.12
+      '@semcore/accordion': 4.2.0
+      '@semcore/animation': 1.8.2
+      '@semcore/badge': 3.3.0
+      '@semcore/base-trigger': 3.3.0
+      '@semcore/breadcrumbs': 4.3.0
+      '@semcore/breakpoints': 1.2.6
+      '@semcore/button': 4.3.0
+      '@semcore/card': 4.2.0
+      '@semcore/carousel': 2.2.0
+      '@semcore/checkbox': 6.3.0
+      '@semcore/color-picker': 1.3.0
       '@semcore/continuous-delivery': '*'
-      '@semcore/core': 1.13.6
-      '@semcore/counter': 2.1.5
-      '@semcore/d3-chart': 2.5.6
-      '@semcore/data-table': 3.5.5
-      '@semcore/date-picker': 3.4.17
-      '@semcore/divider': 3.1.5
-      '@semcore/dot': 4.1.9
-      '@semcore/drag-and-drop': 2.2.2
-      '@semcore/dropdown': 3.2.6
-      '@semcore/dropdown-menu': 3.4.3
-      '@semcore/ellipsis': 1.0.5
+      '@semcore/core': 1.13.7
+      '@semcore/counter': 2.2.0
+      '@semcore/d3-chart': 2.6.0
+      '@semcore/data-table': 3.6.0
+      '@semcore/date-picker': 3.5.0
+      '@semcore/divider': 3.2.0
+      '@semcore/dot': 4.2.0
+      '@semcore/drag-and-drop': 2.3.0
+      '@semcore/dropdown': 3.3.0
+      '@semcore/dropdown-menu': 3.5.0
+      '@semcore/ellipsis': 1.1.0
       '@semcore/email': 1.0.2
-      '@semcore/errors': 3.5.6
-      '@semcore/feature-popover': 3.1.14
-      '@semcore/feedback-form': 5.2.5
-      '@semcore/flags': 3.2.4
-      '@semcore/flex-box': 4.6.5
-      '@semcore/format-text': 3.1.5
-      '@semcore/fullscreen-modal': 2.1.10
-      '@semcore/grid': 4.2.5
-      '@semcore/icon': 3.3.2
-      '@semcore/illustration': 1.3.5
-      '@semcore/inline-edit': 2.1.9
-      '@semcore/inline-input': 3.2.1
-      '@semcore/input': 3.4.2
-      '@semcore/input-mask': 4.3.8
-      '@semcore/input-number': 4.1.7
-      '@semcore/input-tags': 3.2.11
-      '@semcore/link': 4.2.5
-      '@semcore/modal': 3.1.13
-      '@semcore/neighbor-location': 3.1.5
-      '@semcore/notice': 4.2.12
-      '@semcore/notice-bubble': 4.3.2
-      '@semcore/notice-global': 1.2.12
-      '@semcore/outside-click': 2.5.5
-      '@semcore/pagination': 3.3.13
-      '@semcore/pills': 4.3.6
-      '@semcore/popper': 4.13.6
-      '@semcore/portal': 2.4.5
-      '@semcore/product-head': 3.2.2
-      '@semcore/progress-bar': 3.2.5
-      '@semcore/radio': 5.2.0
-      '@semcore/scroll-area': 4.1.6
-      '@semcore/select': 3.2.20
-      '@semcore/side-panel': 2.1.13
-      '@semcore/skeleton': 4.3.2
-      '@semcore/slider': 3.2.5
-      '@semcore/spin': 4.1.5
-      '@semcore/spin-container': 6.1.8
-      '@semcore/sticky': 2.3.5
-      '@semcore/switch': 4.2.5
-      '@semcore/tab-line': 3.1.6
-      '@semcore/tab-panel': 3.2.5
-      '@semcore/tag': 4.2.9
-      '@semcore/textarea': 4.2.0
-      '@semcore/time-picker': 3.2.19
-      '@semcore/tooltip': 5.2.0
-      '@semcore/typography': 4.2.9
-      '@semcore/utils': 3.42.0
-      '@semcore/widget-empty': 3.6.5
-      '@semcore/wizard': 1.1.14
+      '@semcore/errors': 3.6.0
+      '@semcore/feature-popover': 3.2.0
+      '@semcore/feedback-form': 5.3.0
+      '@semcore/flags': 3.3.0
+      '@semcore/flex-box': 4.7.0
+      '@semcore/format-text': 3.2.0
+      '@semcore/fullscreen-modal': 2.2.0
+      '@semcore/grid': 4.3.0
+      '@semcore/icon': 3.4.0
+      '@semcore/illustration': 1.3.6
+      '@semcore/inline-edit': 2.2.0
+      '@semcore/inline-input': 3.3.0
+      '@semcore/input': 3.5.0
+      '@semcore/input-mask': 4.4.0
+      '@semcore/input-number': 4.2.0
+      '@semcore/input-tags': 3.3.0
+      '@semcore/link': 4.3.0
+      '@semcore/modal': 3.2.0
+      '@semcore/neighbor-location': 3.1.6
+      '@semcore/notice': 4.3.0
+      '@semcore/notice-bubble': 4.4.0
+      '@semcore/notice-global': 1.3.0
+      '@semcore/outside-click': 2.5.6
+      '@semcore/pagination': 3.4.0
+      '@semcore/pills': 4.4.0
+      '@semcore/popper': 4.14.0
+      '@semcore/portal': 2.5.0
+      '@semcore/product-head': 3.3.0
+      '@semcore/progress-bar': 3.3.0
+      '@semcore/radio': 5.3.0
+      '@semcore/scroll-area': 4.2.0
+      '@semcore/select': 3.3.0
+      '@semcore/side-panel': 2.2.0
+      '@semcore/skeleton': 4.4.0
+      '@semcore/slider': 3.3.0
+      '@semcore/spin': 4.2.0
+      '@semcore/spin-container': 6.2.0
+      '@semcore/sticky': 2.4.0
+      '@semcore/switch': 4.3.0
+      '@semcore/tab-line': 3.2.0
+      '@semcore/tab-panel': 3.3.0
+      '@semcore/tag': 4.3.0
+      '@semcore/textarea': 4.3.0
+      '@semcore/time-picker': 3.3.0
+      '@semcore/tooltip': 5.3.0
+      '@semcore/typography': 4.3.0
+      '@semcore/utils': 3.43.0
+      '@semcore/widget-empty': 3.7.0
+      '@semcore/wizard': 1.2.0
       '@types/react': 18.0.21
       fast-glob: 3.2.11
       fs-extra: 9.0.1
@@ -1747,7 +1747,7 @@ importers:
   semcore/widget-empty:
     specifiers:
       '@semcore/flex-box': ^4
-      '@semcore/illustration': 1.3.5
+      '@semcore/illustration': 1.3.6
       '@semcore/jest-preset-ui': 1.0.0
       '@semcore/utils': ^3.27
       '@types/react': 18.0.21
@@ -2618,8 +2618,6 @@ packages:
     optionalDependencies:
       chokidar: 3.5.3
       chokidarAt2: /chokidar/2.1.8
-    transitivePeerDependencies:
-      - supports-color
     dev: false
 
   /@babel/cli/7.8.4_@babel+core@7.19.1:
@@ -2642,8 +2640,6 @@ packages:
       source-map: 0.5.7
     optionalDependencies:
       chokidar: 2.1.8
-    transitivePeerDependencies:
-      - supports-color
     dev: false
 
   /@babel/code-frame/7.18.6:
@@ -5036,8 +5032,6 @@ packages:
     dependencies:
       dotenv: 8.6.0
       superagent: 3.7.0
-    transitivePeerDependencies:
-      - supports-color
     dev: true
 
   /@mailchimp/mailchimp_marketing/3.0.74:
@@ -5049,8 +5043,6 @@ packages:
     dependencies:
       dotenv: 8.6.0
       superagent: 3.8.1
-    transitivePeerDependencies:
-      - supports-color
     dev: false
 
   /@mrmlnc/readdir-enhanced/2.2.1:
@@ -6304,8 +6296,6 @@ packages:
     dependencies:
       micromatch: 3.1.10
       normalize-path: 2.1.1
-    transitivePeerDependencies:
-      - supports-color
     dev: false
     optional: true
 
@@ -7217,8 +7207,6 @@ packages:
       raw-body: 2.5.1
       type-is: 1.6.18
       unpipe: 1.0.0
-    transitivePeerDependencies:
-      - supports-color
     dev: false
 
   /boolbase/1.0.0:
@@ -7762,8 +7750,6 @@ packages:
       readdirp: 2.2.1
     optionalDependencies:
       fsevents: 1.2.13
-    transitivePeerDependencies:
-      - supports-color
     dev: true
 
   /chokidar/2.1.8:
@@ -7787,8 +7773,6 @@ packages:
       upath: 1.2.0
     optionalDependencies:
       fsevents: 1.2.13
-    transitivePeerDependencies:
-      - supports-color
     dev: false
     optional: true
 
@@ -8651,9 +8635,6 @@ packages:
       request: 2.88.2
       through2: 2.0.5
       valid-url: 1.0.9
-    transitivePeerDependencies:
-      - bufferutil
-      - utf-8-validate
     dev: false
 
   /css-select-base-adapter/0.1.1:
@@ -9455,11 +9436,6 @@ packages:
       {
         integrity: sha512-bC7ElrdJaJnPbAP+1EotYvqZsb3ecl5wi6Bfi6BJTUcNowp6cvspg0jXznRTKDjm/E7AdgFBVeAPVMNcKGsHMA==,
       }
-    peerDependencies:
-      supports-color: '*'
-    peerDependenciesMeta:
-      supports-color:
-        optional: true
     dependencies:
       ms: 2.0.0
 
@@ -9468,28 +9444,8 @@ packages:
       {
         integrity: sha512-CFjzYYAi4ThfiQvizrFQevTTXHtnCqWfe7x1AhgEscTz6ZbLbfoLRLPugTQyBth6f8ZERVUSyWHFD/7Wu4t1XQ==,
       }
-    peerDependencies:
-      supports-color: '*'
-    peerDependenciesMeta:
-      supports-color:
-        optional: true
     dependencies:
       ms: 2.1.3
-
-  /debug/3.2.7_supports-color@5.5.0:
-    resolution:
-      {
-        integrity: sha512-CFjzYYAi4ThfiQvizrFQevTTXHtnCqWfe7x1AhgEscTz6ZbLbfoLRLPugTQyBth6f8ZERVUSyWHFD/7Wu4t1XQ==,
-      }
-    peerDependencies:
-      supports-color: '*'
-    peerDependenciesMeta:
-      supports-color:
-        optional: true
-    dependencies:
-      ms: 2.1.3
-      supports-color: 5.5.0
-    dev: true
 
   /debug/4.3.4:
     resolution:
@@ -11087,7 +11043,7 @@ packages:
     peerDependencies:
       eslint-plugin-import: '>=1.4.0'
     dependencies:
-      eslint-plugin-import: 2.26.0_ltarx3mb3fncbeyjafrj7vwgky
+      eslint-plugin-import: 2.26.0_eslint@8.14.0
     dev: true
 
   /eslint-import-resolver-node/0.3.6:
@@ -11098,8 +11054,6 @@ packages:
     dependencies:
       debug: 3.2.7
       resolve: 1.22.1
-    transitivePeerDependencies:
-      - supports-color
     dev: true
 
   /eslint-import-resolver-typescript/2.0.0_myxbwluo6p3kuxjcyp342zygci:
@@ -11114,7 +11068,7 @@ packages:
     dependencies:
       debug: 4.3.4
       eslint: 8.14.0
-      eslint-plugin-import: 2.26.0_ltarx3mb3fncbeyjafrj7vwgky
+      eslint-plugin-import: 2.26.0_eslint@8.14.0
       is-glob: 4.0.3
       resolve: 1.22.1
       tiny-glob: 0.2.9
@@ -11133,64 +11087,40 @@ packages:
       find-yarn-workspace-root: 1.2.1
       pkg-up: 3.1.0
       tsconfig-paths: 3.14.1
-    transitivePeerDependencies:
-      - supports-color
     dev: true
 
-  /eslint-module-utils/2.7.4_ixivqp3p37uuswbgv6lwb7llmm:
+  /eslint-module-utils/2.7.4_eslint@8.14.0:
     resolution:
       {
         integrity: sha512-j4GT+rqzCoRKHwURX7pddtIPGySnX9Si/cgMI5ztrcqOPtk5dDEeZ34CQVPphnqkJytlc97Vuk05Um2mJ3gEQA==,
       }
     engines: { node: '>=4' }
     peerDependencies:
-      '@typescript-eslint/parser': '*'
       eslint: '*'
-      eslint-import-resolver-node: '*'
-      eslint-import-resolver-typescript: '*'
-      eslint-import-resolver-webpack: '*'
     peerDependenciesMeta:
-      '@typescript-eslint/parser':
-        optional: true
       eslint:
         optional: true
-      eslint-import-resolver-node:
-        optional: true
-      eslint-import-resolver-typescript:
-        optional: true
-      eslint-import-resolver-webpack:
-        optional: true
     dependencies:
-      '@typescript-eslint/parser': 5.10.2_sdq423wcawycjzugemfabbjutq
       debug: 3.2.7
       eslint: 8.14.0
-      eslint-import-resolver-node: 0.3.6
-      eslint-import-resolver-typescript: 2.0.0_myxbwluo6p3kuxjcyp342zygci
-    transitivePeerDependencies:
-      - supports-color
     dev: true
 
-  /eslint-plugin-import/2.26.0_ltarx3mb3fncbeyjafrj7vwgky:
+  /eslint-plugin-import/2.26.0_eslint@8.14.0:
     resolution:
       {
         integrity: sha512-hYfi3FXaM8WPLf4S1cikh/r4IxnO6zrhZbEGz2b660EJRbuxgpDS5gkCuYgGWg2xxh2rBuIr4Pvhve/7c31koA==,
       }
     engines: { node: '>=4' }
     peerDependencies:
-      '@typescript-eslint/parser': '*'
       eslint: ^2 || ^3 || ^4 || ^5 || ^6 || ^7.2.0 || ^8
-    peerDependenciesMeta:
-      '@typescript-eslint/parser':
-        optional: true
     dependencies:
-      '@typescript-eslint/parser': 5.10.2_sdq423wcawycjzugemfabbjutq
       array-includes: 3.1.5
       array.prototype.flat: 1.3.0
       debug: 2.6.9
       doctrine: 2.1.0
       eslint: 8.14.0
       eslint-import-resolver-node: 0.3.6
-      eslint-module-utils: 2.7.4_ixivqp3p37uuswbgv6lwb7llmm
+      eslint-module-utils: 2.7.4_eslint@8.14.0
       has: 1.0.3
       is-core-module: 2.10.0
       is-glob: 4.0.3
@@ -11198,10 +11128,6 @@ packages:
       object.values: 1.1.5
       resolve: 1.22.1
       tsconfig-paths: 3.14.1
-    transitivePeerDependencies:
-      - eslint-import-resolver-typescript
-      - eslint-import-resolver-webpack
-      - supports-color
     dev: true
 
   /eslint-plugin-no-cyrillic-string/1.0.5_eslint@8.14.0:
@@ -11630,8 +11556,6 @@ packages:
       regex-not: 1.0.2
       snapdragon: 0.8.2
       to-regex: 3.0.2
-    transitivePeerDependencies:
-      - supports-color
 
   /expand-tilde/2.0.2:
     resolution:
@@ -11694,8 +11618,6 @@ packages:
       type-is: 1.6.18
       utils-merge: 1.0.1
       vary: 1.1.2
-    transitivePeerDependencies:
-      - supports-color
     dev: false
 
   /ext-list/2.2.2:
@@ -11789,8 +11711,6 @@ packages:
       regex-not: 1.0.2
       snapdragon: 0.8.2
       to-regex: 3.0.2
-    transitivePeerDependencies:
-      - supports-color
 
   /extsprintf/1.3.0:
     resolution:
@@ -11832,8 +11752,6 @@ packages:
       is-glob: 4.0.3
       merge2: 1.4.1
       micromatch: 3.1.10
-    transitivePeerDependencies:
-      - supports-color
     dev: true
 
   /fast-glob/3.2.11:
@@ -12120,8 +12038,6 @@ packages:
       parseurl: 1.3.3
       statuses: 2.0.1
       unpipe: 1.0.0
-    transitivePeerDependencies:
-      - supports-color
     dev: false
 
   /find-cache-dir/2.1.0:
@@ -12200,8 +12116,6 @@ packages:
     dependencies:
       fs-extra: 4.0.3
       micromatch: 3.1.10
-    transitivePeerDependencies:
-      - supports-color
     dev: true
 
   /findup-sync/2.0.0:
@@ -12215,8 +12129,6 @@ packages:
       is-glob: 3.1.0
       micromatch: 3.1.10
       resolve-dir: 1.0.1
-    transitivePeerDependencies:
-      - supports-color
     dev: true
 
   /fined/1.2.0:
@@ -13050,8 +12962,6 @@ packages:
       ignore: 4.0.6
       pify: 4.0.1
       slash: 2.0.0
-    transitivePeerDependencies:
-      - supports-color
     dev: true
 
   /globrex/0.1.2:
@@ -13990,8 +13900,6 @@ packages:
       inky: 1.4.2
       meow: 3.7.0
       multiline: 1.0.2
-    transitivePeerDependencies:
-      - supports-color
     dev: true
 
   /inky/1.4.2:
@@ -15817,9 +15725,6 @@ packages:
       whatwg-url: 6.5.0
       ws: 5.2.3
       xml-name-validator: 3.0.0
-    transitivePeerDependencies:
-      - bufferutil
-      - utf-8-validate
     dev: false
 
   /jsdom/20.0.1:
@@ -16241,8 +16146,6 @@ packages:
       object.map: 1.0.1
       rechoir: 0.6.2
       resolve: 1.22.1
-    transitivePeerDependencies:
-      - supports-color
     dev: true
 
   /lilconfig/2.0.6:
@@ -17351,8 +17254,6 @@ packages:
       regex-not: 1.0.2
       snapdragon: 0.8.2
       to-regex: 3.0.2
-    transitivePeerDependencies:
-      - supports-color
 
   /micromatch/4.0.5:
     resolution:
@@ -17612,8 +17513,6 @@ packages:
       regex-not: 1.0.2
       snapdragon: 0.8.2
       to-regex: 3.0.2
-    transitivePeerDependencies:
-      - supports-color
 
   /native-request/1.1.0:
     resolution:
@@ -17740,8 +17639,6 @@ packages:
       mkdirp: 0.5.6
       pify: 4.0.1
       resolve: 1.22.1
-    transitivePeerDependencies:
-      - supports-color
     dev: true
 
   /node-releases/2.0.6:
@@ -17768,7 +17665,7 @@ packages:
     requiresBuild: true
     dependencies:
       chokidar: 3.5.3
-      debug: 3.2.7_supports-color@5.5.0
+      debug: 3.2.7
       ignore-by-default: 1.0.1
       minimatch: 3.1.2
       pstree.remy: 1.1.8
@@ -18946,8 +18843,6 @@ packages:
       node-plop: 0.19.0
       ora: 3.4.0
       v8flags: 2.1.1
-    transitivePeerDependencies:
-      - supports-color
     dev: true
 
   /pn/1.1.0:
@@ -21497,8 +21392,6 @@ packages:
       graceful-fs: 4.2.10
       micromatch: 3.1.10
       readable-stream: 2.3.7
-    transitivePeerDependencies:
-      - supports-color
 
   /readdirp/3.5.0:
     resolution:
@@ -22390,8 +22283,6 @@ packages:
       on-finished: 2.4.1
       range-parser: 1.2.1
       statuses: 2.0.1
-    transitivePeerDependencies:
-      - supports-color
     dev: false
 
   /sentence-case/2.1.1:
@@ -22415,8 +22306,6 @@ packages:
       escape-html: 1.0.3
       parseurl: 1.3.3
       send: 0.18.0
-    transitivePeerDependencies:
-      - supports-color
     dev: false
 
   /set-blocking/2.0.0:
@@ -22630,8 +22519,6 @@ packages:
       source-map: 0.5.7
       source-map-resolve: 0.5.3
       use: 3.1.1
-    transitivePeerDependencies:
-      - supports-color
 
   /sort-keys-length/1.0.1:
     resolution:
@@ -23369,8 +23256,6 @@ packages:
       mime: 1.6.0
       qs: 6.11.0
       readable-stream: 2.3.7
-    transitivePeerDependencies:
-      - supports-color
     dev: true
 
   /superagent/3.8.1:
@@ -23391,8 +23276,6 @@ packages:
       mime: 1.6.0
       qs: 6.11.0
       readable-stream: 2.3.7
-    transitivePeerDependencies:
-      - supports-color
     dev: false
 
   /supports-color/2.0.0:
@@ -25184,14 +25067,6 @@ packages:
       {
         integrity: sha512-jZArVERrMsKUatIdnLzqvcfydI85dvd/Fp1u/VOpfdDWQ4c9qWXe+VIeAbQ5FrDwciAkr+lzofXLz3Kuf26AOA==,
       }
-    peerDependencies:
-      bufferutil: ^4.0.1
-      utf-8-validate: ^5.0.2
-    peerDependenciesMeta:
-      bufferutil:
-        optional: true
-      utf-8-validate:
-        optional: true
     dependencies:
       async-limiter: 1.0.1
     dev: false
