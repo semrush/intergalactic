@@ -227,6 +227,8 @@ jobs:
       - name: NPM setup
         run: |
           echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}\nstrict-peer-dependencies=false" >> ".npmrc"
+      - name: NPM auth check
+        run: pnpm whoami
       - name: Delivery
         run: pnpm continuous-delivery
   publish-website:
