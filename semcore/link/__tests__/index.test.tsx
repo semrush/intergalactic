@@ -87,7 +87,7 @@ describe('Link', () => {
 
   test('Should support inline property', () => {
     const { rerender, getByTestId } = render(<Link data-testid="link">Link</Link>);
-    expect(getComputedStyle(getByTestId('link')).display).toBe('inline-block');
+    expect(getComputedStyle(getByTestId('link')).display).toBe('inline-flex');
     rerender(
       <Link data-testid="link" inline>
         Link
