@@ -110,6 +110,7 @@ Tagging the icon with synonymic names in both English and Russian helps your col
 If you add new icons, make sure to put them in the appropriate group, use the **UppercaseCamelCase** naming, and add tags. Provide those tags to the design system team when adding those icons to the design system.
 
 @page icon-old
+@page icon-a11y
 @page icon-api
 @page icon-code
 @page icon-changelog
