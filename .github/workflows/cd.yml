@@ -226,7 +226,8 @@ jobs:
           git_committer_email: semrush-ci-whale@users.noreply.github.com
       - name: NPM setup
         run: |
-          echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}\nstrict-peer-dependencies=false" >> ".npmrc"
+          echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" >> ".npmrc"
+          echo "strict-peer-dependencies=false" >> ".npmrc"
       - name: NPM auth check
         run: pnpm whoami
       - name: Delivery
