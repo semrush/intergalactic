@@ -23,6 +23,9 @@ The list below describes roles and attributes that component already has.
 - The best way to make SVGs accessible to Assistive Technologies like screen readers and speech recognition tools is to put it directly into your HTML using the `<svg>` tag.
 - Icon also might be interactive, just use role `button` or `link` for it (see the table below). Note that icon gets `role="button"` automatically, if you add prop `interactive` to it.
 - If you use icon as a clickable element, always add an appropriate `aria-label` (recommend your designers to prepare it).
+- Avoid using `<embed>`, `<object>`, or `<img>` elements as they are not as supported by browsers as inline SVG.
+
+Find live examples in the [A11y style guide](https://a11y-style-guide.com/style-guide/section-media.html#kssref-media-svgs).
 
 ### Roles and attributes
 
