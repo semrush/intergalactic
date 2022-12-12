@@ -12,5 +12,5 @@
 }
 .table th {
   background-color: var(--light-gray);
-  font-weight: var(--intergalactic-fontWeights-bold-700);
+  font-weight: bold;
 }
