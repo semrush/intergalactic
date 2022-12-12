@@ -2,14 +2,13 @@ import { Root, sstyled } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
 import React from 'react';
 
+type Tokens = { [tokenName: string]: string };
 export type ThemeProviderProps = {
-  tokens: { [tokenName: string]: string };
+  tokens: Tokens;
 };
 
-export const useTheme = (
-  tokens: ThemeProviderProps['tokens'],
-  ref: React.RefObject<HTMLElement>,
-) => {
+export const useContextTheme = (ref: React.RefObject<HTMLElement>) => {
+  const tokens = React.useContext(themeContext);
   const tokensKey = React.useMemo(
     () =>
       Object.entries(tokens)
@@ -27,10 +26,19 @@ export const useTheme = (
   }, [tokensKey]);
 };
 
-export const ThemeProvider: React.FC<ThemeProviderProps> = ({ tokens = {} }) => {
-  const SThemeProvider = Root;
-  const ref = React.useRef(null);
-  useTheme(tokens, ref);
+const themeContext = React.createContext<Tokens | null>(null);
 
-  return sstyled()(<SThemeProvider render={Box} ref={ref} __excludeProps={['tokens']} />) as any;
+export const ThemeProvider: React.FC<ThemeProviderProps> = ({ tokens: providedTokens = {} }) => {
+  const SThemeProvider = Root;
+  const contextTokens = React.useContext(themeContext);
+  const tokens = React.useMemo(
+    () => (contextTokens === null ? providedTokens : { ...contextTokens, ...providedTokens }),
+    [contextTokens, providedTokens],
+  );
+
+  return (
+    <themeContext.Provider value={tokens}>
+      {sstyled()(<SThemeProvider render={Box} style={tokens} __excludeProps={['tokens']} />)}
+    </themeContext.Provider>
+  ) as any;
 };
