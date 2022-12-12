@@ -324,6 +324,7 @@
 
 .category {
   columns: 6 160px;
+  line-height: 2;
 }
 
 .uxPatterns .category {
@@ -341,7 +342,6 @@
 .category .component .linkStyled {
   max-width: 160px;
   white-space: normal;
-  margin-bottom: 4px;
 }
 
 .cards {

@@ -2,19 +2,23 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.2.2] - 2022-11-30
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/card` [4.1.8 ~> 4.1.9], `@semcore/flex-box` [4.6.4 ~> 4.6.5], `@semcore/utils` [3.41.0 ~> 3.42.0]).
+
+## [2.2.0] - 2022-11-28
+
+### Changed
+
+- Component was fully rebuilt internally. Backward capability mostly preserved, legacy apis was marked as deprecated.
+
 ## [2.1.7] - 2022-11-14
 
 ### Changed
 
 - Version patch update due to children dependencies update (`@semcore/card` [4.1.6 ~> 4.1.7]).
-
-## [2.1.6] - 2022-11-08
-
-## [2.1.5] - 2022-10-28
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/utils` [3.40.0 ~> 3.40.0], `@semcore/card` [4.1.4 ~> 4.1.5]).
 
 ## [2.1.0] - 2022-10-10
 

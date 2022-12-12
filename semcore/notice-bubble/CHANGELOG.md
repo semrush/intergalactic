@@ -2,6 +2,36 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.3.2] - 2022-12-09
+
+### Changed
+
+- Changed prop `initialAnimation` to otional.
+
+## [4.3.1] - 2022-12-06
+
+### Fixed
+
+- Fixed `NoticeBubbleManager` types
+
+## [4.3.0] - 2022-12-05
+
+### Added
+
+- Added prop `initialAnimation` to run animation on the first rendering
+
+## [4.2.12] - 2022-11-30
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.41.0 ~> 3.42.0], `@semcore/icon` [3.3.1 ~> 3.3.2], `@semcore/portal` [2.4.4 ~> 2.4.5], `@semcore/flex-box` [4.6.4 ~> 4.6.5], `@semcore/animation` [1.7.2 ~> 1.7.3]).
+
+## [4.2.10] - 2022-11-24
+
+### Fixed
+
+- Replaced `NoticeBubbleManager` instance typings with `NoticeBubbleManager` typing.
+
 ## [4.2.9] - 2022-11-17
 
 ### Fixed

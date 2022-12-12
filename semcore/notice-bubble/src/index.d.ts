@@ -13,6 +13,10 @@ export interface INoticeBubbleInfoProps extends INoticeBubbleProps {
    * @default 5000
    */
   duration?: number;
+  /** Enables animation on first rendering
+   * @default false
+   */
+  initialAnimation?: boolean;
 }
 
 export interface INoticeBubbleWarningProps extends INoticeBubbleProps {
@@ -22,6 +26,10 @@ export interface INoticeBubbleWarningProps extends INoticeBubbleProps {
    * @default 0
    */
   duration?: number;
+  /** Enables animation on first rendering
+   * @default false
+   */
+  initialAnimation?: boolean;
 }
 
 export interface INoticeBubbleProps extends IBoxProps {
@@ -74,7 +82,6 @@ declare const NoticeBubbleContainer: (<T>(
   Info: typeof NoticeBubble;
   Warning: typeof NoticeBubbleWarning;
 };
-
 declare const NoticeBubbleManager: INoticeBubbleManager;
 
 export { NoticeBubbleContainer, NoticeBubble, NoticeBubbleWarning, NoticeBubbleManager };

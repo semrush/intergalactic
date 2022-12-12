@@ -20,7 +20,7 @@ This section describes all the variable parameters and basic styles that we use 
 
 @## Basic colors
 
-> See [Visual loudness scale](/patterns/visual-loudness-scale/) guide for more information about colors using and visual hierarchy.
+> See [Visual loudness scale](/core-principles/visual-loudness-scale/) guide for more information about colors using and visual hierarchy.
 
 |                                              | Example                                 | Variable        |
 | -------------------------------------------- | --------------------------------------- | --------------- |
@@ -69,8 +69,8 @@ In normal state controls with transparent background has opacity of 0 – 15%.
 
 |             | Styles and variables              |
 | ----------- | --------------------------------- |
-| **Invalid** | `border-color: var(--red-400);`   |
-| **Valid**   | `border-color: var(--green-400);` |
+| **Invalid** | `border-color: var(--red-500);`   |
+| **Valid**   | `border-color: var(--green-500);` |
 
 ### Focus
 

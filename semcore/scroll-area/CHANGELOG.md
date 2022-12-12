@@ -2,11 +2,17 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [4.1.3] - 2022-10-28
+## [4.1.6] - 2022-12-09
+
+### Fixed
+
+- Fixed calculation size when changing height of the container.
+
+## [4.1.5] - 2022-11-30
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/utils` [3.40.0 ~> 3.40.0], `@semcore/flex-box` [4.6.2 ~> 4.6.3]).
+- Version patch update due to children dependencies update (`@semcore/utils` [3.41.0 ~> 3.42.0], `@semcore/flex-box` [4.6.4 ~> 4.6.5]).
 
 ## [4.1.0] - 2022-10-10
 

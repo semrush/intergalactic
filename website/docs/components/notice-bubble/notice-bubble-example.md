@@ -94,6 +94,8 @@ class DemoManager extends React.Component {
           /* It is advisable to change the notice's visible to close it instead
           of removing it from JSX since in this case there will be no animation */
           visible={visible}
+          /* Enables animation on first rendering */
+          initialAnimation
           /* onClose will be triggered either by
           a timer or by a user clicking on the cross */
           onClose={() => this.setState({ visible: false })}

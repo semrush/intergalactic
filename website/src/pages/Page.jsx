@@ -133,7 +133,14 @@ const DynamicPage = ({ route }) => {
     }
     return <LoadingPage />;
   }
-  if (error) return <ErrorView title={`Oh no! ${error.message}`} />;
+  if (error) {
+    if (error.message.includes('dynamically imported module')) {
+      window.location.reload();
+      return <ErrorView title={`Reloading the page...`} />;
+    } else {
+      return <ErrorView title={`Oh no! ${error.message}`} />;
+    }
+  }
 
   return <PageView route={route} page={page} />;
 };

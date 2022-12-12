@@ -42,7 +42,7 @@ SValue {
     color: var(--gray-300);
   }
 
-  &:read-only ~ SOutline {
+  &:not(:disabled):read-only ~ SOutline {
     background: var(--gray-50);
   }
 
@@ -121,7 +121,7 @@ SInput[state='normal'] {
   }
 
   & SValue:focus ~ SOutline {
-    border-color: var(--blue-400);
+    border-color: var(--blue-500);
     box-shadow: var(--keyboard-focus);
   }
 }
@@ -131,7 +131,7 @@ SInput[state='valid'] {
   }
 
   & SValue:focus ~ SOutline {
-    border-color: var(--green-400);
+    border-color: var(--green-500);
     box-shadow: var(--keyboard-focus-valid);
   }
 }
@@ -141,7 +141,7 @@ SInput[state='invalid'] {
   }
 
   & SValue:focus ~ SOutline {
-    border-color: var(--red-400);
+    border-color: var(--red-500);
     box-shadow: var(--keyboard-focus-invalid);
   }
 }

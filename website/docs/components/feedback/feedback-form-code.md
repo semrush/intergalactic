@@ -12,6 +12,6 @@ The information on the GDPR should be obligatorily shown to the users from Europ
 
 @## Feedback form example
 
-See more details about forms in [Form](/components/form/).
+See more details about forms in [Form](/patterns/form/).
 
 @example monster-feedback

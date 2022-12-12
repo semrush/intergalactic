@@ -2,7 +2,7 @@ import React from 'react';
 import Select from '@semcore/ui/select';
 import Input from '@semcore/ui/input';
 
-function setUnderlineWord(searchValue, value) {
+function setBoldWord(searchValue, value) {
   const title = {
     __html: value.toLowerCase(),
   };
@@ -10,10 +10,10 @@ function setUnderlineWord(searchValue, value) {
     const re = new RegExp(searchValue.toLowerCase(), 'g');
     title.__html = title.__html.replace(
       re,
-      `<span style="text-decoration: underline; padding: 2px 0">${searchValue}</span>`,
+      `<span style="font-weight: bold; padding: 2px 0">${searchValue}</span>`,
     );
   }
-  return <h3 dangerouslySetInnerHTML={title} />;
+  return <span dangerouslySetInnerHTML={title} />;
 }
 
 class Demo extends React.PureComponent {
@@ -69,7 +69,7 @@ class Demo extends React.PureComponent {
     const { value, options } = this.state;
 
     return (
-      <Select interaction="focus" visible onChange={this.handleSelect} value={null}>
+      <Select interaction="focus" onChange={this.handleSelect} value={null}>
         <Select.Trigger tag={Input}>
           {() => (
             <Input.Value
@@ -85,7 +85,7 @@ class Demo extends React.PureComponent {
               const { value: optionValue, title } = option;
               return (
                 <Select.Option value={optionValue} key={idx}>
-                  {setUnderlineWord(value, title)}
+                  {setBoldWord(value, title)}
                 </Select.Option>
               );
             })}

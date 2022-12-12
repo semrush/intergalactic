@@ -1,7 +1,7 @@
 {
   "name": "@semcore/time-picker",
   "description": "Semrush TimePicker Component",
-  "version": "3.2.11",
+  "version": "3.2.19",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -10,7 +10,7 @@
   "license": "MIT",
   "scripts": {
     "build": "pnpm semcore-builder --source=js",
-    "test": "jest --no-cache"
+    "test": "jest"
   },
   "dependencies": {
     "@semcore/button": "^4",

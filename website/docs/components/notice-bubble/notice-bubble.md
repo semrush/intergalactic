@@ -8,7 +8,7 @@ tabName: Design
 
 **NoticeBubble (Alert)** is a notification on completed action, beginning or ending of a process.
 
-Let's see the differencies with [Notice](/components/notice/) and [NoticeGlobal](/components/notice-global/).
+Let's see the differences between NoticeBubble, [Notice](/components/notice/) and [NoticeGlobal](/components/notice-global/).
 
 | Criteria                                                                                             | Notice | NoticeBubble | NoticeGlobal |
 | ---------------------------------------------------------------------------------------------------- | ------ | ------------ | ------------ |
@@ -28,14 +28,14 @@ Let's see the differencies with [Notice](/components/notice/) and [NoticeGlobal]
 - images (holiday alerts are the exception);
 - more than two buttons.
 
-@## Possible cases
+@## When to use
 
 - Notification of the beginning or completion of a process that is hidden from the user.
 - Changes to content in other parts of the report that are not currently being viewed. _For example, starting a campaign collection, completing a campaign collection, or saving an event in drafts (this is a list that is invisible to the user. This means that a part of the content was changed, but not in front of the user's eyes when it remains unchanged on the open event card), etc._
 - Notification about an action which causes changes to the content on the page. _For example, deleting an item using `Undo` button._
 - Notification about moving an item and removing it from its current position to other reports, lists, and tables (also applies to content changes).
 
-@## Prohibited cases
+@## When to avoid
 
 - Displaying a process with spinner or progress bar. The exception is the no-network condition. If you need to display the process, use the [progress bar](/components/progress-bar/).
 - If there are any visible instant interface changes. _For example, adding a tag to an item — the tag appears, adding an item to favorites — changing the icon color, adding an item to a table/list._

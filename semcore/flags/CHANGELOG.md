@@ -2,6 +2,31 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.2.4] - 2022-12-05
+
+### Fixed
+
+- Fixed exporting `iso2Name`, `iso3iso2` and `nameWithoutIso` because of linter warnings.
+
+## [3.2.3] - 2022-12-02
+
+### Added
+
+- Added missed object `iso3iso2` in `index.d.ts` for exporting.
+
+## [3.2.2] - 2022-11-30
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/flex-box` [4.6.4 ~> 4.6.5], `@semcore/utils` [3.41.0 ~> 3.42.0]).
+
+## [3.2.0] - 2022-11-23
+
+### Changed
+
+- Fixed few countries flag displaying.
+- Removed North Ireland flag as far as image of North Ireland flag was always missing in repository and random image was displayed instead.
+
 ## [3.1.3] - 2022-10-28
 
 ### Changed

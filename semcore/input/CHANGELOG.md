@@ -2,6 +2,30 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.4.2] - 2022-12-06
+
+### Added
+
+- Added type `IInputCtx` for export.
+
+## [3.4.1] - 2022-11-30
+
+### Fixed
+
+- Fix style for disabled state.
+
+## [3.4.0] - 2022-11-30
+
+### Changed
+
+- Updated border-color in focus state from `--blue-400` to `--blue-500`, `--red-400` to `--red-500`, `--green-400` to `--green-500`.
+
+## [3.3.1] - 2022-11-30
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.40.0 ~> 3.41.0], `@semcore/flex-box` [4.6.3 ~> 4.6.4]).
+
 ## [3.3.0] - 2022-11-17
 
 ### Added

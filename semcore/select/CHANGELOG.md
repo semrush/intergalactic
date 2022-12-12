@@ -2,11 +2,23 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [3.2.12] - 2022-11-17
+## [3.2.20] - 2022-12-09
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/input` [3.2.3 ~> 3.3.0]).
+- Version patch update due to children dependencies update (`@semcore/dropdown-menu` [3.4.2 ~> 3.4.3]).
+
+## [3.2.18] - 2022-12-06
+
+### Fixed
+
+- Fixed screen readers support for `Select.List`
+
+## [3.2.17] - 2022-12-01
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/dropdown-menu` [3.4.1 ~> 3.4.2]).
 
 ## [3.2.1] - 2022-10-17
 

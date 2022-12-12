@@ -2,6 +2,18 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [6.2.0] - 2022-11-30
+
+### Changed
+
+- Updated border-color in focus state from `--blue-400` to `--blue-500`, `--red-400` to `--red-500`.
+
+## [6.1.5] - 2022-11-30
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.40.0 ~> 3.41.0]).
+
 ## [6.1.4] - 2022-11-03
 
 ### Fixed

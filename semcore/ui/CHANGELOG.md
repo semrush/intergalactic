@@ -1,12 +1,207 @@
+## [13.2.3] - 2022-12-09
+
+### @semcore/animation
+
+- **Changed** Changed prop `initialAnimation` to otional.
+
+### @semcore/feature-popover
+
+- **Fixed** Opening animation is working again.
+
+### @semcore/notice-bubble
+
+- **Changed** Changed prop `initialAnimation` to otional.
+
+### @semcore/scroll-area
+
+- **Fixed** Fixed calculation size when changing height of the container.
+
+## [13.2.2] - 2022-12-07
+
+### @semcore/animation
+
+- **Added** Added prop `initialAnimation` to run animation on the first rendering
+
+### @semcore/flags
+
+- **Fixed** Fixed exporting `iso2Name`, `iso3iso2` and `nameWithoutIso` because of linter warnings.
+
+### @semcore/input
+
+- **Added** Added type `IInputCtx` for export.
+
+### @semcore/input-tags
+
+- **Fixed** Fixed `Value` type
+
+### @semcore/notice-bubble
+
+- **Fixed** Fixed `NoticeBubbleManager` types
+- **Added** Added prop `initialAnimation` to run animation on the first rendering
+
+### @semcore/select
+
+- **Fixed** Fixed screen readers support for `Select.List`
+
+### @semcore/wizard
+
+- **Fixed** Fixed layout so that the white background in the rounded borders of the modal would not be visible.
+
+## [13.2.1] - 2022-12-02
+
+### @semcore/dropdown-menu
+
+- **Changed** Changed size of shadow in `DropdownMenu.List` from `9px` to `16px`.
+
+### @semcore/flags
+
+- **Added** Added missed object `iso3iso2` in `index.d.ts` for exporting.
+
+### @semcore/input-tags
+
+- **Fixed** Fixed exported types of components.
+
+## [13.2.0] - 2022-11-30
+
+### @semcore/base-trigger
+
+- **Added** Added support text ellipsis in `LinkTrigger.Text`.
+
+### @semcore/checkbox
+
+- **Changed** Updated border-color in focus state from `--blue-400` to `--blue-500`, `--red-400` to `--red-500`.
+
+### @semcore/d3-chart
+
+- **Fixed** Allowed to pass any svg attributes.
+- **Fixed** Fixed `Bar` click handler typings.
+- **Fixed** Fixed support handling of bars event handling with `paddingOuter`.
+- **Added** `Bar` component now supports `onClick` handler with bar data in callback.
+
+### @semcore/date-picker
+
+- **Fixed** Fixed InputTrigger subcomponent types.
+
+### @semcore/dot
+
+- **Added** Added css property `isolation` to container.
+
+### @semcore/drag-and-drop
+
+- **Changed** Component was fully rebuilt internally. Backward capability mostly preserved, legacy apis was marked as deprecated.
+
+### @semcore/dropdown-menu
+
+- **Changed** Due to the effect of cutting off the last line, it was decided to add a shadow to the container (`DropdownMenu.List`) when scrolling.
+- **Changed** Changed `margin` to `padding` to make the scrollbar look better.
+- **Changed** Now highlighted tabs are also browser focused.
+
+### @semcore/flags
+
+- **Changed** Fixed few countries flag displaying.
+- **Changed** Removed North Ireland flag as far as image of North Ireland flag was always missing in repository and random image was displayed instead.
+
+### @semcore/flex-box
+
+- **Fixed** Fixed showing types in autocomplete IDE.
+
+### @semcore/format-text
+
+- **Fixed** Fixed showing types in autocomplete IDE.
+
+### @semcore/icon
+
+- **Added** Added `Rephrase`, `SimplifyText`, `ExpandText` icons.
+
+### @semcore/inline-input
+
+- **Fixed** Disabled moving focus in tooltips.
+- **Changed** Updated border-color in focus state from `--blue-400` to `--blue-500`, `--red-400` to `--red-500`, `--green-400` to `--green-500`.
+
+### @semcore/input
+
+- **Fixed** Fix style for disabled state.
+- **Changed** Updated border-color in focus state from `--blue-400` to `--blue-500`, `--red-400` to `--red-500`, `--green-400` to `--green-500`.
+- **Added** Added `aria-invalid` for input in invalid state.
+
+### @semcore/input-mask
+
+- **Fixed** Fixed showing types in autocomplete IDE.
+
+### @semcore/input-tags
+
+- **Fixed** Fixed showing types in autocomplete IDE.
+
+### @semcore/notice-bubble
+
+- **Fixed** Replaced `NoticeBubbleManager` instance typings with `NoticeBubbleManager` typing.
+- **Fixed** Export of `NoticeBubbleManager` was missing in typings.
+
+### @semcore/outside-click
+
+- **Fixed** Fixed showing types in autocomplete IDE.
+
+### @semcore/pagination
+
+- **Fixed** Fixed attributes and line-height for last page
+
+### @semcore/pills
+
+- **Added** Added css property `isolation` to container.
+
+### @semcore/portal
+
+- **Fixed** Fixed showing types in autocomplete IDE.
+
+### @semcore/product-head
+
+- **Fixed** Fixed showing types in autocomplete IDE.
+- **Changed** Changed margin-bottom from 16px to 24px.
+
+### @semcore/radio
+
+- **Changed** Updated border-color in focus state from `--blue-400` to `--blue-500`, `--red-400` to `--red-500`.
+
+### @semcore/skeleton
+
+- **Changed** Removed `width` and `height` properties from `VennChartSkeleton` and `PieChartSkeleton`.
+
+### @semcore/sticky
+
+- **Fixed** Fixed showing types in autocomplete IDE.
+
+### @semcore/tab-line
+
+- **Changed** Changed `font-weight` of tab's text and `height` of underline.
+
+### @semcore/tab-panel
+
+- **Changed** Tabs focus doesn't trigger tab select.
+- **Changed** Pressing "Enter" and "Space" keys focuses current tab.
+- **Changed** Changed `font-weight` of tab's text.
+
+### @semcore/tag
+
+- **Added** Added hover styles for close icon.
+
+### @semcore/textarea
+
+- **Changed** Updated border-color in focus state from `--blue-400` to `--blue-500`, `--red-400` to `--red-500`, `--green-400` to `--green-500`.
+
+### @semcore/tooltip
+
+- **Changed** Updated border-color for `warning` theme from `--red-400` to `--red-500`.
+
+### @semcore/utils
+
+- **Changed** Changed `keyboard-focus` opacity
+- **Added** Added ability to merge `styles` field for `assignProps` function.
+
 ## [13.1.1] - 2022-11-09
 
 ### @semcore/base-trigger
 
 - **Fixed** Fixed `FilterTrigger` accessability.
-
-### @semcore/ellipsis
-
-- **Added** Component was added to export of `@semcore/ui`.
 
 ### @semcore/checkbox
 
@@ -20,6 +215,10 @@
 
 - **Fixed** Fixed input trigger visual divergence from initial design.
 - **Fixed** Removed lock on fixed version of `@semcore/input`.
+
+### @semcore/ellipsis
+
+- **Added** Component was added to export of `@semcore/ui`.
 
 ### @semcore/icon
 

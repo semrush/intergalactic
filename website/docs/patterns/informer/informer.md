@@ -22,7 +22,7 @@ The informer consists of:
 | ------------------------------------ | --------- | -------------------------------------------------------------------- |
 | 36px (`--fs-700`), 32px (`--fs-600`) | L         | Use only with the largest titles and controls.                       |
 |                                      |           | ![info icon with bug hwdings](static/big-headings.png)               |
-| Smaller tnah 24px (`--fs-500`)       | M         | Use with text sizes smaller than 24px.                               |
+| Smaller than 24px (`--fs-500`)       | M         | Use with text sizes smaller than 24px.                               |
 |                                      |           | ![info icon with headings](static/other-headings.png)                |
 |                                      |           | ![info icon with all text sizes](static/text.png)                    |
 |                                      |           | ![info icon with dropdown mwnu items](static/dropdown-item-icon.png) |
@@ -43,7 +43,7 @@ The informer consists of:
 | M         | `16px * 16px`                                          |
 |           | ![hover zone for m icon size](static/hover-zone-m.png) |
 
-@## The tooltip
+@## Tooltip
 
 See detailed infromation in the [Tooltip guide](/components/tooltip/).
 

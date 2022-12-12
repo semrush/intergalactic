@@ -2,11 +2,23 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [1.7.1] - 2022-10-28
+## [1.8.1] - 2022-12-09
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/utils` [3.40.0 ~> 3.40.0]).
+- Changed prop `initialAnimation` to otional.
+
+## [1.8.0] - 2022-12-05
+
+### Added
+
+- Added prop `initialAnimation` to run animation on the first rendering
+
+## [1.7.3] - 2022-11-30
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.41.0 ~> 3.42.0], `@semcore/flex-box` [4.6.4 ~> 4.6.5]).
 
 ## [1.7.0] - 2022-10-21
 

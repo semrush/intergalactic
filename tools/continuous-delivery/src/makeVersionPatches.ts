@@ -38,9 +38,19 @@ export const makeVersionPatches = (packages: Package[]) => {
 
     if (versionPatchesMap.has(packageFile.name)) continue;
 
-    const lastChangelog = packageFile.changelogs.find(
+    let lastChangelog = packageFile.changelogs.find(
       (changelog) => !packageFile.isPrivate && dayjs(changelog.date).isValid(),
     );
+
+    if (packageFile.name === '@semcore/ui') {
+      lastChangelog = {
+        component: packageFile.name,
+        date: new Date().toString(),
+        version: packageFile.currentVersion,
+        changes: [],
+      };
+    }
+
     if (!lastChangelog) continue;
 
     if (packageFile.lastPublishedVersion === null) {
@@ -71,6 +81,7 @@ export const makeVersionPatches = (packages: Package[]) => {
     for (const packageFile of packages) {
       if (versionPatchesMap.has(packageFile.name)) continue;
       if (!packageFile.lastPublishedVersion) continue;
+      if (packageFile.name === '@semcore/ui') continue;
 
       let updateType: semver.ReleaseType | null = null;
       let updateTypeFallback: 'patch' | 'prerelease' = 'patch';

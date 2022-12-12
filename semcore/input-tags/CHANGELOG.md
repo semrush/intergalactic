@@ -2,11 +2,35 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [3.2.5] - 2022-11-17
+## [3.2.11] - 2022-12-09
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/input` [3.2.3 ~> 3.3.0]).
+- Version patch update due to children dependencies update (`@semcore/scroll-area` [4.1.5 ~> 4.1.6]).
+
+## [3.2.9] - 2022-12-06
+
+### Fixed
+
+- Fixed `Value` type
+
+## [3.2.8] - 2022-12-02
+
+### Fixed
+
+- Fixed exported types of components.
+
+## [3.2.7] - 2022-11-30
+
+### Fixed
+
+- Fixed showing types in autocomplete IDE.
+
+## [3.2.6] - 2022-11-30
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.40.0 ~> 3.41.0], `@semcore/input` [3.3.0 ~> 3.3.1]).
 
 ## [3.2.0] - 2022-10-10
 

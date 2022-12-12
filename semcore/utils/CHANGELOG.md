@@ -2,6 +2,18 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.42.0] - 2022-11-30
+
+### Changed
+
+- Changed `keyboard-focus` opacity
+
+## [3.41.0] - 2022-11-30
+
+### Added
+
+- Added ability to merge `styles` field for `assignProps` function.
+
 ## [3.40.0] - 2022-10-26
 
 ### Added

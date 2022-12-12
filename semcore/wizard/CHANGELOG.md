@@ -2,19 +2,23 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [1.1.9] - 2022-11-14
+## [1.1.14] - 2022-12-09
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/icon` [3.2.0 ~> 3.3.0], `@semcore/modal` [3.1.8 ~> 3.1.9]).
+- Version patch update due to children dependencies update (`@semcore/modal` [3.1.12 ~> 3.1.13]).
 
-## [1.1.8] - 2022-11-08
+## [1.1.12] - 2022-12-01
 
-## [1.1.7] - 2022-11-03
+### Fixed
+
+- Fixed layout so that the white background in the rounded borders of the modal would not be visible.
+
+## [1.1.11] - 2022-11-30
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/modal` [3.1.6 ~> 3.1.7]).
+- Version patch update due to children dependencies update (`@semcore/utils` [3.41.0 ~> 3.42.0], `@semcore/flex-box` [4.6.4 ~> 4.6.5], `@semcore/icon` [3.3.1 ~> 3.3.2], `@semcore/modal` [3.1.10 ~> 3.1.11]).
 
 ## [1.1.0] - 2022-10-10
 

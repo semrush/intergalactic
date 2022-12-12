@@ -2,6 +2,37 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.4.3] - 2022-12-09
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/scroll-area` [4.1.5 ~> 4.1.6]).
+
+## [3.4.2] - 2022-12-01
+
+### Changed
+
+- Changed size of shadow in `DropdownMenu.List` from `9px` to `16px`.
+
+## [3.4.1] - 2022-11-30
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/dropdown` [3.2.5 ~> 3.2.6], `@semcore/flex-box` [4.6.4 ~> 4.6.5], `@semcore/utils` [3.41.0 ~> 3.42.0]).
+
+## [3.4.0] - 2022-11-30
+
+### Changed
+
+- Due to the effect of cutting off the last line, it was decided to add a shadow to the container (`DropdownMenu.List`) when scrolling.
+- Changed `margin` to `padding` to make the scrollbar look better.
+
+## [3.3.4] - 2022-11-28
+
+### Changed
+
+- Now highlighted tabs are also browser focused.
+
 ## [3.3.3] - 2022-11-03
 
 ### Changed

@@ -44,6 +44,7 @@ The component has two sizes. In cases where a dot is above the component, it is 
 |                         | ![dot-in-list](static/mc-notifications-yes.png) | `top: -1px; right: -1px; border: 1px solid --white;` | It's used to mark images/controls inside the list.                              |
 
 @## Counter
+
 There may be a counter with the number of notifications inside the dot. See [Counter](/components/counter/) for more information about this case.
 
 > If the dot contains a counter, it grows in size, respectively.
