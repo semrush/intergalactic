@@ -219,10 +219,12 @@
 
 .formatText ol li {
   padding-left: 0;
+  margin-bottom: 8px;
 }
 
 .formatText ul li {
   padding-left: 0;
+  margin-bottom: 8px;
 }
 
 .formatText li > ol {
