@@ -51,6 +51,14 @@ export const runPublisher = async (versionPatches: VersionPatch[]) => {
       encoding: 'utf-8',
       stdio: ['inherit', 'inherit', 'inherit'],
     });
+    const status = await git.status();
+    if (status.files.length) {
+      await git.add('.');
+      if (!process.argv.includes('--dry-run')) {
+        await git.commit(['[ui] package version bump'], []);
+        await git.tag(['-f', `@semcore/ui@${semcoreUiPatch.to}`]);
+      }
+    }
     execSync(`pnpm --filter @semcore/ui publish ${pnpmOptions}`, {
       encoding: 'utf-8',
       stdio: ['inherit', 'inherit', 'inherit'],
