@@ -1,10 +1,8 @@
-@import '@semcore/utils/style/var.css';
-
 SButtonAddon {
   width: 12px;
   height: 12px;
 }
 
 SButtonTriggerSpin {
-  fill: var(--gray-500);
+  fill: var(--intergalactic-icon-primary-neutral, #6c6e79);
 }

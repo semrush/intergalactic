@@ -46,10 +46,10 @@ SCell[use='secondary'] {
 }
 
 SCellHead {
-  font-size: var(--fs-100);
+  font-size: var(--intergalactic-fs-100, 12px);
   font-weight: normal;
   line-height: 18px;
-  color: var(--gray-800);
+  color: var(--intergalactic-text-primary, #191b23);
   cursor: default;
   box-sizing: border-box;
   /* for fixed header */
@@ -58,7 +58,7 @@ SCellHead {
 
   &:focus {
     outline: none;
-    box-shadow: var(--keyboard-focus);
+    box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.3));
   }
 }
 
@@ -74,7 +74,7 @@ SCellHead[use='primary'] {
 }
 
 SCellHead[use='secondary'] {
-  background-color: var(--white);
+  background-color: var(--intergalactic-bg-primary-neutral, #ffffff);
   border-width: 1px 0;
   border-color: var(--gray-300);
 }
@@ -92,20 +92,20 @@ SCellHead[use='primary'][active] {
 
 SCellHeadIconAsc,
 SCellHeadIconDesc {
-  margin-left: 4px;
+  margin-left: var(--intergalactic-spacing-1x, 4px);
   align-self: center;
-  fill: var(--gray-300);
+  fill: var(--intergalactic-icon-secondary-neutral, #a9abb6);
   flex-shrink: 0;
 }
 
 SCellHeadIconAsc[active],
 SCellHeadIconDesc[active] {
-  fill: var(--gray-400);
+  fill: var(--intergalactic-icon-secondary-neutral-hover-active, #8a8e9b);
 }
 
 SRow {
   transition: background-color 0.1s ease;
-  border-bottom: 0.5px solid var(--gray-100);
+  border-bottom: 0.5px solid var(--intergalactic-border-secondary, #e0e1e9);
 
   &:last-child {
     & SCellRow {
@@ -116,7 +116,7 @@ SRow {
 
 SRow[theme='default'],
 SCellRow[theme='default'] {
-  background-color: var(--white);
+  background-color: var(--intergalactic-bg-primary-neutral, #ffffff);
 }
 
 SRow[theme='default']:hover,
@@ -180,9 +180,9 @@ SCellRow[interactive] {
 }
 
 SCellRow {
-  font-size: var(--fs-200);
-  line-height: var(--lh-200);
-  color: var(--gray-800);
+  font-size: var(--intergalactic-fs-200, 14px);
+  line-height: var(--intergalactic-lh-200, 142%);
+  color: var(--intergalactic-text-primary, #191b23);
 }
 
 SStickyHead {

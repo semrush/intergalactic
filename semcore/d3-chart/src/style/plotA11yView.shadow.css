@@ -1,14 +1,14 @@
-@import '@semcore/utils/style/var.css';
 @import './var.css';
 
 SPlotA11yView {
   user-select: none;
   pointer-events: none;
   opacity: 0;
-  background-color: white;
-  color: black;
-  border: 3px solid black;
-  font-size: 10px;
+  background-color: var(--intergalactic-bg-primary-neutral, #ffffff);
+  color: var(--intergalactic-text-primary, #191b23);
+  border: 3px solid var(--intergalactic-border-primary, #c4c7cf);
+  font-size: var(--intergalactic-fs-50, 10px);
+  /* disable-tokens-validator */
   padding: 2px;
   width: 200px;
   height: 200px;
@@ -21,19 +21,19 @@ SPlotA11yView:focus {
   user-select: all;
   pointer-events: all;
   opacity: 1;
-  z-index: 100;
+  z-index: var(--intergalactic-z-index-overlay, 500);
   position: relative;
   display: block;
 }
 SPlotA11yView a {
   cursor: pointer;
   text-decoration: underline;
-  margin-bottom: 8px;
+  margin-bottom: var(--intergalactic-spacing-2x, 8px);
   display: block;
 }
 
 SPlotA11yView table,
 SPlotA11yView td,
 SPlotA11yView th {
-  border: 1px solid black;
+  border: 1px solid var(--intergalactic-border-primary, #c4c7cf);
 }

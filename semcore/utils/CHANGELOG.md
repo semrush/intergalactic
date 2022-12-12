@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.43.0] - 2022-12-12
+
+### Added
+
+- Added `ThemeProvider`.
+
 ## [3.42.0] - 2022-11-30
 
 ### Changed

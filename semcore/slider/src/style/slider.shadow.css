@@ -1,52 +1,50 @@
-@import '@semcore/utils/style/var.css';
-
 SSlider {
   position: relative;
   width: 140px;
   box-sizing: border-box;
   cursor: pointer;
   outline: none;
-  padding-top: 20px;
+  padding-top: var(--intergalactic-spacing-5x, 20px);
 
   &:before {
     content: '';
     position: absolute;
-    top: 8px;
+    top: var(--intergalactic-spacing-2x, 8px);
     left: 0;
     height: 4px;
     width: 100%;
-    border-radius: var(--rounded-m);
-    background-color: var(--gray-100);
+    border-radius: var(--intergalactic-rounded-medium, 6px);
+    background-color: var(--intergalactic-border-secondary, #e0e1e9);
   }
   &:hover:before {
-    background-color: var(--gray-200);
+    background-color: var(--intergalactic-border-primary, #c4c7cf);
   }
 
   &:active SKnob {
-    box-shadow: 0 0 0 5px color-mod(var(--blue-400) a(30%));
+    box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.3));
   }
 }
 
 SSlider[keyboardFocused] SKnob {
-  box-shadow: 0 0 0 5px color-mod(var(--blue-400) a(30%));
+  box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.3));
 }
 
 SSlider[disabled] {
-  opacity: var(--disabled-opacity);
+  opacity: var(--intergalactic-disabled-opacity, 0.3);
   cursor: default;
   pointer-events: none;
 }
 
 SBar {
   position: absolute;
-  top: 8px;
+  top: var(--intergalactic-spacing-2x, 8px);
   left: 0;
   overflow: hidden;
   height: 4px;
-  border-radius: var(--rounded-m);
+  border-radius: var(--intergalactic-rounded-medium, 6px);
   box-sizing: border-box;
   background-size: 12px;
-  background-color: var(--blue-400);
+  background-color: var(--intergalactic-control-primary-info, #008ff8);
   cursor: pointer;
 }
 
@@ -57,13 +55,13 @@ SKnob {
   width: 20px;
   border-radius: 50%;
   box-sizing: border-box;
-  background-color: #fff;
-  border: 5px solid var(--blue-400);
+  background-color: var(--intergalactic-bg-primary-neutral, #ffffff);
+  border: 5px solid var(--intergalactic-control-primary-info, #008ff8);
   cursor: pointer;
   transform: translate(-50%, -50%);
 
   &:hover {
-    border-color: var(--blue-500);
+    border-color: var(--intergalactic-control-primary-info-hover, #006dca);
   }
 }
 

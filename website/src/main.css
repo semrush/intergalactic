@@ -1,7 +1,6 @@
 @import 'normalize.css/normalize.css';
 @import 'prismjs/themes/prism.css';
 @import './fonts.css';
-@import '@semcore/utils/style/var.css';
 
 html {
   font-family: Inter, -apple-system, sans-serif, Arial;

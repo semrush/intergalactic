@@ -132,6 +132,7 @@ module.exports = (opts) => {
         Declaration(Declaration) {
           if (!Declaration[processed]) {
             if (Declaration.value.includes('var(')) {
+              if (Declaration.value.includes('var(--intergalactic-')) return;
               const rootNode = ValueParser(Declaration.value);
               walkVar(rootNode.nodes, hash, tokens);
               Declaration.value = rootNode.toString();

@@ -1,8 +1,8 @@
 @import './var.css';
 
 SCircle {
-  fill: var(--green-02);
-  stroke: #fff;
+  fill: var(--intergalactic-chart-palette-order-green, #59ddaa);
+  stroke: var(--intergalactic-chart-grid-border, #ffffff);
   stroke-width: 2px;
   fill-opacity: 0.5;
   transition-property: cx, cy;
@@ -19,7 +19,7 @@ SCircle[color] {
 }
 
 SIntersection {
-  stroke: #fff;
+  stroke: var(--intergalactic-chart-grid-border, #ffffff);
   stroke-width: 2px;
   fill-opacity: 0;
 

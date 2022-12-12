@@ -1,0 +1,366 @@
+{
+  "gray": {
+    "50": {
+      "value": "#f4f5f9",
+      "type": "color",
+      "description": "Only suitable for backgrounds. Can be completely invisible to users with low-contrast monitor or poor vision."
+    },
+    "100": {
+      "value": "#e0e1e9",
+      "type": "color",
+      "description": "Use only for light strokes and active backgrounds. Suitable for minimally visible elements."
+    },
+    "200": {
+      "value": "#c4c7cf",
+      "type": "color"
+    },
+    "300": {
+      "value": "#a9abb6",
+      "type": "color"
+    },
+    "400": {
+      "value": "#8a8e9b",
+      "type": "color"
+    },
+    "500": {
+      "value": "#6c6e79",
+      "type": "color"
+    },
+    "600": {
+      "value": "#484a54",
+      "type": "color"
+    },
+    "700": {
+      "value": "#2b2e38",
+      "type": "color"
+    },
+    "800": {
+      "value": "#191b23",
+      "type": "color"
+    },
+    "white": {
+      "value": "#ffffff",
+      "type": "color"
+    }
+  },
+  "blue": {
+    "50": {
+      "value": "#e9f7ff",
+      "type": "color",
+      "description": "Only suitable for backgrounds. Can be completely invisible to users with low-contrast monitor or poor vision."
+    },
+    "100": {
+      "value": "#c4e5fe",
+      "type": "color",
+      "description": "Use only for light strokes and active backgrounds. Suitable for minimally visible elements."
+    },
+    "200": {
+      "value": "#8ecdff",
+      "type": "color"
+    },
+    "300": {
+      "value": "#2bb3ff",
+      "type": "color"
+    },
+    "400": {
+      "value": "#008ff8",
+      "type": "color"
+    },
+    "500": {
+      "value": "#006dca",
+      "type": "color"
+    },
+    "600": {
+      "value": "#044792",
+      "type": "color"
+    },
+    "700": {
+      "value": "#002b5f",
+      "type": "color"
+    },
+    "800": {
+      "value": "#001b3d",
+      "type": "color"
+    }
+  },
+  "green": {
+    "50": {
+      "value": "#dbfee8",
+      "type": "color",
+      "description": "Only suitable for backgrounds. Can be completely invisible to users with low-contrast monitor or poor vision."
+    },
+    "100": {
+      "value": "#9ef2c9",
+      "type": "color",
+      "description": "Use only for light strokes and active backgrounds. Suitable for minimally visible elements."
+    },
+    "200": {
+      "value": "#59ddaa",
+      "type": "color"
+    },
+    "300": {
+      "value": "#00c192",
+      "type": "color"
+    },
+    "400": {
+      "value": "#009f81",
+      "type": "color"
+    },
+    "500": {
+      "value": "#007c65",
+      "type": "color"
+    },
+    "600": {
+      "value": "#055345",
+      "type": "color"
+    },
+    "700": {
+      "value": "#00342d",
+      "type": "color"
+    },
+    "800": {
+      "value": "#00201e",
+      "type": "color"
+    }
+  },
+  "red": {
+    "50": {
+      "value": "#fff0f7",
+      "type": "color",
+      "description": "Only suitable for backgrounds. Can be completely invisible to users with low-contrast monitor or poor vision."
+    },
+    "100": {
+      "value": "#ffd7df",
+      "type": "color",
+      "description": "Use only for light strokes and active backgrounds. Suitable for minimally visible elements."
+    },
+    "200": {
+      "value": "#ffaeb5",
+      "type": "color"
+    },
+    "300": {
+      "value": "#ff8786",
+      "type": "color"
+    },
+    "400": {
+      "value": "#ff4953",
+      "type": "color"
+    },
+    "500": {
+      "value": "#d1002f",
+      "type": "color"
+    },
+    "600": {
+      "value": "#8e0016",
+      "type": "color"
+    },
+    "700": {
+      "value": "#58000a",
+      "type": "color"
+    },
+    "800": {
+      "value": "#410101",
+      "type": "color"
+    }
+  },
+  "orange": {
+    "50": {
+      "value": "#fff3d9",
+      "type": "color",
+      "description": "Only suitable for backgrounds. Can be completely invisible to users with low-contrast monitor or poor vision."
+    },
+    "100": {
+      "value": "#ffdca2",
+      "type": "color",
+      "description": "Use only for light strokes and active backgrounds. Suitable for minimally visible elements."
+    },
+    "200": {
+      "value": "#ffb26e",
+      "type": "color"
+    },
+    "300": {
+      "value": "#ff8c43",
+      "type": "color"
+    },
+    "400": {
+      "value": "#ff642d",
+      "type": "color"
+    },
+    "500": {
+      "value": "#c33909",
+      "type": "color"
+    },
+    "600": {
+      "value": "#8b1500",
+      "type": "color"
+    },
+    "700": {
+      "value": "#551200",
+      "type": "color"
+    },
+    "800": {
+      "value": "#351000",
+      "type": "color"
+    }
+  },
+  "yellow": {
+    "50": {
+      "value": "#fdf7c8",
+      "type": "color",
+      "description": "Only suitable for backgrounds. Can be completely invisible to users with low-contrast monitor or poor vision."
+    },
+    "100": {
+      "value": "#fce081",
+      "type": "color",
+      "description": "Use only for light strokes and active backgrounds. Suitable for minimally visible elements."
+    },
+    "200": {
+      "value": "#fdc23c",
+      "type": "color"
+    },
+    "300": {
+      "value": "#ef9800",
+      "type": "color"
+    },
+    "400": {
+      "value": "#d87900",
+      "type": "color"
+    },
+    "500": {
+      "value": "#a75800",
+      "type": "color"
+    },
+    "600": {
+      "value": "#743a00",
+      "type": "color"
+    },
+    "700": {
+      "value": "#462500",
+      "type": "color"
+    },
+    "800": {
+      "value": "#2c1600",
+      "type": "color"
+    }
+  },
+  "violet": {
+    "50": {
+      "value": "#f9f2ff",
+      "type": "color",
+      "description": "Only suitable for backgrounds. Can be completely invisible to users with low-contrast monitor or poor vision."
+    },
+    "100": {
+      "value": "#edd9ff",
+      "type": "color",
+      "description": "Use only for light strokes and active backgrounds. Suitable for minimally visible elements."
+    },
+    "200": {
+      "value": "#dcb8ff",
+      "type": "color"
+    },
+    "300": {
+      "value": "#c695ff",
+      "type": "color"
+    },
+    "400": {
+      "value": "#ab6cfe",
+      "type": "color"
+    },
+    "500": {
+      "value": "#8649e1",
+      "type": "color"
+    },
+    "600": {
+      "value": "#5925ab",
+      "type": "color"
+    },
+    "700": {
+      "value": "#421983",
+      "type": "color"
+    },
+    "800": {
+      "value": "#220358",
+      "type": "color"
+    }
+  },
+  "pink": {
+    "50": {
+      "value": "#fff0ff",
+      "type": "color",
+      "description": "Only suitable for backgrounds. Can be completely invisible to users with low-contrast monitor or poor vision."
+    },
+    "100": {
+      "value": "#ffd3ff",
+      "type": "color",
+      "description": "Use only for light strokes and active backgrounds. Suitable for minimally visible elements."
+    },
+    "200": {
+      "value": "#ffa9fa",
+      "type": "color"
+    },
+    "300": {
+      "value": "#f67cf2",
+      "type": "color"
+    },
+    "400": {
+      "value": "#e14adf",
+      "type": "color"
+    },
+    "500": {
+      "value": "#b229b9",
+      "type": "color"
+    },
+    "600": {
+      "value": "#7d0480",
+      "type": "color"
+    },
+    "700": {
+      "value": "#4d0050",
+      "type": "color"
+    },
+    "800": {
+      "value": "#340439",
+      "type": "color"
+    }
+  },
+  "salad": {
+    "50": {
+      "value": "#ecfbcd",
+      "type": "color",
+      "description": "Only suitable for backgrounds. Can be completely invisible to users with low-contrast monitor or poor vision."
+    },
+    "100": {
+      "value": "#c7ee96",
+      "type": "color",
+      "description": "Use only for light strokes and active backgrounds. Suitable for minimally visible elements."
+    },
+    "200": {
+      "value": "#9bd85d",
+      "type": "color"
+    },
+    "300": {
+      "value": "#66c030",
+      "type": "color"
+    },
+    "400": {
+      "value": "#35a21e",
+      "type": "color"
+    },
+    "500": {
+      "value": "#0a7e22",
+      "type": "color"
+    },
+    "600": {
+      "value": "#005613",
+      "type": "color"
+    },
+    "700": {
+      "value": "#003509",
+      "type": "color"
+    },
+    "800": {
+      "value": "#002203",
+      "type": "color"
+    }
+  }
+}

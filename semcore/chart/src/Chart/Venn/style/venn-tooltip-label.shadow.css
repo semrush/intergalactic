@@ -1,25 +1,23 @@
-@import '@semcore/utils/style/var.css';
-
 STooltipLabel {
   display: inline-flex;
   justify-content: space-between;
   width: 100%;
-  padding-bottom: 8px;
-  border-bottom: 1px solid var(--gray-200);
-  color: var(--gray-800);
-  font-size: var(--fs-100);
-  line-height: var(--lh-100);
+  padding-bottom: var(--intergalactic-spacing-2x, 8px);
+  border-bottom: 1px solid var(--intergalactic-border-primary, #c4c7cf);
+  color: var(--intergalactic-text-primary, #191b23);
+  font-size: var(--intergalactic-fs-100, 12px);
+  line-height: var(--intergalactic-lh-100, 133%);
 }
 
 STooltipLabelTitle {
-  margin-right: 16px;
+  margin-right: var(--intergalactic-spacing-4x, 16px);
 }
 
 STooltipLabelPercentage {
-  margin-right: 12px;
-  color: var(--gray-500);
+  margin-right: var(--intergalactic-spacing-3x, 12px);
+  color: var(--intergalactic-text-secondary, #6c6e79);
 }
 
 STooltipLabelValue {
-  font-weight: bold;
+  font-weight: var(--intergalactic-bold, Bold);
 }

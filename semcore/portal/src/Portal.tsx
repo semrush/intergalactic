@@ -3,6 +3,7 @@ import { createPortal } from 'react-dom';
 import createComponent, { IFunctionProps, register } from '@semcore/core';
 import canUseDOM from '@semcore/utils/lib/canUseDOM';
 import { getNodeByRef, NodeByRef } from '@semcore/utils/lib/ref';
+import { useContextTheme } from '@semcore/utils/lib/ThemeProvider';
 
 export interface IPortalProps {
   /** Disables children rendering in React portal */
@@ -19,6 +20,8 @@ function Portal(props: IFunctionProps<IPortalProps>) {
   const { Children, disablePortal } = props;
   const container = useContext(PortalContext);
   const [mountNode, setMountNode] = useState(getNodeByRef(container));
+  const containerPseudoRef = React.useMemo(() => ({ current: container }), [container]);
+  useContextTheme(containerPseudoRef as any);
 
   useEffect(() => {
     if (!disablePortal) {

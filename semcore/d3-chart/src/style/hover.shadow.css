@@ -1,9 +1,7 @@
-@import '@semcore/utils/style/var.css';
-
 SHoverLine {
-  stroke: var(--gray-300);
+  stroke: var(--intergalactic-chart-grid-x-axis, #c4c7cf);
 }
 
 SHoverRect {
-  fill: color-mod(var(--gray-200) a(30%));
+  fill: var(--intergalactic-chart-grid-bar-chart-hover, rgba(196, 199, 207, 0.3));
 }

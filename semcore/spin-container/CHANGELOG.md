@@ -2,11 +2,11 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [6.1.8] - 2022-12-09
+## [6.2.0] - 2022-12-12
 
-### Changed
+### Added
 
-- Version patch update due to children dependencies update (`@semcore/animation` [1.8.0 ~> 1.8.1]).
+- Design tokens based theming.
 
 ## [6.1.0] - 2022-10-10
 

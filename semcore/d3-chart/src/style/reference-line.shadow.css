@@ -1,13 +1,11 @@
-@import '@semcore/utils/style/var.css';
-
 SReferenceLine {
   fill: none;
-  stroke: var(--gray-300);
+  stroke: var(--intergalactic-chart-grid-x-axis, #c4c7cf);
 }
 
 STitle {
-  font-size: var(--fs-100);
-  fill: var(--gray-500);
+  font-size: var(--intergalactic-fs-100, 12px);
+  fill: var(--intergalactic-chart-grid-text-label, #6c6e79);
   transform-origin: var(--transform-origin);
 }
 
@@ -33,5 +31,5 @@ STitle[position='left'] {
 }
 
 SBackground {
-  fill: color-mod(var(--gray-200) a(20%));
+  fill: var(--intergalactic-chart-grid-period-bg, rgba(196, 199, 207, 0.2));
 }
