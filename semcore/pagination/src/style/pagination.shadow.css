@@ -1,5 +1,3 @@
-@import '@semcore/utils/style/var.css';
-
 SPagination {
   display: flex;
   justify-content: flex-start;
@@ -9,11 +7,11 @@ SPagination {
 SNextPage,
 SPrevPage {
   align-self: center;
-  margin-left: 8px;
+  margin-left: var(--intergalactic-spacing-2x, 8px);
 }
 
 SLabel:not(:first-child) {
-  margin-left: 16px;
+  margin-left: var(--intergalactic-spacing-4x, 16px);
 }
 
 STotalPages {
@@ -22,19 +20,19 @@ STotalPages {
 }
 
 STotalPagesLabel {
-  margin-left: 8px;
-  margin-right: 4px;
+  margin-left: var(--intergalactic-spacing-2x, 8px);
+  margin-right: var(--intergalactic-spacing-1x, 4px);
 }
 
 STotalLastPages {
-  font-size: var(--fs-200);
-  line-height: var(--lh-200);
-  color: var(--gray-800);
+  font-size: var(--intergalactic-fs-200, 14px);
+  line-height: var(--intergalactic-lh-200, 142%);
+  color: var(--intergalactic-text-primary, #191b23);
 }
 
 SPageInput {
   max-width: 68px;
-  margin-left: 4px;
+  margin-left: var(--intergalactic-spacing-1x, 4px);
 }
 
 SPageInputValue:focus ~ SPageInputAddon {
@@ -52,6 +50,6 @@ SPageInputAddon {
 SLabel,
 STotalPages,
 STotalPagesLabel {
-  font-size: var(--fs-200);
-  line-height: var(--lh-200);
+  font-size: var(--intergalactic-fs-200, 14px);
+  line-height: var(--intergalactic-lh-200, 142%);
 }

@@ -36,11 +36,19 @@ export const collectComponentChangelogs = async () => {
             name: packageFile.name,
             version: packageFile.version,
           },
+          path: packagePath,
           changelogs: componentChangelogParser(packageFile.name, changelog, changelogPath),
         };
       }),
     )
   )
     .filter((file) => file !== null)
-    .map((file) => file as { package: { name: string; version: string }; changelogs: Changelog[] });
+    .map(
+      (file) =>
+        file as {
+          package: { name: string; version: string };
+          path: string;
+          changelogs: Changelog[];
+        },
+    );
 };

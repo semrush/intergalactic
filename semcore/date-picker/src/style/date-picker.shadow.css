@@ -1,7 +1,5 @@
-@import '@semcore/utils/style/var.css';
-
 SPopper {
-  padding: 16px;
+  padding: var(--intergalactic-spacing-4x, 16px);
   outline: 0;
 
   &::-moz-focus-inner {
@@ -17,7 +15,7 @@ SPopper {
   }
 
   &:focus {
-    box-shadow: var(--keyboard-focus);
+    box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.3));
   }
 }
 
@@ -27,8 +25,8 @@ SHeader {
 }
 
 STitle {
-  font-size: var(--fs-200);
-  color: var(--gray-800);
+  font-size: var(--intergalactic-fs-200, 14px);
+  color: var(--intergalactic-text-primary, #191b23);
   height: 32px;
   width: 100%;
   display: flex;
@@ -38,18 +36,18 @@ STitle {
 
 SToday {
   display: flex;
-  margin-top: 12px;
+  margin-top: var(--intergalactic-spacing-3x, 12px);
   justify-content: center;
 }
 
 SPeriod {
   display: flex;
   flex-direction: column;
-  margin-bottom: 8px;
+  margin-bottom: var(--intergalactic-spacing-2x, 8px);
 }
 
 SIndicator {
-  color: var(--gray-500);
+  color: var(--intergalactic-text-secondary, #6c6e79);
 }
 SHumanizedDate {
   position: absolute;
@@ -63,7 +61,7 @@ SDateRange SValue {
 }
 SSingleDateInput:focus-within SHumanizedDate {
   opacity: 0;
-  z-index: -1000;
+  z-index: var(--intergalactic-z-index-deep, -999);
 }
 SSingleDateInput:focus-within SValue,
 SSingleDateInput:focus-within SMask {
@@ -74,7 +72,7 @@ SDateRange SValue {
 }
 SDateRange:focus-within SHumanizedDate {
   opacity: 0;
-  z-index: -1000;
+  z-index: var(--intergalactic-z-index-deep, -999);
 }
 SDateRange:focus-within SValue,
 SDateRange:focus-within SMask {
@@ -85,9 +83,9 @@ SInputMask[noHumanizedDate] SMask {
   opacity: 1;
 }
 SDateRange SInputMask:focus-within SMask {
-  background-color: color-mod(var(--blue-400) a(20%));
+  background-color: var(--intergalactic-text-placeholder, #a9abb6);
 }
 SRangeSep[fulfilled],
 SDateRange:focus-within SRangeSep {
-  color: var(--gray-800);
+  color: var(--intergalactic-text-primary, #191b23);
 }

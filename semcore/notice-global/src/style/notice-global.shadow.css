@@ -1,72 +1,70 @@
-@import '@semcore/utils/style/var.css';
-
 SNoticeGlobal {
   display: flex;
-  font-size: var(--fs-200);
-  line-height: var(--lh-200);
+  font-size: var(--intergalactic-fs-200, 14px);
+  line-height: var(--intergalactic-lh-200, 142%);
   box-sizing: border-box;
-  padding: 8px 32px;
+  padding: var(--intergalactic-spacing-2x, 8px) var(--intergalactic-spacing-8x, 32px);
 }
 
 SCloseIcon {
   flex-shrink: 0;
-  margin-top: 2px;
-  margin-left: 16px;
+  margin-top: var(--intergalactic-spacing-05x, 2px);
+  margin-left: var(--intergalactic-spacing-4x, 16px);
 }
 
 SNoticeGlobal[theme='neutral'] {
-  background-color: var(--gray-500);
-  color: var(--white);
+  background-color: var(--intergalactic-bg-primary-muted, #6c6e79);
+  color: var(--intergalactic-text-primary-invert, #ffffff);
 }
 
 SNoticeGlobal[theme='info'] {
-  background-color: var(--blue-400);
-  color: var(--white);
+  background-color: var(--intergalactic-bg-primary-info, #008ff8);
+  color: var(--intergalactic-text-primary-invert, #ffffff);
 
   & SCloseIcon {
-    color: var(--white);
+    color: var(--intergalactic-icon-primary-invert, #ffffff);
 
     &:hover {
-      color: var(--gray-50);
+      color: var(--intergalactic-icon-primary-invert-hover-active, #e0e1e9);
     }
   }
 }
 
 SNoticeGlobal[theme='danger'] {
-  background-color: var(--red-400);
-  color: var(--white);
+  background-color: var(--intergalactic-bg-primary-critical, #ff4953);
+  color: var(--intergalactic-text-primary-invert, #ffffff);
 
   & SCloseIcon {
-    color: var(--white);
+    color: var(--intergalactic-icon-primary-invert, #ffffff);
 
     &:hover {
-      color: var(--gray-50);
+      color: var(--intergalactic-icon-primary-invert-hover-active, #e0e1e9);
     }
   }
 }
 
 SNoticeGlobal[theme='warning'] {
-  background-color: var(--orange-400);
-  color: var(--white);
+  background-color: var(--intergalactic-bg-primary-warning, #ff642d);
+  color: var(--intergalactic-text-primary-invert, #ffffff);
 
   & SCloseIcon {
-    color: var(--white);
+    color: var(--intergalactic-icon-primary-invert, #ffffff);
 
     &:hover {
-      color: var(--gray-50);
+      color: var(--intergalactic-icon-primary-invert-hover-active, #e0e1e9);
     }
   }
 }
 
 SNoticeGlobal[theme='success'] {
-  background-color: var(--green-400);
-  color: var(--white);
+  background-color: var(--intergalactic-bg-primary-success, #009f81);
+  color: var(--intergalactic-text-primary-invert, #ffffff);
 
   & SCloseIcon {
-    color: var(--white);
+    color: var(--intergalactic-icon-primary-invert, #ffffff);
 
     &:hover {
-      color: var(--gray-50);
+      color: var(--intergalactic-icon-primary-invert-hover-active, #e0e1e9);
     }
   }
 }

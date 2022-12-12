@@ -1,14 +1,12 @@
-@import '@semcore/utils/style/var.css';
-
 SInfo {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  font-size: var(--fs-200);
-  line-height: var(--lh-200);
+  font-size: var(--intergalactic-fs-200, 14px);
+  line-height: var(--intergalactic-lh-200, 142%);
 
   & > SItem:not(:last-child) {
-    margin-right: 24px;
+    margin-right: var(--intergalactic-spacing-6x, 24px);
     position: relative;
   }
 }
@@ -20,14 +18,14 @@ SItem {
 }
 
 SLabel {
-  margin-right: 4px;
+  margin-right: var(--intergalactic-spacing-1x, 4px);
 }
 
 @media (max-width: 767px) {
   SInfo {
-    margin-bottom: -4px;
+    margin-bottom: calc(-1 * var(--intergalactic-spacing-1x, 4px));
   }
   SItem {
-    margin-bottom: 4px;
+    margin-bottom: var(--intergalactic-spacing-1x, 4px);
   }
 }

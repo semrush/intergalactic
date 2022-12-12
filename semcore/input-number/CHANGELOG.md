@@ -2,11 +2,11 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [4.1.7] - 2022-12-06
+## [4.2.0] - 2022-12-12
 
-### Changed
+### Added
 
-- Version patch update due to children dependencies update (`@semcore/input` [3.4.1 ~> 3.4.2]).
+- Design tokens based theming.
 
 ## [4.1.0] - 2022-10-10
 

@@ -70,12 +70,12 @@ const isCustomDecl = (node) => node.type === 'decl' && customPropertyRegExp.test
 // whether the node is a parent without children
 const isEmptyParent = (node) => Object(node.nodes).length === 0;
 
-module.exports = (opts) => {
+module.exports = () => {
   let customProperties = {};
 
   return {
     postcssPlugin: 'postcss-inline-css-variables',
-    prepare(result) {
+    prepare() {
       return {
         /**
          *
@@ -120,6 +120,7 @@ module.exports = (opts) => {
         Declaration: (declaration) => {
           if (!declaration[processed]) {
             if (declaration.value.includes('var(')) {
+              if (declaration.value.includes('var(--intergalactic-')) return;
               declaration.value = transformValueAST(
                 valuesParser(declaration.value),
                 customProperties,

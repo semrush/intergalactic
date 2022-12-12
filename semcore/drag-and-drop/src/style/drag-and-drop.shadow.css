@@ -1,5 +1,3 @@
-@import '@semcore/utils/style/var.css';
-
 SDraggable[draggable] {
   position: relative;
   cursor: grab;
@@ -18,7 +16,7 @@ SDraggable[draggable] {
   &:active {
     cursor: grabbing;
     box-shadow: 0 0 1px rgba(25, 27, 35, 0.16), 0 12px 40px rgba(25, 27, 35, 0.16);
-    background-color: var(--white);
+    background-color: var(--intergalactic-bg-primary-neutral);
   } */
 
   &:hover::after {
@@ -37,22 +35,22 @@ SDraggable[placement='top']::after {
 }
 
 SDraggable[placement='top'] {
-  padding-top: 16px;
+  padding-top: var(--intergalactic-spacing-4x, 16px);
 }
 
 SDraggable[placement='right'] {
-  padding-right: 16px;
+  padding-right: var(--intergalactic-spacing-4x, 16px);
   &::after {
     right: 0;
   }
 }
 
 SDraggable[placement='top'] {
-  padding-top: 16px;
+  padding-top: var(--intergalactic-spacing-4x, 16px);
 }
 
 SDraggable[placement='bottom'] {
-  padding-bottom: 16px;
+  padding-bottom: var(--intergalactic-spacing-4x, 16px);
 
   &::after {
     bottom: 0;
@@ -61,7 +59,7 @@ SDraggable[placement='bottom'] {
 }
 
 SDraggable[placement='left'] {
-  padding-left: 16px;
+  padding-left: var(--intergalactic-spacing-4x, 16px);
 
   &::after {
     left: 0;
@@ -92,21 +90,22 @@ SDraggable[placement='left']::after {
 }
 
 SDropZone {
-  border: 1px dashed var(--gray-200);
-  border-radius: var(--rounded-m);
+  border: 1px dashed var(--intergalactic-border-primary, #c4c7cf);
+  border-radius: var(--intergalactic-rounded-medium, 6px);
 }
 
 SDropZone[dropPreview],
 SDraggable[dropPreview] {
-  background-color: var(--gray-50);
+  background-color: var(--intergalactic-bg-secondary-neutral, #f4f5f9);
 }
 SDropZone[dark][dropPreview],
 SDraggable[dark][dropPreview] {
-  background-color: rgba(255, 255, 255, 0.15);
+  background-color: var(--intergalactic-bg-primary-invert-active, #484a54);
 }
 
 SA11yHint {
   position: absolute;
+  /* disable-tokens-validator */
   margin-top: -1px;
   height: 1px;
   width: 1px;

@@ -93,10 +93,10 @@
   --google-blue: #1a0dab;
   --google-green: #016723;
 
-  --keyboard-focus: 0 0 0 3px color-mod(var(--blue-400) a(30%));
-  --keyborad-focus: var(--keyboard-focus);
-  --keyboard-focus-valid: 0px 0px 0px 3px color-mod(var(--green-400) a(30%));
-  --keyboard-focus-invalid: 0px 0px 0px 3px color-mod(var(--red-400) a(30%));
+  --keyboard-focus: var(--intergalactic-boxShadow-keyboard-focus);
+  --keyborad-focus: var(--intergalactic-boxShadow-keyboard-focus);
+  --keyboard-focus-valid: var(--intergalactic-boxShadow-keyboard-focus-valid);
+  --keyboard-focus-invalid: var(--intergalactic-boxShadow-keyboard-focus-invalid);
 
   --rounded-s: 4px;
   --rounded-m: 6px;

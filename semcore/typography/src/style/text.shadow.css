@@ -1,48 +1,46 @@
-@import '@semcore/utils/style/var.css';
-
 SText {
   padding: 0;
   margin: 0;
 }
 
 SText[size='100'] {
-  font-size: var(--fs-100);
-  line-height: var(--lh-100);
+  font-size: var(--intergalactic-fs-100, 12px);
+  line-height: var(--intergalactic-lh-100, 133%);
 }
 
 SText[size='200'] {
-  font-size: var(--fs-200);
-  line-height: var(--lh-200);
+  font-size: var(--intergalactic-fs-200, 14px);
+  line-height: var(--intergalactic-lh-200, 142%);
 }
 
 SText[size='300'] {
-  font-size: var(--fs-300);
-  line-height: var(--lh-300);
+  font-size: var(--intergalactic-fs-300, 16px);
+  line-height: var(--intergalactic-lh-300, 150%);
 }
 
 SText[size='400'] {
-  font-size: var(--fs-400);
-  line-height: var(--lh-400);
+  font-size: var(--intergalactic-fs-400, 20px);
+  line-height: var(--intergalactic-lh-400, 120%);
 }
 
 SText[size='500'] {
-  font-size: var(--fs-500);
-  line-height: var(--lh-500);
+  font-size: var(--intergalactic-fs-500, 24px);
+  line-height: var(--intergalactic-lh-500, 117%);
 }
 
 SText[size='600'] {
-  font-size: var(--fs-600);
-  line-height: var(--lh-600);
+  font-size: var(--intergalactic-fs-600, 32px);
+  line-height: var(--intergalactic-lh-600, 125%);
 }
 
 SText[size='700'] {
-  font-size: var(--fs-700);
-  line-height: var(--lh-700);
+  font-size: var(--intergalactic-fs-700, 36px);
+  line-height: var(--intergalactic-lh-700, 110%);
 }
 
 SText[size='800'] {
-  font-size: var(--fs-800);
-  line-height: var(--lh-800);
+  font-size: var(--intergalactic-fs-800, 48px);
+  line-height: var(--intergalactic-lh-800, 117%);
 }
 
 SText[noWrap] {
@@ -52,11 +50,11 @@ SText[noWrap] {
 }
 
 SText[medium] {
-  font-weight: 500;
+  font-weight: var(--intergalactic-medium, 500);
 }
 
 SText[bold] {
-  font-weight: 700;
+  font-weight: var(--intergalactic-bold, 700);
 }
 
 SText[italic] {
