@@ -21,7 +21,7 @@ function Portal(props: IFunctionProps<IPortalProps>) {
   const container = useContext(PortalContext);
   const [mountNode, setMountNode] = useState(getNodeByRef(container));
   const containerPseudoRef = React.useMemo(() => ({ current: container }), [container]);
-  useContextTheme(containerPseudoRef);
+  useContextTheme(containerPseudoRef as any);
 
   useEffect(() => {
     if (!disablePortal) {
