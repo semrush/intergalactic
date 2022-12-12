@@ -226,7 +226,7 @@ jobs:
           git_committer_email: semrush-ci-whale@users.noreply.github.com
       - name: NPM setup
         run: |
-          echo "\nstrict-peer-dependencies=false\n//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" >> ".npmrc"
+          echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}\nstrict-peer-dependencies=false" >> ".npmrc"
       - name: Delivery
         run: pnpm continuous-delivery
   publish-website:
@@ -261,7 +261,7 @@ jobs:
           git push --force --set-upstream origin website/release
   vo-filter:
     runs-on: ubuntu-latest
-    needs: setup
+    needs: build
     outputs:
       run_rest_jobs: ${{ steps.set_output.outputs.run_vo }}
     steps:
