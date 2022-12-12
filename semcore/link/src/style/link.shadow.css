@@ -1,5 +1,8 @@
 SLink {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  vertical-align: middle;
+  box-sizing: border-box;
   font-family: inherit;
   color: var(--intergalactic-text-link, #006dca);
   line-height: normal;
@@ -71,6 +74,7 @@ SAddon {
   display: inline-flex;
   justify-content: center;
   align-items: center;
+  margin-bottom: 2px;
 }
 
 SLink SAddon {
