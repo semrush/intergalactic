@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.3.1] - 2022-12-12
+
+### Changed
+
+- `Link.Addon` is centered vertically.
+
 ## [4.3.0] - 2022-12-12
 
 ### Added

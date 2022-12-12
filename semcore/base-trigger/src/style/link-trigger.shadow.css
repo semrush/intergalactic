@@ -36,7 +36,6 @@ SLinkTrigger {
     border-bottom-style: solid;
     border-color: transparent;
     transition: border-bottom-color 0.15s ease-in-out;
-    line-height: var(--intergalactic-lh-200, 142%);
     text-overflow: ellipsis;
     overflow: hidden;
   }
@@ -67,6 +66,7 @@ SLinkAddon {
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  margin-bottom: 2px;
 
   &:not(:only-child):first-child {
     margin-right: var(--intergalactic-spacing-1x, 4px);
