@@ -1952,6 +1952,7 @@ importers:
       '@types/semver': 7.3.9
       axios: 0.25.0
       dayjs: 1.10.7
+      dotenv: ^16.0.3
       execa: 6.1.0
       fs-extra: 9.0.1
       marked-ast: 0.3.0
@@ -1964,6 +1965,7 @@ importers:
       '@semcore/changelog-handler': link:../changelog-handler
       axios: 0.25.0
       dayjs: 1.10.7
+      dotenv: 16.0.3
       execa: 6.1.0
       fs-extra: 9.0.1
       marked-ast: 0.3.0
@@ -10068,6 +10070,14 @@ packages:
     resolution:
       {
         integrity: sha512-1K6hR6wtk2FviQ4kEiSjFiH5rpzEVi8WW0x96aztHVMhEspNpc4DVOUTEHtEva5VThQ8IaBX1Pe4gSzpVVUsKQ==,
+      }
+    engines: { node: '>=12' }
+    dev: false
+
+  /dotenv/16.0.3:
+    resolution:
+      {
+        integrity: sha512-7GO6HghkA5fYG9TYnNxi14/7K9f5occMlp3zXAuSxn7CKCxt9xbNWG7yF8hTCSUchlfWSe3uLmlPfigevRItzQ==,
       }
     engines: { node: '>=12' }
     dev: false
