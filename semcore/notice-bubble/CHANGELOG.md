@@ -18,7 +18,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-- Changed prop `initialAnimation` to otional.
+- Changed prop `initialAnimation` to optional.
 
 ## [4.3.1] - 2022-12-06
 
