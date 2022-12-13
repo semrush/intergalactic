@@ -7,4 +7,4 @@ title: Style
 @page palette
 @page themes
 @page typography
-@page variables
+@page css-injection
