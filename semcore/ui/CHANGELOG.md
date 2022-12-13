@@ -1,8 +1,26 @@
+## [13.2.4] - 2022-12-13
+
+### Global
+
+- **Changed** Added `react-dom` to peer dependencies.
+
+### @semcore/base-trigger
+
+- **Changed** The icon in `LinkTrigger` is centered vertically.
+
+### @semcore/dropdown-menu
+
+- **Fixed** Fix tabulation and moving highlighted items
+
+### @semcore/link
+
+- **Changed** `Link.Addon` is centered vertically.
+
 ## [13.2.3] - 2022-12-09
 
 ### @semcore/animation
 
-- **Changed** Changed prop `initialAnimation` to otional.
+- **Changed** Changed prop `initialAnimation` to optional.
 
 ### @semcore/feature-popover
 
@@ -10,7 +28,7 @@
 
 ### @semcore/notice-bubble
 
-- **Changed** Changed prop `initialAnimation` to otional.
+- **Changed** Changed prop `initialAnimation` to optional.
 
 ### @semcore/scroll-area
 
