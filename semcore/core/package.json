@@ -19,7 +19,8 @@
     "hoist-non-react-statics": "3.3.2"
   },
   "peerDependencies": {
-    "react": "16.8 - 18"
+    "react": "16.8 - 18",
+    "react-dom": "16.8 - 18"
   },
   "jest": {
     "preset": "@semcore/jest-preset-ui"

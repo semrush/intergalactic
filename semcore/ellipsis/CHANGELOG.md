@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [1.1.1] - 2022-12-13
+
+### Changed
+
+- Added `react-dom` to peer dependencies.
+
 ## [1.1.0] - 2022-12-12
 
 ### Added
