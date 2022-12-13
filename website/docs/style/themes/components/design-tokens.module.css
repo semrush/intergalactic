@@ -1,0 +1,22 @@
+.searchInput {
+  margin-bottom: 12px;
+  max-width: 300px;
+}
+
+.tokenName {
+  cursor: pointer;
+}
+
+.colorPreview {
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+  display: inline-block;
+  margin-right: 8px;
+  border: 1px solid transparent;
+  flex-shrink: 0;
+}
+
+.usages {
+  text-decoration: underline;
+}

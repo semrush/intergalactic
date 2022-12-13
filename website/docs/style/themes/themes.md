@@ -6,56 +6,37 @@ title: Themes
 
 @## Description
 
-If you are creating a product that differs in style from other products of Semrush, use the tools for theming.
+If you are creating a product that differs in style from other products of Semrush, apply a custom theme for your brending.
 
 @## What is a theme?
 
-Themes are just CSS. You can use our set of tools to change the default style of components or extend it.
+Each theme is a set of design tokens represented in css variables that differs from the default ones. You can redefine them globally on only for specific subtree of React app.
 
-@## How does it work?
+@## Global theme
 
-There are 2 ways to redefine styles of our components:
+Global themes should be preferred over local ones until multiple themes appear on same page.
 
-- Local for one specific component
-- Global for all components at once
+To apply a global theme, define css variables on `:root` via css or js. For example, following css will make all main backgrounds black and all primary texts white.
 
-@## Local specific
+```css
+:root {
+  --intergalactic-bg-primary-neutral: #000;
+  --intergalactic-text-primary: #fff;
+}
+```
 
-Styles composition helps us to extend basic styles of our components, and sometimes even supplement API. In fact, you write styles using `css-in-js` approach and transfer them to our components.
+Any design token from the table bellow may be applied.
 
-Advantages:
+@## Local theme
 
-- An opportunity to "extend" API components with new properties responsible for appearance
+Theme for React components subtree may be applied via `<ThemeProvider />`.
 
-Disadvantages:
+@example theme-provider
 
-- Styles shall be applied every time you use our component
-- Styles are applied in runtime
-- No style de-duplication
-- It is difficult to reuse the styles
+`<ThemeProvider />` applies provided tokens on DOM node and handles passing them into React Portal created with `@semcore/portal`.
 
-Read more about [how to apply styles composition in practice](/style/themes/themes-local/).
+@## Design tokens
 
-@## Global specific
+All available design tokens are provided in the table bellow.
 
-This helps you to rewrite or to add styles to all our components by redefining their appearance. **It looks like this: you write CSS, while babel-plugin combines it with our default styles and applies it to all the components**.
-
-Using this approach, you can publish themes to `npm` and reuse them later.
-
-Advantages:
-
-- Styles are applied to all the components automatically
-- The theme is applied during assembly
-- Easiness of reuse
-- De-duplication of styles
-- Versioning availability
-
-Disadvantages:
-
-- Strict structure and naming
-- Need to configure webpack 🙄
-
-You can write "themes" for our components this way [global](/style/themes/themes-global/) use.
-
-@page themes-local
-@page themes-global
+@import design-tokens

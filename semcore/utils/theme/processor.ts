@@ -10,9 +10,10 @@ const baseColors = JSON.parse(
   await fs.readFile(resolvePath(dirname, './tokens-base.json'), 'utf-8'),
 );
 
-const values = {};
-const types = {};
-const descriptions = {};
+const values: { [tokenName: string]: string } = {};
+const usages: { [tokenName: string]: string[] } = {};
+const types: { [tokenName: string]: string } = {};
+const descriptions: { [tokenName: string]: string } = {};
 const mixins: string[] = [];
 type ColorPattern =
   | `{${string}.${string}}`
@@ -308,6 +309,8 @@ const processedCss = await Promise.all(
                     valueNode.nodes[2].value = values[withoutPrefix];
                     valueNode.nodes[2].nodes = [];
                     valueNode.nodes.length = 3;
+                    usages[withoutPrefix] = usages[withoutPrefix] ?? [];
+                    usages[withoutPrefix].push(projectCssPaths[fileIndex]);
                   }
                 };
                 traverseValueAst(valueAst.nodes, null);
@@ -352,3 +355,28 @@ if (colorLiterals.length > 0) {
     console.log(`${literal.name} in ${literal.path}`);
   }
 }
+
+const documentation: {
+  name: string;
+  type: string;
+  defaultValue: string;
+  description: string;
+  components: string[];
+}[] = [];
+
+for (const token in values) {
+  const components = [...new Set(usages[token] ?? []).map((cssPath) => cssPath.split('/')[2])];
+
+  documentation.push({
+    name: `--${prefix}-${token}`,
+    type: types[token],
+    defaultValue: values[token],
+    description: descriptions[token],
+    components,
+  });
+}
+
+await fs.writeFile(
+  resolvePath(dirname, '../../../website/docs/style/themes/components/tokens-list.json'),
+  JSON.stringify(documentation, null, 2),
+);
