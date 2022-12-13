@@ -1,7 +1,14 @@
 import { execSync } from 'child_process';
+import fs from 'fs/promises';
 import { VersionPatch } from './makeVersionPatches';
 import Git from 'simple-git';
-
+import dotenv from 'dotenv';
+import {
+  getReleaseChangelog,
+  serializeReleaseChangelog,
+  toMarkdown,
+} from '@semcore/changelog-handler';
+dotenv.config();
 const git = Git();
 
 export const runPublisher = async (versionPatches: VersionPatch[]) => {
@@ -55,7 +62,7 @@ export const runPublisher = async (versionPatches: VersionPatch[]) => {
     if (status.files.length) {
       await git.add('.');
       if (!process.argv.includes('--dry-run')) {
-        await git.commit(['[ui] package version bump'], []);
+        await git.commit(['[chore] @semcore/ui package version bump'], []);
         await git.tag(['-f', `@semcore/ui@${semcoreUiPatch.to}`]);
       }
     }
@@ -69,10 +76,29 @@ export const runPublisher = async (versionPatches: VersionPatch[]) => {
     await git.push('origin', 'master', { '--follow-tags': null });
 
     if (semcoreUiPatch) {
-      execSync(`bash -e ./tools/continuous-delivery/src/gh-release`, {
+      await fs.writeFile('./.gh-auth-token.txt', String(process.env.GITHUB_SECRET));
+      execSync(`gh auth login --with-token < ./.gh-auth-token.txt`, {
         encoding: 'utf-8',
         stdio: ['inherit', 'inherit', 'inherit'],
       });
+      await fs.rm('./.gh-auth-token.txt');
+      const semcoreUiChangelog = await getReleaseChangelog();
+      const version = semcoreUiChangelog.package.version;
+      const releaseNotes = toMarkdown(
+        serializeReleaseChangelog(semcoreUiChangelog.changelogs.slice(0, 1)),
+      )
+        .split('\n')
+        .slice(2)
+        .join('\n');
+      await fs.writeFile('./.github-release-notes.txt', releaseNotes);
+      execSync(
+        `gh release create "v${version}" --title "v${version}" --notes-file .github-release-notes.txt`,
+        {
+          encoding: 'utf-8',
+          stdio: ['inherit', 'inherit', 'inherit'],
+        },
+      );
+      await fs.rm('./.github-release-notes.txt');
     }
   }
 };
