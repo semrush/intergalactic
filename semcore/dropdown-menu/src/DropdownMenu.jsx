@@ -96,8 +96,7 @@ class DropdownMenuRoot extends Component {
     const { size, highlightedIndex } = this.asProps;
     const highlighted = index === highlightedIndex;
     const extraProps = {};
-
-    this.itemProps.push(props);
+    this.itemProps[index] = props;
     if (highlighted) {
       extraProps.ref = this.scrollToNode;
     }
@@ -218,7 +217,7 @@ function Item(props) {
   return (
     <SDropdownMenuItem
       role="menuitem"
-      tabIndex={0}
+      tabIndex={-1}
       id={props.label}
       className={
         cn(
