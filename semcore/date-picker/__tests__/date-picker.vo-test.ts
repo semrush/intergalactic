@@ -26,7 +26,6 @@ test('Users can interact with DatePicker and DateRangePicker via VoiceOver', asy
 
   expect(await voiceOver.lastSpokenPhrase()).toContain('Date field');
   await voiceOver.interact();
-  expect(await voiceOver.lastSpokenPhrase()).toContain('06/29/2020');
   for (let i = 0; i < 8; i++) {
     await voiceOver.press('Backspace', { application: 'Playwright' });
   }
