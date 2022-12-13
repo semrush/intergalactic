@@ -2,7 +2,7 @@
 title: Global CSS Injection
 ---
 
-> 🚨 If you are using CSS Injection for theming purpose, consider review [design tokens based theming](/style/themes/).
+> 🚨 If you are using CSS Injection for theming purpose, consider review [design tokens based theming](/style/design-tokens/themes/).
 
 All our components include Semrush styles. However, if your tool uses a different color palette or you need to style the components differently, you may want to change the default Semrush styles. This page contains instructions on how to do that using the React Semcore plugin for Babel.
 

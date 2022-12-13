@@ -2,8 +2,6 @@
 title: Themes
 ---
 
-> ✨ Soon there will be a description of the tokens! We are currently in the process of implementing them.
-
 @## Description
 
 If you are creating a product that differs in style from other products of Semrush, apply a custom theme for your brending.

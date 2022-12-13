@@ -103,7 +103,7 @@ const DesignTokens: React.FC = () => {
               return {
                 children: (
                   <Ellipsis
-                    trim="middle"
+                    trim="end"
                     containerRect={descriptionHeaderRect}
                     containerRef={descriptionHeaderRef}
                   >

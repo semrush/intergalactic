@@ -377,6 +377,6 @@ for (const token in values) {
 }
 
 await fs.writeFile(
-  resolvePath(dirname, '../../../website/docs/style/themes/components/tokens-list.json'),
+  resolvePath(dirname, '../../../website/docs/style/design-tokens/components/tokens-list.json'),
   JSON.stringify(documentation, null, 2),
 );
