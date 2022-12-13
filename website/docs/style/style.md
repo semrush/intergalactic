@@ -2,6 +2,8 @@
 title: Style
 ---
 
+@page design-tokens
+@page default-theme
 @page icon
 @page illustration
 @page palette
