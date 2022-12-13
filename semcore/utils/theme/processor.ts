@@ -367,49 +367,27 @@ if (warning) {
   }
 }
 
-const designTokensDocumentation: {
+const documentation: {
   name: string;
   type: string;
-  rawValue: string;
-  computedValue: string;
+  defaultValue: string;
   description: string;
   components: string[];
 }[] = [];
 
 for (const token in values) {
-  const components = [...new Set((usages[token] ?? []).map((cssPath) => cssPath.split('/')[2]))];
+  const components = [...new Set(usages[token] ?? []).map((cssPath) => cssPath.split('/')[2])];
 
-  designTokensDocumentation.push({
+  documentation.push({
     name: `--${prefix}-${token}`,
     type: types[token],
-    rawValue: rawValues[token],
-    computedValue: values[token],
+    defaultValue: values[token],
     description: descriptions[token],
     components,
   });
 }
 
-const baseTokensDocumentation: {
-  name: string;
-  value: string;
-  description: string;
-}[] = [];
-
-for (const group in baseColors) {
-  for (const index in baseColors[group]) {
-    baseTokensDocumentation.push({
-      name: `--${group}-${index}`,
-      value: baseColors[group][index].value,
-      description: baseColors[group][index].description,
-    });
-  }
-}
-
 await fs.writeFile(
-  resolvePath(dirname, '../../../website/docs/style/themes/components/design-tokens.json'),
-  JSON.stringify(designTokensDocumentation, null, 2) + '\n',
-);
-await fs.writeFile(
-  resolvePath(dirname, '../../../website/docs/style/themes/components/base-tokens.json'),
-  JSON.stringify(baseTokensDocumentation, null, 2) + '\n',
+  resolvePath(dirname, '../../../website/docs/style/themes/components/tokens-list.json'),
+  JSON.stringify(documentation, null, 2),
 );
