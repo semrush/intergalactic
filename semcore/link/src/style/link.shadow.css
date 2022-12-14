@@ -1,8 +1,5 @@
 SLink {
-  display: inline-flex;
-  align-items: center;
-  vertical-align: middle;
-  box-sizing: border-box;
+  display: inline-block;
   font-family: inherit;
   color: var(--intergalactic-text-link, #006dca);
   line-height: normal;
@@ -30,6 +27,10 @@ SLink {
     border: none;
     padding: 0;
   }
+}
+
+SLink > * {
+  vertical-align: middle;
 }
 
 SLink {
@@ -70,11 +71,10 @@ SLink[inline] {
 }
 
 SAddon {
-  vertical-align: middle;
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 2px;
+  margin-bottom: var(--intergalactic-spacing-05x, 2px);
 }
 
 SLink SAddon {
