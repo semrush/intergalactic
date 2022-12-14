@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.7.0] - 2022-12-14
+
+### Changed
+
+- Supported semi-async internationalization of text in a11y module.
+
 ## [2.6.1] - 2022-12-13
 
 ### Changed
