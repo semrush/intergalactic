@@ -8,12 +8,14 @@ function getColorVars(cssPath) {
 
   // TODO: in case of containing imports traverse them recursevely
 
-  return tokens.reduce((acc, match) => {
-    const [varName, varValue] = match.split(':');
-    const colorName = varName.replace('--', '').trim();
-    acc[colorName] = varValue.trim();
-    return acc;
-  }, {});
+  return tokens
+    .filter((token) => !token.includes('--intergalactic-'))
+    .reduce((acc, match) => {
+      const [varName, varValue] = match.split(':');
+      const colorName = varName.replace('--', '').trim();
+      acc[colorName] = varValue.trim();
+      return acc;
+    }, {});
 }
 
 module.exports = getColorVars;
