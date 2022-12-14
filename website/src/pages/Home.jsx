@@ -6,7 +6,7 @@ import Tooltip from '@semcore/tooltip';
 import Tag from '@semcore/tag';
 import AllComponents from '../components/AllComponents';
 import EmailsBanner from '../components/EmailsBanner';
-import whale from '../static/illustration/whale.svg';
+import whale from '../static/illustration/whale-pic-christmas.svg';
 import layout from '../static/illustration/layout.svg';
 import principles from '../static/illustration/principles.svg';
 import style from '../static/illustration/style.svg';
