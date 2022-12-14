@@ -6,6 +6,7 @@ import icon from 'static/favicon/favicon.png';
 import iconRotate from 'static/favicon/favicon-rotate.png';
 import './main.css';
 import './roadmap-page.css';
+import './components/happyNewYear';
 
 import Header from './components/Header';
 import Footer from './components/Footer';
