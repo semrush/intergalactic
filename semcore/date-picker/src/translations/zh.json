@@ -9,5 +9,8 @@
   "last2Months": "过去 2 个月",
   "last3Months": "过去 3 个月",
   "last6Months": "过去 6 个月",
-  "last12Months": "过去 12 个月"
+  "last12Months": "过去 12 个月",
+  "prev": "上一个时段",
+  "next": "下一时段",
+  "input": "日期字段"
 }

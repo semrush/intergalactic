@@ -2,5 +2,11 @@
   "prevPageLabel": "Önceki",
   "nextPageLabel": "Sonraki",
   "pageInputLabel": "Sayfa:",
-  "totalPagesLabel": "-den"
+  "totalPagesLabel": "-den",
+  "pagination": "Sayfa numaralandırma",
+  "firstPage": "İlk sayfa",
+  "currentPage": "Mevcut sayfa",
+  "confirm": "Sayfa numarasını onaylayın",
+  "lastPage": "Son sayfa #{lastPageNumber}",
+  "goToPage": "Sayfa {pageNumber}"
 }

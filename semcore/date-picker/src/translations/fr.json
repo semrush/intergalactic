@@ -9,5 +9,8 @@
   "last2Months": "2 derniers mois",
   "last3Months": "3 derniers mois",
   "last6Months": "6 derniers mois",
-  "last12Months": "12 derniers mois"
+  "last12Months": "12 derniers mois",
+  "prev": "Période précédente",
+  "next": "Période suivante",
+  "input": "Champ de date"
 }

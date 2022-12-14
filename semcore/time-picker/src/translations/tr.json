@@ -1,0 +1,7 @@
+{
+  "title": "Saat girişi, girilen saat {time} {meridiem}",
+  "titleEmpty": "Saat girişi, saat girilmedi",
+  "hours": "Saat giriş alanı",
+  "minutes": "Dakika giriş alanı",
+  "format": "Saat formatı {meridiem}"
+}

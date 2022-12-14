@@ -1,0 +1,6 @@
+{
+  "grabbed": "Item capturado: {itemText}. Posição atual: {itemPosition} de {itemsCount}.",
+  "grabbing": "Capturando item: {itemText}. Posição para soltar: {itemPosition} de {itemsCount}.",
+  "dropped": "Item solto: {itemText}. Posição final: {itemPosition} de {itemsCount}.",
+  "discarded": "A ação de arrastar foi descartada"
+}

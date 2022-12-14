@@ -1,0 +1,7 @@
+{
+  "title": "时间输入，输入的时间是 {time} {meridiem}",
+  "titleEmpty": "时间输入，未输入时间",
+  "hours": "小时输入字段",
+  "minutes": "分钟输入字段",
+  "format": "时间格式 {meridiem}"
+}

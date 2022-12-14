@@ -1,0 +1,6 @@
+{
+  "grabbed": "L’élément « {itemText} » est saisi, la position actuelle est de {itemPosition} sur {itemsCount}",
+  "grabbing": "Saisie de l’élément « {itemText} », dépôt en position {itemPosition} sur {itemsCount}",
+  "dropped": "L’élément « {itemText} » est déposé, la position finale est de {itemPosition} sur {itemsCount}",
+  "discarded": "Le glissement a été abandonné"
+}

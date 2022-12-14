@@ -1,0 +1,7 @@
+{
+  "title": "時刻入力、入力された時刻は{time} {meridiem} です",
+  "titleEmpty": "時刻入力、時刻は入力されていません",
+  "hours": "時間入力フィールド",
+  "minutes": "分入力フィールド",
+  "format": "時刻フォーマット{meridiem}"
+}

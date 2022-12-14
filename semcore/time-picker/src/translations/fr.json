@@ -1,0 +1,7 @@
+{
+  "title": "Saisie de l’heure, l’heure saisie est {time} {meridiem}",
+  "titleEmpty": "Saisie de l’heure, aucune heure n’a été saisie",
+  "hours": "Champ de saisie des heures",
+  "minutes": "Champ de saisie des minutes",
+  "format": "Format de l’heure {meridiem}"
+}
