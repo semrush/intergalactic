@@ -1,3 +1,9 @@
+## [13.2.6] - 2022-12-14
+
+### @semcore/illustration
+
+- **Fixed** Fixed illustrations reexports.
+
 ## [13.2.5] - 2022-12-14
 
 ### @semcore/base-trigger

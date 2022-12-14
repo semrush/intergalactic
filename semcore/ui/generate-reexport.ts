@@ -167,6 +167,7 @@ const generateFiles = async (packages: string[]) => {
 
     if (name === 'utils') await GENERATOR.UTILS(dep, name);
     if (name === 'icon') await GENERATOR.ICONS(dep, name);
+    if (name === 'illustration') await GENERATOR.ICONS(dep, name);
     await GENERATOR.OTHER(dep, name);
   }
 };
