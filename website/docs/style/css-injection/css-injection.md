@@ -2,7 +2,7 @@
 title: CSS Injection
 ---
 
-> 🚨 If you are using CSS Injection for theming purpose, consider review [design tokens based theming](/style/design-tokens/themes/).
+> 🚨 If you are using CSS Injection for theming purpose, consider review [design tokens based theming](/style/themes).
 
 @## Description
 

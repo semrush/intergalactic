@@ -56,7 +56,7 @@ const DesignTokens: React.FC = () => {
       </Input>
       <DataTable data={filteredTokens}>
         <DataTable.Head>
-          <DataTable.Column name="name" children="Name" wMin={350} flex="1 0 auto" />
+          <DataTable.Column name="name" children="Token name" wMin={350} flex="1 0 auto" />
           <DataTable.Column name="defaultValue" children="Value" ref={valueHeaderRef} />
           <DataTable.Column name="description" children="Description" ref={descriptionHeaderRef} />
           <DataTable.Column name="components" children="Used in" />

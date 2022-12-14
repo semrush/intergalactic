@@ -1,37 +1,36 @@
 ---
-title: Palette
-tabName: Design
+title: Usage in design
 ---
 
-Our palette is built with [Huetone tool from Alexey Ardov](https://huetone.ardov.me/) ✨ Learn more in the [Twitter thread](https://twitter.com/ardovalexey/status/1447329411678806023).
+@## Token naming structure
 
-@## Variables
+![scheme of tokens naming structure: --{theme-name}-{category}-{priority}-{context}-{invert}-{state}](static/token-naming.png)
 
-> To enable CSS variables, use `@import '~@semcore/ui/utils/style/var.css';`
+@## Tokens in Figma
 
-Shades of the same color have a value from 50 to 800
-at the end (for example, for `css` files you should use `var(--gray-600)`, for our components you should use
-`propName="gray-600"`).
+@## How to make new theme
 
-@## Brand colors
+@## Default palette (old)
+
+### Brand colors
 
 We use this hot orange and dark indigo as our brand colors. Use them only for the most important and advertising information in the interface.
 
 @import color-group {"group": "brand"}
 
-@## Main colors
+### Main colors
 
 The main semantic colors that attract attention, mark a status, and highlight main interactive elements on a page.
 
 @import color-group {"group": "main"}
 
-@## Gray colors
+### Gray colors
 
 Use them for text, titles, and hints.
 
 @import color-group {"group": "gray"}
 
-@## Color shades usage
+<!-- @## Color shades usage
 
 ### 50 shade
 
@@ -106,17 +105,4 @@ Use this shade as a dark shade for charts. Text colored in this shade can be pla
 
 Use this for main text. Text colored in this shade can be placed on the background colored in 50, 100 and 200 shades.
 
-@import color-group {"group": "shade800"}
-
-@## Additional colors
-
-Brand colors of external services.
-
-@import color-group {"group": "additional"}
-
-@## Chart palette
-
-See detailed guide in the [Color palette for charts](/data-display/color-palette/).
-
-@page palette-a11y
-@page palette-code
+@import color-group {"group": "shade800"} -->

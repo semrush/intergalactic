@@ -23,7 +23,7 @@ To apply a global theme, define css variables on `:root` via css or js. For exam
 }
 ```
 
-Any design token from the table bellow may be applied.
+Any design token from the [Design tokens list](/style/design-tokens) may be applied.
 
 @## Local theme
 
