@@ -1,3 +1,17 @@
+## [13.2.5] - 2022-12-14
+
+### @semcore/base-trigger
+
+- **Fixed** Fixed hardcoded spacing style literal.
+
+### @semcore/link
+
+- **Fixed** Fixed supporting ellipsis links with addon.
+
+### @semcore/progress-bar
+
+- **Fixed** Fixed default theme background.
+
 ## [13.2.4] - 2022-12-13
 
 ### Global
