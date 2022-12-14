@@ -1672,14 +1672,14 @@ importers:
       '@semcore/input-mask': link:../input-mask
       '@semcore/input-number': link:../input-number
       '@semcore/input-tags': link:../input-tags
-      '@semcore/link': link:../link
+      '@semcore/link': 4.3.2_@semcore+core@semcore+core
       '@semcore/modal': link:../modal
       '@semcore/neighbor-location': link:../neighbor-location
       '@semcore/notice': link:../notice
       '@semcore/notice-bubble': link:../notice-bubble
       '@semcore/notice-global': link:../notice-global
       '@semcore/outside-click': link:../outside-click
-      '@semcore/pagination': link:../pagination
+      '@semcore/pagination': 3.4.2_@semcore+core@semcore+core
       '@semcore/pills': link:../pills
       '@semcore/popper': link:../popper
       '@semcore/portal': link:../portal
@@ -5127,12 +5127,176 @@ packages:
       }
     dev: false
 
+  /@semcore/button/4.3.1_@semcore+core@semcore+core:
+    resolution:
+      {
+        integrity: sha512-Yv8bfYV7aXx8w3gI5cT5bhbtREvrRFQPhl1KMAKWKpsC0g5V/iaE9e4B8vnecsiY/+o0Sf3jyT0yoY2Dto0+Mg==,
+      }
+    peerDependencies:
+      '@semcore/core': ^1.11
+      react: 16.8 - 18
+      react-dom: 16.8 - 18
+    dependencies:
+      '@semcore/core': link:semcore/core
+      '@semcore/flex-box': 4.7.1_@semcore+core@semcore+core
+      '@semcore/neighbor-location': 3.1.7_@semcore+core@semcore+core
+      '@semcore/spin': 4.2.1_@semcore+core@semcore+core
+      '@semcore/utils': 3.43.0_@semcore+core@semcore+core
+    dev: false
+
+  /@semcore/flex-box/4.7.1_@semcore+core@semcore+core:
+    resolution:
+      {
+        integrity: sha512-txW3F3VTaOgd3Hdlqe2DfPi8dJ1yhFThC2umjJttChSygEl1WL1dHn8CUTO0BZQdsqkBxEn5dFHMezNzjhXAoQ==,
+      }
+    peerDependencies:
+      '@semcore/core': ^1.11
+      react: 16.8 - 18
+      react-dom: 16.8 - 18
+    dependencies:
+      '@semcore/core': link:semcore/core
+      '@semcore/utils': 3.43.0_@semcore+core@semcore+core
+      classnames: 2.2.6
+      csstype: 3.0.8
+    dev: false
+
+  /@semcore/icon/3.4.1_@semcore+core@semcore+core:
+    resolution:
+      {
+        integrity: sha512-mTiiNNHxo5ybUHNtdD4IHbo1IVmqjaUNtelDoUnT+AZH6Ikt8ZD1Nx3Z4AXdw5GB1PWNeskYUW/we4e6t/eZbg==,
+      }
+    peerDependencies:
+      '@semcore/core': ^1.11
+      react: 16.8 - 18
+      react-dom: 16.8 - 18
+    dependencies:
+      '@semcore/core': link:semcore/core
+      '@semcore/flex-box': 4.7.1_@semcore+core@semcore+core
+      '@semcore/utils': 3.43.0_@semcore+core@semcore+core
+      classnames: 2.2.6
+    dev: false
+
+  /@semcore/input/3.5.1_@semcore+core@semcore+core:
+    resolution:
+      {
+        integrity: sha512-QbbmZjiQQO6wuw/KwdytF33I4PqVL9VVN70964zuB96bsuNX6JnuRjc7+WCye6l1vveU0FewH4pd4jSMdaSeJw==,
+      }
+    peerDependencies:
+      '@semcore/core': ^1.11
+      react: 16.8 - 18
+      react-dom: 16.8 - 18
+    dependencies:
+      '@semcore/core': link:semcore/core
+      '@semcore/flex-box': 4.7.1_@semcore+core@semcore+core
+      '@semcore/neighbor-location': 3.1.7_@semcore+core@semcore+core
+      '@semcore/utils': 3.43.0_@semcore+core@semcore+core
+    dev: false
+
+  /@semcore/link/4.3.2_@semcore+core@semcore+core:
+    resolution:
+      {
+        integrity: sha512-eugFTRQ5KkfmNvOEVjPoArn/7GhzlH3tB4LDjreeMQ1d3+LIoZLcvwdwr4PnEVFUf1PHR8LyK3RH6IvC07EAPQ==,
+      }
+    peerDependencies:
+      '@semcore/core': ^1.11
+      react: 16.8 - 18
+      react-dom: 16.8 - 18
+    dependencies:
+      '@semcore/core': link:semcore/core
+      '@semcore/flex-box': 4.7.1_@semcore+core@semcore+core
+      '@semcore/typography': 4.3.1_@semcore+core@semcore+core
+      '@semcore/utils': 3.43.0_@semcore+core@semcore+core
+    dev: false
+
+  /@semcore/neighbor-location/3.1.7_@semcore+core@semcore+core:
+    resolution:
+      {
+        integrity: sha512-aHyY6SW8LcWwWc9TsMq2oWf7Oj2Nq0W/oy3XgiOgZs7fmYHnzK/CR9SuMweVWA/nj18gTukBhE+3PGsyARm+jg==,
+      }
+    peerDependencies:
+      '@semcore/core': ^1.11
+      react: 16.8 - 18
+      react-dom: 16.8 - 18
+    dependencies:
+      '@semcore/core': link:semcore/core
+      '@semcore/utils': 3.43.0_@semcore+core@semcore+core
+    dev: false
+
+  /@semcore/pagination/3.4.2_@semcore+core@semcore+core:
+    resolution:
+      {
+        integrity: sha512-CqaxKGgCukKUaamDdfCpuz0Qh9w3lW0vQBzLzb+3jdRE6EQBrUYgwqggVqj9fyh7dc6n4s5iaEZW4Qe4D9ysFA==,
+      }
+    peerDependencies:
+      '@semcore/core': ^1.11
+      react: 16.8 - 18
+      react-dom: 16.8 - 18
+    dependencies:
+      '@semcore/button': 4.3.1_@semcore+core@semcore+core
+      '@semcore/core': link:semcore/core
+      '@semcore/flex-box': 4.7.1_@semcore+core@semcore+core
+      '@semcore/icon': 3.4.1_@semcore+core@semcore+core
+      '@semcore/input': 3.5.1_@semcore+core@semcore+core
+      '@semcore/link': 4.3.2_@semcore+core@semcore+core
+      '@semcore/typography': 4.3.1_@semcore+core@semcore+core
+      '@semcore/utils': 3.43.0_@semcore+core@semcore+core
+    dev: false
+
+  /@semcore/spin/4.2.1_@semcore+core@semcore+core:
+    resolution:
+      {
+        integrity: sha512-Q1ZgwFdrF0FZqbcmZHOekHjAZ/n8uRGdyg2ZR4JboTau+mZRNl5+aiiVi4F2KgI/1X+OauhnliUsmxspJrz78A==,
+      }
+    peerDependencies:
+      '@semcore/core': ^1.11
+      react: 16.8 - 18
+      react-dom: 16.8 - 18
+    dependencies:
+      '@semcore/core': link:semcore/core
+      '@semcore/flex-box': 4.7.1_@semcore+core@semcore+core
+      '@semcore/utils': 3.43.0_@semcore+core@semcore+core
+    dev: false
+
   /@semcore/theme-redesign/1.5.12:
     resolution:
       {
         integrity: sha512-zmABHHcsbbEHCTX3YWIXcIIzQx6S1oyj2NyPkea6QOh2HE+vopSWdNbUhWYT2Zax5NhQQ3HrDRdvkolhr6aBKA==,
       }
     dev: true
+
+  /@semcore/typography/4.3.1_@semcore+core@semcore+core:
+    resolution:
+      {
+        integrity: sha512-tEkry/ZN0SC8b3oWEzDlL/J2OQS50SD8yOHWYuONDR9KWFaY6s7rTnxrdaRg4OB9XXPjR6BCTP43gvp420XXTw==,
+      }
+    peerDependencies:
+      '@semcore/core': ^1.11
+      react: 16.8 - 18
+      react-dom: 16.8 - 18
+    dependencies:
+      '@semcore/core': link:semcore/core
+      '@semcore/flex-box': 4.7.1_@semcore+core@semcore+core
+      '@semcore/icon': 3.4.1_@semcore+core@semcore+core
+      '@semcore/utils': 3.43.0_@semcore+core@semcore+core
+      csstype: 3.0.8
+    dev: false
+
+  /@semcore/utils/3.43.0_@semcore+core@semcore+core:
+    resolution:
+      {
+        integrity: sha512-K3R9C3pNG3feMDtyjAa1ioe/CkrJLWdy5D7x6KodwWQNsEpurwz8io2E4/Cbqwt52+njSGOndFdXh5WyK+5BDg==,
+      }
+    peerDependencies:
+      '@semcore/core': ^1
+      react: 16.8 - 18
+      react-dom: 16.8 - 18
+    dependencies:
+      '@babel/runtime': 7.19.0
+      '@semcore/core': link:semcore/core
+      classnames: 2.2.6
+      hoist-non-react-statics: 3.3.2
+      nano-css: 5.3.4
+    dev: false
 
   /@sinclair/typebox/0.24.44:
     resolution:
@@ -21128,13 +21292,12 @@ packages:
       react-instantsearch-core: 6.35.0_npc63xaus6igy2ygmd3t37sxzu
     dev: false
 
-  /react-instantsearch-native/6.35.0_npc63xaus6igy2ygmd3t37sxzu:
+  /react-instantsearch-native/6.35.0_react@18.2.0:
     resolution:
       {
         integrity: sha512-ggJvseTvrC5EQAGmUiuckXIYlxZxDWgKHsDxoyw9g+ceOTSr1NwZbU3SmXWRhL/FF/DsqRyOCpKN8RShym7/LQ==,
       }
     peerDependencies:
-      algoliasearch: '>= 3.1 < 5'
       react: '>= 16.3.0 < 19'
       react-native: '>= 0.54.0'
     dependencies:
@@ -21153,7 +21316,7 @@ packages:
       '@babel/runtime': 7.19.0
       react-instantsearch-core: 6.35.0_npc63xaus6igy2ygmd3t37sxzu
       react-instantsearch-dom: 6.35.0_2jcwevs35ru34jgausncc4whxu
-      react-instantsearch-native: 6.35.0_npc63xaus6igy2ygmd3t37sxzu
+      react-instantsearch-native: 6.35.0_react@18.2.0
     transitivePeerDependencies:
       - algoliasearch
       - react
