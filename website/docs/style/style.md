@@ -3,14 +3,8 @@ title: Style
 ---
 
 @page design-tokens
-
-<!-- @page default-theme -->
-
+@page themes
 @page icon
 @page illustration
-@page palette
-
-<!-- @page themes -->
-
 @page typography
 @page css-injection
