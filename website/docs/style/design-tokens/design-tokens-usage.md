@@ -2,6 +2,16 @@
 title: Usage in design
 ---
 
+@## What is a design token?
+
+Design tokens are atoms of the design system's visual styles. Think of it as a value stored as a predefined style for a predefined purpose, elements, and components.
+
+_Здесь будут примеры с токенами палитры_
+
+### Tokens types
+
+_Здесь будет описание токенов с хексами и токенов, которые ссылаются на другие токены_
+
 @## Token naming structure
 
 ![scheme of tokens naming structure: --{theme-name}-{category}-{priority}-{context}-{invert}-{state}](static/token-naming.png)

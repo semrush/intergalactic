@@ -6,9 +6,14 @@ tabName: Tokens
 
 @## Description
 
-Design tokens are variables that store visual design choices (colors, fonts, spaces, opacity, box-shadows, etc.). With design tokens, designers and developers can quickly access and apply a range of visual attributes for any given element in a UI.
+Design tokens are variables that store visual design choices (colors, fonts, spaces, opacity, box-shadows, etc.). The most important thing is that tokens ensure the same style names and values are used in design files and code.
 
-The most important thing is that tokens ensure the same style names and values are used in design files and code.
+<!-- With design tokens, designers and developers can quickly access and apply a range of visual attributes for any given element in a UI. -->
+
+Intergalactic design system has:
+
+- set of base tokens that define a base palette;
+- set of semantic tokens which are applied across all components and even the chart library.
 
 @## Base tokens
 
@@ -26,4 +31,4 @@ This is the list of tokens and components for the default Intergalactic theme.
 
 This is a list of tokens for charts.
 
-@page design-tokens-figma
+@page design-tokens-usage
