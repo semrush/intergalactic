@@ -55,7 +55,7 @@ class WithI18n extends Component<IWithI18nProps> {
 const useI18n = (
   dictionary: Dictionary,
   locale: LocaleKeys = 'en',
-  fallbackDictionary: Dictionary,
+  fallbackDictionary?: Dictionary,
 ) => {
   const lang = React.useContext(Context);
   const resolvedDictionary = useAsyncI18nMessages(dictionary, lang || locale, fallbackDictionary);
