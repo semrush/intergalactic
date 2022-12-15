@@ -15,7 +15,7 @@ Intergalactic design system has:
 - set of base tokens that define a base palette;
 - set of semantic tokens which are applied across all components and even the chart library.
 
-@## Base tokens
+@## Base tokens (palette)
 
 A list of base tokens is our palette. It was built with [Huetone tool](https://huetone.ardov.me/) (you can learn more about the tool in the [Twitter thread](https://twitter.com/ardovalexey/status/1447329411678806023)).
 
