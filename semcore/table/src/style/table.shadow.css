@@ -109,7 +109,6 @@ SCellHead[use='primary'][active] {
 SCellHeadIconAsc,
 SCellHeadIconDesc {
   margin-left: var(--intergalactic-spacing-1x, 4px);
-  align-self: center;
   fill: var(--intergalactic-icon-secondary-neutral, #a9abb6);
   flex-shrink: 0;
   opacity: 0;

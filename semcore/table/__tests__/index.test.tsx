@@ -273,6 +273,29 @@ describe('Table.CellHead', () => {
       }),
     ).toMatchImageSnapshot();
   });
+
+  test('should sorting icons always be on the top of cell', async () => {
+    const component = (
+      <Table>
+        <Table.Head>
+          <Table.Row>
+            <Table.CellHead sorting="desc" id="cell" noWrap={false} style={{ maxWidth: '100px' }}>
+              head 1 in two rows
+            </Table.CellHead>
+            <Table.CellHead sorting="asc">head 2</Table.CellHead>
+          </Table.Row>
+        </Table.Head>
+      </Table>
+    );
+
+    expect(
+      await snapshot(component, {
+        actions: {
+          hover: '#cell',
+        },
+      }),
+    ).toMatchImageSnapshot();
+  });
 });
 
 describe('Table.Cell', () => {
