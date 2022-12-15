@@ -251,19 +251,27 @@ describe('Table.CellHead', () => {
     expect(await snapshot(component)).toMatchImageSnapshot();
   });
 
-  test('should support sorting icons', async () => {
+  test('should support sorting icons on hover', async () => {
     const component = (
       <Table>
         <Table.Head>
           <Table.Row>
-            <Table.CellHead sorting="desc">head 1</Table.CellHead>
+            <Table.CellHead sorting="desc" id="cell">
+              head 1
+            </Table.CellHead>
             <Table.CellHead sorting="asc">head 2</Table.CellHead>
           </Table.Row>
         </Table.Head>
       </Table>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    expect(
+      await snapshot(component, {
+        actions: {
+          hover: '#cell',
+        },
+      }),
+    ).toMatchImageSnapshot();
   });
 });
 
@@ -321,7 +329,7 @@ describe('Table.StickyHead', () => {
     expect(getByTestId('child')).toBeTruthy();
   });
 
-  test('should added classes to Table, Head', () => {
+  test('should add classes to Table, Head', () => {
     const { container } = render(
       <Table>
         <Table.StickyHead />

@@ -8,6 +8,14 @@ STable {
   border-style: hidden;
 }
 
+thead SRow {
+  border: none;
+
+  &:last-child {
+    border-bottom: 0.5px solid var(--gray-100);
+  }
+}
+
 SCell {
   background: inherit;
   box-sizing: border-box;
@@ -58,7 +66,6 @@ SCellHead {
   box-sizing: border-box;
   /* for fixed header */
   z-index: 1;
-  border-bottom: 1px solid;
 
   &:focus {
     outline: none;
