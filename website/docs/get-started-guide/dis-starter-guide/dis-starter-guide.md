@@ -32,30 +32,22 @@ We follow these core principles when building our interfaces:
 
 <!-- See [Principles](/core-principles/principles/) if you want to dive deeper and learn more about them. -->
 
-@## Color
+@## Design tokens
 
-> **TL;DR or main thoughts**: we have three main color palettes:
+> **TL;DR or main thoughts**: Intergalactic design system has:
 >
-> - main colors palette is used for the elements that call for the user's attention;
-> - gray colors palette is used for the secondary elements in the interface and text;
-> - color shades palette is used for coloring all other elements in the interface.
+> - set of base tokens that define a base palette;
+> - set of semantic tokens which are applied across all components and even the chart library.
 
-Our palette is built with [Huetone tool from Alexey Ardov](https://huetone.ardov.me/) ✨ Learn more in the [Twitter thread](https://twitter.com/ardovalexey/status/1447329411678806023).
+Intergalactic design system is built with sets of design tokens: basic and semantic ones. Base tokens set contains tokens for our palette.
 
-Each color has a name, while shades of the same color have a value at the end (for example, `var(--gray-500)`).
+Semantic tokens set refers to the base tokens. So changing the base tokens values you affect semantic tokens. Therefore, by changing the palette, you can create new themes. For creating new palette you can use tools like [Huetone](https://huetone.ardov.me/).
 
-There are two groups of palettes depending on where they're used:
-
-- for the interface;
-- for charts.
-
-Our Figma library for charts contains their color palette, as well as rules on how to use them.
-
-Go to [Palette](/style/palette/) to learn more about the color system.
+Go to [Design tokens](/style/design-tokens) to learn more about the tokens and their usage.
 
 @## Typography
 
-> **TL;DR or main thoughts**: our main font is Inter. The main text color is `var(--gray-800)`, while the secondary text color is `var(--gray-500)`.
+> **TL;DR or main thoughts**: our main font is Inter.
 
 Our type scale is based on the modular scale with the base of a 12px font size and a 1.2 ratio.
 
@@ -66,16 +58,19 @@ We strongly recommend you to use 14px and 16px sizes for text messages across yo
 
 See [Typography](/style/typography/) if want to learn more about our recommendations on typography.
 
-@## Variables
+@## Breakpoints
 
-> **TL;DR or main thoughts**: the main multiplier of our interface is 4:
->
-> - All margins between components, widgets and other elements must be multiples of 4.
-> - All paddings in widgets must also be multiples of 4.
+> **TL;DR or main thoughts**: most of our products are designed to work with data on the desktop, since there is a lot of data visualization. So adaptivity is not yet required for all products.
 
-These rules help us to maintain visual consistency in the interfaces.
+The main breakpoints that we recommend to use in our interfaces are:
 
-Check out [Variables](/style/variables/) for all the main rules for the basic component styles. If you're not sure what colors are used for what, or how hover and active states are built — that's the place you want to go.
+| Token                                | Value  | Usage                                    |
+| ------------------------------------ | ------ | ---------------------------------------- |
+| `--intergalactic-screen-extra-small` | 320px  | The smallest devices. Don't forget them. |
+| `--intergalactic-screen-small`       | 768px  | Phones and tablets.                      |
+| `--intergalactic-screen-medium`      | 1200px | Big tablets and desktop devices.         |
+
+See [Breakpoints](/layout/breakpoints/) and [Grid and page layout](/layout/grid-system/) for more information.
 
 @## Grid system
 
@@ -83,25 +78,7 @@ Check out [Variables](/style/variables/) for all the main rules for the basic co
 
 Some products use a flexible grid, while others use a fixed one depending on their requirements. The usual width of our design frames for product pages is 1440px.
 
-Go to [Grid system](/layout/grid-system) for a detailed description of this component with code examples.
-
-@## Breakpoints and grids
-
-> **TL;DR or main thoughts**: most of our products are designed to work with data on the desktop, since there is a lot of data visualization and hints how to read it. So adaptivity is not yet required for all products.
-
-The main breakpoints that we recommend to use in our interfaces are:
-
-- 320px
-- 768px
-- 1200px
-
-So you need to make designs for:
-
-- 320px — the smallest devices. Don't forget them.
-- 768px — phones and tablets.
-- more than 1200px — big tablets and desktop devices.
-
-See [Breakpoints](/layout/breakpoints/) and [Grid and breakpoints system](/layout/grid-system/) for more information.
+Go to [Grid and page layout](/layout/grid-system) for a detailed description of this component with code examples.
 
 @## Charts
 
