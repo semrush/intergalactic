@@ -135,9 +135,6 @@ class Demo extends React.Component {
               colSpan={3}
               align="center"
               active={active === 'cpc' || active === 'vol'}
-              // style={{
-              //   borderBottomColor: active === 'cpc' || active === 'vol' ? '#e0e1e9' : '#f4f5f9',
-              // }}
             >
               <Tooltip title="Jesus Christ, Joe, fucking forget about it. I'm Mr. Pink. Let's move on.">
                 <span>Organic Sessions</span>
@@ -155,9 +152,12 @@ class Demo extends React.Component {
               active={active === 'cpc'}
               onClick={this.handleHeadClick('cpc')}
               onKeyDown={this.handleHeadKeyDown('cpc')}
+              noWrap={false}
+              style={{ maxWidth: '100px' }}
             >
               <Tooltip title="Jesus Christ, Joe, fucking forget about it. I'm Mr. Pink. Let's move on.">
-                <span>CPC</span>
+                <span>CPC cpc cpc CPC cpc cpc</span>
+                <span>CPC cpc cpc CPC cpc cpc</span>
               </Tooltip>
             </Table.CellHead>
             <Table.CellHead
