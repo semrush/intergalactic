@@ -1,5 +1,5 @@
 ---
-title: Flex-box and indent system
+title: Flex-box and spacing system
 fileSource: flex-box
 tabName: Design
 ---
@@ -26,30 +26,31 @@ Example below shows how Flex component takes all properties of a Box component.
 
 @example flex
 
-@## Indent system
+@## Spacing system
 
-The indent system helps maintain a vertical and horizontal rhythms in the interface. It makes the interface easier to use by reducing cognitive load. _For example, if there are different indents in the interface everywhere, the brain will try to understand this logic and thereby add a cognitive load to itself. It is wrong way._
+The spacing system helps maintain a vertical and horizontal rhythms in the interface. It makes the interface easier to use by reducing cognitive load. _For example, if there are different indents in the interface everywhere, the brain will try to understand this logic and thereby add a cognitive load to itself. It is wrong way._
 
 In addition, vertical and horizontal rhythms help maintain visual hierarchy on the page, structure components and blocks according their importance to the user.
 
-> **Use 4 as the multiple of all the indents**. It is a main denominator of our design system (`scaleIndent` property in API), see [Variables](/style/variables/).
+> **Use 4 as the multiple of all the indents**. It is a main denominator of our design system (`scaleIndent` property in API, `--intergalactic-scale-indent` in tokens), see [Design tokens](/style/design-tokens/).
 
-Here is a table with a scale of indents we use in our design system.
+Here is a table with [spacing tokens](/style/design-tokens/) we use in our design system.
 
-| Indent in px | Indent in rem | Indent as a multiple of 4 |
-| ------------ | ------------- | ------------------------- |
-| 4            | 0.25          | 1                         |
-| 8            | 0.5           | 2                         |
-| 12           | 0.75          | 3                         |
-| 16           | 1             | 4                         |
-| 20           | 1.25          | 5                         |
-| 24           | 1.5           | 6                         |
-| 32           | 2             | 8                         |
-| 40           | 2.5           | 10                        |
-| 48           | 3             | 12                        |
-| 80           | 5             | 20                        |
-| 96           | 6             | 24                        |
-| 120          | 7.5           | 30                        |
+| Token name                    | Value in px | Value in rem | Value as a multiple of 4 |
+| ----------------------------- | ----------- | ------------ | ------------------------ |
+| `--intergalactic-spacing-05x` | 2           | 0.125        | 0,5                      |
+| `--intergalactic-spacing-1x`  | 4           | 0.25         | 1                        |
+| `--intergalactic-spacing-2x`  | 8           | 0.5          | 2                        |
+| `--intergalactic-spacing-3x`  | 12          | 0.75         | 3                        |
+| `--intergalactic-spacing-4x`  | 16          | 1            | 4                        |
+| `--intergalactic-spacing-5x`  | 20          | 1.25         | 5                        |
+| `--intergalactic-spacing-6x`  | 24          | 1.5          | 6                        |
+| `--intergalactic-spacing-8x`  | 32          | 2            | 8                        |
+| `--intergalactic-spacing-10x` | 40          | 2.5          | 10                       |
+| `--intergalactic-spacing-14x` | 56          | 3.5          | 14                       |
+| `--intergalactic-spacing-20x` | 80          | 5            | 20                       |
+| `--intergalactic-spacing-24x` | 96          | 6            | 24                       |
+| `--intergalactic-spacing-30x` | 120         | 7.5          | 30                       |
 
 @page box-api
 @page box-changelog

@@ -10,7 +10,7 @@ Basically, design tokens are atoms of the design system's visual styles. Think o
 
 ### Tokens types
 
-There are base and semantic (alias) tokens.
+There are base and semantic tokens.
 
 **Base tokens** represent the theme's global palette. Changing their values will affect semantic tokens. Therefore, by changing the palette, you can create new themes. For creating new palette you can use tools like [Huetone](https://huetone.ardov.me/).
 
@@ -62,9 +62,9 @@ Base tokens can be used for new elements and components which are not in the Int
 
 ![tokens usage example](static/token-usage4.png)
 
-@## Tokens in Figma
+@## How to make a new theme
 
-@## How to make new theme
+_Section is currently in progress ✍️_
 
 <!-- @## Default palette (old)
 

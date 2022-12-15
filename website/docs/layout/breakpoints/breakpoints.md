@@ -16,11 +16,12 @@ If you are adding adaptivity to your interface, then use breakpoints described b
 
 Here is a list of the main breakpoints we recommend using in the interfaces:
 
-| Variable               | Usage                                                |
-| ---------------------- | ---------------------------------------------------- |
-| `--xs-screen: 320px;`  | The smallest possible breakpoint for mobile devices. |
-| `--sm-screen: 768px;`  | The most common breakpoint for tablet devices.       |
-| `--md-screen: 1200px;` | Our main breakpoint for desktop devices.             |
+| Token                                | Usage                                                |
+| ------------------------------------ | ---------------------------------------------------- |
+| `--intergalactic-screen-extra-small` | The smallest possible breakpoint for mobile devices. |
+| `--intergalactic-screen-small`       | The most common breakpoint for tablet devices.       |
+| `--intergalactic-screen-medium`      | Our main breakpoint for desktop devices.             |
+| `--intergalactic-screen-large`       | Breakpoint for large desktop screens.                |
 
 @## Page layout
 
