@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [1.6.0] - 2022-09-31
+
+### Added
+
+- Added support of `--intergalactic-*` css variables.
+
 ## [1.5.0] - 2022-09-31
 
 ### Changed
