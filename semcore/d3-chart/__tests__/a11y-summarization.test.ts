@@ -11,7 +11,7 @@ import {
   Insight,
 } from '../src/a11y/insights';
 import { serialize } from '../src/a11y/serialize';
-import { translations } from '../src/a11y/translations/view/translations';
+import { localizedMessages as translations } from '../src/a11y/translations/view/__intergalactic-dynamic-locales';
 
 const pixelArtToPointsList = (space: string) =>
   space
