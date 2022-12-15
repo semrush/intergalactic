@@ -18,7 +18,7 @@ class InputSearch extends Component {
   static displayName = 'InputSearch';
 
   static style = style;
-  static enhance = [i18nEnhance()];
+  static enhance = [i18nEnhance(localizedMessages)];
   static defaultProps = {
     defaultValue: '',
     i18n: localizedMessages,

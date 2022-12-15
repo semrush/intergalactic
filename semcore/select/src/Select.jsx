@@ -33,7 +33,7 @@ class RootSelect extends Component {
   static displayName = 'Select';
 
   static style = style;
-  static enhance = [uniqueIDEnhancement(), i18nEnhance()];
+  static enhance = [uniqueIDEnhancement(), i18nEnhance(localizedMessages)];
 
   static defaultProps = (props) => ({
     placeholder: props.multiselect ? 'Select options' : 'Select option',

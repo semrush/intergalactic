@@ -7,24 +7,25 @@ import { localizedMessages } from './translations/__intergalactic-dynamic-locale
 
 class RootPageNotFound extends Component {
   static displayName = 'Maintenance';
-  static enhance = [i18nEnhance()];
+  static enhance = [i18nEnhance(localizedMessages)];
   static defaultProps = {
     i18n: localizedMessages,
+    locale: 'en',
     icon: getIconPath('page_not_found'),
     homeLink: '/',
   };
 
   render() {
     const { Children, getI18nText, homeLink } = this.asProps;
-    const { title, text, btnHome } = getI18nText();
+
     return (
       <Root render={Error}>
-        <Error.Title>{title}</Error.Title>
-        <Error.Description>{text}</Error.Description>
+        <Error.Title>{getI18nText('title')}</Error.Title>
+        <Error.Description>{getI18nText('text')}</Error.Description>
         <Children />
         <Error.Controls>
           <Button tag="a" type="none" size="l" use="primary" theme="info" href={homeLink}>
-            {btnHome}
+            {getI18nText('btnHome')}
           </Button>
         </Error.Controls>
       </Root>

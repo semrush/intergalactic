@@ -16,7 +16,7 @@ import style from './style/filter-trigger.shadow.css';
 class RootFilterTrigger extends Component {
   static displayName = 'FilterTrigger';
   static style = style;
-  static enhance = [i18nEnhance()];
+  static enhance = [i18nEnhance(localizedMessages)];
   static defaultProps = {
     i18n: localizedMessages,
     locale: 'en',

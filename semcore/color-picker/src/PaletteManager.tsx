@@ -21,7 +21,7 @@ class PaletteManagerRoot extends Component<RootAsProps, State> {
   static displayName = 'PaletteManager';
 
   static style = style;
-  static enhance = [i18nEnhance()];
+  static enhance = [i18nEnhance(localizedMessages)];
 
   static defaultProps = {
     defaultColors: [],

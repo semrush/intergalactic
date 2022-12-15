@@ -17,7 +17,7 @@ import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
 class ModalRoot extends Component {
   static displayName = 'Modal';
   static style = style;
-  static enhance = [i18nEnhance()];
+  static enhance = [i18nEnhance(localizedMessages)];
   static defaultProps = {
     duration: 200,
     closable: true,
@@ -138,7 +138,7 @@ function Overlay(props) {
 
 function Close(props) {
   const SClose = Root;
-  const { Children, children: hasChildren } = props;
+  const { Children, children: hasChildren, getI18nText } = props;
   return sstyled(props.styles)(
     <SClose render={Box} tag="button" tabIndex={0} aria-label={getI18nText('close')}>
       {hasChildren ? <Children /> : <CloseIcon title={getI18nText('close')} />}

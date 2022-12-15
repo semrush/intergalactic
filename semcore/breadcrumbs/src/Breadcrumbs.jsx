@@ -11,7 +11,7 @@ import style from './style/breadcrumbs.shadow.css';
 class Breadcrumbs extends Component {
   static displayName = 'Breadcrumbs';
   static style = style;
-  static enhance = [i18nEnhance()];
+  static enhance = [i18nEnhance(localizedMessages)];
   static defaultProps = {
     separator: <SSeparator />,
     tag: 'div',
@@ -46,7 +46,7 @@ class Item extends Component {
     };
   }
 
-  static enhance = [keyboardFocusEnhance(), i18nEnhance()];
+  static enhance = [keyboardFocusEnhance(), i18nEnhance(localizedMessages)];
 
   render() {
     const SBreadcrumbsItem = Root;

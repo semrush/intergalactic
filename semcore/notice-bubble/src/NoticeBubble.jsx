@@ -26,7 +26,7 @@ const Notices = (props) => {
         duration={250}
         keyframes={[styles['@enter'], styles['@exit']]}
       >
-        <SView {...notice} styles={notice.styles || styles} />
+        <SView {...notice} styles={notice.styles || styles} getI18nText={props.getI18nText} />
       </Animation>,
     );
   });
@@ -44,7 +44,7 @@ const Notices = (props) => {
 class NoticeBubbleContainerRoot extends Component {
   static displayName = 'NoticeBubbleContainer';
   static style = style;
-  static enhance = [i18nEnhance()];
+  static enhance = [i18nEnhance(localizedMessages)];
   static defaultProps = {
     manager,
     i18n: localizedMessages,
@@ -79,15 +79,15 @@ class NoticeBubbleContainerRoot extends Component {
 
   render() {
     const SNoticeBubble = Root;
-    const { Children, styles, disablePortal } = this.asProps;
+    const { Children, styles, disablePortal, getI18nText } = this.asProps;
     const { notices, warnings } = this.state;
 
     return sstyled(styles)(
       <Portal disablePortal={disablePortal}>
         <SNoticeBubble render={Box} role="alert" aria-live="assertive">
           <Children />
-          <Notices styles={styles} data={warnings} tag={ViewWarning} />
-          <Notices styles={styles} data={notices} tag={ViewInfo} />
+          <Notices styles={styles} data={warnings} tag={ViewWarning} getI18nText={getI18nText} />
+          <Notices styles={styles} data={notices} tag={ViewInfo} getI18nText={getI18nText} />
         </SNoticeBubble>
       </Portal>,
     );

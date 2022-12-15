@@ -38,7 +38,7 @@ class RangePickerAbstract extends Component {
     };
   }
 
-  static enhance = [i18nEnhance()];
+  static enhance = [i18nEnhance(localizedMessages)];
 
   static add = (date, amount, unit) => {
     return dayjs(date).add(amount, unit).toDate();

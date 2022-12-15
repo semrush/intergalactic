@@ -17,7 +17,7 @@ function isCustomTheme(theme) {
 class NoticeGlobalRoot extends Component {
   static displayName = 'NoticeGlobal';
   static style = style;
-  static enhance = [i18nEnhance()];
+  static enhance = [i18nEnhance(localizedMessages)];
   static defaultProps = {
     theme: 'neutral',
     duration: 250,

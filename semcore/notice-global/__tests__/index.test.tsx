@@ -25,7 +25,7 @@ describe('NoticeGlobal', () => {
     const spy = jest.fn();
     const component = <NoticeGlobal closable onClose={spy} />;
     const { getByLabelText } = render(component);
-    fireEvent.click(getByLabelText(/Close alert/i));
+    fireEvent.click(getByLabelText(/Close/i));
     expect(spy).toBeCalled();
   });
 

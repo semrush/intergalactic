@@ -26,7 +26,7 @@ class InlineEdit extends Component<AsProps> {
   static displayName = 'InlineEdit';
 
   static style = style;
-  static enhance = [i18nEnhance()];
+  static enhance = [i18nEnhance(localizedMessages)];
 
   static defaultProps = {
     defaultEditable: false,

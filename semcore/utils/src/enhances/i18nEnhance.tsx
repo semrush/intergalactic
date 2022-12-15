@@ -1,5 +1,5 @@
 import React from 'react';
-import { Context as ContextI18n, LocaleKeys } from './WithI18n';
+import { LocaleKeys, useI18n } from './WithI18n';
 
 const interpolationRegex = /{{(.*?)}}/g;
 
@@ -46,7 +46,36 @@ export interface IWithI18nEnhanceProps {
 type Messages = { [messageId: string]: string };
 type MessagesContainer = { [locale: string]: Messages | (() => Promise<Messages>) };
 type MessagesStore = { [locale: string]: Messages };
-export const useAsyncI18n = (container: MessagesContainer, locale: string) => {
+export const useAsyncI18nMessages = (
+  primaryContainer: MessagesContainer,
+  locale: string,
+  fallbackContainer?: MessagesContainer,
+) => {
+  const container = React.useMemo(() => {
+    if (!fallbackContainer) return primaryContainer;
+    if (primaryContainer === fallbackContainer) return primaryContainer;
+    const container: MessagesContainer = {};
+    for (const locale in primaryContainer) {
+      if (
+        typeof primaryContainer[locale] === 'function' ||
+        typeof fallbackContainer[locale] === 'function'
+      ) {
+        container[locale] = async () => {
+          const [primary, fallback] = await Promise.all([
+            primaryContainer[locale],
+            fallbackContainer[locale],
+          ]);
+          return { ...primary, ...fallback };
+        };
+      } else {
+        container[locale] = {
+          ...(primaryContainer[locale] ?? {}),
+          ...(fallbackContainer[locale] ?? {}),
+        };
+      }
+    }
+    return container;
+  }, [primaryContainer, fallbackContainer]);
   const initStore = React.useMemo(() => {
     const store: MessagesStore = {};
     for (const locale in container) {
@@ -83,17 +112,11 @@ export const useAsyncI18n = (container: MessagesContainer, locale: string) => {
 
   return store[locale] ?? fallbackMessages;
 };
-
-export default () => {
+export default (container?: MessagesContainer) => {
   return (props) => {
-    const contextLocale = React.useContext(ContextI18n);
     const { i18n, locale } = props;
-    const resolvedLocale = locale || contextLocale;
-    const resolvedMessages = useAsyncI18n(i18n, resolvedLocale);
+    const getI18nText = useI18n(i18n, locale, container);
 
-    return {
-      getI18nText: (messageId, variables) => interpolate(resolvedMessages[messageId], variables),
-      ...props,
-    };
+    return { ...props, getI18nText };
   };
 };

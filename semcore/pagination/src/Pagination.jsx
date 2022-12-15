@@ -41,6 +41,7 @@ class PaginationRoot extends Component {
       defaultCurrentPage: 1,
       defaultTotalPages: 1,
       i18n: localizedMessages,
+      locale: 'en',
       children: (
         <>
           {totalPages === 1 ? null : (
@@ -57,7 +58,7 @@ class PaginationRoot extends Component {
     };
   };
   static style = style;
-  static enhance = [i18nEnhance()];
+  static enhance = [i18nEnhance(localizedMessages)];
 
   state = {
     // Crutch, so as not to take out `dirtyCurrentPage` in props

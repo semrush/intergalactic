@@ -87,7 +87,7 @@ class ItemPicker extends Component {
   handleVisibleChange = (visible) => this.setState({ visible });
 
   getAriaLabel = () => {
-    const { getI18nText } = this.asProps;
+    const { _getI18nText: getI18nText } = this.asProps;
     if (this.field === 'hours') return getI18nText('hours');
     if (this.field === 'minutes') return getI18nText('minutes');
     return undefined;

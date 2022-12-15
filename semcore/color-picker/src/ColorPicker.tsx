@@ -62,7 +62,7 @@ class ColorPickerRoot extends Component<RootAsProps> {
   static displayName = 'ColorPicker';
 
   static style = style;
-  static enhance = [i18nEnhance()];
+  static enhance = [i18nEnhance(localizedMessages)];
 
   static defaultProps = () => ({
     defaultVisible: false,
@@ -110,8 +110,15 @@ class ColorPickerRoot extends Component<RootAsProps> {
     };
   }
 
+  getInputColorProps() {
+    const { getI18nText } = this.asProps;
+
+    return {
+      getI18nText,
+    };
+  }
   getItemProps(props: ItemAsProps) {
-    const { value, displayLabel } = this.asProps;
+    const { value, displayLabel, getI18nText } = this.asProps;
     const isSelected = value === props.value;
 
     return {
@@ -123,6 +130,7 @@ class ColorPickerRoot extends Component<RootAsProps> {
         }
       },
       selected: isSelected,
+      getI18nText,
     };
   }
 

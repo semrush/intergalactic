@@ -63,7 +63,7 @@ export function formatHoursTo24(hours /* hours by 12 */, meridiem) {
 class TimePickerRoot extends Component {
   static displayName = 'TimePicker';
   static style = style;
-  static enhance = [i18nEnhance()];
+  static enhance = [i18nEnhance(localizedMessages)];
   static defaultProps = ({ is12Hour }) => ({
     defaultValue: '',
     size: 'm',
@@ -175,7 +175,7 @@ class TimePickerRoot extends Component {
       $onValueChange: this.handleValueChange,
       minutesInputRef: this.minutesInputRef,
       hoursInputRef: this.hoursInputRef,
-      getI18nText,
+      _getI18nText: getI18nText,
     };
   };
 

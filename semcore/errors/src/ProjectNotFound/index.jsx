@@ -8,9 +8,10 @@ import { localizedMessages } from './translations/__intergalactic-dynamic-locale
 
 class RootProjectNotFound extends Component {
   static displayName = 'Maintenance';
-  static enhance = [i18nEnhance()];
+  static enhance = [i18nEnhance(localizedMessages)];
   static defaultProps = {
     i18n: localizedMessages,
+    locale: 'en',
     icon: getIconPath('project_not_found'),
     projectsLink: '/projects',
     contactsLink: '/company/contacts',
@@ -19,19 +20,18 @@ class RootProjectNotFound extends Component {
 
   render() {
     const { Children, getI18nText, projectsLink, contactsLink, supportTeamLink } = this.asProps;
-    const { title, btnProjects, btnContacts } = getI18nText();
     const text = getI18nText('text', { url: supportTeamLink });
     return (
       <Root render={Error}>
-        <Error.Title>{title}</Error.Title>
+        <Error.Title>{getI18nText('title')}</Error.Title>
         <Error.Description tag={FormatText} size="l" dangerouslySetInnerHTML={{ __html: text }} />
         <Children />
         <Error.Controls>
           <Button tag="a" type="none" size="l" use="primary" theme="info" href={projectsLink}>
-            {btnProjects}
+            {getI18nText('btnProjects')}
           </Button>
           <Button size="l" tag="a" type="none" href={contactsLink}>
-            {btnContacts}
+            {getI18nText('btnContacts')}
           </Button>
         </Error.Controls>
       </Root>

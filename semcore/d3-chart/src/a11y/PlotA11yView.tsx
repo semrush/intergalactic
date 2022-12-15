@@ -8,7 +8,7 @@ import { summarize } from './summarize';
 import { Root, sstyled } from '@semcore/core';
 import styles from '../style/plotA11yView.shadow.css';
 import { Box } from '@semcore/flex-box';
-import { useAsyncI18n } from '@semcore/utils/lib/enhances/i18nEnhance';
+import { useAsyncI18nMessages } from '@semcore/utils/lib/enhances/i18nEnhance';
 import { localizedMessages } from './translations/view/__intergalactic-dynamic-locales';
 
 export const PlotA11yView: React.FC<A11yViewProps> = ({
@@ -21,7 +21,7 @@ export const PlotA11yView: React.FC<A11yViewProps> = ({
   locale,
 }) => {
   const SPlotA11yView = Root;
-  const translations = useAsyncI18n(localizedMessages, locale);
+  const translations = useAsyncI18nMessages(localizedMessages, locale);
   const intl = React.useMemo(() => getIntl(locale, translations), [locale]);
   const config = React.useMemo(() => makeDataSummarizationConfig(providedConfig), [providedConfig]);
   const data = React.useMemo(

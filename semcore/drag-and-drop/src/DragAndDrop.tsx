@@ -62,7 +62,7 @@ type State = {
 
 class DragAndDropRoot extends Component<AsProps, {}, State> {
   static displayName = 'DragAndDrop';
-  static enhance = [i18nEnhance()];
+  static enhance = [i18nEnhance(localizedMessages)];
   static defaultProps = {
     theme: 'default',
     i18n: localizedMessages,

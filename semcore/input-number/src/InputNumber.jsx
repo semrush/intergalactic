@@ -17,7 +17,7 @@ const IconDown = () => BUTTONS.down;
 class InputNumber extends Component {
   static displayName = 'InputNumber';
   static style = style;
-  static enhance = [i18nEnhance()];
+  static enhance = [i18nEnhance(localizedMessages)];
   static defaultProps = {
     size: 'm',
     i18n: localizedMessages,
@@ -47,11 +47,12 @@ class InputNumber extends Component {
   }
 
   getControlsProps() {
-    const { size } = this.asProps;
+    const { size, getI18nText } = this.asProps;
     return {
       size,
       inc: this.handlerInc,
       dec: this.handlerDec,
+      getI18nText,
     };
   }
 

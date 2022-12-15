@@ -9,9 +9,10 @@ import { localizedMessages } from './translations/__intergalactic-dynamic-locale
 
 class RootPageError extends Component {
   static displayName = 'PageError';
-  static enhance = [i18nEnhance()];
+  static enhance = [i18nEnhance(localizedMessages)];
   static defaultProps = {
     i18n: localizedMessages,
+    locale: 'en',
     icon: getIconPath('page_error'),
   };
 
@@ -23,11 +24,11 @@ class RootPageError extends Component {
 
   render() {
     const { Children, getI18nText, onClick, ...other } = this.asProps;
-    const { title, text, btnRetry } = getI18nText();
+
     return (
       <Error {...other}>
-        <Error.Title>{title}</Error.Title>
-        <Error.Description>{text}</Error.Description>
+        <Error.Title>{getI18nText('title')}</Error.Title>
+        <Error.Description>{getI18nText('text')}</Error.Description>
         <Children />
         <Error.Controls>
           <Button
@@ -36,7 +37,7 @@ class RootPageError extends Component {
             use="primary"
             theme="info"
           >
-            {btnRetry}
+            {getI18nText('btnRetry')}
           </Button>
         </Error.Controls>
       </Error>

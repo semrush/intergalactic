@@ -78,7 +78,7 @@ type CancelControlAsProps = ControlAsProps & {
 class InlineInputBase extends Component<RootAsProps> {
   static displayName = 'InlineInput';
 
-  static enhance = [i18nEnhance()];
+  static enhance = [i18nEnhance(localizedMessages)];
   static defaultProps = {
     state: 'normal',
     onBlurBehavior: 'confirm',

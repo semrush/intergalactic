@@ -17,7 +17,7 @@ const INTERACTION_TAGS = ['INPUT', 'TEXTAREA'];
 class DropdownMenuRoot extends Component {
   static displayName = 'DropdownMenu';
   static style = style;
-  static enhance = [uniqueIDEnhancement(), i18nEnhance()];
+  static enhance = [uniqueIDEnhancement(), i18nEnhance(localizedMessages)];
 
   static defaultProps = {
     size: 'm',

@@ -7,24 +7,24 @@ import { localizedMessages } from './translations/__intergalactic-dynamic-locale
 
 class RootAccessDenied extends Component {
   static displayName = 'AccessDenied';
-  static enhance = [i18nEnhance()];
+  static enhance = [i18nEnhance(localizedMessages)];
   static defaultProps = {
     i18n: localizedMessages,
+    locale: 'en',
     homeLink: '/',
     icon: getIconPath('access_denied'),
   };
 
   render() {
     const { Children, getI18nText, homeLink } = this.asProps;
-    const { title, text, btnHome } = getI18nText();
     return (
       <Root render={Error}>
-        <Error.Title>{title}</Error.Title>
-        <Error.Description wMax="640px">{text}</Error.Description>
+        <Error.Title>{getI18nText('title')}</Error.Title>
+        <Error.Description wMax="640px">{getI18nText('text')}</Error.Description>
         <Children />
         <Error.Controls>
           <Button tag="a" type="none" size="l" use="primary" theme="info" href={homeLink}>
-            {btnHome}
+            {getI18nText('btnHome')}
           </Button>
         </Error.Controls>
       </Root>

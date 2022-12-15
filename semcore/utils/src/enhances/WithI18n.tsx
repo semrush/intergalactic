@@ -1,7 +1,7 @@
 /* eslint-disable */
 import React, { Component, createContext } from 'react';
 import createHoc from '../createHoc';
-import { interpolate, useAsyncI18n } from './i18nEnhance';
+import { interpolate, useAsyncI18nMessages } from './i18nEnhance';
 
 export type LocaleKeys = string;
 export type DictionaryItem = { [key: string]: string };
@@ -52,13 +52,18 @@ class WithI18n extends Component<IWithI18nProps> {
   }
 }
 
-const useI18n = (dictionary: Dictionary, locale: LocaleKeys = 'en') => {
-  const lang = React.useContext(Context) || locale;
-  const resolvedDictionary = useAsyncI18n(dictionary, lang);
+const useI18n = (
+  dictionary: Dictionary,
+  locale: LocaleKeys = 'en',
+  fallbackDictionary: Dictionary,
+) => {
+  const lang = React.useContext(Context);
+  const resolvedDictionary = useAsyncI18nMessages(dictionary, lang || locale, fallbackDictionary);
   return React.useCallback(
-    (messageId: string, variables?: { [key: string]: string | number | undefined }) =>
-      interpolate(resolvedDictionary[messageId], variables),
-    [resolvedDictionary, lang],
+    (messageId: string, variables?: { [key: string]: string | number | undefined }) => {
+      return interpolate(resolvedDictionary[messageId], variables);
+    },
+    [resolvedDictionary],
   );
 };
 

@@ -22,7 +22,7 @@ class Dropdown extends Component {
     i18n: localizedMessages,
     locale: 'en',
   };
-  static enhance = [uniqueIDEnhancement(), i18nEnhance()];
+  static enhance = [uniqueIDEnhancement(), i18nEnhance(localizedMessages)];
 
   uncontrolledProps() {
     return {
