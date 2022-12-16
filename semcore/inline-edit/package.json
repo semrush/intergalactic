@@ -1,7 +1,7 @@
 {
   "name": "@semcore/inline-edit",
   "description": "Semrush Input Component",
-  "version": "2.2.1",
+  "version": "2.3.0",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
