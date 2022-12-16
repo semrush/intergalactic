@@ -1,0 +1,261 @@
+[
+  {
+    "name": "--intergalactic-chart-palette-order-blue",
+    "type": "color",
+    "rawValue": "{blue.300}",
+    "computedValue": "#2bb3ff",
+    "components": ["d3-chart"]
+  },
+  {
+    "name": "--intergalactic-chart-palette-order-green",
+    "type": "color",
+    "rawValue": "{green.200}",
+    "computedValue": "#59ddaa",
+    "components": ["d3-chart"]
+  },
+  {
+    "name": "--intergalactic-chart-palette-order-orange",
+    "type": "color",
+    "rawValue": "{orange.400}",
+    "computedValue": "#ff642d",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-chart-palette-order-pink",
+    "type": "color",
+    "rawValue": "{pink.300}",
+    "computedValue": "#f67cf2",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-chart-palette-order-yellow",
+    "type": "color",
+    "rawValue": "{yellow.200}",
+    "computedValue": "#fdc23c",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-chart-palette-order-violet",
+    "type": "color",
+    "rawValue": "{violet.400}",
+    "computedValue": "#ab6cfe",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-chart-palette-order-red",
+    "type": "color",
+    "rawValue": "{red.300}",
+    "computedValue": "#ff8786",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-chart-palette-order-salad",
+    "type": "color",
+    "rawValue": "{salad.200}",
+    "computedValue": "#9bd85d",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-chart-palette-order-blue-second-order",
+    "type": "color",
+    "rawValue": "{blue.400}",
+    "computedValue": "#008ff8",
+    "components": ["d3-chart"]
+  },
+  {
+    "name": "--intergalactic-chart-palette-order-green-second-order",
+    "type": "color",
+    "rawValue": "{green.300}",
+    "computedValue": "#00c192",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-chart-palette-order-orange-second-order",
+    "type": "color",
+    "rawValue": "{orange.200}",
+    "computedValue": "#ffb26e",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-chart-palette-order-pink-second-order",
+    "type": "color",
+    "rawValue": "{pink.400}",
+    "computedValue": "#e14adf",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-chart-palette-order-yellow-second-order",
+    "type": "color",
+    "rawValue": "{yellow.300}",
+    "computedValue": "#ef9800",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-chart-palette-order-violet-second-order",
+    "type": "color",
+    "rawValue": "{violet.200}",
+    "computedValue": "#dcb8ff",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-chart-palette-order-red-second-order",
+    "type": "color",
+    "rawValue": "{red.400}",
+    "computedValue": "#ff4953",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-chart-palette-order-salad-second-order",
+    "type": "color",
+    "rawValue": "{salad.300}",
+    "computedValue": "#66c030",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-chart-palette-order-blue-third-order",
+    "type": "color",
+    "rawValue": "{blue.200}",
+    "computedValue": "#8ecdff",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-chart-palette-order-green-third-order",
+    "type": "color",
+    "rawValue": "{green.400}",
+    "computedValue": "#009f81",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-chart-palette-order-orange-third-order",
+    "type": "color",
+    "rawValue": "{orange.300}",
+    "computedValue": "#ff8c43",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-chart-palette-order-pink-third-order",
+    "type": "color",
+    "rawValue": "{pink.200}",
+    "computedValue": "#ffa9fa",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-chart-palette-order-yellow-third-order",
+    "type": "color",
+    "rawValue": "{yellow.400}",
+    "computedValue": "#d87900",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-chart-palette-order-violet-third-order",
+    "type": "color",
+    "rawValue": "{violet.300}",
+    "computedValue": "#c695ff",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-chart-palette-order-red-third-order",
+    "type": "color",
+    "rawValue": "{red.200}",
+    "computedValue": "#ffaeb5",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-chart-palette-order-salad-third-order",
+    "type": "color",
+    "rawValue": "{salad.400}",
+    "computedValue": "#35a21e",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-chart-palette-order-total-amount",
+    "type": "color",
+    "rawValue": "{gray.400}",
+    "computedValue": "#8a8e9b",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-chart-palette-order-other-data",
+    "type": "color",
+    "rawValue": "{gray.200}",
+    "computedValue": "#c4c7cf",
+    "components": ["d3-chart"]
+  },
+  {
+    "name": "--intergalactic-chart-palette-order-null",
+    "type": "color",
+    "rawValue": "{gray.100}",
+    "computedValue": "#e0e1e9",
+    "components": ["d3-chart"]
+  },
+  {
+    "name": "--intergalactic-chart-grid-line",
+    "type": "color",
+    "rawValue": "{gray.100}",
+    "computedValue": "#e0e1e9",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-chart-grid-x-axis",
+    "type": "color",
+    "rawValue": "{gray.200}",
+    "computedValue": "#c4c7cf",
+    "components": ["d3-chart"]
+  },
+  {
+    "name": "--intergalactic-chart-grid-y-accent-hover-line",
+    "type": "color",
+    "rawValue": "{gray.300}",
+    "computedValue": "#a9abb6",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-chart-grid-text-label",
+    "type": "color",
+    "rawValue": "{gray.500}",
+    "computedValue": "#6c6e79",
+    "components": ["d3-chart"]
+  },
+  {
+    "name": "--intergalactic-chart-grid-bar-chart-hover",
+    "type": "color",
+    "rawValue": "{gray.200}, 0.3",
+    "computedValue": "rgba(196, 199, 207, 0.3)",
+    "components": ["d3-chart"]
+  },
+  {
+    "name": "--intergalactic-chart-grid-bar-chart-base-bg",
+    "type": "color",
+    "rawValue": "{gray.100}",
+    "computedValue": "#e0e1e9",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-chart-grid-period-bg",
+    "type": "color",
+    "rawValue": "{gray.200}, 0.2",
+    "computedValue": "rgba(196, 199, 207, 0.2)",
+    "components": ["d3-chart"]
+  },
+  {
+    "name": "--intergalactic-chart-grid-border",
+    "type": "color",
+    "rawValue": "{gray.white}",
+    "computedValue": "#ffffff",
+    "components": ["d3-chart"]
+  },
+  {
+    "name": "--intergalactic-chart-x-axis-accent-period-active",
+    "type": "color",
+    "rawValue": "{gray.400}",
+    "computedValue": "#8a8e9b",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-chart-x-axis-accent-data-start-tracking",
+    "type": "color",
+    "rawValue": "{green.400}, 0.2",
+    "computedValue": "rgba(0, 159, 129, 0.2)",
+    "components": []
+  }
+]
