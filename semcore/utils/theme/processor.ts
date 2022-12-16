@@ -190,7 +190,10 @@ for (const token in values) {
 themeCssLines.push('}');
 
 await fs.writeFile('./semcore/utils/src/themes/default.css', themeCssLines.join('\n'));
-await fs.writeFile('./semcore/utils/src/themes/default.json', JSON.stringify(themeJson, null, 2));
+await fs.writeFile(
+  './semcore/utils/src/themes/default.json',
+  JSON.stringify(themeJson, null, 2) + '\n',
+);
 
 const projectCssPaths = (
   await glob('./semcore/*/src/**/*.shadow.css', {
@@ -358,7 +361,7 @@ if (colorLiterals.length > 0) {
   }
 }
 
-const documentation: {
+const designTokensDocumentation: {
   name: string;
   type: string;
   rawValue: string;
@@ -370,7 +373,7 @@ const documentation: {
 for (const token in values) {
   const components = [...new Set((usages[token] ?? []).map((cssPath) => cssPath.split('/')[2]))];
 
-  documentation.push({
+  designTokensDocumentation.push({
     name: `--${prefix}-${token}`,
     type: types[token],
     rawValue: rawValues[token],
@@ -380,7 +383,27 @@ for (const token in values) {
   });
 }
 
+const baseTokensDocumentation: {
+  name: string;
+  value: string;
+  description: string;
+}[] = [];
+
+for (const group in baseColors) {
+  for (const index in baseColors[group]) {
+    baseTokensDocumentation.push({
+      name: `--${group}-${index}`,
+      value: baseColors[group][index].value,
+      description: baseColors[group][index].description,
+    });
+  }
+}
+
 await fs.writeFile(
-  resolvePath(dirname, '../../../website/docs/style/design-tokens/components/tokens-list.json'),
+  resolvePath(dirname, '../../../website/docs/style/themes/components/design-tokens.json'),
+  JSON.stringify(designTokensDocumentation, null, 2) + '\n',
+);
+await fs.writeFile(
+  resolvePath(dirname, '../../../website/docs/style/themes/components/tokens-list.json'),
   JSON.stringify(documentation, null, 2),
 );
