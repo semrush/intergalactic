@@ -6,46 +6,46 @@ tabName: Design
 
 @## Description
 
-**Accordion** is a component which allows you to hide/display areas with a large amount of information or data.
+**Accordion** is a component which allows you to hide/display areas with a large amount of data.
 
 ### When to use it
 
-- **You have a large amount of data and don't want to show it all at once**. By hiding a part of the content, we help users focus on their task. _For example, you can use the Accordion in a table with large bulk of data or in large widgets with additional information._
-- **When the screen area is limited (for example, on a mobile device)**. According to [NNG](https://www.nngroup.com/articles/accordions-complex-content/), users are very reluctant to scroll on mobile devices in contrast to the desktop. Therefore, using the accordion on small screens helps reduce the scroll area, simplify the structure of content and navigation through it.
+- **You have a large amount of data and don't want to show it all at once**. By hiding a part of the content, you help users focus on their task. _For example, you can use an accordion in a table with a large amount of data or in large widgets with additional information._
+- **When screen area is limited (for example, on a mobile device)**. Mobile users usually don't have much choice for navigating through site content other than scrolling. Therefore, using the accordion on small screens helps reduce the scroll area, simplify the structure of content and navigation through it.
 
 > **Don't confuse hiding content in accordion with hiding content and functionality in dropdown**. These components have different tasks.
 >
-> We always use the accordion to collapse additional information (sometimes functions) in order to save space and time for the user.
+> Use accordion to collapse additional information (sometimes functions) in order to save space and time for the user.
 >
-> We use dropdown primarily to hide additional features and sometimes additional information.
+> Use dropdown primarily to hide additional features and sometimes additional information.
 
 @## Appearance
 
 The accordion consists of:
 
-- a trigger that usually includes the `ChevronRight` icon and a text label;
-- collapsed areas with content.
+- a trigger (`Accordion.Item.Toggle`) that includes the `ChevronRight` icon and a text label;
+- collapsed areas with content (`Accordion.Item.Collapse`).
 
-The `ChevronRight` icon always has M size and has a `margin-right: 8px;` with all font sizes.
+The `ChevronRight` icon always has M size and `margin-right: 8px;` with all font sizes.
 
 ![accordion chevron margin](static/margins.png)
 
-> Please note that you can use different styles for the trigger and collapsed content than the standard ones described below.
+> Please note that you can use different styles for the trigger and collapsed content than the default ones described below.
 
 @## Sizes
 
-You can set the width of the accordion that is appropriate for the context and solution of the problem.
+You can set the width of the accordion that is appropriate for the context.
 
 ![accordion with max-width](static/max-width.png)
 
 @## Trigger
 
-> The accordion trigger can be text, link or button of any size you need.
+> You can use text, link or button of any size you need as the accordion trigger.
 
-|                           | Appearance example                          | Description and styles                                                                                                      |
-| ------------------------- | ------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
-| Default accordion         | ![accordion default](static/default.png)    | Default colors: icon — `--gray-300`; text — `--gray-800`.                                                                   |
-| Accordion with background | ![accordion default](static/default-bg.png) | The background and text color can be any color depending on the usage context. The default background color is `--gray-50`. |
+|                              | Appearance example                          | Default styles                                                                                                                                                                                                                                               |
+| ---------------------------- | ------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Accordion without background | ![accordion default](static/default.png)    | For the icon color use `--intergalactic-icon-secondary-neutral` token; for the text `--intergalactic-text-primary` token.                                                                                                                                    |
+| Accordion with background    | ![accordion default](static/default-bg.png) | For the background and text color you can use any background color from the [semantic tokens list](/style/design-tokens/#semantic_tokens) depending on the usage context. For the default background color use `--intergalactic-bg-secondary-neutral` token. |
 
 @## Collapsed content
 
@@ -63,23 +63,23 @@ You can use this component to hide almost any content. This can be a text conten
 
 @## Interaction
 
-> **By default, when opening a section of the accordion, the sections that have already been opened should not be hidden**.
+> **By default, when a section of the accordion is opened, other sections that have already been opened should not be closed**.
 >
 > The user expects this behavior when working with the desktop device interface.
 >
-> On mobile devices and in the menu, it is recommended to hide previously opened sections when opening a new data section, as this reduces the scroll area.
+> On mobile devices and in the menu, it is recommended to close previously opened sections when a new data section is opened, as this reduces the scroll area.
 
 **The icon and text label have the same hover and click zone**.
 
 ![accordion hover zone](static/hoverzone.png)
 
-| State    | Appearance examples                              | Description and                                                                                                                                                          |
-| -------- | ------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| default  | ![accordion default](static/default-state.png)   |                                                                                                                                                                          |
-| hover    | ![accordion hover](static/hover-state.png)       | The color of the icon changes to the next in the palette — `--gray-400`. If the accordion trigger has a background, it can also change color when hovering.              |
-| active   | ![accordion active](static/active-state.png)     | In this state, the `ChevronRight` icon rotates 90 degrees: `transform: rotate(90deg);`. All other trigger styles remain the same as in the `hover` state.                |
-| disabled | ![accordion disabled](static/disabled-state.png) | Use [`--intergalactic-disabled-opacity`](/style/design-tokens/) token.                                                                                                   |
-| loading  | ![accordion loading](static/loading-state.png)   | If the system needs time to load the content hidden in the accordion, then display [Spin](/components/spin/) with a respective size. By default, the spinner size is XS. |
+| State    | Appearance examples                              | Description and styles                                                                                                                                                                               |
+| -------- | ------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| default  | ![accordion default](static/default-state.png)   |                                                                                                                                                                                                      |
+| hover    | ![accordion hover](static/hover-state.png)       | The color of the icon changes to the next in the palette — `--intergalactic-icon-secondary-neutral-hover-active`. If the accordion trigger has a background, it can also change color when hovering. |
+| active   | ![accordion active](static/active-state.png)     | The `ChevronRight` icon rotates to 90 degrees: `transform: rotate(90deg);`. All other trigger styles remain the same as in the `hover` state.                                                        |
+| disabled | ![accordion disabled](static/disabled-state.png) | Use [`--intergalactic-disabled-opacity`](/style/design-tokens/) token.                                                                                                                               |
+| loading  | ![accordion loading](static/loading-state.png)   | If the system needs time to load the content hidden in the accordion, then show [Spin](/components/spin/) with a respective size. By default, the spinner size is XS.                                |
 
 @## Animation
 
@@ -89,20 +89,20 @@ For smooth content display and icon rotation, the component has `transition: all
 
 ### Accordion on mobile devices
 
-If the accordion is used on a mobile device, then when scrolling the page it is recommended to fix the title of the open tab in the viewport upper part.
+If the accordion is used on a mobile device, then when scrolling the page we recommended you to fix the title of the opened tab in the user's viewport upper part.
 
 ### Accordion labels
 
-Keep your accordion labels short and clear. As a rule, choose nouns that reflect the backbone of the collapsed content tab.
+Keep your accordion labels short and clear. As a rule, choose nouns that capture the essence of the collapsed content tab.
 
 ### Accordion advantages
 
-Mostly, they relate to the long pages loaded with content.
+Mostly, the advantages of the accordion relate to long pages that are loaded with content.
 
-- Hiding data in the accordion helps reduce the scroll area. This is very practical for mobile devices.
+- Hiding data in the accordion helps reduce the scroll area. This is very useful for mobile devices.
 - The accordion tabs makes a mini-structure of a page. Content becomes easier to navigate, and it is easier for users to build a mental model of the information available on the page.
 - Hiding additional information makes the page look less intimidatingly loaded.
-- Accordions can be a great alternative to links as they don't break the mental model in users' heads the way the links do.
+- Accordions can be a great alternative to links as they don't break the mental model the way the links do.
 
 @page accordion-a11y
 @page accordion-api
