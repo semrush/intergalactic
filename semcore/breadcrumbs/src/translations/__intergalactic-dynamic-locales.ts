@@ -10,7 +10,7 @@ import tr from './tr.json';
 import vi from './vi.json';
 import zh from './zh.json';
 
-export const translations = {
+export const localizedMessages = {
   de,
   en,
   es,
@@ -22,4 +22,4 @@ export const translations = {
   tr,
   vi,
   zh,
-} as { [locale: string]: { [message: string]: string } };
+};

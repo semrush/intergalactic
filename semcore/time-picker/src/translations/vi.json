@@ -1,0 +1,7 @@
+{
+  "title": "Nhập thời gian, thời gian đã nhập là {time} {meridiem}",
+  "titleEmpty": "Nhập thời gian, không có thời gian đã nhập",
+  "hours": "Trường nhập số giờ",
+  "minutes": "Trường nhập số phút",
+  "format": "Định dạng thời gian {meridiem}"
+}

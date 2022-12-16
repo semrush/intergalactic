@@ -3,6 +3,8 @@ import createComponent, { Root, Component, sstyled } from '@semcore/core';
 import Popper from '@semcore/popper';
 import capitalizeFirstLetter from '@semcore/utils/lib/capitalizeFirstLetter';
 import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
+import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
+import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 
 import style from './style/dropdown.shadow.css';
 
@@ -17,8 +19,10 @@ class Dropdown extends Component {
     offset: [0, 4],
     stretch: 'min',
     defaultVisible: false,
+    i18n: localizedMessages,
+    locale: 'en',
   };
-  static enhance = [uniqueIDEnhancement()];
+  static enhance = [uniqueIDEnhancement(), i18nEnhance(localizedMessages)];
 
   uncontrolledProps() {
     return {
@@ -65,13 +69,13 @@ class Dropdown extends Component {
   };
 
   getTriggerProps() {
-    const { uid, visible, disablePortal } = this.asProps;
+    const { uid, visible, disablePortal, getI18nText } = this.asProps;
 
     return {
       id: `igc-${uid}-trigger`,
       'aria-controls': visible ? `igc-${uid}-popper` : undefined,
       'aria-flowto': visible && !disablePortal ? `igc-${uid}-popper` : undefined,
-      'aria-label': visible && !disablePortal ? `Press Tab to go to popover` : undefined,
+      'aria-label': visible && !disablePortal ? getI18nText('triggerHint') : undefined,
       onKeyDown: this.handlerTriggerKeyDown,
     };
   }

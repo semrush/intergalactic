@@ -2,7 +2,11 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [3.5.3] - 2022-12-14
+## [3.6.0] - 2022-12-14
+
+### Added
+
+- Added internationalization of aria attributes.
 
 ## [3.5.2] - 2022-12-13
 

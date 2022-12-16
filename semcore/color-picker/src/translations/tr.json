@@ -1,0 +1,13 @@
+{
+  "currentColor": "Renk alanı, mevcut renk {color}",
+  "emptyColor": "Renk alanı, boş",
+  "goToPaletteHint": "{currentColor}, palete gitmek için Tab tuşuna basın veya paleti gizlemek için tıklayın",
+  "palette": "Renk paleti, renk alanına geri dönmek için Tab+Shift tuş kombinasyonuna basın",
+  "presetColors": "Önceden ayarlı renkler",
+  "customColors": "Özel renk alanı kabı",
+  "itemColor": "Renk {color}",
+  "clearColor": "Rengi temizle",
+  "colorField": "Özel renk alanı, HEX formatı",
+  "colorFieldConfirm": "Rengi özel renk listesine renk ekleyin",
+  "colorFieldClear": "Özel renk alanını temizle"
+}

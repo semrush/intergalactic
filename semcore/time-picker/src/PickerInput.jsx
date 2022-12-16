@@ -86,6 +86,13 @@ class ItemPicker extends Component {
 
   handleVisibleChange = (visible) => this.setState({ visible });
 
+  getAriaLabel = () => {
+    const { _getI18nText: getI18nText } = this.asProps;
+    if (this.field === 'hours') return getI18nText('hours');
+    if (this.field === 'minutes') return getI18nText('minutes');
+    return undefined;
+  };
+
   render() {
     const SPickerInput = Root;
     const { styles, step, onSelect, time, size, disabled, onVisibleChange, ...other } =
@@ -113,7 +120,7 @@ class ItemPicker extends Component {
           disabled={disabled}
           neighborLocation={false}
           value={value}
-          aria-label={`${this.field} field`}
+          aria-label={this.getAriaLabel()}
           __excludeProps={[
             'aria-haspopup',
             'aria-controls',

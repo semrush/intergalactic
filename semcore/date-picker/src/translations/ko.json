@@ -9,5 +9,8 @@
   "last2Months": "최근 2개월",
   "last3Months": "최근 3개월",
   "last6Months": "최근 6개월",
-  "last12Months": "최근 12개월"
+  "last12Months": "최근 12개월",
+  "prev": "지난 기간",
+  "next": "다음 기간",
+  "input": "날짜 필드"
 }

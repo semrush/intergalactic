@@ -1,0 +1,6 @@
+{
+  "grabbed": "Elemento {itemText} preso, la posizione attuale è {itemPosition} di {itemsCount}",
+  "grabbing": "Stai prendendo l'elemento {itemText}, la posizione di rilascio è {itemPosition} di {itemsCount}",
+  "dropped": "Elemento {itemText} rilasciato, la posizione finale è {itemPosition} di {itemsCount}",
+  "discarded": "Il trascinamento è stato scartato"
+}

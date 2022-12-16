@@ -2,6 +2,8 @@
 import React from 'react';
 import createComponent, { sstyled, Component, Root } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
+import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
+import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
 
 import style from './style/drag-and-drop.shadow.css';
 
@@ -22,6 +24,7 @@ type AsProps = {
    * Contolled drag and drop handler
    */
   onDnD: (dndData: { fromIndex: number; fromId: string; toIndex: number; toId: string }) => void;
+  getI18nText: (messageId: string, values?: { [key: string]: string | number }) => string;
 };
 
 const noop: (...args: any[]) => any = () => {
@@ -59,8 +62,11 @@ type State = {
 
 class DragAndDropRoot extends Component<AsProps, {}, State> {
   static displayName = 'DragAndDrop';
+  static enhance = [i18nEnhance(localizedMessages)];
   static defaultProps = {
     theme: 'default',
+    i18n: localizedMessages,
+    locale: 'en',
   };
   static style = style;
 
@@ -80,8 +86,13 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
     const itemText =
       this.state.items[index]?.node?.getAttribute('aria-label') ??
       this.state.items[index]?.node?.textContent;
+    const { getI18nText } = this.asProps;
     const itemsCount = this.state.items.length;
-    const a11yHint = `${itemText} grabbed, current position is ${index + 1} of ${itemsCount}`;
+    const a11yHint = getI18nText('grabbed', {
+      itemText,
+      itemPosition: index + 1,
+      itemsCount,
+    });
 
     this.setState((prevState: State) => ({
       a11yHint: a11yHint,
@@ -110,7 +121,12 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
       this.state.items[itemIndex]?.node?.getAttribute('aria-label') ??
       this.state.items[itemIndex]?.node?.textContent;
     const itemsCount = this.state.items.length;
-    const a11yHint = `Grabbing ${itemText}, drop position is ${itemIndex + 1} of ${itemsCount}`;
+    const { getI18nText } = this.asProps;
+    const a11yHint = getI18nText('grabbing', {
+      itemText,
+      itemPosition: itemIndex + 1,
+      itemsCount,
+    });
 
     if (itemIndex === this.state.dragging?.index) this.setState({ previewSwap: null, a11yHint });
     else this.setState({ previewSwap: itemIndex, a11yHint });
@@ -125,14 +141,18 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
       return this.state.items[this.state.previewSwap]?.children;
   };
   handleDrop = (index: number) => () => {
-    const { onDnD } = this.asProps;
+    const { onDnD, getI18nText } = this.asProps;
     if (!onDnD) return;
     const { items, dragging } = this.state;
     const itemText =
       this.state.items[index]?.node?.getAttribute('aria-label') ??
       this.state.items[index]?.node?.textContent;
     const itemsCount = this.state.items.length;
-    const a11yHint = `${itemText} dropped, final position is ${index + 1} of ${itemsCount}`;
+    const a11yHint = getI18nText('dropped', {
+      itemText,
+      itemPosition: index + 1,
+      itemsCount,
+    });
 
     this.setState({ a11yHint, dragging: null, previewSwap: null, hideHoverEffect: true });
     onDnD({
@@ -174,7 +194,8 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
     } else if (event.code === 'Escape' && this.state.dragging) {
       event.preventDefault();
       event.stopPropagation();
-      const a11yHint = `Dragging was discarded`;
+      const { getI18nText } = this.asProps;
+      const a11yHint = getI18nText('discarded');
       this.setState({ a11yHint, dragging: null, previewSwap: null, hideHoverEffect: true });
       return false;
     }

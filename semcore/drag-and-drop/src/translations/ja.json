@@ -1,0 +1,6 @@
+{
+  "grabbed": "{itemText}が選択されており、現在位置は{itemsCount}の{itemPosition}です",
+  "grabbing": "{itemText}が選択されており、ドロップ位置は{itemsCount}の{itemPosition}です",
+  "dropped": "{itemText}がドロップされ、最終位置は{itemsCount}の{itemPosition}になりました",
+  "discarded": "ドラッグは破棄されました"
+}

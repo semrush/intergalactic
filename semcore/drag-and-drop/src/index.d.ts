@@ -18,6 +18,7 @@ export interface IDragAndDropProps extends IBoxProps {
    * Controlled drag and drop handler
    */
   onDnD: (dndData: { fromIndex: number; fromId: string; toIndex: number; toId: string }) => void;
+  locale?: string;
 }
 
 export interface IDraggableProps extends IBoxProps {

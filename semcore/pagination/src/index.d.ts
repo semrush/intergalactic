@@ -22,6 +22,7 @@ export interface IPaginationProps extends IBoxProps, IWithI18nEnhanceProps {
    * @param pageNumber
    */
   onCurrentPageChange?: (pageNumber: number) => void;
+  locale?: string;
 }
 
 export interface ITotalPagesProps extends ITextProps, IWithI18nEnhanceProps {}

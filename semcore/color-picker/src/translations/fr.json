@@ -1,0 +1,13 @@
+{
+  "currentColor": "Champ couleur, la couleur actuelle est le {color}",
+  "emptyColor": "Champ couleur, vide",
+  "goToPaletteHint": "{currentColor}, appuyez sur la touche Tab pour accéder à la palette ou cliquez pour masquer la palette",
+  "palette": "Palette de couleurs, appuyez sur Tab+Shift pour revenir au champ couleur",
+  "presetColors": "Couleurs prédéfinies",
+  "customColors": "Conteneur du champ couleurs personnalisées",
+  "itemColor": "Coleur {color}",
+  "clearColor": "Supprimer la couleur",
+  "colorField": "Champ couleurs personnalisées, format HEX",
+  "colorFieldConfirm": "Ajouter une couleur à la liste des couleurs personnalisées",
+  "colorFieldClear": "Vider le champ couleurs personnalisées"
+}

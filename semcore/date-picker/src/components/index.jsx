@@ -34,9 +34,7 @@ InputTrigger.DateRangeToInput = InputTriggerBase.DateRangeToInput;
 
 export function Popper(props) {
   const SPopper = Root;
-  return sstyled(props.styles)(
-    <SPopper render={Dropdown.Popper} role="region" aria-label="calendar-container" />,
-  );
+  return sstyled(props.styles)(<SPopper render={Dropdown.Popper} role="region" />);
 }
 
 export function Header(props) {
@@ -53,7 +51,7 @@ export const Title = ({ Children, styles }) => {
   );
 };
 
-export function Prev() {
+export function Prev({ getI18nText }) {
   return (
     <Root
       render={Button}
@@ -61,7 +59,7 @@ export function Prev() {
       theme="muted"
       size="l"
       tabIndex={-1}
-      aria-label="Prev period"
+      aria-label={getI18nText('prev')}
     />
   );
 }
@@ -70,7 +68,7 @@ Prev.defaultProps = {
   children: <ChevronLeft />,
 };
 
-export function Next() {
+export function Next({ getI18nText }) {
   return (
     <Root
       render={Button}
@@ -78,7 +76,7 @@ export function Next() {
       theme="muted"
       size="l"
       tabIndex={-1}
-      aria-label="Next period"
+      aria-label={getI18nText('next')}
     />
   );
 }

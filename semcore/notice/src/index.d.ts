@@ -21,6 +21,7 @@ export interface INoticeProps extends IBoxProps {
    * @default 250
    */
   duration?: number;
+  locale?: string;
 }
 
 export interface INoticeLabelProps extends IBoxProps {

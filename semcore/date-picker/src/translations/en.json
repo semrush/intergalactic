@@ -9,5 +9,8 @@
   "last2Months": "Last 2 months",
   "last3Months": "Last 3 months",
   "last6Months": "Last 6 months",
-  "last12Months": "Last 12 months"
+  "last12Months": "Last 12 months",
+  "prev": "Previous period",
+  "next": "Next period",
+  "input": "Date field"
 }

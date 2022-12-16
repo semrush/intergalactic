@@ -1,0 +1,6 @@
+{
+  "grabbed": "{itemText} alındı, mevcut konum {itemPosition}/{itemsCount}",
+  "grabbing": "{itemText} alınıyor, bırakma konumu {itemPosition}/{itemsCount}",
+  "dropped": "{itemText} bırakıldı, son konum {itemPosition}/{itemsCount}",
+  "discarded": "Sürükleme iptal edildi"
+}

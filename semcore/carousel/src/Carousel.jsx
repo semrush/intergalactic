@@ -391,7 +391,7 @@ const Prev = (props) => {
 };
 
 Prev.defaultProps = () => ({
-  children: <ChevronLeft interactive color="gray-300" aria-label="Go to the previous item" />,
+  children: <ChevronLeft interactive color="gray-300" />,
   top: 0,
 });
 
@@ -402,7 +402,7 @@ const Next = (props) => {
 };
 
 Next.defaultProps = () => ({
-  children: <ChevronRight interactive color="gray-300" aria-label="Go to the next item" />,
+  children: <ChevronRight interactive color="gray-300" />,
   top: 0,
 });
 

@@ -5,6 +5,8 @@ import Dropdown from '@semcore/dropdown';
 import { Flex, useBox, useFlex } from '@semcore/flex-box';
 import ScrollAreaComponent from '@semcore/scroll-area';
 import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
+import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
+import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 
 import style from './style/dropdown-menu.shadow.css';
 import scrollStyles from './style/scroll-area.shadow.css';
@@ -15,12 +17,14 @@ const INTERACTION_TAGS = ['INPUT', 'TEXTAREA'];
 class DropdownMenuRoot extends Component {
   static displayName = 'DropdownMenu';
   static style = style;
-  static enhance = [uniqueIDEnhancement()];
+  static enhance = [uniqueIDEnhancement(), i18nEnhance(localizedMessages)];
 
   static defaultProps = {
     size: 'm',
     defaultVisible: false,
     defaultHighlightedIndex: null,
+    i18n: localizedMessages,
+    locale: 'en',
   };
 
   itemProps = [];
@@ -61,14 +65,14 @@ class DropdownMenuRoot extends Component {
   };
 
   getTriggerProps() {
-    const { size, uid, disablePortal, visible } = this.asProps;
+    const { size, uid, disablePortal, visible, getI18nText } = this.asProps;
 
     return {
       size,
       id: `igc-${uid}-trigger`,
       'aria-controls': visible ? `igc-${uid}-popper` : undefined,
       'aria-flowto': visible && !disablePortal ? `igc-${uid}-popper` : undefined,
-      'aria-label': visible && !disablePortal ? `Press Tab to go to popover` : undefined,
+      'aria-label': visible && !disablePortal ? getI18nText('triggerHint') : undefined,
       onKeyDown: this.handlerKeyDown,
     };
   }

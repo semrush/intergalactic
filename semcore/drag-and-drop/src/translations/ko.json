@@ -1,0 +1,6 @@
+{
+  "grabbed": "'{itemText}' 부분이 선택되었으며 현재 위치는 {itemsCount}개 단어 중 {itemPosition}번째입니다",
+  "grabbing": "선택한 '{itemText}' 부분을 이동할 위치는 {itemsCount}개 단어 중 {itemPosition}번째입니다",
+  "dropped": "'{itemText}' 부분을 이동했으며 최종 위치는 {itemsCount}개 단어 중 {itemPosition}번째입니다",
+  "discarded": "드래그에 실패했습니다"
+}

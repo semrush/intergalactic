@@ -3,22 +3,11 @@ import dayjs from 'dayjs';
 import { Component, Root, CORE_INSTANCE, sstyled } from '@semcore/core';
 import Dropdown from '@semcore/dropdown';
 import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
-import de from '../translations/de.json';
-import en from '../translations/en.json';
-import es from '../translations/es.json';
-import fr from '../translations/fr.json';
-import it from '../translations/it.json';
-import ja from '../translations/ja.json';
-import pt from '../translations/pt.json';
-import ru from '../translations/ru.json';
-import zh from '../translations/zh.json';
-import ko from '../translations/ko.json';
-import vi from '../translations/vi.json';
+
+import { localizedMessages } from '../translations/__intergalactic-dynamic-locales';
 
 import style from '../style/date-picker.shadow.css';
 import includesDate from '../utils/includesDate';
-
-const i18n = { de, en, es, fr, it, ja, ru, zh, pt, ko, vi };
 
 const INTERACTION_TAGS = ['INPUT'];
 
@@ -29,7 +18,7 @@ class PickerAbstract extends Component {
   static style = style;
   static defaultProps({ value, defaultValue }) {
     return {
-      i18n,
+      i18n: localizedMessages,
       locale: 'en',
       defaultDisplayedPeriod: value || defaultValue || defaultDisplayedPeriod,
       defaultValue: null,
@@ -39,7 +28,7 @@ class PickerAbstract extends Component {
       size: 'm',
     };
   }
-  static enhance = [i18nEnhance()];
+  static enhance = [i18nEnhance(localizedMessages)];
 
   static add = (date, amount, unit) => {
     return dayjs(date).add(amount, unit).toDate();
@@ -170,12 +159,14 @@ class PickerAbstract extends Component {
   getNextProps() {
     return {
       onClick: this.bindHandlerNavigateClick(1),
+      getI18nText: this.asProps.getI18nText,
     };
   }
 
   getPrevProps() {
     return {
       onClick: this.bindHandlerNavigateClick(-1),
+      getI18nText: this.asProps.getI18nText,
     };
   }
 

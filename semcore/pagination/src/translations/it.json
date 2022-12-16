@@ -2,5 +2,11 @@
   "prevPageLabel": "Prec.",
   "nextPageLabel": "Avanti",
   "pageInputLabel": "Pagina:",
-  "totalPagesLabel": "di"
+  "totalPagesLabel": "di",
+  "pagination": "Numerazione delle pagine",
+  "firstPage": "Prima pagina",
+  "currentPage": "Pagina attuale",
+  "confirm": "Conferma il numero della pagina",
+  "lastPage": "Ultima pagina #{lastPageNumber}",
+  "goToPage": "Pagina {pageNumber}"
 }

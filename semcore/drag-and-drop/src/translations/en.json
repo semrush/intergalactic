@@ -1,0 +1,6 @@
+{
+  "grabbed": "{itemText} grabbed, current position is {itemPosition} of {itemsCount}",
+  "grabbing": "Grabbing {itemText}, drop position is {itemPosition} of {itemsCount}",
+  "dropped": "{itemText} dropped, final position is {itemPosition} of {itemsCount}",
+  "discarded": "Dragging was discarded"
+}

@@ -1,0 +1,6 @@
+{
+  "grabbed": "“{itemText}”已抓取，当前位置是 {itemPosition} / {itemsCount}",
+  "grabbing": "正在抓取 {itemText}，掉落位置是 {itemPosition} / {itemsCount}",
+  "dropped": "“{itemText}”已掉落，最终位置是 {itemPosition} / {itemsCount}",
+  "discarded": "拖动已被丢弃"
+}

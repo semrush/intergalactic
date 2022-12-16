@@ -9,6 +9,7 @@ import { Header, Next, Popper, Prev, Title, Trigger, InputTrigger } from './comp
 import { CalendarDays as Calendar } from './components/Calendar';
 import PickerAbstract from './components/PickerAbstract';
 import { getLocaleDate } from './utils/formatDate';
+import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 
 export class DatePickerRoot extends PickerAbstract {
   static displayName = 'DatePicker';
@@ -46,7 +47,8 @@ export class DatePickerRoot extends PickerAbstract {
   }
 
   getInputTriggerProps() {
-    const { value, onChange, onDisplayedPeriodChange, locale, disabled, size } = this.asProps;
+    const { value, onChange, onDisplayedPeriodChange, locale, disabled, size, getI18nText } =
+      this.asProps;
 
     return {
       ...super.getTriggerProps(),
@@ -57,6 +59,7 @@ export class DatePickerRoot extends PickerAbstract {
       w: size === 'm' ? 145 : 160,
       disabledDates: disabled,
       children: () => <InputTrigger.SingleDateInput />,
+      getI18nText,
     };
   }
 
@@ -95,7 +98,7 @@ export class DatePickerRoot extends PickerAbstract {
 }
 
 class Today extends Component {
-  static enhance = [i18nEnhance()];
+  static enhance = [i18nEnhance(localizedMessages)];
 
   render() {
     const SToday = Root;

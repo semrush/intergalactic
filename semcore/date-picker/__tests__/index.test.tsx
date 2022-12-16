@@ -67,7 +67,7 @@ describe('DatePicker', () => {
       <DatePicker defaultVisible defaultDisplayedPeriod="2021-09-10T12:00:00.808Z" />
     );
     const { getByText, getByLabelText } = render(component);
-    fireEvent.click(getByLabelText('Prev period'));
+    fireEvent.click(getByLabelText('Previous period'));
     // change visible
     fireEvent.click(getByText('15'));
     act(() => jest.runAllTimers());
@@ -231,7 +231,7 @@ describe('DateRangePicker', () => {
     const { getByText, getByLabelText } = render(
       <DateRangePicker visible defaultDisplayedPeriod={['2021-09-10T12:00:00.808Z']} />,
     );
-    fireEvent.click(getByLabelText('Prev period'));
+    fireEvent.click(getByLabelText('Previous period'));
     // change visible
     fireEvent.click(getByText('31'));
     fireEvent.click(getByText('Apply'));

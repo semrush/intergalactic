@@ -8,6 +8,7 @@ type ColorsAsProps = {
   styles?: React.CSSProperties;
   colors?: string[];
   Children: any;
+  getI18nText: (messageId: string, values?: { [key: string]: string | number }) => string;
 };
 
 type ColorsCustomAsProps = ColorsAsProps & {
@@ -15,11 +16,11 @@ type ColorsCustomAsProps = ColorsAsProps & {
 };
 
 export function Colors(props: ColorsAsProps) {
-  const { Children, styles, colors } = props;
+  const { Children, styles, colors, getI18nText } = props;
   const SColors = Root;
 
   return sstyled(styles)(
-    <SColors render={Box} role="list" aria-label="Preset colors">
+    <SColors render={Box} role="list" aria-label={getI18nText('presetColors')}>
       {Children.origin ? (
         <Children />
       ) : (
@@ -30,12 +31,12 @@ export function Colors(props: ColorsAsProps) {
 }
 
 export function ColorsCustom(props: ColorsCustomAsProps) {
-  const { Children, styles, colors, onPlusButtonClick } = props;
+  const { Children, styles, colors, onPlusButtonClick, getI18nText } = props;
   const SColors = Root;
   const SPlusButton = 'div';
 
   return sstyled(styles)(
-    <SColors render={Box} role="list" aria-label="Custom color field container">
+    <SColors render={Box} role="list" aria-label={getI18nText('customColors')}>
       {Children.origin ? (
         <Children />
       ) : (
