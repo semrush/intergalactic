@@ -21,9 +21,11 @@ A list of base tokens is our palette. It was built with [Huetone tool](https://h
 
 Shades of the same color have a value ranging from 50 to 800, depending on its tone. Each shade has recommendations for use based on [Huetone's contrast ratio calculation](https://huetone.ardov.me/).
 
+@import base-tokens
+
 @## Semantic tokens
 
-This is the list of tokens and components for the default Intergalactic theme.
+There is a list of tokens for components and charts for the default Intergalactic theme.
 
 @import design-tokens
 

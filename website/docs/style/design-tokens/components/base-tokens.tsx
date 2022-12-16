@@ -32,8 +32,8 @@ const BaseTokens: React.FC = () => {
   return (
     <div>
       <Input className={styles.searchInput} size="l">
-        <Input.Value placeholder="Find token" value={filter} onChange={setFilter} />
         <Input.Addon tag={SearchIcon} />
+        <Input.Value placeholder="Find token" value={filter} onChange={setFilter} />
       </Input>
       <DataTable data={filteredTokens}>
         <DataTable.Head>
@@ -100,7 +100,7 @@ const BaseTokens: React.FC = () => {
               return {
                 children: (
                   <Ellipsis
-                    trim="middle"
+                    trim="end"
                     containerRect={descriptionHeaderRect}
                     containerRef={descriptionHeaderRef}
                   >
