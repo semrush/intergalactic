@@ -43,23 +43,15 @@ SColumn[hidden] {
 }
 
 SColumn[use='primary'] {
-  padding: var(--intergalactic-spacing-3x, 12px);
+  padding: var(--intergalactic-spacing-3x, 12px) var(--intergalactic-spacing-2x, 8px);
   border-bottom: 1px solid var(--intergalactic-border-secondary, #e0e1e9);
   background-color: var(--intergalactic-table-th-primary-cell, #f4f5f9);
-}
-
-SColumn[use='primary'][compact] {
-  padding: 12px 8px;
 }
 
 SColumn[use='secondary'] {
   padding: var(--intergalactic-spacing-2x, 8px);
   border-bottom: 1px solid var(--intergalactic-border-table-accent-border, #a9abb6);
   background-color: var(--intergalactic-table-th-secondary-cell, #ffffff);
-}
-
-SColumn[use]:last-child {
-  border-right: none;
 }
 
 SColumn[group][use] {
@@ -73,7 +65,6 @@ SColumn[group][use] {
 
 SColumn[groupHead][use] {
   justify-content: center;
-  border-right: none;
   /* for resizable */
   z-index: 1;
 }
@@ -94,12 +85,12 @@ SColumn[sortable] {
   }
 }
 
-SColumn[sortable][use='primary']:hover SSortIcon {
-  opacity: 1;
+SColumn[sortable][use='primary']:hover SSortWrapper {
+  display: block;
 }
 
-SColumn[sortable][use='primary']:hover SSortGradient {
-  background: linear-gradient(270deg, #e0e1e9 68.48%, rgba(224, 225, 233, 0) 100%);
+SColumn[sortIconFloat] SSortWrapper {
+  width: 0;
 }
 
 SColumn[active][use='primary'] {
@@ -107,12 +98,14 @@ SColumn[active][use='primary'] {
   width: 100%;
 }
 
-SColumn[active][use='primary'] SSortIcon {
-  opacity: 1;
+SColumn[active] SSortIcon {
+  position: static;
 }
 
-SColumn[active][use='primary'] SSortGradient {
-  background: linear-gradient(270deg, #e0e1e9 68.48%, rgba(224, 225, 233, 0) 100%);
+SColumn[active] SSortWrapper {
+  display: block;
+  width: 16px;
+  margin-left: 4px;
 }
 
 SColumn[resizable] {
@@ -138,56 +131,39 @@ SColumn[fixed] {
   z-index: 2;
 }
 
-SColumn[vBorders] {
-  border-left: 1px solid var(--gray-100);
-}
-
-SColumn[vBorders] + div {
-  border-left: 1px solid var(--gray-100);
-}
-
-SCell[vBorders] {
-  border-left: 1px solid var(--gray-100);
-}
-
-SCell[vBorders] + div {
-  border-left: 1px solid var(--gray-100);
-}
-
+SColumn[borderLeft],
 SCell[borderLeft] {
   border-left: 1px solid var(--gray-100);
 }
 
+SColumn[borderRight],
 SCell[borderRight] {
   border-right: 1px solid var(--gray-100);
 }
 
 SSortIcon {
   fill: var(--gray-400);
-  position: relative;
-  z-index: 1;
-  opacity: 0;
+  position: absolute;
+  top: 0;
+  right: 0;
 }
 
-SSortGradient {
+SSortWrapper:before {
+  content: '';
   position: absolute;
-  right: 16px;
-  top: 12px;
-  min-width: 2px;
+  top: 0;
+  right: 0;
   width: 20px;
   height: 16px;
-  flex-shrink: 0;
-  margin-left: 0;
-}
-
-SSortIcon[active] {
-  background: linear-gradient(270deg, #e0e1e9 75%, rgba(224, 225, 233, 0) 105%);
+  background: linear-gradient(270deg, #e0e1e9 67.5%, rgba(224, 225, 233, 0) 105%);
 }
 
 SSortWrapper {
-  flex-shrink: 1;
-  overflow: hidden;
-  padding-right: 6px;
+  display: none;
+  flex-shrink: 999;
+  position: relative;
+  width: 20px;
+  height: 16px;
 }
 
 SBodyWrapper {
@@ -296,14 +272,9 @@ SCell {
 }
 
 SCell[use='primary'] {
-  padding: var(--intergalactic-spacing-3x, 12px);
+  padding: var(--intergalactic-spacing-3x, 12px) var(--intergalactic-spacing-2x, 8px);
   min-height: 45px;
   background-color: var(--intergalactic-bg-primary-neutral, #ffffff);
-}
-
-SCell[use='primary'][compact] {
-  padding: 12px 8px;
-  min-height: 36px;
 }
 
 SCell[use='secondary'] {

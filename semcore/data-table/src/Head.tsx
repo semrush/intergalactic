@@ -31,7 +31,6 @@ type AsProps = {
   sticky: boolean;
   disabledScroll?: boolean;
   ['data-ui-name']: string;
-  compact: boolean;
 };
 
 class Head extends Component<AsProps> {
@@ -61,10 +60,9 @@ class Head extends Component<AsProps> {
   }
 
   renderColumn(column: Column, width: number) {
-    const { styles, use, hidden, compact } = this.asProps;
+    const { styles, use, hidden } = this.asProps;
     const SColumn = Flex;
     const SHead = Box;
-    const SSortGradient = 'div';
     const SSortWrapper = 'div';
     const SSortIcon = SORTING_ICON[column.sortDirection];
     const ariaSortValue =
@@ -85,11 +83,6 @@ class Head extends Component<AsProps> {
     if (!column.setVar) {
       style['flexBasis'] = `var(${column.varWidth})`;
     }
-
-    if (column.active) {
-      style.minWidth = 'min-content';
-    }
-
     return sstyled(styles)(
       <SColumn
         role={isGroup ? undefined : 'columnheader'}
@@ -98,8 +91,9 @@ class Head extends Component<AsProps> {
         fixed={column.fixed}
         resizable={column.resizable}
         sortable={column.sortable}
-        compact={compact}
-        vBorders={column.vBorders}
+        sortIconFloat={column.props.justifyContent?.includes('end')}
+        borderLeft={isGroup ? false : column.borderLeft}
+        borderRight={isGroup ? false : column.borderRight}
         active={column.active}
         group={isGroup}
         tabIndex={column.sortable && 0}
@@ -119,19 +113,24 @@ class Head extends Component<AsProps> {
       >
         {isGroup ? (
           <>
-            <SColumn role="columnheader" groupHead use={use}>
+            <SColumn
+              role="columnheader"
+              groupHead
+              use={use}
+              borderLeft={column.borderLeft}
+              borderRight={column.borderRight}
+            >
               <div>{column.props.children}</div>
             </SColumn>
             <SHead>{this.renderColumns(column.columns, 100 / cSize)}</SHead>
           </>
         ) : (
           <>
-            <SSortWrapper>{column.props.children}</SSortWrapper>
+            {column.props.children}
             {column.sortable ? (
-              <div>
+              <SSortWrapper>
                 <SSortIcon active={column.active} />
-                <SSortGradient />
-              </div>
+              </SSortWrapper>
             ) : null}
           </>
         )}

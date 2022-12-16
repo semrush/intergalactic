@@ -34,6 +34,7 @@ export type Column<
     ref: React.RefObject<HTMLElement>;
   } & Partial<{
     flex: Property.Flex;
+    justifyContent: Property.JustifyContent;
     onClick: (event: React.MouseEvent) => void;
     onKeyDown: (event: React.KeyboardEvent) => void;
     forwardRef: React.Ref<HTMLElement>;
