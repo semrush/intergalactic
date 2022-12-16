@@ -27,7 +27,7 @@ Keyboard control should be performed sequentially across all interactive element
 
 - The focus state for all controls appears by pressing the `Tab` key.
 - For inputs and text fields, focus also appears by `onClick`.
-- When navigating the keyboard all controls are highlighted with a blue border (see [Variables](/style/variables/#ab8464)). Exceptions are inputs and text fields when validating, that on focus have same border color (orange or green).
+- When navigating the keyboard all controls are highlighted with a blue border (see keyboard-focus tokens in [Design tokens](/style/design-tokens/#semantic_tokens)). Exceptions are inputs and text fields when validating, that on focus have same border color (orange or green).
 - The focus inside groups of controls is consistent. After the last control in the group, the focus should move to the next control in the interface.
 - If the control has a tooltip in the `hover` state, it should appear on focus with `Tab`.
 
@@ -36,7 +36,7 @@ Keyboard control should be performed sequentially across all interactive element
 ### Link и hint link
 
 - Links get focus by clicking on `Tab`.
-- Links are highlighted with a blue border (see [Variables](/style/variables/#ab8464)).
+- Links are highlighted with a blue border (see keyboard-focus tokens [Design tokens](/style/design-tokens/#semantic_tokens)).
 - When you press `Enter`, the link is clicked or an action is performed.
 
 ### Button

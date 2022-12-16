@@ -78,7 +78,7 @@ You can use this component to hide almost any content. This can be a text conten
 | default  | ![accordion default](static/default-state.png)   |                                                                                                                                                                          |
 | hover    | ![accordion hover](static/hover-state.png)       | The color of the icon changes to the next in the palette — `--gray-400`. If the accordion trigger has a background, it can also change color when hovering.              |
 | active   | ![accordion active](static/active-state.png)     | In this state, the `ChevronRight` icon rotates 90 degrees: `transform: rotate(90deg);`. All other trigger styles remain the same as in the `hover` state.                |
-| disabled | ![accordion disabled](static/disabled-state.png) | Use [`--disabled-opacity` variable](/style/variables/).                                                                                                                  |
+| disabled | ![accordion disabled](static/disabled-state.png) | Use [`--intergalactic-disabled-opacity`](/style/design-tokens/) token.                                                                                                   |
 | loading  | ![accordion loading](static/loading-state.png)   | If the system needs time to load the content hidden in the accordion, then display [Spin](/components/spin/) with a respective size. By default, the spinner size is XS. |
 
 @## Animation

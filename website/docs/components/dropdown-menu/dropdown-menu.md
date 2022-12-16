@@ -61,13 +61,13 @@ When user enters value in the input, only those items that match the entered val
 
 ### States
 
-|                     | Appearance                                                                           | Styles                             |
-| ------------------- | ------------------------------------------------------------------------------------ | ---------------------------------- |
-| Default             | ![Default DropdownMenu list item](static/item-default.png)                           |                                    |
-| Hover               | ![DropdownMenu list item with hover state](static/item-hover.png)                    | `background: var(--gray-50)`       |
-| Selected            | ![DropdownMenu list item with selected state](static/item-active.png)                | `background: var(--blue-100, .7)`  |
-| Selected with hover | ![DropdownMenu list item in selected state with hover](static/item-active-hover.png) | `background: var(--blue-100)`      |
-| Disabled            | ![DropdownMenu list item with disabled state](static/item-disabled.png)              | Use `--disabled-opacity` variable. |
+|                     | Appearance                                                                           | Styles                                                                 |
+| ------------------- | ------------------------------------------------------------------------------------ | ---------------------------------------------------------------------- |
+| Default             | ![Default DropdownMenu list item](static/item-default.png)                           |                                                                        |
+| Hover               | ![DropdownMenu list item with hover state](static/item-hover.png)                    | `background: var(--gray-50)`                                           |
+| Selected            | ![DropdownMenu list item with selected state](static/item-active.png)                | `background: var(--blue-100, .7)`                                      |
+| Selected with hover | ![DropdownMenu list item in selected state with hover](static/item-active-hover.png) | `background: var(--blue-100)`                                          |
+| Disabled            | ![DropdownMenu list item with disabled state](static/item-disabled.png)              | Use [`--intergalactic-disabled-opacity`](/style/design-tokens/) token. |
 
 ### Divider
 
