@@ -3,3 +3,4 @@ packages:
   - 'tools/*'
   - '!tools/@types'
   - 'website'
+  - vite-project

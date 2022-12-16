@@ -1,0 +1,13 @@
+{
+  "currentColor": "색상 필드, 현재 색상은 {color}",
+  "emptyColor": "색상 필드, 비어 있음",
+  "goToPaletteHint": "{currentColor}, 팔레트로 이동하려면 Tab 키를 누르고, 팔레트를 숨기려면 클릭하세요",
+  "palette": "색상 팔레트, 색상 필드로 돌아가려면 Tab+Shift 키를 누르세요",
+  "presetColors": "색상 프리셋",
+  "customColors": "맞춤 색상 필드 컨테이너",
+  "itemColor": "{color} 색상",
+  "clearColor": "색상 지우기",
+  "colorField": "맞춤 색상 필드, HEX 형식",
+  "colorFieldConfirm": "색상을 맞춤 색상 목록에 추가합니다",
+  "colorFieldClear": "맞춤 색상 필드 지우기"
+}

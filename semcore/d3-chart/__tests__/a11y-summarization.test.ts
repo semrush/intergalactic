@@ -11,7 +11,7 @@ import {
   Insight,
 } from '../src/a11y/insights';
 import { serialize } from '../src/a11y/serialize';
-import { translations } from '../src/a11y/translations/view/translations';
+import { localizedMessages as translations } from '../src/a11y/translations/view/__intergalactic-dynamic-locales';
 
 const pixelArtToPointsList = (space: string) =>
   space
@@ -741,6 +741,7 @@ describe('Plot a11y summarization', () => {
     const dataRange: AnalyzedData['dataRange'] = [{ from: 0, to: 10, label: 'x' }];
     const text = serialize({ insights, dataType, dataRange, dataTitle }, makeConfig(), {
       locale: 'en',
+      translations,
     });
 
     expect(text.includes('0')).toBeTruthy();
@@ -766,6 +767,7 @@ describe('Plot a11y summarization', () => {
     const dataRange: AnalyzedData['dataRange'] = [{ from: 0, to: 120, label: 'x' }];
     const text = serialize({ insights, dataType, dataRange, dataTitle }, makeConfig(), {
       locale: 'en',
+      translations,
     });
 
     const limit = 550;
@@ -794,8 +796,10 @@ describe('Plot a11y summarization', () => {
     const dataTitle = 'Awesome data';
     const dataType = 'time-series';
     const dataRange: AnalyzedData['dataRange'] = [{ from: 0, to: 10, label: 'x' }];
-    const locale = { locale: 'en' };
-    const text = serialize({ insights, dataType, dataRange, dataTitle }, makeConfig(), locale);
+    const text = serialize({ insights, dataType, dataRange, dataTitle }, makeConfig(), {
+      locale: 'en',
+      translations,
+    });
 
     expect(text.includes('0')).toBeTruthy();
     expect(text.includes('10')).toBeTruthy();

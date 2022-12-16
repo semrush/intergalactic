@@ -9,5 +9,8 @@
   "last2Months": "Son 2 ay",
   "last3Months": "Son 3 ay",
   "last6Months": "Son 6 ay",
-  "last12Months": "Son 12 ay"
+  "last12Months": "Son 12 ay",
+  "prev": "Önceki dönem",
+  "next": "Sonraki dönem",
+  "input": "Tarih alanı"
 }

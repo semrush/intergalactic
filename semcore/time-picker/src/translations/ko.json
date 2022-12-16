@@ -1,0 +1,7 @@
+{
+  "title": "시간 입력값, 입력된 시간은 {time} {meridiem}",
+  "titleEmpty": "시간 입력값, 입력된 시간 없음",
+  "hours": "시간 입력란",
+  "minutes": "분 입력란",
+  "format": "시간 형식 {meridiem}"
+}

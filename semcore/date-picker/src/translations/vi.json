@@ -9,5 +9,8 @@
   "last2Months": "2 tháng qua",
   "last3Months": "3 tháng qua",
   "last6Months": "6 tháng qua",
-  "last12Months": "12 tháng qua"
+  "last12Months": "12 tháng qua",
+  "prev": "Giai đoạn trước",
+  "next": "Giai đoạn tới",
+  "input": "Trường ngày tháng"
 }

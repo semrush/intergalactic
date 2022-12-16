@@ -53,6 +53,7 @@ export interface ILinkTriggerProps extends Omit<IBaseTriggerProps, 'theme'> {
 export interface IFilterTriggerProps extends IBaseTriggerProps {
   /** Click on the filter cleaning cross */
   onClear?: (event: React.SyntheticEvent) => void;
+  locale?: string;
 }
 
 declare const BaseTrigger: (<T>(props: CProps<IBaseTriggerProps & T>) => ReturnEl) & {

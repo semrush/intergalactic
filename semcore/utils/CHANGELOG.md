@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.44.0] - 2022-12-14
+
+### Changed
+
+- Supported semi-async internationalization.
+
 ## [3.43.0] - 2022-12-12
 
 ### Added

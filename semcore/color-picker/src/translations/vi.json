@@ -1,0 +1,13 @@
+{
+  "currentColor": "Trường màu sắc, màu hiện tại là {color}",
+  "emptyColor": "Trường màu sắc, trống",
+  "goToPaletteHint": "{currentColor}, nhấn Tab để chuyển đến bảng màu hoặc nhấp để ẩn bảng màu",
+  "palette": "Bảng màu, nhấn Tab+Shift để quay lại trường màu",
+  "presetColors": "Màu đặt trước",
+  "customColors": "Vùng chứa trường màu tùy chỉnh",
+  "itemColor": "Màu {color}",
+  "clearColor": "Xoá màu",
+  "colorField": "Trường màu tùy chỉnh, định dạng HEX",
+  "colorFieldConfirm": "Thêm màu vào danh sách các màu tùy chỉnh",
+  "colorFieldClear": "Xóa trường màu tùy chỉnh"
+}

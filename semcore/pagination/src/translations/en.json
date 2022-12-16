@@ -2,5 +2,11 @@
   "prevPageLabel": "Prev",
   "nextPageLabel": "Next",
   "pageInputLabel": "Page:",
-  "totalPagesLabel": "of"
+  "totalPagesLabel": "of",
+  "pagination": "Pagination",
+  "firstPage": "First page",
+  "currentPage": "Current page",
+  "confirm": "Confirm page number",
+  "lastPage": "Last page #{lastPageNumber}",
+  "goToPage": "Page {pageNumber}"
 }

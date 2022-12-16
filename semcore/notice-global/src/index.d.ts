@@ -22,6 +22,7 @@ export interface INoticeGlobalProps {
    * Callback on a click on the close button
    */
   onClose?: (event: React.SyntheticEvent) => void;
+  locale?: string;
 }
 
 declare const NoticeGlobal: (<T>(props: CProps<INoticeGlobalProps & T>) => ReturnEl) & {

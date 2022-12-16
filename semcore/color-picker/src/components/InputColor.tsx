@@ -16,6 +16,7 @@ type InputColorAsProps = {
   onAdd?: (value: string, event: React.MouseEvent | React.KeyboardEvent) => void;
   focus?: boolean;
   Children: any;
+  getI18nText: (messageId: string, values?: { [key: string]: string | number }) => string;
 };
 
 function isValidHex(hex: string) {
@@ -89,7 +90,7 @@ class InputColorRoot extends Component<InputColorAsProps> {
   };
 
   render() {
-    const { styles, state, value, onFocus, onBlur, focus } = this.asProps;
+    const { styles, state, value, onFocus, onBlur, focus, getI18nText } = this.asProps;
 
     const SPaletteManager = Box;
     const SInputValue = Root;
@@ -110,14 +111,14 @@ class InputColorRoot extends Component<InputColorAsProps> {
               <SInputValue
                 render={Input.Value}
                 placeholder="FFFFFF"
-                aria-label="Custom color field, HEX format"
+                aria-label={getI18nText('colorField')}
                 onChange={this.handlerChange}
                 maxLength={7}
                 onFocus={onFocus}
                 onBlur={onBlur}
               />
               <SConfirmColor
-                aria-label="Add color to the list of custom colors"
+                aria-label={getI18nText('colorFieldConfirm')}
                 role="button"
                 interactive
                 onClick={this.handlerAdd}
@@ -127,7 +128,7 @@ class InputColorRoot extends Component<InputColorAsProps> {
                 <CheckM color="green-300" />
               </SConfirmColor>
               <SClearConfirm
-                aria-label="Clear custom color field"
+                aria-label={getI18nText('colorFieldClear')}
                 role="button"
                 interactive
                 onClick={this.handlerCancel}

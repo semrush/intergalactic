@@ -44,7 +44,8 @@ class MonthPickerRoot extends PickerAbstract {
   }
 
   getInputTriggerProps() {
-    const { value, onChange, onDisplayedPeriodChange, locale, disabled, size } = this.asProps;
+    const { value, onChange, onDisplayedPeriodChange, locale, disabled, size, getI18nText } =
+      this.asProps;
 
     return {
       ...super.getTriggerProps(),
@@ -56,6 +57,7 @@ class MonthPickerRoot extends PickerAbstract {
       parts: dateParts,
       disabledDates: disabled,
       children: () => <InputTrigger.SingleDateInput />,
+      getI18nText,
     };
   }
 
