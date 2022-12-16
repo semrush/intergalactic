@@ -27,8 +27,4 @@ This is the list of tokens and components for the default Intergalactic theme.
 
 @import design-tokens
 
-@## Chart tokens
-
-This is a list of tokens for charts.
-
 @page design-tokens-usage
