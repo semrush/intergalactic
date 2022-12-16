@@ -148,7 +148,9 @@ SRow {
 SRow[active] > SCell:not([theme]),
 SRow:hover > SCell:not([theme]),
 SRow SCell:hover + SGroupCell SCell:not([theme]) {
-  background-color: var(--intergalactic-table-td-cell-hover, rgba(224, 225, 233, 0.5));
+  /* The color is hardcoded because need hex(in figma rgba) */
+  /* disable-tokens-validator */
+  background-color: var(--intergalactic-table-td-cell-hover, #f0f0f4);
 }
 
 /* MUTED THEME */
@@ -160,7 +162,9 @@ SRow:hover > SCell[theme='muted'],
 SRow[theme='muted'][active] > SCell:not([theme]),
 SRow[theme='muted']:hover > SCell:not([theme]),
 SRow[theme='muted'] SCell:hover + SGroupCell SCell:not([theme]) {
-  background-color: var(--intergalactic-table-td-cell-hover, rgba(224, 225, 233, 0.5));
+  /* The color is hardcoded because need hex(in figma rgba) */
+  /* disable-tokens-validator */
+  background-color: var(--intergalactic-table-td-cell-hover, #f0f0f4);
 }
 
 /* INFO THEME */
