@@ -23,7 +23,7 @@ To apply a global theme, define css variables on `:root` via css or js. For exam
 }
 ```
 
-Any design token from the [Design tokens list](/style/design-tokens) may be applied.
+Any design token from the [tokens list](/style/design-tokens/#semantic_tokens) may be applied.
 
 @## Local theme
 
@@ -32,13 +32,3 @@ Theme for React components subtree may be applied via `<ThemeProvider />`.
 @example theme-provider
 
 `<ThemeProvider />` applies provided tokens on DOM node and handles passing them into React Portal created with `@semcore/portal`.
-
-@## Design tokens
-
-All available design tokens are provided in the table bellow.
-
-@import design-tokens
-
-@## Base tokens
-
-@import base-tokens
