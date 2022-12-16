@@ -165,6 +165,8 @@ const replaceColors = (str: string) => {
   return result;
 };
 
+const rawValues = { ...values };
+
 for (const token in values) {
   if (types[token] === 'color') {
     values[token] = resolveColor(values[token]);
@@ -359,18 +361,20 @@ if (colorLiterals.length > 0) {
 const documentation: {
   name: string;
   type: string;
-  defaultValue: string;
+  rawValue: string;
+  computedValue: string;
   description: string;
   components: string[];
 }[] = [];
 
 for (const token in values) {
-  const components = [...new Set(usages[token] ?? []).map((cssPath) => cssPath.split('/')[2])];
+  const components = [...new Set((usages[token] ?? []).map((cssPath) => cssPath.split('/')[2]))];
 
   documentation.push({
     name: `--${prefix}-${token}`,
     type: types[token],
-    defaultValue: values[token],
+    rawValue: rawValues[token],
+    computedValue: values[token],
     description: descriptions[token],
     components,
   });

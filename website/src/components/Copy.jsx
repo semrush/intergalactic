@@ -14,13 +14,8 @@ class Copy extends PureComponent {
     this.state = { textTooltip: props.textTooltip };
   }
 
-  handleClick = (e) => {
-    this.inputRef && this.inputRef.select();
-    document && document.execCommand('copy');
-
-    if (this.props.onClick) {
-      this.props.onClick(e);
-    }
+  handleClick = async () => {
+    await navigator.clipboard.writeText(this.props.text);
 
     this.setState({ textTooltip: this.props.title || copiedText });
 
@@ -33,7 +28,7 @@ class Copy extends PureComponent {
   };
 
   render() {
-    const { text, children, textTooltip: _tooltip, className, ...other } = this.props;
+    const { children, className, ...other } = this.props;
     const { textTooltip } = this.state;
 
     return (
@@ -46,13 +41,6 @@ class Copy extends PureComponent {
           popupTransitionName: 'popup-fade',
         }}
       >
-        <textarea
-          className={styles.textArea}
-          type="text"
-          value={text}
-          ref={(node) => (this.inputRef = node)}
-          onChange={() => {}}
-        />
         {React.cloneElement(children, {
           onClick: this.handleClick,
         })}

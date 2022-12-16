@@ -3,8 +3,21 @@
   max-width: 400px;
 }
 
+.tokenNameWrapper {
+  max-width: 100%;
+}
 .tokenName {
   cursor: pointer;
+  max-width: 100%;
+}
+
+.tokenValueWrapper {
+  max-width: 100%;
+}
+.tokenValue {
+  cursor: pointer;
+  display: flex;
+  max-width: 100%;
 }
 
 .colorPreview {
@@ -18,5 +31,5 @@
 }
 
 .usages {
-  text-decoration: underline;
+  border-bottom: 1px dashed #e0e1e9;
 }
