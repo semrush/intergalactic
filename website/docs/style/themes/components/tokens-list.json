@@ -2,26 +2,22 @@
   {
     "name": "--intergalactic-bg-primary-neutral",
     "type": "color",
-    "defaultValue": "#ffffff",
+    "rawValue": "{gray.white}",
+    "computedValue": "#ffffff",
     "components": [
-      "base-trigger",
       "base-trigger",
       "card",
       "checkbox",
-      "checkbox",
-      "color-picker",
       "counter",
-      "data-table",
-      "data-table",
       "d3-chart",
-      "d3-chart",
+      "color-picker",
+      "data-table",
       "dropdown",
-      "fullscreen-modal",
       "inline-input",
+      "fullscreen-modal",
       "input",
       "modal",
       "pills",
-      "radio",
       "radio",
       "select",
       "side-panel",
@@ -34,355 +30,346 @@
   {
     "name": "--intergalactic-bg-primary-neutral-hover",
     "type": "color",
-    "defaultValue": "#f4f5f9",
+    "rawValue": "{gray.50}",
+    "computedValue": "#f4f5f9",
     "components": ["base-trigger", "dropdown-menu", "pills"]
   },
   {
     "name": "--intergalactic-bg-primary-neutral-active",
     "type": "color",
-    "defaultValue": "#e0e1e9",
+    "rawValue": "{gray.100}",
+    "computedValue": "#e0e1e9",
     "components": ["base-trigger", "flags"]
   },
   {
     "name": "--intergalactic-bg-primary-info",
     "type": "color",
-    "defaultValue": "#008ff8",
+    "rawValue": "{blue.400}",
+    "computedValue": "#008ff8",
     "components": ["base-trigger", "notice-global", "radio"]
   },
   {
     "name": "--intergalactic-bg-primary-success",
     "type": "color",
-    "defaultValue": "#009f81",
+    "rawValue": "{green.400}",
+    "computedValue": "#009f81",
     "components": ["notice-global"]
   },
   {
     "name": "--intergalactic-bg-primary-critical",
     "type": "color",
-    "defaultValue": "#ff4953",
-    "components": ["counter", "notice-global", "notice-bubble"]
+    "rawValue": "{red.400}",
+    "computedValue": "#ff4953",
+    "components": ["counter", "notice-bubble", "notice-global"]
   },
   {
     "name": "--intergalactic-bg-primary-warning",
     "type": "color",
-    "defaultValue": "#ff642d",
+    "rawValue": "{orange.400}",
+    "computedValue": "#ff642d",
     "components": ["counter", "notice-global"]
   },
   {
     "name": "--intergalactic-bg-primary-highlight",
     "type": "color",
-    "defaultValue": "#fce081",
-    "components": ["feature-popover", "feature-popover", "feature-popover"]
+    "rawValue": "{yellow.100}",
+    "computedValue": "#fce081",
+    "components": ["feature-popover"]
   },
   {
     "name": "--intergalactic-bg-primary-advertising",
     "type": "color",
-    "defaultValue": "#421983",
+    "rawValue": "{violet.700}",
+    "computedValue": "#421983",
     "components": []
   },
   {
     "name": "--intergalactic-bg-primary-muted",
     "type": "color",
-    "defaultValue": "#6c6e79",
+    "rawValue": "{gray.500}",
+    "computedValue": "#6c6e79",
     "components": ["notice-global"]
   },
   {
     "name": "--intergalactic-bg-primary-invert",
     "type": "color",
-    "defaultValue": "#191b23",
+    "rawValue": "{gray.800}",
+    "computedValue": "#191b23",
     "components": ["notice-bubble"]
   },
   {
     "name": "--intergalactic-bg-primary-invert-hover",
     "type": "color",
-    "defaultValue": "#2b2e38",
+    "rawValue": "{gray.700}",
+    "computedValue": "#2b2e38",
     "components": []
   },
   {
     "name": "--intergalactic-bg-primary-invert-active",
     "type": "color",
-    "defaultValue": "#484a54",
+    "rawValue": "{gray.600}",
+    "computedValue": "#484a54",
     "components": ["drag-and-drop"]
   },
   {
     "name": "--intergalactic-bg-secondary-neutral",
     "type": "color",
-    "defaultValue": "#f4f5f9",
+    "rawValue": "{gray.50}",
+    "computedValue": "#f4f5f9",
     "components": ["drag-and-drop", "input", "textarea", "time-picker"]
   },
   {
     "name": "--intergalactic-bg-secondary-neutral-hover",
     "type": "color",
-    "defaultValue": "#e0e1e9",
+    "rawValue": "{gray.100}",
+    "computedValue": "#e0e1e9",
     "components": ["color-picker", "time-picker"]
   },
   {
     "name": "--intergalactic-bg-secondary-neutral-active",
     "type": "color",
-    "defaultValue": "#c4c7cf",
+    "rawValue": "{gray.200}",
+    "computedValue": "#c4c7cf",
     "components": ["flags", "time-picker"]
   },
   {
     "name": "--intergalactic-bg-secondary-info",
     "type": "color",
-    "defaultValue": "#e9f7ff",
+    "rawValue": "{blue.50}",
+    "computedValue": "#e9f7ff",
     "components": ["notice"]
   },
   {
     "name": "--intergalactic-bg-secondary-info-hover",
     "type": "color",
-    "defaultValue": "#c4e5fe",
+    "rawValue": "{blue.100}",
+    "computedValue": "#c4e5fe",
     "components": []
   },
   {
     "name": "--intergalactic-bg-secondary-info-active",
     "type": "color",
-    "defaultValue": "#8ecdff",
+    "rawValue": "{blue.200}",
+    "computedValue": "#8ecdff",
     "components": []
   },
   {
     "name": "--intergalactic-bg-secondary-success",
     "type": "color",
-    "defaultValue": "#dbfee8",
+    "rawValue": "{green.50}",
+    "computedValue": "#dbfee8",
     "components": ["notice"]
   },
   {
     "name": "--intergalactic-bg-secondary-success-hover",
     "type": "color",
-    "defaultValue": "#9ef2c9",
+    "rawValue": "{green.100}",
+    "computedValue": "#9ef2c9",
     "components": []
   },
   {
     "name": "--intergalactic-bg-secondary-success-active",
     "type": "color",
-    "defaultValue": "#59ddaa",
+    "rawValue": "{green.200}",
+    "computedValue": "#59ddaa",
     "components": []
   },
   {
     "name": "--intergalactic-bg-secondary-critical",
     "type": "color",
-    "defaultValue": "#fff0f7",
+    "rawValue": "{red.50}",
+    "computedValue": "#fff0f7",
     "components": ["notice"]
   },
   {
     "name": "--intergalactic-bg-secondary-critical-hover",
     "type": "color",
-    "defaultValue": "#ffd7df",
+    "rawValue": "{red.100}",
+    "computedValue": "#ffd7df",
     "components": []
   },
   {
     "name": "--intergalactic-bg-secondary-critical-active",
     "type": "color",
-    "defaultValue": "#ffaeb5",
+    "rawValue": "{red.200}",
+    "computedValue": "#ffaeb5",
     "components": []
   },
   {
     "name": "--intergalactic-bg-secondary-warning",
     "type": "color",
-    "defaultValue": "#fff3d9",
+    "rawValue": "{orange.50}",
+    "computedValue": "#fff3d9",
     "components": ["notice"]
   },
   {
     "name": "--intergalactic-bg-secondary-warning-hover",
     "type": "color",
-    "defaultValue": "#ffdca2",
+    "rawValue": "{orange.100}",
+    "computedValue": "#ffdca2",
     "components": []
   },
   {
     "name": "--intergalactic-bg-secondary-warning-active",
     "type": "color",
-    "defaultValue": "#ffb26e",
+    "rawValue": "{orange.200}",
+    "computedValue": "#ffb26e",
     "components": []
   },
   {
     "name": "--intergalactic-bg-secondary-highlight",
     "type": "color",
-    "defaultValue": "#fdf7c8",
+    "rawValue": "{yellow.50}",
+    "computedValue": "#fdf7c8",
     "components": []
   },
   {
     "name": "--intergalactic-bg-secondary-highlight-hover",
     "type": "color",
-    "defaultValue": "#fce081",
+    "rawValue": "{yellow.100}",
+    "computedValue": "#fce081",
     "components": []
   },
   {
     "name": "--intergalactic-bg-secondary-highlight-active",
     "type": "color",
-    "defaultValue": "#fdc23c",
+    "rawValue": "{yellow.200}",
+    "computedValue": "#fdc23c",
     "components": []
   },
   {
     "name": "--intergalactic-bg-secondary-advertising",
     "type": "color",
-    "defaultValue": "#f9f2ff",
+    "rawValue": "{violet.50}",
+    "computedValue": "#f9f2ff",
     "components": []
   },
   {
     "name": "--intergalactic-bg-secondary-advertising-hover",
     "type": "color",
-    "defaultValue": "#edd9ff",
+    "rawValue": "{violet.100}",
+    "computedValue": "#edd9ff",
     "components": []
   },
   {
     "name": "--intergalactic-bg-secondary-advertising-active",
     "type": "color",
-    "defaultValue": "#dcb8ff",
+    "rawValue": "{violet.200}",
+    "computedValue": "#dcb8ff",
     "components": []
   },
   {
     "name": "--intergalactic-bg-highlight-results",
     "type": "color",
-    "defaultValue": "rgba(239, 152, 0, 0.4)",
+    "rawValue": "{yellow.300}, 0.4",
+    "computedValue": "rgba(239, 152, 0, 0.4)",
     "description": "Use it for highlighting the search results in the list.",
     "components": []
   },
   {
     "name": "--intergalactic-text-primary",
     "type": "color",
-    "defaultValue": "#191b23",
+    "rawValue": "{gray.800}",
+    "computedValue": "#191b23",
     "components": [
-      "base-trigger",
-      "base-trigger",
-      "base-trigger",
       "breadcrumbs",
+      "base-trigger",
       "card",
-      "card",
-      "button",
-      "button",
-      "button",
-      "button",
       "button",
       "checkbox",
-      "data-table",
-      "data-table",
       "d3-chart",
-      "date-picker",
-      "date-picker",
-      "date-picker",
-      "date-picker",
-      "date-picker",
+      "data-table",
       "date-picker",
       "errors",
-      "errors",
-      "feature-popover",
       "feature-popover",
       "format-text",
-      "fullscreen-modal",
       "inline-input",
+      "fullscreen-modal",
       "input",
       "pagination",
       "pills",
       "product-head",
       "side-panel",
-      "switch",
+      "tab-line",
       "switch",
       "tab-panel",
-      "tab-line",
-      "textarea",
       "tooltip",
+      "textarea",
       "typography"
     ]
   },
   {
     "name": "--intergalactic-text-secondary",
     "type": "color",
-    "defaultValue": "#6c6e79",
+    "rawValue": "{gray.500}",
+    "computedValue": "#6c6e79",
     "components": [
       "breadcrumbs",
       "card",
       "button",
-      "button",
-      "button",
       "counter",
       "d3-chart",
       "date-picker",
-      "date-picker",
       "dropdown-menu",
       "flags",
-      "format-text",
-      "format-text",
-      "format-text",
       "format-text",
       "fullscreen-modal",
       "pills",
       "side-panel",
       "switch",
-      "switch",
       "tab-panel",
       "time-picker",
-      "time-picker",
-      "time-picker",
-      "time-picker",
       "typography",
-      "typography",
-      "typography",
-      "widget-empty",
       "widget-empty"
     ]
   },
   {
     "name": "--intergalactic-text-placeholder",
     "type": "color",
-    "defaultValue": "#a9abb6",
-    "components": [
-      "base-trigger",
-      "base-trigger",
-      "date-picker",
-      "inline-input",
-      "input",
-      "textarea"
-    ]
+    "rawValue": "{gray.300}",
+    "computedValue": "#a9abb6",
+    "components": ["base-trigger", "date-picker", "inline-input", "input", "textarea"]
   },
   {
     "name": "--intergalactic-text-success",
     "type": "color",
-    "defaultValue": "#007c65",
+    "rawValue": "{green.500}",
+    "computedValue": "#007c65",
     "components": []
   },
   {
     "name": "--intergalactic-text-success-hover-active",
     "type": "color",
-    "defaultValue": "#055345",
+    "rawValue": "{green.600}",
+    "computedValue": "#055345",
     "components": []
   },
   {
     "name": "--intergalactic-text-critical",
     "type": "color",
-    "defaultValue": "#d1002f",
+    "rawValue": "{red.500}",
+    "computedValue": "#d1002f",
     "components": []
   },
   {
     "name": "--intergalactic-text-critical-hover-active",
     "type": "color",
-    "defaultValue": "#8e0016",
+    "rawValue": "{red.600}",
+    "computedValue": "#8e0016",
     "components": []
   },
   {
     "name": "--intergalactic-text-primary-invert",
     "type": "color",
-    "defaultValue": "#ffffff",
+    "rawValue": "{gray.white}",
+    "computedValue": "#ffffff",
     "components": [
       "button",
-      "button",
-      "button",
-      "button",
-      "button",
-      "button",
       "counter",
-      "counter",
-      "date-picker",
-      "date-picker",
-      "date-picker",
       "date-picker",
       "dot",
-      "notice-global",
-      "notice-global",
-      "notice-global",
-      "notice-global",
-      "notice-global",
       "notice-bubble",
-      "notice-bubble",
-      "tag",
+      "notice-global",
       "tag",
       "tooltip",
       "wizard"
@@ -391,202 +378,195 @@
   {
     "name": "--intergalactic-text-secondary-Invert",
     "type": "color",
-    "defaultValue": "rgba(255, 255, 255, 0.75)",
+    "rawValue": "{gray.white}, 0.75",
+    "computedValue": "rgba(255, 255, 255, 0.75)",
     "components": []
   },
   {
     "name": "--intergalactic-text-link",
     "type": "color",
-    "defaultValue": "#006dca",
+    "rawValue": "{blue.500}",
+    "computedValue": "#006dca",
     "components": ["base-trigger", "button", "format-text", "link", "tab-panel"]
   },
   {
     "name": "--intergalactic-text-link-hover-active",
     "type": "color",
-    "defaultValue": "#044792",
-    "components": ["base-trigger", "format-text", "format-text", "link", "tab-panel"]
+    "rawValue": "{blue.600}",
+    "computedValue": "#044792",
+    "components": ["base-trigger", "format-text", "link", "tab-panel"]
   },
   {
     "name": "--intergalactic-text-link-invert",
     "type": "color",
-    "defaultValue": "#8ecdff",
+    "rawValue": "{blue.200}",
+    "computedValue": "#8ecdff",
     "description": "Use these styles on dark background.",
     "components": []
   },
   {
     "name": "--intergalactic-text-link-invert-hover",
     "type": "color",
-    "defaultValue": "#2bb3ff",
+    "rawValue": "{blue.300}",
+    "computedValue": "#2bb3ff",
     "description": "Use these styles on dark background.",
     "components": []
   },
   {
     "name": "--intergalactic-text-link-visited",
     "type": "color",
-    "defaultValue": "#8649e1",
+    "rawValue": "{violet.500}",
+    "computedValue": "#8649e1",
     "components": ["link"]
   },
   {
     "name": "--intergalactic-text-hint",
     "type": "color",
-    "defaultValue": "#6c6e79",
+    "rawValue": "{gray.500}",
+    "computedValue": "#6c6e79",
     "components": ["d3-chart", "format-text"]
   },
   {
     "name": "--intergalactic-text-hint-hover-active",
     "type": "color",
-    "defaultValue": "#484a54",
-    "components": ["breadcrumbs", "format-text", "format-text", "side-panel", "typography"]
+    "rawValue": "{gray.600}",
+    "computedValue": "#484a54",
+    "components": ["breadcrumbs", "format-text", "side-panel", "typography"]
   },
   {
     "name": "--intergalactic-text-hint-invert",
     "type": "color",
-    "defaultValue": "#c4c7cf",
+    "rawValue": "{gray.200}",
+    "computedValue": "#c4c7cf",
     "description": "Use these styles on dark background.",
     "components": []
   },
   {
     "name": "--intergalactic-text-hint-invert-hover-active",
     "type": "color",
-    "defaultValue": "#a9abb6",
+    "rawValue": "{gray.300}",
+    "computedValue": "#a9abb6",
     "description": "Use these styles on dark background.",
     "components": []
   },
   {
     "name": "--intergalactic-text-large-secondary",
     "type": "color",
-    "defaultValue": "#a9abb6",
+    "rawValue": "{gray.300}",
+    "computedValue": "#a9abb6",
     "description": "Use with font-size ≥20px.",
     "components": ["typography"]
   },
   {
     "name": "--intergalactic-text-large-info",
     "type": "color",
-    "defaultValue": "#008ff8",
+    "rawValue": "{blue.400}",
+    "computedValue": "#008ff8",
     "description": "Use with font-size ≥20px.",
     "components": []
   },
   {
     "name": "--intergalactic-text-large-info-hover-active",
     "type": "color",
-    "defaultValue": "#006dca",
+    "rawValue": "{blue.500}",
+    "computedValue": "#006dca",
     "description": "Use with font-size ≥20px.",
     "components": []
   },
   {
     "name": "--intergalactic-text-large-success",
     "type": "color",
-    "defaultValue": "#009f81",
+    "rawValue": "{green.400}",
+    "computedValue": "#009f81",
     "description": "Use with font-size ≥20px.",
     "components": []
   },
   {
     "name": "--intergalactic-text-large-success-hover-active",
     "type": "color",
-    "defaultValue": "#007c65",
+    "rawValue": "{green.500}",
+    "computedValue": "#007c65",
     "description": "Use with font-size ≥20px.",
     "components": []
   },
   {
     "name": "--intergalactic-text-large-critical",
     "type": "color",
-    "defaultValue": "#ff4953",
+    "rawValue": "{red.400}",
+    "computedValue": "#ff4953",
     "description": "Use with font-size ≥20px.",
     "components": []
   },
   {
     "name": "--intergalactic-text-large-critical-hover-active",
     "type": "color",
-    "defaultValue": "#d1002f",
+    "rawValue": "{red.500}",
+    "computedValue": "#d1002f",
     "description": "Use with font-size ≥20px.",
     "components": []
   },
   {
     "name": "--intergalactic-border-primary",
     "type": "color",
-    "defaultValue": "#c4c7cf",
+    "rawValue": "{gray.200}",
+    "computedValue": "#c4c7cf",
     "description": "Use it for all neutral primary borders.",
     "components": [
-      "base-trigger",
-      "base-trigger",
-      "base-trigger",
       "base-trigger",
       "button",
       "checkbox",
       "counter",
       "d3-chart",
-      "d3-chart",
       "date-picker",
       "divider",
-      "divider",
-      "divider",
-      "divider",
-      "divider",
-      "divider",
-      "divider",
-      "divider",
-      "divider",
       "drag-and-drop",
-      "fullscreen-modal",
-      "fullscreen-modal",
-      "fullscreen-modal",
       "inline-input",
+      "fullscreen-modal",
       "input",
       "pills",
       "radio",
       "select",
       "side-panel",
-      "side-panel",
       "slider",
       "spin",
-      "tab-panel",
-      "tab-panel",
       "tab-line",
-      "tab-line",
+      "tab-panel",
       "textarea",
-      "time-picker",
       "time-picker"
     ]
   },
   {
     "name": "--intergalactic-border-secondary",
     "type": "color",
-    "defaultValue": "#e0e1e9",
+    "rawValue": "{gray.100}",
+    "computedValue": "#e0e1e9",
     "description": "Use it for subtle secondary borders like all Poppers have.",
     "components": [
       "card",
-      "color-picker",
-      "color-picker",
-      "color-picker",
-      "color-picker",
-      "color-picker",
-      "data-table",
-      "data-table",
-      "data-table",
-      "data-table",
       "d3-chart",
-      "d3-chart",
+      "color-picker",
+      "data-table",
       "date-picker",
       "dropdown",
       "slider",
-      "tooltip",
       "tooltip"
     ]
   },
   {
     "name": "--intergalactic-border-info",
     "type": "color",
-    "defaultValue": "#8ecdff",
+    "rawValue": "{blue.200}",
+    "computedValue": "#8ecdff",
     "description": "Use it for borders in Notice and input fields.",
     "components": ["notice"]
   },
   {
     "name": "--intergalactic-border-info-active",
     "type": "color",
-    "defaultValue": "#006dca",
+    "rawValue": "{blue.500}",
+    "computedValue": "#006dca",
     "description": "Use it for borders in focused input fileds.",
     "components": [
-      "base-trigger",
       "base-trigger",
       "color-picker",
       "inline-input",
@@ -600,374 +580,408 @@
   {
     "name": "--intergalactic-border-success",
     "type": "color",
-    "defaultValue": "#59ddaa",
+    "rawValue": "{green.200}",
+    "computedValue": "#59ddaa",
     "description": "Use it for borders in Notice and input fields.",
-    "components": ["base-trigger", "base-trigger", "input", "notice"]
+    "components": ["base-trigger", "input", "notice"]
   },
   {
     "name": "--intergalactic-border-success-active",
     "type": "color",
-    "defaultValue": "#007c65",
+    "rawValue": "{green.500}",
+    "computedValue": "#007c65",
     "description": "Use it for borders in focused input fields.",
-    "components": ["inline-input", "inline-input", "input", "textarea"]
+    "components": ["inline-input", "input", "textarea"]
   },
   {
     "name": "--intergalactic-border-danger",
     "type": "color",
-    "defaultValue": "#ffaeb5",
+    "rawValue": "{red.200}",
+    "computedValue": "#ffaeb5",
     "description": "Use it for borders in Notice and input fields.",
-    "components": ["base-trigger", "base-trigger", "input", "notice"]
+    "components": ["base-trigger", "input", "notice"]
   },
   {
     "name": "--intergalactic-border-danger-active",
     "type": "color",
-    "defaultValue": "#d1002f",
+    "rawValue": "{red.500}",
+    "computedValue": "#d1002f",
     "description": "Use it for borders in focused input fields.",
-    "components": [
-      "base-trigger",
-      "inline-input",
-      "inline-input",
-      "input",
-      "radio",
-      "textarea",
-      "tooltip"
-    ]
+    "components": ["base-trigger", "inline-input", "input", "radio", "tooltip", "textarea"]
   },
   {
     "name": "--intergalactic-border-warning",
     "type": "color",
-    "defaultValue": "#ffb26e",
+    "rawValue": "{orange.200}",
+    "computedValue": "#ffb26e",
     "description": "Use it for borders in Notice.",
     "components": ["notice"]
   },
   {
     "name": "--intergalactic-border-warning-active",
     "type": "color",
-    "defaultValue": "#c33909",
+    "rawValue": "{orange.500}",
+    "computedValue": "#c33909",
     "components": []
   },
   {
     "name": "--intergalactic-border-primary-invert",
     "type": "color",
-    "defaultValue": "#ffffff",
+    "rawValue": "{gray.white}",
+    "computedValue": "#ffffff",
     "description": "Use it for borders of controls on the dark or color background.",
     "components": ["button", "spin", "tab-panel"]
   },
   {
     "name": "--intergalactic-border-secondary-invert",
     "type": "color",
-    "defaultValue": "rgba(255, 255, 255, 0.3)",
+    "rawValue": "{gray.white}, 0.3",
+    "computedValue": "rgba(255, 255, 255, 0.3)",
     "description": "Use it as an invert borders on the dark or color background.",
     "components": []
   },
   {
     "name": "--intergalactic-border-tooltip-invert",
     "type": "color",
-    "defaultValue": "#6c6e79",
+    "rawValue": "{gray.500}",
+    "computedValue": "#6c6e79",
     "description": "Use only for the dark Tooltip.",
-    "components": ["tooltip", "tooltip"]
+    "components": ["tooltip"]
   },
   {
     "name": "--intergalactic-border-table-accent-border",
     "type": "color",
-    "defaultValue": "#a9abb6",
-    "components": ["data-table", "data-table"]
+    "rawValue": "{gray.300}",
+    "computedValue": "#a9abb6",
+    "components": ["data-table"]
   },
   {
     "name": "--intergalactic-control-switch-bg",
     "type": "color",
-    "defaultValue": "#a9abb6",
+    "rawValue": "{gray.300}",
+    "computedValue": "#a9abb6",
     "components": ["switch"]
   },
   {
     "name": "--intergalactic-control-primary-info",
     "type": "color",
-    "defaultValue": "#008ff8",
-    "components": [
-      "button",
-      "button",
-      "button",
-      "checkbox",
-      "checkbox",
-      "checkbox",
-      "checkbox",
-      "radio",
-      "select",
-      "select",
-      "slider",
-      "slider",
-      "switch",
-      "switch"
-    ]
+    "rawValue": "{blue.400}",
+    "computedValue": "#008ff8",
+    "components": ["button", "checkbox", "radio", "select", "slider", "switch"]
   },
   {
     "name": "--intergalactic-control-primary-info-hover",
     "type": "color",
-    "defaultValue": "#006dca",
+    "rawValue": "{blue.500}",
+    "computedValue": "#006dca",
     "components": ["button", "checkbox", "slider"]
   },
   {
     "name": "--intergalactic-control-primary-info-active",
     "type": "color",
-    "defaultValue": "#044792",
+    "rawValue": "{blue.600}",
+    "computedValue": "#044792",
     "components": ["button"]
   },
   {
     "name": "--intergalactic-control-primary-success",
     "type": "color",
-    "defaultValue": "#009f81",
-    "components": ["button", "switch", "switch"]
+    "rawValue": "{green.400}",
+    "computedValue": "#009f81",
+    "components": ["button", "switch"]
   },
   {
     "name": "--intergalactic-control-primary-success-hover",
     "type": "color",
-    "defaultValue": "#007c65",
+    "rawValue": "{green.500}",
+    "computedValue": "#007c65",
     "components": ["button"]
   },
   {
     "name": "--intergalactic-control-primary-success-active",
     "type": "color",
-    "defaultValue": "#055345",
+    "rawValue": "{green.600}",
+    "computedValue": "#055345",
     "components": ["button"]
   },
   {
     "name": "--intergalactic-control-primary-critical",
     "type": "color",
-    "defaultValue": "#ff4953",
-    "components": ["button", "checkbox", "checkbox", "checkbox", "checkbox", "tooltip"]
+    "rawValue": "{red.400}",
+    "computedValue": "#ff4953",
+    "components": ["button", "checkbox", "tooltip"]
   },
   {
     "name": "--intergalactic-control-primary-critical-hover",
     "type": "color",
-    "defaultValue": "#d1002f",
+    "rawValue": "{red.500}",
+    "computedValue": "#d1002f",
     "components": ["button", "checkbox"]
   },
   {
     "name": "--intergalactic-control-primary-critical-active",
     "type": "color",
-    "defaultValue": "#8e0016",
+    "rawValue": "{red.600}",
+    "computedValue": "#8e0016",
     "components": ["button"]
   },
   {
     "name": "--intergalactic-control-primary-advertising-active",
     "type": "color",
-    "defaultValue": "#8649e1",
-    "components": ["wizard", "wizard"]
+    "rawValue": "{violet.500}",
+    "computedValue": "#8649e1",
+    "components": ["wizard"]
   },
   {
     "name": "--intergalactic-control-primary-advertising",
     "type": "color",
-    "defaultValue": "#5925ab",
+    "rawValue": "{violet.600}",
+    "computedValue": "#5925ab",
     "components": ["wizard"]
   },
   {
     "name": "--intergalactic-control-primary-advertising-hover",
     "type": "color",
-    "defaultValue": "#421983",
+    "rawValue": "{violet.700}",
+    "computedValue": "#421983",
     "components": ["wizard"]
   },
   {
     "name": "--intergalactic-control-primary-invert",
     "type": "color",
-    "defaultValue": "#ffffff",
+    "rawValue": "{gray.white}",
+    "computedValue": "#ffffff",
     "components": ["button"]
   },
   {
     "name": "--intergalactic-control-primary-invert-hover",
     "type": "color",
-    "defaultValue": "#f4f5f9",
+    "rawValue": "{gray.50}",
+    "computedValue": "#f4f5f9",
     "components": ["button"]
   },
   {
     "name": "--intergalactic-control-primary-invert-active",
     "type": "color",
-    "defaultValue": "#e0e1e9",
+    "rawValue": "{gray.100}",
+    "computedValue": "#e0e1e9",
     "components": ["button", "notice-bubble"]
   },
   {
     "name": "--intergalactic-control-secondary-neutral",
     "type": "color",
-    "defaultValue": "rgba(138, 142, 155, 0.1)",
+    "rawValue": "{gray.400}, 0.1",
+    "computedValue": "rgba(138, 142, 155, 0.1)",
     "components": ["button"]
   },
   {
     "name": "--intergalactic-control-secondary-neutral-hover",
     "type": "color",
-    "defaultValue": "rgba(138, 142, 155, 0.2)",
+    "rawValue": "{gray.400}, 0.2",
+    "computedValue": "rgba(138, 142, 155, 0.2)",
     "components": ["base-trigger", "button"]
   },
   {
     "name": "--intergalactic-control-secondary-neutral-active",
     "type": "color",
-    "defaultValue": "rgba(138, 142, 155, 0.3)",
+    "rawValue": "{gray.400}, 0.3",
+    "computedValue": "rgba(138, 142, 155, 0.3)",
     "components": ["button"]
   },
   {
     "name": "--intergalactic-control-secondary-info",
     "type": "color",
-    "defaultValue": "rgba(0, 143, 248, 0.1)",
+    "rawValue": "{blue.400}, 0.1",
+    "computedValue": "rgba(0, 143, 248, 0.1)",
     "components": ["button"]
   },
   {
     "name": "--intergalactic-control-secondary-info-hover",
     "type": "color",
-    "defaultValue": "rgba(0, 143, 248, 0.2)",
+    "rawValue": "{blue.400}, 0.2",
+    "computedValue": "rgba(0, 143, 248, 0.2)",
     "components": ["base-trigger", "button", "pills"]
   },
   {
     "name": "--intergalactic-control-secondary-info-active",
     "type": "color",
-    "defaultValue": "rgba(0, 143, 248, 0.3)",
+    "rawValue": "{blue.400}, 0.3",
+    "computedValue": "rgba(0, 143, 248, 0.3)",
     "components": ["base-trigger", "button"]
   },
   {
     "name": "--intergalactic-control-secondary-invert",
     "type": "color",
-    "defaultValue": "rgba(255, 255, 255, 0.05)",
+    "rawValue": "{gray.white}, 0.05",
+    "computedValue": "rgba(255, 255, 255, 0.05)",
     "components": ["button"]
   },
   {
     "name": "--intergalactic-control-secondary-invert-hover",
     "type": "color",
-    "defaultValue": "rgba(255, 255, 255, 0.1)",
+    "rawValue": "{gray.white}, 0.1",
+    "computedValue": "rgba(255, 255, 255, 0.1)",
     "components": ["button"]
   },
   {
     "name": "--intergalactic-control-secondary-invert-active",
     "type": "color",
-    "defaultValue": "rgba(255, 255, 255, 0.3)",
+    "rawValue": "{gray.white}, 0.3",
+    "computedValue": "rgba(255, 255, 255, 0.3)",
     "components": ["button"]
   },
   {
     "name": "--intergalactic-control-tertiary-neutral",
     "type": "color",
-    "defaultValue": "rgba(138, 142, 155, 0)",
+    "rawValue": "{gray.400}, 0",
+    "computedValue": "rgba(138, 142, 155, 0)",
     "components": ["button"]
   },
   {
     "name": "--intergalactic-control-tertiary-neutral-hover",
     "type": "color",
-    "defaultValue": "rgba(138, 142, 155, 0.2)",
+    "rawValue": "{gray.400}, 0.2",
+    "computedValue": "rgba(138, 142, 155, 0.2)",
     "components": ["button"]
   },
   {
     "name": "--intergalactic-control-tertiary-neutral-active",
     "type": "color",
-    "defaultValue": "rgba(138, 142, 155, 0.3)",
+    "rawValue": "{gray.400}, 0.3",
+    "computedValue": "rgba(138, 142, 155, 0.3)",
     "components": ["button"]
   },
   {
     "name": "--intergalactic-control-tertiary-info",
     "type": "color",
-    "defaultValue": "rgba(0, 143, 248, 0)",
+    "rawValue": "{blue.400}, 0",
+    "computedValue": "rgba(0, 143, 248, 0)",
     "components": ["button"]
   },
   {
     "name": "--intergalactic-control-tertiary-info-hover",
     "type": "color",
-    "defaultValue": "rgba(0, 143, 248, 0.2)",
+    "rawValue": "{blue.400}, 0.2",
+    "computedValue": "rgba(0, 143, 248, 0.2)",
     "components": ["button"]
   },
   {
     "name": "--intergalactic-control-tertiary-info-active",
     "type": "color",
-    "defaultValue": "rgba(0, 143, 248, 0.3)",
+    "rawValue": "{blue.400}, 0.3",
+    "computedValue": "rgba(0, 143, 248, 0.3)",
     "components": ["button"]
   },
   {
     "name": "--intergalactic-control-tertiary-invert",
     "type": "color",
-    "defaultValue": "rgba(255, 255, 255, 0)",
+    "rawValue": "{gray.white}, 0",
+    "computedValue": "rgba(255, 255, 255, 0)",
     "components": ["button"]
   },
   {
     "name": "--intergalactic-control-tertiary-invert-hover",
     "type": "color",
-    "defaultValue": "rgba(255, 255, 255, 0.1)",
+    "rawValue": "{gray.white}, 0.1",
+    "computedValue": "rgba(255, 255, 255, 0.1)",
     "components": ["button"]
   },
   {
     "name": "--intergalactic-control-tertiary-invert-active",
     "type": "color",
-    "defaultValue": "rgba(255, 255, 255, 0.3)",
+    "rawValue": "{gray.white}, 0.3",
+    "computedValue": "rgba(255, 255, 255, 0.3)",
     "components": ["button"]
   },
   {
     "name": "--intergalactic-icon-primary-neutral",
     "type": "color",
-    "defaultValue": "#6c6e79",
-    "components": ["base-trigger", "format-text", "fullscreen-modal", "notice", "notice"]
+    "rawValue": "{gray.500}",
+    "computedValue": "#6c6e79",
+    "components": ["base-trigger", "format-text", "fullscreen-modal", "notice"]
   },
   {
     "name": "--intergalactic-icon-primary-neutral-hover-active",
     "type": "color",
-    "defaultValue": "#484a54",
+    "rawValue": "{gray.600}",
+    "computedValue": "#484a54",
     "components": ["fullscreen-modal", "notice"]
   },
   {
     "name": "--intergalactic-icon-primary-info",
     "type": "color",
-    "defaultValue": "#006dca",
+    "rawValue": "{blue.500}",
+    "computedValue": "#006dca",
     "components": []
   },
   {
     "name": "--intergalactic-icon-primary-info-hover-active",
     "type": "color",
-    "defaultValue": "#044792",
+    "rawValue": "{blue.600}",
+    "computedValue": "#044792",
     "components": []
   },
   {
     "name": "--intergalactic-icon-primary-success",
     "type": "color",
-    "defaultValue": "#009f81",
-    "components": ["notice", "notice"]
+    "rawValue": "{green.400}",
+    "computedValue": "#009f81",
+    "components": ["notice"]
   },
   {
     "name": "--intergalactic-icon-primary-success-hover-active",
     "type": "color",
-    "defaultValue": "#007c65",
+    "rawValue": "{green.500}",
+    "computedValue": "#007c65",
     "components": ["notice"]
   },
   {
     "name": "--intergalactic-icon-primary-critical",
     "type": "color",
-    "defaultValue": "#ff4953",
-    "components": ["notice", "notice"]
+    "rawValue": "{red.400}",
+    "computedValue": "#ff4953",
+    "components": ["notice"]
   },
   {
     "name": "--intergalactic-icon-primary-critical-hover-active",
     "type": "color",
-    "defaultValue": "#d1002f",
+    "rawValue": "{red.500}",
+    "computedValue": "#d1002f",
     "components": ["notice"]
   },
   {
     "name": "--intergalactic-icon-primary-warning",
     "type": "color",
-    "defaultValue": "#ff642d",
-    "components": ["button", "dot", "notice", "notice"]
+    "rawValue": "{orange.400}",
+    "computedValue": "#ff642d",
+    "components": ["button", "dot", "notice"]
   },
   {
     "name": "--intergalactic-icon-primary-warning-hover-active",
     "type": "color",
-    "defaultValue": "#c33909",
-    "components": ["button", "button", "notice"]
+    "rawValue": "{orange.500}",
+    "computedValue": "#c33909",
+    "components": ["button", "notice"]
   },
   {
     "name": "--intergalactic-icon-primary-invert",
     "type": "color",
-    "defaultValue": "#ffffff",
-    "components": ["notice-global", "notice-global", "notice-global", "notice-global"]
+    "rawValue": "{gray.white}",
+    "computedValue": "#ffffff",
+    "components": ["notice-global"]
   },
   {
     "name": "--intergalactic-icon-primary-invert-hover-active",
     "type": "color",
-    "defaultValue": "#e0e1e9",
-    "components": ["notice-global", "notice-global", "notice-global", "notice-global"]
+    "rawValue": "{gray.100}",
+    "computedValue": "#e0e1e9",
+    "components": ["notice-global"]
   },
   {
     "name": "--intergalactic-icon-secondary-neutral",
     "type": "color",
-    "defaultValue": "#a9abb6",
+    "rawValue": "{gray.300}",
+    "computedValue": "#a9abb6",
     "description": "#A9ABB6",
     "components": [
       "breadcrumbs",
@@ -975,9 +989,8 @@
       "carousel",
       "data-table",
       "format-text",
+      "inline-input",
       "fullscreen-modal",
-      "inline-input",
-      "inline-input",
       "input",
       "input-number",
       "modal",
@@ -988,11 +1001,12 @@
   {
     "name": "--intergalactic-icon-secondary-neutral-hover-active",
     "type": "color",
-    "defaultValue": "#8a8e9b",
+    "rawValue": "{gray.400}",
+    "computedValue": "#8a8e9b",
     "components": [
       "data-table",
-      "fullscreen-modal",
       "inline-input",
+      "fullscreen-modal",
       "input",
       "input-number",
       "modal",
@@ -1002,517 +1016,582 @@
   {
     "name": "--intergalactic-icon-secondary-info",
     "type": "color",
-    "defaultValue": "#2bb3ff",
+    "rawValue": "{blue.300}",
+    "computedValue": "#2bb3ff",
     "components": ["d3-chart"]
   },
   {
     "name": "--intergalactic-icon-secondary-info-hover-active",
     "type": "color",
-    "defaultValue": "#008ff8",
+    "rawValue": "{blue.400}",
+    "computedValue": "#008ff8",
     "components": []
   },
   {
     "name": "--intergalactic-icon-secondary-success",
     "type": "color",
-    "defaultValue": "#00c192",
+    "rawValue": "{green.300}",
+    "computedValue": "#00c192",
     "components": ["inline-input"]
   },
   {
     "name": "--intergalactic-icon-secondary-success-hover-active",
     "type": "color",
-    "defaultValue": "#009f81",
+    "rawValue": "{green.400}",
+    "computedValue": "#009f81",
     "components": ["inline-input"]
   },
   {
     "name": "--intergalactic-icon-secondary-critical",
     "type": "color",
-    "defaultValue": "#ff8786",
+    "rawValue": "{red.300}",
+    "computedValue": "#ff8786",
     "components": []
   },
   {
     "name": "--intergalactic-icon-secondary-critical-hover-active",
     "type": "color",
-    "defaultValue": "#ff4953",
+    "rawValue": "{red.400}",
+    "computedValue": "#ff4953",
     "components": []
   },
   {
     "name": "--intergalactic-icon-secondary-warning",
     "type": "color",
-    "defaultValue": "#ff8c43",
+    "rawValue": "{orange.300}",
+    "computedValue": "#ff8c43",
     "components": []
   },
   {
     "name": "--intergalactic-icon-secondary-warning-hover-active",
     "type": "color",
-    "defaultValue": "#ff642d",
+    "rawValue": "{orange.400}",
+    "computedValue": "#ff642d",
     "components": []
   },
   {
     "name": "--intergalactic-icon-non-interactive",
     "type": "color",
-    "defaultValue": "#191b23",
+    "rawValue": "{gray.800}",
+    "computedValue": "#191b23",
     "description": "semrush/intergalactic/tree/feature/introduce-design-tokens-test",
     "components": []
   },
   {
     "name": "--intergalactic-date-picker-cell",
     "type": "color",
-    "defaultValue": "#ffffff",
+    "rawValue": "{gray.white}",
+    "computedValue": "#ffffff",
     "components": ["date-picker"]
   },
   {
     "name": "--intergalactic-date-picker-cell-current",
     "type": "color",
-    "defaultValue": "#c4c7cf",
+    "rawValue": "{gray.200}",
+    "computedValue": "#c4c7cf",
     "components": []
   },
   {
     "name": "--intergalactic-date-picker-cell-hover",
     "type": "color",
-    "defaultValue": "#e0e1e9",
+    "rawValue": "{gray.100}",
+    "computedValue": "#e0e1e9",
     "components": ["date-picker"]
   },
   {
     "name": "--intergalactic-date-picker-cell-range",
     "type": "color",
-    "defaultValue": "#c4e5fe",
+    "rawValue": "{blue.100}",
+    "computedValue": "#c4e5fe",
     "components": ["date-picker"]
   },
   {
     "name": "--intergalactic-date-picker-cell-range-hover",
     "type": "color",
-    "defaultValue": "#8ecdff",
+    "rawValue": "{blue.200}",
+    "computedValue": "#8ecdff",
     "components": ["date-picker"]
   },
   {
     "name": "--intergalactic-date-picker-cell-active",
     "type": "color",
-    "defaultValue": "#2bb3ff",
-    "components": ["date-picker", "date-picker", "date-picker"]
+    "rawValue": "{blue.300}",
+    "computedValue": "#2bb3ff",
+    "components": ["date-picker"]
   },
   {
     "name": "--intergalactic-date-picker-cell-active-hover",
     "type": "color",
-    "defaultValue": "#008ff8",
-    "components": ["date-picker", "date-picker", "date-picker"]
+    "rawValue": "{blue.400}",
+    "computedValue": "#008ff8",
+    "components": ["date-picker"]
   },
   {
     "name": "--intergalactic-date-picker-cell-current-invert",
     "type": "color",
-    "defaultValue": "rgba(255, 255, 255, 0.3)",
+    "rawValue": "{gray.white}, 0.3",
+    "computedValue": "rgba(255, 255, 255, 0.3)",
     "components": []
   },
   {
     "name": "--intergalactic-dropdown-menu-item",
     "type": "color",
-    "defaultValue": "#ffffff",
+    "rawValue": "{gray.white}",
+    "computedValue": "#ffffff",
     "components": []
   },
   {
     "name": "--intergalactic-dropdown-menu-item-hover",
     "type": "color",
-    "defaultValue": "#f4f5f9",
+    "rawValue": "{gray.50}",
+    "computedValue": "#f4f5f9",
     "components": []
   },
   {
     "name": "--intergalactic-dropdown-menu-item-selected",
     "type": "color",
-    "defaultValue": "rgba(196, 229, 254, 0.7)",
+    "rawValue": "{blue.100}, 0.7",
+    "computedValue": "rgba(196, 229, 254, 0.7)",
     "components": ["dropdown-menu", "select"]
   },
   {
     "name": "--intergalactic-dropdown-menu-item-selected-hover",
     "type": "color",
-    "defaultValue": "#c4e5fe",
+    "rawValue": "{blue.100}",
+    "computedValue": "#c4e5fe",
     "components": ["dropdown-menu", "select"]
   },
   {
     "name": "--intergalactic-feature-popover-dot-outer-border",
     "type": "color",
-    "defaultValue": "rgba(252, 224, 129, 0.3)",
+    "rawValue": "{yellow.100}, 0.3",
+    "computedValue": "rgba(252, 224, 129, 0.3)",
     "components": []
   },
   {
     "name": "--intergalactic-progress-bar-bg",
     "type": "color",
-    "defaultValue": "#e0e1e9",
+    "rawValue": "{gray.100}",
+    "computedValue": "#e0e1e9",
     "components": ["progress-bar"]
   },
   {
     "name": "--intergalactic-progress-bar-bg-hover",
     "type": "color",
-    "defaultValue": "#c4c7cf",
+    "rawValue": "{gray.200}",
+    "computedValue": "#c4c7cf",
     "components": []
   },
   {
     "name": "--intergalactic-progress-bar-bg-invert",
     "type": "color",
-    "defaultValue": "rgba(255, 255, 255, 0.2)",
+    "rawValue": "{gray.white}, 0.2",
+    "computedValue": "rgba(255, 255, 255, 0.2)",
     "description": "#FFFFFF",
-    "components": ["progress-bar", "progress-bar"]
+    "components": ["progress-bar"]
   },
   {
     "name": "--intergalactic-progress-bar-bg-invert-hover",
     "type": "color",
-    "defaultValue": "rgba(255, 255, 255, 0.4)",
+    "rawValue": "{gray.white}, 0.4",
+    "computedValue": "rgba(255, 255, 255, 0.4)",
     "components": []
   },
   {
     "name": "--intergalactic-progress-bar-value",
     "type": "color",
-    "defaultValue": "#009f81",
+    "rawValue": "{green.400}",
+    "computedValue": "#009f81",
     "components": []
   },
   {
     "name": "--intergalactic-progress-bar-value-gradient",
     "type": "color",
-    "defaultValue": "linear-gradient(-45deg, rgba(0, 159, 129, 0.9) 25%, rgba(0, 159, 129, 1) 0%, rgba(0, 159, 129, 1) 50%, rgba(0, 159, 129, 0.9) 0%, rgba(0, 159, 129, 0.9) 75%, rgba(0, 159, 129, 1) 0%)",
+    "rawValue": "linear-gradient(-45deg, rgba(0, 159, 129, 0.9) 25%, rgba(0, 159, 129, 1) 0%, rgba(0, 159, 129, 1) 50%, rgba(0, 159, 129, 0.9) 0%, rgba(0, 159, 129, 0.9) 75%, rgba(0, 159, 129, 1) 0%)",
+    "computedValue": "linear-gradient(-45deg, rgba(0, 159, 129, 0.9) 25%, rgba(0, 159, 129, 1) 0%, rgba(0, 159, 129, 1) 50%, rgba(0, 159, 129, 0.9) 0%, rgba(0, 159, 129, 0.9) 75%, rgba(0, 159, 129, 1) 0%)",
     "components": ["progress-bar"]
   },
   {
     "name": "--intergalactic-progress-bar-pattern-gradient",
     "type": "color",
-    "defaultValue": "linear-gradient(-45deg, rgba(224, 225, 233, 0.9) 25%, rgba(224, 225, 233, 1) 0%, rgba(224, 225, 233, 1) 50%, rgba(224, 225, 233, 0.9) 0%, rgba(224, 225, 233, 0.9) 75%, rgba(224, 225, 233, 1) 0%)",
+    "rawValue": "linear-gradient(-45deg, rgba(224, 225, 233, 0.9) 25%, rgba(224, 225, 233, 1) 0%, rgba(224, 225, 233, 1) 50%, rgba(224, 225, 233, 0.9) 0%, rgba(224, 225, 233, 0.9) 75%, rgba(224, 225, 233, 1) 0%)",
+    "computedValue": "linear-gradient(-45deg, rgba(224, 225, 233, 0.9) 25%, rgba(224, 225, 233, 1) 0%, rgba(224, 225, 233, 1) 50%, rgba(224, 225, 233, 0.9) 0%, rgba(224, 225, 233, 0.9) 75%, rgba(224, 225, 233, 1) 0%)",
     "components": ["progress-bar"]
   },
   {
     "name": "--intergalactic-progress-bar-value-bg",
     "type": "color",
-    "defaultValue": "#000000",
-    "components": ["progress-bar", "progress-bar"]
+    "rawValue": "#000000",
+    "computedValue": "#000000",
+    "components": ["progress-bar"]
   },
   {
     "name": "--intergalactic-skeleton-bg",
     "type": "color",
-    "defaultValue": "rgba(224, 225, 233, 0.8)",
+    "rawValue": "{gray.100}, 0.8",
+    "computedValue": "rgba(224, 225, 233, 0.8)",
     "components": ["skeleton"]
   },
   {
     "name": "--intergalactic-skeleton-bg-invert",
     "type": "color",
-    "defaultValue": "rgba(255, 255, 255, 0.3)",
+    "rawValue": "{gray.white}, 0.3",
+    "computedValue": "rgba(255, 255, 255, 0.3)",
     "components": ["skeleton"]
   },
   {
     "name": "--intergalactic-status-beta",
     "type": "color",
-    "defaultValue": "#ff8c43",
+    "rawValue": "{orange.300}",
+    "computedValue": "#ff8c43",
     "components": []
   },
   {
     "name": "--intergalactic-status-admin",
     "type": "color",
-    "defaultValue": "#2bb3ff",
+    "rawValue": "{blue.300}",
+    "computedValue": "#2bb3ff",
     "components": []
   },
   {
     "name": "--intergalactic-status-new",
     "type": "color",
-    "defaultValue": "#00c192",
+    "rawValue": "{green.300}",
+    "computedValue": "#00c192",
     "components": []
   },
   {
     "name": "--intergalactic-status-alpha",
     "type": "color",
-    "defaultValue": "#ff8786",
+    "rawValue": "{red.300}",
+    "computedValue": "#ff8786",
     "components": []
   },
   {
     "name": "--intergalactic-status-soon",
     "type": "color",
-    "defaultValue": "#a9abb6",
+    "rawValue": "{gray.300}",
+    "computedValue": "#a9abb6",
     "components": []
   },
   {
     "name": "--intergalactic-status-invert",
     "type": "color",
-    "defaultValue": "#ffffff",
+    "rawValue": "{gray.white}",
+    "computedValue": "#ffffff",
     "components": []
   },
   {
     "name": "--intergalactic-table-th-primary-cell",
     "type": "color",
-    "defaultValue": "#f4f5f9",
+    "rawValue": "{gray.50}",
+    "computedValue": "#f4f5f9",
     "components": ["data-table"]
   },
   {
     "name": "--intergalactic-table-th-primary-cell-hover",
     "type": "color",
-    "defaultValue": "#e0e1e9",
-    "components": ["data-table", "data-table"]
+    "rawValue": "{gray.100}",
+    "computedValue": "#e0e1e9",
+    "components": ["data-table"]
   },
   {
     "name": "--intergalactic-table-th-primary-cell-active",
     "type": "color",
-    "defaultValue": "#e0e1e9",
+    "rawValue": "{gray.100}",
+    "computedValue": "#e0e1e9",
     "components": ["data-table"]
   },
   {
     "name": "--intergalactic-table-th-secondary-cell",
     "type": "color",
-    "defaultValue": "#ffffff",
+    "rawValue": "{gray.white}",
+    "computedValue": "#ffffff",
     "components": ["data-table"]
   },
   {
     "name": "--intergalactic-table-th-secondary-cell-hover",
     "type": "color",
-    "defaultValue": "#e0e1e9",
+    "rawValue": "{gray.100}",
+    "computedValue": "#e0e1e9",
     "components": []
   },
   {
     "name": "--intergalactic-table-th-secondary-cell-active",
     "type": "color",
-    "defaultValue": "#e0e1e9",
+    "rawValue": "{gray.100}",
+    "computedValue": "#e0e1e9",
     "components": []
   },
   {
     "name": "--intergalactic-table-th-gradient",
     "type": "color",
-    "defaultValue": "linear-gradient(to right, rgba(224, 225, 233, 0) 0%, rgba(224, 225, 233, 1) 100%)",
+    "rawValue": "linear-gradient(to right, rgba($gray.100, 0) 0%, rgba($gray.100, 1) 100%)",
+    "computedValue": "linear-gradient(to right, rgba(224, 225, 233, 0) 0%, rgba(224, 225, 233, 1) 100%)",
     "components": []
   },
   {
     "name": "--intergalactic-table-td-cell",
     "type": "color",
-    "defaultValue": "#ffffff",
+    "rawValue": "{gray.white}",
+    "computedValue": "#ffffff",
     "components": []
   },
   {
     "name": "--intergalactic-table-td-cell-hover",
     "type": "color",
-    "defaultValue": "rgba(224, 225, 233, 0.5)",
-    "components": ["data-table", "data-table"]
+    "rawValue": "{gray.100}, 0.5",
+    "computedValue": "rgba(224, 225, 233, 0.5)",
+    "components": ["data-table"]
   },
   {
     "name": "--intergalactic-table-td-cell-active",
     "type": "color",
-    "defaultValue": "rgba(224, 225, 233, 0.8)",
+    "rawValue": "{gray.100}, 0.8",
+    "computedValue": "rgba(224, 225, 233, 0.8)",
     "components": []
   },
   {
     "name": "--intergalactic-table-td-cell-unread",
     "type": "color",
-    "defaultValue": "#f4f5f9",
-    "components": ["data-table", "data-table"]
+    "rawValue": "{gray.50}",
+    "computedValue": "#f4f5f9",
+    "components": ["data-table"]
   },
   {
     "name": "--intergalactic-table-td-cell-actions-accordion",
     "type": "color",
-    "defaultValue": "#f4f5f9",
+    "rawValue": "{gray.50}",
+    "computedValue": "#f4f5f9",
     "components": []
   },
   {
     "name": "--intergalactic-table-td-cell-selected",
     "type": "color",
-    "defaultValue": "#e9f7ff",
-    "components": ["data-table", "data-table"]
+    "rawValue": "{blue.50}",
+    "computedValue": "#e9f7ff",
+    "components": ["data-table"]
   },
   {
     "name": "--intergalactic-table-td-cell-selected-hover",
     "type": "color",
-    "defaultValue": "#c4e5fe",
+    "rawValue": "{blue.100}",
+    "computedValue": "#c4e5fe",
     "components": ["data-table"]
   },
   {
     "name": "--intergalactic-table-td-cell-selected-active",
     "type": "color",
-    "defaultValue": "#c4e5fe",
+    "rawValue": "{blue.100}",
+    "computedValue": "#c4e5fe",
     "components": []
   },
   {
     "name": "--intergalactic-table-td-cell-new",
     "type": "color",
-    "defaultValue": "#dbfee8",
-    "components": ["data-table", "data-table"]
+    "rawValue": "{green.50}",
+    "computedValue": "#dbfee8",
+    "components": ["data-table"]
   },
   {
     "name": "--intergalactic-table-td-cell-new-hover",
     "type": "color",
-    "defaultValue": "#9ef2c9",
+    "rawValue": "{green.100}",
+    "computedValue": "#9ef2c9",
     "components": ["data-table"]
   },
   {
     "name": "--intergalactic-table-td-cell-new-active",
     "type": "color",
-    "defaultValue": "#9ef2c9",
+    "rawValue": "{green.100}",
+    "computedValue": "#9ef2c9",
     "components": []
   },
   {
     "name": "--intergalactic-table-td-cell-critical",
     "type": "color",
-    "defaultValue": "#fff0f7",
-    "components": ["data-table", "data-table"]
+    "rawValue": "{red.50}",
+    "computedValue": "#fff0f7",
+    "components": ["data-table"]
   },
   {
     "name": "--intergalactic-table-td-cell-critical-hover",
     "type": "color",
-    "defaultValue": "#ffd7df",
+    "rawValue": "{red.100}",
+    "computedValue": "#ffd7df",
     "components": ["data-table"]
   },
   {
     "name": "--intergalactic-table-td-cell-critical-active",
     "type": "color",
-    "defaultValue": "#ffd7df",
+    "rawValue": "{red.100}",
+    "computedValue": "#ffd7df",
     "components": []
   },
   {
     "name": "--intergalactic-table-td-cell-warning",
     "type": "color",
-    "defaultValue": "#fff3d9",
-    "components": ["data-table", "data-table"]
+    "rawValue": "{orange.50}",
+    "computedValue": "#fff3d9",
+    "components": ["data-table"]
   },
   {
     "name": "--intergalactic-table-td-cell-warning-hover",
     "type": "color",
-    "defaultValue": "#ffdca2",
+    "rawValue": "{orange.100}",
+    "computedValue": "#ffdca2",
     "components": ["data-table"]
   },
   {
     "name": "--intergalactic-table-td-cell-warning-active",
     "type": "color",
-    "defaultValue": "#ffdca2",
+    "rawValue": "{orange.100}",
+    "computedValue": "#ffdca2",
     "components": []
   },
   {
     "name": "--intergalactic-brand-primary",
     "type": "color",
-    "defaultValue": "#ff642d",
+    "rawValue": "{orange.400}",
+    "computedValue": "#ff642d",
     "components": []
   },
   {
     "name": "--intergalactic-brand-secondary",
     "type": "color",
-    "defaultValue": "#421983",
+    "rawValue": "{violet.700}",
+    "computedValue": "#421983",
     "components": []
   },
   {
     "name": "--intergalactic-brand-pinterest",
     "type": "color",
-    "defaultValue": "#bd081c",
+    "rawValue": "#bd081c",
+    "computedValue": "#bd081c",
     "description": "#BD081C",
     "components": []
   },
   {
     "name": "--intergalactic-brand-instagram",
     "type": "color",
-    "defaultValue": "#e4405f",
+    "rawValue": "#e4405f",
+    "computedValue": "#e4405f",
     "description": "#E4405F",
     "components": []
   },
   {
     "name": "--intergalactic-brand-youtube",
     "type": "color",
-    "defaultValue": "#ff0000",
+    "rawValue": "#ff0000",
+    "computedValue": "#ff0000",
     "description": "#FF0000",
     "components": []
   },
   {
     "name": "--intergalactic-brand-facebook",
     "type": "color",
-    "defaultValue": "#3b5998",
+    "rawValue": "#3b5998",
+    "computedValue": "#3b5998",
     "description": "#3B5998",
     "components": []
   },
   {
     "name": "--intergalactic-brand-linkedIn",
     "type": "color",
-    "defaultValue": "#1a7ab2",
+    "rawValue": "#1a7ab2",
+    "computedValue": "#1a7ab2",
     "description": "#1A7AB2",
     "components": []
   },
   {
     "name": "--intergalactic-brand-twitter",
     "type": "color",
-    "defaultValue": "#2bafeb",
+    "rawValue": "#2bafeb",
+    "computedValue": "#2bafeb",
     "description": "#2BAFEB",
     "components": []
   },
   {
     "name": "--intergalactic-brand-google-blue",
     "type": "color",
-    "defaultValue": "#1a0dab",
+    "rawValue": "#1a0dab",
+    "computedValue": "#1a0dab",
     "description": "#1A0DAB",
     "components": []
   },
   {
     "name": "--intergalactic-brand-google-green",
     "type": "color",
-    "defaultValue": "#016723",
+    "rawValue": "#016723",
+    "computedValue": "#016723",
     "description": "#016723",
     "components": []
   },
   {
     "name": "--intergalactic-brand-google-my-business",
     "type": "color",
-    "defaultValue": "#1a73e8",
+    "rawValue": "#1a73e8",
+    "computedValue": "#1a73e8",
     "description": "#1A73E8",
     "components": []
   },
   {
     "name": "--intergalactic-box-shadow-card",
     "type": "boxShadow",
-    "defaultValue": "0px 0px 1px 0px rgba(25, 27, 35, 0.16), 0px 1px 2px 0px rgba(25, 27, 35, 0.12)",
+    "rawValue": "0px 0px 1px 0px rgba({gray.800}, 0.16); 0px 1px 2px 0px rgba({gray.800}, 0.12)",
+    "computedValue": "0px 0px 1px 0px rgba(25, 27, 35, 0.16), 0px 1px 2px 0px rgba(25, 27, 35, 0.12)",
     "components": ["card"]
   },
   {
     "name": "--intergalactic-box-shadow-card-hover",
     "type": "boxShadow",
-    "defaultValue": "3px 3px 30px 0px rgba(25, 27, 35, 0.15)",
+    "rawValue": "3px 3px 30px 0px rgba({gray.800}, 0.15)",
+    "computedValue": "3px 3px 30px 0px rgba(25, 27, 35, 0.15)",
     "description": "transition: all 500ms;",
     "components": []
   },
   {
     "name": "--intergalactic-box-shadow-dnd",
     "type": "boxShadow",
-    "defaultValue": "0px 0px 1px 0px rgba(25, 27, 35, 0.16), 0px 12px 40px 0px rgba(25, 27, 35, 0.16)",
+    "rawValue": "0px 0px 1px 0px rgba({gray.800}, 0.16); 0px 12px 40px 0px rgba({gray.800}, 0.16)",
+    "computedValue": "0px 0px 1px 0px rgba(25, 27, 35, 0.16), 0px 12px 40px 0px rgba(25, 27, 35, 0.16)",
     "components": []
   },
   {
     "name": "--intergalactic-box-shadow-modal",
     "type": "boxShadow",
-    "defaultValue": "0px 3px 8px 0px rgba(25, 27, 35, 0.2)",
+    "rawValue": "0px 3px 8px 0px rgba({gray.800}, 0.2)",
+    "computedValue": "0px 3px 8px 0px rgba(25, 27, 35, 0.2)",
     "description": "[gray800, .2]",
     "components": ["modal"]
   },
   {
     "name": "--intergalactic-box-shadow-popper",
     "type": "boxShadow",
-    "defaultValue": "0px 1px 12px 0px rgba(25, 27, 35, 0.15)",
-    "components": [
-      "d3-chart",
-      "dropdown",
-      "feature-popover",
-      "side-panel",
-      "side-panel",
-      "side-panel",
-      "side-panel",
-      "tooltip"
-    ]
+    "rawValue": "0px 1px 12px 0px rgba({gray.800}, 0.15)",
+    "computedValue": "0px 1px 12px 0px rgba(25, 27, 35, 0.15)",
+    "components": ["d3-chart", "dropdown", "feature-popover", "side-panel", "tooltip"]
   },
   {
     "name": "--intergalactic-keyboard-focus",
     "type": "boxShadow",
-    "defaultValue": "0px 0px 0px 3px rgba(0, 143, 248, 0.3)",
+    "rawValue": "0px 0px 0px 3px rgba({blue.400}, 0.3)",
+    "computedValue": "0px 0px 0px 3px rgba(0, 143, 248, 0.3)",
     "components": [
       "accordion",
-      "base-trigger",
-      "base-trigger",
-      "base-trigger",
       "breadcrumbs",
+      "base-trigger",
       "button",
       "checkbox",
-      "color-picker",
+      "d3-chart",
       "color-picker",
       "data-table",
-      "d3-chart",
       "date-picker",
-      "date-picker",
-      "dropdown-menu",
       "dropdown-menu",
       "format-text",
-      "inline-edit",
       "inline-input",
       "icon",
+      "inline-edit",
       "input",
       "link",
       "modal",
@@ -1520,10 +1599,9 @@
       "radio",
       "side-panel",
       "slider",
-      "slider",
+      "tab-line",
       "switch",
       "tab-panel",
-      "tab-line",
       "textarea",
       "time-picker",
       "typography"
@@ -1532,67 +1610,69 @@
   {
     "name": "--intergalactic-keyboard-focus-invalid",
     "type": "boxShadow",
-    "defaultValue": "0px 0px 0px 3px rgba(255, 73, 83, 0.3)",
+    "rawValue": "0px 0px 0px 3px rgba({red.400}, 0.3)",
+    "computedValue": "0px 0px 0px 3px rgba(255, 73, 83, 0.3)",
     "components": ["base-trigger", "checkbox", "inline-input", "input", "radio", "textarea"]
   },
   {
     "name": "--intergalactic-keyboard-focus-valid",
     "type": "boxShadow",
-    "defaultValue": "0px 0px 0px 3px rgba(0, 159, 129, 0.3)",
+    "rawValue": "0px 0px 0px 3px rgba({green.400}, 0.3)",
+    "computedValue": "0px 0px 0px 3px rgba(0, 159, 129, 0.3)",
     "components": ["inline-input", "input", "textarea"]
   },
   {
     "name": "--intergalactic-base",
     "type": "fontFamilies",
-    "defaultValue": "Inter",
-    "components": ["base-trigger", "base-trigger", "breadcrumbs", "card", "button", "side-panel"]
+    "rawValue": "Inter",
+    "computedValue": "Inter",
+    "components": ["breadcrumbs", "base-trigger", "card", "button", "side-panel"]
   },
   {
     "name": "--intergalactic-lh-800",
     "type": "lineHeights",
-    "defaultValue": "117%",
+    "rawValue": "117%",
+    "computedValue": "117%",
     "description": "Use with font-size-800.",
     "components": ["format-text", "typography"]
   },
   {
     "name": "--intergalactic-lh-700",
     "type": "lineHeights",
-    "defaultValue": "110%",
+    "rawValue": "110%",
+    "computedValue": "110%",
     "description": "Use with font-size-700.",
     "components": ["errors", "format-text", "typography"]
   },
   {
     "name": "--intergalactic-lh-600",
     "type": "lineHeights",
-    "defaultValue": "125%",
+    "rawValue": "125%",
+    "computedValue": "125%",
     "description": "Use with font-size-600.",
     "components": ["format-text", "typography"]
   },
   {
     "name": "--intergalactic-lh-500",
     "type": "lineHeights",
-    "defaultValue": "117%",
+    "rawValue": "117%",
+    "computedValue": "117%",
     "description": "Use with font-size-500.",
     "components": ["format-text", "fullscreen-modal", "typography"]
   },
   {
     "name": "--intergalactic-lh-400",
     "type": "lineHeights",
-    "defaultValue": "120%",
+    "rawValue": "120%",
+    "computedValue": "120%",
     "description": "Use with font-size-400.",
-    "components": [
-      "format-text",
-      "format-text",
-      "product-head",
-      "textarea",
-      "typography",
-      "typography"
-    ]
+    "components": ["format-text", "product-head", "textarea", "typography"]
   },
   {
     "name": "--intergalactic-lh-300",
     "type": "lineHeights",
-    "defaultValue": "150%",
+    "rawValue": "150%",
+    "computedValue": "150%",
     "description": "Use with font-size-300.",
     "components": [
       "card",
@@ -1601,14 +1681,11 @@
       "dropdown-menu",
       "errors",
       "format-text",
-      "format-text",
-      "format-text",
       "radio",
       "side-panel",
-      "switch",
       "tab-line",
+      "switch",
       "tag",
-      "typography",
       "typography",
       "widget-empty",
       "wizard"
@@ -1617,7 +1694,8 @@
   {
     "name": "--intergalactic-lh-200",
     "type": "lineHeights",
-    "defaultValue": "142%",
+    "rawValue": "142%",
+    "computedValue": "142%",
     "description": "Use with font-size-200.",
     "components": [
       "base-trigger",
@@ -1627,20 +1705,18 @@
       "dropdown-menu",
       "format-text",
       "fullscreen-modal",
-      "notice-global",
       "notice",
+      "notice-global",
       "pagination",
-      "pagination",
-      "product-head",
-      "product-head",
       "radio",
+      "product-head",
       "side-panel",
+      "tab-line",
       "switch",
       "tab-panel",
-      "tab-line",
       "tag",
-      "textarea",
       "tooltip",
+      "textarea",
       "typography",
       "widget-empty",
       "wizard"
@@ -1649,13 +1725,13 @@
   {
     "name": "--intergalactic-lh-100",
     "type": "lineHeights",
-    "defaultValue": "133%",
+    "rawValue": "133%",
+    "computedValue": "133%",
     "description": "Use with font-size-100.",
     "components": [
       "breadcrumbs",
       "d3-chart",
       "format-text",
-      "fullscreen-modal",
       "fullscreen-modal",
       "notice-bubble",
       "side-panel",
@@ -1667,21 +1743,21 @@
   {
     "name": "--intergalactic-semi-bold",
     "type": "fontWeights",
-    "defaultValue": "600",
+    "rawValue": "600",
+    "computedValue": "600",
     "components": ["product-head"]
   },
   {
     "name": "--intergalactic-bold",
     "type": "fontWeights",
-    "defaultValue": "700",
+    "rawValue": "700",
+    "computedValue": "700",
     "components": [
       "card",
       "color-picker",
       "dropdown-menu",
       "errors",
       "flags",
-      "format-text",
-      "format-text",
       "format-text",
       "fullscreen-modal",
       "side-panel",
@@ -1693,22 +1769,22 @@
   {
     "name": "--intergalactic-regular",
     "type": "fontWeights",
-    "defaultValue": "400",
+    "rawValue": "400",
+    "computedValue": "400",
     "components": ["base-trigger", "date-picker"]
   },
   {
     "name": "--intergalactic-medium",
     "type": "fontWeights",
-    "defaultValue": "500",
+    "rawValue": "500",
+    "computedValue": "500",
     "components": [
       "badge",
       "button",
       "counter",
       "format-text",
-      "format-text",
-      "format-text",
-      "tab-panel",
       "tab-line",
+      "tab-panel",
       "tag",
       "time-picker",
       "typography"
@@ -1717,26 +1793,23 @@
   {
     "name": "--intergalactic-fs-50",
     "type": "fontSizes",
-    "defaultValue": "10px",
+    "rawValue": "10px",
+    "computedValue": "10px",
     "description": "Use only for text in Badge component.",
-    "components": ["badge", "counter", "d3-chart", "d3-chart", "dot"]
+    "components": ["badge", "counter", "d3-chart", "dot"]
   },
   {
     "name": "--intergalactic-fs-100",
     "type": "fontSizes",
-    "defaultValue": "12px",
+    "rawValue": "12px",
+    "computedValue": "12px",
     "description": "Use with caution for text in additional messages. Always check its contrast and readability.",
     "components": [
       "counter",
+      "d3-chart",
       "data-table",
-      "d3-chart",
-      "d3-chart",
-      "d3-chart",
-      "d3-chart",
       "format-text",
       "fullscreen-modal",
-      "fullscreen-modal",
-      "side-panel",
       "side-panel",
       "switch",
       "tag",
@@ -1746,43 +1819,37 @@
   {
     "name": "--intergalactic-fs-200",
     "type": "fontSizes",
-    "defaultValue": "14px",
+    "rawValue": "14px",
+    "computedValue": "14px",
     "description": "Use for text in regular messages.",
     "components": [
-      "base-trigger",
-      "base-trigger",
-      "base-trigger",
-      "badge",
-      "badge",
       "breadcrumbs",
+      "badge",
+      "base-trigger",
       "card",
       "button",
       "checkbox",
       "counter",
       "data-table",
       "date-picker",
-      "date-picker",
-      "date-picker",
       "dropdown-menu",
       "format-text",
       "fullscreen-modal",
       "input",
-      "notice-global",
-      "notice-bubble",
       "notice",
-      "pagination",
+      "notice-bubble",
+      "notice-global",
       "pagination",
       "pills",
-      "product-head",
-      "product-head",
       "radio",
+      "product-head",
+      "tab-line",
       "switch",
       "tab-panel",
-      "tab-line",
       "tag",
+      "tooltip",
       "textarea",
       "time-picker",
-      "tooltip",
       "typography",
       "widget-empty",
       "wizard"
@@ -1791,11 +1858,10 @@
   {
     "name": "--intergalactic-fs-300",
     "type": "fontSizes",
-    "defaultValue": "16px",
+    "rawValue": "16px",
+    "computedValue": "16px",
     "description": "Use for H6 with bold font-weight, and for text in regular messages.",
     "components": [
-      "base-trigger",
-      "base-trigger",
       "base-trigger",
       "card",
       "button",
@@ -1803,18 +1869,15 @@
       "dropdown-menu",
       "errors",
       "format-text",
-      "format-text",
-      "format-text",
       "input",
       "pills",
       "radio",
       "side-panel",
-      "switch",
       "tab-line",
+      "switch",
       "tag",
       "textarea",
       "time-picker",
-      "typography",
       "typography",
       "widget-empty",
       "wizard"
@@ -1823,109 +1886,92 @@
   {
     "name": "--intergalactic-fs-400",
     "type": "fontSizes",
-    "defaultValue": "20px",
+    "rawValue": "20px",
+    "computedValue": "20px",
     "description": "Use for H5 and subtitles.",
-    "components": ["format-text", "format-text", "product-head", "typography", "typography"]
+    "components": ["format-text", "product-head", "typography"]
   },
   {
     "name": "--intergalactic-fs-500",
     "type": "fontSizes",
-    "defaultValue": "24px",
+    "rawValue": "24px",
+    "computedValue": "24px",
     "description": "Use for H4.",
     "components": ["format-text", "fullscreen-modal", "typography"]
   },
   {
     "name": "--intergalactic-fs-600",
     "type": "fontSizes",
-    "defaultValue": "32px",
+    "rawValue": "32px",
+    "computedValue": "32px",
     "description": "Use for H3.",
     "components": ["format-text", "typography"]
   },
   {
     "name": "--intergalactic-fs-700",
     "type": "fontSizes",
-    "defaultValue": "36px",
+    "rawValue": "36px",
+    "computedValue": "36px",
     "description": "Use for H2.",
     "components": ["errors", "format-text", "typography"]
   },
   {
     "name": "--intergalactic-fs-800",
     "type": "fontSizes",
-    "defaultValue": "48px",
+    "rawValue": "48px",
+    "computedValue": "48px",
     "description": "Use for H1.",
     "components": ["format-text", "typography"]
   },
   {
     "name": "--intergalactic-compact",
     "type": "letterSpacing",
-    "defaultValue": "0.3",
+    "rawValue": "0.3",
+    "computedValue": "0.3",
     "components": []
   },
   {
     "name": "--intergalactic-scale-indent",
     "type": "spacing",
-    "defaultValue": "4px",
+    "rawValue": "4px",
+    "computedValue": "4px",
     "description": "Base denominator of the design system.",
     "components": []
   },
   {
     "name": "--intergalactic-form-control-m",
     "type": "sizing",
-    "defaultValue": "28px",
+    "rawValue": "{scale-indent}*7",
+    "computedValue": "28px",
     "description": "Use for default size of the controls.",
-    "components": ["input", "pills", "pills", "time-picker"]
+    "components": ["input", "pills", "time-picker"]
   },
   {
     "name": "--intergalactic-form-control-l",
     "type": "sizing",
-    "defaultValue": "40px",
+    "rawValue": "{scale-indent}*10",
+    "computedValue": "40px",
     "description": "Use for large size of the controls.",
-    "components": ["input", "pills", "pills", "time-picker"]
+    "components": ["input", "pills", "time-picker"]
   },
   {
     "name": "--intergalactic-spacing-05x",
     "type": "spacing",
-    "defaultValue": "2px",
+    "rawValue": "{scale-indent}*0.5",
+    "computedValue": "2px",
     "components": [
       "checkbox",
-      "checkbox",
-      "checkbox",
-      "counter",
-      "counter",
-      "counter",
       "counter",
       "data-table",
       "dropdown-menu",
       "feedback-form",
-      "feedback-form",
-      "format-text",
-      "format-text",
-      "format-text",
-      "format-text",
-      "format-text",
-      "format-text",
-      "format-text",
-      "format-text",
-      "format-text",
-      "format-text",
-      "format-text",
-      "format-text",
-      "format-text",
       "format-text",
       "input-tags",
-      "input-tags",
-      "input-tags",
-      "input-tags",
-      "input-tags",
-      "input-tags",
-      "input-tags",
-      "notice-global",
       "notice",
+      "notice-global",
       "radio",
       "select",
-      "select",
       "switch",
-      "tag",
       "tag",
       "typography",
       "wizard"
@@ -1934,71 +1980,32 @@
   {
     "name": "--intergalactic-spacing-1x",
     "type": "spacing",
-    "defaultValue": "4px",
+    "rawValue": "{scale-indent}*1",
+    "computedValue": "4px",
     "components": [
-      "base-trigger",
-      "base-trigger",
-      "base-trigger",
-      "base-trigger",
-      "base-trigger",
-      "base-trigger",
       "badge",
+      "base-trigger",
       "card",
-      "card",
       "button",
-      "button",
-      "button",
-      "button",
+      "counter",
       "color-picker",
-      "counter",
-      "counter",
-      "counter",
-      "data-table",
-      "data-table",
       "data-table",
       "dropdown-menu",
-      "dropdown-menu",
-      "feature-popover",
       "feature-popover",
       "format-text",
-      "format-text",
-      "format-text",
-      "format-text",
-      "fullscreen-modal",
-      "fullscreen-modal",
       "inline-input",
-      "inline-input",
-      "input",
+      "fullscreen-modal",
       "input",
       "input-tags",
-      "input-tags",
-      "link",
       "link",
       "notice-bubble",
       "pagination",
-      "pagination",
-      "product-head",
-      "product-head",
-      "product-head",
-      "product-head",
       "scroll-area",
-      "scroll-area",
+      "product-head",
       "side-panel",
-      "side-panel",
-      "side-panel",
-      "side-panel",
-      "side-panel",
-      "tag",
-      "tag",
-      "tag",
-      "tag",
-      "tag",
-      "tag",
-      "tag",
       "tag",
       "textarea",
       "time-picker",
-      "typography",
       "typography",
       "widget-empty",
       "wizard"
@@ -2007,146 +2014,70 @@
   {
     "name": "--intergalactic-spacing-2x",
     "type": "spacing",
-    "defaultValue": "8px",
+    "rawValue": "{scale-indent}*2",
+    "computedValue": "8px",
     "components": [
-      "base-trigger",
-      "base-trigger",
-      "base-trigger",
-      "base-trigger",
-      "base-trigger",
       "breadcrumbs",
+      "base-trigger",
       "card",
-      "card",
-      "card",
-      "button",
-      "button",
-      "button",
-      "button",
-      "button",
       "button",
       "checkbox",
+      "d3-chart",
       "data-table",
-      "data-table",
-      "d3-chart",
-      "d3-chart",
-      "d3-chart",
       "date-picker",
-      "date-picker",
-      "dropdown-menu",
-      "dropdown-menu",
-      "dropdown-menu",
       "dropdown-menu",
       "feature-popover",
       "feedback-form",
-      "feedback-form",
-      "format-text",
-      "format-text",
-      "format-text",
-      "format-text",
       "format-text",
       "fullscreen-modal",
-      "fullscreen-modal",
-      "input",
       "input",
       "input-tags",
-      "notice-global",
-      "notice-bubble",
-      "notice-bubble",
       "notice",
+      "notice-bubble",
+      "notice-global",
       "pagination",
-      "pagination",
       "pills",
-      "pills",
-      "pills",
-      "pills",
-      "pills",
-      "pills",
-      "pills",
-      "pills",
-      "product-head",
-      "product-head",
-      "product-head",
-      "product-head",
-      "product-head",
-      "product-head",
       "radio",
       "scroll-area",
-      "scroll-area",
+      "product-head",
       "select",
       "slider",
-      "slider",
-      "switch",
-      "switch",
-      "switch",
-      "switch",
-      "tab-panel",
-      "tab-panel",
-      "tab-panel",
-      "tab-panel",
-      "tab-panel",
       "tab-line",
-      "tab-line",
-      "textarea",
-      "textarea",
-      "textarea",
+      "switch",
+      "tab-panel",
       "textarea",
       "time-picker",
       "typography",
-      "typography",
-      "typography",
       "widget-empty",
-      "wizard",
-      "wizard",
       "wizard"
     ]
   },
   {
     "name": "--intergalactic-spacing-3x",
     "type": "spacing",
-    "defaultValue": "12px",
+    "rawValue": "{scale-indent}*3",
+    "computedValue": "12px",
     "components": [
       "base-trigger",
       "button",
-      "button",
       "carousel",
-      "carousel",
-      "carousel",
+      "d3-chart",
       "color-picker",
       "data-table",
-      "data-table",
-      "data-table",
-      "d3-chart",
       "date-picker",
       "dropdown-menu",
       "errors",
       "feedback-form",
       "format-text",
       "fullscreen-modal",
-      "fullscreen-modal",
-      "fullscreen-modal",
-      "fullscreen-modal",
       "modal",
-      "modal",
-      "notice-bubble",
-      "notice-bubble",
-      "notice-bubble",
-      "notice-bubble",
-      "notice-bubble",
-      "notice-bubble",
       "notice",
-      "pills",
-      "pills",
-      "pills",
-      "pills",
-      "pills",
+      "notice-bubble",
       "pills",
       "side-panel",
-      "side-panel",
-      "side-panel",
-      "side-panel",
+      "tooltip",
       "textarea",
       "time-picker",
-      "tooltip",
       "widget-empty",
       "wizard"
     ]
@@ -2154,36 +2085,21 @@
   {
     "name": "--intergalactic-spacing-4x",
     "type": "spacing",
-    "defaultValue": "16px",
+    "rawValue": "{scale-indent}*4",
+    "computedValue": "16px",
     "components": [
       "carousel",
       "color-picker",
-      "color-picker",
       "date-picker",
-      "drag-and-drop",
-      "drag-and-drop",
-      "drag-and-drop",
-      "drag-and-drop",
       "drag-and-drop",
       "errors",
       "feature-popover",
-      "feature-popover",
-      "feature-popover",
-      "feedback-form",
       "feedback-form",
       "format-text",
-      "format-text",
-      "format-text",
-      "format-text",
-      "format-text",
-      "format-text",
-      "format-text",
+      "notice",
       "notice-global",
-      "notice",
-      "notice",
       "pagination",
       "product-head",
-      "side-panel",
       "side-panel",
       "tab-line",
       "typography",
@@ -2194,13 +2110,9 @@
   {
     "name": "--intergalactic-spacing-5x",
     "type": "spacing",
-    "defaultValue": "20px",
+    "rawValue": "{scale-indent}*5",
+    "computedValue": "20px",
     "components": [
-      "card",
-      "card",
-      "card",
-      "card",
-      "card",
       "card",
       "errors",
       "format-text",
@@ -2213,38 +2125,27 @@
   {
     "name": "--intergalactic-spacing-6x",
     "type": "spacing",
-    "defaultValue": "24px",
+    "rawValue": "{scale-indent}*6",
+    "computedValue": "24px",
     "components": [
       "errors",
       "format-text",
-      "format-text",
-      "format-text",
-      "format-text",
-      "fullscreen-modal",
       "fullscreen-modal",
       "notice-bubble",
-      "notice-bubble",
       "product-head",
-      "product-head",
-      "side-panel",
       "side-panel"
     ]
   },
   {
     "name": "--intergalactic-spacing-8x",
     "type": "spacing",
-    "defaultValue": "32px",
+    "rawValue": "{scale-indent}*8",
+    "computedValue": "32px",
     "components": [
-      "errors",
       "errors",
       "feature-popover",
       "feedback-form",
-      "feedback-form",
       "format-text",
-      "format-text",
-      "format-text",
-      "fullscreen-modal",
-      "fullscreen-modal",
       "fullscreen-modal",
       "notice-global",
       "wizard"
@@ -2253,162 +2154,121 @@
   {
     "name": "--intergalactic-spacing-10x",
     "type": "spacing",
-    "defaultValue": "40px",
-    "components": [
-      "errors",
-      "errors",
-      "feedback-form",
-      "fullscreen-modal",
-      "modal",
-      "modal",
-      "side-panel",
-      "side-panel",
-      "wizard",
-      "wizard"
-    ]
+    "rawValue": "{scale-indent}*10",
+    "computedValue": "40px",
+    "components": ["errors", "feedback-form", "fullscreen-modal", "modal", "side-panel", "wizard"]
   },
   {
     "name": "--intergalactic-spacing-14x",
     "type": "spacing",
-    "defaultValue": "56px",
+    "rawValue": "{scale-indent}*14",
+    "computedValue": "56px",
     "components": ["side-panel"]
   },
   {
     "name": "--intergalactic-spacing-20x",
     "type": "spacing",
-    "defaultValue": "80px",
-    "components": ["errors", "errors", "errors", "fullscreen-modal"]
+    "rawValue": "{scale-indent}*20",
+    "computedValue": "80px",
+    "components": ["errors", "fullscreen-modal"]
   },
   {
     "name": "--intergalactic-spacing-24x",
     "type": "spacing",
-    "defaultValue": "96px",
+    "rawValue": "{scale-indent}*24",
+    "computedValue": "96px",
     "components": []
   },
   {
     "name": "--intergalactic-spacing-30x",
     "type": "spacing",
-    "defaultValue": "120px",
+    "rawValue": "{scale-indent}*30",
+    "computedValue": "120px",
     "components": []
   },
   {
     "name": "--intergalactic-rounded-small",
     "type": "borderRadius",
-    "defaultValue": "4px",
+    "rawValue": "4px",
+    "computedValue": "4px",
     "description": "Use only for checkbox and placeholder addons.",
     "components": ["checkbox", "select"]
   },
   {
     "name": "--intergalactic-rounded-medium",
     "type": "borderRadius",
-    "defaultValue": "6px",
+    "rawValue": "6px",
+    "computedValue": "6px",
     "description": "Use for all inputs and controls, widgets.",
     "components": [
-      "base-trigger",
-      "base-trigger",
-      "base-trigger",
-      "base-trigger",
       "badge",
+      "base-trigger",
       "card",
       "button",
-      "button",
-      "carousel",
       "carousel",
       "d3-chart",
       "date-picker",
-      "date-picker",
-      "date-picker",
-      "date-picker",
-      "date-picker",
-      "date-picker",
-      "date-picker",
-      "date-picker",
-      "date-picker",
-      "date-picker",
-      "date-picker",
-      "date-picker",
-      "date-picker",
-      "date-picker",
-      "date-picker",
-      "date-picker",
-      "date-picker",
-      "date-picker",
+      "drag-and-drop",
       "dot",
       "dropdown",
-      "drag-and-drop",
-      "dropdown-menu",
       "dropdown-menu",
       "feature-popover",
       "feedback-form",
-      "feedback-form",
       "input",
-      "input",
-      "notice-bubble",
       "notice",
+      "notice-bubble",
       "pills",
       "progress-bar",
-      "progress-bar",
-      "progress-bar",
-      "select",
       "select",
       "slider",
-      "slider",
       "tab-panel",
-      "tab-panel",
+      "tooltip",
       "textarea",
       "time-picker",
-      "time-picker",
-      "tooltip",
-      "wizard",
       "wizard"
     ]
   },
   {
     "name": "--intergalactic-rounded-large",
     "type": "borderRadius",
-    "defaultValue": "12px",
+    "rawValue": "12px",
+    "computedValue": "12px",
     "description": "Use for all inputs and controls, widgets.",
-    "components": ["counter", "modal", "wizard", "wizard", "wizard", "wizard"]
+    "components": ["counter", "modal", "wizard"]
   },
   {
     "name": "--intergalactic-rounded-extra-large",
     "type": "borderRadius",
-    "defaultValue": "24px",
+    "rawValue": "24px",
+    "computedValue": "24px",
     "description": "Use for Tag.",
     "components": ["switch", "tag"]
   },
   {
     "name": "--intergalactic-disabled-opacity",
     "type": "opacity",
-    "defaultValue": "0.3",
+    "rawValue": "0.3",
+    "computedValue": "0.3",
     "description": "Variable for disabled state. Use it for all controls to make them look disabled.",
     "components": [
       "accordion",
       "base-trigger",
-      "base-trigger",
       "button",
       "carousel",
-      "carousel",
-      "carousel",
-      "checkbox",
       "checkbox",
       "dropdown-menu",
       "inline-input",
-      "inline-input",
-      "input",
-      "input",
       "input",
       "input-number",
       "link",
       "pills",
       "radio",
       "slider",
+      "tab-line",
       "switch",
       "tab-panel",
-      "tab-line",
       "tag",
       "textarea",
-      "time-picker",
       "time-picker",
       "typography",
       "wizard"
@@ -2417,603 +2277,689 @@
   {
     "name": "--intergalactic-screen-extra-small",
     "type": "sizing",
-    "defaultValue": "320px",
+    "rawValue": "320px",
+    "computedValue": "320px",
     "description": "Extra small screens (small phones).",
     "components": []
   },
   {
     "name": "--intergalactic-screen-small",
     "type": "sizing",
-    "defaultValue": "768px",
+    "rawValue": "768px",
+    "computedValue": "768px",
     "description": "Small screens (phones and small tablets).",
     "components": []
   },
   {
     "name": "--intergalactic-screen-medium",
     "type": "sizing",
-    "defaultValue": "1200px",
+    "rawValue": "1200px",
+    "computedValue": "1200px",
     "description": "Medium screens (tablets and small laptops).",
     "components": []
   },
   {
     "name": "--intergalactic-screen-large",
     "type": "sizing",
-    "defaultValue": "1920px",
+    "rawValue": "1920px",
+    "computedValue": "1920px",
     "description": "Large screens (tablets and laptops).",
     "components": []
   },
   {
     "name": "--intergalactic-overlay-primary",
     "type": "color",
-    "defaultValue": "rgba(25, 27, 35, 0.7)",
+    "rawValue": "{gray.800}, 0.7",
+    "computedValue": "rgba(25, 27, 35, 0.7)",
     "description": "Use for cover the content under the modal dialogs.",
     "components": ["modal", "side-panel"]
   },
   {
     "name": "--intergalactic-overlay-secondary",
     "type": "color",
-    "defaultValue": "rgba(25, 27, 35, 0.4)",
+    "rawValue": "{gray.800}, 0.4",
+    "computedValue": "rgba(25, 27, 35, 0.4)",
     "description": "Use for the secondary modal dialogs that were opened upon the other modal dialogs.",
     "components": ["modal", "spin-container"]
   },
   {
     "name": "--intergalactic-overlay-limitation-primary",
     "type": "color",
-    "defaultValue": "#f4f5f9",
+    "rawValue": "{gray.50}",
+    "computedValue": "#f4f5f9",
     "description": "Use as a primary cover of the content under the messages about limitations.",
     "components": []
   },
   {
     "name": "--intergalactic-overlay-limitation-secondary",
     "type": "color",
-    "defaultValue": "rgba(255, 255, 255, 0.85)",
+    "rawValue": "{gray.white}, 0.85",
+    "computedValue": "rgba(255, 255, 255, 0.85)",
     "description": "Use as a secondary cover of the content under the messages about limitations.",
     "components": []
   },
   {
     "name": "--intergalactic-z-index-deep",
     "type": "other",
-    "defaultValue": "-999",
-    "components": ["date-picker", "date-picker"]
+    "rawValue": "-999",
+    "computedValue": "-999",
+    "components": ["date-picker"]
   },
   {
     "name": "--intergalactic-z-index-overlay",
     "type": "other",
-    "defaultValue": "500",
+    "rawValue": "500",
+    "computedValue": "500",
     "components": ["d3-chart", "side-panel"]
   },
   {
     "name": "--intergalactic-z-index-modal",
     "type": "other",
-    "defaultValue": "600",
+    "rawValue": "600",
+    "computedValue": "600",
     "components": ["modal"]
   },
   {
     "name": "--intergalactic-z-index-popper",
     "type": "other",
-    "defaultValue": "700",
+    "rawValue": "700",
+    "computedValue": "700",
     "components": ["popper"]
   },
   {
     "name": "--intergalactic-z-index-dropdown",
     "type": "other",
-    "defaultValue": "750",
+    "rawValue": "750",
+    "computedValue": "750",
     "components": []
   },
   {
     "name": "--intergalactic-z-index-tooltip",
     "type": "other",
-    "defaultValue": "800",
+    "rawValue": "800",
+    "computedValue": "800",
     "components": []
   },
   {
     "name": "--intergalactic-z-index-notice-bubble",
     "type": "other",
-    "defaultValue": "999",
+    "rawValue": "999",
+    "computedValue": "999",
     "components": ["notice-bubble"]
   },
   {
     "name": "--intergalactic-tooltip-default",
     "type": "color",
-    "defaultValue": "#ffffff",
+    "rawValue": "{gray.white}",
+    "computedValue": "#ffffff",
     "components": ["tooltip"]
   },
   {
     "name": "--intergalactic-tooltip-warning",
     "type": "color",
-    "defaultValue": "#ffd7df",
-    "components": ["tooltip", "tooltip"]
+    "rawValue": "{red.100}",
+    "computedValue": "#ffd7df",
+    "components": ["tooltip"]
   },
   {
     "name": "--intergalactic-tooltip-invert",
     "type": "color",
-    "defaultValue": "#191b23",
-    "components": ["tooltip", "tooltip"]
+    "rawValue": "{gray.800}",
+    "computedValue": "#191b23",
+    "components": ["tooltip"]
   },
   {
     "name": "--intergalactic-neighbor-location-neutral",
     "type": "color",
-    "defaultValue": "rgba(255, 255, 255, 0.5)",
-    "components": ["button", "button"]
+    "rawValue": "rgba(255, 255, 255, 0.5)",
+    "computedValue": "rgba(255, 255, 255, 0.5)",
+    "components": ["button"]
   },
   {
     "name": "--intergalactic-neighbor-location-invert",
     "type": "color",
-    "defaultValue": "rgba(0, 0, 0, 0.5)",
-    "components": ["button", "button"]
+    "rawValue": "rgba(0, 0, 0, 0.5)",
+    "computedValue": "rgba(0, 0, 0, 0.5)",
+    "components": ["button"]
   },
   {
     "name": "--intergalactic-scroll-area-shadow-left",
     "type": "color",
-    "defaultValue": "linear-gradient(to right, rgba(25, 27, 35, 0.1) 20.55%, rgba(255, 255, 255, 0.0001) 100%)",
-    "components": ["scroll-area", "scroll-area"]
+    "rawValue": "linear-gradient(to right, rgba($gray.800, 0.1) 20.55%, rgba($gray.white, 0.0001) 100%)",
+    "computedValue": "linear-gradient(to right, rgba(25, 27, 35, 0.1) 20.55%, rgba(255, 255, 255, 0.0001) 100%)",
+    "components": ["scroll-area"]
   },
   {
     "name": "--intergalactic-scroll-area-shadow-right",
     "type": "color",
-    "defaultValue": "linear-gradient(to left, rgba(25, 27, 35, 0.1) 20.55%, rgba(255, 255, 255, 0.0001) 100%)",
-    "components": ["scroll-area", "scroll-area"]
+    "rawValue": "linear-gradient(to left, rgba($gray.800, 0.1) 20.55%, rgba($gray.white, 0.0001) 100%)",
+    "computedValue": "linear-gradient(to left, rgba(25, 27, 35, 0.1) 20.55%, rgba(255, 255, 255, 0.0001) 100%)",
+    "components": ["scroll-area"]
   },
   {
     "name": "--intergalactic-scroll-area-shadow-top",
     "type": "color",
-    "defaultValue": "linear-gradient(to bottom, rgba(25, 27, 35, 0.1) 20.55%, rgba(255, 255, 255, 0.0001) 100%)",
-    "components": ["scroll-area", "scroll-area"]
+    "rawValue": "linear-gradient(to bottom, rgba($gray.800, 0.1) 20.55%, rgba($gray.white, 0.0001) 100%)",
+    "computedValue": "linear-gradient(to bottom, rgba(25, 27, 35, 0.1) 20.55%, rgba(255, 255, 255, 0.0001) 100%)",
+    "components": ["scroll-area"]
   },
   {
     "name": "--intergalactic-scroll-area-shadow-bottom",
     "type": "color",
-    "defaultValue": "linear-gradient(to top, rgba(25, 27, 35, 0.1) 20.55%, rgba(255, 255, 255, 0.0001) 100%)",
-    "components": ["scroll-area", "scroll-area"]
+    "rawValue": "linear-gradient(to top, rgba($gray.800, 0.1) 20.55%, rgba($gray.white, 0.0001) 100%)",
+    "computedValue": "linear-gradient(to top, rgba(25, 27, 35, 0.1) 20.55%, rgba(255, 255, 255, 0.0001) 100%)",
+    "components": ["scroll-area"]
   },
   {
     "name": "--intergalactic-scroll-area-dropdown-menu-left",
     "type": "color",
-    "defaultValue": "linear-gradient(to right, rgba(255, 255, 255, 1) 34.38%, rgba(255, 255, 255, 0) 100%)",
-    "components": ["dropdown-menu", "dropdown-menu"]
+    "rawValue": "linear-gradient(to right, rgba($gray.white, 1) 34.38%, rgba($gray.white, 0) 100%)",
+    "computedValue": "linear-gradient(to right, rgba(255, 255, 255, 1) 34.38%, rgba(255, 255, 255, 0) 100%)",
+    "components": ["dropdown-menu"]
   },
   {
     "name": "--intergalactic-scroll-area-dropdown-menu-right",
     "type": "color",
-    "defaultValue": "linear-gradient(to left, rgba(255, 255, 255, 1) 34.38%, rgba(255, 255, 255, 0) 100%)",
-    "components": ["dropdown-menu", "dropdown-menu"]
+    "rawValue": "linear-gradient(to left, rgba($gray.white, 1) 34.38%, rgba($gray.white, 0) 100%)",
+    "computedValue": "linear-gradient(to left, rgba(255, 255, 255, 1) 34.38%, rgba(255, 255, 255, 0) 100%)",
+    "components": ["dropdown-menu"]
   },
   {
     "name": "--intergalactic-scroll-area-dropdown-menu-bottom",
     "type": "color",
-    "defaultValue": "linear-gradient(to top, rgba(255, 255, 255, 1) 34.38%, rgba(255, 255, 255, 0) 100%)",
-    "components": ["dropdown-menu", "dropdown-menu"]
+    "rawValue": "linear-gradient(to top, rgba($gray.white, 1) 34.38%, rgba($gray.white, 0) 100%)",
+    "computedValue": "linear-gradient(to top, rgba(255, 255, 255, 1) 34.38%, rgba(255, 255, 255, 0) 100%)",
+    "components": ["dropdown-menu"]
   },
   {
     "name": "--intergalactic-scroll-area-dropdown-menu-top",
     "type": "color",
-    "defaultValue": "linear-gradient(to bottom, rgba(255, 255, 255, 1) 34.38%, rgba(255, 255, 255, 0) 100%)",
-    "components": ["dropdown-menu", "dropdown-menu"]
+    "rawValue": "linear-gradient(to bottom, rgba($gray.white, 1) 34.38%, rgba($gray.white, 0) 100%)",
+    "computedValue": "linear-gradient(to bottom, rgba(255, 255, 255, 1) 34.38%, rgba(255, 255, 255, 0) 100%)",
+    "components": ["dropdown-menu"]
   },
   {
     "name": "--intergalactic-scroll-bar-background",
     "type": "color",
-    "defaultValue": "rgba(25, 27, 35, 0.3)",
+    "rawValue": "{gray.800}, 0.3",
+    "computedValue": "rgba(25, 27, 35, 0.3)",
     "components": ["scroll-area"]
   },
   {
     "name": "--intergalactic-tag-primary-gray-normal",
     "type": "color",
-    "defaultValue": "rgba(224, 225, 233, 0.5)",
+    "rawValue": "{gray.100}, 0.5",
+    "computedValue": "rgba(224, 225, 233, 0.5)",
     "components": []
   },
   {
     "name": "--intergalactic-tag-primary-gray-hover-active",
     "type": "color",
-    "defaultValue": "#e0e1e9",
+    "rawValue": "{gray.100}",
+    "computedValue": "#e0e1e9",
     "components": []
   },
   {
     "name": "--intergalactic-tag-primary-blue-normal",
     "type": "color",
-    "defaultValue": "rgba(196, 229, 254, 0.5)",
+    "rawValue": "{blue.100}, 0.5",
+    "computedValue": "rgba(196, 229, 254, 0.5)",
     "components": []
   },
   {
     "name": "--intergalactic-tag-primary-blue-hover-active",
     "type": "color",
-    "defaultValue": "#c4e5fe",
+    "rawValue": "{blue.100}",
+    "computedValue": "#c4e5fe",
     "components": []
   },
   {
     "name": "--intergalactic-tag-primary-green-normal",
     "type": "color",
-    "defaultValue": "rgba(158, 242, 201, 0.5)",
+    "rawValue": "{green.100}, 0.5",
+    "computedValue": "rgba(158, 242, 201, 0.5)",
     "components": []
   },
   {
     "name": "--intergalactic-tag-primary-green-hover-active",
     "type": "color",
-    "defaultValue": "#9ef2c9",
+    "rawValue": "{green.100}",
+    "computedValue": "#9ef2c9",
     "components": []
   },
   {
     "name": "--intergalactic-tag-primary-orange-normal",
     "type": "color",
-    "defaultValue": "rgba(255, 220, 162, 0.5)",
+    "rawValue": "{orange.100}, 0.5",
+    "computedValue": "rgba(255, 220, 162, 0.5)",
     "components": []
   },
   {
     "name": "--intergalactic-tag-primary-orange-hover-active",
     "type": "color",
-    "defaultValue": "#ffdca2",
+    "rawValue": "{orange.100}",
+    "computedValue": "#ffdca2",
     "components": []
   },
   {
     "name": "--intergalactic-tag-primary-red-normal",
     "type": "color",
-    "defaultValue": "rgba(255, 215, 223, 0.5)",
+    "rawValue": "{red.100}, 0.5",
+    "computedValue": "rgba(255, 215, 223, 0.5)",
     "components": []
   },
   {
     "name": "--intergalactic-tag-primary-red-hover-active",
     "type": "color",
-    "defaultValue": "#ffd7df",
+    "rawValue": "{red.100}",
+    "computedValue": "#ffd7df",
     "components": []
   },
   {
     "name": "--intergalactic-tag-primary-violet-normal",
     "type": "color",
-    "defaultValue": "rgba(237, 217, 255, 0.5)",
+    "rawValue": "{violet.100}, 0.5",
+    "computedValue": "rgba(237, 217, 255, 0.5)",
     "components": []
   },
   {
     "name": "--intergalactic-tag-primary-violet-hover-active",
     "type": "color",
-    "defaultValue": "#edd9ff",
+    "rawValue": "{violet.100}",
+    "computedValue": "#edd9ff",
     "components": []
   },
   {
     "name": "--intergalactic-tag-primary-yellow-normal",
     "type": "color",
-    "defaultValue": "rgba(252, 224, 129, 0.5)",
+    "rawValue": "{yellow.100}, 0.5",
+    "computedValue": "rgba(252, 224, 129, 0.5)",
     "components": []
   },
   {
     "name": "--intergalactic-tag-primary-yellow-hover-active",
     "type": "color",
-    "defaultValue": "#fce081",
+    "rawValue": "{yellow.100}",
+    "computedValue": "#fce081",
     "components": []
   },
   {
     "name": "--intergalactic-tag-primary-white-normal",
     "type": "color",
-    "defaultValue": "rgba(255, 255, 255, 0.15)",
+    "rawValue": "{gray.white}, 0.15",
+    "computedValue": "rgba(255, 255, 255, 0.15)",
     "components": ["tag"]
   },
   {
     "name": "--intergalactic-tag-primary-white-hover-active",
     "type": "color",
-    "defaultValue": "rgba(255, 255, 255, 0.3)",
+    "rawValue": "{gray.white}, 0.3",
+    "computedValue": "rgba(255, 255, 255, 0.3)",
     "components": ["tag"]
   },
   {
     "name": "--intergalactic-tag-primary-gray-text",
     "type": "color",
-    "defaultValue": "#6c6e79",
+    "rawValue": "{gray.500}",
+    "computedValue": "#6c6e79",
     "components": []
   },
   {
     "name": "--intergalactic-tag-primary-blue-text",
     "type": "color",
-    "defaultValue": "#006dca",
+    "rawValue": "{blue.500}",
+    "computedValue": "#006dca",
     "components": []
   },
   {
     "name": "--intergalactic-tag-primary-green-text",
     "type": "color",
-    "defaultValue": "#007c65",
+    "rawValue": "{green.500}",
+    "computedValue": "#007c65",
     "components": []
   },
   {
     "name": "--intergalactic-tag-primary-orange-text",
     "type": "color",
-    "defaultValue": "#c33909",
+    "rawValue": "{orange.500}",
+    "computedValue": "#c33909",
     "components": []
   },
   {
     "name": "--intergalactic-tag-primary-red-text",
     "type": "color",
-    "defaultValue": "#d1002f",
+    "rawValue": "{red.500}",
+    "computedValue": "#d1002f",
     "components": []
   },
   {
     "name": "--intergalactic-tag-primary-violet-text",
     "type": "color",
-    "defaultValue": "#8649e1",
+    "rawValue": "{violet.500}",
+    "computedValue": "#8649e1",
     "components": []
   },
   {
     "name": "--intergalactic-tag-primary-yellow-text",
     "type": "color",
-    "defaultValue": "#a75800",
+    "rawValue": "{yellow.500}",
+    "computedValue": "#a75800",
     "components": []
   },
   {
     "name": "--intergalactic-tag-primary-white-text",
     "type": "color",
-    "defaultValue": "#ffffff",
+    "rawValue": "{gray.white}",
+    "computedValue": "#ffffff",
     "components": []
   },
   {
     "name": "--intergalactic-tag-secondary-normal",
     "type": "color",
-    "defaultValue": "#ffffff",
+    "rawValue": "{gray.white}",
+    "computedValue": "#ffffff",
     "components": []
   },
   {
     "name": "--intergalactic-tag-secondary-hover-active",
     "type": "color",
-    "defaultValue": "#f4f5f9",
+    "rawValue": "{gray.50}",
+    "computedValue": "#f4f5f9",
     "components": ["tag"]
   },
   {
     "name": "--intergalactic-tag-secondary-white-normal",
     "type": "color",
-    "defaultValue": "rgba(255, 255, 255, 0)",
+    "rawValue": "{gray.white}, 0",
+    "computedValue": "rgba(255, 255, 255, 0)",
     "components": []
   },
   {
     "name": "--intergalactic-tag-secondary-white-hover",
     "type": "color",
-    "defaultValue": "rgba(255, 255, 255, 0)",
+    "rawValue": "{gray.white}, 0",
+    "computedValue": "rgba(255, 255, 255, 0)",
     "description": "Only text color changes",
     "components": []
   },
   {
     "name": "--intergalactic-tag-secondary-white-active",
     "type": "color",
-    "defaultValue": "rgba(255, 255, 255, 0.1)",
+    "rawValue": "{gray.white}, 0.1",
+    "computedValue": "rgba(255, 255, 255, 0.1)",
     "components": []
   },
   {
     "name": "--intergalactic-tag-secondary-gray-text",
     "type": "color",
-    "defaultValue": "#6c6e79",
+    "rawValue": "{gray.500}",
+    "computedValue": "#6c6e79",
     "components": []
   },
   {
     "name": "--intergalactic-tag-secondary-white-text",
     "type": "color",
-    "defaultValue": "#ffffff",
+    "rawValue": "{gray.white}",
+    "computedValue": "#ffffff",
     "components": []
   },
   {
     "name": "--intergalactic-chart-palette-order-blue",
     "type": "color",
-    "defaultValue": "#2bb3ff",
-    "components": [
-      "d3-chart",
-      "d3-chart",
-      "d3-chart",
-      "d3-chart",
-      "d3-chart",
-      "d3-chart",
-      "d3-chart",
-      "d3-chart",
-      "d3-chart",
-      "d3-chart"
-    ]
+    "rawValue": "{blue.300}",
+    "computedValue": "#2bb3ff",
+    "components": ["d3-chart"]
   },
   {
     "name": "--intergalactic-chart-palette-order-green",
     "type": "color",
-    "defaultValue": "#59ddaa",
+    "rawValue": "{green.200}",
+    "computedValue": "#59ddaa",
     "components": ["d3-chart"]
   },
   {
     "name": "--intergalactic-chart-palette-order-orange",
     "type": "color",
-    "defaultValue": "#ff642d",
+    "rawValue": "{orange.400}",
+    "computedValue": "#ff642d",
     "components": []
   },
   {
     "name": "--intergalactic-chart-palette-order-pink",
     "type": "color",
-    "defaultValue": "#f67cf2",
+    "rawValue": "{pink.300}",
+    "computedValue": "#f67cf2",
     "components": []
   },
   {
     "name": "--intergalactic-chart-palette-order-yellow",
     "type": "color",
-    "defaultValue": "#fdc23c",
+    "rawValue": "{yellow.200}",
+    "computedValue": "#fdc23c",
     "components": []
   },
   {
     "name": "--intergalactic-chart-palette-order-violet",
     "type": "color",
-    "defaultValue": "#ab6cfe",
+    "rawValue": "{violet.400}",
+    "computedValue": "#ab6cfe",
     "components": []
   },
   {
     "name": "--intergalactic-chart-palette-order-red",
     "type": "color",
-    "defaultValue": "#ff8786",
+    "rawValue": "{red.300}",
+    "computedValue": "#ff8786",
     "components": []
   },
   {
     "name": "--intergalactic-chart-palette-order-salad",
     "type": "color",
-    "defaultValue": "#9bd85d",
+    "rawValue": "{salad.200}",
+    "computedValue": "#9bd85d",
     "components": []
   },
   {
     "name": "--intergalactic-chart-palette-order-blue-second-order",
     "type": "color",
-    "defaultValue": "#008ff8",
-    "components": ["d3-chart", "d3-chart", "d3-chart", "d3-chart"]
+    "rawValue": "{blue.400}",
+    "computedValue": "#008ff8",
+    "components": ["d3-chart"]
   },
   {
     "name": "--intergalactic-chart-palette-order-green-second-order",
     "type": "color",
-    "defaultValue": "#00c192",
+    "rawValue": "{green.300}",
+    "computedValue": "#00c192",
     "components": []
   },
   {
     "name": "--intergalactic-chart-palette-order-orange-second-order",
     "type": "color",
-    "defaultValue": "#ffb26e",
+    "rawValue": "{orange.200}",
+    "computedValue": "#ffb26e",
     "components": []
   },
   {
     "name": "--intergalactic-chart-palette-order-pink-second-order",
     "type": "color",
-    "defaultValue": "#e14adf",
+    "rawValue": "{pink.400}",
+    "computedValue": "#e14adf",
     "components": []
   },
   {
     "name": "--intergalactic-chart-palette-order-yellow-second-order",
     "type": "color",
-    "defaultValue": "#ef9800",
+    "rawValue": "{yellow.300}",
+    "computedValue": "#ef9800",
     "components": []
   },
   {
     "name": "--intergalactic-chart-palette-order-violet-second-order",
     "type": "color",
-    "defaultValue": "#dcb8ff",
+    "rawValue": "{violet.200}",
+    "computedValue": "#dcb8ff",
     "components": []
   },
   {
     "name": "--intergalactic-chart-palette-order-red-second-order",
     "type": "color",
-    "defaultValue": "#ff4953",
+    "rawValue": "{red.400}",
+    "computedValue": "#ff4953",
     "components": []
   },
   {
     "name": "--intergalactic-chart-palette-order-salad-second-order",
     "type": "color",
-    "defaultValue": "#66c030",
+    "rawValue": "{salad.300}",
+    "computedValue": "#66c030",
     "components": []
   },
   {
     "name": "--intergalactic-chart-palette-order-blue-third-order",
     "type": "color",
-    "defaultValue": "#8ecdff",
+    "rawValue": "{blue.200}",
+    "computedValue": "#8ecdff",
     "components": []
   },
   {
     "name": "--intergalactic-chart-palette-order-green-third-order",
     "type": "color",
-    "defaultValue": "#009f81",
+    "rawValue": "{green.400}",
+    "computedValue": "#009f81",
     "components": []
   },
   {
     "name": "--intergalactic-chart-palette-order-orange-third-order",
     "type": "color",
-    "defaultValue": "#ff8c43",
+    "rawValue": "{orange.300}",
+    "computedValue": "#ff8c43",
     "components": []
   },
   {
     "name": "--intergalactic-chart-palette-order-pink-third-order",
     "type": "color",
-    "defaultValue": "#ffa9fa",
+    "rawValue": "{pink.200}",
+    "computedValue": "#ffa9fa",
     "components": []
   },
   {
     "name": "--intergalactic-chart-palette-order-yellow-third-order",
     "type": "color",
-    "defaultValue": "#d87900",
+    "rawValue": "{yellow.400}",
+    "computedValue": "#d87900",
     "components": []
   },
   {
     "name": "--intergalactic-chart-palette-order-violet-third-order",
     "type": "color",
-    "defaultValue": "#c695ff",
+    "rawValue": "{violet.300}",
+    "computedValue": "#c695ff",
     "components": []
   },
   {
     "name": "--intergalactic-chart-palette-order-red-third-order",
     "type": "color",
-    "defaultValue": "#ffaeb5",
+    "rawValue": "{red.200}",
+    "computedValue": "#ffaeb5",
     "components": []
   },
   {
     "name": "--intergalactic-chart-palette-order-salad-third-order",
     "type": "color",
-    "defaultValue": "#35a21e",
+    "rawValue": "{salad.400}",
+    "computedValue": "#35a21e",
     "components": []
   },
   {
     "name": "--intergalactic-chart-palette-order-total-amount",
     "type": "color",
-    "defaultValue": "#8a8e9b",
+    "rawValue": "{gray.400}",
+    "computedValue": "#8a8e9b",
     "components": []
   },
   {
     "name": "--intergalactic-chart-palette-order-other-data",
     "type": "color",
-    "defaultValue": "#c4c7cf",
+    "rawValue": "{gray.200}",
+    "computedValue": "#c4c7cf",
     "components": ["d3-chart"]
   },
   {
     "name": "--intergalactic-chart-palette-order-null",
     "type": "color",
-    "defaultValue": "#e0e1e9",
+    "rawValue": "{gray.100}",
+    "computedValue": "#e0e1e9",
     "components": ["d3-chart"]
   },
   {
     "name": "--intergalactic-chart-grid-line",
     "type": "color",
-    "defaultValue": "#e0e1e9",
+    "rawValue": "{gray.100}",
+    "computedValue": "#e0e1e9",
     "components": []
   },
   {
     "name": "--intergalactic-chart-grid-x-axis",
     "type": "color",
-    "defaultValue": "#c4c7cf",
-    "components": ["d3-chart", "d3-chart", "d3-chart", "d3-chart"]
+    "rawValue": "{gray.200}",
+    "computedValue": "#c4c7cf",
+    "components": ["d3-chart"]
   },
   {
     "name": "--intergalactic-chart-grid-y-accent-hover-line",
     "type": "color",
-    "defaultValue": "#a9abb6",
+    "rawValue": "{gray.300}",
+    "computedValue": "#a9abb6",
     "components": []
   },
   {
     "name": "--intergalactic-chart-grid-text-label",
     "type": "color",
-    "defaultValue": "#6c6e79",
-    "components": ["d3-chart", "d3-chart"]
+    "rawValue": "{gray.500}",
+    "computedValue": "#6c6e79",
+    "components": ["d3-chart"]
   },
   {
     "name": "--intergalactic-chart-grid-bar-chart-hover",
     "type": "color",
-    "defaultValue": "rgba(196, 199, 207, 0.3)",
+    "rawValue": "{gray.200}, 0.3",
+    "computedValue": "rgba(196, 199, 207, 0.3)",
     "components": ["d3-chart"]
   },
   {
     "name": "--intergalactic-chart-grid-bar-chart-base-bg",
     "type": "color",
-    "defaultValue": "#e0e1e9",
+    "rawValue": "{gray.100}",
+    "computedValue": "#e0e1e9",
     "components": []
   },
   {
     "name": "--intergalactic-chart-grid-period-bg",
     "type": "color",
-    "defaultValue": "rgba(196, 199, 207, 0.2)",
+    "rawValue": "{gray.200}, 0.2",
+    "computedValue": "rgba(196, 199, 207, 0.2)",
     "components": ["d3-chart"]
   },
   {
     "name": "--intergalactic-chart-grid-border",
     "type": "color",
-    "defaultValue": "#ffffff",
-    "components": ["d3-chart", "d3-chart", "d3-chart", "d3-chart", "d3-chart"]
+    "rawValue": "{gray.white}",
+    "computedValue": "#ffffff",
+    "components": ["d3-chart"]
   },
   {
     "name": "--intergalactic-chart-x-axis-accent-period-active",
     "type": "color",
-    "defaultValue": "#8a8e9b",
+    "rawValue": "{gray.400}",
+    "computedValue": "#8a8e9b",
     "components": []
   },
   {
     "name": "--intergalactic-chart-x-axis-accent-data-start-tracking",
     "type": "color",
-    "defaultValue": "rgba(0, 159, 129, 0.2)",
+    "rawValue": "{green.400}, 0.2",
+    "computedValue": "rgba(0, 159, 129, 0.2)",
     "components": []
   }
 ]

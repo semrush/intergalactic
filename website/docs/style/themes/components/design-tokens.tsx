@@ -33,16 +33,18 @@ const DesignTokens: React.FC = () => {
   const [filter, setFilter] = React.useState('');
   const filteredTokens = React.useMemo(
     () =>
-      designTokens.filter(({ name, defaultValue, description }) => {
+      designTokens.filter(({ name, rawValue, description }) => {
         if (!filter) return true;
         if (name?.toLowerCase().includes(filter.toLowerCase())) return true;
-        if (defaultValue?.toLowerCase().includes(filter.toLowerCase())) return true;
+        if (rawValue?.toLowerCase().includes(filter.toLowerCase())) return true;
         if (description?.toLowerCase().includes(filter.toLowerCase())) return true;
         return false;
       }),
     [filter],
   );
 
+  const nameHeaderRef = React.useRef(null);
+  const nameHeaderRect = useResizeObserver(nameHeaderRef);
   const valueHeaderRef = React.useRef(null);
   const valueHeaderRect = useResizeObserver(valueHeaderRef);
   const descriptionHeaderRef = React.useRef(null);
@@ -50,14 +52,14 @@ const DesignTokens: React.FC = () => {
 
   return (
     <div>
-      <Input className={styles.searchInput}>
-        <Input.Value placeholder="Search in table" value={filter} onChange={setFilter} />
+      <Input className={styles.searchInput} size="l">
+        <Input.Value placeholder="Find token" value={filter} onChange={setFilter} />
         <Input.Addon tag={SearchIcon} />
       </Input>
       <DataTable data={filteredTokens}>
         <DataTable.Head>
-          <DataTable.Column name="name" children="Name" wMin={350} flex="1 0 auto" />
-          <DataTable.Column name="defaultValue" children="Default theme" ref={valueHeaderRef} />
+          <DataTable.Column name="name" children="Token name" ref={nameHeaderRef} />
+          <DataTable.Column name="value" children="Value" ref={valueHeaderRef} />
           <DataTable.Column name="description" children="Description" ref={descriptionHeaderRef} />
           <DataTable.Column name="components" children="Used in" />
         </DataTable.Head>
@@ -66,34 +68,51 @@ const DesignTokens: React.FC = () => {
             {(props, row) => {
               return {
                 children: (
-                  <div>
-                    <Copy
-                      title="Copied"
-                      text={row[props.name]}
-                      trigger="click"
-                      className={styles.tokenName}
-                    >
-                      <div>{row[props.name]}</div>
-                    </Copy>
-                  </div>
+                  <Copy
+                    title="Copied"
+                    text={row[props.name]}
+                    textTooltip={`Click to copy "${row[props.name]}"`}
+                    trigger="click"
+                    className={styles.tokenNameWrapper}
+                  >
+                    <div className={styles.tokenName}>
+                      <Ellipsis
+                        trim="middle"
+                        tooltip={false}
+                        containerRect={nameHeaderRect}
+                        containerRef={nameHeaderRef}
+                      >
+                        {row[props.name]}
+                      </Ellipsis>
+                    </div>
+                  </Copy>
                 ),
               };
             }}
           </DataTable.Cell>
-          <DataTable.Cell name="defaultValue">
+          <DataTable.Cell name="value">
             {(props, row) => {
               return {
                 children: (
-                  <>
-                    <ColorPreview color={row[props.name]} />
-                    <Ellipsis
-                      trim="middle"
-                      containerRect={valueHeaderRect}
-                      containerRef={valueHeaderRef}
-                    >
-                      {row[props.name]}
-                    </Ellipsis>
-                  </>
+                  <Copy
+                    title="Copied"
+                    text={row.rawValue}
+                    textTooltip={`Click to copy "${row.rawValue}"`}
+                    trigger="click"
+                    className={styles.tokenValueWrapper}
+                  >
+                    <div className={styles.tokenValue}>
+                      <ColorPreview color={row.computedValue} />
+                      <Ellipsis
+                        trim="middle"
+                        tooltip={false}
+                        containerRect={valueHeaderRect}
+                        containerRef={valueHeaderRef}
+                      >
+                        {row.rawValue}
+                      </Ellipsis>
+                    </div>
+                  </Copy>
                 ),
               };
             }}
@@ -138,9 +157,7 @@ const DesignTokens: React.FC = () => {
                 children: (
                   <>
                     <Tooltip>
-                      <Tooltip.Trigger className={styles.usages}>
-                        {row[props.name].length} components
-                      </Tooltip.Trigger>
+                      <Tooltip.Trigger className={styles.usages}>hint links</Tooltip.Trigger>
                       <Tooltip.Popper>
                         {row[props.name].map((componentName, index) => (
                           <React.Fragment key={componentName}>
