@@ -99,13 +99,13 @@ SColumn[active][use='primary'] {
 }
 
 SColumn[active] SSortIcon {
-  position: static;
+  position: relative;
 }
 
 SColumn[active] SSortWrapper {
   display: block;
   width: 16px;
-  margin-left: 4px;
+  margin-left: var(--intergalactic-spacing-1x, 4px);
 }
 
 SColumn[resizable] {
