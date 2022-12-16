@@ -1,0 +1,348 @@
+[
+  {
+    "name": "--gray-50",
+    "value": "#f4f5f9",
+    "description": "Only suitable for backgrounds. Can be completely invisible to users with low-contrast monitor or poor vision."
+  },
+  {
+    "name": "--gray-100",
+    "value": "#e0e1e9",
+    "description": "Use only for light strokes and active backgrounds. Suitable for minimally visible elements."
+  },
+  {
+    "name": "--gray-200",
+    "value": "#c4c7cf"
+  },
+  {
+    "name": "--gray-300",
+    "value": "#a9abb6"
+  },
+  {
+    "name": "--gray-400",
+    "value": "#8a8e9b"
+  },
+  {
+    "name": "--gray-500",
+    "value": "#6c6e79"
+  },
+  {
+    "name": "--gray-600",
+    "value": "#484a54"
+  },
+  {
+    "name": "--gray-700",
+    "value": "#2b2e38"
+  },
+  {
+    "name": "--gray-800",
+    "value": "#191b23"
+  },
+  {
+    "name": "--gray-white",
+    "value": "#ffffff"
+  },
+  {
+    "name": "--blue-50",
+    "value": "#e9f7ff",
+    "description": "Only suitable for backgrounds. Can be completely invisible to users with low-contrast monitor or poor vision."
+  },
+  {
+    "name": "--blue-100",
+    "value": "#c4e5fe",
+    "description": "Use only for light strokes and active backgrounds. Suitable for minimally visible elements."
+  },
+  {
+    "name": "--blue-200",
+    "value": "#8ecdff"
+  },
+  {
+    "name": "--blue-300",
+    "value": "#2bb3ff"
+  },
+  {
+    "name": "--blue-400",
+    "value": "#008ff8"
+  },
+  {
+    "name": "--blue-500",
+    "value": "#006dca"
+  },
+  {
+    "name": "--blue-600",
+    "value": "#044792"
+  },
+  {
+    "name": "--blue-700",
+    "value": "#002b5f"
+  },
+  {
+    "name": "--blue-800",
+    "value": "#001b3d"
+  },
+  {
+    "name": "--green-50",
+    "value": "#dbfee8",
+    "description": "Only suitable for backgrounds. Can be completely invisible to users with low-contrast monitor or poor vision."
+  },
+  {
+    "name": "--green-100",
+    "value": "#9ef2c9",
+    "description": "Use only for light strokes and active backgrounds. Suitable for minimally visible elements."
+  },
+  {
+    "name": "--green-200",
+    "value": "#59ddaa"
+  },
+  {
+    "name": "--green-300",
+    "value": "#00c192"
+  },
+  {
+    "name": "--green-400",
+    "value": "#009f81"
+  },
+  {
+    "name": "--green-500",
+    "value": "#007c65"
+  },
+  {
+    "name": "--green-600",
+    "value": "#055345"
+  },
+  {
+    "name": "--green-700",
+    "value": "#00342d"
+  },
+  {
+    "name": "--green-800",
+    "value": "#00201e"
+  },
+  {
+    "name": "--red-50",
+    "value": "#fff0f7",
+    "description": "Only suitable for backgrounds. Can be completely invisible to users with low-contrast monitor or poor vision."
+  },
+  {
+    "name": "--red-100",
+    "value": "#ffd7df",
+    "description": "Use only for light strokes and active backgrounds. Suitable for minimally visible elements."
+  },
+  {
+    "name": "--red-200",
+    "value": "#ffaeb5"
+  },
+  {
+    "name": "--red-300",
+    "value": "#ff8786"
+  },
+  {
+    "name": "--red-400",
+    "value": "#ff4953"
+  },
+  {
+    "name": "--red-500",
+    "value": "#d1002f"
+  },
+  {
+    "name": "--red-600",
+    "value": "#8e0016"
+  },
+  {
+    "name": "--red-700",
+    "value": "#58000a"
+  },
+  {
+    "name": "--red-800",
+    "value": "#410101"
+  },
+  {
+    "name": "--orange-50",
+    "value": "#fff3d9",
+    "description": "Only suitable for backgrounds. Can be completely invisible to users with low-contrast monitor or poor vision."
+  },
+  {
+    "name": "--orange-100",
+    "value": "#ffdca2",
+    "description": "Use only for light strokes and active backgrounds. Suitable for minimally visible elements."
+  },
+  {
+    "name": "--orange-200",
+    "value": "#ffb26e"
+  },
+  {
+    "name": "--orange-300",
+    "value": "#ff8c43"
+  },
+  {
+    "name": "--orange-400",
+    "value": "#ff642d"
+  },
+  {
+    "name": "--orange-500",
+    "value": "#c33909"
+  },
+  {
+    "name": "--orange-600",
+    "value": "#8b1500"
+  },
+  {
+    "name": "--orange-700",
+    "value": "#551200"
+  },
+  {
+    "name": "--orange-800",
+    "value": "#351000"
+  },
+  {
+    "name": "--yellow-50",
+    "value": "#fdf7c8",
+    "description": "Only suitable for backgrounds. Can be completely invisible to users with low-contrast monitor or poor vision."
+  },
+  {
+    "name": "--yellow-100",
+    "value": "#fce081",
+    "description": "Use only for light strokes and active backgrounds. Suitable for minimally visible elements."
+  },
+  {
+    "name": "--yellow-200",
+    "value": "#fdc23c"
+  },
+  {
+    "name": "--yellow-300",
+    "value": "#ef9800"
+  },
+  {
+    "name": "--yellow-400",
+    "value": "#d87900"
+  },
+  {
+    "name": "--yellow-500",
+    "value": "#a75800"
+  },
+  {
+    "name": "--yellow-600",
+    "value": "#743a00"
+  },
+  {
+    "name": "--yellow-700",
+    "value": "#462500"
+  },
+  {
+    "name": "--yellow-800",
+    "value": "#2c1600"
+  },
+  {
+    "name": "--violet-50",
+    "value": "#f9f2ff",
+    "description": "Only suitable for backgrounds. Can be completely invisible to users with low-contrast monitor or poor vision."
+  },
+  {
+    "name": "--violet-100",
+    "value": "#edd9ff",
+    "description": "Use only for light strokes and active backgrounds. Suitable for minimally visible elements."
+  },
+  {
+    "name": "--violet-200",
+    "value": "#dcb8ff"
+  },
+  {
+    "name": "--violet-300",
+    "value": "#c695ff"
+  },
+  {
+    "name": "--violet-400",
+    "value": "#ab6cfe"
+  },
+  {
+    "name": "--violet-500",
+    "value": "#8649e1"
+  },
+  {
+    "name": "--violet-600",
+    "value": "#5925ab"
+  },
+  {
+    "name": "--violet-700",
+    "value": "#421983"
+  },
+  {
+    "name": "--violet-800",
+    "value": "#220358"
+  },
+  {
+    "name": "--pink-50",
+    "value": "#fff0ff",
+    "description": "Only suitable for backgrounds. Can be completely invisible to users with low-contrast monitor or poor vision."
+  },
+  {
+    "name": "--pink-100",
+    "value": "#ffd3ff",
+    "description": "Use only for light strokes and active backgrounds. Suitable for minimally visible elements."
+  },
+  {
+    "name": "--pink-200",
+    "value": "#ffa9fa"
+  },
+  {
+    "name": "--pink-300",
+    "value": "#f67cf2"
+  },
+  {
+    "name": "--pink-400",
+    "value": "#e14adf"
+  },
+  {
+    "name": "--pink-500",
+    "value": "#b229b9"
+  },
+  {
+    "name": "--pink-600",
+    "value": "#7d0480"
+  },
+  {
+    "name": "--pink-700",
+    "value": "#4d0050"
+  },
+  {
+    "name": "--pink-800",
+    "value": "#340439"
+  },
+  {
+    "name": "--salad-50",
+    "value": "#ecfbcd",
+    "description": "Only suitable for backgrounds. Can be completely invisible to users with low-contrast monitor or poor vision."
+  },
+  {
+    "name": "--salad-100",
+    "value": "#c7ee96",
+    "description": "Use only for light strokes and active backgrounds. Suitable for minimally visible elements."
+  },
+  {
+    "name": "--salad-200",
+    "value": "#9bd85d"
+  },
+  {
+    "name": "--salad-300",
+    "value": "#66c030"
+  },
+  {
+    "name": "--salad-400",
+    "value": "#35a21e"
+  },
+  {
+    "name": "--salad-500",
+    "value": "#0a7e22"
+  },
+  {
+    "name": "--salad-600",
+    "value": "#005613"
+  },
+  {
+    "name": "--salad-700",
+    "value": "#003509"
+  },
+  {
+    "name": "--salad-800",
+    "value": "#002203"
+  }
+]

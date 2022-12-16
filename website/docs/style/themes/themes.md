@@ -40,3 +40,7 @@ Theme for React components subtree may be applied via `<ThemeProvider />`.
 All available design tokens are provided in the table bellow.
 
 @import design-tokens
+
+@## Base tokens
+
+@import base-tokens
