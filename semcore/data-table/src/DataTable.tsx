@@ -38,7 +38,6 @@ type AsProps = {
   sort: SortDirection[];
   data: RowData[];
   uniqueKey: string;
-  compact?: boolean;
 };
 
 type HeadAsProps = {
@@ -86,8 +85,6 @@ export interface IDataTableProps extends IBoxProps {
    * @default id
    */
   uniqueKey?: string;
-  /** Made paddings less */
-  compact?: boolean;
 }
 
 export interface IDataTableHeadProps extends IBoxProps {
@@ -249,7 +246,6 @@ class RootDefinitionTable extends Component<AsProps> {
         fixed = options.fixed,
         resizable,
         sortable,
-        compact,
         flex,
         vBorders,
         active,
@@ -316,7 +312,7 @@ class RootDefinitionTable extends Component<AsProps> {
   }
 
   getHeadProps(props: HeadAsProps) {
-    const { use, compact } = this.asProps;
+    const { use } = this.asProps;
     const columnsChildren = this.childrenToColumns(props.children);
 
     this.columns = flattenColumns(columnsChildren);
@@ -324,7 +320,6 @@ class RootDefinitionTable extends Component<AsProps> {
       $onSortClick: callAllEventHandlers(this.handlerSortClick, this.scrollToUp),
       columnsChildren,
       use,
-      compact,
       onResize: this.handlerResize,
       $scrollRef: this.scrollHeadRef,
     };
@@ -364,7 +359,6 @@ class RootDefinitionTable extends Component<AsProps> {
       rows: this.dataToRows(data, cellPropsLayers),
       uniqueKey,
       use,
-      compact,
       rowPropsLayers,
       $scrollRef: this.scrollBodyRef,
     };
