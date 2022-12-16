@@ -404,6 +404,6 @@ await fs.writeFile(
   JSON.stringify(designTokensDocumentation, null, 2) + '\n',
 );
 await fs.writeFile(
-  resolvePath(dirname, '../../../website/docs/style/themes/components/tokens-list.json'),
-  JSON.stringify(documentation, null, 2),
+  resolvePath(dirname, '../../../website/docs/style/themes/components/base-tokens.json'),
+  JSON.stringify(baseTokensDocumentation, null, 2) + '\n',
 );
