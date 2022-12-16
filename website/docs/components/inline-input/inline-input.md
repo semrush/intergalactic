@@ -103,15 +103,15 @@ InlineInput can take on the same states as a [normal input](/components/input/),
 - The user enters data. Either saves the data, or using the cancel button / `Esc` key returns from edit mode to view mode.
 - When focus is lost (for example, the user is distracted by another screen), `onBlur` saves the entered value.
 
-| State         | Appearance example                       | Styles                                                                                                                     |
-| ------------- | ---------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
-| Normal        | ![normal state](static/normal.png)       | `border-bottom: 1px solid var(--gray-200);`                                                                                |
-| Focus         | ![focus state](static/focus.png)         | `border-bottom: 1px solid var(--blue-400); box-shadow: 0px 0px 0px 3px rgba(0, 143, 248, 0.2);`                            |
-| Invalid       | ![invalid state](static/invalid.png)     | `border-bottom: 1px solid var(--red-200);`                                                                                 |
-| Invalid focus | ![focus state](static/invalid-focus.png) | `border-bottom: 1px solid var(--red-400); box-shadow: 0px 0px 0px 3px rgba(255, 73, 83, 0.2);`                             |
-| Valid         | ![valid state](static/valid.png)         | `border-bottom: 1px solid var(--green-200);`                                                                               |
-| Valid focus   | ![focus state](static/valid-focus.png)   | `border-bottom: 1px solid var(--green-400); box-shadow: 0px 0px 0px 3px rgba(0, 159, 129, 0.2);`                           |
-| Loading       | ![loading state](static/loading.png)     | Spin with XS size. The cancel button gets the disabled state while the input is loading (variable — `--disabled-opacity`). |
+| State         | Appearance example                       | Styles                                                                                                                                                           |
+| ------------- | ---------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Normal        | ![normal state](static/normal.png)       | `border-bottom: 1px solid var(--gray-200);`                                                                                                                      |
+| Focus         | ![focus state](static/focus.png)         | `border-bottom: 1px solid var(--blue-400); box-shadow: 0px 0px 0px 3px rgba(0, 143, 248, 0.2);`                                                                  |
+| Invalid       | ![invalid state](static/invalid.png)     | `border-bottom: 1px solid var(--red-200);`                                                                                                                       |
+| Invalid focus | ![focus state](static/invalid-focus.png) | `border-bottom: 1px solid var(--red-400); box-shadow: 0px 0px 0px 3px rgba(255, 73, 83, 0.2);`                                                                   |
+| Valid         | ![valid state](static/valid.png)         | `border-bottom: 1px solid var(--green-200);`                                                                                                                     |
+| Valid focus   | ![focus state](static/valid-focus.png)   | `border-bottom: 1px solid var(--green-400); box-shadow: 0px 0px 0px 3px rgba(0, 159, 129, 0.2);`                                                                 |
+| Loading       | ![loading state](static/loading.png)     | Spin with XS size. The cancel button gets the disabled state while the input is loading (use [`--intergalactic-disabled-opacity`](/style/design-tokens/) token). |
 
 @## Save и Cancel icon buttons
 

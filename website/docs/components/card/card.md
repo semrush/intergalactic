@@ -54,7 +54,7 @@ You can divide content into sections if needed.
 
 @## Interaction
 
-By default, the card is non-clickable. But you can add `--box-shadow-hover` variable for hover state and make title a clickable link if necessary.
+By default, the card is non-clickable. But you can use `--intergalactic-box-shadow-card-hover` token for hover state and make title a clickable link if necessary.
 
 ![card with clickable heading](static/card-clickable.png)
 

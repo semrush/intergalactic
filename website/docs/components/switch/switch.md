@@ -50,11 +50,11 @@ You can place an icon inside the switch with big sizes. We recommend you to use 
 
 Switch has three possible states: off, on, and disabled. To change the state, user can click either on the switch itself or on the text label next to it.
 
-| State    | Appearance                                                                              | Styles                                                                                                            |
-| -------- | --------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
-| off      | ![off switch](static/off.png)                                                           | `background:--gray-300`                                                                                           |
-| on       | ![on switch](static/on-success.png) ![on switch](static/on-info.png)                    | `background:--green-400` или `background: --blue-400`                                                             |
-| disabled | ![disabled switch](static/disabled.png) ![disabled switch](static/disabled-success.png) | Transparency of the component changes to 30%. Use [`disabled` variable](/style/variables/#disabled_x26_loading/). |
+| State    | Appearance                                                                              | Styles                                                                                                               |
+| -------- | --------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| off      | ![off switch](static/off.png)                                                           | `background:--gray-300`                                                                                              |
+| on       | ![on switch](static/on-success.png) ![on switch](static/on-info.png)                    | `background:--green-400` или `background: --blue-400`                                                                |
+| disabled | ![disabled switch](static/disabled.png) ![disabled switch](static/disabled-success.png) | Transparency of the component changes to 30%. Use [`--intergalactic-disabled-opacity`](/style/design-tokens/) token. |
 
 @## Use in UX/UI
 

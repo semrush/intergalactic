@@ -40,10 +40,10 @@ Margins between the options may vary depending on the usage context. Make margin
 
 All checkbox sizes can be used with the corresponding text paragraphs.
 
-| Checkbox size (px) | Paragraph size                            | Appearance example (px)                |
-| ------------------ | ----------------------------------------- | -------------------------------------- |
-| M (16px \* 16px)   | 14px (use variables `--fs-200, --lh-200`) | ![m paragraph](static/paragraph-m.png) |
-| L (20px \* 20px)   | 16px (use variables `--fs-300, --lh-300`) | ![l paragraph](static/paragraph-l.png) |
+| Checkbox size (px) | Paragraph size                         | Appearance example (px)                |
+| ------------------ | -------------------------------------- | -------------------------------------- |
+| M (16px \* 16px)   | 14px (use `--fs-200, --lh-200` tokens) | ![m paragraph](static/paragraph-m.png) |
+| L (20px \* 20px)   | 16px (use `--fs-300, --lh-300` tokens) | ![l paragraph](static/paragraph-l.png) |
 
 @## Checkbox with Info icon
 

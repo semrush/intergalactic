@@ -110,7 +110,7 @@ For the primary button you can use themes according to the visual hierarchy on t
 
 @## Margins between buttons
 
-**The margin between buttons shall be [multiple of 4](/style/variables/#main_denominator)**. If there are several buttons next to each other, use the recommended margins shown in table below.
+**The margin between buttons shall be [multiple of 4](/layout/box-system/#spacing_system)**. If there are several buttons next to each other, use the recommended margins shown in table below.
 
 | L (40px)                         | M (28px)                         |
 | :------------------------------- | :------------------------------- |
