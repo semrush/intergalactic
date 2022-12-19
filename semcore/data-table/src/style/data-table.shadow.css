@@ -155,7 +155,7 @@ SSortWrapper {
   display: none;
   flex-shrink: 999;
   position: relative;
-  width: 20px;
+  flex-basis: 20px;
   height: 16px;
 }
 
