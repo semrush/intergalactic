@@ -1,3 +1,30 @@
+## [13.2.7] - 2022-12-19
+
+### Global
+
+- **Added** Added internationalization of aria attributes.
+
+### @semcore/d3-chart
+
+- **Changed** Supported semi-async internationalization of text in a11y module.
+
+### @semcore/ui
+
+- **Fixed** Normalized path to re-export `@semcore/illustration`.
+
+### @semcore/illustration
+
+- **Changed** Added `react-dom` to peer dependencies.
+
+### @semcore/format-text
+
+- **Fixed** Fixed syntax css.
+
+### @semcore/utils
+
+- **Fixed** Fixed non-react node detection for `addonTextChildren`.
+- **Changed** Supported semi-async internationalization.
+
 ## [13.2.6] - 2022-12-14
 
 ### @semcore/illustration
