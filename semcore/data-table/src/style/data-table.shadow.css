@@ -50,7 +50,7 @@ SColumn[hidden] {
 }
 
 SColumn[use='primary'] {
-  padding: var(--intergalactic-spacing-3x, 12px) var(--intergalactic-spacing-2x, 8px);
+  padding: var(--intergalactic-spacing-3x, 12px);
   border-bottom: 1px solid var(--intergalactic-border-secondary, #e0e1e9);
   background-color: var(--intergalactic-table-th-primary-cell, #f4f5f9);
 }
@@ -111,6 +111,10 @@ SColumn[active] SSortWrapper {
   width: 16px;
   flex-basis: 20px;
   margin-left: var(--intergalactic-spacing-1x, 4px);
+}
+
+SColumn[sortIconFloat] SSortWrapper {
+  width: 0;
 }
 
 SColumn[resizable] {
@@ -189,12 +193,20 @@ SColumn[use='secondary'] SSortWrapper:before {
   );
 }
 
-SSortWrapper {
-  display: none;
-  flex-shrink: 999;
-  position: relative;
-  width: 20px;
-  height: 16px;
+SColumn[use='primary'] SSortWrapper:before {
+  background: linear-gradient(
+    270deg,
+    var(--intergalactic-table-th-primary-cell-hover, #e0e1e9) 67.5%,
+    rgba(224, 225, 233, 0) 105%
+  );
+}
+
+SColumn[use='secondary'] SSortWrapper:before {
+  background: linear-gradient(
+    270deg,
+    var(--intergalactic-table-th-secondary-cell, #ffffff) 67.5%,
+    rgba(255, 255, 255, 0) 105%
+  );
 }
 
 SBodyWrapper {
