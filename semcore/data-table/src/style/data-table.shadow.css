@@ -174,7 +174,7 @@ SSortWrapper:before {
   top: -2px;
   right: 0;
   width: 20px;
-  height: 16px;
+  height: 0;
 }
 
 SColumn[use='primary'] SSortWrapper:before {
