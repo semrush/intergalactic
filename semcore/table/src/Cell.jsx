@@ -60,6 +60,7 @@ CellRow.displayName = 'CellRow';
 function CellHeadInner(props, ref) {
   const SCellHead = Cell;
   const SCellHeadContent = 'div';
+  const SSortWrapper = 'div';
   const SCellHeadIconAsc = SortAsc;
   const SCellHeadIconDesc = SortDesc;
   const { children, borderRight, borderLeft, ...other } = props;
@@ -88,8 +89,12 @@ function CellHeadInner(props, ref) {
     >
       <SCellHeadContent>
         {children}
-        {sorting === 'asc' && <SCellHeadIconAsc active={active} />}
-        {sorting === 'desc' && <SCellHeadIconDesc active={active} />}
+        {sorting && (
+          <SSortWrapper>
+            {sorting === 'asc' && <SCellHeadIconAsc active={active} />}
+            {sorting === 'desc' && <SCellHeadIconDesc active={active} />}
+          </SSortWrapper>
+        )}
       </SCellHeadContent>
     </SCellHead>,
   );

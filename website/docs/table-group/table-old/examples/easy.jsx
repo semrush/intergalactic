@@ -153,11 +153,10 @@ class Demo extends React.Component {
               onClick={this.handleHeadClick('cpc')}
               onKeyDown={this.handleHeadKeyDown('cpc')}
               noWrap={false}
-              style={{ maxWidth: '100px' }}
+              style={{ maxWidth: '60px' }}
             >
               <Tooltip title="Jesus Christ, Joe, fucking forget about it. I'm Mr. Pink. Let's move on.">
-                <span>CPC cpc cpc CPC cpc cpc</span>
-                <span>CPC cpc cpc CPC cpc cpc</span>
+                <span>CPCcpccpcsad</span>
               </Tooltip>
             </Table.CellHead>
             <Table.CellHead

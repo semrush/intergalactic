@@ -67,19 +67,15 @@ SCellHead {
   /* for fixed header */
   z-index: 1;
 
-  &:focus {
+  &:focus-visible {
     outline: none;
-    box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.3));
+    box-shadow: inset var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.3));
   }
-}
-
-SCellHead:hover SCellHeadIconAsc,
-SCellHead:hover SCellHeadIconDesc {
-  opacity: 1;
 }
 
 SCellHeadContent {
   display: inline-flex;
+  /* display: flex; */
   max-width: 100%;
   min-width: 0;
 }
@@ -98,25 +94,72 @@ SCellHead[use='secondary'] {
 SCellHead[sorting] {
   cursor: pointer;
   &[use='primary']:hover {
-    background-color: var(--gray-100);
+    background-color: var(--intergalactic-table-th-primary-cell-hover, #e0e1e9);
+  }
+
+  &:hover SSortWrapper {
+    display: block;
   }
 }
 
 SCellHead[use='primary'][active] {
-  background-color: var(--gray-100);
+  background-color: var(--intergalactic-table-th-primary-cell-active, #e0e1e9);
+}
+
+SCellHead[active] SCellHeadIconAsc {
+  position: relative;
+}
+
+SCellHead[active] SCellHeadIconDesc {
+  position: relative;
+}
+
+SCellHead[active] SSortWrapper {
+  display: block;
+  width: 16px;
+  margin-left: var(--intergalactic-spacing-1x, 4px);
+}
+
+SSortWrapper {
+  display: none;
+  flex-shrink: 999;
+  position: relative;
+  /* width: 20px; */
+  flex-basis: 20px;
+  height: 0;
+}
+
+SSortWrapper:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 20px;
+  height: 16px;
+}
+
+SCellHead[use='primary'] SSortWrapper:before {
+  background: linear-gradient(
+    270deg,
+    var(--intergalactic-table-th-primary-cell-hover, #e0e1e9) 67.5%,
+    rgba(224, 225, 233, 0) 105%
+  );
+}
+
+SCellHead[use='secondary'] SSortWrapper:before {
+  background: linear-gradient(
+    270deg,
+    var(--intergalactic-table-th-secondary-cell, #ffffff) 67.5%,
+    rgba(255, 255, 255, 0) 105%
+  );
 }
 
 SCellHeadIconAsc,
 SCellHeadIconDesc {
-  margin-left: var(--intergalactic-spacing-1x, 4px);
-  fill: var(--intergalactic-icon-secondary-neutral, #a9abb6);
-  flex-shrink: 0;
-  opacity: 0;
-}
-
-SCellHeadIconAsc[active],
-SCellHeadIconDesc[active] {
-  opacity: 1;
+  fill: var(--intergalactic-icon-secondary-neutral-hover-active, #8a8e9b);
+  position: absolute;
+  top: 0;
+  right: 0;
 }
 
 SRow {

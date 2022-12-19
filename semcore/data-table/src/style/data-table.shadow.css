@@ -156,7 +156,7 @@ SSortWrapper {
   flex-shrink: 999;
   position: relative;
   flex-basis: 20px;
-  height: 16px;
+  height: 0;
 }
 
 SSortWrapper:before {
@@ -165,7 +165,7 @@ SSortWrapper:before {
   top: 0;
   right: 0;
   width: 20px;
-  height: 0;
+  height: 16px;
 }
 
 SColumn[use='primary'] SSortWrapper:before {
