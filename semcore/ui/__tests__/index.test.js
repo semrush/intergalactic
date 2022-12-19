@@ -19,7 +19,7 @@ describe('@semcore/ui', () => {
   }
   const EXCLUDE_PACKAGE = [
     '@semcore/utils',
-    '@semcore/illustration',
+    // '@semcore/illustration',
     '@semcore/email',
     '@semcore/chart',
   ];
