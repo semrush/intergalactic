@@ -109,7 +109,7 @@ class Demo extends React.Component {
   render() {
     const { active, order, loading } = this.state;
     return (
-      <StyledTable>
+      <StyledTable compact>
         <Table.Head>
           <Table.Row>
             <Table.CellHead rowSpan={2} align="center">
@@ -123,6 +123,7 @@ class Demo extends React.Component {
               active={active === 'keyword'}
               onClick={this.handleHeadClick('keyword')}
               onKeyDown={this.handleHeadKeyDown('keyword')}
+              borderRight
             >
               <Tooltip title="Jesus Christ, Joe, fucking forget about it. I'm Mr. Pink. Let's move on.">
                 <span>
@@ -130,7 +131,11 @@ class Demo extends React.Component {
                 </span>
               </Tooltip>
             </Table.CellHead>
-            <Table.CellHead colSpan={3} align="center">
+            <Table.CellHead
+              colSpan={3}
+              align="center"
+              active={active === 'cpc' || active === 'vol'}
+            >
               <Tooltip title="Jesus Christ, Joe, fucking forget about it. I'm Mr. Pink. Let's move on.">
                 <span>Organic Sessions</span>
               </Tooltip>
@@ -147,9 +152,11 @@ class Demo extends React.Component {
               active={active === 'cpc'}
               onClick={this.handleHeadClick('cpc')}
               onKeyDown={this.handleHeadKeyDown('cpc')}
+              noWrap={false}
+              style={{ maxWidth: '60px' }}
             >
               <Tooltip title="Jesus Christ, Joe, fucking forget about it. I'm Mr. Pink. Let's move on.">
-                <span>CPC</span>
+                <span>CPCcpccpcsad</span>
               </Tooltip>
             </Table.CellHead>
             <Table.CellHead
@@ -172,7 +179,7 @@ class Demo extends React.Component {
                   <Checkbox.Value />
                 </Checkbox>
               </Table.Cell>
-              <Table.Cell>
+              <Table.Cell borderRight>
                 <Link>{row.keyword}</Link>
               </Table.Cell>
               <Table.Cell align="right">{row.kd}</Table.Cell>

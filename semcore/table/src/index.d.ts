@@ -16,7 +16,7 @@ export interface ITableProps extends IBoxProps {
    * @default primary
    */
   use?: ITableCtx['use'];
-  /** Made paddings less */
+  /** Made cells less */
   compact?: boolean;
 }
 
@@ -33,6 +33,8 @@ export interface ICellProps extends ITextProps {
    * @default primary
    */
   use?: 'primary' | 'secondary' | false;
+  borderRight?: boolean;
+  borderLeft?: boolean;
 }
 
 export interface ITableCellHeadProps extends ICellProps {
