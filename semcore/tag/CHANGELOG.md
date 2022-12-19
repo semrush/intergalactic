@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.4.2] - 2022-12-19
+
+### Fixed
+
+- Fixed css syntax error.
+
 ## [4.4.1] - 2022-12-19
 
 ### Changed
