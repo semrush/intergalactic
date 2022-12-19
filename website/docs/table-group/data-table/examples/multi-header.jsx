@@ -6,7 +6,7 @@ export default () => {
     <DataTable data={data}>
       <DataTable.Head>
         <DataTable.Column name="keyword" children="Keyword" />
-        <DataTable.Column>
+        <DataTable.Column vBorders wMax={'40%'}>
           Organic Sessions
           <DataTable.Column name="kd" children="KD,%" />
           <DataTable.Column name="cpc" children="CPC" />

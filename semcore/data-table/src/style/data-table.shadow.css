@@ -2,6 +2,13 @@ SDataTable {
   position: relative;
 }
 
+SDataTable[compact] {
+  & SColumn,
+  & SCell {
+    padding: var(--intergalactic-spacing-3x, 12px) var(--intergalactic-spacing-2x, 8px);
+  }
+}
+
 SHeadWrapper {
   position: relative;
 }
@@ -29,9 +36,9 @@ SColumn {
   box-sizing: border-box;
   position: relative;
 
-  &:focus {
+  &:focus-visible {
     outline: none;
-    box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.3));
+    box-shadow: inset var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.3));
   }
 }
 
@@ -43,7 +50,7 @@ SColumn[hidden] {
 }
 
 SColumn[use='primary'] {
-  padding: var(--intergalactic-spacing-3x, 12px) var(--intergalactic-spacing-2x, 8px);
+  padding: var(--intergalactic-spacing-3x, 12px);
   border-bottom: 1px solid var(--intergalactic-border-secondary, #e0e1e9);
   background-color: var(--intergalactic-table-th-primary-cell, #f4f5f9);
 }
@@ -63,17 +70,13 @@ SColumn[group][use] {
   padding: 0;
 }
 
-SColumn[groupHead][use] {
+SColumn[groupHead] {
   justify-content: center;
   /* for resizable */
   z-index: 1;
 }
 
-SColumn[groupHead][use='primary'] {
-  border-bottom: none;
-}
-
-SColumn[groupHead][use='secondary'] {
+SColumn[groupHead] {
   border-bottom: none;
 }
 
@@ -83,17 +86,13 @@ SColumn[sortable] {
   &[use='primary']:hover {
     background-color: var(--intergalactic-table-th-primary-cell-hover, #e0e1e9);
   }
+
+  &:hover SSortWrapper {
+    display: block;
+  }
 }
 
-SColumn[sortable][use='primary']:hover SSortWrapper {
-  display: block;
-}
-
-SColumn[sortIconFloat] SSortWrapper {
-  width: 0;
-}
-
-SColumn[active][use='primary'] {
+SColumn[use='primary'][active] {
   background-color: var(--intergalactic-table-th-primary-cell-active, #e0e1e9);
   width: 100%;
 }
@@ -106,6 +105,10 @@ SColumn[active] SSortWrapper {
   display: block;
   width: 16px;
   margin-left: var(--intergalactic-spacing-1x, 4px);
+}
+
+SColumn[sortIconFloat] SSortWrapper {
+  width: 0;
 }
 
 SColumn[resizable] {
@@ -133,19 +136,27 @@ SColumn[fixed] {
 
 SColumn[borderLeft],
 SCell[borderLeft] {
-  border-left: 1px solid var(--gray-100);
+  border-left: 1px solid var(--intergalactic-border-secondary, #e0e1e9);
 }
 
 SColumn[borderRight],
 SCell[borderRight] {
-  border-right: 1px solid var(--gray-100);
+  border-right: 1px solid var(--intergalactic-border-secondary, #e0e1e9);
 }
 
 SSortIcon {
-  fill: var(--gray-400);
+  fill: var(--intergalactic-icon-secondary-neutral-hover-active, #8a8e9b);
   position: absolute;
   top: 0;
   right: 0;
+}
+
+SSortWrapper {
+  display: none;
+  flex-shrink: 999;
+  position: relative;
+  width: 20px;
+  height: 16px;
 }
 
 SSortWrapper:before {
@@ -155,15 +166,22 @@ SSortWrapper:before {
   right: 0;
   width: 20px;
   height: 16px;
-  background: linear-gradient(270deg, #e0e1e9 67.5%, rgba(224, 225, 233, 0) 105%);
 }
 
-SSortWrapper {
-  display: none;
-  flex-shrink: 999;
-  position: relative;
-  width: 20px;
-  height: 16px;
+SColumn[use='primary'] SSortWrapper:before {
+  background: linear-gradient(
+    270deg,
+    var(--intergalactic-table-th-primary-cell-hover, #e0e1e9) 67.5%,
+    rgba(224, 225, 233, 0) 105%
+  );
+}
+
+SColumn[use='secondary'] SSortWrapper:before {
+  background: linear-gradient(
+    270deg,
+    var(--intergalactic-table-th-secondary-cell, #ffffff) 67.5%,
+    rgba(255, 255, 255, 0) 105%
+  );
 }
 
 SBodyWrapper {

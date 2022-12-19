@@ -117,6 +117,7 @@ class Head extends Component<AsProps> {
               role="columnheader"
               groupHead
               use={use}
+              active={column.active}
               borderLeft={column.borderLeft}
               borderRight={column.borderRight}
             >

@@ -114,6 +114,8 @@ export interface IDataTableColumnProps extends IFlexProps {
   flex?: Property.Flex | 'inherit';
   /** Add vertical borders */
   vBorders?: boolean;
+  /** Made paddings less */
+  compact?: boolean;
 }
 
 export interface IDataTableBodyProps extends IBoxProps {
@@ -242,6 +244,7 @@ class RootDefinitionTable extends Component<AsProps> {
         sortable,
         flex,
         vBorders,
+        active,
         ...props
       } = child.props as Column['props'];
       const lastColumnChildren = columnsChildren[columnsChildren.length - 1];
@@ -250,6 +253,7 @@ class RootDefinitionTable extends Component<AsProps> {
 
       if (isGroup) {
         columns = this.childrenToColumns(children, { fixed });
+        active = typeof active === 'boolean' ? active : columns.some((c) => c.active);
 
         if (vBorders) {
           setBorderGroupColumns(columns);
@@ -275,7 +279,7 @@ class RootDefinitionTable extends Component<AsProps> {
         setVar: flex !== 'inherit',
         fixed,
         resizable,
-        active: sort[0] === name,
+        active: typeof active === 'boolean' ? active : sort[0] === name,
         sortable,
         borderLeft: lastColumnChildren?.borderRight === true ? false : vBorders,
         borderRight: vBorders,
