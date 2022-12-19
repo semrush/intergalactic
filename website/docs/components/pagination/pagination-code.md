@@ -2,11 +2,11 @@
 title: Example
 ---
 
-### Simple use example
+### Simple usage example
 
 @example base
 
-### Extended use example
+### Extended usage example
 
 We can see the `Pagination` and `Select` components in the example. In order to add `Select` or any other component into `Pagination`, you need to expand the `Pagination` component.
 

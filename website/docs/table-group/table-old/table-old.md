@@ -7,7 +7,7 @@ deprecated: true
 
 > 🚨 Library `@semcore/table` is deprecated. Use new library [@semcore/data-table](/table-group/data-table/). It is based on `CSS-flex` technology and does not use native tables.
 
-@## Simple use example
+@## Simple usage example
 
 @example easy
 
