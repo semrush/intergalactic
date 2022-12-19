@@ -9,64 +9,65 @@ tabName: Design
 
 We have collected the table of differences between these search patterns.
 
-| Pattern      | List is shown while focusing | List filtering while entering the value | Upon search the options menu is scrolled | User can enter data different from the list |
-| ------------ | ---------------------------- | --------------------------------------- | ---------------------------------------- | ------------------------------------------- |
-| Combobox     | ✅                           | ❌                                      | ✅                                       | ❌                                          |
-| AutoComplete | ❌                           | ✅                                      | ✅                                       | ✅                                          |
-| AutoSuggest  | ❌                           | ✅                                      | ❌                                       | ✅                                          |
+| Pattern      | List is shown while focusing | List filtering while entering the value | Upon searching, the options menu is scrolled | User can enter data different from the list |
+| ------------ | ---------------------------- | --------------------------------------- | -------------------------------------------- | ------------------------------------------- |
+| Combobox     | ✅                           | ❌                                      | ✅                                           | ❌                                          |
+| AutoComplete | ❌                           | ✅                                      | ✅                                           | ✅                                          |
+| AutoSuggest  | ❌                           | ✅                                      | ❌                                           | ✅                                          |
 
 > If your search behavior differs from those described in the table, do not hesitate to drop us a line so we can update the guide.
 
 @## Pattern composition
 
-These patterns use:
+These patterns use the following components:
 
-- [Input](/components/input/);
-- [DropdownMenu](/components/dropdown-menu/).
+- [Input](/components/input);
+- [Select](/components/select).
 
 @## Combobox
 
-**Combobox** is a combination of input and select. In other words it's a select with the possibility to enter the value only from the list.
+**Combobox** is a combination of input and select. In other words it's a select with the possibility to enter the value from the list.
 
-> User cannot enter the data not corresponding to the options list.
+> User cannot enter the data not corresponding to the items list.
 
-You should use it when usual input, select or autocomplete are not appropriate. For example, we use it in [TimePicker](/components/time-picker/).
+Use combobox when usual input, select or autocomplete are not appropriate for your case. For example, we use it in the [TimePicker](/components/time-picker/).
 
 ### Interaction
 
-The list with options opens as soon as input gets `focus`.
+The list with items opens as soon as input gets `focus`.
 
 ![combobox](static/combobox-example.png)
 
-> Unlike the autocomplete, combobox has no items filtration. If user have entered `abc` into the input, all items should remain in the list, but the list should be scrolled up to the first item, which starts with `abc`.
+> Unlike the autocomplete, combobox has no items filtration. If user have entered `abc` into the input, all items will remain in the list, but the list will be scrolled up to the first item, which starts with `abc`.
 
-If user entered the exact match for one of the items and pressed `Enter`, the item will be selected. If user entered the item absent in the dropdown and pressed `Enter`, show the tooltip with the message that it is necessary to select something from the list.
+- If user entered the exact match for one of the items and pressed `Enter`, the item will be selected.
+- If user entered the absent item and pressed `Enter`, we recommend you to show the tooltip with the message that it is necessary to select item from the list.
 
 ### Validation
 
-Combobox validation works similarly to other forms. See detailed infromation in [Validation](/patterns/validation-form/).
+Combobox validation works similarly to the other forms. You can find the detailed information in the [Validation](/patterns/validation-form/).
 
 ### Long loading
 
-If you need more time to load the list items, show [Spin](/components/spin/) in the input.
+If your interface needs more time to load the items list, show [Spin](/components/spin/) in the input.
 
 ![combobox with spinner](static/spinner.png)
 
 @## AutoComplete, AutoSuggest
 
-**AutoComplete and AutoSuggest** are combinations of input and select. As user enters information into the input, the corresponding results are displayed in a DropdownMenu.
+**AutoComplete and AutoSuggest** are combinations of input and select. As user enters information into the input, the corresponding results are displayed in the DropdownMenu.
 
-> User may enter the data not corresponding to any results of the options list.
+> User may enter the data not corresponding to any results of the items list.
 
-The difference between these types of search is conceptual. In AutoComplete search is performed as the final list of names and symbols. In AutoSuggest it is performed as the open list of terms and phrases. We recommend you [this good article on that subject](https://uxmag.com/articles/designing-search-as-you-type-suggestions).
+The difference between these types of search is conceptual. In the AutoComplete search is performed as the final list of names and symbols. In the AutoSuggest search is performed as the open list of terms and phrases. To dive deep into the subject we recommend you to read [Designing Search: As-You-Type Suggestions](https://uxmag.com/articles/designing-search-as-you-type-suggestions).
 
 ### Interaction
 
-While user enters information into the input, the items list is filtered, and only the results matching the entered data remain in the list.
+As the user enters information into the input, the item list is filtered and only the results matching the entered data remain in the list.
 
-Clicking an item in the list selects it and DropdownMenu closes.
+Clicking an item in the list selects it and the DropdownMenu closes.
 
-|                      | Appearance example                                         |
+| State                | Appearance example                                         |
 | -------------------- | ---------------------------------------------------------- |
 | Default              | ![default state](static/default.png)                       |
 | Start typing         | ![typing state](static/start.png)                          |
@@ -78,13 +79,10 @@ Clicking an item in the list selects it and DropdownMenu closes.
 
 @## Usage examples
 
-Example of Combobox in [TimePicker](/components/time-picker/).
-
-![combobox](static/combobox.png)
-
-Example of AutoComplete.
-
-![autocomplete](static/autocomplete.png)
+| Search type                                            | Appearance example                       |
+| ------------------------------------------------------ | ---------------------------------------- |
+| Combobox in the [TimePicker](/components/time-picker/) | ![combobox](static/combobox.png)         |
+| AutoComplete                                           | ![autocomplete](static/autocomplete.png) |
 
 @page auto-tips-a11y
 @page auto-tips-code
