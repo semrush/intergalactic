@@ -202,7 +202,7 @@ To add a border to a column, you need to pass `vBorders` properties to that colu
 
 @## Сolumn expand
 
-The active column will expand if there is not enough space. Fixed width columns will not change size.
+The active column will expand if there is not enough space. Fixed width columns will not change size. If a column width limit is set using `wMax` prop, then the sort icon on hover will run over the text in the column header, and the non-fitting part of the text will not be visible.
 
 @example expanding-column
 
