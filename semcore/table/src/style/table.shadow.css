@@ -98,7 +98,7 @@ SCellHead[sorting] {
   }
 
   &:hover SSortWrapper {
-    display: block;
+    opacity: 1;
   }
 }
 
@@ -115,18 +115,17 @@ SCellHead[active] SCellHeadIconDesc {
 }
 
 SCellHead[active] SSortWrapper {
-  display: block;
   width: 16px;
   margin-left: var(--intergalactic-spacing-1x, 4px);
+  opacity: 1;
 }
 
 SSortWrapper {
-  display: none;
   flex-shrink: 999;
   position: relative;
-  /* width: 20px; */
-  flex-basis: 20px;
+  width: 20px;
   height: 0;
+  opacity: 0;
 }
 
 SSortWrapper:before {

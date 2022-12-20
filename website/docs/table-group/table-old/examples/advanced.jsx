@@ -164,7 +164,7 @@ class Demo extends React.Component {
               active={active === 'vol'}
               onClick={this.handleHeadClick('vol')}
               onKeyDown={this.handleHeadKeyDown('vol')}
-              style={{ minWidth: '400px' }}
+              style={{ minWidth: '300px' }}
             >
               <Tooltip title="Jesus Christ, Joe, fucking forget about it. I'm Mr. Pink. Let's move on.">
                 <span>Vol.</span>
