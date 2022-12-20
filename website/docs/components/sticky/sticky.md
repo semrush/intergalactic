@@ -2,6 +2,7 @@
 title: Sticky
 fileSource: sticky
 tabName: Design
+deprecated: true
 ---
 
 > 🚨 Library `@semcore/sticky` is deprecated. Please, use [`@semcore/flex-box`](/layout/box-system/) instead.

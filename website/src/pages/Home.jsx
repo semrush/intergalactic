@@ -353,23 +353,23 @@ function Home() {
                 value={value}
                 size="l"
               >
-                <TabLine.Item className={styles.tab} value={'components'} size={100}>
-                  Components
+                <TabLine.Item className={styles.tab} value={'components'}>
+                  <Text size={500}>Components</Text>
                 </TabLine.Item>
-                <TabLine.Item className={styles.tab} value={'charts'} size={100}>
-                  Charts
+                <TabLine.Item className={styles.tab} value={'charts'}>
+                  <Text size={500}>Charts</Text>
                 </TabLine.Item>
-                <TabLine.Item className={styles.tab} value={'table'} size={100}>
-                  Table
+                <TabLine.Item className={styles.tab} value={'table'}>
+                  <Text size={500}>Table</Text>
                 </TabLine.Item>
-                <TabLine.Item className={styles.tab} value={'ux'} size={100}>
-                  UX Patterns
+                <TabLine.Item className={styles.tab} value={'ux'}>
+                  <Text size={500}>UX Patterns</Text>
                 </TabLine.Item>
-                <TabLine.Item className={styles.tab} value={'filters'} size={100}>
-                  Filters
+                <TabLine.Item className={styles.tab} value={'filters'}>
+                  <Text size={500}>Filters</Text>
                 </TabLine.Item>
-                <TabLine.Item className={styles.tab} value={'documentation'} size={100}>
-                  Developer Docs
+                <TabLine.Item className={styles.tab} value={'documentation'}>
+                  <Text size={500}>Developer Docs</Text>
                 </TabLine.Item>
               </TabLine>
             </div>

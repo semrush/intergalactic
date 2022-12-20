@@ -3,6 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import IF from '@semcore/utils/lib/if';
 import { Text } from '@semcore/typography';
 import ChevronRightXS from '@semcore/icon/ChevronRight/m';
+import WarningM from '@semcore/ui/icon/Warning/m';
 import cx from 'classnames';
 import styles from './SideBarNavigation.module.css';
 
@@ -49,18 +50,26 @@ const SideBarNavigation = ({ navigation = [], onNavigate, className }) => {
             <IF condition={isOpen} key={`if-${i}`}>
               {currentCategory.children.map((p, i) => {
                 return (
-                  <Link
+                  <div
                     className={cx(
-                      styles.categoryItem,
-                      p.metadata.disabled && styles.categoryItemDisabled,
+                      styles.categoryContainer,
                       p.route === `${category}/${page}` && styles.categoryItemActive,
                     )}
-                    onClick={onNavigate}
-                    to={`/${p.route}/`}
-                    key={`page-${i}`}
-                    aria-disabled={!!p.metadata.disabled}
-                    dangerouslySetInnerHTML={{ __html: p.title }}
-                  />
+                    key={`icon-container-${i}`}
+                  >
+                    <Link
+                      className={cx(
+                        styles.categoryItem,
+                        p.metadata.disabled && styles.categoryItemDisabled,
+                      )}
+                      onClick={onNavigate}
+                      to={`/${p.route}/`}
+                      key={`page-${i}`}
+                      aria-disabled={!!p.metadata.disabled}
+                      dangerouslySetInnerHTML={{ __html: p.title }}
+                    />
+                    {!!p.metadata.deprecated && <WarningM className={styles.categoryIcon} />}
+                  </div>
                 );
               })}
             </IF>

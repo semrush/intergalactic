@@ -8,6 +8,7 @@ import BracketsCodeM from '@semcore/icon/BracketsCode/m';
 import FigmaM from '@semcore/icon/color/Figma/m';
 import GitHubM from '@semcore/icon/color/GitHub/m';
 import EditM from '@semcore/icon/Edit/m';
+import WarningM from '@semcore/ui/icon/Warning/m';
 import { css } from '@semcore/core';
 import Tag from '@semcore/tag';
 import RouterLink from './RouterLink.jsx';
@@ -32,7 +33,8 @@ function VersionLink({ to, version }) {
 }
 
 export default function (props) {
-  const { title, category, fileSource, sourcePath, beta, version, changelogUrl } = props;
+  const { title, category, fileSource, sourcePath, beta, version, changelogUrl, deprecated } =
+    props;
 
   return (
     <Box mb={8}>
@@ -46,6 +48,14 @@ export default function (props) {
           </>
         )}
         {beta && <Tag size="m" theme="primary" color="orange-500" children="beta" />}
+        {deprecated && (
+          <Tooltip>
+            <Tooltip.Trigger tag={Flex}>
+              <WarningM className={styles.deprecatedIcon} />
+            </Tooltip.Trigger>
+            <Tooltip.Popper>Deprecated component</Tooltip.Popper>
+          </Tooltip>
+        )}
       </Text>
       <Flex className={styles.overlay} mb={4} tag="nav" aria-label="External links">
         <Box mr={5}>

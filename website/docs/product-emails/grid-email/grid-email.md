@@ -1,6 +1,7 @@
 ---
 title: Email templates & grid
 tabName: Design
+deprecated: true
 ---
 
 > 🚨 The current `@semcore/email` package is deprecated and using it is not recommended. A new major version is under way.
