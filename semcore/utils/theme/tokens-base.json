@@ -1,5 +1,9 @@
 {
   "gray": {
+    "white": {
+      "value": "#ffffff",
+      "type": "color"
+    },
     "50": {
       "value": "#f4f5f9",
       "type": "color",
@@ -36,10 +40,6 @@
     },
     "800": {
       "value": "#191b23",
-      "type": "color"
-    },
-    "white": {
-      "value": "#ffffff",
       "type": "color"
     }
   },
