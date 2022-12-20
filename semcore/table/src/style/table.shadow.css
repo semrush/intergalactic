@@ -181,7 +181,9 @@ SRow[theme='default']:hover,
 SRow[theme]:hover SCellRow[theme='default'],
 SCellRow[highlighted][theme='default'],
 SCellRow[interactive][theme='default']:hover {
-  background-color: var(--intergalactic-table-td-cell-hover, rgba(224, 225, 233, 0.5));
+  /* The color is hardcoded because need hex(in figma rgba) */
+  /* disable-tokens-validator */
+  background-color: var(--intergalactic-table-td-cell-hover, #f0f0f4);
 }
 
 SRow[theme='info'],

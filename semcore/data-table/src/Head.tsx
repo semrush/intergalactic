@@ -83,6 +83,7 @@ class Head extends Component<AsProps> {
     if (!column.setVar) {
       style['flexBasis'] = `var(${column.varWidth})`;
     }
+
     return sstyled(styles)(
       <SColumn
         role={isGroup ? undefined : 'columnheader'}
@@ -94,7 +95,7 @@ class Head extends Component<AsProps> {
         sortIconFloat={column.props.justifyContent?.includes('end')}
         borderLeft={isGroup ? false : column.borderLeft}
         borderRight={isGroup ? false : column.borderRight}
-        active={column.active}
+        active={isGroup ? false : column.active}
         group={isGroup}
         tabIndex={column.sortable && 0}
         {...column.props}

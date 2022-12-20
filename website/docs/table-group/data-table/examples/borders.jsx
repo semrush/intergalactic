@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import DataTable from '@semcore/ui/data-table';
 
 export default () => {
+  const [sort, setSort] = useState(['cpc', 'desc']);
   return (
-    <DataTable data={data}>
+    <DataTable data={data} sort={sort} onSortChange={setSort}>
       <DataTable.Head>
-        <DataTable.Column name="keyword" children="Keyword" />
+        <DataTable.Column name="keyword" children="Keyword" sortable />
         <DataTable.Column vBorders>
           Organic Sessions
           <DataTable.Column name="kd" children="KD" sortable />

@@ -147,7 +147,7 @@ SCell[borderRight] {
 SSortIcon {
   fill: var(--intergalactic-icon-secondary-neutral-hover-active, #8a8e9b);
   position: absolute;
-  top: 0;
+  top: -2px;
   right: 0;
 }
 
@@ -162,7 +162,7 @@ SSortWrapper {
 SSortWrapper:before {
   content: '';
   position: absolute;
-  top: 0;
+  top: -2px;
   right: 0;
   width: 20px;
   height: 16px;
@@ -290,7 +290,7 @@ SCell {
 }
 
 SCell[use='primary'] {
-  padding: var(--intergalactic-spacing-3x, 12px) var(--intergalactic-spacing-2x, 8px);
+  padding: var(--intergalactic-spacing-3x, 12px);
   min-height: 45px;
   background-color: var(--intergalactic-bg-primary-neutral, #ffffff);
 }

@@ -7,7 +7,7 @@ export default () => {
     <DataTable data={data} sort={sort} onSortChange={setSort}>
       <DataTable.Head>
         <DataTable.Column name="keyword" children="Keyword" wMax={'300px'} />
-        <DataTable.Column name="kd" children="Difficulty Difficulty" sortable wMax={'80px'} />
+        <DataTable.Column name="kd" children="Difficulty Difficulty" sortable wMax={'85px'} />
         <DataTable.Column name="cpc" children="CPC" sortable />
         <DataTable.Column name="vol" children="Vol." sortable wMax={'300px'} />
       </DataTable.Head>

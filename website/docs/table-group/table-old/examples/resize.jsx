@@ -52,7 +52,7 @@ const ResizeableTitle = (props) => {
       onResize={onResize}
       draggableOpts={{ enableUserSelectHack: false }}
     >
-      <CustomCellHead {...restProps} width={width} />
+      <CustomCellHead {...restProps} width={width} borderRight />
     </Resizable>
   );
 };
