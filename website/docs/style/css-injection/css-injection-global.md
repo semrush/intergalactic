@@ -4,7 +4,7 @@ title: Global CSS Injection
 
 > 🚨 If you are using CSS Injection for theming purpose, consider review [design tokens based theming](/style/themes).
 
-All our components include Semrush styles. However, if your tool uses a different color palette or you need to style the components differently, you may want to change the default Semrush styles. This page contains instructions on how to do that using the React Semcore plugin for Babel.
+All our components use default Semrush styles (default theme prefixed with `--intergalactic` in tokens). However, if your product uses a different color palette or you need to style the components differently, you may want to change the default Semrush styles. This page contains instructions on how to do that using the React Semcore plugin for Babel.
 
 @## Step one
 
@@ -18,16 +18,16 @@ npm i @semcore/babel-plugin-react-semcore
 
 @## Step two
 
-Create a directory for components with injected css taking into account the following restrictions. They're needed because css injection are very much tied to naming and file structure.
+Create a directory for components with injected CSS taking into account the following restrictions. They're needed because CSS injection are very much tied to naming and file structure.
 
-- The directory with the css injection must contain directories with component names without the `@semcore` prefix.
+- The directory with the CSS injection must contain directories with component names without the `@semcore` prefix.
 - Directories with component names should contain only `.shadow.css` files.
 - The names of `.shadow.css` files must match the names of the corresponding components' stylesheets.
 
 In the following example, a directory contains three components:
 
 ```javascript
-    components <-- css injection root directory
+    components <-- CSS injection root directory
     |── button
     |   └-- button.shadow.css
     |── product-head
@@ -58,22 +58,22 @@ Add a new rule to your `webpack-config`:
     }
 ```
 
-> You can also use the name of the package with css injections, for example `{ theme: "my-css injection-npm-package" }`
+> You can also use the name of the package with CSS injections, for example `{ theme: "my-css injection-npm-package" }`.
 
-After that, all the styles created in your css injection style directory will be applied to the corresponding components.
+After that, all the styles created in your CSS injection style directory will be applied to the corresponding components.
 
 👯‍ **Congratulations, you've changed the styles of the components!**
 
 @## Versioning
 
-> Versioning is optional, but recommended for your own safety.
+> Versioning is optional, but recommended for your own comfort.
 
-You can design a css injection for different component versions. To do this, create a `versions.json` file and specify the versions and paths to the `.css` files.
+You can design a CSS injection for different component versions. To do this, create a `versions.json` file and specify the versions and paths to the `.css` files.
 
 An example of file structure:
 
 ```javascript
-    components <-- css injection root directory
+    components <-- CSS injection root directory
     |── button
         └-- button_v2.shadow.css
         └-- button_v3.shadow.css
@@ -97,7 +97,7 @@ An example of the `versions.json` file :
 
 @## Note
 
-To develop css injections locally, you need hot module replacement. It won't work out of the box because css injections are applied during the build process and watchers can't see the changes. To fix that:
+To develop CSS injections locally, you need hot module replacement. It won't work out of the box because CSS injections are applied during the build process and watchers can't see the changes. To fix that:
 
 1. Add `@semcore/shadow-loader` to the webpack configuration.
 2. Add loaders for `.css` files

@@ -8,7 +8,7 @@ If you need to change the style of a component in one specific case, then you sh
 
 ### Step one
 
-You've installed our `component` and our plugin `@semcore/babel-plugin-styles` to properly transpile the code.
+Install our `component` and our plugin `@semcore/babel-plugin-styles` to properly transpile the code.
 
 ```bash
 npm i @semcore/ui @semcore/babel-plugin-styles
@@ -38,9 +38,9 @@ Add a new rule to your `webpack-config`:
 
 ### Step three
 
-You wrote your own styles for our components using one of the following methods:
+Write your own styles for our components using one of the following methods:
 
-- css-in-js
+- CSS-in-JS
 
 ```jsx
 import { sstyled } from '@semcore/ui/core';
@@ -57,7 +57,7 @@ const styles = sstyled.css`
 import styles from './custom.shadow.css';
 ```
 
-> ⚠️ The extension `.shadow.css` is required
+> ⚠️ The extension `.shadow.css` is required.
 
 ### Step four
 
@@ -76,12 +76,11 @@ export default (props) => <Button styles={styles} {...props} />;
 
 Look at the source of styles in GitHub, styles are written in the same format.
 
-- You do not write styles with the `.button` classes, you use the tag names `SButton`.
-- By convention, all of our styled tags are capitalized `S + ComponentName`.
+- By convention, all of our styled tags are capitalized `S + ComponentName`. You do not need to write styles with the `.button` classes, just use the tag names `SButton`.
 - If you need to access the properties of a component, then use `SButton[keybordFocus]` or properties with the value `SButton[size="m"]`.
-- If you need properties `:hover` and others, then they are available as usual `SButton:hover`.
+- If you need properties like `:hover` and others, then they are available as usual `SButton:hover`.
 
-**You can use variables as properties.**
+**You can use variables as properties:**
 
 ```jsx
 import { sstyled } from '@semcore/ui/core';
