@@ -154,13 +154,13 @@ For basic controls use L size.
 
 There you can see default styles for stepper button.
 
-| State    | Appearance example                                                                                | Styles                                                                                                                                                                             |
-| -------- | ------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| normal   | ![wizard stepper state](static/normal.png)                                                        | `background-color: var(--violet-600); border-radius: 6px;`                                                                                                                         |
-| hover    | ![wizard stepper state](static/hover.png)                                                         | `background-color: var(--violet-700); cursor: pointer;`                                                                                                                            |
-| active   | ![wizard stepper state](static/active.png)                                                        | `background-color: var(--violet-500);`                                                                                                                                             |
-| disabled | ![wizard stepper state](static/disabled.png) ![wizard stepper state](static/disabled-tooltip.png) | Use [`--intergalactic-disabled-opacity`](/style/design-tokens/) token. When hovering on a button in this state, hang up a tooltip with a description of why this step is disabled. |
-| checked  | ![wizard stepper state](static/checked.png)                                                       | The number changes to a Check icon in size M.                                                                                                                                      |
+| State    | Appearance example                                                                                | Styles                                                                                                                                                               |
+| -------- | ------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| normal   | ![wizard stepper state](static/normal.png)                                                        | `background-color: var(--violet-600); border-radius: 6px;`                                                                                                           |
+| hover    | ![wizard stepper state](static/hover.png)                                                         | `background-color: var(--violet-700); cursor: pointer;`                                                                                                              |
+| active   | ![wizard stepper state](static/active.png)                                                        | `background-color: var(--violet-500);`                                                                                                                               |
+| disabled | ![wizard stepper state](static/disabled.png) ![wizard stepper state](static/disabled-tooltip.png) | Use [`--disabled-opacity`](/style/design-tokens/) token. When hovering on a button in this state, hang up a tooltip with a description of why this step is disabled. |
+| checked  | ![wizard stepper state](static/checked.png)                                                       | The number changes to a Check icon in size M.                                                                                                                        |
 
 @## Keyboard control
 

@@ -1,5 +1,9 @@
 [
   {
+    "name": "--gray-white",
+    "value": "#ffffff"
+  },
+  {
     "name": "--gray-50",
     "value": "#f4f5f9",
     "description": "Only suitable for backgrounds. Can be completely invisible to users with low-contrast monitor or poor vision."
@@ -36,10 +40,6 @@
   {
     "name": "--gray-800",
     "value": "#191b23"
-  },
-  {
-    "name": "--gray-white",
-    "value": "#ffffff"
   },
   {
     "name": "--blue-50",

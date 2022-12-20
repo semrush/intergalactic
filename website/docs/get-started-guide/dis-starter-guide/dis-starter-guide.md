@@ -64,11 +64,11 @@ See [Typography](/style/typography/) if want to learn more about our recommendat
 
 The main breakpoints that we recommend to use in our interfaces are:
 
-| Token                                | Value  | Usage                                    |
-| ------------------------------------ | ------ | ---------------------------------------- |
-| `--intergalactic-screen-extra-small` | 320px  | The smallest devices. Don't forget them. |
-| `--intergalactic-screen-small`       | 768px  | Phones and tablets.                      |
-| `--intergalactic-screen-medium`      | 1200px | Big tablets and desktop devices.         |
+| Token                  | Value  | Usage                                    |
+| ---------------------- | ------ | ---------------------------------------- |
+| `--screen-extra-small` | 320px  | The smallest devices. Don't forget them. |
+| `--screen-small`       | 768px  | Phones and tablets.                      |
+| `--screen-medium`      | 1200px | Big tablets and desktop devices.         |
 
 See [Breakpoints](/layout/breakpoints/) and [Grid and page layout](/layout/grid-system/) for more information.
 
