@@ -42,10 +42,10 @@ You can set the width of the accordion that is appropriate for the context.
 
 > You can use text, link or button of any size you need as the accordion trigger.
 
-|                              | Appearance example                          | Default styles                                                                                                                                                                                                                                               |
-| ---------------------------- | ------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Accordion without background | ![accordion default](static/default.png)    | For the icon color use `--intergalactic-icon-secondary-neutral` token; for the text `--intergalactic-text-primary` token.                                                                                                                                    |
-| Accordion with background    | ![accordion default](static/default-bg.png) | For the background and text color you can use any background color from the [semantic tokens list](/style/design-tokens/#semantic_tokens) depending on the usage context. For the default background color use `--intergalactic-bg-secondary-neutral` token. |
+|                              | Appearance example                          | Default styles                                                                                                                                                                                                                                 |
+| ---------------------------- | ------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Accordion without background | ![accordion default](static/default.png)    | For the icon color use `--icon-secondary-neutral` token; for the text `--text-primary` token.                                                                                                                                                  |
+| Accordion with background    | ![accordion default](static/default-bg.png) | For the background and text color you can use any background color from the [semantic tokens list](/style/design-tokens/#semantic_tokens) depending on the usage context. For the default background color use `--bg-secondary-neutral` token. |
 
 @## Collapsed content
 
@@ -73,13 +73,13 @@ You can use this component to hide almost any content. This can be a text conten
 
 ![accordion hover zone](static/hoverzone.png)
 
-| State    | Appearance examples                              | Description and styles                                                                                                                                                                               |
-| -------- | ------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| default  | ![accordion default](static/default-state.png)   |                                                                                                                                                                                                      |
-| hover    | ![accordion hover](static/hover-state.png)       | The color of the icon changes to the next in the palette — `--intergalactic-icon-secondary-neutral-hover-active`. If the accordion trigger has a background, it can also change color when hovering. |
-| active   | ![accordion active](static/active-state.png)     | The `ChevronRight` icon rotates to 90 degrees: `transform: rotate(90deg);`. All other trigger styles remain the same as in the `hover` state.                                                        |
-| disabled | ![accordion disabled](static/disabled-state.png) | Use [`--intergalactic-disabled-opacity`](/style/design-tokens/) token.                                                                                                                               |
-| loading  | ![accordion loading](static/loading-state.png)   | If the system needs time to load the content hidden in the accordion, then show [Spin](/components/spin/) with a respective size. By default, the spinner size is XS.                                |
+| State    | Appearance examples                              | Description and styles                                                                                                                                                                 |
+| -------- | ------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| default  | ![accordion default](static/default-state.png)   |                                                                                                                                                                                        |
+| hover    | ![accordion hover](static/hover-state.png)       | The color of the icon changes to the next in the palette — `--icon-secondary-neutral-hover-active`. If the accordion trigger has a background, it can also change color when hovering. |
+| active   | ![accordion active](static/active-state.png)     | The `ChevronRight` icon rotates to 90 degrees: `transform: rotate(90deg);`. All other trigger styles remain the same as in the `hover` state.                                          |
+| disabled | ![accordion disabled](static/disabled-state.png) | Use [`--disabled-opacity`](/style/design-tokens/) token.                                                                                                                               |
+| loading  | ![accordion loading](static/loading-state.png)   | If the system needs time to load the content hidden in the accordion, then show [Spin](/components/spin/) with a respective size. By default, the spinner size is XS.                  |
 
 @## Animation
 

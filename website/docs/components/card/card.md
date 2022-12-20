@@ -31,7 +31,7 @@ The component consists of:
 
 ### Title and description
 
-For the card title use 16px text (`--fs-300; --lh-300;`) with `font-weight: 700`.
+For the card title use 16px text (`--fs-300;`, `--lh-300;`) with `font-weight: --bold`.
 
 The card may have a description. It usually contains an explanation of what the data is based on, interesting insight/advice on the visualized data, etc.
 
@@ -54,7 +54,7 @@ You can divide content into sections if needed.
 
 @## Interaction
 
-By default, the card is non-clickable. But you can use `--intergalactic-box-shadow-card-hover` token for hover state and make title a clickable link if necessary.
+By default, the card is non-clickable. But you can use `--box-shadow-card-hover` token for hover state and make title a clickable link if necessary.
 
 ![card with clickable heading](static/card-clickable.png)
 

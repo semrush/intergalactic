@@ -29,8 +29,8 @@ Addons have margins on the right and left.
 
 | Button size  | Icon size | Appearance example             | Description                                                                                                              |
 | ------------ | --------- | ------------------------------ | ------------------------------------------------------------------------------------------------------------------------ |
-| **L (40px)** | M         | ![button L](static/size-l.png) | Use this size in modal windows for main actions, empty pages and page states that need to focus user on the main action. |
 | **M (28px)** | M         | ![button M](static/size-m.png) | This is the default size of the button. Use it freely in filters, dropdowns, tables, etc.                                |
+| **L (40px)** | M         | ![button L](static/size-l.png) | Use this size in modal windows for main actions, empty pages and page states that need to focus user on the main action. |
 
 @## Button width
 
@@ -112,9 +112,10 @@ For the primary button you can use themes according to the visual hierarchy on t
 
 **The margin between buttons shall be [multiple of 4](/layout/box-system/#spacing_system)**. If there are several buttons next to each other, use the recommended margins shown in table below.
 
-| L (40px)                         | M (28px)                         |
-| :------------------------------- | :------------------------------- |
-| ![margin L](static/margin-1.png) | ![margin M](static/margin-2.png) |
+| Button size | Appearance example               |
+| ----------- | -------------------------------- |
+| M (28px)    | ![margin M](static/margin-2.png) |
+| L (40px)    | ![margin L](static/margin-1.png) |
 
 @## Use in UX/UI
 

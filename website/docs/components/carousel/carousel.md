@@ -44,11 +44,11 @@ Use the carousel as an additional highlight of important website features and in
 
 ### Default styles
 
-|                         | Default styles                                      |
-| ----------------------- | --------------------------------------------------- |
-| Navigation buttons      | `icon size: L;` `color: --gray-300;`                |
-| Slides number indicator | `indicator size: 12px * 12px;` `color: --gray-100;` |
-| Content slide           | `border-radius: 6px;`                               |
+|                         | Default styles                                                        |
+| ----------------------- | --------------------------------------------------------------------- |
+| Navigation buttons      | Use L size for Chevron icons, `color: var(--icon-secondary-neutral);` |
+| Slides number indicator | `indicator size: 12px * 12px;` `color: var(--bg-secondary-neutral);`  |
+| Content slide           | `border-radius: var(--rounded-medium);`                               |
 
 > Click-zone of controls on the right/left is stretched to the height of the content.
 
@@ -66,11 +66,11 @@ This example has the same styles as the example on the light background.
 
 Navigation buttons have the following states.
 
-| State    | Arrearance example                      | Styles                      |
-| -------- | --------------------------------------- | --------------------------- |
-| default  | ![default button](static/default.png)   | `--gray-300`                |
-| hover    | ![button with hover](static/hover.png)  | `--gray-400`                |
-| disabled | ![disabled button](static/disabled.png) | `--gray-300` `opacity: 30%` |
+| State    | Arrearance example                      | Styles                                               |
+| -------- | --------------------------------------- | ---------------------------------------------------- |
+| default  | ![default button](static/default.png)   | `color: var(--icon-secondary-neutral);`              |
+| hover    | ![button with hover](static/hover.png)  | `color: var(--icon-secondary-neutral-hover-active);` |
+| disabled | ![disabled button](static/disabled.png) | `opacity: var(--disabled-opacity);`                  |
 
 > Navigation buttons are center aligned.
 
@@ -88,11 +88,12 @@ Number of slides indicator have the following states.
 
 ![slides number indicators states](static/default-indicators.png)
 
-| State    | Styles       |
-| -------- | ------------ |
-| default  | `--gray-100` |
-| hover    | `--gray-300` |
-| disabled | `--gray-400` |
+| State    | Styles                                                                                    |
+| -------- | ----------------------------------------------------------------------------------------- |
+| default  | `color: var(--bg-secondary-neutral);`, `border: 1px solid var(--border-secondary);`       |
+| hover    | `color: var(--bg-secondary-neutral-hover);`, `border: 1px solid var(--border-secondary);` |
+| active   | `color: var(--bg-primary-muted);`                                                         |
+| disabled | `opacity: var(--disabled-opacity);`                                                       |
 
 @## Animation
 

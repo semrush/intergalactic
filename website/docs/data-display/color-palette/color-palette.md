@@ -21,12 +21,12 @@ You can find all tokens for charts in the [tokens list](/style/design-tokens/#se
 
 @## Tokens for text and additional information
 
-| Token                               | Usage                                                       |
-| ----------------------------------- | ----------------------------------------------------------- |
-| `--intergalactic-text-primary`      | Basic text information                                      |
-| `--intergalactic-text-secondary`    | Additional text information                                 |
-| `--intergalactic-chart-grid-line`   | The X-axis and the accent lines on the grid when, if needed |
-| `--intergalactic-chart-grid-x-axis` | Additional guide lines                                      |
+| Token                 | Usage                                                       |
+| --------------------- | ----------------------------------------------------------- |
+| `--text-primary`      | Basic text information                                      |
+| `--text-secondary`    | Additional text information                                 |
+| `--chart-grid-line`   | The X-axis and the accent lines on the grid when, if needed |
+| `--chart-grid-x-axis` | Additional guide lines                                      |
 
 @## Colors usage
 
@@ -50,7 +50,7 @@ This way helps to choose colors with a predefined order and contrast for your da
 
 #### Other data
 
-Use `--intergalactic-chart-palette-order-other-data` token to indicate voids, missing or some other data.
+Use `--chart-palette-order-other-data` token to indicate voids, missing or some other data.
 
 @import color-group {"group": "otherData"}
 
