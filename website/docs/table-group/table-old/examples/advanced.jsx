@@ -156,7 +156,7 @@ class Demo extends React.Component {
               style={{ maxWidth: '60px' }}
             >
               <Tooltip title="Jesus Christ, Joe, fucking forget about it. I'm Mr. Pink. Let's move on.">
-                <span>Sometext</span>
+                <span>Sometext Sometext</span>
               </Tooltip>
             </Table.CellHead>
             <Table.CellHead
@@ -164,7 +164,7 @@ class Demo extends React.Component {
               active={active === 'vol'}
               onClick={this.handleHeadClick('vol')}
               onKeyDown={this.handleHeadKeyDown('vol')}
-              style={{ minWidth: '300px' }}
+              style={{ minWidth: '270px' }}
             >
               <Tooltip title="Jesus Christ, Joe, fucking forget about it. I'm Mr. Pink. Let's move on.">
                 <span>Vol.</span>
