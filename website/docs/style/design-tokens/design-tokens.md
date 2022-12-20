@@ -17,7 +17,7 @@ Intergalactic design system has:
 
 @## Base tokens (palette)
 
-A list of base tokens is our palette. It was built with [Huetone tool](https://huetone.ardov.me/) (you can learn more about the tool in the [Twitter thread](https://twitter.com/ardovalexey/status/1447329411678806023)).
+The list of base tokens is our palette. It was built with [Huetone tool](https://huetone.ardov.me/) (you can learn more about the tool in the [Twitter thread](https://twitter.com/ardovalexey/status/1447329411678806023)).
 
 Shades of the same color have a value ranging from 50 to 800, depending on its tone. Each shade has recommendations for use based on [Huetone's contrast ratio calculation](https://huetone.ardov.me/).
 
@@ -36,6 +36,8 @@ Semantic tokens includes tokens for:
 - box-shadows;
 - border-radius;
 - charts.
+
+To learn more about the tokens names see [Token naming structure section](/style/design-tokens/design-tokens-usage/#token_naming_structure).
 
 @import design-tokens
 
