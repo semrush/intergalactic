@@ -239,6 +239,14 @@ SCellRow[interactive] {
   cursor: pointer;
 }
 
+SCellRow[borderRight] {
+  border-right: 1px solid var(--intergalactic-border-secondary, #e0e1e9);
+}
+
+SCellRow[borderLeft] {
+  border-left: 1px solid var(--intergalactic-border-secondary, #e0e1e9);
+}
+
 SCellRow {
   font-size: var(--intergalactic-fs-200, 14px);
   line-height: var(--intergalactic-lh-200, 142%);
