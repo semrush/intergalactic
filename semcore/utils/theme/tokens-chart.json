@@ -157,7 +157,7 @@
     "axis-label": {
       "value": {
         "fontFamily": "{base}",
-        "fontWeight": "{bold-700}",
+        "fontWeight": "{bold}",
         "fontSize": "{fs-100}"
       },
       "type": "typography"
@@ -165,7 +165,7 @@
     "axis-label-bold": {
       "value": {
         "fontFamily": "{base}",
-        "fontWeight": "{bold-700}",
+        "fontWeight": "{bold}",
         "fontSize": "{fs-100}"
       },
       "type": "typography"
