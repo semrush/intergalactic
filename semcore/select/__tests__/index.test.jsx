@@ -230,7 +230,7 @@ describe('Select Trigger', () => {
   });
 });
 
-describe('InputSearch', () => {
+describe('Option.Checkbox', () => {
   afterEach(cleanup);
 
   shouldSupportClassName(Select.Option.Checkbox, Select);
