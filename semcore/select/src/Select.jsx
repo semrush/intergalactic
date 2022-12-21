@@ -297,6 +297,7 @@ function Trigger({
         Children,
         Tag.Text || ButtonTrigger.Text,
         Tag.Addon || ButtonTrigger.Addon,
+        true,
       )}
       {name && <input type="hidden" defaultValue={value} name={name} ref={$hiddenRef} />}
     </Root>
