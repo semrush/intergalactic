@@ -114,6 +114,10 @@ export interface IDataTableColumnProps extends IFlexProps {
   flex?: Property.Flex | 'inherit';
   /** Add vertical borders */
   vBorders?: boolean;
+  /** Add vertical border to the right side */
+  borderRight?: boolean;
+  /** Add vertical border to the left side */
+  borderLeft?: boolean;
   /** Make cells less */
   compact?: boolean;
 }

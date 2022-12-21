@@ -33,7 +33,13 @@ export interface ICellProps extends ITextProps {
    * @default primary
    */
   use?: 'primary' | 'secondary' | false;
+  /** Add vertical border to the right of the cell
+   * @default false
+   */
   borderRight?: boolean;
+  /** Add vertical border to the left of the cell
+   * @default false
+   */
   borderLeft?: boolean;
 }
 
