@@ -9,7 +9,6 @@ import SpinContainer from '@semcore/spin-container';
 import Accordion from '@semcore/accordion';
 import { Box, Flex } from '@semcore/flex-box';
 import Spin from '@semcore/spin';
-import Link from '@semcore/link';
 import Tooltip from '@semcore/tooltip';
 import { Text } from '@semcore/typography';
 import DropdownMenu from '@semcore/dropdown-menu';
@@ -352,21 +351,15 @@ describe('DataTable', () => {
             <DataTable.Cell name="keyword">
               {(props, row) => {
                 return {
-                  children: <Link>{row[props.name]}</Link>,
+                  children: <>[{row[props.name]}]</>,
                 };
               }}
             </DataTable.Cell>
             <DataTable.Cell name="keyword">
-              {(props, row, index) => {
+              {() => {
                 return {
                   style: {
-                    cursor: 'pointer',
-                  },
-                  onClick: () => {
-                    alert(`Click row
-                  props: ${JSON.stringify(Object.keys(props), null, '  ')};
-                  row: ${JSON.stringify(row, null, '  ')};
-                  index: ${index};`);
+                    fontWeight: 'bold',
                   },
                 };
               }}

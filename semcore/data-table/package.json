@@ -29,7 +29,6 @@
     "@semcore/typography": "*",
     "@semcore/accordion": "*",
     "@semcore/divider": "*",
-    "@semcore/link": "*",
     "@semcore/portal": "*",
     "@semcore/progress-bar": "*",
     "@semcore/skeleton": "*",
