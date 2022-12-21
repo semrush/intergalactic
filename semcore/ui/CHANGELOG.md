@@ -1,3 +1,12 @@
+## [13.2.9] - 2022-12-22
+
+### @semcore/data-table
+
+- **Changed** Removed vertical borders from header cells.
+- **Changed** Added props `vBorders`, `borderLeft` and `borderRight` to have possibility to render vertical borders.
+- **Changed** Added prop `compact` to reduce table paddings.
+- **Changed** Added gradient to the sorting icon.
+
 ## [13.2.8] - 2022-12-21
 
 ### @semcore/base-trigger
