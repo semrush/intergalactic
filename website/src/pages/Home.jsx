@@ -20,6 +20,7 @@ import { navigationTree } from '@navigation';
 import staticFiles from '@static';
 import { usePageData } from '../components/routing';
 import Spin from '@semcore/spin';
+import WarningM from '@semcore/icon/Warning/m';
 import Error from '../components/Error';
 import styles from './Home.module.css';
 import { css } from '@semcore/core';
@@ -153,6 +154,7 @@ const getComponents = (titles) => {
           {child.elem.metadata.beta && (
             <Tag size="l" theme="primary" color="orange-500" children="beta" ml={1} />
           )}
+          {child.elem.metadata.deprecated && <WarningM className={styles.componentDeprecated} />}
         </Tooltip.Trigger>
         {pic && <Tooltip.Popper children={pic} />}
       </Tooltip>
@@ -234,9 +236,12 @@ const tableDataContext = React.createContext({});
 const Table = ({ titles }) => {
   const items = navigationTree.filter((nav) => !nav.metadata.hide && titles.includes(nav.title));
   const getDocs = items[0].children.map((item) => (
-    <Link to={item.route} key={item.route}>
-      {item.title}
-    </Link>
+    <Flex alignItems="center">
+      <Link to={item.route} key={item.route}>
+        {item.title}
+      </Link>
+      {item.metadata.deprecated && <WarningM className={styles.componentDeprecated} />}
+    </Flex>
   ));
 
   const { tableControls, tableStates } = React.useContext(tableDataContext);

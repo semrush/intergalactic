@@ -3,7 +3,8 @@ import { useParams, Link } from 'react-router-dom';
 import IF from '@semcore/utils/lib/if';
 import { Text } from '@semcore/typography';
 import ChevronRightXS from '@semcore/icon/ChevronRight/m';
-import WarningM from '@semcore/ui/icon/Warning/m';
+import WarningM from '@semcore/icon/Warning/m';
+import Tooltip from '@semcore/tooltip';
 import cx from 'classnames';
 import styles from './SideBarNavigation.module.css';
 
@@ -25,7 +26,7 @@ const SideBarNavigation = ({ navigation = [], onNavigate, className }) => {
         return (
           <React.Fragment key={i}>
             <div
-              className={styles.categoryTitle}
+              className={cx(styles.categoryContainer, styles.categoryTitle)}
               key={`category-${i}`}
               tabIndex={0}
               onClick={() => handleClick(currentCategory)}
@@ -35,17 +36,22 @@ const SideBarNavigation = ({ navigation = [], onNavigate, className }) => {
                 }
               }}
             >
-              <ChevronRightXS
-                mr={2}
-                color="#898D9A"
-                style={{
-                  transform: `rotate(${isOpen ? 90 : 0}deg)`,
-                  transition: 'transform 0.25s ease-in-out',
-                }}
-              />
-              <Text fontSize={'16px'} lineHeight={'150%'}>
+              <Text fontSize="16px" lineHeight="150%">
+                <ChevronRightXS
+                  mr={2}
+                  color="#898D9A"
+                  style={{
+                    transform: `rotate(${isOpen ? 90 : 0}deg)`,
+                    transition: 'transform 0.25s ease-in-out',
+                  }}
+                />
                 {currentCategory.title}
               </Text>
+              {!!currentCategory.metadata.deprecated && (
+                <Tooltip title="Deprecated group">
+                  <WarningM className={styles.categoryIcon} />
+                </Tooltip>
+              )}
             </div>
             <IF condition={isOpen} key={`if-${i}`}>
               {currentCategory.children.map((p, i) => {
@@ -68,7 +74,11 @@ const SideBarNavigation = ({ navigation = [], onNavigate, className }) => {
                       aria-disabled={!!p.metadata.disabled}
                       dangerouslySetInnerHTML={{ __html: p.title }}
                     />
-                    {!!p.metadata.deprecated && <WarningM className={styles.categoryIcon} />}
+                    {!!p.metadata.deprecated && (
+                      <Tooltip title="Deprecated component">
+                        <WarningM className={styles.categoryIcon} />
+                      </Tooltip>
+                    )}
                   </div>
                 );
               })}

@@ -13,6 +13,11 @@
   display: grid;
 }
 
+.componentDeprecated {
+  color: #8a8e9b;
+  margin-left: 8px;
+}
+
 .tabs > div:last-child {
   background-color: #ff622d;
 }
