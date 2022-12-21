@@ -105,6 +105,7 @@ const PageView = ({ route, page }) => {
               version={rootRoute.metadata?.packageJson?.version}
               sourcePath={page.sourcePath}
               changelogUrl={changelogRoute?.route}
+              deprecated={!!rootRoute.metadata?.deprecated}
             />
             <Docs tokens={page.tokens} tabs={tabs} route={page.route} />
           </div>
