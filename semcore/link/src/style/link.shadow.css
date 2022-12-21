@@ -29,10 +29,6 @@ SLink {
   }
 }
 
-SLink > * {
-  vertical-align: middle;
-}
-
 SLink {
   &[active],
   &:hover,
@@ -75,6 +71,7 @@ SAddon {
   justify-content: center;
   align-items: center;
   margin-bottom: var(--intergalactic-spacing-05x, 2px);
+  vertical-align: middle;
 }
 
 SLink SAddon {
@@ -104,6 +101,7 @@ SLink[color] {
   SLink {
     transition: none;
   }
+
   SText {
     transition: none;
   }
