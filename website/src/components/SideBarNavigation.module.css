@@ -1,7 +1,7 @@
 .navigationView {
-  padding: 32px;
+  padding: 24px;
   box-sizing: border-box;
-  width: 260px;
+  width: 250px;
   height: 100%;
   overflow: auto;
 }
@@ -23,7 +23,17 @@
 .categoryTitle:hover > * {
   color: #ff622d;
 }
+.categoryContainer {
+  white-space: nowrap;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
 
+.categoryIcon {
+  color: #8a8e9b;
+  margin-top: 5px;
+}
 .categoryItem {
   padding: 2px 0 2px 24px;
   font-size: 16px;
@@ -31,13 +41,16 @@
   color: #171a22;
   cursor: pointer;
   text-decoration: none;
-  display: block;
+  display: inline-block;
+  white-space: break-spaces;
   transition: color 0.5s;
 }
-.categoryItem:hover {
+.categoryContainer:hover .categoryItem,
+.categoryContainer:hover .categoryIcon {
   color: #ff622d;
 }
-.categoryItemActive {
+.categoryItemActive .categoryItem,
+.categoryItemActive .categoryIcon {
   color: #ff622d;
 }
 
