@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.3.6] - 2022-12-21
+
+### Fixed
+
+- Fixed vertical align for use as a text link.
+
 ## [4.3.5] - 2022-12-19
 
 ### Changed

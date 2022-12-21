@@ -30,7 +30,7 @@ SFormatText {
       text-decoration: none;
     }
 
-    &:hover {
+    &:not([data-ui-name='Link']):hover {
       color: var(--intergalactic-text-link-hover-active, #044792);
       border-color: var(--intergalactic-text-link-hover-active, #044792);
     }
