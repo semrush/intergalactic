@@ -10,7 +10,7 @@
   "license": "MIT",
   "scripts": {
     "build": "pnpm semcore-builder --source=js",
-    "test": "jest --no-cache"
+    "test": "jest"
   },
   "dependencies": {
     "@semcore/utils": "^3.40.0",
