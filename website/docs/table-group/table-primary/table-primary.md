@@ -12,7 +12,7 @@ The cell in the primary table, whether it is a header or a row, has 12px padding
 
 ![primary scheme](static/primary-paddings.png)
 
-Also header has a compact variant with 8px padding.
+But it can have a compact version with 8px padding on the left and right.
 
 ![compact scheme](static/primary-compact-paddings.png)
 

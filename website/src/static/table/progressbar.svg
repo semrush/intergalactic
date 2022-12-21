@@ -1,18 +1,23 @@
 <svg width="144" height="80" viewBox="0 0 144 80" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <rect width="144" height="80" fill="white"/>
-<path d="M0 0H144V28H0V0Z" fill="#F4F5F9"/>
+<mask id="path-1-inside-1_943_63117" fill="white">
+<path d="M0 0H144V28H0V0Z"/>
+</mask>
+<path d="M0 0H144V28H0V0Z" fill="white"/>
 <path d="M12.5284 10.4062V9.27273H19.2827V10.4062H16.5597V18H15.2472V10.4062H12.5284ZM20.7752 18V9.27273H22.092V13.0653H26.4428V9.27273H27.7638V18H26.4428V14.1946H22.092V18H20.7752Z" fill="#191B23"/>
-<path d="M46 9C46.5523 9 47 9.44772 47 10C47 10.5523 46.5523 11 46 11H36C35.4477 11 35 10.5523 35 10C35 9.44772 35.4477 9 36 9H46Z" fill="#A9ABB6"/>
-<path d="M43 14C43 13.4477 42.5523 13 42 13H36C35.4477 13 35 13.4477 35 14C35 14.5523 35.4477 15 36 15H42C42.5523 15 43 14.5523 43 14Z" fill="#A9ABB6"/>
-<path d="M39 18C39 17.4477 38.5523 17 38 17H36C35.4477 17 35 17.4477 35 18C35 18.5523 35.4477 19 36 19H38C38.5523 19 39 18.5523 39 18Z" fill="#A9ABB6"/>
-<path d="M144 27H0V29H144V27Z" fill="#E0E1E9"/>
+<path d="M144 27H0V29H144V27Z" fill="#E0E1E9" mask="url(#path-1-inside-1_943_63117)"/>
+<g clip-path="url(#clip0_943_63117)">
 <rect width="88" height="12" transform="translate(28 48)" fill="#E0E1E9"/>
 <rect x="28" y="48" width="44" height="12" rx="6" fill="#009F81"/>
 <rect x="28" y="48" width="44" height="12" rx="6" fill="url(#pattern0)" fill-opacity="0.1"/>
+</g>
 <defs>
 <pattern id="pattern0" patternContentUnits="objectBoundingBox" width="0.363636" height="1.33333">
 <use xlink:href="#image0_943_63117" transform="scale(0.0227273 0.0833333)"/>
 </pattern>
+<clipPath id="clip0_943_63117">
+<rect x="28" y="48" width="88" height="12" rx="6" fill="white"/>
+</clipPath>
 <image id="image0_943_63117" width="16" height="16" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAGVJREFUOBGd0kkKACEMBVH1/ne2qYUoTfIzuBAR65GFc9y179E8Tev2XLZiQIB2DLDYxDoTek+2AsIY1QNSsQekYwsoxX+gHL9AKwaIQt7IfxIBMmYABYQx43lAKvaAdGwBpRjgA6C8EBcVFPmqAAAAAElFTkSuQmCC"/>
 </defs>
 </svg>

@@ -56,7 +56,9 @@ The [Checkbox](/components/checkbox/) must have the entire cell in the table as 
 
 ### Rows highlighting and pagination
 
-When switching between pages of the table, do not reset checked checkboxes. _For example, on page 1, the user selected 3 lines, went to page 2, and selected 5 lines there. When the user returns to page 1, the selected rows should be saved._
+When switching between pages of the table, do not reset checked checkboxes.
+
+_For example, on page 1, the user selected 3 lines, went to page 2, and selected 5 lines there. When the user returns to page 1, the selected rows should be saved._
 
 ### Keyboard shortcuts for working with rows
 
@@ -147,8 +149,13 @@ If the table contains a small amount of data, we show the pagination for one pag
 
 @## Sorting
 
-- **If you can sort by column, it must have the `SortDesc`/`SortAsc` icon. By default, use `SortDesc`.**
-- If you can't sort data in the column, but you need to show which column it is sorted by (it is usually necessary in secondary tables), then add sorting icon while hovering with `--gray-400` color.
+- **If you can sort by column, it must have the `SortDesc`/`SortAsc` icon:**
+  - while hovering to inactive state;
+  - permanent to active.
+
+By default, use `SortDesc`.
+
+- If you can't sort data in the column, but you need to show which column it is sorted by (it is usually necessary in secondary tables), then add sorting icon in active state with `--gray-400` color.
 
 ### Click zone for sorting
 
@@ -173,16 +180,9 @@ If table has only one column with sorting, usually its sorting icon is unclickab
 
 - The sort icon should be displayed while hovering on columns that can be sorted. **The icon shows not the current state, but how the column will be sorted if sorting is activated.**
 - The default sorting must be set for each column to be sorted. Descending order is used by default (use `SortDesc` icon).
-- If sorting on a column is active, the icon has the `active` state and shows the corresponding sorting direction.
+- If sorting on a column is active, the icon has an `active` state and shows the corresponding sorting direction.
 - **When you select a different column**, the icon on the selected column becomes active. Icons on other columns do not change their direction.
 - When you reload data in a table where data was sorted in one of the columns, the header of the sorted column remains highlighted.
-
-**Optional.** If a column doesn't have enough space for a sort icon, but it's important to show the full name and keep the width of the table you can dynamically change the width of the columns.
-The active sorting column become larger and the other column smaller at the same time.
-
-![example sort by sep14 column](static/optional-example-sep.png)
-
-![example sort by volume column](static/optional-example-volume.png)
 
 > When you click on the sorting icon in the header, the table should be reloaded and always return the user to the top of the first row.
 
