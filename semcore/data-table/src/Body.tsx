@@ -64,6 +64,11 @@ class Body extends Component<AsProps, State> {
           </SGroupCell>,
         );
       } else {
+        const nameParts = cell.name.split('/');
+        const firstName = nameParts[0];
+        const lastName = nameParts[nameParts.length - 1];
+        const firstColumn = columns.find((c) => c.name === firstName);
+        const lastColumn = columns.find((c) => c.name === lastName);
         const column = columns.find((c) => c.name === cell.name);
         const [name, value] = getFixedStyle(cell, columns);
         const vars = (Array.isArray(cell.cssVar) ? cell.cssVar : [cell.cssVar]).map(
@@ -80,6 +85,8 @@ class Body extends Component<AsProps, State> {
           children: <>{cell.data}</>,
           justifyContent: column?.props?.justifyContent,
           alignItems: column?.props?.alignItems,
+          borderLeft: firstColumn?.borderLeft,
+          borderRight: lastColumn?.borderRight,
           style: {
             width: vars.length === 1 ? vars[0] : `calc(${vars.join(' + ')})`,
           },
@@ -102,6 +109,8 @@ class Body extends Component<AsProps, State> {
             fixed={cell.fixed}
             theme={props.theme}
             use={use}
+            borderLeft={props.borderLeft}
+            borderRight={props.borderRight}
           />,
         ) as React.ReactElement;
       }

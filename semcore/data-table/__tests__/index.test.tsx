@@ -181,7 +181,7 @@ describe('DataTable', () => {
         <DataTable data={data} sort={['kd, cpc', 'desc']} onSortChange={jest.fn()}>
           <DataTable.Head>
             <DataTable.Column name="keyword" children="Keyword" />
-            <DataTable.Column name="kd" children="KD,%" sortable />
+            <DataTable.Column name="kd" children="KD,%" sortable id="row" />
             <DataTable.Column name="cpc" children="CPC" sortable />
             <DataTable.Column name="vol" children="Vol." sortable />
           </DataTable.Head>
@@ -189,7 +189,14 @@ describe('DataTable', () => {
         </DataTable>
       </div>
     );
-    expect(await snapshot(component)).toMatchImageSnapshot();
+
+    expect(
+      await snapshot(component, {
+        actions: {
+          hover: '#row',
+        },
+      }),
+    ).toMatchImageSnapshot();
   });
 
   /** Currently has no difference from DataTable without Sticky */

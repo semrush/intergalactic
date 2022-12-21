@@ -46,7 +46,7 @@ If you can sort by column, then:
 
 1. Specify the `sortable` property on the column;
 2. Subscribe to `onSortChange`;
-3. Pass the so`rt property to the table itself.
+3. Pass the `sort` property to the table itself.
 
 > In the example below, when you click on the sort icon, only the visual part changes, and the data itself is not sorted.
 
@@ -187,6 +187,24 @@ You can use secondary table for compact displaying small amount of data inside w
 @## Export in image
 
 @example export-to-pdf
+
+@## Compact
+
+To make the table with smaller indents you need to add `compact` property.
+
+@example compact
+
+@## Borders
+
+To add a border to a column, you need to pass `vBorders` properties to that column.
+
+@example borders
+
+@## Сolumn expand
+
+The active column will expand if there is not enough space. Fixed width columns will not change size. If a column width limit is set using `wMax` prop, then the sort icon on hover will run over the text in the column header, and the non-fitting part of the text will not be visible.
+
+@example expanding-column
 
 @page data-table-api
 @page data-table-changelog
