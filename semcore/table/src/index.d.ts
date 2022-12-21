@@ -16,7 +16,7 @@ export interface ITableProps extends IBoxProps {
    * @default primary
    */
   use?: ITableCtx['use'];
-  /** Made cells less */
+  /** Make cells less */
   compact?: boolean;
 }
 

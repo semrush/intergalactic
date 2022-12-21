@@ -62,9 +62,9 @@ const StyledBody = styled(Table.Body)`
     content: '';
     display: ${({ loading }) => (loading ? 'block' : 'none')};
     position: absolute;
-    top: 85px;
+    top: 105px;
     width: 100%;
-    height: calc(100% - 85px);
+    height: calc(100% - 105px);
     background: rgba(255, 255, 255, 0.85);
   }
 `;
@@ -92,6 +92,7 @@ class Demo extends React.Component {
     clearTimeout(this._timer);
     this.setState({
       loading: true,
+      active: key,
     });
     this._timer = setTimeout(() => {
       const { active, order } = this.state;
@@ -100,7 +101,6 @@ class Demo extends React.Component {
       }
       this.setState({
         loading: false,
-        active: key,
         order,
       });
     }, 1000);
