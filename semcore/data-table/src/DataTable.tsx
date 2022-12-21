@@ -112,6 +112,14 @@ export interface IDataTableColumnProps extends IFlexProps {
   fixed?: 'left' | 'right';
   /** Fields to control the size of the column. */
   flex?: Property.Flex | 'inherit';
+  /** Add vertical borders */
+  vBorders?: boolean;
+  /** Add vertical border to the right side */
+  borderRight?: boolean;
+  /** Add vertical border to the left side */
+  borderLeft?: boolean;
+  /** Make cells less */
+  compact?: boolean;
 }
 
 export interface IDataTableBodyProps extends IBoxProps {
@@ -119,7 +127,7 @@ export interface IDataTableBodyProps extends IBoxProps {
   rows?: DataTableRow[];
   /** When enabled, only visually acessable rows are rendered.
    * `tollerance` property controls how many rows outside of viewport are render.
-   * `rowHeight` fixes the rows height if it known. If not provided, first row node height is measured.
+   * `rowHeight` fixes the rows height if it has known. If not provided, first row node height is measured.
    * @default { tollerance: 2 }
    */
   virtualScroll?: boolean | { tollerance?: number; rowHeight?: number };
@@ -143,6 +151,23 @@ export interface IDataTableCellProps extends IFlexProps {
   name: string;
   /** Theme for cell */
   theme?: DataTableTheme;
+}
+
+function setBorderGroupColumns(columns: Column[], side?: string) {
+  const firstColumn = columns[0];
+  const lastColumn = columns[columns.length - 1];
+  if (firstColumn && (!side || side === 'left')) {
+    firstColumn.borderLeft = true;
+    if (firstColumn.columns) {
+      setBorderGroupColumns(firstColumn.columns, 'left');
+    }
+  }
+  if (lastColumn && (!side || side === 'right')) {
+    lastColumn.borderRight = true;
+    if (lastColumn.columns) {
+      setBorderGroupColumns(lastColumn.columns, 'right');
+    }
+  }
 }
 
 class RootDefinitionTable extends Component<AsProps> {
@@ -222,13 +247,22 @@ class RootDefinitionTable extends Component<AsProps> {
         resizable,
         sortable,
         flex,
+        vBorders,
+        active,
         ...props
       } = child.props as Column['props'];
+      const lastColumnChildren = columnsChildren[columnsChildren.length - 1];
       const isGroup = !name;
       let columns: Column[] | undefined;
 
       if (isGroup) {
         columns = this.childrenToColumns(children, { fixed });
+        active = typeof active === 'boolean' ? active : columns.some((c) => c.active);
+
+        if (vBorders) {
+          setBorderGroupColumns(columns);
+        }
+
         name = flattenColumns(columns)
           .map(({ name }) => name)
           .join('/');
@@ -239,9 +273,9 @@ class RootDefinitionTable extends Component<AsProps> {
       }
 
       const column = this.columns.find((column) => column.name === name);
-
       const columnChildren = {
         get width() {
+          // @ts-ignore
           return this.props.ref.current?.getBoundingClientRect().width || 0;
         },
         name,
@@ -249,8 +283,10 @@ class RootDefinitionTable extends Component<AsProps> {
         setVar: flex !== 'inherit',
         fixed,
         resizable,
-        active: sort[0] === name,
+        active: typeof active === 'boolean' ? active : sort[0] === name,
         sortable,
+        borderLeft: lastColumnChildren?.borderRight === true ? false : vBorders,
+        borderRight: vBorders,
         sortDirection:
           sort[0] === name
             ? sort[1]
@@ -265,7 +301,7 @@ class RootDefinitionTable extends Component<AsProps> {
           children,
           ref: column?.props?.ref || React.createRef(),
         },
-      } as Column;
+      } as unknown as Column;
 
       if (columns) {
         columnChildren.columns = columns;
@@ -278,6 +314,7 @@ class RootDefinitionTable extends Component<AsProps> {
   getHeadProps(props: HeadAsProps) {
     const { use } = this.asProps;
     const columnsChildren = this.childrenToColumns(props.children);
+
     this.columns = flattenColumns(columnsChildren);
     return {
       $onSortClick: callAllEventHandlers(this.handlerSortClick, this.scrollToUp),
@@ -290,7 +327,6 @@ class RootDefinitionTable extends Component<AsProps> {
 
   getBodyProps(props: BodyAsProps) {
     const { data, use, uniqueKey } = this.asProps;
-
     const cellPropsLayers: { [columnName: string]: PropsLayer[] } = {};
     const rowPropsLayers: PropsLayer[] = [];
 

@@ -19,7 +19,9 @@ export default () => {
         <DataTable.Column name="kd">
           <DropdownMenu>
             <DropdownMenu.Trigger>
-              <LinkTrigger color="gray20">KD,%</LinkTrigger>
+              <LinkTrigger color="gray20" style={{ fontSize: '12px' }}>
+                KD,%
+              </LinkTrigger>
             </DropdownMenu.Trigger>
             <DropdownMenu.Menu>
               <DropdownMenu.Item>Options 1</DropdownMenu.Item>

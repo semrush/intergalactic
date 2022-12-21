@@ -92,6 +92,7 @@ class Demo extends React.Component {
     clearTimeout(this._timer);
     this.setState({
       loading: true,
+      active: key,
     });
     this._timer = setTimeout(() => {
       const { active, order } = this.state;
@@ -100,7 +101,6 @@ class Demo extends React.Component {
       }
       this.setState({
         loading: false,
-        active: key,
         order,
       });
     }, 1000);
@@ -123,6 +123,7 @@ class Demo extends React.Component {
               active={active === 'keyword'}
               onClick={this.handleHeadClick('keyword')}
               onKeyDown={this.handleHeadKeyDown('keyword')}
+              borderRight
             >
               <Tooltip title="Jesus Christ, Joe, fucking forget about it. I'm Mr. Pink. Let's move on.">
                 <span>
@@ -172,7 +173,7 @@ class Demo extends React.Component {
                   <Checkbox.Value />
                 </Checkbox>
               </Table.Cell>
-              <Table.Cell>
+              <Table.Cell borderRight>
                 <Link>{row.keyword}</Link>
               </Table.Cell>
               <Table.Cell align="right">{row.kd}</Table.Cell>
