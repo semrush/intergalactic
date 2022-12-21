@@ -1580,7 +1580,7 @@ importers:
       '@semcore/core': 1.13.10
       '@semcore/counter': 2.2.3
       '@semcore/d3-chart': 2.7.1
-      '@semcore/data-table': 3.6.3
+      '@semcore/data-table': 3.7.0
       '@semcore/date-picker': 3.6.2
       '@semcore/divider': 3.2.3
       '@semcore/dot': 4.2.3
