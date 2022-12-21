@@ -50,8 +50,8 @@ export default function (props) {
         {beta && <Tag size="m" theme="primary" color="orange-500" children="beta" />}
         {deprecated && (
           <Tooltip>
-            <Tooltip.Trigger tag={Flex}>
-              <WarningM className={styles.deprecatedIcon} />
+            <Tooltip.Trigger tag={Flex} alignItems="center">
+              |<WarningM className={styles.deprecatedIcon} />
             </Tooltip.Trigger>
             <Tooltip.Popper>Deprecated component</Tooltip.Popper>
           </Tooltip>
