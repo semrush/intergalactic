@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.4.2] - 2022-12-21
+
+### Fixed
+
+- Fixed the problem of not showing the placeholder when the body of the `BaseTrigger` is empty.
+
 ## [3.4.1] - 2022-12-19
 
 ### Changed
