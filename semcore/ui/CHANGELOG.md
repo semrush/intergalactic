@@ -1,3 +1,25 @@
+## [13.2.8] - 2022-12-21
+
+### @semcore/base-trigger
+
+- **Fixed** Fixed the problem of not showing the placeholder when the body of the `BaseTrigger` is empty.
+
+### @semcore/format-text
+
+- **Fixed** Fixed underline for links from the design system.
+
+### @semcore/link
+
+- **Fixed** Fixed vertical align for use as a text link.
+
+### @semcore/select
+
+- **Fixed** Fixed display of placeholder with empty value.
+
+### @semcore/tag
+
+- **Fixed** Fixed css syntax error.
+
 ## [13.2.7] - 2022-12-19
 
 ### Global
@@ -8,17 +30,17 @@
 
 - **Changed** Supported semi-async internationalization of text in a11y module.
 
-### @semcore/ui
+### @semcore/format-text
 
-- **Fixed** Normalized path to re-export `@semcore/illustration`.
+- **Fixed** Fixed syntax css.
 
 ### @semcore/illustration
 
 - **Changed** Added `react-dom` to peer dependencies.
 
-### @semcore/format-text
+### @semcore/ui
 
-- **Fixed** Fixed syntax css.
+- **Fixed** Normalized path to re-export `@semcore/illustration`.
 
 ### @semcore/utils
 
