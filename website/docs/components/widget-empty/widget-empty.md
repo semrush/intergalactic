@@ -20,7 +20,7 @@ Widget’s “empty” state usually includes the following:
 
 |                     | Description, styles                                                                        |
 | ------------------- | ------------------------------------------------------------------------------------------ |
-| Image in svg format | `margin-bottom: 12px; width: 100px; height: 72px;`                                         |
+| Image in svg format | `margin-bottom: 12px; width: 80px; height: 80px;`                                          |
 | Title               | Text with 16px size (`--fs-300; --lh-300;`), `--gray-500` color and `margin-bottom: 4px;`. |
 | Description         | Text with 14px size (`--fs-200; ----lh-200;`) and `--gray-500` color.                      |
 | Button (optional)   | Button with M size and `margin-top: 16px;`                                                 |
