@@ -31,7 +31,7 @@ Wizard has the following default styles.
 
 ### Sidebar styles
 
-```
+<!-- ```
 max-width: 220px;
 padding: 40px 8px;
 color: var(--white);
@@ -39,7 +39,7 @@ background-color: var(--violet-600);
 font-size: var(--fs-300);
 line-height: var(--lh-300);
 font-weight: 700;
-```
+``` -->
 
 ![wizard sidebar styles](static/steps-paddings-margins.png)
 
@@ -49,25 +49,25 @@ font-weight: 700;
 
 ### Stepper styles
 
-```
+<!-- ```
 padding: 8px 12px;
 color: var(--white);
 font-size: var(--fs-200);
 line-height: var(--lh-200);
 font-weight: 700;
-```
+``` -->
 
 ![wizard stepper styles](static/stepper-paddings-margins.png)
 
 For optional text, use the following styles:
 
-```
+<!-- ```
 margin-top: 4px;
 color: color-mod(var(--white) a(75%));
 font-size: var(--fs-100);
 line-height: var(--lh-100);
 font-weight: 400;
-```
+``` -->
 
 If a stepper has a substep, it has the following styles:
 
@@ -106,45 +106,45 @@ Center the Wizard relative to the user's viewport. And leave margins of 40px out
 
 ### Content area styles
 
-```
+<!-- ```
 padding: 40px;
 background-color: var(--white);
 color: var(--gray-800);
 font-size: var(--fs-200);
 line-height: var(--lh-200);
 font-weight: 400;
-```
+``` -->
 
 ![wizard content styles](static/wizard-paddings.png)
 
 ### Header styles
 
-```
+<!-- ```
 margin-bottom: 20px;
 color: var(--gray-800);
 font-size: var(--fs-500);
 line-height: var(--lh-500);
 font-weight: 700;
-```
+``` -->
 
 ![wizard header styles](static/header.png)
 
 #### Icon for closing window
 
-The icon has L size and `--gray-300` color.
+The icon has L size and use `--icon-secondary-neutral` token for color.
 
-On hover, the color of the icon changes to the next one in the palette — `--gray-400`.
+On hover, the color of the icon changes to the next one in the palette — `--icon-secondary-neutral-hover-active`.
 
 ![wizard close icon styles](static/close-paddings.png)
 
 ### Footer styles
 
-```
+<!-- ```
 margin-bottom: 20px;
 color: var(--gray-800);
 font-size: var(--fs-500);
 line-height: var(--lh-500);
-```
+``` -->
 
 For basic controls use L size.
 
@@ -156,9 +156,9 @@ There you can see default styles for stepper button.
 
 | State    | Appearance example                                                                                | Styles                                                                                                                                                               |
 | -------- | ------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| normal   | ![wizard stepper state](static/normal.png)                                                        | `background-color: var(--violet-600); border-radius: 6px;`                                                                                                           |
-| hover    | ![wizard stepper state](static/hover.png)                                                         | `background-color: var(--violet-700); cursor: pointer;`                                                                                                              |
-| active   | ![wizard stepper state](static/active.png)                                                        | `background-color: var(--violet-500);`                                                                                                                               |
+| normal   | ![wizard stepper state](static/normal.png)                                                        | `background-color: var(--control-primary-advertising);`, `border-radius: var(--rounded-medium);`                                                                     |
+| hover    | ![wizard stepper state](static/hover.png)                                                         | `background-color: var(--control-primary-advertising-hover);`, `cursor: pointer;`                                                                                    |
+| active   | ![wizard stepper state](static/active.png)                                                        | `background-color: var(--control-primary-advertising-active);`                                                                                                       |
 | disabled | ![wizard stepper state](static/disabled.png) ![wizard stepper state](static/disabled-tooltip.png) | Use [`--disabled-opacity`](/style/design-tokens/) token. When hovering on a button in this state, hang up a tooltip with a description of why this step is disabled. |
 | checked  | ![wizard stepper state](static/checked.png)                                                       | The number changes to a Check icon in size M.                                                                                                                        |
 

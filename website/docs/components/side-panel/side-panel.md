@@ -45,10 +45,10 @@ Use SidePanel when it is needed:
 
 @## Overlay
 
-|                 | Appearance example                     | Styles                                                                                                         | When to use                                                                             |
-| --------------- | -------------------------------------- | -------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
-| Without overlay | ![light-theme](static/light-theme.png) | In this case the panel has the shadow: `box-shadow: 0px 1px 12px var(--gray-800, 0.15);`. There is no overlay. | Use this version if you need to show additional information for a report/product/block. |
-| With overlay    | ![dark-theme](static/dark-theme.png)   | In this case panel has an overlay with styles: `var(--gray-800, 0.7);`. There is no shadow.                    | If you need to focus the user on information inside SidePanel, enable overlay.          |
+|                 | Appearance example                     | Styles                                                                                                            | When to use                                                                             |
+| --------------- | -------------------------------------- | ----------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
+| Without overlay | ![light-theme](static/light-theme.png) | In this case the panel has the shadow: `box-shadow: 0px 1px 12px var(--box-shadow-popper);`. There is no overlay. | Use this version if you need to show additional information for a report/product/block. |
+| With overlay    | ![dark-theme](static/dark-theme.png)   | In this case panel has an overlay with styles: `background-color: var(--overlay-primary);`. There is no shadow.   | If you need to focus the user on information inside SidePanel, enable overlay.          |
 
 @## Default sizes and indents
 
@@ -74,14 +74,14 @@ The padding between title and content:
 
 ### Header
 
-For panel's title use 16px text (`--fs-300; --lh-300`) with `font-weight: 700;`.
+For panel's title use 16px text (`--fs-300; --lh-300`) with `font-weight: var(--bold);`.
 
 > Pin header when scrolling large content inside the SidePanel.
 
-| Appearance example                    | Styles                                                                                              |
-| ------------------------------------- | --------------------------------------------------------------------------------------------------- |
-| ![header paddings](static/header.png) | `height: 52px; padding-bottom: 4px; align-items: center; border-bottom: 1px solid var(–-gray-200);` |
-| ![close icon](static/closeIcon.png)   | Close icon has L size and `--gray-300` color. Click zone of the icon is `48px * 48px`.              |
+| Appearance example                    | Styles                                                                                                                           |
+| ------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
+| ![header paddings](static/header.png) | `height: 52px;`, `padding-bottom: var(--spacing-1x);`, `align-items: center;`, `border-bottom: 1px solid var(–-border-primary);` |
+| ![close icon](static/closeIcon.png)   | `Close` icon has L size and use `--icon-secondary-neutral` token for color. Click zone of the icon is `48px * 48px`.             |
 
 ### Content
 
@@ -106,9 +106,9 @@ Footer styles:
 
 ```css
 height: 44px;
-padding: 8px 0;
+padding: var(--spacing-2x) 0;
 align-items: center;
-border-top: 1px solid var(–-gray-200);
+border-top: 1px solid var(–-border-primary);
 ```
 
 ![footer-height](static/footer.png)

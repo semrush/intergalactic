@@ -38,8 +38,8 @@ Default component sizes:
 
 Default component styles:
 
-- bar color — `--gray-100`
-- progress and knob color — `--blue-400`
+- bar color — `--progress-bar-bg`
+- progress and knob color — `--control-primary-info`
 
 ![default slider styles](static/default.png)
 
@@ -57,11 +57,11 @@ You can show values under the input.
 
 ### States
 
-| State        | Description                                                                                                                       | Appearance                                                              |
-| ------------ | --------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------- |
-| default      | Knob size is `20px * 20px`.                                                                                                       | ![default slider styles](static/default.png)                            |
-| hover        | The color of the bar changes to `--gray-200`. The slider knob changes color to `--blue-500`. Change the cursor to `pointer`.      | ![slider hover](static/bar-hover.png) ![slider hover](static/hover.png) |
-| active/focus | The slider knob is scaled to `30px * 30px`. By clicking on the bar anywhere, the slider is pulled up and gets the `active` state. | ![slider active](static/active.png)                                     |
+| State        | Description                                                                                                                                                 | Appearance                                                              |
+| ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------- |
+| default      | Knob size is `20px * 20px`.                                                                                                                                 | ![default slider styles](static/default.png)                            |
+| hover        | The color of the bar changes to `--progress-bar-bg-hover`. The slider knob changes color to `--control-primary-info-hover`. Change the cursor to `pointer`. | ![slider hover](static/bar-hover.png) ![slider hover](static/hover.png) |
+| active/focus | The slider knob scales to `30px * 30px`. By clicking on the bar anywhere, the slider is pulled up and gets the `active` state.                              | ![slider active](static/active.png)                                     |
 
 ### Linked input
 

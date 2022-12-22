@@ -19,7 +19,7 @@ tabName: Design
 
 ### Sizes and margins
 
-- TabLine.Item has `margin-right: 16px` (except for `last-child`).
+- TabLine.Item has `margin-right: var(--spacing-4x);` (except for `last-child`).
 - Margins of addons before and after the text is 8px.
 
 | Size (px) | Margins                    |
@@ -46,7 +46,7 @@ Addons inside TabLine.Item has the same margins as addons inside the [Button](/c
 
 @## Types
 
-Depending on the context you can use TabLine with or without border-bottom. The border has `--gray-200` color.
+Depending on the context you can use TabLine with or without border-bottom. The border use `--border-primary` token for color.
 
 ### Tabs with border
 
@@ -64,10 +64,10 @@ Use TabLine with border-bottom if you do not need to separate navigation from th
 
 | State           | Appearance                                           | Styles                                                                                                                                                                                                               |
 | --------------- | ---------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Normal          | ![normal state](static/normal-active.png)            | `color: var(--gray-800);`                                                                                                                                                                                            |
-| Hover           | ![hover state](static/hover.png)                     | `border-bottom: 2px solid var(--gray-200);`                                                                                                                                                                          |
-| Active          | ![active state](static/normal-active.png)            | `border-bottom: 2px solid var(--blue-400);`                                                                                                                                                                          |
-| Disabled        | ![disabled state](static/disabled.png)               | `opacity: .3;`                                                                                                                                                                                                       |
+| Normal          | ![normal state](static/normal-active.png)            | `color: var(--text-primary);`                                                                                                                                                                                        |
+| Hover           | ![hover state](static/hover.png)                     | `border-bottom: 2px solid var(--border-primary);`                                                                                                                                                                    |
+| Active          | ![active state](static/normal-active.png)            | `border-bottom: 2px solid var(--border-info-active);`                                                                                                                                                                |
+| Disabled        | ![disabled state](static/disabled.png)               | Use `--disabled-opacity` token.                                                                                                                                                                                      |
 | Initial loading | ![initial loading state](static/initial-loading.png) | When it is necessary to show that the data in the counter inside the TabLine.Item is being loaded for the first time, use [Skeleton](/components/skeleton/) with the size of the text's line-height.                 |
 | Loading         | ![loading state](static/loading.png)                 | When it is necessary to show that the data in the counter inside the TabLine.Item is being loaded, use [Spin](/components/spin/) with the smallest size (the sizes are the same as in [Button](/components/button)). |
 
