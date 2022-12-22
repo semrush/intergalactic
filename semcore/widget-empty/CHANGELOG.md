@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.8.2] - 2022-12-22
+
+### Fixed
+
+- Fixed image size
+
 ## [3.8.1] - 2022-12-19
 
 ### Changed

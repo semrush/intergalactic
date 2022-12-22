@@ -1,6 +1,6 @@
 import React from 'react';
 
-import '@semcore/email/core/var.css';
+import '@semcore/email/src/core/var.css';
 import cssVariableFile from '!!raw-loader!@semcore/email/core/var.css';
 
 const cssVariable = Object.fromEntries(
