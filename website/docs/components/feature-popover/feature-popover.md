@@ -75,10 +75,10 @@ There are two types of the FeaturePopover: basic and extended. **They differ in 
 
 The FeaturePopover theme is used on both light and dark backgrounds.
 
-| Element   | Styles                                                                            |
-| --------- | --------------------------------------------------------------------------------- |
-| Container | `box-shadow: 0 1px 12px 0 rgba(gray-800, .15);` `background-color: --yellow-100;` |
-| Spot      | `background-color: --yellow-100;`                                                 |
+| Element   | Tokens                                                                              |
+| --------- | ----------------------------------------------------------------------------------- |
+| Container | `--box-shadow-popper` for box-shadow, `--bg-primary-highlight` for background-color |
+| Spot      | `--bg-primary-highlight` for background-color                                       |
 
 @## Sizes and indents
 

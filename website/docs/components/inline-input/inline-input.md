@@ -32,14 +32,14 @@ InlineInput itself does not have a set sizes. You can set its height and font si
 align-items: center;
 vertical-align: middle;
 line-height: 1.1;
-padding: 0 4px;
-border-bottom: 1px solid var(--gray-200);
-background-color: white;
+padding: 0 var(--spacing-1x);
+border-bottom: 1px solid var(--border-primary);
+background-color: var(--bg-primary-neutral);
 ```
 
 ![placeholder](static/normal-placeholder.png)
 
-The color of the placeholder is the same as a regular input has - `--gray-300`.
+The color of the placeholder is the same as a regular input has - `--text-placeholder`.
 
 ### Paddings
 
@@ -52,13 +52,13 @@ Addons are slots inside the input to the left or right of the text for additiona
 ### Leading addon
 
 - In the left addon, you can only put a non-clickable icon/flag/avatar/etc.
-- Icon has `--gray-300` color, no hover, normal cursor.
+- Icon use `--icon-secondary-neutral` token for color, no hover, normal cursor.
 - **Notice the leading addon is underlined too**.
 
-|                                                               | Appearance example                               | Margins                                                | Icon size and color               |
-| ------------------------------------------------------------- | ------------------------------------------------ | ------------------------------------------------------ | --------------------------------- |
-| For components with text less than 24px (including that size) | ![leading addon](static/leading-addon-focus.png) | ![leading addon](static/leading-addon-margins.png)     | M size, `color: var(--gray-300);` |
-| For components with text larger than 24px                     | ![leading addon](static/leading-addon-big.png)   | ![leading addon](static/leading-addon-big-margins.png) | L size, `color: var(--gray-300);` |
+|                                                               | Appearance example                               | Margins                                                | Icon size and color                             |
+| ------------------------------------------------------------- | ------------------------------------------------ | ------------------------------------------------------ | ----------------------------------------------- |
+| For components with text less than 24px (including that size) | ![leading addon](static/leading-addon-focus.png) | ![leading addon](static/leading-addon-margins.png)     | M size, `color: var(--icon-secondary-neutral);` |
+| For components with text larger than 24px                     | ![leading addon](static/leading-addon-big.png)   | ![leading addon](static/leading-addon-big-margins.png) | L size, `color: var(--icon-secondary-neutral);` |
 
 ### Permanent placeholder
 
@@ -66,14 +66,14 @@ Through the addon, you can add a permanent placeholder.
 
 _It's needed so that the user understands what data he needs to enter. For example, tag name, project name, etc._
 
-| Appearance example                                         | Styles                                                                          |
-| ---------------------------------------------------------- | ------------------------------------------------------------------------------- |
-| ![permanent placeholder](static/permanent-placeholder.png) | The color of the placeholder is the same as a regular input has - `--gray-300`. |
+| Appearance example                                         | Styles                                                                                  |
+| ---------------------------------------------------------- | --------------------------------------------------------------------------------------- |
+| ![permanent placeholder](static/permanent-placeholder.png) | The color of the placeholder is the same as a regular input has - `--text-placeholder`. |
 
 ### Trailing addon
 
 Trailing addons are clickable icons to save input and cancel and return to view mode.
-The save icon is always `--green-300`, the cancel icon is `--gray-300`.
+The save icon is always has `--icon-secondary-success` token as color, the cancel icon — `--icon-secondary-neutral`.
 
 |                                                               | Appearance example                                       | Margins                              | Icon size |
 | ------------------------------------------------------------- | -------------------------------------------------------- | ------------------------------------ | --------- |
@@ -105,20 +105,20 @@ InlineInput can take on the same states as a [normal input](/components/input/),
 
 | State         | Appearance example                       | Styles                                                                                                                                             |
 | ------------- | ---------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Normal        | ![normal state](static/normal.png)       | `border-bottom: 1px solid var(--gray-200);`                                                                                                        |
-| Focus         | ![focus state](static/focus.png)         | `border-bottom: 1px solid var(--blue-400); box-shadow: 0px 0px 0px 3px rgba(0, 143, 248, 0.2);`                                                    |
-| Invalid       | ![invalid state](static/invalid.png)     | `border-bottom: 1px solid var(--red-200);`                                                                                                         |
-| Invalid focus | ![focus state](static/invalid-focus.png) | `border-bottom: 1px solid var(--red-400); box-shadow: 0px 0px 0px 3px rgba(255, 73, 83, 0.2);`                                                     |
-| Valid         | ![valid state](static/valid.png)         | `border-bottom: 1px solid var(--green-200);`                                                                                                       |
-| Valid focus   | ![focus state](static/valid-focus.png)   | `border-bottom: 1px solid var(--green-400); box-shadow: 0px 0px 0px 3px rgba(0, 159, 129, 0.2);`                                                   |
+| Normal        | ![normal state](static/normal.png)       | `border-bottom: 1px solid var(--border-primary);`                                                                                                  |
+| Focus         | ![focus state](static/focus.png)         | `border-bottom: 1px solid var(--border-info-active);`, `box-shadow: var(--keyboard-focus);`                                                        |
+| Invalid       | ![invalid state](static/invalid.png)     | `border-bottom: 1px solid var(--border-danger-active);`                                                                                            |
+| Invalid focus | ![focus state](static/invalid-focus.png) | `border-bottom: 1px solid var(--border-danger-active);`, `box-shadow: var(--keyboard-focus-invalid);`                                              |
+| Valid         | ![valid state](static/valid.png)         | `border-bottom: 1px solid var(--border-success-active);`                                                                                           |
+| Valid focus   | ![focus state](static/valid-focus.png)   | `border-bottom: 1px solid var(--border-success-active);`, `box-shadow: var(--keyboard-focus-valid);`                                               |
 | Loading       | ![loading state](static/loading.png)     | Spin with XS size. The cancel button gets the disabled state while the input is loading (use [`--disabled-opacity`](/style/design-tokens/) token). |
 
 @## Save и Cancel icon buttons
 
 On hover, the icons change color to the next one in the palette:
 
-- `--green-300` to `--green-400`;
-- `--gray-300` to `--gray-400`.
+- `--icon-secondary-success` to `--icon-secondary-success-hover-active`;
+- `--icon-secondary-neutral` to `--icon-secondary-neutral-hover-active`.
 
 ![tooltip](static/tooltip2.png)
 
