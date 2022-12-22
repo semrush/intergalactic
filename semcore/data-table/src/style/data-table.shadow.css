@@ -112,8 +112,10 @@ SColumn[sortIconFloat] SSortWrapper {
 }
 
 SColumn[resizable] {
+  border-right: 1px solid transparent;
+
   &:hover:after {
-    background: var(--intergalactic-table-th-primary-cell-hover, #e0e1e9);
+    border-right-color: var(--intergalactic-border-table-accent-border, #a9abb6);
   }
 
   &:after {
@@ -121,10 +123,11 @@ SColumn[resizable] {
     position: absolute;
     bottom: 0;
     right: -1px;
-    height: 100vh;
-    width: 1px;
+    height: 100%;
+    width: 5px;
     background: transparent;
     cursor: col-resize;
+    border-right: 1px solid transparent;
   }
 }
 
