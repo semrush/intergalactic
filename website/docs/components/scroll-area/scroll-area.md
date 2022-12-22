@@ -19,10 +19,10 @@ tabName: Design
 
 ### Styles
 
-| Element                 | Styles                           |
-| ----------------------- | -------------------------------- |
-| `ScrollArea.Bar`        | `background: transparent;`       |
-| `ScrollArea.Bar.Slider` | `background: rgba(0, 0, 0, .3);` |
+| Element                 | Styles                                      |
+| ----------------------- | ------------------------------------------- |
+| `ScrollArea.Bar`        | `background: transparent;`                  |
+| `ScrollArea.Bar.Slider` | `background: var(--scroll-bar-background);` |
 
 @## Interaction
 

@@ -34,13 +34,16 @@ You can add addons before and after the link text. Addons have 4px margin from t
 
 ### Default link
 
-| State         | Appearance                                        | Description                                                                                                                                                                                       | Cursor    |
-| ------------- | ------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------- |
-| normal        | ![normal](static/default.png)                     | Link has `--blue-500` color, without underline.                                                                                                                                                   | `pointer` |
-| active/hover  | ![hover](static/hover-active.png)                 | Link changes its color to `--blue-600`. A solid underline appears. If the link is used together with the icon, then the icon will change its color with the text — they have the same hover zone. | `pointer` |
-| disabled      | ![disabled](static/disabled.png)                  | The component changes its transparency from 100% to 30%. Use this state as a last resort and be sure to add tooltip with a message to the `disabled` link.                                        | `default` |
-| visited       | ![visited](static/default-visited.png)            | Link has `--purple-500` color. This state is an optional.                                                                                                                                         | `pointer` |
-| visited hover | ![visited-hover](static/hover-active-visited.png) | Link has `--purple-500` color with a solid underline. This state is optional.                                                                                                                     | `pointer` |
+| State         | Appearance                                        | Description                                                                                                                                                                                                     | Cursor    |
+| ------------- | ------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------- |
+| normal        | ![normal](static/default.png)                     | Link use `--text-link` token for color, without underline.                                                                                                                                                      | `pointer` |
+| active/hover  | ![hover](static/hover-active.png)                 | Link changes its color to `--text-link-hover-active`. A solid underline appears. If the link is used together with the icon, then the icon will change its color with the text — they have the same hover zone. | `pointer` |
+| disabled      | ![disabled](static/disabled.png)                  | The component changes its transparency from 100% to 30%. Use this state as a last resort and be sure to add tooltip with a message to the `disabled` link.                                                      | `default` |
+| visited       | ![visited](static/default-visited.png)            | Link use `--text-link-visited` token for color. This state is an optional.                                                                                                                                      | `pointer` |
+| visited hover | ![visited-hover](static/hover-active-visited.png) | Link use `--text-link-visited` token for color with a solid underline. This state is optional.                                                                                                                  | `pointer` |
+
+<!--
+Hided this section because it's for the dark theme.
 
 ### Link invert
 
@@ -50,7 +53,7 @@ You can add addons before and after the link text. Addons have 4px margin from t
 | active/hover  | ![hover](static/hover-active-invert.png)                 | Link changes its color to `--blue-300`. A solid underline appears. If the link is used together with the icon, then the icon changes its color with the text — they have the same hover zone. | `pointer` |
 | disabled      | ![hover](static/disabled-invert.png)                     | he component changes its transparency from 100% to 30%. Use this state as a last resort and be sure to add tooltip with a message to the `disabled` link.                                     | `pointer` |
 | visited       | ![visited](static/default-invert-visited.png)            | Link has `--purple-500` color. This state is an optional.                                                                                                                                     | `pointer` |
-| visited hover | ![visited-hover](static/hover-active-invert-visited.png) | Link has `--purple-500` color with a solid underline. This state is optional.                                                                                                                 | `pointer` |
+| visited hover | ![visited-hover](static/hover-active-invert-visited.png) | Link has `--purple-500` color with a solid underline. This state is optional.                                                                                                                 | `pointer` | -->
 
 @## Links on a dark/colored background
 
@@ -130,7 +133,7 @@ If you want to place links in one line, the margin between them must be a multip
 @## Links in tables
 
 - If there is very little space in the interface, you can use a link instead of button in the table. If there is enough space in the table, use [tertiary buttons](/components/button/).
-- Use 14px links in table rows. If the link is an URL with a link to an external page, then be sure to put the `LinkExternal` icon with `M` size and `--gray-300` color next to it. It should always have `margin-left: 4px`.
+- Use 14px links in table rows. If the link is an URL with a link to an external page, then be sure to put the `LinkExternal` icon with `M` size and `--icon-secondary-neutral` color next to it. It should always have `margin-left: var(--spacing-1x);`.
 
 ![table-links](static/table-yes-no.png)
 
@@ -146,9 +149,9 @@ If you want to place links in one line, the margin between them must be a multip
 
 ### Styles
 
-- To indicate the transition to an external resource, use `LinkExternal` icon with `M` size and `--gray-300` color.
-- Icon should always have `margin-left: 4px`.
-- When hovering over the icon it shall change color to `--gray-400` (use the `interactive` property for the icon color).
+- To indicate the transition to an external resource, use `LinkExternal` icon with `M` size and `--icon-secondary-neutral` token as color.
+- Icon should always have `margin-left: var(--spacing-1x);`.
+- When hovering over the icon it shall change color to `--icon-secondary-neutral-hover-active`.
 - If for some reason you need to highlight the external resource icon, use link styles for it.
 
 @page link-a11y

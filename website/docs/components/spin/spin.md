@@ -33,7 +33,7 @@ We have six sizes of Spin.
 
 > For recommendations on Spin positioning and indents in blocks and on the page, see [SpinContainer](/components/spin-container/).
 
-You can place text, which tells user that data is being loaded, next to the spinner. Text should have `--gray-500` color, because it is a secondary message according to the whole visual hierarchy of the page.
+You can place text, which tells user that data is being loaded, next to the spinner. Text should use `--text-secondary` token for color, because it is a secondary message according to the whole visual hierarchy of the page.
 
 **Text can be placed on the right or under the spinner**. Place the text to the right of the spinner in small components, blocks and widgets. If Spin with text is placed in a large component, around a block of components or inside large blocks and widgets, we recommended you to place the text below the spinner and use one of the four biggest Spin sizes.
 

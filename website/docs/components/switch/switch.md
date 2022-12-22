@@ -18,13 +18,13 @@ Use it in cases when boolean operation submits user's choice instantly, without 
 
 Our switch has three sizes: xl, l and m.
 
-You also can add a text label to switch input. The text of enabled option has `--gray-800` color, and the text of disabled option has `--gray-500` color.
+You also can add a text label to switch input. The text of enabled option use `--text-primary` token for color, and the text of disabled option has `--text-secondary` token for color.
 
-|     | Appearance and margins                     | Styles                                                                         |
-| --- | ------------------------------------------ | ------------------------------------------------------------------------------ |
-| XL  | ![xl switch](static/switch-on-text-xl.png) | `width: 44px; height: 24px; circle: 20px; font-size: 16px; font-padding: 8px;` |
-| L   | ![l switch](static/switch-on-text-l.png)   | `width: 36px; height: 20px; circle: 16px; font-size: 14px; font-padding: 8px;` |
-| M   | ![m switch](static/switch-on-text-m.png)   | `width: 20px; height: 12px; circle: 8px; font-size: 12px; font-padding: 8px;`  |
+|     | Appearance and margins                     | Styles                                                                                                                            |
+| --- | ------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------- |
+| XL  | ![xl switch](static/switch-on-text-xl.png) | `width: 44px;`, `height: 24px;`, circle size is 20px, `font-size: var(--fs-300);`, margin between the control and the text is 8px |
+| L   | ![l switch](static/switch-on-text-l.png)   | `width: 36px;`, `height: 20px;`, circle size is 16px, `font-size: var(--fs-200);`, margin between the control and the text is 8px |
+| M   | ![m switch](static/switch-on-text-m.png)   | `width: 20px;`, `height: 12px;`, circle size is 8px, `font-size: var(--fs-100);`, margin between the control and the text is 8px  |
 
 @## Themes
 
@@ -52,8 +52,8 @@ Switch has three possible states: off, on, and disabled. To change the state, us
 
 | State    | Appearance                                                                              | Styles                                                                                                 |
 | -------- | --------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------ |
-| off      | ![off switch](static/off.png)                                                           | `background:--gray-300`                                                                                |
-| on       | ![on switch](static/on-success.png) ![on switch](static/on-info.png)                    | `background:--green-400` или `background: --blue-400`                                                  |
+| off      | ![off switch](static/off.png)                                                           | `background: var(--control-switch-bg);`                                                                |
+| on       | ![on switch](static/on-success.png) ![on switch](static/on-info.png)                    | `background: var(--control-primary-success);` или `background: var(--control-primary-info);`           |
 | disabled | ![disabled switch](static/disabled.png) ![disabled switch](static/disabled-success.png) | Transparency of the component changes to 30%. Use [`--disabled-opacity`](/style/design-tokens/) token. |
 
 @## Use in UX/UI

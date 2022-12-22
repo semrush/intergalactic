@@ -55,24 +55,24 @@ We have several modal window types:
 
 ### Container
 
-| Styles                               | Example                                 |
-| ------------------------------------ | --------------------------------------- |
-| `border-radius: 12px; padding: 40px` | ![modal paddings](static/container.png) |
+| Styles                                                                 | Example                                 |
+| ---------------------------------------------------------------------- | --------------------------------------- |
+| `border-radius: var(--rounded-large);`, `padding: var(--spacing-10x);` | ![modal paddings](static/container.png) |
 
 ### Close button (optional)
 
-| Styles                                                                                 | Example                                                       |
-| -------------------------------------------------------------------------------------- | ------------------------------------------------------------- |
-| `Close` icon size **M**, has default color `--gray-300`, and hover color `--gray-400`. | ![modal close button hover](static/close-hover.png)           |
-| Indent from top and right to the `Close` icon is 12px.                                 | ![modal close button](static/close-button.png)                |
-| The cross clickable area is 48px \* 48px.                                              | ![modal close button hover zone](static/close-hover-zone.png) |
+| Styles                                                                                                                                                 | Example                                                       |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------- |
+| `Close` icon size **M**, use `--icon-secondary-neutral` token for default color, and `--icon-secondary-neutral-hover-active` for color in hover state. | ![modal close button hover](static/close-hover.png)           |
+| Paddings from top and right to the `Close` icon is 12px.                                                                                               | ![modal close button](static/close-button.png)                |
+| The cross clickable area is 48px \* 48px.                                                                                                              | ![modal close button hover zone](static/close-hover-zone.png) |
 
 ### Overlay
 
-| Styles                                                                                                          | Example                                     |
-| --------------------------------------------------------------------------------------------------------------- | ------------------------------------------- |
-| `opacity: 0.7; background: --gray-800;`                                                                         | ![modal overlay](static/modal-overlay.png)  |
-| Overlay style when opening a modal window inside another modal window – `opacity: 0.4; background: --gray-800;` | ![modal in  modal](static/second-modal.png) |
+| Tokens                                                                                        | Example                                     |
+| --------------------------------------------------------------------------------------------- | ------------------------------------------- |
+| `--overlay-primary`                                                                           | ![modal overlay](static/modal-overlay.png)  |
+| Overlay style when opening a modal window inside another modal window – `--overlay-secondary` | ![modal in  modal](static/second-modal.png) |
 
 > Use a modal window inside another modal window (Xzibit triggers 😁) only when necessary – if nothing at all fits. Look through an [amazing Manifesto](https://modalzmodalzmodalz.com/) against the ubiquitous use of modal windows. Meditate.
 

@@ -26,22 +26,22 @@ ProgressBar consists from (surprise!) `ProgressBar` and `ProgressBar.Value`.
 
 Our ProgressBar has three sizes.
 
-| Size | Appearance                               | Styles                              | Where to use                                                          |
-| ---- | ---------------------------------------- | ----------------------------------- | --------------------------------------------------------------------- |
-| L    | ![L sise progressbar](static/size-l.png) | `height: 12px; border-radius: 6px;` | Use in modal windows, on the start screen when launching the product. |
-| M    | ![M size progressbar](static/size-m.png) | `height: 8px; border-radius: 6px;`  | Use inside the product.                                               |
-| S    | ![S size progressbar](static/size-s.png) | `height: 4px; border-radius: 6px;`  | Use in widgets inside reports/products.                               |
+| Size | Appearance                               | Styles                                                   | Where to use                                                          |
+| ---- | ---------------------------------------- | -------------------------------------------------------- | --------------------------------------------------------------------- |
+| L    | ![L sise progressbar](static/size-l.png) | `height: 12px;`, `border-radius: var(--rounded-medium);` | Use in modal windows, on the start screen when launching the product. |
+| M    | ![M size progressbar](static/size-m.png) | `height: 8px;`, `border-radius: var(--rounded-medium);`  | Use inside the product.                                               |
+| S    | ![S size progressbar](static/size-s.png) | `height: 4px;`, `border-radius: var(--rounded-medium);`  | Use in widgets inside reports/products.                               |
 
 @## Themes and styles
 
 ProgressBar has two themes: `dark` and `invert` — for using on light and dark/colored backgrounds, respectively.
 
-Both themes use the color `--green-400` with a pattern to display progress value.
+Both themes use `--progress-bar-value` token for color with the gradient pattern to display progress value.
 
-| Theme  | Appearance                                            | Styles                          |
-| ------ | ----------------------------------------------------- | ------------------------------- |
-| invert | ![progressbar with invert theme](static/size-l.png)   | `background: rgba(gray-100);`   |
-| dark   | ![progressbar with dark theme](static/dark-theme.png) | `background: rgba(white, 0.2);` |
+| Theme  | Appearance                                            | Styles                                       |
+| ------ | ----------------------------------------------------- | -------------------------------------------- |
+| invert | ![progressbar with invert theme](static/size-l.png)   | `background: var(--progress-bar-bg);`        |
+| dark   | ![progressbar with dark theme](static/dark-theme.png) | `background: var(--progress-bar-bg-invert);` |
 
 @## Interaction
 
