@@ -33,10 +33,10 @@ As the documentation for [Microsoft Office](https://en.wikipedia.org/wiki/Micros
 
 > Make sure to add information on what the bubble size means.
 
-| Case      | Appearance example | Styles    |
-| --------- | ------------------ | --------- |
-| One dataset      | ![one dataset](static/positive-correlation-1.png) | The default color for the category is `--blue300` with 50% transparency. If necessary, you can select any other color from the chart palette. A bubble always has a 2px white stroke. The center of the bubble is marked with a cross in the same color as the circle itself. |
-| Several datasets | ![several datasets](static/positive-correlation-2.png) | Use colors from the chart palette. |
+| Case             | Appearance example                                     | Styles                                                                                                                                                                                                                                                                                                           |
+| ---------------- | ------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| One dataset      | ![one dataset](static/positive-correlation-1.png)      | The default color for the category is `--chart-palette-order-blue` (or `--blue-300`) with 50% transparency. If necessary, you can select any other color from the chart palette. A bubble always has a 2px white stroke. The center of the bubble is marked with a cross in the same color as the circle itself. |
+| Several datasets | ![several datasets](static/positive-correlation-2.png) | Use colors from the chart palette.                                                                                                                                                                                                                                                                               |
 
 ### Text labels for bubbles
 
