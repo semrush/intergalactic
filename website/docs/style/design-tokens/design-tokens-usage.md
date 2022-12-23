@@ -27,8 +27,7 @@ Semantic tokens includes tokens for:
 - sizing;
 - spacings;
 - box-shadows;
-- border-radius;
-- charts.
+- border-radius.
 
 @## Token naming structure
 

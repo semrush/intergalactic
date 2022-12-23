@@ -35,9 +35,9 @@ By default, we show a chart with straight lines. This view facilitates reading t
 
 It is recommended to display the dots on lines either when there are few of them (one or two), or when data collection is irregular.
 
-| Example                                  | Styles                                                                                                          |
-| ---------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
-| ![area chart with dots](static/dots.png) | Dot size is `8px * 8px`, `border: 2px solid var(--white)`. When hovering, the point increases to `12px * 12px`. |
+| Example                                  | Styles                                                                                                                      |
+| ---------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| ![area chart with dots](static/dots.png) | Dot size is `8px * 8px`, `border: 2px solid var(--chart-grid-border)`. When hovering, the point increases to `12px * 12px`. |
 
 @## Interaction
 
@@ -58,7 +58,7 @@ For this case enable the display of dots on the chart by default.
 ### Styles
 
 - **Point size is 8px \* 8px**. When hovering, the point increases to **12px \* 12px**.
-- The line has the `dashed` border style and `--gray-200` color.
+- The line has the `dashed` border style and `--chart-palette-order-other-data` color.
 
 @## Two values
 

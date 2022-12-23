@@ -34,13 +34,13 @@ By default, we show a chart with straight lines. This view facilitates reading t
 
 We recommend you to display the dots on lines either when there are few of them (one or two), or when data collection is irregular.
 
-| Example                                  | Styles                                                                                                          |
-| ---------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
-| ![area chart with dots](static/dots.png) | Dot size is `8px * 8px`, `border: 2px solid var(--white)`. When hovering, the point increases to `12px * 12px`. |
+| Example                                  | Styles                                                                                                                      |
+| ---------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| ![area chart with dots](static/dots.png) | Dot size is `8px * 8px`, `border: 2px solid var(--chart-grid-border)`. When hovering, the point increases to `12px * 12px`. |
 
 @## Interaction
 
-When user hovers over the chart area, show a vertical guide line at the nearest dot and a tooltip with detailed data for the dot appears next to it. The color of the vertical guide line is `--gray-300`.
+When user hovers over the chart area, show a vertical guide line at the nearest dot and a tooltip with detailed data for the dot appears next to it. The color of the vertical guide line is `--chart-grid-y-accent-hover-line`.
 
 > To see detailed information about tooltip for charts see [Chart principles](/data-display/chart/#ac9830) or [Line chart](/data-display/line-chart/).
 
@@ -57,7 +57,7 @@ For this case enable the display of dots on the chart by default.
 ### Styles
 
 - **Dot size is 8px \* 8px**. When hovering, the point increases to **12px \* 12px**.
-- The line has the `dashed` border style and `--gray-200` color.
+- The line has the `dashed` border style and `--chart-palette-order-other-data` color.
 
 @## Two values
 
