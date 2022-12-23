@@ -122,7 +122,7 @@ After applying the filter:
 
 @## Advanced filters in the accordion
 
-Container in accordion has styles: `border: 1px solid --gray-200;`.
+Container in accordion has styles: `border: 1px solid var(--border-primary);`.
 
 ### Opened filter
 
@@ -151,7 +151,7 @@ If you need to increase or decrease the margins between filters inside the form,
 
 ![filter paddings](static/margins.png)
 
-Always visually separate filter triggers from the filters themselves. For example, use `border: 1px solid var(--gray-200);`.
+Always visually separate filter triggers from the filters themselves. For example, use `border: 1px solid var(--border-primary);`.
 
 ![filter border](static/advanced-filters-dropdown2.png)
 
