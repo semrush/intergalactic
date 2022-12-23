@@ -422,10 +422,9 @@
 .sideBar {
   position: sticky;
   top: 80px;
-
   height: calc(100vh - 80px);
   background: #f5f5f5;
-  max-width: 260px;
+  max-width: 250px;
 }
 
 @media (max-width: 767px) {
