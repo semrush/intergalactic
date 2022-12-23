@@ -31,7 +31,7 @@ The informer consists of:
 
 | State  | Appearance example                             | Styles                                                                          |
 | ------ | ---------------------------------------------- | ------------------------------------------------------------------------------- |
-| normal | ![info icon](static/info.png)                  | `background-color: --var(--gray-300);`                                          |
+| normal | ![info icon](static/info.png)                  | `background-color: var(--icon-secondary-neutral);`                              |
 | hover  | ![info icon with hover](static/info-hover.png) | The icon color doesn't change on hover. Only cursor changes to `cursor: help;`. |
 
 @## Click zone
