@@ -42,8 +42,8 @@ module.exports = {
           {
             loader: 'babel-loader',
             options: {
-              babelrc: false, // is u use .babelrc
-              configFile: false, // if u use babel.config.js, doesnt affect babelrc option https://babeljs.io/docs/en/options#configfile
+              babelrc: false, // if you use .babelrc
+              configFile: false, // if you use babel.config.js, doesn't affect babelrc option https://babeljs.io/docs/en/options#configfile
               plugins: ['@semcore/babel-plugin-react-semcore'],
             },
           },
