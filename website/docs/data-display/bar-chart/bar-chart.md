@@ -66,7 +66,7 @@ When you hover over any part of the column, the tooltip shall display all values
 
 @## Interaction
 
-When you hover over a column, we highlight it with `--gray-200` color with .3 opacity. The hover takes up half of the margin column on the right and left sides.
+When you hover over a column, we highlight it with `--chart-grid-bar-chart-hover`. The hover takes up half of the margin column on the right and left sides.
 
 If the column is clickable, the cursor changes to `pointer`.
 
@@ -127,7 +127,7 @@ Sometimes the chart displays overall picture, and detailed data can be viewed wh
 
 In this case, clicking on the column opens the corresponding report. The column must have the `hover` state. You can add the `Click to view details` text to the chart tooltip for clarity.
 
-When hovering over, the column/columns are highlighted with `--gray-200` color with .3 opacity.
+When hovering over, the column/columns are highlighted with `--chart-grid-bar-chart-hover`.
 
 | Vertical bar chart example                     | Horizontal bar chart example                   |
 | ---------------------------------------------- | ---------------------------------------------- |
@@ -137,7 +137,7 @@ When hovering over, the column/columns are highlighted with `--gray-200` color w
 
 In this case, clicking on the date/column opens the detailed and switches the period in the table to the corresponding date.
 
-When you hover over a clickable date, it changes background `--gray-200` color with .2 opacity. In active state clickable date changes text color to `--white` and background color to `--gray-400`.
+When you hover over a clickable date, it changes background `--chart-grid-period-bg`. In active state clickable date changes text color to `--text-invert` and background color to `--chart-x-axis-accent-period-active`.
 
 | Vertical bar chart example                       | Horizontal bar chart example                          |
 | ------------------------------------------------ | ----------------------------------------------------- |

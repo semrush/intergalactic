@@ -31,7 +31,7 @@ Use [chart palette](/data-display/chart-palette/) and follow the rules prescribe
 
 @## Interaction
 
-When you hover over a column, highlight it with `--gray-200` color with .3 opacity. The hover takes up half of the margin column on the right and left sides.
+When you hover over a column, highlight it with `--chart-grid-bar-chart-hover`. The hover takes up half of the margin column on the right and left sides.
 
 If the column is clickable, the cursor changes to `pointer`.
 

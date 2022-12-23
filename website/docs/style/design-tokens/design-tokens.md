@@ -34,8 +34,7 @@ Semantic tokens includes tokens for:
 - sizing;
 - spacings;
 - box-shadows;
-- border-radius;
-- charts.
+- border-radius.
 
 To learn more about the tokens names see [Token naming structure section](/style/design-tokens/design-tokens-usage/#token_naming_structure).
 
