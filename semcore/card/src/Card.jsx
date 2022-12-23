@@ -35,18 +35,19 @@ class CardRoot extends Component {
 
 function Title(props) {
   const { styles, hint } = props;
+  const SWrapper = 'div';
   const STitle = Root;
   const SIcon = InfoM;
   const STooltip = Tooltip;
   return sstyled(styles)(
-    <>
+    <SWrapper>
       <STitle render={Text} />
       {hint && (
         <STooltip title={hint}>
           <SIcon />
         </STooltip>
       )}
-    </>,
+    </SWrapper>,
   );
 }
 
