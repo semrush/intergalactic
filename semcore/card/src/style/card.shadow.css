@@ -12,6 +12,11 @@ SCard {
   font-family: var(--intergalactic-base, Inter), sans-serif;
 }
 
+SWrapper {
+  display: inline-flex;
+  align-items: center;
+}
+
 STitle {
   color: var(--intergalactic-text-primary, #191b23);
   font-size: var(--intergalactic-fs-300, 16px);
