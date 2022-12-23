@@ -1,7 +1,7 @@
 import React from 'react';
 
 import '@semcore/email/src/core/var.css';
-import baseCss from '!!raw-loader!@semcore/email/core/base.css';
+import './base.css';
 import Color from '@components/Color';
 import { bg_100_400, bg_100_300, bg_100_200, bg } from './utils';
 
@@ -20,7 +20,6 @@ const printColor = (name) => (shade) => {
 };
 export default () => (
   <>
-    <style>{baseCss}</style>
     {bg_100_300.map((name) => shades.map(printColor(name)))}
     {bg_100_400.map((name) => [...shades, '400'].map(printColor(name)))}
     {bg_100_200.map((name) => shades.slice(0, -1).map(printColor(name)))}
