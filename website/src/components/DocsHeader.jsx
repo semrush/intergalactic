@@ -43,15 +43,16 @@ export default function (props) {
         {category}
         {version && changelogUrl && (
           <>
-            {' '}
-            |<VersionLink to={`/${changelogUrl}/#${version}`} version={version} />
+            <Divider orientation="vertical" h={16} m={'4px 4px 0 8px'} />
+            <VersionLink to={`/${changelogUrl}/#${version}`} version={version} />
           </>
         )}
         {beta && <Tag size="m" theme="primary" color="orange-500" children="beta" />}
         {deprecated && (
           <Tooltip>
             <Tooltip.Trigger tag={Flex} alignItems="center">
-              |<WarningM className={styles.deprecatedIcon} />
+              <Divider orientation="vertical" ml={1} mr={1} />
+              <WarningM className={styles.deprecatedIcon} />
             </Tooltip.Trigger>
             <Tooltip.Popper>Deprecated component</Tooltip.Popper>
           </Tooltip>
