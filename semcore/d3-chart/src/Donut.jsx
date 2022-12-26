@@ -48,7 +48,7 @@ function animationHoverPie({ d, selector, duration, innerRadius, outerRadius }) 
     transition()
       .selection()
       .select(selector)
-      .transition()
+      .transition(transition)
       .duration(duration)
       .attrTween('d', function () {
         if (!d) return () => '';
