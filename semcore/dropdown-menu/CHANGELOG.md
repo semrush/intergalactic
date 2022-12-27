@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.6.2] - 2022-12-27
+
+### Added
+
+- Added `box-sizing` for correct offset display.
+
 ## [3.6.1] - 2022-12-19
 
 ### Changed
