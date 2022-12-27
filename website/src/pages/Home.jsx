@@ -26,15 +26,6 @@ import styles from './Home.module.css';
 import { css } from '@semcore/core';
 import cx from 'classnames';
 
-const stylesTooltip = css`
-  STooltip[theme] {
-    padding: 12px;
-    border: 1px solid #d1d4db;
-    box-shadow: 5px 8px 25px rgba(137, 141, 154, 0.2);
-    border-radius: 6px;
-  }
-`;
-
 const mappingTableToImg = {
   principles: {
     className: `${styles.initialPrinciples} ${styles.principles}`,
@@ -146,7 +137,7 @@ const getComponents = (titles) => {
     }
     const pic = getTooltip(child.elem.title);
     return (
-      <Tooltip styles={stylesTooltip} placement="left" w={'fit-content'} key={child.elem.title}>
+      <Tooltip placement="left" w={'fit-content'} key={child.elem.title}>
         <Tooltip.Trigger tag={Flex} alignItems="center" className={styles.component}>
           <Link className={styles.linkStyled} to={`/${child.elem.route}/`}>
             {child.elem.title}
