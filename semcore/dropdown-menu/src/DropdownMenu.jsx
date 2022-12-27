@@ -59,7 +59,11 @@ class DropdownMenuRoot extends Component {
         break;
       case ' ':
       case 'Enter':
-        if (this.highlightedItemRef.current) this.highlightedItemRef.current.click();
+        if (this.highlightedItemRef.current) {
+          this.highlightedItemRef.current.click();
+        } else {
+          this.handlers.visible(false);
+        }
         break;
     }
   };
