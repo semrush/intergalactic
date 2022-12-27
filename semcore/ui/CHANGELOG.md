@@ -1,3 +1,29 @@
+## [13.2.10] - 2022-12-27
+
+### @semcore/card
+
+- **Fixed** Hint tooltip is centered vertically.
+
+### @semcore/d3-chart
+
+- **Fixed** Fixed `Donut` chart rendering when hovering over a chart while it is loading.
+
+### @semcore/data-table
+
+- **Fixed** Fix style for `resizable`.
+
+### @semcore/dropdown-menu
+
+- **Added** Added `box-sizing` for correct offset display.
+
+### @semcore/icon
+
+- **Added** Added `Jewelry`, `Photo`, `Military`, `Restaurant`, `Music`, `Recreation`, `Events'`, `Cosmetics`, `Fashion`, `Printing`, `Science`, `Comics`, `Gambling`, `Architecture`, `Veterinary`, `Furniture`, `Adult`, `Religion`, `PublicSafety`, `Security`, `Fish`, `Law`, `Oil`, `Packaging`, `Logistic`, `Marine`, `PublicUtility`, `Craft`, `Sport`, `Car`, `Games`, `Language`, `Smoking`, `Farm`, `Food`, `Wine` icons.
+
+### @semcore/widget-empty
+
+- **Fixed** Fixed image size.
+
 ## [13.2.9] - 2022-12-22
 
 ### @semcore/data-table
