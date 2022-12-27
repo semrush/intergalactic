@@ -1565,54 +1565,54 @@ importers:
 
   semcore/ui:
     specifiers:
-      '@semcore/accordion': 4.2.3
+      '@semcore/accordion': 4.2.4
       '@semcore/animation': 1.8.5
       '@semcore/badge': 3.3.3
-      '@semcore/base-trigger': 3.4.2
-      '@semcore/breadcrumbs': 4.4.1
+      '@semcore/base-trigger': 3.4.3
+      '@semcore/breadcrumbs': 4.4.2
       '@semcore/breakpoints': 1.2.9
       '@semcore/button': 4.3.3
-      '@semcore/card': 4.2.3
-      '@semcore/carousel': 2.2.3
+      '@semcore/card': 4.2.5
+      '@semcore/carousel': 2.2.4
       '@semcore/checkbox': 6.3.3
-      '@semcore/color-picker': 1.4.1
+      '@semcore/color-picker': 1.4.2
       '@semcore/continuous-delivery': '*'
       '@semcore/core': 1.13.10
       '@semcore/counter': 2.2.3
-      '@semcore/d3-chart': 2.7.1
-      '@semcore/data-table': 3.7.0
-      '@semcore/date-picker': 3.6.2
+      '@semcore/d3-chart': 2.7.2
+      '@semcore/data-table': 3.7.2
+      '@semcore/date-picker': 3.6.3
       '@semcore/divider': 3.2.3
       '@semcore/dot': 4.2.3
-      '@semcore/drag-and-drop': 2.4.1
+      '@semcore/drag-and-drop': 2.4.3
       '@semcore/dropdown': 3.4.1
-      '@semcore/dropdown-menu': 3.6.1
+      '@semcore/dropdown-menu': 3.6.2
       '@semcore/ellipsis': 1.1.3
       '@semcore/email': 1.0.2
       '@semcore/errors': 3.7.2
-      '@semcore/feature-popover': 3.2.3
+      '@semcore/feature-popover': 3.2.4
       '@semcore/feedback-form': 5.3.3
       '@semcore/flags': 3.3.3
       '@semcore/flex-box': 4.7.3
       '@semcore/format-text': 3.2.4
-      '@semcore/fullscreen-modal': 2.2.3
+      '@semcore/fullscreen-modal': 2.2.4
       '@semcore/grid': 4.3.3
-      '@semcore/icon': 3.4.3
+      '@semcore/icon': 3.5.0
       '@semcore/illustration': 1.3.9
       '@semcore/inline-edit': 2.3.1
-      '@semcore/inline-input': 3.4.1
+      '@semcore/inline-input': 3.4.2
       '@semcore/input': 3.5.3
       '@semcore/input-mask': 4.4.3
       '@semcore/input-number': 4.3.1
       '@semcore/input-tags': 3.3.4
       '@semcore/link': 4.3.6
-      '@semcore/modal': 3.3.1
+      '@semcore/modal': 3.3.2
       '@semcore/neighbor-location': 3.1.9
-      '@semcore/notice': 4.4.1
-      '@semcore/notice-bubble': 4.5.1
-      '@semcore/notice-global': 1.4.1
+      '@semcore/notice': 4.4.2
+      '@semcore/notice-bubble': 4.5.2
+      '@semcore/notice-global': 1.4.2
       '@semcore/outside-click': 2.5.8
-      '@semcore/pagination': 3.5.2
+      '@semcore/pagination': 3.5.3
       '@semcore/pills': 4.4.3
       '@semcore/popper': 4.14.3
       '@semcore/portal': 2.5.2
@@ -1620,8 +1620,8 @@ importers:
       '@semcore/progress-bar': 3.3.4
       '@semcore/radio': 5.3.3
       '@semcore/scroll-area': 4.2.3
-      '@semcore/select': 3.4.3
-      '@semcore/side-panel': 2.2.3
+      '@semcore/select': 3.4.5
+      '@semcore/side-panel': 2.2.4
       '@semcore/skeleton': 4.4.3
       '@semcore/slider': 3.3.3
       '@semcore/spin': 4.2.3
@@ -1630,14 +1630,14 @@ importers:
       '@semcore/switch': 4.3.3
       '@semcore/tab-line': 3.2.3
       '@semcore/tab-panel': 3.3.3
-      '@semcore/tag': 4.4.2
+      '@semcore/tag': 4.4.3
       '@semcore/textarea': 4.3.3
-      '@semcore/time-picker': 3.4.3
+      '@semcore/time-picker': 3.4.5
       '@semcore/tooltip': 5.3.3
-      '@semcore/typography': 4.3.3
+      '@semcore/typography': 4.3.4
       '@semcore/utils': 3.44.1
-      '@semcore/widget-empty': 3.8.1
-      '@semcore/wizard': 1.2.3
+      '@semcore/widget-empty': 3.8.2
+      '@semcore/wizard': 1.2.4
       '@types/react': 18.0.21
       fast-glob: 3.2.11
       fs-extra: 9.0.1
@@ -21159,13 +21159,12 @@ packages:
       react-instantsearch-core: 6.35.0_npc63xaus6igy2ygmd3t37sxzu
     dev: false
 
-  /react-instantsearch-native/6.35.0_npc63xaus6igy2ygmd3t37sxzu:
+  /react-instantsearch-native/6.35.0_react@18.2.0:
     resolution:
       {
         integrity: sha512-ggJvseTvrC5EQAGmUiuckXIYlxZxDWgKHsDxoyw9g+ceOTSr1NwZbU3SmXWRhL/FF/DsqRyOCpKN8RShym7/LQ==,
       }
     peerDependencies:
-      algoliasearch: '>= 3.1 < 5'
       react: '>= 16.3.0 < 19'
       react-native: '>= 0.54.0'
     dependencies:
@@ -21184,7 +21183,7 @@ packages:
       '@babel/runtime': 7.19.0
       react-instantsearch-core: 6.35.0_npc63xaus6igy2ygmd3t37sxzu
       react-instantsearch-dom: 6.35.0_2jcwevs35ru34jgausncc4whxu
-      react-instantsearch-native: 6.35.0_npc63xaus6igy2ygmd3t37sxzu
+      react-instantsearch-native: 6.35.0_react@18.2.0
     transitivePeerDependencies:
       - algoliasearch
       - react
