@@ -10,6 +10,10 @@ SCloseIcon {
   flex-shrink: 0;
   margin-top: var(--intergalactic-spacing-05x, 2px);
   margin-left: var(--intergalactic-spacing-4x, 16px);
+
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 SNoticeGlobal[theme='neutral'] {
