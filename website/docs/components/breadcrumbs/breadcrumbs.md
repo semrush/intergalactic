@@ -8,38 +8,36 @@ tabName: Design
 
 @## Description
 
-**Breadcrumbs** is a component used to display the "user's path" on the site. It's used as an additional navigation element.
+**Breadcrumbs** is a component for displaying the "user's path" on the website. It's usually used as an additional navigation element.
 
 **Why breadcrumbs are useful**:
 
-- they unobtrusively tell the user which page they are on;
+- they unobtrusively show the users which page they are on;
 - they help you link to other pages on the site (useful for SEO);
-- they allow you to move between higher/lower nesting levels without clicking the Forward/Backward buttons in the browser.
+- they allow you to move between higher/lower nesting navigation levels without clicking the forward/backward buttons in the browser.
 
-> Breadcrumbs are not used on the main pages.
+Do not use breadcrumbs on the main pages.
 
-@## Appearance & styles
+@## Appearance
 
-Links inside this component are custom style links.
+Links inside this component have custom styles.
 
-![breadcrumbs style](static/breadcrumbs.png)
+> The last item in the breadcrumbs is always non-clickable.
 
 | Element             | Styles                                                                              |
 | ------------------- | ----------------------------------------------------------------------------------- |
 | Link                | `font-size: --fs-200;`, `color: --text-hint;` `cursor: pointer;`, no `line-height`. |
 | `ChevronRight` icon | `color: --icon-secondary-neutral;`, `cursor: default;`                              |
 
-> **Pay attention**. The last item in the breadcrumbs is always non-clickable.
-
 ### Margins
 
-The margins between the components inside the breadcrumbs: 8px.
+Margins between the links inside the breadcrumbs is 8px.
 
 ![breadcrumbs margins](static/margins.png)
 
-### Long links
+@## Long links truncation
 
-If the links in the breadcrumbs don't fit (the screen is too small or the text is too long), the last item is collapsed into three dots (ellipsis).
+If there is not enough place for the breadcrumbs (screen is too small or the text is too long), the last item is collapsed into `ellipsis`.
 
 ![breadcrumbs ellipsis](static/ellipsis.png)
 
@@ -55,12 +53,12 @@ If the links in the breadcrumbs don't fit (the screen is too small or the text i
 
 @## Use in UX/UI
 
-The recommended order of the levels in the breadcrumbs:
+The recommended order of the navigation levels in the breadcrumbs:
 
-- The first link is **Dashboard**, it leads to a shared screen with widgets for various tools.
-- The second link is the **tool's Projects and/or the tool's home page**.
-- The third link is the **Name of the project**.
-- The fourth link is the **Name of the tool**.
+1. The first link is **Dashboard**. It leads to the screen with widgets for various products.
+2. The second link is the **product's Projects and/or the product's home page**.
+3. The third link is the **Name of the project**.
+4. The fourth link is the **Name of the product**.
 
 @page breadcrumbs-a11y
 @page breadcrumbs-api
