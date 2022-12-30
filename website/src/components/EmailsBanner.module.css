@@ -6,7 +6,6 @@
   box-shadow: 5px 8px 25px rgba(137, 141, 154, 0.2);
   border-radius: 6px;
   background-color: #fff;
-  margin-bottom: 80px;
 }
 @media (max-width: 767px) {
   .emailsWrapper {
