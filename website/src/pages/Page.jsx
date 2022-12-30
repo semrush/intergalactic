@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useRef } from 'react';
 import styles from './Page.module.css';
 import Helmet from 'react-helmet';
 import { scroller } from 'react-scroll';
@@ -56,6 +56,8 @@ const PageView = ({ route, page }) => {
 
   const currentHeading = typeof window !== 'undefined' ? window.location.hash.substring(1) : '';
   const headingOptions = getHeadingOptions(page.headings);
+  const isHasHeadings = !!headingOptions.length;
+  const refHead = useRef(null);
 
   const rootRoute = routeDepth === 3 ? routeParents[route] : routes[route];
   const category = routeDepth === 3 ? routeParents[rootRoute.route] : routeParents[route];
@@ -72,7 +74,7 @@ const PageView = ({ route, page }) => {
       <Helmet>
         <title>{htmlTitle}</title>
       </Helmet>
-      {!!headingOptions.length && (
+      {isHasHeadings && (
         <Select
           className={styles.mobileSelect}
           options={headingOptions}
@@ -107,11 +109,11 @@ const PageView = ({ route, page }) => {
               changelogUrl={changelogRoute?.route}
               deprecated={!!rootRoute.metadata?.deprecated}
             />
-            <Docs tokens={page.tokens} tabs={tabs} route={page.route} />
+            <Docs tokens={page.tokens} tabs={tabs} route={page.route} refHead={refHead} />
           </div>
         </Col>
-        <Col md={0} span={2}>
-          <SideBarHeading headings={page.headings} />
+        <Col md={0} span={2} ref={isHasHeadings ? null : refHead}>
+          {isHasHeadings && <SideBarHeading headings={page.headings} />}
         </Col>
       </Row>
     </>

@@ -42,7 +42,7 @@ function useScrollHash(options = {}) {
   };
 }
 
-export const Docs = ({ route, tokens, tabs }) => {
+export const Docs = ({ route, tokens, tabs, refHead }) => {
   const match = useRouteMatch();
   const [contentModal, setContentModal] = useState(false);
   const contentRef = useRef(null);
@@ -108,7 +108,7 @@ export const Docs = ({ route, tokens, tabs }) => {
         </TabLine>
       )}
       <main className={styles.main} ref={contentRef} onClick={handleClick}>
-        <RenderMarkdown tokens={tokens} onRender={scrollCallback} />
+        <RenderMarkdown tokens={tokens} onRender={scrollCallback} refHead={refHead} />
       </main>
       <SideBar />
       <ImageFromModal content={contentModal} onClose={handleModalClose} />

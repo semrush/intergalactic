@@ -58,12 +58,12 @@ const tokenHandlers = {
 
     return <Component {...(props || {})} />;
   },
-  changelog: ({ blocks }) => {
-    return <Changelog blocks={blocks} />;
-  },
-  changelogByComponent: ({ blocks }) => {
-    return <ChangelogByComponent blocks={blocks} />;
-  },
+  // changelog: ({ blocks }) => {
+  //   return <Changelog blocks={blocks} />;
+  // },
+  // changelogByComponent: ({ blocks }) => {
+  //   return <ChangelogByComponent blocks={blocks} />;
+  // },
   email_html: ({ raw, compiled }) => {
     function resizeIframe() {
       const iframes = document.getElementsByTagName('iframe');
@@ -119,10 +119,20 @@ const tokenHandlers = {
   },
 };
 
-export const RenderMarkdown = ({ tokens, onRender }) => {
+export const RenderMarkdown = ({ tokens, onRender, refHead }) => {
   const tokensLoad = [];
   const content = tokens.map((token, index) => {
-    const Renderer = tokenHandlers[token.type];
+    let Renderer = tokenHandlers[token.type];
+    if (token.type === 'changelog') {
+      Renderer = ({ blocks }) => {
+        return <Changelog blocks={blocks} refHead={refHead} />;
+      };
+    }
+    if (token.type === 'changelogByComponent') {
+      Renderer = ({ blocks }) => {
+        return <ChangelogByComponent blocks={blocks} refHead={refHead} />;
+      };
+    }
     if (Renderer === undefined) {
       throw new Error(`Unknown @tag: ${token.type}`);
     }

@@ -128,6 +128,7 @@ const stringifyTokenPosition = (fullPath: string, token: MarkdownToken, metaHeig
 type ComponentChangelogBlock = {
   title: string;
   version: string;
+  selector: string;
   changes: { type: string; text: string }[];
 };
 const makeChangelog = (markdownAst: MarkdownRoot, fullPath: string, metaHeight: number) => {
@@ -140,9 +141,11 @@ const makeChangelog = (markdownAst: MarkdownRoot, fullPath: string, metaHeight: 
       const title = markdownTokenToHtml(token.children[0]);
       const matchVersion = title.match(mathVersionRegx);
       const version = (matchVersion && matchVersion[1]) ?? '';
+      const selector = `_${version.split('.').join('_')}`;
       currentBlock = {
         title,
         version,
+        selector,
         changes: [],
       };
       blocks.push(currentBlock);
@@ -173,6 +176,7 @@ const makeChangelog = (markdownAst: MarkdownRoot, fullPath: string, metaHeight: 
 type GlobalChangelogBlock = {
   title: string;
   version: string;
+  selector: string;
   components: {
     title: string;
     component: string;
@@ -197,9 +201,11 @@ const makeChangelogByComponent = (
       const title = markdownTokenToHtml(token.children[0]);
       const matchVersion = title.match(mathVersionRegx);
       const version = (matchVersion && matchVersion[1]) ?? '';
+      const selector = `_${version.split('.').join('_')}`;
       currentBlock = {
         title,
         version,
+        selector,
         components: [],
       };
       blocks.push(currentBlock);

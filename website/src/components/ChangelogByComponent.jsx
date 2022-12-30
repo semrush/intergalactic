@@ -1,51 +1,64 @@
 import React from 'react';
-import styles from './ChangelogByComponent.module.css';
-import Tag from '@semcore/tag';
 import { Link } from 'react-router-dom';
+import Tag from '@semcore/tag';
 import { Text } from '@semcore/typography';
+import Portal, { PortalProvider } from '@semcore/portal';
 import { getLabel } from './Changelog';
-import formatTextStyles from './FormatText.module.css';
 import HeadingLink from './HeadingLink.jsx';
+import SideBarChangelogHeading from './SideBarChangelogHeading';
 
-const ChangelogByComponent = ({ blocks }) => {
-  return blocks.map(({ title, version, components }) => (
-    <span key={title} className={formatTextStyles.formatText}>
-      <HeadingLink
-        level={2}
-        id={version}
-        style={{
-          fontSize: '18px',
-          lineHeight: '110%',
-          margin: '32px 0 16px 0',
-        }}
-      >
-        <Text bold>{title}</Text>
-      </HeadingLink>
-      {components.map(({ title, component, changes }) => (
-        <div key={component}>
-          <Text
-            tag="h3"
+import formatTextStyles from './FormatText.module.css';
+import styles from './ChangelogByComponent.module.css';
+
+const ChangelogByComponent = ({ blocks, refHead }) => {
+  return (
+    <>
+      {blocks.map(({ title, version, components }) => (
+        <span key={title} className={formatTextStyles.formatText}>
+          <HeadingLink
+            level={2}
+            id={version}
             style={{
-              fontSize: '16px',
-              lineHeight: '150%',
-              margin: '16px 0',
-              fontWeight: 700,
+              fontSize: '18px',
+              lineHeight: '110%',
+              margin: '32px 0 16px 0',
             }}
           >
-            <span className={styles.componentTitle}>{title}</span>
-            <small>({component})</small>
-          </Text>
-          <ul className={styles.list}>
-            {changes.map(({ type, text }) => (
-              <li className={styles.listItem} key={`${type}-${text}`}>
-                {getLabel(type)} <Text dangerouslySetInnerHTML={{ __html: text }} />
-              </li>
-            ))}
-          </ul>
-        </div>
+            <Text bold>{title}</Text>
+          </HeadingLink>
+          {components.map(({ title, component, changes }) => (
+            <div key={component}>
+              <Text
+                tag="h3"
+                style={{
+                  fontSize: '16px',
+                  lineHeight: '150%',
+                  margin: '16px 0',
+                  fontWeight: 700,
+                }}
+              >
+                <span className={styles.componentTitle}>{title}</span>
+                <small>({component})</small>
+              </Text>
+              <ul className={styles.list}>
+                {changes.map(({ type, text }) => (
+                  <li className={styles.listItem} key={`${type}-${text}`}>
+                    {getLabel(type)} <Text dangerouslySetInnerHTML={{ __html: text }} />
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </span>
       ))}
-    </span>
-  ));
+
+      <PortalProvider value={refHead}>
+        <Portal>
+          <SideBarChangelogHeading blocks={blocks} />
+        </Portal>
+      </PortalProvider>
+    </>
+  );
   let section;
   return {
     list: (props) => <ul className={styles.list} {...props} />,
