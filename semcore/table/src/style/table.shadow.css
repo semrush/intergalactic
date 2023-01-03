@@ -81,18 +81,19 @@ SCellHeadContent {
 }
 
 SCellHead[use='primary'] {
-  background-color: var(--intergalactic-table-th-primary-cell);
-  border-color: var(--intergalactic-border-primary);
+  background-color: var(--intergalactic-table-th-primary-cell, #f4f5f9);
+  border-color: var(--intergalactic-border-primary, #c4c7cf);
 }
 
 SCellHead[use='secondary'] {
   background-color: var(--intergalactic-bg-primary-neutral, #ffffff);
   border-width: 1px 0;
-  border-color: var(--gray-300);
+  border-color: var(--intergalactic-border-table-accent-border, #a9abb6);
 }
 
 SCellHead[sorting] {
   cursor: pointer;
+
   &[use='primary']:hover {
     background-color: var(--intergalactic-table-th-primary-cell-hover, #e0e1e9);
   }

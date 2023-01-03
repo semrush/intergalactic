@@ -20,7 +20,8 @@
     "jest-canvas-mock": "2.4.0",
     "jest-image-snapshot": "2.9.0",
     "react": "*",
-    "react-dom": "*"
+    "react-dom": "*",
+    "request": "2.88.2"
   },
   "devDependencies": {
     "@guidepup/guidepup": "0.13.1",

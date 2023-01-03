@@ -85,7 +85,7 @@ async function snapshot(Component, options) {
   /* Uncomment line below to debug snapshot in your browser */
   // fs.writeFileSync('./tmp.html', html);
   const { body } = await post({
-    url: process.env.SCREENSHOT_URL + `?r=1`,
+    url: process.env.SCREENSHOT_URL,
     encoding: null,
     form: {
       ...options,
