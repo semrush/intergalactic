@@ -1,11 +1,11 @@
 SChart {
   & :global(.recharts-label) {
     text-anchor: middle;
-    fill: var(--gray-500);
+    fill: var(--intergalactic-text-hint, #6c6e79);
   }
 
   & :global(.recharts-cartesian-axis-tick-value) {
-    fill: var(--gray-500);
+    fill: var(--intergalactic-chart-grid-text-label, #6c6e79);
     font-size: 12px;
     line-height: 1.1;
   }

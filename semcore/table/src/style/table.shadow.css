@@ -81,8 +81,8 @@ SCellHeadContent {
 }
 
 SCellHead[use='primary'] {
-  background-color: var(--gray-50);
-  border-color: var(--gray-100);
+  background-color: var(--intergalactic-table-th-primary-cell);
+  border-color: var(--intergalactic-border-primary);
 }
 
 SCellHead[use='secondary'] {

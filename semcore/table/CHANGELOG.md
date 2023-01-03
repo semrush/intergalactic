@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.3.2] - 2023-01-03
+
+### Fixed
+
+- Fixed css variable design tokens.
+
 ## [3.3.1] - 2022-12-27
 
 ### Changed
