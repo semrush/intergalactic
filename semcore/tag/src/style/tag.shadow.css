@@ -95,7 +95,7 @@ STag[theme='primary-invert'] {
 STag[theme='secondary-invert'],
 STag[theme='additional-invert'] {
   color: var(--intergalactic-text-primary-invert, #ffffff);
-  border-color: var(--intergalactic-border-secondary-invert);
+  border-color: var(--intergalactic-border-secondary-invert, rgba(255, 255, 255, 0.3));
 
   &[interactive]:hover,
   &[interactive]:active,

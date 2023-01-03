@@ -163,8 +163,6 @@
   "--intergalactic-table-th-primary-cell-hover": "#e0e1e9",
   "--intergalactic-table-th-primary-cell-active": "#e0e1e9",
   "--intergalactic-table-th-secondary-cell": "#ffffff",
-  "--intergalactic-table-th-secondary-cell-hover": "#e0e1e9",
-  "--intergalactic-table-th-secondary-cell-active": "#e0e1e9",
   "--intergalactic-table-th-gradient": "linear-gradient(to right, rgba(224, 225, 233, 0) 0%, rgba(224, 225, 233, 1) 100%)",
   "--intergalactic-table-td-cell": "#ffffff",
   "--intergalactic-table-td-cell-hover": "rgba(224, 225, 233, 0.5)",
