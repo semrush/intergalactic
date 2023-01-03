@@ -28,12 +28,13 @@ export default () => {
     .range([height - MARGIN, MARGIN])
     .domain([0, 15]);
 
-  const checkboxesList = ['stack1', 'stack2', 'stack3'];
-  const [displayedBars, setDisplayedBars] = React.useState({
-    stack1: true,
-    stack2: true,
-    stack3: true,
-  });
+  const barsList = Object.keys(data[0]).filter((name) => name !== 'category');
+  const [displayedBars, setDisplayedBars] = React.useState(
+    barsList.reduce((o, key) => ({ ...o, [key]: true }), {}),
+  );
+  const [opacityBars, setOpacityBars] = React.useState(
+    barsList.reduce((o, key) => ({ ...o, [key]: false }), {}),
+  );
   const displayedLinesList = React.useMemo(
     () =>
       Object.entries(displayedBars)
@@ -41,6 +42,22 @@ export default () => {
         .map(([stack]) => stack),
     [displayedBars],
   );
+
+  const handleMouseEnter = (e) => {
+    const opacity = { ...opacityBars };
+
+    Object.keys(opacity).forEach((key) => {
+      if (key !== e.target.innerText) {
+        opacity[key] = true;
+      }
+    });
+
+    setOpacityBars({ ...opacity });
+  };
+
+  const handleMouseLeave = () => {
+    setOpacityBars(barsList.reduce((o, key) => ({ ...o, [key]: false }), {}));
+  };
 
   return (
     <Card w={'550px'}>
@@ -77,14 +94,26 @@ export default () => {
           </Tooltip>
           <StackBar x="category">
             {displayedLinesList.map((stack) => (
-              <StackBar.Bar y={stack} key={stack} color={barColors[stack]} />
+              <StackBar.Bar
+                y={stack}
+                key={stack}
+                color={barColors[stack]}
+                transparent={opacityBars[stack]}
+              />
             ))}
           </StackBar>
         </Plot>
         <Flex flexWrap w={width}>
-          {checkboxesList.map((stack) => {
+          {barsList.map((stack) => {
             return (
-              <Checkbox key={stack} theme={barColors[stack]} mr={4} mb={2}>
+              <Checkbox
+                key={stack}
+                theme={barColors[stack]}
+                mr={4}
+                mb={2}
+                onMouseEnter={handleMouseEnter}
+                onMouseLeave={handleMouseLeave}
+              >
                 <Checkbox.Value
                   checked={displayedBars[stack]}
                   onChange={(checked) =>

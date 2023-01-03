@@ -27,3 +27,7 @@ SDot[active] {
 SDot[color] {
   fill: var(--color);
 }
+
+SDot[transparent] {
+  opacity: 0.3;
+}

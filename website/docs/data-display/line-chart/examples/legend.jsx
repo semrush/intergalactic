@@ -8,9 +8,9 @@ import { scaleLinear } from 'd3-scale';
 import Checkbox from '@semcore/ui/checkbox';
 
 const lineColors = {
-  stack1: resolveColor('blue-300'),
-  stack2: resolveColor('orange-400'),
-  stack3: resolveColor('green-200'),
+  line1: resolveColor('blue-300'),
+  line2: resolveColor('orange-400'),
+  line3: resolveColor('green-200'),
 };
 
 export default () => {
@@ -20,18 +20,19 @@ export default () => {
 
   const xScale = scaleLinear()
     .range([MARGIN, width - MARGIN])
-    .domain(minMax(data, 'time'));
+    .domain(minMax(data, 'x'));
 
   const yScale = scaleLinear()
     .range([height - MARGIN, MARGIN])
     .domain([0, 10]);
 
-  const checkboxesList = ['stack1', 'stack2', 'stack3'];
-  const [displayLines, setDisplayLines] = React.useState({
-    stack1: true,
-    stack2: true,
-    stack3: true,
-  });
+  const linesList = Object.keys(data[0]).filter((name) => name !== 'x');
+  const [displayLines, setDisplayLines] = React.useState(
+    linesList.reduce((o, key) => ({ ...o, [key]: true }), {}),
+  );
+  const [opacityLines, setOpacityLines] = React.useState(
+    linesList.reduce((o, key) => ({ ...o, [key]: false }), {}),
+  );
   const displayedLinesList = React.useMemo(
     () =>
       Object.entries(displayLines)
@@ -39,6 +40,22 @@ export default () => {
         .map(([line]) => line),
     [displayLines],
   );
+
+  const handleMouseEnter = (e) => {
+    const opacity = { ...opacityLines };
+
+    Object.keys(opacity).forEach((key) => {
+      if (key !== e.target.innerText) {
+        opacity[key] = true;
+      }
+    });
+
+    setOpacityLines({ ...opacity });
+  };
+
+  const handleMouseLeave = () => {
+    setOpacityLines(linesList.reduce((o, key) => ({ ...o, [key]: false }), {}));
+  };
 
   return (
     <Card w={'550px'}>
@@ -57,19 +74,19 @@ export default () => {
               })}
             </XAxis.Ticks>
           </XAxis>
-          <Tooltip tag={HoverLine} x="time" wMin={100}>
+          <Tooltip tag={HoverLine} x="x" wMin={100}>
             {({ xIndex }) => {
               return {
                 children: (
                   <>
                     <Tooltip.Title>data</Tooltip.Title>
-                    {displayedLinesList.map((stack) => {
+                    {displayedLinesList.map((line) => {
                       return (
-                        <Flex key={stack} justifyContent="space-between">
-                          <Tooltip.Dot mr={4} color={lineColors[stack]}>
-                            {data[xIndex][stack]}
+                        <Flex key={line} justifyContent="space-between">
+                          <Tooltip.Dot mr={4} color={lineColors[line]}>
+                            {data[xIndex][line]}
                           </Tooltip.Dot>
-                          <Text bold>{data[xIndex][stack]}</Text>
+                          <Text bold>{data[xIndex][line]}</Text>
                         </Flex>
                       );
                     })}
@@ -78,26 +95,41 @@ export default () => {
               };
             }}
           </Tooltip>
-          {displayedLinesList.map((stack) => (
-            <Line x="time" y={stack} key={stack} color={lineColors[stack]}>
-              <Line.Dots />
-            </Line>
-          ))}
+          {displayedLinesList.map((line) => {
+            return (
+              <Line
+                x="x"
+                y={line}
+                key={line}
+                color={lineColors[line]}
+                transparent={opacityLines[line]}
+              >
+                <Line.Dots display />
+              </Line>
+            );
+          })}
         </Plot>
         <Flex flexWrap w={width}>
-          {checkboxesList.map((stack) => {
+          {linesList.map((line) => {
             return (
-              <Checkbox key={stack} theme={lineColors[stack]} mr={4} mb={2}>
+              <Checkbox
+                key={line}
+                theme={lineColors[line]}
+                mr={4}
+                mb={2}
+                onMouseEnter={handleMouseEnter}
+                onMouseLeave={handleMouseLeave}
+              >
                 <Checkbox.Value
-                  checked={displayLines[stack]}
+                  checked={displayLines[line]}
                   onChange={(checked) =>
                     setDisplayLines((prevDisplayedLines) => ({
                       ...prevDisplayedLines,
-                      [stack]: checked,
+                      [line]: checked,
                     }))
                   }
                 />
-                <Checkbox.Text>{stack}</Checkbox.Text>
+                <Checkbox.Text>{line}</Checkbox.Text>
               </Checkbox>
             );
           })}
@@ -108,8 +140,8 @@ export default () => {
 };
 
 const data = [...Array(5).keys()].map((d, i) => ({
-  time: i,
-  stack1: Math.random() * 10,
-  stack2: Math.random() * 10,
-  stack3: Math.random() * 10,
+  x: i,
+  line1: Math.random() * 10,
+  line2: Math.random() * 10,
+  line3: Math.random() * 10,
 }));

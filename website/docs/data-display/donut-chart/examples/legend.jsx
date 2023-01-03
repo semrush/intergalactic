@@ -16,8 +16,13 @@ export default () => {
   const width = 250;
   const height = 250;
 
-  const checkboxesList = ['a', 'b', 'c'];
-  const [displayPie, setDisplayPie] = React.useState({ a: true, b: true, c: true });
+  const piesList = Object.keys(data);
+  const [opacityPie, setOpacityPie] = React.useState(
+    piesList.reduce((o, key) => ({ ...o, [key]: false }), {}),
+  );
+  const [displayPie, setDisplayPie] = React.useState(
+    piesList.reduce((o, key) => ({ ...o, [key]: true }), {}),
+  );
   const displayedPiesList = React.useMemo(
     () =>
       Object.entries(displayPie)
@@ -26,14 +31,36 @@ export default () => {
     [displayPie],
   );
 
+  const handleMouseEnter = (e) => {
+    const opacity = { ...opacityPie };
+
+    Object.keys(opacity).forEach((key) => {
+      if (key !== e.target.innerText) {
+        opacity[key] = true;
+      }
+    });
+
+    setOpacityPie({ ...opacity });
+  };
+
+  const handleMouseLeave = () => {
+    setOpacityPie(piesList.reduce((o, key) => ({ ...o, [key]: false }), {}));
+  };
+
   return (
     <Card w={'550px'}>
       <Card.Header pt={4}> Chart legend</Card.Header>
       <Card.Body tag={Flex} direction="column">
         <Plot width={width} height={height} data={data}>
           <Donut innerRadius={height / 2 - 50}>
-            {displayedPiesList.map((marker) => (
-              <Donut.Pie dataKey={marker} key={marker} name={marker} color={pieColors[marker]} />
+            {displayedPiesList.map((pie) => (
+              <Donut.Pie
+                dataKey={pie}
+                key={pie}
+                name={pie}
+                color={pieColors[pie]}
+                transparent={opacityPie[pie]}
+              />
             ))}
           </Donut>
           <Tooltip>
@@ -52,9 +79,16 @@ export default () => {
           </Tooltip>
         </Plot>
         <Flex flexWrap w={width}>
-          {checkboxesList.map((pie) => {
+          {piesList.map((pie) => {
             return (
-              <Checkbox key={pie} theme={pieColors[pie]} mr={4} mb={2}>
+              <Checkbox
+                key={pie}
+                theme={pieColors[pie]}
+                mr={4}
+                mb={2}
+                onMouseEnter={handleMouseEnter}
+                onMouseLeave={handleMouseLeave}
+              >
                 <Checkbox.Value
                   checked={displayPie[pie]}
                   onChange={(checked) =>

@@ -10,6 +10,10 @@ SPie[color] {
   fill: var(--color);
 }
 
+SPie[transparent] {
+  opacity: 0.3;
+}
+
 SEmptyData {
   fill: var(--gray-100);
 }

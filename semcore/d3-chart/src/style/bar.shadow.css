@@ -16,6 +16,10 @@ SBar[hide] {
   display: none;
 }
 
+SBar[transparent] {
+  opacity: 0.3;
+}
+
 SBackground {
   fill: var(--gray-200);
 }
