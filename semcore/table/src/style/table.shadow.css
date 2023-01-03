@@ -82,11 +82,11 @@ SCellHeadContent {
 
 SCellHead[use='primary'] {
   background-color: var(--intergalactic-table-th-primary-cell, #f4f5f9);
-  border-color: var(--intergalactic-border-primary, #c4c7cf);
+  border-color: var(--intergalactic-border-secondary, #e0e1e9);
 }
 
 SCellHead[use='secondary'] {
-  background-color: var(--intergalactic-bg-primary-neutral, #ffffff);
+  background-color: var(--intergalactic-table-td-cell, #ffffff);
   border-width: 1px 0;
   border-color: var(--intergalactic-border-table-accent-border, #a9abb6);
 }
@@ -164,7 +164,7 @@ SCellHeadIconDesc {
 
 SRow {
   transition: background-color 0.1s ease;
-  border-bottom: 1px solid var(--intergalactic-border-secondary, #e0e1e9);
+  border-bottom: 1px solid var(--intergalactic-border-table-accent-border, #a9abb6);
 
   &:last-child {
     & SCellRow {
