@@ -1,5 +1,6 @@
 SContainer,
 SContainerMiddle {
+  display: flex;
   overflow: hidden;
 }
 

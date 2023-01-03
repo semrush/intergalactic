@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [1.1.4] - 2023-01-03
+
+### Fixed
+
+- Remove react warning with non-html props.
+
 ## [1.1.3] - 2022-12-19
 
 ### Changed

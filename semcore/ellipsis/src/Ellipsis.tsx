@@ -1,7 +1,7 @@
 import React, { RefObject, useRef, useMemo, useState, useLayoutEffect } from 'react';
 import createComponent, { Component, sstyled } from '@semcore/core';
 import Tooltip from '@semcore/tooltip';
-import { Flex } from '@semcore/flex-box';
+import { Box } from '@semcore/flex-box';
 import { useResizeObserver } from './useResizeObserver';
 
 import style from './style/ellipsis.shadow.css';
@@ -37,7 +37,7 @@ class RootEllipsis extends Component<AsProps> {
 
   render() {
     const SEllipsis = this.Root;
-    const SContainer = Flex;
+    const SContainer = Tooltip;
     const { styles, Children, maxLine, tooltip, trim, containerRect, containerRef } = this.asProps;
     const text = reactToText(getOriginChildren(Children));
 
@@ -54,15 +54,15 @@ class RootEllipsis extends Component<AsProps> {
     }
     if (tooltip) {
       return sstyled(styles)(
-        <SContainer interaction="hover" title={text} tag={Tooltip}>
-          <SEllipsis use:maxLine={maxLine} render="div" tag="div">
+        <SContainer interaction="hover" title={text}>
+          <SEllipsis render={Box} maxLine={maxLine}>
             <Children />
           </SEllipsis>
         </SContainer>,
       );
     }
     return sstyled(styles)(
-      <SEllipsis use:maxLine={maxLine} render="div" tag="div">
+      <SEllipsis render={Box} maxLine={maxLine}>
         <Children />
       </SEllipsis>,
     );
@@ -71,7 +71,7 @@ class RootEllipsis extends Component<AsProps> {
 
 const EllipsisMiddle: React.FC<AsPropsMiddle> = (props) => {
   const { styles, text, tooltip, containerRect, containerRef } = props;
-  const resizeElement = useRef<RefObject<HTMLElement | null>>(null);
+  const resizeElement = useRef<HTMLElement | null>(null);
   const [dimension, setDimension] = useState<{ fontSize: string; symbolWidth: number }>({
     fontSize: '14',
     symbolWidth: 0,
@@ -88,6 +88,7 @@ const EllipsisMiddle: React.FC<AsPropsMiddle> = (props) => {
 
     setDimension({
       fontSize: window
+        // @ts-ignore
         .getComputedStyle(containerRef?.current ?? resizeElement.current, null)
         .getPropertyValue('font-size'),
       symbolWidth: rect.width,
@@ -96,7 +97,7 @@ const EllipsisMiddle: React.FC<AsPropsMiddle> = (props) => {
 
   const STail = 'span';
   const SBeginning = 'span';
-  const SContainerMiddle = Flex;
+  const SContainerMiddle = Box;
   const displayedSymbols = useMemo(
     () => Math.round(blockWidth / dimension.symbolWidth),
     [blockWidth, dimension.symbolWidth],
