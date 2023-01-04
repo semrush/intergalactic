@@ -36,6 +36,7 @@ function SideBarHeading({ headings }) {
             offset={-140}
             duration={200}
             delay={0}
+            spy={true}
           >
             {heading.html}
           </Link>

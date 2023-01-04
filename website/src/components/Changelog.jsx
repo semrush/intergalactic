@@ -1,9 +1,7 @@
 import React from 'react';
 import Tag from '@semcore/tag';
 import { Text } from '@semcore/typography';
-import Portal, { PortalProvider } from '@semcore/portal';
 import HeadingLink from './HeadingLink.jsx';
-import SideBarChangelogHeading from './SideBarChangelogHeading.jsx';
 
 import formatTextStyles from './FormatText.module.css';
 import styles from './Changelog.module.css';
@@ -42,41 +40,31 @@ export const getLabel = (type) => {
   }
 };
 
-const Changelog = ({ blocks, refHead }) => {
-  return (
-    <>
-      {blocks.map(({ title, changes, version }) => {
-        return (
-          <span key={title} className={formatTextStyles.formatText}>
-            <HeadingLink
-              level={2}
-              id={version}
-              style={{
-                fontSize: '18px',
-                lineHeight: '110%',
-                margin: '32px 0 16px 0',
-              }}
-            >
-              <Text bold>{title}</Text>
-            </HeadingLink>
-            <ul className={styles.list}>
-              {changes.map(({ type, text }) => (
-                <li className={styles.listItem} key={`${type}-${text}`}>
-                  {getLabel(type)} <Text dangerouslySetInnerHTML={{ __html: text }} />
-                </li>
-              ))}
-            </ul>
-          </span>
-        );
-      })}
-
-      <PortalProvider value={refHead}>
-        <Portal>
-          <SideBarChangelogHeading blocks={blocks} />
-        </Portal>
-      </PortalProvider>
-    </>
-  );
+const Changelog = ({ blocks }) => {
+  return blocks.map(({ title, changes, id }) => {
+    return (
+      <span key={title} className={formatTextStyles.formatText}>
+        <HeadingLink
+          level={2}
+          id={id}
+          style={{
+            fontSize: '18px',
+            lineHeight: '110%',
+            margin: '32px 0 16px 0',
+          }}
+        >
+          <Text bold>{title}</Text>
+        </HeadingLink>
+        <ul className={styles.list}>
+          {changes.map(({ type, text }) => (
+            <li className={styles.listItem} key={`${type}-${text}`}>
+              {getLabel(type)} <Text dangerouslySetInnerHTML={{ __html: text }} />
+            </li>
+          ))}
+        </ul>
+      </span>
+    );
+  });
 };
 
 export default Changelog;
