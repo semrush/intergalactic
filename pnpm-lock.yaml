@@ -1960,7 +1960,8 @@ importers:
 
   tools/continuous-delivery:
     specifiers:
-      '@semcore/changelog-handler': 0.0.1
+      '@semcore/changelog-handler': '*'
+      '@semcore/slack-integration': '*'
       '@types/fs-extra': 9.0.13
       '@types/semver': 7.3.9
       axios: 0.25.0
@@ -1976,6 +1977,7 @@ importers:
       tsm: 2.2.2
     dependencies:
       '@semcore/changelog-handler': link:../changelog-handler
+      '@semcore/slack-integration': link:../slack-integration
       axios: 0.25.0
       dayjs: 1.10.7
       dotenv: 16.0.3

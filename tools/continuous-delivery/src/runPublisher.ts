@@ -8,6 +8,8 @@ import {
   serializeReleaseChangelog,
   toMarkdown,
 } from '@semcore/changelog-handler';
+import { sendMessage, makeMessageFromChangelogs } from '@semcore/slack-integration';
+
 dotenv.config();
 const git = Git();
 
@@ -84,9 +86,8 @@ export const runPublisher = async (versionPatches: VersionPatch[]) => {
       await fs.rm('./.gh-auth-token.txt');
       const semcoreUiChangelog = await getReleaseChangelog();
       const version = semcoreUiChangelog.package.version;
-      const releaseNotes = toMarkdown(
-        serializeReleaseChangelog(semcoreUiChangelog.changelogs.slice(0, 1)),
-      )
+      const lastVersionChangelogs = semcoreUiChangelog.changelogs.slice(0, 1);
+      const releaseNotes = toMarkdown(serializeReleaseChangelog(lastVersionChangelogs))
         .split('\n')
         .slice(2)
         .join('\n');
@@ -99,6 +100,15 @@ export const runPublisher = async (versionPatches: VersionPatch[]) => {
         },
       );
       await fs.rm('./.github-release-notes.txt');
+
+      const title = `New release v${version} is here!`;
+      const body = makeMessageFromChangelogs(lastVersionChangelogs, false);
+
+      await sendMessage({
+        title,
+        body,
+        dryRun: false,
+      });
     }
   }
 };
