@@ -1,3 +1,21 @@
+## [13.2.11] - 2023-01-04
+
+### @semcore/ellipsis
+
+- **Fixed** Remove react warning with non-html props.
+
+### @semcore/format-text
+
+- **Fixed** Fixed css variable design tokens.
+
+### @semcore/notice-global
+
+- **Added** Added cursor change when hovering `NoticeGlobal.CloseIcon`.
+
+### @semcore/tag
+
+- **Fixed** Fixed css variable design tokens.
+
 ## [13.2.10] - 2022-12-27
 
 ### @semcore/card
