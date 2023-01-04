@@ -12,7 +12,7 @@ tabName: Design
 
 **Notice** is a component for messages about events related to the user's work in the interface.
 
-Notice shall meet four criteria. If it doesn't respond to at least one, it's not a notice. Let's see the differencies with [NoticeBubble](/components/notice-bubble/) and [NoticeGlobal](/components/notice-global/).
+Notice shall meet four criteria. If it doesn't respond to at least one, it's not a notice. Let's see the differences from [NoticeBubble](/components/notice-bubble/) and [NoticeGlobal](/components/notice-global/).
 
 | Criteria                                                                                             | Notice | NoticeBubble | NoticeGlobal |
 | ---------------------------------------------------------------------------------------------------- | ------ | ------------ | ------------ |
