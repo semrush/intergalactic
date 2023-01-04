@@ -186,6 +186,7 @@ jobs:
       GITHUB_SECRET: ${{ secrets.BOT_ACCOUNT_GITHUB_TOKEN }}
       GCLOUD_SECRET: ${{ secrets.GCLOUD_SECRET }}
       SCREENSHOT_URL: ${{ secrets.SCREENSHOT_URL }}
+      SLACK_API_ENDPOINTS: ${{ secrets.SLACK_WEBHOOK_URLS }}
     steps:
       - uses: actions/checkout@v2
       - uses: pnpm/action-setup@v2.1.0
