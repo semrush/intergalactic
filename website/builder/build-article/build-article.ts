@@ -584,10 +584,6 @@ export const buildArticle = async (
     .filter((token) => token !== null)
     .flat();
 
-  // const headings = tokens
-  //   .filter(({ type }) => type === 'heading')
-  //   .filter((token) => 'level' in token && token.level === 2);
-
   const sourcePath = relativePath.startsWith('./')
     ? relativePath.substring('./'.length)
     : relativePath;
