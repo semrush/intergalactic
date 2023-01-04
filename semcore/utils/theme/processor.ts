@@ -5,6 +5,8 @@ import valuesParser from 'postcss-value-parser';
 import { resolve as resolvePath } from 'path';
 import { fileURLToPath } from 'url';
 
+const warning = !process.argv.includes('--no-warning');
+
 const dirname = resolvePath(fileURLToPath(import.meta.url), '..');
 const baseColors = JSON.parse(
   await fs.readFile(resolvePath(dirname, './tokens-base.json'), 'utf-8'),
@@ -334,21 +336,23 @@ for (const variable in values) {
 }
 
 /* eslint-disable no-console */
-if (unusedVariables.length > 0) {
-  console.log(`Unused design tokens:`);
-  console.log(unusedVariables.join('\n'));
-}
-if (Object.values(legacyCssVariables).reduce((sum, item) => sum + item) > 0) {
-  console.log(`Still used legacy variables:`);
-  for (const variable in legacyCssVariables) {
-    if (legacyCssVariables[variable] !== 0) {
-      console.log(`${variable} (${legacyCssVariables[variable]})`);
+if (warning) {
+  if (unusedVariables.length > 0) {
+    console.log(`Unused design tokens:`);
+    console.log(unusedVariables.join('\n'));
+  }
+  if (Object.values(legacyCssVariables).reduce((sum, item) => sum + item) > 0) {
+    console.log(`Still used legacy variables:`);
+    for (const variable in legacyCssVariables) {
+      if (legacyCssVariables[variable] !== 0) {
+        console.log(`${variable} (${legacyCssVariables[variable]})`);
+      }
     }
   }
-}
-if (colorLiterals.length > 0) {
-  console.log(`Unexpected color literals:`);
-  for (const literal of colorLiterals) {
-    console.log(`${literal.name} in ${literal.path}`);
+  if (colorLiterals.length > 0) {
+    console.log(`Unexpected color literals:`);
+    for (const literal of colorLiterals) {
+      console.log(`${literal.name} in ${literal.path}`);
+    }
   }
 }
