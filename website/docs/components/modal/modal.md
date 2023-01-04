@@ -16,7 +16,7 @@ tabName: Design
 
 ### Use the modal window
 
-- To demonstrate secondary data that is not always required (especially if there are a lot of them). Their absence simplifies the interface. Moreover, they don't apply to other pages/reports. _For example, settings, small forms to fill out, step-by-step actions, detailed information about any data._
+- To demonstrate secondary data that is not always required (especially if there is a lot of it). Its absence simplifies the interface. Moreover, it doesn't apply to other pages/reports. _For example, settings, small forms to fill out, step-by-step actions, detailed information about any data._
 - To draw attention to a specific task. _For example, confirming an operation, adding data._
 - To focus on critical information that requires the user's attention. _For example, local news, limiting, deleting an element, or losing information._
 - To view enlarged images or videos.
