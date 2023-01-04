@@ -8,7 +8,8 @@
   "private": true,
   "license": "MIT",
   "dependencies": {
-    "@semcore/changelog-handler": "0.0.1",
+    "@semcore/changelog-handler": "*",
+    "@semcore/slack-integration": "*",
     "axios": "0.25.0",
     "dayjs": "1.10.7",
     "dotenv": "^16.0.3",
