@@ -8,11 +8,35 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Added prop `transparent` for charts opacity
 
-## [2.5.5] - 2022-12-06
+## [2.7.2] - 2022-12-27
+
+### Fixed
+
+- Fixed `Donut` chart rendering when hovering over a chart while it is loading.
+
+## [2.7.1] - 2022-12-19
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/animation` [1.7.3 ~> 1.8.0]).
+- Version patch update due to children dependencies update (`@semcore/animation` [1.8.4 ~> 1.8.5], `@semcore/utils` [3.44.0 ~> 3.44.1]).
+
+## [2.7.0] - 2022-12-14
+
+### Changed
+
+- Supported semi-async internationalization of text in a11y module.
+
+## [2.6.1] - 2022-12-13
+
+### Changed
+
+- Added `react-dom` to peer dependencies.
+
+## [2.6.0] - 2022-12-12
+
+### Added
+
+- Design tokens based theming.
 
 ## [2.5.2] - 2022-11-11
 

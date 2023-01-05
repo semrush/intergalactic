@@ -1,7 +1,7 @@
 {
   "name": "@semcore/wizard",
   "description": "Semrush Wizard Component",
-  "version": "1.1.13",
+  "version": "1.2.4",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -20,7 +20,8 @@
   },
   "peerDependencies": {
     "@semcore/core": "^1.12",
-    "react": "16.8 - 18"
+    "react": "16.8 - 18",
+    "react-dom": "16.8 - 18"
   },
   "jest": {
     "preset": "@semcore/jest-preset-ui"

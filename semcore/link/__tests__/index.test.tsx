@@ -6,6 +6,9 @@ const { cleanup, render, axe } = testing;
 const { shouldSupportClassName, shouldSupportRef } = testsShared;
 import Link from '../src';
 import CheckM from '@semcore/icon/Check/m';
+import EditXS from '@semcore/icon/Edit/m';
+import { Flex } from '@semcore/flex-box';
+import { Text } from '@semcore/typography';
 
 describe('Link', () => {
   afterEach(cleanup);
@@ -94,6 +97,29 @@ describe('Link', () => {
       </Link>,
     );
     expect(getComputedStyle(getByTestId('link')).display).toBe('inline');
+  });
+
+  test('Should support ellipsis links with addon', async () => {
+    const component = (
+      <div style={{ width: '66%' }}>
+        <Link w="100%" wMin={0}>
+          <Flex alignItems="center">
+            <Link.Text w="100%" inline noWrap>
+              <Text w="100%" inline noWrap>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque iusto, sed!
+                Asperiores, consectetur deserunt et ipsam omnis quae repellendus velit veniam.
+                Asperiores dicta dolor ducimus enim fugit laborum minima reprehenderit?
+              </Text>
+            </Link.Text>
+            <Link.Addon>
+              <EditXS />
+            </Link.Addon>
+          </Flex>
+        </Link>
+      </div>
+    );
+
+    expect(await snapshot(component)).toMatchImageSnapshot();
   });
 
   test('Should support noWrap property', () => {

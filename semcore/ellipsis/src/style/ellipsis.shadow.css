@@ -1,7 +1,6 @@
-@import '@semcore/utils/style/var.css';
-
 SContainer,
 SContainerMiddle {
+  display: flex;
   overflow: hidden;
 }
 

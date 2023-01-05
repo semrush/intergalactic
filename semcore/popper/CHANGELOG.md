@@ -2,11 +2,23 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [4.13.6] - 2022-11-30
+## [4.14.3] - 2022-12-19
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/flex-box` [4.6.4 ~> 4.6.5], `@semcore/neighbor-location` [3.1.4 ~> 3.1.5], `@semcore/outside-click` [2.5.4 ~> 2.5.5], `@semcore/portal` [2.4.4 ~> 2.4.5], `@semcore/utils` [3.41.0 ~> 3.42.0]).
+- Version patch update due to children dependencies update (`@semcore/flex-box` [4.7.2 ~> 4.7.3], `@semcore/neighbor-location` [3.1.8 ~> 3.1.9], `@semcore/outside-click` [2.5.7 ~> 2.5.8], `@semcore/utils` [3.44.0 ~> 3.44.1]).
+
+## [4.14.1] - 2022-12-13
+
+### Changed
+
+- Added `react-dom` to peer dependencies.
+
+## [4.14.0] - 2022-12-12
+
+### Added
+
+- Design tokens based theming.
 
 ## [4.13.4] - 2022-10-30
 

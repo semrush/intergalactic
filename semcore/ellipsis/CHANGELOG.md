@@ -2,11 +2,29 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [1.0.5] - 2022-11-30
+## [1.1.4] - 2023-01-03
+
+### Fixed
+
+- Remove react warning with non-html props.
+
+## [1.1.3] - 2022-12-19
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/utils` [3.41.0 ~> 3.42.0], `@semcore/flex-box` [4.6.4 ~> 4.6.5], `@semcore/tooltip` [5.1.5 ~> 5.2.0]).
+- Version patch update due to children dependencies update (`@semcore/utils` [3.44.0 ~> 3.44.1]).
+
+## [1.1.1] - 2022-12-13
+
+### Changed
+
+- Added `react-dom` to peer dependencies.
+
+## [1.1.0] - 2022-12-12
+
+### Added
+
+- Design tokens based theming.
 
 ## [1.0.1] - 2022-10-17
 

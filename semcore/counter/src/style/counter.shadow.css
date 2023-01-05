@@ -1,5 +1,3 @@
-@import '@semcore/utils/style/var.css';
-
 SCounter {
   display: inline-flex;
   align-items: center;
@@ -7,33 +5,35 @@ SCounter {
   line-height: normal;
   box-sizing: border-box;
   vertical-align: middle;
-  border-radius: 12px;
-  font-weight: 500;
+  border-radius: var(--intergalactic-rounded-large, 12px);
+  font-weight: var(--intergalactic-medium, 500);
 
-  color: var(--gray-500);
-  background-color: #fff;
-  border: 1px solid var(--gray-200);
+  color: var(--intergalactic-text-secondary, #6c6e79);
+  background-color: var(--intergalactic-bg-primary-neutral, #ffffff);
+  border: 1px solid var(--intergalactic-border-primary, #c4c7cf);
 }
 
 SCounter[size='m'] {
   height: 16px;
   min-width: 16px;
-  font-size: 10px;
-  padding: 4px;
+  font-size: var(--intergalactic-fs-50, 10px);
+  padding: var(--intergalactic-spacing-1x, 4px);
 }
 
 SCounter[size='l'] {
   height: 20px;
   min-width: 20px;
-  font-size: var(--fs-100);
-  padding: 2px 6px;
+  font-size: var(--intergalactic-fs-100, 12px);
+  padding: var(--intergalactic-spacing-05x, 2px)
+    calc(var(--intergalactic-spacing-05x, 2px) + var(--intergalactic-spacing-1x, 4px));
 }
 
 SCounter[size='xl'] {
   height: 24px;
   min-width: 24px;
-  font-size: var(--fs-200);
-  padding: 2px 6px;
+  font-size: var(--intergalactic-fs-200, 14px);
+  padding: var(--intergalactic-spacing-05x, 2px)
+    calc(var(--intergalactic-spacing-05x, 2px) + var(--intergalactic-spacing-1x, 4px));
 }
 
 SCounter[theme] {
@@ -44,12 +44,12 @@ SCounter[theme] {
 
 SCounter[theme='warning'] {
   border-color: transparent;
-  background: var(--orange-400);
-  color: white;
+  background: var(--intergalactic-bg-primary-warning, #ff642d);
+  color: var(--intergalactic-text-primary-invert, #ffffff);
 }
 
 SCounter[theme='danger'] {
   border-color: transparent;
-  background: var(--red-400);
-  color: white;
+  background: var(--intergalactic-bg-primary-critical, #ff4953);
+  color: var(--intergalactic-text-primary-invert, #ffffff);
 }

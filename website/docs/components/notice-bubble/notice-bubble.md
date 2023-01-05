@@ -8,7 +8,7 @@ tabName: Design
 
 **NoticeBubble (Alert)** is a notification on completed action, beginning or ending of a process.
 
-Let's see the differencies with [Notice](/components/notice/) and [NoticeGlobal](/components/notice-global/).
+Let's see the differences between NoticeBubble, [Notice](/components/notice/) and [NoticeGlobal](/components/notice-global/).
 
 | Criteria                                                                                             | Notice | NoticeBubble | NoticeGlobal |
 | ---------------------------------------------------------------------------------------------------- | ------ | ------------ | ------------ |

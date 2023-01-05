@@ -2,11 +2,23 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [1.1.13] - 2022-12-06
+## [1.2.4] - 2022-12-27
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/modal` [3.1.11 ~> 3.1.12]).
+- Version patch update due to children dependencies update (`@semcore/icon` [3.4.3 ~> 3.5.0], `@semcore/modal` [3.3.1 ~> 3.3.2]).
+
+## [1.2.1] - 2022-12-13
+
+### Changed
+
+- Added `react-dom` to peer dependencies.
+
+## [1.2.0] - 2022-12-12
+
+### Added
+
+- Design tokens based theming.
 
 ## [1.1.12] - 2022-12-01
 

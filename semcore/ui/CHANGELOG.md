@@ -1,3 +1,161 @@
+## [13.2.11] - 2023-01-04
+
+### @semcore/ellipsis
+
+- **Fixed** Remove react warning with non-html props.
+
+### @semcore/format-text
+
+- **Fixed** Fixed css variable design tokens.
+
+### @semcore/notice-global
+
+- **Added** Added cursor change when hovering `NoticeGlobal.CloseIcon`.
+
+### @semcore/tag
+
+- **Fixed** Fixed css variable design tokens.
+
+## [13.2.10] - 2022-12-27
+
+### @semcore/card
+
+- **Fixed** Hint tooltip is centered vertically.
+
+### @semcore/d3-chart
+
+- **Fixed** Fixed `Donut` chart rendering when hovering over a chart while it is loading.
+
+### @semcore/data-table
+
+- **Fixed** Fix style for `resizable`.
+
+### @semcore/dropdown-menu
+
+- **Added** Added `box-sizing` for correct offset display.
+
+### @semcore/icon
+
+- **Added** Added `Jewelry`, `Photo`, `Military`, `Restaurant`, `Music`, `Recreation`, `Events'`, `Cosmetics`, `Fashion`, `Printing`, `Science`, `Comics`, `Gambling`, `Architecture`, `Veterinary`, `Furniture`, `Adult`, `Religion`, `PublicSafety`, `Security`, `Fish`, `Law`, `Oil`, `Packaging`, `Logistic`, `Marine`, `PublicUtility`, `Craft`, `Sport`, `Car`, `Games`, `Language`, `Smoking`, `Farm`, `Food`, `Wine` icons.
+
+### @semcore/widget-empty
+
+- **Fixed** Fixed image size.
+
+## [13.2.9] - 2022-12-22
+
+### @semcore/data-table
+
+- **Changed** Removed vertical borders from header cells.
+- **Changed** Added props `vBorders`, `borderLeft` and `borderRight` to have possibility to render vertical borders.
+- **Changed** Added prop `compact` to reduce table paddings.
+- **Changed** Added gradient to the sorting icon.
+
+## [13.2.8] - 2022-12-21
+
+### @semcore/base-trigger
+
+- **Fixed** Fixed the problem of not showing the placeholder when the body of the `BaseTrigger` is empty.
+
+### @semcore/format-text
+
+- **Fixed** Fixed underline for links from the design system.
+
+### @semcore/link
+
+- **Fixed** Fixed vertical align for use as a text link.
+
+### @semcore/select
+
+- **Fixed** Fixed display of placeholder with empty value.
+
+### @semcore/tag
+
+- **Fixed** Fixed css syntax error.
+
+## [13.2.7] - 2022-12-19
+
+### Global
+
+- **Added** Added internationalization of aria attributes.
+
+### @semcore/d3-chart
+
+- **Changed** Supported semi-async internationalization of text in a11y module.
+
+### @semcore/format-text
+
+- **Fixed** Fixed syntax css.
+
+### @semcore/illustration
+
+- **Changed** Added `react-dom` to peer dependencies.
+
+### @semcore/ui
+
+- **Fixed** Normalized path to re-export `@semcore/illustration`.
+
+### @semcore/utils
+
+- **Fixed** Fixed non-react node detection for `addonTextChildren`.
+- **Changed** Supported semi-async internationalization.
+
+## [13.2.6] - 2022-12-14
+
+### @semcore/illustration
+
+- **Fixed** Fixed illustrations reexports.
+
+## [13.2.5] - 2022-12-14
+
+### @semcore/base-trigger
+
+- **Fixed** Fixed hardcoded spacing style literal.
+
+### @semcore/link
+
+- **Fixed** Fixed supporting ellipsis links with addon.
+
+### @semcore/progress-bar
+
+- **Fixed** Fixed default theme background.
+
+## [13.2.4] - 2022-12-13
+
+### Global
+
+- **Changed** Added `react-dom` to peer dependencies.
+
+### @semcore/base-trigger
+
+- **Changed** The icon in `LinkTrigger` is centered vertically.
+
+### @semcore/dropdown-menu
+
+- **Fixed** Fix tabulation and moving highlighted items
+
+### @semcore/link
+
+- **Changed** `Link.Addon` is centered vertically.
+
+## [13.2.3] - 2022-12-09
+
+### @semcore/animation
+
+- **Changed** Changed prop `initialAnimation` to optional.
+
+### @semcore/feature-popover
+
+- **Fixed** Opening animation is working again.
+
+### @semcore/notice-bubble
+
+- **Changed** Changed prop `initialAnimation` to optional.
+
+### @semcore/scroll-area
+
+- **Fixed** Fixed calculation size when changing height of the container.
+
 ## [13.2.2] - 2022-12-07
 
 ### @semcore/animation

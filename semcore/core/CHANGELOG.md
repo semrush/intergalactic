@@ -2,6 +2,20 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [1.13.10] - 2022-12-19
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.44.0 ~> 3.44.1]).
+
+## [1.13.8] - 2022-12-13
+
+### Changed
+
+- Added `react-dom` to peer dependencies.
+
+## [1.13.7] - 2022-12-12
+
 ## [1.13.6] - 2022-11-30
 
 ### Changed

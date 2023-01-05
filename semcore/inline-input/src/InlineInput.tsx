@@ -7,6 +7,8 @@ import style from './style/inline-input.shadow.css';
 import CheckM from '@semcore/icon/Check/m';
 import CloseM from '@semcore/icon/Close/m';
 import Spin from '@semcore/spin';
+import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
+import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
 
 const isFocusOutsideOf = (element: HTMLElement) => {
   let traversed: Element | null | undefined = document.activeElement;
@@ -45,6 +47,7 @@ type RootAsProps = {
   onBlurBehavior?: 'cancel' | 'confirm';
   styles?: React.CSSProperties;
   Children: React.FC;
+  getI18nText: (messageId: string, values?: { [key: string]: string | number }) => string;
 };
 
 type AddonAsProps = {
@@ -63,6 +66,7 @@ type ControlAsProps = {
   onCancel?: OnCancel;
   value?: string;
   icon?: React.FC;
+  getI18nText: (messageId: string, values?: { [key: string]: string | number }) => string;
 };
 type ConfirmControlAsProps = ControlAsProps & {
   onConfirm?: OnConfirm;
@@ -74,9 +78,12 @@ type CancelControlAsProps = ControlAsProps & {
 class InlineInputBase extends Component<RootAsProps> {
   static displayName = 'InlineInput';
 
+  static enhance = [i18nEnhance(localizedMessages)];
   static defaultProps = {
     state: 'normal',
     onBlurBehavior: 'confirm',
+    i18n: localizedMessages,
+    locale: 'en',
   };
   static style = style;
 
@@ -99,21 +106,23 @@ class InlineInputBase extends Component<RootAsProps> {
   }
 
   getConfirmControlProps() {
-    const { loading } = this.asProps;
+    const { loading, getI18nText } = this.asProps;
     return {
       value: this.inputRef.current?.value,
       loading,
       onConfirm: this.handleConfirm,
+      getI18nText,
     };
   }
 
   getCancelControlProps() {
-    const { loading, disabled } = this.asProps;
+    const { loading, disabled, getI18nText } = this.asProps;
     return {
       value: this.initValue,
       // because double disabled(root disabled and addon disabled)
       disabled: loading && !disabled,
       onCancel: this.handleCancel,
+      getI18nText,
     };
   }
 
@@ -171,7 +180,7 @@ class InlineInputBase extends Component<RootAsProps> {
   render() {
     const SInlineInput = Root;
     const SUnderline = 'div';
-    const { Children, styles } = this.asProps;
+    const { Children, styles, getI18nText } = this.asProps;
     const { focused } = this.state;
 
     return sstyled(styles)(
@@ -180,7 +189,7 @@ class InlineInputBase extends Component<RootAsProps> {
         ref={this.rootRef}
         focused={focused}
         onBlur={this.handleBlur}
-        aria-label="Press Enter to apply value, press Escape to discard changes"
+        aria-label={getI18nText('keyboardHint')}
       >
         <SUnderline>
           <Children />
@@ -217,7 +226,8 @@ const Addon: React.FC<AddonAsProps> = (props) => {
 
 const ConfirmControl: React.FC<ConfirmControlAsProps> = (props) => {
   const SAddon = Root;
-  const { Children, children: hasChildren, title } = props;
+  const { Children, children: hasChildren } = props;
+  const title = props.title ?? props.getI18nText('discard');
 
   const handleConfirm = React.useCallback(
     (event: React.MouseEvent | React.KeyboardEvent) => {
@@ -268,12 +278,10 @@ const ConfirmControl: React.FC<ConfirmControlAsProps> = (props) => {
     </SAddon>,
   ) as React.ReactElement;
 };
-ConfirmControl.defaultProps = {
-  title: 'Confirm',
-};
 const CancelControl: React.FC<CancelControlAsProps> = (props) => {
   const SAddon = Root;
-  const { Children, children: hasChildren, title } = props;
+  const { Children, children: hasChildren } = props;
+  const title = props.title ?? props.getI18nText('discard');
 
   const handleCancel = React.useCallback(
     (event: React.MouseEvent | React.KeyboardEvent) => {
@@ -323,9 +331,6 @@ const CancelControl: React.FC<CancelControlAsProps> = (props) => {
       )}
     </SAddon>,
   ) as React.ReactElement;
-};
-CancelControl.defaultProps = {
-  title: 'Cancel',
 };
 
 /** `createComponent` currently exposes unrelated junk instead of typings, that the reason of to any cast  */

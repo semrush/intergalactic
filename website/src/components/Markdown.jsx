@@ -65,12 +65,22 @@ const tokenHandlers = {
     return <ChangelogByComponent blocks={blocks} />;
   },
   email_html: ({ raw, compiled }) => {
+    function resizeIframe() {
+      const iframes = document.getElementsByTagName('iframe');
+      for (let i = 0; i < iframes.length; i++) {
+        iframes[i].height = iframes[i].contentWindow.document.body.scrollHeight + 'px';
+      }
+    }
+
     return (
       <>
-        <style>{'* {font-family: inherit;}'}</style>
         <Example raw={{ code: raw }}>
           <style>{emailCSS}</style>
-          <div dangerouslySetInnerHTML={{ __html: compiled }} />
+          <iframe
+            style={{ width: '100%', border: 'none' }}
+            srcDoc={compiled}
+            onLoad={resizeIframe}
+          />
         </Example>
         <Accordion>
           <Accordion.Item>
@@ -83,7 +93,7 @@ const tokenHandlers = {
               </Link>
             </Accordion.Item.Toggle>
             <Accordion.Item.Collapse>
-              <Example raw={{ code: compiled }} />
+              <Example raw={{ code: String(compiled) }} />
             </Accordion.Item.Collapse>
           </Accordion.Item>
         </Accordion>

@@ -1,0 +1,122 @@
+.christmasLights li {
+  --christmas-lights-1: #45e0a8; /*color - 1*/
+  --christmas-lights-2: #b880ff; /*color - 2*/
+  --christmas-lights-3: #ffe84d; /*color - 3*/
+  animation-duration: 2s;
+  animation-fill-mode: both;
+  animation-iteration-count: infinite;
+  animation-name: flash-1;
+  border-radius: 50%;
+  display: inline-block;
+  height: 20px;
+  margin: 25px 20px;
+  position: relative;
+  width: 20px;
+}
+
+.christmasLights {
+  left: 0;
+  margin: 0;
+  pointer-events: none;
+  position: fixed;
+  right: 0;
+  top: -15px;
+  white-space: nowrap;
+  width: 100%;
+  z-index: 100;
+}
+
+.christmasLights {
+  top: auto;
+  bottom: -15px;
+  transform: scale(-1);
+}
+
+.christmasLights li:before {
+  content: '';
+  position: absolute;
+  background: #505050;
+  width: 10px;
+  height: 10px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  top: -9px;
+  left: 5px;
+}
+
+.christmasLights li:after {
+  content: '';
+  top: -23px;
+  left: 10px;
+  position: absolute;
+  width: 60px;
+  height: 20px;
+  border-bottom: solid #505050 2px;
+  border-radius: 50%;
+}
+
+.christmasLights li:last-child:after {
+  content: none;
+}
+
+.christmasLights li:first-child {
+  margin-left: -40px;
+}
+
+.christmasLights li:nth-child(2n + 1) {
+  background: var(--christmas-lights-1);
+  box-shadow: 0px 5px 24px 3px rgb(249 212 129);
+  animation-name: flash-2;
+  animation-duration: 0.4s;
+}
+
+.christmasLights li:nth-child(4n + 2) {
+  background: var(--christmas-lights-2);
+  box-shadow: 0px 5px 24px 3px var(--christmas-lights-2);
+  animation-name: flash-3;
+  animation-duration: 1.1s;
+}
+
+.christmasLights li:nth-child(odd) {
+  animation-duration: 1.8s;
+}
+
+.christmasLights li:nth-child(3n + 1) {
+  animation-duration: 1.4s;
+}
+
+@keyframes flash-1 {
+  0%,
+  100% {
+    background: var(--christmas-lights-1);
+    box-shadow: 0px 5px 24px 3px var(--christmas-lights-1);
+  }
+  50% {
+    background: var(--christmas-lights-2);
+    box-shadow: 0px 5px 24px 3px var(--christmas-lights-2);
+  }
+}
+
+@keyframes flash-2 {
+  0%,
+  100% {
+    background: var(--christmas-lights-2);
+    box-shadow: 0px 5px 24px 3px var(--christmas-lights-2);
+  }
+  50% {
+    background: var(--christmas-lights-3);
+    box-shadow: 0px 5px 24px 3px var(--christmas-lights-3);
+  }
+}
+
+@keyframes flash-3 {
+  0%,
+  100% {
+    background: var(--christmas-lights-3);
+    box-shadow: 0px 5px 24px 3px var(--christmas-lights-3);
+  }
+  50% {
+    background: var(--christmas-lights-1);
+    box-shadow: 0px 5px 24px 3px var(--christmas-lights-1);
+  }
+}

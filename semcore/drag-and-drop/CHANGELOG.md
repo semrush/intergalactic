@@ -2,11 +2,29 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [2.2.2] - 2022-11-30
+## [2.4.3] - 2022-12-27
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/card` [4.1.8 ~> 4.1.9], `@semcore/flex-box` [4.6.4 ~> 4.6.5], `@semcore/utils` [3.41.0 ~> 3.42.0]).
+- Version patch update due to children dependencies update (`@semcore/card` [4.2.4 ~> 4.2.5]).
+
+## [2.4.0] - 2022-12-14
+
+### Added
+
+- Added internationalization of aria attributes.
+
+## [2.3.1] - 2022-12-13
+
+### Changed
+
+- Added `react-dom` to peer dependencies.
+
+## [2.3.0] - 2022-12-12
+
+### Added
+
+- Design tokens based theming.
 
 ## [2.2.0] - 2022-11-28
 

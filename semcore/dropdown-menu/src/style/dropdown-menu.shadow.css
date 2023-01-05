@@ -1,11 +1,10 @@
-@import '@semcore/utils/style/var.css';
-
 SDropdownMenuList {
   max-height: 240px;
-  padding: 4px 0;
+  padding: var(--intergalactic-spacing-1x, 4px) 0;
   position: relative;
   min-height: 26px;
   min-width: 32px;
+  box-sizing: content-box;
 }
 
 SDropdownMenuItem {
@@ -20,7 +19,7 @@ SDropdownMenuItem {
   line-height: normal;
 
   &:hover {
-    background-color: var(--gray-50);
+    background-color: var(--intergalactic-bg-primary-neutral-hover, #f4f5f9);
   }
 
   &:focus {
@@ -30,34 +29,35 @@ SDropdownMenuItem {
 
 SDropdownMenuItem[highlighted] {
   z-index: 1;
-  box-shadow: var(--keyboard-focus) inset;
+  box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.3)) inset;
 }
 
 SDropdownMenuItem[selected] {
-  background-color: color-mod(var(--blue-100) a(70%));
+  background-color: var(--intergalactic-dropdown-menu-item-selected, rgba(196, 229, 254, 0.7));
 
   &:hover {
-    background-color: var(--blue-100);
+    background-color: var(--intergalactic-dropdown-menu-item-selected-hover, #c4e5fe);
   }
 }
 
 SDropdownMenuItem[disabled] {
-  opacity: var(--disabled-opacity);
+  opacity: var(--intergalactic-disabled-opacity, 0.3);
   cursor: default;
   pointer-events: none;
 }
 
 SDropdownMenuItem[size='l'] {
-  font-size: var(--fs-300);
-  line-height: var(--lh-300);
-  padding: 8px 12px;
+  font-size: var(--intergalactic-fs-300, 16px);
+  line-height: var(--intergalactic-lh-300, 150%);
+  padding: var(--intergalactic-spacing-2x, 8px) var(--intergalactic-spacing-3x, 12px);
   min-height: 40px;
 }
 
 SDropdownMenuItem[size='m'] {
-  font-size: var(--fs-200);
-  line-height: var(--lh-200);
-  padding: 6px 8px;
+  font-size: var(--intergalactic-fs-200, 14px);
+  line-height: var(--intergalactic-lh-200, 142%);
+  padding: calc(var(--intergalactic-spacing-1x, 4px) + var(--intergalactic-spacing-05x, 2px))
+    var(--intergalactic-spacing-2x, 8px);
   min-height: 32px;
 }
 
@@ -70,7 +70,7 @@ SDropdownMenuItem[notInteractive] {
 }
 
 SDropdownMenuItem[variant='hint'] {
-  color: var(--gray-500);
+  color: var(--intergalactic-text-secondary, #6c6e79);
   cursor: default;
 
   &:hover {
@@ -79,7 +79,7 @@ SDropdownMenuItem[variant='hint'] {
 }
 
 SDropdownMenuItem[variant='title'] {
-  font-weight: bold;
+  font-weight: var(--intergalactic-bold, 700);
   cursor: default;
 
   &:hover {
@@ -89,8 +89,8 @@ SDropdownMenuItem[variant='title'] {
 
 SDropdownMenuItemAddon {
   display: inline-flex;
-  margin-left: 8px;
-  margin-right: 8px;
+  margin-left: var(--intergalactic-spacing-2x, 8px);
+  margin-right: var(--intergalactic-spacing-2x, 8px);
 
   &:first-child {
     margin-left: 0;
@@ -103,6 +103,6 @@ SDropdownMenuItemAddon {
 
 SPopper {
   &:focus {
-    box-shadow: var(--keyboard-focus);
+    box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.3));
   }
 }

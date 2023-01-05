@@ -3,6 +3,8 @@ import { useParams, Link } from 'react-router-dom';
 import IF from '@semcore/utils/lib/if';
 import { Text } from '@semcore/typography';
 import ChevronRightXS from '@semcore/icon/ChevronRight/m';
+import WarningM from '@semcore/icon/Warning/m';
+import Tooltip from '@semcore/tooltip';
 import cx from 'classnames';
 import styles from './SideBarNavigation.module.css';
 
@@ -24,7 +26,7 @@ const SideBarNavigation = ({ navigation = [], onNavigate, className }) => {
         return (
           <React.Fragment key={i}>
             <div
-              className={styles.categoryTitle}
+              className={cx(styles.categoryContainer, styles.categoryTitle)}
               key={`category-${i}`}
               tabIndex={0}
               onClick={() => handleClick(currentCategory)}
@@ -34,33 +36,50 @@ const SideBarNavigation = ({ navigation = [], onNavigate, className }) => {
                 }
               }}
             >
-              <ChevronRightXS
-                mr={2}
-                color="#898D9A"
-                style={{
-                  transform: `rotate(${isOpen ? 90 : 0}deg)`,
-                  transition: 'transform 0.25s ease-in-out',
-                }}
-              />
-              <Text fontSize={'16px'} lineHeight={'150%'}>
+              <Text fontSize="16px" lineHeight="150%">
+                <ChevronRightXS
+                  mr={2}
+                  color="#898D9A"
+                  style={{
+                    transform: `rotate(${isOpen ? 90 : 0}deg)`,
+                    transition: 'transform 0.25s ease-in-out',
+                  }}
+                />
                 {currentCategory.title}
               </Text>
+              {!!currentCategory.metadata.deprecated && (
+                <Tooltip title="Deprecated group">
+                  <WarningM className={styles.categoryIcon} />
+                </Tooltip>
+              )}
             </div>
             <IF condition={isOpen} key={`if-${i}`}>
               {currentCategory.children.map((p, i) => {
                 return (
-                  <Link
+                  <div
                     className={cx(
-                      styles.categoryItem,
-                      p.metadata.disabled && styles.categoryItemDisabled,
+                      styles.categoryContainer,
                       p.route === `${category}/${page}` && styles.categoryItemActive,
                     )}
-                    onClick={onNavigate}
-                    to={`/${p.route}/`}
-                    key={`page-${i}`}
-                    aria-disabled={!!p.metadata.disabled}
-                    dangerouslySetInnerHTML={{ __html: p.title }}
-                  />
+                    key={`icon-container-${i}`}
+                  >
+                    <Link
+                      className={cx(
+                        styles.categoryItem,
+                        p.metadata.disabled && styles.categoryItemDisabled,
+                      )}
+                      onClick={onNavigate}
+                      to={`/${p.route}/`}
+                      key={`page-${i}`}
+                      aria-disabled={!!p.metadata.disabled}
+                      dangerouslySetInnerHTML={{ __html: p.title }}
+                    />
+                    {!!p.metadata.deprecated && (
+                      <Tooltip title="Deprecated component">
+                        <WarningM className={styles.categoryIcon} />
+                      </Tooltip>
+                    )}
+                  </div>
                 );
               })}
             </IF>

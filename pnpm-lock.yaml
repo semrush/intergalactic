@@ -18,6 +18,7 @@ importers:
       '@crowdin/cli': 3.7.9
       '@guidepup/playwright': 0.6.1
       '@mailchimp/mailchimp_marketing': 3.0.30
+      '@playwright/test': 1.25.1
       '@semcore/babel-plugin-react-semcore': workspace:*
       '@semcore/babel-plugin-recharts': workspace:*
       '@semcore/babel-plugin-root': workspace:*
@@ -38,6 +39,7 @@ importers:
       '@typescript-eslint/parser': 5.10.2
       csv: 6.2.0
       dotenv: 8.2.0
+      esbuild: 0.14.29
       eslint: 8.14.0
       eslint-config-prettier: 8.3.0
       eslint-import-resolver-alias: ^1.1.2
@@ -49,6 +51,8 @@ importers:
       eslint-plugin-react: 7.29.4
       eslint-plugin-ssr-friendly: 1.1.0
       execa: 6.1.0
+      fast-glob: 3.2.11
+      fast-hash-code: ^2.1.0
       fs-extra: 9.1.0
       husky: 8.0.0
       inquirer: 6.3.1
@@ -71,8 +75,9 @@ importers:
     devDependencies:
       '@babel/runtime': 7.19.0
       '@crowdin/cli': 3.7.9
-      '@guidepup/playwright': 0.6.1
+      '@guidepup/playwright': 0.6.1_@playwright+test@1.25.1
       '@mailchimp/mailchimp_marketing': 3.0.30
+      '@playwright/test': 1.25.1
       '@semcore/babel-plugin-react-semcore': link:tools/babel-plugin-react-semcore
       '@semcore/babel-plugin-recharts': link:tools/babel-plugin-recharts
       '@semcore/babel-plugin-root': link:tools/babel-plugin-root
@@ -93,6 +98,7 @@ importers:
       '@typescript-eslint/parser': 5.10.2_sdq423wcawycjzugemfabbjutq
       csv: 6.2.0
       dotenv: 8.2.0
+      esbuild: 0.14.29
       eslint: 8.14.0
       eslint-config-prettier: 8.3.0_eslint@8.14.0
       eslint-import-resolver-alias: 1.1.2_fkfqfehjtk7sk2efaqbgxsuasa
@@ -104,6 +110,8 @@ importers:
       eslint-plugin-react: 7.29.4_eslint@8.14.0
       eslint-plugin-ssr-friendly: 1.1.0_eslint@8.14.0
       execa: 6.1.0
+      fast-glob: 3.2.11
+      fast-hash-code: 2.1.0
       fs-extra: 9.1.0
       husky: 8.0.0
       inquirer: 6.3.1
@@ -401,7 +409,7 @@ importers:
       '@semcore/jest-preset-ui': 1.0.0
       '@semcore/popper': ^4.9
       '@semcore/typography': '*'
-      '@semcore/utils': ^3.15
+      '@semcore/utils': ^3.42.0
       '@types/d3-array': ^3.0.2
       '@types/d3-scale': ^4.0.2
       '@types/d3-shape': ^3.1.0
@@ -456,7 +464,6 @@ importers:
       '@semcore/flex-box': ^4
       '@semcore/icon': 2.16 - 3
       '@semcore/jest-preset-ui': 1.0.0
-      '@semcore/link': '*'
       '@semcore/portal': '*'
       '@semcore/progress-bar': '*'
       '@semcore/scroll-area': ^4.0.0
@@ -486,7 +493,6 @@ importers:
       '@semcore/divider': link:../divider
       '@semcore/dropdown-menu': link:../dropdown-menu
       '@semcore/jest-preset-ui': link:../../tools/jest-preset-ui
-      '@semcore/link': link:../link
       '@semcore/portal': link:../portal
       '@semcore/progress-bar': link:../progress-bar
       '@semcore/skeleton': link:../skeleton
@@ -650,6 +656,7 @@ importers:
       '@semcore/jest-preset-ui': 1.0.0
       '@semcore/tooltip': ^5
       '@semcore/utils': ^3.37
+      '@types/react': 18.0.21
       resize-observer-polyfill: 1.5.1
     dependencies:
       '@semcore/flex-box': link:../flex-box
@@ -658,6 +665,7 @@ importers:
       resize-observer-polyfill: 1.5.1
     devDependencies:
       '@semcore/jest-preset-ui': link:../../tools/jest-preset-ui
+      '@types/react': 18.0.21
 
   semcore/email:
     specifiers:
@@ -702,7 +710,7 @@ importers:
       '@semcore/button': ^4
       '@semcore/flex-box': ^4
       '@semcore/format-text': ^3.0.0
-      '@semcore/illustration': 1.3.5
+      '@semcore/illustration': 1.3.9
       '@semcore/jest-preset-ui': 1.0.0
       '@semcore/typography': ^4
       '@semcore/utils': ^3.27
@@ -845,9 +853,21 @@ importers:
       '@semcore/jest-preset-ui': link:../../tools/jest-preset-ui
       '@types/react': 18.0.21
 
+  semcore/i18n-unplugin:
+    specifiers:
+      '@semcore/jest-preset-ui': 1.0.0
+      '@types/react': 18.0.21
+      unplugin: ^1.0.0
+    dependencies:
+      unplugin: 1.0.0
+    devDependencies:
+      '@semcore/jest-preset-ui': link:../../tools/jest-preset-ui
+      '@types/react': 18.0.21
+
   semcore/icon:
     specifiers:
       '@semcore/flex-box': ^4
+      '@semcore/icon': ^3.3.2
       '@semcore/icon-transform-svg': 1.1.0
       '@semcore/jest-preset-ui': 1.0.0
       '@semcore/utils': ^3.40.0
@@ -855,6 +875,7 @@ importers:
       classnames: 2.2.6
     dependencies:
       '@semcore/flex-box': link:../flex-box
+      '@semcore/icon': 'link:'
       '@semcore/utils': link:../utils
       classnames: 2.2.6
     devDependencies:
@@ -1546,79 +1567,79 @@ importers:
 
   semcore/ui:
     specifiers:
-      '@semcore/accordion': 4.1.11
-      '@semcore/animation': 1.8.0
-      '@semcore/badge': 3.2.5
-      '@semcore/base-trigger': 3.2.11
-      '@semcore/breadcrumbs': 4.2.9
-      '@semcore/breakpoints': 1.2.5
-      '@semcore/button': 4.2.5
-      '@semcore/card': 4.1.9
-      '@semcore/carousel': 2.1.10
-      '@semcore/checkbox': 6.2.0
-      '@semcore/color-picker': 1.2.12
+      '@semcore/accordion': 4.2.4
+      '@semcore/animation': 1.8.5
+      '@semcore/badge': 3.3.3
+      '@semcore/base-trigger': 3.4.3
+      '@semcore/breadcrumbs': 4.4.2
+      '@semcore/breakpoints': 1.2.9
+      '@semcore/button': 4.3.3
+      '@semcore/card': 4.2.5
+      '@semcore/carousel': 2.2.4
+      '@semcore/checkbox': 6.3.3
+      '@semcore/color-picker': 1.4.2
       '@semcore/continuous-delivery': '*'
-      '@semcore/core': 1.13.6
-      '@semcore/counter': 2.1.5
-      '@semcore/d3-chart': 2.5.5
-      '@semcore/data-table': 3.5.4
-      '@semcore/date-picker': 3.4.17
-      '@semcore/divider': 3.1.5
-      '@semcore/dot': 4.1.8
-      '@semcore/drag-and-drop': 2.2.2
-      '@semcore/dropdown': 3.2.6
-      '@semcore/dropdown-menu': 3.4.2
-      '@semcore/ellipsis': 1.0.5
+      '@semcore/core': 1.13.10
+      '@semcore/counter': 2.2.3
+      '@semcore/d3-chart': 2.7.2
+      '@semcore/data-table': 3.7.2
+      '@semcore/date-picker': 3.6.3
+      '@semcore/divider': 3.2.3
+      '@semcore/dot': 4.2.3
+      '@semcore/drag-and-drop': 2.4.3
+      '@semcore/dropdown': 3.4.1
+      '@semcore/dropdown-menu': 3.6.2
+      '@semcore/ellipsis': 1.1.4
       '@semcore/email': 1.0.2
-      '@semcore/errors': 3.5.6
-      '@semcore/feature-popover': 3.1.12
-      '@semcore/feedback-form': 5.2.5
-      '@semcore/flags': 3.2.4
-      '@semcore/flex-box': 4.6.5
-      '@semcore/format-text': 3.1.5
-      '@semcore/fullscreen-modal': 2.1.10
-      '@semcore/grid': 4.2.5
-      '@semcore/icon': 3.3.2
-      '@semcore/illustration': 1.3.5
-      '@semcore/inline-edit': 2.1.8
-      '@semcore/inline-input': 3.2.1
-      '@semcore/input': 3.4.2
-      '@semcore/input-mask': 4.3.8
-      '@semcore/input-number': 4.1.7
-      '@semcore/input-tags': 3.2.10
-      '@semcore/link': 4.2.5
-      '@semcore/modal': 3.1.12
-      '@semcore/neighbor-location': 3.1.5
-      '@semcore/notice': 4.2.11
-      '@semcore/notice-bubble': 4.3.1
-      '@semcore/notice-global': 1.2.11
-      '@semcore/outside-click': 2.5.5
-      '@semcore/pagination': 3.3.13
-      '@semcore/pills': 4.3.6
-      '@semcore/popper': 4.13.6
-      '@semcore/portal': 2.4.5
-      '@semcore/product-head': 3.2.2
-      '@semcore/progress-bar': 3.2.5
-      '@semcore/radio': 5.2.0
-      '@semcore/scroll-area': 4.1.5
-      '@semcore/select': 3.2.19
-      '@semcore/side-panel': 2.1.12
-      '@semcore/skeleton': 4.3.2
-      '@semcore/slider': 3.2.5
-      '@semcore/spin': 4.1.5
-      '@semcore/spin-container': 6.1.7
-      '@semcore/sticky': 2.3.5
-      '@semcore/switch': 4.2.5
-      '@semcore/tab-line': 3.1.6
-      '@semcore/tab-panel': 3.2.5
-      '@semcore/tag': 4.2.9
-      '@semcore/textarea': 4.2.0
-      '@semcore/time-picker': 3.2.18
-      '@semcore/tooltip': 5.2.0
-      '@semcore/typography': 4.2.9
-      '@semcore/utils': 3.42.0
-      '@semcore/widget-empty': 3.6.5
-      '@semcore/wizard': 1.1.13
+      '@semcore/errors': 3.7.3
+      '@semcore/feature-popover': 3.2.4
+      '@semcore/feedback-form': 5.3.3
+      '@semcore/flags': 3.3.3
+      '@semcore/flex-box': 4.7.3
+      '@semcore/format-text': 3.2.5
+      '@semcore/fullscreen-modal': 2.2.4
+      '@semcore/grid': 4.3.3
+      '@semcore/icon': 3.5.0
+      '@semcore/illustration': 1.3.9
+      '@semcore/inline-edit': 2.3.1
+      '@semcore/inline-input': 3.4.2
+      '@semcore/input': 3.5.3
+      '@semcore/input-mask': 4.4.3
+      '@semcore/input-number': 4.3.1
+      '@semcore/input-tags': 3.3.5
+      '@semcore/link': 4.3.6
+      '@semcore/modal': 3.3.2
+      '@semcore/neighbor-location': 3.1.9
+      '@semcore/notice': 4.4.3
+      '@semcore/notice-bubble': 4.5.2
+      '@semcore/notice-global': 1.4.3
+      '@semcore/outside-click': 2.5.8
+      '@semcore/pagination': 3.5.3
+      '@semcore/pills': 4.4.3
+      '@semcore/popper': 4.14.3
+      '@semcore/portal': 2.5.2
+      '@semcore/product-head': 3.3.3
+      '@semcore/progress-bar': 3.3.4
+      '@semcore/radio': 5.3.3
+      '@semcore/scroll-area': 4.2.3
+      '@semcore/select': 3.4.5
+      '@semcore/side-panel': 2.2.4
+      '@semcore/skeleton': 4.4.3
+      '@semcore/slider': 3.3.3
+      '@semcore/spin': 4.2.3
+      '@semcore/spin-container': 6.2.3
+      '@semcore/sticky': 2.4.3
+      '@semcore/switch': 4.3.3
+      '@semcore/tab-line': 3.2.3
+      '@semcore/tab-panel': 3.3.3
+      '@semcore/tag': 4.4.4
+      '@semcore/textarea': 4.3.3
+      '@semcore/time-picker': 3.4.5
+      '@semcore/tooltip': 5.3.3
+      '@semcore/typography': 4.3.4
+      '@semcore/utils': 3.44.1
+      '@semcore/widget-empty': 3.8.2
+      '@semcore/wizard': 1.2.4
       '@types/react': 18.0.21
       fast-glob: 3.2.11
       fs-extra: 9.0.1
@@ -1715,8 +1736,11 @@ importers:
       '@types/react': 18.0.21
       '@types/react-dom': 18.0.6
       classnames: 2.2.6
+      fast-glob: 3.2.11
       hoist-non-react-statics: 3.3.2
       nano-css: 5.3.4
+      postcss: ^8.4.19
+      postcss-value-parser: 4.1.0
     dependencies:
       '@babel/runtime': 7.19.0
       classnames: 2.2.6
@@ -1729,11 +1753,14 @@ importers:
       '@types/node': 17.0.45
       '@types/react': 18.0.21
       '@types/react-dom': 18.0.6
+      fast-glob: 3.2.11
+      postcss: 8.4.20
+      postcss-value-parser: 4.1.0
 
   semcore/widget-empty:
     specifiers:
       '@semcore/flex-box': ^4
-      '@semcore/illustration': 1.3.5
+      '@semcore/illustration': 1.3.9
       '@semcore/jest-preset-ui': 1.0.0
       '@semcore/utils': ^3.27
       '@types/react': 18.0.21
@@ -1764,7 +1791,7 @@ importers:
 
   tools/babel-plugin-react-semcore:
     specifiers:
-      '@semcore/babel-plugin-styles': ^1.2
+      '@semcore/babel-plugin-styles': ^1.5
       babel-plugin-tester: 8.0.1
       css-purge: 3.1.8
       find-package-json: 1.2.0
@@ -1933,11 +1960,13 @@ importers:
 
   tools/continuous-delivery:
     specifiers:
-      '@semcore/changelog-handler': 0.0.1
+      '@semcore/changelog-handler': '*'
+      '@semcore/slack-integration': '*'
       '@types/fs-extra': 9.0.13
       '@types/semver': 7.3.9
       axios: 0.25.0
       dayjs: 1.10.7
+      dotenv: ^16.0.3
       execa: 6.1.0
       fs-extra: 9.0.1
       marked-ast: 0.3.0
@@ -1948,8 +1977,10 @@ importers:
       tsm: 2.2.2
     dependencies:
       '@semcore/changelog-handler': link:../changelog-handler
+      '@semcore/slack-integration': link:../slack-integration
       axios: 0.25.0
       dayjs: 1.10.7
+      dotenv: 16.0.3
       execa: 6.1.0
       fs-extra: 9.0.1
       marked-ast: 0.3.0
@@ -2058,6 +2089,7 @@ importers:
       jest-image-snapshot: 2.9.0
       react: '*'
       react-dom: '*'
+      request: 2.88.2
     dependencies:
       '@babel/core': 7.19.1
       '@semcore/babel-preset-ui': link:../babel-preset-ui
@@ -2073,6 +2105,7 @@ importers:
       jest-image-snapshot: 2.9.0
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
+      request: 2.88.2
     devDependencies:
       '@guidepup/guidepup': 0.13.1
       '@types/jest-axe': 3.5.1
@@ -2294,6 +2327,20 @@ importers:
       '@types/react-dom': 18.0.6
       babel-plugin-tester: 7.0.1
       jest: 29.0.1_@types+node@17.0.45
+
+  tools/shadow-loader:
+    specifiers:
+      '@reshadow/utils': 0.0.1-alpha.75
+      find-cache-dir: 3.3.1
+      loader-utils: 2.0.0
+      mkdirp: 1.0.4
+      webpack-virtual-modules: 0.3.2
+    dependencies:
+      '@reshadow/utils': 0.0.1-alpha.75
+      find-cache-dir: 3.3.1
+      loader-utils: 2.0.0
+      mkdirp: 1.0.4
+      webpack-virtual-modules: 0.3.2
 
   tools/slack-integration:
     specifiers:
@@ -4643,17 +4690,6 @@ packages:
       }
     dev: true
 
-  /@guidepup/playwright/0.6.1:
-    resolution:
-      {
-        integrity: sha512-3nItcGdIPjO11j6KuvPbs5gsZqkp/LUFEYK/BRUcIUalxpZMw7KWPe9pNa40J9nKyi41T9qepxsq5Qx2Dbm1ZA==,
-      }
-    peerDependencies:
-      '@playwright/test': ^1.17.1
-    dependencies:
-      '@guidepup/guidepup': 0.13.1
-    dev: true
-
   /@guidepup/playwright/0.6.1_@playwright+test@1.25.1:
     resolution:
       {
@@ -5120,6 +5156,18 @@ packages:
       {
         integrity: sha512-oYATyZXe0gLbOnqDa01T5HeivUiEY7LxyfbTYVX6Q8pIWvfBJE0ftrrJkeKA2PW5HilE7qWxn7tmlX2YQFowSg==,
       }
+    dev: false
+
+  /@reshadow/utils/0.0.1-alpha.75:
+    resolution:
+      {
+        integrity: sha512-9YerWUjSae8RVLacGh6XUhUIhfAG9K5CgvOjAa5t4HgTZ/ris4Wz1Yxj06wBKu8QacFBpY+D4YiJCAyEqnGBXA==,
+      }
+    dependencies:
+      html-tags: 3.2.0
+      resolve: 1.22.1
+      string-hash: 1.1.3
+      svg-tag-names: 2.0.1
     dev: false
 
   /@semcore/theme-redesign/1.5.12:
@@ -5681,12 +5729,22 @@ packages:
         integrity: sha512-/5OFZgfIPSwy+YuIBP/FgJnQnsxhZhjjrnxudMddeblOouIodEQ75X14Rr4wGSG/bknL+Omy9iWlLo1u/9GzAA==,
       }
     dependencies:
-      '@types/react': 18.0.21
+      '@types/react': 18.0.25
 
   /@types/react/18.0.21:
     resolution:
       {
         integrity: sha512-7QUCOxvFgnD5Jk8ZKlUAhVcRj7GuJRjnjjiY/IUBWKgOlnvDvTMLD4RTF7NPyVmbRhNrbomZiOepg7M/2Kj1mA==,
+      }
+    dependencies:
+      '@types/prop-types': 15.7.5
+      '@types/scheduler': 0.16.2
+      csstype: 3.0.8
+
+  /@types/react/18.0.25:
+    resolution:
+      {
+        integrity: sha512-xD6c0KDT4m7n9uD4ZHi02lzskaiqcBxf4zi+tXZY98a04wvc0hi/TcCPC2FOESZi51Nd7tlUeOJY8RofL799/g==,
       }
     dependencies:
       '@types/prop-types': 15.7.5
@@ -6094,6 +6152,15 @@ packages:
     engines: { node: '>=0.4.0' }
     hasBin: true
     dev: true
+
+  /acorn/8.8.1:
+    resolution:
+      {
+        integrity: sha512-7zFpHzhnqYKrkYdUjF1HI1bzd0VygEGX8lFk4k5zVMqHEoES+P+7TKI+EvLO9WVMJ8eekdO0aDEK044xTXwPPA==,
+      }
+    engines: { node: '>=0.4.0' }
+    hasBin: true
+    dev: false
 
   /agent-base/6.0.2:
     resolution:
@@ -6683,7 +6750,7 @@ packages:
       num2fraction: 1.2.2
       picocolors: 0.2.1
       postcss: 7.0.39
-      postcss-value-parser: 4.1.0
+      postcss-value-parser: 4.2.0
     dev: false
 
   /aws-sign2/0.7.0:
@@ -7091,6 +7158,13 @@ packages:
         integrity: sha512-+hN/Zh2D08Mx65pZ/4g5bsmNiZUuChDiQfTUQ7qJr4/kuopCr88xZsAXv6mBoZEsUI4OuGHlX59qE94K2mMW8Q==,
       }
     dev: true
+
+  /big.js/5.2.2:
+    resolution:
+      {
+        integrity: sha512-vyL2OymJxmarO8gxMr0mhChsO9QGwhynfuu4+MHTAW6czfq9humCB7rKpUjDd9YUiDPU4mzpyupFSvOClAwbmQ==,
+      }
+    dev: false
 
   /bignumber.js/9.1.0:
     resolution:
@@ -9472,6 +9546,7 @@ packages:
         optional: true
     dependencies:
       ms: 2.1.3
+      supports-color: 5.5.0
 
   /debug/3.2.7_supports-color@5.5.0:
     resolution:
@@ -10113,6 +10188,14 @@ packages:
     engines: { node: '>=12' }
     dev: false
 
+  /dotenv/16.0.3:
+    resolution:
+      {
+        integrity: sha512-7GO6HghkA5fYG9TYnNxi14/7K9f5occMlp3zXAuSxn7CKCxt9xbNWG7yF8hTCSUchlfWSe3uLmlPfigevRItzQ==,
+      }
+    engines: { node: '>=12' }
+    dev: false
+
   /dotenv/8.2.0:
     resolution:
       {
@@ -10270,6 +10353,14 @@ packages:
       }
     engines: { node: '>= 0.10' }
     dev: true
+
+  /emojis-list/3.0.0:
+    resolution:
+      {
+        integrity: sha512-/kyM18EfinwXZbno9FyUGeFh87KC8HRQBQGildHZbEuRyWFOmv1U10o9BBp8XVZDVNNuQKyIGIu5ZYAAXJ0V2Q==,
+      }
+    engines: { node: '>= 4' }
+    dev: false
 
   /encodeurl/1.0.2:
     resolution:
@@ -11859,6 +11950,13 @@ packages:
       merge2: 1.4.1
       micromatch: 4.0.5
 
+  /fast-hash-code/2.1.0:
+    resolution:
+      {
+        integrity: sha512-hJ/kSGwlKevFdK7ff1wv6H5m5zINYnScp2/uX4G24OCvGvVM/3/UmIpdNkMW3x6T6CMSN1TG94nMSjiqHHVg8A==,
+      }
+    dev: true
+
   /fast-json-stable-stringify/2.1.0:
     resolution:
       {
@@ -12124,6 +12222,18 @@ packages:
       commondir: 1.0.1
       make-dir: 2.1.0
       pkg-dir: 3.0.0
+    dev: false
+
+  /find-cache-dir/3.3.1:
+    resolution:
+      {
+        integrity: sha512-t2GDMt3oGC/v+BMwzmllWDuJF/xcDtE5j/fCGbqDD7OLuJkj0cfh1YSA5VKPvwMeLFLNDBkwOKZ2X85jGLVftQ==,
+      }
+    engines: { node: '>=8' }
+    dependencies:
+      commondir: 1.0.1
+      make-dir: 3.1.0
+      pkg-dir: 4.2.0
     dev: false
 
   /find-package-json/1.2.0:
@@ -13498,6 +13608,14 @@ packages:
         integrity: sha512-H2iMtd0I4Mt5eYiapRdIDjp+XzelXQ0tFE4JS7YFwFevXXMmOp9myNrUvCg0D6ws8iqkRPBfKHgbwig1SmlLfg==,
       }
     dev: true
+
+  /html-tags/3.2.0:
+    resolution:
+      {
+        integrity: sha512-vy7ClnArOZwCnqZgvv+ddgHgJiAFXe3Ge9ML5/mBctVJoUoYPCdxVucOywjDARn6CVoh3dRSFdPHy2sX80L0Wg==,
+      }
+    engines: { node: '>=8' }
+    dev: false
 
   /html-to-react/1.5.0:
     resolution:
@@ -16321,6 +16439,18 @@ packages:
       object-assign: 4.1.1
     dev: true
 
+  /loader-utils/2.0.0:
+    resolution:
+      {
+        integrity: sha512-rP4F0h2RaWSvPEkD7BLDFQnvSf+nK+wr3ESUjNTyAGobqrijmW92zc+SO6d4p4B1wh7+B/Jg1mkQe5NYUEHtHQ==,
+      }
+    engines: { node: '>=8.9.0' }
+    dependencies:
+      big.js: 5.2.2
+      emojis-list: 3.0.0
+      json5: 2.2.1
+    dev: false
+
   /locate-path/2.0.0:
     resolution:
       {
@@ -17486,6 +17616,15 @@ packages:
     hasBin: true
     dependencies:
       minimist: 1.2.6
+
+  /mkdirp/1.0.4:
+    resolution:
+      {
+        integrity: sha512-vVqVZQyf3WLx2Shd0qJ9xuvqgAyKPLAiqITEtqW0oIUjzo3PePDd6fW9iFz30ef7Ysp/oiWqbhszeGWW2T6Gzw==,
+      }
+    engines: { node: '>=10' }
+    hasBin: true
+    dev: false
 
   /moo-color/1.0.3:
     resolution:
@@ -18879,7 +19018,6 @@ packages:
     engines: { node: '>=8' }
     dependencies:
       find-up: 4.1.0
-    dev: true
 
   /pkg-up/3.1.0:
     resolution:
@@ -19002,7 +19140,7 @@ packages:
     dependencies:
       postcss: 7.0.39
       postcss-selector-parser: 6.0.10
-      postcss-value-parser: 4.1.0
+      postcss-value-parser: 4.2.0
     dev: false
 
   /postcss-calc/8.2.4_postcss@8.2.13:
@@ -19438,7 +19576,7 @@ packages:
       postcss: '8'
     dependencies:
       postcss: 8.2.13
-      postcss-value-parser: 4.1.0
+      postcss-value-parser: 4.2.0
       read-cache: 1.0.0
       resolve: 1.22.1
     dev: false
@@ -20286,7 +20424,6 @@ packages:
       {
         integrity: sha512-97DXOFbQJhk71ne5/Mt6cOu6yxsSfM0QGQyl0L25Gca4yGWEGJaig7l7gbCX623VqTBNGLRLaVUCnNkcedlRSQ==,
       }
-    dev: false
 
   /postcss-value-parser/4.2.0:
     resolution:
@@ -20354,6 +20491,18 @@ packages:
     resolution:
       {
         integrity: sha512-jtL6eTBrza5MPzy8oJLFuUscHDXTV5KcLlqAWHl5q5WYRfnNRGSmOZmOZ1T6Gy7A99mOZfqungmZMpMmCVJ8ZA==,
+      }
+    engines: { node: ^10 || ^12 || >=14 }
+    dependencies:
+      nanoid: 3.3.4
+      picocolors: 1.0.0
+      source-map-js: 1.0.2
+    dev: true
+
+  /postcss/8.4.20:
+    resolution:
+      {
+        integrity: sha512-6Q04AXR1212bXr5fh03u8aAwbLxAQNGQ/Q1LNa0VfOI06ZAlhPHtQvE4OIdpj4kLThXilalPnmDSOD65DcHt+g==,
       }
     engines: { node: ^10 || ^12 || >=14 }
     dependencies:
@@ -21097,12 +21246,13 @@ packages:
       react-instantsearch-core: 6.35.0_npc63xaus6igy2ygmd3t37sxzu
     dev: false
 
-  /react-instantsearch-native/6.35.0_react@18.2.0:
+  /react-instantsearch-native/6.35.0_npc63xaus6igy2ygmd3t37sxzu:
     resolution:
       {
         integrity: sha512-ggJvseTvrC5EQAGmUiuckXIYlxZxDWgKHsDxoyw9g+ceOTSr1NwZbU3SmXWRhL/FF/DsqRyOCpKN8RShym7/LQ==,
       }
     peerDependencies:
+      algoliasearch: '>= 3.1 < 5'
       react: '>= 16.3.0 < 19'
       react-native: '>= 0.54.0'
     dependencies:
@@ -21121,7 +21271,7 @@ packages:
       '@babel/runtime': 7.19.0
       react-instantsearch-core: 6.35.0_npc63xaus6igy2ygmd3t37sxzu
       react-instantsearch-dom: 6.35.0_2jcwevs35ru34jgausncc4whxu
-      react-instantsearch-native: 6.35.0_react@18.2.0
+      react-instantsearch-native: 6.35.0_npc63xaus6igy2ygmd3t37sxzu
     transitivePeerDependencies:
       - algoliasearch
       - react
@@ -23435,6 +23585,13 @@ packages:
       }
     engines: { node: '>= 0.4' }
 
+  /svg-tag-names/2.0.1:
+    resolution:
+      {
+        integrity: sha512-BEZ508oR+X/b5sh7bT0RqDJ7GhTpezjj3P1D4kugrOaPs6HijviWksoQ63PS81vZn0QCjZmVKjHDBniTo+Domg==,
+      }
+    dev: false
+
   /svgo/1.3.2:
     resolution:
       {
@@ -24436,6 +24593,18 @@ packages:
     engines: { node: '>= 0.8' }
     dev: false
 
+  /unplugin/1.0.0:
+    resolution:
+      {
+        integrity: sha512-H5UnBUxfhTXBXGo2AwKsl0UaLSHzSNDZNehPQSgdhVfO/t+XAS1Yoj3vmLrrlBrS9ZwtH5tejbX/TCp5DcyCKg==,
+      }
+    dependencies:
+      acorn: 8.8.1
+      chokidar: 3.5.3
+      webpack-sources: 3.2.3
+      webpack-virtual-modules: 0.4.6
+    dev: false
+
   /unquote/1.1.1:
     resolution:
       {
@@ -24867,6 +25036,7 @@ packages:
       {
         integrity: sha512-z8P5DvDNjKDoFIHK7q8r8lackT6l+jo/Ye3HOle7l9nICP9lf1Ci25fy9vHd0JOWewkIFzXIEig3TdKT7JQ5fQ==,
       }
+    deprecated: Use your platform's native performance.now() and performance.timeOrigin.
     dependencies:
       browser-process-hrtime: 1.0.0
     dev: false
@@ -24926,6 +25096,32 @@ packages:
       }
     engines: { node: '>=12' }
     dev: true
+
+  /webpack-sources/3.2.3:
+    resolution:
+      {
+        integrity: sha512-/DyMEOrDgLKKIG0fmvtz+4dUX/3Ghozwgm6iPp8KRhvn+eQf9+Q7GWxVNMk3+uCPWfdXYC4ExGBckIXdFEfH1w==,
+      }
+    engines: { node: '>=10.13.0' }
+    dev: false
+
+  /webpack-virtual-modules/0.3.2:
+    resolution:
+      {
+        integrity: sha512-RXQXioY6MhzM4CNQwmBwKXYgBs6ulaiQ8bkNQEl2J6Z+V+s7lgl/wGvaI/I0dLnYKB8cKsxQc17QOAVIphPLDw==,
+      }
+    dependencies:
+      debug: 3.2.7
+    transitivePeerDependencies:
+      - supports-color
+    dev: false
+
+  /webpack-virtual-modules/0.4.6:
+    resolution:
+      {
+        integrity: sha512-5tyDlKLqPfMqjT3Q9TAqf2YqjwmnUleZwzJi1A5qXnlBCdj2AtOJ6wAWdglTIDOPgOiOrXeBeFcsQ8+aGQ6QbA==,
+      }
+    dev: false
 
   /whatwg-encoding/1.0.5:
     resolution:

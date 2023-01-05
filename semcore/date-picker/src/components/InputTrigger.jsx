@@ -47,12 +47,12 @@ class InputTriggerRoot extends Component {
 
   render() {
     const SInputTrigger = Root;
-    const { Children, style } = this.asProps;
+    const { Children, style, getI18nText } = this.asProps;
 
     return sstyled(style)(
       <SInputTrigger
         render={Box}
-        aria-label="Date field"
+        aria-label={getI18nText('input')}
         __excludeProps={['onChange', 'value', 'role']}
       >
         <Children />

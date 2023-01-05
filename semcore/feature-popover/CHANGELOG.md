@@ -2,19 +2,35 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.2.4] - 2022-12-27
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/icon` [3.4.3 ~> 3.5.0]).
+
+## [3.2.1] - 2022-12-13
+
+### Changed
+
+- Added `react-dom` to peer dependencies.
+
+## [3.2.0] - 2022-12-12
+
+### Added
+
+- Design tokens based theming.
+
+## [3.1.13] - 2022-12-09
+
+### Fixed
+
+- Opening animation is working again.
+
 ## [3.1.12] - 2022-12-06
 
 ### Changed
 
 - Version patch update due to children dependencies update (`@semcore/animation` [1.7.3 ~> 1.8.0]).
-
-## [3.1.8] - 2022-11-08
-
-## [3.1.7] - 2022-11-03
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/popper` [4.13.3 ~> 4.13.4]).
 
 ## [3.1.0] - 2022-10-10
 

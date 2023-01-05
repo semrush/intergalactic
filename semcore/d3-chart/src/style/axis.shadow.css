@@ -1,7 +1,5 @@
-@import '@semcore/utils/style/var.css';
-
 SAxis {
-  stroke: var(--gray-200);
+  stroke: var(--intergalactic-chart-grid-x-axis, #c4c7cf);
 }
 
 SAxis[hide] {
@@ -9,8 +7,8 @@ SAxis[hide] {
 }
 
 STick {
-  font-size: 12px;
-  fill: var(--gray-500);
+  font-size: var(--intergalactic-fs-100, 12px);
+  fill: var(--intergalactic-chart-grid-text-label, #6c6e79);
 }
 
 STick[hide] {
@@ -19,12 +17,12 @@ STick[hide] {
 
 SGrid {
   fill: transparent;
-  stroke: var(--gray-100);
+  stroke: var(--intergalactic-border-secondary, #e0e1e9);
 }
 
 STitle {
-  font-size: 12px;
-  fill: var(--gray-500);
+  font-size: var(--intergalactic-fs-100, 12px);
+  fill: var(--intergalactic-text-hint, #6c6e79);
   transform-origin: var(--transform-origin);
 }
 

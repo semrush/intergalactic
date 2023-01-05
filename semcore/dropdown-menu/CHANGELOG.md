@@ -2,6 +2,48 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.6.3] - 2022-12-27
+
+### Changed
+
+- `DropdownMenu.Popper` closes when the `Enter` button is pressed.
+
+## [3.6.2] - 2022-12-27
+
+### Added
+
+- Added `box-sizing` for correct offset display.
+
+## [3.6.1] - 2022-12-19
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/dropdown` [3.4.0 ~> 3.4.1], `@semcore/utils` [3.44.0 ~> 3.44.1]).
+
+## [3.6.0] - 2022-12-14
+
+### Added
+
+- Added internationalization of aria attributes.
+
+## [3.5.2] - 2022-12-13
+
+### Fixed
+
+- Fix tabulation and moving highlighted items
+
+## [3.5.1] - 2022-12-13
+
+### Changed
+
+- Added `react-dom` to peer dependencies.
+
+## [3.5.0] - 2022-12-12
+
+### Added
+
+- Design tokens based theming.
+
 ## [3.4.2] - 2022-12-01
 
 ### Changed

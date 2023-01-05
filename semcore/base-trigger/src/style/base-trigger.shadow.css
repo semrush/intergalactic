@@ -1,5 +1,3 @@
-@import '@semcore/utils/style/var.css';
-
 SBaseTrigger {
   display: inline-block;
   align-items: center;
@@ -20,14 +18,14 @@ SBaseTrigger {
   outline: 0;
   text-align: center;
   vertical-align: middle;
-  font-family: Inter, sans-serif;
+  font-family: var(--intergalactic-base, Inter), sans-serif;
   cursor: pointer;
 
-  background: #ffffff;
+  background: var(--intergalactic-bg-primary-neutral, #ffffff);
 
-  font-weight: 400;
-  border: 1px solid var(--gray-200);
-  color: var(--gray-800);
+  font-weight: var(--intergalactic-regular, 400);
+  border: 1px solid var(--intergalactic-border-primary, #c4c7cf);
+  color: var(--intergalactic-text-primary, #191b23);
 
   &::-moz-focus-inner {
     border: none;
@@ -42,22 +40,22 @@ SBaseTrigger {
   }
 
   &[keyboardFocused] {
-    border: 1px solid var(--blue-400);
-    box-shadow: var(--keyboard-focus);
+    border: 1px solid var(--intergalactic-border-info-active, #006dca);
+    box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.3));
   }
 
   &:hover {
-    background-color: color-mod(var(--gray-400) a(20%));
+    background-color: var(--intergalactic-bg-primary-neutral-hover, #f4f5f9);
   }
 
   &:active,
   &[active] {
-    background-color: color-mod(var(--gray-400) a(30%));
+    background-color: var(--intergalactic-bg-primary-neutral-active, #e0e1e9);
   }
 }
 
 SBaseTrigger[disabled] {
-  opacity: var(--disabled-opacity);
+  opacity: var(--intergalactic-disabled-opacity, 0.3);
   cursor: default;
   pointer-events: none; /* Disable link interactions */
 }
@@ -76,11 +74,12 @@ SInner {
 
 SText {
   display: inline;
+  /* disable-tokens-validator */
   padding: 1px 0;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-  line-height: var(--lh-200);
+  line-height: var(--intergalactic-lh-200, 142%);
   flex-grow: 1;
   text-align: left;
 }
@@ -100,22 +99,22 @@ SBaseAddon {
 SBaseTrigger[size='m'] {
   min-width: 26px;
   height: 28px;
-  border-radius: var(--rounded-m);
-  padding: 0 8px;
-  font-size: var(--fs-200);
+  border-radius: var(--intergalactic-rounded-medium, 6px);
+  padding: 0 var(--intergalactic-spacing-2x, 8px);
+  font-size: var(--intergalactic-fs-200, 14px);
 
   & SAddon {
     &:not(:only-child):first-child {
-      margin-right: 8px;
+      margin-right: var(--intergalactic-spacing-2x, 8px);
     }
 
     &:not(:only-child):last-child {
-      margin-left: 8px;
+      margin-left: var(--intergalactic-spacing-2x, 8px);
     }
 
     &:only-child {
-      margin-left: -4px;
-      margin-right: -4px;
+      margin-left: calc(-1 * var(--intergalactic-spacing-1x, 4px));
+      margin-right: calc(-1 * var(--intergalactic-spacing-1x, 4px));
     }
   }
 }
@@ -123,22 +122,22 @@ SBaseTrigger[size='m'] {
 SBaseTrigger[size='l'] {
   min-width: 32px;
   height: 40px;
-  border-radius: var(--rounded-m);
-  padding: 0 12px;
-  font-size: var(--fs-300);
+  border-radius: var(--intergalactic-rounded-medium, 6px);
+  padding: 0 var(--intergalactic-spacing-3x, 12px);
+  font-size: var(--intergalactic-fs-300, 16px);
 
   & SAddon {
     &:not(:only-child):first-child {
-      margin-right: 8px;
+      margin-right: var(--intergalactic-spacing-2x, 8px);
     }
 
     &:not(:only-child):last-child {
-      margin-left: 8px;
+      margin-left: var(--intergalactic-spacing-2x, 8px);
     }
 
     &:only-child {
-      margin-left: -4px;
-      margin-right: -4px;
+      margin-left: calc(-1 * var(--intergalactic-spacing-1x, 4px));
+      margin-right: calc(-1 * var(--intergalactic-spacing-1x, 4px));
     }
   }
 }
@@ -150,32 +149,34 @@ SBaseTrigger[neighborLocation='right'] {
 
 SBaseTrigger[neighborLocation='both'] {
   border-radius: 0;
+  /* disable-tokens-validator */
   margin-left: -1px;
 }
 
 SBaseTrigger[neighborLocation='left'] {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
+  /* disable-tokens-validator */
   margin-left: -1px;
 }
 
 SText[placeholder] {
-  color: var(--gray-300);
+  color: var(--intergalactic-text-placeholder, #a9abb6);
 }
 
 SBaseTrigger[state='normal'] {
-  border-color: var(--gray-200);
+  border-color: var(--intergalactic-border-primary, #c4c7cf);
 }
 
 SBaseTrigger[state='valid'] {
-  border-color: var(--green-200);
+  border-color: var(--intergalactic-border-success, #59ddaa);
 }
 
 SBaseTrigger[state='invalid'] {
-  border-color: var(--red-200);
+  border-color: var(--intergalactic-border-danger, #ffaeb5);
 
   &[keyboardFocused] {
-    border-color: var(--orange-400);
-    box-shadow: 0 0 0 3px color-mod(var(--orange-400) a(30%));
+    border-color: var(--intergalactic-border-danger-active, #d1002f);
+    box-shadow: var(--intergalactic-keyboard-focus-invalid, 0px 0px 0px 3px rgba(255, 73, 83, 0.3));
   }
 }

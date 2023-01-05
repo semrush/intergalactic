@@ -143,7 +143,8 @@ const GENERATOR = {
           const template = EXPORT_TEMPLATES[extension].DEFAULT;
           await fs.outputFile(
             `./${name}/${icon}/${subFile}/index.${extension}`,
-            template(`${dependency}/${icon}/${subFile}`),
+            // normalize because "subFile" can be just "."
+            template(path.normalize(`${dependency}/${icon}/${subFile}`)),
           );
         }
       }
@@ -167,6 +168,7 @@ const generateFiles = async (packages: string[]) => {
 
     if (name === 'utils') await GENERATOR.UTILS(dep, name);
     if (name === 'icon') await GENERATOR.ICONS(dep, name);
+    if (name === 'illustration') await GENERATOR.ICONS(dep, name);
     await GENERATOR.OTHER(dep, name);
   }
 };

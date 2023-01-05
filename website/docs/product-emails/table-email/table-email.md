@@ -1,6 +1,7 @@
 ---
 title: Email table
 tabName: Example
+deprecated: true
 ---
 
 > 🚨 Current `@semcore/email` package is deprecated and not recommend for use. New major version is planned and will be released one day.

@@ -1,64 +1,62 @@
-@import '@semcore/utils/style/var.css';
-
 SNotice {
   display: flex;
-  padding: 16px;
-  font-size: var(--fs-200);
-  line-height: var(--lh-200);
+  padding: var(--intergalactic-spacing-4x, 16px);
+  font-size: var(--intergalactic-fs-200, 14px);
+  line-height: var(--intergalactic-lh-200, 142%);
   box-sizing: border-box;
   border-style: solid;
   border-width: 1px;
-  border-radius: var(--rounded-m);
+  border-radius: var(--intergalactic-rounded-medium, 6px);
 }
 
 SNotice[theme='info'] {
-  background-color: var(--blue-50);
-  border-color: var(--blue-200);
+  background-color: var(--intergalactic-bg-secondary-info, #e9f7ff);
+  border-color: var(--intergalactic-border-info, #8ecdff);
 
   & SCloseIcon {
-    color: var(--gray-400);
+    color: var(--intergalactic-icon-primary-neutral, #6c6e79);
 
     &:hover {
-      color: var(--gray-500);
+      color: var(--intergalactic-icon-primary-neutral-hover-active, #484a54);
     }
   }
 }
 
 SNotice[theme='danger'] {
-  background-color: var(--red-50);
-  border-color: var(--red-200);
+  background-color: var(--intergalactic-bg-secondary-critical, #fff0f7);
+  border-color: var(--intergalactic-border-danger, #ffaeb5);
 
   & SCloseIcon {
-    color: var(--red-400);
+    color: var(--intergalactic-icon-primary-critical, #ff4953);
 
     &:hover {
-      color: var(--red-500);
+      color: var(--intergalactic-icon-primary-critical-hover-active, #d1002f);
     }
   }
 }
 
 SNotice[theme='warning'] {
-  background-color: var(--orange-50);
-  border-color: var(--orange-200);
+  background-color: var(--intergalactic-bg-secondary-warning, #fff3d9);
+  border-color: var(--intergalactic-border-warning, #ffb26e);
 
   & SCloseIcon {
-    color: var(--orange-400);
+    color: var(--intergalactic-icon-primary-warning, #ff642d);
 
     &:hover {
-      color: var(--orange-500);
+      color: var(--intergalactic-icon-primary-warning-hover-active, #c33909);
     }
   }
 }
 
 SNotice[theme='success'] {
-  background-color: var(--green-50);
-  border-color: var(--green-200);
+  background-color: var(--intergalactic-bg-secondary-success, #dbfee8);
+  border-color: var(--intergalactic-border-success, #59ddaa);
 
   & SCloseIcon {
-    color: var(--green-400);
+    color: var(--intergalactic-icon-primary-success, #009f81);
 
     &:hover {
-      color: var(--green-500);
+      color: var(--intergalactic-icon-primary-success-hover-active, #007c65);
     }
   }
 }
@@ -70,29 +68,29 @@ SContent {
 
 SActions {
   flex-shrink: 0;
-  margin-top: 12px;
+  margin-top: var(--intergalactic-spacing-3x, 12px);
 }
 
 SLabel {
-  margin-top: 2px;
-  margin-right: 8px;
+  margin-top: var(--intergalactic-spacing-05x, 2px);
+  margin-right: var(--intergalactic-spacing-2x, 8px);
   display: inline-flex;
 }
 
 SLabel[theme='info'] {
-  color: var(--gray-400);
+  color: var(--intergalactic-icon-primary-neutral, #6c6e79);
 }
 
 SLabel[theme='danger'] {
-  color: var(--red-400);
+  color: var(--intergalactic-icon-primary-critical, #ff4953);
 }
 
 SLabel[theme='warning'] {
-  color: var(--orange-400);
+  color: var(--intergalactic-icon-primary-warning, #ff642d);
 }
 
 SLabel[theme='success'] {
-  color: var(--green-400);
+  color: var(--intergalactic-icon-primary-success, #009f81);
 }
 
 SLabel[theme='custom'] {
@@ -101,7 +99,7 @@ SLabel[theme='custom'] {
 
 SCloseIcon {
   flex-shrink: 0;
-  margin-left: 16px;
+  margin-left: var(--intergalactic-spacing-4x, 16px);
 }
 
 SNotice[theme='custom'] {

@@ -2,6 +2,42 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.2.5] - 2023-01-03
+
+### Fixed
+
+- Fixed css variable design tokens.
+
+## [3.2.4] - 2022-12-21
+
+### Fixed
+
+- Fixed underline for links from the design system.
+
+## [3.2.3] - 2022-12-19
+
+### Fixed
+
+- Fixed syntax css.
+
+## [3.2.2] - 2022-12-16
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.43.0 ~> 3.44.0], `@semcore/flex-box` [4.7.1 ~> 4.7.2]).
+
+## [3.2.1] - 2022-12-13
+
+### Changed
+
+- Added `react-dom` to peer dependencies.
+
+## [3.2.0] - 2022-12-12
+
+### Added
+
+- Design tokens based theming.
+
 ## [3.1.5] - 2022-11-30
 
 ### Fixed

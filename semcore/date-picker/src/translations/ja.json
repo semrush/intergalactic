@@ -9,5 +9,8 @@
   "last2Months": "過去2か月間",
   "last3Months": "過去3か月間",
   "last6Months": "過去6か月間",
-  "last12Months": "過去12か月間"
+  "last12Months": "過去12か月間",
+  "prev": "前期間",
+  "next": "次の期間",
+  "input": "データフィールド"
 }

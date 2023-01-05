@@ -2,5 +2,11 @@
   "prevPageLabel": "Trước",
   "nextPageLabel": "Tiếp",
   "pageInputLabel": "Trang:",
-  "totalPagesLabel": "của"
+  "totalPagesLabel": "của",
+  "pagination": "Phân trang",
+  "firstPage": "Trang đầu",
+  "currentPage": "Trang hiện tại",
+  "confirm": "Xác nhận số trang",
+  "lastPage": "Trang cuối #{lastPageNumber}",
+  "goToPage": "Trang {pageNumber}"
 }

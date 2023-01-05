@@ -2,15 +2,48 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [3.5.4] - 2022-11-30
+## [3.7.2] - 2022-12-27
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/flex-box` [4.6.4 ~> 4.6.5], `@semcore/utils` [3.41.0 ~> 3.42.0]).
+- Version patch update due to children dependencies update (`@semcore/icon` [3.4.3 ~> 3.5.0]).
+
+## [3.7.1] - 2022-12-22
+
+### Fixed
+
+- Fix style for `resizable`.
+
+## [3.7.0] - 2022-12-21
+
+### Changed
+
+- Removed vertical borders from header cells.
+- Added props `vBorders`, `borderLeft` and `borderRight` to have possibility to render vertical borders.
+- Added prop `compact` to reduce table paddings.
+- Added gradient to the sorting icon.
+
+## [3.6.3] - 2022-12-19
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.44.0 ~> 3.44.1]).
+
+## [3.6.2] - 2022-12-16
+
+## [3.6.1] - 2022-12-13
+
+### Changed
+
+- Added `react-dom` to peer dependencies.
+
+## [3.6.0] - 2022-12-12
+
+### Added
+
+- Design tokens based theming.
 
 ## [3.5.1] - 2022-11-08
-
-## [3.5.0] - 2022-11-01
 
 ### Added
 

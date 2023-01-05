@@ -2,6 +2,24 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.2.3] - 2022-12-19
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.44.0 ~> 3.44.1], `@semcore/flex-box` [4.7.2 ~> 4.7.3]).
+
+## [4.2.0] - 2022-12-12
+
+### Added
+
+- Design tokens based theming.
+
+## [4.1.6] - 2022-12-09
+
+### Fixed
+
+- Fixed calculation size when changing height of the container.
+
 ## [4.1.5] - 2022-11-30
 
 ### Changed

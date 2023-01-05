@@ -1,9 +1,7 @@
-@import '@semcore/utils/style/var.css';
-
 SLink {
   display: inline-block;
   font-family: inherit;
-  color: var(--blue-500);
+  color: var(--intergalactic-text-link, #006dca);
   line-height: normal;
   position: relative;
   cursor: pointer;
@@ -35,7 +33,7 @@ SLink {
   &[active],
   &:hover,
   &:active {
-    color: var(--blue-600);
+    color: var(--intergalactic-text-link-hover-active, #044792);
 
     & SText {
       border-color: currentColor;
@@ -44,11 +42,11 @@ SLink {
 }
 
 SLink[keyboardFocused] {
-  box-shadow: var(--keyboard-focus);
+  box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.3));
 }
 
 SLink[disabled] {
-  opacity: var(--disabled-opacity);
+  opacity: var(--intergalactic-disabled-opacity, 0.3);
   cursor: default;
   pointer-events: none; /* Disable link interactions */
 }
@@ -60,7 +58,7 @@ SLink[noWrapText] {
 SLink {
   &[enableVisited]:visited,
   &[enableVisited]:visited:hover {
-    color: var(--violet-500);
+    color: var(--intergalactic-text-link-visited, #8649e1);
   }
 }
 
@@ -69,19 +67,20 @@ SLink[inline] {
 }
 
 SAddon {
-  vertical-align: middle;
   display: inline-flex;
   justify-content: center;
   align-items: center;
+  margin-bottom: var(--intergalactic-spacing-05x, 2px);
+  vertical-align: middle;
 }
 
 SLink SAddon {
   &:not(:only-child):first-child {
-    margin-right: 4px;
+    margin-right: var(--intergalactic-spacing-1x, 4px);
   }
 
   &:not(:only-child):last-child {
-    margin-left: 4px;
+    margin-left: var(--intergalactic-spacing-1x, 4px);
   }
 }
 
@@ -102,6 +101,7 @@ SLink[color] {
   SLink {
     transition: none;
   }
+
   SText {
     transition: none;
   }

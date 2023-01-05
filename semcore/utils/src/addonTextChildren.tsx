@@ -2,6 +2,7 @@ import React from 'react';
 // @ts-ignore
 import { CHILDREN_COMPONENT, INHERITED_NAME } from '@semcore/core';
 import getOriginChildren from './getOriginChildren';
+import isNode from './isNode';
 
 function addonTextChildren(
   Children: any,
@@ -14,7 +15,7 @@ function addonTextChildren(
     return <Children />;
   }
 
-  if (!isTextWrapIfEmptyChildren && !children) {
+  if (!isTextWrapIfEmptyChildren && !isNode(children)) {
     return null;
   }
   return React.Children.toArray(children).some((element) => {

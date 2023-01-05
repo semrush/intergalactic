@@ -8,7 +8,7 @@ tabName: Design
 
 @## Description
 
-**Link** is a control that links to another web page or element. Links can be internal or external. It is one of the "quietest" control in the [visual loudness scale](/patterns/visual-loudness-scale) guide.
+**Link** is a control that links to another web page or element. Links can be internal or external. It is one of the "quietest" control in the [visual loudness scale](/core-principles/visual-loudness-scale) guide.
 
 @## Appearance
 

@@ -18,6 +18,7 @@ export interface ITimePickerProps extends Omit<IInputProps, 'size'> {
   size?: 'm' | 'l';
   /** 12-hour time format */
   is12Hour?: boolean;
+  locale?: string;
 }
 
 export interface ITimePickerItemProps extends IInputValueProps {

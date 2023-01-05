@@ -1,8 +1,7 @@
-@import '@semcore/utils/style/var.css';
 @import './var.css';
 
 SBar {
-  fill: var(--blue-03);
+  fill: var(--intergalactic-chart-palette-order-blue, #2bb3ff);
   transition-property: height, width, y;
   transition-duration: var(--duration);
   transition-timing-function: ease-in-out;
@@ -21,5 +20,5 @@ SBar[transparent] {
 }
 
 SBackground {
-  fill: var(--gray-200);
+  fill: var(--intergalactic-chart-palette-order-other-data, #c4c7cf);
 }

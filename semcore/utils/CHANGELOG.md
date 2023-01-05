@@ -2,6 +2,24 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.44.1] - 2022-12-16
+
+### Fixed
+
+- Fixed non-react node detection for `addonTextChildren`.
+
+## [3.44.0] - 2022-12-14
+
+### Changed
+
+- Supported semi-async internationalization.
+
+## [3.43.0] - 2022-12-12
+
+### Added
+
+- Added `ThemeProvider`.
+
 ## [3.42.0] - 2022-11-30
 
 ### Changed

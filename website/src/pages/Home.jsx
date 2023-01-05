@@ -6,7 +6,7 @@ import Tooltip from '@semcore/tooltip';
 import Tag from '@semcore/tag';
 import AllComponents from '../components/AllComponents';
 import EmailsBanner from '../components/EmailsBanner';
-import whale from '../static/illustration/whale.svg';
+import whale from '../static/illustration/whale-pic-christmas.svg';
 import layout from '../static/illustration/layout.svg';
 import principles from '../static/illustration/principles.svg';
 import style from '../static/illustration/style.svg';
@@ -20,6 +20,7 @@ import { navigationTree } from '@navigation';
 import staticFiles from '@static';
 import { usePageData } from '../components/routing';
 import Spin from '@semcore/spin';
+import WarningM from '@semcore/icon/Warning/m';
 import Error from '../components/Error';
 import styles from './Home.module.css';
 import { css } from '@semcore/core';
@@ -153,6 +154,7 @@ const getComponents = (titles) => {
           {child.elem.metadata.beta && (
             <Tag size="l" theme="primary" color="orange-500" children="beta" ml={1} />
           )}
+          {child.elem.metadata.deprecated && <WarningM className={styles.componentDeprecated} />}
         </Tooltip.Trigger>
         {pic && <Tooltip.Popper children={pic} />}
       </Tooltip>
@@ -234,9 +236,12 @@ const tableDataContext = React.createContext({});
 const Table = ({ titles }) => {
   const items = navigationTree.filter((nav) => !nav.metadata.hide && titles.includes(nav.title));
   const getDocs = items[0].children.map((item) => (
-    <Link to={item.route} key={item.route}>
-      {item.title}
-    </Link>
+    <Flex alignItems="center">
+      <Link to={item.route} key={item.route}>
+        {item.title}
+      </Link>
+      {item.metadata.deprecated && <WarningM className={styles.componentDeprecated} />}
+    </Flex>
   ));
 
   const { tableControls, tableStates } = React.useContext(tableDataContext);
@@ -353,23 +358,23 @@ function Home() {
                 value={value}
                 size="l"
               >
-                <TabLine.Item className={styles.tab} value={'components'} size={100}>
-                  Components
+                <TabLine.Item className={styles.tab} value={'components'}>
+                  <Text size={500}>Components</Text>
                 </TabLine.Item>
-                <TabLine.Item className={styles.tab} value={'charts'} size={100}>
-                  Charts
+                <TabLine.Item className={styles.tab} value={'charts'}>
+                  <Text size={500}>Charts</Text>
                 </TabLine.Item>
-                <TabLine.Item className={styles.tab} value={'table'} size={100}>
-                  Table
+                <TabLine.Item className={styles.tab} value={'table'}>
+                  <Text size={500}>Table</Text>
                 </TabLine.Item>
-                <TabLine.Item className={styles.tab} value={'ux'} size={100}>
-                  UX Patterns
+                <TabLine.Item className={styles.tab} value={'ux'}>
+                  <Text size={500}>UX Patterns</Text>
                 </TabLine.Item>
-                <TabLine.Item className={styles.tab} value={'filters'} size={100}>
-                  Filters
+                <TabLine.Item className={styles.tab} value={'filters'}>
+                  <Text size={500}>Filters</Text>
                 </TabLine.Item>
-                <TabLine.Item className={styles.tab} value={'documentation'} size={100}>
-                  Developer Docs
+                <TabLine.Item className={styles.tab} value={'documentation'}>
+                  <Text size={500}>Developer Docs</Text>
                 </TabLine.Item>
               </TabLine>
             </div>

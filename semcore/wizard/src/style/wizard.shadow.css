@@ -1,5 +1,3 @@
-@import '@semcore/utils/style/var.css';
-
 SWizard {
   max-width: 980px;
   max-height: 700px;
@@ -9,23 +7,25 @@ SWizard {
 }
 
 SSidebar {
-  background: var(--violet-600);
-  color: #fff;
-  font-weight: 700;
-  font-size: var(--fs-300);
-  line-height: var(--lh-300);
-  padding: 40px 8px 34px;
+  background: var(--intergalactic-control-primary-advertising, #5925ab);
+  color: var(--intergalactic-text-primary-invert, #ffffff);
+  font-weight: var(--intergalactic-bold, 700);
+  font-size: var(--intergalactic-fs-300, 16px);
+  line-height: var(--intergalactic-lh-300, 150%);
+  padding: var(--intergalactic-spacing-10x, 40px) var(--intergalactic-spacing-2x, 8px)
+    calc(var(--intergalactic-spacing-8x, 32px) + var(--intergalactic-spacing-05x, 2px));
   max-width: 220px;
   flex-shrink: 0;
   box-sizing: border-box;
-  border-radius: var(--rounded-l) 0 0 var(--rounded-l);
+  border-radius: var(--intergalactic-rounded-large, 12px) 0 0
+    var(--intergalactic-rounded-large, 12px);
   @media (max-width: 1060px) {
     width: 44px;
   }
 }
 
 SSidebarHeader {
-  margin: 0 20px 16px;
+  margin: 0 var(--intergalactic-spacing-5x, 20px) var(--intergalactic-spacing-4x, 16px);
   @media (max-width: 1060px) {
     display: none;
   }
@@ -33,42 +33,42 @@ SSidebarHeader {
 
 SStepper {
   display: flex;
-  font-size: var(--fs-200);
-  border-radius: var(--rounded-m);
-  padding: 8px 12px;
+  font-size: var(--intergalactic-fs-200, 14px);
+  border-radius: var(--intergalactic-rounded-medium, 6px);
+  padding: var(--intergalactic-spacing-2x, 8px) var(--intergalactic-spacing-3x, 12px);
   cursor: pointer;
   position: relative;
   overflow: auto;
-  line-height: var(--lh-200);
+  line-height: var(--intergalactic-lh-200, 142%);
 
   &:hover {
-    background: var(--violet-700);
+    background: var(--intergalactic-control-primary-advertising-hover, #421983);
     z-index: 1;
   }
   &[active] {
-    background: var(--violet-500);
+    background: var(--intergalactic-control-primary-advertising-active, #8649e1);
   }
   &:disabled,
   &[disabled] {
-    opacity: var(--disabled-opacity);
+    opacity: var(--intergalactic-disabled-opacity, 0.3);
     cursor: default;
     pointer-events: none; /* Disable interactions */
   }
 
   @media (max-width: 1060px) {
-    padding: 8px 4px;
+    padding: var(--intergalactic-spacing-2x, 8px) var(--intergalactic-spacing-1x, 4px);
     &:hover {
       width: fit-content;
       max-width: 220px;
     }
     &:hover SStepDescription {
       display: block;
-      border-radius: var(--rounded-m);
+      border-radius: var(--intergalactic-rounded-medium, 6px);
       white-space: nowrap;
       overflow: auto;
     }
     &[active]:hover SStepDescription {
-      background: var(--violet-500);
+      background: var(--intergalactic-control-primary-advertising-active, #8649e1);
     }
   }
 }
@@ -79,6 +79,7 @@ SStepNumber {
 }
 
 SCompleted {
+  /* disable-tokens-validator */
   margin-top: 1px;
 }
 
@@ -89,8 +90,9 @@ SStepDescription {
 }
 
 SContent {
-  padding: 40px;
+  padding: var(--intergalactic-spacing-10x, 40px);
   width: 100%;
-  border-radius: 0 var(--rounded-l) var(--rounded-l) 0;
-  background: var(--white);
+  border-radius: 0 var(--intergalactic-rounded-large, 12px) var(--intergalactic-rounded-large, 12px)
+    0;
+  background: var(--intergalactic-bg-primary-neutral, #ffffff);
 }

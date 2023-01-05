@@ -151,7 +151,7 @@
 }
 
 .formatText blockquote {
-  padding: 2rem;
+  padding: 1.5rem;
   margin: 1rem 0 1rem;
   font-size: 16px;
   line-height: 1.5em;
@@ -219,10 +219,12 @@
 
 .formatText ol li {
   padding-left: 0;
+  margin-bottom: 8px;
 }
 
 .formatText ul li {
   padding-left: 0;
+  margin-bottom: 8px;
 }
 
 .formatText li > ol {

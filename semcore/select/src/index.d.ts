@@ -64,6 +64,7 @@ export interface ISelectProps<T extends SelectValue = SelectValue>
    * Input name
    */
   name?: string;
+  locale?: string;
 }
 
 export interface ISelectOption {

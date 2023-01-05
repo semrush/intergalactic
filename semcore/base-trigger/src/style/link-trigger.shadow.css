@@ -1,5 +1,3 @@
-@import '@semcore/utils/style/var.css';
-
 SLinkTrigger {
   display: inline-flex;
   align-items: center;
@@ -17,16 +15,16 @@ SLinkTrigger {
   overflow: visible;
   outline: 0;
   vertical-align: middle;
-  font-family: Inter, sans-serif;
+  font-family: var(--intergalactic-base, Inter), sans-serif;
   cursor: pointer;
-  color: var(--blue-500);
+  color: var(--intergalactic-text-link, #006dca);
   background: none;
   transition: color 0.15s ease-in-out;
 
   &[active],
   &:hover,
   &:active {
-    color: var(--blue-600);
+    color: var(--intergalactic-text-link-hover-active, #044792);
 
     & SText {
       border-color: currentColor;
@@ -38,7 +36,6 @@ SLinkTrigger {
     border-bottom-style: solid;
     border-color: transparent;
     transition: border-bottom-color 0.15s ease-in-out;
-    line-height: var(--lh-200);
     text-overflow: ellipsis;
     overflow: hidden;
   }
@@ -53,13 +50,13 @@ SLinkTrigger[color] {
 }
 
 SLinkTrigger[disabled] {
-  opacity: var(--disabled-opacity);
+  opacity: var(--intergalactic-disabled-opacity, 0.3);
   cursor: default;
   pointer-events: none;
 }
 
 SLinkTrigger[keyboardFocused] {
-  box-shadow: var(--keyboard-focus);
+  box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.3));
   z-index: 1;
 }
 
@@ -69,13 +66,14 @@ SLinkAddon {
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  margin-bottom: var(--intergalactic-spacing-05x, 2px);
 
   &:not(:only-child):first-child {
-    margin-right: 4px;
+    margin-right: var(--intergalactic-spacing-1x, 4px);
   }
 
   &:not(:only-child):last-child {
-    margin-left: 4px;
+    margin-left: var(--intergalactic-spacing-1x, 4px);
   }
 }
 
@@ -85,11 +83,11 @@ SLinkAddon {
 }
 
 SLinkTrigger[size='m'] {
-  font-size: var(--fs-200);
+  font-size: var(--intergalactic-fs-200, 14px);
 }
 
 SLinkTrigger[size='l'] {
-  font-size: var(--fs-300);
+  font-size: var(--intergalactic-fs-300, 16px);
 }
 
 @media (prefers-reduced-motion) {

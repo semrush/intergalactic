@@ -20,6 +20,7 @@ We use illustrations of three sizes.
 | Medium (80px \* 80px)  | ![example of a medium illustration](static/medium-size.png) ![example of a medium illustration](static/medium-size2.png) | Use this size for error messages and empty states.                        |
 | Small (40px \* 40px)   | ![example of a small illustration](static/small-size.png)                                                                | Use this size for secondary messages that should not draw much attention. |
 
+@page illustration-a11y
 @page illustration-code
 @page illustration-api
 @page illustration-changelog

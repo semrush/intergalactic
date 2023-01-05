@@ -1,5 +1,3 @@
-@import '@semcore/utils/style/var.css';
-
 SBreadcrumbs {
   display: flex;
   align-items: center;
@@ -9,8 +7,8 @@ SBreadcrumbs {
 }
 
 SSeparator {
-  margin: 0 8px;
-  color: var(--gray-300);
+  margin: 0 var(--intergalactic-spacing-2x, 8px);
+  color: var(--intergalactic-icon-secondary-neutral, #a9abb6);
   display: flex;
 
   &:last-child {
@@ -20,10 +18,10 @@ SSeparator {
 
 SBreadcrumbsItem {
   position: relative;
-  font-size: var(--fs-200);
-  line-height: var(--lh-100);
-  font-family: Inter, sans-serif;
-  color: var(--gray-500);
+  font-size: var(--intergalactic-fs-200, 14px);
+  line-height: var(--intergalactic-lh-100, 133%);
+  font-family: var(--intergalactic-base, Inter), sans-serif;
+  color: var(--intergalactic-text-secondary, #6c6e79);
   text-decoration: none;
   box-sizing: border-box;
   outline: none;
@@ -34,16 +32,16 @@ SBreadcrumbsItem {
 
   &:hover {
     text-decoration: underline;
-    color: var(--gray-600);
+    color: var(--intergalactic-text-hint-hover-active, #484a54);
   }
 }
 
 SBreadcrumbsItem[keyboardFocused] {
-  box-shadow: var(--keyboard-focus);
+  box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.3));
 }
 
 SBreadcrumbsItem[active] {
-  color: var(--gray-800);
+  color: var(--intergalactic-text-primary, #191b23);
   cursor: default;
   &:hover {
     text-decoration: none;

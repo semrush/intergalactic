@@ -2,11 +2,47 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [3.2.19] - 2022-12-06
+## [3.4.5] - 2022-12-27
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/input` [3.4.1 ~> 3.4.2]).
+- Version patch update due to children dependencies update (`@semcore/base-trigger` [3.4.2 ~> 3.4.3], `@semcore/icon` [3.4.3 ~> 3.5.0]).
+
+## [3.4.2] - 2022-12-21
+
+### Fixed
+
+- Fixed display of placeholder with empty value.
+
+## [3.4.1] - 2022-12-19
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/base-trigger` [3.4.0 ~> 3.4.1], `@semcore/checkbox` [6.3.2 ~> 6.3.3], `@semcore/divider` [3.2.2 ~> 3.2.3], `@semcore/dropdown-menu` [3.6.0 ~> 3.6.1], `@semcore/flex-box` [4.7.2 ~> 4.7.3], `@semcore/icon` [3.4.2 ~> 3.4.3], `@semcore/input` [3.5.2 ~> 3.5.3], `@semcore/utils` [3.44.0 ~> 3.44.1]).
+
+## [3.4.0] - 2022-12-14
+
+### Added
+
+- Added internationalization of aria attributes.
+
+## [3.3.2] - 2022-12-13
+
+### Changed
+
+- Added `react-dom` to peer dependencies.
+
+## [3.3.1] - 2022-12-12
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/base-trigger` [3.3.0 ~> 3.3.1]).
+
+## [3.3.0] - 2022-12-12
+
+### Added
+
+- Design tokens based theming.
 
 ## [3.2.18] - 2022-12-06
 

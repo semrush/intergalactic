@@ -1,10 +1,9 @@
-@import '@semcore/utils/style/var.css';
 @import './var.css';
 
 SLine {
   fill: transparent;
   stroke-width: 3;
-  stroke: var(--blue-03);
+  stroke: var(--intergalactic-chart-palette-order-blue, #2bb3ff);
   transition-property: d;
   transition-duration: var(--duration);
   transition-timing-function: ease-in-out;
@@ -24,7 +23,7 @@ SLine[transparent] {
 
 SNull {
   fill: transparent;
-  stroke: var(--gray-200);
+  stroke: var(-intergalactic-border-primary);
   stroke-dasharray: 4;
 }
 
