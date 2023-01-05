@@ -46,14 +46,16 @@ export const runPublisher = async (versionPatches: VersionPatch[]) => {
       encoding: 'utf-8',
       stdio: ['inherit', 'inherit', 'inherit'],
     });
-    execSync(`pnpm ${pnpmFilter} run upload-static`, {
-      encoding: 'utf-8',
-      stdio: ['inherit', 'inherit', 'inherit'],
-    });
-    execSync(`pnpm ${pnpmFilter} publish ${pnpmOptions}`, {
-      encoding: 'utf-8',
-      stdio: ['inherit', 'inherit', 'inherit'],
-    });
+    if (!process.argv.includes('--dry-run')) {
+      execSync(`pnpm ${pnpmFilter} run upload-static`, {
+        encoding: 'utf-8',
+        stdio: ['inherit', 'inherit', 'inherit'],
+      });
+      execSync(`pnpm ${pnpmFilter} publish ${pnpmOptions}`, {
+        encoding: 'utf-8',
+        stdio: ['inherit', 'inherit', 'inherit'],
+      });
+    }
   }
   if (semcoreUiPatch) {
     execSync(`pnpm --filter @semcore/ui run build`, {
@@ -68,10 +70,12 @@ export const runPublisher = async (versionPatches: VersionPatch[]) => {
         await git.tag(['-f', `@semcore/ui@${semcoreUiPatch.to}`]);
       }
     }
-    execSync(`pnpm --filter @semcore/ui publish ${pnpmOptions}`, {
-      encoding: 'utf-8',
-      stdio: ['inherit', 'inherit', 'inherit'],
-    });
+    if (!process.argv.includes('--dry-run')) {
+      execSync(`pnpm --filter @semcore/ui publish ${pnpmOptions}`, {
+        encoding: 'utf-8',
+        stdio: ['inherit', 'inherit', 'inherit'],
+      });
+    }
   }
   if (!process.argv.includes('--dry-run')) {
     await git.pull('origin', 'master', { '--rebase': 'true' });
