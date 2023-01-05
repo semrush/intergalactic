@@ -329,7 +329,9 @@ const processedCss = await Promise.all(
           return {};
         },
       },
-    ]).process(cssContent),
+    ]).process(cssContent, {
+      from: undefined,
+    }),
   ),
 );
 await Promise.all(
