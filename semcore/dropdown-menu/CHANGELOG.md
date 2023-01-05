@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.6.3] - 2022-12-27
+
+### Changed
+
+- `DropdownMenu.Popper` closes when the `Enter` button is pressed.
+
 ## [3.6.2] - 2022-12-27
 
 ### Added
