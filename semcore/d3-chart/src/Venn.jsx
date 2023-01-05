@@ -55,11 +55,12 @@ class VennRoot extends Component {
       originalData: this.asProps.data[props.dataKey],
       onMouseMove: this.bindHandlerTooltip(true, props),
       onMouseLeave: this.bindHandlerTooltip(false, props),
+      transparent: this.asProps.transparent,
     };
   }
 
   getIntersectionProps(props) {
-    const { duration } = this.asProps;
+    const { duration, transparent } = this.asProps;
     const dataKeys = props.dataKey.split('/');
     return {
       duration,
@@ -68,6 +69,7 @@ class VennRoot extends Component {
       originalData: this.asProps.data[props.dataKey],
       onMouseMove: this.bindHandlerTooltip(true, props),
       onMouseLeave: this.bindHandlerTooltip(false, props),
+      transparent,
     };
   }
 
@@ -99,6 +101,7 @@ function Circle({
   name,
   dataKey,
   dataHintsHandler,
+  transparent,
 }) {
   dataHintsHandler.describeValueEntity(dataKey, name);
 
@@ -110,13 +113,22 @@ function Circle({
       cx={data.x}
       cy={data.y}
       r={data.radius}
+      transparent={transparent}
       use:duration={`${duration}ms`}
     />,
   );
 }
 
 function Intersection(props) {
-  const { Element: SIntersection, styles, data, name, dataKey, dataHintsHandler } = props;
+  const {
+    Element: SIntersection,
+    styles,
+    data,
+    name,
+    dataKey,
+    dataHintsHandler,
+    transparent,
+  } = props;
   dataHintsHandler.describeValueEntity(dataKey, name);
 
   const renderIntersection = React.useCallback(
@@ -126,7 +138,12 @@ function Intersection(props) {
     [props],
   );
   return sstyled(styles)(
-    <SIntersection aria-hidden render={renderIntersection} d={intersectionAreaPath(data)} />,
+    <SIntersection
+      aria-hidden
+      render={renderIntersection}
+      d={intersectionAreaPath(data)}
+      transparent={transparent}
+    />,
   );
 }
 

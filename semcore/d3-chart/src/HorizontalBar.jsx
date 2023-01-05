@@ -45,6 +45,7 @@ class HorizontalBarRoot extends Component {
       onMouseMove,
       onMouseLeave,
       groupKey,
+      transparent,
     } = this.asProps;
 
     const [xScale, yScale] = scale;
@@ -80,6 +81,7 @@ class HorizontalBarRoot extends Component {
         index={i}
         hide={hide}
         color={color}
+        transparent={transparent}
         x={barX}
         y={barY}
         width={width}

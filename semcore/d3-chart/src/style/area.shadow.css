@@ -9,6 +9,10 @@ SArea[color] {
   fill: var(--color);
 }
 
+SArea[transparent] {
+  opacity: 0.3;
+}
+
 SAreaLine {
   stroke: var(--intergalactic-chart-palette-order-blue, #2bb3ff);
   stroke-width: 3;
@@ -17,6 +21,10 @@ SAreaLine {
 
 SAreaLine[color] {
   stroke: var(--color);
+}
+
+SAreaLine[transparent] {
+  opacity: 0.3;
 }
 
 SArea,
