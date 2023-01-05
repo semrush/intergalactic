@@ -41,11 +41,11 @@ export const getLabel = (type) => {
 };
 
 const Changelog = ({ blocks }) => {
-  return blocks.map(({ title, changes, version }) => (
+  return blocks.map(({ title, changes, id }) => (
     <span key={title} className={formatTextStyles.formatText}>
       <HeadingLink
         level={2}
-        id={version}
+        id={id}
         style={{
           fontSize: '18px',
           lineHeight: '110%',
