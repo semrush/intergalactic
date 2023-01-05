@@ -15,6 +15,10 @@ SBar[hide] {
   display: none;
 }
 
+SBar[transparent] {
+  opacity: 0.3;
+}
+
 SBackground {
   fill: var(--intergalactic-chart-palette-order-other-data, #c4c7cf);
 }

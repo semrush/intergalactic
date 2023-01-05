@@ -35,3 +35,7 @@ To create a half-size chart, you need to specify the `halfsize` value and reduce
 - If there is no data — show an empty gray chart.
 
 @example donut-without-data
+
+@## Legend
+
+@example legend

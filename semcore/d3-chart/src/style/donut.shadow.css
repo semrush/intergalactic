@@ -9,6 +9,10 @@ SPie[color] {
   fill: var(--color);
 }
 
+SPie[transparent] {
+  opacity: 0.3;
+}
+
 SEmptyData {
   fill: var(--intergalactic-chart-palette-order-null, #e0e1e9);
 }

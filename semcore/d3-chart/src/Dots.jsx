@@ -24,6 +24,7 @@ function Dots(props) {
     rootRef,
     scale,
     duration = 500,
+    transparent,
   } = props;
   const SDots = 'g';
   const bisect = bisector((d) => d[x]).center;
@@ -85,6 +86,7 @@ function Dots(props) {
           active={active}
           hide={hide}
           color={color}
+          transparent={transparent}
         />,
       ),
     );

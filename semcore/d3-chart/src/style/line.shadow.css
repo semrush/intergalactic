@@ -17,6 +17,10 @@ SLine[hide] {
   display: none;
 }
 
+SLine[transparent] {
+  opacity: 0.3;
+}
+
 SNull {
   fill: transparent;
   stroke: var(-intergalactic-border-primary);

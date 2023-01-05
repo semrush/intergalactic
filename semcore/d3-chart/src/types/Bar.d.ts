@@ -28,6 +28,8 @@ export interface IBarProps extends IContext {
    * Bar click handler
    */
   onClick?: (data: { [key: string]: string | number }, event: Event) => void;
+  /** Element opacity property */
+  transparent?: boolean;
 }
 
 export interface IBarContext {
