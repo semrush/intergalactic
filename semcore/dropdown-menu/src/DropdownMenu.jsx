@@ -40,7 +40,7 @@ class DropdownMenuRoot extends Component {
     };
   }
 
-  handlerKeyDown = (e) => {
+  bindHandlerKeyDown = (place) => (e) => {
     const amount = e.shiftKey ? 5 : 1;
 
     if (e.key === ' ' && INTERACTION_TAGS.includes(e.target.tagName)) return;
@@ -59,7 +59,11 @@ class DropdownMenuRoot extends Component {
         break;
       case ' ':
       case 'Enter':
-        if (this.highlightedItemRef.current) this.highlightedItemRef.current.click();
+        if (this.highlightedItemRef.current) {
+          this.highlightedItemRef.current.click();
+        } else {
+          if (place === 'trigger') this.handlers.visible(false);
+        }
         break;
     }
   };
@@ -73,7 +77,7 @@ class DropdownMenuRoot extends Component {
       'aria-controls': visible ? `igc-${uid}-popper` : undefined,
       'aria-flowto': visible && !disablePortal ? `igc-${uid}-popper` : undefined,
       'aria-label': visible && !disablePortal ? getI18nText('triggerHint') : undefined,
-      onKeyDown: this.handlerKeyDown,
+      onKeyDown: this.bindHandlerKeyDown('trigger'),
     };
   }
 
@@ -90,7 +94,7 @@ class DropdownMenuRoot extends Component {
 
     return {
       tabIndex: 0,
-      onKeyDown: this.handlerKeyDown,
+      onKeyDown: this.bindHandlerKeyDown('popper'),
       id: `igc-${uid}-popper`,
       'aria-flowto': !disablePortal ? `igc-${uid}-trigger` : undefined,
     };
