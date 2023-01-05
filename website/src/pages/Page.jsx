@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import styles from './Page.module.css';
 import Helmet from 'react-helmet';
 import { scroller } from 'react-scroll';

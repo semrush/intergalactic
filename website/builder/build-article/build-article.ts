@@ -129,6 +129,8 @@ type ComponentChangelogBlock = {
   title: string;
   version: string;
   changes: { type: string; text: string }[];
+  id: string;
+  level: number;
 };
 const makeChangelog = (markdownAst: MarkdownRoot, fullPath: string, metaHeight: number) => {
   const blocks: ComponentChangelogBlock[] = [];
@@ -140,10 +142,13 @@ const makeChangelog = (markdownAst: MarkdownRoot, fullPath: string, metaHeight: 
       const title = markdownTokenToHtml(token.children[0]);
       const matchVersion = title.match(mathVersionRegx);
       const version = (matchVersion && matchVersion[1]) ?? '';
+      const id = generateHeadingId(title);
       currentBlock = {
         title,
         version,
         changes: [],
+        id: `_${id}`,
+        level: token.depth,
       };
       blocks.push(currentBlock);
     } else if (currentBlock) {
@@ -181,6 +186,8 @@ type GlobalChangelogBlock = {
       text: string;
     }[];
   }[];
+  id: string;
+  level: number;
 };
 
 const makeChangelogByComponent = (
@@ -197,10 +204,13 @@ const makeChangelogByComponent = (
       const title = markdownTokenToHtml(token.children[0]);
       const matchVersion = title.match(mathVersionRegx);
       const version = (matchVersion && matchVersion[1]) ?? '';
+      const id = generateHeadingId(title);
       currentBlock = {
         title,
         version,
         components: [],
+        id: `_${id}`,
+        level: token.depth,
       };
       blocks.push(currentBlock);
     } else if (currentBlock) {
@@ -243,15 +253,17 @@ if (process.argv.includes('--reset-cache')) {
   await cacheManager.reset();
 }
 
+type HeadingToken = {
+  type: 'heading';
+  level: 1 | 2 | 3 | 4 | 5 | 6;
+  route: string;
+  id: string;
+  html: string;
+};
+
 type Token =
   | MarkdownToken
-  | {
-      type: 'heading';
-      level: number;
-      route: string;
-      id: string;
-      html: string;
-    }
+  | HeadingToken
   | {
       type: 'example';
       raw: string;
@@ -320,6 +332,8 @@ export const buildArticle = async (
 
   const tokensMetadata = new Map<Token, { caption: string }>();
 
+  const headings = [];
+
   const tokens = (
     await Promise.all(
       markdownAst.children.map(async (token, index): Promise<Token | Token[]> => {
@@ -332,13 +346,19 @@ export const buildArticle = async (
           const id = generateHeadingId(html);
           legacyHeaderHashes[generateLegacyHeadingId(html)] = html;
 
-          return {
+          const tokenHead: HeadingToken = {
             type: 'heading',
             level: token.depth,
             route: resolveDirname(relativePath),
             id,
             html,
           };
+
+          if (tokenHead.level === 2) {
+            headings.push(tokenHead);
+          }
+
+          return tokenHead;
         }
 
         if (token.type === 'paragraph') {
@@ -347,17 +367,23 @@ export const buildArticle = async (
             const text = child.value;
             if (text.startsWith('@page ')) return null;
             if (text.startsWith('@#')) {
-              const level = text.substring(1, text.indexOf(' ')).length;
+              const level: any = text.substring(1, text.indexOf(' ')).length;
               const html = text.substring(text.indexOf(' ') + 1);
               const id = generateHeadingId(html);
               legacyHeaderHashes[generateLegacyHeadingId(html)] = html;
-              return {
+              const tokenHead: HeadingToken = {
                 type: 'heading',
                 level,
                 route: resolveDirname(relativePath),
                 id,
                 html,
               };
+
+              if (tokenHead.level === 2) {
+                headings.push(tokenHead);
+              }
+
+              return tokenHead;
             }
             if (text.startsWith('@example ')) {
               const fileName = text.substring('@example '.length);
@@ -493,14 +519,36 @@ export const buildArticle = async (
               dependencies.push(filePath);
 
               if (componentName === 'ui') {
+                const blocks = makeChangelogByComponent(markdownAst, fullPath, metaHeight);
+                blocks.forEach((block) => {
+                  const tokenHead = {
+                    type: 'heading',
+                    level: block.level,
+                    id: block.id,
+                    html: block.title,
+                  };
+                  headings.push(tokenHead);
+                });
+
                 return {
                   type: 'changelogByComponent',
-                  blocks: makeChangelogByComponent(markdownAst, fullPath, metaHeight),
+                  blocks,
                 };
               } else {
+                const blocks = makeChangelog(markdownAst, fullPath, metaHeight);
+                blocks.forEach((block) => {
+                  const tokenHead = {
+                    type: 'heading',
+                    level: block.level,
+                    id: block.id,
+                    html: block.title,
+                  };
+                  headings.push(tokenHead);
+                });
+
                 return {
                   type: 'changelog',
-                  blocks: makeChangelog(markdownAst, fullPath, metaHeight),
+                  blocks,
                 };
               }
             }
@@ -541,10 +589,6 @@ export const buildArticle = async (
   )
     .filter((token) => token !== null)
     .flat();
-
-  const headings = tokens
-    .filter(({ type }) => type === 'heading')
-    .filter((token) => 'level' in token && token.level === 2);
 
   const sourcePath = relativePath.startsWith('./')
     ? relativePath.substring('./'.length)
