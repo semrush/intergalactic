@@ -1,8 +1,7 @@
 import React from 'react';
 import Card from '@semcore/ui/card';
-import { HoverLine, Line, minMax, Plot, Tooltip, XAxis, YAxis } from '@semcore/ui/d3-chart';
+import { Line, minMax, Plot, XAxis, YAxis } from '@semcore/ui/d3-chart';
 import { Flex } from '@semcore/ui/flex-box';
-import { Text } from '@semcore/ui/typography';
 import resolveColor from '@semcore/ui/utils/lib/color';
 import { scaleLinear } from 'd3-scale';
 import Checkbox from '@semcore/ui/checkbox';
@@ -41,16 +40,18 @@ export default () => {
     [displayLines],
   );
 
-  const handleMouseEnter = (e) => {
-    const opacity = { ...opacityLines };
+  const handleMouseEnter = (line) => () => {
+    if (displayedLinesList.includes(line)) {
+      const opacity = { ...opacityLines };
 
-    Object.keys(opacity).forEach((key) => {
-      if (key !== e.target.innerText) {
-        opacity[key] = true;
-      }
-    });
+      Object.keys(opacity).forEach((key) => {
+        if (key !== line) {
+          opacity[key] = true;
+        }
+      });
 
-    setOpacityLines({ ...opacity });
+      setOpacityLines({ ...opacity });
+    }
   };
 
   const handleMouseLeave = () => {
@@ -67,34 +68,8 @@ export default () => {
             <YAxis.Grid ticks={yScale.ticks(4)} />
           </YAxis>
           <XAxis>
-            <XAxis.Ticks ticks={xScale.ticks(5)}>
-              {({ value }) => ({
-                value,
-                children: value,
-              })}
-            </XAxis.Ticks>
+            <XAxis.Ticks ticks={xScale.ticks(5)} />
           </XAxis>
-          <Tooltip tag={HoverLine} x="x" wMin={100}>
-            {({ xIndex }) => {
-              return {
-                children: (
-                  <>
-                    <Tooltip.Title>data</Tooltip.Title>
-                    {displayedLinesList.map((line) => {
-                      return (
-                        <Flex key={line} justifyContent="space-between">
-                          <Tooltip.Dot mr={4} color={lineColors[line]}>
-                            {data[xIndex][line]}
-                          </Tooltip.Dot>
-                          <Text bold>{data[xIndex][line]}</Text>
-                        </Flex>
-                      );
-                    })}
-                  </>
-                ),
-              };
-            }}
-          </Tooltip>
           {displayedLinesList.map((line) => {
             return (
               <Line
@@ -117,7 +92,7 @@ export default () => {
                 theme={lineColors[line]}
                 mr={4}
                 mb={2}
-                onMouseEnter={handleMouseEnter}
+                onMouseEnter={handleMouseEnter(line)}
                 onMouseLeave={handleMouseLeave}
               >
                 <Checkbox.Value

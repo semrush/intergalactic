@@ -1,8 +1,7 @@
 import React from 'react';
-import { Plot, StackBar, YAxis, XAxis, HoverRect, Tooltip } from '@semcore/ui/d3-chart';
+import { Plot, StackBar, YAxis, XAxis } from '@semcore/ui/d3-chart';
 import { scaleLinear, scaleBand } from 'd3-scale';
 import { Flex } from '@semcore/ui/flex-box';
-import { Text } from '@semcore/ui/typography';
 import resolveColor from '@semcore/ui/utils/lib/color';
 import Card from '@semcore/ui/card';
 import Checkbox from '@semcore/ui/checkbox';
@@ -35,7 +34,7 @@ export default () => {
   const [opacityBars, setOpacityBars] = React.useState(
     barsList.reduce((o, key) => ({ ...o, [key]: false }), {}),
   );
-  const displayedLinesList = React.useMemo(
+  const displayedBarsList = React.useMemo(
     () =>
       Object.entries(displayedBars)
         .filter(([, displayed]) => displayed)
@@ -43,16 +42,18 @@ export default () => {
     [displayedBars],
   );
 
-  const handleMouseEnter = (e) => {
-    const opacity = { ...opacityBars };
+  const handleMouseEnter = (stack) => () => {
+    if (displayedBarsList.includes(stack)) {
+      const opacity = { ...opacityBars };
 
-    Object.keys(opacity).forEach((key) => {
-      if (key !== e.target.innerText) {
-        opacity[key] = true;
-      }
-    });
+      Object.keys(opacity).forEach((key) => {
+        if (key !== stack) {
+          opacity[key] = true;
+        }
+      });
 
-    setOpacityBars({ ...opacity });
+      setOpacityBars({ ...opacity });
+    }
   };
 
   const handleMouseLeave = () => {
@@ -71,29 +72,8 @@ export default () => {
           <XAxis>
             <XAxis.Ticks />
           </XAxis>
-          <Tooltip tag={HoverRect} x="category" wMin={100}>
-            {({ xIndex }) => {
-              return {
-                children: (
-                  <>
-                    <Tooltip.Title>data</Tooltip.Title>
-                    {displayedLinesList.map((stack) => {
-                      return (
-                        <Flex key={stack} justifyContent="space-between">
-                          <Tooltip.Dot mr={4} color={barColors[stack]}>
-                            {data[xIndex][stack]}
-                          </Tooltip.Dot>
-                          <Text bold>{data[xIndex][stack]}</Text>
-                        </Flex>
-                      );
-                    })}
-                  </>
-                ),
-              };
-            }}
-          </Tooltip>
           <StackBar x="category">
-            {displayedLinesList.map((stack) => (
+            {displayedBarsList.map((stack) => (
               <StackBar.Bar
                 y={stack}
                 key={stack}
@@ -111,7 +91,7 @@ export default () => {
                 theme={barColors[stack]}
                 mr={4}
                 mb={2}
-                onMouseEnter={handleMouseEnter}
+                onMouseEnter={handleMouseEnter(stack)}
                 onMouseLeave={handleMouseLeave}
               >
                 <Checkbox.Value

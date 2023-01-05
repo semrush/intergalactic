@@ -1,7 +1,6 @@
 import React from 'react';
-import { Donut, Plot, Tooltip } from '@semcore/ui/d3-chart';
+import { Donut, Plot } from '@semcore/ui/d3-chart';
 import { Flex } from '@semcore/ui/flex-box';
-import { Text } from '@semcore/ui/typography';
 import Card from '@semcore/ui/card';
 import Checkbox from '@semcore/ui/checkbox';
 import resolveColor from '@semcore/ui/utils/lib/color';
@@ -31,16 +30,18 @@ export default () => {
     [displayPie],
   );
 
-  const handleMouseEnter = (e) => {
-    const opacity = { ...opacityPie };
+  const handleMouseEnter = (pie) => () => {
+    if (displayedPiesList.includes(pie)) {
+      const opacity = { ...opacityPie };
 
-    Object.keys(opacity).forEach((key) => {
-      if (key !== e.target.innerText) {
-        opacity[key] = true;
-      }
-    });
+      Object.keys(opacity).forEach((key) => {
+        if (key !== pie) {
+          opacity[key] = true;
+        }
+      });
 
-    setOpacityPie({ ...opacity });
+      setOpacityPie({ ...opacity });
+    }
   };
 
   const handleMouseLeave = () => {
@@ -63,20 +64,6 @@ export default () => {
               />
             ))}
           </Donut>
-          <Tooltip>
-            {({ dataKey, name }) => {
-              return {
-                children: (
-                  <>
-                    <Tooltip.Title>{name}</Tooltip.Title>
-                    <Flex justifyContent="space-between">
-                      <Text bold>{data[dataKey]}</Text>
-                    </Flex>
-                  </>
-                ),
-              };
-            }}
-          </Tooltip>
         </Plot>
         <Flex flexWrap w={width}>
           {piesList.map((pie) => {
@@ -86,7 +73,7 @@ export default () => {
                 theme={pieColors[pie]}
                 mr={4}
                 mb={2}
-                onMouseEnter={handleMouseEnter}
+                onMouseEnter={handleMouseEnter(pie)}
                 onMouseLeave={handleMouseLeave}
               >
                 <Checkbox.Value
