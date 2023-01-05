@@ -14,9 +14,8 @@ function SideBarHeading({ headings }) {
     setActiveId(headings.length ? headings[0].id : undefined);
     const links = headings.map((heading) => document.querySelector(`#${heading.id}`)).reverse();
     const handleScroll = trottle(() => {
-      const scrollCenter =
-        document.scrollingElement.scrollTop + document.documentElement.clientHeight / 2;
-      const linkReversedIndex = links.findIndex((link) => scrollCenter > link.offsetTop);
+      const offsetTop = document.scrollingElement.scrollTop + 100;
+      const linkReversedIndex = links.findIndex((link) => offsetTop > link.offsetTop);
       if (linkReversedIndex !== -1)
         setActiveId(headings[headings.length - 1 - linkReversedIndex]?.id);
     });

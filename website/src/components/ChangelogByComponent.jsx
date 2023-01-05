@@ -1,18 +1,19 @@
 import React from 'react';
-import styles from './ChangelogByComponent.module.css';
-import Tag from '@semcore/tag';
 import { Link } from 'react-router-dom';
+import Tag from '@semcore/tag';
 import { Text } from '@semcore/typography';
 import { getLabel } from './Changelog';
-import formatTextStyles from './FormatText.module.css';
 import HeadingLink from './HeadingLink.jsx';
 
+import formatTextStyles from './FormatText.module.css';
+import styles from './ChangelogByComponent.module.css';
+
 const ChangelogByComponent = ({ blocks }) => {
-  return blocks.map(({ title, version, components }) => (
+  return blocks.map(({ title, components, id }) => (
     <span key={title} className={formatTextStyles.formatText}>
       <HeadingLink
         level={2}
-        id={version}
+        id={id}
         style={{
           fontSize: '18px',
           lineHeight: '110%',
