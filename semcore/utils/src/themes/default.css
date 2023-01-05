@@ -1,0 +1,470 @@
+:root {
+  --intergalactic-bg-primary-neutral: #ffffff;
+  --intergalactic-bg-primary-neutral-hover: #f4f5f9;
+  --intergalactic-bg-primary-neutral-active: #e0e1e9;
+  --intergalactic-bg-primary-info: #008ff8;
+  --intergalactic-bg-primary-success: #009f81;
+  --intergalactic-bg-primary-critical: #ff4953;
+  --intergalactic-bg-primary-warning: #ff642d;
+  --intergalactic-bg-primary-highlight: #fce081;
+  --intergalactic-bg-primary-advertising: #421983;
+  --intergalactic-bg-primary-muted: #6c6e79;
+  --intergalactic-bg-primary-invert: #191b23;
+  --intergalactic-bg-primary-invert-hover: #2b2e38;
+  --intergalactic-bg-primary-invert-active: #484a54;
+  --intergalactic-bg-secondary-neutral: #f4f5f9;
+  --intergalactic-bg-secondary-neutral-hover: #e0e1e9;
+  --intergalactic-bg-secondary-neutral-active: #c4c7cf;
+  --intergalactic-bg-secondary-info: #e9f7ff;
+  --intergalactic-bg-secondary-info-hover: #c4e5fe;
+  --intergalactic-bg-secondary-info-active: #8ecdff;
+  --intergalactic-bg-secondary-success: #dbfee8;
+  --intergalactic-bg-secondary-success-hover: #9ef2c9;
+  --intergalactic-bg-secondary-success-active: #59ddaa;
+  --intergalactic-bg-secondary-critical: #fff0f7;
+  --intergalactic-bg-secondary-critical-hover: #ffd7df;
+  --intergalactic-bg-secondary-critical-active: #ffaeb5;
+  --intergalactic-bg-secondary-warning: #fff3d9;
+  --intergalactic-bg-secondary-warning-hover: #ffdca2;
+  --intergalactic-bg-secondary-warning-active: #ffb26e;
+  --intergalactic-bg-secondary-highlight: #fdf7c8;
+  --intergalactic-bg-secondary-highlight-hover: #fce081;
+  --intergalactic-bg-secondary-highlight-active: #fdc23c;
+  --intergalactic-bg-secondary-advertising: #f9f2ff;
+  --intergalactic-bg-secondary-advertising-hover: #edd9ff;
+  --intergalactic-bg-secondary-advertising-active: #dcb8ff;
+  /* Use it for highlighting the search results in the list. */
+  --intergalactic-bg-highlight-results: rgba(239, 152, 0, 0.4);
+  --intergalactic-text-primary: #191b23;
+  --intergalactic-text-secondary: #6c6e79;
+  --intergalactic-text-placeholder: #a9abb6;
+  --intergalactic-text-success: #007c65;
+  --intergalactic-text-success-hover-active: #055345;
+  --intergalactic-text-critical: #d1002f;
+  --intergalactic-text-critical-hover-active: #8e0016;
+  --intergalactic-text-primary-invert: #ffffff;
+  --intergalactic-text-secondary-Invert: rgba(255, 255, 255, 0.75);
+  --intergalactic-text-link: #006dca;
+  --intergalactic-text-link-hover-active: #044792;
+  /* Use these styles on dark background. */
+  --intergalactic-text-link-invert: #8ecdff;
+  /* Use these styles on dark background. */
+  --intergalactic-text-link-invert-hover: #2bb3ff;
+  --intergalactic-text-link-visited: #8649e1;
+  --intergalactic-text-hint: #6c6e79;
+  --intergalactic-text-hint-hover-active: #484a54;
+  /* Use these styles on dark background. */
+  --intergalactic-text-hint-invert: #c4c7cf;
+  /* Use these styles on dark background. */
+  --intergalactic-text-hint-invert-hover-active: #a9abb6;
+  /* Use with font-size ≥20px. */
+  --intergalactic-text-large-secondary: #a9abb6;
+  /* Use with font-size ≥20px. */
+  --intergalactic-text-large-info: #008ff8;
+  /* Use with font-size ≥20px. */
+  --intergalactic-text-large-info-hover-active: #006dca;
+  /* Use with font-size ≥20px. */
+  --intergalactic-text-large-success: #009f81;
+  /* Use with font-size ≥20px. */
+  --intergalactic-text-large-success-hover-active: #007c65;
+  /* Use with font-size ≥20px. */
+  --intergalactic-text-large-critical: #ff4953;
+  /* Use with font-size ≥20px. */
+  --intergalactic-text-large-critical-hover-active: #d1002f;
+  /* Use it for all neutral primary borders. */
+  --intergalactic-border-primary: #c4c7cf;
+  /* Use it for subtle secondary borders like all Poppers have. */
+  --intergalactic-border-secondary: #e0e1e9;
+  /* Use it for borders in Notice and input fields. */
+  --intergalactic-border-info: #8ecdff;
+  /* Use it for borders in focused input fileds. */
+  --intergalactic-border-info-active: #006dca;
+  /* Use it for borders in Notice and input fields. */
+  --intergalactic-border-success: #59ddaa;
+  /* Use it for borders in focused input fields. */
+  --intergalactic-border-success-active: #007c65;
+  /* Use it for borders in Notice and input fields. */
+  --intergalactic-border-danger: #ffaeb5;
+  /* Use it for borders in focused input fields. */
+  --intergalactic-border-danger-active: #d1002f;
+  /* Use it for borders in Notice. */
+  --intergalactic-border-warning: #ffb26e;
+  --intergalactic-border-warning-active: #c33909;
+  /* Use it for borders of controls on the dark or color background. */
+  --intergalactic-border-primary-invert: #ffffff;
+  /* Use it as an invert borders on the dark or color background. */
+  --intergalactic-border-secondary-invert: rgba(255, 255, 255, 0.3);
+  /* Use only for the dark Tooltip. */
+  --intergalactic-border-tooltip-invert: #6c6e79;
+  --intergalactic-border-table-accent-border: #a9abb6;
+  --intergalactic-control-switch-bg: #a9abb6;
+  --intergalactic-control-primary-info: #008ff8;
+  --intergalactic-control-primary-info-hover: #006dca;
+  --intergalactic-control-primary-info-active: #044792;
+  --intergalactic-control-primary-success: #009f81;
+  --intergalactic-control-primary-success-hover: #007c65;
+  --intergalactic-control-primary-success-active: #055345;
+  --intergalactic-control-primary-critical: #ff4953;
+  --intergalactic-control-primary-critical-hover: #d1002f;
+  --intergalactic-control-primary-critical-active: #8e0016;
+  --intergalactic-control-primary-advertising-active: #8649e1;
+  --intergalactic-control-primary-advertising: #5925ab;
+  --intergalactic-control-primary-advertising-hover: #421983;
+  --intergalactic-control-primary-invert: #ffffff;
+  --intergalactic-control-primary-invert-hover: #f4f5f9;
+  --intergalactic-control-primary-invert-active: #e0e1e9;
+  --intergalactic-control-secondary-neutral: rgba(138, 142, 155, 0.1);
+  --intergalactic-control-secondary-neutral-hover: rgba(138, 142, 155, 0.2);
+  --intergalactic-control-secondary-neutral-active: rgba(138, 142, 155, 0.3);
+  --intergalactic-control-secondary-info: rgba(0, 143, 248, 0.1);
+  --intergalactic-control-secondary-info-hover: rgba(0, 143, 248, 0.2);
+  --intergalactic-control-secondary-info-active: rgba(0, 143, 248, 0.3);
+  --intergalactic-control-secondary-invert: rgba(255, 255, 255, 0.05);
+  --intergalactic-control-secondary-invert-hover: rgba(255, 255, 255, 0.1);
+  --intergalactic-control-secondary-invert-active: rgba(255, 255, 255, 0.3);
+  --intergalactic-control-tertiary-neutral: rgba(138, 142, 155, 0);
+  --intergalactic-control-tertiary-neutral-hover: rgba(138, 142, 155, 0.2);
+  --intergalactic-control-tertiary-neutral-active: rgba(138, 142, 155, 0.3);
+  --intergalactic-control-tertiary-info: rgba(0, 143, 248, 0);
+  --intergalactic-control-tertiary-info-hover: rgba(0, 143, 248, 0.2);
+  --intergalactic-control-tertiary-info-active: rgba(0, 143, 248, 0.3);
+  --intergalactic-control-tertiary-invert: rgba(255, 255, 255, 0);
+  --intergalactic-control-tertiary-invert-hover: rgba(255, 255, 255, 0.1);
+  --intergalactic-control-tertiary-invert-active: rgba(255, 255, 255, 0.3);
+  --intergalactic-icon-primary-neutral: #6c6e79;
+  --intergalactic-icon-primary-neutral-hover-active: #484a54;
+  --intergalactic-icon-primary-info: #006dca;
+  --intergalactic-icon-primary-info-hover-active: #044792;
+  --intergalactic-icon-primary-success: #009f81;
+  --intergalactic-icon-primary-success-hover-active: #007c65;
+  --intergalactic-icon-primary-critical: #ff4953;
+  --intergalactic-icon-primary-critical-hover-active: #d1002f;
+  --intergalactic-icon-primary-warning: #ff642d;
+  --intergalactic-icon-primary-warning-hover-active: #c33909;
+  --intergalactic-icon-primary-invert: #ffffff;
+  --intergalactic-icon-primary-invert-hover-active: #e0e1e9;
+  /* #A9ABB6 */
+  --intergalactic-icon-secondary-neutral: #a9abb6;
+  --intergalactic-icon-secondary-neutral-hover-active: #8a8e9b;
+  --intergalactic-icon-secondary-info: #2bb3ff;
+  --intergalactic-icon-secondary-info-hover-active: #008ff8;
+  --intergalactic-icon-secondary-success: #00c192;
+  --intergalactic-icon-secondary-success-hover-active: #009f81;
+  --intergalactic-icon-secondary-critical: #ff8786;
+  --intergalactic-icon-secondary-critical-hover-active: #ff4953;
+  --intergalactic-icon-secondary-warning: #ff8c43;
+  --intergalactic-icon-secondary-warning-hover-active: #ff642d;
+  /* semrush/intergalactic/tree/feature/introduce-design-tokens-test */
+  --intergalactic-icon-non-interactive: #191b23;
+  --intergalactic-date-picker-cell: #ffffff;
+  --intergalactic-date-picker-cell-current: #c4c7cf;
+  --intergalactic-date-picker-cell-hover: #e0e1e9;
+  --intergalactic-date-picker-cell-range: #c4e5fe;
+  --intergalactic-date-picker-cell-range-hover: #8ecdff;
+  --intergalactic-date-picker-cell-active: #2bb3ff;
+  --intergalactic-date-picker-cell-active-hover: #008ff8;
+  --intergalactic-date-picker-cell-current-invert: rgba(255, 255, 255, 0.3);
+  --intergalactic-dropdown-menu-item: #ffffff;
+  --intergalactic-dropdown-menu-item-hover: #f4f5f9;
+  --intergalactic-dropdown-menu-item-selected: rgba(196, 229, 254, 0.7);
+  --intergalactic-dropdown-menu-item-selected-hover: #c4e5fe;
+  --intergalactic-feature-popover-dot-outer-border: rgba(252, 224, 129, 0.3);
+  --intergalactic-progress-bar-bg: #e0e1e9;
+  --intergalactic-progress-bar-bg-hover: #c4c7cf;
+  /* #FFFFFF */
+  --intergalactic-progress-bar-bg-invert: rgba(255, 255, 255, 0.2);
+  --intergalactic-progress-bar-bg-invert-hover: rgba(255, 255, 255, 0.4);
+  --intergalactic-progress-bar-value: #009f81;
+  --intergalactic-progress-bar-value-gradient: linear-gradient(
+    -45deg,
+    rgba(0, 159, 129, 0.9) 25%,
+    rgba(0, 159, 129, 1) 0%,
+    rgba(0, 159, 129, 1) 50%,
+    rgba(0, 159, 129, 0.9) 0%,
+    rgba(0, 159, 129, 0.9) 75%,
+    rgba(0, 159, 129, 1) 0%
+  );
+  --intergalactic-progress-bar-pattern-gradient: linear-gradient(
+    -45deg,
+    rgba(224, 225, 233, 0.9) 25%,
+    rgba(224, 225, 233, 1) 0%,
+    rgba(224, 225, 233, 1) 50%,
+    rgba(224, 225, 233, 0.9) 0%,
+    rgba(224, 225, 233, 0.9) 75%,
+    rgba(224, 225, 233, 1) 0%
+  );
+  --intergalactic-progress-bar-value-bg: #000000;
+  --intergalactic-skeleton-bg: rgba(224, 225, 233, 0.8);
+  --intergalactic-skeleton-bg-invert: rgba(255, 255, 255, 0.3);
+  --intergalactic-status-beta: #ff8c43;
+  --intergalactic-status-admin: #2bb3ff;
+  --intergalactic-status-new: #00c192;
+  --intergalactic-status-alpha: #ff8786;
+  --intergalactic-status-soon: #a9abb6;
+  --intergalactic-status-invert: #ffffff;
+  --intergalactic-table-th-primary-cell: #f4f5f9;
+  --intergalactic-table-th-primary-cell-hover: #e0e1e9;
+  --intergalactic-table-th-primary-cell-active: #e0e1e9;
+  --intergalactic-table-th-secondary-cell: #ffffff;
+  --intergalactic-table-th-gradient: linear-gradient(
+    to right,
+    rgba(224, 225, 233, 0) 0%,
+    rgba(224, 225, 233, 1) 100%
+  );
+  --intergalactic-table-td-cell: #ffffff;
+  --intergalactic-table-td-cell-hover: rgba(224, 225, 233, 0.5);
+  --intergalactic-table-td-cell-active: rgba(224, 225, 233, 0.8);
+  --intergalactic-table-td-cell-unread: #f4f5f9;
+  --intergalactic-table-td-cell-actions-accordion: #f4f5f9;
+  --intergalactic-table-td-cell-selected: #e9f7ff;
+  --intergalactic-table-td-cell-selected-hover: #c4e5fe;
+  --intergalactic-table-td-cell-selected-active: #c4e5fe;
+  --intergalactic-table-td-cell-new: #dbfee8;
+  --intergalactic-table-td-cell-new-hover: #9ef2c9;
+  --intergalactic-table-td-cell-new-active: #9ef2c9;
+  --intergalactic-table-td-cell-critical: #fff0f7;
+  --intergalactic-table-td-cell-critical-hover: #ffd7df;
+  --intergalactic-table-td-cell-critical-active: #ffd7df;
+  --intergalactic-table-td-cell-warning: #fff3d9;
+  --intergalactic-table-td-cell-warning-hover: #ffdca2;
+  --intergalactic-table-td-cell-warning-active: #ffdca2;
+  --intergalactic-brand-primary: #ff642d;
+  --intergalactic-brand-secondary: #421983;
+  /* #BD081C */
+  --intergalactic-brand-pinterest: #bd081c;
+  /* #E4405F */
+  --intergalactic-brand-instagram: #e4405f;
+  /* #FF0000 */
+  --intergalactic-brand-youtube: #ff0000;
+  /* #3B5998 */
+  --intergalactic-brand-facebook: #3b5998;
+  /* #1A7AB2 */
+  --intergalactic-brand-linkedIn: #1a7ab2;
+  /* #2BAFEB */
+  --intergalactic-brand-twitter: #2bafeb;
+  /* #1A0DAB */
+  --intergalactic-brand-google-blue: #1a0dab;
+  /* #016723 */
+  --intergalactic-brand-google-green: #016723;
+  /* #1A73E8 */
+  --intergalactic-brand-google-my-business: #1a73e8;
+  --intergalactic-box-shadow-card: 0px 0px 1px 0px rgba(25, 27, 35, 0.16),
+    0px 1px 2px 0px rgba(25, 27, 35, 0.12);
+  /* transition: all 500ms; */
+  --intergalactic-box-shadow-card-hover: 3px 3px 30px 0px rgba(25, 27, 35, 0.15);
+  --intergalactic-box-shadow-dnd: 0px 0px 1px 0px rgba(25, 27, 35, 0.16),
+    0px 12px 40px 0px rgba(25, 27, 35, 0.16);
+  /* [gray800, .2] */
+  --intergalactic-box-shadow-modal: 0px 3px 8px 0px rgba(25, 27, 35, 0.2);
+  --intergalactic-box-shadow-popper: 0px 1px 12px 0px rgba(25, 27, 35, 0.15);
+  --intergalactic-keyboard-focus: 0px 0px 0px 3px rgba(0, 143, 248, 0.3);
+  --intergalactic-keyboard-focus-invalid: 0px 0px 0px 3px rgba(255, 73, 83, 0.3);
+  --intergalactic-keyboard-focus-valid: 0px 0px 0px 3px rgba(0, 159, 129, 0.3);
+  --intergalactic-base: Inter;
+  /* Use with font-size-800. */
+  --intergalactic-lh-800: 117%;
+  /* Use with font-size-700. */
+  --intergalactic-lh-700: 110%;
+  /* Use with font-size-600. */
+  --intergalactic-lh-600: 125%;
+  /* Use with font-size-500. */
+  --intergalactic-lh-500: 117%;
+  /* Use with font-size-400. */
+  --intergalactic-lh-400: 120%;
+  /* Use with font-size-300. */
+  --intergalactic-lh-300: 150%;
+  /* Use with font-size-200. */
+  --intergalactic-lh-200: 142%;
+  /* Use with font-size-100. */
+  --intergalactic-lh-100: 133%;
+  --intergalactic-semi-bold: 600;
+  --intergalactic-bold: 700;
+  --intergalactic-regular: 400;
+  --intergalactic-medium: 500;
+  /* Use only for text in Badge component. */
+  --intergalactic-fs-50: 10px;
+  /* Use with caution for text in additional messages. Always check its contrast and readability. */
+  --intergalactic-fs-100: 12px;
+  /* Use for text in regular messages. */
+  --intergalactic-fs-200: 14px;
+  /* Use for H6 with bold font-weight, and for text in regular messages. */
+  --intergalactic-fs-300: 16px;
+  /* Use for H5 and subtitles. */
+  --intergalactic-fs-400: 20px;
+  /* Use for H4. */
+  --intergalactic-fs-500: 24px;
+  /* Use for H3. */
+  --intergalactic-fs-600: 32px;
+  /* Use for H2. */
+  --intergalactic-fs-700: 36px;
+  /* Use for H1. */
+  --intergalactic-fs-800: 48px;
+  --intergalactic-compact: 0.3;
+  /* Base denominator of the design system. */
+  --intergalactic-scale-indent: 4px;
+  /* Use for default size of the controls. */
+  --intergalactic-form-control-m: 28px;
+  /* Use for large size of the controls. */
+  --intergalactic-form-control-l: 40px;
+  --intergalactic-spacing-05x: 2px;
+  --intergalactic-spacing-1x: 4px;
+  --intergalactic-spacing-2x: 8px;
+  --intergalactic-spacing-3x: 12px;
+  --intergalactic-spacing-4x: 16px;
+  --intergalactic-spacing-5x: 20px;
+  --intergalactic-spacing-6x: 24px;
+  --intergalactic-spacing-8x: 32px;
+  --intergalactic-spacing-10x: 40px;
+  --intergalactic-spacing-14x: 56px;
+  --intergalactic-spacing-20x: 80px;
+  --intergalactic-spacing-24x: 96px;
+  --intergalactic-spacing-30x: 120px;
+  /* Use only for checkbox and placeholder addons. */
+  --intergalactic-rounded-small: 4px;
+  /* Use for all inputs and controls, widgets. */
+  --intergalactic-rounded-medium: 6px;
+  /* Use for all inputs and controls, widgets. */
+  --intergalactic-rounded-large: 12px;
+  /* Use for Tag. */
+  --intergalactic-rounded-extra-large: 24px;
+  /* Variable for disabled state. Use it for all controls to make them look disabled. */
+  --intergalactic-disabled-opacity: 0.3;
+  /* Extra small screens (small phones). */
+  --intergalactic-screen-extra-small: 320px;
+  /* Small screens (phones and small tablets). */
+  --intergalactic-screen-small: 768px;
+  /* Medium screens (tablets and small laptops). */
+  --intergalactic-screen-medium: 1200px;
+  /* Large screens (tablets and laptops). */
+  --intergalactic-screen-large: 1920px;
+  /* Use for cover the content under the modal dialogs. */
+  --intergalactic-overlay-primary: rgba(25, 27, 35, 0.7);
+  /* Use for the secondary modal dialogs that were opened upon the other modal dialogs. */
+  --intergalactic-overlay-secondary: rgba(25, 27, 35, 0.4);
+  /* Use as a primary cover of the content under the messages about limitations. */
+  --intergalactic-overlay-limitation-primary: #f4f5f9;
+  /* Use as a secondary cover of the content under the messages about limitations. */
+  --intergalactic-overlay-limitation-secondary: rgba(255, 255, 255, 0.85);
+  --intergalactic-z-index-deep: -999;
+  --intergalactic-z-index-overlay: 500;
+  --intergalactic-z-index-modal: 600;
+  --intergalactic-z-index-popper: 700;
+  --intergalactic-z-index-dropdown: 750;
+  --intergalactic-z-index-tooltip: 800;
+  --intergalactic-z-index-notice-bubble: 999;
+  --intergalactic-tooltip-default: #ffffff;
+  --intergalactic-tooltip-warning: #ffd7df;
+  --intergalactic-tooltip-invert: #191b23;
+  --intergalactic-neighbor-location-neutral: rgba(255, 255, 255, 0.5);
+  --intergalactic-neighbor-location-invert: rgba(0, 0, 0, 0.5);
+  --intergalactic-scroll-area-shadow-left: linear-gradient(
+    to right,
+    rgba(25, 27, 35, 0.1) 20.55%,
+    rgba(255, 255, 255, 0.0001) 100%
+  );
+  --intergalactic-scroll-area-shadow-right: linear-gradient(
+    to left,
+    rgba(25, 27, 35, 0.1) 20.55%,
+    rgba(255, 255, 255, 0.0001) 100%
+  );
+  --intergalactic-scroll-area-shadow-top: linear-gradient(
+    to bottom,
+    rgba(25, 27, 35, 0.1) 20.55%,
+    rgba(255, 255, 255, 0.0001) 100%
+  );
+  --intergalactic-scroll-area-shadow-bottom: linear-gradient(
+    to top,
+    rgba(25, 27, 35, 0.1) 20.55%,
+    rgba(255, 255, 255, 0.0001) 100%
+  );
+  --intergalactic-scroll-area-dropdown-menu-left: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 1) 34.38%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  --intergalactic-scroll-area-dropdown-menu-right: linear-gradient(
+    to left,
+    rgba(255, 255, 255, 1) 34.38%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  --intergalactic-scroll-area-dropdown-menu-bottom: linear-gradient(
+    to top,
+    rgba(255, 255, 255, 1) 34.38%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  --intergalactic-scroll-area-dropdown-menu-top: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 1) 34.38%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  --intergalactic-scroll-bar-background: rgba(25, 27, 35, 0.3);
+  --intergalactic-tag-primary-gray-normal: rgba(224, 225, 233, 0.5);
+  --intergalactic-tag-primary-gray-hover-active: #e0e1e9;
+  --intergalactic-tag-primary-blue-normal: rgba(196, 229, 254, 0.5);
+  --intergalactic-tag-primary-blue-hover-active: #c4e5fe;
+  --intergalactic-tag-primary-green-normal: rgba(158, 242, 201, 0.5);
+  --intergalactic-tag-primary-green-hover-active: #9ef2c9;
+  --intergalactic-tag-primary-orange-normal: rgba(255, 220, 162, 0.5);
+  --intergalactic-tag-primary-orange-hover-active: #ffdca2;
+  --intergalactic-tag-primary-red-normal: rgba(255, 215, 223, 0.5);
+  --intergalactic-tag-primary-red-hover-active: #ffd7df;
+  --intergalactic-tag-primary-violet-normal: rgba(237, 217, 255, 0.5);
+  --intergalactic-tag-primary-violet-hover-active: #edd9ff;
+  --intergalactic-tag-primary-yellow-normal: rgba(252, 224, 129, 0.5);
+  --intergalactic-tag-primary-yellow-hover-active: #fce081;
+  --intergalactic-tag-primary-white-normal: rgba(255, 255, 255, 0.15);
+  --intergalactic-tag-primary-white-hover-active: rgba(255, 255, 255, 0.3);
+  --intergalactic-tag-primary-gray-text: #6c6e79;
+  --intergalactic-tag-primary-blue-text: #006dca;
+  --intergalactic-tag-primary-green-text: #007c65;
+  --intergalactic-tag-primary-orange-text: #c33909;
+  --intergalactic-tag-primary-red-text: #d1002f;
+  --intergalactic-tag-primary-violet-text: #8649e1;
+  --intergalactic-tag-primary-yellow-text: #a75800;
+  --intergalactic-tag-primary-white-text: #ffffff;
+  --intergalactic-tag-secondary-normal: #ffffff;
+  --intergalactic-tag-secondary-hover-active: #f4f5f9;
+  --intergalactic-tag-secondary-white-normal: rgba(255, 255, 255, 0);
+  /* Only text color changes */
+  --intergalactic-tag-secondary-white-hover: rgba(255, 255, 255, 0);
+  --intergalactic-tag-secondary-white-active: rgba(255, 255, 255, 0.1);
+  --intergalactic-tag-secondary-gray-text: #6c6e79;
+  --intergalactic-tag-secondary-white-text: #ffffff;
+  --intergalactic-chart-palette-order-blue: #2bb3ff;
+  --intergalactic-chart-palette-order-green: #59ddaa;
+  --intergalactic-chart-palette-order-orange: #ff642d;
+  --intergalactic-chart-palette-order-pink: #f67cf2;
+  --intergalactic-chart-palette-order-yellow: #fdc23c;
+  --intergalactic-chart-palette-order-violet: #ab6cfe;
+  --intergalactic-chart-palette-order-red: #ff8786;
+  --intergalactic-chart-palette-order-salad: #9bd85d;
+  --intergalactic-chart-palette-order-blue-second-order: #008ff8;
+  --intergalactic-chart-palette-order-green-second-order: #00c192;
+  --intergalactic-chart-palette-order-orange-second-order: #ffb26e;
+  --intergalactic-chart-palette-order-pink-second-order: #e14adf;
+  --intergalactic-chart-palette-order-yellow-second-order: #ef9800;
+  --intergalactic-chart-palette-order-violet-second-order: #dcb8ff;
+  --intergalactic-chart-palette-order-red-second-order: #ff4953;
+  --intergalactic-chart-palette-order-salad-second-order: #66c030;
+  --intergalactic-chart-palette-order-blue-third-order: #8ecdff;
+  --intergalactic-chart-palette-order-green-third-order: #009f81;
+  --intergalactic-chart-palette-order-orange-third-order: #ff8c43;
+  --intergalactic-chart-palette-order-pink-third-order: #ffa9fa;
+  --intergalactic-chart-palette-order-yellow-third-order: #d87900;
+  --intergalactic-chart-palette-order-violet-third-order: #c695ff;
+  --intergalactic-chart-palette-order-red-third-order: #ffaeb5;
+  --intergalactic-chart-palette-order-salad-third-order: #35a21e;
+  --intergalactic-chart-palette-order-total-amount: #8a8e9b;
+  --intergalactic-chart-palette-order-other-data: #c4c7cf;
+  --intergalactic-chart-palette-order-null: #e0e1e9;
+  --intergalactic-chart-grid-line: #e0e1e9;
+  --intergalactic-chart-grid-x-axis: #c4c7cf;
+  --intergalactic-chart-grid-y-accent-hover-line: #a9abb6;
+  --intergalactic-chart-grid-text-label: #6c6e79;
+  --intergalactic-chart-grid-bar-chart-hover: rgba(196, 199, 207, 0.3);
+  --intergalactic-chart-grid-bar-chart-base-bg: #e0e1e9;
+  --intergalactic-chart-grid-period-bg: rgba(196, 199, 207, 0.2);
+  --intergalactic-chart-grid-border: #ffffff;
+  --intergalactic-chart-x-axis-accent-period-active: #8a8e9b;
+  --intergalactic-chart-x-axis-accent-data-start-tracking: rgba(0, 159, 129, 0.2);
+}

@@ -29,6 +29,7 @@ type AsProps = {
   columnsChildren: Column[];
   onResize: ResizeObserverCallback;
   sticky: boolean;
+  disabledScroll?: boolean;
   ['data-ui-name']: string;
 };
 
@@ -62,6 +63,7 @@ class Head extends Component<AsProps> {
     const { styles, use, hidden } = this.asProps;
     const SColumn = Flex;
     const SHead = Box;
+    const SSortWrapper = 'div';
     const SSortIcon = SORTING_ICON[column.sortDirection];
     const ariaSortValue =
       column.sortable && column.active ? ariaSort[column.sortDirection] : undefined;
@@ -78,6 +80,10 @@ class Head extends Component<AsProps> {
       style[name] = value;
     }
 
+    if (!column.setVar) {
+      style['flexBasis'] = `var(${column.varWidth})`;
+    }
+
     return sstyled(styles)(
       <SColumn
         role={isGroup ? undefined : 'columnheader'}
@@ -86,7 +92,10 @@ class Head extends Component<AsProps> {
         fixed={column.fixed}
         resizable={column.resizable}
         sortable={column.sortable}
-        active={column.active}
+        sortIconFloat={column.props.justifyContent?.includes('end')}
+        borderLeft={isGroup ? false : column.borderLeft}
+        borderRight={isGroup ? false : column.borderRight}
+        active={isGroup ? false : column.active}
         group={isGroup}
         tabIndex={column.sortable && 0}
         {...column.props}
@@ -105,15 +114,26 @@ class Head extends Component<AsProps> {
       >
         {isGroup ? (
           <>
-            <SColumn role="columnheader" groupHead use={use}>
+            <SColumn
+              role="columnheader"
+              groupHead
+              use={use}
+              active={column.active}
+              borderLeft={column.borderLeft}
+              borderRight={column.borderRight}
+            >
               <div>{column.props.children}</div>
             </SColumn>
             <SHead>{this.renderColumns(column.columns, 100 / cSize)}</SHead>
           </>
         ) : (
           <>
-            <div>{column.props.children}</div>
-            {column.sortable ? <SSortIcon active={column.active} /> : null}
+            {column.props.children}
+            {column.sortable ? (
+              <SSortWrapper>
+                <SSortIcon active={column.active} />
+              </SSortWrapper>
+            ) : null}
           </>
         )}
       </SColumn>,
@@ -123,7 +143,8 @@ class Head extends Component<AsProps> {
   render() {
     const SHead = Root;
     const SHeadWrapper = Box;
-    const { Children, styles, columnsChildren, onResize, $scrollRef, sticky } = this.asProps;
+    const { Children, styles, columnsChildren, onResize, $scrollRef, sticky, disabledScroll } =
+      this.asProps;
 
     this.columns = flattenColumns(columnsChildren);
 
@@ -144,7 +165,7 @@ class Head extends Component<AsProps> {
           shadow
           onResize={onResize}
         >
-          <ScrollArea.Container ref={$scrollRef}>
+          <ScrollArea.Container ref={$scrollRef} disabledScroll={disabledScroll}>
             <SHead render={Box} role="row">
               {this.renderColumns(columnsChildren, 100 / this.columns.length)}
             </SHead>

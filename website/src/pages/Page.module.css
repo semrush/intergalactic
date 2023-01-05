@@ -1,11 +1,11 @@
 .documentationWrapper {
-  padding: 56px 32px 96px;
+  padding: 40px 40px 120px;
   position: relative;
   color: #191b23;
 }
 @media (max-width: 767px) {
   .documentationWrapper {
-    padding: 96px 32px 96px;
+    padding: 80px 32px 120px;
   }
 }
 @media (max-width: 415px) {
@@ -19,7 +19,7 @@
   top: 80px;
   height: calc(100vh - 80px);
   background: #f5f5f5;
-  max-width: 260px;
+  max-width: 250px;
 }
 @media (max-width: 767px) {
   .sideBar {

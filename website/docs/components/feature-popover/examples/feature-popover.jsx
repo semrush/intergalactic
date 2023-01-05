@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import FeaturePopover from '@semcore/feature-popover';
-import Button from '@semcore/button';
-import { Text } from '@semcore/typography';
-import { Flex, Box } from '@semcore/flex-box';
+import FeaturePopover from '@semcore/ui/feature-popover';
+import Button from '@semcore/ui/button';
+import { Text } from '@semcore/ui/typography';
+import { Flex, Box } from '@semcore/ui/flex-box';
 
 const Demo = () => {
   const [visible, updateVisible] = useState(true);

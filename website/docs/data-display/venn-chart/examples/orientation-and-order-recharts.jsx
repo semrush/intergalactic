@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Button from '@semcore/button';
+import Button from '@semcore/ui/button';
 import { VennChart, VennArea, Tooltip, ResponsiveContainer, getColor } from '@semcore/chart';
 
 const data = [

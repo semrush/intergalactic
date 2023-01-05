@@ -2,6 +2,24 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.6.0] - 2022-12-15
+
+### Added
+
+- Updated `@semcore/babel-plugin-styles` dependency.
+
+## [4.4.1] - 2022-12-14
+
+### Added
+
+- Added support of `--intergalactic-*` css variables.
+
+## [4.3.0] - 2022-09-31
+
+### Added
+
+- Added support for npm aliases
+
 ## [4.2.4] - 2022-09-23
 
 ### Changed
@@ -19,12 +37,6 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### Changed
 
 - Version patch update due to children dependencies update (`@semcore/babel-plugin-styles` [1.2.1 ~> 1.3.0]).
-
-## [4.2.1] - 2022-03-14
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/babel-plugin-shadow` [1.2.0 ~> 1.2.1], `@semcore/babel-plugin-styles` [1.2.0 ~> 1.2.1]).
 
 ## [4.2.0] - 2022-03-11
 

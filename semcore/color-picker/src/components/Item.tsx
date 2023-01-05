@@ -13,10 +13,12 @@ type ItemAsProps = {
   selected?: boolean;
   onRemove?: React.MouseEventHandler;
   Children?: React.FC;
+  getI18nText: (messageId: string, values?: { [key: string]: string | number }) => string;
 };
 
 export function Item(props: ItemAsProps) {
-  const { Children, styles, value, displayLabel, editable, selected, onRemove } = props;
+  const { Children, styles, value, displayLabel, editable, selected, onRemove, getI18nText } =
+    props;
   const SItemContainer = Root;
   const SLabel = Box;
   const SCloseIcon = Box;
@@ -26,10 +28,12 @@ export function Item(props: ItemAsProps) {
     <SItemContainer
       render={Box}
       selected={selected}
-      aria-selected={selected}
       value={value}
       displayLabel={displayLabel}
       lightBackground={opacity(value, 0.15)}
+      role="listitem"
+      aria-atomic="true"
+      aria-label={value ? getI18nText('itemColor') : getI18nText('clearColor')}
     >
       {!value && (
         <SLine

@@ -38,27 +38,26 @@ describe('DatePicker', () => {
   });
 
   test('Should support set custom displayPeriod', () => {
-    const { getByText, rerender } = render(
+    const marchInstance = render(
       <DatePicker visible defaultDisplayedPeriod="2020-03-10T12:00:00.808Z" />,
     );
-    expect(getByText('March 2020')).toBeTruthy();
-    rerender(<DatePicker visible displayedPeriod="2020-04-10T12:00:00.808Z" />);
-    expect(getByText('April 2020')).toBeTruthy();
+    expect(marchInstance.getByText('March 2020')).toBeTruthy();
+    const aprilInstance = render(<DatePicker visible displayedPeriod="2020-04-10T12:00:00.808Z" />);
+    expect(aprilInstance.getByText('April 2020')).toBeTruthy();
   });
 
   test('Should support set custom displayPeriod after changed displayedPeriod', () => {
-    jest.useFakeTimers();
-    const component = (
-      <DatePicker defaultVisible defaultDisplayedPeriod="2020-03-10T12:00:00.808Z" />
+    jest.useFakeTimers({ legacyFakeTimers: true });
+    const { getByText, getByLabelText } = render(
+      <DatePicker defaultVisible defaultDisplayedPeriod="2020-03-10T12:00:00.808Z" />,
     );
-    const { getByText, getByLabelText } = render(component);
     fireEvent.click(getByLabelText('Next period'));
     // change visible
     fireEvent.click(getByText('Select date'));
     act(() => jest.runAllTimers());
     fireEvent.click(getByText('Select date'));
     act(() => jest.runAllTimers());
-    expect(getByText('March 2020')).toBeTruthy();
+    expect(getByText('April 2020')).toBeTruthy();
     jest.useRealTimers();
   });
 
@@ -68,20 +67,17 @@ describe('DatePicker', () => {
       <DatePicker defaultVisible defaultDisplayedPeriod="2021-09-10T12:00:00.808Z" />
     );
     const { getByText, getByLabelText } = render(component);
-    fireEvent.click(getByLabelText('Prev period'));
+    fireEvent.click(getByLabelText('Previous period'));
     // change visible
     fireEvent.click(getByText('15'));
     act(() => jest.runAllTimers());
     // change visible
-    fireEvent.click(getByText('Aug 15, 2021'));
-    act(() => jest.runAllTimers());
-    expect(getByText('August 2021')).toBeTruthy();
+    expect(getByText('Aug 15, 2021')).toBeTruthy();
     jest.useRealTimers();
   });
 
   test('a11y', async () => {
     const { container } = render(<DatePicker visible disablePortal />);
-
     const results = await axe(container);
     expect(results).toHaveNoViolations();
   });
@@ -108,7 +104,7 @@ describe('DateRangePicker', () => {
   test('Should render correctly with selected date', async () => {
     const component = (
       <DatePicker value={new Date('January 1, 2021 00:00:00')}>
-        <DatePicker.Trigger size="l" />
+        <DatePicker.InputTrigger size="l" />
         <DatePicker.Popper />
       </DatePicker>
     );
@@ -159,7 +155,7 @@ describe('DateRangePicker', () => {
     expect(
       await snapshot(
         <DatePicker value={new Date('January 1, 2021 00:00:00')}>
-          <DatePicker.Trigger id="datapicker" />
+          <DatePicker.InputTrigger id="datapicker" />
           <DatePicker.Popper />
         </DatePicker>,
         {
@@ -190,7 +186,7 @@ describe('DateRangePicker', () => {
   test('Should support active item', async () => {
     const component = (
       <DatePicker value={new Date('January 1, 2021 00:00:00')}>
-        <DatePicker.Trigger id="datapicker" />
+        <DatePicker.InputTrigger id="datapicker" />
         <DatePicker.Popper />
       </DatePicker>
     );
@@ -215,9 +211,9 @@ describe('DateRangePicker', () => {
   });
 
   test('Should support set custom displayPeriod after changed displayedPeriod', () => {
-    jest.useFakeTimers();
+    jest.useFakeTimers({ legacyFakeTimers: true });
     const component = (
-      <DateRangePicker defaultVisible defaultDisplayedPeriod={['2020-03-10T12:00:00.808Z']} />
+      <DateRangePicker visible defaultDisplayedPeriod={['2020-03-10T12:00:00.808Z']} />
     );
     const { getByText, getByLabelText } = render(component);
     fireEvent.click(getByLabelText('Next period'));
@@ -226,24 +222,19 @@ describe('DateRangePicker', () => {
     act(() => jest.runAllTimers());
     fireEvent.click(getByText('Select date period'));
     act(() => jest.runAllTimers());
-    expect(getByText('March 2020')).toBeTruthy();
+    expect(getByText('April 2020')).toBeTruthy();
     jest.useRealTimers();
   });
 
   test('Should support set custom displayPeriod after changed value date', () => {
-    jest.useFakeTimers();
-    const component = (
-      <DateRangePicker defaultVisible defaultDisplayedPeriod={['2021-09-10T12:00:00.808Z']} />
+    jest.useFakeTimers({ legacyFakeTimers: true });
+    const { getByText, getByLabelText } = render(
+      <DateRangePicker visible defaultDisplayedPeriod={['2021-09-10T12:00:00.808Z']} />,
     );
-    const { getByText, getByLabelText } = render(component);
-    fireEvent.click(getByLabelText('Prev period'));
+    fireEvent.click(getByLabelText('Previous period'));
     // change visible
     fireEvent.click(getByText('31'));
     fireEvent.click(getByText('Apply'));
-    act(() => jest.runAllTimers());
-    // trigger
-    fireEvent.click(getByText('Aug 31, 2021'));
-    act(() => jest.runAllTimers());
     expect(getByText('August 2021')).toBeTruthy();
     jest.useRealTimers();
   });

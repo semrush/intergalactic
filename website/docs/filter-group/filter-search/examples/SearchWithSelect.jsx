@@ -1,10 +1,10 @@
 import React, { useCallback, useState } from 'react';
-import Input from '@semcore/input';
-import CloseXS from '@semcore/icon/Close/m';
-import Search from '@semcore/icon/Search/m';
-import Button from '@semcore/button';
-import NeighborLocation from '@semcore/neighbor-location';
-import Select from '@semcore/select';
+import Input from '@semcore/ui/input';
+import CloseXS from '@semcore/ui/icon/Close/m';
+import Search from '@semcore/ui/icon/Search/m';
+import Button from '@semcore/ui/button';
+import NeighborLocation from '@semcore/ui/neighbor-location';
+import Select from '@semcore/ui/select';
 
 const selectOptions = ['Option 1', 'Option 2'];
 

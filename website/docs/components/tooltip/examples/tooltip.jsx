@@ -1,7 +1,7 @@
 import React from 'react';
-import Tooltip from '@semcore/tooltip';
-import { Box, Flex } from '@semcore/flex-box';
-import Link from '@semcore/link';
+import Tooltip from '@semcore/ui/tooltip';
+import { Box, Flex } from '@semcore/ui/flex-box';
+import Link from '@semcore/ui/link';
 
 export default () => (
   <Flex>

@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { scaleLinear } from 'd3-scale';
-import { Line, minMax, Plot, XAxis, YAxis } from '@semcore/d3-chart';
-import { Flex } from '@semcore/flex-box';
-import DropdownMenu from '@semcore/dropdown-menu';
-import Button from '@semcore/button';
-import FileExportXS from '@semcore/icon/FileExport/m';
+import { Line, minMax, Plot, XAxis, YAxis } from '@semcore/ui/d3-chart';
+import { Flex } from '@semcore/ui/flex-box';
+import DropdownMenu from '@semcore/ui/dropdown-menu';
+import Button from '@semcore/ui/button';
+import FileExportXS from '@semcore/ui/icon/FileExport/m';
 
 const EXPORTS = ['PNG', 'JPEG', 'WEBP'];
 

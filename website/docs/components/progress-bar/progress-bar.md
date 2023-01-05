@@ -53,7 +53,7 @@ ProgressBar has three states:
 
 ![progressbar without progress](static/loading-gray.png)
 
-- 11-99% – the progress bar is partially filled and the pattern is animated.
+- 1-99% – the progress bar is partially filled and the pattern is animated.
 
 ![progressbar with the "in progress" state](static/size-l.png)
 
@@ -108,6 +108,7 @@ When scrolling, the progress bar can be pinned. In this case, pin it above all c
 
 > This component is one of the components that displays interface's reaction to user actions in the interface. For general rules on such components, see the [Loading patterns](/patterns/loading-states/).
 
+@page progress-bar-a11y
 @page progress-bar-api
 @page progress-bar-code
 @page progress-bar-changelog

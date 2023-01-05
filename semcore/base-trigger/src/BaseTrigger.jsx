@@ -14,6 +14,7 @@ class RootBaseTrigger extends Component {
   static style = style;
   static defaultProps = {
     size: 'm',
+    empty: false,
   };
 
   getTextProps() {
@@ -27,7 +28,7 @@ class RootBaseTrigger extends Component {
   render() {
     const SBaseTrigger = Root;
     const SInner = 'div';
-    const { Children, styles, theme, neighborLocation } = this.asProps;
+    const { Children, styles, theme, neighborLocation, empty } = this.asProps;
 
     logger.warn(
       theme !== undefined,
@@ -41,7 +42,9 @@ class RootBaseTrigger extends Component {
         {(neighborLocation) =>
           sstyled(styles)(
             <SBaseTrigger render={Box} neighborLocation={neighborLocation} state={theme}>
-              <SInner>{addonTextChildren(Children, BaseTrigger.Text, BaseTrigger.Addon)}</SInner>
+              <SInner>
+                {addonTextChildren(Children, BaseTrigger.Text, BaseTrigger.Addon, empty)}
+              </SInner>
             </SBaseTrigger>,
           )
         }

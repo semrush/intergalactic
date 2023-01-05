@@ -3,7 +3,8 @@
   "version": "0.0.1",
   "main": "index.ts",
   "bin": {
-    "update-release-changelog": "bin/update-release-changelog.ts"
+    "update-release-changelog": "bin/update-release-changelog.ts",
+    "lint-changelogs": "bin/lint-changelogs.ts"
   },
   "private": false,
   "license": "MIT",
@@ -14,7 +15,7 @@
     "marked-ast": "0.3.0",
     "marked-ast-markdown": "2.1.0",
     "semver": "5.6.0",
-    "simple-git": "3.5.0",
+    "simple-git": "3.15.0",
     "tsm": "2.2.2",
     "@semcore/continuous-delivery": "*"
   },

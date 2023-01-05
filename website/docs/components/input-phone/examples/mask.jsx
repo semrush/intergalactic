@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
-import Input from '@semcore/input';
-import InputMask, { getAfterPositionValue } from '@semcore/input-mask';
-import Select, { InputSearch } from '@semcore/select';
-import NeighborLocation from '@semcore/neighbor-location';
-import Flag, { iso2Name } from '@semcore/flags';
-import { Text } from '@semcore/typography';
-import CloseXS from '@semcore/icon/Close/m';
+import Input from '@semcore/ui/input';
+import InputMask, { getAfterPositionValue } from '@semcore/ui/input-mask';
+import Select, { InputSearch } from '@semcore/ui/select';
+import NeighborLocation from '@semcore/ui/neighbor-location';
+import Flag, { iso2Name } from '@semcore/ui/flags';
+import { Text } from '@semcore/ui/typography';
+import CloseXS from '@semcore/ui/icon/Close/m';
 
 const CountryCodes = {
   AF: { name: 'Afghanistan', dial_code: '+93', code: 'AF' },

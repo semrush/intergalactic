@@ -70,7 +70,7 @@ This option is most suitable when you collect phones from users from one or a li
 
 @## Use in UX/UI
 
-It is recommended that the width of the input field for entering the phone number to be as clear as possible for the user to know how much information they need to enter. Most often, this width does not exceed `160-250px` for all input sizes.
+It is recommended that the width of the input field for entering the phone number to be as clear as possible for the user to know how much information they need to enter. Most often, this width does not exceed 160px-250px for all input sizes.
 
 ![input phone default](static/size-yes-no.png)
 

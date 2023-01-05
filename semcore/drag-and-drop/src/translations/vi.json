@@ -1,0 +1,6 @@
+{
+  "grabbed": "Đã chọn {itemText}, vị trí hiện tại là {itemPosition} thuộc {itemsCount}",
+  "grabbing": "Chọn {itemText}, vị trí thả là {itemPosition} thuộc {itemsCount}",
+  "dropped": "Đã thả {itemText}, vị trí cuối cùng là {itemPosition} thuộc {itemsCount}",
+  "discarded": "Thao tác kéo đã bị loại bỏ"
+}

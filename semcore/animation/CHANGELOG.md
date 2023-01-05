@@ -2,6 +2,54 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [1.8.5] - 2022-12-19
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.44.0 ~> 3.44.1]).
+
+## [1.8.3] - 2022-12-13
+
+### Changed
+
+- Added `react-dom` to peer dependencies.
+
+## [1.8.2] - 2022-12-12
+
+## [1.8.1] - 2022-12-09
+
+### Changed
+
+- Changed prop `initialAnimation` to optional.
+
+## [1.8.0] - 2022-12-05
+
+### Added
+
+- Added prop `initialAnimation` to run animation on the first rendering
+
+## [1.7.3] - 2022-11-30
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.41.0 ~> 3.42.0], `@semcore/flex-box` [4.6.4 ~> 4.6.5]).
+
+## [1.7.0] - 2022-10-21
+
+### Added
+
+- Added a property that removes the `overflow=hidden` setting.
+
+### Changed
+
+- Returning the original `overflow` after the animation has passed.
+
+## [1.6.2] - 2022-10-20
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.39.0 ~> 3.39.1]).
+
 ## [1.6.0] - 2022-10-10
 
 ### Changed

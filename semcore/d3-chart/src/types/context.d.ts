@@ -3,4 +3,6 @@ export default interface IContext {
   data?: any;
   /** Scale for svg element */
   scale?: any[];
+
+  [key: string]: unknown;
 }

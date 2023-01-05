@@ -17,27 +17,36 @@ export default (props) => {
     throw new Error('Got an error during ssr');
   }
   return (
-    <div className={styles.content}>
-      <img className={styles.spaceman} src={spaceman} />
-      <div className={styles.info}>
+    <main className={styles.content} id="main-content">
+      <img className={styles.spaceman} src={spaceman} aria-hidden="true" />
+      <section className={styles.info}>
         <h1>{props.title}</h1>
         <p>
-          Huston, we have problems. <br /> Try to return to the <Link to="/">Main page.</Link>
+          Huston, we have problems. <br /> Try to return to the{' '}
+          <Link to="/" aria-label="go to Main page">
+            Main page.
+          </Link>
         </p>
         <p>
           If you see this page all the time, feel free to drop us <br /> a line at{' '}
-          <a href="mailto:ui-kit-team@semrush.com">ui-kit-team@semrush.com</a>
+          <a
+            href="mailto:ui-kit-team@semrush.com"
+            aria-label="Drop a line at ui-kit-team@semrush.com"
+          >
+            ui-kit-team@semrush.com
+          </a>
           or open an{' '}
           <a
             href="https://github.com/semrush/intergalactic"
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="Create an issue on GitHub"
           >
             issue on the GitHub.
           </a>{' '}
           <br /> We'll do something about it 😛
         </p>
-      </div>
-    </div>
+      </section>
+    </main>
   );
 };

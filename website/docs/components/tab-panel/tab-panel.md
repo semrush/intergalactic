@@ -52,13 +52,19 @@ Addons inside TabLine.Item has the same margins as addons inside the [Button](/c
 | Initial loading | ![initial loading state](static/initial-loading.png) | When it is necessary to show that the data in the counter inside the TabPanel.Item is being loaded for the first time, use [Skeleton](/components/skeleton/) with the size of the text's line-height.                 |
 | Loading         | ![loading state](static/loading.png)                 | When it is necessary to show that the data in the counter inside the TabPanel.Item is being loaded, use [Spin](/components/spin/) with the smallest size (the sizes are the same as in [Button](/components/button)). |
 
-@## Long text
+@## Use in UX/UI
 
 In cases when you have many tabs or there is not enough space for the tab text, collapse the text into the `ellipsis`.
 
 > Be sure to add the tooltip with the full text string to such tabs.
 
 ![ellipsis](static/ellipsis.png)
+
+Also you can collapse the last tabs into a tab with an ellipsis.
+
+> By clicking on the last tab with an ellipsis in the dropdown, it is possible to display a list of items that did not fit. The item selected from this list put before tab with ellipsis.
+
+![tab-collapse](static/tab-collapse.png)
 
 @page tab-panel-a11y
 @page tab-panel-api

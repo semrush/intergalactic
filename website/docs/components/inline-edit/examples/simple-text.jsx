@@ -1,7 +1,7 @@
 import React from 'react';
-import InlineInput from '@semcore/inline-input';
-import InlineEdit from '@semcore/inline-edit';
-import EditM from '@semcore/icon/Edit/m';
+import InlineInput from '@semcore/ui/inline-input';
+import InlineEdit from '@semcore/ui/inline-edit';
+import EditM from '@semcore/ui/icon/Edit/m';
 
 const Example = () => {
   const [text, setText] = React.useState('Martin Eden');

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Radio, { RadioGroup } from '@semcore/radio';
+import Radio, { RadioGroup } from '@semcore/ui/radio';
 
 function Demo() {
   const [value, setValue] = useState('1');

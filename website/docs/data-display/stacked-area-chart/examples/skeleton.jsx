@@ -1,5 +1,5 @@
 import React from 'react';
-import { AreaChartSkeleton } from '@semcore/skeleton';
+import { AreaChartSkeleton } from '@semcore/ui/skeleton';
 
 export default () => (
   <React.Fragment>

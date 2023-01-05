@@ -1,12 +1,12 @@
 import * as ReactDOM from 'react-dom';
 import React, { PureComponent } from 'react';
 
-import { Row } from '@semcore/grid';
-import OutsideClick from '@semcore/outside-click';
+import { Row } from '@semcore/ui/grid';
+import OutsideClick from '@semcore/ui/outside-click';
 import Copy from '@components/Copy';
-import Button from '@semcore/button';
-import FileDownloadM from '@semcore/icon/FileDownload/m';
-import CopyM from '@semcore/icon/Copy/m';
+import Button from '@semcore/ui/button';
+import FileDownloadM from '@semcore/ui/icon/FileDownload/m';
+import CopyM from '@semcore/ui/icon/Copy/m';
 import styles from './styles.module.css';
 
 function modalLayout() {

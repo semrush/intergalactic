@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import DropdownMenu from '@semcore/dropdown-menu';
-import Button from '@semcore/base-trigger';
-import Link from '@semcore/link';
-import { Text } from '@semcore/typography';
-import Notice from '@semcore/notice';
-import SpinContainer from '@semcore/spin-container';
-import FileExportXS from '@semcore/icon/FileExport/m';
+import DropdownMenu from '@semcore/ui/dropdown-menu';
+import Button from '@semcore/ui/base-trigger';
+import Link from '@semcore/ui/link';
+import { Text } from '@semcore/ui/typography';
+import Notice from '@semcore/ui/notice';
+import SpinContainer from '@semcore/ui/spin-container';
+import FileExportXS from '@semcore/ui/icon/FileExport/m';
 
 export default function () {
   const [loading, setLoading] = useState(false);

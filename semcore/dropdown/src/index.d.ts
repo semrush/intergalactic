@@ -10,6 +10,7 @@ export interface IDropdownProps extends IPopperProps {
    * @default 'min'
    * */
   stretch?: 'min' | 'fixed' | false;
+  locale?: string;
 }
 
 export interface IDropdownContext extends IPopperContext {}

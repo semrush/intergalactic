@@ -1,7 +1,7 @@
 import React from 'react';
-import { Plot, HorizontalBar, YAxis } from '@semcore/d3-chart';
+import { Plot, HorizontalBar, YAxis } from '@semcore/ui/d3-chart';
 import { scaleLinear, scaleBand } from 'd3-scale';
-import resolveColor from '@semcore/utils/lib/color';
+import resolveColor from '@semcore/ui/utils/lib/color';
 
 export default () => {
   const MARGIN = 40;

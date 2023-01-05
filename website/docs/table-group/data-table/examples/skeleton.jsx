@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import DataTable from '@semcore/data-table';
-import Skeleton from '@semcore/skeleton';
+import DataTable from '@semcore/ui/data-table';
+import Skeleton from '@semcore/ui/skeleton';
 
 function getSkeleton() {
   return ['keyword', 'kd', 'cpc', 'vol'].map((c) => ({

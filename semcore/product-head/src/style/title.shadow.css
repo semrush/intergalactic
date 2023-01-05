@@ -1,20 +1,18 @@
-@import '@semcore/utils/style/var.css';
-
 STitle {
   align-items: center;
   display: flex;
-  font-size: var(--fs-400);
-  line-height: var(--lh-400);
-  font-weight: 600;
+  font-size: var(--intergalactic-fs-400, 20px);
+  line-height: var(--intergalactic-lh-400, 120%);
+  font-weight: var(--intergalactic-semi-bold, 600);
   min-width: 0;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  color: var(--gray-800);
+  color: var(--intergalactic-text-primary, #191b23);
 }
 
 STool {
-  margin-right: 4px;
+  margin-right: var(--intergalactic-spacing-1x, 4px);
 }
 
 SName {

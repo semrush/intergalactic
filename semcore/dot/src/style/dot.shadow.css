@@ -1,35 +1,37 @@
-@import '@semcore/utils/style/var.css';
-
 SDot {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-size: 10px;
+  font-size: var(--intergalactic-fs-50, 10px);
   line-height: normal;
-  background-color: var(--orange-400);
-  color: #fff;
+  background-color: var(--intergalactic-icon-primary-warning, #ff642d);
+  color: var(--intergalactic-text-primary-invert, #ffffff);
   box-sizing: border-box;
   z-index: 1;
   border-radius: 100%;
   vertical-align: middle;
+  isolation: isolate;
 }
 
 SDot[size='xl'] {
   height: 16px;
   min-width: 16px;
+  /* disable-tokens-validator */
   padding: 3px 4px;
+  /* disable-tokens-validator */
   border-radius: 8px;
 }
 
 SDot[size='l'] {
   height: 12px;
   min-width: 12px;
-  border-radius: 6px;
+  border-radius: var(--intergalactic-rounded-medium, 6px);
 }
 
 SDot[size='m'] {
   height: 6px;
   min-width: 6px;
+  /* disable-tokens-validator */
   border-radius: 3px;
 }
 
@@ -37,6 +39,17 @@ SDot[up] {
   position: absolute;
   top: 0;
   right: 0;
+  /* disable-tokens-validator */
   margin-top: -3px;
+  /* disable-tokens-validator */
   margin-right: -3px;
+}
+
+SA11yAlert {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
 }

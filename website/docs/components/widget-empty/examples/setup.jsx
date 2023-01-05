@@ -1,10 +1,10 @@
 import React from 'react';
-import { Text } from '@semcore/typography';
-import { Box } from '@semcore/flex-box';
-import Button from '@semcore/button';
-import Card from '@semcore/card';
-import WidgetEmpty, { getIconPath } from '@semcore/widget-empty';
-import Divider from '@semcore/divider';
+import { Text } from '@semcore/ui/typography';
+import { Box } from '@semcore/ui/flex-box';
+import Button from '@semcore/ui/button';
+import Card from '@semcore/ui/card';
+import WidgetEmpty, { getIconPath } from '@semcore/ui/widget-empty';
+import Divider from '@semcore/ui/divider';
 
 export default () => {
   return (

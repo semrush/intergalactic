@@ -1,10 +1,10 @@
 import React from 'react';
-import DataTable from '@semcore/data-table';
+import DataTable from '@semcore/ui/data-table';
 
 export default () => {
   return (
     <DataTable data={data}>
-      <DataTable.Head wMin={800}>
+      <DataTable.Head wMin={1000}>
         <DataTable.Column name="keyword" children="Keyword" fixed="left" />
         <DataTable.Column name="kd" children="KD,%" />
         <DataTable.Column name="cpc" children="CPC" />

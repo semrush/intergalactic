@@ -2,6 +2,42 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.7.3] - 2023-01-03
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/format-text` [3.2.4 ~> 3.2.5]).
+
+## [3.7.0] - 2022-12-14
+
+### Added
+
+- Added internationalization of aria attributes.
+
+## [3.6.1] - 2022-12-13
+
+### Changed
+
+- Added `react-dom` to peer dependencies.
+
+## [3.6.0] - 2022-12-12
+
+### Added
+
+- Design tokens based theming.
+
+## [3.5.4] - 2022-11-02
+
+### Fixed
+
+- Fixed paddings.
+
+## [3.5.3] - 2022-10-28
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/button` [4.2.2 ~> 4.2.3], `@semcore/utils` [3.40.0 ~> 3.40.0]).
+
 ## [3.5.0] - 2022-10-10
 
 ### Changed

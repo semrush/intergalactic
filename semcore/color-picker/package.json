@@ -1,7 +1,7 @@
 {
   "name": "@semcore/color-picker",
   "description": "SEMRush ColorPicker Component",
-  "version": "1.2.0",
+  "version": "1.4.2",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -23,11 +23,14 @@
   },
   "peerDependencies": {
     "@semcore/core": "^1.8.3",
-    "react": "16.8 - 18"
+    "react": "16.8 - 18",
+    "react-dom": "16.8 - 18"
   },
   "devDependencies": {
-    "@types/react": "18.0.21",
-    "@semcore/jest-preset-ui": "1.0.0"
+    "@guidepup/playwright": "0.6.1",
+    "@playwright/test": "1.25.1",
+    "@semcore/jest-preset-ui": "1.0.0",
+    "@types/react": "18.0.21"
   },
   "repository": {
     "type": "git",

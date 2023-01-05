@@ -2,10 +2,10 @@ import * as ReactDOM from 'react-dom';
 import React, { PureComponent } from 'react';
 import styled from 'styled-components';
 
-import Tooltip from '@semcore/tooltip';
-import { Col, Row } from '@semcore/grid';
+import Tooltip from '@semcore/ui/tooltip';
+import { Col, Row } from '@semcore/ui/grid';
 import Pills from '@semcore/pills';
-import OutsideClick from '@semcore/outside-click';
+import OutsideClick from '@semcore/ui/outside-click';
 import Copy from '@components/Copy';
 
 const Section = styled.div`

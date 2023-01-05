@@ -2,6 +2,54 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.44.1] - 2022-12-16
+
+### Fixed
+
+- Fixed non-react node detection for `addonTextChildren`.
+
+## [3.44.0] - 2022-12-14
+
+### Changed
+
+- Supported semi-async internationalization.
+
+## [3.43.0] - 2022-12-12
+
+### Added
+
+- Added `ThemeProvider`.
+
+## [3.42.0] - 2022-11-30
+
+### Changed
+
+- Changed `keyboard-focus` opacity
+
+## [3.41.0] - 2022-11-30
+
+### Added
+
+- Added ability to merge `styles` field for `assignProps` function.
+
+## [3.40.0] - 2022-10-26
+
+### Added
+
+- Added `hasLabels` utility.
+
+## [3.39.1] - 2022-10-20
+
+### Fixed
+
+- Removed `@types/react`, `@types/react-dom` and `@types/node` from package direct dependencies.
+
+## [3.39.0] - 2022-10-10
+
+### Added
+
+- Added new property for `utils/lib/addonTextChildren` to be able to control how children are wrapped in `Text`.
+
 ## [3.38.0] - 2022-10-10
 
 ### Changed

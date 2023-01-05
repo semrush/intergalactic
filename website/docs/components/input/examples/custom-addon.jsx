@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import Input from '@semcore/input';
-import Badge from '@semcore/badge';
-import Tag from '@semcore/tag';
+import Input from '@semcore/ui/input';
+import Badge from '@semcore/ui/badge';
+import Tag from '@semcore/ui/tag';
 
 const Demo = () => {
   const [value, setValue] = useState('heh');

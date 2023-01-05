@@ -1,0 +1,7 @@
+{
+  "title": "Introducción de la hora, la hora introducida es {time} {meridiem}",
+  "titleEmpty": "Introducción de la hora, no se ha introducido la hora",
+  "hours": "Campo de entrada de horas",
+  "minutes": "Campo de input de minutos",
+  "format": "Formato de tiempo {meridiem}"
+}

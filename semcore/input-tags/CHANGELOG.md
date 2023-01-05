@@ -2,6 +2,48 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.3.5] - 2023-01-03
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/tag` [4.4.3 ~> 4.4.4]).
+
+## [3.3.1] - 2022-12-13
+
+### Changed
+
+- Added `react-dom` to peer dependencies.
+
+## [3.3.0] - 2022-12-12
+
+### Added
+
+- Design tokens based theming.
+
+## [3.2.9] - 2022-12-06
+
+### Fixed
+
+- Fixed `Value` type
+
+## [3.2.8] - 2022-12-02
+
+### Fixed
+
+- Fixed exported types of components.
+
+## [3.2.7] - 2022-11-30
+
+### Fixed
+
+- Fixed showing types in autocomplete IDE.
+
+## [3.2.6] - 2022-11-30
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.40.0 ~> 3.41.0], `@semcore/input` [3.3.0 ~> 3.3.1]).
+
 ## [3.2.0] - 2022-10-10
 
 ### Changed

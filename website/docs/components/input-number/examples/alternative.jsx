@@ -1,8 +1,8 @@
 import React, { useRef, useState } from 'react';
-import NeighborLocation from '@semcore/neighbor-location';
-import InputNumber from '@semcore/input-number';
-import Button from '@semcore/button';
-import { Flex } from '@semcore/flex-box';
+import NeighborLocation from '@semcore/ui/neighbor-location';
+import InputNumber from '@semcore/ui/input-number';
+import Button from '@semcore/ui/button';
+import { Flex } from '@semcore/ui/flex-box';
 
 function Demo() {
   const [value, setValue] = useState('');

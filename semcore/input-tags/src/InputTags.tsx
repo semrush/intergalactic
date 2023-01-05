@@ -1,5 +1,5 @@
-import React, { ComponentProps, HTMLAttributes } from 'react';
-import createComponent, { Component, sstyled, Root, PropGetterFn, Merge } from '@semcore/core';
+import React from 'react';
+import createComponent, { Component, sstyled, Root, PropGetterFn, CProps } from '@semcore/core';
 import Input, { IInputProps, IInputValueProps } from '@semcore/input';
 import ScrollArea, { IScrollAreaProps } from '@semcore/scroll-area';
 import Tag, { ITagProps } from '@semcore/tag';
@@ -214,23 +214,7 @@ function InputTag(props) {
   );
 }
 
-export default createComponent<
-  // eslint-disable-next-line ssr-friendly/no-dom-globals-in-module-scope
-  Merge<IInputTagsProps, HTMLAttributes<HTMLDivElement>>,
-  {
-    Value: ComponentProps<typeof Input.Value>;
-    Tag: [
-      IInputTagsTagProps,
-      {
-        Text: ComponentProps<typeof Tag.Text>;
-        Close: ComponentProps<typeof Tag.Close>;
-        Addon: ComponentProps<typeof Tag.Addon>;
-        Circle: ComponentProps<typeof Tag.Circle>;
-      },
-    ];
-  },
-  IInputTagsContext
->(InputTags, {
+export default createComponent(InputTags, {
   Value,
   Tag: [
     InputTag,
@@ -241,4 +225,12 @@ export default createComponent<
       Circle: Tag.Circle,
     },
   ],
-});
+}) as (<T>(props: CProps<IInputTagsProps & T, IInputTagsContext>) => React.ReactElement) & {
+  Value: typeof Input.Value;
+  Tag: (<T>(props: IInputTagsTagProps & T) => React.ReactElement) & {
+    Text: typeof Tag.Text;
+    Close: typeof Tag.Close;
+    Addon: typeof Tag.Addon;
+    Circle: typeof Tag.Circle;
+  };
+};

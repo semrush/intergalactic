@@ -1,5 +1,5 @@
 import React from 'react';
-import FormatText from '@semcore/format-text';
+import FormatText from '@semcore/ui/format-text';
 
 export default () => (
   <FormatText>

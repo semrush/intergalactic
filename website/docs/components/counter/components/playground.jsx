@@ -1,6 +1,6 @@
 import React from 'react';
 import PlaygroundGeneration from '@components/PlaygroundGeneration';
-import Counter from '@semcore/counter';
+import Counter from '@semcore/ui/counter';
 
 const SIZES = ['m', 'l', 'xl'];
 

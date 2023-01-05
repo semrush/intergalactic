@@ -1,9 +1,7 @@
-@import '@semcore/utils/style/var.css';
-
 SButtonTrigger {
-  border: 1px solid var(--gray-200);
-  background: #ffffff;
-  color: var(--gray-800);
+  border: 1px solid var(--intergalactic-border-primary, #c4c7cf);
+  background: var(--intergalactic-bg-primary-neutral, #ffffff);
+  color: var(--intergalactic-text-primary, #191b23);
 
   &::-moz-focus-inner {
     border: none;
@@ -20,48 +18,51 @@ SButtonTrigger {
   &:active,
   &:hover,
   &[active] {
-    background-color: color-mod(var(--gray-400) a(20%));
+    background-color: var(
+      --intergalactic-control-secondary-neutral-hover,
+      rgba(138, 142, 155, 0.2)
+    );
   }
 }
 
 SButtonTrigger[size='m'] {
   min-width: 26px;
   height: 28px;
-  border-radius: var(--rounded-m);
-  font-size: var(--fs-200);
+  border-radius: var(--intergalactic-rounded-medium, 6px);
+  font-size: var(--intergalactic-fs-200, 14px);
 }
 
 SButtonTrigger[size='l'] {
   min-width: 32px;
   height: 40px;
-  border-radius: var(--rounded-m);
-  font-size: var(--fs-300);
+  border-radius: var(--intergalactic-rounded-medium, 6px);
+  font-size: var(--intergalactic-fs-300, 16px);
 }
 
 SText[placeholder] {
-  color: var(--gray-300);
+  color: var(--intergalactic-text-placeholder, #a9abb6);
 }
 
 SButtonTrigger[state='normal'] {
-  border-color: var(--gray-200);
+  border-color: var(--intergalactic-border-primary, #c4c7cf);
 }
 
 SButtonTrigger[state='valid'] {
-  border-color: var(--green-200);
+  border-color: var(--intergalactic-border-success, #59ddaa);
 }
 
 SButtonTrigger[state='invalid'] {
-  border-color: var(--red-200);
+  border-color: var(--intergalactic-border-danger, #ffaeb5);
 }
 
 SFilterTrigger[selected] {
-  border-color: var(--blue-400);
-  background-color: color-mod(var(--blue-400) a(20%));
-  color: var(--gray-800);
+  border-color: var(--intergalactic-border-info-active, #006dca);
+  background-color: var(--intergalactic-control-secondary-info-hover, rgba(0, 143, 248, 0.2));
+  color: var(--intergalactic-text-primary, #191b23);
 
   &[active],
   &:hover {
-    background: color-mod(var(--blue-400) a(30%));
+    background-color: var(--intergalactic-control-secondary-info-active, rgba(0, 143, 248, 0.3));
   }
 }
 
@@ -74,9 +75,9 @@ SWrapper {
 }
 
 SWrapper[keyboardFocused] {
-  box-shadow: var(--keyboard-focus);
+  box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.3));
 }
 
 SCounter {
-  background-color: var(--blue-400);
+  background-color: var(--intergalactic-bg-primary-info, #008ff8);
 }

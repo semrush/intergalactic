@@ -2,6 +2,110 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.7.2] - 2022-12-27
+
+### Fixed
+
+- Fixed `Donut` chart rendering when hovering over a chart while it is loading.
+
+## [2.7.1] - 2022-12-19
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/animation` [1.8.4 ~> 1.8.5], `@semcore/utils` [3.44.0 ~> 3.44.1]).
+
+## [2.7.0] - 2022-12-14
+
+### Changed
+
+- Supported semi-async internationalization of text in a11y module.
+
+## [2.6.1] - 2022-12-13
+
+### Changed
+
+- Added `react-dom` to peer dependencies.
+
+## [2.6.0] - 2022-12-12
+
+### Added
+
+- Design tokens based theming.
+
+## [2.5.2] - 2022-11-11
+
+### Fixed
+
+- Allowed to pass any svg attributes.
+
+## [2.5.1] - 2022-11-11
+
+### Fixed
+
+- Fixed `Bar` click handler typings.
+
+## [2.5.0] - 2022-11-10
+
+### Fixed
+
+- Fixed support handling of bars event handling with `paddingOuter`.
+
+### Added
+
+- `Bar` component now supports `onClick` handler with bar data in callback.
+
+## [2.4.10] - 2022-11-03
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/popper` [4.13.3 ~> 4.13.4]).
+
+## [2.4.9] - 2022-11-03
+
+### Fixed
+
+- Fixed hover and active animated for `Donut` chart.
+
+## [2.4.8] - 2022-11-02
+
+### Fixed
+
+- Fixed display of minimum bar size in `StackBar`.
+
+### Added
+
+- Added display of minimum bar size in `HorizontalBar`.
+
+## [2.4.7] - 2022-11-01
+
+### Fixed
+
+- Fixed inner radius for `Donut` chart. It began to equal what is indicated in the `innerRadius` prop.
+
+## [2.4.6] - 2022-10-31
+
+### Fixed
+
+- Fixed reference lines were missing dashed style.
+
+## [2.4.5] - 2022-10-28
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/animation` [1.7.0 ~> 1.7.1], `@semcore/utils` [3.40.0 ~> 3.40.0]).
+
+## [2.4.3] - 2022-10-20
+
+### Fixed
+
+- Fixed typings of render functions.
+
+## [2.4.2] - 2022-10-20
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/animation` [1.6.1 ~> 1.6.2], `@semcore/utils` [3.39.0 ~> 3.39.1]).
+
 ## [2.4.0] - 2022-10-10
 
 ### Changed

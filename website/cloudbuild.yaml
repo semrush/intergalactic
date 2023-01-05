@@ -24,15 +24,16 @@ steps:
       - --image=$_GCR_HOSTNAME/$PROJECT_ID/$REPO_NAME/$_SERVICE_NAME:$COMMIT_SHA
       - --region=$_DEPLOY_REGION
       - --labels=gcb-trigger-id=$_TRIGGER_ID
-  - id: 'Install dependency'
-    name: node:16
-    entrypoint: yarn
-    args: ['install']
-    dir: website
   - id: 'Update search'
     name: node:16
-    entrypoint: yarn
-    args: ['run', 'upload-search-index']
+    entrypoint: 'bash'
+    args:
+      - -c
+      - |
+        if [[ "$BRANCH_NAME" == "master" ]]
+        then
+          npm install && npm run upload-search-index
+        fi
     dir: website
     env:
       - ALGOLIA_SECRET_KEY=$_ALGOLIA_SECRET_KEY

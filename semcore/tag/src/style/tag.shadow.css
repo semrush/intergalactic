@@ -1,5 +1,3 @@
-@import '@semcore/utils/style/var.css';
-
 STag {
   display: inline-flex;
   align-items: center;
@@ -9,10 +7,10 @@ STag {
   border-width: 1px;
   border-style: solid;
   border-color: transparent;
-  border-radius: 24px;
-  padding-left: 4px;
-  padding-right: 4px;
-  font-weight: 500;
+  border-radius: var(--intergalactic-rounded-extra-large, 24px);
+  padding-left: var(--intergalactic-spacing-1x, 4px);
+  padding-right: var(--intergalactic-spacing-1x, 4px);
+  font-weight: var(--intergalactic-medium, 500);
   background-color: var(--colorBg);
   color: var(--colorText);
   border-color: var(--colorBorder);
@@ -25,7 +23,7 @@ STag {
 }
 
 STag[disabled] {
-  opacity: var(--disabled-opacity);
+  opacity: var(--intergalactic-disabled-opacity, 0.3);
   cursor: default;
   pointer-events: none; /* Disable link interactions */
 }
@@ -39,16 +37,16 @@ STag[size='m'] {
   min-width: 20px;
 
   & SCircle:first-child {
-    margin-left: -2px;
+    margin-left: calc(-1 * var(--intergalactic-spacing-05x, 2px));
   }
 
   & SCircle:last-child {
-    margin-right: -2px;
+    margin-right: calc(-1 * var(--intergalactic-spacing-05x, 2px));
   }
 
   & SText {
-    font-size: var(--fs-100);
-    line-height: var(--lh-100);
+    font-size: var(--intergalactic-fs-100, 12px);
+    line-height: var(--intergalactic-lh-100, 133%);
   }
 }
 
@@ -57,8 +55,8 @@ STag[size='l'] {
   min-width: 28px;
 
   & SText {
-    font-size: var(--fs-200);
-    line-height: var(--lh-200);
+    font-size: var(--intergalactic-fs-200, 14px);
+    line-height: var(--intergalactic-lh-200, 142%);
   }
 }
 
@@ -67,8 +65,8 @@ STag[size='xl'] {
   min-width: 40px;
 
   & SText {
-    font-size: var(--fs-300);
-    line-height: var(--lh-300);
+    font-size: var(--intergalactic-fs-300, 16px);
+    line-height: var(--intergalactic-lh-300, 150%);
   }
 }
 
@@ -85,24 +83,24 @@ STag[theme='primary'] {
 }
 
 STag[theme='primary-invert'] {
-  background-color: rgba(255, 255, 255, 0.15);
-  color: var(--white);
+  background-color: var(--intergalactic-tag-primary-white-normal, rgba(255, 255, 255, 0.15));
+  color: var(--intergalactic-text-primary-invert, #ffffff);
 
   &[interactive]:hover,
   &[interactive]:active,
   &[active] {
-    background-color: rgba(255, 255, 255, 0.3);
+    background-color: var(--intergalactic-tag-primary-white-hover-active, rgba(255, 255, 255, 0.3));
   }
 }
 STag[theme='secondary-invert'],
 STag[theme='additional-invert'] {
-  color: var(--white);
-  border-color: color-mod(var(--white) a(30%));
+  color: var(--intergalactic-text-primary-invert, #ffffff);
+  border-color: var(--intergalactic-border-secondary-invert, rgba(255, 255, 255, 0.3));
 
   &[interactive]:hover,
   &[interactive]:active,
   &[active] {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: var(--intergalactic-tag-secondary-hover-active, #f4f5f9);
   }
 }
 
@@ -112,8 +110,8 @@ STag[theme='additional'] {
 
 SText {
   display: inline-block;
-  padding-left: 4px;
-  padding-right: 4px;
+  padding-left: var(--intergalactic-spacing-1x, 4px);
+  padding-right: var(--intergalactic-spacing-1x, 4px);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -137,8 +135,8 @@ SAddon {
   flex-shrink: 0;
   align-items: center;
   justify-content: center;
-  padding-left: 4px;
-  padding-right: 4px;
+  padding-left: var(--intergalactic-spacing-1x, 4px);
+  padding-right: var(--intergalactic-spacing-1x, 4px);
 }
 
 SCircle {
@@ -147,7 +145,7 @@ SCircle {
   justify-content: center;
   overflow: hidden;
   border-radius: 50%;
-  margin: 0 4px;
+  margin: 0 var(--intergalactic-spacing-1x, 4px);
 
   &:first-child {
     margin-left: 0;
@@ -179,5 +177,10 @@ SClose {
   flex-shrink: 0;
   align-items: center;
   justify-content: center;
-  padding: 4px;
+  padding: var(--intergalactic-spacing-1x, 4px);
+  opacity: 0.5;
+
+  &:hover {
+    opacity: 1;
+  }
 }

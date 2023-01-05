@@ -1,10 +1,11 @@
 ## Automated screen reader testing
 
-_Intergalactic v12.6.0, React v18.2.0, Playwright v1.25.1,
+_Intergalactic v13.2.3, React v18.2.0, Playwright v1.25.1,
 Guidepup v0.13.1, MacOS Big Sur 11._
 
 **Running screen reader against [this file](https://github.com/semrush/intergalactic/blob/master/website/docs/components/dropdown-menu/examples/basic.jsx).**
 
+```
 1. Screen reader presses the "Tab" button.
 2. Screen reader says "Click me menu pop up button".
 3. Screen reader presses the "Control+Option+Space" button.
@@ -20,3 +21,4 @@ Guidepup v0.13.1, MacOS Big Sur 11._
 13. Screen reader says "Item 2 menu item".
 14. Screen reader presses the "Escape" button.
 15. Screen reader says "Click me menu pop up button".
+```

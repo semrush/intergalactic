@@ -5,11 +5,10 @@ import NeighborLocation from '@semcore/neighbor-location';
 import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 import addonTextChildren from '@semcore/utils/lib/addonTextChildren';
 import logger from '@semcore/utils/lib/logger';
-import reactToText from '@semcore/utils/lib/reactToText';
-import getOriginChildren from '@semcore/utils/lib/getOriginChildren';
 import SpinButton from './SpinButton';
 
 import style from './style/button.shadow.css';
+import hasLabels from '@semcore/utils/lib/hasLabels';
 
 export const MAP_USE_DEFAULT_THEME = {
   primary: 'info',
@@ -25,6 +24,7 @@ class RootButton extends Component {
     use: 'secondary',
     size: 'm',
   };
+  containerRef = React.createRef();
 
   getTextProps() {
     const { size } = this.asProps;
@@ -38,6 +38,16 @@ class RootButton extends Component {
     return {
       size,
     };
+  }
+
+  componentDidMount() {
+    if (process.env.NODE_ENV !== 'production') {
+      logger.warn(
+        !hasLabels(this.containerRef.current),
+        `'aria-label' or 'aria-labelledby' are required props for buttons without text content`,
+        this.asProps['data-ui-name'] || Button.displayName,
+      );
+    }
   }
 
   render() {
@@ -55,16 +65,9 @@ class RootButton extends Component {
       neighborLocation,
       addonLeft,
       addonRight,
-      'aria-label': ariaLabel,
     } = this.asProps;
     const useTheme = use && theme ? `${use}-${theme}` : false;
-    const isTextInside = reactToText(getOriginChildren(Children));
 
-    logger.warn(
-      !isTextInside && !ariaLabel,
-      'aria-label is required',
-      this.asProps['data-ui-name'] || Button.displayName,
-    );
     return (
       <NeighborLocation.Detect neighborLocation={neighborLocation}>
         {(neighborLocation) =>
@@ -77,6 +80,7 @@ class RootButton extends Component {
               neighborLocation={neighborLocation}
               use:theme={useTheme}
               role="button"
+              ref={this.containerRef}
             >
               <SInner tag="span" loading={loading}>
                 {addonLeft ? <Button.Addon tag={addonLeft} /> : null}

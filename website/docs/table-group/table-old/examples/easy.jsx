@@ -1,13 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 import Table from '@semcore/table';
-import Checkbox from '@semcore/checkbox';
-import Tooltip from '@semcore/tooltip';
-import Link from '@semcore/link';
-import Spin from '@semcore/spin';
-import { Text } from '@semcore/typography';
+import Checkbox from '@semcore/ui/checkbox';
+import Tooltip from '@semcore/ui/tooltip';
+import Link from '@semcore/ui/link';
+import Spin from '@semcore/ui/spin';
+import { Text } from '@semcore/ui/typography';
 
-let data = [
+const data = [
   {
     keyword: 'ebay buy',
     kd: '77.8',
@@ -92,15 +92,15 @@ class Demo extends React.Component {
     clearTimeout(this._timer);
     this.setState({
       loading: true,
+      active: key,
     });
     this._timer = setTimeout(() => {
-      let { active, order } = this.state;
+      const { active, order } = this.state;
       if (active === key) {
         order[active] = MAP_ORDER[order[active]];
       }
       this.setState({
         loading: false,
-        active: key,
         order,
       });
     }, 1000);
@@ -123,6 +123,7 @@ class Demo extends React.Component {
               active={active === 'keyword'}
               onClick={this.handleHeadClick('keyword')}
               onKeyDown={this.handleHeadKeyDown('keyword')}
+              borderRight
             >
               <Tooltip title="Jesus Christ, Joe, fucking forget about it. I'm Mr. Pink. Let's move on.">
                 <span>
@@ -172,7 +173,7 @@ class Demo extends React.Component {
                   <Checkbox.Value />
                 </Checkbox>
               </Table.Cell>
-              <Table.Cell>
+              <Table.Cell borderRight>
                 <Link>{row.keyword}</Link>
               </Table.Cell>
               <Table.Cell align="right">{row.kd}</Table.Cell>

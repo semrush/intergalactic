@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import Accordion from '@semcore/accordion';
-import { Text } from '@semcore/typography';
-import { Box, Flex } from '@semcore/flex-box';
+import Accordion from '@semcore/ui/accordion';
+import { Text } from '@semcore/ui/typography';
+import { Box, Flex } from '@semcore/ui/flex-box';
 
 const Demo = () => {
   const [value, onChange] = useState(null); // or []

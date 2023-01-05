@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
-import DataTable from '@semcore/data-table';
-import { Box } from '@semcore/flex-box';
-import ScrollArea from '@semcore/scroll-area';
+import DataTable from '@semcore/ui/data-table';
+import { Box } from '@semcore/ui/flex-box';
+import ScrollArea from '@semcore/ui/scroll-area';
 
 export default () => {
   const containerRef = useRef();
@@ -16,7 +16,7 @@ export default () => {
   return (
     <>
       <DataTable data={data}>
-        <Box position="sticky" zIndex={2} top={top}>
+        <Box position="sticky" top={top} zIndex={2}>
           <DataTable.Head wMin={1000}>
             <DataTable.Column name="keyword" children="Keyword" />
             <DataTable.Column name="kd" children="KD,%" />
@@ -28,7 +28,7 @@ export default () => {
       </DataTable>
       <h3>with Scroll.Bar in Header</h3>
       <DataTable data={data}>
-        <Sticky zIndex={2} top={top}>
+        <Box position="sticky" top={top} zIndex={2}>
           <DataTable.Head wMin={1000} ref={containerRef}>
             <DataTable.Column name="keyword" children="Keyword" />
             <DataTable.Column name="kd" children="KD,%" />
@@ -36,7 +36,7 @@ export default () => {
             <DataTable.Column name="vol" children="Vol." />
           </DataTable.Head>
           {container && <ScrollArea.Bar container={container} />}
-        </Sticky>
+        </Box>
         <DataTable.Body />
       </DataTable>
     </>

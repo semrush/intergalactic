@@ -1,7 +1,7 @@
 import React from 'react';
 import Table from '@semcore/table';
-import Accordion from '@semcore/accordion';
-import { Box } from '@semcore/flex-box';
+import Accordion from '@semcore/ui/accordion';
+import { Box } from '@semcore/ui/flex-box';
 
 export default () => (
   <Table>
@@ -18,7 +18,10 @@ export default () => (
           <Accordion.Item value={index} key={index}>
             <Accordion.Item.Toggle tag={Table.Row}>
               {Object.values(item).map((value, ind) => (
-                <Table.Cell key={value}>
+                <Table.Cell
+                  key={value}
+                  style={ind === 0 ? { display: 'flex', alignItems: 'center' } : {}}
+                >
                   {ind === 0 && <Accordion.Item.Chevron color="stone" mr={2} />}
                   {value}
                 </Table.Cell>

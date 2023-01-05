@@ -5,21 +5,44 @@ import { scaleOfBandwidth } from './utils';
 
 import style from './style/reference-line.shadow.css';
 
-const MAP_ORIENTATION = {
+const side2direction = {
   left: 'vertical',
   right: 'vertical',
   top: 'horizontal',
   bottom: 'horizontal',
 };
 
-const MAP_POSITION_LINE = {
+const lineDirection2props = {
+  vertical: ([xScale, yScale], value) => {
+    const yRange = yScale.range();
+    const x = scaleOfBandwidth(xScale, value);
+    return {
+      x1: x,
+      x2: x,
+      y1: yRange[0],
+      y2: yRange[1],
+    };
+  },
+  horizontal: ([xScale, yScale], value) => {
+    const xRange = xScale.range();
+    const y = scaleOfBandwidth(yScale, value);
+    return {
+      x1: xRange[0],
+      x2: xRange[1],
+      y1: y,
+      y2: y,
+    };
+  },
+};
+
+const rectDirection2props = {
   vertical: ([xScale, yScale], value) => {
     const yRange = yScale.range();
     const x = scaleOfBandwidth(xScale, value);
     return {
       x: x,
       y: yRange[1],
-      width: 0.1,
+      width: 100,
       height: yRange[0] - yRange[1],
     };
   },
@@ -30,18 +53,18 @@ const MAP_POSITION_LINE = {
       x: xRange[0],
       y: y,
       width: xRange[1] - xRange[0],
-      height: 0.1,
+      height: 100,
     };
   },
 };
 
-const OFFSET_TITLE = 10;
-const MAP_POSITION_TITlE = {
+const titleOffset = 10;
+const titleSideToProps = {
   left: ([xScale, yScale], value) => {
     const yRange = yScale.range();
     const x = scaleOfBandwidth(xScale, value);
     return {
-      x: x - OFFSET_TITLE,
+      x: x - titleOffset,
       y: (yRange[0] + yRange[1]) / 2,
     };
   },
@@ -49,7 +72,7 @@ const MAP_POSITION_TITlE = {
     const yRange = yScale.range();
     const x = scaleOfBandwidth(xScale, value);
     return {
-      x: x + OFFSET_TITLE,
+      x: x + titleOffset,
       y: (yRange[0] + yRange[1]) / 2,
     };
   },
@@ -58,7 +81,7 @@ const MAP_POSITION_TITlE = {
     const y = scaleOfBandwidth(yScale, value);
     return {
       x: (xRange[1] + xRange[0]) / 2,
-      y: y - OFFSET_TITLE,
+      y: y - titleOffset,
     };
   },
   bottom: ([xScale, yScale], value) => {
@@ -66,7 +89,7 @@ const MAP_POSITION_TITlE = {
     const y = scaleOfBandwidth(yScale, value);
     return {
       x: (xRange[1] + xRange[0]) / 2,
-      y: y + OFFSET_TITLE,
+      y: y + titleOffset,
     };
   },
 };
@@ -91,15 +114,15 @@ class ReferenceLineRoot extends Component {
   render() {
     const SReferenceLine = this.Element;
     const { title, scale, position, value, color, styles } = this.asProps;
-    const pos = MAP_POSITION_LINE[MAP_ORIENTATION[position]];
+    const positionProps = lineDirection2props[side2direction[position]];
 
     return sstyled(styles)(
       <>
         <SReferenceLine
-          render="rect"
+          render="line"
           __excludeProps={['data', 'scale', 'format', 'value', 'color']}
           stroke={color}
-          {...pos(scale, value)}
+          {...positionProps(scale, value)}
         />
         {title && <ReferenceLine.Title>{title}</ReferenceLine.Title>}
       </>,
@@ -109,7 +132,7 @@ class ReferenceLineRoot extends Component {
 
 function Title(props) {
   const { Element: STitle, styles, scale, position, value } = props;
-  const { x, y } = MAP_POSITION_TITlE[position](scale, value);
+  const { x, y } = titleSideToProps[position](scale, value);
 
   const sstyles = sstyled(styles);
   const sTitleStyles = sstyles.cn('STitle', {
@@ -131,10 +154,10 @@ function Title(props) {
 
 function Background(props) {
   const { Element: SBackground, styles, scale, position, value } = props;
-  const pos = MAP_POSITION_LINE[MAP_ORIENTATION[position]];
+  const positionProps = rectDirection2props[side2direction[position]];
 
   return sstyled(styles)(
-    <SBackground render="rect" childrenPosition="inside" {...pos(scale, value)} />,
+    <SBackground render="rect" childrenPosition="inside" {...positionProps(scale, value)} />,
   );
 }
 

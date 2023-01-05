@@ -2,7 +2,7 @@ import React from 'react';
 import dayjs from 'dayjs';
 import createComponent from '@semcore/core';
 import shortDateRangeFormat from './utils/shortDateRangeFormat';
-import { Header, Next, Period, Popper, Prev, Title, Trigger } from './components';
+import { Header, Next, Period, Popper, Prev, Title, Trigger, InputTrigger } from './components';
 import { CalendarDays as Calendar } from './components/Calendar';
 import RangePickerAbstract, { Apply, Reset } from './components/RangePickerAbstract';
 
@@ -69,12 +69,30 @@ class DateRangePickerRoot extends RangePickerAbstract {
       }),
     };
   }
+
+  getInputTriggerProps() {
+    const { value, onChange, onDisplayedPeriodChange, locale, disabled, size, getI18nText } =
+      this.asProps;
+
+    return {
+      ...super.getTriggerProps(),
+      value,
+      onChange,
+      onDisplayedPeriodChange,
+      locale,
+      w: size === 'm' ? 270 : 300,
+      disabledDates: disabled,
+      children: () => <InputTrigger.DateRange />,
+      getI18nText,
+    };
+  }
 }
 
 const DateRangePicker = createComponent(
   DateRangePickerRoot,
   {
     Trigger,
+    InputTrigger,
     Popper,
     Header,
     Title,

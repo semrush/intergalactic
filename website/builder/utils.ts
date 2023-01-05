@@ -8,6 +8,7 @@ import { gfmFromMarkdown } from 'mdast-util-gfm';
 import { toHast } from 'mdast-util-to-hast';
 import { toHtml } from 'hast-util-to-html';
 import { createHash } from 'crypto';
+import type { HastNode } from 'mdast-util-to-hast/lib';
 
 const cyrillicFallback = {
   а: 'a',
@@ -100,7 +101,10 @@ export const parseMarkdown = (markdownText: string) => {
   });
 };
 
-export const markdownTokenToHtml = (token: MarkdownToken | MarkdownRoot) => {
+export const markdownTokenToHtml = (
+  token: MarkdownToken | MarkdownRoot,
+  meta?: { caption: string },
+) => {
   const hast = toHast(token, {
     allowDangerousHtml: true,
     handlers: {
@@ -120,9 +124,33 @@ export const markdownTokenToHtml = (token: MarkdownToken | MarkdownRoot) => {
 
         return h(node, 'a', props, [{ type: 'text', value: text }]);
       },
+      image: (h, node) => {
+        const props = { src: node.url, alt: node.alt, 'aria-hidden': 'true' };
+        return h(node, 'img', props);
+      },
     },
   });
-  const html = toHtml(hast, { allowDangerousHtml: true });
+
+  const mapHast = (hast: HastNode[]) =>
+    hast.map((node) => {
+      if (node.type === 'element' && node.tagName === 'table' && meta?.caption) {
+        const caption = meta.caption;
+
+        node.children.unshift({
+          type: 'element',
+          tagName: 'caption',
+          children: [{ type: 'text', value: caption }],
+        });
+      }
+
+      if ('children' in node) {
+        node.children = mapHast(node.children) as any;
+      }
+
+      return node;
+    });
+
+  const html = toHtml(mapHast([hast]), { allowDangerousHtml: true });
 
   return html;
 };

@@ -29,6 +29,7 @@ export interface IInputNumberValueProps extends IInputValueProps {
   value?: InputNumberValue;
   /** Called when the input value changes, it returns its current value in numeric format */
   onChange?: (value: InputNumberValue, event?: React.SyntheticEvent<HTMLInputElement>) => void;
+  locale?: string;
 }
 
 export interface IInputNumberControlsProps extends IInputAddonProps {

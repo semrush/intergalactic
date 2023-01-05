@@ -12,6 +12,8 @@ import InputSearch from './InputSearch';
 import { useBox } from '@semcore/flex-box';
 import { selectContext } from './context';
 import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
+import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
+import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 
 import style from './style/select.shadow.css';
 
@@ -31,13 +33,15 @@ class RootSelect extends Component {
   static displayName = 'Select';
 
   static style = style;
-  static enhance = [uniqueIDEnhancement()];
+  static enhance = [uniqueIDEnhancement(), i18nEnhance(localizedMessages)];
 
   static defaultProps = (props) => ({
     placeholder: props.multiselect ? 'Select options' : 'Select option',
     size: 'm',
     defaultValue: getEmptyValue(props.multiselect),
     defaultVisible: false,
+    i18n: localizedMessages,
+    locale: 'en',
   });
 
   firstSelectedOptionRef = React.createRef();
@@ -65,13 +69,14 @@ class RootSelect extends Component {
       multiselect,
       uid,
       disablePortal,
+      getI18nText,
     } = this.asProps;
 
     return {
       id: `igc-${uid}-trigger`,
       'aria-controls': visible ? `igc-${uid}-list` : undefined,
       'aria-flowto': visible && !disablePortal ? `igc-${uid}-list` : undefined,
-      'aria-label': visible && !disablePortal ? `Press Tab to go to popover` : undefined,
+      'aria-label': visible && !disablePortal ? getI18nText('triggerHint') : undefined,
       'aria-haspopup': 'listbox',
       empty: isEmptyValue(value),
       size,
@@ -85,23 +90,28 @@ class RootSelect extends Component {
       active: visible,
       onClear: this.handlerClear,
       children: this.renderChildrenTrigger(value, options),
+      getI18nText,
     };
   }
 
   getListProps() {
-    const { multiselect } = this.asProps;
+    const { multiselect, uid } = this.asProps;
     return {
       'aria-multiselectable': multiselect ? 'true' : undefined,
+      id: `igc-${uid}-list`,
+      role: 'listbox',
+      'aria-label': 'List of options',
+      'aria-flowto': `igc-${uid}-trigger`,
     };
   }
 
   getMenuProps() {
-    const { uid } = this.asProps;
+    const { uid, getI18nText } = this.asProps;
 
     return {
       id: `igc-${uid}-list`,
       role: 'listbox',
-      'aria-label': 'List of options',
+      'aria-label': getI18nText('optionsList'),
       'aria-flowto': `igc-${uid}-trigger`,
     };
   }
@@ -261,16 +271,24 @@ const isInputTriggerTag = (tag) => {
   return false;
 };
 
-function Trigger({ Children, name, uid, value, $hiddenRef, tag: Tag = ButtonTrigger }) {
+function Trigger({
+  Children,
+  name,
+  uid,
+  value,
+  $hiddenRef,
+  tag: Tag = ButtonTrigger,
+  getI18nText,
+}) {
   const hasInputTrigger = isInputTriggerTag(Tag);
 
   return (
     <Root
       render={DropdownMenu.Trigger}
       tag={Tag}
-      placeholder="Select option"
+      placeholder={getI18nText('selectPlaceholder')}
       aria-autocomplete={(hasInputTrigger && 'list') || undefined}
-      role={hasInputTrigger && 'combobox'}
+      role={(hasInputTrigger && 'combobox') || undefined}
       aria-activedescendant={
         (hasInputTrigger && value && `igc-${uid}-option-${value}`) || undefined
       }
@@ -279,6 +297,7 @@ function Trigger({ Children, name, uid, value, $hiddenRef, tag: Tag = ButtonTrig
         Children,
         Tag.Text || ButtonTrigger.Text,
         Tag.Addon || ButtonTrigger.Addon,
+        true,
       )}
       {name && <input type="hidden" defaultValue={value} name={name} ref={$hiddenRef} />}
     </Root>

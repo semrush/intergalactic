@@ -27,6 +27,7 @@ type AsProps = {
   use: 'primary' | 'secondary';
   uniqueKey: string;
   virtualScroll?: boolean | { tollerance?: number; rowHeight?: number };
+  disabledScroll?: boolean;
 };
 
 type State = {
@@ -63,6 +64,11 @@ class Body extends Component<AsProps, State> {
           </SGroupCell>,
         );
       } else {
+        const nameParts = cell.name.split('/');
+        const firstName = nameParts[0];
+        const lastName = nameParts[nameParts.length - 1];
+        const firstColumn = columns.find((c) => c.name === firstName);
+        const lastColumn = columns.find((c) => c.name === lastName);
         const column = columns.find((c) => c.name === cell.name);
         const [name, value] = getFixedStyle(cell, columns);
         const vars = (Array.isArray(cell.cssVar) ? cell.cssVar : [cell.cssVar]).map(
@@ -78,6 +84,9 @@ class Body extends Component<AsProps, State> {
           name: cell.name,
           children: <>{cell.data}</>,
           justifyContent: column?.props?.justifyContent,
+          alignItems: column?.props?.alignItems,
+          borderLeft: firstColumn?.borderLeft,
+          borderRight: lastColumn?.borderRight,
           style: {
             width: vars.length === 1 ? vars[0] : `calc(${vars.join(' + ')})`,
           },
@@ -100,6 +109,8 @@ class Body extends Component<AsProps, State> {
             fixed={cell.fixed}
             theme={props.theme}
             use={use}
+            borderLeft={props.borderLeft}
+            borderRight={props.borderRight}
           />,
         ) as React.ReactElement;
       }
@@ -222,8 +233,17 @@ class Body extends Component<AsProps, State> {
     const SBodyWrapper = Box;
     const SScrollAreaBar = ScrollArea.Bar;
     const SHeightHold = Box;
-    const { Children, styles, rows, columns, $scrollRef, virtualScroll, onResize, onScroll } =
-      this.asProps;
+    const {
+      Children,
+      styles,
+      rows,
+      columns,
+      $scrollRef,
+      virtualScroll,
+      onResize,
+      onScroll,
+      disabledScroll,
+    } = this.asProps;
 
     const columnsInitialized = columns.reduce((sum, { width }) => sum + width, 0) > 0 || testEnv;
 
@@ -248,7 +268,7 @@ class Body extends Component<AsProps, State> {
           onResize={callAllEventHandlers(onResize, this.handleScrollAreaResize)}
           onScroll={callAllEventHandlers(onScroll, this.handleScrollAreaScroll)}
         >
-          <ScrollArea.Container ref={$scrollRef}>
+          <ScrollArea.Container ref={$scrollRef} disabledScroll={disabledScroll}>
             <SBody render={Box} role="rowgroup">
               {holdHeight && <SHeightHold hMin={holdHeight} aria-hidden={true} />}
               {columnsInitialized && !virtualScroll ? this.renderRows(rows) : null}

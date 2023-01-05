@@ -1,6 +1,6 @@
 import React from 'react';
-import { Flex } from '@semcore/flex-box';
-import Select from '@semcore/select';
+import { Flex } from '@semcore/ui/flex-box';
+import Select from '@semcore/ui/select';
 
 const options = Array(6)
   .fill('')

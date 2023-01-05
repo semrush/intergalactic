@@ -1,7 +1,7 @@
 import React from 'react';
-import Button from '@semcore/button';
-import Modal from '@semcore/modal';
-import { Flex } from '@semcore/flex-box';
+import Button from '@semcore/ui/button';
+import Modal from '@semcore/ui/modal';
+import { Flex } from '@semcore/ui/flex-box';
 
 const loremSting =
   'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus\n' +

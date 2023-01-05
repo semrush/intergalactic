@@ -1,34 +1,32 @@
-@import '@semcore/utils/style/var.css';
-
 STooltip {
   position: relative;
-  padding: 12px;
-  border-radius: var(--rounded-m);
+  padding: var(--intergalactic-spacing-3x, 12px);
+  border-radius: var(--intergalactic-rounded-medium, 6px);
   box-sizing: border-box;
-  color: var(--gray-800);
-  font-size: var(--fs-200);
-  line-height: var(--lh-200);
+  color: var(--intergalactic-text-primary, #191b23);
+  font-size: var(--intergalactic-fs-200, 14px);
+  line-height: var(--intergalactic-lh-200, 142%);
   word-wrap: break-word;
   max-width: 250px;
   font-weight: normal;
   white-space: normal;
-  box-shadow: var(--box-shadow-popper);
+  box-shadow: var(--intergalactic-box-shadow-popper, 0px 1px 12px 0px rgba(25, 27, 35, 0.15));
 }
 
 STooltip[theme='default'] {
-  background-color: var(--white);
-  border: 1px solid var(--gray-100);
+  background-color: var(--intergalactic-tooltip-default, #ffffff);
+  border: 1px solid var(--intergalactic-border-secondary, #e0e1e9);
 }
 
 STooltip[theme='invert'] {
-  color: var(--white);
-  background-color: var(--gray-800);
-  border: 1px solid var(--gray-500);
+  color: var(--intergalactic-text-primary-invert, #ffffff);
+  background-color: var(--intergalactic-tooltip-invert, #191b23);
+  border: 1px solid var(--intergalactic-border-tooltip-invert, #6c6e79);
 }
 
 STooltip[theme='warning'] {
-  background-color: var(--red-100);
-  border: 1px solid var(--red-400);
+  background-color: var(--intergalactic-tooltip-warning, #ffd7df);
+  border: 1px solid var(--intergalactic-control-primary-critical, #ff4953);
 }
 
 STooltip[data-popper-reference-hidden] {
@@ -48,26 +46,26 @@ SArrow {
 }
 
 SArrow[theme='default'] {
-  border-color: var(--gray-100);
+  border-color: var(--intergalactic-border-secondary, #e0e1e9);
 
   &:before {
-    border-color: var(--white);
+    border-color: var(--intergalactic-bg-primary-neutral, #ffffff);
   }
 }
 
 SArrow[theme='invert'] {
-  border-color: var(--gray-500);
+  border-color: var(--intergalactic-border-tooltip-invert, #6c6e79);
 
   &::before {
-    border-color: var(--gray-800);
+    border-color: var(--intergalactic-tooltip-invert, #191b23);
   }
 }
 
 SArrow[theme='warning'] {
-  border-color: var(--red-400);
+  border-color: var(--intergalactic-border-danger-active, #d1002f);
 
   &::before {
-    border-color: var(--red-100);
+    border-color: var(--intergalactic-tooltip-warning, #ffd7df);
   }
 }
 

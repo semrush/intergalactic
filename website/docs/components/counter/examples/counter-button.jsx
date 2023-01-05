@@ -1,7 +1,7 @@
 import React from 'react';
-import Counter from '@semcore/counter';
-import Button from '@semcore/button';
-import SettingsXS from '@semcore/icon/Settings/m';
+import Counter from '@semcore/ui/counter';
+import Button from '@semcore/ui/button';
+import SettingsXS from '@semcore/ui/icon/Settings/m';
 
 export default () => (
   <>

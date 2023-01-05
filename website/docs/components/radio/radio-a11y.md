@@ -1,6 +1,7 @@
 ---
 title: A11y
 fileSource: radio
+a11y: AA
 ---
 
 @## What component has
@@ -22,8 +23,8 @@ The list below describes roles and attributes that component already has.
 | ----- | ---------------------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | radio |                        | `div`   | Identifies the `div` element as an ARIA `radio` button. The accessible name is computed from the child text content of the `div` element.                                                                                                                                                                                                                                                                                                                                |
 |       | `tabindex="0"`         | `div`   | Makes the radio button focusable and includes it in the page `Tab` sequence. Set on only one radio in the radio group. On page load, is set on the first radio button in the radio group. Moves with focus inside the radio group so the most recently focused radio button is included in the page `Tab` sequence. This approach to managing focus is described in the section on [roving tabindex](https://www.w3.org/TR/wai-aria-practices-1.1/#kbd_roving_tabindex). |
-|       | `aria-checked="false"` | `div`   | Identifies `radio` buttons which are not checked. CSS attribute selectors (e.g. `[aria-checked="false"]`) are used to synchronize the visual states with the value of the `aria-checked` attribute. The CSS `::before` pseudo-class is used to indicate visual state of unchecked radio buttons to support high contrast settings in operating systems and browsers.                                                                                                     |
-|       | `aria-checked="true"`  | `div`   | Identifies `radio` buttons which is checked. CSS attribute selectors (e.g. `[aria-checked="true"]`) are used to synchronize the visual states with the value of the `aria-checked` attribute. The CSS `::before` pseudo-class is used to indicate visual state of checked radio buttons to support high contrast settings in operating systems and browsers.                                                                                                             |
+|       | `aria-checked="true"`  | `div`   | Identifies `radio` buttons which is checked. CSS attribute selectors (e.g. `[aria-checked="true"]`) are used to synchronize the visual states with the value of the `aria-checked` attribute.                                                                                                                                                                                                                                                                            |
+|       | `aria-checked="false"` | `div`   | Identifies `radio` buttons which are not checked. CSS attribute selectors (e.g. `[aria-checked="false"]`) are used to synchronize the visual states with the value of the `aria-checked` attribute.                                                                                                                                                                                                                                                                      |
 
 @## Considerations for developers
 
@@ -46,6 +47,7 @@ The list below will help you to keep in mind the necessary roles and attributes 
 
 - [W3 radio group examples](https://www.w3.org/TR/wai-aria-practices-1.1/examples/radio/radio-1/radio-1.html) has detailed information about the radio group accessible behavior.
 - [A11y style guide](https://a11y-style-guide.com/style-guide/section-forms.html#kssref-forms-radio-buttons) gives core recommendations for the accessible radio buttons.
+- Find live examples of accessible inputs with different types in [DigitalA11y project](https://www.digitala11y.com/demos/accessibility-of-html-input-types-examples/).
 
 @## Other recommendations
 

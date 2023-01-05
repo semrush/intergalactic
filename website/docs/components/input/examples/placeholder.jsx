@@ -1,6 +1,6 @@
 import React from 'react';
-import Input from '@semcore/input';
-import { Text } from '@semcore/typography';
+import Input from '@semcore/ui/input';
+import { Text } from '@semcore/ui/typography';
 
 const Demo = () => {
   return (

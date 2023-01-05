@@ -1,6 +1,6 @@
 import React from 'react';
-import Tag from '@semcore/tag';
-import MathPlusXS from '@semcore/icon/MathPlus/m';
+import Tag from '@semcore/ui/tag';
+import MathPlusXS from '@semcore/ui/icon/MathPlus/m';
 
 function Demo() {
   return (

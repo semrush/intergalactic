@@ -9,7 +9,6 @@ import SpinContainer from '@semcore/spin-container';
 import Accordion from '@semcore/accordion';
 import { Box, Flex } from '@semcore/flex-box';
 import Spin from '@semcore/spin';
-import Link from '@semcore/link';
 import Tooltip from '@semcore/tooltip';
 import { Text } from '@semcore/typography';
 import DropdownMenu from '@semcore/dropdown-menu';
@@ -61,7 +60,7 @@ describe('DataTable', () => {
   shouldSupportClassName(DataTable);
   shouldSupportRef(DataTable);
 
-  test('base render', async () => {
+  test('renders correctly', async () => {
     const component = (
       <div style={{ width: 800 }}>
         <DataTable data={data}>
@@ -141,12 +140,35 @@ describe('DataTable', () => {
       <div style={{ width: 800 }}>
         <DataTable data={data}>
           <DataTable.Head>
-            <DataTable.Column name="keyword" children="Keyword" />
+            <DataTable.Column name="keyword">
+              Keyword
+              <br />
+              Keyword
+            </DataTable.Column>
             <DataTable.Column name="kd" children="KD,%" justifyContent="flex-end" />
             <DataTable.Column name="cpc" children="CPC" justifyContent="flex-end" />
-            <DataTable.Column name="vol" children="Vol." justifyContent="flex-end" />
+            <DataTable.Column
+              name="vol"
+              children="Vol."
+              justifyContent="flex-end"
+              alignItems="flex-end"
+            />
           </DataTable.Head>
-          <DataTable.Body />
+          <DataTable.Body>
+            <DataTable.Cell name="keyword">
+              {(props, row) => {
+                return {
+                  children: (
+                    <>
+                      {row[props.name]}
+                      <br />
+                      {row[props.name]}
+                    </>
+                  ),
+                };
+              }}
+            </DataTable.Cell>
+          </DataTable.Body>
         </DataTable>
       </div>
     );
@@ -159,7 +181,7 @@ describe('DataTable', () => {
         <DataTable data={data} sort={['kd, cpc', 'desc']} onSortChange={jest.fn()}>
           <DataTable.Head>
             <DataTable.Column name="keyword" children="Keyword" />
-            <DataTable.Column name="kd" children="KD,%" sortable />
+            <DataTable.Column name="kd" children="KD,%" sortable id="row" />
             <DataTable.Column name="cpc" children="CPC" sortable />
             <DataTable.Column name="vol" children="Vol." sortable />
           </DataTable.Head>
@@ -167,7 +189,14 @@ describe('DataTable', () => {
         </DataTable>
       </div>
     );
-    expect(await snapshot(component)).toMatchImageSnapshot();
+
+    expect(
+      await snapshot(component, {
+        actions: {
+          hover: '#row',
+        },
+      }),
+    ).toMatchImageSnapshot();
   });
 
   /** Currently has no difference from DataTable without Sticky */
@@ -329,21 +358,15 @@ describe('DataTable', () => {
             <DataTable.Cell name="keyword">
               {(props, row) => {
                 return {
-                  children: <Link>{row[props.name]}</Link>,
+                  children: <>[{row[props.name]}]</>,
                 };
               }}
             </DataTable.Cell>
             <DataTable.Cell name="keyword">
-              {(props, row, index) => {
+              {() => {
                 return {
                   style: {
-                    cursor: 'pointer',
-                  },
-                  onClick: () => {
-                    alert(`Click row
-                  props: ${JSON.stringify(Object.keys(props), null, '  ')};
-                  row: ${JSON.stringify(row, null, '  ')};
-                  index: ${index};`);
+                    fontWeight: 'bold',
                   },
                 };
               }}

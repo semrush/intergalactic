@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Pagination from '@semcore/pagination';
+import Pagination from '@semcore/ui/pagination';
 import PlaygroundGeneration from '@components/PlaygroundGeneration';
 
 export default PlaygroundGeneration(

@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import Dropdown from '@semcore/dropdown';
-import { Flex } from '@semcore/flex-box';
-import Button from '@semcore/button';
-import { FilterTrigger } from '@semcore/base-trigger';
-import NeighborLocation from '@semcore/neighbor-location';
-import InputNumber from '@semcore/input-number';
-import { Text } from '@semcore/typography';
+import Dropdown from '@semcore/ui/dropdown';
+import { Flex } from '@semcore/ui/flex-box';
+import Button from '@semcore/ui/button';
+import { FilterTrigger } from '@semcore/ui/base-trigger';
+import NeighborLocation from '@semcore/ui/neighbor-location';
+import InputNumber from '@semcore/ui/input-number';
+import { Text } from '@semcore/ui/typography';
 
 const InputRange = ({ value: valueState, changeValue, ...other }) => {
   const minRange = 1;

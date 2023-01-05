@@ -4,10 +4,10 @@ import { connectAutoComplete } from 'react-instantsearch/connectors';
 import algoliasearch from 'algoliasearch/lite';
 
 import IllustrationGroup, { IllustrationGroups, ListIllustrations } from './illustration-group';
-import Input from '@semcore/input';
-import { Text } from '@semcore/typography';
-import SearchS from '@semcore/icon/Search/m';
-import CloseXS from '@semcore/icon/Close/m';
+import Input from '@semcore/ui/input';
+import { Text } from '@semcore/ui/typography';
+import SearchS from '@semcore/ui/icon/Search/m';
+import CloseXS from '@semcore/ui/icon/Close/m';
 import staticFiles from '@static';
 import algoliaConfig from '@components/algolia-config';
 import styles from './styles.module.css';

@@ -26,7 +26,7 @@ _For example, you know that landing page loads quickly. For this reason on such 
 
 In all other cases, show [Skeleton](/components/skeleton) when loading the page.
 
-All products should have a delay of `0.6ms` before the skeleton appears. This is to prevent flickering when switching from product to product.
+All products should have a delay of `600ms` before the skeleton appears. This is to prevent flickering when switching from product to product.
 
 ### Spin as the interface's response to interaction
 

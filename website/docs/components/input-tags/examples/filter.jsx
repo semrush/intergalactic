@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import InputTags from '@semcore/input-tags';
-import DropdownMenu from '@semcore/dropdown-menu';
+import InputTags from '@semcore/ui/input-tags';
+import DropdownMenu from '@semcore/ui/dropdown-menu';
 
 const tagsSelect = ['vk', 'fk', 'twitter', 'instagram'];
 

@@ -1,10 +1,8 @@
-@import '@semcore/utils/style/var.css';
-
 STabPanel {
   display: flex;
   width: 100%;
   max-width: 100%;
-  border-bottom: 1px solid var(--gray-200);
+  border-bottom: 1px solid var(--intergalactic-border-primary, #c4c7cf);
 }
 
 STabPanelItem {
@@ -13,9 +11,10 @@ STabPanelItem {
   display: inline-flex;
   min-width: 0;
   height: 32px;
-  color: var(--gray-500);
+  color: var(--intergalactic-text-secondary, #6c6e79);
   border: 1px solid transparent;
-  border-radius: 6px 6px 0 0;
+  border-radius: var(--intergalactic-rounded-medium, 6px) var(--intergalactic-rounded-medium, 6px) 0
+    0;
   background: transparent;
   align-items: center;
   justify-content: center;
@@ -35,8 +34,9 @@ STabPanelItem {
   cursor: pointer;
 
   & SText {
-    font-size: var(--fs-200);
-    line-height: var(--lh-200);
+    font-size: var(--intergalactic-fs-200, 14px);
+    line-height: var(--intergalactic-lh-200, 142%);
+    font-weight: var(--intergalactic-medium, 500);
   }
 
   &::-moz-focus-inner {
@@ -52,34 +52,34 @@ STabPanelItem {
   }
 
   &:hover {
-    color: var(--gray-800);
+    color: var(--intergalactic-text-primary, #191b23);
   }
 }
 
 STabPanelItem[disabled] {
-  opacity: var(--disabled-opacity);
+  opacity: var(--intergalactic-disabled-opacity, 0.3);
   cursor: default;
   pointer-events: none; /* Disable link interactions */
 }
 
 STabPanelItem[keyboardFocused] {
-  box-shadow: var(--keyboard-focus);
+  box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.3));
 }
 
 STabPanelItem[selected] {
-  color: var(--blue-500);
-  border-color: var(--gray-200);
-  border-bottom-color: var(--white);
+  color: var(--intergalactic-text-link, #006dca);
+  border-color: var(--intergalactic-border-primary, #c4c7cf);
+  border-bottom-color: var(--intergalactic-border-primary-invert, #ffffff);
   flex-shrink: 0;
 
   &:hover {
-    color: var(--blue-500);
+    color: var(--intergalactic-text-link-hover-active, #044792);
   }
 }
 
 SText {
   display: inline-block;
-  margin: auto 8px;
+  margin: auto var(--intergalactic-spacing-2x, 8px);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -92,14 +92,14 @@ SAddon {
 }
 
 SAddon:not(:only-child):first-child {
-  margin-left: 8px;
+  margin-left: var(--intergalactic-spacing-2x, 8px);
 }
 
 SAddon:not(:only-child):last-child {
-  margin-right: 8px;
+  margin-right: var(--intergalactic-spacing-2x, 8px);
 }
 
 SAddon:only-child {
-  margin-right: 8px;
-  margin-left: 8px;
+  margin-right: var(--intergalactic-spacing-2x, 8px);
+  margin-left: var(--intergalactic-spacing-2x, 8px);
 }

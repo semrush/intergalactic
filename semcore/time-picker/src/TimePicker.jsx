@@ -4,6 +4,8 @@ import Input from '@semcore/input';
 import { Box } from '@semcore/flex-box';
 import { Hours, Minutes } from './PickerInput';
 import Format from './PickerFormat';
+import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
+import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
 
 import style from './style/time-picker.shadow.css';
 
@@ -15,20 +17,6 @@ const MAP_FIELD_TO_TIME = {
   hours: 0,
   minutes: 1,
 };
-
-export function nextInput(element) {
-  do {
-    element = element.nextElementSibling;
-  } while (element && element.tagName !== 'INPUT');
-  return element;
-}
-
-export function prevInput(element) {
-  do {
-    element = element.previousElementSibling;
-  } while (element && element.tagName !== 'INPUT');
-  return element;
-}
 
 export function intOrDefault(value, def = 0) {
   const number = Number.parseInt(value);
@@ -75,6 +63,7 @@ export function formatHoursTo24(hours /* hours by 12 */, meridiem) {
 class TimePickerRoot extends Component {
   static displayName = 'TimePicker';
   static style = style;
+  static enhance = [i18nEnhance(localizedMessages)];
   static defaultProps = ({ is12Hour }) => ({
     defaultValue: '',
     size: 'm',
@@ -86,7 +75,12 @@ class TimePickerRoot extends Component {
         {is12Hour && <TimePicker.Format />}
       </>
     ),
+    i18n: localizedMessages,
+    locale: 'en',
   });
+
+  hoursInputRef = React.createRef();
+  minutesInputRef = React.createRef();
 
   _lastMeridiem = 'AM'; // default AM
 
@@ -170,7 +164,7 @@ class TimePickerRoot extends Component {
   };
 
   _getHoursAndMinutesProps = () => {
-    const { is12Hour, size, disabled } = this.asProps;
+    const { is12Hour, size, disabled, getI18nText } = this.asProps;
     const time = this.valueToTime(this.value);
 
     return {
@@ -179,6 +173,9 @@ class TimePickerRoot extends Component {
       is12Hour,
       disabled,
       $onValueChange: this.handleValueChange,
+      minutesInputRef: this.minutesInputRef,
+      hoursInputRef: this.hoursInputRef,
+      _getI18nText: getI18nText,
     };
   };
 
@@ -188,26 +185,39 @@ class TimePickerRoot extends Component {
   getSeparatorProps() {
     return {
       disabled: this.asProps.disabled,
+      hoursInputRef: this.hoursInputRef,
     };
   }
 
   getFormatProps() {
-    const { size, disabled, disablePortal } = this.asProps;
+    const { size, disabled, disablePortal, value, getI18nText } = this.asProps;
+    const valueFulfilled = value?.split(':').every((chunk) => chunk.length > 0);
+
     return {
       size,
       disabled,
       disablePortal,
+      ['aria-hidden']: !valueFulfilled,
       meridiem: this.meridiem,
       onClick: this.handleMeridiemClick,
+      getI18nText,
     };
   }
 
   render() {
     const STimePicker = Root;
-    const { styles, Children } = this.asProps;
+    const { styles, Children, value, is12Hour, getI18nText } = this.asProps;
+    const label = value
+      ? getI18nText('title', { time: value, meridiem: is12Hour ? this.meridiem : '' })
+      : getI18nText('titleEmpty');
 
     return sstyled(styles)(
-      <STimePicker render={Input}>
+      <STimePicker
+        render={Input}
+        aria-label={label}
+        aria-valuenow={value || undefined}
+        tabIndex={0}
+      >
         <Children />
       </STimePicker>,
     );
@@ -219,17 +229,15 @@ class Separator extends Component {
     children: ':',
   };
 
-  $el = React.createRef();
-
   handlerClick = () => {
-    if (this.$el.current) {
-      prevInput(this.$el.current)?.focus();
+    if (this.asProps.hoursInputRef.current) {
+      this.asProps.hoursInputRef.current?.focus();
     }
   };
 
   render() {
     const STimePickerSeparator = Root;
-    return <STimePickerSeparator render={Box} ref={this.$el} onClick={this.handlerClick} />;
+    return <STimePickerSeparator render={Box} onClick={this.handlerClick} aria-hidden="true" />;
   }
 }
 

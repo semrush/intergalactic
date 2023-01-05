@@ -2,6 +2,54 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.4.3] - 2022-12-19
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/input` [3.5.2 ~> 3.5.3], `@semcore/utils` [3.44.0 ~> 3.44.1], `@semcore/flex-box` [4.7.2 ~> 4.7.3]).
+
+## [4.4.1] - 2022-12-13
+
+### Changed
+
+- Added `react-dom` to peer dependencies.
+
+## [4.4.0] - 2022-12-12
+
+### Added
+
+- Design tokens based theming.
+
+## [4.3.7] - 2022-11-30
+
+### Fixed
+
+- Fixed showing types in autocomplete IDE.
+
+## [4.3.6] - 2022-11-30
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/input` [3.3.0 ~> 3.3.1], `@semcore/utils` [3.40.0 ~> 3.41.0], `@semcore/flex-box` [4.6.3 ~> 4.6.4]).
+
+## [4.3.4] - 2022-11-03
+
+### Fixed
+
+- Fixed mask and text line-height mismatch.
+
+## [4.3.3] - 2022-10-28
+
+### Added
+
+- Allowed to pass children.
+
+## [4.3.2] - 2022-10-20
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/input` [3.2.2 ~> 3.2.3], `@semcore/utils` [3.40.0 ~> 3.40.0], `@semcore/flex-box` [4.6.2 ~> 4.6.3]).
+
 ## [4.3.0] - 2022-10-10
 
 ### Changed

@@ -2,6 +2,44 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [1.4.3] - 2022-12-28
+
+### Added
+
+- Added cursor change when hovering `NoticeGlobal.CloseIcon`.
+
+## [1.4.2] - 2022-12-27
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/icon` [3.4.3 ~> 3.5.0]).
+
+## [1.4.0] - 2022-12-14
+
+### Added
+
+- Added internationalization of aria attributes.
+
+## [1.3.1] - 2022-12-13
+
+### Changed
+
+- Added `react-dom` to peer dependencies.
+
+## [1.3.0] - 2022-12-12
+
+### Added
+
+- Design tokens based theming.
+
+## [1.2.7] - 2022-11-08
+
+## [1.2.6] - 2022-10-28
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.40.0 ~> 3.40.0], `@semcore/icon` [3.1.1 ~> 3.1.2], `@semcore/flex-box` [4.6.2 ~> 4.6.3], `@semcore/animation` [1.7.0 ~> 1.7.1]).
+
 ## [1.2.0] - 2022-10-10
 
 ### Changed

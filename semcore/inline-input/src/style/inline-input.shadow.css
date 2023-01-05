@@ -1,5 +1,3 @@
-@import '@semcore/utils/style/var.css';
-
 SInlineInput {
   display: inline-flex;
   width: 100%;
@@ -8,16 +6,17 @@ SInlineInput {
   position: relative;
   z-index: 0;
   vertical-align: middle;
+  /* disable-tokens-validator */
   padding: 1px;
   box-sizing: border-box;
 
-  background-color: var(--white);
+  background-color: var(--intergalactic-bg-primary-neutral, #ffffff);
 }
 
 SInlineInput[disabled] {
   cursor: default;
   pointer-events: none;
-  opacity: var(--disabled-opacity);
+  opacity: var(--intergalactic-disabled-opacity, 0.3);
 }
 
 SValue {
@@ -26,10 +25,10 @@ SValue {
 
   width: 100%;
   height: 100%;
-  padding: 0px 4px;
+  padding: 0 var(--intergalactic-spacing-1x, 4px);
   border: none;
   box-sizing: border-box;
-  color: var(--gray-800);
+  color: var(--intergalactic-text-primary, #191b23);
   font-size: inherit;
   line-height: 1.2;
   text-overflow: ellipsis;
@@ -42,7 +41,7 @@ SValue {
   }
 
   &::placeholder {
-    color: var(--gray-300);
+    color: var(--intergalactic-text-placeholder, #a9abb6);
   }
 
   &[disabled] {
@@ -59,7 +58,7 @@ SUnderline {
   height: 100%;
   min-height: 1em;
   border: 1px solid transparent;
-  border-bottom: 1px solid var(--gray-200);
+  border-bottom: 1px solid var(--intergalactic-border-primary, #c4c7cf);
 }
 
 SAddon {
@@ -68,51 +67,51 @@ SAddon {
   align-items: center;
   flex: 0 0 auto;
   height: 100%;
-  color: var(--gray-300);
-  padding: 0 4px;
+  color: var(--intergalactic-icon-secondary-neutral, #a9abb6);
+  padding: 0 var(--intergalactic-spacing-1x, 4px);
 }
 
 SAddon[disabled] {
-  opacity: var(--disabled-opacity);
+  opacity: var(--intergalactic-disabled-opacity, 0.3);
   cursor: default;
   pointer-events: none;
 }
 
 SConfirmIcon {
-  color: var(--green-300);
+  color: var(--intergalactic-icon-secondary-success, #00c192);
   cursor: pointer;
 }
 SConfirmIcon:hover {
-  color: var(--green-400);
+  color: var(--intergalactic-icon-secondary-success-hover-active, #009f81);
 }
 
 SCancelIcon {
-  color: var(--gray-300);
+  color: var(--intergalactic-icon-secondary-neutral, #a9abb6);
   cursor: pointer;
 }
 SCancelIcon:hover {
-  color: var(--gray-400);
+  color: var(--intergalactic-icon-secondary-neutral-hover-active, #8a8e9b);
 }
 
 SInlineInput[focused] {
   z-index: 1;
 }
 SInlineInput[focused] SUnderline {
-  border-bottom-color: var(--blue-400);
-  box-shadow: var(--keyboard-focus);
+  border-bottom-color: var(--intergalactic-border-info-active, #006dca);
+  box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.3));
 }
 
 SInlineInput[state='valid'] SUnderline {
-  border-bottom-color: var(--green-200);
+  border-bottom-color: var(--intergalactic-border-success-active, #007c65);
 }
 SInlineInput[state='valid'][focused] SUnderline {
-  border-bottom-color: var(--green-400);
-  box-shadow: var(--keyboard-focus-valid);
+  border-bottom-color: var(--intergalactic-border-success-active, #007c65);
+  box-shadow: var(--intergalactic-keyboard-focus-valid, 0px 0px 0px 3px rgba(0, 159, 129, 0.3));
 }
 SInlineInput[state='invalid'] SUnderline {
-  border-bottom-color: var(--red-200);
+  border-bottom-color: var(--intergalactic-border-danger-active, #d1002f);
 }
 SInlineInput[state='invalid'][focused] SUnderline {
-  border-bottom-color: var(--red-400);
-  box-shadow: var(--keyboard-focus-invalid);
+  border-bottom-color: var(--intergalactic-border-danger-active, #d1002f);
+  box-shadow: var(--intergalactic-keyboard-focus-invalid, 0px 0px 0px 3px rgba(255, 73, 83, 0.3));
 }

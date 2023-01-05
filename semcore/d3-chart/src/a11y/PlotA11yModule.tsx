@@ -1,10 +1,10 @@
 import React from 'react';
 import { DataStructureHints, PartialDataSummarizationConfig } from './hints';
 import { normalizeLocale } from './locale';
-import { translations } from './translations/module/translations';
+import { localizedMessages } from './translations/module/__intergalactic-dynamic-locales';
 import { Root, sstyled } from '@semcore/core';
 import styles from '../style/plotA11yModule.shadow.css';
-import { Context as I18nContext } from '@semcore/utils/lib/enhances/WithI18n';
+import { Context as I18nContext, useI18n } from '@semcore/utils/lib/enhances/WithI18n';
 import { Box } from '@semcore/flex-box';
 
 let globalWasFocused = false;
@@ -39,10 +39,10 @@ export const PlotA11yModule: React.FC<A11yViewProps> = (props) => {
 
   const contextLocale = React.useContext(I18nContext);
   const locale = React.useMemo(
-    () => normalizeLocale(props.locale ?? contextLocale, translations),
+    () => normalizeLocale(props.locale ?? contextLocale, localizedMessages),
     [props.locale],
   );
-  const texts = React.useMemo(() => (locale ? translations[locale] : {}), [locale]);
+  const t = useI18n(localizedMessages, locale);
 
   React.useEffect(() => {
     if (wasFocused) return;
@@ -106,21 +106,21 @@ export const PlotA11yModule: React.FC<A11yViewProps> = (props) => {
   if (error) {
     return sstyled(styles)(
       <SPlotA11yModule render={Box} tabIndex={0} aria-live="assertive">
-        {texts.failed}
+        {t('failed')}
       </SPlotA11yModule>,
     ) as React.ReactElement;
   }
   if (loading) {
     return sstyled(styles)(
       <SPlotA11yModule render={Box} tabIndex={0} aria-live="polite">
-        {texts.loading}
+        {t('loading')}
       </SPlotA11yModule>,
     ) as React.ReactElement;
   }
 
   return sstyled(styles)(
     <SPlotA11yModule render={Box} tabIndex={0} onFocus={hadnleHiddenElementsFocus}>
-      {texts.disabled}
+      {t('disabled')}
     </SPlotA11yModule>,
   ) as React.ReactElement;
 };

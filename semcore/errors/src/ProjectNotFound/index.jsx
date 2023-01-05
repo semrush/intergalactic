@@ -4,26 +4,14 @@ import FormatText from '@semcore/format-text';
 import createComponent, { Component, Root } from '@semcore/core';
 import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
 import Error, { getIconPath } from '../Error';
-import de from './translations/de.json';
-import en from './translations/en.json';
-import es from './translations/es.json';
-import fr from './translations/fr.json';
-import it from './translations/it.json';
-import ja from './translations/ja.json';
-import pt from './translations/pt.json';
-import ru from './translations/ru.json';
-import zh from './translations/zh.json';
-import ko from './translations/ko.json';
-import vi from './translations/vi.json';
-import tr from './translations/tr.json';
-
-const i18n = { de, en, es, fr, it, ja, ru, zh, pt, ko, vi, tr };
+import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 
 class RootProjectNotFound extends Component {
   static displayName = 'Maintenance';
-  static enhance = [i18nEnhance()];
+  static enhance = [i18nEnhance(localizedMessages)];
   static defaultProps = {
-    i18n,
+    i18n: localizedMessages,
+    locale: 'en',
     icon: getIconPath('project_not_found'),
     projectsLink: '/projects',
     contactsLink: '/company/contacts',
@@ -32,19 +20,18 @@ class RootProjectNotFound extends Component {
 
   render() {
     const { Children, getI18nText, projectsLink, contactsLink, supportTeamLink } = this.asProps;
-    const { title, btnProjects, btnContacts } = getI18nText();
     const text = getI18nText('text', { url: supportTeamLink });
     return (
       <Root render={Error}>
-        <Error.Title>{title}</Error.Title>
+        <Error.Title>{getI18nText('title')}</Error.Title>
         <Error.Description tag={FormatText} size="l" dangerouslySetInnerHTML={{ __html: text }} />
         <Children />
         <Error.Controls>
           <Button tag="a" type="none" size="l" use="primary" theme="info" href={projectsLink}>
-            {btnProjects}
+            {getI18nText('btnProjects')}
           </Button>
           <Button size="l" tag="a" type="none" href={contactsLink}>
-            {btnContacts}
+            {getI18nText('btnContacts')}
           </Button>
         </Error.Controls>
       </Root>

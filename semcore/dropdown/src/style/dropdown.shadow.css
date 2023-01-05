@@ -1,11 +1,9 @@
-@import '@semcore/utils/style/var.css';
-
 SDropdownPopper {
   position: relative;
-  background-color: #fff;
-  border-radius: var(--rounded-m);
+  background-color: var(--intergalactic-bg-primary-neutral, #ffffff);
+  border-radius: var(--intergalactic-rounded-medium, 6px);
   box-sizing: border-box;
-  border: 1px solid var(--gray-100);
+  border: 1px solid var(--intergalactic-border-secondary, #e0e1e9);
   white-space: normal;
-  box-shadow: var(--box-shadow-popper);
+  box-shadow: var(--intergalactic-box-shadow-popper, 0px 1px 12px 0px rgba(25, 27, 35, 0.15));
 }

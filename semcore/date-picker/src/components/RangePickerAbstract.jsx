@@ -6,22 +6,9 @@ import { Box, Flex } from '@semcore/flex-box';
 import Divider from '@semcore/divider';
 import Dropdown from '@semcore/dropdown';
 import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
-import de from '../translations/de.json';
-import en from '../translations/en.json';
-import es from '../translations/es.json';
-import fr from '../translations/fr.json';
-import it from '../translations/it.json';
-import ja from '../translations/ja.json';
-import pt from '../translations/pt.json';
-import ru from '../translations/ru.json';
-import zh from '../translations/zh.json';
-import ko from '../translations/ko.json';
-import vi from '../translations/vi.json';
-import tr from '../translations/tr.json';
+import { localizedMessages } from '../translations/__intergalactic-dynamic-locales';
 
 import style from '../style/date-picker.shadow.css';
-
-const i18n = { de, en, es, fr, it, ja, ru, zh, pt, ko, vi, tr };
 
 const INTERACTION_TAGS = ['INPUT'];
 
@@ -39,7 +26,7 @@ class RangePickerAbstract extends Component {
 
   static defaultProps({ value, defaultValue }) {
     return {
-      i18n,
+      i18n: localizedMessages,
       locale: 'en',
       defaultDisplayedPeriod:
         getEndDate(value) || getEndDate(defaultValue) || defaultDisplayedPeriod,
@@ -51,7 +38,7 @@ class RangePickerAbstract extends Component {
     };
   }
 
-  static enhance = [i18nEnhance()];
+  static enhance = [i18nEnhance(localizedMessages)];
 
   static add = (date, amount, unit) => {
     return dayjs(date).add(amount, unit).toDate();
@@ -79,7 +66,7 @@ class RangePickerAbstract extends Component {
             this.handlers.highlighted([]);
             this.setState({ dirtyValue: [] });
             this.handlers.displayedPeriod(
-              getEndDate(this.asProps.value) || this.props.defaultDisplayedPeriod,
+              getEndDate(this.asProps.value ?? undefined) || this.props.defaultDisplayedPeriod,
             );
           }
         },
@@ -88,9 +75,8 @@ class RangePickerAbstract extends Component {
       value: [
         null,
         (value) => {
-          // TODO: работает только из-за new Date() !== new Date()
           this.handlers.visible(false);
-          this.handlers.displayedPeriod(getEndDate(value));
+          this.handlers.displayedPeriod(getEndDate([value[0] ?? undefined, value[1] ?? undefined]));
         },
       ],
     };
@@ -267,18 +253,27 @@ class RangePickerAbstract extends Component {
   getNextProps() {
     return {
       onClick: this.bindHandlerNavigateClick(1),
+      getI18nText: this.asProps.getI18nText,
     };
   }
 
   getPrevProps() {
     return {
       onClick: this.bindHandlerNavigateClick(-1),
+      getI18nText: this.asProps.getI18nText,
     };
   }
 
   getCalendarProps(props, index) {
-    const { locale, displayedPeriod, disabled, value, highlighted, onHighlightedChange } =
-      this.asProps;
+    const {
+      locale,
+      displayedPeriod,
+      disabled,
+      value,
+      highlighted,
+      onHighlightedChange,
+      onVisibleChange,
+    } = this.asProps;
     const { dirtyValue } = this.state;
 
     return {
@@ -290,6 +285,7 @@ class RangePickerAbstract extends Component {
       disabled,
       highlighted,
       onHighlightedChange,
+      onVisibleChange,
       value: dirtyValue.length ? dirtyValue : value,
       onChange: this.handlerChange,
     };
@@ -330,9 +326,15 @@ class RangePickerAbstract extends Component {
   }
 
   render() {
-    const { Children, styles } = this.asProps;
+    const { Children, styles, 'aria-label': providedAriaLabel } = this.asProps;
+
     return sstyled(styles)(
-      <Root render={Dropdown}>
+      <Root
+        render={Dropdown}
+        use:aria-label={providedAriaLabel}
+        interaction="focus"
+        __excludeProps={['onChange', 'value']}
+      >
         <Children />
       </Root>,
     );

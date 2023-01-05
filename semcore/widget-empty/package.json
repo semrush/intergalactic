@@ -1,7 +1,7 @@
 {
   "name": "@semcore/widget-empty",
   "description": "Semrush WidgetEmpty Component",
-  "version": "3.6.0",
+  "version": "3.8.2",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -14,12 +14,13 @@
   },
   "dependencies": {
     "@semcore/flex-box": "^4",
-    "@semcore/illustration": "1.3.0",
+    "@semcore/illustration": "1.3.9",
     "@semcore/utils": "^3.27"
   },
   "peerDependencies": {
     "@semcore/core": "^1.11",
-    "react": "16.8 - 18"
+    "react": "16.8 - 18",
+    "react-dom": "16.8 - 18"
   },
   "jest": {
     "preset": "@semcore/jest-preset-ui"

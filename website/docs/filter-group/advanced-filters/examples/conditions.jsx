@@ -1,14 +1,14 @@
 import React, { useEffect, useRef, useState } from 'react';
-import Dropdown from '@semcore/dropdown';
-import Select from '@semcore/select';
-import Input from '@semcore/input';
-import MathPlusXS from '@semcore/icon/MathPlus/m';
-import { Flex } from '@semcore/flex-box';
-import Divider from '@semcore/divider';
-import Button from '@semcore/button';
-import { FilterTrigger } from '@semcore/base-trigger';
-import CloseXS from '@semcore/icon/Close/m';
-import TrashXS from '@semcore/icon/Trash/m';
+import Dropdown from '@semcore/ui/dropdown';
+import Select from '@semcore/ui/select';
+import Input from '@semcore/ui/input';
+import MathPlusXS from '@semcore/ui/icon/MathPlus/m';
+import { Flex } from '@semcore/ui/flex-box';
+import Divider from '@semcore/ui/divider';
+import Button from '@semcore/ui/button';
+import { FilterTrigger } from '@semcore/ui/base-trigger';
+import CloseXS from '@semcore/ui/icon/Close/m';
+import TrashXS from '@semcore/ui/icon/Trash/m';
 import styled from 'styled-components';
 
 const generateOptions = (list) => list.map((v) => ({ value: v, children: v }));

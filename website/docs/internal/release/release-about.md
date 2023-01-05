@@ -34,7 +34,7 @@ All components inside the package are divided into folders and can perform a re-
 For example, if an import has the following format:
 
 ```js
-import Button from '@semcore/button';
+import Button from '@semcore/ui/button';
 ```
 
 It can be replaced with the corresponding import from the ui package:

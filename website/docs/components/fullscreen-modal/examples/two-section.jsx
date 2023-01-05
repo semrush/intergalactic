@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import FullscreenModal from '@semcore/fullscreen-modal';
-import { Text } from '@semcore/typography';
-import Button from '@semcore/button';
-import Divider from '@semcore/divider';
-import ArrowLeftS from '@semcore/icon/ArrowLeft/m';
-import ArrowRightS from '@semcore/icon/ArrowRight/m';
+import FullscreenModal from '@semcore/ui/fullscreen-modal';
+import { Text } from '@semcore/ui/typography';
+import Button from '@semcore/ui/button';
+import Divider from '@semcore/ui/divider';
+import ArrowLeftS from '@semcore/ui/icon/ArrowLeft/m';
+import ArrowRightS from '@semcore/ui/icon/ArrowRight/m';
 
 const Demo = () => {
   const [visible, updateVisible] = useState(false);

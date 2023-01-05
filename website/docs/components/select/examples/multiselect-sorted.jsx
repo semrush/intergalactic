@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Select from '@semcore/select';
+import Select from '@semcore/ui/select';
 
 const options = Array(20)
   .fill('')

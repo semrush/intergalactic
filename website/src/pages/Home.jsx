@@ -6,7 +6,7 @@ import Tooltip from '@semcore/tooltip';
 import Tag from '@semcore/tag';
 import AllComponents from '../components/AllComponents';
 import EmailsBanner from '../components/EmailsBanner';
-import whale from '../static/illustration/whale.svg';
+import whale from '../static/illustration/whale-pic-christmas.svg';
 import layout from '../static/illustration/layout.svg';
 import principles from '../static/illustration/principles.svg';
 import style from '../static/illustration/style.svg';
@@ -20,6 +20,7 @@ import { navigationTree } from '@navigation';
 import staticFiles from '@static';
 import { usePageData } from '../components/routing';
 import Spin from '@semcore/spin';
+import WarningM from '@semcore/icon/Warning/m';
 import Error from '../components/Error';
 import styles from './Home.module.css';
 import { css } from '@semcore/core';
@@ -68,12 +69,12 @@ const mappingTableToImg = {
 };
 
 const getCustomPage = (table) => (
-  <div className={table.className} {...table.attr}>
+  <section className={table.className} {...table.attr}>
     <AllComponents
       navigation={navigationTree.filter((nav) => !nav.metadata.hide && nav.title === table.tag)}
     />
-    <img className={table.imgClassName} src={table.img} alt={table.tag} />
-  </div>
+    <img className={table.imgClassName} src={table.img} alt={table.tag} aria-hidden="true" />
+  </section>
 );
 
 const renderSwitch = (value) => {
@@ -89,7 +90,7 @@ const renderSwitch = (value) => {
     case 'filters':
       return getTabByTitle(['Filters'], styles.filters);
     case 'documentation':
-      return getTabByTitle(['Utils 🛠', 'Docs', 'Bugs and requests']);
+      return getTabByTitle(['Utils 🛠', 'Docs', 'Bugs and requests'], styles.devDocs);
     default:
       return null;
   }
@@ -110,7 +111,9 @@ const getTabByTitle = (titles, className) => {
         titles.map((title, i) => {
           return (
             <Box mr={7.5} key={i}>
-              <h3 size={300}>{title}</h3>
+              <Text tag="h3" size={300}>
+                {title}
+              </Text>
               {getComponents(title)}
             </Box>
           );
@@ -128,7 +131,7 @@ export const getImageName = (title) => {
 const getTooltip = (title) => {
   const url = staticFiles[`tooltip/${getImageName(title)}.svg`];
 
-  return url ? <img src={url} /> : undefined;
+  return url ? <img src={url} alt={title} /> : undefined;
 };
 
 const getComponents = (titles) => {
@@ -151,6 +154,7 @@ const getComponents = (titles) => {
           {child.elem.metadata.beta && (
             <Tag size="l" theme="primary" color="orange-500" children="beta" ml={1} />
           )}
+          {child.elem.metadata.deprecated && <WarningM className={styles.componentDeprecated} />}
         </Tooltip.Trigger>
         {pic && <Tooltip.Popper children={pic} />}
       </Tooltip>
@@ -232,9 +236,12 @@ const tableDataContext = React.createContext({});
 const Table = ({ titles }) => {
   const items = navigationTree.filter((nav) => !nav.metadata.hide && titles.includes(nav.title));
   const getDocs = items[0].children.map((item) => (
-    <Link to={item.route} key={item.route}>
-      {item.title}
-    </Link>
+    <Flex alignItems="center">
+      <Link to={item.route} key={item.route}>
+        {item.title}
+      </Link>
+      {item.metadata.deprecated && <WarningM className={styles.componentDeprecated} />}
+    </Flex>
   ));
 
   const { tableControls, tableStates } = React.useContext(tableDataContext);
@@ -318,15 +325,15 @@ function Home() {
         <div className={styles.sideBar}>
           <SideBarNavigation navigation={navigationTree.filter((nav) => !nav.metadata.hide)} />
         </div>
-        <div className={styles.overlay} role="main">
-          <div className={styles.promoWrapper}>
+        <main className={styles.overlay}>
+          <div className={styles.promoWrapper} id="main-content">
             <h1 className={styles.title}>Intergalactic Design System</h1>
-            <div className={styles.desc}>
+            <section className={styles.desc}>
               Intergalactic is a constantly developing system of UI components, guidelines and UX
               patterns. With all these tools you can build your own product.
-            </div>
-            <img className={styles.whaleImg} src={whale} alt="Whale" />
-            <div className={styles.started} role="region" aria-label="Get started links">
+            </section>
+            <img className={styles.whaleImg} src={whale} alt="Whale" aria-hidden="true" />
+            <section className={styles.started} role="region" aria-label="Get started links">
               <h2>Get started</h2>
               <Link to="/get-started-guide/dev-starter-guide/" rel="noopener noreferrer">
                 For developers <ArrowXS />
@@ -337,12 +344,12 @@ function Home() {
               <Link to="/get-started-guide/work-figma/" rel="noopener noreferrer">
                 Figma libraries <ArrowXS />
               </Link>
-            </div>
+            </section>
             {getCustomPage(mappingTableToImg.principles)}
             {getCustomPage(mappingTableToImg.styles)}
             {getCustomPage(mappingTableToImg.layout)}
           </div>
-          <div className={styles.mainWrapper}>
+          <section className={styles.mainWrapper}>
             <div className={styles.tabsWrapper}>
               <TabLine
                 underlined={false}
@@ -352,37 +359,37 @@ function Home() {
                 size="l"
               >
                 <TabLine.Item className={styles.tab} value={'components'}>
-                  Components
+                  <Text size={500}>Components</Text>
                 </TabLine.Item>
                 <TabLine.Item className={styles.tab} value={'charts'}>
-                  Charts
+                  <Text size={500}>Charts</Text>
                 </TabLine.Item>
                 <TabLine.Item className={styles.tab} value={'table'}>
-                  Table
+                  <Text size={500}>Table</Text>
                 </TabLine.Item>
                 <TabLine.Item className={styles.tab} value={'ux'}>
-                  UX Patterns
+                  <Text size={500}>UX Patterns</Text>
                 </TabLine.Item>
                 <TabLine.Item className={styles.tab} value={'filters'}>
-                  Filters
+                  <Text size={500}>Filters</Text>
                 </TabLine.Item>
                 <TabLine.Item className={styles.tab} value={'documentation'}>
-                  Developer Docs
+                  <Text size={500}>Developer Docs</Text>
                 </TabLine.Item>
               </TabLine>
             </div>
             <tableDataContext.Provider value={tableContext}>
-              <div className={styles.border} role="region" aria-label="Components links">
+              <div className={styles.border} aria-label="Components links">
                 {renderSwitch(value)}
               </div>
             </tableDataContext.Provider>
-          </div>
+          </section>
           <EmailsBanner />
           {/* <UpdateBlock /> */}
-        </div>
-        {/* <LinkScroll classNmae={styles.updatesButton} activeClass="active" to="updBlock" spy={true} smooth={true}>
+        </main>
+        {/* <LinkScroll className={styles.updatesButton} activeClass="active" to="updBlock" spy={true} smooth={true}>
            Updates?
-           <img src={updatesButton} alt="Updates button" />
+           <img src={updatesButton} alt="Updates button" aria-hidden='true'/>
          </LinkScroll> */}
       </div>
     </>

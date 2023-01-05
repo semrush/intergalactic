@@ -9,10 +9,10 @@ import {
   YAxis,
   colors,
 } from '@semcore/chart';
-import Card from '@semcore/card';
-import { Flex, Box } from '@semcore/flex-box';
-import { Text } from '@semcore/typography';
-import Checkbox from '@semcore/checkbox';
+import Card from '@semcore/ui/card';
+import { Flex, Box } from '@semcore/ui/flex-box';
+import { Text } from '@semcore/ui/typography';
+import Checkbox from '@semcore/ui/checkbox';
 
 const BAR_TO_LABEL_MAP = {
   top3: 'Top 3',

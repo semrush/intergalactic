@@ -2,6 +2,72 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.6.3] - 2022-12-27
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/base-trigger` [3.4.2 ~> 3.4.3], `@semcore/icon` [3.4.3 ~> 3.5.0]).
+
+## [3.6.0] - 2022-12-14
+
+### Added
+
+- Added internationalization of aria attributes.
+
+## [3.5.2] - 2022-12-13
+
+### Changed
+
+- Added `react-dom` to peer dependencies.
+
+## [3.5.1] - 2022-12-12
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/base-trigger` [3.3.0 ~> 3.3.1]).
+
+## [3.5.0] - 2022-12-12
+
+### Added
+
+- Design tokens based theming.
+
+## [3.4.14] - 2022-11-29
+
+### Fixed
+
+- Fixed InputTrigger subcomponent types.
+
+## [3.4.13] - 2022-11-28
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/base-trigger` [3.2.8 ~> 3.2.9]).
+
+## [3.4.8] - 2022-11-05
+
+### Fixed
+
+- Fixed input trigger visual divergence from initial design.
+
+## [3.4.7] - 2022-11-03
+
+### Fixed
+
+- Removed lock on fixed version of `@semcore/input`.
+
+## [3.4.6] - 2022-11-03
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/input-mask` [4.3.3 ~> 4.3.4]).
+
+## [3.4.1] - 2022-10-17
+
+### Changed
+
+- Reverting changes from version `3.3.12` as these changes are implemented in the `utils/lib/addonTextChildren`.
+
 ## [3.4.0] - 2022-10-10
 
 ### Changed

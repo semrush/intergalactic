@@ -2,6 +2,68 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.5.3] - 2022-12-27
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/icon` [3.4.3 ~> 3.5.0]).
+
+## [3.5.0] - 2022-12-14
+
+### Added
+
+- Added internationalization of aria attributes.
+
+## [3.4.3] - 2022-12-14
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/link` [4.3.2 ~> 4.3.3]).
+
+## [3.4.2] - 2022-12-13
+
+### Changed
+
+- Added `react-dom` to peer dependencies.
+
+## [3.4.1] - 2022-12-12
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/link` [4.3.0 ~> 4.3.1]).
+
+## [3.4.0] - 2022-12-12
+
+### Added
+
+- Design tokens based theming.
+
+## [3.3.10] - 2022-11-23
+
+### Fixed
+
+- Fixed attributes and line-height for last page
+
+## [3.3.9] - 2022-11-17
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/input` [3.2.3 ~> 3.3.0]).
+
+## [3.3.7] - 2022-11-08
+
+## [3.3.6] - 2022-11-04
+
+### Fixed
+
+- Fixed styles for last and single pages
+
+## [3.3.5] - 2022-10-28
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/button` [4.2.2 ~> 4.2.3], `@semcore/flex-box` [4.6.2 ~> 4.6.3], `@semcore/icon` [3.1.1 ~> 3.1.2], `@semcore/input` [3.2.2 ~> 3.2.3], `@semcore/link` [4.2.2 ~> 4.2.3], `@semcore/utils` [3.40.0 ~> 3.40.0]).
+
 ## [3.3.0] - 2022-10-10
 
 ### Changed

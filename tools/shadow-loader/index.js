@@ -22,7 +22,7 @@ const makeLoader = (loader) =>
     );
   };
 
-async function loader(source, inputSourceMap) {
+async function loader(source) {
   if (this.cacheable) this.cacheable();
   options =
     options ||

@@ -1,6 +1,6 @@
 import React from 'react';
 import PlaygroundGeneration from '@components/PlaygroundGeneration';
-import Breadcrumbs from '@semcore/breadcrumbs';
+import Breadcrumbs from '@semcore/ui/breadcrumbs';
 
 export default PlaygroundGeneration(() => {
   return (

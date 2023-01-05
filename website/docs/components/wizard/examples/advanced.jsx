@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import Wizard from '@semcore/wizard';
-import Button from '@semcore/button';
-import { Text } from '@semcore/typography';
-import { Flex } from '@semcore/flex-box';
-import ArrowRight from '@semcore/icon/ArrowRight/m';
-import ArrowLeft from '@semcore/icon/ArrowLeft/m';
-import Input from '@semcore/input';
+import Wizard from '@semcore/ui/wizard';
+import Button from '@semcore/ui/button';
+import { Text } from '@semcore/ui/typography';
+import { Flex } from '@semcore/ui/flex-box';
+import ArrowRight from '@semcore/ui/icon/ArrowRight/m';
+import ArrowLeft from '@semcore/ui/icon/ArrowLeft/m';
+import Input from '@semcore/ui/input';
 
 const Step1 = React.forwardRef(function (props, ref) {
   return (

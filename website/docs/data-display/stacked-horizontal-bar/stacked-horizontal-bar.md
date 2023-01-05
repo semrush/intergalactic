@@ -59,6 +59,8 @@ Edge cases for stacked bar chart are pretty much the same as [Horizontal bar cha
 
 See detailed information in the section about data loading in the [Horizontal bar chart guide](/data-display/bar-horizontal/#ac26f2).
 
+@page stacked-horizontal-bar-a11y
 @page stacked-horizontal-bar-api
 @page stacked-horizontal-bar-d3-code
 @page stacked-horizontal-bar-recharts-code
+@page d3-chart-changelog

@@ -1,4 +1,5 @@
-import { CProps, ReturnEl } from '@semcore/core';
+import { ReturnEl } from '@semcore/core';
+import { MapProps } from './Plot';
 import IContext from './context';
 
 export interface IBubbleProps extends IContext {
@@ -27,6 +28,6 @@ export interface IBubbleContext {
   index: number;
 }
 
-declare const Bubble: <T>(props: CProps<IBubbleProps & T, IBubbleContext>) => ReturnEl;
+declare const Bubble: <T>(props: MapProps<IBubbleProps & T, IBubbleContext>) => ReturnEl;
 
 export default Bubble;

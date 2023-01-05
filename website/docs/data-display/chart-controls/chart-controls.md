@@ -14,7 +14,7 @@ Controls in the widget can be divided into the following types:
 - general controls and filters;
 - chart controls.
 
-@## General controls and filters¬
+@## General controls and filters
 
 General controls and filters are always placed on the same level as the title. For example they include:
 
@@ -98,3 +98,4 @@ Divide different controls or groups of controls with [Divider](/components/divid
 ![chart widget](static/widget-yes-no.png)
 
 @page chart-control-code
+@page d3-chart-changelog

@@ -1,8 +1,6 @@
-@import '@semcore/utils/style/var.css';
-
 SColorPickerPopper {
-  max-width: calc(16px * 2 + 28px * 6 + 4px * 6);
-  padding: 16px;
+  max-width: calc(var(--intergalactic-spacing-4x, 16px) * 2 + 28px * 6 + 4px * 6);
+  padding: var(--intergalactic-spacing-4x, 16px);
 }
 
 SItemContainer {
@@ -18,7 +16,7 @@ SItemContainer {
   cursor: pointer;
 
   &:hover {
-    border: 1px solid var(--gray-100);
+    border: 1px solid var(--intergalactic-border-secondary, #e0e1e9);
   }
 
   &::after {
@@ -27,7 +25,7 @@ SItemContainer {
     width: 22px;
     height: 22px;
     border-radius: 50%;
-    box-shadow: inset 0px 0px 1px rgba(0, 0, 0, 0.1);
+    box-shadow: inset 0px 0px 1px var(--intergalactic-border-secondary, #e0e1e9);
     background: var(--value);
   }
 }
@@ -37,11 +35,11 @@ SItemContainer:hover > SCloseIcon {
 }
 
 SItemContainer[keyboardFocused] {
-  box-shadow: var(--keyboard-focus);
+  box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.3));
 }
 
 SItemContainer[selected] {
-  border: 1px solid var(--blue-300);
+  border: 1px solid var(--intergalactic-border-info-active, #006dca);
 }
 
 SItemContainer[displayLabel] {
@@ -52,7 +50,7 @@ SItemContainer[displayLabel] {
 
 SItemContainer:not([value]) {
   &::after {
-    border: 0.9px solid var(--gray-100);
+    border: 0.9px solid var(--intergalactic-border-secondary, #e0e1e9);
   }
 }
 
@@ -60,15 +58,16 @@ SColors {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 4px;
+  gap: var(--intergalactic-spacing-1x, 4px);
 }
 
 SPaletteManager {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: 12px;
-  margin-left: 3px;
+  margin-top: var(--intergalactic-spacing-3x, 12px);
+  /* disable-tokens-validator */
+  margin-left: calc(var(--intergalactic-spacing-1x, 4px) - 1px);
 }
 
 SInputContainer {
@@ -86,7 +85,7 @@ SPlusButton {
   cursor: pointer;
 
   &:hover {
-    background-color: var(--gray-100);
+    background-color: var(--intergalactic-bg-secondary-neutral-hover, #e0e1e9);
   }
 }
 
@@ -98,21 +97,22 @@ SDefaultTrigger {
 }
 
 SDefaultTrigger[keyboardFocused] {
-  box-shadow: var(--keyboard-focus);
+  box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.3));
 }
 
 STriggerCircle {
   position: relative;
   width: 12px;
   height: 12px;
-  margin-right: 5px;
+  /* disable-tokens-validator */
+  margin-right: calc(var(--intergalactic-spacing-1x, 4px) + 1px);
   border-radius: 50%;
   background-color: var(--value);
   border: 1px solid transparent;
 }
 
 STriggerCircle:not([value]) {
-  border: 1px solid var(--gray-100);
+  border: 1px solid var(--intergalactic-border-secondary, #e0e1e9);
 }
 
 STriggerCircleLine {
@@ -131,7 +131,7 @@ SCloseIcon {
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  background-color: var(--white);
+  background-color: var(--intergalactic-bg-primary-neutral, #ffffff);
   opacity: 0;
   z-index: 1;
 }
@@ -143,8 +143,9 @@ SLine {
 SLabel {
   z-index: 1;
   color: var(--value);
-  font-size: 13px;
-  font-weight: 700;
+  /* disable-tokens-validator */
+  font-size: calc(var(--intergalactic-fs-100, 12px) + 1px);
+  font-weight: var(--intergalactic-bold, 700);
   font-family: FactorA-Bold, sans-serif;
 }
 
@@ -152,6 +153,11 @@ SItemColor {
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  border: 1px solid var(--gray-100);
+  border: 1px solid var(--intergalactic-border-secondary, #e0e1e9);
   background: var(--value);
+}
+
+SConfirmColor[hidden],
+SClearConfirm[hidden] {
+  display: none;
 }

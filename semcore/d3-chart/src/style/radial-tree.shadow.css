@@ -1,13 +1,12 @@
-@import '@semcore/utils/style/var.css';
 @import './var.css';
 
 SRadian {
   cursor: pointer;
-  fill: var(--blue-04);
+  fill: var(--intergalactic-chart-palette-order-blue-second-order, #008ff8);
 }
 
 SLine {
-  stroke: var(--blue-04);
+  stroke: var(--intergalactic-chart-palette-order-blue-second-order, #008ff8);
 }
 
 SLine[color] {

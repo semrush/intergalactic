@@ -17,7 +17,7 @@ import scrollToHash from '../utils/scrollToHash';
 
 const getChangelogByRoute = (currentRoute, routes) => {
   const changelogRoute = Object.keys(routes).find((route) => {
-    return route.startsWith(currentRoute.route) && /changelog/.test(route);
+    return route.startsWith(`${currentRoute.route}/`) && /changelog/.test(route);
   });
   return changelogRoute ? routes[changelogRoute] : undefined;
 };
@@ -105,6 +105,7 @@ const PageView = ({ route, page }) => {
               version={rootRoute.metadata?.packageJson?.version}
               sourcePath={page.sourcePath}
               changelogUrl={changelogRoute?.route}
+              deprecated={!!rootRoute.metadata?.deprecated}
             />
             <Docs tokens={page.tokens} tabs={tabs} route={page.route} />
           </div>
@@ -133,7 +134,14 @@ const DynamicPage = ({ route }) => {
     }
     return <LoadingPage />;
   }
-  if (error) return <ErrorView title={`Oh no! ${error.message}`} />;
+  if (error) {
+    if (error.message.includes('dynamically imported module')) {
+      window.location.reload();
+      return <ErrorView title={`Reloading the page...`} />;
+    } else {
+      return <ErrorView title={`Oh no! ${error.message}`} />;
+    }
+  }
 
   return <PageView route={route} page={page} />;
 };

@@ -1,7 +1,7 @@
 import React from 'react';
-import Tooltip from '@semcore/tooltip';
-import Button from '@semcore/button';
-import { Text } from '@semcore/typography';
+import Tooltip from '@semcore/ui/tooltip';
+import Button from '@semcore/ui/button';
+import { Text } from '@semcore/ui/typography';
 
 const Demo = () => (
   <Tooltip interaction="click">

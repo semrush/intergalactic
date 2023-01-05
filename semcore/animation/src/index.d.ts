@@ -16,9 +16,19 @@ export interface IAnimationProps extends IBoxProps {
   keyframes?: [string, string];
   /** If it set to `true`, animated node is persisted in dom even if `visible=false`   */
   preserveNode?: boolean;
+  /** Enables animation on first rendering
+   * @default false
+   */
+  initialAnimation?: boolean;
 }
 
-export interface ICollapseProps extends IAnimationProps {}
+export interface ICollapseProps extends IAnimationProps {
+  /**
+   * Add overflow=hidden when passing animation
+   * @default true
+   * */
+  overflowHidden?: boolean;
+}
 
 export interface IFadeInOutProps extends IAnimationProps {}
 

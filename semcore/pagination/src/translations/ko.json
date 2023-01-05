@@ -2,5 +2,11 @@
   "prevPageLabel": "이전",
   "nextPageLabel": "다음",
   "pageInputLabel": "페이지:",
-  "totalPagesLabel": "/"
+  "totalPagesLabel": "/",
+  "pagination": "페이지 지정",
+  "firstPage": "첫 페이지",
+  "currentPage": "현재 페이지",
+  "confirm": "페이지 번호 지정",
+  "lastPage": "마지막 페이지 #{lastPageNumber}",
+  "goToPage": "{pageNumber}페이지"
 }

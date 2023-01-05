@@ -1,0 +1,25 @@
+SContainer,
+SContainerMiddle {
+  display: flex;
+  overflow: hidden;
+}
+
+SBeginning,
+SEllipsis {
+  overflow: hidden;
+  display: inline-block;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+SEllipsis[maxLine] {
+  display: -webkit-box;
+  -webkit-line-clamp: var(--maxLine);
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  white-space: normal;
+}
+
+STail {
+  white-space: nowrap;
+}

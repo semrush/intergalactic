@@ -1,28 +1,26 @@
-@import '@semcore/utils/style/var.css';
-
 SHint {
   display: inline-block;
   transition: all 0.15s ease-in-out;
   text-decoration: none;
   outline: none;
   cursor: pointer;
-  color: var(--gray-500);
+  color: var(--intergalactic-text-secondary, #6c6e79);
 }
 
 SHint {
   &[active],
   &:active,
   &:hover {
-    color: var(--gray-600);
+    color: var(--intergalactic-text-hint-hover-active, #484a54);
   }
 }
 
 SHint[keyboardFocused] {
-  box-shadow: var(--keyboard-focus);
+  box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.3));
 }
 
 SHint[disabled] {
-  opacity: var(--disabled-opacity);
+  opacity: var(--intergalactic-disabled-opacity, 0.3);
   cursor: default;
   pointer-events: none; /* Disable hint interactions */
 }
@@ -34,11 +32,11 @@ SAddon {
 
 SHint SAddon {
   &:not(:only-child):first-child {
-    margin-right: 4px;
+    margin-right: var(--intergalactic-spacing-1x, 4px);
   }
 
   &:not(:only-child):last-child {
-    margin-left: 4px;
+    margin-left: var(--intergalactic-spacing-1x, 4px);
   }
 }
 

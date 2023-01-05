@@ -14,11 +14,11 @@ class RootButtonTrigger extends Component {
   render() {
     const SButtonAddon = ButtonTrigger.Addon;
     const SButtonTriggerSpin = Spin;
-    const { Children, styles, loading } = this.asProps;
+    const { Children, styles, loading, empty } = this.asProps;
 
     return sstyled(styles)(
       <Root render={BaseTrigger}>
-        {addonTextChildren(Children, ButtonTrigger.Text, ButtonTrigger.Addon)}
+        {addonTextChildren(Children, ButtonTrigger.Text, ButtonTrigger.Addon, empty)}
         <SButtonAddon>
           {loading ? <SButtonTriggerSpin size="xs" theme={false} /> : <ChevronDown />}
         </SButtonAddon>

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Property } from 'csstype';
 import createComponent, { Component, PropGetterFn, Root, sstyled } from '@semcore/core';
 import { Box, IBoxProps, IFlexProps } from '@semcore/flex-box';
 import syncScroll from '@semcore/utils/lib/syncScroll';
@@ -94,6 +95,9 @@ export interface IDataTableHeadProps extends IBoxProps {
 
   /** Hidden header */
   hidden?: boolean;
+
+  /** Disabled scroll */
+  disabledScroll?: boolean;
 }
 
 export interface IDataTableColumnProps extends IFlexProps {
@@ -106,6 +110,16 @@ export interface IDataTableColumnProps extends IFlexProps {
   resizable?: boolean;
   /** Fixed column on the left/right */
   fixed?: 'left' | 'right';
+  /** Fields to control the size of the column. */
+  flex?: Property.Flex | 'inherit';
+  /** Add vertical borders */
+  vBorders?: boolean;
+  /** Add vertical border to the right side */
+  borderRight?: boolean;
+  /** Add vertical border to the left side */
+  borderLeft?: boolean;
+  /** Make cells less */
+  compact?: boolean;
 }
 
 export interface IDataTableBodyProps extends IBoxProps {
@@ -113,7 +127,7 @@ export interface IDataTableBodyProps extends IBoxProps {
   rows?: DataTableRow[];
   /** When enabled, only visually acessable rows are rendered.
    * `tollerance` property controls how many rows outside of viewport are render.
-   * `rowHeight` fixes the rows height if it known. If not provided, first row node height is measured.
+   * `rowHeight` fixes the rows height if it has known. If not provided, first row node height is measured.
    * @default { tollerance: 2 }
    */
   virtualScroll?: boolean | { tollerance?: number; rowHeight?: number };
@@ -121,6 +135,8 @@ export interface IDataTableBodyProps extends IBoxProps {
    * Called every time user scrolls area
    */
   onScroll?: (event: React.SyntheticEvent<HTMLElement>) => void;
+  /** Disabled scroll */
+  disabledScroll?: boolean;
 }
 
 export interface IDataTableRowProps extends IBoxProps {
@@ -135,6 +151,23 @@ export interface IDataTableCellProps extends IFlexProps {
   name: string;
   /** Theme for cell */
   theme?: DataTableTheme;
+}
+
+function setBorderGroupColumns(columns: Column[], side?: string) {
+  const firstColumn = columns[0];
+  const lastColumn = columns[columns.length - 1];
+  if (firstColumn && (!side || side === 'left')) {
+    firstColumn.borderLeft = true;
+    if (firstColumn.columns) {
+      setBorderGroupColumns(firstColumn.columns, 'left');
+    }
+  }
+  if (lastColumn && (!side || side === 'right')) {
+    lastColumn.borderRight = true;
+    if (lastColumn.columns) {
+      setBorderGroupColumns(lastColumn.columns, 'right');
+    }
+  }
 }
 
 class RootDefinitionTable extends Component<AsProps> {
@@ -191,12 +224,8 @@ class RootDefinitionTable extends Component<AsProps> {
 
   setVarStyle(columns: Column[]) {
     for (const column of columns) {
-      if (Array.isArray(column.cssVar)) {
-        for (const cssVar of column.cssVar) {
-          this.tableRef.current?.style.setProperty(cssVar, `${column.width}px`);
-        }
-      } else {
-        this.tableRef.current?.style.setProperty(column.cssVar, `${column.width}px`);
+      if (column.setVar) {
+        this.tableRef.current?.style.setProperty(column.varWidth, `${column.width}px`);
       }
     }
   }
@@ -217,13 +246,23 @@ class RootDefinitionTable extends Component<AsProps> {
         fixed = options.fixed,
         resizable,
         sortable,
+        flex,
+        vBorders,
+        active,
         ...props
       } = child.props as Column['props'];
+      const lastColumnChildren = columnsChildren[columnsChildren.length - 1];
       const isGroup = !name;
-      let columns: Column[] = [];
+      let columns: Column[] | undefined;
 
       if (isGroup) {
         columns = this.childrenToColumns(children, { fixed });
+        active = typeof active === 'boolean' ? active : columns.some((c) => c.active);
+
+        if (vBorders) {
+          setBorderGroupColumns(columns);
+        }
+
         name = flattenColumns(columns)
           .map(({ name }) => name)
           .join('/');
@@ -234,31 +273,40 @@ class RootDefinitionTable extends Component<AsProps> {
       }
 
       const column = this.columns.find((column) => column.name === name);
-      columnsChildren.push({
+      const columnChildren = {
         get width() {
+          // @ts-ignore
           return this.props.ref.current?.getBoundingClientRect().width || 0;
         },
         name,
-        cssVar: createCssVarForWidth(name),
+        varWidth: createCssVarForWidth(name),
+        setVar: flex !== 'inherit',
         fixed,
         resizable,
-        active: sort[0] === name,
+        active: typeof active === 'boolean' ? active : sort[0] === name,
         sortable,
+        borderLeft: lastColumnChildren?.borderRight === true ? false : vBorders,
+        borderRight: vBorders,
         sortDirection:
           sort[0] === name
             ? sort[1]
             : column?.sortDirection ||
               (typeof sortable == 'string' ? sortable : DEFAULT_SORT_DIRECTION),
-        columns,
         props: {
           name,
+          flex: flex === 'inherit' ? undefined : flex,
           ...props,
           // @ts-ignore
           forwardRef: child.ref,
           children,
           ref: column?.props?.ref || React.createRef(),
         },
-      });
+      } as unknown as Column;
+
+      if (columns) {
+        columnChildren.columns = columns;
+      }
+      columnsChildren.push(columnChildren);
     });
     return columnsChildren;
   }
@@ -266,6 +314,7 @@ class RootDefinitionTable extends Component<AsProps> {
   getHeadProps(props: HeadAsProps) {
     const { use } = this.asProps;
     const columnsChildren = this.childrenToColumns(props.children);
+
     this.columns = flattenColumns(columnsChildren);
     return {
       $onSortClick: callAllEventHandlers(this.handlerSortClick, this.scrollToUp),
@@ -278,7 +327,6 @@ class RootDefinitionTable extends Component<AsProps> {
 
   getBodyProps(props: BodyAsProps) {
     const { data, use, uniqueKey } = this.asProps;
-
     const cellPropsLayers: { [columnName: string]: PropsLayer[] } = {};
     const rowPropsLayers: PropsLayer[] = [];
 
@@ -367,7 +415,7 @@ class RootDefinitionTable extends Component<AsProps> {
             } else if (column.name in row) {
               return {
                 name: column.name,
-                cssVar: column.cssVar,
+                cssVar: column.varWidth,
                 fixed: column.fixed,
                 data: row[column.name],
                 cellPropsLayers: cellPropsLayers[column.name] || [],
@@ -382,7 +430,7 @@ class RootDefinitionTable extends Component<AsProps> {
             } else if (!exclude[column.name] && !rowsGroupedNames[column.name]) {
               return {
                 name: column.name,
-                cssVar: column.cssVar,
+                cssVar: column.varWidth,
                 fixed: column.fixed,
                 data: null,
                 cellPropsLayers: cellPropsLayers[column.name] || [],

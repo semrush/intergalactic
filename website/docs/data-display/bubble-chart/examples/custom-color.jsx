@@ -1,7 +1,7 @@
 import React from 'react';
-import { Plot, Bubble, XAxis, YAxis, Tooltip } from '@semcore/d3-chart';
+import { Plot, Bubble, XAxis, YAxis, Tooltip } from '@semcore/ui/d3-chart';
 import { scaleLinear } from 'd3-scale';
-import { Text } from '@semcore/typography';
+import { Text } from '@semcore/ui/typography';
 
 export default () => {
   const MARGIN = 40;

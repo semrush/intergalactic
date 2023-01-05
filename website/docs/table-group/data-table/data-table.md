@@ -36,7 +36,7 @@ Columns are inherited from the `Flex` component and accept all its parameters. W
 
 @## The alignment of the columns
 
-Since columns and cells are inherited from the `Flex` component, you can use `justifyContent` to align the column to the desired edge. This property is automatically applied to table cells.
+Since columns and cells are inherited from the `Flex` component, you can use `justifyContent/alignItems` to align the column to the desired edge. This property is automatically applied to table cells.
 
 @example align-header
 
@@ -46,7 +46,7 @@ If you can sort by column, then:
 
 1. Specify the `sortable` property on the column;
 2. Subscribe to `onSortChange`;
-3. Pass the so`rt property to the table itself.
+3. Pass the `sort` property to the table itself.
 
 > In the example below, when you click on the sort icon, only the visual part changes, and the data itself is not sorted.
 
@@ -54,7 +54,7 @@ If you can sort by column, then:
 
 @## Fixed header
 
-To fix the table header, use the `<Sticky/>` component.
+To fix the table header, use the `<Box position="sticky" top={top} />` component.
 
 > Set `zIndex=2` for correct display.
 
@@ -124,19 +124,29 @@ We use the `@semcore/ui/accordion` component to extend the functionality of the 
 2. Replacing the tag in `DataTable.Row` with our extended tag with `Accordion.Item`;
 3. Setting the value for `Accordion.Item`;
 4. Calculating the active line to highlight it;
-5. Set the arrow (Chevron icon), if necessary.
+5. Render the children to accordion content;
+6. Set the arrow (Chevron icon), if necessary.
 
 @example accordion
 
 @## Table in table
 
-We use the example with [the accordion above](/table-group/data-table/#ab2a56).
+We use the example with [the accordion above](/table-group/data-table/#accordion_in_the_table).
 
-1. Render the table to accordion content;
-2. Set the desired z-index;
-3. Hide the table header;
+1. Hide the table header;
+2. Set "inherit" to use the size from the top table for each column;
 
 @example table-in-table
+
+@## Table in table with fixed column
+
+We use the example with [the table above](/table-group/data-table/#table_in_table).
+
+1. Set the desired z-index;
+2. Set the variable to block the scroll;
+3. Set the variable to remove overflow
+
+@example table-in-table-with-fixed
 
 @## Virtual scroll in the table
 
@@ -177,6 +187,24 @@ You can use secondary table for compact displaying small amount of data inside w
 @## Export in image
 
 @example export-to-pdf
+
+@## Compact
+
+To make the table with smaller indents you need to add `compact` property.
+
+@example compact
+
+@## Borders
+
+To add a border to a column, you need to pass `vBorders` properties to that column.
+
+@example borders
+
+@## Сolumn expand
+
+The active column will expand if there is not enough space. Fixed width columns will not change size. If a column width limit is set using `wMax` prop, then the sort icon on hover will run over the text in the column header, and the non-fitting part of the text will not be visible.
+
+@example expanding-column
 
 @page data-table-api
 @page data-table-changelog

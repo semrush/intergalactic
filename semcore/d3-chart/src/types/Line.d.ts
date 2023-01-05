@@ -1,4 +1,5 @@
-import { CProps, ReturnEl } from '@semcore/core';
+import { ReturnEl } from '@semcore/core';
+import { MapProps } from './Plot';
 import IContext from './context';
 import { CurveFactory } from 'd3-shape';
 import { IFadeInOutProps } from '@semcore/animation';
@@ -42,9 +43,9 @@ export interface ILineNullProps extends IContext {
   hide?: boolean;
 }
 
-declare const Line: (<T>(props: CProps<ILineProps & T>) => ReturnEl) & {
-  Dots: <T>(props: CProps<ILineDotsProps & T, ILineDotsContext>) => ReturnEl;
-  Null: <T>(props: CProps<ILineNullProps & T>) => ReturnEl;
+declare const Line: (<T>(props: MapProps<ILineProps & T>) => ReturnEl) & {
+  Dots: <T>(props: MapProps<ILineDotsProps & T, ILineDotsContext>) => ReturnEl;
+  Null: <T>(props: MapProps<ILineNullProps & T>) => ReturnEl;
 };
 
 export default Line;

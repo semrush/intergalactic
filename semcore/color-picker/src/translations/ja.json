@@ -1,0 +1,13 @@
+{
+  "currentColor": "カラーフィールド、現在のカラーは{color}です",
+  "emptyColor": "カラーフィールド、空欄",
+  "goToPaletteHint": "{currentColor}、Tabキーでパレットに移動、またはクリックでパレット非表示",
+  "palette": "カラーパレット、Tab+Shiftキーでカラーフィールドに戻る",
+  "presetColors": "プリセットカラー",
+  "customColors": "カラーフィールドコンテナをカスタマイズ",
+  "itemColor": "カラー{color}",
+  "clearColor": "カラーをクリア",
+  "colorField": "カラーフィールドをカスタマイズ、HEXフォーマット",
+  "colorFieldConfirm": "カスタムカラーリストに色を追加",
+  "colorFieldClear": "カスタムカラーフィールドをクリア"
+}

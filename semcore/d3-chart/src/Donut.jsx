@@ -48,7 +48,7 @@ function animationHoverPie({ d, selector, duration, innerRadius, outerRadius }) 
     transition()
       .selection()
       .select(selector)
-      .transition()
+      .transition(transition)
       .duration(duration)
       .attrTween('d', function () {
         if (!d) return () => '';
@@ -83,11 +83,11 @@ class DonutRoot extends Component {
   }) => {
     const d3Arc = arc()
       .outerRadius(getOuterRadius({ size, halfsize, outerRadius }))
-      .innerRadius(innerRadius > increaseFactor ? innerRadius - increaseFactor : innerRadius);
+      .innerRadius(innerRadius);
 
     const d3ArcOut = arc()
       .outerRadius(getOuterRadius({ size, halfsize, outerRadius }) + increaseFactor)
-      .innerRadius(innerRadius > increaseFactor ? innerRadius - increaseFactor : innerRadius);
+      .innerRadius(innerRadius);
 
     let d3Pie = pie()
       .sort(null)
@@ -154,9 +154,8 @@ class DonutRoot extends Component {
     };
 
   animationActivePie = (props) => {
-    let { duration, innerRadius } = this.asProps;
+    const { duration, innerRadius } = this.asProps;
     const { active, data, selector } = props;
-    innerRadius = innerRadius > increaseFactor ? innerRadius - increaseFactor : innerRadius;
     const outerRadius = getOuterRadius(this.asProps);
     active
       ? animationHoverPie({

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import Pagination from '@semcore/pagination';
-import { Text } from '@semcore/typography';
-import Select from '@semcore/select';
+import Pagination from '@semcore/ui/pagination';
+import { Text } from '@semcore/ui/typography';
+import Select from '@semcore/ui/select';
 
 const TOTAL_PAGE_COUNT = 122360;
 

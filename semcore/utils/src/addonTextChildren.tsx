@@ -2,17 +2,20 @@ import React from 'react';
 // @ts-ignore
 import { CHILDREN_COMPONENT, INHERITED_NAME } from '@semcore/core';
 import getOriginChildren from './getOriginChildren';
+import isNode from './isNode';
 
 function addonTextChildren(
   Children: any,
   Text: React.ComponentType<any>,
   Addon: React.ComponentType | React.ComponentType[],
+  isTextWrapIfEmptyChildren: boolean = false,
 ) {
   const children = getOriginChildren(Children);
   if (typeof children === 'function') {
     return <Children />;
   }
-  if (!children) {
+
+  if (!isTextWrapIfEmptyChildren && !isNode(children)) {
     return null;
   }
   return React.Children.toArray(children).some((element) => {

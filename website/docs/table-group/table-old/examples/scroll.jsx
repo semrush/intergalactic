@@ -1,14 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
-import Spin from '@semcore/spin';
-import ScrollArea from '@semcore/scroll-area';
-import { Text } from '@semcore/typography';
+import Spin from '@semcore/ui/spin';
+import ScrollArea from '@semcore/ui/scroll-area';
+import { Text } from '@semcore/ui/typography';
 import Table from '@semcore/table';
-import Tooltip from '@semcore/tooltip';
-import Checkbox from '@semcore/checkbox';
-import Link from '@semcore/link';
+import Tooltip from '@semcore/ui/tooltip';
+import Checkbox from '@semcore/ui/checkbox';
+import Link from '@semcore/ui/link';
 
-let data = [
+const data = [
   {
     keyword: 'ebay buy',
     kd: '77.8',
@@ -97,7 +97,12 @@ const Demo = () => (
                 <Checkbox.Value />
               </Checkbox>
             </StyledThSticky>
-            <StyledThSticky width="150" left={50} style={{ boxShadow: '0 0 1px #dee3e5' }}>
+            <StyledThSticky
+              width="150"
+              left={50}
+              valign="middle"
+              style={{ boxShadow: '0 0 1px #dee3e5' }}
+            >
               <Tooltip title="Lorem ipsum">
                 <span>
                   Keyword <Text color="gray60">(1 – 100)</Text>
@@ -108,7 +113,7 @@ const Demo = () => (
             {Object.keys(data[0])
               .slice(1)
               .map((name) => (
-                <Table.CellHead width="200">
+                <Table.CellHead width="200" valign="middle">
                   <Tooltip title="Lorem ipsum">
                     <span>
                       {name.toUpperCase()} {['kd', 'traffic'].includes(name) && '%'}

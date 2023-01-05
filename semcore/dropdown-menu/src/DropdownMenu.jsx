@@ -2,11 +2,14 @@ import React from 'react';
 import cn from 'classnames';
 import createComponent, { Component, sstyled, Root } from '@semcore/core';
 import Dropdown from '@semcore/dropdown';
-import { Box, Flex, useBox, useFlex } from '@semcore/flex-box';
+import { Flex, useBox, useFlex } from '@semcore/flex-box';
 import ScrollAreaComponent from '@semcore/scroll-area';
 import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
+import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
+import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 
 import style from './style/dropdown-menu.shadow.css';
+import scrollStyles from './style/scroll-area.shadow.css';
 
 const KEYS = ['ArrowDown', 'ArrowUp', 'Enter', ' '];
 const INTERACTION_TAGS = ['INPUT', 'TEXTAREA'];
@@ -14,17 +17,19 @@ const INTERACTION_TAGS = ['INPUT', 'TEXTAREA'];
 class DropdownMenuRoot extends Component {
   static displayName = 'DropdownMenu';
   static style = style;
-  static enhance = [uniqueIDEnhancement()];
+  static enhance = [uniqueIDEnhancement(), i18nEnhance(localizedMessages)];
 
   static defaultProps = {
     size: 'm',
     defaultVisible: false,
     defaultHighlightedIndex: null,
+    i18n: localizedMessages,
+    locale: 'en',
   };
 
-  _items = [];
+  itemProps = [];
 
-  _highlightedItem = null;
+  highlightedItemRef = React.createRef();
 
   prevHighlightedIndex = null;
 
@@ -54,20 +59,20 @@ class DropdownMenuRoot extends Component {
         break;
       case ' ':
       case 'Enter':
-        if (this._highlightedItem) this._highlightedItem.click();
+        if (this.highlightedItemRef.current) this.highlightedItemRef.current.click();
         break;
     }
   };
 
   getTriggerProps() {
-    const { size, uid, disablePortal, visible } = this.asProps;
+    const { size, uid, disablePortal, visible, getI18nText } = this.asProps;
 
     return {
       size,
       id: `igc-${uid}-trigger`,
       'aria-controls': visible ? `igc-${uid}-popper` : undefined,
       'aria-flowto': visible && !disablePortal ? `igc-${uid}-popper` : undefined,
-      'aria-label': visible && !disablePortal ? `Press Tab to go to popover` : undefined,
+      'aria-label': visible && !disablePortal ? getI18nText('triggerHint') : undefined,
       onKeyDown: this.handlerKeyDown,
     };
   }
@@ -95,8 +100,7 @@ class DropdownMenuRoot extends Component {
     const { size, highlightedIndex } = this.asProps;
     const highlighted = index === highlightedIndex;
     const extraProps = {};
-
-    this._items.push(props);
+    this.itemProps[index] = props;
     if (highlighted) {
       extraProps.ref = this.scrollToNode;
     }
@@ -123,7 +127,7 @@ class DropdownMenuRoot extends Component {
   }
 
   scrollToNode = (node) => {
-    this._highlightedItem = node;
+    this.highlightedItemRef.current = node;
     if (node && node.scrollIntoView) {
       if (this.asProps.highlightedIndex !== this.prevHighlightedIndex) {
         this.prevHighlightedIndex = this.asProps.highlightedIndex;
@@ -137,8 +141,8 @@ class DropdownMenuRoot extends Component {
 
   moveHighlightedIndex(amount, e) {
     let { highlightedIndex } = this.asProps;
-    const itemsLastIndex = this._items.length - 1;
-    const selectedIndex = this._items.findIndex((item) => item.selected);
+    const itemsLastIndex = this.itemProps.length - 1;
+    const selectedIndex = this.itemProps.findIndex((item) => item.selected);
 
     if (itemsLastIndex < 0) return;
 
@@ -157,10 +161,13 @@ class DropdownMenuRoot extends Component {
       newIndex = newIndex - itemsLastIndex - 1;
     }
 
-    if (this._items[newIndex] && this._items[newIndex].disabled) {
+    if (this.itemProps[newIndex] && this.itemProps[newIndex].disabled) {
       this.moveHighlightedIndex(amount < 0 ? amount - 1 : amount + 1, e);
     } else {
       this.handlers.highlightedIndex(newIndex, e);
+      setTimeout(() => {
+        this.highlightedItemRef.current?.focus();
+      }, 0);
     }
   }
 
@@ -176,7 +183,7 @@ class DropdownMenuRoot extends Component {
     const { Children } = this.asProps;
     const props = {};
 
-    this._items = [];
+    this.itemProps = [];
 
     return (
       <Root render={Dropdown} {...props}>
@@ -191,10 +198,11 @@ function List(props) {
 
   return sstyled(props.styles)(
     <SDropdownMenuList
-      render={Box}
-      tag={ScrollAreaComponent}
+      render={ScrollAreaComponent}
       role="menu"
       aria-activedescendant={props.index}
+      shadow={true}
+      styles={scrollStyles}
     />,
   );
 }
@@ -213,7 +221,7 @@ function Item(props) {
   return (
     <SDropdownMenuItem
       role="menuitem"
-      tabIndex={0}
+      tabIndex={-1}
       id={props.label}
       className={
         cn(
@@ -255,7 +263,7 @@ function Title(props) {
 }
 
 function Trigger() {
-  return <Root render={Dropdown.Trigger} type="button" aria-haspopup="true" />;
+  return <Root render={Dropdown.Trigger} aria-haspopup="true" />;
 }
 
 const DropdownMenu = createComponent(

@@ -1,7 +1,7 @@
 import React from 'react';
-import Card from '@semcore/card';
-import { Text } from '@semcore/typography';
-import SettingsM from '@semcore/icon/Settings/m';
+import Card from '@semcore/ui/card';
+import { Text } from '@semcore/ui/typography';
+import SettingsM from '@semcore/ui/icon/Settings/m';
 
 const tooltipContent = `Hey! Don't forget to place some useful info here 😏`;
 

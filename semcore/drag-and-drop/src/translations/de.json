@@ -1,0 +1,6 @@
+{
+  "grabbed": "{itemText} erfasst, aktuelle Position ist {itemPosition} von {itemsCount}",
+  "grabbing": "Erfasse {itemText}, Ablageposition ist {itemPosition} von {itemsCount}",
+  "dropped": "{itemText} abgelegt, finale Position ist {itemPosition} von {itemsCount}",
+  "discarded": "Ziehen wurde abgebrochen"
+}

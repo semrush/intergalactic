@@ -4,10 +4,11 @@ import Tooltip from '@semcore/tooltip';
 import { Box, Flex } from '@semcore/flex-box';
 import { Text } from '@semcore/typography';
 import Divider from '@semcore/divider';
-import LinkExternalXS from '@semcore/icon/LinkExternal/m';
-import FigmaS from '@semcore/icon/color/Figma/m';
-import GitHubS from '@semcore/icon/color/GitHub/m';
-import EditS from '@semcore/icon/Edit/m';
+import BracketsCodeM from '@semcore/icon/BracketsCode/m';
+import FigmaM from '@semcore/icon/color/Figma/m';
+import GitHubM from '@semcore/icon/color/GitHub/m';
+import EditM from '@semcore/icon/Edit/m';
+import WarningM from '@semcore/ui/icon/Warning/m';
 import { css } from '@semcore/core';
 import Tag from '@semcore/tag';
 import RouterLink from './RouterLink.jsx';
@@ -25,35 +26,44 @@ const tooltipStyles = css`
 
 function VersionLink({ to, version }) {
   return (
-    <RouterLink to={to} mx={1}>
+    <RouterLink to={to} mx={1} aria-label={`Component version ${version}`}>
       {version}
     </RouterLink>
   );
 }
 
 export default function (props) {
-  const { title, category, fileSource, sourcePath, beta, version, changelogUrl } = props;
+  const { title, category, fileSource, sourcePath, beta, version, changelogUrl, deprecated } =
+    props;
 
   return (
     <Box mb={8}>
       <h1 className={styles.title}>{title}</h1>
       <Text tag={Flex} alignItems={'center'} color="#898D9A" mb={3} size={300}>
         {category}
-        {version && (
+        {version && changelogUrl && (
           <>
-            {' '}
-            |<VersionLink to={`/${changelogUrl}/#${version}`} version={version} />
+            <Divider orientation="vertical" h={16} m={'4px 4px 0 8px'} />
+            <VersionLink to={`/${changelogUrl}/#${version}`} version={version} />
           </>
         )}
         {beta && <Tag size="m" theme="primary" color="orange-500" children="beta" />}
+        {deprecated && (
+          <Tooltip>
+            <Tooltip.Trigger tag={Flex} alignItems="center">
+              <Divider orientation="vertical" ml={1} mr={1} />
+              <WarningM className={styles.deprecatedIcon} />
+            </Tooltip.Trigger>
+            <Tooltip.Popper>Deprecated component</Tooltip.Popper>
+          </Tooltip>
+        )}
       </Text>
       <Flex className={styles.overlay} mb={4} tag="nav" aria-label="External links">
         <Box mr={5}>
           <Link size={300} color="#171A22" target="_blank" href="https://www.figma.com/@semrush">
             <Link.Addon>
-              <FigmaS />
+              <FigmaM />
             </Link.Addon>
-            <Link.Text>Figma libraries</Link.Text>
           </Link>
         </Box>
         {!!fileSource && (
@@ -66,48 +76,7 @@ export default function (props) {
                 href={`https://www.npmjs.com/package/@semcore/ui`}
               >
                 <Link.Addon>
-                  <svg
-                    className={styles.packageLogo}
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 256 256"
-                  >
-                    <rect width="256" height="256" fill="none" />
-                    <path
-                      fill="none"
-                      stroke="#000"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="16"
-                      d="M224,177.32122V78.67878a8,8,0,0,0-4.07791-6.9726l-88-49.5a8,8,0,0,0-7.84418,0l-88,49.5A8,8,0,0,0,32,78.67878v98.64244a8,8,0,0,0,4.07791,6.9726l88,49.5a8,8,0,0,0,7.84418,0l88-49.5A8,8,0,0,0,224,177.32122Z"
-                    />
-                    <polyline
-                      fill="none"
-                      stroke="#000"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="16"
-                      points="177.022 152.511 177.022 100.511 80 47"
-                    />
-                    <polyline
-                      fill="none"
-                      stroke="#000"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="16"
-                      points="222.897 74.627 128.949 128 33.108 74.617"
-                    />
-                    <line
-                      x1="128.949"
-                      x2="128.01"
-                      y1="128"
-                      y2="234.821"
-                      fill="none"
-                      stroke="#000"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="16"
-                    />
-                  </svg>
+                  <BracketsCodeM />
                 </Link.Addon>
                 <Link.Text>NPM</Link.Text>
               </Link>
@@ -120,9 +89,8 @@ export default function (props) {
                 href={`https://github.com/semrush/intergalactic/tree/master/semcore/${fileSource}`}
               >
                 <Link.Addon>
-                  <GitHubS />
+                  <GitHubM width={18} height={18} />
                 </Link.Addon>
-                <Link.Text>GitHub source</Link.Text>
               </Link>
             </Box>
           </>
@@ -140,7 +108,7 @@ export default function (props) {
                 href={`https://github.com/semrush/intergalactic/edit/master/website/docs/${sourcePath}`}
               >
                 <Link.Addon>
-                  <EditS color="#898D9A" />
+                  <EditM color="#898D9A" />
                 </Link.Addon>
                 <Link.Text>Edit page</Link.Text>
               </Link>

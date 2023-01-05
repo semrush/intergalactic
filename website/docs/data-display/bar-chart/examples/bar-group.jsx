@@ -1,8 +1,8 @@
 import React from 'react';
-import { Plot, GroupBar, YAxis, XAxis, HoverRect, Tooltip, colors } from '@semcore/d3-chart';
+import { Plot, GroupBar, YAxis, XAxis, HoverRect, Tooltip, colors } from '@semcore/ui/d3-chart';
 import { scaleLinear, scaleBand } from 'd3-scale';
-import { Flex } from '@semcore/flex-box';
-import { Text } from '@semcore/typography';
+import { Flex } from '@semcore/ui/flex-box';
+import { Text } from '@semcore/ui/typography';
 
 export default () => {
   const MARGIN = 40;

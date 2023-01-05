@@ -63,7 +63,7 @@ type ChangeEvent = (
 Практически у каждого нашего компонента есть дочерние компоненты, являющиеся static методом родителя.
 
 ```jsx
-import Button from '@semcore/button';
+import Button from '@semcore/ui/button';
 export default () => (
   <Button>
     {' '}

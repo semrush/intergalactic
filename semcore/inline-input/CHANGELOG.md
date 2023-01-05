@@ -2,6 +2,68 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.4.2] - 2022-12-27
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/icon` [3.4.3 ~> 3.5.0]).
+
+## [3.4.0] - 2022-12-14
+
+### Added
+
+- Added internationalization of aria attributes.
+
+## [3.3.1] - 2022-12-13
+
+### Changed
+
+- Added `react-dom` to peer dependencies.
+
+## [3.3.0] - 2022-12-12
+
+### Added
+
+- Design tokens based theming.
+
+## [3.2.1] - 2022-11-30
+
+### Fixed
+
+- Disabled moving focus in tooltips.
+
+## [3.2.0] - 2022-11-30
+
+### Changed
+
+- Updated border-color in focus state from `--blue-400` to `--blue-500`, `--red-400` to `--red-500`, `--green-400` to `--green-500`.
+
+## [3.1.8] - 2022-11-30
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/flex-box` [4.6.3 ~> 4.6.4], `@semcore/icon` [3.3.0 ~> 3.3.1], `@semcore/utils` [3.40.0 ~> 3.41.0]).
+
+## [3.1.6] - 2022-11-08
+
+## [3.1.5] - 2022-10-28
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/flex-box` [4.6.2 ~> 4.6.3], `@semcore/icon` [3.1.1 ~> 3.1.2], `@semcore/utils` [3.40.0 ~> 3.40.0]).
+
+## [3.1.1] - 2022-10-28
+
+### Added
+
+- Added accessability needed aria label.
+
+## [3.1.4] - 2022-10-24
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/icon` [3.1.0 ~> 3.1.1]).
+
 ## [3.1.0] - 2022-10-10
 
 ### Changed

@@ -11,7 +11,7 @@ import {
   timeFormat,
   getColor,
 } from '@semcore/chart';
-import Card from '@semcore/card';
+import Card from '@semcore/ui/card';
 
 let date = Date.now();
 

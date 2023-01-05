@@ -44,6 +44,7 @@ The component has two sizes. In cases where a dot is above the component, it is 
 |                         | ![dot-in-list](static/mc-notifications-yes.png) | `top: -1px; right: -1px; border: 1px solid --white;` | It's used to mark images/controls inside the list.                              |
 
 @## Counter
+
 There may be a counter with the number of notifications inside the dot. See [Counter](/components/counter/) for more information about this case.
 
 > If the dot contains a counter, it grows in size, respectively.
@@ -90,6 +91,7 @@ We have two scenarios of how the dot disappears from a component or an item in t
 | The dot disappears from an item in the list | after the user **has hovered** a new item of the list.        |
 |                                             | after the user **has clicked** on a new item of the list.     |
 
+@page dot-a11y
 @page dot-api
 @page dot-code
 @page dot-changelog

@@ -1,5 +1,5 @@
 import React from 'react';
-import Divider from '@semcore/divider';
+import Divider from '@semcore/ui/divider';
 import PlaygroundGeneration from '@components/PlaygroundGeneration';
 import styled from 'styled-components';
 

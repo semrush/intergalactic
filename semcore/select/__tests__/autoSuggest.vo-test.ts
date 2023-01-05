@@ -24,9 +24,6 @@ test('Users can interact with AutoSuggest via VoiceOver', async ({
   const { voiceOver, getReport } = await makeVoiceOverReporter(pureVoiceOver);
   await voiceOver.interact();
 
-  expect(await voiceOver.lastSpokenPhrase()).toContain(
-    'Press Tab to go to popover Select option list box',
-  );
   expect(await voiceOver.lastSpokenPhrase()).toContain('Menu pop-up combo box');
   await voiceOver.interact();
   await voiceOver.interact();
@@ -38,12 +35,7 @@ test('Users can interact with AutoSuggest via VoiceOver', async ({
   await voiceOver.next();
   await voiceOver.next();
   const option = await voiceOver.itemText();
-  await voiceOver.press('Control+Option+Space');
-  await voiceOver.press('Shift+Tab', { application: 'Playwright' });
-  await voiceOver.press('Shift+Tab', { application: 'Playwright' });
-  await voiceOver.press('Shift+Tab', { application: 'Playwright' });
-  await voiceOver.press('Shift+Tab', { application: 'Playwright' });
-  await voiceOver.act();
+  await voiceOver.press('Control+Option+Space', { application: 'Playwright' });
   expect((await voiceOver.lastSpokenPhrase()).toLowerCase()).toContain(option.toLowerCase());
 
   const report = (await getReportHeader()) + '\n\n' + (await getReport(standPath));

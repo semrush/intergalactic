@@ -137,6 +137,27 @@ describe('DropdownMenu', () => {
     ).toMatchImageSnapshot();
   });
 
+  test('should have shadow style', async () => {
+    const Component = (
+      <DropdownMenu visible disablePortal>
+        <DropdownMenu.Menu hMax={'180px'}>
+          <DropdownMenu.ItemTitle>List heading</DropdownMenu.ItemTitle>
+          <DropdownMenu.Item>Item 1</DropdownMenu.Item>
+          <DropdownMenu.Item>Item 2</DropdownMenu.Item>
+          <DropdownMenu.Item>Item 3</DropdownMenu.Item>
+          <DropdownMenu.Item>Item 4</DropdownMenu.Item>
+          <DropdownMenu.Item>Item 5</DropdownMenu.Item>
+          <DropdownMenu.Item>Item 6</DropdownMenu.Item>
+          <DropdownMenu.Item>Item 7</DropdownMenu.Item>
+          <DropdownMenu.Item>Item 8</DropdownMenu.Item>
+          <DropdownMenu.Item>Item 9</DropdownMenu.Item>
+        </DropdownMenu.Menu>
+      </DropdownMenu>
+    );
+
+    expect(await snapshot(Component)).toMatchImageSnapshot();
+  });
+
   test('a11y', async () => {
     const { container } = render(
       <DropdownMenu visible disablePortal>

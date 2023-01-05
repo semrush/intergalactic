@@ -1,6 +1,6 @@
 import React from 'react';
-import Select from '@semcore/select';
-import { Text } from '@semcore/typography';
+import Select from '@semcore/ui/select';
+import { Text } from '@semcore/ui/typography';
 
 const options = Array(5)
   .fill('')

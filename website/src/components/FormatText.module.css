@@ -21,6 +21,7 @@
   padding: 0;
   margin: 0 0 1.5rem;
   cursor: pointer;
+  border-radius: 6px;
 }
 .formatText img [alt$='#center'] {
   display: block;
@@ -140,13 +141,17 @@
   width: 100%;
 }
 
+.formatText table tbody tr:hover {
+  background-color: #f0f0f4;
+}
+
 .formatText fieldset {
   padding: 0;
   margin: 0 0 1rem;
 }
 
 .formatText blockquote {
-  padding: 2rem;
+  padding: 1.5rem;
   margin: 1rem 0 1rem;
   font-size: 16px;
   line-height: 1.5em;
@@ -164,7 +169,7 @@
   margin-bottom: 0;
 }
 
-.formatText blockquote h3 {
+.formatText blockquote h4 {
   margin-top: 0;
 }
 
@@ -214,10 +219,12 @@
 
 .formatText ol li {
   padding-left: 0;
+  margin-bottom: 8px;
 }
 
 .formatText ul li {
   padding-left: 0;
+  margin-bottom: 8px;
 }
 
 .formatText li > ol {
@@ -267,17 +274,7 @@
   vertical-align: top;
   text-align: left;
   border-bottom: 1px solid #d1d4db;
-  padding: 0.75rem 1rem calc(0.75rem - 1px);
-}
-
-.formatText th:first-child,
-.formatText td:first-child {
-  padding-left: 0;
-}
-
-.formatText th:last-child,
-.formatText td:last-child {
-  padding-right: 0;
+  padding: 0.75rem 0.5rem calc(0.75rem - 1px);
 }
 
 .formatText code {

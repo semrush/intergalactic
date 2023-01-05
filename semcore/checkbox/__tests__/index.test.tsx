@@ -32,6 +32,19 @@ describe('Checkbox', () => {
     expect(await snapshot(component)).toMatchImageSnapshot();
   });
 
+  test('Should not be check icon in unchecked and disabled state', async () => {
+    const component = (
+      <snapshot.ProxyProps m="5px" style={{ backgroundColor: '#b880ff' }}>
+        <Checkbox>
+          <Checkbox.Value checked={false} disabled={true} />
+          <Checkbox.Text>Label</Checkbox.Text>
+        </Checkbox>
+      </snapshot.ProxyProps>
+    );
+
+    expect(await snapshot(component)).toMatchImageSnapshot();
+  });
+
   test('Should support sizes', async () => {
     const component = (
       <snapshot.ProxyProps m="5px">

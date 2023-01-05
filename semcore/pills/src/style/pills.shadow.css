@@ -1,9 +1,8 @@
-@import '@semcore/utils/style/var.css';
-
 SPills {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  isolation: isolate;
 }
 
 SPill {
@@ -28,9 +27,9 @@ SPill {
   vertical-align: middle;
   font-family: inherit;
   cursor: pointer;
-  background: var(--white);
-  border: 1px solid var(--gray-200);
-  border-radius: var(--rounded-m);
+  background: var(--intergalactic-bg-primary-neutral, #ffffff);
+  border: 1px solid var(--intergalactic-border-primary, #c4c7cf);
+  border-radius: var(--intergalactic-rounded-medium, 6px);
 
   &::-moz-focus-inner {
     border: none;
@@ -45,13 +44,13 @@ SPill {
   }
 
   &:hover {
-    background: color-mod(var(--gray-400) a(20%));
+    background: var(--intergalactic-bg-primary-neutral-hover, #f4f5f9);
   }
 }
 
 SPill[selected] {
-  background: color-mod(var(--blue-400) a(20%));
-  border-color: var(--blue-400);
+  background: var(--intergalactic-control-secondary-info-hover, rgba(0, 143, 248, 0.2));
+  border-color: var(--intergalactic-border-info-active, #006dca);
   z-index: 1;
 }
 
@@ -60,79 +59,79 @@ SPill[disabled] {
   pointer-events: none; /* Disable link interactions */
 
   & > * {
-    opacity: var(--disabled-opacity);
+    opacity: var(--intergalactic-disabled-opacity, 0.3);
   }
 }
 
 SPill[keyboardFocused] {
-  box-shadow: var(--keyboard-focus);
+  box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.3));
 }
 
 SText {
-  color: var(--gray-800);
+  color: var(--intergalactic-text-primary, #191b23);
   display: inline-flex;
 }
 
 SAddon {
-  color: var(--gray-500);
+  color: var(--intergalactic-text-secondary, #6c6e79);
   display: inline-flex;
   align-items: center;
   justify-content: center;
 }
 
 SPill[size='m'] {
-  height: var(--form-control-m);
-  min-width: var(--form-control-m);
-  font-size: var(--fs-200);
+  height: var(--intergalactic-form-control-m, 28px);
+  min-width: var(--intergalactic-form-control-m, 28px);
+  font-size: var(--intergalactic-fs-200, 14px);
 
   & SText {
-    margin-left: 8px;
-    margin-right: 8px;
+    margin-left: var(--intergalactic-spacing-2x, 8px);
+    margin-right: var(--intergalactic-spacing-2x, 8px);
   }
 
   & SAddon {
     &:not(:only-child):first-child {
-      margin-left: 8px;
+      margin-left: var(--intergalactic-spacing-2x, 8px);
     }
 
     &:not(:only-child):last-child {
-      margin-right: 8px;
+      margin-right: var(--intergalactic-spacing-2x, 8px);
     }
 
     &:only-child {
-      margin-left: 8px;
-      margin-right: 8px;
+      margin-left: var(--intergalactic-spacing-2x, 8px);
+      margin-right: var(--intergalactic-spacing-2x, 8px);
     }
   }
 }
 
 SPill[size='l'] {
-  height: var(--form-control-l);
-  min-width: var(--form-control-l);
-  font-size: var(--fs-300);
+  height: var(--intergalactic-form-control-l, 40px);
+  min-width: var(--intergalactic-form-control-l, 40px);
+  font-size: var(--intergalactic-fs-300, 16px);
 
   & SText {
-    margin-left: 8px;
-    margin-right: 8px;
+    margin-left: var(--intergalactic-spacing-2x, 8px);
+    margin-right: var(--intergalactic-spacing-2x, 8px);
 
     &:only-child {
-      margin-left: 12px;
-      margin-right: 12px;
+      margin-left: var(--intergalactic-spacing-3x, 12px);
+      margin-right: var(--intergalactic-spacing-3x, 12px);
     }
   }
 
   & SAddon {
     &:not(:only-child):first-child {
-      margin-left: 12px;
+      margin-left: var(--intergalactic-spacing-3x, 12px);
     }
 
     &:not(:only-child):last-child {
-      margin-right: 12px;
+      margin-right: var(--intergalactic-spacing-3x, 12px);
     }
 
     &:only-child {
-      margin-left: 12px;
-      margin-right: 12px;
+      margin-left: var(--intergalactic-spacing-3x, 12px);
+      margin-right: var(--intergalactic-spacing-3x, 12px);
     }
   }
 }
@@ -144,11 +143,13 @@ SPill[neighborLocation='right'] {
 
 SPill[neighborLocation='both'] {
   border-radius: 0;
+  /* disable-tokens-validator */
   margin-left: -1px;
 }
 
 SPill[neighborLocation='left'] {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
+  /* disable-tokens-validator */
   margin-left: -1px;
 }

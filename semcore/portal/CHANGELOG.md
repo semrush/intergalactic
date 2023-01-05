@@ -2,6 +2,30 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.5.2] - 2022-12-19
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.44.0 ~> 3.44.1]).
+
+## [2.5.0] - 2022-12-12
+
+### Added
+
+- Design tokens based theming.
+
+## [2.4.5] - 2022-11-30
+
+### Fixed
+
+- Fixed showing types in autocomplete IDE.
+
+## [2.4.4] - 2022-11-30
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.40.0 ~> 3.41.0]).
+
 ## [2.4.0] - 2022-10-10
 
 ### Changed

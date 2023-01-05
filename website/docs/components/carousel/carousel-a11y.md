@@ -1,8 +1,11 @@
 ---
 title: A11y
+a11y: AA
 ---
 
-@## Keyboard support
+@## What component has
+
+### Keyboard support
 
 | Key                             | Function                                                                                                                                                            |
 | ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -10,21 +13,23 @@ title: A11y
 | `Shift + Tab`                   | Moves focus to the previous focusable element.                                                                                                                      |
 | `Enter`, `Left`, `Right` arrows | Display next or previous slide in the carousel.                                                                                                                     |
 
-@## Roles & attributes
+### Roles and attributes
 
-The list below will help you to keep in mind the necessary roles and attributes to make our components fully accessible in your interfaces.
+The list below describes roles and attributes that component already has.
 
-| Role   | Attribute                         | Element              | Usage                                                                                                                                                                                                                                                                                       |
-| ------ | --------------------------------- | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| region |                                   | `section`            | Role `region` is implied for any `section` element that has an accessible name. Defines the carousel and its controls as a land mark region.                                                                                                                                                |
-|        | `aria-roledescription="carousel"` | `section`            | Informs assistive technologies to identify the element as a "carousel" rather than a "region." Effects how the assistive technology renders the role but does not effect functionality, such as commands for navigating to landmark regions.                                                |
-|        | `aria-live="off"`                 | `div.carousel-items` | Applied to a `div` element that contains all the slides. Identifies the container element as a live region that is in the "off" state, meaning assistive technology users are not informed about changes to the region. The live region is off when the carousel is automatically rotating. |
-|        | `aria-roledescription="slide"`    | `div.carousel-item`  | Informs assistive technologies to identify the element as a "slide" rather than a "group." Effects how the assistive technology renders the role but does not remove any assistive technology functions related to `group` elements.                                                        |
+| Role       | Attribute      | Element | Usage                                                                                                  |
+| ---------- | -------------- | ------- | ------------------------------------------------------------------------------------------------------ |
+|            | `tabindex="0"` | `div`   | Includes the element in the `Tab` sequence.                                                            |
+| `list`     |                |         | The ARIA `list` role can be used to identify a list of items. It is used to identify a list container. |
+| `listitem` |                |         | The ARIA `listitem` role can be used to identify an item inside a list of items.                       |
 
 @## Resources
 
-[W3 carousel examples](https://www.w3.org/TR/wai-aria-practices/examples/carousel/carousel-1.html) has detailed information about the accordion accessible behavior.
+- Mozilla guides about [list role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/list_role) and [listitem role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/listitem_role) have all necessary information for better understanding of how list works with screen readers.
+- [W3 carousel examples](https://www.w3.org/WAI/ARIA/apg/patterns/carousel/) has detailed information about the accordion accessible behavior.
 
 @## Other recommendations
 
 See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/).
+
+@include carousel-a11y-report

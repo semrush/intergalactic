@@ -1,5 +1,6 @@
 ---
 title: Product emails
+deprecated: true
 ---
 
 @page grid-email

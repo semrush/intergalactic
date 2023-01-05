@@ -2,6 +2,36 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [1.2.4] - 2022-12-27
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/icon` [3.4.3 ~> 3.5.0], `@semcore/modal` [3.3.1 ~> 3.3.2]).
+
+## [1.2.1] - 2022-12-13
+
+### Changed
+
+- Added `react-dom` to peer dependencies.
+
+## [1.2.0] - 2022-12-12
+
+### Added
+
+- Design tokens based theming.
+
+## [1.1.12] - 2022-12-01
+
+### Fixed
+
+- Fixed layout so that the white background in the rounded borders of the modal would not be visible.
+
+## [1.1.11] - 2022-11-30
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.41.0 ~> 3.42.0], `@semcore/flex-box` [4.6.4 ~> 4.6.5], `@semcore/icon` [3.3.1 ~> 3.3.2], `@semcore/modal` [3.1.10 ~> 3.1.11]).
+
 ## [1.1.0] - 2022-10-10
 
 ### Changed

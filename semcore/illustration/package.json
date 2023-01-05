@@ -1,7 +1,7 @@
 {
   "name": "@semcore/illustration",
   "description": "Semrush Illustration Component",
-  "version": "1.3.0",
+  "version": "1.3.9",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -20,7 +20,8 @@
   },
   "peerDependencies": {
     "@semcore/core": "^1.11",
-    "react": "16.8 - 18"
+    "react": "16.8 - 18",
+    "react-dom": "16.8 - 18"
   },
   "repository": {
     "type": "git",
@@ -29,6 +30,6 @@
   },
   "devDependencies": {
     "@types/react": "18.0.21",
-    "@semcore/icon-transform-svg": "1.0.0"
+    "@semcore/icon-transform-svg": "1.1.0"
   }
 }

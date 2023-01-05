@@ -1,7 +1,7 @@
 import React from 'react';
 
-import Button from '@semcore/button';
-import Tooltip from '@semcore/tooltip';
+import Button from '@semcore/ui/button';
+import Tooltip from '@semcore/ui/tooltip';
 import PlaygroundGeneration from '@components/PlaygroundGeneration';
 
 const PLACEMENT = [

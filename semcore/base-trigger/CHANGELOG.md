@@ -2,6 +2,84 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.4.3] - 2022-12-27
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/icon` [3.4.3 ~> 3.5.0]).
+
+## [3.4.2] - 2022-12-21
+
+### Fixed
+
+- Fixed the problem of not showing the placeholder when the body of the `BaseTrigger` is empty.
+
+## [3.4.1] - 2022-12-19
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.44.0 ~> 3.44.1]).
+
+## [3.4.0] - 2022-12-14
+
+### Added
+
+- Added internationalization of aria attributes.
+
+## [3.3.3] - 2022-12-14
+
+### Fixed
+
+- Fixed hardcoded spacing style literal.
+
+## [3.3.2] - 2022-12-13
+
+### Changed
+
+- Added `react-dom` to peer dependencies.
+
+## [3.3.1] - 2022-12-12
+
+### Changed
+
+- The icon in `LinkTrigger` is centered vertically.
+
+## [3.3.0] - 2022-12-12
+
+### Added
+
+- Design tokens based theming.
+
+## [3.2.8] - 2022-11-15
+
+### Added
+
+- Added support text ellipsis in `LinkTrigger.Text`.
+
+## [3.2.7] - 2022-11-14
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/icon` [3.2.0 ~> 3.3.0]).
+
+## [3.2.6] - 2022-11-07
+
+### Fixed
+
+- Fixed `FilterTrigger` accessability.
+
+## [3.2.5] - 2022-10-28
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.40.0 ~> 3.40.0], `@semcore/icon` [3.1.1 ~> 3.1.2]).
+
+## [3.2.1] - 2022-10-17
+
+### Fixed
+
+- Fixed the problem of not showing the placeholder when the body of the `FilterTrigger` is empty.
+
 ## [3.2.0] - 2022-10-10
 
 ### Changed

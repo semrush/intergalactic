@@ -16,6 +16,7 @@ class HorizontalBarRoot extends Component {
     offset: [0, 0],
     duration: 500,
     r: 2,
+    wMin: 4,
   };
 
   getBackgroundProps(props, index) {
@@ -39,6 +40,7 @@ class HorizontalBarRoot extends Component {
       uid,
       duration,
       r,
+      wMin,
       height: heightProps,
       onMouseMove,
       onMouseLeave,
@@ -47,16 +49,17 @@ class HorizontalBarRoot extends Component {
 
     const [xScale, yScale] = scale;
     const barY = yScale(d[y]) + offset[1];
-    const barX = xScale(Math.min(d[x0] ?? 0, d[x])) + offset[0];
+    const barX = xScale(Math.min(d[x0] ?? 0, d[x])) + offset[0] - (Object.is(d[x], -0) ? wMin : 0);
     const height = heightProps || getBandwidth(yScale);
-    const width = Math.abs(xScale(d[x]) - Math.max(xScale(xScale.domain()[0]), xScale(d[x0] ?? 0)));
+    const width =
+      Math.abs(xScale(d[x]) - Math.max(xScale(xScale.domain()[0]), xScale(d[x0] ?? 0))) || wMin;
     const dSvg = getHorizontalRect({
       x: barX,
       y: barY,
       width,
       height,
       radius: Array.isArray(r) ? r[i] : r,
-      position: d[x] > 0 ? 'right' : 'left',
+      position: d[x] > 0 || Object.is(d[x], 0) ? 'right' : 'left',
     });
 
     if (groupKey) {

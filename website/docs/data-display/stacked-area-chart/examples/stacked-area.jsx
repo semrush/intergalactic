@@ -8,10 +8,10 @@ import {
   StackedArea,
   HoverLine,
   Tooltip,
-} from '@semcore/d3-chart';
+} from '@semcore/ui/d3-chart';
 import { scaleLinear } from 'd3-scale';
-import { Flex, Box } from '@semcore/flex-box';
-import { Text } from '@semcore/typography';
+import { Flex, Box } from '@semcore/ui/flex-box';
+import { Text } from '@semcore/ui/typography';
 import { curveCardinal } from 'd3-shape';
 
 function formatDate(value, options) {

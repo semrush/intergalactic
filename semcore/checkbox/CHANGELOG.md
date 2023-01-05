@@ -2,6 +2,48 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [6.3.3] - 2022-12-19
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.44.0 ~> 3.44.1]).
+
+## [6.3.1] - 2022-12-13
+
+### Changed
+
+- Added `react-dom` to peer dependencies.
+
+## [6.3.0] - 2022-12-12
+
+### Added
+
+- Design tokens based theming.
+
+## [6.2.0] - 2022-11-30
+
+### Changed
+
+- Updated border-color in focus state from `--blue-400` to `--blue-500`, `--red-400` to `--red-500`.
+
+## [6.1.5] - 2022-11-30
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.40.0 ~> 3.41.0]).
+
+## [6.1.4] - 2022-11-03
+
+### Fixed
+
+- Fixed displaying in unchecked and disabled state.
+
+## [6.1.3] - 2022-10-28
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.40.0 ~> 3.40.0]).
+
 ## [6.1.0] - 2022-10-10
 
 ### Changed

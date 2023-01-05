@@ -1,9 +1,8 @@
-@import '@semcore/utils/style/var.css';
 @import './var.css';
 
 SBubble {
-  fill: var(--blue-03);
-  stroke: #fff;
+  fill: var(--intergalactic-chart-palette-order-blue, #2bb3ff);
+  stroke: var(--intergalactic-chart-grid-border, #ffffff);
   stroke-width: 2px;
   transition-property: cx, cy;
   transition-duration: var(--duration);
@@ -20,8 +19,9 @@ SBubble[color] {
 
 SCenter {
   text-anchor: middle;
-  font-size: 11px;
-  stroke: var(--blue-03);
+  /* disable-tokens-validator */
+  font-size: calc(var(--intergalactic-fs-100, 12px) - 1px);
+  stroke: var(--intergalactic-chart-palette-order-blue, #2bb3ff);
 }
 
 SCenter[color] {
@@ -29,7 +29,7 @@ SCenter[color] {
 }
 
 SLabel {
-  fill: var(--blue-03);
+  fill: var(--intergalactic-chart-palette-order-blue, #2bb3ff);
 }
 
 SLabel[position='right'] {

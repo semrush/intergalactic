@@ -62,6 +62,7 @@ class BarRoot extends Component {
       hMin,
       width: widthProps,
       groupKey,
+      onClick,
     } = this.asProps;
 
     const [xScale, yScale] = scale;
@@ -69,6 +70,7 @@ class BarRoot extends Component {
     const barX = xScale(d[x]) + offset[0];
     const height =
       Math.abs(yScale(d[y]) - Math.min(yScale(yScale.domain()[0]), yScale(d[y0] ?? 0))) || hMin;
+    const handleClick = (event) => onClick?.(d, event);
     const width = widthProps || getBandwidth(xScale);
     const dSvg = getRect({
       x: barX,
@@ -91,7 +93,7 @@ class BarRoot extends Component {
         key={`bar-${i}`}
         render="path"
         clipPath={`url(#${uid})`}
-        __excludeProps={['data', 'scale', 'value']}
+        __excludeProps={['data', 'scale', 'value', 'onClick']}
         childrenPosition="above"
         value={d}
         index={i}
@@ -102,6 +104,7 @@ class BarRoot extends Component {
         width={width}
         height={height}
         d={dSvg}
+        onClickCapture={handleClick}
         use:duration={`${duration}ms`}
       />,
     );

@@ -1,12 +1,12 @@
 import React from 'react';
 import { useForm, Controller } from 'react-hook-form';
-import { Flex } from '@semcore/flex-box';
-import { Text } from '@semcore/typography';
-import Radio, { RadioGroup } from '@semcore/radio';
-import Checkbox from '@semcore/checkbox';
-import Select from '@semcore/select';
-import { ButtonTrigger } from '@semcore/base-trigger';
-import Button from '@semcore/button';
+import { Flex } from '@semcore/ui/flex-box';
+import { Text } from '@semcore/ui/typography';
+import Radio, { RadioGroup } from '@semcore/ui/radio';
+import Checkbox from '@semcore/ui/checkbox';
+import Select from '@semcore/ui/select';
+import { ButtonTrigger } from '@semcore/ui/base-trigger';
+import Button from '@semcore/ui/button';
 
 const Demo = () => {
   const [selected, updateSelected] = React.useState(false);

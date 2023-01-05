@@ -1,9 +1,8 @@
-@import '@semcore/utils/style/var.css';
 @import './var.css';
 
 SPie {
-  stroke: #ffffff;
-  fill: var(--blue-03);
+  stroke: var(--intergalactic-chart-grid-border, #ffffff);
+  fill: var(--intergalactic-chart-palette-order-blue, #2bb3ff);
 }
 
 SPie[color] {
@@ -11,7 +10,7 @@ SPie[color] {
 }
 
 SEmptyData {
-  fill: var(--gray-100);
+  fill: var(--intergalactic-chart-palette-order-null, #e0e1e9);
 }
 
 SEmptyData[color] {

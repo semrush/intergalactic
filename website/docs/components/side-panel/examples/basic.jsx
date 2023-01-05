@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import Button from '@semcore/button';
-import { List } from '@semcore/typography';
+import Button from '@semcore/ui/button';
+import { List } from '@semcore/ui/typography';
 import SidePanel from '@semcore/side-panel';
-import Divider from '@semcore/divider';
+import Divider from '@semcore/ui/divider';
 
 export default () => {
   const [visible, setVisible] = useState(false);

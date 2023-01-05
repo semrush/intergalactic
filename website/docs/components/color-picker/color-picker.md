@@ -131,14 +131,6 @@ If a user enters fewer or more characters, or characters which can't be converte
 **To help users fix the invalid input, add the following message to the tooltip: "Please enter 6 latin letters and/or digits."**
 ![Validation](static/validation.png)
 
-@## Keyboard support
-
-- The component is focused using `Tab`.
-- A user can navigate inside the color palettes with the keyboard arrows. The color transition occurs sequentially—from top to bottom and from left to right. If a component has two palettes, when tabbed, the focus of the last element of the main palette skips to the first element of the additional palette.
-- The color is selected by pressing `Enter` or `Space`.
-- A user can close the dropdown using `Esc`.
-- When the dropdown is closed, the focus returns to the trigger.
-
 @## Use in UX/UI
 
 Components that can be a trigger for a ColorPicker:
@@ -162,6 +154,7 @@ You can place the color marker in the following components:
 
 ![Color picker places](static/color-picker-places.png)
 
+@page color-picker-a11y
 @page color-picker-api
 @page color-picker-code
 @page color-picker-changelog

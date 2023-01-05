@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import Button from '@semcore/button';
-import Modal from '@semcore/modal';
+import Button from '@semcore/ui/button';
+import Modal from '@semcore/ui/modal';
 
 const DEFAULT_TEXT =
   'Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ab atque commodi corporis culpa, eius error impedit itaque minus nemo nostrum numquam odio omnis sapiente soluta temporibus vel voluptatibus? Exercitationem?';

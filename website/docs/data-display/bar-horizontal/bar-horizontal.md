@@ -138,6 +138,8 @@ If the chart has a title, show it during the loading. The user shall have an ide
 
 More information about this state see in the guide for [Skeleton](/components/skeleton/).
 
+@page bar-horizontal-a11y
 @page bar-horizontal-api
 @page bar-horizontal-d3-code
 @page bar-horizontal-recharts-code
+@page d3-chart-changelog
