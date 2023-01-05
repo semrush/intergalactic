@@ -285,6 +285,7 @@ function Pie({
   name,
   dataKey,
   dataHintsHandler,
+  transparent,
   ...other
 }) {
   const [isMount, setIsMount] = useState(false);
@@ -304,7 +305,12 @@ function Pie({
   dataHintsHandler.describeValueEntity(dataKey, name);
 
   return sstyled(styles)(
-    <SPie render="path" color={color} d={active ? d3ArcOut(data) : d3Arc(data)} />,
+    <SPie
+      render="path"
+      color={color}
+      d={active ? d3ArcOut(data) : d3Arc(data)}
+      transparent={transparent}
+    />,
   );
 }
 

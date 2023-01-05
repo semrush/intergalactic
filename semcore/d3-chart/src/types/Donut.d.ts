@@ -32,6 +32,8 @@ export interface IPieProps extends IContext {
    * Active sector
    * */
   active?: boolean;
+  /** Element opacity property */
+  transparent?: boolean;
 }
 
 export interface IEmptyDataProps extends IContext {}

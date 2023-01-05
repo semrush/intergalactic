@@ -63,6 +63,7 @@ class BarRoot extends Component {
       width: widthProps,
       groupKey,
       onClick,
+      transparent,
     } = this.asProps;
 
     const [xScale, yScale] = scale;
@@ -106,6 +107,7 @@ class BarRoot extends Component {
         d={dSvg}
         onClickCapture={handleClick}
         use:duration={`${duration}ms`}
+        transparent={transparent}
       />,
     );
   }

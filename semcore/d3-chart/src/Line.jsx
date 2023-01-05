@@ -27,13 +27,14 @@ class LineRoot extends Component {
   };
 
   getDotsProps() {
-    const { x, y, d3, color, duration } = this.asProps;
+    const { x, y, d3, color, duration, transparent } = this.asProps;
     return {
       x,
       y,
       d3,
       color,
       duration,
+      transparent,
     };
   }
 
@@ -49,7 +50,7 @@ class LineRoot extends Component {
 
   render() {
     const SLine = this.Element;
-    const { styles, hide, color, uid, size, d3, data, duration, x, y } = this.asProps;
+    const { styles, hide, color, uid, size, d3, data, duration, x, y, transparent } = this.asProps;
 
     this.asProps.dataHintsHandler.specifyDataRowFields(x, y);
     this.asProps.dataHintsHandler.establishDataType('time-series');
@@ -62,6 +63,7 @@ class LineRoot extends Component {
           render="path"
           hide={hide}
           color={color}
+          transparent={transparent}
           d={d3(data)}
           use:duration={`${duration}ms`}
         />

@@ -29,6 +29,8 @@ export interface ICircleProps extends IContext {
    * @default 500
    */
   duration?: number;
+  /** Element opacity property */
+  transparent?: boolean;
 }
 
 export interface IIntersectionProps extends IContext, IFadeInOutProps {
@@ -36,6 +38,8 @@ export interface IIntersectionProps extends IContext, IFadeInOutProps {
    * Name of the field in the data
    * */
   dataKey: string;
+  /** Element opacity property */
+  transparent?: boolean;
 }
 
 declare const Venn: (<T>(props: MapProps<IVennProps & T>) => ReturnEl) & {
