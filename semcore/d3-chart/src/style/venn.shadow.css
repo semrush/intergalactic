@@ -18,6 +18,10 @@ SCircle[color] {
   fill: var(--color);
 }
 
+SCircle[transparent] {
+  opacity: 0.3;
+}
+
 SIntersection {
   stroke: #fff;
   stroke-width: 2px;
@@ -26,4 +30,8 @@ SIntersection {
   &:hover {
     fill-opacity: 0.1;
   }
+}
+
+SIntersection[transparent] {
+  opacity: 0.3;
 }
