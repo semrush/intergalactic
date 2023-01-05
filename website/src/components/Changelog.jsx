@@ -41,30 +41,28 @@ export const getLabel = (type) => {
 };
 
 const Changelog = ({ blocks }) => {
-  return blocks.map(({ title, changes, id }) => {
-    return (
-      <span key={title} className={formatTextStyles.formatText}>
-        <HeadingLink
-          level={2}
-          id={id}
-          style={{
-            fontSize: '18px',
-            lineHeight: '110%',
-            margin: '32px 0 16px 0',
-          }}
-        >
-          <Text bold>{title}</Text>
-        </HeadingLink>
-        <ul className={styles.list}>
-          {changes.map(({ type, text }) => (
-            <li className={styles.listItem} key={`${type}-${text}`}>
-              {getLabel(type)} <Text dangerouslySetInnerHTML={{ __html: text }} />
-            </li>
-          ))}
-        </ul>
-      </span>
-    );
-  });
+  return blocks.map(({ title, changes, id }) => (
+    <span key={title} className={formatTextStyles.formatText}>
+      <HeadingLink
+        level={2}
+        id={id}
+        style={{
+          fontSize: '18px',
+          lineHeight: '110%',
+          margin: '32px 0 16px 0',
+        }}
+      >
+        <Text bold>{title}</Text>
+      </HeadingLink>
+      <ul className={styles.list}>
+        {changes.map(({ type, text }) => (
+          <li className={styles.listItem} key={`${type}-${text}`}>
+            {getLabel(type)} <Text dangerouslySetInnerHTML={{ __html: text }} />
+          </li>
+        ))}
+      </ul>
+    </span>
+  ));
 };
 
 export default Changelog;
