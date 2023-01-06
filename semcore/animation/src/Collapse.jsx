@@ -41,9 +41,6 @@ function Collapse({ onAnimationStart, onAnimationEnd, overflowHidden = true, ...
   const handlerAnimationEnd = useCallback((e) => {
     if (e.currentTarget !== e.target) return;
     if (onAnimationEnd) onAnimationEnd(e);
-    if (overflowHidden) {
-      e.currentTarget.style.overflow = overflowRef.current;
-    }
     setHeightVar('auto');
   }, []);
 

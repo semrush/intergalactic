@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [1.8.7] - 2023-01-09
+
+### Fixed
+
+- Fixed flickering in `Collapse` animation.
+
 ## [1.8.6] - 2023-01-09
 
 ### Changed
