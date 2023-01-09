@@ -47,9 +47,9 @@ const BaseTokens: React.FC = () => {
               return {
                 children: (
                   <Copy
-                    title="Copied"
-                    text={row[props.name]}
-                    textTooltip={`Click to copy "${row[props.name]}"`}
+                    copiedToast="Copied"
+                    toCopy={row[props.name]}
+                    title={`Click to copy "${row[props.name]}"`}
                     trigger="click"
                     className={styles.tokenNameWrapper}
                   >
@@ -73,9 +73,9 @@ const BaseTokens: React.FC = () => {
               return {
                 children: (
                   <Copy
-                    title="Copied"
-                    text={row[props.name]}
-                    textTooltip={`Click to copy "${row[props.name]}"`}
+                    copiedToast="Copied"
+                    toCopy={row[props.name]}
+                    title={`Click to copy "${row[props.name]}"`}
                     trigger="click"
                     className={styles.tokenValueWrapper}
                   >

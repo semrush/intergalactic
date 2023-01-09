@@ -69,9 +69,9 @@ const DesignTokens: React.FC = () => {
               return {
                 children: (
                   <Copy
-                    title="Copied"
-                    text={row[props.name]}
-                    textTooltip={`Click to copy "${row[props.name]}"`}
+                    copiedToast="Copied"
+                    toCopy={row[props.name]}
+                    title={`Click to copy "${row[props.name]}"`}
                     trigger="click"
                     className={styles.tokenNameWrapper}
                   >
@@ -95,9 +95,9 @@ const DesignTokens: React.FC = () => {
               return {
                 children: (
                   <Copy
-                    title="Copied"
-                    text={row.rawValue}
-                    textTooltip={`Click to copy "${row.rawValue}"`}
+                    copiedToast="Copied"
+                    toCopy={row.rawValue}
+                    title={`Click to copy "${row.rawValue}"`}
                     trigger="click"
                     className={styles.tokenValueWrapper}
                   >
@@ -157,7 +157,9 @@ const DesignTokens: React.FC = () => {
                 children: (
                   <>
                     <Tooltip>
-                      <Tooltip.Trigger className={styles.usages}>p</Tooltip.Trigger>
+                      <Tooltip.Trigger className={styles.usages}>
+                        {row[props.name].length} components
+                      </Tooltip.Trigger>
                       <Tooltip.Popper>
                         {row[props.name].map((componentName, index) => (
                           <React.Fragment key={componentName}>

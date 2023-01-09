@@ -23,8 +23,8 @@ const Color = ({ name, className, ...other }) => {
 
   return (
     <Copy
-      text={varValue ? `${name}: ${value}` : value}
-      textTooltip={
+      toCopy={varValue ? `${name}: ${value}` : value}
+      title={
         <span>
           Click to copy:
           <br />

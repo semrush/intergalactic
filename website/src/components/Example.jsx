@@ -20,7 +20,7 @@ class Example extends React.PureComponent {
                 <Sandbox raw={raw} />
               </div>
               <div className={styles.stylesIcons}>
-                <Copy text={raw.code} textTooltip="Click to copy code">
+                <Copy toCopy={raw.code} title="Click to copy code">
                   <CopyS />
                 </Copy>
               </div>
