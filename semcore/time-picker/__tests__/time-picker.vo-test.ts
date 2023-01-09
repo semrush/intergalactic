@@ -25,7 +25,7 @@ test('Users can interact with TimePicker via VoiceOver', async ({
   await voiceOver.interact();
   expect(await voiceOver.itemText()).toBe('Time input, no time entered group');
   await voiceOver.interact();
-  expect(await voiceOver.lastSpokenPhrase()).toBe('hours field 00 edit text');
+  expect(await voiceOver.lastSpokenPhrase()).toBe('Hours input field 00 edit text');
   await voiceOver.interact();
   await voiceOver.type('04', { application: 'Playwright' });
   await voiceOver.stopInteracting();
