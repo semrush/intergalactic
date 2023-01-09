@@ -59,10 +59,6 @@ const useI18n = (
 ) => {
   const lang = React.useContext(Context);
   const resolvedDictionary = useAsyncI18nMessages(dictionary, lang || locale, fallbackDictionary);
-  console.log({
-    lang,
-    locale,
-  });
   return React.useCallback(
     (messageId: string, variables?: { [key: string]: string | number | undefined }) => {
       return interpolate(resolvedDictionary[messageId], variables);
