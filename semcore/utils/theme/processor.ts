@@ -38,7 +38,7 @@ type DesignTokenNode =
   | DesignTokenTree;
 type DesignTokenTree = { [childrenNodeName: string]: DesignTokenNode };
 const traverse = (node: DesignTokenNode, pathParts: string[] = []) => {
-  if ('type' in node) {
+  if ('type' in node && typeof node.type === 'string') {
     const path = pathParts.join('-');
     types[path] = node.type;
     if (typeof node.value === 'object') {
@@ -49,7 +49,7 @@ const traverse = (node: DesignTokenNode, pathParts: string[] = []) => {
       throw new Error(`Duplicated design token "${path}"`);
     }
     values[path] = node.value;
-    if (node.description) descriptions[path] = node.description;
+    if (typeof node.description === 'string') descriptions[path] = node.description;
     return;
   }
   for (const key in node) {
