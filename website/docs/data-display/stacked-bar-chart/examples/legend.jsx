@@ -13,7 +13,7 @@ const barColors = {
 };
 
 export default () => {
-  const MARGIN = 40;
+  const MARGIN = 30;
   const width = 500;
   const height = 300;
 
@@ -24,7 +24,7 @@ export default () => {
     .paddingOuter(0.2);
 
   const yScale = scaleLinear()
-    .range([height - MARGIN, MARGIN])
+    .range([height - MARGIN, 0])
     .domain([0, 15]);
 
   const barsList = Object.keys(data[0]).filter((name) => name !== 'category');
@@ -64,26 +64,7 @@ export default () => {
     <Card w={'550px'}>
       <Card.Header pt={4}> Chart legend</Card.Header>
       <Card.Body tag={Flex} direction="column">
-        <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
-          <YAxis>
-            <YAxis.Ticks />
-            <YAxis.Grid />
-          </YAxis>
-          <XAxis>
-            <XAxis.Ticks />
-          </XAxis>
-          <StackBar x="category">
-            {displayedBarsList.map((stack) => (
-              <StackBar.Bar
-                y={stack}
-                key={stack}
-                color={barColors[stack]}
-                transparent={opacityBars[stack]}
-              />
-            ))}
-          </StackBar>
-        </Plot>
-        <Flex flexWrap w={width}>
+        <Flex flexWrap w={width} mt={1}>
           {barsList.map((stack) => {
             return (
               <Checkbox
@@ -108,6 +89,25 @@ export default () => {
             );
           })}
         </Flex>
+        <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
+          <YAxis>
+            <YAxis.Ticks />
+            <YAxis.Grid />
+          </YAxis>
+          <XAxis>
+            <XAxis.Ticks />
+          </XAxis>
+          <StackBar x="category">
+            {displayedBarsList.map((stack) => (
+              <StackBar.Bar
+                y={stack}
+                key={stack}
+                color={barColors[stack]}
+                transparent={opacityBars[stack]}
+              />
+            ))}
+          </StackBar>
+        </Plot>
       </Card.Body>
     </Card>
   );
