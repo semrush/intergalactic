@@ -227,7 +227,7 @@ const Addon: React.FC<AddonAsProps> = (props) => {
 const ConfirmControl: React.FC<ConfirmControlAsProps> = (props) => {
   const SAddon = Root;
   const { Children, children: hasChildren } = props;
-  const title = props.title ?? props.getI18nText('discard');
+  const title = props.title ?? props.getI18nText('confirm');
 
   const handleConfirm = React.useCallback(
     (event: React.MouseEvent | React.KeyboardEvent) => {
@@ -271,7 +271,7 @@ const ConfirmControl: React.FC<ConfirmControlAsProps> = (props) => {
             style={sConfirmIconStyles.style}
           />
           <Tooltip.Popper p={3} disableEnforceFocus>
-            {props.title}
+            {title}
           </Tooltip.Popper>
         </Tooltip>
       )}

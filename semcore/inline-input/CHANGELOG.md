@@ -3,6 +3,15 @@
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
 ## [3.4.4] - 2023-01-10
+## [3.4.4] - 2023-01-16
+
+### Fixed
+
+- Fixed displaying tooltip of `ConfirmControl`.
+
+### Changed
+
+- Changed text tooltip of `CancelControl`.
 
 ## [3.4.3] - 2023-01-09
 
