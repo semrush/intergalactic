@@ -34,7 +34,7 @@
   .mobileSelect.mobileSelect {
     display: block;
     position: fixed;
-    z-index: 998;
+    z-index: 498;
     width: 100%;
     margin-bottom: 32px;
     border-radius: 0 !important;

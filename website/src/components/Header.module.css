@@ -11,7 +11,7 @@
   color: #fff;
   background: #ffffff;
   box-shadow: 0 2px 16px 0 rgba(0, 0, 0, 0.1);
-  z-index: 999;
+  z-index: 499;
   display: flex;
   column-gap: 32px;
 }
