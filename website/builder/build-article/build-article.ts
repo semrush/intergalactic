@@ -489,6 +489,9 @@ export const buildArticle = async (
               };
             }
             if (text.startsWith('@changelog ')) {
+              const headingsChangelog = []
+              headings.push(headingsChangelog);
+
               const componentName = text.substring('@changelog '.length);
               const searchPattern = `*/${componentName}/CHANGELOG.md`;
               const files = (await glob(searchPattern, { cwd: repoRoot })).filter(
@@ -521,7 +524,7 @@ export const buildArticle = async (
                     id: block.id,
                     html: block.title,
                   };
-                  headings.push(tokenHead);
+                  headingsChangelog.push(tokenHead);
                 });
 
                 return {
@@ -537,7 +540,7 @@ export const buildArticle = async (
                     id: block.id,
                     html: block.title,
                   };
-                  headings.push(tokenHead);
+                  headingsChangelog.push(tokenHead);
                 });
 
                 return {
@@ -598,7 +601,7 @@ export const buildArticle = async (
     imagesUrls,
     legacyHeaderHashes,
     dependencies,
-    headings,
+    headings: headings.flat()
   };
 };
 
