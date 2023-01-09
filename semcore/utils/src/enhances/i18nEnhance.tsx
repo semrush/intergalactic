@@ -1,10 +1,10 @@
 import React from 'react';
 import { LocaleKeys, useI18n } from './WithI18n';
 
-const interpolationRegex = /{{(.*?)}}/g;
+const interpolationRegex = /{(.*?)}/g;
 
 const escapeHtml = (html: string) =>
-  html
+  String(html)
     .split('')
     .map((char) => {
       switch (char) {

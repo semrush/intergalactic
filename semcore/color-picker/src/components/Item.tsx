@@ -33,7 +33,7 @@ export function Item(props: ItemAsProps) {
       lightBackground={opacity(value, 0.15)}
       role="listitem"
       aria-atomic="true"
-      aria-label={value ? getI18nText('itemColor') : getI18nText('clearColor')}
+      aria-label={value ? getI18nText('itemColor', { color: value }) : getI18nText('clearColor')}
     >
       {!value && (
         <SLine
