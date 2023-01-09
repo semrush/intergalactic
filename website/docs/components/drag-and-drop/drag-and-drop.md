@@ -37,8 +37,8 @@ The component is meant for imitating physical dragging of objects, so the follow
 
 <!-- |                      | Appearance example                         | Token              |
 | -------------------- | ------------------------------------------ | ------------------- |
-| For light background | ![drag icon](static/drag-hover.png)        | `fill: --icon-secondary-neutral;` |
-| For dark background  | ![drag icon](static/drag-hover-invert.png) | `fill: --icon-secondary-neutral;` | -->
+| For light background | ![drag icon](static/drag-hover.png)        | `fill: var(--icon-secondary-neutral);` |
+| For dark background  | ![drag icon](static/drag-hover-invert.png) | `fill: var(--icon-secondary-neutral);` | -->
 
 ### Shadow of the object which can be dragged
 
