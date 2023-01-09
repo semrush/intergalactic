@@ -2489,7 +2489,7 @@ describe('d3 charts visual regression', () => {
       G: 200,
       F: 200,
       C: 500,
-      U: 1,
+      U: 20,
       'G/F': 100,
       'G/C': 100,
       'F/C': 100,
