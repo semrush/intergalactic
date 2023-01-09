@@ -52,19 +52,6 @@ export default () => {
     <Card w={'550px'}>
       <Card.Header pt={4}> Chart legend</Card.Header>
       <Card.Body tag={Flex} direction="column">
-        <Plot width={width} height={height} data={data}>
-          <Donut innerRadius={height / 2 - 50}>
-            {displayedPiesList.map((pie) => (
-              <Donut.Pie
-                dataKey={pie}
-                key={pie}
-                name={pie}
-                color={pieColors[pie]}
-                transparent={opacityPie[pie]}
-              />
-            ))}
-          </Donut>
-        </Plot>
         <Flex flexWrap w={width}>
           {piesList.map((pie) => {
             return (
@@ -90,6 +77,19 @@ export default () => {
             );
           })}
         </Flex>
+        <Plot width={width} height={height} data={data}>
+          <Donut innerRadius={height / 2 - 50}>
+            {displayedPiesList.map((pie) => (
+              <Donut.Pie
+                dataKey={pie}
+                key={pie}
+                name={pie}
+                color={pieColors[pie]}
+                transparent={opacityPie[pie]}
+              />
+            ))}
+          </Donut>
+        </Plot>
       </Card.Body>
     </Card>
   );
