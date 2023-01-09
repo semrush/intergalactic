@@ -157,7 +157,7 @@ const DesignTokens: React.FC = () => {
                 children: (
                   <>
                     <Tooltip>
-                      <Tooltip.Trigger className={styles.usages}>hint links</Tooltip.Trigger>
+                      <Tooltip.Trigger className={styles.usages}>p</Tooltip.Trigger>
                       <Tooltip.Popper>
                         {row[props.name].map((componentName, index) => (
                           <React.Fragment key={componentName}>
