@@ -13,7 +13,7 @@ const lineColors = {
 };
 
 export default () => {
-  const MARGIN = 40;
+  const MARGIN = 30;
   const width = 500;
   const height = 300;
 
@@ -22,7 +22,7 @@ export default () => {
     .domain(minMax(data, 'x'));
 
   const yScale = scaleLinear()
-    .range([height - MARGIN, MARGIN])
+    .range([height - MARGIN, 0])
     .domain([0, 10]);
 
   const linesList = Object.keys(data[0]).filter((name) => name !== 'x');
@@ -62,29 +62,7 @@ export default () => {
     <Card w={'550px'}>
       <Card.Header pt={4}> Chart legend</Card.Header>
       <Card.Body tag={Flex} direction="column">
-        <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
-          <YAxis>
-            <YAxis.Ticks ticks={yScale.ticks(4)} />
-            <YAxis.Grid ticks={yScale.ticks(4)} />
-          </YAxis>
-          <XAxis>
-            <XAxis.Ticks ticks={xScale.ticks(5)} />
-          </XAxis>
-          {displayedLinesList.map((line) => {
-            return (
-              <Line
-                x="x"
-                y={line}
-                key={line}
-                color={lineColors[line]}
-                transparent={opacityLines[line]}
-              >
-                <Line.Dots display />
-              </Line>
-            );
-          })}
-        </Plot>
-        <Flex flexWrap w={width}>
+        <Flex flexWrap w={width} mt={1}>
           {linesList.map((line) => {
             return (
               <Checkbox
@@ -109,6 +87,28 @@ export default () => {
             );
           })}
         </Flex>
+        <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
+          <YAxis>
+            <YAxis.Ticks ticks={yScale.ticks(4)} />
+            <YAxis.Grid ticks={yScale.ticks(4)} />
+          </YAxis>
+          <XAxis>
+            <XAxis.Ticks ticks={xScale.ticks(5)} />
+          </XAxis>
+          {displayedLinesList.map((line) => {
+            return (
+              <Line
+                x="x"
+                y={line}
+                key={line}
+                color={lineColors[line]}
+                transparent={opacityLines[line]}
+              >
+                <Line.Dots display />
+              </Line>
+            );
+          })}
+        </Plot>
       </Card.Body>
     </Card>
   );
