@@ -41,6 +41,15 @@ function Collapse({ onAnimationStart, onAnimationEnd, overflowHidden = true, ...
   const handlerAnimationEnd = useCallback((e) => {
     if (e.currentTarget !== e.target) return;
     if (onAnimationEnd) onAnimationEnd(e);
+    if (overflowHidden) {
+      // The timeout is needed because the overflow is first set, and then the node is removed via setState inside the animation
+      setTimeout(() => {
+        // The checking is needed because the node is being deleted
+        if (e.currentTarget) {
+          e.currentTarget.style.overflow = overflowRef.current;
+        }
+      }, 0);
+    }
     setHeightVar('auto');
   }, []);
 
