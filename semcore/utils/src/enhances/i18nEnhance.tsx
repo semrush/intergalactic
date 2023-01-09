@@ -37,7 +37,9 @@ export interface IWithI18nEnhanceProps {
   getI18nText?: (key?: string, variables?: {}) => any;
   /* Object with translations */
   i18n?: {
-    [key: string]: string;
+    [locale: string]: {
+      [key: string]: string;
+    };
   };
   /* Locale for translations */
   locale?: LocaleKeys;
