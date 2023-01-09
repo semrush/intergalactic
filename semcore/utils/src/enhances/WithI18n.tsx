@@ -6,7 +6,7 @@ import { interpolate, useAsyncI18nMessages } from './i18nEnhance';
 export type LocaleKeys = string;
 export type DictionaryItem = { [key: string]: string };
 export type Dictionary = { [locale: string]: DictionaryItem | (() => Promise<DictionaryItem>) };
-export const Context = createContext<LocaleKeys>('en');
+export const Context = createContext<LocaleKeys>(undefined);
 const { Provider: I18nProvider, Consumer: I18nConsumer } = Context;
 
 function getText(dictionaries: Dictionary, locale: LocaleKeys) {
@@ -59,6 +59,10 @@ const useI18n = (
 ) => {
   const lang = React.useContext(Context);
   const resolvedDictionary = useAsyncI18nMessages(dictionary, lang || locale, fallbackDictionary);
+  console.log({
+    lang,
+    locale,
+  });
   return React.useCallback(
     (messageId: string, variables?: { [key: string]: string | number | undefined }) => {
       return interpolate(resolvedDictionary[messageId], variables);
