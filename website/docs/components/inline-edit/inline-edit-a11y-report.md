@@ -1,7 +1,7 @@
 ## Automated screen reader testing
 
-_Intergalactic v13.2.3, React v18.2.0, Playwright v1.25.1,
-Guidepup v0.13.1, MacOS Big Sur 11._
+_Intergalactic v13.2.11, React v18.2.0, Playwright v1.25.1,
+Guidepup v0.13.1, MacOS Monterey 12._
 
 **Running screen reader against [this file](https://github.com/semrush/intergalactic/blob/master/website/docs/components/inline-edit/examples/simple-text.jsx).**
 
@@ -31,13 +31,12 @@ Guidepup v0.13.1, MacOS Big Sur 11._
 23. Screen reader presses the "Backspace" button.
 24. Screen reader presses the "Backspace" button.
 25. Screen reader types "Algernon".
-26. Screen reader says "n".
+26. Screen reader says "Algernon".
 27. Screen reader presses the "Enter" button.
-28. Screen reader says "Algernon".
-29. Screen reader triggers element default action.
-30. Screen reader says "Algernon Insertion at end of text. edit text Press Enter to apply value, press Escape to discard changes group".
-31. Screen reader types "Hello world?".
-32. Screen reader says "world ?".
-33. Screen reader presses the "Escape" button.
-34. Screen reader says "Algernon".
+28. Screen reader triggers element default action.
+29. Screen reader says "Algernon Insertion at end of text. edit text Press Enter to apply value, press Escape to discard changes group".
+30. Screen reader types "Hello world?".
+31. Screen reader says "world ?".
+32. Screen reader presses the "Escape" button.
+33. Screen reader says "Algernon".
 ```

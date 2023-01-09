@@ -1,7 +1,7 @@
 ## Automated screen reader testing
 
-_Intergalactic v13.2.3, React v18.2.0, Playwright v1.25.1,
-Guidepup v0.13.1, MacOS Big Sur 11._
+_Intergalactic v13.2.11, React v18.2.0, Playwright v1.25.1,
+Guidepup v0.13.1, MacOS Monterey 12._
 
 **Running screen reader against [this file](https://github.com/semrush/intergalactic/blob/master/website/docs/components/dropdown-menu/examples/basic.jsx).**
 
@@ -9,7 +9,7 @@ Guidepup v0.13.1, MacOS Big Sur 11._
 1. Screen reader presses the "Tab" button.
 2. Screen reader says "Click me menu pop up button".
 3. Screen reader presses the "Control+Option+Space" button.
-4. Screen reader says "menu 4 items Press Tab to go to popover menu pop up pop up button".
+4. Screen reader says "menu 4 items Press Tab to go to popover selected menu pop up pop up button".
 5. Screen reader presses the "Tab" button.
 6. Screen reader says "submenu 4 items group".
 7. Screen reader goes to the next element.
