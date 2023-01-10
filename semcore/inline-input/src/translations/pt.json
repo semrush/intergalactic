@@ -1,5 +1,5 @@
 {
   "keyboardHint": "Pressione Enter para aplicar o valor, pressione Esc para descartar as alterações",
-  "confirm": "Confirmar",
-  "discard": "Descartar alteração"
+  "confirm": "Salvar",
+  "discard": "Cancelar"
 }
