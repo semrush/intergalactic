@@ -28,8 +28,8 @@ Links inside this component have custom styles.
 
 | Element             | Styles                                                                              |
 | ------------------- | ----------------------------------------------------------------------------------- |
-| Link                | `font-size: --fs-200;`, `color: --text-hint;` `cursor: pointer;`, no `line-height`. |
-| `ChevronRight` icon | `color: --icon-secondary-neutral;`, `cursor: default;`                              |
+| Link                | `font-size: var(--fs-200);`, `color: var(--text-hint);`, `cursor: pointer;`, no `line-height`. |
+| `ChevronRight` icon | `color: var(--icon-secondary-neutral);`, `cursor: default;`                              |
 
 ### Margins
 
@@ -49,7 +49,7 @@ If there is not enough place for the breadcrumbs (screen is too small or the tex
 
 | State  | Styles                                                                                    |
 | ------ | ----------------------------------------------------------------------------------------- |
-| normal | `font-size: --fs-200;`, `color: var(--text-hint);`, `cursor: pointer;`, no `line-height`. |
+| normal | `font-size: var(--fs-200);`, `color: var(--text-hint);`, `cursor: pointer;`, no `line-height`. |
 | hover  | `color: var(--text-hint-hover-active);` + underline                                       |
 | active | `color: var(--text-primary);`, `cursor: default;`                                         |
 
