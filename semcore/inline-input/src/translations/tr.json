@@ -1,5 +1,5 @@
 {
   "keyboardHint": "Değeri uygulamak için Enter tuşuna basın, değişiklikleri iptal etmek için Escape tuşuna basın",
-  "confirm": "Onayla",
-  "discard": "Değişikliği iptal et"
+  "confirm": "Kaydet",
+  "discard": "İptal et"
 }
