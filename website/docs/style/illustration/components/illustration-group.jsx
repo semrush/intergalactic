@@ -38,7 +38,7 @@ class PanelChangeIllustration extends PureComponent {
         />
         <Row alignItems="center">
           <span className={styles.nameIllustration}>{name}</span>
-          <Copy title="Copied" text={importText} trigger="click">
+          <Copy copiedToast="Copied" toCopy={importText} trigger="click">
             <Button size="m" theme="muted" use="tertiary" mr={4}>
               <Button.Addon>
                 <CopyM />

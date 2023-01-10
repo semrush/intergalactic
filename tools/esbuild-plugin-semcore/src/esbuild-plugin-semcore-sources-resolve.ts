@@ -80,7 +80,7 @@ const outOfSourceDirs = ['style'];
 export const esbuildPluginSemcoreSourcesResolve = (rootPath: string): Plugin => ({
   name: 'esbuild-plugin-semcore-sources-resolve',
   setup(build) {
-    build.onResolve({ filter: /^(!!raw-loader!)?@semcore\// }, async ({ path }) => {
+    build.onResolve({ filter: /^(!!raw-loader!)?@semcore\// }, async ({ path, importer }) => {
       const namespace = path.startsWith('!!raw-loader!') ? 'rawFile' : 'file';
       if (namespace === 'rawFile') path = path.substring('!!raw-loader!'.length);
       if (path.startsWith(`@semcore/ui/`))
@@ -117,7 +117,7 @@ export const esbuildPluginSemcoreSourcesResolve = (rootPath: string): Plugin => 
       }
 
       throw new Error(
-        `Unable to resolve file in "${modifiedSubPath}" (trying to resolve "${path}") `,
+        `Unable to resolve file in "${modifiedSubPath}" (trying to resolve "${path}" from "${importer}").`,
       );
     });
     build.onLoad({ filter: /./, namespace: 'rawFile' }, async ({ path }) => {
