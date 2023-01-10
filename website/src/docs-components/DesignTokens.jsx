@@ -21,7 +21,7 @@ export const ColorPreview = ({ color }) => {
     <div
       style={{
         background: color,
-        borderColor: needsBorder ? 'black' : 'transparent',
+        borderColor: needsBorder ? '#E0E1E9' : 'transparent',
       }}
       className={styles.colorPreview}
     />
