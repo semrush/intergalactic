@@ -19,8 +19,6 @@ var _core = require('@semcore/core');
 
 var _icon = _interopRequireDefault(require('@semcore/icon'));
 
-var logger = _interopRequireDefault(require('@semcore/utils/lib/logger'));
-
 var _excluded = ['width', 'height', 'viewBox'];
 
 function Stoller(_ref, ref) {
@@ -57,6 +55,7 @@ Stoller.displayName = 'Stoller';
 
 var _default = (0, _core.createBaseComponent)(Stoller);
 
-logger.warn(true, 'The "Stoller" icon is deprecated. Use the "Stroller"', 'Icon');
+// eslint-disable-next-line no-console
+console.warn(true, 'The "Stoller" icon is deprecated. Use the "Stroller"', 'Icon');
 
 exports['default'] = _default;

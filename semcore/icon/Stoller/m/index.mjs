@@ -18,7 +18,6 @@ function _extends() {
 import React from 'react';
 import { createBaseComponent } from '@semcore/core';
 import Icon from '@semcore/icon';
-import logger from '@semcore/utils/lib/logger';
 
 function Stoller({ width = '16', height = '16', viewBox = '0 0 16 16', ...props }, ref) {
   return /*#__PURE__*/ React.createElement(
@@ -49,6 +48,7 @@ function Stoller({ width = '16', height = '16', viewBox = '0 0 16 16', ...props 
 
 Stoller.displayName = 'Stoller';
 
-logger.warn(true, 'The "Stoller" icon is deprecated. Use the "Stroller"', 'Icon');
+// eslint-disable-next-line no-console
+console.warn(true, 'The "Stoller" icon is deprecated. Use the "Stroller"', 'Icon');
 
 export default createBaseComponent(Stoller);
