@@ -47,7 +47,11 @@ export const buildNavigation = async (docsDir: string) => {
   const hasContentMap = fileContentsList.map((contents) => {
     const lines = removeMarkdownMeta(contents).split('\n');
 
-    return lines.filter((line) => line.length > 0 && !line.startsWith('@page ')).length > 0;
+    return (
+      lines.filter(
+        (line) => line.length > 0 && !line.startsWith('@page ') && !line.startsWith('<!-- '),
+      ).length > 0
+    );
   });
   const navigationMap = Object.fromEntries(
     filesList.map((path, index) => [
