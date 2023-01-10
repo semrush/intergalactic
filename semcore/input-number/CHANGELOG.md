@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.4.0] - 2023-01-10
+
+### Added
+
+- Added Korean translation.
+
 ## [4.3.3] - 2023-01-10
 
 ## [4.3.2] - 2023-01-09

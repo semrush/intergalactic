@@ -1,4 +1,4 @@
 {
-  "increment": "Increment number",
-  "decrement": "Decrement number"
+  "increment": "더 큰 숫자 입력",
+  "decrement": "더 작은 숫자 입력"
 }

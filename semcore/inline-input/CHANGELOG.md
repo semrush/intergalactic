@@ -2,8 +2,7 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [3.4.4] - 2023-01-10
-## [3.4.4] - 2023-01-16
+## [3.5.0] - 2023-01-10
 
 ### Fixed
 
@@ -11,7 +10,9 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-- Changed text tooltip of `CancelControl`.
+- Changed all translations of `CancelControl` text tooltip.
+
+## [3.4.4] - 2023-01-10
 
 ## [3.4.3] - 2023-01-09
 

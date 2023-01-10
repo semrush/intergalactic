@@ -1,5 +1,5 @@
 {
   "keyboardHint": "Premi Invio per applicare il valore, premi Esc per annullare le modifiche",
-  "confirm": "Conferma",
-  "discard": "Annulla le modifiche"
+  "confirm": "Salva",
+  "discard": "Annulla"
 }
