@@ -143,7 +143,7 @@ For all empty states of the table, keep the header. If it has sorting icons, als
 
 ### There is no data in the cell
 
-- Show the `n/a` text in the secondary text color `--gray-500`.
+- Show the `n/a` text in the secondary text color (use `--text-secondary` token).
 - It is recommended to show a tooltip with an explanation that the data is not available (and for what reason).
 
 ![table cell with n/a](static/cell-na.png)
@@ -162,7 +162,7 @@ When loading content in one or more cells, show the [Spin](/components/spin/) of
 
 This is the state when something broke in a particular cell and we can't show the data.
 
-- Use `Warning` icon with M size and `--orange-400` color.
+- Use `Warning` icon with M size and `--icon-primary-warning` token for color.
 - On the hover, always show a tooltip with an explanation that something went wrong.
 
 > We recommend giving the user the opportunity to change the situation. In this case, you can display the control in a cell for reloading data, for example.
@@ -175,7 +175,7 @@ This is the state when something broke in a particular cell and we can't show th
 
 A cell in a table may be blocked by a limit or by the need to take some action to unlock the data.
 
-- Use the `Lock` icon with M size and `--gray-300)` color.
+- Use the `Lock` icon with M size and `--icon-secondary-neutral` token for color.
 - On the hover, always show a tooltip with a message why the cell is blocked and, if possible, how to get rid of this state.
 
 ![locked table cell](static/cell-locked.png)

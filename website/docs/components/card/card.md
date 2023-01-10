@@ -35,7 +35,7 @@ Component consists of:
 
 ### Title
 
-For the card title use 16px text (`--fs-300;`, `--lh-300;`) with `font-weight: --bold`.
+For the card title use 16px text (`--fs-300;`, `--lh-300;`) with `font-weight: var(--bold);`.
 
 ### Description
 

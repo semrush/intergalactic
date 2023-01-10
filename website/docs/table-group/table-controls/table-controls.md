@@ -24,10 +24,10 @@ A table row can be expanded as an [Accordion](/components/accordion/). As a rule
 
 > If you have too much data inside a row with accordion, you may need to think about a separate page for it.
 
-- The accordion row must have the `ChevronRight` icon in the leftmost column. It indicates that this line can be expanded. Icon has M size and `--gray-300` color.
-- The row that opened additional data from must remain highlighted. The `active` state of a row has `background-color: color-mod(var(--gray-100) a(80%));`.
+- The accordion row must have the `ChevronRight` icon in the leftmost column. It indicates that this line can be expanded. Icon has M size and `--icon-secondary-neutral` token for color.
+- The row that opened additional data from must remain highlighted. The `active` state of a row has `--table-td-cell-active` token as background color.
 - When the row with accordion is opened, the `ChevronRight` icon should change to `ChevronDown` of the same size and color.
-- The row inside the accordion has `background-color: var(--gray-50);` and `border-bottom: 1px solid var(--gray-300);`. It is necessary so that when several rows with accordion are opened, they do not visually merge with each other.
+- The row inside the accordion has `background-color: var(--table-td-cell-actions-accordion);` and `border-bottom: 1px solid var(--border-table-accent);`. It is necessary so that when several rows with accordion are opened, they do not visually merge with each other.
 
 ![table with accordion](static/accordion.png)
 
@@ -38,7 +38,7 @@ A table row can be expanded as an [Accordion](/components/accordion/). As a rule
 
 ![table with accordion](static/accordion-2.png)
 
-In the `active` state, the cell must be additionally highlighted with the `background-color: color-mod(var(--gray-100) a(80%));`. And the `ChevronRight` icon changes to `ChevronDown` icon of the same size and color.
+In the `active` state, the cell must be additionally highlighted with the `background-color: var(--table-td-cell-active);`. And the `ChevronRight` icon changes to `ChevronDown` icon of the same size and color.
 
 ![table with accordion](static/accordion-3.png)
 
@@ -68,7 +68,7 @@ You can select multiple rows at once with `Shift` key.
 
 @## Columns resizing
 
-When you hover over a border in the header, the cursor changes to `col-resize`, and the border color changes to `--gray-300`.
+When you hover over a border in the header, the cursor changes to `col-resize`, and the border color changes to `--border-table-accent`.
 
 ![table with column resize](static/resize.png)
 
@@ -80,7 +80,7 @@ The area that you can grab and change the size of the column includes not only t
 
 @## Editing and adding content
 
-1. When you hover over the line, you can see the `Edit` icon with S size and `--gray-300` color.
+1. When you hover over the line, you can see the `Edit` icon with S size and `--icon-secondary-neutral` token for color.
 
 It is always nailed to the right side of the cell and has a `margin-left: 4px`, so that it is easier to get into it with the cursor and the content does not stick to it.
 
@@ -98,7 +98,7 @@ If there are any other clickable icons in the row, then the edit icon should alw
 
 @## Highlighting content
 
-When searching a table, sometimes you need to highlight the match in the data. In this case, highlight what you've found with the `background-color: color-mod(var(--yellow-300) a(40%));`.
+When searching a table, sometimes you need to highlight the match in the data. In this case, highlight what you've found with the `background-color: var(--bg-highlight-results);`.
 
 ![table highlight](static/table-highlight.png)
 
@@ -107,7 +107,7 @@ When searching a table, sometimes you need to highlight the match in the data. I
 **The link in the cell can lead to:**
 
 - the internal report — use the link/button, depending on the context;
-- another website — use the `LinkExternal` icon with S size and `--gray-300` color.
+- another website — use the `LinkExternal` icon with S size and `--icon-secondary-neutral` token for color.
 
 @## Long links and text
 
@@ -155,7 +155,7 @@ If the table contains a small amount of data, we show the pagination for one pag
 
 By default, use `SortDesc`.
 
-- If you can't sort data in the column, but you need to show which column it is sorted by (it is usually necessary in secondary tables), then add sorting icon in active state with `--gray-400` color.
+- If you can't sort data in the column, but you need to show which column it is sorted by (it is usually necessary in secondary tables), then add sorting icon in active state with `--icon-secondary-neutral-hover-active` token for color.
 
 ### Click zone for sorting
 
@@ -166,7 +166,7 @@ By default, use `SortDesc`.
 
 ### Sorting icon styles
 
-The default color for the sorting icon is always `--gray-400` (same for active and hover states).
+For the default color for the sorting icon use the `--icon-secondary-neutral-hover-active` token (same for active and hover states).
 
 ![sorting icon](static/sorting1.png)
 
@@ -206,7 +206,7 @@ When scrolling a table, this row should be pinned to the table header. In this c
 
 | Appearance                                         | Styles                                                                              |
 | -------------------------------------------------- | ----------------------------------------------------------------------------------- |
-| ![action row scroll](static/action-row-scroll.png) | `background-color: var(--gray-50);` and `border-bottom: 1px solid var(--gray-100);` |
+| ![action row scroll](static/action-row-scroll.png) | `background-color: var(--table-td-cell-actions-accordion);` and `border-bottom: 1px solid var(--border-secondary);` |
 
 ### The actions and rules of use
 
