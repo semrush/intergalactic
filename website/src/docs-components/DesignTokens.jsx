@@ -103,7 +103,7 @@ const DesignTokens = ({ tokens }) => {
                     <div className={styles.tokenValue}>
                       <ColorPreview color={row.computedValue} />
                       <Ellipsis
-                        trim="middle"
+                        trim="end"
                         tooltip={false}
                         containerRect={valueHeaderRect}
                         containerRef={valueHeaderRef}
@@ -121,7 +121,7 @@ const DesignTokens = ({ tokens }) => {
               return {
                 children: (
                   <Ellipsis
-                    trim="middle"
+                    trim="end"
                     containerRect={descriptionHeaderRect}
                     containerRef={descriptionHeaderRef}
                   >
