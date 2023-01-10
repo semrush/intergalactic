@@ -2,7 +2,11 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [3.5.2] - 2023-01-10
+## [3.6.0] - 2023-01-10
+
+### BREAK
+
+- Remove `Stoller` icon, use `Stroller` instead.
 
 ## [3.5.1] - 2023-01-09
 
