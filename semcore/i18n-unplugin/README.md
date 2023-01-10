@@ -6,7 +6,7 @@
 
 > This component is part of the Intergalactic design system
 
-### 📖 [Component documentation](https://developer.semrush.com/intergalactic/i18n/#plugin)
+### 📖 [Component documentation](https://developer.semrush.com/intergalactic/utils/i18n/#locale_bundle_extracting)
 
 ### 🏠 [Design system](https://developer.semrush.com/intergalactic/)
 
@@ -40,11 +40,11 @@ export default defineConfig({
 ### Webpack
 
 ```js
-var { semcoreI18nVitePlugin } = require('@semcore/ui/i18n-unplugin');
+var { semcoreI18nWebpackPlugin } = require('@semcore/ui/i18n-unplugin');
 
 module.exports = {
   // ...
-  plugins: [semcoreI18nVitePlugin()],
+  plugins: [semcoreI18nWebpackPlugin()],
   // ...
 };
 ```
