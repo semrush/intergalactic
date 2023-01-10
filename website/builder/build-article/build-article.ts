@@ -412,7 +412,13 @@ export const buildArticle = async (
               const propsString = text.substring(`@import ${fileName} `.length);
               const props = propsString ? JSON.parse(propsString) : {};
               const documentDir = resolveDirname(fullPath);
-              const filePath = resolvePath(documentDir, 'components', fileName + '.jsx');
+              let filePath = resolvePath(documentDir, 'components', fileName);
+              for (const extension of ['.jsx', '.tsx']) {
+                if (await fsExists(filePath + extension)) {
+                  filePath += extension;
+                  break;
+                }
+              }
               dependencies.push(filePath);
 
               if (!(await fsExists(filePath))) {

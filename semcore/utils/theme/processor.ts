@@ -12,9 +12,10 @@ const baseColors = JSON.parse(
   await fs.readFile(resolvePath(dirname, './tokens-base.json'), 'utf-8'),
 );
 
-const values = {};
-const types = {};
-const descriptions = {};
+const values: { [tokenName: string]: string } = {};
+const usages: { [tokenName: string]: string[] } = {};
+const types: { [tokenName: string]: string } = {};
+const descriptions: { [tokenName: string]: string } = {};
 const mixins: string[] = [];
 type ColorPattern =
   | `{${string}.${string}}`
@@ -37,7 +38,7 @@ type DesignTokenNode =
   | DesignTokenTree;
 type DesignTokenTree = { [childrenNodeName: string]: DesignTokenNode };
 const traverse = (node: DesignTokenNode, pathParts: string[] = []) => {
-  if ('type' in node) {
+  if ('type' in node && typeof node.type === 'string') {
     const path = pathParts.join('-');
     types[path] = node.type;
     if (typeof node.value === 'object') {
@@ -48,7 +49,7 @@ const traverse = (node: DesignTokenNode, pathParts: string[] = []) => {
       throw new Error(`Duplicated design token "${path}"`);
     }
     values[path] = node.value;
-    if (node.description) descriptions[path] = node.description;
+    if (typeof node.description === 'string') descriptions[path] = node.description;
     return;
   }
   for (const key in node) {
@@ -166,6 +167,8 @@ const replaceColors = (str: string) => {
   return result;
 };
 
+const rawValues = { ...values };
+
 for (const token in values) {
   if (types[token] === 'color') {
     values[token] = resolveColor(values[token]);
@@ -189,7 +192,10 @@ for (const token in values) {
 themeCssLines.push('}');
 
 await fs.writeFile('./semcore/utils/src/themes/default.css', themeCssLines.join('\n'));
-await fs.writeFile('./semcore/utils/src/themes/default.json', JSON.stringify(themeJson, null, 2));
+await fs.writeFile(
+  './semcore/utils/src/themes/default.json',
+  JSON.stringify(themeJson, null, 2) + '\n',
+);
 
 const projectCssPaths = (
   await glob('./semcore/*/src/**/*.shadow.css', {
@@ -310,6 +316,8 @@ const processedCss = await Promise.all(
                     valueNode.nodes[2].value = values[withoutPrefix];
                     valueNode.nodes[2].nodes = [];
                     valueNode.nodes.length = 3;
+                    usages[withoutPrefix] = usages[withoutPrefix] ?? [];
+                    usages[withoutPrefix].push(projectCssPaths[fileIndex]);
                   }
                 };
                 traverseValueAst(valueAst.nodes, null);
@@ -358,3 +366,50 @@ if (warning) {
     }
   }
 }
+
+const designTokensDocumentation: {
+  name: string;
+  type: string;
+  rawValue: string;
+  computedValue: string;
+  description: string;
+  components: string[];
+}[] = [];
+
+for (const token in values) {
+  const components = [...new Set((usages[token] ?? []).map((cssPath) => cssPath.split('/')[2]))];
+
+  designTokensDocumentation.push({
+    name: `--${prefix}-${token}`,
+    type: types[token],
+    rawValue: rawValues[token],
+    computedValue: values[token],
+    description: descriptions[token],
+    components,
+  });
+}
+
+const baseTokensDocumentation: {
+  name: string;
+  value: string;
+  description: string;
+}[] = [];
+
+for (const group in baseColors) {
+  for (const index in baseColors[group]) {
+    baseTokensDocumentation.push({
+      name: `--${group}-${index}`,
+      value: baseColors[group][index].value,
+      description: baseColors[group][index].description,
+    });
+  }
+}
+
+await fs.writeFile(
+  resolvePath(dirname, '../../../website/src/docs-components/design-tokens.json'),
+  JSON.stringify(designTokensDocumentation, null, 2) + '\n',
+);
+await fs.writeFile(
+  resolvePath(dirname, '../../../website/src/docs-components/base-tokens.json'),
+  JSON.stringify(baseTokensDocumentation, null, 2) + '\n',
+);

@@ -172,7 +172,7 @@ class PanelChangeIcon extends PureComponent {
     const importText = `import ${includeName} from '@semcore/ui/icon${includeLib}${includeGroupName}/${name}${includeSize}'`;
 
     return (
-      <Copy title="Copied!" text={importText} key={index} trigger="click">
+      <Copy copiedToast="Copied!" toCopy={importText} key={index} trigger="click">
         <PreviewChangeIcon>
           <Icon width={20} height={20} />
           <span style={{ marginLeft: 8, color: '#898D9A' }}>

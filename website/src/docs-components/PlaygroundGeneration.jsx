@@ -196,7 +196,7 @@ class PlaygroundView extends React.Component {
               {source}
             </Code>
             <div className={styles.iconCopy}>
-              <Copy text={source} textTooltip="Click to copy code">
+              <Copy toCopy={source} title="Click to copy code">
                 <CopyS />
               </Copy>
             </div>

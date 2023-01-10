@@ -1,6 +1,8 @@
 ---
-title: Local theme
+title: Local CSS Injection
 ---
+
+> 🚨 If you are using CSS Injection for theming purpose, consider review [design tokens based theming](/style/themes/).
 
 If you need to change the style of a component in one specific case, then you should use local customization of styles.
 

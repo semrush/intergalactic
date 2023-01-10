@@ -1,0 +1,36 @@
+.searchInput {
+  margin-bottom: 12px;
+  max-width: 300px;
+}
+
+.tokenNameWrapper {
+  max-width: 100%;
+}
+.tokenName {
+  cursor: pointer;
+  max-width: 100%;
+}
+
+.tokenValueWrapper {
+  max-width: 100%;
+}
+.tokenValue {
+  cursor: pointer;
+  display: flex;
+  max-width: 100%;
+}
+
+.colorPreview {
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+  display: inline-block;
+  margin-right: 8px;
+  border: 1px solid transparent;
+  flex-shrink: 0;
+}
+
+.usages {
+  color: #6c6e79;
+  border-bottom: 1px dashed #6c6e79;
+}
