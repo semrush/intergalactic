@@ -2,6 +2,18 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.44.3] - 2023-01-09
+
+### Fixed
+
+- Removed unexpected log statement.
+
+## [3.44.2] - 2023-01-09
+
+### Fixed
+
+- Fixed internal mechanism of interpolating variables into translated texts.
+
 ## [3.44.1] - 2022-12-16
 
 ### Fixed

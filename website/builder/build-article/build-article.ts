@@ -142,12 +142,12 @@ const makeChangelog = (markdownAst: MarkdownRoot, fullPath: string, metaHeight: 
       const title = markdownTokenToHtml(token.children[0]);
       const matchVersion = title.match(mathVersionRegx);
       const version = (matchVersion && matchVersion[1]) ?? '';
-      const id = generateHeadingId(title);
+      const id = generateHeadingId(`v.${version}`);
       currentBlock = {
         title,
         version,
         changes: [],
-        id: `_${id}`,
+        id,
         level: token.depth,
       };
       blocks.push(currentBlock);
@@ -204,12 +204,12 @@ const makeChangelogByComponent = (
       const title = markdownTokenToHtml(token.children[0]);
       const matchVersion = title.match(mathVersionRegx);
       const version = (matchVersion && matchVersion[1]) ?? '';
-      const id = generateHeadingId(title);
+      const id = generateHeadingId(`v.${version}`);
       currentBlock = {
         title,
         version,
         components: [],
-        id: `_${id}`,
+        id,
         level: token.depth,
       };
       blocks.push(currentBlock);
@@ -489,6 +489,9 @@ export const buildArticle = async (
               };
             }
             if (text.startsWith('@changelog ')) {
+              const headingsChangelog = [];
+              headings.push(headingsChangelog);
+
               const componentName = text.substring('@changelog '.length);
               const searchPattern = `*/${componentName}/CHANGELOG.md`;
               const files = (await glob(searchPattern, { cwd: repoRoot })).filter(
@@ -521,7 +524,7 @@ export const buildArticle = async (
                     id: block.id,
                     html: block.title,
                   };
-                  headings.push(tokenHead);
+                  headingsChangelog.push(tokenHead);
                 });
 
                 return {
@@ -537,7 +540,7 @@ export const buildArticle = async (
                     id: block.id,
                     html: block.title,
                   };
-                  headings.push(tokenHead);
+                  headingsChangelog.push(tokenHead);
                 });
 
                 return {
@@ -598,7 +601,7 @@ export const buildArticle = async (
     imagesUrls,
     legacyHeaderHashes,
     dependencies,
-    headings,
+    headings: headings.flat(),
   };
 };
 

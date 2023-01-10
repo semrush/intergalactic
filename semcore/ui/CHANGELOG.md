@@ -1,3 +1,17 @@
+## [13.2.12] - 2023-01-09
+
+### @semcore/d3-chart
+
+- **Added** Added prop `transparent` for charts opacity
+
+### @semcore/dropdown-menu
+
+- **Changed** `DropdownMenu.Popper` closes when the `Enter` button is pressed.
+
+### @semcore/utils
+
+- **Fixed** Fixed internal mechanism of interpolating variables into translated texts.
+
 ## [13.2.11] - 2023-01-04
 
 ### @semcore/ellipsis

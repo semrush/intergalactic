@@ -358,24 +358,24 @@ describe('Utils color', () => {
 
 describe('Utils interpolate', () => {
   test('Should interpolate variable with equal name', () => {
-    const Template = '{{name}}, dont turn this rape into a murder';
+    const Template = '{name}, dont turn this rape into a murder';
     expect(interpolate(Template, { name: 'Sarah' })).toBe(
       'Sarah, dont turn this rape into a murder',
     );
   });
 
   test('Should interpolate more then one variable', () => {
-    const Template = '{{a}}{{b}}{{c}}';
+    const Template = '{a}{b}{c}';
     expect(interpolate(Template, { a: 'A', b: 'B', c: 'C' })).toBe('ABC');
   });
 
   test('Should not fail if variable for template is not specified', () => {
-    const Template = '{{name}}, dont turn this rape into a murder';
+    const Template = '{name}, dont turn this rape into a murder';
     expect(interpolate(Template, {})).toBe(Template);
   });
 
   test('Should mirror HTML tags', () => {
-    const Template = '{{name}}';
+    const Template = '{name}';
     expect(interpolate(Template, { name: `<script>console.log('oh my!')</script>` })).toBe(
       `&lt;script&gt;console.log('oh my!')&lt;/script&gt;`,
     );
