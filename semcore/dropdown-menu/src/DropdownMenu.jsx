@@ -8,8 +8,8 @@ import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 
+import scrollStyles from './styleScrollArea';
 import style from './style/dropdown-menu.shadow.css';
-import scrollStyles from './style/scroll-area.shadow.css';
 
 const KEYS = ['ArrowDown', 'ArrowUp', 'Enter', ' '];
 const INTERACTION_TAGS = ['INPUT', 'TEXTAREA'];
