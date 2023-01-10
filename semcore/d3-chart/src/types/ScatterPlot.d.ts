@@ -21,6 +21,8 @@ export interface IScatterPlotProps extends IContext {
    * @default 5.5 or 12 with value
    */
   r?: number;
+  /** Enables element transparency */
+  transparent?: boolean;
 }
 
 declare const ScatterPlot: <T>(props: MapProps<IScatterPlotProps & T>) => ReturnEl;

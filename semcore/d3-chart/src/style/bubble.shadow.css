@@ -17,6 +17,10 @@ SBubble[color] {
   fill: var(--color);
 }
 
+SBubble[transparent] {
+  opacity: 0.3;
+}
+
 SCenter {
   text-anchor: middle;
   /* disable-tokens-validator */
@@ -26,6 +30,10 @@ SCenter {
 
 SCenter[color] {
   stroke: var(--color);
+}
+
+SCenter[transparent] {
+  opacity: 0.3;
 }
 
 SLabel {
@@ -42,4 +50,8 @@ SLabel[position='left'] {
 
 SLabel[color] {
   fill: var(--color);
+}
+
+SLabel[transparent] {
+  opacity: 0.3;
 }

@@ -13,14 +13,31 @@ SLine[color] {
   stroke: var(--color);
 }
 
+SLine[transparent] {
+  opacity: 0.3;
+}
+
 SCap {
   transition: r 0.1s;
+}
+
+SCap[transparent] {
+  opacity: 0.3;
+}
+
+SIcon[transparent] {
+  opacity: 0.3;
 }
 
 SLabel {
   fill: var(--color);
   cursor: var(--text-cursor);
 }
+
+SLabel[transparent] {
+  opacity: 0.3;
+}
+
 SRadian:hover SLabel {
   fill: var(--color-hovered);
 }

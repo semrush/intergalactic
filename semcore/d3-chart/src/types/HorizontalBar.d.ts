@@ -19,7 +19,7 @@ export interface IHorizontalBarProps extends IContext {
    * @default 2
    */
   r?: number | number[];
-  /** Element opacity property */
+  /** Enables element transparency */
   transparent?: boolean;
 }
 

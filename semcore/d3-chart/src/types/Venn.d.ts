@@ -29,7 +29,7 @@ export interface ICircleProps extends IContext {
    * @default 500
    */
   duration?: number;
-  /** Element opacity property */
+  /** Enables element transparency */
   transparent?: boolean;
 }
 
@@ -38,7 +38,7 @@ export interface IIntersectionProps extends IContext, IFadeInOutProps {
    * Name of the field in the data
    * */
   dataKey: string;
-  /** Element opacity property */
+  /** Enables element transparency */
   transparent?: boolean;
 }
 
