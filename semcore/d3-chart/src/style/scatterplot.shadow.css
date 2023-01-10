@@ -15,6 +15,10 @@ SScatterPlot[color] {
   fill: var(--color);
 }
 
+SScatterPlot[transparent] {
+  opacity: 0.3;
+}
+
 SValue {
   text-anchor: middle;
   font-size: var(--intergalactic-fs-50, 10px);
@@ -23,4 +27,8 @@ SValue {
 
 SValue[color] {
   stroke: var(--color);
+}
+
+SValue[transparent] {
+  opacity: 0.3;
 }

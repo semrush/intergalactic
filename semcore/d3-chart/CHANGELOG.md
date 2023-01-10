@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.8.1] - 2022-01-10
+
+### Fixed
+
+- Added prop `transparent` for all charts opacity
+
 ## [2.8.0] - 2022-01-05
 
 ### Added

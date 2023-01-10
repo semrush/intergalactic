@@ -21,6 +21,8 @@ export interface IBubbleProps extends IContext {
    * @default 500
    */
   duration?: number;
+  /** Element opacity property */
+  transparent?: boolean;
 }
 
 export interface IBubbleContext {
