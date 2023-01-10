@@ -406,10 +406,10 @@ for (const group in baseColors) {
 }
 
 await fs.writeFile(
-  resolvePath(dirname, '../../../website/docs/style/themes/components/design-tokens.json'),
+  resolvePath(dirname, '../../../website/src/docs-components/design-tokens.json'),
   JSON.stringify(designTokensDocumentation, null, 2) + '\n',
 );
 await fs.writeFile(
-  resolvePath(dirname, '../../../website/docs/style/themes/components/base-tokens.json'),
+  resolvePath(dirname, '../../../website/src/docs-components/base-tokens.json'),
   JSON.stringify(baseTokensDocumentation, null, 2) + '\n',
 );
