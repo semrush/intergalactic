@@ -64,7 +64,7 @@ export const runPublisher = async (versionPatches: VersionPatch[]) => {
       encoding: 'utf-8',
       stdio: ['inherit', 'inherit', 'inherit'],
     });
-    const status = await git.status();
+    let status = await git.status();
     if (status.files.length) {
       await git.add('.');
       if (!process.argv.includes('--dry-run')) {
@@ -77,6 +77,13 @@ export const runPublisher = async (versionPatches: VersionPatch[]) => {
         encoding: 'utf-8',
         stdio: ['inherit', 'inherit', 'inherit'],
       });
+    }
+    status = await git.status();
+    if (status.files.length) {
+      await git.add('pnpm-lock.yaml');
+      if (!process.argv.includes('--dry-run')) {
+        await git.commit(['[chore] updated lock file'], []);
+      }
     }
   }
   if (!process.argv.includes('--dry-run')) {
