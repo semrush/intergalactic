@@ -24,7 +24,9 @@ test('Users can interact with Accodrion via VoiceOver', async ({
   const { voiceOver, getReport } = await makeVoiceOverReporter(pureVoiceOver);
   await voiceOver.interact();
 
-  expect(await voiceOver.itemText()).toBe('Section 1 button');
+  expect(await voiceOver.itemText()).toBe('Section 1 expanded button');
+  await voiceOver.act();
+  expect(await voiceOver.itemText()).toBe('Section 1 collapsed button');
   await voiceOver.next();
   expect(await voiceOver.itemText()).toBe('Section 2 button');
   await voiceOver.next();
