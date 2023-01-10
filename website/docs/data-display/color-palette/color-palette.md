@@ -17,8 +17,6 @@ docs: true
 
 You can find all tokens for charts in the [tokens list](/style/design-tokens/#semantic_tokens). They all have `chart` in their token name.
 
-<!-- @import chart-tokens -->
-
 @## Tokens for text and additional information
 
 | Token                 | Usage                                                       |

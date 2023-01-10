@@ -2,17 +2,16 @@ import React from 'react';
 import styles from './design-tokens.module.css';
 import Input from '@semcore/input';
 import SearchIcon from '@semcore/ui/icon/search/m';
-import baseTokens from './base-tokens.json';
 import DataTable from '@semcore/data-table';
 import Ellipsis, { useResizeObserver } from '@semcore/ellipsis';
 import Copy from '@components/Copy';
 import { ColorPreview } from './DesignTokens';
 
-const BaseTokens = () => {
+const BaseTokens = ({ tokens }) => {
   const [filter, setFilter] = React.useState('');
   const filteredTokens = React.useMemo(
     () =>
-      baseTokens.filter(({ name, value, description }) => {
+      tokens.filter(({ name, value, description }) => {
         if (!filter) return true;
         if (name?.toLowerCase().includes(filter.toLowerCase())) return true;
         if (value?.toLowerCase().includes(filter.toLowerCase())) return true;

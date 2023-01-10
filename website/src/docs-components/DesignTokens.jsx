@@ -2,7 +2,6 @@ import React from 'react';
 import styles from './design-tokens.module.css';
 import Input from '@semcore/input';
 import SearchIcon from '@semcore/ui/icon/search/m';
-import designTokens from './design-tokens.json';
 import DataTable from '@semcore/data-table';
 import Link from '@semcore/link';
 import Tooltip from '@semcore/tooltip';
@@ -29,11 +28,11 @@ export const ColorPreview = ({ color }) => {
   );
 };
 
-const DesignTokens = () => {
+const DesignTokens = ({ tokens }) => {
   const [filter, setFilter] = React.useState('');
   const filteredTokens = React.useMemo(
     () =>
-      designTokens.filter(({ name, rawValue, description }) => {
+      tokens.filter(({ name, rawValue, description }) => {
         if (!filter) return true;
         if (name?.toLowerCase().includes(filter.toLowerCase())) return true;
         if (rawValue?.toLowerCase().includes(filter.toLowerCase())) return true;
