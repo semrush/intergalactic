@@ -2335,13 +2335,13 @@ importers:
     specifiers:
       '@reshadow/utils': 0.0.1-alpha.75
       find-cache-dir: 3.3.1
-      loader-utils: 2.0.0
+      loader-utils: 2.0.4
       mkdirp: 1.0.4
       webpack-virtual-modules: 0.3.2
     dependencies:
       '@reshadow/utils': 0.0.1-alpha.75
       find-cache-dir: 3.3.1
-      loader-utils: 2.0.0
+      loader-utils: 2.0.4
       mkdirp: 1.0.4
       webpack-virtual-modules: 0.3.2
 
@@ -13615,8 +13615,8 @@ packages:
       object-assign: 4.1.1
     dev: true
 
-  /loader-utils/2.0.0:
-    resolution: {integrity: sha512-rP4F0h2RaWSvPEkD7BLDFQnvSf+nK+wr3ESUjNTyAGobqrijmW92zc+SO6d4p4B1wh7+B/Jg1mkQe5NYUEHtHQ==}
+  /loader-utils/2.0.4:
+    resolution: {integrity: sha512-xXqpXoINfFhgua9xiqD8fPFHgkoq1mmmpE92WlDbm9rNRd/EbRb+Gqf908T2DMfuHjjJlksiK2RbHVOdD/MqSw==}
     engines: {node: '>=8.9.0'}
     dependencies:
       big.js: 5.2.2
