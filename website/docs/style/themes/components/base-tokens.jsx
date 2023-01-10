@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './design-tokens.module.css';
 import Input from '@semcore/input';
-import SearchIcon from '@semcore/icon/search/m';
+import SearchIcon from '@semcore/ui/icon/search/m';
 import baseTokens from './base-tokens.json';
 import DataTable from '@semcore/data-table';
 import Ellipsis, { useResizeObserver } from '@semcore/ellipsis';
