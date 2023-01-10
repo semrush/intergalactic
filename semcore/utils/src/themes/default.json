@@ -34,6 +34,7 @@
   "--intergalactic-bg-secondary-advertising-hover": "#edd9ff",
   "--intergalactic-bg-secondary-advertising-active": "#dcb8ff",
   "--intergalactic-bg-highlight-results": "rgba(239, 152, 0, 0.4)",
+  "--intergalactic-bg-highlight-focus": "rgba(0, 143, 248, 0.2)",
   "--intergalactic-text-primary": "#191b23",
   "--intergalactic-text-secondary": "#6c6e79",
   "--intergalactic-text-placeholder": "#a9abb6",

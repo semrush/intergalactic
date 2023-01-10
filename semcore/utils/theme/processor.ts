@@ -8,8 +8,8 @@ import { fileURLToPath } from 'url';
 const warning = !process.argv.includes('--no-warning');
 
 const dirname = resolvePath(fileURLToPath(import.meta.url), '..');
-const baseColors = JSON.parse(
-  await fs.readFile(resolvePath(dirname, './tokens-base.json'), 'utf-8'),
+const { base, tokens } = JSON.parse(
+  await fs.readFile(resolvePath(dirname, './tokens.json'), 'utf-8'),
 );
 
 const values = {};
@@ -55,11 +55,6 @@ const traverse = (node: DesignTokenNode, pathParts: string[] = []) => {
     traverse(node[key], [...pathParts, key]);
   }
 };
-const tokens = JSON.parse(await fs.readFile(resolvePath(dirname, './tokens.json'), 'utf-8'));
-const chartTokens = JSON.parse(
-  await fs.readFile(resolvePath(dirname, './tokens-chart.json'), 'utf-8'),
-);
-tokens.chart = chartTokens;
 
 traverse(tokens);
 const resolveColor = (color: string) => {
@@ -114,7 +109,7 @@ const resolveColor = (color: string) => {
   }
   if (color.startsWith('{') && color.split('.').length === 2 && color.endsWith('}')) {
     const [group, index] = color.substring(1, color.length - 1).split('.');
-    const resolvedColor = baseColors[group][index].value;
+    const resolvedColor = base[group][index].value;
     if (!resolvedColor) {
       throw new Error(`Color ${color} was not found in base palette`);
     }
@@ -122,7 +117,7 @@ const resolveColor = (color: string) => {
   }
   if (color.startsWith('$') && color.split('.').length === 2) {
     const [group, index] = color.substring(1).split('.');
-    const resolvedColor = baseColors[group]?.[index]?.value ?? values[`${group}-${index}`];
+    const resolvedColor = base[group]?.[index]?.value ?? values[`${group}-${index}`];
     if (!resolvedColor) {
       throw new Error(`Color ${color} was not found`);
     }
