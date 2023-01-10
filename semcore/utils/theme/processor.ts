@@ -4,6 +4,7 @@ import postcss from 'postcss';
 import valuesParser from 'postcss-value-parser';
 import { resolve as resolvePath } from 'path';
 import { fileURLToPath } from 'url';
+import { execSync } from 'child_process';
 
 const warning = !process.argv.includes('--no-warning');
 
@@ -373,6 +374,7 @@ const designTokensDocumentation: {
 
 for (const token in values) {
   const components = [...new Set((usages[token] ?? []).map((cssPath) => cssPath.split('/')[2]))];
+  components.sort((a, b) => a.localeCompare(b));
 
   designTokensDocumentation.push({
     name: `--${prefix}-${token}`,
@@ -407,4 +409,19 @@ await fs.writeFile(
 await fs.writeFile(
   resolvePath(dirname, '../../../website/docs/style/design-tokens/components/base-tokens.json'),
   JSON.stringify(baseTokensDocumentation, null, 2) + '\n',
+);
+
+execSync(`pnpm pretty-quick --pattern "**/*.css"`, {
+  encoding: 'utf-8',
+  cwd: resolvePath(dirname, '../../../'),
+  stdio: ['inherit', 'inherit', 'inherit'],
+});
+
+execSync(
+  `pnpm eslint --fix --no-ignore -c .eslintrc --ext .json "./semcore/utils/src/themes/default.json" "./website/docs/style/design-tokens/components/design-tokens.json" "./website/docs/style/design-tokens/components/base-tokens.json"`,
+  {
+    encoding: 'utf-8',
+    cwd: resolvePath(dirname, '../../../'),
+    stdio: ['inherit', 'inherit', 'inherit'],
+  },
 );

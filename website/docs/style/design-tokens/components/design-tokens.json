@@ -32,49 +32,71 @@
     "type": "color",
     "rawValue": "{gray.50}",
     "computedValue": "#f4f5f9",
-    "components": ["base-trigger", "dropdown-menu", "pills"]
+    "components": [
+      "base-trigger",
+      "dropdown-menu",
+      "pills"
+    ]
   },
   {
     "name": "--intergalactic-bg-primary-neutral-active",
     "type": "color",
     "rawValue": "{gray.100}",
     "computedValue": "#e0e1e9",
-    "components": ["base-trigger", "flags"]
+    "components": [
+      "base-trigger",
+      "flags"
+    ]
   },
   {
     "name": "--intergalactic-bg-primary-info",
     "type": "color",
     "rawValue": "{blue.400}",
     "computedValue": "#008ff8",
-    "components": ["base-trigger", "notice-global", "radio"]
+    "components": [
+      "base-trigger",
+      "notice-global",
+      "radio"
+    ]
   },
   {
     "name": "--intergalactic-bg-primary-success",
     "type": "color",
     "rawValue": "{green.400}",
     "computedValue": "#009f81",
-    "components": ["notice-global"]
+    "components": [
+      "notice-global"
+    ]
   },
   {
     "name": "--intergalactic-bg-primary-critical",
     "type": "color",
     "rawValue": "{red.400}",
     "computedValue": "#ff4953",
-    "components": ["counter", "notice-global", "notice-bubble"]
+    "components": [
+      "counter",
+      "notice-bubble",
+      "notice-global"
+    ]
   },
   {
     "name": "--intergalactic-bg-primary-warning",
     "type": "color",
     "rawValue": "{orange.400}",
     "computedValue": "#ff642d",
-    "components": ["counter", "notice-global"]
+    "components": [
+      "counter",
+      "notice-global"
+    ]
   },
   {
     "name": "--intergalactic-bg-primary-highlight",
     "type": "color",
     "rawValue": "{yellow.100}",
     "computedValue": "#fce081",
-    "components": ["feature-popover"]
+    "components": [
+      "feature-popover"
+    ]
   },
   {
     "name": "--intergalactic-bg-primary-advertising",
@@ -88,14 +110,18 @@
     "type": "color",
     "rawValue": "{gray.500}",
     "computedValue": "#6c6e79",
-    "components": ["notice-global"]
+    "components": [
+      "notice-global"
+    ]
   },
   {
     "name": "--intergalactic-bg-primary-invert",
     "type": "color",
     "rawValue": "{gray.800}",
     "computedValue": "#191b23",
-    "components": ["notice-bubble"]
+    "components": [
+      "notice-bubble"
+    ]
   },
   {
     "name": "--intergalactic-bg-primary-invert-hover",
@@ -109,35 +135,50 @@
     "type": "color",
     "rawValue": "{gray.600}",
     "computedValue": "#484a54",
-    "components": ["drag-and-drop"]
+    "components": [
+      "drag-and-drop"
+    ]
   },
   {
     "name": "--intergalactic-bg-secondary-neutral",
     "type": "color",
     "rawValue": "{gray.50}",
     "computedValue": "#f4f5f9",
-    "components": ["drag-and-drop", "input", "textarea", "time-picker"]
+    "components": [
+      "drag-and-drop",
+      "input",
+      "textarea",
+      "time-picker"
+    ]
   },
   {
     "name": "--intergalactic-bg-secondary-neutral-hover",
     "type": "color",
     "rawValue": "{gray.100}",
     "computedValue": "#e0e1e9",
-    "components": ["color-picker", "time-picker"]
+    "components": [
+      "color-picker",
+      "time-picker"
+    ]
   },
   {
     "name": "--intergalactic-bg-secondary-neutral-active",
     "type": "color",
     "rawValue": "{gray.200}",
     "computedValue": "#c4c7cf",
-    "components": ["flags", "time-picker"]
+    "components": [
+      "flags",
+      "time-picker"
+    ]
   },
   {
     "name": "--intergalactic-bg-secondary-info",
     "type": "color",
     "rawValue": "{blue.50}",
     "computedValue": "#e9f7ff",
-    "components": ["notice"]
+    "components": [
+      "notice"
+    ]
   },
   {
     "name": "--intergalactic-bg-secondary-info-hover",
@@ -158,7 +199,9 @@
     "type": "color",
     "rawValue": "{green.50}",
     "computedValue": "#dbfee8",
-    "components": ["notice"]
+    "components": [
+      "notice"
+    ]
   },
   {
     "name": "--intergalactic-bg-secondary-success-hover",
@@ -179,7 +222,9 @@
     "type": "color",
     "rawValue": "{red.50}",
     "computedValue": "#fff0f7",
-    "components": ["notice"]
+    "components": [
+      "notice"
+    ]
   },
   {
     "name": "--intergalactic-bg-secondary-critical-hover",
@@ -200,7 +245,9 @@
     "type": "color",
     "rawValue": "{orange.50}",
     "computedValue": "#fff3d9",
-    "components": ["notice"]
+    "components": [
+      "notice"
+    ]
   },
   {
     "name": "--intergalactic-bg-secondary-warning-hover",
@@ -299,8 +346,8 @@
       "product-head",
       "side-panel",
       "switch",
-      "tab-panel",
       "tab-line",
+      "tab-panel",
       "textarea",
       "tooltip",
       "typography"
@@ -336,7 +383,13 @@
     "type": "color",
     "rawValue": "{gray.300}",
     "computedValue": "#a9abb6",
-    "components": ["base-trigger", "date-picker", "inline-input", "input", "textarea"]
+    "components": [
+      "base-trigger",
+      "date-picker",
+      "inline-input",
+      "input",
+      "textarea"
+    ]
   },
   {
     "name": "--intergalactic-text-success",
@@ -376,8 +429,8 @@
       "counter",
       "date-picker",
       "dot",
-      "notice-global",
       "notice-bubble",
+      "notice-global",
       "tag",
       "tooltip",
       "wizard"
@@ -395,14 +448,25 @@
     "type": "color",
     "rawValue": "{blue.500}",
     "computedValue": "#006dca",
-    "components": ["base-trigger", "button", "format-text", "link", "tab-panel"]
+    "components": [
+      "base-trigger",
+      "button",
+      "format-text",
+      "link",
+      "tab-panel"
+    ]
   },
   {
     "name": "--intergalactic-text-link-hover-active",
     "type": "color",
     "rawValue": "{blue.600}",
     "computedValue": "#044792",
-    "components": ["base-trigger", "format-text", "link", "tab-panel"]
+    "components": [
+      "base-trigger",
+      "format-text",
+      "link",
+      "tab-panel"
+    ]
   },
   {
     "name": "--intergalactic-text-link-invert",
@@ -425,21 +489,31 @@
     "type": "color",
     "rawValue": "{violet.500}",
     "computedValue": "#8649e1",
-    "components": ["link"]
+    "components": [
+      "link"
+    ]
   },
   {
     "name": "--intergalactic-text-hint",
     "type": "color",
     "rawValue": "{gray.500}",
     "computedValue": "#6c6e79",
-    "components": ["d3-chart", "format-text"]
+    "components": [
+      "d3-chart",
+      "format-text"
+    ]
   },
   {
     "name": "--intergalactic-text-hint-hover-active",
     "type": "color",
     "rawValue": "{gray.600}",
     "computedValue": "#484a54",
-    "components": ["breadcrumbs", "format-text", "side-panel", "typography"]
+    "components": [
+      "breadcrumbs",
+      "format-text",
+      "side-panel",
+      "typography"
+    ]
   },
   {
     "name": "--intergalactic-text-hint-invert",
@@ -463,7 +537,9 @@
     "rawValue": "{gray.300}",
     "computedValue": "#a9abb6",
     "description": "Use with font-size ≥20px.",
-    "components": ["typography"]
+    "components": [
+      "typography"
+    ]
   },
   {
     "name": "--intergalactic-text-large-info",
@@ -537,8 +613,8 @@
       "side-panel",
       "slider",
       "spin",
-      "tab-panel",
       "tab-line",
+      "tab-panel",
       "textarea",
       "time-picker"
     ]
@@ -566,7 +642,9 @@
     "rawValue": "{blue.200}",
     "computedValue": "#8ecdff",
     "description": "Use it for borders in Notice and input fields.",
-    "components": ["notice"]
+    "components": [
+      "notice"
+    ]
   },
   {
     "name": "--intergalactic-border-info-active",
@@ -591,7 +669,11 @@
     "rawValue": "{green.200}",
     "computedValue": "#59ddaa",
     "description": "Use it for borders in Notice and input fields.",
-    "components": ["base-trigger", "input", "notice"]
+    "components": [
+      "base-trigger",
+      "input",
+      "notice"
+    ]
   },
   {
     "name": "--intergalactic-border-success-active",
@@ -599,7 +681,11 @@
     "rawValue": "{green.500}",
     "computedValue": "#007c65",
     "description": "Use it for borders in focused input fields.",
-    "components": ["inline-input", "input", "textarea"]
+    "components": [
+      "inline-input",
+      "input",
+      "textarea"
+    ]
   },
   {
     "name": "--intergalactic-border-danger",
@@ -607,7 +693,11 @@
     "rawValue": "{red.200}",
     "computedValue": "#ffaeb5",
     "description": "Use it for borders in Notice and input fields.",
-    "components": ["base-trigger", "input", "notice"]
+    "components": [
+      "base-trigger",
+      "input",
+      "notice"
+    ]
   },
   {
     "name": "--intergalactic-border-danger-active",
@@ -615,7 +705,14 @@
     "rawValue": "{red.500}",
     "computedValue": "#d1002f",
     "description": "Use it for borders in focused input fields.",
-    "components": ["base-trigger", "inline-input", "input", "radio", "textarea", "tooltip"]
+    "components": [
+      "base-trigger",
+      "inline-input",
+      "input",
+      "radio",
+      "textarea",
+      "tooltip"
+    ]
   },
   {
     "name": "--intergalactic-border-warning",
@@ -623,7 +720,9 @@
     "rawValue": "{orange.200}",
     "computedValue": "#ffb26e",
     "description": "Use it for borders in Notice.",
-    "components": ["notice"]
+    "components": [
+      "notice"
+    ]
   },
   {
     "name": "--intergalactic-border-warning-active",
@@ -638,7 +737,11 @@
     "rawValue": "{gray.white}",
     "computedValue": "#ffffff",
     "description": "Use it for borders of controls on the dark or color background.",
-    "components": ["button", "spin", "tab-panel"]
+    "components": [
+      "button",
+      "spin",
+      "tab-panel"
+    ]
   },
   {
     "name": "--intergalactic-border-secondary-invert",
@@ -646,7 +749,9 @@
     "rawValue": "{gray.white}, 0.3",
     "computedValue": "rgba(255, 255, 255, 0.3)",
     "description": "Use it as an invert borders on the dark or color background.",
-    "components": ["tag"]
+    "components": [
+      "tag"
+    ]
   },
   {
     "name": "--intergalactic-border-tooltip-invert",
@@ -654,266 +759,362 @@
     "rawValue": "{gray.500}",
     "computedValue": "#6c6e79",
     "description": "Use only for the dark Tooltip.",
-    "components": ["tooltip"]
+    "components": [
+      "tooltip"
+    ]
   },
   {
     "name": "--intergalactic-border-table-accent-border",
     "type": "color",
     "rawValue": "{gray.300}",
     "computedValue": "#a9abb6",
-    "components": ["data-table"]
+    "components": [
+      "data-table"
+    ]
   },
   {
     "name": "--intergalactic-control-switch-bg",
     "type": "color",
     "rawValue": "{gray.300}",
     "computedValue": "#a9abb6",
-    "components": ["switch"]
+    "components": [
+      "switch"
+    ]
   },
   {
     "name": "--intergalactic-control-primary-info",
     "type": "color",
     "rawValue": "{blue.400}",
     "computedValue": "#008ff8",
-    "components": ["button", "checkbox", "radio", "select", "slider", "switch"]
+    "components": [
+      "button",
+      "checkbox",
+      "radio",
+      "select",
+      "slider",
+      "switch"
+    ]
   },
   {
     "name": "--intergalactic-control-primary-info-hover",
     "type": "color",
     "rawValue": "{blue.500}",
     "computedValue": "#006dca",
-    "components": ["button", "checkbox", "slider"]
+    "components": [
+      "button",
+      "checkbox",
+      "slider"
+    ]
   },
   {
     "name": "--intergalactic-control-primary-info-active",
     "type": "color",
     "rawValue": "{blue.600}",
     "computedValue": "#044792",
-    "components": ["button"]
+    "components": [
+      "button"
+    ]
   },
   {
     "name": "--intergalactic-control-primary-success",
     "type": "color",
     "rawValue": "{green.400}",
     "computedValue": "#009f81",
-    "components": ["button", "switch"]
+    "components": [
+      "button",
+      "switch"
+    ]
   },
   {
     "name": "--intergalactic-control-primary-success-hover",
     "type": "color",
     "rawValue": "{green.500}",
     "computedValue": "#007c65",
-    "components": ["button"]
+    "components": [
+      "button"
+    ]
   },
   {
     "name": "--intergalactic-control-primary-success-active",
     "type": "color",
     "rawValue": "{green.600}",
     "computedValue": "#055345",
-    "components": ["button"]
+    "components": [
+      "button"
+    ]
   },
   {
     "name": "--intergalactic-control-primary-critical",
     "type": "color",
     "rawValue": "{red.400}",
     "computedValue": "#ff4953",
-    "components": ["button", "checkbox", "tooltip"]
+    "components": [
+      "button",
+      "checkbox",
+      "tooltip"
+    ]
   },
   {
     "name": "--intergalactic-control-primary-critical-hover",
     "type": "color",
     "rawValue": "{red.500}",
     "computedValue": "#d1002f",
-    "components": ["button", "checkbox"]
+    "components": [
+      "button",
+      "checkbox"
+    ]
   },
   {
     "name": "--intergalactic-control-primary-critical-active",
     "type": "color",
     "rawValue": "{red.600}",
     "computedValue": "#8e0016",
-    "components": ["button"]
+    "components": [
+      "button"
+    ]
   },
   {
     "name": "--intergalactic-control-primary-advertising-active",
     "type": "color",
     "rawValue": "{violet.500}",
     "computedValue": "#8649e1",
-    "components": ["wizard"]
+    "components": [
+      "wizard"
+    ]
   },
   {
     "name": "--intergalactic-control-primary-advertising",
     "type": "color",
     "rawValue": "{violet.600}",
     "computedValue": "#5925ab",
-    "components": ["wizard"]
+    "components": [
+      "wizard"
+    ]
   },
   {
     "name": "--intergalactic-control-primary-advertising-hover",
     "type": "color",
     "rawValue": "{violet.700}",
     "computedValue": "#421983",
-    "components": ["wizard"]
+    "components": [
+      "wizard"
+    ]
   },
   {
     "name": "--intergalactic-control-primary-invert",
     "type": "color",
     "rawValue": "{gray.white}",
     "computedValue": "#ffffff",
-    "components": ["button"]
+    "components": [
+      "button"
+    ]
   },
   {
     "name": "--intergalactic-control-primary-invert-hover",
     "type": "color",
     "rawValue": "{gray.50}",
     "computedValue": "#f4f5f9",
-    "components": ["button"]
+    "components": [
+      "button"
+    ]
   },
   {
     "name": "--intergalactic-control-primary-invert-active",
     "type": "color",
     "rawValue": "{gray.100}",
     "computedValue": "#e0e1e9",
-    "components": ["button", "notice-bubble"]
+    "components": [
+      "button",
+      "notice-bubble"
+    ]
   },
   {
     "name": "--intergalactic-control-secondary-neutral",
     "type": "color",
     "rawValue": "{gray.400}, 0.1",
     "computedValue": "rgba(138, 142, 155, 0.1)",
-    "components": ["button"]
+    "components": [
+      "button"
+    ]
   },
   {
     "name": "--intergalactic-control-secondary-neutral-hover",
     "type": "color",
     "rawValue": "{gray.400}, 0.2",
     "computedValue": "rgba(138, 142, 155, 0.2)",
-    "components": ["base-trigger", "button"]
+    "components": [
+      "base-trigger",
+      "button"
+    ]
   },
   {
     "name": "--intergalactic-control-secondary-neutral-active",
     "type": "color",
     "rawValue": "{gray.400}, 0.3",
     "computedValue": "rgba(138, 142, 155, 0.3)",
-    "components": ["button"]
+    "components": [
+      "button"
+    ]
   },
   {
     "name": "--intergalactic-control-secondary-info",
     "type": "color",
     "rawValue": "{blue.400}, 0.1",
     "computedValue": "rgba(0, 143, 248, 0.1)",
-    "components": ["button"]
+    "components": [
+      "button"
+    ]
   },
   {
     "name": "--intergalactic-control-secondary-info-hover",
     "type": "color",
     "rawValue": "{blue.400}, 0.2",
     "computedValue": "rgba(0, 143, 248, 0.2)",
-    "components": ["base-trigger", "button", "pills"]
+    "components": [
+      "base-trigger",
+      "button",
+      "pills"
+    ]
   },
   {
     "name": "--intergalactic-control-secondary-info-active",
     "type": "color",
     "rawValue": "{blue.400}, 0.3",
     "computedValue": "rgba(0, 143, 248, 0.3)",
-    "components": ["base-trigger", "button"]
+    "components": [
+      "base-trigger",
+      "button"
+    ]
   },
   {
     "name": "--intergalactic-control-secondary-invert",
     "type": "color",
     "rawValue": "{gray.white}, 0.05",
     "computedValue": "rgba(255, 255, 255, 0.05)",
-    "components": ["button"]
+    "components": [
+      "button"
+    ]
   },
   {
     "name": "--intergalactic-control-secondary-invert-hover",
     "type": "color",
     "rawValue": "{gray.white}, 0.1",
     "computedValue": "rgba(255, 255, 255, 0.1)",
-    "components": ["button"]
+    "components": [
+      "button"
+    ]
   },
   {
     "name": "--intergalactic-control-secondary-invert-active",
     "type": "color",
     "rawValue": "{gray.white}, 0.3",
     "computedValue": "rgba(255, 255, 255, 0.3)",
-    "components": ["button"]
+    "components": [
+      "button"
+    ]
   },
   {
     "name": "--intergalactic-control-tertiary-neutral",
     "type": "color",
     "rawValue": "{gray.400}, 0",
     "computedValue": "rgba(138, 142, 155, 0)",
-    "components": ["button"]
+    "components": [
+      "button"
+    ]
   },
   {
     "name": "--intergalactic-control-tertiary-neutral-hover",
     "type": "color",
     "rawValue": "{gray.400}, 0.2",
     "computedValue": "rgba(138, 142, 155, 0.2)",
-    "components": ["button"]
+    "components": [
+      "button"
+    ]
   },
   {
     "name": "--intergalactic-control-tertiary-neutral-active",
     "type": "color",
     "rawValue": "{gray.400}, 0.3",
     "computedValue": "rgba(138, 142, 155, 0.3)",
-    "components": ["button"]
+    "components": [
+      "button"
+    ]
   },
   {
     "name": "--intergalactic-control-tertiary-info",
     "type": "color",
     "rawValue": "{blue.400}, 0",
     "computedValue": "rgba(0, 143, 248, 0)",
-    "components": ["button"]
+    "components": [
+      "button"
+    ]
   },
   {
     "name": "--intergalactic-control-tertiary-info-hover",
     "type": "color",
     "rawValue": "{blue.400}, 0.2",
     "computedValue": "rgba(0, 143, 248, 0.2)",
-    "components": ["button"]
+    "components": [
+      "button"
+    ]
   },
   {
     "name": "--intergalactic-control-tertiary-info-active",
     "type": "color",
     "rawValue": "{blue.400}, 0.3",
     "computedValue": "rgba(0, 143, 248, 0.3)",
-    "components": ["button"]
+    "components": [
+      "button"
+    ]
   },
   {
     "name": "--intergalactic-control-tertiary-invert",
     "type": "color",
     "rawValue": "{gray.white}, 0",
     "computedValue": "rgba(255, 255, 255, 0)",
-    "components": ["button"]
+    "components": [
+      "button"
+    ]
   },
   {
     "name": "--intergalactic-control-tertiary-invert-hover",
     "type": "color",
     "rawValue": "{gray.white}, 0.1",
     "computedValue": "rgba(255, 255, 255, 0.1)",
-    "components": ["button"]
+    "components": [
+      "button"
+    ]
   },
   {
     "name": "--intergalactic-control-tertiary-invert-active",
     "type": "color",
     "rawValue": "{gray.white}, 0.3",
     "computedValue": "rgba(255, 255, 255, 0.3)",
-    "components": ["button"]
+    "components": [
+      "button"
+    ]
   },
   {
     "name": "--intergalactic-icon-primary-neutral",
     "type": "color",
     "rawValue": "{gray.500}",
     "computedValue": "#6c6e79",
-    "components": ["base-trigger", "format-text", "fullscreen-modal", "notice"]
+    "components": [
+      "base-trigger",
+      "format-text",
+      "fullscreen-modal",
+      "notice"
+    ]
   },
   {
     "name": "--intergalactic-icon-primary-neutral-hover-active",
     "type": "color",
     "rawValue": "{gray.600}",
     "computedValue": "#484a54",
-    "components": ["fullscreen-modal", "notice"]
+    "components": [
+      "fullscreen-modal",
+      "notice"
+    ]
   },
   {
     "name": "--intergalactic-icon-primary-info",
@@ -934,56 +1135,75 @@
     "type": "color",
     "rawValue": "{green.400}",
     "computedValue": "#009f81",
-    "components": ["notice"]
+    "components": [
+      "notice"
+    ]
   },
   {
     "name": "--intergalactic-icon-primary-success-hover-active",
     "type": "color",
     "rawValue": "{green.500}",
     "computedValue": "#007c65",
-    "components": ["notice"]
+    "components": [
+      "notice"
+    ]
   },
   {
     "name": "--intergalactic-icon-primary-critical",
     "type": "color",
     "rawValue": "{red.400}",
     "computedValue": "#ff4953",
-    "components": ["notice"]
+    "components": [
+      "notice"
+    ]
   },
   {
     "name": "--intergalactic-icon-primary-critical-hover-active",
     "type": "color",
     "rawValue": "{red.500}",
     "computedValue": "#d1002f",
-    "components": ["notice"]
+    "components": [
+      "notice"
+    ]
   },
   {
     "name": "--intergalactic-icon-primary-warning",
     "type": "color",
     "rawValue": "{orange.400}",
     "computedValue": "#ff642d",
-    "components": ["button", "dot", "notice"]
+    "components": [
+      "button",
+      "dot",
+      "notice"
+    ]
   },
   {
     "name": "--intergalactic-icon-primary-warning-hover-active",
     "type": "color",
     "rawValue": "{orange.500}",
     "computedValue": "#c33909",
-    "components": ["button", "notice"]
+    "components": [
+      "button",
+      "notice"
+    ]
   },
   {
     "name": "--intergalactic-icon-primary-invert",
     "type": "color",
     "rawValue": "{gray.white}",
     "computedValue": "#ffffff",
-    "components": ["notice-global"]
+    "components": [
+      "notice-global"
+    ]
   },
   {
     "name": "--intergalactic-icon-primary-invert-hover-active",
     "type": "color",
     "rawValue": "{gray.100}",
     "computedValue": "#e0e1e9",
-    "components": ["notice-global"]
+    "components": [
+      "notice-global"
+    ]
   },
   {
     "name": "--intergalactic-icon-secondary-neutral",
@@ -998,8 +1218,8 @@
       "format-text",
       "fullscreen-modal",
       "inline-input",
-      "input-number",
       "input",
+      "input-number",
       "modal",
       "side-panel",
       "switch"
@@ -1014,8 +1234,8 @@
       "data-table",
       "fullscreen-modal",
       "inline-input",
-      "input-number",
       "input",
+      "input-number",
       "modal",
       "side-panel"
     ]
@@ -1025,7 +1245,9 @@
     "type": "color",
     "rawValue": "{blue.300}",
     "computedValue": "#2bb3ff",
-    "components": ["d3-chart"]
+    "components": [
+      "d3-chart"
+    ]
   },
   {
     "name": "--intergalactic-icon-secondary-info-hover-active",
@@ -1039,14 +1261,18 @@
     "type": "color",
     "rawValue": "{green.300}",
     "computedValue": "#00c192",
-    "components": ["inline-input"]
+    "components": [
+      "inline-input"
+    ]
   },
   {
     "name": "--intergalactic-icon-secondary-success-hover-active",
     "type": "color",
     "rawValue": "{green.400}",
     "computedValue": "#009f81",
-    "components": ["inline-input"]
+    "components": [
+      "inline-input"
+    ]
   },
   {
     "name": "--intergalactic-icon-secondary-critical",
@@ -1089,7 +1315,9 @@
     "type": "color",
     "rawValue": "{gray.white}",
     "computedValue": "#ffffff",
-    "components": ["date-picker"]
+    "components": [
+      "date-picker"
+    ]
   },
   {
     "name": "--intergalactic-date-picker-cell-current",
@@ -1103,35 +1331,45 @@
     "type": "color",
     "rawValue": "{gray.100}",
     "computedValue": "#e0e1e9",
-    "components": ["date-picker"]
+    "components": [
+      "date-picker"
+    ]
   },
   {
     "name": "--intergalactic-date-picker-cell-range",
     "type": "color",
     "rawValue": "{blue.100}",
     "computedValue": "#c4e5fe",
-    "components": ["date-picker"]
+    "components": [
+      "date-picker"
+    ]
   },
   {
     "name": "--intergalactic-date-picker-cell-range-hover",
     "type": "color",
     "rawValue": "{blue.200}",
     "computedValue": "#8ecdff",
-    "components": ["date-picker"]
+    "components": [
+      "date-picker"
+    ]
   },
   {
     "name": "--intergalactic-date-picker-cell-active",
     "type": "color",
     "rawValue": "{blue.300}",
     "computedValue": "#2bb3ff",
-    "components": ["date-picker"]
+    "components": [
+      "date-picker"
+    ]
   },
   {
     "name": "--intergalactic-date-picker-cell-active-hover",
     "type": "color",
     "rawValue": "{blue.400}",
     "computedValue": "#008ff8",
-    "components": ["date-picker"]
+    "components": [
+      "date-picker"
+    ]
   },
   {
     "name": "--intergalactic-date-picker-cell-current-invert",
@@ -1159,14 +1397,20 @@
     "type": "color",
     "rawValue": "{blue.100}, 0.7",
     "computedValue": "rgba(196, 229, 254, 0.7)",
-    "components": ["dropdown-menu", "select"]
+    "components": [
+      "dropdown-menu",
+      "select"
+    ]
   },
   {
     "name": "--intergalactic-dropdown-menu-item-selected-hover",
     "type": "color",
     "rawValue": "{blue.100}",
     "computedValue": "#c4e5fe",
-    "components": ["dropdown-menu", "select"]
+    "components": [
+      "dropdown-menu",
+      "select"
+    ]
   },
   {
     "name": "--intergalactic-feature-popover-dot-outer-border",
@@ -1180,7 +1424,9 @@
     "type": "color",
     "rawValue": "{gray.100}",
     "computedValue": "#e0e1e9",
-    "components": ["progress-bar"]
+    "components": [
+      "progress-bar"
+    ]
   },
   {
     "name": "--intergalactic-progress-bar-bg-hover",
@@ -1195,7 +1441,9 @@
     "rawValue": "{gray.white}, 0.2",
     "computedValue": "rgba(255, 255, 255, 0.2)",
     "description": "#FFFFFF",
-    "components": ["progress-bar"]
+    "components": [
+      "progress-bar"
+    ]
   },
   {
     "name": "--intergalactic-progress-bar-bg-invert-hover",
@@ -1216,35 +1464,45 @@
     "type": "color",
     "rawValue": "linear-gradient(-45deg, rgba(0, 159, 129, 0.9) 25%, rgba(0, 159, 129, 1) 0%, rgba(0, 159, 129, 1) 50%, rgba(0, 159, 129, 0.9) 0%, rgba(0, 159, 129, 0.9) 75%, rgba(0, 159, 129, 1) 0%)",
     "computedValue": "linear-gradient(-45deg, rgba(0, 159, 129, 0.9) 25%, rgba(0, 159, 129, 1) 0%, rgba(0, 159, 129, 1) 50%, rgba(0, 159, 129, 0.9) 0%, rgba(0, 159, 129, 0.9) 75%, rgba(0, 159, 129, 1) 0%)",
-    "components": ["progress-bar"]
+    "components": [
+      "progress-bar"
+    ]
   },
   {
     "name": "--intergalactic-progress-bar-pattern-gradient",
     "type": "color",
     "rawValue": "linear-gradient(-45deg, rgba(224, 225, 233, 0.9) 25%, rgba(224, 225, 233, 1) 0%, rgba(224, 225, 233, 1) 50%, rgba(224, 225, 233, 0.9) 0%, rgba(224, 225, 233, 0.9) 75%, rgba(224, 225, 233, 1) 0%)",
     "computedValue": "linear-gradient(-45deg, rgba(224, 225, 233, 0.9) 25%, rgba(224, 225, 233, 1) 0%, rgba(224, 225, 233, 1) 50%, rgba(224, 225, 233, 0.9) 0%, rgba(224, 225, 233, 0.9) 75%, rgba(224, 225, 233, 1) 0%)",
-    "components": ["progress-bar"]
+    "components": [
+      "progress-bar"
+    ]
   },
   {
     "name": "--intergalactic-progress-bar-value-bg",
     "type": "color",
     "rawValue": "#000000",
     "computedValue": "#000000",
-    "components": ["progress-bar"]
+    "components": [
+      "progress-bar"
+    ]
   },
   {
     "name": "--intergalactic-skeleton-bg",
     "type": "color",
     "rawValue": "{gray.100}, 0.8",
     "computedValue": "rgba(224, 225, 233, 0.8)",
-    "components": ["skeleton"]
+    "components": [
+      "skeleton"
+    ]
   },
   {
     "name": "--intergalactic-skeleton-bg-invert",
     "type": "color",
     "rawValue": "{gray.white}, 0.3",
     "computedValue": "rgba(255, 255, 255, 0.3)",
-    "components": ["skeleton"]
+    "components": [
+      "skeleton"
+    ]
   },
   {
     "name": "--intergalactic-status-beta",
@@ -1293,28 +1551,36 @@
     "type": "color",
     "rawValue": "{gray.50}",
     "computedValue": "#f4f5f9",
-    "components": ["data-table"]
+    "components": [
+      "data-table"
+    ]
   },
   {
     "name": "--intergalactic-table-th-primary-cell-hover",
     "type": "color",
     "rawValue": "{gray.100}",
     "computedValue": "#e0e1e9",
-    "components": ["data-table"]
+    "components": [
+      "data-table"
+    ]
   },
   {
     "name": "--intergalactic-table-th-primary-cell-active",
     "type": "color",
     "rawValue": "{gray.100}",
     "computedValue": "#e0e1e9",
-    "components": ["data-table"]
+    "components": [
+      "data-table"
+    ]
   },
   {
     "name": "--intergalactic-table-th-secondary-cell",
     "type": "color",
     "rawValue": "{gray.white}",
     "computedValue": "#ffffff",
-    "components": ["data-table"]
+    "components": [
+      "data-table"
+    ]
   },
   {
     "name": "--intergalactic-table-th-gradient",
@@ -1349,7 +1615,9 @@
     "type": "color",
     "rawValue": "{gray.50}",
     "computedValue": "#f4f5f9",
-    "components": ["data-table"]
+    "components": [
+      "data-table"
+    ]
   },
   {
     "name": "--intergalactic-table-td-cell-actions-accordion",
@@ -1363,14 +1631,18 @@
     "type": "color",
     "rawValue": "{blue.50}",
     "computedValue": "#e9f7ff",
-    "components": ["data-table"]
+    "components": [
+      "data-table"
+    ]
   },
   {
     "name": "--intergalactic-table-td-cell-selected-hover",
     "type": "color",
     "rawValue": "{blue.100}",
     "computedValue": "#c4e5fe",
-    "components": ["data-table"]
+    "components": [
+      "data-table"
+    ]
   },
   {
     "name": "--intergalactic-table-td-cell-selected-active",
@@ -1384,14 +1656,18 @@
     "type": "color",
     "rawValue": "{green.50}",
     "computedValue": "#dbfee8",
-    "components": ["data-table"]
+    "components": [
+      "data-table"
+    ]
   },
   {
     "name": "--intergalactic-table-td-cell-new-hover",
     "type": "color",
     "rawValue": "{green.100}",
     "computedValue": "#9ef2c9",
-    "components": ["data-table"]
+    "components": [
+      "data-table"
+    ]
   },
   {
     "name": "--intergalactic-table-td-cell-new-active",
@@ -1405,14 +1681,18 @@
     "type": "color",
     "rawValue": "{red.50}",
     "computedValue": "#fff0f7",
-    "components": ["data-table"]
+    "components": [
+      "data-table"
+    ]
   },
   {
     "name": "--intergalactic-table-td-cell-critical-hover",
     "type": "color",
     "rawValue": "{red.100}",
     "computedValue": "#ffd7df",
-    "components": ["data-table"]
+    "components": [
+      "data-table"
+    ]
   },
   {
     "name": "--intergalactic-table-td-cell-critical-active",
@@ -1426,14 +1706,18 @@
     "type": "color",
     "rawValue": "{orange.50}",
     "computedValue": "#fff3d9",
-    "components": ["data-table"]
+    "components": [
+      "data-table"
+    ]
   },
   {
     "name": "--intergalactic-table-td-cell-warning-hover",
     "type": "color",
     "rawValue": "{orange.100}",
     "computedValue": "#ffdca2",
-    "components": ["data-table"]
+    "components": [
+      "data-table"
+    ]
   },
   {
     "name": "--intergalactic-table-td-cell-warning-active",
@@ -1533,7 +1817,9 @@
     "type": "boxShadow",
     "rawValue": "0px 0px 1px 0px rgba({gray.800}, 0.16); 0px 1px 2px 0px rgba({gray.800}, 0.12)",
     "computedValue": "0px 0px 1px 0px rgba(25, 27, 35, 0.16), 0px 1px 2px 0px rgba(25, 27, 35, 0.12)",
-    "components": ["card"]
+    "components": [
+      "card"
+    ]
   },
   {
     "name": "--intergalactic-box-shadow-card-hover",
@@ -1556,14 +1842,22 @@
     "rawValue": "0px 3px 8px 0px rgba({gray.800}, 0.2)",
     "computedValue": "0px 3px 8px 0px rgba(25, 27, 35, 0.2)",
     "description": "[gray800, .2]",
-    "components": ["modal"]
+    "components": [
+      "modal"
+    ]
   },
   {
     "name": "--intergalactic-box-shadow-popper",
     "type": "boxShadow",
     "rawValue": "0px 1px 12px 0px rgba({gray.800}, 0.15)",
     "computedValue": "0px 1px 12px 0px rgba(25, 27, 35, 0.15)",
-    "components": ["d3-chart", "dropdown", "feature-popover", "side-panel", "tooltip"]
+    "components": [
+      "d3-chart",
+      "dropdown",
+      "feature-popover",
+      "side-panel",
+      "tooltip"
+    ]
   },
   {
     "name": "--intergalactic-keyboard-focus",
@@ -1593,8 +1887,8 @@
       "side-panel",
       "slider",
       "switch",
-      "tab-panel",
       "tab-line",
+      "tab-panel",
       "textarea",
       "time-picker",
       "typography"
@@ -1605,21 +1899,38 @@
     "type": "boxShadow",
     "rawValue": "0px 0px 0px 3px rgba({red.400}, 0.3)",
     "computedValue": "0px 0px 0px 3px rgba(255, 73, 83, 0.3)",
-    "components": ["base-trigger", "checkbox", "inline-input", "input", "radio", "textarea"]
+    "components": [
+      "base-trigger",
+      "checkbox",
+      "inline-input",
+      "input",
+      "radio",
+      "textarea"
+    ]
   },
   {
     "name": "--intergalactic-keyboard-focus-valid",
     "type": "boxShadow",
     "rawValue": "0px 0px 0px 3px rgba({green.400}, 0.3)",
     "computedValue": "0px 0px 0px 3px rgba(0, 159, 129, 0.3)",
-    "components": ["inline-input", "input", "textarea"]
+    "components": [
+      "inline-input",
+      "input",
+      "textarea"
+    ]
   },
   {
     "name": "--intergalactic-base",
     "type": "fontFamilies",
     "rawValue": "Inter",
     "computedValue": "Inter",
-    "components": ["base-trigger", "breadcrumbs", "button", "card", "side-panel"]
+    "components": [
+      "base-trigger",
+      "breadcrumbs",
+      "button",
+      "card",
+      "side-panel"
+    ]
   },
   {
     "name": "--intergalactic-lh-800",
@@ -1627,7 +1938,10 @@
     "rawValue": "117%",
     "computedValue": "117%",
     "description": "Use with font-size-800.",
-    "components": ["format-text", "typography"]
+    "components": [
+      "format-text",
+      "typography"
+    ]
   },
   {
     "name": "--intergalactic-lh-700",
@@ -1635,7 +1949,11 @@
     "rawValue": "110%",
     "computedValue": "110%",
     "description": "Use with font-size-700.",
-    "components": ["errors", "format-text", "typography"]
+    "components": [
+      "errors",
+      "format-text",
+      "typography"
+    ]
   },
   {
     "name": "--intergalactic-lh-600",
@@ -1643,7 +1961,10 @@
     "rawValue": "125%",
     "computedValue": "125%",
     "description": "Use with font-size-600.",
-    "components": ["format-text", "typography"]
+    "components": [
+      "format-text",
+      "typography"
+    ]
   },
   {
     "name": "--intergalactic-lh-500",
@@ -1651,7 +1972,11 @@
     "rawValue": "117%",
     "computedValue": "117%",
     "description": "Use with font-size-500.",
-    "components": ["format-text", "fullscreen-modal", "typography"]
+    "components": [
+      "format-text",
+      "fullscreen-modal",
+      "typography"
+    ]
   },
   {
     "name": "--intergalactic-lh-400",
@@ -1659,7 +1984,12 @@
     "rawValue": "120%",
     "computedValue": "120%",
     "description": "Use with font-size-400.",
-    "components": ["format-text", "product-head", "textarea", "typography"]
+    "components": [
+      "format-text",
+      "product-head",
+      "textarea",
+      "typography"
+    ]
   },
   {
     "name": "--intergalactic-lh-300",
@@ -1705,8 +2035,8 @@
       "radio",
       "side-panel",
       "switch",
-      "tab-panel",
       "tab-line",
+      "tab-panel",
       "tag",
       "textarea",
       "tooltip",
@@ -1738,7 +2068,9 @@
     "type": "fontWeights",
     "rawValue": "600",
     "computedValue": "600",
-    "components": ["product-head"]
+    "components": [
+      "product-head"
+    ]
   },
   {
     "name": "--intergalactic-bold",
@@ -1764,7 +2096,10 @@
     "type": "fontWeights",
     "rawValue": "400",
     "computedValue": "400",
-    "components": ["base-trigger", "date-picker"]
+    "components": [
+      "base-trigger",
+      "date-picker"
+    ]
   },
   {
     "name": "--intergalactic-medium",
@@ -1776,8 +2111,8 @@
       "button",
       "counter",
       "format-text",
-      "tab-panel",
       "tab-line",
+      "tab-panel",
       "tag",
       "time-picker",
       "typography"
@@ -1789,7 +2124,12 @@
     "rawValue": "10px",
     "computedValue": "10px",
     "description": "Use only for text in Badge component.",
-    "components": ["badge", "counter", "d3-chart", "dot"]
+    "components": [
+      "badge",
+      "counter",
+      "d3-chart",
+      "dot"
+    ]
   },
   {
     "name": "--intergalactic-fs-100",
@@ -1830,15 +2170,15 @@
       "fullscreen-modal",
       "input",
       "notice",
-      "notice-global",
       "notice-bubble",
+      "notice-global",
       "pagination",
       "pills",
       "product-head",
       "radio",
       "switch",
-      "tab-panel",
       "tab-line",
+      "tab-panel",
       "tag",
       "textarea",
       "time-picker",
@@ -1882,7 +2222,11 @@
     "rawValue": "20px",
     "computedValue": "20px",
     "description": "Use for H5 and subtitles.",
-    "components": ["format-text", "product-head", "typography"]
+    "components": [
+      "format-text",
+      "product-head",
+      "typography"
+    ]
   },
   {
     "name": "--intergalactic-fs-500",
@@ -1890,7 +2234,11 @@
     "rawValue": "24px",
     "computedValue": "24px",
     "description": "Use for H4.",
-    "components": ["format-text", "fullscreen-modal", "typography"]
+    "components": [
+      "format-text",
+      "fullscreen-modal",
+      "typography"
+    ]
   },
   {
     "name": "--intergalactic-fs-600",
@@ -1898,7 +2246,10 @@
     "rawValue": "32px",
     "computedValue": "32px",
     "description": "Use for H3.",
-    "components": ["format-text", "typography"]
+    "components": [
+      "format-text",
+      "typography"
+    ]
   },
   {
     "name": "--intergalactic-fs-700",
@@ -1906,7 +2257,11 @@
     "rawValue": "36px",
     "computedValue": "36px",
     "description": "Use for H2.",
-    "components": ["errors", "format-text", "typography"]
+    "components": [
+      "errors",
+      "format-text",
+      "typography"
+    ]
   },
   {
     "name": "--intergalactic-fs-800",
@@ -1914,7 +2269,10 @@
     "rawValue": "48px",
     "computedValue": "48px",
     "description": "Use for H1.",
-    "components": ["format-text", "typography"]
+    "components": [
+      "format-text",
+      "typography"
+    ]
   },
   {
     "name": "--intergalactic-compact",
@@ -1937,7 +2295,11 @@
     "rawValue": "{scale-indent}*7",
     "computedValue": "28px",
     "description": "Use for default size of the controls.",
-    "components": ["input", "pills", "time-picker"]
+    "components": [
+      "input",
+      "pills",
+      "time-picker"
+    ]
   },
   {
     "name": "--intergalactic-form-control-l",
@@ -1945,7 +2307,11 @@
     "rawValue": "{scale-indent}*10",
     "computedValue": "40px",
     "description": "Use for large size of the controls.",
-    "components": ["input", "pills", "time-picker"]
+    "components": [
+      "input",
+      "pills",
+      "time-picker"
+    ]
   },
   {
     "name": "--intergalactic-spacing-05x",
@@ -1959,8 +2325,8 @@
       "dropdown-menu",
       "feedback-form",
       "format-text",
-      "link",
       "input-tags",
+      "link",
       "notice",
       "notice-global",
       "radio",
@@ -1990,8 +2356,8 @@
       "fullscreen-modal",
       "inline-input",
       "input",
-      "link",
       "input-tags",
+      "link",
       "notice-bubble",
       "pagination",
       "product-head",
@@ -2020,15 +2386,15 @@
       "data-table",
       "date-picker",
       "dropdown-menu",
-      "feedback-form",
       "feature-popover",
+      "feedback-form",
       "format-text",
       "fullscreen-modal",
       "input",
       "input-tags",
       "notice",
-      "notice-global",
       "notice-bubble",
+      "notice-global",
       "pagination",
       "pills",
       "product-head",
@@ -2037,8 +2403,8 @@
       "select",
       "slider",
       "switch",
-      "tab-panel",
       "tab-line",
+      "tab-panel",
       "textarea",
       "time-picker",
       "typography",
@@ -2087,8 +2453,8 @@
       "date-picker",
       "drag-and-drop",
       "errors",
-      "feedback-form",
       "feature-popover",
+      "feedback-form",
       "format-text",
       "notice",
       "notice-global",
@@ -2137,8 +2503,8 @@
     "computedValue": "32px",
     "components": [
       "errors",
-      "feedback-form",
       "feature-popover",
+      "feedback-form",
       "format-text",
       "fullscreen-modal",
       "notice-global",
@@ -2150,21 +2516,33 @@
     "type": "spacing",
     "rawValue": "{scale-indent}*10",
     "computedValue": "40px",
-    "components": ["errors", "feedback-form", "fullscreen-modal", "modal", "side-panel", "wizard"]
+    "components": [
+      "errors",
+      "feedback-form",
+      "fullscreen-modal",
+      "modal",
+      "side-panel",
+      "wizard"
+    ]
   },
   {
     "name": "--intergalactic-spacing-14x",
     "type": "spacing",
     "rawValue": "{scale-indent}*14",
     "computedValue": "56px",
-    "components": ["side-panel"]
+    "components": [
+      "side-panel"
+    ]
   },
   {
     "name": "--intergalactic-spacing-20x",
     "type": "spacing",
     "rawValue": "{scale-indent}*20",
     "computedValue": "80px",
-    "components": ["errors", "fullscreen-modal"]
+    "components": [
+      "errors",
+      "fullscreen-modal"
+    ]
   },
   {
     "name": "--intergalactic-spacing-24x",
@@ -2186,7 +2564,10 @@
     "rawValue": "4px",
     "computedValue": "4px",
     "description": "Use only for checkbox and placeholder addons.",
-    "components": ["checkbox", "select"]
+    "components": [
+      "checkbox",
+      "select"
+    ]
   },
   {
     "name": "--intergalactic-rounded-medium",
@@ -2206,8 +2587,8 @@
       "drag-and-drop",
       "dropdown",
       "dropdown-menu",
-      "feedback-form",
       "feature-popover",
+      "feedback-form",
       "input",
       "notice",
       "notice-bubble",
@@ -2228,7 +2609,11 @@
     "rawValue": "12px",
     "computedValue": "12px",
     "description": "Use for all inputs and controls, widgets.",
-    "components": ["counter", "modal", "wizard"]
+    "components": [
+      "counter",
+      "modal",
+      "wizard"
+    ]
   },
   {
     "name": "--intergalactic-rounded-extra-large",
@@ -2236,7 +2621,10 @@
     "rawValue": "24px",
     "computedValue": "24px",
     "description": "Use for Tag.",
-    "components": ["switch", "tag"]
+    "components": [
+      "switch",
+      "tag"
+    ]
   },
   {
     "name": "--intergalactic-disabled-opacity",
@@ -2252,15 +2640,15 @@
       "checkbox",
       "dropdown-menu",
       "inline-input",
-      "input-number",
       "input",
+      "input-number",
       "link",
       "pills",
       "radio",
       "slider",
       "switch",
-      "tab-panel",
       "tab-line",
+      "tab-panel",
       "tag",
       "textarea",
       "time-picker",
@@ -2306,7 +2694,10 @@
     "rawValue": "{gray.800}, 0.7",
     "computedValue": "rgba(25, 27, 35, 0.7)",
     "description": "Use for cover the content under the modal dialogs.",
-    "components": ["modal", "side-panel"]
+    "components": [
+      "modal",
+      "side-panel"
+    ]
   },
   {
     "name": "--intergalactic-overlay-secondary",
@@ -2314,7 +2705,10 @@
     "rawValue": "{gray.800}, 0.4",
     "computedValue": "rgba(25, 27, 35, 0.4)",
     "description": "Use for the secondary modal dialogs that were opened upon the other modal dialogs.",
-    "components": ["modal", "spin-container"]
+    "components": [
+      "modal",
+      "spin-container"
+    ]
   },
   {
     "name": "--intergalactic-overlay-limitation-primary",
@@ -2337,28 +2731,37 @@
     "type": "other",
     "rawValue": "-999",
     "computedValue": "-999",
-    "components": ["date-picker"]
+    "components": [
+      "date-picker"
+    ]
   },
   {
     "name": "--intergalactic-z-index-overlay",
     "type": "other",
     "rawValue": "500",
     "computedValue": "500",
-    "components": ["d3-chart", "side-panel"]
+    "components": [
+      "d3-chart",
+      "side-panel"
+    ]
   },
   {
     "name": "--intergalactic-z-index-modal",
     "type": "other",
     "rawValue": "600",
     "computedValue": "600",
-    "components": ["modal"]
+    "components": [
+      "modal"
+    ]
   },
   {
     "name": "--intergalactic-z-index-popper",
     "type": "other",
     "rawValue": "700",
     "computedValue": "700",
-    "components": ["popper"]
+    "components": [
+      "popper"
+    ]
   },
   {
     "name": "--intergalactic-z-index-dropdown",
@@ -2379,105 +2782,135 @@
     "type": "other",
     "rawValue": "999",
     "computedValue": "999",
-    "components": ["notice-bubble"]
+    "components": [
+      "notice-bubble"
+    ]
   },
   {
     "name": "--intergalactic-tooltip-default",
     "type": "color",
     "rawValue": "{gray.white}",
     "computedValue": "#ffffff",
-    "components": ["tooltip"]
+    "components": [
+      "tooltip"
+    ]
   },
   {
     "name": "--intergalactic-tooltip-warning",
     "type": "color",
     "rawValue": "{red.100}",
     "computedValue": "#ffd7df",
-    "components": ["tooltip"]
+    "components": [
+      "tooltip"
+    ]
   },
   {
     "name": "--intergalactic-tooltip-invert",
     "type": "color",
     "rawValue": "{gray.800}",
     "computedValue": "#191b23",
-    "components": ["tooltip"]
+    "components": [
+      "tooltip"
+    ]
   },
   {
     "name": "--intergalactic-neighbor-location-neutral",
     "type": "color",
     "rawValue": "rgba(255, 255, 255, 0.5)",
     "computedValue": "rgba(255, 255, 255, 0.5)",
-    "components": ["button"]
+    "components": [
+      "button"
+    ]
   },
   {
     "name": "--intergalactic-neighbor-location-invert",
     "type": "color",
     "rawValue": "rgba(0, 0, 0, 0.5)",
     "computedValue": "rgba(0, 0, 0, 0.5)",
-    "components": ["button"]
+    "components": [
+      "button"
+    ]
   },
   {
     "name": "--intergalactic-scroll-area-shadow-left",
     "type": "color",
     "rawValue": "linear-gradient(to right, rgba($gray.800, 0.1) 20.55%, rgba($gray.white, 0.0001) 100%)",
     "computedValue": "linear-gradient(to right, rgba(25, 27, 35, 0.1) 20.55%, rgba(255, 255, 255, 0.0001) 100%)",
-    "components": ["scroll-area"]
+    "components": [
+      "scroll-area"
+    ]
   },
   {
     "name": "--intergalactic-scroll-area-shadow-right",
     "type": "color",
     "rawValue": "linear-gradient(to left, rgba($gray.800, 0.1) 20.55%, rgba($gray.white, 0.0001) 100%)",
     "computedValue": "linear-gradient(to left, rgba(25, 27, 35, 0.1) 20.55%, rgba(255, 255, 255, 0.0001) 100%)",
-    "components": ["scroll-area"]
+    "components": [
+      "scroll-area"
+    ]
   },
   {
     "name": "--intergalactic-scroll-area-shadow-top",
     "type": "color",
     "rawValue": "linear-gradient(to bottom, rgba($gray.800, 0.1) 20.55%, rgba($gray.white, 0.0001) 100%)",
     "computedValue": "linear-gradient(to bottom, rgba(25, 27, 35, 0.1) 20.55%, rgba(255, 255, 255, 0.0001) 100%)",
-    "components": ["scroll-area"]
+    "components": [
+      "scroll-area"
+    ]
   },
   {
     "name": "--intergalactic-scroll-area-shadow-bottom",
     "type": "color",
     "rawValue": "linear-gradient(to top, rgba($gray.800, 0.1) 20.55%, rgba($gray.white, 0.0001) 100%)",
     "computedValue": "linear-gradient(to top, rgba(25, 27, 35, 0.1) 20.55%, rgba(255, 255, 255, 0.0001) 100%)",
-    "components": ["scroll-area"]
+    "components": [
+      "scroll-area"
+    ]
   },
   {
     "name": "--intergalactic-scroll-area-dropdown-menu-left",
     "type": "color",
     "rawValue": "linear-gradient(to right, rgba($gray.white, 1) 34.38%, rgba($gray.white, 0) 100%)",
     "computedValue": "linear-gradient(to right, rgba(255, 255, 255, 1) 34.38%, rgba(255, 255, 255, 0) 100%)",
-    "components": ["dropdown-menu"]
+    "components": [
+      "dropdown-menu"
+    ]
   },
   {
     "name": "--intergalactic-scroll-area-dropdown-menu-right",
     "type": "color",
     "rawValue": "linear-gradient(to left, rgba($gray.white, 1) 34.38%, rgba($gray.white, 0) 100%)",
     "computedValue": "linear-gradient(to left, rgba(255, 255, 255, 1) 34.38%, rgba(255, 255, 255, 0) 100%)",
-    "components": ["dropdown-menu"]
+    "components": [
+      "dropdown-menu"
+    ]
   },
   {
     "name": "--intergalactic-scroll-area-dropdown-menu-bottom",
     "type": "color",
     "rawValue": "linear-gradient(to top, rgba($gray.white, 1) 34.38%, rgba($gray.white, 0) 100%)",
     "computedValue": "linear-gradient(to top, rgba(255, 255, 255, 1) 34.38%, rgba(255, 255, 255, 0) 100%)",
-    "components": ["dropdown-menu"]
+    "components": [
+      "dropdown-menu"
+    ]
   },
   {
     "name": "--intergalactic-scroll-area-dropdown-menu-top",
     "type": "color",
     "rawValue": "linear-gradient(to bottom, rgba($gray.white, 1) 34.38%, rgba($gray.white, 0) 100%)",
     "computedValue": "linear-gradient(to bottom, rgba(255, 255, 255, 1) 34.38%, rgba(255, 255, 255, 0) 100%)",
-    "components": ["dropdown-menu"]
+    "components": [
+      "dropdown-menu"
+    ]
   },
   {
     "name": "--intergalactic-scroll-bar-background",
     "type": "color",
     "rawValue": "{gray.800}, 0.3",
     "computedValue": "rgba(25, 27, 35, 0.3)",
-    "components": ["scroll-area"]
+    "components": [
+      "scroll-area"
+    ]
   },
   {
     "name": "--intergalactic-tag-primary-gray-normal",
@@ -2582,14 +3015,18 @@
     "type": "color",
     "rawValue": "{gray.white}, 0.15",
     "computedValue": "rgba(255, 255, 255, 0.15)",
-    "components": ["tag"]
+    "components": [
+      "tag"
+    ]
   },
   {
     "name": "--intergalactic-tag-primary-white-hover-active",
     "type": "color",
     "rawValue": "{gray.white}, 0.3",
     "computedValue": "rgba(255, 255, 255, 0.3)",
-    "components": ["tag"]
+    "components": [
+      "tag"
+    ]
   },
   {
     "name": "--intergalactic-tag-primary-gray-text",
@@ -2659,7 +3096,9 @@
     "type": "color",
     "rawValue": "{gray.50}",
     "computedValue": "#f4f5f9",
-    "components": ["tag"]
+    "components": [
+      "tag"
+    ]
   },
   {
     "name": "--intergalactic-tag-secondary-white-normal",
@@ -2702,14 +3141,18 @@
     "type": "color",
     "rawValue": "{blue.300}",
     "computedValue": "#2bb3ff",
-    "components": ["d3-chart"]
+    "components": [
+      "d3-chart"
+    ]
   },
   {
     "name": "--intergalactic-chart-palette-order-green",
     "type": "color",
     "rawValue": "{green.200}",
     "computedValue": "#59ddaa",
-    "components": ["d3-chart"]
+    "components": [
+      "d3-chart"
+    ]
   },
   {
     "name": "--intergalactic-chart-palette-order-orange",
@@ -2758,7 +3201,9 @@
     "type": "color",
     "rawValue": "{blue.400}",
     "computedValue": "#008ff8",
-    "components": ["d3-chart"]
+    "components": [
+      "d3-chart"
+    ]
   },
   {
     "name": "--intergalactic-chart-palette-order-green-second-order",
@@ -2877,14 +3322,18 @@
     "type": "color",
     "rawValue": "{gray.200}",
     "computedValue": "#c4c7cf",
-    "components": ["d3-chart"]
+    "components": [
+      "d3-chart"
+    ]
   },
   {
     "name": "--intergalactic-chart-palette-order-null",
     "type": "color",
     "rawValue": "{gray.100}",
     "computedValue": "#e0e1e9",
-    "components": ["d3-chart"]
+    "components": [
+      "d3-chart"
+    ]
   },
   {
     "name": "--intergalactic-chart-grid-line",
@@ -2898,7 +3347,9 @@
     "type": "color",
     "rawValue": "{gray.200}",
     "computedValue": "#c4c7cf",
-    "components": ["d3-chart"]
+    "components": [
+      "d3-chart"
+    ]
   },
   {
     "name": "--intergalactic-chart-grid-y-accent-hover-line",
@@ -2912,14 +3363,18 @@
     "type": "color",
     "rawValue": "{gray.500}",
     "computedValue": "#6c6e79",
-    "components": ["d3-chart"]
+    "components": [
+      "d3-chart"
+    ]
   },
   {
     "name": "--intergalactic-chart-grid-bar-chart-hover",
     "type": "color",
     "rawValue": "{gray.200}, 0.3",
     "computedValue": "rgba(196, 199, 207, 0.3)",
-    "components": ["d3-chart"]
+    "components": [
+      "d3-chart"
+    ]
   },
   {
     "name": "--intergalactic-chart-grid-bar-chart-base-bg",
@@ -2933,14 +3388,18 @@
     "type": "color",
     "rawValue": "{gray.200}, 0.2",
     "computedValue": "rgba(196, 199, 207, 0.2)",
-    "components": ["d3-chart"]
+    "components": [
+      "d3-chart"
+    ]
   },
   {
     "name": "--intergalactic-chart-grid-border",
     "type": "color",
     "rawValue": "{gray.white}",
     "computedValue": "#ffffff",
-    "components": ["d3-chart"]
+    "components": [
+      "d3-chart"
+    ]
   },
   {
     "name": "--intergalactic-chart-x-axis-accent-period-active",

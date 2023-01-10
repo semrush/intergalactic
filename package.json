@@ -22,7 +22,6 @@
     "legacy-publish": "legacy-publisher --root ./semcore",
     "lint:es": "eslint -c .eslintrc --ext .ts,.tsx,.js,.jsx ./semcore",
     "lint:ts": "tsc --project tsconfig.json --noEmit",
-    "prettier:fix": "pretty-quick --ignore-path=./.prettierignore",
     "prepare": "husky install",
     "postinstall": "pnpm --filter @semcore/ui run clear",
     "i18n:submit": "pnpm crowdin upload",
