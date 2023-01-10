@@ -27,10 +27,10 @@ Addon before the text has margin-left, while the trailing addon has margin-right
 
 @## Sizes
 
-| Button size  | Icon size | Appearance example             | Description                                                                                                                          |
-| ------------ | --------- | ------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------ |
-| **M (28px)** | M         | ![button M](static/size-m.png) | This is the default size of the button. Use it freely in filters, dropdowns, tables, etc.                                            |
-| **L (40px)** | M         | ![button L](static/size-l.png) | Use this size in modal windows for main actions, empty pages and page states that need to focus user's attention on the main action. |
+| Button size  | Icon size | Appearance example             | Description                                                                                                              |
+| ------------ | --------- | ------------------------------ | ------------------------------------------------------------------------------------------------------------------------ |
+| **L (40px)** | M         | ![button L](static/size-l.png) | Use this size in modal windows for main actions, empty pages and page states that need to focus user on the main action. |
+| **M (28px)** | M         | ![button M](static/size-m.png) | This is the default size of the button. Use it freely in filters, dropdowns, tables, etc.                                |
 
 @## Button width
 
@@ -100,12 +100,11 @@ Invert theme button is used on dark or colored background. For example in [Toolt
 
 @## Margins between buttons
 
-**The margin between buttons shall be [multiple of 4](/style/variables/#main_denominator)**. If there are several buttons next to each other, use the recommended margins shown in table below.
+**The margin between buttons shall be [multiple of 4](/layout/box-system/#spacing_system)**. If there are several buttons next to each other, use the recommended margins shown in table below.
 
-| Button size | Margin                           |
-| ----------- | -------------------------------- |
-| M (28px)    | ![margin M](static/margin-2.png) |
-| L (40px)    | ![margin L](static/margin-1.png) |
+| L (40px)                         | M (28px)                         |
+| :------------------------------- | :------------------------------- |
+| ![margin L](static/margin-1.png) | ![margin M](static/margin-2.png) |
 
 @## Use in UX/UI
 

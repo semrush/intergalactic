@@ -1,6 +1,6 @@
 .searchInput {
-  margin-bottom: 12px;
-  max-width: 300px;
+  margin-bottom: 16px;
+  max-width: 400px;
 }
 
 .tokenNameWrapper {
@@ -21,8 +21,8 @@
 }
 
 .colorPreview {
-  width: 16px;
-  height: 16px;
+  width: 20px;
+  height: 20px;
   border-radius: 4px;
   display: inline-block;
   margin-right: 8px;

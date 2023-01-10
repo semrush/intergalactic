@@ -26,10 +26,10 @@ Links inside this component have custom styles.
 
 ![breadcrumbs style](static/breadcrumbs.png)
 
-| Element                  | Styles                                                                            |
-| ------------------------ | --------------------------------------------------------------------------------- |
-| [Link](/components/link) | `font-size: 14px; color: --gray-500; cursor: pointer;`, there is no `line-height` |
-| `ChevronRight` icon      | `color: --gray-300`; `cursor: default;`                                           |
+| Element             | Styles                                                                              |
+| ------------------- | ----------------------------------------------------------------------------------- |
+| Link                | `font-size: --fs-200;`, `color: --text-hint;` `cursor: pointer;`, no `line-height`. |
+| `ChevronRight` icon | `color: --icon-secondary-neutral;`, `cursor: default;`                              |
 
 ### Margins
 
@@ -47,11 +47,11 @@ If there is not enough place for the breadcrumbs (screen is too small or the tex
 
 ![breadcrumbs hover](static/hover.png)
 
-| State  | Styles                                                                            |
-| ------ | --------------------------------------------------------------------------------- |
-| normal | `font-size: 14px; color: --gray-500; cursor: pointer;`, there is no `line-height` |
-| hover  | `color: --gray-600;` + underline                                                  |
-| active | `color: --gray-800; cursor: default;`                                             |
+| State  | Styles                                                                                    |
+| ------ | ----------------------------------------------------------------------------------------- |
+| normal | `font-size: --fs-200;`, `color: var(--text-hint);`, `cursor: pointer;`, no `line-height`. |
+| hover  | `color: var(--text-hint-hover-active);` + underline                                       |
+| active | `color: var(--text-primary);`, `cursor: default;`                                         |
 
 @## Use in UX/UI
 

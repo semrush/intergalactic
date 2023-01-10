@@ -54,11 +54,11 @@ There are several themes of tags.
 
 User can create a tag using a tag with the `additional` theme.
 
-| State  | Appearance                          | Styles                                                                                       |
-| ------ | ----------------------------------- | -------------------------------------------------------------------------------------------- |
-| Normal | ![add tag state](static/normal.png) | `color: var(--gray-500); background-color: var(--white); border: 1px dotted var(--gray200);` |
-| Hover  | ![add tag state](static/hover.png)  | `background-color: var(--gray-50);`                                                          |
-| Active | ![add tag state](static/active.png) | `background-color: var(--gray-50);`                                                          |
+| State  | Appearance                          | Styles                                                                                                                         |
+| ------ | ----------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| Normal | ![add tag state](static/normal.png) | `color: var(--text-secondary);`, `background-color: var(--tag-secondary-normal);`, `border: 1px dotted var(--border-primary);` |
+| Hover  | ![add tag state](static/hover.png)  | `background-color: var(--tag-secondary-hover-active);`                                                                         |
+| Active | ![add tag state](static/active.png) | `background-color: var(--tag-secondary-hover-active);`                                                                         |
 
 This tag opens [InlineInput](/components/inline-input/). You can add a [mask label](/components/input-mask/) to keep the user in the context of what he needs to type into the input.
 

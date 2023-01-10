@@ -13,87 +13,91 @@ docs: true
 
 > **We recommend using red carefully**. It is usually used for destructive actions and invalid states.
 
-@## Colors for text and additional information
+@## Chart tokens
 
-| Color        | Usage                                                       |
-| ------------ | ----------------------------------------------------------- |
-| `--gray-800` | Basic text information                                      |
-| `--gray-500` | Additional text information                                 |
-| `--gray-100` | The X-axis and the accent lines on the grid when, if needed |
-| `--gray-200` | Additional guide lines                                      |
+You can find all tokens for charts in the [tokens list](/style/design-tokens/#semantic_tokens). They all have `chart` in their token name.
+
+@## Tokens for text and additional information
+
+| Token                 | Usage                                                       |
+| --------------------- | ----------------------------------------------------------- |
+| `--text-primary`      | Basic text information                                      |
+| `--text-secondary`    | Additional text information                                 |
+| `--chart-grid-line`   | The X-axis and the accent lines on the grid when, if needed |
+| `--chart-grid-x-axis` | Additional guide lines                                      |
 
 @## Colors usage
 
 There are two ways of coloring your data with our palette.
 
-@## Categorical order
+### Categorical order
 
-This way helps to choose colors with a predefined order and contrast for your data.
+This way helps to choose colors with a predefined order and contrast for your data. Use chart tokens from the [semantic tokens list](/style/design-tokens/#semantic_tokens) or tokens from the base palette in the [base tokens list](/style/design-tokens/#base_tokens_palette).
 
-### Basic pack
+#### Basic pack
 
 @import color-group {"group": "basicPack"}
 
-### Second pack
+#### Second pack
 
 @import color-group {"group": "secondPack"}
 
-### Third pack
+#### Third pack
 
 @import color-group {"group": "thirdPack"}
 
-### Other data
+#### Other data
 
-Use it to indicate voids, missing or some other data.
+Use `--chart-palette-order-other-data` token to indicate voids, missing or some other data.
 
 @import color-group {"group": "otherData"}
 
-@## Sequental order
+### Sequental order
 
-This way helps to color your data in a monochromatic way.
+This way helps to color your data in a monochromatic way. In this case use tokens from the base palette in the [tokens list](/style/design-tokens/#base).
 
-### Blue
+#### Blue
 
 @import color-group {"group": "blue"}
 
-### Green
+#### Green
 
 @import color-group {"group": "green"}
 
-### Salad
+#### Salad
 
 @import color-group {"group": "salad"}
 
-### Orange
+#### Orange
 
 @import color-group {"group": "orange"}
 
-### Yellow
+#### Yellow
 
 @import color-group {"group": "yellow"}
 
-### Red
+#### Red
 
 @import color-group {"group": "red"}
 
-### Pink
+#### Pink
 
 @import color-group {"group": "pink"}
 
-### Violet
+#### Violet
 
 @import color-group {"group": "violet"}
 
-### Gray
+#### Gray
 
 @import color-group {"group": "gray"}
 
-@## I need more colors 🙃
+@## Need more colors?
 
 > The recommended maximum number of colors on a chart is 30.
 
 30 and more colors are for the really complex cases where you need a large number of colors that will be set for the data by the system.
 
-To make a usable palette for this case first use a color with a hue of 300, then 200, then 400 and repeat this steps until you get the desired number of colors.
+To make a usable palette for this case first use [tokens from the base palette](/style/design-tokens/#base_tokens_palette) with a hue of 300, then 200, then 400 and repeat this steps until you get the desired number of colors.
 
 @page d3-chart-changelog

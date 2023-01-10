@@ -45,7 +45,7 @@ The stacked bar chart has no margin between categories inside the bar. **Choose 
 
 @## Interaction
 
-When you hover over a column, we highlight it with `--gray-200` color with .3 opacity. The hover takes up half of the margin column on the right and left sides.
+When you hover over a column, we highlight it with `--chart-grid-bar-chart-hover`. The hover takes up half of the margin column on the top and bottom sides.
 
 If the column is clickable, the cursor changes to `pointer`.
 

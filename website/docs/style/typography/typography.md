@@ -11,52 +11,52 @@ We use the [Inter](https://fonts.google.com/specimen/Inter?query=inter) font fam
 
 @## Basic text colors
 
-The main text color in our interface is `--gray-800`.
+For the main text color use `--text-primary` token.
 
-The color used for secondary text is `--gray-500`.
+For the secondary text color use `--text-secondary` token.
 
 Besides, both paragraphs headings and text can be colored in our main semantic colors. Depending on the situation, they are green, red, and orange.
 
 > Use this opportunity thoughtfully, and do not abuse the text coloring, as it can reduce it's readability. **Don't forget to check the text for contrast against its background**.
 
-@## Font variables
+@## Font size and line height
 
-| px   | em      | Variables              | Font family |
-| ---- | ------- | ---------------------- | ----------- |
-| 48px | 3em     | `--fs-800`, `--lh-800` | Inter       |
-| 36px | 2.25em  | `--fs-700; --lh-700;`  | Inter       |
-| 32px | 2em     | `--fs-600; --lh-600;`  | Inter       |
-| 24px | 1.5em   | `--fs-500; --lh-500;`  | Inter       |
-| 20px | 1.25em  | `--fs-400; --lh-400;`  | Inter       |
-| 16px | 1em     | `--fs-300; --lh-300;`  | Inter       |
-| 14px | 0.875em | `--fs-200; --lh-200;`  | Inter       |
-| 12px | 0.75em  | `--fs-100; --lh-100;`  | Inter       |
+| px   | em      | Font size tokens | Line height tokens |
+| ---- | ------- | ---------------- | ------------------ |
+| 48px | 3em     | `--fs-800`       | `--lh-800`         |
+| 36px | 2.25em  | `--fs-700;`      | `--lh-700;`        |
+| 32px | 2em     | `--fs-600;`      | `--lh-600;`        |
+| 24px | 1.5em   | `--fs-500;`      | `--lh-500;`        |
+| 20px | 1.25em  | `--fs-400;`      | `--lh-400;`        |
+| 16px | 1em     | `--fs-300;`      | `--lh-300;`        |
+| 14px | 0.875em | `--fs-200;`      | `--lh-200;`        |
+| 12px | 0.75em  | `--fs-100;`      | `--lh-100;`        |
 
-@example text-variables
+@example text-sizes
 
 @## Heading
 
-In our interface, we use headings of 6 sizes. All of them has `semibold (600)` font-weight.
+There are 6 sizes of headings in the design system. All of them has `semibold` font-weight (`--semi-bold` token).
 
-**The first 4 headings are usually used in hero blocks, large ad screens, banners and landing pages**.
+The first 4 headings are usually used in hero blocks, large advertising screens, banners and landing pages.
 
-|     | Appearance           | Styles                                                   | Variables              |
+|     | Appearance           | Styles                                                   | Tokens                 |
 | --- | -------------------- | -------------------------------------------------------- | ---------------------- |
 | h1  | ![h1](static/h1.png) | `font-size: 48px; line-height: 1.17; font-weight: bold;` | `--fs-800`, `--lh-800` |
 | h2  | ![h2](static/h2.png) | `font-size: 36px; line-height: 1.11; font-weight: bold;` | `--fs-700; --lh-700;`  |
 | h3  | ![h3](static/h3.png) | `font-size: 32px; line-height: 1.25; font-weight: bold;` | `--fs-600; --lh-600;`  |
 | h4  | ![h4](static/h4.png) | `font-size: 24px; line-height: 1.17; font-weight: bold;` | `--fs-500; --lh-500;`  |
 
-**The remaining headings are used for the content part of products and landing pages**. _For example, in widgets._
+The remaining headings are used for the content part of products and landing pages.
 
-|     | Appearance           | Styles                                                  | Variables             |
+|     | Appearance           | Styles                                                  | Tokens                |
 | --- | -------------------- | ------------------------------------------------------- | --------------------- |
 | h5  | ![h5](static/h5.png) | `font-size: 20px; line-height: 1.2; font-weight: bold;` | `--fs-400; --lh-400;` |
 | h6  | ![h6](static/h6.png) | `font-size: 16px; line-height: 1.5; font-weight: bold;` | `--fs-300; --lh-300;` |
 
 @## Heading with counter
 
-A heading can contain additional information, such as a counter of results found, and so on. They can be found in table headings. In these cases, the additional information is presented by secondary text of `--gray-500` color and `regular (400)` font-weight.
+A heading can contain additional information, such as a counter of results found, and so on. They can be found in table headings. In these cases, the additional information is presented by secondary text (`--text-secondary` token) and `regular` font-weight (`--regular` token).
 
 ![secondary text](static/secondary_info.png)
 
@@ -105,7 +105,7 @@ You can also use these margins when a paragraph is followed by a paragraph of sm
 
 Use these styles for highlighting metrics in your interface.
 
-| px   | Variables             | Margins                              |
+| px   | Tokens                | Appearance                           |
 | ---- | --------------------- | ------------------------------------ |
 | 32px | `--fs-600; --lh-600;` | ![metric 600](static/metric-600.png) |
 | 24px | `--fs-500; --lh-500;` | ![metric 500](static/metric-500.png) |
@@ -123,7 +123,7 @@ You can change text's style: make it `bold`, `italic`, a [link](/components/link
 
 @## List
 
-| px | Variables | Styles | Numbered list | Unordered list | Check list |
+| px | Tokens | Styles | Numbered list | Unordered list | Check list |
 | --- || --------------------------- | ----------------------------------------- | --------------------------------------- | ---------------------------------------- | ------------------------------------------- |
 | 16px | `--fs-300; --lh-300;` | `margin-bottom: 8px; padding-right: 8px;` | ![numbered list 16px](static/ol-16.png) | ![unordered list 16px](static/ul-16.png) | ![check list 16px](static/checklist-16.png) |
 | 14px | `--fs-200; --lh-200;` | `margin-bottom: 8px; padding-right: 8px;` | ![numbered list 14px](static/ol-14.png) | ![unordered list 14px](static/ul-14.png) | ![check list 14px](static/checklist-14.png) |
@@ -133,7 +133,7 @@ You can change text's style: make it `bold`, `italic`, a [link](/components/link
 
 Each next level of the nested list is always indented to the left. **Indents between the list levels for all font sizes are 8px**.
 
-| px   | Variables             | Margins                                          |
+| px   | Tokens                | Margins                                          |
 | ---- | --------------------- | ------------------------------------------------ |
 | 16px | `--fs-300; --lh-300;` | ![second level list](static/second-level-16.png) |
 | 14px | `--fs-200; --lh-200;` | ![second level list](static/second-level-14.png) |
@@ -153,12 +153,12 @@ The text can be wrapped in a **hint link (pseudo-link)**. In this case, it becom
 
 ### Hint link states
 
-| State        | Appearance                            | Description                                                                                                                                                                                              | Cursor                                                          |
-| ------------ | ------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- |
-| normal       | ![normal](static/hint-default.png)    | Link has `--gray-500` color and is underlined with dashed bottom border. color.                                                                                                                          | `help` or `pointer`, if clickable                               |
-| active/hover | ![hover](static/hint-hover.png)       | **Link changes it's color to `--gray-600`**. The dotted underlining remains. If a link is used together with the icon, the latter changes its color along with the text — they have the same hover area. | `help`, `default` or `pointer` (depending on the usage context) |
-| disabled     | ![disabled](static/hint-disabled.png) | **The transparency of a component changes by 30%**. Use this state as the last resort and be sure to label the disabled link with an explanatory tooltip.                                                | `default`                                                       |
-| visited      |                                       | This link does not have `visited` state.                                                                                                                                                                 |                                                                 |
+| State        | Appearance                            | Styles and tokens                                                                                                                                  | Cursor                                                          |
+| ------------ | ------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- |
+| normal       | ![normal](static/hint-default.png)    | `--text-hint` and underlined with dashed border-bottom.                                                                                            | `help` or `pointer`, if clickable                               |
+| active/hover | ![hover](static/hint-hover.png)       | `--text-hint-hover-active` and underlined with dashed border-bottom. If link is used with an icon, the icon changes its color along with the text. | `help`, `default` or `pointer` (depending on the usage context) |
+| disabled     | ![disabled](static/hint-disabled.png) | `--disabled-opacity`. Use this state as the last resort and be sure to label the disabled link with an explanatory tooltip.                        | `default`                                                       |
+| visited      |                                       | This link does not have `visited` state.                                                                                                           |                                                                 |
 
 @## Which heading with which paragraph size shall be used?
 

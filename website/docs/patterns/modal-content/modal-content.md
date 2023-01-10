@@ -49,18 +49,14 @@ We also recommend you to use controls with L size in modal windows.
 For the dual-zone modal window use:
 
 ```
-background-color: var(--gray-50);
+background-color: var(--bg-secondary-neutral);
 ```
 
 ![two-zone modal](static/m-modal.png)
 
 @## Fixed header and footer
 
-While scrolling the modal's content area fixed areas get following shadow style:
-
-```
-background: linear-gradient(180deg, rgba(25, 27, 35, 0.1) 20.55%, rgba(255, 255, 255, 0.0001) 100%);
-```
+While scrolling the modal's content area fixed areas gets shadows from the top and bottom sides.
 
 Make paddings inside the fixed area not too big (for example, 8px).
 

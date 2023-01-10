@@ -30,19 +30,19 @@ Fullscreen modal window consists of:
 For the header of the fullscreen window use the following styles:
 
 - for title use text with 24px size (`--fs-500; --lh-500;`) and bold font-weight;
-- for additional information next to the title use text with 12px size (`--fs-100; --lh-100;`) and `--gray-500` color.
+- for additional information next to the title use text with 12px size (`--fs-100; --lh-100;`) and `--text-secondary` token for text color.
 - for return button use button with M size.
-- for window closing icon use Close icon with M size.
+- for window closing icon use `Close` icon with M size.
 
 > Fix the header, while user scrolls the content of the window.
 
 ### Sizes, margins and paddings
 
-```css
+<!-- ```css
 height: 78px;
 padding: 40px 72px 8px 32px;
-border-bottom: 1px solid var(--gray-200);
-```
+border-bottom: 1px solid var(--border-primary);
+``` -->
 
 ![fullscreem modal header margins](static/header.png)
 
@@ -54,22 +54,20 @@ border-bottom: 1px solid var(--gray-200);
 
 If the title of the window is very long and it does not fit into the space, collapse it to `ellipsis`.
 
-The Close icon has `margin-left: 12px;`.
+`Close` icon has `margin-left: var(--spacing-3x);`.
 
 ![fullscreem modal](static/long-heading.png)
 
 @## Content
 
 - For content title use text less than 20px (`--fs-500`) to maintain hierarchy in the content.
-- You can divide content area into several areas. To visually separate them, use `--gray-50` as a background color for one of them.
+- You can divide content area into several areas. To visually separate them, use `--bg-secondary-neutral` token as a background color for one of them.
 
 | Single-zone modal window                           | Dual-zone modal window                             |
 | -------------------------------------------------- | -------------------------------------------------- |
 | ![fullscreem modal](static/fullscreen-modal-3.png) | ![fullscreem modal](static/fullscreen-modal-2.png) |
 
 ### Paddings
-
-`padding: 24px 32px;`
 
 | Single-zone modal window                 | Dual-zone modal window                     |
 | ---------------------------------------- | ------------------------------------------ |
@@ -86,11 +84,13 @@ The Close icon has `margin-left: 12px;`.
 
 @## Footer
 
-```css
+Footer has the same padding as the header has.
+
+<!-- ```css
 height: 52px;
 padding: 40px 72px 8px 32px;
-border-top: 1px solid var(--gray-200);
-```
+border-top: 1px solid var(--border-primary);
+``` -->
 
 ![fullscreem modal](static/footer-fixed.png)
 

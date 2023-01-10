@@ -14,10 +14,10 @@ tabName: Design
 
 Divider has two types: `primary` and `secondary`. Secondary type helps to separate and show the connection between two parts of the content.
 
-|        | Appearance                           | Styles                           |
-| ------ | ------------------------------------ | -------------------------------- |
-| solid  | ![solid-divider](static/solid.png)   | `border: 1px solid --gray-200;`  |
-| dashed | ![dashed-divider](static/dashed.png) | `border: 1px dashed --gray-200;` |
+|        | Appearance                           | Styles                                      |
+| ------ | ------------------------------------ | ------------------------------------------- |
+| solid  | ![solid-divider](static/solid.png)   | `border: 1px solid var(--border-primary);`  |
+| dashed | ![dashed-divider](static/dashed.png) | `border: 1px dashed var(--border-primary);` |
 
 @## Orientation
 
@@ -30,10 +30,10 @@ Divider has two types: `primary` and `secondary`. Secondary type helps to separa
 
 The divider can be used either on a light or dark/colored background.
 
-|         | Appearance                                   | Styles                                       |
-| ------- | -------------------------------------------- | -------------------------------------------- |
-| default | ![default-divider](static/default-theme.png) | `border: 1px solid --gray-200;`              |
-| invert  | ![invert-divider](static/invert-theme.png)   | `border: 1px solid --gray-200;` opacity: .2; |
+|         | Appearance                                   | Styles                                            |
+| ------- | -------------------------------------------- | ------------------------------------------------- |
+| default | ![default-divider](static/default-theme.png) | `border: 1px solid var(--border-primary);`        |
+| invert  | ![invert-divider](static/invert-theme.png)   | `border: 1px solid var(--border-primary-invert);` |
 
 @## Use in UX/UI
 

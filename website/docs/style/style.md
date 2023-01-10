@@ -2,9 +2,9 @@
 title: Style
 ---
 
+@page design-tokens
+@page themes
 @page icon
 @page illustration
-@page palette
-@page themes
 @page typography
 @page css-injection

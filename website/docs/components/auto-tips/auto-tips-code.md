@@ -2,19 +2,19 @@
 title: Example
 ---
 
-Functional of work of **Combobox**, **AutoComplete**, **AutoSuggest** is presented here. To prepare search with tips we will need the following 🤪:
+To create one of the search patterns (Combobox, AutoComplete, AutoSuggest) you will need the following:
 
 - [Select](/components/select/) (1 piece)
 - [Input](/components/input/) (1 piece)
 
-@## Combobox use example
+@## Combobox example
 
 @example combobox
 
-@## AutoComplete use example
+@## AutoComplete example
 
 @example autocomplete
 
-@## AutoSuggest use example
+@## AutoSuggest example
 
 @example autosuggest
