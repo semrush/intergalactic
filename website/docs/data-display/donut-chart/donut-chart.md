@@ -99,8 +99,8 @@ If you have a small donut and the widget should be compact, the metric can be pl
 
 ### Metric styles
 
-- The metric default size is 24px (`--fs-500`). The text color is `--gray-800`.
-- The default size of the metric legend is 12px (`--fs-100`). The text color is `--gray-500`.
+- The metric default size is 24px (`--fs-500`). The text color is `--text-primary`.
+- The default size of the metric legend is 12px (`--fs-100`). The text color is `--text-secondary`.
 - There is no margin between them.
 - They are centered vertically and horizontally relative to the chart.
 
@@ -138,7 +138,7 @@ Here you will find the states for some specific cases. All other "empty states" 
 
 ### Null values
 
-If the data for any category is zero, then do not disable the legend. Show 0 as the values in the legend, use `--gray-500` color. The zero value sector is not displayed on the chart.
+If the data for any category is zero, then do not disable the legend. Show 0 as the values in the legend, use `--text-secondary` color. The zero value sector is not displayed on the chart.
 
 ![donut with null value](static/donut-null.png)
 
@@ -150,7 +150,7 @@ In this case, display 1% of the sector.
 
 ### Not available data
 
-If for some reason the data is not known or not available, show `n/a` in the legend and tooltip, use `--gray-500` color.
+If for some reason the data is not known or not available, show `n/a` in the legend and tooltip, use `--text-secondary` color.
 
 ![donut with n/a value](static/donut-na.png)
 

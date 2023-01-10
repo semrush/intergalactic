@@ -35,7 +35,7 @@ Component consists of:
 
 ### Title
 
-For the card title use 16px text (`--fs-300; --lh-300;`) with `font-weight: 700`.
+For the card title use 16px text (`--fs-300;`, `--lh-300;`) with `font-weight: --bold`.
 
 ### Description
 
@@ -68,7 +68,7 @@ You can divide content into sections if needed.
 
 @## Interaction
 
-By default, the card is non-clickable. But you can add `--box-shadow-hover` variable for hover state and make title a clickable link if necessary.
+By default, the card is non-clickable. But you can use `--box-shadow-card-hover` token for hover state and make title a clickable link if necessary.
 
 ![card with clickable heading](static/card-clickable.png)
 

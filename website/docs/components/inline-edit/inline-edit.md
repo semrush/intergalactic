@@ -26,9 +26,9 @@ The component consists of:
 
 > Note that the example below is just an example. It's not a default variant. Any control component can be used as a trigger - a [button](/components/button/), an [icon](/style/icon/), text with an icon.
 
-| Appearance example                            | Styles example                                                                                                    |
-| --------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
-| ![appearance example](static/inline-edit.png) | The color of the placeholder is the same as a regular input has - `--gray-300`. Text and icon has one hover zone. |
+| Appearance example                            | Styles example                                                                                                            |
+| --------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
+| ![appearance example](static/inline-edit.png) | The color of the placeholder is the same as a regular input has - `--text-placeholder`. Text and icon has one hover zone. |
 
 @## Interaction
 
@@ -41,11 +41,11 @@ Below you can see an example of how such a component works with one of the possi
 
 | State                   | Appearance example                              | Styles                                                                                                                                                                                                                          |
 | ----------------------- | ----------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Normal                  | ![appearance example](static/normal.png)        | The color of the placeholder is the same as a regular input has - `--gray-300`.                                                                                                                                                 |
-| Hover                   | ![appearance example](static/hover.png)         | Cursor changes to `pointer`. The icon changes color to `--gray-400`.                                                                                                                                                            |
+| Normal                  | ![appearance example](static/normal.png)        | The color of the placeholder is the same as a regular input has - `--text-placeholder`.                                                                                                                                         |
+| Hover                   | ![appearance example](static/hover.png)         | Cursor changes to `pointer`. The icon changes color to `--icon-secondary-neutral-hover-active`.                                                                                                                                 |
 | Focus                   | ![appearance example](static/opened.png)        | Show the input you need for data entry ([normal](/components/input/), [textarea](/components/textarea/), [select](/components/select), [color-picker](/components/color-picker), [time-picker](/components/time-picker), etc.). |
-| Entered data            | ![appearance example](static/success.png)       | Text color is `--gray-800`.                                                                                                                                                                                                     |
-| Entered data with hover | ![appearance example](static/success-hover.png) | Cursor changes to `pointer`. The interactive trailing addon changes color to `--gray-400`.                                                                                                                                      |
+| Entered data            | ![appearance example](static/success.png)       | Text color is `--text-primary`.                                                                                                                                                                                                 |
+| Entered data with hover | ![appearance example](static/success-hover.png) | Cursor changes to `pointer`. The interactive trailing addon changes color to `--icon-secondary-neutral-hover-active`.                                                                                                           |
 
 @## Animation
 

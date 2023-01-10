@@ -23,10 +23,10 @@ Skeleton has [two themes](/components/skeleton/skeleton-api/): `dark` and `inver
 
 All skeleton “bones” have `border-radius` of 4px.
 
-| Theme  | Appearance example                     | Styles                              |
-| ------ | -------------------------------------- | ----------------------------------- |
-| dark   | ![theme-light](static/theme-light.png) | `background: var(--gray-100, 0.8)`. |
-| invert | ![theme-dark](static/theme-dark.png)   | `background: var(--white, 0.3)`.    |
+| Theme  | Appearance example                     | Styles                                    |
+| ------ | -------------------------------------- | ----------------------------------------- |
+| dark   | ![theme-light](static/theme-light.png) | `background: var(--skeleton-bg);`.        |
+| invert | ![theme-dark](static/theme-dark.png)   | `background: var(--skeleton-bg-invert);`. |
 
 @## Animation
 

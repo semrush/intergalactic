@@ -13,7 +13,7 @@ tabName: Design
 @## Appearance
 
 - Spin is always placed in the center of the SpinContainer.
-- SpinContainer has overlay with transparency of 0.85.
+- For overlay under the SpinContainer use `--overlay-limitation-secondary` token.
 
 ![spin-container-dropdown](static/spincontainer-dropdown.png)
 

@@ -76,9 +76,6 @@ Show this element if the report or product has an alternative form for sending f
 - The first variant: it is always in the notice.
 - The second variant (**recommended**): when you click on `Ask me later`, the Close icon appears upon opening in the second session (may appear in the second or the third or the n-session).
 
-1. We use the Close icon with M size and `--blue-400` color. While hovering it changes its color to `--blue-500`.
-2. After clicking the icon the notice will close.
-
 @## Remembering states
 
 1. If the user sent the feedback, **the notice is not shown to him/her anymore**.

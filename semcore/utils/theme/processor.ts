@@ -401,10 +401,10 @@ for (const group in base) {
 }
 
 await fs.writeFile(
-  resolvePath(dirname, '../../../website/src/docs-components/design-tokens.json'),
+  resolvePath(dirname, '../../../website/docs/style/design-tokens/components/design-tokens.json'),
   JSON.stringify(designTokensDocumentation, null, 2) + '\n',
 );
 await fs.writeFile(
-  resolvePath(dirname, '../../../website/src/docs-components/base-tokens.json'),
+  resolvePath(dirname, '../../../website/docs/style/design-tokens/components/base-tokens.json'),
   JSON.stringify(baseTokensDocumentation, null, 2) + '\n',
 );

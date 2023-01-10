@@ -28,14 +28,14 @@ In cases when you need to save space and if it is clear from the context what da
 
 You also can mark the input as an optional.
 
-| Input size | Vertical layout                                                  | Horizontal layout                                                       | Font size                                   |
-| ---------- | ---------------------------------------------------------------- | ----------------------------------------------------------------------- | ------------------------------------------- |
-| M          | ![vertical label with margin to input](static/input-m.png)       | ![horizontal label with margin to input](static/input-left-m.png)       | 14px (Use variables `--fs-200`, `--lh-200`) |
-|            | ![vertical label with margin to checkbox](static/checkbox-m.png) | ![horizontal label with margin to checkbox](static/checkbox-left-m.png) |                                             |
-|            | ![vertical label with margin to textarea](static/textarea-m.png) | ![horizontal label with margin to checkbox](static/textarea-left-m.png) |                                             |
-| L          | ![vertical label with margin to input](static/input-l.png)       | ![horizontal label with margin to input](static/input-left-l.png)       | 16px (Use variables `--fs-300`, `--lh-300`) |
-|            | ![vertical label with margin to checkbox](static/checkbox-l.png) | ![horizontal label with margin to checkbox](static/checkbox-left-l.png) |                                             |
-|            | ![vertical label with margin to textarea](static/textarea-l.png) | ![horizontal label with margin to checkbox](static/textarea-left-l.png) |                                             |
+| Input size | Vertical layout                                                  | Horizontal layout                                                       | Font size                                |
+| ---------- | ---------------------------------------------------------------- | ----------------------------------------------------------------------- | ---------------------------------------- |
+| M          | ![vertical label with margin to input](static/input-m.png)       | ![horizontal label with margin to input](static/input-left-m.png)       | 14px (Use `--fs-200`, `--lh-200` tokens) |
+|            | ![vertical label with margin to checkbox](static/checkbox-m.png) | ![horizontal label with margin to checkbox](static/checkbox-left-m.png) |                                          |
+|            | ![vertical label with margin to textarea](static/textarea-m.png) | ![horizontal label with margin to checkbox](static/textarea-left-m.png) |                                          |
+| L          | ![vertical label with margin to input](static/input-l.png)       | ![horizontal label with margin to input](static/input-left-l.png)       | 16px (Use `--fs-300`, `--lh-300` tokens) |
+|            | ![vertical label with margin to checkbox](static/checkbox-l.png) | ![horizontal label with margin to checkbox](static/checkbox-left-l.png) |                                          |
+|            | ![vertical label with margin to textarea](static/textarea-l.png) | ![horizontal label with margin to checkbox](static/textarea-left-l.png) |                                          |
 
 In cases, when the form is centered on the page, input labels can be right-aligned.
 
@@ -56,7 +56,7 @@ To format values that the user enters use [InputMask](/components/input-mask/).
 
 > After opening the form the first input should get the `focus`.
 
-**The main denominator in the design system is 4.** All margins between the components and widgets shall be a multiple of this denominator. See [Variables](/style/variables/#main_denominator) for more information.
+**The main denominator in the design system is 4.** All margins between the components and widgets shall be a multiple of this denominator. See [Spacing system](/layout/box-system/#spacing_system) for more information.
 
 | Input size | Example                                           |
 | ---------- | ------------------------------------------------- |

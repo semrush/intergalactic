@@ -37,17 +37,17 @@ The title can be clickable.
 
 Place M size [Info](/style/icon/) icon next to the title.
 
-| Appearance                           | Styles                                                                                                                                                                                                                                                             |
-| ------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| ![chart-heading](static/heading.png) | For chart title use 16px text (`--fs-300; --lh-300;`, `font-weight: bold;`) and `--gray-800` color. M size`Info` icon has `--gray-300` color and `margin-left: 4px`. `Hover` state for the clickable title matches the [styles for link hover](/components/link/). |
+| Appearance                           | Styles                                                                                                                                                                                                                                                                                               |
+| ------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ![chart-heading](static/heading.png) | For chart title use 16px text (`--fs-300; --lh-300;`, `font-weight: var(--bold);`) and `--text-primary` token for color. M size `Info` icon has `--icon-secondary-neutral` color and `margin-left: 4px`. Hover state for the clickable title matches the [styles for link hover](/components/link/). |
 
 ### Description
 
 **The header may have a description text.** It usually contains information about maximum/minimum data statuses or explanation of what the data is based on, etc. Or some interesting insight/advice for the visualized data.
 
-| Appearance                             | Styles                                                                             |
-| -------------------------------------- | ---------------------------------------------------------------------------------- |
-| ![chart-subtitle](static/subtitle.png) | For description text use 14px text (`--fs-200; --lh-200;`) and `--gray-500` color. |
+| Appearance                             | Styles                                                                                             |
+| -------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| ![chart-subtitle](static/subtitle.png) | For description text use 14px text (`--fs-200; --lh-200;`) and `--text-secondary` token for color. |
 
 @## Chart controls
 
@@ -74,8 +74,8 @@ The legend can work as a filter or be unclickable representation of the data. Fo
 ![axes-scheme](static/axes-scheme2.png)
 
 - The **Y axis** is hidden by default.
-- The color of additional axes is `--gray-100`.
-- Color of the X axis and additional active lines on the grid (if needed) — `--gray-200`.
+- The color of additional axes is `--chart-grid-line`.
+- Color of the X axis and additional active lines on the grid (if needed) — `--chart-grid-x-axis`.
 - Left and right margin to the Y axis values is 16px.
 - `margin-top` of the X axis values is 12px.
 
@@ -114,27 +114,27 @@ The tooltip appears next to the cursor. It is always located inside the chart co
 
 The data tooltip shall always be displayed relative to the dot with an 8px margin.
 
-| Appearance                                                                                      | Styles description                                                                                    |
-| ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
-| ![tooltip paddings](static/tooltip-paddings.png) ![tooltip margins](static/tooltip-margins.png) | The inner tooltip padding is 12px.                                                                    |
-| ![one-dot](static/tooltip-1.png)                                                                | The color for the additional vertical line that appears on line charts when hovering is `--gray-300`. |
-| ![one-dot](static/tooltip-3.png)                                                                | The background color that appears on bar charts is `--gray-200` with .3 opacity.                      |
+| Appearance                                                                                      | Styles description                                                                                                          |
+| ----------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| ![tooltip paddings](static/tooltip-paddings.png) ![tooltip margins](static/tooltip-margins.png) | The inner tooltip padding is 12px.                                                                                          |
+| ![one-dot](static/tooltip-1.png)                                                                | The color for the additional vertical line that appears on line charts when hovering is `--chart-grid-y-accent-hover-line`. |
+| ![one-dot](static/tooltip-3.png)                                                                | The background color that appears on bar charts is `--chart-grid-bar-chart-hover`                                           |
 
 ### Cases
 
-| Case                     | Appearance                               | Styles description                                                                                                                                          |
-| ------------------------ | ---------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| One dot                  | ![one-dot](static/tooltip-1.png)         | The default dot size is `12px * 12px`. The size of the dot in a hover state is `16px * 16px`.                                                               |
+| Case                     | Appearance                               | Styles description                                                                                                                                                                          |
+| ------------------------ | ---------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| One dot                  | ![one-dot](static/tooltip-1.png)         | The default dot size is `12px * 12px`. The size of the dot in a hover state is `16px * 16px`.                                                                                               |
 | Several dots             | ![many-dots](static/tooltip-2.png)       |
-| Not available data       | ![not-available](static/partially.png)   | Use a dashed line to show not available data.                                                                                                               |
-| Start of data collecting | ![new-data](static/new-data-tooltip.png) | Solid line, color of the dot corresponds to the legend. In the tooltip, the text about the beginning of data collection is 12px and has `--gray-300` color. |
+| Not available data       | ![not-available](static/partially.png)   | Use a dashed line to show not available data.                                                                                                                                               |
+| Start of data collecting | ![new-data](static/new-data-tooltip.png) | Solid line, color of the dot corresponds to the legend. In the tooltip, the text about the beginning of data collection is 12px and has `--chart-grid-y-accent-hover-line` token for color. |
 
 @## Trend and average value
 
-To display the trend line or average value on the chart, use gray color with styles: `border: solid 2px var(--gray-400)`. Similarly, we can display total values.
+To display the trend line or average value on the chart, use gray color with styles: `border: solid 2px var(--chart-palette-order-total-amount)`. Similarly, we can display total values.
 
 - Dots on the line are optional.
-- The legend must have a checkbox for the trend line. On the charts, the universal color for the checkbox is `var(--gray-400)`.
+- The legend must have a checkbox for the trend line. On the charts, the universal color for the checkbox is `--chart-palette-order-total-amount`.
 
 ![checkbox total legend](static/trend.png)
 

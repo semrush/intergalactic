@@ -24,14 +24,14 @@ It is used inside a large number of components:
 
 The use of a particular theme for a counter depends on the context and the component in or near it.
 
-| Theme          | Appearance examples                      | Styles                                                                        | Usage                                                               |
-| -------------- | ---------------------------------------- | ----------------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| Default        | ![default example](static/secondary.png) | `background-color: --white;` `border-color: --gray-200;` `color: --gray-500;` | Used inside secondary controls and next to various types of inputs. |
-|                | ![default example ](static/textarea.png) |                                                                               |                                                                     |
-| Light-blue     | ![light-blue example](static/filter.png) | `background-color: --blue-400;` `color: --white;`                             | Used in filters to focus on the selected values.                    |
-| Orange         | ![orange example](static/orange.png)     | `background-color: --orange-400;` `color: --white;`                           | Used to display the reached limit.                                  |
-| Red            | ![red example](static/red.png)           | `background-color: --red-400;` `color: --white;`                              | Used to display the over-limit.                                     |
-| White (invert) | ![invert example](static/invert.png)     | `background-color: --white;` `color: --gray-800;`                             | Used inside primary controls with a bright/dark background-color.   |
+| Theme          | Appearance examples                      | Styles                                                                                                                      | Usage                                                               |
+| -------------- | ---------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| Default        | ![default example](static/secondary.png) | `background-color: var(--bg-primary-neutral);`, `border: 1px solid var(--border-primary);`, `color: var(--text-secondary);` | Used inside secondary controls and next to various types of inputs. |
+|                | ![default example ](static/textarea.png) |                                                                                                                             |                                                                     |
+| Light-blue     | ![light-blue example](static/filter.png) | `background-color: var(--bg-primary-info);`, `color: var(--text-invert);`                                                   | Used in filters to focus on the selected values.                    |
+| Orange         | ![orange example](static/orange.png)     | `background-color: var(--bg-primary-warning);`, `color: var(--text-invert);`                                                | Used to display the reached limit.                                  |
+| Red            | ![red example](static/red.png)           | `background-color: var(--bg-primary-critical);`, `color: var(--text-invert);`                                               | Used to display the over-limit.                                     |
+| White (invert) | ![invert example](static/invert.png)     | `background-color: var(--bg-primary-neutral);`, `color: var(--text-primary);`                                               | Used inside primary controls with a bright/dark background-color.   |
 
 @## Text counters
 

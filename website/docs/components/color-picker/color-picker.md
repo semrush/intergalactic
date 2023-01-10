@@ -19,6 +19,7 @@ fileSource: color-picker
 @## Trigger
 
 The trigger for a ColorPicker is a Select with a circle as the leading add-on.
+
 ![Color picker trigger](static/trigger.png)
 
 ### Sizes
@@ -26,6 +27,7 @@ The trigger for a ColorPicker is a Select with a circle as the leading add-on.
 ![Color picker trigger size](static/trigger-size.png)
 
 @## ColorPicker.Item
+
 **The item can be one ColorPicker.Item or a list of them.**
 
 ColorPicker.Item is a swatch preview that allows a user to see what color is currently selected.
@@ -36,26 +38,29 @@ ColorPicker.Item is a swatch preview that allows a user to see what color is cur
 
 @## Size
 
-We use only one size of ColorPicker.Item which is 28\*28px.
+We use only one size of ColorPicker.Item which is 28px \* 28px.
+
 ![Color picker item size](static/colorpicker-item-size.png)
 
 @## Margins
 
-All margins must be multiples of 4. The default recommended margins are 4px:
+All margins must be [multiples of 4](/layout/box-system/#spacing_system). The default recommended margins are 4px:
+
 ![ColorPicker margins](static/colorpicker-margins.png)
 
 @## Types
 
-An item can have two different content types:  
-| Type | Appearance example | Description |
-| --------------- | ------------------------------------------------------------ | --------------------------- |
+An item can have two different content types:
+
+| Type            | Appearance example                                                             | Description                                                                                                                 |
+| --------------- | ------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------- |
 | Bakground color | ![Color picker item bakground default](static/colorpicker-item-bg-default.png) | Use for changing the background color. For example, a user can pick distinct colors to visually separate their competitors. |
-| Text color | ![Color picker item text default](static/colorpicker-item-text-default.png) | Use for changing the Tag color. |
+| Text color      | ![Color picker item text default](static/colorpicker-item-text-default.png)    | Use for changing the Tag color.                                                                                             |
 
 @## Interaction
 
-In the hover state, a trigger has a border: 1px solid `var (--gray-200);`  
-In the active state, a trigger changes its border color to `var (--blue-300)`
+- In the hover state, a trigger has a `border: 1px solid var(--border-secondary);`.
+- In the active state, a trigger changes its border color to `var(--border-info-active);`.
 
 **ColorPicker.Item**  
 | | Normal | Hover | Active | Description |

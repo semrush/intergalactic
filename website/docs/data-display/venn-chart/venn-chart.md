@@ -68,7 +68,7 @@ If the legend doesn't fit the widget width, you can put it under the chart.
 
 ### Legend content
 
-If you need to add the name of the data set in the legend and what it refers to, then use the secondary text `--gray-500` of the same size as the set name.
+If you need to add the name of the data set in the legend and what it refers to, then use the secondary text `--text-secondary` of the same size as the set name.
 
 ![venn chart legend](static/venn-legend.png)
 
@@ -115,7 +115,7 @@ In this case, show the data sets left aligned.
 
 ![venn chart null](static/venn-null.png)
 
-- If the values for all data sets are 0, then show a circle with `--gray-100` color.
+- If the values for all data sets are 0, then show a circle with `--chart-palette-order-null` color.
 
 ![venn chart null](static/venn-null-2.png)
 
@@ -123,7 +123,7 @@ In this case, show the data sets left aligned.
 
 - If the values of data set is not available, don't show the them on the chart.
 - The legend shall show the value as `n/a`.
-- If the values for all data sets are not known, then show a circle with `--gray-100` color.
+- If the values for all data sets are not known, then show a circle with `--chart-palette-order-null` color.
 
 ![venn chart not available](static/venn-na.png)
 

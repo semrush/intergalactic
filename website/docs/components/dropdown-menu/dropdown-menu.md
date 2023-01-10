@@ -61,13 +61,13 @@ When user enters value in the input, only those items that match the entered val
 
 ### States
 
-|                     | Appearance                                                                           | Styles                             |
-| ------------------- | ------------------------------------------------------------------------------------ | ---------------------------------- |
-| Default             | ![Default DropdownMenu list item](static/item-default.png)                           |                                    |
-| Hover               | ![DropdownMenu list item with hover state](static/item-hover.png)                    | `background: var(--gray-50)`       |
-| Selected            | ![DropdownMenu list item with selected state](static/item-active.png)                | `background: var(--blue-100, .7)`  |
-| Selected with hover | ![DropdownMenu list item in selected state with hover](static/item-active-hover.png) | `background: var(--blue-100)`      |
-| Disabled            | ![DropdownMenu list item with disabled state](static/item-disabled.png)              | Use `--disabled-opacity` variable. |
+|                     | Appearance                                                                           | Tokens                                |
+| ------------------- | ------------------------------------------------------------------------------------ | ------------------------------------- |
+| Default             | ![Default DropdownMenu list item](static/item-default.png)                           | `--dropdown-menu-item)`               |
+| Hover               | ![DropdownMenu list item with hover state](static/item-hover.png)                    | `--dropdown-menu-item-hover`          |
+| Selected            | ![DropdownMenu list item with selected state](static/item-active.png)                | `--dropdown-menu-item-selected`       |
+| Selected with hover | ![DropdownMenu list item in selected state with hover](static/item-active-hover.png) | `--dropdown-menu-item-selected-hover` |
+| Disabled            | ![DropdownMenu list item with disabled state](static/item-disabled.png)              | `--disabled-opacity`                  |
 
 ### Divider
 
@@ -77,7 +77,7 @@ The dropdown list can be separated by [Divider](/components/divider/).
 
 ### Title
 
-List item can be a title. It does not have `hover` or `active` state and it is not clickable. The title always has `font-weight: 700;` and the same size as the list items have.
+List item can be a title. It does not have `hover` or `active` state and it is not clickable. The title always has `font-weight: var(--bold);` and the same size as the list items have.
 
 ![headings](static/headings.png)
 
@@ -111,10 +111,10 @@ Thie item with such a button adds a new item and has the following states:
 
 You can add an icon for an additional action on the right of the item.
 
-| Case          | Appearance example                        | Description                                                                                                                                                                                                                        |
-| ------------- | ----------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Delete item   | ![delete-item](static/item-delete.png)    | If a list item can be deleted, use the Trash icon.                                                                                                                                                                                 |
-| Drag and drop | ![dragging](static/dragging-dropdown.png) | For list items drag and drop use MoveAlt icon with `--gray-300` color. Show it while hovering the item and change the cursor to `move`. Read more about drag and drop of the items in [Drag and drop](/componrnts/drag-and-drop/). |
+| Case          | Appearance example                        | Description                                                                                                                                                                                                                                      |
+| ------------- | ----------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Delete item   | ![delete-item](static/item-delete.png)    | If a list item can be deleted, use the Trash icon.                                                                                                                                                                                               |
+| Drag and drop | ![dragging](static/dragging-dropdown.png) | For list items drag and drop use MoveAlt icon with `--icon-secondary-neutral` color. Show it while hovering the item and change the cursor to `move`. Read more about drag and drop of the items in [Drag and drop](/componrnts/drag-and-drop/). |
 
 ### Reset button
 
@@ -178,12 +178,12 @@ Badge can be placed after the text. The margin between the text and the badge is
 
 ### Secondary text
 
-You can add additional text with `--gray-500` color under the main text of the item.
+You can add additional text with `--text-secondary` color under the main text of the item.
 
-| Size of the list | Appearance example                          | Styles             |
-| ---------------- | ------------------------------------------- | ------------------ |
-| M                | ![secondary-text-m](static/secondary-m.png) | `font-size: 14px;` |
-| L                | ![secondary-text-l](static/secondary-l.png) | `font-size: 16px;` |
+| Size of the list | Appearance example                          | Tokens     |
+| ---------------- | ------------------------------------------- | ---------- |
+| M                | ![secondary-text-m](static/secondary-m.png) | `--fs-200` |
+| L                | ![secondary-text-l](static/secondary-l.png) | `--fs-300` |
 
 @## Scroll in the dropdown
 
@@ -201,7 +201,7 @@ You can fix an item with a title, input, notice or a button on the top or at the
 | ----------------- | --------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Title             | ![fixed-heading](static/fixed-heading.png)                                                    | Fixed title refers to the entire list and it should have a [Divider](/components/divider/).                                                                                           |
 | Input with search | ![fixed-input](static/fixed-input.png)                                                        | If the list has more than 10 items, add the search input. When user opens the list, the input gets the `focus` state. For a placeholder use the text: **“Start typing {parameter}”**. |
-| Notice            | ![fixed-notice](static/fixed-notice.png) ![fixed-notice-paddings](static/notice-paddings.png) | The notice title should have the same size as the text has and `font-weight: 700;`.                                                                                                   |
+| Notice            | ![fixed-notice](static/fixed-notice.png) ![fixed-notice-paddings](static/notice-paddings.png) | The notice title should have the same size as the text has and `font-weight: var(--bold);`.                                                                                           |
 | Button            | ![fixed-button](static/fixed-button.png)                                                      |                                                                                                                                                                                       |
 
 @## Nested item

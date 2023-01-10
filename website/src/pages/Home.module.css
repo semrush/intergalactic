@@ -124,7 +124,7 @@
   grid-row: 3;
   grid-column: 1;
   margin: 10px 15px 10px 0;
-  padding: 40px 0;
+  padding: 24px 0;
   display: flex;
   flex-direction: column;
   font-size: 24px;
@@ -168,7 +168,7 @@
   overflow: hidden;
   box-shadow: 10px 10px 45px 0 rgba(137, 141, 154, 0.3);
   margin: 10px 15px;
-  padding: 40px;
+  padding: 24px;
   background-color: #fff;
   border-radius: 6px;
   z-index: 99;
@@ -279,7 +279,7 @@
 .stylesImg {
   position: absolute;
   left: 52%;
-  bottom: 28%;
+  bottom: 18%;
   z-index: -1;
 }
 
@@ -348,7 +348,7 @@
 .category .component .linkStyled {
   max-width: 160px;
   white-space: normal;
-  margin-bottom: 4px;
+  margin-bottom: 8px;
 }
 
 .cards {

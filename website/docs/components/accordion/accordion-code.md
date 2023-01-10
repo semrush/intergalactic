@@ -4,7 +4,7 @@ title: Example
 
 @## Basic usage
 
-> Don't specify `padding` and `margin` for `Collapse`, this will break the animation.
+> Don't specify `padding` and `margin` for `Accordion.Item.Collapse`, this will break the animation.
 
 @example base
 

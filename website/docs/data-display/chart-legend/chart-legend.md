@@ -26,25 +26,25 @@ The legend can be interactive or non-interactive.
 
 For an interactive legend use a group of [checkboxes](/components/checkbox/) or [radio buttons](/components/radio/) with specified colors.
 
-| Component                                     | Appearance example                                                                                     | Styles                                                                                                                                                 |
-| --------------------------------------------- | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Checkbox                                      | ![checkbox legend](static/checkbox.png) ![checkbox bottom legend](static/legend-bottom.png)            | Checkbox has M size. Text has 14px size (`--fs-200`) and `--gray-800` color.                                                                           |
-| Checkbox with icon                            | ![checkbox legend](static/checkbox-icon.png)                                                           | Icon has M size and usually `--gray-800` color.                                                                                                        |
-| Checkbox with icon and additional information | ![checkbox legend](static/checkbox-icon-info.png) ![checkbox legend](static/checkbox-trash-bottom.png) | Icon has M size and usually `--gray-800` color. For an additional information and counter use text with 14px size (`--fs-200`) and `--gray-500` color. |
-| Checkbox with counter                         | ![checkbox legend](static/checkbox-counter.png)                                                        | For a counter use text with 14px size (`--fs-200`) and `--gray-500` color.                                                                             |
-| Radio button                                  | ![radio legend](static/radio.png)                                                                      | Radio has M size. Text has 14px size (`--fs-200`) and `--gray-800` color.                                                                              |
+| Component                                     | Appearance example                                                                                     | Styles                                                                                                                                                                                       |
+| --------------------------------------------- | ------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Checkbox                                      | ![checkbox legend](static/checkbox.png) ![checkbox bottom legend](static/legend-bottom.png)            | Checkbox has M size. Text has 14px size (`--fs-200`) and `--text-primary` token for color.                                                                                                   |
+| Checkbox with icon                            | ![checkbox legend](static/checkbox-icon.png)                                                           | Icon has M size and usually `--icon-non-interactive` color.                                                                                                                                  |
+| Checkbox with icon and additional information | ![checkbox legend](static/checkbox-icon-info.png) ![checkbox legend](static/checkbox-trash-bottom.png) | Icon has M size and usually `--icon-non-interactive` token for color. For an additional information and counter use text with 14px size (`--fs-200`) and `--text-secondary` token for color. |
+| Checkbox with counter                         | ![checkbox legend](static/checkbox-counter.png)                                                        | For a counter use text with 14px size (`--fs-200`) and `--text-secondary` token for color.                                                                                                   |
+| Radio button                                  | ![radio legend](static/radio.png)                                                                      | Radio has M size. Text has 14px size (`--fs-200`) and `--text-primary` token for color.                                                                                                      |
 
 @## Non-interactive legend
 
 A non-interactive legend is a colored circle with a label. This legend does not disable/enable the lines on the chart.
 
-| Appearance example                                  | Styles                                                                                 |
-| --------------------------------------------------- | -------------------------------------------------------------------------------------- |
-| ![non-interactive legend](static/static-legend.png) | Circle has `12px * 12px` size. Text has 14px size (`--fs-200`) and `--gray-800` color. |
+| Appearance example                                  | Styles                                                                                               |
+| --------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| ![non-interactive legend](static/static-legend.png) | Circle has `12px * 12px` size. Text has 14px size (`--fs-200`) and `--text-primary` token for color. |
 
 @## Trend or average value in the legend
 
-To show the trend or average value in the legend, use the `--gray-400` color. At the same time, we must separate it from the main legend with a [divider](/components/divider/) with `margin: 0 16px`.
+To show the trend or average value in the legend, use the `--chart-palette-order-total-amount` token for color. At the same time, we must separate it from the main legend with a [divider](/components/divider/) with `margin: 0 16px`.
 
 ![checkbox total legend](static/trend.png)
 

@@ -36,10 +36,10 @@ Margins between the options may vary depending on the usage context. Make margin
 
 All checkbox sizes can be used with the corresponding text paragraphs.
 
-| Radio button size (px) | Paragraph size                            | Appearance example (px)                             |
-| ---------------------- | ----------------------------------------- | --------------------------------------------------- |
-| M (16px \* 16px)       | 14px (use variables `--fs-200, --lh-200`) | ![radiobutton-paragraph-12](static/paragraph-m.png) |
-| L (20px \* 20px)       | 16px (use variables `--fs-300, --lh-300`) | ![radiobutton-paragraph-14](static/paragraph-l.png) |
+| Radio button size (px) | Paragraph size                         | Appearance example (px)                             |
+| ---------------------- | -------------------------------------- | --------------------------------------------------- |
+| M (16px \* 16px)       | 14px (use `--fs-200, --lh-200` tokens) | ![radiobutton-paragraph-12](static/paragraph-m.png) |
+| L (20px \* 20px)       | 16px (use `--fs-300, --lh-300` tokens) | ![radiobutton-paragraph-14](static/paragraph-l.png) |
 
 @## Interaction
 

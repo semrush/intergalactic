@@ -22,11 +22,11 @@ Tooltip has themes: `default`, `invert` for using on a dark background and `warn
 
 > In [3.1.0 version](/components/tooltip/tooltip-changelog/), you can set your own theme and change background color to custom.
 
-| Theme   | Appearance                                 | Styles                                                                                                                 |
-| ------- | ------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------- |
-| Default | ![default-theme](static/default-theme.png) | `background-color: --var(white); border: 1px solid var(--gray-100); box-shadow: 0px 1px 12px 0px rgba(gray-800, .15);` |
-| Invert  | ![invert-theme](static/invert-theme.png)   | `background-color: --var(gray-800); border: 1px solid var(--gray-500); box-shadow: 0px 1px 12px 0px #191B2326;`        |
-| Warning | ![alert-theme](static/alert-theme.png)     | `background-color: --var(red-100); border: 1px solid var(--red-400; box-shadow: 0px 2px 5px 0px rgba(black, .25);`     |
+| Theme   | Appearance                                 | Styles                                                                                                                                 |
+| ------- | ------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------- |
+| Default | ![default-theme](static/default-theme.png) | `background-color: var(--tooltip-default);`, `border: 1px solid var(--border-secondary);`, `box-shadow: var(--box-shadow-popper);`     |
+| Invert  | ![invert-theme](static/invert-theme.png)   | `background-color: var(--tooltip-invert);`, `border: 1px solid var(--border-tooltip-invert);`, `box-shadow: var(--box-shadow-popper);` |
+| Warning | ![alert-theme](static/alert-theme.png)     | `background-color: var(--tooltip-warning);`, `border: 1px solid var(--border-danger-active);`, `box-shadow: var(--box-shadow-popper);` |
 
 @## Maximum width and offset
 

@@ -67,7 +67,7 @@ Always place these controls on the right side of the widget:
 
 #### Data period / frequency
 
-Data period can be represented either by the [TabLine](/components/tab-line/) or by additional text with the `--gray-500` color.
+Data period can be represented either by the [TabLine](/components/tab-line/) or by additional text with the `--text-secondary` color.
 
 ![chart period](static/period-1.png)
 
@@ -93,7 +93,7 @@ For custom period use [DateRangePicker](/components/date-picker/#a3d75b).
 
 You can collapse rows if necessary.
 
-Divide different controls or groups of controls with [Divider](/components/divider/) with the `--gray-200` color and `margin: 0px 16px`.
+Divide different controls or groups of controls with [Divider](/components/divider/) with the `--border-secondary` token for color and `margin: 0px 16px`.
 
 ![chart widget](static/widget-yes-no.png)
 

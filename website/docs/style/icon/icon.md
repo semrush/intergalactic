@@ -97,7 +97,7 @@ Don't forget to use a 2px gap between the line and the icon shape.
 
 ![shapes](static/shapes.png)
 
-3. Keep the icon shape's name **icon** and `--gray-800` color inside the components consistent (except for colored icons).
+3. Keep the icon shape's name **icon** and `--icon-non-interactive` token for color inside the components consistent (except for colored icons).
 
 ![name-color](static/name-color.png)
 
