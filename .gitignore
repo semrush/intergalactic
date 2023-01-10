@@ -57,3 +57,7 @@ semcore/illustration/**/*.d.ts
 !semcore/illustration/**/*.config.js
 !semcore/illustration/src/**/*.js
 !semcore/illustration/src/**/*.d.ts
+
+# Fix
+
+!semcore/icon/Stoller/**
