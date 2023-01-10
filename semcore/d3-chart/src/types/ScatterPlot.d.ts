@@ -21,7 +21,7 @@ export interface IScatterPlotProps extends IContext {
    * @default 5.5 or 12 with value
    */
   r?: number;
-  /** Element opacity property */
+  /** Enables element transparency */
   transparent?: boolean;
 }
 

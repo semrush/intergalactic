@@ -32,7 +32,7 @@ export interface IPieProps extends IContext {
    * Active sector
    * */
   active?: boolean;
-  /** Element opacity property */
+  /** Enables element transparency */
   transparent?: boolean;
 }
 

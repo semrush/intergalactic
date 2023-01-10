@@ -111,7 +111,7 @@ export interface IRadialTreeProps {
    * Default value for `activeKey` property.
    */
   defaultActiveKey?: string | null;
-  /** Element opacity property */
+  /** Enables element transparency */
   transparent?: boolean;
 }
 
