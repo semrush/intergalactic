@@ -2,11 +2,17 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [3.5.1] - 2023-01-05
+## [3.6.0] - 2023-01-10
 
 ### Changed
 
 - Add `Stroller`, use instead `Stoller`.
+
+## [3.5.2] - 2023-01-10
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/flex-box` [4.7.3 ~> 4.7.4], `@semcore/utils` [3.44.1 ~> 3.44.2]).
 
 ## [3.5.0] - 2022-12-27
 
