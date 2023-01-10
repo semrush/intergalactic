@@ -1,6 +1,6 @@
 ## Automated screen reader testing
 
-_Intergalactic v13.2.11, React v18.2.0, Playwright v1.25.1,
+_Intergalactic v13.2.12, React v18.2.0, Playwright v1.25.1,
 Guidepup v0.13.1, MacOS Monterey 12._
 
 **Running screen reader against [this file](https://github.com/semrush/intergalactic/blob/master/website/docs/components/date-picker/examples/datepicker.jsx).**
@@ -50,7 +50,7 @@ Guidepup v0.13.1, MacOS Monterey 12._
 42. Screen reader types "05".
 43. Screen reader says "5".
 44. Screen reader types "29".
-45. Screen reader says "29".
+45. Screen reader says "9".
 46. Screen reader types "2000".
 47. Screen reader says "0".
 48. Screen reader goes out of active element.
