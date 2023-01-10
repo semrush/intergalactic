@@ -390,12 +390,12 @@ const baseTokensDocumentation: {
   description: string;
 }[] = [];
 
-for (const group in baseColors) {
-  for (const index in baseColors[group]) {
+for (const group in base) {
+  for (const index in base[group]) {
     baseTokensDocumentation.push({
       name: `--${group}-${index}`,
-      value: baseColors[group][index].value,
-      description: baseColors[group][index].description,
+      value: base[group][index].value,
+      description: base[group][index].description,
     });
   }
 }
