@@ -28,7 +28,7 @@ This component is always located on the top of the report or product.
 ![feedback appearance](static/feedback-yes-no.png)
 
 - Height of the notice — 72px.
-- Before the text place the [image](static/feedback.svg). The image size is 40px х 40px.
+- Before the text place the [image](https://static.semrush.com/ui-kit/illustration/1.4.0/Feedback.svg). The image size is 40px х 40px.
 - The button "Ask me later" is a button with `use="tertiary"`and `theme="info"`. Not a link.
 
 @## Margins and paddings

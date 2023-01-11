@@ -86,6 +86,7 @@ export default function ({ illustrations, json }) {
           <IllustrationGroup title="Chart types" />
           <IllustrationGroup title="Data types" />
           <IllustrationGroup title="Errors" />
+          <IllustrationGroup title="Other" />
         </IllustrationGroups>
       )}
     </>
