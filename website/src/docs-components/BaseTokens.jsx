@@ -31,8 +31,8 @@ const BaseTokens = ({ tokens }) => {
   return (
     <div>
       <Input className={styles.searchInput} size="l">
-        <Input.Value placeholder="Find token" value={filter} onChange={setFilter} />
         <Input.Addon tag={SearchIcon} />
+        <Input.Value placeholder="Find token" value={filter} onChange={setFilter} />
       </Input>
       <DataTable data={filteredTokens}>
         <DataTable.Head>
@@ -81,7 +81,7 @@ const BaseTokens = ({ tokens }) => {
                     <div className={styles.tokenValue}>
                       <ColorPreview color={row[props.name]} />
                       <Ellipsis
-                        trim="middle"
+                        trim="end"
                         tooltip={false}
                         containerRect={valueHeaderRect}
                         containerRef={valueHeaderRef}
@@ -99,7 +99,7 @@ const BaseTokens = ({ tokens }) => {
               return {
                 children: (
                   <Ellipsis
-                    trim="middle"
+                    trim="end"
                     containerRect={descriptionHeaderRect}
                     containerRef={descriptionHeaderRef}
                   >
