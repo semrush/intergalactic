@@ -87,7 +87,13 @@ export const runPublisher = async (versionPatches: VersionPatch[]) => {
     }
   }
   if (!process.argv.includes('--dry-run')) {
-    await git.pull('origin', 'master', { '--rebase': 'true' });
+    try {
+      await git.pull('origin', 'master', { '--rebase': 'true' });
+    } catch (err) {
+      // eslint-disable-next-line no-console
+      console.log(await git.status());
+      throw err;
+    }
     await git.push('origin', 'master', { '--follow-tags': null });
 
     if (semcoreUiPatch) {
