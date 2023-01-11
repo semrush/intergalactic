@@ -201,6 +201,10 @@ const illustartionsList = {
       name: 'Timeout',
       group: 'Errors',
     },
+    {
+      name: 'Feedback',
+      group: 'Other',
+    },
   ],
 };
 
