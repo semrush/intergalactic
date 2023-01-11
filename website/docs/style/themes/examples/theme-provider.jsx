@@ -1,4 +1,3 @@
-//https://github.com/semrush/intergalactic/tree/master/website/docs/style/themes/examples/theme-provider.jsx
 import React from 'react';
 import Button from '@semcore/button';
 import { ThemeProvider } from '@semcore/utils/lib/ThemeProvider';
