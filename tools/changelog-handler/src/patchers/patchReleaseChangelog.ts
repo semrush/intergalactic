@@ -6,9 +6,6 @@ import { resolve as resolvePath } from 'path';
 import dayjs from 'dayjs';
 import semver from 'semver';
 import { fileURLToPath } from 'url';
-import isBetween from 'dayjs/plugin/isBetween.js';
-
-dayjs.extend(isBetween);
 
 const filename = fileURLToPath(import.meta.url);
 
