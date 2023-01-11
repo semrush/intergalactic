@@ -1,28 +1,29 @@
+//https://github.com/semrush/intergalactic/tree/master/website/docs/style/themes/examples/theme-provider.jsx
 import React from 'react';
 import Button from '@semcore/button';
 import { ThemeProvider } from '@semcore/utils/lib/ThemeProvider';
 
-const redPrimaryButtonTheme = {
-  '--intergalactic-control-primary-info': '#ff4953',
-  '--intergalactic-control-primary-info-hover': '#d1002f',
-  '--intergalactic-control-primary-info-active': '#d1002f',
+const violetPrimaryButtonTheme = {
+  '--intergalactic-control-primary-info': '#8649e1',
+  '--intergalactic-control-primary-info-hover': '#5925ab',
+  '--intergalactic-control-primary-info-active': '#5925ab',
 };
-const greenPrimaryButtonTheme = {
-  '--intergalactic-control-primary-info': '#009f81',
-  '--intergalactic-control-primary-info-hover': '#007c65',
-  '--intergalactic-control-primary-info-active': '#007c65',
+const grayPrimaryButtonTheme = {
+  '--intergalactic-control-primary-info': '#6c6e79',
+  '--intergalactic-control-primary-info-hover': '#484a54',
+  '--intergalactic-control-primary-info-active': '#2b2e38',
 };
 
 const Demo = () => {
   return (
     <>
-      <ThemeProvider tokens={redPrimaryButtonTheme}>
-        <Button use="primary">Red primary button theme</Button>
+      <ThemeProvider tokens={violetPrimaryButtonTheme}>
+        <Button use="primary">Violet primary button theme</Button>
       </ThemeProvider>
       <br />
       <br />
-      <ThemeProvider tokens={greenPrimaryButtonTheme}>
-        <Button use="primary">Green primary button theme</Button>
+      <ThemeProvider tokens={grayPrimaryButtonTheme}>
+        <Button use="primary">Gray primary button theme</Button>
       </ThemeProvider>
     </>
   );
