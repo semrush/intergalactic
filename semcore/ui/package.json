@@ -39,7 +39,7 @@
     "@semcore/errors": "3.7.3",
     "@semcore/feature-popover": "3.2.4",
     "@semcore/feedback-form": "5.3.3",
-    "@semcore/flags": "3.3.3",
+    "@semcore/flags": "3.3.6",
     "@semcore/flex-box": "4.7.3",
     "@semcore/format-text": "3.2.5",
     "@semcore/fullscreen-modal": "2.2.4",
