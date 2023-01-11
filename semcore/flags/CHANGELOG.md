@@ -2,7 +2,11 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [3.3.5] - 2023-01-10
+## [3.3.6] - 2023-01-10
+
+### Fixed
+
+- Fixed internal imports after babel transformation were causing "named import from json" errors in some bundlers.
 
 ## [3.3.4] - 2023-01-09
 

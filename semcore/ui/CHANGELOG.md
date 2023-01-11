@@ -1,3 +1,42 @@
+## [13.2.13] - 2023-01-11
+
+### @semcore/icon
+
+- **BREAK** Remove `Stoller` icon, use `Stroller` instead.
+
+### @semcore/animation
+
+- **Fixed** Fixed flickering in `Collapse` animation.
+
+### @semcore/d3-chart
+
+- **Fixed** Added prop `transparent` for all charts opacity
+
+### @semcore/dropdown-menu
+
+- **Fixed** Fixed error loading styles in correct order for `mini-css-extract-plugin`.
+
+### @semcore/errors
+
+- **Fixed** Fixed French, Japanese and Turkish translations.
+
+### @semcore/flags
+
+- **Fixed** Fixed internal imports after babel transformation were causing "named import from json" errors in some bundlers.
+
+### @semcore/inline-input
+
+- **Fixed** Fixed displaying tooltip of `ConfirmControl`.
+- **Changed** Changed all translations of `CancelControl` text tooltip.
+
+### @semcore/input-number
+
+- **Added** Added Korean translation.
+
+### @semcore/select
+
+- **Fixed** Fixed typo in property `tabIndex`.
+
 ## [13.2.12] - 2023-01-09
 
 ### @semcore/d3-chart
