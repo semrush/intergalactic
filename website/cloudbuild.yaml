@@ -30,7 +30,7 @@ steps:
     args:
       - -c
       - |
-        if [[ "$BRANCH_NAME" == "master" ]]
+        if [[ "$BRANCH_NAME" == "website/release" ]]
         then
           npm install && npm run upload-search-index
         fi
