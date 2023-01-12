@@ -1,6 +1,5 @@
 const request = require('request');
 const util = require('util');
-// const fs = require('fs');
 const path = require('path');
 const React = require('react');
 const { createRoot } = require('react-dom/client');
@@ -83,13 +82,14 @@ async function snapshot(Component, options) {
     </html>`;
 
   /* Uncomment line below to debug snapshot in your browser */
+  // const fs = require('fs');
   // fs.writeFileSync('./tmp.html', html);
   const { body } = await post({
     url: process.env.SCREENSHOT_URL,
     encoding: null,
     form: {
       ...options,
-      html,
+      html
     },
   });
   act(() => root.unmount());
