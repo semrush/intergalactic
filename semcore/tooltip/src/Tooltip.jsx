@@ -68,7 +68,7 @@ class TooltipRoot extends Component {
             <Tooltip.Trigger {...other}>
               <Children />
             </Tooltip.Trigger>
-            <Tooltip.Popper disableEnforceFocus>{title}</Tooltip.Popper>
+            <Tooltip.Popper>{title}</Tooltip.Popper>
           </>
         )}
       </Root>
@@ -98,6 +98,7 @@ function TooltipPopper(props) {
       role="tooltip"
       use:theme={resolveColor(theme)}
       aria-live={theme === 'warning' ? 'assertive' : 'polite'}
+      disableEnforceFocus
     >
       <Children />
       <SArrow data-popper-arrow use:theme={resolveColor(theme)} />
