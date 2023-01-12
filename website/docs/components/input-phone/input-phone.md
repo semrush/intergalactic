@@ -27,7 +27,7 @@ When we know the user's country, it is important to display flag of the country 
 
 > Be sure to add the `Phone number` label to the input if it doesn't have any visual indication of the mask type, country code, or format.
 
-For actual examples of inputs for entering a phone number, see the [Code tab](/components/input-phone/input-phone-code).
+For actual examples of inputs for entering a phone number, see the [Example tab](/components/input-phone/input-phone-code).
 
 @## Interaction
 

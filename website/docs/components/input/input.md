@@ -59,7 +59,7 @@ Our input has two sizes.
 
 @## Input types
 
-For code examples of the input types, see [Code tab](/components/input/input-code).
+For code examples of the input types, see [Example tab](/components/input/input-code).
 
 @## Search input
 

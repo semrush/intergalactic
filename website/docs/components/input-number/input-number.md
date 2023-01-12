@@ -88,7 +88,7 @@ If user enters a value in the right input that is less than the value in the lef
 
 @## Alternative view
 
-In cases when you need to show steppers as buttons with `Plus` and `Minus` icons, you can use the alternative view of this component. See the example [in the Code tab](/components/input-number/input-number-code/#a22257).
+In cases when you need to show steppers as buttons with `Plus` and `Minus` icons, you can use the alternative view of this component. See the example [in the Example tab](/components/input-number/input-number-code/#a22257).
 
 ![Alternative view](static/alternative.png)
 
