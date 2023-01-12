@@ -68,7 +68,7 @@ class TooltipRoot extends Component {
             <Tooltip.Trigger {...other}>
               <Children />
             </Tooltip.Trigger>
-            <Tooltip.Popper>{title}</Tooltip.Popper>
+            <Tooltip.Popper disableEnforceFocus>{title}</Tooltip.Popper>
           </>
         )}
       </Root>

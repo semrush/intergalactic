@@ -270,7 +270,7 @@ const ConfirmControl: React.FC<ConfirmControlAsProps> = (props) => {
             className={sConfirmIconStyles.className}
             style={sConfirmIconStyles.style}
           />
-          <Tooltip.Popper p={3} disableEnforceFocus>
+          <Tooltip.Popper p={3}>
             {title}
           </Tooltip.Popper>
         </Tooltip>
@@ -324,7 +324,7 @@ const CancelControl: React.FC<CancelControlAsProps> = (props) => {
             className={sCancelIconStyles.className}
             style={sCancelIconStyles.style}
           />
-          <Tooltip.Popper p={3} disableEnforceFocus>
+          <Tooltip.Popper p={3}>
             {title}
           </Tooltip.Popper>
         </Tooltip>

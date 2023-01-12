@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.4.0] - 2023-01-13
+
+### Changed
+
+- Changed behaviour - now when hovering over a tooltip, the focus doesn't move to the tooltip.
+
 ## [5.3.5] - 2023-01-10
 
 ## [5.3.4] - 2023-01-09
