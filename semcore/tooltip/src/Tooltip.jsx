@@ -98,7 +98,6 @@ function TooltipPopper(props) {
       role="tooltip"
       use:theme={resolveColor(theme)}
       aria-live={theme === 'warning' ? 'assertive' : 'polite'}
-      disableEnforceFocus
     >
       <Children />
       <SArrow data-popper-arrow use:theme={resolveColor(theme)} />

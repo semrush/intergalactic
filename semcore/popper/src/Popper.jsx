@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import FocusLock from 'react-focus-lock';
-import { getFocusabledIn } from 'focus-lock';
+import { getFocusableIn } from 'focus-lock';
 import ResizeObserver from 'resize-observer-polyfill';
 
 import createComponent, { Component, sstyled, Root } from '@semcore/core';
@@ -402,7 +402,7 @@ const FocusLockWrapper = React.forwardRef(function (
   const [nodesLock, setNodesLock] = useState(false);
 
   const popperRef = useCallbackRef(null, (node) => {
-    setNodesLock(node ? !getFocusabledIn(node).length : false);
+    setNodesLock(node ? !!getFocusableIn(node).length : false);
   });
 
   // eslint-disable-next-line ssr-friendly/no-dom-globals-in-react-fc
