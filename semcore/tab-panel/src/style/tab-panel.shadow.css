@@ -30,7 +30,6 @@ STabPanelItem {
   outline: 0;
   text-align: center;
   vertical-align: middle;
-  font-family: inherit;
   cursor: pointer;
 
   & SText {

@@ -1924,13 +1924,7 @@
     "type": "fontFamilies",
     "rawValue": "Inter",
     "computedValue": "Inter",
-    "components": [
-      "base-trigger",
-      "breadcrumbs",
-      "button",
-      "card",
-      "side-panel"
-    ]
+    "components": []
   },
   {
     "name": "--intergalactic-lh-800",

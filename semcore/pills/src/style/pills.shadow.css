@@ -25,7 +25,6 @@ SPill {
   outline: 0;
   text-align: center;
   vertical-align: middle;
-  font-family: inherit;
   cursor: pointer;
   background: var(--intergalactic-bg-primary-neutral, #ffffff);
   border: 1px solid var(--intergalactic-border-primary, #c4c7cf);

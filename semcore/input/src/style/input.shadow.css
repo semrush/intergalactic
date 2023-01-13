@@ -30,7 +30,6 @@ SValue {
   color: var(--intergalactic-text-primary, #191b23);
   font-size: inherit;
   text-overflow: ellipsis;
-  font-family: inherit;
   background: transparent;
 
   &:focus {

@@ -25,7 +25,6 @@ SFlags[data-capital-letters] {
 
   &::before {
     content: attr(data-capital-letters);
-    font-family: sans-serif;
     /* disable-tokens-validator */
     font-size: calc(var(--intergalactic-fs-50, 10px) - 2px);
     line-height: normal;

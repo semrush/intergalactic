@@ -6,7 +6,6 @@ SButton {
   padding: 0;
   margin: 0;
   white-space: nowrap;
-  font-family: var(--intergalactic-base, Inter), sans-serif;
   line-height: normal;
   text-decoration: none;
   text-align: center;
