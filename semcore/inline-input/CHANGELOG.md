@@ -2,11 +2,11 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [3.5.2] - 2023-01-13
+## [3.5.2] - 2023-01-16
 
 ### Changed
 
-- Removed `disableEnforceFocus` property from `ConfirmControl` and `CancelControl` as `Tolltip` has it now by default.
+- Removed `disableEnforceFocus` property from `ConfirmControl` and `CancelControl` because it is not needed.
 
 ## [3.5.1] - 2023-01-11
 
