@@ -402,7 +402,7 @@ const FocusLockWrapper = React.forwardRef(function (
   const [nodesLock, setNodesLock] = useState(false);
 
   const popperRef = useCallbackRef(null, (node) => {
-    setNodesLock(node ? !!getFocusableIn(node).length : false);
+    setNodesLock(node ? !getFocusableIn(node).length : false);
   });
 
   // eslint-disable-next-line ssr-friendly/no-dom-globals-in-react-fc
@@ -464,7 +464,7 @@ function PopperPopper(props) {
           returnFocus={interaction === 'click'}
           returnFocusRef={triggerRef}
           autoFocus={false}
-          tabIndex={0}
+          tabIndex={-1}
           onClick={handlerStopPropagation}
           onContextMenu={handlerStopPropagation}
           onDoubleClick={handlerStopPropagation}
