@@ -2,7 +2,11 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [4.14.5] - 2023-01-10
+## [4.15.0] - 2023-01-16
+
+### Fixed
+
+- Fixed focus hijacking by non editable poppers.
 
 ## [4.14.4] - 2023-01-09
 
