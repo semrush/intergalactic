@@ -25,7 +25,7 @@ Shades of the same color have a value ranging from 50 to 800, depending on its t
 
 @## Semantic tokens
 
-There is a list of tokens for components and charts for the default Intergalactic theme.
+It is a list of tokens for components and charts for the default Intergalactic theme.
 
 Semantic tokens include tokens for:
 
