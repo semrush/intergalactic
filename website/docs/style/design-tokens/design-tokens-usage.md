@@ -8,9 +8,9 @@ Basically, design tokens are atoms of the design system's visual styles. Think o
 
 ![token description](static/token-description.png)
 
-@## Tokens types
+@## Token sets
 
-There are base and semantic tokens in our design system.
+There are base and semantic token sets in our design system.
 
 **Base tokens** represent the theme's global palette. Changing their values will affect semantic tokens. Therefore, by changing the palette, you can create new themes. For creating new palette you can use tools like [Huetone](https://huetone.ardov.me/).
 
@@ -20,7 +20,7 @@ There are base and semantic tokens in our design system.
 
 ![semantic tokens](static/semantic-tokens.png)
 
-Semantic tokens includes tokens for:
+Semantic tokens include tokens for:
 
 - colors;
 - typography;
