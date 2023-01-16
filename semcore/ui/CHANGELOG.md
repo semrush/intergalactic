@@ -1,3 +1,13 @@
+## [13.3.0] - 2023-01-16
+
+### @semcore/i18n-unplugin
+
+- **Added** Added `@semcore/ui/i18n-unplugin`.
+
+### @semcore/illustration
+
+- **Added** Added `Feedback` illustration.
+
 ## [13.2.13] - 2023-01-11
 
 ### @semcore/icon
