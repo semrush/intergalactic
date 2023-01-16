@@ -36,7 +36,7 @@
     "@semcore/d3-chart": "2.8.4",
     "@semcore/ellipsis": "1.1.6",
     "@semcore/email": "1.0.2",
-    "@semcore/errors": "3.8.0",
+    "@semcore/errors": "3.9.0",
     "@semcore/feature-popover": "3.2.8",
     "@semcore/feedback-form": "5.3.5",
     "@semcore/flags": "3.3.6",
@@ -45,7 +45,7 @@
     "@semcore/fullscreen-modal": "2.2.7",
     "@semcore/grid": "4.3.5",
     "@semcore/icon": "3.6.0",
-    "@semcore/illustration": "1.3.11",
+    "@semcore/illustration": "1.4.0",
     "@semcore/inline-input": "3.5.1",
     "@semcore/inline-edit": "2.3.4",
     "@semcore/input": "3.5.5",
@@ -83,8 +83,9 @@
     "@semcore/tooltip": "5.3.5",
     "@semcore/typography": "4.3.7",
     "@semcore/utils": "3.44.3",
-    "@semcore/widget-empty": "3.8.4",
-    "@semcore/wizard": "1.2.8"
+    "@semcore/widget-empty": "3.9.0",
+    "@semcore/wizard": "1.2.8",
+    "@semcore/i18n-unplugin": "0.0.3"
   },
   "peerDependencies": {
     "react": "16.8 - 18",
