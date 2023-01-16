@@ -1,3 +1,9 @@
+## [13.4.0] - 2023-01-16
+
+### @semcore/popper
+
+- **Fixed** Fixed focus hijacking by non editable poppers.
+
 ## [13.3.0] - 2023-01-16
 
 ### @semcore/i18n-unplugin
