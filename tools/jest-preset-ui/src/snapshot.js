@@ -15,10 +15,6 @@ if (process.cwd().includes('semcore')) {
 
 require('dotenv').config(config);
 
-if (!process.env.SCREENSHOT_URL) {
-  throw new Error('Create .env file and insert SCREENSHOT_URL variable');
-}
-
 const DEFAULT_OPTIONS = { selector: '#root' };
 
 async function snapshot(Component, options) {
