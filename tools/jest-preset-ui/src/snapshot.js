@@ -85,18 +85,19 @@ async function snapshot(Component, options) {
   // const fs = require('fs');
   // fs.writeFileSync('./tmp.html', html);
   const { body } = await post({
-    url: process.env.SCREENSHOT_URL,
+    url: 'https://intergalactic-docker-ygli5wg7pq-uk.a.run.app/',
     encoding: null,
     form: {
       ...options,
-      html
+      html,
+      token: process.env.SCREENSHOT_TOKEN,
     },
   });
   act(() => root.unmount());
   return body;
 }
 
-snapshot.ProxyProps = function (props) {
+snapshot.ProxyProps = function(props) {
   const { children, ...others } = props;
   return React.Children.map(children, (child, i) =>
     React.cloneElement(child, {
