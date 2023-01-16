@@ -359,7 +359,7 @@ describe('Carousel visual regression', () => {
     const imageWidth = width - 75;
 
     const component = (
-      <Carousel w={width}>
+      <Carousel w={width} defaultIndex={1}>
         <Flex alignItems="center">
           <Carousel.Prev />
           <Box style={{ overflow: 'hidden' }}>
