@@ -71,6 +71,7 @@
     "@semcore/typography",
     "@semcore/utils",
     "@semcore/widget-empty",
-    "@semcore/wizard"
+    "@semcore/wizard",
+    "@semcore/i18n-unplugin"
   ]
 }
