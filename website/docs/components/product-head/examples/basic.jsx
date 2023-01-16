@@ -114,7 +114,7 @@ export default () => {
         </Header.Row>
       </Header>
 
-      <TabLine defaultValue="overview" px={6}>
+      <TabLine defaultValue="overview" px={6} size="l">
         <TabLine.Item value="overview">Overview</TabLine.Item>
         <TabLine.Item value="issues">Issues</TabLine.Item>
         <TabLine.Item value="linked_in">LinkedIn</TabLine.Item>
