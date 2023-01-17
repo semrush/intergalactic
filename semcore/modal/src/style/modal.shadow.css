@@ -55,6 +55,14 @@ SClose[keyboardFocused] {
   box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.3));
 }
 
+STitle {
+  color: var(--intergalactic-text-primary, #191b23);
+  font-size: var(--intergalactic-fs-500, 24px);
+  line-height: var(--intergalactic-lh-500, 117%);
+  font-weight: var(--intergalactic-semi-bold, 600);
+  margin-bottom: var(--intergalactic-spacing-2x, 8px);
+}
+
 @media (max-width: 767px) {
   SWindow {
     min-width: 60%;

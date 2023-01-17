@@ -1040,6 +1040,7 @@ importers:
       '@semcore/jest-preset-ui': 1.0.0
       '@semcore/outside-click': ^2
       '@semcore/portal': ^2
+      '@semcore/typography': ^4
       '@semcore/utils': ^3.31.2
       '@types/react': 18.0.21
       react-focus-lock: 2.9.1
@@ -1049,6 +1050,7 @@ importers:
       '@semcore/icon': link:../icon
       '@semcore/outside-click': link:../outside-click
       '@semcore/portal': link:../portal
+      '@semcore/typography': link:../typography
       '@semcore/utils': link:../utils
       react-focus-lock: 2.9.1_@types+react@18.0.21
     devDependencies:
