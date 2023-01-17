@@ -1,6 +1,6 @@
 import React from 'react';
 import { testing, shared as testsShared, snapshot } from '@semcore/jest-preset-ui';
-import { assert, expect, test, describe, afterEach } from 'vitest';
+import { assert, expect, test, describe, afterEach, vi } from 'vitest';
 const { axe, cleanup, fireEvent, render } = testing;
 import { Box, Flex } from '@semcore/flex-box';
 
@@ -34,7 +34,7 @@ describe('Carousel', () => {
   shouldSupportRef(Carousel);
 
   test('Should support control mode', () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
 
     const { rerender } = render(
       <Carousel index={0} onIndexChange={spy}>
@@ -50,7 +50,7 @@ describe('Carousel', () => {
   });
 
   test('Should support work with keyboard', () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
 
     const { getByTestId } = render(
       <Carousel onIndexChange={spy}>
@@ -66,7 +66,7 @@ describe('Carousel', () => {
   });
 
   test('Should support work control mod with keyboard', () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
 
     const { rerender, getByTestId } = render(
       <Carousel index={0} onIndexChange={spy}>
@@ -109,7 +109,7 @@ describe('Carousel.Indicators', () => {
   shouldSupportRef(Carousel.Indicators, Carousel);
 
   test('Should support call onIndexChange after click', () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     const { getByTestId } = render(
       <Carousel onIndexChange={spy}>
         <Container />
@@ -124,7 +124,7 @@ describe('Carousel.Indicators', () => {
   });
 
   test('Should not support call onIndexChange after click in same control', () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     const { getByTestId } = render(
       <Carousel onIndexChange={spy}>
         <Container />
@@ -139,7 +139,7 @@ describe('Carousel.Indicators', () => {
   });
 
   test('Should support right change index with Prev button', () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     const { getByTestId } = render(
       <Carousel onIndexChange={spy}>
         <Container />
@@ -156,7 +156,7 @@ describe('Carousel.Indicators', () => {
   });
 
   test('Should support right change index with Next button', () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     const { rerender, getByTestId } = render(
       <Carousel index={1} onIndexChange={spy}>
         <Container />
@@ -189,7 +189,7 @@ describe('Carousel.Prev', () => {
   shouldSupportRef(Carousel.Prev, Carousel);
 
   test('Should support call onIndexChange after click', () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     const { getByTestId } = render(
       <Carousel onIndexChange={spy}>
         <Container />
@@ -204,7 +204,7 @@ describe('Carousel.Prev', () => {
   });
 
   test('Should not support call onIndexChange for bounded property', () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     const { getByTestId } = render(
       <Carousel bounded onIndexChange={spy}>
         <Container />
@@ -218,7 +218,7 @@ describe('Carousel.Prev', () => {
   });
 
   test('Should support control mode and click', () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
 
     const { getByTestId } = render(
       <Carousel index={0} onIndexChange={spy}>
@@ -242,7 +242,7 @@ describe('Carousel.Next', () => {
   shouldSupportRef(Carousel.Next, Carousel);
 
   test('Should support call onIndexChange after click', () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     const { getByTestId } = render(
       <Carousel onIndexChange={spy}>
         <Container />
@@ -257,7 +257,7 @@ describe('Carousel.Next', () => {
   });
 
   test('Should not support call onIndexChange for bounded property', () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     const { getByTestId } = render(
       <Carousel bounded onIndexChange={spy}>
         <Container />
@@ -271,7 +271,7 @@ describe('Carousel.Next', () => {
   });
 
   test('Should support control mode and click', () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
 
     const { getByTestId } = render(
       <Carousel index={1} onIndexChange={spy}>

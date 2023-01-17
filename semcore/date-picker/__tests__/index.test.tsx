@@ -1,6 +1,6 @@
 import React from 'react';
 import { testing, snapshot } from '@semcore/jest-preset-ui';
-import { assert, expect, test, describe, afterEach } from 'vitest';
+import { assert, expect, test, describe, afterEach, vi } from 'vitest';
 const { axe, cleanup, render, fireEvent, act } = testing;
 
 import { DatePicker, DateRangePicker, MonthRangePicker } from '../src';
@@ -29,7 +29,7 @@ describe('DatePicker', () => {
   });
 
   test('Should support onChange with format time 00:00:00:000', () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     mockDate('2020-02-10T12:00:00.808Z');
 
     const { getByText } = render(<DatePicker onChange={spy} visible />);
@@ -48,22 +48,22 @@ describe('DatePicker', () => {
   });
 
   test('Should support set custom displayPeriod after changed displayedPeriod', () => {
-    jest.useFakeTimers({ legacyFakeTimers: true });
+    vi.useFakeTimers({ legacyFakeTimers: true });
     const { getByText, getByLabelText } = render(
       <DatePicker defaultVisible defaultDisplayedPeriod="2020-03-10T12:00:00.808Z" />,
     );
     fireEvent.click(getByLabelText('Next period'));
     // change visible
     fireEvent.click(getByText('Select date'));
-    act(() => jest.runAllTimers());
+    act(() => vi.runAllTimers());
     fireEvent.click(getByText('Select date'));
-    act(() => jest.runAllTimers());
+    act(() => vi.runAllTimers());
     expect(getByText('March 2020')).toBeTruthy();
-    jest.useRealTimers();
+    vi.useRealTimers();
   });
 
   test('Should support set custom displayPeriod after changed value date', () => {
-    jest.useFakeTimers();
+    vi.useFakeTimers();
     const component = (
       <DatePicker defaultVisible defaultDisplayedPeriod="2021-09-10T12:00:00.808Z" />
     );
@@ -71,10 +71,10 @@ describe('DatePicker', () => {
     fireEvent.click(getByLabelText('Previous period'));
     // change visible
     fireEvent.click(getByText('15'));
-    act(() => jest.runAllTimers());
+    act(() => vi.runAllTimers());
     // change visible
     expect(getByText('Aug 15, 2021')).toBeTruthy();
-    jest.useRealTimers();
+    vi.useRealTimers();
   });
 
   test('a11y', async () => {
@@ -96,7 +96,7 @@ describe('DateRangePicker', () => {
   });
 
   test('Should support onChange with format time 00:00:00:000', async () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     mockDate('2020-02-10T12:00:00.808Z');
 
     const { getByText } = render(<DateRangePicker onChange={spy} visible />);
@@ -217,7 +217,7 @@ describe('DateRangePicker', () => {
   });
 
   test('Should support set custom displayPeriod after changed displayedPeriod', () => {
-    jest.useFakeTimers({ legacyFakeTimers: true });
+    vi.useFakeTimers({ legacyFakeTimers: true });
     const component = (
       <DateRangePicker visible defaultDisplayedPeriod={['2020-03-10T12:00:00.808Z']} />
     );
@@ -225,15 +225,15 @@ describe('DateRangePicker', () => {
     fireEvent.click(getByLabelText('Next period'));
     // change visible
     fireEvent.click(getByText('Select date period'));
-    act(() => jest.runAllTimers());
+    act(() => vi.runAllTimers());
     fireEvent.click(getByText('Select date period'));
-    act(() => jest.runAllTimers());
+    act(() => vi.runAllTimers());
     expect(getByText('March 2020')).toBeTruthy();
-    jest.useRealTimers();
+    vi.useRealTimers();
   });
 
   test('Should support set custom displayPeriod after changed value date', () => {
-    jest.useFakeTimers({ legacyFakeTimers: true });
+    vi.useFakeTimers({ legacyFakeTimers: true });
     const { getByText, getByLabelText } = render(
       <DateRangePicker visible defaultDisplayedPeriod={['2021-09-10T12:00:00.808Z']} />,
     );
@@ -242,7 +242,7 @@ describe('DateRangePicker', () => {
     fireEvent.click(getByText('31'));
     fireEvent.click(getByText('Apply'));
     expect(getByText('August 2021')).toBeTruthy();
-    jest.useRealTimers();
+    vi.useRealTimers();
   });
 
   test('a11y', async () => {

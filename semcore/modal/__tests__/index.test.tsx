@@ -1,6 +1,6 @@
 import React from 'react';
 import { testing, shared as testsShared, snapshot } from '@semcore/jest-preset-ui';
-import { assert, expect, test, describe, afterEach } from 'vitest';
+import { assert, expect, test, describe, afterEach, vi } from 'vitest';
 const { cleanup, fireEvent, render, axe } = testing;
 
 const { shouldSupportClassName, shouldSupportRef } = testsShared;
@@ -20,14 +20,14 @@ describe('Modal', () => {
   });
 
   test('should support onClose for CloseIcons', () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     const { getByTitle } = render(<Modal onClose={spy} visible />);
     fireEvent.click(getByTitle('Close'));
     expect(spy).toBeCalledWith('onCloseClick', expect.anything());
   });
 
   test('should support onClose for OutsideClick', () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     const { getByTestId } = render(
       <Modal onClose={spy} visible>
         <Modal.Overlay data-testid="outside" />
@@ -38,7 +38,7 @@ describe('Modal', () => {
   });
 
   test('should support onClose for Escape', () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     const { getByTestId } = render(<Modal onClose={spy} data-testid="modal" visible />);
     fireEvent.keyDown(getByTestId('modal'), { key: 'Escape' });
     expect(spy).toBeCalledWith('onEscape', expect.anything());
@@ -59,7 +59,9 @@ describe('Modal', () => {
     const component = <Modal visible>{() => <Modal.Overlay />}</Modal>;
     render(component);
 
-    expect(document.querySelectorAll('[data-ui-name="Modal.Overlay"]').length).toBe(1);
+    expect(
+      document.querySelectorAll('[data-ui-name^="Modal"][data-ui-name$="Overlay"]').length,
+    ).toBe(1);
   });
 
   test('should block global scroll when visible', () => {

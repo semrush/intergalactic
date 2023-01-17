@@ -1,6 +1,6 @@
 import React from 'react';
 import { testing, shared, snapshot } from '@semcore/jest-preset-ui';
-import { assert, expect, test, describe, afterEach } from 'vitest';
+import { assert, expect, test, describe, afterEach, vi } from 'vitest';
 import Checkbox from '../src';
 
 const { cleanup, render, axe } = testing;

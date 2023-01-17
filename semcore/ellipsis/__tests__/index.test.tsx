@@ -2,6 +2,7 @@ import React from 'react';
 import { snapshot, testing } from '@semcore/jest-preset-ui';
 import Ellipsis from '../src';
 import { Box } from '@semcore/flex-box';
+import { assert, expect, test, describe, afterEach, vi } from 'vitest';
 
 const { render, axe, cleanup, fireEvent, act } = testing;
 

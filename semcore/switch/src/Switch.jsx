@@ -121,7 +121,7 @@ class Value extends Component {
   }
 
   handleKeyDown = (e) => {
-    if (e.keyCode === 13) this.handlers.checked(!this.asProps.checked, e);
+    if (e.key === 'Enter') this.handlers.checked(!this.asProps.checked, e);
   };
 
   // because clicking on label causes a click on input

@@ -1,6 +1,6 @@
 import React from 'react';
 import { snapshot, testing } from '@semcore/jest-preset-ui';
-import { assert, expect, test, describe, afterEach } from 'vitest';
+import { assert, expect, test, describe, afterEach, vi } from 'vitest';
 import Icon from '../src';
 
 const { render, cleanup, fireEvent, axe } = testing;
@@ -88,7 +88,7 @@ describe('Icon', () => {
   });
 
   test('should support call onClick', async () => {
-    const onClick = jest.fn();
+    const onClick = vi.fn();
     const { getByTestId } = render(<Icon data-testid="icon" interactive aria-label="Test icon" />);
 
     fireEvent.keyDown(getByTestId('icon'), { code: 'Enter' });
@@ -96,8 +96,8 @@ describe('Icon', () => {
   });
 
   test('should not call onClick with onKeydown', async () => {
-    const onKeyDown = jest.fn();
-    const onClick = jest.fn();
+    const onKeyDown = vi.fn();
+    const onClick = vi.fn();
     const { getByTestId } = render(
       <Icon
         data-testid="icon"

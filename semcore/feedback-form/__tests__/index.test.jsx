@@ -1,6 +1,6 @@
 import React from 'react';
 import { testing, shared as testsShared, snapshot } from '@semcore/jest-preset-ui';
-import { assert, expect, test, describe, afterEach } from 'vitest';
+import { assert, expect, test, describe, afterEach, vi } from 'vitest';
 const { render, fireEvent, cleanup, axe } = testing;
 
 const { shouldSupportClassName, shouldSupportRef } = testsShared;
@@ -15,7 +15,7 @@ describe('FeedbackForm', () => {
   shouldSupportRef(FeedbackForm);
 
   test('Should call onSubmit', () => {
-    const onSubmit = jest.fn();
+    const onSubmit = vi.fn();
 
     const { getByTestId } = render(
       <FeedbackForm onSubmit={onSubmit}>
@@ -30,7 +30,7 @@ describe('FeedbackForm', () => {
 
   test('Should not call onSubmit for validation error', () => {
     const required = (value) => (value ? undefined : 'Required');
-    const onSubmit = jest.fn();
+    const onSubmit = vi.fn();
 
     const { getByTestId } = render(
       <FeedbackForm onSubmit={onSubmit}>

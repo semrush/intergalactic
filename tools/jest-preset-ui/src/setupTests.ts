@@ -2,6 +2,8 @@
 // const { toHaveStyle } = require('@testing-library/jest-dom/matchers');
 // const { toHaveNoViolations } = require('jest-axe');
 
+import { vi } from 'vitest';
+
 // const toMatchImageSnapshot = configureToMatchImageSnapshot({
 //   comparisonMethod: 'ssim',
 //   customDiffConfig: {
@@ -14,34 +16,31 @@
 // expect.extend(toHaveNoViolations);
 // expect.extend({ toMatchImageSnapshot, toHaveStyle });
 
-// // fake method because use popper.js
-// if (global.document) {
-//   document.createRange = () => ({
-//     setStart: () => {},
-//     setEnd: () => {},
-//     commonAncestorContainer: {
-//       nodeName: 'BODY',
-//       ownerDocument: document,
-//     },
-//   });
-// }
-
-// if (global.window) {
-//   const { getComputedStyle } = global.window;
-//   window.matchMedia = jest.fn().mockImplementation((query) => ({
-//     matches: false,
-//     media: query,
-//     onchange: null,
-//     addListener: jest.fn(), // Deprecated
-//     removeListener: jest.fn(), // Deprecated
-//     addEventListener: jest.fn(),
-//     removeEventListener: jest.fn(),
-//     dispatchEvent: jest.fn(),
-//   }));
-//   window.HTMLElement.prototype.scrollIntoView = jest.fn;
-//   window.getComputedStyle = (elt) => getComputedStyle(elt);
-// }
-
-// jest.setTimeout(10000);
-
-export const setupTests = () => {};
+// fake method because use popper.js
+export const setupTests = () => {
+  // if (global.document) {
+  //   document.createRange = () => ({
+  //     setStart: () => {},
+  //     setEnd: () => {},
+  //     commonAncestorContainer: {
+  //       nodeName: 'BODY',
+  //       ownerDocument: document,
+  //     },
+  //   });
+  // }
+  // if (global.window) {
+  //   const { getComputedStyle } = global.window;
+  //   window.matchMedia = vi.fn().mockImplementation((query) => ({
+  //     matches: false,
+  //     media: query,
+  //     onchange: null,
+  //     addListener: vi.fn(), // Deprecated
+  //     removeListener: vi.fn(), // Deprecated
+  //     addEventListener: vi.fn(),
+  //     removeEventListener: vi.fn(),
+  //     dispatchEvent: vi.fn(),
+  //   }));
+  //   window.HTMLElement.prototype.scrollIntoView = vi.fn;
+  //   window.getComputedStyle = (elt) => getComputedStyle(elt);
+  // }
+};

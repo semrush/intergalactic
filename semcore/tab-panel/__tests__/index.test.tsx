@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { testing, snapshot } from '@semcore/jest-preset-ui';
-import { assert, expect, test, describe, afterEach } from 'vitest';
+import { assert, expect, test, describe, afterEach, vi } from 'vitest';
 import propsForElement from '@semcore/utils/lib/propsForElement';
 import CheckM from '@semcore/icon/Check/m';
 import TabPanel from '../src';
@@ -114,8 +114,8 @@ describe('TabPanel', () => {
   });
 
   test('Should support onChange callback', () => {
-    const spyChange = jest.fn();
-    const spyClick = jest.fn();
+    const spyChange = vi.fn();
+    const spyClick = vi.fn();
     const { getByTestId } = render(
       <TabPanel value={1 as Number} onChange={spyChange}>
         <TabPanel.Item value={1}>Item 1</TabPanel.Item>
@@ -133,7 +133,7 @@ describe('TabPanel', () => {
   });
 
   test('Should not support clicks on disabled tab', () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
 
     const { getByTestId } = render(
       <TabPanel value={1 as Number} onChange={spy}>
@@ -152,8 +152,8 @@ describe('TabPanel', () => {
   });
 
   // js-dom not supported element.click
-  xtest('Should support navigation with keyboard', async () => {
-    const spy = jest.fn();
+  test.skip('Should support navigation with keyboard', async () => {
+    const spy = vi.fn();
 
     const { getByTestId } = render(
       <TabPanel value={1 as Number} onChange={spy} data-testid={'tab-root'}>

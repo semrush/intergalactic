@@ -1,6 +1,7 @@
 import React from 'react';
 import { testing, snapshot } from '@semcore/jest-preset-ui';
 import ColorPicker, { PaletteManager } from '../src';
+import { assert, expect, test, describe, afterEach, vi } from 'vitest';
 
 const { cleanup, fireEvent, render, axe, act } = testing;
 
@@ -46,7 +47,7 @@ describe('ColorPicker', () => {
 
   test('Should call onChange function when click on item color', async () => {
     const value = '#2BB3FF';
-    const spy = jest.fn();
+    const spy = vi.fn();
 
     const { getAllByTestId } = render(
       <div style={{ width: 250, height: 100 }}>
@@ -94,7 +95,7 @@ describe('ColorPicker', () => {
   });
 
   test('Should add colort when click on confirm icon inside input', async () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
 
     const { getByTestId, getByLabelText } = render(
       <div style={{ width: 250, height: 100 }}>
@@ -125,7 +126,7 @@ describe('ColorPicker', () => {
   });
 
   test('Should add color when click on "Enter" click', async () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
 
     const { getByTestId } = render(
       <div style={{ width: 250, height: 100 }}>
@@ -153,8 +154,8 @@ describe('ColorPicker', () => {
   });
 
   test('Should add color with "#" sign in the code color', async () => {
-    jest.useFakeTimers();
-    const spy = jest.fn();
+    vi.useFakeTimers();
+    const spy = vi.fn();
 
     const { getByTestId } = render(
       <div style={{ width: 250, height: 100 }}>
@@ -173,7 +174,7 @@ describe('ColorPicker', () => {
 
     const input = getByTestId('inputColor');
     fireEvent.change(input, { target: { value: '#635472' } });
-    act(() => jest.runAllTimers());
+    act(() => vi.runAllTimers());
 
     expect(input.value).toBe('#635472');
 
@@ -182,7 +183,7 @@ describe('ColorPicker', () => {
 
     expect(spy).toBeCalledTimes(1);
     expect(spy).toBeCalledWith(['#635472'], expect.anything());
-    jest.useRealTimers();
+    vi.useRealTimers();
   });
 
   test('a11y', async () => {

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { testing, snapshot } from '@semcore/jest-preset-ui';
-import { assert, expect, test, describe, afterEach } from 'vitest';
+import { assert, expect, test, describe, afterEach, vi } from 'vitest';
 import Slider from '../src';
 
 const { render, fireEvent, cleanup, axe } = testing;
@@ -76,7 +76,7 @@ describe('Slider', () => {
   });
 
   test('Should support onChange callback with keyboard', async () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     const { getByTestId } = render(<Slider value={10} data-testid="slider" onChange={spy} />);
     // up
     fireEvent.keyDown(getByTestId('slider'), { key: 'ArrowUp' });
@@ -91,7 +91,7 @@ describe('Slider', () => {
   });
 
   test('Should support min/max value change with keyboard', async () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     const { getByTestId } = render(<Slider min={0} max={1} data-testid="slider" onChange={spy} />);
     // up
     fireEvent.keyDown(getByTestId('slider'), { key: 'ArrowUp' });

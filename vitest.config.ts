@@ -2,15 +2,31 @@
 
 import { defineConfig } from 'vitest/config';
 import react from '@vitejs/plugin-react';
+import babel from 'vite-plugin-babel';
 
 export default defineConfig({
   plugins: [
-    react({
-      // babel: { presets: [['@babel/preset-react', { throwIfNamespace: false, useBuiltIns: true }]] },
+    babel({
+      babelConfig: {
+        presets: [
+          ['@babel/preset-react', { throwIfNamespace: false }],
+          [
+            '@semcore/babel-preset-ui',
+            {
+              cssStyle: {
+                extract: null,
+              },
+            },
+          ],
+        ],
+        plugins: ['babel-plugin-transform-import-meta'],
+      },
+      filter: /\.(j|t)sx?$/,
     }),
   ],
   test: {
-    include: ['semcore/button/__tests__/**/*.tsx'],
+    testTimeout: 10 * 1000,
+    include: ['semcore/*/__tests__/**/*.tsx'],
     exclude: [
       'tools/code-mod',
       'tools/generator-component',
@@ -30,3 +46,12 @@ export default defineConfig({
     environment: 'happy-dom',
   },
 });
+
+declare global {
+  namespace jest {
+    interface Matchers<R> {
+      toMatchImageSnapshot(): R;
+      toHaveNoViolations(): R;
+    }
+  }
+}

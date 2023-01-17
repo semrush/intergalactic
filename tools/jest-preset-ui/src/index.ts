@@ -5,6 +5,8 @@
 //   shared: require('./shared'),
 // };
 
+import { setupTests } from './setupTests';
+// setupTests();
 export * as setupTests from './setupTests';
 export { snapshot } from './snapshot';
 export * as testing from './testing';

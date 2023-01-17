@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { testing, snapshot } from '@semcore/jest-preset-ui';
-import { assert, expect, test, describe, afterEach } from 'vitest';
+import { assert, expect, test, describe, afterEach, vi } from 'vitest';
 import Textarea from '../src';
 
 const { cleanup, fireEvent, render, axe } = testing;
@@ -84,7 +84,7 @@ describe('Textarea', () => {
   });
 
   test('Should support onChange callback', () => {
-    const spyChange = jest.fn();
+    const spyChange = vi.fn();
     const { getByTestId } = render(<Textarea data-testid={'textarea'} onChange={spyChange} />);
 
     fireEvent.input(getByTestId('textarea'), { target: { value: 'text' } });
@@ -92,7 +92,7 @@ describe('Textarea', () => {
   });
 
   // TODO: because jsdom not supported scrollHeight and getComputedStyle
-  xtest('Should support auto height', async () => {
+  test.skip('Should support auto height', async () => {
     const component = (
       <>
         <Textarea w={200} minRows={1} maxRows={4} value={'lorem'} />

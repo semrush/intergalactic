@@ -1,7 +1,7 @@
 import React from 'react';
 import { FilterTrigger } from '@semcore/base-trigger';
 import { testing, shared as testsShared, snapshot } from '@semcore/jest-preset-ui';
-import { assert, expect, test, describe, afterEach } from 'vitest';
+import { assert, expect, test, describe, afterEach, vi } from 'vitest';
 
 const { cleanup, fireEvent, render, axe, act } = testing;
 
@@ -74,7 +74,7 @@ describe('Select Trigger', () => {
   });
 
   test('MultiSelect trigger with selected options renders correctly in unconrol mode', async () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
 
     const { getByTestId } = render(
       <Select multiselect onChange={spy} visible value={['1']}>
@@ -91,7 +91,7 @@ describe('Select Trigger', () => {
   });
 
   test('Call onVisibleChange for click in Option when value selected', () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     const { getByTestId } = render(
       <Select visible onVisibleChange={spy}>
         <Select.Trigger />
@@ -126,7 +126,7 @@ describe('Select Trigger', () => {
   });
 
   test('Should support call render function for custom tag', () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     const Tag = React.forwardRef(({ children }, ref) => <button ref={ref}>{children}</button>);
 
     render(
@@ -347,7 +347,7 @@ describe('InputSearch', () => {
   });
 
   test('should clear when click Close icon', async () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     const { getByRole } = render(
       <Select>
         <InputSearch value="test" onChange={spy} />

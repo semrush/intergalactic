@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { testing, snapshot } from '@semcore/jest-preset-ui';
-import { assert, expect, test, describe, afterEach } from 'vitest';
+import { assert, expect, test, describe, afterEach, vi } from 'vitest';
 import propsForElement from '@semcore/utils/lib/propsForElement';
 import Tag from '../src';
 
@@ -115,7 +115,7 @@ describe('Tag', () => {
     expect(await snapshot(component)).toMatchImageSnapshot();
   });
 
-  xtest('should support custom theme', async () => {
+  test.skip('should support custom theme', async () => {
     const component = (
       <>
         <Tag theme="blanchedalmond">
@@ -135,7 +135,7 @@ describe('Tag', () => {
     expect(await snapshot(component)).toMatchImageSnapshot();
   });
 
-  xtest('should support color text', async () => {
+  test.skip('should support color text', async () => {
     const component = (
       <Tag theme="dark-violet" color="white">
         dark-violet
@@ -150,7 +150,7 @@ describe('Tag', () => {
   });
 
   test('should call onClick', async () => {
-    const onClick = jest.fn();
+    const onClick = vi.fn();
     const { getByTestId } = render(
       <Tag>
         <Tag.Text>Tag</Tag.Text>
@@ -163,8 +163,8 @@ describe('Tag', () => {
   });
 
   test('should not call onClick with onKeydown', async () => {
-    const onKeyDown = jest.fn();
-    const onClick = jest.fn();
+    const onKeyDown = vi.fn();
+    const onClick = vi.fn();
     const { getByTestId } = render(
       <Tag>
         <Tag.Text>Tag</Tag.Text>

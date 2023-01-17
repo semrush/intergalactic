@@ -2,13 +2,13 @@ import React from 'react';
 import { testing, shared as testsShared } from '@semcore/jest-preset-ui';
 
 const { cleanup, fireEvent, render, act } = testing;
-import { assert, expect, test, describe, afterEach } from 'vitest';
+import { assert, expect, test, describe, afterEach, vi } from 'vitest';
 
 const { shouldSupportClassName, shouldSupportRef } = testsShared;
 import Popper from '../src';
 
-jest.mock('@popperjs/core', () => {
-  const PopperJS = jest.requireActual('@popperjs/core');
+vi.mock('@popperjs/core', () => {
+  const PopperJS = vi.requireActual('@popperjs/core');
 
   return {
     ...PopperJS,
@@ -32,8 +32,8 @@ describe('Popper', () => {
   });
 
   test('should support a custom handler a reference', () => {
-    jest.useFakeTimers();
-    const spy = jest.fn();
+    vi.useFakeTimers();
+    const spy = vi.fn();
     const { getByTestId } = render(
       <Popper onVisibleChange={spy} interaction="hover">
         <Popper.Trigger data-testid="reference" />
@@ -43,20 +43,20 @@ describe('Popper', () => {
 
     fireEvent.mouseEnter(getByTestId('reference'));
     // because wait call onVisibleChange
-    act(() => jest.runAllTimers());
+    act(() => vi.runAllTimers());
     expect(spy).toBeCalledWith(true, expect.anything());
 
     fireEvent.mouseLeave(getByTestId('reference'));
     // because wait call onVisibleChange
-    act(() => jest.runAllTimers());
+    act(() => vi.runAllTimers());
     expect(spy).toBeCalledWith(false, expect.anything());
 
-    jest.useRealTimers();
+    vi.useRealTimers();
   });
 
   test('should support timeout for change visible', () => {
-    jest.useFakeTimers();
-    const spy = jest.fn();
+    vi.useFakeTimers();
+    const spy = vi.fn();
     const { getByTestId } = render(
       <Popper onVisibleChange={spy} timeout={100}>
         <Popper.Trigger data-testid="reference" />
@@ -66,14 +66,14 @@ describe('Popper', () => {
 
     fireEvent.click(getByTestId('reference'));
     // because wait call onVisibleChange
-    act(() => jest.advanceTimersByTime(50));
+    act(() => vi.advanceTimersByTime(50));
     expect(spy).not.toBeCalledWith(true, expect.anything());
 
     // because wait call onVisibleChange
-    act(() => jest.advanceTimersByTime(100));
+    act(() => vi.advanceTimersByTime(100));
     expect(spy).toBeCalledWith(true, expect.anything());
 
-    jest.useRealTimers();
+    vi.useRealTimers();
   });
 
   test('should proxy style', async () => {

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { testing, snapshot } from '@semcore/jest-preset-ui';
-import { assert, expect, test, describe, afterEach } from 'vitest';
+import { assert, expect, test, describe, afterEach, vi } from 'vitest';
 import Switch, { inputProps } from '../src';
 
 const { cleanup, fireEvent, render, axe } = testing;
@@ -134,19 +134,20 @@ describe('Switch', () => {
   });
 
   test('Should support onChange callback', async () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     const { getByTestId } = render(
       <Switch data-testid="label">
-        <Switch.Value onChange={spy} />
+        <Switch.Value onChange={spy} data-testid="value" />
       </Switch>,
     );
 
-    fireEvent.click(getByTestId('label'));
+    fireEvent.focus(getByTestId('value'));
+    fireEvent.click(getByTestId('value'));
     expect(spy).lastCalledWith(true, expect.any(Object));
   });
 
   test('Should support onChange callback with keyboard', async () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     const { getByTestId } = render(
       <Switch>
         <Switch.Value
@@ -157,7 +158,7 @@ describe('Switch', () => {
       </Switch>,
     );
 
-    fireEvent.keyDown(getByTestId('value'), { keyCode: 13 });
+    fireEvent.keyDown(getByTestId('value'), { key: 'Enter', keyCode: 13 });
     expect(spy).lastCalledWith(true, expect.any(Object));
   });
 

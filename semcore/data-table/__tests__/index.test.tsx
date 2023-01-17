@@ -1,6 +1,6 @@
 import React from 'react';
 import { testing, snapshot, shared as testsShared } from '@semcore/jest-preset-ui';
-import { assert, expect, test, describe, afterEach } from 'vitest';
+import { assert, expect, test, describe, afterEach, vi } from 'vitest';
 import Sticky from '@semcore/sticky';
 import ProgressBar from '@semcore/progress-bar';
 import Divider from '@semcore/divider';
@@ -179,7 +179,7 @@ describe('DataTable', () => {
   test('Sorting', async () => {
     const component = (
       <div style={{ width: 800 }}>
-        <DataTable data={data} sort={['kd, cpc', 'desc']} onSortChange={jest.fn()}>
+        <DataTable data={data} sort={['kd, cpc', 'desc']} onSortChange={vi.fn()}>
           <DataTable.Head>
             <DataTable.Column name="keyword" children="Keyword" />
             <DataTable.Column name="kd" children="KD,%" sortable id="row" />
@@ -201,7 +201,7 @@ describe('DataTable', () => {
   });
 
   /** Currently has no difference from DataTable without Sticky */
-  xtest('Fixed header', async () => {
+  test.skip('Fixed header', async () => {
     const component = (
       <div style={{ width: 800 }}>
         <DataTable data={data}>
@@ -221,7 +221,7 @@ describe('DataTable', () => {
   });
 
   /** Currently screenshot service unable to execute js and scroll area shadows needs to run js for containers measuring */
-  xtest('Fixed columns', async () => {
+  test.skip('Fixed columns', async () => {
     const component = (
       <div style={{ width: 500 }}>
         <DataTable data={data}>
@@ -279,7 +279,7 @@ describe('DataTable', () => {
   });
 
   /** Currently screenshot service unable to execute js and portals needs to run js for dom manipulations */
-  xtest('Header separation', async () => {
+  test.skip('Header separation', async () => {
     const Component = () => {
       const portalRef = React.useRef(null);
       return (
@@ -449,7 +449,7 @@ describe('DataTable', () => {
 
     const component = (
       <div style={{ width: 800 }}>
-        <Accordion value={[1, 2]} onChange={jest.fn}>
+        <Accordion value={[1, 2]} onChange={vi.fn}>
           <DataTable data={data}>
             <DataTable.Head>
               <DataTable.Column name="keyword" children="Keyword" />
@@ -510,7 +510,7 @@ describe('DataTable', () => {
 
     const component = (
       <div style={{ width: 800 }}>
-        <Accordion value={[1, 2]} onChange={jest.fn}>
+        <Accordion value={[1, 2]} onChange={vi.fn}>
           <DataTable data={data}>
             <DataTable.Head wMin={800}>
               <DataTable.Column name="keyword" children="Keyword" fixed="left" />
@@ -896,7 +896,7 @@ describe('DataTable.Column', () => {
   });
 
   test('Should support ref', () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     render(
       <DataTable data={[]}>
         <DataTable.Head>

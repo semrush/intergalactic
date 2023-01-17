@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { testing, snapshot } from '@semcore/jest-preset-ui';
-import { assert, expect, test, describe, afterEach } from 'vitest';
+import { assert, expect, test, describe, afterEach, vi } from 'vitest';
 const { cleanup } = testing;
 
 import isNode from '../src/isNode';
@@ -12,8 +12,6 @@ import { interpolate } from '../src/enhances/i18nEnhance';
 import assignProps, { assignHandlers } from '../src/assignProps';
 import reactToText from '../src/reactToText';
 import { getRef, setRef, getNodeByRef } from '../src/ref';
-
-const { cleanup } = testing;
 
 describe('Utils CSS in JS', () => {
   afterEach(cleanup);
@@ -150,7 +148,7 @@ describe('Utils CSS in JS', () => {
   });
 
   test('Utils assignProps ref', () => {
-    const spy1 = jest.fn();
+    const spy1 = vi.fn();
     const result1 = assignProps(
       {
         ref: spy1,
@@ -160,7 +158,7 @@ describe('Utils CSS in JS', () => {
       },
     );
 
-    const spy2 = jest.fn();
+    const spy2 = vi.fn();
     const result2 = assignProps(
       {
         ref: spy2,
@@ -168,7 +166,7 @@ describe('Utils CSS in JS', () => {
       {},
     );
 
-    const spy3 = jest.fn();
+    const spy3 = vi.fn();
     const result3 = assignProps(
       {},
       {
@@ -188,7 +186,7 @@ describe('Utils CSS in JS', () => {
   });
 
   test('Utils assignProps handler', () => {
-    const spy1 = jest.fn();
+    const spy1 = vi.fn();
     const result1 = assignProps(
       {
         onClick: spy1,
@@ -198,7 +196,7 @@ describe('Utils CSS in JS', () => {
       },
     );
 
-    const spy2 = jest.fn();
+    const spy2 = vi.fn();
     const result2 = assignProps(
       {
         onClick: spy2,
@@ -206,7 +204,7 @@ describe('Utils CSS in JS', () => {
       {},
     );
 
-    const spy3 = jest.fn();
+    const spy3 = vi.fn();
     const result3 = assignProps(
       {},
       {
@@ -226,7 +224,7 @@ describe('Utils CSS in JS', () => {
   });
 
   test('Utils assignHandlers', () => {
-    const spy1 = jest.fn();
+    const spy1 = vi.fn();
     const result1 = assignHandlers(
       {
         onClick: spy1,
@@ -236,7 +234,7 @@ describe('Utils CSS in JS', () => {
       },
     );
 
-    const spy2 = jest.fn();
+    const spy2 = vi.fn();
     const result2 = assignHandlers(
       {
         onClick: spy2,
@@ -244,7 +242,7 @@ describe('Utils CSS in JS', () => {
       {},
     );
 
-    const spy3 = jest.fn();
+    const spy3 = vi.fn();
     const result3 = assignHandlers(
       {},
       {
@@ -271,9 +269,9 @@ describe('Utils CSS in JS', () => {
     expect(await snapshot(component)).toMatchImageSnapshot();
   });
 
-  xtest('get stylesheet', async () => {
+  test.skip('get stylesheet', async () => {
     // because nano singleton
-    jest.resetModules();
+    vi.resetModules();
     // TODO: resolve "Invalid hook call" issue
     const { default: useCss, getStylesheet, Provider } = require(__dirname + '/../src/use/useCss');
     const CSSJS = ({ css }) => {
@@ -453,7 +451,7 @@ describe('Utils ref', () => {
   });
 
   test('[setRef] support function', () => {
-    const fn = jest.fn();
+    const fn = vi.fn();
     const div = document.createElement('div');
     setRef(fn, div);
     expect(fn).toHaveBeenCalledWith(div);
@@ -461,7 +459,7 @@ describe('Utils ref', () => {
 
   test('[getNodeByRef] support function', () => {
     const div = document.createElement('div');
-    const fn = jest.fn(() => div);
+    const fn = vi.fn(() => div);
     // setRef(fn, div)
     expect(getNodeByRef(fn)).toBe(div);
   });

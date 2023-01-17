@@ -1,6 +1,6 @@
 import React from 'react';
 import { testing, snapshot, shared as testsShared } from '@semcore/jest-preset-ui';
-import { assert, expect, test, describe, afterEach } from 'vitest';
+import { assert, expect, test, describe, afterEach, vi } from 'vitest';
 const { cleanup, fireEvent, render, axe } = testing;
 
 import Radio, { RadioGroup, inputProps } from '../src/Radio';
@@ -132,7 +132,7 @@ describe('Radio', () => {
   });
 
   test('Should support change of state "checked" on click in label', async () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     const { getByTestId } = render(
       <Radio data-testid="label">
         <Radio.Value onChange={spy} />
@@ -160,8 +160,8 @@ describe('RadioGroup', () => {
   });
 
   test('Should support onChange', () => {
-    const onChange = jest.fn();
-    const onChangeRadio = jest.fn();
+    const onChange = vi.fn();
+    const onChangeRadio = vi.fn();
     const value = 'test';
     const { getByTestId } = render(
       <RadioGroup onChange={onChange}>

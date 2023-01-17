@@ -1,6 +1,6 @@
 import React, { HTMLAttributes } from 'react';
 import { testing, shared as testsShared } from '@semcore/jest-preset-ui';
-import { assert, expect, test, describe, afterEach } from 'vitest';
+import { assert, expect, test, describe, afterEach, vi } from 'vitest';
 
 const { cleanup, fireEvent, render } = testing;
 
@@ -103,7 +103,7 @@ function shouldSupportChildren(ChildrenComponent, typeChildrenComponent) {
 
 function shouldSupportCallEnhance(RootComponent, typeRootComponent) {
   test(`should support call static enhance in Root ${typeRootComponent}`, () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     const enhance = (props) => {
       spy(props);
       return props;
@@ -117,7 +117,7 @@ function shouldSupportCallEnhance(RootComponent, typeRootComponent) {
 
 function shouldSupportCallEnhanceWithProps(RootComponent, typeRootComponent) {
   test(`should support call enhance with props and data-ui-name in ${typeRootComponent}`, () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     const props = {
       children: 'test',
       'data-testid': 'core',
@@ -203,7 +203,7 @@ describe('Core', () => {
   });
 
   test('should support optimization function in getter method', () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
 
     class TestRoot extends Component {
       static displayName = 'TestRoot';
@@ -298,8 +298,8 @@ describe('Root', () => {
       }
     }
 
-    const spyClick = jest.fn();
-    const spyRef = jest.fn();
+    const spyClick = vi.fn();
+    const spyRef = vi.fn();
     const Test = createComponent(TestRoot);
     const { queryByTestId } = render(
       <Test
@@ -331,7 +331,7 @@ describe('Root', () => {
 
 describe('Controll/Uncontroll mode', () => {
   test('should support create prop with name and handler in uncontroll mode', () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
 
     class RootTestClass extends Component<IComponentProps<{}>> {
       static defaultProps = {
@@ -356,7 +356,7 @@ describe('Controll/Uncontroll mode', () => {
     expect(spy).toHaveBeenCalledWith(RootTestClass.defaultProps.defaultValue, expect.anything());
   });
   test('should support set everything value and call it in handler uncontroll mode', () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
 
     class RootTestClass extends Component<IComponentProps<{}>> {
       static defaultProps = {
@@ -406,7 +406,7 @@ describe('Getter props function', () => {
       }
     }
 
-    const spy = jest.fn();
+    const spy = vi.fn();
 
     const Test = createComponent(RootTestClass, { Item: ChildrenTestClass }) as any;
     render(
@@ -436,7 +436,7 @@ describe('Getter props function', () => {
       return <Root render="div" />;
     }
 
-    const spy = jest.fn();
+    const spy = vi.fn();
     const Test = createComponent(RootTestClass, { Item: ChildrenTestFunc }) as any;
     render(
       <Test>
@@ -459,7 +459,7 @@ describe('Getter props function', () => {
       }
     }
 
-    const spy = jest.fn();
+    const spy = vi.fn();
 
     const Test = createComponent<CompType, ItemType>(RootTestClass, { Item: ChildrenTestFunc });
     render(
@@ -492,8 +492,8 @@ describe('Getter props function', () => {
       }
     }
 
-    const spyClick = jest.fn();
-    const spyRef = jest.fn();
+    const spyClick = vi.fn();
+    const spyRef = vi.fn();
 
     const Test = createComponent(RootTestClass, { Item: ChildrenTestFunc }) as any;
     const { queryByTestId } = render(
@@ -540,7 +540,7 @@ describe('Getter props function', () => {
       }
     }
 
-    const spy = jest.fn();
+    const spy = vi.fn();
 
     const Test = createComponent<CompType, ItemType>(RootTestClass, { Item: ChildrenTestFunc });
     render(
@@ -557,7 +557,7 @@ describe('Getter props function', () => {
 
 describe('Hoist props', () => {
   test('should support hoist props from Children Func to Root', () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
 
     class RootComponent extends RootTestClass {
       render() {
@@ -584,7 +584,7 @@ describe('Hoist props', () => {
   });
 
   test('should support hoist props from Children Class to Root', () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
 
     class RootComponent extends RootTestClass {
       render() {
@@ -613,7 +613,7 @@ describe('Hoist props', () => {
   });
 
   test('should support rename hoist props', () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
 
     class RootComponent extends RootTestClass {
       render() {
@@ -640,7 +640,7 @@ describe('Hoist props', () => {
   });
 
   test('should support update hoist props', () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
 
     class RootComponent extends RootTestClass {
       render() {
@@ -822,7 +822,7 @@ describe('Option "parent"', () => {
     ];
 
     tests.forEach(({ Component, expected }) => {
-      const spy = jest.fn();
+      const spy = vi.fn();
       render(
         <Component>
           {({ getItemProps }: any) => {
@@ -862,7 +862,7 @@ describe('Option "parent"', () => {
       return createComponent(ComponentRoot, { Item }, { parent: render });
     }
 
-    const clickSpy = jest.fn();
+    const clickSpy = vi.fn();
 
     const First = createMockComponent('First', undefined);
     const Second = createMockComponent('Second', First);

@@ -1,6 +1,6 @@
 import React from 'react';
 import { testing, snapshot, shared as testsShared } from '@semcore/jest-preset-ui';
-import { assert, expect, test, describe, afterEach } from 'vitest';
+import { assert, expect, test, describe, afterEach, vi } from 'vitest';
 const { shouldSupportClassName, shouldSupportRef } = testsShared;
 const { render, fireEvent, cleanup } = testing;
 
@@ -23,7 +23,7 @@ describe('NoticeGlobal', () => {
   });
 
   test('Should support handler for close', () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     const component = <NoticeGlobal closable onClose={spy} />;
     const { getByLabelText } = render(component);
     fireEvent.click(getByLabelText(/Close/i));

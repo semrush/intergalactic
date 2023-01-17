@@ -1,6 +1,6 @@
 import React from 'react';
 import { testing, snapshot } from '@semcore/jest-preset-ui';
-import { assert, expect, test, describe, afterEach } from 'vitest';
+import { assert, expect, test, describe, afterEach, vi } from 'vitest';
 const { render, fireEvent, cleanup } = testing;
 
 import SidePanel from '../src';
@@ -54,7 +54,7 @@ describe('SidePanel', () => {
   });
 
   test('Should support onClose for Esc keypress', () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     const component = render(
       <SidePanel visible onClose={spy}>
         Content
@@ -68,7 +68,7 @@ describe('SidePanel', () => {
   });
 
   test('Should support onClose for click outside of SidePanel.Panel', () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     const component = render(
       <SidePanel visible onClose={spy}>
         <SidePanel.Overlay data-testid={'overlay'}>
@@ -87,7 +87,7 @@ describe('SidePanel', () => {
   });
 
   test('Should support onClose for Sidebar.Close click', () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     const component = render(<SidePanel visible closable onClose={spy} />);
     const closeNode = component.getByTitle('Close');
     fireEvent.click(closeNode);
@@ -103,7 +103,9 @@ describe('SidePanel', () => {
     const component = <SidePanel visible>{() => <SidePanel.Overlay />}</SidePanel>;
     render(component);
 
-    expect(document.querySelectorAll('[data-ui-name="SidePanel.Overlay"]').length).toBe(1);
+    expect(
+      document.querySelectorAll('[data-ui-name^="SidePanel"][data-ui-name$="Overlay"]').length,
+    ).toBe(1);
   });
 
   test('Should support not block page scroll without Overlay', () => {

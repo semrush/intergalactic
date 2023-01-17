@@ -1,8 +1,7 @@
 import React from 'react';
 import { scaleLinear, scaleBand } from 'd3-scale';
 import { testing, shared as testsShared, snapshot } from '@semcore/jest-preset-ui';
-
-import { expect, test, describe, afterEach } from 'vitest';
+import { assert, expect, test, describe, afterEach, vi } from 'vitest';
 const { render, fireEvent, cleanup } = testing;
 const { shouldSupportClassName, shouldSupportRef } = testsShared;
 import {
@@ -135,8 +134,7 @@ describe('XAxis', () => {
   shouldSupportRef(XAxis, PlotTest);
 
   test('should support hover for custom XAxis.Ticks', () => {
-    jest.spyOn(window, 'requestAnimationFrame').mockImplementation((cb) => cb());
-
+    vi.spyOn(window, 'requestAnimationFrame').mockImplementation((cb) => cb());
     // const bisect = bisector((d) => d.x).center;
     class EventEmitter {
       emit() {}
@@ -145,7 +143,7 @@ describe('XAxis', () => {
     }
 
     const eventEmitter = new EventEmitter();
-    eventEmitter.emit = jest.fn();
+    eventEmitter.emit = vi.fn();
     const { getAllByTestId } = render(
       <Plot
         data={data}

@@ -1,6 +1,6 @@
 import React from 'react';
 import { snapshot, testing } from '@semcore/jest-preset-ui';
-import { assert, expect, test, describe, afterEach } from 'vitest';
+import { assert, expect, test, describe, afterEach, vi } from 'vitest';
 import Accordion from '../src';
 const { axe, render, fireEvent, cleanup } = testing;
 
@@ -28,7 +28,7 @@ describe('Accordion', () => {
   });
 
   test('Should support uncontrolled mode with single expandable item', () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     const { getByText } = render(
       <Accordion onChange={spy} defaultValue={null}>
         <Accordion.Item value={1}>
@@ -51,7 +51,7 @@ describe('Accordion', () => {
   });
 
   test('Should support controlled mode with single expandable item', () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
 
     const { getByText, rerender } = render(
       <Accordion onChange={spy} value={null}>
@@ -95,7 +95,7 @@ describe('Accordion', () => {
   });
 
   test('Should support uncontrolled mode with multiple expandable items', () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     const { getByText } = render(
       <Accordion onChange={spy}>
         <Accordion.Item value={1}>
@@ -121,7 +121,7 @@ describe('Accordion', () => {
   });
 
   test('Should support controlled mode with multiple expandable items', () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
 
     const { getByText, rerender } = render(
       <Accordion onChange={spy} value={[]}>

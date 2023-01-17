@@ -2,7 +2,7 @@ import React from 'react';
 import { testing, snapshot /*shared as testsShared*/ } from '@semcore/jest-preset-ui';
 
 const { render, fireEvent, cleanup, act } = testing;
-import { assert, expect, test, describe, afterEach } from 'vitest';
+import { assert, expect, test, describe, afterEach, vi } from 'vitest';
 
 import {
   NoticeBubbleContainer,
@@ -48,19 +48,19 @@ describe('NoticeBubbleContainer', () => {
 describe('NoticeBubble Timer', () => {
   afterEach(cleanup);
   test.skip('should support pause timer at mouse enter', () => {
-    jest.useFakeTimers();
-    const spy = jest.fn();
+    vi.useFakeTimers();
+    const spy = vi.fn();
     const { getByTestId } = render(<NoticeBubble data-testid="notice" onClose={spy} />);
     fireEvent.mouseEnter(getByTestId('notice'));
-    act(() => jest.runAllTimers());
+    act(() => vi.runAllTimers());
 
     expect(spy).not.toBeCalled();
 
     fireEvent.mouseLeave(getByTestId('notice'));
-    act(() => jest.runAllTimers());
+    act(() => vi.runAllTimers());
 
     expect(spy).toBeCalled();
-    jest.useRealTimers();
+    vi.useRealTimers();
   });
 });
 
@@ -71,35 +71,33 @@ describe('NoticeBubble', () => {
   // shouldSupportRef(NoticeBubble);
 
   test.skip('should support handler for close', () => {
-    const manager = new NoticeBubbleManager();
-    const spy = jest.fn();
-    const { getByTitle } = render(<NoticeBubble onClose={spy} manager={manager} />);
+    const spy = vi.fn();
+    const { getByTitle } = render(<NoticeBubble onClose={spy} />);
     fireEvent.click(getByTitle('Close'));
     expect(spy).toBeCalled();
   });
 
   test.skip('should support closing after some time', () => {
-    const manager = new NoticeBubbleManager();
-    jest.useFakeTimers();
-    const spy = jest.fn();
-    render(<NoticeBubble duration={300} onClose={spy} manager={manager} />);
+    vi.useFakeTimers();
+    const spy = vi.fn();
+    render(<NoticeBubble duration={300} onClose={spy} />);
 
-    act(() => jest.runAllTimers());
+    act(() => vi.runAllTimers());
 
     expect(spy).toBeCalled();
-    jest.useRealTimers();
+    vi.useRealTimers();
   });
 
   test('should support the possibility of not closing', () => {
     const manager = new NoticeBubbleManager();
-    jest.useFakeTimers();
-    const spy = jest.fn();
+    vi.useFakeTimers();
+    const spy = vi.fn();
     render(<NoticeBubble duration={0} onClose={spy} manager={manager} />);
 
-    act(() => jest.runAllTimers());
+    act(() => vi.runAllTimers());
 
     expect(spy).not.toBeCalled();
-    jest.useRealTimers();
+    vi.useRealTimers();
   });
 
   test('should support hover for icon close', async () => {

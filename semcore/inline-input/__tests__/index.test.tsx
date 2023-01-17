@@ -1,6 +1,6 @@
 import React from 'react';
 import { testing, shared as testsShared, snapshot } from '@semcore/jest-preset-ui';
-import { assert, expect, test, describe, afterEach } from 'vitest';
+import { assert, expect, test, describe, afterEach, vi } from 'vitest';
 import InlineInput from '../src/InlineInput';
 import SerpM from '@semcore/icon/Serp/m';
 
@@ -134,9 +134,9 @@ describe('InlineInput', () => {
   });
 
   test('on blur behavior', () => {
-    jest.useFakeTimers();
-    const spyCancel = jest.fn();
-    const spyConfirm = jest.fn();
+    vi.useFakeTimers();
+    const spyCancel = vi.fn();
+    const spyConfirm = vi.fn();
 
     const { getByTestId } = render(
       <>
@@ -154,12 +154,12 @@ describe('InlineInput', () => {
 
     /** bubbling doesn't work in jest? */
     fireEvent.blur(getByTestId('behavior-cancel'));
-    act(() => jest.runAllTimers());
+    act(() => vi.runAllTimers());
     expect(spyCancel).toHaveBeenCalledTimes(1);
     fireEvent.blur(getByTestId('behavior-confirm'));
-    act(() => jest.runAllTimers());
+    act(() => vi.runAllTimers());
     expect(spyConfirm).toHaveBeenCalledTimes(1);
-    jest.useRealTimers();
+    vi.useRealTimers();
   });
 
   test('a11y', async () => {

@@ -35,7 +35,10 @@ function OutsideClick(props: IFunctionProps<IOutsideClickProps>) {
   const handleOutsideClick = useEventCallback((e) => {
     const isTargetEvent = [...excludeRefs, nodeRef]
       .filter((node) => getNodeByRef(node))
-      .some((node) => getNodeByRef(node).contains(targetRef.current || e.target));
+      .some((node) => {
+        // console.log(getNodeByRef(node));
+        return getNodeByRef(node).contains(targetRef.current || e.target);
+      });
 
     if (!isTargetEvent) {
       onOutsideClick(e);

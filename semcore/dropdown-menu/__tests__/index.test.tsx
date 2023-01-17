@@ -9,7 +9,7 @@ describe('DropdownMenu', () => {
   afterEach(cleanup);
 
   test('Should correct enter space in input', () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     const { getByTestId } = render(
       <DropdownMenu onVisibleChange={spy} interaction="focus">
         <DropdownMenu.Trigger tag="input" data-testid="input" />

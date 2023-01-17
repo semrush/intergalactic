@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { testing, snapshot } from '@semcore/jest-preset-ui';
-import { assert, expect, test, describe, afterEach } from 'vitest';
+const { axe, render, cleanup, fireEvent } = testing;
+import { assert, expect, test, describe, afterEach, vi } from 'vitest';
 import Tooltip from '@semcore/tooltip';
 
 import InputTags from '../src';
@@ -122,7 +123,7 @@ describe('InputTags', () => {
   });
 
   test('should call onClick', async () => {
-    const onClick = jest.fn();
+    const onClick = vi.fn();
     const { getByTestId } = render(
       <InputTags>
         <InputTags.Tag theme="primary" editable data-testid="tag" onClick={onClick}>

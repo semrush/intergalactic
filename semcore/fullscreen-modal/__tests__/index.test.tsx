@@ -1,6 +1,6 @@
 import React from 'react';
 import { testing, snapshot, shared as testsShared } from '@semcore/jest-preset-ui';
-import { assert, expect, test, describe, afterEach } from 'vitest';
+import { assert, expect, test, describe, afterEach, vi } from 'vitest';
 const { render, fireEvent, cleanup } = testing;
 
 const { shouldSupportClassName, shouldSupportRef } = testsShared;
@@ -21,7 +21,7 @@ describe('FullscreenModal', () => {
   });
 
   test('should support onClose for CloseIcons', () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     const { getByTestId } = render(
       <FullscreenModal onClose={spy} visible>
         <FullscreenModal.Close data-testid="close" />
@@ -32,7 +32,7 @@ describe('FullscreenModal', () => {
   });
 
   test('should support onClose for BackClick', () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     const { getByTestId } = render(
       <FullscreenModal onClose={spy} visible>
         <FullscreenModal.Back data-testid="back" />
@@ -43,7 +43,7 @@ describe('FullscreenModal', () => {
   });
 
   test('should support onClose for Escape', () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     const { getByTestId } = render(<FullscreenModal visible onClose={spy} data-testid="modal" />);
     fireEvent.keyDown(getByTestId('modal'), { key: 'Escape' });
     expect(spy).toBeCalledWith('onEscape', expect.anything());

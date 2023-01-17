@@ -1,6 +1,6 @@
 import React from 'react';
 import { testing, snapshot } from '@semcore/jest-preset-ui';
-import { assert, expect, test, describe, afterEach } from 'vitest';
+import { assert, expect, test, describe, afterEach, vi } from 'vitest';
 import Globe from '@semcore/icon/Globe/m';
 import Badge from '@semcore/badge';
 
@@ -12,7 +12,7 @@ describe('PillGroup', () => {
   afterEach(cleanup);
 
   test('Should support onChange callback', () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     const { getByTestId } = render(
       <Pills value={1 as Number} onChange={spy}>
         <Pills.Item value={1}>1</Pills.Item>
@@ -29,7 +29,7 @@ describe('PillGroup', () => {
   });
 
   test('Should support onClick on Pill', () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     const { getByTestId } = render(
       <Pills value={1}>
         <Pills.Item value={1}>1</Pills.Item>
@@ -46,8 +46,8 @@ describe('PillGroup', () => {
   });
 
   test('Should not call PillGroup onChange after falsy onClick on Pill', () => {
-    const spy = jest.fn();
-    const spyClick = jest.fn(() => false);
+    const spy = vi.fn();
+    const spyClick = vi.fn(() => false);
     const { getByTestId } = render(
       <Pills value={1} onChange={spy}>
         <Pills.Item value={1}>1</Pills.Item>
@@ -65,7 +65,7 @@ describe('PillGroup', () => {
   });
 
   test('Should not support clicks on disabled tab', () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
 
     const { getByTestId } = render(
       <Pills value={1} onChange={spy}>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { testing, snapshot } from '@semcore/jest-preset-ui';
-import { assert, expect, test, describe, afterEach } from 'vitest';
+import { assert, expect, test, describe, afterEach, vi } from 'vitest';
 import Wizard from '../src';
 
 const { cleanup, fireEvent, render, axe } = testing;
@@ -125,7 +125,7 @@ describe('Wizard', () => {
   });
 
   test('Should support keyboard navigation', async () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     const { getByTestId } = render(
       <Wizard disablePortal visible step={1}>
         <Wizard.Sidebar title="Header">
@@ -141,12 +141,12 @@ describe('Wizard', () => {
       </Wizard>,
     );
 
-    fireEvent.keyPress(getByTestId('second-step'), { keyCode: 13 });
+    fireEvent.keyPress(getByTestId('second-step'), { key: 'Enter', keyCode: 13 });
     expect(spy).lastCalledWith(2, expect.any(Object));
   });
 
   test('Should support step change on click', async () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     const { getByTestId } = render(
       <Wizard disablePortal visible step={1}>
         <Wizard.Sidebar title="Header">
@@ -167,7 +167,7 @@ describe('Wizard', () => {
   });
 
   test('Should correctly rerender', async () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     const { getByTestId } = render(
       <Wizard disablePortal visible step={1}>
         <Wizard.Sidebar title="Header">

@@ -276,7 +276,8 @@ class TotalPages extends Component {
 
 const PageInputValue = (props) => {
   const SPageInputValue = Root;
-  const { getI18nText } = props;
+  const { getI18nText, value } = props;
+
   return sstyled(props.styles)(
     <SPageInputValue
       render={Input.Value}

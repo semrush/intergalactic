@@ -26,7 +26,8 @@
   "devDependencies": {
     "@guidepup/guidepup": "0.13.1",
     "@types/jest-axe": "3.5.1",
-    "esbuild": "0.14.29"
+    "esbuild": "0.14.29",
+    "vitest-axe": "^0.1.0"
   },
   "peerDependencies": {
     "@guidepup/guidepup": "*",

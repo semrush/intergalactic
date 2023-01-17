@@ -1,7 +1,7 @@
 import React from 'react';
 import Search from '@semcore/icon/Search/m';
 import { testing, snapshot, shared as testsShared } from '@semcore/jest-preset-ui';
-import { assert, expect, test, describe, afterEach } from 'vitest';
+import { assert, expect, test, describe, afterEach, vi } from 'vitest';
 import Input from '../src';
 
 const { cleanup, fireEvent, render } = testing;
@@ -162,7 +162,7 @@ describe('Input', () => {
 
   test('Should support controlled mod', () => {
     let value = '';
-    const spy = jest.fn((v) => {
+    const spy = vi.fn((v) => {
       value = v;
     });
 
@@ -196,7 +196,7 @@ describe('Input.Addon', () => {
   shouldSupportRef(Input.Value, Input);
 
   test('Should focus input if additional element click', () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     const { queryByText } = render(
       <Input>
         <Input.Addon>addon</Input.Addon>
@@ -209,7 +209,7 @@ describe('Input.Addon', () => {
   });
 
   test(`Should't focus input if onMouseDown additional return false`, () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     const { queryByText } = render(
       <Input>
         <Input.Addon onMouseDown={() => false}>addon</Input.Addon>

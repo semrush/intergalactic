@@ -1,6 +1,6 @@
 import React from 'react';
 import { testing, snapshot } from '@semcore/jest-preset-ui';
-import { assert, expect, test, describe, afterEach } from 'vitest';
+import { assert, expect, test, describe, afterEach, vi } from 'vitest';
 const { cleanup, fireEvent, render, axe } = testing;
 
 import InputNumber from '../src';
@@ -9,7 +9,7 @@ describe('InputNumber', () => {
   afterEach(cleanup);
 
   test('Should accept int numbers', () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     const { getByTestId } = render(
       <InputNumber>
         <InputNumber.Value data-testid="input" value="" onChange={spy} />
@@ -21,7 +21,7 @@ describe('InputNumber', () => {
   });
 
   test('Should accept float numbers', () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     const { getByTestId } = render(
       <InputNumber>
         <InputNumber.Value data-testid="input" value="" onChange={spy} />
@@ -33,7 +33,7 @@ describe('InputNumber', () => {
   });
 
   test('Should correct round float numbers with step less than 1', () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     const { getByTestId } = render(
       <InputNumber>
         <InputNumber.Value data-testid="input" value="0.26" onChange={spy} step={0.1} />
@@ -45,7 +45,7 @@ describe('InputNumber', () => {
   });
 
   test('Should correct round float numbers with step more than 1', () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     const { getByTestId } = render(
       <InputNumber>
         <InputNumber.Value data-testid="input" value="42.2" onChange={spy} step={5} />
@@ -57,7 +57,7 @@ describe('InputNumber', () => {
   });
 
   test('Should not accept letters', () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     const { getByTestId } = render(
       <InputNumber>
         <InputNumber.Value data-testid="input" value="" onChange={spy} />
@@ -69,7 +69,7 @@ describe('InputNumber', () => {
   });
 
   test('Should not accept value which is bigger than max prop', () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     const { getByTestId } = render(
       <InputNumber>
         <InputNumber.Value data-testid="input" value={'100000'} max={10} onChange={spy} />
@@ -81,7 +81,7 @@ describe('InputNumber', () => {
   });
 
   test('Should not accept value which is smaller than min prop', () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     const { getByTestId } = render(
       <InputNumber>
         <InputNumber.Value data-testid="input" value={'199'} min={200} onChange={spy} />
@@ -93,7 +93,7 @@ describe('InputNumber', () => {
   });
 
   test('Should support inputs up/down buttons click', () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     const { getByTestId } = render(
       <InputNumber>
         <InputNumber.Value data-testid="input" defaultValue={'0'} onChange={spy} />

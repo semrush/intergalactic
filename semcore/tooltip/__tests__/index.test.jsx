@@ -1,7 +1,7 @@
 import React from 'react';
 import { testing, snapshot } from '@semcore/jest-preset-ui';
 const { cleanup, fireEvent, render, axe, act } = testing;
-import { assert, expect, test, describe, afterEach } from 'vitest';
+import { assert, expect, test, describe, afterEach, vi } from 'vitest';
 
 import Tooltip from '../src';
 
@@ -53,7 +53,7 @@ describe('Tooltip', () => {
     expect(await snapshot(component)).toMatchImageSnapshot();
   });
 
-  xtest('Renders correctly with custom theme', async () => {
+  test.skip('Renders correctly with custom theme', async () => {
     const component = (
       <div style={{ width: '100px', height: '100px' }}>
         <Tooltip visible disablePortal>
@@ -182,7 +182,9 @@ describe('Tooltip.Popper', () => {
     );
     render(component);
 
-    expect(document.querySelectorAll('[data-ui-name="Tooltip.Popper"]').length).toBe(1);
+    expect(
+      document.querySelectorAll('[data-ui-name^="Tooltip"][data-ui-name$="Popper"]').length,
+    ).toBe(1);
   });
 });
 
@@ -196,8 +198,8 @@ describe('TooltipBase', () => {
   });
 
   test('open/hide', () => {
-    jest.useFakeTimers();
-    const spy = jest.fn();
+    vi.useFakeTimers();
+    const spy = vi.fn();
     const { getByTestId } = render(
       <Tooltip title="Test test test" disablePortal onVisibleChange={spy}>
         <button data-testid="trigger">trigger</button>
@@ -205,12 +207,12 @@ describe('TooltipBase', () => {
     );
 
     fireEvent.mouseEnter(getByTestId('trigger'));
-    act(() => jest.runAllTimers());
+    act(() => vi.runAllTimers());
     expect(spy).toHaveBeenCalledTimes(1);
     fireEvent.mouseLeave(getByTestId('trigger'));
-    act(() => jest.runAllTimers());
+    act(() => vi.runAllTimers());
     expect(spy).toHaveBeenCalledTimes(2);
-    jest.useRealTimers();
+    vi.useRealTimers();
   });
 
   test('a11y', async () => {

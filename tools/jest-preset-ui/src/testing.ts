@@ -9,11 +9,12 @@
 // module.exports.axe = {}//axe;
 
 import { configureAxe } from 'jest-axe';
-// import reactTestingLibrary from '@testing-library/react';
+import reactTestingLibrary from '@testing-library/react';
+export * from '@testing-library/react';
 
 export const axe = configureAxe({
   globalOptions: {
     rules: [{ id: 'tabindex', enabled: false }],
   },
 });
-// export default reactTestingLibrary;
+export default reactTestingLibrary;
