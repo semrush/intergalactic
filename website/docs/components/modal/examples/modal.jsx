@@ -14,9 +14,7 @@ const Demo = () => {
         Open modal
       </Button>
       <Modal visible={visible} onClose={handleClose}>
-        <Text tag="h2" size={400} mb={2}>
-          Do you want to save your changes?
-        </Text>
+        <Modal.Title>Do you want to save your changes?</Modal.Title>
         <Text size={200} mb={4} tag="p">
           Your changes will be lost if you don't save them.
         </Text>
