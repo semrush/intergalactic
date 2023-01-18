@@ -2106,14 +2106,12 @@ importers:
       '@semcore/babel-preset-ui': '*'
       '@testing-library/jest-dom': 5.16.5
       '@testing-library/react': 13.4.0
-      '@types/jest-axe': 3.5.1
       '@types/jest-image-snapshot': 5.1.0
       babel-jest: 29.0.1
       babel-plugin-transform-import-meta: 2.2.0
       dotenv: 16.0.1
       esbuild: 0.14.29
       identity-obj-proxy: 3.0.0
-      jest-axe: 6.0.0
       jest-canvas-mock: 2.4.0
       jest-image-snapshot: 2.9.0
       react: '*'
@@ -2130,7 +2128,6 @@ importers:
       babel-plugin-transform-import-meta: 2.2.0_@babel+core@7.19.1
       dotenv: 16.0.1
       identity-obj-proxy: 3.0.0
-      jest-axe: 6.0.0
       jest-canvas-mock: 2.4.0
       jest-image-snapshot: 2.9.0
       react: 18.2.0
@@ -2138,7 +2135,6 @@ importers:
       request: 2.88.2
     devDependencies:
       '@guidepup/guidepup': 0.13.1
-      '@types/jest-axe': 3.5.1
       esbuild: 0.14.29
       vitest-axe: 0.1.0
 
@@ -5636,16 +5632,6 @@ packages:
   /aws4/1.12.0:
     resolution: {integrity: sha512-NmWvPnx0F1SfrQbYwOi7OeaNGokp9XhzNioJ/CSBs8Qa4vxug81mhJEAVZwxXuBmYB5KDRfMq/F3RR0BIU7sWg==}
 
-  /axe-core/3.5.6:
-    resolution: {integrity: sha512-LEUDjgmdJoA3LqklSTwKYqkjcZ4HKc4ddIYGSAiSkr46NTjzg2L9RNB+lekO9P7Dlpa87+hBtzc2Fzn/+GUWMQ==}
-    engines: {node: '>=4'}
-    dev: true
-
-  /axe-core/4.4.1:
-    resolution: {integrity: sha512-gd1kmb21kwNuWr6BQz8fv6GNECPBnUasepcoLbekws23NVBLODdsClRZ+bQ8+9Uomf3Sm3+Vwn0oYG9NvwnJCw==}
-    engines: {node: '>=4'}
-    dev: false
-
   /axe-core/4.6.2:
     resolution: {integrity: sha512-b1WlTV8+XKLj9gZy2DZXgQiyDp9xkkoe2a6U6UbYccScq2wgH/YwCeI2/Jq2mgo0HzQxqJOjWZBLeA/mqsk5Mg==}
     engines: {node: '>=4'}
@@ -7708,6 +7694,7 @@ packages:
   /diff-sequences/27.5.1:
     resolution: {integrity: sha512-k1gCAXAsNgLwEL+Y8Wvl+M6oEFj5bgazfZULpS5CneoPPXRaCCW7dm+q21Ky2VEE5X+VeRDBVg1Pcvvsr4TtNQ==}
     engines: {node: ^10.13.0 || ^12.13.0 || ^14.15.0 || >=15.0.0}
+    dev: true
 
   /diff-sequences/29.4.3:
     resolution: {integrity: sha512-ofrBgwpPhCD85kMKtE9RYFFq6OC1A89oW2vvgWZNCwxrUpRUILopY7lsYyMDSjc8g6U6aiO0Qubg6r4Wgt5ZnA==}
@@ -11111,16 +11098,6 @@ packages:
       is-object: 1.0.2
     dev: true
 
-  /jest-axe/6.0.0:
-    resolution: {integrity: sha512-gAh/2zoWii4Rbhe6IUIo5TTiseGJDCitFnDFwBNpIuaOciyQgVZue6jtd4W7oMoKHewKoRSuIol7t/MuGx+mqg==}
-    engines: {node: '>= 10.0.0'}
-    dependencies:
-      axe-core: 4.4.1
-      chalk: 4.1.0
-      jest-matcher-utils: 27.0.2
-      lodash.merge: 4.6.2
-    dev: false
-
   /jest-canvas-mock/2.4.0:
     resolution: {integrity: sha512-mmMpZzpmLzn5vepIaHk5HoH3Ka4WykbSoLuG/EKoJd0x0ID/t+INo1l8ByfcUJuDM+RIsL4QDg/gDnBbrj2/IQ==}
     dependencies:
@@ -11305,6 +11282,7 @@ packages:
       diff-sequences: 27.5.1
       jest-get-type: 27.5.1
       pretty-format: 27.5.1
+    dev: true
 
   /jest-diff/29.5.0:
     resolution: {integrity: sha512-LtxijLLZBduXnHSniy0WMdaHjmQnt3g5sa16W4p0HqukYTTsyTW3GD1q41TyGl5YFXj/5B2U6dlh5FM1LIMgxw==}
@@ -11367,6 +11345,7 @@ packages:
   /jest-get-type/27.5.1:
     resolution: {integrity: sha512-2KY95ksYSaK7DMBWQn6dQz3kqAf3BB64y2udeG+hv4KfSOb9qwcYQstTJc1KCbsix+wLZWZYN8t7nwX3GOBLRw==}
     engines: {node: ^10.13.0 || ^12.13.0 || ^14.15.0 || >=15.0.0}
+    dev: true
 
   /jest-get-type/29.4.3:
     resolution: {integrity: sha512-J5Xez4nRRMjk8emnTpWrlkyb9pfRQQanDrvWHhsR1+VUfbwxi30eVcZFlcdGInRibU4G5LwHXpI7IRHU0CY+gg==}
@@ -12155,6 +12134,7 @@ packages:
 
   /lodash.merge/4.6.2:
     resolution: {integrity: sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ==}
+    dev: true
 
   /lodash.mergewith/4.6.2:
     resolution: {integrity: sha512-GK3g5RPZWTRSeLSpgP8Xhra+pnjBC56q9FZYe1d5RN3TJ35dbkGy3YqBSMbyCrlbi+CM9Z3Jk5yTL7RCsqboyQ==}
@@ -15368,6 +15348,11 @@ packages:
       prop-types: 15.8.1
       react: 18.2.0
     dev: false
+
+  /react-refresh/0.14.0:
+    resolution: {integrity: sha512-wViHqhAd8OHeLS/IRMJjTSDHF3U9eWi62F/MledQGPdJGDhodXJ9PBLNGr6WWL7qlH12Mt3TyTpbS+hGXMjCzQ==}
+    engines: {node: '>=0.10.0'}
+    dev: true
 
   /react-resizable/3.0.4_biqbaboplfbrettd7655fr4n2y:
     resolution: {integrity: sha512-StnwmiESiamNzdRHbSSvA65b0ZQJ7eVQpPusrSmcpyGKzC0gojhtO62xxH6YOBmepk9dQTBi9yxidL3W4s3EBA==}
