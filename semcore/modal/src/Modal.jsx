@@ -26,7 +26,7 @@ class ModalRoot extends Component {
     i18n: localizedMessages,
     locale: 'en',
   };
-  state = { isTitle: false };
+  state = { hasTitle: false };
 
   handleKeyDown = (e) => {
     if (e.key === 'Escape') {
@@ -54,13 +54,13 @@ class ModalRoot extends Component {
 
   getWindowProps() {
     const { visible, closable, getI18nText, uid } = this.asProps;
-    const { isTitle } = this.state;
+    const { hasTitle } = this.state;
     return {
       visible,
       closable,
       onKeyDown: this.handleKeyDown,
-      'aria-label': isTitle ? undefined : getI18nText('title'),
-      'aria-labelledby': isTitle ? `igc-${uid}-title` : undefined,
+      'aria-label': hasTitle ? undefined : getI18nText('title'),
+      'aria-labelledby': hasTitle ? `igc-${uid}-title` : undefined,
     };
   }
 
@@ -75,7 +75,7 @@ class ModalRoot extends Component {
 
   getTitleProps() {
     const { uid } = this.asProps;
-    const setTitle = () => this.setState({ isTitle: true });
+    const setTitle = () => this.setState({ hasTitle: true });
 
     return {
       id: `igc-${uid}-title`,
