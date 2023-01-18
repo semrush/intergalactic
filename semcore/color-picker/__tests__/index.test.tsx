@@ -12,10 +12,20 @@ describe('ColorPicker', () => {
     expect(await snapshot(component)).toMatchImageSnapshot();
   });
 
-  test('Should render popper correctly', async () => {
+  test('Should render non-extended popper correctly', async () => {
     const component = (
       <div style={{ width: 250, height: 250 }}>
-        <ColorPicker value="#232456" disablePortal visible>
+        <ColorPicker value="#FF8786" disablePortal visible />
+      </div>
+    );
+
+    expect(await snapshot(component)).toMatchImageSnapshot();
+  });
+
+  test('Should render extended popper correctly', async () => {
+    const component = (
+      <div style={{ width: 250, height: 250 }}>
+        <ColorPicker value="#FF8786" disablePortal visible>
           <ColorPicker.Trigger />
           <ColorPicker.Popper>
             <ColorPicker.Colors />
