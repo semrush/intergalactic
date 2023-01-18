@@ -214,6 +214,12 @@ export function Popper(props: PopperAsProps) {
   );
 }
 
+Popper.defaultProps = (props: PopperAsProps) => {
+  return {
+    children: <ColorPicker.Colors getI18nText={props.getI18nText} />,
+  };
+};
+
 const ColorPicker = createComponent(ColorPickerRoot, {
   Trigger,
   Popper,
