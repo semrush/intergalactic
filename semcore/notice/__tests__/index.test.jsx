@@ -1,12 +1,12 @@
 import React from 'react';
 import { testing, snapshot, shared as testsShared } from '@semcore/jest-preset-ui';
-import { assert, expect, test, describe, afterEach, vi } from 'vitest';
+import { assert, expect, test, describe, beforeEach, vi } from 'vitest';
 const { render, cleanup, axe } = testing;
 import Notice, { NoticeSmart } from '../src';
 const { shouldSupportClassName, shouldSupportRef } = testsShared;
 
 describe('Notice', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
   shouldSupportClassName(Notice);
   shouldSupportRef(Notice);
@@ -91,7 +91,7 @@ describe('Notice', () => {
 });
 
 describe('Notice.Label', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
   test('Should support theme', async () => {
     const component = (
@@ -119,7 +119,7 @@ describe('Notice.Label', () => {
 });
 
 describe('NoticeSmart', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
   shouldSupportClassName(NoticeSmart);
   shouldSupportRef(NoticeSmart);

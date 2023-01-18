@@ -1,13 +1,13 @@
 import React from 'react';
 import { testing, snapshot, shared as testsShared } from '@semcore/jest-preset-ui';
-import { assert, expect, test, describe, afterEach, vi } from 'vitest';
+import { assert, expect, test, describe, beforeEach, vi } from 'vitest';
 const { cleanup, render } = testing;
 
 const { shouldSupportClassName, shouldSupportRef } = testsShared;
 import ScrollArea from '../src';
 
 describe('ScrollArea', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
   shouldSupportClassName(ScrollArea);
   shouldSupportRef(ScrollArea);
@@ -53,7 +53,7 @@ describe('ScrollArea', () => {
 });
 
 describe('ScrollArea.Container', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
   shouldSupportClassName(ScrollArea.Container, ScrollArea);
   shouldSupportRef(ScrollArea.Container, ScrollArea);

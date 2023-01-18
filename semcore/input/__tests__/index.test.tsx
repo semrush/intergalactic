@@ -1,14 +1,14 @@
 import React from 'react';
 import Search from '@semcore/icon/Search/m';
 import { testing, snapshot, shared as testsShared } from '@semcore/jest-preset-ui';
-import { assert, expect, test, describe, afterEach, vi } from 'vitest';
+import { assert, expect, test, describe, beforeEach, vi } from 'vitest';
 import Input from '../src';
 
 const { cleanup, fireEvent, render } = testing;
 const { shouldSupportClassName, shouldSupportRef } = testsShared;
 
 describe('Input', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
   shouldSupportClassName(Input);
   shouldSupportRef(Input);
@@ -190,7 +190,7 @@ describe('Input', () => {
 });
 
 describe('Input.Addon', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
   shouldSupportClassName(Input.Value);
   shouldSupportRef(Input.Value, Input);

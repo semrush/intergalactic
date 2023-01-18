@@ -1,11 +1,11 @@
 import React from 'react';
 import { testing } from '@semcore/jest-preset-ui';
-import { assert, expect, test, describe, afterEach, vi } from 'vitest';
+import { assert, expect, test, describe, beforeEach, vi } from 'vitest';
 const { cleanup, render } = testing;
 import Portal, { PortalProvider } from '../src';
 
 describe('Portal', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
   test('should render children to outside container', () => {
     const { getByTestId } = render(

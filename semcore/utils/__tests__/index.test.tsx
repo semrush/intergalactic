@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { testing, snapshot } from '@semcore/jest-preset-ui';
-import { assert, expect, test, describe, afterEach, vi } from 'vitest';
+import { assert, expect, test, describe, beforeEach, vi } from 'vitest';
 const { cleanup } = testing;
 
 import isNode from '../src/isNode';
@@ -14,7 +14,7 @@ import reactToText from '../src/reactToText';
 import { getRef, setRef, getNodeByRef } from '../src/ref';
 
 describe('Utils CSS in JS', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
   test('Utils assignProps other prop', () => {
     const result1 = assignProps(
@@ -291,7 +291,7 @@ describe('Utils CSS in JS', () => {
 });
 
 describe('Utils isNode', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
   test('should return false for invalid React elements', () => {
     const nodes = [Infinity, undefined, false, null];
@@ -327,7 +327,7 @@ describe('Utils compose', () => {
 });
 
 describe('Utils color', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
   test('should support resolveColor for empty value', () => {
     expect(resolveColor(undefined)).toBe(undefined);
@@ -384,7 +384,7 @@ describe('Utils interpolate', () => {
 });
 
 describe('Utils reactToText', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
   test('support string', () => {
     expect(reactToText('string')).toBe('string');
@@ -424,7 +424,7 @@ describe('Utils reactToText', () => {
 });
 
 describe('Utils ref', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
   test('[getRef] support element', () => {
     const div = document.createElement('div');

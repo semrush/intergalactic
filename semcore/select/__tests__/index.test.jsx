@@ -1,7 +1,7 @@
 import React from 'react';
 import { FilterTrigger } from '@semcore/base-trigger';
 import { testing, shared as testsShared, snapshot } from '@semcore/jest-preset-ui';
-import { assert, expect, test, describe, afterEach, vi } from 'vitest';
+import { assert, expect, test, describe, beforeEach, vi } from 'vitest';
 
 const { cleanup, fireEvent, render, axe, act } = testing;
 
@@ -10,8 +10,10 @@ const { shouldSupportClassName, shouldSupportRef } = testsShared;
 import Select from '../src';
 import InputSearch from '../src/InputSearch';
 
+HTMLElement.prototype.scrollIntoView = () => {};
+
 describe('Select Trigger', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
   test('Trigger renders correctly', async () => {
     const component = (
@@ -316,14 +318,14 @@ describe('Select Trigger', () => {
 });
 
 describe('Option.Checkbox', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
   shouldSupportClassName(Select.Option.Checkbox, Select);
   shouldSupportRef(Select.Option.Checkbox, Select);
 });
 
 describe('InputSearch', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
   shouldSupportClassName(InputSearch, Select);
   shouldSupportRef(InputSearch, Select);

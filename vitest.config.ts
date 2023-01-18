@@ -24,19 +24,34 @@ export default defineConfig({
       filter: /\.(j|t)sx?$/,
     }),
   ],
+  resolve: {
+    alias: [
+      { find: /^@semcore\/utils\/lib\/(.*)/, replacement: '@semcore/utils/src/$1' },
+      { find: /^@semcore\/icon\/(.*)/, replacement: '@semcore/icon/$1' },
+      {
+        find: /^@semcore\/esbuild-plugin-semcore\/(.*)/,
+        replacement: '@semcore/esbuild-plugin-semcore/$1',
+      },
+      { find: /^@semcore\/(.*)$/, replacement: '@semcore/$1/src' },
+    ],
+  },
   test: {
     testTimeout: 10 * 1000,
-    include: ['semcore/*/__tests__/**/*.tsx'],
+    include: [
+      'semcore/*/__tests__/**/*.tsx',
+      'semcore/*/__tests__/**/*.jsx',
+      'semcore/*/__tests__/**/*.ts',
+      'semcore/*/__tests__/**/*.js',
+      'tools/*/__tests__/**/*.tsx',
+      'tools/*/__tests__/**/*.jsx',
+      'tools/*/__tests__/**/*.ts',
+      'tools/*/__tests__/**/*.js',
+    ],
     exclude: [
-      'tools/code-mod',
-      'tools/generator-component',
+      'semcore/*/__tests__/**/*.vo-test.ts',
+      '**/__fixtures__',
       'tools/icon-transform-svg',
-      'tools/babel-plugin-shadow',
-      'tools/babel-plugin-recharts',
-      'semcore/chart',
-      'semcore/ui',
-      'semcore/input-mask',
-      'tools/babel-plugin-react-semcore',
+      '**/*.d.ts',
       'node_modules',
       'dist',
       '.idea',
@@ -44,6 +59,9 @@ export default defineConfig({
       '.cache',
     ],
     environment: 'happy-dom',
+  },
+  define: {
+    'global.__intergalacticFlagsBaseUrl': '"https://static.semrush.com/ui-kit/flags/"',
   },
 });
 

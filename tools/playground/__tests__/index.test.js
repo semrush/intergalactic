@@ -3,7 +3,7 @@ import glob from 'fast-glob';
 import esbuild from 'esbuild';
 /* eslint-disable import/no-unresolved */
 // @ts-ignore
-import { esbuildPluginSemcoreSourcesResolve } from 'disable-jest-mapper:@semcore/esbuild-plugin-semcore/esbuild-plugin-semcore-sources-resolve';
+import { esbuildPluginSemcoreSourcesResolve } from '@semcore/esbuild-plugin-semcore/esbuild-plugin-semcore-sources-resolve';
 /* eslint-enable import/no-unresolved */
 import { describe, test } from 'vitest';
 

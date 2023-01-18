@@ -6,7 +6,7 @@ const { cleanup, axe, render, fireEvent, act } = testing;
 import DropdownMenu from '../src';
 
 describe('DropdownMenu', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
   test('Should correct enter space in input', () => {
     const spy = vi.fn();

@@ -1,13 +1,13 @@
 import React from 'react';
 import { testing, snapshot, shared as testsShared } from '@semcore/jest-preset-ui';
-import { assert, expect, test, describe, afterEach, vi } from 'vitest';
+import { assert, expect, test, describe, beforeEach, vi } from 'vitest';
 const { render, fireEvent, cleanup } = testing;
 
 const { shouldSupportClassName, shouldSupportRef } = testsShared;
 import FullscreenModal from '../src';
 
 describe('FullscreenModal', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
   shouldSupportClassName(FullscreenModal, React.Fragment, { visible: true });
   shouldSupportRef(FullscreenModal, React.Fragment, { visible: true });
@@ -87,7 +87,7 @@ describe('FullscreenModal', () => {
 });
 
 describe('FullscreenModal.Header', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
   shouldSupportClassName(FullscreenModal.Header, ({ children }) => (
     <FullscreenModal visible>{children}</FullscreenModal>

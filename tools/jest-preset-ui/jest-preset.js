@@ -12,21 +12,21 @@ module.exports = {
   // coveragePathIgnorePatterns: ['/style/', 'src/index.tsx'],
   moduleFileExtensions: ['js', 'jsx', 'json', 'ts', 'tsx'],
   // collectCoverageFrom: ['**/semcore/*/src/**.*'],
-  moduleNameMapper: {
-    '\\.(css)$': 'identity-obj-proxy',
-    '^@semcore/utils/lib/(.*)': '@semcore/utils/src/$1',
-    '^@semcore/(.*)/lib/(.*)': '@semcore/$1/lib/$2',
-    '^@semcore/icon/(.*)/(.*)': '@semcore/icon/$1/$2',
-    // TODO: this is temporary crunch
-    '^@semcore/icon$': resolvePath(`${__dirname}/../../semcore/icon/src`),
-    '^@semcore/(.*)': '@semcore/$1/src',
-    '^disable-jest-mapper:(.*)': '$1',
-    // '^react$': resolvePath(__dirname, '../../node_modules/react/umd/react.production.min.js'),
-    // '^react-dom$': resolvePath(
-    //   __dirname,
-    //   '../../node_modules/react-dom/umd/react-dom.production.min.js',
-    // ),
-  },
+  // moduleNameMapper: {
+  //   '\\.(css)$': 'identity-obj-proxy',
+  //   '^@semcore/utils/lib/(.*)': '@semcore/utils/src/$1',
+  //   '^@semcore/(.*)/lib/(.*)': '@semcore/$1/lib/$2',
+  //   '^@semcore/icon/(.*)/(.*)': '@semcore/icon/$1/$2',
+  //   // TODO: this is temporary crunch
+  //   '^@semcore/icon$': resolvePath(`${__dirname}/../../semcore/icon/src`),
+  //   '^@semcore/(.*)': '@semcore/$1/src',
+  //   '^disable-jest-mapper:(.*)': '$1',
+  //   // '^react$': resolvePath(__dirname, '../../node_modules/react/umd/react.production.min.js'),
+  //   // '^react-dom$': resolvePath(
+  //   //   __dirname,
+  //   //   '../../node_modules/react-dom/umd/react-dom.production.min.js',
+  //   // ),
+  // },
   modulePathIgnorePatterns: ['/generator-component/'],
   testEnvironment: 'jsdom',
 };

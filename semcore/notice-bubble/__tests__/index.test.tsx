@@ -2,7 +2,7 @@ import React from 'react';
 import { testing, snapshot /*shared as testsShared*/ } from '@semcore/jest-preset-ui';
 
 const { render, fireEvent, cleanup, act } = testing;
-import { assert, expect, test, describe, afterEach, vi } from 'vitest';
+import { assert, expect, test, describe, beforeEach, vi } from 'vitest';
 
 import {
   NoticeBubbleContainer,
@@ -26,7 +26,7 @@ const NoticeBubble = React.forwardRef((props, ref) => (
 // ));
 
 describe('NoticeBubbleContainer', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
   // shouldSupportClassName(NoticeBubble);
   // shouldSupportRef(NoticeBubble);
@@ -46,7 +46,7 @@ describe('NoticeBubbleContainer', () => {
 });
 
 describe('NoticeBubble Timer', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
   test.skip('should support pause timer at mouse enter', () => {
     vi.useFakeTimers();
     const spy = vi.fn();
@@ -65,7 +65,7 @@ describe('NoticeBubble Timer', () => {
 });
 
 describe('NoticeBubble', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
   // shouldSupportClassName(NoticeBubble);
   // shouldSupportRef(NoticeBubble);
@@ -203,10 +203,3 @@ describe('NoticeBubble', () => {
     ).toMatchImageSnapshot();
   });
 });
-
-// describe('NoticeBubbleWarning', () => {
-//   afterEach(cleanup);
-
-//   shouldSupportClassName(NoticeBubbleWarning);
-//   shouldSupportRef(NoticeBubbleWarning);
-// });

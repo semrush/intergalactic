@@ -1,6 +1,6 @@
 import React from 'react';
 import { testing, snapshot, shared as testsShared } from '@semcore/jest-preset-ui';
-import { assert, expect, test, describe, afterEach, vi } from 'vitest';
+import { assert, expect, test, describe, beforeEach, vi } from 'vitest';
 import { Text } from '@semcore/typography';
 import SettingsM from '@semcore/icon/Settings/m';
 const { cleanup } = testing;
@@ -9,7 +9,7 @@ const { shouldSupportClassName, shouldSupportRef } = testsShared;
 import Card from '../src';
 
 describe('Card', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
   shouldSupportClassName(Card);
   shouldSupportRef(Card);

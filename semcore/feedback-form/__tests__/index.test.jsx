@@ -1,6 +1,6 @@
 import React from 'react';
 import { testing, shared as testsShared, snapshot } from '@semcore/jest-preset-ui';
-import { assert, expect, test, describe, afterEach, vi } from 'vitest';
+import { assert, expect, test, describe, beforeEach, vi } from 'vitest';
 const { render, fireEvent, cleanup, axe } = testing;
 
 const { shouldSupportClassName, shouldSupportRef } = testsShared;
@@ -9,13 +9,23 @@ import propsForElement from '@semcore/utils/lib/propsForElement';
 import FeedbackForm from '../src';
 
 describe('FeedbackForm', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
   shouldSupportClassName(FeedbackForm);
   shouldSupportRef(FeedbackForm);
 
   test('Should call onSubmit', () => {
     const onSubmit = vi.fn();
+
+    // https://github.com/capricorn86/happy-dom/issues/527#issuecomment-1174442116
+    const originalDispatchEvent = HTMLElement.prototype.dispatchEvent;
+    HTMLElement.prototype.dispatchEvent = function (event) {
+      const result = originalDispatchEvent.call(this, event);
+      if (event.type === 'click' && this.tagName === 'BUTTON') {
+        this.dispatchEvent(new Event('submit', { bubbles: true, cancelable: true }));
+      }
+      return result;
+    };
 
     const { getByTestId } = render(
       <FeedbackForm onSubmit={onSubmit}>
@@ -26,6 +36,8 @@ describe('FeedbackForm', () => {
 
     fireEvent.click(getByTestId('submit'));
     expect(onSubmit).toHaveBeenCalledTimes(1);
+
+    HTMLElement.prototype.dispatchEvent = originalDispatchEvent;
   });
 
   test('Should not call onSubmit for validation error', () => {
@@ -120,7 +132,7 @@ describe('FeedbackForm', () => {
 });
 
 describe('FeedbackForm.Item', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
   const Item = React.forwardRef((props, ref) => (
     <FeedbackForm.Item interaction="click" {...props}>

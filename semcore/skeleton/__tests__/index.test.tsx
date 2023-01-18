@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { testing, snapshot } from '@semcore/jest-preset-ui';
-import { assert, expect, test, describe, afterEach, vi } from 'vitest';
+import { assert, expect, test, describe, beforeEach, vi } from 'vitest';
 import Skeleton, {
   LineChartSkeleton,
   AreaChartSkeleton,
@@ -15,7 +15,7 @@ import Skeleton, {
 const { render, cleanup } = testing;
 
 describe('Skeleton', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
   test('Renders correctly', async () => {
     const component = (

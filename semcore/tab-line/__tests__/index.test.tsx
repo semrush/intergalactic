@@ -1,13 +1,13 @@
 import * as React from 'react';
 import { testing, snapshot } from '@semcore/jest-preset-ui';
-import { assert, expect, test, describe, afterEach, vi } from 'vitest';
+import { assert, expect, test, describe, beforeEach, vi } from 'vitest';
 import propsForElement from '@semcore/utils/lib/propsForElement';
 import TabLine from '../src';
 
 const { render, fireEvent, cleanup, axe } = testing;
 
 describe('TabLine', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
   test('Render correctly', async () => {
     const component = (

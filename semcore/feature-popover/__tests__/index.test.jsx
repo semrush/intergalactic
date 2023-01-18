@@ -1,12 +1,12 @@
 import React from 'react';
 import { testing, snapshot } from '@semcore/jest-preset-ui';
-import { assert, expect, test, describe, afterEach, vi } from 'vitest';
+import { assert, expect, test, describe, beforeEach, vi } from 'vitest';
 const { render, cleanup } = testing;
 
 import FeaturePopover from '../src';
 
 describe('FeaturePopover.Trigger', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
   test('should support custom className', () => {
     const { getByTestId } = render(
@@ -53,7 +53,7 @@ describe('FeaturePopover.Trigger', () => {
 });
 
 describe('FeaturePopover.Popper', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
   test('should support custom className', () => {
     const { getByTestId } = render(

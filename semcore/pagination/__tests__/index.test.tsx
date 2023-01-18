@@ -1,12 +1,12 @@
 import React from 'react';
 import { testing, snapshot, shared as testsShared } from '@semcore/jest-preset-ui';
-import { assert, expect, test, describe, afterEach, vi } from 'vitest';
+import { assert, expect, test, describe, beforeEach, vi } from 'vitest';
 const { render, fireEvent, cleanup, axe } = testing;
 import Return from '@semcore/icon/Return/m';
 import Pagination from '../src';
 
 describe('Pagination', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
   test('Renders correctly', async () => {
     const component = <Pagination currentPage={1} totalPages={100} />;
@@ -32,7 +32,7 @@ describe('Pagination', () => {
 });
 
 describe('Pagination.FirstPage', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
   test('should be disabled if currentPage = 1', () => {
     const { getByTestId } = render(
@@ -69,7 +69,7 @@ describe('Pagination.FirstPage', () => {
 });
 
 describe('Pagination.PrevPage', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
   test('should be disabled if currentPage = 1', () => {
     const { getByTestId } = render(
@@ -107,7 +107,7 @@ describe('Pagination.PrevPage', () => {
 });
 
 describe('Pagination.NextPage', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
   test('should be disabled if currentPage = totalPages', () => {
     const PAGES = 100;
@@ -146,7 +146,7 @@ describe('Pagination.NextPage', () => {
 });
 
 describe('Pagination.TotalPages', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
   test('should call onCurrentPageChange(totalPages) on click', () => {
     const spy = vi.fn();
@@ -164,7 +164,7 @@ describe('Pagination.TotalPages', () => {
 });
 
 describe('Pagination.PageInput', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
   test('Should correctly render', async () => {
     const component = (
@@ -230,7 +230,7 @@ describe('Pagination.PageInput', () => {
 });
 
 describe('Pagination.PageInput.Value', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
   test('should display currentPage value and update on property change', () => {
     const CURRENT_PAGE = {

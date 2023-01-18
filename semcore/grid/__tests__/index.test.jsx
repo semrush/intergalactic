@@ -1,6 +1,6 @@
 import React from 'react';
 import { testing, snapshot, shared as testsShared } from '@semcore/jest-preset-ui';
-import { assert, expect, test, describe, afterEach, vi } from 'vitest';
+import { assert, expect, test, describe, beforeEach, vi } from 'vitest';
 const { cleanup } = testing;
 const { shouldSupportClassName, shouldSupportRef } = testsShared;
 import { Col, Row } from '../src';
@@ -13,7 +13,7 @@ const styleBox = {
 };
 
 describe('Grid', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
   shouldSupportClassName(Row);
   shouldSupportRef(Row);
 

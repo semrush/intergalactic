@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { testing, snapshot } from '@semcore/jest-preset-ui';
-import { assert, expect, test, describe, afterEach, vi } from 'vitest';
+import { assert, expect, test, describe, beforeEach, vi } from 'vitest';
 import propsForElement from '@semcore/utils/lib/propsForElement';
 import CheckM from '@semcore/icon/Check/m';
 import TabPanel from '../src';
@@ -8,7 +8,7 @@ import TabPanel from '../src';
 const { render, fireEvent, cleanup, axe } = testing;
 
 describe('TabPanel', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
   test('Render correctly', async () => {
     const component = (

@@ -1,12 +1,12 @@
 import React from 'react';
 import { snapshot, testing } from '@semcore/jest-preset-ui';
-import { assert, expect, test, describe, afterEach, vi } from 'vitest';
+import { assert, expect, test, describe, beforeEach, vi } from 'vitest';
 import Icon from '../src';
 
 const { render, cleanup, fireEvent, axe } = testing;
 
 describe('Icon', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
   test.each(['200', '100%'], 'should support custom width %i', (width) => {
     const { getByTestId } = render(<Icon data-testid="icon" width={width} />);

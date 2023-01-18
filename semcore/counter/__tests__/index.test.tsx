@@ -1,12 +1,12 @@
 import React from 'react';
 import { testing, snapshot } from '@semcore/jest-preset-ui';
-import { assert, expect, test, describe, afterEach, vi } from 'vitest';
+import { assert, expect, test, describe, beforeEach, vi } from 'vitest';
 const { cleanup } = testing;
 
 import Counter from '../src';
 
 describe('Counter', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
   test('renders correctly', async () => {
     const component = <Counter>42</Counter>;

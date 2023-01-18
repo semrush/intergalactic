@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { testing, snapshot } from '@semcore/jest-preset-ui';
-import { assert, expect, test, describe, afterEach, vi } from 'vitest';
+import { assert, expect, test, describe, beforeEach, vi } from 'vitest';
 import Textarea from '../src';
 
 const { cleanup, fireEvent, render, axe } = testing;
 
 describe('Textarea', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
   test('Should support size', async () => {
     const component = (

@@ -1,6 +1,6 @@
 import React from 'react';
 import { testing, shared as testsShared, snapshot } from '@semcore/jest-preset-ui';
-import { assert, expect, test, describe, afterEach, vi } from 'vitest';
+import { assert, expect, test, describe, beforeEach, vi } from 'vitest';
 const { cleanup } = testing;
 
 const { shouldSupportClassName, shouldSupportRef } = testsShared;
@@ -9,7 +9,7 @@ import BaseTrigger, { ButtonTrigger, FilterTrigger, LinkTrigger } from '../src';
 import NeighborLocation from '@semcore/neighbor-location';
 
 describe('BaseTrigger', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
   shouldSupportClassName(BaseTrigger);
   shouldSupportRef(BaseTrigger);
@@ -97,7 +97,7 @@ describe('BaseTrigger', () => {
 });
 
 describe('ButtonTrigger', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
   shouldSupportClassName(ButtonTrigger);
   shouldSupportRef(ButtonTrigger);
@@ -115,7 +115,7 @@ describe('ButtonTrigger', () => {
 });
 
 describe('FilterTrigger', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
   shouldSupportClassName(FilterTrigger);
   shouldSupportRef(FilterTrigger);
@@ -168,7 +168,7 @@ describe('FilterTrigger', () => {
 });
 
 describe('LinkTrigger', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
   shouldSupportClassName(LinkTrigger);
   shouldSupportRef(LinkTrigger);

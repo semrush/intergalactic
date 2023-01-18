@@ -1,12 +1,12 @@
 import React from 'react';
 import { testing, snapshot } from '@semcore/jest-preset-ui';
-import { assert, expect, test, describe, afterEach, vi } from 'vitest';
+import { assert, expect, test, describe, beforeEach, vi } from 'vitest';
 const { cleanup } = testing;
 
 import ProductHead, { Info, Title } from '../src';
 
 describe('ProductHead', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
   const component = (
     <ProductHead>
@@ -53,7 +53,7 @@ describe('ProductHead', () => {
 });
 
 describe('Title', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
   test('Renders correctly if not enough space', async () => {
     const component = (
@@ -78,7 +78,7 @@ describe('Title', () => {
 });
 
 describe('Info', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
   test('Renders correctly when item alone', async () => {
     const component = (

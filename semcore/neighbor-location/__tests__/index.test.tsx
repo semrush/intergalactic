@@ -1,7 +1,7 @@
 import React from 'react';
 import { testing } from '@semcore/jest-preset-ui';
 import NeighborLocation from '../src';
-import { assert, expect, test, describe, afterEach, vi } from 'vitest';
+import { assert, expect, test, describe, beforeEach, vi } from 'vitest';
 const { cleanup, render } = testing;
 
 const NeighborLocationItem: any = function ({ neighborlocation, ...other }) {
@@ -17,7 +17,7 @@ const CustomComponent: any = function ({ neighborLocation, ...other }) {
 };
 
 describe('neighbor-location', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
   test('should must work', () => {
     const { getByTestId } = render(

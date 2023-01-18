@@ -1,11 +1,14 @@
-const pluginTester = require('babel-plugin-tester').default;
-const path = require('path');
+import pluginTester from 'babel-plugin-tester';
+import path from 'path';
+import { describe, it } from 'vitest';
 const plugin = require('../src/index');
 
 const absolutePath = (relativePath) => path.resolve(__dirname, relativePath);
 
 const findPackage = (filename) => require(path.join(path.dirname(filename), '_package.json'));
 
+global.describe = describe;
+global.it = it;
 pluginTester({
   plugin,
   pluginName: '@semcore/babel-plugin-react-semcore',

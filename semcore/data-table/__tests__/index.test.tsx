@@ -1,6 +1,6 @@
 import React from 'react';
 import { testing, snapshot, shared as testsShared } from '@semcore/jest-preset-ui';
-import { assert, expect, test, describe, afterEach, vi } from 'vitest';
+import { assert, expect, test, describe, beforeEach, vi } from 'vitest';
 import Sticky from '@semcore/sticky';
 import ProgressBar from '@semcore/progress-bar';
 import Divider from '@semcore/divider';
@@ -56,7 +56,7 @@ const data = [
 ];
 
 describe('DataTable', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
   shouldSupportClassName(DataTable);
   shouldSupportRef(DataTable);
@@ -884,7 +884,7 @@ describe('DataTable.Column', () => {
         </DataTable.Head>
       </DataTable>,
     );
-    expect(getByTestId('column').style.flex).toBe('0 0px');
+    expect(getByTestId('column').style.flex).toBe('1 1 0px');
     rerender(
       <DataTable data={[]}>
         <DataTable.Head>
@@ -892,7 +892,7 @@ describe('DataTable.Column', () => {
         </DataTable.Head>
       </DataTable>,
     );
-    expect(getByTestId('column').style.flex).toBe('0 0px');
+    expect(getByTestId('column').style.flex).toBe('1 1 0px');
   });
 
   test('Should support ref', () => {

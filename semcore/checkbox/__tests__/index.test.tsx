@@ -1,13 +1,13 @@
 import React from 'react';
 import { testing, shared, snapshot } from '@semcore/jest-preset-ui';
-import { assert, expect, test, describe, afterEach, vi } from 'vitest';
+import { assert, expect, test, describe, beforeEach, vi } from 'vitest';
 import Checkbox from '../src';
 
 const { cleanup, render, axe } = testing;
 const { shouldSupportClassName, shouldSupportRef } = shared;
 
 describe('Checkbox', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
   shouldSupportClassName(Checkbox);
   shouldSupportRef(Checkbox);

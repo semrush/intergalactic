@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { testing, snapshot } from '@semcore/jest-preset-ui';
-import { assert, expect, test, describe, afterEach, vi } from 'vitest';
+import { assert, expect, test, describe, beforeEach, vi } from 'vitest';
 import Check from '@semcore/icon/Check/m';
 import Question from '@semcore/icon/Question/m';
 import { Blockquote, List, Text, Hint } from '../src';
@@ -8,7 +8,7 @@ import { Blockquote, List, Text, Hint } from '../src';
 const { cleanup, render, axe } = testing;
 
 describe('Text', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
   test('Should support size', async () => {
     const component = (
@@ -154,7 +154,7 @@ describe('Text', () => {
 });
 
 describe('List', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
   test('Should support nested', async () => {
     const component = (
@@ -223,7 +223,7 @@ describe('List', () => {
 });
 
 describe('Blockquote', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
   test('Renders correctly', async () => {
     const component = <Blockquote>Blockquote</Blockquote>;
@@ -252,7 +252,7 @@ describe('Blockquote', () => {
 });
 
 describe('Hint', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
   test('Renders correctly', async () => {
     const component = <Hint>Hint</Hint>;

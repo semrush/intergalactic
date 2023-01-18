@@ -1,6 +1,6 @@
 import React, { HTMLAttributes } from 'react';
 import { testing, shared as testsShared } from '@semcore/jest-preset-ui';
-import { assert, expect, test, describe, afterEach, vi } from 'vitest';
+import { expect, test, describe, beforeEach, vi } from 'vitest';
 
 const { cleanup, fireEvent, render } = testing;
 
@@ -138,7 +138,7 @@ function shouldSupportCallEnhanceWithProps(RootComponent, typeRootComponent) {
 }
 
 describe('Core', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
   shouldSupportRender(RootTestClass, 'Class');
   shouldSupportRender(RootTestFunc, 'Function');
@@ -209,7 +209,7 @@ describe('Core', () => {
       static displayName = 'TestRoot';
 
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      bindHandlerClick = (value, a, b, c) => (e) => {};
+      bindHandlerClick = (value, a, b, c) => (e) => { };
 
       getItemProps({ value }) {
         return {
@@ -256,6 +256,8 @@ describe('Core', () => {
 });
 
 describe('Root', () => {
+  beforeEach(cleanup);
+
   test('should set props', () => {
     class TestRoot extends Component {
       static displayName = 'Test';
@@ -674,7 +676,7 @@ describe('Hoist props', () => {
 });
 
 describe('Props from context', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
   test('should support props forwarding', () => {
     const Test = createComponent(RootTestClass);
     render(
@@ -735,7 +737,7 @@ describe('Props from context', () => {
 });
 
 describe('Option "parent"', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
   test('should support parent context', () => {
     class RootTestParent extends Component<IComponentProps> {
@@ -905,7 +907,7 @@ describe('Option "parent"', () => {
 });
 
 describe('createBaseComponent', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
   function TestFuncWithRef(props, ref) {
     return <div ref={ref} {...props} />;

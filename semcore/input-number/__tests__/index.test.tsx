@@ -1,12 +1,12 @@
 import React from 'react';
 import { testing, snapshot } from '@semcore/jest-preset-ui';
-import { assert, expect, test, describe, afterEach, vi } from 'vitest';
+import { assert, expect, test, describe, beforeEach, vi } from 'vitest';
 const { cleanup, fireEvent, render, axe } = testing;
 
 import InputNumber from '../src';
 
 describe('InputNumber', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
   test('Should accept int numbers', () => {
     const spy = vi.fn();

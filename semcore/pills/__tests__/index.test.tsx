@@ -1,6 +1,6 @@
 import React from 'react';
 import { testing, snapshot } from '@semcore/jest-preset-ui';
-import { assert, expect, test, describe, afterEach, vi } from 'vitest';
+import { assert, expect, test, describe, beforeEach, vi } from 'vitest';
 import Globe from '@semcore/icon/Globe/m';
 import Badge from '@semcore/badge';
 
@@ -9,7 +9,7 @@ const { render, fireEvent, cleanup, axe, act } = testing;
 import Pills from '../src';
 
 describe('PillGroup', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
   test('Should support onChange callback', () => {
     const spy = vi.fn();

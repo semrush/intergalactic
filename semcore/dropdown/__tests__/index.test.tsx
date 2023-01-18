@@ -1,12 +1,12 @@
 import React from 'react';
 import { testing, snapshot } from '@semcore/jest-preset-ui';
-import { assert, expect, test, describe, afterEach, vi } from 'vitest';
+import { assert, expect, test, describe, beforeEach, vi } from 'vitest';
 const { cleanup, axe, render, fireEvent } = testing;
 
 import Dropdown from '../src';
 
 describe('Dropdown', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
   test('Should correct enter space in input', () => {
     const spy = vi.fn();

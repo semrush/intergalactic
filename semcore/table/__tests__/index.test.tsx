@@ -1,12 +1,12 @@
 import React from 'react';
 import { testing, shared as testsShared, snapshot } from '@semcore/jest-preset-ui';
-import { assert, expect, test, describe, afterEach, vi } from 'vitest';
+import { assert, expect, test, describe, beforeEach, vi } from 'vitest';
 const { render, cleanup, axe } = testing;
 const { shouldSupportClassName, shouldSupportRef } = testsShared;
 import Table from '../src';
 
 describe('Table', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
   shouldSupportClassName(Table);
   shouldSupportRef(Table);
@@ -159,21 +159,21 @@ describe('Table', () => {
 });
 
 describe('Table.Head', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
   shouldSupportClassName(Table.Head, Table);
   shouldSupportRef(Table.Head, Table);
 });
 
 describe('Table.Body', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
   shouldSupportClassName(Table.Body, Table);
   shouldSupportRef(Table.Body, Table);
 });
 
 describe('Table.Row', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
   shouldSupportClassName(Table.Row, (props) => (
     <Table>
@@ -194,7 +194,7 @@ describe('Table.Row', () => {
 });
 
 describe('Table.CellHead', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
   shouldSupportClassName(Table.CellHead, (props) => (
     <Table>
@@ -300,7 +300,7 @@ describe('Table.CellHead', () => {
 });
 
 describe('Table.Cell', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
   shouldSupportClassName(Table.Cell, (props) => (
     <Table>
@@ -325,7 +325,7 @@ describe('Table.Cell', () => {
 });
 
 describe('Table.StickyHead', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
   shouldSupportClassName(Table.StickyHead, Table);
   shouldSupportRef(Table.StickyHead, Table);

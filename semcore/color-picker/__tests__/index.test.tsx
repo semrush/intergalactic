@@ -1,12 +1,12 @@
 import React from 'react';
 import { testing, snapshot } from '@semcore/jest-preset-ui';
 import ColorPicker, { PaletteManager } from '../src';
-import { assert, expect, test, describe, afterEach, vi } from 'vitest';
+import { assert, expect, test, describe, beforeEach, vi } from 'vitest';
 
 const { cleanup, fireEvent, render, axe, act } = testing;
 
 describe('ColorPicker', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
   test('Should render trigger correctly', async () => {
     const component = <ColorPicker value="#232456" />;

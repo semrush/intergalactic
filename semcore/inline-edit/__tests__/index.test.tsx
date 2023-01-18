@@ -1,6 +1,6 @@
 import React from 'react';
 import { testing, snapshot } from '@semcore/jest-preset-ui';
-import { assert, expect, test, describe, afterEach, vi } from 'vitest';
+import { assert, expect, test, describe, beforeEach, vi } from 'vitest';
 const { cleanup, axe, render } = testing;
 
 import InlineEdit from '../src';
@@ -15,7 +15,7 @@ const InstantFadeInOut: React.FC<{ children: React.ReactNode; visible: boolean }
   });
 
 describe('InlineEdit', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
   test('renders view by default', async () => {
     const component = (

@@ -1,12 +1,12 @@
 import React from 'react';
 import { testing, snapshot } from '@semcore/jest-preset-ui';
 const { cleanup, fireEvent, render, axe, act } = testing;
-import { assert, expect, test, describe, afterEach, vi } from 'vitest';
+import { assert, expect, test, describe, beforeEach, vi } from 'vitest';
 
 import Tooltip from '../src';
 
 describe('Tooltip', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
   test('Renders correctly', async () => {
     const component = (
@@ -72,7 +72,7 @@ describe('Tooltip', () => {
 });
 
 describe('Tooltip.Trigger', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
   test('should support custom className', () => {
     const { getByTestId } = render(
@@ -119,7 +119,7 @@ describe('Tooltip.Trigger', () => {
 });
 
 describe('Tooltip.Popper', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
   test('should support custom className', () => {
     const { getByTestId } = render(
@@ -189,7 +189,7 @@ describe('Tooltip.Popper', () => {
 });
 
 describe('TooltipBase', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
   test('should support ref', () => {
     const ref = React.createRef();

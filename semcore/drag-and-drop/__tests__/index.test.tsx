@@ -1,6 +1,6 @@
 import React from 'react';
 import { testing, snapshot } from '@semcore/jest-preset-ui';
-import { assert, expect, test, describe, afterEach, vi } from 'vitest';
+import { assert, expect, test, describe, beforeEach, vi } from 'vitest';
 import DnD from '../src';
 import Badge from '@semcore/badge';
 import LinkedInS from '@semcore/icon/LinkedIn/m';
@@ -8,7 +8,7 @@ import TabPanel from '@semcore/tab-panel';
 const { cleanup } = testing;
 
 describe('DragAndDrop', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
   test('Should render correctly', async () => {
     const icons = {
@@ -33,7 +33,7 @@ describe('DragAndDrop', () => {
     const currentTab = 'overview';
 
     const component = (
-      <DnD tag={TabPanel} value={currentTab} onDnD={() => {}}>
+      <DnD tag={TabPanel} value={currentTab} onDnD={() => { }}>
         {tabs.map((tab) => (
           <DnD.Draggable placement="bottom" tag={TabPanel.Item} value={tab} key={tab} pb={0}>
             {icons[tab] ?? null}

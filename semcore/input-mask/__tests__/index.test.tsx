@@ -2,13 +2,13 @@ import React from 'react';
 import InputMask from '../src';
 
 import { testing, shared as testsShared, snapshot } from '@semcore/jest-preset-ui';
-import { assert, expect, test, describe, afterEach, vi } from 'vitest';
+import { assert, expect, test, describe, beforeEach, vi } from 'vitest';
 const { cleanup, fireEvent, render, axe } = testing;
 
 const { shouldSupportClassName, shouldSupportRef } = testsShared;
 
 describe('InputMask', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
   shouldSupportClassName(InputMask);
   shouldSupportRef(InputMask);
@@ -58,7 +58,7 @@ describe('InputMask', () => {
 });
 
 describe('InputMask.Value', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
   shouldSupportClassName(InputMask.Value, InputMask, {
     title: 'test mask',

@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { testing, snapshot } from '@semcore/jest-preset-ui';
-import { assert, expect, test, describe, afterEach, vi } from 'vitest';
+import { assert, expect, test, describe, beforeEach, vi } from 'vitest';
 import SpinContainer from '../src';
 
 const { cleanup } = testing;
 
 describe('SpinContainer', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
   test('Render correctly', async () => {
     const Component = (

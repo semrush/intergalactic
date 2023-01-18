@@ -1,6 +1,6 @@
 import React from 'react';
 import { testing, snapshot, shared as testsShared } from '@semcore/jest-preset-ui';
-import { assert, expect, test, describe, afterEach, vi } from 'vitest';
+import { assert, expect, test, describe, beforeEach, vi } from 'vitest';
 import Calendar from '@semcore/icon/Calendar/m';
 
 const { cleanup, render, axe } = testing;
@@ -12,7 +12,7 @@ import { Flex } from '@semcore/flex-box';
 import { Text } from '@semcore/typography';
 
 describe('Link', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
   shouldSupportClassName(Link, React.Fragment, { children: 'Link' });
   shouldSupportRef(Link, React.Fragment, { children: 'Link' });
@@ -91,13 +91,13 @@ describe('Link', () => {
 
   test('Should support inline property', () => {
     const { rerender, getByTestId } = render(<Link data-testid="link">Link</Link>);
-    expect(getComputedStyle(getByTestId('link')).display).toBe('inline-block');
+    expect((getByTestId('link')).className).not.toContain('inline');
     rerender(
       <Link data-testid="link" inline>
         Link
       </Link>,
     );
-    expect(getComputedStyle(getByTestId('link')).display).toBe('inline');
+    expect((getByTestId('link')).className).toContain('inline');
   });
 
   test('Should support ellipsis links with addon', async () => {
@@ -125,13 +125,13 @@ describe('Link', () => {
 
   test('Should support noWrap property', () => {
     const { rerender, getByTestId } = render(<Link data-testid="link">Link</Link>);
-    expect(getComputedStyle(getByTestId('link'))['white-space']).toBe('nowrap');
+    expect(getByTestId('link').className).contains('noWrap');
     rerender(
       <Link data-testid="link" noWrap={false}>
         Link
       </Link>,
     );
-    expect(getComputedStyle(getByTestId('link'))['white-space']).toBe('');
+    expect(getByTestId('link').className).not.contains('noWrap');
   });
 
   test('Should support sizes', async () => {

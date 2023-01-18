@@ -1,9 +1,9 @@
 import { testing } from '@semcore/jest-preset-ui';
-import { assert, expect, test, describe, afterEach, vi } from 'vitest';
+import { assert, expect, test, describe, beforeEach, vi } from 'vitest';
 const { cleanup } = testing;
 
 describe('Breakpoints', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
   test('TODO', () => {
     expect(true).toEqual(true);

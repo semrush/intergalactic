@@ -1,6 +1,6 @@
 import React from 'react';
 import { testing, shared as testsShared, snapshot } from '@semcore/jest-preset-ui';
-import { assert, expect, test, describe, afterEach, vi } from 'vitest';
+import { assert, expect, test, describe, beforeEach, vi } from 'vitest';
 const { cleanup, fireEvent, render, axe } = testing;
 
 const { shouldSupportClassName, shouldSupportRef } = testsShared;
@@ -8,7 +8,7 @@ const { shouldSupportClassName, shouldSupportRef } = testsShared;
 import Modal from '../src';
 
 describe('Modal', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
   shouldSupportClassName(Modal.Window, (props) => <Modal {...props} visible />);
   shouldSupportRef(Modal.Window, (props) => <Modal {...props} visible />);

@@ -1,6 +1,6 @@
 import React from 'react';
 import { testing, shared as testsShared, snapshot } from '@semcore/jest-preset-ui';
-import { assert, expect, test, describe, afterEach, vi } from 'vitest';
+import { assert, expect, test, describe, beforeEach, vi } from 'vitest';
 const { axe, cleanup, fireEvent, render } = testing;
 import { Box, Flex } from '@semcore/flex-box';
 
@@ -28,7 +28,7 @@ const Indicators = () => (
 );
 
 describe('Carousel', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
   shouldSupportClassName(Carousel);
   shouldSupportRef(Carousel);
@@ -89,21 +89,21 @@ describe('Carousel', () => {
 });
 
 describe('Carousel.Container', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
   shouldSupportClassName(Carousel.Container, Carousel);
   shouldSupportRef(Carousel.Container, Carousel);
 });
 
 describe('Carousel.Item', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
   shouldSupportClassName(Carousel.Item, Carousel);
   shouldSupportRef(Carousel.Item, Carousel);
 });
 
 describe('Carousel.Indicators', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
   shouldSupportClassName(Carousel.Indicators, Carousel);
   shouldSupportRef(Carousel.Indicators, Carousel);
@@ -183,7 +183,7 @@ describe('Carousel.Indicators', () => {
 });
 
 describe('Carousel.Prev', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
   shouldSupportClassName(Carousel.Prev, Carousel);
   shouldSupportRef(Carousel.Prev, Carousel);
@@ -236,7 +236,7 @@ describe('Carousel.Prev', () => {
 });
 
 describe('Carousel.Next', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
   shouldSupportClassName(Carousel.Next, Carousel);
   shouldSupportRef(Carousel.Next, Carousel);

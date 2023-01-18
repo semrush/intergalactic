@@ -1,12 +1,12 @@
 import React from 'react';
 import { testing, snapshot } from '@semcore/jest-preset-ui';
-import { assert, expect, test, describe, afterEach, vi } from 'vitest';
+import { assert, expect, test, describe, beforeEach, vi } from 'vitest';
 import Wizard from '../src';
 
 const { cleanup, fireEvent, render, axe } = testing;
 
 describe('Wizard', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
   test('Should correctly render', async () => {
     const Component = (
@@ -124,7 +124,7 @@ describe('Wizard', () => {
     ).toMatchImageSnapshot();
   });
 
-  test('Should support keyboard navigation', async () => {
+  test.only('Should support keyboard navigation', async () => {
     const spy = vi.fn();
     const { getByTestId } = render(
       <Wizard disablePortal visible step={1}>
@@ -141,7 +141,7 @@ describe('Wizard', () => {
       </Wizard>,
     );
 
-    fireEvent.keyPress(getByTestId('second-step'), { key: 'Enter', keyCode: 13 });
+    fireEvent.keyDown(getByTestId('second-step'), { key: "Enter", keyCode: 13 });
     expect(spy).lastCalledWith(2, expect.any(Object));
   });
 

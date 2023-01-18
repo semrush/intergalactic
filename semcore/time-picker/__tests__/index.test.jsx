@@ -1,6 +1,6 @@
 import React from 'react';
 import { testing, snapshot } from '@semcore/jest-preset-ui';
-import { assert, expect, test, describe, afterEach, vi } from 'vitest';
+import { assert, expect, test, describe, beforeEach, vi } from 'vitest';
 
 const { render, cleanup, axe } = testing;
 import TimePicker from '../src';
@@ -15,7 +15,7 @@ const TimePickerDefault = ({ children, ...other }) => (
 );
 
 describe('TimePicker', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
   test('should support sizes', async () => {
     const component = (

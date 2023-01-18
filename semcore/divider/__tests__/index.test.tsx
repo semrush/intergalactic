@@ -1,13 +1,13 @@
 import React from 'react';
 import { testing, snapshot, shared } from '@semcore/jest-preset-ui';
-import { assert, expect, test, describe, afterEach, vi } from 'vitest';
+import { assert, expect, test, describe, beforeEach, vi } from 'vitest';
 import Divider from '../src';
 
 const { cleanup } = testing;
 const { shouldSupportClassName, shouldSupportRef } = shared;
 
 describe('Divider', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
   shouldSupportRef(Divider);
   shouldSupportClassName(Divider);

@@ -2,23 +2,13 @@ import React from 'react';
 import { testing, shared as testsShared } from '@semcore/jest-preset-ui';
 
 const { cleanup, fireEvent, render, act } = testing;
-import { assert, expect, test, describe, afterEach, vi } from 'vitest';
+import { assert, expect, test, describe, beforeEach, vi } from 'vitest';
 
 const { shouldSupportClassName, shouldSupportRef } = testsShared;
 import Popper from '../src';
 
-vi.mock('@popperjs/core', () => {
-  const PopperJS = vi.requireActual('@popperjs/core');
-
-  return {
-    ...PopperJS,
-    destroy: () => {},
-    scheduleUpdate: () => {},
-  };
-});
-
 describe('Popper', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
   test('should render popper to outside container', () => {
     const { getByTestId } = render(
       <Popper visible>
@@ -106,7 +96,7 @@ describe('Popper', () => {
 });
 
 describe('Popper.Trigger', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
   shouldSupportClassName(Popper.Trigger, (props) => <Popper visible {...props} />);
   shouldSupportRef(Popper.Trigger, (props) => <Popper visible {...props} />);
@@ -136,7 +126,7 @@ describe('Popper.Trigger', () => {
 });
 
 describe('Popper.Popper', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
   shouldSupportClassName(Popper.Popper, (props) => <Popper visible {...props} />);
   shouldSupportRef(Popper.Popper, (props) => <Popper visible {...props} />);

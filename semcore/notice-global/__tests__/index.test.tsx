@@ -1,13 +1,13 @@
 import React from 'react';
 import { testing, snapshot, shared as testsShared } from '@semcore/jest-preset-ui';
-import { assert, expect, test, describe, afterEach, vi } from 'vitest';
+import { assert, expect, test, describe, beforeEach, vi } from 'vitest';
 const { shouldSupportClassName, shouldSupportRef } = testsShared;
 const { render, fireEvent, cleanup } = testing;
 
 import NoticeGlobal from '../src';
 
 describe('NoticeGlobal', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
   shouldSupportClassName(NoticeGlobal);
   shouldSupportRef(NoticeGlobal);

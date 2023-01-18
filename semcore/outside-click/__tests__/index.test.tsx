@@ -1,12 +1,12 @@
 import React from 'react';
 import { testing } from '@semcore/jest-preset-ui';
-import { assert, expect, test, describe, afterEach, vi } from 'vitest';
+import { assert, expect, test, describe, beforeEach, vi } from 'vitest';
 const { cleanup, fireEvent, render } = testing;
 
 import OutsideClick from '../src';
 
 describe('OutsideClick', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
   test('should support call onOutsideClick if event outside', () => {
     const onOutsideClick = vi.fn();

@@ -58,6 +58,7 @@
     "@typescript-eslint/eslint-plugin": "5.10.2",
     "@typescript-eslint/parser": "5.10.2",
     "@vitejs/plugin-react": "2.0.0",
+    "@vitest/ui": "^0.27.2",
     "csv": "6.2.0",
     "dotenv": "8.2.0",
     "esbuild": "0.14.29",

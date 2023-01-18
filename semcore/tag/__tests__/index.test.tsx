@@ -1,13 +1,13 @@
 import * as React from 'react';
 import { testing, snapshot } from '@semcore/jest-preset-ui';
-import { assert, expect, test, describe, afterEach, vi } from 'vitest';
+import { assert, expect, test, describe, beforeEach, vi } from 'vitest';
 import propsForElement from '@semcore/utils/lib/propsForElement';
 import Tag from '../src';
 
 const { axe, render, fireEvent, cleanup } = testing;
 
 describe('Tag', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
   const colors = [
     'gray-500',

@@ -1,11 +1,11 @@
 import React from 'react';
 import { snapshot, testing } from '@semcore/jest-preset-ui';
-import { assert, expect, test, describe, afterEach, vi } from 'vitest';
+import { assert, expect, test, describe, beforeEach, vi } from 'vitest';
 import Accordion from '../src';
 const { axe, render, fireEvent, cleanup } = testing;
 
 describe('Accordion', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
   test('Should render correctly', async () => {
     const component = (

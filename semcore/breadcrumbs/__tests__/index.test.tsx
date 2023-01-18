@@ -1,12 +1,12 @@
 import React from 'react';
 import { testing, snapshot } from '@semcore/jest-preset-ui';
-import { assert, expect, test, describe, afterEach, vi } from 'vitest';
+import { assert, expect, test, describe, beforeEach, vi } from 'vitest';
 const { axe, render, cleanup } = testing;
 
 import Breadcrumbs from '../src';
 
 describe('Breadcrumbs', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
   test('Renders correctly', async () => {
     const component = (
       <Breadcrumbs>

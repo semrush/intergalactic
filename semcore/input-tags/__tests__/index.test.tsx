@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { testing, snapshot } from '@semcore/jest-preset-ui';
 const { axe, render, cleanup, fireEvent } = testing;
-import { assert, expect, test, describe, afterEach, vi } from 'vitest';
+import { assert, expect, test, describe, beforeEach, vi } from 'vitest';
 import Tooltip from '@semcore/tooltip';
 
 import InputTags from '../src';
@@ -9,7 +9,7 @@ import InputTags from '../src';
 const { axe, render, cleanup, fireEvent, act } = testing;
 
 describe('InputTags', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
   test('renders different sizes', async () => {
     const component = (
@@ -104,7 +104,7 @@ describe('InputTags', () => {
             <InputTags.Tag.Close data-id={idx} />
           </InputTags.Tag>
         ))}
-        <InputTags.Value />
+        <InputTags.Value value="" />
       </InputTags>
     );
     expect(await snapshot(component)).toMatchImageSnapshot();
@@ -130,7 +130,7 @@ describe('InputTags', () => {
           <InputTags.Tag.Text>tag</InputTags.Tag.Text>
           <InputTags.Tag.Close />
         </InputTags.Tag>
-        <InputTags.Value aria-label="input with tags" />
+        <InputTags.Value aria-label="input with tags" value="" />
       </InputTags>,
     );
 
@@ -148,11 +148,11 @@ describe('InputTags', () => {
             <InputTags.Tag.Close />
           </InputTags.Tag>
         ))}
-        <InputTags.Value aria-label="input with tags" />
+        <InputTags.Value aria-label="input with tags" value="" />
       </InputTags>,
     );
-    act(() => jest.runAllTimers());
-    jest.useRealTimers();
+    act(() => vi.runAllTimers());
+    vi.useRealTimers();
 
     const results = await axe(container);
     expect(results).toHaveNoViolations();

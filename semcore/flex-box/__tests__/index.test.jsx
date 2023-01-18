@@ -1,6 +1,6 @@
 import React from 'react';
 import { testing, snapshot, shared as testsShared } from '@semcore/jest-preset-ui';
-import { assert, expect, test, describe, afterEach, vi } from 'vitest';
+import { assert, expect, test, describe, beforeEach, vi } from 'vitest';
 const { cleanup, render } = testing;
 const { shouldSupportClassName, shouldSupportRef } = testsShared;
 import { Box, Flex } from '../src';
@@ -11,7 +11,7 @@ const styleBox = {
 };
 
 describe('Flex', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
   shouldSupportClassName(Flex);
   shouldSupportRef(Flex);
@@ -66,12 +66,25 @@ describe('Flex', () => {
 
   test('Should support css property', async () => {
     const MAP_CSS = {
-      inline: { css: 'display', values: ['inline-flex'] },
-      reverse: { css: 'flex-direction', values: ['row-reverse', 'column-reverse'] },
-      flexWrap: { css: 'flex-wrap', values: ['wrap'] },
-      direction: { css: 'flex-direction', values: ['column', 'row'], tests: ['column', 'row'] },
-      alignItems: { css: 'align-items', values: ['center'], tests: ['center'] },
-      justifyContent: { css: 'justify-content', values: ['center'], tests: ['center'] },
+      reverse: {
+        css: 'flex-direction',
+        name: 'flexDirection',
+        values: ['row-reverse', 'column-reverse'],
+      },
+      flexWrap: { css: 'flex-wrap', name: 'flexWrap', values: ['wrap'] },
+      direction: {
+        css: 'flex-direction',
+        name: 'flexDirection',
+        values: ['column', 'row'],
+        tests: ['column', 'row'],
+      },
+      alignItems: { css: 'align-items', name: 'alignItems', values: ['center'], tests: ['center'] },
+      justifyContent: {
+        css: 'justify-content',
+        name: 'justifyContent',
+        values: ['center'],
+        tests: ['center'],
+      },
     };
     const components = Object.keys(MAP_CSS).map((prop, id) => {
       const { tests } = MAP_CSS[prop];
@@ -109,14 +122,14 @@ describe('Flex', () => {
       const { testid } = node.dataset;
       const [prop] = testid.split('-');
       const data = MAP_CSS[prop];
-      const cssValue = getComputedStyle(node)[data.css];
+      const cssValue = node.style[data.name];
       expect(cssValue).toBe(MAP_CSS[prop].values.find((v) => v === cssValue));
     });
   });
 });
 
 describe('Box', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
   shouldSupportClassName(Box);
   shouldSupportRef(Box);
@@ -219,7 +232,7 @@ describe('Box', () => {
 
   test('Should support scaleIndent for calculate offset', () => {
     const { getByTestId } = render(<Box scaleIndent={10} mt={2} data-testid="box" />);
-    expect(getByTestId('box').style['margin-top']).toBe('20px');
+    expect(getByTestId('box').style.marginTop).toBe('20px');
   });
 
   test('Should support css property', async () => {
@@ -282,7 +295,7 @@ describe('Box', () => {
 });
 
 describe('FlexBox', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
   test('Correctly render Flex, Box', async () => {
     const component = (

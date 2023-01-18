@@ -1,6 +1,6 @@
 import React from 'react';
 import { testing, snapshot } from '@semcore/jest-preset-ui';
-import { assert, expect, test, describe, afterEach, vi } from 'vitest';
+import { assert, expect, test, describe, beforeEach, vi } from 'vitest';
 const { axe, cleanup, render, fireEvent, act } = testing;
 
 import { DatePicker, DateRangePicker, MonthRangePicker } from '../src';
@@ -23,7 +23,7 @@ function mockDate(isoDate) {
   };
 }
 describe('DatePicker', () => {
-  afterEach(() => {
+  beforeEach(() => {
     global.Date = RealDate;
     cleanup();
   });
@@ -90,7 +90,7 @@ describe('DatePicker', () => {
 });
 
 describe('DateRangePicker', () => {
-  afterEach(() => {
+  beforeEach(() => {
     global.Date = RealDate;
     cleanup();
   });

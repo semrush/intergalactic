@@ -125,7 +125,7 @@ class Value extends Component {
   };
 
   // because clicking on label causes a click on input
-  handlerInputClick = (e) => e.stopPropagation()
+  handlerInputClick = (e) => e.stopPropagation();
 
   render() {
     const SToggle = Box;

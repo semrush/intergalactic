@@ -2,13 +2,13 @@
 
 import * as React from 'react';
 import { testing, snapshot } from '@semcore/jest-preset-ui';
-import { assert, expect, test, describe, afterEach, vi } from 'vitest';
+import { assert, expect, test, describe, beforeEach, vi } from 'vitest';
 import WidgetEmpty, { NoData, Error, getIconPath } from '../src';
 
 const { cleanup } = testing;
 
 describe('WidgetEmpty', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
   test('Renders correctly', async () => {
     const component = (
@@ -32,7 +32,7 @@ describe('WidgetEmpty', () => {
 });
 
 describe('NoData', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
   test('Renders correctly', async () => {
     const component = <NoData />;
@@ -56,7 +56,7 @@ describe('NoData', () => {
 });
 
 describe('Error', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
   test('Renders correctly', async () => {
     const component = <Error />;

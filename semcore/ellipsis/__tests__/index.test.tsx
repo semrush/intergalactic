@@ -2,7 +2,7 @@ import React from 'react';
 import { snapshot, testing } from '@semcore/jest-preset-ui';
 import Ellipsis from '../src';
 import { Box } from '@semcore/flex-box';
-import { assert, expect, test, describe, afterEach, vi } from 'vitest';
+import { assert, expect, test, describe, beforeEach, vi } from 'vitest';
 
 const { render, axe, cleanup, fireEvent, act } = testing;
 
@@ -38,9 +38,8 @@ function fakeBoundingClientRect(rect) {
   };
 }
 
-
 describe('Ellipsis', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
   test('Renders correctly', async () => {
     const component = (
@@ -82,19 +81,15 @@ describe('Ellipsis', () => {
       observe() {
         this.cb([{ contentRect: { width: 200 } }]);
       }
-
-      unobserve() {
-      }
-
-      disconnect() {
-      }
+      unobserve() {}
+      disconnect() {}
     }
 
     global.ResizeObserver = ResizeObserver;
 
     const component = (
       <Box w={200}>
-        <Ellipsis trim='middle'>
+        <Ellipsis trim="middle">
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores atque autem commodi,
           doloribus ex harum inventore modi praesentium quam ratione reprehenderit rerum tempore
           voluptas. Aliquam eos expedita illo quasi unde!
@@ -115,7 +110,7 @@ describe('Ellipsis', () => {
 
     const { getByTestId, baseElement } = render(
       <Box w={200}>
-        <Ellipsis data-testid='text' ref={fakeBoundingClientRect({ width: 200 })}>
+        <Ellipsis data-testid="text" ref={fakeBoundingClientRect({ width: 200 })}>
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores atque autem commodi,
           doloribus ex harum inventore modi praesentium quam ratione reprehenderit rerum tempore
           voluptas. Aliquam eos expedita illo quasi unde!
@@ -140,7 +135,7 @@ describe('Ellipsis', () => {
 
     const { getByTestId, baseElement } = render(
       <Box w={200}>
-        <Ellipsis data-testid='text' ref={fakeBoundingClientRect({ width: 100 })}>
+        <Ellipsis data-testid="text" ref={fakeBoundingClientRect({ width: 100 })}>
           Lorem ipsum dolor sit amet
         </Ellipsis>
       </Box>,
@@ -153,7 +148,7 @@ describe('Ellipsis', () => {
     expect(baseElement.querySelector('[data-ui-name="Tooltip.Popper"]')).toBe(null);
 
     jest.useRealTimers();
-    unFake()
+    unFake();
   });
 
   test('a11y', async () => {
