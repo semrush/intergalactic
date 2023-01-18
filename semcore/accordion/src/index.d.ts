@@ -19,7 +19,7 @@ export interface IAccordionProps<T extends AccordionValue = AccordionValue> exte
    * @type (value: AccordionValue, event?: React.SyntheticEvent) => void
    * */
   onChange?: (value: T, event?: React.SyntheticEvent) => void;
-  /** Animation duration
+  /** Animation duration of each Accordion.Item inside
    * @default 350 */
   duration?: number;
 }
@@ -37,6 +37,9 @@ export interface IAccordionItemProps {
   value: string | number;
   /** Disabling selection changes */
   disabled?: boolean;
+  /** Animation duration
+   * @default 350 */
+  duration?: number;
 }
 
 export interface IAccordionItemContext {
