@@ -341,6 +341,7 @@
       "fullscreen-modal",
       "inline-input",
       "input",
+      "modal",
       "pagination",
       "pills",
       "product-head",
@@ -1975,6 +1976,7 @@
     "components": [
       "format-text",
       "fullscreen-modal",
+      "modal",
       "typography"
     ]
   },
@@ -2069,6 +2071,7 @@
     "rawValue": "600",
     "computedValue": "600",
     "components": [
+      "modal",
       "product-head"
     ]
   },
@@ -2237,6 +2240,7 @@
     "components": [
       "format-text",
       "fullscreen-modal",
+      "modal",
       "typography"
     ]
   },
@@ -2392,6 +2396,7 @@
       "fullscreen-modal",
       "input",
       "input-tags",
+      "modal",
       "notice",
       "notice-bubble",
       "notice-global",

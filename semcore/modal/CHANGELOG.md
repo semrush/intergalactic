@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.4.0] - 2023-01-18
+
+### Added
+
+- Added `Modal.Title` component and `aria-labelledby` property for better a11y.
+
 ## [3.3.6] - 2023-01-11
 
 ### Changed
