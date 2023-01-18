@@ -23,7 +23,6 @@ import Spin from '@semcore/spin';
 import WarningM from '@semcore/icon/Warning/m';
 import Error from '../components/Error';
 import styles from './Home.module.css';
-import { css } from '@semcore/core';
 import cx from 'classnames';
 
 const mappingTableToImg = {
