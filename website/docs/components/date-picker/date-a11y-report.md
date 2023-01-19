@@ -1,6 +1,6 @@
 ## Automated screen reader testing
 
-_Intergalactic v13.2.12, React v18.2.0, Playwright v1.25.1,
+_Intergalactic v13.4.0, React v18.2.0, Playwright v1.25.1,
 Guidepup v0.13.1, MacOS Monterey 12._
 
 **Running screen reader against [this file](https://github.com/semrush/intergalactic/blob/master/website/docs/components/date-picker/examples/datepicker.jsx).**
@@ -27,20 +27,20 @@ Guidepup v0.13.1, MacOS Monterey 12._
 19. Screen reader presses the "Backspace" button.
 20. Screen reader says "0".
 21. Screen reader types "05".
-22. Screen reader says "5".
-23. Screen reader types "29".
-24. Screen reader says "2".
-25. Screen reader goes out of active element.
-26. Screen reader says "Press Tab to go to popover group".
-27. Screen reader goes into the active element.
-28. Screen reader says "05/29 Insertion at end of text. Date MM/DD/YYYY edit text".
-29. Screen reader types "2000".
-30. Screen reader says "0".
-31. Screen reader goes out of active element.
-32. Screen reader says "Date field group".
-33. Screen reader goes to the next element.
+22. Screen reader types "29".
+23. Screen reader says "2".
+24. Screen reader goes out of active element.
+25. Screen reader says "Press Tab to go to popover group".
+26. Screen reader goes into the active element.
+27. Screen reader says "05/29 Insertion at end of text. Date MM/DD/YYYY edit text".
+28. Screen reader types "2000".
+29. Screen reader says "0".
+30. Screen reader goes out of active element.
+31. Screen reader says "2000".
+32. Screen reader goes to the next element.
+33. Screen reader says "Date field group".
 34. Screen reader goes into the active element.
-35. Screen reader says "You are currently on a text field. To enter text in this field, type.".
+35. Screen reader says "from date MM/DD/YYYY invalid data edit text".
 36. Screen reader types "05".
 37. Screen reader says "0".
 38. Screen reader types "29".
@@ -48,7 +48,7 @@ Guidepup v0.13.1, MacOS Monterey 12._
 40. Screen reader types "2000".
 41. Screen reader says "to date MM/DD/YYYY invalid data edit text".
 42. Screen reader types "05".
-43. Screen reader says "5".
+43. Screen reader says "05".
 44. Screen reader types "29".
 45. Screen reader says "9".
 46. Screen reader types "2000".

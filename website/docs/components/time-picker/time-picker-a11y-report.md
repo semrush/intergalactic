@@ -1,6 +1,6 @@
 ## Automated screen reader testing
 
-_Intergalactic v13.2.12, React v18.2.0, Playwright v1.25.1,
+_Intergalactic v13.4.0, React v18.2.0, Playwright v1.25.1,
 Guidepup v0.13.1, MacOS Monterey 12._
 
 **Running screen reader against [this file](https://github.com/semrush/intergalactic/blob/master/website/docs/components/time-picker/examples/expanded.jsx).**
@@ -21,7 +21,7 @@ Guidepup v0.13.1, MacOS Monterey 12._
 13. Screen reader goes into the active element.
 14. Screen reader says "In edit text".
 15. Screen reader types "20".
-16. Screen reader says "20".
+16. Screen reader says "You are currently in a text field.".
 17. Screen reader goes out of active element.
 18. Screen reader says "Out of edit text".
 19. Screen reader goes to the previous element.
