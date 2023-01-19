@@ -4,6 +4,10 @@ import execa from 'execa';
 import mri from 'mri';
 import { resolve as resolvePath } from 'path';
 import { fileURLToPath } from 'url';
+import postcss from 'postcss';
+import postcssHoverMediaFeature from '../postcss-hover-media';
+import glob from 'fast-glob';
+import { readFile, writeFile } from 'fs/promises';
 
 const argv = mri<{
   source: string;
@@ -38,7 +42,7 @@ const runCommand = async <Command extends keyof typeof makeCommand>(
   commandName: Command,
   ...args: ArgumentTypes<typeof makeCommand[Command]>
 ) => {
-  return await execa.command(makeCommand[commandName].apply(null, args), { shell: true });
+  return await execa.commandSync(makeCommand[commandName].apply(null, args), { shell: true });
 };
 
 const MAP_BABEL_ENV = {
@@ -47,7 +51,7 @@ const MAP_BABEL_ENV = {
 } as const;
 
 // eslint-disable-next-line no-console
-console.log(`running builder from dir ${process.cwd()}\n`);
+console.log(`running builder from dir ${workingDir}\n`);
 
 await runCommand('CLEANUP');
 
@@ -87,3 +91,16 @@ if (argv.modules) {
   if (source.includes('jsx') || source.includes('js')) await runCommand('COPY_TYPES', 'types');
   if (source.includes('tsx') || source.includes('ts')) await runCommand('TYPES', 'types');
 }
+
+const shadowCssFiles = await glob('./lib/**/*.shadow.css', { cwd: workingDir });
+await Promise.all(
+  shadowCssFiles.map(async (filePath) => {
+    const shadowCssFilePath = resolvePath(workingDir, filePath);
+    const cssContent = await readFile(shadowCssFilePath, 'utf-8');
+    const result = await postcss([postcssHoverMediaFeature()]).process(cssContent, {
+      from: shadowCssFilePath,
+      to: shadowCssFilePath,
+    });
+    await writeFile(shadowCssFilePath, result.css);
+  }),
+);

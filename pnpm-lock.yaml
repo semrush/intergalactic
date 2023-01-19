@@ -1846,6 +1846,7 @@ importers:
       postcss-color-mod-function: 3.0.3
       postcss-import-sync2: 1.2.0
       postcss-preset-env: 6.7.0
+      postcss-selector-parser: ^6.0.11
       postcss-value-parser: 4.1.0
       string-hash: 1.1.3
       synchronous-promise: 2.0.15
@@ -1861,6 +1862,7 @@ importers:
       postcss-color-mod-function: 3.0.3
       postcss-import-sync2: 1.2.0_postcss@8.2.13
       postcss-preset-env: 6.7.0
+      postcss-selector-parser: 6.0.11
       postcss-value-parser: 4.1.0
       string-hash: 1.1.3
       synchronous-promise: 2.0.15
@@ -1901,26 +1903,32 @@ importers:
       '@babel/core': 7.19.1
       '@semcore/babel-preset-ui': '*'
       execa: 5.0.0
+      fast-glob: 3.2.11
       fs-extra: 8.1.0
       mri: 1.2.0
       postcss: 8.2.13
       postcss-cli: 7.1.0
+      postcss-hover-media-feature: ^1.0.2
       postcss-import: 12.0.1
       postcss-inline-comment: 3.0.0
       postcss-preset-env: 6.7.0
+      postcss-selector-parser: ^6.0.11
       typescript: 4.5.5
     dependencies:
       '@babel/cli': 7.8.4_@babel+core@7.19.1
       '@babel/core': 7.19.1
       '@semcore/babel-preset-ui': link:../babel-preset-ui
       execa: 5.0.0
+      fast-glob: 3.2.11
       fs-extra: 8.1.0
       mri: 1.2.0
       postcss: 8.2.13
       postcss-cli: 7.1.0
+      postcss-hover-media-feature: 1.0.2_postcss@8.2.13
       postcss-import: 12.0.1
       postcss-inline-comment: 3.0.0
       postcss-preset-env: 6.7.0
+      postcss-selector-parser: 6.0.11
       typescript: 4.5.5
 
   tools/changelog-handler:
@@ -14599,14 +14607,14 @@ packages:
     resolution: {integrity: sha512-clkFxk/9pcdb4Vkn0hAHq3YnxBQ2p0CGD1dy24jN+reBck+EWxMbxSUqN4Yj7t0w8csl87K6p0gxBe1utkJsYA==}
     dependencies:
       postcss: 7.0.39
-      postcss-selector-parser: 6.0.10
+      postcss-selector-parser: 6.0.11
     dev: false
 
   /postcss-calc/7.0.5:
     resolution: {integrity: sha512-1tKHutbGtLtEZF6PT4JSihCHfIVldU72mZ8SdZHIYriIZ9fh9k9aWSppaT8rHsyI3dX+KSR+W+Ix9BMY3AODrg==}
     dependencies:
       postcss: 7.0.39
-      postcss-selector-parser: 6.0.10
+      postcss-selector-parser: 6.0.11
       postcss-value-parser: 4.2.0
     dev: false
 
@@ -14909,6 +14917,16 @@ packages:
     engines: {node: '>=6.0.0'}
     dependencies:
       postcss: 7.0.39
+    dev: false
+
+  /postcss-hover-media-feature/1.0.2_postcss@8.2.13:
+    resolution: {integrity: sha512-o5xDUqCQ4xtilWOcvo5LKYxFVSLWcBN0IlTqa0IJwAwHTd4pxKmX4c0fGIpgLQCcBB/+aFizt2NVWNGJWG4Izg==}
+    engines: {node: '>=10.0.0'}
+    peerDependencies:
+      postcss: ^8.0.0
+    dependencies:
+      postcss: 8.2.13
+      postcss-selector-parser: 6.0.11
     dev: false
 
   /postcss-icss-selectors/2.0.3:
@@ -15539,6 +15557,15 @@ packages:
     dependencies:
       cssesc: 3.0.0
       util-deprecate: 1.0.2
+    dev: true
+
+  /postcss-selector-parser/6.0.11:
+    resolution: {integrity: sha512-zbARubNdogI9j7WY4nQJBiNqQf3sLS3wCP4WfOidu+p28LofJqDH1tcXypGrcmMHhDk2t9wGhCsYe/+szLTy1g==}
+    engines: {node: '>=4'}
+    dependencies:
+      cssesc: 3.0.0
+      util-deprecate: 1.0.2
+    dev: false
 
   /postcss-svgo/4.0.3:
     resolution: {integrity: sha512-NoRbrcMWTtUghzuKSoIm6XV+sJdvZ7GZSc3wdBN0W19FTtp2ko8NqLsgoh/m9CzNhU3KLPvQmjIwtaNFkaFTvw==}
