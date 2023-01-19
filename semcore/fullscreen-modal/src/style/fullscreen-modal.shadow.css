@@ -64,7 +64,6 @@ STitle {
   font-size: var(--intergalactic-fs-500, 24px);
   line-height: var(--intergalactic-lh-500, 117%);
   font-weight: var(--intergalactic-bold, 700);
-  font-family: FactorA-Bold, sans-serif;
   color: var(--intergalactic-text-primary, #191b23);
 }
 
