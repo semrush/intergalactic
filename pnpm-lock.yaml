@@ -1844,9 +1844,10 @@ importers:
       fs-extra: 9.1.0
       postcss: 8.2.13
       postcss-color-mod-function: 3.0.3
+      postcss-hover-media-feature: ^1.0.2
       postcss-import-sync2: 1.2.0
+      postcss-nesting: ^10.2.0
       postcss-preset-env: 6.7.0
-      postcss-selector-parser: 6.0.11
       postcss-value-parser: 4.1.0
       string-hash: 1.1.3
       synchronous-promise: 2.0.15
@@ -1860,9 +1861,10 @@ importers:
       fs-extra: 9.1.0
       postcss: 8.2.13
       postcss-color-mod-function: 3.0.3
+      postcss-hover-media-feature: 1.0.2_postcss@8.2.13
       postcss-import-sync2: 1.2.0_postcss@8.2.13
+      postcss-nesting: 10.2.0_postcss@8.2.13
       postcss-preset-env: 6.7.0
-      postcss-selector-parser: 6.0.11
       postcss-value-parser: 4.1.0
       string-hash: 1.1.3
       synchronous-promise: 2.0.15
@@ -1908,10 +1910,11 @@ importers:
       mri: 1.2.0
       postcss: 8.2.13
       postcss-cli: 7.1.0
+      postcss-hover-media-feature: ^1.0.2
       postcss-import: 12.0.1
       postcss-inline-comment: 3.0.0
+      postcss-nesting: ^10.2.0
       postcss-preset-env: 6.7.0
-      postcss-selector-parser: ^6.0.11
       typescript: 4.5.5
     dependencies:
       '@babel/cli': 7.8.4_@babel+core@7.19.1
@@ -1923,10 +1926,11 @@ importers:
       mri: 1.2.0
       postcss: 8.2.13
       postcss-cli: 7.1.0
+      postcss-hover-media-feature: 1.0.2_postcss@8.2.13
       postcss-import: 12.0.1
       postcss-inline-comment: 3.0.0
+      postcss-nesting: 10.2.0_postcss@8.2.13
       postcss-preset-env: 6.7.0
-      postcss-selector-parser: 6.0.11
       typescript: 4.5.5
 
   tools/changelog-handler:
@@ -4017,6 +4021,17 @@ packages:
   /@csstools/convert-colors/1.4.0:
     resolution: {integrity: sha512-5a6wqoJV/xEdbRNKVo6I4hO3VjyDq//8q2f9I6PBAvMesJHFauXDorcNCsr9RzvsZnaWi5NYCcfyqP1QeFHFbw==}
     engines: {node: '>=4.0.0'}
+
+  /@csstools/selector-specificity/2.0.2_rf2nffsqmjtyixbmp5edppzpli:
+    resolution: {integrity: sha512-IkpVW/ehM1hWKln4fCA3NzJU8KwD+kIOvPZA4cqxoJHtE21CCzjyp+Kxbu0i5I4tBNOlXPL9mjwnWlL0VEG4Fg==}
+    engines: {node: ^12 || ^14 || >=16}
+    peerDependencies:
+      postcss: ^8.2
+      postcss-selector-parser: ^6.0.10
+    dependencies:
+      postcss: 8.2.13
+      postcss-selector-parser: 6.0.11
+    dev: false
 
   /@emotion/is-prop-valid/0.8.8:
     resolution: {integrity: sha512-u5WtneEAr5IDG2Wv65yhunPSMLIpuKsbuOktRojfrEiEvRyC85LgPMZI63cr7NUqT8ZIGdSVg8ZKGxIug4lXcA==}
@@ -15581,6 +15596,16 @@ packages:
       postcss: 7.0.39
     dev: false
 
+  /postcss-hover-media-feature/1.0.2_postcss@8.2.13:
+    resolution: {integrity: sha512-o5xDUqCQ4xtilWOcvo5LKYxFVSLWcBN0IlTqa0IJwAwHTd4pxKmX4c0fGIpgLQCcBB/+aFizt2NVWNGJWG4Izg==}
+    engines: {node: '>=10.0.0'}
+    peerDependencies:
+      postcss: ^8.0.0
+    dependencies:
+      postcss: 8.2.13
+      postcss-selector-parser: 6.0.11
+    dev: false
+
   /postcss-icss-selectors/2.0.3:
     resolution: {integrity: sha512-dxFtq+wscbU9faJaH8kIi98vvCPDbt+qg1g9GoG0os1PY3UvgY1Y2G06iZrZb1iVC9cyFfafwSY1IS+IQpRQ4w==}
     dependencies:
@@ -15831,6 +15856,17 @@ packages:
       postcss: 8.2.13
       postcss-selector-parser: 6.0.10
     dev: true
+
+  /postcss-nesting/10.2.0_postcss@8.2.13:
+    resolution: {integrity: sha512-EwMkYchxiDiKUhlJGzWsD9b2zvq/r2SSubcRrgP+jujMXFzqvANLt16lJANC+5uZ6hjI7lpRmI6O8JIl+8l1KA==}
+    engines: {node: ^12 || ^14 || >=16}
+    peerDependencies:
+      postcss: ^8.2
+    dependencies:
+      '@csstools/selector-specificity': 2.0.2_rf2nffsqmjtyixbmp5edppzpli
+      postcss: 8.2.13
+      postcss-selector-parser: 6.0.11
+    dev: false
 
   /postcss-nesting/7.0.1:
     resolution: {integrity: sha512-FrorPb0H3nuVq0Sff7W2rnc3SmIcruVC6YwpcS+k687VxyxO33iE1amna7wHuRVzM8vfiYofXSBHNAZ3QhLvYg==}

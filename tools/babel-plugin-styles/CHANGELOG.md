@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [1.7.0] - 2023-01-20
+
+### Changed
+
+- Put all css `:hover` selectors into `@media(hover: hover)` block.
+
 ## [1.6.0] - 2022-09-31
 
 ### Added

@@ -5,7 +5,8 @@ import mri from 'mri';
 import { resolve as resolvePath } from 'path';
 import { fileURLToPath } from 'url';
 import postcss from 'postcss';
-import postcssHoverMediaFeature from '../postcss-hover-media';
+import postcssNesting from 'postcss-nesting';
+import postcssHoverMediaFeature from 'postcss-hover-media-feature';
 import glob from 'fast-glob';
 import { readFile, writeFile } from 'fs/promises';
 
@@ -97,10 +98,13 @@ await Promise.all(
   shadowCssFiles.map(async (filePath) => {
     const shadowCssFilePath = resolvePath(workingDir, filePath);
     const cssContent = await readFile(shadowCssFilePath, 'utf-8');
-    const result = await postcss([postcssHoverMediaFeature()]).process(cssContent, {
-      from: shadowCssFilePath,
-      to: shadowCssFilePath,
-    });
+    const result = await postcss([postcssNesting(), postcssHoverMediaFeature()]).process(
+      cssContent,
+      {
+        from: shadowCssFilePath,
+        to: shadowCssFilePath,
+      },
+    );
     await writeFile(shadowCssFilePath, result.css);
   }),
 );

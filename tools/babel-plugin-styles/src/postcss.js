@@ -3,7 +3,8 @@ const presetEnv = require('postcss-preset-env');
 const atImport = require('postcss-import-sync2');
 const cssnano = require('cssnano');
 const postcssColorMod = require('postcss-color-mod-function');
-const hoverMedia = require('./postcss-hover-media');
+const postcssNesting = require('postcss-nesting');
+const postcssHoverMediaFeature = require('postcss-hover-media-feature');
 
 const inlineCssVariables = require('./inline-css-variables');
 const shadowStyles = require('./postcss-shadow-styles');
@@ -50,7 +51,8 @@ module.exports = function (options) {
         ),
       ),
     ),
-    hoverMedia(),
+    postcssNesting(),
+    postcssHoverMediaFeature(),
   ];
   return postcss(processorPlugins);
 };
