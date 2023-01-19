@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [1.4.7] - 2023-01-19
+
+### Fixed
+
+- Removed font-family enforcement.
+
 ## [1.4.6] - 2023-01-18
 
 ### Fixed

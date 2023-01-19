@@ -15,7 +15,6 @@ SLinkTrigger {
   overflow: visible;
   outline: 0;
   vertical-align: middle;
-  font-family: var(--intergalactic-base, Inter), sans-serif;
   cursor: pointer;
   color: var(--intergalactic-text-link, #006dca);
   background: none;
