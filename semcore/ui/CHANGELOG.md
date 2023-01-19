@@ -1,3 +1,17 @@
+## [13.5.0] - 2023-01-19
+
+### @semcore/accordion
+
+- **Added** Added `duration` property to `Accordion.Item` types.
+
+### @semcore/color-picker
+
+- **Fixed** Fixed color picker display when using non-extended `<ColorPicker />`.
+
+### @semcore/modal
+
+- **Added** Added `Modal.Title` component and `aria-labelledby` property for better a11y.
+
 ## [13.4.0] - 2023-01-16
 
 ### @semcore/popper
