@@ -17,7 +17,7 @@ SPanel {
   flex-direction: column;
   width: 260px;
   outline: none;
-  font-family: var(--intergalactic-base, Inter), sans-serif;
+  font-family: inherit;
   position: fixed;
   box-sizing: border-box;
   will-change: transform;
