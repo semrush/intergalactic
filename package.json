@@ -77,7 +77,7 @@
     "fast-glob": "3.2.11",
     "fast-hash-code": "^2.1.0",
     "fs-extra": "9.1.0",
-    "happy-dom": "5.0.0",
+    "happy-dom": "8.1.5",
     "husky": "8.0.0",
     "inquirer": "6.3.1",
     "jest-image-snapshot": "2.9.0",

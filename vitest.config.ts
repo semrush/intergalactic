@@ -1,8 +1,8 @@
 /// <reference types="vitest" />
 
 import { defineConfig } from 'vitest/config';
-import react from '@vitejs/plugin-react';
 import babel from 'vite-plugin-babel';
+import { resolve as resolvePath } from 'path';
 
 export default defineConfig({
   plugins: [
@@ -10,14 +10,7 @@ export default defineConfig({
       babelConfig: {
         presets: [
           ['@babel/preset-react', { throwIfNamespace: false }],
-          [
-            '@semcore/babel-preset-ui',
-            {
-              cssStyle: {
-                extract: null,
-              },
-            },
-          ],
+          ['@semcore/babel-preset-ui', { cssStyle: { extract: null } }],
         ],
         plugins: ['babel-plugin-transform-import-meta'],
       },
@@ -26,13 +19,26 @@ export default defineConfig({
   ],
   resolve: {
     alias: [
-      { find: /^@semcore\/utils\/lib\/(.*)/, replacement: '@semcore/utils/src/$1' },
-      { find: /^@semcore\/icon\/(.*)/, replacement: '@semcore/icon/$1' },
+      {
+        find: /^@semcore\/utils\/lib\/(.*)/,
+        replacement: resolvePath(__dirname, 'semcore/utils/src/$1'),
+      },
+      {
+        find: /^@semcore\/icon\/(.*)/,
+        replacement: resolvePath(__dirname, 'semcore/icon/$1'),
+      },
       {
         find: /^@semcore\/esbuild-plugin-semcore\/(.*)/,
-        replacement: '@semcore/esbuild-plugin-semcore/$1',
+        replacement: resolvePath(__dirname, 'tools/esbuild-plugin-semcore/$1'),
       },
-      { find: /^@semcore\/(.*)$/, replacement: '@semcore/$1/src' },
+      {
+        find: /^@semcore\/jest-preset-ui/,
+        replacement: resolvePath(__dirname, 'tools/jest-preset-ui/src/index.ts'),
+      },
+      {
+        find: /^@semcore\/([\w-]*)$/,
+        replacement: resolvePath(__dirname, 'semcore/$1/src'),
+      },
     ],
   },
   test: {
