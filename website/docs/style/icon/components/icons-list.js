@@ -1207,6 +1207,23 @@ const iconsList = {
       ],
     },
     {
+      name: 'NotificationNo',
+      size: ['l', 'm'],
+      group: 'Status',
+      tags: [
+        'notification',
+        'no',
+        'bell',
+        'notice',
+        'ring',
+        'колокол',
+        'колокольчик',
+        'уведомление',
+        'нотификация',
+        'new',
+      ],
+    },
+    {
       name: 'Question',
       size: ['l', 'm'],
       group: 'Status',

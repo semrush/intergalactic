@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.7.0] - 2023-01-19
+
+### Added
+
+- Added `NotificationNo` icon.
+
 ## [3.6.1] - 2023-01-19
 
 ### Changed
