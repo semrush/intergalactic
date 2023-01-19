@@ -8,7 +8,7 @@
 // module.exports = {} //require('@testing-library/react');
 // module.exports.axe = {}//axe;
 
-import { configureAxe } from 'jest-axe';
+import { configureAxe } from 'vitest-axe';
 import reactTestingLibrary from '@testing-library/react';
 export * from '@testing-library/react';
 

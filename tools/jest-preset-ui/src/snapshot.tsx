@@ -10,7 +10,7 @@ import { toHaveStyle } from '@testing-library/jest-dom/matchers';
 import { toMatchImageSnapshot } from 'jest-image-snapshot';
 expect.extend({ toMatchImageSnapshot, toHaveStyle });
 expect.extend(axeMatchers);
-class NamedNodeMap {}
+class NamedNodeMap { }
 window.NamedNodeMap = NamedNodeMap;
 
 const post = util.promisify(request.post);
