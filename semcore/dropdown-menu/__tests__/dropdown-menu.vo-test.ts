@@ -33,7 +33,8 @@ test('Users can interact with DropdownMenu via VoiceOver', async ({
   await voiceOver.next();
   expect(await voiceOver.itemText()).toBe('Item 2 menu item');
   await voiceOver.press('Escape');
-  expect(await voiceOver.itemText()).toBe('Click me menu pop up button');
+  await voiceOver.next();
+  expect(await voiceOver.lastSpokenPhrase()).toBe('Click me group');
 
   const report = (await getReportHeader()) + '\n\n' + (await getReport(standPath));
 
