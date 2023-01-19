@@ -8,6 +8,12 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Added `NotificationNo` icon.
 
+## [3.6.1] - 2023-01-19
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/flex-box` [4.7.5 ~> 4.7.6], `@semcore/utils` [3.44.3 ~> 3.45.0]).
+
 ## [3.6.0] - 2023-01-10
 
 ### BREAK
