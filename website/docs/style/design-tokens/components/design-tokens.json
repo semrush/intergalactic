@@ -1926,10 +1926,6 @@
     "rawValue": "Inter",
     "computedValue": "Inter",
     "components": [
-      "base-trigger",
-      "breadcrumbs",
-      "button",
-      "card",
       "side-panel"
     ]
   },
