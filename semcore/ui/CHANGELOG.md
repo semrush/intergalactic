@@ -4,13 +4,54 @@
 
 - **Added** Added `duration` property to `Accordion.Item` types.
 
+### @semcore/base-trigger
+
+- **Fixed** Removed font-family enforcement.
+
+### @semcore/breadcrumbs
+
+- **Fixed** Removed font-family enforcement.
+
+### @semcore/button
+
+- **Fixed** Removed font-family enforcement.
+
+### @semcore/card
+
+- **Fixed** Removed font-family enforcement.
+
 ### @semcore/color-picker
 
+- **Fixed** Removed font-family enforcement.
 - **Fixed** Fixed color picker display when using non-extended `<ColorPicker />`.
+
+### @semcore/date-picker
+
+- **Fixed** Fixed `DatePicker.InputTrigger` edited text highlight color.
+
+### @semcore/fullscreen-modal
+
+- **Fixed** Removed font-family enforcement.
 
 ### @semcore/modal
 
 - **Added** Added `Modal.Title` component and `aria-labelledby` property for better a11y.
+
+### @semcore/notice-bubble
+
+- **Fixed** Removed minimal height limitation.
+
+### @semcore/side-panel
+
+- **Fixed** Removed font-family enforcement.
+
+### @semcore/utils
+
+- **Changed** Renamed `--intergalactic-border-danger` token name to `--intergalactic-border-critical`.
+- **Changed** Renamed `--intergalactic-border-danger-active` token name to `--intergalactic-border-critical-active`.
+- **Changed** Renamed `--intergalactic-border-table-accent-border` token name to `--intergalactic-border-table-accent`.
+- **Changed** Added description for every design token.
+- **Changed** No other renaming expected in the future.
 
 ## [13.4.0] - 2023-01-16
 
