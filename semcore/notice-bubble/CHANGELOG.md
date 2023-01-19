@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.5.7] - 2023-01-13
+
+### Fixed
+
+- Removed minimal height limitation.
+
 ## [4.5.6] - 2023-01-11
 
 ### Changed
