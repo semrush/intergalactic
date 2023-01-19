@@ -2,11 +2,13 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.6.6] - 2023-01-19
+
+### Fixed
+
+- Fixed `DatePicker.InputTrigger` edited text highlight color.
+
 ## [3.6.6] - 2023-01-11
-
-## [3.6.5] - 2023-01-10
-
-## [3.6.4] - 2023-01-09
 
 ### Changed
 
