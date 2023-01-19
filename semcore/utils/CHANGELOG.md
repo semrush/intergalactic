@@ -2,6 +2,16 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.45.0] - 2023-01-09
+
+### Changed
+
+- Renamed `--intergalactic-border-danger` token name to `--intergalactic-border-critical`.
+- Renamed `--intergalactic-border-danger-active` token name to `--intergalactic-border-critical-active`.
+- Renamed `--intergalactic-border-table-accent-border` token name to `--intergalactic-border-table-accent`.
+- Added description for every design token.
+- No other renaming expected in the future.
+
 ## [3.44.3] - 2023-01-09
 
 ### Fixed

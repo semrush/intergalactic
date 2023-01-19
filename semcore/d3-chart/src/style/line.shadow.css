@@ -3,7 +3,7 @@
 SLine {
   fill: transparent;
   stroke-width: 3;
-  stroke: var(--intergalactic-chart-palette-order-blue, #2bb3ff);
+  stroke: var(--intergalactic-chart-palette-order-1, #2bb3ff);
   transition-property: d;
   transition-duration: var(--duration);
   transition-timing-function: ease-in-out;

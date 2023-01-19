@@ -24,7 +24,7 @@ SNotice[theme='info'] {
 
 SNotice[theme='danger'] {
   background-color: var(--intergalactic-bg-secondary-critical, #fff0f7);
-  border-color: var(--intergalactic-border-danger, #ffaeb5);
+  border-color: var(--intergalactic-border-critical, #ffaeb5);
 
   & SCloseIcon {
     color: var(--intergalactic-icon-primary-critical, #ff4953);

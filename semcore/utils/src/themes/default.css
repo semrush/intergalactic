@@ -1,182 +1,304 @@
 :root {
+  /* Primary background of the interface which contains the main data and information. */
   --intergalactic-bg-primary-neutral: #ffffff;
+  /* Hover state of the primary background of the interface which contains the main data and information. */
   --intergalactic-bg-primary-neutral-hover: #f4f5f9;
+  /* Active (selected) state of the primary background of the interface which contains the main data and information. */
   --intergalactic-bg-primary-neutral-active: #e0e1e9;
+  /* Accent background of the message with regular information. */
   --intergalactic-bg-primary-info: #008ff8;
+  /* Accent background of the message or banner with information about the successful result. */
   --intergalactic-bg-primary-success: #009f81;
+  /* Accent background of a message or a banner with a critical information. */
   --intergalactic-bg-primary-critical: #ff4953;
+  /* Accent background of a message or a banner with a warning information. */
   --intergalactic-bg-primary-warning: #ff642d;
+  /* Accent background of the information you want to highlight. */
   --intergalactic-bg-primary-highlight: #fce081;
+  /* Accent background for the advertising banners and controls. */
   --intergalactic-bg-primary-advertising: #421983;
+  /* Accented muted background for a message with regular information. */
   --intergalactic-bg-primary-muted: #6c6e79;
+  /* Inverted version of the primary background of the interface that contains the main data and information. */
   --intergalactic-bg-primary-invert: #191b23;
+  /* Hover state for the inverted version of the primary background of the interface that contains the main data and information. */
   --intergalactic-bg-primary-invert-hover: #2b2e38;
+  /* Active (selected) state for the inverted version of the primary background of the interface that contains the main data and information. */
   --intergalactic-bg-primary-invert-active: #484a54;
+  /* Secondary background of the interface which contains the main data and information. */
   --intergalactic-bg-secondary-neutral: #f4f5f9;
+  /* Hover state of the secondary background of the interface which contains the main data and information. */
   --intergalactic-bg-secondary-neutral-hover: #e0e1e9;
+  /* Active (selected) state of the secondary background of the interface which contains the main data and information. */
   --intergalactic-bg-secondary-neutral-active: #c4c7cf;
+  /* Secondary background of a message with regular information. */
   --intergalactic-bg-secondary-info: #e9f7ff;
+  /* Hover state of the secondary background of a message with regular information. */
   --intergalactic-bg-secondary-info-hover: #c4e5fe;
+  /* Active (selected) state of the secondary background of a message with regular information. */
   --intergalactic-bg-secondary-info-active: #8ecdff;
+  /* Secondary background of the message with success information you want to accent. */
   --intergalactic-bg-secondary-success: #dbfee8;
+  /* Hover state of the secondary background of the message with success information you want to accent. */
   --intergalactic-bg-secondary-success-hover: #9ef2c9;
+  /* Active (selected) state of the secondary background of the message with success information you want to accent. */
   --intergalactic-bg-secondary-success-active: #59ddaa;
+  /* Secondary background of the message with critical information you want to accent. */
   --intergalactic-bg-secondary-critical: #fff0f7;
+  /* Hover state of the secondary background of the message with critical information you want to accent. */
   --intergalactic-bg-secondary-critical-hover: #ffd7df;
+  /* Active (selected) state of the secondary background of the message with critical information you want to accent. */
   --intergalactic-bg-secondary-critical-active: #ffaeb5;
+  /* Secondary background of the message with warning information you want to accent. */
   --intergalactic-bg-secondary-warning: #fff3d9;
+  /* Hover state of the secondary background of the message with warning information you want to accent. */
   --intergalactic-bg-secondary-warning-hover: #ffdca2;
+  /* Active (selected) state of the secondary background of the message with critical information you want to accent. */
   --intergalactic-bg-secondary-warning-active: #ffb26e;
+  /* Secondary background of the information you want to highlight. */
   --intergalactic-bg-secondary-highlight: #fdf7c8;
+  /* Hover state of the secondary background of the information you want to highlight. */
   --intergalactic-bg-secondary-highlight-hover: #fce081;
+  /* Active (selected) state of the secondary background of the information you want to highlight. */
   --intergalactic-bg-secondary-highlight-active: #fdc23c;
+  /* Secondary background for the advertising message you want to accent. */
   --intergalactic-bg-secondary-advertising: #f9f2ff;
+  /* Hover state of the secondary background for the advertising message you want to accent. */
   --intergalactic-bg-secondary-advertising-hover: #edd9ff;
+  /* Active (selected) state of the secondary background for the advertising message you want to accent. */
   --intergalactic-bg-secondary-advertising-active: #dcb8ff;
-  /* Use it for highlighting the search results in the list. */
+  /* Highlighting the search results. */
   --intergalactic-bg-highlight-results: rgba(239, 152, 0, 0.4);
-  /* Use it for focusing values in the input. */
+  /* Focusing values in the input. */
   --intergalactic-bg-highlight-focus: rgba(0, 143, 248, 0.2);
+  /* Primary text. */
   --intergalactic-text-primary: #191b23;
+  /* Secondary text. */
   --intergalactic-text-secondary: #6c6e79;
+  /* Placeholder text only. */
   --intergalactic-text-placeholder: #a9abb6;
+  /* Text associated with success states and data. */
   --intergalactic-text-success: #007c65;
+  /* Hover and active states for the text associated with success states and data. */
   --intergalactic-text-success-hover-active: #055345;
+  /* Text associated with critical states and data. */
   --intergalactic-text-critical: #d1002f;
+  /* Hover and active states for the text associated with critical states and data. */
   --intergalactic-text-critical-hover-active: #8e0016;
+  /* Inverted version of the primary text. */
   --intergalactic-text-primary-invert: #ffffff;
+  /* Inverted version of the secondary text. */
   --intergalactic-text-secondary-Invert: rgba(255, 255, 255, 0.75);
+  /* Link text. */
   --intergalactic-text-link: #006dca;
+  /* Hover and active states for the link text. */
   --intergalactic-text-link-hover-active: #044792;
-  /* Use these styles on dark background. */
+  /* Inverted version of the link text. Use on dark background only. */
   --intergalactic-text-link-invert: #8ecdff;
-  /* Use these styles on dark background. */
+  /* Hover and active states of the inverted version of the link text. Use on dark background only. */
   --intergalactic-text-link-invert-hover: #2bb3ff;
+  /* Visited link text. */
   --intergalactic-text-link-visited: #8649e1;
+  /* Hint link text. */
   --intergalactic-text-hint: #6c6e79;
+  /* Hover and active states of the hint link text. */
   --intergalactic-text-hint-hover-active: #484a54;
-  /* Use these styles on dark background. */
+  /* Inverted version of the hint link text. */
   --intergalactic-text-hint-invert: #c4c7cf;
-  /* Use these styles on dark background. */
+  /* Hover and active states of the inverted version of the hint link text. */
   --intergalactic-text-hint-invert-hover-active: #a9abb6;
-  /* Use with font-size ≥20px. */
+  /* Secondary text. Use with font-size ≥20px. */
   --intergalactic-text-large-secondary: #a9abb6;
-  /* Use with font-size ≥20px. */
+  /* Link text with font-size ≥20px. */
   --intergalactic-text-large-info: #008ff8;
-  /* Use with font-size ≥20px. */
+  /* Hover and active states of the link text with font-size ≥20px. */
   --intergalactic-text-large-info-hover-active: #006dca;
-  /* Use with font-size ≥20px. */
+  /* Text with font-size ≥20px associated with success states and data. */
   --intergalactic-text-large-success: #009f81;
-  /* Use with font-size ≥20px. */
+  /* Hover and active states of the text with font-size ≥20px associated with success states and data. */
   --intergalactic-text-large-success-hover-active: #007c65;
-  /* Use with font-size ≥20px. */
+  /* Text with font-size ≥20px associated with critical states and data. */
   --intergalactic-text-large-critical: #ff4953;
-  /* Use with font-size ≥20px. */
+  /* Hover and active states of the text with font-size ≥20px associated with critical states and data. */
   --intergalactic-text-large-critical-hover-active: #d1002f;
-  /* Use it for all neutral primary borders. */
+  /* Neutral primary border. */
   --intergalactic-border-primary: #c4c7cf;
-  /* Use it for subtle secondary borders like all Poppers have. */
+  /* Subtle secondary border. */
   --intergalactic-border-secondary: #e0e1e9;
-  /* Use it for borders in Notice and input fields. */
+  /* Subtle secondary border in the informational message. */
   --intergalactic-border-info: #8ecdff;
-  /* Use it for borders in focused input fileds. */
+  /* Active border in focused input filed. */
   --intergalactic-border-info-active: #006dca;
-  /* Use it for borders in Notice and input fields. */
+  /* Subtle secondary border in the successful message and input field. */
   --intergalactic-border-success: #59ddaa;
-  /* Use it for borders in focused input fields. */
+  /* Active border in the focused input field with valid state. */
   --intergalactic-border-success-active: #007c65;
-  /* Use it for borders in Notice and input fields. */
-  --intergalactic-border-danger: #ffaeb5;
-  /* Use it for borders in focused input fields. */
-  --intergalactic-border-danger-active: #d1002f;
-  /* Use it for borders in Notice. */
+  /* Subtle secondary border in the critical message and invalid input field. */
+  --intergalactic-border-critical: #ffaeb5;
+  /* Active border in the focused input field with invalid state, and active state of the other components with invalid state. */
+  --intergalactic-border-critical-active: #d1002f;
+  /* Subtle secondary border in the warning message. */
   --intergalactic-border-warning: #ffb26e;
+  /* Active border in components with warning intention. */
   --intergalactic-border-warning-active: #c33909;
-  /* Use it for borders of controls on the dark or color background. */
+  /* Inverted version of the neutral primary border. Use it for borders on the dark or color background. */
   --intergalactic-border-primary-invert: #ffffff;
-  /* Use it as an invert borders on the dark or color background. */
+  /* Inverted version of the neutral secondary border. Use it for borders on the dark or color background. */
   --intergalactic-border-secondary-invert: rgba(255, 255, 255, 0.3);
-  /* Use only for the dark Tooltip. */
+  /* Border of the Tooltip with dark theme. */
   --intergalactic-border-tooltip-invert: #6c6e79;
-  --intergalactic-border-table-accent-border: #a9abb6;
+  /* Accent borders in the Table: for the accordion in the table and for the header of the secondary table. */
+  --intergalactic-border-table-accent: #a9abb6;
+  /* Subtle background of the Switch control. */
   --intergalactic-control-switch-bg: #a9abb6;
+  /* Background of the regular primary control. */
   --intergalactic-control-primary-info: #008ff8;
+  /* Hover state of the regular primary control. */
   --intergalactic-control-primary-info-hover: #006dca;
+  /* Active (selected) state of the regular primary control. */
   --intergalactic-control-primary-info-active: #044792;
+  /* Background of the primary control with successful theme. */
   --intergalactic-control-primary-success: #009f81;
+  /* Hover state of the primary control with successful theme. */
   --intergalactic-control-primary-success-hover: #007c65;
+  /* Active (selected) state of the primary control with successful theme. */
   --intergalactic-control-primary-success-active: #055345;
+  /* Background of the primary control with danger theme. */
   --intergalactic-control-primary-critical: #ff4953;
+  /* Hover state of the primary control with danger theme. */
   --intergalactic-control-primary-critical-hover: #d1002f;
+  /* Active (selected) state of the primary control with danger theme. */
   --intergalactic-control-primary-critical-active: #8e0016;
+  /* Background of the advertising primary control. */
   --intergalactic-control-primary-advertising-active: #8649e1;
+  /* Hover state of the advertising primary control. */
   --intergalactic-control-primary-advertising: #5925ab;
+  /* Active (selected) state of the advertising primary control. */
   --intergalactic-control-primary-advertising-hover: #421983;
+  /* Inverted background of the primary control. */
   --intergalactic-control-primary-invert: #ffffff;
+  /* Hover state of the inverted primary control. */
   --intergalactic-control-primary-invert-hover: #f4f5f9;
+  /* Active (selected) state of the inverted primary control. */
   --intergalactic-control-primary-invert-active: #e0e1e9;
+  /* Background of the regular secondary control. */
   --intergalactic-control-secondary-neutral: rgba(138, 142, 155, 0.1);
+  /* Hover state of the regular secondary control. */
   --intergalactic-control-secondary-neutral-hover: rgba(138, 142, 155, 0.2);
+  /* Active (selected) state of the regular secondary control. */
   --intergalactic-control-secondary-neutral-active: rgba(138, 142, 155, 0.3);
+  /* Background of the accent secondary control. */
   --intergalactic-control-secondary-info: rgba(0, 143, 248, 0.1);
+  /* Hover state of the accent secondary control. */
   --intergalactic-control-secondary-info-hover: rgba(0, 143, 248, 0.2);
+  /* Active (selected) state of the accent secondary control. */
   --intergalactic-control-secondary-info-active: rgba(0, 143, 248, 0.3);
+  /* Background of the inverted version of the secondary control. */
   --intergalactic-control-secondary-invert: rgba(255, 255, 255, 0.05);
+  /* Hover state of the inverted version of the secondary control. */
   --intergalactic-control-secondary-invert-hover: rgba(255, 255, 255, 0.1);
+  /* Active (selected) state of the inverted version of the secondary control. */
   --intergalactic-control-secondary-invert-active: rgba(255, 255, 255, 0.3);
+  /* Background of the regular tertiary control. */
   --intergalactic-control-tertiary-neutral: rgba(138, 142, 155, 0);
+  /* Hover state of the regular tertiary control. */
   --intergalactic-control-tertiary-neutral-hover: rgba(138, 142, 155, 0.2);
+  /* Active (selected) state of the regular tertiary control. */
   --intergalactic-control-tertiary-neutral-active: rgba(138, 142, 155, 0.3);
+  /* Background of the accent and link-lookalike tertiary control. */
   --intergalactic-control-tertiary-info: rgba(0, 143, 248, 0);
+  /* Hover state of the accent and link-lookalike tertiary control. */
   --intergalactic-control-tertiary-info-hover: rgba(0, 143, 248, 0.2);
+  /* Active (selected) state of the accent and link-lookalike tertiary control. */
   --intergalactic-control-tertiary-info-active: rgba(0, 143, 248, 0.3);
+  /* Background of the inverted version of the tertiary control. */
   --intergalactic-control-tertiary-invert: rgba(255, 255, 255, 0);
+  /* Hover state of the inverted version of the tertiary control. */
   --intergalactic-control-tertiary-invert-hover: rgba(255, 255, 255, 0.1);
+  /* Active (selected) state of the inverted version of the tertiary control. */
   --intergalactic-control-tertiary-invert-active: rgba(255, 255, 255, 0.3);
+  /* Primary neutral icon. */
   --intergalactic-icon-primary-neutral: #6c6e79;
+  /* Hover and active (selected) states of the primary neutral icon. */
   --intergalactic-icon-primary-neutral-hover-active: #484a54;
+  /* Primary link-lookalike icon. */
   --intergalactic-icon-primary-info: #006dca;
+  /* Hover and active (selected) states of the primary link-lookalike icon. */
   --intergalactic-icon-primary-info-hover-active: #044792;
+  /* Primary successful icon. */
   --intergalactic-icon-primary-success: #009f81;
+  /* Hover and active (selected) states of the primary successful icon. */
   --intergalactic-icon-primary-success-hover-active: #007c65;
+  /* Primary critical icon. */
   --intergalactic-icon-primary-critical: #ff4953;
+  /* Hover and active (selected) states of the primary critical icon. */
   --intergalactic-icon-primary-critical-hover-active: #d1002f;
+  /* Primary warning icon. */
   --intergalactic-icon-primary-warning: #ff642d;
+  /* Hover and active (selected) states of the primary warning icon. */
   --intergalactic-icon-primary-warning-hover-active: #c33909;
+  /* Inverted version of the primary icon. */
   --intergalactic-icon-primary-invert: #ffffff;
+  /* Hover and active (selected) states of the inverted version of the primary icon. */
   --intergalactic-icon-primary-invert-hover-active: #e0e1e9;
-  /* #A9ABB6 */
+  /* Secondary neutral icon. */
   --intergalactic-icon-secondary-neutral: #a9abb6;
+  /* Hover and active (selected) states of the secondary neutral icon. */
   --intergalactic-icon-secondary-neutral-hover-active: #8a8e9b;
+  /* Secondary link-lookalike icon. */
   --intergalactic-icon-secondary-info: #2bb3ff;
+  /* Hover and active (selected) states of the secondary link-lookalike icon. */
   --intergalactic-icon-secondary-info-hover-active: #008ff8;
+  /* Secondary successful icon. */
   --intergalactic-icon-secondary-success: #00c192;
+  /* Hover and active (selected) states of the secondary successful icon. */
   --intergalactic-icon-secondary-success-hover-active: #009f81;
+  /* Secondary critical icon. */
   --intergalactic-icon-secondary-critical: #ff8786;
+  /* Hover and active (selected) states of the secondary critical icon. */
   --intergalactic-icon-secondary-critical-hover-active: #ff4953;
+  /* Secondary warning icon. */
   --intergalactic-icon-secondary-warning: #ff8c43;
+  /* Hover and active (selected) states of the secondary warning icon. */
   --intergalactic-icon-secondary-warning-hover-active: #ff642d;
-  /* semrush/intergalactic/tree/feature/introduce-design-tokens-test */
+  /* Color for the default non-interactive icon. */
   --intergalactic-icon-non-interactive: #191b23;
+  /* Default date-picker cell background. */
   --intergalactic-date-picker-cell: #ffffff;
+  /* Color for marking the cell with the current date, month or year in the date-picker. */
   --intergalactic-date-picker-cell-current: #c4c7cf;
+  /* Hover state of the default date-picker cell background. */
   --intergalactic-date-picker-cell-hover: #e0e1e9;
+  /* Background for the cell which is included in the date range in the date-picker. */
   --intergalactic-date-picker-cell-range: #c4e5fe;
+  /* Hover state of the background for the cell which is included in the date range in the date-picker. */
   --intergalactic-date-picker-cell-range-hover: #8ecdff;
+  /* Active (selected) date-picker cell background. */
   --intergalactic-date-picker-cell-active: #2bb3ff;
+  /* Hover for the active (selected) date-picker cell background. */
   --intergalactic-date-picker-cell-active-hover: #008ff8;
   --intergalactic-date-picker-cell-current-invert: rgba(255, 255, 255, 0.3);
+  /* Default background color for the list item in the dropdown-menu. */
   --intergalactic-dropdown-menu-item: #ffffff;
+  /* Hover state of the default background color for the list item in the dropdown-menu. */
   --intergalactic-dropdown-menu-item-hover: #f4f5f9;
+  /* Active (selected) state of the default background color for the list item in the dropdown-menu. */
   --intergalactic-dropdown-menu-item-selected: rgba(196, 229, 254, 0.7);
+  /* Hover state for the selected state of the default background color for the list item in the dropdown-menu. */
   --intergalactic-dropdown-menu-item-selected-hover: #c4e5fe;
+  /* Color of the outer border of the FeaturePopover.Spot. */
   --intergalactic-feature-popover-dot-outer-border: rgba(252, 224, 129, 0.3);
+  /* Background color of the ProgressBar. */
   --intergalactic-progress-bar-bg: #e0e1e9;
+  /* Hover state of the background color of the ProgressBar. */
   --intergalactic-progress-bar-bg-hover: #c4c7cf;
-  /* #FFFFFF */
+  /* Inverted version of the background color of the ProgressBar. */
   --intergalactic-progress-bar-bg-invert: rgba(255, 255, 255, 0.2);
+  /* Hover state for the inverted version of the background color of the ProgressBar. */
   --intergalactic-progress-bar-bg-invert-hover: rgba(255, 255, 255, 0.4);
+  /* Value color of the ProgressBar. */
   --intergalactic-progress-bar-value: #009f81;
+  /* Value with gradient for the ProgressBar. */
   --intergalactic-progress-bar-value-gradient: linear-gradient(
     -45deg,
     rgba(0, 159, 129, 0.9) 25%,
@@ -186,6 +308,7 @@
     rgba(0, 159, 129, 0.9) 75%,
     rgba(0, 159, 129, 1) 0%
   );
+  /* Null value gradient for the ProgressBar. */
   --intergalactic-progress-bar-pattern-gradient: linear-gradient(
     -45deg,
     rgba(224, 225, 233, 0.9) 25%,
@@ -195,72 +318,110 @@
     rgba(224, 225, 233, 0.9) 75%,
     rgba(224, 225, 233, 1) 0%
   );
+  /* Base value background for the ProgressBar. It is used to create gradients for the values. */
   --intergalactic-progress-bar-value-bg: #000000;
+  /* Default color for the Skeleton. */
   --intergalactic-skeleton-bg: rgba(224, 225, 233, 0.8);
+  /* Inverted version of the default color for the Skeleton. */
   --intergalactic-skeleton-bg-invert: rgba(255, 255, 255, 0.3);
+  /* Beta status of the feature. */
   --intergalactic-status-beta: #ff8c43;
+  /* Admin mode of the feature. */
   --intergalactic-status-admin: #2bb3ff;
+  /* New status of the feature. */
   --intergalactic-status-new: #00c192;
+  /* Alpha status of the feature. */
   --intergalactic-status-alpha: #ff8786;
+  /* "Soon" status of the feature. */
   --intergalactic-status-soon: #a9abb6;
+  /* Inverted version of the background of the feature status. */
   --intergalactic-status-invert: #ffffff;
+  /* Background of the header cell in the primary Table. */
   --intergalactic-table-th-primary-cell: #f4f5f9;
+  /* Background of the hovered header cell in the primary Table. */
   --intergalactic-table-th-primary-cell-hover: #e0e1e9;
+  /* Background of the active header cell in the primary Table. */
   --intergalactic-table-th-primary-cell-active: #e0e1e9;
+  /* Background of the header cell in the secondary Table. */
   --intergalactic-table-th-secondary-cell: #ffffff;
   --intergalactic-table-th-gradient: linear-gradient(
     to right,
     rgba(224, 225, 233, 0) 0%,
     rgba(224, 225, 233, 1) 100%
   );
+  /* Background of the default cell in the Table. */
   --intergalactic-table-td-cell: #ffffff;
+  /* Background of the default hovered cell in the Table. */
   --intergalactic-table-td-cell-hover: rgba(224, 225, 233, 0.5);
+  /* Background of the default active cell in the Table. */
   --intergalactic-table-td-cell-active: rgba(224, 225, 233, 0.8);
+  /* Background of the unread cell in the Table. */
   --intergalactic-table-td-cell-unread: #f4f5f9;
+  /* Background of the cell used for Accordion or actions row, in the Table. */
   --intergalactic-table-td-cell-actions-accordion: #f4f5f9;
+  /* Background of the selected cell in the Table. */
   --intergalactic-table-td-cell-selected: #e9f7ff;
+  /* Background of the hovered selected cell in the Table. */
   --intergalactic-table-td-cell-selected-hover: #c4e5fe;
+  /* Background of the active selected cell in the Table. */
   --intergalactic-table-td-cell-selected-active: #c4e5fe;
+  /* Background of the cell with new information in the Table. */
   --intergalactic-table-td-cell-new: #dbfee8;
+  /* Background of the hovered cell with new information in the Table. */
   --intergalactic-table-td-cell-new-hover: #9ef2c9;
+  /* Background of the active cell with new information in the Table. */
   --intergalactic-table-td-cell-new-active: #9ef2c9;
+  /* Background of the cell with critical information in the Table. */
   --intergalactic-table-td-cell-critical: #fff0f7;
+  /* Background of the hovered cell with critical information in the Table. */
   --intergalactic-table-td-cell-critical-hover: #ffd7df;
+  /* Background of the active cell with critical information in the Table. */
   --intergalactic-table-td-cell-critical-active: #ffd7df;
+  /* Background of the cell with warning information in the Table. */
   --intergalactic-table-td-cell-warning: #fff3d9;
+  /* Background of the hovered cell with warning information in the Table. */
   --intergalactic-table-td-cell-warning-hover: #ffdca2;
+  /* Background of the active cell with warning information in the Table. */
   --intergalactic-table-td-cell-warning-active: #ffdca2;
+  /* Primary brand color. */
   --intergalactic-brand-primary: #ff642d;
+  /* Secondary brand color. */
   --intergalactic-brand-secondary: #421983;
-  /* #BD081C */
+  /* Pinterest brand color. */
   --intergalactic-brand-pinterest: #bd081c;
-  /* #E4405F */
+  /* Instagram brand color. */
   --intergalactic-brand-instagram: #e4405f;
-  /* #FF0000 */
+  /* Youtube brand color. */
   --intergalactic-brand-youtube: #ff0000;
-  /* #3B5998 */
+  /* Facebook brand color. */
   --intergalactic-brand-facebook: #3b5998;
-  /* #1A7AB2 */
+  /* LinkedIn brand color. */
   --intergalactic-brand-linkedIn: #1a7ab2;
-  /* #2BAFEB */
+  /* Twitter brand color. */
   --intergalactic-brand-twitter: #2bafeb;
-  /* #1A0DAB */
+  /* Google brand color for the link. */
   --intergalactic-brand-google-blue: #1a0dab;
-  /* #016723 */
+  /* Google green brand color for the link. */
   --intergalactic-brand-google-green: #016723;
-  /* #1A73E8 */
+  /* Google My Business brand color. */
   --intergalactic-brand-google-my-business: #1a73e8;
+  /* Default shadow of the Card. */
   --intergalactic-box-shadow-card: 0px 0px 1px 0px rgba(25, 27, 35, 0.16),
     0px 1px 2px 0px rgba(25, 27, 35, 0.12);
-  /* transition: all 500ms; */
+  /* Hover state for the shadow of the Card with hover state. */
   --intergalactic-box-shadow-card-hover: 3px 3px 30px 0px rgba(25, 27, 35, 0.15);
+  /* Shadow for show that element are being drag-and-drop. */
   --intergalactic-box-shadow-dnd: 0px 0px 1px 0px rgba(25, 27, 35, 0.16),
     0px 12px 40px 0px rgba(25, 27, 35, 0.16);
-  /* [gray800, .2] */
+  /* Default shadow if the Modal window. */
   --intergalactic-box-shadow-modal: 0px 3px 8px 0px rgba(25, 27, 35, 0.2);
+  /* Default shadow of all Poppers, Dropdowns and Tooltips. */
   --intergalactic-box-shadow-popper: 0px 1px 12px 0px rgba(25, 27, 35, 0.15);
+  /* Default keyboard focus styles. */
   --intergalactic-keyboard-focus: 0px 0px 0px 3px rgba(0, 143, 248, 0.3);
+  /* Keyboard focus styles for elements with invalid state. */
   --intergalactic-keyboard-focus-invalid: 0px 0px 0px 3px rgba(255, 73, 83, 0.3);
+  /* Keyboard focus styles for elements with valid state. */
   --intergalactic-keyboard-focus-valid: 0px 0px 0px 3px rgba(0, 159, 129, 0.3);
   --intergalactic-base: Inter;
   /* Use with font-size-800. */
@@ -304,22 +465,35 @@
   --intergalactic-compact: 0.3;
   /* Base denominator of the design system. */
   --intergalactic-scale-indent: 4px;
-  /* Use for default size of the controls. */
+  /* Default size of the controls. */
   --intergalactic-form-control-m: 28px;
-  /* Use for large size of the controls. */
+  /* Large size of the controls. */
   --intergalactic-form-control-l: 40px;
+  /* 2px */
   --intergalactic-spacing-05x: 2px;
+  /* 4px */
   --intergalactic-spacing-1x: 4px;
+  /* 8px */
   --intergalactic-spacing-2x: 8px;
+  /* 12px */
   --intergalactic-spacing-3x: 12px;
+  /* 16px */
   --intergalactic-spacing-4x: 16px;
+  /* 20px */
   --intergalactic-spacing-5x: 20px;
+  /* 24px */
   --intergalactic-spacing-6x: 24px;
+  /* 32px */
   --intergalactic-spacing-8x: 32px;
+  /* 40px */
   --intergalactic-spacing-10x: 40px;
+  /* 56px */
   --intergalactic-spacing-14x: 56px;
+  /* 80px */
   --intergalactic-spacing-20x: 80px;
+  /* 96px */
   --intergalactic-spacing-24x: 96px;
+  /* 120px */
   --intergalactic-spacing-30x: 120px;
   /* Use only for checkbox and placeholder addons. */
   --intergalactic-rounded-small: 4px;
@@ -329,7 +503,7 @@
   --intergalactic-rounded-large: 12px;
   /* Use for Tag. */
   --intergalactic-rounded-extra-large: 24px;
-  /* Variable for disabled state. Use it for all controls to make them look disabled. */
+  /* Use for the disabled state of all kind of the controls and elements. */
   --intergalactic-disabled-opacity: 0.3;
   /* Extra small screens (small phones). */
   --intergalactic-screen-extra-small: 320px;
@@ -354,119 +528,200 @@
   --intergalactic-z-index-dropdown: 750;
   --intergalactic-z-index-tooltip: 800;
   --intergalactic-z-index-notice-bubble: 999;
+  /* Default Tooltip background. */
   --intergalactic-tooltip-default: #ffffff;
+  /* Warning Tooltip background. */
   --intergalactic-tooltip-warning: #ffd7df;
+  /* Inverted version of the default Tooltip background. */
   --intergalactic-tooltip-invert: #191b23;
+  /* Neutral border of the components that are combined with neighbor-location property. */
   --intergalactic-neighbor-location-neutral: rgba(255, 255, 255, 0.5);
+  /* Inverted border of the components that are combined with neighbor-location property. */
   --intergalactic-neighbor-location-invert: rgba(0, 0, 0, 0.5);
+  /* Left-to-right fade shadow for the ScrollArea. */
   --intergalactic-scroll-area-shadow-left: linear-gradient(
     to right,
     rgba(25, 27, 35, 0.1) 20.55%,
     rgba(255, 255, 255, 0.0001) 100%
   );
+  /* Right-to-left fade shadow for the ScrollArea. */
   --intergalactic-scroll-area-shadow-right: linear-gradient(
     to left,
     rgba(25, 27, 35, 0.1) 20.55%,
     rgba(255, 255, 255, 0.0001) 100%
   );
+  /* Top-to-bottom fade shadow for the ScrollArea. */
   --intergalactic-scroll-area-shadow-top: linear-gradient(
     to bottom,
     rgba(25, 27, 35, 0.1) 20.55%,
     rgba(255, 255, 255, 0.0001) 100%
   );
+  /* Bottom-to-top fade shadow for the ScrollArea. */
   --intergalactic-scroll-area-shadow-bottom: linear-gradient(
     to top,
     rgba(25, 27, 35, 0.1) 20.55%,
     rgba(255, 255, 255, 0.0001) 100%
   );
+  /* Left-to-right fade shadow for the ScrollArea inside the DropdownMenu. */
   --intergalactic-scroll-area-dropdown-menu-left: linear-gradient(
     to right,
     rgba(255, 255, 255, 1) 34.38%,
     rgba(255, 255, 255, 0) 100%
   );
+  /* Right-to-left fade shadow for the ScrollArea inside the DropdownMenu. */
   --intergalactic-scroll-area-dropdown-menu-right: linear-gradient(
     to left,
     rgba(255, 255, 255, 1) 34.38%,
     rgba(255, 255, 255, 0) 100%
   );
+  /* Bottom-to-top fade shadow for the ScrollArea inside the DropdownMenu. */
   --intergalactic-scroll-area-dropdown-menu-bottom: linear-gradient(
     to top,
     rgba(255, 255, 255, 1) 34.38%,
     rgba(255, 255, 255, 0) 100%
   );
+  /* Top-to-bottom fade shadow for the ScrollArea inside the DropdownMenu. */
   --intergalactic-scroll-area-dropdown-menu-top: linear-gradient(
     to bottom,
     rgba(255, 255, 255, 1) 34.38%,
     rgba(255, 255, 255, 0) 100%
   );
+  /* Background color for ScrollBar. */
   --intergalactic-scroll-bar-background: rgba(25, 27, 35, 0.3);
+  /* Primary gray tag. */
   --intergalactic-tag-primary-gray-normal: rgba(224, 225, 233, 0.5);
+  /* Hover and active (selected) state of the primary gray tag. */
   --intergalactic-tag-primary-gray-hover-active: #e0e1e9;
+  /* Primary blue tag. */
   --intergalactic-tag-primary-blue-normal: rgba(196, 229, 254, 0.5);
+  /* Hover and active (selected) state of the primary blue tag. */
   --intergalactic-tag-primary-blue-hover-active: #c4e5fe;
+  /* Primary green tag. */
   --intergalactic-tag-primary-green-normal: rgba(158, 242, 201, 0.5);
+  /* Hover and active (selected) state of the primary green tag. */
   --intergalactic-tag-primary-green-hover-active: #9ef2c9;
+  /* Primary orange tag. */
   --intergalactic-tag-primary-orange-normal: rgba(255, 220, 162, 0.5);
+  /* Hover and active (selected) state of the primary orange tag. */
   --intergalactic-tag-primary-orange-hover-active: #ffdca2;
+  /* Primary red tag. */
   --intergalactic-tag-primary-red-normal: rgba(255, 215, 223, 0.5);
+  /* Hover and active (selected) state of the primary red tag. */
   --intergalactic-tag-primary-red-hover-active: #ffd7df;
+  /* Primary violet tag. */
   --intergalactic-tag-primary-violet-normal: rgba(237, 217, 255, 0.5);
+  /* Hover and active (selected) state of the primary violet tag. */
   --intergalactic-tag-primary-violet-hover-active: #edd9ff;
+  /* Primary yellow tag. */
   --intergalactic-tag-primary-yellow-normal: rgba(252, 224, 129, 0.5);
+  /* Hover and active (selected) state of the primary yellow tag. */
   --intergalactic-tag-primary-yellow-hover-active: #fce081;
+  /* Primary white tag. */
   --intergalactic-tag-primary-white-normal: rgba(255, 255, 255, 0.15);
+  /* Hover and active (selected) state of the primary white tag. */
   --intergalactic-tag-primary-white-hover-active: rgba(255, 255, 255, 0.3);
+  /* Gray text for the primary gray tag. */
   --intergalactic-tag-primary-gray-text: #6c6e79;
+  /* Blue text for the primary blue tag. */
   --intergalactic-tag-primary-blue-text: #006dca;
+  /* Green text for the primary green tag. */
   --intergalactic-tag-primary-green-text: #007c65;
+  /* Orange text for the primary orange tag. */
   --intergalactic-tag-primary-orange-text: #c33909;
+  /* Red text for the primary red tag. */
   --intergalactic-tag-primary-red-text: #d1002f;
+  /* Violet text for the primary violet tag. */
   --intergalactic-tag-primary-violet-text: #8649e1;
+  /* Yellow text for the primary yellow tag. */
   --intergalactic-tag-primary-yellow-text: #a75800;
+  /* White text for the primary white tag. */
   --intergalactic-tag-primary-white-text: #ffffff;
+  /* Background color for the default secondary tag. */
   --intergalactic-tag-secondary-normal: #ffffff;
+  /* Hover and active states of the background color for the default secondary tag. */
   --intergalactic-tag-secondary-hover-active: #f4f5f9;
+  /* White secondary tag. */
   --intergalactic-tag-secondary-white-normal: rgba(255, 255, 255, 0);
-  /* Only text color changes */
+  /* Hover state of the secondary white tag. */
   --intergalactic-tag-secondary-white-hover: rgba(255, 255, 255, 0);
+  /* Active state of the secondary white tag. */
   --intergalactic-tag-secondary-white-active: rgba(255, 255, 255, 0.1);
+  /* Gray text for the default secondary tag. */
   --intergalactic-tag-secondary-gray-text: #6c6e79;
+  /* White text for the secondary white tag. */
   --intergalactic-tag-secondary-white-text: #ffffff;
-  --intergalactic-chart-palette-order-blue: #2bb3ff;
-  --intergalactic-chart-palette-order-green: #59ddaa;
-  --intergalactic-chart-palette-order-orange: #ff642d;
-  --intergalactic-chart-palette-order-pink: #f67cf2;
-  --intergalactic-chart-palette-order-yellow: #fdc23c;
-  --intergalactic-chart-palette-order-violet: #ab6cfe;
-  --intergalactic-chart-palette-order-red: #ff8786;
-  --intergalactic-chart-palette-order-salad: #9bd85d;
-  --intergalactic-chart-palette-order-blue-second-order: #008ff8;
-  --intergalactic-chart-palette-order-green-second-order: #00c192;
-  --intergalactic-chart-palette-order-orange-second-order: #ffb26e;
-  --intergalactic-chart-palette-order-pink-second-order: #e14adf;
-  --intergalactic-chart-palette-order-yellow-second-order: #ef9800;
-  --intergalactic-chart-palette-order-violet-second-order: #dcb8ff;
-  --intergalactic-chart-palette-order-red-second-order: #ff4953;
-  --intergalactic-chart-palette-order-salad-second-order: #66c030;
-  --intergalactic-chart-palette-order-blue-third-order: #8ecdff;
-  --intergalactic-chart-palette-order-green-third-order: #009f81;
-  --intergalactic-chart-palette-order-orange-third-order: #ff8c43;
-  --intergalactic-chart-palette-order-pink-third-order: #ffa9fa;
-  --intergalactic-chart-palette-order-yellow-third-order: #d87900;
-  --intergalactic-chart-palette-order-violet-third-order: #c695ff;
-  --intergalactic-chart-palette-order-red-third-order: #ffaeb5;
-  --intergalactic-chart-palette-order-salad-third-order: #35a21e;
+  /* 1 color in the default list of colors for charts. */
+  --intergalactic-chart-palette-order-1: #2bb3ff;
+  /* 2 color in the default list of colors for charts. */
+  --intergalactic-chart-palette-order-2: #59ddaa;
+  /* 3 color in the default list of colors for charts. */
+  --intergalactic-chart-palette-order-3: #ff642d;
+  /* 4 color in the default list of colors for charts. */
+  --intergalactic-chart-palette-order-4: #f67cf2;
+  /* 5 color in the default list of colors for charts. */
+  --intergalactic-chart-palette-order-5: #fdc23c;
+  /* 6 color in the default list of colors for charts. */
+  --intergalactic-chart-palette-order-6: #ab6cfe;
+  /* 7 color in the default list of colors for charts. */
+  --intergalactic-chart-palette-order-7: #ff8786;
+  /* 8 color in the default list of colors for charts. */
+  --intergalactic-chart-palette-order-8: #9bd85d;
+  /* 9 color in the default list of colors for charts. */
+  --intergalactic-chart-palette-order-9: #008ff8;
+  /* 10 color in the default list of colors for charts. */
+  --intergalactic-chart-palette-order-10: #00c192;
+  /* 11 color in the default list of colors for charts. */
+  --intergalactic-chart-palette-order-11: #ffb26e;
+  /* 12 color in the default list of colors for charts. */
+  --intergalactic-chart-palette-order-12: #e14adf;
+  /* 13 color in the default list of colors for charts. */
+  --intergalactic-chart-palette-order-13: #ef9800;
+  /* 14 color in the default list of colors for charts. */
+  --intergalactic-chart-palette-order-14: #dcb8ff;
+  /* 15 color in the default list of colors for charts. */
+  --intergalactic-chart-palette-order-15: #ff4953;
+  /* 16 color in the default list of colors for charts. */
+  --intergalactic-chart-palette-order-16: #66c030;
+  /* 17 color in the default list of colors for charts. */
+  --intergalactic-chart-palette-order-17: #8ecdff;
+  /* 18 color in the default list of colors for charts. */
+  --intergalactic-chart-palette-order-18: #009f81;
+  /* 19 color in the default list of colors for charts. */
+  --intergalactic-chart-palette-order-19: #ff8c43;
+  /* 20 color in the default list of colors for charts. */
+  --intergalactic-chart-palette-order-20: #ffa9fa;
+  /* 21 color in the default list of colors for charts. */
+  --intergalactic-chart-palette-order-21: #d87900;
+  /* 22 color in the default list of colors for charts. */
+  --intergalactic-chart-palette-order-22: #c695ff;
+  /* 23 color in the default list of colors for charts. */
+  --intergalactic-chart-palette-order-23: #ffaeb5;
+  /* 24 color in the default list of colors for charts. */
+  --intergalactic-chart-palette-order-24: #35a21e;
+  /* Use it to show total value. */
   --intergalactic-chart-palette-order-total-amount: #8a8e9b;
+  /* Use it to indicate voids, missing or some other data. */
   --intergalactic-chart-palette-order-other-data: #c4c7cf;
+  /* Use it to show null value. */
   --intergalactic-chart-palette-order-null: #e0e1e9;
+  /* Default chart grid line. */
   --intergalactic-chart-grid-line: #e0e1e9;
+  /* X-axis line on the chart grid. */
   --intergalactic-chart-grid-x-axis: #c4c7cf;
+  /* Accent line for the hover state on the chart grid. */
   --intergalactic-chart-grid-y-accent-hover-line: #a9abb6;
+  /* Text label on the chart grid. */
   --intergalactic-chart-grid-text-label: #6c6e79;
+  /* Background color for the hover state of a bar on the chart grid. */
   --intergalactic-chart-grid-bar-chart-hover: rgba(196, 199, 207, 0.3);
+  /* Default background color of a bar in the BarChart. */
   --intergalactic-chart-grid-bar-chart-base-bg: #e0e1e9;
+  /* Use for highlighting the period on the chart grid. */
   --intergalactic-chart-grid-period-bg: rgba(196, 199, 207, 0.2);
+  /* Border of the dot that appears on the chart grid when hovered over. */
   --intergalactic-chart-grid-border: #ffffff;
+  /* Background color for the clickable date on the X-axis of the chart grid. */
   --intergalactic-chart-x-axis-accent-period-active: #8a8e9b;
+  /* Background color for the "Start tracking" date on the X-axis of the chart grid. */
   --intergalactic-chart-x-axis-accent-data-start-tracking: rgba(0, 159, 129, 0.2);
 }
