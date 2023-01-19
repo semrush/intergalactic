@@ -1,7 +1,7 @@
 @import './var.css';
 
 SScatterPlot {
-  fill: var(--intergalactic-chart-palette-order-blue, #2bb3ff);
+  fill: var(--intergalactic-chart-palette-order-1, #2bb3ff);
   transition-property: cx, cy;
   transition-duration: var(--duration);
   transition-timing-function: ease-in-out;
@@ -22,7 +22,7 @@ SScatterPlot[transparent] {
 SValue {
   text-anchor: middle;
   font-size: var(--intergalactic-fs-50, 10px);
-  stroke: var(--intergalactic-chart-palette-order-blue-second-order, #008ff8);
+  stroke: var(--intergalactic-chart-palette-order-9, #008ff8);
 }
 
 SValue[color] {

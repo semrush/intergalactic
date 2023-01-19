@@ -12,7 +12,7 @@ thead SRow {
   border: none;
 
   &:last-child {
-    border-bottom: 1px solid var(--intergalactic-border-table-accent-border, #a9abb6);
+    border-bottom: 1px solid var(--intergalactic-border-table-accent, #a9abb6);
   }
 }
 
@@ -88,7 +88,7 @@ SCellHead[use='primary'] {
 SCellHead[use='secondary'] {
   background-color: var(--intergalactic-table-td-cell, #ffffff);
   border-width: 1px 0;
-  border-color: var(--intergalactic-border-table-accent-border, #a9abb6);
+  border-color: var(--intergalactic-border-table-accent, #a9abb6);
 }
 
 SCellHead[sorting] {

@@ -52,7 +52,7 @@ SButtonTrigger[state='valid'] {
 }
 
 SButtonTrigger[state='invalid'] {
-  border-color: var(--intergalactic-border-danger, #ffaeb5);
+  border-color: var(--intergalactic-border-critical, #ffaeb5);
 }
 
 SFilterTrigger[selected] {
